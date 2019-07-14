@@ -60,7 +60,10 @@
 	S["toggles_sound"]		>> toggles_sound
 	S["UI_style_color"]		>> UI_style_color
 	S["UI_style_alpha"]		>> UI_style_alpha
-	S["fps"]			>> fps
+	S["fps"]				>> fps
+
+	S["xeno_prefix"]		>> xeno_prefix
+	S["xeno_postfix"]		>> xeno_postfix
 
 	S["synth_name"]			>> synthetic_name
 	S["synth_type"]			>> synthetic_type
@@ -110,7 +113,10 @@
 	S["default_slot"]		<< default_slot
 	S["toggles_chat"]		<< toggles_chat
 	S["toggles_sound"]		<< toggles_sound
-	S["fps"]			<< fps
+	S["fps"]				<< fps
+
+	S["xeno_prefix"]		<< xeno_prefix
+	S["xeno_postfix"]		<< xeno_postfix
 
 	S["synth_name"] 		<< synthetic_name
 	S["synth_type"]			<< synthetic_type

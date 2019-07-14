@@ -57,6 +57,9 @@
 
 /mob/living/carbon/ex_act(severity, direction)
 
+	if(lying)
+		severity *= EXPLOSION_PRONE_MULTIPLIER
+
 	if(severity >= 30)
 		flash_eyes()
 
@@ -106,23 +109,6 @@
 			M.contract_disease(D, 0, 1, CONTACT_HANDS)
 
 	for(var/datum/disease/D in M.viruses)
-		if(D.spread_by_touch())
-			contract_disease(D, 0, 1, CONTACT_HANDS)
-
-	next_move += 7 //Adds some lag to the 'attack'
-	return
-
-
-/mob/living/carbon/attack_paw(mob/M as mob)
-	if(!istype(M, /mob/living/carbon)) return
-
-	for(var/datum/disease/D in viruses)
-
-		if(D.spread_by_touch())
-			M.contract_disease(D, 0, 1, CONTACT_HANDS)
-
-	for(var/datum/disease/D in M.viruses)
-
 		if(D.spread_by_touch())
 			contract_disease(D, 0, 1, CONTACT_HANDS)
 
@@ -269,7 +255,7 @@
 	var/atom/movable/thrown_thing
 	var/obj/item/I = get_active_hand()
 
-	if(!I || (I.flags_item & NODROP)) 
+	if(!I || (I.flags_item & NODROP))
 		return
 
 	var/spin_throw = TRUE
@@ -401,3 +387,13 @@
 
 /mob/living/carbon/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, var/list/slot_equipment_priority = src.species.slot_equipment_priority)
 	return ..(W,ignore_delay,slot_equipment_priority)
+
+/mob/living/carbon/proc/extinguish_mob(mob/living/carbon/C)
+	fire_stacks = max(fire_stacks - 1, 0)
+	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+	C.visible_message(SPAN_DANGER("[C] tries to put out the fire on [src]!"), \
+	SPAN_WARNING("You try to put out the fire on [src]!"), null, 5)
+	if(fire_stacks <= 0)
+		C.visible_message(SPAN_DANGER("[C] has successfully extinguished the fire on [src]!"), \
+		SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
+		ExtinguishMob()

@@ -1043,11 +1043,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 						user.show_message(text(SPAN_DANGER("<b>Warning: [D.form] Detected</b>\nName: [D.name].\nType: [D.spread].\nStage: [D.stage]/[D.max_stages].\nPossible Cure: [D.cure]")))
 
 			if(2)
-				if(!istype(C, /mob/living/carbon/monkey))
-					if(!isnull(C:gloves))
-						to_chat(user, SPAN_NOTICE(" No fingerprints found on [C]"))
-				else
-					user << text(SPAN_NOTICE("[C]'s Fingerprints: [C:fingerprint]"))
+				user << text(SPAN_NOTICE("[C]'s Fingerprints: [C:fingerprint]"))
 				if (!C.blood_DNA || !C.blood_DNA.len)
 					to_chat(user, SPAN_NOTICE(" No blood found on [C]"))
 					if(C.blood_DNA)

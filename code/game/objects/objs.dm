@@ -32,6 +32,11 @@
 	processing_objects.Remove(src)
 	return 0
 
+/obj/item/proc/get_examine_line()
+	if(blood_color)
+		. = SPAN_WARNING("\icon[src] [gender==PLURAL?"some":"a"] <font color='[blood_color]'>stained</font> [src]")
+	else
+		. = "\icon[src] \a [src]"
 
 /obj/proc/updateUsrDialog()
 	if(in_use)
@@ -89,10 +94,6 @@
 /obj/Dispose()
 	if(buckled_mob) unbuckle()
 	. = ..()
-
-/obj/attack_paw(mob/user)
-	if(can_buckle) return src.attack_hand(user)
-	else . = ..()
 
 /obj/attack_hand(mob/user)
 	if(can_buckle) manual_unbuckle(user)
@@ -243,3 +244,43 @@
 	if(src.health <= 0)
 		qdel(src)
 	return 1
+
+/obj/item/proc/get_mob_overlay(mob/user_mob, slot)
+	var/bodytype = "Default"
+	var/mob/living/carbon/human/user_human
+	if(ishuman(user_mob))
+		user_human = user_mob
+		bodytype = user_human.species.get_bodytype(user_human)
+
+	var/mob_state = get_icon_state(user_mob, slot)
+
+	var/mob_icon
+	var/spritesheet = FALSE
+	if(icon_override)
+		mob_icon = icon_override
+		if(slot == 	WEAR_L_HAND)
+			mob_state = "[mob_state]_l"
+		if(slot == 	WEAR_R_HAND)
+			mob_state = "[mob_state]_r"
+	else if(use_spritesheet(bodytype, slot, mob_state))
+		spritesheet = TRUE
+		mob_icon = sprite_sheets[bodytype]
+	else if(item_icons && item_icons[slot])
+		mob_icon = item_icons[slot]
+	else
+		mob_icon = default_onmob_icons[slot]
+
+	if(user_human)
+		return user_human.species.get_offset_overlay_image(spritesheet, mob_icon, mob_state, color, slot)
+	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)
+
+/obj/item/proc/use_spritesheet(var/bodytype, var/slot, var/icon_state)
+	if(!sprite_sheets || !sprite_sheets[bodytype])
+		return 0
+	if(slot == WEAR_R_HAND || slot == WEAR_L_HAND)
+		return 0
+
+	if(icon_state in icon_states(sprite_sheets[bodytype]))
+		return 1
+
+	return (slot != WEAR_SUIT && slot != WEAR_HEAD)

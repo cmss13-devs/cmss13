@@ -448,9 +448,10 @@ This function completely restores a damaged organ to perfect condition.
 	if(knitting_time > 0)
 		if(!(status & LIMB_SPLINTED))
 			knitting_time = -1 // stop knitting
-		if(knitting_time > world.time)
+		if(world.time > knitting_time)
 			to_chat(owner, SPAN_WARNING("The bones in your [display_name] feel fully knitted, you discard the splint."))
 			status &= ~LIMB_SPLINTED
+			status &= ~LIMB_BROKEN //Let it be known that this code never unbroke the limb.
 			knitting_time = -1
 
 	//Infections
@@ -1116,9 +1117,12 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(!(status & LIMB_DESTROYED) && !(status & LIMB_SPLINTED))
 		if (target != user)
 			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-				user.visible_message(
-				SPAN_WARNING("[user] finishes applying [S] to [target]'s [display_name]."),
-				SPAN_NOTICE("You finish applying [S] to [target]'s [display_name]."))
+				var/possessive = "[user == target ? "your" : "[target]'s"]"
+				var/possessive_their = "[user == target ? "their" : "[target]'s"]"
+				user.affected_message(target,
+					SPAN_HELPFUL("You finish applying <b>[S]</b> to [possessive] [display_name]."),
+					SPAN_HELPFUL("[user] finishes applying <b>[S]</b> to your [display_name]."),
+					SPAN_NOTICE("[user] finish applying [S] to [possessive_their] [display_name]."))
 				status |= LIMB_SPLINTED
 				. = 1
 		else

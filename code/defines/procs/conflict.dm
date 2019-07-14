@@ -102,7 +102,7 @@
 
 	if(damage + penetration > armor * c_config.armor_full_destruction_mult * effective_deflection)
 		var/armor_punch_bonus = 1
-		if(armor>0)
+		if(armor>0 && effective_deflection>0)
 			armor_punch_bonus = (damage + penetration) / (armor * c_config.armor_full_destruction_mult  * effective_deflection)
 			if(c_config.armor_max_full_destruction_mult<armor_punch_bonus)
 				armor_punch_bonus = c_config.armor_max_full_destruction_mult

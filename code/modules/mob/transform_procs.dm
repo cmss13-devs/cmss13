@@ -25,7 +25,7 @@
 		gib()
 		return
 
-	var/mob/living/carbon/monkey/O = null
+	var/mob/living/carbon/human/monkey/O = null
 
 	O = new species.primitive(loc)
 

@@ -53,9 +53,6 @@
 	..()
 	update_icon()
 
-/obj/item/reagent_container/syringe/attack_paw()
-	return attack_hand()
-
 /obj/item/reagent_container/syringe/attackby(obj/item/I as obj, mob/user as mob)
 	return
 
@@ -312,9 +309,6 @@
 	attack_hand()
 		..()
 		update_icon()
-
-	attack_paw()
-		return attack_hand()
 
 	attackby(obj/item/I as obj, mob/user as mob)
 

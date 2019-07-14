@@ -228,9 +228,6 @@
 			drop_parrot_held_item(0)
 	return
 
-/mob/living/simple_animal/parrot/attack_paw(mob/living/carbon/monkey/M as mob)
-	attack_hand(M)
-
 //Simple animals
 /mob/living/simple_animal/parrot/attack_animal(mob/living/M as mob)
 	if(client) return

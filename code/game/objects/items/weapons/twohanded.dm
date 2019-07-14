@@ -263,11 +263,19 @@
 	edge = 1
 	sharp = IS_SHARP_ITEM_BIG
 	flags_atom = FPRINT|CONDUCT
-	flags_item = NOSHIELD|TWOHANDED
+	flags_item = NOSHIELD|TWOHANDED|ITEM_PREDATOR
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	unacidable = 1
 	attack_speed = 12 //Default is 7.
+
+/obj/item/weapon/two_handed/glaive/attack(mob/living/target, mob/living/carbon/human/user)
+	. = ..()
+	if(!.)
+		return
+	if(isYautja(user) && isXeno(target))
+		var/mob/living/carbon/Xenomorph/X = target
+		X.interference = 30
 
 /obj/item/weapon/twohanded/glaive/damaged
 	name = "war glaive"

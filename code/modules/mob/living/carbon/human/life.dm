@@ -103,3 +103,6 @@
 	//Grabbing
 	for(var/obj/item/grab/G in src)
 		G.process()
+		
+	if(!client && !mind && species)
+		species.handle_npc(src)

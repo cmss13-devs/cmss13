@@ -1,21 +1,13 @@
-
-//########################## CONTRABAND ;3333333333333333333 -Agouri ###################################################
-
-/obj/item/contraband
-	name = "contraband item"
-	desc = "You probably shouldn't be holding this."
-	icon = 'icons/obj/contraband.dmi'
-	force = 0
-
-
-/obj/item/contraband/poster
+/obj/item/poster
 	name = "rolled-up poster"
 	desc = "The poster comes with its own automatic adhesive mechanism, for easy pinning to any vertical surface."
+	icon = 'icons/obj/posters.dmi'
 	icon_state = "rolled_poster"
+	force = 0
 	var/serial_number = 0
 
 
-/obj/item/contraband/poster/New(turf/loc, var/given_serial = 0)
+/obj/item/poster/New(turf/loc, var/given_serial = 0)
 	if(given_serial == 0)
 		serial_number = rand(1, poster_designs.len)
 	else
@@ -28,7 +20,7 @@
 obj/structure/sign/poster
 	name = "poster"
 	desc = "A large piece of cheap printed paper."
-	icon = 'icons/obj/contraband.dmi'
+	icon = 'icons/obj/posters.dmi'
 	anchored = 1
 	var/serial_number	//Will hold the value of src.loc if nobody initialises it
 	var/ruined = 0
@@ -79,14 +71,14 @@ obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
 			return
 
 /obj/structure/sign/poster/proc/roll_and_drop(turf/newloc)
-	var/obj/item/contraband/poster/P = new(src, serial_number)
+	var/obj/item/poster/P = new(src, serial_number)
 	P.loc = newloc
 	src.loc = P
 	qdel(src)
 
 
 //separated to reduce code duplication. Moved here for ease of reference and to unclutter r_wall/attackby()
-/turf/closed/wall/proc/place_poster(var/obj/item/contraband/poster/P, var/mob/user)
+/turf/closed/wall/proc/place_poster(var/obj/item/poster/P, var/mob/user)
 
 	if(!istype(src,/turf/closed/wall))
 		to_chat(user, SPAN_DANGER("You can't place this here!"))

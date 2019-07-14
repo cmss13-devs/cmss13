@@ -206,7 +206,7 @@
 	if(hull)
 		return
 	melting = TRUE
-	
+
 	var/destroyed = FALSE // whether the wall was destroyed in the process
 	var/obj/effect/overlay/O = new/obj/effect/overlay(src)
 	O.name = "thermite"
@@ -237,29 +237,12 @@
 	melting = FALSE
 	if(destroyed)
 		dismantle_wall(1)
-	if(O) 
+	if(O)
 		qdel(O)
 	return
 
 
 //Interactions
-/turf/closed/wall/attack_paw(mob/user as mob)
-	if((HULK in user.mutations))
-		if(prob(40))
-			user.visible_message(SPAN_DANGER("[user] smashes through [src]."),
-			SPAN_DANGER("You smash through the wall."))
-			user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!"))
-			dismantle_wall(1)
-			return
-		else
-			user.visible_message(SPAN_WARNING("[user] punches [src]."),
-			SPAN_WARNING("You punch the wall."))
-			take_damage(rand(25, 75))
-			return
-
-	return attack_hand(user)
-
-
 /turf/closed/wall/attack_animal(mob/living/M as mob)
 	if(M.wall_smash)
 		if((istype(src, /turf/closed/wall/r_wall)) || hull)
@@ -339,7 +322,7 @@
 		return
 
 	//Poster stuff
-	if(istype(W,/obj/item/contraband/poster))
+	if(istype(W,/obj/item/poster))
 		place_poster(W,user)
 		return
 

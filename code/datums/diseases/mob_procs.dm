@@ -113,14 +113,6 @@
 /mob/proc/check_disease_pass_clothes(target_zone)
 	return 1
 
-/mob/living/carbon/monkey/check_disease_pass_clothes(target_zone)
-	switch(target_zone)
-		if(1)
-			if(wear_mask)
-				. = prob((wear_mask.permeability_coefficient*100) - 1)
-
-
-
 /mob/living/carbon/human/check_disease_pass_clothes(target_zone)
 	var/obj/item/clothing/Cl
 	switch(target_zone)

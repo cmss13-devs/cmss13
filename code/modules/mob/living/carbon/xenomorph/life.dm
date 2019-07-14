@@ -368,6 +368,10 @@
 		else
 			if(client && !client.adminobs)
 				reset_view(null)
+		if(dazed)
+			overlay_fullscreen("dazed", /obj/screen/fullscreen/blurry)
+		else
+			clear_fullscreen("dazed")
 
 	return 1
 
@@ -544,13 +548,31 @@ updatehealth()
 
 
 /mob/living/carbon/Xenomorph/handle_stunned()
-	if(stunned)
-		AdjustStunned(-2)
+	if(stunned)		
+		stunned = max(stunned-1.5,0)
+		
+	if(interference)
+		interference -= 2
 	return stunned
+
+/mob/living/carbon/Xenomorph/handle_dazed()
+	if(dazed)
+		dazed = max(dazed-1.5,0)
+	return dazed
+
+/mob/living/carbon/Xenomorph/handle_slowed()
+	if(slowed)
+		slowed = max(superslowed-1.5,0)
+	return stunned
+
+/mob/living/carbon/Xenomorph/handle_superslowed()
+	if(superslowed)
+		superslowed = max(superslowed-1.5,0)
+	return dazed
 
 /mob/living/carbon/Xenomorph/handle_knocked_down()
 	if(knocked_down)
-		knocked_down = max(knocked_down-2,0)
+		knocked_down = max(knocked_down-1.5,0)
 	return knocked_down
 
 //Returns TRUE if xeno is on weeds

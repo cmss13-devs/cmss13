@@ -127,7 +127,7 @@ FLOOR SAFES
 	var/mob/living/carbon/human/user = usr
 
 	var/canhear = 0
-	if(istype(user.l_hand, /obj/item/clothing/tie/stethoscope) || istype(user.r_hand, /obj/item/clothing/tie/stethoscope))
+	if(istype(user.l_hand, /obj/item/clothing/accessory/stethoscope) || istype(user.r_hand, /obj/item/clothing/accessory/stethoscope))
 		canhear = 1
 
 	if(href_list["open"])
@@ -185,7 +185,7 @@ FLOOR SAFES
 			to_chat(user, SPAN_NOTICE("[I] won't fit in [src]."))
 			return
 	else
-		if(istype(I, /obj/item/clothing/tie/stethoscope))
+		if(istype(I, /obj/item/clothing/accessory/stethoscope))
 			to_chat(user, "Hold [I] in one of your hands while you manipulate the dial.")
 			return
 

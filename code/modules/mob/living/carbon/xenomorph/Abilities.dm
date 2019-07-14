@@ -90,13 +90,13 @@
 // Shift Spits
 /datum/action/xeno_action/shift_spits
 	name = "Toggle Spit Type"
-	action_icon_state = "shift_spit_neurotoxin"
+	action_icon_state = "shift_spit_neurotoxin" 
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_spit_type
 
 /datum/action/xeno_action/shift_spits/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(X && !X.is_mob_incapacitated() && !X.buckled)
+	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/shift_spits/action_activate()
@@ -251,11 +251,7 @@
 
 /datum/action/xeno_action/activable/spray_acid/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
-
-	if (isXenoPraetorian(owner))
-		return !X.used_acid_spray
-
-	return !X.acid_cooldown
+	return !X.used_acid_spray
 
 // Warrior Agility
 /datum/action/xeno_action/activable/toggle_agility
@@ -266,7 +262,7 @@
 
 /datum/action/xeno_action/activable/toggle_agility/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(X && !X.is_mob_incapacitated() && !X.buckled)
+	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/activable/toggle_agility/action_activate()
@@ -310,7 +306,6 @@
 	return !X.used_fling
 
 
-// Warrior Punch
 /datum/action/xeno_action/activable/punch
 	name = "Punch"
 	action_icon_state = "punch"
@@ -419,7 +414,7 @@
 // Defender Fortify
 /datum/action/xeno_action/activable/fortify
 	name = "Fortify"
-	action_icon_state = "fortify"	// TODO // Yeah you never did
+	action_icon_state = "fortify"	
 	ability_name = "fortify"
 	macro_path = /datum/action/xeno_action/verb/verb_fortify
 
@@ -469,7 +464,7 @@
 
 /datum/action/xeno_action/xenohide/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(X && !X.is_mob_incapacitated() && !X.buckled)
+	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/xenohide/action_activate()
@@ -491,7 +486,7 @@
 
 /datum/action/xeno_action/emit_pheromones/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(X && !X.is_mob_incapacitated() && !X.buckled && (!X.current_aura || X.plasma_stored >= plasma_cost))
+	if(X && !X.buckled && !X.is_mob_incapacitated() && (!X.current_aura || X.plasma_stored >= plasma_cost))
 		return TRUE
 
 /datum/action/xeno_action/emit_pheromones/action_activate()
@@ -583,7 +578,7 @@
 
 /datum/action/xeno_action/toggle_bomb/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(X && !X.is_mob_incapacitated() && !X.buckled)
+	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/toggle_bomb/action_activate()
@@ -762,7 +757,7 @@
 
 /datum/action/xeno_action/ready_charge/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(X && !X.is_mob_incapacitated() && !X.buckled)
+	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/ready_charge/action_activate()
@@ -1358,6 +1353,170 @@
 /datum/action/xeno_action/activable/fire_cannon/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Xenoborg/X = owner
 	X.fire_cannon(A)
+
+
+// Praetorian strain abilities
+
+/datum/action/xeno_action/activable/prae_spray_acid
+	name = "Spray Acid"
+	action_icon_state = "spray_acid"
+	ability_name = "spray acid"
+	macro_path = /datum/action/xeno_action/verb/verb_spray_acid
+
+#define PRAE_SPRAY_CONE 0 
+#define PRAE_SPRAY_LINE 1
+
+/datum/action/xeno_action/activable/prae_spray_acid/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+
+	switch (!!(X.prae_status_flags & PRAE_ROYALGUARD_ACIDSPRAY_TYPE)) // 0 -> Cone; 1 -> Line
+		if (PRAE_SPRAY_CONE)
+			X.acid_spray_cone(A)
+		if (PRAE_SPRAY_LINE)
+			X.acid_spray(A)
+		else
+			log_admin("[src] tried to acid spray with an invalid bitflag set. Tell the devs! Code: PRAE_ACID_00")
+			log_debug("[src] tried to acid spray with an invalid bitflag set. Code: PRAE_ACID_00")
+	
+#undef PRAE_SPRAY_CONE
+#undef PRAE_SPRAY_LINE
+
+/datum/action/xeno_action/activable/prae_spray_acid/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/X = owner
+	return !X.used_acid_spray
+
+/datum/action/xeno_action/prae_switch_spray_type
+	name = "Toggle acid spray type"
+	action_icon_state = "acid_spray_cone"
+	macro_path = /datum/action/xeno_action/verb/verb_prae_switch_spit_types
+
+/datum/action/xeno_action/prae_switch_spray_type/can_use_action()
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(X && !X.buckled && !X.is_mob_incapacitated())
+		return TRUE
+
+/datum/action/xeno_action/prae_switch_spray_type/action_activate()
+
+	var/mob/living/carbon/Xenomorph/X = owner
+	var/action_icon_result
+
+	if(!X.check_state(1))
+		return
+		
+	if (!(X.prae_status_flags & PRAE_ROYALGUARD_ACIDSPRAY_TYPE)) // 0 = cone, 1 = line
+		action_icon_result = "acid_spray_line" 
+		to_chat(X, SPAN_WARNING("You will now spray a line of acid with your acid spray."))
+	else 
+		action_icon_result = "acid_spray_cone" 
+		to_chat(X, SPAN_WARNING("You will now spray a cone of acid with your acid spray."))
+	
+	X.prae_status_flags = X.prae_status_flags^(PRAE_ROYALGUARD_ACIDSPRAY_TYPE) // flip the bit 
+
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/actions.dmi', button, action_icon_result)
+
+/datum/action/xeno_action/activable/prae_dance
+	name = "Dance (200)"
+	action_icon_state = "prae_dance" 
+	ability_name = "dance"
+	macro_path = /datum/action/xeno_action/verb/verb_prae_dance
+
+/datum/action/xeno_action/activable/prae_dance/use_ability()
+	var/mob/living/carbon/Xenomorph/X = owner
+	X.praetorian_dance()
+
+/datum/action/xeno_action/activable/prae_dance/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/X = owner
+	return !X.used_pounce
+
+/datum/action/xeno_action/activable/prae_tailattack
+	name = "Tail Attack (150)"
+	action_icon_state = "prae_tailattack" 
+	ability_name = "tail attack"
+	macro_path = /datum/action/xeno_action/verb/verb_prae_tailattack
+
+/datum/action/xeno_action/activable/prae_tailattack/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+	X.praetorian_tailattack(A)
+
+/datum/action/xeno_action/activable/prae_tailattack/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/X = owner
+	return !X.used_punch
+
+// Toggle impale type for Prae dancer
+/datum/action/xeno_action/prae_shift_tailattack
+	name = "Toggle tail attack type"
+	action_icon_state = "prae_tailattack_impale" 
+	plasma_cost = 0
+	macro_path = /datum/action/xeno_action/verb/verb_prae_shift_tailattack
+
+/datum/action/xeno_action/prae_shift_tailattack/can_use_action()
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(X && !X.buckled && !X.is_mob_incapacitated())
+		return TRUE
+
+/datum/action/xeno_action/prae_shift_tailattack/action_activate()
+	var/mob/living/carbon/Xenomorph/X = owner
+	var/action_icon_result
+
+	if(!X.check_state(1))
+		return
+
+	if (!(X.prae_status_flags & PRAE_DANCER_TAILATTACK_TYPE)) // 0 = damage, 1 = abduct 
+		action_icon_result = "prae_tailattack_abduct" 
+		to_chat(X, SPAN_WARNING("You will now abduct marines with your tail attack."))
+	else 
+		action_icon_result = "prae_tailattack_impale" 
+		to_chat(X, SPAN_WARNING("You will now impale marines with your tail attack."))
+	
+	X.prae_status_flags = X.prae_status_flags^(PRAE_DANCER_TAILATTACK_TYPE) // flip the bit 
+
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/actions.dmi', button, action_icon_result)
+
+/datum/action/xeno_action/activable/prae_bomb
+	name = "Toxin Bomb (300)"
+	action_icon_state = "bombard"
+	ability_name = "toxin bomb"
+	macro_path = /datum/action/xeno_action/verb/verb_prae_bomb
+
+/datum/action/xeno_action/activable/prae_bomb/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+	X.praetorian_neuro_grenade(A)
+
+/datum/action/xeno_action/activable/prae_bomb/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/X = owner
+	return !X.has_spat
+
+/datum/action/xeno_action/activable/prae_punch
+	name = "Punch (75)"
+	action_icon_state = "punch"
+	ability_name = "punch"
+	macro_path = /datum/action/xeno_action/verb/verb_prae_punch
+
+/datum/action/xeno_action/activable/prae_punch/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+	X.praetorian_punch(A)
+
+/datum/action/xeno_action/activable/prae_punch/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/X = owner
+	return !X.used_punch
+
+/datum/action/xeno_action/activable/prae_screech
+	name = "Screech (300)"
+	action_icon_state = "screech"
+	ability_name = "screech"
+	macro_path = /datum/action/xeno_action/verb/verb_prae_screech
+
+/datum/action/xeno_action/activable/prae_screech/use_ability()
+	var/mob/living/carbon/Xenomorph/X = owner
+	X.praetorian_screech()
+
+/datum/action/xeno_action/activable/prae_screech/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/X = owner
+	return !X.has_screeched
+
+// End Prae strain abilities
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -418,9 +418,10 @@
 	var/mob/living/carbon/human/Y = M
 	for(var/datum/limb/L in Y.limbs)
 		if(L.time_to_knit && (L.status & LIMB_BROKEN))
-			if(L.knitting_time) break // only one knits at a time
-			if((L.status & LIMB_SPLINTED) && L.knitting_time == -1)
-				L.knitting_time = L.time_to_knit + world.time
+			if(L.knitting_time > 0) break // only one knits at a time
+			if(L.knitting_time == -1 && (L.status & LIMB_SPLINTED))
+				var/total_knitting_time = world.time + L.time_to_knit
+				L.knitting_time = total_knitting_time
 				L.start_processing()
 				to_chat(Y, SPAN_NOTICE("You feel the bones in your [L.display_name] start to knit together."))
 				break

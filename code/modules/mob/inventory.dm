@@ -266,11 +266,12 @@
 					equipped = 1
 		if(WEAR_IN_ACCESSORY)
 			var/obj/item/clothing/under/U = w_uniform
-			if(U && U.hastie)
-				var/obj/item/clothing/tie/storage/T = U.hastie
-				if(istype(T) && T.hold.storage_slots)
-					W.loc = T.hold
-					equipped = 1
+			if(U && U.accessories)
+				for(var/obj/item/clothing/accessory/storage/A in U.accessories)
+					if(istype(A) && A.hold.storage_slots)
+						W.loc = A.hold
+						equipped = 1
+						break
 		if(WEAR_IN_JACKET)
 			var/obj/item/clothing/suit/storage/S = wear_suit
 			if(istype(S) && S.pockets.storage_slots)

@@ -28,6 +28,9 @@
 			reducible_tally += PAIN_SPEED_LOWMED
 		else if (traumatic_shock >= TRAUMA_LOW) 
 			reducible_tally += PAIN_SPEED_LOW
+		
+		if(species.pain_mod != 1) //Lower the reducible tally based on species mod.
+			reducible_tally *= species.pain_mod
 
 	// Limb break/loss slowdown
 	// Wheelchairs depend on different limbs than walking, which is...cute
@@ -89,6 +92,12 @@
 
 	if(mRun in mutations)
 		. = 0
+
+	if(superslowed)
+		. += HUMAN_SUPERSLOWED_AMOUNT
+
+	if(slowed && !superslowed)
+		. += HUMAN_SLOWED_AMOUNT
 
 	. += config.human_delay
 

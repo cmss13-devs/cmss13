@@ -44,19 +44,6 @@
 		else
 	return
 
-/obj/machinery/optable/attack_paw(mob/user as mob)
-	if ((HULK in usr.mutations))
-		to_chat(user, SPAN_NOTICE("You destroy the operating table."))
-		visible_message(SPAN_DANGER("[usr] destroys the operating table!"))
-		src.density = 0
-		qdel(src)
-	if (!( locate(/obj/machinery/optable, user.loc) ))
-		step(user, get_dir(user, src))
-		if (user.loc == src.loc)
-			user.layer = TURF_LAYER
-			visible_message("The monkey hides under the table!")
-	return
-
 /obj/machinery/optable/examine(mob/user)
 	..()
 	if(get_dist(user, src) > 2 && !isobserver(user))

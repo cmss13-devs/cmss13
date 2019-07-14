@@ -1,5 +1,3 @@
-
-
 /client/proc/cmd_admin_select_mob_rank(var/mob/living/carbon/human/H in mob_list)
 	set category = null
 	set name = "Select Rank"
@@ -26,6 +24,15 @@
 			I.assignment = J.disp_title
 			I.name = "[I.registered_name]'s ID Card ([I.assignment])"
 			I.paygrade = J.get_paygrade()
+			if(H.w_uniform)
+				var/obj/item/clothing/C = H.w_uniform
+				for(var/obj/item/clothing/accessory/ranks/R in C)
+					C.remove_accessory(H, R)
+					qdel(R)
+				var/rankpath = get_rank_pins(I.paygrade)
+				if(rankpath)
+					var/obj/item/clothing/accessory/ranks/R = new rankpath()
+					C.attach_accessory(H, R)
 	else
 		var/newcommtitle = input("Write the custom title appearing on comms chat (e.g. Spc)", "Comms title") as null|text
 		if(!newcommtitle)
@@ -45,7 +52,6 @@
 				return
 
 			I.paygrade = newchattitle
-
 			var/IDtitle = input("Write the custom title on your ID (e.g. Squad Specialist)", "ID title") as null|text
 			if(!IDtitle)
 				return
@@ -76,7 +82,7 @@
 	src.cmd_admin_dress_human(M)
 
 /client/proc/cmd_admin_dress_human(var/mob/living/carbon/human/M in mob_list, var/datum/equipment_preset/dresscode, var/no_logs = 0)
-	
+
 	if (!no_logs)
 		dresscode = input("Select dress for [M]", "Robust quick dress shop") as null|anything in gear_presets_list
 

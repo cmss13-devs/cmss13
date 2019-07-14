@@ -58,10 +58,6 @@
 /obj/structure/grille/Bumped(atom/user)
 	if(ismob(user)) shock(user, 70)
 
-
-/obj/structure/grille/attack_paw(mob/user as mob)
-	attack_hand(user)
-
 /obj/structure/grille/attack_hand(mob/user as mob)
 
 	playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)

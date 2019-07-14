@@ -215,8 +215,7 @@ Class Procs:
 		return 1
 	if ( ! (istype(usr, /mob/living/carbon/human) || \
 			issilicon(usr) || \
-			istype(usr, /mob/living/carbon/Xenomorph) || \
-			istype(usr, /mob/living/carbon/monkey)) )
+			istype(usr, /mob/living/carbon/Xenomorph)))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return 1
 
@@ -236,9 +235,6 @@ Class Procs:
 	else
 		return src.attack_hand(user)
 
-/obj/machinery/attack_paw(mob/user as mob)
-	return src.attack_hand(user)
-
 /obj/machinery/attack_hand(mob/user as mob)
 	if(inoperable(MAINT))
 		return 1
@@ -246,8 +242,7 @@ Class Procs:
 		return 1
 	if ( ! (istype(usr, /mob/living/carbon/human) || \
 			issilicon(usr) || \
-			istype(usr, /mob/living/carbon/Xenomorph) || \
-			istype(usr, /mob/living/carbon/monkey)) )
+			istype(usr, /mob/living/carbon/Xenomorph)))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return 1
 /*

@@ -214,6 +214,19 @@
 	if(has_limb("l_foot") && has_limb("l_leg"))
 		.++
 
+/mob/living/carbon/human/proc/disable_detectors()
+	for(var/obj/I in src)
+		check_if_detector(I)
+		if(istype(I, /obj/item/storage/backpack))
+			for(var/obj/inside in I)
+				check_if_detector(inside)
+
+// Used for the above proc to check if the object is a detector and calls the proc to disable.
+/mob/living/carbon/human/proc/check_if_detector(var/I)
+	if(istype(I, /obj/item/device/motiondetector))
+		var/obj/item/device/motiondetector/motionD = I
+		motionD.toggle_active(src, 1)
+
 /mob/living/carbon/human/proc/disable_lights(var/armor = 1, var/guns = 1, var/flares = 1, var/misc = 1)
 	var/light_off = 0
 	var/goes_out = 0

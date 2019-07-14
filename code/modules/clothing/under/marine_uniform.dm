@@ -134,6 +134,7 @@
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/tanker)
 	specialty = "tank crewman"
 	flags_atom = NO_SNOW_TYPE
+	item_state_slots = list(WEAR_UNIFORM = "marine_tanker")
 
 /obj/item/clothing/under/marine/officer/bridge
 	name = "staff officer uniform"
@@ -174,6 +175,7 @@
 	icon_state = "EC_jumpsuit"
 	specialty = "chief engineer"
 	flags_atom = NO_SNOW_TYPE
+	item_state_slots = list(WEAR_UNIFORM = "EC_jumpsuit")
 
 /obj/item/clothing/under/marine/officer/engi
 	name = "engineer uniform"
@@ -189,6 +191,7 @@
 	icon_state = "E_jumpsuit"
 	specialty = "engineer"
 	flags_atom = NO_SNOW_TYPE
+	item_state_slots = list(WEAR_UNIFORM = "E_jumpsuit")
 
 /obj/item/clothing/under/marine/officer/researcher
 	name = "researcher clothes"

@@ -222,7 +222,3 @@
 /obj/item/tool/stamp/centcomm
 	name = "centcomm rubber stamp"
 	icon_state = "stamp-cent"
-
-
-/obj/item/tool/stamp/attack_paw(mob/user as mob)
-	return attack_hand(user)

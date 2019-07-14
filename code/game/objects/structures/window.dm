@@ -168,9 +168,6 @@
 		SPAN_NOTICE("You hear a knocking sound."))
 		windowknock_cooldown = world.time + 100
 
-/obj/structure/window/attack_paw(mob/user as mob)
-	return attack_hand(user)
-
 //Used by attack_animal
 /obj/structure/window/proc/attack_generic(mob/living/user, damage = 0)
 	if(!not_damageable) //Impossible to destroy

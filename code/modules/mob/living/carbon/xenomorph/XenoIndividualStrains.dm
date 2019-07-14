@@ -110,7 +110,7 @@
 	xeno = X
 	X.strain = src
 
-	P.acid_spray_cooldown = 6
+	P.acid_spray_activation_time = 6
 	strain_update_actions(P)
 	recalculate_actions(description)
 	P.recalculate_pheromone_modifiers()

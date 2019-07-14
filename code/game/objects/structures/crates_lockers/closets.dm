@@ -260,10 +260,6 @@
 			spawn(30)
 				lastbang = 0
 
-
-/obj/structure/closet/attack_paw(mob/user as mob)
-	return attack_hand(user)
-
 /obj/structure/closet/attack_hand(mob/living/user)
 	if(opened && isXeno(user))
 		return // stop xeno closing things

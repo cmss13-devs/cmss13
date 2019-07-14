@@ -168,32 +168,33 @@ proc/animation_destruction_long_fade(atom/A, speed = 4, x_n = 4, y_n = 4)
 
 
 
-/mob/living/proc/animation_attack_on(atom/A)
+/mob/living/proc/animation_attack_on(atom/A, var/pixel_offset = 8)
 	if(buckled || anchored) return //it would look silly.
 	var/pixel_x_diff = 0
 	var/pixel_y_diff = 0
 	var/direction = get_dir(src, A)
+	pixel_offset = round(pixel_offset) // Just to be safe
 	switch(direction)
 		if(NORTH)
-			pixel_y_diff = 8
+			pixel_y_diff = pixel_offset
 		if(SOUTH)
-			pixel_y_diff = -8
+			pixel_y_diff = -pixel_offset
 		if(EAST)
-			pixel_x_diff = 8
+			pixel_x_diff = pixel_offset
 		if(WEST)
-			pixel_x_diff = -8
+			pixel_x_diff = -pixel_offset
 		if(NORTHEAST)
-			pixel_x_diff = 8
-			pixel_y_diff = 8
+			pixel_x_diff = pixel_offset
+			pixel_y_diff = pixel_offset
 		if(NORTHWEST)
-			pixel_x_diff = -8
-			pixel_y_diff = 8
+			pixel_x_diff = -pixel_offset
+			pixel_y_diff = pixel_offset
 		if(SOUTHEAST)
-			pixel_x_diff = 8
-			pixel_y_diff = -8
+			pixel_x_diff = pixel_offset
+			pixel_y_diff = -pixel_offset
 		if(SOUTHWEST)
-			pixel_x_diff = -8
-			pixel_y_diff = -8
+			pixel_x_diff = -pixel_offset
+			pixel_y_diff = -pixel_offset
 	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, time = 2)
 	animate(pixel_x = initial(pixel_x), pixel_y = initial(pixel_y), time = 2)
 

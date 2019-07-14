@@ -1,8 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/grass,
-/area/lv624/ground/jungle6)
 "ab" = (
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
@@ -774,7 +770,7 @@
 /area/lv624/lazarus/medbay)
 
 (1,1,1) = {"
-aa
+ac
 ac
 ac
 ac

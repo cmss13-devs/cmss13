@@ -73,12 +73,16 @@
 
 
 			if (fullness <= (550 * (1 + M.overeatduration / 1000)))
-				for(var/mob/O in viewers(world.view, user))
-					O.show_message(SPAN_DANGER("[user] attempts to feed [M] [src]."), 1)
+				user.affected_message(M,
+					SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
+					SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
+					SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
 			else
-				for(var/mob/O in viewers(world.view, user))
-					O.show_message(SPAN_DANGER("[user] cannot force anymore of [src] down [M]'s throat."), 1)
-					return 0
+				user.affected_message(M,
+					SPAN_HELPFUL("You <b>try to feed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b> but they are full."),
+					SPAN_HELPFUL("[user] <b>tries feeding</b> you <b>[src]</b> but you are full."),
+					SPAN_NOTICE("[user] tries feeding [user == M ? "themselves" : "[M]"] [src] but they are full."))
+				return 0
 
 			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
 
@@ -88,9 +92,10 @@
 			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [src.name] by [M.name] ([M.ckey]) Reagents: [rgt_list_text]</font>")
 			msg_admin_attack("[key_name(user)] fed [key_name(M)] with [src.name] Reagents: [rgt_list_text] (INTENT: [uppertext(user.a_intent)])")
 
-			for(var/mob/O in viewers(world.view, user))
-				O.show_message(SPAN_DANGER("[user] feeds [M] [src]."), 1)
-
+			user.affected_message(M,
+				SPAN_HELPFUL("You <b>fed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
+				SPAN_HELPFUL("[user] <b>fed</b> you <b>[src]</b>."),
+				SPAN_NOTICE("[user] fed [user == M ? "themselves" : "[M]"] [src]."))
 
 		if(reagents)								//Handle ingestion of the reagent.
 			playsound(M.loc,'sound/items/eatfood.ogg', 15, 1)
@@ -1496,7 +1501,7 @@
 	icon_state = "monkeycube"
 	bitesize = 12
 	filling_color = "#ADAC7F"
-	var/monkey_type = /mob/living/carbon/monkey
+	var/monkey_type = /mob/living/carbon/human/monkey
 
 	New()
 		..()
@@ -1542,13 +1547,6 @@
 			else 		//someone is having a bad day
 				E.createwound(CUT, 30)
 				E.embed(surprise)
-		else if (ismonkey(M))
-			M.visible_message(SPAN_DANGER("[M] suddenly tears in half!"))
-			var/mob/living/carbon/monkey/ook = new monkey_type(M.loc)
-			ook.name = "malformed [ook.name]"
-			ook.transform *= 0.6
-			ook.add_mob_blood(M)
-			M.gib()
 		..()
 
 	proc/Expand()
@@ -1568,27 +1566,33 @@
 
 /obj/item/reagent_container/food/snacks/monkeycube/farwacube
 	name = "farwa cube"
-	monkey_type = /mob/living/carbon/monkey/tajara
+	monkey_type = /mob/living/carbon/human/farwa
 /obj/item/reagent_container/food/snacks/monkeycube/wrapped/farwacube
 	name = "farwa cube"
-	monkey_type =/mob/living/carbon/monkey/tajara
+	monkey_type =/mob/living/carbon/human/farwa
 
 
 /obj/item/reagent_container/food/snacks/monkeycube/stokcube
 	name = "stok cube"
-	monkey_type = /mob/living/carbon/monkey/unathi
+	monkey_type = /mob/living/carbon/human/stok
 /obj/item/reagent_container/food/snacks/monkeycube/wrapped/stokcube
 	name = "stok cube"
-	monkey_type =/mob/living/carbon/monkey/unathi
+	monkey_type =/mob/living/carbon/human/stok
 
 
 /obj/item/reagent_container/food/snacks/monkeycube/neaeracube
 	name = "neaera cube"
-	monkey_type = /mob/living/carbon/monkey/skrell
+	monkey_type = /mob/living/carbon/human/neaera
 /obj/item/reagent_container/food/snacks/monkeycube/wrapped/neaeracube
 	name = "neaera cube"
-	monkey_type =/mob/living/carbon/monkey/skrell
+	monkey_type =/mob/living/carbon/human/neaera
 
+/obj/item/reagent_container/food/snacks/monkeycube/yirencube
+	name = "yiren cube"
+	monkey_type = /mob/living/carbon/human/yiren
+/obj/item/reagent_container/food/snacks/monkeycube/wrapped/yirencube
+	name = "yiren cube"
+	monkey_type =/mob/living/carbon/human/yiren
 
 /obj/item/reagent_container/food/snacks/spellburger
 	name = "Spell Burger"

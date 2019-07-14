@@ -17,6 +17,51 @@
 		update_canmove()
 	return
 
+/mob/proc/Daze(amount)
+	if(status_flags & CANDAZE)
+		dazed = max(max(dazed,amount),0)
+	return
+
+/mob/proc/SetDazed(amount)
+	if(status_flags & CANDAZE)
+		dazed = max(amount,0)
+	return
+
+/mob/proc/AdjustDazed(amount)
+	if(status_flags & CANDAZE)		
+		dazed = max(dazed + amount,0)
+	return
+
+/mob/proc/Slow(amount)
+	if(status_flags & CANSLOW)
+		slowed = max(max(slowed,amount),0)
+	return
+
+/mob/proc/SetSlowed(amount)
+	if(status_flags & CANSLOW)
+		slowed = max(amount,0)
+	return
+
+/mob/proc/AdjustSlowed(amount)
+	if(status_flags & CANSLOW)		
+		slowed = max(slowed + amount,0)
+	return
+
+/mob/proc/Superslow(amount)
+	if(status_flags & CANSLOW)
+		superslowed = max(max(superslowed,amount),0)
+	return
+
+/mob/proc/SetSuperslowed(amount)
+	if(status_flags & CANSLOW)
+		superslowed = max(amount,0)
+	return
+
+/mob/proc/AdjustSuperslowed(amount)
+	if(status_flags & CANSLOW)		
+		superslowed = max(superslowed + amount,0)
+	return
+
 /mob/proc/KnockDown(amount, force)
 	if((status_flags & CANKNOCKDOWN) || force)
 		knocked_down = max(max(knocked_down,amount),0)

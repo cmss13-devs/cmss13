@@ -171,6 +171,9 @@
 #define EYE_BLUR	"eye_blur"
 #define DROWSY		"drowsy"
 #define SLUR 		"slur"
+#define DAZE 		"daze"
+#define SLOW		"slow"
+#define SUPERSLOW	"superslow"
 //=================================================
 
 //I hate adding defines like this but I'd much rather deal with bitflags than lists and string searches
@@ -193,6 +196,8 @@
 #define XENO_HOST			32768	//Tracks whether we're gonna be a baby alien's mummy.
 #define IMMOBILE_ACTION		65536 	// If you are performing an action that prevents you from being pushed by your own people.
 #define PERMANENTLY_DEAD	131072
+#define CANDAZE				262144
+#define CANSLOW				262144*2
 
 // =============================
 // hive types
@@ -202,6 +207,16 @@
 #define XENO_HIVE_ALPHA 3
 #define XENO_HIVE_BETA 4
 #define XENO_HIVE_ZETA 5
+
+//=================================================
+
+// =============================
+// slowdowns
+
+#define XENO_SLOWED_AMOUNT 1.5
+#define XENO_SUPERSLOWED_AMOUNT 3.5
+#define HUMAN_SLOWED_AMOUNT 2
+#define HUMAN_SUPERSLOWED_AMOUNT 4.5
 
 //=================================================
 
@@ -354,6 +369,7 @@
 #define IS_PLANT 2048
 #define IS_WHITELISTED 4096
 #define IS_SYNTHETIC 8192
+
 //=================================================
 
 //Some on_mob_life() procs check for alien races.
@@ -435,4 +451,41 @@
 
 #define BOILER_NORMAL	1
 #define BOILER_RAILGUN	2
-#define BOILER_SHATTER	3
+#define BOILER_SHATTER  3
+
+// Praetorian strain flags
+#define PRAETORIAN_NORMAL	  1
+#define PRAETORIAN_ROYALGUARD 2
+#define PRAETORIAN_DANCER	  3
+#define PRAETORIAN_OPPRESSOR  4
+
+// Praetorian strain flags
+#define PRAE_SCREECH_BUFFED  	1
+#define PRAE_DANCER_STATSBUFFED 2
+#define PRAE_DANCER_TAILATTACK_TYPE	4 // 0 = damage, 1 = pull/abduct
+#define PRAE_ROYALGUARD_ACIDSPRAY_TYPE 4 // 0 = cone, 1 = line
+
+var/list/default_onmob_icons = list(
+		WEAR_L_HAND = 'icons/mob/items_lefthand_0.dmi',
+		WEAR_R_HAND = 'icons/mob/items_righthand_0.dmi',
+		WEAR_BELT = 'icons/mob/belt.dmi',
+		WEAR_BACK = 'icons/mob/back.dmi',
+		WEAR_EAR = 'icons/mob/ears.dmi',
+		WEAR_GLASSES = 'icons/mob/eyes.dmi',
+		WEAR_ID = 'icons/mob/mob.dmi',
+		WEAR_UNIFORM = 'icons/mob/uniform_0.dmi',
+		WEAR_SUIT = 'icons/mob/suit_0.dmi',
+		WEAR_HEAD = 'icons/mob/head_0.dmi',
+		WEAR_SHOES = 'icons/mob/feet.dmi',
+		WEAR_MASK = 'icons/mob/mask.dmi',
+		WEAR_HANDCUFFED = 'icons/mob/mob.dmi',
+		WEAR_LEGCUFFED = 'icons/mob/mob.dmi',
+		WEAR_GLOVES = 'icons/mob/hands.dmi',
+		WEAR_S_STORE = 'icons/mob/suit_slot.dmi',
+		WEAR_ACCESSORIES = 'icons/mob/ties.dmi'
+		)
+
+// species names
+#define SPECIES_HUMAN "Human"
+#define SPECIES_YAUTJA "Yautja"
+#define SPECIES_MONKEY "Monkey"

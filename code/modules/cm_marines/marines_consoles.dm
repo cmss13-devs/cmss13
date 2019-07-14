@@ -41,11 +41,6 @@
 /obj/machinery/computer/marine_card/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-
-/obj/machinery/computer/marine_card/attack_paw(var/mob/user as mob)
-	return attack_hand(user)
-
-
 /obj/machinery/computer/marine_card/bullet_act()
 	return 0
 
@@ -397,11 +392,6 @@
 
 /obj/machinery/computer/squad_changer/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
-
-
-/obj/machinery/computer/squad_changer/attack_paw(var/mob/user as mob)
-	return attack_hand(user)
-
 
 /obj/machinery/computer/squad_changer/bullet_act()
 	return 0

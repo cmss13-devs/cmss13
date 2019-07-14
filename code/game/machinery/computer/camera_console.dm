@@ -15,11 +15,6 @@
 	attack_ai(var/mob/user as mob)
 		return attack_hand(user)
 
-
-	attack_paw(var/mob/user as mob)
-		return attack_hand(user)
-
-
 	check_eye(mob/user)
 		if (user.is_mob_incapacitated() || ((get_dist(user, src) > 1 || !( user.canmove ) || user.blinded) && !issilicon(user))) //user can't see - not sure why canmove is here.
 			user.unset_interaction()

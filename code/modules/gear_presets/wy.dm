@@ -165,7 +165,7 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(H), WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp70(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(H), WEAR_EYES)
 
 /*****************************************************************************************************/
@@ -250,7 +250,31 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite(H), WEAR_J_STORE)
 
 /*****************************************************************************************************/
+/datum/equipment_preset/wy/deathsquad/terminator
+	name = "Weyland-Yutani Deathsquad Terminator"
+	flags = EQUIPMENT_PRESET_EXTRA
 
+	assignment = "Deathsquad Terminator"
+	rank = "PMC Commando"
+	special_role = "DEATH SQUAD"
+
+/datum/equipment_preset/wy/deathsquad/terminator/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/commando(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/m42_goggles	(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC/commando(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC/terminator(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC/commando(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/commando(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack/, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/commando(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/leader(H), WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg/(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg/(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite(H), WEAR_J_STORE)
+
+
+/*****************************************************************************************************/
 /datum/equipment_preset/wy/deathsquad/leader
 	name = "Weyland-Yutani Deathsquad Leader"
 	flags = EQUIPMENT_PRESET_EXTRA

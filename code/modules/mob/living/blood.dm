@@ -15,13 +15,6 @@
 /mob/living/proc/handle_blood()
 	return
 
-/mob/living/carbon/monkey/handle_blood()
-	if(bodytemperature >= 225) //cryosleep people do not pump the blood.
-		//Blood regeneration if there is some space
-		if(blood_volume < BLOOD_VOLUME_NORMAL)
-			blood_volume += 0.1 // regenerate blood VERY slowly
-
-
 // Takes care blood loss and regeneration
 /mob/living/carbon/human/handle_blood()
 
@@ -41,7 +34,7 @@
 				blood_max += 5 //Yer missing a fucking limb.
 			if (temp.surgery_open_stage)
 				blood_max += 0.6  //Yer stomach is cut open
-	
+
 	if(blood_max == 0 && blood_volume == BLOOD_VOLUME_NORMAL)
 		return
 
@@ -336,9 +329,6 @@
 //get the id of the substance this mob uses as blood.
 /mob/proc/get_blood_id()
 	return
-
-/mob/living/carbon/monkey/get_blood_id()
-	return "blood"
 
 /mob/living/carbon/Xenomorph/get_blood_id()
 	return "xenoblood"

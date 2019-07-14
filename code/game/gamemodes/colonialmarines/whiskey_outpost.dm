@@ -735,8 +735,7 @@ var/global/spawn_next_wo_wave = 0
 		if(user.lying || user.stat)
 			return
 		if(ismaintdrone(usr) || \
-			istype(usr, /mob/living/carbon/Xenomorph) || \
-			istype(usr, /mob/living/carbon/monkey))
+			istype(usr, /mob/living/carbon/Xenomorph))
 			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 			return
 		if(working)

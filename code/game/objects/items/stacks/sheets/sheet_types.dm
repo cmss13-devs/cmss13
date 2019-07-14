@@ -11,14 +11,22 @@
  * Metal
  */
 var/global/list/datum/stack_recipe/metal_recipes = list ( \
-	new/datum/stack_recipe("stool", /obj/structure/bed/stool, one_per_turf = 1, on_floor = 1), \
-	new/datum/stack_recipe("chair", /obj/structure/bed/chair, one_per_turf = 1, on_floor = 1), \
-	new/datum/stack_recipe("bed", /obj/structure/bed, 2, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("barbed wire", /obj/item/stack/barbed_wire, 2, 1, 20, time = 10, skill_req = SKILL_CONSTRUCTION_METAL), \
+	new/datum/stack_recipe("metal barricade", /obj/structure/barricade/metal, 4, time = 80, one_per_turf = 2, on_floor = 1, skill_req = SKILL_CONSTRUCTION_METAL), \
 	null, \
-	new/datum/stack_recipe_list("office chairs",list( \
-		new/datum/stack_recipe("dark office chair", /obj/structure/bed/chair/office/dark, 5, one_per_turf = 1, on_floor = 1), \
-		new/datum/stack_recipe("light office chair", /obj/structure/bed/chair/office/light, 5, one_per_turf = 1, on_floor = 1), \
-		), 5), \
+	new/datum/stack_recipe("apc frame", /obj/item/frame/apc, 2), \
+	new/datum/stack_recipe("fire alarm frame", /obj/item/frame/fire_alarm, 2), \
+	null, \
+	new/datum/stack_recipe("grenade casing", /obj/item/explosive/grenade/chem_grenade), \
+	new/datum/stack_recipe("light fixture frame", /obj/item/frame/light_fixture, 2), \
+	new/datum/stack_recipe("small light fixture frame", /obj/item/frame/light_fixture/small, 1), \
+	null, \
+	new/datum/stack_recipe("floor tile", /obj/item/stack/tile/plasteel, 1, 4, 20), \
+	new/datum/stack_recipe("metal rod", /obj/item/stack/rods, 1, 2, 60), \
+	new/datum/stack_recipe("wall girder", /obj/structure/girder/displaced, 8, time = 100, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_ADVANCED), \
+	null, \
+	new/datum/stack_recipe("bed", /obj/structure/bed, 2, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("chair", /obj/structure/bed/chair, one_per_turf = 1, on_floor = 1), \
 	new/datum/stack_recipe_list("comfy chairs", list( \
 		new/datum/stack_recipe("beige comfy chair", /obj/structure/bed/chair/comfy/beige, 2, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("black comfy chair", /obj/structure/bed/chair/comfy/black, 2, one_per_turf = 1, on_floor = 1), \
@@ -26,16 +34,11 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 		new/datum/stack_recipe("lime comfy chair", /obj/structure/bed/chair/comfy/lime, 2, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("teal comfy chair", /obj/structure/bed/chair/comfy/teal, 2, one_per_turf = 1, on_floor = 1), \
 		), 2), \
-	null, \
-	new/datum/stack_recipe("metal baseball bat", /obj/item/weapon/baseballbat/metal, 10, time = 20, one_per_turf = 0, on_floor = 1), \
-	new/datum/stack_recipe("floor tile", /obj/item/stack/tile/plasteel, 1, 4, 20), \
-	new/datum/stack_recipe("metal rod", /obj/item/stack/rods, 1, 2, 60), \
-	null, \
-	new/datum/stack_recipe("barbed wire", /obj/item/stack/barbed_wire, 2, 1, 20, time = 10, skill_req = SKILL_CONSTRUCTION_METAL), \
-	new/datum/stack_recipe("metal barricade", /obj/structure/barricade/metal, 4, time = 80, one_per_turf = 2, on_floor = 1, skill_req = SKILL_CONSTRUCTION_METAL), \
-	new/datum/stack_recipe("computer frame", /obj/structure/computerframe, 5, time = 25, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
-	new/datum/stack_recipe("wall girder", /obj/structure/girder/displaced, 8, time = 100, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_ADVANCED), \
-	new/datum/stack_recipe("machine frame", /obj/machinery/constructable_frame/machine_frame, 5, time = 25, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
+	new/datum/stack_recipe_list("office chairs",list( \
+		new/datum/stack_recipe("dark office chair", /obj/structure/bed/chair/office/dark, 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("light office chair", /obj/structure/bed/chair/office/light, 5, one_per_turf = 1, on_floor = 1), \
+		), 5), \
+	new/datum/stack_recipe("stool", /obj/structure/bed/stool, one_per_turf = 1, on_floor = 1), \
 	null, \
 	new/datum/stack_recipe_list("airlock assemblies", list( \
 		new/datum/stack_recipe("standard airlock assembly", /obj/structure/door_assembly, 4, time = 50, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
@@ -45,7 +48,6 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 		new/datum/stack_recipe("mining airlock assembly", /obj/structure/door_assembly/door_assembly_min, 4, time = 50, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
 		new/datum/stack_recipe("atmospherics airlock assembly", /obj/structure/door_assembly/door_assembly_atmo, 4, time = 50, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
 		new/datum/stack_recipe("research airlock assembly", /obj/structure/door_assembly/door_assembly_research, 4, time = 50, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
-/*		new/datum/stack_recipe("science airlock assembly", /obj/structure/door_assembly/door_assembly_science, 4, time = 50, one_per_turf = 1, on_floor = 1), \ */
 		new/datum/stack_recipe("medical airlock assembly", /obj/structure/door_assembly/door_assembly_med, 4, time = 50, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
 		new/datum/stack_recipe("maintenance airlock assembly", /obj/structure/door_assembly/door_assembly_mai, 4, time = 50, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
 		new/datum/stack_recipe("external airlock assembly", /obj/structure/door_assembly/door_assembly_ext, 4, time = 50, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
@@ -55,14 +57,11 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 		new/datum/stack_recipe("high security airlock assembly", /obj/structure/door_assembly/door_assembly_highsecurity, 4, time = 50, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
 		new/datum/stack_recipe("multi-tile airlock assembly", /obj/structure/door_assembly/multi_tile, 4, time = 50, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
 		), 4), \
+	new/datum/stack_recipe("computer frame", /obj/structure/computerframe, 5, time = 25, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
+	new/datum/stack_recipe("machine frame", /obj/machinery/constructable_frame/machine_frame, 5, time = 25, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
 	null, \
-	new/datum/stack_recipe("grenade casing", /obj/item/explosive/grenade/chem_grenade), \
-	new/datum/stack_recipe("light fixture frame", /obj/item/frame/light_fixture, 2), \
-	new/datum/stack_recipe("small light fixture frame", /obj/item/frame/light_fixture/small, 1), \
+	new/datum/stack_recipe("metal baseball bat", /obj/item/weapon/baseballbat/metal, 10, time = 20, one_per_turf = 0, on_floor = 1), \
 	null, \
-	new/datum/stack_recipe("apc frame", /obj/item/frame/apc, 2), \
-	new/datum/stack_recipe("air alarm frame", /obj/item/frame/air_alarm, 2), \
-	new/datum/stack_recipe("fire alarm frame", /obj/item/frame/fire_alarm, 2), \
 )
 
 /obj/item/stack/sheet/metal
@@ -190,6 +189,21 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 		new/datum/stack_recipe("red folder", /obj/item/folder/red), \
 		new/datum/stack_recipe("white folder", /obj/item/folder/white), \
 		new/datum/stack_recipe("yellow folder", /obj/item/folder/yellow), \
+		)), \
+	null, \
+	new/datum/stack_recipe_list("empty ammo boxes",list( \
+		new/datum/stack_recipe("shotgun shell box (slugs)", /obj/item/magazine_box/shotgun/empty), \
+		new/datum/stack_recipe("shotgun shell box (buckshot)", /obj/item/magazine_box/shotgun/buckshot/empty), \
+		new/datum/stack_recipe("shotgun shell box (flechette)", /obj/item/magazine_box/shotgun/flechette/empty), \
+		new/datum/stack_recipe("magazine box (M41A)", /obj/item/magazine_box/empty), \
+		new/datum/stack_recipe("magazine box (AP M41A)", /obj/item/magazine_box/rifle_ap/empty), \
+		new/datum/stack_recipe("magazine box (Ext M41A)", /obj/item/magazine_box/rifle_extended/empty), \
+		new/datum/stack_recipe("magazine box (M39)", /obj/item/magazine_box/smg/empty), \
+		new/datum/stack_recipe("magazine box (AP M39)", /obj/item/magazine_box/smg/ap/empty), \
+		new/datum/stack_recipe("magazine box (Ext M39)", /obj/item/magazine_box/smg/extended/empty), \
+		new/datum/stack_recipe("magazine box (L42-MK1)", /obj/item/magazine_box/rifle/l42mk1/empty), \
+		new/datum/stack_recipe("magazine box (AP L42-MK1)", /obj/item/magazine_box/rifle/l42mk1/ap/empty), \
+		new/datum/stack_recipe("magazine box (Ext L42-MK1)", /obj/item/magazine_box/rifle/l42mk1/ext/empty), \
 		)) \
 )
 
@@ -204,3 +218,12 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 /obj/item/stack/sheet/cardboard/New(var/loc, var/amount=null)
 		recipes = cardboard_recipes
 		return ..()
+
+/obj/item/stack/sheet/cardboard/small_stack
+	amount = 10
+
+/obj/item/stack/sheet/cardboard/medium_stack
+	amount = 30
+
+/obj/item/stack/sheet/cardboard/full_stack
+	amount = 50

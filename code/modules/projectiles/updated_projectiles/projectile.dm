@@ -604,7 +604,6 @@
 		if(evasion > 0)
 			. -= evasion
 
-
 /mob/living/silicon/robot/drone/get_projectile_hit_chance(obj/item/projectile/P)
 	return 0 // just stop them getting hit by projectiles completely
 
@@ -732,8 +731,11 @@
 	if(!P || !istype(P)) return
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX) ) //Aliens won't be harming aliens.
-		bullet_ping(P)
-		return
+		//separate if to improve readability
+		var/mob/living/carbon/Xenomorph/XNO = P.firer
+		if(!istype(XNO) || XNO.hivenumber == hivenumber)
+			bullet_ping(P)
+			return
 
 	if(ammo_flags & AMMO_BALLISTIC)
 		round_statistics.total_bullet_hits_on_xenos++

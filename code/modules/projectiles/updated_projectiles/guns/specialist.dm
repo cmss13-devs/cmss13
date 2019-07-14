@@ -250,12 +250,14 @@
 	item_state = "m56"
 	origin_tech = "combat=6;materials=5"
 	fire_sound = "gun_smartgun"
-	current_mag = /obj/item/ammo_magazine/internal/smartgun
+	current_mag = null
 	flags_equip_slot = NOFLAGS
 	w_class = 5
 	force = 20
 	wield_delay = WIELD_DELAY_FAST
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
+	var/powerpack = null
+	ammo = /datum/ammo/bullet/smartgun
 	var/datum/ammo/ammo_primary = /datum/ammo/bullet/smartgun//Toggled ammo type
 	var/datum/ammo/ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing//Toggled ammo type
 	var/shells_fired_max = 20 //Smartgun only; once you fire # of shells, it will attempt to reload automatically. If you start the reload, the counter resets.
@@ -263,13 +265,29 @@
 	iff_enabled = TRUE //Begin with the safety on.
 	iff_enabled_current = TRUE
 	var/secondary_toggled = 0 //which ammo we use
+	var/recoil_compensation = 0
+	var/accuracy_improvement = 0
+	var/auto_fire = 0
+	var/motion_detector = 0
+	var/drain = 11
+	var/range = 12
+	var/angle = 2
+	var/powerpack_reload = 0
+	var/list/angle_list = list(180,135,90,60,30)
+	var/detector_range = 14
+	var/ping_count = 0
+	var/list/blip_pool = list()
+	var/detector_mode = MOTION_DETECTOR_LONG
+	var/recycletime = 120
+	var/long_range_cooldown = 2
+	var/blip_type = "detector"
 	gun_skill_category = GUN_SKILL_SMARTGUN
 	attachable_allowed = list(
 						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/burstfire_assembly,
 						/obj/item/attachable/flashlight)
 
-	flags_gun_features = GUN_INTERNAL_MAG|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
 
 /obj/item/weapon/gun/smartgun/New()
@@ -280,30 +298,148 @@
 
 
 /obj/item/weapon/gun/smartgun/set_gun_config_values()
-	fire_delay = config.low_fire_delay
+	fire_delay = config.min_fire_delay
 	burst_amount = config.med_burst_value
-	burst_delay = config.min_fire_delay
+	burst_delay = config.low_burst_value
 	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.low_scatter_value
 	damage_mult = config.base_hit_damage_mult
+	recoil = config.min_recoil_value
 
 /obj/item/weapon/gun/smartgun/examine(mob/user)
 	..()
-	var/message = "[current_mag.current_rounds ? "Ammo counter shows [current_mag.current_rounds] round\s remaining." : "It's dry."]"
+	var/rounds = 0
+	if(current_mag && current_mag.current_rounds)
+		rounds = current_mag.current_rounds
+	var/message = "[rounds ? "Ammo counter shows [rounds] round\s remaining." : "It's dry."]"
 	to_chat(user, message)
 	to_chat(user, "The restriction system is [iff_enabled ? "<B>on</b>" : "<B>off</b>"].")
 
+/obj/item/weapon/gun/smartgun/check_iff()
+	..()
+	if(iff_enabled)
+		drain += 10
+	if(!iff_enabled)
+		drain -= 10
+
 /obj/item/weapon/gun/smartgun/verb/vtoggle_lethal_mode()
-	set category = "Object"
+	set category = "Smartgun"
 	set name = "Toggle Lethal Mode"
 
 	if(isobserver(usr) || isXeno(usr))
 		return
 	toggle_lethal_mode(usr)
 
-/obj/item/weapon/gun/smartgun/unique_action(mob/user)
-	toggle_ammo_type(user)
+/obj/item/weapon/gun/smartgun/verb/vtoggle_ammo_type()
+	set category = "Smartgun"
+	set name = "Toggle Ammo Type"
+
+	if(isobserver(usr) || isXeno(usr))
+		return
+	toggle_ammo_type(usr)
+
+/obj/item/weapon/gun/smartgun/verb/vtoggle_recoil_compensation()
+	set category = "Smartgun"
+	set name = "Toggle Recoil Compensation"
+
+	if(isobserver(usr) || isXeno(usr))
+		return
+	toggle_recoil_compensation(usr)
+
+/obj/item/weapon/gun/smartgun/verb/vtoggle_accuracy_improvement()
+	set category = "Smartgun"
+	set name = "Toggle Accuracy Improvement"
+	
+	if(isobserver(usr) || isXeno(usr))
+		return
+	toggle_accuracy_improvement(usr)
+
+/obj/item/weapon/gun/smartgun/verb/vtoggle_auto_fire()
+	set category = "Smartgun"
+	set name = "Toggle Auto Fire"
+	
+	if(isobserver(usr) || isXeno(usr))
+		return
+	toggle_auto_fire(usr)
+
+/obj/item/weapon/gun/smartgun/verb/vtoggle_motion_detector()
+	set category = "Smartgun"
+	set name = "Toggle Motion Detector"
+	
+	if(isobserver(usr) || isXeno(usr))
+		return
+	toggle_motion_detector(usr)
+
+/obj/item/weapon/gun/smartgun/verb/vtoggle_reload_mode()
+	set category = "Smartgun"
+	set name = "Toggle Reload Mode"
+	
+	if(isobserver(usr) || isXeno(usr))
+		return
+	toggle_reload_mode(usr)
+
+/obj/item/weapon/gun/smartgun/reload(mob/user, obj/item/ammo_magazine/magazine)
+	if(powerpack_reload)
+		to_chat(user, "\icon[src] You have to change reload modes to reload manualy.")
+		return
+	if(!powerpack_reload)
+		if(!magazine.mob_can_equip(user, WEAR_WAIST ,1))
+			to_chat(user, "\icon[src] Make sure the magazine can be equipped to your belt.")
+			return
+		..()
+		user.equip_to_slot_if_possible(magazine, WEAR_WAIST, 1, 0, 0, 1, 1)
+		
+/obj/item/weapon/gun/smartgun/unload(mob/user, reload_override, drop_override ,loc_override = 1)
+	if(powerpack_reload)
+		to_chat(user, "\icon[src] You have to change reload modes to reload manualy.")
+		return
+	if(!powerpack_reload)
+		if(current_mag)
+			src.current_mag.flags_inventory &= ~CANTSTRIP
+			src.current_mag.flags_item &= ~NODROP
+		..()
+
+/obj/item/weapon/gun/smartgun/proc/toggle_reload_mode(mob/user)
+	if(!powerpack)
+		link_powerpack(user)
+	if(current_mag && !istype(current_mag, /obj/item/ammo_magazine/smartgun/internal))
+		to_chat(user, "\icon[src] You must unload the gun before toggling reload mode.")
+		return
+	playsound(loc,'sound/machines/click.ogg', 25, 1)
+	powerpack_reload = !powerpack_reload
+	if(reload_mode(user))
+		to_chat(user, "\icon[src] You [powerpack_reload? "<B>enable</b>" : "<B>disable</b>"] the [src]'s powerpack reloading belt. You will [powerpack_reload ? "reload through the powerpack." : "reload using magazines."]")
+
+/obj/item/weapon/gun/smartgun/proc/reload_mode(mob/living/user)
+	var/obj/item/smartgun_powerpack/pp = powerpack
+	if(!(istype(pp, /obj/item/smartgun_powerpack)))
+		to_chat(user, "\icon[src] Failure locating powerpack. Make sure you are wearing a powerpack. And fire a round if you are.")
+		return FALSE
+	if(powerpack_reload)
+		if(current_mag)
+			src.current_mag.flags_inventory &= ~CANTSTRIP
+			src.current_mag.flags_item &= ~NODROP
+		shells_fired_now = 0
+		flags_gun_features |= GUN_INTERNAL_MAG
+		if(!current_mag)
+			var/obj/item/ammo_magazine/smartgun/internal/A = new(src)
+			current_mag = A
+			auto_reload(user, powerpack)
+		return TRUE
+	if(!powerpack_reload && pp)
+		shells_fired_now = 0
+		pp.rounds_remaining += current_mag.current_rounds
+		current_mag = null
+		flags_gun_features &= ~GUN_INTERNAL_MAG
+		return TRUE
+
+/obj/item/weapon/gun/smartgun/proc/auto_reload(mob/smart_gunner, obj/item/smartgun_powerpack/power_pack)
+	set waitfor = 0
+	sleep(5)
+	if(power_pack && power_pack.loc)
+		power_pack.attack_self(smart_gunner)
+
 
 /obj/item/weapon/gun/smartgun/able_to_fire(mob/living/user)
 	. = ..()
@@ -318,6 +454,7 @@
 			return 0
 
 
+
 /obj/item/weapon/gun/smartgun/load_into_chamber(mob/user)
 //	if(active_attachable) active_attachable = null
 	return ready_in_chamber()
@@ -326,7 +463,7 @@
 	var/mob/living/carbon/human/smart_gunner = user
 	var/obj/item/smartgun_powerpack/power_pack = smart_gunner.back
 	if(istype(power_pack)) //I don't know how it would break, but it is possible.
-		if(shells_fired_now >= shells_fired_max && power_pack.rounds_remaining > 0) // If shells fired exceeds shells needed to reload, and we have ammo.
+		if(shells_fired_now >= shells_fired_max && power_pack.rounds_remaining > 0 && powerpack_reload) // If shells fired exceeds shells needed to reload, and we have ammo.
 			auto_reload(smart_gunner, power_pack)
 		else shells_fired_now++
 
@@ -353,28 +490,319 @@
 	ammo = ammo_primary
 	check_iff()
 
-/obj/item/weapon/gun/smartgun/proc/auto_reload(mob/smart_gunner, obj/item/smartgun_powerpack/power_pack)
+/obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
+	if(!src.powerpack)
+		if(!link_powerpack(user))
+			click_empty(user)
+			unlink_powerpack()
+			return
+	if(src.powerpack)
+		var/obj/item/smartgun_powerpack/pp = user.back
+		if(istype(pp))
+			var/obj/item/cell/c = pp.pcell
+			var/d = drain
+			if(flags_gun_features & GUN_BURST_ON)
+				d = drain*burst_amount*1.5
+			if(pp.drain_powerpack(d, c))
+				..()
+
+
+/obj/item/weapon/gun/smartgun/proc/link_powerpack(var/mob/user)
+	if(user.back)	
+		if(istype(user.back,/obj/item/smartgun_powerpack))
+			src.powerpack = user.back
+			return TRUE
+	return FALSE
+
+/obj/item/weapon/gun/smartgun/proc/unlink_powerpack()
+	src.powerpack = null
+
+/obj/item/weapon/gun/smartgun/proc/toggle_recoil_compensation(mob/user)
+	to_chat(user, "\icon[src] You [recoil_compensation? "<B>disable</b>" : "<B>enable</b>"] the [src]'s recoil compensation.")
+	playsound(loc,'sound/machines/click.ogg', 25, 1)
+	recoil_compensation = !recoil_compensation
+	recoil_compensation()
+
+/obj/item/weapon/gun/smartgun/proc/recoil_compensation()
+	if(recoil_compensation)
+		src.scatter = config.min_scatter_value
+		src.recoil = config.no_recoil_value
+		src.drain += 50
+	if(!recoil_compensation)
+		src.scatter = config.med_scatter_value
+		src.recoil = config.med_recoil_value
+		src.drain -= 50
+
+/obj/item/weapon/gun/smartgun/proc/toggle_accuracy_improvement(mob/user)
+	to_chat(user, "\icon[src] You [accuracy_improvement? "<B>disable</b>" : "<B>enable</b>"] the [src]'s accuracy improvement.")
+	playsound(loc,'sound/machines/click.ogg', 25, 1)
+	accuracy_improvement = !accuracy_improvement
+	accuracy_improvement()
+
+/obj/item/weapon/gun/smartgun/proc/accuracy_improvement()
+	if(accuracy_improvement)
+		src.accuracy_mult += config.min_hit_accuracy_mult
+		src.drain += 50
+	if(!accuracy_improvement)
+		src.accuracy_mult -= config.min_hit_accuracy_mult
+		src.drain -= 50
+
+/obj/item/weapon/gun/smartgun/proc/toggle_auto_fire(mob/user)
+	if(!(flags_item & WIELDED))
+		to_chat(user, "\icon[src] You need to wield the [src] to enable autofire.")
+		return //Have to be actually be wielded.
+	to_chat(user, "\icon[src] You [auto_fire? "<B>disable</b>" : "<B>enable</b>"] the [src]'s auto fire mode.")
+	playsound(loc,'sound/machines/click.ogg', 25, 1)
+	auto_fire = !auto_fire
+	auto_fire()
+
+/obj/item/weapon/gun/smartgun/proc/auto_fire()
+	if(auto_fire)
+		src.drain += 150
+		if(!motion_detector)
+			processing_objects.Add(src)
+	if(!auto_fire)
+		src.drain -= 150
+		if(!motion_detector)
+			processing_objects.Remove(src)
+
+/obj/item/weapon/gun/smartgun/process()
+	if(!auto_fire && !motion_detector)
+		processing_objects.Remove(src)
+	if(auto_fire)
+		if(ishuman(loc) && (flags_item & WIELDED))
+			var/human_user = loc
+			target = get_target(human_user)
+			fire_delay = config.no_fire_delay
+			process_shot(human_user)
+			fire_delay = config.low_fire_delay
+		else
+			auto_fire = 0
+			auto_fire()
+	if(motion_detector)
+		recycletime--
+		if(!recycletime)
+			recycletime = initial(recycletime)
+			for(var/X in blip_pool) //we dump and remake the blip pool every few minutes
+				if(blip_pool[X])	//to clear blips assigned to mobs that are long gone.
+					qdel(blip_pool[X])
+			blip_pool = list()
+		if(!detector_mode)
+			long_range_cooldown--
+			if(long_range_cooldown) return
+		else long_range_cooldown = initial(long_range_cooldown)
+		scan()
+
+/obj/item/weapon/gun/smartgun/proc/scan()
+	var/mob/living/carbon/human/human_user
+	if(ishuman(loc))
+		human_user = loc
+
+	ping_count = 0
+	for(var/mob/M in living_mob_list)
+
+		if(loc == null || M == null) continue
+		if(loc.z != M.z) continue
+		if(get_dist(M, src) > detector_range) continue
+		if(M == loc) continue //device user isn't detected
+		if(!isturf(M.loc)) continue
+		if(world.time > M.l_move_time + 20) continue //hasn't moved recently
+		if(isrobot(M)) continue
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if(istype(H.wear_ear, /obj/item/device/radio/headset/almayer))
+				continue //device detects marine headset and ignores the wearer.
+		ping_count++
+
+		if(human_user)
+			show_blip(human_user, M)
+
+	if(ping_count > 0)
+		playsound(loc, pick('sound/items/detector_ping_1.ogg', 'sound/items/detector_ping_2.ogg', 'sound/items/detector_ping_3.ogg', 'sound/items/detector_ping_4.ogg'), 60, 0, 7, 2)
+	else
+		playsound(loc, 'sound/items/detector.ogg', 60, 0, 7, 2)
+
+/obj/item/weapon/gun/smartgun/proc/show_blip(mob/user, mob/target)
 	set waitfor = 0
-	sleep(5)
-	if(power_pack && power_pack.loc)
-		power_pack.attack_self(smart_gunner)
+	if(user && user.client)
+
+		if(!blip_pool[target])
+			blip_pool[target] = new /obj/effect/detector_blip
+
+		var/obj/effect/detector_blip/DB = blip_pool[target]
+		var/c_view = user.client.view
+		var/view_x_offset = 0
+		var/view_y_offset = 0
+		if(c_view > 7)
+			if(user.client.pixel_x >= 0) view_x_offset = round(user.client.pixel_x/32)
+			else view_x_offset = Ceiling(user.client.pixel_x/32)
+			if(user.client.pixel_y >= 0) view_y_offset = round(user.client.pixel_y/32)
+			else view_y_offset = Ceiling(user.client.pixel_y/32)
+
+		var/diff_dir_x = 0
+		var/diff_dir_y = 0
+		if(target.x - user.x > c_view + view_x_offset) diff_dir_x = 4
+		else if(target.x - user.x < -c_view + view_x_offset) diff_dir_x = 8
+		if(target.y - user.y > c_view + view_y_offset) diff_dir_y = 1
+		else if(target.y - user.y < -c_view + view_y_offset) diff_dir_y = 2
+		if(diff_dir_x || diff_dir_y)
+			DB.icon_state = "[blip_type]_blip_dir"
+			DB.dir = diff_dir_x + diff_dir_y
+		else
+			DB.icon_state = "[blip_type]_blip"
+			DB.dir = initial(DB.dir)
+
+		DB.screen_loc = "[Clamp(c_view + 1 - view_x_offset + (target.x - user.x), 1, 2*c_view+1)],[Clamp(c_view + 1 - view_y_offset + (target.y - user.y), 1, 2*c_view+1)]"
+		user.client.screen += DB
+		sleep(12)
+		if(user.client)
+			user.client.screen -= DB
+
+/obj/item/weapon/gun/smartgun/proc/get_target(var/mob/living/user)
+	var/list/conscious_targets = list()
+	var/list/unconscious_targets = list()
+	var/list/turf/path = list()
+	var/turf/T
+	var/mob/M
+
+	for(M in orange(range, user)) // orange allows sentry to fire through gas and darkness
+		if(!isliving(M) || M.stat & DEAD || isrobot(M)) continue // No dead or non living.
+
+		/*
+		I really, really need to replace this with some that isn't insane. You shouldn't have to fish for access like this.
+		This should be enough shortcircuiting, but it is possible for the code to go all over the possibilities and generally
+		slow down. It'll serve for now.
+		*/
+		var/mob/living/carbon/human/H = M
+		if(istype(H) && H.get_target_lock(ammo.iff_signal)) continue
+		if(angle > 0)
+			var/opp
+			var/adj
+
+			switch(user.dir)
+				if(NORTH)
+					opp = user.x-M.x
+					adj = M.y-user.y
+				if(SOUTH)
+					opp = user.x-M.x
+					adj = user.y-M.y
+				if(EAST)
+					opp = user.y-M.y
+					adj = M.x-user.x
+				if(WEST)
+					opp = user.y-M.y
+					adj = user.x-M.x
+
+			var/r = 9999
+			if(adj != 0) r = abs(opp/adj)
+			var/angledegree = arcsin(r/sqrt(1+(r*r)))
+			if(adj < 0)
+				continue
+
+			if((angledegree*2) > angle_list[angle])
+				continue
+
+		path = getline2(user, M)
+
+		if(path.len)
+			var/blocked = FALSE
+			for(T in path)
+				if(T.density || T.opacity)
+					blocked = TRUE
+					break
+				for(var/obj/structure/S in T)
+					if(S.opacity)
+						blocked = TRUE
+						break
+				for(var/obj/machinery/MA in T)
+					if(MA.opacity)
+						blocked = TRUE
+						break
+				if(blocked)
+					break
+			if(blocked)
+				continue
+			if(M.stat & UNCONSCIOUS)
+				unconscious_targets += M
+			else
+				conscious_targets += M
+
+	if(conscious_targets.len)
+		. = pick(conscious_targets)
+	else if(unconscious_targets.len)
+		. = pick(unconscious_targets)
+
+/obj/item/weapon/gun/smartgun/proc/process_shot(var/mob/living/user)
+	set waitfor = 0
+	
+
+	if(isnull(target)) return //Acquire our victim.
+
+	if(!ammo) return
+
+	if(target && (world.time-last_fired >= 3))
+		if(world.time-last_fired >= 300) //if we haven't fired for a while, beep first
+			playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
+			sleep(3)
+
+		last_fired = world.time
+		Fire(target,user)
+
+	target = null
+
+/obj/item/weapon/gun/smartgun/proc/toggle_motion_detector(mob/user)
+	to_chat(user, "\icon[src] You [motion_detector? "<B>disable</b>" : "<B>enable</b>"] the [src]'s motion detector.")
+	playsound(loc,'sound/machines/click.ogg', 25, 1)
+	motion_detector = !motion_detector
+	motion_detector()
+
+/obj/item/weapon/gun/smartgun/proc/motion_detector()
+	if(motion_detector)
+		src.drain += 15
+		if(!auto_fire)
+			processing_objects.Add(src)
+	if(!motion_detector)
+		src.drain -= 15
+		if(!auto_fire)
+			processing_objects.Remove(src)
 
 /obj/item/weapon/gun/smartgun/dirty
 	name = "\improper M56D 'dirty' smartgun"
 	desc = "The actual firearm in the 4-piece M56D Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action."
 	origin_tech = "combat=7;materials=5"
-	current_mag = /obj/item/ammo_magazine/internal/smartgun/dirty
-	ammo_primary = /obj/item/ammo_magazine/internal/smartgun/dirty//Toggled ammo type
+	current_mag = null
+	ammo_primary = /obj/item/ammo_magazine/smartgun/dirty//Toggled ammo type
 	ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing//Toggled ammo type
 	flags_gun_features = GUN_INTERNAL_MAG|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
 /obj/item/weapon/gun/smartgun/dirty/set_gun_config_values()
 	fire_delay = config.low_fire_delay
 	burst_amount = config.med_burst_value
-	burst_delay = config.min_fire_delay
+	burst_delay = config.low_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult + config.min_hit_accuracy_mult
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.low_scatter_value
+	damage_mult = config.base_hit_damage_mult
+
+//TERMINATOR SMARTGUN
+/obj/item/weapon/gun/smartgun/elite
+	name = "\improper M56D 'genius' smartgun"
+	desc = "The actual firearm in the 4-piece M56D Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action."
+	origin_tech = "combat=7;materials=5"
+	angle = 0
+	current_mag = null
+	ammo_primary = /obj/item/ammo_magazine/smartgun/dirty//Toggled ammo type
+	ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing//Toggled ammo type
+	flags_gun_features = GUN_INTERNAL_MAG|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+
+
+/obj/item/weapon/gun/smartgun/elite/set_gun_config_values()
+	fire_delay = config.mlow_fire_delay
+	burst_amount = config.high_burst_value
+	burst_delay = config.min_fire_delay
+	accuracy_mult = config.base_hit_accuracy_mult + config.max_hit_accuracy_mult
+	scatter = config.lmed_scatter_value
+	burst_scatter_mult = config.mlow_scatter_value
 	damage_mult = config.base_hit_damage_mult
 
 

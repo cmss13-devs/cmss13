@@ -16,6 +16,10 @@
 	if(stat == UNCONSCIOUS)
 		return //Unconscious? Nope.
 
+	if(dazed > 0)
+		to_chat(src, SPAN_WARNING("You are too dazed to talk."))
+		return
+
 	if(copytext(message, 1, 2) == "*")
 		return emote(copytext(message, 2))
 
@@ -90,6 +94,10 @@
 
 	if(!hive.living_xeno_queen && !Check_WO())
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
+		return
+
+	if(interference)
+		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
 		return
 
 

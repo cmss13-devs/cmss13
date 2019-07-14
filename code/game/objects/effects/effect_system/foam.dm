@@ -181,10 +181,6 @@
 			qdel(src)
 		return 1
 
-	attack_paw(var/mob/user)
-		attack_hand(user)
-		return
-
 	attack_hand(var/mob/user)
 		if ((HULK in user.mutations) || (prob(75 - metal*25)))
 			to_chat(user, SPAN_NOTICE(" You smash through the metal foam wall."))

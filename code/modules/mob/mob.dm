@@ -121,6 +121,18 @@
 				msg = self_message
 			M.show_message( msg, 1, blind_message, 2)
 
+// Shows three different messages depending on who does it to who and how does it look like to outsiders
+// message_mob: "You do something to X!"
+// message_affected: "Y does something to you!"
+// message_viewer: "X does something to Y!"
+/mob/proc/affected_message(mob/affected, message_mob, message_affected, message_viewer)
+	to_chat(src,message_mob)
+	if(src != affected)
+		to_chat(affected,message_affected)
+	for(var/mob/V in viewers(7, src))
+		if(V != src && V != affected)
+			to_chat(V,message_viewer)
+
 // Show a message to all mobs in sight of this atom
 // Use for objects performing visible actions
 // message is output to anyone who can see, e.g. "The [src] does something!"
@@ -730,11 +742,30 @@ mob/proc/yank_out_object()
 	handle_silent()
 	handle_drugged()
 	handle_slurring()
+	handle_dazed()
+	handle_slowed()
+	handle_superslowed()
 
 /mob/living/proc/handle_stunned()
 	if(stunned)
 		AdjustStunned(-1)
 	return stunned
+
+/mob/living/proc/handle_dazed()
+	if(dazed)
+		AdjustDazed(-1)
+	return dazed
+
+/mob/living/proc/handle_slowed()
+	if(slowed)
+		AdjustSlowed(-1)
+	return stunned
+
+/mob/living/proc/handle_superslowed()
+	if(superslowed)
+		AdjustSuperslowed(-1)
+	return dazed
+
 
 /mob/living/proc/handle_knocked_down()
 	if(knocked_down && client)

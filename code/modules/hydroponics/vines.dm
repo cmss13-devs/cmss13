@@ -66,11 +66,6 @@
 
 	manual_unbuckle(user)
 
-
-/obj/effect/plantsegment/attack_paw(mob/user as mob)
-	manual_unbuckle(user)
-
-
 /obj/effect/plantsegment/manual_unbuckle(mob/user)
 	if(buckled_mob)
 		if(prob(seed ? min(max(0,100 - seed.potency),100) : 50))

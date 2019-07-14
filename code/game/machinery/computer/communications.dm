@@ -361,9 +361,6 @@ var/global/cooldown_message = 0 //Based on world.time.
 /obj/machinery/computer/communications/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/communications/attack_paw(var/mob/user as mob)
-	return attack_hand(user)
-
 /obj/machinery/computer/communications/attack_hand(var/mob/user as mob)
 	if(..()) r_FAL
 

@@ -121,12 +121,6 @@
 	else if(a_intent == DISARM_INTENT)
 		if(istype(H,/mob/living/carbon/hellhound))
 			return
-		if(istype(H,/mob/living/carbon/monkey))
-			if (!(H.knocked_out ))
-				H.KnockOut(8)
-				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
-				visible_message(SPAN_DANGER("[src] knocks down [H]!"),SPAN_DANGER("You knock down [H]!"))
-				return
 		visible_message(SPAN_DANGER("[src] shoves at [H]!"),SPAN_DANGER("You shove at [H]!"))
 		return
 	else if(a_intent == GRAB_INTENT)
@@ -144,24 +138,6 @@
 		H.apply_damage(dmg,BRUTE,edge = 1) //Does NOT check armor.
 		visible_message(SPAN_DANGER("<B>[src] mauls [H]!</b>"),SPAN_DANGER("<B>You maul [H]!</b>"))
 		playsound(loc, 'sound/weapons/bite.ogg', 25, 1)
-	return
-
-/mob/living/carbon/hellhound/attack_paw(mob/M as mob)
-	..()
-
-	if (M.a_intent == HELP_INTENT)
-		help_shake_act(M)
-	else
-		if (M.a_intent == "hurt")
-			if ((prob(75) && health > 0))
-				playsound(loc, 'sound/weapons/bite.ogg', 25, 1)
-				for(var/mob/O in viewers(src, null))
-					O.show_message(SPAN_DANGER("<B>[M.name] has bit [name]!</B>"), 1)
-				var/damage = rand(2, 4)
-				adjustBruteLoss(damage)
-			else
-				for(var/mob/O in viewers(src, null))
-					O.show_message(SPAN_DANGER("<B>[M.name] has attempted to bite [name]!</B>"), 1)
 	return
 
 //punched by a hu-man

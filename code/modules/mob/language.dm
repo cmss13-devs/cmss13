@@ -93,6 +93,15 @@
 	key = "s"
 	flags = WHITELISTED
 
+/datum/language/monkey
+	name = "Primitive"
+	desc = "Ook ook ook."
+	speech_verb = "chimpers"
+	ask_verb = "chimpers"
+	exclaim_verb = "screeches"
+	colour = "monkey"
+	key = "m"
+
 /datum/language/xenocommon
 	name = "Xenomorph"
 	colour = "alien"

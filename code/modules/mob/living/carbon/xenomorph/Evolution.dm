@@ -212,7 +212,7 @@
 			if(new_xeno.client) new_xeno.client.change_view(world.view)
 
 		//Regenerate the new mob's name now that our player is inside
-		generate_name()
+		new_xeno.generate_name()
 
 		if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //Cmon, don't kill the new one! Shouldnt be possible though
 			new_xeno.bruteloss = src.bruteloss //Transfers the damage over.

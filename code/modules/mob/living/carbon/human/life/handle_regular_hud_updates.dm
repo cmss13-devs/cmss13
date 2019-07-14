@@ -80,6 +80,11 @@
 		else
 			clear_fullscreen("blurry")
 
+		if(dazed)
+			overlay_fullscreen("dazed", /obj/screen/fullscreen/blurry)
+		else
+			clear_fullscreen("dazed")
+
 		if(druggy)
 			overlay_fullscreen("high", /obj/screen/fullscreen/high)
 		else
@@ -98,7 +103,7 @@
 						if(1)	hud_used.healths.icon_state = "health6"
 						if(2)	hud_used.healths.icon_state = "health7"
 						else
-							
+
 							var/percieved_shock = traumatic_shock
 							if(species && species.flags & NO_PAIN)
 								percieved_shock = 0
@@ -174,7 +179,6 @@
 							hud_used.bodytemp_icon.icon_state = "temp-1"
 						else
 							hud_used.bodytemp_icon.icon_state = "temp0"
-
 
 		if(interactee)
 			interactee.check_eye(src)

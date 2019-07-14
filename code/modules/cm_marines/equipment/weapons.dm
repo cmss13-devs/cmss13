@@ -1,5 +1,4 @@
 
-
 /obj/item/storage/box/m56_system
 	name = "\improper M56 smartgun system"
 	desc = "A large case containing the full M56 Smartgun System. Drag this sprite into you to open it up!\nNOTE: You cannot put items back inside this case."
@@ -21,7 +20,7 @@
 
 /obj/item/smartgun_powerpack
 	name = "\improper M56 powerpack"
-	desc = "A heavy reinforced backpack with support equipment, power cells, and spare rounds for the M56 Smartgun System.\nClick the icon in the top left to reload your M56."
+	desc = "A heavy reinforced backpack with support equipment and power cells for the M56 Smartgun System."
 	icon = 'icons/obj/items/storage/storage.dmi'
 	icon_state = "powerpack"
 	flags_atom = FPRINT|CONDUCT
@@ -29,13 +28,13 @@
 	w_class = 5.0
 	var/obj/item/cell/pcell = null
 	var/rounds_remaining = 500
-	actions_types = list(/datum/action/item_action/toggle)
 	var/reloading = 0
+	actions_types = list(/datum/action/item_action/toggle)
 
 /obj/item/smartgun_powerpack/New()
 	select_gamemode_skin(/obj/item/smartgun_powerpack)
 	..()
-	pcell = new /obj/item/cell(src)
+	pcell = new /obj/item/cell/high(src)
 
 /obj/item/smartgun_powerpack/dropped(mob/living/user) // called on unequip
 	if(ishuman(user))
@@ -50,7 +49,9 @@
 	if(!ishuman(user) || user.stat) return 0
 
 	var/obj/item/weapon/gun/smartgun/mygun = user.get_active_hand()
-
+	if(mygun && !mygun.powerpack_reload)
+		to_chat(user, "You must have power pack reload enabled to reload from the powerpack.")
+		return
 	if(isnull(mygun) || !mygun || !istype(mygun))
 		to_chat(user, "You must be holding an M56 Smartgun to begin the reload process.")
 		return
@@ -77,14 +78,14 @@
 	if(do_after(user,reload_duration, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		pcell.charge -= 50
 		if(!mygun.current_mag) //This shouldn't happen, since the mag can't be ejected. Good safety, I guess.
-			var/obj/item/ammo_magazine/internal/smartgun/A = new(mygun)
+			var/obj/item/ammo_magazine/smartgun/internal/A = new(mygun)
 			mygun.current_mag = A
-
+			mygun.load_into_chamber(user)
 		var/rounds_to_reload = min(rounds_remaining, (mygun.current_mag.max_rounds - mygun.current_mag.current_rounds)) //Get the smaller value.
 
 		mygun.current_mag.current_rounds += rounds_to_reload
 		rounds_remaining -= rounds_to_reload
-
+		mygun.load_into_chamber(user)
 		to_chat(user, "You finish loading [rounds_to_reload] shells into the M56 Smartgun. Ready to rumble!")
 		playsound(user, 'sound/weapons/unload.ogg', 25, 1)
 
@@ -96,6 +97,7 @@
 		return
 	return 1
 
+
 /obj/item/smartgun_powerpack/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A,/obj/item/cell))
 		var/obj/item/cell/C = A
@@ -103,8 +105,23 @@
 		to_chat(user, "The new cell contains: [C.charge] power.")
 		pcell.loc = get_turf(user)
 		pcell = C
-		C.loc = src
+		user.drop_inv_item_to_loc(C, src)
 		playsound(src,'sound/machines/click.ogg', 25, 1)
+	if(istype(A, /obj/item/ammo_magazine/smartgun))
+		var/obj/item/ammo_magazine/smartgun/mag = A
+		if(src.rounds_remaining >= 500)
+			visible_message("The powerpak is full already.")
+		else
+			visible_message("[user.name] refills the [src.name] with the [mag.name]")
+			var/missing_ammo = (500 - src.rounds_remaining)
+			if(mag.current_rounds >= missing_ammo)
+				src.rounds_remaining += missing_ammo
+				mag.current_rounds -= missing_ammo
+			if(mag.current_rounds < missing_ammo)
+				src.rounds_remaining += mag.current_rounds
+				mag.current_rounds = 0
+
+			
 	else
 		..()
 
@@ -112,7 +129,21 @@
 	..()
 	if (get_dist(user, src) <= 1)
 		if(pcell)
-			to_chat(user, "A small gauge in the corner reads: Ammo: [rounds_remaining] / 500.")
+			to_chat(user, "A small gauge in the corner reads: Power: [pcell.charge] / [pcell.maxcharge]. Ammo: [rounds_remaining] / 500")
+
+/obj/item/smartgun_powerpack/proc/drain_powerpack(var/drain = 0, var/obj/item/cell/c)
+	var/actual_drain = (rand(drain/2,drain)/25)
+	if(c && c.charge > 0)
+		if(c.charge > actual_drain)
+			c.charge -= actual_drain 
+		else 
+			c.charge = 0
+			to_chat(usr, SPAN_WARNING("[src] emits a low power warning and immediately shuts down!"))
+		return TRUE
+	if(!c || c.charge == 0)
+		to_chat(usr, SPAN_WARNING("[src] emits a low power warning and immediately shuts down!"))
+		return FALSE
+	return FALSE
 
 /obj/item/smartgun_powerpack/snow
 	icon_state = "s_powerpack"

@@ -425,10 +425,10 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 
 //Drop out the magazine. Keep the ammo type for next time so we don't need to replace it every time.
 //This can be passed with a null user, so we need to check for that as well.
-/obj/item/weapon/gun/proc/unload(mob/user, reload_override = 0, drop_override = 0) //Override for reloading mags after shooting, so it doesn't interrupt burst. Drop is for dropping the magazine on the ground.
+/obj/item/weapon/gun/proc/unload(mob/user, reload_override = 0, drop_override = 0, loc_override = 0) //Override for reloading mags after shooting, so it doesn't interrupt burst. Drop is for dropping the magazine on the ground.
 	if(!reload_override && (flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG))) return
 
-	if(!current_mag || isnull(current_mag) || current_mag.loc != src)
+	if(!current_mag || isnull(current_mag) || (current_mag.loc != src && !loc_override))
 		cock(user)
 		return
 
@@ -891,13 +891,12 @@ and you're good to go.
 						if(GUN_SKILL_SMARTGUN)
 							if(user.mind.cm_skills.smartgun < 0)
 								added_delay += 2*user.mind.cm_skills.smartgun
-
 		if(world.time >= last_fired + added_delay + extra_delay) //check the last time it was fired.
 			extra_delay = 0
 		else
-			if (world.time % 3) 
+			if (world.time % 3 && !istype(src,/obj/item/weapon/gun/smartgun/)) 
 				to_chat(user, SPAN_WARNING("[src] is not ready to fire again!")) //to prevent spam
-			return
+				return
 	return 1
 
 /obj/item/weapon/gun/proc/click_empty(mob/user)

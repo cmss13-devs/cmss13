@@ -385,6 +385,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	else name = "M56 combat harness"
 	//select_gamemode_skin(type)
 
+
 /obj/item/clothing/suit/storage/marine/leader
 	name = "\improper B12 pattern leader marine armor"
 	desc = "A lightweight suit of carbon fiber body armor built for quick movement. Designed in a lovely forest green. Use it to toggle the built-in flashlight."
@@ -736,6 +737,23 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 2
 
+/obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC/terminator
+	name = "\improper PMC commando armor"
+	desc = "A heavily armored suit built by who-knows-what for elite operations. It is a fully self-contained system and is heavily corrosion resistant."
+	icon_state = "commando_armor"
+	slowdown = SLOWDOWN_ARMOR_VERY_HEAVY
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	storage_slots = 2
+	unacidable = 1
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/PMC/commando)
+	
 /obj/item/clothing/suit/storage/marine/veteran/PMC/commando
 	name = "\improper PMC commando armor"
 	desc = "A heavily armored suit built by who-knows-what for elite operations. It is a fully self-contained system and is heavily corrosion resistant."

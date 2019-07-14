@@ -1,4 +1,3 @@
-
 /obj/item/storage/belt
 	name = "belt"
 	desc = "Can hold various things."
@@ -778,3 +777,23 @@
 		/obj/item/ammo_magazine/tank/tank_glauncher,
 		/obj/item/ammo_magazine/tank/tank_slauncher
 	)
+
+
+/obj/item/storage/belt/gun/smartgunner
+	name = "\improper M802 pattern smartgunner rig"
+	desc = "The M802 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is designed to carry smartgun ammunition, as well as a sidearm."
+	icon_state = "sgbelt"
+	item_state = "sgbelt"
+	can_hold = list(
+		/obj/item/weapon/gun/pistol,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/smartgun
+	)
+
+/obj/item/storage/belt/gun/smartgunner/full/New()
+	..()
+	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/m4a3(src)
+	new /obj/item/ammo_magazine/pistol/hp(src)
+	new /obj/item/ammo_magazine/smartgun(src)
+	new /obj/item/ammo_magazine/smartgun(src)
+	new_gun.on_enter_storage(src)

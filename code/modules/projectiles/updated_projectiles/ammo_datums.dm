@@ -857,22 +857,23 @@
 
 /datum/ammo/bullet/smartgun/New()
 	..()
-	accurate_range = config.short_shell_range
-	accuracy = config.max_hit_accuracy
+	accurate_range = config.norm_shell_range
+	accuracy = config.med_hit_accuracy
 	damage_falloff = config.tactical_damage_falloff
-	damage = config.lmed_plus_hit_damage
+	damage = config.med_hit_damage
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/armor_piercing
 	flags_ammo_behavior = AMMO_BALLISTIC
 	icon_state = "bullet"
+	iff_signal = ACCESS_IFF_MARINE
 
 /datum/ammo/bullet/smartgun/armor_piercing/New()
 	..()
 	accurate_range = config.short_shell_range
 	accuracy = config.min_hit_accuracy
 	damage_falloff = config.tactical_damage_falloff
-	damage = config.mlow_hit_damage
+	damage = config.hmed_hit_damage
 	penetration = config.hmed_armor_penetration
 	damage_armor_punch = 1
 
@@ -884,7 +885,26 @@
 /datum/ammo/bullet/smartgun/dirty/New()
 	..()
 	shrapnel_chance = config.max_shrapnel_chance
+	accurate_range = config.long_shell_range
+	accuracy = config.med_hit_accuracy
+	damage_falloff = config.tactical_damage_falloff
+	damage = config.high_hit_damage
+	penetration = 0
 
+/datum/ammo/bullet/smartgun/dirty/armor_piercing
+	iff_signal = ACCESS_IFF_PMC
+	debilitate = list(0,0,0,3,0,0,0,1)
+
+/datum/ammo/bullet/smartgun/dirty/armor_piercing/New()
+	..()
+	accurate_range = config.norm_shell_range
+	accuracy = config.med_hit_accuracy
+	damage_falloff = config.tactical_damage_falloff
+	damage = config.mhigh_hit_damage
+	penetration = config.hmed_armor_penetration
+	damage_armor_punch = 1	
+	
+	
 /datum/ammo/bullet/turret
 	name = "autocannon bullet"
 	icon_state 	= "redbullet" //Red bullets to indicate friendly fire restriction

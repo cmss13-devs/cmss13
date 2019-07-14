@@ -58,10 +58,6 @@
 		if(check_lifecycle())
 			GoIdle()
 
-//Can be picked up by aliens
-/obj/item/clothing/mask/facehugger/attack_paw(user as mob)
-	attack_hand(user)
-
 /obj/item/clothing/mask/facehugger/attack_hand(user as mob)
 
 	if((stat == CONSCIOUS && !sterile))
@@ -301,7 +297,8 @@
 			if(ishuman(target))
 				H = target
 				H.disable_lights()
-				playsound(loc, (target.gender == "male"?'sound/misc/facehugged_male.ogg' : 'sound/misc/facehugged_female.ogg') , 25, 0)
+				if(isHumanStrict(target))
+					playsound(loc, (target.gender == "male"?'sound/misc/facehugged_male.ogg' : 'sound/misc/facehugged_female.ogg') , 25, 0)
 			if(!sterile)
 				if(!H || !H.species || !(H.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
 					target.KnockOut(MIN_IMPREGNATION_TIME * 0.5) //THIS MIGHT NEED TWEAKS

@@ -62,9 +62,6 @@
 	else
 		src.overlays += image('icons/obj/kitchen.dmi', "gridle")
 
-/obj/machinery/gibber/attack_paw(mob/user as mob)
-	return src.attack_hand(user)
-
 /obj/machinery/gibber/relaymove(mob/user)
 	if(user.is_mob_incapacitated(TRUE)) return
 	go_out()
@@ -180,7 +177,7 @@
 		var/sourcenutriment = src.occupant.nutrition / 15
 		var/sourcetotalreagents = 0
 
-		if( istype(src.occupant, /mob/living/carbon/monkey/) || istype(src.occupant, /mob/living/carbon/Xenomorph) ) // why are you gibbing aliens? oh well
+		if(istype(src.occupant, /mob/living/carbon/Xenomorph) ) // why are you gibbing aliens? oh well
 			totalslabs = 3
 			sourcetotalreagents = src.occupant.reagents.total_volume
 		else if( istype(src.occupant, /mob/living/simple_animal/cow) || istype(src.occupant, /mob/living/simple_animal/hostile/bear) )

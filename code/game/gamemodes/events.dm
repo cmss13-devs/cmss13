@@ -79,14 +79,6 @@
 			H.apply_effect((rand(15,75)),IRRADIATE,0)
 			if (prob(5))
 				H.apply_effect((rand(90,150)),IRRADIATE,0)
-
-	for(var/mob/living/carbon/monkey/M in living_mob_list)
-		var/turf/T = get_turf(M)
-		if(!T)
-			continue
-		if(T.z != 1)
-			continue
-		M.apply_effect((rand(15,75)),IRRADIATE,0)
 	sleep(100)
 	command_announcement.Announce("High levels of radiation have been detected. Report to the Medical Bay if you begin to feel symptoms such as disorientation, nausea, or halucinations.", "Anomaly Alert", new_sound = 'sound/AI/radiation.ogg')
 

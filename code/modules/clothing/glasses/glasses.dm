@@ -1,4 +1,3 @@
-
 /obj/item/clothing/glasses
 	name = "glasses"
 	icon = 'icons/obj/clothing/glasses.dmi'
@@ -16,6 +15,12 @@
 	var/has_tint = FALSE //whether it blocks vision like a welding helmet
 	var/fullscreen_vision
 
+/obj/item/clothing/glasses/get_icon_state(mob/user_mob, slot)
+	if(item_state_slots && item_state_slots[slot])
+		return item_state_slots[slot]
+	else
+		return icon_state
+	return ..()
 
 /obj/item/clothing/glasses/update_clothing_icon()
 	if (ismob(src.loc))

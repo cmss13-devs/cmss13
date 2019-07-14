@@ -98,12 +98,12 @@
 	if(monkey_amount)
 		//var/debug_tally = 0
 		switch(map_tag)
-			if(MAP_LV_624) monkey_types = list(/mob/living/carbon/monkey, /mob/living/carbon/monkey/tajara, /mob/living/carbon/monkey/unathi, /mob/living/carbon/monkey/skrell)
-			if(MAP_ICE_COLONY) monkey_types = list(/mob/living/carbon/monkey/yiren)
-			if(MAP_BIG_RED) monkey_types = list(/mob/living/carbon/monkey)
-			if(MAP_PRISON_STATION) monkey_types = list(/mob/living/carbon/monkey)
-			if(MAP_DESERT_DAM) monkey_types = list(/mob/living/carbon/monkey)
-			else monkey_types = list(/mob/living/carbon/monkey) //make sure we always have a monkey type
+			if(MAP_LV_624) monkey_types = list(/mob/living/carbon/human/farwa, /mob/living/carbon/human/monkey, /mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
+			if(MAP_ICE_COLONY) monkey_types = list(/mob/living/carbon/human/yiren)
+			if(MAP_BIG_RED) monkey_types = list(/mob/living/carbon/human/neaera)
+			if(MAP_PRISON_STATION) monkey_types = list(/mob/living/carbon/human/monkey)
+			if(MAP_DESERT_DAM) monkey_types = list(/mob/living/carbon/human/stok)
+			else monkey_types = list(/mob/living/carbon/human/monkey) //make sure we always have a monkey type
 		if(monkey_types.len)
 			for(var/i = min(monkey_amount,monkey_spawns.len), i > 0, i--)
 				//I added this in so that if the amount of monkey_spawns (landmark) on the map are less then the monkey_spawns variable the game still works.
@@ -202,7 +202,7 @@
 			resin_allow_finished = 1
 			msg_admin_niche("Areas close to landing zones are now weedable.")
 
-		   
+
 #undef FOG_DELAY_INTERVAL
 ///////////////////////////
 //Checks to see who won///

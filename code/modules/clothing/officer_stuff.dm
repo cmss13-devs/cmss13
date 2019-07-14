@@ -29,6 +29,7 @@
 	icon_state = "officer"
 	item_state = "g_suit"
 	displays_id = 0
+	item_state_slots = list(WEAR_UNIFORM = "officer")
 
 /obj/item/clothing/under/rank/centcom/captain
 	desc = "Gold trim on space-black cloth, this uniform displays the rank of \"Admiral\" and bears \"N.C.V. Fearless CV-286\" on the left shounder."

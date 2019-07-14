@@ -534,7 +534,7 @@
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = "Maintenance Tech"
 	rank = "Maintenance Tech"
-	paygrade = "E6E"
+	paygrade = "E6"
 	role_comm_title = "MT"
 	special_role = "UPP"
 	skills = /datum/skills/spy

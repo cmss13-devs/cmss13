@@ -50,7 +50,7 @@
 			return
 		if(15)
 			for(var/i = 0, i < 7, i++)
-				new/obj/item/clothing/tie/horrible(src)
+				new/obj/item/clothing/accessory/horrible(src)
 		if(16)
 			new/obj/item/clothing/under/shorts(src)
 			new/obj/item/clothing/under/shorts/red(src)

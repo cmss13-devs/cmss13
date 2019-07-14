@@ -1,4 +1,3 @@
-
 /obj/item/clothing/under
 	icon = 'icons/obj/clothing/uniforms.dmi'
 	name = "under"
@@ -24,19 +23,34 @@
 		2 = Report detailed damages
 		3 = Report location
 		*/
-	var/obj/item/clothing/tie/hastie = null
 	var/displays_id = 1
 	var/rollable_sleeves = FALSE //can we roll the sleeves on this uniform?
 	var/rolled_sleeves = FALSE //are the sleeves currently rolled?
 	var/list/suit_restricted //for uniforms that only accept to be combined with certain suits
 	var/removed_parts = 0
+	var/worn_state
+	drag_unequip = TRUE
+	valid_accessory_slots = list(ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK)
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/uniform_monkey_0.dmi')
 
+/obj/item/clothing/under/New()
+	if(worn_state)
+		if(!item_state_slots)
+			item_state_slots = list()
+		item_state_slots[WEAR_UNIFORM] = worn_state
+	else
+		worn_state = icon_state
 
+	//autodetect rollability
+	if((worn_state + "_d") in icon_states(default_onmob_icons[WEAR_UNIFORM]))
+		rollable_sleeves = TRUE
+	..()
 
-/obj/item/clothing/under/Dispose()
-	if(hastie)
-		qdel(hastie)
-		hastie = null
+/obj/item/clothing/Dispose()
+	if(accessories && accessories.len)
+		for(var/obj/I in accessories)
+			qdel(I)
 	. = ..()
 
 
@@ -45,24 +59,7 @@
 		var/mob/M = src.loc
 		M.update_inv_w_uniform()
 
-/obj/item/clothing/under/attackby(obj/item/I, mob/user)
-	if(hastie)
-		hastie.attackby(I, user)
-		return 1
-
-	if(!hastie && istype(I, /obj/item/clothing/tie))
-		var/obj/item/clothing/tie/T = I
-		if(!T.tie_check(src, user)) return
-		user.drop_held_item()
-		hastie = T
-		hastie.on_attached(src, user)
-
-		if(istype(loc, /mob/living/carbon/human))
-			var/mob/living/carbon/human/H = loc
-			H.update_inv_w_uniform()
-
-		return
-
+/obj/item/clothing/attackby(obj/item/I, mob/user)
 	if(loc == user && istype(I,/obj/item/clothing/under) && src != I)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
@@ -70,18 +67,6 @@
 				H.drop_inv_item_on_ground(src)
 				if(H.equip_to_appropriate_slot(I))
 					H.put_in_active_hand(src)
-
-	..()
-
-/obj/item/clothing/under/attack_hand(mob/user as mob)
-	//only forward to the attached accessory if the clothing is equipped (not in a storage)
-	if(hastie && src.loc == user)
-		hastie.attack_hand(user)
-		return
-
-	if ((ishuman(usr) || ismonkey(usr)) && src.loc == user)	//make it harder to accidentally undress yourself
-		return
-
 	..()
 
 /obj/item/clothing/under/MouseDrop(obj/over_object as obj)
@@ -114,8 +99,6 @@
 				to_chat(user, "Its vital tracker appears to be enabled.")
 			if(3)
 				to_chat(user, "Its vital tracker and tracking beacon appear to be enabled.")
-	if(hastie)
-		to_chat(user, "\A [hastie] is clipped to it.")
 
 /obj/item/clothing/under/proc/set_sensors(mob/user)
 	if (istype(user, /mob/dead/)) return
@@ -170,6 +153,26 @@
 	set src in usr
 	set_sensors(usr)
 
+/obj/item/clothing/under/proc/update_rollsuit_status()
+	var/mob/living/carbon/human/H
+	if(ishuman(loc))
+		H = loc
+
+	var/icon/under_icon
+	if(icon_override)
+		under_icon = icon_override
+	else if(H && sprite_sheets && sprite_sheets[H.species.get_bodytype(H)])
+		under_icon = sprite_sheets[H.species.get_bodytype(H)]
+	else if(item_icons && item_icons[WEAR_UNIFORM])
+		under_icon = item_icons[WEAR_UNIFORM]
+	else
+		under_icon = default_onmob_icons[WEAR_UNIFORM]
+	if(("[worn_state]_d") in icon_states(under_icon))
+		if(rolled_sleeves != TRUE)
+			rolled_sleeves = FALSE
+	else
+		rollable_sleeves = FALSE
+	if(H) update_clothing_icon()
 
 /obj/item/clothing/under/verb/rollsuit()
 	set name = "Roll Down Jumpsuit"
@@ -178,48 +181,13 @@
 	if(!isliving(usr)) return
 	if(usr.stat) return
 
+	update_rollsuit_status()
 	if(rollable_sleeves)
 		rolled_sleeves = !rolled_sleeves
-		var/full_coverage = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-		if(rolled_sleeves)
-			var/partial_coverage = UPPER_TORSO|LOWER_TORSO|LEGS
-			var/final_coverage
-			//Marine uniforms can only roll up the sleeves, not wear it at the waist.
-			if(istype(src,/obj/item/clothing/under/marine))
-				final_coverage = copytext(icon_state,1,3) == "s_" ? full_coverage : partial_coverage
-			else final_coverage = partial_coverage & ~UPPER_TORSO
-			flags_armor_protection = final_coverage
-		else
-			flags_armor_protection = full_coverage
-
-		flags_cold_protection = flags_armor_protection
-		flags_heat_protection = flags_armor_protection
 		update_clothing_icon()
 
+		if(rolled_sleeves)
+			item_state_slots[WEAR_UNIFORM] = "[worn_state]_d"
+		else
+			item_state_slots[WEAR_UNIFORM] = "[worn_state]"
 	else to_chat(usr, SPAN_WARNING("You cannot roll down the uniform!"))
-
-//proper proc to remove the uniform's tie (user optional)
-/obj/item/clothing/under/proc/remove_accessory(mob/user)
-	if(!hastie)
-		return
-
-	hastie.on_removed()
-	if(user)
-		user.put_in_hands(hastie)
-		hastie.add_fingerprint(user)
-	hastie = null
-	update_clothing_icon()
-
-/obj/item/clothing/under/verb/removetie()
-	set name = "Remove Accessory"
-	set category = "Object"
-	set src in usr
-	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
-
-	src.remove_accessory(usr)
-
-/obj/item/clothing/under/emp_act(severity)
-	if (hastie)
-		hastie.emp_act(severity)
-	..()

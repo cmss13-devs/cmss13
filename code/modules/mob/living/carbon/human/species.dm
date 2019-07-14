@@ -75,7 +75,7 @@
 
 	//Used in icon caching.
 	var/race_key = 0
-	var/icon/icon_template
+	var/icon_template = 'icons/mob/human_races/template.dmi'
 
 	// Species-specific abilities.
 	var/list/inherent_verbs
@@ -94,6 +94,10 @@
 	var/knock_out_reduction = 1 //same thing
 
 	var/list/slot_equipment_priority = DEFAULT_SLOT_PRIORITY
+	var/list/equip_adjust = list()
+	var/list/equip_overlays = list()
+
+	var/blood_mask = 'icons/effects/blood.dmi'
 
 /datum/species/New()
 	if(hud_type)
@@ -103,6 +107,9 @@
 
 	if(unarmed_type) unarmed = new unarmed_type()
 	if(secondary_unarmed_type) secondary_unarmed = new secondary_unarmed_type()
+
+/datum/species/proc/handle_npc(var/mob/living/carbon/human/H)
+    return
 
 /datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs and limbs.
 
@@ -184,6 +191,29 @@
 	return
 */
 
+/datum/species/proc/get_offset_overlay_image(var/spritesheet, var/mob_icon, var/mob_state, var/color, var/slot)
+	// If we don't actually need to offset this, don't bother with any of the generation/caching.
+	if(!spritesheet && equip_adjust.len && equip_adjust[slot] && LAZYLEN(equip_adjust[slot]))
+
+		// Check the cache for previously made icons.
+		var/image_key = "[mob_icon]-[mob_state]-[color]"
+		if(!equip_overlays[image_key])
+
+			var/icon/final_I = new(icon_template)
+			var/list/shifts = equip_adjust[slot]
+
+			// Apply all pixel shifts for each direction.
+			for(var/shift_facing in shifts)
+				var/list/facing_list = shifts[shift_facing]
+				var/use_dir = text2num(shift_facing)
+				var/icon/equip = new(mob_icon, icon_state = mob_state, dir = use_dir)
+				var/icon/canvas = new(icon_template)
+				canvas.Blend(equip, ICON_OVERLAY, facing_list["x"]+1, facing_list["y"]+1)
+				final_I.Insert(canvas, dir = use_dir)
+			equip_overlays[image_key] = overlay_image(final_I, color = color, flags = RESET_COLOR)
+		return equip_overlays[image_key]
+	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)
+
 //Only used by horrors at the moment. Only triggers if the mob is alive and not dead.
 /datum/species/proc/handle_unique_behavior(var/mob/living/carbon/human/H)
 	return
@@ -208,10 +238,16 @@
 /datum/species/proc/can_understand(var/mob/other)
 	return
 
+/datum/species/proc/get_bodytype(var/mob/living/carbon/human/H)
+	return name
+
+/datum/species/proc/get_tail(var/mob/living/carbon/human/H)
+	return tail
+
 /datum/species/human
 	name = "Human"
 	name_plural = "Humans"
-	primitive = /mob/living/carbon/monkey
+	primitive = /mob/living/carbon/human/monkey
 	unarmed_type = /datum/unarmed_attack/punch
 	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR
 	uses_ethnicity = TRUE
@@ -616,6 +652,188 @@ var/toggled_sec_HUD = 0
 	H.set_languages(list("Sainja"))
 
 	return ..()
+
+// monky
+/datum/species/monkey
+	name = "Monkey"
+	name_plural = "Monkeys"
+	icobase = 'icons/mob/human_races/r_monkey.dmi'
+	deform = 'icons/mob/human_races/r_monkey.dmi'
+	brute_mod = 1.5
+	burn_mod = 1.5
+	pain_mod = 1.5
+	unarmed_type = /datum/unarmed_attack/bite
+	secondary_unarmed_type = /datum/unarmed_attack
+	death_message = "lets out a faint chimper as it collapses and stops moving..."
+	knock_down_reduction = 0.5
+	stun_reduction = 0.5
+	tail = "chimptail"
+	gibbed_anim = "gibbed-m"
+	dusted_anim = "dust-m"
+	inherent_verbs = list(
+		/mob/living/proc/ventcrawl,
+		/mob/living/proc/hide
+		)
+
+/datum/species/monkey/New()
+	equip_adjust = list(
+		WEAR_R_HAND = list("[NORTH]" = list("x" = 1, "y" = 3), "[EAST]" = list("x" = -3, "y" = 2), "[SOUTH]" = list("x" = -1, "y" = 3), "[WEST]" = list("x" = 3, "y" = 2)),
+		WEAR_L_HAND = list("[NORTH]" = list("x" = -1, "y" = 3), "[EAST]" = list("x" = 3, "y" = 2), "[SOUTH]" = list("x" = 1, "y" = 3), "[WEST]" = list("x" = -3, "y" = 2)),
+		WEAR_BELT = list("[NORTH]" = list("x" = 0, "y" = 3), "[EAST]" = list("x" = 0, "y" = 3), "[SOUTH]" = list("x" = 0, "y" = 3), "[WEST]" = list("x" = 0, "y" = 3)),
+		WEAR_SHOES = list("[NORTH]" = list("x" = 0, "y" = 7), "[EAST]" = list("x" = -1, "y" = 7), "[SOUTH]" = list("x" = 0, "y" = 7), "[WEST]" = list("x" = 1, "y" = 7)),
+		WEAR_HEAD = list("[NORTH]" = list("x" = 0, "y" = 0), "[EAST]" = list("x" = -2, "y" = 0), "[SOUTH]" = list("x" = 0, "y" = 0), "[WEST]" = list("x" = 2, "y" = 0)),
+		WEAR_MASK = list("[NORTH]" = list("x" = 0, "y" = 0), "[EAST]" = list("x" = -1, "y" = 0), "[SOUTH]" = list("x" = 0, "y" = 0), "[WEST]" = list("x" = 1, "y" = 0))
+	)
+	..()
+
+/datum/species/monkey/handle_post_spawn(var/mob/living/carbon/human/H)
+	H.set_languages(list("Primitive"))
+	if(H.real_name == "unknown")
+		H.name = "[lowertext(name)] ([rand(1, 999)])"
+		H.real_name = H.name
+		H.voice_name = H.name
+	return ..()
+
+/datum/species/monkey/get_bodytype(var/mob/living/carbon/human/H)
+	return SPECIES_MONKEY
+
+/datum/species/monkey/handle_npc(var/mob/living/carbon/human/H)
+	if(H.stat != CONSCIOUS)
+		return
+	if(prob(33) && isturf(H.loc) && !H.pulledby && !H.lying && !H.is_mob_restrained()) //won't move if being pulled
+		step(H, pick(cardinal))
+
+	var/obj/held = H.get_active_hand()
+	if(held && prob(1))
+		var/turf/T = get_random_turf_in_range(H, 7, 2)
+		if(T)
+			if(istype(held, /obj/item/weapon/gun) && prob(80))
+				var/obj/item/weapon/gun/G = held
+				G.Fire(T, H)
+			else
+				H.throw_item(T)
+		else
+			H.drop_held_item()
+	if(!held && !H.buckled && prob(5))
+		var/list/touchables = list()
+		for(var/obj/O in range(1,get_turf(H)))
+			if(O.Adjacent(H))
+				touchables += O
+		if(touchables.len)
+			var/obj/touchy = pick(touchables)
+			touchy.attack_hand(H)
+
+	if(prob(1))
+		H.emote(pick("chimper","scratch","jump","roll","tail"))
+
+	if(H.shock_stage < 40 && prob(3))
+		H.custom_emote("chimpers pitifully")
+
+	if(H.shock_stage > 10 && prob(3))
+		H.emote(pick("cry","whimper"))
+
+	if(H.shock_stage >= 40 && prob(3))
+		H.emote("scream")
+
+	if(!H.buckled && H.lying && H.shock_stage >= 60 && prob(3))
+		H.custom_emote("thrashes in agony")
+
+/datum/species/monkey/yiren
+	name = "Yiren"
+	name_plural = "Yiren"
+
+	icobase = 'icons/mob/human_races/r_yiren.dmi'
+	deform = 'icons/mob/human_races/r_yiren.dmi'
+
+	flesh_color = "#afa59e"
+	base_color = "#333333"
+
+	tail = null
+	eyes = "blank_s"
+
+/datum/species/monkey/yiren/New()
+	..()
+	equip_adjust = list(
+		WEAR_R_HAND = list("[NORTH]" = list("x" = 1, "y" = 3), "[EAST]" = list("x" = -3, "y" = 2), "[SOUTH]" = list("x" = -1, "y" = 3), "[WEST]" = list("x" = 3, "y" = 2)),
+		WEAR_L_HAND = list("[NORTH]" = list("x" = -1, "y" = 3), "[EAST]" = list("x" = 3, "y" = 2), "[SOUTH]" = list("x" = 1, "y" = 3), "[WEST]" = list("x" = -3, "y" = 2)),
+		WEAR_BELT = list("[NORTH]" = list("x" = 0, "y" = 3), "[EAST]" = list("x" = 0, "y" = 3), "[SOUTH]" = list("x" = 0, "y" = 3), "[WEST]" = list("x" = 0, "y" = 3)),
+		WEAR_SHOES = list("[NORTH]" = list("x" = 0, "y" = 6), "[EAST]" = list("x" = -1, "y" = 6), "[SOUTH]" = list("x" = 0, "y" = 6), "[WEST]" = list("x" = 1, "y" = 6)),
+		WEAR_HEAD = list("[NORTH]" = list("x" = 0, "y" = 0), "[EAST]" = list("x" = -2, "y" = 0), "[SOUTH]" = list("x" = 0, "y" = 0), "[WEST]" = list("x" = 2, "y" = 0)),
+		WEAR_MASK = list("[NORTH]" = list("x" = 0, "y" = 0), "[EAST]" = list("x" = -1, "y" = 0), "[SOUTH]" = list("x" = 0, "y" = 0), "[WEST]" = list("x" = 1, "y" = 0))
+	)
+
+/datum/species/monkey/farwa
+	name = "Farwa"
+	name_plural = "Farwa"
+
+	icobase = 'icons/mob/human_races/r_farwa.dmi'
+	deform = 'icons/mob/human_races/r_farwa.dmi'
+
+	flesh_color = "#afa59e"
+	base_color = "#333333"
+	tail = "farwatail"
+	eyes = "blank_s"
+
+/datum/species/monkey/farwa/New()
+	..()
+	equip_adjust = list(
+		WEAR_R_HAND = list("[NORTH]" = list("x" = 1, "y" = 3), "[EAST]" = list("x" = -3, "y" = 2), "[SOUTH]" = list("x" = -1, "y" = 3), "[WEST]" = list("x" = 3, "y" = 2)),
+		WEAR_L_HAND = list("[NORTH]" = list("x" = -1, "y" = 3), "[EAST]" = list("x" = 3, "y" = 2), "[SOUTH]" = list("x" = 1, "y" = 3), "[WEST]" = list("x" = -3, "y" = 2)),
+		WEAR_BELT = list("[NORTH]" = list("x" = 0, "y" = 3), "[EAST]" = list("x" = 0, "y" = 3), "[SOUTH]" = list("x" = 0, "y" = 3), "[WEST]" = list("x" = 0, "y" = 3)),
+		WEAR_GLASSES = list("[NORTH]" = list("x" = 0, "y" = -2), "[EAST]" = list("x" = -3, "y" = -2), "[SOUTH]" = list("x" = 0, "y" = -2), "[WEST]" = list("x" = 3, "y" = -2)),
+		WEAR_SHOES = list("[NORTH]" = list("x" = 0, "y" = 7), "[EAST]" = list("x" = -1, "y" = 7), "[SOUTH]" = list("x" = 0, "y" = 7), "[WEST]" = list("x" = 1, "y" = 7)),
+		WEAR_HEAD = list("[NORTH]" = list("x" = 0, "y" = -2), "[EAST]" = list("x" = -2, "y" = -2), "[SOUTH]" = list("x" = 0, "y" = -2), "[WEST]" = list("x" = 2, "y" = -2)),
+		WEAR_MASK = list("[NORTH]" = list("x" = 0, "y" = -3), "[EAST]" = list("x" = -1, "y" = -3), "[SOUTH]" = list("x" = 0, "y" = -3), "[WEST]" = list("x" = 1, "y" = -3))
+	)
+
+/datum/species/monkey/neaera
+	name = "Neaera"
+	name_plural = "Neaera"
+
+	icobase = 'icons/mob/human_races/r_neaera.dmi'
+	deform = 'icons/mob/human_races/r_neaera.dmi'
+
+	flesh_color = "#8cd7a3"
+	blood_color = "#1d2cbf"
+	tail = null
+
+/datum/species/monkey/neaera/New()
+	..()
+	equip_adjust = list(
+		WEAR_R_HAND = list("[NORTH]" = list("x" = 1, "y" = 3), "[EAST]" = list("x" = -3, "y" = 2), "[SOUTH]" = list("x" = -1, "y" = 3), "[WEST]" = list("x" = 3, "y" = 2)),
+		WEAR_L_HAND = list("[NORTH]" = list("x" = -1, "y" = 3), "[EAST]" = list("x" = 3, "y" = 2), "[SOUTH]" = list("x" = 1, "y" = 3), "[WEST]" = list("x" = -3, "y" = 2)),
+		WEAR_BELT = list("[NORTH]" = list("x" = 0, "y" = 3), "[EAST]" = list("x" = 0, "y" = 3), "[SOUTH]" = list("x" = 0, "y" = 3), "[WEST]" = list("x" = 0, "y" = 3)),
+		WEAR_GLASSES = list("[NORTH]" = list("x" = 0, "y" = -2), "[EAST]" = list("x" = -3, "y" = -2), "[SOUTH]" = list("x" = 0, "y" = -2), "[WEST]" = list("x" = 3, "y" = -2)),
+		WEAR_SHOES = list("[NORTH]" = list("x" = 0, "y" = 7), "[EAST]" = list("x" = -1, "y" = 7), "[SOUTH]" = list("x" = 0, "y" = 7), "[WEST]" = list("x" = 1, "y" = 7)),
+		WEAR_HEAD = list("[NORTH]" = list("x" = 0, "y" = -2), "[EAST]" = list("x" = -2, "y" = -2), "[SOUTH]" = list("x" = 0, "y" = -2), "[WEST]" = list("x" = 2, "y" = -2)),
+		WEAR_MASK = list("[NORTH]" = list("x" = 0, "y" = -3), "[EAST]" = list("x" = -1, "y" = -3), "[SOUTH]" = list("x" = 0, "y" = -3), "[WEST]" = list("x" = 1, "y" = -3))
+	)
+
+/datum/species/monkey/stok
+	name = "Stok"
+	name_plural = "Stok"
+
+	icobase = 'icons/mob/human_races/r_stok.dmi'
+	deform = 'icons/mob/human_races/r_stok.dmi'
+
+	tail = "stoktail"
+	eyes = "blank_s"
+	flesh_color = "#34af10"
+	base_color = "#066000"
+
+/datum/species/monkey/stok/New()
+	..()
+	equip_adjust = list(
+		WEAR_R_HAND = list("[NORTH]" = list("x" = 1, "y" = 3), "[EAST]" = list("x" = -3, "y" = 2), "[SOUTH]" = list("x" = -1, "y" = 3), "[WEST]" = list("x" = 3, "y" = 2)),
+		WEAR_L_HAND = list("[NORTH]" = list("x" = -1, "y" = 3), "[EAST]" = list("x" = 3, "y" = 2), "[SOUTH]" = list("x" = 1, "y" = 3), "[WEST]" = list("x" = -3, "y" = 2)),
+		WEAR_BELT = list("[NORTH]" = list("x" = 0, "y" = 3), "[EAST]" = list("x" = 0, "y" = 3), "[SOUTH]" = list("x" = 0, "y" = 3), "[WEST]" = list("x" = 0, "y" = 3)),
+		WEAR_GLASSES = list("[NORTH]" = list("x" = 0, "y" = -3), "[EAST]" = list("x" = -3, "y" = -3), "[SOUTH]" = list("x" = 0, "y" = -3), "[WEST]" = list("x" = 3, "y" = -3)),
+		WEAR_SHOES = list("[NORTH]" = list("x" = 0, "y" = 7), "[EAST]" = list("x" = -1, "y" = 7), "[SOUTH]" = list("x" = 0, "y" = 7), "[WEST]" = list("x" = 1, "y" = 7)),
+		WEAR_HEAD = list("[NORTH]" = list("x" = 0, "y" = -3), "[EAST]" = list("x" = -2, "y" = -3), "[SOUTH]" = list("x" = 0, "y" = -3), "[WEST]" = list("x" = 2, "y" = -3)),
+		WEAR_BACK = list("[NORTH]" = list("x" = 0, "y" = 0), "[EAST]" = list("x" = -5, "y" = 0), "[SOUTH]" = list("x" = 0, "y" = 0), "[WEST]" = list("x" = 5, "y" = 0)),
+		WEAR_MASK = list("[NORTH]" = list("x" = 0, "y" = -3), "[EAST]" = list("x" = -1, "y" = -3), "[SOUTH]" = list("x" = 0, "y" = -3), "[WEST]" = list("x" = 1, "y" = -3))
+	)
+// end monky
 
 // Called when using the shredding behavior.
 /datum/species/proc/can_shred(var/mob/living/carbon/human/H)

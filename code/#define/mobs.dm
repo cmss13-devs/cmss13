@@ -464,3 +464,28 @@
 #define PRAE_DANCER_STATSBUFFED 2
 #define PRAE_DANCER_TAILATTACK_TYPE	4 // 0 = damage, 1 = pull/abduct
 #define PRAE_ROYALGUARD_ACIDSPRAY_TYPE 4 // 0 = cone, 1 = line
+
+var/list/default_onmob_icons = list(
+		WEAR_L_HAND = 'icons/mob/items_lefthand_0.dmi',
+		WEAR_R_HAND = 'icons/mob/items_righthand_0.dmi',
+		WEAR_BELT = 'icons/mob/belt.dmi',
+		WEAR_BACK = 'icons/mob/back.dmi',
+		WEAR_EAR = 'icons/mob/ears.dmi',
+		WEAR_GLASSES = 'icons/mob/eyes.dmi',
+		WEAR_ID = 'icons/mob/mob.dmi',
+		WEAR_UNIFORM = 'icons/mob/uniform_0.dmi',
+		WEAR_SUIT = 'icons/mob/suit_0.dmi',
+		WEAR_HEAD = 'icons/mob/head_0.dmi',
+		WEAR_SHOES = 'icons/mob/feet.dmi',
+		WEAR_MASK = 'icons/mob/mask.dmi',
+		WEAR_HANDCUFFED = 'icons/mob/mob.dmi',
+		WEAR_LEGCUFFED = 'icons/mob/mob.dmi',
+		WEAR_GLOVES = 'icons/mob/hands.dmi',
+		WEAR_S_STORE = 'icons/mob/suit_slot.dmi',
+		WEAR_ACCESSORIES = 'icons/mob/ties.dmi'
+		)
+
+// species names
+#define SPECIES_HUMAN "Human"
+#define SPECIES_YAUTJA "Yautja"
+#define SPECIES_MONKEY "Monkey"

@@ -180,14 +180,6 @@
 		"<span class='warning'>You climb out of [src] and get your bearings!")
 		update()
 
-//Monkeys can only pull the flush lever
-/obj/machinery/disposal/attack_paw(mob/user as mob)
-	if(stat & BROKEN)
-		return
-
-	flush = !flush
-	update()
-
 //AI as human but can't flush
 /obj/machinery/disposal/attack_ai(mob/user as mob)
 	interact(user, 1)

@@ -35,9 +35,6 @@
 		if(get_dist(user,src) <= 1) //not remotely though
 			return TryToSwitchState(user)
 
-/obj/structure/mineral_door/attack_paw(mob/user as mob)
-	return TryToSwitchState(user)
-
 /obj/structure/mineral_door/attack_hand(mob/user as mob)
 	return TryToSwitchState(user)
 

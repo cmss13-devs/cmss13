@@ -30,10 +30,6 @@
 	if(!ismaintdrone(user))
 		return src.attack_hand(user)
 
-
-/obj/machinery/computer/overwatch/attack_paw(var/mob/user as mob) //why monkey why
-	return src.attack_hand(user)
-
 /obj/machinery/computer/overwatch/attack_hand(mob/user)
 	if(..())  //Checks for power outages
 		return

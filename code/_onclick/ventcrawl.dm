@@ -39,9 +39,6 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/unary/vent_pump,
 	if(!is_mob_incapacitated() && pipe)
 		return pipe
 
-/mob/living/carbon/monkey/can_ventcrawl()
-	return 1
-
 /mob/living/simple_animal/mouse/can_ventcrawl()
 	return 1
 

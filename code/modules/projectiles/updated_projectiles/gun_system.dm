@@ -12,7 +12,10 @@
 	throw_range = 5
 	force 		= 5
 	attack_verb = null
-	sprite_sheet_id = 1
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/items_lefthand_1.dmi',
+		WEAR_R_HAND = 'icons/mob/items_righthand_1.dmi'
+		)
 	flags_atom = FPRINT|CONDUCT
 	flags_item = TWOHANDED
 	var/iff_enabled_current = FALSE
@@ -167,7 +170,7 @@
 		attachmentchoice = safepick(random_spawn_stock)
 		if(attachmentchoice)
 			var/obj/item/attachable/S = new attachmentchoice(src)
-			S.Attach(src)	
+			S.Attach(src)
 			attachmentchoice = FALSE
 
 	spawn(5) // necessary because attachment locations are defined later
@@ -894,7 +897,7 @@ and you're good to go.
 		if(world.time >= last_fired + added_delay + extra_delay) //check the last time it was fired.
 			extra_delay = 0
 		else
-			if (world.time % 3 && !istype(src,/obj/item/weapon/gun/smartgun/)) 
+			if (world.time % 3 && !istype(src,/obj/item/weapon/gun/smartgun/))
 				to_chat(user, SPAN_WARNING("[src] is not ready to fire again!")) //to prevent spam
 				return
 	return 1

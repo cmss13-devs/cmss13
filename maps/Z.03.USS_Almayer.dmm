@@ -14337,7 +14337,7 @@
 /area/almayer/hallways/aft_hallway)
 "aKN" = (
 /obj/structure/table/almayer,
-/obj/item/clothing/tie/red,
+/obj/item/clothing/accessory/red,
 /obj/item/staff/gentcane{
 	pixel_x = 5
 	},
@@ -38600,7 +38600,7 @@
 /area/almayer/squads/req)
 "bYx" = (
 /obj/structure/closet/secure_closet/cargotech,
-/obj/item/clothing/tie/storage/webbing,
+/obj/item/clothing/accessory/storage/webbing,
 /turf/open/floor/almayer{
 	tag = "icon-bluecorner (NORTH)";
 	icon_state = "cargo";

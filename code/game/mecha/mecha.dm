@@ -426,9 +426,6 @@
 		src.log_append_to_last("Armor saved.")
 	return
 
-/obj/mecha/attack_paw(mob/user as mob)
-	return src.attack_hand(user)
-
 /obj/mecha/attack_animal(mob/living/user as mob)
 	src.log_message("Attack by simple animal. Attacker - [user].",1)
 	if(user.melee_damage_upper == 0)
@@ -904,7 +901,7 @@
 		to_chat(usr, SPAN_NOTICE(" <B>The [src.name] is already occupied!</B>"))
 		src.log_append_to_last("Permission denied.")
 		return
-		
+
 	var/passed
 	if(src.operation_allowed(usr))
 		passed = 1

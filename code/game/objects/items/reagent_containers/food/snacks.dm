@@ -1501,7 +1501,7 @@
 	icon_state = "monkeycube"
 	bitesize = 12
 	filling_color = "#ADAC7F"
-	var/monkey_type = /mob/living/carbon/monkey
+	var/monkey_type = /mob/living/carbon/human/monkey
 
 	New()
 		..()
@@ -1547,13 +1547,6 @@
 			else 		//someone is having a bad day
 				E.createwound(CUT, 30)
 				E.embed(surprise)
-		else if (ismonkey(M))
-			M.visible_message(SPAN_DANGER("[M] suddenly tears in half!"))
-			var/mob/living/carbon/monkey/ook = new monkey_type(M.loc)
-			ook.name = "malformed [ook.name]"
-			ook.transform *= 0.6
-			ook.add_mob_blood(M)
-			M.gib()
 		..()
 
 	proc/Expand()
@@ -1573,27 +1566,33 @@
 
 /obj/item/reagent_container/food/snacks/monkeycube/farwacube
 	name = "farwa cube"
-	monkey_type = /mob/living/carbon/monkey/tajara
+	monkey_type = /mob/living/carbon/human/farwa
 /obj/item/reagent_container/food/snacks/monkeycube/wrapped/farwacube
 	name = "farwa cube"
-	monkey_type =/mob/living/carbon/monkey/tajara
+	monkey_type =/mob/living/carbon/human/farwa
 
 
 /obj/item/reagent_container/food/snacks/monkeycube/stokcube
 	name = "stok cube"
-	monkey_type = /mob/living/carbon/monkey/unathi
+	monkey_type = /mob/living/carbon/human/stok
 /obj/item/reagent_container/food/snacks/monkeycube/wrapped/stokcube
 	name = "stok cube"
-	monkey_type =/mob/living/carbon/monkey/unathi
+	monkey_type =/mob/living/carbon/human/stok
 
 
 /obj/item/reagent_container/food/snacks/monkeycube/neaeracube
 	name = "neaera cube"
-	monkey_type = /mob/living/carbon/monkey/skrell
+	monkey_type = /mob/living/carbon/human/neaera
 /obj/item/reagent_container/food/snacks/monkeycube/wrapped/neaeracube
 	name = "neaera cube"
-	monkey_type =/mob/living/carbon/monkey/skrell
+	monkey_type =/mob/living/carbon/human/neaera
 
+/obj/item/reagent_container/food/snacks/monkeycube/yirencube
+	name = "yiren cube"
+	monkey_type = /mob/living/carbon/human/yiren
+/obj/item/reagent_container/food/snacks/monkeycube/wrapped/yirencube
+	name = "yiren cube"
+	monkey_type =/mob/living/carbon/human/yiren
 
 /obj/item/reagent_container/food/snacks/spellburger
 	name = "Spell Burger"

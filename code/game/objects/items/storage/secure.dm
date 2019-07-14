@@ -30,9 +30,6 @@
 		..()
 		to_chat(user, "The service panel is [src.open ? "open" : "closed"].")
 
-	attack_paw(mob/user as mob)
-		return attack_hand(user)
-
 	attackby(obj/item/W as obj, mob/user as mob)
 		if(locked)
 			if (istype(W, /obj/item/tool/screwdriver))

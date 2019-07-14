@@ -10,6 +10,8 @@
 	w_class = 5
 	allowed = list(/obj/item/weapon/gun)//Guns only.
 	uniform_restricted = list(/obj/item/clothing/under)
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_C, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMOR_C, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S)
 
 /obj/item/clothing/suit/armor/mob_can_equip(mob/living/carbon/human/M, slot, disable_warning = 0)
 	. = ..()
@@ -41,7 +43,6 @@
 	desc = "A flak jacket used by dropship pilots to protect themselves while flying in the cockpit. Excels in protecting the wearer against high-velocity solid projectiles."
 	icon = 'icons/obj/clothing/cm_suits.dmi'
 	icon_state = "pilot"
-	sprite_sheet_id = 1
 	blood_overlay_type = "armor"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO
@@ -70,9 +71,14 @@
 		/obj/item/storage/belt/gun/m4a3,
 		/obj/item/storage/belt/gun/m44)
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/pilot)
-	New()
-		select_gamemode_skin(/obj/item/clothing/suit/armor/vest/pilot)
-		..()
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
+	item_icons = list(
+		WEAR_SUIT = 'icons/mob/suit_1.dmi'
+	)
+
+/obj/item/clothing/suit/armor/vest/pilot/New()
+	select_gamemode_skin(/obj/item/clothing/suit/armor/vest/pilot)
+	..()
 
 /obj/item/clothing/suit/armor/vest/dutch
 	name = "armored jacket"

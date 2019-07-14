@@ -40,9 +40,6 @@ var/bomb_set = FALSE
 		return
 	..()
 
-/obj/machinery/nuclearbomb/attack_paw(mob/user as mob)
-	return attack_hand(user)
-
 /obj/machinery/nuclearbomb/attack_hand(mob/user as mob)
 	if(user.is_mob_incapacitated() || !user.canmove || get_dist(src, user) > 1 || isAI(user))
 		return

@@ -115,11 +115,6 @@
 /obj/machinery/door/attack_ai(mob/user)
 	return src.attack_hand(user)
 
-
-/obj/machinery/door/attack_paw(mob/user)
-	return src.attack_hand(user)
-
-
 /obj/machinery/door/attack_hand(mob/user)
 	return try_to_activate_door(user)
 

@@ -124,8 +124,8 @@
 		/obj/item/storage/belt/shotgun = round(scale * 10),
 
 		// WEBBINGS
-		/obj/item/clothing/tie/storage/brown_vest = round(scale * 2),
-		/obj/item/clothing/tie/storage/webbing = round(scale * 5),
+		/obj/item/clothing/accessory/storage/brown_vest = round(scale * 2),
+		/obj/item/clothing/accessory/storage/webbing = round(scale * 5),
 
 		// POUCHES
 		/obj/item/storage/pouch/construction = round(scale * 2),
@@ -194,9 +194,9 @@
 		/obj/item/storage/backpack/marine = round(scale * 10),
 		/obj/item/storage/belt/marine = round(scale * 10),
 		/obj/item/storage/belt/shotgun = round(scale * 10),
-		/obj/item/clothing/tie/storage/webbing = round(scale * 5),
-		/obj/item/clothing/tie/storage/brown_vest = round(scale * 5),
-		/obj/item/clothing/tie/holster = round(scale * 5),
+		/obj/item/clothing/accessory/storage/webbing = round(scale * 5),
+		/obj/item/clothing/accessory/storage/brown_vest = round(scale * 5),
+		/obj/item/clothing/accessory/holster = round(scale * 5),
 		/obj/item/storage/belt/gun/m4a3 = round(scale * 10),
 		/obj/item/storage/belt/gun/m44 = round(scale * 5),
 		/obj/item/storage/large_holster/m39 = round(scale * 5),
@@ -605,7 +605,7 @@
 	wrenchable = FALSE
 
 	products = list(
-						/obj/item/clothing/tie/storage/webbing = 1,
+						/obj/item/clothing/accessory/storage/webbing = 1,
 						/obj/item/storage/box/m56_system = 1,
 						/obj/item/smartgun_powerpack = 1,
 						/obj/item/storage/pouch/magazine = 1,
@@ -629,7 +629,7 @@
 	products = list(
 						/obj/item/clothing/suit/storage/marine/leader = 1,
 						/obj/item/clothing/head/helmet/marine/leader = 1,
-						/obj/item/clothing/tie/storage/webbing = 1,
+						/obj/item/clothing/accessory/storage/webbing = 1,
 						/obj/item/explosive/plastique = 1,
 						/obj/item/explosive/grenade/smokebomb = 3,
 						/obj/item/device/binoculars/tactical = 1,

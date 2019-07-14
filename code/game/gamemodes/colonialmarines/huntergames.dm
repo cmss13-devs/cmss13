@@ -40,7 +40,7 @@
 								100; /obj/item/storage/backpack/yautja, \
 								100; /obj/item/storage/belt/knifepouch, \
 								100; /obj/item/storage/belt/utility/full, \
-								100; /obj/item/clothing/tie/storage/webbing, \
+								100; /obj/item/clothing/accessory/storage/webbing, \
 								)
 
 #define HUNTER_OKAY_ITEM  pick(\

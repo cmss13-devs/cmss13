@@ -142,7 +142,7 @@
 	..()
 	new /obj/item/storage/belt/utility/full(src)
 	new /obj/item/clothing/glasses/welding(src)
-	new /obj/item/clothing/tie/storage/webbing(src)
+	new /obj/item/clothing/accessory/storage/webbing(src)
 
 /obj/structure/closet/secure_closet/marine/engi/select_gamemode_equipment(gamemode)
 	..()
@@ -202,7 +202,7 @@
 	..()
 	new /obj/item/storage/belt/medical/combatLifesaver(src)
 	new /obj/item/clothing/glasses/hud/health(src)
-	new /obj/item/clothing/tie/storage/webbing(src)
+	new /obj/item/clothing/accessory/storage/webbing(src)
 	new /obj/item/roller/medevac(src)
 	new /obj/item/device/defibrillator(src)
 
@@ -362,7 +362,7 @@
 	new /obj/item/storage/pouch/document(src)
 	new /obj/item/device/motiondetector/intel(src)
 	new /obj/item/tool/crowbar(src)
-	new /obj/item/clothing/tie/storage/webbing(src)
+	new /obj/item/clothing/accessory/storage/webbing(src)
 	new /obj/item/stack/fulton(src)
 
 /obj/structure/closet/secure_closet/staff_officer/intel/select_gamemode_equipment(gamemode)
@@ -413,7 +413,7 @@
 	..()
 	new /obj/item/clothing/head/beret/cm/red(src)
 	new /obj/item/clothing/gloves/black(src)
-	new /obj/item/clothing/tie/holster/armpit(src)
+	new /obj/item/clothing/accessory/holster/armpit(src)
 	new /obj/item/clothing/shoes/marine(src)
 	new /obj/item/clothing/under/marine/mp(src)
 	new /obj/item/clothing/suit/storage/marine/MP(src)
@@ -444,7 +444,7 @@
 /obj/structure/closet/secure_closet/warrant_officer/New()
 	..()
 	new /obj/item/clothing/head/beret/cm/wo(src)
-	new /obj/item/clothing/tie/holster/armpit(src)
+	new /obj/item/clothing/accessory/holster/armpit(src)
 	new /obj/item/clothing/shoes/marine(src)
 	new /obj/item/clothing/under/marine/officer/warrant(src)
 	new /obj/item/clothing/suit/storage/marine/MP/WO(src)
@@ -472,7 +472,7 @@
 
 /obj/structure/closet/secure_closet/military_officer_spare/New()
 	..()
-	new /obj/item/clothing/tie/holster/armpit(src)
+	new /obj/item/clothing/accessory/holster/armpit(src)
 	new /obj/item/storage/backpack/security(src)
 	new /obj/item/clothing/shoes/marine(src)
 	new /obj/item/clothing/under/marine/mp(src)
@@ -483,7 +483,7 @@
 	new /obj/item/device/radio/headset/almayer/mmpo(src)
 	new /obj/item/clothing/gloves/black(src)
 	new /obj/item/device/radio/headset/almayer/mmpo(src)
-	new /obj/item/clothing/tie/holster/waist(src)
+	new /obj/item/clothing/accessory/holster/waist(src)
 
 //ALMAYER MEDICAL CLOSET
 /obj/structure/closet/secure_closet/medical_doctor

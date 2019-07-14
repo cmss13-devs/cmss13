@@ -1,4 +1,3 @@
-
 /datum/equipment_preset/uscm
 	name = "USCM"
 
@@ -152,9 +151,8 @@
 		backItem = /obj/item/storage/backpack/marine
 
 	var/obj/item/clothing/under/marine/officer/intel/U = new(H)
-	var/obj/item/clothing/tie/storage/webbing/W = new()
-	U.hastie = W
-	W.on_attached(U)
+	var/obj/item/clothing/accessory/storage/webbing/W = new()
+	U.attach_accessory(H, W)
 
 	H.equip_to_slot_or_del(U, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_EAR)
@@ -464,7 +462,7 @@
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/tie/storage/webbing(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/webbing(H), WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/storage/large_holster/m39/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(H), WEAR_IN_BACK)

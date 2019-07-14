@@ -667,7 +667,7 @@
 	else
 		if(marine_spawns.len) picked = pick(marine_spawns)
 
-		var/obj/item/clothing/tie/storage/webbing/W
+		var/obj/item/clothing/accessory/storage/webbing/W
 		var/obj/item/clothing/under/U
 
 		switch(given_role)
@@ -675,8 +675,7 @@
 				U = new /obj/item/clothing/under/marine(H)
 				H.equip_to_slot_or_del(U, WEAR_BODY)
 				W = new()
-				W.on_attached(U, H)
-				U.hastie = W
+				U.attach_accessory(H, W)
 
 				H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/leader(H), WEAR_HEAD)
 				H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/leader(H), WEAR_JACKET)
@@ -689,8 +688,7 @@
 				U = new /obj/item/clothing/under/marine/engineer(H)
 				H.equip_to_slot_or_del(U, WEAR_BODY)
 				W = new()
-				W.on_attached(U, H)
-				U.hastie = W
+				U.attach_accessory(H, W)
 
 				H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
 				H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tech(H), WEAR_HEAD)
@@ -719,8 +717,7 @@
 				U = new /obj/item/clothing/under/marine/medic(H)
 				H.equip_to_slot_or_del(U, WEAR_BODY)
 				W = new()
-				W.on_attached(U, H)
-				U.hastie = W
+				U.attach_accessory(H, W)
 
 				H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/medic(H), WEAR_HEAD)
 				H.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(H), WEAR_FACE)
@@ -746,8 +743,8 @@
 				U = new /obj/item/clothing/under/marine(H)
 				H.equip_to_slot_or_del(U, WEAR_BODY)
 				W = new()
-				W.on_attached(U, H)
-				U.hastie = W
+				U.attach_accessory(H, W)
+
 				random_primary = !random_primary
 				switch(shuffle1)
 					if(1 to 11) //Smartgunner. Has an okay secondary and some grenades. Same as the classic specs in Aliens.

@@ -29,10 +29,6 @@
 /obj/machinery/embedded_controller/attack_ai(mob/user as mob)
 	src.ui_interact(user)
 
-/obj/machinery/embedded_controller/attack_paw(mob/user as mob)
-	to_chat(user, "You do not have the dexterity to use this.")
-	return
-
 /obj/machinery/embedded_controller/attack_hand(mob/user as mob)
 	src.ui_interact(user)
 

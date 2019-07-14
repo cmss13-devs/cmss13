@@ -282,7 +282,7 @@
 			if("predalien")			M.change_mob_type( /mob/living/carbon/Xenomorph/Predalien , null, null, delmob )
 
 			if("human")				M.change_mob_type( /mob/living/carbon/human , null, null, delmob, href_list["species"])
-			if("monkey")			M.change_mob_type( /mob/living/carbon/monkey , null, null, delmob )
+			if("monkey")			M.change_mob_type( /mob/living/carbon/human/monkey , null, null, delmob )
 			if("robot")				M.change_mob_type( /mob/living/silicon/robot , null, null, delmob )
 			if("cat")				M.change_mob_type( /mob/living/simple_animal/cat , null, null, delmob )
 			if("runtime")			M.change_mob_type( /mob/living/simple_animal/cat/Runtime , null, null, delmob )
@@ -1370,7 +1370,7 @@
 				else
 					foo += text("\[ <B>Authorized</B>|")
 				if(M.start)
-					if(!istype(M, /mob/living/carbon/monkey))
+					if(!istype(M, /mob/living/carbon/human/monkey))
 						foo += text("<A HREF='?src=\ref[];monkeyone=\ref[]'>Monkeyize</A>|", src, M)
 					else
 						foo += text("<B>Monkeyized</B>|")

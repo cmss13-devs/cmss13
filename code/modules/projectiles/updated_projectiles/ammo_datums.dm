@@ -326,9 +326,9 @@
 	shell_speed = config.reg_shell_speed
 
 /datum/ammo/bullet/pistol/mankey/on_hit_mob(mob/M,obj/item/projectile/P)
-	if(P && P.loc && !M.stat && !istype(M,/mob/living/carbon/monkey))
+	if(P && P.loc && !M.stat && !istype(M,/mob/living/carbon/human/monkey))
 		P.visible_message(SPAN_DANGER("The [src] chimpers furiously!"))
-		new /mob/living/carbon/monkey(P.loc)
+		new /mob/living/carbon/human/monkey(P.loc)
 
 /datum/ammo/bullet/pistol/smart
 	name = "smartpistol bullet"

@@ -368,10 +368,6 @@
 	else
 		to_chat(usr, "\icon[src]<span class='warning'>Error: Unable to access your account. Please contact technical support if problem persists.</span>")
 
-
-/obj/machinery/vending/attack_paw(mob/user as mob)
-	return attack_hand(user)
-
 /obj/machinery/vending/attack_ai(mob/user as mob)
 	if(!(stat & (BROKEN|NOPOWER) || tipped_level))
 		return ui_interact(user)
@@ -632,7 +628,7 @@
 
 /obj/machinery/vending/proc/release_item(datum/data/vending_product/R, delay_vending = 0, dump_product = 0)
 	set waitfor = 0
-	
+
 	if(delay_vending)
 		use_power(vend_power_usage)	//actuators and stuff
 		if (icon_vend) flick(icon_vend,src) //Show the vending animation if needed

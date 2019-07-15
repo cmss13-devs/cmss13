@@ -512,6 +512,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		if(ismonkey(H))
 			continue
 		H.set_species(pick("Monkey", "Yiren", "Stok", "Farwa", "Neaera"))
+		H.is_important = TRUE
 		if(random_names)
 			H.real_name = "[lowertext(H.species.name)] ([rand(1, 999)])"
 			H.name = H.real_name

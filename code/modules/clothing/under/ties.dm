@@ -236,12 +236,13 @@
 //patches
 /obj/item/clothing/accessory/patch
 	name = "\improper USCM patch"
-	desc = "A fire resistant shoulder patch, worn by the men an women of the United States Colonial Marines."
+	desc = "A fire resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
 	icon_state = "uscmpatch"
+	on_rolled = list("down" = "none")
 
 /obj/item/clothing/accessory/patch/falcon
 	name = "\improper Falling Falcons patch"
-	desc = "A fire resistant shoulder patch, worn by the men an women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
+	desc = "A fire resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
 
 //ranks
@@ -307,7 +308,7 @@
 
 /obj/item/clothing/accessory/ranks/o3
 	name = "rank boards"
-	rank_short = "O13"
+	rank_short = "O3"
 	icon_state = "ranks_officer"
 
 /obj/item/clothing/accessory/ranks/o4

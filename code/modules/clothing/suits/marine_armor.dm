@@ -112,6 +112,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	var/specialty = "M3 pattern marine" //Same thing here. Give them a specialty so that they show up correctly in vendors.
 	w_class = 5
 	uniform_restricted = list(/obj/item/clothing/under/marine)
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
 	time_to_unequip = 20
 	time_to_equip = 20
 

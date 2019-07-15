@@ -316,9 +316,9 @@ Only checks living mobs with a client attached.
 		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
 			if(ishuman(M) && !isYautja(M) && !(M.status_flags & XENO_HOST) && !iszombie(M))
 				var/mob/living/carbon/human/H = M
-				if(H.species && H.species.name == "Human") //only real humans count
+				if((H.species && H.species.name == "Human") || (H.is_important)) //only real humans count, or those we have set to also be included
 					num_humans++
-			else 
+			else
 				var/area/A = get_area(M)
 				if(isXeno(M))
 					if (A.flags_atom & AREA_AVOID_BIOSCAN)

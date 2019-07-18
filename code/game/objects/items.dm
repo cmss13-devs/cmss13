@@ -600,9 +600,6 @@ cases. Override_icon_state should be a list.*/
 		calee = _calee
 
 	handle(sender, datum/event_args/event_args)
-		var/datum/event_args/mob_movement/ev_args = event_args
-		if(istype(ev_args) && !ev_args.moving)
-			return
 		if(calee && calee.client) //Dropped when disconnected, whoops
 			if(zooming_item && zooming_item.zoom && calee) //sanity check
 				zooming_item.zoom(calee)

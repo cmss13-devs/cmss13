@@ -66,6 +66,7 @@
 	if (statpanel("Stats"))
 		stat("Operation Time:","[worldtime2text()]")
 		stat("Security Level:","[uppertext(get_security_level())]")
+		stat("DEFCON Level:","[defcon_controller.current_defcon_level]")
 
 		if(ticker && ticker.mode && ticker.mode.active_lz)
 			stat("Primary LZ: ", ticker.mode.active_lz.loc.loc.name)

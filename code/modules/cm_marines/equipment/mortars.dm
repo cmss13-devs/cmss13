@@ -341,16 +341,17 @@
 
 	return //Nope
 
-/obj/structure/closet/crate/mortar_ammo
-
+/obj/structure/closet/crate/secure/mortar_ammo
 	name = "\improper M402 mortar ammo crate"
 	desc = "A crate containing live mortar shells with various payloads. DO NOT DROP. KEEP AWAY FROM FIRE SOURCES."
 	icon = 'icons/Marine/mortar.dmi'
-	icon_state = "closed_mortar_crate"
-	icon_opened = "open_mortar_crate"
-	icon_closed = "closed_mortar_crate"
+	icon_state = "secure_locked_mortar"
+	icon_opened = "secure_open_mortar"
+	icon_locked = "secure_locked_mortar"
+	icon_unlocked = "secure_unlocked_mortar"
+	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_CARGO, ACCESS_MARINE_ENGPREP)
 
-/obj/structure/closet/crate/mortar_ammo/full/New()
+/obj/structure/closet/crate/secure/mortar_ammo/full/New()
 	..()
 	new /obj/item/mortal_shell/he(src)
 	new /obj/item/mortal_shell/he(src)
@@ -373,11 +374,11 @@
 	new /obj/item/mortal_shell/flash(src)
 	new /obj/item/mortal_shell/flash(src)
 
-/obj/structure/closet/crate/mortar_ammo/mortar_kit
+/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit
 	name = "\improper M402 mortar kit"
 	desc = "A crate containing a basic set of a mortar and some shells, to get an engineer started."
 
-/obj/structure/closet/crate/mortar_ammo/mortar_kit/New()
+/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit/New()
 	..()
 	new /obj/item/mortar_kit(src)
 	new /obj/item/mortal_shell/he(src)

@@ -2131,6 +2131,7 @@ obj/machinery/cm_vending/sorted/uniform_supply
 							list("M3 Pattern Ridged Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padless_lines, "black"),
 							list("M3 Pattern Carrier Marine Armor", 20, /obj/item/clothing/suit/storage/marine/carrier, "black"),
 							list("M3 Pattern Skull Marine Armor", 20, /obj/item/clothing/suit/storage/marine/skull, "black"),
+							list("M3 Pattern Smooth Marine Armor", 20, /obj/item/clothing/suit/storage/marine/smooth, "black"),
 							list("M3-H Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/class/heavy, "black"),
 							list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/class/light, "black"),
 							list("M10 Pattern Marine Helmet", 20, /obj/item/clothing/head/helmet/marine, "black")

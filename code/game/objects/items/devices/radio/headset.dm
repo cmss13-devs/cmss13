@@ -280,7 +280,7 @@
 
 /obj/item/device/radio/headset/almayer/cmo
 	name = "chief medical officer's headset"
-	desc = "A headset issued to the top brass of medical professionals. Channels are as follows: :v - marine command, :e - medical"
+	desc = "A headset issued to the top brass of medical professionals. Channels are as follows: :v - marine command, :m - medical"
 	icon_state = "cmo_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/cmo
 

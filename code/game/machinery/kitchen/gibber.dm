@@ -178,8 +178,8 @@
 		var/sourcetotalreagents = 0
 
 		if(istype(src.occupant, /mob/living/carbon/Xenomorph) ) // why are you gibbing aliens? oh well
-			totalslabs = 3
-			sourcetotalreagents = src.occupant.reagents.total_volume
+			visible_message(SPAN_DANGER("You hear a loud squelchy grinding sound, then the [src] suddenly stops working."))
+			return
 		else if( istype(src.occupant, /mob/living/simple_animal/cow) || istype(src.occupant, /mob/living/simple_animal/hostile/bear) )
 			totalslabs = 2
 		else

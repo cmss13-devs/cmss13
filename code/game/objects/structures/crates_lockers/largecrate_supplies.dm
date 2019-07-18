@@ -27,7 +27,7 @@
 				/obj/structure/largecrate/supply/weapons/pistols = 2,
 				/obj/structure/largecrate/supply/weapons/flamers = 2,
 				/obj/structure/largecrate/supply/weapons/hpr = 2,
-				/obj/structure/closet/crate/mortar_ammo/mortar_kit = 1,
+				/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit = 1,
 				/obj/structure/largecrate/supply/explosives/mines = 2,
 				/obj/structure/largecrate/supply/explosives/grenades = 2
 				)

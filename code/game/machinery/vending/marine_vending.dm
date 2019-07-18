@@ -581,7 +581,7 @@
 					/obj/item/storage/box/m56d_hmg = 1
 					)
 	shared = list(
-				/obj/structure/closet/crate/mortar_ammo/mortar_kit = 1,
+				/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit = 1,
 				)
 	prices = list()
 

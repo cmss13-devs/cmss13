@@ -789,7 +789,7 @@ AMMO
 					/obj/item/mortal_shell/he,
 					/obj/item/mortal_shell/he
 					)
-	containertype = /obj/structure/closet/crate/mortar_ammo
+	containertype = /obj/structure/closet/crate/secure/mortar_ammo
 	containername = "\improper M402 mortar ammo crate"
 	group = "Ammo"
 
@@ -806,7 +806,7 @@ AMMO
 					/obj/item/mortal_shell/incendiary,
 					/obj/item/mortal_shell/incendiary
 					)
-	containertype = /obj/structure/closet/crate/mortar_ammo
+	containertype = /obj/structure/closet/crate/secure/mortar_ammo
 	containername = "\improper M402 mortar ammo crate"
 	group = "Ammo"
 
@@ -825,7 +825,7 @@ AMMO
 					/obj/item/mortal_shell/flare,
 					/obj/item/mortal_shell/flare
 					)
-	containertype = /obj/structure/closet/crate/mortar_ammo
+	containertype = /obj/structure/closet/crate/secure/mortar_ammo
 	containername = "\improper M402 mortar ammo crate"
 	group = "Ammo"
 
@@ -844,7 +844,7 @@ AMMO
 					/obj/item/mortal_shell/smoke,
 					/obj/item/mortal_shell/smoke
 					)
-	containertype = /obj/structure/closet/crate/mortar_ammo
+	containertype = /obj/structure/closet/crate/secure/mortar_ammo
 	containername = "\improper M402 mortar ammo crate"
 	group = "Ammo"
 
@@ -863,6 +863,6 @@ AMMO
 					/obj/item/mortal_shell/flash,
 					/obj/item/mortal_shell/flash
 					)
-	containertype = /obj/structure/closet/crate/mortar_ammo
+	containertype = /obj/structure/closet/crate/secure/mortar_ammo
 	containername = "\improper M402 mortar ammo crate"
 	group = "Ammo"

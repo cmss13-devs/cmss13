@@ -182,6 +182,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return 0
 
 	stat("Time:","[worldtime2text()]")
+	stat("DEFCON Level:","[defcon_controller.current_defcon_level]")
 
 	if(EvacuationAuthority)
 		var/eta_status = EvacuationAuthority.get_status_panel_eta()

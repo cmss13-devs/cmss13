@@ -748,6 +748,10 @@ var/toggled_sec_HUD = 0
 	flesh_color = "#afa59e"
 	base_color = "#333333"
 
+	cold_level_1 = -1
+	cold_level_2 = -1
+	cold_level_3 = -1
+
 	tail = null
 	eyes = "blank_s"
 

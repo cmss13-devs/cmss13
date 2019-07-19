@@ -8,7 +8,7 @@
 
 	anchored = 1
 	density = 0
-	layer = TURF_LAYER
+	layer = WEED_LAYER
 	unacidable = 1
 	health = 1
 	var/weed_strength = 1

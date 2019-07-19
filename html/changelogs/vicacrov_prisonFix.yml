@@ -1,0 +1,14 @@
+author: Vicacrov
+
+delete-after: True
+
+changes: 
+  - tweak: "Made the following objects acidable: display cases, compression gear, arcade machines, girders in some cases."
+  - tweak: "Weeds no longer creep below catwalks."
+  - tweak: "Runners and larvae can no longer hide below vents or pipes (small layering tweak)."
+  - maptweak: "Prison is being reworked. For now, look for changes in Civilian Residentials and its VIP entrance."
+  - maptweak: "Prison now has non-reinforced windows. More reinforced ones will be replaced with them, gradually."
+  - maptweak: "On Prison, xenomorphs now only spawn in Civilian Residentials."
+  - bugfix: "Prison's cell windows are now destroyable."
+  - rscdel: "Removed the technical manuals from Prison Station, preparing for a smaller DEFCON change."
+  - rscdel: "Removed the Central Ring survivor spawnpoint."

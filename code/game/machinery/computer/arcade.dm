@@ -4,6 +4,7 @@
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "arcade"
 	circuit = "/obj/item/circuitboard/computer/arcade"
+	unacidable = 0
 	var/enemy_name = "Fury Fuhrer"
 	var/temp = "Sponsored by Weyland-Yutani and the United States Colonial Marines" //Temporary message, for attack messages, etc
 	var/player_hp = 30 //Player health/attack points

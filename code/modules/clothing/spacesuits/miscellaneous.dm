@@ -102,7 +102,6 @@
 	armor_bio = CLOTHING_ARMOR_ULTRAHIGH
 	armor_rad = CLOTHING_ARMOR_ULTRAHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	unacidable = 1
 
 /obj/item/clothing/suit/space/compression
 	name = "\improper MK.50 compression suit"
@@ -117,4 +116,3 @@
 	armor_bio = CLOTHING_ARMOR_ULTRAHIGH
 	armor_rad = CLOTHING_ARMOR_ULTRAHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	unacidable = 1

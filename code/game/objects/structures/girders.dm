@@ -244,13 +244,11 @@
 /obj/structure/girder/proc/update_state()
 	if (health <= 0)
 		icon_state = "[icon_state]_damaged"
-		unacidable = 1
 		density = 0
 	else
 		var/underscore_position =  findtext(icon_state,"_")
 		var/new_state = copytext(icon_state, 1, underscore_position)
 		icon_state = new_state
-		unacidable = 0
 		density = 1
 	buildctr = 0
 	repair_state = 0

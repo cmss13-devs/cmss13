@@ -5,13 +5,11 @@
 
 //#define AREA_LAYER 1
 
-//#define TURF_LAYER 2
+#define TURF_LAYER 2
 
 #define ABOVE_TURF_LAYER 2.01
 
 #define LATTICE_LAYER 2.15
-
-#define ANIMAL_HIDING_LAYER 2.2
 
 #define DISPOSAL_PIPE_LAYER 2.3
 
@@ -20,16 +18,18 @@
 #define ATMOS_PIPE_SUPPLY_LAYER 2.39
 #define ATMOS_PIPE_LAYER 2.4
 
-
 #define WIRE_LAYER 2.44
 #define WIRE_TERMINAL_LAYER 2.45
 
+#define UNDERFLOOR_OBJ_LAYER 2.46 //bluespace beacon, navigation beacon, etc
 
-#define UNDERFLOOR_OBJ_LAYER 2.5 //bluespace beacon, navigation beacon, etc
+#define CATWALK_LAYER 2.5 //catwalk overlay of /turf/open/floor/plating/plating_catwalk
 
-#define CATWALK_LAYER 2.51 //catwalk overlay of /turf/open/floor/plating/plating_catwalk
+#define WEED_LAYER 2.51	// Alien weeds and node layer
 
-#define ATMOS_DEVICE_LAYER 2.53 //vents, connector ports, atmos devices that should be above pipe layer.
+#define ATMOS_DEVICE_LAYER 2.52 //vents, connector ports, atmos devices that should be above pipe layer.
+
+#define ANIMAL_HIDING_LAYER 2.53
 
 #define FIREDOOR_OPEN_LAYER 2.549		//Right under poddoors
 #define PODDOOR_OPEN_LAYER 2.55		//Under doors and virtually everything that's "above the floor"

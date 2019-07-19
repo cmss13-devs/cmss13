@@ -1,7 +1,0 @@
-author: Vampmare
-
-delete-after: True
-
-changes: 
-  - bugfix: "Fixed being able to move in zoom. Sniping is sligtly worse until a more suitable fix is found."
-  - bugfix: "Yirens can now withstand the cold on Ice Colony."

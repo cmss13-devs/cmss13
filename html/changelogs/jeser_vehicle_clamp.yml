@@ -1,7 +1,0 @@
-author: jeser
-
-delete-after: True
-
-changes: 
-  - rscadd: "Added vehicle clamps for MPs to help dealing with law breaking TCs. They can be found in MP Armory in red alarm gun cabinet in the corner."
-  - imageadd: "Vehicle clamps item and on tank sprites by Triiodine."

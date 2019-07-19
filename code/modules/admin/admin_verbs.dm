@@ -93,6 +93,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/award_medal,
 	/client/proc/force_shuttle,
 	/client/proc/remove_players_from_vic,
+	/client/proc/remove_clamp_from_vic,
 )
 var/list/admin_verbs_ban = list(
 	/client/proc/unban_panel

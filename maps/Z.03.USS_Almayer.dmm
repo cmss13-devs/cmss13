@@ -58766,6 +58766,9 @@
 	dir = 8
 	},
 /obj/item/weapon/gun/shotgun/combat,
+/obj/item/vehicle_clamp,
+/obj/item/vehicle_clamp,
+/obj/item/vehicle_clamp,
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig)
 "wMG" = (

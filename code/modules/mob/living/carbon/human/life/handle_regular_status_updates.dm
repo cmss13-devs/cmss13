@@ -157,13 +157,3 @@
 		marskman_new = 0
 
 	return 1
-
-/mob/living/carbon/human/handle_knocked_down()
-	if(knocked_down && client)
-		AdjustKnockeddown(-species.knock_down_reduction)
-	return knocked_down
-
-/mob/living/carbon/human/handle_stunned()
-	if(stunned)
-		AdjustStunned(-species.stun_reduction)
-	return stunned

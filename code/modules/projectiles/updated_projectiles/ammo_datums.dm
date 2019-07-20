@@ -1347,27 +1347,26 @@
 
 		if(M.dazed || pass_down_the_line)
 			if(M.knocked_down < 5*effect_power)
-				M.AdjustKnockeddown(0.75 * effect_power) // KD them a bit more
+				M.AdjustKnockeddown(1 * effect_power) // KD them a bit more
 				if(!pass_down_the_line)
 					M.visible_message(SPAN_DANGER("[M] falls prone."))
 			pass_down_the_line = TRUE
 
 	if(M.superslowed || pass_down_the_line)
-		if(M.dazed < 5*effect_power)
+		if(M.dazed < 6*effect_power)
 			M.AdjustDazed(3 * effect_power) // Daze them a bit more
 			if(!pass_down_the_line)
 				M.visible_message(SPAN_DANGER("[M] is visibly confused."))
 		pass_down_the_line = TRUE
 
-	if(M.slowed || pass_down_the_line)
-		if(M.superslowed < 6*effect_power)
-			M.AdjustSuperslowed(5 * effect_power) // Superslow them a bit more
-			if(!pass_down_the_line)
-				M.visible_message(SPAN_DANGER("[M] movements are slowed."))
+	if(M.superslowed < 10*effect_power)
+		M.AdjustSuperslowed(4 * effect_power) // Superslow them a bit more
+		if(!pass_down_the_line)
+			M.visible_message(SPAN_DANGER("[M] movements are slowed."))
 		pass_down_the_line = TRUE
 
-	if(M.slowed < 10*effect_power || pass_down_the_line)
-		M.AdjustSlowed(4 * effect_power)
+	if(M.slowed < 20*effect_power)
+		M.AdjustSlowed(6 * effect_power)
 		if(!pass_down_the_line)
 			M.visible_message(SPAN_DANGER("[M] movements are slowed."))
 
@@ -1403,21 +1402,20 @@
 		pass_down_the_line = TRUE
 
 	if(M.superslowed || pass_down_the_line)
-		if(M.dazed < 5*effect_power)
+		if(M.dazed < 6*effect_power)
 			M.AdjustDazed(3 * effect_power) // Daze them a bit more
 			if(!pass_down_the_line)
 				M.visible_message(SPAN_DANGER("[M] is visibly confused."))
 		pass_down_the_line = TRUE
 
-	if(M.slowed || pass_down_the_line)
-		if(M.superslowed < 6*effect_power)
-			M.AdjustSuperslowed(5 * effect_power) // Superslow them a bit more
-			if(!pass_down_the_line)
-				M.visible_message(SPAN_DANGER("[M] movements are slowed."))
+	if(M.superslowed < 10*effect_power)
+		M.AdjustSuperslowed(4 * effect_power) // Superslow them a bit more
+		if(!pass_down_the_line)
+			M.visible_message(SPAN_DANGER("[M] movements are slowed."))
 		pass_down_the_line = TRUE
 
-	if(M.slowed < 10*effect_power || pass_down_the_line)
-		M.AdjustSlowed(4 * effect_power)
+	if(M.slowed < 20*effect_power)
+		M.AdjustSlowed(6 * effect_power)
 		if(!pass_down_the_line)
 			M.visible_message(SPAN_DANGER("[M] movements are slowed."))
 

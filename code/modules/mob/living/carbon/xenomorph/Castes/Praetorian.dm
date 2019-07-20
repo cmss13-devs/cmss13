@@ -21,7 +21,7 @@
 	deevolves_to = "Warrior"
 	spit_delay = 20
 	caste_desc = "The warleader of the hive."
-	aura_strength = 0.5 //Praetorian's aura starts strong. They are the Queen's right hand. .5 -> 1.5 -> 2.5 -> 3.5
+	aura_strength = 1.0 // Base Prae: 1.0 -> 2.0 -> 3.0 -> 4.0. Royal Guard: 2.0 -> 3.0 -> 4.0 -> 4.0. Dancer/Oppressor: .5 -> 1.5 -> 2.5 -> 3.5
 	spit_types = list(/datum/ammo/xeno/toxin/heavy, /datum/ammo/xeno/acid/heavy, /datum/ammo/xeno/sticky)
 	acid_level = 2
 
@@ -45,8 +45,8 @@
 	var/xenoarmor_screech_armorbuff = XENO_ARMOR_MOD_SMALL	 		 // Amount to buff xeno armor by (10)
 	var/xenoarmor_screech_explosivebuff = XENO_EXPOSIVEARMOR_MOD_VERYSMALL // Amount to buff xeno explosion armor by (30)
 	var/oppressor_grenade_cooldown = 400
-	var/oppressor_grenade_setup = 20
-	var/oppressor_grenade_fuse = 20
+	var/oppressor_grenade_setup = 12
+	var/oppressor_grenade_fuse = 12
 	var/oppressor_punch_cooldown = 75
 	var/oppressor_punch_fling_dist = 3
 	
@@ -59,8 +59,8 @@
 	var/tailattack_max_range = 2
 	var/tailattack_abduct_usetime_short = 25
 	var/tailattack_abduct_usetime_long = 35
-	var/tailattack_abduct_range = 4
-	var/tailattack_damagebuff = 12 //Bonus damage for impale attacks (2x coming out of a dance)
+	var/tailattack_abduct_range = 5
+	var/tailattack_damagebuff = 8 //Bonus damage for impale attacks (2x coming out of a dance)
 	var/dance_speed_buff = XENO_SPEED_MOD_VERYLARGE
 	var/dance_evasion_buff = XENO_EVASION_MOD_ULTRA + XENO_EVASION_MOD_MED // evasion base: 40. evasion w/ dance: 74
 	
@@ -69,7 +69,7 @@
 	caste_desc = "The warleader of the hive. It looks a little stronger."
 	upgrade = 1
 	tackle_chance = 50
-	aura_strength = 1.5
+	aura_strength = 2.0
 
 /datum/caste_datum/praetorian/elder
 	upgrade_name = "Elder"
@@ -78,7 +78,7 @@
 
 	spit_delay = 15
 	tackle_chance = 55
-	aura_strength = 2.5
+	aura_strength = 3.0
 
 /datum/caste_datum/praetorian/ancient
 	upgrade_name = "Ancient"
@@ -87,7 +87,7 @@
 
 	spit_delay = 12
 	tackle_chance = 55
-	aura_strength = 3.5
+	aura_strength = 4.0
 
 /datum/caste_datum/praetorian/primordial
 	upgrade_name = "Primordial"
@@ -101,7 +101,7 @@
 	armor_deflection = 60
 	tackle_chance = 60
 	speed = -0.9
-	aura_strength = 4.5
+	aura_strength = 5.0
 	max_health = XENO_UNIVERSAL_HPMULT * 350
 
 /mob/living/carbon/Xenomorph/Praetorian

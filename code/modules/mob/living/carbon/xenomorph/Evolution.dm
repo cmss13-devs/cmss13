@@ -230,5 +230,8 @@
 			hive.living_xeno_queen.set_queen_overwatch(new_xeno)
 		qdel(src)
 		new_xeno.xeno_jitter(25)
+
+		if (new_xeno.client)
+			new_xeno.client.mouse_pointer_icon = initial(new_xeno.client.mouse_pointer_icon)
 	else
 		to_chat(src, SPAN_WARNING("You quiver, but nothing happens. Hold still while evolving."))

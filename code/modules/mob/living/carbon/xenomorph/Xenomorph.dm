@@ -76,6 +76,9 @@
 	var/burn_damage_upper = 0
 	var/armor_deflection = 10
 	var/evasion = 0
+	
+	// Action to perform on the next click.
+	var/datum/action/xeno_action/activable/queued_action
 
 	// Temporary HP.
 	var/temp_health = 0 // As dumb as it sounds, literally just an HP buffer. Should be reset to 0 by whatever adds it to begin with.
@@ -292,6 +295,7 @@
 	if(oldXeno)
 		hivenumber = oldXeno.hivenumber
 		nicknumber = oldXeno.nicknumber
+
 	mutators.xeno = src
 	set_hivenumber(hivenumber)
 	update_caste()

@@ -12,3 +12,7 @@
 #define RESIN_NEST 8
 #define RESIN_STICKY 16
 #define RESIN_FAST 32
+
+#define XENO_ACTION_CLICK  0 // Just select the action (base). Toggles can use this too
+#define XENO_ACTION_ACTIVATE 1 // Actually use the action SHOULD ONLY BE USED ON ACTIVABLE ACTIONS OR ELSE WILL NOT WORK
+#define XENO_ACTION_QUEUE 2 // Tell the action handler to queue the action for next click

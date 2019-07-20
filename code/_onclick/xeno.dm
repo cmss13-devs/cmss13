@@ -45,6 +45,10 @@
 	if(next_move >= world.time)
 		return 1
 
+	if (queued_action)
+		handle_queued_action(A)
+		return 1
+
 	if(mods["middle"] && !mods["shift"])
 		if(selected_ability && middle_mouse_toggle)
 			selected_ability.use_ability(A)
@@ -72,6 +76,10 @@
 				client.mouse_pointer_icon = initial(client.mouse_pointer_icon)
 			return 1
 
+	if (queued_action)
+		handle_queued_action()
+		return 1
+
 	if(mods["middle"] && !mods["shift"])
 		if (selected_ability && middle_mouse_toggle)
 			selected_ability.use_ability(A)
@@ -88,6 +96,10 @@
 	if(!istype(A, /obj/screen))
 		if(is_charging)
 			stop_momentum(charge_dir)
+
+	if (queued_action)
+		handle_queued_action()
+		return 1
 
 	if(mods["middle"] && !mods["shift"])
 		if(selected_ability && middle_mouse_toggle)
@@ -122,6 +134,10 @@
 				if(X.stat != DEAD)
 					set_queen_overwatch(A)
 					return 1
+
+	if (queued_action)
+		handle_queued_action()
+		return 1
 
 	if(mods["middle"] && !mods["shift"])
 		if (selected_ability && middle_mouse_toggle)

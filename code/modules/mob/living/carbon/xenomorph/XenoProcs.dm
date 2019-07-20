@@ -610,3 +610,19 @@
 	crit_health = -1 // Do not put this at 0 or xeno's will just vanish on WO due to how the garbage collector works.
 
 
+// Handle queued actions.
+/mob/living/carbon/Xenomorph/proc/handle_queued_action(atom/A)
+	if (!queued_action || !istype(queued_action) || !(queued_action in actions))
+		return
+
+	if (queued_action.can_use_action() && queued_action.action_cooldown_check())
+		queued_action.use_ability(A)
+		
+	queued_action = null
+		
+	if(client)
+		client.mouse_pointer_icon = initial(client.mouse_pointer_icon) // Reset our mouse pointer when we no longer have an action queued.
+
+
+
+

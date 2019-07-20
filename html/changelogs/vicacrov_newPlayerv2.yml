@@ -1,6 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes: 
-  - tweak: "The new player window was updated to show more information. Once the round starts, it automatically refreshes as well."

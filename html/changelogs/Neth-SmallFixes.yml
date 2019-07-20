@@ -1,0 +1,7 @@
+author: Neth Iafin
+
+delete-after: True
+changes: 
+  - tweak: "Non-queen neuro requires 3 hits now (instead of 4) to knock down."
+  - tweak: "Extended neuro knockdown time to 1 second, small slow to 6 seconds, big slow to 4 seconds."
+  - bugfix: "Fixed species knockdown resistances not being taken into account."

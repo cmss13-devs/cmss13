@@ -765,7 +765,8 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	storage_slots = 2
 	unacidable = 1
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/PMC/commando)
-
+	item_state_slots = list(WEAR_SUIT = "commando_armor")
+	
 /obj/item/clothing/suit/storage/marine/veteran/PMC/commando
 	name = "\improper PMC commando armor"
 	desc = "A heavily armored suit built by who-knows-what for elite operations. It is a fully self-contained system and is heavily corrosion resistant."

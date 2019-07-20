@@ -576,6 +576,7 @@
 	name = "\improper PMC commando helmet"
 	desc = "A fully enclosed, armored helmet made for Weyland Yutani elite commandos."
 	icon_state = "commando_helmet"
+	item_state = "commando_helmet"
 	flags_armor_protection = HEAD|FACE|EYES
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH

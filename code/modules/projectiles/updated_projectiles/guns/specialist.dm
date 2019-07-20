@@ -390,15 +390,18 @@
 		..()
 		user.equip_to_slot_if_possible(magazine, WEAR_WAIST, 1, 0, 0, 1, 1)
 		
-/obj/item/weapon/gun/smartgun/unload(mob/user, reload_override, drop_override ,loc_override = 1)
+/obj/item/weapon/gun/smartgun/unload(mob/living/carbon/human/user, reload_override, drop_override, loc_override = 1)
 	if(powerpack_reload)
 		to_chat(user, "\icon[src] You have to change reload modes to reload manualy.")
 		return
-	if(!powerpack_reload)
+	else
 		if(current_mag)
 			src.current_mag.flags_inventory &= ~CANTSTRIP
 			src.current_mag.flags_item &= ~NODROP
+			if(istype(user))
+				user.belt = null
 		..()
+
 
 /obj/item/weapon/gun/smartgun/proc/toggle_reload_mode(mob/user)
 	if(!powerpack)
@@ -430,7 +433,7 @@
 	if(!powerpack_reload && pp)
 		shells_fired_now = 0
 		pp.rounds_remaining += current_mag.current_rounds
-		current_mag = null
+		qdel(current_mag)
 		flags_gun_features &= ~GUN_INTERNAL_MAG
 		return TRUE
 
@@ -768,9 +771,10 @@
 	desc = "The actual firearm in the 4-piece M56D Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action."
 	origin_tech = "combat=7;materials=5"
 	current_mag = null
+	ammo = /obj/item/ammo_magazine/smartgun/dirty
 	ammo_primary = /obj/item/ammo_magazine/smartgun/dirty//Toggled ammo type
-	ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing//Toggled ammo type
-	flags_gun_features = GUN_INTERNAL_MAG|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	ammo_secondary = /datum/ammo/bullet/smartgun/dirty/armor_piercing///Toggled ammo type
+	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
 /obj/item/weapon/gun/smartgun/dirty/set_gun_config_values()
 	fire_delay = config.low_fire_delay
@@ -782,18 +786,19 @@
 	damage_mult = config.base_hit_damage_mult
 
 //TERMINATOR SMARTGUN
-/obj/item/weapon/gun/smartgun/elite
+/obj/item/weapon/gun/smartgun/dirty/elite
 	name = "\improper M56D 'genius' smartgun"
 	desc = "The actual firearm in the 4-piece M56D Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action."
 	origin_tech = "combat=7;materials=5"
 	angle = 0
 	current_mag = null
+	ammo = /obj/item/ammo_magazine/smartgun/dirty
 	ammo_primary = /obj/item/ammo_magazine/smartgun/dirty//Toggled ammo type
-	ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing//Toggled ammo type
-	flags_gun_features = GUN_INTERNAL_MAG|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	ammo_secondary = /datum/ammo/bullet/smartgun/dirty/armor_piercing//Toggled ammo type
+	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
 
-/obj/item/weapon/gun/smartgun/elite/set_gun_config_values()
+/obj/item/weapon/gun/smartgun/dirty/elite/set_gun_config_values()
 	fire_delay = config.mlow_fire_delay
 	burst_amount = config.high_burst_value
 	burst_delay = config.min_fire_delay

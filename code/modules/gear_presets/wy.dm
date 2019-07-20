@@ -165,7 +165,7 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(H), WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/pmc/full, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(H), WEAR_EYES)
 
 /*****************************************************************************************************/
@@ -270,8 +270,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/leader(H), WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg/(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg/(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full, WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite(H), WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/pmc/full, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/dirty/elite(H), WEAR_J_STORE)
 
 
 /*****************************************************************************************************/

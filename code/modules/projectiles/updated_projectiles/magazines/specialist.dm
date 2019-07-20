@@ -91,6 +91,7 @@
 	caliber = "10x28mm"
 	max_rounds = 500 //Should be 500 in total.
 	icon_state = "m57"
+	w_class = 3
 	default_ammo = /datum/ammo/bullet/smartgun
 	gun_type = /obj/item/weapon/gun/smartgun/
 

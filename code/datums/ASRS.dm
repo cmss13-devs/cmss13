@@ -150,6 +150,21 @@
 	group = "Utility"
 	buyable = 0
 
+//===================================
+// Mortar ammo
+/datum/supply_packs/mortar_ammo_he/asrs/
+	buyable = 0
+	group = "Munition"
+
+/datum/supply_packs/mortar_ammo_incend/asrs/
+	buyable = 0
+	group = "Munition"
+
+/datum/supply_packs/mortar_ammo_flare/asrs/
+	buyable = 0
+	group = "Munition"
+//===================================
+
 /datum/supply_packs/motiondetector/asrs/
 	name = "Motion Detector (x2)"
 	contains = list(

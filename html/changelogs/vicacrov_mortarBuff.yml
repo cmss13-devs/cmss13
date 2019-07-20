@@ -1,0 +1,10 @@
+author: Vicacrov
+
+delete-after: True
+
+changes:
+  - rscadd: "Mortar ammo now sometimes spawns via ASRS."
+  - tweak: "The mortar is now more accurate in long range."
+  - tweak: "The incendiary mortar ammo was slightly buffed."
+  - tweak: "Mortar ammo is now 20 points per crate. One crate has 6 ammo (less than before)."
+  - rscdel: "The smoke and flash mortar ammo were removed."

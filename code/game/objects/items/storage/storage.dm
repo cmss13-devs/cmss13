@@ -41,7 +41,7 @@
 
 
 /obj/item/storage/MouseDrop(obj/over_object as obj)
-	if(ishuman(usr) || ismonkey(usr) || isrobot(usr)) //so monkeys can take off their backpacks -- Urist
+	if(ishuman(usr) || isrobot(usr))
 
 		if(usr.lying)
 			return

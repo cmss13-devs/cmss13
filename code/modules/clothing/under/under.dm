@@ -35,6 +35,7 @@
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/uniform_monkey_0.dmi')
 
 /obj/item/clothing/under/New()
+	..()
 	if(worn_state)
 		if(!item_state_slots)
 			item_state_slots = list()
@@ -70,7 +71,7 @@
 	..()
 
 /obj/item/clothing/under/MouseDrop(obj/over_object as obj)
-	if (ishuman(usr) || ismonkey(usr))
+	if (ishuman(usr))
 		//makes sure that the clothing is equipped so that we can't drag it into our hand from miles away.
 		if ((flags_item & NODROP) || loc != usr)
 			return
@@ -184,10 +185,10 @@
 	update_rollsuit_status()
 	if(rollable_sleeves)
 		rolled_sleeves = !rolled_sleeves
-		update_clothing_icon()
-
 		if(rolled_sleeves)
 			item_state_slots[WEAR_BODY] = "[worn_state]_d"
 		else
 			item_state_slots[WEAR_BODY] = "[worn_state]"
+
+		update_clothing_icon()
 	else to_chat(usr, SPAN_WARNING("You cannot roll down the uniform!"))

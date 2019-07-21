@@ -42,15 +42,6 @@ var/global/datum/controller/gameticker/ticker = new()
 	'sound/music/Red_White_and_Blue.ogg',
 	'sound/music/Stars_and_Stripes_Fly.ogg',)
 
-/*	HALLOWEEN
-	'sound/music/ColonialHalloween.ogg')
-
-	KWANZAA
-	'sound/music/NeilDiamondChanukah.ogg',
-	'sound/music/WeirdAlGroundZeroXmas.ogg',
-	'sound/music/WeirdAlSantaCrazy.ogg'*/
-
-
 	do
 		pregame_timeleft = 180
 		to_world("<center><B><span class='notice'>Welcome to the pre-game lobby of Colonial Marines!<span class='notice'></B></center>")
@@ -132,9 +123,12 @@ var/global/datum/controller/gameticker/ticker = new()
 	collect_minds()
 	equip_characters()
 	data_core.manifest()
+
+	for(var/mob/new_player/np in player_list)
+		np.new_player_panel_proc()
+
 	spawn(2)
 		mode.initialize_emergency_calls()
-
 
 	current_state = GAME_STATE_PLAYING
 
@@ -149,9 +143,7 @@ var/global/datum/controller/gameticker/ticker = new()
 		mode.post_setup()
 		//Cleanup some stuff
 		for(var/obj/effect/landmark/start/S in landmarks_list)
-			//Deleting Startpoints but we need the ai point to AI-ize people later
-			if (S.name != "AI")
-				qdel(S)
+			qdel(S)
 		to_world("<FONT color='blue'><B>Enjoy the game!</B></FONT>")
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
@@ -178,135 +170,103 @@ var/global/datum/controller/gameticker/ticker = new()
 			V.select_gamemode_equipment(mode.type)
 	return 1
 
-/datum/controller/gameticker
-	proc/create_characters()
-		for(var/mob/new_player/player in player_list)
-			if(player && player.ready && player.mind)
-				if(player.mind.assigned_role=="AI")
-					player.close_spawn_windows()
-					player.AIize()
-				else if(!player.mind.assigned_role)
-					continue
-				else
-					player.create_character()
-					qdel(player)
+/datum/controller/gameticker/proc/create_characters()
+	for(var/mob/new_player/player in player_list)
+		if(player && player.ready && player.mind)
+			if(!player.mind.assigned_role)
+				continue
+			else
+				player.create_character()
+				qdel(player)
 
+/datum/controller/gameticker/proc/collect_minds()
+	for(var/mob/living/player in player_list)
+		if(player.mind)
+			ticker.minds += player.mind
 
-	proc/collect_minds()
-		for(var/mob/living/player in player_list)
-			if(player.mind)
-				ticker.minds += player.mind
+/datum/controller/gameticker/proc/equip_characters()
+	var/captainless=1
+	if(mode && istype(mode,/datum/game_mode/huntergames)) // || istype(mode,/datum/game_mode/whiskey_outpost)
+		return
 
+	var/mob/living/carbon/human/player
+	var/m
+	for(m in player_list)
+		player = m
+		if(istype(player) && player.mind && player.mind.assigned_role)
+			if(player.mind.assigned_role == "Commander")
+				captainless=0
+			if(player.mind.assigned_role != "MODE")
+				RoleAuthority.equip_role(player, RoleAuthority.roles_by_name[player.mind.assigned_role])
+				EquipCustomItems(player)
+	if(captainless)
+		for(var/mob/M in player_list)
+			if(!istype(M,/mob/new_player))
+				to_chat(M, "Marine commanding officer position not forced on anyone.")
 
-	proc/equip_characters()
-		var/captainless=1
-		if(mode && istype(mode,/datum/game_mode/huntergames)) // || istype(mode,/datum/game_mode/whiskey_outpost)
-			return
+/datum/controller/gameticker/proc/process()
+	if(current_state != GAME_STATE_PLAYING)
+		return 0
 
-		var/mob/living/carbon/human/player
-		var/m
-		for(m in player_list)
-			player = m
-			if(istype(player) && player.mind && player.mind.assigned_role)
-				if(player.mind.assigned_role == "Commander")
-					captainless=0
-				if(player.mind.assigned_role != "MODE")
-					RoleAuthority.equip_role(player, RoleAuthority.roles_by_name[player.mind.assigned_role])
-					EquipCustomItems(player)
-		if(captainless)
-			for(var/mob/M in player_list)
-				if(!istype(M,/mob/new_player))
-					to_chat(M, "Marine commanding officer position not forced on anyone.")
+	mode.process()
 
+	var/game_finished = 0
+	var/mode_finished = 0
+	if (config.continous_rounds)
+		if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED || EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED) game_finished = 1
+		mode_finished = (!post_game && mode.check_finished())
+	else
+		game_finished = (mode.check_finished() /* || (emergency_shuttle.returned() && emergency_shuttle.evac == 1)*/)
+		mode_finished = game_finished
 
-	proc/process()
-		if(current_state != GAME_STATE_PLAYING)
-			return 0
+	if(!EvacuationAuthority.dest_status != NUKE_EXPLOSION_IN_PROGRESS && game_finished && (mode_finished || post_game))
+		current_state = GAME_STATE_FINISHED
 
-		mode.process()
+		spawn(1)
+			declare_completion()
 
-		var/game_finished = 0
-		var/mode_finished = 0
-		if (config.continous_rounds)
-			if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED || EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED) game_finished = 1
-			mode_finished = (!post_game && mode.check_finished())
-		else
-			game_finished = (mode.check_finished() /* || (emergency_shuttle.returned() && emergency_shuttle.evac == 1)*/)
-			mode_finished = game_finished
+		spawn(50)
+			callHook("roundend")
 
-		if(!EvacuationAuthority.dest_status != NUKE_EXPLOSION_IN_PROGRESS && game_finished && (mode_finished || post_game))
-			current_state = GAME_STATE_FINISHED
+			if (EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED || EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED)
+				feedback_set_details("end_proper","nuke")
+			else
+				feedback_set_details("end_proper","proper completion")
 
-			spawn(1)
-				declare_completion()
+			if(config.autooocmute && !ooc_allowed)
+				to_world(SPAN_DANGER("<B>The OOC channel has been globally enabled due to round end!</B>"))
+				ooc_allowed = 1
 
-			spawn(50)
-				callHook("roundend")
+			if(blackbox)
+				blackbox.save_all_data_to_sql()
 
-				if (EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED || EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED)
-					feedback_set_details("end_proper","nuke")
-				else
-					feedback_set_details("end_proper","proper completion")
-
-				if(config.autooocmute && !ooc_allowed)
-					to_world(SPAN_DANGER("<B>The OOC channel has been globally enabled due to round end!</B>"))
-					ooc_allowed = 1
-
-				if(blackbox)
-					blackbox.save_all_data_to_sql()
-
+			if(!delay_end)
+				sleep(restart_timeout)
 				if(!delay_end)
-					sleep(restart_timeout)
-					if(!delay_end)
-						world.Reboot()
-					else
-						to_world("<hr>")
-						to_world("<span class='centerbold'><b>An admin has delayed the round end.</b></span>")
-						to_world("<hr>")
+					world.Reboot()
 				else
 					to_world("<hr>")
 					to_world("<span class='centerbold'><b>An admin has delayed the round end.</b></span>")
 					to_world("<hr>")
+			else
+				to_world("<hr>")
+				to_world("<span class='centerbold'><b>An admin has delayed the round end.</b></span>")
+				to_world("<hr>")
 
-		else if (mode_finished)
-			post_game = TRUE
+	else if (mode_finished)
+		post_game = TRUE
 
-			mode.cleanup()
+		mode.cleanup()
 
-			//call a transfer shuttle vote
-			spawn(50)
-				if(!round_end_announced) // Spam Prevention. Now it should announce only once.
-					to_world(SPAN_WARNING("The round has ended!"))
-					round_end_announced = TRUE
+		//call a transfer shuttle vote
+		spawn(50)
+			if(!round_end_announced) // Spam Prevention. Now it should announce only once.
+				to_world(SPAN_WARNING("The round has ended!"))
+				round_end_announced = TRUE
 
-		return 1
-
+	return 1
 
 /datum/controller/gameticker/proc/declare_completion()
-	for (var/mob/living/silicon/ai/aiPlayer in mob_list)
-		if (aiPlayer.connected_robots.len)
-			var/robolist = "<b>The AI's loyal minions were:</b> "
-			for(var/mob/living/silicon/robot/robo in aiPlayer.connected_robots)
-				robolist += "[robo.name][robo.stat?" (Deactivated) (Played by: [robo.key]), ":" (Played by: [robo.key]), "]"
-			to_world("[robolist]")
-
-	var/dronecount = 0
-
-	for (var/mob/living/silicon/robot/robo in mob_list)
-
-		if(ismaintdrone(robo))
-			dronecount++
-			continue
-
-		if (!robo.connected_ai)
-			if (robo.stat != 2)
-				to_world("<b>[robo.name] (Played by: [robo.key]) survived as an AI-less borg! Its laws were:</b>")
-			else
-				to_world("<b>[robo.name] (Played by: [robo.key]) was unable to survive the rigors of being a cyborg without an AI. Its laws were:</b>")
-
-	if(dronecount)
-		to_world("<b>There [dronecount>1 ? "were" : "was"] [dronecount] industrious maintenance [dronecount>1 ? "drones" : "drone"] at the end of this round.")
-
 	mode.declare_completion()//To declare normal completion.
 
 	//calls auto_declare_completion_* for all modes

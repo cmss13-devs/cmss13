@@ -32,6 +32,17 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		log_admin("[src] forcibly removed all players from [CA]")
 		message_admins("[src] forcibly removed all players from [CA]")
 
+/client/proc/remove_clamp_from_vic()
+	set name = "Remove Clamp From Vehicle"
+	set category = "Admin"
+
+	for(var/obj/vehicle/multitile/root/cm_armored/CA in view())
+		if(!CA.clamped)
+			return
+		CA.detach_clamp()
+		log_admin("[src] forcibly removed Vehicle Clamp [CA]")
+		message_admins("[src] forcibly removed Vehicle Clamp [CA]")
+
 //The main object, should be an abstract class
 /obj/vehicle/multitile/root/cm_armored
 	name = "Armored Vehicle"
@@ -40,15 +51,17 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 
 	//What slots the vehicle can have
 	var/list/hardpoints = list(
-		HDPT_ARMOR = null, 
-		HDPT_TREADS = null, 
-		HDPT_SECDGUN = null, 
-		HDPT_SUPPORT = null, 
+		HDPT_ARMOR = null,
+		HDPT_TREADS = null,
+		HDPT_SECDGUN = null,
+		HDPT_SUPPORT = null,
 		HDPT_PRIMARY = null
 	)
 
 	//The next world.time when the tank can move
 	var/next_move = 0
+
+	var/clamped = FALSE
 
 	//Below are vars that can be affected by hardpoints, generally used as ratios or decisecond timers
 
@@ -318,6 +331,9 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 			else if(isobserver(user) || (user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer >= SKILL_ENGINEER_ENGI))
 				msg += " It's at [round(P, 1)]% integrity!"
 			to_chat(user, msg)
+	if(clamped)
+		to_chat(user, "There is a Vehicle Clamp attached to treads.")
+
 
 //Special armored vic healthcheck that mainly updates the hardpoint states
 /obj/vehicle/multitile/root/cm_armored/healthcheck()
@@ -353,6 +369,10 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		pixel_x = -48
 		pixel_y = -32
 		icon = 'icons/obj/tank_EW.dmi'
+
+	if(clamped)
+		var/image/J = image(icon, icon_state = "vehicle_clamp")
+		overlays += J
 
 	//Basic iteration that snags the overlay from the hardpoint module object
 	var/i
@@ -475,7 +495,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	if(ammo_flags & AMMO_ANTISTRUCT)
 		// Multiplier based on tank railgun relationship, so might have to reconsider multiplier for AMMO_SIEGE in general
 		damage = round(damage*ANTISTRUCT_DMG_MULT_TANK)
-	if(ammo_flags & AMMO_XENO_ACID) 
+	if(ammo_flags & AMMO_XENO_ACID)
 		dam_type = "acid"
 
 	take_damage_type(damage * (0.33 + penetration/100), dam_type, firer)
@@ -588,11 +608,45 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		update_damage_distribs()
 		return
 
+	if(istype(O, /obj/item/vehicle_clamp)) //Are we trying to immobilize tank?
+		if(clamped)
+			to_chat(user, SPAN_WARNING("[src] already has a [O.name] attached."))
+			return
+		var/obj/item/hardpoint/HP = hardpoints[HDPT_TREADS]
+		if(!HP)
+			to_chat(user, SPAN_WARNING("There are no treads to attach [O.name] to."))
+			return
+		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.police == SKILL_POLICE_MP)
+			user.visible_message(SPAN_WARNING("[user] starts attaching the vehicle clamp to [src]."), SPAN_NOTICE("You start attaching the vehicle clamp to [src]."))
+			if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_BUILD))
+				user.visible_message(SPAN_WARNING("[user] stops attaching the vehicle clamp to [src]."), SPAN_WARNING("You stop attaching the vehicle clamp to [src]."))
+				return
+			user.visible_message(SPAN_WARNING("[user] attaches the vehicle clamp to [src]."), SPAN_NOTICE("You attach the vehicle clamp to [src] and lock the mechanism with your ID."))
+			attach_clamp(O, user)
+		else
+			to_chat(user, SPAN_WARNING("You don't know how to use [O] with [src]."))
+		return
+
+	if(isscrewdriver(O)) //Are we trying to remove tank clamp?
+		if(!clamped)
+			return
+		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.police == SKILL_POLICE_MP)
+			user.visible_message(SPAN_WARNING("[user] starts removing the vehicle clamp from [src]."), SPAN_NOTICE("You start removing the vehicle clamp from [src]."))
+			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_BUILD))
+				user.visible_message(SPAN_WARNING("[user] stops removing the vehicle clamp from [src]."), SPAN_WARNING("You stop removing the vehicle clamp from [src]."))
+				return
+			user.visible_message(SPAN_WARNING("[user] removes the vehicle clamp from [src]."), SPAN_NOTICE("You unlock the mechanism with your ID and remove the vehicle clamp from [src]."))
+			detach_clamp(user)
+		else
+			to_chat(user, SPAN_WARNING("You don't know how to remove the vehicle clamp."))
+
+		return
+
 	take_damage_type(O.force * 0.05, "blunt", user) //Melee weapons from people do very little damage
 
 	. = ..()
 
-/obj/vehicle/multitile/root/cm_armored/proc/handle_hardpoint_repair(var/obj/item/O, var/mob/user)
+/obj/vehicle/multitile/root/cm_armored/proc/handle_hardpoint_repair(var/obj/item/vehicle_clamp/O, var/mob/user)
 
 	//Need to the what the hell you're doing
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_MT)
@@ -761,6 +815,8 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	user.visible_message(SPAN_NOTICE("[user] removes \the [old] on [src]."), SPAN_NOTICE("You remove \the [old] on [src]."))
 
 	remove_hardpoint(old, user)
+	if(slot == HDPT_TREADS && clamped)
+		detach_clamp(user)
 
 //General proc for putting on hardpoints
 //ALWAYS CALL THIS WHEN ATTACHING HARDPOINTS
@@ -786,4 +842,33 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		qdel(old)
 
 	hardpoints[old.slot] = null
+	update_icon()
+
+
+//CLAMP procs
+
+//unsafe proc, checks are done before calling it
+/obj/vehicle/multitile/root/cm_armored/proc/attach_clamp(obj/item/vehicle_clamp/O, mob/user)
+	user.temp_drop_inv_item(O, 0)
+	O.loc = src
+	clamped = TRUE
+	move_delay = 50000
+	next_move = world.time + move_delay
+	update_icon()
+	log_admin("[key_name(user)] attached vehicle clamp to [src]")
+	message_admins("[key_name(user)] attached vehicle clamp to [src]")
+
+/obj/vehicle/multitile/root/cm_armored/proc/detach_clamp(mob/user)
+	clamped = FALSE
+	var/obj/item/hardpoint/HP = hardpoints[HDPT_TREADS]
+	if(HP)
+		HP.apply_buff()
+	next_move = world.time + move_delay * misc_ratios["move"]
+	for(var/obj/item/vehicle_clamp/TC in src)
+		if(user)
+			TC.Move(get_turf(user))
+			log_admin("[key_name(user)] detached vehicle clamp from [src]")
+			message_admins("[key_name(user)] detached vehicle clamp from [src]")
+		else
+			TC.Move(get_turf(entrance))
 	update_icon()

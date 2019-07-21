@@ -600,9 +600,6 @@ cases. Override_icon_state should be a list.*/
 		calee = _calee
 
 	handle(sender, datum/event_args/event_args)
-		var/datum/event_args/mob_movement/ev_args = event_args
-		if(istype(ev_args) && !ev_args.moving)
-			return
 		if(calee && calee.client) //Dropped when disconnected, whoops
 			if(zooming_item && zooming_item.zoom && calee) //sanity check
 				zooming_item.zoom(calee)
@@ -695,7 +692,7 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 	var/mob_state
 	if(item_state_slots && item_state_slots[slot])
 		mob_state = item_state_slots[slot]
-	else if (item_state)
+	else if (item_state && (slot == WEAR_R_HAND || slot == WEAR_L_HAND || slot == WEAR_ID))
 		mob_state = item_state
 	else
 		mob_state = icon_state

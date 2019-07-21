@@ -15,7 +15,7 @@
 	var/targ_y = 0
 	var/offset_x = 0 //Automatic offset from target
 	var/offset_y = 0
-	var/offset_per_turfs = 10 //Number of turfs to offset from target by 1
+	var/offset_per_turfs = 20 //Number of turfs to offset from target by 1
 	var/dial_x = 0 //Dial adjustment from target
 	var/dial_y = 0
 	var/travel_time = 45 //Constant, assuming perfect parabolic trajectory. ONLY THE DELAY BEFORE INCOMING WARNING WHICH ADDS 45 TICKS
@@ -68,7 +68,7 @@
 			busy = 0
 			targ_x = deobfuscate_x(temp_targ_x)
 			targ_y = deobfuscate_y(temp_targ_y)
-			var/offset_x_max = round(abs((targ_x + dial_x) - x)/offset_per_turfs) //Offset of mortar shot, grows by 1 every 10 tiles travelled
+			var/offset_x_max = round(abs((targ_x + dial_x) - x)/offset_per_turfs) //Offset of mortar shot, grows by 1 every 20 tiles travelled
 			var/offset_y_max = round(abs((targ_y + dial_y) - y)/offset_per_turfs)
 			offset_x = rand(-offset_x_max, offset_x_max)
 			offset_y = rand(-offset_y_max, offset_y_max)
@@ -274,36 +274,9 @@
 	icon_state = "mortar_ammo_inc"
 
 /obj/item/mortal_shell/incendiary/detonate(var/turf/T)
-
 	explosion(T, 0, 2, 4, 7)
-	flame_radius(3, T)
+	flame_radius(5, T)
 	playsound(T, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
-
-/obj/item/mortal_shell/smoke
-	name = "\improper 80mm smoke mortar shell"
-	desc = "An 80mm mortar shell, loaded with smoke dispersal agents."
-	icon_state = "mortar_ammo_smk"
-	var/datum/effect_system/smoke_spread/bad/smoke
-
-/obj/item/mortal_shell/smoke/detonate(var/turf/T)
-	playsound(T, 'sound/effects/smoke.ogg', 25, 1, 4)
-	smoke = new /datum/effect_system/smoke_spread/bad
-	smoke.set_up(7, 0, T.loc, null, 12)
-	smoke.start()
-	smoke = null
-	qdel(src)
-
-/obj/item/mortal_shell/flash
-	name = "\improper 80mm flash mortar shell"
-	desc = "An 80mm mortar shell, loaded with a flash powder charge."
-	icon_state = "mortar_ammo_fsh"
-
-/obj/item/mortal_shell/flash/detonate(var/turf/T)
-
-	explosion(T, 0, 1, 2, 7)
-	var/obj/item/explosive/grenade/flashbang/flash = new(T)
-	flash.icon_state = ""
-	flash.prime()
 
 /obj/item/mortal_shell/flare
 	name = "\improper 80mm flare mortar shell"
@@ -311,8 +284,6 @@
 	icon_state = "mortar_ammo_flr"
 
 /obj/item/mortal_shell/flare/detonate(var/turf/T)
-
-	//TODO: Add flare sound
 	new /obj/item/device/flashlight/flare/on/illumination(T)
 	playsound(T, 'sound/weapons/gun_flare.ogg', 50, 1, 4)
 
@@ -341,16 +312,17 @@
 
 	return //Nope
 
-/obj/structure/closet/crate/mortar_ammo
-
+/obj/structure/closet/crate/secure/mortar_ammo
 	name = "\improper M402 mortar ammo crate"
 	desc = "A crate containing live mortar shells with various payloads. DO NOT DROP. KEEP AWAY FROM FIRE SOURCES."
 	icon = 'icons/Marine/mortar.dmi'
-	icon_state = "closed_mortar_crate"
-	icon_opened = "open_mortar_crate"
-	icon_closed = "closed_mortar_crate"
+	icon_state = "secure_locked_mortar"
+	icon_opened = "secure_open_mortar"
+	icon_locked = "secure_locked_mortar"
+	icon_unlocked = "secure_unlocked_mortar"
+	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_CARGO, ACCESS_MARINE_ENGPREP)
 
-/obj/structure/closet/crate/mortar_ammo/full/New()
+/obj/structure/closet/crate/secure/mortar_ammo/full/New()
 	..()
 	new /obj/item/mortal_shell/he(src)
 	new /obj/item/mortal_shell/he(src)
@@ -368,16 +340,12 @@
 	new /obj/item/mortal_shell/flare(src)
 	new /obj/item/mortal_shell/flare(src)
 	new /obj/item/mortal_shell/flare(src)
-	new /obj/item/mortal_shell/smoke(src)
-	new /obj/item/mortal_shell/smoke(src)
-	new /obj/item/mortal_shell/flash(src)
-	new /obj/item/mortal_shell/flash(src)
 
-/obj/structure/closet/crate/mortar_ammo/mortar_kit
+/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit
 	name = "\improper M402 mortar kit"
 	desc = "A crate containing a basic set of a mortar and some shells, to get an engineer started."
 
-/obj/structure/closet/crate/mortar_ammo/mortar_kit/New()
+/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit/New()
 	..()
 	new /obj/item/mortar_kit(src)
 	new /obj/item/mortal_shell/he(src)
@@ -391,12 +359,12 @@
 	new /obj/item/mortal_shell/incendiary(src)
 	new /obj/item/mortal_shell/flare(src)
 	new /obj/item/mortal_shell/flare(src)
-	new /obj/item/mortal_shell/smoke(src)
-	new /obj/item/mortal_shell/smoke(src)
+	new /obj/item/mortal_shell/flare(src)
 	new /obj/item/device/encryptionkey/engi(src)
 	new /obj/item/device/encryptionkey/engi(src)
 	new /obj/item/device/encryptionkey/jtac(src)
 	new /obj/item/device/encryptionkey/jtac(src)
+	new /obj/item/device/binoculars/tactical/range(src)
 	new /obj/item/device/binoculars/tactical/range(src)
 
 /obj/structure/mortar/wo

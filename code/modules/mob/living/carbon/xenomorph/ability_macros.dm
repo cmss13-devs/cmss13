@@ -2,12 +2,53 @@
 // If you want to add a new one:
 // Copy the plant weeds macro, change only the 'set name =', and add a macro_path var to the corresponding ability in Abilities.dm
 
+
 /proc/handle_xeno_macro(var/mob/living/carbon/Xenomorph/X, var/action_name)
 	for(var/datum/action/xeno_action/A in X.actions)
 		if(A.name == action_name)
-			A.button.clicked(X)
-			return
+			switch (A.action_type)
+			
+				// "Old" behavior: select the action.
+				if (XENO_ACTION_CLICK) // This should be used for all actions that require an atom handed in by click() to function
+					handle_xeno_macro_click(X, A)
+
+				if (XENO_ACTION_ACTIVATE) // Actions that don't require a click() atom to work
+					handle_xeno_macro_activate(X, A)
+
+				if (XENO_ACTION_QUEUE)
+					handle_xeno_macro_actionqueue(X, A)
+
+				else
+					log_debug("Xeno action [action_name] is misconfigured. Code: XENO_ACTION_MACRO_1")
+					log_admin("Xeno action [action_name] is misconfigured. Tell the devs. Code: XENO_ACTION_MACRO_1")
+			
+			return 
+
+/proc/handle_xeno_macro_click(var/mob/living/carbon/Xenomorph/X, var/datum/action/xeno_action/A)
+	A.button.clicked(X)
 	return
+
+/proc/handle_xeno_macro_activate(var/mob/living/carbon/Xenomorph/X, var/datum/action/xeno_action/A)
+	
+	var/datum/action/xeno_action/activable/activableA = A
+
+	if (!istype(A))
+		return
+	
+	if (activableA.can_use_action() && activableA.action_cooldown_check())
+		activableA.use_ability()
+
+// Queue an action for the next click. This will always work but should only be used for actions that actually NEED an atom to work
+// Other ones should just use the activate proc
+/proc/handle_xeno_macro_actionqueue(var/mob/living/carbon/Xenomorph/X, var/datum/action/xeno_action/activable/A)
+	if (!istype(A))
+		return
+	
+	X.queued_action = A
+	to_chat(X, SPAN_WARNING("Your next click will use [A.name]!"))
+	
+	if(X.client)
+		X.client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
 
 
 /datum/action/xeno_action/verb/verb_plant_weeds()
@@ -356,7 +397,7 @@
 
 /datum/action/xeno_action/verb/verb_prae_screech()
 	set category = "Alien"
-	set name = "Praetorian Dance"
+	set name = "Praetorian Screech"
 	set hidden = 1
 	var/action_name = "Screech (300)"
 	handle_xeno_macro(src, action_name) 
@@ -372,7 +413,7 @@
 	set category = "Alien"
 	set name = "Praetorian Tail Attack"
 	set hidden = 1
-	var/action_name = "Dance (200)"
+	var/action_name = "Tail Attack (150)"
 	handle_xeno_macro(src, action_name) 
 
 /datum/action/xeno_action/verb/verb_prae_shift_tailattack()
@@ -384,9 +425,9 @@
 
 /datum/action/xeno_action/verb/verb_prae_dance()
 	set category = "Alien"
-	set name = "Praetorian Tail Attack"
+	set name = "Praetorian Dance"
 	set hidden = 1
-	var/action_name = "Tail Attack (150)"
+	var/action_name = "Dance (200)"
 	handle_xeno_macro(src, action_name) 
 
 /datum/action/xeno_action/verb/verb_prae_punch()
@@ -400,7 +441,7 @@
 	set category = "Alien"
 	set name = "Praetorian Bomb"
 	set hidden = 1
-	var/action_name = "Punch (75)"
+	var/action_name = "Toxin Bomb (300)"
 	handle_xeno_macro(src, action_name) 
 
 

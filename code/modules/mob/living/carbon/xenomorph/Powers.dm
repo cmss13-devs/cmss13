@@ -261,7 +261,7 @@
 		else new /obj/effect/xenomorph/spray(target)
 
 		for(var/mob/living/carbon/M in target)
-			if(ishuman(M) || ismonkey(M))
+			if(ishuman(M))
 				if((M.status_flags & XENO_HOST) && istype(M.buckled, /obj/structure/bed/nest))
 					continue //nested infected hosts are not hurt by acid spray
 				M.adjustFireLoss(rand(20 + 5 * upgrade, 30 + 5 * upgrade))
@@ -1305,8 +1305,22 @@
 		to_chat(src, SPAN_WARNING("[T] is too far away!"))
 		return 
 
+	if (dist > 1)
+		var/turf/targetTurf = get_step(src, get_dir(src, T))
+		if (targetTurf.density)
+			to_chat(src, SPAN_WARNING("You can't attack through [targetTurf]!"))
+			return
+		else
+			for (var/atom/I in targetTurf)
+				if (I.density && !I.throwpass && !istype(I, /obj/structure/barricade) && !istype(I, /mob/living))
+					to_chat(src, SPAN_WARNING("You can't attack through [I]!"))
+					return
+
 	used_punch = TRUE
 	use_plasma(150)
+
+	// Hmm today I will kill a marine while looking away from them
+	face_atom(T)
 
 	if (buffed) // Now we've exhausted our dance, time to go slow again
 		to_chat(src, SPAN_WARNING("You expend your dance to empower your tail attack!"))
@@ -1319,9 +1333,6 @@
 	var/damage = rand(melee_damage_lower, melee_damage_upper) + pCaste.tailattack_damagebuff
 	var/target_zone = T.get_limb("chest")
 	var/armor_block = getarmor(target_zone, ARMOR_MELEE)
-
-	// Hmm today I will kill a marine while looking away from them
-	face_atom(T)
 
 	switch(!!(prae_status_flags & PRAE_DANCER_TAILATTACK_TYPE)) // Bit fuckery to simpify 0,4 to 0,1
 		
@@ -1388,8 +1399,8 @@
 			if (Adjacent(T) && start_pulling(T, 0, TRUE))
 				
 				T.drop_held_items()
-				T.KnockDown(1) // So ungas can blast the Praetorian
-				T.Stun(1)
+				T.KnockDown(2) // So ungas can blast the Praetorian
+				T.Stun(2)
 				grab_level = GRAB_NECK
 				T.pulledby = src
 				visible_message(SPAN_WARNING("\The [src] grabs [T] by the neck with its tail!"), \
@@ -1397,7 +1408,8 @@
 		
 			if (do_after(src, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, show_remaining_time = TRUE) || T.pulledby != src || !src.Adjacent(T))
 				to_chat(src, SPAN_XENOWARNING("You stop abducting [T]!"))
-				T.pulledby.stop_pulling()
+				if (T.pulledby)
+					T.pulledby.stop_pulling()
 			else
 				throw_at(target_turf, leap_range, 2, src)
 				T.throw_at(target_turf, leap_range, 2, src)
@@ -1442,7 +1454,7 @@
 	
 	var/obj/item/explosive/grenade/xeno_neuro_grenade/grenade = new /obj/item/explosive/grenade/xeno_neuro_grenade
 	grenade.loc = loc
-	grenade.throw_at(T, 4, 3, src, TRUE)
+	grenade.throw_at(T, 5, 3, src, TRUE)
 
 	spawn (pCaste.oppressor_grenade_fuse)
 		grenade.prime()

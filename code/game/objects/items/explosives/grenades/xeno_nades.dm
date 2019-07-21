@@ -14,7 +14,7 @@
 
 /obj/item/explosive/grenade/xeno_neuro_grenade/prime()
 		playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
-		smoke.set_up(2, 0, usr.loc, null, 6)
+		smoke.set_up(2, 0, usr.loc, null, 6, 10)
 		smoke.start()
 		smoke = null
 		qdel(src)

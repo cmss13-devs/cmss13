@@ -288,7 +288,6 @@
 	P.mutation_type = PRAETORIAN_ROYALGUARD
 	P.acid_spray_activation_time = 6
 	P.phero_modifier += XENO_PHERO_MOD_LARGE
-	P.damage_modifier += XENO_DAMAGE_MOD_SMALL
 	mutator_update_actions(P)
 	MS.recalculate_actions(description)
 	P.recalculate_everything()
@@ -339,7 +338,7 @@
 	P.armor_modifier += XENO_ARMOR_MOD_SMALL;
 	P.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_MED;
 	P.speed_modifier += XENO_SPEED_MOD_ULTRA + XENO_SPEED_MOD_VERYLARGE;
-	P.phero_modifier -= XENO_PHERO_MOD_LARGE;
+	P.phero_modifier -= XENO_PHERO_MOD_SMALL;
 	mutator_update_actions(P);
 	MS.recalculate_actions(description)
 	P.recalculate_everything()

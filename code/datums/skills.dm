@@ -465,7 +465,7 @@ SPEC-OPS
 /datum/skills/commando/deathsquad
 	name = "Deathsquad"
 	cqc = SKILL_CQC_MASTER
-	smartgun = SKILL_SMART_TRAINED
+	smartgun = SKILL_SMART_MASTER
 	spec_weapons = SKILL_SPEC_TRAINED
 	medical = SKILL_MEDICAL_MEDIC
 

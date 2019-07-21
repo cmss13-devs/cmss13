@@ -3,6 +3,7 @@
 	action_icon_state = "plant_weeds"
 	plasma_cost = 75
 	macro_path = /datum/action/xeno_action/verb/verb_plant_weeds
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/plant_weeds/action_activate()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -41,6 +42,7 @@
 /datum/action/xeno_action/xeno_resting
 	name = "Rest"
 	action_icon_state = "resting"
+	action_type = XENO_ACTION_CLICK
 
 //resting action can be done even when lying down
 /datum/action/xeno_action/xeno_resting/can_use_action()
@@ -71,6 +73,7 @@
 	action_icon_state = "agility_on"
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_show_minimap
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/show_minimap/action_activate()
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
@@ -93,6 +96,7 @@
 	action_icon_state = "shift_spit_neurotoxin" 
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_spit_type
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/shift_spits/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -120,6 +124,7 @@
 	action_icon_state = "regurgitate"
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_regurgitate
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/regurgitate/action_activate()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -140,6 +145,7 @@
 	action_icon_state = "resin wall"
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_choose_resin_structure
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/choose_resin/New()
 	..()
@@ -178,6 +184,7 @@
 	ability_name = "secrete resin"
 	var/resin_plasma_cost = 75
 	macro_path = /datum/action/xeno_action/verb/verb_secrete_resin
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/secrete_resin/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -197,6 +204,7 @@
 	var/level = 2 //level of the acid strength
 	var/acid_type = /obj/effect/xenomorph/acid
 	macro_path = /datum/action/xeno_action/verb/verb_corrosive_acid
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/corrosive_acid/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -238,7 +246,7 @@
 	action_icon_state = "spray_acid"
 	ability_name = "spray acid"
 	macro_path = /datum/action/xeno_action/verb/verb_spray_acid
-
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/spray_acid/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -280,6 +288,7 @@
 	action_icon_state = "lunge"
 	ability_name = "lunge"
 	macro_path = /datum/action/xeno_action/verb/verb_lunge
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/lunge/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -296,6 +305,7 @@
 	action_icon_state = "fling"
 	ability_name = "Fling"
 	macro_path = /datum/action/xeno_action/verb/verb_fling
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/fling/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -311,6 +321,7 @@
 	action_icon_state = "punch"
 	ability_name = "punch"
 	macro_path = /datum/action/xeno_action/verb/verb_punch
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/punch/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -326,6 +337,7 @@
 	action_icon_state = "pounce"
 	ability_name = "jab"
 	macro_path = /datum/action/xeno_action/verb/verb_jab
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/jab/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -341,6 +353,7 @@
 	action_icon_state = "agility_on"
 	ability_name = "burrow"
 	macro_path = /datum/action/xeno_action/verb/verb_burrow
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/burrow/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -354,12 +367,13 @@
 	action_icon_state = "screech"
 	ability_name = "screech"
 	macro_path = /datum/action/xeno_action/verb/verb_tremor
+	action_type = XENO_ACTION_ACTIVATE
 
 /datum/action/xeno_action/activable/tremor/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
 	return !X.used_tremor
 
-/datum/action/xeno_action/activable/tremor/use_ability(atom/A)
+/datum/action/xeno_action/activable/tremor/use_ability()
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.tremor()
 
@@ -369,6 +383,7 @@
 	action_icon_state = "headbutt"
 	ability_name = "headbutt"
 	macro_path = /datum/action/xeno_action/verb/verb_headbutt
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/headbutt/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -385,6 +400,7 @@
 	action_icon_state = "tail_sweep"
 	ability_name = "tail sweep"
 	macro_path = /datum/action/xeno_action/verb/verb_tail_sweep
+	action_type = XENO_ACTION_ACTIVATE
 
 /datum/action/xeno_action/activable/tail_sweep/use_ability()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -394,13 +410,13 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	return !X.used_tail_sweep
 
-
 // Defender Toggle Crest Defense
 /datum/action/xeno_action/activable/toggle_crest_defense
 	name = "Toggle Crest Defense"
 	action_icon_state = "crest_defense"
 	ability_name = "toggle crest defense"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_crest
+	action_type = XENO_ACTION_ACTIVATE
 
 /datum/action/xeno_action/activable/toggle_crest_defense/action_activate()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -417,6 +433,7 @@
 	action_icon_state = "fortify"	
 	ability_name = "fortify"
 	macro_path = /datum/action/xeno_action/verb/verb_fortify
+	action_type = XENO_ACTION_ACTIVATE
 
 /datum/action/xeno_action/activable/fortify/action_activate()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -433,6 +450,7 @@
 	action_icon_state = "pounce"
 	ability_name = "pounce"
 	macro_path = /datum/action/xeno_action/verb/verb_pounce
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/pounce/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -447,6 +465,7 @@
 	action_icon_state = "xeno_spit"
 	ability_name = "xeno spit"
 	macro_path = /datum/action/xeno_action/verb/verb_xeno_spit
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/xeno_spit/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -461,6 +480,7 @@
 	action_icon_state = "xenohide"
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_hide
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/xenohide/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -483,6 +503,7 @@
 	action_icon_state = "emit_pheromones"
 	plasma_cost = 30
 	macro_path = /datum/action/xeno_action/verb/verb_pheremones
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/emit_pheromones/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -529,6 +550,7 @@
 	var/transfer_delay = 20
 	var/max_range = 2
 	macro_path = /datum/action/xeno_action/verb/verb_transfer_plasma
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/transfer_plasma/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -546,6 +568,7 @@
 	action_icon_state = "toggle_long_range"
 	plasma_cost = 20
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_long_range
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/toggle_long_range/can_use_action()
 	var/mob/living/carbon/Xenomorph/Boiler/X = owner
@@ -575,6 +598,7 @@
 	action_icon_state = "toggle_bomb0"
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_bombard
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/toggle_bomb/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -610,6 +634,7 @@
 	action_icon_state = "bombard"
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_bombard
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/bombard/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/Boiler/X = owner
@@ -657,6 +682,7 @@
 	action_icon_state = "throw_hugger"
 	ability_name = "throw facehugger"
 	macro_path = /datum/action/xeno_action/verb/verb_throw_facehugger
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/throw_hugger/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner
@@ -671,6 +697,7 @@
 	action_icon_state = "retrieve_egg"
 	ability_name = "retrieve egg"
 	macro_path = /datum/action/xeno_action/verb/verb_retrieve_egg
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/retrieve_egg/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner
@@ -681,6 +708,7 @@
 	action_icon_state = "place_trap"
 	plasma_cost = 200
 	macro_path = /datum/action/xeno_action/verb/verb_resin_hole
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/place_trap/action_activate()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -724,6 +752,7 @@
 	action_icon_state = "lay_egg"
 	ability_name = "lay egg"
 	macro_path = /datum/action/xeno_action/verb/verb_lay_egg
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/lay_egg/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner
@@ -739,13 +768,14 @@
 	action_icon_state = "stomp"
 	ability_name = "stomp"
 	macro_path = /datum/action/xeno_action/verb/verb_stomp
+	action_type = XENO_ACTION_ACTIVATE
 
 /datum/action/xeno_action/activable/stomp/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/Crusher/X = owner
 	if(world.time >= X.has_screeched + CRUSHER_STOMP_COOLDOWN)
 		return TRUE
 
-/datum/action/xeno_action/activable/stomp/use_ability(atom/A)
+/datum/action/xeno_action/activable/stomp/use_ability()
 	var/mob/living/carbon/Xenomorph/Crusher/X = owner
 	X.stomp()
 
@@ -754,6 +784,7 @@
 	action_icon_state = "ready_charge"
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_charge
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/ready_charge/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -776,13 +807,14 @@
 	action_icon_state = "stomp"
 	ability_name = "stomp"
 	macro_path = /datum/action/xeno_action/verb/verb_earthquake
+	action_type = XENO_ACTION_ACTIVATE
 
 /datum/action/xeno_action/activable/earthquake/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/Crusher/X = owner
 	if(world.time >= X.has_screeched + CRUSHER_STOMP_COOLDOWN)
 		return TRUE
 
-/datum/action/xeno_action/activable/earthquake/use_ability(atom/A)
+/datum/action/xeno_action/activable/earthquake/use_ability()
 	var/mob/living/carbon/Xenomorph/Crusher/X = owner
 	X.earthquake()
 
@@ -793,6 +825,7 @@
 	action_icon_state = "toggle_speed"
 	plasma_cost = 50
 	macro_path = /datum/action/xeno_action/verb/verb_resin_walker
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/toggle_speed/can_use_action()
 	var/mob/living/carbon/Xenomorph/Hivelord/X = owner
@@ -820,6 +853,7 @@
 	action_icon_state = "build_tunnel"
 	plasma_cost = 200
 	macro_path = /datum/action/xeno_action/verb/verb_dig_tunnel
+	action_type = XENO_ACTION_ACTIVATE
 
 /datum/action/xeno_action/build_tunnel/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -968,6 +1002,7 @@
 	action_icon_state = "screech"
 	ability_name = "screech"
 	macro_path = /datum/action/xeno_action/verb/verb_screech
+	action_type = XENO_ACTION_ACTIVATE
 
 /datum/action/xeno_action/activable/screech/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
@@ -982,6 +1017,7 @@
 	action_icon_state = "gut"
 	ability_name = "gut"
 	macro_path = /datum/action/xeno_action/verb/verb_gut
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/gut/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
@@ -1080,6 +1116,7 @@
 	action_icon_state = "heal_xeno"
 	plasma_cost = 600
 	macro_path = /datum/action/xeno_action/verb/verb_heal_xeno
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/queen_heal/action_activate()
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
@@ -1114,6 +1151,7 @@
 	action_icon_state = "queen_give_plasma"
 	plasma_cost = 600
 	macro_path = /datum/action/xeno_action/verb/verb_plasma_xeno
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/queen_give_plasma/action_activate()
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
@@ -1290,6 +1328,7 @@
 	action_icon_state = "charge"
 	ability_name = "charge"
 	macro_path = /datum/action/xeno_action/verb/verb_charge_rav
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/charge/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Ravager/X = owner
@@ -1305,6 +1344,7 @@
 	action_icon_state = "spin_slash"
 	ability_name = "spin slash"
 	macro_path = /datum/action/xeno_action/verb/verb_spin_slash
+	action_type = XENO_ACTION_ACTIVATE
 
 /datum/action/xeno_action/activable/spin_slash/use_ability()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -1323,6 +1363,7 @@
 	var/transfer_delay = 50
 	var/max_range = 1
 	macro_path = /datum/action/xeno_action/verb/verb_transfer_health
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/transfer_health/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -1362,6 +1403,7 @@
 	action_icon_state = "spray_acid"
 	ability_name = "spray acid"
 	macro_path = /datum/action/xeno_action/verb/verb_spray_acid
+	action_type = XENO_ACTION_CLICK
 
 #define PRAE_SPRAY_CONE 0 
 #define PRAE_SPRAY_LINE 1
@@ -1389,6 +1431,7 @@
 	name = "Toggle acid spray type"
 	action_icon_state = "acid_spray_cone"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_switch_spit_types
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/prae_switch_spray_type/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -1420,6 +1463,7 @@
 	action_icon_state = "prae_dance" 
 	ability_name = "dance"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_dance
+	action_type = XENO_ACTION_ACTIVATE
 
 /datum/action/xeno_action/activable/prae_dance/use_ability()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -1434,6 +1478,7 @@
 	action_icon_state = "prae_tailattack" 
 	ability_name = "tail attack"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_tailattack
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/prae_tailattack/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -1449,6 +1494,7 @@
 	action_icon_state = "prae_tailattack_impale" 
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_prae_shift_tailattack
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/prae_shift_tailattack/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -1479,6 +1525,7 @@
 	action_icon_state = "bombard"
 	ability_name = "toxin bomb"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_bomb
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/prae_bomb/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -1493,6 +1540,7 @@
 	action_icon_state = "punch"
 	ability_name = "punch"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_punch
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/prae_punch/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -1507,6 +1555,7 @@
 	action_icon_state = "screech"
 	ability_name = "screech"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_screech
+	action_type = XENO_ACTION_ACTIVATE
 
 /datum/action/xeno_action/activable/prae_screech/use_ability()
 	var/mob/living/carbon/Xenomorph/X = owner

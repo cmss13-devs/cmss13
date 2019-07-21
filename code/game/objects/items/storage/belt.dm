@@ -797,3 +797,9 @@
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
 	new_gun.on_enter_storage(src)
+
+/obj/item/storage/belt/gun/smartgunner/pmc/full/New()
+	..()
+	new /obj/item/ammo_magazine/pistol/hp(src)
+	new /obj/item/ammo_magazine/smartgun/dirty(src)
+	new /obj/item/ammo_magazine/smartgun/dirty(src)

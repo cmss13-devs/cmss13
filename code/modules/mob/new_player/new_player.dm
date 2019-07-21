@@ -24,12 +24,19 @@
 
 
 /mob/new_player/proc/new_player_panel_proc()
-	var/output = "<div align='center'><B>New Player Options</B>"
-	output +="<hr>"
+	var/tempnumber = rand(1, 999)
+	var/postfix_text = client.prefs.xeno_postfix ? ("-"+client.prefs.xeno_postfix) : ""
+	var/prefix_text = client.prefs.xeno_prefix ? client.prefs.xeno_prefix : "XX"
+	var/xeno_text = "[prefix_text]-[tempnumber][postfix_text]"
+
+	var/output = "<div align='center'>Welcome,"
+	output +="<br><b>[client.prefs.real_name]</b>"
+	output +="<br><b>[xeno_text]</b>"
 	output += "<p><a href='byond://?src=\ref[src];lobby_choice=show_preferences'>Setup Character</A></p>"
 
 	if(!ticker || !ticker.mode || ticker.current_state <= GAME_STATE_PREGAME)
 		output += "<p>\[ [ready? "<b>Ready</b>":"<a href='byond://?src=\ref[src];lobby_choice=ready'>Ready</a>"] | [ready? "<a href='byond://?src=\ref[src];lobby_choice=ready'>Not Ready</a>":"<b>Not Ready</b>"] \]</p>"
+		output += "<b>Be Xenomorph:</b> [client.prefs.be_special&(1<<0) ? "Yes" : "No"]"
 
 	else
 		output += "<a href='byond://?src=\ref[src];lobby_choice=manifest'>View the Crew Manifest</A><br><br>"
@@ -58,7 +65,7 @@
 
 	output += "</div>"
 
-	src << browse(output,"window=playersetup;size=240x300;can_close=0")
+	src << browse(output,"window=playersetup;size=240x320;can_close=0")
 	return
 
 /mob/new_player/Stat()

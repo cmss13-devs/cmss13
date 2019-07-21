@@ -1323,8 +1323,10 @@ datum/preferences
 					help_intent_safety = !help_intent_safety
 
 				if("save")
+					var/mob/new_player/np = user
 					save_preferences()
 					save_character()
+					np.new_player_panel_proc()
 
 				if("reload")
 					load_preferences()
@@ -1338,8 +1340,10 @@ datum/preferences
 					close_load_dialog(user)
 
 				if("changeslot")
+					var/mob/new_player/np = user
 					load_character(text2num(href_list["num"]))
 					close_load_dialog(user)
+					np.new_player_panel_proc()
 
 	ShowChoices(user)
 	return 1

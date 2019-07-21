@@ -50150,10 +50150,6 @@
 /obj/effect/decal/cleanable/molten_item,
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull)
-"kDu" = (
-/obj/structure/window/framed/almayer/requisitions,
-/turf/open/floor/plating,
-/area/almayer/shipboard/firing_range_south)
 "kDD" = (
 /turf/open/floor/almayer{
 	tag = "icon-red";
@@ -51984,6 +51980,11 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/command/cichallway)
+"noe" = (
+/turf/closed/wall/almayer{
+	damage_cap = 15000
+	},
+/area/almayer/shipboard/firing_range_south)
 "noI" = (
 /obj/structure/window/framed/almayer/white,
 /obj/machinery/door/firedoor/border_only/almayer{
@@ -53535,6 +53536,11 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/hydroponics)
+"pJB" = (
+/turf/closed/wall/almayer{
+	damage_cap = 15000
+	},
+/area/almayer/shipboard/firing_range_north)
 "pJJ" = (
 /turf/open/floor/almayer{
 	tag = "icon-green (NORTH)";
@@ -58760,6 +58766,9 @@
 	dir = 8
 	},
 /obj/item/weapon/gun/shotgun/combat,
+/obj/item/vehicle_clamp,
+/obj/item/vehicle_clamp,
+/obj/item/vehicle_clamp,
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig)
 "wMG" = (
@@ -58784,10 +58793,6 @@
 	dir = 1
 	},
 /area/almayer/squads/req)
-"wQF" = (
-/obj/structure/window/framed/almayer/requisitions,
-/turf/open/floor/plating,
-/area/almayer/shipboard/firing_range_north)
 "wQW" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-SW-out";
@@ -105745,7 +105750,7 @@ kYB
 dNt
 rXk
 rXk
-wQF
+kYB
 rXk
 rXk
 mdo
@@ -105797,7 +105802,7 @@ bJG
 bTd
 uMS
 uMS
-kDu
+bKR
 uMS
 uMS
 uwz
@@ -107163,13 +107168,13 @@ aaa
 aKW
 aLf
 kYB
-kYB
-kYB
-kYB
-kYB
-kYB
-kYB
-kYB
+pJB
+pJB
+pJB
+pJB
+pJB
+pJB
+pJB
 nsY
 sbX
 sAc
@@ -107215,13 +107220,13 @@ bFF
 cfs
 dwq
 nsY
-bKR
-bKR
-bKR
-bKR
-bKR
-bKR
-bKR
+noe
+noe
+noe
+noe
+noe
+noe
+noe
 bKR
 aLf
 aKW
@@ -107366,13 +107371,13 @@ aaa
 aKW
 aLf
 kYB
-kYB
-kYB
-kYB
-kYB
-kYB
-kYB
-kYB
+pJB
+pJB
+pJB
+pJB
+pJB
+pJB
+pJB
 nsY
 aYk
 bml
@@ -107418,13 +107423,13 @@ vlA
 bml
 cfX
 nsY
-bKR
-bKR
-bKR
-bKR
-bKR
-bKR
-bKR
+noe
+noe
+noe
+noe
+noe
+noe
+noe
 bKR
 bEo
 aKW

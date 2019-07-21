@@ -1421,7 +1421,7 @@
 	name = "neurotoxic air splash"	
 	effect_power = 1
 	spit_cost = 100
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_COVER|AMMO_SCANS_NEARBY
+	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST|AMMO_SCANS_NEARBY
 
 /datum/ammo/xeno/toxin/burst/on_hit_mob(mob/M,obj/item/projectile/P)
 	if(isXeno(M) && isXeno(P.firer) && M:hivenumber == P.firer:hivenumber)

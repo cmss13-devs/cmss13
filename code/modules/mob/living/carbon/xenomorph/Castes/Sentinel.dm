@@ -17,7 +17,7 @@
 	spit_delay = 25
 	caste_desc = "A weak ranged combat alien."
 	tackle_chance = 40
-	spit_types = list(/datum/ammo/xeno/toxin)
+	spit_types = list(/datum/ammo/xeno/toxin, /datum/ammo/xeno/toxin/burst)
 	evolves_to = list("Spitter")
 	acid_level = 1
 
@@ -61,6 +61,7 @@
 		/datum/action/xeno_action/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/corrosive_acid/drone,
+		/datum/action/xeno_action/shift_spits,
 		/datum/action/xeno_action/activable/xeno_spit,
 		)
 	inherent_verbs = list(

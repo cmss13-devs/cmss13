@@ -1328,47 +1328,65 @@
 	name = "neurotoxic spit"
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST
-	spit_cost = 50
-	var/effect_power = 1
+	spit_cost = 25
+	var/effect_power = 1.75
 
-/datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/item/projectile/P)
+/proc/apply_neuro(mob/M, power, insta_neuro)
 	var/pass_down_the_line = FALSE
 	if(isSynth(M))
 		return // unaffected
 	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
 		pass_down_the_line = TRUE
 	if(!isXeno(M) && !isYautja(M))
-		if(M.knocked_down>4*effect_power || pass_down_the_line)
+		if(M.knocked_down>4 || pass_down_the_line)
 			if(!pass_down_the_line)
 				M.visible_message(SPAN_DANGER("[M] falls limp on the ground."))
 			M.KnockOut(30) //KO them. They already got rekt too much
 
 			pass_down_the_line = TRUE
 
-		if(M.dazed || pass_down_the_line)
-			if(M.knocked_down < 5*effect_power)
-				M.AdjustKnockeddown(1 * effect_power) // KD them a bit more
+		if(M.dazed || pass_down_the_line || insta_neuro)
+			if(M.knocked_down < 5)
+				M.AdjustKnockeddown(1 * power) // KD them a bit more
 				if(!pass_down_the_line)
 					M.visible_message(SPAN_DANGER("[M] falls prone."))
 			pass_down_the_line = TRUE
 
 	if(M.superslowed || pass_down_the_line)
-		if(M.dazed < 6*effect_power)
-			M.AdjustDazed(3 * effect_power) // Daze them a bit more
+		if(M.dazed < 6)
+			M.AdjustDazed(3 * power) // Daze them a bit more
 			if(!pass_down_the_line)
 				M.visible_message(SPAN_DANGER("[M] is visibly confused."))
 		pass_down_the_line = TRUE
 
-	if(M.superslowed < 10*effect_power)
-		M.AdjustSuperslowed(4 * effect_power) // Superslow them a bit more
+	if(M.superslowed < 10)
+		M.AdjustSuperslowed(4 * power) // Superslow them a bit more
 		if(!pass_down_the_line)
 			M.visible_message(SPAN_DANGER("[M] movements are slowed."))
 		pass_down_the_line = TRUE
 
-	if(M.slowed < 20*effect_power)
-		M.AdjustSlowed(6 * effect_power)
+	if(M.slowed < 20)
+		M.AdjustSlowed(6 * power)
 		if(!pass_down_the_line)
 			M.visible_message(SPAN_DANGER("[M] movements are slowed."))
+
+/proc/neuro_flak(turf/T,obj/item/projectile/P , power, insta_neuro, radius)
+	if(!T) return FALSE
+	var/firer = P.firer
+	var/hit_someone = FALSE
+	for(var/mob/living/carbon/M in orange(radius,T))
+		if(isXeno(M) && isXeno(firer) && M:hivenumber == firer:hivenumber)
+			continue
+
+		hit_someone = TRUE
+		apply_neuro(M, power, insta_neuro)
+
+		P.play_damage_effect(M)
+
+	return hit_someone
+
+/datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/item/projectile/P)
+	apply_neuro(M, effect_power, FALSE)
 
 /datum/ammo/xeno/toxin/New()
 	..()
@@ -1377,62 +1395,41 @@
 
 /datum/ammo/xeno/toxin/medium //Spitter
 	name = "neurotoxic spatter"
+	spit_cost = 50
+	effect_power = 1
 
 /datum/ammo/xeno/toxin/queen
 	name = "neurotoxic spit"
+	spit_cost = 50
+	effect_power = 1.5
 
 /datum/ammo/xeno/toxin/queen/on_hit_mob(mob/M,obj/item/projectile/P)
-	var/pass_down_the_line = FALSE
-	if(isSynth(M))
-		return // unaffected
-	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
-		pass_down_the_line = TRUE
-	if(!isXeno(M) && !isYautja(M))
-		if(M.knocked_down>4*effect_power || pass_down_the_line)
-			if(!pass_down_the_line)
-				M.visible_message(SPAN_DANGER("[M] falls limp on the ground."))
-			M.KnockOut(30) //KO them. They already got rekt too much
-
-			pass_down_the_line = TRUE
-
-		if(M.knocked_down < 5*effect_power)
-			M.AdjustKnockeddown(1.0 * effect_power) // KD them a bit more
-			if(!pass_down_the_line)
-				M.visible_message(SPAN_DANGER("[M] falls prone."))
-		pass_down_the_line = TRUE
-
-	if(M.superslowed || pass_down_the_line)
-		if(M.dazed < 6*effect_power)
-			M.AdjustDazed(3 * effect_power) // Daze them a bit more
-			if(!pass_down_the_line)
-				M.visible_message(SPAN_DANGER("[M] is visibly confused."))
-		pass_down_the_line = TRUE
-
-	if(M.superslowed < 10*effect_power)
-		M.AdjustSuperslowed(4 * effect_power) // Superslow them a bit more
-		if(!pass_down_the_line)
-			M.visible_message(SPAN_DANGER("[M] movements are slowed."))
-		pass_down_the_line = TRUE
-
-	if(M.slowed < 20*effect_power)
-		M.AdjustSlowed(6 * effect_power)
-		if(!pass_down_the_line)
-			M.visible_message(SPAN_DANGER("[M] movements are slowed."))
+	apply_neuro(M, effect_power, TRUE)
 
 
 /datum/ammo/xeno/toxin/medium/New()
 	..()
 	shell_speed = config.fast_shell_speed
-	effect_power = 1.1
 
 /datum/ammo/xeno/toxin/heavy //Praetorian
-	name = "neurotoxic splash"
-
-/datum/ammo/xeno/toxin/heavy/New()
-	..()
-	max_range = config.min_shell_range
-	shell_speed = config.reg_shell_speed
+	name = "neurotoxic splash"	
 	effect_power = 1.5
+	spit_cost = 50
+
+
+/datum/ammo/xeno/toxin/burst //sentinel burst
+	name = "neurotoxic air splash"	
+	effect_power = 1
+	spit_cost = 100
+	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST|AMMO_SCANS_NEARBY
+
+/datum/ammo/xeno/toxin/burst/on_hit_mob(mob/M,obj/item/projectile/P)
+	if(isXeno(M) && isXeno(P.firer) && M:hivenumber == P.firer:hivenumber)
+		apply_neuro(M, effect_power*1.5, TRUE)
+	neuro_flak(get_turf(M),P, effect_power, FALSE, 1.5)
+
+/datum/ammo/xeno/toxin/burst/on_near_target(turf/T, obj/item/projectile/P)
+	return neuro_flak(T,P, effect_power, FALSE, 1.5)
 
 /datum/ammo/xeno/toxin/shatter // Used by boiler shatter glob strain
 	name = "neurotoxin spatter"

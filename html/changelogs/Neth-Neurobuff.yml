@@ -1,0 +1,6 @@
+author: Neth Iafin
+delete-after: True
+changes: 
+  - tweak: "Sentinel Neurotoxin plasma cost 25 (from 50)"
+  - tweak: "Sentinel Neurotoxin is 1.75x stronger timewise than Spitter Neurotoxin. Stuns for ~1.75 of a second against 0 Endurance marine."
+  - tweak: "Sentinel has new type of ammo - Neurotoxic Air Splash. It costs 100 and hits everyone in square 1. It also reacts and airbursts if enemy is nearby."

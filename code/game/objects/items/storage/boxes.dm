@@ -31,8 +31,8 @@
 //	foldable = /obj/item/stack/sheet/cardboard	//Changed because of in-game abuse
 	foldable = /obj/item/paper/crumpled
 	storage_slots = null
-	max_w_class = 2 //Changed because of in-game abuse
-	w_class = 4 //Changed becuase of in-game abuse
+	max_w_class = SIZE_SMALL //Changed because of in-game abuse
+	w_class = SIZE_LARGE //Changed becuase of in-game abuse
 
 /obj/item/storage/box/survival/
 	New()
@@ -41,7 +41,7 @@
 		sleep(1)
 		new /obj/item/clothing/mask/breath( src )
 		new /obj/item/tank/emergency_oxygen( src )
-		w_class = 3
+		w_class = SIZE_MEDIUM
 		return
 
 /obj/item/storage/box/engineer/
@@ -59,7 +59,7 @@
 	desc = "Contains white gloves."
 	icon_state = "latex"
 	can_hold = list(/obj/item/clothing/gloves/latex)
-	w_class = 2
+	w_class = SIZE_SMALL
 
 
 	New()
@@ -77,7 +77,7 @@
 	desc = "This box contains masks of sterility."
 	icon_state = "sterile"
 	can_hold = list(/obj/item/clothing/mask/surgical)
-	w_class = 2
+	w_class = SIZE_SMALL
 
 	New()
 		..()
@@ -96,7 +96,7 @@
 	desc = "A biohazard alert warning is printed on the box"
 	can_hold = list(/obj/item/reagent_container/syringe)
 	icon_state = "syringe"
-	w_class = 2
+	w_class = SIZE_SMALL
 
 	New()
 		..()
@@ -113,7 +113,7 @@
 	desc = "A box full of autoinjectors."
 	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/custom)
 	icon_state = "syringe"
-	w_class = 2
+	w_class = SIZE_SMALL
 
 /obj/item/storage/box/autoinjectors/New()
 	..()
@@ -129,7 +129,7 @@
 	name = "box of beakers"
 	icon_state = "beaker"
 	can_hold = list(/obj/item/reagent_container/glass/beaker)
-	w_class = 3
+	w_class = SIZE_MEDIUM
 
 	New()
 		..()
@@ -146,7 +146,7 @@
 	desc = "<B>WARNING: These devices are extremely dangerous and can cause blindness or deafness in repeated use.</B>"
 	icon_state = "flashbang"
 	can_hold = list(/obj/item/explosive/grenade/flashbang)
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	New()
 		..()
 		new /obj/item/explosive/grenade/flashbang(src)
@@ -208,7 +208,7 @@
 	desc = "This box contains nerd glasses."
 	icon_state = "glasses"
 	can_hold = list(/obj/item/clothing/glasses/regular)
-	w_class = 3
+	w_class = SIZE_MEDIUM
 
 	New()
 		..()
@@ -283,7 +283,7 @@
 	desc = "<B>Instructions:</B> <I>Heat in microwave. Product will cool if not eaten within seven minutes.</I>"
 	icon_state = "donk_kit"
 	can_hold = list(/obj/item/reagent_container/food/snacks)
-	w_class = 3
+	w_class = SIZE_MEDIUM
 
 	New()
 		..()
@@ -446,7 +446,7 @@
 	icon = 'icons/obj/items/cigarettes.dmi'
 	icon_state = "matchbox"
 	item_state = "zippo"
-	w_class = 1
+	w_class = SIZE_TINY
 	flags_equip_slot = SLOT_WAIST
 	can_hold = list(/obj/item/tool/match)
 
@@ -491,7 +491,7 @@
 /obj/item/storage/box/lights/tubes
 	name = "box of replacement tubes"
 	icon_state = "lighttube"
-	w_class = 3
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/lights/tubes/New()
 	..()
@@ -520,7 +520,7 @@
 	name = "\improper M20 mine box"
 	desc = "A secure box holding anti-personel proximity mines."
 	icon_state = "minebox"
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	max_storage_space = 8
 	can_hold = list(/obj/item/explosive/mine)
 
@@ -540,7 +540,7 @@
 	name = "\improper M94 marking flare pack"
 	desc = "A packet of eight M94 Marking Flares. Carried by USCM soldiers to light dark areas that cannot be reached with the usual TNR Shoulder Lamp."
 	icon_state = "m94"
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	storage_slots = 8
 	max_storage_space = 8
 	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
@@ -563,7 +563,7 @@
 	name = "\improper M89-S signal flare pack"
 	desc = "A packet of eight M89-S Signal Marking Flares."
 	icon_state = "m89"
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	max_storage_space = 10
 	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
 
@@ -590,7 +590,7 @@
 	name = "\improper M40 HEDP grenade box"
 	desc = "A secure box holding 25 M40 High-Explosive Dual-Purpose grenades. High explosive, don't store near the flamer fuel."
 	icon_state = "nade_placeholder"
-	w_class = 4
+	w_class = SIZE_LARGE
 	storage_slots = 25
 	max_storage_space = 50
 	can_hold = list(/obj/item/explosive/grenade/HE)
@@ -615,7 +615,7 @@
 	name = "\improper M40 HEFA grenade box"
 	desc = "A secure box holding 25 M40 High-Explosive Fragmenting-Antipersonnel grenades. High explosive, don't store near the flamer fuel."
 	icon_state = "frag_nade_placeholder"
-	w_class = 4
+	w_class = SIZE_LARGE
 	storage_slots = 25
 	max_storage_space = 50
 	can_hold = list(/obj/item/explosive/grenade/HE/frag)
@@ -679,7 +679,7 @@
 	name = "\improper USCM MRE"
 	desc = "Meal Ready-to-Eat, property of the US Colonial Marines. Meant to be consumed in the field, and has an expiration that is at least two decades past your combat life expectancy."
 	icon_state = "mealpack"
-	w_class = 2
+	w_class = SIZE_SMALL
 	can_hold = list()
 	storage_slots = 4
 	max_w_class = 0

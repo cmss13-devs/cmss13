@@ -8,7 +8,7 @@
 	item_state = "pred_disk"
 	force = 15
 	throwforce = 35
-	w_class = 1.0
+	w_class = SIZE_TINY
 	det_time = 30
 	unacidable = TRUE
 

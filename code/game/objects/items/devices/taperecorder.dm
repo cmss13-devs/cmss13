@@ -3,7 +3,7 @@
 	name = "universal recorder"
 	icon_state = "taperecorderidle"
 	item_state = "analyzer"
-	w_class = 2.0
+	w_class = SIZE_SMALL
 
 	matter = list("metal" = 60,"glass" = 30)
 

@@ -4,7 +4,7 @@
 	flags_armor_protection = HEAD
 	flags_equip_slot = SLOT_HEAD
 	flags_pass = PASSTABLE
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	var/anti_hug = 0
 
 /obj/item/clothing/head/update_clothing_icon()

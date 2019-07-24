@@ -7,7 +7,7 @@
 	singular_name = "layer"
 	icon = 'icons/Marine/marine-items.dmi'
 	icon_state = "snow_stack"
-	w_class = 5
+	w_class = SIZE_HUGE
 	force = 2
 	throwforce = 0
 	throw_speed = 5

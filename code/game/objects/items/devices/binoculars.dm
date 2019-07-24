@@ -6,7 +6,7 @@
 
 	flags_atom = FPRINT|CONDUCT
 	force = 5.0
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	throwforce = 5.0
 	throw_range = 15
 	throw_speed = 3
@@ -192,7 +192,7 @@
 	//laser_con is to add you to the list of laser users.
 	flags_atom = FPRINT|CONDUCT
 	force = 5.0
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	throwforce = 5.0
 	throw_range = 15
 	throw_speed = 3

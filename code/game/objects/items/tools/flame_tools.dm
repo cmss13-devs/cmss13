@@ -26,7 +26,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon = 'icons/obj/items/candle.dmi'
 	icon_state = "candle1"
 	item_state = "candle1"
-	w_class = 1
+	w_class = SIZE_TINY
 
 	var/wax = 800
 
@@ -115,7 +115,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "match_unlit"
 	var/burnt = 0
 	var/smoketime = 5
-	w_class = 1.0
+	w_class = SIZE_TINY
 	origin_tech = "materials=1"
 	attack_verb = list("burnt", "singed")
 
@@ -176,7 +176,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cigoff"
 	throw_speed = 0.5
 	item_state = "cigoff"
-	w_class = 1
+	w_class = SIZE_TINY
 	flags_armor_protection = 0
 	attack_verb = list("burnt", "singed")
 	var/icon_on = "cigon"  //Note - these are in masks.dmi not in cigarette.dmi
@@ -565,7 +565,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/icon_on = "lighter-g-on"
 	var/icon_off = "lighter-g"
 	var/clr = "g"
-	w_class = 1
+	w_class = SIZE_TINY
 	throwforce = 4
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST

@@ -11,7 +11,7 @@
 	throw_speed = 1
 	throw_range = 5
 	throwforce = 0
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	flags_item = NOBLUDGEON|NOSHIELD
 	var/active = 0
 	var/sword_color
@@ -34,13 +34,13 @@
 	if (active)
 		force = 30
 		icon_state = "sword[sword_color]"
-		w_class = 4
+		w_class = SIZE_LARGE
 		playsound(user, 'sound/weapons/saberon.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE(" [src] is now active."))
 	else
 		force = 3
 		icon_state = "sword0"
-		w_class = 2
+		w_class = SIZE_SMALL
 		playsound(user, 'sound/weapons/saberoff.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE(" [src] can now be concealed."))
 

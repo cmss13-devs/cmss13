@@ -6,7 +6,7 @@
 	icon_state = "marine-hazmat"
 	item_state = "haz-marine"
 	icon = 'icons/mob/suit_0.dmi'
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/melee/energy/sword,/obj/item/weapon/handcuffs,/obj/item/weapon/tank/emergency_oxygen)
 	slowdown = 1
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW

@@ -15,7 +15,7 @@
 	icon_state = "capgun"
 	item_state = "gun"
 	flags_equip_slot = SLOT_WAIST
-	w_class = 3.0
+	w_class = SIZE_MEDIUM
 
 	matter = list("glass" = 10,"metal" = 10)
 
@@ -68,7 +68,7 @@
 	name = "ammo-caps"
 	desc = "There are 7 caps left! Make sure to recyle the box in an autolathe when it gets empty."
 	icon_state = "cap_ammo"
-	w_class = 1.0
+	w_class = SIZE_TINY
 
 	matter = list("metal" = 10,"glass" = 10)
 
@@ -90,7 +90,7 @@
 	desc = "A weapon favored by many overactive children. Ages 8 and up."
 	icon_state = "foamcrossbow"
 	item_state = "crossbow"
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	attack_verb = list("attacked", "struck", "hit")
 	var/bullets = 5
 
@@ -185,7 +185,7 @@
 	desc = "It's nerf or nothing! Ages 8 and up."
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "foamdart"
-	w_class = 1.0
+	w_class = SIZE_TINY
 
 /obj/effect/foam_dart_dummy
 	name = ""
@@ -206,7 +206,7 @@
 	icon_state = "sword0"
 	item_state = "sword0"
 	var/active = 0.0
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	flags_item = NOSHIELD
 	attack_verb = list("attacked", "struck", "hit")
 
@@ -217,13 +217,13 @@
 			playsound(user, 'sound/weapons/saberon.ogg', 15, 1)
 			src.icon_state = "swordblue"
 			src.item_state = "swordblue"
-			src.w_class = 4
+			src.w_class = SIZE_LARGE
 		else
 			to_chat(user, SPAN_NOTICE(" You push the plastic blade back down into the handle."))
 			playsound(user, 'sound/weapons/saberoff.ogg', 15, 1)
 			src.icon_state = "sword0"
 			src.item_state = "sword0"
-			src.w_class = 2
+			src.w_class = SIZE_SMALL
 
 		if(istype(user,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = user
@@ -243,7 +243,7 @@
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
 	force = 5
 	throwforce = 5
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced")
 
 

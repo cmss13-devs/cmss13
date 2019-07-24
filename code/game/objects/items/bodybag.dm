@@ -5,7 +5,7 @@
 	desc = "A folded bag designed for the storage and transportation of cadavers."
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "bodybag_folded"
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	var/unfolded_path = /obj/structure/closet/bodybag
 
 	attack_self(mob/user)
@@ -45,7 +45,7 @@
 	name = "body bags"
 	desc = "This box contains body bags."
 	icon_state = "bodybags"
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	New()
 		..()
 		new /obj/item/bodybag(src)

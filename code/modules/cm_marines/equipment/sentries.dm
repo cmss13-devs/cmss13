@@ -4,7 +4,7 @@
 /obj/item/ammo_magazine/sentry
 	name = "M30 ammo drum (10x28mm Caseless)"
 	desc = "An ammo drum of 500 10x28mm caseless rounds for the UA 571-C Sentry Gun. Just feed it into the sentry gun's ammo port when its ammo is depleted."
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	icon_state = "ua571c"
 	flags_magazine = NOFLAGS //can't be refilled or emptied by hand
 	caliber = "10x28mm"
@@ -17,7 +17,7 @@
 	desc = "A large case containing all you need to set up an automated sentry, minus the tools."
 	icon = 'icons/Marine/marine-weapons.dmi'
 	icon_state = "sentry_case"
-	w_class = 5
+	w_class = SIZE_HUGE
 	storage_slots = 6
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
 	
@@ -244,7 +244,7 @@
 	name = "\improper UA 571-C turret sensor"
 	desc = "An AI control and locking sensor for an automated sentry. This must be installed on the final product for it to work."
 	unacidable = 1
-	w_class = 1
+	w_class = SIZE_TINY
 	icon = 'icons/Marine/turret.dmi'
 	icon_state = "sentry_sensor"
 
@@ -252,7 +252,7 @@
 	name = "\improper UA 571-C turret"
 	desc = "The turret part of an automated sentry turret. This must be installed on a turret frame and welded together for it to do anything."
 	unacidable = 1
-	w_class = 5
+	w_class = SIZE_HUGE
 	icon = 'icons/Marine/turret.dmi'
 	icon_state = "sentry_head"
 
@@ -1006,7 +1006,7 @@
 /obj/item/turret_laptop
 	name = "UA 571-C Turret Control Laptop"
 	desc = "A small device used for remotely controlling sentry turrets."
-	w_class = 4
+	w_class = SIZE_LARGE
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "turret_off"
 	unacidable = 1

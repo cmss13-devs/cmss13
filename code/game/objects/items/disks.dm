@@ -8,4 +8,4 @@
 	name = "nuclear authentication disk"
 	desc = "Better keep this safe."
 	icon_state = "nucleardisk"
-	w_class = 1
+	w_class = SIZE_TINY

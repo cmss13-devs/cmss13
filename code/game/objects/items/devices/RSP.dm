@@ -8,4 +8,4 @@
 	anchored = 0.0
 	var/stored_matter = 0
 	var/mode = 1
-	w_class = 3.0
+	w_class = SIZE_MEDIUM

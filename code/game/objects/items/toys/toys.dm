@@ -96,7 +96,7 @@
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "syndballoon"
 	item_state = "syndballoon"
-	w_class = 4.0
+	w_class = SIZE_LARGE
 
 /*
  * Fake telebeacon
@@ -128,7 +128,7 @@
 	desc = "A colourful crayon. Please refrain from eating it or putting it in your nose."
 	icon = 'icons/obj/items/crayons.dmi'
 	icon_state = "crayonred"
-	w_class = 1.0
+	w_class = SIZE_TINY
 	attack_verb = list("attacked", "coloured")
 	var/colour = "#FF0000" //RGB
 	var/shadeColour = "#220000" //RGB
@@ -143,7 +143,7 @@
 	name = "snap pop"
 	desc = "Wow!"
 	icon_state = "snappop"
-	w_class = 1
+	w_class = SIZE_TINY
 
 	throw_impact(atom/hit_atom)
 		..()
@@ -324,7 +324,7 @@
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "therapyred"
 	item_state = "egg4" // It's the red egg in items_left/righthand
-	w_class = 1
+	w_class = SIZE_TINY
 
 /obj/item/toy/therapy_purple
 	name = "purple therapy doll"
@@ -332,7 +332,7 @@
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "therapypurple"
 	item_state = "egg1" // It's the magenta egg in items_left/righthand
-	w_class = 1
+	w_class = SIZE_TINY
 
 /obj/item/toy/therapy_blue
 	name = "blue therapy doll"
@@ -340,7 +340,7 @@
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "therapyblue"
 	item_state = "egg2" // It's the blue egg in items_left/righthand
-	w_class = 1
+	w_class = SIZE_TINY
 
 /obj/item/toy/therapy_yellow
 	name = "yellow therapy doll"
@@ -348,7 +348,7 @@
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "therapyyellow"
 	item_state = "egg5" // It's the yellow egg in items_left/righthand
-	w_class = 1
+	w_class = SIZE_TINY
 
 /obj/item/toy/therapy_orange
 	name = "orange therapy doll"
@@ -356,7 +356,7 @@
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "therapyorange"
 	item_state = "egg4" // It's the red one again, lacking an orange item_state and making a new one is pointless
-	w_class = 1
+	w_class = SIZE_TINY
 
 /obj/item/toy/therapy_green
 	name = "green therapy doll"
@@ -364,7 +364,7 @@
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "therapygreen"
 	item_state = "egg3" // It's the green egg in items_left/righthand
-	w_class = 1
+	w_class = SIZE_TINY
 
 
 /obj/item/toy/inflatable_duck
@@ -382,7 +382,7 @@
 	item_state = "beachball"
 	density = 0
 	anchored = 0
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	force = 0.0
 	throwforce = 0.0
 	throw_speed = 1
@@ -398,7 +398,7 @@
 	desc = "A dice with six sides."
 	icon = 'icons/obj/items/dice.dmi'
 	icon_state = "d66"
-	w_class = 1
+	w_class = SIZE_TINY
 	var/sides = 6
 	attack_verb = list("diced")
 
@@ -434,7 +434,7 @@
 	icon_state = "bike_horn"
 	item_state = "bike_horn"
 	throwforce = 3
-	w_class = 1.0
+	w_class = SIZE_TINY
 	throw_speed = 3
 	throw_range = 15
 	attack_verb = list("HONKED")
@@ -454,7 +454,7 @@
 /obj/item/toy/farwadoll
 	name = "Farwa plush doll"
 	desc = "A Farwa plush doll. It's soft and comforting!"
-	w_class = 1
+	w_class = SIZE_TINY
 	icon_state = "farwaplush"
 	var/last_hug_time
 

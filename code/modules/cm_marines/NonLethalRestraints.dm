@@ -6,7 +6,7 @@
 	flags_equip_slot = SLOT_WAIST
 	force = 12
 	throwforce = 7
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	var/charges = 12
 	var/status = 0
 	var/mob/foundmob = "" //Used in throwing proc.

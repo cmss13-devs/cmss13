@@ -3,7 +3,7 @@
 	icon_state = "chemg"
 	item_state = "flashbang"
 	desc = "A hand made chemical grenade."
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	force = 2.0
 	var/stage = 0
 	var/state = 0
@@ -175,7 +175,7 @@
 	allowed_containers = list(/obj/item/reagent_container/glass)
 	origin_tech = "combat=3;materials=3"
 	affected_area = 4
-	w_class = 3.0
+	w_class = SIZE_MEDIUM
 	matter = list("metal" = 5000)
 
 

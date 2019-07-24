@@ -1,7 +1,7 @@
 /obj/item/device/camera_bug
 	name = "camera bug"
 	icon_state = "flash"
-	w_class = 1.0
+	w_class = SIZE_TINY
 	item_state = "electronic"
 	throw_speed = 4
 	throw_range = 20

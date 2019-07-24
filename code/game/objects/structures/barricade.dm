@@ -734,7 +734,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	desc = "A folding barricade that can be used to quickly deploy an all-round resistant barricade."
 	health = 400
 	var/maxhealth = 400
-	w_class = 4
+	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	icon_state = "folding"
 	icon = 'icons/Marine/marine-items.dmi'

@@ -3,7 +3,7 @@
 	desc = "Used to scan objects for DNA and fingerprints."
 	icon_state = "forensic1"
 	var/list/stored = list()
-	w_class = 3.0
+	w_class = SIZE_MEDIUM
 	item_state = "electronic"
 	flags_atom = FPRINT|CONDUCT
 	flags_item = NOBLUDGEON

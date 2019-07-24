@@ -205,7 +205,7 @@
 		..()
 	else if(istype(AM,/obj/item))
 		var/obj/item/O = AM
-		if(O.w_class > 2)
+		if(O.w_class > SIZE_SMALL)
 			to_chat(src, SPAN_WARNING("You are too small to pull that."))
 			return
 		else

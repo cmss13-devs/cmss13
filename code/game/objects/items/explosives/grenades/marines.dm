@@ -69,7 +69,7 @@
 	icon_state = "grenade_stick"
 	item_state = "grenade_stick"
 	force = 10
-	w_class = 2
+	w_class = SIZE_SMALL
 	throwforce = 15
 	throw_speed = 2
 	throw_range = 7

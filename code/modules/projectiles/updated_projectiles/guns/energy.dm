@@ -85,7 +85,7 @@
 	muzzle_flash = null // TO DO, add a decent one.
 	zoomdevicename = "scope"
 	flags_equip_slot = SLOT_BACK
-	w_class = 5
+	w_class = SIZE_HUGE
 	var/charge_time = 0
 	var/last_regen = 0
 	flags_gun_features = GUN_UNUSUAL_DESIGN
@@ -200,7 +200,7 @@
 	flags_equip_slot = SLOT_WAIST
 	ammo = /datum/ammo/energy/yautja/pistol
 	muzzle_flash = null // TO DO, add a decent one.
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	var/charge_time = 40
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 
@@ -287,7 +287,7 @@
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 	ammo = /datum/ammo/energy/yautja/caster/bolt
 	muzzle_flash = null // TO DO, add a decent one.
-	w_class = 5
+	w_class = SIZE_HUGE
 	force = 0
 	fire_delay = 3
 	var/obj/item/clothing/gloves/yautja/source = null

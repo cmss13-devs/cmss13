@@ -7,7 +7,7 @@
 	throwforce = 2.0
 	throw_speed = 1
 	throw_range = 4
-	w_class = 2
+	w_class = SIZE_SMALL
 	attack_verb = list("called", "rang")
 	hitsound = 'sound/weapons/ring.ogg'
 
@@ -17,7 +17,7 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "banana_peel"
 	item_state = "banana_peel"
-	w_class = 1
+	w_class = SIZE_TINY
 	throwforce = 0
 	throw_speed = 4
 	throw_range = 20
@@ -36,7 +36,7 @@
 	flags_atom = FPRINT|CONDUCT
 	force = 5.0
 	throwforce = 7.0
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	matter = list("metal" = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
 
@@ -52,7 +52,7 @@
 	var/data = ""
 	var/base_url = "http://svn.slurm.us/public/spacestation13/misc/game_kit"
 	item_state = "sheet-metal"
-	w_class = 5.0
+	w_class = SIZE_HUGE
 */
 
 /obj/item/gift
@@ -63,7 +63,7 @@
 	var/size = 3.0
 	var/obj/item/gift = null
 	item_state = "gift"
-	w_class = 4.0
+	w_class = SIZE_LARGE
 
 
 
@@ -77,7 +77,7 @@
 	throwforce = 5.0
 	throw_speed = 1
 	throw_range = 5
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	flags_item = NOSHIELD
 	attack_verb = list("bludgeoned", "whacked", "disciplined")
 
@@ -104,7 +104,7 @@
 	throwforce = 5.0
 	throw_speed = 1
 	throw_range = 5
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	flags_item = NOSHIELD
 
 

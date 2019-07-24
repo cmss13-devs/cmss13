@@ -8,7 +8,7 @@
 	caliber = "9mm"
 	icon_state = "m4a3"
 	max_rounds = 12
-	w_class = 2
+	w_class = SIZE_SMALL
 	default_ammo = /datum/ammo/bullet/pistol
 	gun_type = /obj/item/weapon/gun/pistol/m4a3
 
@@ -112,7 +112,7 @@
 	caliber = ".22"
 	icon_state = "m4a3" //PLACEHOLDER
 	max_rounds = 5
-	w_class = 1
+	w_class = SIZE_TINY
 	gun_type = /obj/item/weapon/gun/pistol/holdout
 
 

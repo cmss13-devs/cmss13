@@ -1172,7 +1172,7 @@
 	icon = 'icons/obj/items/predator.dmi'
 	icon_state = "beltbag"
 	flags_equip_slot = SLOT_WAIST
-	max_w_class = 3
+	max_w_class = SIZE_MEDIUM
 	storage_slots = 10
 	max_storage_space = 30
 
@@ -1210,7 +1210,7 @@
 	icon_state = "teleporter"
 	origin_tech = "materials=7;bluespace=7;engineering=7"
 	flags_atom = FPRINT|CONDUCT
-	w_class = 1
+	w_class = SIZE_TINY
 	force = 1
 	throwforce = 1
 	unacidable = 1
@@ -1341,7 +1341,7 @@
 	icon_state = "wrist"
 	item_state = "wristblade"
 	force = 33
-	w_class = 5
+	w_class = SIZE_HUGE
 	edge = 1
 	sharp = 1
 	flags_item = NOSHIELD|NODROP|ITEM_PREDATOR
@@ -1401,7 +1401,7 @@
 	flags_equip_slot = SLOT_WAIST
 	force = 60
 	throwforce = 12
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	unacidable = 1
 	sharp = 0
 	edge = 0
@@ -1432,7 +1432,7 @@
 	flags_equip_slot = SLOT_STORE
 	sharp = IS_SHARP_ITEM_ACCURATE
 	force = 24
-	w_class = 1
+	w_class = SIZE_TINY
 	throwforce = 28
 	throw_speed = 3
 	throw_range = 6
@@ -1484,7 +1484,7 @@
 	sharp = 1
 	edge = 1
 	force = 45 //More damage than other weapons like it. Considering how "strong" this sword is supposed to be, 38 damage was laughable.
-	w_class = 4.0
+	w_class = SIZE_LARGE
 	throwforce = 18
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -1537,7 +1537,7 @@
 	flags_equip_slot = SLOT_WAIST
 	sharp = 1
 	force = 50
-	w_class = 4.0
+	w_class = SIZE_LARGE
 	throwforce = 24
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -1594,7 +1594,7 @@
 	flags_atom = FPRINT|CONDUCT|ITEM_UNCATCHABLE
 	flags_equip_slot = SLOT_BACK
 	flags_item = TWOHANDED|ITEM_PREDATOR
-	w_class = 4
+	w_class = SIZE_LARGE
 	force = 35
 	embeddable = FALSE //It shouldn't embed so that the Yautja can actually use the yank combi verb, and so that it's not useless upon throwing it at someone.
 	throwforce = 38
@@ -1663,7 +1663,7 @@
 		icon_state = initial(icon_state)
 		flags_equip_slot = initial(flags_equip_slot)
 		flags_item |= TWOHANDED
-		w_class = 4
+		w_class = SIZE_LARGE
 		force = 35
 		throwforce = initial(throwforce)
 		attack_verb = list("speared", "stabbed", "impaled")
@@ -1686,7 +1686,7 @@
 		icon_state = initial(icon_state) + "_f"
 		flags_equip_slot = SLOT_STORE
 		flags_item &= ~TWOHANDED
-		w_class = 1
+		w_class = SIZE_TINY
 		force = 10
 		throwforce = initial(throwforce) - 50
 		attack_verb = list("thwacked", "smacked")
@@ -1745,7 +1745,7 @@
 	icon_state = "hellnade"
 	force = 25
 	throwforce = 55
-	w_class = 1.0
+	w_class = SIZE_TINY
 	det_time = 30
 	var/obj/machinery/camera/current = null
 	var/turf/activated_turf = null

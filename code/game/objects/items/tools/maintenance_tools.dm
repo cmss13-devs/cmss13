@@ -23,7 +23,7 @@
 	flags_equip_slot = SLOT_WAIST
 	force = 5.0
 	throwforce = 7.0
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	matter = list("metal" = 150)
 	origin_tech = "materials=1;engineering=1"
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
@@ -40,7 +40,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	force = 5.0
-	w_class = 1.0
+	w_class = SIZE_TINY
 	throwforce = 5.0
 	throw_speed = 3
 	throw_range = 5
@@ -102,7 +102,7 @@
 	force = 6.0
 	throw_speed = 2
 	throw_range = 9
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	matter = list("metal" = 80)
 	origin_tech = "materials=1;engineering=1"
 	attack_verb = list("pinched", "nipped")
@@ -141,7 +141,7 @@
 	throwforce = 5.0
 	throw_speed = 1
 	throw_range = 5
-	w_class = 2.0
+	w_class = SIZE_SMALL
 
 	//Cost to make in the autolathe
 	matter = list("metal" = 70, "glass" = 30)
@@ -303,7 +303,7 @@
 			force = 15
 			damtype = "fire"
 			icon_state = "welder1"
-			w_class = 4
+			w_class = SIZE_LARGE
 			heat_source = 3800
 			processing_objects.Add(src)
 		else
@@ -397,14 +397,14 @@
 /obj/item/tool/weldingtool/hugetank
 	name = "high-capacity industrial blowtorch"
 	max_fuel = 80
-	w_class = 3.0
+	w_class = SIZE_MEDIUM
 	matter = list("metal" = 70, "glass" = 120)
 	origin_tech = "engineering=3"
 
 /obj/item/tool/weldingtool/experimental
 	name = "experimental blowtorch"
 	max_fuel = 40 //?
-	w_class = 3.0
+	w_class = SIZE_MEDIUM
 	matter = list("metal" = 70, "glass" = 120)
 	origin_tech = "engineering=4;phorontech=3"
 	var/last_gen = 0
@@ -431,7 +431,7 @@
 	force = 5.0
 	throwforce = 7.0
 	item_state = "crowbar"
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	matter = list("metal" = 50)
 	origin_tech = "engineering=1"
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
@@ -456,7 +456,7 @@
 	flags_equip_slot = SLOT_BACK
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "welderpack"
-	w_class = 4.0
+	w_class = SIZE_LARGE
 	var/max_fuel = 600 //Because the marine backpack can carry 260, and still allows you to take items, there should be a reason to still use this one.
 
 /obj/item/tool/weldpack/New()

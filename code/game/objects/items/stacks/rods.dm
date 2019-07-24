@@ -4,7 +4,7 @@
 	singular_name = "metal rod"
 	icon_state = "rods"
 	flags_atom = FPRINT|CONDUCT
-	w_class = 3.0
+	w_class = SIZE_MEDIUM
 	force = 9.0
 	throwforce = 15.0
 	throw_speed = 5
@@ -77,7 +77,7 @@
 	singular_name = "plasteel rod"
 	icon_state = "rods_plasteel"
 	flags_atom = FPRINT
-	w_class = 3.0
+	w_class = SIZE_MEDIUM
 	force = 9.0
 	throwforce = 15.0
 	throw_speed = 5

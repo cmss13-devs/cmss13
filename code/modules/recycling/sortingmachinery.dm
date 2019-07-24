@@ -216,7 +216,7 @@
 	name = "package wrapper"
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "deliveryPaper"
-	w_class = 3.0
+	w_class = SIZE_MEDIUM
 	var/amount = 25.0
 
 
@@ -313,7 +313,7 @@
 	icon_state = "dest_tagger"
 	var/currTag = 0
 
-	w_class = 2
+	w_class = SIZE_SMALL
 	item_state = "electronic"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST

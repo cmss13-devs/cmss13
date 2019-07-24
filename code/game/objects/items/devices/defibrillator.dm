@@ -8,7 +8,7 @@
 	flags_equip_slot = SLOT_WAIST
 	force = 5
 	throwforce = 5
-	w_class = 3
+	w_class = SIZE_MEDIUM
 
 	var/ready = 0
 	var/damage_threshold = 8 //This is the maximum non-oxy damage the defibrillator will heal to get a patient above -100, in all categories

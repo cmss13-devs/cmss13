@@ -7,7 +7,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 5
-	w_class = 2
+	w_class = SIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
 	matter = list("metal" = 500)
@@ -72,7 +72,7 @@
 /obj/item/handcuffs/zip
 	name = "zip cuffs"
 	desc = "Single-use plastic zip tie handcuffs."
-	w_class = 1
+	w_class = SIZE_TINY
 	icon_state = "cuff_zip"
 	breakouttime = 600 //Deciseconds = 60s
 	cuff_sound = 'sound/weapons/cablecuff.ogg'
@@ -163,7 +163,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 5
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
 	matter = list("metal" = 500)

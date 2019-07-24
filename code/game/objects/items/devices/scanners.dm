@@ -15,7 +15,7 @@ REAGENT SCANNER
 	var/on = 0
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	w_class = 2
+	w_class = SIZE_SMALL
 	item_state = "electronic"
 
 	matter = list("metal" = 150)
@@ -72,7 +72,7 @@ REAGENT SCANNER
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 3
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	throw_speed = 5
 	throw_range = 10
 	matter = list("metal" = 200)
@@ -110,7 +110,7 @@ REAGENT SCANNER
 	name = "analyzer"
 	icon_state = "atmos"
 	item_state = "analyzer"
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 5
@@ -154,7 +154,7 @@ REAGENT SCANNER
 	name = "mass-spectrometer"
 	icon_state = "spectrometer"
 	item_state = "analyzer"
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	flags_atom = FPRINT|CONDUCT|OPENCONTAINER
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 5
@@ -229,7 +229,7 @@ REAGENT SCANNER
 	desc = "A hand-held reagent scanner which identifies chemical agents."
 	icon_state = "spectrometer"
 	item_state = "analyzer"
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 5

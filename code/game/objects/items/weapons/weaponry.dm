@@ -7,7 +7,7 @@
 	icon_state = "toyhammer"
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 0
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	throw_speed = 7
 	throw_range = 15
 	attack_verb = list("banned")
@@ -22,7 +22,7 @@
 	throw_speed = 1
 	throw_range = 4
 	throwforce = 10
-	w_class = 2
+	w_class = SIZE_SMALL
 
 /obj/item/weapon/harpoon
 	name = "harpoon"
@@ -33,7 +33,7 @@
 	item_state = "harpoon"
 	force = 20
 	throwforce = 15
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	attack_verb = list("jabbed","stabbed","ripped")
 
 /obj/item/weapon/baseballbat
@@ -43,7 +43,7 @@
 	item_state = "woodbat"
 	sharp = 0
 	edge = 0
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	force = 20
 	throw_speed = 3
 	throw_range = 7
@@ -58,7 +58,7 @@
 	icon_state = "metalbat"
 	item_state = "metalbat"
 	force = 25
-	w_class = 3.0
+	w_class = SIZE_MEDIUM
 
 /obj/item/weapon/butterfly
 	name = "butterfly knife"
@@ -67,7 +67,7 @@
 	item_state = null
 	hitsound = null
 	var/active = 0
-	w_class = 1
+	w_class = SIZE_TINY
 	force = 8
 	sharp = 0
 	edge = 0
@@ -89,7 +89,7 @@
 		sharp = IS_SHARP_ITEM_ACCURATE
 		hitsound = 'sound/weapons/bladeslice.ogg'
 		icon_state += "_open"
-		w_class = 3
+		w_class = SIZE_MEDIUM
 		attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	else
 		to_chat(user, SPAN_NOTICE("The butterfly knife can now be concealed."))
@@ -126,7 +126,7 @@
 	flags_atom = FPRINT|CONDUCT
 	force = 8
 	throwforce = 10
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	attack_verb = list("hit", "bludgeoned", "whacked", "bonked")
 
 
@@ -165,7 +165,7 @@
 	throwforce = 44
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_speed = 1
 

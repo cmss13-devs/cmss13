@@ -3,7 +3,7 @@
 	desc = "A neosilk clip-on tie."
 	icon = 'icons/obj/clothing/ties.dmi'
 	icon_state = "bluetie"
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	var/image/inv_overlay = null	//overlay used when attached to clothing.
 	var/obj/item/clothing/has_suit = null		//the suit the tie may be attached to
 	var/slot = ACCESSORY_SLOT_DECOR
@@ -370,7 +370,7 @@
 /obj/item/clothing/accessory/holster/proc/can_holster(obj/item/weapon/gun/W)
 	if(!istype(W))
 		return 0 //Only for guns
-	if(W.w_class <= 3) return 1
+	if(W.w_class <= SIZE_MEDIUM) return 1
 	return 0
 
 /obj/item/clothing/accessory/holster/proc/holster(obj/item/I, mob/user as mob)
@@ -453,7 +453,7 @@
 	name = "load bearing equipment"
 	desc = "Used to hold things when you don't have enough hands."
 	icon_state = "webbing"
-	w_class = 4 //too big to store in other pouches
+	w_class = SIZE_LARGE //too big to store in other pouches
 	var/slots = 3
 	var/obj/item/storage/internal/hold
 	slot = ACCESSORY_SLOT_UTILITY

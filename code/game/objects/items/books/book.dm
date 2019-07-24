@@ -7,7 +7,7 @@
 	icon_state ="book"
 	throw_speed = 1
 	throw_range = 5
-	w_class = 3		 //upped to three because books are, y'know, pretty big. (and you could hide them inside eachother recursively forever)
+	w_class = SIZE_MEDIUM		 //upped to three because books are, y'know, pretty big. (and you could hide them inside eachother recursively forever)
 	attack_verb = list("bashed", "whacked", "educated")
 	var/dat			 // Actual page content
 	var/due_date = 0 // Game time in 1/10th seconds
@@ -37,7 +37,7 @@
 /obj/item/book/attackby(obj/item/W as obj, mob/user as mob)
 	if(carved)
 		if(!store)
-			if(W.w_class < 3)
+			if(W.w_class < SIZE_MEDIUM)
 				user.drop_held_item()
 				W.loc = src
 				store = W

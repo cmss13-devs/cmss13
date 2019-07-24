@@ -9,7 +9,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 3
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	throw_speed = 5
 	throw_range = 10
 	matter = list("metal" = 200)

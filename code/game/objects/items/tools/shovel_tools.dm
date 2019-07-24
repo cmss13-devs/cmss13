@@ -14,7 +14,7 @@
 	flags_equip_slot = SLOT_WAIST
 	force = 8
 	throwforce = 4
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	matter = list("metal" = 50)
 	origin_tech = "materials=1;engineering=1"
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
@@ -122,7 +122,7 @@
 	item_state = "spade"
 	force = 5
 	throwforce = 7
-	w_class = 2
+	w_class = SIZE_SMALL
 	dirt_overlay = "spade_overlay"
 	shovelspeed = 60
 	dirt_amt_per_dig = 1
@@ -132,7 +132,7 @@
 /obj/item/tool/shovel/snow
 	name = "snow shovel"
 	desc = "I had enough winter for this year!"
-	w_class = 4
+	w_class = SIZE_LARGE
 	force = 5
 	throwforce = 3
 
@@ -148,7 +148,7 @@
 	force = 30
 	throwforce = 2
 	item_state = "crowbar"
-	w_class = 4 //three for unfolded, 3 for folded. This should keep it outside backpacks until its folded, made it 3 because 2 lets you fit in pockets appearntly.
+	w_class = SIZE_LARGE
 	origin_tech = "engineering=1"
 	dirt_overlay = "etool_overlay"
 	dirt_amt_per_dig = 5
@@ -164,15 +164,15 @@
 /obj/item/tool/shovel/etool/attack_self(mob/user as mob)
 	folded = !folded
 	if(folded)
-		w_class = 3
+		w_class = SIZE_MEDIUM
 		force = 2
 	else
-		w_class = 4
+		w_class = SIZE_LARGE
 		force = 30
 	..()
 
 /obj/item/tool/shovel/etool/folded
 	folded = TRUE
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	force = 2
 	icon_state = "etool_c"

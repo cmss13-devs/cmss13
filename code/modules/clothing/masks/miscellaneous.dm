@@ -5,7 +5,7 @@
 	item_state = "muzzle"
 	flags_inventory = COVERMOUTH
 	flags_armor_protection = 0
-	w_class = 2
+	w_class = SIZE_SMALL
 	gas_transfer_coefficient = 0.90
 
 /obj/item/clothing/mask/surgical
@@ -13,7 +13,7 @@
 	desc = "A sterile mask designed to help prevent the spread of diseases."
 	icon_state = "sterile"
 	item_state = "sterile"
-	w_class = 2
+	w_class = SIZE_SMALL
 	flags_inventory = COVERMOUTH
 	flags_armor_protection = 0
 	gas_transfer_coefficient = 0.90
@@ -48,7 +48,7 @@
 	item_state = "pig"
 	flags_inventory = COVERMOUTH|COVEREYES
 	flags_inv_hide = HIDEFACE|HIDEALLHAIR|HIDEEYES|HIDEEARS
-	w_class = 2
+	w_class = SIZE_SMALL
 	siemens_coefficient = 0.9
 	flags_armor_protection = HEAD|FACE|EYES
 
@@ -60,7 +60,7 @@
 	flags_inventory = COVERMOUTH|COVEREYES
 	flags_inv_hide = HIDEFACE|HIDEALLHAIR|HIDEEYES|HIDEEARS
 	flags_armor_protection = HEAD|FACE|EYES
-	w_class = 2
+	w_class = SIZE_SMALL
 	var/voicechange = 0
 	siemens_coefficient = 0.9
 
@@ -72,14 +72,14 @@
 	item_state = "balaclava"
 	flags_inv_hide = HIDEFACE|HIDEALLHAIR
 	flags_armor_protection = FACE
-	w_class = 2
+	w_class = SIZE_SMALL
 
 /obj/item/clothing/mask/balaclava/tactical
 	name = "green balaclava"
 	desc = "Designed to both hide identities and keep your face comfy and warm."
 	icon_state = "swatclava"
 	item_state = "balaclava"
-	w_class = 2
+	w_class = SIZE_SMALL
 
 /obj/item/clothing/mask/luchador
 	name = "Luchador Mask"
@@ -88,7 +88,7 @@
 	item_state = "luchag"
 	flags_inv_hide = HIDEFACE|HIDEALLHAIR
 	flags_armor_protection = HEAD|FACE
-	w_class = 2
+	w_class = SIZE_SMALL
 	siemens_coefficient = 3.0
 
 /obj/item/clothing/mask/luchador/tecnicos

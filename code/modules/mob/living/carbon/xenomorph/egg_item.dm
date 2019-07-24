@@ -4,7 +4,7 @@
 	desc = "Some sort of egg."
 	icon = 'icons/Xeno/Effects.dmi'
 	icon_state = "egg_item"
-	w_class = 6
+	w_class = SIZE_MASSIVE
 	flags_atom = NOFLAGS
 	flags_item = NOBLUDGEON
 	throw_range = 1

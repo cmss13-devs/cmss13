@@ -121,7 +121,7 @@
 // Ears: headsets, earmuffs and tiny objects
 /obj/item/clothing/ears
 	name = "ears"
-	w_class = 1.0
+	w_class = SIZE_TINY
 	throwforce = 2
 	flags_equip_slot = SLOT_EAR
 
@@ -156,7 +156,7 @@
 	flags_equip_slot = SLOT_OCLOTHING
 	var/blood_overlay_type = "suit"
 	siemens_coefficient = 0.9
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_0.dmi')
 
 /obj/item/clothing/suit/update_clothing_icon()
@@ -190,7 +190,7 @@
 /obj/item/clothing/gloves
 	name = "gloves"
 	gender = PLURAL //Carn: for grammarically correct text-parsing
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	icon = 'icons/obj/clothing/gloves.dmi'
 	siemens_coefficient = 0.50
 	var/wired = 0

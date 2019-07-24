@@ -173,7 +173,7 @@
 	if(W.sharp == IS_SHARP_ITEM_ACCURATE)
 	else if(W.sharp == IS_SHARP_ITEM_BIG)
 		inaccurate = 1
-	else if(W.w_class <= 2 && istype(src,/obj/item/reagent_container/food/snacks/sliceable))
+	else if(W.w_class <= SIZE_SMALL && istype(src,/obj/item/reagent_container/food/snacks/sliceable))
 		if(!iscarbon(user))
 			return 1
 
@@ -301,7 +301,7 @@
 	icon_state = "candy"
 	trash = /obj/item/trash/candy
 	filling_color = "#7D5F46"
-	w_class = 1
+	w_class = SIZE_TINY
 
 	New()
 		..()
@@ -386,7 +386,7 @@
 	icon_state = "donut1"
 	filling_color = "#D9C386"
 	var/overlay_state = "donut"
-	w_class = 1
+	w_class = SIZE_TINY
 
 /obj/item/reagent_container/food/snacks/donut/normal
 	name = "donut"
@@ -3001,7 +3001,7 @@
 	desc = "Packed full of nutrients you can't pronounce."
 	icon_state = "eat_bar"
 	bitesize = 2
-	w_class = 1
+	w_class = SIZE_TINY
 	trash = /obj/item/trash/eat
 
 	New()

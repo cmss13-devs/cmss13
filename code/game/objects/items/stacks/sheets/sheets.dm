@@ -1,7 +1,7 @@
 /obj/item/stack/sheet
 	name = "sheet"
 	layer = UPPER_ITEM_LAYER
-	w_class = 3.0
+	w_class = SIZE_MEDIUM
 	force = 5
 	throwforce = 5
 	max_amount = 50

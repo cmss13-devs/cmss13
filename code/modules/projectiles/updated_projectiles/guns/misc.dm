@@ -11,7 +11,7 @@
 	cocked_sound = 'sound/weapons/gun_minigun_cocked.ogg'
 	current_mag = /obj/item/ammo_magazine/minigun
 	type_of_casings = "cartridge"
-	w_class = 5
+	w_class = SIZE_HUGE
 	force = 20
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_BURST_ON|GUN_WIELDED_FIRING_ONLY
 
@@ -45,7 +45,7 @@
 	cocked_sound = 'sound/weapons/gun_m60_cocked.ogg'
 	current_mag = /obj/item/ammo_magazine/m60
 	type_of_casings = "cartridge"
-	w_class = 4
+	w_class = SIZE_LARGE
 	force = 20
 	flags_gun_features = GUN_BURST_ON|GUN_WIELDED_FIRING_ONLY
 
@@ -88,7 +88,7 @@
 	fire_sound = 'sound/effects/woodhit.ogg' // TODO: Decent THWOK noise.
 	ammo = /datum/ammo/alloy_spike
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
-	w_class = 3 //Fits in yautja bags.
+	w_class = SIZE_MEDIUM //Fits in yautja bags.
 	var/spikes = 12
 	var/max_spikes = 12
 	var/last_regen
@@ -178,7 +178,7 @@
 	icon = 'icons/obj/items/gun.dmi'
 	icon_state = "syringegun"
 	item_state = "syringegun"
-	w_class = 3.0
+	w_class = SIZE_MEDIUM
 	throw_speed = 2
 	throw_range = 10
 	force = 4.0

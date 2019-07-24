@@ -9,7 +9,7 @@ var/global/list/cached_icons = list()
 	icon_state = "paint_neutral"
 	item_state = "paintcan"
 	matter = list("metal" = 200)
-	w_class = 3.0
+	w_class = SIZE_MEDIUM
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(10,20,30,50,70)
 	volume = 70
@@ -79,7 +79,7 @@ var/global/list/cached_icons = list()
 	icon_state = "paint_neutral"
 	color = "FFFFFF"
 	item_state = "paintcan"
-	w_class = 3.0
+	w_class = SIZE_MEDIUM
 
 /obj/item/paint/red
 	name = "red paint"

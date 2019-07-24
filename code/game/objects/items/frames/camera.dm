@@ -3,7 +3,7 @@
 	desc = "The basic construction for Corporate-Always-Watching-You cameras."
 	icon = 'icons/obj/monitors.dmi'
 	icon_state = "cameracase"
-	w_class = 2
+	w_class = SIZE_SMALL
 	anchored = 0
 
 	matter = list("metal" = 700,"glass" = 300)

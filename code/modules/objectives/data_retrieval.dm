@@ -158,7 +158,7 @@
 	objective = new /datum/cm_objective/retrieve_data/disk(src)
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
-	w_class = 1
+	w_class = SIZE_TINY
 
 /obj/item/disk/objective/Dispose()
 	if(objective)

@@ -17,7 +17,7 @@
 	throwforce = 25.0
 	throw_speed = 1
 	throw_range = 5
-	w_class = 3.0
+	w_class = SIZE_MEDIUM
 	flags_atom = FPRINT|CONDUCT|NOBLOODY
 	flags_item = NOSHIELD
 	origin_tech = "combat=3"
@@ -31,13 +31,13 @@
 		to_chat(user, SPAN_NOTICE(" The axe is now energised."))
 		force = 150
 		icon_state = "axe1"
-		w_class = 5
+		w_class = SIZE_HUGE
 		heat_source = 3500
 	else
 		to_chat(user, SPAN_NOTICE(" The axe can now be concealed."))
 		force = 40
 		icon_state = "axe0"
-		w_class = 5
+		w_class = SIZE_HUGE
 		heat_source = 0
 	add_fingerprint(user)
 
@@ -51,7 +51,7 @@
 	throwforce = 5.0
 	throw_speed = 1
 	throw_range = 5
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	flags_atom = FPRINT|NOBLOODY
 	flags_item = NOSHIELD
 	origin_tech = "magnets=3;syndicate=4"
@@ -82,7 +82,7 @@
 			icon_state = "[base_sword_icon]1"
 		else
 			icon_state = "sword[sword_color]"
-		w_class = 4
+		w_class = SIZE_LARGE
 		playsound(user, 'sound/weapons/saberon.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE(" [src] is now active."))
 
@@ -90,7 +90,7 @@
 		force = 3
 		heat_source = 0
 		icon_state = "[base_sword_icon]0"
-		w_class = 2
+		w_class = SIZE_SMALL
 		playsound(user, 'sound/weapons/saberoff.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE(" [src] can now be concealed."))
 

@@ -2,7 +2,7 @@
 
 /obj/item/trash
 	icon = 'icons/obj/items/trash.dmi'
-	w_class = 2
+	w_class = SIZE_SMALL
 	desc = "This is rubbish."
 
 /obj/item/trash/raisins
@@ -95,7 +95,7 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "c_tube"
 	throwforce = 1
-	w_class = 2
+	w_class = SIZE_SMALL
 	throw_speed = 4
 	throw_range = 5
 
@@ -105,7 +105,7 @@
 	desc = "A manky old cigarette butt."
 	icon = 'icons/obj/clothing/masks.dmi'
 	icon_state = "cigbutt"
-	w_class = 1
+	w_class = SIZE_TINY
 	throwforce = 1
 
 /obj/item/trash/cigbutt/New()
@@ -119,7 +119,7 @@
 	desc = "A manky old unfiltered cigarette butt."
 	icon = 'icons/obj/clothing/masks.dmi'
 	icon_state = "ucigbutt"
-	w_class = 1
+	w_class = SIZE_TINY
 	throwforce = 1
 
 /obj/item/trash/bcigbutt
@@ -127,7 +127,7 @@
 	desc = "A manky old cigarette butt in a fancy black package."
 	icon = 'icons/obj/clothing/masks.dmi'
 	icon_state = "bcigbutt"
-	w_class = 1
+	w_class = SIZE_TINY
 	throwforce = 1
 
 /obj/item/trash/cigbutt/cigarbutt

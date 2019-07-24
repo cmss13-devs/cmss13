@@ -7,7 +7,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun
 	origin_tech = "combat=4;materials=3"
-	w_class = 4
+	w_class = SIZE_LARGE
 	force = 14.0
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
 	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'

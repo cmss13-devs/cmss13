@@ -12,7 +12,7 @@ Currently only has the tank hardpoints
 	icon_state = "tires" //Placeholder
 
 	health = 100
-	w_class = 15
+	w_class = SIZE_LARGE
 
 	//If we use ammo, put it here
 	var/obj/item/ammo_magazine/ammo = null
@@ -970,7 +970,7 @@ obj/item/hardpoint/armor/ballistic/remove_buff()
 	desc = "A primary armament cannon magazine"
 	caliber = "86mm" //Making this unique on purpose
 	icon_state = "ltbcannon_4"
-	w_class = 15 //Heavy fucker
+	w_class = SIZE_LARGE //Heavy fucker
 	default_ammo = /datum/ammo/rocket/ltb
 	max_rounds = 4
 	gun_type = /obj/item/hardpoint/primary/cannon
@@ -985,7 +985,7 @@ obj/item/hardpoint/armor/ballistic/remove_buff()
 	desc = "A primary armament minigun magazine"
 	caliber = "7.62x51mm" //Correlates to miniguns
 	icon_state = "painless"
-	w_class = 15 //Primary weapon ammo should probably all be the same w_class
+	w_class = SIZE_LARGE //Primary weapon ammo should probably all be the same w_class
 	default_ammo = /datum/ammo/bullet/minigun
 	max_rounds = 300
 	gun_type = /obj/item/hardpoint/primary/minigun
@@ -997,7 +997,7 @@ obj/item/hardpoint/armor/ballistic/remove_buff()
 	desc = "A secondary armament flamethrower magazine"
 	caliber = "UT-Napthal Fuel" //correlates to flamer mags
 	icon_state = "flametank_large"
-	w_class = 12
+	w_class = SIZE_LARGE
 	default_ammo = /datum/ammo/flamethrower/tank_flamer
 	max_rounds = 120
 	gun_type = /obj/item/hardpoint/secondary/flamer
@@ -1008,7 +1008,7 @@ obj/item/hardpoint/armor/ballistic/remove_buff()
 	desc = "A primary armament flamethrower magazine"
 	caliber = "Napalm B" //correlates to flamer mags
 	icon_state = "drgn_flametank"
-	w_class = 12
+	w_class = SIZE_LARGE
 	max_rounds = 100
 	gun_type = /obj/item/hardpoint/primary/flamer
 	point_cost = 200
@@ -1024,7 +1024,7 @@ obj/item/hardpoint/armor/ballistic/remove_buff()
 	desc = "A primary armament autocannon magazine"
 	caliber = "20mm"
 	icon_state = "ace_autocannon"
-	w_class = 12
+	w_class = SIZE_LARGE
 	default_ammo = /datum/ammo/bullet/tank/flak
 	max_rounds = 40
 	gun_type = /obj/item/hardpoint/primary/autocannon
@@ -1041,7 +1041,7 @@ obj/item/hardpoint/armor/ballistic/remove_buff()
 	desc = "A secondary armament rocket magazine"
 	caliber = "rocket" //correlates to any rocket mags
 	icon_state = "quad_rocket"
-	w_class = 10
+	w_class = SIZE_LARGE
 	default_ammo = /datum/ammo/rocket/ap //Fun fact, AP rockets seem to be a straight downgrade from normal rockets. Maybe I'm missing something...
 	max_rounds = 5
 	gun_type = /obj/item/hardpoint/secondary/towlauncher
@@ -1052,7 +1052,7 @@ obj/item/hardpoint/armor/ballistic/remove_buff()
 	desc = "A secondary armament MG magazine"
 	caliber = "10x28mm" //Correlates to smartguns
 	icon_state = "big_ammo_box"
-	w_class = 12
+	w_class = SIZE_LARGE
 	default_ammo = /datum/ammo/bullet/smartgun
 	max_rounds = 500
 	gun_type = /obj/item/hardpoint/secondary/m56cupola
@@ -1063,7 +1063,7 @@ obj/item/hardpoint/armor/ballistic/remove_buff()
 	desc = "A secondary armament grenade magazine"
 	caliber = "grenade"
 	icon_state = "glauncher_2"
-	w_class = 9
+	w_class = SIZE_LARGE
 	default_ammo = /datum/ammo/grenade_container
 	max_rounds = 10
 	gun_type = /obj/item/hardpoint/secondary/grenade_launcher
@@ -1083,7 +1083,7 @@ obj/item/hardpoint/armor/ballistic/remove_buff()
 	desc = "A support armament grenade magazine"
 	caliber = "grenade"
 	icon_state = "slauncher_1"
-	w_class = 12
+	w_class = SIZE_LARGE
 	default_ammo = /datum/ammo/grenade_container/smoke
 	max_rounds = 6
 	gun_type = /obj/item/hardpoint/support/smoke_launcher

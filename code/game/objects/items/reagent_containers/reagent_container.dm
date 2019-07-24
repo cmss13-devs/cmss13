@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = null
 	throwforce = 3
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	throw_speed = 1
 	throw_range = 5
 	var/amount_per_transfer_from_this = 5

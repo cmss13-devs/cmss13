@@ -9,7 +9,7 @@
 	flags_cold_protection = HEAD
 	flags_equip_slot = SLOT_FACE|SLOT_WAIST
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	item_state = "gas_alt"
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01

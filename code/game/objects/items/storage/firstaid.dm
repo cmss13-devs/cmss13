@@ -161,7 +161,7 @@
 	throw_speed = 2
 	throw_range = 8
 	storage_slots = 3
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	can_hold = list(
 		/obj/item/reagent_container/pill,
 		/obj/item/reagent_container/glass/bottle,
@@ -213,7 +213,7 @@
 	icon_state = "pill_canister"
 	icon = 'icons/obj/items/chemistry.dmi'
 	item_state = "contsolid"
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	can_hold = list(
 		/obj/item/reagent_container/pill,
 		/obj/item/toy/dice,

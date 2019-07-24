@@ -8,7 +8,7 @@
 	flags_item = NOBLUDGEON|DELONDROP|ITEM_ABSTRACT
 	layer = ABOVE_HUD_LAYER
 	item_state = "nothing"
-	w_class = 5
+	w_class = SIZE_HUGE
 	var/atom/movable/grabbed_thing
 	var/last_upgrade = 0 //used for cooldown between grab upgrades.
 

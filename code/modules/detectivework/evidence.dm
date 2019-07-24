@@ -6,7 +6,7 @@
 	icon = 'icons/obj/items/storage/storage.dmi'
 	icon_state = "evidenceobj"
 	item_state = ""
-	w_class = 2
+	w_class = SIZE_SMALL
 	var/obj/item/stored_item = null
 
 /obj/item/evidencebag/MouseDrop(var/obj/item/I as obj)
@@ -45,7 +45,7 @@
 		to_chat(user, SPAN_NOTICE("You find putting an evidence bag in another evidence bag to be slightly absurd."))
 		return
 
-	if(I.w_class > 3)
+	if(I.w_class > SIZE_MEDIUM)
 		to_chat(user, SPAN_NOTICE("[I] won't fit in [src]."))
 		return
 
@@ -118,7 +118,7 @@
 	var/amount = 10.0
 	item_state = "paper"
 	throwforce = 1
-	w_class = 1.0
+	w_class = SIZE_TINY
 	throw_speed = 3
 	throw_range = 5
 

@@ -5,7 +5,7 @@
 	icon = 'icons/Marine/marine-items.dmi'
 	icon_state = "barbed_wire"
 	singular_name = "length"
-	w_class = 2
+	w_class = SIZE_SMALL
 	force = 0
 	throwforce = 5
 	throw_speed = 5

@@ -251,7 +251,7 @@
 						scanning = I.contents[1]
 						scanning.loc = src
 						I.overlays.Cut()
-						I.w_class = 1
+						I.w_class = SIZE_TINY
 						I.icon_state = "evidenceobj"
 					else
 						scanning = I

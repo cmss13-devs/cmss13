@@ -7,7 +7,7 @@
 	flags_equip_slot = SLOT_WAIST
 	force = 10
 	throwforce = 7
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	origin_tech = "combat=4"
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
 

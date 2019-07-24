@@ -9,7 +9,7 @@
 	throwforce = 10
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
@@ -33,7 +33,7 @@
 	desc = "Latest issue of the USCM Machete. Great for clearing out jungle or brush on outlying colonies. Found commonly in the hands of scouts and trackers, but difficult to carry with the usual kit."
 	icon_state = "machete"
 	force = 35
-	w_class = 4.0
+	w_class = SIZE_LARGE
 
 /obj/item/weapon/katana
 	name = "katana"
@@ -44,7 +44,7 @@
 	throwforce = 10
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
@@ -64,7 +64,7 @@
 	flags_atom = FPRINT|CONDUCT
 	sharp = IS_SHARP_ITEM_ACCURATE
 	force = 25
-	w_class = 2
+	w_class = SIZE_SMALL
 	throwforce = 20
 	throw_speed = 3
 	throw_range = 6
@@ -120,7 +120,7 @@
 	flags_atom = FPRINT|CONDUCT
 	sharp = IS_SHARP_ITEM_ACCURATE
 	force = 10
-	w_class = 1
+	w_class = SIZE_TINY
 	throwforce = 35
 	throw_speed = 4
 	throw_range = 7

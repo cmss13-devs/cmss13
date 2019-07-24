@@ -6,7 +6,7 @@
 	item_state = "gun"
 	matter = null
 	origin_tech = "combat=1"					//Guns generally have their own unique levels.
-	w_class 	= 3
+	w_class 	= SIZE_MEDIUM
 	throwforce 	= 5
 	throw_speed = 4
 	throw_range = 5

@@ -172,7 +172,7 @@
 	icon_state = "bottle16"
 	flags_atom = FPRINT| OPENCONTAINER
 	possible_transfer_amounts = null
-	w_class = 2.0
+	w_class = SIZE_SMALL
 
 	var/fertilizer //Reagent contained, if any.
 

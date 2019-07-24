@@ -7,7 +7,7 @@
 	min_cold_protection_temperature = ARMOR_min_cold_protection_temperature
 	max_heat_protection_temperature = ARMOR_max_heat_protection_temperature
 	siemens_coefficient = 0.6
-	w_class = 5
+	w_class = SIZE_HUGE
 	allowed = list(/obj/item/weapon/gun)//Guns only.
 	uniform_restricted = list(/obj/item/clothing/under)
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_C, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
@@ -94,7 +94,7 @@
 	icon_state = "admiral_jacket"
 	item_state = "admiral_jacket"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-	w_class = 3
+	w_class = SIZE_MEDIUM
 
 /obj/item/clothing/suit/armor/vest/security
 	name = "security armor"
@@ -294,7 +294,7 @@
 	desc = "A suit that protects against some damage."
 	icon_state = "centcom"
 	item_state = "centcom"
-	w_class = 4//bulky item
+	w_class = SIZE_LARGE//bulky item
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/weapon/gun,/obj/item/weapon/baton,/obj/item/handcuffs,/obj/item/tank/emergency_oxygen)
 	flags_inventory = NOFLAGS
@@ -308,7 +308,7 @@
 	desc = "A heavily armored suit that protects against moderate damage."
 	icon_state = "heavy"
 	item_state = "swat_suit"
-	w_class = 4//bulky item
+	w_class = SIZE_LARGE//bulky item
 	gas_transfer_coefficient = 0.90
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	slowdown = 3
@@ -363,7 +363,7 @@
 			to_chat(usr, SPAN_NOTICE(" You need your gun equiped to holster it."))
 			return
 		var/obj/item/weapon/gun/W = usr.get_active_hand()
-		if (W.w_class > 3)
+		if (W.w_class > SIZE_MEDIUM)
 			to_chat(usr, SPAN_DANGER("This gun won't fit in \the belt!"))
 			return
 		holstered = usr.get_active_hand()

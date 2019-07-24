@@ -4,7 +4,7 @@
 	desc = "A large case containing the full M56 Smartgun System. Drag this sprite into you to open it up!\nNOTE: You cannot put items back inside this case."
 	icon = 'icons/Marine/marine-weapons.dmi'
 	icon_state = "smartgun_case"
-	w_class = 5
+	w_class = SIZE_HUGE
 	storage_slots = 4
 	slowdown = 1
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
@@ -25,7 +25,7 @@
 	icon_state = "powerpack"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_BACK
-	w_class = 5.0
+	w_class = SIZE_HUGE
 	var/obj/item/cell/pcell = null
 	var/rounds_remaining = 500
 	var/reloading = 0

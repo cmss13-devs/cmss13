@@ -6,7 +6,7 @@
 	name = "mecha part"
 	icon = 'icons/mecha/mech_construct.dmi'
 	icon_state = "blank"
-	w_class = 5
+	w_class = SIZE_HUGE
 	flags_atom = FPRINT|CONDUCT
 	origin_tech = "programming=2;materials=2"
 	var/construction_time = 100

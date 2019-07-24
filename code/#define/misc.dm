@@ -75,3 +75,13 @@
 #define PAYGRADES_MARINE list("C","E1","E2","E3","E4","E5","E6","E7","E8","E9","E9E","O1","O2","O3","O4","O5","O5E","O6","O7","O8","O9","O9E")
 #define PAYGRADES_OFFICER list("O1","O2","O3","O4","O5","O5E","O6","O7","O8","O9","O9E")
 #define PAYGRADES_ENLISTED list("C","E1","E2","E3","E4","E5","E6","E7","E8","E9","E9E")
+
+
+// SIZES FOR ITEMS, use it for w_class
+
+#define SIZE_TINY       1       // Helmets
+#define SIZE_SMALL      2       // Armour, pouch slots/pockets
+#define SIZE_MEDIUM     3       // Backpacks, belts.    Size of pistols, general magazines
+#define SIZE_LARGE      4       // Size of rifles, SMGs
+#define SIZE_HUGE       5       // Using Large does the same job
+#define SIZE_MASSIVE    6       

@@ -8,7 +8,7 @@
 	origin_tech = "combat=3;materials=2"
 	matter = list("metal" = 2000)
 	flags_equip_slot = SLOT_WAIST
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	force = 6
 	movement_acc_penalty_mult = 3
 	wield_delay = WIELD_DELAY_VERY_FAST //If you modify your pistol to be two-handed, it will still be fast to aim
@@ -270,7 +270,7 @@
 	origin_tech = "combat=2;materials=1"
 	fire_sound = 'sound/weapons/gun_pistol_holdout.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/holdout
-	w_class = 1
+	w_class = SIZE_TINY
 	force = 2
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
@@ -426,7 +426,7 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	origin_tech = "combat=8;materials=8;syndicate=8;bluespace=8"
 	current_mag = /obj/item/ammo_magazine/pistol/chimp
 	fire_sound = 'sound/weapons/gun_chimp70.ogg'
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	force = 8
 	type_of_casings = null
 	gun_skill_category = GUN_SKILL_PISTOLS

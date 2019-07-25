@@ -27,21 +27,21 @@ var/global/datum/controller/gameticker/ticker = new()
 
 /datum/controller/gameticker/proc/pregame()
 	login_music = pick(
-/*	'sound/music/good_day_to_die.ogg',
+	'sound/music/good_day_to_die.ogg',
 	'sound/music/Aliens_Main_Theme.ogg',
 	'sound/music/Boys_Are_Back_In_Town.ogg',
 	'sound/music/fortunate_son.ogg',
 	'sound/music/buffalo_springfield.ogg',
 	'sound/music/warrior_song.ogg')
 
-	AMERICAN INDEPENDENCE DAY*/
+/*	AMERICAN INDEPENDENCE DAY
 	'sound/music/America_Fuck_Yeah.ogg',
 	'sound/music/America_The_Beautiful.ogg',
 	'sound/music/God_Bless_the_USA.ogg',
 	'sound/music/Made_In_The_USA.ogg',
 	'sound/music/Red_White_and_Blue.ogg',
 	'sound/music/Stars_and_Stripes_Fly.ogg',)
-
+*/
 	do
 		pregame_timeleft = 180
 		to_world("<center><B><span class='notice'>Welcome to the pre-game lobby of Colonial Marines!<span class='notice'></B></center>")

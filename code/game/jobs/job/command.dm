@@ -3,21 +3,21 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 /datum/job/command
 	department_flag = ROLEGROUP_MARINE_COMMAND
 	selection_color = "#ddddff"
-	supervisors = "the acting commander"
+	supervisors = "the acting commanding officer"
 	total_positions = 1
 	spawn_positions = 1
 	minimal_player_age = 7
 
 //Commander
 /datum/job/command/commander
-	title = "Commander"
+	title = "Commanding Officer"
 	flag = ROLE_COMMANDING_OFFICER
 	supervisors = "USCM high command"
 	selection_color = "#ccccff"
 	minimal_player_age = 14
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	flags_whitelist = WHITELIST_COMMANDER
-	gear_preset = "USCM Commander (CO)"
+	gear_preset = "USCM Captain (CO)"
 	gear_preset_council = "USCM Commodore (CO+)"
 
 /datum/job/command/commander/generate_entry_message()
@@ -26,7 +26,7 @@ While you support Weyland-Yutani, you report to the USCM High Command, not the c
 Your primary task is the safety of the ship and her crew, and ensuring the survival and success of the marines.
 Your first order of business should be briefing the marines on the mission they are about to undertake.
 If you require any help, use adminhelp to talk to game staff about what you're supposed to do.
-Godspeed, commander!"}
+Godspeed, captain!"}
 
 /datum/job/command/commander/announce_entry_message(mob/living/carbon/human/H)
 	sleep(15)
@@ -59,7 +59,7 @@ Come hell or high water, you are going to be there for them."}
 	gear_preset = "USCM Executive Officer (XO)"
 
 /datum/job/command/executive/generate_entry_message(mob/living/carbon/human/H)
-	. = {"You are second in command aboard the ship, and are in next in the chain of command after the commander.
+	. = {"You are second in command aboard the ship, and are in next in the chain of command after the commanding officer.
 You may need to fill in for other duties if areas are understaffed, and you are given access to do so.
 Make the USCM proud!"}
 

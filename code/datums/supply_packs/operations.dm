@@ -83,7 +83,7 @@ OPERATIONS
 					/obj/item/stack/fulton,
 					/obj/item/stack/fulton
 					)
-	cost = RO_PRICE_PRICY
+	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "fulton recovery device crate"
 	group = "Operations"

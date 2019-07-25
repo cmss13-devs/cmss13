@@ -1,4 +1,3 @@
-
 //Marine jobs. All marines are genericized when they first log in, then it auto assigns them to squads.
 
 /datum/job/marine
@@ -25,7 +24,7 @@
 	flag = ROLE_MARINE_LEADER
 	total_positions = 4
 	spawn_positions = 4
-	supervisors = "the acting commander"
+	supervisors = "the acting commanding officer"
 	minimal_player_age = 7
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
 	gear_preset = "USCM (Cryo) Squad Leader"

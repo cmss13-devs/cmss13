@@ -28,14 +28,13 @@
 	var/rolled_sleeves = FALSE //are the sleeves currently rolled?
 	var/list/suit_restricted //for uniforms that only accept to be combined with certain suits
 	var/removed_parts = 0
-	var/worn_state
+	var/worn_state = null
 	drag_unequip = TRUE
 	valid_accessory_slots = list(ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/uniform_monkey_0.dmi')
 
 /obj/item/clothing/under/New()
-	..()
 	if(worn_state)
 		if(!item_state_slots)
 			item_state_slots = list()

@@ -1,4 +1,3 @@
-
 //=========================//MARINES\\===================================//
 //=======================================================================//
 
@@ -58,6 +57,7 @@
 /obj/item/clothing/under/marine/tanker
 	name = "\improper USCM tanker uniform"
 	icon_state = "marine_tanker"
+	worn_state = "marine_tanker"
 	rollable_sleeves = FALSE
 	specialty = "USCM tanker"
 	flags_atom = NO_SNOW_TYPE
@@ -76,6 +76,7 @@
 	name = "military police jumpsuit"
 	desc = "A standard-issue Military Police uniform. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "MP_jumpsuit"
+	worn_state = "MP_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine)
 	rollable_sleeves = FALSE
 	specialty = "military police"
@@ -86,6 +87,7 @@
 	desc = "Softer than silk. Lighter than feather. More protective than Kevlar. Fancier than a regular jumpsuit, too. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "officertanclothes"
 	item_state = "officertanclothes"
+	worn_state = "officertanclothes"
 	suit_restricted = null //so most officers can wear whatever suit they want
 	rollable_sleeves = FALSE
 	specialty = "marine officer"
@@ -95,6 +97,7 @@
 	desc = "Tighter than a vice. Slicker than beard oil. Covered from head to toe in pouches, pockets, bags, straps, and belts. Clearly, you are not only the most intelligent of intelligence officers, but the most fashionable as well. This suit took an entire R&D team five days to develop. It is more expensive than the entire Almayer... probably."
 	icon_state = "io"
 	item_state = "io"
+	worn_state = "io"
 	rollable_sleeves = FALSE
 	specialty = "marine intelligence officer"
 
@@ -103,6 +106,7 @@
 	desc = "A uniform typically worn by a Chief MP of the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions. This uniform includes a small EMF distributor to help nullify energy-based weapon fire, along with a hazmat chemical filter woven throughout the material to ward off biological and radiation hazards."
 	icon_state = "WO_jumpsuit"
 	item_state = "WO_jumpsuit"
+	worn_state = "WO_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine)
 	specialty = "chief MP"
 	flags_atom = NO_SNOW_TYPE
@@ -354,18 +358,21 @@
 	desc = "An ill-fitting, slightly stained uniform for a pizza delivery pilot. Smells of cheese."
 	icon_state = "redshirt2"
 	item_state = "r_suit"
+	worn_state = "redshirt2"
 	has_sensor = 0
 
 /obj/item/clothing/under/colonist
 	name = "colonist uniform"
 	desc = "A stylish grey-green jumpsuit - standard issue for colonists."
 	icon_state = "colonist"
+	worn_state = "colonist"
 	has_sensor = 0
 
 /obj/item/clothing/under/CM_uniform
 	name = "colonial marshal uniform"
 	desc = "A blue shirt and tan trousers - the official uniform for a Colonial Marshal."
 	icon_state = "marshal"
+	worn_state = "marshal"
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -380,21 +387,25 @@
 	name = "liaison's tan suit"
 	desc = "A stiff, stylish tan suit commonly worn by businessmen from the Weyland Yutani corporation. Expertly crafted to make you look like a prick."
 	icon_state = "liaison_regular"
+	worn_state = "liaison_regular"
 
 /obj/item/clothing/under/liaison_suit/outing
 	name = "liaison's outfit"
 	desc = "A casual outfit consisting of a collared shirt and a vest. Looks like something you might wear on the weekends, or on a visit to a derelict colony."
 	icon_state = "liaison_outing"
+	worn_state = "liaison_outing"
 
 /obj/item/clothing/under/liaison_suit/formal
 	name = "liaison's white suit"
 	desc = "A formal, white suit. Looks like something you'd wear to a funeral, a Weyland-Yutani corporate dinner, or both. Stiff as a board, but makes you feel like rolling out of a Rolls-Royce."
 	icon_state = "liaison_formal"
+	worn_state = "liaison_formal"
 
 /obj/item/clothing/under/liaison_suit/suspenders
 	name = "liaison's attire"
 	desc = "A collared shirt, complimented by a pair of suspenders. Worn by Weyland-Yutani employees who ask the tough questions. Smells faintly of cigars and bad acting."
 	icon_state = "liaison_suspenders"
+	worn_state = "liaison_suspenders"
 
 
 
@@ -407,18 +418,22 @@
 	name = "requisition officer suit."
 	desc = "A nicely-fitting military suit for a requisition officer. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "RO_jumpsuit"
+	worn_state = "RO_jumpsuit"
 	rollable_sleeves = FALSE
 
 /obj/item/clothing/under/rank/synthetic
 	name = "\improper USCM Support Uniform"
 	desc = "A simple uniform made for Synthetic crewmembers."
 	icon_state = "rdalt"
+	worn_state = "rdalt"
 	rollable_sleeves = FALSE
 
 /obj/item/clothing/under/rank/synthetic/old
 	icon_state = "rdalt_s"
+	worn_state = "rdalt_s"
 
 /obj/item/clothing/under/rank/synthetic/joe
 	name = "\improper Working Joe Uniform"
 	desc = "A cheap uniform made for Synthetic labor."
 	icon_state = "working_joe"
+	worn_state = "working_joe"

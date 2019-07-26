@@ -130,9 +130,6 @@ world/loop_checks = 0
 	if(!istype(D))
 		del(D)
 		return
-		
-	if(D.being_sent_to_past())
-		return
 
 	if(isnull(garbageCollector))
 		del(D)
@@ -162,23 +159,6 @@ world/loop_checks = 0
 
 		garbageCollector.addTrash(D)
 
-/datum/proc/being_sent_to_past()
-	if(being_sent_to_past)
-		return 1
-
-/atom/movable/being_sent_to_past()
-	if(..())
-		invisibility = 101
-		density = 0 // TODO: replace this with a setDensity proc -spookydonut
-		anchored = 1
-		timestopped = 1
-		flags_atom |= INVULNERABLE | TIMELESS
-		if(loc)
-			if(ismob(loc))
-				var/mob/M = loc
-				M.drop_inv_item_on_ground(src, force = 1)
-		forceMove(null)
-		return 1
 /*
 /datum/controller
 	var/processing = 0

@@ -1,8 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes:
-  - rscadd: "The intelligence officer equipment rack now also lets you choose your belt and pouches."
-  - tweak: "The fulton device can be now used 20 times instead of 10 times."
-  - tweak: "The fulton device crate's cost was reduced from 60 points to 20 points."

@@ -2217,7 +2217,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/start{
-	name = "Commander"
+	name = "Commanding Officer"
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
@@ -2574,7 +2574,7 @@
 "aha" = (
 /obj/machinery/door/airlock/almayer/command{
 	dir = 4;
-	name = "\improper Commander's Quarters";
+	name = "\improper Commanding Officer's Quarters";
 	req_access = list(1)
 	},
 /obj/machinery/door/firedoor/border_only/almayer{
@@ -13495,7 +13495,7 @@
 "aIB" = (
 /obj/machinery/door/airlock/almayer/command{
 	dir = 2;
-	name = "\improper Commander's Office"
+	name = "\improper Commanding Officer's Office"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -13714,7 +13714,7 @@
 "aJc" = (
 /obj/machinery/door/airlock/almayer/command{
 	dir = 4;
-	name = "\improper Commander's Mess"
+	name = "\improper Commanding Officer's Mess"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";

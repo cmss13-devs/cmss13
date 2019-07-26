@@ -243,7 +243,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/commander
-	name = "USCM Commander (CO)"
+	name = "USCM Captain (CO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	idtype = /obj/item/card/id/gold

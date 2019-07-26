@@ -1,8 +1,0 @@
-author: Neth Iafin
-delete-after: True
-changes: 
-  - tweak: "Sentinel Neurotoxin plasma cost 25 (from 50)"
-  - tweak: "Sentinel Neurotoxin is 1.75x stronger timewise than Spitter Neurotoxin. Stuns for ~1.75 of a second against 0 Endurance marine."
-  - tweak: "Non-Queen Neurotoxin again requires 4 shots to Knockdown."
-  - tweak: "Sentinel has new type of ammo - Neurotoxic Air Splash. It costs 50 and hits everyone in square 1. It also reacts and airbursts if enemy is nearby. It stuns for less time, so it is useful to get marines to dazed state en-masse, but less useful as pinning tool."
-  - tweak: "Queen Neurotoxin Stuns for 2 seconds now (assuming 0 Endurance marine)."

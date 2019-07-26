@@ -451,19 +451,6 @@
 		if(M.bodytemperature < 330)
 			M.bodytemperature = min(330, M.bodytemperature + (15 * TEMPERATURE_DAMAGE_COEFFICIENT)) //310 is the normal bodytemp. 310.055
 
-/datum/reagent/ethanol/beepsky_smash
-	name = "Beepsky Smash"
-	id = "beepskysmash"
-	description = "Deny drinking this and prepare for THE LAW."
-	reagent_state = LIQUID
-	color = "#664300" // rgb: 102, 67, 0
-	boozepwr = 4
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.Stun(2)
-
 /datum/reagent/ethanol/irish_cream
 	name = "Irish Cream"
 	id = "irishcream"

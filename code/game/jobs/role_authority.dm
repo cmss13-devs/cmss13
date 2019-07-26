@@ -439,7 +439,7 @@ roles willy nilly.
 			H.mind.store_memory(remembered_info)
 			H.mind.initial_account = A
 
-		if((J.title == "Commander") && roles_whitelist && (roles_whitelist[H.ckey] & WHITELIST_COMMANDER_COUNCIL))
+		if((J.title == "Commanding Officer") && roles_whitelist && (roles_whitelist[H.ckey] & WHITELIST_COMMANDER_COUNCIL))
 			arm_equipment(H, J.gear_preset_council)
 		arm_equipment(H, J.gear_preset) //After we move them, we want to equip anything else they should have.
 		/*var/alt_title

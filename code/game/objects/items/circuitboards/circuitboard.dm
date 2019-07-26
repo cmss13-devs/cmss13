@@ -1,5 +1,5 @@
 /obj/item/circuitboard
-	w_class = 2
+	w_class = SIZE_SMALL
 	name = "Circuit board"
 	icon = 'icons/obj/items/circuitboards.dmi'
 	icon_state = "id_mod"

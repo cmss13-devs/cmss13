@@ -4,7 +4,7 @@
 	icon = 'icons/obj/policetape.dmi'
 	icon_state = "rollstart"
 	flags_item = NOBLUDGEON
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	var/turf/start
 	var/turf/end
 	var/tape_type = /obj/item/tape

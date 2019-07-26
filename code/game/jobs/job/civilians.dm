@@ -18,7 +18,7 @@
 	flag = ROLE_CHIEF_MEDICAL_OFFICER
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the acting commander"
+	supervisors = "the acting commanding officer"
 	selection_color = "#99FF99"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Chief Medical Officer (CMO)"
@@ -118,7 +118,7 @@ Best to let the mercs do the killing and the dying, but remind them who pays the
 	total_positions = 1
 	spawn_positions = 1
 	allow_additional = 1
-	supervisors = "the acting commander"
+	supervisors = "the acting commanding officer"
 	selection_color = "#aaee55"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	flags_whitelist = WHITELIST_SYNTHETIC
@@ -128,4 +128,4 @@ Best to let the mercs do the killing and the dying, but remind them who pays the
 		. = {"You are a Synthetic! You are held to a higher standard and are required to obey not only the Server Rules but Marine Law and Synthetic Rules. Failure to do so may result in your White-list Removal.
 Your primary job is to support and assist all USCM Departments and Personnel on-board.
 In addition, being a Synthetic gives you knowledge in every field and specialization possible on-board the ship.
-As a Synthetic you answer to the acting commander. Special circumstances may change this!"}
+As a Synthetic you answer to the acting commanding officer. Special circumstances may change this!"}

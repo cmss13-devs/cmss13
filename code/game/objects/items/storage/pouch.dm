@@ -3,8 +3,8 @@
 	desc = "The physical manifestation of a concept of a pouch. Woah."
 	icon = 'icons/Marine/marine-pouches.dmi'
 	icon_state = "small_drop"
-	w_class = 4 //does not fit in backpack
-	max_w_class = 2
+	w_class = SIZE_LARGE //does not fit in backpack
+	max_w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_STORE
 	storage_slots = 1
 	draw_mode = 0
@@ -112,7 +112,7 @@
 	desc = "It can contain flashlights, a pill, a crowbar, metal sheets, and some bandages."
 	icon_state = "survival"
 	storage_slots = 5
-	max_w_class = 3
+	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/device/flashlight,
 		/obj/item/tool/crowbar,
@@ -158,7 +158,7 @@
 	name = "sidearm pouch"
 	desc = "It can contain a pistol. Useful for emergencies."
 	icon_state = "pistol"
-	max_w_class = 3
+	max_w_class = SIZE_MEDIUM
 	can_hold = list(/obj/item/weapon/gun/pistol)
 	draw_mode = 1
 
@@ -170,7 +170,7 @@
 	name = "magazine pouch"
 	desc = "It can contain ammo magazines."
 	icon_state = "medium_ammo_mag"
-	max_w_class = 3
+	max_w_class = SIZE_MEDIUM
 	storage_slots = 2
 	draw_mode = 0
 	bypass_w_limit = list(
@@ -211,7 +211,7 @@
 /obj/item/storage/pouch/magazine/pistol
 	name = "pistol magazine pouch"
 	desc = "It can contain pistol and revolver ammo magazines."
-	max_w_class = 2
+	max_w_class = SIZE_SMALL
 	icon_state = "pistol_mag"
 	storage_slots = 3
 
@@ -302,7 +302,7 @@
 	desc = "It can contain grenades, plastiques, mine boxes, and other explosives."
 	icon_state = "large_explosive"
 	storage_slots = 3
-	max_w_class = 3
+	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/explosive/plastique,
 		/obj/item/explosive/mine,
@@ -372,7 +372,7 @@
 
 /obj/item/storage/pouch/medkit
 	name = "medkit pouch"
-	max_w_class = 3
+	max_w_class = SIZE_MEDIUM
 	draw_mode = 1
 	icon_state = "medkit"
 	desc = "It's specifically made to hold a medkit."
@@ -392,7 +392,7 @@
 	desc = "It can contain papers and clipboards."
 	icon_state = "document"
 	storage_slots = 21
-	max_w_class = 3
+	max_w_class = SIZE_MEDIUM
 	max_storage_space = 21
 	can_hold = list(
 		/obj/item/paper,
@@ -410,7 +410,7 @@
 /obj/item/storage/pouch/flare
 	name = "flare pouch"
 	desc = "A pouch designed to hold flares. Refillable with a M94 flare pack."
-	max_w_class = 2
+	max_w_class = SIZE_SMALL
 	storage_slots = 8
 	max_storage_space = 8
 	draw_mode = 1
@@ -460,7 +460,7 @@
 	name = "construction pouch"
 	desc = "It's designed to hold construction materials - glass/metal sheets, metal rods, barbed wire, cable coil, and empty sandbags. It also has two hooks for an entrenching tool and light replacer."
 	storage_slots = 3
-	max_w_class = 3
+	max_w_class = SIZE_MEDIUM
 	icon_state = "construction"
 	can_hold = list(
 		/obj/item/stack/barbed_wire,
@@ -485,7 +485,7 @@
 	name = "tools pouch"
 	desc = "It's designed to hold maintenance tools - screwdriver, wrench, cable coil, etc. It also has a hook for an entrenching tool."
 	storage_slots = 4
-	max_w_class = 3
+	max_w_class = SIZE_MEDIUM
 	icon_state = "tools"
 	can_hold = list(
 		/obj/item/tool/wirecutters,

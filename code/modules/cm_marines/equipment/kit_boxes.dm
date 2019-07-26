@@ -4,7 +4,7 @@
 /obj/item/storage/box/spec
 	var/spec_set
 	icon = 'icons/Marine/marine-weapons.dmi'
-	w_class = 5
+	w_class = SIZE_HUGE
 	storage_slots = 12
 	slowdown = 1
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
@@ -228,7 +228,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /obj/item/storage/box/kit
 	icon = 'icons/Marine/pro_case.dmi'
 	icon_state = "pro_case_mini"
-	w_class = 5
+	w_class = SIZE_HUGE
 	storage_slots = 12
 	slowdown = 1
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.

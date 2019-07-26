@@ -11,7 +11,7 @@
 	color = COLOR_RED
 	desc = "A coil of power cable."
 	throwforce = 10
-	w_class = 2
+	w_class = SIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
 	matter = list("metal" = 50, "glass" = 20)
@@ -50,9 +50,9 @@
 
 /obj/item/stack/cable_coil/proc/update_wclass()
 	if(amount == 1)
-		w_class = 1.0
+		w_class = SIZE_TINY
 	else
-		w_class = 2.0
+		w_class = SIZE_SMALL
 
 /obj/item/stack/cable_coil/examine(mob/user)
 	if(amount == 1)

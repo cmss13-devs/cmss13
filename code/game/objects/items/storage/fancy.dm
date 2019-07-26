@@ -88,7 +88,7 @@
 	desc = "A box of crayons for all your rune drawing needs."
 	icon = 'icons/obj/items/crayons.dmi'
 	icon_state = "crayonbox"
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	storage_slots = 6
 	icon_type = "crayon"
 	can_hold = list(/obj/item/toy/crayon)
@@ -129,7 +129,7 @@
 	icon = 'icons/obj/items/cigarettes.dmi'
 	icon_state = "cigpacket"
 	item_state = "cigpacket"
-	w_class = 1
+	w_class = SIZE_TINY
 	throwforce = 2
 	flags_equip_slot = SLOT_WAIST
 	storage_slots = 20
@@ -218,9 +218,9 @@
 	icon_state = "cigarcase"
 	item_state = "cigarcase"
 	icon = 'icons/obj/items/cigarettes.dmi'
-	w_class = 1
+	w_class = SIZE_TINY
 	throwforce = 2
-	w_class = 2
+	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_WAIST
 	storage_slots = 7
 	can_hold = list(/obj/item/clothing/mask/cigarette/cigar)
@@ -282,7 +282,7 @@
 	icon = 'icons/obj/items/storage/vialbox.dmi'
 	icon_state = "vialbox0"
 	item_state = "syringe_kit"
-	max_w_class = 3
+	max_w_class = SIZE_MEDIUM
 	can_hold = list(/obj/item/reagent_container/glass/beaker/vial)
 	max_storage_space = 14 //The sum of the w_classes of all the items in this storage item.
 	storage_slots = 6

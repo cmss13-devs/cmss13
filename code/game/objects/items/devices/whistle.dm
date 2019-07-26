@@ -2,7 +2,7 @@
 	name = "\improper whistle"
 	desc = "A metal pea-whistle. Can be blown while held, or worn in the mouth"
 	icon_state = "whistle"
-	w_class = 1.0
+	w_class = SIZE_TINY
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_FACE
 	actions_types = list(/datum/action/item_action)
@@ -57,7 +57,7 @@
 	desc = "Used by obese officers to save their breath for running."
 	icon_state = "voice0"
 	item_state = "flashbang"	//looks exactly like a flash (and nothing like a flashbang)
-	w_class = 1.0
+	w_class = SIZE_TINY
 	flags_atom = FPRINT|CONDUCT
 
 	var/spamcheck = 0

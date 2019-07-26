@@ -103,7 +103,7 @@
 	icon_state = "claw_l"
 	flags_item = NODROP|DELONDROP
 	force = 15
-	w_class = 6
+	w_class = SIZE_MASSIVE
 	sharp = 1
 	attack_verb = list("slashed", "bitten", "torn", "scraped", "nibbled")
 	pry_capable = IS_PRY_CAPABLE_FORCE
@@ -169,7 +169,7 @@
 /obj/item/clothing/glasses/zombie_eyes
 	name = "zombie eyes"
 	icon = null
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	vision_flags = SEE_MOBS
 	darkness_view = 7
 	flags_item = NODROP|DELONDROP

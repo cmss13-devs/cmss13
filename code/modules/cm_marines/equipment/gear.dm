@@ -17,7 +17,7 @@
 	desc = "A tarp carried by USCM Snipers. When laying underneath the tarp, the sniper is almost indistinguishable from the landscape if utilized correctly. The tarp contains a thermal-dampening weave to hide the wearer's heat signatures, optical camoflauge, and smell dampening."
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "jungletarp_folded"
-	w_class = 3.0
+	w_class = SIZE_MEDIUM
 	unfolded_path = /obj/structure/closet/bodybag/tarp
 
 
@@ -99,7 +99,7 @@
 	desc = "The most fake looking protein bar you have ever laid eyes on, covered in the a subtitution chocolate. The powder used to make these is a subsitute of a substitute of whey substitute."
 	icon_state = "yummers"
 	filling_color = "#ED1169"
-	w_class = 1
+	w_class = SIZE_TINY
 
 	New()
 		..()
@@ -111,7 +111,7 @@
 	name = "\improper generic MRE pack"
 	//trash = /obj/item/trash/USCMtray
 	trash = null
-	w_class = 2
+	w_class = SIZE_SMALL
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal1
 	name = "\improper USCM Prepared Meal (cornbread)"
@@ -241,7 +241,7 @@
 	desc = "A prepackaged, long-lasting food box from Weyland Yutani Industries.\nOn the box is the Weyland Yutani logo, with a slogan surrounding it: \n<b>WEYLAND-YUTANI. BUILDING BETTER LUNCHES</b>"
 	icon_state = "mre2"
 	can_hold = list("/obj/item/reagent_container/food/snacks")
-	w_class = 4
+	w_class = SIZE_LARGE
 
 	New()
 		..()

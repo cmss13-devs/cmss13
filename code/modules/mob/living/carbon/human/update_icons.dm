@@ -110,16 +110,6 @@ There are several things that need to be remembered:
 	var/list/overlays_standing[TOTAL_LAYERS]
 	var/previous_damage_appearance // store what the body last looked like, so we only have to update it if something changed
 
-/mob/living/carbon/human/apply_overlay(cache_index)
-	var/image/I = overlays_standing[cache_index]
-	if(I)
-		overlays += I
-
-/mob/living/carbon/human/remove_overlay(cache_index)
-	if(overlays_standing[cache_index])
-		overlays -= overlays_standing[cache_index]
-		overlays_standing[cache_index] = null
-
 //UPDATES OVERLAYS FROM OVERLAYS_LYING/OVERLAYS_STANDING
 /mob/living/carbon/human/update_icons()
 	lying_prev = lying	//so we don't update overlays for lying/standing unless our stance changes again
@@ -180,7 +170,7 @@ var/global/list/damage_icon_parts = list()
 
 //DAMAGE OVERLAYS
 //constructs damage icon for each organ from mask * damage field and saves it in our overlays_ lists
-/mob/living/carbon/human/UpdateDamageIcon()
+/mob/living/carbon/human/UpdateDamageIcon(var/update_icons=1)
 	// first check whether something actually changed about damage appearance
 	var/damage_appearance = ""
 
@@ -193,13 +183,13 @@ var/global/list/damage_icon_parts = list()
 		// nothing to do here
 		return
 
-	remove_overlay(DAMAGE_LAYER)
+	overlays_standing[DAMAGE_LAYER]	= null
 
 	previous_damage_appearance = damage_appearance
 
 	var/icon/standing = new /icon('icons/mob/dam_human.dmi', "00")
 
-	var/image/standing_image = new /image(icon = standing, layer = -DAMAGE_LAYER)
+	var/image/standing_image = new /image(icon = standing)
 
 	// blend the individual damage states with our icons
 	for(var/datum/limb/O in limbs)
@@ -220,7 +210,8 @@ var/global/list/damage_icon_parts = list()
 
 	overlays_standing[DAMAGE_LAYER]	= standing_image
 
-	apply_overlay(DAMAGE_LAYER)
+	if(update_icons)
+		update_icons()
 
 //BASE MOB SPRITE
 /mob/living/carbon/human/proc/update_body(var/update_icons = 1, var/force_cache_update = 0)
@@ -405,9 +396,9 @@ var/global/list/damage_icon_parts = list()
 	update_tail_showing(0)
 
 //HAIR OVERLAY
-/mob/living/carbon/human/proc/update_hair()
+/mob/living/carbon/human/proc/update_hair(var/update_icons=1)
 	//Reset our hair
-	remove_overlay(HAIR_LAYER)
+	overlays_standing[HAIR_LAYER] = null
 
 	var/datum/limb/head/head_organ = get_limb("head")
 	if( !head_organ || (head_organ.status & LIMB_DESTROYED) )
@@ -438,17 +429,18 @@ var/global/list/damage_icon_parts = list()
 
 			face_standing.Blend(hair_s, ICON_OVERLAY)
 
-	overlays_standing[HAIR_LAYER]	= image("icon"= face_standing, "layer" =-HAIR_LAYER)
+	overlays_standing[HAIR_LAYER] = image("icon"= face_standing)
 
-	apply_overlay(HAIR_LAYER)
+	if(update_icons)
+		update_icons()
 
 
 //Call when target overlay should be added/removed
-/mob/living/carbon/human/update_targeted()
-	remove_overlay(TARGETED_LAYER)
+/mob/living/carbon/human/update_targeted(var/update_icons=1)
+	overlays_standing[TARGETED_LAYER] = null
 	var/image/I
 	if (targeted_by && target_locked)
-		I = image("icon" = target_locked, "layer" =-TARGETED_LAYER)
+		I = image("icon" = target_locked)
 	else if (!targeted_by && target_locked)
 		qdel(target_locked)
 		target_locked = null
@@ -456,19 +448,21 @@ var/global/list/damage_icon_parts = list()
 		if(I)
 			I.overlays += image("icon" = 'icons/effects/Targeted.dmi', "icon_state" = "holo_card_[holo_card_color]")
 		else
-			I = image("icon" = 'icons/effects/Targeted.dmi', "icon_state" = "holo_card_[holo_card_color]", "layer" =-TARGETED_LAYER)
+			I = image("icon" = 'icons/effects/Targeted.dmi', "icon_state" = "holo_card_[holo_card_color]")
 	if(I)
 		overlays_standing[TARGETED_LAYER] = I
-	apply_overlay(TARGETED_LAYER)
+
+	if(update_icons)
+		update_icons()
 
 
 //Call when someone is gauzed or splinted, or when one of those items are removed
-/mob/living/carbon/human/update_med_icon()
-	remove_overlay(MEDICAL_LAYER)
+/mob/living/carbon/human/update_med_icon(var/update_icons=1)
+	overlays_standing[MEDICAL_LAYER] = null
 
 	var/icon/standing = new /icon('icons/mob/med_human.dmi', "blank")
 
-	var/image/standing_image = new /image(icon = standing, layer = -MEDICAL_LAYER)
+	var/image/standing_image = new /image(icon = standing)
 
 	// blend the individual damage states with our icons
 	for(var/datum/limb/L in limbs)
@@ -493,7 +487,8 @@ var/global/list/damage_icon_parts = list()
 
 	overlays_standing[MEDICAL_LAYER] = standing_image
 
-	apply_overlay(MEDICAL_LAYER)
+	if(update_icons)
+		update_icons()
 
 
 /* --------------------------------------- */
@@ -821,8 +816,8 @@ var/global/list/damage_icon_parts = list()
 	var/image/face_lying_image = new /image(icon = face_lying)
 	return face_lying_image
 
-/mob/living/carbon/human/update_burst()
-	remove_overlay(BURST_LAYER)
+/mob/living/carbon/human/update_burst(var/update_icons=1)
+	overlays_standing[BURST_LAYER] = null
 	var/image/standing
 	if(chestburst == 1)
 		standing = image("icon" = 'icons/Xeno/Effects.dmi',"icon_state" = "burst_stand", "layer" =BURST_LAYER)
@@ -830,16 +825,19 @@ var/global/list/damage_icon_parts = list()
 		standing = image("icon" = 'icons/Xeno/Effects.dmi',"icon_state" = "bursted_stand", "layer" =BURST_LAYER)
 
 	overlays_standing[BURST_LAYER] = standing
-	apply_overlay(BURST_LAYER)
 
-/mob/living/carbon/human/update_fire()
-	remove_overlay(FIRE_LAYER)
+	if(update_icons)
+		update_icons()
+
+/mob/living/carbon/human/update_fire(var/update_icons=1)
+	overlays_standing[FIRE_LAYER] = null
 	if(on_fire)
 		switch(fire_stacks)
 			if(1 to 14)	overlays_standing[FIRE_LAYER] = image("icon"='icons/mob/OnFire.dmi', "icon_state"="Standing_weak", "layer"=FIRE_LAYER)
 			if(15 to 20) overlays_standing[FIRE_LAYER] = image("icon"='icons/mob/OnFire.dmi', "icon_state"="Standing_medium", "layer"=FIRE_LAYER)
 
-		apply_overlay(FIRE_LAYER)
+	if(update_icons)
+		update_icons()
 
 
 //Human Overlays Indexes/////////

@@ -12,7 +12,7 @@ var/global/list/randomized_pill_icons
 	icon_state = null
 	item_state = "pill"
 	possible_transfer_amounts = null
-	w_class = 1
+	w_class = SIZE_TINY
 	volume = 60
 	var/pill_desc = "An unknown pill." //the real description of the pill, shown when examined by a medically trained person
 

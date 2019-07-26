@@ -22,7 +22,7 @@
 	var/heat_source = 0 //whether this item is a source of heat, and how hot it is (in Kelvin).
 
 	var/hitsound = null
-	var/w_class = 3.0
+	var/w_class = SIZE_MEDIUM
 	var/storage_cost = null
 	flags_atom = FPRINT
 	var/flags_item = NOFLAGS	//flags for item stuff that isn't clothing/equipping specific.
@@ -104,7 +104,7 @@
 	item_list += src
 	for(var/path in actions_types)
 		new path(src)
-	if(w_class <= 3) //pulling small items doesn't slow you down much
+	if(w_class <= SIZE_MEDIUM) //pulling small items doesn't slow you down much
 		drag_delay = 1
 
 /obj/item/Dispose()
@@ -420,7 +420,7 @@ cases. Override_icon_state should be a list.*/
 					return 0
 				if(flags_equip_slot & SLOT_NO_STORE)
 					return 0
-				if(w_class <= 2 || (flags_equip_slot & SLOT_STORE))
+				if(w_class <= SIZE_SMALL || (flags_equip_slot & SLOT_STORE))
 					return 1
 			if(WEAR_R_STORE)
 				if(H.r_store)
@@ -431,7 +431,7 @@ cases. Override_icon_state should be a list.*/
 					return 0
 				if(flags_equip_slot & SLOT_NO_STORE)
 					return 0
-				if(w_class <= 2 || (flags_equip_slot & SLOT_STORE))
+				if(w_class <= SIZE_SMALL || (flags_equip_slot & SLOT_STORE))
 					return 1
 				return 0
 			if(WEAR_J_STORE)

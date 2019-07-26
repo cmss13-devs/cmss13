@@ -7,7 +7,7 @@
 	icon_state = "handcuff"
 	flags_atom = FPRINT|CONDUCT
 	throwforce = 0
-	w_class = 3.0
+	w_class = SIZE_MEDIUM
 	origin_tech = "materials=1"
 	var/breakouttime = SECONDS_15
 

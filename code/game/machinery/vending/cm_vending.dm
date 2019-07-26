@@ -876,8 +876,18 @@
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom, MARINE_CAN_BUY_EAR, "black"),
 		list("Satchel", 0, /obj/item/storage/backpack/marine/satchel/intel, MARINE_CAN_BUY_BACKPACK, "black"),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ATTACHMENT, "black"),
+
+		list("BELT (choose 1)", 0, null, null, null),
+		list("G8-A General Utility Pouch", 0, /obj/item/storage/sparepouch, MARINE_CAN_BUY_BELT, "white"),
+		list("M276 pattern toolbelt rig", 0, /obj/item/storage/belt/utility/full, MARINE_CAN_BUY_BELT, "white"),
 		list("M4A3 holster rig", 0, /obj/item/storage/belt/gun/m4a3, MARINE_CAN_BUY_BELT, "black"),
+
+		list("POUCHES (choose 2)", 0, null, null, null),
 		list("Document pouch", 0, /obj/item/storage/pouch/document, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+		list("First-Aid Pouch", 0, /obj/item/storage/pouch/firstaid/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "white"),
+		list("Flare Pouch", 0, /obj/item/storage/pouch/flare/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "white"),
+		list("Medium General Pouch", 0, /obj/item/storage/pouch/general/medium, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+		list("Tools Pouch", 0, /obj/item/storage/pouch/tools, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "white"),
 
 		list("HELMET (choose 1)", 0, null, null, null),
 		list("XM12 pattern intelligence helmet", 0, /obj/item/clothing/head/helmet/marine/intel, MARINE_CAN_BUY_HELMET, "black"),

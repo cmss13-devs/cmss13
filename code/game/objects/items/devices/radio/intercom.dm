@@ -3,7 +3,7 @@
 	desc = "Talk through this. To speak directly into an intercom next to you, use :i."
 	icon_state = "intercom"
 	anchored = 1
-	w_class = 4.0
+	w_class = SIZE_LARGE
 	canhear_range = 2
 	flags_atom = FPRINT|CONDUCT|NOBLOODY
 	var/number = 0

@@ -9,7 +9,7 @@
 	desc = "A 10mm assault rifle magazine."
 	caliber = "10x24mm"
 	icon_state = "m41a"
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 40
 	gun_type = /obj/item/weapon/gun/rifle/m41a
@@ -63,7 +63,7 @@
 	default_ammo = /datum/ammo/bullet/rifle/mar40
 	max_rounds = 40
 	gun_type = /obj/item/weapon/gun/rifle/mar40
-	w_class = 3
+	w_class = SIZE_MEDIUM
 
 /obj/item/ammo_magazine/rifle/mar40/extended
 	name = "\improper MAR extended magazine (7.62x39mm)"
@@ -84,7 +84,7 @@
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 20 //Also comes in 30 and 100 round Beta-C mag.
 	gun_type = /obj/item/weapon/gun/rifle/m16
-	w_class = 3
+	w_class = SIZE_MEDIUM
 
 /obj/item/ammo_magazine/rifle/m16/ap
 	name = "\improper Dutch's M16A2 'yautja killer' magazine (5.56x45mm AP)"
@@ -94,7 +94,7 @@
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	max_rounds = 20
 	gun_type = /obj/item/weapon/gun/rifle/m16/dutch
-	w_class = 3
+	w_class = SIZE_MEDIUM
 
 
 //-------------------------------------------------------
@@ -119,7 +119,7 @@
 	default_ammo = /datum/ammo/bullet/rifle/mar40
 	max_rounds = 40
 	gun_type = /obj/item/weapon/gun/rifle/type71
-	w_class = 3
+	w_class = SIZE_MEDIUM
 
 //-------------------------------------------------------
 //USCM L42-MK1 Pulse Carbine
@@ -132,7 +132,7 @@
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 20
 	gun_type = /obj/item/weapon/gun/rifle/l42mk1
-	w_class = 3
+	w_class = SIZE_MEDIUM
 
 /obj/item/ammo_magazine/rifle/l42mk1/ap
 	name = "\improper L42-MK1 AP magazine (10x24mm)"
@@ -142,7 +142,7 @@
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	max_rounds = 20
 	gun_type = /obj/item/weapon/gun/rifle/l42mk1
-	w_class = 3
+	w_class = SIZE_MEDIUM
 
 /obj/item/ammo_magazine/rifle/l42mk1/extended
 	name = "\improper L42-MK1 extended magazine (10x24mm)"
@@ -152,7 +152,7 @@
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 35
 	gun_type = /obj/item/weapon/gun/rifle/l42mk1
-	w_class = 3
+	w_class = SIZE_MEDIUM
 
 /obj/item/ammo_magazine/rifle/l42mk1/incendiary
 	name = "\improper L42-MK1 incendiary magazine (10x24mm)"
@@ -162,4 +162,4 @@
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	max_rounds = 20
 	gun_type = /obj/item/weapon/gun/rifle/l42mk1
-	w_class = 3
+	w_class = SIZE_MEDIUM

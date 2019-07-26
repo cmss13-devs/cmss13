@@ -6,7 +6,7 @@
 	icon_state = "moneybag"
 	force = 10.0
 	throwforce = 2.0
-	w_class = 4.0
+	w_class = SIZE_LARGE
 
 /obj/item/moneybag/attack_hand(user as mob)
 	var/amt_gold = 0

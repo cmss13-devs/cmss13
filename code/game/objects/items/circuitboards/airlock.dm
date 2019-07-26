@@ -2,7 +2,7 @@
 /obj/item/circuitboard/airlock
 	name = "airlock electronics"
 	icon_state = "door_electronics"
-	w_class = 2 //It should be tiny! -Agouri
+	w_class = SIZE_SMALL //It should be tiny! -Agouri
 	matter = list("metal" = 50,"glass" = 50)
 	req_access = list(ACCESS_CIVILIAN_ENGINEERING)
 	var/list/conf_access = null

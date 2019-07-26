@@ -110,7 +110,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	actions_types = list(/datum/action/item_action/toggle)
 	var/flags_marine_armor = ARMOR_SQUAD_OVERLAY|ARMOR_LAMP_OVERLAY
 	var/specialty = "M3 pattern marine" //Same thing here. Give them a specialty so that they show up correctly in vendors.
-	w_class = 5
+	w_class = SIZE_HUGE
 	uniform_restricted = list(/obj/item/clothing/under/marine)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
 	time_to_unequip = 20
@@ -130,7 +130,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	..()
 	armor_overlays = list("lamp") //Just one for now, can add more later.
 	update_icon()
-	pockets.max_w_class = 2 //Can contain small items AND rifle magazines.
+	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.
 	pockets.bypass_w_limit = list(
 	/obj/item/ammo_magazine/rifle,
 	/obj/item/ammo_magazine/smg,
@@ -331,7 +331,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon_state = "admiral"
 	name = "\improper M3 pattern admiral armor"
 	desc = "A well-crafted suit of M3 Pattern Armor with a gold shine. It looks very expensive, but shockingly fairly easy to carry and wear."
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -437,7 +437,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	..()
 	armor_overlays = list("lamp") //Just one for now, can add more later.
 	update_icon()
-	pockets.max_w_class = 2 //Can contain small items AND rifle magazines.
+	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.
 	pockets.bypass_w_limit = list(
 	/obj/item/ammo_magazine/rifle,
 	/obj/item/ammo_magazine/smg,

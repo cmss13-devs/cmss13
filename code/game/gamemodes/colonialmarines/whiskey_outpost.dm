@@ -809,7 +809,7 @@ var/global/spawn_next_wo_wave = 0
 	desc = "Ammo Supply Beacon, it has 5 different settings for different supplies. Look at your weapons verb tab to be able to switch ammo drops."
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "ir_beacon"
-	w_class = 2
+	w_class = SIZE_SMALL
 	var/activated = 0
 	var/icon_activated = "ir_beacon_active"
 	var/supply_drop = 0 //0 = Regular ammo, 1 = Rocket, 2 = Smartgun, 3 = Sniper, 4 = Explosives + GL
@@ -944,7 +944,7 @@ var/global/spawn_next_wo_wave = 0
 	name = "attachment package"
 	desc = "A package containing some random attachments. Why not see what's inside?"
 	icon_state = "circuit"
-	w_class = 1
+	w_class = SIZE_TINY
 	can_hold = list()
 	storage_slots = 3
 	max_w_class = 0

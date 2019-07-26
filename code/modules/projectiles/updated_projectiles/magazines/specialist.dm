@@ -7,7 +7,7 @@
 	desc = "A magazine of sniper rifle ammo."
 	caliber = "10x28mm"
 	icon_state = "m42c" //PLACEHOLDER
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	max_rounds = 15
 	default_ammo = /datum/ammo/bullet/sniper
 	gun_type = /obj/item/weapon/gun/rifle/sniper/M42A
@@ -91,7 +91,7 @@
 	caliber = "10x28mm"
 	max_rounds = 500 //Should be 500 in total.
 	icon_state = "m57"
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	default_ammo = /datum/ammo/bullet/smartgun
 	gun_type = /obj/item/weapon/gun/smartgun/
 
@@ -131,7 +131,7 @@
 	icon_state = "rocket"
 	origin_tech = "combat=3;materials=3"
 	matter = list("metal" = 10000)
-	w_class = 3.0
+	w_class = SIZE_MEDIUM
 	max_rounds = 1
 	default_ammo = /datum/ammo/rocket
 	gun_type = /obj/item/weapon/gun/launcher/rocket

@@ -6,7 +6,7 @@
 	frequency = 1457
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_BACK
-	w_class = 5.0
+	w_class = SIZE_HUGE
 
 	matter = list("metal" = 10000,"glass" = 2500)
 

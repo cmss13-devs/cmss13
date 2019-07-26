@@ -205,7 +205,7 @@
 	icon = 'icons/Marine/mortar.dmi'
 	icon_state = "mortar_m402_carry"
 	unacidable = 1
-	w_class = 5 //No dumping this in a backpack. Carry it, fatso
+	w_class = SIZE_HUGE //No dumping this in a backpack. Carry it, fatso
 
 /obj/item/mortar_kit/ex_act(severity)
 	switch(severity)
@@ -241,7 +241,7 @@
 	desc = "An unlabeled 80mm mortar shell, probably a casing."
 	icon = 'icons/Marine/mortar.dmi'
 	icon_state = "mortar_ammo_cas"
-	w_class = 5
+	w_class = SIZE_HUGE
 	flags_atom = FPRINT|CONDUCT
 
 /obj/item/mortal_shell/proc/detonate(var/turf/T)

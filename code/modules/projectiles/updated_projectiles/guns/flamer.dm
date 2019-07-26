@@ -10,7 +10,7 @@
 	icon_state = "m240"
 	item_state = "flamer"
 	flags_equip_slot = SLOT_BACK
-	w_class = 4
+	w_class = SIZE_LARGE
 	force = 15
 	fire_sound = ""
 	unload_sound = 'sound/weapons/handling/flamer_unload.ogg'

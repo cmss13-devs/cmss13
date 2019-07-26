@@ -11,7 +11,7 @@
 /obj/item/ammo_magazine/m56d
 	name = "M56D drum magazine (10x28mm Caseless)"
 	desc = "A box of 700, 10x28mm caseless tungsten rounds for the M56D heavy machine gun system. Just click the M56D with this to reload it."
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	icon_state = "ammo_drum"
 	flags_magazine = NOFLAGS //can't be refilled or emptied by hand
 	caliber = "10x28mm"
@@ -27,7 +27,7 @@
 	desc = "A large metal case with Japanese writing on the top. However it also comes with English text to the side. This is a M56D heavy machine gun, it clearly has various labeled warnings. The most major one is that this does not have IFF features due to specialized ammo."
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D_case" // I guess a placeholder? Not actually going to show up ingame for now.
-	w_class = 5
+	w_class = SIZE_HUGE
 	storage_slots = 6
 	can_hold = list()
 
@@ -48,7 +48,7 @@
 	name = "\improper M56D heavy machine gun"
 	desc = "The top half of a M56D heavy machine gun post. However it ain't much use without the tripod."
 	unacidable = 1
-	w_class = 5
+	w_class = SIZE_HUGE
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D_gun_e"
 	var/rounds = 0 // How many rounds are in the weapon. This is useful if we break down our guns.
@@ -111,7 +111,7 @@
 	name = "\improper M56D folded mount frame"
 	desc = "A flimsy frame of plasteel and metal. Still needs to be <b>welded</b> together."
 	unacidable = 1
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "folded_mount_frame"
 
@@ -131,7 +131,7 @@
 	name = "\improper M56D folded mount"
 	desc = "The folded, foldable tripod mount for the M56D.  (Place on ground and drag to you to unfold)."
 	unacidable = 1
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "folded_mount"
 

@@ -227,7 +227,7 @@
 	name = "machinegun ammo"
 	desc = "Machine gun ammo. It has 500 rounds remaining"
 	var/count = 500
-	w_class = 2
+	w_class = SIZE_SMALL
 	New()
 		..()
 		var/matrix/M = matrix()

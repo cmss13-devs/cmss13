@@ -80,7 +80,7 @@
 	item_state = "pen"
 	flags_equip_slot = SLOT_WAIST|SLOT_EAR
 	throwforce = 0
-	w_class = 1
+	w_class = SIZE_TINY
 	throw_speed = 7
 	throw_range = 15
 	matter = list("metal" = 10)
@@ -177,7 +177,7 @@
 	icon_state = "stamp-qm"
 	item_state = "stamp"
 	throwforce = 0
-	w_class = 1.0
+	w_class = SIZE_TINY
 	throw_speed = 7
 	throw_range = 15
 	matter = list("metal" = 60)

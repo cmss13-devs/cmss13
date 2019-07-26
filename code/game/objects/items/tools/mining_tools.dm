@@ -11,7 +11,7 @@
 	force = 15.0
 	throwforce = 4.0
 	item_state = "pickaxe"
-	w_class = 4.0
+	w_class = SIZE_LARGE
 	matter = list("metal" = 3750)
 	var/digspeed = 40 //moving the delay to an item var so R&D can make improved picks. --NEO
 	origin_tech = "materials=1;engineering=1"
@@ -64,7 +64,7 @@
 	name = "plasma cutter"
 	icon_state = "plasmacutter"
 	item_state = "gun"
-	w_class = 3.0 //it is smaller than the pickaxe
+	w_class = SIZE_MEDIUM //it is smaller than the pickaxe
 	damtype = "fire"
 	digspeed = 20 //Can slice though normal walls, all girders, or be used in reinforced wall deconstruction/ light thermite on fire
 	origin_tech = "materials=4;phorontech=3;engineering=3"

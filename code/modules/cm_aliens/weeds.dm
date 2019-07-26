@@ -152,7 +152,7 @@
 		to_chat(user, SPAN_WARNING("You cut \the [src] away with \the [W]."))
 
 	var/damage = W.force
-	if(W.w_class < 4 || !W.sharp || W.force < 20) //only big strong sharp weapon are adequate
+	if(W.w_class < SIZE_LARGE || !W.sharp || W.force < 20) //only big strong sharp weapon are adequate
 		damage /= 4
 
 	if(istype(W, /obj/item/tool/weldingtool))

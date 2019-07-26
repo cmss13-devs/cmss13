@@ -26,7 +26,7 @@
 	flags_equip_slot = SLOT_WAIST
 	throw_speed = 2
 	throw_range = 9
-	w_class = 2
+	w_class = SIZE_SMALL
 
 	matter = list("glass" = 25,"metal" = 75)
 

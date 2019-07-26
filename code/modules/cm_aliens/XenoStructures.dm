@@ -90,7 +90,7 @@
 /obj/effect/alien/resin/attackby(obj/item/W, mob/user)
 	if(!(W.flags_item & NOBLUDGEON))
 		var/damage = W.force
-		if(W.w_class < 4 || !W.sharp || W.force < 20) //only big strong sharp weapon are adequate
+		if(W.w_class < SIZE_LARGE || !W.sharp || W.force < 20) //only big strong sharp weapon are adequate
 			damage /= 4
 		health -= damage
 		if(istype(src, /obj/effect/alien/resin/sticky))
@@ -778,7 +778,7 @@
 	else
 		visible_message(SPAN_DANGER("\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]"))
 	var/damage = W.force
-	if(W.w_class < 4 || !W.sharp || W.force < 20) //only big strong sharp weapon are adequate
+	if(W.w_class < SIZE_LARGE || !W.sharp || W.force < 20) //only big strong sharp weapon are adequate
 		damage /= 4
 	if(istype(W, /obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/WT = W

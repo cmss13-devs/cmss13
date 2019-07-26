@@ -6,9 +6,9 @@
 	name = "backpack"
 	desc = "You wear this on your back and put items into it."
 	icon_state = "backpack"
-	w_class = 4
+	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK	//ERROOOOO
-	max_w_class = 3
+	max_w_class = SIZE_MEDIUM
 	storage_slots = null
 	max_storage_space = 21
 	var/worn_accessible = FALSE //whether you can access its content while worn on the back
@@ -88,7 +88,7 @@
 	desc = "A backpack that opens into a localized pocket of Blue Space."
 	origin_tech = "bluespace=4"
 	icon_state = "holdingpack"
-	max_w_class = 4
+	max_w_class = SIZE_LARGE
 	max_storage_space = 28
 
 	attackby(obj/item/W as obj, mob/user as mob)
@@ -120,9 +120,9 @@
 	desc = "Space Santa uses this to deliver toys to all the nice children in space in Christmas! Wow, it's pretty big!"
 	icon_state = "giftbag0"
 	item_state = "giftbag"
-	w_class = 4.0
+	w_class = SIZE_LARGE
 	storage_slots = null
-	max_w_class = 3
+	max_w_class = SIZE_MEDIUM
 	max_storage_space = 400 // can store a ton of shit!
 
 

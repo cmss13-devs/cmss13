@@ -6,7 +6,7 @@
 	item_state = "utility"
 	flags_equip_slot = SLOT_WAIST
 	attack_verb = list("whipped", "lashed", "disciplined")
-	w_class = 4
+	w_class = SIZE_LARGE
 	allow_drawing_method = TRUE
 
 /obj/item/storage/belt/equipped(mob/user, slot)
@@ -83,7 +83,7 @@
 	icon_state = "medicalbelt"
 	item_state = "medical"
 	storage_slots = 14 //can hold 2 "rows" of very limited medical equipment and ammo.
-	max_w_class = 3
+	max_w_class = SIZE_MEDIUM
 	max_storage_space = 28
 	var/mode = 0 //Pill picking mode
 
@@ -149,7 +149,7 @@
 	item_state = "medicbag"
 	storage_slots = 21 //can hold 3 "rows" of very limited medical equipment, but it *should* give a decent boost to squad medics.
 	max_storage_space = 42
-	max_w_class = 2
+	max_w_class = SIZE_SMALL
 	can_hold = list(
 		/obj/item/device/healthanalyzer,
 		/obj/item/bodybag,
@@ -190,7 +190,7 @@
 	icon_state = "securitybelt"
 	item_state = "security"//Could likely use a better one.
 	storage_slots = 7
-	max_w_class = 3
+	max_w_class = SIZE_MEDIUM
 	max_storage_space = 21
 	can_hold = list(
 		/obj/item/explosive/grenade/flashbang,
@@ -223,7 +223,7 @@
 	icon_state = "swatbelt"
 	item_state = "swatbelt"
 	storage_slots = 9
-	max_w_class = 3
+	max_w_class = SIZE_MEDIUM
 	max_storage_space = 21
 
 
@@ -231,7 +231,7 @@
 	name = "\improper M276 pattern military police rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is filled with an array of small pouches, meant to carry non-lethal equipment and restraints."
 	storage_slots = 6
-	max_w_class = 3
+	max_w_class = SIZE_MEDIUM
 	max_storage_space = 30
 
 
@@ -249,9 +249,9 @@
 	name = "\improper M276 pattern ammo load rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is the standard variant designed for bulk ammunition-carrying operations."
 	icon_state = "marinebelt"
-	w_class = 4
+	w_class = SIZE_LARGE
 	storage_slots = 5
-	max_w_class = 3
+	max_w_class = SIZE_MEDIUM
 	max_storage_space = 20
 	can_hold = list(
 		/obj/item/weapon/combat_knife,
@@ -338,9 +338,9 @@
 	name = "\improper M276 pattern shotgun shell loading rig"
 	desc = "An ammunition belt designed to hold shotgun shells or individual bullets."
 	icon_state = "shotgunbelt"
-	w_class = 4
+	w_class = SIZE_LARGE
 	storage_slots = 14 // Make it FLUSH with the UI. *scream
-	max_w_class = 2
+	max_w_class = SIZE_SMALL
 	max_storage_space = 28
 	can_hold = list(/obj/item/ammo_magazine/handful)
 
@@ -367,9 +367,9 @@
 	desc="The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is specially designed with four holsters to store throwing knives. Not commonly issued, but kept in service."
 	icon_state="knifebelt"
 	item_state="marine" // aslo temp, maybe somebody update these icons with better ones?
-	w_class = 3
+	w_class = SIZE_LARGE
 	storage_slots = 6
-	max_w_class = 1
+	max_w_class = SIZE_TINY
 	max_storage_space = 6
 	can_hold=list(/obj/item/weapon/throwing_knife)
 
@@ -389,9 +389,9 @@
 	desc="The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is designed to carry bulk quantities of M40 HEDP Grenades."
 	icon_state= "grenadebelt" // temp
 	item_state= "grenadebelt"
-	w_class = 4
+	w_class = SIZE_LARGE
 	storage_slots = 8
-	max_w_class = 3
+	max_w_class = SIZE_MEDIUM
 	max_storage_space = 24
 	can_hold = list(/obj/item/explosive/grenade)
 
@@ -447,8 +447,8 @@
 	name="\improper G8-A general utility pouch"
 	desc="A small, lightweight pouch that can be clipped onto Armat Systems M3 Pattern armor to provide additional storage. The newer G8-A model, while uncomfortable, can also be clipped around the waist."
 	storage_slots = 3
-	w_class = 4
-	max_w_class = 3
+	w_class = SIZE_LARGE
+	max_w_class = SIZE_MEDIUM
 	flags_equip_slot = SLOT_WAIST
 	icon = 'icons/obj/clothing/belts.dmi'
 	icon_state="sparepouch"
@@ -465,10 +465,10 @@
 	icon_state = "m4a3_holster"
 	item_state = "m4a3_holster"
 	use_sound = null
-	w_class = 4
+	w_class = SIZE_LARGE
 	storage_slots = 5
 	max_storage_space = 11
-	max_w_class = 3
+	max_w_class = SIZE_MEDIUM
 	var/holds_guns_now = 0 //Generic variable to determine if the holster already holds a gun.
 	var/holds_guns_max = 1 //How many guns can it hold? I think this can be any thing from 1 to whatever. Should calculate properly.
 	var/obj/item/weapon/gun/current_gun //The gun it holds, used for referencing later so we can update the icon.
@@ -615,7 +615,7 @@
 	icon_state = "m44r_holster"
 	item_state = "m44r_holster"
 	storage_slots = 7
-	max_w_class = 7
+	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/weapon/gun/revolver/m44,
 		/obj/item/ammo_magazine/revolver
@@ -641,7 +641,7 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, along with three pouches for speedloaders. This one is aging poorly, and seems to be surplus equipment. This one is stamped '3rd 'Dust Raiders' Battalion'."
 	icon_state = "s_cmateba_holster"
 	item_state = "s_cmateba_holster"
-	max_w_class = 7
+	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/weapon/gun/revolver/mateba,
 		/obj/item/ammo_magazine/revolver/mateba
@@ -764,7 +764,7 @@
 	icon_state = "tankbelt"
 	item_state = "tankbelt"
 	storage_slots = 2 //can hold 2 only two large items such as Tank Ammo.
-	max_w_class = 15
+	max_w_class = SIZE_LARGE
 	max_storage_space = 2
 	can_hold = list(
 		/obj/item/ammo_magazine/tank/ltb_cannon,

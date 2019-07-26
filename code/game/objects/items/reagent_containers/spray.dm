@@ -8,7 +8,7 @@
 	flags_item = NOBLUDGEON
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 3
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	throw_speed = 2
 	throw_range = 10
 	amount_per_transfer_from_this = 10
@@ -171,7 +171,7 @@
 	icon_state = "chemsprayer"
 	item_state = "chemsprayer"
 	throwforce = 3
-	w_class = 3.0
+	w_class = SIZE_MEDIUM
 	possible_transfer_amounts = null
 	volume = 600
 	origin_tech = "combat=3;materials=3;engineering=3"

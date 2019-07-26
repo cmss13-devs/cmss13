@@ -121,7 +121,7 @@
 	icon_state = "basketball"
 	item_state = "basketball"
 	desc = "Here's your chance, do your dance at the Space Jam."
-	w_class = 4 //Stops people from hiding it in their bags/pockets
+	w_class = SIZE_LARGE //Stops people from hiding it in their bags/pockets
 
 /obj/structure/holohoop
 	name = "basketball hoop"

@@ -94,7 +94,7 @@
 
 ///////////OFFHAND///////////////
 /obj/item/weapon/twohanded/offhand
-	w_class = 5.0
+	w_class = SIZE_HUGE
 	icon_state = "offhand"
 	name = "offhand"
 	flags_item = DELONDROP|TWOHANDED|WIELDED
@@ -136,7 +136,7 @@
 	force = 20
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
-	w_class = 4.0
+	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	flags_atom = FPRINT|CONDUCT
 	flags_item = TWOHANDED
@@ -168,7 +168,7 @@
 	force_wielded = 50
 	sharp = null
 	edge = 0
-	w_class = 4
+	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	flags_atom = FPRINT|CONDUCT
 	flags_item = TWOHANDED
@@ -193,7 +193,7 @@
 	throwforce = 5.0
 	throw_speed = 1
 	throw_range = 5
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	force_wielded = 70
 	wieldsound = 'sound/weapons/saberon.ogg'
 	unwieldsound = 'sound/weapons/saberoff.ogg'
@@ -235,7 +235,7 @@
 	icon_state = "spearglass"
 	item_state = "spearglass"
 	force = 14
-	w_class = 4.0
+	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	force_wielded = 24
 	throwforce = 30
@@ -255,7 +255,7 @@
 	item_state = "glaive"
 	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon."
 	force = 28
-	w_class = 4.0
+	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	force_wielded = 60
 	throwforce = 50

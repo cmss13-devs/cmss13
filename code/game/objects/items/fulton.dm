@@ -6,11 +6,11 @@ var/global/list/deployed_fultons = list()
 	name = "fulton recovery device"
 	icon = 'icons/Marine/marine-items.dmi'
 	icon_state = "fulton"
-	amount = 10
-	max_amount = 10
+	amount = 20
+	max_amount = 20
 	desc = "A system used by the USCM for retrieving objects of interest on the ground from a AUD-25 dropship. Can be used to extract unrevivable corpses, or crates, typically lasting around 3 minutes in the air."
 	throwforce = 10
-	w_class = 2
+	w_class = SIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
 	matter = list("metal" = 50)

@@ -33,7 +33,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	flags_atom =  FPRINT|CONDUCT
 	matter = list("metal" = 2000)
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	force = 1.0
 	var/slot = null //"muzzle", "rail", "under", "stock"
 
@@ -1035,7 +1035,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A weapon-mounted, reloadable, one-shot grenade launcher."
 	icon_state = "grenade"
 	attach_icon = "grenade_a"
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	current_rounds = 0
 	max_rounds = 2
 	max_range = 7
@@ -1109,7 +1109,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "flamethrower"
 	attach_icon = "flamethrower_a"
 	desc = "A weapon-mounted refillable flamethrower attachment.\nIt is designed for short bursts."
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	current_rounds = 20
 	max_rounds = 20
 	max_range = 4
@@ -1187,7 +1187,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "masterkey"
 	attach_icon = "masterkey_a"
 	desc = "An ARMAT U7 tactical shotgun. Attaches to the underbarrel of most weapons. Only capable of loading up to three buckshot shells."
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	max_rounds = 3
 	current_rounds = 3
 	ammo = /datum/ammo/bullet/shotgun/buckshot/masterkey

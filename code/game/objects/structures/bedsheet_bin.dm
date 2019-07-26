@@ -14,7 +14,7 @@ LINEN BINS
 	throwforce = 1
 	throw_speed = 1
 	throw_range = 2
-	w_class = 2
+	w_class = SIZE_SMALL
 
 
 /obj/item/bedsheet/attack_self(mob/user as mob)

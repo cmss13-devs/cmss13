@@ -1,5 +1,5 @@
 /datum/job/logistics
-	supervisors = "the acting commander"
+	supervisors = "the acting commanding officer"
 	total_positions = 1
 	spawn_positions = 1
 	minimal_player_age = 7

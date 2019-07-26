@@ -252,7 +252,7 @@
 	fire_sound = "gun_smartgun"
 	current_mag = null
 	flags_equip_slot = NOFLAGS
-	w_class = 5
+	w_class = SIZE_HUGE
 	force = 20
 	wield_delay = WIELD_DELAY_FAST
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
@@ -827,7 +827,7 @@
 	unacidable = 1
 	origin_tech = "combat=5;materials=5"
 	matter = list("metal" = 6000)
-	w_class = 4.0
+	w_class = SIZE_LARGE
 	throw_speed = 2
 	throw_range = 10
 	force = 5.0
@@ -949,7 +949,7 @@
 	item_state = "m81"
 	origin_tech = "combat=5;materials=5"
 	matter = list("metal" = 7000)
-	w_class = 4.0
+	w_class = SIZE_LARGE
 	throw_speed = 2
 	throw_range = 10
 	force = 5.0
@@ -1087,7 +1087,7 @@
 	matter = list("metal" = 10000)
 	current_mag = /obj/item/ammo_magazine/internal/launcher/rocket
 	flags_equip_slot = NOFLAGS
-	w_class = 5
+	w_class = SIZE_HUGE
 	force = 15
 	wield_delay = WIELD_DELAY_HORRIBLE
 	delay_style	= WEAPON_DELAY_NO_FIRE

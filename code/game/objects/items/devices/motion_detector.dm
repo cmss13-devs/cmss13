@@ -24,7 +24,7 @@
 	var/detector_range = 14
 	var/detector_mode = MOTION_DETECTOR_LONG
 	var/ping_count = 0
-	w_class = 3
+	w_class = SIZE_MEDIUM
 	var/active = 0
 	var/recycletime = 120
 	var/long_range_cooldown = 2

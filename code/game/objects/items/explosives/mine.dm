@@ -8,7 +8,7 @@
 	icon = 'icons/obj/items/grenade.dmi'
 	icon_state = "m20"
 	force = 5.0
-	w_class = 2
+	w_class = SIZE_SMALL
 	//layer = MOB_LAYER - 0.1 //You can't just randomly hide claymores under boxes. Booby-trapping bodies is fine though
 	throwforce = 5.0
 	throw_range = 6

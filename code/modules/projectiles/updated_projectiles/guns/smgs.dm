@@ -7,7 +7,7 @@
 	fire_sound = 'sound/weapons/gun_m39.ogg'
 	type_of_casings = "bullet"
 	force = 8
-	w_class = 4
+	w_class = SIZE_LARGE
 	movement_acc_penalty_mult = 4
 	wield_delay = WIELD_DELAY_FAST
 	attachable_allowed = list(

@@ -135,7 +135,7 @@
 	desc = "A scrap of paper, you think some of the words might still be readable."
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper_words"
-	w_class = 1.0
+	w_class = SIZE_TINY
 
 /obj/item/document_objective/paper/display_read_message(mob/living/user)
 	..()
@@ -148,7 +148,7 @@
 	desc = "A written report from someone for their supervisor about the status of some kind of project."
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper_words"
-	w_class = 1.0
+	w_class = SIZE_TINY
 
 /obj/item/document_objective/report/display_read_message(mob/living/user)
 	..()
@@ -163,7 +163,7 @@
 	icon_state = "folder"
 	reading_time = 50
 	objective_type = /datum/cm_objective/document/folder
-	w_class = 1
+	w_class = SIZE_TINY
 
 /obj/item/document_objective/folder/New()
 	..()

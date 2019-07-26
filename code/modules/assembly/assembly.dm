@@ -4,7 +4,7 @@
 	icon = 'icons/obj/assemblies/new_assemblies.dmi'
 	icon_state = ""
 	flags_atom = FPRINT|CONDUCT
-	w_class = 2.0
+	w_class = SIZE_SMALL
 	matter = list("metal" = 100)
 	throwforce = 2
 	throw_speed = 3

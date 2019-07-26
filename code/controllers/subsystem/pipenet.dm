@@ -37,7 +37,7 @@ var/list/datum/pipe_network/pipe_networks = list()
 		var/obj/machinery/atmospherics/atmosmachinery = currentrun_atmos_machines[currentrun_atmos_machines.len]
 		currentrun_atmos_machines.len--
 
-		if (!atmosmachinery || atmosmachinery.gcDestroyed || atmosmachinery.disposed || atmosmachinery.timestopped)
+		if (!atmosmachinery || atmosmachinery.gcDestroyed || atmosmachinery.disposed)
 			continue
 
 		if (atmosmachinery.process() && MC_TICK_CHECK)

@@ -33,7 +33,7 @@ var/list/datum/powernet/powernets_by_name = list() //Holds all powernet datums i
 		var/obj/machinery/M = currentrunmachines[currentrunmachines.len]
 		currentrunmachines.len--		
 
-		if (!M || M.gcDestroyed || M.disposed || M.timestopped)
+		if (!M || M.gcDestroyed || M.disposed)
 			continue
 
 		if(!M.processable)

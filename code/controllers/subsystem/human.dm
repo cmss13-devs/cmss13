@@ -27,7 +27,7 @@ var/datum/subsystem/human/SShuman
 		var/mob/living/carbon/human/M = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!M || M.disposed || M.gcDestroyed || M.timestopped)
+		if (!M || M.disposed || M.gcDestroyed)
 			continue
 
 		M.Life()

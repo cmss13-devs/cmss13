@@ -54,9 +54,6 @@ var/list/power_machines = list()
 
 		if (istype(X, /obj/machinery))
 			var/obj/machinery/M = X
-			if (M.timestopped)
-				continue
-
 			if (M.process() == PROCESS_KILL)
 				//M.inMachineList = FALSE
 				power_machines.Remove(M)

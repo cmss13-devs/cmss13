@@ -212,8 +212,8 @@
 
 
 /obj/structure/reagent_dispensers/water_cooler
-	name = "Water-Cooler"
-	desc = "A machine that dispenses water to drink."
+	name = "water cooler"
+	desc = "A machine that dispenses water to drink. It has levers for hot and cold, but it only dispenses room-temperature water."
 	amount_per_transfer_from_this = 5
 	icon = 'icons/obj/machines/vending.dmi'
 	icon_state = "water_cooler"
@@ -224,6 +224,8 @@
 	..()
 	reagents.add_reagent("water",500)
 
+/obj/structure/reagent_dispensers/water_cooler/stacks
+	icon_state = "water_cooler_2"
 
 /obj/structure/reagent_dispensers/beerkeg
 	name = "beer keg"

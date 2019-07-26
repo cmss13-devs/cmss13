@@ -203,11 +203,6 @@
 					icon_state = "toxinsspecialglass"
 					name = "Toxins Special"
 					desc = "Whoah, this thing is on FIRE"
-				if("beepskysmash")
-					icon_state = "beepskysmashglass"
-					name = "Beepsky Smash"
-					desc = "Heavy, hot and strong. Just like the Iron fist of the LAW."
-					center_of_mass = list("x"=18, "y"=10)
 				if("doctorsdelight")
 					icon_state = "doctorsdelightglass"
 					name = "Doctor's Delight"

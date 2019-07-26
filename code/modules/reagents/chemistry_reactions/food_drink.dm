@@ -348,13 +348,6 @@
 	required_reagents = list("rum" = 2, "vermouth" = 1, "phoron" = 2)
 	result_amount = 5
 
-/datum/chemical_reaction/beepsky_smash
-	name = "Beepksy Smash"
-	id = "beepksysmash"
-	result = "beepskysmash"
-	required_reagents = list("limejuice" = 2, "whiskey" = 2, "iron" = 1)
-	result_amount = 4
-
 /datum/chemical_reaction/doctor_delight
 	name = "The Doctor's Delight"
 	id = "doctordelight"

@@ -1662,7 +1662,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("L42 Pulse Carbine MK1", round(scale * 20), /obj/item/weapon/gun/rifle/l42mk1, "black"),
 		list("M37A2 Pump Shotgun", round(scale * 10), /obj/item/weapon/gun/shotgun/pump, "black"),
 		list("M39 Submachinegun", round(scale * 15), /obj/item/weapon/gun/smg/m39, "black"),
-		list("M41A Pulse Rifle MK2", round(scale * 20), /obj/item/weapon/gun/smg/m39, "black"),
+		list("M41A Pulse Rifle MK2", round(scale * 20), /obj/item/weapon/gun/rifle/m41a, "black"),
 
 		list("Kits", -1, null, null),
 		list("JTAC Radio Kit", round(scale * 4), /obj/item/storage/box/kit/mini_jtac, "black"),

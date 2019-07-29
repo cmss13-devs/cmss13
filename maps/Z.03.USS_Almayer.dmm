@@ -12851,10 +12851,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/command/cic)
-"aGI" = (
-/obj/structure/window/framed/almayer/hull,
-/turf/open/floor/plating,
-/area/almayer/engineering/port_atmos)
 "aGK" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-E";
@@ -13031,16 +13027,6 @@
 	dir = 6
 	},
 /area/almayer/medical/medical_science)
-"aHh" = (
-/turf/closed/wall/almayer/outer{
-	name = "reinforced hull"
-	},
-/area/almayer/engineering/port_atmos)
-"aHi" = (
-/obj/machinery/atmospherics/pipe/simple/visible,
-/obj/structure/window/framed/almayer/hull,
-/turf/open/floor/plating,
-/area/almayer/engineering/port_atmos)
 "aHj" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
 /turf/open/floor/almayer{
@@ -13216,26 +13202,20 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/command/cic)
-"aHL" = (
-/turf/open/floor/engine,
-/area/almayer/engineering/port_atmos)
 "aHM" = (
 /obj/machinery/atmospherics/unary/vent_pump/siphon/on{
 	dir = 1;
 	id_tag = "oxygen_upper_out"
 	},
 /turf/open/floor/engine,
-/area/almayer/engineering/port_atmos)
-"aHN" = (
-/turf/open/floor/engine/nitrogen,
-/area/almayer/engineering/port_atmos)
+/area/almayer/engineering/airmix)
 "aHO" = (
 /obj/machinery/atmospherics/unary/vent_pump/siphon/on{
 	dir = 1;
 	id_tag = "nit_upper_out"
 	},
 /turf/open/floor/engine/nitrogen,
-/area/almayer/engineering/port_atmos)
+/area/almayer/engineering/airmix)
 "aHQ" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
@@ -13320,16 +13300,6 @@
 	dir = 4
 	},
 /area/almayer/hull/upper_hull)
-"aIc" = (
-/obj/machinery/light,
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/open/floor/engine,
-/area/almayer/engineering/port_atmos)
-"aId" = (
-/obj/machinery/light,
-/obj/machinery/portable_atmospherics/canister/nitrogen,
-/turf/open/floor/engine/nitrogen,
-/area/almayer/engineering/port_atmos)
 "aIe" = (
 /obj/machinery/door/airlock/almayer/maint{
 	dir = 2
@@ -48194,6 +48164,9 @@
 	dir = 1
 	},
 /area/almayer/shipboard/brig_cells)
+"hCT" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/engineering/airmix)
 "hDw" = (
 /obj/structure/curtain/medical,
 /turf/open/floor/almayer{
@@ -69228,8 +69201,8 @@ aag
 aag
 aag
 bAs
-amg
-amg
+hCT
+hCT
 bAs
 aag
 aag
@@ -69241,8 +69214,8 @@ aag
 aag
 aag
 bAs
-amg
-amg
+hCT
+hCT
 bAs
 aag
 aag
@@ -99395,10 +99368,10 @@ aiC
 aEY
 aFQ
 aVB
-aHh
-aHh
-aHh
-aHh
+aep
+aep
+aep
+aep
 aar
 aar
 aar
@@ -99598,10 +99571,10 @@ aiC
 aEY
 aFR
 aGw
-aGI
-aHL
-aHL
-aHh
+afi
+afk
+afk
+aep
 aao
 cbK
 aap
@@ -99801,10 +99774,10 @@ aiC
 aEY
 aFS
 aGx
-aHi
+aWY
 aHM
-aIc
-aHh
+bMJ
+aep
 aap
 aai
 aai
@@ -100004,10 +99977,10 @@ aiC
 aEY
 aFT
 aVC
-aHh
-aHh
-aHh
-aHh
+aep
+aep
+aep
+aep
 aap
 aai
 aag
@@ -100207,10 +100180,10 @@ aiC
 aEY
 aFS
 aGz
-aGI
-aHN
-aHN
-aHh
+afi
+bLy
+bLy
+aep
 aap
 aai
 aag
@@ -100410,10 +100383,10 @@ aiC
 aEY
 aFS
 aGA
-aHi
+aWY
 aHO
-aId
-aHh
+bMK
+aep
 aap
 aai
 aag
@@ -100613,10 +100586,10 @@ aiC
 aEY
 aFU
 aGB
-aHh
-aHh
-aHh
-aHh
+aep
+aep
+aep
+aep
 aap
 aai
 aag

@@ -1421,6 +1421,10 @@
 			user.visible_message(SPAN_DANGER("[src] lashes out and [target] goes down!"),SPAN_DANGER("<b>You trip [target]!</b>"))
 			target.KnockDown(5)
 
+/obj/item/weapon/yautja_chain/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
+
 /obj/item/weapon/yautja_knife
 	name = "ceremonial dagger"
 	desc = "A viciously sharp dagger enscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
@@ -1472,6 +1476,10 @@
 			if(5 to INFINITY) user.emote("roar")
 
 	else to_chat(user, SPAN_WARNING("You were interrupted!"))
+
+/obj/item/weapon/yautja_knife/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
 
 /obj/item/weapon/yautja_sword
 	name = "clan sword"

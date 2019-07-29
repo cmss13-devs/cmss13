@@ -8977,7 +8977,7 @@
 /obj/structure/rack{
 	layer = 2.5
 	},
-/obj/item/storage/fancy/cigarettes,
+/obj/item/storage/fancy/cigarettes/wypacket,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "AF" = (
@@ -9081,7 +9081,7 @@
 	},
 /obj/structure/table,
 /obj/item/toy/deck,
-/obj/item/storage/fancy/cigarettes,
+/obj/item/storage/fancy/cigarettes/wypacket,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "bluecorner"
@@ -10122,7 +10122,7 @@
 /area/lv624/lazarus/sleep_male)
 "Dt" = (
 /obj/structure/closet,
-/obj/item/storage/fancy/cigarettes/dromedaryco,
+/obj/item/storage/fancy/cigarettes/wypacket,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "bluecorner"
@@ -17845,7 +17845,7 @@
 /obj/structure/table/woodentable/fancy,
 /obj/item/trash/cigbutt/cigarbutt,
 /obj/machinery/cell_charger,
-/obj/item/storage/fancy/cigarettes/dromedaryco,
+/obj/item/storage/fancy/cigarettes/wypacket,
 /turf/open/floor{
 	icon_state = "wood"
 	},

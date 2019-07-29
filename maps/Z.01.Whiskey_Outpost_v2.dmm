@@ -5497,7 +5497,7 @@
 /area/whiskey_outpost/inside/caves/caverns)
 "nP" = (
 /obj/structure/table/woodentable/poor,
-/obj/item/storage/fancy/cigarettes,
+/obj/item/storage/fancy/cigarettes/wypacket,
 /obj/item/clothing/mask/cigarette,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/mortar_pit)

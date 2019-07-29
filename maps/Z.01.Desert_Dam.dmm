@@ -62261,7 +62261,7 @@
 /area/desert_dam/building/medical/break_room)
 "dON" = (
 /obj/structure/table/almayer,
-/obj/item/storage/fancy/cigarettes,
+/obj/item/storage/fancy/cigarettes/emeraldgreen,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/break_room)

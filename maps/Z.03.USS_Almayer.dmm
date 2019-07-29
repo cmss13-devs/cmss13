@@ -18237,7 +18237,7 @@
 /area/almayer/engineering/port_atmos)
 "aWe" = (
 /obj/structure/table/almayer,
-/obj/item/storage/fancy/cigarettes/dromedaryco,
+/obj/item/storage/fancy/cigarettes/wypacket,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -26005,7 +26005,7 @@
 "bsd" = (
 /obj/item/tool/lighter/zippo,
 /obj/item/ashtray/bronze,
-/obj/item/storage/fancy/cigarettes/dromedaryco,
+/obj/item/storage/fancy/cigarettes/wypacket,
 /obj/structure/table/woodentable,
 /turf/open/floor/wood,
 /area/almayer/command/corporateliason)
@@ -41692,7 +41692,7 @@
 /area/almayer/living/grunt_rnr)
 "cgc" = (
 /obj/structure/table/almayer,
-/obj/item/storage/fancy/cigarettes,
+/obj/item/storage/fancy/cigarettes/emeraldgreen,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
@@ -41730,7 +41730,7 @@
 /area/almayer/living/grunt_rnr)
 "cgf" = (
 /obj/structure/table/almayer,
-/obj/item/storage/fancy/cigarettes,
+/obj/item/storage/fancy/cigarettes/emeraldgreen,
 /obj/item/tool/lighter,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
@@ -42175,7 +42175,7 @@
 /area/almayer/living/grunt_rnr)
 "chd" = (
 /obj/structure/table/almayer,
-/obj/item/storage/fancy/cigarettes,
+/obj/item/storage/fancy/cigarettes/arcturian_ace,
 /obj/item/tool/lighter,
 /turf/open/floor/wood,
 /area/almayer/living/grunt_rnr)

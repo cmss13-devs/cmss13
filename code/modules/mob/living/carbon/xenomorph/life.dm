@@ -211,6 +211,7 @@
 					adjustHalLoss(-1)
 
 		handle_statuses()//natural decrease of stunned, knocked_down, etc...
+		handle_interference()
 
 	return 1
 
@@ -551,9 +552,16 @@ updatehealth()
 	if(stunned)		
 		stunned = max(stunned-1.5,0)
 		
+	return stunned
+
+/mob/living/carbon/Xenomorph/proc/handle_interference()
 	if(interference)
 		interference -= 2
-	return stunned
+	
+	if(observed_xeno && observed_xeno.interference)
+		overwatch(observed_xeno,TRUE)
+
+	return interference
 
 /mob/living/carbon/Xenomorph/handle_dazed()
 	if(dazed)

@@ -56,6 +56,7 @@
 /obj/item/clothing/under/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
 	worn_state = icon_state
+	item_state_slots[WEAR_BODY] = worn_state
 
 /obj/item/clothing/under/update_clothing_icon()
 	if (ismob(src.loc))

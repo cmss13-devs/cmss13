@@ -1,0 +1,8 @@
+author: Vicacrov
+
+delete-after: True
+
+changes: 
+  - bugfix: "Xeno - Fixed burrowers being able to tunnel from pipes."
+  - bugfix: "Xeno - Fixed burrowers being able to place traps over tunnels."
+  - bugfix: "Xeno - Fixed burrowers being able to use corrosive acid while being burrowed."

@@ -718,7 +718,7 @@
 		return
 	var/turf/T = get_turf(X)
 
-	if(!istype(T) || !T.is_weedable() || T.density || locate(/obj/structure/fence) in T)
+	if(!istype(T) || !T.is_weedable() || !can_xeno_build(T))
 		to_chat(X, SPAN_WARNING("You can't do that here."))
 		return
 

@@ -127,7 +127,7 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 					multipler -= 0.10
 				else if(locate(/obj/structure/table/, M.loc))
 					multipler -= 0.20
-				if(M.stat == CONSCIOUS)//If not on anesthetics or not unconsious
+				if(M.stat == CONSCIOUS && !M.paralyzed)//If not on anesthetics or not unconsious
 					multipler -= 0.5
 					switch(M.reagent_pain_modifier)
 						if(PAIN_REDUCTION_MEDIUM to PAIN_REDUCTION_HEAVY)
@@ -156,7 +156,7 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 						S.end_step(user, M, user.zone_selected, tool, affected) //Finish successfully
 
 				else if((tool in user.contents) && user.Adjacent(M)) //Or
-					if(M.stat == CONSCIOUS) //If not on anesthetics or not unconsious, warn player
+					if(M.stat == CONSCIOUS && !M.paralyzed) //If not on anesthetics, muscle relaxants, or not unconscious, warn player
 						if(ishuman(M))
 							var/mob/living/carbon/human/H = M
 							if(!(H.species.flags & NO_PAIN))

@@ -18,7 +18,7 @@
 
 
 	if(act != "help") //you can always use the help emote
-		if(stat == DEAD)
+		if(stat == DEAD || paralyzed)
 			return
 
 		else if(stat && (act != "gasp" || player_caused)) //involuntary gasps can still be emoted when unconscious

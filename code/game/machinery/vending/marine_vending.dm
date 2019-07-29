@@ -468,7 +468,7 @@
 					/obj/item/device/healthanalyzer = 3,
 					/obj/item/bodybag/cryobag = 2)
 
-	contraband = list(/obj/item/reagent_container/hypospray/autoinjector/chloralhydrate =3)
+	contraband = list()
 
 /obj/machinery/vending/MarineMed/antag
 	name = "\improper Medical Supply Vendor"

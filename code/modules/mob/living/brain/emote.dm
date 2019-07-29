@@ -13,7 +13,7 @@
 		return
 	switch(act)
 		if ("me")
-			if(silent)
+			if(use_me)
 				return
 			if(player_caused)
 				if (src.client)

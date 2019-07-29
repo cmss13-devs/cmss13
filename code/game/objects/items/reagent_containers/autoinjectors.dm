@@ -175,3 +175,15 @@
 	..()
 	reagents.add_reagent("inaprovaline", 15)
 	update_icon()
+
+/obj/item/reagent_container/hypospray/autoinjector/suxamorycin
+	name = "suxamorycin autoinjector"
+	desc = "An autoinjector loaded with 10 units of Suxamorycin. An incredibly strong muscle relaxant with dubious side effects, used for surgery."
+	amount_per_transfer_from_this = 10
+	volume = 10
+	icon_state = "anesthetic"
+
+/obj/item/reagent_container/hypospray/autoinjector/suxamorycin/New()
+	..()
+	reagents.add_reagent("suxamorycin", 10)
+	update_icon()

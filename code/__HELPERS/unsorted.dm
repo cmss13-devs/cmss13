@@ -1925,3 +1925,8 @@ var/list/WALLITEMS = list(
 			turfs += T
 	if(turfs.len)
 		return pick(turfs)
+
+/proc/can_xeno_build(var/turf/T)
+	if(T.density || (locate(/obj/structure/fence) in T) || (locate(/obj/structure/tunnel) in T) || !(locate(/obj/effect/alien/weeds) in T))
+		return FALSE
+	return TRUE

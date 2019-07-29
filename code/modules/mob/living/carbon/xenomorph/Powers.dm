@@ -985,7 +985,7 @@
 	if (!check_state())
 		return
 
-	if (used_burrow || tunnel)
+	if (used_burrow || tunnel || is_ventcrawling)
 		return
 
 	var/turf/T = get_turf(src)
@@ -1061,7 +1061,7 @@
 		to_chat(src, SPAN_NOTICE("You must wait some time to do this."))
 		return
 
-	if (!T) //Not sure how we'd end up here, but we did have this happen, so sanity check!
+	if (!T)
 		to_chat(src, SPAN_NOTICE("You can't tunnel there!"))
 		return
 
@@ -2039,7 +2039,7 @@
 		to_chat(src, SPAN_WARNING("\The [O] is too far away."))
 		return
 
-	if(!isturf(loc))
+	if(!isturf(loc) || burrow)
 		to_chat(src, SPAN_WARNING("You can't melt [O] from here!"))
 		return
 

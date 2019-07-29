@@ -241,7 +241,7 @@
 		list("Cash", 5, /obj/item/spacecash/c1000, "white", "$1000 USD, unmarked bills"),
 		
 		list("Cigars", 5, /obj/item/storage/fancy/cigar, "white", "Case of premium cigars, untampered."),
-		list("Cigarettes", 5, /obj/item/storage/fancy/cigarettes/dromedaryco, "white", "Weyland Yutani Gold packet, for the more sophisticated taste."),
+		list("Cigarettes", 5, /obj/item/storage/fancy/cigarettes/wypacket, "white", "Weyland Yutani Gold packet, for the more sophisticated taste."),
 		list("Zippo", 5, /obj/item/tool/lighter/zippo, "white", "A Zippo lighter, for those smoking in style."),
 
 		list("Sake", 5, /obj/item/reagent_container/food/drinks/bottle/sake, "white", "Weyland-Yutani Sake, for a proper business dinner."),

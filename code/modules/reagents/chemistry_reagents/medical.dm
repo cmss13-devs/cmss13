@@ -11,7 +11,6 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	overdose = REAGENTS_OVERDOSE*2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL*2
-
 	scannable = 1
 
 /datum/reagent/inaprovaline/on_mob_life(mob/living/M, alien)
@@ -1029,3 +1028,37 @@
 /datum/reagent/antized/on_mob_life(mob/living/carbon/human/M)
 	M.regenZ = 0
 	. = ..()
+
+// Surgery muscle relaxant & painkiller in one
+// Uses paralyze - cannot move, talk, or emote but can hear; patient is safe to operate on
+/datum/reagent/suxamorycin
+	name = "Suxamorycin"
+	id = "suxamorycin"
+	description = "A fairly new, powerful muscle relaxant, engineered from suxamethonium chloride. The Company takes great pride in its quick effect and short duration, albeit its long-term effects are not tested yet."
+	reagent_state = LIQUID
+	custom_metabolism = 0.5
+	color = "#32a852"
+	scannable = 1
+	overdose = REAGENTS_OVERDOSE/3						// 10u
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2	// 25u
+	data = 0
+
+/datum/reagent/suxamorycin/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	if(!data) data = 1
+	data++
+	switch(data)
+		if(1 to 3)
+			M.druggy = max(M.druggy, 35)
+		if(4 to INFINITY)
+			M.KnockDown(2)	// move this to paralyzed, adjust the number
+			M.druggy = max(M.druggy, 35)
+			M.paralyzed += 2
+			M.confused += 2.2
+
+/datum/reagent/suxamorycin/on_overdose(mob/living/M)
+	M.apply_damage(5, OXY)
+
+/datum/reagent/suxamorycin/on_overdose_critical(mob/living/M)
+	M.apply_damage(10, OXY)

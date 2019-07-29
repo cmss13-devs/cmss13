@@ -418,5 +418,3 @@
 //called when a mob tries to breathe while inside us.
 /atom/movable/proc/handle_internal_lifeform(mob/lifeform_inside_me)
 	. = return_air()
-
-/datum/var/being_sent_to_past

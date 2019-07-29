@@ -113,6 +113,15 @@
 		//Other
 		handle_statuses()
 
+		if(paralyzed)
+			speech_problem_flag = 1
+			KnockDown(1)
+			silent = 1
+			blinded = 1
+			use_me = 0
+			reagent_pain_modifier += PAIN_REDUCTION_FULL
+			paralyzed--
+
 		if(drowsyness)
 			drowsyness--
 			eye_blurry = max(2, eye_blurry)

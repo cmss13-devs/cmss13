@@ -531,6 +531,14 @@
 	required_reagents = list("toxin" = 1, "water" = 4)
 	result_amount = 5
 
+// Muscle relaxant
+/datum/chemical_reaction/suxamorycin
+	name = "Suxamorycin"
+	id = "suxamorycin"
+	result = "suxamorycin"
+	required_reagents = list("chloralhydrate" = 1, "oxygen" = 1, "nitrogen" = 1)
+	result_amount = 3
+
 #undef MAXEXPOWER
 #undef MAXEXSHARDS
 #undef MINRADIUS

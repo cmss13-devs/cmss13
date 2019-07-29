@@ -61,8 +61,6 @@
 
 /obj/item/cartridge/security/New()
 	..()
-//	spawn(5)
-//		radio = new /obj/item/radio/integrated/beepsky(src)
 
 /obj/item/cartridge/detective
 	name = "D.E.T.E.C.T. Cartridge"
@@ -144,8 +142,6 @@
 
 /obj/item/cartridge/hos/New()
 	..()
-//	spawn(5)
-//		radio = new /obj/item/radio/integrated/beepsky(src)
 
 /obj/item/cartridge/ce
 	name = "Power-On DELUXE"
@@ -326,45 +322,6 @@
 			values["security_exists"] = 1
 		else
 			values["security_exists"] = 0
-
-	/*		Security Bot Control (Mode: 46)
-
-	if(mode==46)
-		var/botsData[0]
-		var/beepskyData[0]
-		if(istype(radio,/obj/item/radio/integrated/beepsky))
-			var/obj/item/radio/integrated/beepsky/SC = radio
-			beepskyData["active"] = SC.active
-			if(SC.active && !isnull(SC.botstatus))
-				var/area/loca = SC.botstatus["loca"]
-				var/loca_name = sanitize(loca.name)
-				beepskyData["botstatus"] = list("loca" = loca_name, "mode" = SC.botstatus["mode"])
-			else
-				beepskyData["botstatus"] = list("loca" = null, "mode" = -1)
-			var/botsCount=0
-			if(SC.botlist && SC.botlist.len)
-				for(var/obj/machinery/bot/B in SC.botlist)
-					botsCount++
-					if(B.loc)
-						botsData[++botsData.len] = list("Name" = sanitize(B.name), "Location" = sanitize(B.loc.loc.name), "ref" = "\ref[B]")
-
-			if(!botsData.len)
-				botsData[++botsData.len] = list("Name" = "No bots found", "Location" = "Invalid", "ref"= null)
-
-			beepskyData["bots"] = botsData
-			beepskyData["count"] = botsCount
-
-		else
-			beepskyData["active"] = 0
-			botsData[++botsData.len] = list("Name" = "No bots found", "Location" = "Invalid", "ref"= null)
-			beepskyData["botstatus"] = list("loca" = null, "mode" = null)
-			beepskyData["bots"] = botsData
-			beepskyData["count"] = 0
-
-		values["beepsky"] = beepskyData
-
-
-			MULEBOT Control	(Mode: 48)		*/
 
 	if(mode==48)
 		var/muleData[0]

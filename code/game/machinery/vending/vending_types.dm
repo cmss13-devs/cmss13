@@ -188,16 +188,16 @@
 	product_ads = "For the taste that cools your mood, look for the big blue K!;Refined smokers go for Gold!;Lady Fingers are preferred by women who appreciate a cool smoke.;Lady Fingers are the number one cigarette this side of Gateway!;The tobacco connoisseur prefers Koorlander Gold.;For the cool, filtered feel, Lady Finger Cigarettes provide the smoothest draw of any cigarette on the market.;For the man who knows his place is at the top, Koorlander Gold shows the world that you're the best and no-one can say otherwise.;The Colonial Administration Bureau would like to remind you that smoking kills."
 	products = list(/obj/item/storage/fancy/cigarettes/kpack = 20,
 					/obj/item/storage/fancy/cigarettes/arcturian_ace = 15,
-					/obj/item/storage/fancy/cigarettes = 15,
-					/obj/item/storage/fancy/cigarettes/dromedaryco = 15,
+					/obj/item/storage/fancy/cigarettes/emeraldgreen = 15,
+					/obj/item/storage/fancy/cigarettes/wypacket = 15,
 					/obj/item/storage/fancy/cigarettes/lady_finger = 15,
 					/obj/item/storage/fancy/cigarettes/blackpack = 10,
 					/obj/item/storage/box/matches = 10,
 					/obj/item/tool/lighter/random = 20)
 	prices = list(/obj/item/storage/fancy/cigarettes/kpack = 20,
 					/obj/item/storage/fancy/cigarettes/arcturian_ace = 25,
-					/obj/item/storage/fancy/cigarettes = 40,
-					/obj/item/storage/fancy/cigarettes/dromedaryco = 20,
+					/obj/item/storage/fancy/cigarettes/emeraldgreen = 40,
+					/obj/item/storage/fancy/cigarettes/wypacket = 20,
 					/obj/item/storage/fancy/cigarettes/lady_finger = 30,
 					/obj/item/storage/fancy/cigarettes/blackpack = 50,
 					/obj/item/storage/box/matches = 1,
@@ -216,7 +216,7 @@
 					/obj/item/device/defibrillator = 2,
 					/obj/item/reagent_container/hypospray/autoinjector/quickclot = 5,
 					/obj/item/reagent_container/hypospray/autoinjector/dexP = 5,
-					/obj/item/reagent_container/hypospray/autoinjector/chloralhydrate =3,
+					/obj/item/reagent_container/hypospray/autoinjector/suxamorycin = 10,
 					/obj/item/reagent_container/hypospray/autoinjector/Inaprovaline = 5,
 					/obj/item/reagent_container/hypospray/autoinjector/adrenaline = 2,
 					/obj/item/reagent_container/hypospray/tricordrazine = 2,
@@ -230,6 +230,7 @@
 					/obj/item/reagent_container/glass/bottle/dexalin = 4,
 					/obj/item/reagent_container/glass/bottle/tramadol = 4,
 					/obj/item/reagent_container/glass/bottle/oxycodone = 4,
+					/obj/item/reagent_container/glass/bottle/suxamorycin = 4,
 					/obj/item/storage/pill_bottle/peridaxon = 2,
 					/obj/item/stack/medical/advanced/bruise_pack = 5,
 					/obj/item/stack/medical/advanced/ointment = 5,
@@ -255,6 +256,7 @@
 					/obj/item/reagent_container/glass/bottle/dexalin = 8,
 					/obj/item/reagent_container/glass/bottle/tramadol = 8,
 					/obj/item/reagent_container/glass/bottle/oxycodone = 8,
+					/obj/item/reagent_container/glass/bottle/suxamorycin = 4,
 					/obj/item/reagent_container/syringe = 20
 					)
 

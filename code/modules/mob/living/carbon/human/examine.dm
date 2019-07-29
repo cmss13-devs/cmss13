@@ -168,6 +168,8 @@
 		msg += SPAN_WARNING("[t_He] [t_is]n't responding to anything around [t_him] and seems to be asleep.\n")
 		if((stat == 2 || src.health < config.health_threshold_crit) && distance <= 3)
 			msg += SPAN_WARNING("[t_He] does not appear to be breathing.\n")
+		if(src.paralyzed > 1 && distance <= 3)
+			msg += SPAN_WARNING("[t_He] seems to be completely still.\n")
 		if(ishuman(user) && !user.stat && Adjacent(user))
 			user.visible_message("<b>[user]</b> checks [src]'s pulse.", "You check [src]'s pulse.", null, 4)
 		spawn(15)
@@ -392,9 +394,6 @@
 
 	for(var/implant in get_visible_implants(0))
 		msg += SPAN_WARNING("<b>[t_He] has \a [implant] sticking out of [t_his] flesh!\n")
-	if(digitalcamo)
-		msg += "[t_He] [t_is] repulsively uncanny!\n"
-
 
 	if(hasHUD(user,"security"))
 		var/perpname = "wot"

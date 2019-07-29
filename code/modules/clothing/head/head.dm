@@ -117,10 +117,10 @@
 	var/flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_STORE_GARB
 	var/obj/item/storage/internal/pockets
 	var/list/allowed_hat_items = list(
-						/obj/item/storage/fancy/cigarettes,
+						/obj/item/storage/fancy/cigarettes/emeraldgreen,
 						/obj/item/storage/fancy/cigarettes/kpack,
 						/obj/item/storage/fancy/cigarettes/lucky_strikes,
-						/obj/item/storage/fancy/cigarettes/dromedaryco,
+						/obj/item/storage/fancy/cigarettes/wypacket,
 						/obj/item/storage/fancy/cigarettes/lady_finger,
 						/obj/item/storage/fancy/cigarettes/blackpack,
 						/obj/item/storage/fancy/cigarettes/arcturian_ace,

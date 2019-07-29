@@ -85,7 +85,7 @@
 
 /obj/item/storage/fancy/crayons
 	name = "box of crayons"
-	desc = "A box of crayons for all your rune drawing needs."
+	desc = "A box of every flavor of crayon."
 	icon = 'icons/obj/items/crayons.dmi'
 	icon_state = "crayonbox"
 	w_class = SIZE_SMALL
@@ -124,19 +124,15 @@
 //CIG PACK//
 ////////////
 /obj/item/storage/fancy/cigarettes
-	name = "\improper Emerald Green Packet"
-	desc = "They remind you of a gross, tar-filled version of Ireland...so regular Ireland."
 	icon = 'icons/obj/items/cigarettes.dmi'
-	icon_state = "cigpacket"
-	item_state = "cigpacket"
 	w_class = SIZE_TINY
 	throwforce = 2
 	flags_equip_slot = SLOT_WAIST
 	storage_slots = 20
 	can_hold = list(
+		/obj/item/clothing/mask/cigarette,
 		/obj/item/clothing/mask/cigarette/ucigarette,
 		/obj/item/clothing/mask/cigarette/bcigarette,
-		/obj/item/clothing/mask/cigarette,
 		/obj/item/tool/lighter
 	)
 	icon_type = "cigarette"
@@ -173,7 +169,13 @@
 	else
 		..()
 
-/obj/item/storage/fancy/cigarettes/dromedaryco
+/obj/item/storage/fancy/cigarettes/emeraldgreen
+	name = "\improper Emerald Green Packet"
+	desc = "They remind you of a gross, tar-filled version of Ireland...so regular Ireland."
+	icon_state = "cigpacket"
+	item_state = "cigpacket"
+
+/obj/item/storage/fancy/cigarettes/wypacket
 	name = "\improper Weyland Yutani Gold packet"
 	desc = "Building better worlds, and rolling better cigarettes. These fancy cigarettes are Weyland Yutani's entry into the market. Comes backed by a fierce legal team."
 	icon_state = "wypacket"

@@ -216,7 +216,7 @@
 					/obj/item/device/defibrillator = 2,
 					/obj/item/reagent_container/hypospray/autoinjector/quickclot = 5,
 					/obj/item/reagent_container/hypospray/autoinjector/dexP = 5,
-					/obj/item/reagent_container/hypospray/autoinjector/chloralhydrate =3,
+					/obj/item/reagent_container/hypospray/autoinjector/suxamorycin = 10,
 					/obj/item/reagent_container/hypospray/autoinjector/Inaprovaline = 5,
 					/obj/item/reagent_container/hypospray/autoinjector/adrenaline = 2,
 					/obj/item/reagent_container/hypospray/tricordrazine = 2,
@@ -230,6 +230,7 @@
 					/obj/item/reagent_container/glass/bottle/dexalin = 4,
 					/obj/item/reagent_container/glass/bottle/tramadol = 4,
 					/obj/item/reagent_container/glass/bottle/oxycodone = 4,
+					/obj/item/reagent_container/glass/bottle/suxamorycin = 4,
 					/obj/item/storage/pill_bottle/peridaxon = 2,
 					/obj/item/stack/medical/advanced/bruise_pack = 5,
 					/obj/item/stack/medical/advanced/ointment = 5,
@@ -255,6 +256,7 @@
 					/obj/item/reagent_container/glass/bottle/dexalin = 8,
 					/obj/item/reagent_container/glass/bottle/tramadol = 8,
 					/obj/item/reagent_container/glass/bottle/oxycodone = 8,
+					/obj/item/reagent_container/glass/bottle/suxamorycin = 4,
 					/obj/item/reagent_container/syringe = 20
 					)
 

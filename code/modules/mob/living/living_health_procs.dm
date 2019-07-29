@@ -171,6 +171,9 @@
 	eye_blurry = 0
 	ear_deaf = 0
 	ear_damage = 0
+	paralyzed = 0
+	confused = 0
+	druggy = 0
 	heal_overall_damage(getBruteLoss(), getFireLoss())
 
 /mob/living/proc/regenerate_all_icons()

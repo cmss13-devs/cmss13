@@ -324,8 +324,8 @@
 
 	total_health = 150 //more health than regular humans
 
-	brute_mod = 0.75
-	burn_mod = 1.1
+	brute_mod = 0.5
+	burn_mod = 1
 
 	cold_level_1 = -1
 	cold_level_2 = -1
@@ -404,8 +404,8 @@ var/toggled_sec_HUD = 0
 	slowdown = 1.3 //Slower than later synths
 	total_health = 200 //But more durable
 	insulated = 1
-	brute_mod = 0.75
-	burn_mod = 1.1
+	brute_mod = 0.5
+	burn_mod = 1
 
 	cold_level_1 = -1
 	cold_level_2 = -1

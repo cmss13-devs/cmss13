@@ -1449,33 +1449,34 @@
 	if(!isYautja(user)) return
 	if(!hasorgans(user)) return
 
+	var/mob/living/carbon/human/yautja/Y = user
 	var/pain_factor = 0 //Preds don't normally feel pain. This is an exception.
 
-	to_chat(user, SPAN_NOTICE("You begin using your knife to rip shrapnel out. Hold still. This will probably hurt..."))
+	to_chat(Y, SPAN_NOTICE("You begin using your knife to rip shrapnel out. Hold still. This will probably hurt..."))
 
-	if(do_after(user,50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+	if(do_after(Y,50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		var/obj/item/shard/shrapnel/S
-		for(var/datum/limb/O in user.limbs)
+		for(var/datum/limb/O in Y.limbs)
 			for(S in O.implants)
-				to_chat(user, SPAN_NOTICE("You dig shrapnel out of your [O.name]."))
-				S.loc = user.loc
+				to_chat(Y, SPAN_NOTICE("You dig shrapnel out of your [O.display_name]."))
+				S.loc = Y.loc
 				O.implants -= S
 				pain_factor++
 				O.take_damage(rand(2,5), 0, 0)
 				O.status |= LIMB_BLEEDING
 
-		for(var/datum/internal_organ/I in user.internal_organs) //Now go in and clean out the internal ones.
+		for(var/datum/internal_organ/I in Y.internal_organs) //Now go in and clean out the internal ones.
 			for(var/obj/Q in I)
-				Q.loc = user.loc
+				Q.loc = Y.loc
 				I.take_damage(rand(1,2), 0, 0)
 				pain_factor += 3 //OWWW! No internal bleeding though.
 
 		switch(pain_factor)
-			if(0) to_chat(user, SPAN_WARNING("There was nothing to dig out!"))
-			if(1 to 4) to_chat(user, SPAN_WARNING("That hurt like hell!!"))
-			if(5 to INFINITY) user.emote("roar")
+			if(0) to_chat(Y, SPAN_WARNING("There was nothing to dig out!"))
+			if(1 to 4) to_chat(Y, SPAN_WARNING("That hurt like hell!!"))
+			if(5 to INFINITY) Y.emote("roar")
 
-	else to_chat(user, SPAN_WARNING("You were interrupted!"))
+	else to_chat(Y, SPAN_WARNING("You were interrupted!"))
 
 /obj/item/weapon/yautja_knife/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)

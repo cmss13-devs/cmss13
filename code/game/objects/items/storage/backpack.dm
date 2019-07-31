@@ -460,20 +460,20 @@
 				return
 		else if(istype(W, /obj/item/weapon/gun))
 			var/obj/item/weapon/gun/G = W
-			if(G.under && istype(G.under, /obj/item/attachable/attached_gun/flamer))
-				var/obj/item/attachable/attached_gun/flamer/F = G.under
-				if(F.current_rounds < F.max_rounds)
-					var/to_transfer = F.max_rounds - F.current_rounds
-					if(to_transfer > reagents.total_volume)
-						to_transfer = reagents.total_volume
-					reagents.remove_reagent("fuel", to_transfer)
-					F.current_rounds += to_transfer
-					playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
-					to_chat(user, SPAN_NOTICE("You refill [F] with Fuel."))
-				else
-					to_chat(user, SPAN_WARNING("[F] is full."))
-			else
-				to_chat(user, SPAN_WARNING("Nothing to refill."))
+			for(var/slot in G.attachments)
+				if(istype(G.attachments[slot], /obj/item/attachable/attached_gun/flamer))
+					var/obj/item/attachable/attached_gun/flamer/F = G.attachments[slot]
+					if(F.current_rounds < F.max_rounds)
+						var/to_transfer = F.max_rounds - F.current_rounds
+						if(to_transfer > reagents.total_volume)
+							to_transfer = reagents.total_volume
+						reagents.remove_reagent("fuel", to_transfer)
+						F.current_rounds += to_transfer
+						playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
+						to_chat(user, SPAN_NOTICE("You refill [F] with Fuel."))
+					else
+						to_chat(user, SPAN_WARNING("[F] is full."))
+					return
 	. = ..()
 
 /obj/item/storage/backpack/marine/engineerpack/afterattack(obj/O as obj, mob/user as mob, proximity)

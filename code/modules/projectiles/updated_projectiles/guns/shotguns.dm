@@ -27,6 +27,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	replace_tube(current_mag.current_rounds) //Populate the chamber.
 
 /obj/item/weapon/gun/shotgun/set_gun_config_values()
+	..()
 	fire_delay = config.mhigh_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
@@ -178,6 +179,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
 
 /obj/item/weapon/gun/shotgun/merc/set_gun_config_values()
+	..()
 	fire_delay = config.high_fire_delay*2
 	burst_amount = config.low_burst_value
 	burst_delay = config.mlow_fire_delay
@@ -229,6 +231,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
 
 /obj/item/weapon/gun/shotgun/combat/set_gun_config_values()
+	..()
 	fire_delay = config.mhigh_fire_delay*2
 	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
@@ -269,7 +272,6 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/magnetic_harness)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
-	burst_amount = 2
 	burst_delay = 0 //So doubleshotty can doubleshot
 	has_open_icon = TRUE
 
@@ -278,6 +280,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 21,"rail_x" = 15, "rail_y" = 22, "under_x" = 21, "under_y" = 16, "stock_x" = 21, "stock_y" = 16)
 
 /obj/item/weapon/gun/shotgun/double/set_gun_config_values()
+	..()
+	burst_amount = config.low_burst_value
 	fire_delay = config.mlow_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
@@ -369,6 +373,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 11, "rail_y" = 22, "under_x" = 18, "under_y" = 16, "stock_x" = 18, "stock_y" = 16)
 
 /obj/item/weapon/gun/shotgun/double/sawn/set_gun_config_values()
+	..()
 	fire_delay = config.mlow_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
@@ -386,7 +391,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	desc = "A limited production Kerchner MOU53 triple break action classic. Respectable damage output at medium ranges, while the ARMAT M37 is the king of CQC, the Kerchner MOU53 is what hits the broadside of that barn. This specific model cannot safely fire buckshot shells."
 	icon_state = "mou"
 	item_state = "mou"
-	burst_amount = 1
 	var/max_rounds = 3
 	var/current_rounds = 0
 	fire_sound = 'sound/weapons/gun_mou53.ogg'
@@ -413,6 +417,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 11, "rail_y" = 22, "under_x" = 17, "under_y" = 15, "stock_x" = 10, "stock_y" = 9) //Weird stock values, make sure any new stock matches the old sprite placement in the .dmi
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_config_values()
+	..()
+	burst_amount = config.min_burst_value
 	fire_delay = config.low_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
@@ -469,6 +475,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 10, "rail_y" = 21, "under_x" = 20, "under_y" = 14, "stock_x" = 20, "stock_y" = 14)
 
 /obj/item/weapon/gun/shotgun/pump/set_gun_config_values()
+	..()
+	burst_amount = config.min_burst_value
 	fire_delay = config.med_fire_delay * 5
 	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
@@ -568,6 +576,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 23, "under_x" = 19, "under_y" = 17, "stock_x" = 19, "stock_y" = 17)
 
 /obj/item/weapon/gun/shotgun/pump/cmb/set_gun_config_values()
+	..()
 	fire_delay = config.med_fire_delay*4
 	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult

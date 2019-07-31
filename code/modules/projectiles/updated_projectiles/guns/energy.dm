@@ -28,6 +28,7 @@
 	cell = new /obj/item/cell/high(src)
 
 /obj/item/weapon/gun/energy/taser/set_gun_config_values()
+	..()
 	fire_delay = config.high_fire_delay * 2
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
@@ -118,6 +119,7 @@
 
 
 /obj/item/weapon/gun/energy/plasmarifle/set_gun_config_values()
+	..()
 	fire_delay = config.high_fire_delay*2
 	accuracy_mult = config.base_hit_accuracy_mult + config.max_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.max_hit_accuracy_mult
@@ -228,6 +230,7 @@
 
 
 /obj/item/weapon/gun/energy/plasmapistol/set_gun_config_values()
+	..()
 	fire_delay = config.med_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult
@@ -312,6 +315,7 @@
 
 
 /obj/item/weapon/gun/energy/plasma_caster/set_gun_config_values()
+	..()
 	fire_delay = config.high_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.high_fire_delay

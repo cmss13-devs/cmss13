@@ -272,12 +272,10 @@ AMMO
 
 
 /datum/supply_packs/ammo_extended
-	name = "extended magazines crate (M41A x2, M4A3 x2, M39 x2, L42 x2)"
+	name = "extended magazines crate (M41A x2, M39 x2, L42 x2)"
 	contains = list(
 					/obj/item/ammo_magazine/rifle/extended,
 					/obj/item/ammo_magazine/rifle/extended,
-					/obj/item/ammo_magazine/pistol/extended,
-					/obj/item/ammo_magazine/pistol/extended,
 					/obj/item/ammo_magazine/smg/m39/extended,
 					/obj/item/ammo_magazine/smg/m39/extended,
 					/obj/item/ammo_magazine/rifle/l42mk1/extended,
@@ -317,24 +315,6 @@ AMMO
 	cost = RO_PRICE_CHEAP
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "L42-MK1 extended ammo crate"
-	group = "Ammo"
-
-
-/datum/supply_packs/ammo_extended_m4a3
-	name = "extended M4A3 magazines crate (x8)"
-	contains = list(
-					/obj/item/ammo_magazine/pistol/extended,
-					/obj/item/ammo_magazine/pistol/extended,
-					/obj/item/ammo_magazine/pistol/extended,
-					/obj/item/ammo_magazine/pistol/extended,
-					/obj/item/ammo_magazine/pistol/extended,
-					/obj/item/ammo_magazine/pistol/extended,
-					/obj/item/ammo_magazine/pistol/extended,
-					/obj/item/ammo_magazine/pistol/extended
-					)
-	cost = RO_PRICE_CHEAP
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "M4A3 extended ammo crate"
 	group = "Ammo"
 
 
@@ -399,12 +379,10 @@ AMMO
 
 
 /datum/supply_packs/ammo_ap
-	name = "armor piercing magazines crate (M41A x2, M4A3 x2, M39 x2, M39 LE x1, L42 x2)"
+	name = "armor piercing magazines crate (M41A x2, M39 x2, M39 LE x1, L42 x2)"
 	contains = list(
 					/obj/item/ammo_magazine/rifle/ap,
 					/obj/item/ammo_magazine/rifle/ap,
-					/obj/item/ammo_magazine/pistol/ap,
-					/obj/item/ammo_magazine/pistol/ap,
 					/obj/item/ammo_magazine/smg/m39/ap,
 					/obj/item/ammo_magazine/smg/m39/ap,
 					/obj/item/ammo_magazine/smg/m39/le,
@@ -642,7 +620,7 @@ AMMO
 					/obj/item/ammo_magazine/pistol/automatic,
 					/obj/item/ammo_magazine/pistol/holdout,
 					/obj/item/ammo_magazine/pistol/highpower,
-					/obj/item/ammo_magazine/pistol/vp70,
+					/obj/item/ammo_magazine/pistol/mod88,
 					/obj/item/ammo_magazine/pistol/vp78,
 					/obj/item/ammo_magazine/smg/mp7,
 					/obj/item/ammo_magazine/smg/skorpion,
@@ -679,9 +657,6 @@ AMMO
 					/obj/item/ammo_magazine/pistol,
 					/obj/item/ammo_magazine/pistol,
 					/obj/item/ammo_magazine/pistol,
-					/obj/item/ammo_magazine/pistol/extended,
-					/obj/item/ammo_magazine/pistol/ap,
-					/obj/item/ammo_magazine/pistol/hp,
 					/obj/item/ammo_magazine/pistol/incendiary,
 					/obj/item/ammo_magazine/pistol/m1911,
 					/obj/item/ammo_magazine/smg/m39,

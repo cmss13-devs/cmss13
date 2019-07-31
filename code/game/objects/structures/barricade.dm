@@ -135,7 +135,7 @@
 		if(can_wire)
 			user.visible_message(SPAN_NOTICE("[user] starts setting up [W.name] on [src]."),
 			SPAN_NOTICE("You start setting up [W.name] on [src]."))
-			if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) && can_wire)
+			if(do_after(user, 20, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) && can_wire)
 				playsound(src.loc, 'sound/effects/barbed_wire_movement.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] sets up [W.name] on [src]."),
 				SPAN_NOTICE("You set up [W.name] on [src]."))
@@ -506,7 +506,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
 			SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+			if(do_after(user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src))
 				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 				SPAN_NOTICE("You repair [src]."))
 				health += 150
@@ -644,7 +644,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
 			SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+			if(do_after(user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src))
 				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 				SPAN_NOTICE("You repair [src]."))
 				health += maxhealth*0.4
@@ -1085,7 +1085,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts repairing damage to [src]."), \
 			SPAN_NOTICE("You start repairing damage to [src]."))
-		if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+		if(do_after(user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src))
 			user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."), \
 				SPAN_NOTICE("You repair [src]."))
 			var/amount = SB.amount

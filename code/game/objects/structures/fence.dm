@@ -121,7 +121,7 @@
 		user.visible_message(SPAN_NOTICE("[user] starts cutting away the remains of [src] with [W]."),
 		SPAN_NOTICE("You start cutting away the remains of [src] with [W]."))
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-		if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(do_after(user, 50, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			new /obj/item/stack/rods(loc)
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] cuts away the remains of [src] with [W]."),

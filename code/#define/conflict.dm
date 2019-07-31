@@ -40,6 +40,7 @@
 #define GUN_WIELDED_FIRING_ONLY	8192
 #define GUN_HAS_FULL_AUTO		16384
 #define GUN_FULL_AUTO_ON		32768
+#define GUN_ONE_HAND_WIELDED    65536 //removes one-hand accuracy penalty
 
 //Gun attachable related flags.
 #define ATTACH_REMOVABLE	1

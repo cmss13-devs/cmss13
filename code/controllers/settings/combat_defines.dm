@@ -91,6 +91,12 @@ var/accuracy_mult_unwielded
 	var/hmed_hit_accuracy_mult = 0.24
 	var/high_hit_accuracy_mult = 0.37
 	var/max_hit_accuracy_mult = 0.50
+
+	var/no_movement_accuracy_penalty_mult = 0
+	var/low_movement_accuracy_penalty_mult = 1
+	var/mlow_movement_accuracy_penalty_mult = 2
+	var/med_movement_accuracy_penalty_mult = 3
+	var/high_movement_accuracy_penalty_mult = 5
 /*
 ////DAMAGE////
 For humans, scale of 100 to -100 (200 to 0), Aliens, well that's variable. You'll need to check the caste datums.
@@ -262,6 +268,15 @@ We don't really use the higher values, but they're there.
 	var/datum/combat_configuration/xeno_explosive
 	var/datum/combat_configuration/xeno_explosive_small
 	var/datum/combat_configuration/xeno_fire
+
+/*
+////SLOWDOWN MODS////
+*/
+	var/slowdown_none = 0
+	var/slowdown_low = 0.10
+	var/slowdown_med = 0.25
+	var/slowdown_high = 0.40
+
 
 /datum/configuration/proc/load_combat_config() //Translate of our config vars into datums for ease of usage within the armor equations.
 	marine_melee = new /datum/combat_configuration/marine/melee()

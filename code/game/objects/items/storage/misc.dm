@@ -53,3 +53,21 @@
 /obj/item/storage/donut_box/empty
 	icon_state = "donutbox_o"
 	startswith = 0
+
+/*
+ * Mateba Case
+ */
+
+/obj/item/storage/mateba_case
+	icon = 'icons/obj/items/storage/storage.dmi'
+	icon_state = "matebacase"
+	name = "mateba customization kit case"
+	desc = "A wooden case used for storing the tools and parts needed to customize a mateba revolver. Comes with three barrel lengths and the necessary key to swap them out."
+	storage_slots = 4
+	can_hold = list(/obj/item/attachable/mateba, /obj/item/weapon/gun/revolver/mateba, /obj/item/weapon/mateba_key)
+
+/obj/item/storage/mateba_case/New()
+	..()
+	new /obj/item/attachable/mateba/short(src)
+	new /obj/item/attachable/mateba/long(src)
+	new /obj/item/weapon/mateba_key(src)

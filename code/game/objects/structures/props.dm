@@ -129,8 +129,10 @@
 
 	else if(istype(W, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/G = W
-		if(istype(G.under, /obj/item/attachable/attached_gun/flamer))
-			L = 1
+		for(var/slot in G.attachments)
+			if(istype(G.attachments[slot], /obj/item/attachable/attached_gun/flamer))
+				L = 1
+				break
 	else if(istype(W, /obj/item/tool/surgery/cautery))
 		L = 1
 	else if(istype(W, /obj/item/clothing/mask/cigarette))

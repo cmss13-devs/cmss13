@@ -67,6 +67,7 @@
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 14, "rail_y" = 22, "under_x" = 24, "under_y" = 16, "stock_x" = 24, "stock_y" = 16)
 
 /obj/item/weapon/gun/smg/m39/set_gun_config_values()
+	..()
 	fire_delay = config.low_fire_delay
 	burst_delay = config.min_fire_delay
 	burst_amount = config.high_burst_value
@@ -119,6 +120,7 @@
 							)
 
 /obj/item/weapon/gun/smg/m39/elite/set_gun_config_values()
+	..()
 	fire_delay = config.low_fire_delay
 	burst_delay = config.min_fire_delay
 	burst_amount = config.med_burst_value // 3 round burst.
@@ -176,6 +178,7 @@
 
 
 /obj/item/weapon/gun/smg/mp5/set_gun_config_values()
+	..()
 	fire_delay = config.mlow_fire_delay
 	burst_delay = config.mlow_fire_delay
 	burst_amount = config.high_burst_value
@@ -227,6 +230,7 @@
 
 
 /obj/item/weapon/gun/smg/mp7/set_gun_config_values()
+	..()
 	fire_delay = config.low_fire_delay
 	burst_delay = config.mlow_fire_delay
 	burst_amount = config.high_burst_value
@@ -270,6 +274,7 @@
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 18,"rail_x" = 16, "rail_y" = 21, "under_x" = 23, "under_y" = 15, "stock_x" = 23, "stock_y" = 15)
 
 /obj/item/weapon/gun/smg/skorpion/set_gun_config_values()
+	..()
 	fire_delay = config.mlow_fire_delay
 	burst_delay = config.mlow_fire_delay
 	burst_amount = config.med_burst_value
@@ -306,6 +311,7 @@
 
 
 /obj/item/weapon/gun/smg/ppsh/set_gun_config_values()
+	..()
 	fire_delay = config.low_fire_delay
 	burst_delay = config.min_fire_delay
 	burst_amount = config.med_burst_value
@@ -352,6 +358,7 @@
 
 
 /obj/item/weapon/gun/smg/uzi/set_gun_config_values()
+	..()
 	fire_delay = config.low_fire_delay
 	burst_delay = config.min_fire_delay
 	burst_amount = config.high_burst_value
@@ -405,6 +412,7 @@
 	update_icon()
 
 /obj/item/weapon/gun/smg/fp9000/set_gun_config_values()
+	..()
 	fire_delay = config.min_fire_delay
 	burst_delay = config.mlow_fire_delay
 	burst_amount = config.med_burst_value

@@ -244,12 +244,13 @@
 //================================================
 */
 
+// Used by M4A3, M4A3 Custom and B92FS
 /datum/ammo/bullet/pistol
 	name = "pistol bullet"
 
 /datum/ammo/bullet/pistol/New()
 	..()
-	damage = config.low_hit_damage
+	damage = config.med_hit_damage
 	accuracy = config.low_hit_accuracy
 
 /datum/ammo/bullet/pistol/tiny
@@ -267,15 +268,18 @@
 	accuracy = -config.med_hit_accuracy
 	shrapnel_chance = config.high_shrapnel_chance
 
+// Used by M4A3 AP, Highpower and mod88
 /datum/ammo/bullet/pistol/ap
 	name = "armor-piercing pistol bullet"
 
 /datum/ammo/bullet/pistol/ap/New()
 	..()
+	damage = config.hlmed_hit_damage
 	accuracy = config.low_hit_accuracy
 	penetration= config.med_armor_penetration
 	shrapnel_chance = config.med_shrapnel_chance
 
+// Used by M1911, Deagle and KT-42
 /datum/ammo/bullet/pistol/heavy
 	name = "heavy pistol bullet"
 
@@ -283,8 +287,8 @@
 	..()
 	accuracy = -config.med_hit_accuracy
 	accuracy_var_low = config.med_proj_variance
-	damage = config.lmed_hit_damage
-	penetration= config.min_armor_penetration
+	damage = config.hmed_hit_damage
+	penetration= config.mlow_armor_penetration
 	shrapnel_chance = config.med_shrapnel_chance
 
 /datum/ammo/bullet/pistol/incendiary
@@ -298,6 +302,7 @@
 	accuracy = config.med_hit_accuracy
 	damage = config.mlow_hit_damage
 
+// Used by VP78 and Auto 9
 /datum/ammo/bullet/pistol/squash
 	name = "squash-head pistol bullet"
 	debilitate = list(0,0,0,0,0,0,0,2)
@@ -305,7 +310,7 @@
 /datum/ammo/bullet/pistol/squash/New()
 	..()
 	accuracy = config.med_hit_accuracy
-	damage = config.med_hit_damage
+	damage = config.high_hit_damage
 	penetration= config.low_armor_penetration
 	shrapnel_chance = config.med_shrapnel_chance
 
@@ -336,7 +341,7 @@
 /datum/ammo/bullet/pistol/smart/New()
 	..()
 	accuracy = config.max_hit_accuracy
-	damage = config.low_hit_damage
+	damage = config.hlow_hit_damage
 	penetration= config.hlow_armor_penetration
 	shrapnel_chance = config.med_shrapnel_chance
 
@@ -352,19 +357,12 @@
 
 /datum/ammo/bullet/revolver/New()
 	..()
-	accuracy = config.med_hit_accuracy
-	damage = config.med_hit_damage
-	penetration = config.low_armor_penetration
-
-/datum/ammo/bullet/revolver/small
-	name = "small revolver bullet"
-
-/datum/ammo/bullet/revolver/small/New()
-	..()
-	damage = config.lmed_hit_damage
+	damage = config.high_hit_damage
+	penetration = config.min_armor_penetration
+	accuracy = config.min_hit_accuracy
 
 /datum/ammo/bullet/revolver/marksman
-	name = "slimline revolver bullet"
+	name = "marksman revolver bullet"
 	shrapnel_chance = 0
 	damage_falloff = 0
 
@@ -378,9 +376,19 @@
 
 /datum/ammo/bullet/revolver/heavy/New()
 	..()
-	damage = config.high_hit_damage
-	penetration = config.min_armor_penetration
-	accuracy = config.min_hit_accuracy
+	damage = config.med_hit_damage
+	penetration = config.low_armor_penetration
+	accuracy = config.med_hit_accuracy
+
+/datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/M, obj/item/projectile/P)
+	knockback(M, P, 4)
+
+/datum/ammo/bullet/revolver/small
+	name = "small revolver bullet"
+
+/datum/ammo/bullet/revolver/small/New()
+	..()
+	damage = config.lmed_hit_damage
 
 /datum/ammo/bullet/revolver/highimpact
 	name = "high-impact revolver bullet"

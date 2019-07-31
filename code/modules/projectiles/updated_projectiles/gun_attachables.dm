@@ -35,7 +35,7 @@ Defined in conflicts.dm of the #defines folder.
 	matter = list("metal" = 2000)
 	w_class = SIZE_SMALL
 	force = 1.0
-	var/slot = null //"muzzle", "rail", "under", "stock"
+	var/slot = null //"muzzle", "rail", "under", "stock", "special"
 
 	/*
 	Anything that isn't used as the gun fires should be a flat number, never a percentange. It screws with the calculations,
@@ -90,7 +90,7 @@ Defined in conflicts.dm of the #defines folder.
 
 
 
-/obj/item/attachable/proc/Attach(obj/item/weapon/gun/G)
+/obj/item/attachable/proc/Attach(var/obj/item/weapon/gun/G)
 	if(!istype(G)) return //Guns only
 
 	/*
@@ -101,41 +101,17 @@ Defined in conflicts.dm of the #defines folder.
 	removed on a gun. can_be_removed is instead used when they
 	try to strip the gun.
 	*/
-	switch(slot)
-		if("rail")
-			if(G.rail) G.rail.Detach(G)
-			G.rail = src
-		if("muzzle")
-			if(G.muzzle) G.muzzle.Detach(G)
-			G.muzzle = src
-		if("under")
-			if(G.under) G.under.Detach(G)
-			G.under = src
-		if("stock")
-			if(G.stock) G.stock.Detach(G)
-			G.stock = src
+	if(G.attachments[slot])
+		var/obj/item/attachable/A = G.attachments[slot]
+		A.Detach(G)
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/M = src.loc
 		M.drop_held_item(src)
 	forceMove(G)
 
-	G.accuracy_mult		+= accuracy_mod
-	G.accuracy_mult_unwielded += accuracy_unwielded_mod
-	G.damage_mult		+= damage_mod
-	G.damage_falloff_mult += damage_falloff_mod
-	G.w_class 			+= size_mod
-	G.scatter			+= scatter_mod
-	G.scatter_unwielded += scatter_unwielded_mod
-	G.fire_delay 		+= delay_mod
-	G.burst_amount 		+= burst_mod
-	G.recoil 			+= recoil_mod
-	G.recoil_unwielded	+= recoil_unwielded_mod
-	G.force 			+= melee_mod
-	G.aim_slowdown		+= aim_speed_mod
-	G.wield_delay		+= wield_delay_mod
-	G.burst_scatter_mult += burst_scatter_mod
-	G.movement_acc_penalty_mult += movement_acc_penalty_mod
+	G.attachments[slot] = src
+	G.recalculate_attachment_bonuses()
 
 	if(G.burst_amount <= 1)
 		G.flags_gun_features &= ~GUN_BURST_ON //Remove burst if they can no longer use it.
@@ -155,45 +131,14 @@ Defined in conflicts.dm of the #defines folder.
 
 	G.check_iff()
 
-
-
-/obj/item/attachable/proc/Detach(obj/item/weapon/gun/G)
+/obj/item/attachable/proc/Detach(var/obj/item/weapon/gun/G)
 	if(!istype(G)) return //Guns only
-
 
 	if(flags_attach_features & ATTACH_ACTIVATION)
 		activate_attachment(G, null, TRUE)
 
-	switch(slot) //I am removing checks for the attachment being src.
-		if("rail") 		G.rail = null//If it's being called on by this proc, it has to be that attachment. ~N
-		if("muzzle") 	G.muzzle = null
-		if("under")		G.under = null
-		if("stock")		G.stock = null
-
-
-
-	G.accuracy_mult		-= accuracy_mod
-	G.accuracy_mult_unwielded -= accuracy_unwielded_mod
-	G.damage_mult		-= damage_mod
-	G.damage_falloff_mult -= damage_falloff_mod
-	G.w_class 			-= size_mod
-	G.scatter			-= scatter_mod
-	G.scatter_unwielded -= scatter_unwielded_mod
-	G.fire_delay 		-= delay_mod
-	G.burst_amount 		-= burst_mod
-	G.recoil 			-= recoil_mod
-	G.recoil_unwielded	-= recoil_unwielded_mod
-	G.force 			-= melee_mod
-	G.aim_slowdown		-= aim_speed_mod
-	G.wield_delay		-= wield_delay_mod
-	G.burst_scatter_mult -= burst_scatter_mod
-	G.movement_acc_penalty_mult -= movement_acc_penalty_mod
-	G.update_force_list()
-
-	if(silence_mod) //Built in silencers always come as an attach, so the gun can't be silenced right off the bat.
-		G.flags_gun_features &= ~GUN_SILENCED
-		G.muzzle_flash = initial(G.muzzle_flash)
-		G.fire_sound = initial(G.fire_sound)
+	G.attachments[slot] = null
+	G.recalculate_attachment_bonuses()
 
 	for(var/X in G.actions)
 		var/datum/action/DA = X
@@ -202,9 +147,7 @@ Defined in conflicts.dm of the #defines folder.
 			break
 
 	loc = get_turf(G)
-
 	G.check_iff()
-
 
 /obj/item/attachable/ui_action_click(mob/living/user, obj/item/weapon/gun/G)
 	if(G == user.get_active_hand())
@@ -212,9 +155,6 @@ Defined in conflicts.dm of the #defines folder.
 			return
 	else
 		to_chat(user, SPAN_WARNING("[G] must be in our active hand to do this."))
-
-
-
 
 /obj/item/attachable/proc/activate_attachment(atom/target, mob/user) //This is for activating stuff like flamethrowers, or switching weapon modes.
 	return
@@ -386,10 +326,66 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "muzzle"
 	flags_attach_features = NOFLAGS
 
+// Mateba barrels
 
+/obj/item/attachable/mateba
+	name = "standard mateba barrel"
+	icon_state = "mateba_medium"
+	desc = "A standard mateba barrel. Offers a balance between accuracy and firerate."
+	slot = "special"
+	flags_attach_features = NOFLAGS
 
+/obj/item/attachable/mateba/New()
+	..()
+	accuracy_mod = config.low_hit_accuracy_mult
 
+/obj/item/attachable/mateba/Attach(obj/item/weapon/gun/G)
+	..()
+	G.attachable_offset["muzzle_x"] = 27
 
+/obj/item/attachable/mateba/Detach(obj/item/weapon/gun/G)
+	..()
+	G.attachable_offset["muzzle_x"] = 20
+
+/obj/item/attachable/mateba/dark
+	icon_state = "mateba_medium_a"
+
+/obj/item/attachable/mateba/long
+	name = "marksman mateba barrel"
+	icon_state = "mateba_long"
+	desc = "A marksman mateba barrel. Offers a greater accuracy at the cost of firerate."
+	flags_attach_features = NOFLAGS
+
+/obj/item/attachable/mateba/long/New()
+	..()
+	accuracy_mod = config.med_hit_accuracy_mult
+	scatter_mod = -config.med_scatter_value
+	delay_mod = config.med_fire_delay
+
+/obj/item/attachable/mateba/long/Attach(obj/item/weapon/gun/G)
+	..()
+	G.attachable_offset["muzzle_x"] = 31
+
+/obj/item/attachable/mateba/long/dark
+	icon_state = "mateba_long_a"
+
+/obj/item/attachable/mateba/short
+	name = "snubnose mateba barrel"
+	icon_state = "mateba_short"
+	desc = "A snubnosed mateba barrel. Offers a fast firerate at the cost of accuracy."
+
+/obj/item/attachable/mateba/short/New()
+	..()
+	accuracy_mod = -config.med_hit_accuracy_mult
+	scatter_mod = config.med_scatter_value
+	delay_mod = -config.med_fire_delay
+
+/obj/item/attachable/mateba/short/Attach(obj/item/weapon/gun/G)
+	..()
+	G.attachable_offset["muzzle_x"] = 24
+
+/obj/item/attachable/mateba/short/dark
+	icon_state = "mateba_short_a"
 
 ///////////// Rail attachments ////////////////////////
 
@@ -404,7 +400,7 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	accuracy_mod = config.med_hit_accuracy_mult
 	accuracy_unwielded_mod = config.min_hit_accuracy_mult
-	movement_acc_penalty_mod = 1
+	movement_acc_penalty_mod = config.low_movement_accuracy_penalty_mult
 
 /obj/item/attachable/reflex
 	name = "S6 reflex sight"
@@ -419,7 +415,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_unwielded_mod = config.min_hit_accuracy_mult
 	scatter_mod = -config.min_scatter_value
 	burst_scatter_mod = -1
-	movement_acc_penalty_mod = 1
+	movement_acc_penalty_mod = config.low_movement_accuracy_penalty_mult
 
 
 /obj/item/attachable/flashlight
@@ -564,7 +560,7 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	delay_mod = config.min_fire_delay
 	accuracy_mod = -config.min_hit_accuracy_mult
-	movement_acc_penalty_mod = 2
+	movement_acc_penalty_mod = config.mlow_movement_accuracy_penalty_mult
 	accuracy_unwielded_mod = 0
 
 	accuracy_scoped_buff = config.high_hit_accuracy_mult + config.min_hit_accuracy_mult //to compensate initial debuff
@@ -651,7 +647,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/scope/mini_iff/New()
 	..()
-	movement_acc_penalty_mod = 0
+	movement_acc_penalty_mod = config.no_movement_accuracy_penalty_mult
 	accuracy_unwielded_mod = 0
 
 	accuracy_scoped_buff = config.min_hit_accuracy_mult
@@ -705,13 +701,13 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = config.med_hit_accuracy_mult
 	recoil_mod = -config.low_recoil_value
 	scatter_mod = -config.low_scatter_value
-	movement_acc_penalty_mod = -1
+	movement_acc_penalty_mod = -config.low_movement_accuracy_penalty_mult
 	//it makes stuff much worse when one handed
 	accuracy_unwielded_mod = -config.low_hit_accuracy_mult
 	recoil_unwielded_mod = config.low_recoil_value
 	scatter_unwielded_mod = config.low_scatter_value
 	//but at the same time you are slow when 2 handed
-	aim_speed_mod = 0.25
+	aim_speed_mod = config.slowdown_med
 
 
 	matter = list("wood" = 2000)
@@ -742,7 +738,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = config.min_hit_accuracy_mult
 	recoil_mod = -config.min_recoil_value
 	scatter_mod = -config.min_scatter_value
-	movement_acc_penalty_mod = -1
+	movement_acc_penalty_mod = -config.low_movement_accuracy_penalty_mult
 	accuracy_unwielded_mod = config.min_hit_accuracy_mult
 	recoil_unwielded_mod = -config.min_recoil_value
 	scatter_unwielded_mod = -config.min_scatter_value
@@ -761,7 +757,7 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_mod = -config.min_recoil_value
 	scatter_mod = -config.min_scatter_value
 	delay_mod = config.med_fire_delay
-	movement_acc_penalty_mod = -1
+	movement_acc_penalty_mod = -config.low_movement_accuracy_penalty_mult
 	accuracy_unwielded_mod = config.min_hit_accuracy_mult
 	recoil_unwielded_mod = -config.min_recoil_value
 	scatter_unwielded_mod = -config.min_scatter_value
@@ -785,13 +781,13 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = config.med_hit_accuracy_mult
 	recoil_mod = -config.low_recoil_value
 	scatter_mod = -config.low_scatter_value
-	movement_acc_penalty_mod = -1
+	movement_acc_penalty_mod = -config.low_movement_accuracy_penalty_mult
 	//it makes stuff much worse when one handed
 	accuracy_unwielded_mod = -config.low_hit_accuracy_mult
 	recoil_unwielded_mod = config.low_recoil_value
 	scatter_unwielded_mod = config.low_scatter_value
 	//but at the same time you are slow when 2 handed
-	aim_speed_mod = 0.25
+	aim_speed_mod = config.slowdown_med
 
 /obj/item/attachable/stock/carbine
 	name = "\improper L42 synthetic stock"
@@ -810,7 +806,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = config.med_hit_accuracy_mult
 	recoil_mod = -config.low_recoil_value
 	scatter_mod = -config.low_scatter_value
-	movement_acc_penalty_mod = -1
+	movement_acc_penalty_mod = -config.low_movement_accuracy_penalty_mult
 	//it makes stuff much worse when one handed
 	accuracy_unwielded_mod = -config.low_hit_accuracy_mult
 	recoil_unwielded_mod = config.low_recoil_value
@@ -842,8 +838,8 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_mod = -config.med_recoil_value
 	scatter_mod = -config.med_scatter_value
 	delay_mod = 0
-	movement_acc_penalty_mod = -1
-	aim_speed_mod = 0.10
+	movement_acc_penalty_mod = -config.low_movement_accuracy_penalty_mult
+	aim_speed_mod = config.slowdown_low
 
 
 /obj/item/attachable/stock/smg/collapsible
@@ -869,44 +865,47 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = -config.low_scatter_value
 	wield_delay_mod = WIELD_DELAY_FAST
 	delay_mod = 0
-	movement_acc_penalty_mod = -1
+	movement_acc_penalty_mod = -config.low_movement_accuracy_penalty_mult
 	//it makes stuff much worse when one handed
 	accuracy_unwielded_mod = -config.low_hit_accuracy_mult
 	recoil_unwielded_mod = config.low_recoil_value
 	scatter_unwielded_mod = config.low_scatter_value
 	//but at the same time you are slow when 2 handed
-	aim_speed_mod = 0.25
+	aim_speed_mod = config.slowdown_med
 
 	collapsed_stock_scatter = config.mlow_scatter_value
 
 /obj/item/attachable/stock/smg/collapsible/Detach(obj/item/weapon/gun/G)
 	if(!activated)
 		apply_on_weapon(G, TRUE)
+		G.w_class = 5 // Another sad hardcode
 	..()
 
 /obj/item/attachable/stock/smg/collapsible/proc/apply_on_weapon(obj/item/weapon/gun/G, new_active)
 	var/multiplier = -1
+	var/add_scatter = collapsed_stock_scatter
 	if(new_active)
 		multiplier = 1
-	G.accuracy_mult += accuracy_mod * multiplier
-	G.recoil += recoil_mod * multiplier
-	G.scatter += scatter_mod * multiplier
-	G.wield_delay += wield_delay_mod * multiplier
-	G.movement_acc_penalty_mult = movement_acc_penalty_mod * multiplier
+		add_scatter = -collapsed_stock_scatter
+	accuracy_mod *= multiplier
+	recoil_mod *= multiplier
+	scatter_mod *= multiplier
+	wield_delay_mod *= multiplier
+	movement_acc_penalty_mod *= multiplier
 	//it makes stuff much worse when one handed
-	G.accuracy_mult_unwielded += accuracy_unwielded_mod * multiplier
-	G.recoil_unwielded += recoil_unwielded_mod * multiplier
-	G.scatter_unwielded += scatter_unwielded_mod * multiplier
+	accuracy_unwielded_mod *= multiplier
+	recoil_unwielded_mod *= multiplier
+	scatter_unwielded_mod = (scatter_unwielded_mod * multiplier) + add_scatter
 	//but at the same time you are slow when 2 handed
-	G.aim_slowdown += aim_speed_mod * multiplier
+	aim_speed_mod *= multiplier
+
+	G.recalculate_attachment_bonuses()
 
 	//additionally increases scatter when collapsed
 	if(new_active)
-		G.scatter_unwielded -= collapsed_stock_scatter
 		icon_state = "smgstockc"
 		attach_icon = "smgstockc_a"
 	else
-		G.scatter_unwielded += collapsed_stock_scatter
 		icon_state = "smgstockcc"
 		attach_icon = "smgstockcc_a"
 
@@ -926,8 +925,12 @@ Defined in conflicts.dm of the #defines folder.
 		return 1
 
 	if(activated)
+		size_mod = 1
+		G.recalculate_attachment_bonuses()
 		to_chat(user, SPAN_NOTICE("You extend [src]."))
 	else
+		size_mod = 0
+		G.recalculate_attachment_bonuses()
 		to_chat(user, SPAN_NOTICE("You collapse [src]."))
 
 /obj/item/attachable/stock/smg/brace
@@ -958,11 +961,17 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "stock"
 	melee_mod = -5
 	size_mod = 1
-	size_mod = 2
 	icon_state = "44stock"
 	pixel_shift_x = 35
 	pixel_shift_y = 19
 	wield_delay_mod = WIELD_DELAY_FAST
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
+	attachment_action_type = /datum/action/item_action/toggle
+	var/folded = FALSE
+	var/list/allowed_hat_items = list(
+					/obj/item/ammo_magazine/revolver,
+					/obj/item/ammo_magazine/revolver/marksman,
+					/obj/item/ammo_magazine/revolver/heavy)
 
 /obj/item/attachable/stock/revolver/New()
 	..()
@@ -975,9 +984,73 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = config.low_recoil_value
 	scatter_unwielded_mod = config.low_scatter_value
 	//but at the same time you are slow when 2 handed
-	aim_speed_mod = 0.25
+	aim_speed_mod = config.slowdown_med
 
 
+/obj/item/attachable/stock/revolver/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
+	var/obj/item/weapon/gun/revolver/m44/R = G
+	if(!istype(R))
+		return 0
+
+	if(!user)
+		return 1
+
+	if(user.action_busy)
+		return
+
+	if(R.flags_item & WIELDED)
+		if(folded)
+			to_chat(user, SPAN_NOTICE("You need a free hand to unfold [src]."))
+		else
+			to_chat(user, SPAN_NOTICE("You need a free hand to fold [src]."))
+		return 0
+
+	if(!do_after(user, 15, INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC, src, INTERRUPT_NONE))
+		return
+
+	playsound(user, activation_sound, 15, 1)
+
+	if(folded)
+		to_chat(user, SPAN_NOTICE("You unfold [src]."))
+		R.flags_equip_slot &= ~SLOT_WAIST
+		R.folded = FALSE
+		icon_state = "44stock"
+		size_mod = 1
+		G.recalculate_attachment_bonuses()
+	else
+		to_chat(user, SPAN_NOTICE("You fold [src]."))
+		R.flags_equip_slot |= SLOT_WAIST	// Allow to be worn on the belt when folded
+		R.folded = TRUE		// We can't shoot anymore, its folded
+		icon_state = "44stock_folded"
+		size_mod = 0
+		G.recalculate_attachment_bonuses()
+	folded = !folded
+	G.update_overlays(src, "stock")
+
+// If it is activated/folded when we attach it, re-apply the things
+/obj/item/attachable/stock/revolver/Attach(var/obj/item/weapon/gun/G)
+	..()
+	var/obj/item/weapon/gun/revolver/m44/R = G
+	if(!istype(R))
+		return 0
+
+	if(folded)
+		R.flags_equip_slot |= SLOT_WAIST
+		R.folded = TRUE
+	else
+		R.flags_equip_slot &= ~SLOT_WAIST //Can't wear it on the belt slot with stock on when we attach it first time.
+
+// When taking it off we want to undo everything not statwise
+/obj/item/attachable/stock/revolver/Detach(var/obj/item/weapon/gun/G)
+	..()
+	var/obj/item/weapon/gun/revolver/m44/R = G
+	if(!istype(R))
+		return 0
+	
+	if(folded)
+		R.folded = FALSE
+	else
+		R.flags_equip_slot |= SLOT_WAIST
 
 
 ////////////// Underbarrel Attachments ////////////////////////////////////
@@ -1243,7 +1316,7 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_mod = -config.min_recoil_value
 	scatter_mod = -config.min_scatter_value
 	burst_scatter_mod = -2
-	movement_acc_penalty_mod = 1
+	movement_acc_penalty_mod = config.low_movement_accuracy_penalty_mult
 	accuracy_unwielded_mod = -config.low_hit_accuracy_mult
 	scatter_unwielded_mod = config.min_scatter_value
 
@@ -1280,7 +1353,7 @@ Defined in conflicts.dm of the #defines folder.
 	delay_mod = config.mlow_fire_delay
 	scatter_mod = -config.min_scatter_value
 	burst_scatter_mod = -2
-	movement_acc_penalty_mod = -3
+	movement_acc_penalty_mod = -config.med_movement_accuracy_penalty_mult
 	scatter_unwielded_mod = -config.med_scatter_value
 	accuracy_unwielded_mod = config.low_hit_accuracy_mult
 
@@ -1297,7 +1370,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/lasersight/New()
 	..()
 	accuracy_mod = config.min_hit_accuracy_mult
-	movement_acc_penalty_mod = -1
+	movement_acc_penalty_mod = -config.low_movement_accuracy_penalty_mult
 	scatter_mod = -config.min_scatter_value
 	scatter_unwielded_mod = -config.mlow_scatter_value
 	accuracy_unwielded_mod = config.min_hit_accuracy_mult
@@ -1333,16 +1406,17 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/bipod/proc/undeploy_bipod(obj/item/weapon/gun/G)
 	bipod_deployed = FALSE
-	G.aim_slowdown -= SLOWDOWN_ADS_SCOPE
-	G.wield_delay -= WIELD_DELAY_FAST
-	G.accuracy_mult -= config.hmed_hit_accuracy_mult
-	G.burst_scatter_mult += config.low_scatter_value
+	aim_speed_mod -= SLOWDOWN_ADS_SCOPE
+	wield_delay_mod -= WIELD_DELAY_FAST
+	accuracy_mod -= config.hmed_hit_accuracy_mult
+	burst_scatter_mod += config.low_scatter_value
 	if(istype(G,/obj/item/weapon/gun/rifle/lmg))
-		G.fire_delay += config.min_fire_delay
+		delay_mod += config.min_fire_delay
 	else if(istype(G,/obj/item/weapon/gun/rifle/sniper/M42A))
-		G.fire_delay += config.high_fire_delay + config.min_fire_delay + config.mlow_fire_delay
-	else 
-		G.fire_delay += config.min_fire_delay + config.mlow_fire_delay
+		delay_mod += config.high_fire_delay + config.min_fire_delay + config.mlow_fire_delay
+	else
+		delay_mod += config.min_fire_delay + config.mlow_fire_delay
+	G.recalculate_attachment_bonuses()
 
 /obj/item/attachable/bipod/activate_attachment(obj/item/weapon/gun/G,mob/living/user, turn_off)
 	if(turn_off)
@@ -1360,16 +1434,17 @@ Defined in conflicts.dm of the #defines folder.
 		if(user)
 			if(bipod_deployed)
 				to_chat(user, SPAN_NOTICE("You deploy [src][support ? " on [support]" : ""]."))
-				G.aim_slowdown += SLOWDOWN_ADS_SCOPE
-				G.wield_delay += WIELD_DELAY_FAST
-				G.accuracy_mult += config.hmed_hit_accuracy_mult
-				G.burst_scatter_mult -= config.low_scatter_value
+				aim_speed_mod += SLOWDOWN_ADS_SCOPE
+				wield_delay_mod += WIELD_DELAY_FAST
+				accuracy_mod += config.hmed_hit_accuracy_mult
+				burst_scatter_mod -= config.low_scatter_value
 				if(istype(G,/obj/item/weapon/gun/rifle/lmg))
-					G.fire_delay -= config.min_fire_delay
+					delay_mod -= config.min_fire_delay
 				else if(istype(G,/obj/item/weapon/gun/rifle/sniper/M42A))
-					G.fire_delay -= config.high_fire_delay + config.min_fire_delay + config.mlow_fire_delay
-				else 
-					G.fire_delay -= config.min_fire_delay + config.mlow_fire_delay
+					delay_mod -= config.high_fire_delay + config.min_fire_delay + config.mlow_fire_delay
+				else
+					delay_mod -= config.min_fire_delay + config.mlow_fire_delay
+				G.recalculate_attachment_bonuses()
 
 				if(!bipod_movement)
 					bipod_movement = new /datum/event_handler/bipod_movement()

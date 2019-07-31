@@ -27,7 +27,7 @@
 						/obj/item/attachable/quickfire,
 						/obj/item/attachable/burstfire_assembly)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK //For easy reference.
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED //For easy reference.
 
 /obj/item/weapon/gun/pistol/New()
 		..()
@@ -45,6 +45,17 @@
 	icon_state = "m4a3"
 	item_state = "m4a3"
 	current_mag = /obj/item/ammo_magazine/pistol
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	attachable_allowed = list(
+						/obj/item/attachable/suppressor,
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/compensator,
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/extended_barrel,
+						/obj/item/attachable/heavy_barrel,
+						/obj/item/attachable/burstfire_assembly)
 
 /obj/item/weapon/gun/pistol/m4a3/New()
 		select_gamemode_skin(/obj/item/weapon/gun/pistol/m4a3)
@@ -52,10 +63,11 @@
 		attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
 
 /obj/item/weapon/gun/pistol/m4a3/set_gun_config_values()
-	fire_delay = config.low_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
+	..()
+	fire_delay = config.min_fire_delay
+	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
-	scatter = config.low_scatter_value
+	scatter = config.med_scatter_value
 	burst_scatter_mult = config.med_scatter_value
 	scatter_unwielded = config.med_scatter_value
 	damage_mult = config.base_hit_damage_mult
@@ -72,9 +84,11 @@
 		select_gamemode_skin(/obj/item/weapon/gun/pistol/m4a3/custom)
 
 /obj/item/weapon/gun/pistol/m4a3/custom/set_gun_config_values()
-	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
+	..()
+	fire_delay = config.min_fire_delay
+	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
-	scatter = config.med_scatter_value
+	scatter = config.low_scatter_value
 	burst_scatter_mult = config.med_scatter_value
 	scatter_unwielded = config.med_scatter_value
 	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
@@ -91,13 +105,18 @@
 	origin_tech = "combat=4;materials=3"
 	fire_sound = 'sound/weapons/gun_glock.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/m1911
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
 /obj/item/weapon/gun/pistol/m1911/New()
 		..()
 		attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
 
 /obj/item/weapon/gun/pistol/m1911/set_gun_config_values()
+	..()
+	accuracy_mult = config.base_hit_accuracy_mult
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult
+	scatter = config.med_scatter_value
+	burst_scatter_mult = config.med_scatter_value
+	scatter_unwielded = config.med_scatter_value
 	damage_mult = config.base_hit_damage_mult
 
 //-------------------------------------------------------
@@ -116,6 +135,7 @@
 		attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
 
 /obj/item/weapon/gun/pistol/b92fs/set_gun_config_values()
+	..()
 	fire_delay = config.low_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
@@ -148,8 +168,6 @@
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/compensator)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
-
 /obj/item/weapon/gun/pistol/heavy/New()
 		..() //Pick some variant sprites.
 		var/skin = pick("","g_","c_")
@@ -159,6 +177,7 @@
 
 
 /obj/item/weapon/gun/pistol/heavy/set_gun_config_values()
+	..()
 	fire_delay = config.max_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
@@ -191,7 +210,6 @@
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/burstfire_assembly)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
 /obj/item/weapon/gun/pistol/c99/New()//Making the gun have an invisible silencer since it's supposed to have one.
 		..()
@@ -205,6 +223,7 @@
 		S.icon_state = initial(S.icon_state)
 
 /obj/item/weapon/gun/pistol/c99/set_gun_config_values()
+	..()
 	fire_delay = config.high_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.max_hit_accuracy_mult
@@ -218,13 +237,11 @@
 /obj/item/weapon/gun/pistol/c99/russian
 	icon_state = "pk9r"
 	item_state = "pk9r"
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
 /obj/item/weapon/gun/pistol/c99/upp
 	desc = "An updated variant of an old eastern design, dating back to from the 20th century. Commonly found among mercenary companies due to its reliability, but also issued to UPP armed forces. Features an integrated silencer, and chambered in the razor small .22 rounds. This one is usually loaded with the more common .22 hollowpoint rounds and appears to be a UPP model."
 	icon_state = "pk9u"
 	item_state = "pk9u"
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
 /obj/item/weapon/gun/pistol/c99/upp/tranq
 	desc = "An updated variant of an old eastern design, dating back to from the 20th century. Commonly found among mercenary companies due to its reliability, but also issued to UPP armed forces. Features an integrated silencer, and chambered in the razor small .22 rounds. This one is usually loaded with special low-recoil .22 dart rounds, which act as a dangerous tranquilizer."
@@ -241,13 +258,13 @@
 	item_state = "kt42"
 	fire_sound = 'sound/weapons/gun_kt42.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/automatic
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
 /obj/item/weapon/gun/pistol/kt42/New()
 		..()
 		attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 20,"rail_x" = 8, "rail_y" = 22, "under_x" = 22, "under_y" = 17, "stock_x" = 22, "stock_y" = 17)
 
 /obj/item/weapon/gun/pistol/kt42/set_gun_config_values()
+	..()
 	fire_delay = config.high_fire_delay*2
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
@@ -280,13 +297,13 @@
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/burstfire_assembly)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
 /obj/item/weapon/gun/pistol/holdout/New()
 		..()
 		attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 20,"rail_x" = 12, "rail_y" = 22, "under_x" = 17, "under_y" = 15, "stock_x" = 22, "stock_y" = 17)
 
 /obj/item/weapon/gun/pistol/holdout/set_gun_config_values()
+	..()
 	fire_delay = config.mlow_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
@@ -306,13 +323,13 @@
 	fire_sound = 'sound/weapons/gun_kt42.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/highpower
 	force = 10
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
 /obj/item/weapon/gun/pistol/highpower/New()
 		..()
 		attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 20,"rail_x" = 8, "rail_y" = 22, "under_x" = 16, "under_y" = 15, "stock_x" = 16, "stock_y" = 15)
 
 /obj/item/weapon/gun/pistol/highpower/set_gun_config_values()
+	..()
 	fire_delay = config.mhigh_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
@@ -326,23 +343,27 @@
 
 
 //-------------------------------------------------------
-//VP70 //Not actually the VP70, but it's more or less the same thing. VP70 was the standard sidearm in Aliens though.
+//mod88 based off VP70 - Counterpart to M1911, offers burst and capacity ine exchange of low accuracy and damage.
 
-/obj/item/weapon/gun/pistol/vp70
+/obj/item/weapon/gun/pistol/mod88
 	name = "\improper 88 Mod 4 combat pistol"
 	desc = "A powerful sidearm issued mainly to Weyland Yutani response teams, but issued to the USCM in small numbers, based on the original VP70 more than a century ago. Fires 9mm armor piercing rounds and is capable of 3-round burst."
 	icon_state = "88m4"
 	item_state = "88m4"
 	origin_tech = "combat=4;materials=3"
-	fire_sound = 'sound/weapons/vp70.ogg'
-	current_mag = /obj/item/ammo_magazine/pistol/vp70
+	fire_sound = 'sound/weapons/gun_88m4_v7.ogg'
+	reload_sound = 'sound/weapons/gun_88m4_reload.ogg'
+	unload_sound = 'sound/weapons/gun_88m4_unload.ogg'
+	current_mag = /obj/item/ammo_magazine/pistol/mod88
 	force = 8
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 
-/obj/item/weapon/gun/pistol/vp70/New()
+/obj/item/weapon/gun/pistol/mod88/New()
 		..()
-		attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 20,"rail_x" = 11, "rail_y" = 22, "under_x" = 21, "under_y" = 16, "stock_x" = 21, "stock_y" = 16)
+		attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 20,"rail_x" = 12, "rail_y" = 22, "under_x" = 18, "under_y" = 15, "stock_x" = 18, "stock_y" = 15)
 
-/obj/item/weapon/gun/pistol/vp70/set_gun_config_values()
+/obj/item/weapon/gun/pistol/mod88/set_gun_config_values()
+	..()
 	fire_delay = config.mhigh_fire_delay
 	burst_amount = config.med_burst_value
 	burst_delay = config.mlow_fire_delay
@@ -351,10 +372,10 @@
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.med_scatter_value
 	scatter_unwielded = config.med_scatter_value
-	damage_mult = config.base_hit_damage_mult + config.hmed_hit_damage_mult
+	damage_mult = config.base_hit_damage_mult
 
 //-------------------------------------------------------
-//VP78
+//VP78 - the only pistol viable as a primary.
 
 /obj/item/weapon/gun/pistol/vp78
 	name = "\improper VP78 pistol"
@@ -362,17 +383,21 @@
 	icon_state = "vp78"
 	item_state = "vp78"
 	origin_tech = "combat=4;materials=4"
-	fire_sound = 'sound/weapons/gun_pistol_large.ogg'
+	fire_sound = 'sound/weapons/gun_vp78_v2.ogg'
+	reload_sound = 'sound/weapons/gun_vp78_reload.ogg'
+	unload_sound = 'sound/weapons/gun_vp78_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/vp78
 	force = 8
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 
 /obj/item/weapon/gun/pistol/vp78/New()
 		..()
-		attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 21,"rail_x" = 9, "rail_y" = 24, "under_x" = 23, "under_y" = 13, "stock_x" = 23, "stock_y" = 13)
+		attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 22, "under_x" = 18, "under_y" = 14, "stock_x" = 18, "stock_y" = 14)
 
 /obj/item/weapon/gun/pistol/vp78/set_gun_config_values()
+	..()
 	fire_delay = config.max_fire_delay
-	burst_amount = config.med_burst_value
+	burst_amount = config.low_burst_value
 	burst_delay = config.mlow_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
@@ -401,6 +426,7 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	force = 15
 
 /obj/item/weapon/gun/pistol/auto9/set_gun_config_values()
+	..()
 	fire_delay = config.med_fire_delay
 	burst_amount = config.med_burst_value
 	burst_delay = config.min_fire_delay
@@ -432,7 +458,8 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	gun_skill_category = GUN_SKILL_PISTOLS
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WY_RESTRICTED
 
-/obj/item/weapon/gun/pistol/holdout/set_gun_config_values()
+/obj/item/weapon/gun/pistol/chimp/set_gun_config_values()
+	..()
 	fire_delay = config.low_fire_delay
 	burst_delay = config.mlow_fire_delay
 	burst_amount = config.low_burst_value
@@ -455,13 +482,14 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	force = 8
 	current_mag = /obj/item/ammo_magazine/pistol/smart
 	fire_sound = 'sound/weapons/gun_glock.ogg'
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 
 /obj/item/weapon/gun/pistol/smart/New()
 	..()
-	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 19,"rail_x" = 16, "rail_y" = 20, "under_x" = 21, "under_y" = 16, "stock_x" = 21, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 13, "rail_y" = 22, "under_x" = 24, "under_y" = 17, "stock_x" = 24, "stock_y" = 17)
 
 /obj/item/weapon/gun/pistol/smart/set_gun_config_values()
+	..()
 	fire_delay = config.low_fire_delay
 	burst_amount = config.med_burst_value
 	burst_delay = config.mlow_fire_delay
@@ -473,3 +501,5 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.min_recoil_value
 	recoil_unwielded = config.low_recoil_value
+
+//-------------------------------------------------------

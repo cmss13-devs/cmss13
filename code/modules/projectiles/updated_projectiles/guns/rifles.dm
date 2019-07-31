@@ -17,6 +17,7 @@
 	if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
 
 /obj/item/weapon/gun/rifle/set_gun_config_values()
+	..()
 	fire_delay = config.mhigh_fire_delay
 	burst_amount = config.med_burst_value
 	burst_delay = config.mlow_fire_delay
@@ -75,6 +76,7 @@
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/m41a/set_gun_config_values()
+	..()
 	fire_delay = config.med_fire_delay
 	burst_amount = config.med_burst_value
 	burst_delay = config.mlow_fire_delay
@@ -109,6 +111,7 @@
 
 
 /obj/item/weapon/gun/rifle/m41a/elite/set_gun_config_values()
+	..()
 	fire_delay = config.med_fire_delay
 	burst_amount = config.med_burst_value
 	burst_delay = config.mlow_fire_delay
@@ -149,6 +152,7 @@
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/m41aMK1/set_gun_config_values()
+	..()
 	fire_delay = config.mhigh_fire_delay
 	burst_amount = config.high_burst_value
 	burst_delay = config.mlow_fire_delay
@@ -256,6 +260,7 @@
 	return
 
 /obj/item/weapon/gun/rifle/m46c/set_gun_config_values()
+	..()
 	fire_delay = config.mhigh_fire_delay
 	burst_amount = config.mhigh_burst_value
 	burst_delay = config.mlow_fire_delay
@@ -332,6 +337,7 @@
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 13, "rail_y" = 19, "under_x" = 24, "under_y" = 15, "stock_x" = 24, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/mar40/set_gun_config_values()
+	..()
 	fire_delay = config.mhigh_fire_delay
 	burst_amount = config.high_burst_value
 	burst_delay = config.mlow_fire_delay
@@ -391,6 +397,7 @@
 								)
 
 /obj/item/weapon/gun/rifle/mar40/carbine/set_gun_config_values()
+	..()
 	fire_delay = config.low_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
@@ -460,6 +467,7 @@
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 22, "under_x" = 24, "under_y" = 14, "stock_x" = 27, "stock_y" = 12)
 
 /obj/item/weapon/gun/rifle/m16/set_gun_config_values()
+	..()
 	fire_delay = config.mhigh_fire_delay
 	burst_amount = config.med_burst_value
 	burst_delay = config.mlow_fire_delay
@@ -508,6 +516,7 @@
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 22, "under_x" = 24, "under_y" = 14, "stock_x" = 24, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/m16/set_gun_config_values()
+	..()
 	fire_delay = config.mlow_fire_delay
 	burst_amount = config.high_burst_value
 	burst_delay = config.mlow_fire_delay
@@ -555,6 +564,7 @@
 		attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 23, "under_x" = 23, "under_y" = 16, "stock_x" = 24, "stock_y" = 12)
 
 /obj/item/weapon/gun/rifle/lmg/set_gun_config_values()
+	..()
 	fire_delay = config.mlow_fire_delay
 	burst_amount = config.high_burst_value
 	burst_delay = config.low_fire_delay
@@ -614,6 +624,7 @@
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 18, "rail_y" = 23, "under_x" = 20, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/type71/set_gun_config_values()
+	..()
 	fire_delay = config.high_fire_delay
 	burst_amount = config.low_burst_value
 	burst_delay = config.mlow_fire_delay
@@ -697,6 +708,7 @@
 
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/set_gun_config_values()
+	..()
 	fire_delay = config.high_fire_delay
 	burst_amount = config.low_burst_value
 	burst_delay = config.mlow_fire_delay
@@ -747,6 +759,7 @@
 	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 18, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 25, "stock_y" = 9)
 
 /obj/item/weapon/gun/rifle/l42mk1/set_gun_config_values()
+	..()
 	fire_delay = config.high_fire_delay
 	burst_amount = 0
 	burst_delay = 1

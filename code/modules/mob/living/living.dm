@@ -446,7 +446,7 @@
 		var/fduration = 60
 		if(user.mind.cm_skills.medical > 0)
 			fduration = 30
-		if(!do_after(user, fduration, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) || !user.Adjacent(src))
+		if(!do_after(user, fduration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY) || !user.Adjacent(src))
 			return
 	if(isXeno(src))
 		to_chat(user, SPAN_WARNING("[src] can't make sense of this creature."))

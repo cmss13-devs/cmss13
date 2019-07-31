@@ -535,9 +535,9 @@
 						H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(H), WEAR_EYES)
 
 						H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/dirty(H.wear_suit), WEAR_J_STORE)
-						H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/vp70(H), WEAR_WAIST)
-						H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp70(H), WEAR_L_STORE)
-						H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp70(H), WEAR_R_STORE)
+						H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/mod88(H), WEAR_WAIST)
+						H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/mod88(H), WEAR_L_STORE)
+						H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/mod88(H), WEAR_R_STORE)
 						H.mind.assigned_role = "PMC Gunner"
 
 					if(12 to 15) //Sniper option. Uncommon, but incredibly deadly at range.
@@ -548,8 +548,8 @@
 						H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC(H), WEAR_FEET)
 						H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(H), WEAR_HANDS)
 
-						H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/vp70(H), WEAR_WAIST)
-						H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp70(H), WEAR_R_STORE)
+						H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/mod88(H), WEAR_WAIST)
+						H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/mod88(H), WEAR_R_STORE)
 						H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/sniper/elite(H), WEAR_J_STORE)
 						H.equip_to_slot_or_del(new /obj/item/ammo_magazine/sniper/elite(H), WEAR_L_STORE)
 						H.mind.assigned_role = "PMC Sharpshooter"*/
@@ -617,8 +617,8 @@
 				/*	else
 						H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(H), WEAR_HANDS)
 						if(prob(60)) //Chance of secondary for combat troops.
-							H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/vp70(H), WEAR_WAIST)
-							H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp70(H), WEAR_L_STORE)
+							H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/mod88(H), WEAR_WAIST)
+							H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/mod88(H), WEAR_L_STORE)
 						else if (prob(35))
 							H.equip_to_slot_or_del(new /obj/item/storage/belt/knifepouch(H), WEAR_WAIST)
 						H.mind.assigned_role = "PMC Standard"
@@ -1253,7 +1253,7 @@
 	supply_manifest=list(
 		/obj/item/ammo_magazine/rifle/extended = 3,
 		/obj/item/ammo_magazine/rifle/ap = 3,
-		/obj/item/ammo_magazine/pistol/vp70 = 5,
+		/obj/item/ammo_magazine/pistol/mod88 = 5,
 		/obj/item/ammo_magazine/revolver/mateba = 5
 		)
 	generate_supply_crate(supply_spawn,supply_manifest,"ammo crate (assorted)", "A crate containing all sorts of ammunition, surely something useful to be scavenged inside.")
@@ -1373,7 +1373,6 @@
 
 	supply_manifest=list(
 		/obj/item/ammo_magazine/pistol = 8,
-		/obj/item/ammo_magazine/pistol/extended = 4,
 		/obj/item/ammo_magazine/revolver = 5,
 		/obj/item/ammo_magazine/revolver/marksman = 3
 		)

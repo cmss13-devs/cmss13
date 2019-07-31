@@ -20,6 +20,7 @@
 	if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
 
 /obj/item/weapon/gun/minigun/set_gun_config_values()
+	..()
 	fire_delay = config.mlow_fire_delay
 	burst_amount = config.max_burst_value
 	burst_delay = config.min_fire_delay
@@ -59,6 +60,7 @@
 	update_icon()
 
 /obj/item/weapon/gun/m60/set_gun_config_values()
+	..()
 	fire_delay = config.low_fire_delay
 	burst_amount = 5
 	burst_delay = config.min_fire_delay
@@ -125,6 +127,7 @@
 	verbs -= /obj/item/weapon/gun/verb/use_unique_action
 
 /obj/item/weapon/gun/launcher/spike/set_gun_config_values()
+	..()
 	fire_delay = config.high_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult

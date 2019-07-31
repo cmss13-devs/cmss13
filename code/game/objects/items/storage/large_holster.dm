@@ -104,10 +104,8 @@
 	icon = 'icons/obj/clothing/belts.dmi'
 	base_icon = "m39_holster"
 	flags_equip_slot = SLOT_WAIST
+	max_w_class = 4
 	can_hold = list(
-		/obj/item/weapon/gun/smg/m39
-		)
-	bypass_w_limit = list(
 		/obj/item/weapon/gun/smg/m39
 		)
 

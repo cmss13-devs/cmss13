@@ -7,9 +7,9 @@
 	desc = "A pistol magazine."
 	caliber = "9mm"
 	icon_state = "m4a3"
-	max_rounds = 12
+	max_rounds = 9
 	w_class = SIZE_SMALL
-	default_ammo = /datum/ammo/bullet/pistol
+	default_ammo = /datum/ammo/bullet/pistol/heavy
 	gun_type = /obj/item/weapon/gun/pistol/m4a3
 
 /obj/item/ammo_magazine/pistol/hp
@@ -26,12 +26,6 @@
 	icon_state = "m4a3_incendiary"
 	default_ammo = /datum/ammo/bullet/pistol/incendiary
 
-/obj/item/ammo_magazine/pistol/extended
-	name = "\improper M4A3 extended magazine (9mm)"
-	max_rounds = 22
-	icon_state = "m4a3_extended"
-	bonus_overlay = "m4a3_ex"
-
 
 //-------------------------------------------------------
 //M4A3 45 //Inspired by the 1911
@@ -41,8 +35,32 @@
 	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = ".45"
 	icon_state = "m4a345"//rename later
-	max_rounds = 14
+	max_rounds = 9
 	gun_type = /obj/item/weapon/gun/pistol/m1911
+
+
+//-------------------------------------------------------
+//88M4 based off VP70
+
+/obj/item/ammo_magazine/pistol/mod88
+	name = "\improper 88M4 AP magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/ap
+	caliber = "9mm"
+	icon_state = "88m4"
+	max_rounds = 19
+	gun_type = /obj/item/weapon/gun/pistol/mod88
+
+
+//-------------------------------------------------------
+//VP78
+
+/obj/item/ammo_magazine/pistol/vp78
+	name = "\improper VP78 magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash
+	caliber = "9mm"
+	icon_state = "vp78" //PLACEHOLDER
+	max_rounds = 14
+	gun_type = /obj/item/weapon/gun/pistol/vp78
 
 
 //-------------------------------------------------------
@@ -126,30 +144,6 @@
 	icon_state = "m4a3" //PLACEHOLDER
 	max_rounds = 13
 	gun_type = /obj/item/weapon/gun/pistol/highpower
-
-
-//-------------------------------------------------------
-//VP70 //Not actually the VP70, but it's more or less the same thing. VP70 was the standard sidearm in Aliens though.
-
-/obj/item/ammo_magazine/pistol/vp70
-	name = "\improper 88M4 AP magazine (9mm)"
-	default_ammo = /datum/ammo/bullet/pistol/ap
-	caliber = "9mm"
-	icon_state = "88m4"
-	max_rounds = 18
-	gun_type = /obj/item/weapon/gun/pistol/vp70
-
-
-//-------------------------------------------------------
-//VP78
-
-/obj/item/ammo_magazine/pistol/vp78
-	name = "\improper VP78 magazine (9mm)"
-	default_ammo = /datum/ammo/bullet/pistol/squash
-	caliber = "9mm"
-	icon_state = "88m4" //PLACEHOLDER
-	max_rounds = 18
-	gun_type = /obj/item/weapon/gun/pistol/vp78
 
 
 //-------------------------------------------------------

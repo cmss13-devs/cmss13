@@ -271,6 +271,7 @@
 
 /obj/structure/closet/secure_closet/commander/New()
 	..()
+	new /obj/item/storage/mateba_case(src)
 	new /obj/item/storage/backpack/mcommander(src)
 	new /obj/item/clothing/shoes/marinechief/commander(src)
 	new /obj/item/clothing/gloves/marine/techofficer/commander(src)

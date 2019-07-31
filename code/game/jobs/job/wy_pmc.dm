@@ -72,8 +72,8 @@
 	generate_stored_equipment()
 		var/L[] = new
 		if(prob(60))
-			L[WEAR_WAIST] = /obj/item/weapon/gun/pistol/vp70
-			L[WEAR_L_STORE] = /obj/item/storage/pouch/magazine/pistol/pmc_vp70
+			L[WEAR_WAIST] = /obj/item/weapon/gun/pistol/mod88
+			L[WEAR_L_STORE] = /obj/item/storage/pouch/magazine/pistol/pmc_mod88
 		else if(prob(35)) L[WEAR_WAIST] = /obj/item/storage/belt/knifepouch
 		L[WEAR_IN_JACKET] = /obj/item/reagent_container/hypospray/autoinjector/quickclot
 		L[WEAR_IN_JACKET] = /obj/item/explosive/grenade/HE/PMC
@@ -191,13 +191,13 @@
 		. = list(
 				SLOW_WAIST = /obj/item/storage/belt/gun/smartgunner/pmc/full,
 				WEAR_J_STORE = /obj/item/weapon/gun/smartgun/dirty,
-				WEAR_L_STORE = /obj/item/storage/pouch/magazine/pistol/pmc_vp70,
+				WEAR_L_STORE = /obj/item/storage/pouch/magazine/pistol/pmc_mod88,
 				WEAR_IN_BACK = /obj/item/explosive/plastique,
 				WEAR_IN_BACK = /obj/item/tool/crowbar,
 				WEAR_ACCESSORY = /obj/item/clothing/tie/storage/webbing,
 				WEAR_IN_ACCESSORY = /obj/item/explosive/grenade/phosphorus,
 				WEAR_IN_ACCESSORY = /obj/item/explosive/grenade/smokebomb,
-				WEAR_IN_ACCESSORY = /obj/item/ammo_magazine/pistol/vp70,
+				WEAR_IN_ACCESSORY = /obj/item/ammo_magazine/pistol/mod88,
 				WEAR_IN_JACKET = /obj/item/reagent_container/hypospray/autoinjector/quickclot,
 				WEAR_IN_JACKET = /obj/item/reagent_container/hypospray/autoinjector/Oxycodone
 				)
@@ -220,12 +220,12 @@
 
 	generate_stored_equipment()
 		. = list(
-				SLOW_WAIST = /obj/item/weapon/gun/pistol/vp70,
+				SLOW_WAIST = /obj/item/weapon/gun/pistol/mod88,
 				WEAR_J_STORE = /obj/item/weapon/gun/rifle/sniper/elite,
 				WEAR_L_STORE = /obj/item/storage/pouch/magazine/large/pmc_sniper,
 				WEAR_IN_BACK = /obj/item/device/flashlight,
 				WEAR_ACCESSORY = /obj/item/clothing/tie/storage/black_vest,
-				WEAR_IN_BACK = /obj/item/ammo_magazine/pistol/vp70,
+				WEAR_IN_BACK = /obj/item/ammo_magazine/pistol/mod88,
 				WEAR_IN_BACK = /obj/item/tool/crowbar,
 				WEAR_IN_ACCESSORY = /obj/item/device/flashlight/flare,
 				WEAR_IN_ACCESSORY = /obj/item/device/flashlight/flare,
@@ -333,8 +333,8 @@
 				WEAR_IN_BACK = /obj/item/explosive/grenade/HE/PMC,
 				WEAR_IN_BACK = /obj/item/tool/crowbar,
 				WEAR_ACCESSORY = /obj/item/clothing/tie/storage/webbing,
-				WEAR_IN_ACCESSORY = /obj/item/ammo_magazine/pistol/vp70,
-				WEAR_IN_ACCESSORY = /obj/item/ammo_magazine/pistol/vp70,
+				WEAR_IN_ACCESSORY = /obj/item/ammo_magazine/pistol/mod88,
+				WEAR_IN_ACCESSORY = /obj/item/ammo_magazine/pistol/mod88,
 				WEAR_IN_ACCESSORY = /obj/item/explosive/grenade/smokebomb,
 				WEAR_IN_JACKET = /obj/item/reagent_container/hypospray/autoinjector/quickclot,
 				WEAR_IN_JACKET = /obj/item/reagent_container/hypospray/autoinjector/Bicard

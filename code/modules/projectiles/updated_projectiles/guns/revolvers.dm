@@ -6,10 +6,11 @@
 	w_class = SIZE_MEDIUM
 	origin_tech = "combat=3;materials=2"
 	matter = list("metal" = 2000)
-	fire_sound = 'sound/weapons/gun_44mag.ogg'
-	reload_sound = 'sound/weapons/gun_revolver_cocked.ogg'
+	fire_sound = 'sound/weapons/gun_44mag_v3.ogg'
+	reload_sound = 'sound/weapons/gun_44mag_speed_loader.wav'
 	cocked_sound = 'sound/weapons/gun_revolver_spun.ogg'
-	unload_sound = 'sound/weapons/gun_revolver_unload.ogg'
+	unload_sound = 'sound/weapons/gun_44mag_open_chamber.wav'
+	var/chamber_close_sound = 'sound/weapons/gun_44mag_close_chamber.wav'
 	var/hand_reload_sound = 'sound/weapons/gun_revolver_load3.ogg'
 	var/spin_sound = 'sound/effects/spin.ogg'
 	var/thud_sound = 'sound/effects/thud.ogg'
@@ -17,7 +18,7 @@
 	var/recent_trick //So they're not spamming tricks.
 	var/russian_roulette = 0 //God help you if you do this.
 	type_of_casings = "bullet"
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_ONE_HAND_WIELDED
 	wield_delay = WIELD_DELAY_VERY_FAST //If you modify your revolver to be two-handed, it will still be fast to aim
 	gun_skill_category = GUN_SKILL_PISTOLS
 	movement_acc_penalty_mult = 3
@@ -29,6 +30,7 @@
 	replace_cylinder(current_mag.current_rounds)
 
 /obj/item/weapon/gun/revolver/set_gun_config_values()
+	..()
 	fire_delay = config.mhigh_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
@@ -63,124 +65,123 @@
 	current_mag.chamber_position = max(1,number_to_replace)
 
 /obj/item/weapon/gun/revolver/proc/empty_cylinder()
-	var/i
-	for(i = 1 to current_mag.max_rounds)
+	for(var/i = 1 to current_mag.max_rounds)
 		current_mag.chamber_contents[i] = "empty"
 
 //The cylinder is always emptied out before a reload takes place.
 /obj/item/weapon/gun/revolver/proc/add_to_cylinder(mob/user) //Bullets are added forward.
 	//First we're going to try and replace the current bullet.
-	if(!current_mag.current_rounds) current_mag.chamber_contents[current_mag.chamber_position] = "bullet"
-	else//Failing that, we'll try to replace the next bullet in line.
-		if( (current_mag.chamber_position + 1) > current_mag.max_rounds)
+	if(!current_mag.current_rounds)
+		current_mag.chamber_contents[current_mag.chamber_position] = "bullet"
+	else //Failing that, we'll try to replace the next bullet in line.
+		if((current_mag.chamber_position + 1) > current_mag.max_rounds)
 			current_mag.chamber_contents[1] = "bullet"
 			current_mag.chamber_position = 1
 		else
 			current_mag.chamber_contents[current_mag.chamber_position + 1] = "bullet"
 			current_mag.chamber_position++
-
 	playsound(user, hand_reload_sound, 25, 1)
 	return 1
 
-/obj/item/weapon/gun/revolver
-	reload(mob/user, obj/item/ammo_magazine/magazine)
-		if(flags_gun_features & GUN_BURST_FIRING) return
+/obj/item/weapon/gun/revolver/reload(mob/user, obj/item/ammo_magazine/magazine)
+	if(flags_gun_features & GUN_BURST_FIRING) return
 
-		if(!magazine || !istype(magazine))
-			to_chat(user, SPAN_WARNING("That's not gonna work!"))
-			return
+	if(!magazine || !istype(magazine))
+		to_chat(user, SPAN_WARNING("That's not gonna work!"))
+		return
 
-		if(magazine.current_rounds <= 0)
-			to_chat(user, SPAN_WARNING("That [magazine.name] is empty!"))
-			return
+	if(magazine.current_rounds <= 0)
+		to_chat(user, SPAN_WARNING("That [magazine.name] is empty!"))
+		return
 
+	if(istype(magazine, /obj/item/ammo_magazine/handful)) //Looks like we're loading via handful.
 		if(current_mag.chamber_closed)
 			to_chat(user, SPAN_WARNING("You can't load anything when the cylinder is closed!"))
 			return
-
-		if(current_mag.current_rounds == current_mag.max_rounds)
-			to_chat(user, SPAN_WARNING("It's already full!"))
-			return
-
-		if(istype(magazine, /obj/item/ammo_magazine/handful)) //Looks like we're loading via handful.
-			if( !current_mag.current_rounds && current_mag.caliber == magazine.caliber) //Make sure nothing's loaded and the calibers match.
-				replace_ammo(user, magazine) //We are going to replace the ammo just in case.
-				current_mag.match_ammo(magazine)
-				current_mag.transfer_ammo(magazine,user,1) //Handful can get deleted, so we can't check through it.
-				add_to_cylinder(user)
-			//If bullets still remain in the gun, we want to check if the actual ammo matches.
-			else if(magazine.default_ammo == current_mag.default_ammo) //Ammo datums match, let's see if they are compatible.
-				if(current_mag.transfer_ammo(magazine,user,1))
-					add_to_cylinder(user)//If the magazine is deleted, we're still fine.
-			else
-				to_chat(user, "[current_mag] is [current_mag.current_rounds ? "already loaded with some other ammo. Better not mix them up." : "not compatible with that ammo."]") //Not the right kind of ammo.
-		else //So if it's not a handful, it's an actual speedloader.
-			if(!current_mag.current_rounds) //We can't have rounds in the gun if it's a speeloader.
-				if(current_mag.gun_type == magazine.gun_type) //Has to be the same gun type.
-					if(current_mag.transfer_ammo(magazine,user,magazine.current_rounds))//Make sure we're successful.
-						replace_ammo(user, magazine) //We want to replace the ammo ahead of time, but not necessary here.
-						current_mag.match_ammo(magazine)
-						replace_cylinder(current_mag.current_rounds)
-						playsound(user, reload_sound, 25, 1) // Reloading via speedloader.
-				else
-					to_chat(user, SPAN_WARNING("That [magazine] doesn't fit!"))
-			else
-				to_chat(user, SPAN_WARNING("You can't load a speedloader when there's something in the cylinder!"))
-
-	unload(mob/user)
-		if(flags_gun_features & GUN_BURST_FIRING) return
-
-		if(current_mag.chamber_closed) //If it's actually closed.
-			to_chat(user, SPAN_NOTICE("You clear the cylinder of [src]."))
-			make_casing(type_of_casings)
-			empty_cylinder()
-			current_mag.create_handful(user)
-			current_mag.chamber_closed = !current_mag.chamber_closed
-			russian_roulette = !russian_roulette //Resets the RR variable.
+		if(!current_mag.current_rounds && current_mag.caliber == magazine.caliber) //Make sure nothing's loaded and the calibers match.
+			replace_ammo(user, magazine) //We are going to replace the ammo just in case.
+			current_mag.match_ammo(magazine)
+			current_mag.transfer_ammo(magazine,user,1) //Handful can get deleted, so we can't check through it.
+			add_to_cylinder(user)
+		//If bullets still remain in the gun, we want to check if the actual ammo matches.
+		else if(magazine.default_ammo == current_mag.default_ammo) //Ammo datums match, let's see if they are compatible.
+			if(current_mag.transfer_ammo(magazine,user,1))
+				add_to_cylinder(user)//If the magazine is deleted, we're still fine.
 		else
-			current_mag.chamber_closed = !current_mag.chamber_closed
+			to_chat(user, "[current_mag] is [current_mag.current_rounds ? "already loaded with some other ammo. Better not mix them up." : "not compatible with that ammo."]") //Not the right kind of ammo.
+	else //So if it's not a handful, it's an actual speedloader.
+		if(current_mag.gun_type == magazine.gun_type) //Has to be the same gun type.
+			if(current_mag.chamber_closed) // If the chamber is closed unload it
+				unload(user)
+			if(current_mag.transfer_ammo(magazine,user,magazine.current_rounds))//Make sure we're successful.
+				replace_ammo(user, magazine) //We want to replace the ammo ahead of time, but not necessary here.
+				current_mag.match_ammo(magazine)
+				replace_cylinder(current_mag.current_rounds)
+				playsound(user, reload_sound, 25, 1) // Reloading via speedloader.
+				if(!current_mag.chamber_closed) // If the chamber is open, we close it
+					unload(user)
+		else
+			to_chat(user, SPAN_WARNING("That [magazine] doesn't fit!"))
+
+/obj/item/weapon/gun/revolver/unload(mob/user)
+	if(flags_gun_features & GUN_BURST_FIRING) return
+
+	if(current_mag.chamber_closed) //If it's actually closed.
+		to_chat(user, SPAN_NOTICE("You clear the cylinder of [src]."))
+		make_casing(type_of_casings)
+		empty_cylinder()
+		current_mag.create_handful(user)
+		current_mag.chamber_closed = !current_mag.chamber_closed
+		russian_roulette = !russian_roulette //Resets the RR variable.
+		playsound(src, chamber_close_sound, 25, 1)
+	else
+		current_mag.chamber_closed = !current_mag.chamber_closed
 		playsound(src, unload_sound, 25, 1)
-		update_icon()
-		return
+	update_icon()
+	return
 
-	make_casing()
-		if(current_mag.used_casings)
-			. = ..()
-			current_mag.used_casings = 0 //Always dump out everything.
-
-	able_to_fire(mob/user)
+/obj/item/weapon/gun/revolver/make_casing()
+	if(current_mag.used_casings)
 		. = ..()
-		if(. && istype(user))
-			if(!current_mag.chamber_closed)
-				to_chat(user, SPAN_WARNING("Close the cylinder!"))
-				return 0
+		current_mag.used_casings = 0 //Always dump out everything.
 
-	ready_in_chamber()
-		if(current_mag.current_rounds > 0)
-			if( current_mag.chamber_contents[current_mag.chamber_position] == "bullet")
-				current_mag.current_rounds-- //Subtract the round from the mag.
-				in_chamber = create_bullet(ammo)
-				return in_chamber
+/obj/item/weapon/gun/revolver/able_to_fire(mob/user)
+	. = ..()
+	if(. && istype(user) && !current_mag.chamber_closed)
+		to_chat(user, SPAN_WARNING("Close the cylinder!"))
+		return 0
 
-	load_into_chamber(mob/user)
-//		if(active_attachable) active_attachable = null
-		if(ready_in_chamber())
+/obj/item/weapon/gun/revolver/ready_in_chamber()
+	if(current_mag.current_rounds > 0)
+		if(current_mag.chamber_contents[current_mag.chamber_position] == "bullet")
+			current_mag.current_rounds-- //Subtract the round from the mag.
+			in_chamber = create_bullet(ammo)
 			return in_chamber
-		rotate_cylinder() //If we fail to return to chamber the round, we just move the firing pin some.
+	else
+		if(current_mag.chamber_closed)
+			unload(null)
 
-	reload_into_chamber(mob/user)
-		current_mag.chamber_contents[current_mag.chamber_position] = "blank" //We shot the bullet.
-		current_mag.used_casings++ //We add this only if we actually fired the bullet.
-		rotate_cylinder()
-		return 1
+/obj/item/weapon/gun/revolver/load_into_chamber(mob/user)
+//		if(active_attachable) active_attachable = null
+	if(ready_in_chamber())
+		return in_chamber
+	rotate_cylinder() //If we fail to return to chamber the round, we just move the firing pin some.
 
-	delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
-		qdel(projectile_to_fire)
-		if(refund) current_mag.current_rounds++
-		return 1
+/obj/item/weapon/gun/revolver/reload_into_chamber(mob/user)
+	current_mag.chamber_contents[current_mag.chamber_position] = "blank" //We shot the bullet.
+	current_mag.used_casings++ //We add this only if we actually fired the bullet.
+	rotate_cylinder()
+	return 1
 
-	unique_action(mob/user)
-		spin_cylinder(user)
+/obj/item/weapon/gun/revolver/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+	qdel(projectile_to_fire)
+	if(refund)
+		current_mag.current_rounds++
+	return 1
+
+// FLUFF
+/obj/item/weapon/gun/revolver/unique_action(mob/user)
+	spin_cylinder(user)
 
 /obj/item/weapon/gun/revolver/proc/revolver_basic_spin(mob/living/carbon/human/user, direction = 1, obj/item/weapon/gun/revolver/double)
 	set waitfor = 0
@@ -264,7 +265,7 @@
 	recent_trick = world.time //Turn on the delay for the next trick.
 
 //-------------------------------------------------------
-//M44 MAGNUM REVOLVER //Not actually canon, but close enough.
+//M44 Revolver
 
 /obj/item/weapon/gun/revolver/m44
 	name = "\improper M44 combat revolver"
@@ -273,6 +274,7 @@
 	item_state = "m44r"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/m44
 	force = 8
+	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/reddot,
@@ -287,10 +289,30 @@
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/scope/mini_iff)
+	var/folded = FALSE // Used for the stock attachment, to check if we can shoot or not
 
 /obj/item/weapon/gun/revolver/m44/New()
 	..()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 21,"rail_x" = 17, "rail_y" = 23, "under_x" = 22, "under_y" = 17, "stock_x" = 22, "stock_y" = 19)
+	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 21,"rail_x" = 14, "rail_y" = 23, "under_x" = 20, "under_y" = 16, "stock_x" = 18, "stock_y" = 20)
+
+/obj/item/weapon/gun/revolver/m44/set_gun_config_values()
+	..()
+	fire_delay = config.mhigh_fire_delay
+	accuracy_mult = config.base_hit_accuracy_mult
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
+	scatter = config.low_scatter_value
+	scatter_unwielded = config.high_scatter_value
+	damage_mult = config.base_hit_damage_mult
+	recoil = config.min_recoil_value
+	recoil_unwielded = config.med_recoil_value
+
+
+/obj/item/weapon/gun/revolver/m44/able_to_fire(mob/user)
+	if (folded)
+		to_chat(user, SPAN_NOTICE("You need to unfold the stock to fire!"))
+		return 0
+	else
+		return ..()
 
 //-------------------------------------------------------
 //RUSSIAN REVOLVER //Based on the 7.62mm Russian revolvers.
@@ -306,13 +328,12 @@
 	force = 8
 	attachable_allowed = list(/obj/item/attachable/compensator)
 
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
-
 /obj/item/weapon/gun/revolver/upp/New()
 	..()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 21,"rail_x" = 14, "rail_y" = 23, "under_x" = 24, "under_y" = 19, "stock_x" = 24, "stock_y" = 19)
 
 /obj/item/weapon/gun/revolver/upp/set_gun_config_values()
+	..()
 	fire_delay = config.low_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
@@ -334,13 +355,13 @@
 	fire_sound = 'sound/weapons/gun_pistol_medium.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/revolver/small
 	force = 6
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 
 /obj/item/weapon/gun/revolver/small/New()
 	..()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 21, "under_x" = 20, "under_y" = 15, "stock_x" = 20, "stock_y" = 15)
 
 /obj/item/weapon/gun/revolver/small/set_gun_config_values()
+	..()
 	fire_delay = config.low_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
@@ -355,6 +376,19 @@
 
 //-------------------------------------------------------
 //BURST REVOLVER //Mateba is pretty well known. The cylinder folds up instead of to the side.
+
+/obj/item/weapon/mateba_key
+	name = "mateba barrel key"
+	desc = "Used to swap the barrels of a mateba revolver."
+	icon = 'icons/obj/items/items.dmi'
+	icon_state = "matebakey"
+	flags_atom = FPRINT|CONDUCT
+	force = 5.0
+	w_class = SIZE_TINY
+	throwforce = 5.0
+	throw_speed = 3
+	throw_range = 5
+	attack_verb = list("stabbed")
 
 /obj/item/weapon/gun/revolver/mateba
 	name = "\improper Mateba autorevolver"
@@ -371,20 +405,54 @@
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/quickfire,
-						/obj/item/attachable/compensator)
+						/obj/item/attachable/compensator,
+						/obj/item/attachable/mateba,
+						/obj/item/attachable/mateba/long,
+						/obj/item/attachable/mateba/short)
+	var/default_barrel = /obj/item/attachable/mateba
 
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
+/obj/item/weapon/gun/revolver/mateba/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/weapon/mateba_key))
+		if(attachments["special"])
+			var/obj/item/attachable/R = attachments["special"]
+			visible_message(SPAN_NOTICE("[user] begins stripping [R] from [src]."),
+			SPAN_NOTICE("You begin stripping [R] from [src]."), null, 4)
+
+			if(!do_after(usr, 35, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+				return
+
+			if(!(R == attachments[R.slot]))
+				return
+
+			visible_message(SPAN_NOTICE("[user] unlocks and removes [R] from [src]."),
+			SPAN_NOTICE("You unlocks removes [R] from [src]."), null, 4)
+			R.Detach(src)
+			if(attachments["muzzle"])
+				var/obj/item/attachable/M = attachments["muzzle"]
+				M.Detach(src)
+			playsound(src, 'sound/handling/attachment_remove.ogg', 15, 1, 4)
+			update_icon()
+	else if(istype(I, /obj/item/attachable))
+		var/obj/item/attachable/A = I
+		if(A.slot == "muzzle" && !attachments["special"])
+			to_chat(user, SPAN_WARNING("You need to attach a barrel first!"))
+			return
+	. = ..()
 
 /obj/item/weapon/gun/revolver/mateba/New()
 	..()
-	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 21, "under_x" = 22, "under_y" = 15, "stock_x" = 22, "stock_y" = 15)
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 24, "under_x" = 19, "under_y" = 17, "stock_x" = 19, "stock_y" = 17, "special_x" = 22, "special_y" = 19)
+	var/obj/item/attachable/mateba/Q = new default_barrel(src)
+	Q.Attach(src)
+	update_icon()
 
 /obj/item/weapon/gun/revolver/mateba/set_gun_config_values()
+	..()
 	fire_delay = config.max_fire_delay
 	burst_amount = config.low_burst_value
 	burst_delay = config.med_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.med_scatter_value
 	scatter_unwielded = config.med_scatter_value
@@ -399,6 +467,23 @@
 	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. This version is snubnosed, engraved with gold, tinted black, and highly customized for a high-ranking admiral. It uses heavy .454 rounds."
 	icon_state = "amateba"
 	item_state = "amateba"
+	attachable_allowed = list(
+					/obj/item/attachable/reddot,
+					/obj/item/attachable/reflex,
+					/obj/item/attachable/flashlight,
+					/obj/item/attachable/heavy_barrel,
+					/obj/item/attachable/quickfire,
+					/obj/item/attachable/compensator,
+					/obj/item/attachable/mateba/dark,
+					/obj/item/attachable/mateba/long/dark,
+					/obj/item/attachable/mateba/short/dark)
+	default_barrel = /obj/item/attachable/mateba/dark
+
+/obj/item/weapon/gun/revolver/mateba/engraved
+	name = "\improper Mateba autorevolver engraved"
+	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. We have all heard of it, but on this version you glance a scratched engraving, barely readable. Is it your name?"
+	icon_state = "aamateba"
+	item_state = "aamateba"
 
 /obj/item/weapon/gun/revolver/mateba/cmateba
 	name = "\improper Mateba autorevolver special"
@@ -433,6 +518,7 @@
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 22,"rail_x" = 11, "rail_y" = 25, "under_x" = 20, "under_y" = 18, "stock_x" = 20, "stock_y" = 18)
 
 /obj/item/weapon/gun/revolver/cmb/set_gun_config_values()
+	..()
 	fire_delay = config.mhigh_fire_delay*2
 	burst_amount = config.med_burst_value
 	burst_delay = config.high_fire_delay

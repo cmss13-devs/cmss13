@@ -4520,13 +4520,13 @@
 	pixel_y = 0
 	},
 /obj/structure/table/almayer,
-/obj/item/ammo_magazine/pistol/vp70{
+/obj/item/ammo_magazine/pistol/mod88{
 	pixel_x = 5
 	},
-/obj/item/ammo_magazine/pistol/vp70{
+/obj/item/ammo_magazine/pistol/mod88{
 	pixel_x = 5
 	},
-/obj/item/weapon/gun/pistol/vp70{
+/obj/item/weapon/gun/pistol/mod88{
 	pixel_y = 4
 	},
 /turf/open/floor/almayer{

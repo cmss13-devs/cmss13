@@ -1,0 +1,24 @@
+author: Vampmare
+
+delete-after: True
+
+changes: 
+  - tweak: "Pistol Rework Commenced. "
+  - rscadd: "Pistols have the same accuracy when wielded and when one-handed. Akimbo unaffected."
+  - rscdel: "Dual-wielding pistols/akimbo has been nerfed. Bullet spread has been increased and accuracy reduced in this mode."
+  - rscdel: "Extended mags for M4A3 has been removed. AP and HP mags for M4A3 made scarce."
+  - tweak: "M4A3 remains a marine pistol. It offers accuracy and pure damage, in exchange for capacity and armour penetration. Buffed overall."
+  - tweak: "Mod 88 also known as 88M4 has become one of three main marine pistols. It is the opposite of M4A3, so it has capacity, armour penetration and a three round burst."
+  - tweak: "M44 Revolver remains a main gun, but it has been reworked. Using a speedloader magazine on a revolver will make it function as a normal reload. If there are leftover bullets in when using the speedloader, they will be dumped on the ground."
+  - tweak: "M44 Revolver ammo has changed. Normal: high damage, a little AP. Marksman: medium damage, decent ap and no damage falloff. Heavy: medium damage, low AP and a weaker version of slug effect."
+  - tweak: "VP78 has replaced Mod 88 in the Self-Defense kit, spec kits and XO belt. The stats have been buffed to be in line with a primary weapon. More damage, more AP."
+  - rscadd: "M44, VP78, Mod 88, Smartpistol and the Mateba have all gotten a facelift, courtesy of Triiodine."
+  - soundadd: "M44, VP78 and Mod88 have gotten new sounds, mixed by Triiodine. Give them some time before condemning them to the gates of hell."
+  - tweak: "Buffed accuracy and damage of M4A3 Custom. SOs, POs and TCs spawn with it."
+  - tweak: "Buffed damage of the smartpistol slightly."
+  - rscadd: "A new kit has been added \"Experimental Trooper Kit\". It is the new kit to get smartpistols and everything you could need for it. It can be found in main req or your squad req."
+  - tweak: "Vendors have been changed to accommodate the above changes."
+  - rscadd: "Increased the slots in the mateba belt and smartpistol belt by one."
+  - tweak: "Some actions can now be performed one-handed, like building cades, wiring cades, splinting, applying kits, placing claymores and repairing cades. The intended use is to use a pistol in the other hand."
+  - tweak: "M44 Revolver stock has been changed. It can now be folded to fit in a belt holster or your belt slot, but it cannot fire folded. The stats are the same."
+  - bugfix: "Holsters now care about stocks again. "

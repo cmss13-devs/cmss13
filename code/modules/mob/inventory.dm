@@ -86,10 +86,17 @@
 		return drop_inv_item_on_ground(r_hand)
 	return 0
 
-//Drops the item in our active hand.
-/mob/proc/drop_held_item()
-	if(hand)	return drop_l_hand()
-	else		return drop_r_hand()
+//Drops the item in our active hand. If passed with an item, it will check each hand for the item and drop the right one.
+/mob/proc/drop_held_item(var/obj/item/I)
+	if(I)
+		if(I == r_hand)
+			return drop_r_hand()
+		else if (I == l_hand)
+			return drop_l_hand()
+	else if(hand)	
+		return drop_l_hand()
+	else		
+		return drop_r_hand()
 
 //Drops the items in our hands.
 /mob/proc/drop_held_items()

@@ -80,19 +80,16 @@
 	var/tmp/told_cant_shoot = 0					//So that it doesn't spam them with the fact they cannot hit them.
 
 	//Attachments.
-	var/attachable_overlays[] 		= null		//List of overlays so we can switch them in an out, instead of using Cut() on overlays.
-	var/attachable_offset[] 		= null		//Is a list, see examples of from the other files. Initiated on New() because lists don't initial() properly.
+	var/list/attachments = list()				//List of all current attachments on the gun.
+	var/attachable_overlays[] = null			//List of overlays so we can switch them in an out, instead of using Cut() on overlays.
+	var/attachable_offset[] = null				//Is a list, see examples of from the other files. Initiated on New() because lists don't initial() properly.
 	var/list/attachable_allowed = list()		//Must be the exact path to the attachment present in the list. Empty list for a default.
 	var/list/random_spawn_rail = list() 		//Used when a gun will have a chance to spawn with attachments.
 	var/list/random_spawn_muzzle = list()  		//Used when a gun will have a chance to spawn with attachments.
 	var/list/random_spawn_underbarrel = list()  //Used when a gun will have a chance to spawn with attachments.
 	var/list/random_spawn_stock = list()  		//Used when a gun will have a chance to spawn with attachments.
 	var/random_spawn_chance = 50				//Chance for an attachment to spawn in each slot.
-	var/obj/item/attachable/muzzle 	= null		//Attachable slots. Only one item per slot.
-	var/obj/item/attachable/rail 	= null
-	var/obj/item/attachable/under 	= null
-	var/obj/item/attachable/stock 	= null
-	var/obj/item/attachable/attached_gun/active_attachable = null //This will link to one of the above four, or remain null.
+	var/obj/item/attachable/attached_gun/active_attachable = null //This will link to one of the attachments, or remain null.
 	var/list/starting_attachment_types = null //What attachments this gun starts with THAT CAN BE REMOVED. Important to avoid nuking the attachments on restocking! Added on New()
 
 	var/flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
@@ -139,8 +136,54 @@
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.lmed_scatter_value
+	burst_amount = config.min_burst_value
 	scatter_unwielded = config.med_scatter_value
 	damage_mult = config.base_hit_damage_mult
+	damage_falloff_mult = config.reg_damage_falloff
+	recoil = config.no_recoil_value
+	recoil_unwielded = config.no_recoil_value
+	aim_slowdown = config.slowdown_none
+	wield_delay = WIELD_DELAY_FAST
+	movement_acc_penalty_mult = config.high_movement_accuracy_penalty_mult
+
+/obj/item/weapon/gun/proc/recalculate_attachment_bonuses()
+	//Reset silencer mod
+	flags_gun_features &= ~GUN_SILENCED
+	muzzle_flash = initial(muzzle_flash)
+	fire_sound = initial(fire_sound)
+
+	//reset weight and force mods
+	force = initial(force)
+	w_class = initial(w_class)
+
+	//Get default gun config values
+	set_gun_config_values()
+
+	//Add attachment bonuses
+	for(var/slot in attachments)
+		var/obj/item/attachable/R = attachments[slot]
+		if(!R) continue
+		fire_delay += R.delay_mod
+		accuracy_mult += R.accuracy_mod
+		accuracy_mult_unwielded += R.accuracy_unwielded_mod
+		scatter += R.scatter_mod
+		scatter_unwielded += R.scatter_unwielded_mod
+		damage_mult += R.damage_mod
+		damage_falloff_mult += R.damage_falloff_mod
+		recoil += R.recoil_mod
+		burst_scatter_mult += R.burst_scatter_mod
+		burst_amount += R.burst_mod
+		recoil_unwielded += R.recoil_unwielded_mod
+		aim_slowdown += R.aim_speed_mod
+		wield_delay += R.wield_delay_mod
+		movement_acc_penalty_mult += R.movement_acc_penalty_mod
+		force += R.melee_mod
+		w_class += R.size_mod
+
+		if(R.silence_mod)
+			flags_gun_features |= GUN_SILENCED
+			muzzle_flash = null
+			fire_sound = "gun_silenced"
 
 /obj/item/weapon/gun/proc/handle_random_attachments(var/randchance)
 	var/attachmentchoice
@@ -197,16 +240,16 @@
 	current_mag 	= null
 	target 			= null
 	last_moved_mob 	= null
-	muzzle 			= null
 	if(flags_gun_features & GUN_FLASHLIGHT_ON)//Handle flashlight.
 		flags_gun_features &= ~GUN_FLASHLIGHT_ON
 		if(ismob(loc))
-			loc.SetLuminosity(-rail.light_mod)
+			for(var/slot in attachments)
+				var/obj/item/attachable/R = attachments[slot]
+				if(!R) continue
+				loc.SetLuminosity(-R.light_mod)
 		else
 			SetLuminosity(0)
-	rail 			= null
-	under 			= null
-	stock 			= null
+	attachments = null
 	attachable_overlays = null
 	. = ..()
 
@@ -262,14 +305,19 @@
 	else
 		dat += "The safety's off!<br>"
 
-	if(rail) 	dat += "It has \icon[rail] [rail.name] mounted on the top.<br>"
-	if(muzzle) 	dat += "It has \icon[muzzle] [muzzle.name] mounted on the front.<br>"
-	if(stock) 	dat += "It has \icon[stock] [stock.name] for a stock.<br>"
-	if(under)
-		dat += "It has \icon[under] [under.name]"
-		if(under.flags_attach_features & ATTACH_WEAPON)
-			dat += " ([under.current_rounds]/[under.max_rounds])"
-		dat += " mounted underneath.<br>"
+	for(var/slot in attachments)
+		var/obj/item/attachable/R = attachments[slot]
+		if(!R) continue
+		switch(R.slot)
+			if("rail") 	dat += "It has \icon[R] [R.name] mounted on the top.<br>"
+			if("muzzle") 	dat += "It has \icon[R] [R.name] mounted on the front.<br>"
+			if("stock") 	dat += "It has \icon[R] [R.name] for a stock.<br>"
+			if("under")
+				dat += "It has \icon[R] [R.name]"
+				if(R.flags_attach_features & ATTACH_WEAPON)
+					dat += " ([R.current_rounds]/[R.max_rounds])"
+				dat += " mounted underneath.<br>"
+			else dat += "It has \icon[R] [R.name] attached.<br>"
 
 
 	if(!(flags_gun_features & (GUN_INTERNAL_MAG|GUN_UNUSUAL_DESIGN))) //Internal mags and unusual guns have their own stuff set.
@@ -400,7 +448,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(user)
 		if(magazine.reload_delay > 1)
 			to_chat(user, SPAN_NOTICE("You begin reloading [src]. Hold still..."))
-			if(do_after(user, magazine.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY)) replace_magazine(user, magazine)
+			if(do_after(user, magazine.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY)) replace_magazine(user)
 			else
 				to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
 				return
@@ -916,21 +964,16 @@ and you're good to go.
 	var/gun_accuracy_mult = accuracy_mult_unwielded
 	var/gun_scatter = scatter_unwielded
 
-	if(flags_item & WIELDED)
+	if(flags_item & WIELDED || flags_gun_features & GUN_ONE_HAND_WIELDED)
 		gun_accuracy_mult = accuracy_mult
 		gun_scatter = scatter
-
 	else if(user && world.time - user.l_move_time < 5) //moved during the last half second
 		//accuracy and scatter penalty if the user fires unwielded right after moving
 		gun_accuracy_mult = max(0.1, gun_accuracy_mult - max(0,movement_acc_penalty_mult * config.low_hit_accuracy_mult))
 		gun_scatter += max(0, movement_acc_penalty_mult * config.min_scatter_value)
 
-
 	if(dual_wield) //akimbo firing gives terrible accuracy
-		if(gun_skill_category == GUN_SKILL_PISTOLS)
-			gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(1,2))
-			gun_scatter += config.low_scatter_value
-		else if(gun_skill_category == GUN_SKILL_SMGS)
+		if(gun_skill_category == GUN_SKILL_SMGS)
 			gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(2,4))
 			gun_scatter += config.med_scatter_value
 		else
@@ -995,9 +1038,12 @@ and you're good to go.
 			if(!(flags_gun_features & GUN_SILENCED))
 				playsound(user, actual_sound, 60)
 				if(bullets_fired == 1)
+					var/offset_or_not = -1 // If its an internal mag, we want to display current_rounds as it is, if not -1 it
+					if(flags_gun_features &  GUN_INTERNAL_MAG)
+						offset_or_not = 0
 					user.visible_message(
 					SPAN_DANGER("[user] fires [src][reflex ? " by reflex":""]!"), \
-					SPAN_WARNING("You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag ? "<B>[current_mag.current_rounds-1]</b>/[current_mag.max_rounds]" : ""]"), \
+					SPAN_WARNING("You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag ? "<B>[current_mag.current_rounds+offset_or_not]</b>/[current_mag.max_rounds]" : ""]"), \
 					SPAN_WARNING("You hear a [istype(projectile_to_fire.ammo, /datum/ammo/bullet) ? "gunshot" : "blast"]!"), 4
 					)
 			else

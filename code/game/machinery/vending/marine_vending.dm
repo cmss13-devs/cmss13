@@ -24,13 +24,15 @@
 	product_records = list()
 
 	products = list(
-		/obj/item/weapon/gun/pistol/m4a3 = round(scale * 30),
+		/obj/item/weapon/gun/pistol/m4a3 = round(scale * 25),
+		/obj/item/weapon/gun/pistol/mod88 = round(scale * 25),
 		/obj/item/weapon/gun/revolver/m44 = round(scale * 25),
 		/obj/item/weapon/gun/smg/m39 = round(scale * 30),
 		/obj/item/weapon/gun/rifle/m41a = round(scale * 30),
 		/obj/item/weapon/gun/rifle/l42mk1 = round(scale * 10),
 		/obj/item/weapon/gun/shotgun/pump = round(scale * 15),
-		/obj/item/ammo_magazine/pistol = round(scale * 30),
+		/obj/item/ammo_magazine/pistol = round(scale * 20),
+		/obj/item/ammo_magazine/pistol/mod88 = round(scale * 20),	
 		/obj/item/ammo_magazine/revolver = round(scale * 20),
 		/obj/item/ammo_magazine/smg/m39 = round(scale * 30),
 		/obj/item/ammo_magazine/rifle = round(scale * 25),
@@ -144,8 +146,8 @@
 		/obj/item/storage/pouch/tools = round(scale * 2),
 
 		// FIREARMS
-		/obj/item/weapon/gun/pistol/m1911 = round(scale * 6),
-		/obj/item/weapon/gun/pistol/m4a3 = round(scale * 20),
+		/obj/item/weapon/gun/pistol/m4a3 = round(scale * 10),
+		/obj/item/weapon/gun/pistol/mod88 = round(scale * 10),
 		/obj/item/weapon/gun/revolver/m44 = round(scale * 10),
 		/obj/item/weapon/gun/pistol/smart = round(scale * 6),
 		/obj/item/weapon/gun/rifle/l42mk1 = round(scale * 20),
@@ -154,6 +156,7 @@
 		/obj/item/weapon/gun/rifle/m41a = round(scale * 20),
 
 		// KITS
+		/obj/item/storage/box/kit/exp_trooper = round(scale * 4),
 		/obj/item/storage/box/kit/mini_jtac = round(scale * 4),
 		/obj/item/storage/box/kit/heavy_support = round(scale * 4),
 		/obj/item/storage/box/kit/mini_intel = round(scale * 4),
@@ -215,7 +218,6 @@
 		/obj/item/storage/pouch/bayonet = round(scale * 1),
 		/obj/item/storage/pouch/magazine/pistol/large = round(scale * 3),
 		/obj/item/weapon/gun/pistol/m4a3 = round(scale * 5),
-		/obj/item/weapon/gun/pistol/m1911 = round(scale * 6),
 		/obj/item/weapon/gun/pistol/smart = round(scale * 6),
 		/obj/item/weapon/gun/revolver/m44 = round(scale * 5),
 		/obj/item/weapon/gun/smg/m39 = round(scale * 10),
@@ -275,19 +277,15 @@
 		/obj/item/ammo_magazine/smartgun = round(scale * 2),
 		// AP AMMO
 		/obj/item/ammo_magazine/rifle/l42mk1/ap = round(scale * 1),
-		/obj/item/ammo_magazine/pistol/ap = round(scale * 5),
-		/obj/item/ammo_magazine/revolver/marksman = round(scale * 5),
 		/obj/item/ammo_magazine/smg/m39/ap = round(scale * 5) % 12,
 		/obj/item/ammo_magazine/rifle/ap = round(scale * 10) % 10,
 
 		// EXTENDED AMMO
-		/obj/item/ammo_magazine/pistol/extended = round(scale * 10),
 		/obj/item/ammo_magazine/rifle/l42mk1/extended = round(scale * 4),
 		/obj/item/ammo_magazine/smg/m39/extended = round(scale * 10) % 10,
 		/obj/item/ammo_magazine/rifle/extended = round(scale * 10) % 8,
 
 		// SPECIAL AMMO
-		/obj/item/ammo_magazine/pistol/m1911 = round(scale * 12),
 		/obj/item/ammo_magazine/pistol/smart = round(scale * 12),
 		/obj/item/ammo_magazine/revolver/heavy = round(scale * 10),
 		/obj/item/ammo_magazine/smg/m39/le = round(scale * 2) % 12,
@@ -329,11 +327,7 @@
 	products = list(
 		/obj/item/storage/large_holster/machete/full = round(scale * 6),
 		/obj/item/ammo_magazine/pistol = round(scale * 10),
-		/obj/item/ammo_magazine/pistol/hp = round(scale * 3),
-		/obj/item/ammo_magazine/pistol/ap = round(scale * 3),
 		/obj/item/ammo_magazine/pistol/incendiary = round(scale * 1),
-		/obj/item/ammo_magazine/pistol/extended = round(scale * 1),
-		/obj/item/ammo_magazine/pistol/m1911 = round(scale * 1),
 		/obj/item/ammo_magazine/revolver = round(scale * 10),
 		/obj/item/ammo_magazine/revolver/marksman = round(scale * 2),
 		/obj/item/ammo_magazine/smg/m39 = round(scale * 15),
@@ -380,11 +374,7 @@
 
 	products = list(
 		/obj/item/storage/large_holster/machete/full = round(scale * 5),
-		/obj/item/ammo_magazine/pistol/ap = round(scale * 3),
-		/obj/item/ammo_magazine/pistol/extended = round(scale * 5),
-		/obj/item/ammo_magazine/pistol/m1911 = round(scale * 4),
 		/obj/item/ammo_magazine/pistol/smart = round(scale * 4),
-		/obj/item/ammo_magazine/revolver = round(scale * 10),
 		/obj/item/ammo_magazine/revolver/marksman = round(scale * 3),
 		/obj/item/ammo_magazine/revolver/heavy = round(scale * 5),
 		/obj/item/ammo_magazine/smg/m39/ap = round(scale * 5) % 12,
@@ -634,8 +624,6 @@
 						/obj/item/explosive/grenade/smokebomb = 3,
 						/obj/item/device/binoculars/tactical = 1,
 						/obj/item/device/motiondetector = 1,
-						/obj/item/ammo_magazine/pistol/hp = 2,
-						/obj/item/ammo_magazine/pistol/ap = 1,
 						/obj/item/storage/backpack/marine/satchel = 2,
 						/obj/item/weapon/gun/flamer = 2,
 						/obj/item/ammo_magazine/flamer_tank = 8,

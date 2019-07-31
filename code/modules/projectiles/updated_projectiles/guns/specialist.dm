@@ -49,6 +49,7 @@
 
 
 /obj/item/weapon/gun/rifle/sniper/M42A/set_gun_config_values()
+	..()
 	fire_delay = config.high_fire_delay*3
 	burst_amount = config.min_burst_value
 	accuracy_mult = config.base_hit_accuracy_mult * 3 //you HAVE to be able to hit
@@ -84,6 +85,7 @@
 	update_icon()
 
 /obj/item/weapon/gun/rifle/sniper/M42B/set_gun_config_values()
+	..()
 	fire_delay = config.max_fire_delay * 8 //Big boy damage, but it takes a lot of time to fire a shot.
 	burst_amount = config.min_burst_value
 	accuracy_mult = config.base_hit_accuracy_mult + 2*config.max_hit_accuracy_mult
@@ -124,6 +126,7 @@
 	update_icon()
 
 /obj/item/weapon/gun/rifle/sniper/elite/set_gun_config_values()
+	..()
 	fire_delay = config.high_fire_delay*5
 	burst_amount = config.min_burst_value
 	accuracy_mult = config.base_hit_accuracy_mult + config.max_hit_accuracy_mult
@@ -176,6 +179,7 @@
 	update_icon()
 
 /obj/item/weapon/gun/rifle/sniper/svd/set_gun_config_values()
+	..()
 	fire_delay = config.mhigh_fire_delay*2
 	burst_amount = config.low_burst_value
 	accuracy_mult = config.base_hit_accuracy_mult
@@ -221,6 +225,7 @@
 
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
+	..()
 	fire_delay = config.high_fire_delay
 	burst_amount = config.med_burst_value
 	burst_delay = config.mlow_fire_delay
@@ -298,6 +303,7 @@
 
 
 /obj/item/weapon/gun/smartgun/set_gun_config_values()
+	..()
 	fire_delay = config.min_fire_delay
 	burst_amount = config.med_burst_value
 	burst_delay = config.low_burst_value
@@ -777,6 +783,7 @@
 	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
 /obj/item/weapon/gun/smartgun/dirty/set_gun_config_values()
+	..()
 	fire_delay = config.low_fire_delay
 	burst_amount = config.med_burst_value
 	burst_delay = config.low_fire_delay
@@ -799,6 +806,7 @@
 
 
 /obj/item/weapon/gun/smartgun/dirty/elite/set_gun_config_values()
+	..()
 	fire_delay = config.mlow_fire_delay
 	burst_amount = config.high_burst_value
 	burst_delay = config.min_fire_delay
@@ -857,6 +865,7 @@
 	grenades += new /obj/item/explosive/grenade/HE(src)
 
 /obj/item/weapon/gun/launcher/m92/set_gun_config_values()
+	..()
 	fire_delay = config.max_fire_delay*4
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
@@ -974,6 +983,7 @@
 			grenade = new /obj/item/explosive/grenade/HE(src)
 
 /obj/item/weapon/gun/launcher/m81/set_gun_config_values()
+	..()
 	fire_delay = config.max_fire_delay * 1.5
 	accuracy_mult = config.base_hit_accuracy_mult
 	scatter = config.med_scatter_value
@@ -1107,6 +1117,7 @@
 	smoke.attach(src)
 
 /obj/item/weapon/gun/launcher/rocket/set_gun_config_values()
+	..()
 	fire_delay = config.high_fire_delay*2
 	accuracy_mult = config.base_hit_accuracy_mult
 	scatter = config.med_scatter_value
@@ -1232,6 +1243,7 @@
 	flags_gun_features = GUN_INTERNAL_MAG|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
 /obj/item/weapon/gun/launcher/rocket/m57a4/set_gun_config_values()
+	..()
 	fire_delay = config.mhigh_fire_delay
 	burst_delay = config.med_fire_delay
 	burst_amount = config.high_burst_value
@@ -1256,6 +1268,7 @@
 	var/popped_state = "m82f_e" //Icon state that represents an unloaded flare gun. The tube's just popped out.
 
 /obj/item/weapon/gun/flare/set_gun_config_values()
+	..()
 	fire_delay = config.min_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	scatter = 0

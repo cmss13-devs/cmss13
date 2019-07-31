@@ -1116,7 +1116,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /datum/limb/proc/apply_splints(obj/item/stack/medical/splint/S, mob/living/user, mob/living/carbon/human/target)
 	if(!(status & LIMB_DESTROYED) && !(status & LIMB_SPLINTED))
 		if (target != user)
-			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+			if(do_after(user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 				var/possessive = "[user == target ? "your" : "[target]'s"]"
 				var/possessive_their = "[user == target ? "their" : "[target]'s"]"
 				user.affected_message(target,
@@ -1127,7 +1127,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 				. = 1
 		else
 			user.visible_message(SPAN_WARNING("[user] fumbles with the [S]"), SPAN_WARNING("You fumble with the [S]..."))
-			if(do_after(user, 150, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+			if(do_after(user, 150, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 				user.visible_message(
 				SPAN_WARNING("[user] successfully applies [S] to their [display_name]."),
 				SPAN_NOTICE("You successfully apply [S] to your [display_name]."))

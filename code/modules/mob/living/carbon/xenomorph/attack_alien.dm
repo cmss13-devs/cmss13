@@ -843,8 +843,6 @@
 		else
 			M.visible_message(SPAN_DANGER("\The [M] smashes \the [src]!"), \
 			SPAN_DANGER("You smash \the [src]!"), null, 5)
-	else
-		return M.UnarmedAttack(src)
 
 /obj/structure/girder/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(M.caste.tier < 2 || unacidable)

@@ -389,6 +389,16 @@
 	current_mag = /obj/item/ammo_magazine/pistol/vp78
 	force = 8
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	attachable_allowed = list(
+						/obj/item/attachable/suppressor,
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/compensator,
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/extended_barrel,
+						/obj/item/attachable/heavy_barrel,
+						/obj/item/attachable/burstfire_assembly)
 
 /obj/item/weapon/gun/pistol/vp78/New()
 		..()
@@ -406,7 +416,7 @@
 	scatter_unwielded = config.med_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.min_recoil_value
-	recoil_unwielded = config.med_recoil_value
+	recoil_unwielded = config.low_recoil_value
 
 
 //-------------------------------------------------------

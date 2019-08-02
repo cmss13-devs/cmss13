@@ -28,7 +28,7 @@
 //Higher up roles should get a few more points
 //Whitelisted roles should get full 60 since we can punish them for LRP
 //And probably donors should get full points as well to replace their system one day maybe?
-#define MARINE_TOTAL_SNOWFLAKE_POINTS	60
+#define MARINE_TOTAL_SNOWFLAKE_POINTS	120
 
 /obj/item/card/id/var/marine_points = MARINE_TOTAL_BUY_POINTS
 /obj/item/card/id/var/marine_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
@@ -803,22 +803,19 @@
 		list("Working Joe uniform", 0, /obj/item/clothing/under/rank/synthetic/joe, MARINE_CAN_BUY_UNIFORM, "black"),
 
 		list("WEBBING (choose 1)", 0, null, null, null),
-		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Black webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest, null, "black"),
 		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/brown_vest, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ATTACHMENT, "black"),
 
 		list("SHOES (choose 1)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine, MARINE_CAN_BUY_SHOES, "black"),
 		list("Shoes, white", 0, /obj/item/clothing/shoes/white, MARINE_CAN_BUY_SHOES, "orange"),
 
 		list("HELMET (choose 1)", 0, null, null, null),
-		list("Expedition cap)", 0, /obj/item/clothing/head/cmflapcap, MARINE_CAN_BUY_HELMET, "black"),
+		list("Expedition cap", 0, /obj/item/clothing/head/cmflapcap, MARINE_CAN_BUY_HELMET, "black"),
 		list("Hard hat, orange", 0, /obj/item/clothing/head/hardhat/orange, MARINE_CAN_BUY_HELMET, "black"),
 		list("Surgical cap, green", 0, /obj/item/clothing/head/surgery/green, MARINE_CAN_BUY_HELMET, "black"),
 		list("Welding helmet", 0, /obj/item/clothing/head/welding, MARINE_CAN_BUY_HELMET, "black"),
-
-		list("GLASSES (choose 1)", 0, null, null, null),
-		list("Welding glasses", 0, /obj/item/clothing/glasses/welding, MARINE_CAN_BUY_GLASSES, "black"),
-		list("Medical HUD glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, "black"),
 
 		list("SUIT (choose 1)", 0, null, null, null),
 		list("Hazard vest", 0, /obj/item/clothing/suit/storage/hazardvest, MARINE_CAN_BUY_ARMOR, "orange"),

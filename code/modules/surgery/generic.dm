@@ -72,8 +72,8 @@
 	/obj/item/weapon/energy/sword = 5
 	)
 
-	min_duration = 60
-	max_duration = 80
+	min_duration = INCISION_MANAGER_MIN_DURATION
+	max_duration = INCISION_MANAGER_MAX_DURATION
 	open_step = 0
 
 /datum/surgery_step/generic/cut_with_laser/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
@@ -115,8 +115,8 @@
 	/obj/item/weapon/claymore/mercsword = 1
 	)
 
-	min_duration = 60
-	max_duration = 80
+	min_duration = SCALPEL_MIN_DURATION
+	max_duration = SCALPEL_MAX_DURATION
 	open_step = 0
 
 /datum/surgery_step/generic/cut_open/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
@@ -151,8 +151,8 @@
 	/obj/item/device/assembly/mousetrap = 20
 	)
 
-	min_duration = 40
-	max_duration = 60
+	min_duration = HEMOSTAT_MIN_DURATION
+	max_duration = HEMOSTAT_MAX_DURATION
 
 /datum/surgery_step/generic/clamp_bleeders/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected, checks_only)
 	if(..())
@@ -176,8 +176,6 @@
 	affected.createwound(CUT, 10)
 	affected.update_wounds()
 
-
-
 /datum/surgery_step/generic/retract_skin
 	allowed_tools = list(
 	/obj/item/tool/surgery/retractor = 100,          \
@@ -185,8 +183,8 @@
 	/obj/item/tool/kitchen/utensil/fork = 50
 	)
 
-	min_duration = 30
-	max_duration = 40
+	min_duration = HEMOSTAT_MIN_DURATION
+	max_duration = HEMOSTAT_MAX_DURATION
 	open_step = 1
 
 /datum/surgery_step/generic/retract_skin/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)

@@ -23,8 +23,8 @@
 	/obj/item/tool/kitchen/utensil/fork = 50, \
 	)
 
-	min_duration = 30
-	max_duration = 40
+	min_duration = RETRACTOR_MIN_DURATION
+	max_duration = RETRACTOR_MAX_DURATION
 	reattach_step = 0
 
 
@@ -54,8 +54,8 @@
 	/obj/item/device/assembly/mousetrap = 10
 	)
 
-	min_duration = 60
-	max_duration = 80
+	min_duration = FIXVEIN_MIN_DURATION
+	max_duration = FIXVEIN_MAX_DURATION
 	reattach_step = 1
 
 /datum/surgery_step/head/shape/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
@@ -85,8 +85,8 @@
 	/obj/item/tool/surgery/FixOVein = 80
 	)
 
-	min_duration = 60
-	max_duration = 80
+	min_duration = HEMOSTAT_MIN_DURATION
+	max_duration = HEMOSTAT_MAX_DURATION
 	reattach_step = 2
 
 /datum/surgery_step/head/suture/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
@@ -117,8 +117,8 @@
 	/obj/item/tool/weldingtool = 25
 	)
 
-	min_duration = 60
-	max_duration = 80
+	min_duration = CAUTERY_MIN_DURATION
+	max_duration = CAUTERY_MAX_DURATION
 	reattach_step = 3
 
 /datum/surgery_step/head/prepare/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
@@ -146,8 +146,8 @@
 /datum/surgery_step/head/attach
 	allowed_tools = list(/obj/item/limb/head/synth = 100)
 	can_infect = 0
-	min_duration = 60
-	max_duration = 80
+	min_duration = IMPLANT_MIN_DURATION
+	max_duration = IMPLANT_MAX_DURATION
 	reattach_step = 0
 
 /datum/surgery_step/head/attach/can_use(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected, checks_only)

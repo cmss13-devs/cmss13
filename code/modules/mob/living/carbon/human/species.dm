@@ -710,6 +710,11 @@ var/toggled_sec_HUD = 0
 			if(istype(held, /obj/item/weapon/gun) && prob(80))
 				var/obj/item/weapon/gun/G = held
 				G.Fire(T, H)
+			else if(prob(80) && H.equip_to_appropriate_slot(held, 0))
+				if(H.hand)
+					H.update_inv_l_hand(0)
+				else
+					H.update_inv_r_hand(0)
 			else
 				H.throw_item(T)
 		else

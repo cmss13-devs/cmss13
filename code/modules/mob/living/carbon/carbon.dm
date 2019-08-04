@@ -244,7 +244,7 @@
 
 	if(is_ventcrawling) //NOPE
 		return
-	if(usr.stat || !target)
+	if(src.stat || !target)
 		return
 	if(!istype(src.loc, /turf)) // In some mob/object (i.e. devoured or tank)
 		to_chat(src, SPAN_WARNING("You cannot throw anything while inside of \the [src.loc.name]."))

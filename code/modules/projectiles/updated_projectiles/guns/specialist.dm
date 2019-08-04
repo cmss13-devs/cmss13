@@ -286,6 +286,7 @@
 	var/recycletime = 120
 	var/long_range_cooldown = 2
 	var/blip_type = "detector"
+	var/iff_signal = ACCESS_IFF_MARINE
 	gun_skill_category = GUN_SKILL_SMARTGUN
 	attachable_allowed = list(
 						/obj/item/attachable/heavy_barrel,
@@ -617,8 +618,8 @@
 		if(isrobot(M)) continue
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(istype(H.wear_ear, /obj/item/device/radio/headset/almayer))
-				continue //device detects marine headset and ignores the wearer.
+			if(H.get_target_lock(iff_signal))
+				continue
 		ping_count++
 
 		if(human_user)

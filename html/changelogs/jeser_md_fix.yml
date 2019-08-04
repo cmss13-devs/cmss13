@@ -1,0 +1,6 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - tweak: "Changed how Motion Detectors check for friendly contacts. Marines won't trigger pings if they change or lose their headsets now."

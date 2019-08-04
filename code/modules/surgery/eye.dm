@@ -28,8 +28,8 @@
 	/obj/item/shard = 50, 		\
 	)
 
-	min_duration = EYE_CUT_MIN_DURATION
-	max_duration = EYE_CUT_MAX_DURATION
+	min_duration = SCALPEL_MIN_DURATION
+	max_duration = SCALPEL_MAX_DURATION
 	eye_step = 0
 
 /datum/surgery_step/eye/cut_open/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
@@ -60,8 +60,8 @@
 	/obj/item/tool/kitchen/utensil/fork = 50
 	)
 
-	min_duration = EYE_LIFT_MIN_DURATION
-	max_duration = EYE_LIFT_MAX_DURATION
+	min_duration = RETRACTOR_MIN_DURATION
+	max_duration = RETRACTOR_MAX_DURATION
 	eye_step = 1
 
 /datum/surgery_step/eye/lift_eyes/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
@@ -90,8 +90,8 @@
 	/obj/item/device/assembly/mousetrap = 10 //I don't know. Don't ask me. But I'm leaving it because hilarity.
 	)
 
-	min_duration = EYE_MEND_MIN_DURATION
-	max_duration = EYE_MEND_MAX_DURATION
+	min_duration = HEMOSTAT_MIN_DURATION
+	max_duration = HEMOSTAT_MAX_DURATION
 	eye_step = 2
 
 /datum/surgery_step/eye/mend_eyes/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
@@ -122,8 +122,8 @@
 	/obj/item/tool/weldingtool = 25
 	)
 	
-	min_duration = EYE_CAUTERISE_MIN_DURATION
-	max_duration = EYE_CAUTERISE_MAX_DURATION
+	min_duration = CAUTERY_MIN_DURATION
+	max_duration = CAUTERY_MAX_DURATION
 	eye_step = 3
 
 /datum/surgery_step/eye/cauterize/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)

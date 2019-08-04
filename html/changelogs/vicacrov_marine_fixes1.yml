@@ -1,0 +1,9 @@
+author: Vicacrov
+
+delete-after: True
+
+changes: 
+  - bugfix: "Marine - Fixed the dropship weapons console not having an access requirement."
+  - bugfix: "Marine - Fixed being able to take out pills from belts while being handcuffed."
+  - bugfix: "Marine - Fixed some steps in surgery being too slow, cleaned up its timecode."
+  - bugfix: "Marine - Fixed the harebell's description."

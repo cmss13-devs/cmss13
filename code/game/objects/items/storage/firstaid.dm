@@ -281,6 +281,10 @@
 					return 0
 				if(user.get_active_hand())
 					return 0
+				var/mob/living/carbon/C = user
+				if(C.handcuffed)
+					to_chat(user, SPAN_WARNING("You are handcuffed!"))
+					return
 				if(contents.len)
 					var/obj/item/I = contents[1]
 					if(user.put_in_active_hand(I))

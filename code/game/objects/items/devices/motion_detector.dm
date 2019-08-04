@@ -29,6 +29,7 @@
 	var/recycletime = 120
 	var/long_range_cooldown = 2
 	var/blip_type = "detector"
+	var/iff_signal = ACCESS_IFF_MARINE			//allows making PMC versions of MD.
 	actions_types = list(/datum/action/item_action)
 
 /obj/item/device/motiondetector/update_icon()
@@ -130,8 +131,9 @@
 		if(isrobot(M)) continue
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(istype(H.wear_ear, /obj/item/device/radio/headset/almayer))
-				continue //device detects marine headset and ignores the wearer.
+			if(H.get_target_lock(iff_signal))
+				continue
+
 		ping_count++
 
 		if(human_user)

@@ -283,6 +283,9 @@
 
 			if("human")				M.change_mob_type( /mob/living/carbon/human , null, null, delmob, href_list["species"])
 			if("monkey")			M.change_mob_type( /mob/living/carbon/human/monkey , null, null, delmob )
+			if("farwa")			M.change_mob_type( /mob/living/carbon/human/farwa , null, null, delmob )
+			if("neaera")			M.change_mob_type( /mob/living/carbon/human/neaera , null, null, delmob )
+			if("yiren")			M.change_mob_type( /mob/living/carbon/human/yiren , null, null, delmob )
 			if("robot")				M.change_mob_type( /mob/living/silicon/robot , null, null, delmob )
 			if("cat")				M.change_mob_type( /mob/living/simple_animal/cat , null, null, delmob )
 			if("runtime")			M.change_mob_type( /mob/living/simple_animal/cat/Runtime , null, null, delmob )
@@ -292,10 +295,6 @@
 			if("coffee")			M.change_mob_type( /mob/living/simple_animal/crab/Coffee , null, null, delmob )
 			if("parrot")			M.change_mob_type( /mob/living/simple_animal/parrot , null, null, delmob )
 			if("polyparrot")		M.change_mob_type( /mob/living/simple_animal/parrot/Poly , null, null, delmob )
-			if("constructarmoured")	M.change_mob_type( /mob/living/simple_animal/construct/armoured , null, null, delmob )
-			if("constructbuilder")	M.change_mob_type( /mob/living/simple_animal/construct/builder , null, null, delmob )
-			if("constructwraith")	M.change_mob_type( /mob/living/simple_animal/construct/wraith , null, null, delmob )
-			if("shade")				M.change_mob_type( /mob/living/simple_animal/shade , null, null, delmob )
 
 
 	/////////////////////////////////////new ban stuff
@@ -849,10 +848,10 @@
 			notes_add(mob_key, "Banned by [usr.client.ckey]|Duration: [mins] minutes|Reason: [sanitize(reason)]", usr)
 		qdel(mob_client)
 
-	else if(href_list["lazyban"])
+	else if(href_list["eorgban"])
 		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))  return
 
-		var/mob/M = locate(href_list["lazyban"])
+		var/mob/M = locate(href_list["eorgban"])
 		if(!ismob(M)) return
 
 		if(M.client && M.client.admin_holder)	return	//admins cannot be banned. Even if they could, the ban doesn't affect them anyway
@@ -863,21 +862,10 @@
 
 		var/mins = 0
 		var/reason = ""
-		switch(alert("Are you sure you want to lazyban this person?", , "Yes", "No"))
+		switch(alert("Are you sure you want to EORG ban [M.ckey]?", , "Yes", "No"))
 			if("Yes")
-				switch(alert("Reason?", , "Disobeying staff", "Arguing with staff", "EORG"))
-					if("Disobeying staff")
-						mins = 4320
-						reason = "Expressly disobeying staff"
-					if("Arguing with staff")
-						mins = 4320
-						reason = "Needlessly talking back and/or arguing with staff members"
-					if("EORG")
-						switch(alert("Which offense?", ,"1st", "2nd", "3rd or more"))
-							if("1st") mins = 180
-							if("2nd") mins = 720
-							if("3rd or more") mins = 1440
-						reason = "EORG"
+				mins = 180
+				reason = "EORG"
 			if("No")
 				return
 		AddBan(M.ckey, M.computer_id, reason, usr.ckey, 1, mins)
@@ -1253,6 +1241,16 @@
 		else
 			to_chat(usr, "Admin Rejuvinates have been disabled")
 
+	else if(href_list["makealien"])
+		if(!check_rights(R_SPAWN))	return
+
+		var/mob/living/carbon/human/H = locate(href_list["makealien"])
+		if(!istype(H))
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			return
+
+		usr.client.cmd_admin_alienize(H)
+
 	else if(href_list["makeai"])
 		if(!check_rights(R_SPAWN))	return
 
@@ -1264,16 +1262,6 @@
 		message_admins(SPAN_DANGER("Admin [key_name_admin(usr)] AIized [key_name_admin(H)]!"), 1)
 		log_admin("[key_name(usr)] AIized [key_name(H)]")
 		H.AIize()
-
-	else if(href_list["makealien"])
-		if(!check_rights(R_SPAWN))	return
-
-		var/mob/living/carbon/human/H = locate(href_list["makealien"])
-		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
-			return
-
-		usr.client.cmd_admin_alienize(H)
 
 	else if(href_list["changehivenumber"])
 		if(!check_rights(R_DEBUG|R_ADMIN))	return
@@ -1357,6 +1345,38 @@
 
 		usr.client.cmd_admin_animalize(M)
 
+
+	else if(href_list["xenoupgrade"])
+		if(!check_rights(R_ADMIN))
+			return
+
+		var/mob/living/carbon/Xenomorph/X = locate(href_list["xenoupgrade"])
+		
+		if(X.upgrade == -1)
+			to_chat(usr, "You cannot upgrade this caste.")
+
+		if(alert(usr, "Are you sure you want to upgrade this xenomorph?", "Confirmation", "Yes", "No") != "Yes")
+			return
+
+		var/upgrade_list = input("Choose a level.") in list("Young", "Mature", "Elder", "Ancient", "Cancel")
+
+		var/level
+
+		switch(upgrade_list)
+			if("Young")
+				level = 0
+			if("Mature")
+				level = 1
+			if("Elder")
+				level = 2
+			if("Ancient")
+				level = 3
+			if("Cancel")
+				return
+
+		X.upgrade_xeno(level)
+		log_admin("[usr.ckey] has changed the maturation level of [X] ([X.ckey]) to [level].")
+		message_admins("[usr.ckey] has changed the maturation level of [X] ([X.ckey]) to [level].")
 
 /***************** BEFORE**************
 

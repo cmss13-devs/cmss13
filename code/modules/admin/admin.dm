@@ -67,95 +67,59 @@ var/global/floorIsLava = 0
 		to_chat(usr, "Error: you are not an admin!")
 		return
 
-	var/body = "<html><head><title>Options for [M.key]</title></head>"
-	body += "<body>Options panel for <b>[M]</b>"
+	var/body = "<html><head><title>Options for [M.key] played by [M.client]</title></head>"
+	body += "<body>Name: <b>[M]</b>"
 	if(M.client)
-		body += " played by <b>[M.client]</b> "
+		body += " - Ckey: <b>[M.client]</b> "
 		body += "\[<A href='?src=\ref[src];editrights=show'>[M.client.admin_holder ? M.client.admin_holder.rank : "Player"]</A>\]"
 
 	if(istype(M, /mob/new_player))
-		body += " <B>Hasn't Entered Game</B> "
+		body += "| <B>Hasn't Entered Game</B> "
 	else
-		body += " \[<A href='?src=\ref[src];revive=\ref[M]'>Heal</A>\] "
+		body += {" \[<A href='?src=\ref[src];revive=\ref[M]'>Heal</A>\]
+		<br><b>Mob type</b> = [M.type]<br>
+		"}
 
 	body += {"
-		<br><br>\[
+		\[
 		<a href='?_src_=vars;Vars=\ref[M]'>VV</a> -
 		<a href='?src=\ref[src];traitor=\ref[M]'>TP</a> -
 		<a href='?src=\ref[usr];priv_msg=\ref[M]'>PM</a> -
 		<a href='?src=\ref[src];subtlemessage=\ref[M]'>SM</a> -
 		<a href='?src=\ref[src];adminplayerobservejump=\ref[M]'>JMP</a> -
-		<a href='?src=\ref[src];adminplayerfollow=\ref[M]'>FLW</a>\]</b><br>
-		<b>Mob type</b> = [M.type]<br><br>
-		<A href='?src=\ref[src];boot2=\ref[M]'>Kick</A> |
+		<a href='?src=\ref[src];adminplayerfollow=\ref[M]'>FLW</a> ]<br>
+		<br><b>Admin Tools:</b><br>
+		\[ Ban:
 		<A href='?src=\ref[src];newban=\ref[M]'>Ban</A> |
-		<A href='?src=\ref[src];lazyban=\ref[M]'>LazyBan</A> |
+		<A href='?src=\ref[src];eorgban=\ref[M]'>EORG Ban</A> |
 		<A href='?src=\ref[src];jobban2=\ref[M]'>Jobban</A> |
-		<A href='?src=\ref[src];notes=show;mob=\ref[M]'>Notes</A> |
+		<A href='?src=\ref[src];notes=show;mob=\ref[M]'>Notes</A> ]
 	"}
 
 	if(M.client)
-		body += "\ <A href='?_src_=admin_holder;sendbacktolobby=\ref[M]'> Send back to Lobby</A>"
+		body += "\ <br>"
 		var/muted = M.client.prefs.muted
-		body += {"<br><b>Mute: </b>
-			\[<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_IC]'><font color='[(muted & MUTE_IC)?"red":"blue"]'>IC</font></a> |
+		body += {"\[ Mute: <A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_IC]'><font color='[(muted & MUTE_IC)?"red":"blue"]'>IC</font></a> |
 			<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_OOC]'><font color='[(muted & MUTE_OOC)?"red":"blue"]'>OOC</font></a> |
-			<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_PRAY]'><font color='[(muted & MUTE_PRAY)?"red":"blue"]'>PRAY</font></a> |
-			<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_ADMINHELP]'><font color='[(muted & MUTE_ADMINHELP)?"red":"blue"]'>ADMINHELP</font></a> |
-			<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_DEADCHAT]'><font color='[(muted & MUTE_DEADCHAT)?"red":"blue"]'>DEADCHAT</font></a>\]
-			(<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_ALL]'><font color='[(muted & MUTE_ALL)?"red":"blue"]'>toggle all</font></a>)
+			<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_PRAY]'><font color='[(muted & MUTE_PRAY)?"red":"blue"]'>Pray</font></a> |
+			<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_ADMINHELP]'><font color='[(muted & MUTE_ADMINHELP)?"red":"blue"]'>Ahelp</font></a> |
+			<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_DEADCHAT]'><font color='[(muted & MUTE_DEADCHAT)?"red":"blue"]'>Dchat</font></a> |
+			 <A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_ALL]'><font color='[(muted & MUTE_ALL)?"red":"blue"]'>Toggle All</font></a> ]
 		"}
 
-	body += {"<br><br>
-		<A href='?src=\ref[src];jumpto=\ref[M]'><b>Jump to</b></A> |
-		<A href='?src=\ref[src];getmob=\ref[M]'>Get</A> |
-		<A href='?src=\ref[src];sendmob=\ref[M]'>Send To</A>
-		<br><br>
-		[check_rights(R_ADMIN|R_MOD,0) ? "<A href='?src=\ref[src];traitor=\ref[M]'>Traitor panel</A> |" : "" ]
-		<A href='?src=\ref[src];narrateto=\ref[M]'>Narrate to</A> |
-		<A href='?src=\ref[src];subtlemessage=\ref[M]'>Subtle message</A>
+	body += {"<br>\[ Misc:
+		<A href='?_src_=admin_holder;sendbacktolobby=\ref[M]'>Back to Lobby</A> | <A href='?src=\ref[src];getmob=\ref[M]'>Get</A> | <A href='?src=\ref[src];narrateto=\ref[M]'>Narrate</A> | <A href='?src=\ref[src];sendmob=\ref[M]'>Send</A> ]
 	"}
-
+	
 	if (M.client)
 		if(!istype(M, /mob/new_player))
-			body += "<br><br>"
-			body += "<b>Transformation:</b>"
-			body += "<br>"
-
-			//Monkey
-			if(ismonkey(M))
-				body += "<B>Monkeyized</B> |"
-			else
-				body += "<A href='?src=\ref[src];monkeyone=\ref[M]'>Monkeyize</A> | "
-
-			//Corgi
-			// if(iscorgi(M))
-			// 	body += "<B>Corgized</B>|"
-			// else
-			// 	body += "<A href='?src=\ref[src];corgione=\ref[M]'>Corgize</A>|"
-
-			//AI / Cyborg
-			if(isAI(M))
-				body += "<B>Is an AI</B> "
-			else if(ishuman(M))
-				body += {"<A href='?src=\ref[src];makeai=\ref[M]'>Make AI</A> |
-					<A href='?src=\ref[src];makerobot=\ref[M]'>Make Robot</A> |
-					<A href='?src=\ref[src];makealien=\ref[M]'>Make Alien</A> |
-				"}
-			//Simple Animals
-			if(isanimal(M))
-				body += "<A href='?src=\ref[src];makeanimal=\ref[M]'>Re-Animalize</A> | "
-			else
-				body += "<A href='?src=\ref[src];makeanimal=\ref[M]'>Animalize</A> | "
-
-			//Makin Yautjas
-			body += "<a href='?src=\ref[src];makeyautja=\ref[M]'>Make Yautja</a>"
-
 			body += {"<br><br>
-				<b>Rudimentary transformation:</b><font size=2><br>These transformations only create a new mob type and copy stuff over. They do not take into account MMIs and similar mob-specific things. The buttons in 'Transformations' are preferred, when possible.</font><br>
-				\[ <A href='?src=\ref[src];simplemake=observer;mob=\ref[M]'>Observer</A> \]
-				<br>\[ Humanoid: <A href='?src=\ref[src];simplemake=human;mob=\ref[M]'>Human</A> |
-				<A href='?src=\ref[src];simplemake=monkey;mob=\ref[M]'>Monkey</A> \]
+				<b>Transformation:</b>
+				<br>\[ Humanoid: <A href='?src=\ref[src];simplemake=human;mob=\ref[M]'>Human</A> | <a href='?src=\ref[src];makeyautja=\ref[M]'>Yautja</a> |
+				<A href='?src=\ref[src];simplemake=farwa;mob=\ref[M]'>Farwa</A> |
+				<A href='?src=\ref[src];simplemake=monkey;mob=\ref[M]'>Monkey</A> |
+				<A href='?src=\ref[src];simplemake=neaera;mob=\ref[M]'>Neaera</A> |
+				<A href='?src=\ref[src];simplemake=yiren;mob=\ref[M]'>Yiren</A> \]
 				<br>\[ Alien Tier 0: <A href='?src=\ref[src];simplemake=larva;mob=\ref[M]'>Larva</A> \]
 				<br>\[ Alien Tier 1: <A href='?src=\ref[src];simplemake=runner;mob=\ref[M]'>Runner</A> |
 				<A href='?src=\ref[src];simplemake=drone;mob=\ref[M]'>Drone</A> |
@@ -174,29 +138,23 @@ var/global/floorIsLava = 0
 				<br>\[ Alien Tier 4: <A href='?src=\ref[src];simplemake=queen;mob=\ref[M]'>Queen</A> \]
 				<br>\[ Alien Specials: <A href='?src=\ref[src];simplemake=ravenger;mob=\ref[M]'>Ravenger</A> |
 				<A href='?src=\ref[src];simplemake=predalien;mob=\ref[M]'>Predalien</A> \]
-				<br>\[ Silicon: <A href='?src=\ref[src];simplemake=robot;mob=\ref[M]'>Robot</A> \]
-				<br>\[ Simple Mobs: <A href='?src=\ref[src];simplemake=cat;mob=\ref[M]'>Cat</A> |
+				<br>\[ Misc: <A href='?src=\ref[src];makeai=\ref[M]'>AI</A> | <A href='?src=\ref[src];simplemake=cat;mob=\ref[M]'>Cat</A> |
 				<A href='?src=\ref[src];simplemake=corgi;mob=\ref[M]'>Corgi</A> |
-				<A href='?src=\ref[src];simplemake=crab;mob=\ref[M]'>Crab</A> \]
-				<br>
+				<A href='?src=\ref[src];simplemake=crab;mob=\ref[M]'>Crab</A> | <A href='?src=\ref[src];simplemake=observer;mob=\ref[M]'>Observer</A> | <A href='?src=\ref[src];simplemake=robot;mob=\ref[M]'>Robot</A> \]
 			"}
 
-	body += {"<br><br>
-		<b>Other actions:</b>
+	body += {"<br><br><b>Other actions:</b>
 		<br>
-		<A href='?src=\ref[src];forcespeech=\ref[M]'>Forcesay</A> |
-		<A href='?src=\ref[src];forceemote=\ref[M]'>Force emote</A> |
-		<A href='?src=\ref[src];tdome1=\ref[M]'>Thunderdome 1</A> |
-		<A href='?src=\ref[src];tdome2=\ref[M]'>Thunderdome 2</A> |
-		<A href='?src=\ref[src];tdomeadmin=\ref[M]'>Thunderdome Admin</A> |
-		<A href='?src=\ref[src];tdomeobserve=\ref[M]'>Thunderdome Observer</A>
+		\[ Force: <A href='?src=\ref[src];forcespeech=\ref[M]'>Force Say</A> | <A href='?src=\ref[src];forceemote=\ref[M]'>Force Emote</A> ]<br>
+		\[ Thunderdome: <A href='?src=\ref[src];tdome1=\ref[M]'>Thunderdome 1</A> | <A href='?src=\ref[src];tdome2=\ref[M]'>Thunderdome 2</A> ]
 	"}
 
 	if(ishuman(M))
-		body += {"
-		<br><A href='?src=\ref[src];zombieinfect=\ref[M]'>Infect with zombie virus</A>
-		<br><A href='?src=\ref[src];larvainfect=\ref[M]'>Infect with xeno larva</A>
+		body += {"<br>\[ Infection: <A href='?src=\ref[src];larvainfect=\ref[M]'>Xeno Larva</A> | <A href='?src=\ref[src];zombieinfect=\ref[M]'>Zombie Virus</A> ]
 	"}
+	
+	if(isXeno(M))
+		body += "<br>\[ Upgrade: <A href='?src=\ref[src];xenoupgrade=\ref[M]'>Upgrade Xeno</A> ]"
 
 	body += {"<br>
 		</body></html>

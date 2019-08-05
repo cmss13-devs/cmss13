@@ -82,6 +82,7 @@
 	desc = "A huge, nasty red alien with enormous scythed claws."
 	icon = 'icons/Xeno/xenomorph_64x64.dmi'
 	icon_state = "Ravager Walking"
+	plasma_types = list(PLASMA_CATECHOLAMINE)
 	var/used_charge = 0
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard

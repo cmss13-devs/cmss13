@@ -129,6 +129,7 @@
 "as" = (
 /obj/structure/table,
 /obj/item/clothing/under/colonist,
+/obj/item/paper/research_notes,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "whitebluecorner";
@@ -160,6 +161,7 @@
 	dir = 4;
 	icon_state = "tube1"
 	},
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "whitebluecorner";
@@ -268,6 +270,8 @@
 /area/lv624/lazarus/medbay)
 "aE" = (
 /obj/structure/closet/crate/medical,
+/obj/item/device/healthanalyzer/objective,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "whitebluecorner";
@@ -768,6 +772,34 @@
 	tag = "icon-whitebluecorner"
 	},
 /area/lv624/lazarus/medbay)
+"hL" = (
+/obj/item/document_objective/paper,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/space)
+"CZ" = (
+/obj/item/paper/research_notes,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"DR" = (
+/obj/structure/table/reinforced{
+	dir = 4;
+	flipped = 1
+	},
+/obj/item/paper/research_notes,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
 
 (1,1,1) = {"
 ac
@@ -851,10 +883,10 @@ ab
 ah
 an
 aq
-aq
+hL
 aG
 aP
-aq
+CZ
 aq
 bi
 aq
@@ -1028,7 +1060,7 @@ aV
 aq
 bg
 af
-bA
+DR
 bA
 bA
 ag

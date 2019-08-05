@@ -77,6 +77,7 @@
 	desc = "A beefy, fast alien with sharp claws."
 	icon = 'icons/Xeno/xenomorph_48x48.dmi'
 	icon_state = "Lurker Walking"
+	plasma_types = list(PLASMA_CATECHOLAMINE)
 	pixel_x = -12
 	old_x = -12
 	tier = 2

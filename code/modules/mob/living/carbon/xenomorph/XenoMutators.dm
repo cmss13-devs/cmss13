@@ -103,6 +103,7 @@
 	B.mutation_type = BOILER_RAILGUN
 	B.tileoffset = 9
 	B.viewsize = 14
+	B.plasma_types -= PLASMA_NEUROTOXIN
 	mutator_update_actions(B)
 	MS.recalculate_actions(description)
 
@@ -144,6 +145,7 @@
 
 	var/mob/living/carbon/Xenomorph/Drone/D = MS.xeno
 	D.phero_modifier += XENO_PHERO_MOD_LARGE
+	D.plasma_types += PLASMA_PHEROMONE
 	mutator_update_actions(D)
 	MS.recalculate_actions(description)
 	D.recalculate_pheromones()
@@ -164,6 +166,7 @@
 		return
 	
 	var/mob/living/carbon/Xenomorph/Spitter/S = MS.xeno
+	S.plasma_types -= PLASMA_NEUROTOXIN
 	mutator_update_actions(S)
 	MS.recalculate_actions(description)
 
@@ -206,6 +209,7 @@
 		return
 	var/mob/living/carbon/Xenomorph/Carrier/C = MS.xeno
 	MS.egg_sac = TRUE
+	C.plasma_types += PLASMA_EGG
 	mutator_update_actions(C)
 	MS.recalculate_actions(description)
 	
@@ -313,6 +317,7 @@
 	P.speed_modifier -= XENO_SPEED_MOD_VERYLARGE
 	P.evasion_modifier += XENO_EVASION_MOD_ULTRA + XENO_EVASION_MOD_VERYLARGE // Best in game evasion.
 	P.phero_modifier -= XENO_PHERO_MOD_LARGE;
+	P.plasma_types = list(PLASMA_CATECHOLAMINE)
 	mutator_update_actions(P)
 	MS.recalculate_actions(description)
 	P.recalculate_everything()
@@ -339,6 +344,7 @@
 	P.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_MED;
 	P.speed_modifier += XENO_SPEED_MOD_ULTRA + XENO_SPEED_MOD_VERYLARGE;
 	P.phero_modifier -= XENO_PHERO_MOD_SMALL;
+	P.plasma_types = list(PLASMA_NEUROTOXIN,PLASMA_CHITIN)
 	mutator_update_actions(P);
 	MS.recalculate_actions(description)
 	P.recalculate_everything()

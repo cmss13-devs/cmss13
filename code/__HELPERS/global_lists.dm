@@ -41,8 +41,14 @@ var/global/list/xeno_datum_list = list() // multi-d list of xeno datums
 
 var/global/list/whiskey_outpost_waves = list()
 
-var/global/list/chemical_reactions_list				//List of all /datum/chemical_reaction datums. Used during chemical reactions
+var/global/list/chemical_reactions_filtered_list	//List of all /datum/chemical_reaction datums filtered by reaction components. Used during chemical reactions
+var/global/list/chemical_reactions_list				//List of all /datum/reagent datums indexed by reaction id. Used to search for the result instead of the components.
 var/global/list/chemical_reagents_list				//List of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
+var/global/list/chemical_objective_list	 = list()	//List of all objective reagents indexed by ID associated with the objective value
+var/global/list/chemical_identified_list = list()	//List of all identified objective reagents indexed by ID associated with the objective value
+var/global/list/chemical_gen_classes_list			//List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
+var/global/list/chemical_gen_reactions_list			//List of all generated reactions for reagents, indexed by ID associated with the var
+var/global/list/chemical_gen_stats_list = list()	//List of all generated stats for generated reagents. Indexed by ID associated with the var
 var/global/list/landmarks_list = list()				//List of all landmarks created
 var/global/list/surgery_steps = list()				//List of all surgery steps  |BS12
 var/global/list/side_effects = list()				//List of all medical sideeffects types by thier names |BS12
@@ -250,10 +256,10 @@ var/global/round_should_check_for_win = TRUE
 /* // Uncomment to debug chemical reaction list.
 /client/verb/debug_chemical_list()
 
-	for (var/reaction in chemical_reactions_list)
-		. += "chemical_reactions_list\[\"[reaction]\"\] = \"[chemical_reactions_list[reaction]]\"\n"
-		if(islist(chemical_reactions_list[reaction]))
-			var/list/L = chemical_reactions_list[reaction]
+	for (var/reaction in chemical_reactions_filtered_list)
+		. += "chemical_reactions_filtered_list\[\"[reaction]\"\] = \"[chemical_reactions_filtered_list[reaction]]\"\n"
+		if(islist(chemical_reactions_filtered_list[reaction]))
+			var/list/L = chemical_reactions_filtered_list[reaction]
 			for(var/t in L)
 				. += "    has: [t]\n"
 	world << .

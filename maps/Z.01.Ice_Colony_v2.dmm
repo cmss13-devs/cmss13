@@ -5362,6 +5362,7 @@
 /area/ice_colony/surface/hydroponics/north)
 "aoS" = (
 /obj/structure/closet/crate/hydroponics,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor{
 	tag = "icon-darkgreen2 (SOUTHEAST)";
 	icon_state = "darkgreen2";
@@ -6585,10 +6586,9 @@
 /turf/open/floor,
 /area/ice_colony/surface/mining)
 "arO" = (
-/obj/item/roller{
-	tag = "icon-down";
-	icon_state = "down"
-	},
+/obj/structure/table,
+/obj/item/paper/research_notes,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor{
 	tag = "icon-whitered (EAST)";
 	icon_state = "whitered";
@@ -6721,10 +6721,8 @@
 	},
 /area/ice_colony/surface/clinic/storage)
 "ase" = (
-/obj/item/roller{
-	tag = "icon-down";
-	icon_state = "down"
-	},
+/obj/structure/table,
+/obj/item/paper/research_notes,
 /turf/open/floor{
 	tag = "icon-whitered (SOUTHEAST)";
 	icon_state = "whitered";
@@ -7596,6 +7594,7 @@
 /area/ice_colony/surface/clinic/lobby)
 "auh" = (
 /obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
 /turf/open/floor{
 	tag = "icon-whitered (SOUTHEAST)";
 	icon_state = "whitered";
@@ -7649,6 +7648,7 @@
 /area/ice_colony/surface/clinic/storage)
 "aup" = (
 /obj/structure/table/woodentable,
+/obj/item/paper/research_notes,
 /turf/open/floor{
 	tag = "icon-darkgreen2 (NORTH)";
 	icon_state = "darkgreen2";
@@ -10532,6 +10532,7 @@
 /area/ice_colony/surface/garage/two)
 "aBv" = (
 /obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkblue2";
@@ -18347,6 +18348,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/cliff)
 "aTZ" = (
+/obj/structure/table,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkyellow2";
@@ -28193,6 +28195,8 @@
 	icon_state = "intact";
 	tag = "icon-intact (NORTHEAST)"
 	},
+/obj/item/paper/research_notes,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor{
 	tag = "icon-whitered (WEST)";
 	icon_state = "whitered";
@@ -29945,6 +29949,7 @@
 /area/ice_colony/underground/medical/lobby)
 "bxn" = (
 /obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
 /turf/open/floor{
 	tag = "icon-whitered";
 	icon_state = "whitered";
@@ -30746,6 +30751,7 @@
 /area/ice_colony/underground/medical/storage)
 "bzD" = (
 /obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkblue2";
@@ -30937,6 +30943,8 @@
 	pixel_y = -24;
 	start_charge = 0
 	},
+/obj/structure/rack,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor{
 	tag = "icon-whitered";
 	icon_state = "whitered";
@@ -32100,6 +32108,7 @@
 "bDc" = (
 /obj/structure/table,
 /obj/item/paper_bin,
+/obj/item/paper/research_notes,
 /turf/open/floor{
 	tag = "icon-darkblue2";
 	icon_state = "darkblue2";
@@ -33695,6 +33704,8 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
+/obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkpurple2";
@@ -33711,6 +33722,7 @@
 /area/ice_colony/underground/research/work)
 "bHb" = (
 /obj/machinery/chem_dispenser,
+/obj/item/reagent_container/glass/beaker/bluespace,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "darkpurple2";
@@ -34079,7 +34091,7 @@
 /area/ice_colony/underground/security/hallway)
 "bHV" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_container/glass/beaker/bluespace,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkpurple2";
@@ -41103,6 +41115,14 @@
 	dir = 1
 	},
 /area/ice_colony/underground/reception/checkpoint_north)
+"iBu" = (
+/obj/structure/table/reinforced,
+/obj/item/paper/research_notes,
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
+/area/ice_colony/underground/research)
 "jCk" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
@@ -41190,6 +41210,15 @@
 	tag = "icon-darkblue2"
 	},
 /area/ice_colony/surface/dorms)
+"nup" = (
+/obj/structure/rack,
+/obj/item/storage/fancy/vials/random,
+/turf/open/floor{
+	tag = "icon-darkpurple2 (EAST)";
+	icon_state = "darkpurple2";
+	dir = 4
+	},
+/area/ice_colony/underground/research/storage)
 "oHs" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating/icefloor,
@@ -41241,6 +41270,12 @@
 	tag = "icon-darkpurple2 (EAST)"
 	},
 /area/ice_colony/underground/research)
+"rKn" = (
+/obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
+/obj/item/paper/research_notes,
+/turf/open/floor/wood,
+/area/ice_colony/underground/command/pv1)
 "rKz" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
@@ -41421,10 +41456,20 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hangar/alpha)
+"wue" = (
+/obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
+/turf/open/floor/wood,
+/area/ice_colony/surface/command/control/pv1)
 "xri" = (
 /obj/item/document_objective/folder,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
+"yle" = (
+/obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
+/turf/open/floor/wood,
+/area/ice_colony/surface/command/crisis)
 
 (1,1,1) = {"
 aaa
@@ -46703,7 +46748,7 @@ byM
 bBd
 bBF
 bCm
-bCM
+iBu
 bXT
 bCk
 bBE
@@ -49525,7 +49570,7 @@ bBN
 bCt
 bCt
 bCt
-bEu
+nup
 bEu
 bFR
 mQa
@@ -63626,7 +63671,7 @@ byp
 buL
 btm
 bEF
-bFn
+rKn
 bFn
 bGI
 bHE
@@ -69432,7 +69477,7 @@ aHg
 aHD
 aHT
 aIp
-aII
+yle
 aII
 aGL
 aCX
@@ -73942,7 +73987,7 @@ aGj
 aGR
 aHs
 aHK
-aIf
+wue
 aIf
 aIP
 aBG

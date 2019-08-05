@@ -320,6 +320,29 @@ var/global/floorIsLava = 0
 	dat += "</table>"
 	usr << browse(dat, "window=ban;size=400x400")
 
+/datum/admins/proc/Chem()
+	if(!check_rights(R_MOD)) return
+		
+	var/dat = {"<center><B>Chem Panel</B></center><hr>\n"}
+	if(check_rights(R_MOD))	
+		dat += {"<A href='?src=\ref[src];chem_panel=view_reagent'>View Reagent</A><br>
+				"}
+	if(check_rights(R_VAREDIT))
+		dat += {"<A href='?src=\ref[src];chem_panel=view_reaction'>View Reaction</A><br>
+				<br>"}
+	if(check_rights(R_SPAWN))	
+		dat += {"<A href='?src=\ref[src];chem_panel=spawn_reagent'>Spawn Reagent in Container</A><br>
+				<br>"}
+	if(check_rights(R_FUN))
+		dat += {"<A href='?src=\ref[src];chem_panel=create_random_reagent'>Generate Reagent</A><br>
+				<br>
+				<A href='?src=\ref[src];chem_panel=create_custom_reagent'>Create Custom Reagent</A><br>
+				<A href='?src=\ref[src];chem_panel=create_custom_reaction'>Create Custom Reaction</A><br>
+				"}
+	
+	usr << browse(dat, "window=chempanel;size=210x300")
+	return
+
 /datum/admins/proc/Game()
 	if(!check_rights(0))	return
 

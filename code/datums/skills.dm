@@ -19,6 +19,7 @@
 	var/leadership = SKILL_LEAD_NOVICE
 	var/medical = SKILL_MEDICAL_DEFAULT
 	var/surgery = SKILL_SURGERY_DEFAULT
+	var/research = SKILL_RESEARCH_DEFAULT
 	var/pilot = SKILL_PILOT_DEFAULT
 	var/police = SKILL_POLICE_DEFAULT
 	var/powerloader = SKILL_POWERLOADER_DEFAULT
@@ -53,6 +54,7 @@ CIVILIAN
 /datum/skills/civilian/survivor/scientist
 	name = "Survivor Scientist"
 	medical = SKILL_MEDICAL_MEDIC
+	research = SKILL_RESEARCH_TRAINED
 
 /datum/skills/civilian/survivor/chef
 	name = "Survivor Chef"
@@ -131,7 +133,8 @@ COMMAND STAFF
 	firearms = SKILL_FIREARMS_UNTRAINED
 	leadership = SKILL_LEAD_EXPERT
 	medical = SKILL_MEDICAL_CMO
-	surgery = SKILL_SURGERY_EXPERT
+	surgery = SKILL_SURGERY_MASTER
+	research = SKILL_RESEARCH_TRAINED
 	melee_weapons = SKILL_MELEE_WEAK
 	police = SKILL_POLICE_FLASH
 
@@ -169,6 +172,15 @@ MILITARY NONCOMBATANT
 	medical = SKILL_MEDICAL_DOCTOR
 	melee_weapons = SKILL_MELEE_WEAK
 	surgery = SKILL_SURGERY_TRAINED
+
+/datum/skills/researcher
+	name = "Researcher"
+	cqc = SKILL_CQC_WEAK
+	firearms = SKILL_FIREARMS_UNTRAINED
+	medical = SKILL_MEDICAL_DOCTOR
+	melee_weapons = SKILL_MELEE_WEAK
+	surgery = SKILL_SURGERY_BEGINNER
+	research = SKILL_RESEARCH_TRAINED
 
 /datum/skills/pilot
 	name = "Pilot Officer"
@@ -210,7 +222,8 @@ SYNTHETIC
 	spec_weapons = SKILL_SPEC_TRAINED
 	leadership = SKILL_LEAD_EXPERT
 	medical = SKILL_MEDICAL_CMO
-	surgery = SKILL_SURGERY_EXPERT
+	surgery = SKILL_SURGERY_MASTER
+	research = SKILL_RESEARCH_TRAINED
 	melee_weapons = SKILL_MELEE_SUPER
 	pilot = SKILL_PILOT_TRAINED
 	pistols = SKILL_PISTOLS_TRAINED
@@ -231,7 +244,8 @@ SYNTHETIC
 	smartgun = SKILL_SMART_TRAINED
 	spec_weapons = SKILL_SPEC_TRAINED
 	medical = SKILL_MEDICAL_DOCTOR
-	surgery = SKILL_SURGERY_TRAINED
+	surgery = SKILL_SURGERY_EXPERT
+	research = SKILL_RESEARCH_TRAINED
 	melee_weapons = SKILL_MELEE_SUPER
 	pilot = SKILL_PILOT_TRAINED
 	police = SKILL_POLICE_MP
@@ -326,7 +340,7 @@ COLONIAL LIBERATION FRONT
 /datum/skills/clf/combat_medic
 	name = "CLF Medic"
 	medical = SKILL_MEDICAL_CMO
-	surgery = SKILL_SURGERY_EXPERT
+	surgery = SKILL_SURGERY_MASTER
 
 /datum/skills/clf/leader
 	name = "CLF Leader"
@@ -550,7 +564,7 @@ MISCELLANEOUS
 	engineer = SKILL_ENGINEER_MT
 	construction = SKILL_CONSTRUCTION_MASTER
 	medical = SKILL_MEDICAL_CMO
-	surgery = SKILL_SURGERY_EXPERT
+	surgery = SKILL_SURGERY_MASTER
 	pistols = SKILL_PISTOLS_TRAINED
 	smgs = SKILL_SMGS_TRAINED
 	rifles = SKILL_RIFLES_TRAINED

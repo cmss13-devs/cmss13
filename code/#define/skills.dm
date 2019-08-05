@@ -87,12 +87,15 @@
 
 //surgery skill
 #define SKILL_SURGERY_DEFAULT	0
-#define SKILL_SURGERY_TRAINED	1 //can do surgery (Doctor)
-#define SKILL_SURGERY_EXPERT	2 //faster surgery (CMO)
+#define SKILL_SURGERY_BEGINNER	1 //can do surgery (Researcher)
+#define SKILL_SURGERY_TRAINED	2 //(Doctor)
+#define SKILL_SURGERY_EXPERT	3 //(Gen-1 Synths)
+#define SKILL_SURGERY_MASTER	4 //(CMO)
 //higher levels means faster surgery.
 
-
-
+//research skill
+#define SKILL_RESEARCH_DEFAULT	0
+#define SKILL_RESEARCH_TRAINED	1 //Allows use of research machines
 
 
 //police skill, hidden

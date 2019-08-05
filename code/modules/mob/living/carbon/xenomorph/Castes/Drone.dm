@@ -57,6 +57,7 @@
 	desc = "An Alien Drone"
 	icon = 'icons/Xeno/xenomorph_48x48.dmi'
 	icon_state = "Drone Walking"
+	plasma_types = list(PLASMA_PURPLE)
 	tier = 1
 	pixel_x = -12
 	old_x = -12

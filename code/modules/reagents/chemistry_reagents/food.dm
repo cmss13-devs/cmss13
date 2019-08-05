@@ -10,6 +10,7 @@
 	reagent_state = SOLID
 	nutriment_factor = 15 * REAGENTS_METABOLISM
 	color = "#664330" // rgb: 102, 67, 48
+	chemclass = CHEM_CLASS_RARE
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -25,12 +26,13 @@
 /datum/reagent/lipozine
 	name = "Lipozine" // The anti-nutriment.
 	id = "lipozine"
-	description = "A chemical compound that causes a powerful fat-burning reaction."
+	description = "Lowers satiation and reduces body weight by increasing ketosis and the rate of which fat is metabolized. Use to treat obesity. Large doses can cause extreme weight loss."
 	reagent_state = LIQUID
 	nutriment_factor = 10 * REAGENTS_METABOLISM
 	color = "#BBEDA4" // rgb: 187, 237, 164
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_UNCOMMON
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -53,21 +55,24 @@
 	reagent_state = LIQUID
 	nutriment_factor = 2 * REAGENTS_METABOLISM
 	color = "#792300" // rgb: 121, 35, 0
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/ketchup
 	name = "Ketchup"
 	id = "ketchup"
-	description = "Ketchup, catsup, whatever. It's tomato paste."
+	description = "Ketchup is a sweet and tangy sauce typically made from tomatoes, sugar, and vinegar, with assorted seasonings and spices."
 	reagent_state = LIQUID
 	nutriment_factor = 5 * REAGENTS_METABOLISM
 	color = "#731008" // rgb: 115, 16, 8
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/capsaicin
 	name = "Capsaicin Oil"
 	id = "capsaicin"
-	description = "This is what makes chilis hot."
+	description = "Capsaicin is a chili pepper extract with analgesic properties. Capsaicin is a neuropeptide releasing agent selective for primary sensory peripheral neurons."
 	reagent_state = LIQUID
 	color = "#B31008" // rgb: 179, 16, 8
+	chemclass = CHEM_CLASS_RARE
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -100,6 +105,7 @@
 	description = "A chemical agent used for self-defense and in police work."
 	reagent_state = LIQUID
 	color = "#B31008" // rgb: 179, 16, 8
+	chemclass = CHEM_CLASS_RARE
 
 	reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)
 		if(!istype(M, /mob/living) || has_species(M,"Horror"))
@@ -184,6 +190,7 @@
 	description = "A special oil that noticably chills the body. Extracted from Ice Peppers."
 	reagent_state = LIQUID
 	color = "#B31008" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_RARE
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -204,6 +211,7 @@
 	color = "#FFFFFF" // rgb: 255,255,255
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_COMMON
 
 	on_overdose(mob/living/M)
 		M.confused = max(M.confused, 20)
@@ -219,17 +227,19 @@
 /datum/reagent/blackpepper
 	name = "Black Pepper"
 	id = "blackpepper"
-	description = "A powder ground from peppercorns. *AAAACHOOO*"
+	description = "Black pepper is the world's most traded spice, and is one of the most common spices added to cuisines around the world. Its spiciness is due to the chemical compound piperine, which is a different kind of spicy from the capsaicin characteristic of chili peppers."
 	reagent_state = SOLID
+	chemclass = CHEM_CLASS_RARE
 	// no color (ie, black)
 
 /datum/reagent/coco
 	name = "Coco Powder"
 	id = "coco"
-	description = "A fatty, bitter paste made from coco beans."
+	description = "The cocoa bean or simply cocoa, which is also called the cacao bean or cacao, is the dried and fully fermented seed of Theobroma cacao, from which cocoa solids and cocoa butter can be extracted. "
 	reagent_state = SOLID
 	nutriment_factor = 5 * REAGENTS_METABOLISM
 	color = "#302000" // rgb: 48, 32, 0
+	chemclass = CHEM_CLASS_RARE
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -239,10 +249,11 @@
 /datum/reagent/hot_coco
 	name = "Hot Chocolate"
 	id = "hot_coco"
-	description = "Made with love! And cocoa beans."
+	description = "Heated beverage of chocolate."
 	reagent_state = LIQUID
 	nutriment_factor = 2 * REAGENTS_METABOLISM
 	color = "#403010" // rgb: 64, 48, 16
+	chemclass = CHEM_CLASS_RARE
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -254,10 +265,11 @@
 /datum/reagent/psilocybin
 	name = "Psilocybin"
 	id = "psilocybin"
-	description = "A strong psycotropic derived from certain species of mushroom."
+	description = "Psilocybin is a naturally occurring psychedelic prodrug compound produced by more than 200 species of mushrooms, collectively known as psilocybin mushrooms or Magic Mushrooms."
 	color = "#E700E7" // rgb: 231, 0, 231
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_RARE
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -312,6 +324,7 @@
 	reagent_state = LIQUID
 	nutriment_factor = 20 * REAGENTS_METABOLISM
 	color = "#302000" // rgb: 48, 32, 0
+	chemclass = CHEM_CLASS_RARE
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -332,6 +345,7 @@
 	color = "#365E30" // rgb: 54, 94, 48
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_RARE
 
 	on_overdose(mob/living/M)
 		M.apply_damage(1, BURN) //Causes chemical burns
@@ -384,7 +398,7 @@
 /datum/reagent/rice
 	name = "Rice"
 	id = "rice"
-	description = "Enjoy the great taste of nothing."
+	description = "The most widely consumed staple food on Earth. Rice is the most important grain with regard to human nutrition and caloric intake."
 	reagent_state = SOLID
 	nutriment_factor = 1 * REAGENTS_METABOLISM
 	color = "#FFFFFF" // rgb: 0, 0, 0
@@ -397,7 +411,7 @@
 /datum/reagent/cherryjelly
 	name = "Cherry Jelly"
 	id = "cherryjelly"
-	description = "Totally the best. Only to be spread on foods with excellent lateral symmetry."
+	description = "Sweet jelly made from the cherry fruit."
 	reagent_state = LIQUID
 	nutriment_factor = 1 * REAGENTS_METABOLISM
 	color = "#801E28" // rgb: 128, 30, 40
@@ -410,5 +424,6 @@
 /datum/reagent/honey
 	name = "Honey"
 	id = "honey"
-	description = "A golden yellow syrup, loaded with sugary sweetness."
+	description = "Honey is a natural sweet, viscous food substance composed of mainly fructose and glucose."
 	color = "#FFFF00"
+	chemclass = CHEM_CLASS_RARE

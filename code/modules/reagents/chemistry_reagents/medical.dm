@@ -6,12 +6,13 @@
 /datum/reagent/inaprovaline
 	name = "Inaprovaline"
 	id = "inaprovaline"
-	description = "Inaprovaline is a synaptic stimulant and cardiostimulant. Commonly used to stabilize patients."
+	description = "Inaprovaline is a synaptic stimulant and cardiostimulant. Commonly used to stabilize patients. If the lungs are functional, inaprovaline will allow respiration while under cardiac arrest. Slows down bleeding and acts as a weak painkiller. Overdosing may cause severe damage to cardiac tissue."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	overdose = REAGENTS_OVERDOSE*2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL*2
 	scannable = 1
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/inaprovaline/on_mob_life(mob/living/M, alien)
 	. = ..()
@@ -42,11 +43,12 @@
 /datum/reagent/ryetalyn
 	name = "Ryetalyn"
 	id = "ryetalyn"
-	description = "Ryetalyn can cure all genetic abnomalities via a catalytic process."
+	description = "Ryetalyn repairs genetic defects, mutations and abnormalities through a catalytic process. Used to treat genetic eye and vision problems. Overdosing on ryetalyn is very toxic and can impair sense of balance."
 	reagent_state = SOLID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/ryetalyn/on_mob_life(mob/living/M)
 	. = ..()
@@ -75,13 +77,14 @@
 /datum/reagent/paracetamol
 	name = "Paracetamol"
 	id = "paracetamol"
-	description = "Most probably know this as Tylenol, but this chemical is a mild, simple painkiller."
+	description = "Also known as Tylenol, this is a moderate long lasting painkiller that has been commonly available since 1950. Paracetamol is capable of both analgesic and antipyretic activity but no anti-inflammatory action. Overdosing on paracetamol is toxic, may induce hallucinations, and cause acute liver failure."
 	reagent_state = LIQUID
 	color = "#C855DC"
 	scannable = 1
 	custom_metabolism = 0.025 // Lasts 10 minutes for 15 units
 	overdose = REAGENTS_OVERDOSE*2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL*2
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/paracetamol/on_mob_life(mob/living/M)
 	. = ..()
@@ -99,13 +102,14 @@
 /datum/reagent/tramadol
 	name = "Tramadol"
 	id = "tramadol"
-	description = "A simple, yet effective painkiller."
+	description = "Tramadol is a centrally acting analgesic and is considered to be a relatively safe. The analgesic potency is claimed to be about one tenth that of morphine. It is used to treat both acute and chronic pain of moderate to (moderately) severe intensity. Tramadol is generally considered as a medicinal drug with a low potential for dependence relative to morphine. Overdosing on tramadol is highly toxic."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	scannable = 1
 	custom_metabolism = 0.1 // Lasts 10 minutes for 15 units
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/tramadol/on_mob_life(mob/living/M)
 	. = ..()
@@ -126,18 +130,19 @@
 /datum/reagent/oxycodone
 	name = "Oxycodone"
 	id = "oxycodone"
-	description = "An effective and very addictive painkiller."
+	description = "Oxycodone is an opioid agonist with addiction potential similar to that of morphine. It is approved for the treatment of patients with moderate to severe pain who are expected to need continuous opioids for an extended period of time. Overdosing on oxycodone can cause hallucinations, brain damage and be highly toxic."
 	reagent_state = LIQUID
 	color = "#C805DC"
 	scannable = 1
 	custom_metabolism = 0.2 // Lasts 5 minutes for 15 units
 	overdose = REAGENTS_OVERDOSE * 0.66
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL * 0.66
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/oxycodone/on_mob_life(mob/living/M)
 	. = ..()
 	if(!.) return
-	M.reagent_pain_modifier += PAIN_REDUCTION_VERY_HEAVY
+	M.reagent_pain_modifier += PAIN_REDUCTION_FULL
 
 /datum/reagent/oxycodone/on_overdose(mob/living/M)
 	M.apply_damage(1, OXY)
@@ -160,9 +165,10 @@
 /datum/reagent/sterilizine
 	name = "Sterilizine"
 	id = "sterilizine"
-	description = "Sterilizes wounds in preparation for surgery."
+	description = "A sterilizer used to clean wounds in preparation for surgery. Its use has mostly been outclassed to the cheaper alternative of space cleaner."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
+	chemclass = CHEM_CLASS_UNCOMMON
 
 	//makes you squeaky clean
 /datum/reagent/sterilizine/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)
@@ -178,12 +184,13 @@
 /datum/reagent/leporazine
 	name = "Leporazine"
 	id = "leporazine"
-	description = "Leporazine can be use to stabilize an individuals body temperature."
+	description = "A drug used to treat hypothermia and hyperthermia. Stabilizes patient body temperture. Prevents the use of cryogenics. Overdosing on leporazine can cause extreme drowsyness."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	scannable = 1
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/leporazine/on_mob_life(mob/living/M)
 	. = ..()
@@ -204,12 +211,13 @@
 /datum/reagent/kelotane
 	name = "Kelotane"
 	id = "kelotane"
-	description = "Kelotane is a drug used to treat burns."
+	description = "Common medicine used to treat burns, caustic and corrosive trauma. Overdosing on kelotane can cause internal tissue damage."
 	reagent_state = LIQUID
 	color = "#D8C58C"
 	scannable = 1
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/kelotane/on_mob_life(var/mob/living/M)
 	. = ..()
@@ -227,12 +235,13 @@
 /datum/reagent/dermaline
 	name = "Dermaline"
 	id = "dermaline"
-	description = "Dermaline is the next step in burn medication. Works twice as good as kelotane and enables the body to restore even the direst heat-damaged tissue."
+	description = "Advanced medicine used to treat severe burn trauma. Enables the body to restore even the direst heat-damaged tissue. Overdosing on dermaline can cause severe internal tissue damage."
 	reagent_state = LIQUID
 	color = "#F8C57C"
 	overdose = REAGENTS_OVERDOSE/2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
 	scannable = 1
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/dermaline/on_mob_life(mob/living/M, alien)
 	. = ..()
@@ -251,12 +260,13 @@
 /datum/reagent/dexalin
 	name = "Dexalin"
 	id = "dexalin"
-	description = "Dexalin is used in the treatment of oxygen deprivation."
+	description = "Dexalin is used in the treatment of oxygen deprivation by feeding oxygen to red blood cells directly inside the bloodstream. Used as an antidote to lexorin poisoning."
 	reagent_state = LIQUID
 	color = "#C865FC"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/dexalin/on_mob_life(mob/living/M,alien)
 	. = ..()
@@ -278,12 +288,13 @@
 /datum/reagent/dexalinp
 	name = "Dexalin Plus"
 	id = "dexalinp"
-	description = "Dexalin Plus is used in the treatment of oxygen deprivation. It is highly effective."
+	description = "Dexalin Plus is an upgraded form of Dexalin with added iron and carbon to quicken the rate which oxygen binds to the hemoglobin in red blood cells."
 	reagent_state = LIQUID
 	color = "#C8A5FC"
 	overdose = REAGENTS_OVERDOSE/2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
 	scannable = 1
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/dexalinp/on_mob_life(mob/living/M,alien)
 	. = ..()
@@ -311,6 +322,7 @@
 	scannable = 1
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/tricordrazine/on_mob_life(mob/living/M, alien)
 	. = ..()
@@ -334,12 +346,13 @@
 /datum/reagent/anti_toxin
 	name = "Dylovene"
 	id = "anti_toxin"
-	description = "Dylovene is a broad-spectrum antitoxin."
+	description = "General use anti-toxin, that neutralizes most toxins in the bloodstream. Commonly used in many advanced chemicals. Can be used as a mild anti-hallucinogen and to reduce tiredness."
 	reagent_state = LIQUID
 	color = "#A8F59C"
 	scannable = 1
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/anti_toxin/on_mob_life(mob/living/M,alien)
 	. = ..()
@@ -368,7 +381,7 @@
 /datum/reagent/adminordrazine //An OP chemical for admins
 	name = "Adminordrazine"
 	id = "adminordrazine"
-	description = "It's magic. We don't have to explain it."
+	description = "A magical substance created by gods to dissolve extreme amounts of salt."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 
@@ -404,11 +417,12 @@
 			D.cure()
 
 /datum/reagent/thwei //OP yautja chem
-	name = "thwei"
+	name = "Thwei"
 	id = "thwei"
 	description = "A strange, alien liquid."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
+	chemclass = CHEM_CLASS_SPECIAL
 
 /datum/reagent/thwei/on_mob_life(mob/living/carbon/M,alien)
 	. = ..()
@@ -457,13 +471,14 @@
 /datum/reagent/synaptizine
 	name = "Synaptizine"
 	id = "synaptizine"
-	description = "Synaptizine is used to treat various diseases."
+	description = "A controlled nervestimulant that treats hallucinations, drowsiness, improves reaction time and acts as a weak painkiller. Is mildly toxic and overdosing will cause extreme toxin damage."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	custom_metabolism = 0.1
 	overdose = REAGENTS_OVERDOSE/5
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/5
 	scannable = 1
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/synaptizine/on_mob_life(mob/living/M)
 	. = ..()
@@ -493,6 +508,7 @@
 	overdose = 2
 	overdose_critical = 3
 	scannable = 0
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/neuraline/on_mob_life(mob/living/M)
 	. = ..()
@@ -510,13 +526,14 @@
 /datum/reagent/hyronalin
 	name = "Hyronalin"
 	id = "hyronalin"
-	description = "Hyronalin is a medicinal drug used to counter the effect of radiation poisoning."
+	description = "Hyronalin is a medicinal drug used to counter the effect of radiation poisoning. Overdosing is quite toxic."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	custom_metabolism = 0.05
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/hyronalin/on_mob_life(var/mob/living/M as mob)
 	. = ..()
@@ -532,12 +549,13 @@
 /datum/reagent/arithrazine
 	name = "Arithrazine"
 	id = "arithrazine"
-	description = "Arithrazine is an unstable medication used for the most extreme cases of radiation poisoning."
+	description = "A slightly unstable medication used to treat the most extreme cases of radiation poisoning. Functions as a mild anti-toxin and causes minor tissue damage. Overdosing is very toxic."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	custom_metabolism = 0.05
 	overdose = REAGENTS_OVERDOSE/2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/arithrazine/on_mob_life(mob/living/M)
 	. = ..()
@@ -565,6 +583,7 @@
 	overdose = REAGENTS_OVERDOSE/3
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/3
 	scannable = 1
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/russianred/on_mob_life(mob/living/M)
 	. = ..()
@@ -583,13 +602,14 @@
 /datum/reagent/alkysine
 	name = "Alkysine"
 	id = "alkysine"
-	description = "Alkysine is a drug used to lessen the damage to neurological tissue after a catastrophic injury. Can heal brain tissue."
+	description = "Alkysine is a drug used to lessen and heal the damage to neurological tissue after a catastrophic injury. Small amounts can repair extensive brain trauma. Functions as a very weak painkiller. Overdosing on alkysine is extremely toxic."
 	reagent_state = LIQUID
 	color = "#E89599"
 	custom_metabolism = 0.05
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/alkysine/on_mob_life(mob/living/M)
 	. = ..()
@@ -606,12 +626,13 @@
 /datum/reagent/imidazoline
 	name = "Imidazoline"
 	id = "imidazoline"
-	description = "Heals eye damage"
+	description = "Used for treating non-genetic eye trauma. Generally prescribed as treatment for most cases of eye trauma instead of performing a surgical operation."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/imidazoline/on_mob_life(mob/living/M)
 	. = ..()
@@ -634,13 +655,14 @@
 /datum/reagent/peridaxon
 	name = "Peridaxon"
 	id = "peridaxon"
-	description = "Used to stabilize internal organs while waiting for surgery. Medicate cautiously."
+	description = "Prevents symptoms caused by damaged internal organs while in the bloodstream, but does not fix the organ damage. Recommended for patients awaiting internal organ surgery. Overdosing on peridaxon will cause internal tissue damage."
 	reagent_state = LIQUID
 	color = "#C845DC"
 	overdose = REAGENTS_OVERDOSE/2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
 	custom_metabolism = 0.05
 	scannable = 1
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/peridaxon/on_overdose(mob/living/M)
 	M.apply_damage(2, BRUTE)
@@ -651,12 +673,13 @@
 /datum/reagent/bicaridine
 	name = "Bicaridine"
 	id = "bicaridine"
-	description = "Bicaridine is an analgesic medication and can be used to treat blunt trauma."
+	description = "Bicaridine is an analgesic medication and can be used to treat severe external blunt trauma and to stabilize patients. Overdosing will cause caustic burns, but can mend internal broken bloodvessels."
 	reagent_state = LIQUID
 	color = "#E8756C"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/bicaridine/on_mob_life(mob/living/M, alien)
 	. = ..()
@@ -674,13 +697,14 @@
 /datum/reagent/quickclot
 	name = "Quick Clot"
 	id = "quickclot"
-	description = "A chemical designed to quickly stop all sorts of bleeding by encouraging coagulation."
+	description = "Vastly improves the blood's natural ability to coagulate and stop bleeding by hightening platelet production and effectiveness. Overdosing will cause extreme blood clotting, resulting in severe tissue damage."
 	reagent_state = LIQUID
 	color = "#CC00FF"
 	overdose = REAGENTS_OVERDOSE/2 //Was 4, now 6 //Now 15
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
 	scannable = 1 //scannable now.  HUZZAH.
 	custom_metabolism = 0.05
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/quickclot/on_overdose(mob/living/M)
 	M.apply_damage(3, BRUTE)
@@ -691,7 +715,7 @@
 /datum/reagent/adrenaline
 	name = "Epinephrine"
 	id = "adrenaline"
-	description = "A natural muscle and heart stimulant. Useful for restarting the heart."
+	description = "A natural muscle and heart stimulant. Useful for restarting the heart. Overdosing may stress the heart and cause tissue damage."
 	reagent_state = LIQUID
 	ingestible = FALSE
 	color = "FFE703" // Yellow-ish
@@ -699,6 +723,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2.5 //20
 	scannable = 1
 	custom_metabolism = 0.4
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/adrenaline/on_mob_life(mob/living/M)
 	. = ..()
@@ -724,12 +749,13 @@
 /datum/reagent/hyperzine
 	name = "Hyperzine"
 	id = "hyperzine"
-	description = "Hyperzine is a highly effective, long lasting, muscle stimulant.  May cause heart damage"
+	description = "A potent long lasting muscle stimulant. Increases heart rate dramatically, which may damage cardiac tissue. Highly addictive. Controlled substance."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	custom_metabolism = 0.2
 	overdose = REAGENTS_OVERDOSE/5
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/5
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/hyperzine/on_mob_life(mob/living/M)
 	. = ..()
@@ -772,6 +798,7 @@
 	custom_metabolism = 0.0167 //5 units will last approximately 10 minutes
 	overdose = 10
 	overdose_critical = 20
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/ultrazine/on_mob_life(mob/living/M)
 	. = ..()
@@ -838,10 +865,11 @@
 /datum/reagent/cryoxadone
 	name = "Cryoxadone"
 	id = "cryoxadone"
-	description = "A chemical mixture with almost magical healing powers. Its main limitation is that the targets body temperature must be under 170K for it to metabolise correctly."
+	description = "Industrial grade cryogenic medicine. Treats most types of tissue damage. Its main limitation is that the patient's body temperature must be under 170K to metabolise correctly."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	scannable = 1
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/cryoxadone/on_mob_life(mob/living/M)
 	. = ..()
@@ -855,10 +883,11 @@
 /datum/reagent/clonexadone
 	name = "Clonexadone"
 	id = "clonexadone"
-	description = "A liquid compound similar to that used in the cloning process. Can be used to 'finish' the cloning process when used in conjunction with a cryo tube."
+	description = "Advanced cryogenic medicine made from cryoxadone. Treats most types of tissue damage. Requires temperatures below 170K to to metabolise correctly."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	scannable = 1
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/clonexadone/on_mob_life(mob/living/M)
 	. = ..()
@@ -909,13 +938,14 @@
 /datum/reagent/spaceacillin
 	name = "Spaceacillin"
 	id = "spaceacillin"
-	description = "An all-purpose antiviral agent."
+	description = "General use theta-lactam antibiotic. Prevents and cures mundane infections."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	custom_metabolism = 0.01
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/spaceacillin/on_overdose(mob/living/M)
 	M.apply_damage(1, TOX)
@@ -926,11 +956,12 @@
 /datum/reagent/ethylredoxrazine	// FUCK YOU, ALCOHOL
 	name = "Ethylredoxrazine"
 	id = "ethylredoxrazine"
-	description = "A powerful oxidizer that reacts with ethanol."
+	description = "Neutralizes the effects of alcohol in the blood stream, by oxidizing it into water molecules. However, it does not stop immediate intoxication. Ethylredoxrazine being a powerful oxidizer, it becomes toxic in high doses."
 	reagent_state = SOLID
 	color = "#605048" // rgb: 96, 80, 72
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/ethylredoxrazine/on_mob_life(mob/living/M)
 	. = ..()
@@ -954,11 +985,12 @@
 /datum/reagent/antidepressant/methylphenidate
 	name = "Methylphenidate"
 	id = "methylphenidate"
-	description = "Improves the ability to concentrate."
+	description = "A commonly prescribed psychostimulant that increaases activity of the central nervous system. Often used to treat attention deficit hyperactivity disorder (ADHD) and narcolepsy. This drug improves performance primarily in the executive function in the prefrontal cortex (reasoning, inhibiting behaviors, organizing, problem solveing, planning ect.)"
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	custom_metabolism = 0.01
 	data = 0
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/antidepressant/methylphenidate/on_mob_life(mob/living/M)
 	. = ..()
@@ -974,11 +1006,12 @@
 /datum/reagent/antidepressant/citalopram
 	name = "Citalopram"
 	id = "citalopram"
-	description = "Stabilizes the mind a little."
+	description = "Citalopram is a drug used to treat depression, obsessive-compulsive disorder and panic disorder. It is considered safe for consumption and has been commonly available since 1998."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	custom_metabolism = 0.01
 	data = 0
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/antidepressant/citalopram/on_mob_life(mob/living/M)
 	. = ..()
@@ -995,11 +1028,12 @@
 /datum/reagent/antidepressant/paroxetine
 	name = "Paroxetine"
 	id = "paroxetine"
-	description = "Stabilizes the mind greatly, but has a chance of adverse effects."
+	description = "Very powerful antidepressant used to treat: major depressive disorder (MDD), obsessive-compulsive disorder (OCD), social anxiety disorder (SAD), panic disorder, posttraumatic stress disorder (PTSD), generalized anxiety disorder (GAD) and prenmenstrual dysphoric disorder (PMDD). Prolonged use may have side effects."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	custom_metabolism = 0.01
 	data = 0
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/antidepressant/paroxetine/on_mob_life(mob/living/M)
 	. = ..()

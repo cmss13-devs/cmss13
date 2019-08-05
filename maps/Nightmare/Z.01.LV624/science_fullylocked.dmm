@@ -131,6 +131,7 @@
 "av" = (
 /obj/structure/table,
 /obj/item/clipboard,
+/obj/item/paper/research_notes,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -303,6 +304,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -429,6 +431,22 @@
 	icon_state = "wall2"
 	},
 /area/lv624/ground/jungle9)
+"qs" = (
+/obj/structure/table,
+/obj/item/storage/fancy/vials/random,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/lv624/lazarus/research)
+"Tz" = (
+/obj/structure/table,
+/obj/item/paper/research_notes,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/lv624/lazarus/research)
 
 (1,1,1) = {"
 aa
@@ -454,7 +472,7 @@ ao
 ao
 ao
 ab
-aj
+qs
 ak
 ay
 ab
@@ -471,7 +489,7 @@ aj
 as
 aF
 au
-aj
+Tz
 aV
 aJ
 au
@@ -534,7 +552,7 @@ ab
 "}
 (7,1,1) = {"
 ac
-aj
+Tz
 aj
 ay
 ay
@@ -546,7 +564,7 @@ au
 bp
 ay
 bz
-aj
+Tz
 ac
 "}
 (8,1,1) = {"
@@ -603,7 +621,7 @@ ab
 (11,1,1) = {"
 ae
 ai
-aj
+qs
 ay
 aJ
 ab
@@ -630,7 +648,7 @@ ay
 aL
 ay
 bx
-aj
+qs
 ac
 bE
 "}
@@ -645,8 +663,8 @@ aS
 bb
 ay
 ab
-aj
-aj
+Tz
+Tz
 aj
 ac
 bE

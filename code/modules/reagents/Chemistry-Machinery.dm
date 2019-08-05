@@ -6,7 +6,7 @@
 	icon_state = "dispenser"
 	use_power = 0
 	idle_power_usage = 40
-	req_one_access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY)
+	req_one_access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_CHEMISTRY)
 	layer = BELOW_OBJ_LAYER //So beakers reliably appear above it
 	var/ui_title = "Chem Dispenser 5000"
 	var/energy = 100
@@ -893,7 +893,31 @@
 		updateUsrDialog()
 		return 0
 
-	if (!is_type_in_list(O, blend_items) && !is_type_in_list(O, juice_items))
+	if(istype(O,/obj/item/storage/bag/plants))
+		var/obj/item/storage/bag/plants/B = O
+		if(B.contents.len > 0)
+			to_chat(user, SPAN_NOTICE("You start dumping the contents of [B] into [src]."))
+			if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
+			for(var/obj/item/I in B)
+				if(holdingitems && holdingitems.len >= limit)
+					to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
+					break
+				else
+					if (!is_type_in_list(I, blend_items) && !is_type_in_list(I, juice_items))
+						to_chat(user, SPAN_WARNING("Cannot refine [I] into a reagent."))
+						break
+					else
+						//B.remove_from_storage(I)
+						user.drop_inv_item_to_loc(I, src)
+						holdingitems += I
+			playsound(user.loc, "rustle", 15, 1, 6)
+			return 0
+
+		else
+			to_chat(user, SPAN_WARNING("[B] is empty."))
+			return 1
+
+	else if (!is_type_in_list(O, blend_items) && !is_type_in_list(O, juice_items))
 		to_chat(user, SPAN_WARNING("Cannot refine into a reagent."))
 		return 1
 
@@ -1148,3 +1172,140 @@
 		O.reagents.trans_to(beaker, amount)
 		if(!O.reagents.total_volume)
 			remove_object(O)
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+/obj/machinery/reagent_analyzer
+	name = "Advanced XRF Scanner"
+	desc = "A spectrometer that bombards a sample in high energy radiation to detect emitted fluorescent x-ray patterns. By using the emission spectrum of the sample it can identify its chemical composition."
+	icon = 'icons/obj/machines/chemical_machines.dmi'
+	icon_state = "reagent_analyzer"
+	active_power_usage = 5000 //This is how many watts the big XRF machines usually take
+	
+	var/obj/item/reagent_container/sample = null //Object containing our sample
+	var/sample_number = 1 //Just for printing fluff
+	var/processing = 0
+	var/status = 0
+
+/obj/machinery/reagent_analyzer/attackby(obj/item/B, mob/living/user)
+	if (!usr.mind || !usr.mind.cm_skills || (usr.mind.cm_skills.research == null) || (usr.mind.cm_skills.research < SKILL_RESEARCH_TRAINED))
+		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
+		return
+	if(processing)
+		to_chat(user, SPAN_WARNING("The [src] is still processing!"))
+		return
+	if(istype(B, /obj/item/reagent_container/glass/beaker/vial))
+		if(sample || status)
+			to_chat(user, SPAN_WARNING("Something is already loaded into the [src]."))
+			return
+		
+		if(user.drop_inv_item_to_loc(B, src))
+			sample = B
+			icon_state = "reagent_analyzer_sample"
+			to_chat(user, SPAN_NOTICE("You insert [B] and start configuring the [src]."))
+			updateUsrDialog()
+			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
+			processing = 1
+			if(sample.reagents.total_volume < 30 || sample.reagents.reagent_list.len > 1)
+				icon_state = "reagent_analyzer_error"
+				start_processing()
+			else
+				icon_state = "reagent_analyzer_processing"
+				start_processing()
+		return
+	else
+		to_chat(user, SPAN_WARNING("[src] only accepts samples in vials."))
+		return
+
+/obj/machinery/reagent_analyzer/process()
+	status++
+	if(status <= 3)
+		return
+	else
+		playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
+		status = 0
+		processing = 0
+		stop_processing()
+		sleep(40)
+		if(sample.reagents.total_volume < 30 || sample.reagents.reagent_list.len > 1)
+			if(sample.reagents.total_volume < 30)
+				print_report(0, "SAMPLE SIZE INSUFFICIENT;<BR>\n<I>A sample size of 30 units is required for analysis.</I>")
+			else if(sample.reagents.reagent_list.len > 1)
+				print_report(0, "SAMPLE CONTAMINATED;<BR>\n<I>A pure sample is required for analysis.</I>")
+			else
+				print_report(0, "UNKNOWN.")
+			icon_state = "reagent_analyzer_failed"
+			playsound(src.loc, 'sound/machines/buzz-two.ogg', 15, 1)
+		else
+			icon_state = "reagent_analyzer_finished"
+			print_report(1)
+			playsound(src.loc, 'sound/machines/twobeep.ogg', 15, 1)
+	sample_number++
+	return
+
+/obj/machinery/reagent_analyzer/attack_hand(mob/user as mob)
+	if(processing)
+		to_chat(user, SPAN_WARNING("The [src] is still processing!"))
+		return
+	if(!sample)
+		to_chat(user, SPAN_WARNING("The [src] is empty."))
+		return
+	to_chat(user, SPAN_NOTICE("You remove the [sample] from the [src]."))
+	user.put_in_active_hand(sample)
+	sample = null
+	icon_state = "reagent_analyzer"
+	return
+
+/obj/machinery/reagent_analyzer/proc/print_report(var/result,var/reason)
+	var/obj/item/paper/report = new /obj/item/paper/(src.loc)
+	report.name = "Analysis "
+	report.icon_state = "paper_wy_words"
+	if(result)
+		var/datum/reagent/S = sample.reagents.reagent_list[1]
+		report.name += text("of []",S.name)
+		report.info += text("<center><img src = wylogo.png><HR><I><B>Official Company Document</B><BR>Automated A-XRF Report</I><HR><H2>Analysis of []</H2></center>",S.name)
+		report.info += text("<B>Results for sample</B> #[]:<BR>\n",sample_number)
+		report.info += text("<B>ID:</B> <I>[]</I><BR><BR>\n",S.name)
+		report.info += "<B>Database Details:</B><BR>\n"
+		if(S.chemclass >= CHEM_CLASS_SPECIAL)
+			report.info += "Error: database entry marked as <I>CLASSIFIED</I>.<BR>\n"
+		else if(S.description)
+			report.info += text("<BR><font size = \"2.5\">[]</font><BR>\n",S.description)
+		else
+			report.info += "<I>No details on this reagent could be found in the database.</I><BR>\n"
+		if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[S.id])
+			report.info += text("<BR><I>Saved emission spectrum of [] to the database.</I><BR>\n",S.name)
+			chemical_identified_list[S.id] = S.objective_value
+			defcon_controller.check_defcon_level()
+		report.info += "<BR><B>Composition Details:</B><BR>\n"
+		if(chemical_reactions_list[S.id])
+			var/datum/chemical_reaction/C = chemical_reactions_list[S.id]
+			for(var/I in C.required_reagents)
+				var/datum/reagent/R = chemical_reagents_list["[I]"]
+				if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id])
+					report.info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
+				else
+					var/U = C.required_reagents[I]
+					report.info += text("<font size = \"2\"><I> - [] []</I></font><BR>\n",U,R.name)
+			if(C.required_catalysts)
+				if(C.required_catalysts.len)
+					report.info += "<BR>Reaction would require the following catalysts:<BR>\n"
+					for(var/I in C.required_catalysts)
+						var/datum/reagent/R = chemical_reagents_list["[I]"]
+						if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id])
+							report.info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
+						else
+							var/U = C.required_catalysts[I]
+							report.info += text("<font size = \"2\"><I> - [] []</I></font><BR>\n",U,R.name)
+		else if(chemical_gen_classes_list["C1"].Find(S.id))
+			report.info += text("<font size = \"2\"><I> - []</I></font><BR>\n",S.name)
+		else
+			report.info += "<I>ERROR: Unable to analyze emission spectrum of sample.</I>" //A reaction to make this doesn't exist, so this is our IC excuse
+	else
+		report.name += "ERROR"
+		report.info += "<center><img src = wylogo.png><HR><I><B>Official Company Document</B><BR>Reagent Analysis Print</I><HR><H2>Analysis ERROR</H2></center>"
+		report.info += text("<B>Result:</B><BR>Analysis failed for sample #[].<BR><BR>\n",sample_number)
+		report.info += text("<B>Reason for error:</B><BR><I>[]</I><BR>\n",reason)
+	report.info += text("<BR><HR><font size = \"1\"><I>This report was automatically printed by the Advanced X-Ray Fluorescence Scanner.<BR>The USS Almayer,  []/2186, []</I></font><BR>\n<span class=\"paper_field\"></span>",time2text(world.timeofday, "MM/DD"),worldtime2text())
+	
+

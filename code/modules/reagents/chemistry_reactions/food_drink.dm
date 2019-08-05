@@ -129,14 +129,14 @@
 	name = "Hot Ramen"
 	id = "hot_ramen"
 	result = "hot_ramen"
-	required_reagents = list("water" = 1, "dry_ramen" = 3)
+	required_reagents = list("dry_ramen" = 3, "water" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/hell_ramen
 	name = "Hell Ramen"
 	id = "hell_ramen"
 	result = "hell_ramen"
-	required_reagents = list("capsaicin" = 1, "hot_ramen" = 6)
+	required_reagents = list("hot_ramen" = 6, "capsaicin" = 1)
 	result_amount = 6
 
 
@@ -168,21 +168,21 @@
 	name = "Iced Tea"
 	id = "icetea"
 	result = "icetea"
-	required_reagents = list("ice" = 1, "tea" = 3)
+	required_reagents = list("tea" = 3, "ice" = 1)
 	result_amount = 4
 
 /datum/chemical_reaction/icecoffee
 	name = "Iced Coffee"
 	id = "icecoffee"
 	result = "icecoffee"
-	required_reagents = list("ice" = 1, "coffee" = 3)
+	required_reagents = list("coffee" = 3, "ice" = 1)
 	result_amount = 4
 
 /datum/chemical_reaction/nuka_cola
 	name = "Nuka Cola"
 	id = "nuka_cola"
 	result = "nuka_cola"
-	required_reagents = list("uranium" = 1, "cola" = 6)
+	required_reagents = list("cola" = 6, "uranium" = 1)
 	result_amount = 6
 
 /datum/chemical_reaction/moonshine
@@ -366,7 +366,7 @@
 	name = "The Manly Dorf"
 	id = "manlydorf"
 	result = "manlydorf"
-	required_reagents = list ("beer" = 1, "ale" = 2)
+	required_reagents = list ("ale" = 2, "beer" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/hooch
@@ -478,7 +478,7 @@
 	name = "Singulo"
 	id = "singulo"
 	result = "singulo"
-	required_reagents = list("vodka" = 5, "radium" = 1, "wine" = 5)
+	required_reagents = list("vodka" = 5, "wine" = 5, "radium" = 1)
 	result_amount = 10
 
 /datum/chemical_reaction/alliescocktail
@@ -588,7 +588,7 @@
 	name = "Acid Spit"
 	id = "acidspit"
 	result = "acidspit"
-	required_reagents = list("sacid" = 1, "wine" = 5)
+	required_reagents = list("wine" = 5, "sacid" = 1)
 	result_amount = 6
 
 /datum/chemical_reaction/amasec

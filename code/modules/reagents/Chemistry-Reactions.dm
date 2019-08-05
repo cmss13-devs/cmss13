@@ -4,6 +4,7 @@
 	var/name = null
 	var/id = null
 	var/result = null
+	var/gen_tier = 0 //used for generation purposes
 	var/list/required_reagents = new/list()
 	var/list/required_catalysts = new/list()
 

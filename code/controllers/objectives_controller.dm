@@ -217,6 +217,16 @@ var/global/datum/objectives_controller/objectives_controller
 		total_points += L.total_point_value()
 		scored_points += L.get_point_value()
 
+	for(var/L in chemical_gen_classes_list["C5"])
+		total_points += chemical_objective_list[L]
+		if(chemical_identified_list[L])
+			scored_points += chemical_identified_list[L]
+
+	for(var/L in chemical_gen_classes_list["C6"])
+		total_points += chemical_objective_list[L]
+		if(chemical_identified_list[L])
+			scored_points += chemical_identified_list[L]
+
 	var/list/answer = list()
 
 	answer["scored_points"] = scored_points

@@ -252,7 +252,22 @@
 
 	. = ..()
 
-
+/mob/living/carbon/Xenomorph/take_blood(obj/O, var/amount)
+	if(!O.reagents)
+		return
+	
+	var/b_id = get_blood_id()
+	if(!b_id)
+		return
+	
+	var/list/plasmas = list(b_id)
+	for(var/plasma in plasma_types)
+		plasmas += plasma
+	
+	for(var/plasma in plasmas)
+		O.reagents.add_reagent(plasma,amount / plasmas.len) //An even amount of each plasma and blood type
+	
+	return 1
 
 
 //////////////////////////////
@@ -332,6 +347,12 @@
 
 /mob/living/carbon/Xenomorph/get_blood_id()
 	return "xenoblood"
+
+/mob/living/carbon/Xenomorph/Queen/get_blood_id()
+	return "xenobloodroyal"
+
+/mob/living/carbon/Xenomorph/Praetorian/get_blood_id()
+	return "xenobloodroyal"
 
 /mob/living/carbon/human/get_blood_id()
 	if((NO_BLOOD in species.flags))

@@ -700,7 +700,7 @@ client
 		if(!H.mind.cm_skills)
 			H.mind.cm_skills = new /datum/skills/pfc()
 
-		var/selected_skill = input("Please choose a skill to edit.","Skills",null) as null|anything in list("cqc","endurance","engineer", "construction","firearms", "pistols", "rifles", "smgs", "shotguns", "heavy_weapons","smartgun","spec_weapons","leadership","medical", "surgery","melee_weapons","pilot","police","powerloader")
+		var/selected_skill = input("Please choose a skill to edit.","Skills",null) as null|anything in list("cqc","endurance","engineer", "construction","firearms", "pistols", "rifles", "smgs", "shotguns", "heavy_weapons","smartgun","spec_weapons","leadership","medical","surgery","research","melee_weapons","pilot","police","powerloader")
 		if(!selected_skill)
 			return
 
@@ -751,6 +751,8 @@ client
 				H.mind.cm_skills.medical = new_skill_level
 			if("surgery")
 				H.mind.cm_skills.surgery = new_skill_level
+			if("research")
+				H.mind.cm_skills.research = new_skill_level
 			if("pilot")
 				H.mind.cm_skills.pilot = new_skill_level
 			if("endurance")

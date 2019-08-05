@@ -188,7 +188,7 @@
 	desc = "A device that detects objects that may be useful for intel gathering. You can switch modes with Alt+Click."
 	icon_state = "datadetector"
 	blip_type = "data"
-	var/objects_to_detect = list(/obj/item/document_objective, /obj/item/disk/objective, /obj/item/device/mass_spectrometer/adv/objective, /obj/item/device/reagent_scanner/adv/objective, /obj/item/device/healthanalyzer/objective, /obj/item/device/autopsy_scanner/objective, /obj/item/device/autopsy_scanner/objective)
+	var/objects_to_detect = list(/obj/item/document_objective, /obj/item/disk/objective, /obj/item/device/mass_spectrometer/adv/objective, /obj/item/device/reagent_scanner/adv/objective, /obj/item/device/healthanalyzer/objective, /obj/item/device/autopsy_scanner/objective, /obj/item/device/autopsy_scanner/objective, /obj/item/paper/research_notes, /obj/item/reagent_container/glass/beaker/vial/random)
 
 /obj/item/device/motiondetector/intel/update_icon()
 	if (active)

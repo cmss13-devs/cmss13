@@ -58,6 +58,7 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/toggleloocdead,	/*toggles looc on/off for everyone who is dead*/
 	/datum/admins/proc/toggledsay,		/*toggles dsay on/off for everyone*/
 	/client/proc/game_panel,			/*game panel, allows to change game-mode etc*/
+	/client/proc/chem_panel,			/*chem panel, allows viewing, editing and creation of reagent and chemical_reaction datums*/
 	/client/proc/cmd_admin_say,			/*admin-only ooc chat*/
 	/datum/admins/proc/player_notes_list,
 	/datum/admins/proc/player_notes_show,
@@ -109,6 +110,7 @@ var/list/admin_verbs_fun = list(
 	/client/proc/cmd_admin_dress_all,
 	/client/proc/cmd_admin_select_mob_rank,
 	/client/proc/cmd_admin_gib_self,
+	/client/proc/chem_panel,
 	/client/proc/drop_bomb,
     /client/proc/drop_custom_bomb,
 	// /client/proc/cmd_admin_add_freeform_ai_law,
@@ -486,6 +488,14 @@ var/list/admin_verbs_mentor = list(
 		else
 			admin_holder.DB_ban_panel()
 	feedback_add_details("admin_verb","UBP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	return
+
+/client/proc/chem_panel()
+	set name = "Chem Panel"
+	set category = "Admin"
+	if(admin_holder)
+		admin_holder.Chem()
+	feedback_add_details("admin_verb","CGP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
 /client/proc/game_panel()

@@ -107,7 +107,7 @@
 	name = "Soporific"
 	id = "stoxin"
 	result = "stoxin"
-	required_reagents = list("chloralhydrate" = 1, "sugar" = 4)
+	required_reagents = list("sugar" = 4, "chloralhydrate" = 1)
 	result_amount = 5
 
 /datum/chemical_reaction/mutagen
@@ -117,11 +117,25 @@
 	required_reagents = list("radium" = 1, "phosphorus" = 1, "chlorine" = 1)
 	result_amount = 3
 
+/datum/chemical_reaction/sacid
+	name = "Sulfuric acid"
+	id = "sacid"
+	result = "sacid"
+	required_reagents = list("hydrogen" = 2, "sulfur" = 1, "oxygen" = 4)
+	result_amount = 1
+
+/datum/chemical_reaction/ethanol
+	name = "Ethanol"
+	id = "ethanol"
+	result = "ethanol"
+	required_reagents = list("hydrogen" = 6, "carbon" = 2, "oxygen" = 1)
+	result_amount = 1
+
 /datum/chemical_reaction/water //I can't believe we never had this.
 	name = "Water"
 	id = "water"
 	result = "water"
-	required_reagents = list("oxygen" = 1, "hydrogen" = 2)
+	required_reagents = list("hydrogen" = 2, "oxygen" = 1)
 	result_amount = 1
 
 
@@ -300,14 +314,14 @@
 	name = "Chlorine Trifluoride"
 	id = "chlorine trifluoride"
 	result = "chlorine trifluoride"
-	required_reagents = list("chlorine" = 1, "fluorine" = 3)
+	required_reagents = list("fluorine" = 3, "chlorine" = 1)
 	result_amount = 1
 
 /datum/chemical_reaction/methane
 	name = "Methane"
 	id = "methane"
 	result = "methane"
-	required_reagents = list("carbon" = 1, "hydrogen" = 4)
+	required_reagents = list("hydrogen" = 4,"carbon" = 1)
 	result_amount = 1
 
 /datum/chemical_reaction/chemsmoke
@@ -333,7 +347,7 @@
 	name = "Chloral Hydrate"
 	id = "chloralhydrate"
 	result = "chloralhydrate"
-	required_reagents = list("ethanol" = 1, "chlorine" = 3, "water" = 1)
+	required_reagents = list("chlorine" = 3, "ethanol" = 1, "water" = 1)
 	result_amount = 1
 
 /datum/chemical_reaction/potassium_chloride
@@ -354,7 +368,7 @@
 	name = "Soporific"
 	id = "stoxin"
 	result = "stoxin"
-	required_reagents = list("chloralhydrate" = 1, "sugar" = 4)
+	required_reagents = list( "sugar" = 4, "chloralhydrate" = 1)
 	result_amount = 5
 
 /datum/chemical_reaction/zombiepowder
@@ -528,7 +542,7 @@
 	name = "Plant-B-Gone"
 	id = "plantbgone"
 	result = "plantbgone"
-	required_reagents = list("toxin" = 1, "water" = 4)
+	required_reagents = list("water" = 4, "toxin" = 1)
 	result_amount = 5
 
 // Muscle relaxant
@@ -538,6 +552,27 @@
 	result = "suxamorycin"
 	required_reagents = list("chloralhydrate" = 1, "oxygen" = 1, "nitrogen" = 1)
 	result_amount = 3
+
+/datum/chemical_reaction/royalplasma
+	name = "Royal plasma"
+	id = "royalplasma"
+	result = "royalplasma"
+	required_reagents = list("eggplasma" = 1, "xenobloodroyal" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/antineurotoxin
+	name = "Anti-Neurotoxin"
+	id = "antineurotoxin"
+	result = "antineurotoxin"
+	required_reagents = list("neurotoxinplasma" = 1, "dylovene" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/eggplasma
+	name = "Egg plasma"
+	id = "eggplasma"
+	result = "eggplasma"
+	required_reagents = list("blood" = 10, "eggplasma" = 1)
+	result_amount = 2
 
 #undef MAXEXPOWER
 #undef MAXEXSHARDS

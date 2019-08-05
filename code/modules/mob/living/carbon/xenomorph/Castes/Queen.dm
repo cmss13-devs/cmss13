@@ -94,6 +94,7 @@
 	desc = "A huge, looming alien creature. The biggest and the baddest."
 	icon = 'icons/Xeno/xenomorph_64x64.dmi'
 	icon_state = "Queen Walking"
+	plasma_types = list(PLASMA_ROYAL,PLASMA_CHITIN,PLASMA_PHEROMONE,PLASMA_NEUROTOXIN)
 	attacktext = "bites"
 	attack_sound = null
 	friendly = "nuzzles"

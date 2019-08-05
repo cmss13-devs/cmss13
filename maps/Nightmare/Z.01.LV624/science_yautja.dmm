@@ -120,6 +120,7 @@
 "at" = (
 /obj/structure/table,
 /obj/item/clipboard,
+/obj/item/paper/research_notes,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -244,6 +245,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
+/obj/item/paper/research_notes,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -269,6 +271,7 @@
 	dir = 1
 	},
 /obj/structure/table,
+/obj/item/paper/research_notes,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -458,6 +461,22 @@
 	icon_state = "whitepurple"
 	},
 /area/lv624/lazarus/research)
+"gM" = (
+/obj/structure/table,
+/obj/item/paper/research_notes,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/lv624/lazarus/research)
+"Zw" = (
+/obj/structure/table,
+/obj/item/storage/fancy/vials/random,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/lv624/lazarus/research)
 
 (1,1,1) = {"
 aa
@@ -483,7 +502,7 @@ ao
 ao
 ao
 ab
-aj
+Zw
 ak
 al
 ab
@@ -500,7 +519,7 @@ ap
 aw
 aq
 ar
-aj
+gM
 aO
 aE
 ar
@@ -564,7 +583,7 @@ ab
 (7,1,1) = {"
 ac
 aj
-aj
+Zw
 al
 al
 ar
@@ -575,7 +594,7 @@ ar
 aZ
 al
 bf
-aj
+gM
 ac
 "}
 (8,1,1) = {"
@@ -632,7 +651,7 @@ ab
 (11,1,1) = {"
 ae
 ai
-aj
+Zw
 al
 aE
 ab

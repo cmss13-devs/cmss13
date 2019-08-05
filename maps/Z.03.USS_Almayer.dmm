@@ -2038,7 +2038,7 @@
 	dir = 8
 	},
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -2721,7 +2721,7 @@
 /area/almayer/living/commandbunks)
 "ahy" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -2942,8 +2942,8 @@
 /area/almayer/living/commandbunks)
 "ahX" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
 /obj/item/tool/pen,
+/obj/item/paper_bin/uscm,
 /turf/open/floor/wood,
 /area/almayer/living/commandbunks)
 "ahY" = (
@@ -2994,8 +2994,8 @@
 /area/almayer/living/officer_study)
 "aie" = (
 /obj/item/tool/pen,
-/obj/item/paper_bin,
 /obj/structure/table/woodentable/fancy,
+/obj/item/paper_bin/uscm,
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
 "aif" = (
@@ -7073,7 +7073,7 @@
 /area/almayer/hallways/aft_hallway)
 "arg" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -7536,7 +7536,7 @@
 	pixel_y = 30
 	},
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -7704,7 +7704,7 @@
 /area/almayer/command/cic)
 "asQ" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
@@ -7985,7 +7985,7 @@
 /area/almayer/engineering/ce_room)
 "atA" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /obj/item/folder/black,
 /turf/open/floor/plating/plating_catwalk,
@@ -8321,7 +8321,7 @@
 /area/almayer/medical/morgue)
 "auF" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
@@ -8716,7 +8716,7 @@
 /area/almayer/command/airoom)
 "avM" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "ai_floors";
@@ -9152,7 +9152,7 @@
 /area/almayer/living/pilotbunks)
 "awY" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/wood,
 /area/almayer/living/pilotbunks)
@@ -9307,7 +9307,7 @@
 	dir = 1
 	},
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -10247,7 +10247,7 @@
 /area/almayer/medical/morgue)
 "aAh" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/wood,
 /area/almayer/medical/upper_medical)
@@ -10269,7 +10269,7 @@
 	},
 /area/almayer/command/cic)
 "aAk" = (
-/obj/structure/filingcabinet,
+/obj/machinery/iv_drip,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -10575,8 +10575,9 @@
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	tag = "icon-sterile_green_side (NORTH)";
+	icon_state = "sterile_green_side";
+	dir = 1
 	},
 /area/almayer/medical/medical_science)
 "aAT" = (
@@ -10596,8 +10597,9 @@
 	name = "\improper Containment Lockdown"
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	tag = "icon-sterile_green_side (NORTH)";
+	icon_state = "sterile_green_side";
+	dir = 1
 	},
 /area/almayer/medical/medical_science)
 "aAV" = (
@@ -11171,7 +11173,7 @@
 	dir = 4;
 	icon_state = "tube1"
 	},
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
@@ -11211,8 +11213,9 @@
 	req_one_access = list()
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
+	tag = "icon-sterile_green_side (NORTH)";
+	icon_state = "sterile_green_side";
+	dir = 1
 	},
 /area/almayer/medical/medical_science)
 "aCu" = (
@@ -11365,19 +11368,20 @@
 /obj/item/storage/box/masks,
 /obj/item/device/camera,
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile"
+	tag = "icon-sterile_green_side (NORTH)";
+	icon_state = "sterile_green_side";
+	dir = 1
 	},
 /area/almayer/medical/medical_science)
 "aCP" = (
 /obj/structure/table/almayer,
 /obj/item/clipboard,
-/obj/item/tool/hand_labeler,
 /obj/item/paper,
+/obj/item/tool/hand_labeler,
 /turf/open/floor/almayer{
-	tag = "icon-sterile_green_side (WEST)";
+	tag = "icon-sterile_green_side (NORTHWEST)";
 	icon_state = "sterile_green_side";
-	dir = 8
+	dir = 9
 	},
 /area/almayer/medical/medical_science)
 "aCQ" = (
@@ -11393,6 +11397,9 @@
 "aCR" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
+	},
+/obj/effect/landmark/start{
+	name = "Researcher"
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -11432,7 +11439,7 @@
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
+	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/medical_science)
@@ -12160,7 +12167,6 @@
 	},
 /area/almayer/medical/morgue)
 "aER" = (
-/obj/machinery/smartfridge/chemistry,
 /obj/machinery/door/poddoor/shutters/almayer{
 	density = 0;
 	dir = 4;
@@ -12168,6 +12174,12 @@
 	id = "researchlockdownext";
 	name = "\improper Research Lockdown";
 	opacity = 0
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/westright,
+/obj/machinery/door/window/westright{
+	dir = 4;
+	req_access = list(14)
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
@@ -12257,7 +12269,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
+	icon_state = "dark_sterile";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/medical_science)
@@ -12504,7 +12516,7 @@
 /area/almayer/hallways/aft_hallway)
 "aFI" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -12994,6 +13006,7 @@
 /obj/item/clipboard,
 /obj/item/folder/white,
 /obj/item/tool/pen,
+/obj/item/tool/pen,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (WEST)";
 	icon_state = "sterile_green_side";
@@ -13072,6 +13085,7 @@
 "aHp" = (
 /obj/structure/rack,
 /obj/item/tool/crowbar,
+/obj/item/storage/box/monkeycubes,
 /obj/item/device/radio,
 /turf/open/floor/plating/almayer,
 /area/almayer/medical/medical_science)
@@ -13163,7 +13177,7 @@
 /area/almayer/engineering/upper_engineering)
 "aHA" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -13387,8 +13401,6 @@
 /area/almayer/medical/upper_medical)
 "aIt" = (
 /obj/structure/table/almayer,
-/obj/item/reagent_container/spray/cleaner,
-/obj/item/reagent_container/spray/cleaner,
 /obj/machinery/door_control{
 	dir = 1;
 	id = "researchdoorext";
@@ -13413,6 +13425,10 @@
 	dir = 8;
 	pixel_x = -24;
 	pixel_y = 0
+	},
+/obj/item/paper_bin/wy{
+	pixel_x = 5;
+	pixel_y = 5
 	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (WEST)";
@@ -13500,15 +13516,13 @@
 /area/almayer/medical/medical_science)
 "aIE" = (
 /obj/structure/table/almayer,
-/obj/item/stack/sheet/mineral/phoron{
-	amount = 25;
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/machinery/reagentgrinder,
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 8
+	},
+/obj/machinery/reagent_analyzer{
+	pixel_x = 2;
+	pixel_y = 3
 	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (NORTH)";
@@ -13518,11 +13532,14 @@
 /area/almayer/medical/medical_science)
 "aIF" = (
 /obj/structure/table/almayer,
-/obj/item/storage/belt/medical,
-/obj/item/storage/belt/medical,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/device/healthanalyzer,
-/obj/item/device/healthanalyzer,
+/obj/machinery/reagentgrinder{
+	pixel_y = 8
+	},
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 25;
+	pixel_x = 3;
+	pixel_y = 3
+	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (NORTH)";
 	icon_state = "sterile_green_side";
@@ -13530,7 +13547,7 @@
 	},
 /area/almayer/medical/medical_science)
 "aIG" = (
-/obj/machinery/iv_drip,
+/obj/structure/filingcabinet,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (NORTH)";
 	icon_state = "sterile_green_side";
@@ -14618,7 +14635,7 @@
 /area/almayer/medical/upper_medical)
 "aLZ" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
 	tag = "icon-sterile"
@@ -14672,7 +14689,6 @@
 /area/almayer/medical/medical_science)
 "aMe" = (
 /obj/structure/table/almayer,
-/obj/item/paper,
 /obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker{
@@ -14729,7 +14745,7 @@
 "aMj" = (
 /obj/machinery/light,
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/wy,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (WEST)";
 	icon_state = "sterile_green_corner";
@@ -15122,7 +15138,7 @@
 /area/almayer/hallways/starboard_hallway)
 "aNq" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -15392,14 +15408,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/medical_science)
-"aOf" = (
-/obj/machinery/chem_master,
-/turf/open/floor/almayer{
-	tag = "icon-sterile_green_side (EAST)";
-	icon_state = "sterile_green_side";
-	dir = 4
-	},
-/area/almayer/medical/medical_science)
 "aOg" = (
 /obj/machinery/light/small{
 	tag = "icon-bulb1 (EAST)";
@@ -15544,7 +15552,7 @@
 /area/almayer/engineering/upper_engineering)
 "aOG" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -16221,7 +16229,7 @@
 /area/almayer/living/offices)
 "aQI" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /obj/machinery/camera/autoname/almayer{
 	dir = 1;
@@ -16453,19 +16461,23 @@
 /area/almayer/medical/medical_science)
 "aRh" = (
 /obj/structure/table/almayer,
-/obj/item/storage/box/syringes{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/storage/box/beakers,
-/obj/item/storage/box/beakers,
 /obj/machinery/firealarm{
 	dir = 4;
 	pixel_x = 24;
 	pixel_y = 0
 	},
-/obj/item/storage/box/autoinjectors,
-/obj/item/storage/box/autoinjectors,
+/obj/item/storage/box/pillbottles{
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_x = 3;
+	pixel_y = -2
+	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (EAST)";
 	icon_state = "sterile_green_side";
@@ -16501,7 +16513,7 @@
 /area/almayer/engineering/upper_engineering)
 "aRl" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /obj/machinery/light/small,
 /turf/open/floor/almayer{
@@ -16817,10 +16829,21 @@
 "aSg" = (
 /obj/structure/table/almayer,
 /obj/item/storage/firstaid/o2{
-	pixel_x = 3;
-	pixel_y = 3
+	pixel_x = -6;
+	pixel_y = 6
 	},
-/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv{
+	pixel_x = -6;
+	pixel_y = -2
+	},
+/obj/item/storage/firstaid/fire{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/item/storage/firstaid{
+	pixel_x = 8;
+	pixel_y = -2
+	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (WEST)";
 	icon_state = "sterile_green_corner";
@@ -16828,22 +16851,15 @@
 	},
 /area/almayer/medical/medical_science)
 "aSh" = (
-/obj/structure/table/almayer,
-/obj/item/paper_bin,
-/obj/item/tool/pen,
 /obj/machinery/light,
+/obj/machinery/bodyscanner,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/medical_science)
 "aSi" = (
-/obj/structure/table/almayer,
-/obj/item/storage/firstaid/fire{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/firstaid,
+/obj/machinery/body_scanconsole,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (EAST)";
 	icon_state = "sterile_green_corner";
@@ -16851,9 +16867,25 @@
 	},
 /area/almayer/medical/medical_science)
 "aSj" = (
-/obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-21"
+/obj/structure/rack,
+/obj/item/storage/box/beakers{
+	pixel_x = 0;
+	pixel_y = 10
+	},
+/obj/item/storage/box/beakers{
+	pixel_x = 0;
+	pixel_y = 12
+	},
+/obj/item/storage/box/autoinjectors{
+	pixel_x = 1;
+	pixel_y = 12
+	},
+/obj/item/storage/box/autoinjectors{
+	pixel_x = 1;
+	pixel_y = -3
+	},
+/obj/item/storage/box/sprays{
+	pixel_y = 5
 	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (WEST)";
@@ -16861,25 +16893,8 @@
 	dir = 8
 	},
 /area/almayer/medical/medical_science)
-"aSk" = (
-/obj/structure/table/almayer,
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/pillbottles{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/device/mass_spectrometer,
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
-	},
-/area/almayer/medical/medical_science)
 "aSl" = (
-/obj/structure/table/almayer,
-/obj/item/clipboard,
-/obj/item/folder/white,
-/obj/item/tool/hand_labeler,
+/obj/machinery/smartfridge/chemistry,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -16893,13 +16908,17 @@
 /area/almayer/hull/lower_hull)
 "aSn" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
-/obj/item/tool/pen,
 /obj/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
 	},
-/obj/item/storage/box/monkeycubes,
+/obj/item/storage/box/monkeycubes{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/obj/item/storage/box/monkeycubes{
+	pixel_y = 2
+	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (EAST)";
 	icon_state = "sterile_green_corner";
@@ -18605,7 +18624,7 @@
 /area/almayer/hallways/hangar)
 "aXl" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /turf/open/floor/wood,
 /area/almayer/living/pilotbunks)
 "aXo" = (
@@ -20412,7 +20431,7 @@
 /area/almayer/squads/alpha)
 "bbZ" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/wood,
 /area/almayer/living/bridgebunks)
@@ -23594,7 +23613,7 @@
 	dir = 1
 	},
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -23691,7 +23710,7 @@
 /area/almayer/shipboard/brig)
 "blv" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -25037,10 +25056,10 @@
 	},
 /area/almayer/hallways/hangar)
 "bpg" = (
-/obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/item/tool/pen,
 /obj/structure/table/woodentable,
+/obj/item/paper_bin/wy,
 /turf/open/floor/wood,
 /area/almayer/command/corporateliason)
 "bph" = (
@@ -25705,7 +25724,7 @@
 "brw" = (
 /obj/structure/table/almayer,
 /obj/item/cell/crap,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /obj/item/clipboard,
 /turf/open/floor/almayer{
@@ -26445,7 +26464,7 @@
 /area/almayer/living/chapel)
 "bts" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -32885,7 +32904,7 @@
 /area/almayer/hallways/repair_bay)
 "bKp" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /turf/open/floor/almayer{
 	tag = "icon-red (EAST)";
 	icon_state = "red";
@@ -33352,7 +33371,7 @@
 /area/almayer/shipboard/navigation)
 "bLp" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /turf/open/floor/almayer{
 	tag = "icon-red (NORTH)";
 	icon_state = "red";
@@ -34308,7 +34327,7 @@
 /area/almayer/shipboard/weapon_room)
 "bNn" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /obj/machinery/light{
 	tag = "icon-tube1 (WEST)";
@@ -34351,7 +34370,7 @@
 /area/almayer/shipboard/navigation)
 "bNr" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
 	tag = "icon-red (SOUTHWEST)";
@@ -34659,7 +34678,7 @@
 /area/almayer/engineering/lower_engine_monitoring)
 "bOh" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /obj/machinery/status_display{
 	pixel_y = 30
@@ -35522,7 +35541,7 @@
 /area/almayer/engineering/engine_core)
 "bQl" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -36442,7 +36461,7 @@
 /area/almayer/squads/delta)
 "bSN" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /turf/open/floor/wood,
 /area/almayer/living/tankerbunks)
 "bSR" = (
@@ -37831,7 +37850,7 @@
 /area/almayer/living/tankerbunks)
 "bWO" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/wood,
 /area/almayer/living/tankerbunks)
@@ -42622,7 +42641,7 @@
 /area/almayer/hull/lower_hull)
 "ciq" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/port_missiles)
@@ -45206,7 +45225,7 @@
 /area/almayer/hallways/vehiclehangar)
 "cLH" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/clipboard,
 /obj/item/tool/pen,
 /obj/item/tool/hand_labeler,
@@ -45288,7 +45307,6 @@
 /area/almayer/living/captain_mess)
 "cTe" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/machinery/door_control{
 	id = "researchlockdownext";
@@ -45298,6 +45316,7 @@
 	req_access = list(5);
 	unacidable = 1
 	},
+/obj/item/paper_bin/wy,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (EAST)";
 	icon_state = "sterile_green_corner";
@@ -47252,21 +47271,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
-"gdx" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	tag = "icon-sterile_green_side (NORTHEAST)";
-	icon_state = "sterile_green_side";
-	dir = 5
-	},
-/area/almayer/medical/medical_science)
 "gfr" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer,
@@ -48200,6 +48204,18 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical)
+"hFC" = (
+/obj/structure/table/almayer,
+/obj/item/clipboard,
+/obj/item/folder/white,
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/reagent_container/spray/cleaner,
+/turf/open/floor/almayer{
+	tag = "icon-sterile_green_side (EAST)";
+	icon_state = "sterile_green_side";
+	dir = 4
+	},
+/area/almayer/medical/medical_science)
 "hIo" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-S";
@@ -48637,6 +48653,16 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical)
+"iAa" = (
+/obj/structure/rack,
+/obj/item/device/mass_spectrometer,
+/obj/item/device/reagent_scanner,
+/obj/item/tool/hand_labeler,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/medical_science)
 "iBm" = (
 /obj/machinery/computer/arcade,
 /turf/open/floor/almayer{
@@ -51250,13 +51276,13 @@
 /area/almayer/shipboard/brig_cells)
 "moh" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	tag = "icon-tube1 (EAST)"
 	},
+/obj/item/paper_bin/uscm,
 /turf/open/floor/almayer{
 	tag = "icon-red (WEST)";
 	icon_state = "red";
@@ -51390,8 +51416,8 @@
 /area/almayer/shipboard/brig)
 "mzz" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
 /obj/item/tool/pen,
+/obj/item/paper_bin/uscm,
 /turf/open/floor/wood,
 /area/almayer/living/offices)
 "mAS" = (
@@ -51469,6 +51495,13 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig_cells)
+"mEE" = (
+/obj/machinery/chem_master,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/medical_science)
 "mEY" = (
 /obj/machinery/door/firedoor/border_only/almayer,
 /obj/machinery/door/airlock/almayer/marine/alpha{
@@ -51578,7 +51611,7 @@
 /area/almayer/shipboard/firing_range_north)
 "mPO" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /obj/item/clipboard,
 /obj/item/tool/hand_labeler,
@@ -51970,6 +52003,18 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical)
+"npt" = (
+/obj/machinery/door/airlock/almayer/research,
+/obj/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "containmentlockdown";
+	name = "\improper Containment Lockdown"
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/medical_science)
 "nqx" = (
 /obj/structure/bed/chair,
 /turf/open/floor/almayer,
@@ -54262,13 +54307,13 @@
 /area/almayer/hallways/hangar)
 "qOF" = (
 /obj/structure/table/woodentable/fancy,
-/obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
+/obj/item/paper_bin/uscm,
 /turf/open/floor/carpet,
 /area/almayer/command/cichallway)
 "qSm" = (
@@ -56183,6 +56228,19 @@
 	icon_state = "kitchen"
 	},
 /area/almayer/living/grunt_rnr)
+"trF" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (NORTH)";
+	icon_state = "intact-supply";
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	tag = "icon-sterile_green_side (SOUTHWEST)";
+	icon_state = "sterile_green_side";
+	dir = 10
+	},
+/area/almayer/medical/medical_science)
 "tsy" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/almayer{
@@ -56483,7 +56541,7 @@
 /area/almayer/medical/surgery_hallway)
 "tMI" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -57555,6 +57613,16 @@
 	icon_state = "orange"
 	},
 /area/almayer/living/cafeteria_starboard)
+"vgB" = (
+/obj/structure/rack,
+/obj/item/storage/fancy/vials,
+/obj/item/storage/fancy/vials,
+/obj/item/storage/fancy/vials,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/medical_science)
 "vgO" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor/almayer{
@@ -58018,7 +58086,7 @@
 /area/almayer/shipboard/firing_range_north)
 "vPw" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
 	tag = "icon-red (WEST)";
@@ -58430,8 +58498,8 @@
 	pixel_x = 28;
 	pixel_y = 31
 	},
-/obj/item/paper_bin,
 /obj/item/tool/pen,
+/obj/item/paper_bin/uscm,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig)
 "wsH" = (
@@ -59182,7 +59250,7 @@
 /area/almayer/shipboard/chief_mp_office)
 "xAB" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /turf/open/floor/almayer{
 	tag = "icon-green (SOUTHWEST)";
 	icon_state = "green";
@@ -59561,7 +59629,7 @@
 /area/almayer/squads/bravo/req)
 "yaN" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin,
+/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -90833,7 +90901,7 @@ ajl
 aCJ
 alI
 aHf
-aHf
+trF
 aMb
 aOb
 aRa
@@ -91237,7 +91305,7 @@ oCA
 qJy
 ajo
 aCN
-gdx
+aEZ
 aHg
 aID
 aMd
@@ -91643,7 +91711,7 @@ cxB
 kAq
 aAI
 aCP
-krq
+aEZ
 ajo
 aIE
 aMe
@@ -91846,13 +91914,13 @@ hdK
 kAq
 aAN
 aCR
-krq
+aQZ
 aLP
 aIF
 aCQ
 avA
 axR
-aSk
+vgB
 ajo
 aTJ
 bkR
@@ -92055,7 +92123,7 @@ aIG
 aoM
 aOe
 axR
-aAk
+iAa
 ajo
 atV
 ahS
@@ -92459,7 +92527,7 @@ avF
 ajo
 atF
 aMg
-aoM
+mEE
 aRg
 aSl
 ajo
@@ -92662,8 +92730,8 @@ awQ
 ajo
 aIR
 ayZ
-aOf
 aRh
+hFC
 aSn
 ajo
 ayT
@@ -93672,7 +93740,7 @@ anw
 aqP
 ajo
 aAU
-aAU
+npt
 aml
 anw
 anw

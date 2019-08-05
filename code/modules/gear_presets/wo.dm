@@ -369,7 +369,7 @@
 	rank = "Chemist"
 	paygrade = "CD"
 	role_comm_title = "Chem"
-	skills = /datum/skills/doctor
+	skills = /datum/skills/researcher
 	idtype = /obj/item/card/id
 
 /datum/equipment_preset/wo/chemist/load_gear(mob/living/carbon/human/H)

@@ -75,6 +75,7 @@
 	desc = "A strange-looking alien creature. It carries a number of scuttling jointed crablike creatures."
 	icon = 'icons/Xeno/xenomorph_64x64.dmi' //They are now like, 2x2
 	icon_state = "Carrier Walking"
+	plasma_types = list(PLASMA_PURPLE)
 
 	drag_delay = 6 //pulling a big dead xeno is hard
 

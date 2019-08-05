@@ -51,9 +51,15 @@
 		return
 
 /obj/item/paper/update_icon()
-	if(icon_state == "paper_talisman")
+	if(icon_state == "paper_talisman" || icon_state == "paper_wy_words" || icon_state == "paper_uscm")
 		return
 	if(info)
+		if(icon_state == "paper_wy")
+			icon_state = "paper_wy_words"
+			return
+		if(icon_state == "paper_uscm")
+			icon_state = "paper_uscm_words"
+			return
 		icon_state = "paper_words"
 		return
 	icon_state = "paper"
@@ -231,6 +237,8 @@
 		t = oldreplacetext(t, "\[row\]", "</td><tr>")
 		t = oldreplacetext(t, "\[cell\]", "<td>")
 		t = oldreplacetext(t, "\[logo\]", "<img src = wylogo.png>")
+		t = oldreplacetext(t, "\[wy\]", "<img src = wylogo.png>")
+		t = oldreplacetext(t, "\[uscm\]", "<img src = uscmlogo.png>")
 
 		t = "<font face=\"[deffont]\" color=[P ? P.colour : "black"]>[t]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!
@@ -506,3 +514,69 @@
 
 /obj/item/paper/crumpled/bloody/csheet
 	info = "<b>Character Sheet</b>\n\nKorbath the Barbarian\nLevel 6 Barbarian\nHitpoints: 47/93\nSTR: 18\nDEX: 14\nCON: 16\nINT: 8\nWIS: 11\nCHA: 15\n\n<B>Inventory:</b>\nGreatsword +3 \nChain M--\n\n\nThe rest of the page is covered in smears of blood."
+
+/obj/item/paper/wy
+	icon_state = "paper_wy"
+	info = "<center><img src = wylogo.png></center><BR>\n<span class=\"paper_field\"></span>"
+
+/obj/item/paper/uscm
+	icon_state = "paper_uscm"
+	info = "<center><img src = uscmlogo.png></center><BR>\n<span class=\"paper_field\"></span>"
+
+/obj/item/paper/research_notes
+	icon_state = "paper_wy_words"
+	unacidable = 1
+	var/tier
+	var/note_type
+	New()
+		var/random_chem 
+		if(tier)
+			random_chem = pick(chemical_gen_classes_list[tier])
+		else 
+			random_chem = pick(	prob(45);pick(chemical_gen_classes_list["T1"]),\
+								prob(30);pick(chemical_gen_classes_list["T2"]),\
+								prob(15);pick(chemical_gen_classes_list["T3"]),\
+								prob(10);pick(chemical_gen_classes_list["T4"]))
+		if(!random_chem)
+			random_chem = pick(chemical_gen_classes_list["T1"])
+		var/data = "<center><img src = wylogo.png><HR><I><B>Official Company Document</B><BR>Experiment Notes</I><HR><H2>"
+		var/chem_name = chemical_gen_stats_list["[random_chem]"]["name"]
+		if(!note_type)
+			note_type = pick(prob(35);"synthesis",prob(65);"test")
+		switch(note_type)
+			if("synthesis")
+				var/list/chem_reagents = chemical_gen_reactions_list["[random_chem]"]["required_reagents"]
+				var/list/chem_catalysts = chemical_gen_reactions_list["[random_chem]"]["required_catalysts"]
+				name = text("Synthesis of []",chem_name)
+				data += text("[] </H2></center>",name)
+				data += text("During experiment <I>[][][]</I> the theorized compound identified as [], was successfully synthesized using the following formula:<BR>\n<BR>\n",pick("C","Q","V","W","X","Y","Z"),rand(100,999),pick("a","b","c"),chem_name)
+				for(var/I in chem_reagents)
+					var/datum/reagent/R = chemical_reagents_list["[I]"]
+					var/U = chem_reagents[I]
+					data += text("<font size = \"2\"><I> - [] []</I></font><BR>\n",U,R.name)
+				if(chem_catalysts)
+					data += "<BR>\nWhile using the following catalysts: <BR>\n<BR>\n"
+					for(var/I in chem_catalysts)
+						var/datum/reagent/R = chemical_reagents_list["[I]"]
+						var/U = chem_catalysts[I]
+						data += text("<font size = \"2\"><I> - [] []</I></font><BR>\n",U,R.name)
+				data += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
+				data += "<BR>\n<HR> - <I>The Company</I>"
+			if("test")
+				var/list/chem_properties = chemical_gen_stats_list["[random_chem]"]["properties"]
+				name = text("Experiment [][][]",pick("C","Q","V","W","X","Y","Z"),rand(100,999),pick("a","b","c"))
+				data += text("Note for []</H2></center>",name)
+				data += text("Subject <I>[]</I> experienced [] effects during testing of []. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n",rand(10000,99999),pick(chem_properties),chem_name)
+				data += "<BR>\n<HR> - <I>The Company</I>"
+		info = data
+		
+/obj/item/paper/research_notes/bad
+	tier = "T1"
+
+/obj/item/paper/research_notes/good
+	note_type = "synthesis"
+	New()
+		tier = pick("T3","T4")
+		..()
+
+	

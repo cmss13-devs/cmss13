@@ -200,6 +200,7 @@
 	description = "A tangerine flavored soda that's canned in Havana"
 	color = "#802b00"
 	adj_drowsy 	= 	-10
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/drink/souto/cherry
 	name = "Cherry Souto"
@@ -326,6 +327,7 @@
 	adj_drowsy = -3
 	adj_sleepy = -2
 	adj_temp = 25
+	chemclass = CHEM_CLASS_UNCOMMON
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -367,6 +369,7 @@
 	description = "Coffee and ice, refreshing and cool."
 	color = "#102838" // rgb: 16, 40, 56
 	adj_temp = -5
+	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/drink/coffee/soy_latte
 	name = "Soy Latte"
@@ -375,6 +378,7 @@
 	color = "#664300" // rgb: 102, 67, 0
 	adj_sleepy = 0
 	adj_temp = 5
+	chemclass = CHEM_CLASS_NONE
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -399,12 +403,13 @@
 /datum/reagent/drink/tea
 	name = "Tea"
 	id = "tea"
-	description = "Tasty black tea, it has antioxidants, it's good for you!"
+	description = "Black tea, containing antioxidants."
 	color = "#101000" // rgb: 16, 16, 0
 	adj_dizzy = -2
 	adj_drowsy = -1
 	adj_sleepy = -3
 	adj_temp = 20
+	chemclass = CHEM_CLASS_UNCOMMON
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -442,6 +447,7 @@
 	description = "A backalley abomination born in the darkest corner of the brig. This cocktail of pepper spray and Souto is only drank by the craziest servicemen."
 	reagent_state = LIQUID
 	color = "#d1001c" // rgb: 209, 0, 28
+	chemclass = CHEM_CLASS_RARE
 
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL

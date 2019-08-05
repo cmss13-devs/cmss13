@@ -4701,6 +4701,7 @@
 	icon_state = "tube1"
 	},
 /obj/item/disk/objective,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "whitebluecorner";
@@ -6349,6 +6350,13 @@
 "tw" = (
 /turf/closed/wall,
 /area/lv624/lazarus/fitness)
+"tx" = (
+/obj/item/storage/fancy/vials/random,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/lv624/lazarus/research)
 "ty" = (
 /obj/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
@@ -6525,6 +6533,11 @@
 	tag = "icon-whitebluecorner"
 	},
 /area/lv624/lazarus/medbay)
+"tW" = (
+/obj/structure/rack,
+/obj/item/paper/research_notes,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
 "tX" = (
 /turf/open/floor{
 	dir = 4;
@@ -6872,6 +6885,7 @@
 "uU" = (
 /obj/structure/closet/crate/medical,
 /obj/item/device/healthanalyzer/objective,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "whitebluecorner";
@@ -7125,6 +7139,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
+/obj/item/paper/research_notes,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -7163,8 +7178,8 @@
 /area/lv624/ground/jungle6)
 "vJ" = (
 /obj/structure/table,
-/obj/machinery/cell_charger,
 /obj/item/tool/crowbar,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -7900,6 +7915,7 @@
 	icon_state = "tube1";
 	dir = 8
 	},
+/obj/item/paper/research_notes,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -10813,6 +10829,10 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv624/lazarus/toilet)
+"Fi" = (
+/obj/structure/bookcase,
+/turf/open/floor/bluegrid,
+/area/lv624/lazarus/internal_affairs)
 "Fj" = (
 /obj/structure/window/reinforced/tinted,
 /obj/machinery/door/window{
@@ -11295,6 +11315,11 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lv624/lazarus/quart)
+"Gv" = (
+/obj/structure/rack,
+/obj/item/storage/fancy/vials/random,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
 "Gw" = (
 /turf/open/floor,
 /area/lv624/lazarus/quartstorage)
@@ -12058,6 +12083,7 @@
 /area/lv624/lazarus/sleep_female)
 "IC" = (
 /obj/structure/bookcase,
+/obj/item/paper/research_notes,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "ID" = (
@@ -12270,6 +12296,14 @@
 	},
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/internal_affairs)
+"Jp" = (
+/obj/item/paper/research_notes,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
 "Jq" = (
 /obj/effect/landmark{
 	name = "hunter_primary"
@@ -15869,6 +15903,8 @@
 /obj/structure/safe{
 	spawnkey = 0
 	},
+/obj/item/paper/research_notes,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "ST" = (
@@ -15913,6 +15949,13 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv624/lazarus/kitchen)
+"Ta" = (
+/obj/item/paper/research_notes,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/lv624/lazarus/research)
 "Tb" = (
 /turf/open/floor/plating,
 /area/lv624/lazarus/kitchen)
@@ -17207,6 +17250,8 @@
 	dir = 8
 	},
 /obj/item/cell/high,
+/obj/item/paper/research_notes,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "WS" = (
@@ -18189,6 +18234,7 @@
 	dir = 8
 	},
 /obj/item/document_objective/report,
+/obj/item/paper/research_notes,
 /turf/open/floor/wood{
 	icon_state = "wood-broken4"
 	},
@@ -18227,6 +18273,7 @@
 "ZE" = (
 /obj/structure/filingcabinet,
 /obj/item/document_objective/report,
+/obj/item/paper/research_notes,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
@@ -18307,6 +18354,13 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv624/ground/jungle5)
+"ZX" = (
+/obj/structure/rack{
+	layer = 2.5
+	},
+/obj/item/storage/fancy/vials/random,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
 "ZZ" = (
 /obj/item/document_objective/folder,
 /turf/open/floor/bluegrid,
@@ -26276,7 +26330,7 @@ UQ
 UQ
 Zt
 UQ
-VW
+tW
 UQ
 VW
 UQ
@@ -27642,7 +27696,7 @@ Tf
 Tf
 US
 UQ
-VW
+Gv
 Zu
 WW
 UQ
@@ -29674,7 +29728,7 @@ Gi
 tf
 tf
 Hz
-IC
+Fi
 Jn
 SS
 If
@@ -34439,7 +34493,7 @@ tO
 sT
 vB
 tp
-um
+Ta
 sT
 tO
 tO
@@ -35121,7 +35175,7 @@ tR
 up
 II
 tU
-um
+tx
 tp
 um
 tU
@@ -35565,7 +35619,7 @@ px
 ou
 ou
 qA
-ou
+Jp
 ou
 rz
 nY
@@ -36941,8 +36995,8 @@ nS
 rP
 rP
 sU
-um
-um
+tx
+Ta
 uY
 sT
 AR
@@ -52677,7 +52731,7 @@ ti
 ti
 ve
 ti
-vd
+ZX
 ti
 vd
 ti

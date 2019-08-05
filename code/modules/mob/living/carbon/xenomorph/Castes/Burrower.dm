@@ -74,6 +74,7 @@
 	icon = 'icons/Xeno/xenomorph_64x64.dmi'
 	icon_state = "Burrower Walking"
 	plasma_stored = 100
+	plasma_types = list(PLASMA_PURPLE)
 	pixel_x = -12
 	old_x = -12
 	tier = 2

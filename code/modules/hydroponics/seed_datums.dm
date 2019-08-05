@@ -320,49 +320,49 @@ proc/populate_seed_list()
 	//This looks like shit, but it's a lot easier to read/change this way.
 	var/total_mutations = rand(1,1+degree)
 	for(var/i = 0;i<total_mutations;i++)
-		switch(rand(0,11))
+		switch(rand(0,14))
 			if(0) //Plant cancer!
 				lifespan = max(0,lifespan-rand(1,5))
 				endurance = max(0,endurance-rand(10,20))
 				source_turf.visible_message(SPAN_DANGER("\The [display_name] withers rapidly!"))
-			if(1)
+			if(1) //Gluttony!
 				nutrient_consumption =      max(0,  min(5,   nutrient_consumption + rand(-(degree*0.1),(degree*0.1))))
 				water_consumption =         max(0,  min(50,  water_consumption    + rand(-degree,degree)))
-			if(2)
+			if(2) //Temperature tolerance
 				ideal_heat =                max(70, min(800, ideal_heat           + (rand(-5,5)   * degree)))
 				heat_tolerance =            max(70, min(800, heat_tolerance       + (rand(-5,5)   * degree)))
 				lowkpa_tolerance =          max(0,  min(80,  lowkpa_tolerance     + (rand(-5,5)   * degree)))
 				highkpa_tolerance =         max(110, min(500,highkpa_tolerance    + (rand(-5,5)   * degree)))
-			if(3)
+			if(3) //Light tolerance
 				ideal_light =               max(0,  min(30,  ideal_light          + (rand(-1,1)   * degree)))
 				light_tolerance =           max(0,  min(10,  light_tolerance      + (rand(-2,2)   * degree)))
-			if(4)
+			if(4) //Toxin tolerance
 				toxins_tolerance =          max(0,  min(10,  weed_tolerance       + (rand(-2,2)   * degree)))
-			if(5)
+			if(5) //Weed tolerance, carnivorous
 				weed_tolerance  =           max(0,  min(10,  weed_tolerance       + (rand(-2,2)   * degree)))
 				if(prob(degree*5))
 					carnivorous =           max(0,  min(2,   carnivorous          + rand(-degree,degree)))
 					if(carnivorous)
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name] shudders hungrily."))
-			if(6)
+			if(6) //Weed tolerance, parasitic
 				weed_tolerance  =           max(0,  min(10,  weed_tolerance       + (rand(-2,2)   * degree)))
 				if(prob(degree*5))          parasite = !parasite
 
-			if(7)
+			if(7) //Lifespan
 				lifespan =                  max(10, min(30,  lifespan             + (rand(-2,2)   * degree)))
 				if(yield != -1) yield =     max(0,  min(10,  yield                + (rand(-2,2)   * degree)))
-			if(8)
+			if(8) //BIGGER
 				endurance =                 max(10, min(100, endurance            + (rand(-5,5)   * degree)))
 				production =                max(1,  min(10,  production           + (rand(-1,1)   * degree)))
 				potency =                   max(0,  min(200, potency              + (rand(-20,20) * degree)))
 				if(prob(degree*5))
 					spread =                max(0,  min(2,   spread               + rand(-1,1)))
 					source_turf.visible_message(SPAN_NOTICE("\The [display_name] spasms visibly, shifting in the tray."))
-			if(9)
+			if(9) //Maturity
 				maturation =                max(0,  min(30,  maturation      + (rand(-1,1)   * degree)))
 				if(prob(degree*5))
 					harvest_repeat = !harvest_repeat
-			if(10)
+			if(10) //Bioluminecence 
 				if(prob(degree*2))
 					biolum = !biolum
 					if(biolum)
@@ -372,7 +372,7 @@ proc/populate_seed_list()
 							source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s glow <font color='[biolum_colour]'>changes colour</font>!"))
 					else
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s glow dims..."))
-			if(11)
+			if(11) //Flowers?
 				if(prob(degree*2))
 					flowers = !flowers
 					if(flowers)
@@ -382,6 +382,16 @@ proc/populate_seed_list()
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s flowers <font=[flower_colour]>changes colour</font>!"))
 					else
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name]'s flowers wither and fall off."))
+			else //New chems! (20% chance)
+				var/new_chem = list(pick(	prob(10);pick(chemical_gen_classes_list["C1"]),\
+											prob(15);pick(chemical_gen_classes_list["C2"]),\
+											prob(25);pick(chemical_gen_classes_list["C3"]),\
+											prob(30);pick(chemical_gen_classes_list["C4"]),\
+											prob(15);pick(chemical_gen_classes_list["T1"]),\
+											prob(5);pick(chemical_gen_classes_list["T2"])) = list(1,rand(1,2)))
+				chems += new_chem
+
+
 	return
 
 //Mutates a specific trait/set of traits.

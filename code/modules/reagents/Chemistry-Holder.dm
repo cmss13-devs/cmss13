@@ -14,39 +14,55 @@ var/const/INGEST = 2
 
 /datum/reagents/New(maximum=100)
 	maximum_volume = maximum
-
+	//Have we saved classification IDs yet?
+	if(!chemical_gen_classes_list)
+		save_chemical_classes()
 	//I dislike having these here but map-objects are initialised before world/New() is called. >_>
 	if(!chemical_reagents_list)
 		//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
-		var/paths = typesof(/datum/reagent) - /datum/reagent
+		var/paths = typesof(/datum/reagent) - /datum/reagent - /datum/reagent/generated
 		chemical_reagents_list = list()
-		for(var/path in paths)
-			var/datum/reagent/D = new path()
-			chemical_reagents_list[D.id] = D
-	if(!chemical_reactions_list)
+		for(var/i=0;i<=1;i++)
+			for(var/path in paths)
+				var/datum/reagent/D = new path()
+				chemical_reagents_list[D.id] = D
+			if(i==0)
+				paths = typesof(/datum/reagent/generated) - /datum/reagent/generated //Generated chemicals should be initialized last
+	if(!chemical_reactions_filtered_list)
 		//Chemical Reactions - Initialises all /datum/chemical_reaction into a list
 		// It is filtered into multiple lists within a list.
 		// For example:
 		// chemical_reaction_list["phoron"] is a list of all reactions relating to phoron
 
-		var/paths = typesof(/datum/chemical_reaction) - /datum/chemical_reaction
+		var/paths = typesof(/datum/chemical_reaction) - /datum/chemical_reaction - /datum/chemical_reaction/generated
+		chemical_reactions_filtered_list = list()
+		
+		for(var/i=0;i<=1;i++)
+			for(var/path in paths)
+
+				var/datum/chemical_reaction/D = new path()
+				var/list/reaction_ids = list()
+			
+				if(D.required_reagents && D.required_reagents.len)
+					for(var/reaction in D.required_reagents)
+						reaction_ids += reaction
+
+				// Create filters based on each reagent id in the required reagents list
+				for(var/id in reaction_ids)
+					if(!chemical_reactions_filtered_list[id])
+						chemical_reactions_filtered_list[id] = list()
+					chemical_reactions_filtered_list[id] += D
+					break // Don't bother adding ourselves to other reagent ids, it is redundant.
+			if(i==0)
+				paths = typesof(/datum/chemical_reaction/generated) - /datum/chemical_reaction/generated //Generated chemicals should be initialized last
+	
+	if(!chemical_reactions_list)
+		var/paths = typesof(/datum/chemical_reaction) - /datum/chemical_reaction - /datum/chemical_reaction/generated
 		chemical_reactions_list = list()
-
 		for(var/path in paths)
-
-			var/datum/chemical_reaction/D = new path()
-			var/list/reaction_ids = list()
-
-			if(D.required_reagents && D.required_reagents.len)
-				for(var/reaction in D.required_reagents)
-					reaction_ids += reaction
-
-			// Create filters based on each reagent id in the required reagents list
-			for(var/id in reaction_ids)
-				if(!chemical_reactions_list[id])
-					chemical_reactions_list[id] = list()
-				chemical_reactions_list[id] += D
-				break // Don't bother adding ourselves to other reagent ids, it is redundant.
+			var/datum/reagent/D = new path()
+			chemical_reactions_list[D.id] = D
+		
 
 
 /datum/reagents/Dispose()
@@ -237,7 +253,7 @@ var/const/INGEST = 2
 	do
 		reaction_occured = 0
 		for(var/datum/reagent/R in reagent_list) // Usually a small list
-			for(var/reaction in chemical_reactions_list[R.id]) // Was a big list but now it should be smaller since we filtered it with our reagent id
+			for(var/reaction in chemical_reactions_filtered_list[R.id]) // Was a big list but now it should be smaller since we filtered it with our reagent id
 
 				if(!reaction)
 					continue
@@ -246,7 +262,9 @@ var/const/INGEST = 2
 
 				var/total_required_reagents = C.required_reagents.len
 				var/total_matching_reagents = 0
-				var/total_required_catalysts = C.required_catalysts.len
+				var/total_required_catalysts = 0
+				if(C.required_catalysts)
+					total_required_catalysts = C.required_catalysts.len
 				var/total_matching_catalysts= 0
 				var/matching_container = 0
 				var/matching_other = 0
@@ -431,6 +449,9 @@ var/const/INGEST = 2
 	if(D)
 
 		var/datum/reagent/R = new D.type()
+		for(var/V in D.vars)//We do this so admin spawned chemicals don't get defaulted
+			if(V in list("id","name","properties","overdose", "overdose_critical", "nutriment_factor","custom_metabolism","color","key"))
+				R.vars[V] = D.vars[V]
 		reagent_list += R
 		R.holder = src
 		R.volume = amount

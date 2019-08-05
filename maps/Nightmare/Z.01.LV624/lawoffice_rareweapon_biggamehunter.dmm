@@ -46,6 +46,7 @@
 /area/lv624/lazarus/internal_affairs)
 "aj" = (
 /obj/structure/bookcase,
+/obj/item/paper/research_notes,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "ak" = (
@@ -593,6 +594,11 @@
 /obj/structure/jungle/planttop1,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
+"Kl" = (
+/obj/structure/table/woodentable/fancy,
+/obj/item/storage/fancy/vials/random,
+/turf/open/floor/bluegrid,
+/area/lv624/lazarus/internal_affairs)
 
 (1,1,1) = {"
 aa
@@ -801,7 +807,7 @@ aa
 (13,1,1) = {"
 aa
 ac
-aq
+Kl
 as
 aA
 ak

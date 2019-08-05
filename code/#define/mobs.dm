@@ -6,40 +6,6 @@
 #define BORGXRAY  4
 
 
-/*
-	reagents defines
-*/
-
-#define SOLID 1
-#define LIQUID 2
-#define GAS 3
-#define REAGENTS_OVERDOSE 30
-#define REAGENTS_OVERDOSE_CRITICAL 50
-
-// How many units of reagent are consumed per tick, by default.
-#define REAGENTS_METABOLISM 0.2
-// By defining the effect multiplier this way, it'll exactly adjust
-// all effects according to how they originally were with the 0.4 metabolism
-#define REAGENTS_EFFECT_MULTIPLIER REAGENTS_METABOLISM / 0.4
-
-#define REM REAGENTS_EFFECT_MULTIPLIER
-// Reagent metabolism defines.
-#define FOOD_METABOLISM 0.4
-#define ALCOHOL_METABOLISM 0.1
-#define RAPID_METABOLISM 1.0
-
-// Factor of how fast mob nutrition decreases
-#define HUNGER_FACTOR 0.05
-
-//Pain or shock reduction for different reagents
-#define PAIN_REDUCTION_VERY_LIGHT	-10 //alkysine
-#define PAIN_REDUCTION_LIGHT		-25 //inaprovaline
-#define PAIN_REDUCTION_MEDIUM		-40 //synaptizine
-#define PAIN_REDUCTION_HEAVY		-50 //paracetamol
-#define PAIN_REDUCTION_VERY_HEAVY	-80 //tramadol
-#define PAIN_REDUCTION_FULL			-200 //oxycodone, neuraline
-
-
 //=================================================
 /*
 	Germs and infections

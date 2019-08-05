@@ -265,18 +265,32 @@
 
 /obj/item/storage/fancy/vials
 	icon = 'icons/obj/items/storage/vialbox.dmi'
-	icon_state = "vialbox6"
+	icon_state = "vialbox0"
 	icon_type = "vial"
 	name = "vial storage box"
 	storage_slots = 6
 	can_hold = list(/obj/item/reagent_container/glass/beaker/vial)
+	var/is_random
 
 
 /obj/item/storage/fancy/vials/New()
 	..()
-	for(var/i=1; i <= storage_slots; i++)
-		new /obj/item/reagent_container/glass/beaker/vial(src)
+	if(is_random)
+		var/spawns = rand(1,4)
+		for(var/i=1; i <= storage_slots; i++)
+			if(i<=spawns)
+				new /obj/item/reagent_container/glass/beaker/vial/random(src)
+			else
+				new /obj/item/reagent_container/glass/beaker/vial(src)
+	else
+		for(var/i=1; i <= storage_slots; i++)
+			new /obj/item/reagent_container/glass/beaker/vial(src)
+	update_icon()
 	return
+
+/obj/item/storage/fancy/vials/random
+	unacidable = 1
+	is_random = 1
 
 /obj/item/storage/lockbox/vials
 	name = "secure vial storage box"

@@ -9,6 +9,7 @@
 	flags_item = NOBLUDGEON
 	throw_range = 1
 	layer = MOB_LAYER
+	reagents = list("eggplasma" = 60)
 	var/hivenumber = XENO_HIVE_NORMAL
 
 /obj/item/xeno_egg/New()

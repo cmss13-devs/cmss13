@@ -53,6 +53,7 @@
 	desc = "A slithery, spitting kind of alien."
 	icon = 'icons/Xeno/xenomorph_48x48.dmi'
 	icon_state = "Sentinel Walking"
+	plasma_types = list(PLASMA_NEUROTOXIN)
 	pixel_x = -12
 	old_x = -12
 	tier = 1

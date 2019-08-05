@@ -76,6 +76,7 @@
 	var/burn_damage_upper = 0
 	var/armor_deflection = 10
 	var/evasion = 0
+	var/list/plasma_types = list() //The types of plasma the caste contains
 	
 	// Action to perform on the next click.
 	var/datum/action/xeno_action/activable/queued_action

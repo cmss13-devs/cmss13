@@ -220,6 +220,7 @@
 	name = "purple sac"
 	desc = "A weird, pulsating node."
 	icon_state = "weednode"
+	reagents = list("purpleplasma" = 30)
 	var/node_range = NODERANGE
 	health = 15
 

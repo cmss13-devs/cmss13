@@ -250,11 +250,15 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 
 	if(world.time > nextPredatorBioscan)
 		nextPredatorBioscan += MINUTES_5//5 minutes, straight
+		var/xeno_colony_location = "[RandomXenosPlanetLocation?", including one in [RandomXenosPlanetLocation]":""]"
+		var/xeno_ship_location = "[RandomXenosShipLocation?", including one in [RandomXenosShipLocation].":"."]"
+		var/marine_colony_location = "[RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation].":"."]"
+		var/marine_ship_location = "[RandomHostsShipLocation?", including one in [RandomHostsShipLocation].":"."]"
 		for(var/mob/M in player_list)
 			//Announce the numbers to Yautja, they have good scanners
 			if (isYautja(M))
 				to_chat(M, "<h2 class='alert'>Bioscan complete</h2>")
-				to_chat(M, "<span class='alert'>[numXenosPlanet] serpents present in the hunting ground[RandomXenosPlanetLocation?"), including one in [RandomXenosPlanetLocation]":""], with [larva] larva.\n[numXenosShip] serpents present on the ooman ship[RandomXenosShipLocation?", including one in [RandomXenosShipLocation].":"."]\n[numHostsPlanet] oomans present in the hunting ground[RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation].":"."]\n[numHostsShip] oomans present on the ooman ship[RandomHostsShipLocation?", including one in [RandomHostsShipLocation].":"."]</span>")
+				to_chat(M, "<span class='alert'>[numXenosPlanet] serpents present in the hunting ground[xeno_colony_location], with [larva] larva.\n[numXenosShip] serpents present on the human ship[xeno_ship_location]\n[numHostsPlanet] humans present in the hunting ground[marine_colony_location]\n[numHostsShip] humans present on the human ship[marine_ship_location]</span>")
 
 			//Let the ghosts know what's up, they also get good numbers
 			if (isobserver(M))

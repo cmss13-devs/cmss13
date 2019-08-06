@@ -5,7 +5,6 @@
 	use_power = 0
 	flags_atom = ON_BORDER
 	opacity = 0
-	explosion_resistance = 0
 	unacidable = 1
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 

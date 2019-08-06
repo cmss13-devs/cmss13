@@ -55,23 +55,17 @@ var/list/wood_icons = list("wood", "wood-broken")
 /turf/open/floor/ex_act(severity, explosion_direction)
 	if(hull_floor)
 		return 0
-	var/location = get_turf(src)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(severity))
 				break_tile()
-				if(prob(50)) // chance for weak shrapnel
-					create_shrapnel(location, rand(1,3), explosion_direction, , /datum/ammo/bullet/shrapnel/light)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(severity-EXPLOSION_THRESHOLD_LOW))
 				break_tile_to_plating()
 			else
 				break_tile()
-			if(prob(50))
-				create_shrapnel(location, rand(1,3), explosion_direction, , /datum/ammo/bullet/shrapnel/light)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			break_tile_to_plating()
-			create_shrapnel(location, rand(1,3), explosion_direction, , /datum/ammo/bullet/shrapnel/light)
 	return 0
 
 /turf/open/floor/fire_act(exposed_temperature, exposed_volume)

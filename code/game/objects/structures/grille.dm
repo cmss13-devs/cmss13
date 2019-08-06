@@ -8,7 +8,6 @@
 	debris = list(/obj/item/stack/rods)
 	flags_atom = FPRINT|CONDUCT
 	layer = OBJ_LAYER
-	explosion_resistance = 5
 	health = 10
 	var/destroyed = 0
 

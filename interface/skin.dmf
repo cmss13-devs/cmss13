@@ -352,9 +352,6 @@ macro "hotkeymode"
 	elem 
 		name = "F12"
 		command = "F12"
-	elem 
-		name = "CTRL"
-		command = "southface"
 
 
 menu "menu"

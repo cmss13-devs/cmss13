@@ -37,7 +37,6 @@
 	layer = WIRE_LAYER
 	color = COLOR_RED
 	var/obj/machinery/power/breakerbox/breaker_box
-	explosion_resistance = 150 //Fixes ground map stuff. Can't have them blow up all the time.
 	unacidable = 1
 	var/id
 

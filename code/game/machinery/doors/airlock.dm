@@ -76,7 +76,6 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	icon = 'icons/obj/doors/Doorint.dmi'
 	icon_state = "door_closed"
 	power_channel = ENVIRON
-	explosion_resistance = 15
 
 	var/aiControlDisabled = 0 //If 1, AI control is disabled until the AI hacks back in and disables the lock. If 2, the AI has bypassed the lock. If -1, the control is enabled but the AI had bypassed it earlier, so if it is disabled again the AI would have no trouble getting back in.
 	var/hackProof = 0 // if 1, this door can't be hacked by the AI
@@ -181,6 +180,15 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	var/location = get_turf(src)
 	if(take_damage(exp_damage)) // destroyed by explosion, shards go flying
 		create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light)
+
+/obj/machinery/door/airlock/get_explosion_resistance()
+	if(density)
+		if(unacidable)
+			return 1000000
+		else
+			return (damage_cap-damage)/EXPLOSION_DAMAGE_MULTIPLIER_AIRLOCK //this should exactly match the amount of damage needed to destroy the door
+	else
+		return 0
 
 
 /obj/machinery/door/airlock/bullet_act(var/obj/item/projectile/Proj)

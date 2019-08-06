@@ -6,7 +6,6 @@
 	icon_state = "pdoor1"
 	id = 1.0
 	dir = 1
-	explosion_resistance = 25
 	layer = PODDOOR_OPEN_LAYER
 	open_layer = PODDOOR_OPEN_LAYER
 	closed_layer = PODDOOR_CLOSED_LAYER

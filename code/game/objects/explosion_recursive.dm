@@ -228,6 +228,9 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 
 	var/damage_addon = min(power * reflection_amplification_limit, reflected_power/num_tiles_affected)
 
+	var/tiles_processed = 0
+	var/increment = min(50, sqrt(num_tiles_affected)*3 )//how many tiles we damage per tick
+
 	for(var/turf/T in explosion_turfs)
 		if(!T) continue
 
@@ -244,10 +247,15 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 			T = locate(x,y,z)
 		for(var/atom/A in T)
 			spawn(0)
-				A.ex_act(severity, direction)
 				if(ismob(A))
 					var/mob/M = A
 					log_attack("Mob [M.name] ([M.ckey]) harmed by explosion in [T.loc.name] at ([M.loc.x],[M.loc.y],[M.loc.z])")
+				A.ex_act(severity, direction)
+
+		tiles_processed++
+		if(tiles_processed >= increment)
+			tiles_processed = 0
+			sleep(1)
 
 	spawn(8)  //resume lighting and powernet processing
 		if(!lighting_controller.processing)
@@ -261,15 +269,16 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 	return 0
 
 /mob/living/get_explosion_resistance()
-	switch(mob_size)
-		if(MOB_SIZE_SMALL)
-			return 0
-		if(MOB_SIZE_HUMAN)
-			return 20
-		if(MOB_SIZE_XENO)
-			return 20
-		if(MOB_SIZE_BIG)
-			return 40
+	if(density)
+		switch(mob_size)
+			if(MOB_SIZE_SMALL)
+				return 0
+			if(MOB_SIZE_HUMAN)
+				return 20
+			if(MOB_SIZE_XENO)
+				return 20
+			if(MOB_SIZE_BIG)
+				return 40
 	return 0
 
 /obj/item/proc/explosion_throw(severity, direction, var/scatter_multiplier = 1)

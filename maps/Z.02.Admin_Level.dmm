@@ -8711,7 +8711,6 @@
 "KH" = (
 /obj/machinery/door/airlock/almayer/generic{
 	damage_cap = 50000;
-	explosion_resistance = 100;
 	id_tag = null;
 	locked = 0;
 	name = "\improper Hangar";

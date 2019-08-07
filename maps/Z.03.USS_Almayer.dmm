@@ -16553,6 +16553,7 @@
 "aRr" = (
 /obj/structure/table/almayer,
 /obj/effect/spawner/random/toolbox,
+/obj/item/storage/firstaid/o2,
 /turf/open/floor/almayer{
 	tag = "icon-orange (SOUTHEAST)";
 	icon_state = "orange";
@@ -16840,7 +16841,7 @@
 	pixel_x = 8;
 	pixel_y = 6
 	},
-/obj/item/storage/firstaid{
+/obj/item/storage/firstaid/toxin{
 	pixel_x = 8;
 	pixel_y = -2
 	},
@@ -27278,6 +27279,7 @@
 "bvP" = (
 /obj/structure/table/almayer,
 /obj/item/folder/yellow,
+/obj/item/storage/firstaid/fire,
 /turf/open/floor/almayer{
 	tag = "icon-orange (EAST)";
 	icon_state = "orange";
@@ -27848,6 +27850,10 @@
 "bxC" = (
 /obj/structure/table/almayer,
 /obj/item/reagent_container/food/drinks/coffee,
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 8;
+	pixel_y = -2
+	},
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliason)
 "bxD" = (
@@ -32801,6 +32807,7 @@
 "bKd" = (
 /obj/structure/table/almayer,
 /obj/item/tool/hand_labeler,
+/obj/item/storage/firstaid/fire,
 /turf/open/floor/almayer{
 	tag = "icon-red (SOUTHWEST)";
 	icon_state = "red";
@@ -34426,6 +34433,7 @@
 	pixel_y = 5
 	},
 /obj/item/handcuffs,
+/obj/item/storage/firstaid/regular,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -35463,7 +35471,10 @@
 /area/almayer/engineering/engineering_workshop)
 "bQb" = (
 /obj/structure/table/almayer,
-/obj/item/storage/firstaid/toxin,
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 8;
+	pixel_y = -2
+	},
 /obj/machinery/power/apc/almayer{
 	dir = 1
 	},
@@ -40259,6 +40270,10 @@
 /obj/structure/largecrate/random/case/small{
 	pixel_y = 5
 	},
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 8;
+	pixel_y = -2
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -40879,6 +40894,7 @@
 "cdI" = (
 /obj/structure/table/almayer,
 /obj/item/device/radio/marine,
+/obj/item/storage/firstaid/regular,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -40976,6 +40992,10 @@
 /obj/item/clipboard,
 /obj/item/paper,
 /obj/item/tool/pen,
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 8;
+	pixel_y = -2
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -44721,6 +44741,7 @@
 	},
 /obj/structure/table/almayer,
 /obj/effect/spawner/random/tool,
+/obj/item/storage/firstaid/regular,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -46867,6 +46888,19 @@
 	dir = 4
 	},
 /area/almayer/squads/req)
+"fpR" = (
+/obj/structure/table/almayer,
+/obj/effect/spawner/random/tool,
+/obj/effect/spawner/random/technology_scanner,
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/engineering/starboard_atmos)
 "fpV" = (
 /turf/open/floor/almayer{
 	tag = "icon-orange (SOUTHEAST)";
@@ -47522,6 +47556,14 @@
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/squads/req)
+"gwD" = (
+/obj/structure/table/almayer,
+/obj/item/storage/firstaid/regular,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -50384,6 +50426,7 @@
 /obj/item/tool/crowbar,
 /obj/item/tool/wrench,
 /obj/item/handcuffs,
+/obj/item/storage/firstaid/regular,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -55767,6 +55810,16 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig_cells)
+"sIA" = (
+/obj/structure/table/almayer,
+/obj/effect/spawner/random/technology_scanner,
+/obj/effect/spawner/random/tool,
+/obj/item/storage/firstaid/o2,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/engineering/port_atmos)
 "sJV" = (
 /obj/structure/bed/chair/wood/normal{
 	tag = "icon-wooden_chair (EAST)";
@@ -98598,7 +98651,7 @@ bTs
 bUB
 adO
 afM
-ahf
+fpR
 ahf
 afM
 adO
@@ -98624,7 +98677,7 @@ aiC
 aEY
 aUG
 aVz
-aVz
+sIA
 aXx
 aEY
 bPp
@@ -100130,7 +100183,7 @@ bEs
 bIs
 bdm
 mCo
-bNB
+gwD
 bOK
 bPD
 bYa

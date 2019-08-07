@@ -328,36 +328,28 @@ proc/populate_seed_list()
 			if(1) //Gluttony!
 				nutrient_consumption =      max(0,  min(5,   nutrient_consumption + rand(-(degree*0.1),(degree*0.1))))
 				water_consumption =         max(0,  min(50,  water_consumption    + rand(-degree,degree)))
-			if(2) //Temperature tolerance
-				ideal_heat =                max(70, min(800, ideal_heat           + (rand(-5,5)   * degree)))
-				heat_tolerance =            max(70, min(800, heat_tolerance       + (rand(-5,5)   * degree)))
-				lowkpa_tolerance =          max(0,  min(80,  lowkpa_tolerance     + (rand(-5,5)   * degree)))
-				highkpa_tolerance =         max(110, min(500,highkpa_tolerance    + (rand(-5,5)   * degree)))
+			if(2) //Endurance
+				endurance =                 max(10, min(100, endurance            + (rand(-5,5)   * degree)))
 			if(3) //Light tolerance
 				ideal_light =               max(0,  min(30,  ideal_light          + (rand(-1,1)   * degree)))
 				light_tolerance =           max(0,  min(10,  light_tolerance      + (rand(-2,2)   * degree)))
 			if(4) //Toxin tolerance
 				toxins_tolerance =          max(0,  min(10,  weed_tolerance       + (rand(-2,2)   * degree)))
-			if(5) //Weed tolerance, carnivorous
+			if(5) //Weed tolerance
 				weed_tolerance  =           max(0,  min(10,  weed_tolerance       + (rand(-2,2)   * degree)))
 				if(prob(degree*5))
 					carnivorous =           max(0,  min(2,   carnivorous          + rand(-degree,degree)))
 					if(carnivorous)
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name] shudders hungrily."))
-			if(6) //Weed tolerance, parasitic
-				weed_tolerance  =           max(0,  min(10,  weed_tolerance       + (rand(-2,2)   * degree)))
-				if(prob(degree*5))          parasite = !parasite
-
+				else if(prob(degree*5))          
+					parasite = !parasite
+			if(6) //Production
+				production =                max(1,  min(10,  production           + (rand(-1,1)   * degree)))
 			if(7) //Lifespan
 				lifespan =                  max(10, min(30,  lifespan             + (rand(-2,2)   * degree)))
 				if(yield != -1) yield =     max(0,  min(10,  yield                + (rand(-2,2)   * degree)))
-			if(8) //BIGGER
-				endurance =                 max(10, min(100, endurance            + (rand(-5,5)   * degree)))
-				production =                max(1,  min(10,  production           + (rand(-1,1)   * degree)))
+			if(8) //Potency
 				potency =                   max(0,  min(200, potency              + (rand(-20,20) * degree)))
-				if(prob(degree*5))
-					spread =                max(0,  min(2,   spread               + rand(-1,1)))
-					source_turf.visible_message(SPAN_NOTICE("\The [display_name] spasms visibly, shifting in the tray."))
 			if(9) //Maturity
 				maturation =                max(0,  min(30,  maturation      + (rand(-1,1)   * degree)))
 				if(prob(degree*5))

@@ -61,28 +61,25 @@
 	possible_icons_full = list("ointment","firefirstaid")
 
 	fill_firstaid_kit()
-		new /obj/item/device/healthanalyzer( src )
-		new /obj/item/stack/medical/ointment( src )
-		new /obj/item/stack/medical/ointment( src )
-		new /obj/item/stack/medical/ointment( src )
-		new /obj/item/reagent_container/pill/kelotane( src )
-		new /obj/item/reagent_container/pill/kelotane( src )
-		new /obj/item/storage/syringe_case/burn( src )
-
-
+		new /obj/item/device/healthanalyzer(src)
+		new /obj/item/stack/medical/ointment(src)
+		new /obj/item/stack/medical/ointment(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/Kelo(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/Kelo(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/Kelo(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/Tramadol/skillless(src)
 
 /obj/item/storage/firstaid/regular
 	icon_state = "firstaid"
 
 	fill_firstaid_kit()
 		new /obj/item/device/healthanalyzer(src)
-		new /obj/item/stack/medical/bruise_pack(src)
-		new /obj/item/stack/medical/bruise_pack(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/tricord/skillless(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/Tramadol/skillless(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/Inaprovaline(src)
 		new /obj/item/stack/medical/bruise_pack(src)
 		new /obj/item/stack/medical/ointment(src)
-		new /obj/item/stack/medical/ointment(src)
-		new /obj/item/storage/syringe_case/regular(src)
-
+		new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/firstaid/toxin
 	name = "toxin first aid"
@@ -92,14 +89,13 @@
 	possible_icons_full = list("antitoxin","antitoxfirstaid","antitoxfirstaid2","antitoxfirstaid3")
 
 	fill_firstaid_kit()
-		new /obj/item/device/healthanalyzer( src )
-		new /obj/item/reagent_container/syringe/antitoxin( src )
-		new /obj/item/reagent_container/pill/antitox( src )
-		new /obj/item/reagent_container/pill/antitox( src )
-		new /obj/item/reagent_container/pill/antitox( src )
-		new /obj/item/reagent_container/pill/antitox( src )
-		new /obj/item/storage/syringe_case/tox( src )
-
+		new /obj/item/device/healthanalyzer(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/Dylovene(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/Dylovene(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/Dylovene(src)
+		new /obj/item/reagent_container/pill/antitox(src)
+		new /obj/item/reagent_container/pill/antitox(src)
+		new /obj/item/reagent_container/pill/antitox(src)
 
 /obj/item/storage/firstaid/o2
 	name = "oxygen deprivation first aid"
@@ -108,14 +104,13 @@
 	item_state = "firstaid-o2"
 
 	fill_firstaid_kit()
-		new /obj/item/device/healthanalyzer( src )
-		new /obj/item/reagent_container/pill/dexalin( src )
-		new /obj/item/reagent_container/pill/dexalin( src )
-		new /obj/item/reagent_container/pill/dexalin( src )
-		new /obj/item/reagent_container/pill/dexalin( src )
+		new /obj/item/device/healthanalyzer(src)
+		new /obj/item/reagent_container/pill/dexalin(src)
+		new /obj/item/reagent_container/pill/dexalin(src)
 		new /obj/item/reagent_container/hypospray/autoinjector/dexP(src)
-		new /obj/item/storage/syringe_case/oxy( src )
-
+		new /obj/item/reagent_container/hypospray/autoinjector/dexP(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/dexP(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/Inaprovaline(src)
 
 /obj/item/storage/firstaid/adv
 	name = "advanced first-aid kit"

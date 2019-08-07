@@ -1051,7 +1051,6 @@
 		list("LE M39 magazine", 15, /obj/item/ammo_magazine/smg/m39/le , null, "black"),
 		list("Extended M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
 
-
 		list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
 		list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
@@ -1454,6 +1453,17 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 /obj/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)
 	return
 
+/obj/machinery/cm_vending/sorted/attack_hand(mob/user)
+
+	if(stat & (BROKEN|NOPOWER))
+		return
+
+	if(!ishuman(user))
+		return
+
+	user.set_interaction(src)
+	ui_interact(user)
+
 /obj/machinery/cm_vending/sorted/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 
 	if(!ishuman(user)) return
@@ -1565,12 +1575,26 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 					if((A.flags_attach_features & ATTACH_REMOVABLE) && !(is_type_in_list(A, G.starting_attachment_types))) //There are attachments that are default and others that can't be removed
 						to_chat(user, SPAN_WARNING("[G] has non-standard attachments equipped. Detach them before you can restock it."))
 						return
-
 			if(istype(item_to_stock, /obj/item/ammo_magazine))
 				var/obj/item/ammo_magazine/A = item_to_stock
 				if(A.current_rounds < A.max_rounds)
 					to_chat(user, SPAN_WARNING("[A] isn't full. Fill it before you can restock it."))
 					return
+			if(istype(item_to_stock, /obj/item/magazine_box))
+				var/obj/item/magazine_box/A = item_to_stock
+				if(A.contents.len < A.num_of_magazines)
+					to_chat(user, SPAN_WARNING("[A] is not full."))
+					return
+				for(var/obj/item/ammo_magazine/M in A.contents)
+					if(M.current_rounds != M.max_rounds)
+						to_chat(user, SPAN_WARNING("Not all magazines in [A] are full."))
+						return
+			if(istype(item_to_stock, /obj/item/big_ammo_box))
+				var/obj/item/big_ammo_box/A = item_to_stock
+				if(A.bullet_amount < A.max_bullet_amount)
+					to_chat(user, SPAN_WARNING("[A] is not full."))
+					return
+
 			if(item_to_stock.loc == user) //Inside the mob's inventory
 				if(item_to_stock.flags_item & WIELDED)
 					item_to_stock.unwield(user)
@@ -1636,13 +1660,13 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Tools Pouch", round(scale * 2), /obj/item/storage/pouch/tools, "black"),
 
 		list("Firearms", -1, null, null),
-		list("M4A3 Service Pistol", round(scale * 10), /obj/item/weapon/gun/pistol/m4a3, "black"),
-		list("88 Mod 4 combat pistol", round(scale * 10), /obj/item/weapon/gun/pistol/mod88, "black"),
+		list("M4A3 Service Pistol", round(scale * 20), /obj/item/weapon/gun/pistol/m4a3, "black"),
+		list("88 Mod 4 Combat Pistol", round(scale * 15), /obj/item/weapon/gun/pistol/mod88, "black"),
 		list("M44 Combat Revolver", round(scale * 10), /obj/item/weapon/gun/revolver/m44, "black"),
-		list("L42 Pulse Carbine MK1", round(scale * 20), /obj/item/weapon/gun/rifle/l42mk1, "black"),
-		list("M37A2 Pump Shotgun", round(scale * 10), /obj/item/weapon/gun/shotgun/pump, "black"),
 		list("M39 Submachinegun", round(scale * 15), /obj/item/weapon/gun/smg/m39, "black"),
+		list("L42 Pulse Carbine MK1", round(scale * 20), /obj/item/weapon/gun/rifle/l42mk1, "black"),
 		list("M41A Pulse Rifle MK2", round(scale * 20), /obj/item/weapon/gun/rifle/m41a, "black"),
+		list("M37A2 Pump Shotgun", round(scale * 10), /obj/item/weapon/gun/shotgun/pump, "black"),
 
 		list("Kits", -1, null, null),
 		list("Experimental Trooper Kit", round(scale * 4), /obj/item/storage/box/kit/exp_trooper, "black"),
@@ -1743,49 +1767,60 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 /obj/machinery/cm_vending/sorted/cargo_ammo/populate_product_list(var/scale)
 	listed_products = list(
 		list("Regular Ammunition", -1, null, null),
-		list("Box Of Buckshot Shells", round(scale * 10) % 3, /obj/item/ammo_magazine/shotgun/buckshot, "black"),
-		list("Box Of Flechette Shells", round(scale * 5) % 12, /obj/item/ammo_magazine/shotgun/flechette, "black"),
-		list("Box Of Shotgun Slugs", round(scale * 15) % 3, /obj/item/ammo_magazine/shotgun/slugs, "black"),
-		list("M4A3 Magazine (9mm)", round(scale * 20) % 12, /obj/item/ammo_magazine/pistol, "black"),
-		list("88M4 AP magazine (9mm)", round(scale * 20) % 12, /obj/item/ammo_magazine/pistol/mod88, "black"),
-		list("M44 speed loader (.44)", round(scale * 20) % 12, /obj/item/ammo_magazine/revolver, "black"),
-		list("M39 Magazine (10x20mm)", round(scale * 20) % 12, /obj/item/ammo_magazine/smg/m39, "black"),
-		list("M41A Magazine (10x24mm)", round(scale * 30) % 10, /obj/item/ammo_magazine/rifle, "black"),
+		list("M4A3 Magazine (9mm)", round(scale * 6.1), /obj/item/ammo_magazine/pistol, "black"),
+		list("M44 Speed Loader (.44)", round(scale * 5.3), /obj/item/ammo_magazine/revolver, "black"),
+		list("M39 Magazine (10x20mm)", round(scale * 7.5), /obj/item/ammo_magazine/smg/m39, "black"),
+		list("L42-MK1 magazine (10x24mm)", round(scale * 8), /obj/item/ammo_magazine/rifle/l42mk1, "black"),
+		list("M41A Magazine (10x24mm)", round(scale * 7.8), /obj/item/ammo_magazine/rifle, "black"),
+		list("Box Of Buckshot Shells", round(scale * 2), /obj/item/ammo_magazine/shotgun/buckshot, "black"),
+		list("Box Of Flechette Shells", round(scale * 2), /obj/item/ammo_magazine/shotgun/flechette, "black"),
+		list("Box Of Shotgun Slugs", round(scale * 2), /obj/item/ammo_magazine/shotgun/slugs, "black"),
 
 		list("Armor-Piercing Ammunition", -1, null, null),
-		list("L42-MK1 AP Magazine (10x24mm)", round(scale * 1), /obj/item/ammo_magazine/rifle/l42mk1/ap, "black"),
-		list("M39 AP Magazine (10x20mm)", round(scale * 10) % 3, /obj/item/ammo_magazine/smg/m39/ap, "black"),
-		list("M41A AP Magazine (10x24mm)", round(scale * 10) % 10, /obj/item/ammo_magazine/rifle/ap, "black"),
+		list("88 Mod 4 AP Magazine (9mm)", round(scale * 5.5), /obj/item/ammo_magazine/pistol/mod88, "black"),
+		list("M39 AP Magazine (10x20mm)", round(scale * 3.5), /obj/item/ammo_magazine/smg/m39/ap, "black"),
+		list("L42-MK1 AP Magazine (10x24mm)", round(scale * 4.5), /obj/item/ammo_magazine/rifle/l42mk1/ap, "black"),
+		list("M41A AP Magazine (10x24mm)", round(scale * 3.5), /obj/item/ammo_magazine/rifle/ap, "black"),
 
 		list("Extended Ammunition", -1, null, null),
-		list("L42-MK1 Extended Magazine (10x24mm)", round(scale * 4), /obj/item/ammo_magazine/rifle/l42mk1/extended, "black"),
-		list("M39 Extended Magazine (10x20mm)", round(scale * 10) % 10, /obj/item/ammo_magazine/smg/m39/extended, "black"),
-		list("M41A Extended Magazine (10x24mm)", round(scale * 10) % 8, /obj/item/ammo_magazine/rifle/extended, "black"),
+		list("M39 Extended Magazine (10x20mm)", round(scale * 2.5) + 3, /obj/item/ammo_magazine/smg/m39/extended, "black"),
+		list("L42-MK1 Extended Magazine (10x24mm)", round(scale * 4.5), /obj/item/ammo_magazine/rifle/l42mk1/extended, "black"),
+		list("M41A Extended Magazine (10x24mm)", round(scale * 2.5), /obj/item/ammo_magazine/rifle/extended, "black"),
 
 		list("Special Ammunition", -1, null, null),
-		list("SU-6 Smartpistol Magazine (.45)", round(scale * 10) % 8, /obj/item/ammo_magazine/pistol/smart, "black"),
-		list("VP78 magazine (9mm)", round(scale * 10) % 8, /obj/item/ammo_magazine/pistol/vp78, "black"),
-		list("M44 Heavy Speed Loader (.44)", round(scale * 10) % 8, /obj/item/ammo_magazine/revolver/heavy, "black"),
-		list("M44 Marksman Speed Loader (.44)", round(scale * 10) % 8, /obj/item/ammo_magazine/revolver/marksman, "black"),
-		list("M39 LE Magazine (10x20mm)", round(scale * 2) % 12, /obj/item/ammo_magazine/smg/m39/le, "black"),
+		list("M44 Heavy Speed Loader (.44)", round(scale * 2.5), /obj/item/ammo_magazine/revolver/heavy, "black"),
+		list("M44 Marksman Speed Loader (.44)", round(scale * 2.5), /obj/item/ammo_magazine/revolver/marksman, "black"),
+		list("SU-6 Smartpistol Magazine (.45)", round(scale * 2.5), /obj/item/ammo_magazine/pistol/smart, "black"),
+		list("VP78 Magazine", round(scale * 2.5), /obj/item/ammo_magazine/pistol/vp78, "black"),
+		list("M39 LE Magazine (10x20mm)", round(scale * 3.5) + 1, /obj/item/ammo_magazine/smg/m39/le, "black"),
+		list("M56 Smartgun Drum", 4, /obj/item/ammo_magazine/smartgun, "black"),
+		list("M56 Powerpack", 2, /obj/item/smartgun_powerpack, "black"),
+		list("Incinerator Tank", round(scale * 2.5), /obj/item/ammo_magazine/flamer_tank, "black"),
 
 		list("Ammunition Boxes", -1, null, null),
-		list("Magazine Box (L42-MK1 x 16)", round(scale * 10) % 10, /obj/item/magazine_box/rifle/l42mk1, "black"),
-		list("Magazine Box (AP L42-MK1 x 16)", round(scale * 1), /obj/item/magazine_box/rifle/l42mk1/ap, "black"),
-		list("Magazine Box (Ext L42-MK1 x 16)", round(scale * 2), /obj/item/magazine_box/rifle/l42mk1/ext, "black"),
-		list("Magazine Box (M39 x 12)", round(scale * 20 / 12), /obj/item/magazine_box/smg, "black"),
-		list("Magazine Box (AP M39 x 12)", round(scale * 5 / 12), /obj/item/magazine_box/smg/ap, "black"),
-		list("Magazine Box (Ext m39 x 10)", round(scale * 10 / 10), /obj/item/magazine_box/smg/extended, "black"),
-		list("Magazine Box (M41A x 10)", round(scale * 30 / 10), /obj/item/magazine_box, "black"),
-		list("Magazine Box (AP M41A x 10)", round(scale * 10 / 10), /obj/item/magazine_box/rifle_ap, "black"),
-		list("Magazine Box (Ext M41A x 8)", round(scale * 10 / 8), /obj/item/magazine_box/rifle_extended, "black"),
-		list("Shotgun Shell Box (Buckshot x 100)", round(scale * 10 / 3), /obj/item/magazine_box/shotgun/buckshot, "black"),
-		list("Shotgun Shell Box (Slugs x 100)", round(scale * 15 / 3), /obj/item/magazine_box/shotgun, "black"),
-		list("Shotgun Shell Box (Flechette x 100)", round(scale * 5 / 12), /obj/item/magazine_box/shotgun/flechette, "black"),
+		list("SMG ammunition box (10x20mm)", round(scale * 0.9), /obj/item/big_ammo_box/smg, "black"),
+		list("SMG ammunition box (10x20mm AP)", round(scale * 0.75), /obj/item/big_ammo_box/smg/ap, "black"),
+		list("SMG ammunition box (10x20mm LE)", round(scale * 0.75), /obj/item/big_ammo_box/smg/le, "black"),
+		list("Rifle ammunition box (10x24mm)", round(scale * 0.9), /obj/item/big_ammo_box, "black"),
+		list("Rifle ammunition box (10x24mm AP)", round(scale * 0.75), /obj/item/big_ammo_box/ap, "black"),
 
-		list("Miscellaneous", -1, null, null),
-		list("Incinerator Tank", round(scale * 2), /obj/item/ammo_magazine/flamer_tank, "black"),
-		list("M56 Powerpack", round(scale * 2), /obj/item/smartgun_powerpack, "black")
+		list("Magazine Boxes", -1, null, null),
+		list("Magazine Box (M4A3 x 16)", round(scale * 0.9), /obj/item/magazine_box/m4a3, "black"),
+		list("Magazine Box (88 Mod 4 AP x 16)", round(scale * 0.7), /obj/item/magazine_box/mod88, "black"),
+		list("Magazine Box (SU-6 x 16)", round(scale * 0.3), /obj/item/magazine_box/su6, "black"),
+		list("Magazine Box (VP78 x 16)", round(scale * 0.2), /obj/item/magazine_box/vp78, "black"),
+		list("Magazine Box (L42-MK1 x 16)", round(scale * 0.8), /obj/item/magazine_box/l42mk1, "black"),
+		list("Magazine Box (AP L42-MK1 x 16)", round(scale * 0.7), /obj/item/magazine_box/l42mk1/ap, "black"),
+		list("Magazine Box (Ext L42-MK1 x 16)", round(scale * 0.7), /obj/item/magazine_box/l42mk1/ext, "black"),
+		list("Magazine Box (M39 x 12)", round(scale * 0.8), /obj/item/magazine_box/m39, "black"),
+		list("Magazine Box (AP M39 x 12)", round(scale * 0.7), /obj/item/magazine_box/m39/ap, "black"),
+		list("Magazine Box (Ext m39 x 10)", round(scale * 0.7), /obj/item/magazine_box/m39/ext, "black"),
+		list("Magazine Box (M41A x 10)", round(scale * 0.8), /obj/item/magazine_box, "black"),
+		list("Magazine Box (AP M41A x 10)", round(scale * 0.7), /obj/item/magazine_box/ap, "black"),
+		list("Magazine Box (Ext M41A x 8)", round(scale * 0.7), /obj/item/magazine_box/ext, "black"),
+		list("Shotgun Shell Box (Buckshot x 100)", round(scale * 1), /obj/item/magazine_box/shotgun/buckshot, "black"),
+		list("Shotgun Shell Box (Slugs x 100)", round(scale * 1), /obj/item/magazine_box/shotgun, "black"),
+		list("Shotgun Shell Box (Flechette x 100)", round(scale * 1), /obj/item/magazine_box/shotgun/flechette, "black")
 		)
 
 
@@ -1799,25 +1834,23 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 	listed_products = list(
 
 		list("Armor-Piercing Ammunition", -1, null, null),
-		list("L42-MK1 AP Magazine (10x24mm)", round(scale * 1), /obj/item/ammo_magazine/rifle/l42mk1/ap, "black"),
-		list("M39 AP Magazine (10x20mm)", round(scale * 5) % 12, /obj/item/ammo_magazine/smg/m39/ap, "black"),
-		list("M41A AP Magazine (10x24mm)", round(scale * 5) % 10, /obj/item/ammo_magazine/rifle/ap, "black"),
+		list("M39 AP Magazine (10x20mm)", round(scale * 3), /obj/item/ammo_magazine/smg/m39/ap, "black"),
+		list("L42-MK1 AP Magazine (10x24mm)", round(scale * 3.5), /obj/item/ammo_magazine/rifle/l42mk1/ap, "black"),
+		list("M41A AP Magazine (10x24mm)", round(scale * 3), /obj/item/ammo_magazine/rifle/ap, "black"),
 
 		list("Extended Ammunition", -1, null, null),
+		list("M39 Extended Magazine (10x20mm)", round(scale * 1.8), /obj/item/ammo_magazine/smg/m39/extended, "black"),
 		list("L42-MK1 Extended Magazine (10x24mm)", round(scale * 2), /obj/item/ammo_magazine/rifle/l42mk1/extended, "black"),
-		list("M39 Extended Magazine (10x20mm)", round(scale * 10) % 10, /obj/item/ammo_magazine/smg/m39/extended, "black"),
-		list("M41A Extended Magazine (10x24mm)", round(scale * 5) % 8, /obj/item/ammo_magazine/rifle/extended, "black"),
+		list("M41A Extended Magazine (10x24mm)", round(scale * 1.9), /obj/item/ammo_magazine/rifle/extended, "black"),
 
 		list("Special Ammunition", -1, null, null),
-		list("SU-6 Smartpistol Magazine (.45)", round(scale * 5), /obj/item/ammo_magazine/pistol/smart, "black"),
-		list("VP78 magazine (9mm)", round(scale * 5), /obj/item/ammo_magazine/pistol/vp78, "black"),
-		list("M44 Heavy Speed Loader (.44)", round(scale * 5), /obj/item/ammo_magazine/revolver/heavy, "black"),
-		list("M44 Marksman Speed Loader (.44)", round(scale * 5), /obj/item/ammo_magazine/revolver/marksman, "black"),
-		list("M39 LE Magazine (10x20mm)", round(scale * 2) % 12, /obj/item/ammo_magazine/smg/m39/le, "black"),
-
-		list("Miscellaneous", -1, null, null),
-		list("Incinerator Tank", round(scale * 1), /obj/item/ammo_magazine/flamer_tank, "black"),
-		list("M56 Powerpack", round(scale * 1), /obj/item/smartgun_powerpack, "black")
+		list("M44 Heavy Speed Loader (.44)", round(scale * 2), /obj/item/ammo_magazine/revolver/heavy, "black"),
+		list("M44 Marksman Speed Loader (.44)", round(scale * 2), /obj/item/ammo_magazine/revolver/marksman, "black"),
+		list("SU-6 Smartpistol Magazine (.45)", round(scale * 2), /obj/item/ammo_magazine/pistol/smart, "black"),
+		list("VP78 Magazine", round(scale * 1.3), /obj/item/ammo_magazine/pistol/vp78, "black"),
+		list("M39 LE Magazine (10x20mm)", round(scale * 2), /obj/item/ammo_magazine/smg/m39/le, "black"),
+		list("M56 Smartgun Drum", 1, /obj/item/ammo_magazine/smartgun, "black"),
+		list("Incinerator Tank", round(scale * 1.5), /obj/item/ammo_magazine/flamer_tank, "black"),
 		)
 
 //ATTACHMENTS VENDOR
@@ -1834,42 +1867,42 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 /obj/machinery/cm_vending/sorted/attachments/populate_product_list(var/scale)
 	listed_products = list(
 		list("Muzzle", -1, null, null),
-		list("Barrel Charger", round(scale * 2), /obj/item/attachable/heavy_barrel, "black"),
-		list("Bayonet", round(scale * 10), /obj/item/attachable/bayonet, "black"),
-		list("Extended Barrel", round(scale * 6), /obj/item/attachable/extended_barrel, "black"),
-		list("Recoil Compensator", round(scale * 6), /obj/item/attachable/compensator, "black"),
-		list("Suppressor", round(scale * 6), /obj/item/attachable/suppressor, "black"),
+		list("Barrel Charger", round(scale * 2.5), /obj/item/attachable/heavy_barrel, "black"),
+		list("Bayonet", round(scale * 10.5), /obj/item/attachable/bayonet, "black"),
+		list("Extended Barrel", round(scale * 6.5), /obj/item/attachable/extended_barrel, "black"),
+		list("Recoil Compensator", round(scale * 6.5), /obj/item/attachable/compensator, "black"),
+		list("Suppressor", round(scale * 6.5), /obj/item/attachable/suppressor, "black"),
 
 		list("Rail", -1, null, null),
-		list("B8 Smart-Scope", round(scale * 2)+1, /obj/item/attachable/scope/mini_iff, "black"),
-		list("Magnetic Harness", round(scale * 6), /obj/item/attachable/magnetic_harness, "black"),
-		list("Quickfire Adapter", round(scale * 4), /obj/item/attachable/quickfire, "black"),
-		list("Rail Flashlight", round(scale * 10), /obj/item/attachable/flashlight, "black"),
-		list("S4 2x Telescopic Mini-Scope", round(scale * 4), /obj/item/attachable/scope/mini, "black"),
-		list("S5 Red-Dot Sight", round(scale * 9), /obj/item/attachable/reddot, "black"),
-		list("S6 Reflex Sight", round(scale * 9), /obj/item/attachable/reflex, "black"),
-		list("S8 4x Telescopic Scope", round(scale * 4), /obj/item/attachable/scope, "black"),
+		list("B8 Smart-Scope", round(scale * 3.5), /obj/item/attachable/scope/mini_iff, "black"),
+		list("Magnetic Harness", round(scale * 6.5), /obj/item/attachable/magnetic_harness, "black"),
+		list("Quickfire Adapter", round(scale * 4.5), /obj/item/attachable/quickfire, "black"),
+		list("Rail Flashlight", round(scale * 10.5), /obj/item/attachable/flashlight, "black"),
+		list("S4 2x Telescopic Mini-Scope", round(scale * 4.5), /obj/item/attachable/scope/mini, "black"),
+		list("S5 Red-Dot Sight", round(scale * 9.5), /obj/item/attachable/reddot, "black"),
+		list("S6 Reflex Sight", round(scale * 9.5), /obj/item/attachable/reflex, "black"),
+		list("S8 4x Telescopic Scope", round(scale * 4.5), /obj/item/attachable/scope, "black"),
 
 		list("Underbarrel", -1, null, null),
-		list("Angled Grip", round(scale * 6), /obj/item/attachable/angledgrip, "black"),
-		list("Bipod", round(scale * 6), /obj/item/attachable/bipod, "black"),
-		list("Burst Fire Assembly", round(scale * 3), /obj/item/attachable/burstfire_assembly, "black"),
-		list("Gyroscopic Stabilizer", round(scale * 4), /obj/item/attachable/gyro, "black"),
-		list("Laser Sight", round(scale * 9), /obj/item/attachable/lasersight, "black"),
-		list("Mini Flamethrower", round(scale * 4), /obj/item/attachable/attached_gun/flamer, "black"),
-		list("U7 Underbarrel Shotgun", round(scale * 4), /obj/item/attachable/attached_gun/shotgun, "black"),
-		list("Underslung Grenade Launcher", round(scale * 5), /obj/item/attachable/attached_gun/grenade, "black"),
-		list("Underbarrel Flashlight Grip", round(scale * 9), /obj/item/attachable/flashlight/grip, "black"),
-		list("Vertical Grip", round(scale * 9), /obj/item/attachable/verticalgrip, "black"),
+		list("Angled Grip", round(scale * 6.5), /obj/item/attachable/angledgrip, "black"),
+		list("Bipod", round(scale * 6.5), /obj/item/attachable/bipod, "black"),
+		list("Burst Fire Assembly", round(scale * 4.5), /obj/item/attachable/burstfire_assembly, "black"),
+		list("Gyroscopic Stabilizer", round(scale * 4.5), /obj/item/attachable/gyro, "black"),
+		list("Laser Sight", round(scale * 9.5), /obj/item/attachable/lasersight, "black"),
+		list("Mini Flamethrower", round(scale * 4.5), /obj/item/attachable/attached_gun/flamer, "black"),
+		list("U7 Underbarrel Shotgun", round(scale * 4.5), /obj/item/attachable/attached_gun/shotgun, "black"),
+		list("Underslung Grenade Launcher", round(scale * 9.5), /obj/item/attachable/attached_gun/grenade, "black"),
+		list("Underbarrel Flashlight Grip", round(scale * 9.5), /obj/item/attachable/flashlight/grip, "black"),
+		list("Vertical Grip", round(scale * 9.5), /obj/item/attachable/verticalgrip, "black"),
 
 		list("Stock", -1, null, null),
-		list("L42 Synthetic Stock", round(scale * 4), /obj/item/attachable/stock/carbine, "black"),
-		list("M37 Wooden Stock", round(scale * 4), /obj/item/attachable/stock/shotgun, "black"),
-		list("M41A Skeleton Stock", round(scale * 4), /obj/item/attachable/stock/rifle, "black"),
-		list("M44 Magnum Sharpshooter Stock", round(scale * 4), /obj/item/attachable/stock/revolver, "black"),
-		list("Submachinegun Arm Brace", round(scale * 2) + 1, /obj/item/attachable/stock/smg/brace, "black"),
-		list("Submachinegun Folding Stock", round(scale * 2) + 1, /obj/item/attachable/stock/smg/collapsible, "black"),
-		list("Submachinegun Stock", round(scale * 2) + 1, /obj/item/attachable/stock/smg, "black"),
+		list("L42 Synthetic Stock", round(scale * 4.5), /obj/item/attachable/stock/carbine, "black"),
+		list("M37 Wooden Stock", round(scale * 4.5), /obj/item/attachable/stock/shotgun, "black"),
+		list("M41A Skeleton Stock", round(scale * 4.5), /obj/item/attachable/stock/rifle, "black"),
+		list("M44 Magnum Sharpshooter Stock", round(scale * 4.5), /obj/item/attachable/stock/revolver, "black"),
+		list("Submachinegun Arm Brace", round(scale * 4.5), /obj/item/attachable/stock/smg/brace, "black"),
+		list("Submachinegun Folding Stock", round(scale * 4.5), /obj/item/attachable/stock/smg/collapsible, "black"),
+		list("Submachinegun Stock", round(scale * 4.5), /obj/item/attachable/stock/smg, "black"),
 		)
 
 /obj/machinery/cm_vending/sorted/attachments/Topic(href, href_list)
@@ -1938,42 +1971,38 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 /obj/machinery/cm_vending/sorted/attachments/squad/populate_product_list(var/scale)
 	listed_products = list(
 		list("Muzzle", -1, null, null),
-		list("Barrel Charger", round(scale * 2), /obj/item/attachable/heavy_barrel, "black"),
-		list("Bayonet", round(scale * 10), /obj/item/attachable/bayonet, "black"),
-		list("Extended Barrel", round(scale * 6), /obj/item/attachable/extended_barrel, "black"),
-		list("Recoil Compensator", round(scale * 6), /obj/item/attachable/compensator, "black"),
-		list("Suppressor", round(scale * 6), /obj/item/attachable/suppressor, "black"),
+		list("Barrel Charger", round(scale * 0.9), /obj/item/attachable/heavy_barrel, "black"),
+		list("Extended Barrel", round(scale * 2.5), /obj/item/attachable/extended_barrel, "black"),
+		list("Recoil Compensator", round(scale * 2.5), /obj/item/attachable/compensator, "black"),
+		list("Suppressor", round(scale * 2.5), /obj/item/attachable/suppressor, "black"),
 
 		list("Rail", -1, null, null),
-		list("B8 Smart-Scope", round(scale * 2) + 1, /obj/item/attachable/scope/mini_iff, "black"),
-		list("Magnetic Harness", round(scale * 6), /obj/item/attachable/magnetic_harness, "black"),
-		list("Quickfire Adapter", round(scale * 4), /obj/item/attachable/quickfire, "black"),
-		list("Rail Flashlight", round(scale * 10), /obj/item/attachable/flashlight, "black"),
-		list("S4 2x Telescopic Mini-Scope", round(scale * 4), /obj/item/attachable/scope/mini, "black"),
-		list("S5 Red-Dot Sight", round(scale * 9), /obj/item/attachable/reddot, "black"),
-		list("S6 Reflex Sight", round(scale * 9), /obj/item/attachable/reflex, "black"),
-		list("S8 4x Telescopic Scope", round(scale * 4), /obj/item/attachable/scope, "black"),
+		list("B8 Smart-Scope", round(scale * 1.5), /obj/item/attachable/scope/mini_iff, "black"),
+		list("Magnetic Harness", round(scale * 3), /obj/item/attachable/magnetic_harness, "black"),
+		list("Quickfire Adapter", round(scale * 2.5), /obj/item/attachable/quickfire, "black"),
+		list("S4 2x Telescopic Mini-Scope", round(scale * 2), /obj/item/attachable/scope/mini, "black"),
+		list("S5 Red-Dot Sight", round(scale * 3), /obj/item/attachable/reddot, "black"),
+		list("S6 Reflex Sight", round(scale * 3), /obj/item/attachable/reflex, "black"),
+		list("S8 4x Telescopic Scope", round(scale * 2), /obj/item/attachable/scope, "black"),
 
 		list("Underbarrel", -1, null, null),
-		list("Angled Grip", round(scale * 6), /obj/item/attachable/angledgrip, "black"),
-		list("Bipod", round(scale * 6), /obj/item/attachable/bipod, "black"),
-		list("Burst Fire Assembly", round(scale * 3), /obj/item/attachable/burstfire_assembly, "black"),
-		list("Gyroscopic Stabilizer", round(scale * 4), /obj/item/attachable/gyro, "black"),
-		list("Laser Sight", round(scale * 9), /obj/item/attachable/lasersight, "black"),
-		list("Mini Flamethrower", round(scale * 4), /obj/item/attachable/attached_gun/flamer, "black"),
-		list("U7 Underbarrel Shotgun", round(scale * 4), /obj/item/attachable/attached_gun/shotgun, "black"),
-		list("Underslung Grenade Launcher", round(scale * 5), /obj/item/attachable/attached_gun/grenade, "black"),
-		list("Underbarrel Flashlight Grip", round(scale * 9), /obj/item/attachable/flashlight/grip, "black"),
-		list("Vertical Grip", round(scale * 9), /obj/item/attachable/verticalgrip, "black"),
+		list("Angled Grip", round(scale * 2.5), /obj/item/attachable/angledgrip, "black"),
+		list("Bipod", round(scale * 2.5), /obj/item/attachable/bipod, "black"),
+		list("Burst Fire Assembly", round(scale * 1.5), /obj/item/attachable/burstfire_assembly, "black"),
+		list("Gyroscopic Stabilizer", round(scale * 1.5), /obj/item/attachable/gyro, "black"),
+		list("Laser Sight", round(scale * 3), /obj/item/attachable/lasersight, "black"),
+		list("Mini Flamethrower", round(scale * 1.5), /obj/item/attachable/attached_gun/flamer, "black"),
+		list("U7 Underbarrel Shotgun", round(scale * 1.5), /obj/item/attachable/attached_gun/shotgun, "black"),
+		list("Underbarrel Flashlight Grip", round(scale * 3), /obj/item/attachable/flashlight/grip, "black"),
+		list("Vertical Grip", round(scale * 3), /obj/item/attachable/verticalgrip, "black"),
 
 		list("Stock", -1, null, null),
-		list("L42 Synthetic Stock", round(scale * 4), /obj/item/attachable/stock/carbine, "black"),
-		list("M37 Wooden Stock", round(scale * 4), /obj/item/attachable/stock/shotgun, "black"),
-		list("M41A Skeleton Stock", round(scale * 4), /obj/item/attachable/stock/rifle, "black"),
-		list("M44 Magnum Sharpshooter Stock", round(scale * 4), /obj/item/attachable/stock/revolver, "black"),
-		list("Submachinegun Arm Brace", round(scale * 2) + 1, /obj/item/attachable/stock/smg/brace, "black"),
-		list("Submachinegun Folding Stock", round(scale * 2) + 1, /obj/item/attachable/stock/smg/collapsible, "black"),
-		list("Submachinegun Stock", round(scale * 2) + 1, /obj/item/attachable/stock/smg, "black"),
+		list("L42 Synthetic Stock", round(scale * 1.5), /obj/item/attachable/stock/carbine, "black"),
+		list("M37 Wooden Stock", round(scale * 1.5), /obj/item/attachable/stock/shotgun, "black"),
+		list("M41A Skeleton Stock", round(scale * 1.5), /obj/item/attachable/stock/rifle, "black"),
+		list("M44 Magnum Sharpshooter Stock", round(scale * 1.5), /obj/item/attachable/stock/revolver, "black"),
+		list("Submachinegun Arm Brace", round(scale * 1.5), /obj/item/attachable/stock/smg/brace, "black"),
+		list("Submachinegun Stock", round(scale * 1.5), /obj/item/attachable/stock/smg, "black"),
 		)
 
 /obj/machinery/cm_vending/sorted/attachments/squad/Topic(href, href_list)

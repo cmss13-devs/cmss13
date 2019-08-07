@@ -217,7 +217,7 @@
 
 /obj/effect/landmark/wo_supplies/ammo/box/smgmag
 	icon_state = "mag_box_m39"
-	stuff = list(/obj/item/magazine_box/smg)
+	stuff = list(/obj/item/magazine_box/m39)
 
 
 
@@ -230,20 +230,20 @@
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/m41aapmag
 	icon_state = "mag_box_m41_ap"
-	stuff = list(/obj/item/magazine_box/rifle_ap)
+	stuff = list(/obj/item/magazine_box/ap)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/m41aincend
 	icon_state = "mag_box_m41_incen"
-	stuff = list(/obj/item/magazine_box/rifle_incen)
+	stuff = list(/obj/item/magazine_box/incen)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/m41aextend
 	icon_state = "mag_box_m41_ext"
-	stuff = list(/obj/item/magazine_box/rifle_extended)
+	stuff = list(/obj/item/magazine_box/ext)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/smgap
 	icon_state = "mag_box_m39_ap"
-	stuff = list(/obj/item/magazine_box/smg/ap)
+	stuff = list(/obj/item/magazine_box/m39/ap)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/smgextend
 	icon_state = "mag_box_m39_ext"
-	stuff = list(/obj/item/magazine_box/smg/extended)
+	stuff = list(/obj/item/magazine_box/m39/ext)

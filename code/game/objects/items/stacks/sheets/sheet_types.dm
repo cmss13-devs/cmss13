@@ -192,18 +192,28 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 		)), \
 	null, \
 	new/datum/stack_recipe_list("empty ammo boxes",list( \
-		new/datum/stack_recipe("shotgun shell box (slugs)", /obj/item/magazine_box/shotgun/empty), \
-		new/datum/stack_recipe("shotgun shell box (buckshot)", /obj/item/magazine_box/shotgun/buckshot/empty), \
-		new/datum/stack_recipe("shotgun shell box (flechette)", /obj/item/magazine_box/shotgun/flechette/empty), \
-		new/datum/stack_recipe("magazine box (M41A)", /obj/item/magazine_box/empty), \
-		new/datum/stack_recipe("magazine box (AP M41A)", /obj/item/magazine_box/rifle_ap/empty), \
-		new/datum/stack_recipe("magazine box (Ext M41A)", /obj/item/magazine_box/rifle_extended/empty), \
-		new/datum/stack_recipe("magazine box (M39)", /obj/item/magazine_box/smg/empty), \
-		new/datum/stack_recipe("magazine box (AP M39)", /obj/item/magazine_box/smg/ap/empty), \
-		new/datum/stack_recipe("magazine box (Ext M39)", /obj/item/magazine_box/smg/extended/empty), \
-		new/datum/stack_recipe("magazine box (L42-MK1)", /obj/item/magazine_box/rifle/l42mk1/empty), \
-		new/datum/stack_recipe("magazine box (AP L42-MK1)", /obj/item/magazine_box/rifle/l42mk1/ap/empty), \
-		new/datum/stack_recipe("magazine box (Ext L42-MK1)", /obj/item/magazine_box/rifle/l42mk1/ext/empty), \
+		new/datum/stack_recipe("Magazine Box (M4A3)", /obj/item/magazine_box/m4a3/empty), \
+		new/datum/stack_recipe("Magazine Box (M4A3 AP)", /obj/item/magazine_box/m4a3/ap/empty), \
+		new/datum/stack_recipe("Magazine Box (88M4 AP)", /obj/item/magazine_box/mod88/empty), \
+		new/datum/stack_recipe("Magazine Box (SU-6)", /obj/item/magazine_box/su6/empty), \
+		new/datum/stack_recipe("Magazine Box (VP78)", /obj/item/magazine_box/vp78/empty), \
+		new/datum/stack_recipe("Magazine box (M39)", /obj/item/magazine_box/m39/empty), \
+		new/datum/stack_recipe("Magazine box (AP M39)", /obj/item/magazine_box/m39/ap/empty), \
+		new/datum/stack_recipe("Magazine box (Ext M39)", /obj/item/magazine_box/m39/ext/empty), \
+		new/datum/stack_recipe("Magazine box (LE M39)", /obj/item/magazine_box/m39/le/empty), \
+		new/datum/stack_recipe("Magazine box (Incen M39)", /obj/item/magazine_box/m39/incen/empty), \
+		new/datum/stack_recipe("Magazine box (L42-MK1)", /obj/item/magazine_box/l42mk1/empty), \
+		new/datum/stack_recipe("Magazine box (AP L42-MK1)", /obj/item/magazine_box/l42mk1/ap/empty), \
+		new/datum/stack_recipe("Magazine box (Ext L42-MK1)", /obj/item/magazine_box/l42mk1/ext/empty), \
+		new/datum/stack_recipe("Magazine box (Incen L42-MK1)", /obj/item/magazine_box/l42mk1/incen/empty), \
+		new/datum/stack_recipe("Magazine box (M41A)", /obj/item/magazine_box/empty), \
+		new/datum/stack_recipe("Magazine box (AP M41A)", /obj/item/magazine_box/ap/empty), \
+		new/datum/stack_recipe("Magazine box (Ext M41A)", /obj/item/magazine_box/ext/empty), \
+		new/datum/stack_recipe("Magazine box (Incen M41A)", /obj/item/magazine_box/incen/empty), \
+		new/datum/stack_recipe("Magazine box (Explosive M41A)", /obj/item/magazine_box/explosive/empty), \
+		new/datum/stack_recipe("Shotgun Shell Box (Slugs)", /obj/item/magazine_box/shotgun/empty), \
+		new/datum/stack_recipe("Shotgun Shell Box (Buckshot)", /obj/item/magazine_box/shotgun/buckshot/empty), \
+		new/datum/stack_recipe("Shotgun Shell Box (Flechette)", /obj/item/magazine_box/shotgun/flechette/empty), \
 		)) \
 )
 

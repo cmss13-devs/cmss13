@@ -270,14 +270,13 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	icon_state = "shell_"
 
 
+//---------------------------MAGAZINE BOXES------------------
 
-
-//Big ammo boxes
 /obj/item/magazine_box
 	name = "magazine box (M41A x 10)"
-	desc = "a box for holding many magazines with a carrying handle, must be opened on the ground."
 	w_class = SIZE_HUGE
-	icon = 'icons/obj/items/ammo.dmi'
+	icon = 'icons/obj/items/ammo_box.dmi'
+	desc = "a box for holding many magazines with a carrying handle, must be opened on the ground."
 	icon_state = "mag_box_m41_closed"
 	var/icon_base_name = "mag_box_m41"
 	var/magazine_type = /obj/item/ammo_magazine/rifle
@@ -333,19 +332,18 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	deploy_ammo_box(user, user.loc)
 
 /obj/item/magazine_box/proc/deploy_ammo_box(mob/living/user, turf/T)
+	for(var/obj/structure/magazine_box/MB in T.contents)
+		to_chat(user, "<span class='warning'>There is a [MB] deployed here already.</span>")
+		return
 	var/obj/structure/magazine_box/M = new /obj/structure/magazine_box(T)
 	M.icon_base_name = icon_base_name
-	M.magazine_type = magazine_type
-	M.num_of_magazines = num_of_magazines
 	M.name = name
 	M.desc = desc
-	M.handfuls = handfuls
-	for(var/obj/item/ammo_magazine/AM in contents)
-		M.contents += AM
-		contents -= AM
+	M.item_box = src
 	M.update_icon()
 	user.drop_inv_item_on_ground(src)
-	qdel(src)
+	Move(M)
+	//qdel(src)
 
 /obj/item/magazine_box/afterattack(atom/target, mob/living/user, proximity)
 	if(!proximity)
@@ -355,8 +353,10 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		if(!T.density)
 			deploy_ammo_box(user, T)
 
+//-----------------------SHOTGUN SHELL BOXES-----------------------
+
 /obj/item/magazine_box/shotgun
-	name = "shotgun shell box (slugs x 100)"
+	name = "shotgun shell box (Slugs x 100)"
 	icon_state = "shell_box_closed"
 	icon_base_name = "shell_box"
 	magazine_type = /obj/item/ammo_magazine/shotgun/slugs
@@ -367,7 +367,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	spawn_full = 0
 
 /obj/item/magazine_box/shotgun/buckshot
-	name = "shotgun shell box (buckshot x 100)"
+	name = "shotgun shell box (Buckshot x 100)"
 	icon_state = "shell_box_buck_closed"
 	icon_base_name = "shell_box_buck"
 	magazine_type = /obj/item/ammo_magazine/shotgun/buckshot
@@ -376,7 +376,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	spawn_full = 0
 
 /obj/item/magazine_box/shotgun/flechette
-	name = "shotgun shell box (flechette x 100)"
+	name = "shotgun shell box (Flechette x 100)"
 	icon_state = "shell_box_flech_closed"
 	icon_base_name = "shell_box_flech"
 	magazine_type = /obj/item/ammo_magazine/shotgun/flechette
@@ -384,188 +384,282 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/magazine_box/shotgun/flechette/empty
 	spawn_full = 0
 
-/obj/item/magazine_box/rifle_ap
+//-----------------------M41A Rifle Mag Boxes-----------------------
+
+/obj/item/magazine_box/ap
 	name = "magazine box (AP M41A x 10)"
 	icon_state = "mag_box_m41_ap_closed"
 	icon_base_name = "mag_box_m41_ap"
 	magazine_type = /obj/item/ammo_magazine/rifle/ap
 
-/obj/item/magazine_box/rifle_ap/empty
+/obj/item/magazine_box/ap/empty
 	spawn_full = 0
 
-/obj/item/magazine_box/rifle_incen
-	name = "magazine box (Incen M41A x 10)"
-	icon_state = "mag_box_m41_incen_closed"
-	icon_base_name = "mag_box_m41_incen"
-	magazine_type = /obj/item/ammo_magazine/rifle/incendiary
-
-/obj/item/magazine_box/rifle_incen/empty
-	spawn_full = 0
-
-/obj/item/magazine_box/rifle_extended
+/obj/item/magazine_box/ext
 	name = "magazine box (Ext M41A x 8)"
 	icon_state = "mag_box_m41_ext_closed"
 	icon_base_name = "mag_box_m41_ext"
 	num_of_magazines = 8
 	magazine_type = /obj/item/ammo_magazine/rifle/extended
 
-/obj/item/magazine_box/rifle_extended/empty
+/obj/item/magazine_box/ext/empty
 	spawn_full = 0
 
-/obj/item/magazine_box/smg
+/obj/item/magazine_box/incen
+	name = "magazine box (Incen M41A x 10)"
+	icon_state = "mag_box_m41_incen_closed"
+	icon_base_name = "mag_box_m41_incen"
+	magazine_type = /obj/item/ammo_magazine/rifle/incendiary
+
+/obj/item/magazine_box/incen/empty
+	spawn_full = 0
+
+/obj/item/magazine_box/explosive
+	name = "magazine box (Explosive M41A x 10)"
+	icon_state = "mag_box_m41_expl_closed"
+	icon_base_name = "mag_box_m41_expl"
+	magazine_type = /obj/item/ammo_magazine/rifle/explosive
+
+/obj/item/magazine_box/explosive/empty
+	spawn_full = 0
+
+//-----------------------M39 Rifle Mag Boxes-----------------------
+
+/obj/item/magazine_box/m39
 	name = "magazine box (M39 x 12)"
 	icon_state = "mag_box_m39_closed"
 	icon_base_name = "mag_box_m39"
 	num_of_magazines = 12
 	magazine_type = /obj/item/ammo_magazine/smg/m39
 
-/obj/item/magazine_box/smg/empty
+/obj/item/magazine_box/m39/empty
 	spawn_full = 0
 
-/obj/item/magazine_box/smg/ap
+/obj/item/magazine_box/m39/ap
 	name = "magazine box (AP M39 x 12)"
 	icon_state = "mag_box_m39_ap_closed"
 	icon_base_name = "mag_box_m39_ap"
 	magazine_type = /obj/item/ammo_magazine/smg/m39/ap
 
-/obj/item/magazine_box/smg/ap/empty
+/obj/item/magazine_box/m39/ap/empty
 	spawn_full = 0
 
-/*/obj/item/magazine_box/smg/incen
-	name = "magazine box (Incen m39 x 12)"
-	icon_state = "mag_box_m39_incen_closed"
-	icon_base_name = "mag_box_m39_incen"
-	magazine_type = /obj/item/ammo_magazine/rifle/incendiary
-
-/obj/item/magazine_box/smg/incen/empty
-	spawn_full = 0
-*/
-
-/obj/item/magazine_box/smg/extended
+/obj/item/magazine_box/m39/ext
 	name = "magazine box (Ext m39 x 10)"
 	icon_state = "mag_box_m39_ext_closed"
 	icon_base_name = "mag_box_m39_ext"
 	num_of_magazines = 10
 	magazine_type = /obj/item/ammo_magazine/smg/m39/extended
 
-/obj/item/magazine_box/smg/extended/empty
+/obj/item/magazine_box/m39/ext/empty
 	spawn_full = 0
 
-/obj/item/magazine_box/rifle/l42mk1
+/obj/item/magazine_box/m39/incen
+	name = "magazine box (Incen m39 x 12)"
+	icon_state = "mag_box_m39_incen_closed"
+	icon_base_name = "mag_box_m39_incen"
+	magazine_type = /obj/item/ammo_magazine/smg/m39/incendiary
+
+/obj/item/magazine_box/m39/incen/empty
+	spawn_full = 0
+
+/obj/item/magazine_box/m39/le
+	name = "magazine box (LE m39 x 12)"
+	icon_state = "mag_box_m39_le_closed"
+	icon_base_name = "mag_box_m39_le"
+	magazine_type = /obj/item/ammo_magazine/smg/m39/le
+
+/obj/item/magazine_box/m39/le/empty
+	spawn_full = 0
+
+//-----------------------L42MK1 Carbine Mag Boxes-----------------------
+
+/obj/item/magazine_box/l42mk1
 	name = "magazine box (L42-MK1 x 16)"
 	icon_state = "mag_box_l42_closed"
 	icon_base_name = "mag_box_l42"
 	num_of_magazines = 16
 	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1
 
-/obj/item/magazine_box/rifle/l42mk1/empty
+/obj/item/magazine_box/l42mk1/empty
 	spawn_full = 0
 
-/obj/item/magazine_box/rifle/l42mk1/ap
+/obj/item/magazine_box/l42mk1/ap
 	name = "magazine box (AP L42-MK1 x 16)"
 	icon_state = "mag_box_l42_ap_closed"
 	icon_base_name = "mag_box_l42_ap"
-	num_of_magazines = 16 //less ammo per mag, a smart RO will buy M41 AP.
 	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1/ap
 
-/obj/item/magazine_box/rifle/l42mk1/ap/empty
+/obj/item/magazine_box/l42mk1/ap/empty
 	spawn_full = 0
 
-/obj/item/magazine_box/rifle/l42mk1/ext
-	name = "magazine box (Ext L42-MK1 x 16)"
+/obj/item/magazine_box/l42mk1/ext
+	name = "magazine box (Ext L42-MK1 x 12)"
 	icon_state = "mag_box_l42_ext_closed"
 	icon_base_name = "mag_box_l42_ext"
-	num_of_magazines = 16
+	num_of_magazines = 12
 	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1/extended
 
-/obj/item/magazine_box/rifle/l42mk1/ext/empty
+/obj/item/magazine_box/l42mk1/ext/empty
 	spawn_full = 0
 
-/obj/item/magazine_box/rifle/l42mk1/incendiary
+/obj/item/magazine_box/l42mk1/incen
 	name = "magazine box (Incen L42-MK1 x 16)"
 	icon_state = "mag_box_l42_incen_closed"
 	icon_base_name = "mag_box_l42_incen"
-	num_of_magazines = 16
 	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1/incendiary
 
-/obj/item/magazine_box/rifle/l42mk1/incendiary/empty
+/obj/item/magazine_box/l42mk1/incen/empty
 	spawn_full = 0
+
+//-----------------------M16 Rifle Mag Box-----------------------
+
+/obj/item/magazine_box/M16
+	name = "magazine box (M16 x 12)"
+	icon_state = "mag_box_m16_closed"
+	icon_base_name = "mag_box_m16"
+	num_of_magazines = 12
+	magazine_type = /obj/item/ammo_magazine/rifle/m16
+
+/obj/item/magazine_box/M16/empty
+	spawn_full = 0
+
+//-----------------------M4A3 Pistol Mag Box-----------------------
+
+/obj/item/magazine_box/m4a3
+	name = "magazine box (M4A3 x 16)"
+	icon_state = "mag_box_m4a3_closed"
+	icon_base_name = "mag_box_m4a3"
+	num_of_magazines = 16
+	magazine_type = /obj/item/ammo_magazine/pistol
+
+/obj/item/magazine_box/m4a3/empty
+	spawn_full = 0
+
+/obj/item/magazine_box/m4a3/ap
+	name = "magazine box (AP M4A3 x 16)"
+	icon_state = "mag_box_m4a3_ap_closed"
+	icon_base_name = "mag_box_m4a3_ap"
+	num_of_magazines = 16
+	magazine_type = /obj/item/ammo_magazine/pistol/ap
+
+/obj/item/magazine_box/m4a3/ap/empty
+	spawn_full = 0
+
+//-----------------------SU-6 Smartpistol Mag Box-----------------------
+
+/obj/item/magazine_box/su6
+	name = "magazine box (SU-6 x 16)"
+	icon_state = "mag_box_su6_closed"
+	icon_base_name = "mag_box_su6"
+	num_of_magazines = 16
+	magazine_type = /obj/item/ammo_magazine/pistol/smart
+
+/obj/item/magazine_box/su6/empty
+	spawn_full = 0
+
+//-----------------------88M4 Pistol Mag Box-----------------------
+
+/obj/item/magazine_box/mod88
+	name = "magazine box (88 Mod 4 AP x 16)"
+	icon_state = "mag_box_mod88_closed"
+	icon_base_name = "mag_box_mod88"
+	num_of_magazines = 16
+	magazine_type = /obj/item/ammo_magazine/pistol/mod88
+
+/obj/item/magazine_box/mod88/empty
+	spawn_full = 0
+
+//-----------------------VP78 Pistol Mag Box-----------------------
+
+/obj/item/magazine_box/vp78
+	name = "magazine box (VP78 x 16)"
+	icon_state = "mag_box_vp78_closed"
+	icon_base_name = "mag_box_vp78"
+	num_of_magazines = 16
+	magazine_type = /obj/item/ammo_magazine/pistol/vp78
+
+/obj/item/magazine_box/vp78/empty
+	spawn_full = 0
+
+//-----------------------Type71 Rifle Mag Box-----------------------
+
+/obj/item/magazine_box/type71
+	name = "magazine box (Type71 x 10)"
+	icon_state = "mag_box_type71_closed"
+	icon_base_name = "mag_box_type71"
+	num_of_magazines = 14
+	magazine_type = /obj/item/ammo_magazine/rifle/type71
+
+/obj/item/magazine_box/type71/empty
+	spawn_full = 0
+
+//-----------------------MAG BOX STRUCTURE-----------------------
 
 /obj/structure/magazine_box
 	name = "magazine_box"
 	desc = "a box for holding many magazines, this one is open and needs to be closed before you can pick it up."
-	icon = 'icons/obj/items/ammo.dmi'
+	icon = 'icons/obj/items/ammo_box.dmi'
 	icon_state = "mag_box_m41"
 	var/icon_base_name = "mag_box_m41"
-	var/magazine_type = /obj/item/ammo_magazine/rifle
-	var/num_of_magazines = 10
-	var/handfuls = 0
+	var/obj/item/magazine_box/item_box
 
 /obj/structure/magazine_box/MouseDrop(over_object, src_location, over_location)
 	..()
 	if(over_object == usr && Adjacent(usr))
 		if(!ishuman(usr))	return
 		visible_message(SPAN_NOTICE("[usr] picks up [name]."))
-		var/obj/item/magazine_box/MB = new /obj/item/magazine_box/empty
-		MB.icon_base_name = icon_base_name
-		MB.magazine_type = magazine_type
-		MB.num_of_magazines = num_of_magazines
-		MB.name = name
-		MB.desc = desc
-		MB.handfuls = handfuls
-		MB.update_icon()
-		for(var/obj/item/ammo_magazine/AM in contents)
-			MB.contents += AM
-			contents -= AM
-		usr.put_in_hands(MB)
+
+		usr.put_in_hands(item_box)
+		item_box = null
 		qdel(src)
 
 /obj/structure/magazine_box/examine(mob/user)
 	..()
 	if(get_dist(src,user) > 2 && !isobserver(user))
 		return
-	if(handfuls)
-		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
+	if(item_box.handfuls)
+		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
 		if(AM)
 			to_chat(user, "<span class='information'>It has roughly [round(AM.current_rounds/5)] handfuls remaining.</span>")
 	else
-		to_chat(user, "<span class='information'>It has [contents.len] magazines out of [num_of_magazines].</span>")
+		to_chat(user, "<span class='information'>It has [item_box.contents.len] magazines out of [item_box.num_of_magazines].</span>")
 
 /obj/structure/magazine_box/update_icon()
-	if(!handfuls)
-		if(contents.len == num_of_magazines)
-			icon_state = "[icon_base_name]"
-		else if(contents.len > (num_of_magazines/2))
-			icon_state = "[icon_base_name]_3"
-		else if(contents.len > (num_of_magazines/4))
-			icon_state = "[icon_base_name]_2"
-		else if(contents.len > 0)
-			icon_state = "[icon_base_name]_1"
+	if(!item_box.handfuls)
+		if(item_box.contents.len == item_box.num_of_magazines)
+			icon_state = "[item_box.icon_base_name]"
+		else if(item_box.contents.len > (item_box.num_of_magazines/2))
+			icon_state = "[item_box.icon_base_name]_3"
+		else if(item_box.contents.len > (item_box.num_of_magazines/4))
+			icon_state = "[item_box.icon_base_name]_2"
+		else if(item_box.contents.len > 0)
+			icon_state = "[item_box.icon_base_name]_1"
 		else
-			icon_state = "[icon_base_name]_empty"
+			icon_state = "[item_box.icon_base_name]_empty"
 	else
-		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
+		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
 
-		if(AM.current_rounds == num_of_magazines)
-			icon_state = "[icon_base_name]"
-		else if(AM.current_rounds > (num_of_magazines/2))
-			icon_state = "[icon_base_name]_3"
-		else if(AM.current_rounds > (num_of_magazines/4))
-			icon_state = "[icon_base_name]_2"
+		if(AM.current_rounds == item_box.num_of_magazines)
+			icon_state = "[item_box.icon_base_name]"
+		else if(AM.current_rounds > (item_box.num_of_magazines/2))
+			icon_state = "[item_box.icon_base_name]_3"
+		else if(AM.current_rounds > (item_box.num_of_magazines/4))
+			icon_state = "[item_box.icon_base_name]_2"
 		else if(AM.current_rounds > 0)
-			icon_state = "[icon_base_name]_1"
+			icon_state = "[item_box.icon_base_name]_1"
 		else
-			icon_state = "[icon_base_name]_empty"
+			icon_state = "[item_box.icon_base_name]_empty"
 
 /obj/structure/magazine_box/attack_hand(mob/living/user)
-	if(contents.len)
-		if(!handfuls)
-			var/obj/item/ammo_magazine/AM = pick(contents)
-			contents -= AM
+	if(item_box.contents.len)
+		if(!item_box.handfuls)
+			var/obj/item/ammo_magazine/AM = pick(item_box.contents)
+			item_box.contents -= AM
 			user.put_in_hands(AM)
 			to_chat(user, SPAN_NOTICE("You retrieve a [AM] from \the [src], it has [AM.current_rounds] rounds remaining in the magazine."))
 		else
-			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
+			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
 			if(AM)
 				AM.create_handful(user, 5, src)
 		update_icon()
@@ -574,26 +668,28 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 
 /obj/structure/magazine_box/attackby(obj/item/W, mob/living/user)
-	if(!handfuls)
-		if(istype(W,magazine_type))
-			if(contents.len < num_of_magazines)
+	if(!item_box.handfuls)
+		if(istype(W,item_box.magazine_type))
+			if(item_box.contents.len < item_box.num_of_magazines)
 				user.drop_inv_item_to_loc(W, src)
-				contents += W
+				item_box.contents += W
 				to_chat(user, SPAN_NOTICE("You put a [W] in to \the [src]"))
 				update_icon()
 			else
 				to_chat(user, SPAN_WARNING("\The [src] is full."))
 	else
 		if(istype(W,/obj/item/ammo_magazine/handful))
-			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
+			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
 			AM.attackby(W, user, 1)
 			update_icon()
 
+//-----------------------BIG AMMO BOX-----------------------
+
 /obj/item/big_ammo_box
-	name = "big ammo box (10x24mm)"
-	desc = "A large ammo box. It comes with a leather strap."
+	name = "rifle ammunition box (10x24mm)"
+	desc = "A 10x24mm ammunition box. Used to refill M41A MK1, MK2, L42MK1 and M41AE2 HPR magazines. It comes with a leather strap."
 	w_class = SIZE_HUGE
-	icon = 'icons/obj/items/ammo.dmi'
+	icon = 'icons/obj/items/ammo_box.dmi'
 	icon_state = "big_ammo_box"
 	item_state = "big_ammo_box"
 	flags_equip_slot = SLOT_BACK
@@ -676,19 +772,39 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		else explosion(loc,  0, 0, 2, 3) //blow it up HARDER
 	qdel(src)
 
-
-
 /obj/item/big_ammo_box/ap
-	name = "big ammo box (10x24mm AP)"
+	name = "rifle ammunition box (10x24mm AP)"
+	desc = "A 10x24mm armor-piercing ammunition box. Used to refill M41A MK2 and L42MK1 AP magazines. It comes with a leather strap."
 	icon_state = "big_ammo_box_ap"
 	base_icon_state = "big_ammo_box_ap"
 	item_state = "big_ammo_box"
 	default_ammo = /datum/ammo/bullet/rifle/ap
-	bullet_amount = 400 //AP is OP
+
+/obj/item/big_ammo_box/incen
+	name = "rifle ammunition box (10x24mm Incen)"
+	desc = "A 10x24mm incendiary ammunition box. Used to refill M41A MK2 and L42MK1 incendiary magazines. It comes with a leather strap."
+	icon_state = "big_ammo_box_incen"
+	base_icon_state = "big_ammo_box_incen"
+	item_state = "big_ammo_box"
+	default_ammo = /datum/ammo/bullet/rifle/incendiary
+	bullet_amount = 400		//Incen is OP
 	max_bullet_amount = 400
 
+//UPP type71
+
+/obj/item/big_ammo_box/type71
+	name = "rifle ammunition box (7.62x39mm)"
+	desc = "A 7.62x39mm ammunition box. Used to refill Type71 and MAR magazines. It comes with a leather strap."
+	icon_state = "big_ammo_box_type71"
+	base_icon_state = "big_ammo_box_type71"
+	item_state = "big_ammo_box"
+	default_ammo = /datum/ammo/bullet/rifle/mar40
+
+//SMG
+
 /obj/item/big_ammo_box/smg
-	name = "big ammo box (10x20mm)"
+	name = "SMG ammunition box (10x20mm)"
+	desc = "A 10x20mm ammunition box. Used to refill M39 magazines. It comes with a leather strap."
 	caliber = "10x20mm"
 	icon_state = "big_ammo_box_m39"
 	base_icon_state = "big_ammo_box_m39"
@@ -696,11 +812,30 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	default_ammo = /datum/ammo/bullet/smg
 
 /obj/item/big_ammo_box/smg/ap
-	name = "big ammo box (10x20mm AP)"
+	name = "SMG ammunition box (10x20mm AP)"
+	desc = "A 10x20mm armor-piercing ammunition box. Used to refill M39 AP magazines. It comes with a leather strap."
 	caliber = "10x20mm"
 	icon_state = "big_ammo_box_ap_m39"
 	base_icon_state = "big_ammo_box_ap_m39"
 	item_state = "big_ammo_box_m39"
 	default_ammo = /datum/ammo/bullet/smg/ap
-	bullet_amount = 400
+
+/obj/item/big_ammo_box/smg/incen
+	name = "SMG ammunition box (10x20mm Incen)"
+	desc = "A 10x20mm incendiary ammunition box. Used to refill M39 incendiary magazines. It comes with a leather strap."
+	caliber = "10x20mm"
+	icon_state = "big_ammo_box_m39_incen"
+	base_icon_state = "big_ammo_box_incen_m39"
+	item_state = "big_ammo_box_m39"
+	default_ammo = /datum/ammo/bullet/smg/incendiary
+	bullet_amount = 400		//Incen is OP
 	max_bullet_amount = 400
+
+/obj/item/big_ammo_box/smg/le
+	name = "SMG ammunition box (10x20mm LE)"
+	desc = "A 10x20mm light explosive ammunition box. Used to refill M39 LE magazines. It comes with a leather strap."
+	caliber = "10x20mm"
+	icon_state = "big_ammo_box_m39_le"
+	base_icon_state = "big_ammo_box_le_m39"
+	item_state = "big_ammo_box_m39"
+	default_ammo = /datum/ammo/bullet/smg/le

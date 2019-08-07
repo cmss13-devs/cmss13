@@ -27,6 +27,12 @@
 	icon_state = "m39_le"
 	default_ammo = /datum/ammo/bullet/smg/le
 
+/obj/item/ammo_magazine/smg/m39/incendiary
+	name = "\improper M39 incendiary magazine (10x20mm)"
+	desc = "A 10x20mm incendiary magazine."
+	icon_state = "m39_incendiary"
+	default_ammo = /datum/ammo/bullet/smg/incendiary
+
 /obj/item/ammo_magazine/smg/m39/extended
 	name = "\improper M39 extended magazine (10x20mm)"
 	max_rounds = 72

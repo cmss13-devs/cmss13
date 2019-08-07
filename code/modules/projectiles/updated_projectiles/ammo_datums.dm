@@ -443,6 +443,19 @@
 	penetration = config.hlow_armor_penetration
 	damage_falloff = config.reg_damage_falloff
 
+/datum/ammo/bullet/smg/incendiary
+	name = "incendiary submachinegun bullet"
+	damage_type = BURN
+	shrapnel_chance = 0
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY
+
+/datum/ammo/bullet/smg/incendiary/New()
+	..()
+	damage = config.hlow_hit_damage
+	accuracy = -config.low_hit_accuracy
+	shell_speed = config.fast_shell_speed
+	damage_falloff = config.reg_damage_falloff
+
 /datum/ammo/bullet/smg/le
 	name = "armor-shredding submachinegun bullet"
 

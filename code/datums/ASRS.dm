@@ -19,7 +19,7 @@
 	buyable = 0
 	group = "Utility"
 
-/datum/supply_packs/gun/heavyweapons_ammo/asrs
+/datum/supply_packs/gun/ammo_hpr/asrs
 	buyable = 0
 	group = "Munition"
 	cost = ASRS_LOWEST_WEIGHT
@@ -28,99 +28,94 @@
 	buyable = 0
 	group = "Utility"
 
-/datum/supply_packs/ammo_mag_box/asrs/
+/datum/supply_packs/ammo_rounds_box_smg/asrs/
+	buyable = 0
+	group = "Munition"
+	cost = ASRS_MEDIUM_WEIGHT
+
+/datum/supply_packs/ammo_rounds_box_smg_ap/asrs/
+	buyable = 0
+	group = "Munition"
+	cost = ASRS_LOW_WEIGHT
+
+/datum/supply_packs/ammo_rounds_box_rifle/asrs/
+	buyable = 0
+	group = "Munition"
+	cost = ASRS_MEDIUM_WEIGHT
+
+/datum/supply_packs/ammo_rounds_box_rifle_ap/asrs/
+	buyable = 0
+	group = "Munition"
+	cost = ASRS_LOW_WEIGHT
+
+/datum/supply_packs/ammo_m4a3_mag_box/asrs/
+	buyable = 0
+	group = "Munition"
+	cost = ASRS_MEDIUM_WEIGHT
+
+/datum/supply_packs/ammo_m4a3_mag_box_ap/asrs/
+	buyable = 0
+	group = "Munition"
+	cost = ASRS_LOW_WEIGHT
+
+/datum/supply_packs/ammo_mod88_mag_box_ap/asrs/
+	buyable = 0
+	group = "Munition"
+	cost = ASRS_LOW_WEIGHT
+
+/datum/supply_packs/ammo_regular_m44/asrs/
 	buyable = 0
 	group = "Munition"
 
 /datum/supply_packs/ammo_smg_mag_box/asrs/
 	buyable = 0
 	group = "Munition"
-
-/datum/supply_packs/ammo_mag_box_ext/asrs/
-	buyable = 0
-	group = "Munition"
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs/ammo_smg_mag_box_ext/asrs/
-	buyable = 0
-	group = "Munition"
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs/ammo_mag_box_ap/asrs/
-	buyable = 0
-	group = "Munition"
+	cost = ASRS_LOW_WEIGHT
 
 /datum/supply_packs/ammo_smg_mag_box_ap/asrs/
 	buyable = 0
 	group = "Munition"
+	cost = ASRS_VERY_LOW_WEIGHT
 
-/datum/supply_packs/ammo_l42_mag_box/asrs
+/datum/supply_packs/ammo_smg_mag_box_le/asrs/
 	buyable = 0
 	group = "Munition"
+	cost = ASRS_VERY_LOW_WEIGHT
 
-/datum/supply_packs/ammo_l42_mag_box_ext/asrs
+/datum/supply_packs/ammo_mag_box/asrs/
 	buyable = 0
 	group = "Munition"
+	cost = ASRS_LOW_WEIGHT
 
-/datum/supply_packs/ammo_l42_mag_box_ap/asrs
+/datum/supply_packs/ammo_mag_box_ap/asrs/
 	buyable = 0
 	group = "Munition"
+	cost = ASRS_VERY_LOW_WEIGHT
+
+/datum/supply_packs/ammo_l42_mag_box/asrs/
+	buyable = 0
+	group = "Munition"
+	cost = ASRS_LOW_WEIGHT
+
+/datum/supply_packs/ammo_l42_mag_box_ap/asrs/
+	buyable = 0
+	group = "Munition"
+	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs/ammo_shell_box/asrs/
 	buyable = 0
 	group = "Munition"
+	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs/ammo_shell_box_buck/asrs/
 	buyable = 0
 	group = "Munition"
+	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs/ammo_shell_box_flechette/asrs/
 	buyable = 0
 	group = "Munition"
-
-/datum/supply_packs/ammo_regular/asrs/
-	buyable = 0
-	group = "Munition"
-
-/datum/supply_packs/ammo_regular_m41a/asrs/
-	buyable = 0
-	group = "Munition"
-
-/datum/supply_packs/ammo_extended_m39/asrs/
-	buyable = 0
-	group = "Munition"
-
-/datum/supply_packs/ammo_ap/asrs/
-	buyable = 0
-	group = "Munition"
-
-/datum/supply_packs/ammo_ap_m41a/asrs/
-	buyable = 0
-	group = "Munition"
-
-/datum/supply_packs/ammo_ap_m39/asrs/
-	buyable = 0
-	group = "Munition"
-
-/datum/supply_packs/ammo_box_rifle/asrs/
-	buyable = 0
-	group = "Munition"
-
-/datum/supply_packs/ammo_box_rifle_ap/asrs/
-	buyable = 0
-	group = "Munition"
-
-/datum/supply_packs/ammo_box_smg/asrs/
-	buyable = 0
-	group = "Munition"
-
-/datum/supply_packs/ammo_box_smg_ap/asrs/
-	buyable = 0
-	group = "Munition"
-
-/datum/supply_packs/surplus/asrs/
-	buyable = 0
-	group = "Munition"
+	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs/ammo_smartgun/asrs/
 	buyable = 0
@@ -130,7 +125,7 @@
 	buyable = 0
 	group = "Munition"
 
-/datum/supply_packs/napalm/asrs/
+/datum/supply_packs/ammo_napalm/asrs/
 	buyable = 0
 	group = "Munition"
 
@@ -152,15 +147,15 @@
 
 //===================================
 // Mortar ammo
-/datum/supply_packs/mortar_ammo_he/asrs/
+/datum/supply_packs/ammo_mortar_he/asrs/
 	buyable = 0
 	group = "Munition"
 
-/datum/supply_packs/mortar_ammo_incend/asrs/
+/datum/supply_packs/ammo_mortar_incend/asrs/
 	buyable = 0
 	group = "Munition"
 
-/datum/supply_packs/mortar_ammo_flare/asrs/
+/datum/supply_packs/ammo_mortar_flare/asrs/
 	buyable = 0
 	group = "Munition"
 //===================================

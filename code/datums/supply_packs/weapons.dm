@@ -130,18 +130,6 @@ WEAPONS
 	containername = "\improper M41AE2 HPR crate"
 	group = "Weapons"
 
-/datum/supply_packs/gun/heavyweapons_ammo
-	contains = list(
-					/obj/item/ammo_magazine/rifle/lmg,
-					/obj/item/ammo_magazine/rifle/lmg,
-					)
-	name = "M41AE2 HPR Ammo crate (HPR ammo box x2)"
-	cost = RO_PRICE_VERY_CHEAP
-	containertype = /obj/structure/closet/crate
-	containername = "\improper M41AE2 HPR Ammo crate"
-	group = "Ammo"
-
-
 /datum/supply_packs/gun/merc
 	contains = list()
 	name = "black market firearms (x1)"

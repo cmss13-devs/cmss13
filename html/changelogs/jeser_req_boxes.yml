@@ -1,0 +1,39 @@
+
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - tweak: "Big Ammo Boxes were renamed to Ammunition boxes and their description now contains information which magazines can be refilled with them."
+  - tweak: "You won't be able to deploy more than one magazine box per tile."
+  - rscadd: "Added new magazine and ammunition boxes."
+  - imageadd: "Magazine and ammunition boxes sprites by Triiodine and Jeser."
+  - tweak: "Squad Req and Req vendors will allow you to browse their content now, instead of completely blocking their UI if you don't have access to them."
+  - tweak: "Rescaled goods in Ammunition and Attachments vendors."
+  - tweak: "Requisition's ASRS console changes:"
+  - tweak: "Renamed Hardpoints Modules category into Vehicle Modules and Ammo to be less confusing."
+  - tweak: "Cupola ammo crate now contains 3 magazines instead of 2. Secondary flamer ammo crate contains 2 fuel tanks instead of 5."
+  - rscadd: "Added magazine boxes crates for pistols."
+  - rscadd: "Added M44 Marksman and Heavy speedloaders crates."
+  - rscadd: "Added SMG LE ammunition and magazines boxes."
+  - rscdel: "Removed most of obsolete magazines crates to reduce clutter."
+  - tweak: "Changed designated specialists ammo crates to be more equally available. (#7278, #6071) "
+  - rscdel: "Removed XM42B AT magazines crate."
+  - tweak: "ASRS free crates will contain more ammunition boxes and less magazine boxes."
+  - tweak: "Added M4A3 and 88 Mod 4 magazine boxes as well as M44 speedloader crate to possible free ASRS crates."
+  - tweak: "Added more magazine boxes to cardboard build list."

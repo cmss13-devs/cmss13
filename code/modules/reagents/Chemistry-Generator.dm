@@ -1073,19 +1073,23 @@
 							var/obj/item/alien_embryo/A = content
 							if(A)
 								if(A.counter)
-									A.counter = max(A.counter - potency,0)
-								else if(A.stage)
+									A.counter = max(A.counter - 1+potency,0)
+									H.take_limb_damage(0,0.2*potency)
+								else
 									A.stage--
 									if(A.stage <= 0)//if we reach this point, the embryo dies and the occupant takes a nasty amount of acid damage
 										A.Dispose()
-										H.take_limb_damage(0,rand(50,150))
+										H.take_limb_damage(0,rand(20,40))
 										H.vomit()
+									else
+										A.counter = 90
+
 			if(PROPERTY_NEUROCRYOGENIC) //slows brain death
 				if(is_OD)
 					M.bodytemperature = max(M.bodytemperature-5*potency,0)
 					if(is_COD)
 						M.adjustBrainLoss(5 * potency)
-				else //affects while dead are handled by handle_necro_chemicals_in_body()
+				else //effects while dead are handled by handle_necro_chemicals_in_body()
 					if(prob(20)) to_chat(M, SPAN_WARNING("You feel like you have the worst brain freeze ever!"))
 					M.knocked_out = max(M.knocked_out, 20)
 					M.stunned = max(M.stunned,21)

@@ -5,16 +5,17 @@
 	icon = 'icons/Xeno/Effects.dmi'
 	icon_state = "egg_item"
 	w_class = SIZE_MASSIVE
-	flags_atom = NOFLAGS
+	flags_atom = OPENCONTAINER
 	flags_item = NOBLUDGEON
 	throw_range = 1
 	layer = MOB_LAYER
-	reagents = list("eggplasma" = 60)
 	var/hivenumber = XENO_HIVE_NORMAL
 
 /obj/item/xeno_egg/New()
 	pixel_x = rand(-3,3)
 	pixel_y = rand(-3,3)
+	create_reagents(60)
+	reagents.add_reagent("eggplasma",60)
 	..()
 
 

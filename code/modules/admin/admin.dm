@@ -324,16 +324,16 @@ var/global/floorIsLava = 0
 	if(!check_rights(R_MOD)) return
 		
 	var/dat = {"<center><B>Chem Panel</B></center><hr>\n"}
-	if(check_rights(R_MOD))	
+	if(check_rights(R_MOD,0))	
 		dat += {"<A href='?src=\ref[src];chem_panel=view_reagent'>View Reagent</A><br>
 				"}
-	if(check_rights(R_VAREDIT))
+	if(check_rights(R_VAREDIT,0))
 		dat += {"<A href='?src=\ref[src];chem_panel=view_reaction'>View Reaction</A><br>
 				<br>"}
-	if(check_rights(R_SPAWN))	
+	if(check_rights(R_SPAWN,0))	
 		dat += {"<A href='?src=\ref[src];chem_panel=spawn_reagent'>Spawn Reagent in Container</A><br>
 				<br>"}
-	if(check_rights(R_FUN))
+	if(check_rights(R_FUN,0))
 		dat += {"<A href='?src=\ref[src];chem_panel=create_random_reagent'>Generate Reagent</A><br>
 				<br>
 				<A href='?src=\ref[src];chem_panel=create_custom_reagent'>Create Custom Reagent</A><br>

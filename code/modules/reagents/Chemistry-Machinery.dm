@@ -839,7 +839,8 @@
 
 		//All types that you can put into the grinder to transfer the reagents to the beaker. !Put all recipes above this.!
 		/obj/item/reagent_container/pill = list(),
-		/obj/item/reagent_container/food = list()
+		/obj/item/reagent_container/food = list(),
+		/obj/item/clothing/mask/cigarette = list()
 	)
 
 	var/list/juice_items = list (
@@ -1163,6 +1164,15 @@
 			if (beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
 				break
 		remove_object(O)
+
+	//Cigarettes
+	for (var/obj/item/clothing/mask/cigarette/O in holdingitems)
+		if (beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
+			break
+		var/amount = O.reagents.total_volume
+		O.reagents.trans_to(beaker, amount)
+		if(!O.reagents.total_volume)
+			remove_object(O)
 
 	//Everything else - Transfers reagents from it into beaker
 	for (var/obj/item/reagent_container/O in holdingitems)

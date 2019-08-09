@@ -2646,7 +2646,7 @@
 	},
 /area/lv624/ground/river2)
 "iw" = (
-/obj/machinery/constructable_frame/machine_frame,
+/obj/machinery/constructable_frame,
 /obj/effect/spawner/random/bomb_supply,
 /turf/open/floor/plating{
 	dir = 9;
@@ -5317,6 +5317,10 @@
 	tag = "icon-whitebluecorner"
 	},
 /area/lv624/lazarus/medbay)
+"qm" = (
+/obj/structure/prop/tower,
+/turf/open/floor,
+/area/lv624/ground/jungle1)
 "qn" = (
 /obj/machinery/sleeper,
 /turf/open/floor{
@@ -9047,6 +9051,10 @@
 "AL" = (
 /turf/open/gm/grass,
 /area/lv624/ground/jungle4)
+"AM" = (
+/obj/structure/bookcase,
+/turf/open/floor/bluegrid,
+/area/lv624/lazarus/internal_affairs)
 "AN" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -10830,9 +10838,10 @@
 	},
 /area/lv624/lazarus/toilet)
 "Fi" = (
-/obj/structure/bookcase,
-/turf/open/floor/bluegrid,
-/area/lv624/lazarus/internal_affairs)
+/turf/open/floor{
+	icon_state = "warning"
+	},
+/area/lv624/ground/jungle1)
 "Fj" = (
 /obj/structure/window/reinforced/tinted,
 /obj/machinery/door/window{
@@ -15338,6 +15347,12 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/internal_affairs)
+"Rb" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor{
+	icon_state = "warning"
+	},
+/area/lv624/ground/jungle1)
 "Rd" = (
 /obj/structure/table,
 /obj/item/device/mmi/radio_enabled,
@@ -15400,6 +15415,12 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lv624/lazarus/quart)
+"Rk" = (
+/turf/open/floor{
+	dir = 10;
+	icon_state = "warning"
+	},
+/area/lv624/ground/jungle1)
 "Ro" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/jungle/vines/heavy{
@@ -16375,6 +16396,12 @@
 	icon_state = "brown"
 	},
 /area/lv624/lazarus/comms)
+"Um" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "warning"
+	},
+/area/lv624/ground/jungle1)
 "Un" = (
 /obj/structure/rack{
 	layer = 2.5
@@ -18342,6 +18369,12 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east1)
+"ZQ" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "warning"
+	},
+/area/lv624/ground/jungle1)
 "ZS" = (
 /obj/structure/table,
 /obj/machinery/computer/shuttle_control/dropship2,
@@ -18353,6 +18386,9 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv624/ground/jungle5)
+"ZW" = (
+/turf/open/floor,
+/area/lv624/ground/jungle1)
 "ZX" = (
 /obj/structure/rack{
 	layer = 2.5
@@ -29727,7 +29763,7 @@ Gi
 tf
 tf
 Hz
-Fi
+AM
 Jn
 SS
 If
@@ -49574,8 +49610,8 @@ Od
 No
 No
 No
-LV
-LV
+Um
+Rk
 LV
 wQ
 LV
@@ -49800,10 +49836,10 @@ yP
 No
 Oe
 No
-LV
-LV
-LV
-LV
+ZW
+qm
+ZW
+Fi
 RY
 wQ
 LV
@@ -50027,11 +50063,11 @@ yu
 yP
 LV
 LV
-LV
-LV
-LV
-LV
-RY
+ZQ
+ZW
+ZW
+ZW
+Rb
 RY
 wQ
 LV
@@ -50255,11 +50291,11 @@ DG
 Mp
 DG
 DG
-DG
-DG
-DG
-DG
-GQ
+Hu
+Gz
+Gz
+Gz
+Mq
 GQ
 wQ
 LV
@@ -57347,11 +57383,11 @@ LW
 LW
 LW
 ac
-Yz
-Yz
-Yz
-Yz
-Yz
+aa
+aa
+aa
+aa
+aa
 "}
 (172,1,1) = {"
 ac
@@ -57575,11 +57611,11 @@ LW
 LW
 LW
 ac
-Yz
-YA
-YA
-YA
-Yz
+aa
+aa
+aa
+aa
+aa
 "}
 (173,1,1) = {"
 ac
@@ -57803,11 +57839,11 @@ LW
 LW
 LW
 ac
-Yz
-YA
-YB
-YA
-Yz
+aa
+aa
+aa
+aa
+aa
 "}
 (174,1,1) = {"
 ac
@@ -58031,11 +58067,11 @@ LW
 LW
 LW
 ac
-Yz
-YA
-YA
-YA
-Yz
+aa
+aa
+aa
+aa
+aa
 "}
 (175,1,1) = {"
 ac
@@ -58259,9 +58295,9 @@ ac
 ac
 ac
 ac
-Yz
-Yz
-Yz
-Yz
-Yz
+aa
+aa
+aa
+aa
+aa
 "}

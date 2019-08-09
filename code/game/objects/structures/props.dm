@@ -1,3 +1,13 @@
+/obj/structure/prop/tower
+	name = "destroyed comms tower"
+	desc = "An old company comms tower used to transmit communications between subspace bodies. Looks like this one has seen better days."
+	icon = 'icons/obj/machines/comm_tower.dmi'
+	icon_state = "comm_tower_destroyed"
+	unacidable = 1
+	density = 1
+	layer = ABOVE_FLY_LAYER
+	bound_height = 96
+
 /obj/structure/prop/dam
 	density = 1
 

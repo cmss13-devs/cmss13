@@ -179,6 +179,24 @@ OPERATIONS
 	group = "Operations"
 	iteration_needed = null
 
+/datum/supply_packs/telecommsparts
+	name = "Replacement Telecommunications Parts"
+	contains = list(
+		/obj/item/circuitboard/machine/telecomms/relay/tower,
+		/obj/item/stock_parts/manipulator,
+		/obj/item/stock_parts/manipulator,
+		/obj/item/stock_parts/subspace/filter,
+		/obj/item/stock_parts/subspace/filter,
+		/obj/item/cell,
+		/obj/item/cell,
+		/obj/item/stack/cable_coil,
+		/obj/item/stack/cable_coil
+					)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/supply
+	containername = "replacement telecommunications crate"
+	group = "Operations"
+
 /datum/supply_packs/nuclearbomb
 	name = "Operational Nuke"
 	cost = 0

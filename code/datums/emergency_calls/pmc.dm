@@ -1,5 +1,4 @@
 
-
 //Weyland Yutani commandos. Friendly to USCM, hostile to xenos.
 /datum/emergency_call/pmc
 	name = "Weyland-Yutani PMC (Squad)"
@@ -8,10 +7,10 @@
 	shuttle_id = "Distress_PMC"
 	name_of_spawn = "Distress_PMC"
 
-	New()
-		..()
-		arrival_message = "[MAIN_SHIP_NAME], this is USCSS Royce responding to your distress call. We are boarding. Any hostile actions will be met with lethal force."
-		objectives = "Secure the Corporate Liaison and the [MAIN_SHIP_NAME] Commander, and eliminate any hostile threats. Do not damage W-Y property."
+/datum/emergency_call/pmc/New()
+	..()
+	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Royce responding to your distress call. We are boarding. Any hostile actions will be met with lethal force."
+	objectives = "Secure the Corporate Liaison and the [MAIN_SHIP_NAME] Captain, and eliminate any hostile threats. Do not damage W-Y property."
 
 
 /datum/emergency_call/pmc/create_member(datum/mind/M)

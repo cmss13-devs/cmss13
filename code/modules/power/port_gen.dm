@@ -241,7 +241,7 @@ display round(lastgen) and phorontank amount
 			else
 				to_chat(user, SPAN_NOTICE(" You close the access panel."))
 		else if(istype(O, /obj/item/tool/crowbar) && open)
-			var/obj/machinery/constructable_frame/machine_frame/new_frame = new /obj/machinery/constructable_frame/machine_frame(src.loc)
+			var/obj/machinery/constructable_frame/new_frame = new /obj/machinery/constructable_frame(src.loc)
 			for(var/obj/item/I in component_parts)
 				if(I.reliability < 100)
 					I.crit_fail = 1
@@ -256,8 +256,8 @@ display round(lastgen) and phorontank amount
 
 				sheets -= G.amount
 
-			new_frame.state = 2
-			new_frame.icon_state = "box_1"
+			new_frame.state = CONSTRUCTION_STATE_PROGRESS
+			new_frame.update_icon()
 			qdel(src)
 
 /obj/machinery/power/port_gen/pacman/attack_hand(mob/user as mob)

@@ -33,7 +33,7 @@
 
 	var/datum/game_mode/colonialmarines_halloween_2016/CM = ticker.mode
 
-	var/role = input("Select which role to spawn.","Roles") in list("Corporate Liaison","Commander","Squad Leader","Squad Specialist","Squad Smartgunner","Squad Engineer","Squad Medic","Squad Marine")
+	var/role = input("Select which role to spawn.","Roles") in list("Corporate Liaison","Commanding Officer","Squad Leader","Squad Specialist","Squad Smartgunner","Squad Engineer","Squad Medic","Squad Marine")
 	if(!role) return
 	if(alert("Do you want to be a PMC or Marine?","Preference","Marine","PMC") == "PMC") CM.merc_starting_num = 1
 	else CM.merc_starting_num = 0
@@ -334,10 +334,10 @@
 		return 1
 
 	ex_act(severity)
-		health -= severity
-		update_health()
+		update_health(severity)
 
-/obj/item/device/omega_array/proc/update_health()
+/obj/item/device/omega_array/update_health(damage)
+	health -= damage
 	if(health <= 0)
 		visible_message(SPAN_WARNING("[src] sparks and begins to violently shake!"))
 		destroy()
@@ -468,7 +468,7 @@
 					to_chat(H, "Best to let the mercs do the killing and the dying, but <b>remind them who pays the bills.</b>")
 					to_chat(H, "________________________")
 			return
-		if("Commander")
+		if("Commanding Officer")
 			H.loc = pick(marine_spawns)
 			spawn(40)
 				if(H)

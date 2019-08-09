@@ -194,7 +194,7 @@ var/global/datum/controller/gameticker/ticker = new()
 	for(m in player_list)
 		player = m
 		if(istype(player) && player.mind && player.mind.assigned_role)
-			if(player.mind.assigned_role == "Commander")
+			if(player.mind.assigned_role == "Commanding Officers")
 				captainless=0
 			if(player.mind.assigned_role != "MODE")
 				RoleAuthority.equip_role(player, RoleAuthority.roles_by_name[player.mind.assigned_role])

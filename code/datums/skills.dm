@@ -100,7 +100,7 @@ COMMAND STAFF
 	endurance = SKILL_ENDURANCE_SURVIVOR
 
 /datum/skills/commander
-	name = "Commander"
+	name = "Commanding Officer"
 	engineer = SKILL_ENGINEER_ENGI
 	construction = SKILL_CONSTRUCTION_ADVANCED
 	smartgun = SKILL_SMART_TRAINED

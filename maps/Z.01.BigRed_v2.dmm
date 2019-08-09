@@ -226,7 +226,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aaD" = (
-/obj/machinery/telecomms/relay/preset/ice_colony,
+/obj/structure/prop/tower,
 /turf/open/floor{
 	tag = "icon-asteroidplating";
 	icon_state = "asteroidplating";
@@ -24899,7 +24899,7 @@
 /area/bigredv2/outside/cargo)
 "bjt" = (
 /obj/effect/decal/warning_stripes,
-/obj/machinery/constructable_frame/machine_frame{
+/obj/machinery/constructable_frame{
 	density = 1;
 	icon_state = "box_1"
 	},

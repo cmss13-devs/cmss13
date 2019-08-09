@@ -63,9 +63,9 @@ using metal and glass, it uses glass and reagents (usually sulfuric acis).
 		if (opened)
 			if(istype(O, /obj/item/tool/crowbar))
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-				var/obj/machinery/constructable_frame/machine_frame/M = new /obj/machinery/constructable_frame/machine_frame(src.loc)
-				M.state = 2
-				M.icon_state = "box_1"
+				var/obj/machinery/constructable_frame/M = new /obj/machinery/constructable_frame(src.loc)
+				M.state = CONSTRUCTION_STATE_PROGRESS
+				M.update_icon()
 				for(var/obj/I in component_parts)
 					if(istype(I, /obj/item/reagent_container/glass/beaker))
 						reagents.trans_to(I, reagents.total_volume)

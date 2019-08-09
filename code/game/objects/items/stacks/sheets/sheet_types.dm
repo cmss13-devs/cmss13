@@ -58,7 +58,7 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 		new/datum/stack_recipe("multi-tile airlock assembly", /obj/structure/door_assembly/multi_tile, 4, time = 50, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
 		), 4), \
 	new/datum/stack_recipe("computer frame", /obj/structure/computerframe, 5, time = 25, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
-	new/datum/stack_recipe("machine frame", /obj/machinery/constructable_frame/machine_frame, 5, time = 25, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
+	new/datum/stack_recipe("machine frame", /obj/machinery/constructable_frame, 5, time = 25, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
 	null, \
 	new/datum/stack_recipe("metal baseball bat", /obj/item/weapon/baseballbat/metal, 10, time = 20, one_per_turf = 0, on_floor = 1), \
 	null, \

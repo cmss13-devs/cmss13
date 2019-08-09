@@ -110,7 +110,6 @@ var/list/admin_verbs_fun = list(
 	/client/proc/cmd_admin_dress_all,
 	/client/proc/cmd_admin_select_mob_rank,
 	/client/proc/cmd_admin_gib_self,
-	/client/proc/chem_panel,
 	/client/proc/drop_bomb,
     /client/proc/drop_custom_bomb,
 	// /client/proc/cmd_admin_add_freeform_ai_law,
@@ -216,6 +215,7 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/cmd_admin_world_narrate,
 	/client/proc/play_sound_from_list,
 	/client/proc/play_imported_sound,
+	/client/proc/chem_panel,			/*chem panel, allows viewing, editing and creation of reagent and chemical_reaction datums*/
 	// /client/proc/object_talk,
 	/client/proc/cmd_admin_dress,
 	/client/proc/cmd_admin_select_mob_rank,
@@ -270,6 +270,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_mod_say,
 	/client/proc/player_panel_new,
 	/client/proc/dsay,
+	/client/proc/chem_panel,			/*chem panel, allows viewing, editing and creation of reagent and chemical_reaction datums*/
 	/datum/admins/proc/togglesleep,
 	/datum/admins/proc/togglejoin,
 	/client/proc/toggle_own_ghost_vis,

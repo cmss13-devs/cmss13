@@ -779,6 +779,7 @@
 	reagent_state = LIQUID
 	color = "#181818" // rgb: 24, 24, 24
 	chemclass = CHEM_CLASS_RARE
+	scannable = 1
 
 /datum/reagent/ammonia
 	name = "Ammonia"

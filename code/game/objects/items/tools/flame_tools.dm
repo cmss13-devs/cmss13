@@ -191,6 +191,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	..()
 	flags_atom |= NOREACT // so it doesn't react until you light it
 	create_reagents(chem_volume) // making the cigarrete a chemical holder with a maximum volume of 15
+	reagents.add_reagent("nicotine",10)
 
 /obj/item/clothing/mask/cigarette/attackby(obj/item/W, mob/user)
 	..()
@@ -403,6 +404,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "cigar2off"
 	smoketime = 1500
 	chem_volume = 20
+
+	New()
+		..()
+		reagents.add_reagent("nicotine",10)
 
 /obj/item/clothing/mask/cigarette/cigar/cohiba
 	name = "\improper Cohiba Robusto cigar"

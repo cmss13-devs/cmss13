@@ -38653,7 +38653,7 @@
 	},
 /area/prison/telecomms)
 "bEN" = (
-/obj/machinery/telecomms/relay/preset/station/prison,
+/obj/machinery/computer/telecomms/traffic,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "darkyellow2"
@@ -39200,7 +39200,6 @@
 /turf/open/floor/prison,
 /area/prison/telecomms)
 "bFW" = (
-/obj/machinery/computer/telecomms/traffic,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 4;

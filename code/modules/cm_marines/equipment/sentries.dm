@@ -45,12 +45,12 @@
 	var/has_plates = 0
 	var/is_welded = 0
 	var/has_sensor = 0
-	var/frame_hp = 100
+	health = 100
 
 
-/obj/machinery/marine_turret_frame/proc/update_health(damage)
-	frame_hp -= damage
-	if(frame_hp <= 0)
+/obj/machinery/marine_turret_frame/update_health(damage)
+	health -= damage
+	if(health <= 0)
 		if(has_cable)
 			new /obj/item/stack/cable_coil(loc, 10)
 		if(has_top)
@@ -652,7 +652,7 @@
 	else
 		icon_state = "sentry_off"
 
-/obj/machinery/marine_turret/proc/update_health(var/damage) //Negative damage restores health.
+/obj/machinery/marine_turret/update_health(var/damage) //Negative damage restores health.
 	health -= damage
 	if(health <= 0 && stat != 2)
 		stat |= SENTRY_DESTROYED

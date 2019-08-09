@@ -41155,7 +41155,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cot" = (
-/obj/machinery/telecomms/relay/preset/ice_colony,
+/obj/structure/prop/tower,
 /turf/open/floor{
 	tag = "icon-asteroidplating";
 	icon_state = "asteroidplating";

@@ -300,9 +300,9 @@ Class Procs:
 
 /obj/machinery/proc/dismantle()
 	playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
-	var/obj/machinery/constructable_frame/machine_frame/M = new /obj/machinery/constructable_frame/machine_frame(loc)
-	M.state = 2
-	M.icon_state = "box_1"
+	var/obj/machinery/constructable_frame/M = new /obj/machinery/constructable_frame(loc)
+	M.state = CONSTRUCTION_STATE_PROGRESS
+	M.update_icon()
 	for(var/obj/I in component_parts)
 		if(I.reliability != 100 && crit_fail)
 			I.crit_fail = 1

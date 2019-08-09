@@ -513,7 +513,7 @@ var/datum/mob_hud/huds = list(
 			if("Squad Medic") marine_rk = "med"
 			if("Squad Smartgunner") marine_rk = "gun"
 			if("Executive Officer") marine_rk = "xo"
-			if("Commander") marine_rk = "co"
+			if("Commanding Officer") marine_rk = "co"
 			if("Pilot Officer") marine_rk = "po"
 			if("Intelligence Officer") marine_rk = "io"
 			if("Tank Crewman") marine_rk = "tc"
@@ -544,7 +544,7 @@ var/datum/mob_hud/huds = list(
 			if("Executive Officer")
 				marine_rk = "xo"
 				border_rk = "command"
-			if("Commander")
+			if("Commanding Officer")
 				marine_rk = "co"
 				border_rk = "command"
 			if("Staff Officer")

@@ -156,7 +156,7 @@
 	var/gun_rounds = 0 //Did the gun come with any ammo?
 	health = 100
 
-/obj/machinery/m56d_post/proc/update_health(damage)
+/obj/machinery/m56d_post/update_health(damage)
 	health -= damage
 	if(health <= 0)
 		if(prob(30))
@@ -444,7 +444,7 @@
 		return
 	return ..()
 
-/obj/machinery/m56d_hmg/proc/update_health(amount) //Negative values restores health.
+/obj/machinery/m56d_hmg/update_health(amount) //Negative values restores health.
 	health -= amount
 	if(health <= 0)
 		var/destroyed = rand(0,1) //Ammo cooks off or something. Who knows.

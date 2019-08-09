@@ -4,40 +4,50 @@
 	name = "machine frame"
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "box_0"
+	var/base_state = "box"
 	density = 0
 	anchored = 1
 	use_power = 0
+	var/requirements_left
 	var/obj/item/circuitboard/machine/circuit = null
 	var/list/components = null
 	var/list/req_components = null
 	var/list/req_component_names = null
-	var/state = 1
+	var/state = CONSTRUCTION_STATE_BEGIN
+	var/required_skill = SKILL_CONSTRUCTION_MASTER
+	var/required_dismantle_skill = SKILL_ENGINEER_ENGI
 
-	proc/update_desc()
-		var/D
-		if(req_components)
-			D = "Requires "
-			var/first = 1
-			for(var/I in req_components)
-				if(req_components[I] > 0)
-					D += "[first?"":", "][num2text(req_components[I])] [req_component_names[I]]"
-					first = 0
-			if(first) // nothing needs to be added, then
-				D += "nothing"
-			D += "."
-		desc = D
+/obj/machinery/constructable_frame/New()
+	..()
+	update_desc()
 
-/obj/machinery/constructable_frame/machine_frame 	// This is necssary because for some reason there is a machine_frame subtype that certain objects use
-													// that is NOT different from parent (???). I'd rather not make huge regex change for this MR.
+/obj/machinery/constructable_frame/proc/update_desc()
+	if(CONSTRUCTION_STATE_BEGIN)
+		requirements_left = " Requires 5 lengths of cable."
+	if(req_components)
+		requirements_left = " Requires "
+		var/first = 1
+		for(var/I in req_components)
+			if(req_components[I] > 0)
+				requirements_left += "[first?"":", "][num2text(req_components[I])] [req_component_names[I]]"
+				first = 0
+		if(first) // nothing needs to be added, then
+			requirements_left += "nothing. Use a screwdriver to complete"
+		requirements_left += "."
+	desc = initial(desc) + SPAN_WARNING(requirements_left)
+
+/obj/machinery/constructable_frame/update_icon()
+    ..()
+    icon_state = "[base_state]_[state]"
 
 /obj/machinery/constructable_frame/attackby(obj/item/P as obj, mob/user as mob)
 	if(P.crit_fail)
 		to_chat(user, SPAN_DANGER("This part is faulty, you cannot add this to the machine!"))
 		return
 	switch(state)
-		if(1)
+		if(CONSTRUCTION_STATE_BEGIN)
 			if(iscoil(P))
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_MASTER)
+				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < required_skill)
 					to_chat(user, SPAN_WARNING("You are not trained to build machines..."))
 					return
 				var/obj/item/stack/cable_coil/C = P
@@ -47,31 +57,32 @@
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] starts adding cables to [src]."),
 				SPAN_NOTICE("You start adding cables to [src]."))
-				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && state == 1)
+				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && state == 0)
 					if(C && istype(C) && C.use(5))
 						user.visible_message(SPAN_NOTICE("[user] adds cables to [src]."),
 						SPAN_NOTICE("You add cables to [src]."))
-						state = 2
-						icon_state = "box_1"
+						state = CONSTRUCTION_STATE_PROGRESS
+						anchored = 1
 			else if(iswrench(P))
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < required_dismantle_skill)
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You dismantle the frame..."))
 				new /obj/item/stack/sheet/metal(src.loc, 5)
 				qdel(src)
-		if(2)
+		if(CONSTRUCTION_STATE_PROGRESS)
 			if(istype(P, /obj/item/circuitboard/machine))
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_MASTER)
+				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < required_skill)
 					to_chat(user, SPAN_WARNING("You are not trained to build machines..."))
+					return
+				if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You add the circuit board to the frame."))
 				circuit = P
 				if(user.drop_inv_item_to_loc(P, src))
-					icon_state = "box_2"
-					state = 3
+					state = CONSTRUCTION_STATE_FINISHED
 					components = list()
 					req_components = circuit.req_components.Copy()
 					for(var/A in circuit.req_components)
@@ -82,43 +93,43 @@
 						var/obj/ct = new cp() // have to quickly instantiate it get name
 						req_component_names[A] = ct.name
 					if(circuit.frame_desc)
-						desc = circuit.frame_desc
+						requirements_left = circuit.frame_desc
 					else
 						update_desc()
-					to_chat(user, desc)
+					to_chat(user, requirements_left)
 
 			else if(istype(P, /obj/item/tool/wirecutters))
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < required_dismantle_skill)
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 					return
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You remove the cables."))
-				state = 1
-				icon_state = "box_0"
+				state = CONSTRUCTION_STATE_BEGIN
 				var/obj/item/stack/cable_coil/A = new /obj/item/stack/cable_coil( src.loc )
 				A.amount = 5
 
-		if(3)
+		if(CONSTRUCTION_STATE_FINISHED)
 			if(istype(P, /obj/item/tool/crowbar))
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < required_dismantle_skill)
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 					return
+				if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+					return
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-				state = 2
+				state = CONSTRUCTION_STATE_BEGIN
 				circuit.loc = src.loc
 				circuit = null
 				if(components.len == 0)
-					to_chat(user, SPAN_NOTICE(" You remove the circuit board."))
+					to_chat(user, SPAN_NOTICE("You remove the circuit board."))
 				else
-					to_chat(user, SPAN_NOTICE(" You remove the circuit board and other components."))
+					to_chat(user, SPAN_NOTICE("You remove the circuit board and other components."))
 					for(var/obj/item/W in components)
 						W.loc = src.loc
-				desc = initial(desc)
+				update_desc()
 				req_components = null
 				components = null
-				icon_state = "box_1"
 			else if(istype(P, /obj/item/tool/screwdriver))
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_MASTER)
+				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < required_skill)
 					to_chat(user, SPAN_WARNING("You are not trained to build machines..."))
 					return
 				var/component_check = 1
@@ -138,11 +149,13 @@
 					new_machine.RefreshParts()
 					qdel(src)
 			else if(istype(P, /obj/item))
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_MASTER)
+				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < required_skill)
 					to_chat(user, SPAN_WARNING("You are not trained to build machines..."))
 					return
 				for(var/I in req_components)
 					if(istype(P, text2path(I)) && (req_components[I] > 0))
+						if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+							return
 						playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 						if(istype(P, /obj/item/stack/cable_coil))
 							var/obj/item/stack/cable_coil/CP = P
@@ -161,7 +174,8 @@
 							req_components[I]--
 							update_desc()
 						break
-				to_chat(user, desc)
+				to_chat(user, requirements_left)
 				if(P && P.loc != src && !istype(P, /obj/item/stack/cable_coil))
 					to_chat(user, SPAN_DANGER("You cannot add that component to the machine!"))
+	update_icon()
 

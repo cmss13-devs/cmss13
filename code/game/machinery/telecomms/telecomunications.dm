@@ -151,9 +151,6 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 		var/turf/position = get_turf(src)
 		listening_level = position.z
 
-	start_processing()
-
-/obj/machinery/telecomms/initialize()
 	if(autolinkers.len)
 		// Links nearby machines
 		if(!long_range_link)
@@ -163,6 +160,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 			for(var/obj/machinery/telecomms/T in telecomms_list)
 				add_link(T)
 
+	start_processing()
 
 /obj/machinery/telecomms/Dispose()
 	telecomms_list -= src
@@ -180,6 +178,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 			if(T.autolinkers.Find(x))
 				if(src != T)
 					links |= T
+					T.links |= src
 
 /obj/machinery/telecomms/update_icon()
 	if(on)

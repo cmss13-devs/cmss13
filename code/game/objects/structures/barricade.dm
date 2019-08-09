@@ -141,8 +141,7 @@
 				SPAN_NOTICE("You set up [W.name] on [src]."))
 				B.use(1)
 				maxhealth += 50
-				health += 50
-				update_health()
+				update_health(-50)
 				can_wire = FALSE
 				is_wired = TRUE
 				climbable = FALSE
@@ -158,8 +157,7 @@
 				user.visible_message(SPAN_NOTICE("[user] removes the barbed wire on [src]."),
 				SPAN_NOTICE("You remove the barbed wire on [src]."))
 				maxhealth -= 50
-				health -= 50
-				update_health()
+				update_health(50)
 				can_wire = TRUE
 				is_wired = FALSE
 				climbable = TRUE
@@ -191,7 +189,6 @@
 			spawn(1)
 			if(B)
 				B.ex_act(severity, direction)
-	health -= severity
 	if(health <= 0)
 		var/location = get_turf(src)
 		handle_debris(severity, direction)
@@ -200,7 +197,7 @@
 		qdel(src)
 		create_shrapnel(location, rand(2,5), direction, , /datum/ammo/bullet/shrapnel/light)
 	else
-		update_health()
+		update_health(severity)
 
 /obj/structure/barricade/get_explosion_resistance(direction)
 	if(!density || direction == turn(dir, 90) || direction == turn(dir, -90))
@@ -253,17 +250,14 @@
 	take_damage( I.force * 0.5 )
 
 obj/structure/barricade/proc/take_damage(var/damage)
-
-	health -= damage
-
 	for(var/obj/structure/barricade/B in get_step(src,dir)) //discourage double-stacking barricades by removing health from opposing barricade
 		if(B.dir == reverse_direction(dir))
-			B.health -= damage
-			B.update_health()
+			B.update_health(damage)
 
-	update_health()
+	update_health(damage)
 
-/obj/structure/barricade/proc/update_health(nomessage)
+/obj/structure/barricade/update_health(damage, nomessage)
+	health -= damage
 	health = Clamp(health, 0, maxhealth)
 
 	if(!health)
@@ -509,8 +503,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			if(do_after(user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src))
 				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 				SPAN_NOTICE("You repair [src]."))
-				health += 150
-				update_health()
+				update_health(-150)
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		return
 
@@ -647,12 +640,11 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			if(do_after(user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src))
 				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 				SPAN_NOTICE("You repair [src]."))
-				health += maxhealth*0.4
 				if(health < maxhealth)
 					maxhealth -= 50
 					user.visible_message(SPAN_NOTICE("[src]'s structural integrity weakens."))
 
-				update_health()
+				update_health(-(maxhealth*0.4))
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		return
 	else if(iswrench(W))
@@ -850,8 +842,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				busy = 0
 				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 				SPAN_NOTICE("You repair [src]."))
-				health += 150
-				update_health()
+				update_health(-150)
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			else busy = 0
 		return
@@ -1092,8 +1083,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			var/health_per_sandbag = maxhealth/5 // 5 sandbags to make a barricade
 			amount = Clamp(amount, 0, Ceiling((maxhealth-health)/health_per_sandbag))
 			SB.use(amount)
-			health += health_per_sandbag*amount
-			update_health()
+			update_health(-(health_per_sandbag*amount))
 		return
 	else
 		. = ..()
@@ -1113,8 +1103,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 /obj/structure/barricade/sandbags/wired/New()
 	maxhealth += 50
-	health += 50
-	update_health()
+	update_health(-50)
 	can_wire = FALSE
 	is_wired = TRUE
 	update_icon()
@@ -1124,8 +1113,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 /obj/structure/barricade/plasteel/wired/New()
 	maxhealth += 50
-	health += 50
-	update_health()
+	update_health(-50)
 	can_wire = FALSE
 	is_wired = TRUE
 	climbable = FALSE
@@ -1133,8 +1121,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	. = ..()
 /obj/structure/barricade/metal/wired/New()
 	maxhealth += 50
-	health += 50
-	update_health()
+	update_health(-50)
 	can_wire = FALSE
 	is_wired = TRUE
 	climbable = FALSE

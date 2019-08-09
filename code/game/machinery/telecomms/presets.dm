@@ -24,8 +24,95 @@
 	unacidable = 1
 
 	//We dont want anyone to mess with it
-	attackby()
+/obj/machinery/telecomms/relay/preset/ice_colony/attackby()
+	return
+		
+/obj/machinery/telecomms/relay/preset/tower
+	name = "TC-4T telecommunications tower"
+	icon = 'icons/obj/machines/comm_tower2.dmi'
+	icon_state = "comm_tower"
+	desc = "A portable compact TC-4T telecommunications tower. Used to set up subspace communications lines between planetary and extra-planetary locations."
+	id = "Station Relay"
+	listening_level = 1
+	autolinkers = list("s_relay")
+	layer = ABOVE_FLY_LAYER
+	use_power = 0
+	idle_power_usage = 0
+	unacidable = 1
+	health = 450
+
+/obj/machinery/telecomms/relay/preset/tower/get_explosion_resistance()
+	return 1000000
+
+/obj/machinery/telecomms/relay/preset/tower/bullet_act(var/obj/item/projectile/P)
+	..()
+	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
+		update_health(50)
+
+	else if (P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
+		update_health(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
+
+	update_health(round(P.damage/2))
+
+	return TRUE
+
+/obj/machinery/telecomms/relay/preset/tower/update_power()
+	if(health <= 0)
+		on = FALSE
+	else
+		on = TRUE
+
+/obj/machinery/telecomms/relay/preset/tower/update_health(var/damage = 0)
+	if(damage)
+		health -= damage
+		health = Clamp(health, 0, initial(health))
+	if(health <= 0)
+		toggled = FALSE
+		desc = "[initial(desc)] [SPAN_WARNING(" It is damaged and needs a welder for repairs!")]"
+	else if(health >= (initial(health) / 2))
+		toggled = TRUE
+	
+	if(health < initial(health))
+		desc = "[initial(desc)] [SPAN_WARNING(" It is damaged and needs a welder for repairs!")]"
+	else
+		desc = initial(desc)
+	update_icon()
+
+/obj/machinery/telecomms/relay/preset/tower/update_icon()
+	if(health <= 0)
+		icon_state = "[initial(icon_state)]_broken"
+	else if(on)
+		icon_state = initial(icon_state)
+	else
+		icon_state = "[initial(icon_state)]_off"
+
+/obj/machinery/telecomms/relay/preset/tower/attackby(obj/item/I, mob/user)
+	if(iswelder(I))
+		if(user.action_busy)
+			return
+		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_METAL)
+			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
+			return
+		var/obj/item/tool/weldingtool/WT = I
+
+		if(health >= initial(health))
+			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
+			return
+
+		if(WT.remove_fuel(0, user))
+			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
+			SPAN_NOTICE("You begin repairing the damage to [src]."))
+			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
+				SPAN_NOTICE("You repair [src]."))
+				update_health(-150)
+				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		return
+		
+		if(ismultitool(I))
+			return
+	else return ..()
 
 /obj/machinery/telecomms/relay/preset/telecomms
 	id = "Telecomms Relay"

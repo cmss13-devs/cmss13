@@ -1,5 +1,3 @@
-
-
 //Machine Frame Circuit Boards
 /*Common Parts: Parts List: Ignitor, Timer, Infra-red laser, Infra-red sensor, t_scanner, Capacitor, Valve, sensor unit,
 micro-manipulator, console screen, beaker, Microlaser, matter bin, power cells.
@@ -194,6 +192,17 @@ obj/item/circuitboard/machine/rdserver
 	req_components = list(
 							"/obj/item/stock_parts/manipulator" = 2,
 							"/obj/item/stack/cable_coil" = 2,
+							"/obj/item/stock_parts/subspace/filter" = 2)
+
+/obj/item/circuitboard/machine/telecomms/relay/tower
+	name = "\improper TC-4T Telecommunications Circuit Board"
+	build_path = "/obj/machinery/telecomms/relay/preset/tower"
+	origin_tech = "programming=3;engineering=4;bluespace=3"
+	frame_desc = "A TC-4T telecommunications circuit board. Requires 2 Power Cells, 2 Cable Coils and a Subspace Communications Dish."
+	req_components = list(
+							"/obj/item/stack/cable_coil" = 2,
+							"/obj/item/cell" = 2,
+							"/obj/item/stock_parts/manipulator" = 2,
 							"/obj/item/stock_parts/subspace/filter" = 2)
 
 /obj/item/circuitboard/machine/telecomms/bus

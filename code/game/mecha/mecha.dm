@@ -376,8 +376,7 @@
 /obj/mecha/proc/take_damage(amount, type="brute")
 	if(amount)
 		var/damage = absorbDamage(amount,type)
-		health -= damage
-		update_health()
+		update_health(damage)
 		log_append_to_last("Took [damage] points of damage. Damage type: \"[type]\".",1)
 	return
 
@@ -388,11 +387,12 @@
 	return damage*(listgetindex(damage_absorption,damage_type) || 1)
 
 
-/obj/mecha/proc/update_health()
-	if(src.health > 0)
-		src.spark_system.start()
+/obj/mecha/update_health(damage)
+	health -= damage
+	if(health > 0)
+		spark_system.start()
 	else
-		src.destroy()
+		destroy()
 	return
 
 /obj/mecha/attack_hand(mob/user as mob)

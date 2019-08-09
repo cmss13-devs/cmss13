@@ -68,7 +68,7 @@
 	icon_state = "officerberet"
 /obj/item/clothing/head/beret/sec/hos
 	name = "officer beret"
-	desc = "A navy blue beret with a commander's rank emblem. For officers that are more inclined towards style than safety."
+	desc = "A navy blue beret with a captain's rank emblem. For officers that are more inclined towards style than safety."
 	icon_state = "hosberet"
 /obj/item/clothing/head/beret/sec/warden
 	name = "warden beret"

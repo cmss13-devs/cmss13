@@ -249,7 +249,7 @@
 
 	idtype = /obj/item/card/id/gold
 	assignment = "Commanding Officer"
-	rank = "Commander"
+	rank = "Commanding Officer"
 	paygrade = "O5"
 	role_comm_title = "CO"
 	skills = /datum/skills/commander
@@ -282,7 +282,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	idtype = /obj/item/card/id/gold/commodore
-	rank = "Commodore"
+	rank = "Commanding Officer"
 	paygrade = "O5E"
 	role_comm_title = "CDRE"
 

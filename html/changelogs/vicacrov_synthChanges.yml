@@ -1,8 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes: 
-  - rscadd: "Synthetics - Added the following items to the snowflake vendor: sechud, sunglasses, RPG glasses, snow suit."
-  - tweak: "Synthetics - Moved black webbing to gear vendor; glasses to snowflake vendor; doubled the snowflake vendor points for your personal fashion shows."
-  - bugfix: "Synthetics - Fixed a vendor typo, security uniform names, and a security uniform dispensing something different."

@@ -119,16 +119,33 @@
 
 /datum/mind/proc/view_objective_memories(mob/recipient)
 	var/output = "<B>[current.real_name]'s objectives clues</B><HR>"
-	for(var/datum/cm_objective/O in objective_memory)
-		if(!O)
-			continue
-		if(!O.is_prerequisites_completed() || !O.is_active())
-			continue
-		if(O.display_flags & OBJ_DISPLAY_HIDDEN)
-			continue
-		if(O.is_complete())
-			continue
-		output += "[O.get_clue()]<BR>"
+	
+	// Do we have DEFCON?
+	if(objectives_controller)
+		output += "<b>DEFCON [defcon_controller.current_defcon_level]:</b> [defcon_controller.check_defcon_percentage()]%"
+		
+		output += "<br>"
+		output += "<hr>"
+		output += "<br>"
+			
+		for(var/datum/cm_objective/O in objective_memory)
+			if(!O)
+				continue
+			if(!O.is_prerequisites_completed() || !O.is_active())
+				continue
+			if(O.display_flags & OBJ_DISPLAY_HIDDEN)
+				continue
+			if(O.is_complete())
+				continue
+			output += "[O.get_clue()]<BR>"
+
+		output += "<br>"
+		output += "<hr>"
+		output += "<br>"
+
+		// Item and body retrieval %, power, etc.
+		output += objectives_controller.get_objectives_progress()
+
 	recipient << browse(output,"window=objectivesmemory")
 
 /datum/mind/proc/edit_memory()

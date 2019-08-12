@@ -43,7 +43,6 @@ var/global/datum/objectives_controller/objectives_controller
 /datum/objectives_controller/proc/get_objectives_progress()
 	var/point_total = 0
 	var/complete = 0
-	var/failed = 0
 
 	var/list/categories = list()
 	var/list/notable_objectives = list()
@@ -52,37 +51,29 @@ var/global/datum/objectives_controller/objectives_controller
 		if(C.display_category)
 			if(!(C.display_category in categories))
 				categories += C.display_category
-				categories[C.display_category] = list("count" = 0, "total" = 0, "complete" = 0, "failed" = 0)
+				categories[C.display_category] = list("count" = 0, "total" = 0, "complete" = 0)
 			categories[C.display_category]["count"]++
 			categories[C.display_category]["total"] += C.total_point_value()
 			categories[C.display_category]["complete"] += C.get_point_value()
-			if(C.is_failed())
-				categories[C.display_category]["failed"] += C.total_point_value()
 
 		if(C.display_flags & OBJ_DISPLAY_AT_END)
 			notable_objectives += C
 
 		point_total += C.total_point_value()
 		complete += C.get_point_value()
-		if(C.is_failed())
-			failed += C.total_point_value()
 
 	var/dat = ""
 	if(objectives.len) // protect against divide by zero
-		dat = "<span class='objectivebig'>Total Objectives: [objectives.len]</span> <span class='objectivegreen'>[complete]pts completed ([round(100.0*complete/point_total)]%)</span>, <span class='objectivered'>[failed]pts failed ([round(100.0*failed/point_total)]%)</span> <br>"
+		dat = "<b>Total Objectives:</b> [complete]pts completed ([round(100.0*complete/point_total)]%)<br>"
 		if(categories.len)
-			var/count
 			var/total = 1 //To avoid divide by zero errors, just in case...
 			var/compl
-			var/fail
 			for(var/cat in categories)
-				count = categories[cat]["count"]
 				total = categories[cat]["total"]
 				compl = categories[cat]["complete"]
-				fail = categories[cat]["failed"]
 				if(total == 0)
 					total = 1 //To avoid divide by zero errors, just in case...
-				dat += "<span class='objectivebig'>[cat]: [count]</span> <span class='objectivegreen'>[compl]pts completed ([round(100.0*compl/total)]%)</span>, <span class='objectivered'>[fail]pts failed ([round(100.0*fail/total)]%)</span> <br>"
+				dat += "<b>[cat]: </b> [compl]pts completed ([round(100.0*compl/total)]%)<br>"
 
 		for(var/datum/cm_objective/O in notable_objectives)
 			dat += O.get_readable_progress()

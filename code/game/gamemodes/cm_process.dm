@@ -45,33 +45,9 @@ of predators), but can be added to include variant game modes (like humans vs. h
 
 //===================================================\\
 
-
-/datum/game_mode/proc/declare_completion_announce_fallen_soldiers()
-	set waitfor = 0
-	sleep(SECONDS_2)
-	if(fallen_list.len)
-		var/dat = "<br>"
-		dat += SPAN_ROUNDBODY("<br>In Flanders fields...")
-		dat +=  SPAN_CENTERBOLD("In memoriam of our fallen soldiers:")
-		for(var/i = 1 to fallen_list.len)
-			if(i != fallen_list.len)
-				dat += "[fallen_list[i]], "
-			else
-				dat += "[fallen_list[i]].<br>"
-		world << dat
-
-/datum/game_mode/proc/declare_completion_announce_objectives()
-	set waitfor = 0
-	sleep(SECONDS_4)
-	if(objectives_controller)
-		var/dat = SPAN_ROUNDBODY("The objective scores were:")
-		dat += objectives_controller.get_objectives_progress()
-
-		to_world("[dat]")
-
 /datum/game_mode/proc/declare_completion_announce_xenomorphs()
 	set waitfor = 0
-	sleep(SECONDS_6)
+	sleep(SECONDS_2)
 	if(xenomorphs.len)
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("<br>The xenomorph Queen(s) were:")
@@ -84,25 +60,9 @@ of predators), but can be added to include variant game modes (like humans vs. h
 
 		to_world("[dat]")
 
-/datum/game_mode/proc/declare_completion_announce_survivors()
-	set waitfor = 0
-	sleep(SECONDS_8)
-	if(survivors.len)
-		var/dat = "<br>"
-		dat += SPAN_ROUNDBODY("<br>The survivors were:")
-		var/mob/M
-		for(var/datum/mind/S in survivors)
-			if(istype(S))
-				M = S.current
-				if(!M || !M.loc) M = S.original
-				if(M && M.loc) 	dat += "<br>[S.key] was [M.real_name] <span class='boldnotice'>([M.stat == DEAD? "DIED":"SURVIVED"])</span>"
-				else 			dat += "<br>[S.key]'s body was destroyed... <span class='boldnotice'>(DIED)</span>"
-
-		to_world("[dat]")
-
 /datum/game_mode/proc/declare_completion_announce_predators()
 	set waitfor = 0
-	sleep(SECONDS_10)
+	sleep(SECONDS_2)
 	if(predators.len)
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("<br>The Predators were:")
@@ -119,7 +79,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 
 /datum/game_mode/proc/declare_completion_announce_medal_awards()
 	set waitfor = 0
-	sleep(SECONDS_12)
+	sleep(SECONDS_2)
 	if(medal_awards.len)
 		var/dat = "<br>"
 		dat +=  SPAN_ROUNDBODY("<br>Medal Awards:")

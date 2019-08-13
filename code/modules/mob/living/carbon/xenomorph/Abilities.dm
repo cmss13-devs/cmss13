@@ -400,7 +400,7 @@
 	action_icon_state = "tail_sweep"
 	ability_name = "tail sweep"
 	macro_path = /datum/action/xeno_action/verb/verb_tail_sweep
-	action_type = XENO_ACTION_ACTIVATE
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/tail_sweep/use_ability()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -1344,7 +1344,7 @@
 	action_icon_state = "spin_slash"
 	ability_name = "spin slash"
 	macro_path = /datum/action/xeno_action/verb/verb_spin_slash
-	action_type = XENO_ACTION_ACTIVATE
+	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/spin_slash/use_ability()
 	var/mob/living/carbon/Xenomorph/X = owner

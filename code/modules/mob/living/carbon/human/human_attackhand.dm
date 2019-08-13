@@ -21,10 +21,9 @@
 					ExtinguishMob()
 				return 1
 
-			if(health >= config.health_threshold_crit)
+			if(health >= config.health_threshold_crit && stat != DEAD)
 				help_shake_act(M)
 				return 1
-//			if(M.health < -75)	return 0
 
 			if(M.head && (M.head.flags_inventory & COVERMOUTH) || M.wear_mask && (M.wear_mask.flags_inventory & COVERMOUTH) && !(M.wear_mask.flags_inventory & ALLOWCPR))
 				to_chat(M, SPAN_NOTICE(" <B>Remove your mask!</B>"))
@@ -258,8 +257,8 @@
 				if(istype(H))
 					H.species.hug(H,src)
 				else
-					M.visible_message(SPAN_NOTICE("[M] hugs [src] to make [t_him] feel better!"), \
-								SPAN_NOTICE("You hug [src] to make [t_him] feel better!"), null, 4)
+					M.visible_message(SPAN_NOTICE("[M] pats [src] on the back to make [t_him] feel better!"), \
+								SPAN_NOTICE("You pat [src] on the back to make [t_him] feel better!"), null, 4)
 
 			AdjustKnockedout(-3)
 			AdjustStunned(-3)

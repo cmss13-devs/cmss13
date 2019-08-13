@@ -196,23 +196,6 @@
 					else
 						message = "<B>[comm_paygrade][src]</B> holds out \his hand to [M]."
 
-		if("hug")
-			m_type = 1
-			if (!src.is_mob_restrained())
-				var/M = null
-				if (param)
-					for (var/mob/A in view(1, null))
-						if (param == A.name)
-							M = A
-							break
-				if (M == src)
-					M = null
-
-				if (M)
-					message = "<B>[comm_paygrade][src]</B> hugs [M]."
-				else
-					message = "<B>[comm_paygrade][src]</B> hugs \himself."
-
 		if ("laugh")
 			if (!muzzled)
 				message = "<B>[comm_paygrade][src]</B> laughs!"
@@ -461,7 +444,6 @@
 			grin, \
 			grumble, \
 			handshake, \
-			hug-(mob name), \
 			laugh, \
 			look-(mob name), \
 			me, \

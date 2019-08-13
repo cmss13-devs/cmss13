@@ -208,8 +208,8 @@
 				if(istype(H))
 					H.species.hug(H,src)
 				else
-					M.visible_message(SPAN_NOTICE("[M] hugs [src] to make [t_him] feel better!"), \
-								SPAN_NOTICE("You hug [src] to make [t_him] feel better!"), null, 4)
+					M.visible_message(SPAN_NOTICE("[M] pats [src] on the back to make [t_him] feel better!"), \
+								SPAN_NOTICE("You pat [src] on the back to make [t_him] feel better!"), null, 4)
 
 			AdjustKnockedout(-3)
 			AdjustStunned(-3)

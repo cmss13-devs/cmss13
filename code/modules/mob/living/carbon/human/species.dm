@@ -157,8 +157,8 @@
 		if(FEMALE)
 			t_him = "her"
 
-	H.visible_message(SPAN_NOTICE("[H] hugs [target] to make [t_him] feel better!"), \
-					SPAN_NOTICE("You hug [target] to make [t_him] feel better!"), null, 4)
+	H.visible_message(SPAN_NOTICE("[H] pats [target] on the back to make [t_him] feel better!"), \
+					SPAN_NOTICE("You pat [target] on the back to make [t_him] feel better!"), null, 4)
 
 //special things to change after we're no longer that species
 /datum/species/proc/post_species_loss(mob/living/carbon/human/H)

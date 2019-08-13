@@ -475,6 +475,8 @@
 	var/image/gun_underlay //The underlay we will use.
 	var/sheatheSound = 'sound/weapons/gun_pistol_sheathe.ogg'
 	var/drawSound = 'sound/weapons/gun_pistol_draw.ogg'
+	var/icon_x = 0
+	var/icon_y = 0
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
 		/obj/item/ammo_magazine/pistol
@@ -509,6 +511,8 @@
 		*/
 		playsound(src,drawSound, 15, 1)
 		gun_underlay = image(icon, src, current_gun.icon_state)
+		gun_underlay.pixel_x = icon_x
+		gun_underlay.pixel_y = icon_y
 		icon_state += "_g"
 		item_state = icon_state
 		underlays += gun_underlay
@@ -788,8 +792,12 @@
 	desc = "The M802 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is designed to carry smartgun ammunition, as well as a sidearm."
 	icon_state = "sgbelt"
 	item_state = "sgbelt"
+	icon_x = 6
+	icon_y = 3
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
+		/obj/item/weapon/gun/revolver/m44,
+		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/smartgun
 	)

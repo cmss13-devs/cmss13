@@ -432,7 +432,7 @@
 		// Only a certain number of drips (or one large splatter) can be on a given turf.
 		var/obj/effect/decal/cleanable/blood/drip/drop = locate() in T
 		if(drop)
-			if(drop.drips < 3)
+			if(drop.drips < 1)
 				drop.drips++
 				drop.overlays |= pick(drop.random_icon_states)
 				drop.transfer_mob_blood_dna(src)

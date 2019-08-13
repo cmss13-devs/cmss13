@@ -155,14 +155,14 @@
 		return
 
 	if(radius > 1 || prob(chance))
-
-		var/obj/effect/decal/cleanable/blood/xeno/decal = locate(/obj/effect/decal/cleanable/blood/xeno) in T
-
-		if(!decal) //Let's not stack blood, it just makes lagggggs.
-			add_splatter_floor(T) //Drop some on the ground first.
-		else
-			if(decal.random_icon_states && length(decal.random_icon_states) > 0) //If there's already one, just randomize it so it changes.
-				decal.icon_state = pick(decal.random_icon_states)
+		var/decal_chance = 50
+		if(prob(decal_chance))
+			var/obj/effect/decal/cleanable/blood/xeno/decal = locate(/obj/effect/decal/cleanable/blood/xeno) in T
+			if(!decal) //Let's not stack blood, it just makes lagggggs.
+				add_splatter_floor(T) //Drop some on the ground first.
+			else
+				if(decal.random_icon_states && length(decal.random_icon_states) > 0) //If there's already one, just randomize it so it changes.
+					decal.icon_state = pick(decal.random_icon_states)
 
 		var/splash_chance = 40 //Base chance of getting splashed. Decreases with # of victims.
 		var/distance = 0 //Distance, decreases splash chance.

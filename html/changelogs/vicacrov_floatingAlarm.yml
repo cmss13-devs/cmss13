@@ -1,0 +1,6 @@
+author: Vicacrov
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed a floating fire alarm and the north-south hangar shutters not being symmetrical."

@@ -11522,25 +11522,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/medical_science)
-"aDd" = (
-/obj/effect/decal/warning_stripes{
-	tag = "icon-W";
-	icon_state = "W"
-	},
-/obj/machinery/door_control{
-	id = "hangarentrancenorth";
-	name = "North Hangar Shutters";
-	pixel_x = 0;
-	pixel_y = 30;
-	req_one_access = list(2,3,12,19);
-	throw_range = 15;
-	unacidable = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/hallways/hangar)
 "aDe" = (
 /turf/open/floor/almayer{
 	tag = "icon-orangecorner (WEST)";
@@ -18644,18 +18625,6 @@
 /obj/item/folder/black,
 /turf/open/floor/wood,
 /area/almayer/living/pilotbunks)
-"aXw" = (
-/obj/machinery/door/firedoor/border_only/almayer,
-/obj/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "hangarentrancenorth";
-	name = "\improper North Hangar Shutters"
-	},
-/turf/open/floor/almayer{
-	tag = "icon-test_floor4";
-	icon_state = "test_floor4"
-	},
-/area/almayer/hallways/hangar)
 "aXx" = (
 /obj/structure/table/almayer,
 /obj/effect/spawner/random/tool,
@@ -18829,9 +18798,6 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/obj/machinery/firealarm{
-	pixel_y = 28
-	},
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliason)
 "aYq" = (
@@ -18950,28 +18916,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/stern_hallway)
-"aYE" = (
-/obj/machinery/door/firedoor/border_only/almayer,
-/obj/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "hangarentrancenorth";
-	name = "\improper North Hangar Shutters"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (EAST)";
-	icon_state = "intact-scrubbers";
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	tag = "icon-test_floor4";
-	icon_state = "test_floor4"
-	},
-/area/almayer/hallways/hangar)
 "aYF" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -19667,18 +19611,6 @@
 /obj/item/device/portable_vendor/corporate,
 /turf/open/floor/wood,
 /area/almayer/command/corporateliason)
-"bab" = (
-/obj/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "hangarentrancenorth";
-	name = "\improper North Hangar Shutters"
-	},
-/obj/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/almayer{
-	tag = "icon-test_floor4";
-	icon_state = "test_floor4"
-	},
-/area/almayer/hallways/hangar)
 "bac" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -26093,17 +26025,8 @@
 /area/almayer/medical/lower_medical)
 "bsk" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
-	},
-/obj/machinery/door_control{
-	id = "hangarentrancenorth";
-	name = "North Hangar Shutters";
-	pixel_x = 0;
-	pixel_y = 30;
-	req_one_access = list(2,3,12,19);
-	throw_range = 15;
-	unacidable = 1
+	tag = "icon-W";
+	icon_state = "W"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -27662,26 +27585,6 @@
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull)
-"bxc" = (
-/obj/effect/decal/warning_stripes{
-	tag = "icon-W";
-	icon_state = "W"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (EAST)";
-	icon_state = "intact-scrubbers";
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/hallways/hangar)
 "bxd" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -31568,10 +31471,10 @@
 /area/almayer/hallways/hangar)
 "bGT" = (
 /obj/machinery/door/firedoor/border_only/almayer,
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/machinery/door/poddoor/almayer{
 	dir = 4;
 	id = "hangarentrancesouth";
-	name = "\improper South Hangar Shutters"
+	name = "\improper South Hangar Podlock"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-test_floor4";
@@ -31897,11 +31800,6 @@
 /area/almayer/living/bridgebunks)
 "bHH" = (
 /obj/machinery/door/firedoor/border_only/almayer,
-/obj/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "hangarentrancesouth";
-	name = "\improper South Hangar Shutters"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
@@ -31911,6 +31809,11 @@
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
+	},
+/obj/machinery/door/poddoor/almayer{
+	dir = 4;
+	id = "hangarentrancesouth";
+	name = "\improper South Hangar Podlock"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-test_floor4";
@@ -37829,17 +37732,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/tankerbunks)
-"bWN" = (
-/obj/structure/table/almayer,
-/obj/item/storage/fancy/cigarettes/kpack,
-/turf/open/floor/wood,
-/area/almayer/living/tankerbunks)
-"bWO" = (
-/obj/structure/table/almayer,
-/obj/item/paper_bin/uscm,
-/obj/item/tool/pen,
-/turf/open/floor/wood,
-/area/almayer/living/tankerbunks)
 "bWP" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-SW-out";
@@ -41184,7 +41076,9 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/machinery/firealarm,
+/obj/machinery/firealarm{
+	pixel_y = 28
+	},
 /turf/open/floor/almayer{
 	tag = "icon-bluecorner (NORTH)";
 	icon_state = "bluecorner";
@@ -45027,6 +44921,25 @@
 	icon_state = "redfull"
 	},
 /area/almayer/shipboard/firing_range_north)
+"cBI" = (
+/obj/effect/decal/warning_stripes{
+	tag = "icon-W";
+	icon_state = "W"
+	},
+/obj/machinery/door_control{
+	id = "hangarentrancenorth";
+	name = "North Hangar Podlocks";
+	pixel_x = 0;
+	pixel_y = -26;
+	req_one_access = list(2,3,12,19);
+	throw_range = 15;
+	unacidable = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/starboard_hallway)
 "cCV" = (
 /obj/structure/closet,
 /turf/open/floor/almayer{
@@ -52776,6 +52689,18 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
+"owH" = (
+/obj/machinery/door/firedoor/border_only/almayer,
+/obj/machinery/door/poddoor/almayer{
+	dir = 4;
+	id = "hangarentrancenorth";
+	name = "\improper North Hangar Podlock"
+	},
+/turf/open/floor/almayer{
+	tag = "icon-test_floor4";
+	icon_state = "test_floor4"
+	},
+/area/almayer/hallways/starboard_hallway)
 "ozT" = (
 /obj/item/target,
 /obj/item/target,
@@ -54288,6 +54213,10 @@
 	icon_state = "wall3"
 	},
 /area/almayer/evacuation/pod17)
+"qLo" = (
+/obj/machinery/light,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/starboard_hallway)
 "qLp" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -55628,6 +55557,28 @@
 /obj/machinery/atmospherics/unary/vent_pump,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/navigation)
+"stY" = (
+/obj/machinery/door/firedoor/border_only/almayer,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/door/poddoor/almayer{
+	dir = 4;
+	id = "hangarentrancenorth";
+	name = "\improper North Hangar Podlock"
+	},
+/turf/open/floor/almayer{
+	tag = "icon-test_floor4";
+	icon_state = "test_floor4"
+	},
+/area/almayer/hallways/starboard_hallway)
 "svc" = (
 /obj/structure/window/framed/almayer,
 /obj/machinery/door/firedoor/border_only/almayer{
@@ -55659,6 +55610,26 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/command/cic)
+"sxu" = (
+/obj/effect/decal/warning_stripes{
+	tag = "icon-W";
+	icon_state = "W"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/starboard_hallway)
 "sxS" = (
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -55935,6 +55906,14 @@
 	dir = 1
 	},
 /area/almayer/hallways/starboard_hallway)
+"sQL" = (
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer,
+/area/almayer/command/corporateliason)
 "sRz" = (
 /obj/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
@@ -57692,6 +57671,25 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/medical_science)
+"vgC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner"
+	},
+/obj/machinery/door_control{
+	id = "hangarentrancenorth";
+	name = "North Hangar Podlocks";
+	pixel_x = 0;
+	pixel_y = -26;
+	req_one_access = list(2,3,12,19);
+	throw_range = 15;
+	unacidable = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/starboard_hallway)
 "vgO" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor/almayer{
@@ -84756,9 +84754,9 @@ aTc
 bcm
 aRu
 bcm
-aZZ
-aYC
-aZZ
+aTc
+bHB
+aTc
 bkA
 bnj
 kPx
@@ -84959,9 +84957,9 @@ bcm
 bcm
 aRu
 bcm
-aDd
-bxc
-aYu
+aTc
+bHB
+bSq
 bkA
 bcz
 wEt
@@ -85162,9 +85160,9 @@ aRu
 aRu
 aRu
 bcm
-aXw
-aYE
-bab
+aZZ
+aYC
+aZZ
 bkA
 bcA
 bej
@@ -85366,8 +85364,8 @@ aNi
 aNi
 aNi
 bsk
-bxd
-bys
+sxu
+cBI
 bkA
 bcB
 bej
@@ -85568,9 +85566,9 @@ bqm
 bsD
 btr
 aNi
-aNO
-aYJ
-aNO
+owH
+stY
+owH
 bkA
 bcC
 eZh
@@ -85771,9 +85769,9 @@ bmF
 bsw
 bts
 aWw
-aLG
-aYJ
-aLG
+bys
+bxd
+vgC
 bkA
 eUn
 bcD
@@ -85974,9 +85972,9 @@ aOR
 hEA
 vab
 aWw
-aLG
+aNO
 aYJ
-bad
+qLo
 baZ
 bBO
 beh
@@ -92599,7 +92597,7 @@ ayT
 ahS
 cmF
 aYp
-aGt
+sQL
 bHx
 bXW
 bqy

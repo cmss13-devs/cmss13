@@ -211,6 +211,8 @@
 		distance++
 		prev_T = T
 		sleep(1)
+	
+	to_chat(user, SPAN_WARNING("The gauge reads: <b>[round(current_mag.get_ammo_percent())]</b>% fuel remains."))
 
 /obj/item/weapon/gun/flamer/proc/flame_turf(turf/T, mob/living/user, heat, burn, f_color = "red")
 	if(!istype(T))
@@ -281,6 +283,7 @@
 			sleep(1)
 
 		distance++
+	to_chat(user, SPAN_WARNING("The gauge reads: <b>[round(current_mag.get_ammo_percent())]</b>% fuel remains!"))
 
 
 
@@ -290,41 +293,30 @@
 	icon_state = "m240t"
 	item_state = "m240t"
 	unacidable = 1
-	current_mag = /obj/item/ammo_magazine/flamer_tank/large
+	current_mag = null
+	var/obj/item/marine/fuelpack/fuelpack
+
+/obj/item/weapon/gun/flamer/M240T/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
+	if(!fuelpack)
+		if(!link_fuelpack(user))
+			to_chat(user, "You must equip the specialized Broiler-T back harness to use this incinerator unit!")
+			click_empty(user)
+			unlink_fuelpack()
+			return
+	if(fuelpack)
+		// Check we're actually firing the right fuel tank
+		if(current_mag != fuelpack.active_fuel)
+			current_mag = fuelpack.active_fuel
+		..()
+
 
 /obj/item/weapon/gun/flamer/M240T/reload(mob/user, obj/item/ammo_magazine/magazine)
-	if(!magazine || !istype(magazine))
-		to_chat(user, SPAN_WARNING("That's not a magazine!"))
-		return
+	to_chat(user, SPAN_WARNING("The Broiler-T feed system cannot be reloaded manually."))
+	return
 
-	if(magazine.current_rounds <= 0)
-		to_chat(user, SPAN_WARNING("That [magazine.name] is empty!"))
-		return
-
-	if(!istype(src, magazine.gun_type))
-		to_chat(user, SPAN_WARNING("That magazine doesn't fit in there!"))
-		return
-
-	if(!isnull(current_mag) && current_mag.loc == src)
-		to_chat(user, SPAN_WARNING("It's still got something loaded!"))
-		return
-
-	else
-		if(user)
-			if(magazine.reload_delay > 1)
-				to_chat(user, SPAN_NOTICE("You begin reloading [src]. Hold still..."))
-				if(do_after(user,magazine.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY)) replace_magazine(user)
-				else
-					to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
-					return
-			else replace_magazine(user, magazine)
-		else
-			current_mag = magazine
-			magazine.loc = src
-			replace_ammo(,magazine)
-
-	update_icon()
-	return 1
+/obj/item/weapon/gun/flamer/M240T/unload(mob/user, reload_override = 0, drop_override = 0, loc_override = 0)
+	to_chat(user, SPAN_WARNING("The incinerator tank is locked in place. It cannot be removed."))
+	return
 
 /obj/item/weapon/gun/flamer/M240T/able_to_fire(mob/user)
 	. = ..()
@@ -334,9 +326,24 @@
 
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && user.mind.cm_skills.spec_weapons != SKILL_SPEC_PYRO)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
-			return 0
+			return FALSE
 
+		var/mob/living/carbon/human/H = user
+		if(!istype(H))
+			return FALSE
+		if(!istype(H.back, /obj/item/marine/fuelpack))
+			click_empty(H)
+			return FALSE
 
+/obj/item/weapon/gun/flamer/M240T/proc/link_fuelpack(var/mob/user)
+	if(user.back)	
+		if(istype(user.back, /obj/item/marine/fuelpack))
+			fuelpack = user.back
+			return TRUE
+	return FALSE
+
+/obj/item/weapon/gun/flamer/M240T/proc/unlink_fuelpack()
+	fuelpack = null
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //Time to redo part of abby's code.

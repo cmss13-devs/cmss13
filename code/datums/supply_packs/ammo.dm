@@ -607,7 +607,6 @@ AMMO
 	name = "M240-T fuel crate (extended x1, A Gel x1, type-B x1, type-X x1)"
 	contains = list(
 					/obj/item/ammo_magazine/flamer_tank/large,
-					/obj/item/ammo_magazine/flamer_tank/large/gellied,
 					/obj/item/ammo_magazine/flamer_tank/large/B,
 					/obj/item/ammo_magazine/flamer_tank/large/X
 					)
@@ -646,16 +645,6 @@ AMMO
 	cost = RO_PRICE_CHEAP
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "\improper M240-T type-X fuel tanks crate"
-	group = "Ammo"
-
-/datum/supply_packs/ammo_gellied
-	name = "M240-T fuel crate (A Gel x1)"
-	contains = list(
-					/obj/item/ammo_magazine/flamer_tank/large/gellied
-					)
-	cost = RO_PRICE_WORTHLESS
-	containertype = /obj/structure/closet/crate/weapon
-	containername = "\improper M240-T fuel crate"
 	group = "Ammo"
 
 //------------------------Mortar ammunition crates----------------

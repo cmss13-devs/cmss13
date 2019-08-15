@@ -1,6 +1,0 @@
-author: Cakey
-
-delete-after: True
-
-changes: 
-  - tweak: "Tail sweep and spin slash macros have been turned into toggle macros."

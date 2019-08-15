@@ -4,7 +4,7 @@
 	icon = 'icons/obj/machines/comm_tower2.dmi'
 	icon_state = "construct_0_0"
 	required_skill = SKILL_ENGINEER_ENGI
-	required_dismantle_skill = SKILL_ENGINEER_MT
+	required_dismantle_skill = 5
 	density = 1
 	anchored = 0
 	unacidable = 1

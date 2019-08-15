@@ -50707,11 +50707,11 @@
 /area/almayer/shipboard/brig_cells)
 "lJr" = (
 /obj/machinery/camera/autoname/almayer{
-	dir = 8;
+	dir = 2;
 	icon_state = "camera";
 	name = "ship-grade camera";
 	network = list("almayer");
-	tag = "icon-camera (EAST)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	tag = "icon-red";

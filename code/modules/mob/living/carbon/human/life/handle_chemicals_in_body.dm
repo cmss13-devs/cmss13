@@ -52,3 +52,24 @@
 	//updatehealth() moved to Life()
 
 	return //TODO: DEFERRED
+
+/mob/living/carbon/human/proc/handle_necro_chemicals_in_body()
+	for(var/datum/reagent/generated/R in reagents.reagent_list)
+		R.holder.remove_reagent(R.id, R.custom_metabolism)
+		var/is_OD
+		var/is_COD
+		if(R.overdose && R.volume >= R.overdose)
+			is_OD = 1
+			if(R.overdose_critical && R.volume > R.overdose_critical)
+				is_COD = 1
+		for(var/P in R.properties)
+			var/potency = R.properties[P]
+			if(!potency) continue
+			switch(P)
+				if(PROPERTY_NEUROCRYOGENIC)
+					if(is_OD)
+						bodytemperature = max(bodytemperature-5*potency,0)
+						if(is_COD)
+							adjustBrainLoss(5 * potency)
+					else
+						revive_grace_period += SECONDS_5 * potency

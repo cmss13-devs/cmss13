@@ -19,8 +19,8 @@
 	)
 	blood_level = 2
 
-	min_duration = 60
-	max_duration = 80
+	min_duration = REMOVE_OBJECT_MIN_DURATION
+	max_duration = REMOVE_OBJECT_MAX_DURATION
 
 /datum/surgery_step/internal/remove_embryo/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected, checks_only)
 	if(target_zone != "chest")
@@ -134,8 +134,8 @@
 	/obj/item/tool/screwdriver = 70, \
 	)
 
-	min_duration = 60
-	max_duration = 80
+	min_duration = FIX_ORGAN_MIN_DURATION
+	max_duration = FIX_ORGAN_MAX_DURATION
 
 /datum/surgery_step/internal/fix_organ_robotic/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected, checks_only)
 	if(..())
@@ -183,8 +183,8 @@
 	/obj/item/shard = 50, 		\
 	)*/
 
-	min_duration = 60
-	max_duration = 80
+	min_duration = SCALPEL_MIN_DURATION
+	max_duration = SCALPEL_MAX_DURATION
 
 /datum/surgery_step/internal/detach_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected, checks_only)
 	if(!..())
@@ -247,8 +247,8 @@
 	/obj/item/tool/kitchen/utensil/fork = 20
 	)*/
 
-	min_duration = 60
-	max_duration = 80
+	min_duration = SCALPEL_MIN_DURATION
+	max_duration = SCALPEL_MAX_DURATION
 
 /datum/surgery_step/internal/remove_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected, checks_only)
 	if(!..())
@@ -329,8 +329,8 @@
 /datum/surgery_step/internal/replace_organ
 	allowed_tools = list(/obj/item/organ = 100)
 
-	min_duration = 60
-	max_duration = 80
+	min_duration = IMPLANT_MIN_DURATION
+	max_duration = IMPLANT_MAX_DURATION
 
 /datum/surgery_step/internal/replace_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected, checks_only)
 
@@ -426,8 +426,8 @@
 	/obj/item/stack/cable_coil = 75
 	)
 
-	min_duration = 60
-	max_duration = 80
+	min_duration = FIXVEIN_MIN_DURATION
+	max_duration = FIXVEIN_MAX_DURATION
 
 /datum/surgery_step/internal/attach_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected, checks_only)
 	if(!..())

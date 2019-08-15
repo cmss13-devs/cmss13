@@ -63,6 +63,7 @@
 	desc = "A gross, oozing alien of some kind."
 	icon = 'icons/Xeno/xenomorph_48x48.dmi'
 	icon_state = "Spitter Walking"
+	plasma_types = list(PLASMA_NEUROTOXIN)
 	pixel_x = -12
 	old_x = -12
 

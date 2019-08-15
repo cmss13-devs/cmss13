@@ -69,32 +69,26 @@ update_flag
 32 = tank_pressure go boom.
 */
 
-	if (src.destroyed)
-		src.overlays = 0
-		src.icon_state = text("[]-1", src.canister_color)
+	if (destroyed)
+		overlays = 0
+		icon_state = text("[]-1", src.canister_color)
 		return
 
 	if(icon_state != "[canister_color]")
 		icon_state = "[canister_color]"
 
-	src.overlays = 0
+	overlays = 0
 
 	return
 
 
-/obj/machinery/portable_atmospherics/canister/proc/healthcheck()
-	if(destroyed)
-		return 1
-
-	if (src.health <= 10)
-		src.destroyed = 1
+/obj/machinery/portable_atmospherics/canister/update_health(var/damage = 0)
+	..()
+	if (health <= 20)
+		destroyed = 1
 		playsound(src.loc, 'sound/effects/spray.ogg', 25, 1, 5)
-		src.density = 0
+		density = 0
 		update_icon()
-
-		return 1
-	else
-		return 1
 
 /obj/machinery/portable_atmospherics/canister/process()
 	if (destroyed)
@@ -104,18 +98,15 @@ update_flag
 
 /obj/machinery/portable_atmospherics/canister/bullet_act(var/obj/item/projectile/Proj)
 	if(Proj.ammo.damage)
-		src.health -= round(Proj.ammo.damage / 2)
-		healthcheck()
+		update_health(round(Proj.ammo.damage / 2))
 	..()
 	return 1
 
 /obj/machinery/portable_atmospherics/canister/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(!istype(W, /obj/item/tool/wrench) && !istype(W, /obj/item/tank) && !istype(W, /obj/item/device/analyzer) && !istype(W, /obj/item/device/pda))
 		visible_message(SPAN_DANGER("[user] hits the [src] with a [W]!"))
-		src.health -= W.force
+		update_health(W.force)
 		src.add_fingerprint(user)
-		healthcheck()
-
 	..()
 
 	nanomanager.update_uis(src) // Update all NanoUIs attached to src

@@ -51,7 +51,7 @@
 
 /proc/get_marine_jobs()
 		return list(
-				"Commander",
+				"Commanding Officer",
 				"Executive Officer",
 				"Staff Officer",
 				"Pilot Officer",

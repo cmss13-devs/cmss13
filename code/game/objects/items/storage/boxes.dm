@@ -141,6 +141,22 @@
 		new /obj/item/reagent_container/glass/beaker(src)
 		new /obj/item/reagent_container/glass/beaker(src)
 
+/obj/item/storage/box/sprays
+	name = "box of empty spray bottles"
+	icon_state = "spray"
+	can_hold = list(/obj/item/reagent_container/spray)
+	w_class = SIZE_MEDIUM
+
+	New()
+		..()
+		new /obj/item/reagent_container/spray(src)
+		new /obj/item/reagent_container/spray(src)
+		new /obj/item/reagent_container/spray(src)
+		new /obj/item/reagent_container/spray(src)
+		new /obj/item/reagent_container/spray(src)
+		new /obj/item/reagent_container/spray(src)
+		new /obj/item/reagent_container/spray(src)
+
 /obj/item/storage/box/flashbangs
 	name = "box of flashbangs (WARNING)"
 	desc = "<B>WARNING: These devices are extremely dangerous and can cause blindness or deafness in repeated use.</B>"

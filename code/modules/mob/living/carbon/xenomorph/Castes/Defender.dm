@@ -42,6 +42,7 @@
 	desc = "A alien with an armored head crest."
 	icon = 'icons/Xeno/xenomorph_64x64.dmi'
 	icon_state = "Defender Walking"
+	plasma_types = list(PLASMA_CHITIN)
 	pixel_x = -16
 	old_x = -16
 	tier = 1

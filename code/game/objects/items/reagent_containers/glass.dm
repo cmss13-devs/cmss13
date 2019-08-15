@@ -36,6 +36,7 @@
 		/obj/machinery/sleeper,
 		/obj/machinery/smartfridge/,
 		/obj/machinery/biogenerator,
+		/obj/machinery/reagent_analyzer,
 		/obj/machinery/constructable_frame)
 
 	New()
@@ -226,6 +227,30 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25)
 	flags_atom = FPRINT|OPENCONTAINER
+
+/obj/item/reagent_container/glass/beaker/vial/random
+	var/tier
+	New()
+		..()
+		var/random_chem = pick(	prob(3);pick(chemical_gen_classes_list["C1"]),\
+								prob(5);pick(chemical_gen_classes_list["C2"]),\
+								prob(7);pick(chemical_gen_classes_list["C3"]),\
+								prob(10);pick(chemical_gen_classes_list["C4"]),\
+								prob(15);pick(chemical_gen_classes_list["C5"]),\
+								prob(25);pick(chemical_gen_classes_list["T1"]),\
+								prob(15);pick(chemical_gen_classes_list["T2"]),\
+								prob(10);pick(chemical_gen_classes_list["T3"]),\
+								prob(5);pick(chemical_gen_classes_list["T4"]),\
+								prob(15);"")
+		if(random_chem)
+			reagents.add_reagent(random_chem,pick(5,30))
+			update_icon()
+
+/obj/item/reagent_container/glass/beaker/vial/random/good
+
+	New()
+		tier = pick("C5","T4")
+		..()
 
 /obj/item/reagent_container/glass/beaker/cryoxadone
 	New()

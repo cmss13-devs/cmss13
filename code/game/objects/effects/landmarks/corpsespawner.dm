@@ -250,7 +250,7 @@
 	corpseidaccess = "Captain"
 
 /obj/effect/landmark/corpsespawner/commander
-	name = "Commander"
+	name = "Commanding Officer"
 	corpseuniform = /obj/item/clothing/under/rank/centcom_commander
 	corpsesuit = /obj/item/clothing/suit/armor/bulletproof
 	corpseglasses = /obj/item/clothing/glasses/eyepatch
@@ -260,7 +260,7 @@
 	corpseshoes = /obj/item/clothing/shoes/swat
 	corpsepocket1 = /obj/item/tool/lighter/zippo
 	corpseid = 1
-	corpseidjob = "Commander"
+	corpseidjob = "Commanding Officer"
 	corpseidaccess = "Captain"
 
 /obj/effect/landmark/corpsespawner/PMC

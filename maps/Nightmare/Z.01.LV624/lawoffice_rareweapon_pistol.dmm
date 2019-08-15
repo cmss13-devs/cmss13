@@ -46,6 +46,7 @@
 /area/lv624/lazarus/internal_affairs)
 "aj" = (
 /obj/structure/bookcase,
+/obj/item/paper/research_notes,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "ak" = (

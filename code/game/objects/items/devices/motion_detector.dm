@@ -29,6 +29,7 @@
 	var/recycletime = 120
 	var/long_range_cooldown = 2
 	var/blip_type = "detector"
+	var/iff_signal = ACCESS_IFF_MARINE			//allows making PMC versions of MD.
 	actions_types = list(/datum/action/item_action)
 
 /obj/item/device/motiondetector/update_icon()
@@ -130,8 +131,9 @@
 		if(isrobot(M)) continue
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(istype(H.wear_ear, /obj/item/device/radio/headset/almayer))
-				continue //device detects marine headset and ignores the wearer.
+			if(H.get_target_lock(iff_signal))
+				continue
+
 		ping_count++
 
 		if(human_user)
@@ -186,7 +188,7 @@
 	desc = "A device that detects objects that may be useful for intel gathering. You can switch modes with Alt+Click."
 	icon_state = "datadetector"
 	blip_type = "data"
-	var/objects_to_detect = list(/obj/item/document_objective, /obj/item/disk/objective, /obj/item/device/mass_spectrometer/adv/objective, /obj/item/device/reagent_scanner/adv/objective, /obj/item/device/healthanalyzer/objective, /obj/item/device/autopsy_scanner/objective, /obj/item/device/autopsy_scanner/objective)
+	var/objects_to_detect = list(/obj/item/document_objective, /obj/item/disk/objective, /obj/item/device/mass_spectrometer/adv/objective, /obj/item/device/reagent_scanner/adv/objective, /obj/item/device/healthanalyzer/objective, /obj/item/device/autopsy_scanner/objective, /obj/item/device/autopsy_scanner/objective, /obj/item/paper/research_notes, /obj/item/reagent_container/glass/beaker/vial/random)
 
 /obj/item/device/motiondetector/intel/update_icon()
 	if (active)

@@ -49,6 +49,7 @@
 
 
 /obj/item/weapon/gun/rifle/sniper/M42A/set_gun_config_values()
+	..()
 	fire_delay = config.high_fire_delay*3
 	burst_amount = config.min_burst_value
 	accuracy_mult = config.base_hit_accuracy_mult * 3 //you HAVE to be able to hit
@@ -84,6 +85,7 @@
 	update_icon()
 
 /obj/item/weapon/gun/rifle/sniper/M42B/set_gun_config_values()
+	..()
 	fire_delay = config.max_fire_delay * 8 //Big boy damage, but it takes a lot of time to fire a shot.
 	burst_amount = config.min_burst_value
 	accuracy_mult = config.base_hit_accuracy_mult + 2*config.max_hit_accuracy_mult
@@ -124,6 +126,7 @@
 	update_icon()
 
 /obj/item/weapon/gun/rifle/sniper/elite/set_gun_config_values()
+	..()
 	fire_delay = config.high_fire_delay*5
 	burst_amount = config.min_burst_value
 	accuracy_mult = config.base_hit_accuracy_mult + config.max_hit_accuracy_mult
@@ -176,6 +179,7 @@
 	update_icon()
 
 /obj/item/weapon/gun/rifle/sniper/svd/set_gun_config_values()
+	..()
 	fire_delay = config.mhigh_fire_delay*2
 	burst_amount = config.low_burst_value
 	accuracy_mult = config.base_hit_accuracy_mult
@@ -221,6 +225,7 @@
 
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
+	..()
 	fire_delay = config.high_fire_delay
 	burst_amount = config.med_burst_value
 	burst_delay = config.mlow_fire_delay
@@ -272,7 +277,6 @@
 	var/drain = 11
 	var/range = 12
 	var/angle = 2
-	var/powerpack_reload = 0
 	var/list/angle_list = list(180,135,90,60,30)
 	var/detector_range = 14
 	var/ping_count = 0
@@ -281,6 +285,7 @@
 	var/recycletime = 120
 	var/long_range_cooldown = 2
 	var/blip_type = "detector"
+	var/iff_signal = ACCESS_IFF_MARINE
 	gun_skill_category = GUN_SKILL_SMARTGUN
 	attachable_allowed = list(
 						/obj/item/attachable/heavy_barrel,
@@ -298,6 +303,7 @@
 
 
 /obj/item/weapon/gun/smartgun/set_gun_config_values()
+	..()
 	fire_delay = config.min_fire_delay
 	burst_amount = config.med_burst_value
 	burst_delay = config.low_burst_value
@@ -322,6 +328,8 @@
 		drain += 10
 	if(!iff_enabled)
 		drain -= 10
+	if(!powerpack)
+		link_powerpack(usr)
 
 /obj/item/weapon/gun/smartgun/verb/vtoggle_lethal_mode()
 	set category = "Smartgun"
@@ -329,14 +337,18 @@
 
 	if(isobserver(usr) || isXeno(usr))
 		return
+	if(!powerpack)
+		link_powerpack(usr)
 	toggle_lethal_mode(usr)
-
+	
 /obj/item/weapon/gun/smartgun/verb/vtoggle_ammo_type()
 	set category = "Smartgun"
 	set name = "Toggle Ammo Type"
 
 	if(isobserver(usr) || isXeno(usr))
 		return
+	if(!powerpack)
+		link_powerpack(usr)
 	toggle_ammo_type(usr)
 
 /obj/item/weapon/gun/smartgun/verb/vtoggle_recoil_compensation()
@@ -345,6 +357,8 @@
 
 	if(isobserver(usr) || isXeno(usr))
 		return
+	if(!powerpack)
+		link_powerpack(usr)
 	toggle_recoil_compensation(usr)
 
 /obj/item/weapon/gun/smartgun/verb/vtoggle_accuracy_improvement()
@@ -353,6 +367,8 @@
 	
 	if(isobserver(usr) || isXeno(usr))
 		return
+	if(!powerpack)
+		link_powerpack(usr)
 	toggle_accuracy_improvement(usr)
 
 /obj/item/weapon/gun/smartgun/verb/vtoggle_auto_fire()
@@ -361,6 +377,8 @@
 	
 	if(isobserver(usr) || isXeno(usr))
 		return
+	if(!powerpack)
+		link_powerpack(usr)
 	toggle_auto_fire(usr)
 
 /obj/item/weapon/gun/smartgun/verb/vtoggle_motion_detector()
@@ -369,79 +387,10 @@
 	
 	if(isobserver(usr) || isXeno(usr))
 		return
+	if(!powerpack)
+		link_powerpack(usr)
 	toggle_motion_detector(usr)
 
-/obj/item/weapon/gun/smartgun/verb/vtoggle_reload_mode()
-	set category = "Smartgun"
-	set name = "Toggle Reload Mode"
-	
-	if(isobserver(usr) || isXeno(usr))
-		return
-	toggle_reload_mode(usr)
-
-/obj/item/weapon/gun/smartgun/reload(mob/user, obj/item/ammo_magazine/magazine)
-	if(powerpack_reload)
-		to_chat(user, "\icon[src] You have to change reload modes to reload manualy.")
-		return
-	if(!powerpack_reload)
-		if(!magazine.mob_can_equip(user, WEAR_WAIST ,1))
-			to_chat(user, "\icon[src] Make sure the magazine can be equipped to your belt.")
-			return
-		..()
-		user.equip_to_slot_if_possible(magazine, WEAR_WAIST, 1, 0, 0, 1, 1)
-		
-/obj/item/weapon/gun/smartgun/unload(mob/living/carbon/human/user, reload_override, drop_override, loc_override = 1)
-	if(powerpack_reload)
-		to_chat(user, "\icon[src] You have to change reload modes to reload manualy.")
-		return
-	else
-		if(current_mag)
-			src.current_mag.flags_inventory &= ~CANTSTRIP
-			src.current_mag.flags_item &= ~NODROP
-			if(istype(user))
-				user.belt = null
-		..()
-
-
-/obj/item/weapon/gun/smartgun/proc/toggle_reload_mode(mob/user)
-	if(!powerpack)
-		link_powerpack(user)
-	if(current_mag && !istype(current_mag, /obj/item/ammo_magazine/smartgun/internal))
-		to_chat(user, "\icon[src] You must unload the gun before toggling reload mode.")
-		return
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
-	powerpack_reload = !powerpack_reload
-	if(reload_mode(user))
-		to_chat(user, "\icon[src] You [powerpack_reload? "<B>enable</b>" : "<B>disable</b>"] the [src]'s powerpack reloading belt. You will [powerpack_reload ? "reload through the powerpack." : "reload using magazines."]")
-
-/obj/item/weapon/gun/smartgun/proc/reload_mode(mob/living/user)
-	var/obj/item/smartgun_powerpack/pp = powerpack
-	if(!(istype(pp, /obj/item/smartgun_powerpack)))
-		to_chat(user, "\icon[src] Failure locating powerpack. Make sure you are wearing a powerpack. And fire a round if you are.")
-		return FALSE
-	if(powerpack_reload)
-		if(current_mag)
-			src.current_mag.flags_inventory &= ~CANTSTRIP
-			src.current_mag.flags_item &= ~NODROP
-		shells_fired_now = 0
-		flags_gun_features |= GUN_INTERNAL_MAG
-		if(!current_mag)
-			var/obj/item/ammo_magazine/smartgun/internal/A = new(src)
-			current_mag = A
-			auto_reload(user, powerpack)
-		return TRUE
-	if(!powerpack_reload && pp)
-		shells_fired_now = 0
-		pp.rounds_remaining += current_mag.current_rounds
-		qdel(current_mag)
-		flags_gun_features &= ~GUN_INTERNAL_MAG
-		return TRUE
-
-/obj/item/weapon/gun/smartgun/proc/auto_reload(mob/smart_gunner, obj/item/smartgun_powerpack/power_pack)
-	set waitfor = 0
-	sleep(5)
-	if(power_pack && power_pack.loc)
-		power_pack.attack_self(smart_gunner)
 
 
 /obj/item/weapon/gun/smartgun/able_to_fire(mob/living/user)
@@ -462,21 +411,19 @@
 //	if(active_attachable) active_attachable = null
 	return ready_in_chamber()
 
-/obj/item/weapon/gun/smartgun/reload_into_chamber(mob/user)
-	var/mob/living/carbon/human/smart_gunner = user
-	var/obj/item/smartgun_powerpack/power_pack = smart_gunner.back
-	if(istype(power_pack)) //I don't know how it would break, but it is possible.
-		if(shells_fired_now >= shells_fired_max && power_pack.rounds_remaining > 0 && powerpack_reload) // If shells fired exceeds shells needed to reload, and we have ammo.
-			auto_reload(smart_gunner, power_pack)
-		else shells_fired_now++
-
-	return current_mag.current_rounds
 
 /obj/item/weapon/gun/smartgun/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund) current_mag.current_rounds++
 	return 1
 
+/obj/item/weapon/gun/smartgun/unique_action(mob/user)
+	if(isobserver(usr) || isXeno(usr))
+		return
+	if(!powerpack)
+		link_powerpack(usr)
+	toggle_ammo_type(usr)
+	
 /obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
 	if(!iff_enabled)
 		to_chat(user, "\icon[src] Can't switch ammunition type when the [src]'s fire restriction is disabled.")
@@ -611,8 +558,8 @@
 		if(isrobot(M)) continue
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(istype(H.wear_ear, /obj/item/device/radio/headset/almayer))
-				continue //device detects marine headset and ignores the wearer.
+			if(H.get_target_lock(iff_signal))
+				continue
 		ping_count++
 
 		if(human_user)
@@ -777,6 +724,7 @@
 	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
 /obj/item/weapon/gun/smartgun/dirty/set_gun_config_values()
+	..()
 	fire_delay = config.low_fire_delay
 	burst_amount = config.med_burst_value
 	burst_delay = config.low_fire_delay
@@ -799,6 +747,7 @@
 
 
 /obj/item/weapon/gun/smartgun/dirty/elite/set_gun_config_values()
+	..()
 	fire_delay = config.mlow_fire_delay
 	burst_amount = config.high_burst_value
 	burst_delay = config.min_fire_delay
@@ -857,6 +806,7 @@
 	grenades += new /obj/item/explosive/grenade/HE(src)
 
 /obj/item/weapon/gun/launcher/m92/set_gun_config_values()
+	..()
 	fire_delay = config.max_fire_delay*4
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
@@ -974,6 +924,7 @@
 			grenade = new /obj/item/explosive/grenade/HE(src)
 
 /obj/item/weapon/gun/launcher/m81/set_gun_config_values()
+	..()
 	fire_delay = config.max_fire_delay * 1.5
 	accuracy_mult = config.base_hit_accuracy_mult
 	scatter = config.med_scatter_value
@@ -1107,6 +1058,7 @@
 	smoke.attach(src)
 
 /obj/item/weapon/gun/launcher/rocket/set_gun_config_values()
+	..()
 	fire_delay = config.high_fire_delay*2
 	accuracy_mult = config.base_hit_accuracy_mult
 	scatter = config.med_scatter_value
@@ -1232,6 +1184,7 @@
 	flags_gun_features = GUN_INTERNAL_MAG|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
 /obj/item/weapon/gun/launcher/rocket/m57a4/set_gun_config_values()
+	..()
 	fire_delay = config.mhigh_fire_delay
 	burst_delay = config.med_fire_delay
 	burst_amount = config.high_burst_value
@@ -1256,6 +1209,7 @@
 	var/popped_state = "m82f_e" //Icon state that represents an unloaded flare gun. The tube's just popped out.
 
 /obj/item/weapon/gun/flare/set_gun_config_values()
+	..()
 	fire_delay = config.min_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	scatter = 0

@@ -59,7 +59,7 @@
 	if(!armed)
 		user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."), \
 			SPAN_NOTICE("You start deploying [src]."))
-		if(!do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		if(!do_after(user, 40, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			user.visible_message(SPAN_NOTICE("[user] stops deploying [src]."), \
 				SPAN_NOTICE("You stop deploying \the [src]."))
 			return
@@ -69,7 +69,7 @@
 		armed = 1
 		playsound(src.loc, 'sound/weapons/mine_armed.ogg', 25, 1)
 		icon_state += "_armed"
-		user.drop_held_item()
+		user.drop_held_item(src)
 		dir = user.dir //The direction it is planted in is the direction the user faces at that time
 		var/tripwire_loc = get_turf(get_step(loc, dir))
 		tripwire = new /obj/effect/mine_tripwire(tripwire_loc)
@@ -82,7 +82,7 @@
 			user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
 			SPAN_NOTICE("You start disarming [src]."))
 			disarming = 1
-			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 				user.visible_message("<span class='warning'>[user] stops disarming [src].", \
 				"<span class='warning'>You stop disarming [src].")
 				disarming = 0

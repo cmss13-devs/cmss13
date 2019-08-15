@@ -357,7 +357,7 @@
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/living/commandbunks
-	name = "\improper Commander's Bunk"
+	name = "\improper Commanding Officer's Bunk"
 	icon_state = "livingspace"
 	fake_zlevel = 1 // upperdeck
 

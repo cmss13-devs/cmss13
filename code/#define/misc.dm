@@ -30,6 +30,11 @@
 // Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5
 
+//construction flags
+#define CONSTRUCTION_STATE_BEGIN    0
+#define CONSTRUCTION_STATE_PROGRESS 1
+#define CONSTRUCTION_STATE_FINISHED 2
+
 // *************************************** //
 // DO_AFTER FLAGS
 // These flags denote behaviors related to timed actions.

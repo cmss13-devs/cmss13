@@ -49,7 +49,7 @@
 	return "<span class='objectivebig'>In Progress!</span>"
 
 /datum/cm_objective/proc/get_readable_progress()
-	var/dat = "<span class='objectivebig'>[name]: </span>"
+	var/dat = "<b>[name]:</b> "
 	return dat + get_completion_status() + "<br>"
 
 /datum/cm_objective/proc/get_clue() //TODO: change this to an formatted list like above -spookydonut

@@ -76,7 +76,6 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	icon = 'icons/obj/doors/Doorint.dmi'
 	icon_state = "door_closed"
 	power_channel = ENVIRON
-	explosion_resistance = 15
 
 	var/aiControlDisabled = 0 //If 1, AI control is disabled until the AI hacks back in and disables the lock. If 2, the AI has bypassed the lock. If -1, the control is enabled but the AI had bypassed it earlier, so if it is disabled again the AI would have no trouble getting back in.
 	var/hackProof = 0 // if 1, this door can't be hacked by the AI
@@ -181,6 +180,15 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	var/location = get_turf(src)
 	if(take_damage(exp_damage)) // destroyed by explosion, shards go flying
 		create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light)
+
+/obj/machinery/door/airlock/get_explosion_resistance()
+	if(density)
+		if(unacidable)
+			return 1000000
+		else
+			return (damage_cap-damage)/EXPLOSION_DAMAGE_MULTIPLIER_AIRLOCK //this should exactly match the amount of damage needed to destroy the door
+	else
+		return 0
 
 
 /obj/machinery/door/airlock/bullet_act(var/obj/item/projectile/Proj)
@@ -1024,28 +1032,29 @@ About the new airlock wires panel:
 		return src.attack_hand(user)
 	else if(istype(C, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/G = C
-		if(istype(G.muzzle, /obj/item/attachable/bayonet))
-			if(arePowerSystemsOn())
-				to_chat(user, SPAN_WARNING("The airlock's motors resist your efforts to force it."))
-			else if(locked)
-				to_chat(user, SPAN_WARNING("The airlock's bolts prevent it from being forced."))
-			else if(welded)
-				to_chat(user, SPAN_WARNING("The airlock is welded shut."))
-			else if(!operating)
-				spawn(0)
-					if(density)
-						to_chat(user, SPAN_NOTICE("You start forcing the airlock open with the bayonet."))
-						if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-							open(1)
-					else
-						to_chat(user, SPAN_NOTICE("You start forcing the airlock shut with the bayonet."))
-						if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-							close(1)
-					if(rand(0,9) < 1)
-						G.muzzle = null
-						G.update_attachable("muzzle")
-						playsound(loc, 'sound/effects/snap.ogg', 25, 1)
-						to_chat(user, SPAN_DANGER("Your bayonet breaks!"))
+		for(var/slot in G.attachments)
+			if(istype(G.attachments[slot], /obj/item/attachable/bayonet))
+				if(arePowerSystemsOn())
+					to_chat(user, SPAN_WARNING("The airlock's motors resist your efforts to force it."))
+				else if(locked)
+					to_chat(user, SPAN_WARNING("The airlock's bolts prevent it from being forced."))
+				else if(welded)
+					to_chat(user, SPAN_WARNING("The airlock is welded shut."))
+				else if(!operating)
+					spawn(0)
+						if(density)
+							to_chat(user, SPAN_NOTICE("You start forcing the airlock open with [G.attachments[slot]]."))
+							if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+								open(1)
+						else
+							to_chat(user, SPAN_NOTICE("You start forcing the airlock shut with [G.attachments[slot]]."))
+							if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+								close(1)
+						if(rand(0,9) < 1)
+							G.attachments[slot] = null
+							G.update_attachable(slot)
+							playsound(loc, 'sound/effects/snap.ogg', 25, 1)
+							to_chat(user, SPAN_DANGER("Your [G.attachments[slot]] breaks!"))
 
 	else if(C.pry_capable)
 		if(C.pry_capable == IS_PRY_CAPABLE_CROWBAR && src.p_open && (operating == -1 || (density && welded && operating != 1 && !src.arePowerSystemsOn() && !src.locked)) )

@@ -87,7 +87,7 @@
 //-------------------------------------------------------
 //SMARTGUN
 /obj/item/ammo_magazine/smartgun
-	name = "Smartgun drum"
+	name = "smartgun drum"
 	caliber = "10x28mm"
 	max_rounds = 500 //Should be 500 in total.
 	icon_state = "m57"

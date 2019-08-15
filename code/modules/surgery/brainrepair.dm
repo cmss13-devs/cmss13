@@ -23,8 +23,8 @@
 	/obj/item/tool/kitchen/utensil/fork = 20
 	)
 
-	min_duration = BONECHIPS_REMOVAL_MIN_DURATION
-	max_duration = BONECHIPS_REMOVAL_MAX_DURATION
+	min_duration = REMOVE_OBJECT_MIN_DURATION
+	max_duration = REMOVE_OBJECT_MAX_DURATION
 	dmg_max = BONECHIPS_MAX_DAMAGE //need to use the FixOVein past this point
 
 /datum/surgery_step/brain/bone_chips/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
@@ -53,8 +53,8 @@
 	/obj/item/stack/cable_coil = 75
 	)
 
-	min_duration = HEMOTOMA_MIN_DURATION
-	max_duration = HEMOTOMA_MAX_DURATION
+	min_duration = FIXVEIN_MIN_DURATION
+	max_duration = FIXVEIN_MAX_DURATION
 	dmg_min = BONECHIPS_MAX_DAMAGE //below that, you use the hemostat
 
 
@@ -69,6 +69,9 @@
 	var/datum/internal_organ/brain/sponge = target.internal_organs_by_name["brain"]
 	if(sponge)
 		sponge.damage = BONECHIPS_MAX_DAMAGE
+	target.disabilities &= ~NERVOUS
+	target.sdisabilities &= ~DEAF
+	target.sdisabilities &= ~MUTE
 
 /datum/surgery_step/brain/hematoma/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, bruising [target]'s brain with \the [tool]!"), \

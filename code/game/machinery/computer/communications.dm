@@ -147,8 +147,8 @@ var/global/cooldown_message = 0 //Based on world.time.
 				cooldown_message = world.time
 
 		if("award")
-			if(!usr.mind || usr.mind.assigned_role != "Commander")
-				to_chat(usr, SPAN_WARNING("Only the Commander can award medals."))
+			if(!usr.mind || usr.mind.assigned_role != "Commanding Officer")
+				to_chat(usr, SPAN_WARNING("Only the Commanding Officer can award medals."))
 				return
 			if(give_medal_award(loc))
 				visible_message(SPAN_NOTICE("[src] prints a medal."))

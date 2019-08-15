@@ -666,7 +666,20 @@
 //Xenomorphs can't use machinery, not even the "intelligent" ones
 //Exception is Queen and shuttles, because plot power
 /obj/machinery/attack_alien(mob/living/carbon/Xenomorph/M)
-	to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
+	if(health <= 0)
+		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
+	else
+		M.animation_attack_on(src)
+		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+		update_health(rand(M.melee_damage_lower, M.melee_damage_upper))
+		if(health <= 0)
+			M.visible_message(SPAN_DANGER("\The [M] slices [src] apart!"), \
+			SPAN_DANGER("You slice [src] apart!"), null, 5)
+			if(!unacidable)
+				qdel(src)
+		else
+			M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
+			SPAN_DANGER("You slash [src]!"), null, 5)
 
 /datum/shuttle/ferry/marine/proc/hijack(mob/living/carbon/Xenomorph/M)
 	if(!queen_locked) //we have not hijacked it yet
@@ -843,8 +856,6 @@
 		else
 			M.visible_message(SPAN_DANGER("\The [M] smashes \the [src]!"), \
 			SPAN_DANGER("You smash \the [src]!"), null, 5)
-	else
-		return M.UnarmedAttack(src)
 
 /obj/structure/girder/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(M.caste.tier < 2 || unacidable)

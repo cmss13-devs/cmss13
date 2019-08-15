@@ -475,6 +475,8 @@
 	var/image/gun_underlay //The underlay we will use.
 	var/sheatheSound = 'sound/weapons/gun_pistol_sheathe.ogg'
 	var/drawSound = 'sound/weapons/gun_pistol_draw.ogg'
+	var/icon_x = 0
+	var/icon_y = 0
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
 		/obj/item/ammo_magazine/pistol
@@ -509,6 +511,8 @@
 		*/
 		playsound(src,drawSound, 15, 1)
 		gun_underlay = image(icon, src, current_gun.icon_state)
+		gun_underlay.pixel_x = icon_x
+		gun_underlay.pixel_y = icon_y
 		icon_state += "_g"
 		item_state = icon_state
 		underlays += gun_underlay
@@ -553,8 +557,8 @@
 			gun_belt.update_gun_icon()
 
 /obj/item/storage/belt/gun/m4a3
-	name = "\improper M276 pattern M4A3-1911 holster rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version has a holster assembly that allows one to carry the M4A3 or the M1911 comfortably secure. It also contains side pouches that can store 9mm or .45 magazines."
+	name = "\improper M276 pattern general pistol holster rig"
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version has a holster assembly that allows one to carry the most common pistols. It also contains side pouches that can store 9mm or .45 magazines."
 	storage_slots = 7
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
@@ -568,10 +572,10 @@
 /obj/item/storage/belt/gun/m4a3/full/New()
 	..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/m4a3(src)
-	new /obj/item/ammo_magazine/pistol/hp(src)
-	new /obj/item/ammo_magazine/pistol/extended(src)
-	new /obj/item/ammo_magazine/pistol/extended(src)
-	new /obj/item/ammo_magazine/pistol/extended(src)
+	new /obj/item/ammo_magazine/pistol(src)
+	new /obj/item/ammo_magazine/pistol(src)
+	new /obj/item/ammo_magazine/pistol(src)
+	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
 	new_gun.on_enter_storage(src)
@@ -579,23 +583,23 @@
 /obj/item/storage/belt/gun/m4a3/commander/New()
 	..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/m4a3/custom(src)
-	new /obj/item/ammo_magazine/pistol/hp(src)
 	new /obj/item/ammo_magazine/pistol/ap(src)
 	new /obj/item/ammo_magazine/pistol/ap(src)
 	new /obj/item/ammo_magazine/pistol/ap(src)
-	new /obj/item/ammo_magazine/pistol/extended(src)
-	new /obj/item/ammo_magazine/pistol/extended(src)
+	new /obj/item/ammo_magazine/pistol(src)
+	new /obj/item/ammo_magazine/pistol(src)
+	new /obj/item/ammo_magazine/pistol(src)
 	new_gun.on_enter_storage(src)
 
-/obj/item/storage/belt/gun/m4a3/vp70/New()
+/obj/item/storage/belt/gun/m4a3/mod88/New()
 	..()
-	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/vp70(src)
-	new /obj/item/ammo_magazine/pistol/vp70(src)
-	new /obj/item/ammo_magazine/pistol/vp70(src)
-	new /obj/item/ammo_magazine/pistol/vp70(src)
-	new /obj/item/ammo_magazine/pistol/vp70(src)
-	new /obj/item/ammo_magazine/pistol/vp70(src)
-	new /obj/item/ammo_magazine/pistol/vp70(src)
+	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
 	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/m4a3/vp78/New()
@@ -641,6 +645,7 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, along with three pouches for speedloaders. This one is aging poorly, and seems to be surplus equipment. This one is stamped '3rd 'Dust Raiders' Battalion'."
 	icon_state = "s_cmateba_holster"
 	item_state = "s_cmateba_holster"
+	storage_slots = 6
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/weapon/gun/revolver/mateba,
@@ -650,6 +655,7 @@
 /obj/item/storage/belt/gun/mateba/full/New()
 	..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba(src)
+	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
@@ -720,6 +726,7 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the SU-6 smartpistol."
 	icon_state = "smartpistol_holster"
 	item_state = "smartpistol_holster"
+	storage_slots = 6
 	can_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart
@@ -733,6 +740,7 @@
 /obj/item/storage/belt/gun/smartpistol/full/New()
 	..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/smart(src)
+	new /obj/item/ammo_magazine/pistol/smart(src)
 	new /obj/item/ammo_magazine/pistol/smart(src)
 	new /obj/item/ammo_magazine/pistol/smart(src)
 	new /obj/item/ammo_magazine/pistol/smart(src)
@@ -784,8 +792,12 @@
 	desc = "The M802 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is designed to carry smartgun ammunition, as well as a sidearm."
 	icon_state = "sgbelt"
 	item_state = "sgbelt"
+	icon_x = 6
+	icon_y = 3
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
+		/obj/item/weapon/gun/revolver/m44,
+		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/smartgun
 	)

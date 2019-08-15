@@ -9,8 +9,8 @@
 	/obj/item/weapon/claymore = 75
 	)
 
-	min_duration = 90
-	max_duration = 110
+	min_duration = AMPUTATION_MIN_DURATION
+	max_duration = AMPUTATION_MAX_DURATION
 
 /datum/surgery_step/cut_limb/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected, checks_only)
 	if(!affected)

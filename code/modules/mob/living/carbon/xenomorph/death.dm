@@ -99,7 +99,7 @@
 	callHook("death", list(src, gibbed))
 
 /mob/living/carbon/Xenomorph/gib()
-
+	
 	var/obj/effect/decal/remains/xeno/remains = new(get_turf(src))
 	remains.icon = icon
 	remains.pixel_x = pixel_x //For 2x2.

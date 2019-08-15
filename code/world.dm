@@ -20,7 +20,7 @@ var/global/datum/global_init/init = new ()
 #define RECOMMENDED_VERSION 511
 
 /world/New()
-
+	
 	hub_password = "[config.hub_password]"
 
 	//logs

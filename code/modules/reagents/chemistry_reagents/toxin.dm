@@ -3,13 +3,14 @@
 //////////////////////////Poison stuff///////////////////////
 
 /datum/reagent/toxin
-	name = "Toxin"
+	name = "Generic Toxin"
 	id = "toxin"
-	description = "A toxic chemical."
+	description = "General identification for many similar toxins, sometimes created as a byproduct through chemical reactions."
 	reagent_state = LIQUID
 	color = "#CF3600" // rgb: 207, 54, 0
 	var/toxpwr = 0.7 // Toxins are really weak, but without being treated, last very long.
 	custom_metabolism = 0.1
+	chemclass = CHEM_CLASS_COMMON
 
 	on_mob_life(mob/living/M,alien)
 		. = ..()
@@ -26,6 +27,7 @@
 	description = "A toxic chemical."
 	custom_metabolism = 1
 	toxpwr = 1
+	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/toxin/pttoxin
 	name = "Toxin"
@@ -33,6 +35,7 @@
 	description = "A toxic chemical."
 	custom_metabolism = 1
 	toxpwr = 1
+	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/toxin/sdtoxin
 	name = "Toxin"
@@ -40,6 +43,7 @@
 	description = "A toxic chemical."
 	custom_metabolism = 1
 	toxpwr = 0
+	chemclass = CHEM_CLASS_NONE
 	on_mob_life(mob/living/M,alien)
 		. = ..()
 		if(!.) return
@@ -53,14 +57,16 @@
 	reagent_state = LIQUID
 	color = "#792300" // rgb: 121, 35, 0
 	toxpwr = 1
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/toxin/mutagen
 	name = "Unstable mutagen"
 	id = "mutagen"
-	description = "Might cause unpredictable mutations. Keep away from children."
+	description = "Mutagenic compound used for in experimental botany. Can cause unpredictable mutations in plants, but very lethal to humans. Keep away from children."
 	reagent_state = LIQUID
 	color = "#13BC5E" // rgb: 19, 188, 94
 	toxpwr = 0
+	chemclass = CHEM_CLASS_UNCOMMON
 
 	on_mob_life(mob/living/carbon/M)
 		. = ..()
@@ -71,10 +77,11 @@
 /datum/reagent/toxin/phoron
 	name = "Phoron"
 	id = "phoron"
-	description = "Phoron in its liquid form."
+	description = "A special form of metalic plasma that is not found on Earth. While phoron is highly flammable and extremely toxic, its high energy density makes it one of the best solid fuel alternatives. Liquid phoron is often used for research purposes and in the medical industry a catalyst to many advanced chemicals."
 	reagent_state = LIQUID
 	color = "#E71B00" // rgb: 231, 27, 0
 	toxpwr = 3
+	chemclass = CHEM_CLASS_RARE
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -84,12 +91,13 @@
 /datum/reagent/toxin/lexorin
 	name = "Lexorin"
 	id = "lexorin"
-	description = "Lexorin temporarily stops respiration. Causes tissue damage."
+	description = "Lexorin is an extremely dangerous compound that damages tissue and paralyzes the lungs, effectively stopping respiration. Can be deadly in even small doses. Lexorin is effectively countered by variants of dexalin."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	toxpwr = 0
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_UNCOMMON
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -110,11 +118,12 @@
 /datum/reagent/toxin/cyanide //Fast and Lethal
 	name = "Cyanide"
 	id = "cyanide"
-	description = "A highly toxic chemical."
+	description = "Cyanide is a naturally occuring toxic chemical, that has been used as a mean of killing for centuries because of its immediate effects. Symptoms include nausea, weakness, and difficulty breathing."
 	reagent_state = LIQUID
 	color = "#CF3600" // rgb: 207, 54, 0
 	toxpwr = 4
 	custom_metabolism = 0.4
+	chemclass = CHEM_CLASS_RARE
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -129,6 +138,7 @@
 	reagent_state = LIQUID
 	color = "#CF3600" // rgb: 207, 54, 0
 	toxpwr = 0
+	chemclass = CHEM_CLASS_NONE
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -143,6 +153,7 @@
 	reagent_state = LIQUID
 	color = "#003333" // rgb: 0, 51, 51
 	toxpwr = 2
+	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/toxin/zombiepowder
 	name = "Zombie Powder"
@@ -151,6 +162,7 @@
 	reagent_state = SOLID
 	color = "#669900" // rgb: 102, 153, 0
 	toxpwr = 0.5
+	chemclass = CHEM_CLASS_NONE
 
 	on_mob_life(mob/living/carbon/M)
 		. = ..()
@@ -170,12 +182,13 @@
 /datum/reagent/toxin/mindbreaker
 	name = "Mindbreaker Toxin"
 	id = "mindbreaker"
-	description = "A powerful hallucinogen, it can cause fatal effects in users."
+	description = "A powerful hallucinogenic compound that is illegal under space law. Causes extreme hallucinations and is very addictive. Formerly known as LSD."
 	reagent_state = LIQUID
 	color = "#B31008" // rgb: 139, 166, 233
 	toxpwr = 0
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_UNCOMMON
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -199,35 +212,41 @@
 /datum/reagent/toxin/fertilizer
 	name = "fertilizer"
 	id = "fertilizer"
-	description = "A chemical mix good for growing plants with."
+	description = "Industrial grade inorganic plant fertilizer."
 	reagent_state = LIQUID
 	toxpwr = 0.2 //It's not THAT poisonous.
 	color = "#664330" // rgb: 102, 67, 48
+	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/toxin/fertilizer/eznutrient
 	name = "EZ Nutrient"
 	id = "eznutrient"
+	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/toxin/fertilizer/left4zed
 	name = "Left-4-Zed"
 	id = "left4zed"
+	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/toxin/fertilizer/robustharvest
 	name = "Robust Harvest"
 	id = "robustharvest"
+	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/toxin/dinitroaniline
 	name = "Dinitroaniline"
 	id = "dinitroaniline"
-	description = "A mild toxic mixture to kill pests and weeds."
+	description = "Dinitroanilines are a class of chemical compounds used industrially in the production of pesticides and herbicides."
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/toxin/plantbgone
 	name = "Plant-B-Gone"
 	id = "plantbgone"
-	description = "A harmful toxic mixture to kill plantlife. Do not ingest!"
+	description = "A harmful toxic mixture used to kill plantlife. Very toxic to animals."
 	reagent_state = LIQUID
 	color = "#49002E" // rgb: 73, 0, 46
 	toxpwr = 1
+	chemclass = CHEM_CLASS_NONE
 
 	reaction_obj(var/obj/O, var/volume)
 		if(istype(O,/obj/effect/alien/weeds/))
@@ -261,7 +280,7 @@
 /datum/reagent/toxin/stoxin
 	name = "Soporific"
 	id = "stoxin"
-	description = "An effective hypnotic used to treat insomnia."
+	description = "An effective hypnotic used to treat insomnia. Concentrated soporific is used as a surgical anesthetic."
 	reagent_state = LIQUID
 	color = "#E895CC" // rgb: 232, 149, 204
 	toxpwr = 0
@@ -269,6 +288,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
+	chemclass = CHEM_CLASS_COMMON
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -299,13 +319,14 @@
 /datum/reagent/toxin/chloralhydrate
 	name = "Chloral Hydrate"
 	id = "chloralhydrate"
-	description = "A powerful sedative."
+	description = "Chloral hydrate was the first synthetically produced sedative-hypnotic drug. It is a powerful sedative which causes near instant sleepiness, but can be deadly in large quantities. Often used together with other anesthetics for surgical procedures."
 	reagent_state = SOLID
 	color = "#000067" // rgb: 0, 0, 103
 	toxpwr = 1
 	custom_metabolism = 0.1 //Default 0.2
 	overdose = REAGENTS_OVERDOSE/2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
+	chemclass = CHEM_CLASS_UNCOMMON
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -330,11 +351,12 @@
 /datum/reagent/toxin/potassium_chloride
 	name = "Potassium Chloride"
 	id = "potassium_chloride"
-	description = "A delicious salt that stops the heart when injected into cardiac muscle."
+	description = "A bitter tasting salt that can be used as a spice, but can cause cardiac arrest in larger quantities. It has for this reason been used as a component in lethal injections for many years."
 	reagent_state = SOLID
 	color = "#FFFFFF" // rgb: 255,255,255
 	toxpwr = 0
 	overdose = 30
+	chemclass = CHEM_CLASS_COMMON
 
 	on_mob_life(mob/living/carbon/M)
 		. = ..()
@@ -350,11 +372,12 @@
 /datum/reagent/toxin/potassium_chlorophoride
 	name = "Potassium Chlorophoride"
 	id = "potassium_chlorophoride"
-	description = "A specific chemical based on Potassium Chloride to stop the heart for surgery. Not safe to eat!"
+	description = "A specific chemical based on Potassium Chloride used to stop the heart for surgery. Causes instant cardiac arrest. Not safe to eat!"
 	reagent_state = SOLID
 	color = "#FFFFFF" // rgb: 255,255,255
 	toxpwr = 2
 	overdose = 20
+	chemclass = CHEM_CLASS_UNCOMMON
 
 	on_mob_life(mob/living/carbon/M)
 		. = ..()
@@ -376,6 +399,7 @@
 	custom_metabolism = 0.15 // Sleep toxins should always be consumed pretty fast
 	overdose = REAGENTS_OVERDOSE/2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
+	chemclass = CHEM_CLASS_NONE
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -401,12 +425,13 @@
 /datum/reagent/toxin/acid
 	name = "Sulphuric acid"
 	id = "sacid"
-	description = "A very corrosive mineral acid with the molecular formula H2SO4."
+	description = "A common and very corrosive mineral acid used for many industrial purposes."
 	reagent_state = LIQUID
 	spray_warning = TRUE
 	color = "#DB5008" // rgb: 219, 80, 8
 	toxpwr = 1
 	var/meltprob = 10
+	chemclass = CHEM_CLASS_BASIC
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -476,8 +501,9 @@
 /datum/reagent/toxin/acid/polyacid
 	name = "Polytrinic acid"
 	id = "pacid"
-	description = "Polytrinic acid is a an extremely corrosive chemical substance."
+	description = "An extremely corrosive acid that's capable of disolving a broad range of materials very quickly."
 	reagent_state = LIQUID
 	color = "#8E18A9" // rgb: 142, 24, 169
 	toxpwr = 2
 	meltprob = 30
+	chemclass = CHEM_CLASS_UNCOMMON

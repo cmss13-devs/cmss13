@@ -23,8 +23,8 @@
 	can_infect = 1
 	blood_level = 1
 
-	min_duration = NECRO_REMOVE_MIN_DURATION
-	max_duration = NECRO_REMOVE_MAX_DURATION
+	min_duration = SCALPEL_MIN_DURATION
+	max_duration = SCALPEL_MAX_DURATION
 	necro_step = 0
 
 /datum/surgery_step/necro/fix_dead_tissue/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)

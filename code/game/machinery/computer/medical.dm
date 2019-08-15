@@ -7,6 +7,8 @@
 	req_one_access = list(ACCESS_MARINE_MEDBAY, ACCESS_WY_CORPORATE)
 	circuit = "/obj/item/circuitboard/computer/med_data"
 	var/obj/item/card/id/scan = null
+	var/last_user_name = ""
+	var/last_user_rank = ""
 	var/authenticated = null
 	var/rank = null
 	var/screen = null
@@ -38,6 +40,8 @@
 		if(usr.drop_held_item())
 			O.forceMove(src)
 			scan = O
+			last_user_name = scan.registered_name
+			last_user_rank = scan.rank
 			to_chat(user, "You insert [O].")
 	..()
 
@@ -101,7 +105,8 @@
 					else
 						dat += "<B>Medical Record Lost!</B><BR>"
 						dat += text("<A href='?src=\ref[src];new=1'>New Record</A><BR><BR>")
-					dat += text("\n<A href='?src=\ref[];print_p=1'>Print Record</A><BR>\n<A href='?src=\ref[];screen=2'>Back</A><BR>", src, src)
+					dat += text("\n<A href='?src=\ref[];print_p=1'>Print Record</A><BR>\n", src)
+					dat += text("\n<A href='?src=\ref[];print_bs=1'>Print Latest Bodyscan</A><BR><BR>\n<A href='?src=\ref[];screen=2'>Back</A><BR>", src, src)
 				if(5)
 					dat += "<center><b>Medical Robot Monitor</b></center>"
 					dat += "<a href='?src=\ref[src];screen=1'>Back</a>"
@@ -453,11 +458,12 @@
 						record1 = active1
 					if ((istype(src.active2, /datum/data/record) && data_core.medical.Find(src.active2)))
 						record2 = active2
-					sleep(50)
+					playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
+					sleep(40)
 					var/obj/item/paper/P = new /obj/item/paper( src.loc )
 					P.info = "<CENTER><B>Medical Record</B></CENTER><BR>"
 					if (record1)
-						P.info += text("Name: [] ID: []<BR>\nSex: []<BR>\nAge: []<BR>\nFingerprint: []<BR>\nPhysical Status: []<BR>\nMental Status: []<BR>", record1.fields["name"], record1.fields["id"], record1.fields["sex"], record1.fields["age"], record1.fields["fingerprint"], record1.fields["p_stat"], record1.fields["m_stat"])
+						P.info += text("Name: [] <BR>\nID: []<BR>\nSex: []<BR>\nAge: []<BR>\nFingerprint: []<BR>\nPhysical Status: []<BR>\nMental Status: []<BR>", record1.fields["name"], record1.fields["id"], record1.fields["sex"], record1.fields["age"], record1.fields["fingerprint"], record1.fields["p_stat"], record1.fields["m_stat"])
 						P.name = text("Medical Record ([])", record1.fields["name"])
 					else
 						P.info += "<B>General Record Lost!</B><BR>"
@@ -471,7 +477,32 @@
 					else
 						P.info += "<B>Medical Record Lost!</B><BR>"
 					P.info += "</TT>"
+					P.info += text("<BR><HR><font size = \"1\"><I>This report was printed by [] [].<BR>The USS Almayer,[]/2186, []</I></font><BR>\n<span class=\"paper_field\"></span>",last_user_rank,last_user_name,time2text(world.timeofday, "MM/DD"),worldtime2text())
 					src.printing = null
+			
+			if(href_list["print_bs"])//Prints latest body scan
+				if(!(src.printing))
+					src.printing = 1
+					var/datum/data/record/record
+					if ((istype(src.active1, /datum/data/record) && data_core.general.Find(src.active1)))
+						record = active1
+					if(!record) return
+					playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
+					sleep(40)
+					var/obj/item/paper/P = new /obj/item/paper( src.loc )
+					P.name = text("Scan: [], []",record.fields["name"],worldtime2text())
+					P.info += text("<center><img src = wylogo.png><HR><I><B>Official Company Document</B><BR>Scan Record</I><HR><H2>[]</H2>\n</center>",record.fields["name"])
+					for(var/datum/data/record/R in data_core.medical)
+						if (R.fields["name"] ==  record.fields["name"])
+							if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
+								P.info += R.fields["last_scan_result"]
+								break
+							else
+								P.info += "No scan on record."
+					P.info += text("<BR><HR><font size = \"1\"><I>This report was printed by [] [].<BR>The USS Almayer,  []/2186, []</I></font><BR>\n<span class=\"paper_field\"></span>",last_user_rank,last_user_name,time2text(world.timeofday, "MM/DD"),worldtime2text())
+					src.printing = null
+
+
 
 	src.add_fingerprint(usr)
 	src.updateUsrDialog()

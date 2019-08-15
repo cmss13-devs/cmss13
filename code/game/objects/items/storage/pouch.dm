@@ -159,7 +159,7 @@
 	desc = "It can contain a pistol. Useful for emergencies."
 	icon_state = "pistol"
 	max_w_class = SIZE_MEDIUM
-	can_hold = list(/obj/item/weapon/gun/pistol)
+	can_hold = list(/obj/item/weapon/gun/pistol, /obj/item/weapon/gun/revolver/m44)
 	draw_mode = 1
 
 
@@ -232,11 +232,11 @@
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 
-/obj/item/storage/pouch/magazine/pistol/pmc_vp70/New()
+/obj/item/storage/pouch/magazine/pistol/pmc_mod88/New()
 	..()
-	new /obj/item/ammo_magazine/pistol/vp70(src)
-	new /obj/item/ammo_magazine/pistol/vp70(src)
-	new /obj/item/ammo_magazine/pistol/vp70(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
 
 /obj/item/storage/pouch/magazine/pistol/pmc_vp78/New()
 	..()

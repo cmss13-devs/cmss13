@@ -728,9 +728,9 @@
 				to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 				return
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-			var/obj/machinery/constructable_frame/machine_frame/M = new /obj/machinery/constructable_frame/machine_frame(src.loc)
-			M.state = 2
-			M.icon_state = "box_1"
+			var/obj/machinery/constructable_frame/M = new /obj/machinery/constructable_frame(src.loc)
+			M.state = CONSTRUCTION_STATE_PROGRESS
+			M.update_icon()
 			for(var/obj/I in component_parts)
 				if(I.reliability != 100 && crit_fail)
 					I.crit_fail = 1

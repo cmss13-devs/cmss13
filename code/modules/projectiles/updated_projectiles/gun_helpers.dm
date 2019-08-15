@@ -126,7 +126,9 @@ DEFINES in setup.dm, referenced here.
 
 /obj/item/weapon/gun/attack_hand(mob/user)
 	var/obj/item/weapon/gun/in_hand = user.get_inactive_hand()
-	if( in_hand == src && (flags_item & TWOHANDED) ) unload(user)//It has to be held if it's a two hander.
+
+	if(in_hand == src && (flags_item & TWOHANDED))
+		unload(user)//It has to be held if it's a two hander.
 	else ..()
 
 /obj/item/weapon/gun/throw_at(atom/target, range, speed, thrower)
@@ -151,17 +153,21 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /obj/item/weapon/gun/proc/turn_off_light(mob/bearer)
 	if(flags_gun_features & GUN_FLASHLIGHT_ON)
-		bearer.SetLuminosity(-rail.light_mod)
-		SetLuminosity(rail.light_mod)
-		return 1
+		if(attachments["rail"])
+			var/obj/item/attachable/A = attachments["rail"]
+			bearer.SetLuminosity(-A.light_mod)
+			SetLuminosity(A.light_mod)
+			return 1
 	return 0
 
 /obj/item/weapon/gun/pickup(mob/user)
 	..()
 
 	if(flags_gun_features & GUN_FLASHLIGHT_ON)
-		user.SetLuminosity(rail.light_mod)
-		SetLuminosity(0)
+		if(attachments["rail"])
+			var/obj/item/attachable/A = attachments["rail"]
+			user.SetLuminosity(A.light_mod)
+			SetLuminosity(0)
 
 	unwield(user)
 
@@ -315,21 +321,17 @@ should be alright.
 
 /obj/item/weapon/gun/proc/has_attachment(A)
 	if(!A) return
-	if(istype(muzzle,A)) return 1
-	if(istype(under,A)) return 1
-	if(istype(rail,A)) return 1
-	if(istype(stock,A)) return 1
+	for(var/slot in attachments)
+		var/obj/item/attachable/R = attachments[slot]
+		if(R && istype(R, A))
+			return 1
 
 /obj/item/weapon/gun/proc/check_iff()
 	iff_enabled_current = FALSE
-	if(muzzle && muzzle.has_marine_iff)
-		iff_enabled_current = TRUE
-	if(under && under.has_marine_iff)
-		iff_enabled_current = TRUE
-	if(rail && rail.has_marine_iff)
-		iff_enabled_current = TRUE
-	if(stock && stock.has_marine_iff)
-		iff_enabled_current = TRUE
+	for(var/slot in attachments)
+		var/obj/item/attachable/R = attachments[slot]
+		if(R && R.has_marine_iff)
+			iff_enabled_current = TRUE
 	if(iff_enabled)
 		iff_enabled_current = TRUE
 	if(in_chamber) //Hi, I'm an old bullet. I don't have a fucking IFF enabled yet.
@@ -343,15 +345,9 @@ should be alright.
 
 	//Checks if they can attach the thing in the first place, like with fixed attachments.
 	var/can_attach = 1
-	switch(attachment.slot)
-		if("rail")
-			if(rail && !(rail.flags_attach_features & ATTACH_REMOVABLE)) can_attach = 0
-		if("muzzle")
-			if(muzzle && !(muzzle.flags_attach_features & ATTACH_REMOVABLE)) can_attach = 0
-		if("under")
-			if(under && !(under.flags_attach_features & ATTACH_REMOVABLE)) can_attach = 0
-		if("stock")
-			if(stock && !(stock.flags_attach_features & ATTACH_REMOVABLE)) can_attach = 0
+	if(attachments[attachment.slot])
+		var/obj/item/attachable/R = attachments[attachment.slot]
+		if(R && !(R.flags_attach_features & ATTACH_REMOVABLE)) can_attach = 0
 
 	if(!can_attach)
 		to_chat(user, SPAN_WARNING("The attachment on [src]'s [attachment.slot] cannot be removed!"))
@@ -376,18 +372,14 @@ should be alright.
 /obj/item/weapon/gun/proc/update_attachables() //Updates everything. You generally don't need to use this.
 	//overlays.Cut()
 	if(attachable_offset) //Even if the attachment doesn't exist, we're going to try and remove it.
-		update_overlays(muzzle, "muzzle")
-		update_overlays(stock, "stock")
-		update_overlays(under, "under")
-		update_overlays(rail, "rail")
+		for(var/slot in attachments)
+			var/obj/item/attachable/R = attachments[slot]
+			if(!R) continue
+			update_overlays(R, R.slot)
 
 /obj/item/weapon/gun/proc/update_attachable(attachable) //Updates individually.
-	if(attachable_offset)
-		switch(attachable)
-			if("muzzle") update_overlays(muzzle, attachable)
-			if("stock") update_overlays(stock, attachable)
-			if("under") update_overlays(under, attachable)
-			if("rail") update_overlays(rail, attachable)
+	if(attachable_offset && attachments[attachable])
+		update_overlays(attachments[attachable], attachable)
 
 /obj/item/weapon/gun/proc/update_overlays(obj/item/attachable/A, slot)
 	var/image/I = attachable_overlays[slot]
@@ -630,20 +622,11 @@ should be alright.
 		to_chat(usr, SPAN_WARNING("You cannot conceviably do that while looking down \the [src]'s scope!"))
 		return
 
-	if(!rail && !muzzle && !under && !stock)
-		to_chat(usr, SPAN_WARNING("This weapon has no attachables. You can only field strip enhanced weapons!"))
-		return
-
 	var/list/possible_attachments = list()
-
-	if(rail && (rail.flags_attach_features & ATTACH_REMOVABLE))
-		possible_attachments += rail
-	if(muzzle && (muzzle.flags_attach_features & ATTACH_REMOVABLE))
-		possible_attachments += muzzle
-	if(under && (under.flags_attach_features & ATTACH_REMOVABLE))
-		possible_attachments += under
-	if(stock && (stock.flags_attach_features & ATTACH_REMOVABLE))
-		possible_attachments += stock
+	for(var/slot in attachments)
+		var/obj/item/attachable/R = attachments[slot]
+		if(R && (R.flags_attach_features & ATTACH_REMOVABLE))
+			possible_attachments += R
 
 	if(!possible_attachments.len)
 		to_chat(usr, SPAN_WARNING("[src] has no removable attachments."))
@@ -655,7 +638,7 @@ should be alright.
 	else
 		A = input("Which attachment to remove?") as null|anything in possible_attachments
 
-	if(!A || get_active_firearm(usr) != src || usr.action_busy || zoom || (A != rail && A != muzzle && A != under && A != stock) || !(A.flags_attach_features & ATTACH_REMOVABLE))
+	if(!A || get_active_firearm(usr) != src || usr.action_busy || zoom || (!(A == attachments[A.slot])) || !(A.flags_attach_features & ATTACH_REMOVABLE))
 		return
 
 	usr.visible_message(SPAN_NOTICE("[usr] begins stripping [A] from [src]."),
@@ -664,7 +647,7 @@ should be alright.
 	if(!do_after(usr, 35, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
 
-	if(A != rail && A != muzzle && A != under && A != stock)
+	if(!(A == attachments[A.slot]))
 		return
 	if(!(A.flags_attach_features & ATTACH_REMOVABLE))
 		return
@@ -784,15 +767,10 @@ should be alright.
 	var/obj/item/attachable/A
 
 	var/usable_attachments[] = list() //Basic list of attachments to compare later.
-// rail attachment use the button to toggle flashlight instead.
-//	if(rail && (rail.flags_attach_features & ATTACH_ACTIVATION) )
-//		usable_attachments += rail
-	if(under && (under.flags_attach_features & ATTACH_ACTIVATION) )
-		usable_attachments += under
-	if(stock  && (stock.flags_attach_features & ATTACH_ACTIVATION) )
-		usable_attachments += stock
-	if(muzzle && (muzzle.flags_attach_features & ATTACH_ACTIVATION) )
-		usable_attachments += muzzle
+	for(var/slot in attachments)
+		var/obj/item/attachable/R = attachments[slot]
+		if(R && (R.flags_attach_features & ATTACH_ACTIVATION) )
+			usable_attachments += R
 
 	if(!usable_attachments.len) //No usable attachments.
 		to_chat(usr, SPAN_WARNING("[src] does not have any usable attachments!"))
@@ -817,16 +795,12 @@ should be alright.
 	if(!G) return
 	src = G
 
-	var/obj/item/attachable/A
-
-	if (rail && (rail.flags_attach_features & ATTACH_ACTIVATION) )
-		A = rail
+	var/obj/item/attachable/A = attachments["rail"]
+	if(A)
+		A.activate_attachment(src, usr)
 	else
 		to_chat(usr, SPAN_WARNING("[src] does not have any usable rail attachments!"))
 		return
-	if(A)
-		A.activate_attachment(src, usr)
-
 
 obj/item/weapon/gun/item_action_slot_check(mob/user, slot)
 	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND)

@@ -220,8 +220,10 @@
 	name = "purple sac"
 	desc = "A weird, pulsating node."
 	icon_state = "weednode"
+	reagents = list("purpleplasma" = 30)
 	var/node_range = NODERANGE
 	health = 15
+	flags_atom = OPENCONTAINER
 
 
 /obj/effect/alien/weeds/node/update_icon()
@@ -229,6 +231,8 @@
 	overlays += "weednode"
 
 /obj/effect/alien/weeds/node/New(loc, obj/effect/alien/weeds/node/node, mob/living/carbon/Xenomorph/X)
+	create_reagents(30)
+	reagents.add_reagent("purpleplasma",30)
 	for(var/obj/effect/alien/weeds/W in loc)
 		if(W != src)
 			qdel(W) //replaces the previous weed

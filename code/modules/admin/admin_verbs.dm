@@ -58,6 +58,7 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/toggleloocdead,	/*toggles looc on/off for everyone who is dead*/
 	/datum/admins/proc/toggledsay,		/*toggles dsay on/off for everyone*/
 	/client/proc/game_panel,			/*game panel, allows to change game-mode etc*/
+	/client/proc/chem_panel,			/*chem panel, allows viewing, editing and creation of reagent and chemical_reaction datums*/
 	/client/proc/cmd_admin_say,			/*admin-only ooc chat*/
 	/datum/admins/proc/player_notes_list,
 	/datum/admins/proc/player_notes_show,
@@ -214,6 +215,7 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/cmd_admin_world_narrate,
 	/client/proc/play_sound_from_list,
 	/client/proc/play_imported_sound,
+	/client/proc/chem_panel,			/*chem panel, allows viewing, editing and creation of reagent and chemical_reaction datums*/
 	// /client/proc/object_talk,
 	/client/proc/cmd_admin_dress,
 	/client/proc/cmd_admin_select_mob_rank,
@@ -268,6 +270,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_mod_say,
 	/client/proc/player_panel_new,
 	/client/proc/dsay,
+	/client/proc/chem_panel,			/*chem panel, allows viewing, editing and creation of reagent and chemical_reaction datums*/
 	/datum/admins/proc/togglesleep,
 	/datum/admins/proc/togglejoin,
 	/client/proc/toggle_own_ghost_vis,
@@ -486,6 +489,14 @@ var/list/admin_verbs_mentor = list(
 		else
 			admin_holder.DB_ban_panel()
 	feedback_add_details("admin_verb","UBP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	return
+
+/client/proc/chem_panel()
+	set name = "Chem Panel"
+	set category = "Admin"
+	if(admin_holder)
+		admin_holder.Chem()
+	feedback_add_details("admin_verb","CGP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
 /client/proc/game_panel()

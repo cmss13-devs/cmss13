@@ -34,11 +34,9 @@
 		. = ..()
 		if(density)
 			layer = closed_layer
-			explosion_resistance = initial(explosion_resistance)
 			update_flags_heat_protection(get_turf(src))
 		else
 			layer = open_layer
-			explosion_resistance = 0
 
 		handle_multidoor()
 
@@ -177,11 +175,11 @@
 
 
 /obj/machinery/door/get_explosion_resistance()
-	if(unacidable)
-		return 1000000
-
 	if(density)
-		return EXPLOSION_THRESHOLD_LOW //this should exactly match the amount of damage needed to destroy the door
+		if(unacidable)
+			return 1000000
+		else
+			return EXPLOSION_THRESHOLD_LOW //this should exactly match the amount of damage needed to destroy the door
 	else
 		return 0
 
@@ -223,7 +221,6 @@
 	sleep(openspeed)
 	src.layer = open_layer
 	src.density = 0
-	explosion_resistance = 0
 	update_icon()
 	SetOpacity(0)
 	if (filler)
@@ -247,7 +244,6 @@
 	operating = 1
 
 	src.density = 1
-	explosion_resistance = initial(explosion_resistance)
 	src.layer = closed_layer
 	do_animate("closing")
 	sleep(openspeed)

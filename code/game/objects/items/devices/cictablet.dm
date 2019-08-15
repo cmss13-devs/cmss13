@@ -358,8 +358,8 @@
             interact(usr)
 
         if("award")
-            if(!usr.mind || usr.mind.assigned_role != "Commander")
-                to_chat(usr, SPAN_WARNING("Only the Commander can award medals."))
+            if(!usr.mind || usr.mind.assigned_role != "Commanding Officer")
+                to_chat(usr, SPAN_WARNING("Only the Commanding Officer can award medals."))
                 interact(usr)
                 return
             if(give_medal_award(usr.loc))

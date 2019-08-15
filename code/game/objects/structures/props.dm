@@ -1,3 +1,13 @@
+/obj/structure/prop/tower
+	name = "destroyed comms tower"
+	desc = "An old company comms tower used to transmit communications between subspace bodies. Looks like this one has seen better days."
+	icon = 'icons/obj/machines/comm_tower.dmi'
+	icon_state = "comm_tower_destroyed"
+	unacidable = 1
+	density = 1
+	layer = ABOVE_FLY_LAYER
+	bound_height = 96
+
 /obj/structure/prop/dam
 	density = 1
 
@@ -129,8 +139,10 @@
 
 	else if(istype(W, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/G = W
-		if(istype(G.under, /obj/item/attachable/attached_gun/flamer))
-			L = 1
+		for(var/slot in G.attachments)
+			if(istype(G.attachments[slot], /obj/item/attachable/attached_gun/flamer))
+				L = 1
+				break
 	else if(istype(W, /obj/item/tool/surgery/cautery))
 		L = 1
 	else if(istype(W, /obj/item/clothing/mask/cigarette))

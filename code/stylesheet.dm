@@ -41,6 +41,7 @@ em						{font-style: normal;	font-weight: bold;}
 .sciradio				{color: #993399;}
 .supradio				{color: #5F4519;}
 .jtacradio				{color: #702963;}
+.intelradio				{color: #027D02;}
 
 .alpharadio				{color: #EA0000;}
 .bravoradio				{color: #C68610;}

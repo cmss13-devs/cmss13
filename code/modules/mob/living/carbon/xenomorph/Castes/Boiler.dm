@@ -59,7 +59,7 @@
 	desc = "A huge, grotesque xenomorph covered in glowing, oozing acid slime."
 	icon = 'icons/Xeno/xenomorph_64x64.dmi'
 	icon_state = "Boiler Walking"
-
+	plasma_types = list(PLASMA_NEUROTOXIN)
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG

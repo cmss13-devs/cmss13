@@ -26,6 +26,11 @@
 	var/intensitymod = 0
 	var/durationmod = 0
 	var/radiusmod = 0
+	// Chem generator Stuff
+	var/chemclass = CHEM_CLASS_NONE //Decides how rare the chem in the generation process
+	var/gen_tier = 0 //Decides the chance of the chem being good during generation
+	// How valuable it is to identify the chemical. (Only works on chemclass SPECIAL or ULTRA)
+	var/objective_value
 
 /datum/reagent/proc/reaction_mob(var/mob/M, var/method=TOUCH, var/volume) //By default we have a chance to transfer some
 	if(!istype(M, /mob/living))	return 0

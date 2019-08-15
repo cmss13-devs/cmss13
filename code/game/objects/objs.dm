@@ -14,7 +14,6 @@
 	var/buckle_lying = FALSE //Is the mob buckled in a lying position
 	var/can_buckle = FALSE
 
-	var/explosion_resistance = 0
 	var/projectile_coverage = 0 //an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile, assuming density and throwpass. Used by barricades, tables and window frames
 
 /obj/New()
@@ -76,10 +75,15 @@
 
 
 /obj/item/proc/updateSelfDialog()
-	var/mob/M = src.loc
+	var/mob/M = loc
 	if(istype(M) && M.client && M.interactee == src)
-		src.attack_self(M)
+		attack_self(M)
 
+/obj/proc/update_health(var/damage = 0)
+	if(damage)
+		health -= damage
+	if(health <= 0)
+		qdel(src)
 
 /obj/proc/alter_health()
 	return 1
@@ -147,7 +151,7 @@
 					SPAN_NOTICE("You unbuckle yourself from [src]."),\
 					SPAN_NOTICE("You hear metal clanking"))
 			unbuckle()
-			src.add_fingerprint(user)
+			add_fingerprint(user)
 			return 1
 
 	return 0
@@ -155,7 +159,7 @@
 
 //trying to buckle a mob
 /obj/proc/buckle_mob(mob/M, mob/user)
-	if ( !ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.lying || user.stat || buckled_mob || M.buckled )
+	if (!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.lying || user.stat || buckled_mob || M.buckled)
 		return
 
 	if (M.mob_size > MOB_SIZE_HUMAN)
@@ -240,9 +244,7 @@
 		return 0
 	bullet_ping(P)
 	if(P.ammo.damage)
-		src.health -= round(P.ammo.damage / 2)
-	if(src.health <= 0)
-		qdel(src)
+		update_health(round(P.ammo.damage / 2))
 	return 1
 
 /obj/item/proc/get_mob_overlay(mob/user_mob, slot)

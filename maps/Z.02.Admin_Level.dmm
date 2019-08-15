@@ -683,6 +683,8 @@
 "cN" = (
 /obj/structure/rack,
 /obj/item/device/healthanalyzer,
+/obj/item/device/healthanalyzer,
+/obj/item/device/healthanalyzer,
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2
@@ -999,18 +1001,26 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
+/obj/item/stack/medical/splint{
+	name = "splints"
 	},
-/area/yautja)
-"dA" = (
-/obj/structure/table/reinforced,
-/obj/item/stack/medical/bruise_pack/tajaran{
-	name = "mending herbs"
+/obj/item/stack/medical/splint{
+	name = "splints"
 	},
-/obj/item/stack/medical/bruise_pack/tajaran{
-	name = "mending herbs"
+/obj/item/stack/medical/splint{
+	name = "splints"
+	},
+/obj/item/stack/medical/splint{
+	name = "splints"
+	},
+/obj/item/stack/medical/splint{
+	name = "splints"
+	},
+/obj/item/stack/medical/splint{
+	name = "splints"
+	},
+/obj/item/stack/medical/splint{
+	name = "splints"
 	},
 /turf/open/floor/holofloor{
 	icon_state = "cult";
@@ -1066,27 +1076,6 @@
 	},
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
-"dG" = (
-/obj/machinery/light/small{
-	tag = "icon-bulb1 (EAST)";
-	icon_state = "bulb1";
-	dir = 4
-	},
-/obj/structure/table/reinforced,
-/obj/item/stack/medical/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
 "dH" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -1104,15 +1093,24 @@
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
 "dK" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
 /obj/structure/table/reinforced,
 /obj/item/stack/medical/ointment/tajaran{
 	name = "soothing herbs"
 	},
-/obj/item/stack/medical/bruise_pack/tajaran{
-	name = "mending herbs"
+/obj/item/stack/medical/ointment/tajaran{
+	name = "soothing herbs"
+	},
+/obj/item/stack/medical/ointment/tajaran{
+	name = "soothing herbs"
+	},
+/obj/item/stack/medical/ointment/tajaran{
+	name = "soothing herbs"
+	},
+/obj/item/stack/medical/ointment/tajaran{
+	name = "soothing herbs"
+	},
+/obj/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/holofloor{
 	icon_state = "cult";
@@ -1121,6 +1119,12 @@
 /area/yautja)
 "dL" = (
 /obj/structure/table/reinforced,
+/obj/item/stack/medical/bruise_pack/tajaran{
+	name = "mending herbs"
+	},
+/obj/item/stack/medical/bruise_pack/tajaran{
+	name = "mending herbs"
+	},
 /obj/item/stack/medical/bruise_pack/tajaran{
 	name = "mending herbs"
 	},
@@ -1408,6 +1412,9 @@
 /obj/structure/rack{
 	layer = 2.79
 	},
+/obj/item/legcuffs/yautja,
+/obj/item/legcuffs/yautja,
+/obj/item/legcuffs/yautja,
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2
@@ -1480,6 +1487,7 @@
 /obj/item/explosive/grenade/spawnergrenade/smartdisc,
 /obj/item/explosive/grenade/spawnergrenade/smartdisc,
 /obj/item/explosive/grenade/spawnergrenade/smartdisc,
+/obj/item/explosive/grenade/spawnergrenade/smartdisc,
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2
@@ -1549,6 +1557,7 @@
 	icon_state = "bulb1";
 	dir = 8
 	},
+/obj/item/reagent_container/hypospray/autoinjector/yautja,
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2
@@ -1563,6 +1572,7 @@
 	icon_state = "bulb1";
 	dir = 4
 	},
+/obj/item/reagent_container/hypospray/autoinjector/yautja,
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2
@@ -1616,8 +1626,18 @@
 	pixel_y = -2
 	},
 /obj/item/weapon/harpoon/yautja,
-/obj/item/weapon/harpoon/yautja,
-/obj/item/weapon/harpoon/yautja,
+/obj/item/weapon/harpoon/yautja{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/item/weapon/harpoon/yautja{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/item/weapon/harpoon/yautja{
+	pixel_x = -4;
+	pixel_y = -3
+	},
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2
@@ -1633,6 +1653,7 @@
 	pixel_x = 4;
 	pixel_y = 6
 	},
+/obj/item/weapon/harpoon/yautja,
 /obj/item/weapon/harpoon/yautja,
 /obj/item/weapon/harpoon/yautja,
 /turf/open/floor/holofloor{
@@ -2194,6 +2215,7 @@
 "gA" = (
 /obj/item/reagent_container/food/snacks/stew,
 /obj/structure/table/reinforced,
+/obj/item/reagent_container/food/snacks/stew,
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2
@@ -2207,6 +2229,7 @@
 	icon_state = "bulb1";
 	dir = 1
 	},
+/obj/item/reagent_container/food/snacks/stew,
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2
@@ -4520,13 +4543,13 @@
 	pixel_y = 0
 	},
 /obj/structure/table/almayer,
-/obj/item/ammo_magazine/pistol/vp70{
+/obj/item/ammo_magazine/pistol/mod88{
 	pixel_x = 5
 	},
-/obj/item/ammo_magazine/pistol/vp70{
+/obj/item/ammo_magazine/pistol/mod88{
 	pixel_x = 5
 	},
-/obj/item/weapon/gun/pistol/vp70{
+/obj/item/weapon/gun/pistol/mod88{
 	pixel_y = 4
 	},
 /turf/open/floor/almayer{
@@ -8711,7 +8734,6 @@
 "KH" = (
 /obj/machinery/door/airlock/almayer/generic{
 	damage_cap = 50000;
-	explosion_resistance = 100;
 	id_tag = null;
 	locked = 0;
 	name = "\improper Hangar";
@@ -8751,6 +8773,28 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
+"La" = (
+/obj/structure/table/reinforced,
+/obj/item/stack/medical/ointment/tajaran{
+	name = "soothing herbs"
+	},
+/obj/item/stack/medical/ointment/tajaran{
+	name = "soothing herbs"
+	},
+/obj/item/stack/medical/ointment/tajaran{
+	name = "soothing herbs"
+	},
+/obj/item/stack/medical/ointment/tajaran{
+	name = "soothing herbs"
+	},
+/obj/item/stack/medical/ointment/tajaran{
+	name = "soothing herbs"
+	},
+/turf/open/floor/holofloor{
+	icon_state = "cult";
+	dir = 2
+	},
+/area/yautja)
 "Li" = (
 /obj/structure/mirror{
 	pixel_x = 30
@@ -26057,7 +26101,7 @@ dj
 cf
 de
 dz
-cK
+La
 dK
 de
 cf
@@ -26664,8 +26708,8 @@ cZ
 dd
 cf
 de
-dA
-dG
+dL
+dL
 dL
 de
 cf

@@ -306,7 +306,8 @@
 		'icons/pda_icons/pda_scanner.png',
 		'icons/pda_icons/pda_signaler.png',
 		'icons/pda_icons/pda_status.png',
-		'html/images/wylogo.png'
+		'html/images/wylogo.png',
+		'html/images/uscmlogo.png'
 		)
 
 /client/Stat()

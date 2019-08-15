@@ -157,8 +157,8 @@
 		if(FEMALE)
 			t_him = "her"
 
-	H.visible_message(SPAN_NOTICE("[H] hugs [target] to make [t_him] feel better!"), \
-					SPAN_NOTICE("You hug [target] to make [t_him] feel better!"), null, 4)
+	H.visible_message(SPAN_NOTICE("[H] pats [target] on the back to make [t_him] feel better!"), \
+					SPAN_NOTICE("You pat [target] on the back to make [t_him] feel better!"), null, 4)
 
 //special things to change after we're no longer that species
 /datum/species/proc/post_species_loss(mob/living/carbon/human/H)
@@ -324,8 +324,8 @@
 
 	total_health = 150 //more health than regular humans
 
-	brute_mod = 0.75
-	burn_mod = 1.1
+	brute_mod = 0.5
+	burn_mod = 1
 
 	cold_level_1 = -1
 	cold_level_2 = -1
@@ -404,8 +404,8 @@ var/toggled_sec_HUD = 0
 	slowdown = 1.3 //Slower than later synths
 	total_health = 200 //But more durable
 	insulated = 1
-	brute_mod = 0.75
-	burn_mod = 1.1
+	brute_mod = 0.5
+	burn_mod = 1
 
 	cold_level_1 = -1
 	cold_level_2 = -1
@@ -710,6 +710,11 @@ var/toggled_sec_HUD = 0
 			if(istype(held, /obj/item/weapon/gun) && prob(80))
 				var/obj/item/weapon/gun/G = held
 				G.Fire(T, H)
+			else if(prob(80) && H.equip_to_appropriate_slot(held, 0))
+				if(H.hand)
+					H.update_inv_l_hand(0)
+				else
+					H.update_inv_r_hand(0)
 			else
 				H.throw_item(T)
 		else

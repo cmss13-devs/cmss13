@@ -191,6 +191,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	..()
 	flags_atom |= NOREACT // so it doesn't react until you light it
 	create_reagents(chem_volume) // making the cigarrete a chemical holder with a maximum volume of 15
+	reagents.add_reagent("nicotine",10)
 
 /obj/item/clothing/mask/cigarette/attackby(obj/item/W, mob/user)
 	..()
@@ -239,8 +240,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	else if(istype(W, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/G = W
-		if(istype(G.under, /obj/item/attachable/attached_gun/flamer))
-			light(SPAN_NOTICE("[user] lights their [src] with the underbarrel [G.under]."))
+		for(var/slot in G.attachments)
+			if(istype(G.attachments[slot], /obj/item/attachable/attached_gun/flamer))
+				light(SPAN_NOTICE("[user] lights their [src] with [G.attachments[slot]]."))
+				break
+
 
 	else if(istype(W, /obj/item/tool/surgery/cautery))
 		light(SPAN_NOTICE("[user] lights their [src] with the [W]."))
@@ -401,6 +405,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	smoketime = 1500
 	chem_volume = 20
 
+	New()
+		..()
+		reagents.add_reagent("nicotine",10)
+
 /obj/item/clothing/mask/cigarette/cigar/cohiba
 	name = "\improper Cohiba Robusto cigar"
 	desc = "There's little more you could want from a cigar."
@@ -458,8 +466,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	else if(istype(W, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/G = W
-		if(istype(G.under, /obj/item/attachable/attached_gun/flamer))
-			light(SPAN_NOTICE("[user] lights their [src] with the underbarrel [G.under] like a complete badass."))
+		for(var/slot in G.attachments)
+			if(istype(G.attachments[slot], /obj/item/attachable/attached_gun/flamer))
+				light(SPAN_NOTICE("[user] lights their [src] with [G.attachments[slot]] like a complete badass."))
+				break
 
 	else if(istype(W, /obj/item/tool/surgery/cautery))
 		light(SPAN_NOTICE("[user] lights their [src] with the [W], that can't be sterile!."))

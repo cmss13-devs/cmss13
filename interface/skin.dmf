@@ -233,16 +233,16 @@ macro "hotkeymode"
 		name = "CTRL+5"
 		command = "Toggle-Move-Intent"
 	elem 
+		name = "ALT+A"
+		command = "westfaceperm"
+	elem 
 		name = "A+REP"
 		command = ".west"
 	elem 
-		name = "CTRL+A+REP"
-		command = ".west"
+		name = "ALT+D"
+		command = "eastfaceperm"
 	elem 
 		name = "D+REP"
-		command = ".east"
-	elem 
-		name = "CTRL+D+REP"
 		command = ".east"
 	elem 
 		name = "E"
@@ -262,20 +262,20 @@ macro "hotkeymode"
 	elem 
 		name = "CTRL+R"
 		command = ".southwest"
+	elem 
+		name = "ALT+S"
+		command = "southfaceperm"
 	elem "s_key"
 		name = "S+REP"
 		command = ".south"
 	elem 
-		name = "CTRL+S+REP"
-		command = ".south"
-	elem 
 		name = "T"
 		command = ".say"
+	elem 
+		name = "ALT+W"
+		command = "northfaceperm"
 	elem "w_key"
 		name = "W+REP"
-		command = ".north"
-	elem 
-		name = "CTRL+W+REP"
 		command = ".north"
 	elem 
 		name = "X"

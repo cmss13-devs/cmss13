@@ -25,8 +25,8 @@
 	/obj/item/shard = 50, 		\
 	)
 
-	min_duration = FACIAL_CUT_MIN_DURATION
-	max_duration = FACIAL_CUT_MAX_DURATION
+	min_duration = SCALPEL_MIN_DURATION
+	max_duration = SCALPEL_MAX_DURATION
 	face_step = 0
 
 /datum/surgery_step/face/cut_face/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
@@ -55,8 +55,8 @@
 	/obj/item/device/assembly/mousetrap = 10 //I don't know. Don't ask me. But I'm leaving it because hilarity.
 	)
 
-	min_duration = FACIAL_MEND_MIN_DURATION
-	max_duration = FACIAL_MEND_MAX_DURATION
+	min_duration = HEMOSTAT_MIN_DURATION
+	max_duration = HEMOSTAT_MAX_DURATION
 	face_step = 1
 
 /datum/surgery_step/face/mend_vocal/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
@@ -83,8 +83,8 @@
 	/obj/item/tool/kitchen/utensil/fork = 75
 	)
 
-	min_duration = FACIAL_FIX_MIN_DURATION
-	max_duration = FACIAL_FIX_MAX_DURATION
+	min_duration = RETRACTOR_MIN_DURATION
+	max_duration = RETRACTOR_MAX_DURATION
 	face_step = 2
 
 /datum/surgery_step/face/fix_face/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
@@ -112,8 +112,8 @@
 	/obj/item/tool/weldingtool = 25
 	)
 
-	min_duration = FACIAL_CAUTERISE_MIN_DURATION
-	max_duration = FACIAL_CAUTERISE_MAX_DURATION
+	min_duration = CAUTERY_MIN_DURATION
+	max_duration = CAUTERY_MAX_DURATION
 	face_step = 3
 
 

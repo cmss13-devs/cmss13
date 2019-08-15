@@ -41,7 +41,7 @@
 	var/datum/limb/picked = pick(parts)
 	if(LIMB_ROBOT)
 		picked.heal_damage(brute, burn, 0, 1)
-	else 
+	else
 		picked.heal_damage(brute,burn)
 	human.UpdateDamageIcon()
 	human.updatehealth()
@@ -291,8 +291,8 @@
 							sleep(FIX_ORGAN_MAX_DURATION*surgery_mod)
 						else
 							if(S.organ_ref.damage > BONECHIPS_MAX_DAMAGE)
-								sleep(HEMOTOMA_MAX_DURATION*surgery_mod)
-							sleep(BONECHIPS_REMOVAL_MAX_DURATION*surgery_mod)
+								sleep(FIXVEIN_MAX_DURATION*surgery_mod)
+							sleep(REMOVE_OBJECT_MAX_DURATION*surgery_mod)
 						if(!surgery) break
 						if(istype(S.organ_ref,/datum/internal_organ))
 							S.organ_ref.rejuvenate()
@@ -315,23 +315,23 @@
 							var/datum/internal_organ/eyes/E = S.organ_ref
 
 							if(E.eye_surgery_stage == 0)
-								sleep(EYE_CUT_MAX_DURATION)
+								sleep(SCALPEL_MAX_DURATION)
 								if(!surgery) break
 								E.eye_surgery_stage = 1
 								H.disabilities |= NEARSIGHTED // code\#define\mobs.dm
 
 							if(E.eye_surgery_stage == 1)
-								sleep(EYE_LIFT_MAX_DURATION)
+								sleep(RETRACTOR_MAX_DURATION)
 								if(!surgery) break
 								E.eye_surgery_stage = 2
 
 							if(E.eye_surgery_stage == 2)
-								sleep(EYE_MEND_MAX_DURATION)
+								sleep(HEMOSTAT_MAX_DURATION)
 								if(!surgery) break
 								E.eye_surgery_stage = 3
 
 							if(E.eye_surgery_stage == 3)
-								sleep(EYE_CAUTERISE_MAX_DURATION)
+								sleep(CAUTERY_MAX_DURATION)
 								if(!surgery) break
 								H.disabilities &= ~NEARSIGHTED
 								H.sdisabilities &= ~BLIND
@@ -386,9 +386,9 @@
 							surgery_todo_list -= S
 							continue
 
-						sleep(ROBOLIMB_CUT_MAX_DURATION*surgery_mod)
-						sleep(ROBOLIMB_MEND_MAX_DURATION*surgery_mod)
-						sleep(ROBOLIMB_PREPARE_MAX_DURATION*surgery_mod)
+						sleep(SCALPEL_MAX_DURATION*surgery_mod)
+						sleep(RETRACTOR_MAX_DURATION*surgery_mod)
+						sleep(CAUTERY_MAX_DURATION*surgery_mod)
 
 						if(stored_metal < LIMB_METAL_AMOUNT)
 							visible_message("\icon[src] \The <b>[src]</b> croaks: Metal reserves depleted.")
@@ -409,11 +409,11 @@
 						S.limb_ref.setAmputatedTree()
 						S.limb_ref.limb_replacement_stage = 0
 
-						var/spillover = LIMB_PRINTING_TIME - (ROBOLIMB_PREPARE_MAX_DURATION+ROBOLIMB_MEND_MAX_DURATION+ROBOLIMB_CUT_MAX_DURATION)
+						var/spillover = LIMB_PRINTING_TIME - (CAUTERY_MAX_DURATION+RETRACTOR_MAX_DURATION+SCALPEL_MAX_DURATION)
 						if(spillover > 0)
 							sleep(spillover*surgery_mod)
 
-						sleep(ROBOLIMB_ATTACH_MAX_DURATION*surgery_mod)
+						sleep(IMPLANT_MAX_DURATION*surgery_mod)
 						if(!surgery) break
 						S.limb_ref.robotize()
 						H.update_body()
@@ -429,7 +429,7 @@
 							continue
 
 						open_incision(H,S.limb_ref)
-						sleep(NECRO_REMOVE_MAX_DURATION*surgery_mod)
+						sleep(SCALPEL_MAX_DURATION*surgery_mod)
 						sleep(NECRO_TREAT_MAX_DURATION*surgery_mod)
 						S.limb_ref.status &= ~LIMB_NECROTIZED
 						H.update_body()
@@ -451,7 +451,7 @@
 							for(var/obj/item/I in S.limb_ref.implants)
 								if(!surgery) break
 								if(!is_type_in_list(I,known_implants))
-									sleep(HEMOSTAT_REMOVE_MAX_DURATION*surgery_mod)
+									sleep(REMOVE_OBJECT_MAX_DURATION*surgery_mod)
 									S.limb_ref.implants -= I
 									qdel(I)
 						if(S.limb_ref.name == "chest" || S.limb_ref.name == "head")
@@ -486,19 +486,19 @@
 						if(istype(S.limb_ref,/datum/limb/head))
 							var/datum/limb/head/F = S.limb_ref
 							if(F.face_surgery_stage == 0)
-								sleep(FACIAL_CUT_MAX_DURATION)
+								sleep(SCALPEL_MAX_DURATION)
 								if(!surgery) break
 								F.face_surgery_stage = 1
 							if(F.face_surgery_stage == 1)
-								sleep(FACIAL_MEND_MAX_DURATION)
+								sleep(HEMOSTAT_MAX_DURATION)
 								if(!surgery) break
 								F.face_surgery_stage = 2
 							if(F.face_surgery_stage == 2)
-								sleep(FACIAL_FIX_MAX_DURATION)
+								sleep(RETRACTOR_MAX_DURATION)
 								if(!surgery) break
 								F.face_surgery_stage = 3
 							if(F.face_surgery_stage == 3)
-								sleep(FACIAL_CAUTERISE_MAX_DURATION)
+								sleep(CAUTERY_MAX_DURATION)
 								if(!surgery) break
 								F.status &= ~LIMB_BLEEDING
 								F.disfigured = 0
@@ -545,22 +545,22 @@
 /obj/machinery/autodoc/proc/open_encased(mob/living/carbon/human/target, var/datum/limb/L)
 	if(target && L && L.surgery_open_stage >= 2)
 		if(L.surgery_open_stage == 2) // this will cover for half completed surgeries
-			sleep(SAW_OPEN_ENCASED_MAX_DURATION*surgery_mod)
+			sleep(CIRCULAR_SAW_MAX_DURATION*surgery_mod)
 			if(!surgery) return
 			L.surgery_open_stage = 2.5
 		if(L.surgery_open_stage == 2.5)
-			sleep(RETRACT_OPEN_ENCASED_MAX_DURATION*surgery_mod)
+			sleep(RETRACTOR_MAX_DURATION*surgery_mod)
 			if(!surgery) return
 			L.surgery_open_stage = 3
 
 /obj/machinery/autodoc/proc/close_encased(mob/living/carbon/human/target, var/datum/limb/L)
 	if(target && L && L.surgery_open_stage > 2)
 		if(L.surgery_open_stage == 3) // this will cover for half completed surgeries
-			sleep(RETRACT_CLOSE_ENCASED_MAX_DURATION*surgery_mod)
+			sleep(RETRACTOR_MAX_DURATION*surgery_mod)
 			if(!surgery) return
 			L.surgery_open_stage = 2.5
 		if(L.surgery_open_stage == 2.5)
-			sleep(BONEGEL_CLOSE_ENCASED_MAX_DURATION*surgery_mod)
+			sleep(BONEGEL_REPAIR_MAX_DURATION*surgery_mod)
 			if(!surgery) return
 			L.surgery_open_stage = 2
 
@@ -585,7 +585,7 @@
 			else
 				visible_message("[usr] engages the internal release mechanism, and climbs out of \the [src].")
 			return
-		if(usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.surgery < SKILL_SURGERY_TRAINED && !event)
+		if (!usr.mind || !usr.mind.cm_skills || (usr.mind.cm_skills.research == null) || (usr.mind.cm_skills.research < SKILL_SURGERY_BEGINNER))
 			to_chat(usr, SPAN_WARNING("You don't have the training to use this."))
 			return
 		if(surgery)
@@ -613,7 +613,7 @@
 		to_chat(usr, SPAN_NOTICE("\The [src] is non-functional!"))
 		return
 
-	if(usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.surgery < SKILL_SURGERY_TRAINED && !event)
+	if(usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.surgery < SKILL_SURGERY_BEGINNER && !event)
 		to_chat(usr, SPAN_WARNING("You're going to need someone trained in the use of \the [src] to help you get into it."))
 		return
 
@@ -680,7 +680,7 @@
 			to_chat(user, SPAN_NOTICE("\The [src] is non-functional!"))
 			return
 
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.surgery < SKILL_SURGERY_TRAINED && !event)
+		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.surgery < SKILL_SURGERY_BEGINNER && !event)
 			to_chat(user, SPAN_WARNING("You have no idea how to put someone into \the [src]!"))
 			return
 
@@ -750,7 +750,7 @@
 		dat += "This console is not connected to a Med-Pod or the Med-Pod is non-functional."
 		to_chat(user, "This console seems to be powered down.")
 	else
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.surgery < SKILL_SURGERY_TRAINED && !connected.event)
+		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.surgery < SKILL_SURGERY_BEGINNER && !connected.event)
 			to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 			return
 		var/mob/living/occupant = connected.occupant

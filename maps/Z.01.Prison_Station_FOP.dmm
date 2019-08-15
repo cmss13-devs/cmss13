@@ -650,6 +650,7 @@
 /area/prison/research/secret/testing)
 "abn" = (
 /obj/structure/filingcabinet/chestdrawer,
+/obj/item/paper/research_notes,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (SOUTHWEST)";
 	icon_state = "sterile_white";
@@ -784,7 +785,7 @@
 /area/prison/research/secret/testing)
 "abD" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/fancy/vials,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor/prison{
 	dir = 2;
 	icon_state = "whitepurplefull"
@@ -1036,14 +1037,12 @@
 	},
 /area/prison/research/secret/testing)
 "acb" = (
-/obj/item/storage/fancy/vials{
-	icon = 'icons/obj/machines/virology.dmi'
-	},
 /obj/structure/table/reinforced,
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor/prison{
 	dir = 2;
 	icon_state = "whitepurplefull"
@@ -2007,6 +2006,7 @@
 	pixel_y = 8
 	},
 /obj/structure/table/reinforced,
+/obj/item/paper/research_notes,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (SOUTHWEST)";
 	icon_state = "sterile_white";
@@ -4497,6 +4497,7 @@
 /area/prison/research/secret/chemistry)
 "ajr" = (
 /obj/machinery/chem_dispenser,
+/obj/item/reagent_container/glass/beaker/bluespace,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitepurple"
@@ -4513,6 +4514,8 @@
 /obj/machinery/alarm/almayer{
 	dir = 1
 	},
+/obj/structure/table/reinforced,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitepurple"
@@ -4520,6 +4523,7 @@
 /area/prison/research/secret/chemistry)
 "aju" = (
 /obj/structure/closet/secure_closet/chemical,
+/obj/item/paper/research_notes,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -5791,7 +5795,8 @@
 /area/prison/research/secret/chemistry)
 "alU" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_container/glass/beaker/bluespace,
+/obj/item/paper/research_notes,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor/prison{
 	tag = "icon-darkpurplefull2 (NORTHWEST)";
 	icon_state = "darkpurplefull2";
@@ -6191,6 +6196,7 @@
 /area/prison/hanger/research)
 "amR" = (
 /obj/structure/filingcabinet/chestdrawer,
+/obj/item/paper/research_notes,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (SOUTHWEST)";
 	icon_state = "sterile_white";
@@ -6402,7 +6408,7 @@
 /area/prison/research/secret)
 "anr" = (
 /obj/structure/table/reinforced,
-/obj/item/tool/pen,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor/carpet,
 /area/prison/research/RD)
 "ans" = (
@@ -6549,8 +6555,7 @@
 /area/prison/cellblock/highsec/north/north)
 "anK" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/medical/advanced/bruise_pack,
-/obj/item/stack/nanopaste,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
 	icon_state = "whitegreenfull";
@@ -6610,6 +6615,8 @@
 	pixel_x = -3;
 	pixel_y = 7
 	},
+/obj/item/paper/research_notes,
+/obj/item/tool/pen,
 /turf/open/floor/carpet,
 /area/prison/research/RD)
 "anS" = (
@@ -9737,6 +9744,7 @@
 /area/prison/medbay)
 "auh" = (
 /obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "whitepurple"
@@ -12833,6 +12841,7 @@
 /area/prison/medbay)
 "aAT" = (
 /obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
 /turf/open/floor/prison{
 	dir = 6;
 	icon_state = "whitegreen"
@@ -13648,6 +13657,7 @@
 "aCX" = (
 /obj/structure/filingcabinet,
 /obj/item/document_objective/folder,
+/obj/item/paper/research_notes,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "whitegreen"
@@ -18307,6 +18317,7 @@
 "aMO" = (
 /obj/structure/filingcabinet,
 /obj/item/document_objective/paper,
+/obj/item/paper/research_notes,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "blue"
@@ -20188,6 +20199,7 @@
 	pixel_x = -3;
 	pixel_y = 7
 	},
+/obj/item/paper/research_notes,
 /turf/open/floor/carpet,
 /area/prison/command/office)
 "aQO" = (
@@ -38641,7 +38653,7 @@
 	},
 /area/prison/telecomms)
 "bEN" = (
-/obj/machinery/telecomms/relay/preset/station/prison,
+/obj/machinery/computer/telecomms/traffic,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "darkyellow2"
@@ -39188,7 +39200,6 @@
 /turf/open/floor/prison,
 /area/prison/telecomms)
 "bFW" = (
-/obj/machinery/computer/telecomms/traffic,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 4;
@@ -51629,7 +51640,7 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "cio" = (
-/turf/closed/wall/sulaco,
+/turf/closed/wall/almayer,
 /area/prison/pirate)
 "cip" = (
 /obj/machinery/door/poddoor/two_tile_hor{
@@ -52076,6 +52087,10 @@
 	tag = "icon-N";
 	icon_state = "N"
 	},
+/obj/structure/table/reinforced{
+	dir = 1;
+	flipped = 1
+	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "cjv" = (
@@ -52086,6 +52101,10 @@
 /obj/effect/landmark/corpsespawner/prison_security,
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/structure/table/reinforced{
+	dir = 1;
+	flipped = 1
+	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "cjw" = (
@@ -53830,20 +53849,6 @@
 	},
 /turf/closed/wall/prison,
 /area/prison/disposal)
-"cnG" = (
-/obj/item/ammo_casing,
-/obj/structure/table/reinforced{
-	dir = 1;
-	flipped = 1
-	},
-/turf/open/floor/plating,
-/area/prison/pirate)
-"cnH" = (
-/obj/machinery/marine_turret/premade/dumb{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/prison/pirate)
 "cnI" = (
 /obj/structure/table/reinforced{
 	dir = 1;
@@ -54148,6 +54153,10 @@
 /area/prison/pirate)
 "cor" = (
 /obj/item/ammo_magazine/rifle/mar40,
+/obj/structure/table/reinforced{
+	dir = 1;
+	flipped = 1
+	},
 /turf/open/floor/plating{
 	icon_plating = "platebot";
 	icon_state = "platebot"
@@ -54262,7 +54271,7 @@
 /area/prison/security/briefing)
 "coH" = (
 /obj/structure/shuttle/engine/heater,
-/turf/closed/wall/sulaco,
+/turf/closed/wall/almayer,
 /area/prison/pirate)
 "coJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -54405,6 +54414,10 @@
 /obj/effect/landmark{
 	name = "good_item"
 	},
+/obj/structure/table/reinforced{
+	dir = 1;
+	flipped = 1
+	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "cpa" = (
@@ -54428,6 +54441,10 @@
 /area/prison/pirate)
 "cpc" = (
 /obj/item/ammo_magazine/rifle/mar40,
+/obj/structure/table/reinforced{
+	dir = 1;
+	flipped = 1
+	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "cpd" = (
@@ -54474,7 +54491,7 @@
 	icon_state = "router";
 	dir = 1
 	},
-/turf/closed/wall/sulaco,
+/turf/closed/wall/almayer,
 /area/prison/pirate)
 "cpj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -54951,38 +54968,7 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "cqA" = (
-/obj/structure/window/reinforced{
-	tag = "icon-rwindow (NORTH)";
-	icon_state = "rwindow";
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced,
-/obj/structure/grille,
-/turf/open/floor/plating,
-/area/prison/pirate)
-"cqB" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/grille,
-/turf/open/floor/plating,
-/area/prison/pirate)
-"cqC" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	tag = "icon-rwindow (NORTH)";
-	icon_state = "rwindow";
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/grille,
+/obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "cqD" = (
@@ -55247,11 +55233,14 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "crk" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Rocinante Crew Quarters"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/almayer/maint{
+	dir = 1;
+	name = "Rocinante Crew Quarters";
+	req_access = null;
+	req_one_access = null
+	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "crl" = (
@@ -55298,11 +55287,14 @@
 /turf/open/shuttle,
 /area/prison/pirate)
 "crp" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Rocinante Storage/Medical"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/almayer/maint{
+	dir = 1;
+	name = "Rocinante Storage/Medical";
+	req_access = null;
+	req_one_access = null
+	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "crq" = (
@@ -55653,7 +55645,7 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "csl" = (
-/turf/closed/wall/sulaco/unmeltable,
+/turf/closed/wall/almayer/outer,
 /area/prison/pirate)
 "csm" = (
 /obj/structure/table/reinforced,
@@ -55683,13 +55675,14 @@
 	},
 /area/prison/pirate)
 "csp" = (
-/obj/machinery/door/airlock/centcom{
-	name = "Rocinante Bridge"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
+	},
+/obj/machinery/door/airlock/almayer/command{
+	name = "Rocinante Bridge";
+	req_access = null
 	},
 /turf/open/shuttle,
 /area/prison/pirate)
@@ -55722,8 +55715,9 @@
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/door/airlock/centcom{
-	name = "Rocinante Bridge"
+/obj/machinery/door/airlock/almayer/command{
+	name = "Rocinante Bridge";
+	req_access = null
 	},
 /turf/open/shuttle,
 /area/prison/pirate)
@@ -55934,8 +55928,10 @@
 	},
 /area/prison/pirate)
 "csU" = (
-/obj/machinery/door/airlock/centcom{
-	name = "Rocinante Captain's Quarters"
+/obj/machinery/door/airlock/almayer/command{
+	dir = 1;
+	name = "Rocinante Captain's Quarters";
+	req_access = null
 	},
 /turf/open/shuttle,
 /area/prison/pirate)
@@ -56350,8 +56346,11 @@
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Rocinante Storage/Medical"
+/obj/machinery/door/airlock/almayer/maint{
+	dir = 4;
+	name = "Rocinante Storage/Medical";
+	req_access = null;
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
@@ -56535,7 +56534,7 @@
 	},
 /area/prison/pirate)
 "cui" = (
-/obj/machinery/door/airlock{
+/obj/machinery/door/airlock/almayer/generic{
 	name = "Toilet"
 	},
 /turf/open/floor{
@@ -56763,11 +56762,14 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "cuJ" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Rocinante Engine Room"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/almayer/engineering{
+	dir = 1;
+	name = "Rocinante Engine Room";
+	req_access = null;
+	req_one_access = null
+	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "cuK" = (
@@ -59259,6 +59261,15 @@
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/hallway/central/south)
+"fZz" = (
+/obj/structure/table/reinforced,
+/obj/item/paper/research_notes,
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (SOUTHWEST)";
+	icon_state = "sterile_white";
+	dir = 10
+	},
+/area/prison/research)
 "gas" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -59774,6 +59785,11 @@
 /obj/structure/window/framed/prison,
 /turf/open/floor/prison,
 /area/prison/security/monitoring/highsec)
+"jDG" = (
+/obj/structure/table/woodentable,
+/obj/item/paper/research_notes,
+/turf/open/floor/wood,
+/area/prison/residential/north)
 "jFe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -60833,6 +60849,11 @@
 	icon_state = "red"
 	},
 /area/prison/cellblock/highsec/north/north)
+"sMk" = (
+/obj/structure/table,
+/obj/item/paper/research_notes,
+/turf/open/floor/wood,
+/area/prison/quarters/research)
 "sUq" = (
 /obj/effect/decal/siding/wood_siding{
 	icon_state = "wood_siding12"
@@ -60858,6 +60879,11 @@
 	},
 /turf/open/floor/plating,
 /area/prison/residential/central)
+"tpq" = (
+/obj/structure/closet,
+/obj/item/paper/research_notes,
+/turf/open/floor/wood,
+/area/prison/quarters/research)
 "tuQ" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
@@ -61030,6 +61056,17 @@
 	},
 /turf/open/floor/prison,
 /area/prison/residential/central)
+"uTL" = (
+/obj/item/ammo_casing,
+/obj/structure/table/reinforced{
+	dir = 1;
+	flipped = 1
+	},
+/turf/open/floor/plating{
+	icon_plating = "platebot";
+	icon_state = "platebot"
+	},
+/area/prison/pirate)
 "uUO" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -61243,6 +61280,14 @@
 	},
 /turf/open/floor/plating,
 /area/prison/residential/north)
+"xzx" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/fancy/vials/random,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "whitepurplefull"
+	},
+/area/prison/research/secret/testing)
 "xCG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -72445,7 +72490,7 @@ aHP
 avN
 avM
 aJr
-aKj
+jDG
 avl
 aab
 aab
@@ -79306,7 +79351,7 @@ cjw
 cjw
 cjw
 cjw
-cjw
+cnI
 cjw
 cqy
 crk
@@ -79517,7 +79562,7 @@ cjw
 ckk
 cjw
 cjw
-cjw
+cnI
 coZ
 cjw
 cqz
@@ -79728,9 +79773,9 @@ ckk
 cjw
 ckn
 cmS
-cnG
-ckn
-ckn
+ckk
+cpa
+cpa
 cjw
 cio
 cio
@@ -79939,10 +79984,10 @@ cjv
 cjw
 cjw
 ckn
-ckn
-cnH
-ckn
-ckn
+cpb
+cjw
+cpa
+cpa
 cjw
 cqA
 crl
@@ -80147,16 +80192,16 @@ cda
 cbc
 chk
 cir
-cjw
+cnI
 ckl
 cjw
 ckn
 ckn
-cnI
-cmS
-ckn
 cjw
-cqB
+uTL
+cpa
+cjw
+cqA
 crm
 crQ
 csr
@@ -80366,9 +80411,9 @@ ckn
 ckn
 cjw
 cor
-cpa
+ckn
 cjw
-cqB
+cqA
 crn
 crR
 css
@@ -80571,16 +80616,16 @@ cdc
 cbc
 chm
 cir
-cjw
+cnI
 ckl
 cjw
 cmf
 ckn
 ckk
-ckn
 cpb
+cpa
 cjw
-cqC
+cqA
 cro
 crS
 cst
@@ -80783,7 +80828,7 @@ cdd
 cbc
 chn
 cit
-cjw
+cnI
 ckk
 ckk
 ckn
@@ -81002,7 +81047,7 @@ cjw
 cjw
 cjw
 cjw
-cjw
+cnI
 cjw
 cqD
 cio
@@ -91047,7 +91092,7 @@ aaT
 abh
 abs
 abB
-aaH
+acw
 acv
 agt
 adq
@@ -91260,7 +91305,7 @@ aaJ
 abt
 aaT
 aaH
-acw
+xzx
 agt
 agt
 agt
@@ -97236,7 +97281,7 @@ awf
 auk
 arQ
 avp
-awy
+fZz
 axq
 ayu
 arQ
@@ -100634,7 +100679,7 @@ amu
 amu
 aDA
 aCo
-aCq
+sMk
 aEG
 aED
 aHp
@@ -102760,7 +102805,7 @@ aED
 aHp
 aIb
 aED
-aEE
+tpq
 aJU
 aCe
 aDA

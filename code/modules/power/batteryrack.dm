@@ -80,13 +80,13 @@
 	if(stat & BROKEN)	return
 
 	if (online)
-		overlays += image('icons/obj/power.dmi', "gsmes_outputting")
+		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_outputting")
 	if(charging)
-		overlays += image('icons/obj/power.dmi', "gsmes_charging")
+		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_charging")
 
 	var/clevel = chargedisplay()
 	if(clevel>0)
-		overlays += image('icons/obj/power.dmi', "gsmes_og[clevel]")
+		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_og[clevel]")
 	return
 
 
@@ -153,15 +153,15 @@
 	if(stat & BROKEN)	return
 
 	if (online)
-		overlays += image('icons/obj/power.dmi', "gsmes_outputting")
+		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_outputting")
 	if(charging)
-		overlays += image('icons/obj/power.dmi', "gsmes_charging")
+		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_charging")
 	if (overcharge_percent > 100)
-		overlays += image('icons/obj/power.dmi', "gsmes_overcharge")
+		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_overcharge")
 	else
 		var/clevel = chargedisplay()
 		if(clevel>0)
-			overlays += image('icons/obj/power.dmi', "gsmes_og[clevel]")
+			overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_og[clevel]")
 	return
 
 //This mess of if-elses and magic numbers handles what happens if the engies don't pay attention and let it eat too much charge

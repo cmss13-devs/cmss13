@@ -1,7 +1,7 @@
 /obj/structure/fence
 	name = "fence"
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
-	icon = 'icons/obj/structures/fence.dmi'
+	icon = 'icons/obj/structures/props/fence.dmi'
 	icon_state = "fence0"
 	density = 1
 	anchored = 1

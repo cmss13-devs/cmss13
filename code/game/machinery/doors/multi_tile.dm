@@ -12,7 +12,7 @@
 
 /obj/machinery/door/airlock/multi_tile/glass
 	name = "Glass Airlock"
-	icon = 'icons/obj/doors/Door2x1glass.dmi'
+	icon = 'icons/obj/structures/doors/Door2x1glass.dmi'
 	opacity = 0
 	glass = 1
 	assembly_type = /obj/structure/door_assembly/multi_tile
@@ -20,50 +20,50 @@
 
 /obj/machinery/door/airlock/multi_tile/security
 	name = "Security Airlock"
-	icon = 'icons/obj/doors/Door2x1security.dmi'
+	icon = 'icons/obj/structures/doors/Door2x1security.dmi'
 	opacity = 0
 	glass = 1
 
 
 /obj/machinery/door/airlock/multi_tile/command
 	name = "Command Airlock"
-	icon = 'icons/obj/doors/Door2x1command.dmi'
+	icon = 'icons/obj/structures/doors/Door2x1command.dmi'
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/multi_tile/medical
 	name = "Medical Airlock"
-	icon = 'icons/obj/doors/Door2x1medbay.dmi'
+	icon = 'icons/obj/structures/doors/Door2x1medbay.dmi'
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/multi_tile/engineering
 	name = "Engineering Airlock"
-	icon = 'icons/obj/doors/Door2x1engine.dmi'
+	icon = 'icons/obj/structures/doors/Door2x1engine.dmi'
 	opacity = 0
 	glass = 1
 
 
 /obj/machinery/door/airlock/multi_tile/research
 	name = "Research Airlock"
-	icon = 'icons/obj/doors/Door2x1research.dmi'
+	icon = 'icons/obj/structures/doors/Door2x1research.dmi'
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/multi_tile/secure
 	name = "Secure Airlock"
-	icon = 'icons/obj/doors/Door2x1_secure.dmi'
+	icon = 'icons/obj/structures/doors/Door2x1_secure.dmi'
 	openspeed = 34
 
 /obj/machinery/door/airlock/multi_tile/secure2
 	name = "Secure Airlock"
-	icon = 'icons/obj/doors/Door2x1_secure2.dmi'
+	icon = 'icons/obj/structures/doors/Door2x1_secure2.dmi'
 	openspeed = 31
 	req_access = null
 
 /obj/machinery/door/airlock/multi_tile/secure2_glass
 	name = "Secure Airlock"
-	icon = 'icons/obj/doors/Door2x1_secure2_glass.dmi'
+	icon = 'icons/obj/structures/doors/Door2x1_secure2_glass.dmi'
 	opacity = 0
 	glass = 1
 	openspeed = 31
@@ -77,7 +77,7 @@
 
 /obj/machinery/door/airlock/multi_tile/almayer
 	name = "\improper Airlock"
-	icon = 'icons/obj/doors/almayer/comdoor.dmi' //Tiles with is here FOR SAFETY PURPOSES
+	icon = 'icons/obj/structures/doors/comdoor.dmi' //Tiles with is here FOR SAFETY PURPOSES
 	openspeed = 4 //shorter open animation.
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
@@ -90,13 +90,13 @@
 
 /obj/machinery/door/airlock/multi_tile/almayer/generic
 	name = "\improper Airlock"
-	icon = 'icons/obj/doors/almayer/2x1generic.dmi'
+	icon = 'icons/obj/structures/doors/2x1generic.dmi'
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/multi_tile/almayer/medidoor
 	name = "\improper Medical Airlock"
-	icon = 'icons/obj/doors/almayer/2x1medidoor.dmi'
+	icon = 'icons/obj/structures/doors/2x1medidoor.dmi'
 	opacity = 0
 	glass = 1
 	req_access = list()
@@ -104,7 +104,7 @@
 
 /obj/machinery/door/airlock/multi_tile/almayer/comdoor
 	name = "\improper Command Airlock"
-	icon = 'icons/obj/doors/almayer/2x1comdoor.dmi'
+	icon = 'icons/obj/structures/doors/2x1comdoor.dmi'
 	opacity = 0
 	glass = 1
 	req_access = list(ACCESS_MARINE_BRIDGE)
@@ -185,18 +185,18 @@
 
 /obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1
 	name = "\improper Alamo cargo door"
-	icon = 'icons/obj/doors/almayer/dropship1_cargo.dmi'
+	icon = 'icons/obj/structures/doors/dropship1_cargo.dmi'
 
 /obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2
 	name = "\improper Normandy cargo door"
-	icon = 'icons/obj/doors/almayer/dropship2_cargo.dmi'
+	icon = 'icons/obj/structures/doors/dropship2_cargo.dmi'
 
 
 
 
 // Elevator door
 /obj/machinery/door/airlock/multi_tile/elevator
-	icon = 'icons/obj/doors/4x1_elevator.dmi'
+	icon = 'icons/obj/structures/doors/4x1_elevator.dmi'
 	icon_state = "door_closed"
 	width = 4
 	openspeed = 22
@@ -215,7 +215,7 @@
 
 
 /obj/machinery/door/airlock/multi_tile/elevator/access
-	icon = 'icons/obj/doors/4x1_elevator_access.dmi'
+	icon = 'icons/obj/structures/doors/4x1_elevator_access.dmi'
 	opacity = 0
 	glass = 1
 

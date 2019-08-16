@@ -32,7 +32,7 @@
 	var/const/signfont = "Times New Roman"
 	var/const/crayonfont = "Comic Sans MS"
 
-//lipstick wiping is in code/game/objects/items/weapons/cosmetics.dm!
+//lipstick wiping is in code/game/obj/items/weapons/cosmetics.dm!
 
 /obj/item/paper/New()
 	..()

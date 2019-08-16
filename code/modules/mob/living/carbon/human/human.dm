@@ -2,7 +2,7 @@
 	name = "unknown"
 	real_name = "unknown"
 	voice_name = "unknown"
-	icon = 'icons/mob/human.dmi'
+	icon = 'icons/mob/humans/human.dmi'
 	icon_state = "body_m_s"
 	directional_lum = 1 //humans carrying light sources only illuminate the area in front of themselves
 	hud_possible = list(HEALTH_HUD,STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPCHEM_HUD,IMPTRACK_HUD, SPECIALROLE_HUD, SQUAD_HUD)

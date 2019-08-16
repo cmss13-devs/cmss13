@@ -4,7 +4,7 @@ var/global/list/deployed_fultons = list()
 
 /obj/item/stack/fulton
 	name = "fulton recovery device"
-	icon = 'icons/Marine/marine-items.dmi'
+	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "fulton"
 	amount = 20
 	max_amount = 20

@@ -1,6 +1,6 @@
 
 obj/item/limb
-	icon = 'icons/mob/human_races/r_human.dmi'
+	icon = 'icons/mob/humans/species/r_human.dmi'
 
 obj/item/limb/New(loc, mob/living/carbon/human/H)
 	..(loc)
@@ -17,7 +17,7 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 	if(H.species && H.species.icobase)
 		base = icon(H.species.icobase)
 	else
-		base = icon('icons/mob/human_races/r_human.dmi')
+		base = icon('icons/mob/humans/species/r_human.dmi')
 
 
 	icon = base

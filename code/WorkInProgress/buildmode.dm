@@ -39,7 +39,7 @@
 	anchored = 1
 	layer = ABOVE_HUD_LAYER
 	dir = NORTH
-	icon = 'icons/misc/buildmode.dmi'
+	icon = 'icons/old_stuff/buildmode.dmi'
 	var/obj/effect/bmode/buildholder/master = null
 
 /obj/effect/bmode/builddir
@@ -61,7 +61,7 @@
 	return 1
 
 /obj/effect/bmode/buildhelp
-	icon = 'icons/misc/buildmode.dmi'
+	icon = 'icons/old_stuff/buildmode.dmi'
 	icon_state = "buildhelp"
 	screen_loc = "NORTH,WEST+1"
 

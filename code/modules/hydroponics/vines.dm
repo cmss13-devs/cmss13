@@ -180,13 +180,13 @@
 			lastproduce = age
 
 		if(harvest)
-			var/image/fruit_overlay = image('icons/obj/machines/hydroponics.dmi',"")
+			var/image/fruit_overlay = image('icons/obj/structures/machinery/hydroponics.dmi',"")
 			if(seed.product_colour)
 				fruit_overlay.color = seed.product_colour
 			overlays += fruit_overlay
 
 		if(seed.flowers)
-			var/image/flower_overlay = image('icons/obj/machines/hydroponics.dmi',"[seed.flower_icon]")
+			var/image/flower_overlay = image('icons/obj/structures/machinery/hydroponics.dmi',"[seed.flower_icon]")
 			if(seed.flower_colour)
 				flower_overlay.color = seed.flower_colour
 			overlays += flower_overlay

@@ -5,7 +5,7 @@
 /obj/item/lightstick
 	name = "blue lightstick"
 	desc = "You can stick them in the ground"
-	icon = 'icons/obj/lighting.dmi'
+	icon = 'icons/obj/items/lighting.dmi'
 	icon_state = "lightstick_blue0"
 	l_color = "#47A3FF" //Blue
 	var/s_color = "blue"

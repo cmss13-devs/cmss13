@@ -1,5 +1,5 @@
 /obj/item/clothing/under
-	icon = 'icons/obj/clothing/uniforms.dmi'
+	icon = 'icons/obj/items/clothing/uniforms.dmi'
 	name = "under"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -32,7 +32,7 @@
 	drag_unequip = TRUE
 	valid_accessory_slots = list(ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK)
-	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/uniform_monkey_0.dmi')
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/uniform_monkey_0.dmi')
 
 /obj/item/clothing/under/New()
 	if(worn_state)

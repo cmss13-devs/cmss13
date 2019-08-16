@@ -109,7 +109,7 @@
 
 /datum/action/xeno_action/New(Target)
 	..()
-	button.overlays += image('icons/mob/actions.dmi', button, action_icon_state)
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/xeno_action/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner

@@ -215,7 +215,7 @@
 	name = "water cooler"
 	desc = "A machine that dispenses water to drink. It has levers for hot and cold, but it only dispenses room-temperature water."
 	amount_per_transfer_from_this = 5
-	icon = 'icons/obj/machines/vending.dmi'
+	icon = 'icons/obj/structures/machinery/vending.dmi'
 	icon_state = "water_cooler"
 	possible_transfer_amounts = null
 	anchored = 1

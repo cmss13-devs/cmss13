@@ -3,7 +3,7 @@
 //OBJ
 /obj/structure/desertdam/decals
 	name = "desert foliage"
-	icon = 'icons/turf/desertdam_map.dmi'
+	icon = 'icons/turf/floors/desertdam_map.dmi'
 	density = 0
 	anchored = 1
 	unacidable = 1 // can toggle it off anyway
@@ -29,7 +29,7 @@
 /obj/structure/chigusa_sign
 	name = "Chigusa Sign"
 	desc = "A large sign reading 'lazarus landing pop. 73', there's blood smeared on it."
-	icon = 'icons/obj/landing_signs.dmi'
+	icon = 'icons/obj/structures/props/landing_signs.dmi'
 	icon_state = "laz_sign"
 	bound_width = 64
 	bound_height = 64

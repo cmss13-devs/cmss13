@@ -620,7 +620,7 @@
 	var/image_layer = layer + 0.1
 	var/offset = 8
 
-	var/image/I = image('icons/obj/items/projectiles.dmi', src, "muzzle_flash",image_layer)
+	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', src, "muzzle_flash",image_layer)
 	var/matrix/rotate = matrix() //Change the flash angle.
 	rotate.Translate(0, offset)
 	rotate.Turn(angle)

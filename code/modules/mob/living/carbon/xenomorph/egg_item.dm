@@ -2,7 +2,7 @@
 /obj/item/xeno_egg
 	name = "egg"
 	desc = "Some sort of egg."
-	icon = 'icons/Xeno/Effects.dmi'
+	icon = 'icons/mob/xenos/Effects.dmi'
 	icon_state = "egg_item"
 	w_class = SIZE_MASSIVE
 	flags_atom = OPENCONTAINER

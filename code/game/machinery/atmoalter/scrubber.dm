@@ -1,7 +1,7 @@
 /obj/machinery/portable_atmospherics/powered/scrubber
 	name = "Portable Air Scrubber"
 
-	icon = 'icons/obj/machines/atmos.dmi'
+	icon = 'icons/obj/structures/machinery/atmos.dmi'
 	icon_state = "pscrubber:0"
 	density = 1
 	var/on = 0

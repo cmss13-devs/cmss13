@@ -1,7 +1,7 @@
 /obj/item/storage/pouch
 	name = "abstract pouch"
 	desc = "The physical manifestation of a concept of a pouch. Woah."
-	icon = 'icons/Marine/marine-pouches.dmi'
+	icon = 'icons/obj/items/clothing/marine-pouches.dmi'
 	icon_state = "small_drop"
 	w_class = SIZE_LARGE //does not fit in backpack
 	max_w_class = SIZE_SMALL

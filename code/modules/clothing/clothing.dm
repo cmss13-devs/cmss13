@@ -141,7 +141,7 @@
 ///////////////////////////////////////////////////////////////////////
 //Suit
 /obj/item/clothing/suit
-	icon = 'icons/obj/clothing/suits.dmi'
+	icon = 'icons/obj/items/clothing/suits.dmi'
 	name = "suit"
 	var/fire_resist = T0C+100
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
@@ -157,7 +157,7 @@
 	var/blood_overlay_type = "suit"
 	siemens_coefficient = 0.9
 	w_class = SIZE_MEDIUM
-	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_0.dmi')
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_0.dmi')
 
 /obj/item/clothing/suit/update_clothing_icon()
 	if (ismob(src.loc))
@@ -179,7 +179,7 @@
 	return 1
 
 /obj/item/clothing/suit/proc/get_collar()
-	var/icon/C = new('icons/mob/collar.dmi')
+	var/icon/C = new('icons/mob/humans/onmob/collar.dmi')
 	if(icon_state in C.IconStates())
 		var/image/I = image(C, icon_state)
 		I.color = color
@@ -191,14 +191,14 @@
 	name = "gloves"
 	gender = PLURAL //Carn: for grammarically correct text-parsing
 	w_class = SIZE_SMALL
-	icon = 'icons/obj/clothing/gloves.dmi'
+	icon = 'icons/obj/items/clothing/gloves.dmi'
 	siemens_coefficient = 0.50
 	var/wired = 0
 	var/obj/item/cell/cell = 0
 	flags_armor_protection = HANDS
 	flags_equip_slot = SLOT_HANDS
 	attack_verb = list("challenged")
-	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/hands_monkey.dmi')
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/hands_monkey.dmi')
 
 
 /obj/item/clothing/gloves/update_clothing_icon()
@@ -225,7 +225,7 @@
 //Mask
 /obj/item/clothing/mask
 	name = "mask"
-	icon = 'icons/obj/clothing/masks.dmi'
+	icon = 'icons/obj/items/clothing/masks.dmi'
 	flags_armor_protection = HEAD
 	flags_pass = PASSTABLE
 	flags_equip_slot = SLOT_FACE
@@ -251,7 +251,7 @@
 //Shoes
 /obj/item/clothing/shoes
 	name = "shoes"
-	icon = 'icons/obj/clothing/shoes.dmi'
+	icon = 'icons/obj/items/clothing/shoes.dmi'
 	desc = "Comfortable-looking shoes."
 	gender = PLURAL //Carn: for grammarically correct text-parsing
 	siemens_coefficient = 0.9

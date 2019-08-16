@@ -1,7 +1,7 @@
 /obj/structure/window
 	name = "window"
 	desc = "A glass window. It looks thin and flimsy. A few knocks with anything should shatter it."
-	icon = 'icons/obj/structures/windows.dmi'
+	icon = 'icons/turf/walls/windows.dmi'
 	icon_state = "window"
 	density = 1
 	anchored = 1
@@ -402,7 +402,7 @@
 /obj/structure/window/shuttle
 	name = "shuttle window"
 	desc = "A shuttle glass window with a rod matrice specialised for heat resistance. It looks rather strong. Might take a few good hits to shatter it."
-	icon = 'icons/obj/podwindows.dmi'
+	icon = 'icons/turf/podwindows.dmi'
 	icon_state = "window"
 	basestate = "window"
 	health = 40

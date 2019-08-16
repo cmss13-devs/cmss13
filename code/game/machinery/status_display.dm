@@ -5,7 +5,7 @@
 // Alert status
 // And arbitrary messages set by comms computer
 /obj/machinery/status_display
-	icon = 'icons/obj/status_display.dmi'
+	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "frame"
 	name = "status display"
 	anchored = 1
@@ -137,7 +137,7 @@
 	picture_state = state
 	mode = 3
 	remove_display()
-	overlays += image('icons/obj/status_display.dmi', icon_state=picture_state)
+	overlays += image('icons/obj/structures/machinery/status_display.dmi', icon_state=picture_state)
 
 /obj/machinery/status_display/proc/update_display(line1, line2)
 	var/new_text = {"<div style="font-size:[FONT_SIZE];color:[FONT_COLOR];font:'[FONT_STYLE]';text-align:center;" valign="top">[line1]<br>[line2]</div>"}
@@ -182,7 +182,7 @@
 			mode = STATUS_DISPLAY_TIME*/
 
 /obj/machinery/ai_status_display
-	icon = 'icons/obj/status_display.dmi'
+	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "frame"
 	name = "AI display"
 	anchored = 1
@@ -260,7 +260,7 @@
 	picture_state = state
 	if(overlays.len)
 		overlays.Cut()
-	overlays += image('icons/obj/status_display.dmi', icon_state=picture_state)
+	overlays += image('icons/obj/structures/machinery/status_display.dmi', icon_state=picture_state)
 
 #undef FONT_COLOR
 #undef FONT_STYLE

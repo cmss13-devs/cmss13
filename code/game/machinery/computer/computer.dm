@@ -1,6 +1,6 @@
 /obj/machinery/computer
 	name = "computer"
-	icon = 'icons/obj/machines/computer.dmi'
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	density = 1
 	anchored = 1.0
 	use_power = 1

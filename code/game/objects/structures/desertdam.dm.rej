@@ -1,4 +1,4 @@
-diff a/code/game/objects/structures/desertdam.dm b/code/game/objects/structures/desertdam.dm	(rejected hunks)
+diff a/code/game/obj/structures/desertdam.dm b/code/game/obj/structures/desertdam.dm	(rejected hunks)
 @@ -12,7 +12,7 @@
  	name = "loose sand"
     icon_state = "loosesand_overlay_for_asphalt_1"

@@ -24,7 +24,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable
 	name = "attachable item"
 	desc = "It's an attachment. You should never see this."
-	icon = 'icons/Marine/marine-weapons.dmi'
+	icon = 'icons/obj/items/weapons/guns/marine-weapons.dmi'
 	icon_state = null
 	item_state = null
 	var/attach_icon //the sprite to show when the attachment is attached when we want it different from the icon_state.

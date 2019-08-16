@@ -30,7 +30,7 @@
 
 /obj/machinery/computer/shuttle_control/almayer/hangar
 	name = "Elevator Console"
-	icon = 'icons/obj/machines/computer.dmi'
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "supply"
 	unacidable = 1
 	exproof = 1
@@ -40,7 +40,7 @@
 
 /obj/machinery/computer/shuttle_control/almayer/maintenance
 	name = "Elevator Console"
-	icon = 'icons/obj/machines/computer.dmi'
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"
 	unacidable = 1
 	exproof = 1

@@ -1,7 +1,7 @@
 // Snow, wood, sandbags, metal, plasteel
 
 /obj/structure/barricade
-	icon = 'icons/Marine/barricades.dmi'
+	icon = 'icons/obj/structures/barricades.dmi'
 	climbable = TRUE
 	anchored = TRUE
 	density = 1
@@ -228,9 +228,9 @@
 
 	if(is_wired)
 		if(!closed)
-			overlays += image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_wire")
+			overlays += image('icons/obj/structures/barricades.dmi', icon_state = "[src.barricade_type]_wire")
 		else
-			overlays += image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_closed_wire")
+			overlays += image('icons/obj/structures/barricades.dmi', icon_state = "[src.barricade_type]_closed_wire")
 
 // This proc is called whenever the cade is moved, so I thought it was appropriate,
 // especially since the barricade's direction needs to be handled when moving
@@ -729,7 +729,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	icon_state = "folding"
-	icon = 'icons/Marine/marine-items.dmi'
+	icon = 'icons/obj/items/marine-items.dmi'
 
 /obj/item/folding_barricade/attack_self(mob/user as mob)
 	for(var/obj/structure/barricade/B in loc)
@@ -788,9 +788,9 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			for(var/obj/structure/barricade/plasteel/cade in get_step(src, direction))
 				if(((dir & (NORTH|SOUTH) && get_dir(src, cade) & (EAST|WEST)) || (dir & (EAST|WEST) && get_dir(src, cade) & (NORTH|SOUTH))) && dir == cade.dir && cade.linked && cade.closed == src.closed)
 					if(closed)
-						overlays += image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_closed_connection_[get_dir(src, cade)]")
+						overlays += image('icons/obj/structures/barricades.dmi', icon_state = "[src.barricade_type]_closed_connection_[get_dir(src, cade)]")
 					else
-						overlays += image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_connection_[get_dir(src, cade)]")
+						overlays += image('icons/obj/structures/barricades.dmi', icon_state = "[src.barricade_type]_connection_[get_dir(src, cade)]")
 					continue
 
 

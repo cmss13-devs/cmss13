@@ -2,7 +2,7 @@
 /obj/machinery/autodoc
 	name = "\improper autodoc medical system"
 	desc = "A fancy machine developed to be capable of operating on people with minimal human intervention. The interface is rather complex and would only be useful to trained Doctors however."
-	icon = 'icons/obj/machines/cryogenics.dmi'
+	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "autodoc_open"
 	density = 1
 	anchored = 1
@@ -708,7 +708,7 @@
 //Auto Doc console that links up to it.
 /obj/machinery/autodoc_console
 	name = "\improper autodoc medical system control console"
-	icon = 'icons/obj/machines/cryogenics.dmi'
+	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "sleeperconsole"
 	var/obj/machinery/autodoc/connected = null
 	dir = 2

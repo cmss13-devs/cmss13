@@ -14,7 +14,7 @@
 /obj/machinery/light_construct
 	name = "light fixture frame"
 	desc = "A light fixture under construction."
-	icon = 'icons/obj/lighting.dmi'
+	icon = 'icons/obj/items/lighting.dmi'
 	icon_state = "tube-construct-stage1"
 	anchored = 1
 	layer = FLY_LAYER
@@ -116,7 +116,7 @@
 /obj/machinery/light_construct/small
 	name = "small light fixture frame"
 	desc = "A small light fixture under construction."
-	icon = 'icons/obj/lighting.dmi'
+	icon = 'icons/obj/items/lighting.dmi'
 	icon_state = "bulb-construct-stage1"
 	anchored = 1
 	stage = 1
@@ -126,7 +126,7 @@
 // the standard tube light fixture
 /obj/machinery/light
 	name = "light fixture"
-	icon = 'icons/obj/lighting.dmi'
+	icon = 'icons/obj/items/lighting.dmi'
 	var/base_state = "tube"		// base description and icon_state
 	icon_state = "tube1"
 	desc = "A lighting fixture."
@@ -580,7 +580,7 @@
 // will fit into empty /obj/machinery/light of the corresponding type
 
 /obj/item/light_bulb
-	icon = 'icons/obj/lighting.dmi'
+	icon = 'icons/obj/items/lighting.dmi'
 	force = 2
 	throwforce = 5
 	w_class = SIZE_SMALL
@@ -697,7 +697,7 @@
 
 /obj/machinery/landinglight
 	name = "landing light"
-	icon = 'icons/obj/landinglights.dmi'
+	icon = 'icons/obj/structures/props/landinglights.dmi'
 	icon_state = "landingstripetop"
 	desc = "A landing light, if it's flashing stay clear!"
 	var/id = "" // ID for landing zone

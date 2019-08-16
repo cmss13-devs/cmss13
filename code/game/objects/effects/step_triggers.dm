@@ -94,7 +94,7 @@
 /* Instant teleporter */
 
 /obj/effect/step_trigger/teleporter
-	icon = 'icons/misc/debug_group.dmi'
+	icon = 'icons/old_stuff/debug_group.dmi'
 	icon_state = "red"
 	var/teleport_x = 0	// teleportation coordinates (if one is null, then no teleport!)
 	var/teleport_y = 0

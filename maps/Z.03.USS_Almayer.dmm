@@ -11885,7 +11885,7 @@
 	},
 /area/almayer/command/cic)
 "aDL" = (
-/obj/machinery/cm_vending/clothes/synth,
+/obj/machinery/cm_vending/clothing/synth,
 /turf/open/floor/almayer,
 /area/almayer/command/cichallway)
 "aDO" = (
@@ -15940,7 +15940,7 @@
 	},
 /area/almayer/squads/alpha)
 "aPM" = (
-/obj/machinery/cm_vending/clothes/alpha,
+/obj/machinery/cm_vending/clothing/alpha,
 /turf/open/floor/almayer{
 	tag = "icon-red";
 	icon_state = "red"
@@ -15948,14 +15948,14 @@
 /area/almayer/squads/alpha)
 "aPN" = (
 /obj/machinery/light,
-/obj/machinery/cm_vending/clothes/alpha,
+/obj/machinery/cm_vending/clothing/alpha,
 /turf/open/floor/almayer{
 	tag = "icon-red";
 	icon_state = "red"
 	},
 /area/almayer/squads/alpha)
 "aPP" = (
-/obj/machinery/cm_vending/clothes/alpha,
+/obj/machinery/cm_vending/clothing/alpha,
 /turf/open/floor/almayer{
 	tag = "icon-red (SOUTHEAST)";
 	icon_state = "red";
@@ -16260,7 +16260,7 @@
 	},
 /area/almayer/medical/medical_science)
 "aQP" = (
-/obj/machinery/cm_vending/clothes/bravo,
+/obj/machinery/cm_vending/clothing/bravo,
 /turf/open/floor/almayer{
 	tag = "icon-orange (NORTH)";
 	icon_state = "orange";
@@ -16271,7 +16271,7 @@
 /obj/machinery/firealarm{
 	pixel_y = 28
 	},
-/obj/machinery/cm_vending/clothes/bravo,
+/obj/machinery/cm_vending/clothing/bravo,
 /turf/open/floor/almayer{
 	tag = "icon-orange (NORTH)";
 	icon_state = "orange";
@@ -16286,7 +16286,7 @@
 	pixel_x = 0;
 	pixel_y = 28
 	},
-/obj/machinery/cm_vending/clothes/bravo,
+/obj/machinery/cm_vending/clothing/bravo,
 /turf/open/floor/almayer{
 	tag = "icon-orange (NORTH)";
 	icon_state = "orange";
@@ -16299,7 +16299,7 @@
 	icon_state = "tube1";
 	dir = 1
 	},
-/obj/machinery/cm_vending/clothes/bravo,
+/obj/machinery/cm_vending/clothing/bravo,
 /turf/open/floor/almayer{
 	tag = "icon-orange (NORTH)";
 	icon_state = "orange";
@@ -16307,7 +16307,7 @@
 	},
 /area/almayer/squads/bravo)
 "aQT" = (
-/obj/machinery/cm_vending/clothes/alpha,
+/obj/machinery/cm_vending/clothing/alpha,
 /obj/machinery/camera/autoname/almayer{
 	dir = 2;
 	icon_state = "camera";
@@ -16324,7 +16324,7 @@
 /obj/machinery/alarm/almayer{
 	dir = 1
 	},
-/obj/machinery/cm_vending/clothes/bravo,
+/obj/machinery/cm_vending/clothing/bravo,
 /turf/open/floor/almayer{
 	tag = "icon-orange (NORTH)";
 	icon_state = "orange";
@@ -16335,7 +16335,7 @@
 /obj/machinery/status_display{
 	pixel_y = 30
 	},
-/obj/machinery/cm_vending/clothes/bravo,
+/obj/machinery/cm_vending/clothing/bravo,
 /turf/open/floor/almayer{
 	tag = "icon-orange (NORTH)";
 	icon_state = "orange";
@@ -16343,7 +16343,7 @@
 	},
 /area/almayer/squads/bravo)
 "aQW" = (
-/obj/machinery/cm_vending/clothes/bravo,
+/obj/machinery/cm_vending/clothing/bravo,
 /turf/open/floor/almayer{
 	tag = "icon-orange (NORTHEAST)";
 	icon_state = "orange";
@@ -17339,7 +17339,7 @@
 	network = list("almayer");
 	tag = "icon-camera (NORTH)"
 	},
-/obj/machinery/cm_vending/clothes/bravo,
+/obj/machinery/cm_vending/clothing/bravo,
 /turf/open/floor/almayer{
 	tag = "icon-orange (NORTH)";
 	icon_state = "orange";
@@ -20356,7 +20356,7 @@
 /turf/open/floor/wood,
 /area/almayer/living/bridgebunks)
 "bbY" = (
-/obj/machinery/cm_vending/clothes/smartgun/alpha,
+/obj/machinery/cm_vending/clothing/smartgun/alpha,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -20974,7 +20974,7 @@
 	},
 /area/almayer/squads/alpha)
 "bdA" = (
-/obj/machinery/cm_vending/clothes/medic/alpha,
+/obj/machinery/cm_vending/clothing/medic/alpha,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -20992,14 +20992,14 @@
 	},
 /area/almayer/squads/alpha)
 "bdD" = (
-/obj/machinery/cm_vending/clothes/engi/alpha,
+/obj/machinery/cm_vending/clothing/engi/alpha,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
 /area/almayer/squads/alpha)
 "bdH" = (
-/obj/machinery/cm_vending/clothes/specialist/alpha,
+/obj/machinery/cm_vending/clothing/specialist/alpha,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -21018,7 +21018,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bdJ" = (
-/obj/machinery/cm_vending/clothes/leader/alpha,
+/obj/machinery/cm_vending/clothing/leader/alpha,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -25620,7 +25620,7 @@
 /turf/open/floor/plating,
 /area/almayer/squads/req)
 "brr" = (
-/obj/machinery/cm_vending/clothes/medic/bravo,
+/obj/machinery/cm_vending/clothing/medic/bravo,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -25633,7 +25633,7 @@
 	},
 /area/almayer/squads/bravo)
 "brt" = (
-/obj/machinery/cm_vending/clothes/engi/bravo,
+/obj/machinery/cm_vending/clothing/engi/bravo,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -25648,7 +25648,7 @@
 	},
 /area/almayer/medical/operating_room_four)
 "brv" = (
-/obj/machinery/cm_vending/clothes/specialist/bravo,
+/obj/machinery/cm_vending/clothing/specialist/bravo,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -25672,7 +25672,7 @@
 	},
 /area/almayer/engineering/engineering_workshop)
 "bry" = (
-/obj/machinery/cm_vending/clothes/leader/bravo,
+/obj/machinery/cm_vending/clothing/leader/bravo,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -26787,7 +26787,7 @@
 	},
 /area/almayer/engineering/engineering_workshop)
 "buM" = (
-/obj/machinery/cm_vending/clothes/smartgun/bravo,
+/obj/machinery/cm_vending/clothing/smartgun/bravo,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -30811,7 +30811,7 @@
 	},
 /area/almayer/engineering/lower_engineering)
 "bFh" = (
-/obj/machinery/cm_vending/clothes/charlie,
+/obj/machinery/cm_vending/clothing/charlie,
 /turf/open/floor/almayer{
 	tag = "icon-emerald";
 	icon_state = "emerald"
@@ -30819,7 +30819,7 @@
 /area/almayer/squads/charlie)
 "bFi" = (
 /obj/machinery/light,
-/obj/machinery/cm_vending/clothes/charlie,
+/obj/machinery/cm_vending/clothing/charlie,
 /turf/open/floor/almayer{
 	tag = "icon-emerald";
 	icon_state = "emerald"
@@ -31290,7 +31290,7 @@
 	},
 /area/almayer/squads/req)
 "bGB" = (
-/obj/machinery/cm_vending/clothes/charlie,
+/obj/machinery/cm_vending/clothing/charlie,
 /turf/open/floor/almayer{
 	tag = "icon-emerald (SOUTHEAST)";
 	icon_state = "emerald";
@@ -36871,7 +36871,7 @@
 /obj/item/target,
 /obj/item/clothing/suit/apron/overalls{
 	desc = "A cheap replica of a popular armour of choice for colonial rebellions.";
-	icon = 'icons/obj/clothing/cm_suits.dmi';
+	icon = 'icons/obj/items/clothing/cm_suits.dmi';
 	icon_state = "rebel_armor";
 	item_state = null;
 	name = "replica armour"
@@ -40819,7 +40819,7 @@
 /turf/open/floor/plating/almayer,
 /area/almayer/hallways/port_hallway)
 "cdP" = (
-/obj/machinery/cm_vending/clothes/charlie,
+/obj/machinery/cm_vending/clothing/charlie,
 /obj/machinery/camera/autoname/almayer{
 	dir = 2;
 	icon_state = "camera";
@@ -40847,7 +40847,7 @@
 	},
 /area/almayer/hull/lower_hull)
 "cdT" = (
-/obj/machinery/cm_vending/clothes/smartgun/charlie,
+/obj/machinery/cm_vending/clothing/smartgun/charlie,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -41686,7 +41686,7 @@
 	},
 /area/almayer/squads/charlie)
 "cgr" = (
-/obj/machinery/cm_vending/clothes/medic/charlie,
+/obj/machinery/cm_vending/clothing/medic/charlie,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -41699,21 +41699,21 @@
 	},
 /area/almayer/squads/charlie)
 "cgt" = (
-/obj/machinery/cm_vending/clothes/engi/charlie,
+/obj/machinery/cm_vending/clothing/engi/charlie,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
 /area/almayer/squads/charlie)
 "cgu" = (
-/obj/machinery/cm_vending/clothes/specialist/charlie,
+/obj/machinery/cm_vending/clothing/specialist/charlie,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
 /area/almayer/squads/charlie)
 "cgv" = (
-/obj/machinery/cm_vending/clothes/leader/charlie,
+/obj/machinery/cm_vending/clothing/leader/charlie,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -42895,7 +42895,7 @@
 	network = list("almayer");
 	tag = "icon-camera (NORTH)"
 	},
-/obj/machinery/cm_vending/clothes/delta,
+/obj/machinery/cm_vending/clothing/delta,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -43056,7 +43056,7 @@
 	},
 /area/almayer/squads/delta)
 "cks" = (
-/obj/machinery/cm_vending/clothes/delta,
+/obj/machinery/cm_vending/clothing/delta,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -43066,7 +43066,7 @@
 /obj/machinery/firealarm{
 	pixel_y = 28
 	},
-/obj/machinery/cm_vending/clothes/delta,
+/obj/machinery/cm_vending/clothing/delta,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -43080,7 +43080,7 @@
 	pixel_x = 0;
 	pixel_y = 28
 	},
-/obj/machinery/cm_vending/clothes/delta,
+/obj/machinery/cm_vending/clothing/delta,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -43092,7 +43092,7 @@
 	icon_state = "tube1";
 	dir = 1
 	},
-/obj/machinery/cm_vending/clothes/delta,
+/obj/machinery/cm_vending/clothing/delta,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -43102,7 +43102,7 @@
 /obj/machinery/alarm/almayer{
 	dir = 1
 	},
-/obj/machinery/cm_vending/clothes/delta,
+/obj/machinery/cm_vending/clothing/delta,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -43112,7 +43112,7 @@
 /obj/machinery/status_display{
 	pixel_y = 30
 	},
-/obj/machinery/cm_vending/clothes/delta,
+/obj/machinery/cm_vending/clothing/delta,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -43511,7 +43511,7 @@
 	},
 /area/almayer/squads/delta)
 "clJ" = (
-/obj/machinery/cm_vending/clothes/medic/delta,
+/obj/machinery/cm_vending/clothing/medic/delta,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -43524,21 +43524,21 @@
 	},
 /area/almayer/squads/delta)
 "clL" = (
-/obj/machinery/cm_vending/clothes/engi/delta,
+/obj/machinery/cm_vending/clothing/engi/delta,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
 /area/almayer/squads/delta)
 "clM" = (
-/obj/machinery/cm_vending/clothes/specialist/delta,
+/obj/machinery/cm_vending/clothing/specialist/delta,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
 /area/almayer/squads/delta)
 "clN" = (
-/obj/machinery/cm_vending/clothes/leader/delta,
+/obj/machinery/cm_vending/clothing/leader/delta,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -43621,7 +43621,7 @@
 	},
 /area/almayer/hallways/port_hallway)
 "clW" = (
-/obj/machinery/cm_vending/clothes/smartgun/delta,
+/obj/machinery/cm_vending/clothing/smartgun/delta,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -44857,7 +44857,7 @@
 /obj/item/target,
 /obj/item/clothing/suit/apron/overalls{
 	desc = "A cheap replica of a popular armour of choice for colonial rebellions.";
-	icon = 'icons/obj/clothing/cm_suits.dmi';
+	icon = 'icons/obj/items/clothing/cm_suits.dmi';
 	icon_state = "rebel_armor";
 	item_state = null;
 	name = "replica armour"
@@ -47429,7 +47429,7 @@
 /obj/item/target,
 /obj/item/clothing/suit/apron/overalls{
 	desc = "A cheap replica of a popular armour of choice for colonial rebellions.";
-	icon = 'icons/obj/clothing/cm_suits.dmi';
+	icon = 'icons/obj/items/clothing/cm_suits.dmi';
 	icon_state = "rebel_armor";
 	item_state = null;
 	name = "replica armour"
@@ -49764,7 +49764,7 @@
 /obj/item/target,
 /obj/item/clothing/suit/apron/overalls{
 	desc = "A cheap replica of a popular armour of choice for colonial rebellions.";
-	icon = 'icons/obj/clothing/cm_suits.dmi';
+	icon = 'icons/obj/items/clothing/cm_suits.dmi';
 	icon_state = "rebel_armor";
 	item_state = null;
 	name = "replica armour"
@@ -53143,7 +53143,7 @@
 /obj/item/target,
 /obj/item/clothing/suit/apron/overalls{
 	desc = "A cheap replica of a popular armour of choice for colonial rebellions.";
-	icon = 'icons/obj/clothing/cm_suits.dmi';
+	icon = 'icons/obj/items/clothing/cm_suits.dmi';
 	icon_state = "rebel_armor";
 	item_state = null;
 	name = "replica armour"
@@ -54320,7 +54320,7 @@
 /obj/item/target,
 /obj/item/clothing/suit/apron/overalls{
 	desc = "A cheap replica of a popular armour of choice for colonial rebellions.";
-	icon = 'icons/obj/clothing/cm_suits.dmi';
+	icon = 'icons/obj/items/clothing/cm_suits.dmi';
 	icon_state = "rebel_armor";
 	item_state = null;
 	name = "replica armour"
@@ -56211,7 +56211,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/firing_range_north)
 "tnT" = (
-/obj/machinery/cm_vending/clothes/intelligence_officer,
+/obj/machinery/cm_vending/clothing/intelligence_officer,
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "toH" = (

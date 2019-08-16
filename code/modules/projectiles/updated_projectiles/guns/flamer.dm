@@ -46,7 +46,7 @@
 /obj/item/weapon/gun/flamer/update_icon()
 	..()
 	if(lit)
-		var/image/I = image('icons/obj/items/gun.dmi', src, "+lit")
+		var/image/I = image('icons/obj/items/weapons/guns/gun.dmi', src, "+lit")
 		I.pixel_x += 3
 		overlays += I
 

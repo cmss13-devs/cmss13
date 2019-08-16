@@ -1,6 +1,6 @@
 /obj/structure/showcase
 	name = "Showcase"
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "showcase_1"
 	desc = "A stand with the empty body of a cyborg bolted to it."
 	density = 1
@@ -88,7 +88,7 @@
 //Most of icons made by ~Morrinn
 obj/structure/xenoautopsy
 	name = "Research thingies"
-	icon = 'icons/obj/alien_autopsy.dmi'
+	icon = 'icons/obj/structures/props/alien_autopsy.dmi'
 	icon_state = "jarshelf_9"
 
 obj/structure/xenoautopsy/jar_shelf
@@ -127,13 +127,13 @@ obj/structure/xenoautopsy/tank/larva
 
 obj/item/alienjar
 	name = "sample jar"
-	icon = 'icons/obj/alien_autopsy.dmi'
+	icon = 'icons/obj/structures/props/alien_autopsy.dmi'
 	icon_state = "jar_sample"
 	desc = "Used to store organic samples inside for preservation."
 
 	New()
 		var/image/I
-		I = image('icons/obj/alien_autopsy.dmi', "sample_[rand(0,11)]")
+		I = image('icons/obj/structures/props/alien_autopsy.dmi', "sample_[rand(0,11)]")
 		I.layer = src.layer - 0.1
 		overlays += I
 		pixel_x += rand(-3,3)

@@ -6,7 +6,7 @@
 /obj/item/XenoBio
 	name = "An unidentified Alien Organ"
 	desc = "Looking at it makes you want to vomit"
-	icon = 'icons/Marine/Research/Marine_Research.dmi'
+	icon = 'icons/obj/items/Marine_Research.dmi'
 	icon_state = "biomass"
 	origin_tech = "Bio=10" //For all of them for now, until we have specific organs/more techs
 
@@ -40,13 +40,13 @@
 	name = "Strange Item"
 	desc = "Some sort of fucked up item from the Weyland Yutani brand 3D Biometric Printer...  Probably should make a bug report if you got this..."
 	icon_state = "chitin-chunk"
-	icon = 'icons/Marine/Research/Marine_Research.dmi'
+	icon = 'icons/obj/items/Marine_Research.dmi'
 
 /obj/item/XenoItem/ResinPaste
 	name = "Resin Paste"
 	desc = "This resin paste will fix a broken helmet.  (Use by clicking the glue with the armor)."
 	icon_state = "resin-glue"
-	icon = 'icons/Marine/Research/Marine_Research.dmi'
+	icon = 'icons/obj/items/Marine_Research.dmi'
 
 /obj/item/XenoItem/ResinPaste/afterattack(obj/item/clothing/head/helmet/marine/A as obj, mob/user as mob)
 	if (!istype(A) || !istype(usr))
@@ -66,7 +66,7 @@
 	name = "Chitin Plate"
 	desc = "A plate of Chitin Armor that can be attached to your Marine Armor to make it stronger, but will also slow you down.  (Use by clicking the plate with the armor)."
 	icon_state = "chitin-armor"
-	icon = 'icons/Marine/Research/Marine_Research.dmi'
+	icon = 'icons/obj/items/Marine_Research.dmi'
 
 /obj/item/XenoItem/ChitinPlate/afterattack(obj/item/clothing/suit/storage/marine/A as obj, mob/user as mob)
 	if (!istype(A) || !istype(usr))
@@ -95,7 +95,7 @@
 	name = "Anti-Acid Spray"
 	desc = "A spray that makes whatever it's used on unacidable.  Single use."
 	icon_state = "anti-acid"
-	icon = 'icons/Marine/Research/Marine_Research.dmi'
+	icon = 'icons/obj/items/Marine_Research.dmi'
 
 
 /obj/item/XenoItem/AntiAcid/afterattack(obj/A as obj, mob/user as mob, proximity)

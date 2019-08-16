@@ -51,7 +51,7 @@ Buildable meters
 	var/pipename
 	var/connect_types[] = list(1) //1=regular, 2=supply, 3=scrubber
 	force = 7
-	icon = 'icons/obj/items/pipe_item.dmi'
+	icon = 'icons/obj/pipes/pipe_item.dmi'
 	icon_state = "simple"
 	item_state = "buildpipe"
 	flags_atom = FPRINT|CONDUCT
@@ -975,7 +975,7 @@ Buildable meters
 /obj/item/pipe_meter
 	name = "meter"
 	desc = "A meter that can be laid on pipes"
-	icon = 'icons/obj/items/pipe_item.dmi'
+	icon = 'icons/obj/pipes/pipe_item.dmi'
 	icon_state = "meter"
 	item_state = "buildpipe"
 	flags_atom = FPRINT|CONDUCT

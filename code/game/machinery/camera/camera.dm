@@ -1,7 +1,7 @@
 /obj/machinery/camera
 	name = "security camera"
 	desc = "It's used to monitor rooms."
-	icon = 'icons/obj/machines/monitors.dmi'
+	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "camera"
 	use_power = 2
 	idle_power_usage = 5

@@ -8,7 +8,7 @@
 
 /obj/structure/flora/tree/pine
 	name = "pine tree"
-	icon = 'icons/obj/flora/pinetrees.dmi'
+	icon = 'icons/obj/structures/props/pinetrees.dmi'
 	icon_state = "pine_1"
 
 /obj/structure/flora/tree/pine/New()
@@ -17,7 +17,7 @@
 
 /obj/structure/flora/tree/pine/xmas
 	name = "xmas tree"
-	icon = 'icons/obj/flora/pinetrees.dmi'
+	icon = 'icons/obj/structures/props/pinetrees.dmi'
 	icon_state = "pine_c"
 
 /obj/structure/flora/tree/pine/xmas/New()
@@ -25,7 +25,7 @@
 	icon_state = "pine_c"
 
 /obj/structure/flora/tree/dead
-	icon = 'icons/obj/flora/deadtrees.dmi'
+	icon = 'icons/obj/structures/props/deadtrees.dmi'
 	icon_state = "tree_1"
 
 /obj/structure/flora/tree/dead/New()
@@ -35,7 +35,7 @@
 /obj/structure/flora/tree/joshua
 	name = "joshua tree"
 	desc = "A tall tree covered in spiky-like needles, covering it's trunk."
-	icon = 'icons/obj/flora/joshuatree.dmi'
+	icon = 'icons/obj/structures/props/joshuatree.dmi'
 	icon_state = "joshua_1"
 	pixel_x = 0
 	density = 0
@@ -47,7 +47,7 @@
 //grass
 /obj/structure/flora/grass
 	name = "grass"
-	icon = 'icons/obj/flora/snowflora.dmi'
+	icon = 'icons/obj/structures/props/snowflora.dmi'
 	anchored = 1
 
 /obj/structure/flora/grass/brown
@@ -76,7 +76,7 @@
 //bushes
 /obj/structure/flora/bush
 	name = "bush"
-	icon = 'icons/obj/flora/snowflora.dmi'
+	icon = 'icons/obj/structures/props/snowflora.dmi'
 	icon_state = "snowbush1"
 	anchored = 1
 
@@ -86,7 +86,7 @@
 
 /obj/structure/flora/pottedplant
 	name = "potted plant"
-	icon = 'icons/obj/flora/plants.dmi'
+	icon = 'icons/obj/structures/props/plants.dmi'
 	icon_state = "plant-26"
 
 /obj/structure/flora/pottedplant/random
@@ -99,7 +99,7 @@
 
 /obj/structure/flora/ausbushes
 	name = "bush"
-	icon = 'icons/obj/flora/ausflora.dmi'
+	icon = 'icons/obj/structures/props/ausflora.dmi'
 	icon_state = "firstbush_1"
 	anchored = 1
 
@@ -219,7 +219,7 @@
 //*********************//
 /obj/structure/flora/desert
 	anchored = 1
-	icon = 'icons/obj/flora/dam.dmi'
+	icon = 'icons/obj/structures/props/dam.dmi'
 	var/icon_tag = null
 	var/variations = null
 
@@ -337,7 +337,7 @@
 	icon_state = "planttop1"
 
 /obj/structure/jungle/tree
-	icon = 'icons/obj/flora/ground_map64.dmi'
+	icon = 'icons/obj/structures/props/ground_map64.dmi'
 	desc = "What an enormous tree!"
 	layer = ABOVE_FLY_LAYER
 

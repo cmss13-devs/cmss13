@@ -1,6 +1,6 @@
 /obj/item/clothing/glasses
 	name = "glasses"
-	icon = 'icons/obj/clothing/glasses.dmi'
+	icon = 'icons/obj/items/clothing/glasses.dmi'
 	w_class = SIZE_SMALL
 	var/vision_flags = 0
 	var/darkness_view = 0//Base human is 2
@@ -145,7 +145,7 @@
 /obj/item/clothing/glasses/m42_goggles
 	name = "\improper M42 scout sight"
 	desc = "A headset and goggles system for the M42 Scout Rifle. Allows highlighted imaging of surroundings. Click it to toggle."
-	icon = 'icons/obj/clothing/glasses.dmi'
+	icon = 'icons/obj/items/clothing/glasses.dmi'
 	icon_state = "m56_goggles"
 	deactive_state = "m56_goggles_0"
 	vision_flags = SEE_TURFS

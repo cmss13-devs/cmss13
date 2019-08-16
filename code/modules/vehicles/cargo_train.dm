@@ -1,7 +1,7 @@
 /obj/vehicle/train/cargo/engine
 	name = "cargo train tug"
 	desc = "A ridable electric car designed for pulling cargo trolleys."
-	icon = 'icons/obj/vehicles.dmi'
+	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "cargo_engine"
 	on = 0
 	luminosity = 5 //Pretty strong because why not
@@ -16,13 +16,13 @@
 /obj/item/key/cargo_train
 	name = "key"
 	desc = "A keyring with a small steel key, and a yellow fob reading \"Choo Choo!\"."
-	icon = 'icons/obj/vehicles.dmi'
+	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "train_keys"
 	w_class = SIZE_TINY
 
 /obj/vehicle/train/cargo/trolley
 	name = "cargo train trolley"
-	icon = 'icons/obj/vehicles.dmi'
+	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "cargo_trailer"
 	luminosity = 0
 	anchored = 0
@@ -37,7 +37,7 @@
 	cell = new /obj/item/cell/apc
 	verbs -= /atom/movable/verb/pull
 	key = new()
-	var/image/I = new(icon = 'icons/obj/vehicles.dmi', icon_state = "cargo_engine_overlay", layer = src.layer + 0.2) //over mobs
+	var/image/I = new(icon = 'icons/obj/vehicles/vehicles.dmi', icon_state = "cargo_engine_overlay", layer = src.layer + 0.2) //over mobs
 	overlays += I
 	turn_off()	//so engine verbs are correctly set
 

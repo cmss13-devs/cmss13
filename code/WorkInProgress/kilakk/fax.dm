@@ -3,7 +3,7 @@ var/list/alldepartments = list()
 
 /obj/machinery/faxmachine
 	name = "fax machine"
-	icon = 'icons/obj/machines/library.dmi'
+	icon = 'icons/obj/structures/machinery/library.dmi'
 	icon_state = "fax"
 //	req_one_access = list(ACCESS_MARINE_BRIDGE) //Warden needs to be able to Fax solgov too.
 	anchored = 1

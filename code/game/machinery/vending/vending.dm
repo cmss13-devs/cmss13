@@ -15,7 +15,7 @@
 /obj/machinery/vending
 	name = "Vendomat"
 	desc = "A generic vending machine."
-	icon = 'icons/obj/machines/vending.dmi'
+	icon = 'icons/obj/structures/machinery/vending.dmi'
 	icon_state = "generic"
 	anchored = 1
 	density = 1

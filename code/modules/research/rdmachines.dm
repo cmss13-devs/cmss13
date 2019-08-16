@@ -5,7 +5,7 @@
 
 /obj/machinery/r_n_d
 	name = "R&D Device"
-	icon = 'icons/obj/machines/research.dmi'
+	icon = 'icons/obj/structures/machinery/research.dmi'
 	density = 1
 	anchored = 1
 	use_power = 1

@@ -222,7 +222,7 @@
 	item_state = "syringe_[rounded_vol]"
 
 	if(reagents.total_volume)
-		var/image/filling = image('icons/obj/reagentfillings.dmi', src, "syringe10")
+		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "syringe10")
 
 		filling.icon_state = "syringe[rounded_vol]"
 

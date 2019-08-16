@@ -358,7 +358,7 @@ proc/get_id_photo(var/mob/living/carbon/human/H)
 		preview_icon.Blend(temp, ICON_OVERLAY)
 
 
-	var/icon/eyes_s = new/icon("icon" = 'icons/mob/human_face.dmi', "icon_state" = H.species ? H.species.eyes : "eyes_s")
+	var/icon/eyes_s = new/icon("icon" = 'icons/mob/humans/onmob/human_face.dmi', "icon_state" = H.species ? H.species.eyes : "eyes_s")
 
 	eyes_s.Blend(rgb(H.r_eyes, H.g_eyes, H.b_eyes), ICON_ADD)
 
@@ -375,8 +375,8 @@ proc/get_id_photo(var/mob/living/carbon/human/H)
 		eyes_s.Blend(facial_s, ICON_OVERLAY)
 
 	var/icon/clothes_s = null
-	clothes_s = new /icon('icons/mob/uniform_0.dmi', "marine_underpants_s")
-	clothes_s.Blend(new /icon('icons/mob/feet.dmi', "black"), ICON_UNDERLAY)
+	clothes_s = new /icon('icons/mob/humans/onmob/uniform_0.dmi', "marine_underpants_s")
+	clothes_s.Blend(new /icon('icons/mob/humans/onmob/feet.dmi', "black"), ICON_UNDERLAY)
 	preview_icon.Blend(eyes_s, ICON_OVERLAY)
 	if(clothes_s)
 		preview_icon.Blend(clothes_s, ICON_OVERLAY)

@@ -7,8 +7,8 @@
 	var/name                                             // Species name.
 	var/name_plural
 
-	var/icobase = 'icons/mob/human_races/r_human.dmi'    // Normal icon set.
-	var/deform = 'icons/mob/human_races/r_def_human.dmi' // Mutated icon set.
+	var/icobase = 'icons/mob/humans/species/r_human.dmi'    // Normal icon set.
+	var/deform = 'icons/mob/humans/species/r_def_human.dmi' // Mutated icon set.
 	var/prone_icon                                       // If set, draws this from icobase when mob is prone.
 	var/eyes = "eyes_s"                                  // Icon for eyes.
 	var/uses_ethnicity = FALSE						 //Set to TRUE to load proper ethnicities and what have you
@@ -75,7 +75,7 @@
 
 	//Used in icon caching.
 	var/race_key = 0
-	var/icon_template = 'icons/mob/human_races/template.dmi'
+	var/icon_template = 'icons/mob/humans/template.dmi'
 
 	// Species-specific abilities.
 	var/list/inherent_verbs
@@ -275,8 +275,8 @@
 /datum/species/human/spook
 	name = "Horror"
 	name_plural = "Horrors"
-	icobase = 'icons/mob/human_races/r_spooker.dmi'
-	deform = 'icons/mob/human_races/r_spooker.dmi'
+	icobase = 'icons/mob/humans/species/r_spooker.dmi'
+	deform = 'icons/mob/humans/species/r_spooker.dmi'
 	brute_mod = 0.15
 	burn_mod = 1.50
 	reagent_tag = IS_HORROR
@@ -397,8 +397,8 @@ var/toggled_sec_HUD = 0
 /datum/species/early_synthetic
 	name = "Early Synthetic"
 	name_plural = "Early Synthetics"
-	icobase = 'icons/mob/human_races/r_synthetic.dmi'
-	deform = 'icons/mob/human_races/r_synthetic.dmi'
+	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
+	deform = 'icons/mob/humans/species/r_synthetic.dmi'
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	rarity_value = 1.5
 	slowdown = 1.3 //Slower than later synths
@@ -434,8 +434,8 @@ var/toggled_sec_HUD = 0
 	name_plural = "Zombies"
 	slowdown = 1
 	blood_color = "#333333"
-	icobase = 'icons/mob/human_races/r_goo_zed.dmi'
-	deform = 'icons/mob/human_races/r_goo_zed.dmi'
+	icobase = 'icons/mob/humans/species/r_goo_zed.dmi'
+	deform = 'icons/mob/humans/species/r_goo_zed.dmi'
 	death_message = "seizes up and falls limp... But is it dead?"
 	flags = NO_PAIN|NO_BREATHE|NO_SCAN|NO_POISON
 	brute_mod = 0.25 //EXTREME BULLET RESISTANCE
@@ -537,8 +537,8 @@ var/toggled_sec_HUD = 0
 /datum/species/yautja
 	name = "Yautja"
 	name_plural = "Yautja"
-	icobase = 'icons/mob/human_races/r_predator.dmi'
-	deform = 'icons/mob/human_races/r_predator.dmi'
+	icobase = 'icons/mob/humans/species/r_predator.dmi'
+	deform = 'icons/mob/humans/species/r_predator.dmi'
 	brute_mod = 0.33 //Beefy!
 	burn_mod = 0.65
 	pain_mod = 0.3
@@ -657,8 +657,8 @@ var/toggled_sec_HUD = 0
 /datum/species/monkey
 	name = "Monkey"
 	name_plural = "Monkeys"
-	icobase = 'icons/mob/human_races/r_monkey.dmi'
-	deform = 'icons/mob/human_races/r_monkey.dmi'
+	icobase = 'icons/mob/humans/species/monkeys/r_monkey.dmi'
+	deform = 'icons/mob/humans/species/monkeys/r_monkey.dmi'
 	brute_mod = 1.5
 	burn_mod = 1.5
 	pain_mod = 1.5
@@ -747,8 +747,8 @@ var/toggled_sec_HUD = 0
 	name = "Yiren"
 	name_plural = "Yiren"
 
-	icobase = 'icons/mob/human_races/r_yiren.dmi'
-	deform = 'icons/mob/human_races/r_yiren.dmi'
+	icobase = 'icons/mob/humans/species/monkeys/r_yiren.dmi'
+	deform = 'icons/mob/humans/species/monkeys/r_yiren.dmi'
 
 	flesh_color = "#afa59e"
 	base_color = "#333333"
@@ -775,8 +775,8 @@ var/toggled_sec_HUD = 0
 	name = "Farwa"
 	name_plural = "Farwa"
 
-	icobase = 'icons/mob/human_races/r_farwa.dmi'
-	deform = 'icons/mob/human_races/r_farwa.dmi'
+	icobase = 'icons/mob/humans/species/monkeys/r_farwa.dmi'
+	deform = 'icons/mob/humans/species/monkeys/r_farwa.dmi'
 
 	flesh_color = "#afa59e"
 	base_color = "#333333"
@@ -799,8 +799,8 @@ var/toggled_sec_HUD = 0
 	name = "Neaera"
 	name_plural = "Neaera"
 
-	icobase = 'icons/mob/human_races/r_neaera.dmi'
-	deform = 'icons/mob/human_races/r_neaera.dmi'
+	icobase = 'icons/mob/humans/species/monkeys/r_neaera.dmi'
+	deform = 'icons/mob/humans/species/monkeys/r_neaera.dmi'
 
 	flesh_color = "#8cd7a3"
 	blood_color = "#1d2cbf"
@@ -822,8 +822,8 @@ var/toggled_sec_HUD = 0
 	name = "Stok"
 	name_plural = "Stok"
 
-	icobase = 'icons/mob/human_races/r_stok.dmi'
-	deform = 'icons/mob/human_races/r_stok.dmi'
+	icobase = 'icons/mob/humans/species/monkeys/r_stok.dmi'
+	deform = 'icons/mob/humans/species/monkeys/r_stok.dmi'
 
 	tail = "stoktail"
 	eyes = "blank_s"

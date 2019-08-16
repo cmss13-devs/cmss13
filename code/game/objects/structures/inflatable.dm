@@ -1,7 +1,7 @@
 /obj/item/inflatable
 	name = "inflatable wall"
 	desc = "A folded membrane which rapidly expands into a large cubical shape on activation."
-	icon = 'icons/obj/inflatable.dmi'
+	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "folded_wall"
 	w_class = SIZE_MEDIUM
 
@@ -18,7 +18,7 @@
 /obj/item/inflatable/door
 	name = "inflatable door"
 	desc = "A folded membrane which rapidly expands into a simple door on activation."
-	icon = 'icons/obj/inflatable.dmi'
+	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "folded_door"
 
 	attack_self(mob/user)
@@ -40,7 +40,7 @@
 	anchored = 1
 	opacity = 0
 
-	icon = 'icons/obj/inflatable.dmi'
+	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "wall"
 
 	health = 50.0
@@ -158,7 +158,7 @@
 	anchored = 1
 	deflated = TRUE
 
-	icon = 'icons/obj/inflatable.dmi'
+	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "wall_popped"
 
 
@@ -170,7 +170,7 @@
 	name = "popped inflatable door"
 	desc = "This used to be an inflatable door, now it's just a mess of plastic."
 
-	icon = 'icons/obj/inflatable.dmi'
+	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "door_popped"
 
 
@@ -182,7 +182,7 @@
 	anchored = 1
 	opacity = 0
 
-	icon = 'icons/obj/inflatable.dmi'
+	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "door_closed"
 
 	var/state = 0 //closed, 1 == open

@@ -27,8 +27,8 @@
 #ifdef AMAP
 
 	for(var/i = 0; i<icount; i++)
-		imap += icon('icons/misc/imap.dmi', "blank")
-		imap += icon('icons/misc/imap.dmi', "blank")
+		imap += icon('icons/old_stuff/imap.dmi', "blank")
+		imap += icon('icons/old_stuff/imap.dmi', "blank")
 
 
 	for(var/wx = 1 ; wx <= world.maxx; wx++)
@@ -163,7 +163,7 @@
 #else
 
 	for(var/i = 0; i<icount; i++)
-		imap += icon('icons/misc/imap.dmi', "blank")
+		imap += icon('icons/old_stuff/imap.dmi', "blank")
 
 	for(var/wx = 1 ; wx <= world.maxx; wx++)
 

@@ -1,7 +1,7 @@
 /obj/machinery/lapvend
 	name = "Laptop Vendor"
 	desc = "A generic vending machine."
-	icon = 'icons/obj/machines/vending.dmi'
+	icon = 'icons/obj/structures/machinery/vending.dmi'
 	icon_state = "robotics"
 	layer = BELOW_OBJ_LAYER
 	anchored = 1

@@ -162,7 +162,7 @@ obj/structure/bed/Dispose()
 /obj/structure/bed/roller
 	name = "roller bed"
 	desc = "A basic cushioned leather board resting on a small frame. Not very comfortable at all, but allows the patient to rest lying down while moved to another location rapidly."
-	icon = 'icons/obj/rollerbed.dmi'
+	icon = 'icons/obj/structures/rollerbed.dmi'
 	icon_state = "roller_down"
 	anchored = FALSE
 	drag_delay = 0 //Pulling something on wheels is easy
@@ -193,7 +193,7 @@ obj/structure/bed/Dispose()
 /obj/item/roller
 	name = "roller bed"
 	desc = "A collapsed roller bed that can be carried around."
-	icon = 'icons/obj/rollerbed.dmi'
+	icon = 'icons/obj/structures/rollerbed.dmi'
 	icon_state = "folded"
 	w_class = SIZE_SMALL //Fits in a backpack
 	drag_delay = 1 //Pulling something on wheels is easy
@@ -228,7 +228,7 @@ obj/structure/bed/Dispose()
 /obj/item/roller_holder
 	name = "roller bed rack"
 	desc = "A rack for carrying a collapsed roller bed."
-	icon = 'icons/obj/rollerbed.dmi'
+	icon = 'icons/obj/structures/rollerbed.dmi'
 	icon_state = "folded"
 	var/obj/item/roller/held
 
@@ -258,7 +258,7 @@ var/global/list/activated_medevac_stretchers = list()
 /obj/structure/bed/medevac_stretcher
 	name = "medevac stretcher"
 	desc = "A medevac stretcher with integrated beacon for rapid evacuation of an injured patient via dropship lift. Accepts patients and body bags."
-	icon = 'icons/obj/rollerbed.dmi'
+	icon = 'icons/obj/structures/rollerbed.dmi'
 	icon_state = "stretcher_down"
 	buckling_y = 6
 	foldabletype = /obj/item/roller/medevac

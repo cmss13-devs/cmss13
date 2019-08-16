@@ -45,7 +45,7 @@
 
 /obj/effect/decal/siding
 	name = "siding"
-	icon = 'icons/turf/floors.dmi'
+	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "siding1"
 
 /obj/effect/decal/siding/wood_siding

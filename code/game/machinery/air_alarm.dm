@@ -60,7 +60,7 @@
 
 /obj/machinery/alarm
 	name = "alarm"
-	icon = 'icons/obj/machines/monitors.dmi' // I made these really quickly because idk where they have their new air alarm ~Art
+	icon = 'icons/obj/structures/machinery/monitors.dmi' // I made these really quickly because idk where they have their new air alarm ~Art
 	icon_state = "alarm0"
 	anchored = 1
 	use_power = 1

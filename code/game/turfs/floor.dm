@@ -4,7 +4,7 @@
 	//Note to coders, the 'intact_tile' var can no longer be used to determine if the floor is a plating or not.
 	//Use the is_plating(), is_plasteel_floor() and is_light_floor() procs instead. --Errorage
 	name = "floor"
-	icon = 'icons/turf/floors.dmi'
+	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "floor"
 	var/icon_regular_floor = "floor" //Used to remember what icon the tile should have by default
 	var/icon_plating = "plating"

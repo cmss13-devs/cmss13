@@ -98,17 +98,17 @@
 /mob/living/carbon/Xenomorph/update_inv_legcuffed()
 	remove_overlay(X_LEGCUFF_LAYER)
 	if(legcuffed)
-		overlays_standing[X_LEGCUFF_LAYER]	= image("icon" = 'icons/Xeno/Effects.dmi', "icon_state" = "legcuff", "layer" =-X_LEGCUFF_LAYER)
+		overlays_standing[X_LEGCUFF_LAYER]	= image("icon" = 'icons/mob/xenos/Effects.dmi', "icon_state" = "legcuff", "layer" =-X_LEGCUFF_LAYER)
 		apply_overlay(X_LEGCUFF_LAYER)
 
 /mob/living/carbon/Xenomorph/proc/create_shriekwave(var/color = null)
 	var/image/screech_image
 
 	if (color)
-		screech_image = image("icon"='icons/Xeno/2x2_Xenos.dmi', "icon_state" = "shriek_waves_greyscale") // For Praetorian screech
+		screech_image = image("icon"='icons/mob/xenos/2x2_Xenos.dmi', "icon_state" = "shriek_waves_greyscale") // For Praetorian screech
 		screech_image.color = color
 	else
-		screech_image = image("icon"='icons/Xeno/2x2_Xenos.dmi', "icon_state" = "shriek_waves") //Ehh, suit layer's not being used.
+		screech_image = image("icon"='icons/mob/xenos/2x2_Xenos.dmi', "icon_state" = "shriek_waves") //Ehh, suit layer's not being used.
 	
 	overlays_standing[X_SUIT_LAYER] = screech_image
 	apply_overlay(X_SUIT_LAYER)
@@ -116,7 +116,7 @@
 		remove_overlay(X_SUIT_LAYER)
 
 /mob/living/carbon/Xenomorph/proc/create_stomp()
-	overlays_standing[X_SUIT_LAYER] = image("icon"='icons/Xeno/2x2_Xenos.dmi', "icon_state" = "stomp") //Ehh, suit layer's not being used.
+	overlays_standing[X_SUIT_LAYER] = image("icon"='icons/mob/xenos/2x2_Xenos.dmi', "icon_state" = "stomp") //Ehh, suit layer's not being used.
 	apply_overlay(X_SUIT_LAYER)
 	spawn(12)
 		remove_overlay(X_SUIT_LAYER)
@@ -127,11 +127,11 @@
 		var/image/I
 		if(mob_size == MOB_SIZE_BIG)
 			if((!initial(pixel_y) || lying) && !resting && !sleeping)
-				I = image("icon"='icons/Xeno/2x2_Xenos.dmi', "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
+				I = image("icon"='icons/mob/xenos/2x2_Xenos.dmi', "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
 			else
-				I = image("icon"='icons/Xeno/2x2_Xenos.dmi', "icon_state"="alien_fire_lying", "layer"=-X_FIRE_LAYER)
+				I = image("icon"='icons/mob/xenos/2x2_Xenos.dmi', "icon_state"="alien_fire_lying", "layer"=-X_FIRE_LAYER)
 		else
-			I = image("icon"='icons/Xeno/Effects.dmi', "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
+			I = image("icon"='icons/mob/xenos/Effects.dmi', "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
 
 		overlays_standing[X_FIRE_LAYER] = I
 		apply_overlay(X_FIRE_LAYER)

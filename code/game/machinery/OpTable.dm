@@ -1,7 +1,7 @@
 /obj/machinery/optable
 	name = "Operating Table"
 	desc = "Used for advanced medical procedures."
-	icon = 'icons/obj/surgery.dmi'
+	icon = 'icons/obj/structures/machinery/surgery.dmi'
 	icon_state = "table2-idle"
 	density = 1
 	layer = TABLE_LAYER

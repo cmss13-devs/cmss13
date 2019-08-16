@@ -3,7 +3,7 @@
 #define REGULATE_OUTPUT	2	//shuts off when output side is above the target pressure
 
 /obj/machinery/atmospherics/binary/passive_gate
-	icon = 'icons/atmos/passive_gate.dmi'
+	icon = 'icons/obj/pipes/passive_gate.dmi'
 	icon_state = "map"
 	level = 1
 

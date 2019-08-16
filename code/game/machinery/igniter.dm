@@ -1,7 +1,7 @@
 /obj/machinery/igniter
 	name = "igniter"
 	desc = "It's useful for igniting flammable items."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "igniter1"
 	var/id = null
 	var/on = 1.0
@@ -46,7 +46,7 @@
 /obj/machinery/sparker
 	name = "Mounted igniter"
 	desc = "A wall-mounted ignition device."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "migniter"
 	var/id = null
 	var/disable = 0

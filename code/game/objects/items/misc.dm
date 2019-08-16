@@ -30,7 +30,7 @@
 /obj/item/cane
 	name = "cane"
 	desc = "A cane used by a true gentlemen. Or a clown."
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "cane"
 	item_state = "stick"
 	flags_atom = FPRINT|CONDUCT
@@ -71,7 +71,7 @@
 /obj/item/staff
 	name = "wizards staff"
 	desc = "Apparently a staff used by the wizard."
-	icon = 'icons/obj/wizard.dmi'
+	icon = 'icons/obj/items/wizard.dmi'
 	icon_state = "staff"
 	force = 3.0
 	throwforce = 5.0
@@ -84,20 +84,20 @@
 /obj/item/staff/broom
 	name = "broom"
 	desc = "Used for sweeping, and flying into the night while cackling. Black cat not included."
-	icon = 'icons/obj/wizard.dmi'
+	icon = 'icons/obj/items/wizard.dmi'
 	icon_state = "broom"
 
 /obj/item/staff/gentcane
 	name = "Gentlemans Cane"
 	desc = "An ebony cane with an ivory tip."
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "cane"
 	item_state = "stick"
 
 /obj/item/staff/stick
 	name = "stick"
 	desc = "A great tool to drag someone else's drinks across the bar."
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "stick"
 	item_state = "stick"
 	force = 3.0
@@ -112,12 +112,12 @@
 	name = "ectoplasm"
 	desc = "spooky"
 	gender = PLURAL
-	icon = 'icons/obj/wizard.dmi'
+	icon = 'icons/obj/items/wizard.dmi'
 	icon_state = "ectoplasm"
 
 /obj/item/research//Makes testing much less of a pain -Sieve
 	name = "research"
-	icon = 'icons/obj/stock_parts.dmi'
+	icon = 'icons/obj/items/stock_parts.dmi'
 	icon_state = "capacitor"
 	desc = "A debug item for research."
 	origin_tech = "materials=8;programming=8;magnets=8;powerstorage=8;bluespace=8;combat=8;biotech=8;syndicate=8;phorontech=8;engineering=8"

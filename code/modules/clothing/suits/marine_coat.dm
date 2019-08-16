@@ -1,11 +1,11 @@
 /obj/item/clothing/suit/storage/co_jacket
 	name = "Formal dress jacket."
 	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy. Light kevlar is sown into the fabric, along with other forms of basic protection. It has some hooks to allow pistol rigs to attach."
-	icon = 'icons/obj/clothing/cm_suits.dmi'
+	icon = 'icons/obj/items/clothing/cm_suits.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
 	)
-	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	icon_state = "co_jacket"
 	blood_overlay_type = "coat"
 	flags_armor_protection = UPPER_TORSO|ARMS

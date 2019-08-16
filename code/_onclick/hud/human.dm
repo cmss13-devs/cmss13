@@ -1,4 +1,4 @@
-/datum/hud/human/New(mob/living/carbon/human/owner, ui_style='icons/mob/screen1_White.dmi', ui_color = "#ffffff", ui_alpha = 255)
+/datum/hud/human/New(mob/living/carbon/human/owner, ui_style='icons/mob/hud/screen1_White.dmi', ui_color = "#ffffff", ui_alpha = 255)
 	..()
 	var/datum/hud_data/hud_data
 	if(!istype(owner))
@@ -207,7 +207,7 @@
 	//Add predator icon.
 	if(hud_data.is_yautja)
 		pred_power_icon = new /obj/screen()
-		pred_power_icon.icon = 'icons/Predator/hud_icons.dmi'
+		pred_power_icon.icon = 'icons/mob/hud/hud_icons.dmi'
 		pred_power_icon.icon_state = "powerbar10"
 		pred_power_icon.name = "bracer power stored"
 		pred_power_icon.screen_loc = ui_predator_power

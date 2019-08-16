@@ -4,7 +4,7 @@
 
 
 /obj/effect/detector_blip
-	icon = 'icons/Marine/marine-items.dmi'
+	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "detector_blip"
 	layer = BELOW_FULLSCREEN_LAYER
 
@@ -15,7 +15,7 @@
 /obj/item/device/motiondetector
 	name = "motion detector"
 	desc = "A device that detects movement, but ignores marines. The screen will show the amount of unidentified movement detected (up to 9). You can switch modes with Alt+Click."
-	icon = 'icons/Marine/marine-items.dmi'
+	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "detector"
 	item_state = "electronic"
 	flags_atom = FPRINT| CONDUCT

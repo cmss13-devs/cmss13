@@ -81,7 +81,7 @@
 /obj/item/weapon/gun/launcher/spike
 	name = "spike launcher"
 	desc = "A compact Yautja device in the shape of a crescent. It can rapidly fire damaging spikes and automatically recharges."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "spikelauncher"
 	item_state = "spikelauncher"
 	muzzle_flash = null // TO DO, add a decent one.
@@ -178,7 +178,7 @@
 /obj/item/weapon/gun/syringe
 	name = "syringe gun"
 	desc = "A spring loaded rifle designed to fit syringes, designed to incapacitate unruly patients from a distance."
-	icon = 'icons/obj/items/gun.dmi'
+	icon = 'icons/obj/items/weapons/guns/gun.dmi'
 	icon_state = "syringegun"
 	item_state = "syringegun"
 	w_class = SIZE_MEDIUM

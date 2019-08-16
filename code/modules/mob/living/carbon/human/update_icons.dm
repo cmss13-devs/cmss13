@@ -153,10 +153,10 @@ var/global/list/damage_icon_parts = list()
 	if(!damage_icon_parts["[damage_state]_[species.blood_color]_[L_name]"])
 		var/brutestate = copytext(damage_state, 1, 2)
 		var/burnstate = copytext(damage_state, 2)
-		DI = new /icon('icons/mob/dam_human.dmi', "grayscale_[brutestate]")// the damage icon for whole human in grayscale
+		DI = new /icon('icons/mob/humans/dam_human.dmi', "grayscale_[brutestate]")// the damage icon for whole human in grayscale
 		DI.Blend(species.blood_color, ICON_MULTIPLY) //coloring with species' blood color
-		DI.Blend(new /icon('icons/mob/dam_human.dmi', "burn_[burnstate]"), ICON_OVERLAY)//adding burns
-		DI.Blend(new /icon('icons/mob/body_mask.dmi', L_name), ICON_MULTIPLY)		// mask with this organ's pixels
+		DI.Blend(new /icon('icons/mob/humans/dam_human.dmi', "burn_[burnstate]"), ICON_OVERLAY)//adding burns
+		DI.Blend(new /icon('icons/mob/humans/body_mask.dmi', L_name), ICON_MULTIPLY)		// mask with this organ's pixels
 		damage_icon_parts["[damage_state]_[species.blood_color]_[L_name]"] = DI
 	else
 		DI = damage_icon_parts["[damage_state]_[species.blood_color]_[L_name]"]
@@ -187,7 +187,7 @@ var/global/list/damage_icon_parts = list()
 
 	previous_damage_appearance = damage_appearance
 
-	var/icon/standing = new /icon('icons/mob/dam_human.dmi', "00")
+	var/icon/standing = new /icon('icons/mob/humans/dam_human.dmi', "00")
 
 	var/image/standing_image = new /image(icon = standing)
 
@@ -203,7 +203,7 @@ var/global/list/damage_icon_parts = list()
 
 			standing_image.overlays += DI
 		else if(O.has_stump_icon && (!P || !(P.status & LIMB_DESTROYED)))
-			DI = new /icon('icons/mob/dam_human.dmi', "stump_[O.icon_name]")
+			DI = new /icon('icons/mob/humans/dam_human.dmi', "stump_[O.icon_name]")
 
 			standing_image.overlays += DI
 
@@ -235,7 +235,7 @@ var/global/list/damage_icon_parts = list()
 	if(stand_icon)
 		qdel(stand_icon)
 
-	stand_icon = new(species.icon_template ? species.icon_template : 'icons/mob/human.dmi',"blank")
+	stand_icon = new(species.icon_template ? species.icon_template : 'icons/mob/humans/human.dmi',"blank")
 
 	var/icon_key = "[species.race_key][g][ethnicity]"
 	for(var/datum/limb/part in limbs)
@@ -266,8 +266,8 @@ var/global/list/damage_icon_parts = list()
 	//BEGIN CACHED ICON GENERATION.
 
 		// Why don't we just make skeletons/shadows/golems a species? ~Z
-		var/race_icon =   (skeleton ? 'icons/mob/human_races/r_skeleton.dmi' : species.icobase)
-		var/deform_icon = (skeleton ? 'icons/mob/human_races/r_skeleton.dmi' : species.icobase)
+		var/race_icon =   (skeleton ? 'icons/mob/humans/species/r_skeleton.dmi' : species.icobase)
+		var/deform_icon = (skeleton ? 'icons/mob/humans/species/r_skeleton.dmi' : species.icobase)
 
 		//Robotic limbs are handled in get_icon() so all we worry about are missing or dead limbs.
 		//No icon stored, so we need to start with a basic one.
@@ -301,7 +301,7 @@ var/global/list/damage_icon_parts = list()
 			//And no change in rendering for other parts (they icon_position is 0, so goes to 'else' part)
 			if(part.icon_position&(LEFT|RIGHT))
 
-				var/icon/temp2 = new('icons/mob/human.dmi',"blank")
+				var/icon/temp2 = new('icons/mob/humans/human.dmi',"blank")
 
 				temp2.Insert(new/icon(temp,dir=NORTH),dir=NORTH)
 				temp2.Insert(new/icon(temp,dir=SOUTH),dir=SOUTH)
@@ -359,13 +359,13 @@ var/global/list/damage_icon_parts = list()
 	if(has_head)
 		//Eyes
 		if(!skeleton)
-			var/icon/eyes = new/icon('icons/mob/human_face.dmi', species.eyes)
+			var/icon/eyes = new/icon('icons/mob/humans/onmob/human_face.dmi', species.eyes)
 			eyes.Blend(rgb(r_eyes, g_eyes, b_eyes), ICON_ADD)
 			stand_icon.Blend(eyes, ICON_OVERLAY)
 
 		//Mouth	(lipstick!)
 		if(lip_style && (species && species.flags & HAS_LIPS))	//skeletons are allowed to wear lipstick no matter what you think, agouri.
-			stand_icon.Blend(new/icon('icons/mob/human_face.dmi', "camo_[lip_style]_s"), ICON_OVERLAY)
+			stand_icon.Blend(new/icon('icons/mob/humans/onmob/human_face.dmi', "camo_[lip_style]_s"), ICON_OVERLAY)
 
 
 	if(species.flags & HAS_UNDERWEAR)
@@ -373,22 +373,22 @@ var/global/list/damage_icon_parts = list()
 		//Underwear
 		if(underwear >0 && underwear < 3)
 			if(!fat && !skeleton)
-				var/icon/underwear_icon = new /icon('icons/mob/human.dmi', "cryo[underwear]_[g]_s")
-				var/icon/BM = new /icon(icon = 'icons/mob/body_mask.dmi', icon_state = "groin")
-				BM.Blend(new /icon('icons/mob/body_mask.dmi', "torso"), ICON_OR)
+				var/icon/underwear_icon = new /icon('icons/mob/humans/human.dmi', "cryo[underwear]_[g]_s")
+				var/icon/BM = new /icon(icon = 'icons/mob/humans/body_mask.dmi', icon_state = "groin")
+				BM.Blend(new /icon('icons/mob/humans/body_mask.dmi', "torso"), ICON_OR)
 				for(var/datum/limb/leg/L in limbs)
 					var/uniform_icon = "[L.icon_name]"
 					if(L.status & LIMB_DESTROYED && !(L.status & LIMB_AMPUTATED))
 						uniform_icon += "_removed"
-					BM.Blend(new /icon('icons/mob/body_mask.dmi', "[uniform_icon]"), ICON_OR)
+					BM.Blend(new /icon('icons/mob/humans/body_mask.dmi', "[uniform_icon]"), ICON_OR)
 				underwear_icon.Blend(BM, ICON_MULTIPLY)
 				stand_icon.Blend(underwear_icon, ICON_OVERLAY)
 
 		if(job in ROLES_MARINES) //undoing override
 			if(undershirt>0 && undershirt < 5)
-				stand_icon.Blend(new /icon('icons/mob/human.dmi', "cryoshirt[undershirt]_s"), ICON_OVERLAY)
+				stand_icon.Blend(new /icon('icons/mob/humans/human.dmi', "cryoshirt[undershirt]_s"), ICON_OVERLAY)
 		else if(undershirt>0 && undershirt < 5)
-			stand_icon.Blend(new /icon('icons/mob/human.dmi', "cryoshirt[undershirt]_s"), ICON_OVERLAY)
+			stand_icon.Blend(new /icon('icons/mob/humans/human.dmi', "cryoshirt[undershirt]_s"), ICON_OVERLAY)
 
 	icon = stand_icon
 
@@ -409,7 +409,7 @@ var/global/list/damage_icon_parts = list()
 		return
 
 	//base icons
-	var/icon/face_standing	= new /icon('icons/mob/human_hair.dmi',"bald_s")
+	var/icon/face_standing	= new /icon('icons/mob/humans/human_hair.dmi',"bald_s")
 
 	if(f_style && !(wear_suit && (wear_suit.flags_inv_hide & HIDELOWHAIR)) && !(wear_mask && (wear_mask.flags_inv_hide & HIDELOWHAIR)))
 		var/datum/sprite_accessory/facial_hair_style = facial_hair_styles_list[f_style]
@@ -460,7 +460,7 @@ var/global/list/damage_icon_parts = list()
 /mob/living/carbon/human/update_med_icon(var/update_icons=1)
 	overlays_standing[MEDICAL_LAYER] = null
 
-	var/icon/standing = new /icon('icons/mob/med_human.dmi', "blank")
+	var/icon/standing = new /icon('icons/mob/humans/onmob/med_human.dmi', "blank")
 
 	var/image/standing_image = new /image(icon = standing)
 
@@ -473,14 +473,14 @@ var/global/list/damage_icon_parts = list()
 				var/bandaged_icon_name = "gauze_[L.icon_name]"
 				if(L.bandage_icon_amount > 1)
 					bandaged_icon_name += "_[rand(1, L.bandage_icon_amount)]"
-				W.bandaged_icon = new /icon('icons/mob/med_human.dmi', "[bandaged_icon_name]")
+				W.bandaged_icon = new /icon('icons/mob/humans/onmob/med_human.dmi', "[bandaged_icon_name]")
 			standing_image.overlays += W.bandaged_icon
 		if(L.status & LIMB_SPLINTED)
 			if(!L.splinted_icon)
 				var/splinted_icon_name = "splint_[L.icon_name]"
 				if(L.splint_icon_amount > 1)
 					splinted_icon_name += "_[rand(1, L.splint_icon_amount)]"
-				L.splinted_icon = new /icon('icons/mob/med_human.dmi', "[splinted_icon_name]")
+				L.splinted_icon = new /icon('icons/mob/humans/onmob/med_human.dmi', "[splinted_icon_name]")
 			standing_image.overlays += L.splinted_icon
 		else
 			L.splinted_icon = null
@@ -616,7 +616,7 @@ var/global/list/damage_icon_parts = list()
 			for(var/i in marine_helmet.helmet_overlays)
 				I = marine_helmet.helmet_overlays[i]
 				if(I)
-					overlays_standing[HEAD_GARB_LAYER] = image('icons/mob/helmet_garb.dmi',src,I.icon_state)
+					overlays_standing[HEAD_GARB_LAYER] = image('icons/mob/humans/onmob/helmet_garb.dmi',src,I.icon_state)
 	else
 		overlays_standing[HEAD_LAYER] = null
 		overlays_standing[HEAD_SQUAD_LAYER] = null
@@ -788,7 +788,7 @@ var/global/list/damage_icon_parts = list()
 //	if (gender == FEMALE)	g = "f"
 
 	//base icons
-	var/icon/face_lying	= new /icon('icons/mob/human_hair.dmi',"bald_l")
+	var/icon/face_lying	= new /icon('icons/mob/humans/human_hair.dmi',"bald_l")
 
 	if(f_style)
 		var/datum/sprite_accessory/facial_hair_style = facial_hair_styles_list[f_style]
@@ -806,12 +806,12 @@ var/global/list/damage_icon_parts = list()
 
 	//Eyes
 	// Note: These used to be in update_face(), and the fact they're here will make it difficult to create a disembodied head
-	var/icon/eyes_l = new/icon('icons/mob/human_face.dmi', "eyes_l")
+	var/icon/eyes_l = new/icon('icons/mob/humans/onmob/human_face.dmi', "eyes_l")
 	eyes_l.Blend(rgb(r_eyes, g_eyes, b_eyes), ICON_ADD)
 	face_lying.Blend(eyes_l, ICON_OVERLAY)
 
 	if(lip_style)
-		face_lying.Blend(new/icon('icons/mob/human_face.dmi', "lips_[lip_style]_l"), ICON_OVERLAY)
+		face_lying.Blend(new/icon('icons/mob/humans/onmob/human_face.dmi', "lips_[lip_style]_l"), ICON_OVERLAY)
 
 	var/image/face_lying_image = new /image(icon = face_lying)
 	return face_lying_image
@@ -820,9 +820,9 @@ var/global/list/damage_icon_parts = list()
 	overlays_standing[BURST_LAYER] = null
 	var/image/standing
 	if(chestburst == 1)
-		standing = image("icon" = 'icons/Xeno/Effects.dmi',"icon_state" = "burst_stand", "layer" =BURST_LAYER)
+		standing = image("icon" = 'icons/mob/xenos/Effects.dmi',"icon_state" = "burst_stand", "layer" =BURST_LAYER)
 	else if(chestburst == 2)
-		standing = image("icon" = 'icons/Xeno/Effects.dmi',"icon_state" = "bursted_stand", "layer" =BURST_LAYER)
+		standing = image("icon" = 'icons/mob/xenos/Effects.dmi',"icon_state" = "bursted_stand", "layer" =BURST_LAYER)
 
 	overlays_standing[BURST_LAYER] = standing
 
@@ -833,8 +833,8 @@ var/global/list/damage_icon_parts = list()
 	overlays_standing[FIRE_LAYER] = null
 	if(on_fire)
 		switch(fire_stacks)
-			if(1 to 14)	overlays_standing[FIRE_LAYER] = image("icon"='icons/mob/OnFire.dmi', "icon_state"="Standing_weak", "layer"=FIRE_LAYER)
-			if(15 to 20) overlays_standing[FIRE_LAYER] = image("icon"='icons/mob/OnFire.dmi', "icon_state"="Standing_medium", "layer"=FIRE_LAYER)
+			if(1 to 14)	overlays_standing[FIRE_LAYER] = image("icon"='icons/mob/humans/onmob/OnFire.dmi', "icon_state"="Standing_weak", "layer"=FIRE_LAYER)
+			if(15 to 20) overlays_standing[FIRE_LAYER] = image("icon"='icons/mob/humans/onmob/OnFire.dmi', "icon_state"="Standing_medium", "layer"=FIRE_LAYER)
 
 	if(update_icons)
 		update_icons()

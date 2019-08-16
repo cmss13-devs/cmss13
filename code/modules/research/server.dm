@@ -1,6 +1,6 @@
 /obj/machinery/r_n_d/server
 	name = "R&D Server"
-	icon = 'icons/obj/machines/research.dmi'
+	icon = 'icons/obj/structures/machinery/research.dmi'
 	icon_state = "server"
 	var/datum/research/files
 	health = 100

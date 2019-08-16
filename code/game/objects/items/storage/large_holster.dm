@@ -3,7 +3,7 @@
 /obj/item/storage/large_holster
 	name = "\improper Rifle Holster"
 	desc = "holster"
-	icon = 'icons/obj/items/storage/storage.dmi'
+	icon = 'icons/obj/items/storage.dmi'
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	max_w_class = SIZE_LARGE
@@ -101,7 +101,7 @@
 	name = "\improper M276 pattern M39 holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is designed for the M39 SMG, and features a larger frame to support the gun. Due to its unorthodox design, it isn't a very common sight, and is only specially issued."
 	icon_state = "m39_holster"
-	icon = 'icons/obj/clothing/belts.dmi'
+	icon = 'icons/obj/items/clothing/belts.dmi'
 	base_icon = "m39_holster"
 	flags_equip_slot = SLOT_WAIST
 	max_w_class = 4

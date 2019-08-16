@@ -27,7 +27,7 @@
 	density = 1
 	anchored = 0
 	name = "computer frame"
-	icon = 'icons/obj/stock_parts.dmi'
+	icon = 'icons/obj/structures/machinery/stock_parts.dmi'
 	icon_state = "0"
 	var/state = 0
 

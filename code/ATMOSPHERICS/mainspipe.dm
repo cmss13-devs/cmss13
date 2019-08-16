@@ -21,7 +21,7 @@ obj/machinery/atmospherics/pipe/mains_component/proc/mains_burst()
 	parent_pipe.burst()
 
 obj/machinery/atmospherics/mains_pipe
-	icon = 'icons/atmos/mainspipe.dmi'
+	icon = 'icons/obj/pipes/mainspipe.dmi'
 	layer = ATMOS_PIPE_LAYER
 
 	var/volume = 0

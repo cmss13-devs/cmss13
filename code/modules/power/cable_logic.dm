@@ -22,7 +22,7 @@
 	return 0	//If it gets to here, it means no suitable wire to link to was found.
 
 /obj/machinery/logic/indicator/bulb
-	icon = 'icons/obj/lighting.dmi'
+	icon = 'icons/obj/items/lighting.dmi'
 	icon_state = "bulb0"
 
 /obj/machinery/logic/indicator/bulb/process()
@@ -63,7 +63,7 @@
 
 //Constant high generator. This will continue to send a signal of LOGIC_HIGH as long as it exists.
 /obj/machinery/logic/sensor/constant_high
-	icon = 'icons/atmos/outlet_injector.dmi'
+	icon = 'icons/obj/pipes/outlet_injector.dmi'
 	icon_state = "off"
 
 /obj/machinery/logic/sensor/constant_high/process()
@@ -85,7 +85,7 @@
 	var/dir_output = 1
 	var/obj/structure/cable/input
 	var/obj/structure/cable/output
-	icon = 'icons/atmos/heat.dmi'
+	icon = 'icons/obj/pipes/heat.dmi'
 	icon_state = "intact"
 
 /obj/machinery/logic/oneinput/process()
@@ -148,7 +148,7 @@
 	var/obj/structure/cable/input1
 	var/obj/structure/cable/input2
 	var/obj/structure/cable/output
-	icon = 'icons/atmos/mixer.dmi'
+	icon = 'icons/obj/pipes/mixer.dmi'
 	icon_state = "intact_off"
 
 /obj/machinery/logic/twoinput/process()

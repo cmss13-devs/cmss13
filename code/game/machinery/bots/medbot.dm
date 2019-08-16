@@ -6,7 +6,7 @@
 /obj/machinery/bot/medbot
 	name = "Medibot"
 	desc = "A little medical robot. He looks somewhat underwhelmed."
-	icon = 'icons/obj/aibots.dmi'
+	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "medibot0"
 	density = 0
 	anchored = 0
@@ -56,7 +56,7 @@
 
 	spawn(4)
 		if(src.skin)
-			src.overlays += image('icons/obj/aibots.dmi', "medskin_[src.skin]")
+			src.overlays += image('icons/obj/structures/machinery/aibots.dmi', "medskin_[src.skin]")
 
 		src.botcard = new /obj/item/card/id(src)
 		if(isnull(src.botcard_access) || (src.botcard_access.len < 1))

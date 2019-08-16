@@ -2,7 +2,7 @@
 /obj/machinery/line_nexter
 	name = "Turnstile"
 	desc = "a one way barrier combined with a bar to pull people out of line."
-	icon = 'icons/Marine/barricades.dmi'
+	icon = 'icons/obj/structures/barricades.dmi'
 	density = 1
 	icon_state = "turnstile"
 	anchored = 1
@@ -39,7 +39,7 @@
 
 /obj/machinery/line_nexter_control
 	name = "Next Button"
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "doorctrl0"
 	var/id
 

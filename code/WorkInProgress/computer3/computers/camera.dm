@@ -16,7 +16,7 @@
 /obj/machinery/computer3/security/wooden_tv
 	name				= "security cameras"
 	desc				= "An old TV hooked into the stations camera network."
-	icon				= 'icons/obj/machines/computer.dmi'
+	icon				= 'icons/obj/structures/machinery/computer.dmi'
 	icon_state			= "security_det"
 
 	legacy_icon			= 1
@@ -175,7 +175,7 @@
 /datum/file/program/security
 	name			= "camera monitor"
 	desc			= "Connets to the Nanotrasen Camera Network"
-	image			= 'icons/ntos/camera.png'
+	image			= 'icons/old_stuff/ntos/camera.png'
 	active_state	= "camera-static"
 
 	var/datum/file/camnet_key/key = null

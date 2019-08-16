@@ -1,7 +1,7 @@
 /obj/structure/prop/tower
 	name = "destroyed comms tower"
 	desc = "An old company comms tower used to transmit communications between subspace bodies. Looks like this one has seen better days."
-	icon = 'icons/obj/machines/comm_tower.dmi'
+	icon = 'icons/obj/structures/machinery/comm_tower.dmi'
 	icon_state = "comm_tower_destroyed"
 	unacidable = 1
 	density = 1
@@ -14,14 +14,14 @@
 /obj/structure/prop/dam/drill
 	name = "mining drill"
 	desc = "An old mining drill, seemingly used for mining. And possibly drilling."
-	icon = 'icons/obj/structures/drill.dmi'
+	icon = 'icons/obj/structures/props/drill.dmi'
 	icon_state = "drill"
 	bound_height = 96
 
 /obj/structure/prop/dam/truck
 	name = "truck"
 	desc = "An old truck, seems to be broken down."
-	icon = 'icons/obj/structures/vehicles.dmi'
+	icon = 'icons/obj/structures/props/vehicles.dmi'
 	icon_state = "truck"
 	bound_height = 64
 	bound_width = 64
@@ -43,7 +43,7 @@
 /obj/structure/prop/dam/van
 	name = "van"
 	desc = "An old van, seems to be broken down."
-	icon = 'icons/obj/structures/vehicles.dmi'
+	icon = 'icons/obj/structures/props/vehicles.dmi'
 	icon_state = "van"
 	bound_height = 64
 	bound_width = 64
@@ -54,7 +54,7 @@
 
 /obj/structure/prop/dam/crane
 	name = "cargo crane"
-	icon = 'icons/obj/structures/vehicles.dmi'
+	icon = 'icons/obj/structures/props/vehicles.dmi'
 	icon_state = "crane"
 	bound_height = 64
 	bound_width = 64
@@ -69,7 +69,7 @@
 /obj/structure/prop/dam/torii
 	name = "torii arch"
 	desc = "A traditional japanese archway, made out of wood, and adorned with lanterns."
-	icon = 'icons/obj/structures/torii.dmi'
+	icon = 'icons/obj/structures/props/torii.dmi'
 	icon_state = "torii"
 	density = 0
 	pixel_x = -16
@@ -160,7 +160,7 @@
 /obj/structure/prop/dam/gravestone
 	name = "grave marker"
 	desc = "A grave marker, in the traditional japanese style."
-	icon = 'icons/obj/structures/props.dmi'
+	icon = 'icons/obj/structures/props/props.dmi'
 	icon_state = "gravestone1"
 
 /obj/structure/prop/dam/gravestone/New()
@@ -171,7 +171,7 @@
 	name = "boulder"
 	icon_state = "boulder1"
 	desc = "A large rock. It's not cooking anything."
-	icon = 'icons/obj/flora/dam.dmi'
+	icon = 'icons/obj/structures/props/dam.dmi'
 	density = 0
 	unacidable = 1
 /obj/structure/prop/dam/boulder/boulder1
@@ -185,7 +185,7 @@
 /obj/structure/prop/dam/large_boulder
 	name = "boulder"
 	desc = "A large rock. It's not cooking anything."
-	icon = 'icons/obj/structures/boulder_large.dmi'
+	icon = 'icons/obj/structures/props/boulder_large.dmi'
 	bound_height = 64
 	bound_width = 64
 	unacidable = 1
@@ -197,7 +197,7 @@
 /obj/structure/prop/dam/wide_boulder
 	name = "boulder"
 	desc = "A large rock. It's not cooking anything."
-	icon = 'icons/obj/structures/boulder_wide.dmi'
+	icon = 'icons/obj/structures/props/boulder_wide.dmi'
 	bound_height = 32
 	bound_width = 64
 /obj/structure/prop/dam/wide_boulder/boulder1

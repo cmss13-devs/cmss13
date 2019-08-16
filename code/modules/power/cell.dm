@@ -15,9 +15,9 @@
 	if(charge < 0.01)
 		return
 	else if(charge/maxcharge >=0.995)
-		overlays += image('icons/obj/power.dmi', "cell-o2")
+		overlays += image('icons/obj/structures/machinery/power.dmi', "cell-o2")
 	else
-		overlays += image('icons/obj/power.dmi', "cell-o1")
+		overlays += image('icons/obj/structures/machinery/power.dmi', "cell-o1")
 
 /obj/item/cell/proc/percent()		// return % charge of cell
 	return 100.0*charge/maxcharge

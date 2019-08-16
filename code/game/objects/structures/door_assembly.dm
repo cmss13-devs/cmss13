@@ -1,5 +1,5 @@
 obj/structure/door_assembly
-	icon = 'icons/obj/doors/door_assembly.dmi'
+	icon = 'icons/obj/structures/doors/door_assembly.dmi'
 
 	name = "airlock assembly"
 	icon_state = "door_as_0"
@@ -105,7 +105,7 @@ obj/structure/door_assembly
 		glass = -1
 
 	multi_tile
-		icon = 'icons/obj/doors/door_assembly2x1.dmi'
+		icon = 'icons/obj/structures/doors/door_assembly2x1.dmi'
 		dir = EAST
 		var/width = 1
 

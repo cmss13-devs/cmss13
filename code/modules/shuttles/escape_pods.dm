@@ -384,7 +384,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 
 /obj/machinery/door/airlock/evacuation
 	name = "\improper Evacuation Airlock"
-	icon = 'icons/obj/doors/almayer/pod_doors.dmi'
+	icon = 'icons/obj/structures/doors/pod_doors.dmi'
 	heat_proof = 1
 	unacidable = 1
 

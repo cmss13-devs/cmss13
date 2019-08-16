@@ -85,7 +85,7 @@
 /obj/item/tool/minihoe // -- Numbers
 	name = "mini hoe"
 	desc = "It's used for removing weeds or scratching your back."
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "hoe"
 	item_state = "hoe"
 	flags_atom = FPRINT|CONDUCT
@@ -103,7 +103,7 @@
 /obj/item/tool/hatchet
 	name = "hatchet"
 	desc = "A sharp hand hatchet, commonly used to cut things apart, be it timber or other objects. Often found in the hands of woodsmen, scouts, and looters."
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "hatchet"
 	flags_atom = FPRINT|CONDUCT
 	force = 25.0
@@ -122,7 +122,7 @@
 /obj/item/tool/scythe
 	name = "scythe"
 	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "scythe"
 	force = 13.0
 	throwforce = 5.0

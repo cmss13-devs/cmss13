@@ -10,8 +10,8 @@
 	item_state = "state"
 	flags_atom = UNIQUE_ITEM_TYPE
 	//DON'T GRAB STUFF BETWEEN THIS LINE
-	icon = 'icons/obj/clothing/suits.dmi'
-	icon_override = 'icons/mob/suit_0.dmi'  //Don't fuck with this in the future please.
+	icon = 'icons/obj/items/clothing/suits.dmi'
+	icon_override = 'icons/mob/humans/onmob/suit_0.dmi'  //Don't fuck with this in the future please.
 	flags_inventory = BLOCKSHARPOBJ
 	flags_marine_armor = NOFLAGS
 
@@ -433,8 +433,8 @@
 	icon_state = "state"
 	item_state = "state"
 	//DON'T GRAB STUFF BETWEEN THIS LINE
-	icon = 'icons/obj/clothing/hats.dmi'
-	icon_override = 'icons/mob/head_0.dmi'
+	icon = 'icons/obj/items/clothing/hats.dmi'
+	icon_override = 'icons/mob/humans/onmob/head_0.dmi'
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 	flags_atom = UNIQUE_ITEM_TYPE
@@ -1176,7 +1176,7 @@
 /obj/item/clothing/mask/fluff/SAS
 	name = "Legion Mask"
 	desc = "This armor was custom made to resemble the small growing Legion within the galaxy started by one man slowly making its way to becoming a larger Corperation.  DONOR ITEM."
-	icon_override = 'icons/mob/mask.dmi'
+	icon_override = 'icons/mob/humans/onmob/mask.dmi'
 	item_state = "officer_mask"
 	icon_state = "officer_mask"
 	flags_inventory = COVERMOUTH|ALLOWREBREATH
@@ -1185,7 +1185,7 @@
 /obj/item/clothing/mask/fluff/LEO
 	name = "PMC Mask"
 	desc = "A white colored PMC Mask.  DONOR ITEM."
-	icon_override = 'icons/mob/mask.dmi'
+	icon_override = 'icons/mob/humans/onmob/mask.dmi'
 	item_state = "pmc_mask"
 	icon_state = "pmc_mask"
 	flags_inventory = COVERMOUTH|ALLOWREBREATH

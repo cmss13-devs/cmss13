@@ -3,7 +3,7 @@
 	desc = "A ferocious monster!"
 	voice_name = "hellhound"
 	speak_emote = list("roars","grunts","rumbles")
-	icon = 'icons/Predator/hellhound.dmi'
+	icon = 'icons/mob/hellhound.dmi'
 	icon_state = "hellhound"
 	gender = NEUTER
 	health = 120 //Kinda tough. They heal quickly.

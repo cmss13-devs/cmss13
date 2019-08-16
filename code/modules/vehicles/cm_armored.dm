@@ -107,7 +107,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	var/list/damaged_hps = list()
 
 	//Placeholders
-	icon = 'icons/obj/vehicles.dmi'
+	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "cargo_engine"
 
 /obj/vehicle/multitile/root/cm_armored/Dispose()
@@ -363,12 +363,12 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	if(dir in list(NORTH, SOUTH))
 		pixel_x = -32
 		pixel_y = -48
-		icon = 'icons/obj/tank_NS.dmi'
+		icon = 'icons/obj/vehicles/tank_NS.dmi'
 
 	else if(dir in list(EAST, WEST))
 		pixel_x = -48
 		pixel_y = -32
-		icon = 'icons/obj/tank_EW.dmi'
+		icon = 'icons/obj/vehicles/tank_EW.dmi'
 
 	if(clamped)
 		var/image/J = image(icon, icon_state = "vehicle_clamp")

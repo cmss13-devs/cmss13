@@ -8,7 +8,7 @@
 //Should likely just replace this with an actual AI mob in the future. Might as well.
 /mob/living/silicon/decoy
 	name = "AI"
-	icon = 'icons/Marine/ai.dmi'
+	icon = 'icons/obj/structures/machinery/ai.dmi'
 	icon_state = "hydra"
 	anchored = 1
 	canmove = 0

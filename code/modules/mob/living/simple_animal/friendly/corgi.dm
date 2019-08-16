@@ -112,7 +112,7 @@
 		if(health <= 0)
 			head_icon_state += "2"
 
-		var/icon/head_icon = image('icons/mob/corgi_head.dmi',head_icon_state)
+		var/icon/head_icon = image('icons/mob/humans/onmob/corgi_head.dmi',head_icon_state)
 		if(head_icon)
 			overlays += head_icon
 
@@ -121,15 +121,15 @@
 		if(health <= 0)
 			back_icon_state += "2"
 
-		var/icon/back_icon = image('icons/mob/corgi_back.dmi',back_icon_state)
+		var/icon/back_icon = image('icons/mob/humans/onmob/corgi_back.dmi',back_icon_state)
 		if(back_icon)
 			overlays += back_icon
 
 	if(facehugger)
 		if(istype(src, /mob/living/simple_animal/corgi/puppy))
-			overlays += image('icons/mob/mask.dmi',"facehugger_corgipuppy")
+			overlays += image('icons/mob/humans/onmob/mask.dmi',"facehugger_corgipuppy")
 		else
-			overlays += image('icons/mob/mask.dmi',"facehugger_corgi")
+			overlays += image('icons/mob/humans/onmob/mask.dmi',"facehugger_corgi")
 
 	return
 

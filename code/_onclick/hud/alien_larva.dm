@@ -3,7 +3,7 @@
 	var/obj/screen/using
 
 	using = new /obj/screen/mov_intent()
-	using.icon = 'icons/mob/screen1_alien.dmi'
+	using.icon = 'icons/mob/hud/screen1_alien.dmi'
 	using.icon_state = (owner.m_intent == MOVE_INTENT_RUN ? "running" : "walking")
 	static_inventory += using
 	move_intent = using

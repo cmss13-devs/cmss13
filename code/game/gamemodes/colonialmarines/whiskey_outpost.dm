@@ -718,7 +718,7 @@ var/global/spawn_next_wo_wave = 0
 
 //Whiskey Outpost Recycler Machine. Teleports objects to centcomm so it doesnt lag
 /obj/machinery/wo_recycler
-	icon = 'icons/obj/recycling.dmi'
+	icon = 'icons/obj/structures/machinery/recycling.dmi'
 	icon_state = "grinder-o0"
 	var/icon_on = "grinder-o1"
 

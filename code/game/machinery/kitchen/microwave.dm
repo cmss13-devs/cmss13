@@ -1,7 +1,7 @@
 
 /obj/machinery/microwave
 	name = "Microwave"
-	icon = 'icons/obj/kitchen.dmi'
+	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "mw"
 	layer = ABOVE_TABLE_LAYER
 	density = 1

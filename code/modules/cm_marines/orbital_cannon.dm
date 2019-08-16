@@ -241,7 +241,7 @@ var/list/ob_type_fuel_requirements
 /obj/structure/orbital_tray
 	name = "loading tray"
 	desc = "The orbital cannon's loading tray."
-	icon = 'icons/Marine/almayer_props64.dmi'
+	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	icon_state = "cannon_tray"
 	density = 1
 	anchored = 1
@@ -345,7 +345,7 @@ var/list/ob_type_fuel_requirements
 	anchored = 1
 	throwpass = TRUE
 	climbable = TRUE
-	icon = 'icons/Marine/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	var/is_solid_fuel = 0
 
 /obj/structure/ob_ammo/attackby(obj/item/I, mob/user)

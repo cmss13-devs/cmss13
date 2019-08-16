@@ -6,7 +6,7 @@
 /obj/machinery/bot/floorbot
 	name = "Floorbot"
 	desc = "A little floor repairing robot, he looks so excited!"
-	icon = 'icons/obj/aibots.dmi'
+	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "floorbot0"
 	density = 0
 	anchored = 0

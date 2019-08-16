@@ -1,7 +1,7 @@
 /obj/item/device/flashlight
 	name = "flashlight"
 	desc = "A hand-held emergency light."
-	icon = 'icons/obj/lighting.dmi'
+	icon = 'icons/obj/items/lighting.dmi'
 	icon_state = "flashlight"
 	item_state = "flashlight"
 	w_class = SIZE_SMALL
@@ -277,7 +277,7 @@
 	gender = PLURAL
 	name = "glowing slime"
 	desc = "A glowing ball of what appears to be amber."
-	icon = 'icons/obj/lighting.dmi'
+	icon = 'icons/obj/items/lighting.dmi'
 	icon_state = "floor1" //not a slime extract sprite but... something close enough!
 	item_state = "slime"
 	w_class = SIZE_TINY

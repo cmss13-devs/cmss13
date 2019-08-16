@@ -5,7 +5,7 @@
 //////////////////////////////////// dropship weapon ammunition ////////////////////////////
 
 /obj/structure/ship_ammo
-	icon = 'icons/Marine/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	density = TRUE
 	anchored = TRUE
 	throwpass = TRUE
@@ -194,7 +194,7 @@
 /obj/structure/ship_ammo/rocket
 	name = "abstract rocket"
 	icon_state = "single"
-	icon = 'icons/Marine/almayer_props64.dmi'
+	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	equipment_type = /obj/structure/dropship_equipment/weapon/rocket_pod
 	ammo_count = 1
 	max_ammo_count = 1
@@ -307,7 +307,7 @@
 	name = "mini rocket stack"
 	desc = "A pack of laser guided mini rockets."
 	icon_state = "minirocket"
-	icon = 'icons/Marine/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	equipment_type = /obj/structure/dropship_equipment/weapon/minirocket_pod
 	ammo_count = 6
 	max_ammo_count = 6

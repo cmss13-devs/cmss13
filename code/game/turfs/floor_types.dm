@@ -88,7 +88,7 @@
 	..()
 
 /turf/open/floor/plating/plating_catwalk/prison
-	icon = 'icons/turf/prison.dmi'
+	icon = 'icons/turf/floors/prison.dmi'
 
 
 
@@ -100,7 +100,7 @@
 
 
 /turf/open/floor/plating/catwalk
-	icon = 'icons/turf/catwalks.dmi'
+	icon = 'icons/turf/floors/catwalks.dmi'
 	icon_state = "catwalk0"
 	name = "catwalk"
 	desc = "Cats really don't like these things."
@@ -117,7 +117,7 @@
 /turf/open/floor/almayer/empty
 	name = "empty space"
 	desc = "There seems to be an awful lot of machinery down below"
-	icon = 'icons/turf/floors.dmi'
+	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "black"
 
 /turf/open/floor/almayer/empty/is_weedable()
@@ -351,11 +351,11 @@
 
 
 /turf/open/floor/bluegrid
-	icon = 'icons/turf/floors.dmi'
+	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "bcircuit"
 
 /turf/open/floor/greengrid
-	icon = 'icons/turf/floors.dmi'
+	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "gcircuit"
 
 
@@ -397,7 +397,7 @@
 // Start Prison tiles
 
 /turf/open/floor/prison
-	icon = 'icons/turf/prison.dmi'
+	icon = 'icons/turf/floors/prison.dmi'
 	icon_state = "floor"
 
 /turf/open/floor/prison/trim/red
@@ -415,7 +415,7 @@
 
 /turf/open/floor/mech_bay_recharge_floor
 	name = "Mech Bay Recharge Station"
-	icon = 'icons/mecha/mech_bay.dmi'
+	icon = 'icons/old_stuff/mecha/mech_bay.dmi'
 	icon_state = "recharge_floor"
 	var/obj/machinery/mech_bay_recharge_port/recharge_port
 	var/obj/machinery/computer/mech_bay_power_console/recharge_console

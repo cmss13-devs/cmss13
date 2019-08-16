@@ -71,7 +71,7 @@
 	caste_name = "Burrower"
 	name = "Burrower"
 	desc = "A beefy, alien with sharp claws."
-	icon = 'icons/Xeno/xenomorph_64x64.dmi'
+	icon = 'icons/mob/xenos/xenomorph_64x64.dmi'
 	icon_state = "Burrower Walking"
 	plasma_stored = 100
 	plasma_types = list(PLASMA_PURPLE)

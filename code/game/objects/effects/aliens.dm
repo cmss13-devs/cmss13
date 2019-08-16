@@ -6,7 +6,7 @@
 /obj/effect/xenomorph
 	name = "alien thing"
 	desc = "You shouldn't be seeing this."
-	icon = 'icons/Xeno/effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 	unacidable = 1
 	layer = FLY_LAYER
 

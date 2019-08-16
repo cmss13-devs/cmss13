@@ -3,7 +3,7 @@
 	spawner_type = /mob/living/simple_animal/hostile/smartdisc
 	deliveryamt = 1
 	desc = "A strange piece of alien technology. It has many jagged, whirring blades and bizarre writing."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "disk"
 	item_state = "pred_disk"
 	force = 15
@@ -86,7 +86,7 @@
 /mob/living/simple_animal/hostile/smartdisc
 	name = "smart-disc"
 	desc = "A furious, whirling array of blades and alien technology."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "disk_active"
 	icon_living = "disk_active"
 	icon_dead = "disk"

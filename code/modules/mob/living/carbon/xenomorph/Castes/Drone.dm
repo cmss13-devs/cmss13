@@ -55,7 +55,7 @@
 	caste_name = "Drone"
 	name = "Drone"
 	desc = "An Alien Drone"
-	icon = 'icons/Xeno/xenomorph_48x48.dmi'
+	icon = 'icons/mob/xenos/xenomorph_48x48.dmi'
 	icon_state = "Drone Walking"
 	plasma_types = list(PLASMA_PURPLE)
 	tier = 1

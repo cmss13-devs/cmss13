@@ -2,7 +2,7 @@
 /obj/machinery/recycler
 	name = "recycler"
 	desc = "A large crushing machine used to recycle trash."
-	icon = 'icons/obj/recycling.dmi'
+	icon = 'icons/obj/structures/machinery/recycling.dmi'
 	icon_state = "separator-AO1"
 	layer = ABOVE_MOB_LAYER
 	anchored = 1

@@ -72,7 +72,7 @@
 /obj/item/storage/bag/ore
 	name = "Mining Satchel"
 	desc = "This little bugger can be used to store and transport ores."
-	icon = 'icons/obj/mining.dmi'
+	icon = 'icons/obj/structures/props/mining.dmi'
 	icon_state = "satchel"
 	flags_equip_slot = SLOT_WAIST|SLOT_STORE
 	w_class = SIZE_MEDIUM
@@ -87,7 +87,7 @@
 // -----------------------------
 
 /obj/item/storage/bag/plants
-	icon = 'icons/obj/items/storage/storage.dmi'
+	icon = 'icons/obj/items/storage.dmi'
 	icon_state = "plantbag"
 	name = "Plant Bag"
 	storage_slots = 50; //the number of plant pieces it can carry.
@@ -108,7 +108,7 @@
 // However, making it a storage/bag allows us to reuse existing code in some places. -Sayu
 
 /obj/item/storage/bag/sheetsnatcher
-	icon = 'icons/obj/mining.dmi'
+	icon = 'icons/obj/structures/props/mining.dmi'
 	icon_state = "sheetsnatcher"
 	name = "Sheet Snatcher"
 	desc = "A patented Yutani storage system designed for any kind of mineral sheet."
@@ -247,7 +247,7 @@
 // -----------------------------
 
 /obj/item/storage/bag/cash
-	icon = 'icons/obj/items/storage/storage.dmi'
+	icon = 'icons/obj/items/storage.dmi'
 	icon_state = "cashbag"
 	name = "Cash bag"
 	desc = "A bag for carrying lots of cash. It's got a big dollar sign printed on the front."

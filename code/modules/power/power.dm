@@ -1,6 +1,6 @@
 /obj/machinery/power
 	name = null
-	icon = 'icons/obj/power.dmi'
+	icon = 'icons/obj/structures/machinery/power.dmi'
 	anchored = 1.0
 	var/datum/powernet/powernet = null
 	var/directwired = 1		// by default, power machines are connected by a cable in a neighbouring turf

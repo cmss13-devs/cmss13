@@ -3,7 +3,7 @@ var/global/river_activated = 0
 /obj/machinery/filtration/console
 	name = "console"
 	desc = "A console."
-	icon = 'icons/obj/filtration/filtration.dmi'
+	icon = 'icons/obj/structures/machinery/filtration.dmi'
 	icon_state = "console"
 	density = 1
 	anchored = 1

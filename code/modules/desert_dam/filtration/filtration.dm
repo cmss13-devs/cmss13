@@ -66,7 +66,7 @@ var/global/east_riverstart = 0
 /obj/effect/blocker/invisible_wall
 	name = "invisible wall"
 	desc = "You cannot go this way."
-	icon = 'icons/misc/mark.dmi'
+	icon = 'icons/old_stuff/mark.dmi'
 	icon_state = "x4"
 	anchored = 1
 	density = 1
@@ -89,7 +89,7 @@ var/global/east_riverstart = 0
 	unacidable = 1
 	layer = ABOVE_FLY_LAYER //to make it visible in the map editor
 	mouse_opacity = 0
-	icon = 'icons/misc/mark.dmi'
+	icon = 'icons/old_stuff/mark.dmi'
 
 	var/dispersing = 0
 	var/toxic = 1
@@ -254,7 +254,7 @@ var/global/east_riverstart = 0
 
 /obj/machinery/dispersal_initiator
 	name = "\improper Dispersal Initiator"
-	icon = 'icons/misc/mark.dmi'
+	icon = 'icons/old_stuff/mark.dmi'
 	icon_state = "spawn_shuttle_move"
 	layer = ABOVE_FLY_LAYER - 0.1 //to make it visible in the map editor
 	mouse_opacity = 0

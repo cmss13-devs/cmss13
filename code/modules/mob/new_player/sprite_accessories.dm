@@ -46,7 +46,7 @@
 
 /datum/sprite_accessory/hair
 	species_allowed = list("Human","Machine","Synthetic", "Early Synthetic", "Second Generation Synthetic")
-	icon = 'icons/mob/Human_hair.dmi'	  // default icon for all hairs
+	icon = 'icons/mob/humans/human_hair.dmi'	  // default icon for all hairs
 
 /datum/sprite_accessory/hair/crew
 	name = "Crewcut"
@@ -686,8 +686,8 @@
 */
 
 /datum/sprite_accessory/facial_hair
-	icon = 'icons/mob/Human_facial.dmi'
-	gender = MALE // barf (unless you're a dorf, dorfs dig chix /w beards :P)
+	icon = 'icons/mob/humans/human_facial.dmi'
+	gender = MALE
 
 /datum/sprite_accessory/facial_hair/shaved
 	name = "Shaved"
@@ -795,7 +795,7 @@
 //going to have to re-integrate this with surgery
 //let the icon_state hold an icon preview for now
 /datum/sprite_accessory/skin
-	icon = 'icons/mob/human_races/r_human.dmi'
+	icon = 'icons/mob/humans/species/r_human.dmi'
 
 /datum/sprite_accessory/skin/human
 	name = "Default human skin"

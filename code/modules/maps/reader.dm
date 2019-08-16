@@ -91,7 +91,7 @@
 		sleep(-1)
 
 /**
- * Fill a given tile with its area/turf/objects/mobs
+ * Fill a given tile with its area/turf/obj/mobs
  * Variable model is one full map line (e.g /turf/closed/wall{icon_state = "rock"},/area/mine/explored)
  *
  * WORKING :

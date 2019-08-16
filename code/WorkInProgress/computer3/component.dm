@@ -12,7 +12,7 @@
 	name = "computer part"
 	desc = "Holy jesus you donnit now"
 	gender = PLURAL
-	icon = 'icons/obj/stock_parts.dmi'
+	icon = 'icons/obj/structures/machinery/stock_parts.dmi'
 	icon_state = "hdd1"
 	w_class = SIZE_SMALL
 	crit_fail = 0

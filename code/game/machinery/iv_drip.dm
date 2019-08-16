@@ -1,6 +1,6 @@
 /obj/machinery/iv_drip
 	name = "\improper IV drip"
-	icon = 'icons/obj/iv_drip.dmi'
+	icon = 'icons/obj/structures/machinery/iv_drip.dmi'
 	anchored = 0
 	density = 0
 	drag_delay = 1
@@ -20,7 +20,7 @@
 	if(beaker)
 		var/datum/reagents/reagents = beaker.reagents
 		if(reagents.total_volume)
-			var/image/filling = image('icons/obj/iv_drip.dmi', src, "reagent")
+			var/image/filling = image('icons/obj/structures/machinery/iv_drip.dmi', src, "reagent")
 
 			var/percent = round((reagents.total_volume / beaker.volume) * 100)
 			switch(percent)

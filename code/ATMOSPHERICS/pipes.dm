@@ -147,7 +147,7 @@
 		return pipe_color
 
 /obj/machinery/atmospherics/pipe/simple
-	icon = 'icons/atmos/pipes.dmi'
+	icon = 'icons/obj/pipes/pipes.dmi'
 	icon_state = ""
 	var/pipe_icon = "" //what kind of pipe it is and from which dmi is the icon manager getting its icons, "" for simple pipes, "hepipe" for HE pipes, "hejunction" for HE junctions
 	name = "pipe"
@@ -385,7 +385,7 @@
 	color = PIPE_COLOR_PURPLE
 
 /obj/machinery/atmospherics/pipe/simple/insulated
-	icon = 'icons/atmos/red_pipe.dmi'
+	icon = 'icons/obj/pipes/red_pipe.dmi'
 	icon_state = "intact"
 
 	minimum_temperature_difference = 10000
@@ -398,7 +398,7 @@
 
 
 /obj/machinery/atmospherics/pipe/manifold
-	icon = 'icons/atmos/manifold.dmi'
+	icon = 'icons/obj/pipes/manifold.dmi'
 	icon_state = ""
 	name = "pipe manifold"
 	desc = "A manifold composed of regular pipes"
@@ -649,7 +649,7 @@
 	color = PIPE_COLOR_PURPLE
 
 /obj/machinery/atmospherics/pipe/manifold4w
-	icon = 'icons/atmos/manifold.dmi'
+	icon = 'icons/obj/pipes/manifold.dmi'
 	icon_state = ""
 	name = "4-way pipe manifold"
 	desc = "A manifold composed of regular pipes"
@@ -908,7 +908,7 @@
 /obj/machinery/atmospherics/pipe/cap
 	name = "pipe endcap"
 	desc = "An endcap for pipes"
-	icon = 'icons/atmos/pipes.dmi'
+	icon = 'icons/obj/pipes/pipes.dmi'
 	icon_state = ""
 	level = 2
 
@@ -1029,7 +1029,7 @@
 
 
 /obj/machinery/atmospherics/pipe/tank
-	icon = 'icons/atmos/tank.dmi'
+	icon = 'icons/obj/pipes/tank.dmi'
 	icon_state = "air_map"
 
 	name = "Pressure Tank"
@@ -1165,7 +1165,7 @@
 	icon_state = "n2o"
 
 /obj/machinery/atmospherics/pipe/vent
-	icon = 'icons/atmos/pipe_vent.dmi'
+	icon = 'icons/obj/pipes/pipe_vent.dmi'
 	icon_state = "intact"
 
 	name = "Vent"

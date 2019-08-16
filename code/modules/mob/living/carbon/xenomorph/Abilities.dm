@@ -116,7 +116,7 @@
 			break
 	to_chat(X, SPAN_NOTICE("You will now spit [X.ammo.name] ([X.ammo.spit_cost] plasma)."))
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/actions.dmi', button, "shift_spit_[X.ammo.icon_state]")
+	button.overlays += image('icons/mob/hud/actions.dmi', button, "shift_spit_[X.ammo.icon_state]")
 
 // Regurgitate
 /datum/action/xeno_action/regurgitate
@@ -174,7 +174,7 @@
 	to_chat(X, SPAN_NOTICE("You will now build <b>[X.resin2text(X.selected_resin)]\s</b> when secreting resin."))
 	//update the button's overlay with new choice
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/actions.dmi', button, X.resin2text(X.selected_resin))
+	button.overlays += image('icons/mob/hud/actions.dmi', button, X.resin2text(X.selected_resin))
 
 
 // Secrete Resin
@@ -617,17 +617,17 @@
 	if(X.mutation_type == BOILER_SHATTER) // Shatter mutation special logic
 		if(X.ammo.type == /datum/ammo/xeno/boiler_gas/shatter)
 			X.ammo = ammo_list[/datum/ammo/xeno/boiler_gas/shatter/acid]
-			button.overlays += image('icons/mob/actions.dmi', button, "toggle_bomb1")
+			button.overlays += image('icons/mob/hud/actions.dmi', button, "toggle_bomb1")
 		else
 			X.ammo = ammo_list[/datum/ammo/xeno/boiler_gas/shatter]
-			button.overlays += image('icons/mob/actions.dmi', button, "toggle_bomb0")
+			button.overlays += image('icons/mob/hud/actions.dmi', button, "toggle_bomb0")
 	else
 		if(X.ammo.type == /datum/ammo/xeno/boiler_gas)
 			X.ammo = ammo_list[/datum/ammo/xeno/boiler_gas/corrosive]
-			button.overlays += image('icons/mob/actions.dmi', button, "toggle_bomb1")
+			button.overlays += image('icons/mob/hud/actions.dmi', button, "toggle_bomb1")
 		else
 			X.ammo = ammo_list[/datum/ammo/xeno/boiler_gas]
-			button.overlays += image('icons/mob/actions.dmi', button, "toggle_bomb0")
+			button.overlays += image('icons/mob/hud/actions.dmi', button, "toggle_bomb0")
 
 /datum/action/xeno_action/bombard
 	name = "Bombard"
@@ -669,7 +669,7 @@
 		SPAN_NOTICE("You dig yourself into place! If you move, you must wait again to fire."), null, 5)
 		X.bomb_turf = get_turf(X)
 		if(X.client)
-			X.client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
+			X.client.mouse_pointer_icon = file("icons/old_shit/mecha/mecha_mouse.dmi")
 	else
 		X.is_bombarding = 0
 		if(X.client)
@@ -1456,7 +1456,7 @@
 	X.prae_status_flags = X.prae_status_flags^(PRAE_ROYALGUARD_ACIDSPRAY_TYPE) // flip the bit 
 
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/actions.dmi', button, action_icon_result)
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_result)
 
 /datum/action/xeno_action/activable/prae_dance
 	name = "Dance (200)"
@@ -1518,7 +1518,7 @@
 	X.prae_status_flags = X.prae_status_flags^(PRAE_DANCER_TAILATTACK_TYPE) // flip the bit 
 
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/actions.dmi', button, action_icon_result)
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_result)
 
 /datum/action/xeno_action/activable/prae_bomb
 	name = "Toxin Bomb (300)"

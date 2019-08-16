@@ -1,7 +1,7 @@
 /obj/item/weapon/gun
 	name = "gun"
 	desc = "Its a gun. It's pretty terrible, though."
-	icon = 'icons/obj/items/gun.dmi'
+	icon = 'icons/obj/items/weapons/guns/gun.dmi'
 	icon_state = ""
 	item_state = "gun"
 	matter = null
@@ -13,8 +13,8 @@
 	force 		= 5
 	attack_verb = null
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/items_lefthand_1.dmi',
-		WEAR_R_HAND = 'icons/mob/items_righthand_1.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi'
 		)
 	flags_atom = FPRINT|CONDUCT
 	flags_item = TWOHANDED
@@ -1141,7 +1141,7 @@ and you're good to go.
 	var/image_layer = (user && user.dir == SOUTH) ? MOB_LAYER+0.1 : MOB_LAYER-0.1
 	var/offset = 5
 
-	var/image/I = image('icons/obj/items/projectiles.dmi',user,muzzle_flash,image_layer)
+	var/image/I = image('icons/obj/items/weapons/projectiles.dmi',user,muzzle_flash,image_layer)
 	var/matrix/rotate = matrix() //Change the flash angle.
 	rotate.Translate(0, offset)
 	rotate.Turn(angle)

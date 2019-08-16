@@ -3,7 +3,7 @@
 /obj/item/frame/light_fixture
 	name = "light fixture frame"
 	desc = "Used for building lights."
-	icon = 'icons/obj/lighting.dmi'
+	icon = 'icons/obj/items/lighting.dmi'
 	icon_state = "tube-construct-item"
 	flags_atom = FPRINT|CONDUCT
 	var/fixture_type = "tube"
@@ -50,7 +50,7 @@
 /obj/item/frame/light_fixture/small
 	name = "small light fixture frame"
 	desc = "Used for building small lights."
-	icon = 'icons/obj/lighting.dmi'
+	icon = 'icons/obj/items/lighting.dmi'
 	icon_state = "bulb-construct-item"
 	fixture_type = "bulb"
 	sheets_refunded = 1

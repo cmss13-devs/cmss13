@@ -5,7 +5,7 @@
 	anchored = 1
 	opacity = 0
 	density = 0
-	icon = 'icons/obj/lighting.dmi'
+	icon = 'icons/obj/items/lighting.dmi'
 	icon_state = "glowshroomf"
 	layer = ABOVE_TURF_LAYER
 	l_color = "#003300"

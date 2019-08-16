@@ -92,7 +92,7 @@
 	caste_name = "Queen"
 	name = "Queen"
 	desc = "A huge, looming alien creature. The biggest and the baddest."
-	icon = 'icons/Xeno/xenomorph_64x64.dmi'
+	icon = 'icons/mob/xenos/xenomorph_64x64.dmi'
 	icon_state = "Queen Walking"
 	plasma_types = list(PLASMA_ROYAL,PLASMA_CHITIN,PLASMA_PHEROMONE,PLASMA_NEUROTOXIN)
 	attacktext = "bites"
@@ -581,7 +581,7 @@
 	if(stat == DEAD)
 		icon_state = "Queen Dead"
 	else if(ovipositor)
-		icon = 'icons/Xeno/Ovipositor.dmi'
+		icon = 'icons/mob/xenos/Ovipositor.dmi'
 		icon_state = "Queen Ovipositor"
 	else if(lying)
 		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))

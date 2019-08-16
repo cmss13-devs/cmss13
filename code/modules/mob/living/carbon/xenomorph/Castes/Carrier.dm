@@ -73,7 +73,7 @@
 	caste_name = "Carrier"
 	name = "Carrier"
 	desc = "A strange-looking alien creature. It carries a number of scuttling jointed crablike creatures."
-	icon = 'icons/Xeno/xenomorph_64x64.dmi' //They are now like, 2x2
+	icon = 'icons/mob/xenos/xenomorph_64x64.dmi' //They are now like, 2x2
 	icon_state = "Carrier Walking"
 	plasma_types = list(PLASMA_PURPLE)
 

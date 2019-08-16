@@ -64,7 +64,7 @@
 	name = "hunting trap"
 	throw_speed = 2
 	throw_range = 2
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "yauttrap0"
 	desc = "A bizarre Yautja device used for trapping and killing prey."
 	var/armed = 0

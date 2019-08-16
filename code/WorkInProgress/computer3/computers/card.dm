@@ -13,7 +13,7 @@
 /datum/file/program/card_comp
 	name			= "identification card console"
 	desc			= "Used to modify magnetic strip ID cards."
-	image			= 'icons/ntos/cardcomp.png'
+	image			= 'icons/old_stuff/ntos/cardcomp.png'
 	active_state	= "id"
 
 	var/obj/item/card/id/reader = null

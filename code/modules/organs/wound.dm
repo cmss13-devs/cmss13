@@ -254,9 +254,9 @@
 	if(!impact_name)
 		return
 	if(!impact_icon)
-		impact_icon = new /icon(icon = 'icons/mob/dam_human.dmi', icon_state = "[impact_name]_[limb_name]")
+		impact_icon = new /icon(icon = 'icons/mob/humans/dam_human.dmi', icon_state = "[impact_name]_[limb_name]")
 	else
-		var/icon/temp_impact_icon = new /icon(icon = 'icons/mob/dam_human.dmi', icon_state = "[impact_name]_[limb_name]")
+		var/icon/temp_impact_icon = new /icon(icon = 'icons/mob/humans/dam_human.dmi', icon_state = "[impact_name]_[limb_name]")
 		impact_icon.Blend(temp_impact_icon, ICON_OVERLAY)
 
 /** CUTS **/

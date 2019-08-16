@@ -127,7 +127,7 @@
 
 //Access controller for door control - used in virology and the like
 /obj/machinery/embedded_controller/radio/airlock/access_controller
-	icon = 'icons/obj/airlock_machines.dmi'
+	icon = 'icons/obj/structures/machinery/airlock_machines.dmi'
 	icon_state = "access_control_standby"
 
 	name = "Access Controller"

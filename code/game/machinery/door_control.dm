@@ -6,7 +6,7 @@
 /obj/machinery/door_control
 	name = "remote door-control"
 	desc = "It controls doors, remotely."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "doorctrl0"
 	desc = "A remote control-switch for a door."
 	power_channel = ENVIRON

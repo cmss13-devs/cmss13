@@ -14,7 +14,7 @@
 
 /obj/effect/overlay/palmtree_r
 	name = "Palm tree"
-	icon = 'icons/misc/beach2.dmi'
+	icon = 'icons/turf/beach2.dmi'
 	icon_state = "palm1"
 	density = 1
 	layer = FLY_LAYER
@@ -22,7 +22,7 @@
 
 /obj/effect/overlay/palmtree_l
 	name = "Palm tree"
-	icon = 'icons/misc/beach2.dmi'
+	icon = 'icons/turf/beach2.dmi'
 	icon_state = "palm2"
 	density = 1
 	layer = FLY_LAYER
@@ -30,12 +30,12 @@
 
 /obj/effect/overlay/coconut
 	name = "Coconuts"
-	icon = 'icons/misc/beach.dmi'
+	icon = 'icons/turf/floors/beach.dmi'
 	icon_state = "coconuts"
 
 /obj/effect/overlay/danger
 	name = "Danger"
-	icon = 'icons/obj/items/grenade.dmi'
+	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "danger"
 	layer = ABOVE_FLY_LAYER
 
@@ -58,7 +58,7 @@
 /obj/effect/overlay/temp/point
 	name = "arrow"
 	desc = "It's an arrow hanging in mid-air. There may be a wizard about."
-	icon = 'icons/mob/screen1.dmi'
+	icon = 'icons/mob/hud/screen1.dmi'
 	icon_state = "arrow"
 	anchored = 1
 	effect_duration = 25
@@ -73,7 +73,7 @@
 	anchored = TRUE
 	mouse_opacity = 1
 	luminosity = 2
-	icon = 'icons/obj/items/projectiles.dmi'
+	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "laser_target_coordinate"
 	effect_duration = 600
 	var/obj/item/device/binoculars/tactical/source_binoc
@@ -91,7 +91,7 @@
 	anchored = TRUE
 	mouse_opacity = 1
 	luminosity = 2
-	icon = 'icons/obj/items/projectiles.dmi'
+	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "laser_target2"
 	effect_duration = 600
 	var/target_id
@@ -146,7 +146,7 @@
 	luminosity = 2
 	effect_duration = 10
 	mouse_opacity = 0
-	icon = 'icons/obj/items/projectiles.dmi'
+	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "laser_target3"
 
 /obj/effect/overlay/temp/blinking_laser/Dispose()
@@ -194,7 +194,7 @@
 
 
 /obj/effect/overlay/temp/gib_animation/xeno
-	icon = 'icons/Xeno/xenomorph_48x48.dmi'
+	icon = 'icons/mob/xenos/xenomorph_48x48.dmi'
 	effect_duration = 10
 
 /obj/effect/overlay/temp/gib_animation/xeno/New(Loc, mob/source_mob, gib_icon, new_icon)

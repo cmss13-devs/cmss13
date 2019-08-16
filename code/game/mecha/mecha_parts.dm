@@ -4,7 +4,7 @@
 
 /obj/item/mecha_parts
 	name = "mecha part"
-	icon = 'icons/mecha/mech_construct.dmi'
+	icon = 'icons/old_stuff/mecha/mech_construct.dmi'
 	icon_state = "blank"
 	w_class = SIZE_HUGE
 	flags_atom = FPRINT|CONDUCT

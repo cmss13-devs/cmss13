@@ -10,7 +10,7 @@
 
 
 obj/structure/windoor_assembly
-	icon = 'icons/obj/doors/windoor.dmi'
+	icon = 'icons/obj/structures/doors/windoor.dmi'
 
 	name = "Windoor Assembly"
 	icon_state = "l_windoor_assembly01"

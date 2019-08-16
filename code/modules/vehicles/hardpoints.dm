@@ -8,7 +8,7 @@ Currently only has the tank hardpoints
 	var/slot //What slot do we attach to?
 	var/obj/vehicle/multitile/root/cm_armored/owner //Who do we work for?
 
-	icon = 'icons/obj/hardpoint_modules.dmi'
+	icon = 'icons/obj/vehicles/hardpoint_modules.dmi'
 	icon_state = "tires" //Placeholder
 
 	health = 100
@@ -177,7 +177,7 @@ Currently only has the tank hardpoints
 
 	var/image_layer = owner.layer + 0.1
 
-	var/image/I = image('icons/obj/items/projectiles.dmi',src,"muzzle_flash",image_layer)
+	var/image/I = image('icons/obj/items/weapons/projectiles.dmi',src,"muzzle_flash",image_layer)
 	var/matrix/rotate = matrix() //Change the flash angle.
 	rotate.Translate(0, muzzle_flash_offset)
 	rotate.Turn(angle)

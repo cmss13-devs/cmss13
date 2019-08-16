@@ -76,7 +76,7 @@
 /obj/item/weapon/gun/energy/plasmarifle
 	name = "plasma rifle"
 	desc = "A long-barreled heavy plasma weapon capable of taking down large game. It has a mounted scope for distant shots and an integrated battery."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "plasmarifle"
 	item_state = "plasmarifle"
 	origin_tech = "combat=8;materials=7;bluespace=6"
@@ -193,7 +193,7 @@
 /obj/item/weapon/gun/energy/plasmapistol
 	name = "plasma pistol"
 	desc = "A plasma pistol capable of rapid fire. It has an integrated battery."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "plasmapistol"
 	item_state = "plasmapistol"
 	origin_tech = "combat=8;materials=7;bluespace=6"
@@ -282,7 +282,7 @@
 
 
 /obj/item/weapon/gun/energy/plasma_caster
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "plasma"
 	item_state = "plasma_wear"
 	name = "plasma caster"

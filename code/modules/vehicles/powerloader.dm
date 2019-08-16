@@ -1,6 +1,6 @@
 /obj/vehicle/powerloader
 	name = "\improper Caterpillar P-5000 Work Loader"
-	icon = 'icons/obj/powerloader.dmi'
+	icon = 'icons/obj/vehicles/powerloader.dmi'
 	desc = "The Caterpillar P-5000 Work Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects, first designed in January 29, 2025 by Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere."
 	icon_state = "powerloader_open"
 	layer = POWERLOADER_LAYER //so the top appears above windows and wall mounts
@@ -109,7 +109,7 @@
 
 /obj/item/powerloader_clamp
 	name = "\improper Caterpillar P-5000 Work Loader Hydraulic Claw"
-	icon = 'icons/obj/vehicles.dmi'
+	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "loader_clamp"
 	force = 20
 	flags_item = ITEM_ABSTRACT //to prevent placing the item on a table/closet.
@@ -210,7 +210,7 @@
 /obj/structure/powerloader_wreckage
 	name = "\improper Caterpillar P-5000 Work Loader wreckage"
 	desc = "Remains of some unfortunate Power Loader. Completely unrepairable."
-	icon = 'icons/obj/powerloader.dmi'
+	icon = 'icons/obj/vehicles/powerloader.dmi'
 	icon_state = "wreck"
 	density = 1
 	anchored = 0

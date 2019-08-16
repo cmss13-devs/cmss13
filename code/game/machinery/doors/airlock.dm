@@ -73,7 +73,7 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 
 /obj/machinery/door/airlock
 	name = "\improper Airlock"
-	icon = 'icons/obj/doors/Doorint.dmi'
+	icon = 'icons/obj/structures/doors/Doorint.dmi'
 	icon_state = "door_closed"
 	power_channel = ENVIRON
 

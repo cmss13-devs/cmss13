@@ -105,7 +105,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 /*/obj/item/deconstruction_test
 	name = "Test Item"
 	desc = "WTF?"
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "d20"
 	g_amt = 5000
 	m_amt = 5000

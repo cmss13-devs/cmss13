@@ -12,7 +12,7 @@
 /obj/item/frame/apc
 	name = "APC frame"
 	desc = "Used for repairing or building APCs"
-	icon = 'icons/obj/apc_repair.dmi'
+	icon = 'icons/obj/structures/machinery/apc_repair.dmi'
 	icon_state = "apc_frame"
 	flags_atom = FPRINT|CONDUCT
 

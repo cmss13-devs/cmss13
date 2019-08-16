@@ -1,13 +1,13 @@
 // To clarify:
 // For use_to_pickup and allow_quick_gather functionality,
-// see item/attackby() (/game/objects/items.dm)
+// see item/attackby() (/game/obj/items.dm)
 // Do not remove this functionality without good reason, cough reagent_containers cough.
 // -Sayu
 
 
 /obj/item/storage
 	name = "storage"
-	icon = 'icons/obj/items/storage/storage.dmi'
+	icon = 'icons/obj/items/storage.dmi'
 	w_class = SIZE_MEDIUM
 	var/list/can_hold = new/list() //List of objects which this item can store (if set, it can't store anything else)
 	var/list/cant_hold = new/list() //List of objects which this item can't store (in effect only if can_hold isn't set)

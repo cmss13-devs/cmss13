@@ -3,7 +3,7 @@ var/bomb_set = FALSE
 /obj/machinery/nuclearbomb
 	name = "\improper Nuclear Fission Explosive"
 	desc = "Nuke the entire site from orbit, it's the only way to be sure. Too bad we don't have any orbital nukes."
-	icon = 'icons/obj/nuclearbomb.dmi'
+	icon = 'icons/obj/structures/machinery/nuclearbomb.dmi'
 	icon_state = "nuclearbomb0"
 	density = 1
 	unacidable = 1

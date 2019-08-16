@@ -6,7 +6,7 @@
 	using = new /obj/screen()
 	using.name = "radio"
 	using.dir = SOUTHWEST
-	using.icon = 'icons/mob/screen1_robot.dmi'
+	using.icon = 'icons/mob/hud/screen1_robot.dmi'
 	using.icon_state = "radio"
 	using.screen_loc = ui_movi
 	using.layer = ABOVE_HUD_LAYER
@@ -17,7 +17,7 @@
 	using = new /obj/screen()
 	using.name = "module1"
 	using.dir = SOUTHWEST
-	using.icon = 'icons/mob/screen1_robot.dmi'
+	using.icon = 'icons/mob/hud/screen1_robot.dmi'
 	using.icon_state = "inv1"
 	using.screen_loc = ui_inv1
 	using.layer = ABOVE_HUD_LAYER
@@ -27,7 +27,7 @@
 	using = new /obj/screen()
 	using.name = "module2"
 	using.dir = SOUTHWEST
-	using.icon = 'icons/mob/screen1_robot.dmi'
+	using.icon = 'icons/mob/hud/screen1_robot.dmi'
 	using.icon_state = "inv2"
 	using.screen_loc = ui_inv2
 	using.layer = ABOVE_HUD_LAYER
@@ -37,7 +37,7 @@
 	using = new /obj/screen()
 	using.name = "module3"
 	using.dir = SOUTHWEST
-	using.icon = 'icons/mob/screen1_robot.dmi'
+	using.icon = 'icons/mob/hud/screen1_robot.dmi'
 	using.icon_state = "inv3"
 	using.screen_loc = ui_inv3
 	using.layer = ABOVE_HUD_LAYER
@@ -48,14 +48,14 @@
 
 //Intent
 	using = new /obj/screen/act_intent()
-	using.icon = 'icons/mob/screen1_robot.dmi'
+	using.icon = 'icons/mob/hud/screen1_robot.dmi'
 	using.icon_state = "intent_"+owner.a_intent
 	static_inventory += using
 	action_intent = using
 
 //Cell
 	owner.cells = new /obj/screen()
-	owner.cells.icon = 'icons/mob/screen1_robot.dmi'
+	owner.cells.icon = 'icons/mob/hud/screen1_robot.dmi'
 	owner.cells.icon_state = "charge-empty"
 	owner.cells.name = "cell"
 	owner.cells.screen_loc = ui_toxin
@@ -67,7 +67,7 @@
 
 //Installed Module
 	owner.hands = new /obj/screen()
-	owner.hands.icon = 'icons/mob/screen1_robot.dmi'
+	owner.hands.icon = 'icons/mob/hud/screen1_robot.dmi'
 	owner.hands.icon_state = "nomod"
 	owner.hands.name = "module"
 	owner.hands.screen_loc = ui_borg_module
@@ -76,7 +76,7 @@
 //Module Panel
 	using = new /obj/screen()
 	using.name = "panel"
-	using.icon = 'icons/mob/screen1_robot.dmi'
+	using.icon = 'icons/mob/hud/screen1_robot.dmi'
 	using.icon_state = "panel"
 	using.screen_loc = ui_borg_panel
 	using.layer = HUD_LAYER
@@ -84,7 +84,7 @@
 
 //Store
 	module_store_icon = new /obj/screen()
-	module_store_icon.icon = 'icons/mob/screen1_robot.dmi'
+	module_store_icon.icon = 'icons/mob/hud/screen1_robot.dmi'
 	module_store_icon.icon_state = "store"
 	module_store_icon.name = "store"
 	module_store_icon.screen_loc = ui_borg_store
@@ -96,15 +96,15 @@
 	infodisplay += bodytemp_icon
 
 	oxygen_icon = new /obj/screen/oxygen()
-	oxygen_icon.icon = 'icons/mob/screen1_robot.dmi'
+	oxygen_icon.icon = 'icons/mob/hud/screen1_robot.dmi'
 	infodisplay += oxygen_icon
 
 	fire_icon = new /obj/screen/fire()
-	fire_icon.icon = 'icons/mob/screen1_robot.dmi'
+	fire_icon.icon = 'icons/mob/hud/screen1_robot.dmi'
 	infodisplay += fire_icon
 
 	pull_icon = new /obj/screen/pull()
-	pull_icon.icon = 'icons/mob/screen1_robot.dmi'
+	pull_icon.icon = 'icons/mob/hud/screen1_robot.dmi'
 	pull_icon.screen_loc = ui_borg_pull
 	static_inventory += pull_icon
 

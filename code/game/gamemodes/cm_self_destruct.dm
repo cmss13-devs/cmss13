@@ -293,7 +293,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 //Generic parent base for the self_destruct items.
 /obj/machinery/self_destruct
-	icon = 'icons/obj/machines/self_destruct.dmi'
+	icon = 'icons/obj/structures/machinery/self_destruct.dmi'
 	use_power = 0 //Runs unpowered, may need to change later.
 	density = 0
 	anchored = 1 //So it doesn't go anywhere.

@@ -1040,7 +1040,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /datum/limb/proc/get_icon(var/icon/race_icon, var/icon/deform_icon,gender="")
 
 	if (status & LIMB_ROBOT && !(owner.species && owner.species.flags & IS_SYNTHETIC))
-		return new /icon('icons/mob/human_races/robotic.dmi', "[icon_name][gender ? "_[gender]" : ""]")
+		return new /icon('icons/mob/robotic.dmi', "[icon_name][gender ? "_[gender]" : ""]")
 
 	if (status & LIMB_MUTATED)
 		return new /icon(deform_icon, "[icon_name][gender ? "_[gender]" : ""]")

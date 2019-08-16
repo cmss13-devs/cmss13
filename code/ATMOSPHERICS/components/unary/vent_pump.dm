@@ -1,7 +1,7 @@
 #define PRESSURE_CHECK_INTERNAL 2
 
 /obj/machinery/atmospherics/unary/vent_pump
-	icon = 'icons/atmos/vent_pump.dmi'
+	icon = 'icons/obj/pipes/vent_pump.dmi'
 	icon_state = "map_vent"
 
 	name = "Air Vent"

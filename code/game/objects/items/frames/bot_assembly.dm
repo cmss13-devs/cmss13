@@ -4,7 +4,7 @@
 /obj/item/frame/bucket_sensor
 	desc = "It's a bucket. With a sensor attached."
 	name = "proxy bucket"
-	icon = 'icons/obj/aibots.dmi'
+	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "bucket_proxy"
 	force = 3.0
 	throwforce = 10.0
@@ -40,7 +40,7 @@
 /obj/item/frame/toolbox_tiles
 	desc = "It's a toolbox with tiles sticking out the top"
 	name = "tiles and toolbox"
-	icon = 'icons/obj/aibots.dmi'
+	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "toolbox_tiles"
 	force = 3.0
 	throwforce = 10.0
@@ -75,7 +75,7 @@
 /obj/item/frame/toolbox_tiles_sensor
 	desc = "It's a toolbox with tiles sticking out the top and a sensor attached"
 	name = "tiles, toolbox and sensor arrangement"
-	icon = 'icons/obj/aibots.dmi'
+	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "toolbox_tiles_sensor"
 	force = 3.0
 	throwforce = 10.0
@@ -113,7 +113,7 @@
 /obj/item/frame/firstaid_arm_assembly
 	name = "first aid/robot arm assembly"
 	desc = "A first aid kit with a robot arm permanently grafted to it."
-	icon = 'icons/obj/aibots.dmi'
+	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "firstaid_arm"
 	var/build_step = 0
 	var/created_name = "Medibot" //To preserve the name if it's a unique medbot I guess
@@ -124,7 +124,7 @@
 		..()
 		spawn(5)
 			if(src.skin)
-				src.overlays += image('icons/obj/aibots.dmi', "kit_skin_[src.skin]")
+				src.overlays += image('icons/obj/structures/machinery/aibots.dmi', "kit_skin_[src.skin]")
 
 
 /obj/item/frame/firstaid_arm_assembly/attackby(obj/item/W as obj, mob/user as mob)
@@ -145,7 +145,7 @@
 					src.build_step++
 					to_chat(user, SPAN_NOTICE("You add the health sensor to [src]."))
 					src.name = "First aid/robot arm/health analyzer assembly"
-					src.overlays += image('icons/obj/aibots.dmi', "na_scanner")
+					src.overlays += image('icons/obj/structures/machinery/aibots.dmi', "na_scanner")
 
 			if(1)
 				if(isprox(W))

@@ -4,7 +4,7 @@
 /obj/structure/mortar
 	name = "\improper M402 mortar"
 	desc = "A manual, crew-operated mortar system intended to rain down 80mm goodness on anything it's aimed at. Uses manual targetting dials. Insert round to fire."
-	icon = 'icons/Marine/mortar.dmi'
+	icon = 'icons/obj/structures/mortar.dmi'
 	icon_state = "mortar_m402"
 	anchored = 1
 	unacidable = 1
@@ -202,7 +202,7 @@
 /obj/item/mortar_kit
 	name = "\improper M402 mortar portable kit"
 	desc = "A manual, crew-operated mortar system intended to rain down 80mm goodness on anything it's aimed at. Needs to be set down first"
-	icon = 'icons/Marine/mortar.dmi'
+	icon = 'icons/obj/structures/mortar.dmi'
 	icon_state = "mortar_m402_carry"
 	unacidable = 1
 	w_class = SIZE_HUGE //No dumping this in a backpack. Carry it, fatso
@@ -239,7 +239,7 @@
 /obj/item/mortal_shell
 	name = "\improper 80mm mortar shell"
 	desc = "An unlabeled 80mm mortar shell, probably a casing."
-	icon = 'icons/Marine/mortar.dmi'
+	icon = 'icons/obj/structures/mortar.dmi'
 	icon_state = "mortar_ammo_cas"
 	w_class = SIZE_HUGE
 	flags_atom = FPRINT|CONDUCT
@@ -315,7 +315,7 @@
 /obj/structure/closet/crate/secure/mortar_ammo
 	name = "\improper M402 mortar ammo crate"
 	desc = "A crate containing live mortar shells with various payloads. DO NOT DROP. KEEP AWAY FROM FIRE SOURCES."
-	icon = 'icons/Marine/mortar.dmi'
+	icon = 'icons/obj/structures/mortar.dmi'
 	icon_state = "secure_locked_mortar"
 	icon_opened = "secure_open_mortar"
 	icon_locked = "secure_locked_mortar"

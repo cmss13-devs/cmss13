@@ -29,7 +29,7 @@
 /mob/living/carbon/Xenomorph
 	name = "Drone"
 	desc = "What the hell is THAT?"
-	icon = 'icons/Xeno/1x1_Xenos.dmi'
+	icon = 'icons/mob/xenos/1x1_Xenos.dmi'
 	icon_state = "Drone Walking"
 	voice_name = "xenomorph"
 	speak_emote = list("hisses")

@@ -3,7 +3,7 @@
 /obj/machinery/implantchair
 	name = "loyalty implanter"
 	desc = "Used to implant occupants with loyalty implants."
-	icon = 'icons/obj/machines/implantchair.dmi'
+	icon = 'icons/obj/structures/machinery/implantchair.dmi'
 	icon_state = "implantchair"
 	density = 1
 	opacity = 0

@@ -13,7 +13,7 @@
 	src.id = "[rand(1000, 9999)]"
 	..()
 	underlays.Cut()
-	underlays += image('icons/obj/stationobjs.dmi', icon_state = "telecomp-wires")
+	underlays += image('icons/obj/structures/props/stationobjs.dmi', icon_state = "telecomp-wires")
 	return
 
 /obj/machinery/computer/teleporter/initialize()
@@ -152,7 +152,7 @@
 
 /obj/machinery/teleport
 	name = "teleport"
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	density = 1
 	anchored = 1.0
 	var/lockeddown = 0
@@ -172,7 +172,7 @@
 /obj/machinery/teleport/hub/New()
 	..()
 	underlays.Cut()
-	underlays += image('icons/obj/stationobjs.dmi', icon_state = "tele-wires")
+	underlays += image('icons/obj/structures/props/stationobjs.dmi', icon_state = "tele-wires")
 
 /obj/machinery/teleport/hub/Bumped(M as mob|obj)
 	spawn()
@@ -308,7 +308,7 @@
 /obj/machinery/teleport/station/New()
 	..()
 	overlays.Cut()
-	overlays += image('icons/obj/stationobjs.dmi', icon_state = "controller-wires")
+	overlays += image('icons/obj/structures/props/stationobjs.dmi', icon_state = "controller-wires")
 
 /obj/machinery/teleport/station/attackby(var/obj/item/W)
 	src.attack_hand()
@@ -385,7 +385,7 @@
 /obj/effect/laser
 	name = "laser"
 	desc = "IT BURNS!!!"
-	icon = 'icons/obj/items/projectiles.dmi'
+	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	var/damage = 0.0
 	var/range = 10.0
 

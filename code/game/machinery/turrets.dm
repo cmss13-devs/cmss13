@@ -346,7 +346,7 @@
 
 /obj/machinery/turretid
 	name = "Turret deactivation control"
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "motion3"
 	anchored = 1
 	density = 0

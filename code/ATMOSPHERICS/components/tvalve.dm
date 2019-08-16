@@ -1,5 +1,5 @@
 /obj/machinery/atmospherics/tvalve
-	icon = 'icons/atmos/tvalve.dmi'
+	icon = 'icons/obj/pipes/tvalve.dmi'
 	icon_state = "map_tvalve0"
 
 	name = "manual switching valve"
@@ -276,7 +276,7 @@
 /obj/machinery/atmospherics/tvalve/digital		// can be controlled by AI
 	name = "digital switching valve"
 	desc = "A digitally controlled valve."
-	icon = 'icons/atmos/digital_tvalve.dmi'
+	icon = 'icons/obj/pipes/digital_tvalve.dmi'
 
 	var/frequency = 0
 	var/id = null
@@ -411,7 +411,7 @@
 /obj/machinery/atmospherics/tvalve/mirrored/digital		// can be controlled by AI
 	name = "digital switching valve"
 	desc = "A digitally controlled valve."
-	icon = 'icons/atmos/digital_tvalve.dmi'
+	icon = 'icons/obj/pipes/digital_tvalve.dmi'
 
 	var/frequency = 0
 	var/id = null

@@ -1,7 +1,7 @@
 /obj/structure/window_frame
 	name = "window frame"
 	desc = "A big hole in the wall that used to sport a large window. Can be vaulted through"
-	icon = 'icons/obj/structures/window_frames.dmi'
+	icon = 'icons/turf/walls/window_frames.dmi'
 	icon_state = "window0_frame"
 	layer = WINDOW_FRAME_LAYER
 	density = 1

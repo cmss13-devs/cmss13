@@ -9,7 +9,7 @@
 /obj/item/prop/almayer
 	name = "GENERIC USS ALMAYER PROP"
 	desc = "THIS SHOULDN'T BE VISIBLE, AHELP 'ART-P03' IF SEEN IN ROUND WITH LOCATION"
-	icon = 'icons/Marine/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "hangarbox"
 
 /obj/item/prop/almayer/box
@@ -79,7 +79,7 @@
 	use_power = 1
 	idle_power_usage = 20
 
-	icon = 'icons/obj/machines/computer.dmi'
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "terminal"
 
 /obj/machinery/prop/almayer/computer/ex_act(severity)
@@ -125,7 +125,7 @@
 	use_power = 1
 	idle_power_usage = 200
 
-	icon = 'icons/obj/machines/computer.dmi'
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "retro"
 
 /obj/machinery/prop/almayer/NavCon/ex_act(severity)
@@ -171,7 +171,7 @@
 	use_power = 1
 	idle_power_usage = 200
 
-	icon = 'icons/obj/machines/computer.dmi'
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "retro2"
 
 /obj/machinery/prop/almayer/NavCon2/ex_act(severity)
@@ -218,7 +218,7 @@
 	idle_power_usage = 20
 	var/list/current_viewers = list()
 
-	icon = 'icons/obj/machines/computer.dmi'
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "maptable"
 
 /obj/machinery/prop/almayer/CICmap/Dispose()
@@ -268,44 +268,44 @@
 /obj/structure/prop/almayer/minigun_crate
 	name = "30mm ammo crate"
 	desc = "A crate full of 30mm bullets used on one of the weapon pod types for the dropship. Moving this will require some sort of lifter."
-	icon = 'icons/Marine/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "30mm_crate"
 
 
 /obj/structure/prop/almayer/mission_planning_system
 	name = "\improper MPS IV computer"
 	desc = "The Mission Planning System IV (MPS IV), a enhancement in mission planning and charting for dropship pilots across the USCM. Fully capable of customizing their flight paths and loadouts to suit their combat needs."
-	icon = 'icons/Marine/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "mps"
 
 /obj/structure/prop/almayer/mapping_computer
 	name = "\improper CMPS II computer"
 	desc = "The Common Mapping Production System version II allows for sensory imput from satellites and ship systems to derive planetary maps in a standardized fashion for all USCM pilots."
-	icon = 'icons/Marine/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "mapping_comp"
 
 /obj/structure/prop/almayer/sensor_computer1
 	name = "sensor computer"
 	desc = "The IBM series 10 computer retrofitted to work as a sensor computer for the ship. While somewhat dated it still serves its purpose."
-	icon = 'icons/Marine/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "sensor_comp1"
 
 /obj/structure/prop/almayer/sensor_computer2
 	name = "sensor computer"
 	desc = "The IBM series 10 computer retrofitted to work as a sensor computer for the ship. While somewhat dated it still serves its purpose."
-	icon = 'icons/Marine/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "sensor_comp2"
 
 /obj/structure/prop/almayer/sensor_computer3
 	name = "sensor computer"
 	desc = "The IBM series 10 computer retrofitted to work as a sensor computer for the ship. While somewhat dated it still serves its purpose."
-	icon = 'icons/Marine/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "sensor_comp3"
 
 /obj/structure/prop/almayer/missile_tube
 	name = "\improper Mk 33 ASAT launcher system"
 	desc = "Cold launch tubes that can fire a few varieties of missiles out of them The most common being the ASAT-21 Rapier IV missile used against satellites and other spacecraft and the BGM-227 Sledgehammer missile which is used for ground attack."
-	icon = 'icons/Marine/almayer_props96.dmi'
+	icon = 'icons/obj/structures/props/almayer_props96.dmi'
 	icon_state = "missiletubenorth"
 	bound_width = 32
 	bound_height = 96
@@ -314,7 +314,7 @@
 /obj/structure/prop/almayer/ship_memorial
 	name = "slab of victory"
 	desc = "A ship memorial dedicated to the triumphs of the USCM and the fallen marines of this ship. On the left there are grand tales of victory etched into the slab. On the right there is a list of famous marines who have fallen in combat serving the USCM."
-	icon = 'icons/Marine/almayer_props64.dmi'
+	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	icon_state = "ship_memorial"
 	bound_width = 64
 	bound_height = 32
@@ -354,13 +354,13 @@
 /obj/structure/prop/almayer/particle_cannon
 	name = "\improper 75cm/140 Mark 74 General Atomics railgun"
 	desc = "The Mark 74 Railgun is top of the line for space based weaponry. Capable of firing a round with a diameter of 3/4ths of a meter at 24 kilometers per second. It also is capable of using a variety of round types which can be interchanged at anytime with its newly designed feed system."
-	icon = 'icons/obj/machines/artillery.dmi'
+	icon = 'icons/obj/structures/machinery/artillery.dmi'
 	icon_state = "1"
 	unacidable = 1
 
 /obj/structure/prop/almayer/name_stencil
 	desc = "The name of the ship stenciled on the hull."
-	icon = 'icons/Marine/almayer_props64.dmi'
+	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	icon_state = "almayer0"
 	density = 0 //dunno who would walk on it, but you know.
 	unacidable = 1
@@ -372,7 +372,7 @@
 /obj/structure/prop/almayer/hangar_stencil
 	name = "floor"
 	desc = "A large number stenciled on the hangar floor used to designate which dropship it is."
-	icon = 'icons/Marine/almayer_props96.dmi'
+	icon = 'icons/obj/structures/props/almayer_props96.dmi'
 	icon_state = "dropship1"
 	density = 0
 	layer = ABOVE_TURF_LAYER
@@ -404,7 +404,7 @@
 /obj/structure/prop/almayer/cannon_cables
 	name = "\improper Cannon cables"
 	desc = "Some large cables."
-	icon = 'icons/Marine/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "cannon_cables"
 	density = 0
 	mouse_opacity = 0
@@ -421,7 +421,7 @@
 /obj/structure/prop/almayer/cannon_cable_connector
 	name = "\improper Cannon cable connector"
 	desc = "A connector for the large cannon cables."
-	icon = 'icons/Marine/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "cannon_cable_connector"
 	density = 1
 	unacidable = 1
@@ -446,7 +446,7 @@
 /obj/machinery/cryobag_recycler
 	name = "cryogenic bag recycler"
 	desc = "A small tomb like structure. Capable of taking in used and opened cryobags and refill the liner and attach new sealants."
-	icon = 'icons/Marine/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "recycler"
 
 	density = 1

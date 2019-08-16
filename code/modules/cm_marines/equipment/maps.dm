@@ -1,6 +1,6 @@
 /obj/item/map
 	name = "map"
-	icon = 'icons/Marine/marine-items.dmi'
+	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "map"
 	item_state = "map"
 	throw_speed = 1

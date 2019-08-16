@@ -53,7 +53,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 /obj/machinery/newscaster
 	name = "newscaster"
 	desc = "A standard Nanotrasen-licensed newsfeed handler for use in commercial space stations. All the news you absolutely have no use for, in one place!"
-	icon = 'icons/obj/terminals.dmi'
+	icon = 'icons/obj/structures/machinery/terminals.dmi'
 	icon_state = "newscaster_normal"
 	var/isbroken = 0  //1 if someone banged it with something heavy
 	var/ispowered = 1 //starts powered, changes with power_change()

@@ -12,7 +12,7 @@
 
 /turf/closed/mineral //mineral deposits
 	name = "Rock"
-	icon = 'icons/turf/walls.dmi'
+	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "rock"
 
 /turf/closed/mineral/New()
@@ -23,7 +23,7 @@
 			var/turf/turf_to_check = get_step(src,step_overlays[direction])
 
 			if(istype(turf_to_check,/turf/open))
-				turf_to_check.overlays += image('icons/turf/walls.dmi', "rock_side_[direction]", 2.99) //Really high since it's an overhead turf and it shouldn't collide with anything else
+				turf_to_check.overlays += image('icons/turf/walls/walls.dmi', "rock_side_[direction]", 2.99) //Really high since it's an overhead turf and it shouldn't collide with anything else
 
 
 
@@ -76,7 +76,7 @@
 //Ice Wall
 /turf/closed/ice
 	name = "dense ice wall"
-	icon = 'icons/turf/icewall.dmi'
+	icon = 'icons/turf/walls/icewall.dmi'
 	icon_state = "Single"
 	desc = "It is very thick."
 
@@ -103,7 +103,7 @@
 //Ice Thin Wall
 /turf/closed/ice/thin
 	name = "thin ice wall"
-	icon = 'icons/turf/icewalllight.dmi'
+	icon = 'icons/turf/walls/icewalllight.dmi'
 	icon_state = "Single"
 	desc = "It is very thin."
 	opacity = 0
@@ -138,7 +138,7 @@
 //Icy Rock
 /turf/closed/ice_rock
 	name = "Icy rock"
-	icon = 'icons/turf/rockwall.dmi'
+	icon = 'icons/turf/walls/rockwall.dmi'
 
 /turf/closed/ice_rock/single
 	icon_state = "single"
@@ -202,7 +202,7 @@
 	icon = 'icons/turf/shuttle.dmi'
 
 /turf/closed/shuttle/dropship
-	icon = 'icons/turf/walls.dmi'
+	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "rasputin1"
 
 /turf/closed/shuttle/ert

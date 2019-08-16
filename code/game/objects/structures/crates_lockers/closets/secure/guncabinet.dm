@@ -2,7 +2,7 @@
 	name = "gun cabinet"
 	req_access = null
 	health = 1000 //bullet_act says that if the health is above 999, it won't act, so
-	icon = 'icons/obj/structures/misc.dmi'
+	icon = 'icons/obj/structures/props/misc.dmi'
 	icon_state = "base"
 	icon_off ="base"
 	icon_broken ="base"

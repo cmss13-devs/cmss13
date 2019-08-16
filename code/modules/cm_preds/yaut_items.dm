@@ -22,7 +22,7 @@
 /obj/item/clothing/mask/gas/yautja
 	name = "clan mask"
 	desc = "A beautifully designed metallic face mask, both ornate and functional."
-	icon = 'icons/obj/clothing/masks.dmi'
+	icon = 'icons/obj/items/clothing/masks.dmi'
 	icon_state = "pred_mask1"
 	item_state = "helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -157,13 +157,13 @@
 /obj/item/clothing/suit/armor/yautja
 	name = "clan armor"
 	desc = "A suit of armor with light padding. It looks old, yet functional."
-	icon = 'icons/obj/clothing/cm_suits.dmi'
+	icon = 'icons/obj/items/clothing/cm_suits.dmi'
 	icon_state = "halfarmor1"
 	item_state = "armor"
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
 	)
-	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
@@ -270,7 +270,7 @@
 /obj/item/clothing/cape/eldercape
 	name = "clan elder cape"
 	desc = "A dusty, yet powerful cape worn and passed down by elder Yautja."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "cape_elder"
 	flags_equip_slot = SLOT_BACK
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
@@ -363,7 +363,7 @@
 
 /obj/item/clothing/under/chainshirt
 	name = "body mesh"
-	icon = 'icons/obj/clothing/uniforms.dmi'
+	icon = 'icons/obj/items/clothing/uniforms.dmi'
 	desc = "A set of very fine chainlink in a meshwork for comfort and utility."
 	icon_state = "mesh_shirt"
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|FEET|HANDS //Does not cover the head though.
@@ -383,7 +383,7 @@
 /obj/item/clothing/gloves/yautja
 	name = "clan bracers"
 	desc = "An extremely complex, yet simple-to-operate set of armored bracers worn by the Yautja. It has many functions, activate them to use some."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "bracer"
 	origin_tech = "combat=8;materials=8;magnets=8;programming=8"
 	siemens_coefficient = 0
@@ -1169,7 +1169,7 @@
 /obj/item/storage/backpack/yautja
 	name = "hunting pouch"
 	desc = "A Yautja hunting pouch worn around the waist, made from a thick tanned hide. Capable of holding various devices and tools and used for the transport of trophies."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "beltbag"
 	flags_equip_slot = SLOT_WAIST
 	max_w_class = SIZE_MEDIUM
@@ -1192,7 +1192,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/yautja
 	name = "unusual crystal"
 	desc = "A strange glowing crystal with a spike at one end."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "crystal"
 	amount_per_transfer_from_this = 35
 	volume = 35
@@ -1206,7 +1206,7 @@
 /obj/item/device/yautja_teleporter
 	name = "relay beacon"
 	desc = "A device covered in sacred text. It whirrs and beeps every couple of seconds."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "teleporter"
 	origin_tech = "materials=7;bluespace=7;engineering=7"
 	flags_atom = FPRINT|CONDUCT
@@ -1324,7 +1324,7 @@
 /obj/item/weapon/harpoon/yautja
 	name = "large harpoon"
 	desc = "A huge metal spike, with a hook at the end. It's carved with mysterious alien writing."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "spike"
 	item_state = "harpoon"
 	force = 15
@@ -1337,7 +1337,7 @@
 /obj/item/weapon/wristblades
 	name = "wrist blades"
 	desc = "A pair of huge, serrated blades extending from a metal gauntlet."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "wrist"
 	item_state = "wristblade"
 	force = 33
@@ -1393,7 +1393,7 @@
 /obj/item/weapon/yautja_chain
 	name = "chainwhip"
 	desc = "A segmented, lightweight whip made of durable, acid-resistant metal. Not very common among Yautja Hunters, but still a dangerous weapon capable of shredding prey."
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "whip"
 	item_state = "whip"
 	flags_atom = FPRINT|CONDUCT
@@ -1428,7 +1428,7 @@
 /obj/item/weapon/yautja_knife
 	name = "ceremonial dagger"
 	desc = "A viciously sharp dagger enscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "predknife"
 	item_state = "knife"
 	flags_atom = FPRINT|CONDUCT
@@ -1485,7 +1485,7 @@
 /obj/item/weapon/yautja_sword
 	name = "clan sword"
 	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp, and capable of cutting flesh into ribbons. Commonly carried by aggresive and lethal hunters."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "clansword"
 	flags_atom = FPRINT|CONDUCT
 	flags_item = ITEM_PREDATOR
@@ -1538,7 +1538,7 @@
 /obj/item/weapon/yautja_scythe
 	name = "double war scythe"
 	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes.."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "predscythe"
 	item_state = "scythe"
 	flags_atom = FPRINT|CONDUCT
@@ -1598,7 +1598,7 @@
 /obj/item/weapon/combistick
 	name = "combi-stick"
 	desc = "A compact yet deadly personal weapon. Can be concealed when folded. Functions well as a throwing weapon or defensive tool. A common sight in Yautja packs due to its versatility."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "combistick"
 	flags_atom = FPRINT|CONDUCT|ITEM_UNCATCHABLE
 	flags_equip_slot = SLOT_BACK
@@ -1750,7 +1750,7 @@
 	spawner_type = /mob/living/carbon/hellhound
 	deliveryamt = 1
 	desc = "A strange piece of alien technology. It seems to call forth a hellhound."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "hellnade"
 	force = 25
 	throwforce = 55

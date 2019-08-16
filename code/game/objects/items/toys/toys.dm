@@ -93,7 +93,7 @@
 	throw_speed = 4
 	throw_range = 20
 	force = 0
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "syndballoon"
 	item_state = "syndballoon"
 	w_class = SIZE_LARGE
@@ -114,7 +114,7 @@
 /obj/item/toy/spinningtoy
 	name = "Gravitational Singularity"
 	desc = "\"Singulo\" brand spinning toy."
-	icon = 'icons/obj/singularity.dmi'
+	icon = 'icons/obj/structures/props/singularity.dmi'
 	icon_state = "singularity_s1"
 
 
@@ -321,7 +321,7 @@
 /obj/item/toy/therapy_red
 	name = "red therapy doll"
 	desc = "A toy for therapeutic and recreational purposes. This one is red."
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "therapyred"
 	item_state = "egg4" // It's the red egg in items_left/righthand
 	w_class = SIZE_TINY
@@ -329,7 +329,7 @@
 /obj/item/toy/therapy_purple
 	name = "purple therapy doll"
 	desc = "A toy for therapeutic and recreational purposes. This one is purple."
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "therapypurple"
 	item_state = "egg1" // It's the magenta egg in items_left/righthand
 	w_class = SIZE_TINY
@@ -337,7 +337,7 @@
 /obj/item/toy/therapy_blue
 	name = "blue therapy doll"
 	desc = "A toy for therapeutic and recreational purposes. This one is blue."
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "therapyblue"
 	item_state = "egg2" // It's the blue egg in items_left/righthand
 	w_class = SIZE_TINY
@@ -345,7 +345,7 @@
 /obj/item/toy/therapy_yellow
 	name = "yellow therapy doll"
 	desc = "A toy for therapeutic and recreational purposes. This one is yellow."
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "therapyyellow"
 	item_state = "egg5" // It's the yellow egg in items_left/righthand
 	w_class = SIZE_TINY
@@ -353,7 +353,7 @@
 /obj/item/toy/therapy_orange
 	name = "orange therapy doll"
 	desc = "A toy for therapeutic and recreational purposes. This one is orange."
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "therapyorange"
 	item_state = "egg4" // It's the red one again, lacking an orange item_state and making a new one is pointless
 	w_class = SIZE_TINY
@@ -361,7 +361,7 @@
 /obj/item/toy/therapy_green
 	name = "green therapy doll"
 	desc = "A toy for therapeutic and recreational purposes. This one is green."
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "therapygreen"
 	item_state = "egg3" // It's the green egg in items_left/righthand
 	w_class = SIZE_TINY
@@ -372,7 +372,7 @@
 	desc = "No bother to sink or swim when you can just float!"
 	icon_state = "inflatable"
 	item_state = "inflatable"
-	icon = 'icons/obj/clothing/belts.dmi'
+	icon = 'icons/obj/items/clothing/belts.dmi'
 	flags_equip_slot = SLOT_WAIST
 
 

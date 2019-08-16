@@ -2,7 +2,7 @@
 	name = "chem dispenser"
 	density = 1
 	anchored = 1
-	icon = 'icons/obj/machines/chemical_machines.dmi'
+	icon = 'icons/obj/structures/machinery/chemical_machines.dmi'
 	icon_state = "dispenser"
 	use_power = 0
 	idle_power_usage = 40
@@ -232,7 +232,7 @@
 	name = "ChemMaster 3000"
 	density = 1
 	anchored = 1
-	icon = 'icons/obj/machines/chemical_machines.dmi'
+	icon = 'icons/obj/structures/machinery/chemical_machines.dmi'
 	icon_state = "mixer0"
 	use_power = 1
 	idle_power_usage = 20
@@ -543,7 +543,7 @@
 //this machine does nothing
 /obj/machinery/disease2/diseaseanalyser
 	name = "Disease Analyser"
-	icon = 'icons/obj/machines/virology.dmi'
+	icon = 'icons/obj/structures/machinery/virology.dmi'
 	icon_state = "analyser"
 	anchored = 1
 	density = 1
@@ -553,7 +553,7 @@
 	name = "PanD.E.M.I.C 2200"
 	density = 1
 	anchored = 1
-	icon = 'icons/obj/machines/chemical_machines.dmi'
+	icon = 'icons/obj/structures/machinery/chemical_machines.dmi'
 	icon_state = "mixer0"
 	layer = BELOW_OBJ_LAYER
 	circuit = /obj/item/circuitboard/computer/pandemic
@@ -806,7 +806,7 @@
 /obj/machinery/reagentgrinder
 
 	name = "All-In-One Grinder"
-	icon = 'icons/obj/kitchen.dmi'
+	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "juicer1"
 	layer = ABOVE_TABLE_LAYER
 	density = 0
@@ -1188,7 +1188,7 @@
 /obj/machinery/reagent_analyzer
 	name = "Advanced XRF Scanner"
 	desc = "A spectrometer that bombards a sample in high energy radiation to detect emitted fluorescent x-ray patterns. By using the emission spectrum of the sample it can identify its chemical composition."
-	icon = 'icons/obj/machines/chemical_machines.dmi'
+	icon = 'icons/obj/structures/machinery/chemical_machines.dmi'
 	icon_state = "reagent_analyzer"
 	active_power_usage = 5000 //This is how many watts the big XRF machines usually take
 	

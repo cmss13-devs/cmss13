@@ -7,7 +7,7 @@
 
 /obj/structure/ice/thin
 	name = "thin ice wall"
-	icon = 'icons/turf/icewalllight.dmi'
+	icon = 'icons/turf/walls/icewalllight.dmi'
 	icon_state = "Single"
 	desc = "It is very thin."
 	opacity = 0
@@ -39,7 +39,7 @@
 //ROCK WALLS------------------------------//
 /obj/structure/ice/ice_rock
 	name = "Icy rock"
-	icon = 'icons/turf/rockwall.dmi'
+	icon = 'icons/turf/walls/rockwall.dmi'
 
 /obj/structure/ice/ice_rock/cornerOverlay
 	icon_state = "corner_overlay"

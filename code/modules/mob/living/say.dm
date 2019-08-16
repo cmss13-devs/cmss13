@@ -66,7 +66,7 @@ var/list/department_radio_keys = list(
 /mob/living/proc/show_speech_bubble(var/bubble_name)
 	var/list/hear = hearers()
 
-	var/image/speech_bubble = image('icons/mob/talk.dmi',src,"[bubble_name]")
+	var/image/speech_bubble = image('icons/mob/hud/talk.dmi',src,"[bubble_name]")
 
 	for(var/mob/M in hear)
 		M << speech_bubble
@@ -132,7 +132,7 @@ var/list/department_radio_keys = list(
 				listening |= M
 
 	var/speech_bubble_test = say_test(message)
-	var/image/speech_bubble = image('icons/mob/talk.dmi',src,"h[speech_bubble_test]")
+	var/image/speech_bubble = image('icons/mob/hud/talk.dmi',src,"h[speech_bubble_test]")
 
 	var/not_dead_speaker = (stat != DEAD)
 	for(var/mob/M in listening)

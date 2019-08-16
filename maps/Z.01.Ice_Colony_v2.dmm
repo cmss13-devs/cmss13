@@ -39971,7 +39971,7 @@
 /obj{
 	anchored = 1;
 	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/doors/hightechsecurity.dmi';
+	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
 	icon_state = "door_open";
 	name = "strange airlock"
 	},
@@ -40083,7 +40083,7 @@
 "bWN" = (
 /obj/structure/inflatable/door,
 /turf/open/floor/icefloor{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors/floors.dmi';
 	icon_state = "ramptop"
 	},
 /area/ice_colony/exterior/underground/caves/dig)
@@ -40092,7 +40092,7 @@
 /obj{
 	anchored = 1;
 	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/doors/hightechsecurity.dmi';
+	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
 	icon_state = "door_open";
 	name = "strange airlock"
 	},
@@ -40170,7 +40170,7 @@
 /obj{
 	anchored = 1;
 	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/doors/hightechsecurity.dmi';
+	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
 	icon_state = "door_open";
 	name = "strange airlock"
 	},
@@ -40193,7 +40193,7 @@
 /obj{
 	anchored = 1;
 	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/doors/hightechsecurity.dmi';
+	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
 	icon_state = "door_open";
 	name = "strange airlock"
 	},
@@ -40278,7 +40278,7 @@
 	anchored = 1;
 	density = 1;
 	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/doors/hightechsecurity.dmi';
+	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
 	icon_state = "door_closed";
 	name = "strange airlock";
 	opacity = 1
@@ -40318,7 +40318,7 @@
 	anchored = 1;
 	density = 1;
 	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/doors/hightechsecurity.dmi';
+	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
 	icon_state = "door_closed";
 	name = "strange airlock";
 	opacity = 1
@@ -40330,7 +40330,7 @@
 /area/ice_colony/exterior/underground/caves/dig)
 "bXo" = (
 /obj/machinery/door/poddoor{
-	icon = 'icons/obj/doors/hightechsecurity.dmi';
+	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
 	icon_state = "door_closed";
 	name = "Strange Airlock"
 	},
@@ -40344,7 +40344,7 @@
 	anchored = 1;
 	density = 1;
 	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/doors/hightechsecurity.dmi';
+	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
 	icon_state = "door_closed";
 	name = "strange airlock";
 	opacity = 1
@@ -40384,7 +40384,7 @@
 /area/ice_colony/exterior/underground/caves/open)
 "bXu" = (
 /turf/open/floor/icefloor{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors/floors.dmi';
 	icon_state = "ramptop"
 	},
 /area/ice_colony/exterior/underground/caves/dig)

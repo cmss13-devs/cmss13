@@ -1,7 +1,7 @@
 /obj/item/clothing/accessory
 	name = "tie"
 	desc = "A neosilk clip-on tie."
-	icon = 'icons/obj/clothing/ties.dmi'
+	icon = 'icons/obj/items/clothing/ties.dmi'
 	icon_state = "bluetie"
 	w_class = SIZE_SMALL
 	var/image/inv_overlay = null	//overlay used when attached to clothing.
@@ -9,16 +9,16 @@
 	var/slot = ACCESSORY_SLOT_DECOR
 	var/list/mob_overlay = list()
 	var/overlay_state = null
-	var/list/accessory_icons = list(WEAR_BODY = 'icons/mob/ties.dmi', WEAR_JACKET = 'icons/mob/ties.dmi')
+	var/list/accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/ties.dmi', WEAR_JACKET = 'icons/mob/humans/onmob/ties.dmi')
 	var/list/on_rolled = list()	//used when uniform sleevels are rolled ("rolled" entry). Set to "none" to hide in this state.
 	var/high_visibility	//if it should appear on examine without detailed view
 	var/removable = TRUE
 	flags_equip_slot = SLOT_ACCESSORY
-	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/ties_monkey.dmi')
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/ties_monkey.dmi')
 
 /obj/item/clothing/accessory/New()
 	..()
-	inv_overlay = image("icon" = 'icons/obj/clothing/ties_overlay.dmi', "icon_state" = "[item_state? "[item_state]" : "[icon_state]"]")
+	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[item_state? "[item_state]" : "[icon_state]"]")
 
 /obj/item/clothing/accessory/Dispose()
 	if(has_suit)

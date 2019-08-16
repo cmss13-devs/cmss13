@@ -785,7 +785,6 @@
 #include "code\game\turfs\snow.dm"
 #include "code\game\turfs\space.dm"
 #include "code\game\turfs\turf.dm"
-#include "code\game\turfs\turf_flick_animations.dm"
 #include "code\game\turfs\floors\desert.dm"
 #include "code\game\turfs\floors\exterior.dm"
 #include "code\game\turfs\walls\r_wall.dm"

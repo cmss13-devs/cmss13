@@ -51,7 +51,7 @@
 								new /obj/item/reagent_container/pill/happy(get_turf(H.loc))
 								new /obj/item/reagent_container/pill/happy(get_turf(H.loc))
 								new /obj/item/reagent_container/pill/happy(get_turf(H.loc))
-					icon = 'icons/obj/decals.dmi'
+					icon = 'icons/obj/structures/props/decals.dmi'
 					icon_state = "nobugs"
 					layer = ABOVE_HUD_LAYER
 					spawn(100)

@@ -1,5 +1,5 @@
 /obj/machinery/atmospherics/binary/pump/high_power
-	icon = 'icons/atmos/volume_pump.dmi'
+	icon = 'icons/obj/pipes/volume_pump.dmi'
 	icon_state = "map_off"
 	level = 1
 

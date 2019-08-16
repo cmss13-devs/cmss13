@@ -2,7 +2,7 @@
 /obj/machinery/gibber
 	name = "Gibber"
 	desc = "The name isn't descriptive enough?"
-	icon = 'icons/obj/kitchen.dmi'
+	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "grinder"
 	density = 1
 	anchored = 1
@@ -47,20 +47,20 @@
 
 /obj/machinery/gibber/New()
 	..()
-	src.overlays += image('icons/obj/kitchen.dmi', "grjam")
+	src.overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grjam")
 
 /obj/machinery/gibber/update_icon()
 	overlays.Cut()
 	if (dirty)
-		src.overlays += image('icons/obj/kitchen.dmi', "grbloody")
+		src.overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grbloody")
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if (!occupant)
-		src.overlays += image('icons/obj/kitchen.dmi', "grjam")
+		src.overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grjam")
 	else if (operating)
-		src.overlays += image('icons/obj/kitchen.dmi', "gruse")
+		src.overlays += image('icons/obj/structures/machinery/kitchen.dmi', "gruse")
 	else
-		src.overlays += image('icons/obj/kitchen.dmi', "gridle")
+		src.overlays += image('icons/obj/structures/machinery/kitchen.dmi', "gridle")
 
 /obj/machinery/gibber/relaymove(mob/user)
 	if(user.is_mob_incapacitated(TRUE)) return

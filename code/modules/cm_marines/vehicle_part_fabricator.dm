@@ -6,7 +6,7 @@
 	anchored = 1
 	use_power = 1
 	idle_power_usage = 20
-	icon = 'icons/obj/machines/drone_fab.dmi'
+	icon = 'icons/obj/structures/machinery/drone_fab.dmi'
 	icon_state = "drone_fab_idle"
 	var/busy = FALSE
 	var/generate_points = TRUE

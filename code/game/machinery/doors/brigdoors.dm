@@ -11,7 +11,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /obj/machinery/door_timer
 	name = "Door Timer"
-	icon = 'icons/obj/status_display.dmi'
+	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "frame"
 	desc = "A remote control for a door."
 	req_access = list(ACCESS_MARINE_BRIG)
@@ -281,7 +281,7 @@
 /obj/machinery/door_timer/proc/set_picture(var/state)
 	picture_state = state
 	overlays.Cut()
-	overlays += image('icons/obj/status_display.dmi', icon_state=picture_state)
+	overlays += image('icons/obj/structures/machinery/status_display.dmi', icon_state=picture_state)
 
 
 //Checks to see if there's 1 line or 2, adds text-icons-numbers/letters over display
@@ -295,14 +295,14 @@
 //Actual string input to icon display for loop, with 5 pixel x offsets for each letter.
 //Stolen from status_display
 /obj/machinery/door_timer/proc/texticon(var/tn, var/px = 0, var/py = 0)
-	var/image/I = image('icons/obj/status_display.dmi', "blank")
+	var/image/I = image('icons/obj/structures/machinery/status_display.dmi', "blank")
 	var/len = lentext(tn)
 
 	for(var/d = 1 to len)
 		var/char = copytext(tn, len-d+1, len-d+2)
 		if(char == " ")
 			continue
-		var/image/ID = image('icons/obj/status_display.dmi', icon_state=char)
+		var/image/ID = image('icons/obj/structures/machinery/status_display.dmi', icon_state=char)
 		ID.pixel_x = -(d-1)*5 + px
 		ID.pixel_y = py
 		I.overlays += ID

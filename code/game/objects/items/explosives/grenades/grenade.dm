@@ -2,7 +2,7 @@
 	name = "grenade"
 	desc = "A hand held grenade, with an adjustable timer."
 	w_class = SIZE_SMALL
-	icon = 'icons/obj/items/grenade.dmi'
+	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "grenade"
 	item_state = "flashbang"
 	throw_speed = 3

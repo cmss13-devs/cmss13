@@ -3,7 +3,7 @@
 	name = "abstract dropship weapons controls"
 	desc = "A computer to manage equipments and weapons installed on the dropship."
 	density = 1
-	icon = 'icons/Marine/shuttle-parts.dmi'
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "consoleright"
 	var/faction = "uscm"
 	circuit = null

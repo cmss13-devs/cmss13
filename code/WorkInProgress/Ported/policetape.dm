@@ -1,7 +1,7 @@
 //Define all tape types in policetape.dm
 /obj/item/tool/taperoll
 	name = "tape roll"
-	icon = 'icons/obj/policetape.dmi'
+	icon = 'icons/obj/items/policetape.dmi'
 	icon_state = "rollstart"
 	flags_item = NOBLUDGEON
 	w_class = SIZE_SMALL
@@ -12,7 +12,7 @@
 
 /obj/item/tape
 	name = "tape"
-	icon = 'icons/obj/policetape.dmi'
+	icon = 'icons/obj/items/policetape.dmi'
 	anchored = 1
 	var/lifted = 0
 	var/crumpled = 0

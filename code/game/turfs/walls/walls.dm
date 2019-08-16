@@ -1,7 +1,7 @@
 /turf/closed/wall
 	name = "wall"
 	desc = "A huge chunk of metal used to seperate rooms."
-	icon = 'icons/turf/walls.dmi'
+	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "0"
 	opacity = 1
 	var/hull = 0 //1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls

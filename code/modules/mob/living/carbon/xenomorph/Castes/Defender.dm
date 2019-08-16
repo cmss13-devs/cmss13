@@ -40,7 +40,7 @@
 	caste_name = "Defender"
 	name = "Defender"
 	desc = "A alien with an armored head crest."
-	icon = 'icons/Xeno/xenomorph_64x64.dmi'
+	icon = 'icons/mob/xenos/xenomorph_64x64.dmi'
 	icon_state = "Defender Walking"
 	plasma_types = list(PLASMA_CHITIN)
 	pixel_x = -16

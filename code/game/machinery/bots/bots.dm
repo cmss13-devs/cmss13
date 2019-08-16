@@ -1,7 +1,7 @@
 // AI (i.e. game AI, not the AI player) controlled bots
 
 /obj/machinery/bot
-	icon = 'icons/obj/aibots.dmi'
+	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	layer = MOB_LAYER
 	luminosity = 3
 	use_power = 0

@@ -1,7 +1,7 @@
 /obj/machinery/compressor
 	name = "compressor"
 	desc = "The compressor stage of a gas turbine generator."
-	icon = 'icons/obj/pipes.dmi'
+	icon = 'icons/obj/pipes/pipes3.dmi'
 	icon_state = "compressor"
 	anchored = 1
 	density = 1
@@ -16,7 +16,7 @@
 /obj/machinery/power/turbine
 	name = "gas turbine generator"
 	desc = "A gas turbine used for backup power generation."
-	icon = 'icons/obj/pipes.dmi'
+	icon = 'icons/obj/pipes/pipes3.dmi'
 	icon_state = "turbine"
 	anchored = 1
 	density = 1
@@ -28,7 +28,7 @@
 /obj/machinery/computer/turbine_computer
 	name = "Gas turbine control computer"
 	desc = "A computer to remotely control a gas turbine"
-	icon = 'icons/obj/machines/computer.dmi'
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "turbinecomp"
 	circuit = /obj/item/circuitboard/computer/turbine_control
 	anchored = 1
@@ -86,13 +86,13 @@
 
 
 	if(rpm>50000)
-		overlays += image('icons/obj/pipes.dmi', "comp-o4", FLY_LAYER)
+		overlays += image('icons/obj/pipes/pipes3.dmi', "comp-o4", FLY_LAYER)
 	else if(rpm>10000)
-		overlays += image('icons/obj/pipes.dmi', "comp-o3", FLY_LAYER)
+		overlays += image('icons/obj/pipes/pipes3.dmi', "comp-o3", FLY_LAYER)
 	else if(rpm>2000)
-		overlays += image('icons/obj/pipes.dmi', "comp-o2", FLY_LAYER)
+		overlays += image('icons/obj/pipes/pipes3.dmi', "comp-o2", FLY_LAYER)
 	else if(rpm>500)
-		overlays += image('icons/obj/pipes.dmi', "comp-o1", FLY_LAYER)
+		overlays += image('icons/obj/pipes/pipes3.dmi', "comp-o1", FLY_LAYER)
 	 //TODO: DEFERRED
 
 /obj/machinery/power/turbine/New()
@@ -131,7 +131,7 @@
 	add_avail(lastgen)
 
 	if(lastgen > 100)
-		overlays += image('icons/obj/pipes.dmi', "turb-o", FLY_LAYER)
+		overlays += image('icons/obj/pipes/pipes3.dmi', "turb-o", FLY_LAYER)
 
 
 	for(var/mob/M in viewers(1, src))

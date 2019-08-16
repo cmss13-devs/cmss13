@@ -57,7 +57,7 @@
 
 /obj/item/weapon/combat_knife
 	name = "\improper M5 'Night Raider' survival knife"
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "combat_knife"
 	item_state = "combat_knife"
 	desc = "The standard issue survival knife issued to Colonial Marines soldiers. You can slide this knife into your boots, and can be field-modified to attach to the end of a rifle."
@@ -113,7 +113,7 @@
 
 /obj/item/weapon/throwing_knife
 	name ="\improper M11 throwing knife"
-	icon='icons/obj/items/weapons.dmi'
+	icon='icons/obj/items/weapons/weapons.dmi'
 	icon_state = "throwing_knife"
 	item_state = "combat_knife"
 	desc="A military knife designed to be thrown at the enemy. Much quieter than a firearm, but requires a steady hand to be used effectively."
@@ -133,14 +133,14 @@
 /obj/item/weapon/unathiknife
 	name = "duelling knife"
 	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "unathiknife"
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("ripped", "torn", "cut")
 
 /obj/item/weapon/pizza_cutter
 	name = "\improper PIZZA TIME"
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "pizza_cutter"
 	item_state = "pizza_cutter"
 	desc = "Before you is holy relic of a bygone era when the great Pizza Lords reigned supreme. You know either that or it's just a big damn pizza cutter."

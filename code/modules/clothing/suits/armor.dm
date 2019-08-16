@@ -41,7 +41,7 @@
 /obj/item/clothing/suit/armor/vest/pilot
 	name = "\improper M70 flak jacket"
 	desc = "A flak jacket used by dropship pilots to protect themselves while flying in the cockpit. Excels in protecting the wearer against high-velocity solid projectiles."
-	icon = 'icons/obj/clothing/cm_suits.dmi'
+	icon = 'icons/obj/items/clothing/cm_suits.dmi'
 	icon_state = "pilot"
 	blood_overlay_type = "armor"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
@@ -71,9 +71,9 @@
 		/obj/item/storage/belt/gun/m4a3,
 		/obj/item/storage/belt/gun/m44)
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/pilot)
-	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
 	)
 
 /obj/item/clothing/suit/armor/vest/pilot/New()
@@ -83,7 +83,7 @@
 /obj/item/clothing/suit/armor/vest/dutch
 	name = "armored jacket"
 	desc = "It's hot in the jungle. Sometimes it's hot and heavy, and sometimes it's hell on earth."
-	icon = 'icons/obj/clothing/cm_suits.dmi'
+	icon = 'icons/obj/items/clothing/cm_suits.dmi'
 	icon_state = "dutch_armor"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/dutch)

@@ -7,7 +7,7 @@ FIRE ALARM
 /obj/machinery/firealarm
 	name = "fire alarm"
 	desc = "<i>\"Pull this in case of emergency\"</i>. Thus, keep pulling it forever."
-	icon = 'icons/obj/monitors.dmi'
+	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "fire0"
 	var/detecting = 1.0
 	var/working = 1.0
@@ -261,9 +261,9 @@ FIRE ALARM
 
 	if(z == 1 || z == 5)
 		if(security_level)
-			src.overlays += image('icons/obj/monitors.dmi', "overlay_[get_security_level()]")
+			src.overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_[get_security_level()]")
 		else
-			src.overlays += image('icons/obj/monitors.dmi', "overlay_green")
+			src.overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_green")
 
 	update_icon()
 	start_processing()

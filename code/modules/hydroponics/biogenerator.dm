@@ -1,7 +1,7 @@
 /obj/machinery/biogenerator
 	name = "Biogenerator"
 	desc = ""
-	icon = 'icons/obj/machines/biogenerator.dmi'
+	icon = 'icons/obj/structures/machinery/biogenerator.dmi'
 	icon_state = "biogen-stand"
 	density = 1
 	anchored = 1

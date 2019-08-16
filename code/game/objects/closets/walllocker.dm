@@ -4,7 +4,7 @@
 /obj/structure/closet/walllocker
 	desc = "A wall mounted storage locker."
 	name = "Wall Locker"
-	icon = 'icons/obj/structures/walllocker.dmi'
+	icon = 'icons/obj/structures/props/walllocker.dmi'
 	icon_state = "wall-locker"
 	density = 0
 	anchored = 1

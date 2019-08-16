@@ -397,23 +397,23 @@
 #define PRAE_ROYALGUARD_ACIDSPRAY_TYPE 4 // 0 = cone, 1 = line
 
 var/list/default_onmob_icons = list(
-		WEAR_L_HAND = 'icons/mob/items_lefthand_0.dmi',
-		WEAR_R_HAND = 'icons/mob/items_righthand_0.dmi',
-		WEAR_WAIST = 'icons/mob/belt.dmi',
-		WEAR_BACK = 'icons/mob/back.dmi',
-		WEAR_EAR = 'icons/mob/ears.dmi',
-		WEAR_EYES = 'icons/mob/eyes.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/belt.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/back.dmi',
+		WEAR_EAR = 'icons/mob/humans/onmob/ears.dmi',
+		WEAR_EYES = 'icons/mob/humans/onmob/eyes.dmi',
 		WEAR_ID = 'icons/mob/mob.dmi',
-		WEAR_BODY = 'icons/mob/uniform_0.dmi',
-		WEAR_JACKET = 'icons/mob/suit_0.dmi',
-		WEAR_HEAD = 'icons/mob/head_0.dmi',
-		WEAR_FEET = 'icons/mob/feet.dmi',
-		WEAR_FACE = 'icons/mob/mask.dmi',
+		WEAR_BODY = 'icons/mob/humans/onmob/uniform_0.dmi',
+		WEAR_JACKET = 'icons/mob/humans/onmob/suit_0.dmi',
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_0.dmi',
+		WEAR_FEET = 'icons/mob/humans/onmob/feet.dmi',
+		WEAR_FACE = 'icons/mob/humans/onmob/mask.dmi',
 		WEAR_HANDCUFFED = 'icons/mob/mob.dmi',
 		WEAR_LEGCUFFED = 'icons/mob/mob.dmi',
-		WEAR_HANDS = 'icons/mob/hands.dmi',
-		WEAR_J_STORE = 'icons/mob/suit_slot.dmi',
-		WEAR_ACCESSORIES = 'icons/mob/ties.dmi'
+		WEAR_HANDS = 'icons/mob/humans/onmob/hands.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/suit_slot.dmi',
+		WEAR_ACCESSORIES = 'icons/mob/humans/onmob/ties.dmi'
 		)
 
 // species names

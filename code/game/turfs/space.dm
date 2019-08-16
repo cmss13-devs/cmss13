@@ -5,7 +5,7 @@
 
 
 /turf/open/space
-	icon = 'icons/turf/space.dmi'
+	icon = 'icons/turf/floors/space.dmi'
 	name = "\proper space"
 	icon_state = "0"
 	can_bloody = FALSE

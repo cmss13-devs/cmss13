@@ -135,7 +135,7 @@
 /datum/file/program/data/text/xenobio_log
 	name = "Xenobio Research Report"
 	extension = "txt"
-	image = 'icons/ntos/file.png'
+	image = 'icons/old_stuff/ntos/file.png'
 	dat = "text goes here!"
 	active_state = "text"
 
@@ -154,7 +154,7 @@
 /datum/file/program/data/text/anomaly_log
 	name = "Anomaly Research Report"
 	extension = "txt"
-	image = 'icons/ntos/file.png'
+	image = 'icons/old_stuff/ntos/file.png'
 	dat = "text goes here!"
 	active_state = "text"
 
@@ -175,7 +175,7 @@
 /datum/file/program/data/text/aces_log
 	name = "ACES Research Reports"
 	extension = "txt"
-	image = 'icons/ntos/file.png'
+	image = 'icons/old_stuff/ntos/file.png'
 	dat = "<b><font face=\"verdana\" color=\"green\">ACES Research Reports</font></b><br>"
 	active_state = "text"
 	logs = list(
@@ -213,7 +213,7 @@
 /datum/file/program/data/text/rd_log
 	name = "Research Director's Report"
 	extension = "txt"
-	image = 'icons/ntos/file.png'
+	image = 'icons/old_stuff/ntos/file.png'
 	dat = "text goes here!"
 	active_state = "text"
 

@@ -24,7 +24,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////
 //Temporary, until we sort this out properly.
 /obj/effect/landmark/lv624
-	icon = 'icons/misc/mark.dmi'
+	icon = 'icons/old_stuff/mark.dmi'
 
 /obj/effect/landmark/lv624/fog_blocker
 	name = "fog blocker"

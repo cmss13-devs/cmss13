@@ -6,7 +6,7 @@ node2, network2 correspond to output
 */
 
 /obj/machinery/atmospherics/binary/pump
-	icon = 'icons/atmos/pump.dmi'
+	icon = 'icons/obj/pipes/pump.dmi'
 	icon_state = "map_off"
 	level = 1
 

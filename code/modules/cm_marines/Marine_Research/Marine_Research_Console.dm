@@ -9,7 +9,7 @@
 
 /obj/machinery/computer/WYresearch
 	name = "R&D Console"
-	icon = 'icons/obj/mainframe.dmi'
+	icon = 'icons/obj/structures/machinery/mainframe.dmi'
 	icon_state = "aimainframe"
 //	icon_state = "rdcomp"  //Temp till i figure out what the shit is going on with the icon file.
 	circuit = /obj/item/circuitboard/computer/rdconsole  //It will eventually need it's own circuit.

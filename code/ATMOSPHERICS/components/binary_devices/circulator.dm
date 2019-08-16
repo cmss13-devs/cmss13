@@ -4,7 +4,7 @@
 /obj/machinery/atmospherics/binary/circulator
 	name = "circulator/heat exchanger"
 	desc = "A gas circulator pump and heat exchanger."
-	icon = 'icons/obj/pipes.dmi'
+	icon = 'icons/obj/pipes/pipes3.dmi'
 	icon_state = "circ-off"
 	anchored = 0
 	density = 1

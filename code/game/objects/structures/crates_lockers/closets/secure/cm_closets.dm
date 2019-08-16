@@ -9,7 +9,7 @@
 	icon_opened = "squad_open"
 	icon_broken = "standard_emmaged"
 	icon_off = "standard_off"
-	icon = 'icons/Marine/Marine_Lockers.dmi'
+	icon = 'icons/obj/structures/marine_closet.dmi'
 	var/closet_squad //which squad this closet belong to
 
 /obj/structure/closet/secure_closet/marine/New()
@@ -286,7 +286,7 @@
 	name = "commanding officer's secure box"
 	req_access = list(ACCESS_MARINE_COMMANDER)
 	desc = "You could probably get court-marshaled just by looking at this..."
-	icon = 'icons/Marine/Marine_Lockers.dmi'
+	icon = 'icons/obj/structures/marine_closet.dmi'
 	icon_state = "commander_safe"
 	icon_opened = "commander_safe_open"
 	icon_closed = "commander_safe"

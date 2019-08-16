@@ -10,7 +10,7 @@
 	var/name = "File"
 	var/extension = "dat"
 	var/volume = 10 // in KB
-	var/image = 'icons/ntos/file.png' // determines the icon to use, found in icons/ntos
+	var/image = 'icons/old_stuff/ntos/file.png' // determines the icon to use, found in icons/ntos
 	var/obj/machinery/computer3/computer // the parent computer, if fixed
 	var/obj/item/computer3_part/storage/device // the device that is containing this file
 	var/hidden_file = 0 // Prevents file from showing up on NTOS program list.
@@ -106,7 +106,7 @@
 /datum/file/program/data/text
 	name = "Text File"
 	extension = "txt"
-	image = 'icons/ntos/file.png'
+	image = 'icons/old_stuff/ntos/file.png'
 	var/dat = "text goes here!"
 	var/list/logs = list()
 	//file_increment = 0.002 // 0.002 kilobytes per character (1024 characters per KB)

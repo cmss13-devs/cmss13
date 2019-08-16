@@ -19,7 +19,7 @@
 /obj/item/weapon/classic_baton
 	name = "police baton"
 	desc = "A wooden truncheon for beating criminal scum."
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "baton"
 	item_state = "classic_baton"
 	flags_equip_slot = SLOT_WAIST
@@ -54,7 +54,7 @@
 /obj/item/weapon/telebaton
 	name = "telescopic baton"
 	desc = "A compact yet rebalanced personal defense weapon. Can be concealed when folded."
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "telebaton_0"
 	item_state = "telebaton_0"
 	flags_equip_slot = SLOT_WAIST

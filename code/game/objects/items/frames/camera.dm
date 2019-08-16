@@ -1,7 +1,7 @@
 /obj/item/frame/camera
 	name = "camera assembly"
 	desc = "The basic construction for Corporate-Always-Watching-You cameras."
-	icon = 'icons/obj/monitors.dmi'
+	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "cameracase"
 	w_class = SIZE_SMALL
 	anchored = 0

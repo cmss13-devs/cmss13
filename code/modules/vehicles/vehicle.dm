@@ -1,6 +1,6 @@
 /obj/vehicle
 	name = "vehicle"
-	icon = 'icons/obj/vehicles.dmi'
+	icon = 'icons/obj/vehicles/vehicles.dmi'
 	layer = ABOVE_MOB_LAYER //so it sits above objects including mobs
 	density = 1
 	anchored = 1

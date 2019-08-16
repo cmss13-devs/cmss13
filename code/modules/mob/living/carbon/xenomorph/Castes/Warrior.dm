@@ -65,7 +65,7 @@
 	caste_name = "Warrior"
 	name = "Warrior"
 	desc = "A beefy, alien with an armored carapace."
-	icon = 'icons/Xeno/xenomorph_64x64.dmi'
+	icon = 'icons/mob/xenos/xenomorph_64x64.dmi'
 	icon_state = "Warrior Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
 	pixel_x = -16

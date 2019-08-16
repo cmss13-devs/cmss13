@@ -237,7 +237,7 @@
 /obj/item/clothing/suit/suspenders
 	name = "suspenders"
 	desc = "They suspend the illusion of the mime's play."
-	icon = 'icons/obj/clothing/belts.dmi'
+	icon = 'icons/obj/items/clothing/belts.dmi'
 	icon_state = "suspenders"
 	blood_overlay_type = "armor" //it's the less thing that I can put here
 	flags_armor_protection = 0

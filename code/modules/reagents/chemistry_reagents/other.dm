@@ -986,7 +986,7 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_MEDIUM_VALUE
 
-/datum/reagent/plasma/neurotoxin/on_mob_life(var/mob/living/M)
+/datum/reagent/plasma/antineurotoxin/on_mob_life(var/mob/living/M)
 	. = ..()
 	if(!.) return
 	

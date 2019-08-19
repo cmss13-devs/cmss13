@@ -108,37 +108,37 @@
 	icon_state = "Cola_Machine"
 	product_slogans = "Souto Soda: Have a Souto and be taken away to a tropical paradise!;Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Weyland-Yutani Fruit Beer. Nothing came from that lawsuit!;Weyland-Yutani Spring Water. It came from a spring!"
 	product_ads = "Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Weyland-Yutani Fruit Beer. Nothing came from that lawsuit!;Weyland-Yutani Spring Water. It technically came from a spring!"
-	products = list(/obj/item/reagent_container/food/drinks/cans/souto = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/diet = 10,
+	products = list(/obj/item/reagent_container/food/drinks/cans/souto/classic = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/classic = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/cherry = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/cherry/diet = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/cherry = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/lime = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/lime/diet = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/lime = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/grape = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/grape/diet = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/grape = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/blue = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/blue/diet = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/blue = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/peach = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/peach/diet = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/peach = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/cranberry = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/cranberry/diet = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/cranberry = 10,
 					/obj/item/reagent_container/food/drinks/cans/waterbottle = 10,
 					/obj/item/reagent_container/food/drinks/cans/cola = 10)
 
-	prices = list(/obj/item/reagent_container/food/drinks/cans/souto = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/diet = 5,
+	prices = list(/obj/item/reagent_container/food/drinks/cans/souto/classic = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/classic = 5,
 					/obj/item/reagent_container/food/drinks/cans/souto/cherry = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/cherry/diet = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/cherry = 5,
 					/obj/item/reagent_container/food/drinks/cans/souto/lime = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/lime/diet = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/lime = 5,
 					/obj/item/reagent_container/food/drinks/cans/souto/grape = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/grape/diet = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/grape = 5,
 					/obj/item/reagent_container/food/drinks/cans/souto/blue = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/blue/diet = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/blue = 5,
 					/obj/item/reagent_container/food/drinks/cans/souto/peach = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/peach/diet = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/peach = 5,
 					/obj/item/reagent_container/food/drinks/cans/souto/cranberry = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/cranberry/diet = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/cranberry = 5,
 					/obj/item/reagent_container/food/drinks/cans/waterbottle = 2,
 					/obj/item/reagent_container/food/drinks/cans/cola = 10)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
@@ -368,7 +368,7 @@
 	desc = "A kitchen and restaurant equipment vendor."
 	product_ads = "Mm, food stuffs!;Food and food accessories.;Get your plates!;You like forks?;I like forks.;Woo, utensils.;You don't really need these..."
 	icon_state = "dinnerware"
-	products = list(/obj/item/tool/kitchen/tray = 8,/obj/item/tool/kitchen/utensil/fork = 6,/obj/item/tool/kitchen/knife = 3,/obj/item/reagent_container/food/drinks/drinkingglass = 8,/obj/item/clothing/suit/chef/classic = 2)
+	products = list(/obj/item/tool/kitchen/tray = 8,/obj/item/tool/kitchen/utensil/fork = 6,/obj/item/tool/kitchen/knife = 3,/obj/item/reagent_container/food/drinks/drinkingglass = 8,/obj/item/clothing/suit/chef/classic = 2,/obj/item/reagent_container/food/condiment/saltshaker = 4,/obj/item/reagent_container/food/condiment/peppermill = 4,/obj/item/reagent_container/food/condiment/enzyme = 1)
 	contraband = list(/obj/item/tool/kitchen/utensil/spoon = 2,/obj/item/tool/kitchen/utensil/knife = 2,/obj/item/tool/kitchen/rollingpin = 2, /obj/item/tool/kitchen/knife/butcher = 2)
 
 /obj/machinery/vending/sovietsoda

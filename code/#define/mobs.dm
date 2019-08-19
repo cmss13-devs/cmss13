@@ -384,6 +384,12 @@
 #define BOILER_RAILGUN	2
 #define BOILER_SHATTER  3
 
+// Ravager strain flags
+
+#define RAVAGER_NORMAL 		1
+#define RAVAGER_VETERAN 	2
+#define RAVAGER_HEDGEHOG 	3
+
 // Praetorian strain flags
 #define PRAETORIAN_NORMAL	  1
 #define PRAETORIAN_ROYALGUARD 2

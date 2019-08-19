@@ -705,18 +705,14 @@
 	if(damage)
 		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, impact_name = P.ammo.impact_name, impact_limbs = P.ammo.impact_limbs)
 		P.play_damage_effect(src)
-		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + round(damage / 10) ) )
-			var/obj/item/shard/shrapnel/shrap = new()
-			if(P.name == "shrapnel")
-				shrap.name = "shrapnel" //prevents shrapnel from being named "shrapnel shrapnel"
-			else
-				shrap.name = "[P.name] shrapnel"
-			shrap.desc = "[shrap.desc] It looks like it was fired from [P.shot_from ? P.shot_from : "something unknown"]."
-			shrap.loc = organ
-			organ.embed(shrap)
-			if(!stat && !(species && species.flags & NO_PAIN))
-				emote("scream")
-				to_chat(src, SPAN_HIGHDANGER("You scream in pain as the impact sends <B>shrapnel</b> into the wound!"))
+		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + round(damage / 10)))
+			var/obj/item/shard/shrapnel/embedded = new P.ammo.shrapnel_type
+			if(istype(embedded))
+				embedded.on_embed(src, organ)
+
+				if(!stat && !(species && species.flags & NO_PAIN))
+					emote("scream")
+					to_chat(src, SPAN_HIGHDANGER("You scream in pain as the impact sends <B>shrapnel</b> into the wound!"))
 
 		if(ammo_flags & AMMO_INCENDIARY)
 			adjust_fire_stacks(rand(6,11))

@@ -177,6 +177,8 @@
 
 		if(istype(target, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = target
+			if(is_sharp(obj) || istype(obj, /obj/item/shard/shrapnel))
+				H.embedded_items -= obj
 			H.sec_hud_set_implants()
 
 	else if(affected.hidden)

@@ -73,32 +73,35 @@
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = SLOT_FACE
 
-	attackby(obj/item/I as obj, mob/user as mob)
-		if(istype(I,/obj/item/stack/cable_coil))
-			var/obj/item/stack/cable_coil/CC = I
-			if (CC.use(5))
-				to_chat(user, "You wrap some cable around the bayonet. It can now be attached to a gun.")
-				if(istype(loc, /obj/item/storage))
-					var/obj/item/storage/S = loc
-					S.remove_from_storage(src)
-				if(loc == user)
-					user.temp_drop_inv_item(src)
-				var/obj/item/attachable/bayonet/F = new(src.loc)
-				user.put_in_hands(F) //This proc tries right, left, then drops it all-in-one.
-				if(F.loc != user) //It ended up on the floor, put it whereever the old flashlight is.
-					F.loc = get_turf(src)
-				qdel(src) //Delete da old knife
-			else
-				to_chat(user, SPAN_NOTICE("You don't have enough cable for that."))
-				return
+/obj/item/weapon/combat_knife/attackby(obj/item/I as obj, mob/user as mob)
+	if(istype(I,/obj/item/stack/cable_coil))
+		var/obj/item/stack/cable_coil/CC = I
+		if (CC.use(5))
+			to_chat(user, "You wrap some cable around the bayonet. It can now be attached to a gun.")
+			if(istype(loc, /obj/item/storage))
+				var/obj/item/storage/S = loc
+				S.remove_from_storage(src)
+			if(loc == user)
+				user.temp_drop_inv_item(src)
+			var/obj/item/attachable/bayonet/F = new(src.loc)
+			user.put_in_hands(F) //This proc tries right, left, then drops it all-in-one.
+			if(F.loc != user) //It ended up on the floor, put it whereever the old flashlight is.
+				F.loc = get_turf(src)
+			qdel(src) //Delete da old knife
 		else
-			..()
+			to_chat(user, SPAN_NOTICE("You don't have enough cable for that."))
+			return
+	else
+		..()
 
-	suicide_act(mob/user)
-		viewers(user) << pick(SPAN_DANGER("<b>[user] is slitting \his wrists with the [src.name]! It looks like \he's trying to commit suicide.</b>"), \
-							SPAN_DANGER("<b>[user] is slitting \his throat with the [src.name]! It looks like \he's trying to commit suicide.</b>"), \
-							SPAN_DANGER("<b>[user] is slitting \his stomach open with the [src.name]! It looks like \he's trying to commit seppuku.</b>"))
-		return (BRUTELOSS)
+/obj/item/weapon/combat_knife/attack_self(mob/living/carbon/human/user)
+	if(!ishuman(user)) 
+		return
+	if(!hasorgans(user)) 
+		return
+
+	dig_out_shrapnel(user)
+
 
 /obj/item/weapon/combat_knife/upp
 	name = "\improper Type 30 survival knife"
@@ -138,6 +141,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("ripped", "torn", "cut")
 
+
 /obj/item/weapon/pizza_cutter
 	name = "\improper PIZZA TIME"
 	icon = 'icons/obj/items/weapons/weapons.dmi'
@@ -147,3 +151,62 @@
 	sharp = IS_SHARP_ITEM_ACCURATE
 	force = 50
 	edge = 1
+
+
+/obj/item/weapon/yautja_knife
+	name = "ceremonial dagger"
+	desc = "A viciously sharp dagger enscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
+	icon = 'icons/obj/items/weapons/predator.dmi'
+	icon_state = "predknife"
+	item_state = "knife"
+	flags_atom = FPRINT|CONDUCT
+	flags_item = ITEM_PREDATOR
+	flags_equip_slot = SLOT_STORE
+	sharp = IS_SHARP_ITEM_ACCURATE
+	force = 24
+	w_class = SIZE_TINY
+	throwforce = 28
+	throw_speed = 3
+	throw_range = 6
+	hitsound = 'sound/weapons/slash.ogg'
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	actions_types = list(/datum/action/item_action)
+	unacidable = 1
+
+/obj/item/weapon/yautja_knife/attack_self(mob/living/carbon/human/user)
+	if(!isYautja(user)) 
+		return
+	if(!hasorgans(user)) 
+		return
+
+	dig_out_shrapnel(user)
+
+/obj/item/weapon/yautja_knife/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
+
+/obj/item/weapon/proc/dig_out_shrapnel(mob/living/carbon/human/user)
+	if(!istype(user))
+		return
+
+	var/mob/living/carbon/human/H = user
+
+	to_chat(H, SPAN_NOTICE("You begin using [src] to rip shrapnel out. Hold still. This will probably hurt..."))
+	if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+		var/found_shrapnel = FALSE
+
+		for(var/obj/item/shard/shrapnel/embedded in H.embedded_items)
+			var/datum/limb/organ = embedded.embedded_organ
+			to_chat(H, SPAN_NOTICE("You dig [embedded] out of your [organ.display_name]."))
+			embedded.loc = H.loc
+			organ.implants -= embedded
+			H.embedded_items -= embedded
+			if(!(organ.status & LIMB_ROBOT) && !(H.species.flags & NO_BLOOD)) //Big thing makes us bleed when moving
+				organ.status |= LIMB_BLEEDING
+			organ = null
+			found_shrapnel = TRUE
+
+		if(!found_shrapnel)
+			to_chat(H, SPAN_NOTICE("You couldn't find any shrapnel."))
+	else 
+		to_chat(H, SPAN_WARNING("You were interrupted!"))

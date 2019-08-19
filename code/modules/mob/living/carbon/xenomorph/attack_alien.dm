@@ -91,6 +91,14 @@
 				M.tail_attack(src, damage)
 				return 1
 
+			
+			// Check for guaranteed Ravager tail stab
+			if(isXenoRavager(M))
+				var/mob/living/carbon/Xenomorph/Ravager/R = M
+				if(R.mutation_type == RAVAGER_NORMAL)
+					if(R.tail_stab(src, damage))
+						return TRUE
+
 			//Somehow we will deal no damage on this attack
 			if(!damage)
 				playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
@@ -144,10 +152,13 @@
 				M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [src.name] ([src.ckey])</font>")
 			log_attack("[M.name] ([M.ckey]) slashed [src.name] ([src.ckey])")
 
-			if (isXenoRavager(M))
+			if(isXenoRavager(M))
 				var/mob/living/carbon/Xenomorph/Ravager/R = M
-				if (R.delimb(src, affecting))
-					return 1
+				if(R.mutation_type == RAVAGER_VETERAN)
+					if(R.delimb(src, affecting))
+						return TRUE
+				if(R.mutation_type == RAVAGER_NORMAL)
+					R.shrapnel_embed(src, affecting)
 			
 			// Snowflake code for Praetorian, unfortunately there's no place to put this other than here. Fortunately its very cheap
 			if (isXenoPraetorian(M))

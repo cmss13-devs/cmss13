@@ -71,13 +71,6 @@
 
 		if(in_stasis == STASIS_IN_CRYO_CELL) blinded = TRUE //Always blinded while in stasisTUBES
 
-		//Periodically double-check embedded_flag
-		if(embedded_flag && !(life_tick % 10))
-			var/list/E
-			E = get_visible_implants(0)
-			if(!E.len)
-				embedded_flag = 0
-
 		//Eyes
 		if(!species.has_organ["eyes"]) //Presumably if a species has no eyes, they see via something else.
 			eye_blind = 0

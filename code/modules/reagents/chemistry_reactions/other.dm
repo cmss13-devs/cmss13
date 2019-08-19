@@ -564,7 +564,7 @@
 	name = "Anti-Neurotoxin"
 	id = "antineurotoxin"
 	result = "antineurotoxin"
-	required_reagents = list("neurotoxinplasma" = 1, "dylovene" = 1)
+	required_reagents = list("neurotoxinplasma" = 1, "anti_toxin" = 1)
 	result_amount = 1
 
 /datum/chemical_reaction/eggplasma

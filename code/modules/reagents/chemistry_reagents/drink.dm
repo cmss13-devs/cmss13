@@ -222,19 +222,19 @@
 
 /datum/reagent/drink/souto/blueraspberry
 	name = "Blue Raspberry Souto"
-	id = "blueraspberry"
+	id = "souto_blueraspberry"
 	description = "A blue fruit flavored soda that's canned in Havana"
 	color = "#005B96"
 
 /datum/reagent/drink/souto/peach
 	name = "Peach Souto"
-	id = "peach"
+	id = "souto_peach"
 	description = "A peach flavored soda with flecks of peach pit floating inside that's canned in Havana"
 	color = "#FFE5B4"
 
 /datum/reagent/drink/souto/cranberry
 	name = "Cranberry Souto"
-	id = "cranberry"
+	id = "souto_cranberry"
 	description = "A cranberry flavored soda that's canned in Havana"
 	color = "#950714"
 

@@ -797,8 +797,8 @@
 					if(H)
 						H.h_style = "Bald"
 						H.f_style = "Shaved"
-						H.h_style = random_hair_style(H.gender, H.species)
-						H.f_style = random_facial_hair_style(MALE, H.species)
+						H.h_style = pick(hair_styles_list)
+						H.f_style = pick(facial_hair_styles_list)
 						H.update_hair()
 						to_chat(M, SPAN_NOTICE("Your head feels different..."))
 			if(PROPERTY_IRRITATING) //sneezing, itching etc.

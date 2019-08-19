@@ -224,150 +224,148 @@
 		reagents.add_reagent("sodawater", 50)
 
 /obj/item/reagent_container/food/drinks/cans/souto
-	name = "\improper Souto Classic"
-	desc = "The can boldly proclaims it to be tangerine flavored. You can't help but think that's a lie. Canned in Havana."
+	name = "\improper Souto Can"
+	desc = "Canned in Havana."
 	icon_state = "souto_classic"
 	item_state = "souto_classic"
 	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
-		reagents.add_reagent("souto_classic", 50)
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet
 	name = "\improper Diet Souto"
 	desc = "Now with 0% fruit juice! Canned in Havana"
 	icon_state = "souto_diet_classic"
 	item_state = "souto_diet_classic"
-	center_of_mass = list("x"=16, "y"=10)
+	New()
+		..()
+		reagents.add_reagent("water", 25)
+
+/obj/item/reagent_container/food/drinks/cans/souto/classic
+	name = "\improper Souto Classic"
+	desc = "The can boldly proclaims it to be tangerine flavored. You can't help but think that's a lie. Canned in Havana."
+	icon_state = "souto_classic"
+	item_state = "souto_classic"
+	New()
+		..()
+		reagents.add_reagent("souto_classic", 50)
+
+/obj/item/reagent_container/food/drinks/cans/souto/diet/classic
+	name = "\improper Diet Souto"
+	desc = "Now with 0% fruit juice! Canned in Havana"
+	icon_state = "souto_diet_classic"
+	item_state = "souto_diet_classic"
 	New()
 		..()
 		reagents.add_reagent("souto_classic", 25)
-		reagents.add_reagent("water", 25)
 
 /obj/item/reagent_container/food/drinks/cans/souto/cherry
 	name = "\improper Cherry Souto"
 	desc = "Now with more artificial flavors! Canned in Havana"
 	icon_state = "souto_cherry"
 	item_state = "souto_cherry"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
 		reagents.add_reagent("souto_cherry", 50)
 
-/obj/item/reagent_container/food/drinks/cans/souto/cherry/diet
+/obj/item/reagent_container/food/drinks/cans/souto/diet/cherry
 	name = "\improper Diet Cherry Souto"
 	desc = "It's neither diet nor cherry flavored. Canned in Havanna."
 	icon_state = "souto_diet_cherry"
 	item_state = "souto_diet_cherry"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
 		reagents.add_reagent("souto_cherry", 25)
-		reagents.add_reagent("water", 25)
 
 /obj/item/reagent_container/food/drinks/cans/souto/lime
 	name = "\improper Lime Souto"
 	desc = "It's not bad. It's not good either, but it's not bad. Canned in Havana."
 	icon_state = "souto_lime"
 	item_state = "souto_lime"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
 		reagents.add_reagent("souto_lime", 50)
 
-/obj/item/reagent_container/food/drinks/cans/souto/lime/diet
+/obj/item/reagent_container/food/drinks/cans/souto/diet/lime
 	name = "\improper Diet Lime Souto"
 	desc = "Ten kinds of acid, two cups of fake sugar, almost a full tank of carbon dioxide, and about 210 kPs all crammed into an aluminum can. What's not to love? Canned in Havana."
 	icon_state = "souto_diet_lime"
 	item_state = "souto_diet_lime"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
 		reagents.add_reagent("souto_lime", 25)
-		reagents.add_reagent("water", 25)
 
 /obj/item/reagent_container/food/drinks/cans/souto/grape
 	name = "\improper Grape Souto"
 	desc = "An old standby for soda flavors. This, however, tastes like grape flavored cough syrup. Canned in Havana."
 	icon_state = "souto_grape"
 	item_state = "souto_grape"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
 		reagents.add_reagent("souto_grape", 50)
 
-/obj/item/reagent_container/food/drinks/cans/souto/grape/diet
+/obj/item/reagent_container/food/drinks/cans/souto/diet/grape
 	name = "\improper Diet Grape Souto"
 	desc = "You're fairly certain that this is just grape cough syrup and carbonated water. Canned in Havana."
 	icon_state = "souto_diet_grape"
 	item_state = "souto_diet_grape"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
 		reagents.add_reagent("souto_grape", 25)
-		reagents.add_reagent("water", 25)
 
 /obj/item/reagent_container/food/drinks/cans/souto/blue
 	name = "\improper Blue Raspberry Souto"
 	desc = "It tastes like the color blue. Technology really is amazing. Canned in Havana."
 	icon_state = "souto_blueraspberry"
 	item_state = "souto_blueraspberry"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
-		reagents.add_reagent("blueraspberry", 50)
+		reagents.add_reagent("souto_blueraspberry", 50)
 
-/obj/item/reagent_container/food/drinks/cans/souto/blue/diet
+/obj/item/reagent_container/food/drinks/cans/souto/diet/blue
 	name = "\improper Diet Blue Raspberry Souto"
 	desc = "WHAT A SCAM! It doesn't even taste like blue! At best, it tastes like cyan. Canned in Havana."
 	icon_state = "souto_diet_blueraspberry"
 	item_state = "souto_diet_blueraspberry"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
-		reagents.add_reagent("blueraspberry", 25)
-		reagents.add_reagent("water", 25)
+		reagents.add_reagent("souto_blueraspberry", 25)
 
 /obj/item/reagent_container/food/drinks/cans/souto/peach
 	name = "\improper Peach Souto"
 	desc = "On one hand, it tastes pretty good. On the other hand, you think you can hear a peach pit rattling on the inside. Canned in Havana."
 	icon_state = "souto_peach"
 	item_state = "souto_peach"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
-		reagents.add_reagent("peach", 50)
+		reagents.add_reagent("souto_peach", 50)
 
-/obj/item/reagent_container/food/drinks/cans/souto/peach/diet
+/obj/item/reagent_container/food/drinks/cans/souto/diet/peach
 	name = "\improper Diet Peach Souto"
 	desc = "On one hand, it tastes pretty good. On the other hand, you think you can hear half of a peach pit rattling on the inside. Canned in Havana."
 	icon_state = "souto_diet_peach"
 	item_state = "souto_diet_peach"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
-		reagents.add_reagent("peach", 25)
-		reagents.add_reagent("water", 25)
+		reagents.add_reagent("souto_peach", 25)
 
 /obj/item/reagent_container/food/drinks/cans/souto/cranberry
 	name = "\improper Cranberry Souto"
 	desc = "On closer inspection, the can reads, 'CRAMberry Souto.' What the Hell is a Cramberry? Canned in Havana."
 	icon_state = "souto_cranberry"
 	item_state = "souto_cranberry"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
-		reagents.add_reagent("cranberry", 50)
+		reagents.add_reagent("souto_cranberry", 50)
 
-/obj/item/reagent_container/food/drinks/cans/souto/cranberry/diet
+/obj/item/reagent_container/food/drinks/cans/souto/diet/cranberry
 	name = "\improper Diet Cranberry Souto"
 	desc = "This tastes more like prunes than cranberries. It's not bad; it's just wrong. Canned in Havana."
 	icon_state = "souto_diet_cranberry"
 	item_state = "souto_diet_cranberry"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
-		reagents.add_reagent("cranberry", 25)
+		reagents.add_reagent("souto_cranberry", 25)
 		reagents.add_reagent("water", 25)
 
 /obj/item/reagent_container/food/drinks/cans/aspen

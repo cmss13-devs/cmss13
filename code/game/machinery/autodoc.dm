@@ -585,7 +585,7 @@
 			else
 				visible_message("[usr] engages the internal release mechanism, and climbs out of \the [src].")
 			return
-		if (!usr.mind || !usr.mind.cm_skills || (usr.mind.cm_skills.research == null) || (usr.mind.cm_skills.research < SKILL_SURGERY_BEGINNER))
+		if (!usr.mind || !usr.mind.cm_skills || (usr.mind.cm_skills.surgery == null) || (usr.mind.cm_skills.surgery < SKILL_SURGERY_BEGINNER))
 			to_chat(usr, SPAN_WARNING("You don't have the training to use this."))
 			return
 		if(surgery)

@@ -453,6 +453,7 @@
 								if(!is_type_in_list(I,known_implants))
 									sleep(REMOVE_OBJECT_MAX_DURATION*surgery_mod)
 									S.limb_ref.implants -= I
+									H.embedded_items -= I
 									qdel(I)
 						if(S.limb_ref.name == "chest" || S.limb_ref.name == "head")
 							close_encased(H,S.limb_ref)

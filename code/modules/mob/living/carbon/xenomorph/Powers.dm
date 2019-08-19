@@ -1,28 +1,31 @@
 
 
 /mob/living/carbon/Xenomorph/proc/Pounce(atom/T)
-
 	if(!T) return
 
 	if(T.layer >= FLY_LAYER)//anything above that shouldn't be pounceable (hud stuff)
 		return
 
+	var/pounce_type = "pounc"
+	if(isXenoRavager(src))
+		pounce_type = "charg"
+
 	if(!isturf(loc))
-		to_chat(src, SPAN_XENOWARNING("You can't pounce from here!"))
+		to_chat(src, SPAN_XENOWARNING("You can't [pounce_type]e from here!"))
 		return
 
 	if(!check_state())
 		return
 
 	if(used_pounce)
-		to_chat(src, SPAN_XENOWARNING("You must wait before pouncing."))
+		to_chat(src, SPAN_XENOWARNING("You must wait before [pounce_type]ing."))
 		return
 
 	if(!check_plasma(10))
 		return
 
 	if(legcuffed)
-		to_chat(src, SPAN_XENODANGER("You can't pounce with that thing on your leg!"))
+		to_chat(src, SPAN_XENODANGER("You can't [pounce_type]e with that thing on your leg!"))
 		return
 
 	if(layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
@@ -31,8 +34,11 @@
 	if(m_intent == MOVE_INTENT_WALK && isXenoLurker(src)) //Hunter that is currently using its stealth ability, need to unstealth him
 		toggle_mov_intent()
 
-	visible_message(SPAN_XENOWARNING("\The [src] pounces at [T]!"), \
-	SPAN_XENOWARNING("You pounce at [T]!"))
+	if(isXenoRavager(src))
+		emote("roar")
+
+	visible_message(SPAN_XENOWARNING("\The [src] [pounce_type]es at [T]!"), \
+	SPAN_XENOWARNING("You [pounce_type]e at [T]!"))
 	used_pounce = 1
 	flags_pass = PASSTABLE
 	use_plasma(10)
@@ -45,7 +51,7 @@
 
 	spawn(caste.pounce_delay)
 		used_pounce = 0
-		to_chat(src, SPAN_NOTICE("You get ready to pounce again."))
+		to_chat(src, SPAN_NOTICE("You get ready to [pounce_type]e again."))
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.update_button_icon()
@@ -1225,6 +1231,39 @@
 	spawn(rCaste.spin_cooldown)
 		used_lunge = 0
 		to_chat(src, SPAN_NOTICE("You gather enough strength to use your spin slash again."))
+		for(var/X in actions)
+			var/datum/action/act = X
+			act.update_button_icon()
+
+
+// Ravager spike spray 
+/mob/living/carbon/Xenomorph/proc/spike_spray(var/turf/T)
+	var/mob/living/carbon/Xenomorph/Ravager/R = src
+	var/datum/caste_datum/ravager/rCaste = src.caste
+	
+	if(!T || T.layer >= FLY_LAYER || !isturf(loc) || !check_state() || used_pounce) 
+		return
+
+	if(!check_plasma(30))
+		to_chat(src, SPAN_NOTICE("You don't have enough plasma!"))
+		return
+
+	visible_message(SPAN_XENOWARNING("\The [src] launches their spikes at [T]!"), \
+	SPAN_XENOWARNING("You launch your spikes toward [T]!"))
+	used_pounce = TRUE
+	use_plasma(30)
+	
+	spin_circle()
+
+	var/turf/target = locate(T.x, T.y, T.z)
+	var/obj/item/projectile/P = new /obj/item/projectile(loc)
+	P.generate_bullet(R.ammo)
+	P.fire_at(target, src, src, R.ammo.max_range, R.ammo.shell_speed)
+	playsound(src, 'sound/effects/spike_spray.ogg', 25, 1)
+
+	spawn(rCaste.spike_shed_cooldown)
+		used_pounce = FALSE
+		to_chat(src, SPAN_NOTICE("Your spikes regrow. They can be launched again."))
 		for(var/X in actions)
 			var/datum/action/act = X
 			act.update_button_icon()

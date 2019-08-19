@@ -400,7 +400,7 @@
 	action_icon_state = "tail_sweep"
 	ability_name = "tail sweep"
 	macro_path = /datum/action/xeno_action/verb/verb_tail_sweep
-	action_type = XENO_ACTION_CLICK
+	action_type = XENO_ACTION_ACTIVATE
 
 /datum/action/xeno_action/activable/tail_sweep/use_ability()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -669,7 +669,7 @@
 		SPAN_NOTICE("You dig yourself into place! If you move, you must wait again to fire."), null, 5)
 		X.bomb_turf = get_turf(X)
 		if(X.client)
-			X.client.mouse_pointer_icon = file("icons/old_shit/mecha/mecha_mouse.dmi")
+			X.client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
 	else
 		X.is_bombarding = 0
 		if(X.client)
@@ -1321,7 +1321,7 @@
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the xeno you want to de-evolve."))
 
-//Ravager Abilities
+//Ravager strain
 
 /datum/action/xeno_action/activable/charge
 	name = "Charge (20)"
@@ -1332,19 +1332,19 @@
 
 /datum/action/xeno_action/activable/charge/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Ravager/X = owner
-	X.charge(A)
+	X.Pounce(A)
 
 /datum/action/xeno_action/activable/charge/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/Ravager/X = owner
 	return !X.used_pounce
 
-// Ravager strain
+
 /datum/action/xeno_action/activable/spin_slash
 	name = "Spin Slash (60)"
 	action_icon_state = "spin_slash"
 	ability_name = "spin slash"
 	macro_path = /datum/action/xeno_action/verb/verb_spin_slash
-	action_type = XENO_ACTION_CLICK
+	action_type = XENO_ACTION_ACTIVATE
 
 /datum/action/xeno_action/activable/spin_slash/use_ability()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -1353,6 +1353,23 @@
 /datum/action/xeno_action/activable/spin_slash/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/Ravager/X = owner
 	return !X.used_lunge
+
+
+/datum/action/xeno_action/activable/spike_spray
+	name = "Spike Spray (30)"
+	action_icon_state = "rav_spike"
+	ability_name = "spike spray"
+	macro_path = /datum/action/xeno_action/verb/verb_spike_spray
+	action_type = XENO_ACTION_CLICK
+
+/datum/action/xeno_action/activable/spike_spray/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+	X.spike_spray(A)
+
+/datum/action/xeno_action/activable/spike_spray/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/Ravager/X = owner
+	return !X.used_pounce
+
 
 //Drone Abilities
 /datum/action/xeno_action/activable/transfer_health

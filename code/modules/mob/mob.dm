@@ -672,11 +672,12 @@ mob/proc/yank_out_object()
 		self = 1 // Removing object from yourself.
 
 	valid_objects = get_visible_implants(0)
-	if(!valid_objects.len)
+	if(!valid_objects)
 		if(self)
 			to_chat(src, "You have nothing stuck in your body that is large enough to remove.")
 		else
 			to_chat(U, "[src] has nothing stuck in their wounds that is large enough to remove.")
+		src.verbs -= /mob/proc/yank_out_object
 		return
 
 	var/obj/item/selection = input("What do you want to yank out?", "Embedded objects") in valid_objects
@@ -719,6 +720,8 @@ mob/proc/yank_out_object()
 			return
 
 		affected.implants -= selection
+		H.embedded_items -= selection
+		
 		if(!isYautja(H) && !isSynth(H))
 			H.shock_stage+=20
 		affected.take_damage((selection.w_class * 3), 0, 0, 1, "Embedded object extraction")

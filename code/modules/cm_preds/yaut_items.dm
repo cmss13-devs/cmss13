@@ -1425,62 +1425,6 @@
 	add_to_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/yautja_knife
-	name = "ceremonial dagger"
-	desc = "A viciously sharp dagger enscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
-	icon = 'icons/obj/items/weapons/predator.dmi'
-	icon_state = "predknife"
-	item_state = "knife"
-	flags_atom = FPRINT|CONDUCT
-	flags_item = ITEM_PREDATOR
-	flags_equip_slot = SLOT_STORE
-	sharp = IS_SHARP_ITEM_ACCURATE
-	force = 24
-	w_class = SIZE_TINY
-	throwforce = 28
-	throw_speed = 3
-	throw_range = 6
-	hitsound = 'sound/weapons/slash.ogg'
-	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	actions_types = list(/datum/action/item_action)
-	unacidable = 1
-
-/obj/item/weapon/yautja_knife/attack_self(mob/living/carbon/human/user)
-	if(!isYautja(user)) return
-	if(!hasorgans(user)) return
-
-	var/mob/living/carbon/human/yautja/Y = user
-	var/pain_factor = 0 //Preds don't normally feel pain. This is an exception.
-
-	to_chat(Y, SPAN_NOTICE("You begin using your knife to rip shrapnel out. Hold still. This will probably hurt..."))
-
-	if(do_after(Y,50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-		var/obj/item/shard/shrapnel/S
-		for(var/datum/limb/O in Y.limbs)
-			for(S in O.implants)
-				to_chat(Y, SPAN_NOTICE("You dig shrapnel out of your [O.display_name]."))
-				S.loc = Y.loc
-				O.implants -= S
-				pain_factor++
-				O.take_damage(rand(2,5), 0, 0)
-				O.status |= LIMB_BLEEDING
-
-		for(var/datum/internal_organ/I in Y.internal_organs) //Now go in and clean out the internal ones.
-			for(var/obj/Q in I)
-				Q.loc = Y.loc
-				I.take_damage(rand(1,2), 0, 0)
-				pain_factor += 3 //OWWW! No internal bleeding though.
-
-		switch(pain_factor)
-			if(0) to_chat(Y, SPAN_WARNING("There was nothing to dig out!"))
-			if(1 to 4) to_chat(Y, SPAN_WARNING("That hurt like hell!!"))
-			if(5 to INFINITY) Y.emote("roar")
-
-	else to_chat(Y, SPAN_WARNING("You were interrupted!"))
-
-/obj/item/weapon/yautja_knife/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
 
 /obj/item/weapon/yautja_sword
 	name = "clan sword"

@@ -10,6 +10,7 @@
 	var/regenZ = 1 //Temp zombie thing until I write a better method ~Apop
 	var/allow_gun_usage = FALSE //False by default, so that synthetics can't use guns.
 	var/has_used_pamphlet = FALSE //Has this person used a pamphlet?
+	var/list/embedded_items = list() //A list of all the shrapnel currently embedded in the human
 
 /mob/living/carbon/human/New(var/new_loc, var/new_species = null)
 	blood_type = pick(7;"O-", 38;"O+", 6;"A-", 34;"A+", 2;"B-", 9;"B+", 1;"AB-", 3;"AB+")
@@ -1105,39 +1106,35 @@
 		L.damage = L.min_bruised_damage
 
 
-
 /mob/living/carbon/human/get_visible_implants(var/class = 0)
+	var/list/visible_objects
+	for(var/obj/item/W in embedded_items)
+		if(!istype(W, /obj/item/shard/shrapnel))
+			visible_objects += W
+	return visible_objects
 
-	var/list/visible_implants = list()
-	for(var/datum/limb/organ in limbs)
-		for(var/obj/item/O in organ.implants)
-			if(!istype(O,/obj/item/implant) && (O.w_class > class) && !istype(O,/obj/item/shard/shrapnel))
-				visible_implants += O
-
-	return(visible_implants)
 
 /mob/living/carbon/human/proc/handle_embedded_objects()
+	if((stat == DEAD) || lying || buckled) // Shouldnt be needed, but better safe than sorry
+		return 
 
-	for(var/datum/limb/organ in limbs)
-		if(organ.status & LIMB_SPLINTED) //Splints prevent movement.
-			continue
-		for(var/obj/item/O in organ.implants)
-			if(!istype(O,/obj/item/implant) && prob(4)) //Moving with things stuck in you could be bad.
-				// All kinds of embedded objects cause bleeding.
-				var/msg = null
-				switch(rand(1,3))
-					if(1)
-						msg =SPAN_WARNING("A spike of pain jolts your [organ.display_name] as you bump [O] inside.")
-					if(2)
-						msg =SPAN_WARNING("Your movement jostles [O] in your [organ.display_name] painfully.")
-					if(3)
-						msg =SPAN_WARNING("[O] in your [organ.display_name] twists painfully as you move.")
-				src << msg
-
+	for(var/obj/item/W in embedded_items)
+		var/datum/limb/organ = W.embedded_organ
+		// Check if shrapnel
+		if(istype(W, /obj/item/shard/shrapnel))
+			var/obj/item/shard/shrapnel/embedded = W
+			embedded.on_embedded_movement(src)
+		// Check if its a sharp weapon
+		else if(is_sharp(W))
+			if(organ.status & LIMB_SPLINTED) //Splints prevent movement.
+				continue
+			if(prob(20)) //Let's not make throwing knives too good in HvH
 				organ.take_damage(rand(1,2), 0, 0)
-				if(!(organ.status & LIMB_ROBOT) && !(species.flags & NO_BLOOD)) //There is no blood in protheses.
+				if(!(organ.status & LIMB_ROBOT) && !(species.flags & NO_BLOOD)) //Big thing makes us bleed when moving
 					organ.status |= LIMB_BLEEDING
-					if(prob(10)) src.adjustToxLoss(1)
+		if(prob(30))	// Spam chat less
+			to_chat(src, SPAN_WARNING("Your movement jostles [W] in your [organ.display_name] painfully."))
+
 
 /mob/living/carbon/human/verb/check_pulse()
 	set category = "Object"

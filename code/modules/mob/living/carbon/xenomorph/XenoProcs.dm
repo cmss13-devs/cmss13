@@ -383,7 +383,7 @@
 	attack_log += text("\[[time_stamp()]\] <font color='orange'>was tail-stabbed by [src.name] ([src.ckey])</font>")
 
 	var/armor_block = getarmor(affecting, ARMOR_MELEE)
-	var/n_damage = armor_damage_reduction(config.marine_melee, damage, armor_block, 40)
+	var/n_damage = armor_damage_reduction(config.marine_melee, damage, armor_block, 25)
 	M.apply_damage(n_damage, BRUTE, affecting, 0, sharp = 1, edge = 1) //This should slicey dicey
 	M.updatehealth()
 

@@ -43,6 +43,7 @@
 	var/damage_type 				= BRUTE 	// BRUTE, BURN, TOX, OXY, CLONE are the only things that should be in here
 	var/penetration					= 0 		// How much armor it ignores before calculations take place
 	var/shrapnel_chance 			= 0 		// The % chance it will imbed in a human
+	var/shrapnel_type				= 0			// The shrapnel type the ammo will embed, if the chance rolls
 	var/shell_speed 				= 0 		// How fast the projectile moves
 	var/bonus_projectiles_type 					// Type path of the extra projectiles
 	var/bonus_projectiles_amount 	= 0 		// How many extra projectiles it shoots out. Works kind of like firing on burst, but all of the projectiles travel together
@@ -236,6 +237,7 @@
 	..()
 	damage = config.base_hit_damage
 	shrapnel_chance = config.low_shrapnel_chance
+	shrapnel_type = /obj/item/shard/shrapnel
 	shell_speed = config.super_shell_speed
 
 /*
@@ -1667,11 +1669,11 @@
 	sound_bounce = "acid_bounce"
 	debilitate = list(19,21,0,0,11,12,0,0)
 	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
-	var/shrapnel_type = /datum/ammo/xeno/toxin/shatter
+	var/shrapnel_xeno = /datum/ammo/xeno/toxin/shatter
 	var/shrapnel_amount = 32
 
 /datum/ammo/xeno/boiler_gas/shatter/drop_nade(turf/T, obj/item/projectile/P)
-	create_shrapnel(T, shrapnel_amount, , ,shrapnel_type)
+	create_shrapnel(T, shrapnel_amount, , ,shrapnel_xeno)
 	T.visible_message(SPAN_DANGER("A huge ball of neurotoxin splashes down, sending drops and splashes in every direction!"))
 	playsound(T, 'sound/effects/squelch1.ogg', 25, 1)
 
@@ -1683,11 +1685,11 @@
 	sound_bounce = "acid_bounce"
 	debilitate = list(1,1,0,0,1,1,0,0)
 	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
-	shrapnel_type = /datum/ammo/xeno/acid/shatter
+	shrapnel_xeno = /datum/ammo/xeno/acid/shatter
 	shrapnel_amount = 32
 
 /datum/ammo/xeno/boiler_gas/shatter/acid/drop_nade(turf/T, obj/item/projectile/P)
-	create_shrapnel(T, shrapnel_amount, , ,shrapnel_type)
+	create_shrapnel(T, shrapnel_amount, , ,shrapnel_xeno)
 	T.visible_message(SPAN_DANGER("A huge ball of acid splashes down, sending drops and splashes in every direction!"))
 	playsound(T, 'sound/effects/squelch1.ogg', 25, 1)
 
@@ -1717,6 +1719,40 @@
 		var/obj/structure/barricade/B = O
 		B.health -= damage + rand(5)
 		B.update_health(1)
+
+/datum/ammo/xeno/bone_chips
+	name = "bone chips"
+	icon_state = "shrapnel_light"
+	ping = null
+	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
+	bonus_projectiles_type = /datum/ammo/xeno/bone_chips/spread
+
+/datum/ammo/xeno/bone_chips/on_hit_mob(mob/M, obj/item/projectile/P)
+	if(isHumanStrict(M))
+		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
+		if(M.slowed < 7)
+			M.AdjustSlowed(6)
+
+/datum/ammo/xeno/bone_chips/New()
+	..()
+	point_blank_range = -1
+	damage = 5
+	damage_type = BRUTE 
+	accuracy = config.max_hit_accuracy
+	accuracy_var_low = config.med_proj_variance
+	accuracy_var_high = config.med_proj_variance
+	max_range = config.short_shell_range
+	bonus_projectiles_amount = config.high_proj_extra
+	shrapnel_type = /obj/item/shard/shrapnel/bone_chips
+	shrapnel_chance = 100
+
+/datum/ammo/xeno/bone_chips/spread
+	name = "small bone chips"
+
+/datum/ammo/xeno/bone_chips/spread/New()
+	..()
+	scatter = 50 // We want a wild scatter angle
+	bonus_projectiles_amount = 0
 
 /*
 //================================================

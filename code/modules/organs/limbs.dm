@@ -336,6 +336,8 @@ This function completely restores a damaged organ to perfect condition.
 		if(!istype(implanted_object,/obj/item/implant))	// We don't want to remove REAL implants. Just shrapnel etc.
 			implanted_object.loc = owner.loc
 			implants -= implanted_object
+			if(is_sharp(implanted_object) || istype(implanted_object, /obj/item/shard/shrapnel))
+				owner.embedded_items -= implanted_object
 
 	owner.updatehealth()
 
@@ -1104,9 +1106,14 @@ Note that amputating the affected organ does in fact remove the infection from t
 		owner.visible_message(SPAN_DANGER("\The [W] sticks in the wound!"))
 	implants += W
 	start_processing()
-	owner.embedded_flag = 1
-	owner.verbs += /mob/proc/yank_out_object
+	
+	if(is_sharp(W) || istype(W, /obj/item/shard/shrapnel))
+		W.embedded_organ = src		
+		owner.embedded_items += W
+		if(is_sharp(W)) // Only add the verb if its not a shrapnel
+			owner.verbs += /mob/proc/yank_out_object
 	W.add_mob_blood(owner)
+
 	if(ismob(W.loc))
 		var/mob/living/H = W.loc
 		H.drop_held_item()

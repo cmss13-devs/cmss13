@@ -123,26 +123,25 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 
 				//Success multiplers!
 				var/multipler = 1 //1 = 100%
-				if(locate(/obj/structure/bed/roller, M.loc))
-					multipler -= 0.10
-				else if(locate(/obj/structure/table/, M.loc))
-					multipler -= 0.20
-				if(M.stat == CONSCIOUS && !M.paralyzed)//If not on anesthetics or not unconsious
-					multipler -= 0.5
-					switch(M.reagent_pain_modifier)
-						if(PAIN_REDUCTION_MEDIUM to PAIN_REDUCTION_HEAVY)
-							multipler += 0.15
-						if(PAIN_REDUCTION_HEAVY to PAIN_REDUCTION_VERY_HEAVY)
-							multipler += 0.25
-						if(PAIN_REDUCTION_VERY_HEAVY to PAIN_REDUCTION_FULL)
-							multipler += 0.40
-					if(M.shock_stage > 100) //Being near to unconsious is good in this case
-						multipler += 0.25
-				if(istype(M.loc, /turf/open/shuttle/dropship))
-					multipler -= 0.65
-				Clamp(multipler, 0, 1)
-
-				if(isSynth(M) || isYautja(M)) multipler = 1
+				if(!isSynth(M) && !isYautja(M))
+					if(locate(/obj/structure/bed/roller, M.loc))
+						multipler -= SURGERY_MULTIPLIER_SMALL
+					else if(locate(/obj/structure/table/, M.loc))
+						multipler -= SURGERY_MULTIPLIER_MEDIUM
+					if(M.stat == CONSCIOUS)//If not on anesthetics or not unconsious
+						multipler -= SURGERY_MULTIPLIER_LARGE
+						switch(M.reagent_pain_modifier)
+							if(PAIN_REDUCTION_MEDIUM to PAIN_REDUCTION_HEAVY)
+								multipler += SURGERY_MULTIPLIER_SMALL
+							if(PAIN_REDUCTION_HEAVY to PAIN_REDUCTION_VERY_HEAVY)
+								multipler += SURGERY_MULTIPLIER_MEDIUM
+							if(PAIN_REDUCTION_VERY_HEAVY to PAIN_REDUCTION_FULL)
+								multipler += SURGERY_MULTIPLIER_LARGE
+						if(M.shock_stage > 100) //Being near to unconsious is good in this case
+							multipler += SURGERY_MULTIPLIER_MEDIUM
+					if(istype(M.loc, /turf/open/shuttle/dropship))
+						multipler -= SURGERY_MULTIPLIER_HUGE
+					Clamp(multipler, 0, 1)
 
 				//calculate step duration
 				var/step_duration = rand(S.min_duration, S.max_duration)

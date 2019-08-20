@@ -187,6 +187,10 @@
 			spawn owner.emote("me", 1, "gasps for air!")
 			owner.losebreath += 15
 
+/datum/internal_organ/lungs/rejuvenate()
+	owner.losebreath = 0
+	..()
+
 /datum/internal_organ/lungs/prosthetic
 	robotic = ORGAN_ROBOT
 	removed_type = /obj/item/organ/lungs/prosthetic

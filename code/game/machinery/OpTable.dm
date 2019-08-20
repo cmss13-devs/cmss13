@@ -68,10 +68,8 @@
 
 
 /obj/machinery/optable/buckle_mob(mob/living/carbon/human/H, mob/living/user)
-	if(!istype(H)) return
-	if(H == user) return
-	if(H.buckled) return
-	if(user.stat) return
+	if(!istype(H) || H == user || H.buckled || user.action_busy || user.stat) 
+		return
 	if(H != victim)
 		to_chat(user, SPAN_WARNING("Lay the patient on the table first!"))
 		return

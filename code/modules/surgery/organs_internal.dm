@@ -104,7 +104,7 @@
 		if(I && I.damage > 0 && I.robotic != ORGAN_ROBOT)
 			user.visible_message(SPAN_NOTICE("[user] treats damage to [target]'s [I.name] with [tool_name]."), \
 			SPAN_NOTICE("You treat damage to [target]'s [I.name] with [tool_name].") )
-			I.damage = 0
+			I.rejuvenate()
 
 /datum/surgery_step/internal/fix_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, getting mess and tearing the inside of [target]'s [affected.display_name] with \the [tool]!"), \

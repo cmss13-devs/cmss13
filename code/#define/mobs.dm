@@ -265,6 +265,13 @@
 #define LIMB_PRINTING_TIME 550
 #define LIMB_METAL_AMOUNT 125
 
+// Surgery chance modifiers
+
+#define SURGERY_MULTIPLIER_SMALL 	0.10
+#define SURGERY_MULTIPLIER_MEDIUM 	0.20
+#define SURGERY_MULTIPLIER_LARGE	0.40
+#define SURGERY_MULTIPLIER_HUGE 	0.60
+
 //=================================================
 
 //Languages!

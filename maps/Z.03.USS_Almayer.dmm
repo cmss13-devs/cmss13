@@ -27167,7 +27167,6 @@
 /area/almayer/engineering/engineering_workshop)
 "bvK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop)
 "bvL" = (
@@ -27703,6 +27702,7 @@
 	},
 /area/almayer/engineering/engineering_workshop)
 "bxr" = (
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/open/floor/almayer{
 	tag = "icon-orange (SOUTHEAST)";
 	icon_state = "orange";
@@ -45998,6 +45998,13 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/navigation)
+"edq" = (
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/port_hallway)
 "edW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -46026,6 +46033,7 @@
 /obj/structure/table/woodentable/fancy,
 /obj/item/tool/kitchen/tray,
 /obj/item/reagent_container/food/snacks/boiledrice,
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/open/floor/wood,
 /area/almayer/living/captain_mess)
 "eep" = (
@@ -46285,6 +46293,15 @@
 	icon_state = "wall6"
 	},
 /area/almayer/evacuation/pod17)
+"eyT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/turf/open/floor/almayer,
+/area/almayer/living/briefing)
 "ezi" = (
 /obj/structure/flora/pottedplant{
 	desc = "A foul smelling potted plant, reeking of rotten eggs. It has a crudely etched label visible on the pot, reading 'Steve'.";
@@ -47486,6 +47503,10 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/upper_medical)
+"gBi" = (
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/hangar)
 "gBT" = (
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
@@ -49743,6 +49764,10 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig_cells)
+"khT" = (
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/turf/open/floor/almayer,
+/area/almayer/hallways/port_hallway)
 "khV" = (
 /obj/structure/barricade/metal,
 /turf/open/floor/almayer,
@@ -49924,6 +49949,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
+"ktV" = (
+/obj/structure/rack,
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/turf/open/floor/almayer{
+	tag = "icon-bluecorner (NORTH)";
+	icon_state = "cargo";
+	dir = 2
+	},
+/area/almayer/squads/req)
 "kuu" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -50851,6 +50885,16 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/port_hallway)
+"lPN" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/hallways/port_hallway)
 "lQO" = (
 /obj/structure/disposalpipe/segment{
@@ -52440,6 +52484,10 @@
 	dir = 9
 	},
 /area/almayer/shipboard/brig)
+"ofD" = (
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/turf/open/floor/almayer,
+/area/almayer/hallways/aft_hallway)
 "oht" = (
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/open/floor/plating/plating_catwalk,
@@ -54263,6 +54311,13 @@
 /obj/item/paper_bin/uscm,
 /turf/open/floor/carpet,
 /area/almayer/command/cichallway)
+"qRs" = (
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical)
 "qSm" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
@@ -54341,6 +54396,12 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/repair_bay)
+"rbR" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/turf/open/floor/almayer,
+/area/almayer/hallways/port_hallway)
 "rdb" = (
 /obj/structure/rack,
 /obj/item/storage/belt/utility/full,
@@ -54432,6 +54493,7 @@
 /area/almayer/living/port_emb)
 "rid" = (
 /obj/machinery/computer/med_data,
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (EAST)";
 	icon_state = "sterile_green_side";
@@ -54798,6 +54860,10 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/weapon_room)
+"rAT" = (
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/turf/closed/wall/almayer,
+/area/almayer/engineering/upper_engineering)
 "rBk" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/unary/vent_pump{
@@ -57225,6 +57291,13 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/operating_room_three)
+"uGP" = (
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/turf/open/floor/almayer{
+	tag = "icon-redcorner";
+	icon_state = "redcorner"
+	},
+/area/almayer/shipboard/brig_cells)
 "uIH" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -57599,6 +57672,7 @@
 	icon_state = "map-supply";
 	dir = 1
 	},
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
 "vek" = (
@@ -58984,6 +59058,18 @@
 	dir = 4
 	},
 /area/almayer/medical/lockerroom)
+"wVM" = (
+/obj/machinery/landinglight/ds2/delayone{
+	tag = "icon-landingstripe (WEST)";
+	icon_state = "landingstripe";
+	dir = 8
+	},
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/hangar)
 "xad" = (
 /obj/machinery/door/airlock/almayer/maint{
 	dir = 2
@@ -79489,7 +79575,7 @@ bdU
 bfV
 baM
 bkd
-bdU
+wVM
 bfV
 baM
 bkd
@@ -79705,7 +79791,7 @@ aZM
 aTc
 bcc
 btC
-btO
+gBi
 aTc
 bSv
 tTn
@@ -84982,7 +85068,7 @@ bzg
 pqi
 gfW
 bGR
-btC
+gBi
 btO
 bie
 cdA
@@ -85173,7 +85259,7 @@ eUn
 bpv
 bei
 ben
-bei
+qRs
 bei
 bei
 bgn
@@ -85885,7 +85971,7 @@ abg
 abg
 abg
 bYh
-abg
+ofD
 abg
 abg
 abg
@@ -90261,7 +90347,7 @@ aXc
 aXc
 pQo
 bHT
-bJz
+edq
 bJt
 bJt
 bJt
@@ -90657,7 +90743,7 @@ aqI
 qIo
 akN
 axv
-aDU
+uGP
 tOy
 axv
 aDU
@@ -96961,7 +97047,7 @@ buH
 bHa
 bHT
 bHa
-buH
+khT
 vra
 bMo
 qqJ
@@ -97759,7 +97845,7 @@ bms
 boq
 boq
 beH
-bgO
+eyT
 beH
 buu
 buu
@@ -101007,7 +101093,7 @@ bdl
 bEt
 bNP
 bmD
-bNP
+ktV
 bmD
 bNP
 byu
@@ -102440,7 +102526,7 @@ vbR
 pky
 cbv
 cbS
-bHW
+lPN
 bJz
 bJC
 cdY
@@ -103548,7 +103634,7 @@ alO
 alO
 alO
 alO
-alO
+rAT
 alO
 alO
 alO
@@ -105056,7 +105142,7 @@ bva
 aWT
 aLG
 aZi
-aLG
+kUH
 bbr
 bCM
 bCV
@@ -108529,7 +108615,7 @@ bCE
 bEf
 bFu
 cbE
-bFu
+rbR
 bIl
 bIX
 nsY

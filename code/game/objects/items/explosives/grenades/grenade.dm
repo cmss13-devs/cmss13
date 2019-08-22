@@ -13,6 +13,7 @@
 	var/active = 0
 	var/det_time = 40
 	var/dangerous = 0		//Make an danger overlay for humans?
+	var/harmful = TRUE      //Is it harmful? Can synths use them?
 	var/arm_sound = 'sound/weapons/armbomb.ogg'
 	var/underslug_launchable = FALSE
 
@@ -27,6 +28,10 @@
 
 		if(!user.IsAdvancedToolUser())
 			to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
+			return
+
+		if(harmful && isSynth(user))
+			to_chat(user, SPAN_WARNING("Your programming prevents you from wearing this!"))
 			return
 
 		add_fingerprint(user)

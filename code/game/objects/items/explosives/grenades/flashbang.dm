@@ -4,6 +4,7 @@
 	item_state = "flashbang"
 	origin_tech = "materials=2;combat=1"
 	var/banglet = 0
+	harmful = FALSE
 
 
 /obj/item/explosive/grenade/flashbang/attack_self(mob/user)

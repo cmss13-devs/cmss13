@@ -175,6 +175,7 @@ proc/flame_radius(radius = 1, turf/turf) //~Art updated fire.
 	item_state = "grenade_smoke"
 	underslug_launchable = TRUE
 	var/datum/effect_system/smoke_spread/bad/smoke
+	harmful = FALSE
 
 	New()
 		..()
@@ -196,6 +197,7 @@ proc/flame_radius(radius = 1, turf/turf) //~Art updated fire.
 	underslug_launchable = TRUE
 	var/datum/effect_system/smoke_spread/phosphorus/smoke
 	dangerous = 1
+	harmful = TRUE
 
 	New()
 		..()
@@ -226,6 +228,7 @@ proc/flame_radius(radius = 1, turf/turf) //~Art updated fire.
 	icon_state = "training_grenade"
 	item_state = "grenade"
 	dangerous = 0
+	harmful = FALSE
 
 /obj/item/explosive/grenade/HE/training/prime()
 	spawn(0)

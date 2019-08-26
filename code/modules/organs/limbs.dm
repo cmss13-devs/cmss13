@@ -444,7 +444,7 @@ This function completely restores a damaged organ to perfect condition.
 			if(trace_chemicals[chemID] <= 0)
 				trace_chemicals.Remove(chemID)
 
-	//Bone fracurtes	
+	//Bone fractures	
 	if(!(status & LIMB_BROKEN))
 		perma_injury = 0
 	if(knitting_time > 0)
@@ -703,20 +703,20 @@ Note that amputating the affected organ does in fact remove the infection from t
 	var/tburn = 0
 	var/tbrute = 0
 
-	if(burn_dam ==0)
+	if(burn_dam == 0)
 		tburn = 0
-	else if (burn_dam < (max_damage * 0.25 / 2))
+	else if (burn_dam < (max_damage * 0.25 / 1.5))
 		tburn = 1
-	else if (burn_dam < (max_damage * 0.75 / 2))
+	else if (burn_dam < (max_damage * 0.75 / 1.5))
 		tburn = 2
 	else
 		tburn = 3
 
 	if (brute_dam == 0)
 		tbrute = 0
-	else if (brute_dam < (max_damage * 0.25 / 5))
+	else if (brute_dam < (max_damage * 0.25 / 1.5))
 		tbrute = 1
-	else if (brute_dam < (max_damage * 0.75 / 5))
+	else if (brute_dam < (max_damage * 0.75 / 1.5))
 		tbrute = 2
 	else
 		tbrute = 3

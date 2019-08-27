@@ -119,8 +119,9 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 
 
 		active_spread_num++
-		spawn(0) //spawn(0) is important because it paces the explosion in an expanding circle, rather than a series of squiggly lines constantly checking overlap. Reduces lag by a lot
-			T.explosion_spread(src, epicenter, spread_power - resistance, direction, falloff)
+		INVOKE_ASYNC(T, /turf/proc/explosion_spread, src, epicenter, spread_power - resistance, direction, falloff)
+		//spawn(0) //spawn(0) is important because it paces the explosion in an expanding circle, rather than a series of squiggly lines constantly checking overlap. Reduces lag by a lot
+		//	T.explosion_spread(src, epicenter, spread_power - resistance, direction, falloff)
 
 	if(power >= 100) // powerful explosions send out some special effects
 		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter

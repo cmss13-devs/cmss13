@@ -25,7 +25,7 @@
 
 #define QDEL_NULL(x) if(x) { qdel(x) ; x = null }
 
-#define QDEL_IN(item, time) addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, item), time, TIMER_STOPPABLE)
+#define QDEL_IN(item, time) add_timer(CALLBACK(GLOBAL_PROC, .proc/qdel, item), time, TIMER_STOPPABLE)
 
 #define DROP_NULL(x) if(x) { x.dropInto(loc); x = null; }
 

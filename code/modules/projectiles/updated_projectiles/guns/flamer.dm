@@ -621,8 +621,7 @@
 		if(T.density)
 			continue
 
-		spawn(0) //spawn(0) is important because it paces the explosion in an expanding circle, rather than a series of squiggly lines constantly checking overlap. Reduces lag by a lot
-			fire_spread_recur(T, spread_power, spread_direction, fire_lvl, burn_lvl, f_color) //spread further
+		INVOKE_ASYNC(src, .proc/fire_spread_recur, T, spread_power, spread_direction, fire_lvl, burn_lvl, f_color) //spread further
 
 /proc/fire_spread(var/turf/target, range, fire_lvl, burn_lvl, f_color)
 	new/obj/flamer_fire(target, fire_lvl, burn_lvl, f_color)

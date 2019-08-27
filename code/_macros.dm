@@ -73,8 +73,6 @@
 
 #define FLAGS_EQUALS(flag, flags) ((flag & (flags)) == (flags))
 
-#define JOINTEXT(X) jointext(X, null)
-
 // Style class macros
 
 #define SPAN_BOLDANNOUNCE(X) "<span class='boldannounce'>[X]</span>"

@@ -63,7 +63,7 @@
 	//looks like this only appears in whisper. Should it be elsewhere as well? Maybe handle_speech_problems?
 	if(istype(src.wear_mask, /obj/item/clothing/mask/gas/voice/space_ninja)&&src.wear_mask:voice=="Unknown")
 		if(copytext(message, 1, 2) != "*")
-			var/list/temp_message = text2list(message, " ")
+			var/list/temp_message = splittext(message, " ")
 			var/list/pick_list = list()
 			for(var/i = 1, i <= temp_message.len, i++)
 				pick_list += i
@@ -72,13 +72,13 @@
 				if(findtext(temp_message[H], "*") || findtext(temp_message[H], ";") || findtext(temp_message[H], ":")) continue
 				temp_message[H] = ninjaspeak(temp_message[H])
 				pick_list -= H
-			message = list2text(temp_message, " ")
-			message = oldreplacetext(message, "o", "�")
-			message = oldreplacetext(message, "p", "�")
-			message = oldreplacetext(message, "l", "�")
-			message = oldreplacetext(message, "s", "�")
-			message = oldreplacetext(message, "u", "�")
-			message = oldreplacetext(message, "b", "�")
+			message = jointext(temp_message, " ")
+			message = replacetext(message, "o", "�")
+			message = replacetext(message, "p", "�")
+			message = replacetext(message, "l", "�")
+			message = replacetext(message, "s", "�")
+			message = replacetext(message, "u", "�")
+			message = replacetext(message, "b", "�")
 
 	//TODO: handle_speech_problems
 	if (src.stuttering)

@@ -14,8 +14,8 @@
 	docking_program = new/datum/computer/file/embedded_program/docking/multi(src)
 	program = docking_program
 
-	var/list/names = text2list(child_names_txt, ";")
-	var/list/tags = text2list(child_tags_txt, ";")
+	var/list/names = splittext(child_names_txt, ";")
+	var/list/tags = splittext(child_tags_txt, ";")
 
 	if (names.len == tags.len)
 		for (var/i = 1; i <= tags.len; i++)

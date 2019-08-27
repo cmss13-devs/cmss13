@@ -1100,17 +1100,17 @@
 	if(!msg || !usr.client) return
 
 	msg = sanitize(msg)
-	msg = oldreplacetext(msg, "a", "@")
-	msg = oldreplacetext(msg, "e", "3")
-	msg = oldreplacetext(msg, "i", "1")
-	msg = oldreplacetext(msg, "o", "0")
-	//msg = oldreplacetext(msg, "u", "^")
-	//msg = oldreplacetext(msg, "y", "7")
-	//msg = oldreplacetext(msg, "r", "9")
-	msg = oldreplacetext(msg, "s", "5")
-	//msg = oldreplacetext(msg, "t", "7")
-	msg = oldreplacetext(msg, "l", "1")
-	//msg = oldreplacetext(msg, "n", "*")
+	msg = replacetext(msg, "a", "@")
+	msg = replacetext(msg, "e", "3")
+	msg = replacetext(msg, "i", "1")
+	msg = replacetext(msg, "o", "0")
+	//msg = replacetext(msg, "u", "^")
+	//msg = replacetext(msg, "y", "7")
+	//msg = replacetext(msg, "r", "9")
+	msg = replacetext(msg, "s", "5")
+	//msg = replacetext(msg, "t", "7")
+	msg = replacetext(msg, "l", "1")
+	//msg = replacetext(msg, "n", "*")
 	   //Preds now speak in bastardized 1337speak BECAUSE. -because abby is retarded -spookydonut
 
 	spawn(10)

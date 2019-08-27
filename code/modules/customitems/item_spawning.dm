@@ -8,13 +8,13 @@
 
 /hook/startup/proc/loadCustomItems()
 	var/custom_items_file = file2text("config/custom_items.txt")
-	custom_items = text2list(custom_items_file, "\n")
+	custom_items = splittext(custom_items_file, "\n")
 	return 1
 
 /proc/EquipCustomItems(mob/living/carbon/human/M)
 	for(var/line in custom_items)
 		// split & clean up
-		var/list/Entry = text2list(line, ":")
+		var/list/Entry = splittext(line, ":")
 		for(var/i = 1 to Entry.len)
 			Entry[i] = trim(Entry[i])
 
@@ -22,7 +22,7 @@
 			continue;
 
 		if(Entry[1] == M.ckey && Entry[2] == M.real_name)
-			var/list/Paths = text2list(Entry[3], ",")
+			var/list/Paths = splittext(Entry[3], ",")
 			for(var/P in Paths)
 				var/ok = 0  // 1 if the item was placed successfully
 				P = trim(P)

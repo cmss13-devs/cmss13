@@ -235,9 +235,9 @@
 
 		for(var/line in song.lines)
 			//world << line
-			for(var/beat in text2list(lowertext(line), ","))
-				var/list/notes = text2list(beat, "/")
-				for(var/note in text2list(notes[1], "-"))
+			for(var/beat in splittext(lowertext(line), ","))
+				var/list/notes = splittext(beat, "/")
+				for(var/note in splittext(notes[1], "-"))
 					if(!playing || !anchored)//If the piano is playing, or is loose
 						playing = 0
 						return
@@ -399,7 +399,7 @@
 
 			//split into lines
 			spawn()
-				var/list/lines = text2list(t, "\n")
+				var/list/lines = splittext(t, "\n")
 				var/tempo = 5
 				if(copytext(lines[1],1,6) == "BPM: ")
 					var/bpm = text2num(copytext(lines[1],6))

@@ -199,8 +199,8 @@
 	else			//no toner? shitty copies for you!
 		copy.info = "<font color = #808080>"
 	var/copied = original.info
-	copied = oldreplacetext(copied, "<font face=\"[copy.deffont]\" color=", "<font face=\"[copy.deffont]\" nocolor=")	//state of the art techniques in action
-	copied = oldreplacetext(copied, "<font face=\"[copy.crayonfont]\" color=", "<font face=\"[copy.crayonfont]\" nocolor=")	//This basically just breaks the existing color tag, which we need to do because the innermost tag takes priority.
+	copied = replacetext(copied, "<font face=\"[copy.deffont]\" color=", "<font face=\"[copy.deffont]\" nocolor=")	//state of the art techniques in action
+	copied = replacetext(copied, "<font face=\"[copy.crayonfont]\" color=", "<font face=\"[copy.crayonfont]\" nocolor=")	//This basically just breaks the existing color tag, which we need to do because the innermost tag takes priority.
 	copy.info += copied
 	copy.info += "</font>"
 	copy.name = original.name // -- Doohl

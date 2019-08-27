@@ -235,9 +235,10 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 #define BARRICADE_DMG_MODERATE 2
 #define BARRICADE_DMG_HEAVY 3
 
-#define BARRICADE_BSTATE_SECURED 2 // fresh barricade
-#define BARRICADE_BSTATE_UNSECURED 1 // intermediate state before cade is movable (no apparent effect on health)
-#define BARRICADE_BSTATE_MOVABLE 0 // ready to be deconstructed and can be moved
+#define BARRICADE_BSTATE_FORTIFIED 	3 // Used by handrails to indicate reinforcing
+#define BARRICADE_BSTATE_SECURED 	2 // fresh barricade
+#define BARRICADE_BSTATE_UNSECURED 	1 // intermediate state before cade is movable (no apparent effect on health)
+#define BARRICADE_BSTATE_MOVABLE 	0 // ready to be deconstructed and can be moved
 
 // Defines for wall types
 #define WALL_METAL (1<<1)

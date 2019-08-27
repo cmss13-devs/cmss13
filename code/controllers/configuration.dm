@@ -170,7 +170,7 @@
 /datum/configuration/proc/initilize_configuration(name,value)
 	switch (name)
 		if ("resource_urls")
-			config.resource_urls = text2list(value, " ")
+			config.resource_urls = splittext(value, " ")
 
 		if ("admin_legacy_system")
 			config.admin_legacy_system = 1

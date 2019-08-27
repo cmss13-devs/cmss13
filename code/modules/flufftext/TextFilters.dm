@@ -26,7 +26,7 @@ proc/Intoxicated(phrase)
 proc/NewStutter(phrase,stunned)
 	phrase = html_decode(phrase)
 
-	var/list/split_phrase = text2list(phrase," ") //Split it up into words.
+	var/list/split_phrase = splittext(phrase," ") //Split it up into words.
 
 	var/list/unstuttered_words = split_phrase.Copy()
 	var/i = rand(1,3)
@@ -57,7 +57,7 @@ proc/NewStutter(phrase,stunned)
 
 		split_phrase[index] = word
 
-	return sanitize(list2text(split_phrase," "))
+	return sanitize(jointext(split_phrase," "))
 
 proc/DazedText(phrase)
 	phrase = html_decode(phrase)
@@ -83,7 +83,7 @@ proc/Ellipsis(original_msg, chance = 50)
 	if(chance <= 0) return "..."
 	if(chance >= 100) return original_msg
 
-	var/list/words = text2list(original_msg," ")
+	var/list/words = splittext(original_msg," ")
 	var/list/new_words = list()
 
 	var/new_msg = ""
@@ -94,6 +94,6 @@ proc/Ellipsis(original_msg, chance = 50)
 		else
 			new_words += w
 
-	new_msg = list2text(new_words," ")
+	new_msg = jointext(new_words," ")
 
 	return new_msg

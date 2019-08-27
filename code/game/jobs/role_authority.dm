@@ -108,7 +108,7 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 		if(!length(i)) continue
 		else if (copytext(i, 1, 2) == "#") continue
 
-		P = text2list(i, "+")
+		P = splittext(i, "+")
 		if(!P.len) continue
 		ckey = ckey(P[1]) //Converting their key to canonical form. ckey() does this by stripping all spaces, underscores and converting to lower case.
 

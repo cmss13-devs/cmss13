@@ -615,17 +615,17 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 	switch(input("Which list?") in list("Players","Admins","Mobs","Living Mobs","Dead Mobs", "Clients"))
 		if("Players")
-			usr << list2text(player_list,",")
+			usr << jointext(player_list,",")
 		if("Admins")
-			usr << list2text(admins,",")
+			usr << jointext(admins,",")
 		if("Mobs")
-			usr << list2text(mob_list,",")
+			usr << jointext(mob_list,",")
 		if("Living Mobs")
-			usr << list2text(living_mob_list,",")
+			usr << jointext(living_mob_list,",")
 		if("Dead Mobs")
-			usr << list2text(dead_mob_list,",")
+			usr << jointext(dead_mob_list,",")
 		if("Clients")
-			usr << list2text(clients,",")
+			usr << jointext(clients,",")
 
 
 /client/proc/cmd_debug_list_processing_items()

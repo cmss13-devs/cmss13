@@ -180,7 +180,7 @@
 
 
 	var/file = file2text("config/donators.txt")
-	var/lines = text2list(file, "\n")
+	var/lines = splittext(file, "\n")
 
 	for(var/line in lines)
 		if(src.ckey == line)

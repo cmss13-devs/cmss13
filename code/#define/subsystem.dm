@@ -22,6 +22,7 @@
 #define SS_INIT_LANDMARK           11
 #define SS_INIT_MAPVIEW            10
 #define SS_INIT_DEFCON             9
+#define SS_INIT_TIMER              1
 #define SS_INIT_UNSPECIFIED        0
 #define SS_INIT_EMERGENCY_SHUTTLE -19
 #define SS_INIT_ASSETS            -20
@@ -72,6 +73,7 @@
 #define SS_DISPLAY_COMPONENT      -69
 #define SS_DISPLAY_FAST_OBJECTS   -65
 #define SS_DISPLAY_OBJECTS        -60
+#define SS_DISPLAY_TIMER          -55
 #define SS_DISPLAY_MACHINERY      -50
 #define SS_DISPLAY_PIPENET        -40
 #define SS_DISPLAY_FAST_MACHINERY -30

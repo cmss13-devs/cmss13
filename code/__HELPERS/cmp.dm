@@ -40,4 +40,7 @@ var/cmp_field = "name"
 /proc/cmp_subsystem_priority(datum/subsystem/a, datum/subsystem/b)
 	return a.priority - b.priority
 
+/proc/cmp_timer(datum/timed_event/a, datum/timed_event/b)
+	return a.time_to_run - b.time_to_run
+
 var/atom/cmp_dist_origin=null

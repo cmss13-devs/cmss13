@@ -64,9 +64,7 @@
 	playsound(loc, arm_sound, 25, 1, 6)
 	if(dangerous)
 		updateicon()
-	spawn(det_time)
-		prime()
-		return
+	add_timer(CALLBACK(src, .proc/prime), det_time)
 
 /obj/item/explosive/grenade/proc/updateicon()
 	if(dangerous)

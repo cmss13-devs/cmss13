@@ -570,8 +570,7 @@
 				//"Well then why not change the proc itself?"
 				//Excellent question!
 				//Because when you open doors by Bumped() it would have you fly through before the animation is complete
-				spawn(0)
-					ST.close()
+				INVOKE_ASYNC(ST, /obj/machinery/door.proc/close)
 				break
 
 		//Elevators
@@ -606,8 +605,7 @@
 		for(var/obj/machinery/door/poddoor/shutters/P in T)
 			if(!istype(P)) continue
 			if(P.density)
-				spawn(0)
-					P.open()
+				INVOKE_ASYNC(P, /obj/machinery/door.proc/close)
 				//No break since transit shutters are the same parent type
 
 		if (iselevator)
@@ -616,8 +614,7 @@
 				if(A.locked)
 					A.unlock()
 				if(A.density)
-					spawn(0)
-						A.open()
+					INVOKE_ASYNC(A, /obj/machinery/door.proc/close)
 				break
 		else
 			for(var/obj/machinery/door/airlock/dropship_hatch/M in T)

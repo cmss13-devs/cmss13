@@ -37,6 +37,18 @@
 #define MINUTES_45 		27000
 #define HOURS_1 		36000
 
+// Real time that is still reliable even when the round crosses over midnight time reset.
+#define REALTIMEOFDAY (world.timeofday + (864000 * MIDNIGHT_ROLLOVER_CHECK))
+#define MIDNIGHT_ROLLOVER_CHECK ( rollovercheck_last_timeofday != world.timeofday ? update_midnight_rollover() : midnight_rollovers )
+
+var/midnight_rollovers = 0
+var/rollovercheck_last_timeofday = 0
+
+/proc/update_midnight_rollover()
+	if(world.timeofday < rollovercheck_last_timeofday) //TIME IS GOING BACKWARDS!
+		return midnight_rollovers++
+	return midnight_rollovers
+
 
 proc/worldtime2text(time = world.time) // Shows current time starting at noon 12:00 (station time)
 	return "[round(time / HOURS_1)+12]:[(time / MINUTES_1 % 60) < 10 ? add_zero(time / MINUTES_1 % 60, 1) : time / MINUTES_1 % 60]"

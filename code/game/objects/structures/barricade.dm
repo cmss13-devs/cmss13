@@ -136,10 +136,14 @@
 			user.visible_message(SPAN_NOTICE("[user] starts setting up [W.name] on [src]."),
 			SPAN_NOTICE("You start setting up [W.name] on [src]."))
 			if(do_after(user, 20, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) && can_wire)
+				// Make sure there's still enough wire in the stack
+				if(!B.use(1))
+					return
+
 				playsound(src.loc, 'sound/effects/barbed_wire_movement.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] sets up [W.name] on [src]."),
 				SPAN_NOTICE("You set up [W.name] on [src]."))
-				B.use(1)
+
 				maxhealth += 50
 				update_health(-50)
 				can_wire = FALSE

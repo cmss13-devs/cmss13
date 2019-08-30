@@ -21,6 +21,9 @@ var/global/list/ghdel_profiling = list()
 	//Detective Work, used for the duplicate data points kept in the scanners
 	var/list/original_atom
 
+	//Z-Level Transitions
+	var/atom/movable/clone/clone = null
+
 // Temporary call in place for preparation of implementing SSatoms.
 /atom/New()
 	. = ..()
@@ -446,3 +449,19 @@ its easier to just keep the beam vertical.
 
 /atom/proc/Initialize()
 	return
+
+///---CLONE---///
+
+/atom/clone
+	var/proj_x = 0
+	var/proj_y = 0
+
+/atom/proc/create_clone(shift_x, shift_y) //NOTE: Use only for turfs, otherwise use create_clone_movable
+	var/turf/T = null
+	T = locate(src.x + shift_x, src.y + shift_y, src.z)
+
+	T.appearance = src.appearance
+	T.dir = src.dir
+
+	clones_t.Add(src)
+	src.clone = T

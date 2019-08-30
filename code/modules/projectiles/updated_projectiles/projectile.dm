@@ -279,59 +279,71 @@
 	if(!T.contents.len)
 		return 0
 
-	var/hit_chance = 0
+	for(var/atom/movable/clone/C in T) //Handle clones if there are any
+		if(C.mstr)
+			if(istype(C.mstr, /obj))
+				if(handle_object(C.mstr)) return 1
+			else if(istype(C.mstr, /mob/living))
+				if(handle_mob(C.mstr)) return 1
 
 	for(var/obj/O in T) //check objects before checking mobs, so that barricades protect
-		// If we've already handled this atom, don't do it again
-		if(O in permutated)
-			continue
-		permutated += O
-
-		hit_chance = O.get_projectile_hit_boolean(src)
-		if( hit_chance ) // Calculated from combination of both ammo accuracy and gun accuracy
-			ammo.on_hit_obj(O,src)
-			if(O && O.loc)
-				O.bullet_act(src)
-			return 1
+		if(handle_object(O)) return 1
 
 	for(var/mob/living/L in T)
-		// If we've already handled this atom, don't do it again
-		if(L in permutated)
-			continue
-		permutated += L
+		if(handle_mob(L)) return 1
 
-		hit_chance = L.get_projectile_hit_chance(src)
-		if( hit_chance ) // Calculated from combination of both ammo accuracy and gun accuracy
-			var/mob_is_hit = FALSE
-			var/hit_roll
-			var/i = 0
-			while(++i <= 2 && hit_chance > 0) // This runs twice if necessary
-				hit_roll 					= rand(0, 99) //Our randomly generated roll
-				if(hit_roll < 25) def_zone 	= pick(base_miss_chance)	// Still hit but now we might hit the wrong body part
-				hit_chance 				   -= base_miss_chance[def_zone] // Reduce accuracy based on spot.
+/obj/item/projectile/proc/handle_object(obj/O)
+	// If we've already handled this atom, don't do it again
+	if(O in permutated)
+		return 0
+	permutated += O
 
-				switch(i)
-					if(1)
-						if(hit_chance > hit_roll)
-							mob_is_hit = TRUE
-							break //Hit
-						if( hit_chance < (hit_roll - 20) )
-							break //Outright miss.
-						def_zone 	  = pick(base_miss_chance) //We're going to pick a new target and let this run one more time.
-						hit_chance   -= 10 //If you missed once, the next go around will be harder to hit.
-					if(2)
-						if(hit_chance > hit_roll)
-							mob_is_hit = TRUE
-							break
-			if(mob_is_hit)				
-				if(L && L.loc)
-					if(L.bullet_act(src) != -1)
-						ammo.on_hit_mob(L,src)
-				return 1
-			else if (!L.lying)
-				animatation_displace_reset(L)
-				if(ammo.sound_miss) L.playsound_local(get_turf(L), ammo.sound_miss, 75, 1)
-				L.visible_message("<span class='avoidharm'>[src] misses [L]!</span>","<span class='avoidharm'>[src] narrowly misses you!</span>", null, 4)
+	var/hit_chance = O.get_projectile_hit_boolean(src)
+	if( hit_chance ) // Calculated from combination of both ammo accuracy and gun accuracy
+		ammo.on_hit_obj(O,src)
+		if(O && O.loc)
+			O.bullet_act(src)
+		return 1
+
+/obj/item/projectile/proc/handle_mob(mob/living/L)
+	// If we've already handled this atom, don't do it again
+	if(L in permutated)
+		return 0
+	permutated += L
+
+	var/hit_chance = L.get_projectile_hit_chance(src)
+	if( hit_chance ) // Calculated from combination of both ammo accuracy and gun accuracy
+		var/mob_is_hit = FALSE
+		var/hit_roll
+		var/i = 0
+		while(++i <= 2 && hit_chance > 0) // This runs twice if necessary
+			hit_roll 					= rand(0, 99) //Our randomly generated roll
+			if(hit_roll < 25) def_zone 	= pick(base_miss_chance)	// Still hit but now we might hit the wrong body part
+			hit_chance 				   -= base_miss_chance[def_zone] // Reduce accuracy based on spot.
+
+			switch(i)
+				if(1)
+					if(hit_chance > hit_roll)
+						mob_is_hit = TRUE
+						break //Hit
+					if( hit_chance < (hit_roll - 20) )
+						break //Outright miss.
+					def_zone 	  = pick(base_miss_chance) //We're going to pick a new target and let this run one more time.
+					hit_chance   -= 10 //If you missed once, the next go around will be harder to hit.
+				if(2)
+					if(hit_chance > hit_roll)
+						mob_is_hit = TRUE
+						break
+		if(mob_is_hit)
+			if(L && L.loc)
+				if(L.bullet_act(src) != -1)
+					ammo.on_hit_mob(L,src)
+			return 1
+		else if (!L.lying)
+			animatation_displace_reset(L)
+			if(ammo.sound_miss) L.playsound_local(get_turf(L), ammo.sound_miss, 75, 1)
+			L.visible_message("<span class='avoidharm'>[src] misses [L]!</span>","<span class='avoidharm'>[src] narrowly misses you!</span>", null, 4)
+
 
 
 //----------------------------------------------------------

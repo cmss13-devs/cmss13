@@ -47,11 +47,17 @@
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob( severity-EXPLOSION_THRESHOLD_LOW ))
 				handle_debris(severity, direction)
-				qdel(src)
+				if(src.health)
+					src.health -= severity
+					if(src.health < 0) //Prevents unbreakable objects from being destroyed
+						qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			handle_debris(severity, direction)
-			qdel(src)
+			if(src.health)
+				src.health -= severity
+				if(src.health < 0)
+					qdel(src)
 			return
 
 /obj/structure/proc/handle_debris(severity = 0, direction = 0)

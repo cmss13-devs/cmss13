@@ -119,6 +119,9 @@
 
 
 /client/Move(n, direct)
+	if(mob.clone != null)
+		mob.update_clone() //Update the mob's clone if it has one
+
 	if(mob.control_object)
 		return Move_object(direct) //admins possessing object
 

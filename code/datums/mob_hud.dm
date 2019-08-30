@@ -32,6 +32,8 @@ var/datum/mob_hud/huds = list(
 		return
 	for(var/i in hud_icons)
 		user.client.images -= target.hud_list[i]
+		if(target.clone)
+			user.client.images -= target.clone.hud_list[i]
 
 /datum/mob_hud/proc/add_hud_to(mob/user)
 	hudusers |= user
@@ -48,6 +50,8 @@ var/datum/mob_hud/huds = list(
 		return
 	for(var/i in hud_icons)
 		user.client.images |= target.hud_list[i]
+		if(target.clone)
+			user.client.images |= target.clone.hud_list[i]
 
 
 

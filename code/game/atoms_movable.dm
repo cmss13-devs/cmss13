@@ -418,3 +418,77 @@
 //called when a mob tries to breathe while inside us.
 /atom/movable/proc/handle_internal_lifeform(mob/lifeform_inside_me)
 	. = return_air()
+
+///---CLONE---///
+
+/atom/movable/clone
+	var/atom/movable/mstr = null //Used by clones for referral
+	var/proj_x = 0
+	var/proj_y = 0
+	var/unacidable = 1
+
+	var/list/image/hud_list
+
+//REDIRECT TO MASTER//
+/atom/movable/clone/attack_ai(mob/user)
+	return src.mstr.attack_ai(user)
+
+/atom/movable/clone/attack_hand(mob/user)
+	return src.mstr.attack_hand(user)
+
+/atom/movable/clone/attack_alien(mob/living/carbon/Xenomorph/M, dam_bonus)
+	return src.mstr.attack_alien(M, dam_bonus)
+
+/atom/movable/clone/attack_animal(mob/living/M as mob)
+	return src.mstr.attack_animal(M)
+
+/atom/movable/clone/attackby(obj/item/I, mob/living/user)
+	return src.mstr.attackby(I, user)
+
+/atom/movable/clone/examine(mob/user)
+	return src.mstr.examine(user)
+
+/atom/movable/clone/bullet_act(obj/item/projectile/P)
+	return src.mstr.bullet_act(P)
+/////////////////////
+
+/atom/movable/proc/create_clone_movable(shift_x, shift_y)
+	var/atom/movable/clone/C = new /atom/movable/clone(src.loc)
+	C.density = 0
+	C.proj_x = shift_x
+	C.proj_y = shift_y
+
+	clones.Add(C)
+	C.mstr = src //Link clone and master
+	src.clone = C
+
+/atom/movable/proc/update_clone()
+	///---Var-Copy---////
+	clone.x = x + clone.proj_x //Translate clone position by projection factor
+	clone.y = y + clone.proj_y //This is done first to reduce movement latency
+
+	clone.anchored 		= anchored //Some of these may be suitable for Init
+	clone.appearance 	= appearance
+	clone.dir 			= dir
+	clone.flags_atom 	= flags_atom
+	clone.density 		= density
+	clone.layer 		= layer
+	clone.level 		= level
+	clone.name 			= name
+	clone.pixel_x 		= pixel_x
+	clone.pixel_y 		= pixel_y
+	clone.transform 	= transform
+	clone.invisibility 	= invisibility
+	////////////////////
+
+	if(light) //Clone lighting
+		if(!clone.light)
+			clone.SetLuminosity(luminosity) //Create clone light
+	else
+		if(clone.light)
+			clone.SetLuminosity(0) //Kill clone light
+
+/atom/movable/proc/destroy_clone()
+	clones.Remove(src.clone)
+	qdel(src.clone)
+	src.clone = null

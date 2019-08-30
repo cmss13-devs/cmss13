@@ -154,8 +154,9 @@
 			return 0
 
 	var/atom/movable/pullee = pulling
-	if(pullee && get_dist(src, pullee) > 1)
-		stop_pulling()
+	if(pullee && get_dist(src, pullee) > 1) //Is the pullee adjacent?
+		if(pullee.clone && get_dist(src, pullee.clone) > 1) //Is it the clone adjacent?
+			stop_pulling()
 	var/turf/T = loc
 	. = ..()
 	if(. && pulling && pulling == pullee) //we were pulling a thing and didn't lose it during our move.
@@ -693,3 +694,15 @@
 		user << browse(dat, "window=handscanner;size=500x400")
 	else
 		user.show_message(dat, 1)
+
+/mob/living/create_clone_movable(shift_x, shift_y)
+	..()
+	src.clone.hud_list = new /list(src.hud_list.len)
+	for(var/h in src.hud_possible) //Clone HUD
+		src.clone.hud_list[h] = new /image("loc" = src.clone, "icon" = src.hud_list[h].icon)
+
+/mob/living/update_clone()
+	..()
+	for(var/h in src.hud_possible)
+		src.clone.hud_list[h].icon_state = src.hud_list[h].icon_state
+

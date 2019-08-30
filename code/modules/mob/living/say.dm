@@ -80,78 +80,85 @@ var/list/department_radio_keys = list(
 
 /mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/italics=0, var/message_range = world.view, var/sound/speech_sound, var/sound_vol, var/nolog = 0)
 
-	var/turf/T = get_turf(src)
+	var/turf/T
 
-	//handle nonverbal and sign languages here
-	if (speaking)
-		if (speaking.flags & NONVERBAL)
-			if (prob(30))
-				src.custom_emote(1, "[pick(speaking.signlang_verb)].")
+	for(var/dst=0; dst<=1; dst++) //Will run twice if src has a clone
+		if(!dst && src.clone) //Will speak in src's location and the clone's
+			T = locate(src.loc.x + src.clone.proj_x, src.loc.y + src.clone.proj_y, src.loc.z)
+		else
+			T = get_turf(src)
+			dst++ //Only speak once
 
-		if (speaking.flags & SIGNLANG)
-			say_signlang(message, pick(speaking.signlang_verb), speaking)
-			return 1
+		//handle nonverbal and sign languages here
+		if (speaking)
+			if (speaking.flags & NONVERBAL)
+				if (prob(30))
+					src.custom_emote(1, "[pick(speaking.signlang_verb)].")
 
-	var/list/listening = list()
-	var/list/listening_obj = list()
+			if (speaking.flags & SIGNLANG)
+				say_signlang(message, pick(speaking.signlang_verb), speaking)
+				return 1
 
-	if(T)
-		//make sure the air can transmit speech - speaker's side
-		/*
-		var/datum/gas_mixture/environment = T.return_air()
-		if(environment)
-			var/pressure = (environment)? environment.return_pressure() : 0
-			if(pressure < SOUND_MINIMUM_PRESSURE)
-				message_range = 1
+		var/list/listening = list()
+		var/list/listening_obj = list()
 
-			if (pressure < ONE_ATMOSPHERE*0.4) //sound distortion pressure, to help clue people in that the air is thin, even if it isn't a vacuum yet
-				italics = 1
-				sound_vol *= 0.5 //muffle the sound a bit, so it's like we're actually talking through contact
-		*/
-		var/list/hear = hear(message_range, T)
-		var/list/hearturfs = list()
+		if(T)
+			//make sure the air can transmit speech - speaker's side
+			/*
+			var/datum/gas_mixture/environment = T.return_air()
+			if(environment)
+				var/pressure = (environment)? environment.return_pressure() : 0
+				if(pressure < SOUND_MINIMUM_PRESSURE)
+					message_range = 1
 
-		for(var/I in hear)
-			if(istype(I, /mob/))
-				var/mob/M = I
-				listening += M
-				hearturfs += M.locs[1]
-				for(var/obj/O in M.contents)
+				if (pressure < ONE_ATMOSPHERE*0.4) //sound distortion pressure, to help clue people in that the air is thin, even if it isn't a vacuum yet
+					italics = 1
+					sound_vol *= 0.5 //muffle the sound a bit, so it's like we're actually talking through contact
+			*/
+			var/list/hear = hear(message_range, T)
+			var/list/hearturfs = list()
+
+			for(var/I in hear)
+				if(istype(I, /mob/))
+					var/mob/M = I
+					listening += M
+					hearturfs += M.locs[1]
+					for(var/obj/O in M.contents)
+						listening_obj |= O
+				else if(istype(I, /obj/))
+					var/obj/O = I
+					hearturfs += O.locs[1]
 					listening_obj |= O
-			else if(istype(I, /obj/))
-				var/obj/O = I
-				hearturfs += O.locs[1]
-				listening_obj |= O
 
 
-		for(var/mob/M in player_list)
-			if(M.stat == DEAD && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_GHOSTEARS))
-				listening |= M
-				continue
-			if(M.loc && M.locs[1] in hearturfs)
-				listening |= M
+			for(var/mob/M in player_list)
+				if(M.stat == DEAD && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_GHOSTEARS))
+					listening |= M
+					continue
+				if(M.loc && M.locs[1] in hearturfs)
+					listening |= M
 
-	var/speech_bubble_test = say_test(message)
-	var/image/speech_bubble = image('icons/mob/hud/talk.dmi',src,"h[speech_bubble_test]")
+		var/speech_bubble_test = say_test(message)
+		var/image/speech_bubble = image('icons/mob/hud/talk.dmi',src,"h[speech_bubble_test]")
 
-	var/not_dead_speaker = (stat != DEAD)
-	for(var/mob/M in listening)
-		if(not_dead_speaker)
-			M << speech_bubble
-		M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
+		var/not_dead_speaker = (stat != DEAD)
+		for(var/mob/M in listening)
+			if(not_dead_speaker)
+				M << speech_bubble
+			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
 
-	spawn(30)
-		if(client) client.images -= speech_bubble
-		if(not_dead_speaker)
-			for(var/mob/M in listening)
-				if(M.client) M.client.images -= speech_bubble
-		qdel(speech_bubble)
+		spawn(30)
+			if(client) client.images -= speech_bubble
+			if(not_dead_speaker)
+				for(var/mob/M in listening)
+					if(M.client) M.client.images -= speech_bubble
+			qdel(speech_bubble)
 
 
-	for(var/obj/O in listening_obj)
-		spawn(0)
+		for(var/obj/O in listening_obj)
 			if(O) //It's possible that it could be deleted in the meantime.
 				O.hear_talk(src, message, verb, speaking, italics)
+
 	//used for STUI to stop logging of animal messages and radio
 	//if(!nolog)
 	//Rather see stuff twice then not at all.

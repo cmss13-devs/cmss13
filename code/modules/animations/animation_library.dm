@@ -169,6 +169,9 @@ proc/animation_destruction_long_fade(atom/A, speed = 4, x_n = 4, y_n = 4)
 
 
 /mob/living/proc/animation_attack_on(atom/A, var/pixel_offset = 8)
+	if(A.clone)
+		if(src.Adjacent(A.clone))
+			A = A.clone
 	if(buckled || anchored) return //it would look silly.
 	var/pixel_x_diff = 0
 	var/pixel_y_diff = 0

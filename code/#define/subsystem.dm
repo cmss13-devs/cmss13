@@ -22,6 +22,7 @@
 #define SS_INIT_LANDMARK           11
 #define SS_INIT_MAPVIEW            10
 #define SS_INIT_DEFCON             9
+#define SS_INIT_FZ_TRANSITIONS     5
 #define SS_INIT_TIMER              1
 #define SS_INIT_UNSPECIFIED        0
 #define SS_INIT_EMERGENCY_SHUTTLE -19
@@ -44,6 +45,7 @@
 #define SS_PRIORITY_OBJECTS        100
 #define SS_PRIORITY_POWER          95
 #define SS_PRIORITY_MACHINERY      90
+#define SS_PRIORITY_FZ_TRANSITIONS 88
 #define SS_PRIORITY_PIPENET        85
 #define SS_PRIORITY_SHUTTLE        80
 #define SS_PRIORITY_AIR            70
@@ -58,11 +60,12 @@
 #define SS_PRIORITY_INACTIVITY     1
 #define SS_PRIORITY_ADMIN          0
 
-
 #define SS_WAIT_MACHINERY           3.5 SECONDS //TODO move the rest of these to defines
 #define SS_WAIT_FAST_MACHINERY      0.7 SECONDS
 #define SS_WAIT_FAST_OBJECTS        0.5 SECONDS
 #define SS_WAIT_ADMIN               5 MINUTES
+#define SS_WAIT_FZ_TRANSITIONS		1 SECONDS
+
 
 #define SS_DISPLAY_GARBAGE        -100
 #define SS_DISPLAY_AIR            -90
@@ -79,6 +82,7 @@
 #define SS_DISPLAY_FAST_MACHINERY -30
 #define SS_DISPLAY_SHUTTLES       -25
 #define SS_DISPLAY_POWER          -20
+#define SS_DISPLAY_FZ_TRANSITIONS -15
 #define SS_DISPLAY_TICKER         -10
 #define SS_DISPLAY_UNSPECIFIED     0
 #define SS_DISPLAY_SUN             10

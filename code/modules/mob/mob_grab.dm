@@ -62,6 +62,8 @@
 			if(GRAB_KILL)
 				icon_state = "disarm/kill1"
 				user.visible_message(SPAN_DANGER("[user] has tightened \his grip on [victim]'s neck!"), null, null, 5)
+				victim.last_damage_source = initial(user.name)
+				victim.last_damage_mob = user
 				victim.attack_log += "\[[time_stamp()]\] <font color='orange'>Has been strangled (kill intent) by [user] ([user.ckey])</font>"
 				user.attack_log += "\[[time_stamp()]\] <font color='red'>Strangled (kill intent) [victim] ([victim.ckey])</font>"
 				msg_admin_attack("[key_name(user)] strangled (kill intent) [key_name(victim)]")

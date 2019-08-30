@@ -15,6 +15,8 @@
 			visible_message(SPAN_DANGER("[S] [S.attacktext] [src]!"), null, null, 5)
 			var/damage = rand(S.melee_damage_lower, S.melee_damage_upper)
 			apply_damage(damage, BRUTE)
+			last_damage_source = initial(M.name)
+			last_damage_mob = M
 			S.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name] ([src.ckey])</font>")
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [S.name] ([S.ckey])</font>")
 			updatehealth()
@@ -123,6 +125,8 @@
 
 					M.visible_message(SPAN_DANGER("\The [M] slashes [src]!"), \
 					SPAN_DANGER("You slash [src]!"), null, 5)
+					last_damage_source = initial(M.name)
+					last_damage_mob = M
 					src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [M.name] ([M.ckey])</font>")
 					M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [src.name] ([src.ckey])</font>")
 					log_attack("[M.name] ([M.ckey]) slashed [src.name] ([src.ckey])")

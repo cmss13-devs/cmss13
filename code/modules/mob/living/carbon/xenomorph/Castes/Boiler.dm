@@ -181,23 +181,10 @@
 	visible_message(SPAN_WARNING("\The [src] launches a huge glob of acid hurling into the distance!"), \
 	SPAN_WARNING("You launch a huge glob of acid hurling into the distance!"), null, 5)
 
-	var/obj/item/projectile/P = new /obj/item/projectile(loc)
+	var/obj/item/projectile/P = new /obj/item/projectile("[caste_name] gas", src, loc)
 	P.generate_bullet(ammo)
 	P.fire_at(target, src, null, ammo.max_range, ammo.shell_speed)
 	playsound(src, 'sound/effects/blobattack.ogg', 25, 1)
-
-	if(mutation_type == BOILER_RAILGUN)
-		round_statistics.boiler_railgun_shots++
-	if(mutation_type == BOILER_SHATTER)
-		if(ammo.type == /datum/ammo/xeno/boiler_gas/shatter/acid)
-			round_statistics.boiler_shatter_acid_shots++
-		else
-			round_statistics.boiler_shatter_neuro_shots++
-	if(mutation_type == BOILER_NORMAL)
-		if(ammo.type == /datum/ammo/xeno/boiler_gas/corrosive)
-			round_statistics.boiler_acid_smokes++
-		else
-			round_statistics.boiler_neuro_smokes++
 
 	ammo.damage = temp_damage // Restore damage to its original value
 

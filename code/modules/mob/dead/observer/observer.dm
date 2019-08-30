@@ -69,11 +69,17 @@
 	if(!name)							//To prevent nameless ghosts
 		name = capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
 	real_name = name
+
 	..()
 	if(ticker && ticker.mode && ticker.mode.flags_round_type & MODE_PREDATOR)
 		spawn(20)
 			to_chat(src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>")
 			return
+	
+	if(round_statistics)
+		round_statistics.update_panel_data()
+	if(client && client.player_entity)
+		client.player_entity.update_panel_data(round_statistics)
 
 /mob/dead/observer/MouseDrop(atom/A)
 	if(!usr || !A)
@@ -93,6 +99,15 @@
 		var/mob/target = locate(href_list["track"]) in mob_list
 		if(target)
 			ManualFollow(target)
+	if(href_list["jumptocoord"])
+		if(istype(usr, /mob/dead/observer))
+			var/mob/dead/observer/A = usr
+			var/x = text2num(href_list["X"])
+			var/y = text2num(href_list["Y"])
+			var/z = text2num(href_list["Z"])
+			if(x && y && z)
+				A.JumpToCoord(x, y, z)
+
 
 /mob/dead/CanPass(atom/movable/mover, turf/target)
 	return 1
@@ -134,11 +149,17 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(stat == DEAD)
 		ghostize(1)
+		track_death_calculations()
+		if(client && client.player_entity)
+			client.player_entity.update_panel_data(round_statistics)
 	else
 		var/response = alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)","Are you sure you want to ghost?","Ghost","Stay in body")
 		if(response != "Ghost")	return	//didn't want to ghost after-all
 		resting = 1
 		var/turf/location = get_turf(src)
+		track_death_calculations()
+		if(client && client.player_entity)
+			client.player_entity.update_panel_data(round_statistics)
 		if(location) //to avoid runtime when a mob ends up in nullspace
 			msg_admin_niche("[key_name_admin(usr)] has ghosted. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
 		log_game("[key_name_admin(usr)] has ghosted.")
@@ -386,6 +407,17 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				if(loc != T)
 					loc = T
 				sleep(15)
+
+/mob/dead/observer/proc/JumpToCoord(var/tx, var/ty, var/tz)
+	if(!tx || !ty || !tz)
+		return
+	following = null
+	spawn(0)
+		// To stop the ghost flickering.
+		x = tx
+		y = ty
+		z = tz
+		sleep(15)
 
 /mob/dead/observer/verb/jumptomob() //Moves the ghost instead of just changing the ghosts's eye -Nodrak
 	set category = "Ghost"
@@ -732,6 +764,22 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Edit your characters in your preferences."
 
 	client.prefs.ShowChoices(src)
+
+/mob/dead/observer/verb/view_stats()
+	set category = "Ghost"
+	set name = "View Statistics"
+	set desc = "View global and player statistics tied to the game."
+
+	if(client && client.player_entity)
+		client.player_entity.show_statistics(src, round_statistics)
+
+/mob/dead/observer/verb/view_kill_feed()
+	set category = "Ghost"
+	set name = "View Kill Feed"
+	set desc = "View global kill statistics tied to the game."
+
+	if(round_statistics)
+		round_statistics.show_kill_feed(src)
 
 /mob/dead/observer/Topic(href, href_list)
 	..()

@@ -1,7 +1,7 @@
 //This is the proc for gibbing a mob. Cannot gib ghosts.
 //added different sort of gibs and animations. N
-/mob/proc/gib()
-	death(1)
+/mob/proc/gib(var/cause = "gibbing")
+	death(cause, 1)
 	gib_animation()
 	if (map_tag != MAP_WHISKEY_OUTPOST)
 		spawn_gibs()
@@ -21,8 +21,8 @@
 //This is the proc for turning a mob into ash. Mostly a copy of gib code (above).
 //Originally created for wizard disintegrate. I've removed the virus code since it's irrelevant here.
 //Dusting robots does not eject the MMI, so it's a bit more powerful than gib() /N
-/mob/proc/dust()
-	death(1)
+/mob/proc/dust(var/cause = "dusting")
+	death(cause, 1)
 	dust_animation()
 	spawn_dust_remains()
 	qdel(src)
@@ -34,15 +34,13 @@
 /mob/proc/dust_animation()
 	return
 
-
-
-/mob/proc/death(gibbed,deathmessage="seizes up and falls limp...")
+/mob/proc/death(var/cause, var/gibbed = 0, var/deathmessage = "seizes up and falls limp...")
 
 	if(stat == DEAD)
 		return 0
 
 	if(!gibbed)
-		src.visible_message("<b>\The [src.name]</b> [deathmessage]")
+		visible_message("<b>\The [src.name]</b> [deathmessage]")
 
 	stat = DEAD
 
@@ -65,9 +63,13 @@
 		hud_used.healths.icon_state = "health7"
 
 	timeofdeath = world.time
+	life_time_total = world.time - life_time_start
 	if(mind) mind.store_memory("Time of death: [worldtime2text()]", 0)
 	living_mob_list -= src
 	dead_mob_list |= src
+
+	track_death_calculations()
+	track_mob_death(cause, last_damage_mob)
 
 	med_hud_set_health()
 	med_hud_set_armor()

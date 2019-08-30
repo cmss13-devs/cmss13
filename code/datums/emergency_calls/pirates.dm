@@ -21,11 +21,11 @@
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
-		arm_equipment(mob, "Fun - Pirate Captain", TRUE)
+		arm_equipment(mob, "Fun - Pirate Captain", TRUE, TRUE)
 		to_chat(mob, "<font size='3'>\red You are the leader of these jolly pirates!</font>")
 		to_chat(mob, "<B> Loot this place for all its worth! Take everything of value that's not nailed down!</b>")
 	else
-		arm_equipment(mob, "Fun - Pirate", TRUE)
+		arm_equipment(mob, "Fun - Pirate", TRUE, TRUE)
 		to_chat(mob, "<font size='3'>\red You are a jolly pirate! Yarr!</font>")
 		to_chat(mob, "<B> Loot this place for all its worth! Take everything of value that's not nailed down!</b>")
 

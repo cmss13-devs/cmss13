@@ -15,142 +15,144 @@
 	center_of_mass = list("x"=16, "y"=6)
 	volume = 50
 
-	attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_container/food/condiment/attackby(obj/item/W as obj, mob/user as mob)
+	return
 
-		return
-	attack_self(mob/user as mob)
-		return
-	attack(mob/M as mob, mob/user as mob, def_zone)
-		var/datum/reagents/R = src.reagents
+/obj/item/reagent_container/food/condiment/attack_self(mob/user as mob)
+	return
 
-		if(!R || !R.total_volume)
-			to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
-			return 0
+/obj/item/reagent_container/food/condiment/attack(mob/M as mob, mob/user as mob, def_zone)
+	var/datum/reagents/R = src.reagents
 
-		if(M == user)
-			to_chat(M, SPAN_NOTICE(" You swallow some of contents of the [src]."))
-			if(reagents.total_volume)
-				reagents.trans_to_ingest(M, 10)
-
-			playsound(M.loc,'sound/items/drink.ogg', 15, 1)
-			return 1
-		else if(istype(M, /mob/living/carbon/human))
-			user.affected_message(M,
-				SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
-				SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
-				SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
-					
-			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
-			user.affected_message(M,
-				SPAN_HELPFUL("You <b>fed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
-				SPAN_HELPFUL("[user] <b>fed</b> you <b>[src]</b>."),
-				SPAN_NOTICE("[user] fed [user == M ? "themselves" : "[M]"] [src]."))
-
-			var/rgt_list_text = get_reagent_list_text()
-
-			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been fed [src.name] by [user.name] ([user.ckey]) Reagents: [rgt_list_text]</font>")
-			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [src.name] by [M.name] ([M.ckey]) Reagents: [rgt_list_text]</font>")
-			msg_admin_attack("[user.name] ([user.ckey]) fed [M.name] ([M.ckey]) with [src.name] (INTENT: [uppertext(user.a_intent)]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
-
-			if(reagents.total_volume)
-				reagents.trans_to_ingest(M, 10)
-
-			playsound(M.loc,'sound/items/drink.ogg', 15, 1)
-			return 1
+	if(!R || !R.total_volume)
+		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
 		return 0
 
-	attackby(obj/item/I as obj, mob/user as mob)
+	if(M == user)
+		to_chat(M, SPAN_NOTICE(" You swallow some of contents of the [src]."))
+		if(reagents.total_volume)
+			reagents.set_source_mob(user)
+			reagents.trans_to_ingest(M, 10)
 
+		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
+		return 1
+	else if(istype(M, /mob/living/carbon/human))
+		user.affected_message(M,
+			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
+			SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
+			SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
+				
+		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
+		user.affected_message(M,
+			SPAN_HELPFUL("You <b>fed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
+			SPAN_HELPFUL("[user] <b>fed</b> you <b>[src]</b>."),
+			SPAN_NOTICE("[user] fed [user == M ? "themselves" : "[M]"] [src]."))
+
+		var/rgt_list_text = get_reagent_list_text()
+
+		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been fed [src.name] by [user.name] ([user.ckey]) Reagents: [rgt_list_text]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [src.name] by [M.name] ([M.ckey]) Reagents: [rgt_list_text]</font>")
+		msg_admin_attack("[user.name] ([user.ckey]) fed [M.name] ([M.ckey]) with [src.name] (INTENT: [uppertext(user.a_intent)]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
+
+		if(reagents.total_volume)
+			reagents.set_source_mob(user)
+			reagents.trans_to_ingest(M, 10)
+
+		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
+		return 1
+	return 0
+
+/obj/item/reagent_container/food/condiment/attackby(obj/item/I as obj, mob/user as mob)
+	return
+
+/obj/item/reagent_container/food/condiment/afterattack(obj/target, mob/user , flag)
+	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
+
+		if(!target.reagents.total_volume)
+			to_chat(user, SPAN_DANGER("[target] is empty."))
+			return
+
+		if(reagents.total_volume >= reagents.maximum_volume)
+			to_chat(user, SPAN_DANGER("[src] is full."))
+			return
+
+		var/trans = target.reagents.trans_to(src, target:amount_per_transfer_from_this)
+		to_chat(user, SPAN_NOTICE(" You fill [src] with [trans] units of the contents of [target]."))
+
+	//Something like a glass or a food item. Player probably wants to transfer TO it.
+	else if(target.is_open_container() || istype(target, /obj/item/reagent_container/food/snacks))
+		if(!reagents.total_volume)
+			to_chat(user, SPAN_DANGER("[src] is empty."))
+			return
+		if(target.reagents.total_volume >= target.reagents.maximum_volume)
+			to_chat(user, SPAN_DANGER("you can't add anymore to [target]."))
+			return
+		var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
+		to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the condiment to [target]."))
+
+/obj/item/reagent_container/food/condiment/on_reagent_change()
+	if(icon_state == "saltshakersmall" || icon_state == "peppermillsmall")
 		return
-
-	afterattack(obj/target, mob/user , flag)
-		if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
-
-			if(!target.reagents.total_volume)
-				to_chat(user, SPAN_DANGER("[target] is empty."))
-				return
-
-			if(reagents.total_volume >= reagents.maximum_volume)
-				to_chat(user, SPAN_DANGER("[src] is full."))
-				return
-
-			var/trans = target.reagents.trans_to(src, target:amount_per_transfer_from_this)
-			to_chat(user, SPAN_NOTICE(" You fill [src] with [trans] units of the contents of [target]."))
-
-		//Something like a glass or a food item. Player probably wants to transfer TO it.
-		else if(target.is_open_container() || istype(target, /obj/item/reagent_container/food/snacks))
-			if(!reagents.total_volume)
-				to_chat(user, SPAN_DANGER("[src] is empty."))
-				return
-			if(target.reagents.total_volume >= target.reagents.maximum_volume)
-				to_chat(user, SPAN_DANGER("you can't add anymore to [target]."))
-				return
-			var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
-			to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the condiment to [target]."))
-
-	on_reagent_change()
-		if(icon_state == "saltshakersmall" || icon_state == "peppermillsmall")
-			return
-		if(reagents.reagent_list.len > 0)
-			switch(reagents.get_master_reagent_id())
-				if("ketchup")
-					name = "Ketchup"
-					desc = "You feel more American already."
-					icon_state = "ketchup"
-					center_of_mass = list("x"=16, "y"=6)
-				if("capsaicin")
-					name = "Hotsauce"
-					desc = "You can almost TASTE the stomach ulcers now!"
-					icon_state = "hotsauce"
-					center_of_mass = list("x"=16, "y"=6)
-				if("enzyme")
-					name = "Universal Enzyme"
-					desc = "Used in cooking various dishes."
-					icon_state = "enzyme"
-					center_of_mass = list("x"=16, "y"=6)
-				if("soysauce")
-					name = "Soy Sauce"
-					desc = "A salty soy-based flavoring."
-					icon_state = "soysauce"
-					center_of_mass = list("x"=16, "y"=6)
-				if("frostoil")
-					name = "Coldsauce"
-					desc = "Leaves the tongue numb in its passage."
-					icon_state = "coldsauce"
-					center_of_mass = list("x"=16, "y"=6)
-				if("sodiumchloride")
-					name = "Salt Shaker"
-					desc = "Salt. From space oceans, presumably."
-					icon_state = "saltshaker"
-					center_of_mass = list("x"=16, "y"=10)
-				if("blackpepper")
-					name = "Pepper Mill"
-					desc = "Often used to flavor food or make people sneeze."
-					icon_state = "peppermillsmall"
-					center_of_mass = list("x"=16, "y"=10)
-				if("cornoil")
-					name = "Corn Oil"
-					desc = "A delicious oil used in cooking. Made from corn."
-					icon_state = "oliveoil"
-					center_of_mass = list("x"=16, "y"=6)
-				if("sugar")
-					name = "Sugar"
-					desc = "Tastey space sugar!"
-					center_of_mass = list("x"=16, "y"=6)
+	if(reagents.reagent_list.len > 0)
+		switch(reagents.get_master_reagent_id())
+			if("ketchup")
+				name = "Ketchup"
+				desc = "You feel more American already."
+				icon_state = "ketchup"
+				center_of_mass = list("x"=16, "y"=6)
+			if("capsaicin")
+				name = "Hotsauce"
+				desc = "You can almost TASTE the stomach ulcers now!"
+				icon_state = "hotsauce"
+				center_of_mass = list("x"=16, "y"=6)
+			if("enzyme")
+				name = "Universal Enzyme"
+				desc = "Used in cooking various dishes."
+				icon_state = "enzyme"
+				center_of_mass = list("x"=16, "y"=6)
+			if("soysauce")
+				name = "Soy Sauce"
+				desc = "A salty soy-based flavoring."
+				icon_state = "soysauce"
+				center_of_mass = list("x"=16, "y"=6)
+			if("frostoil")
+				name = "Coldsauce"
+				desc = "Leaves the tongue numb in its passage."
+				icon_state = "coldsauce"
+				center_of_mass = list("x"=16, "y"=6)
+			if("sodiumchloride")
+				name = "Salt Shaker"
+				desc = "Salt. From space oceans, presumably."
+				icon_state = "saltshaker"
+				center_of_mass = list("x"=16, "y"=10)
+			if("blackpepper")
+				name = "Pepper Mill"
+				desc = "Often used to flavor food or make people sneeze."
+				icon_state = "peppermillsmall"
+				center_of_mass = list("x"=16, "y"=10)
+			if("cornoil")
+				name = "Corn Oil"
+				desc = "A delicious oil used in cooking. Made from corn."
+				icon_state = "oliveoil"
+				center_of_mass = list("x"=16, "y"=6)
+			if("sugar")
+				name = "Sugar"
+				desc = "Tastey space sugar!"
+				center_of_mass = list("x"=16, "y"=6)
+			else
+				name = "Misc Condiment Bottle"
+				if (reagents.reagent_list.len==1)
+					desc = "Looks like it is [reagents.get_master_reagent_name()], but you are not sure."
 				else
-					name = "Misc Condiment Bottle"
-					if (reagents.reagent_list.len==1)
-						desc = "Looks like it is [reagents.get_master_reagent_name()], but you are not sure."
-					else
-						desc = "A mixture of various condiments. [reagents.get_master_reagent_name()] is one of them."
-					icon_state = "mixedcondiments"
-					center_of_mass = list("x"=16, "y"=6)
-		else
-			icon_state = "emptycondiment"
-			name = "Condiment Bottle"
-			desc = "An empty condiment bottle."
-			center_of_mass = list("x"=16, "y"=6)
-			return
+					desc = "A mixture of various condiments. [reagents.get_master_reagent_name()] is one of them."
+				icon_state = "mixedcondiments"
+				center_of_mass = list("x"=16, "y"=6)
+	else
+		icon_state = "emptycondiment"
+		name = "Condiment Bottle"
+		desc = "An empty condiment bottle."
+		center_of_mass = list("x"=16, "y"=6)
+		return
 
 /obj/item/reagent_container/food/condiment/enzyme
 	name = "Universal Enzyme"

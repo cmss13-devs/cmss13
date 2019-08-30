@@ -14,7 +14,7 @@
 	rank = "MODE"
 	special_role = "FREELANCERS"
 	idtype = /obj/item/card/id/data
-	faction = "Freelancers"
+	faction = FACTION_FREELANCER
 
 /datum/equipment_preset/other/freelancer/New()
 	. = ..()
@@ -130,7 +130,7 @@
 	rank = "Mercenary Enforcer"
 	special_role = "MERCENARIES"
 	skills = /datum/skills/mercenary
-	faction = "Mercenaries"
+	faction = FACTION_MERCENARY
 
 /datum/equipment_preset/other/mercenary_heavy/New()
 	. = ..()
@@ -162,7 +162,7 @@
 	rank = "Mercenary Worker"
 	special_role = "MERCENARIES"
 	skills = /datum/skills/mercenary
-	faction = "Mercenaries"
+	faction = FACTION_MERCENARY
 
 /datum/equipment_preset/other/mercenary_miner/New()
 	. = ..()
@@ -191,7 +191,7 @@
 	rank = "Mercenary Engineer"
 	special_role = "MERCENARIES"
 	skills = /datum/skills/mercenary
-	faction = "Mercenaries"
+	faction = FACTION_MERCENARY
 
 /datum/equipment_preset/other/mercenary_engineer/New()
 	. = ..()
@@ -215,7 +215,7 @@
 /datum/equipment_preset/other/business_person
 	name = "Business Person"
 	flags = EQUIPMENT_PRESET_EXTRA
-
+	faction = FACTION_MARINE
 	idtype = /obj/item/card/id/silver/cl
 	assignment = "Corporate Representative"
 	rank = "MODE"
@@ -240,6 +240,7 @@
 /datum/equipment_preset/other/compression_suit
 	name = "Mk50 Compression Suit"
 	flags = EQUIPMENT_PRESET_EXTRA
+	faction = FACTION_PMC
 	skills = /datum/skills/pfc
 	idtype = /obj/item/card/id/data
 
@@ -270,7 +271,7 @@
 	rank = "MODE"
 	special_role = "Pizza"
 	skills = /datum/skills/civilian
-	faction = "Pizza"
+	faction = FACTION_PIZZA
 
 /datum/equipment_preset/other/pizza/New()
 	. = ..()
@@ -312,7 +313,7 @@
 
 	languages = list("Zombie")
 	skills = null //no restrictions
-	faction = "Zombie"
+	faction = FACTION_ZOMBIE
 
 //Overloading the function to be able to spawn gear first
 /datum/equipment_preset/other/zombie/load_preset(mob/living/carbon/human/H, var/randomise = FALSE)
@@ -361,7 +362,7 @@
 	assignment = "Bestiarius"
 	rank = "Bestiarius"
 	special_role = "Gladiator"
-	faction = "Gladiator"
+	faction = FACTION_GLADIATOR
 
 /datum/equipment_preset/other/gladiator/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(MALE, FEMALE)

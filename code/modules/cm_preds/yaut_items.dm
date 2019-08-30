@@ -856,13 +856,15 @@
 	playsound(src.loc,'sound/effects/pred_countdown.ogg', 100, 0, 15, 10)
 	do_after(victim, rand(72, 80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 	var/turf/T = get_turf(victim)
+	var/mob/user = usr
+	var/source_mob = user
 	if(istype(T) && exploding)
 		victim.apply_damage(50,BRUTE,"chest")
 		if(victim) victim.gib() //Let's make sure they actually gib.
 		if(explosion_type == 0)
-			explosion_rec(T, 600, 50) //Dramatically BIG explosion.
+			explosion_rec(T, 600, 50, "yautja self destruct", source_mob) //Dramatically BIG explosion.
 		else
-			explosion_rec(T, 800, 550)
+			explosion_rec(T, 800, 550, "yautja self destruct", source_mob)
 
 /obj/item/clothing/gloves/yautja/verb/activate_suicide()
 	set name = "Final Countdown (!)"
@@ -1531,7 +1533,7 @@
 			if(affecting)
 				if(affecting.body_part != UPPER_TORSO && affecting.body_part != LOWER_TORSO) //as hilarious as it is
 					user.visible_message(SPAN_DANGER("The limb is sliced clean off!"),SPAN_DANGER("You slice off a limb!"))
-					affecting.droplimb(1) //the second 1 is  amputation. This amputates.
+					affecting.droplimb(1, 0, initial(name)) //the second 1 is  amputation. This amputates.
 	else //Probably an alien
 		if(prob(14))
 			..() //Do it again! CRIT!

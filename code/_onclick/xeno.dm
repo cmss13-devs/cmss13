@@ -21,9 +21,11 @@
 		for(var/mob/M in T)
 			M.attack_alien(src)
 			mobfound = TRUE
+			track_slashes(caste_name)
 			break
 	if(!mobfound)
 		S.attack_alien(src)
+		track_slashes(caste_name)
 	next_move = world.time + (10 + caste.attack_delay) //Adds some lag to the 'attack'
 	return 1
 

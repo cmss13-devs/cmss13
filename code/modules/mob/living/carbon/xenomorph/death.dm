@@ -1,8 +1,8 @@
 #define DELETE_TIME	1800
 
-/mob/living/carbon/Xenomorph/death(gibbed)
+/mob/living/carbon/Xenomorph/death(var/cause, var/gibbed)
 	var/msg = !caste.is_robotic ? "lets out a waning guttural screech, green blood bubbling from its maw." : "begins to shudder, and the lights go out in its eyes as it lies still."
-	. = ..(gibbed,msg)
+	. = ..(cause, gibbed, msg)
 	if(!.) return //If they're already dead, it will return.
 
 	living_xeno_list -= src
@@ -81,7 +81,6 @@
 		A.acid_damage = 0 //Reset the acid damage
 		A.forceMove(loc)
 
-	round_statistics.total_xeno_deaths++
 	if(hardcore)
 		dead_hardcore_xeno_list += src
 
@@ -98,7 +97,7 @@
 		
 	callHook("death", list(src, gibbed))
 
-/mob/living/carbon/Xenomorph/gib()
+/mob/living/carbon/Xenomorph/gib(var/cause = "gibbing")
 	
 	var/obj/effect/decal/remains/xeno/remains = new(get_turf(src))
 	remains.icon = icon
@@ -120,7 +119,7 @@
 
 	check_blood_splash(35, BURN, 65, 2) //Some testing numbers. 35 burn, 65 chance.
 
-	..(1)
+	..(cause)
 
 
 
@@ -141,11 +140,11 @@
 /mob/living/carbon/Xenomorph/dust_animation()
 	new /obj/effect/overlay/temp/dust_animation(loc, src, "dust-a")
 
-/mob/living/carbon/Xenomorph/death()
+/mob/living/carbon/Xenomorph/death(var/cause, var/gibbed)
 	set waitfor = 0
 	if (map_tag == MAP_WHISKEY_OUTPOST)
 		src.ghostize()
 		src.KnockDown(1)
 		sleep(50)
 		qdel(src)
-	. = ..()
+	. = ..(cause, gibbed)

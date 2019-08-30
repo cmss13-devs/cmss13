@@ -53,9 +53,11 @@
 	var/list/datum/objective/objectives = list()
 	var/list/datum/objective/special_verbs = list()
 
+	var/datum/entity/player_entity/player_entity = null
+
 	var/has_been_rev = 0//Tracks if this mind has been a rev or not
 
-	var/faction = ""			//associated faction
+	var/faction = FACTION_NEUTRAL			//associated faction
 	var/datum/changeling/changeling		//changeling holder
 
 	var/rev_cooldown = 0
@@ -66,11 +68,9 @@
 	//put this here for easier tracking ingame
 	var/datum/money_account/initial_account
 
-	New(var/key)
-		src.key = key
-
-
-
+/datum/mind/New(var/key)
+	src.key = key
+	player_entity = setup_player_entity(key)
 
 /datum/mind/proc/transfer_to(mob/living/new_character)
 	if(!istype(new_character))
@@ -89,6 +89,12 @@
 			new_character.client.change_view(world.view) //reset view range to default.
 			new_character.client.pixel_x = 0
 			new_character.client.pixel_y = 0
+			if(usr:open_uis)
+				for(var/datum/nanoui/ui in usr:open_uis)
+					if(ui.allowed_user_stat == -1)
+						ui.close()
+						continue
+			player_entity = setup_player_entity(key)
 
 	new_character.refresh_huds(current)					//inherit the HUDs from the old body
 
@@ -393,6 +399,16 @@
 	else
 		cm_skills = new skills_path()
 
+/datum/mind/proc/setup_human_stats()
+	if(!player_entity)
+		player_entity = setup_player_entity(key)
+	return player_entity.setup_human_stats()
+
+/datum/mind/proc/setup_xeno_stats()
+	if(!player_entity)
+		player_entity = setup_player_entity(key)
+	return player_entity.setup_xeno_stats()
+
 //Initialisation procs
 /mob/proc/mind_initialize()
 	if(mind) mind.key = key
@@ -404,6 +420,7 @@
 		. = 1 //successfully created a new mind
 	if(!mind.name)	mind.name = real_name
 	mind.current = src
+		
 
 //HUMAN
 /mob/living/carbon/human/mind_initialize()

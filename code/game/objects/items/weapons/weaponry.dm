@@ -196,8 +196,8 @@
 		already_dead -= M
 
 	/////////////////////////
-	user.lastattacked = M
-	M.lastattacker = user
+	M.last_damage_source = initial(name)
+	M.last_damage_mob = user
 
 	user.attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [M.name] ([M.ckey]) with [name] (INTENT: [uppertext(user.a_intent)]) (DAMTYE: [uppertext(damtype)])</font>"
 	M.attack_log += "\[[time_stamp()]\]<font color='orange'> Attacked by [user.name] ([user.ckey]) with [name] (INTENT: [uppertext(user.a_intent)]) (DAMTYE: [uppertext(damtype)])</font>"

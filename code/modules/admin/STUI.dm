@@ -15,7 +15,7 @@
 
 
 /datum/STUI
-
+	var/name = "STUI"
 	var/list/attack	= list()		//Attack logs
 	var/list/admin = list()			//Admin logs
 	var/list/staff = list()			//Staff Chat
@@ -86,10 +86,10 @@
 				data["log"] = jointext(debug, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
-	ui = nanomanager.try_update_ui(user, user, ui_key, ui, data, force_open)
+	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if(!ui)
-		ui = new(user, user, ui_key, "STUI.tmpl", "STUI", 700, 500)
+		ui = new(user, src, ui_key, "STUI.tmpl", "STUI", 700, 500, null, -1)
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)

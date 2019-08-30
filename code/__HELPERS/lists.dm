@@ -415,6 +415,12 @@ proc/pick_element_by_weight_byindex(list/L)
 			i++
 	return i
 
+// Return a list of the values in an assoc list (including null)
+/proc/list_values(var/list/L)
+	. = list()
+	for(var/e in L)
+		. += L[e]
+
 //Don't use this on lists larger than half a dozen or so
 /proc/insertion_sort_numeric_list_ascending(var/list/L)
 	//world.log << "ascending len input: [L.len]"

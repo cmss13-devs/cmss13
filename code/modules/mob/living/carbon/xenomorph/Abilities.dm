@@ -189,6 +189,7 @@
 /datum/action/xeno_action/activable/secrete_resin/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.build_resin(A, resin_plasma_cost)
+	..()
 
 /datum/action/xeno_action/activable/secrete_resin/hivelord
 	name = "Secrete Resin (100)"
@@ -209,6 +210,7 @@
 /datum/action/xeno_action/activable/corrosive_acid/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.corrosive_acid(A, acid_type, acid_plasma_cost)
+	..()
 
 /datum/action/xeno_action/activable/corrosive_acid/New()
 	update_level()
@@ -256,6 +258,7 @@
 		return
 
 	X.acid_spray(A)
+	..()
 
 /datum/action/xeno_action/activable/spray_acid/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -293,6 +296,7 @@
 /datum/action/xeno_action/activable/lunge/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.lunge(A)
+	..()
 
 /datum/action/xeno_action/activable/lunge/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -310,6 +314,7 @@
 /datum/action/xeno_action/activable/fling/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.fling(A)
+	..()
 
 /datum/action/xeno_action/activable/fling/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -326,6 +331,7 @@
 /datum/action/xeno_action/activable/punch/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.punch(A)
+	..()
 
 /datum/action/xeno_action/activable/punch/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -342,6 +348,7 @@
 /datum/action/xeno_action/activable/jab/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.jab(A)
+	..()
 
 /datum/action/xeno_action/activable/jab/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -361,6 +368,7 @@
 		X.tunnel(get_turf(A))
 	else
 		X.burrow()
+	..()
 
 /datum/action/xeno_action/activable/tremor
 	name = "Tremor (100)"
@@ -376,6 +384,7 @@
 /datum/action/xeno_action/activable/tremor/use_ability()
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.tremor()
+	..()
 
 // Defender Headbutt
 /datum/action/xeno_action/activable/headbutt
@@ -388,6 +397,7 @@
 /datum/action/xeno_action/activable/headbutt/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.headbutt(A)
+	..()
 
 /datum/action/xeno_action/activable/headbutt/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -405,6 +415,7 @@
 /datum/action/xeno_action/activable/tail_sweep/use_ability()
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.tail_sweep()
+	..()
 
 /datum/action/xeno_action/activable/tail_sweep/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -455,6 +466,7 @@
 /datum/action/xeno_action/activable/pounce/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.Pounce(A)
+	..()
 
 /datum/action/xeno_action/activable/pounce/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -470,6 +482,7 @@
 /datum/action/xeno_action/activable/xeno_spit/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.xeno_spit(A)
+	..()
 
 /datum/action/xeno_action/activable/xeno_spit/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -555,6 +568,7 @@
 /datum/action/xeno_action/activable/transfer_plasma/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.xeno_transfer_plasma(A, plasma_transfer_amount, transfer_delay, max_range)
+	..()
 
 /datum/action/xeno_action/activable/transfer_plasma/hivelord
 	plasma_transfer_amount = 200
@@ -687,6 +701,7 @@
 /datum/action/xeno_action/activable/throw_hugger/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner
 	X.throw_hugger(A)
+	..()
 
 /datum/action/xeno_action/activable/throw_hugger/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner
@@ -702,6 +717,7 @@
 /datum/action/xeno_action/activable/retrieve_egg/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner
 	X.retrieve_egg(A)
+	..()
 
 /datum/action/xeno_action/place_trap
 	name = "Place resin hole (200)"
@@ -743,7 +759,6 @@
 
 	X.use_plasma(plasma_cost)
 	playsound(X.loc, "alien_resin_build", 25)
-	round_statistics.carrier_traps++
 	new /obj/effect/alien/resin/trap(X.loc, X)
 	to_chat(X, SPAN_XENONOTICE("You place a resin hole on the weeds, it still needs a sister to fill it with acid."))
 
@@ -761,6 +776,7 @@
 /datum/action/xeno_action/activable/lay_egg/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner
 	X.lay_egg(A)
+	..()
 
 //Crusher abilities
 /datum/action/xeno_action/activable/stomp
@@ -778,6 +794,7 @@
 /datum/action/xeno_action/activable/stomp/use_ability()
 	var/mob/living/carbon/Xenomorph/Crusher/X = owner
 	X.stomp()
+	..()
 
 /datum/action/xeno_action/ready_charge
 	name = "Toggle Charging"
@@ -817,6 +834,7 @@
 /datum/action/xeno_action/activable/earthquake/use_ability()
 	var/mob/living/carbon/Xenomorph/Crusher/X = owner
 	X.earthquake()
+	..()
 
 //Hivelord Abilities
 
@@ -1011,6 +1029,7 @@
 /datum/action/xeno_action/activable/screech/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
 	X.queen_screech()
+	..()
 
 /datum/action/xeno_action/activable/gut
 	name = "Gut (200)"
@@ -1022,6 +1041,7 @@
 /datum/action/xeno_action/activable/gut/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
 	X.queen_gut(A)
+	..()
 
 /datum/action/xeno_action/psychic_whisper
 	name = "Psychic Whisper"
@@ -1314,7 +1334,8 @@
 		message_admins("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 		log_admin("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 
-		round_statistics.total_xenos_created-- //so an evolved xeno doesn't count as two.
+		if(round_statistics && !new_xeno.statistic_exempt)
+			round_statistics.track_new_participant(T.faction, -1) //so an evolved xeno doesn't count as two.
 		qdel(T)
 		X.use_plasma(plasma_cost)
 
@@ -1333,6 +1354,7 @@
 /datum/action/xeno_action/activable/charge/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Ravager/X = owner
 	X.Pounce(A)
+	..()
 
 /datum/action/xeno_action/activable/charge/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/Ravager/X = owner
@@ -1349,6 +1371,7 @@
 /datum/action/xeno_action/activable/spin_slash/use_ability()
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.spin_slash()
+	..()
 
 /datum/action/xeno_action/activable/spin_slash/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/Ravager/X = owner
@@ -1365,6 +1388,7 @@
 /datum/action/xeno_action/activable/spike_spray/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.spike_spray(A)
+	..()
 
 /datum/action/xeno_action/activable/spike_spray/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/Ravager/X = owner
@@ -1385,6 +1409,7 @@
 /datum/action/xeno_action/activable/transfer_health/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.xeno_transfer_health(A, health_transfer_amount, transfer_delay, max_range)
+	..()
 
 //Ravenger
 
@@ -1396,6 +1421,7 @@
 /datum/action/xeno_action/activable/breathe_fire/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Ravager/ravenger/X = owner
 	X.breathe_fire(A)
+	..()
 
 /datum/action/xeno_action/activable/breathe_fire/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/Ravager/ravenger/X = owner
@@ -1411,6 +1437,7 @@
 /datum/action/xeno_action/activable/fire_cannon/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Xenoborg/X = owner
 	X.fire_cannon(A)
+	..()
 
 
 // Praetorian strain abilities
@@ -1436,6 +1463,7 @@
 		else
 			log_admin("[src] tried to acid spray with an invalid bitflag set. Tell the devs! Code: PRAE_ACID_00")
 			log_debug("[src] tried to acid spray with an invalid bitflag set. Code: PRAE_ACID_00")
+	..()
 	
 #undef PRAE_SPRAY_CONE
 #undef PRAE_SPRAY_LINE
@@ -1485,6 +1513,7 @@
 /datum/action/xeno_action/activable/prae_dance/use_ability()
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.praetorian_dance()
+	..()
 
 /datum/action/xeno_action/activable/prae_dance/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -1500,6 +1529,7 @@
 /datum/action/xeno_action/activable/prae_tailattack/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.praetorian_tailattack(A)
+	..()
 
 /datum/action/xeno_action/activable/prae_tailattack/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -1547,6 +1577,7 @@
 /datum/action/xeno_action/activable/prae_bomb/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.praetorian_neuro_grenade(A)
+	..()
 
 /datum/action/xeno_action/activable/prae_bomb/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -1562,6 +1593,7 @@
 /datum/action/xeno_action/activable/prae_punch/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.praetorian_punch(A)
+	..()
 
 /datum/action/xeno_action/activable/prae_punch/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -1577,6 +1609,7 @@
 /datum/action/xeno_action/activable/prae_screech/use_ability()
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.praetorian_screech()
+	..()
 
 /datum/action/xeno_action/activable/prae_screech/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner

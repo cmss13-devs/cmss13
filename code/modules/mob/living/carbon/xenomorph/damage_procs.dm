@@ -1,4 +1,4 @@
-/mob/living/carbon/Xenomorph/ex_act(severity, direction, pierce=0)
+/mob/living/carbon/Xenomorph/ex_act(var/severity, var/direction, var/source, var/source_mob, pierce=0)
 
 	if(lying)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
@@ -8,7 +8,7 @@
 
 	if(severity > EXPLOSION_THRESHOLD_LOW && stomach_contents.len)
 		for(var/mob/M in stomach_contents)
-			M.ex_act(severity - EXPLOSION_THRESHOLD_LOW)
+			M.ex_act(severity - EXPLOSION_THRESHOLD_LOW, source, source_mob, pierce)
 
 	var/b_loss = 0
 	var/f_loss = 0
@@ -21,8 +21,13 @@
 	var/armor_punch = armor_break_calculation(cfg, damage, total_explosive_resistance, pierce, 1, 0.5, armor_integrity)
 	apply_armorbreak(armor_punch)
 
+	if(source)
+		last_damage_source = source
+	if(source_mob)
+		last_damage_mob = source_mob
+
 	if (damage >= health && damage >= EXPLOSION_THRESHOLD_GIB)
-		gib()
+		gib(source)
 		return
 	if (damage >= 0)
 		b_loss += damage * 0.5

@@ -216,12 +216,17 @@
 
 		if(H.health > config.health_threshold_dead)
 			user.visible_message(SPAN_NOTICE("\icon[src] \The [src] beeps: Defibrillation successful."))
+			user.track_life_saved(user.job)
+			H.track_revive(H.job)
 			living_mob_list.Add(H)
 			callHook("clone", list(H))
 			if(!isSynth(H) && !isYautja(H))
 				living_human_list.Add(H)
 			dead_mob_list.Remove(H)
 			H.timeofdeath = 0
+			H.life_time_start = world.time
+			H.life_time_total = 0
+			H.life_steps_total = 0
 			H.tod = null
 			H.stat = UNCONSCIOUS
 			H.emote("gasp")

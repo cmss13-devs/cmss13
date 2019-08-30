@@ -10,6 +10,7 @@
 	var/counter = 0 //How developed the embryo is, if it ages up highly enough it has a chance to burst
 	var/larva_autoburst_countdown = 20 //to kick the larva out
 	var/hivenumber = XENO_HIVE_NORMAL
+	var/faction = FACTION_XENOMORPH
 
 /obj/item/alien_embryo/New()
 	..()
@@ -167,6 +168,7 @@
 		new_xeno = new(affected_mob)
 
 	new_xeno.set_hivenumber(hivenumber)
+	new_xeno.set_faction(faction)
 	new_xeno.update_icons()
 
 	// If we have a candidate, transfer it over
@@ -219,12 +221,14 @@
 		if(burstcount)
 			step(L, pick(cardinal))
 
-		round_statistics.total_larva_burst++
+		if(round_statistics)
+			round_statistics.total_larva_burst++
 		burstcount++
 
 		if((!L.key || !L.client) && loc && loc.z == 1 && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
 			L.visible_message(SPAN_XENODANGER("[L] quickly burrows into the ground."))
-			round_statistics.total_xenos_created-- // keep stats sane
+			if(round_statistics && !L.statistic_exempt)
+				round_statistics.track_new_participant(faction, -1) // keep stats sane
 			hive.stored_larva++
 			qdel(L)
 
@@ -236,19 +240,18 @@
 		qdel(AE)
 
 	if(burstcount >= 4)
-		victim.gib()
+		victim.gib("chestbursting")
 	else
 		if(ishuman(victim))
 			var/mob/living/carbon/human/H = victim
+			H.last_damage_source = "chestbursting"
+			H.last_damage_mob = src
 			var/datum/internal_organ/O
 			var/i
 			for(i in list("heart","lungs")) //This removes (and later garbage collects) both organs. No heart means instant death.
 				O = H.internal_organs_by_name[i]
 				H.internal_organs_by_name -= i
 				H.internal_organs -= O
-		victim.death() // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
+		victim.death("chestbursting") // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
 		victim.chestburst = 2
 		victim.update_burst()
-
-	if(ishuman(victim))
-		round_statistics.total_human_chestbursts++

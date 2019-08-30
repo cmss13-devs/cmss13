@@ -1,6 +1,6 @@
 /datum/equipment_preset/uscm
 	name = "USCM"
-
+	faction = FACTION_MARINE
 	languages = list("English")
 	idtype = /obj/item/card/id/dogtag
 

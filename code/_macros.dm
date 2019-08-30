@@ -79,6 +79,8 @@
 
 #define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
 
+#define SPAN_BOLDNOTICE(X) "<span class='boldnotice'>[X]</span>"
+
 #define SPAN_XENOANNOUNCE(X) "<span class='xenoannounce'>[X]</span>"
 
 #define SPAN_XENONOTICE(X) "<span class='xenonotice'>[X]</span>"
@@ -112,3 +114,9 @@
 #define SPAN_MOOC(X) "<span class='mooc'>[X]</span>"
 
 #define SPAN_HELPFUL(X) "<span class='helpful'>[X]</span>"
+
+#define SPAN_DEADSAY(X) "<span class='deadsay'>[X]</span>"
+
+#define SPAN_ROLE_HEADER(X) "<span class='role_header'>[X]</span>"
+
+#define SPAN_ROLE_BODY(X) "<span class='role_body'>[X]</span>"

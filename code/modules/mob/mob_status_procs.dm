@@ -118,3 +118,24 @@
 /mob/proc/AdjustResting(amount)
 	resting = max(resting + amount,0)
 	return
+
+/mob/proc/getBruteLoss()
+	return
+
+/mob/proc/getOxyLoss()
+	return
+
+/mob/proc/getToxLoss()
+	return
+
+/mob/proc/getFireLoss()
+	return
+
+/mob/proc/getCloneLoss()
+	return
+
+/mob/proc/getBrainLoss()
+	return
+
+/mob/proc/getHalLoss()
+	return

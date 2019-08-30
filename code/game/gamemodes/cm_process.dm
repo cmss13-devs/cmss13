@@ -45,6 +45,21 @@ of predators), but can be added to include variant game modes (like humans vs. h
 
 //===================================================\\
 
+/datum/game_mode/proc/declare_completion_announce_fallen_soldiers()
+	set waitfor = 0
+	sleep(SECONDS_2)
+	if(fallen_list.len)
+		var/dat = "<br>"
+		dat += SPAN_ROUNDBODY("<br>In Flanders fields...")
+		dat +=  SPAN_CENTERBOLD("In memoriam of our fallen soldiers:")
+		for(var/i = 1 to fallen_list.len)
+			if(i != fallen_list.len)
+				dat += "[fallen_list[i]], "
+			else
+				dat += "[fallen_list[i]].<br>"
+		to_world("[dat]")
+
+
 /datum/game_mode/proc/declare_completion_announce_xenomorphs()
 	set waitfor = 0
 	sleep(SECONDS_2)
@@ -88,6 +103,13 @@ of predators), but can be added to include variant game modes (like humans vs. h
 			for(var/i in 1 to RA.medal_names.len)
 				dat += "<br><b>[RA.recipient_rank] [recipient]</b> is awarded [RA.posthumous[i] ? "posthumously " : ""]the <span class='boldnotice'>[RA.medal_names[i]]</span>: \'<i>[RA.medal_citations[i]]</i>\'."
 		world << dat
+
+/datum/game_mode/proc/declare_random_fact()
+	set waitfor = 0
+	sleep(SECONDS_2)
+	var/fact_type = pick(subtypesof(/datum/random_fact))
+	var/datum/random_fact/fact = new fact_type()
+	fact.announce()
 
 //===================================================\\
 

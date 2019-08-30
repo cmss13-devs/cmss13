@@ -19,7 +19,7 @@
 	if(mob.client) mob.client.change_view(world.view)
 	ticker.mode.traitors += mob.mind
 
-	arm_equipment(mob, "Pizza", TRUE)
+	arm_equipment(mob, "Pizza", TRUE, TRUE)
 
 	var/pizzatxt = pick("Discount Pizza","Pizza Kingdom","Papa Pizza")
 	to_chat(mob, "<font size='3'>\red You are a pizza deliverer! Your employer is the [pizzatxt] Corporation.</font>")

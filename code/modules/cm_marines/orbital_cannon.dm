@@ -210,7 +210,8 @@ var/list/ob_type_fuel_requirements
 			inaccurate_fuel = abs(ob_type_fuel_requirements[3] - tray.fuel_amt)
 
 	var/turf/target = locate(T.x + inaccurate_fuel * round(rand(-3,3), 1), T.y + inaccurate_fuel * round(rand(-3,3), 1), T.z)
-
+	if(user)
+		tray.warhead.source_mob = user
 	playsound(target, 'sound/weapons/gun_orbital_travel.ogg', 100, 1)
 	var/cancellation_token = rand(0,32000)
 	message_mods("<font size=3><A HREF='?_src_=admin_holder;admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a></font>")
@@ -347,6 +348,7 @@ var/list/ob_type_fuel_requirements
 	climbable = TRUE
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	var/is_solid_fuel = 0
+	var/source_mob
 
 /obj/structure/ob_ammo/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
@@ -382,7 +384,7 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_warhead_1"
 
 /obj/structure/ob_ammo/warhead/explosive/warhead_impact(turf/target, inaccuracy_amt = 0)
-	explosion_rec(target, 500, 30) //massive boom
+	explosion_rec(target, 500, 30, initial(name), source_mob) //massive boom
 
 
 
@@ -392,7 +394,7 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_warhead_2"
 
 /obj/structure/ob_ammo/warhead/incendiary/warhead_impact(turf/target, inaccuracy_amt = 0)
-	fire_spread(target, 12, 45, 75, "blue")
+	fire_spread(target, initial(name), source_mob, 12, 45, 75, "blue")
 
 
 /obj/structure/ob_ammo/warhead/cluster
@@ -412,7 +414,7 @@ var/list/ob_type_fuel_requirements
 		var/turf/U = pick_n_take(turf_list)
 		playsound(U, 'sound/weapons/gun_flare.ogg', 50, 1)
 		sleep(pick(1,2,3))
-		explosion_rec(U,150, 30) //rocket barrage
+		explosion_rec(U,150, 30, initial(name), source_mob) //rocket barrage
 
 
 

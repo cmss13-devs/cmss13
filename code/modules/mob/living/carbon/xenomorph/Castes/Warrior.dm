@@ -142,7 +142,6 @@
 	if(.) //successful pull
 		if(should_neckgrab)
 			use_plasma(10)
-			round_statistics.warrior_grabs++
 			used_lunge = 1
 			grab_level = GRAB_NECK
 			L.drop_held_items()

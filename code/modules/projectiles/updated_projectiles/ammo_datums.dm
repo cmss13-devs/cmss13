@@ -171,7 +171,7 @@
 
 		var/final_angle = initial_angle
 
-		var/obj/item/projectile/P = new /obj/item/projectile(original_P.shot_from)
+		var/obj/item/projectile/P = new /obj/item/projectile(original_P.weapon_source, original_P.weapon_source_mob, original_P.shot_from)
 		P.generate_bullet(ammo_list[bonus_projectiles_type]) //No bonus damage or anything.
 		P.accuracy = round(P.accuracy * original_P.accuracy/initial(original_P.accuracy)) //if the gun changes the accuracy of the main projectile, it also affects the bonus ones.
 
@@ -210,10 +210,10 @@
 		target.apply_effect(20, SUPERSLOW)
 		target.apply_effect(30, SLOW)
 
-/datum/ammo/proc/drop_flame(turf/T) // ~Art updated fire 20JAN17
+/datum/ammo/proc/drop_flame(turf/T, var/source, var/source_mob) // ~Art updated fire 20JAN17
 	if(!istype(T)) return
 	if(locate(/obj/flamer_fire) in T) return
-	new /obj/flamer_fire(T, 20, 20)
+	new /obj/flamer_fire(T, source, source_mob, 20, 20)
 
 
 /*
@@ -500,14 +500,14 @@
 	damage_falloff = config.reg_damage_falloff
 
 /datum/ammo/bullet/rifle/explosive/on_hit_mob(mob/M, obj/item/projectile/P)
-	explosion_rec(get_turf(M), 80, 40)
+	explosion_rec(get_turf(M), 80, 40, P.weapon_source, P.firer)
 
 /datum/ammo/bullet/rifle/explosive/on_hit_obj(obj/O, obj/item/projectile/P)
-	explosion_rec(get_turf(O), 80, 40)
+	explosion_rec(get_turf(O), 80, 40, P.weapon_source, P.firer)
 
 /datum/ammo/bullet/rifle/explosive/on_hit_turf(turf/T, obj/item/projectile/P)
 	if(T.density)
-		explosion_rec(T, 80, 40)
+		explosion_rec(T, 80, 40, P.weapon_source, P.firer)
 
 /datum/ammo/bullet/rifle/ap
 	name = "armor-piercing rifle bullet"
@@ -1012,22 +1012,22 @@
 	. = ..()
 
 /datum/ammo/rocket/on_hit_mob(mob/M, obj/item/projectile/P)
-	explosion_rec(get_turf(M), 200, 40)
+	explosion_rec(get_turf(M), 200, 40, P.weapon_source, P.firer)
 	smoke.set_up(1, get_turf(M))
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_obj(obj/O, obj/item/projectile/P)
-	explosion_rec(get_turf(O), 200, 40)
+	explosion_rec(get_turf(O), 200, 40, P.weapon_source, P.firer)
 	smoke.set_up(1, get_turf(O))
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_turf(turf/T, obj/item/projectile/P)
-	explosion_rec(T, 200, 40)
+	explosion_rec(T, 200, 40, P.weapon_source, P.firer)
 	smoke.set_up(1, T)
 	smoke.start()
 
 /datum/ammo/rocket/do_at_max_range(obj/item/projectile/P)
-	explosion_rec(get_turf(P), 200, 40)
+	explosion_rec(get_turf(P), 200, 40, P.weapon_source, P.firer)
 	smoke.set_up(1, get_turf(P))
 	smoke.start()
 
@@ -1046,24 +1046,24 @@
 
 /datum/ammo/rocket/ap/on_hit_mob(mob/M, obj/item/projectile/P)
 	var/turf/T = get_turf(M)
-	M.ex_act(150, P.dir, 100)
+	M.ex_act(150, P.dir, P.weapon_source, P.firer, 100)
 	M.KnockDown(2)
 	M.KnockOut(2)
-	explosion_rec(T, 100, 30)
+	explosion_rec(T, 100, 30, P.weapon_source, P.firer)
 	smoke.set_up(1, T)
 	smoke.start()
 
 /datum/ammo/rocket/ap/on_hit_obj(obj/O, obj/item/projectile/P)
 	var/turf/T = get_turf(O)
-	O.ex_act(150, P.dir, 100)
-	explosion_rec(T, 100, 30)
+	O.ex_act(150, P.dir, P.weapon_source, P.firer, 100)
+	explosion_rec(T, 100, 30, P.weapon_source, P.firer)
 	smoke.set_up(1, T)
 	smoke.start()
 
 /datum/ammo/rocket/ap/on_hit_turf(turf/T, obj/item/projectile/P)
 	var/hit_something = 0
 	for(var/mob/M in T)
-		M.ex_act(150,P.dir, 100)
+		M.ex_act(150, P.dir, P.weapon_source, P.firer, 100)
 		M.KnockDown(2)
 		M.KnockOut(2)
 		hit_something = 1
@@ -1071,13 +1071,13 @@
 	if(!hit_something)
 		for(var/obj/O in T)
 			if(O.density)
-				O.ex_act(150,P.dir, 100)
+				O.ex_act(150, P.dir, P.weapon_source, P.firer, 100)
 				hit_something = 1
 				continue
 	if(!hit_something)
-		T.ex_act(150,P.dir, 200)
+		T.ex_act(150, P.dir, P.weapon_source, P.firer, 200)
 
-	explosion_rec(T, 100, 30)
+	explosion_rec(T, 100, 30, P.weapon_source, P.firer)
 	smoke.set_up(1, T)
 	smoke.start()
 
@@ -1085,7 +1085,7 @@
 	var/turf/T = get_turf(P)
 	var/hit_something = 0
 	for(var/mob/M in T)
-		M.ex_act(250,P.dir,100)
+		M.ex_act(250, P.dir, P.weapon_source, P.firer, 100)
 		M.KnockDown(2)
 		M.KnockOut(2)
 		hit_something = 1
@@ -1093,12 +1093,12 @@
 	if(!hit_something)
 		for(var/obj/O in T)
 			if(O.density)
-				O.ex_act(250,P.dir,100)
+				O.ex_act(250, P.dir, P.weapon_source, P.firer, 100)
 				hit_something = 1
 				continue
 	if(!hit_something)
-		T.ex_act(250,P.dir)
-	explosion_rec(T, 100, 30)
+		T.ex_act(250, P.dir, P.weapon_source, P.firer)
+	explosion_rec(T, 100, 30, P.weapon_source, P.firer)
 	smoke.set_up(1, T)
 	smoke.start()
 
@@ -1116,20 +1116,20 @@
 	shell_speed = config.fast_shell_speed
 
 /datum/ammo/rocket/ltb/on_hit_mob(mob/M, obj/item/projectile/P)
-	explosion_rec(get_turf(M), 220, 50)
-	explosion_rec(get_turf(M), 200, 100)
+	explosion_rec(get_turf(M), 220, 50, P.weapon_source, P.firer)
+	explosion_rec(get_turf(M), 200, 100, P.weapon_source, P.firer)
 
 /datum/ammo/rocket/ltb/on_hit_obj(obj/O, obj/item/projectile/P)
-	explosion_rec(get_turf(O), 220, 50)
-	explosion_rec(get_turf(O), 200, 100)
+	explosion_rec(get_turf(O), 220, 50, P.weapon_source, P.firer)
+	explosion_rec(get_turf(O), 200, 100, P.weapon_source, P.firer)
 
 /datum/ammo/rocket/ltb/on_hit_turf(turf/T, obj/item/projectile/P)
-	explosion_rec(get_turf(T), 220, 50)
-	explosion_rec(get_turf(T), 200, 100)
+	explosion_rec(get_turf(T), 220, 50, P.weapon_source, P.firer)
+	explosion_rec(get_turf(T), 200, 100, P.weapon_source, P.firer)
 
 /datum/ammo/rocket/ltb/do_at_max_range(obj/item/projectile/P)
-	explosion_rec(get_turf(P), 220, 50)
-	explosion_rec(get_turf(P), 200, 100)
+	explosion_rec(get_turf(P), 220, 50, P.weapon_source, P.firer)
+	explosion_rec(get_turf(P), 200, 100, P.weapon_source, P.firer)
 
 /datum/ammo/rocket/wp
 	name = "white phosphorous rocket"
@@ -1143,12 +1143,12 @@
 	damage = config.super_hit_damage
 	max_range = config.norm_shell_range
 
-/datum/ammo/rocket/wp/drop_flame(turf/T)
+/datum/ammo/rocket/wp/drop_flame(turf/T, var/source, var/source_mob)
 	playsound(T, 'sound/weapons/gun_flamethrower3.ogg', 75, 1, 7)
 	if(!istype(T)) return
 	smoke.set_up(1, T)
 	smoke.start()
-	new /obj/flamer_fire(T, pick(40, 50), 50, "blue", fire_spread_amount = 3)
+	new /obj/flamer_fire(T, source, source_mob, pick(40, 50), 50, "blue", fire_spread_amount = 3)
 
 	var/datum/effect_system/smoke_spread/phosphorus/landingSmoke = new /datum/effect_system/smoke_spread/phosphorus
 	landingSmoke.set_up(3, 0, T, null, 6)
@@ -1157,7 +1157,7 @@
 
 	var/shard_type = /datum/ammo/bullet/shrapnel/incendiary
 	var/shard_amount = 12
-	create_shrapnel(T, shard_amount, , ,shard_type)
+	create_shrapnel(T, shard_amount, , ,shard_type, source, source_mob)
 
 
 /datum/ammo/rocket/wp/on_hit_mob(mob/M,obj/item/projectile/P)
@@ -1183,19 +1183,19 @@
 
 /datum/ammo/rocket/wp/quad/on_hit_mob(mob/M,obj/item/projectile/P)
 	drop_flame(get_turf(M))
-	explosion(P.loc,  -1, 2, 4, 5)
+	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_source, P.firer)
 
 /datum/ammo/rocket/wp/quad/on_hit_obj(obj/O,obj/item/projectile/P)
 	drop_flame(get_turf(O))
-	explosion(P.loc,  -1, 2, 4, 5)
+	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_source, P.firer)
 
 /datum/ammo/rocket/wp/quad/on_hit_turf(turf/T,obj/item/projectile/P)
 	drop_flame(T)
-	explosion(P.loc,  -1, 2, 4, 5)
+	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_source, P.firer)
 
 /datum/ammo/rocket/wp/quad/do_at_max_range(obj/item/projectile/P)
 	drop_flame(get_turf(P))
-	explosion(P.loc,  -1, 2, 4, 5)
+	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_source, P.firer)
 
 /*
 //================================================
@@ -1283,16 +1283,16 @@
 	max_range = config.long_shell_range
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_mob(mob/M,obj/item/projectile/P)
-	explosion_rec(get_turf(M), 170, 50)
+	explosion_rec(get_turf(M), 170, 50, P.weapon_source, P.firer)
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_turf(turf/T,obj/item/projectile/P)
-	explosion_rec(T, 170, 40)
+	explosion_rec(T, 170, 40, P.weapon_source, P.firer)
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_obj(obj/O,obj/item/projectile/P)
-	explosion_rec(get_turf(O), 170, 50)
+	explosion_rec(get_turf(O), 170, 50, P.weapon_source, P.firer)
 
 /datum/ammo/energy/yautja/caster/sphere/do_at_max_range(obj/item/projectile/P)
-	explosion_rec(get_turf(P), 170, 50)
+	explosion_rec(get_turf(P), 170, 50, P.weapon_source, P.firer)
 
 /datum/ammo/energy/yautja/rifle/New()
 	..()
@@ -1305,11 +1305,11 @@
 
 /datum/ammo/energy/yautja/rifle/on_hit_turf(turf/T,obj/item/projectile/P)
 	if(P.damage > 25)
-		explosion(T, -1, -1, 2, -1)
+		explosion(T, -1, -1, 2, -1, P.weapon_source, P.firer)
 
 /datum/ammo/energy/yautja/rifle/on_hit_obj(obj/O,obj/item/projectile/P)
 	if(P.damage > 25)
-		explosion(get_turf(P), -1, -1, 2, -1)
+		explosion(get_turf(P), -1, -1, 2, -1, P.weapon_source, P.firer)
 
 /datum/ammo/energy/yautja/rifle/bolt
 	name = "plasma rifle bolt"
@@ -1673,7 +1673,7 @@
 	var/shrapnel_amount = 32
 
 /datum/ammo/xeno/boiler_gas/shatter/drop_nade(turf/T, obj/item/projectile/P)
-	create_shrapnel(T, shrapnel_amount, , ,shrapnel_xeno)
+	create_shrapnel(T, shrapnel_amount, , ,shrapnel_xeno, P.weapon_source, P.weapon_source_mob)
 	T.visible_message(SPAN_DANGER("A huge ball of neurotoxin splashes down, sending drops and splashes in every direction!"))
 	playsound(T, 'sound/effects/squelch1.ogg', 25, 1)
 
@@ -1689,7 +1689,7 @@
 	shrapnel_amount = 32
 
 /datum/ammo/xeno/boiler_gas/shatter/acid/drop_nade(turf/T, obj/item/projectile/P)
-	create_shrapnel(T, shrapnel_amount, , ,shrapnel_xeno)
+	create_shrapnel(T, shrapnel_amount, , ,shrapnel_xeno, P.weapon_source, P.weapon_source_mob)
 	T.visible_message(SPAN_DANGER("A huge ball of acid splashes down, sending drops and splashes in every direction!"))
 	playsound(T, 'sound/effects/squelch1.ogg', 25, 1)
 
@@ -1870,10 +1870,10 @@
 /datum/ammo/flamethrower/do_at_max_range(obj/item/projectile/P)
 	drop_flame(get_turf(P))
 
-/datum/ammo/flamethrower/tank_flamer/drop_flame(var/turf/T)
+/datum/ammo/flamethrower/tank_flamer/drop_flame(var/turf/T, var/source, var/source_mob)
 	if(!istype(T)) return
 	if(locate(/obj/flamer_fire) in T) return
-	new /obj/flamer_fire(T, 20, 20, fire_spread_amount = 2)
+	new /obj/flamer_fire(T, source, source_mob, 20, 20, fire_spread_amount = 2)
 
 /datum/ammo/flare
 	name = "flare"

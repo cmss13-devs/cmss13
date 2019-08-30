@@ -49,15 +49,15 @@
 	ticker.mode.traitors += mob.mind
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
-		arm_equipment(mob, "UPP Commando (Leader)", TRUE)
+		arm_equipment(mob, "UPP Commando (Leader)", TRUE, TRUE)
 		to_chat(mob, "<font size='3'>\red You are a commando officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>")
 	else if(medics < max_medics)
 		to_chat(mob, "<font size='3'>\red You are a commando medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>")
-		arm_equipment(mob, "UPP Commando (Medic)", TRUE)
+		arm_equipment(mob, "UPP Commando (Medic)", TRUE, TRUE)
 		medics++
 	else
 		to_chat(mob, "<font size='3'>\red You are a commando of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>")
-		arm_equipment(mob, "UPP Commando (Standard)", TRUE)
+		arm_equipment(mob, "UPP Commando (Standard)", TRUE, TRUE)
 	print_backstory(mob)
 
 	sleep(10)

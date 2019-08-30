@@ -36,9 +36,9 @@ explosion resistance exactly as much as their health
 	var/turf/T = get_turf(src.mob)
 	explosion_rec(T, power, falloff)
 
-proc/explosion_rec(turf/epicenter, power, falloff = 20)
+/proc/explosion_rec(var/turf/epicenter, var/power, var/falloff = 20, var/explosion_source, var/explosion_source_mob)
 	var/obj/effect/explosion/Controller = new /obj/effect/explosion(epicenter)
-	Controller.initiate_explosion(epicenter, power, falloff)
+	Controller.initiate_explosion(epicenter, power, falloff, explosion_source, explosion_source_mob)
 
 
 /obj/effect/explosion
@@ -51,6 +51,8 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 	var/reflection_multiplier = 1.5
 	var/reflection_amplification_limit = 1 //1 = 100% increase
 	var/minimum_spread_power = 0
+	var/explosion_source
+	var/explosion_source_mob
 	//var/overlap_number = 0
 
 
@@ -59,7 +61,10 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 
 
 //the start of the explosion
-/obj/effect/explosion/proc/initiate_explosion(turf/epicenter, power0, falloff = 20)
+/obj/effect/explosion/proc/initiate_explosion(turf/epicenter, power0, falloff = 20, var/new_explosion_source, var/new_explosion_source_mob)
+
+	explosion_source = new_explosion_source
+	explosion_source_mob = new_explosion_source_mob
 
 	if(power0 <= 1) return
 	power = power0
@@ -125,9 +130,9 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 
 	if(power >= 100) // powerful explosions send out some special effects
 		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
-		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver1)
+		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver1, explosion_source, explosion_source_mob)
 		sleep(1)
-		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver2)
+		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver2, explosion_source, explosion_source_mob)
 
 	spawn(2) //just in case something goes wrong
 		if(explosion_in_progress)
@@ -250,8 +255,31 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 			spawn(0)
 				if(ismob(A))
 					var/mob/M = A
-					log_attack("Mob [M.name] ([M.ckey]) harmed by explosion in [T.loc.name] at ([M.loc.x],[M.loc.y],[M.loc.z])")
-				A.ex_act(severity, direction)
+					log_attack("Mob [M.name] ([M.ckey]) was harmed by explosion in [T.loc.name] caused by [explosion_source] at ([M.loc.x],[M.loc.y],[M.loc.z])")
+					if(ismob(explosion_source_mob))
+						var/mob/firingMob = explosion_source_mob
+						M.last_damage_mob = firingMob
+						if(ishuman(firingMob) && ishuman(M) && firingMob.mind && M.mind && M.mind.faction == firingMob.mind.faction) //One human blew up another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
+							M.attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firingMob)]."
+							firingMob:attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firingMob)]."
+							msg_admin_ff("[firingMob] ([firingMob.ckey]) blew up [M] ([M.ckey]) with \a [explosion_source] in [get_area(firingMob)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[firingMob.x];Y=[firingMob.y];Z=[firingMob.z]'>JMP</a>) (<a href='?priv_msg=\ref[firingMob.client]'>PM</a>)")
+							if(ishuman(firingMob))
+								var/mob/living/carbon/human/H = firingMob
+								H.track_friendly_fire(explosion_source)
+						else
+							M.attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firingMob)]."
+							firingMob:attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firingMob)]."
+							msg_admin_attack("[firingMob] ([firingMob.ckey]) blew up [M] ([M.ckey]) with \a [explosion_source] in [get_area(firingMob)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[firingMob.x];Y=[firingMob.y];Z=[firingMob.z]'>JMP</a>)")
+						return
+
+					if(explosion_source_mob)
+						var/mob/firingMob = explosion_source_mob
+						if(ishuman(firingMob))
+							var/mob/living/carbon/human/H = firingMob
+							H.track_shot_hit(initial(name), M)
+						M.attack_log += "\[[time_stamp()]\] <b>[firingMob]</b> blew up <b>[M]/[M.ckey]</b> with a <b>[explosion_source]</b>"
+						msg_admin_attack("[firingMob] blew up [M] ([M.ckey]) with a [explosion_source] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[firingMob.x];Y=[firingMob.y];Z=[firingMob.z]'>JMP</a>)")
+				A.ex_act(severity, direction, explosion_source, explosion_source_mob)
 
 		tiles_processed++
 		if(tiles_processed >= increment)

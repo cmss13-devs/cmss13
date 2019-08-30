@@ -59,15 +59,15 @@
 	if(stat > FIRE_MISSION_STATE_IN_TRANSIT && stat < FIRE_MISSION_STATE_COOLDOWN)
 		mission_error = "Fire Mission is under way already."
 		return 0
-	if(missions.len < mission_id)
+	if(!missions[mission_id])
 		return -1
 	var/datum/cas_fire_mission/mission = missions[mission_id]
 	if(!mission)
 		return -1
-	if(mission.records.len < weapon_id)
+	if(!mission.records[weapon_id])
 		return -1
 	var/datum/cas_fire_mission_record/fmr = mission.records[weapon_id]
-	if(!fmr.offsets || fmr.offsets.len < offset_step)
+	if(!fmr.offsets || !fmr.offsets[offset_step])
 		return -1
 	var/old_offset = fmr.offsets[offset_step]
 	fmr.offsets[offset_step] = offset
@@ -95,8 +95,8 @@
 	if(stat != FIRE_MISSION_STATE_IDLE)
 		mission_error = "Fire Mission is under way already."
 		return 0
-	if(missions.len < mission_id)
-		return -1	
+	if(!missions[mission_id])
+		return -1
 	if(offset<0)
 		mission_error = "Can't have negative offsets."
 		return 0
@@ -262,7 +262,7 @@
 	if(stat > FIRE_MISSION_STATE_IN_TRANSIT && stat < FIRE_MISSION_STATE_COOLDOWN)
 		mission_error = "Fire Mission is under way already."
 		return 0
-	if(missions.len < mission_id)
+	if(missions[mission_id])
 		return -1
 	var/mission = missions[mission_id]
 	missions -= mission

@@ -52,10 +52,10 @@ var/global/datum/defcon/defcon_controller
 	if(current_defcon_level > 1)
 		if(last_objectives_completion_percentage > defcon_level_triggers[current_defcon_level - 1])
 			decrease_defcon_level()
-
-	round_statistics.defcon_level = current_defcon_level
-	round_statistics.objective_points = last_objectives_scored_points
-	round_statistics.total_objective_points = last_objectives_total_points
+	if(round_statistics)
+		round_statistics.defcon_level = current_defcon_level
+		round_statistics.objective_points = last_objectives_scored_points
+		round_statistics.total_objective_points = last_objectives_total_points
 
 /datum/defcon/proc/announce_defcon_level()
 	//Send ARES message about new DEFCON level

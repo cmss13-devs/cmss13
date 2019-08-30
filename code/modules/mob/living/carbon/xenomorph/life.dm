@@ -158,17 +158,17 @@
 
 	if(health <= crit_health - warding_aura * 20) //dead
 		if(prob(gib_chance + 0.5*(crit_health - health)))
-			gib()
+			gib(last_damage_source)
 		else
-			death()
+			death(last_damage_source)
 		return
 
 	else if(health <= 0) //in crit
 		if(hardcore)
 			if(prob(gib_chance))
-				gib()
+				gib(last_damage_source)
 			else
-				death()
+				death(last_damage_source)
 		else
 			stat = UNCONSCIOUS
 			blinded = 1

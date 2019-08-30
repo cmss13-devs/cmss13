@@ -236,7 +236,6 @@
 			if(!L.ckey || !L.client) // no one home
 				visible_message(SPAN_XENODANGER("[L] quickly burrows into the ground."))
 				hive_datum[hivenumber].stored_larva++
-				round_statistics.total_xenos_created-- // keep stats sane
 				qdel(L)
 
 		if((last_larva_time + 30 SECONDS) < world.time) // every minute
@@ -486,7 +485,7 @@
 		emote("roar")
 		attack_log += text("\[[time_stamp()]\] <font color='red'>gibbed [victim.name] ([victim.ckey])</font>")
 		victim.attack_log += text("\[[time_stamp()]\] <font color='orange'>was gibbed by [name] ([ckey])</font>")
-		victim.gib() //Splut
+		victim.gib(initial(name)) //Splut
 		stop_pulling()
 
 /mob/living/carbon/Xenomorph/Queen/proc/mount_ovipositor()
@@ -613,5 +612,5 @@
 	reset_view()
 
 
-/mob/living/carbon/Xenomorph/Queen/gib()
-	death(1) //we need the body to show the queen's name at round end.
+/mob/living/carbon/Xenomorph/Queen/gib(var/cause = "gibbing")
+	death(cause, 1) //we need the body to show the queen's name at round end.

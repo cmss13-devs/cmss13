@@ -1,94 +1,96 @@
 /obj/item/reagent_container/food/drinks/cans
 	var/canopened = 0
 
-	attack_self(mob/user as mob)
-		if (canopened == 0)
-			playsound(src.loc,'sound/effects/canopen.ogg', 15, 1)
-			to_chat(user, SPAN_NOTICE("You open the drink with an audible pop!"))
-			canopened = 1
-		else
-			return
+/obj/item/reagent_container/food/drinks/cans/attack_self(mob/user as mob)
+	if (canopened == 0)
+		playsound(src.loc,'sound/effects/canopen.ogg', 15, 1)
+		to_chat(user, SPAN_NOTICE("You open the drink with an audible pop!"))
+		canopened = 1
+	else
+		return
 
-	attack(mob/M as mob, mob/user as mob, def_zone)
+/obj/item/reagent_container/food/drinks/cans/attack(mob/M as mob, mob/user as mob, def_zone)
+	if (canopened == 0)
+		to_chat(user, SPAN_NOTICE("You need to open the drink!"))
+		return
+	var/datum/reagents/R = src.reagents
+	var/fillevel = gulp_size
+
+	if(!R.total_volume || !R)
+		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
+		return 0
+
+	if(M == user)
+		to_chat(M, SPAN_NOTICE(" You swallow a gulp of [src]."))
+		if(reagents.total_volume)
+			reagents.set_source_mob(user)
+			reagents.trans_to_ingest(M, gulp_size)
+			reagents.reaction(M, INGEST)
+			spawn(5)
+				reagents.trans_to(M, gulp_size)
+
+		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
+		return 1
+	else if( istype(M, /mob/living/carbon/human) )
 		if (canopened == 0)
 			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 			return
-		var/datum/reagents/R = src.reagents
-		var/fillevel = gulp_size
 
-		if(!R.total_volume || !R)
-			to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
-			return 0
+	else if (canopened == 1)
+		user.affected_message(M,
+			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
+			SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
+			SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
+		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
+		user.affected_message(M,
+			SPAN_HELPFUL("You <b>fed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
+			SPAN_HELPFUL("[user] <b>fed</b> you <b>[src]</b>."),
+			SPAN_NOTICE("[user] fed [user == M ? "themselves" : "[M]"] [src]."))
 
-		if(M == user)
-			to_chat(M, SPAN_NOTICE(" You swallow a gulp of [src]."))
-			if(reagents.total_volume)
-				reagents.trans_to_ingest(M, gulp_size)
-				reagents.reaction(M, INGEST)
-				spawn(5)
-					reagents.trans_to(M, gulp_size)
+		var/rgt_list_text = get_reagent_list_text()
 
-			playsound(M.loc,'sound/items/drink.ogg', 15, 1)
-			return 1
-		else if( istype(M, /mob/living/carbon/human) )
-			if (canopened == 0)
-				to_chat(user, SPAN_NOTICE("You need to open the drink!"))
+		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been fed [src.name] by [user.name] ([user.ckey]) Reagents: [rgt_list_text]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [M.name] by [M.name] ([M.ckey]) Reagents: [rgt_list_text]</font>")
+		msg_admin_attack("[key_name(user)] fed [key_name(M)] with [src.name] Reagents: [rgt_list_text] (INTENT: [uppertext(user.a_intent)]) at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+
+		if(reagents.total_volume)
+			reagents.set_source_mob(user)
+			reagents.trans_to_ingest(M, gulp_size)
+
+		if(isrobot(user)) //Cyborg modules that include drinks automatically refill themselves, but drain the borg's cell
+			var/mob/living/silicon/robot/bro = user
+			bro.cell.use(30)
+			var/refill = R.get_master_reagent_id()
+			spawn(MINUTES_1)
+				R.add_reagent(refill, fillevel)
+
+		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
+		return 1
+
+	return 0
+
+
+/obj/item/reagent_container/food/drinks/cans/afterattack(obj/target, mob/user, proximity)
+	if(!proximity) return
+
+	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
+		if (canopened == 0)
+			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
+			return
+
+
+	else if(target.is_open_container()) //Something like a glass. Player probably wants to transfer TO it.
+		if (canopened == 0)
+			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
+			return
+
+		if (istype(target, /obj/item/reagent_container/food/drinks/cans))
+			var/obj/item/reagent_container/food/drinks/cans/cantarget = target
+			if(cantarget.canopened == 0)
+				to_chat(user, SPAN_NOTICE("You need to open the drink you want to pour into!"))
 				return
 
-		else if (canopened == 1)
-			user.affected_message(M,
-				SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
-				SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
-				SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
-			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
-			user.affected_message(M,
-				SPAN_HELPFUL("You <b>fed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
-				SPAN_HELPFUL("[user] <b>fed</b> you <b>[src]</b>."),
-				SPAN_NOTICE("[user] fed [user == M ? "themselves" : "[M]"] [src]."))
-
-			var/rgt_list_text = get_reagent_list_text()
-
-			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been fed [src.name] by [user.name] ([user.ckey]) Reagents: [rgt_list_text]</font>")
-			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [M.name] by [M.name] ([M.ckey]) Reagents: [rgt_list_text]</font>")
-			msg_admin_attack("[key_name(user)] fed [key_name(M)] with [src.name] Reagents: [rgt_list_text] (INTENT: [uppertext(user.a_intent)]) at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
-
-			if(reagents.total_volume)
-				reagents.trans_to_ingest(M, gulp_size)
-
-			if(isrobot(user)) //Cyborg modules that include drinks automatically refill themselves, but drain the borg's cell
-				var/mob/living/silicon/robot/bro = user
-				bro.cell.use(30)
-				var/refill = R.get_master_reagent_id()
-				spawn(MINUTES_1)
-					R.add_reagent(refill, fillevel)
-
-			playsound(M.loc,'sound/items/drink.ogg', 15, 1)
-			return 1
-
-		return 0
-
-
-	afterattack(obj/target, mob/user, proximity)
-		if(!proximity) return
-
-		if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
-			if (canopened == 0)
-				to_chat(user, SPAN_NOTICE("You need to open the drink!"))
-				return
-
-
-		else if(target.is_open_container()) //Something like a glass. Player probably wants to transfer TO it.
-			if (canopened == 0)
-				to_chat(user, SPAN_NOTICE("You need to open the drink!"))
-				return
-
-			if (istype(target, /obj/item/reagent_container/food/drinks/cans))
-				var/obj/item/reagent_container/food/drinks/cans/cantarget = target
-				if(cantarget.canopened == 0)
-					to_chat(user, SPAN_NOTICE("You need to open the drink you want to pour into!"))
-					return
-
-		return ..()
+	return ..()
 
 
 

@@ -13,7 +13,7 @@
 /datum/equipment_preset/fun/pirate
 	name = "Fun - Pirate"
 	flags = EQUIPMENT_PRESET_EXTRA
-	faction = "Pirates"
+	faction = FACTION_PIRATE
 
 	skills = /datum/skills/pfc/crafty
 

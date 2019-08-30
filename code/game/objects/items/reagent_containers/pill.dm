@@ -16,107 +16,106 @@ var/global/list/randomized_pill_icons
 	volume = 60
 	var/pill_desc = "An unknown pill." //the real description of the pill, shown when examined by a medically trained person
 
-	New()
-		..()
-		if(!randomized_pill_icons)
-			var/allowed_numbers = list(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
-			randomized_pill_icons = list()
-			for(var/i = 1 to 21)
-				randomized_pill_icons += "pill[pick_n_take(allowed_numbers)]"
-		if(!icon_state)
-			icon_state = "pill[rand(1,21)]"
+/obj/item/reagent_container/pill/New()
+	..()
+	if(!randomized_pill_icons)
+		var/allowed_numbers = list(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21)
+		randomized_pill_icons = list()
+		for(var/i = 1 to 21)
+			randomized_pill_icons += "pill[pick_n_take(allowed_numbers)]"
+	if(!icon_state)
+		icon_state = "pill[rand(1,21)]"
 
 
-	examine(mob/user)
-		..()
-		if(pill_desc)
-			display_contents(user)
+/obj/item/reagent_container/pill/examine(mob/user)
+	..()
+	if(pill_desc)
+		display_contents(user)
 
-	attack_self(mob/user as mob)
-		return
+/obj/item/reagent_container/pill/attack_self(mob/user as mob)
+	return
 
-	attack(mob/M, mob/user, def_zone)
-
-		if(M == user)
-
-			if(istype(M, /mob/living/carbon/human))
-				var/mob/living/carbon/human/H = M
-				if(H.species.flags & IS_SYNTHETIC)
-					to_chat(H, SPAN_DANGER("You can't eat pills."))
-					return
-
-			M.visible_message(SPAN_NOTICE("[user] swallows [src]."),
-				SPAN_HELPFUL("You swallow [src]."))
-			M.drop_inv_item_on_ground(src) //icon update
-			if(reagents.total_volume)
-				reagents.trans_to_ingest(M, reagents.total_volume)
-
-			qdel(src)
-			return 1
-
-		else if(istype(M, /mob/living/carbon/human) )
-
+/obj/item/reagent_container/pill/attack(mob/M, mob/user, def_zone)
+	if(M == user)
+		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
 			if(H.species.flags & IS_SYNTHETIC)
-				to_chat(H, SPAN_DANGER("They have a monitor for a head, where do you think you're going to put that?"))
+				to_chat(H, SPAN_DANGER("You can't eat pills."))
 				return
 
-			user.affected_message(M,
-				SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] a pill."),
-				SPAN_HELPFUL("[user] <b>starts feeding</b> you a pill."),
-				SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] a pill."))
+		M.visible_message(SPAN_NOTICE("[user] swallows [src]."),
+			SPAN_HELPFUL("You swallow [src]."))
+		M.drop_inv_item_on_ground(src) //icon update
+		if(reagents.total_volume)
+			reagents.set_source_mob(user)
+			reagents.trans_to_ingest(M, reagents.total_volume)
 
-			var/ingestion_time = 30
-			if(user.mind && user.mind.cm_skills)
-				ingestion_time = max(10, 30 - 10*user.mind.cm_skills.medical)
+		qdel(src)
+		return 1
 
-			if(!do_after(user, ingestion_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)) return
+	else if(istype(M, /mob/living/carbon/human) )
+		var/mob/living/carbon/human/H = M
+		if(H.species.flags & IS_SYNTHETIC)
+			to_chat(H, SPAN_DANGER("They have a monitor for a head, where do you think you're going to put that?"))
+			return
 
-			user.drop_inv_item_on_ground(src) //icon update
-			
-			user.affected_message(M,
-				SPAN_HELPFUL("You [user == M ? "<b>swallowed</b>" : "<b>fed</b> [M]"] a pill."),
-				SPAN_HELPFUL("[user] <b>fed</b> you a pill."),
-				SPAN_NOTICE("[user] [user == M ? "swallowed" : "fed [M]"] a pill."))
+		user.affected_message(M,
+			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] a pill."),
+			SPAN_HELPFUL("[user] <b>starts feeding</b> you a pill."),
+			SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] a pill."))
 
-			var/rgt_list_text = get_reagent_list_text()
+		var/ingestion_time = 30
+		if(user.mind && user.mind.cm_skills)
+			ingestion_time = max(10, 30 - 10*user.mind.cm_skills.medical)
 
-			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been fed [src.name] by [user.name] ([user.ckey]) Reagents: [rgt_list_text]</font>")
-			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [M.name] by [M.name] ([M.ckey]) Reagents: [rgt_list_text]</font>")
-			msg_admin_attack("[user.name] ([user.ckey]) fed [M.name] ([M.ckey]) with [src.name] Reagents: [rgt_list_text] (INTENT: [uppertext(user.a_intent)]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
+		if(!do_after(user, ingestion_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)) return
 
-			if(reagents.total_volume)
-				reagents.trans_to_ingest(M, reagents.total_volume)
-				qdel(src)
-			else
-				qdel(src)
+		user.drop_inv_item_on_ground(src) //icon update
+		
+		user.affected_message(M,
+			SPAN_HELPFUL("You [user == M ? "<b>swallowed</b>" : "<b>fed</b> [M]"] a pill."),
+			SPAN_HELPFUL("[user] <b>fed</b> you a pill."),
+			SPAN_NOTICE("[user] [user == M ? "swallowed" : "fed [M]"] a pill."))
 
-			return 1
+		var/rgt_list_text = get_reagent_list_text()
 
-		return 0
+		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been fed [src.name] by [user.name] ([user.ckey]) Reagents: [rgt_list_text]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [M.name] by [M.name] ([M.ckey]) Reagents: [rgt_list_text]</font>")
+		msg_admin_attack("[user.name] ([user.ckey]) fed [M.name] ([M.ckey]) with [src.name] Reagents: [rgt_list_text] (INTENT: [uppertext(user.a_intent)]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
 
-	afterattack(obj/target, mob/user, proximity)
-		if(!proximity) return
+		if(reagents.total_volume)
+			reagents.set_source_mob(user)
+			reagents.trans_to_ingest(M, reagents.total_volume)
+			qdel(src)
+		else
+			qdel(src)
 
-		if(target.is_open_container() != 0 && target.reagents)
-			if(!target.reagents.total_volume)
-				to_chat(user, SPAN_DANGER("[target] is empty. Cant dissolve pill."))
-				return
-			to_chat(user, SPAN_NOTICE("You dissolve the pill in [target]"))
+		return 1
 
-			var/rgt_list_text = get_reagent_list_text()
+	return 0
 
-			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Spiked \a [target] with a pill. Reagents: [rgt_list_text]</font>")
-			msg_admin_attack("[user.name] ([user.ckey]) spiked \a [target] with a pill. Reagents: [rgt_list_text] (INTENT: [uppertext(user.a_intent)]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
+/obj/item/reagent_container/pill/afterattack(obj/target, mob/user, proximity)
+	if(!proximity) return
 
-			reagents.trans_to(target, reagents.total_volume)
-			for(var/mob/O in viewers(2, user))
-				O.show_message(SPAN_DANGER("[user] puts something in \the [target]."), 1)
+	if(target.is_open_container() != 0 && target.reagents)
+		if(!target.reagents.total_volume)
+			to_chat(user, SPAN_DANGER("[target] is empty. Cant dissolve pill."))
+			return
+		to_chat(user, SPAN_NOTICE("You dissolve the pill in [target]"))
 
-			spawn(5)
-				qdel(src)
+		var/rgt_list_text = get_reagent_list_text()
 
-		return
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Spiked \a [target] with a pill. Reagents: [rgt_list_text]</font>")
+		msg_admin_attack("[user.name] ([user.ckey]) spiked \a [target] with a pill. Reagents: [rgt_list_text] (INTENT: [uppertext(user.a_intent)]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
+
+		reagents.trans_to(target, reagents.total_volume)
+		for(var/mob/O in viewers(2, user))
+			O.show_message(SPAN_DANGER("[user] puts something in \the [target]."), 1)
+
+		spawn(5)
+			qdel(src)
+
+	return
 
 ////////////////////////////////////////////////////////////////////////////////
 /// Pills. END

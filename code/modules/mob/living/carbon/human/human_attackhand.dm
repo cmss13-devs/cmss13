@@ -76,6 +76,8 @@
 			if(!attack.is_usable(M)) attack = M.species.secondary_unarmed
 			if(!attack.is_usable(M)) return
 
+			M.last_damage_source = "fisticuffs"
+			M.last_damage_mob = src
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>[pick(attack.attack_verb)]ed [src.name] ([src.ckey])</font>")
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been [pick(attack.attack_verb)]ed by [M.name] ([M.ckey])</font>")
 			msg_admin_attack("[key_name(M)] [pick(attack.attack_verb)]ed [key_name(src)] at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")

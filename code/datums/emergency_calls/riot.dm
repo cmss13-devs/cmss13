@@ -22,12 +22,12 @@
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = H
-		arm_equipment(H, "USCM Riot Chief MP (RCMP)", TRUE)
+		arm_equipment(H, "USCM Riot Chief MP (RCMP)", TRUE, TRUE)
 		to_chat(H, "<font size='3'>\red You are the leader of the High Command Riot Control!</font>")
 		to_chat(H, "<B> Follow any orders directly from High Command!</b>")
 		to_chat(H, "<B> You only answer to the Marine Law and the High Command!</b>")
 	else
-		arm_equipment(H, "USCM Riot MP (RMP)", TRUE)
+		arm_equipment(H, "USCM Riot MP (RMP)", TRUE, TRUE)
 		to_chat(H, "<font size='3'>\red You are a member of the High Command Riot Control!!</font>")
 		to_chat(H, "<B> Follow any orders directly from High Command or your superior!</b>")
 		to_chat(H, "<B> You only answer to your superior, the Marine Law and the High Command!</b>")

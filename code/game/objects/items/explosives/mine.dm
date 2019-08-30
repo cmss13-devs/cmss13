@@ -22,6 +22,7 @@
 	var/disarming = 0//Tracks if the mine is being disarmed.
 	var/trigger_type = "explosive" //Calls that proc
 	var/obj/effect/mine_tripwire/tripwire
+	var/source_mob
 	/*
 		"explosive"
 		//"incendiary" //New bay//
@@ -65,6 +66,8 @@
 			return
 		user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."), \
 			SPAN_NOTICE("You finish deploying [src]."))
+		if(user)
+			source_mob = user
 		anchored = 1
 		armed = 1
 		playsound(src.loc, 'sound/weapons/mine_armed.ogg', 25, 1)
@@ -123,9 +126,9 @@
 
 	switch(trigger_type)
 		if("explosive")
-			create_shrapnel(loc, 12, dir, 60)
+			create_shrapnel(loc, 12, dir, 60, , initial(name), source_mob)
 			sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
-			explosion_rec(src.loc, 60, 20)
+			explosion_rec(src.loc, 60, 20, initial(name), source_mob)
 			qdel(src)
 
 /obj/item/explosive/mine/attack_alien(mob/living/carbon/Xenomorph/M)

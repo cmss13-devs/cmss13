@@ -43,6 +43,7 @@
 
 /* Pre-setup */
 /datum/game_mode/colonialmarines/pre_setup()
+	setup_round_stats()
 	round_fog = new
 	round_toxic_river = new
 	var/xeno_tunnels[] = new
@@ -271,16 +272,17 @@
 		if(MODE_INFESTATION_M_MINOR) musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
 		if(MODE_INFESTATION_DRAW_DEATH) musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
 	world << musical_track
-	round_statistics.round_finished = round_finished
-	round_statistics.game_mode = name
-	round_statistics.round_time = duration2text()
-	round_statistics.end_round_player_population = clients.len
-	round_statistics.total_predators_spawned = predators.len
+	if(round_statistics)
+		round_statistics.game_mode = name
+		round_statistics.round_length = world.time
+		round_statistics.end_round_player_population = clients.len
 
-	round_statistics.log_round_statistics()
+		round_statistics.log_round_statistics()
 
+	declare_completion_announce_fallen_soldiers()
 	declare_completion_announce_xenomorphs()
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()
+	declare_random_fact()
 
 	return 1

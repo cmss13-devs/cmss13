@@ -234,6 +234,7 @@
 			qdel(O)
 
 			var/obj/machinery/marine_turret/T = new(loc)  //Bing! Create a new turret.
+			T.owner_mob = user
 			T.dir = dir
 			qdel(src)
 			return
@@ -299,6 +300,7 @@
 	var/obj/item/projectile/in_chamber = null
 	var/angle = 1
 	var/list/angle_list = list(180,135,90,60,30)
+	var/owner_mob
 
 /obj/machinery/marine_turret/New()
 	spark_system = new /datum/effect_system/spark_spread
@@ -663,7 +665,7 @@
 			sleep(2)
 		spawn(10)
 			if(src && loc)
-				explosion(loc, -1, -1, 2, 0)
+				explosion(loc, -1, -1, 2, 0, , , , "sentry explosion")
 				//new /obj/machinery/marine_turret_frame(loc) // disabling this because why -spookydonut
 				if(!disposed)
 					qdel(src)
@@ -779,7 +781,7 @@
 	if(!on || !cell || rounds == 0 || stat)
 		return 0
 
-	in_chamber = new /obj/item/projectile(loc) //New bullet!
+	in_chamber = new /obj/item/projectile(initial(name), null, loc) //New bullet!
 	in_chamber.generate_bullet(ammo)
 	return 1
 
@@ -848,6 +850,7 @@
 			in_chamber.dir = dir
 			in_chamber.accuracy = round(in_chamber.accuracy * (config.base_hit_accuracy_mult - config.med_hit_accuracy_mult)) //This is gross but needed to make accuracy behave like the minigun's
 			in_chamber.def_zone = pick("chest", "chest", "chest", "head")
+			in_chamber.weapon_source_mob = owner_mob
 
 			//Shoot at the thing
 			playsound(loc, 'sound/weapons/gun_sentry.ogg', 75, 1)

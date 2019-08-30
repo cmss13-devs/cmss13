@@ -350,6 +350,8 @@
 	playsound(loc, "alien_bite", 25)
 	visible_message(SPAN_DANGER("\The [M] is viciously shredded by \the [src]'s sharp teeth!"), \
 	SPAN_DANGER("You viciously rend \the [M] with your teeth!"), null, 5)
+	M.last_damage_source = initial(name)
+	M.last_damage_mob = src
 	M.attack_log += text("\[[time_stamp()]\] <font color='red'>bit [src.name] ([src.ckey])</font>")
 	attack_log += text("\[[time_stamp()]\] <font color='orange'>was bitten by [M.name] ([M.ckey])</font>")
 
@@ -379,6 +381,8 @@
 	playsound(M.loc, 'sound/weapons/alien_tail_attack.ogg', 25, 1) //Stolen from Yautja! Owned!
 	visible_message(SPAN_DANGER("\The [M] is suddenly impaled by \the [src]'s sharp tail!"), \
 	SPAN_DANGER("You violently impale \the [M] with your tail!"), null, 5)
+	M.last_damage_source = initial(name)
+	M.last_damage_mob = src
 	M.attack_log += text("\[[time_stamp()]\] <font color='red'>tail-stabbed [M.name] ([M.ckey])</font>")
 	attack_log += text("\[[time_stamp()]\] <font color='orange'>was tail-stabbed by [src.name] ([src.ckey])</font>")
 

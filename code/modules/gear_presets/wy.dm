@@ -1,10 +1,10 @@
 
 /datum/equipment_preset/wy
 	name = "WY"
-
+	faction = FACTION_PMC
 	idtype = /obj/item/card/id/pmc
 	special_role = "PMC"
-	faction = "Weyland-Yutani"
+	faction = FACTION_PMC
 
 /datum/equipment_preset/wy/New()
 	. = ..()

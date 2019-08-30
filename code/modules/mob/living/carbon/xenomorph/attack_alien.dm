@@ -138,6 +138,9 @@
 			M.visible_message(SPAN_DANGER("\The [M] slashes [src]!"), \
 			SPAN_DANGER("You slash [src]!"))
 
+			last_damage_source = initial(M.name)
+			last_damage_mob = M
+
 			//Logging, including anti-rulebreak logging
 			if(src.status_flags & XENO_HOST && src.stat != DEAD)
 				if(istype(src.buckled, /obj/structure/bed/nest)) //Host was buckled to nest while infected, this is a rule break
@@ -317,6 +320,8 @@
 				SPAN_DANGER("You lunge at [src]!"), null, 5)
 				return 0
 
+			last_damage_source = initial(M.name)
+			last_damage_mob = M
 			M.visible_message(SPAN_DANGER("\The [M] slashes [src]!"), \
 			SPAN_DANGER("You slash [src]!"), null, 5)
 			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [M.name] ([M.ckey])</font>")

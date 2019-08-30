@@ -7,6 +7,7 @@
 		mind = new /datum/mind(key)
 		mind.active = 1
 		mind.current = src
+		mind_initialize()
 
 	if(length(newplayer_start))
 		loc = pick(newplayer_start)

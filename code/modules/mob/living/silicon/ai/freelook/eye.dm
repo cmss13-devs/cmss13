@@ -53,7 +53,8 @@
 	if(ai)
 		if(!isturf(ai.loc) || !ai.client)
 			return
-		return ai.eyeobj.loc
+		if(ai.eyeobj)
+			return ai.eyeobj.loc
 
 // AI MOVEMENT
 
@@ -69,11 +70,12 @@
 // Intiliaze the eye by assigning it's "ai" variable to us. Then set it's loc to us.
 /mob/living/silicon/ai/New()
 	..()
-	eyeobj.ai = src
-	eyeobj.name = "[src.name] (AI Eye)" // Give it a name
-	spawn(5)
-		if(eyeobj)
-			eyeobj.loc = src.loc
+	if(eyeobj)
+		eyeobj.ai = src
+		eyeobj.name = "[src.name] (AI Eye)" // Give it a name
+		spawn(5)
+			if(eyeobj)
+				eyeobj.loc = src.loc
 
 /mob/living/silicon/ai/Dispose()
 	if(eyeobj)
@@ -99,10 +101,11 @@ mob/living/silicon/ai/Move(n, direct)
 	if(cooldown && cooldown < world.timeofday) // 3 seconds
 		sprint = initial
 
-	for(var/i = 0; i < max(sprint, initial); i += 20)
-		var/turf/step = get_turf(get_step(eyeobj, direct))
-		if(step)
-			eyeobj.setLoc(step)
+	if(eyeobj)
+		for(var/i = 0; i < max(sprint, initial); i += 20)
+			var/turf/step = get_turf(get_step(eyeobj, direct))
+			if(step)
+				eyeobj.setLoc(step)
 
 	cooldown = world.timeofday + 5
 	if(acceleration)
@@ -137,7 +140,8 @@ mob/living/silicon/ai/Move(n, direct)
 		client.eye = src
 	for(var/datum/camerachunk/c in eyeobj.visibleCameraChunks)
 		c.remove(eyeobj)
-	src.eyeobj.setLoc(src)
+	if(eyeobj)
+		src.eyeobj.setLoc(src)
 
 /mob/living/silicon/ai/proc/toggle_acceleration()
 	set category = "AI Commands"

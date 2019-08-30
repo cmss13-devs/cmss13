@@ -12,7 +12,7 @@
 	var/paygrade
 	var/role_comm_title
 	var/special_role
-	var/faction = "neutral"
+	var/faction = FACTION_NEUTRAL
 
 	//load_appearance()
 /datum/equipment_preset/proc/load_race(mob/living/carbon/human/H)
@@ -46,6 +46,7 @@
 	W.registered_name = H.real_name
 	W.paygrade = paygrade
 	H.equip_to_slot_or_del(W, WEAR_ID)
+	H.faction = faction
 	if(H.mind)
 		H.mind.faction = faction
 		H.mind.role_comm_title = role_comm_title
@@ -58,7 +59,7 @@
 /datum/equipment_preset/proc/load_languages(mob/living/carbon/human/H)
 	H.set_languages(languages)
 
-/datum/equipment_preset/proc/load_preset(mob/living/carbon/human/H, var/randomise = FALSE)
+/datum/equipment_preset/proc/load_preset(mob/living/carbon/human/H, var/randomise = FALSE, var/count_participant = FALSE)
 	load_race(H)
 	if(randomise || uses_special_name)
 		load_name(H, randomise)
@@ -68,6 +69,8 @@
 	load_id(H)
 	load_status(H)
 	load_vanity(H)
+	if(round_statistics && count_participant)
+		round_statistics.track_new_participant(faction)
 
 /datum/equipment_preset/proc/load_vanity(mob/living/carbon/human/H)
 	if(!H.client || !H.client.prefs || !H.client.prefs.gear)

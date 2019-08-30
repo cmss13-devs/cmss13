@@ -77,7 +77,7 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 	var/brain_item_type = /obj/item/organ/brain
 	var/braindeath_on_decap = 1 //whether the brainmob dies when head is decapitated (used by synthetics)
 
-/obj/item/limb/head/New(loc, mob/living/carbon/human/H)
+/obj/item/limb/head/New(loc, mob/living/carbon/human/H, var/cause = "decapitation")
 	if(istype(H))
 		src.icon_state = H.gender == MALE? "head_m" : "head_f"
 	..()
@@ -115,7 +115,7 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 
 	if(braindeath_on_decap)
 		brainmob.stat = DEAD
-		brainmob.death()
+		brainmob.death(cause)
 
 /obj/item/limb/head/proc/transfer_identity(var/mob/living/carbon/human/H)//Same deal as the regular brain proc. Used for human-->head
 	brainmob = new(src)
@@ -165,7 +165,7 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 				//TODO: ORGAN REMOVAL UPDATE.
 				var/obj/item/organ/brain/B = new brain_item_type(loc)
 				if(brainmob.stat != DEAD)
-					brainmob.death() //brain mob doesn't survive outside a head
+					brainmob.death("brain extraction") //brain mob doesn't survive outside a head
 				B.transfer_identity(brainmob)
 
 				brain_op_stage = 4.0

@@ -119,7 +119,8 @@ var/list/admin_verbs_fun = list(
 	/client/proc/set_ooc_color_global,
 	/datum/admins/proc/hostile_lure,
 	/client/proc/set_away_timer,
-	/client/proc/editappear
+	/client/proc/editappear,
+	/client/proc/announce_random_fact
 	)
 var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_atom,		/*allows us to spawn instances*/
@@ -397,6 +398,10 @@ var/list/admin_verbs_mentor = list(
 			if(ui.title == "STUI")
 				new_STUI = 1
 				ui.close()
+				continue
+			if(ui.allowed_user_stat == -1)
+				ui.close()
+				continue
 	if(istype(mob,/mob/dead/observer))
 		//re-enter
 		var/mob/dead/observer/ghost = mob
@@ -415,7 +420,10 @@ var/list/admin_verbs_mentor = list(
 	else
 		//ghostize
 		log_admin("[key_name(usr)] admin ghosted.")
+		if(player_entity)
+			player_entity.update_panel_data(round_statistics)
 		var/mob/body = mob
+		body.track_death_calculations()
 		body.ghostize(1)
 		if(body && !body.key)
 			body.key = "@[key]"	//Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
@@ -1008,3 +1016,11 @@ var/list/admin_verbs_mentor = list(
 		to_chat(src, "<font color='red'>Error: Lose larva Protection: Can't lose larva protection whilst in the lobby. Observe first.</font>")
 	else
 		to_chat(src, "<font color='red'>Error: Lose larva Protection: You must be a ghost to use this.</font>")
+
+/client/proc/announce_random_fact()
+	set category = "Fun"
+	set name = "Announce Random Fact"
+	set desc = "Tells everyone about a random statistic in the round."
+
+	if(ticker && ticker.mode)
+		ticker.mode.declare_random_fact()

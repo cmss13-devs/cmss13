@@ -122,6 +122,7 @@
 
 	clients += src
 	directory[ckey] = src
+	player_entity = setup_player_entity(key)
 
 	//Admin Authorisation
 	admin_holder = admin_datums[ckey]
@@ -330,3 +331,19 @@
 	// Nothing happening, long sleep
 	sleep(5)
 	return .
+
+/proc/setup_player_entity(var/key)
+	var/key_ref = lowertext(key)
+	if(player_entities["[key_ref]"])
+		return player_entities["[key_ref]"]
+	var/datum/entity/player_entity/P = new()
+	P.ckey = key
+	P.name = key
+	player_entities["[key_ref]"] = P
+	P.setup_save(key)
+	return P
+
+/proc/save_player_entities()
+	for(var/key_ref in player_entities)
+		var/datum/entity/player_entity/P = player_entities["[key_ref]"]
+		P.save_statistics()

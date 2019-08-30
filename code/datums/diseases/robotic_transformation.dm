@@ -61,5 +61,5 @@
 				if(istype(H) && !jobban_isbanned(affected_mob, "Cyborg"))
 					H.Robotize()
 				else
-					affected_mob.death(1)
+					affected_mob.death(null, 1)
 

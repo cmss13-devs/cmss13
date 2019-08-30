@@ -550,3 +550,8 @@ th.misc {
 .oxyloss {
     color: blue;
 }
+
+.fieldContainer {
+    background-color: #202020;
+    padding: 1px 4px 1px 4px;
+}

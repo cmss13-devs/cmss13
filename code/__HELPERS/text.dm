@@ -320,3 +320,6 @@ proc/TextPreview(var/string,var/len=40)
 			return string
 	else
 		return "[copytext(string, 1, 37)]..."
+
+proc/strip_improper(input_text)
+	return replacetext(replacetext(input_text, "\proper", ""), "\improper", "")

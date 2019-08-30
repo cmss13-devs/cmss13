@@ -1,6 +1,6 @@
 /datum/equipment_preset/uscm_ship
 	name = "USCM (ship roles)"
-
+	faction = FACTION_MARINE
 	languages = list("English")
 
 /*****************************************************************************************************/

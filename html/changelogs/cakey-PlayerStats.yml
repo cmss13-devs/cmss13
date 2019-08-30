@@ -1,0 +1,45 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: Cakey
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes: 
+  - rscadd: "Player statistics are here! Players can now view tracked statistics within the round related to personal and global entities. You can view these statistics via the statistics panel, found in the lobby menu (after round start), or by using Show-Statistics in the Ghost tab (you can't view stats while alive). Statistics include, but are not limited to, Job stats, Caste stats, Weapon stats, Kills, Deaths, Screams, Steps Walked, Lives Saved, and much more."
+  - rscadd: "Added the kill feed panel, where you can view the kill feed update in real time as an observer by using Show-Kill-Feed in the Ghost tab."
+  - rscadd: "Kills, Deaths and Player damage will now track their source, which includes but is not limited to, gunshots, slashes, grenades, OBs, CAS fire, mortars, chemicals, chemical overdoses, fire, gibs, suicides, russian roulette shots, melee weapon hits, fisticuffs, and decapitation."
+  - rscadd: "Ghosts will now be able to see deaths via the dead-chat kill-feed, which will display who died, where, and how."
+  - rscadd: "All projectiles will now track their source, including explosion shrapnel, OBs, Mortars, CAS weapons, and Tank weapons."
+  - rscadd: "All chemicals will now track their source, and kills via overdose will be tracked back to the injector."
+  - rscadd: "Explosions will now track their source, and generate logs appropriately."
+  - rscadd: "Added round-end random facts, which will give random tidbits regarding the round statistics."
+  - rscadd: "Re-added Flanders Fields to the end-round messages."
+  - rscadd: "Each round will now aut-generate a random operation name. This will be used on round-start and in the statistics panel."

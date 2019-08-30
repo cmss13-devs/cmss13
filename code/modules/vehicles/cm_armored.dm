@@ -197,7 +197,9 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		to_chat(user, SPAN_WARNING("The target is not within your firing arc."))
 		return
 
+	HP.weapon_source_mob = user
 	HP.active_effect(A)
+
 
 //Used by the gunner to swap which module they are using
 //e.g. from the minigun to the smoke launcher

@@ -107,10 +107,10 @@
 	//G = null
 
 
-/obj/machinery/bodyscanner/ex_act(severity)
+/obj/machinery/bodyscanner/ex_act(var/severity, var/source)
 	for(var/atom/movable/A as mob|obj in src)
 		A.loc = src.loc
-		ex_act(severity)
+		A.ex_act(severity, , source)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))

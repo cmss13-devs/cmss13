@@ -5,7 +5,7 @@
 	var/special_role 			 //In case they have some special role on spawn.
 	var/disp_title				 //Determined on new(). Usually the same as the title, but doesn't have to be. Set this to override what the player sees in the game as their title.
 
-	var/faction 			= "Marines" //Players will be allowed to spawn in as jobs that are set to "Marines". Other factions are special game mode spawns.
+	var/faction 			= "Marine" //Players will be allowed to spawn in as jobs that are set to "Marine". Other factions are special game mode spawns.
 	var/total_positions 	= 0 //How many players can be this job
 	var/spawn_positions 	= 0 //How many players can spawn in as this job
 	var/allow_additional	= 0 //Can admins modify positions to it

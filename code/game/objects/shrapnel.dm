@@ -1,5 +1,5 @@
 
-/proc/create_shrapnel(turf/epicenter, shrapnel_number = 10, shrapnel_direction, shrapnel_spread = 45, datum/ammo/shrapnel_type = /datum/ammo/bullet/shrapnel)
+/proc/create_shrapnel(turf/epicenter, shrapnel_number = 10, shrapnel_direction, shrapnel_spread = 45, datum/ammo/shrapnel_type = /datum/ammo/bullet/shrapnel, var/shrapnel_source, var/shrapnel_source_mob)
 
 	epicenter = get_turf(epicenter)
 
@@ -29,7 +29,7 @@
 
 	for(var/i=0;i<shrapnel_number;i++)
 
-		var/obj/item/projectile/S = new
+		var/obj/item/projectile/S = new(shrapnel_source, shrapnel_source_mob)
 		S.generate_bullet(new shrapnel_type)
 
 		if(mob_standing_on_turf && prob(15)) //if a non-prone mob is on the same turf as the shrapnel explosion, some of the shrapnel hits him

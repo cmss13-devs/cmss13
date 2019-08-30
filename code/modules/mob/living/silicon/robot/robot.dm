@@ -644,6 +644,8 @@ var/list/robot_verbs_default = list(
 			playsound(loc, M.attack_sound, 25, 1)
 		for(var/mob/O in viewers(src, null))
 			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), 1)
+		last_damage_source = initial(M.name)
+		last_damage_mob = M
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name] ([src.ckey])</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [M.name] ([M.ckey])</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)

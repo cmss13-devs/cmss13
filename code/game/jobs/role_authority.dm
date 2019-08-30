@@ -440,8 +440,8 @@ roles willy nilly.
 			H.mind.initial_account = A
 
 		if((J.title == "Commanding Officer") && roles_whitelist && (roles_whitelist[H.ckey] & WHITELIST_COMMANDER_COUNCIL))
-			arm_equipment(H, J.gear_preset_council)
-		arm_equipment(H, J.gear_preset) //After we move them, we want to equip anything else they should have.
+			arm_equipment(H, J.gear_preset_council, FALSE, TRUE)
+		arm_equipment(H, J.gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
 		/*var/alt_title
 		if(H.mind)
 			H.mind.assigned_role = J.title

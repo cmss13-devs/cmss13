@@ -210,12 +210,12 @@
 	icon_state = icon_dead
 
 
-/mob/living/simple_animal/gib()
+/mob/living/simple_animal/gib(var/cause = "gibbing")
 	living_misc_mobs -= src
 	if(meat_amount && meat_type)
 		for(var/i = 0; i < meat_amount; i++)
 			new meat_type(src.loc)
-	..()
+	..(cause)
 
 /mob/living/simple_animal/gib_animation()
 	if(icon_gib)
@@ -241,6 +241,8 @@
 			playsound(loc, M.attack_sound, 25, 1)
 		for(var/mob/O in viewers(src, null))
 			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), 1)
+		last_damage_source = initial(M.name)
+		last_damage_mob = M
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name] ([src.ckey])</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [M.name] ([M.ckey])</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)

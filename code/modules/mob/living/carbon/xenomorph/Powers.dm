@@ -98,8 +98,6 @@
 	if (!check_plasma(200))
 		return
 
-	round_statistics.praetorian_acid_sprays++
-
 	used_acid_spray = 1
 	use_plasma(200)
 	playsound(loc, 'sound/effects/refill.ogg', 25, 1)
@@ -379,7 +377,6 @@
 			if ((C.status_flags & XENO_HOST) && istype(C.buckled, /obj/structure/bed/nest))
 				continue
 
-			round_statistics.praetorian_spray_direct_hits++
 			C.adjustFireLoss(rand(20,30) + 5 * upgrade)
 			to_chat(C, SPAN_XENODANGER("\The [src] showers you in corrosive acid!"))
 
@@ -410,7 +407,6 @@
 	var/mob/living/carbon/human/H = A
 	if(H.stat == DEAD) return
 	if(istype(H.buckled, /obj/structure/bed/nest)) return
-	round_statistics.warrior_flings++
 
 	visible_message(SPAN_XENOWARNING("\The [src] effortlessly flings [H] to the side!"), \
 	SPAN_XENOWARNING("You effortlessly fling [H] to the side!"))
@@ -465,7 +461,6 @@
 	if(H.status_flags & XENO_HOST)
 		to_chat(src, SPAN_XENOWARNING("This would harm the embryo!"))
 		return
-	round_statistics.warrior_punches++
 	var/datum/limb/L = H.get_limb(check_zone(zone_selected))
 
 	if (!L || (L.status & LIMB_DESTROYED))
@@ -565,8 +560,6 @@
 	if (!Adjacent(H))
 		return
 
-	round_statistics.warrior_punches++
-
 	visible_message(SPAN_XENOWARNING("\The [src] hits [H] with a powerful jab!"), \
 	SPAN_XENOWARNING("You hit [H] with a powerful jab!"))
 	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
@@ -620,7 +613,6 @@
 
 	var/mob/living/carbon/human/H = A
 	if(H.stat == DEAD) return
-	round_statistics.warrior_lunges++
 	visible_message(SPAN_XENOWARNING("\The [src] lunges towards [H]!"), \
 	SPAN_XENOWARNING("You lunge at [H]!"))
 
@@ -667,7 +659,6 @@
 	if (!L || L.body_part == UPPER_TORSO || L.body_part == LOWER_TORSO || (L.status & LIMB_DESTROYED)) //Only limbs and head.
 		to_chat(src, SPAN_XENOWARNING("You can't rip off that limb."))
 		return 0
-	round_statistics.warrior_limb_rips++
 	var/limb_time = rand(40,60)
 
 	if (L.body_part == HEAD)
@@ -692,6 +683,8 @@
 		SPAN_XENOWARNING("\The [M]'s [L.display_name] bones snap with a satisfying crunch!"))
 		L.take_damage(rand(15,25), 0, 0)
 		L.fracture()
+	M.last_damage_source = initial(name)
+	M.last_damage_mob = src
 	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [L.display_name] off of [M.name] ([M.ckey]) 1/2 progress</font>")
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [L.display_name] ripped off by [src.name] ([src.ckey]) 1/2 progress</font>")
 	log_attack("[src.name] ([src.ckey]) ripped the [L.display_name] off of [M.name] ([M.ckey]) 1/2 progress")
@@ -709,7 +702,7 @@
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [L.display_name] ripped off by [src.name] ([src.ckey]) 2/2 progress</font>")
 	log_attack("[src.name] ([src.ckey]) ripped the [L.display_name] off of [M.name] ([M.ckey]) 2/2 progress")
 
-	L.droplimb()
+	L.droplimb(0, 0, initial(name))
 
 	return 1
 
@@ -724,7 +717,6 @@
 
 	agility = !agility
 
-	round_statistics.warrior_agility_toggles++
 	if (agility)
 		to_chat(src, SPAN_XENOWARNING("You lower yourself to all fours."))
 	else
@@ -782,8 +774,6 @@
 	if (!Adjacent(H))
 		return
 
-	round_statistics.defender_headbutts++
-
 	visible_message(SPAN_XENOWARNING("\The [src] rams [H] with its armored crest!"), \
 	SPAN_XENOWARNING("You ram [H] with your armored crest!"))
 
@@ -836,7 +826,6 @@
 	if (!check_plasma(10))
 		return
 
-	round_statistics.defender_tail_sweeps++
 	visible_message(SPAN_XENOWARNING("\The [src] sweeps its tail in a wide circle!"), \
 	SPAN_XENOWARNING("You sweep your tail in a wide circle!"))
 
@@ -851,7 +840,6 @@
 		if(istype(H.buckled, /obj/structure/bed/nest)) continue
 		step_away(H, src, sweep_range, 2)
 		H.apply_damage(10)
-		round_statistics.defender_tail_sweep_hits++
 		shake_camera(H, 2, 1)
 
 		if(isXenoDefender(src))
@@ -891,7 +879,6 @@
 	used_crest_defense = 1
 
 	if (crest_defense)
-		round_statistics.defender_crest_lowerings++
 		to_chat(src, SPAN_XENOWARNING("You lower your crest."))
 		armor_deflection_buff += 15
 		ability_speed_modifier += 0.7	// This is actually a slowdown but speed is dumb
@@ -899,7 +886,6 @@
 		do_crest_defense_cooldown()
 		return
 
-	round_statistics.defender_crest_raises++
 	to_chat(src, SPAN_XENOWARNING("You raise your crest."))
 	armor_deflection_buff -= 15
 	ability_speed_modifier = 0
@@ -930,8 +916,6 @@
 
 	if (used_fortify)
 		return
-
-	round_statistics.defender_fortifiy_toggles++
 
 	fortify = !fortify
 	used_fortify = 1
@@ -1256,7 +1240,7 @@
 	spin_circle()
 
 	var/turf/target = locate(T.x, T.y, T.z)
-	var/obj/item/projectile/P = new /obj/item/projectile(loc)
+	var/obj/item/projectile/P = new /obj/item/projectile("[caste_name] spikes", src, loc)
 	P.generate_bullet(R.ammo)
 	P.fire_at(target, src, src, R.ammo.max_range, R.ammo.shell_speed)
 	playsound(src, 'sound/effects/spike_spray.ogg', 25, 1)
@@ -1884,7 +1868,7 @@
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
 	playsound(src.loc, sound_to_play, 25, 1)
 
-	var/obj/item/projectile/A = new /obj/item/projectile(current_turf)
+	var/obj/item/projectile/A = new /obj/item/projectile("[caste_name] spit", src, current_turf)
 	A.generate_bullet(ammo)
 	A.permutated += src
 	A.def_zone = get_limbzone_target()

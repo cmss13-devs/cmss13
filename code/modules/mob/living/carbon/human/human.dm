@@ -30,7 +30,6 @@
 
 	..()
 
-	round_statistics.total_humans_created++
 	prev_gender = gender // Debug for plural genders
 
 /mob/living/carbon/human/prepare_huds()
@@ -93,8 +92,7 @@
 				stat(null, eta_status)
 		return 1
 
-/mob/living/carbon/human/ex_act(severity, direction)
-
+/mob/living/carbon/human/ex_act(var/severity, var/direction, var/source, var/source_mob)
 	if(lying)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
@@ -108,8 +106,13 @@
 
 	damage = armor_damage_reduction(config.marine_explosive, damage, getarmor(null, ARMOR_BOMB))
 
+	if(source)
+		last_damage_source = source
+	if(source_mob)
+		last_damage_mob = source_mob
+
 	if (damage >= EXPLOSION_THRESHOLD_GIB)
-		gib()
+		gib(source)
 		return
 
 	if(!istype(wear_ear, /obj/item/clothing/ears/earmuffs))
@@ -183,6 +186,8 @@
 			playsound(loc, M.attack_sound, 25, 1)
 		for(var/mob/O in viewers(src, null))
 			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), 1)
+		last_damage_source = initial(M.name)
+		last_damage_mob = M
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name] ([src.ckey])</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [M.name] ([M.ckey])</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)

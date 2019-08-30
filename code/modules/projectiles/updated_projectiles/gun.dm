@@ -588,7 +588,7 @@ and you're good to go.
 	if(active_attachable)
 		if(active_attachable.current_rounds > 0) //If it's still got ammo and stuff.
 			active_attachable.current_rounds--
-			return create_bullet(active_attachable.ammo)
+			return create_bullet(active_attachable.ammo, initial(name))
 		else
 			to_chat(user, SPAN_WARNING("[active_attachable] is empty!"))
 			to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
@@ -600,17 +600,21 @@ and you're good to go.
 
 /obj/item/weapon/gun/proc/ready_in_chamber()
 	if(current_mag && current_mag.current_rounds > 0)
-		in_chamber = create_bullet(ammo)
+		in_chamber = create_bullet(ammo, initial(name))
 		current_mag.current_rounds-- //Subtract the round from the mag.
 		return in_chamber
 
-/obj/item/weapon/gun/proc/create_bullet(datum/ammo/chambered)
+/obj/item/weapon/gun/proc/create_bullet(var/datum/ammo/chambered, var/bullet_source)
 	if(!chambered)
 		to_chat(usr, "Something has gone horribly wrong. Ahelp the following: ERROR CODE I2: null ammo while create_bullet()")
 		log_debug("ERROR CODE I2: null ammo while create_bullet(). User: <b>[usr]</b>")
 		chambered = ammo_list[/datum/ammo/bullet] //Slap on a default bullet if somehow ammo wasn't passed.
 
-	var/obj/item/projectile/P = new /obj/item/projectile(src)
+	var/weapon_source_mob
+	if(ismob(usr))
+		var/mob/M = usr
+		weapon_source_mob = M
+	var/obj/item/projectile/P = new /obj/item/projectile(bullet_source, weapon_source_mob, src)
 	P.generate_bullet(chambered, 0, iff_enabled_current?AMMO_SKIPS_HUMANS:0)
 
 	return P
@@ -801,7 +805,7 @@ and you're good to go.
 							t += " after playing Russian Roulette"
 							user.apply_damage(projectile_to_fire.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = "An unlucky pull of the trigger during Russian Roulette!", sharp = 1)
 							user.apply_damage(200, OXY) //In case someone tried to defib them. Won't work.
-							user.death()
+							user.death("russian roulette with \a [name]")
 							to_chat(user, SPAN_HIGHDANGER("Your life flashes before you as your spirit is torn from your body!"))
 							user.ghostize(0) //No return.
 						else
@@ -814,7 +818,9 @@ and you're good to go.
 								if(ishuman(user) && user == M)
 									var/mob/living/carbon/human/HM = user
 									HM.undefibbable = TRUE //can't be defibbed back from self inflicted gunshot to head
-								user.death()
+								user.death("suicide by [initial(name)]")
+						M.last_damage_source = initial(name)
+						M.last_damage_mob = null
 						user.attack_log += t //Apply the attack log.
 						last_fired = world.time
 
@@ -845,6 +851,7 @@ and you're good to go.
 					damage_buff *= damage_mult
 					projectile_to_fire.damage *= damage_buff //Multiply the damage for point blank.
 					user.visible_message(SPAN_DANGER("[user] fires [src] point blank at [M]!"))
+					user.track_shot(initial(name))
 					apply_bullet_effects(projectile_to_fire, user) //We add any damage effects that we need.
 					simulate_recoil(1, user)
 					var/accuracy_debuff = 0
@@ -862,7 +869,7 @@ and you're good to go.
 						var/i
 						for(i = 0; i<=projectile_to_fire.ammo.bonus_projectiles_amount; i++)
 							if(accuracy_debuff==0 || prob(hitchance))
-								BP = new /obj/item/projectile(M.loc)
+								BP = new /obj/item/projectile(initial(name), user, M.loc)
 								BP.generate_bullet(ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, iff_enabled_current?AMMO_SKIPS_HUMANS:0)
 								BP.damage *= damage_buff
 								BP.ammo.on_hit_mob(M, BP)

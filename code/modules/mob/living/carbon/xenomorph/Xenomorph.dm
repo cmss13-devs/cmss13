@@ -46,6 +46,7 @@
 	see_invisible = SEE_INVISIBLE_MINIMUM
 	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO)
 	unacidable = TRUE
+	faction = FACTION_XENOMORPH
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/datum/mutator_set/individual_mutators/mutators = new
 
@@ -293,6 +294,9 @@
 
 
 /mob/living/carbon/Xenomorph/New(var/new_loc, var/mob/living/carbon/Xenomorph/oldXeno)
+	var/area/A = get_area(src)
+	if(A.statistic_exempt)
+		statistic_exempt = TRUE
 	if(oldXeno)
 		hivenumber = oldXeno.hivenumber
 		nicknumber = oldXeno.nicknumber
@@ -331,7 +335,6 @@
 
 	living_xeno_list += src
 	xeno_mob_list += src
-	round_statistics.total_xenos_created++
 
 	if(caste.adjust_size_x != 1)
 		var/matrix/M = matrix()
@@ -378,6 +381,9 @@
 				hive.tier_3_xenos |= src
 
 		hive.totalXenos |= src
+
+	if(round_statistics && !statistic_exempt)
+		round_statistics.track_new_participant(faction, 1)
 	generate_name()
 
 /mob/living/carbon/Xenomorph/proc/update_caste()
@@ -584,9 +590,16 @@
 		log_debug("Invalid hivenumber forwarded - [hivenumber]. Let the devs know!")
 	hive = hive_datum[hivenumber]
 
+/mob/living/carbon/Xenomorph/proc/set_faction(var/new_faction = FACTION_XENOMORPH)
+	if(mind && round_statistics)
+		round_statistics.track_new_participant(faction, -1)
+		round_statistics.track_new_participant(new_faction, 1)
+	faction = new_faction
+
 //Call this function to set the hivenumber and do other cleanup
-/mob/living/carbon/Xenomorph/proc/set_hivenumber_and_update(var/new_hivenumber = XENO_HIVE_NORMAL)
+/mob/living/carbon/Xenomorph/proc/set_hivenumber_and_update(var/new_hivenumber = XENO_HIVE_NORMAL, var/new_faction = FACTION_XENOMORPH)
 	set_hivenumber(new_hivenumber)
+	set_faction(new_faction)
 
 	if(istype(src, /mob/living/carbon/Xenomorph/Larva))
 		var/mob/living/carbon/Xenomorph/Larva/L = src

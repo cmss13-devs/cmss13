@@ -44,6 +44,7 @@
 		return ..()
 
 	if (reagents.total_volume > 0)
+		reagents.set_source_mob(user)
 		reagents.trans_to_ingest(M, reagents.total_volume)
 		if(M == user)
 			for(var/mob/O in viewers(M, null))
@@ -200,6 +201,8 @@
 		user.KnockOut(2)
 		return
 
+	M.last_damage_source = initial(name)
+	M.last_damage_mob = user
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been attacked with [src.name] by [user.name] ([user.ckey])</font>")
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to attack [M.name] ([M.ckey])</font>")
 	msg_admin_attack("[user.name] ([user.ckey]) used the [src.name] to attack [M.name] ([M.ckey]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")

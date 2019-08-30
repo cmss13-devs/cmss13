@@ -59,7 +59,7 @@
 	if(!cell || cell.charge - charge_cost < 0) return
 
 	cell.charge -= charge_cost
-	in_chamber = create_bullet(ammo)
+	in_chamber = create_bullet(ammo, initial(name))
 	return in_chamber
 
 /obj/item/weapon/gun/energy/taser/reload_into_chamber()
@@ -156,7 +156,7 @@
 
 /obj/item/weapon/gun/energy/plasmarifle/load_into_chamber()
 	ammo = ammo_list[charge_time < 15? /datum/ammo/energy/yautja/rifle/bolt : /datum/ammo/energy/yautja/rifle/blast]
-	var/obj/item/projectile/P = create_bullet(ammo)
+	var/obj/item/projectile/P = create_bullet(ammo, initial(name))
 	P.SetLuminosity(1)
 	in_chamber = P
 	charge_time = round(charge_time / 2)
@@ -257,7 +257,7 @@
 
 /obj/item/weapon/gun/energy/plasmapistol/load_into_chamber()
 	if(charge_time < 1) return
-	var/obj/item/projectile/P = create_bullet(ammo)
+	var/obj/item/projectile/P = create_bullet(ammo, initial(name))
 	P.SetLuminosity(1)
 	in_chamber = P
 	charge_time -= 1
@@ -364,7 +364,7 @@
 
 /obj/item/weapon/gun/energy/plasma_caster/load_into_chamber()
 	if(source.drain_power(usr,charge_cost))
-		in_chamber = create_bullet(ammo)
+		in_chamber = create_bullet(ammo, initial(name))
 		return in_chamber
 
 /obj/item/weapon/gun/energy/plasma_caster/reload_into_chamber()

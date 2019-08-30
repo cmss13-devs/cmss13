@@ -23,41 +23,41 @@
 	var/ammo_used_per_firing = 1
 	var/max_inaccuracy = 6 //what's the max deviation allowed when the ammo is no longer guided by a laser.
 	var/point_cost = 0 //how many points it costs to build this with the fabricator, set to 0 if unbuildable.
+	var/source_mob //who fired it
 
 
-	attackby(obj/item/I, mob/user)
+/obj/structure/ship_ammo/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/powerloader_clamp))
+		var/obj/item/powerloader_clamp/PC = I
+		if(PC.linked_powerloader)
+			if(PC.loaded)
+				if(istype(PC.loaded, /obj/structure/ship_ammo))
+					var/obj/structure/ship_ammo/SA = PC.loaded
+					if(SA.transferable_ammo && SA.ammo_count > 0 && SA.type == type)
+						if(ammo_count < max_ammo_count)
+							var/transf_amt = min(max_ammo_count - ammo_count, SA.ammo_count)
+							ammo_count += transf_amt
+							SA.ammo_count -= transf_amt
+							playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
+							to_chat(user, SPAN_NOTICE("You transfer [transf_amt] [ammo_name] to [src]."))
+							if(!SA.ammo_count)
+								PC.loaded = null
+								PC.update_icon()
+								qdel(SA)
+			else
+				forceMove(PC.linked_powerloader)
+				PC.loaded = src
+				playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
+				PC.update_icon()
+				to_chat(user, SPAN_NOTICE("You grab [PC.loaded] with [PC]."))
+				update_icon()
+		return TRUE
+	. = ..()
 
-		if(istype(I, /obj/item/powerloader_clamp))
-			var/obj/item/powerloader_clamp/PC = I
-			if(PC.linked_powerloader)
-				if(PC.loaded)
-					if(istype(PC.loaded, /obj/structure/ship_ammo))
-						var/obj/structure/ship_ammo/SA = PC.loaded
-						if(SA.transferable_ammo && SA.ammo_count > 0 && SA.type == type)
-							if(ammo_count < max_ammo_count)
-								var/transf_amt = min(max_ammo_count - ammo_count, SA.ammo_count)
-								ammo_count += transf_amt
-								SA.ammo_count -= transf_amt
-								playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
-								to_chat(user, SPAN_NOTICE("You transfer [transf_amt] [ammo_name] to [src]."))
-								if(!SA.ammo_count)
-									PC.loaded = null
-									PC.update_icon()
-									qdel(SA)
-				else
-					forceMove(PC.linked_powerloader)
-					PC.loaded = src
-					playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
-					PC.update_icon()
-					to_chat(user, SPAN_NOTICE("You grab [PC.loaded] with [PC]."))
-					update_icon()
-			return TRUE
-		. = ..()
 
-
-	examine(mob/user)
-		..()
-		to_chat(user, "Moving this will require some sort of lifter.")
+/obj/structure/ship_ammo/examine(mob/user)
+	..()
+	to_chat(user, "Moving this will require some sort of lifter.")
 
 //what to show to the user that examines the weapon we're loaded on.
 /obj/structure/ship_ammo/proc/show_loaded_desc(mob/user)
@@ -84,38 +84,41 @@
 	fire_mission_delay = 2
 	var/bullet_spread_range = 3 //how far from the real impact turf can bullets land
 
-	examine(mob/user)
-		..()
-		to_chat(user, "It has [ammo_count] round\s.")
+/obj/structure/ship_ammo/heavygun/examine(mob/user)
+	..()
+	to_chat(user, "It has [ammo_count] round\s.")
 
-	show_loaded_desc(mob/user)
-		if(ammo_count)
-			to_chat(user, "It's loaded with \a [src] containing [ammo_count] round\s.")
-		else
-			to_chat(user, "It's loaded with an empty [name].")
+/obj/structure/ship_ammo/heavygun/show_loaded_desc(mob/user)
+	if(ammo_count)
+		to_chat(user, "It's loaded with \a [src] containing [ammo_count] round\s.")
+	else
+		to_chat(user, "It's loaded with an empty [name].")
 
-	detonate_on(turf/impact)
-		set waitfor = 0
-		var/list/turf_list = list()
-		for(var/turf/T in range(impact, bullet_spread_range))
-			turf_list += T
-		var/soundplaycooldown = 0
-		var/debriscooldown = 0
-		for(var/i=1, i<=ammo_used_per_firing, i++)
-			var/turf/U = pick(turf_list)			
-			sleep(1)
-			U.ex_act(EXPLOSION_THRESHOLD_MLOW)
-			for(var/atom/movable/AM in U)
+/obj/structure/ship_ammo/heavygun/detonate_on(turf/impact)
+	set waitfor = 0
+	var/list/turf_list = list()
+	for(var/turf/T in range(impact, bullet_spread_range))
+		turf_list += T
+	var/soundplaycooldown = 0
+	var/debriscooldown = 0
+	for(var/i=1, i<=ammo_used_per_firing, i++)
+		var/turf/U = pick(turf_list)			
+		sleep(1)
+		U.ex_act(EXPLOSION_THRESHOLD_MLOW)
+		for(var/atom/movable/AM in U)
+			if(iscarbon(AM))
+				AM.ex_act(EXPLOSION_THRESHOLD_MLOW, , initial(name), source_mob)
+			else
 				AM.ex_act(EXPLOSION_THRESHOLD_MLOW)
-			if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
-				playsound(U, get_sfx("explosion"), 40, 1, 20, falloff = 3)
-				soundplaycooldown = 3
-			soundplaycooldown--
-			if(!debriscooldown)
-				U.ceiling_debris_check(1)
-				debriscooldown = 6
-			debriscooldown--
-			new /obj/effect/particle_effect/expl_particles(U)
+		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
+			playsound(U, get_sfx("explosion"), 40, 1, 20, falloff = 3)
+			soundplaycooldown = 3
+		soundplaycooldown--
+		if(!debriscooldown)
+			U.ceiling_debris_check(1)
+			debriscooldown = 6
+		debriscooldown--
+		new /obj/effect/particle_effect/expl_particles(U)
 
 
 /obj/structure/ship_ammo/heavygun/highvelocity
@@ -186,7 +189,7 @@
 		L.adjust_fire_stacks(10)
 		L.IgniteMob()
 	if(!locate(/obj/flamer_fire) in T)
-		new/obj/flamer_fire(T, 5, 30) //short but intense
+		new/obj/flamer_fire(T, initial(name), source_mob, 5, 30) //short but intense
 
 
 //Rockets
@@ -206,8 +209,8 @@
 	max_inaccuracy = 5
 	point_cost = 0
 
-	detonate_on(turf/impact)
-		qdel(src)
+/obj/structure/ship_ammo/rocket/detonate_on(turf/impact)
+	qdel(src)
 
 
 //this one is air-to-air only
@@ -220,11 +223,11 @@
 	point_cost = 300
 	fire_mission_delay = 4 //We don't care because our ammo has just 1 rocket
 
-	detonate_on(turf/impact)
-		impact.ceiling_debris_check(3)
-		spawn(5)
-			explosion(impact,1,3,5)
-			qdel(src)
+/obj/structure/ship_ammo/rocket/widowmaker/detonate_on(turf/impact)
+	impact.ceiling_debris_check(3)
+	spawn(5)
+		explosion(impact,1,3,5, , , , , initial(name), source_mob)
+		qdel(src)
 
 /obj/structure/ship_ammo/rocket/banshee
 	name = "\improper AGM-227 'Banshee'"
@@ -234,11 +237,11 @@
 	point_cost = 300
 	fire_mission_delay = 4 //We don't care because our ammo has just 1 rocket
 
-	detonate_on(turf/impact)
-		impact.ceiling_debris_check(3)
-		spawn(5)
-			explosion(impact,1,3,6,6,1,0,7) //more spread out, with flames
-			qdel(src)
+/obj/structure/ship_ammo/rocket/banshee/detonate_on(turf/impact)
+	impact.ceiling_debris_check(3)
+	spawn(5)
+		explosion(impact,1,3,6,6,1,0,7, initial(name), source_mob) //more spread out, with flames
+		qdel(src)
 
 /obj/structure/ship_ammo/rocket/keeper
 	name = "\improper GBU-67 'Keeper II'"
@@ -248,11 +251,11 @@
 	point_cost = 300
 	fire_mission_delay = 4 //We don't care because our ammo has just 1 rocket
 
-	detonate_on(turf/impact)
-		impact.ceiling_debris_check(3)
-		spawn(5)
-			explosion(impact,3,4,4,6) //tighter blast radius, but more devastating near center
-			qdel(src)
+/obj/structure/ship_ammo/rocket/keeper/detonate_on(turf/impact)
+	impact.ceiling_debris_check(3)
+	spawn(5)
+		explosion(impact,3,4,4,6, , , , initial(name), source_mob) //tighter blast radius, but more devastating near center
+		qdel(src)
 
 
 /obj/structure/ship_ammo/rocket/fatty
@@ -265,22 +268,22 @@
 	point_cost = 450
 	fire_mission_delay = 0 //0 means unusable
 
-	detonate_on(turf/impact)
-		set waitfor = 0
-		impact.ceiling_debris_check(2)
+/obj/structure/ship_ammo/rocket/fatty/detonate_on(turf/impact)
+	set waitfor = 0
+	impact.ceiling_debris_check(2)
+	spawn(5)
+		explosion(impact,1,2,3, , , , , initial(name), source_mob) //first explosion is small to trick xenos into thinking its a minirocket.
+	sleep(20)
+	var/list/impact_coords = list(list(-3,3),list(0,4),list(3,3),list(-4,0),list(4,0),list(-3,-3),list(0,-4), list(3,-3))
+	var/turf/T
+	var/list/coords
+	for(var/i=1 to 8)
+		coords = impact_coords[i]
+		T = locate(impact.x+coords[1],impact.y+coords[2],impact.z)
+		T.ceiling_debris_check(2)
 		spawn(5)
-			explosion(impact,1,2,3) //first explosion is small to trick xenos into thinking its a minirocket.
-		sleep(20)
-		var/list/impact_coords = list(list(-3,3),list(0,4),list(3,3),list(-4,0),list(4,0),list(-3,-3),list(0,-4), list(3,-3))
-		var/turf/T
-		var/list/coords
-		for(var/i=1 to 8)
-			coords = impact_coords[i]
-			T = locate(impact.x+coords[1],impact.y+coords[2],impact.z)
-			T.ceiling_debris_check(2)
-			spawn(5)
-				explosion(T,1,2,3)
-		qdel(src)
+			explosion(T,1,2,3, , , , , initial(name), source_mob)
+	qdel(src)
 
 /obj/structure/ship_ammo/rocket/napalm
 	name = "\improper XN-99 'Napalm'"
@@ -290,14 +293,14 @@
 	point_cost = 500
 	fire_mission_delay = 0 //0 means unusable
 
-	detonate_on(turf/impact)
-		impact.ceiling_debris_check(3)
-		spawn(5)
-			explosion(impact,1,2,3,6,1,0) //relatively weak
-			for(var/turf/T in range(4,impact))
-				if(!locate(/obj/flamer_fire) in T) // No stacking flames!
-					new/obj/flamer_fire(T, 60, 30) //cooking for a long time
-			qdel(src)
+/obj/structure/ship_ammo/rocket/napalm/detonate_on(turf/impact)
+	impact.ceiling_debris_check(3)
+	spawn(5)
+		explosion(impact,1,2,3,6,1,0, , initial(name), source_mob) //relatively weak
+		for(var/turf/T in range(4,impact))
+			if(!locate(/obj/flamer_fire) in T) // No stacking flames!
+				new/obj/flamer_fire(T, initial(name), source_mob, 60, 30) //cooking for a long time
+		qdel(src)
 
 
 
@@ -317,27 +320,27 @@
 	point_cost = 300
 	fire_mission_delay = 3 //high cooldown
 
-	detonate_on(turf/impact)
-		impact.ceiling_debris_check(2)
+/obj/structure/ship_ammo/minirocket/detonate_on(turf/impact)
+	impact.ceiling_debris_check(2)
+	spawn(5)
+		explosion(impact,-1,1,3, 5, 0, , , initial(name), source_mob)//no messaging admin, that'd spam them.
+		var/datum/effect_system/expl_particles/P = new/datum/effect_system/expl_particles()
+		P.set_up(4, 0, impact)
+		P.start()
 		spawn(5)
-			explosion(impact,-1,1,3, 5, 0)//no messaging admin, that'd spam them.
-			var/datum/effect_system/expl_particles/P = new/datum/effect_system/expl_particles()
-			P.set_up(4, 0, impact)
-			P.start()
-			spawn(5)
-				var/datum/effect_system/smoke_spread/S = new/datum/effect_system/smoke_spread()
-				S.set_up(1,0,impact,null)
-				S.start()
-			if(!ammo_count && loc)
-				qdel(src) //deleted after last minirocket is fired and impact the ground.
+			var/datum/effect_system/smoke_spread/S = new/datum/effect_system/smoke_spread()
+			S.set_up(1,0,impact,null)
+			S.start()
+		if(!ammo_count && loc)
+			qdel(src) //deleted after last minirocket is fired and impact the ground.
 
-	show_loaded_desc(mob/user)
-		if(ammo_count)
-			to_chat(user, "It's loaded with \a [src] containing [ammo_count] minirocket\s.")
+/obj/structure/ship_ammo/minirocket/show_loaded_desc(mob/user)
+	if(ammo_count)
+		to_chat(user, "It's loaded with \a [src] containing [ammo_count] minirocket\s.")
 
-	examine(mob/user)
-		..()
-		to_chat(user, "It has [ammo_count] minirocket\s.")
+/obj/structure/ship_ammo/minirocket/examine(mob/user)
+	..()
+	to_chat(user, "It has [ammo_count] minirocket\s.")
 
 
 /obj/structure/ship_ammo/minirocket/incendiary
@@ -347,9 +350,9 @@
 	point_cost = 500
 	fire_mission_delay = 3 //high cooldown
 
-	detonate_on(turf/impact)
-		..()
-		spawn(5)
-			for(var/turf/T in range(2, impact))
-				if(!locate(/obj/flamer_fire) in T) // No stacking flames!
-					new/obj/flamer_fire(T)
+/obj/structure/ship_ammo/minirocket/incendiary/detonate_on(turf/impact)
+	..()
+	spawn(5)
+		for(var/turf/T in range(2, impact))
+			if(!locate(/obj/flamer_fire) in T) // No stacking flames!
+				new/obj/flamer_fire(T, initial(name), source_mob)

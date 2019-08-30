@@ -196,10 +196,10 @@
 		qdel(T)
 
 	for(var/mob/living/carbon/bug in destination)
-		bug.gib()
+		bug.gib(initial(origin.name))
 
 	for(var/mob/living/simple_animal/pest in destination)
-		pest.gib()
+		pest.gib(initial(origin.name))
 
 	origin.move_contents_to(destination, direction=direction)
 

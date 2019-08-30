@@ -302,7 +302,7 @@
 /obj/machinery/sleeper/proc/inject_chemical(mob/living/user as mob, chemical, amount)
 	if(occupant && occupant.reagents)
 		if(occupant.reagents.get_reagent_amount(chemical) + amount <= 20)
-			occupant.reagents.add_reagent(chemical, amount)
+			occupant.reagents.add_reagent(chemical, amount, , , user)
 			to_chat(user, SPAN_NOTICE("Occupant now has [occupant.reagents.get_reagent_amount(chemical)] units of [available_chemicals[chemical]] in his/her bloodstream."))
 			return
 	to_chat(user, SPAN_WARNING("There's no occupant in the sleeper or the subject has too many chemicals!"))

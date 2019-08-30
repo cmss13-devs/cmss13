@@ -209,7 +209,7 @@
 			if(H.get_limb(limb).status & LIMB_DESTROYED)
 				to_chat(src, "The victim lacks a [limbName].")
 				return
-			H.get_limb(limb).droplimb(1)
+			H.get_limb(limb).droplimb(1, 0, "butchering")
 			playsound(loc, 'sound/weapons/slice.ogg', 25)
 			H.butchery_progress = 0
 			to_chat(src, SPAN_NOTICE(" You finish butchering!"))

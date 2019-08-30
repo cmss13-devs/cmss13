@@ -316,22 +316,28 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		to_chat(usr, "This xeno no longer exists")
 		return
 	var/newhivenumber
+	var/newhivefaction
 	switch(newhive)
 		if("Normal")
 			newhivenumber = XENO_HIVE_NORMAL
+			newhivefaction = FACTION_XENOMORPH
 		if("Corrupted")
 			newhivenumber = XENO_HIVE_CORRUPTED
+			newhivefaction = FACTION_XENOMORPH_CORRPUTED
 		if("Alpha")
 			newhivenumber = XENO_HIVE_ALPHA
+			newhivefaction = FACTION_XENOMORPH_ALPHA
 		if("Beta")
 			newhivenumber = XENO_HIVE_BETA
+			newhivefaction = FACTION_XENOMORPH_BETA
 		if("Zeta")
 			newhivenumber = XENO_HIVE_ZETA
+			newhivefaction = FACTION_XENOMORPH_ZETA
 	if(X.hivenumber != hivenumber_status)
 		to_chat(usr, "Someone else changed this xeno while you were deciding")
 		return
 
-	X.set_hivenumber_and_update(newhivenumber)
+	X.set_hivenumber_and_update(newhivenumber, newhivefaction)
 	feedback_add_details("admin_verb","CHHN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	message_admins(SPAN_NOTICE("[key_name(src)] changed hivenumber of [X] to [X.hivenumber]."), 1)
 

@@ -224,8 +224,6 @@
 		new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_name] emerges from the husk of \the [src]."), \
 		SPAN_XENODANGER("You emerge in a greater form from the husk of your old body. For the hive!"))
 
-		round_statistics.total_xenos_created-- //so an evolved xeno doesn't count as two.
-
 		if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 			hive.living_xeno_queen.set_queen_overwatch(new_xeno)
 		qdel(src)
@@ -233,5 +231,9 @@
 
 		if (new_xeno.client)
 			new_xeno.client.mouse_pointer_icon = initial(new_xeno.client.mouse_pointer_icon)
+		
+		if(new_xeno.mind && round_statistics)
+			round_statistics.track_new_participant(new_xeno.faction, -1) //so an evolved xeno doesn't count as two.
+
 	else
 		to_chat(src, SPAN_WARNING("You quiver, but nothing happens. Hold still while evolving."))

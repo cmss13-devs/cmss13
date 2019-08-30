@@ -169,3 +169,29 @@ var/list/be_special_flags = list(
 #define OBJ_DISPLAY_WHEN_INACTIVE 2
 #define OBJ_DISPLAY_WHEN_COMPLETE 4
 #define OBJ_DISPLAY_HIDDEN 8
+
+// Faction names
+#define FACTION_NEUTRAL "Neutral"
+#define FACTION_MARINE "USCM"
+#define FACTION_SURVIVOR "Survivor"
+#define FACTION_UPP "UPP"
+#define FACTION_CLF "CLF"
+#define FACTION_PMC "PMC"
+#define FACTION_MERCENARY "Mercenary"
+#define FACTION_FREELANCER "Freelancer"
+#define FACTION_PIRATE "Pirate"
+#define FACTION_GLADIATOR "Gladiator"
+#define FACTION_PIZZA "Pizza Delivery"
+
+#define FACTION_COLONIST "Colonist"
+#define FACTION_YAUTJA "Yautja"
+#define FACTION_PREDALIEN "Predalien"
+#define FACTION_ZOMBIE "Zombie"
+
+#define FACTION_XENOMORPH "Xenomorph"
+#define FACTION_XENOMORPH_CORRPUTED "Corrupted Xenomoprh"
+#define FACTION_XENOMORPH_ALPHA "Alpha Xenomorph"
+#define FACTION_XENOMORPH_BETA "Beta Xenomorph"
+#define FACTION_XENOMORPH_ZETA "Zeta Xenomorph"
+
+#define FACTION_LIST_XENOMORPH list(FACTION_XENOMORPH, FACTION_XENOMORPH_CORRPUTED, FACTION_XENOMORPH_ALPHA, FACTION_XENOMORPH_BETA, FACTION_XENOMORPH_ZETA)

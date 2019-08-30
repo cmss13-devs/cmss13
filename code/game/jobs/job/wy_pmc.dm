@@ -1,7 +1,7 @@
 /datum/job/pmc
 	special_role = "PMC"
 	comm_title = "WY"
-	faction = "Weyland-Yutani"
+	faction = FACTION_PMC
 	supervisors = "the team leader"
 	idtype = /obj/item/card/id/centcom
 	//flag = WY_PMC

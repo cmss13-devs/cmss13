@@ -68,8 +68,12 @@
 		SPAN_WARNING("You plant [name] on [target]! Timer counting down from [timer]."))
 		spawn(timer*10)
 			if(target && !target.disposed)
-				explosion_rec(get_turf(target), 120, 30)
-				target.ex_act(1000)
+				explosion_rec(get_turf(target), 120, 30, initial(name), user.mind)
+				if(ismob(target))
+					var/mob/M = target
+					M.last_damage_source = initial(name)
+					M.last_damage_mob = user
+				target.ex_act(1000, , initial(name), user.mind)
 				if(target && !target.disposed)
 					target.overlays -= image('icons/obj/items/assemblies.dmi', "plastic-explosive2")
 			qdel(src)

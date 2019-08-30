@@ -54,7 +54,7 @@
 	else				//ALIVE. LIGHTS ARE ON
 		updatehealth()
 		if(health < -100 || !has_brain())
-			death()
+			death(last_damage_source)
 			blinded = 1
 			stat = DEAD
 			silent = 0

@@ -164,6 +164,9 @@ datum/game_mode/proc/initialize_special_clamps()
 			if(player.client.prefs.be_special & BE_PREDATOR) //Are their prefs turned on?
 				if(!player.mind) //They have to have a key if they have a client.
 					player.mind_initialize() //Will work on ghosts too, but won't add them to active minds.
+				player.mind.setup_human_stats()
+				player.mind.faction = FACTION_YAUTJA
+				player.faction = FACTION_YAUTJA
 				players += player.mind
 	return players
 
@@ -223,7 +226,7 @@ datum/game_mode/proc/initialize_special_clamps()
 	if(!new_predator.client.prefs) new_predator.client.prefs = new /datum/preferences(new_predator.client) //Let's give them one.
 
 	if(wants_elder)
-		arm_equipment(new_predator, "Yautja Elder")
+		arm_equipment(new_predator, "Yautja Elder", FALSE, TRUE)
 
 		spawn(10)
 			to_chat(new_predator, SPAN_NOTICE("<B> Welcome Elder!</B>"))
@@ -232,14 +235,14 @@ datum/game_mode/proc/initialize_special_clamps()
 			to_chat(new_predator, SPAN_NOTICE("You come equipped as an Elder should, with a bonus glaive and heavy armor."))
 
 	else if(wants_leader)
-		arm_equipment(new_predator, "Yautja Councillor")
+		arm_equipment(new_predator, "Yautja Councillor", FALSE, TRUE)
 
 		spawn(10)
 			to_chat(new_predator, SPAN_NOTICE("<B> Welcome Councillor!</B>"))
 			to_chat(new_predator, SPAN_NOTICE("You are responsible for the well-being of your pupils. Hunting is secondary in priority."))
 			to_chat(new_predator, SPAN_NOTICE("That does not mean you can't go out and show the youngsters how it's done."))
 	else
-		arm_equipment(new_predator, "Yautja Blooded")
+		arm_equipment(new_predator, "Yautja Blooded", FALSE, TRUE)
 
 		spawn(12)
 			to_chat(new_predator, SPAN_NOTICE("You are <B>Yautja</b>, a great and noble predator!"))
@@ -286,6 +289,9 @@ datum/game_mode/proc/initialize_special_clamps()
 		else //Out of candidates, spawn in empty larvas directly
 			larvae_spawn = pick(xeno_spawn)
 			new /mob/living/carbon/Xenomorph/Larva(larvae_spawn)
+		if(new_xeno)
+			new_xeno.setup_xeno_stats()
+			new_xeno.faction = FACTION_XENOMORPH
 		i--
 
 	/*
@@ -436,8 +442,12 @@ datum/game_mode/proc/initialize_special_clamps()
 	if(new_xeno)
 		new_xeno.update_icons()
 
-	if(original && !original.first_xeno) qdel(original) //Just to be sure.
-	if(original.first_xeno) qdel(new_xeno)
+	if(original)
+		original.statistic_exempt = TRUE
+		if(!original.first_xeno)
+			qdel(original) //Just to be sure.
+	if(original.first_xeno)
+		qdel(new_xeno)
 
 //===================================================\\
 
@@ -574,7 +584,7 @@ datum/game_mode/proc/initialize_special_clamps()
 
 	//Give them proper jobs and stuff here later
 	var/randjob = pick(survivor_types)
-	arm_equipment(H, randjob, FALSE)
+	arm_equipment(H, randjob, FALSE, TRUE)
 
 
 /datum/game_mode/proc/survivor_event_transform(var/mob/living/carbon/human/H, var/obj/effect/landmark/survivor_spawner/spawner, var/is_synth = FALSE)
@@ -586,7 +596,7 @@ datum/game_mode/proc/initialize_special_clamps()
 	if(!spawner.equipment || is_synth)
 		survivor_old_equipment(H, is_synth)
 	else
-		if(arm_equipment(H,spawner.equipment) == -1)
+		if(arm_equipment(H, spawner.equipment, FALSE, TRUE) == -1)
 			to_chat(H, "SET02: Something went wrong, tell a coder. You may ask admin to spawn you as a survivor.")
 			return
 	H.name = H.get_visible_name()

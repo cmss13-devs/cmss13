@@ -22,12 +22,12 @@
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
-		arm_equipment(mob, "Dutch's Dozen - Arnold", TRUE)
+		arm_equipment(mob, "Dutch's Dozen - Arnold", TRUE, TRUE)
 	else if(heavies < max_heavies)
-		arm_equipment(mob, "Dutch's Dozen - Minigun", TRUE)
+		arm_equipment(mob, "Dutch's Dozen - Minigun", TRUE, TRUE)
 		heavies++
 	else
-		arm_equipment(mob, "Dutch's Dozen - Soldier", TRUE)
+		arm_equipment(mob, "Dutch's Dozen - Soldier", TRUE, TRUE)
 	sleep(10)
 	to_chat(M, "<B>Objectives:</b> [objectives]")
 

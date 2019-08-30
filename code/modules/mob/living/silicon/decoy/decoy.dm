@@ -29,7 +29,7 @@
 	else
 		health = 100 - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss()
 
-/mob/living/silicon/decoy/death(gibbed, deathmessage = "sparks up and falls silent...")
+/mob/living/silicon/decoy/death(cause, gibbed, deathmessage = "sparks up and falls silent...")
 	set waitfor = 0
 	if(stat == DEAD) r_FAL
 	icon_state = "hydra-off"

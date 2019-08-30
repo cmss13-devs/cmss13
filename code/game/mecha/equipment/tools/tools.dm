@@ -56,6 +56,8 @@
 				chassis.visible_message(SPAN_DANGER("[chassis] squeezes [target]!"))
 				chassis.occupant.attack_log += text("\[[time_stamp()]\] <font color='red'>squeezed [M.name] with the [src.name]</font>")
 				M.attack_log += text("\[[time_stamp()]\] <font color='orange'>was squeezed by [chassis.occupant.name] with the [src.name]</font>")
+				M.last_damage_source = initial(name)
+				M.last_damage_mob = chassis.occupant
 				playsound(chassis.loc, 'sound/mecha/powerloader_attack.ogg', 25, 1)
 			else
 				step_away(M,chassis)

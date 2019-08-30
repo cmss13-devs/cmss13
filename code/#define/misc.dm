@@ -90,3 +90,6 @@
 #define SIZE_LARGE      4       // Size of rifles, SMGs
 #define SIZE_HUGE       5       // Using Large does the same job
 #define SIZE_MASSIVE    6       
+
+// Statistics defines
+#define STATISTICS_DEATH_LIST_LEN 10

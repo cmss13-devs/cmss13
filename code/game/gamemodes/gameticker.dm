@@ -44,6 +44,8 @@ var/global/datum/controller/gameticker/ticker = new()
 */
 	do
 		pregame_timeleft = 180
+		if(round_statistics)
+			to_world("<center><FONT color='blue'><B>[round_statistics.name]</B></FONT></center>")
 		to_world("<center><B><span class='notice'>Welcome to the pre-game lobby of Colonial Marines!<span class='notice'></B></center>")
 		to_world("<center><span class='notice'>Please, setup your character and select ready. Game will start in [pregame_timeleft] seconds.</span></center>")
 		while(current_state == GAME_STATE_PREGAME)
@@ -144,6 +146,8 @@ var/global/datum/controller/gameticker/ticker = new()
 		//Cleanup some stuff
 		for(var/obj/effect/landmark/start/S in landmarks_list)
 			qdel(S)
+		if(round_statistics)
+			to_world("<FONT color='blue'><B>Welcome to [round_statistics.name]</B></FONT>")
 		to_world("<FONT color='blue'><B>Enjoy the game!</B></FONT>")
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
@@ -224,6 +228,7 @@ var/global/datum/controller/gameticker/ticker = new()
 
 		spawn(1)
 			declare_completion()
+			show_end_statistics()
 
 		spawn(50)
 			callHook("roundend")
@@ -265,6 +270,9 @@ var/global/datum/controller/gameticker/ticker = new()
 				round_end_announced = TRUE
 
 	return 1
+
+/datum/controller/gameticker/proc/show_end_statistics()
+	mode.show_end_statistics()
 
 /datum/controller/gameticker/proc/declare_completion()
 	mode.declare_completion()//To declare normal completion.

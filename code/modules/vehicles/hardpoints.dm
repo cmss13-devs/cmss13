@@ -35,6 +35,7 @@ Currently only has the tank hardpoints
 	var/muzzle_flash_y_NS = 0
 
 	var/being_repaired = FALSE // to prevent welder click spam
+	var/weapon_source_mob
 
 //Called on attaching, for weapons sets the actual cooldowns
 /obj/item/hardpoint/proc/apply_buff()
@@ -250,7 +251,7 @@ Currently only has the tank hardpoints
 	next_use = world.time + owner.cooldowns["primary"] * owner.misc_ratios["prim_cool"]
 	if(!prob(owner.accuracies["primary"] * 100 * owner.misc_ratios["prim_acc"]))
 		A = get_step(get_turf(A), pick(cardinal))
-	var/obj/item/projectile/P = new
+	var/obj/item/projectile/P = new(initial(name), weapon_source_mob)
 	P.generate_bullet(new ammo.default_ammo)
 	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
 	muzzle_flash(Get_Angle(owner, A))
@@ -327,7 +328,7 @@ Currently only has the tank hardpoints
 	next_use = world.time + (chained > chain_delays.len ? 0.5 : chain_delays[chained]) * owner.misc_ratios["prim_cool"]
 	if(!prob(owner.accuracies["primary"] * 100 * owner.misc_ratios["prim_acc"]))
 		A = get_step(get_turf(A), pick(cardinal))
-	var/obj/item/projectile/P = new
+	var/obj/item/projectile/P = new(initial(name), weapon_source_mob)
 	P.generate_bullet(new ammo.default_ammo)
 	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
 	muzzle_flash(Get_Angle(owner, A))
@@ -400,7 +401,7 @@ Currently only has the tank hardpoints
 	if(!istype(T)) return
 
 	if(!locate(/obj/flamer_fire) in T) // No stacking flames!
-		new/obj/flamer_fire(T, 40, 50, "blue")
+		new/obj/flamer_fire(T, initial(name), weapon_source_mob, 40, 50, "blue")
 
 /obj/item/hardpoint/primary/autocannon
 	name = "AC3-E Autocannon"
@@ -445,7 +446,7 @@ Currently only has the tank hardpoints
 	next_use = world.time + owner.cooldowns["primary"] * owner.misc_ratios["prim_cool"]
 	if(!prob(owner.accuracies["primary"] * 100 * owner.misc_ratios["prim_acc"]))
 		A = get_step(get_turf(A), pick(cardinal))
-	var/obj/item/projectile/P = new
+	var/obj/item/projectile/P = new(initial(name), weapon_source_mob)
 	P.generate_bullet(new ammo.default_ammo)
 	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
 	muzzle_flash(Get_Angle(owner, A))
@@ -496,7 +497,7 @@ Currently only has the tank hardpoints
 	next_use = world.time + owner.cooldowns["secondary"] * owner.misc_ratios["secd_cool"]
 	if(!prob(owner.accuracies["secondary"] * 100 * owner.misc_ratios["secd_acc"]))
 		A = get_step(get_turf(A), pick(cardinal))
-	var/obj/item/projectile/P = new
+	var/obj/item/projectile/P = new(initial(name), weapon_source_mob)
 	P.generate_bullet(new ammo.default_ammo)
 	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
 	playsound(get_turf(src), 'sound/weapons/tank_flamethrower.ogg', 60, 1)
@@ -539,7 +540,7 @@ Currently only has the tank hardpoints
 	next_use = world.time + owner.cooldowns["secondary"] * owner.misc_ratios["secd_cool"]
 	if(!prob(owner.accuracies["secondary"] * 100 * owner.misc_ratios["secd_acc"]))
 		A = get_step(get_turf(A), pick(cardinal))
-	var/obj/item/projectile/P = new
+	var/obj/item/projectile/P = new(initial(name), weapon_source_mob)
 	P.generate_bullet(new ammo.default_ammo)
 	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
 	ammo.current_rounds--
@@ -587,7 +588,7 @@ Currently only has the tank hardpoints
 	next_use = world.time + owner.cooldowns["secondary"] * owner.misc_ratios["secd_cool"]
 	if(!prob(owner.accuracies["secondary"] * 100 * owner.misc_ratios["secd_acc"]))
 		A = get_step(get_turf(A), pick(cardinal))
-	var/obj/item/projectile/P = new
+	var/obj/item/projectile/P = new(initial(name), weapon_source_mob)
 	P.generate_bullet(new ammo.default_ammo)
 	P.fire_at(A, owner, src, P.ammo.max_range * 3, P.ammo.shell_speed)
 	muzzle_flash(Get_Angle(owner, A))
@@ -631,7 +632,7 @@ Currently only has the tank hardpoints
 	next_use = world.time + owner.cooldowns["secondary"] * owner.misc_ratios["secd_cool"]
 	if(!prob(owner.accuracies["secondary"] * 100 * owner.misc_ratios["secd_acc"]))
 		A = get_step(get_turf(A), pick(cardinal))
-	var/obj/item/projectile/P = new
+	var/obj/item/projectile/P = new(initial(name), weapon_source_mob)
 	P.generate_bullet(new ammo.default_ammo)
 	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
 	playsound(get_turf(src), 'sound/weapons/gun_m92_attachable.ogg', 60, 1)
@@ -683,7 +684,7 @@ Currently only has the tank hardpoints
 	next_use = world.time + owner.cooldowns["support"] * owner.misc_ratios["supp_cool"]
 	if(!prob(owner.accuracies["support"] * 100 * owner.misc_ratios["supp_acc"]))
 		A = get_step(get_turf(A), pick(cardinal))
-	var/obj/item/projectile/P = new
+	var/obj/item/projectile/P = new(initial(name), weapon_source_mob)
 	P.generate_bullet(new ammo.default_ammo)
 	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
 	playsound(get_turf(src), 'sound/weapons/tank_smokelauncher_fire.ogg', 60, 1)

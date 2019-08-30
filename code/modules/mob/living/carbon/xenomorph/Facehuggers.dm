@@ -340,7 +340,7 @@
 	else
 		target.visible_message(SPAN_DANGER("[src] violates [target]'s face!"))
 
-	if(ishuman(target))
+	if(round_statistics && ishuman(target))
 		round_statistics.total_huggers_applied++
 
 

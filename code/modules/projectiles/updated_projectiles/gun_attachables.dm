@@ -1252,7 +1252,7 @@ Defined in conflicts.dm of the #defines folder.
 	if(!istype(T)) return
 
 	if(!locate(/obj/flamer_fire) in T) // No stacking flames!
-		new/obj/flamer_fire(T)
+		new/obj/flamer_fire(T, initial(name), user)
 
 
 /obj/item/attachable/attached_gun/shotgun

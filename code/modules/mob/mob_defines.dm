@@ -71,7 +71,12 @@
 
 	var/luminosity_total = 0 //For max luminosity stuff.
 
+	var/statistic_exempt = FALSE
+	var/life_time_start = 0
+	var/life_time_total = 0
 	var/timeofdeath = 0.0//Living
+	var/life_steps_total = 0
+	var/life_kills_total = 0
 
 	var/bodytemperature = 310.055	//98.7 F
 	var/old_x = 0
@@ -180,3 +185,6 @@
 	var/resisting // whether the mob is currently resisting (primarily for do_after proc)
 	var/clicked_something 	// a list of booleans for if a mob did a specific click
 							// only left click, shift click, right click, and middle click
+
+	var/last_damage_source // for tracking whatever damaged us last, mainly for stat tracking
+	var/last_damage_mob // for tracking last hits on mob death, for kill stat tracking and moderation

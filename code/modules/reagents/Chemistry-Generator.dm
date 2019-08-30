@@ -611,7 +611,7 @@
 						if(C)
 							var/datum/limb/L = pick(C.limbs)
 							if(L && L.name != "head" && prob(10*potency))
-								L.droplimb()
+								L.droplimb(0, 0, "dangerous chemicals")
 				else
 					M.adjustCloneLoss(0.5*potency)
 			if(PROPERTY_PAINING) //pain

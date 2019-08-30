@@ -119,7 +119,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/proc/ready_shotgun_tube()
 	if(current_mag.current_rounds > 0)
 		ammo = ammo_list[current_mag.chamber_contents[current_mag.chamber_position]]
-		in_chamber = create_bullet(ammo)
+		in_chamber = create_bullet(ammo, initial(name))
 		current_mag.current_rounds--
 		current_mag.chamber_contents[current_mag.chamber_position] = "empty"
 		current_mag.chamber_position--
@@ -337,7 +337,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	if(current_mag.current_rounds > 0)
 		ammo = ammo_list[current_mag.chamber_contents[current_mag.chamber_position]]
-		in_chamber = create_bullet(ammo)
+		in_chamber = create_bullet(ammo, initial(name))
 		current_mag.current_rounds--
 		return in_chamber
 	//We can't make a projectile without a mag or active attachable.

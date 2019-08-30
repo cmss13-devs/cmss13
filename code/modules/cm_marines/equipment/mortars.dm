@@ -146,6 +146,7 @@
 			busy = 0
 			firing = 1
 			flick(icon_state + "_fire", src)
+			mortar_shell.source_mob = user
 			mortar_shell.forceMove(src)
 
 			if(!has_created_ceiling_debris)
@@ -243,9 +244,9 @@
 	icon_state = "mortar_ammo_cas"
 	w_class = SIZE_HUGE
 	flags_atom = FPRINT|CONDUCT
+	var/source_mob
 
 /obj/item/mortal_shell/proc/detonate(var/turf/T)
-
 	forceMove(T)
 
 /obj/item/mortal_shell/he
@@ -254,8 +255,7 @@
 	icon_state = "mortar_ammo_he"
 
 /obj/item/mortal_shell/he/detonate(var/turf/T)
-
-	explosion(T, 0, 3, 5, 7)
+	explosion(T, 0, 3, 5, 7, , , , initial(name), source_mob)
 
 /obj/item/mortal_shell/frag
 	name = "\improper 80mm fragmentation mortar shell"
@@ -263,10 +263,9 @@
 	icon_state = "mortar_ammo_frag"
 
 /obj/item/mortal_shell/frag/detonate(var/turf/T)
-
-	create_shrapnel(T, 60)
+	create_shrapnel(T, 60, , initial(name), source_mob)
 	sleep(2)
-	explosion_rec(T, 60, 20)
+	explosion_rec(T, 60, 20, initial(name), source_mob)
 
 /obj/item/mortal_shell/incendiary
 	name = "\improper 80mm incendiary mortar shell"
@@ -274,8 +273,8 @@
 	icon_state = "mortar_ammo_inc"
 
 /obj/item/mortal_shell/incendiary/detonate(var/turf/T)
-	explosion(T, 0, 2, 4, 7)
-	flame_radius(5, T)
+	explosion(T, 0, 2, 4, 7, , , , initial(name), source_mob)
+	flame_radius(initial(name), source_mob, 5, T)
 	playsound(T, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 
 /obj/item/mortal_shell/flare
@@ -298,18 +297,15 @@
 	mouse_opacity = 0
 	brightness_on = 7 //Way brighter than most lights
 
-	New()
-
-		..()
-		fuel = rand(400, 500) // Half the duration of a flare, but justified since it's invincible
+/obj/item/device/flashlight/flare/on/illumination/New()
+	..()
+	fuel = rand(400, 500) // Half the duration of a flare, but justified since it's invincible
 
 /obj/item/device/flashlight/flare/on/illumination/turn_off()
-
 	..()
 	qdel(src)
 
 /obj/item/device/flashlight/flare/on/illumination/ex_act(severity)
-
 	return //Nope
 
 /obj/structure/closet/crate/secure/mortar_ammo

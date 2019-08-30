@@ -49,33 +49,41 @@
 
 	var/projectile_override_flags = 0
 
-	New()
-		..()
-		path = list()
-		permutated = list()
+	var/weapon_source
+	var/weapon_source_mob
 
-	Dispose()
-		..()
-		in_flight = 0
-		ammo = null
-		shot_from = null
-		original = null
-		target_turf = null
-		starting = null
-		permutated = null
-		path = null
-		return TA_REVIVE_ME
+/obj/item/projectile/New(var/source, var/source_mob)
+	..()
+	path = list()
+	permutated = list()
+	weapon_source = source
+	weapon_source_mob = source_mob
+	if(source_mob)
+		firer = source_mob
 
-	Bumped(atom/A as mob|obj|turf|area)
-		if(A && !A in permutated)
-			scan_a_turf(A.loc)
+/obj/item/projectile/Dispose()
+	..()
+	in_flight = 0
+	ammo = null
+	shot_from = null
+	original = null
+	target_turf = null
+	starting = null
+	permutated = null
+	path = null
+	return TA_REVIVE_ME
 
-	Crossed(AM as mob|obj)
-		if(AM && !AM in permutated)
-			scan_a_turf(get_turf(AM))
+/obj/item/projectile/Bumped(atom/A as mob|obj|turf|area)
+	if(A && !A in permutated)
+		scan_a_turf(A.loc)
+
+/obj/item/projectile/Crossed(AM as mob|obj)
+	if(AM && !AM in permutated)
+		scan_a_turf(get_turf(AM))
 
 
-	ex_act() r_FAL //We do not want anything to delete these, simply to make sure that all the bullet references are not runtiming. Otherwise, constantly need to check if the bullet exists.
+/obj/item/projectile/ex_act()
+	r_FAL //We do not want anything to delete these, simply to make sure that all the bullet references are not runtiming. Otherwise, constantly need to check if the bullet exists.
 
 /obj/item/projectile/proc/generate_bullet(ammo_datum, bonus_damage = 0, special_flags = 0)
 	ammo 		= ammo_datum
@@ -107,12 +115,16 @@
 
 	dir = get_dir(loc, target_turf)
 
-	round_statistics.total_projectiles_fired++
 	var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
-	if(ammo_flags & AMMO_BALLISTIC)
-		round_statistics.total_bullets_fired++
+	if(round_statistics && ammo_flags & AMMO_BALLISTIC)
+		round_statistics.total_projectiles_fired++
 		if(ammo.bonus_projectiles_amount)
-			round_statistics.total_bullets_fired += ammo.bonus_projectiles_amount
+			round_statistics.total_projectiles_fired += ammo.bonus_projectiles_amount
+	if(firer && ismob(firer))
+		var/mob/M = firer
+		M.track_shot(weapon_source)
+		if(ammo.bonus_projectiles_amount)
+			M.track_shot(weapon_source, ammo.bonus_projectiles_amount)
 
 	//If we have the the right kind of ammo, we can fire several projectiles at once.
 	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type) ammo.fire_bonus_projectiles(src)
@@ -127,6 +139,7 @@
 	var/matrix/rotate = matrix() //Change the bullet angle.
 	rotate.Turn(angle)
 	src.transform = rotate
+
 
 	follow_flightpath(speed,change_x,change_y,range) //pyew!
 
@@ -650,8 +663,9 @@
 
 	flash_weak_pain()
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & AMMO_BALLISTIC)
-		round_statistics.total_bullet_hits_on_humans++
+	if(ismob(P.weapon_source_mob))
+		var/mob/M = P.weapon_source_mob
+		M.track_shot_hit(P.weapon_source, src)
 
 	var/damage = max(0, P.damage - round(P.distance_travelled * P.ammo.damage_falloff))
 	var/damage_result = damage
@@ -733,8 +747,9 @@
 			bullet_ping(P)
 			return -1
 
-	if(ammo_flags & AMMO_BALLISTIC)
-		round_statistics.total_bullet_hits_on_xenos++
+	if(ismob(P.weapon_source_mob))
+		var/mob/M = P.weapon_source_mob
+		M.track_shot_hit(P.weapon_source, src)
 
 	flash_weak_pain()
 
@@ -891,22 +906,39 @@
 		visible_message(SPAN_DANGER("[name] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
 						SPAN_HIGHDANGER("You are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4)
 
+	if(P.weapon_source)
+		last_damage_source = "[P.weapon_source]"
+	else
+		last_damage_source = initial(P.name)
 	if(ismob(P.firer))
 		var/mob/firingMob = P.firer
+		last_damage_mob = firingMob
 		if(ishuman(firingMob) && ishuman(src) && firingMob.mind && mind && mind.faction == firingMob.mind.faction) //One human shot another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
 			attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> shot <b>[src]/[ckey]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
 			P.firer:attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> shot <b>[src]/[ckey]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
-			round_statistics.friendly_fire_instances++
+			round_statistics.total_friendly_fire_instances++
 			msg_admin_ff("[firingMob] ([firingMob.ckey]) shot [src] ([ckey]) with \a [P.name] in [get_area(firingMob)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[P.firer.x];Y=[P.firer.y];Z=[P.firer.z]'>JMP</a>) (<a href='?priv_msg=\ref[firingMob.client]'>PM</a>)")
+			if(ishuman(firingMob) && P.weapon_source)
+				var/mob/living/carbon/human/H = firingMob
+				H.track_friendly_fire(P.weapon_source)
 		else
+			if(P.weapon_source_mob)
+				last_damage_mob = P.weapon_source_mob
 			attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> shot <b>[src]/[src.ckey]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
 			P.firer:attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> shot <b>[src]/[ckey]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
 			msg_admin_attack("[firingMob] ([firingMob.ckey]) shot [src] ([ckey]) with \a [P.name] in [get_area(firingMob)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[P.firer.x];Y=[P.firer.y];Z=[P.firer.z]'>JMP</a>)")
 		return
 
+	if(P.weapon_source_mob)
+		last_damage_mob = P.weapon_source_mob
+
 	if(P.firer)
-		attack_log += "\[[time_stamp()]\] <b>[P.firer]</b> shot <b>[src]/[ckey]</b> with a <b>[P]</b>"
-		msg_admin_attack("[P.firer] shot [src] ([ckey]) with a [P] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[P.firer.x];Y=[P.firer.y];Z=[P.firer.z]'>JMP</a>)")
+		var/mob/firingMob = P.firer
+		if(ishuman(firingMob))
+			var/mob/living/carbon/human/H = firingMob
+			H.track_shot_hit(initial(name), src)
+		attack_log += "\[[time_stamp()]\] <b>[firingMob]</b> shot <b>[src]/[ckey]</b> with a <b>[P]</b>"
+		msg_admin_attack("[firingMob] shot [src] ([ckey]) with a [P] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[P.firer.x];Y=[P.firer.y];Z=[P.firer.z]'>JMP</a>)")
 	else
 		attack_log += "\[[time_stamp()]\] <b>SOMETHING??</b> shot <b>[src]/[ckey]</b> with a <b>[P]</b>"
 		msg_admin_attack("SOMETHING?? shot [src] ([ckey]) with a [P])")

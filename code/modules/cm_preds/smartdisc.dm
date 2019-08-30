@@ -123,7 +123,7 @@
 	break_stuff_probability = 0
 	destroy_surroundings = 0
 
-	faction = "yautja"
+	faction = FACTION_YAUTJA
 	var/lifetime = 8 //About 15 seconds.
 	var/time_idle = 0
 
@@ -150,9 +150,9 @@
 	spawn(1)
 		if(src) qdel(src)
 
-/mob/living/simple_animal/hostile/smartdisc/gib()
+/mob/living/simple_animal/hostile/smartdisc/gib(var/cause = "gibbing")
 	visible_message("\The [src] explodes!")
-	..(icon_gib,1)
+	..(cause, icon_gib,1)
 	spawn(1)
 		if(src)
 			qdel(src)

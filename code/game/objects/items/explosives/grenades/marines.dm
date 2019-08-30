@@ -23,7 +23,6 @@
 	var/fire_resistance = 30 //to prevent highly controlled massive explosions
 
 /obj/item/explosive/grenade/HE/New()
-
 	..()
 
 	fire_resistance = rand(GRENADE_FIRE_RESISTANCE_MIN, GRENADE_FIRE_RESISTANCE_MAX)
@@ -31,10 +30,10 @@
 /obj/item/explosive/grenade/HE/prime()
 	spawn(0)
 		if(shrapnel_count)
-			create_shrapnel(loc, shrapnel_count, , ,shrapnel_type)
+			create_shrapnel(loc, shrapnel_count, , ,shrapnel_type, initial(name), source_mob)
 			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
 		apply_explosion_overlay()
-		explosion_rec(loc, explosion_power, explosion_falloff)
+		explosion_rec(loc, explosion_power, explosion_falloff, initial(name), source_mob)
 		qdel(src)
 	return
 
@@ -133,18 +132,18 @@
 	dangerous = 1
 	underslug_launchable = TRUE
 
-	prime()
-		spawn(0)
-			flame_radius(2, get_turf(src))
-			playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
-			qdel(src)
-		return
+/obj/item/explosive/grenade/incendiary/prime()
+	spawn(0)
+		flame_radius(initial(name), source_mob, 2, get_turf(src))
+		playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
+		qdel(src)
+	return
 
-proc/flame_radius(radius = 1, turf/turf) //~Art updated fire.
+/proc/flame_radius(var/source, var/source_mob, radius = 1, turf/turf) //~Art updated fire.
 	if(!turf || !isturf(turf)) return
 	if(radius < 0) radius = 0
 	if(radius > 5) radius = 5
-	new /obj/flamer_fire(turf, 5 + rand(0,11), 15, null, radius)
+	new /obj/flamer_fire(turf, source, source_mob, 5 + rand(0,11), 15, null, radius)
 
 
 /obj/item/explosive/grenade/incendiary/molotov
@@ -154,17 +153,18 @@ proc/flame_radius(radius = 1, turf/turf) //~Art updated fire.
 	item_state = "molotov"
 	arm_sound = 'sound/items/Welder2.ogg'
 	underslug_launchable = FALSE
-	New()
-		det_time = rand(10,40)//Adds some risk to using this thing.
-		..()
 
-	prime()
-		spawn(0)
-			playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 35, 1, 4)
-			flame_radius(2, get_turf(src))
-			playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 30, 1, 4)
-			qdel(src)
-		return
+/obj/item/explosive/grenade/incendiary/molotov/New()
+	det_time = rand(10,40)//Adds some risk to using this thing.
+	..()
+
+/obj/item/explosive/grenade/incendiary/molotov/prime()
+	spawn(0)
+		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 35, 1, 4)
+		flame_radius(initial(name), source_mob, 2, get_turf(src))
+		playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 30, 1, 4)
+		qdel(src)
+	return
 
 
 /obj/item/explosive/grenade/smokebomb
@@ -177,16 +177,16 @@ proc/flame_radius(radius = 1, turf/turf) //~Art updated fire.
 	var/datum/effect_system/smoke_spread/bad/smoke
 	harmful = FALSE
 
-	New()
-		..()
-		smoke = new /datum/effect_system/smoke_spread/bad
-		smoke.attach(src)
+/obj/item/explosive/grenade/smokebomb/New()
+	..()
+	smoke = new /datum/effect_system/smoke_spread/bad
+	smoke.attach(src)
 
-	prime()
-		playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
-		smoke.set_up(3, 0, usr.loc, null, 6)
-		smoke.start()
-		qdel(src)
+/obj/item/explosive/grenade/smokebomb/prime()
+	playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
+	smoke.set_up(3, 0, usr.loc, null, 6)
+	smoke.start()
+	qdel(src)
 
 /obj/item/explosive/grenade/phosphorus
 	name = "\improper M40 HPDP grenade"
@@ -199,16 +199,16 @@ proc/flame_radius(radius = 1, turf/turf) //~Art updated fire.
 	dangerous = 1
 	harmful = TRUE
 
-	New()
-		..()
-		smoke = new /datum/effect_system/smoke_spread/phosphorus
-		smoke.attach(src)
+/obj/item/explosive/grenade/phosphorus/New()
+	..()
+	smoke = new /datum/effect_system/smoke_spread/phosphorus
+	smoke.attach(src)
 
-	prime()
-		playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
-		smoke.set_up(3, 0, usr.loc)
-		smoke.start()
-		qdel(src)
+/obj/item/explosive/grenade/phosphorus/prime()
+	playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
+	smoke.set_up(3, 0, usr.loc)
+	smoke.start()
+	qdel(src)
 
 /obj/item/explosive/grenade/phosphorus/upp
 	name = "\improper Type 8 WP grenade"

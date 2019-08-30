@@ -25,18 +25,18 @@
 	ticker.mode.traitors += mob.mind
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
-		arm_equipment(mob, "Weyland-Yutani SCP PMC (Leader)", TRUE)
+		arm_equipment(mob, "Weyland-Yutani SCP PMC (Leader)", TRUE, TRUE)
 	else
 		mob.mind.special_role = "MODE"
 		if(prob(55)) //Randomize the heavy commandos and standard PMCs.
-			arm_equipment(mob, "Weyland-Yutani SCP PMC (Standard)", TRUE)
+			arm_equipment(mob, "Weyland-Yutani SCP PMC (Standard)", TRUE, TRUE)
 			to_chat(mob, "<font size='3'>\red You are a Weyland Yutani mercenary!</font>")
 		else
 			if(prob(30))
-				arm_equipment(mob, "Weyland-Yutani SCP PMC (Sniper)", TRUE)
+				arm_equipment(mob, "Weyland-Yutani SCP PMC (Sniper)", TRUE, TRUE)
 				to_chat(mob, "<font size='3'>\red You are a Weyland Yutani sniper!</font>")
 			else
-				arm_equipment(mob, "Weyland-Yutani SCP PMC (Gunner)", TRUE)
+				arm_equipment(mob, "Weyland-Yutani SCP PMC (Gunner)", TRUE, TRUE)
 				to_chat(mob, "<font size='3'>\red You are a Weyland Yutani heavy gunner!</font>")
 	print_backstory(mob)
 

@@ -5,7 +5,7 @@
 		mmi = null
 	..()
 
-/mob/living/silicon/robot/death(gibbed)
+/mob/living/silicon/robot/death(cause, gibbed)
 	if(camera)
 		camera.status = 0
 	if(module)

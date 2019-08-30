@@ -177,7 +177,9 @@
 
 			if (mob.tile_contents)
 				mob.tile_contents = list()
-
+		if(.)
+			mob.track_steps_walked()
+			mob.life_steps_total += 1
 		moving = 0
 		next_movement = start_move_time + move_delay
 		return .

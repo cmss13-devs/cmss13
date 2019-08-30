@@ -27,7 +27,7 @@
 	min_n2 = 0
 	max_n2 = 0
 	unsuitable_atoms_damage = 15
-	faction = "alien"
+	faction = FACTION_XENOMORPH
 	wall_smash = 1
 	status_flags = CANPUSH
 	minbodytemp = 0
@@ -72,7 +72,7 @@
 	damage = 30
 	icon_state = "toxin"
 
-/mob/living/simple_animal/hostile/alien/death(gibbed, deathmessage = "lets out a waning guttural screech, green blood bubbling from its maw.")
+/mob/living/simple_animal/hostile/alien/death(cause, gibbed, deathmessage = "lets out a waning guttural screech, green blood bubbling from its maw.")
 	. = ..()
 	if(!.) return //If they were already dead, it will return.
 	playsound(src, 'sound/voice/alien_death.ogg', 50, 1)

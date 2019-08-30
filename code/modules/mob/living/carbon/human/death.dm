@@ -1,4 +1,4 @@
-/mob/living/carbon/human/gib()
+/mob/living/carbon/human/gib(var/cause = "gibbing")
 
 	var/is_a_synth = isSynth(src)
 	for(var/datum/limb/E in limbs)
@@ -9,7 +9,7 @@
 		// Only make the limb drop if it's not too damaged
 		if(prob(100 - E.get_damage()))
 			// Override the current limb status
-			E.droplimb()
+			E.droplimb(0, 0, cause)
 
 
 	if(is_a_synth)
@@ -52,7 +52,7 @@
 
 
 
-/mob/living/carbon/human/death(var/gibbed=0)
+/mob/living/carbon/human/death(var/cause, var/gibbed)
 	if(stat == DEAD) 
 		return
 	living_human_list -= src
@@ -69,10 +69,7 @@
 	if(!gibbed && species.death_sound)
 		playsound(loc, species.death_sound, 50, 1)
 
-	if(ticker && ticker.current_state == GAME_STATE_PLAYING) //game has started, to ignore the map placed corpses.
-		round_statistics.total_human_deaths++
-
-	return ..(gibbed,species.death_message)
+	return ..(cause, gibbed, species.death_message)
 
 /mob/living/carbon/human/proc/makeSkeleton()
 	if(SKELETON in src.mutations)	return

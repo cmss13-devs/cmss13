@@ -274,7 +274,7 @@
 				if(T && T.contents)
 					for(var/obj/structure/flora/tallgrass/G in T.contents)
 						if(istype(G,/obj/structure/flora/tallgrass))
-							new /obj/flamer_fire(T)
+							new /obj/flamer_fire(T, "wildfire")
 							G.fire_act()
 		spawn(rand(125,225))
 			new /obj/effect/decal/cleanable/dirt(src.loc)

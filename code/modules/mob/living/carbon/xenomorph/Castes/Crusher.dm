@@ -85,7 +85,6 @@
 	)
 
 /mob/living/carbon/Xenomorph/Crusher/proc/stomp()
-
 	if(!check_state()) return
 
 	if(world.time < has_screeched + CRUSHER_STOMP_COOLDOWN) //Sure, let's use this.
@@ -100,8 +99,6 @@
 	has_screeched = world.time
 	use_plasma(50)
 
-	round_statistics.crusher_stomps++
-
 	playsound(loc, 'sound/effects/bang.ogg', 25, 0)
 	visible_message(SPAN_XENODANGER("[src] smashes into the ground!"), \
 	SPAN_XENODANGER("You smash into the ground!"))
@@ -115,8 +112,9 @@
 				if(M.stat == DEAD)
 					continue
 				if(!(M.status_flags & XENO_HOST) && !istype(M.buckled, /obj/structure/bed/nest))
-					round_statistics.crusher_stomp_victims++
 					M.take_overall_damage(40) //The same as a full charge, but no more than that.
+					M.last_damage_source = initial(name)
+					M.last_damage_mob = src
 					M.attack_log += text("\[[time_stamp()]\] <font color='orange'>was xeno stomped by [src] ([ckey])</font>")
 					attack_log += text("\[[time_stamp()]\] <font color='red'>xeno stomped [M.name] ([M.ckey])</font>")
 					log_attack("[src] ([ckey]) xeno stomped [M.name] ([M.ckey])")
@@ -141,8 +139,6 @@
 	has_screeched = world.time
 	use_plasma(100)
 
-	round_statistics.crusher_stomps++
-
 	playsound(loc, 'sound/effects/bang.ogg', 25, 0)
 	visible_message(SPAN_XENODANGER("[src] smashes into the ground, causing a violent earthquake!"), \
 	SPAN_XENODANGER("You smash into the ground, causing a violent earthquake!"))
@@ -156,8 +152,9 @@
 				if(M.stat == DEAD)
 					continue
 				if(!(M.status_flags & XENO_HOST) && !istype(M.buckled, /obj/structure/bed/nest))
-					round_statistics.crusher_stomp_victims++
 					M.take_overall_damage(40) //The same as a full charge, but no more than that.
+					M.last_damage_source = initial(name)
+					M.last_damage_mob = src
 					M.attack_log += text("\[[time_stamp()]\] <font color='orange'>was xeno stomped by [src] ([ckey])</font>")
 					attack_log += text("\[[time_stamp()]\] <font color='red'>xeno stomped [M.name] ([M.ckey])</font>")
 					log_attack("[src] ([ckey]) xeno stomped [M.name] ([M.ckey])")

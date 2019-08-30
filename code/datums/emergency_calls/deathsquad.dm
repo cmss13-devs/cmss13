@@ -29,12 +29,12 @@
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
-		arm_equipment(mob, "Weyland-Yutani Deathsquad Leader", TRUE)
+		arm_equipment(mob, "Weyland-Yutani Deathsquad Leader", TRUE, TRUE)
 		to_chat(mob, "<font size='3'>\red You are the Death Squad Leader!</font>")
 		to_chat(mob, "<B> You must clear out any traces of the infestation and its survivors.</b>")
 		to_chat(mob, "<B> Follow any orders directly from Weyland-Yutani!</b>")
 	else
-		arm_equipment(mob, "Weyland-Yutani Deathsquad", TRUE)
+		arm_equipment(mob, "Weyland-Yutani Deathsquad", TRUE, TRUE)
 		to_chat(mob, "<font size='3'>\red You are a Death Squad Commando!!</font>")
 		to_chat(mob, "<B> You must clear out any traces of the infestation and its survivors.</b>")
 		to_chat(mob, "<B> Follow any orders directly from Weyland-Yutani!</b>")
@@ -59,12 +59,12 @@
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
-		arm_equipment(mob, "Weyland-Yutani Deathsquad Terminator", TRUE)
+		arm_equipment(mob, "Weyland-Yutani Deathsquad Terminator", TRUE, TRUE)
 		to_chat(mob, "<font size='3'>\red You are the Death Squad Leader!</font>")
 		to_chat(mob, "<B> You must clear out any traces of the infestation and its survivors.</b>")
 		to_chat(mob, "<B> Follow any orders directly from Weyland-Yutani!</b>")
 	else
-		arm_equipment(mob, "Weyland-Yutani Deathsquad Terminator", TRUE)
+		arm_equipment(mob, "Weyland-Yutani Deathsquad Terminator", TRUE, TRUE)
 		to_chat(mob, "<font size='3'>\red You are a Death Squad Commando!!</font>")
 		to_chat(mob, "<B> You must clear out any traces of the infestation and its survivors.</b>")
 		to_chat(mob, "<B> Follow any orders directly from Weyland-Yutani!</b>")

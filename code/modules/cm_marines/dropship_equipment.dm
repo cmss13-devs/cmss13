@@ -720,7 +720,7 @@
 		ammo_equipped.ammo_count = max(ammo_equipped.ammo_count-ammo_equipped.ammo_used_per_firing, 0)
 	update_icon()
 
-/obj/structure/dropship_equipment/weapon/proc/open_fire(obj/selected_target)
+/obj/structure/dropship_equipment/weapon/proc/open_fire(obj/selected_target, var/mob/user = usr)
 	set waitfor = 0
 	var/turf/target_turf = get_turf(selected_target)
 	if(firing_sound)
@@ -754,9 +754,10 @@
 		playsound(impact, ammo_warn_sound, 70, 1)
 	new /obj/effect/overlay/temp/blinking_laser (impact)
 	sleep(10)
+	SA.source_mob = user
 	SA.detonate_on(impact)
 
-/obj/structure/dropship_equipment/weapon/proc/open_fire_firemission(obj/selected_target)
+/obj/structure/dropship_equipment/weapon/proc/open_fire_firemission(obj/selected_target, var/mob/user = usr)
 	set waitfor = 0
 	var/turf/target_turf = get_turf(selected_target)
 	if(firing_sound)
@@ -779,6 +780,7 @@
 		possible_turfs += TU
 	var/turf/impact = pick(possible_turfs)
 	sleep(3)
+	SA.source_mob = user
 	SA.detonate_on(impact)
 
 /obj/structure/dropship_equipment/weapon/heavygun

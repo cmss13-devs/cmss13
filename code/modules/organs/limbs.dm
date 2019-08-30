@@ -142,7 +142,7 @@
 		probability = 1
 		damage = 3
 	if(prob(probability))
-		droplimb()
+		droplimb(0, 0, "EMP")
 	else
 		take_damage(damage, 0, 1, 1, used_weapon = "EMP")
 
@@ -181,7 +181,7 @@
 	Less clear vars:
 	*	impact_name: name of an "impact icon." For now, is only relevant for projectiles but can be expanded to apply to melee weapons with special impact sprites.
 */
-/datum/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, impact_name = null)
+/datum/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, impact_name = null, var/damage_source = "dismemberment")
 	if((brute <= 0) && (burn <= 0))
 		return 0
 
@@ -277,7 +277,7 @@
 		)
 			var/cut_prob = brute/max_damage * 5
 			if(prob(cut_prob))
-				droplimb()
+				droplimb(0, 0, damage_source)
 				return
 
 	owner.updatehealth()
@@ -741,7 +741,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(limbs_to_remove.len)
 		var/datum/limb/L = pick(limbs_to_remove)
 		var/limb_name = L.display_name
-		L.droplimb(0,delete_limb)
+		L.droplimb(0, delete_limb)
 		return limb_name
 	return null
 
@@ -753,7 +753,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	owner.limbs_to_process -= src
 
 //Handles dismemberment
-/datum/limb/proc/droplimb(amputation, var/delete_limb = 0)
+/datum/limb/proc/droplimb(amputation, var/delete_limb = 0, var/cause)
 	if(status & LIMB_DESTROYED)
 		return
 	else
@@ -777,7 +777,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 		// If any organs are attached to this, destroy them
 		for(var/datum/limb/O in children) 
-			O.droplimb(amputation, delete_limb)
+			O.droplimb(amputation, delete_limb, cause)
 
 		//Replace all wounds on that arm with one wound on parent organ.
 		wounds.Cut()
@@ -878,7 +878,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		// OK so maybe your limb just flew off, but if it was attached to a pair of cuffs then hooray! Freedom!
 		release_restraints()
 
-		if(vital) owner.death()
+		if(vital) owner.death(cause)
 
 /****************************************************
 			   HELPERS

@@ -60,4 +60,6 @@
 	var/xeno_prefix = "XX"
 	var/xeno_postfix = ""
 
+	var/datum/entity/player_entity/player_entity = null
+
 	preload_rsc = 0 // This is 0 so we can set it to an URL once the player logs in and have them download the resources from a different server.

@@ -4,7 +4,7 @@
 	name = "Yautja"
 	idtype = null //No IDs for Yautja!
 	languages = list("Sainja")
-	faction = "Yautja"
+	faction = FACTION_YAUTJA
 	uses_special_name = TRUE
 
 /datum/equipment_preset/yautja/load_race(mob/living/carbon/human/H)

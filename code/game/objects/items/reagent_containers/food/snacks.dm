@@ -100,6 +100,7 @@
 		if(reagents)								//Handle ingestion of the reagent.
 			playsound(M.loc,'sound/items/eatfood.ogg', 15, 1)
 			if(reagents.total_volume)
+				reagents.set_source_mob(user)
 				if(reagents.total_volume > bitesize)
 					/*
 					 * I totally cannot understand what this code supposed to do.

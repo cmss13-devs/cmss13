@@ -114,7 +114,7 @@
 		O = H.get_limb(check_zone(zone_selected))
 		if (O.body_part != UPPER_TORSO && O.body_part != LOWER_TORSO && O.body_part != HEAD && O.brute_dam >= 5) //Only limbs.
 			visible_message(SPAN_DANGER("The limb is sliced clean off!"),SPAN_DANGER("You slice off a limb!"))
-			O.droplimb()
+			O.droplimb(0, 0, initial(name))
 			return TRUE
 	return FALSE
 
@@ -241,7 +241,7 @@
 	if(!istype(T))
 		return
 	if(!locate(/obj/flamer_fire) in T) // No stacking flames!
-		new/obj/flamer_fire(T)
+		new/obj/flamer_fire(T, initial(name), src)
 	else
 		return
 

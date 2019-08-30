@@ -135,8 +135,8 @@
 
 	if(health <= -35 && src.stat != 2)
 		timeofdeath = world.time
-		death() //Possibly redundant, having trouble making death() cooperate.
-		gib()
+		death(last_damage_source) //Possibly redundant, having trouble making death() cooperate.
+		gib(last_damage_source)
 		return
 	..()
 

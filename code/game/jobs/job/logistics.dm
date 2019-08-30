@@ -41,7 +41,7 @@ A happy ship is a well-functioning ship."}
 	title = "Maintenance Tech"
 	flag = ROLE_MAINTENANCE_TECH
 	department_flag = ROLEGROUP_MARINE_ENGINEERING
-	faction = "Station"
+	faction = FACTION_MARINE
 	total_positions = 4
 	spawn_positions = 4
 	allow_additional = 1

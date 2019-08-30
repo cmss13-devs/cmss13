@@ -3,13 +3,14 @@
 /datum/equipment_preset/survivor
 	name = "Survivor"
 	assignment = "Survivor"
+	rank = "Survivor"
 	special_role = "MODE"
 
 	skills = /datum/skills/civilian
 	languages = list("English")
 	paygrade = "C"
 	idtype = /obj/item/card/id/lanyard
-	faction = "Survivor"
+	faction = FACTION_SURVIVOR
 
 /datum/equipment_preset/survivor/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(MALE, FEMALE)

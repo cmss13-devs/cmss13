@@ -2,14 +2,14 @@
 //procs directly related to mob health
 
 
-/mob/living/proc/getBruteLoss()
+/mob/living/getBruteLoss()
 	return bruteloss
 
 /mob/living/proc/adjustBruteLoss(var/amount)
 	if(status_flags & GODMODE)	return 0	//godmode
 	bruteloss = min(max(bruteloss + amount, 0),(maxHealth*2))
 
-/mob/living/proc/getOxyLoss()
+/mob/living/getOxyLoss()
 	return oxyloss
 
 /mob/living/proc/adjustOxyLoss(var/amount)
@@ -20,7 +20,7 @@
 	if(status_flags & GODMODE)	return 0	//godmode
 	oxyloss = amount
 
-/mob/living/proc/getToxLoss()
+/mob/living/getToxLoss()
 	return toxloss
 
 /mob/living/proc/adjustToxLoss(var/amount)
@@ -31,14 +31,14 @@
 	if(status_flags & GODMODE)	return 0	//godmode
 	toxloss = amount
 
-/mob/living/proc/getFireLoss()
+/mob/living/getFireLoss()
 	return fireloss
 
 /mob/living/proc/adjustFireLoss(var/amount)
 	if(status_flags & GODMODE)	return 0	//godmode
 	fireloss = min(max(fireloss + amount, 0),(maxHealth*2))
 
-/mob/living/proc/getCloneLoss()
+/mob/living/getCloneLoss()
 	return cloneloss
 
 /mob/living/proc/adjustCloneLoss(var/amount)
@@ -49,7 +49,7 @@
 	if(status_flags & GODMODE)	return 0	//godmode
 	cloneloss = amount
 
-/mob/living/proc/getBrainLoss()
+/mob/living/getBrainLoss()
 	return brainloss
 
 /mob/living/proc/adjustBrainLoss(var/amount)
@@ -60,7 +60,7 @@
 	if(status_flags & GODMODE)	return 0	//godmode
 	brainloss = amount
 
-/mob/living/proc/getHalLoss()
+/mob/living/getHalLoss()
 	return halloss
 
 /mob/living/proc/adjustHalLoss(var/amount)

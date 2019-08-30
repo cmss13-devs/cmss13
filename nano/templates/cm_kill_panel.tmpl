@@ -1,0 +1,63 @@
+{{props data.death_stats_list :death_value:death_index}}
+    <fieldset class="fieldContainer">
+        <div class="itemLabel">
+            <b>{{:death_value.mob_name}}</b>
+        </div>
+        <br>
+        {{if death_value.job_name}}
+            <div class="itemLabel">
+                Role:
+            </div>
+            <div class="itemContent">
+                {{:death_value.job_name}}
+            </div>
+        {{/if}}
+        <div class="itemLabel">
+            Area:
+        </div>
+        <div class="itemContent">
+            {{:death_value.area_name}}
+        </div>
+        <div class="itemLabel">
+            Cause:
+        </div>
+        <div class="itemContent">
+            {{:death_value.cause_name}}
+        </div>
+        <div class="itemLabel">
+            Time of Death:
+        </div>
+        <div class="itemContent">
+            {{:death_value.time_of_death}}
+        </div>
+        <div class="itemLabel">
+            Lifespan:
+        </div>
+        <div class="itemContent">
+            {{:death_value.total_time_alive}}
+        </div>
+        <div class="itemLabel">
+            Location:
+        </div>
+        <div class="itemContent">
+            ({{:death_value.x}}, {{:death_value.y}}, {{:death_value.z}})
+        </div>
+        <div class="itemLabel">
+            Total Kills:
+        </div>
+        <div class="itemContent">
+            {{:death_value.total_kills}}
+        </div>
+        <br>
+        <div class="itemLabel">
+            Total Damage:
+        </div>
+        <br>
+        {{props death_value.total_damage :damage_value:damage_index}}
+            <div class="itemContent">
+                {{:damage_value.name}}: {{:damage_value.value}}
+            </div>
+        {{/props}}
+    </fieldset>
+    <br>
+{{/props}}

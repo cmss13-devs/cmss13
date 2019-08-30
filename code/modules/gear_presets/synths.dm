@@ -34,7 +34,7 @@
 /datum/equipment_preset/synth/uscm
 	name = "USCM Synthetic"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-
+	faction = FACTION_MARINE
 	idtype = /obj/item/card/id/gold
 	assignment = "Synthetic"
 	rank = "Synthetic"
@@ -81,7 +81,7 @@
 /datum/equipment_preset/synth/combat_smartgunner
 	name = "USCM Combat Synth (Smartgunner)"
 	flags = EQUIPMENT_PRESET_EXTRA
-
+	faction = FACTION_MARINE
 	idtype = /obj/item/card/id/dogtag
 	assignment = "Squad Smartgunner"
 	rank = "Squad Smartgunner"
@@ -121,7 +121,7 @@
 /datum/equipment_preset/synth/survivor
 	name = "Survivor - Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
-
+	faction = FACTION_SURVIVOR
 	idtype = /obj/item/card/id/lanyard
 	assignment = "Survivor"
 	special_role = "MODE"
@@ -153,7 +153,7 @@
 /datum/equipment_preset/synth/working_joe
 	name = "Working Joe"
 	flags = EQUIPMENT_PRESET_EXTRA
-
+	faction = FACTION_SURVIVOR
 	idtype = /obj/item/card/id/lanyard
 	assignment = "Survivor"
 	special_role = "MODE"

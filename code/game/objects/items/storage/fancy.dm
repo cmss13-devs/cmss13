@@ -270,6 +270,7 @@
 	name = "vial storage box"
 	storage_slots = 6
 	can_hold = list(/obj/item/reagent_container/glass/beaker/vial)
+	var/start_vials = 6
 	var/is_random
 
 
@@ -283,7 +284,7 @@
 			else
 				new /obj/item/reagent_container/glass/beaker/vial(src)
 	else
-		for(var/i=1; i <= storage_slots; i++)
+		for(var/i=1; i <= start_vials; i++)
 			new /obj/item/reagent_container/glass/beaker/vial(src)
 	update_icon()
 	return
@@ -291,6 +292,9 @@
 /obj/item/storage/fancy/vials/random
 	unacidable = 1
 	is_random = 1
+
+/obj/item/storage/fancy/vials/empty
+	start_vials = 0
 
 /obj/item/storage/lockbox/vials
 	name = "secure vial storage box"

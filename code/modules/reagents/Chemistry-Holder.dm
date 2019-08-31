@@ -453,7 +453,7 @@ var/const/INGEST = 2
 
 		var/datum/reagent/R = new D.type()
 		for(var/V in D.vars)//We do this so admin spawned chemicals don't get defaulted
-			if(V in list("id","name","properties","overdose", "overdose_critical", "nutriment_factor","custom_metabolism", "last_source_mob","color","key"))
+			if(V in list("id","name","description","properties","overdose", "overdose_critical", "nutriment_factor","custom_metabolism","last_source_mob","color","key"))
 				R.vars[V] = D.vars[V]
 		reagent_list += R
 		R.holder = src

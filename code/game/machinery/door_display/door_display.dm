@@ -199,6 +199,9 @@
 // Research cells have flashers and shutters/pod doors.
 /obj/machinery/door_display/research_cell
 	var/open_shutter = 0
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "containment"
+	maptext = ""
 
 /obj/machinery/door_display/research_cell/New()
 	..()
@@ -206,6 +209,9 @@
 		for(var/obj/machinery/flasher/F in machines)
 			if (F.id == id)
 				targets += F
+
+/obj/machinery/door_display/update_icon()
+	return
 
 /obj/machinery/door_display/research_cell/display_contents(var/mob/user as mob)
 	var/data = "<HTML><BODY><TT>"
@@ -266,7 +272,6 @@
 
 	add_fingerprint(usr)
 	updateUsrDialog()
-	update_icon()
 
 	return 1
 

@@ -950,7 +950,7 @@
 				var/tier = input(usr,"Enter the generation tier you wish. This will affect the number of properties (tier + 1), rarity of components and potential for good properties. Ought to be 1-4, max 10.") as num
 				if(tier > 10) tier = 10
 				var/datum/reagent/generated/R = new /datum/reagent/generated
-				var/list/stats_holder = list("name","properties","overdose","overdose_critical","nutriment_factor","custom_metabolism","color")
+				var/list/stats_holder = list("name","properties","description","overdose","overdose_critical","nutriment_factor","custom_metabolism","color")
 				chemical_gen_stats_list["[target]"] += stats_holder
 				R.id = target
 				R.gen_tier = tier
@@ -961,6 +961,7 @@
 				//Save all variables from our holder
 				R.name = chemical_gen_stats_list["[target]"]["name"]
 				R.properties = chemical_gen_stats_list["[target]"]["properties"]
+				R.description = chemical_gen_stats_list["[target]"]["description"]
 				R.overdose = chemical_gen_stats_list["[target]"]["overdose"]
 				R.overdose_critical = chemical_gen_stats_list["[target]"]["overdose_critical"]
 				R.nutriment_factor = chemical_gen_stats_list["[target]"]["nutriment_factor"]
@@ -1055,7 +1056,7 @@
 					to_chat(usr,SPAN_WARNING("This ID is already in use."))
 					return
 				var/datum/reagent/generated/R = new /datum/reagent/generated
-				var/list/stats_holder = list("name" = target,"properties" = list(),"overdose" = 15,"overdose_critical" = 30,"nutriment_factor" = 0,"custom_metabolism" = 0.2,"color" = text("#[][][]",num2hex(rand(0,255)),num2hex(rand(0,255)),num2hex(rand(0,255))))
+				var/list/stats_holder = list("name" = target,"properties" = list(),"description" = "","overdose" = 15,"overdose_critical" = 30,"nutriment_factor" = 0,"custom_metabolism" = 0.2,"color" = text("#[][][]",num2hex(rand(0,255)),num2hex(rand(0,255)),num2hex(rand(0,255))))
 				chemical_gen_stats_list["[target]"] += stats_holder
 				R.id = target
 				R.chemclass = CHEM_CLASS_NONE //So we don't count it towards defcon
@@ -1076,11 +1077,11 @@
 							var/list/pool
 							switch(property_type)
 								if("Negative")
-									pool = get_negative_chem_properties()
+									pool = get_negative_chem_properties(1)
 								if("Neutral")
-									pool = get_neutral_chem_properties()
+									pool = get_neutral_chem_properties(1)
 								if("Positive")
-									pool = get_positive_chem_properties()
+									pool = get_positive_chem_properties(1)
 								else
 									response = alert(usr,"No? Then..","Custom reagent [target]","Specific property","Specific number","No more properties")
 							pool = sortAssoc(pool)
@@ -1105,6 +1106,7 @@
 				//Save all variables from our holder
 				R.name = chemical_gen_stats_list["[target]"]["name"]
 				R.properties = chemical_gen_stats_list["[target]"]["properties"]
+				R.description = chemical_gen_stats_list["[target]"]["description"]
 				R.overdose = chemical_gen_stats_list["[target]"]["overdose"]
 				R.overdose_critical = chemical_gen_stats_list["[target]"]["overdose_critical"]
 				R.nutriment_factor = chemical_gen_stats_list["[target]"]["nutriment_factor"]

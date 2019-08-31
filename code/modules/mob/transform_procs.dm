@@ -168,7 +168,7 @@
 	return O
 
 //human -> alien
-/mob/living/carbon/human/proc/Alienize()
+/mob/living/carbon/human/proc/Alienize(var/list/types)
 	if (monkeyizing)
 		return
 	for(var/obj/item/W in src)
@@ -181,41 +181,50 @@
 	for(var/t in limbs)
 		qdel(t)
 
-//	var/alien_caste = "larva"
-	var/mob/living/carbon/Xenomorph/Larva/new_xeno = new /mob/living/carbon/Xenomorph/Larva(loc)
+	var/mob/living/carbon/Xenomorph/new_xeno
+	if(!types)
+		new_xeno = new /mob/living/carbon/Xenomorph/Larva(loc)
+	else
+		var/type = pick(types)
+		switch(type)
+			if("Runner")
+				new_xeno = new /mob/living/carbon/Xenomorph/Runner(loc)
+			if("Drone")
+				new_xeno = new /mob/living/carbon/Xenomorph/Drone(loc)
+			if("Sentinel")
+				new_xeno = new /mob/living/carbon/Xenomorph/Sentinel(loc)
+			if("Defender")
+				new_xeno = new /mob/living/carbon/Xenomorph/Defender(loc)
+			if("Lurker")
+				new_xeno = new /mob/living/carbon/Xenomorph/Lurker(loc)
+			if("Warrior")
+				new_xeno = new /mob/living/carbon/Xenomorph/Warrior(loc)
+			if("Burrower")
+				new_xeno = new /mob/living/carbon/Xenomorph/Burrower(loc)
+			if("Carrier")
+				new_xeno = new /mob/living/carbon/Xenomorph/Carrier(loc)
+			if("Spitter")
+				new_xeno = new /mob/living/carbon/Xenomorph/Spitter(loc)
+			if("Hivelord")
+				new_xeno = new /mob/living/carbon/Xenomorph/Hivelord(loc)
+			if("Ravager")
+				new_xeno = new /mob/living/carbon/Xenomorph/Ravager(loc)
+			if("Boiler")
+				new_xeno = new /mob/living/carbon/Xenomorph/Boiler(loc)
+			if("Crusher")
+				new_xeno = new /mob/living/carbon/Xenomorph/Crusher(loc)
+			if("Praetorian")
+				new_xeno = new /mob/living/carbon/Xenomorph/Praetorian(loc)
+			if("Queen")
+				new_xeno = new /mob/living/carbon/Xenomorph/Queen(loc)
+			else
+				new_xeno = new /mob/living/carbon/Xenomorph/Drone(loc)
 
 	new_xeno.a_intent = "hurt"
 	new_xeno.key = key
 	if(new_xeno.client) new_xeno.client.change_view(world.view)
 
 	to_chat(new_xeno, "<B>You are now an alien.</B>")
-	spawn(0)//To prevent the proc from returning null.
-		qdel(src)
-	return
-
-//human -> alien drone
-/mob/living/carbon/human/proc/Alienize2()
-	if (monkeyizing)
-		return
-	for(var/obj/item/W in src)
-		drop_inv_item_on_ground(W)
-	regenerate_icons()
-	monkeyizing = 1
-	canmove = 0
-	icon = null
-	invisibility = 101
-	for(var/t in limbs)
-		qdel(t)
-
-//	var/alien_caste = "Drone"
-	var/mob/living/carbon/Xenomorph/Drone/new_xeno = new /mob/living/carbon/Xenomorph/Drone(loc)
-
-	new_xeno.a_intent = "hurt"
-	new_xeno.key = key
-	if(new_xeno.client) new_xeno.client.change_view(world.view)
-
-	to_chat(new_xeno, "<b>You are an alien!</b>")
-	to_chat(new_xeno, "<b>Use Say \"; message\" to communicate with other aliens.</b>")
 	spawn(0)//To prevent the proc from returning null.
 		qdel(src)
 	return

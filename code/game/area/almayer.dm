@@ -416,8 +416,18 @@
 	icon_state = "science"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/medical/testlab
+	name = "\improper Medical Research test lab"
+	icon_state = "science"
+	fake_zlevel = 1 // upperdeck
+
 /area/almayer/medical/containment
 	name = "\improper Medical Research containment"
+	icon_state = "science"
+	fake_zlevel = 1 // upperdeck
+
+/area/almayer/medical/containment/cell
+	name = "\improper Medical Research containment cells"
 	icon_state = "science"
 	fake_zlevel = 1 // upperdeck
 	flags_atom = AREA_AVOID_BIOSCAN|AREA_NOTUNNEL

@@ -2288,9 +2288,7 @@
 	},
 /area/almayer/living/basketball)
 "afC" = (
-/obj/structure/table/almayer,
-/obj/item/cell/high,
-/obj/item/book/manual/marine_law,
+/obj/machinery/vending/walkman,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -3526,9 +3524,6 @@
 /turf/open/floor/almayer,
 /area/almayer/living/cafeteria_officer)
 "ait" = (
-/obj/machinery/door/airlock/multi_tile/almayer/comdoor{
-	name = "\improper Conference Room"
-	},
 /obj/machinery/door/firedoor/border_only/almayer{
 	tag = "icon-door_open";
 	icon_state = "door_open";
@@ -3536,6 +3531,9 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Conference Room"
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -27180,8 +27178,7 @@
 	},
 /area/almayer/medical/operating_room_two)
 "bup" = (
-/obj/structure/table/almayer,
-/obj/item/facepaint/green,
+/obj/machinery/vending/walkman,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"

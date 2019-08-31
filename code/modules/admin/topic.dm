@@ -2223,12 +2223,16 @@
 				where = "onfloor"
 
 		if ( where == "inmarked" )
-			if ( !marked_datum )
-				to_chat(usr, "You don't have any object marked. Abandoning spawn.")
+			if ( !marked_datums.len )
+				to_chat(usr, "You don't have any datum marked. Abandoning spawn.")
 				return
 			else
-				if ( !istype(marked_datum,/atom) )
-					to_chat(usr, "The object you have marked cannot be used as a target. Target must be of type /atom. Abandoning spawn.")
+				var/datum/D = input_marked_datum(marked_datums)
+				if(!D)
+					return
+
+				if ( !istype(D,/atom) )
+					to_chat(usr, "The datum you have marked cannot be used as a target. Target must be of type /atom. Abandoning spawn.")
 					return
 
 		var/atom/target //Where the object will be spawned
@@ -2240,7 +2244,12 @@
 					if ("relative")
 						target = locate(loc.x + X,loc.y + Y,loc.z + Z)
 			if ( "inmarked" )
-				target = marked_datum
+				var/datum/D = input_marked_datum(marked_datums)
+				if(!D)
+					to_chat(usr, "Invalid marked datum. Abandoning.")
+					return
+
+				target = D
 
 		if(target)
 			for (var/path in paths)

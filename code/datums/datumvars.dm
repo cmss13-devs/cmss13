@@ -49,28 +49,21 @@ client
 						var filter_text = document.getElementById('filter');
 						var filter = filter_text.value.toLowerCase();
 
-						//This part here resets everything to how it was at the start so the filter is applied to the complete list. Screw efficiency, it's client-side anyway and it only looks through 200 or so variables at maximum anyway (mobs).
-						if(complete_list != null && complete_list != ""){
-							var vars_ol1 = document.getElementById("vars");
-							vars_ol1.innerHTML = complete_list
-						}
-
 						if(filter.value == ""){
 							return;
-						}else{
-							var vars_ol = document.getElementById('vars');
-							var lis = vars_ol.getElementsByTagName("li");
+						}
 
-							for ( var i = 0; i < lis.length; ++i )
+						var vars_ol = document.getElementById('vars');
+						var lis = vars_ol.getElementsByTagName("li");
+
+						for ( var i = 0; i < lis.length; ++i )
+						{
+							var li = lis\[i\];
+							if ( li.innerText.toLowerCase().indexOf(filter) == -1 )
 							{
-								try{
-									var li = lis\[i\];
-									if ( li.innerText.toLowerCase().indexOf(filter) == -1 )
-									{
-										vars_ol.removeChild(li);
-										i--;
-									}
-								}catch(err) {   }
+								li.style.display = "none"
+							} else {
+								li.style.display = "block"
 							}
 						}
 					}
@@ -95,7 +88,7 @@ client
 					}
 				</script> "}
 
-		body += "<body onload='selectTextField(); updateSearch()' onkeyup='updateSearch()'>"
+		body += "<body onload='selectTextField(); updateSearch()'>"
 
 		body += "<div align='center'><table width='100%'><tr><td width='50%'>"
 
@@ -148,7 +141,7 @@ client
 
 		body += "<div align='center'><b><font size='1'>[formatted_type]</font></b>"
 
-		if(src.admin_holder && src.admin_holder.marked_datum && src.admin_holder.marked_datum == D)
+		if(admin_holder && admin_holder.marked_datums && D in admin_holder.marked_datums)
 			body += "<br><font size='1' color='red'><b>Marked Object</b></font>"
 
 		body += "</div>"
@@ -172,10 +165,12 @@ client
   					<option value> </option>
 				"}
 
-
-		body += "<option value='?_src_=vars;mark_object=\ref[D]'>Mark Object</option>"
+		if(admin_holder)
+			body += "<option value='?_src_=vars;mark_object=\ref[D]'>[(D in admin_holder.marked_datums) ? "Unm" : "M"]ark Datum</option>"
 		if(ismob(D))
 			body += "<option value='?_src_=vars;mob_player_panel=\ref[D]'>Show player panel</option>"
+
+		body += "<option value='?_src_=vars;adv_proccall=\ref[D]'>Advanced ProcCall</option>"
 
 		body += "<option value>---</option>"
 
@@ -229,7 +224,7 @@ client
 		body += "<b>C</b> - Change, asks you for the var type first.<br>"
 		body += "<b>M</b> - Mass modify: changes this variable for all objects of this type.</font><br>"
 
-		body += "<hr><table width='100%'><tr><td width='20%'><div align='center'><b>Search:</b></div></td><td width='80%'><input type='text' id='filter' name='filter_text' value='' style='width:100%;'></td></tr></table><hr>"
+		body += "<hr><table width='100%'><tr><td width='20%'><div align='center'><b>Search:</b></div></td><td width='80%'><input type='text' id='filter' name='filter_text' value='' onkeyup='updateSearch()' style='width:100%;'></td></tr></table><hr>"
 
 		body += "<ol id='vars'>"
 
@@ -559,8 +554,18 @@ client
 			to_chat(usr, "This can only be done to instances of type /datum")
 			return
 
-		src.admin_holder.marked_datum = D
+		if(D in admin_holder.marked_datums)
+			admin_holder.marked_datums -= D
+		else
+			admin_holder.marked_datums += D
 		href_list["datumrefresh"] = href_list["mark_object"]
+
+	else if(href_list["adv_proccall"])
+		if(!check_rights(R_DEBUG))	return
+
+		var/datum/D = locate(href_list["adv_proccall"])
+		callproc(D)
+
 
 	else if(href_list["rotatedatum"])
 		if(!check_rights(0))	return

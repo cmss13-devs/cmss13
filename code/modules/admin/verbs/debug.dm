@@ -26,7 +26,7 @@ Because if you select a player mob as owner it tries to do the proc for
 But you can call procs that are of type /mob/living/carbon/human/proc/ for that player.
 */
 
-/client/proc/callproc()
+/client/proc/callproc(var/datum/target_datum=null)
 	set category = "Debug"
 	set name = "Advanced ProcCall"
 	set waitfor = 0
@@ -34,17 +34,22 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	if(!check_rights(R_DEBUG)) return
 	if(config.debugparanoid && !check_rights(R_ADMIN)) return
 
-	var/target = null
-	var/targetselected = 0
+	var/target = target_datum
+	var/targetselected = 1
 	var/lst[] // List reference
 	lst = new/list() // Make the list
 	var/returnval = null
 	var/class = null
 
-	switch(alert("Proc owned by something?",,"Yes","No"))
-		if("Yes")
+	if(isnull(target))
+		targetselected = 0
+		if(alert("Proc owned by something?",,"Yes","No") == "Yes")
 			targetselected = 1
-			class = input("Proc owned by...","Owner",null) as null|anything in list("Obj","Mob","Area or Turf","Client")
+			var/list/options = list("Obj","Mob","Area or Turf","Client")
+			if(admin_holder && admin_holder.marked_datums.len)
+				options += "Marked datum"
+
+			class = input("Proc owned by...","Owner",null) as null|anything in options
 			switch(class)
 				if("Obj")
 					target = input("Enter target:","Target",usr) as obj in object_list
@@ -57,11 +62,11 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 					for(var/client/C)
 						keys += C
 					target = input("Please, select a player!", "Selection", null, null) as null|anything in keys
+				if("Marked datum")
+					var/datum/D = input_marked_datum(admin_holder.marked_datums)
+					target = D
 				else
 					return
-		if("No")
-			target = null
-			targetselected = 0
 
 	var/procname = input("Proc path, eg: /proc/fake_blood","Path:", null) as text|null
 	if(!procname)	return

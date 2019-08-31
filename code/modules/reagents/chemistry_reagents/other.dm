@@ -437,7 +437,6 @@
 	description = "Nitroglycerin is a heavy, colorless, oily, explosive liquid obtained by nitrating glycerol. Despite being a highly volatile material, it is used for many medical purposes."
 	reagent_state = LIQUID
 	color = "#808080" // rgb: 128, 128, 128
-	chemclass = CHEM_CLASS_RARE
 
 	custom_metabolism = 0.01
 
@@ -928,7 +927,7 @@
 	description = "A white-ish plasma high in protein..."
 	color = "#c3c371"
 	overdose = 80
-	overdose_critical = 120
+	overdose_critical = 100
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
 
@@ -937,7 +936,8 @@
 	if(!.) return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.species.name == "Synthetic" || H.species.name == "Early Synthetic" || H.species.name == "Second Generation Synthetic")
+		if((locate(/obj/item/alien_embryo) in H.contents) || (H.species.flags & IS_SYNTHETIC)) 
+			volume = 0
 			return
 		var/mob/living/carbon/C = M
 		C.blood_volume = max(C.blood_volume-10,0)
@@ -946,7 +946,7 @@
 /datum/reagent/plasma/egg/on_overdose(mob/living/M) // plasma start to grow faster
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.species.name == "Synthetic" || H.species.name == "Early Synthetic" || H.species.name == "Second Generation Synthetic")
+		if(H.species.flags & IS_SYNTHETIC)
 			return
 		H.blood_volume = max(H.blood_volume-20,0)
 		volume += 2 
@@ -954,7 +954,7 @@
 /datum/reagent/plasma/egg/on_overdose_critical(mob/living/M) // it turns into an actual embryo at this point
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.species.name == "Synthetic" || H.species.name == "Early Synthetic" || H.species.name == "Second Generation Synthetic")
+		if(H.species.flags & IS_SYNTHETIC)
 			return
 		volume = 0
 		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)

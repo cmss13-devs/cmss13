@@ -252,9 +252,8 @@
 	
 	//Nutriment factor
 	var/gen_nutriment_factor = 0
-	if(prob(5)) //5% chance of even having a nutriment_factor > 0
+	if(chemical_gen_stats_list["[src.id]"]["properties"] && PROPERTY_NUTRITIOUS in chemical_gen_stats_list["[src.id]"]["properties"])
 		gen_nutriment_factor = 0.5
-		src.add_property("nutritious") //add the property nutritious
 		for(var/i=1;i<=rand(1,5);i++) //min 0.5, to max 3 (the nutriment factor of pure nutriment)
 			if(prob(60))//Deviating from 0.5 gets exponentially more rare.
 				gen_nutriment_factor += 0.5
@@ -281,16 +280,74 @@
 	
 	return TRUE
 
-/datum/proc/get_negative_chem_properties()
-	var/list/negative_properties = list(PROPERTY_HYPOXEMIC,PROPERTY_TOXIC,PROPERTY_CAUSTIC,PROPERTY_BIOCIDIC,PROPERTY_RADIOACTIVE,PROPERTY_KETOGENIC,PROPERTY_HEMOLYTIC,PROPERTY_CARCINOGENIC,PROPERTY_PAINING,PROPERTY_NEUROINHIBITING,PROPERTY_ALCOHOLIC,PROPERTY_HALLUCINOGENIC,PROPERTY_HEPATOTOXIC,PROPERTY_NEPHROTOXIC,PROPERTY_PNEUMOTOXIC,PROPERTY_OCULOTOXIC,PROPERTY_CARDIOTOXIC,PROPERTY_NEUROTOXIC,PROPERTY_NEUROSEDATIVE)
+/datum/proc/get_negative_chem_properties(var/admin_properties)
+	var/list/negative_properties = list(PROPERTY_HYPOXEMIC = "Reacts with hemoglobin in red blood cells preventing oxygen from being absorbed, resulting in hypoxemia.",\
+										PROPERTY_TOXIC = "Poisonous substance which causes harm on contact with or through absorption by organic tissues, resulting in bad health or severe illness.",\
+										PROPERTY_CORROSIVE = "Damages or destroys other substances on contact through a chemical reaction. Causes chemical burns on contact with living tissue.",\
+										PROPERTY_BIOCIDIC = "Ruptures cell membranes on contact, destroying most types of organic tissue.",\
+										PROPERTY_RADIOACTIVE = "The elements in the compound are unstable, causing an emission of ionizing radiation.",\
+										PROPERTY_HEMOLYTIC = "Causes intravascular hemolysis, resulting in the destruction of erythrocytes (red blood cells) in the bloodstream. This can result in Hemoglobinemia, where a high concentration of hemoglobin is released into the blood plasma.",\
+										PROPERTY_HEMORRAGING = "Ruptures endothelial cells making up bloodvessels, causing blood to escape from the circulatory system.",\
+										PROPERTY_CARCINOGENIC = "Penetrates the cell nucleus causing direct damage to the deoxyribonucleic acid in cells resulting in cancer and abnormal cell proliferation. In extreme cases causing hyperactive apoptosis and potentially atrophy.",\
+										PROPERTY_NECROTIZING = "The chemical eats through and rots flesh, causing infections and necrosis. High concentrations may penetrate the bone tissue and cause osteonecrosis.",\
+										PROPERTY_HEPATOTOXIC = "Damages hepatocytes in the liver, resulting in liver deterioration and eventually liver failure.",\
+										PROPERTY_NEPHROTOXIC = "Causes deterioration and damage to podocytes in the kidney resulting in potential kidney failure.",\
+										PROPERTY_PNEUMOTOXIC = "Toxic substance which causes damage to connective tissue that forms the support structure (the interstitium) of the alveoli in the lungs.",\
+										PROPERTY_OCULOTOXIC = "Damages the photoreceptive cells in the eyes impairing neural transmissions to the brain, resulting in loss of sight or blindness.",\
+										PROPERTY_CARDIOTOXIC = "Attacks cardiomyocytes when passing through the heart in the bloodstream. This disrupts the cardiac cycle and can lead to cardiac arrest.",\
+										PROPERTY_NEUROTOXIC = "Breaks down neurons causing widespread damage to the central nervous system and brain functions.")
+										
+	if(admin_properties)
+		negative_properties += list(	PROPERTY_EMBRYONIC = "The chemical agent carries causes an infection of type REDACTED parasitic embryonic organism.",\
+										PROPERTY_TRANSFORMING = "The chemical agent carries REDACTED, altering the host psychologically and physically.",\
+										PROPERTY_RAVENING = "Binds to and neutralizes the X-65 biological organism.")
 	return negative_properties
 
-/datum/proc/get_neutral_chem_properties()
-	var/list/neutral_properties = list(PROPERTY_HYPERTHERMIC,PROPERTY_HYPOTHERMIC,PROPERTY_BALDING,PROPERTY_FLUFFING,PROPERTY_IRRITATING,PROPERTY_ENJOYABLE,PROPERTY_GASTROTOXIC,PROPERTY_PSYCHOSTIMULATING,PROPERTY_ANTIHALLUCINOGENIC)
+/datum/proc/get_neutral_chem_properties(var/admin_properties)
+	var/list/neutral_properties = list( PROPERTY_KETOGENIC = "Activates ketosis causing the liver to rapidly burn fatty acids and alcohols in the body, resulting in weight loss. Can cause ketoacidosis in high concentrations, resulting in a buildup of acids and lowered pH levels in the blood.",\
+										PROPERTY_PAINING = "Activates the somatosensory system causing neuropathic pain all over the body. Unlike nociceptive pain, this is not caused to any tissue damage and is solely perceptive.",\
+										PROPERTY_NEUROINHIBITING = "Inhibits neurological processes in the brain such to sight, hearing and speech which can result in various associated disabilities. Restoration will require surgery.",\
+										PROPERTY_ALCOHOLIC = "Binds to glutamate neurotransmitters and gamma aminobutyric acid (GABA), slowing brain functions response to stimuli. This effect is also known as intoxication.",\
+										PROPERTY_HALLUCINOGENIC = "Causes perception-like experiences that occur without an external stimulus, which are vivid and clear, with the full force and impact of normal perceptions, though not under voluntary control.",\
+										PROPERTY_RELAXING = "Has a sedative effect on neuromuscular junctions depressing the force of muscle contractions. High concentrations can cause respiratory failure and cardiac arrest.",\
+										PROPERTY_HYPERTHERMIC = "Causes an endothermic reaction when metabolized in the body, decreasing internal body temperature.",\
+										PROPERTY_HYPOTHERMIC = "Causes an exothermic reaction when metabolized in the body, increasing internal body temperature.",\
+										PROPERTY_BALDING = "Damages the hair follicles in the skin causing extreme alopecia, also refered to as baldness.",\
+										PROPERTY_FLUFFING = "Accelerates cell division in the hair follicles resulting in random and excessive hairgrowth.",\
+										PROPERTY_ALLERGENIC = "Creates a hyperactive immune response in the body, resulting in irritation.",\
+										PROPERTY_CRYOMETABOLIZING = "The chemical is passively metabolized with no other effects in temperatures above 170 kelvin.",\
+										PROPERTY_EUPHORIC = "Causes the release of endorphin hormones resulting intense excitement and happiness.",\
+										PROPERTY_EMETIC = "Acts on the enteric nervous system to induce emesis, the forceful emptying of the stomach.",\
+										PROPERTY_PSYCHOSTIMULATING = "Stimulates psychological functions causing increased awareness, focus and anti-depressing effects.",\
+										PROPERTY_ANTIHALLUCINOGENIC = "Stabilizes perseptive abnormalities such as hallucinations caused by mindbreaker toxin.")
+	if(admin_properties)
+		neutral_properties += list(		PROPERTY_CROSSMETABOLIZING = "The chemical can be metabolized in other humanoid lifeforms.")
 	return neutral_properties
 
-/datum/proc/get_positive_chem_properties()
-	var/list/positive_properties = list(PROPERTY_ANTITOXIC,PROPERTY_ANTICAUSTIC,PROPERTY_BIOPEUTIC,PROPERTY_REPAIRING,PROPERTY_NERVESTIMULATING,PROPERTY_MUSCLESTIMULATING,PROPERTY_PAINKILLING,PROPERTY_HEPATOPEUTIC,PROPERTY_NEPHROPEUTIC,PROPERTY_PNEUMOPEUTIC,PROPERTY_OCULOPEUTIC,PROPERTY_CARDIOPEUTIC,PROPERTY_NEUROPEUTIC,PROPERTY_BONEMENDING,PROPERTY_FLUXING,PROPERTY_NEUROCRYOGENIC,PROPERTY_ANTIPARASITIC)
+/datum/proc/get_positive_chem_properties(var/admin_properties)
+	var/list/positive_properties = list(PROPERTY_NUTRITIOUS = "The compound can be used as, or be broken into, nutrition for cell metabolism.",\
+										PROPERTY_ANTITOXIC = "Absorbs and neutralizes toxic chemicals in the bloodstream and allowing them to be excreted safely.",\
+										PROPERTY_ANTICORROSIVE = "Accelerates cell division around corroded areas in order to replace the lost tissue. Excessive use can trigger apoptosis.",\
+										PROPERTY_NEOGENETIC = "Regenerates ruptured membranes resulting in the repair of damaged organic tissue. High concentrations can corrode the cell membranes.",\
+										PROPERTY_REPAIRING = "Repairs cybernetic organs by <B>REDACTED</B>.",\
+										PROPERTY_HEMOGENIC = "Increases the production of erythrocytes (red blood cells) in the bonemarrow, leading to polycythemia, an elevated volume of erythrocytes in the blood.",\
+										PROPERTY_NERVESTIMULATING = "Increases neuron communication speed across synapses resulting in improved reaction time, awareness and muscular control.",\
+										PROPERTY_MUSCLESTIMULATING = "Stimulates neuromuscular junctions increasing the force of muscle contractions, resulting in increased strength. High doses might exhaust the cardiac muscles.",\
+										PROPERTY_PAINKILLING = "Binds to opioid receptors in the brain and spinal cord reducing the amount of pain signals being sent to the brain.",\
+										PROPERTY_ANTISEPTIC = "Powerful antiseptic that removes internal infections by killing germs. High concentrations are toxic, but is more effective and can potentially remove necrosis.",\
+										PROPERTY_HEPATOPEUTIC = "Treats deteriorated hepatocytes and damaged tissues in the liver, restoring organ functions.",\
+										PROPERTY_NEPHROPEUTIC = "Heals damaged and deteriorated podocytes in the kidney, restoring organ functions.",\
+										PROPERTY_PNEUMOPEUTIC = "Mends the interstitium tissue of the alveoli restoring respiratory functions in the lungs.",\
+										PROPERTY_OCULOPEUTIC = "Restores sensory capabilities of photoreceptive cells in the eyes returning lost vision.",\
+										PROPERTY_CARDIOPEUTIC = "Regenerates damaged cardiomyocytes and recovers a correct cardiac cycle and heart functionality.",\
+										PROPERTY_NEUROPEUTIC = "Rebuilds damaged and broken neurons in the central nervous system re-establishing brain functionality.",\
+										PROPERTY_BONEMENDING = "Rapidly increases the production of osteoblasts and chondroblasts while also accelerating the process of endochondral ossification. This allows broken bone tissue to be re-wowen and restored quickly if the bone is correctly positioned. Overdosing may result in the bone structure growing abnormally and can have adverse effects on the skeletal structure.",\
+										PROPERTY_FLUXING = "Liquifies large crystalline and metallic structures under bodytemperature in the body and allows it to migrate to and be excreted through the skin.",\
+										PROPERTY_NEUROCRYOGENIC = "Causes a temporal freeze of all neurological processes and cellular respirations in the brain. This allows the brain to be preserved for long periods of time.",\
+										PROPERTY_ANTIPARASITIC = "Antimicrobial property specifically targeting parasitic pathogens in the body disrupting their growth and potentially killing them.")
+	if(admin_properties)
+		positive_properties += list(	PROPERTY_OMNIPOTENT = "Fully revitalizes all bodily functions.",\
+										PROPERTY_CURING = "Binds to and neutralizes the X-65 biological organism.")
 	return positive_properties
 
 /datum/reagent/proc/add_property(var/my_property, var/my_potency)
@@ -298,6 +355,7 @@
 	var/list/negative_properties = get_negative_chem_properties()
 	var/list/neutral_properties = get_neutral_chem_properties()
 	var/list/positive_properties = get_positive_chem_properties()
+	var/list/all_properties = negative_properties + neutral_properties + positive_properties
 	
 	//Determine potency modifier
 	var/potency
@@ -323,6 +381,7 @@
 	//Determine properties
 	var/roll = rand(1,100)
 	var/property
+	var/info
 	if(my_property)
 		property = my_property
 	else
@@ -359,7 +418,7 @@
 	//Override conflicting properties
 	if(chemical_gen_stats_list["[src.id]"]["properties"])
 		//The list below defines what properties should override each other.
-		var/list/conflicting_properties = list(PROPERTY_TOXIC = PROPERTY_ANTITOXIC,PROPERTY_CAUSTIC = PROPERTY_ANTICAUSTIC,PROPERTY_BIOCIDIC = PROPERTY_BIOPEUTIC,PROPERTY_HYPERTHERMIC = PROPERTY_HYPOTHERMIC,PROPERTY_NUTRITIOUS = PROPERTY_KETOGENIC,PROPERTY_PAINING = PROPERTY_PAINKILLING,PROPERTY_HALLUCINOGENIC = PROPERTY_ANTIHALLUCINOGENIC,PROPERTY_HEPATOTOXIC = PROPERTY_HEPATOPEUTIC,PROPERTY_NEPHROTOXIC = PROPERTY_NEPHROPEUTIC,PROPERTY_PNEUMOTOXIC = PROPERTY_PNEUMOPEUTIC, PROPERTY_OCULOTOXIC = PROPERTY_OCULOPEUTIC, PROPERTY_CARDIOTOXIC = PROPERTY_CARDIOPEUTIC,PROPERTY_NEUROTOXIC = PROPERTY_NEUROPEUTIC, PROPERTY_FLUXING = PROPERTY_REPAIRING, PROPERTY_NEUROSEDATIVE = PROPERTY_MUSCLESTIMULATING)
+		var/list/conflicting_properties = list(PROPERTY_TOXIC = PROPERTY_ANTITOXIC,PROPERTY_CORROSIVE = PROPERTY_ANTICORROSIVE,PROPERTY_BIOCIDIC = PROPERTY_NEOGENETIC,PROPERTY_HYPERTHERMIC = PROPERTY_HYPOTHERMIC,PROPERTY_NUTRITIOUS = PROPERTY_KETOGENIC,PROPERTY_PAINING = PROPERTY_PAINKILLING,PROPERTY_HALLUCINOGENIC = PROPERTY_ANTIHALLUCINOGENIC,PROPERTY_HEPATOTOXIC = PROPERTY_HEPATOPEUTIC,PROPERTY_NEPHROTOXIC = PROPERTY_NEPHROPEUTIC,PROPERTY_PNEUMOTOXIC = PROPERTY_PNEUMOPEUTIC, PROPERTY_OCULOTOXIC = PROPERTY_OCULOPEUTIC, PROPERTY_CARDIOTOXIC = PROPERTY_CARDIOPEUTIC,PROPERTY_NEUROTOXIC = PROPERTY_NEUROPEUTIC, PROPERTY_FLUXING = PROPERTY_REPAIRING, PROPERTY_RELAXING = PROPERTY_MUSCLESTIMULATING,PROPERTY_ANTISEPTIC = PROPERTY_NECROTIZING,PROPERTY_HEMOGENIC = PROPERTY_HEMOLYTIC,PROPERTY_HEMOGENIC = PROPERTY_HEMORRAGING)
 		var/match
 		for(var/P in chemical_gen_stats_list["[src.id]"]["properties"])
 			if(P == property)
@@ -374,12 +433,16 @@
 						break
 			if(match)
 				chemical_gen_stats_list["[src.id]"]["properties"] -= match
-				break
+	//Handle description
+			else
+				info += text("<BR><B>[]</B> - []<BR>",capitalize(P),all_properties["[P]"]) //We only keep the description we didn't override
 	
-	//Still need to make a check to ensure we don't get conflicting properties
+	info += text("<BR><B>[]</B> - []<BR>",capitalize(property),all_properties["[property]"]) //We add the description for the new property
+
 	var/list/property_potency[0]
 	property_potency["[property]"] = potency
 	chemical_gen_stats_list["[src.id]"]["properties"] += property_potency
+	chemical_gen_stats_list["[src.id]"]["description"] = info
 	return property_potency
 
 /////////////////////////RANDOMLY GENERATED CHEMICALS/////////////////////////
@@ -397,12 +460,13 @@
 /datum/reagent/generated/New()
 	//Generate stats
 	if(!chemical_gen_stats_list["[src.id]"])
-		var/list/stats_holder = list("name","properties","overdose","overdose_critical","nutriment_factor","custom_metabolism","color")
+		var/list/stats_holder = list("name","properties","description","overdose","overdose_critical","nutriment_factor","custom_metabolism","color")
 		chemical_gen_stats_list["[src.id]"] += stats_holder
 		generate_name()
 		generate_stats()
 	name = chemical_gen_stats_list["[src.id]"]["name"]
 	properties = chemical_gen_stats_list["[src.id]"]["properties"]
+	description = chemical_gen_stats_list["[src.id]"]["description"]
 	overdose = chemical_gen_stats_list["[src.id]"]["overdose"]
 	overdose_critical = chemical_gen_stats_list["[src.id]"]["overdose_critical"]
 	nutriment_factor = chemical_gen_stats_list["[src.id]"]["nutriment_factor"]
@@ -501,7 +565,7 @@
 	result = "iota"
 	gen_tier = 3
 
-/datum/reagent/generated/eta
+/datum/reagent/generated/iota
 	id = "iota"
 	gen_tier = 3
 
@@ -518,28 +582,37 @@
 /////////////////////////PROCESS/////////////////////////
 /*
 	//Template
-	if("keyword") //(in layman's terms)
+	if("keyword")
 				if(M.stat == DEAD) <-- add this if we don't want it to work while dead
 					return
-				if(overdose && volume >= overdose)
+				if(is_OD)
 					//overdose stuff
-					if(overdose_critical && volume > overdose_critical)
+					if(is_COD)
 						//critical overdose stuff
 				else
-					//normal stff
+					//normal stuff
 */
 /datum/reagent/generated/on_mob_life(mob/living/M, alien)
 	holder.remove_reagent(id, custom_metabolism) //By default it slowly disappears.
+	
+	if((alien == IS_XENOS || alien == IS_YAUTJA || alien == IS_HORROR) && !(properties[PROPERTY_CROSSMETABOLIZING])) return
+	if(properties[PROPERTY_CRYOMETABOLIZING] && M.bodytemperature > 170) return
+
 	var/is_OD
 	var/is_COD
 	if(overdose && volume >= overdose)
+		M.last_damage_source = "Experimental chemical overdose"
+		M.last_damage_mob = last_source_mob
 		is_OD = 1
 		if(overdose_critical && volume > overdose_critical)
 			is_COD = 1
-		
-	if(alien == IS_XENOS || alien == IS_YAUTJA || alien == IS_HORROR) return
 
 	for(var/P in properties)
+		
+		if(!is_OD && P in get_negative_chem_properties(1))
+			M.last_damage_source = "Experimental chemical overdose"
+			M.last_damage_mob = last_source_mob
+
 		var/potency = properties[P]
 		if(!potency) continue
 		switch(P)
@@ -547,34 +620,34 @@
 			if(PROPERTY_HYPOXEMIC) //(oxygen damage)
 				if(is_OD)
 					//overdose stuff
-					M.apply_damages(potency*2, 0, potency*2)
-					M.adjustOxyLoss(4*potency)
+					M.apply_damages(potency, 0, potency)
+					M.adjustOxyLoss(5*potency)
 					if(is_COD)
 						//critical overdose stuff
-						M.apply_damages(potency*10, 0, potency*4)
+						M.apply_damages(potency*5, 0, 2*potency)
 				else
 					//normal stuff
 					M.adjustOxyLoss(2*potency)
 				if(prob(10)) M.emote("gasp")
 			if(PROPERTY_TOXIC) //toxin damage
 				if(is_OD)
-					M.adjustToxLoss(potency*2)
+					M.adjustToxLoss(2*potency)
 					if(is_COD)
 						M.adjustToxLoss(potency*4)
 				else
 					M.adjustToxLoss(potency)
-			if(PROPERTY_CAUSTIC) //burn damage
+			if(PROPERTY_CORROSIVE) //burn damage
 				if(is_OD)
-					M.take_limb_damage(0,1*potency)
+					M.take_limb_damage(0,2*potency)
 					if(is_COD)
-						M.take_limb_damage(0,2*potency)
+						M.take_limb_damage(0,4*potency)
 				else
 					M.take_limb_damage(0,potency)
 			if(PROPERTY_BIOCIDIC) //brute damage
 				if(is_OD)
-					M.take_limb_damage(1*potency)
+					M.take_limb_damage(2*potency)
 					if(is_COD)
-						M.take_limb_damage(2*potency)
+						M.take_limb_damage(4*potency)
 				else
 					M.take_limb_damage(potency)
 			if(PROPERTY_RADIOACTIVE) //radiation damage
@@ -584,90 +657,71 @@
 						M.radiation += 4*potency
 				else
 					M.radiation += potency
-			if(PROPERTY_KETOGENIC) //weight loss
-				if(is_OD)
-					M.nutrition = max(M.nutrition - 10*potency, 0)
-					M.overeatduration = 0
-					if(is_COD)
-						M.apply_damages(2*potency, 2*potency)
-				else
-					M.nutrition = max(M.nutrition - 5*potency, 0)
-					M.overeatduration = 0
 			if(PROPERTY_HEMOLYTIC) //blood loss
 				if(iscarbon(M))
 					var/mob/living/carbon/C = M
 					if(C)
 						if(is_OD)
-							C.blood_volume -= 6*potency
+							C.blood_volume = max(C.blood_volume-8*potency,0)
+							M.drowsyness = min(M.drowsyness + potency,15*potency)
+							M.reagent_move_delay_modifier += potency
+							if(prob(10)) M.emote(pick("yawn","gasp"))
 							if(is_COD)
-								C.blood_volume -= 6*potency
+								M.adjustOxyLoss(4*potency)
 						else
 							C.blood_volume = max(C.blood_volume-4*potency,0)
+			if(PROPERTY_HEMORRAGING) //internal bleeding
+				var/mob/living/carbon/human/C = M
+				if(C)
+					var/datum/limb/L = pick(C.limbs)
+					if(L && !(L.status & LIMB_ROBOT))
+						if(is_OD)
+							L.germ_level += 10*potency //germs entering the bloodstream. Think gutbacteria etc
+							if(L.internal_organs)
+								var/datum/internal_organ/O = pick(L.internal_organs)//Organs can't bleed, so we just damage them
+								O.damage += 0.5*potency
+							if(is_COD)
+								if(prob(20*potency))
+									var/datum/wound/internal_bleeding/I = new (rand(5*potency, 20*potency))
+									L.wounds += I
+						else if(prob(5*potency))
+							var/datum/wound/internal_bleeding/I = new (rand(potency, 5*potency))
+							L.wounds += I
+						if(prob(5*potency))
+							spawn L.owner.emote("me", 1, "coughs up blood!")
+							L.owner.drip(10)
 			if(PROPERTY_CARCINOGENIC) //clone damage
 				if(is_OD)
 					M.adjustCloneLoss(2*potency)
 					if(is_COD)
-						var/mob/living/carbon/human/C = M
-						if(C)
-							var/datum/limb/L = pick(C.limbs)
-							if(L && L.name != "head" && prob(10*potency))
-								L.droplimb(0, 0, "dangerous chemicals")
+						M.take_limb_damage(2*potency)//Hyperactive apoptosis
 				else
 					M.adjustCloneLoss(0.5*potency)
-			if(PROPERTY_PAINING) //pain
-				if(is_OD)
-					M.reagent_pain_modifier += 50*potency
-					M.take_limb_damage(1*potency)
-					if(is_COD)
-						M.take_limb_damage(2*potency)
-				else
-					M.reagent_pain_modifier += 50*potency
-			if(PROPERTY_NEUROINHIBITING) //disabilities
-				if(is_OD)
-					M.adjustBrainLoss(potency)
-					M.disabilities = NERVOUS
-					if(is_COD)
-						M.adjustBrainLoss(2*potency)
-				if(potency > 1)
-					M.sdisabilities = BLIND
-				else
-					M.disabilities = NEARSIGHTED
-				if(potency > 2)
-					M.sdisabilities = DEAF
-				if(potency > 3)
-					M.sdisabilities = MUTE
-			if(PROPERTY_ALCOHOLIC) //drunkness
-				if(is_OD)
-					M.confused += 2*potency
-					M.drowsyness += 2*potency
-					M.adjustToxLoss(0.5*potency)
-					if(ishuman(M))
-						var/mob/living/carbon/human/H = M
-						var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
-						if(L)
-							L.damage += 0.5*potency
+			if(PROPERTY_NECROTIZING) //Kills and rots flesh
+				var/mob/living/carbon/human/C = M
+				if(C)
+					var/datum/limb/L = pick(C.limbs)
+					if(L && !(L.status & LIMB_ROBOT))
+						if(!L.wounds || !L.wounds.len)
+							L.wounds += new /datum/wound/bruise
+						var/datum/wound/W = pick(L.wounds)
+						W.damage += potency
+						if(is_OD)
+							W.germ_level += 200 * potency
 							if(is_COD)
-								L.damage += 2*potency
-				else
-					M.confused += potency
-					M.drowsyness += potency
-			if(PROPERTY_HALLUCINOGENIC) //hallucinations
-				if(prob(10)) M.emote(pick("twitch","drool","moan","giggle"))
-				if(is_OD)
-					if(isturf(M.loc) && !istype(M.loc, /turf/open/space))
-						if(M.canmove && !M.is_mob_restrained())
-							if(prob(10)) step(M, pick(cardinal))
-					M.hallucination += 10
-					M.make_jittery(5)
-					M.knocked_out = max(M.knocked_out, 20)
-					if(is_COD)
-						M.adjustBrainLoss(1*potency)
-				else
-					if(potency>2)
-						M.hallucination += potency
-					M.druggy += potency
-					M.make_jittery(5)
-					M.drowsyness += 0.25*potency
+								if(L.name != "head" && L.germ_level > 1000) //the limb is so rotten it falls off
+									L.droplimb(0,0, "dangerous chemicals")
+						else
+							W.germ_level += 25 * potency
+						if(L.germ_level > INFECTION_LEVEL_THREE)
+							if(!(L.status & LIMB_NECROTIZED))
+								L.status |= LIMB_NECROTIZED
+								to_chat(M, SPAN_NOTICE("You can't feel your [L.display_name] anymore..."))
+								L.owner.update_body(1)
+						if(W.germ_level > 200)//At this point the infection becomes internal
+							L.germ_level = W.germ_level
+						L.update_wounds()
+						L.update_germs()
 			if(PROPERTY_HEPATOTOXIC) //liver damage 
 				if(ishuman(M))
 					var/mob/living/carbon/human/H = M
@@ -729,7 +783,7 @@
 							L.damage += 0.75*potency
 			if(PROPERTY_NEUROTOXIC) //brain damage
 				if(is_OD)
-					M.adjustBrainLoss(1*potency)
+					M.adjustBrainLoss(3*potency)
 					M.jitteriness = max(M.jitteriness + potency,0)
 					if(prob(50)) M.drowsyness = max(M.drowsyness+potency, 3)
 					if(prob(10)) M.emote("drool")
@@ -738,22 +792,98 @@
 							apply_neuro(M, 2*potency, FALSE)
 				else
 					M.adjustBrainLoss(1.75*potency)
-			if(PROPERTY_NEUROSEDATIVE) //slows movement
+/////////Neutral Properties///////// 
+			if(PROPERTY_KETOGENIC) //weight loss
 				if(is_OD)
-					if(prob(15*potency))
-						M.KnockOut(potency)
+					M.nutrition = max(M.nutrition - 10*potency, 0)
+					M.adjustToxLoss(potency)
+					if(prob(5*potency))
+						if(ishuman(M))
+							var/mob/living/carbon/human/H = M
+							H.vomit()
 					if(is_COD)
-						//heart stops beating
+						M.knocked_out = max(M.knocked_out, 20)	
+				M.nutrition = max(M.nutrition - 5*potency, 0)
+				M.overeatduration = 0
+				if(M.reagents.remove_all_type(/datum/reagent/ethanol, potency, 0, 1)) //Ketosis causes rapid metabolization of alcohols
+					M.confused = min(M.confused + potency,10*potency)
+					M.drowsyness = min(M.drowsyness + potency,15*potency)
+			if(PROPERTY_PAINING) //pain
+				if(is_OD)
+					M.reagent_pain_modifier += 100*potency
+					M.take_limb_damage(potency)
+					if(is_COD)
+						M.take_limb_damage(2*potency)
+				else
+					M.reagent_pain_modifier += 50*potency
+			if(PROPERTY_NEUROINHIBITING) //disabilities
+				if(is_OD)
+					M.adjustBrainLoss(potency)
+					M.disabilities = NERVOUS
+					if(is_COD)
+						M.adjustBrainLoss(2*potency)
+				if(potency > 1)
+					M.sdisabilities = BLIND
+				else
+					M.disabilities = NEARSIGHTED
+				if(potency > 2)
+					M.sdisabilities = DEAF
+				if(potency > 3)
+					M.sdisabilities = MUTE
+			if(PROPERTY_ALCOHOLIC) //drunkness
+				if(is_OD)
+					M.confused += min(M.confused + potency*2,20*potency)
+					M.drowsyness += min(M.drowsyness + potency*2,30*potency)
+					M.adjustToxLoss(0.5*potency)
+					if(ishuman(M))
+						var/mob/living/carbon/human/H = M
+						var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
+						if(L)
+							L.damage += 0.5*potency
+							if(is_COD)
+								L.damage += 2*potency
+					if(is_COD)
+						M.adjustOxyLoss(4*potency)
+						M.knocked_out = max(M.knocked_out, 20)
+				else
+					M.confused = min(M.confused + potency,10*potency)
+					M.drowsyness = min(M.drowsyness + potency,15*potency)
+			if(PROPERTY_HALLUCINOGENIC) //hallucinations
+				if(prob(10)) M.emote(pick("twitch","drool","moan","giggle"))
+				if(is_OD)
+					if(isturf(M.loc) && !istype(M.loc, /turf/open/space))
+						if(M.canmove && !M.is_mob_restrained())
+							if(prob(10)) step(M, pick(cardinal))
+					M.hallucination += 10
+					M.make_jittery(5)
+					if(is_COD)
+						M.adjustBrainLoss(potency)
+						M.knocked_out = max(M.knocked_out, 20)
+				else
+					if(potency>2)
+						M.hallucination += potency
+					M.druggy += potency
+					M.make_jittery(5)
+					M.drowsyness = min(M.drowsyness + 0.25*potency,15*potency)
+			if(PROPERTY_RELAXING) //slows movement
+				if(is_OD)
+					//heart beats slower
+					M.reagent_move_delay_modifier += 2*potency
+					to_chat(M, SPAN_WARNING("You feel incredibly weak!"))
+					if(is_COD)
+						//heart stops beating, lungs stop working
+						if(prob(15*potency))
+							M.KnockOut(potency)
 						M.adjustOxyLoss(potency)
+						if(prob(5)) to_chat(M, SPAN_WARNING("You can hardly breathe!"))
 						if(ishuman(M))
 							var/mob/living/carbon/human/H = M
 							var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
 							if(E)
 								E.damage += 0.75*potency
 				else
-					M.reagent_move_delay_modifier += 1*potency
+					M.reagent_move_delay_modifier += potency
 					if(prob(10)) M.emote("yawn")
-/////////Neutral Properties///////// 
 			if(PROPERTY_HYPERTHERMIC) //increase bodytemperature
 				if(prob(10)) M.emote("gasp")
 				if(is_OD)
@@ -762,25 +892,26 @@
 					if(is_COD)
 						M.knocked_out = max(M.knocked_out, 20)
 				else
-					M.bodytemperature = max(M.bodytemperature+1.5*potency,0)
+					M.bodytemperature = max(M.bodytemperature+2*potency,0)
 			if(PROPERTY_HYPOTHERMIC) //decrease bodytemperature
 				if(prob(10)) M.emote("shiver")
 				if(is_OD)
+					M.bodytemperature = max(M.bodytemperature-4*potency,0)
 					M.drowsyness  = max(M.drowsyness, 40)
 					if(is_COD)
 						M.knocked_out = max(M.knocked_out, 20)
 				else
-					M.bodytemperature = max(M.bodytemperature-potency,0)
+					M.bodytemperature = max(M.bodytemperature-2*potency,0)
 			if(PROPERTY_BALDING) //unga
 				if(is_OD)
 					M.adjustCloneLoss(0.5*potency)
 					if(is_COD)
-						M.adjustCloneLoss(1*potency)
+						M.adjustCloneLoss(potency)
 				if(prob(5*potency))
 					var/mob/living/carbon/human/H = M
 					if(H)
 						if((H.h_style != "Bald" || H.f_style != "Shaved"))
-							to_chat(M, SPAN_WARNING("Your hair falls out."))
+							to_chat(M, SPAN_WARNING("Your hair falls out!"))
 							H.h_style = "Bald"
 							H.f_style = "Shaved"
 							H.update_hair()
@@ -801,13 +932,18 @@
 						H.f_style = pick(facial_hair_styles_list)
 						H.update_hair()
 						to_chat(M, SPAN_NOTICE("Your head feels different..."))
-			if(PROPERTY_IRRITATING) //sneezing, itching etc.
+			if(PROPERTY_ALLERGENIC) //sneezing etc.
 				if(prob(5*potency)) M.emote(pick("sneeze","blink","cough"))
-			if(PROPERTY_ENJOYABLE) //HAHAHAHA
+			if(PROPERTY_EUPHORIC) //HAHAHAHA
 				if(is_OD)
 					if(prob(5*potency)) M.emote("collapse") //ROFL
-				if(prob(5*potency)) M.emote(pick("laugh","giggle","chuckle","grin","smile","twitch"))
-			if(PROPERTY_GASTROTOXIC) //vomiting
+					if(is_COD)
+						M.adjustOxyLoss(3*potency)
+						M.emote(pick("laugh","giggle","chuckle","grin","smile","twitch"))
+						to_chat(M, SPAN_WARNING("You are laughing so much you can't breathe!"))
+				if(!is_COD && prob(5*potency)) M.emote(pick("laugh","giggle","chuckle","grin","smile","twitch"))
+				M.reagent_pain_modifier += 20*potency //Endorphins are natural painkillers
+			if(PROPERTY_EMETIC) //vomiting
 				if(ishuman(M))
 					var/mob/living/carbon/human/H = M
 					if(H)
@@ -815,7 +951,7 @@
 							M.adjustToxLoss(0.5*potency)
 							if(is_COD)
 								M.adjustToxLoss(0.5*potency)
-						else
+						if(prob(volume*potency))
 							H.vomit() //vomit() already has a timer on in
 			if(PROPERTY_PSYCHOSTIMULATING) //calming messages
 				if(is_OD)
@@ -865,7 +1001,7 @@
 				if(iscarbon(M))
 					var/mob/living/carbon/C = M
 					if(C.blood_volume < BLOOD_VOLUME_NORMAL)
-						C.blood_volume += 0.2 * nutriment_factor * potency
+						C.blood_volume = max(0.2 * nutriment_factor * potency,BLOOD_VOLUME_NORMAL)
 			if(PROPERTY_ANTITOXIC) //toxin healing
 				if(is_OD)
 					M.drowsyness  = max(M.drowsyness, 30)
@@ -878,14 +1014,14 @@
 							E.damage += 2*potency
 				else
 					M.adjustToxLoss(-(0.25+potency))
-			if(PROPERTY_ANTICAUSTIC) //burn healing
+			if(PROPERTY_ANTICORROSIVE) //burn healing
 				if(is_OD)
-					M.apply_damages(potency, 0, potency) //Mixed brute/tox damage
+					M.apply_damages(2*potency, 0, potency) //Mixed brute/tox damage
 					if(is_COD)
-						M.apply_damages(potency*2, 0, potency*2) //Massive brute/tox damage
+						M.apply_damages(4*potency, 0, 2*potency) //Massive brute/tox damage
 				else
 					M.heal_limb_damage(0, 0.25+potency)
-			if(PROPERTY_BIOPEUTIC) //brute healing
+			if(PROPERTY_NEOGENETIC) //brute healing
 				if(is_OD)
 					M.apply_damage(potency, BURN)
 					if(is_COD)
@@ -904,10 +1040,24 @@
 						if(L)
 							if(L.status & LIMB_ROBOT)
 								L.heal_damage(2*potency,2*potency,0,1)
+			if(PROPERTY_HEMOGENIC) //Blood production
+				if(iscarbon(M))
+					var/mob/living/carbon/C = M
+					if(is_OD)
+						C.blood_volume = min(C.blood_volume+2*potency,BLOOD_VOLUME_MAXIMUM+100)
+						M.nutrition = max(M.nutrition - 5*potency, 0)
+						if(is_COD)
+							M.adjustToxLoss(2*potency)
+					else
+						C.blood_volume = min(C.blood_volume+potency,BLOOD_VOLUME_MAXIMUM+100)
+					if(C.blood_volume > BLOOD_VOLUME_MAXIMUM) //Too many red blood cells thickens the blood and leads to clotting
+						M.take_limb_damage(potency)
+						M.adjustOxyLoss(2*potency)
+						M.reagent_move_delay_modifier += potency
 			if(PROPERTY_NERVESTIMULATING) //stun decrease
 				if(prob(10)) M.emote("twitch")
 				if(is_OD)
-					M.adjustBrainLoss(1*potency)
+					M.adjustBrainLoss(potency)
 					M.jitteriness = max(M.jitteriness + potency,0)
 					if(prob(50)) M.drowsyness = max(M.drowsyness+potency, 3)
 					if(is_COD)
@@ -925,7 +1075,6 @@
 					M.drowsyness = max(M.drowsyness-2*potency, 0)
 					M.dizziness = max(M.dizziness-2*potency, 0)
 					M.jitteriness = max(M.jitteriness-2*potency, 0)
-
 			if(PROPERTY_MUSCLESTIMULATING) //increases movement
 				if(prob(10)) M.emote(pick("twitch","blink_r","shiver"))
 				if(is_OD)
@@ -935,7 +1084,7 @@
 						if(E)
 							E.damage += 0.5*potency
 							if(is_COD)
-								E.damage += 1*potency
+								E.damage += potency
 								M.take_limb_damage(0.5*potency)
 				else
 					M.reagent_move_delay_modifier -= 0.2*potency
@@ -943,10 +1092,29 @@
 				if(is_OD)
 					M.hallucination = max(M.hallucination, potency) //Hallucinations and tox damage
 					M.apply_damage(potency, TOX)
-					if(is_COD)
-						M.apply_damage(potency*2, TOX) //Massive liver damage
+					if(is_COD) //Massive liver damage
+						if(ishuman(M))
+							var/mob/living/carbon/human/H = M
+							var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
+							if(L)
+								L.damage += 3*potency
 				else
 					M.reagent_pain_modifier += -30*potency
+			if(PROPERTY_ANTISEPTIC) //removes internal infections
+				var/mob/living/carbon/human/C = M
+				if(C)
+					var/datum/limb/L = pick(C.limbs)
+					if(L && !(L.status & LIMB_ROBOT))
+						if(is_OD)
+							L.germ_level = max(0,L.germ_level - 100*potency)
+							M.adjustToxLoss(2*potency)
+							if(L.status & LIMB_NECROTIZED)
+								L.status &= ~LIMB_NECROTIZED
+							if(is_COD)
+								var/datum/internal_organ/O = pick(C.internal_organs_by_name)
+								O.damage += 2*potency
+						else
+							L.germ_level = max(0,L.germ_level - 50*potency)
 			if(PROPERTY_HEPATOPEUTIC) //liver healing
 				if(ishuman(M))
 					var/mob/living/carbon/human/H = M
@@ -1023,7 +1191,7 @@
 					var/datum/limb/L = pick(C.limbs)
 					if(L)
 						if(is_OD)
-							M.take_limb_damage(potency)
+							M.take_limb_damage(2*potency)
 							if(is_COD)
 								L.fracture()
 						else
@@ -1046,9 +1214,9 @@
 										to_chat(M, SPAN_NOTICE("You feel the bones in your [L.display_name] starting to knit together."))			
 			if(PROPERTY_FLUXING) //dissolves metal shrapnel
 				if(is_OD)
-					M.adjustToxLoss(2*potency)
+					M.apply_damages(2*potency, 0, 2*potency)
 					if(is_COD)
-						M.adjustToxLoss(4*potency)
+						M.apply_damages(4*potency, 0, 4*potency) //Mixed brute/tox damage
 				else
 					var/mob/living/carbon/human/C = M
 					if(C)
@@ -1057,7 +1225,7 @@
 							if(L.status & LIMB_ROBOT)
 								L.take_damage(0,2*potency)
 								break
-							if(L.implants)
+							if(L.implants && L.implants.len > 0)
 								var/obj/implanted_object = pick(L.implants)
 								if(implanted_object)
 									L.implants -= implanted_object
@@ -1083,7 +1251,6 @@
 										H.vomit()
 									else
 										A.counter = 90
-
 			if(PROPERTY_NEUROCRYOGENIC) //slows brain death
 				if(is_OD)
 					M.bodytemperature = max(M.bodytemperature-5*potency,0)
@@ -1094,11 +1261,66 @@
 					M.knocked_out = max(M.knocked_out, 20)
 					M.stunned = max(M.stunned,21)
 /////////ADMIN ONLY PROPERTIES/////////
-/*
-Ideas for admin properties:
-	 - Properties to allow metabolization in xenos and predators
-	 - Adminorazine (omnipotent)
-	 - Gives larva infection
-	 - Zombie infection
-	 - Monkey infection
-*/
+			if(PROPERTY_EMBRYONIC) //Adds embryo's. 
+				if(ishuman(M))
+					var/mob/living/carbon/human/H = M
+					if((locate(/obj/item/alien_embryo) in H.contents) || (H.species.flags & IS_SYNTHETIC)) //No effect if already infected
+						continue
+					for(var/i=1,i<=max((potency % 100)/10,1),i++)//10's determine number of embryos
+						var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)
+						embryo.hivenumber = min(potency % 10,5) //1's determine hivenumber
+			if(PROPERTY_TRANSFORMING) //Xenomorph Transformation
+				if(ishuman(M))
+					var/mob/living/carbon/human/H = M
+					H.contract_disease(new /datum/disease/xeno_transformation(0),1)
+			if(PROPERTY_RAVENING) //Zombie infection
+				if(ishuman(M))
+					var/mob/living/carbon/human/H = M
+					H.contract_disease(new /datum/disease/black_goo, 1)
+			if(PROPERTY_CURING) //Cures diseases
+				if(ishuman(M))
+					var/mob/living/carbon/human/H = M
+					if(H.viruses)
+						for(var/datum/disease/D in H.viruses)
+							if(potency >= 4)
+								D.cure()
+								H.regenZ = 0
+							else
+								if(D.name == "Unknown Mutagenic Disease" && (potency == 1 || potency > 3))
+									D.cure()
+								if(D.name == "Black Goo" && potency >=2)
+									D.cure()
+									H.regenZ = 0
+			if(PROPERTY_OMNIPOTENT)
+				M.reagents.remove_all_type(/datum/reagent/toxin, 5*REM, 0, 1)
+				M.setCloneLoss(0)
+				M.setOxyLoss(0)
+				M.radiation = 0
+				M.heal_limb_damage(5,5)
+				M.adjustToxLoss(-5)
+				M.hallucination = 0
+				M.setBrainLoss(0)
+				M.disabilities = 0
+				M.sdisabilities = 0
+				M.eye_blurry = 0
+				M.eye_blind = 0
+				M.SetKnockeddown(0)
+				M.SetStunned(0)
+				M.SetKnockedout(0)
+				M.silent = 0
+				M.dizziness = 0
+				M.drowsyness = 0
+				M.stuttering = 0
+				M.confused = 0
+				M.sleeping = 0
+				M.jitteriness = 0
+				var/mob/living/carbon/human/H = M
+				if(H)
+					for(var/datum/internal_organ/I in H.internal_organs)
+						if(I.damage > 0)
+							I.damage = max(I.damage - 1, 0)
+				for(var/datum/disease/D in M.viruses)
+					D.spread = "Remissive"
+					D.stage--
+					if(D.stage < 1)
+						D.cure()

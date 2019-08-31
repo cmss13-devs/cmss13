@@ -69,3 +69,16 @@
 	desc = "A tough, old stray whose origin no one seems to know."
 	icon_state = "cat2"
 	origin_tech = null
+
+/obj/item/holder/mouse
+	name = "mouse"
+	desc = "It's a small mouse."
+	icon = 'icons/mob/animal.dmi'
+	icon_state = "mouse_white"
+	origin_tech = null
+	w_class = SIZE_TINY;
+	flags_equip_slot = null
+
+/obj/item/holder/mouse/Doc
+	name = "Doc"
+	desc = "Senior researcher of the Almayer. Likes: cheese, experiments, explosions."

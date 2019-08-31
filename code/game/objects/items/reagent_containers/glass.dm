@@ -37,6 +37,7 @@
 		/obj/machinery/smartfridge/,
 		/obj/machinery/biogenerator,
 		/obj/machinery/reagent_analyzer,
+		/obj/machinery/centrifuge,
 		/obj/machinery/constructable_frame)
 
 	New()

@@ -9,7 +9,7 @@
 	speak_emote = list("squeeks","squeeks","squiks")
 	emote_hear = list("squeeks","squeaks","squiks")
 	emote_see = list("runs in a circle", "shakes", "scritches at something")
-	flags_pass = PASSTABLE
+	flags_pass = PASSTABLE|PASSMOB
 	mob_size = MOB_SIZE_SMALL
 	speak_chance = 1
 	turns_per_move = 5
@@ -22,12 +22,13 @@
 	response_harm   = "stamps on the"
 	density = 0
 	var/body_color //brown, gray and white, leave blank for random
-	layer = MOB_LAYER
+	layer = ABOVE_LYING_MOB_LAYER
 	min_oxy = 16 //Require atleast 16kPA oxygen
 	minbodytemp = 223		//Below -50 Degrees Celcius
 	maxbodytemp = 323	//Above 50 Degrees Celcius
 	universal_speak = 0
 	universal_understand = 1
+	holder_type = /obj/item/holder/mouse
 
 /mob/living/simple_animal/mouse/Life()
 	..()
@@ -54,21 +55,22 @@
 
 	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide
-
-	name = "[name] ([rand(1, 1000)])"
+	if(!name)
+		name = "[name] ([rand(1, 1000)])"
 	if(!body_color)
 		body_color = pick( list("brown","gray","white") )
 	icon_state = "mouse_[body_color]"
 	icon_living = "mouse_[body_color]"
 	icon_dead = "mouse_[body_color]_dead"
-	desc = "It's a small [body_color] rodent, often seen hiding in maintenance areas and making a nuisance of itself."
+	if(!desc)
+		desc = "It's a small [body_color] rodent, often seen hiding in maintenance areas and making a nuisance of itself."
 
 /mob/living/simple_animal/mouse/proc/splat()
 	src.health = 0
 	src.stat = DEAD
 	src.icon_dead = "mouse_[body_color]_splat"
 	src.icon_state = "mouse_[body_color]_splat"
-	layer = MOB_LAYER
+	layer = ABOVE_LYING_MOB_LAYER
 	if(client)
 		client.time_died_as_mouse = world.time
 
@@ -78,16 +80,36 @@
 
 /mob/living/simple_animal/mouse/Crossed(AM as mob|obj)
 	if( ishuman(AM) )
-		if(!stat)
+		if(!ckey && stat == UNCONSCIOUS)
+			stat = CONSCIOUS
+			icon_state = "mouse_[body_color]"
+			wander = 1
+		else if(!stat && prob(5))
 			var/mob/M = AM
 			to_chat(M, SPAN_NOTICE(" \icon[src] Squeek!"))
 			M << 'sound/effects/mousesqueek.ogg'
 	..()
 
 /mob/living/simple_animal/mouse/death()
-	layer = MOB_LAYER
+	layer = ABOVE_LYING_MOB_LAYER
 	if(client)
 		client.time_died_as_mouse = world.time
+	..()
+
+/mob/living/simple_animal/mouse/MouseDrop(atom/over_object)
+
+	var/mob/living/carbon/H = over_object
+	if(!istype(H) || !Adjacent(H)) return ..()
+
+	if(H.a_intent == HELP_INTENT)
+		get_scooped(H)
+		return
+	else
+		return ..()
+
+/mob/living/simple_animal/mouse/get_scooped(var/mob/living/carbon/grabber)
+	if (stat >= DEAD)
+		return
 	..()
 
 /*
@@ -97,6 +119,7 @@
 /mob/living/simple_animal/mouse/white
 	body_color = "white"
 	icon_state = "mouse_white"
+	desc = "It's a small laboratory mouse."
 
 /mob/living/simple_animal/mouse/gray
 	body_color = "gray"
@@ -105,6 +128,15 @@
 /mob/living/simple_animal/mouse/brown
 	body_color = "brown"
 	icon_state = "mouse_brown"
+
+/mob/living/simple_animal/mouse/white/Doc
+	name = "Doc"
+	desc = "Senior researcher of the Almayer. Likes: cheese, experiments, explosions."
+	gender = MALE
+	response_help  = "pets"
+	response_disarm = "gently pushes aside"
+	response_harm   = "stamps on"
+	holder_type = /obj/item/holder/mouse/Doc
 
 //TOM IS ALIVE! SQUEEEEEEEE~K :)
 /mob/living/simple_animal/mouse/brown/Tom

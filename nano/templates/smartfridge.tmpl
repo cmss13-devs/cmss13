@@ -36,40 +36,21 @@
 </div>
 
 {{if data.panel_open}}
-  <div class='item'>
-    <h2>Access Panel</h2>
-  </div>
-  <div class='item'>
-    <div class='itemLabel'>
-      <span class='good'>Wires:</span>
-    </div>
-    <div class='itemContentWide'>
+    <div class='item'><h2>Access Panel</h2></div>
+
+    <div class="item">
       {{for data.wires}}
-        <div class='item'>
-          <div class='itemLabel' style='color: {{:value.wire}};'>
-            {{:value.wire}} wire:
-          </div>
-          <div class='itemContent'>
+        <div class="itemContentWide">
+          <span class="itemLabelNoWidth"><b>{{:value.desc}} wire:</b></span>
+          <span style="float:right;">
             {{if value.cut}}
-              {{:helper.link('Mend', 'plus', {'cutwire' : value.index})}}
+              {{:helper.link('Mend', 'plus', {'cutwire' : index+1}, null, null, null)}}
             {{else}}
-              {{:helper.link('Cut', 'minus', {'cutwire' : value.index})}}
-              {{:helper.link('Pulse', 'signal-diag', {'pulsewire' : value.index})}}
+              {{:helper.link('Cut', 'minus', {'cutwire' : index+1}, null, null, null)}}
+              {{:helper.link('Pulse', 'signal-diag', {'pulse' : index+1}, null, null, null)}}
             {{/if}}
-          </div>
+          </span>
         </div>
       {{/for}}
     </div>
-  </div>
-
-  <div class='statusDisplay'>
-    The orange light is <span class='{{:data.electrified ? "good" : "bad"}}'><b>{{:data.electrified ? "on" : "off"}}</b></span>.<br>
-    The red light is <span class='{{:data.shoot_inventory ? "good" : "bad"}}'><b>{{:data.shoot_inventory ? "on" : "off"}}</b></span>.<br>
-    {{if data.secure}}
-      The green light is
-      <span class='{{:data.locked == 1 ? "bad" : data.locked == -1 ? "average" : "good"}}'>
-        {{:data.locked == 1 ? "off" : data.locked == -1 ? "blinking" : "on"}}
-      </span>.<br>
-    {{/if}}
-  </div>
 {{/if}}

@@ -1,0 +1,20 @@
+<!-- 
+Title: Airlock access panel UI
+Used In File(s): \code\game\machinery\doors\airlock.dm
+ -->
+
+<div class="item">
+	{{for data.wires}}
+		<div class="itemContentWide">
+			<span class="itemLabelNoWidth"><b>{{:value.desc}} wire:</b></span>
+			<span style="float:right;">
+				{{if value.cut}}
+					{{:helper.link('Mend', 'plus', {'wire' : index+1}, null, null, null)}}
+				{{else}}
+					{{:helper.link('Cut', 'minus', {'wire' : index+1}, null, null, null)}}
+					{{:helper.link('Pulse', 'signal-diag', {'pulse' : index+1}, null, null, null)}}
+				{{/if}}
+			</span>
+		</div>
+	{{/for}}
+</div>

@@ -52,7 +52,7 @@
 				//Close
 				if(0)
 					if(specialfunctions & IDSCAN)
-						D.aiDisabledIdScanner = 0
+						D.remoteDisabledIdScanner = 0
 					if(specialfunctions & BOLTS)
 						if(!D.isWireCut(4) && D.arePowerSystemsOn())
 							D.unlock()
@@ -63,7 +63,7 @@
 				//Open
 				if(1)
 					if(specialfunctions & IDSCAN)
-						D.aiDisabledIdScanner = 1
+						D.remoteDisabledIdScanner = 1
 					if(specialfunctions & BOLTS)
 						D.lock()
 					if(specialfunctions & SHOCK)
@@ -72,10 +72,10 @@
 						D.safe = 0
 				//Toggle
 				if(2)
-					if(specialfunctions & IDSCAN && D.aiDisabledIdScanner == 0)
-						D.aiDisabledIdScanner = 1
+					if(specialfunctions & IDSCAN && D.remoteDisabledIdScanner == 0)
+						D.remoteDisabledIdScanner = 1
 					else
-						D.aiDisabledIdScanner = 0
+						D.remoteDisabledIdScanner = 0
 					if(specialfunctions & BOLTS && D.locked == 0)
 						D.lock()
 					else

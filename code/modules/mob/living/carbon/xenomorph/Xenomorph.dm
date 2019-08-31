@@ -591,7 +591,7 @@
 	hive = hive_datum[hivenumber]
 
 /mob/living/carbon/Xenomorph/proc/set_faction(var/new_faction = FACTION_XENOMORPH)
-	if(mind && round_statistics)
+	if(round_statistics && !statistic_exempt)
 		round_statistics.track_new_participant(faction, -1)
 		round_statistics.track_new_participant(new_faction, 1)
 	faction = new_faction

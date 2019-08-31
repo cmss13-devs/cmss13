@@ -367,7 +367,7 @@ var/waiting_for_drop_votes = 0
 //////////////////////////////////////////////////////////////////////
 /datum/game_mode/huntergames/declare_completion()
 	if(round_statistics)
-		round_statistics.count_end_of_round_mobs_for_statistics()
+		round_statistics.track_round_end()
 	var/mob/living/carbon/winner = null
 
 	for(var/mob/living/carbon/human/Q in living_mob_list)

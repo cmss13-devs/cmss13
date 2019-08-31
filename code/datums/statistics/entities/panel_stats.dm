@@ -339,7 +339,7 @@
 	var/list/participants_list = list()
 	var/list/hijack_participants_list = list()
 	var/list/final_participants_list = list()
-	var/list/total_deaths = list()
+	var/list/total_deaths_list = list()
 	var/list/new_death_stats_list = list()
 	var/list/new_weapon_stats_list = list()
 	var/list/new_job_stats_list = list()
@@ -359,7 +359,7 @@
 
 	for(var/iteration in total_deaths)
 		var/datum/entity/statistic/S = total_deaths[iteration]
-		total_deaths += list(list("name" = S.name, "value" = S.value))
+		total_deaths_list += list(list("name" = S.name, "value" = S.value))
 	
 	for(var/datum/entity/death_stats/S in death_stats_list)
 		if(new_death_stats_list.len >= STATISTICS_DEATH_LIST_LEN)
@@ -585,7 +585,7 @@
 		"participants" = participants_list,
 		"hijack_participants" = hijack_participants_list,
 		"final_participants" = final_participants_list,
-		"total_deaths" = total_deaths,
+		"total_deaths" = total_deaths_list,
 		"death_stats_list" = new_death_stats_list,
 		"weapon_stats_list" = new_weapon_stats_list,
 		"job_stats_list" = new_job_stats_list,

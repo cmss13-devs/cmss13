@@ -140,6 +140,12 @@
 	var/datum/entity/statistic/S = final_participants["[faction]"]
 	S.value += amount
 
+/datum/entity/round_stats/proc/track_round_end()
+	real_time_end = world.realtime
+	for(var/mob/M in living_mob_list)
+		if(M.mind)
+			track_final_participant(M.faction)
+
 /datum/entity/round_stats/proc/track_hijack_participant(var/faction, var/amount = 1)
 	if(!hijack_participants["[faction]"])
 		setup_faction(faction)
@@ -150,7 +156,7 @@
 	for(var/mob/M in living_mob_list)
 		if(M.mind)
 			track_hijack_participant(M.faction)
-	round_hijack_time = world.realtime
+	round_hijack_time = world.time
 
 /datum/entity/round_stats/proc/track_dead_participant(var/faction, var/amount = 1)
 	if(!total_deaths["[faction]"])
@@ -194,18 +200,6 @@
 			new_death_list.Cut(STATISTICS_DEATH_LIST_LEN+1, new_death_list.len)
 		death_data["death_stats_list"] = new_death_list
 	track_dead_participant(faction)
-
-/datum/entity/round_stats/proc/count_hijack_mobs_for_statistics()
-	for(var/statistic in participants)
-		var/datum/entity/statistic/S = participants[statistic]
-		var/datum/entity/statistic/H = hijack_participants[statistic]
-		H.value = S.value
-
-/datum/entity/round_stats/proc/count_end_of_round_mobs_for_statistics()
-	for(var/statistic in participants)
-		var/datum/entity/statistic/S = participants[statistic]
-		var/datum/entity/statistic/F = final_participants[statistic]
-		F.value = S.value
 
 /datum/entity/round_stats/proc/log_round_statistics()
 	if(!round_stats)
@@ -254,9 +248,10 @@
 			end_of_round_marines += S.value
 
 	var/stats = ""
+	stats += "[ticker.mode.round_finished]\n"
 	stats += "Game mode: [game_mode]\n"
 	stats += "Map name: [current_map.name]\n"
-	stats += "Round time: [round_length]\n"
+	stats += "Round time: [duration2text(round_length)]\n"
 	stats += "End round player population: [end_round_player_population]\n"
 	
 	stats += "Total xenos spawned: [total_xenos_created]\n"
@@ -282,7 +277,7 @@
 
 	stats += "Marines remaining: [end_of_round_marines]\n"
 	stats += "Xenos remaining: [end_of_round_xenos]\n"
-	stats += "Hijack time: [round_hijack_time]\n"
+	stats += "Hijack time: [duration2text(round_hijack_time)]\n"
 
 	stats += "[log_end]"
 

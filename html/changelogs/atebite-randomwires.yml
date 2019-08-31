@@ -1,0 +1,7 @@
+author: Atebite
+delete-after: True
+
+changes: 
+  - tweak: "Airlock, APC and vendor Wires are no longer randomized"
+  - tweak: "Wire panels have been updated to use NanoUI"
+  - rscdel: "Signalers can no longer be used with airlocks"

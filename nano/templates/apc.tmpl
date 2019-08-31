@@ -17,7 +17,6 @@
 </div>
 
 <div style="min-width: 480px">
-
 	<h3>Power Status</h3>
 
 	<div class="item">
@@ -173,5 +172,24 @@
 		</div>
 	{{/if}}
 
+	{{if data.wiresExposed}}
+		<div class='item'><h2>Access Panel</h2></div>
+
+		<div class="item">
+			{{for data.wires}}
+				<div class="itemContentWide">
+					<span class="itemLabelNoWidth"><b>{{:value.desc}} wire:</b></span>
+					<span style="float:right;">
+						{{if value.cut}}
+							{{:helper.link('Mend', 'plus', {'apcwire' : index+1}, null, null, null)}}
+						{{else}}
+							{{:helper.link('Cut', 'minus', {'apcwire' : index+1}, null, null, null)}}
+							{{:helper.link('Pulse', 'signal-diag', {'pulse' : index+1}, null, null, null)}}
+						{{/if}}
+					</span>
+				</div>
+			{{/for}}
+		</div>
+	{{/if}}
 </div>
 		

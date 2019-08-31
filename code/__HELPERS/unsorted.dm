@@ -1930,3 +1930,21 @@ var/list/WALLITEMS = list(
 	if(T.density || (locate(/obj/structure/fence) in T) || (locate(/obj/structure/tunnel) in T) || !(locate(/obj/effect/alien/weeds) in T))
 		return FALSE
 	return TRUE
+
+/proc/input_marked_datum(var/list/marked_datums)
+	if(!marked_datums.len)
+		return null
+
+	var/list/options = list()
+	for(var/datum/D in marked_datums)
+		options += "Marked datum ([D] - \ref[D])"
+	var/choice = input("Select marked datum", "Marked datums") as null|anything in options
+
+	if(!choice)
+		return null
+
+	for(var/datum/D in marked_datums)
+		if(findtext(choice, "\ref[D]"))
+			return D
+
+	return null

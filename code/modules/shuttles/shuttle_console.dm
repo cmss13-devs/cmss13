@@ -188,7 +188,7 @@
 					shuttle1.transit_gun_mission = 0
 					shuttle1.launch_crash()
 					if(round_statistics)
-						round_statistics.count_hijack_mobs_for_statistics()
+						round_statistics.track_hijack()
 					command_announcement.Announce("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", \
 					"Dropship Alert", new_sound = 'sound/AI/hijack.ogg')
 					shuttle.alerts_allowed--
@@ -196,8 +196,6 @@
 					var/mob/living/carbon/Xenomorph/Queen/Q = usr // typechecked above
 					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"),3,Q.hivenumber)
 					playsound(src, 'sound/misc/queen_alarm.ogg')
-					if(round_statistics)
-						round_statistics.track_hijack()
 					if(bomb_set)
 						for(var/obj/machinery/nuclearbomb/bomb in world)
 							bomb.end_round = FALSE

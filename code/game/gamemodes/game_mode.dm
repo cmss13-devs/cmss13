@@ -98,8 +98,7 @@ var/global/list/datum/entity/player_entity/player_entities = list()
 
 /datum/game_mode/proc/announce_ending()
 	if(round_statistics)
-		round_statistics.real_time_end = world.realtime
-		round_statistics.count_end_of_round_mobs_for_statistics()
+		round_statistics.track_round_end()
 	to_world("<span class='round_header'>|Round Complete|</span>")
 	feedback_set_details("round_end_result",round_finished)
 
@@ -110,7 +109,7 @@ var/global/list/datum/entity/player_entity/player_entities = list()
 
 /datum/game_mode/proc/declare_completion()
 	if(round_statistics)
-		round_statistics.count_end_of_round_mobs_for_statistics()
+		round_statistics.track_round_end()
 	var/clients = 0
 	var/surviving_humans = 0
 	var/surviving_total = 0

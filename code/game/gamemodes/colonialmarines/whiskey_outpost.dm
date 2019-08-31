@@ -536,7 +536,7 @@ var/global/spawn_next_wo_wave = 0
 //////////////////////////////////////////////////////////////////////
 /datum/game_mode/whiskey_outpost/declare_completion()
 	if(round_statistics)
-		round_statistics.count_end_of_round_mobs_for_statistics()
+		round_statistics.track_round_end()
 	if(finished == 1)
 		feedback_set_details("round_end_result","Xenos won")
 		to_world("<span class='round_header'>The Xenos have succesfully defended their hive from colonization.</span>")

@@ -385,7 +385,7 @@
 /area/bigredv2/outside/marshall_office)
 "aS" = (
 /obj/structure/rack,
-/obj/item/clothing/tie/storage/black_vest,
+/obj/item/clothing/accessory/storage/black_vest,
 /turf/open/floor{
 	icon_state = "dark"
 	},

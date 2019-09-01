@@ -875,7 +875,6 @@
 	dir = 2;
 	icon_state = "freezer_1";
 	on = 1;
-	set_temperature = 1
 	},
 /turf/open/floor/prison,
 /area/prison/medbay)
@@ -2518,7 +2517,7 @@
 /obj/item/tool/soap{
 	pixel_x = 5
 	},
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
 	icon_state = "whitegreenfull";

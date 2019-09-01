@@ -200,17 +200,17 @@
 /obj/structure/largecrate/supply/explosives/mortar_he
 	name = "80mm HE mortar shell case (x25)"
 	desc = "A case containing twenty five 80mm HE mortar shells."
-	supplies = list(/obj/item/mortal_shell/he = 25)
+	supplies = list(/obj/item/mortar_shell/he = 25)
 
 /obj/structure/largecrate/supply/explosives/mortar_incend
 	name = "80mm incendiary mortar shell case (x25)"
 	desc = "A case containing twenty five 80mm incendiary mortar shells."
-	supplies = list(/obj/item/mortal_shell/incendiary = 25)
+	supplies = list(/obj/item/mortar_shell/incendiary = 25)
 
 /obj/structure/largecrate/supply/explosives/mortar_flare
 	name = "80mm flare mortar shell case (x25)"
 	desc = "A case containing twenty five 80mm flare mortar shells."
-	supplies = list(/obj/item/mortal_shell/flare = 25)
+	supplies = list(/obj/item/mortar_shell/flare = 25)
 
 
 /obj/structure/largecrate/supply/supplies

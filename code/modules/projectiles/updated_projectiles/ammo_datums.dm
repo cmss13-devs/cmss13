@@ -97,7 +97,7 @@
 		if(isliving(M)) //This is pretty ugly, but what can you do.
 			if(isXeno(M))
 				var/mob/living/carbon/Xenomorph/target = M
-				if(target.mob_size == MOB_SIZE_BIG) 
+				if(target.mob_size == MOB_SIZE_BIG)
 					target.apply_effect(2, SLOW)
 					return //Big xenos are not affected.
 				target.apply_effect(0.1, WEAKEN)
@@ -200,7 +200,7 @@
 					target.apply_effect(4, SLOW)
 					return
 				if("DEATH SQUAD")
-					target.apply_effect(1, WEAKEN) //Almost unaffacted.					
+					target.apply_effect(1, WEAKEN) //Almost unaffacted.
 					target.apply_effect(2, SLOW)
 					return
 				if("ANTAGONIST") //Completely unaffected.
@@ -921,9 +921,9 @@
 	damage_falloff = config.tactical_damage_falloff
 	damage = config.med_hit_damage
 	penetration = config.hmed_armor_penetration
-	damage_armor_punch = 1	
-	
-	
+	damage_armor_punch = 1
+
+
 /datum/ammo/bullet/turret
 	name = "autocannon bullet"
 	icon_state 	= "redbullet" //Red bullets to indicate friendly fire restriction
@@ -1436,13 +1436,13 @@
 	shell_speed = config.fast_shell_speed
 
 /datum/ammo/xeno/toxin/heavy //Praetorian
-	name = "neurotoxic splash"	
+	name = "neurotoxic splash"
 	effect_power = 1.5
 	spit_cost = 50
 
 
 /datum/ammo/xeno/toxin/burst //sentinel burst
-	name = "neurotoxic air splash"	
+	name = "neurotoxic air splash"
 	effect_power = 1
 	spit_cost = 50
 	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST|AMMO_SCANS_NEARBY
@@ -1737,7 +1737,7 @@
 	..()
 	point_blank_range = -1
 	damage = 5
-	damage_type = BRUTE 
+	damage_type = BRUTE
 	accuracy = config.max_hit_accuracy
 	accuracy_var_low = config.med_proj_variance
 	accuracy_var_high = config.med_proj_variance
@@ -1801,6 +1801,17 @@
 	icon_state = "shrapnel_light"
 
 /datum/ammo/bullet/shrapnel/light/New()
+	..()
+	damage = config.base_hit_damage
+	penetration = config.min_armor_penetration
+	shell_speed = config.slow_shell_speed
+	shrapnel_chance = 0
+
+/datum/ammo/bullet/shrapnel/spall // weak shrapnel
+	name = "spall"
+	icon_state = "shrapnel_light"
+
+/datum/ammo/bullet/shrapnel/spall/New()
 	..()
 	damage = config.base_hit_damage
 	penetration = config.min_armor_penetration

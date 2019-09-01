@@ -55,7 +55,7 @@
 		/datum/action/xeno_action/activable/headbutt,
 		/datum/action/xeno_action/activable/tail_sweep
 	)
-
+	mutation_type = DEFENDER_NORMAL
 
 /mob/living/carbon/Xenomorph/Defender/update_icons()
 	if (stat == DEAD)

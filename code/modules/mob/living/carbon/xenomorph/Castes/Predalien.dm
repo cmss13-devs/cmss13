@@ -83,6 +83,7 @@
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/Predalien/proc/claim_trophy
 		)
+	mutation_type = "Normal"
 
 	New()
 		..()

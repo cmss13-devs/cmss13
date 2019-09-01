@@ -158,6 +158,7 @@
 		/datum/action/xeno_action/shift_spits,
 		/datum/action/xeno_action/activable/xeno_spit,
 			)
+	mutation_type = QUEEN_NORMAL
 
 /mob/living/carbon/Xenomorph/Queen/Corrupted
 	hivenumber = XENO_HIVE_CORRUPTED

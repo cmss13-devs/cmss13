@@ -66,13 +66,13 @@
 	tier = 3
 	gib_chance = 100
 	drag_delay = 6 //pulling a big dead xeno is hard
+	mutation_type = BOILER_NORMAL
 
 	var/is_bombarding = 0
 	var/obj/item/explosive/grenade/grenade_type = "/obj/item/explosive/grenade/xeno"
 	var/bomb_cooldown = 0
 	var/bomb_delay = 200 //20 seconds per glob at Young, -2.5 per upgrade down to 10 seconds
 	var/bombard_speed = 50 //50 for normal boiler, 25 for Railgun boiler
-	var/mutation_type = BOILER_NORMAL
 
 	tileoffset = 5
 	viewsize = 12

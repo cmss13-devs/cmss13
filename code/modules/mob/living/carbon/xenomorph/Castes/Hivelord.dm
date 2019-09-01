@@ -83,3 +83,4 @@
 		/datum/action/xeno_action/emit_pheromones,
 		/datum/action/xeno_action/toggle_speed,
 		)
+	mutation_type = HIVELORD_NORMAL

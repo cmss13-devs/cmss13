@@ -73,6 +73,12 @@
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = SLOT_FACE
 
+/obj/item/weapon/combat_knife/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
+	if(user.mind.cm_skills.medical >= SKILL_MEDICAL_MEDIC && ishuman(user) && user.a_intent == "help") //Squad medics and above
+		dig_out_shrapnel(target, user)
+	else
+		..()
+
 /obj/item/weapon/combat_knife/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I,/obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/CC = I
@@ -185,28 +191,45 @@
 	add_to_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/proc/dig_out_shrapnel(mob/living/carbon/human/user)
-	if(!istype(user))
+// If no user, it means that the embedded_human is removing it themselves
+/obj/item/weapon/proc/dig_out_shrapnel(var/mob/living/carbon/human/embedded_human, var/mob/living/carbon/human/user = null)
+	if(!istype(embedded_human))
 		return
 
-	var/mob/living/carbon/human/H = user
+	var/mob/living/carbon/human/H = embedded_human
+	var/mob/living/carbon/human/H_user = embedded_human
 
-	to_chat(H, SPAN_NOTICE("You begin using [src] to rip shrapnel out. Hold still. This will probably hurt..."))
-	if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-		var/found_shrapnel = FALSE
+	if(user)
+		H_user = user
 
-		for(var/obj/item/shard/shrapnel/embedded in H.embedded_items)
-			var/datum/limb/organ = embedded.embedded_organ
-			to_chat(H, SPAN_NOTICE("You dig [embedded] out of your [organ.display_name]."))
-			embedded.loc = H.loc
-			organ.implants -= embedded
-			H.embedded_items -= embedded
-			if(!(organ.status & LIMB_ROBOT) && !(H.species.flags & NO_BLOOD)) //Big thing makes us bleed when moving
-				organ.status |= LIMB_BLEEDING
-			organ = null
-			found_shrapnel = TRUE
+	if(H_user.action_busy) 
+		return
 
-		if(!found_shrapnel)
-			to_chat(H, SPAN_NOTICE("You couldn't find any shrapnel."))
-	else 
-		to_chat(H, SPAN_WARNING("You were interrupted!"))
+	if(user)
+		to_chat(user, SPAN_NOTICE("You begin using [src] to rip shrapnel out of [embedded_human]."))
+		if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, H, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+			to_chat(H_user, SPAN_NOTICE("You were interrupted!"))
+			return
+	else
+		to_chat(H, SPAN_NOTICE("You begin using [src] to rip shrapnel out. Hold still. This will probably hurt..."))
+		if(!do_after(H, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			to_chat(H_user, SPAN_NOTICE("You were interrupted!"))
+			return
+
+	var/found_shrapnel = helper_shrapnel_removal(embedded_human)
+	if(!found_shrapnel)
+		to_chat(H_user, SPAN_NOTICE("You couldn't find any shrapnel."))
+
+/obj/item/weapon/proc/helper_shrapnel_removal(var/mob/living/carbon/human/embedded_human)
+	for(var/obj/item/shard/shrapnel/embedded in embedded_human.embedded_items)
+		var/datum/limb/organ = embedded.embedded_organ
+		to_chat(embedded_human, SPAN_NOTICE("[embedded] is removed from your [organ.display_name]."))
+		embedded.loc = embedded_human.loc
+		organ.implants -= embedded
+		embedded_human.embedded_items -= embedded
+		if(!(organ.status & LIMB_ROBOT) && !(embedded_human.species.flags & NO_BLOOD)) //Big thing makes us bleed when moving
+			organ.status |= LIMB_BLEEDING
+		organ = null
+		return TRUE
+	return FALSE
+

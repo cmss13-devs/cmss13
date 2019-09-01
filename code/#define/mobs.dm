@@ -385,23 +385,67 @@
 #define CAN_HOLD_TWO_HANDS 1
 #define CAN_HOLD_ONE_HAND 2
 
-// boiler flags
+//	------------	//
+//	STRAIN FLAGS	//
+//	------------	//
 
-#define BOILER_NORMAL	1
-#define BOILER_RAILGUN	2
-#define BOILER_SHATTER  3
+// Queen strain flags
+#define QUEEN_NORMAL		"Normal"
+
+// Drone strain flags
+#define DRONE_NORMAL		"Normal"
+#define DRONE_HEALER		"Healer"
+
+// Hivelord strain flags
+#define HIVELORD_NORMAL		"Normal"
+
+// Carrier strain flags
+#define CARRIER_NORMAL 		"Normal"
+#define CARRIER_EGGSACS		"Eggsac"
+
+// Burrower strain flags
+#define BURROWER_NORMAL 	"Normal"
+#define BURROWER_TREMOR		"Tremor"
+
+// Sentinel strain flags
+#define SENTINEL_NORMAL		"Normal"
+
+// Spitter strain flags
+#define SPITTER_NORMAL		"Normal"
+#define SPITTER_VOMITER		"Vomiter"
+
+// Boiler strain flags
+#define BOILER_NORMAL		"Normal"
+#define BOILER_RAILGUN		"Railgun"
+#define BOILER_SHATTER  	"Shatter"
+
+// Runner strain flags
+#define RUNNER_NORMAL		"Normal"
+
+// Lurker strain flags
+#define LURKER_NORMAL		"Normal"
 
 // Ravager strain flags
+#define RAVAGER_NORMAL 		"Normal"
+#define RAVAGER_VETERAN 	"Veteran"
+#define RAVAGER_HEDGEHOG 	"Hedgehog"
 
-#define RAVAGER_NORMAL 		1
-#define RAVAGER_VETERAN 	2
-#define RAVAGER_HEDGEHOG 	3
+// Defender strain flags
+#define DEFENDER_NORMAL 	"Normal"
+#define DEFENDER_STEELCREST "Steelcrest"
+
+// Warrior strain flags
+#define WARRIOR_NORMAL		"Normal"
+#define WARRIOR_BOXER		"Boxer"
+
+// Crusher strain flags
+#define CRUSHER_NORMAL		"Normal"
 
 // Praetorian strain flags
-#define PRAETORIAN_NORMAL	  1
-#define PRAETORIAN_ROYALGUARD 2
-#define PRAETORIAN_DANCER	  3
-#define PRAETORIAN_OPPRESSOR  4
+#define PRAETORIAN_NORMAL	  "Normal"
+#define PRAETORIAN_ROYALGUARD "Royal Guard"
+#define PRAETORIAN_DANCER	  "Dancer"
+#define PRAETORIAN_OPPRESSOR  "Oppressor"
 
 // Praetorian strain flags
 #define PRAE_SCREECH_BUFFED  	1

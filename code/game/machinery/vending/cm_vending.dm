@@ -2088,8 +2088,8 @@ obj/machinery/cm_vending/sorted/uniform_supply
 		list("Marine Radio Headset", 5, /obj/item/device/radio/headset/almayer, "black"),
 		list("Alpha Squad radio encryption key", 5, /obj/item/device/encryptionkey/alpha, "black"),
 		list("Bravo Squad radio encryption key", 5, /obj/item/device/encryptionkey/bravo, "black"),
-		list("Charlie Squad radio encryption key", 5, /obj/item/device/encryptionkey/delta, "black"),
-		list("Delta Squad radio encryption key", 5, /obj/item/device/encryptionkey/charlie, "black"),
+		list("Charlie Squad radio encryption key", 5, /obj/item/device/encryptionkey/charlie, "black"),
+		list("Delta Squad radio encryption key", 5, /obj/item/device/encryptionkey/delta, "black"),
 		list("Supply Radio Encryption Key", 5, /obj/item/device/encryptionkey/req, "black"),
 		list("Engineering Radio Encryption Key", 5, /obj/item/device/encryptionkey/engi, "black")
 		)

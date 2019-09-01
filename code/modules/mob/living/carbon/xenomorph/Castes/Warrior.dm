@@ -72,7 +72,6 @@
 	old_x = -16
 	tier = 2
 
-
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
 		/datum/action/xeno_action/regurgitate,
@@ -86,6 +85,7 @@
 	new_actions = list(
 		/datum/action/xeno_action/activable/jab,
 	)
+	mutation_type = WARRIOR_NORMAL
 
 /mob/living/carbon/Xenomorph/Warrior/update_icons()
 	if (stat == DEAD)

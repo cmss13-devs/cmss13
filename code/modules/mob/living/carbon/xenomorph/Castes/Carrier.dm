@@ -94,6 +94,7 @@
 		/datum/action/xeno_action/activable/retrieve_egg,
 		/datum/action/xeno_action/place_trap
 		)
+	mutation_type = CARRIER_NORMAL
 
 
 /mob/living/carbon/Xenomorph/Carrier/death(var/cause, var/gibbed)

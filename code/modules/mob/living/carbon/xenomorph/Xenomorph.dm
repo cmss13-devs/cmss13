@@ -50,6 +50,8 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/datum/mutator_set/individual_mutators/mutators = new
 
+	// Mutatotion types/Strain names
+	var/mutation_type = null
 		
 	// Armor
 	var/armor_deflection_buff = 0
@@ -455,7 +457,7 @@
 /mob/living/carbon/Xenomorph/examine(mob/user)
 	..()
 	if(isXeno(user) && caste.caste_desc)
-		user << caste.caste_desc
+		to_chat(user, caste.caste_desc)
 
 	if(stat == DEAD)
 		to_chat(user, "It is DEAD. Kicked the bucket. Off to that great hive in the sky.")
@@ -477,6 +479,11 @@
 
 	if(hivenumber != XENO_HIVE_NORMAL)
 		to_chat(user, "It appears to belong to the [hive.prefix]hive")
+
+	if(isXeno(user) || isobserver(user))
+		if(mutation_type != "Normal")
+			to_chat(user, "It has specialized into a [mutation_type].")
+
 	return
 
 /mob/living/carbon/Xenomorph/Dispose()

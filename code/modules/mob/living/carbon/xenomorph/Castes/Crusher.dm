@@ -83,6 +83,7 @@
 	new_actions = list(
 		/datum/action/xeno_action/activable/earthquake,
 	)
+	mutation_type = CRUSHER_NORMAL
 
 /mob/living/carbon/Xenomorph/Crusher/proc/stomp()
 	if(!check_state()) return

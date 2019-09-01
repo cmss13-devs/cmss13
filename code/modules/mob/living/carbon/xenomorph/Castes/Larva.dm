@@ -42,6 +42,7 @@
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl
 		)
+	mutation_type = "Normal"
 
 /mob/living/carbon/Xenomorph/Larva/Corrupted
 	hivenumber = XENO_HIVE_CORRUPTED

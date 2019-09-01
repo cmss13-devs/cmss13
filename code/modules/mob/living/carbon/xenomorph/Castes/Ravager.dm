@@ -90,12 +90,12 @@
 	plasma_types = list(PLASMA_CATECHOLAMINE)
 	var/used_charge = 0
 	var/tail_stab_ready = 0
-	var/mutation_type = RAVAGER_NORMAL
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
 	pixel_x = -16
 	old_x = -16
+	mutation_type = RAVAGER_NORMAL
 
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
@@ -106,7 +106,6 @@
 /mob/living/carbon/Xenomorph/Ravager/New()
 	..()
 	ammo = ammo_list[/datum/ammo/xeno/bone_chips]
-
 
 //Chance of insta limb amputation after a melee attack.
 /mob/living/carbon/Xenomorph/Ravager/proc/delimb(var/mob/living/carbon/human/H, var/datum/limb/O)

@@ -116,10 +116,10 @@
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
+	mutation_type = PRAETORIAN_NORMAL
 	
 	// Variables unique to Praetorians.
 	var/screech_sound_effect = 'sound/voice/xeno_praetorian_screech.ogg'
-	var/mutation_type = PRAETORIAN_NORMAL
 
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,

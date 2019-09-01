@@ -93,6 +93,7 @@
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
 		)
+	mutation_type = BURROWER_NORMAL
 
 /mob/living/carbon/Xenomorph/Burrower/New()
 	. = ..()

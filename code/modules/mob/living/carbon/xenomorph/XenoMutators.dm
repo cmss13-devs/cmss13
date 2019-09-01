@@ -150,6 +150,7 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Drone/D = MS.xeno
+	D.mutation_type = DRONE_HEALER
 	D.phero_modifier += XENO_PHERO_MOD_LARGE
 	D.plasma_types += PLASMA_PHEROMONE
 	mutator_update_actions(D)
@@ -176,6 +177,7 @@
 		return
 	
 	var/mob/living/carbon/Xenomorph/Spitter/S = MS.xeno
+	S.mutation_type = SPITTER_VOMITER
 	S.plasma_types -= PLASMA_NEUROTOXIN
 	mutator_update_actions(S)
 	MS.recalculate_actions(description)
@@ -198,6 +200,7 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Defender/D = MS.xeno
+	D.mutation_type = DEFENDER_STEELCREST
 	D.remove_action("Tail Sweep")
 	D.speed_modifier += XENO_SPEED_MOD_SMALL
 	D.damage_modifier -= XENO_DAMAGE_MOD_VERYSMALL
@@ -226,6 +229,7 @@
 	if (. == 0)
 		return
 	var/mob/living/carbon/Xenomorph/Carrier/C = MS.xeno
+	C.mutation_type = CARRIER_EGGSACS
 	MS.egg_sac = TRUE
 	C.plasma_types += PLASMA_EGG
 	mutator_update_actions(C)
@@ -251,6 +255,7 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Burrower/B = MS.xeno
+	B.mutation_type = BURROWER_TREMOR
 	mutator_update_actions(B)
 	MS.recalculate_actions(description)
 
@@ -274,6 +279,7 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Warrior/W = MS.xeno
+	W.mutation_type = WARRIOR_BOXER
 	mutator_update_actions(W)
 	MS.recalculate_actions(description)
 

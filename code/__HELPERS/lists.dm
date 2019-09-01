@@ -660,3 +660,36 @@ datum/proc/dd_SortValue()
 	for(var/path in subtypesof(prototype))
 		L += new path()
 	return L
+
+//Copies a list, and all lists inside it recusively
+//Does not copy any other reference type
+/proc/deepCopyList(list/L)
+	if(!islist(L))
+		return L
+	. = L.Copy()
+	for(var/i in 1 to length(L))
+		var/key = .[i]
+		if(isnum(key))
+			// numbers cannot ever be associative keys
+			continue
+		var/value = .[key]
+		if(islist(value))
+			value = deepCopyList(value)
+			.[key] = value
+		if(islist(key))
+			key = deepCopyList(key)
+			.[i] = key
+			.[key] = value
+
+/proc/copyListList(list/L)
+	var/newList = L.Copy()
+	for(var/i in L)
+		var/temp_key = i
+		var/temp_value = L[i]
+		if(islist(i))
+			var/list/i_two = i
+			temp_key = i_two.Copy()
+		if(islist(L[i]))
+			temp_value = L[i].Copy()
+		newList[temp_key] = temp_value
+	return newList

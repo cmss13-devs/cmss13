@@ -360,9 +360,6 @@
 		else
 			clear_fullscreen("blind")
 
-	if(!stat && prob(25)) //Only a 25% chance of proccing the queen locator, since it is expensive and we don't want it firing every tick
-		queen_locator()
-
 	if(stat != DEAD) //Ladders have cameras now.
 		if(interactee)
 			interactee.check_eye(src)
@@ -519,7 +516,7 @@ updatehealth()
 /mob/living/carbon/Xenomorph/proc/queen_locator()
 	if(!hud_used || !hud_used.locate_leader) return
 
-	if(!hive.living_xeno_queen || caste.is_intelligent)
+	if(!hive.living_xeno_queen || caste.is_intelligent || !loc)
 		hud_used.locate_leader.icon_state = "trackoff"
 		return
 

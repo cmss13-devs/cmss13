@@ -8,6 +8,7 @@
 
 /datum/squad
 	var/name = "Empty Squad"  //Name of the squad
+	var/tracking_id = null	//Used for the tracking subsystem
 	var/max_positions = -1 //Maximum number allowed in a squad. Defaults to infinite
 	var/color = 0 //Color for helmets, etc.
 	var/list/access = list() //Which special access do we grant them
@@ -72,6 +73,11 @@
 	usable = 0//Normally not usable
 	radio_freq = ECHO_FREQ
 
+/datum/squad/New()
+	. = ..()
+
+	tracking_id = SStracking.setup_trackers()
+
 //Straight-up insert a marine into a squad.
 //This sets their ID, increments the total count, and so on. Everything else is done in job_controller.dm.
 //So it does not check if the squad is too full already, or randomize it, etc.
@@ -113,8 +119,14 @@
 				demote_squad_leader() //replaced by the real one
 			assignment = "Squad Leader"
 			squad_leader = M
+			SStracking.set_leader(tracking_id, M)
+			SStracking.start_tracking("marine_sl", M)
+
 			if(M.mind.assigned_role == "Squad Leader") //field promoted SL don't count as real ones
 				num_leaders++
+				
+	if(assignment != "Squad Leader")
+		SStracking.start_tracking(tracking_id, M)
 
 	src.count++ //Add up the tally. This is important in even squad distribution.
 
@@ -150,6 +162,8 @@
 			demote_squad_leader()
 		else
 			M.assigned_squad.squad_leader = null
+	else
+		SStracking.stop_tracking(tracking_id, M)
 
 	M.assigned_squad = null
 
@@ -166,6 +180,10 @@
 
 /datum/squad/proc/demote_squad_leader(leader_killed)
 	var/mob/living/carbon/human/old_lead = squad_leader
+
+	SStracking.delete_leader(tracking_id)
+	SStracking.stop_tracking("marine_sl", old_lead)
+
 	squad_leader = null
 	if(old_lead.mind)
 		switch(old_lead.mind.assigned_role)

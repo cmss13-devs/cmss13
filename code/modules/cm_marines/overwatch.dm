@@ -583,14 +583,21 @@
 	if(current_squad.squad_leader)
 		send_to_squad("Attention: [current_squad.squad_leader] is [current_squad.squad_leader.stat == DEAD ? "stepping down" : "demoted"]. A new Squad Leader has been set: [H.real_name].")
 		visible_message("\icon[src] <span class='boldnotice'>Squad Leader [current_squad.squad_leader] of squad '[current_squad]' has been [current_squad.squad_leader.stat == DEAD ? "replaced" : "demoted and replaced"] by [H.real_name]! Logging to enlistment files.</span>")
+		var/old_lead = current_squad.squad_leader
 		current_squad.demote_squad_leader(current_squad.squad_leader.stat != DEAD)
+		SStracking.start_tracking(current_squad.tracking_id, old_lead)
 	else
 		send_to_squad("Attention: A new Squad Leader has been set: [H.real_name].")
 		visible_message("\icon[src] <span class='boldnotice'>[H.real_name] is the new Squad Leader of squad '[current_squad]'! Logging to enlistment file.</span>")
 
 	to_chat(H, "\icon[src] <font size='3' color='blue'><B>\[Overwatch\]: You've been promoted to \'[H.mind.assigned_role == "Squad Leader" ? "SQUAD LEADER" : "ACTING SQUAD LEADER"]\' for [current_squad.name]. Your headset has access to the command channel (:v).</B></font>")
 	to_chat(usr, "\icon[src] [H.real_name] is [current_squad]'s new leader!")
+
 	current_squad.squad_leader = H
+
+	SStracking.set_leader(current_squad.tracking_id, H)
+	SStracking.start_tracking("marine_sl", H)
+
 	if(H.mind.assigned_role == "Squad Leader")//a real SL
 		H.mind.role_comm_title = "SL"
 	else //an acting SL

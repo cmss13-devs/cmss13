@@ -57448,7 +57448,7 @@
 	eftpos_name = "Cargo Bay EFTPOS scanner"
 	},
 /obj/item/tool/stamp{
-	name = "Quartermaster's stamp";
+	name = "Requisition Officer's stamp";
 	pixel_x = 0;
 	pixel_y = 0
 	},

@@ -560,7 +560,7 @@
 /obj/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Security Booth";
-	req_access_txt = "0"
+	req_access = list()
 	},
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
@@ -873,7 +873,7 @@
 /obj/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Security Booth";
-	req_access_txt = "0"
+	req_access = list()
 	},
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
@@ -1163,7 +1163,7 @@
 /obj/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Main Hangar Traffic Control";
-	req_access_txt = "0"
+	req_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1822,7 +1822,7 @@
 /obj/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	name = "Hangar-Barracks Maintenance";
-	req_one_access_txt = "0"
+	req_one_access = list()
 	},
 /turf/open/floor/plating,
 /area/prison/hallway/entrance)

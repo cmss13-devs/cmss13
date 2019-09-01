@@ -109,9 +109,9 @@
 
 /obj/structure/mortar/attackby(var/obj/item/O as obj, mob/user as mob)
 
-	if(istype(O, /obj/item/mortal_shell))
+	if(istype(O, /obj/item/mortar_shell))
 
-		var/obj/item/mortal_shell/mortar_shell = O
+		var/obj/item/mortar_shell/mortar_shell = O
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
 			to_chat(user, SPAN_WARNING("You don't have the training to fire [src]."))
 			return
@@ -237,7 +237,7 @@
 		M.dir = user.dir
 		qdel(src)
 
-/obj/item/mortal_shell
+/obj/item/mortar_shell
 	name = "\improper 80mm mortar shell"
 	desc = "An unlabeled 80mm mortar shell, probably a casing."
 	icon = 'icons/obj/structures/mortar.dmi'
@@ -246,43 +246,43 @@
 	flags_atom = FPRINT|CONDUCT
 	var/source_mob
 
-/obj/item/mortal_shell/proc/detonate(var/turf/T)
+/obj/item/mortar_shell/proc/detonate(var/turf/T)
 	forceMove(T)
 
-/obj/item/mortal_shell/he
+/obj/item/mortar_shell/he
 	name = "\improper 80mm high explosive mortar shell"
 	desc = "An 80mm mortar shell, loaded with a high explosive charge."
 	icon_state = "mortar_ammo_he"
 
-/obj/item/mortal_shell/he/detonate(var/turf/T)
+/obj/item/mortar_shell/he/detonate(var/turf/T)
 	explosion(T, 0, 3, 5, 7, , , , initial(name), source_mob)
 
-/obj/item/mortal_shell/frag
+/obj/item/mortar_shell/frag
 	name = "\improper 80mm fragmentation mortar shell"
 	desc = "An 80mm mortar shell, loaded with a fragmentation charge."
 	icon_state = "mortar_ammo_frag"
 
-/obj/item/mortal_shell/frag/detonate(var/turf/T)
+/obj/item/mortar_shell/frag/detonate(var/turf/T)
 	create_shrapnel(T, 60, , initial(name), source_mob)
 	sleep(2)
 	explosion_rec(T, 60, 20, initial(name), source_mob)
 
-/obj/item/mortal_shell/incendiary
+/obj/item/mortar_shell/incendiary
 	name = "\improper 80mm incendiary mortar shell"
 	desc = "An 80mm mortar shell, loaded with a napalm charge."
 	icon_state = "mortar_ammo_inc"
 
-/obj/item/mortal_shell/incendiary/detonate(var/turf/T)
+/obj/item/mortar_shell/incendiary/detonate(var/turf/T)
 	explosion(T, 0, 2, 4, 7, , , , initial(name), source_mob)
 	flame_radius(initial(name), source_mob, 5, T)
 	playsound(T, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 
-/obj/item/mortal_shell/flare
+/obj/item/mortar_shell/flare
 	name = "\improper 80mm flare mortar shell"
 	desc = "An 80mm mortar shell, loaded with an illumination flare."
 	icon_state = "mortar_ammo_flr"
 
-/obj/item/mortal_shell/flare/detonate(var/turf/T)
+/obj/item/mortar_shell/flare/detonate(var/turf/T)
 	new /obj/item/device/flashlight/flare/on/illumination(T)
 	playsound(T, 'sound/weapons/gun_flare.ogg', 50, 1, 4)
 
@@ -320,22 +320,22 @@
 
 /obj/structure/closet/crate/secure/mortar_ammo/full/New()
 	..()
-	new /obj/item/mortal_shell/he(src)
-	new /obj/item/mortal_shell/he(src)
-	new /obj/item/mortal_shell/he(src)
-	new /obj/item/mortal_shell/he(src)
-	new /obj/item/mortal_shell/frag(src)
-	new /obj/item/mortal_shell/frag(src)
-	new /obj/item/mortal_shell/frag(src)
-	new /obj/item/mortal_shell/frag(src)
-	new /obj/item/mortal_shell/incendiary(src)
-	new /obj/item/mortal_shell/incendiary(src)
-	new /obj/item/mortal_shell/incendiary(src)
-	new /obj/item/mortal_shell/incendiary(src)
-	new /obj/item/mortal_shell/flare(src)
-	new /obj/item/mortal_shell/flare(src)
-	new /obj/item/mortal_shell/flare(src)
-	new /obj/item/mortal_shell/flare(src)
+	new /obj/item/mortar_shell/he(src)
+	new /obj/item/mortar_shell/he(src)
+	new /obj/item/mortar_shell/he(src)
+	new /obj/item/mortar_shell/he(src)
+	new /obj/item/mortar_shell/frag(src)
+	new /obj/item/mortar_shell/frag(src)
+	new /obj/item/mortar_shell/frag(src)
+	new /obj/item/mortar_shell/frag(src)
+	new /obj/item/mortar_shell/incendiary(src)
+	new /obj/item/mortar_shell/incendiary(src)
+	new /obj/item/mortar_shell/incendiary(src)
+	new /obj/item/mortar_shell/incendiary(src)
+	new /obj/item/mortar_shell/flare(src)
+	new /obj/item/mortar_shell/flare(src)
+	new /obj/item/mortar_shell/flare(src)
+	new /obj/item/mortar_shell/flare(src)
 
 /obj/structure/closet/crate/secure/mortar_ammo/mortar_kit
 	name = "\improper M402 mortar kit"
@@ -344,18 +344,18 @@
 /obj/structure/closet/crate/secure/mortar_ammo/mortar_kit/New()
 	..()
 	new /obj/item/mortar_kit(src)
-	new /obj/item/mortal_shell/he(src)
-	new /obj/item/mortal_shell/he(src)
-	new /obj/item/mortal_shell/he(src)
-	new /obj/item/mortal_shell/frag(src)
-	new /obj/item/mortal_shell/frag(src)
-	new /obj/item/mortal_shell/frag(src)
-	new /obj/item/mortal_shell/incendiary(src)
-	new /obj/item/mortal_shell/incendiary(src)
-	new /obj/item/mortal_shell/incendiary(src)
-	new /obj/item/mortal_shell/flare(src)
-	new /obj/item/mortal_shell/flare(src)
-	new /obj/item/mortal_shell/flare(src)
+	new /obj/item/mortar_shell/he(src)
+	new /obj/item/mortar_shell/he(src)
+	new /obj/item/mortar_shell/he(src)
+	new /obj/item/mortar_shell/frag(src)
+	new /obj/item/mortar_shell/frag(src)
+	new /obj/item/mortar_shell/frag(src)
+	new /obj/item/mortar_shell/incendiary(src)
+	new /obj/item/mortar_shell/incendiary(src)
+	new /obj/item/mortar_shell/incendiary(src)
+	new /obj/item/mortar_shell/flare(src)
+	new /obj/item/mortar_shell/flare(src)
+	new /obj/item/mortar_shell/flare(src)
 	new /obj/item/device/encryptionkey/engi(src)
 	new /obj/item/device/encryptionkey/engi(src)
 	new /obj/item/device/encryptionkey/jtac(src)

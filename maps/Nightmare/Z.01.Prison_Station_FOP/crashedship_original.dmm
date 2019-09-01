@@ -1701,7 +1701,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
 "cY" = (
-/obj/effect/landmark/corpsespawner/pirate,
+/obj/effect/landmark/corpsespawner/realpirate,
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
 "cZ" = (
@@ -1967,7 +1967,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
 "dG" = (
-/obj/effect/landmark/corpsespawner/pirate,
+/obj/effect/landmark/corpsespawner/realpirate,
 /obj/item/weapon/gun/rifle/mar40,
 /turf/open/floor/prison{
 	dir = 1;
@@ -2117,7 +2117,7 @@
 /area/prison/cellblock/highsec/south/south)
 "dW" = (
 /obj/machinery/atmospherics/unary/vent_scrubber,
-/obj/effect/landmark/corpsespawner/pirate,
+/obj/effect/landmark/corpsespawner/realpirate,
 /obj/item/weapon/gun/rifle/mar40,
 /turf/open/floor/prison{
 	dir = 9;
@@ -2730,7 +2730,7 @@
 	},
 /obj/machinery/door/airlock/almayer/security/glass{
 	name = "Security Booth";
-	req_access_txt = "0"
+	req_access = list()
 	},
 /turf/open/floor/prison,
 /area/prison/security/checkpoint/highsec_medsec)
@@ -3229,7 +3229,7 @@
 /turf/open/floor/carpet,
 /area/prison/pirate)
 "gm" = (
-/mob/living/carbon/monkey{
+/mob/living/carbon/human/monkey{
 	name = "First Mate Barbarossa"
 	},
 /turf/open/floor/carpet,
@@ -4868,7 +4868,7 @@
 /obj/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "Toilet";
-	req_one_access_txt = "0"
+	req_one_access = list()
 	},
 /turf/open/floor/prison{
 	tag = "icon-kitchen (SOUTHWEST)";
@@ -5015,7 +5015,7 @@
 "jF" = (
 /obj/machinery/door/airlock/almayer/maint{
 	dir = 1;
-	req_one_access_txt = "0"
+	req_one_access = list()
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
@@ -5079,7 +5079,7 @@
 	icon_state = "door_open";
 	name = "Solitary Confinement";
 	opacity = 0;
-	req_access_txt = "0"
+	req_access = list()
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
@@ -5139,14 +5139,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access_txt = "0"
+	req_one_access = list()
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
 "jT" = (
 /obj/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access_txt = "0"
+	req_one_access = list()
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
@@ -5187,14 +5187,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access_txt = "0"
+	req_one_access = list()
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/west)
 "jY" = (
 /obj/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access_txt = "0"
+	req_one_access = list()
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/west)
@@ -5502,7 +5502,7 @@
 	},
 /obj/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access_txt = "0"
+	req_one_access = list()
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/west)

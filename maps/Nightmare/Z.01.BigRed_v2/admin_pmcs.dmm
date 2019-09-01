@@ -493,7 +493,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bi" = (
-/obj/item/magazine_box/smg/ap,
+/obj/item/magazine_box/m39/ap,
 /turf/open/floor{
 	tag = "icon-carpet5-1 (WEST)";
 	icon_state = "carpet5-1";

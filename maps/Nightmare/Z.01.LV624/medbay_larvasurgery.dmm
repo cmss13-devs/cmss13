@@ -779,7 +779,7 @@
 	icon_state = "whitebluecorner";
 	tag = "icon-whitebluecorner"
 	},
-/area/space)
+/area/lv624/lazarus/medbay)
 "CZ" = (
 /obj/item/paper/research_notes,
 /turf/open/floor{

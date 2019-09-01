@@ -305,6 +305,11 @@
 	set_hivenumber(hivenumber)
 	update_caste()
 	generate_name()
+
+	if(isXenoQueen(src))
+		SStracking.set_leader("hive_[hivenumber]", src)
+	SStracking.start_tracking("hive_[hivenumber]", src)
+
 	..(new_loc)
 	//WO GAMEMODE
 	if(map_tag == MAP_WHISKEY_OUTPOST)
@@ -379,7 +384,6 @@
 				hive.tier_2_xenos |= src
 			if(3)
 				hive.tier_3_xenos |= src
-
 		hive.totalXenos |= src
 
 	if(round_statistics && !statistic_exempt)
@@ -493,6 +497,9 @@
 		hive.living_xeno_queen.set_queen_overwatch(src, TRUE) // This is actually totally extraneous as this is handled in the life proc anyways.
 	if(src in hive.xeno_leader_list)
 		hive.xeno_leader_list -= src
+
+	SStracking.stop_tracking("hive_[hivenumber]", src)
+
 	. = ..()
 
 

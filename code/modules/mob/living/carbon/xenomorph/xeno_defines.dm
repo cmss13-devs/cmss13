@@ -615,9 +615,14 @@
 /datum/hive_status/proc/set_living_xeno_queen(var/mob/living/carbon/Xenomorph/Queen/M)
 	if(M == null)
 		mutators.reset_mutators()
+		SStracking.delete_leader("hive_[hivenumber]")
+		SStracking.stop_tracking("hive_[hivenumber]", living_xeno_queen)
 	else
 		mutators.user_levelled_up(M.upgrade)
+		SStracking.set_leader("hive_[hivenumber]", M)
+	
 	living_xeno_queen = M
+
 	recalculate_hive()
 
 /datum/hive_status/proc/recalculate_hive()
@@ -682,5 +687,3 @@
 	hivenumber = XENO_HIVE_ZETA
 	prefix = "Zeta "
 	color = "#606060"
-
-var/global/list/hive_datum = list(new /datum/hive_status(), new /datum/hive_status/corrupted(), new /datum/hive_status/alpha(), new /datum/hive_status/beta(), new /datum/hive_status/zeta())

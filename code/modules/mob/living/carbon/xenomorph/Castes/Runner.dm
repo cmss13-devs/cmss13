@@ -17,6 +17,7 @@
 	charge_type = 1 //Pounce - Runner
 	attack_delay = -4
 	evolves_to = list("Lurker")
+	deevolves_to = "Larva"
 	pounce_delay = 35
 	xeno_explosion_resistance = XENO_LOW_EXPLOSIVE_ARMOR
 

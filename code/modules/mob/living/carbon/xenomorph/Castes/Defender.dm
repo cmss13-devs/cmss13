@@ -19,6 +19,7 @@
 
 	charge_type = 2 //Pounce - Hunter
 	evolves_to = list("Warrior")
+	deevolves_to = "Larva"
 	can_vent_crawl = 0
 
 /datum/caste_datum/defender/mature

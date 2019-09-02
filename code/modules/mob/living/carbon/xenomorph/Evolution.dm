@@ -211,8 +211,9 @@
 			new_xeno.key = src.key
 			if(new_xeno.client) new_xeno.client.change_view(world.view)
 
-		//Regenerate the new mob's name now that our player is inside
-		new_xeno.generate_name()
+		// If the player has self-deevolved before, don't allow them to do it again
+		if(!(/mob/living/carbon/Xenomorph/verb/Deevolve in verbs))
+			new_xeno.verbs -= /mob/living/carbon/Xenomorph/verb/Deevolve
 
 		if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //Cmon, don't kill the new one! Shouldnt be possible though
 			new_xeno.bruteloss = src.bruteloss //Transfers the damage over.
@@ -237,3 +238,98 @@
 
 	else
 		to_chat(src, SPAN_WARNING("You quiver, but nothing happens. Hold still while evolving."))
+
+// The queen de-evo, but on yourself. Only usable once
+/mob/living/carbon/Xenomorph/verb/Deevolve()
+	set name = "De-Evolve"
+	set desc = "De-evolve into a lesser form."
+	set category = "Alien"
+	
+	if(!check_state())
+		return
+
+	if(is_ventcrawling)
+		to_chat(src, SPAN_XENOWARNING("You can't deevolve here."))
+		return
+
+	if(!isturf(loc))
+		to_chat(src, SPAN_XENOWARNING("You can't deevolve here."))
+		return
+
+	if(health <= 0)
+		to_chat(src, SPAN_XENOWARNING("You are too weak to deevolve."))
+		return
+
+	if(!caste.deevolves_to)
+		to_chat(src, SPAN_XENOWARNING("You can't deevolve any further."))
+		return
+
+	var/newcaste = caste.deevolves_to
+
+	var/confirm = alert(src, "Are you sure you want to deevolve from [caste.caste_name] to [newcaste]? You can only do this once.", , "Yes", "No")
+	if(confirm == "No")
+		return
+
+	if(!check_state())
+		return
+
+	if(is_ventcrawling)
+		return
+
+	if(!isturf(loc))
+		return
+
+	if(health <= 0)
+		return
+
+	var/xeno_type
+
+	switch(newcaste)
+		if("Larva")
+			xeno_type = /mob/living/carbon/Xenomorph/Larva
+		if("Runner")
+			xeno_type = /mob/living/carbon/Xenomorph/Runner
+		if("Drone")
+			xeno_type = /mob/living/carbon/Xenomorph/Drone
+		if("Sentinel")
+			xeno_type = /mob/living/carbon/Xenomorph/Sentinel
+		if("Spitter")
+			xeno_type = /mob/living/carbon/Xenomorph/Spitter
+		if("Lurker")
+			xeno_type = /mob/living/carbon/Xenomorph/Lurker
+		if("Warrior")
+			xeno_type = /mob/living/carbon/Xenomorph/Warrior
+		if("Defender")
+			xeno_type = /mob/living/carbon/Xenomorph/Defender
+		if("Burrower")
+			xeno_type = /mob/living/carbon/Xenomorph/Burrower
+
+	var/mob/living/carbon/Xenomorph/new_xeno = new xeno_type(get_turf(src), src)
+
+	if(!istype(new_xeno))
+		//Something went horribly wrong!
+		to_chat(src, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
+		if(new_xeno)
+			qdel(new_xeno)
+		return
+
+	if(mind)
+		mind.transfer_to(new_xeno)
+	else
+		new_xeno.key = key
+		if(new_xeno.client)
+			new_xeno.client.change_view(world.view)
+			new_xeno.client.pixel_x = 0
+			new_xeno.client.pixel_y = 0
+
+	// Self-deevolve is only usable once
+	new_xeno.verbs -= /mob/living/carbon/Xenomorph/verb/Deevolve
+
+	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_name] emerges from the husk of \the [src]."), \
+	SPAN_XENODANGER("You regress into your previous form."))
+
+	INVOKE_ASYNC(new_xeno, /mob/living/carbon/Xenomorph.proc/upgrade_xeno, 0) // no bone for self-deevolve
+
+	if(round_statistics && !new_xeno.statistic_exempt)
+		round_statistics.track_new_participant(faction, -1) //so an evolved xeno doesn't count as two.
+	qdel(src)

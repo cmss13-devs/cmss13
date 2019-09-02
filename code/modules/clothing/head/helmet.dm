@@ -784,3 +784,62 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
+//=============================//MEME\\==================================\\
+//=======================================================================\\
+
+/obj/item/clothing/head/helmet/marine/hefa
+	name = "\improper HEFA helmet"
+	desc = "For some reason, seeing this helmet causes you to feel extremely distressed."
+	icon_state = "hefa_helmet"
+	item_state = "hefa_helmet"
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_HARDCORE // the hefa knight stands
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_HIGH
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	unacidable = 1
+	anti_hug = 6
+
+	var/mob/activator = null
+	var/active = FALSE
+	var/det_time = 40
+
+/obj/item/clothing/head/helmet/marine/hefa/proc/apply_explosion_overlay()
+	var/obj/effect/overlay/O = new /obj/effect/overlay(loc)
+	O.name = "grenade"
+	O.icon = 'icons/effects/explosion.dmi'
+	flick("grenade", O)
+	spawn(7)
+		qdel(O)
+	return
+
+/obj/item/clothing/head/helmet/marine/hefa/attack_self(var/mob/user)
+	activator = user
+	activate()
+
+/obj/item/clothing/head/helmet/marine/hefa/proc/activate()
+	if(active)
+		return
+	active = TRUE
+
+	icon_state = initial(icon_state) + "_active"
+	item_state = initial(item_state) + "_active"
+	overlays += /obj/effect/overlay/danger
+	playsound(loc, 'sound/weapons/armbomb.ogg', 25, 1, 6)
+
+	add_timer(CALLBACK(src, .proc/prime), det_time)
+
+/obj/item/clothing/head/helmet/marine/hefa/proc/prime()
+	INVOKE_ASYNC(src, .proc/boom)
+
+// Values nabbed from the HEFA nade
+/obj/item/clothing/head/helmet/marine/hefa/proc/boom()
+	create_shrapnel(loc, 48, , ,/datum/ammo/bullet/shrapnel, initial(name), activator)
+	sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
+	apply_explosion_overlay()
+	explosion_rec(loc, 40, 18, initial(name), activator)
+	qdel(src)

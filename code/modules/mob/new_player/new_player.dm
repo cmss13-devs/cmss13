@@ -451,8 +451,11 @@
 	if(client.prefs.disabilities)
 		new_character.disabilities |= NEARSIGHTED
 
-	// Do the initial caching of the player's body icons.
-	new_character.regenerate_icons()
+	// Update the character icons
+	// This is done in set_species when the mob is created as well, but 
+	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/regenerate_icons)
+	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_body, 1, 0)
+	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_hair)
 
 	new_character.key = key		//Manually transfer the key to log them in
 	if(new_character.client) new_character.client.change_view(world.view)

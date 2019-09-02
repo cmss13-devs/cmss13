@@ -33,19 +33,19 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
-	New()
-		..()
-		select_gamemode_skin(/obj/item/weapon/gun/rifle/sniper/M42A) //use j_ for legacy variant via VV
-		attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 20, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
-		var/obj/item/attachable/scope/S = new(src)
-		S.attach_icon = "" //Let's make it invisible. The sprite already has one.
-		S.icon_state = ""
-		S.flags_attach_features &= ~ATTACH_REMOVABLE
-		S.Attach(src)
-		var/obj/item/attachable/sniperbarrel/Q = new(src)
-		Q.Attach(src)
-		update_attachables()
-		S.icon_state = initial(S.icon_state)
+/obj/item/weapon/gun/rifle/sniper/M42A/New()
+	..()
+	select_gamemode_skin(/obj/item/weapon/gun/rifle/sniper/M42A) //use j_ for legacy variant via VV
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 20, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
+	var/obj/item/attachable/scope/S = new(src)
+	S.attach_icon = "" //Let's make it invisible. The sprite already has one.
+	S.icon_state = ""
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	var/obj/item/attachable/sniperbarrel/Q = new(src)
+	Q.Attach(src)
+	update_attachables()
+	S.icon_state = initial(S.icon_state)
 
 
 /obj/item/weapon/gun/rifle/sniper/M42A/set_gun_config_values()
@@ -340,7 +340,7 @@
 	if(!powerpack)
 		link_powerpack(usr)
 	toggle_lethal_mode(usr)
-	
+
 /obj/item/weapon/gun/smartgun/verb/vtoggle_ammo_type()
 	set category = "Smartgun"
 	set name = "Toggle Ammo Type"
@@ -364,7 +364,7 @@
 /obj/item/weapon/gun/smartgun/verb/vtoggle_accuracy_improvement()
 	set category = "Smartgun"
 	set name = "Toggle Accuracy Improvement"
-	
+
 	if(isobserver(usr) || isXeno(usr))
 		return
 	if(!powerpack)
@@ -374,7 +374,7 @@
 /obj/item/weapon/gun/smartgun/verb/vtoggle_auto_fire()
 	set category = "Smartgun"
 	set name = "Toggle Auto Fire"
-	
+
 	if(isobserver(usr) || isXeno(usr))
 		return
 	if(!powerpack)
@@ -384,7 +384,7 @@
 /obj/item/weapon/gun/smartgun/verb/vtoggle_motion_detector()
 	set category = "Smartgun"
 	set name = "Toggle Motion Detector"
-	
+
 	if(isobserver(usr) || isXeno(usr))
 		return
 	if(!powerpack)
@@ -423,7 +423,7 @@
 	if(!powerpack)
 		link_powerpack(usr)
 	toggle_ammo_type(usr)
-	
+
 /obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
 	if(!iff_enabled)
 		to_chat(user, "\icon[src] Can't switch ammunition type when the [src]'s fire restriction is disabled.")
@@ -431,7 +431,7 @@
 	secondary_toggled = !secondary_toggled
 	to_chat(user, "\icon[src] You changed the [src]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor shredding rounds" : "highly precise rounds"].")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
-	ammo = secondary_toggled ? ammo_secondary : ammo_primary	
+	ammo = secondary_toggled ? ammo_secondary : ammo_primary
 
 /obj/item/weapon/gun/smartgun/proc/toggle_lethal_mode(mob/user)
 	to_chat(user, "\icon[src] You [iff_enabled? "<B>disable</b>" : "<B>enable</b>"] the [src]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")
@@ -458,7 +458,7 @@
 
 
 /obj/item/weapon/gun/smartgun/proc/link_powerpack(var/mob/user)
-	if(user.back)	
+	if(user.back)
 		if(istype(user.back,/obj/item/smartgun_powerpack))
 			src.powerpack = user.back
 			return TRUE
@@ -682,7 +682,7 @@
 
 /obj/item/weapon/gun/smartgun/proc/process_shot(var/mob/living/user)
 	set waitfor = 0
-	
+
 
 	if(isnull(target)) return //Acquire our victim.
 
@@ -787,8 +787,7 @@
 	var/max_grenades = 6
 	var/is_lobbing = TRUE
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	attachable_allowed = list(/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/scope/mini)
+	attachable_allowed = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/scope/mini)
 
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	gun_skill_category = GUN_SKILL_SPEC

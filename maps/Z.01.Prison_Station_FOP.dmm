@@ -55914,14 +55914,6 @@
 /obj/item/stack/sheet/metal,
 /turf/open/space,
 /area/space)
-"csS" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 90
-	},
-/turf/open/floor/plating,
-/area/prison/pirate)
 "csT" = (
 /turf/open/shuttle{
 	icon_state = "floor7"
@@ -57007,15 +56999,7 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "cvq" = (
-/obj/machinery/power/smes/buildable{
-	charge = 5e+006;
-	chargelevel = 450000;
-	chargemode = 1;
-	cur_coils = 4;
-	dir = 4;
-	name = "Main battery Unit";
-	output = 50000
-	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/plating{
 	icon_plating = "platebot";
 	icon_state = "platebot"
@@ -57180,19 +57164,6 @@
 	dir = 5;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
-	},
-/turf/open/floor/plating,
-/area/prison/pirate)
-"cvK" = (
-/obj/machinery/power/terminal{
-	tag = "icon-term (NORTH)";
-	icon_state = "term";
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
@@ -80215,7 +80186,7 @@ ctL
 cio
 cio
 cvq
-cvK
+csv
 cvY
 cwl
 cwC
@@ -80427,7 +80398,7 @@ csY
 cuj
 cio
 cvq
-cvK
+csv
 cvY
 cwm
 cwD
@@ -80633,7 +80604,7 @@ cio
 cri
 crJ
 cio
-csS
+cjw
 ctz
 ctM
 crU

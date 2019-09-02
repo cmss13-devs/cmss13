@@ -19,6 +19,7 @@
 	tackle_chance = 40
 	spit_types = list(/datum/ammo/xeno/toxin, /datum/ammo/xeno/toxin/burst)
 	evolves_to = list("Spitter")
+	deevolves_to = "Larva"
 	acid_level = 1
 
 /datum/caste_datum/sentinel/mature

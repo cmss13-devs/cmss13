@@ -1241,15 +1241,15 @@
 		if(!X.check_plasma(plasma_cost)) return
 
 		if(T.is_ventcrawling)
-			to_chat(X, SPAN_WARNING("[T] can't be deevolved here."))
+			to_chat(X, SPAN_XENOWARNING("[T] can't be deevolved here."))
 			return
 
 		if(!isturf(T.loc))
-			to_chat(X, SPAN_WARNING("[T] can't be deevolved here."))
+			to_chat(X, SPAN_XENOWARNING("[T] can't be deevolved here."))
 			return
 
 		if(T.health <= 0)
-			to_chat(X, SPAN_WARNING("[T] is too weak to be deevolved."))
+			to_chat(X, SPAN_XENOWARNING("[T] is too weak to be deevolved."))
 			return
 
 		if(!T.caste.deevolves_to)
@@ -1257,6 +1257,9 @@
 			return
 
 		var/newcaste = T.caste.deevolves_to
+		if(newcaste == "Larva")
+			to_chat(X, SPAN_XENOWARNING("You cannot deevolve xenomorphs to larva."))
+			return
 
 		var/confirm = alert(X, "Are you sure you want to deevolve [T] from [T.caste.caste_name] to [newcaste]?", , "Yes", "No")
 		if(confirm == "No")
@@ -1320,8 +1323,9 @@
 				new_xeno.client.pixel_x = 0
 				new_xeno.client.pixel_y = 0
 
-		//Regenerate the new mob's name now that our player is inside
-		new_xeno.generate_name()
+		// If the player has self-deevolved before, don't allow them to do it again
+		if(!(/mob/living/carbon/Xenomorph/verb/Deevolve in T.verbs))
+			new_xeno.verbs -= /mob/living/carbon/Xenomorph/verb/Deevolve
 
 		new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_name] emerges from the husk of \the [T]."), \
 		SPAN_XENODANGER("[X] makes you regress into your previous form."))
@@ -1329,7 +1333,7 @@
 		if(X.hive.living_xeno_queen && X.hive.living_xeno_queen.observed_xeno == T)
 			X.hive.living_xeno_queen.set_queen_overwatch(new_xeno)
 
-		new_xeno.upgrade_xeno(min(T.upgrade+1,3)) //a young Crusher de-evolves into a MATURE Hunter
+		INVOKE_ASYNC(new_xeno, /mob/living/carbon/Xenomorph.proc/upgrade_xeno, min(T.upgrade+1,3)) //a young Crusher de-evolves into a MATURE Hunter
 
 		message_admins("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 		log_admin("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")

@@ -76,15 +76,11 @@
 	var/list/obj/item/used_radios = new
 
 	switch (message_mode)
-		if("headset")
-			message_mode = null
-			if(wear_ear && istype(wear_ear,/obj/item/device/radio))
-				var/obj/item/device/radio/R = wear_ear
-				used_radios += R
 		if("intercom")
 			message_mode = null
 			for(var/obj/item/device/radio/intercom/I in view(1))
 				used_radios += I
+				break // remove this if we EVER have two different intercomms with DIFFERENT frequencies IN ONE ROOM
 		if("whisper")
 			whisper_say(message, speaking, alt_name)
 			return
@@ -115,11 +111,13 @@
 		italics = 1
 		message_range = 2
 
-	..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol)	//ohgod we should really be passing a datum here.
+	..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0)	//ohgod we should really be passing a datum here.
 
+	INVOKE_ASYNC(src, /mob/living/carbon/human/proc/say_to_radios, used_radios, message, message_mode, verb, speaking)
+
+/mob/living/carbon/human/proc/say_to_radios(used_radios, message, message_mode, verb, speaking)
 	for(var/obj/item/device/radio/R in used_radios)
-		spawn(0)
-			R.talk_into(src,message, message_mode, verb, speaking)
+		R.talk_into(src, message, message_mode, verb, speaking)
 
 /mob/living/carbon/human/proc/forcesay(var/forcesay_type = SUDDEN)
 	if (!client || stat != CONSCIOUS)

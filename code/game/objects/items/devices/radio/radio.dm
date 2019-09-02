@@ -383,7 +383,7 @@
 		R.receive_signal(signal)
 
 
-	sleep(rand(10,25)) // wait a little...
+	sleep(10) // wait a little...
 
 	if(signal.data["done"] && position.z in signal.data["level"])
 		// we're done here.

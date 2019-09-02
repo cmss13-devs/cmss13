@@ -120,6 +120,9 @@ If you are not piloting, there is an autopilot fallback for command, but don't l
 		. = {"Your job is to operate and maintain the ship's armored vehicles.
 You are in charge of representing the armored presence amongst the marines during the operation, as well as maintaining and repairing your own tank."}
 
+/datum/job/command/tank_crew/set_spawn_positions(var/count)
+	spawn_positions = tank_slot_formula(count)
+
 //Intelligence Officer
 /datum/job/command/intel
 	title = "Intelligence Officer"

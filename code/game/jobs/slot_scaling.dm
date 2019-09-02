@@ -46,3 +46,6 @@
 
 /proc/sg_slot_formula(var/playercount)
 	return job_slot_formula(playercount,30,1,1,4)
+
+/proc/sg_slot_formula(var/playercount)
+	return job_slot_formula(playercount,80,2,0,2)

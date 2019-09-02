@@ -1,0 +1,7 @@
+author: Foolosopher
+
+delete-after: True
+
+changes: 
+  - bugfix: "Xeno corpses will now show up in pictures"
+

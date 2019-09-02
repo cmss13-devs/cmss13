@@ -107,7 +107,7 @@ AngleToHue(hue)
     Converts an angle to a hue in the valid range.
 RotateHue(hsv, angle)
     Takes an HSV or HSVA value and rotates the hue forward through red, green, and blue by an angle from 0 to 360.
-    (Rotating red by 60° produces yellow.) The result is another HSV or HSVA color with the same saturation and value
+    (Rotating red by 60ï¿½ produces yellow.) The result is another HSV or HSVA color with the same saturation and value
     as the original, but a different hue.
 GrayScale(rgb)
     Takes an RGB or RGBA color and converts it to grayscale. Returns an RGB or RGBA string.
@@ -742,14 +742,14 @@ proc // Creates a single icon from a given /atom or /image.  Only the first argu
 				curblend = BLEND_OVERLAY
 				add = icon(I:icon, I:icon_state, I:dir)
 				// This checks for a silent failure mode of the icon routine. If the requested dir
-				// doesn't exist in this icon state it returns a 32x32 icon with 0 alpha.
-				if (I:dir != SOUTH && add.Width() == 32 && add.Height() == 32)
+				// doesn't exist in this icon state it returns an icon with 0 alpha.
+				if (I:dir != SOUTH)
 					// Check every pixel for blank (computationally expensive, but the process is limited
 					// by the amount of film on the station, only happens when we hit something that's
 					// turned, and bails at the very first pixel it sees.
 					var/blankpixel;
-					for(var/y;y<=32;y++)
-						for(var/x;x<32;x++)
+					for(var/y;y<=add.Width() ;y++)
+						for(var/x;x<add.Height();x++)
 							blankpixel = isnull(add.GetPixel(x,y))
 							if(!blankpixel)
 								break

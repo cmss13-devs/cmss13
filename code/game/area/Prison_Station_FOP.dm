@@ -468,6 +468,7 @@
 /area/prison/pirate
 	name = "Tramp Freighter \"Rocinante\""
 	icon_state = "syndie-ship"
+	requires_power = 0
 
 /area/prison/secret
 	name = "\improper Secret Room"

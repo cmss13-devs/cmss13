@@ -227,7 +227,7 @@ var/global/datum/defcon/defcon_controller
 /datum/defcon_reward/cryo_squad
 	name = "Wake up additional troops"
 	cost = DEFCON_COST_PRICEY
-	minimum_defcon_level = 4
+	minimum_defcon_level = 3
 	unique = TRUE
 	announcement_message = "Additional troops are being taken out of cryo."
 
@@ -240,23 +240,6 @@ var/global/datum/defcon/defcon_controller
 		return
 
 	ticker.mode.get_specific_call("Marine Cryo Reinforcements (Squad)", FALSE, FALSE)
-
-/datum/defcon_reward/emergency_squad
-	name = "Emergency troop reinforcements"
-	cost = DEFCON_COST_EXPENSIVE
-	minimum_defcon_level = 3
-	unique = TRUE
-	announcement_message = "Emergency troop reinforcements are being taken out of cryo."
-
-/datum/defcon_reward/emergency_squad/apply_reward(var/datum/defcon/d)
-	if (!ticker  || !ticker.mode)
-		return
-
-	. = ..()
-	if(. == 0)
-		return
-
-	ticker.mode.get_specific_call("Marine Cryo Reinforcements (Full Equipment) (Squad)", FALSE, FALSE)
 
 /datum/defcon_reward/tank_points
 	name = "Additional Tank Part Fabricator Points"

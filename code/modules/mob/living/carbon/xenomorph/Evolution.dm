@@ -211,6 +211,9 @@
 			new_xeno.key = src.key
 			if(new_xeno.client) new_xeno.client.change_view(world.view)
 
+		//Regenerate the new mob's name now that our player is inside
+		new_xeno.generate_name()
+
 		// If the player has self-deevolved before, don't allow them to do it again
 		if(!(/mob/living/carbon/Xenomorph/verb/Deevolve in verbs))
 			new_xeno.verbs -= /mob/living/carbon/Xenomorph/verb/Deevolve
@@ -321,6 +324,9 @@
 			new_xeno.client.change_view(world.view)
 			new_xeno.client.pixel_x = 0
 			new_xeno.client.pixel_y = 0
+
+	//Regenerate the new mob's name now that our player is inside
+	new_xeno.generate_name()
 
 	// Self-deevolve is only usable once
 	new_xeno.verbs -= /mob/living/carbon/Xenomorph/verb/Deevolve

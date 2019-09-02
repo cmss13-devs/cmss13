@@ -1,6 +1,0 @@
-author: Atebite
-delete-after: True
-
-changes: 
-  - rscadd: "The tank can now open doors by driving into them, given that the door is wide enough for the tank to fit through and that the driver/gunner has access"
-  - rscadd: "Specially, the tank can open the southern dropship doors"

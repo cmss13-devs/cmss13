@@ -1,5 +1,0 @@
-author: Atebite
-delete-after: True
-
-changes: 
-  - rscadd: "Xenomorphs can now self-deevolve once per life. Self-deevolving xenomorphs can deevolve into larvas"

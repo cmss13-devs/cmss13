@@ -123,6 +123,9 @@ You are in charge of representing the armored presence amongst the marines durin
 /datum/job/command/tank_crew/set_spawn_positions(var/count)
 	spawn_positions = tank_slot_formula(count)
 
+/datum/job/command/tank_crew/get_total_positions(var/latejoin = 0)
+	return (latejoin ? tank_slot_formula(get_total_marines()) : spawn_positions)
+
 //Intelligence Officer
 /datum/job/command/intel
 	title = "Intelligence Officer"

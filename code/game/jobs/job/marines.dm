@@ -97,6 +97,9 @@
 /datum/job/marine/specialist/set_spawn_positions(var/count)
 	spawn_positions = spec_slot_formula(count)
 
+/datum/job/marine/specialist/get_total_positions(var/latejoin = 0)
+	return (latejoin ? spec_slot_formula(get_total_marines()) : spawn_positions)
+
 /datum/job/marine/specialist/equipped
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
@@ -115,6 +118,9 @@
 
 /datum/job/marine/smartgunner/set_spawn_positions(var/count)
 	spawn_positions = sg_slot_formula(count)
+
+/datum/job/marine/smartgunner/get_total_positions(var/latejoin = 0)
+	return (latejoin ? sg_slot_formula(get_total_marines()) : spawn_positions)
 
 /datum/job/marine/smartgunner/equipped
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD

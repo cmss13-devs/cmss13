@@ -451,10 +451,12 @@
 	max_w_class = SIZE_MEDIUM
 	flags_equip_slot = SLOT_WAIST
 	icon = 'icons/obj/items/clothing/belts.dmi'
-	icon_state="sparepouch"
-	item_state="marine_s"
+	icon_state="g8pouch"
+	item_state="g8pouch"
 
-
+/obj/item/storage/sparepouch/New()
+	select_gamemode_skin(type)
+	..()
 
 
 ////////////////////////////// GUN BELTS /////////////////////////////////////

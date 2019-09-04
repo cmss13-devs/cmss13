@@ -209,7 +209,7 @@
 			if(istype(I, DT))
 				detected = TRUE
 			if(I.contents)
-				for(var/obj/item/CI in I.contents)
+				for(var/obj/item/CI in I.contents_recursive())
 					if(istype(CI, DT))
 						detected = TRUE
 						break
@@ -228,25 +228,19 @@
 		if(M == loc) continue //device user isn't detected
 		if((isXeno(M) || isYautja(M)) && M.stat == DEAD )
 			detected = TRUE
-
-			if(human_user)
-				show_blip(human_user, M)
-		if(ishuman(M) && M.stat == DEAD && M.contents)
-			for(var/obj/I in M.contents)
+		else if(ishuman(M) && M.stat == DEAD && M.contents.len)
+			for(var/obj/I in M.contents_recursive())
 				for(var/DT in objects_to_detect)
 					if(istype(I, DT))
 						detected = TRUE
 						break
-					else if(I.contents)
-						for(var/obj/CI in I.contents)
-							if(istype(CI, DT))
-								detected = TRUE
-								break
-			if(detected)
-				show_blip(human_user, M)
+				if(detected)
+					break
 
-		if(detected)
-			detected_sound = TRUE
+		if(human_user && detected)
+			show_blip(human_user, M)
+			if(detected)
+				detected_sound = TRUE
 
 	if(detected_sound)
 		playsound(loc, 'sound/items/tick.ogg', 50, 0, 7, 2)

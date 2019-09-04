@@ -693,3 +693,11 @@ datum/proc/dd_SortValue()
 			temp_value = L[i].Copy()
 		newList[temp_key] = temp_value
 	return newList
+
+/atom/proc/contents_recursive()
+	var/list/found = list()
+	for(var/atom/A in contents)
+		found += A
+		if(A.contents.len)
+			found += A.contents_recursive()
+	return found

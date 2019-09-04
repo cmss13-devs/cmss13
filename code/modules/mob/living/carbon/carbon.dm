@@ -92,6 +92,13 @@
 		if(ismob(A))
 			visible_message(SPAN_DANGER("[A] bursts out of [src]!"))
 
+	for(var/atom/movable/A in contents_recursive())
+		if(isobj(A))
+			var/obj/O = A
+			if(O.unacidable)
+				O.forceMove(get_turf(loc))
+				O.throw_at(pick(range(get_turf(loc), 1)), 1, 1)
+
 	. = ..(cause)
 
 

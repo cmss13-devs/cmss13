@@ -15,6 +15,11 @@
 
 /obj/structure/Dispose()
 	. = ..()
+	for(var/atom/movable/A in contents_recursive())
+		if(isobj(A))
+			var/obj/O = A
+			if(O.unacidable)
+				O.forceMove(get_turf(loc))
 	structure_list -= src
 
 /obj/structure/proc/destroy(deconstruct)

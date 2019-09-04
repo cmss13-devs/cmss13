@@ -209,7 +209,7 @@
 	if(config.bones_can_break && !(status & LIMB_ROBOT))
 		take_damage_bone_break(brute)
 
-	if(status & LIMB_BROKEN && prob(40) && brute)
+	if(status & LIMB_BROKEN && prob(40) && brute > 10)
 		if(!(owner.species && (owner.species.flags & NO_PAIN)))
 			owner.emote("scream") //Getting hit on broken hand hurts
 	if(used_weapon)

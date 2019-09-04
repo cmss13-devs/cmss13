@@ -290,7 +290,7 @@
 	if(has_empty_icon && (!current_mag || current_mag.current_rounds <= 0))
 		new_icon_state += "_e"
 
-	if(has_open_icon && !current_mag.chamber_closed)
+	if(has_open_icon && (!current_mag || !current_mag.chamber_closed))
 		new_icon_state += "_o"
 
 	icon_state = new_icon_state

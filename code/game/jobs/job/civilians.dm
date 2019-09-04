@@ -2,6 +2,7 @@
 /datum/job/civilian
 	department_flag = ROLEGROUP_MARINE_MED_SCIENCE
 	minimal_player_age = 7
+	gear_preset = "Colonist"
 
 /datum/job/civilian/colonist
 	title = "Colonist"

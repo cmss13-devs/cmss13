@@ -8,6 +8,8 @@
 	luminosity = 2
 	can_buckle = TRUE
 
+	var/mob/driver
+
 	var/attack_log = null
 	var/on = 0
 	health = 100
@@ -117,6 +119,9 @@
 //-------------------------------------------
 // Vehicle procs
 //-------------------------------------------
+/obj/vehicle/proc/set_driver(var/mob/M)
+	driver = M
+
 /obj/vehicle/proc/turn_on()
 	if(stat)
 		return 0

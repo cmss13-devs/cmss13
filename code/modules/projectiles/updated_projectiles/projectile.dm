@@ -123,8 +123,6 @@
 	if(firer && ismob(firer))
 		var/mob/M = firer
 		M.track_shot(weapon_source)
-		if(ammo.bonus_projectiles_amount)
-			M.track_shot(weapon_source, ammo.bonus_projectiles_amount)
 
 	//If we have the the right kind of ammo, we can fire several projectiles at once.
 	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type) ammo.fire_bonus_projectiles(src)

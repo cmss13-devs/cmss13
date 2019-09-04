@@ -326,7 +326,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                 {{:job_value.total_deaths}}
                             </div>
                         {{/if}}
-                        <br>
                         {{if job_value.total_shots}}
                             <div class="itemLabel">
                                 Total Shots:
@@ -351,7 +350,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                 {{:job_value.total_friendly_fire}}
                             </div>
                         {{/if}}
-                        <br>
                         {{if job_value.total_revives}}
                             <div class="itemLabel">
                                 Total Times Revived:
@@ -380,8 +378,8 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                             <div class="itemLabel">
                                 Kills:
                             </div>
+                            <br>
                         {{/if}}
-                        <br>
                         {{props job_value.humans_killed :kill_value:kill_index}}
                             <div class="itemContent">
                                 {{:kill_value.name}}: {{:kill_value.value}}
@@ -440,8 +438,8 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                             <div class="itemLabel">
                                 Kills:
                             </div>
+                            <br>
                         {{/if}}
-                        <br>
                         {{props caste_value.humans_killed :kill_value:kill_index}}
                             <div class="itemContent">
                                 {{:kill_value.name}}: {{:kill_value.value}}
@@ -452,7 +450,9 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                 {{:kill_value.name}}: {{:kill_value.value}}
                             </div>
                         {{/props}}
-                        <br>
+                        {{if caste_value.total_kills}}
+                            <br>
+                        {{/if}}
                         <div class="itemLabel">
                             Abilities Used:
                         </div>
@@ -499,6 +499,14 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                     {{:value.total_kills}}
                                 </div>
                             {{/if}}
+                            {{if value.total_hits}}
+                                <div class="itemLabel">
+                                    Total Hits:
+                                </div>
+                                <div class="itemContent">
+                                    {{:value.total_hits}}
+                                </div>
+                            {{/if}}
                             {{if value.total_shots}}
                                 <div class="itemLabel">
                                     Total Shots:
@@ -527,18 +535,18 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                 <div class="itemLabel">
                                     Kills:
                                 </div>
+                                <br>
+                                {{props value.humans_killed :kill_value:kill_index}}
+                                    <div class="itemContent">
+                                        {{:kill_value.name}}: {{:kill_value.value}}
+                                    </div>
+                                {{/props}}
+                                {{props value.xenos_killed :kill_value:kill_index}}
+                                    <div class="itemContent">
+                                        {{:kill_value.name}}: {{:kill_value.value}}
+                                    </div>
+                                {{/props}}
                             {{/if}}
-                            <br>
-                            {{props value.humans_killed :kill_value:kill_index}}
-                                <div class="itemContent">
-                                    {{:kill_value.name}}: {{:kill_value.value}}
-                                </div>
-                            {{/props}}
-                            {{props value.xenos_killed :kill_value:kill_index}}
-                                <div class="itemContent">
-                                    {{:kill_value.name}}: {{:kill_value.value}}
-                                </div>
-                            {{/props}}
                         </fieldset>
                         <br>
                     </div>
@@ -573,7 +581,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                     <div class="itemContent">
                         {{:data.human.total_rounds_played}}
                     </div>
-                    <br>
                     <div class="itemLabel">
                         Total Shots:
                     </div>
@@ -592,7 +599,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                     <div class="itemContent">
                         {{:data.human.total_friendly_fire}}
                     </div>
-                    <br>
                     <div class="itemLabel">
                         Total Times Revived:
                     </div>
@@ -611,7 +617,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                     <div class="itemContent">
                         {{:data.human.total_screams}}
                     </div>
-                    <br>
                     {{if data.human.top_weapon}}
                         <div class="itemLabel">
                             Top Weapon:
@@ -647,6 +652,7 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                 {{:data.human.top_weapon.total_friendly_fire}}
                             </div>
                         </fieldset>
+                        <br>
                     {{/if}}
                     {{if data.human.nemesis}}
                         <div class="itemLabel">
@@ -665,6 +671,7 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                 {{:data.human.nemesis.value}}
                             </div>
                         </fieldset>
+                        <br>
                     {{/if}}
                 {{else data.dataMenu == 1}}
                     <div class="itemLabel">
@@ -741,7 +748,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                             <div class="itemContent">
                                 {{:death_value.total_kills}}
                             </div>
-                            <br>
                             <div class="itemLabel">
                                 Total Damage:
                             </div>
@@ -762,44 +768,62 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                     <b>{{:value.name}}</b>
                                 </div>
                                 <br>
-                                <div class="itemLabel">
-                                    Total Kills:
-                                </div>
-                                <div class="itemContent">
-                                    {{:value.total_kills}}
-                                </div>
-                                <div class="itemLabel">
-                                    Total Shots:
-                                </div>
-                                <div class="itemContent">
-                                    {{:value.total_shots}}
-                                </div>
-                                <div class="itemLabel">
-                                    Total Shots Hit:
-                                </div>
-                                <div class="itemContent">
-                                    {{:value.total_shots_hit}}
-                                </div>
-                                <div class="itemLabel">
-                                    Total Friendly Fire Instances:
-                                </div>
-                                <div class="itemContent">
-                                    {{:value.total_friendly_fire}}
-                                </div>
-                                <div class="itemLabel">
-                                    Kills:
-                                </div>
-                                <br>
-                                {{props value.humans_killed :kill_value:kill_index}}
-                                    <div class="itemContent">
-                                        {{:kill_value.name}}: {{:kill_value.value}}
+                                {{if value.total_kills}}
+                                    <div class="itemLabel">
+                                        Total Kills:
                                     </div>
-                                {{/props}}
-                                {{props value.xenos_killed :kill_value:kill_index}}
                                     <div class="itemContent">
-                                        {{:kill_value.name}}: {{:kill_value.value}}
+                                        {{:value.total_kills}}
                                     </div>
-                                {{/props}}
+                                {{/if}}
+                                {{if value.total_hits}}
+                                    <div class="itemLabel">
+                                        Total Hits:
+                                    </div>
+                                    <div class="itemContent">
+                                        {{:value.total_hits}}
+                                    </div>
+                                {{/if}}
+                                {{if value.total_shots}}
+                                    <div class="itemLabel">
+                                        Total Shots:
+                                    </div>
+                                    <div class="itemContent">
+                                        {{:value.total_shots}}
+                                    </div>
+                                {{/if}}
+                                {{if value.total_shots_hit}}
+                                    <div class="itemLabel">
+                                        Total Shots Hit:
+                                    </div>
+                                    <div class="itemContent">
+                                        {{:value.total_shots_hit}}
+                                    </div>
+                                {{/if}}
+                                {{if value.total_friendly_fire}}
+                                    <div class="itemLabel">
+                                        Total Friendly Fire Instances:
+                                    </div>
+                                    <div class="itemContent">
+                                        {{:value.total_friendly_fire}}
+                                    </div>
+                                {{/if}}
+                                {{if value.total_kills}}
+                                    <div class="itemLabel">
+                                        Kills:
+                                    </div>
+                                    <br>
+                                    {{props value.humans_killed :kill_value:kill_index}}
+                                        <div class="itemContent">
+                                            {{:kill_value.name}}: {{:kill_value.value}}
+                                        </div>
+                                    {{/props}}
+                                    {{props value.xenos_killed :kill_value:kill_index}}
+                                        <div class="itemContent">
+                                            {{:kill_value.name}}: {{:kill_value.value}}
+                                        </div>
+                                    {{/props}}
+                                {{/if}}
                             </fieldset>
                         </div>
                     {{/props}}
@@ -834,26 +858,30 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                             <div class="itemContent">
                                 {{:job_value.total_rounds_played}}
                             </div>
-                            <br>
-                            <div class="itemLabel">
-                                Total Shots:
-                            </div>
-                            <div class="itemContent">
-                                {{:job_value.total_shots}}
-                            </div>
-                            <div class="itemLabel">
-                                Total Shots Hit:
-                            </div>
-                            <div class="itemContent">
-                                {{:job_value.total_shots_hit}}
-                            </div>
-                            <div class="itemLabel">
-                                Total Friendly Fire Instances:
-                            </div>
-                            <div class="itemContent">
-                                {{:job_value.total_friendly_fire}}
-                            </div>
-                            <br>
+                            {{if job_value.total_shots}}
+                                <div class="itemLabel">
+                                    Total Shots:
+                                </div>
+                                <div class="itemContent">
+                                    {{:job_value.total_shots}}
+                                </div>
+                            {{/if}}
+                            {{if job_value.total_shots_hit}}
+                                <div class="itemLabel">
+                                    Total Shots Hit:
+                                </div>
+                                <div class="itemContent">
+                                    {{:job_value.total_shots_hit}}
+                                </div>
+                            {{/if}}
+                            {{if job_value.total_friendly_fire}}
+                                <div class="itemLabel">
+                                    Total Friendly Fire Instances:
+                                </div>
+                                <div class="itemContent">
+                                    {{:job_value.total_friendly_fire}}
+                                </div>
+                            {{/if}}
                             {{if job_value.total_revives}}
                                 <div class="itemLabel">
                                     Total Times Revived:
@@ -892,6 +920,7 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                     {{:kill_value.name}}: {{:kill_value.value}}
                                 </div>
                             {{/props}}
+                            <br>
                             {{if job_value.nemesis}}
                                 <div class="itemLabel">
                                     Nemesis:
@@ -942,14 +971,12 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                     <div class="itemContent">
                         {{:data.xeno.total_rounds_played}}
                     </div>
-                    <br>
                     <div class="itemLabel">
                         Total Slashes:
                     </div>
                     <div class="itemContent">
                         {{:data.xeno.total_hits}}
                     </div>
-                    <br>
                     {{if data.xeno.top_caste}}
                         <div class="itemLabel">
                             Top Caste:
@@ -985,8 +1012,8 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                 {{:data.xeno.total_rounds_played}}
                             </div>
                         </fieldset>
+                        <br>
                     {{/if}}
-                    <br>
                     {{if data.xeno.nemesis}}
                         <div class="itemLabel">
                             Nemesis:
@@ -1080,7 +1107,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                             <div class="itemContent">
                                 {{:death_value.total_kills}}
                             </div>
-                            <br>
                             <div class="itemLabel">
                                 Total Damage:
                             </div>

@@ -135,7 +135,7 @@
 	for(var/mob/dead/observer/g in player_list)
 		if(g.client && g.client.admin_holder)
 			continue
-		to_chat(g, SPAN_DEADSAY(observer_message + " (<a href='?src=\ref[g];jumptocoord=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)"))
+		to_chat(g, SPAN_DEADSAY(observer_message + " (<a href='?src=\ref[g];jumptocoord=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)"))
 
 	msg_admin_attack(admin_message)
 

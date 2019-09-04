@@ -168,6 +168,14 @@ Vehicles are placed on the map by a spawner or admin verb
 /obj/vehicle/multitile/root/proc/handle_harm_attack(var/mob/M)
 	return
 
+/obj/vehicle/multitile/root/set_driver(var/mob/M)
+	..()
+	for(var/i in linked_objs)
+		var/obj/O = linked_objs[i]
+		if(istype(O, /obj/vehicle))
+			var/obj/vehicle/V = O
+			V.driver = M
+
 //Vebrs for rotations, set up a macro and get turnin
 /obj/vehicle/multitile/root/verb/clockwise_rotate_multitile()
 	set category = "Vehicle"

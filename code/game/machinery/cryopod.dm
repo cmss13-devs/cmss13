@@ -391,6 +391,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 			else
 				icon_state = "body_scanner_0"
 
+			occupant.track_death_calculations()
 
 			occupant.ghostize(0) //We want to make sure they are not kicked to lobby.
 			//TODO: Check objectives/mode, update new targets if this mob is the target, spawn new antags?

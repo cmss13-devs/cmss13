@@ -44,7 +44,7 @@
 		var/datum/entity/player_stats/human/human_stats = player_stats["human"]
 		human_stats.total_kills = human_save["total_kills"]
 		human_stats.total_deaths = human_save["total_deaths"]
-		human_stats.total_playtime = text2num(human_save["total_playtime"])
+		human_stats.total_playtime = text2duration(human_save["total_playtime"])
 		human_stats.total_rounds_played = human_save["total_rounds_played"]
 		human_stats.steps_walked = human_save["steps_walked"]
 
@@ -93,9 +93,9 @@
 				new_death.area_name = save_death["area_name"]
 				new_death.cause_name = save_death["cause_name"]
 				new_death.total_kills = save_death["total_kills"]
-				new_death.time_of_death = text2num(save_death["time_of_death"])
+				new_death.time_of_death = text2duration(save_death["time_of_death"])
 				new_death.steps_walked = save_death["steps_walked"]
-				new_death.total_time_alive = text2num(save_death["total_time_alive"])
+				new_death.total_time_alive = text2duration(save_death["total_time_alive"])
 				new_death.x = save_death["x"]
 				new_death.y = save_death["y"]
 				new_death.z = save_death["z"]
@@ -120,6 +120,7 @@
 				new_weapon.player = src
 				new_weapon.name = save_weapon["name"]
 				new_weapon.total_kills = save_weapon["total_kills"]
+				new_weapon.total_hits = save_weapon["total_hits"]
 				new_weapon.total_shots = save_weapon["total_shots"]
 				new_weapon.total_shots_hit = save_weapon["total_shots_hit"]
 				new_weapon.total_friendly_fire = save_weapon["total_friendly_fire"]
@@ -154,7 +155,7 @@
 				var/datum/entity/player_stats/job/new_job = new()
 				new_job.total_kills = save_job["total_kills"]
 				new_job.total_deaths = save_job["total_deaths"]
-				new_job.total_playtime = text2num(save_job["total_playtime"])
+				new_job.total_playtime = text2duration(save_job["total_playtime"])
 				new_job.total_rounds_played = save_job["total_rounds_played"]
 				new_job.steps_walked = save_job["steps_walked"]
 
@@ -204,9 +205,9 @@
 						new_death.area_name = save_death["area_name"]
 						new_death.cause_name = save_death["cause_name"]
 						new_death.total_kills = save_death["total_kills"]
-						new_death.time_of_death = text2num(save_death["time_of_death"])
+						new_death.time_of_death = text2duration(save_death["time_of_death"])
 						new_death.steps_walked = save_death["steps_walked"]
-						new_death.total_time_alive = text2num(save_death["total_time_alive"])
+						new_death.total_time_alive = text2duration(save_death["total_time_alive"])
 						new_death.x = save_death["x"]
 						new_death.y = save_death["y"]
 						new_death.z = save_death["z"]
@@ -234,7 +235,7 @@
 		var/datum/entity/player_stats/xeno/xeno_stats = player_stats["xeno"]
 		xeno_stats.total_kills = xeno_save["total_kills"]
 		xeno_stats.total_deaths = xeno_save["total_deaths"]
-		xeno_stats.total_playtime = text2num(xeno_save["total_playtime"])
+		xeno_stats.total_playtime = text2duration(xeno_save["total_playtime"])
 		xeno_stats.total_rounds_played = xeno_save["total_rounds_played"]
 		xeno_stats.steps_walked = xeno_save["steps_walked"]
 
@@ -278,9 +279,9 @@
 				new_death.area_name = save_death["area_name"]
 				new_death.cause_name = save_death["cause_name"]
 				new_death.total_kills = save_death["total_kills"]
-				new_death.time_of_death = text2num(save_death["time_of_death"])
+				new_death.time_of_death = text2duration(save_death["time_of_death"])
 				new_death.steps_walked = save_death["steps_walked"]
-				new_death.total_time_alive = text2num(save_death["total_time_alive"])
+				new_death.total_time_alive = text2duration(save_death["total_time_alive"])
 				new_death.x = save_death["x"]
 				new_death.y = save_death["y"]
 				new_death.z = save_death["z"]
@@ -304,7 +305,7 @@
 				var/datum/entity/player_stats/caste/new_caste = new()
 				new_caste.total_kills = save_caste["total_kills"]
 				new_caste.total_deaths = save_caste["total_deaths"]
-				new_caste.total_playtime = text2num(save_caste["total_playtime"])
+				new_caste.total_playtime = text2duration(save_caste["total_playtime"])
 				new_caste.total_rounds_played = save_caste["total_rounds_played"]
 				new_caste.steps_walked = save_caste["steps_walked"]
 
@@ -343,9 +344,9 @@
 						new_death.area_name = save_death["area_name"]
 						new_death.cause_name = save_death["cause_name"]
 						new_death.total_kills = save_death["total_kills"]
-						new_death.time_of_death = text2num(save_death["time_of_death"])
+						new_death.time_of_death = text2duration(save_death["time_of_death"])
 						new_death.steps_walked = save_death["steps_walked"]
-						new_death.total_time_alive = text2num(save_death["total_time_alive"])
+						new_death.total_time_alive = text2duration(save_death["total_time_alive"])
 						new_death.x = save_death["x"]
 						new_death.y = save_death["y"]
 						new_death.z = save_death["z"]

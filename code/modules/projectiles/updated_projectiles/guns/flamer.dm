@@ -84,6 +84,7 @@
 	if(current_mag.current_rounds <= 0)
 		click_empty(user)
 	else
+		user.track_shot(initial(name))
 		unleash_flame(target, user)
 
 /obj/item/weapon/gun/flamer/reload(mob/user, obj/item/ammo_magazine/magazine)
@@ -485,6 +486,9 @@
 		M.adjust_fire_stacks(rand(5,burn_lvl*2))
 		M.IgniteMob()
 		M.adjustFireLoss(rand(burn_lvl,(burn_lvl*2))) // Make it so its the amount of heat or twice it for the initial blast.
+		if(weapon_source_mob)
+			var/mob/SM = weapon_source_mob
+			SM.track_shot_hit(weapon_source)
 		to_chat(M, "[isXeno(M)?"<span class='xenodanger'>":"<span class='highdanger'>"]Augh! You are roasted by the flames!")
 
 

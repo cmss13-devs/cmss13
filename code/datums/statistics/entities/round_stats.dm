@@ -41,38 +41,51 @@
 	var/round_data[0]
 	var/death_data[0]
 
-/datum/entity/round_stats/proc/setup_job_stats(var/job)
+/datum/entity/round_stats/proc/setup_job_stats(var/job, var/noteworthy = TRUE)
 	if(!job)
 		return
 	var/job_key = strip_improper(job)
 	if(job_stats_list["[job_key]"])
-		return job_stats_list["[job_key]"]
+		var/datum/entity/player_stats/job/S = job_stats_list["[job_key]"]
+		if(!S.display_stat && noteworthy)
+			S.display_stat = noteworthy
+		return S
 	var/datum/entity/player_stats/job/new_stat = new()
+	new_stat.display_stat = noteworthy
 	new_stat.player = src
 	new_stat.name = job_key
 	new_stat.total_rounds_played += 1
 	job_stats_list["[job_key]"] = new_stat
 	return new_stat
 
-/datum/entity/round_stats/proc/setup_weapon_stats(var/weapon)
+/datum/entity/round_stats/proc/setup_weapon_stats(var/weapon, var/noteworthy = TRUE)
 	if(!weapon)
 		return
 	var/weapon_key = strip_improper(weapon)
 	if(weapon_stats_list["[weapon_key]"])
-		return weapon_stats_list["[weapon_key]"]
+		var/datum/entity/weapon_stats/S = weapon_stats_list["[weapon_key]"]
+		if(!S.display_stat && noteworthy)
+			S.display_stat = noteworthy
+		return S
 	var/datum/entity/weapon_stats/new_stat = new()
+	new_stat.display_stat = noteworthy
 	new_stat.player = src
 	new_stat.name = weapon_key
 	weapon_stats_list["[weapon_key]"] = new_stat
 	return new_stat
 
-/datum/entity/round_stats/proc/setup_caste_stats(var/caste)
+/datum/entity/round_stats/proc/setup_caste_stats(var/caste, var/noteworthy = TRUE)
 	if(!caste)
 		return
 	var/caste_key = strip_improper(caste)
 	if(caste_stats_list["[caste_key]"])
 		return caste_stats_list["[caste_key]"]
+		var/datum/entity/player_stats/caste/S = caste_stats_list["[caste_key]"]
+		if(!S.display_stat && noteworthy)
+			S.display_stat = noteworthy
+		return S
 	var/datum/entity/player_stats/caste/new_stat = new()
+	new_stat.display_stat = noteworthy
 	new_stat.player = src
 	new_stat.name = caste_key
 	new_stat.total_rounds_played += 1

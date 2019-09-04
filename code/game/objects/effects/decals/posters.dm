@@ -1,7 +1,7 @@
 /obj/item/poster
 	name = "rolled-up poster"
 	desc = "The poster comes with its own automatic adhesive mechanism, for easy pinning to any vertical surface."
-	icon = 'icons/obj/posters.dmi'
+	icon = 'icons/obj/structures/props/posters.dmi'
 	icon_state = "rolled_poster"
 	force = 0
 	var/serial_number = 0
@@ -20,7 +20,7 @@
 obj/structure/sign/poster
 	name = "poster"
 	desc = "A large piece of cheap printed paper."
-	icon = 'icons/obj/posters.dmi'
+	icon = 'icons/obj/structures/props/posters.dmi'
 	anchored = 1
 	var/serial_number	//Will hold the value of src.loc if nobody initialises it
 	var/ruined = 0

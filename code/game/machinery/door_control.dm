@@ -6,7 +6,7 @@
 /obj/machinery/door_control
 	name = "remote door-control"
 	desc = "It controls doors, remotely."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "doorctrl0"
 	desc = "A remote control-switch for a door."
 	power_channel = ENVIRON
@@ -128,7 +128,7 @@
 						return
 			if(desiredstate == 1)
 				if(specialfunctions & IDSCAN)
-					D.aiDisabledIdScanner = 1
+					D.remoteDisabledIdScanner = 1
 				if(specialfunctions & BOLTS)
 					D.lock()
 				if(specialfunctions & SHOCK)
@@ -137,7 +137,7 @@
 					D.safe = 0
 			else
 				if(specialfunctions & IDSCAN)
-					D.aiDisabledIdScanner = 0
+					D.remoteDisabledIdScanner = 0
 				if(specialfunctions & BOLTS)
 					if(!D.isWireCut(4) && D.arePowerSystemsOn())
 						D.unlock()

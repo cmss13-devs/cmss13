@@ -188,7 +188,7 @@
 /obj/item/device/radio/headset/ai_integrated //No need to care about icons, it should be hidden inside the AI anyway.
 	name = "AI Subspace Transceiver"
 	desc = "Integrated AI radio transceiver."
-	icon = 'icons/obj/robot_component.dmi'
+	icon = 'icons/obj/items/robot_component.dmi'
 	icon_state = "radio"
 	item_state = "headset"
 	keyslot1 = new /obj/item/device/encryptionkey/ai_integrated

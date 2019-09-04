@@ -13,7 +13,7 @@
 	unacidable = TRUE
 	anchored = TRUE
 	var/gimbal = GIMBAL_CENTER//which way it is gimballed
-	icon = 'icons/Marine/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "equip_base"
 	var/base_category //what kind of equipment this base accepts.
 	var/ship_tag //used to associate the base to a dropship.
@@ -93,7 +93,7 @@
 
 /obj/effect/attach_point/fuel
 	name = "engine system attach point"
-	icon = 'icons/Marine/almayer_props64.dmi'
+	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	icon_state = "fuel_base"
 	base_category = DROPSHIP_FUEL_EQP
 
@@ -122,7 +122,7 @@
 /obj/structure/dropship_equipment
 	density = TRUE
 	anchored = TRUE
-	icon = 'icons/Marine/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	climbable = TRUE
 	layer = ABOVE_OBJ_LAYER //so they always appear above attach points when installed
 	var/list/equip_categories //on what kind of base this can be installed.
@@ -482,7 +482,7 @@
 ////////////////////////////////// FUEL EQUIPMENT /////////////////////////////////
 
 /obj/structure/dropship_equipment/fuel
-	icon = 'icons/Marine/almayer_props64.dmi'
+	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	equip_categories = list(DROPSHIP_FUEL_EQP)
 
 
@@ -675,7 +675,7 @@
 
 /obj/structure/dropship_equipment/weapon
 	name = "abstract weapon"
-	icon = 'icons/Marine/almayer_props64.dmi'
+	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	equip_categories = list(DROPSHIP_WEAPON)
 	bound_width = 32
 	bound_height = 64
@@ -720,7 +720,7 @@
 		ammo_equipped.ammo_count = max(ammo_equipped.ammo_count-ammo_equipped.ammo_used_per_firing, 0)
 	update_icon()
 
-/obj/structure/dropship_equipment/weapon/proc/open_fire(obj/selected_target)
+/obj/structure/dropship_equipment/weapon/proc/open_fire(obj/selected_target, var/mob/user = usr)
 	set waitfor = 0
 	var/turf/target_turf = get_turf(selected_target)
 	if(firing_sound)
@@ -754,9 +754,10 @@
 		playsound(impact, ammo_warn_sound, 70, 1)
 	new /obj/effect/overlay/temp/blinking_laser (impact)
 	sleep(10)
+	SA.source_mob = user
 	SA.detonate_on(impact)
 
-/obj/structure/dropship_equipment/weapon/proc/open_fire_firemission(obj/selected_target)
+/obj/structure/dropship_equipment/weapon/proc/open_fire_firemission(obj/selected_target, var/mob/user = usr)
 	set waitfor = 0
 	var/turf/target_turf = get_turf(selected_target)
 	if(firing_sound)
@@ -779,6 +780,7 @@
 		possible_turfs += TU
 	var/turf/impact = pick(possible_turfs)
 	sleep(3)
+	SA.source_mob = user
 	SA.detonate_on(impact)
 
 /obj/structure/dropship_equipment/weapon/heavygun
@@ -821,7 +823,7 @@
 	name = "minirocket pod"
 	icon_state = "minirocket_pod"
 	desc = "A mini rocket pod capable of launching six laser-guided mini rockets. Moving this will require some sort of lifter."
-	icon = 'icons/Marine/almayer_props64.dmi'
+	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	firing_sound = 'sound/weapons/gun_flare_explode.ogg'
 	firing_delay = 10 //1 seconds
 	point_cost = 600
@@ -842,7 +844,7 @@
 	name = "laser beam gun"
 	icon_state = "laser_beam"
 	desc = "State of the art technology recently acquired by the USCM, it fires a battery-fed pulsed laser beam at near lightspeed setting on fire everything it touches. Moving this will require some sort of lifter."
-	icon = 'icons/Marine/almayer_props64.dmi'
+	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	firing_sound = 'sound/effects/phasein.ogg'
 	firing_delay = 50 //5 seconds
 	point_cost = 500
@@ -861,7 +863,7 @@
 	name = "launch bay"
 	icon_state = "launch_bay"
 	desc = "A launch bay to drop special ordnance. Fits inside the dropship's crew weapon emplacement. Moving this will require some sort of lifter."
-	icon = 'icons/Marine/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	firing_sound = 'sound/weapons/gun_flare_explode.ogg'
 	firing_delay = 10 //1 seconds
 	equip_categories = list(DROPSHIP_CREW_WEAPON) //fits inside the central spot of the dropship

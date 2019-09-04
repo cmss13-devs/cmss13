@@ -6,7 +6,7 @@
 	name 		= "Welcome Screen"
 	desc 		= "First time boot splash screen"
 	active_state = "osod"
-	image			= 'icons/ntos/program.png'
+	image			= 'icons/old_stuff/ntos/program.png'
 
 
 	interact()

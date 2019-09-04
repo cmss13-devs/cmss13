@@ -1,5 +1,5 @@
 /obj/structure/sign
-	icon = 'icons/obj/decals.dmi'
+	icon = 'icons/obj/structures/props/decals.dmi'
 	anchored = 1
 	opacity = 0
 	density = 0
@@ -16,7 +16,7 @@
 		S.name = name
 		S.desc = desc
 		S.icon_state = icon_state
-		//var/icon/I = icon('icons/obj/decals.dmi', icon_state)
+		//var/icon/I = icon('icons/obj/structures/props/decals.dmi', icon_state)
 		//S.icon = I.Scale(24, 24)
 		S.sign_state = icon_state
 		qdel(src)
@@ -25,7 +25,7 @@
 /obj/item/sign
 	name = "sign"
 	desc = ""
-	icon = 'icons/obj/decals.dmi'
+	icon = 'icons/obj/structures/props/decals.dmi'
 	w_class = SIZE_MEDIUM		//big
 	var/sign_state = ""
 
@@ -188,7 +188,7 @@
 
 /obj/structure/sign/safety/
 	name = "sign"
-	icon = 'icons/obj/safety_signs.dmi'
+	icon = 'icons/obj/structures/props/safety_signs.dmi'
 	desc = "A sign warning of a particular hazard"
 	anchored = 1
 	opacity = 0

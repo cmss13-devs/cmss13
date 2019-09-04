@@ -33,7 +33,7 @@
 		new /obj/item/disk/botany(src)
 
 /obj/machinery/botany
-	icon = 'icons/obj/machines/hydroponics.dmi'
+	icon = 'icons/obj/structures/machinery/hydroponics.dmi'
 	icon_state = "hydrotray3"
 	density = 1
 	anchored = 1

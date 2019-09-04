@@ -99,7 +99,7 @@
 
 /obj/item/weapon/zombie_claws
 	name = "claws"
-	icon = 'icons/mob/human_races/r_zombie.dmi'
+	icon = 'icons/mob/humans/species/r_zombie.dmi'
 	icon_state = "claw_l"
 	flags_item = NODROP|DELONDROP
 	force = 15
@@ -142,7 +142,7 @@
 /obj/item/reagent_container/food/drinks/bottle/black_goo
 	name = "strange bottle"
 	desc = "A strange bottle of unknown origin."
-	icon = 'icons/obj/black_goo/black_goo_stuff.dmi'
+	icon = 'icons/obj/items/black_goo_stuff.dmi'
 	icon_state = "blackgoo"
 	New()
 		..()
@@ -152,7 +152,7 @@
 /obj/item/reagent_container/food/drinks/bottle/black_goo_cure
 	name = "even stranger bottle"
 	desc = "A bottle of black labeled CURE..."
-	icon = 'icons/obj/black_goo/black_goo_stuff.dmi'
+	icon = 'icons/obj/items/black_goo_stuff.dmi'
 	icon_state = "blackgoo"
 	New()
 		..()
@@ -178,7 +178,7 @@
 
 
 /obj/item/storage/fancy/blackgoo
-	icon = 'icons/obj/black_goo/black_goo_stuff.dmi'
+	icon = 'icons/obj/items/black_goo_stuff.dmi'
 	icon_state = "goobox"
 	icon_type = "goo"
 	name = "strange canister"

@@ -4,7 +4,7 @@
 /obj/structure/morgue
 	name = "morgue"
 	desc = "Used to keep bodies in untill someone fetches them."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "morgue1"
 	dir = EAST
 	density = 1
@@ -118,7 +118,7 @@
 /obj/structure/morgue_tray
 	name = "morgue tray"
 	desc = "Apply corpse before closing."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "morguet"
 	density = 1
 	layer = OBJ_LAYER
@@ -208,7 +208,7 @@
 
 			user.attack_log +="\[[time_stamp()]\] Cremated <b>[M]/[M.ckey]</b>"
 			msg_admin_attack("\[[time_stamp()]\] <b>[user]/[user.ckey]</b> cremated <b>[M]/[M.ckey]</b> at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
-			M.death(1)
+			M.death("cremation", 1)
 			M.ghostize()
 			qdel(M)
 

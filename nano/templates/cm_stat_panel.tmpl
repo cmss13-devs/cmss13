@@ -1,0 +1,1203 @@
+<!-- 
+Title: Player statistics viewing panel, pulls data from statistic entities from the game.
+Used in: /code/datums/statistics/entities/player_entity.dm
+ -->
+<div class="item">
+    {{if data.round}}
+        {{:helper.link('Global', 'home', {'menu' : 0, 'subMenu' : 0, 'dataMenu': 0}, data.menu == 0 ? 'selected' : null)}}
+    {{/if}}
+    {{:helper.link('Personal', 'person', {'menu' : 1, 'subMenu' : 0, 'dataMenu': 0}, data.menu == 1 ? 'selected' : null)}}
+</div>
+<div class="item">
+    {{if data.menu == 0}}
+        {{:helper.link('General', null, {'subMenu' : 0, 'dataMenu': 0}, data.subMenu == 0 ? 'selected' : null)}}
+        {{:helper.link('Participants', null, {'subMenu' : 1, 'dataMenu': 0}, data.subMenu == 1 ? 'selected' : null)}}
+        {{:helper.link('Deaths', null, {'subMenu' : 2, 'dataMenu': 0}, data.subMenu == 2 ? 'selected' : null)}}
+        {{:helper.link('Jobs', null, {'subMenu' : 3, 'dataMenu': 0}, data.subMenu == 3 ? 'selected' : null)}}
+        {{:helper.link('Castes', null, {'subMenu' : 4, 'dataMenu': 0}, data.subMenu == 4 ? 'selected' : null)}}
+        {{:helper.link('Weapons', null, {'subMenu' : 5, 'dataMenu': 0}, data.subMenu == 5 ? 'selected' : null)}}
+    {{else data.menu == 1}}
+        {{if data.human}}
+            {{:helper.link('Human', null, {'subMenu' : 0, 'dataMenu' : 0}, data.subMenu == 0 ? 'selected' : null)}}
+        {{/if}}
+        {{if data.xeno}}
+            {{:helper.link('Xeno', null, {'subMenu' : 1, 'dataMenu' : 0}, data.subMenu == 1 ? 'selected' : null)}}
+        {{/if}}
+    {{/if}}
+</div>
+{{if data.menu == 1 && data.subMenu != 2}}
+    <div class="item">
+        {{:helper.link('General', null, {'dataMenu' : 0}, data.dataMenu == 0 ? 'selected' : null)}}
+        {{:helper.link('Kills', null, {'dataMenu' : 1}, data.dataMenu == 1 ? 'selected' : null)}}
+        {{:helper.link('Deaths', null, {'dataMenu' : 2}, data.dataMenu == 2 ? 'selected' : null)}}
+        {{if data.subMenu == 0}}
+            {{:helper.link('Weapons', null, {'dataMenu' : 3}, data.dataMenu == 3 ? 'selected' : null)}}
+            {{:helper.link('Roles', null, {'dataMenu' : 4}, data.dataMenu == 4 ? 'selected' : null)}}
+        {{else data.subMenu == 1}}
+            {{:helper.link('Castes', null, {'dataMenu' : 3}, data.dataMenu == 3 ? 'selected' : null)}}
+        {{/if}}
+    </div>
+{{/if}}
+<br>
+<div class="itemLabel">
+    <b>Updated {{:data.current_time}}</b>
+</div>
+<br>
+<div class="item">
+    {{if data.menu == 0}}
+        {{if data.round}}
+            {{if data.subMenu == 0}}
+                <div class="itemLabel">
+                    <b>{{:data.round.name}}</b>
+                </div>
+                <br>
+                <div class="itemLabel">
+                    Map:
+                </div>
+                <div class="itemContent">
+                    {{:data.round.map_name}}
+                </div>
+                <div class="itemLabel">
+                    Gamemode:
+                </div>
+                <div class="itemContent">
+                    {{:data.round.game_mode}}
+                </div>
+                {{if data.round.round_result}}
+                    <div class="itemLabel">
+                        Result:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.round.round_result}}
+                    </div>
+                {{/if}}
+                <div class="itemLabel">
+                    Round Start:
+                </div>
+                <div class="itemContent">
+                    {{:data.round.real_time_start}}
+                </div>
+                {{if data.round.real_time_end}}
+                    <div class="itemLabel">
+                        Round End:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.round.real_time_end}}
+                    </div>
+                {{/if}}
+                {{if data.round.round_length}}
+                    <div class="itemLabel">
+                        Round Length:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.round.round_length}}
+                    </div>
+                {{/if}}
+                <br>
+                {{if data.round.round_hijack_time}}
+                    <div class="itemLabel">
+                        Hijack Time:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.round.round_hijack_time}}
+                    </div>
+                {{/if}}
+                {{if data.round.end_round_player_population}}
+                    <div class="itemLabel">
+                        Final Population:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.round.end_round_player_population}}
+                    </div>
+                {{/if}}
+                <br>
+                <div class="itemLabel">
+                    DEFCON Level:
+                </div>
+                <div class="itemContent">
+                    {{:data.round.defcon_level}}
+                </div>
+                {{if data.round.total_objective_points}}
+                    <div class="itemLabel">
+                        Objective Points:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.round.objective_points}}
+                    </div>
+                    <div class="itemLabel">
+                        Total Objective Points:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.round.total_objective_points}}
+                    </div>
+                {{/if}}
+                <br>
+                <div class="itemLabel">
+                    Total Shots Fired:
+                </div>
+                <div class="itemContent">
+                    {{:data.round.total_projectiles_fired}}
+                </div>
+                <div class="itemLabel">
+                    Total Shots Hit:
+                </div>
+                <div class="itemContent">
+                    {{:data.round.total_projectiles_hit}}
+                </div>
+                <div class="itemLabel">
+                    Total Shots Hit (Human):
+                </div>
+                <div class="itemContent">
+                    {{:data.round.total_projectiles_hit_human}}
+                </div>
+                <div class="itemLabel">
+                    Total Shots Hit (Xeno):
+                </div>
+                <div class="itemContent">
+                    {{:data.round.total_projectiles_hit_xeno}}
+                </div>
+                <div class="itemLabel">
+                    Total Friendly Fire Instances:
+                </div>
+                <div class="itemContent">
+                    {{:data.round.total_friendly_fire_instances}}
+                </div>
+                <div class="itemLabel">
+                    Total Friendly Fire Kills:
+                </div>
+                <div class="itemContent">
+                    {{:data.round.total_friendly_fire_kills}}
+                </div>
+                <br>
+                <div class="itemLabel">
+                    Total Slashes:
+                </div>
+                <div class="itemContent">
+                    {{:data.round.total_slashes}}
+                </div>
+                <div class="itemLabel">
+                    Total Facehuggers Applied:
+                </div>
+                <div class="itemContent">
+                    {{:data.round.total_huggers_applied}}
+                </div>
+                <div class="itemLabel">
+                    Total Larva Bursts:
+                </div>
+                <div class="itemContent">
+                    {{:data.round.total_larva_burst}}
+                </div>
+            {{else data.subMenu == 1}}
+                <div class="itemLabel">
+                    Total Participants:
+                </div>
+                <br>
+                <fieldset class="fieldContainer">
+                    {{props data.round.participants}}
+                        <div class="itemContent">
+                            {{:value.name}}: {{:value.value}}
+                        </div>
+                    {{/props}}
+                </fieldset>
+                <br>
+                <div class="itemLabel">
+                    Total Deaths:
+                </div>
+                <br>
+                <fieldset class="fieldContainer">
+                    {{props data.round.total_deaths}}
+                        <div class="itemContent">
+                            {{:value.name}}: {{:value.value}}
+                        </div>
+                    {{/props}}
+                </fieldset>
+                {{if data.round.round_hijack_time}}
+                    <br>
+                    <div class="itemLabel">
+                        Hijack Participants:
+                    </div>
+                    <fieldset class="fieldContainer">
+                        {{props data.round.hijack_participants}}
+                            <div class="itemContent">
+                                {{:value.name}}: {{:value.value}}
+                            </div>
+                        {{/props}}
+                    </fieldset>
+                {{/if}}
+                {{if data.round.real_time_end}}
+                    <br>
+                    <div class="itemLabel">
+                        Final Participants:
+                    </div><br>
+                    <div class="itemContent">
+                        <fieldset class="fieldContainer">
+                            {{props data.round.final_participants}}
+                                <div class="itemContent">
+                                    {{:value.name}}: {{:value.value}}
+                                </div>
+                            {{/props}}
+                        </fieldset>
+                    </div>
+                {{/if}}
+            {{else data.subMenu == 2}}
+                {{props data.round.death_stats_list :death_value:death_index}}
+                    <fieldset class="fieldContainer">
+                        <div class="itemLabel">
+                            <b>{{:death_value.mob_name}}</b>
+                        </div>
+                        <br>
+                        {{if death_value.job_name}}
+                            <div class="itemLabel">
+                                Role:
+                            </div>
+                            <div class="itemContent">
+                                {{:death_value.job_name}}
+                            </div>
+                        {{/if}}
+                        <div class="itemLabel">
+                            Area:
+                        </div>
+                        <div class="itemContent">
+                            {{:death_value.area_name}}
+                        </div>
+                        <div class="itemLabel">
+                            Cause:
+                        </div>
+                        <div class="itemContent">
+                            {{:death_value.cause_name}}
+                        </div>
+                        <div class="itemLabel">
+                            Time of Death:
+                        </div>
+                        <div class="itemContent">
+                            {{:death_value.time_of_death}}
+                        </div>
+                        <div class="itemLabel">
+                            Lifespan:
+                        </div>
+                        <div class="itemContent">
+                            {{:death_value.total_time_alive}}
+                        </div>
+                        <div class="itemLabel">
+                            Location:
+                        </div>
+                        <div class="itemContent">
+                            ({{:death_value.x}}, {{:death_value.y}}, {{:death_value.z}})
+                        </div>
+                        <div class="itemLabel">
+                            Total Kills:
+                        </div>
+                        <div class="itemContent">
+                            {{:death_value.total_kills}}
+                        </div>
+                        <br>
+                        <div class="itemLabel">
+                            Total Damage:
+                        </div>
+                        <br>
+                        {{props death_value.total_damage :damage_value:damage_index}}
+                            <div class="itemContent">
+                                {{:damage_value.name}}: {{:damage_value.value}}
+                            </div>
+                        {{/props}}
+                    </fieldset>
+                    <br>
+                {{/props}}
+            {{else data.subMenu == 3}}
+                {{props data.round.job_stats_list :job_value:job_index}}
+                    <fieldset class="fieldContainer">
+                        <div class="itemLabel">
+                            <b>{{:job_value.name}}</b>
+                        </div>
+                        <br>
+                        {{if job_value.total_kills}}
+                            <div class="itemLabel">
+                                Total Kills:
+                            </div>
+                            <div class="itemContent">
+                                {{:job_value.total_kills}}
+                            </div>
+                        {{/if}}
+                        {{if job_value.total_deaths}}
+                            <div class="itemLabel">
+                                Total Deaths:
+                            </div>
+                            <div class="itemContent">
+                                {{:job_value.total_deaths}}
+                            </div>
+                        {{/if}}
+                        {{if job_value.total_shots}}
+                            <div class="itemLabel">
+                                Total Shots:
+                            </div>
+                            <div class="itemContent">
+                                {{:job_value.total_shots}}
+                            </div>
+                        {{/if}}
+                        {{if job_value.total_shots_hit}}
+                            <div class="itemLabel">
+                                Total Shots Hit:
+                            </div>
+                            <div class="itemContent">
+                                {{:job_value.total_shots_hit}}
+                            </div>
+                        {{/if}}
+                        {{if job_value.total_friendly_fire}}
+                            <div class="itemLabel">
+                                Total Friendly Fire Instances:
+                            </div>
+                            <div class="itemContent">
+                                {{:job_value.total_friendly_fire}}
+                            </div>
+                        {{/if}}
+                        {{if job_value.total_revives}}
+                            <div class="itemLabel">
+                                Total Times Revived:
+                            </div>
+                            <div class="itemContent">
+                                {{:job_value.total_revives}}
+                            </div>
+                        {{/if}}
+                        {{if job_value.total_lives_saved}}
+                            <div class="itemLabel">
+                                Total Lives Saved:
+                            </div>
+                            <div class="itemContent">
+                                {{:job_value.total_lives_saved}}
+                            </div>
+                        {{/if}}
+                        {{if job_value.total_screams}}
+                            <div class="itemLabel">
+                                Total Screams:
+                            </div>
+                            <div class="itemContent">
+                                {{:job_value.total_screams}}
+                            </div>
+                        {{/if}}
+                        {{if job_value.total_kills}}
+                            <div class="itemLabel">
+                                Kills:
+                            </div>
+                            <br>
+                        {{/if}}
+                        {{props job_value.humans_killed :kill_value:kill_index}}
+                            <div class="itemContent">
+                                {{:kill_value.name}}: {{:kill_value.value}}
+                            </div>
+                        {{/props}}
+                        {{props job_value.xenos_killed :kill_value:kill_index}}
+                            <div class="itemContent">
+                                {{:kill_value.name}}: {{:kill_value.value}}
+                            </div>
+                        {{/props}}
+                        {{if job_value.nemesis}}
+                            <div class="itemLabel">
+                                Nemesis:
+                            </div>
+                            <br>
+                            <fieldset class="fieldContainer">
+                                <div class="itemLabel">
+                                    <b>{{:job_value.nemesis.name}}</b>
+                                </div>
+                                <br>
+                                <div class="itemLabel">
+                                    Deaths:
+                                </div>
+                                <div class="itemContent">
+                                    {{:job_value.nemesis.value}}
+                                </div>
+                            </fieldset>
+                        {{/if}}
+                    </fieldset>
+                    <br>
+                {{/props}}
+            {{else data.subMenu == 4}}
+                {{props data.round.caste_stats_list :caste_value:caste_index}}
+                    <fieldset class="fieldContainer">
+                        <div class="itemLabel">
+                            <b>{{:caste_value.name}}<b>
+                        </div>
+                        <br>
+                        {{if caste_value.total_kills}}
+                            <div class="itemLabel">
+                                Total Kills:
+                            </div>
+                            <div class="itemContent">
+                                {{:caste_value.total_kills}}
+                            </div>
+                        {{/if}}
+                        {{if caste_value.total_deaths}}
+                            <div class="itemLabel">
+                                Total Deaths:
+                            </div>
+                            <div class="itemContent">
+                                {{:caste_value.total_deaths}}
+                            </div>
+                        {{/if}}
+                        {{if caste_value.total_kills}}
+                            <div class="itemLabel">
+                                Kills:
+                            </div>
+                            <br>
+                        {{/if}}
+                        {{props caste_value.humans_killed :kill_value:kill_index}}
+                            <div class="itemContent">
+                                {{:kill_value.name}}: {{:kill_value.value}}
+                            </div>
+                        {{/props}}
+                        {{props caste_value.xenos_killed :kill_value:kill_index}}
+                            <div class="itemContent">
+                                {{:kill_value.name}}: {{:kill_value.value}}
+                            </div>
+                        {{/props}}
+                        {{if caste_value.total_kills}}
+                            <br>
+                        {{/if}}
+                        <div class="itemLabel">
+                            Abilities Used:
+                        </div>
+                        <br>
+                        {{props caste_value.abilities_used :ability_value:ability_index}}
+                            <div class="itemContent">
+                                {{:ability_value.name}}: {{:ability_value.value}}
+                            </div>
+                        {{/props}}
+                        {{if caste_value.nemesis}}
+                            <div class="itemLabel">
+                                Nemesis:
+                            </div>
+                            <br>
+                            <fieldset class="fieldContainer">
+                                <div class="itemLabel">
+                                    <b>{{:caste_value.nemesis.name}}</b>
+                                </div>
+                                <br>
+                                <div class="itemLabel">
+                                    Deaths:
+                                </div>
+                                <div class="itemContent">
+                                    {{:caste_value.nemesis.value}}
+                                </div>
+                            </fieldset>
+                        {{/if}}
+                    </fieldset>
+                    <br>
+                {{/props}}
+            {{else data.subMenu == 5}}
+                {{props data.round.weapon_stats_list}}
+                    <div class="item">
+                        <fieldset class="fieldContainer">
+                            <div class="itemLabel">
+                                <b>{{:value.name}}</b>
+                            </div>
+                            <br>
+                            {{if value.total_kills}}
+                                <div class="itemLabel">
+                                    Total Kills:
+                                </div>
+                                <div class="itemContent">
+                                    {{:value.total_kills}}
+                                </div>
+                            {{/if}}
+                            {{if value.total_hits}}
+                                <div class="itemLabel">
+                                    Total Hits:
+                                </div>
+                                <div class="itemContent">
+                                    {{:value.total_hits}}
+                                </div>
+                            {{/if}}
+                            {{if value.total_shots}}
+                                <div class="itemLabel">
+                                    Total Shots:
+                                </div>
+                                <div class="itemContent">
+                                    {{:value.total_shots}}
+                                </div>
+                            {{/if}}
+                            {{if value.total_shots_hit}}
+                                <div class="itemLabel">
+                                    Total Shots Hit:
+                                </div>
+                                <div class="itemContent">
+                                    {{:value.total_shots_hit}}
+                                </div>
+                            {{/if}}
+                            {{if value.total_friendly_fire}}
+                                <div class="itemLabel">
+                                    Total Friendly Fire Instances:
+                                </div>
+                                <div class="itemContent">
+                                    {{:value.total_friendly_fire}}
+                                </div>
+                            {{/if}}
+                            {{if value.total_kills}}
+                                <div class="itemLabel">
+                                    Kills:
+                                </div>
+                                <br>
+                                {{props value.humans_killed :kill_value:kill_index}}
+                                    <div class="itemContent">
+                                        {{:kill_value.name}}: {{:kill_value.value}}
+                                    </div>
+                                {{/props}}
+                                {{props value.xenos_killed :kill_value:kill_index}}
+                                    <div class="itemContent">
+                                        {{:kill_value.name}}: {{:kill_value.value}}
+                                    </div>
+                                {{/props}}
+                            {{/if}}
+                        </fieldset>
+                        <br>
+                    </div>
+                {{/props}}
+            {{/if}}
+        {{/if}}
+    {{else data.menu == 1}}
+        {{if data.subMenu == 0}}
+            {{if data.human}}
+                {{if data.dataMenu == 0}}
+                    <div class="itemLabel">
+                        Total Kills:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.human.total_kills}}
+                    </div>
+                    <div class="itemLabel">
+                        Total Deaths:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.human.total_deaths}}
+                    </div>
+                    <div class="itemLabel">
+                        Total Playtime:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.human.total_playtime}}
+                    </div>
+                    <div class="itemLabel">
+                        Total Rounds Played:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.human.total_rounds_played}}
+                    </div>
+                    <div class="itemLabel">
+                        Total Shots:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.human.total_shots}}
+                    </div>
+                    <div class="itemLabel">
+                        Total Shots Hit:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.human.total_shots_hit}}
+                    </div>
+                    <div class="itemLabel">
+                        Total Friendly Fire Instances:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.human.total_friendly_fire}}
+                    </div>
+                    <div class="itemLabel">
+                        Total Times Revived:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.human.total_revives}}
+                    </div>
+                    <div class="itemLabel">
+                        Total Lives Saved:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.human.total_lives_saved}}
+                    </div>
+                    <div class="itemLabel">
+                        Total Screams:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.human.total_screams}}
+                    </div>
+                    {{if data.human.top_weapon}}
+                        <div class="itemLabel">
+                            Top Weapon:
+                        </div>
+                        <br>
+                        <fieldset class="fieldContainer">
+                            <div class="itemLabel">
+                                <b>{{:data.human.top_weapon.name}}</b>
+                            </div>
+                            <br>
+                            <div class="itemLabel">
+                                Kills:
+                            </div>
+                            <div class="itemContent">
+                                {{:data.human.top_weapon.total_kills}}
+                            </div>
+                            <div class="itemLabel">
+                                Total Shots:
+                            </div>
+                            <div class="itemContent">
+                                {{:data.human.top_weapon.total_shots}}
+                            </div>
+                            <div class="itemLabel">
+                                Total Shots Hit:
+                            </div>
+                            <div class="itemContent">
+                                {{:data.human.top_weapon.total_shots_hit}}
+                            </div>
+                            <div class="itemLabel">
+                                Total Friendly Fire Instances:
+                            </div>
+                            <div class="itemContent">
+                                {{:data.human.top_weapon.total_friendly_fire}}
+                            </div>
+                        </fieldset>
+                        <br>
+                    {{/if}}
+                    {{if data.human.nemesis}}
+                        <div class="itemLabel">
+                            Nemesis:
+                        </div>
+                        <br>
+                        <fieldset class="fieldContainer">
+                            <div class="itemLabel">
+                                <b>{{:data.human.nemesis.name}}</b>
+                            </div>
+                            <br>
+                            <div class="itemLabel">
+                                Deaths:
+                            </div>
+                            <div class="itemContent">
+                                {{:data.human.nemesis.value}}
+                            </div>
+                        </fieldset>
+                        <br>
+                    {{/if}}
+                {{else data.dataMenu == 1}}
+                    <div class="itemLabel">
+                        Total Kills:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.human.total_kills}}
+                    </div>
+                    <br>
+                    {{props data.human.humans_killed}}
+                        <div class="itemLabel">
+                            {{:value.name}}: 
+                        </div>
+                        <div class="itemContent">
+                            {{:value.value}}
+                        </div>
+                    {{/props}}
+                    {{props data.human.xenos_killed}}
+                        <div class="itemLabel">
+                            {{:value.name}}:
+                        </div>
+                        <div class="itemContent">
+                            {{:value.value}}
+                        </div>
+                    {{/props}}
+                {{else data.dataMenu == 2}}
+                    {{props data.human.death_list :death_value:death_index}}
+                        <fieldset class="fieldContainer">
+                            <div class="itemLabel">
+                                <b>{{:death_value.mob_name}}</b>
+                            </div>
+                            <br>
+                            {{if death_value.job_name}}
+                                <div class="itemLabel">
+                                    Role:
+                                </div>
+                                <div class="itemContent">
+                                    {{:death_value.job_name}}
+                                </div>
+                            {{/if}}
+                            <div class="itemLabel">
+                                Area:
+                            </div>
+                            <div class="itemContent">
+                                {{:death_value.area_name}}
+                            </div>
+                            <div class="itemLabel">
+                                Cause:
+                            </div>
+                            <div class="itemContent">
+                                {{:death_value.cause_name}}
+                            </div>
+                            <div class="itemLabel">
+                                Time of Death:
+                            </div>
+                            <div class="itemContent">
+                                {{:death_value.time_of_death}}
+                            </div>
+                            <div class="itemLabel">
+                                Lifespan:
+                            </div>
+                            <div class="itemContent">
+                                {{:death_value.total_time_alive}}
+                            </div>
+                            <div class="itemLabel">
+                                Location:
+                            </div>
+                            <div class="itemContent">
+                                ({{:death_value.x}}, {{:death_value.y}}, {{:death_value.z}})
+                            </div>
+                            <div class="itemLabel">
+                                Total Kills:
+                            </div>
+                            <div class="itemContent">
+                                {{:death_value.total_kills}}
+                            </div>
+                            <div class="itemLabel">
+                                Total Damage:
+                            </div>
+                            <br>
+                            {{props death_value.total_damage :damage_value:damage_index}}
+                                <div class="itemContent">
+                                    {{:damage_value.name}}: {{:damage_value.value}}
+                                </div>
+                            {{/props}}
+                        </fieldset>
+                        <br>
+                    {{/props}}
+                {{else data.dataMenu == 3}}
+                    {{props data.human.weapon_stats_list}}
+                        <div class="item">
+                            <fieldset class="fieldContainer">
+                                <div class="itemLabel">
+                                    <b>{{:value.name}}</b>
+                                </div>
+                                <br>
+                                {{if value.total_kills}}
+                                    <div class="itemLabel">
+                                        Total Kills:
+                                    </div>
+                                    <div class="itemContent">
+                                        {{:value.total_kills}}
+                                    </div>
+                                {{/if}}
+                                {{if value.total_hits}}
+                                    <div class="itemLabel">
+                                        Total Hits:
+                                    </div>
+                                    <div class="itemContent">
+                                        {{:value.total_hits}}
+                                    </div>
+                                {{/if}}
+                                {{if value.total_shots}}
+                                    <div class="itemLabel">
+                                        Total Shots:
+                                    </div>
+                                    <div class="itemContent">
+                                        {{:value.total_shots}}
+                                    </div>
+                                {{/if}}
+                                {{if value.total_shots_hit}}
+                                    <div class="itemLabel">
+                                        Total Shots Hit:
+                                    </div>
+                                    <div class="itemContent">
+                                        {{:value.total_shots_hit}}
+                                    </div>
+                                {{/if}}
+                                {{if value.total_friendly_fire}}
+                                    <div class="itemLabel">
+                                        Total Friendly Fire Instances:
+                                    </div>
+                                    <div class="itemContent">
+                                        {{:value.total_friendly_fire}}
+                                    </div>
+                                {{/if}}
+                                {{if value.total_kills}}
+                                    <div class="itemLabel">
+                                        Kills:
+                                    </div>
+                                    <br>
+                                    {{props value.humans_killed :kill_value:kill_index}}
+                                        <div class="itemContent">
+                                            {{:kill_value.name}}: {{:kill_value.value}}
+                                        </div>
+                                    {{/props}}
+                                    {{props value.xenos_killed :kill_value:kill_index}}
+                                        <div class="itemContent">
+                                            {{:kill_value.name}}: {{:kill_value.value}}
+                                        </div>
+                                    {{/props}}
+                                {{/if}}
+                            </fieldset>
+                        </div>
+                    {{/props}}
+                {{else data.dataMenu == 4}}
+                    {{props data.human.job_stats_list :job_value:job_index}}
+                        <fieldset class="fieldContainer">
+                            <div class="itemLabel">
+                                <b>{{:job_value.name}}</b>
+                            </div>
+                            <br>
+                            <div class="itemLabel">
+                                Total Kills:
+                            </div>
+                            <div class="itemContent">
+                                {{:job_value.total_kills}}
+                            </div>
+                            <div class="itemLabel">
+                                Total Deaths:
+                            </div>
+                            <div class="itemContent">
+                                {{:job_value.total_deaths}}
+                            </div>
+                            <div class="itemLabel">
+                                Total Playtime:
+                            </div>
+                            <div class="itemContent">
+                                {{:job_value.total_playtime}}
+                            </div>
+                            <div class="itemLabel">
+                                Total Rounds Played:
+                            </div>
+                            <div class="itemContent">
+                                {{:job_value.total_rounds_played}}
+                            </div>
+                            {{if job_value.total_shots}}
+                                <div class="itemLabel">
+                                    Total Shots:
+                                </div>
+                                <div class="itemContent">
+                                    {{:job_value.total_shots}}
+                                </div>
+                            {{/if}}
+                            {{if job_value.total_shots_hit}}
+                                <div class="itemLabel">
+                                    Total Shots Hit:
+                                </div>
+                                <div class="itemContent">
+                                    {{:job_value.total_shots_hit}}
+                                </div>
+                            {{/if}}
+                            {{if job_value.total_friendly_fire}}
+                                <div class="itemLabel">
+                                    Total Friendly Fire Instances:
+                                </div>
+                                <div class="itemContent">
+                                    {{:job_value.total_friendly_fire}}
+                                </div>
+                            {{/if}}
+                            {{if job_value.total_revives}}
+                                <div class="itemLabel">
+                                    Total Times Revived:
+                                </div>
+                                <div class="itemContent">
+                                    {{:job_value.total_revives}}
+                                </div>
+                            {{/if}}
+                            {{if job_value.total_lives_saved}}
+                                <div class="itemLabel">
+                                    Total Lives Saved:
+                                </div>
+                                <div class="itemContent">
+                                    {{:job_value.total_lives_saved}}
+                                </div>
+                            {{/if}}
+                            {{if job_value.total_screams}}
+                                <div class="itemLabel">
+                                    Total Screams:
+                                </div>
+                                <div class="itemContent">
+                                    {{:job_value.total_screams}}
+                                </div>
+                            {{/if}}
+                            <div class="itemLabel">
+                                Kills:
+                            </div>
+                            <br>
+                            {{props job_value.humans_killed :kill_value:kill_index}}
+                                <div class="itemContent">
+                                    {{:kill_value.name}}: {{:kill_value.value}}
+                                </div>
+                            {{/props}}
+                            {{props job_value.xenos_killed :kill_value:kill_index}}
+                                <div class="itemContent">
+                                    {{:kill_value.name}}: {{:kill_value.value}}
+                                </div>
+                            {{/props}}
+                            <br>
+                            {{if job_value.nemesis}}
+                                <div class="itemLabel">
+                                    Nemesis:
+                                </div>
+                                <br>
+                                <fieldset class="fieldContainer">
+                                    <div class="itemLabel">
+                                        <b>{{:job_value.nemesis.name}}</b>
+                                    </div>
+                                    <br>
+                                    <div class="itemLabel">
+                                        Deaths:
+                                    </div>
+                                    <div class="itemContent">
+                                        {{:job_value.nemesis.value}}
+                                    </div>
+                                </fieldset>
+                            {{/if}}
+                        </fieldset>
+                        <br>
+                    {{/props}}
+                {{/if}}
+            {{/if}}
+        {{else data.subMenu == 1}}
+            {{if data.xeno}}
+                {{if data.dataMenu == 0}}
+                    <div class="itemLabel">
+                        Total Kills:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.xeno.total_kills}}
+                    </div>
+                    <div class="itemLabel">
+                        Total Deaths:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.xeno.total_deaths}}
+                    </div>
+                    <div class="itemLabel">
+                        Total Playtime:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.xeno.total_playtime}}
+                    </div>
+                    <div class="itemLabel">
+                        Total Rounds Played:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.xeno.total_rounds_played}}
+                    </div>
+                    <div class="itemLabel">
+                        Total Slashes:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.xeno.total_hits}}
+                    </div>
+                    {{if data.xeno.top_caste}}
+                        <div class="itemLabel">
+                            Top Caste:
+                        </div>
+                        <br>
+                        <fieldset class="fieldContainer">
+                            <div class="itemLabel">
+                                <b>{{:data.xeno.top_caste.name}}</b>
+                            </div>
+                            <br>
+                            <div class="itemLabel">
+                                Kills:
+                            </div>
+                            <div class="itemContent">
+                                {{:data.xeno.total_kills}}
+                            </div>
+                            <div class="itemLabel">
+                                Total Deaths:
+                            </div>
+                            <div class="itemContent">
+                                {{:data.xeno.total_deaths}}
+                            </div>
+                            <div class="itemLabel">
+                                Total Playtime:
+                            </div>
+                            <div class="itemContent">
+                                {{:data.xeno.total_playtime}}
+                            </div>
+                            <div class="itemLabel">
+                                Total Rounds Played:
+                            </div>
+                            <div class="itemContent">
+                                {{:data.xeno.total_rounds_played}}
+                            </div>
+                        </fieldset>
+                        <br>
+                    {{/if}}
+                    {{if data.xeno.nemesis}}
+                        <div class="itemLabel">
+                            Nemesis:
+                        </div>
+                        <br>
+                        <fieldset class="fieldContainer">
+                            <div class="itemLabel">
+                                <b>{{:data.xeno.nemesis.name}}</b>
+                            </div>
+                            <br>
+                            <div class="itemLabel">
+                                Deaths:
+                            </div>
+                            <div class="itemContent">
+                                {{:data.xeno.nemesis.value}}
+                            </div>
+                        </fieldset>
+                    {{/if}}
+                {{else data.dataMenu == 1}}
+                    <div class="itemLabel">
+                        Total Kills:
+                    </div>
+                    <div class="itemContent">
+                        {{:data.xeno.total_kills}}
+                    </div>
+                    <br>
+                    {{props data.xeno.humans_killed}}
+                        <div class="itemLabel">
+                            {{:value.name}}: 
+                        </div>
+                        <div class="itemContent">
+                            {{:value.value}}
+                        </div>
+                    {{/props}}
+                    {{props data.xeno.xenos_killed}}
+                        <div class="itemLabel">
+                            {{:value.name}}:
+                        </div>
+                        <div class="itemContent">
+                            {{:value.value}}
+                        </div>
+                    {{/props}}
+                {{else data.dataMenu == 2}}
+                    {{props data.xeno.death_list :death_value:death_index}}
+                        <fieldset class="fieldContainer">
+                            <div class="itemLabel">
+                                <b>{{:death_value.mob_name}}</b>
+                            </div>
+                            <br>
+                            {{if death_value.job_name}}
+                                <div class="itemLabel">
+                                    Caste:
+                                </div>
+                                <div class="itemContent">
+                                    {{:death_value.job_name}}
+                                </div>
+                            {{/if}}
+                            <div class="itemLabel">
+                                Area:
+                            </div>
+                            <div class="itemContent">
+                                {{:death_value.area_name}}
+                            </div>
+                            <div class="itemLabel">
+                                Cause:
+                            </div>
+                            <div class="itemContent">
+                                {{:death_value.cause_name}}
+                            </div>
+                            <div class="itemLabel">
+                                Time of Death:
+                            </div>
+                            <div class="itemContent">
+                                {{:death_value.time_of_death}}
+                            </div>
+                            <div class="itemLabel">
+                                Lifespan:
+                            </div>
+                            <div class="itemContent">
+                                {{:death_value.total_time_alive}}
+                            </div>
+                            <div class="itemLabel">
+                                Location:
+                            </div>
+                            <div class="itemContent">
+                                ({{:death_value.x}}, {{:death_value.y}}, {{:death_value.z}})
+                            </div>
+                            <div class="itemLabel">
+                                Total Kills:
+                            </div>
+                            <div class="itemContent">
+                                {{:death_value.total_kills}}
+                            </div>
+                            <div class="itemLabel">
+                                Total Damage:
+                            </div>
+                            <br>
+                            {{props death_value.total_damage :damage_value:damage_index}}
+                                <div class="itemContent">
+                                    {{:damage_value.name}}: {{:damage_value.value}}
+                                </div>
+                            {{/props}}
+                        </fieldset>
+                        <br>
+                    {{/props}}
+                {{else data.dataMenu == 3}}
+                    {{props data.xeno.caste_stats_list :caste_value:caste_index}}
+                        <fieldset class="fieldContainer">
+                            <div class="itemLabel">
+                                <b>{{:caste_value.name}}<b>
+                            </div>
+                            <br>
+                            <div class="itemLabel">
+                                Total Kills:
+                            </div>
+                            <div class="itemContent">
+                                {{:caste_value.total_kills}}
+                            </div>
+                            <div class="itemLabel">
+                                Total Deaths:
+                            </div>
+                            <div class="itemContent">
+                                {{:caste_value.total_deaths}}
+                            </div>
+                            <div class="itemLabel">
+                                Total Playtime:
+                            </div>
+                            <div class="itemContent">
+                                {{:caste_value.total_playtime}}
+                            </div>
+                            <div class="itemLabel">
+                                Total Rounds Played:
+                            </div>
+                            <div class="itemContent">
+                                {{:caste_value.total_rounds_played}}
+                            </div>
+                            <div class="itemLabel">
+                                Kills:
+                            </div>
+                            <br>
+                            {{props caste_value.humans_killed :kill_value:kill_index}}
+                                <div class="itemContent">
+                                    {{:kill_value.name}}: {{:kill_value.value}}
+                                </div>
+                            {{/props}}
+                            {{props caste_value.xenos_killed :kill_value:kill_index}}
+                                <div class="itemContent">
+                                    {{:kill_value.name}}: {{:kill_value.value}}
+                                </div>
+                            {{/props}}
+                            <br>
+                            <div class="itemLabel">
+                                Abilities Used:
+                            </div>
+                            <br>
+                            {{props caste_value.abilities_used :ability_value:ability_index}}
+                                <div class="itemContent">
+                                    {{:ability_value.name}}: {{:ability_value.value}}
+                                </div>
+                            {{/props}}
+                            {{if caste_value.nemesis}}
+                                <div class="itemLabel">
+                                    Nemesis:
+                                </div>
+                                <br>
+                                <fieldset class="fieldContainer">
+                                    <div class="itemLabel">
+                                        <b>{{:caste_value.nemesis.name}}</b>
+                                    </div>
+                                    <br>
+                                    <div class="itemLabel">
+                                        Deaths:
+                                    </div>
+                                    <div class="itemContent">
+                                        {{:caste_value.nemesis.value}}
+                                    </div>
+                                </fieldset>
+                            {{/if}}
+                        </fieldset>
+                        <br>
+                    {{/props}}
+                {{/if}}
+            {{/if}}
+        {{/if}}
+    {{/if}}
+</div>
+

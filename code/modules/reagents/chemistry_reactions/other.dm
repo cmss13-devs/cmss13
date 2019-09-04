@@ -25,9 +25,11 @@
 	var/expower
 	var/shards = 4 // Because explosions are messy
 	var/shard_type = /datum/ammo/bullet/shrapnel
+	var/source_mob
 
 	if(ishuman(holder.my_atom))
 		var/mob/living/carbon/human/H = holder.my_atom
+		source_mob = H
 		msg_admin_niche("WARNING: Pill-based potassium-water explosion attempted in containing mob [H.name] ([H.ckey]) in area [sourceturf.loc] at ([H.loc.x],[H.loc.y],[H.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[H.loc.x];Y=[H.loc.y];Z=[H.loc.z]'>JMP</a>)")
 		holder.exploded = TRUE
 		return
@@ -55,9 +57,9 @@
 		if(exfalloff < 15) exfalloff = 15
 
 		msg_admin_niche("Potassium + Water explosion in [sourceturf.loc.name] at ([sourceturf.x],[sourceturf.y],[sourceturf.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[sourceturf.x];Y=[sourceturf.y];Z=[sourceturf.z]'>JMP</a>)")
-		create_shrapnel(location, shards, , ,shard_type)
+		create_shrapnel(location, shards, , ,shard_type, "chemical reaction", source_mob)
 		sleep(2) // So mobs aren't knocked down before getting hit by shrapnel
-		explosion_rec(location, expower, exfalloff)
+		explosion_rec(location, expower, exfalloff, "chemical reaction", source_mob)
 
 		sourceturf.chemexploded = TRUE // to prevent grenade stacking
 		spawn(20)
@@ -247,7 +249,7 @@
 	required_reagents = list("aluminum" = 1, "phoron" = 1, "sacid" = 1 )
 	result_amount = 1
 
-/datum/chemical_reaction/chemfire/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/chemfire/on_reaction(var/datum/reagents/holder, var/created_volume, var/mob/user)
 	var/flameshape = FLAMESHAPE_DEFAULT
 	var/radius = 0
 	var/intensity = 0
@@ -305,7 +307,7 @@
 	smoke.start()
 	smoke = null
 
-	new /obj/flamer_fire(location, duration, intensity, firecolor, radius, FALSE, flameshape)
+	new /obj/flamer_fire(location, "[initial(name)] chemical fire", user, duration, intensity, firecolor, radius, FALSE, flameshape)
 	sleep(5)
 	playsound(location, 'sound/weapons/gun_flamethrower1.ogg', 25, 1)
 
@@ -564,7 +566,7 @@
 	name = "Anti-Neurotoxin"
 	id = "antineurotoxin"
 	result = "antineurotoxin"
-	required_reagents = list("neurotoxinplasma" = 1, "dylovene" = 1)
+	required_reagents = list("neurotoxinplasma" = 1, "anti_toxin" = 1)
 	result_amount = 1
 
 /datum/chemical_reaction/eggplasma

@@ -2,7 +2,7 @@
 	name = "chem dispenser"
 	density = 1
 	anchored = 1
-	icon = 'icons/obj/machines/chemical_machines.dmi'
+	icon = 'icons/obj/structures/machinery/chemical_machines.dmi'
 	icon_state = "dispenser"
 	use_power = 0
 	idle_power_usage = 40
@@ -232,7 +232,7 @@
 	name = "ChemMaster 3000"
 	density = 1
 	anchored = 1
-	icon = 'icons/obj/machines/chemical_machines.dmi'
+	icon = 'icons/obj/structures/machinery/chemical_machines.dmi'
 	icon_state = "mixer0"
 	use_power = 1
 	idle_power_usage = 20
@@ -543,7 +543,7 @@
 //this machine does nothing
 /obj/machinery/disease2/diseaseanalyser
 	name = "Disease Analyser"
-	icon = 'icons/obj/machines/virology.dmi'
+	icon = 'icons/obj/structures/machinery/virology.dmi'
 	icon_state = "analyser"
 	anchored = 1
 	density = 1
@@ -553,7 +553,7 @@
 	name = "PanD.E.M.I.C 2200"
 	density = 1
 	anchored = 1
-	icon = 'icons/obj/machines/chemical_machines.dmi'
+	icon = 'icons/obj/structures/machinery/chemical_machines.dmi'
 	icon_state = "mixer0"
 	layer = BELOW_OBJ_LAYER
 	circuit = /obj/item/circuitboard/computer/pandemic
@@ -806,7 +806,7 @@
 /obj/machinery/reagentgrinder
 
 	name = "All-In-One Grinder"
-	icon = 'icons/obj/kitchen.dmi'
+	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "juicer1"
 	layer = ABOVE_TABLE_LAYER
 	density = 0
@@ -1188,21 +1188,43 @@
 /obj/machinery/reagent_analyzer
 	name = "Advanced XRF Scanner"
 	desc = "A spectrometer that bombards a sample in high energy radiation to detect emitted fluorescent x-ray patterns. By using the emission spectrum of the sample it can identify its chemical composition."
-	icon = 'icons/obj/machines/chemical_machines.dmi'
+	icon = 'icons/obj/structures/machinery/chemical_machines.dmi'
 	icon_state = "reagent_analyzer"
 	active_power_usage = 5000 //This is how many watts the big XRF machines usually take
 	
 	var/obj/item/reagent_container/sample = null //Object containing our sample
+	var/clearance_level = 0
 	var/sample_number = 1 //Just for printing fluff
 	var/processing = 0
 	var/status = 0
 
 /obj/machinery/reagent_analyzer/attackby(obj/item/B, mob/living/user)
-	if (!usr.mind || !usr.mind.cm_skills || (usr.mind.cm_skills.research == null) || (usr.mind.cm_skills.research < SKILL_RESEARCH_TRAINED))
-		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
-		return
 	if(processing)
 		to_chat(user, SPAN_WARNING("The [src] is still processing!"))
+		return
+	if(istype(B, /obj/item/card/id))
+		var/obj/item/card/id/card = B
+		if(ACCESS_WY_CORPORATE in card.access)
+			var/setting = alert(usr,"How do you want to change the clearance settings?","[src]","Increase","Set to maximum","Set to minimum")
+			if(!setting) return
+			
+			var/clearance_allowance = 6 - defcon_controller.current_defcon_level
+
+			switch(setting)
+				if("Increase")
+					if(clearance_level < clearance_allowance)
+						clearance_level = min(5,clearance_level + 1)
+				if("Set to maximum")
+					clearance_level = clearance_allowance
+				if("Set to minimum")
+					clearance_level = 0
+			
+			visible_message(SPAN_NOTICE("[user] swipes their ID card on the [src], updating the clearance to level [clearance_level]."))
+		else
+			visible_message(SPAN_NOTICE("[user] swipes their ID card on the [src], but it refused."))
+		return
+	if (!usr.mind || !usr.mind.cm_skills || (usr.mind.cm_skills.research == null) || (usr.mind.cm_skills.research < SKILL_RESEARCH_TRAINED))
+		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return
 	if(istype(B, /obj/item/reagent_container/glass/beaker/vial))
 		if(sample || status)
@@ -1277,8 +1299,11 @@
 		report.info += text("<B>Results for sample</B> #[]:<BR>\n",sample_number)
 		report.info += text("<B>ID:</B> <I>[]</I><BR><BR>\n",S.name)
 		report.info += "<B>Database Details:</B><BR>\n"
-		if(S.chemclass >= CHEM_CLASS_SPECIAL)
-			report.info += "Error: database entry marked as <I>CLASSIFIED</I>.<BR>\n"
+		if(S.chemclass >= CHEM_CLASS_ULTRA && clearance_level >= S.gen_tier)
+			report.info += text("<I>The following information relating to [] is restricted with a level [] clearance classification.</I><BR>",S.name,S.gen_tier)
+			report.info += text("<font size = \"2.5\">[]</font>\n",S.description)
+		else if(S.chemclass >= CHEM_CLASS_SPECIAL)
+			report.info += "CLASSIFIED:<I> Insufficient clearance level to read the database entry.</I><BR>\n"
 		else if(S.description)
 			report.info += text("<BR><font size = \"2.5\">[]</font><BR>\n",S.description)
 		else
@@ -1318,4 +1343,141 @@
 		report.info += text("<B>Reason for error:</B><BR><I>[]</I><BR>\n",reason)
 	report.info += text("<BR><HR><font size = \"1\"><I>This report was automatically printed by the Advanced X-Ray Fluorescence Scanner.<BR>The USS Almayer,  []/2186, []</I></font><BR>\n<span class=\"paper_field\"></span>",time2text(world.timeofday, "MM/DD"),worldtime2text())
 	
+/obj/machinery/centrifuge
+	name = "Chemical Centrifuge"
+	desc = "A machine that uses centrifugal forces to separate fluids of different densities. Needs a glass container for input and a vialbox for output."
+	icon = 'icons/obj/structures/machinery/chemical_machines.dmi'
+	icon_state = "centrifuge_empty_open"
+	active_power_usage = 500
 
+	var/obj/item/reagent_container/glass/input_container = null //Our input beaker
+	var/obj/item/storage/fancy/vials/output_container //Contains vials for the output
+
+	var/processing = 0
+	var/status = 0
+
+/obj/machinery/centrifuge/attackby(obj/item/B, mob/living/user)
+	if(processing)
+		to_chat(user, SPAN_WARNING("The [src] is still running!"))
+		return
+	if (!usr.mind || !usr.mind.cm_skills || (usr.mind.cm_skills.research == null) || (usr.mind.cm_skills.research < SKILL_RESEARCH_TRAINED))
+		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
+		return
+	if(istype(B, /obj/item/reagent_container/glass))
+		if(input_container)
+			to_chat(user, SPAN_WARNING("A container is already loaded into the [src]."))
+			return
+		if(user.drop_inv_item_to_loc(B, src))
+			input_container = B
+			if(output_container)
+				icon_state = "centrifuge_on_closed"
+			else
+				icon_state = "centrifuge_on_open"
+	else if(istype(B, /obj/item/storage/fancy/vials))
+		if(output_container)
+			to_chat(user, SPAN_WARNING("A vial box is already loaded into the [src]."))
+			return
+		if(user.drop_inv_item_to_loc(B, src))
+			output_container = B
+			if(input_container)
+				icon_state = "centrifuge_on_closed"
+			else
+				icon_state = "centrifuge_empty_closed"
+	else
+		to_chat(user, SPAN_WARNING("[B] doesn't fit in the [src]."))
+		return
+	if(input_container && output_container)
+		to_chat(user, SPAN_NOTICE("You insert [B] and start configuring the [src]."))
+		updateUsrDialog()
+		if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
+		icon_state = "centrifuge_spinning"
+		processing = 1
+		playsound(src.loc, 'sound/machines/centrifuge.ogg', 30)
+		start_processing()
+	else
+		to_chat(user, SPAN_NOTICE("You insert [B] into the [src]."))
+
+/obj/machinery/centrifuge/attack_hand(mob/user as mob)
+	if(processing)
+		to_chat(user, SPAN_WARNING("The [src] is still running!"))
+		return
+	if(!input_container && !output_container)
+		to_chat(user, SPAN_WARNING("The [src] is empty."))
+		return
+	if(output_container)
+		to_chat(user, SPAN_NOTICE("You remove the [output_container] from the [src]."))
+		user.put_in_active_hand(output_container)
+		output_container = null
+		if(input_container)
+			icon_state = "centrifuge_on_open"
+		else
+			icon_state = "centrifuge_empty_open"
+	else if(input_container)
+		to_chat(user, SPAN_NOTICE("You remove the [input_container] from the [src]."))
+		user.put_in_active_hand(input_container)
+		input_container = null
+		icon_state = "centrifuge_empty_open"
+	return
+
+/obj/machinery/centrifuge/process()
+	status++
+	if(status <= 1)
+		centrifuge()
+	if(status >= 2)
+		status = 0
+		processing = 0
+		icon_state = "centrifuge_finish"
+		stop_processing()
+		return
+
+/obj/machinery/centrifuge/proc/centrifuge()
+	if(!output_container.contents.len) return //Is output empty?
+	
+	var/initial_reagents = input_container.reagents.reagent_list.len
+	var/list/vials = list()
+	for(var/obj/item/reagent_container/glass/beaker/vial/V in output_container.contents)
+		vials += V
+	
+	//Split reagent types best possible, if we have move volume that types available, split volume best possible
+	if(initial_reagents)
+		for(var/datum/reagent/R in input_container.reagents.reagent_list)
+
+			//A filter mechanic for QoL, as you'd never want multiple full vials with the same reagent. Lets players use impure vials as filters.
+			var/filter = 0
+			for(var/obj/item/reagent_container/glass/beaker/vial/V in vials)
+				if(V.reagents.has_reagent(R.id))
+					if(V.reagents.reagent_list.len > 1 || V.reagents.total_volume == V.reagents.maximum_volume) //If the reagent is in an impure vial, or a full vial, we skip it
+						filter = 1
+						break
+			if(filter) continue
+			
+			for(var/obj/item/reagent_container/glass/beaker/vial/V in vials)
+				//Check the vial
+				if(V.reagents.reagent_list.len > 1) //We don't work with impure vials
+					continue 
+				if(V.reagents.get_reagents() && !V.reagents.has_reagent(R.id)) //We only add to vials with the same reagent
+					continue 
+				if(V.reagents.total_volume == V.reagents.maximum_volume) //The vial is full
+					continue 
+
+				//Calculate how much we are transfering
+				var/amount_to_transfer = V.reagents.maximum_volume - V.reagents.total_volume
+				if(R.volume < amount_to_transfer)
+					amount_to_transfer = R.volume
+				
+				//Transfer to the vial
+				V.reagents.add_reagent(R.id,amount_to_transfer,R.data)
+				input_container.reagents.remove_reagent(R.id,amount_to_transfer)
+				V.update_icon()
+				V.name = "vial ([R.name])"
+
+				break //Continue to next reagent
+		
+	//Delabel the remaining vials
+	for(var/obj/item/reagent_container/glass/beaker/vial/V in vials)
+		if(!(V.reagents.reagent_list.len) || (V.reagents.reagent_list.len > 1))
+			V.name = "vial"
+
+	input_container.update_icon()
+	output_container.contents = vials
+	

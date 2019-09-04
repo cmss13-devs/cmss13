@@ -186,7 +186,7 @@ Implant Specifics:<BR>"}
 							qdel(src)
 						else
 							explosion(get_turf(imp_in), -1, -1, 2, 3)
-							part.droplimb()
+							part.droplimb(0, 0, "dismemberment")
 							qdel(src)
 				if (elevel == "Destroy Body")
 					explosion(get_turf(T), -1, 0, 1, 6)
@@ -248,7 +248,7 @@ Implant Specifics:<BR>"}
 						istype(part,/datum/limb/head))
 						part.createwound(BRUISE, 60)	//mangle them instead
 					else
-						part.droplimb()
+						part.droplimb(0, 0, "dismemberment")
 				explosion(get_turf(imp_in), -1, -1, 2, 3)
 				qdel(src)
 

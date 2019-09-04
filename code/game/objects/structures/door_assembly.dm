@@ -1,5 +1,5 @@
 obj/structure/door_assembly
-	icon = 'icons/obj/doors/door_assembly.dmi'
+	icon = 'icons/obj/structures/doors/door_assembly.dmi'
 
 	name = "airlock assembly"
 	icon_state = "door_as_0"
@@ -105,7 +105,7 @@ obj/structure/door_assembly
 		glass = -1
 
 	multi_tile
-		icon = 'icons/obj/doors/door_assembly2x1.dmi'
+		icon = 'icons/obj/structures/doors/door_assembly2x1.dmi'
 		dir = EAST
 		var/width = 1
 
@@ -279,8 +279,6 @@ obj/structure/door_assembly
 
 			door.assembly_type = type
 			door.electronics = src.electronics
-			if (istype(electronics, /obj/item/circuitboard/airlock/secure))
-				door.randomize_wires()
 			if(src.electronics.one_access)
 				door.req_access = null
 				door.req_one_access = src.electronics.conf_access

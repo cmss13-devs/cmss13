@@ -2,6 +2,11 @@
 #define CAT_HIDDEN 1
 #define CAT_COIN   2
 
+#define VENDING_WIRE_EXTEND    1
+#define VENDING_WIRE_IDSCAN    2
+#define VENDING_WIRE_SHOCK     3
+#define VENDING_WIRE_SHOOT_INV 4
+
 #define	VEND_HAND	1
 
 /datum/data/vending_product
@@ -15,7 +20,7 @@
 /obj/machinery/vending
 	name = "Vendomat"
 	desc = "A generic vending machine."
-	icon = 'icons/obj/machines/vending.dmi'
+	icon = 'icons/obj/structures/machinery/vending.dmi'
 	icon_state = "generic"
 	anchored = 1
 	density = 1
@@ -57,10 +62,6 @@
 	var/panel_open = 0 //Hacking that vending machine. Gonna get a free candy bar.
 	var/wires = 15
 	var/obj/item/coin/coin
-	var/const/WIRE_EXTEND = 1
-	var/const/WIRE_SCANID = 2
-	var/const/WIRE_SHOCK = 3
-	var/const/WIRE_SHOOTINV = 4
 
 	var/check_accounts = 0		// 1 = requires PIN and checks accounts.  0 = You slide an ID, it vends, SPACE COMMUNISM!
 	var/obj/item/spacecash/ewallet/ewallet
@@ -72,7 +73,7 @@
 /obj/machinery/vending/New()
 	..()
 	spawn(4)
-		src.slogan_list = text2list(src.product_slogans, ";")
+		src.slogan_list = splittext(src.product_slogans, ";")
 
 		// So not all machines speak at the exact same time.
 		// The first time this machine says something will be at slogantime + this random value,
@@ -179,7 +180,6 @@
 			src.panel_open = !src.panel_open
 			to_chat(user, "You [src.panel_open ? "open" : "close"] the maintenance panel.")
 			update_icon()
-			src.updateUsrDialog()
 			return TRUE
 		else if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
@@ -368,10 +368,6 @@
 	else
 		to_chat(usr, "\icon[src]<span class='warning'>Error: Unable to access your account. Please contact technical support if problem persists.</span>")
 
-/obj/machinery/vending/attack_ai(mob/user as mob)
-	if(!(stat & (BROKEN|NOPOWER) || tipped_level))
-		return ui_interact(user)
-
 /obj/machinery/vending/proc/GetProductIndex(var/datum/data/vending_product/P)
 	var/list/plist
 	switch(P.category)
@@ -418,43 +414,7 @@
 		if(shock(user, 100))
 			return
 
-
-	if(panel_open)
-		var/dat = ""
-		var/list/vendwires = list(
-			"Violet" = 1,
-			"Orange" = 2,
-			"Goldenrod" = 3,
-			"Green" = 4,
-		)
-		dat += "<br><hr><br><B>Access Panel</B><br>"
-		for(var/wiredesc in vendwires)
-			var/is_uncut = src.wires & APCWireColorToFlag[vendwires[wiredesc]]
-			dat += "[wiredesc] wire: "
-			if(!is_uncut)
-				dat += "<a href='?src=\ref[src];cutwire=[vendwires[wiredesc]]'>Mend</a>"
-			else
-				dat += "<a href='?src=\ref[src];cutwire=[vendwires[wiredesc]]'>Cut</a> "
-				dat += "<a href='?src=\ref[src];pulsewire=[vendwires[wiredesc]]'>Pulse</a> "
-			dat += "<br>"
-
-		dat += "<br>"
-		dat += "The orange light is [(src.seconds_electrified == 0) ? "off" : "on"].<BR>"
-		dat += "The red light is [src.shoot_inventory ? "off" : "blinking"].<BR>"
-		dat += "The green light is [src.extended_inventory ? "on" : "off"].<BR>"
-		dat += "The [(src.wires & WIRE_SCANID) ? "purple" : "yellow"] light is on.<BR>"
-
-		if (product_slogans != "")
-			dat += "The speaker switch is [src.shut_up ? "off" : "on"]. <a href='?src=\ref[src];togglevoice=[1]'>Toggle</a>"
-
-		user << browse(dat, "window=vending")
-		onclose(user, "vending")
-
-
 	ui_interact(user)
-
-
-
 
 /obj/machinery/vending/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 
@@ -475,13 +435,23 @@
 
 	var/list/data = list(
 		"vendor_name" = name,
+		"panel_open" = panel_open,
 		"currently_vending_name" = currently_vending ? sanitize(currently_vending.product_name) : null,
 		"premium_length" = premium.len,
 		"ewallet" = ewallet ? ewallet.name : null,
 		"ewallet_worth" = ewallet ? ewallet.worth : null,
 		"coin" = coin ? coin.name : null,
 		"displayed_records" = display_list,
+		"wires" = null
 	)
+
+	var/list/wire_descriptions = get_wire_descriptions()
+	var/list/panel_wires = list()
+	for(var/wire = 1 to wire_descriptions.len)
+		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire)))
+
+	if(panel_wires.len)
+		data["wires"] = panel_wires
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
@@ -522,7 +492,7 @@
 		usr.set_interaction(src)
 		if ((href_list["vend"]) && vend_ready && !currently_vending)
 
-			if(!allowed(usr) && (wires & WIRE_SCANID || hacking_safety)) //For SECURE VENDING MACHINES YEAH. Hacking safety always prevents bypassing emag or access
+			if(!allowed(usr) && (wires & VENDING_WIRE_IDSCAN || hacking_safety)) //For SECURE VENDING MACHINES YEAH. Hacking safety always prevents bypassing emag or access
 				to_chat(usr, SPAN_WARNING("Access denied.")) //Unless emagged of course
 				flick(src.icon_deny,src)
 				return
@@ -544,56 +514,60 @@
 					else
 						to_chat(usr, SPAN_DANGER("The ewallet doesn't have enough money to pay for that."))
 						src.currently_vending = R
-						src.updateUsrDialog()
+		
 				else
 					src.currently_vending = R
-					src.updateUsrDialog()
+	
 			return
 
 		else if (href_list["cancel_buying"])
 			src.currently_vending = null
-			src.updateUsrDialog()
 			return
 
 		else if ((href_list["cutwire"]) && (src.panel_open))
-			var/twire = text2num(href_list["cutwire"])
+			var/wire = text2num(href_list["cutwire"])
+
 			if(usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return 0
-			if (!( istype(usr.get_active_hand(), /obj/item/tool/wirecutters) ))
+
+			if (!iswirecutter(usr.get_active_hand()))
 				to_chat(usr, "You need wirecutters!")
 				return
-			if (src.isWireColorCut(twire))
-				src.mend(twire)
+
+			if (src.isWireCut(wire))
+				src.mend(wire)
 			else
-				src.cut(twire)
+				src.cut(wire)
 
 		else if ((href_list["pulsewire"]) && (src.panel_open))
-			var/twire = text2num(href_list["pulsewire"])
+			var/wire = text2num(href_list["pulsewire"])
+
 			if(usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return 0
-			if (!istype(usr.get_active_hand(), /obj/item/device/multitool))
+
+			if (!ismultitool(usr.get_active_hand()))
 				to_chat(usr, "You need a multitool!")
 				return
-			if (src.isWireColorCut(twire))
+
+			if (src.isWireCut(wire))
 				to_chat(usr, "You can't pulse a cut wire.")
 				return
 			else
-				src.pulse(twire)
+				src.pulse(wire)
 
 		else if ((href_list["togglevoice"]) && (src.panel_open))
 			src.shut_up = !src.shut_up
 
 		src.add_fingerprint(usr)
-		ui_interact(usr) //updates the nanoUI window
-		updateUsrDialog() //updates the wires window
+		return 1
 	else
 		usr << browse(null, "window=vending")
 
 
 /obj/machinery/vending/proc/vend(datum/data/vending_product/R, mob/user)
-	if(!allowed(user) && (wires & WIRE_SCANID || hacking_safety)) //For SECURE VENDING MACHINES YEAH
+	if(!allowed(user) && (wires & VENDING_WIRE_IDSCAN || hacking_safety)) //For SECURE VENDING MACHINES YEAH
 		to_chat(user, SPAN_WARNING("Access denied.")) //Unless emagged of course
 		flick(src.icon_deny,src)
 		return
@@ -624,7 +598,6 @@
 
 	release_item(R, vend_delay)
 	vend_ready = 1
-	updateUsrDialog()
 
 /obj/machinery/vending/proc/release_item(datum/data/vending_product/R, delay_vending = 0, dump_product = 0)
 	set waitfor = 0
@@ -688,7 +661,6 @@
 			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R.product_name]."),
 			SPAN_NOTICE("You stock [src] with \a [R.product_name]."))
 			R.amount++
-			updateUsrDialog()
 			return //We found our item, no reason to go on.
 
 /obj/machinery/vending/process()
@@ -771,44 +743,56 @@
 	src.visible_message(SPAN_WARNING("[src] launches [throw_item.name] at [target]!"))
 	return 1
 
-/obj/machinery/vending/proc/isWireColorCut(var/wireColor)
-	var/wireFlag = APCWireColorToFlag[wireColor]
-	return ((src.wires & wireFlag) == 0)
+/obj/machinery/vending/proc/get_wire_descriptions()
+	return list(
+		VENDING_WIRE_EXTEND    = "Inventory control computer",
+		VENDING_WIRE_IDSCAN    = "ID scanner",
+		VENDING_WIRE_SHOCK     = "Ground safety",
+		VENDING_WIRE_SHOOT_INV = "Dispenser motor control"
+	)
 
-/obj/machinery/vending/proc/isWireCut(var/wireIndex)
-	var/wireFlag = APCIndexToFlag[wireIndex]
-	return ((src.wires & wireFlag) == 0)
+/obj/machinery/vending/proc/isWireCut(var/wire)
+	return !(wires & getWireFlag(wire))
 
-/obj/machinery/vending/proc/cut(var/wireColor)
-	var/wireFlag = APCWireColorToFlag[wireColor]
-	var/wireIndex = APCWireColorToIndex[wireColor]
-	src.wires &= ~wireFlag
-	switch(wireIndex)
-		if(WIRE_EXTEND)
+/obj/machinery/vending/proc/cut(var/wire)
+	wires ^= getWireFlag(wire)
+
+	switch(wire)
+		if(VENDING_WIRE_EXTEND)
 			src.extended_inventory = 0
-		if(WIRE_SHOCK)
+			visible_message(SPAN_NOTICE("A weak yellow light turns off underneath \the [src]."))
+		if(VENDING_WIRE_SHOCK)
 			src.seconds_electrified = -1
-		if (WIRE_SHOOTINV)
+			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
+		if (VENDING_WIRE_SHOOT_INV)
 			if(!src.shoot_inventory)
 				src.shoot_inventory = 1
+				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
 
+/obj/machinery/vending/proc/mend(var/wire)
+	wires |= getWireFlag(wire)
 
-/obj/machinery/vending/proc/mend(var/wireColor)
-	var/wireFlag = APCWireColorToFlag[wireColor]
-	var/wireIndex = APCWireColorToIndex[wireColor] //not used in this function
-	src.wires |= wireFlag
-	switch(wireIndex)
-		if(WIRE_SHOCK)
+	switch(wire)
+		if(VENDING_WIRE_EXTEND)
+			src.extended_inventory = 1
+			visible_message(SPAN_NOTICE("A weak yellow light turns on underneath \the [src]."))
+		if(VENDING_WIRE_SHOCK)
 			src.seconds_electrified = 0
-		if (WIRE_SHOOTINV)
+		if (VENDING_WIRE_SHOOT_INV)
 			src.shoot_inventory = 0
+			visible_message(SPAN_NOTICE("\The [src] stops whirring."))
 
-/obj/machinery/vending/proc/pulse(var/wireColor)
-	var/wireIndex = APCWireColorToIndex[wireColor]
-	switch(wireIndex)
-		if(WIRE_EXTEND)
+/obj/machinery/vending/proc/pulse(var/wire)
+	switch(wire)
+		if(VENDING_WIRE_EXTEND)
 			src.extended_inventory = !src.extended_inventory
-		if (WIRE_SHOCK)
+			visible_message(SPAN_NOTICE("A weak yellow light turns [extended_inventory ? "on" : "off"] underneath \the [src]."))
+		if (VENDING_WIRE_SHOCK)
 			src.seconds_electrified = 30
-		if (WIRE_SHOOTINV)
+			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
+		if (VENDING_WIRE_SHOOT_INV)
 			src.shoot_inventory = !src.shoot_inventory
+			if(shoot_inventory)
+				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
+			else
+				visible_message(SPAN_NOTICE("\The [src] stops whirring."))

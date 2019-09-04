@@ -46,7 +46,7 @@
 /obj/item/weapon/gun/flamer/update_icon()
 	..()
 	if(lit)
-		var/image/I = image('icons/obj/items/gun.dmi', src, "+lit")
+		var/image/I = image('icons/obj/items/weapons/guns/gun.dmi', src, "+lit")
 		I.pixel_x += 3
 		overlays += I
 
@@ -84,6 +84,7 @@
 	if(current_mag.current_rounds <= 0)
 		click_empty(user)
 	else
+		user.track_shot(initial(name))
 		unleash_flame(target, user)
 
 /obj/item/weapon/gun/flamer/reload(mob/user, obj/item/ammo_magazine/magazine)
@@ -218,7 +219,7 @@
 	if(!istype(T))
 		return
 
-	new /obj/flamer_fire(T, heat, burn, f_color, 0, user)
+	new /obj/flamer_fire(T, initial(name), user, heat, burn, f_color, 0)
 
 /obj/item/weapon/gun/flamer/proc/triangular_flame(var/atom/target, var/mob/living/user, var/burntime, var/burnlevel)
 	set waitfor = 0
@@ -360,8 +361,10 @@
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
 	var/flame_color = "red"
 	var/flameshape = FLAMESHAPE_DEFAULT // diagonal square shape
+	var/weapon_source
+	var/weapon_source_mob
 
-/obj/flamer_fire/New(turf/loc, fire_lvl, burn_lvl, f_color, fire_spread_amount, mob/living/user, new_flameshape)
+/obj/flamer_fire/New(turf/loc, var/source, var/source_mob, fire_lvl, burn_lvl, f_color, fire_spread_amount, new_flameshape)
 	..()
 	if(f_color)
 		flame_color = f_color
@@ -371,6 +374,9 @@
 
 	if(!flame_color)
 		flame_color = "red"
+
+	weapon_source = source
+	weapon_source_mob = source_mob
 
 	icon_state = "[flame_color]_2"
 	if(fire_lvl) firelevel = fire_lvl
@@ -398,7 +404,7 @@
 				if(flameshape == FLAMESHAPE_IRREGULAR && prob(33))
 					continue
 				spawn(0)
-					new /obj/flamer_fire(T, fire_lvl, burn_lvl, f_color, new_spread_amt, user, flameshape)
+					new /obj/flamer_fire(T, weapon_source, weapon_source_mob, fire_lvl, burn_lvl, f_color, new_spread_amt, flameshape)
 
 		if(flameshape == FLAMESHAPE_STAR || flameshape == FLAMESHAPE_MINORSTAR) // spread in a star-like pattern
 			fire_spread_amount = round(fire_spread_amount * 1.5) // branch 'length'
@@ -431,11 +437,8 @@
 					if(prob(15) && flameshape != FLAMESHAPE_MINORSTAR) // chance to branch a little
 						new_spread_amt = 1.5
 					spawn(0)
-						new /obj/flamer_fire(T, fire_lvl, burn_lvl, f_color, new_spread_amt, user, FLAMESHAPE_MINORSTAR)
+						new /obj/flamer_fire(T, weapon_source, weapon_source_mob, fire_lvl, burn_lvl, f_color, new_spread_amt, FLAMESHAPE_MINORSTAR)
 					new_spread_amt = 0
-
-
-
 
 	//Apply fire effects onto everyone in the fire
 
@@ -460,21 +463,32 @@
 		else if(ishuman(M))
 			var/mob/living/carbon/human/H = M //fixed :s
 
-			if(user)
+			if(weapon_source_mob)
+				var/mob/user = weapon_source_mob
 				if(user.mind && H.mind && user.mind.faction == H.mind.faction)
 					H.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
 					user.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
-					round_statistics.friendly_fire_instances++
+					if(weapon_source)
+						H.track_friendly_fire(weapon_source)
 					msg_admin_ff("[user] ([user.ckey]) shot [H] ([H.ckey]) with \a [name] in [get_area(user)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) (<a href='?priv_msg=\ref[user.client]'>PM</a>)")
 				else
 					H.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
 					user.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
 					msg_admin_attack("[user] ([user.ckey]) shot [H] ([H.ckey]) with \a [name] in [get_area(user)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
-
+				if(weapon_source)
+					H.track_shot_hit(weapon_source, H)
 			if(istype(H.wear_suit, /obj/item/clothing/suit/fire)) continue
+		if(weapon_source)
+			M.last_damage_source = weapon_source
+		else	
+			M.last_damage_source = initial(name)
+		M.last_damage_mob = weapon_source_mob
 		M.adjust_fire_stacks(rand(5,burn_lvl*2))
 		M.IgniteMob()
 		M.adjustFireLoss(rand(burn_lvl,(burn_lvl*2))) // Make it so its the amount of heat or twice it for the initial blast.
+		if(weapon_source_mob)
+			var/mob/SM = weapon_source_mob
+			SM.track_shot_hit(weapon_source)
 		to_chat(M, "[isXeno(M)?"<span class='xenodanger'>":"<span class='highdanger'>"]Augh! You are roasted by the flames!")
 
 
@@ -507,6 +521,11 @@
 		if (prob(firelevel + 2*M.fire_stacks)) //the more soaked in fire you are, the likelier to be ignited
 			M.IgniteMob()
 
+		if(weapon_source)
+			M.last_damage_source = weapon_source
+		else	
+			M.last_damage_source = initial(name)
+		M.last_damage_mob = weapon_source_mob
 		M.adjustFireLoss(round(burnlevel*0.5)) //This makes fire stronk.
 		to_chat(M, SPAN_DANGER("You are burned!"))
 		if(isXeno(M)) M.updatehealth()
@@ -582,11 +601,11 @@
 	firelevel -= 2 //reduce the intensity by 2 per tick
 	return
 
-/proc/fire_spread_recur(var/turf/target, remaining_distance, direction, fire_lvl, burn_lvl, f_color)
+/proc/fire_spread_recur(var/turf/target, var/source, var/source_mob, remaining_distance, direction, fire_lvl, burn_lvl, f_color)
 	var/direction_angle = dir2angle(direction)
 	var/obj/flamer_fire/foundflame = locate() in target
 	if(!foundflame)
-		new/obj/flamer_fire(target, fire_lvl, burn_lvl, f_color)
+		new/obj/flamer_fire(target, source, source_mob, fire_lvl, burn_lvl, f_color)
 
 	for(var/spread_direction in alldirs)
 
@@ -621,11 +640,10 @@
 		if(T.density)
 			continue
 
-		spawn(0) //spawn(0) is important because it paces the explosion in an expanding circle, rather than a series of squiggly lines constantly checking overlap. Reduces lag by a lot
-			fire_spread_recur(T, spread_power, spread_direction, fire_lvl, burn_lvl, f_color) //spread further
+		INVOKE_ASYNC(src, .proc/fire_spread_recur, T, source, source_mob, spread_direction, fire_lvl, burn_lvl, f_color) //spread further
 
-/proc/fire_spread(var/turf/target, range, fire_lvl, burn_lvl, f_color)
-	new/obj/flamer_fire(target, fire_lvl, burn_lvl, f_color)
+/proc/fire_spread(var/turf/target, var/source, var/source_mob, range, fire_lvl, burn_lvl, f_color)
+	new/obj/flamer_fire(target, source, source_mob, fire_lvl, burn_lvl, f_color)
 	for(var/direction in alldirs)
 		var/spread_power = range
 		switch(direction)
@@ -634,4 +652,4 @@
 			else
 				spread_power -= 1.414 //diagonal spreading
 		var/turf/T = get_step(target, direction)
-		fire_spread_recur(T, spread_power, direction, fire_lvl, burn_lvl, f_color)
+		fire_spread_recur(T, source, source_mob, spread_power, direction, fire_lvl, burn_lvl, f_color)

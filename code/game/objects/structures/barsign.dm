@@ -1,5 +1,5 @@
 /obj/structure/sign/double/barsign
-	icon = 'icons/obj/structures/barsigns.dmi'
+	icon = 'icons/obj/structures/props/barsigns.dmi'
 	icon_state = "empty"
 	anchored = 1
 
@@ -22,6 +22,6 @@
 			if(sign_type == null)
 				return
 			else
-				sign_type = oldreplacetext(lowertext(sign_type), " ", "") // lowercase, strip spaces - along with choices for user options, avoids huge if-else-else
+				sign_type = replacetext(lowertext(sign_type), " ", "") // lowercase, strip spaces - along with choices for user options, avoids huge if-else-else
 				src.ChangeSign(sign_type)
 				to_chat(user, "You change the barsign.")

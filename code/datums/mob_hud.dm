@@ -32,6 +32,8 @@ var/datum/mob_hud/huds = list(
 		return
 	for(var/i in hud_icons)
 		user.client.images -= target.hud_list[i]
+		if(target.clone)
+			user.client.images -= target.clone.hud_list[i]
 
 /datum/mob_hud/proc/add_hud_to(mob/user)
 	hudusers |= user
@@ -48,6 +50,8 @@ var/datum/mob_hud/huds = list(
 		return
 	for(var/i in hud_icons)
 		user.client.images |= target.hud_list[i]
+		if(target.clone)
+			user.client.images |= target.clone.hud_list[i]
 
 
 
@@ -344,19 +348,19 @@ var/datum/mob_hud/huds = list(
 
 		switch(current_aura)
 			if("frenzy")
-				holder.overlays += image('icons/mob/hud.dmi',src, "hudaurafrenzy")
+				holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurafrenzy")
 			if("recovery")
-				holder.overlays += image('icons/mob/hud.dmi',src, "hudaurarecovery")
+				holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurarecovery")
 			if("warding")
-				holder.overlays += image('icons/mob/hud.dmi',src, "hudaurawarding")
+				holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurawarding")
 
 		switch(leader_current_aura)
 			if("frenzy")
-				holder.overlays += image('icons/mob/hud.dmi',src, "hudaurafrenzy")
+				holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurafrenzy")
 			if("recovery")
-				holder.overlays += image('icons/mob/hud.dmi',src, "hudaurarecovery")
+				holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurarecovery")
 			if("warding")
-				holder.overlays += image('icons/mob/hud.dmi',src, "hudaurawarding")
+				holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurawarding")
 
 	hud_list[PHEROMONE_HUD] = holder
 
@@ -372,10 +376,10 @@ var/datum/mob_hud/huds = list(
 				if(hive.living_xeno_queen.observed_xeno == src)
 					holder.icon_state = "queen_overwatch"
 				if(queen_chosen_lead)
-					var/image/I = image('icons/mob/hud.dmi',src, "hudxenoleader")
+					var/image/I = image('icons/mob/hud/hud.dmi',src, "hudxenoleader")
 					holder.overlays += I
 		if(upgrade)
-			var/image/J = image('icons/mob/hud.dmi',src, "hudxenoupgrade[upgrade]")
+			var/image/J = image('icons/mob/hud/hud.dmi',src, "hudxenoupgrade[upgrade]")
 			holder.overlays += J
 	hud_list[QUEEN_OVERWATCH_HUD] = holder
 
@@ -383,7 +387,7 @@ var/datum/mob_hud/huds = list(
 /mob/living/carbon/Xenomorph/proc/hud_update()
 	var/image/holder = hud_list[QUEEN_OVERWATCH_HUD]
 	if(upgrade)
-		var/image/J = image('icons/mob/hud.dmi',src, "hudxenoupgrade[upgrade]")
+		var/image/J = image('icons/mob/hud/hud.dmi',src, "hudxenoupgrade[upgrade]")
 		holder.overlays += J
 
 //Sec HUDs
@@ -520,15 +524,15 @@ var/datum/mob_hud/huds = list(
 		if(assigned_squad.squad_leader == src)
 			marine_rk = "leader"
 		if(marine_rk)
-			var/image/IMG = image('icons/mob/hud.dmi',src, "hudmarinesquad")
+			var/image/IMG = image('icons/mob/hud/hud.dmi',src, "hudmarinesquad")
 			if(squad_clr)
 				IMG.color = squad_clr
 			else
 				IMG.color = "#5A934A"
 			holder.overlays += IMG
-			holder.overlays += image('icons/mob/hud.dmi',src, "hudmarinesquad[marine_rk]")
+			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudmarinesquad[marine_rk]")
 		if(I && I.assigned_fireteam)
-			var/image/IMG2 = image('icons/mob/hud.dmi',src, "hudmarinesquadft[I.assigned_fireteam]")
+			var/image/IMG2 = image('icons/mob/hud/hud.dmi',src, "hudmarinesquadft[I.assigned_fireteam]")
 			IMG2.color = squad_clr
 			holder.overlays += IMG2
 	else
@@ -554,10 +558,10 @@ var/datum/mob_hud/huds = list(
 			if("Intelligence Officer") marine_rk = "io"
 			if("Tank Crewman") marine_rk = "tc"
 		if(marine_rk)
-			var/image/I = image('icons/mob/hud.dmi',src, "hudmarinesquad")
+			var/image/I = image('icons/mob/hud/hud.dmi',src, "hudmarinesquad")
 			I.color = "#5A934A"
 			holder.overlays += I
-			holder.overlays += image('icons/mob/hud.dmi',src, "hudmarinesquad[marine_rk]")
+			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudmarinesquad[marine_rk]")
 			if(border_rk)
-				holder.overlays += image('icons/mob/hud.dmi',src, "hudmarineborder[border_rk]")
+				holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudmarineborder[border_rk]")
 	hud_list[SQUAD_HUD] = holder

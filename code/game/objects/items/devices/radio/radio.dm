@@ -383,7 +383,7 @@
 		R.receive_signal(signal)
 
 
-	sleep(rand(10,25)) // wait a little...
+	sleep(10) // wait a little...
 
 	if(signal.data["done"] && position.z in signal.data["level"])
 		// we're done here.
@@ -502,7 +502,7 @@
 	var/mob/living/silicon/robot/myborg = null // Cyborg which owns this radio. Used for power checks
 	var/obj/item/device/encryptionkey/keyslot = null//Borg radios can handle a single encryption key
 	var/shut_up = 0
-	icon = 'icons/obj/robot_component.dmi' // Cyborgs radio icons should look like the component.
+	icon = 'icons/obj/items/robot_component.dmi' // Cyborgs radio icons should look like the component.
 	icon_state = "radio"
 	canhear_range = 3
 

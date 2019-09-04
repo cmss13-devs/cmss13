@@ -1,94 +1,96 @@
 /obj/item/reagent_container/food/drinks/cans
 	var/canopened = 0
 
-	attack_self(mob/user as mob)
-		if (canopened == 0)
-			playsound(src.loc,'sound/effects/canopen.ogg', 15, 1)
-			to_chat(user, SPAN_NOTICE("You open the drink with an audible pop!"))
-			canopened = 1
-		else
-			return
+/obj/item/reagent_container/food/drinks/cans/attack_self(mob/user as mob)
+	if (canopened == 0)
+		playsound(src.loc,'sound/effects/canopen.ogg', 15, 1)
+		to_chat(user, SPAN_NOTICE("You open the drink with an audible pop!"))
+		canopened = 1
+	else
+		return
 
-	attack(mob/M as mob, mob/user as mob, def_zone)
+/obj/item/reagent_container/food/drinks/cans/attack(mob/M as mob, mob/user as mob, def_zone)
+	if (canopened == 0)
+		to_chat(user, SPAN_NOTICE("You need to open the drink!"))
+		return
+	var/datum/reagents/R = src.reagents
+	var/fillevel = gulp_size
+
+	if(!R.total_volume || !R)
+		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
+		return 0
+
+	if(M == user)
+		to_chat(M, SPAN_NOTICE(" You swallow a gulp of [src]."))
+		if(reagents.total_volume)
+			reagents.set_source_mob(user)
+			reagents.trans_to_ingest(M, gulp_size)
+			reagents.reaction(M, INGEST)
+			spawn(5)
+				reagents.trans_to(M, gulp_size)
+
+		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
+		return 1
+	else if( istype(M, /mob/living/carbon/human) )
 		if (canopened == 0)
 			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 			return
-		var/datum/reagents/R = src.reagents
-		var/fillevel = gulp_size
 
-		if(!R.total_volume || !R)
-			to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
-			return 0
+	else if (canopened == 1)
+		user.affected_message(M,
+			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
+			SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
+			SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
+		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
+		user.affected_message(M,
+			SPAN_HELPFUL("You <b>fed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
+			SPAN_HELPFUL("[user] <b>fed</b> you <b>[src]</b>."),
+			SPAN_NOTICE("[user] fed [user == M ? "themselves" : "[M]"] [src]."))
 
-		if(M == user)
-			to_chat(M, SPAN_NOTICE(" You swallow a gulp of [src]."))
-			if(reagents.total_volume)
-				reagents.trans_to_ingest(M, gulp_size)
-				reagents.reaction(M, INGEST)
-				spawn(5)
-					reagents.trans_to(M, gulp_size)
+		var/rgt_list_text = get_reagent_list_text()
 
-			playsound(M.loc,'sound/items/drink.ogg', 15, 1)
-			return 1
-		else if( istype(M, /mob/living/carbon/human) )
-			if (canopened == 0)
-				to_chat(user, SPAN_NOTICE("You need to open the drink!"))
+		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been fed [src.name] by [user.name] ([user.ckey]) Reagents: [rgt_list_text]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [M.name] by [M.name] ([M.ckey]) Reagents: [rgt_list_text]</font>")
+		msg_admin_attack("[key_name(user)] fed [key_name(M)] with [src.name] Reagents: [rgt_list_text] (INTENT: [uppertext(user.a_intent)]) at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+
+		if(reagents.total_volume)
+			reagents.set_source_mob(user)
+			reagents.trans_to_ingest(M, gulp_size)
+
+		if(isrobot(user)) //Cyborg modules that include drinks automatically refill themselves, but drain the borg's cell
+			var/mob/living/silicon/robot/bro = user
+			bro.cell.use(30)
+			var/refill = R.get_master_reagent_id()
+			spawn(MINUTES_1)
+				R.add_reagent(refill, fillevel)
+
+		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
+		return 1
+
+	return 0
+
+
+/obj/item/reagent_container/food/drinks/cans/afterattack(obj/target, mob/user, proximity)
+	if(!proximity) return
+
+	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
+		if (canopened == 0)
+			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
+			return
+
+
+	else if(target.is_open_container()) //Something like a glass. Player probably wants to transfer TO it.
+		if (canopened == 0)
+			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
+			return
+
+		if (istype(target, /obj/item/reagent_container/food/drinks/cans))
+			var/obj/item/reagent_container/food/drinks/cans/cantarget = target
+			if(cantarget.canopened == 0)
+				to_chat(user, SPAN_NOTICE("You need to open the drink you want to pour into!"))
 				return
 
-		else if (canopened == 1)
-			user.affected_message(M,
-				SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
-				SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
-				SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
-			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
-			user.affected_message(M,
-				SPAN_HELPFUL("You <b>fed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
-				SPAN_HELPFUL("[user] <b>fed</b> you <b>[src]</b>."),
-				SPAN_NOTICE("[user] fed [user == M ? "themselves" : "[M]"] [src]."))
-
-			var/rgt_list_text = get_reagent_list_text()
-
-			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been fed [src.name] by [user.name] ([user.ckey]) Reagents: [rgt_list_text]</font>")
-			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [M.name] by [M.name] ([M.ckey]) Reagents: [rgt_list_text]</font>")
-			msg_admin_attack("[key_name(user)] fed [key_name(M)] with [src.name] Reagents: [rgt_list_text] (INTENT: [uppertext(user.a_intent)]) at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
-
-			if(reagents.total_volume)
-				reagents.trans_to_ingest(M, gulp_size)
-
-			if(isrobot(user)) //Cyborg modules that include drinks automatically refill themselves, but drain the borg's cell
-				var/mob/living/silicon/robot/bro = user
-				bro.cell.use(30)
-				var/refill = R.get_master_reagent_id()
-				spawn(MINUTES_1)
-					R.add_reagent(refill, fillevel)
-
-			playsound(M.loc,'sound/items/drink.ogg', 15, 1)
-			return 1
-
-		return 0
-
-
-	afterattack(obj/target, mob/user, proximity)
-		if(!proximity) return
-
-		if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
-			if (canopened == 0)
-				to_chat(user, SPAN_NOTICE("You need to open the drink!"))
-				return
-
-
-		else if(target.is_open_container()) //Something like a glass. Player probably wants to transfer TO it.
-			if (canopened == 0)
-				to_chat(user, SPAN_NOTICE("You need to open the drink!"))
-				return
-
-			if (istype(target, /obj/item/reagent_container/food/drinks/cans))
-				var/obj/item/reagent_container/food/drinks/cans/cantarget = target
-				if(cantarget.canopened == 0)
-					to_chat(user, SPAN_NOTICE("You need to open the drink you want to pour into!"))
-					return
-
-		return ..()
+	return ..()
 
 
 
@@ -224,150 +226,148 @@
 		reagents.add_reagent("sodawater", 50)
 
 /obj/item/reagent_container/food/drinks/cans/souto
-	name = "\improper Souto Classic"
-	desc = "The can boldly proclaims it to be tangerine flavored. You can't help but think that's a lie. Canned in Havana."
+	name = "\improper Souto Can"
+	desc = "Canned in Havana."
 	icon_state = "souto_classic"
 	item_state = "souto_classic"
 	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
-		reagents.add_reagent("souto_classic", 50)
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet
 	name = "\improper Diet Souto"
 	desc = "Now with 0% fruit juice! Canned in Havana"
 	icon_state = "souto_diet_classic"
 	item_state = "souto_diet_classic"
-	center_of_mass = list("x"=16, "y"=10)
+	New()
+		..()
+		reagents.add_reagent("water", 25)
+
+/obj/item/reagent_container/food/drinks/cans/souto/classic
+	name = "\improper Souto Classic"
+	desc = "The can boldly proclaims it to be tangerine flavored. You can't help but think that's a lie. Canned in Havana."
+	icon_state = "souto_classic"
+	item_state = "souto_classic"
+	New()
+		..()
+		reagents.add_reagent("souto_classic", 50)
+
+/obj/item/reagent_container/food/drinks/cans/souto/diet/classic
+	name = "\improper Diet Souto"
+	desc = "Now with 0% fruit juice! Canned in Havana"
+	icon_state = "souto_diet_classic"
+	item_state = "souto_diet_classic"
 	New()
 		..()
 		reagents.add_reagent("souto_classic", 25)
-		reagents.add_reagent("water", 25)
 
 /obj/item/reagent_container/food/drinks/cans/souto/cherry
 	name = "\improper Cherry Souto"
 	desc = "Now with more artificial flavors! Canned in Havana"
 	icon_state = "souto_cherry"
 	item_state = "souto_cherry"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
 		reagents.add_reagent("souto_cherry", 50)
 
-/obj/item/reagent_container/food/drinks/cans/souto/cherry/diet
+/obj/item/reagent_container/food/drinks/cans/souto/diet/cherry
 	name = "\improper Diet Cherry Souto"
 	desc = "It's neither diet nor cherry flavored. Canned in Havanna."
 	icon_state = "souto_diet_cherry"
 	item_state = "souto_diet_cherry"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
 		reagents.add_reagent("souto_cherry", 25)
-		reagents.add_reagent("water", 25)
 
 /obj/item/reagent_container/food/drinks/cans/souto/lime
 	name = "\improper Lime Souto"
 	desc = "It's not bad. It's not good either, but it's not bad. Canned in Havana."
 	icon_state = "souto_lime"
 	item_state = "souto_lime"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
 		reagents.add_reagent("souto_lime", 50)
 
-/obj/item/reagent_container/food/drinks/cans/souto/lime/diet
+/obj/item/reagent_container/food/drinks/cans/souto/diet/lime
 	name = "\improper Diet Lime Souto"
 	desc = "Ten kinds of acid, two cups of fake sugar, almost a full tank of carbon dioxide, and about 210 kPs all crammed into an aluminum can. What's not to love? Canned in Havana."
 	icon_state = "souto_diet_lime"
 	item_state = "souto_diet_lime"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
 		reagents.add_reagent("souto_lime", 25)
-		reagents.add_reagent("water", 25)
 
 /obj/item/reagent_container/food/drinks/cans/souto/grape
 	name = "\improper Grape Souto"
 	desc = "An old standby for soda flavors. This, however, tastes like grape flavored cough syrup. Canned in Havana."
 	icon_state = "souto_grape"
 	item_state = "souto_grape"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
 		reagents.add_reagent("souto_grape", 50)
 
-/obj/item/reagent_container/food/drinks/cans/souto/grape/diet
+/obj/item/reagent_container/food/drinks/cans/souto/diet/grape
 	name = "\improper Diet Grape Souto"
 	desc = "You're fairly certain that this is just grape cough syrup and carbonated water. Canned in Havana."
 	icon_state = "souto_diet_grape"
 	item_state = "souto_diet_grape"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
 		reagents.add_reagent("souto_grape", 25)
-		reagents.add_reagent("water", 25)
 
 /obj/item/reagent_container/food/drinks/cans/souto/blue
 	name = "\improper Blue Raspberry Souto"
 	desc = "It tastes like the color blue. Technology really is amazing. Canned in Havana."
 	icon_state = "souto_blueraspberry"
 	item_state = "souto_blueraspberry"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
-		reagents.add_reagent("blueraspberry", 50)
+		reagents.add_reagent("souto_blueraspberry", 50)
 
-/obj/item/reagent_container/food/drinks/cans/souto/blue/diet
+/obj/item/reagent_container/food/drinks/cans/souto/diet/blue
 	name = "\improper Diet Blue Raspberry Souto"
 	desc = "WHAT A SCAM! It doesn't even taste like blue! At best, it tastes like cyan. Canned in Havana."
 	icon_state = "souto_diet_blueraspberry"
 	item_state = "souto_diet_blueraspberry"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
-		reagents.add_reagent("blueraspberry", 25)
-		reagents.add_reagent("water", 25)
+		reagents.add_reagent("souto_blueraspberry", 25)
 
 /obj/item/reagent_container/food/drinks/cans/souto/peach
 	name = "\improper Peach Souto"
 	desc = "On one hand, it tastes pretty good. On the other hand, you think you can hear a peach pit rattling on the inside. Canned in Havana."
 	icon_state = "souto_peach"
 	item_state = "souto_peach"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
-		reagents.add_reagent("peach", 50)
+		reagents.add_reagent("souto_peach", 50)
 
-/obj/item/reagent_container/food/drinks/cans/souto/peach/diet
+/obj/item/reagent_container/food/drinks/cans/souto/diet/peach
 	name = "\improper Diet Peach Souto"
 	desc = "On one hand, it tastes pretty good. On the other hand, you think you can hear half of a peach pit rattling on the inside. Canned in Havana."
 	icon_state = "souto_diet_peach"
 	item_state = "souto_diet_peach"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
-		reagents.add_reagent("peach", 25)
-		reagents.add_reagent("water", 25)
+		reagents.add_reagent("souto_peach", 25)
 
 /obj/item/reagent_container/food/drinks/cans/souto/cranberry
 	name = "\improper Cranberry Souto"
 	desc = "On closer inspection, the can reads, 'CRAMberry Souto.' What the Hell is a Cramberry? Canned in Havana."
 	icon_state = "souto_cranberry"
 	item_state = "souto_cranberry"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
-		reagents.add_reagent("cranberry", 50)
+		reagents.add_reagent("souto_cranberry", 50)
 
-/obj/item/reagent_container/food/drinks/cans/souto/cranberry/diet
+/obj/item/reagent_container/food/drinks/cans/souto/diet/cranberry
 	name = "\improper Diet Cranberry Souto"
 	desc = "This tastes more like prunes than cranberries. It's not bad; it's just wrong. Canned in Havana."
 	icon_state = "souto_diet_cranberry"
 	item_state = "souto_diet_cranberry"
-	center_of_mass = list("x"=16, "y"=10)
 	New()
 		..()
-		reagents.add_reagent("cranberry", 25)
+		reagents.add_reagent("souto_cranberry", 25)
 		reagents.add_reagent("water", 25)
 
 /obj/item/reagent_container/food/drinks/cans/aspen

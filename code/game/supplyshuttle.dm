@@ -41,7 +41,7 @@ var/list/mechtoys = list(
 /obj/structure/plasticflaps //HOW DO YOU CALL THOSE THINGS ANYWAY
 	name = "\improper plastic flaps"
 	desc = "Completely impassable - or are they?"
-	icon = 'icons/obj/stationobjs.dmi' //Change this.
+	icon = 'icons/obj/structures/props/stationobjs.dmi' //Change this.
 	icon_state = "plasticflaps"
 	density = 0
 	anchored = 1
@@ -83,7 +83,7 @@ var/list/mechtoys = list(
 /obj/machinery/computer/supplycomp
 	name = "ASRS console"
 	desc = "A console for an Automated Storage and Retrieval System"
-	icon = 'icons/obj/machines/computer.dmi'
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "supply"
 	req_access = list(ACCESS_MARINE_CARGO)
 	circuit = /obj/item/circuitboard/computer/supplycomp
@@ -95,7 +95,7 @@ var/list/mechtoys = list(
 
 /obj/machinery/computer/ordercomp
 	name = "Supply ordering console"
-	icon = 'icons/obj/machines/computer.dmi'
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "request"
 	circuit = /obj/item/circuitboard/computer/ordercomp
 	var/temp = null
@@ -292,7 +292,7 @@ var/list/mechtoys = list(
 /*
 /obj/effect/marker/supplymarker
 	icon_state = "X"
-	icon = 'icons/misc/mark.dmi'
+	icon = 'icons/old_stuff/mark.dmi'
 	name = "X"
 	invisibility = 101
 	anchored = 1
@@ -634,7 +634,7 @@ var/list/mechtoys = list(
 		reqform.info += "RANK: [idrank]<br>"
 		reqform.info += "REASON: [reason]<br>"
 		reqform.info += "SUPPLY CRATE TYPE: [P.name]<br>"
-		reqform.info += "ACCESS RESTRICTION: [oldreplacetext(get_access_desc(P.access))]<br>"
+		reqform.info += "ACCESS RESTRICTION: [get_access_desc(P.access)]<br>"
 		reqform.info += "CONTENTS:<br>"
 		reqform.info += P.manifest
 		reqform.info += "<hr>"
@@ -835,7 +835,7 @@ var/list/mechtoys = list(
 		reqform.info += "RANK: [idrank]<br>"
 		reqform.info += "REASON: [reason]<br>"
 		reqform.info += "SUPPLY CRATE TYPE: [P.name]<br>"
-		reqform.info += "ACCESS RESTRICTION: [oldreplacetext(get_access_desc(P.access))]<br>"
+		reqform.info += "ACCESS RESTRICTION: [get_access_desc(P.access)]<br>"
 		reqform.info += "CONTENTS:<br>"
 		reqform.info += P.manifest
 		reqform.info += "<hr>"

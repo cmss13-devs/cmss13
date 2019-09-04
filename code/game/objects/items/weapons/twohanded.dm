@@ -250,7 +250,7 @@
 
 /obj/item/weapon/twohanded/glaive
 	name = "war glaive"
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "glaive"
 	item_state = "glaive"
 	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon."

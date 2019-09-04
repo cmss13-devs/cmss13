@@ -115,6 +115,42 @@ Vehicles are placed on the map by a spawner or admin verb
 
 	var/hitbox_type = /obj/vehicle/multitile/hitbox
 
+// Gets the dimensions of the vehicle hitbox, aka the dimensions of the vehicle itself
+/obj/vehicle/multitile/root/proc/get_dimensions()
+	var/min_x = -1
+	var/max_x = -1
+	var/min_y = -1
+	var/max_y = -1
+	var/list/dimensions = list("width" = -1, "height" = -1)
+
+	for(var/datum/coords/C in linked_objs)
+		var/atom/A = linked_objs[C]
+		// Only find the dimensions of the hitbox
+		if(!istype(A, hitbox_type))
+			continue
+
+		// All of them are -1 so it doesn't matter which one we check, we're just looking to start off somewhere
+		if(min_x == -1)
+			min_x = A.x
+			max_x = A.x
+			min_y = A.y
+			max_y = A.y
+
+		else if(A.x < min_x)
+			min_x = A.x
+		else if(A.x > max_x)
+			max_x = A.x
+		else if(A.y < min_y)
+			min_y = A.y
+		else if(A.y > max_y)
+			max_y = A.y
+
+	// We want the dimensions in discrete steps, not the continuous distance, so add 1
+	dimensions["width"] = (max_x - min_x) + 1
+	dimensions["height"] = (max_y - min_y) + 1
+
+	return dimensions
+
 //How to get out, via verb
 /obj/vehicle/multitile/root/verb/exit_multitile()
 	set category = "Vehicle"
@@ -131,6 +167,14 @@ Vehicles are placed on the map by a spawner or admin verb
 
 /obj/vehicle/multitile/root/proc/handle_harm_attack(var/mob/M)
 	return
+
+/obj/vehicle/multitile/root/set_driver(var/mob/M)
+	..()
+	for(var/i in linked_objs)
+		var/obj/O = linked_objs[i]
+		if(istype(O, /obj/vehicle))
+			var/obj/vehicle/V = O
+			V.driver = M
 
 //Vebrs for rotations, set up a macro and get turnin
 /obj/vehicle/multitile/root/verb/clockwise_rotate_multitile()

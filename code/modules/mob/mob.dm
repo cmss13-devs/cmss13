@@ -14,6 +14,10 @@
 		dead_mob_list += src
 	else
 		living_mob_list += src
+		life_time_start = world.time
+	var/area/current_area = get_area(src)
+	if(current_area.statistic_exempt)
+		statistic_exempt = TRUE
 	prepare_huds()
 	..()
 
@@ -72,7 +76,7 @@
 /mob/proc/prepare_huds()
 	hud_list = new
 	for(var/hud in hud_possible)
-		hud_list[hud] = image('icons/mob/hud.dmi', src, "")
+		hud_list[hud] = image('icons/mob/hud/hud.dmi', src, "")
 
 /mob/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 
@@ -307,7 +311,7 @@
 
 /mob/proc/print_flavor_text()
 	if (flavor_text && flavor_text != "")
-		var/msg = oldreplacetext(flavor_text, "\n", " ")
+		var/msg = replacetext(flavor_text, "\n", " ")
 		if(lentext(msg) <= 40)
 			return SPAN_NOTICE("[msg]")
 		else
@@ -352,7 +356,7 @@
 		src << browse(null, t1)
 
 	if(href_list["flavor_more"])
-		usr << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", name, oldreplacetext(flavor_text, "\n", "<BR>")), text("window=[];size=500x200", name))
+		usr << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", name, replacetext(flavor_text, "\n", "<BR>")), text("window=[];size=500x200", name))
 		onclose(usr, "[name]")
 	if(href_list["flavor_change"])
 		update_flavor_text()
@@ -376,7 +380,10 @@
 /mob/proc/start_pulling(atom/movable/AM, lunge, no_msg)
 	return
 
-/mob/living/start_pulling(atom/movable/AM, lunge, no_msg)
+/mob/living/start_pulling(atom/movable/clone/AM, lunge, no_msg)
+	if(istype(AM, /atom/movable/clone))
+		AM = AM.mstr //If AM is a clone, refer to the real target
+
 	if ( !AM || !usr || src==AM || !isturf(loc) || !isturf(AM.loc) )	//if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
 		return
 
@@ -663,52 +670,48 @@ mob/proc/yank_out_object()
 		to_chat(usr, "You are restrained and cannot do that!")
 		return
 
-	var/mob/S = src
-	var/mob/U = usr
-	var/list/valid_objects = list()
-	var/self = null
+	var/self
+	if(src == usr)
+		self = TRUE // Removing object from yourself.
 
-	if(S == U)
-		self = 1 // Removing object from yourself.
-
-	valid_objects = get_visible_implants(0)
-	if(!valid_objects.len)
+	var/list/valid_objects = get_visible_implants()
+	if(!valid_objects)
 		if(self)
 			to_chat(src, "You have nothing stuck in your body that is large enough to remove.")
 		else
-			to_chat(U, "[src] has nothing stuck in their wounds that is large enough to remove.")
+			to_chat(usr, "[src] has nothing stuck in their wounds that is large enough to remove.")
+		src.verbs -= /mob/proc/yank_out_object
 		return
 
 	var/obj/item/selection = input("What do you want to yank out?", "Embedded objects") in valid_objects
-
 	if(self)
 		if(get_active_hand())
 			to_chat(src, SPAN_WARNING("You need an empty hand for this!"))
-			r_FAL
+			return FALSE
 		to_chat(src, SPAN_WARNING("You attempt to get a good grip on [selection] in your body."))
 	else
 		if(get_active_hand())
-			to_chat(U, SPAN_WARNING("You need an empty hand for this!"))
-			r_FAL
-		to_chat(U, SPAN_WARNING("You attempt to get a good grip on [selection] in [S]'s body."))
+			to_chat(usr, SPAN_WARNING("You need an empty hand for this!"))
+			return FALSE
+		to_chat(usr, SPAN_WARNING("You attempt to get a good grip on [selection] in [src]'s body."))
 
-	if(!do_after(U, 80, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+	if(!do_after(usr, 80, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
-	if(!selection || !S || !U || !istype(selection))
+	if(!selection || !src || !usr || !istype(selection))
 		return
 
 	if(self)
 		visible_message(SPAN_WARNING("<b>[src] rips [selection] out of their body.</b>"),SPAN_WARNING("<b>You rip [selection] out of your body.</b>"), null, 5)
 	else
 		visible_message(SPAN_WARNING("<b>[usr] rips [selection] out of [src]'s body.</b>"),SPAN_WARNING("<b>[usr] rips [selection] out of your body.</b>"), null, 5)
-	valid_objects = get_visible_implants(0)
+	
 	if(valid_objects.len == 1) //Yanking out last object - removing verb.
 		src.verbs -= /mob/proc/yank_out_object
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
-		var/datum/limb/affected
 
+		var/datum/limb/affected
 		for(var/datum/limb/E in H.limbs) //Grab the limb holding the implant.
 			for(var/obj/item/O in E.implants)
 				if(O == selection)
@@ -719,6 +722,8 @@ mob/proc/yank_out_object()
 			return
 
 		affected.implants -= selection
+		H.embedded_items -= selection
+		
 		if(!isYautja(H) && !isSynth(H))
 			H.shock_stage+=20
 		affected.take_damage((selection.w_class * 3), 0, 0, 1, "Embedded object extraction")
@@ -728,12 +733,8 @@ mob/proc/yank_out_object()
 			affected.wounds += I
 			H.custom_pain("Something tears wetly in your [affected] as [selection] is pulled free!", 1)
 
-		if (ishuman(U))
-			var/mob/living/carbon/human/human_user = U
-			human_user.bloody_hands(H)
-
 	selection.loc = get_turf(src)
-	return 1
+	return TRUE
 
 /mob/living/proc/handle_statuses()
 	handle_stunned()

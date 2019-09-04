@@ -255,12 +255,12 @@
 		if(locked)
 			to_chat(user, SPAN_DANGER("Circuit controls are locked."))
 			return
-		var/existing_networks = list2text(network,",")
+		var/existing_networks = jointext(network,",")
 		var/input = strip_html(input(usr, "Which networks would you like to connect this camera console circuit to? Seperate networks with a comma. No Spaces!\nFor example: military,Security,Secret ", "Multitool-Circuitboard interface", existing_networks))
 		if(!input)
 			to_chat(usr, "No input found please hang up and try your call again.")
 			return
-		var/list/tempnetwork = text2list(input, ",")
+		var/list/tempnetwork = splittext(input, ",")
 		tempnetwork = difflist(tempnetwork,RESTRICTED_CAMERA_NETWORKS,1)
 		if(tempnetwork.len < 1)
 			to_chat(usr, "No network found please hang up and try your call again.")

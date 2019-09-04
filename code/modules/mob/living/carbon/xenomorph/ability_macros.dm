@@ -48,7 +48,7 @@
 	to_chat(X, SPAN_WARNING("Your next click will use [A.name]!"))
 	
 	if(X.client)
-		X.client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
+		X.client.mouse_pointer_icon = file("icons/old_shit/mecha/mecha_mouse.dmi")
 
 
 /datum/action/xeno_action/verb/verb_plant_weeds()
@@ -364,6 +364,13 @@
 	set name = "Spin Slash"
 	set hidden = 1
 	var/action_name = "Spin Slash (60)"
+	handle_xeno_macro(src, action_name) 
+
+/datum/action/xeno_action/verb/verb_spike_spray()
+	set category = "Alien"
+	set name = "Spike Spray"
+	set hidden = 1
+	var/action_name = "Spike Spray (30)"
 	handle_xeno_macro(src, action_name) 
 
 /datum/action/xeno_action/verb/verb_transfer_health()

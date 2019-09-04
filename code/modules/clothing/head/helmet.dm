@@ -217,7 +217,7 @@
 /obj/item/clothing/head/helmet/marine
 	name = "\improper M10 pattern marine helmet"
 	desc = "A standard M10 Pattern Helmet. It reads on the label, 'The difference between an open-casket and closed-casket funeral. Wear on head for best results.'. Contains a small built-in camera."
-	icon = 'icons/obj/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -267,7 +267,7 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_HELM_C)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_HELM_C)
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
 
@@ -312,13 +312,13 @@
 /obj/item/clothing/head/helmet/marine/update_icon()
 	if(pockets.contents.len && (flags_marine_helmet & HELMET_GARB_OVERLAY))
 		if(!helmet_overlays["band"])
-			var/image/I = image('icons/obj/clothing/cm_hats.dmi', src, "helmet_band")
+			var/image/I = image('icons/obj/items/clothing/cm_hats.dmi', src, "helmet_band")
 			helmet_overlays["band"] = I
 
 		if(!helmet_overlays["item"])
 			var/obj/O = pockets.contents[1]
 			if(allowed_helmet_items[O.type])
-				var/image/I = image('icons/obj/clothing/cm_hats.dmi', src, "[allowed_helmet_items[O.type]][O.type == /obj/item/tool/lighter/random ? O:clr : ""]")
+				var/image/I = image('icons/obj/items/clothing/cm_hats.dmi', src, "[allowed_helmet_items[O.type]][O.type == /obj/item/tool/lighter/random ? O:clr : ""]")
 				helmet_overlays["item"] = I
 
 	else
@@ -348,7 +348,7 @@
 
 /obj/item/clothing/head/helmet/marine/proc/add_hugger_damage() //This is called in XenoFacehuggers.dm to first add the overlay and set the var.
 	if(flags_marine_helmet & HELMET_DAMAGE_OVERLAY && !(flags_marine_helmet & HELMET_IS_DAMAGED))
-		helmet_overlays["damage"] = image('icons/obj/clothing/cm_hats.dmi',icon_state = "hugger_damage")
+		helmet_overlays["damage"] = image('icons/obj/items/clothing/cm_hats.dmi',icon_state = "hugger_damage")
 		flags_marine_helmet |= HELMET_IS_DAMAGED
 		update_icon()
 		desc += "\n<b>This helmet seems to be scratched up and damaged, particularly around the face area...</b>"
@@ -642,7 +642,7 @@
 /obj/item/clothing/head/helmet/UPP
 	name = "\improper UM4 helmet"
 	desc = "A skirted helmet designed for use with the UM/UH system."
-	icon = 'icons/obj/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "upp_helmet1"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -654,12 +654,12 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
 /obj/item/clothing/head/helmet/UPP/heavy
 	name = "\improper UH7 helmet"
-	icon = 'icons/obj/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "upp_helmet_heavy"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -672,7 +672,7 @@
 	unacidable = 1
 	anti_hug = 3
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
 
@@ -682,7 +682,7 @@
 /obj/item/clothing/head/helmet/specrag
 	name = "specialist head-rag"
 	desc = "A hat worn by heavy-weapons operators to block sweat."
-	icon = 'icons/obj/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "spec"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -695,7 +695,7 @@
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
 /obj/item/clothing/head/helmet/specrag/New()
@@ -705,7 +705,7 @@
 /obj/item/clothing/head/helmet/durag
 	name = "durag"
 	desc = "Good for keeping sweat out of your eyes"
-	icon = 'icons/obj/clothing/cm_hats.dmi'
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "durag"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
@@ -718,7 +718,7 @@
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
 /obj/item/clothing/head/helmet/durag/jungle
@@ -784,3 +784,58 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
+//=============================//MEME\\==================================\\
+//=======================================================================\\
+
+/obj/item/clothing/head/helmet/marine/specialist/hefa
+	name = "\improper HEFA helmet"
+	specialty = "HEFA"
+	desc = "For some reason, seeing this helmet causes you to feel extremely distressed."
+	icon_state = "hefa_helmet"
+	item_state = "hefa_helmet"
+	armor_bomb = CLOTHING_ARMOR_HARDCORE // the hefa knight stands
+	flags_inv_hide = HIDEEARS|HIDEALLHAIR|HIDEEYES
+	flags_marine_helmet = NOFLAGS
+	flags_atom = UNIQUE_ITEM_TYPE
+
+	var/mob/activator = null
+	var/active = FALSE
+	var/det_time = 40
+
+/obj/item/clothing/head/helmet/marine/specialist/hefa/proc/apply_explosion_overlay()
+	var/obj/effect/overlay/O = new /obj/effect/overlay(loc)
+	O.name = "grenade"
+	O.icon = 'icons/effects/explosion.dmi'
+	flick("grenade", O)
+	spawn(7)
+		qdel(O)
+	return
+
+/obj/item/clothing/head/helmet/marine/specialist/hefa/attack_self(var/mob/user)
+	activator = user
+	activate()
+
+/obj/item/clothing/head/helmet/marine/specialist/hefa/proc/activate()
+	if(active)
+		return
+	active = TRUE
+
+	icon_state = initial(icon_state) + "_active"
+	item_state = initial(item_state) + "_active"
+	overlays += /obj/effect/overlay/danger
+	playsound(loc, 'sound/weapons/armbomb.ogg', 25, 1, 6)
+
+	add_timer(CALLBACK(src, .proc/prime), det_time)
+
+/obj/item/clothing/head/helmet/marine/specialist/hefa/proc/prime()
+	INVOKE_ASYNC(src, .proc/boom)
+
+// Values nabbed from the HEFA nade
+/obj/item/clothing/head/helmet/marine/specialist/hefa/proc/boom()
+	// TODO: knock down user so the shrapnel isn't all taken by the user
+	create_shrapnel(loc, 48, , ,/datum/ammo/bullet/shrapnel, initial(name), activator)
+	sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
+	apply_explosion_overlay()
+	explosion_rec(loc, 40, 18, initial(name), activator)
+	qdel(src)

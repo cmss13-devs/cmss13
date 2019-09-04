@@ -2,7 +2,6 @@
  * Holds procs designed to change one type of value, into another.
  * Contains:
  *			hex2num & num2hex
- *			text2list & list2text
  *			file2list
  *			angle2dir
  *			angle2text
@@ -84,94 +83,6 @@
 		hex = text("0[]", hex)
 	return hex
 
-
-// Concatenates a list of strings into a single string.  A seperator may optionally be provided.
-/proc/list2text(list/ls, sep)
-	if(ls.len <= 1) // Early-out code for empty or singleton lists.
-		return ls.len ? ls[1] : ""
-
-	var/l = ls.len // Made local for sanic speed.
-	var/i = 0 // Incremented every time a list index is accessed.
-
-	if(sep <> null)
-		// Macros expand to long argument lists like so: sep, ls[++i], sep, ls[++i], sep, ls[++i], etc...
-		#define S1    sep, ls[++i]
-		#define S4    S1,  S1,  S1,  S1
-		#define S16   S4,  S4,  S4,  S4
-		#define S64   S16, S16, S16, S16
-
-		. = "[ls[++i]]" // Make sure the initial element is converted to text.
-
-		// Having the small concatenations come before the large ones boosted speed by an average of at least 5%.
-		if(l-1 & 0x01) // 'i' will always be 1 here.
-			. = text("[][][]", ., S1) // Append 1 element if the remaining elements are not a multiple of 2.
-		if(l-i & 0x02)
-			. = text("[][][][][]", ., S1, S1) // Append 2 elements if the remaining elements are not a multiple of 4.
-		if(l-i & 0x04)
-			. = text("[][][][][][][][][]", ., S4) // And so on....
-		if(l-i & 0x08)
-			. = text("[][][][][][][][][][][][][][][][][]", ., S4, S4)
-		if(l-i & 0x10)
-			. = text("[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]", ., S16)
-		if(l-i & 0x20)
-			. = text("[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
-	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]", ., S16, S16)
-		if(l-i & 0x40)
-			. = text("[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
-	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
-	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
-	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]", ., S64)
-		while(l > i) // Chomp through the rest of the list, 128 elements at a time.
-			. = text("[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
-	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
-	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
-	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
-	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
-	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
-	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
-	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]", ., S64, S64)
-
-		#undef S64
-		#undef S16
-		#undef S4
-		#undef S1
-
-	else
-		// Macros expand to long argument lists like so: ls[++i], ls[++i], ls[++i], etc...
-		#define S1    ls[++i]
-		#define S4    S1,  S1,  S1,  S1
-		#define S16   S4,  S4,  S4,  S4
-		#define S64   S16, S16, S16, S16
-
-		. = "[ls[++i]]" // Make sure the initial element is converted to text.
-
-		if(l-1 & 0x01) // 'i' will always be 1 here.
-			. += S1 // Append 1 element if the remaining elements are not a multiple of 2.
-		if(l-i & 0x02)
-			. = text("[][][]", ., S1, S1) // Append 2 elements if the remaining elements are not a multiple of 4.
-		if(l-i & 0x04)
-			. = text("[][][][][]", ., S4) // And so on...
-		if(l-i & 0x08)
-			. = text("[][][][][][][][][]", ., S4, S4)
-		if(l-i & 0x10)
-			. = text("[][][][][][][][][][][][][][][][][]", ., S16)
-		if(l-i & 0x20)
-			. = text("[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]", ., S16, S16)
-		if(l-i & 0x40)
-			. = text("[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
-	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]", ., S64)
-		while(l > i) // Chomp through the rest of the list, 128 elements at a time.
-			. = text("[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
-	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
-	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\
-	            [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]", ., S64, S64)
-
-		#undef S64
-		#undef S16
-		#undef S4
-		#undef S1
-
-
 //slower then list2text, but correctly processes associative lists.
 proc/tg_list2text(list/list, glue=",")
 	if(!istype(list) || !list.len)
@@ -181,36 +92,11 @@ proc/tg_list2text(list/list, glue=",")
 		output += (i!=1? glue : null)+(!isnull(list["[list[i]]"])?"[list["[list[i]]"]]":"[list[i]]")
 	return output
 
-
-//Converts a string into a list by splitting the string at each delimiter found. (discarding the seperator)
-/proc/text2list(text, delimiter="\n")
-	var/delim_len = length(delimiter)
-	if(delim_len < 1) return list(text)
-	. = list()
-	var/last_found = 1
-	var/found
-	do
-		found = findtext(text, delimiter, last_found, 0)
-		. += copytext(text, last_found, found)
-		last_found = found + delim_len
-	while(found)
-
-//Case Sensitive!
-/proc/text2listEx(text, delimiter="\n")
-	var/delim_len = length(delimiter)
-	if(delim_len < 1) return list(text)
-	. = list()
-	var/last_found = 1
-	var/found
-	do
-		found = findtextEx(text, delimiter, last_found, 0)
-		. += copytext(text, last_found, found)
-		last_found = found + delim_len
-	while(found)
-
 //Splits the text of a file at seperator and returns them in a list.
-/proc/file2list(filename, seperator="\n")
-	return text2list(return_file_text(filename),seperator)
+/proc/file2list(filename, seperator="\n", trim = TRUE)
+	if (trim)
+		return splittext(trim(file2text(filename)),seperator)
+	return splittext(file2text(filename),seperator)
 
 
 //Turns a direction into text
@@ -351,7 +237,7 @@ proc/tg_list2text(list/list, glue=",")
 
 /proc/ui_style2icon(ui_style)
 	switch(ui_style)
-		if("old")		return 'icons/mob/screen1_old.dmi'
-		if("Orange")	return 'icons/mob/screen1_Orange.dmi'
-		if("Midnight")	return 'icons/mob/screen1_Midnight.dmi'
-		else			return 'icons/mob/screen1_White.dmi'
+		if("old")		return 'icons/mob/hud/screen1_old.dmi'
+		if("Orange")	return 'icons/mob/hud/screen1_Orange.dmi'
+		if("Midnight")	return 'icons/mob/hud/screen1_Midnight.dmi'
+		else			return 'icons/mob/hud/screen1_White.dmi'

@@ -61,7 +61,7 @@
 	caste_name = "Spitter"
 	name = "Spitter"
 	desc = "A gross, oozing alien of some kind."
-	icon = 'icons/Xeno/xenomorph_48x48.dmi'
+	icon = 'icons/mob/xenos/xenomorph_48x48.dmi'
 	icon_state = "Spitter Walking"
 	plasma_types = list(PLASMA_NEUROTOXIN)
 	pixel_x = -12
@@ -79,3 +79,4 @@
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		)
+	mutation_type = SPITTER_NORMAL

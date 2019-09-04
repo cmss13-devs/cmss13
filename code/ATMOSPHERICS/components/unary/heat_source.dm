@@ -3,7 +3,7 @@
 /obj/machinery/atmospherics/unary/heater
 	name = "gas heating system"
 	desc = "Heats gas when connected to a pipe network"
-	icon = 'icons/obj/machines/cryogenics.dmi'
+	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "heater_0"
 	density = 1
 

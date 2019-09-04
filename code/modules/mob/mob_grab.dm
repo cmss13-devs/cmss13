@@ -3,7 +3,7 @@
 /obj/item/grab
 	name = "grab"
 	icon_state = "reinforce"
-	icon = 'icons/mob/screen1.dmi'
+	icon = 'icons/mob/hud/screen1.dmi'
 	flags_atom = NOFLAGS
 	flags_item = NOBLUDGEON|DELONDROP|ITEM_ABSTRACT
 	layer = ABOVE_HUD_LAYER
@@ -62,6 +62,8 @@
 			if(GRAB_KILL)
 				icon_state = "disarm/kill1"
 				user.visible_message(SPAN_DANGER("[user] has tightened \his grip on [victim]'s neck!"), null, null, 5)
+				victim.last_damage_source = initial(user.name)
+				victim.last_damage_mob = user
 				victim.attack_log += "\[[time_stamp()]\] <font color='orange'>Has been strangled (kill intent) by [user] ([user.ckey])</font>"
 				user.attack_log += "\[[time_stamp()]\] <font color='red'>Strangled (kill intent) [victim] ([victim.ckey])</font>"
 				msg_admin_attack("[key_name(user)] strangled (kill intent) [key_name(victim)]")

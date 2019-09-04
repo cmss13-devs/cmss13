@@ -52,7 +52,7 @@
 				//Close
 				if(0)
 					if(specialfunctions & IDSCAN)
-						D.aiDisabledIdScanner = 0
+						D.remoteDisabledIdScanner = 0
 					if(specialfunctions & BOLTS)
 						if(!D.isWireCut(4) && D.arePowerSystemsOn())
 							D.unlock()
@@ -63,7 +63,7 @@
 				//Open
 				if(1)
 					if(specialfunctions & IDSCAN)
-						D.aiDisabledIdScanner = 1
+						D.remoteDisabledIdScanner = 1
 					if(specialfunctions & BOLTS)
 						D.lock()
 					if(specialfunctions & SHOCK)
@@ -72,10 +72,10 @@
 						D.safe = 0
 				//Toggle
 				if(2)
-					if(specialfunctions & IDSCAN && D.aiDisabledIdScanner == 0)
-						D.aiDisabledIdScanner = 1
+					if(specialfunctions & IDSCAN && D.remoteDisabledIdScanner == 0)
+						D.remoteDisabledIdScanner = 1
 					else
-						D.aiDisabledIdScanner = 0
+						D.remoteDisabledIdScanner = 0
 					if(specialfunctions & BOLTS && D.locked == 0)
 						D.lock()
 					else
@@ -135,7 +135,7 @@
 /datum/file/program/data/text/xenobio_log
 	name = "Xenobio Research Report"
 	extension = "txt"
-	image = 'icons/ntos/file.png'
+	image = 'icons/old_stuff/ntos/file.png'
 	dat = "text goes here!"
 	active_state = "text"
 
@@ -154,7 +154,7 @@
 /datum/file/program/data/text/anomaly_log
 	name = "Anomaly Research Report"
 	extension = "txt"
-	image = 'icons/ntos/file.png'
+	image = 'icons/old_stuff/ntos/file.png'
 	dat = "text goes here!"
 	active_state = "text"
 
@@ -175,7 +175,7 @@
 /datum/file/program/data/text/aces_log
 	name = "ACES Research Reports"
 	extension = "txt"
-	image = 'icons/ntos/file.png'
+	image = 'icons/old_stuff/ntos/file.png'
 	dat = "<b><font face=\"verdana\" color=\"green\">ACES Research Reports</font></b><br>"
 	active_state = "text"
 	logs = list(
@@ -213,7 +213,7 @@
 /datum/file/program/data/text/rd_log
 	name = "Research Director's Report"
 	extension = "txt"
-	image = 'icons/ntos/file.png'
+	image = 'icons/old_stuff/ntos/file.png'
 	dat = "text goes here!"
 	active_state = "text"
 

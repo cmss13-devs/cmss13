@@ -4,7 +4,7 @@
 /obj/effect/alien
 	name = "alien thing"
 	desc = "theres something alien about this"
-	icon = 'icons/Xeno/Effects.dmi'
+	icon = 'icons/mob/xenos/Effects.dmi'
 	unacidable = 1
 	health = 1
 
@@ -113,11 +113,11 @@
 	layer = RESIN_STRUCTURE_LAYER
 	var/slow_amt = 8
 
-	Crossed(atom/movable/AM)
-		. = ..()
-		if(ishuman(AM))
-			var/mob/living/carbon/human/H = AM
-			H.next_move_slowdown += slow_amt
+/obj/effect/alien/resin/sticky/Crossed(atom/movable/AM)
+	. = ..()
+	var/mob/living/carbon/human/H = AM
+	if(istype(H) && !H.lying)
+		H.next_move_slowdown += slow_amt
 
 // Praetorian Sticky Resin spit uses this.
 /obj/effect/alien/resin/sticky/thin
@@ -466,7 +466,7 @@
 /obj/structure/mineral_door/resin
 	name = "resin door"
 	mineralType = "resin"
-	icon = 'icons/Xeno/Effects.dmi'
+	icon = 'icons/mob/xenos/Effects.dmi'
 	hardness = 1.5
 	health = 80
 	var/close_delay = 100
@@ -842,7 +842,7 @@ TUNNEL
 /obj/structure/tunnel
 	name = "tunnel"
 	desc = "A tunnel entrance. Looks like it was dug by some kind of clawed beast."
-	icon = 'icons/Xeno/effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "hole"
 
 	density = 0

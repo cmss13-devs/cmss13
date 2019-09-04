@@ -151,7 +151,7 @@
 	organ_type = /datum/internal_organ/brain/prosthetic
 
 
-/obj/item/organ/proc/removed(var/mob/living/target,var/mob/living/user)
+/obj/item/organ/proc/removed(var/mob/living/target, var/mob/living/user, var/cause = "organ harvesting")
 
 	if(!target || !user)
 		return
@@ -160,7 +160,7 @@
 		user.attack_log += "\[[time_stamp()]\]<font color='red'> removed a vital organ ([src]) from [target.name] ([target.ckey]) (INTENT: [uppertext(user.a_intent)])</font>"
 		target.attack_log += "\[[time_stamp()]\]<font color='orange'> had a vital organ ([src]) removed by [user.name] ([user.ckey]) (INTENT: [uppertext(user.a_intent)])</font>"
 		msg_admin_attack("[user.name] ([user.ckey]) removed a vital organ ([src]) from [target.name] ([target.ckey]) (INTENT: [uppertext(user.a_intent)]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
-		target.death()
+		target.death(cause)
 
 /obj/item/organ/appendix/removed(var/mob/living/target,var/mob/living/user)
 

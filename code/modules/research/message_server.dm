@@ -48,7 +48,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 				priority = "Undetermined"
 
 /obj/machinery/message_server
-	icon = 'icons/obj/machines/research.dmi'
+	icon = 'icons/obj/structures/machinery/research.dmi'
 	icon_state = "server"
 	name = "Messaging Server"
 	density = 1
@@ -197,7 +197,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 var/obj/machinery/blackbox_recorder/blackbox
 
 /obj/machinery/blackbox_recorder
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "blackbox"
 	name = "Blackbox Recorder"
 	density = 1
@@ -314,9 +314,9 @@ var/obj/machinery/blackbox_recorder/blackbox
 
 // Sanitize inputs to avoid SQL injection attacks
 proc/sql_sanitize_text(var/text)
-	text = oldreplacetext(text, "'", "''")
-	text = oldreplacetext(text, ";", "")
-	text = oldreplacetext(text, "&", "")
+	text = replacetext(text, "'", "''")
+	text = replacetext(text, ";", "")
+	text = replacetext(text, "&", "")
 	return text
 
 proc/feedback_set(var/variable,var/value)

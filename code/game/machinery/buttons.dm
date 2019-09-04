@@ -37,7 +37,7 @@
 /obj/machinery/crema_switch
 	desc = "Burn baby burn!"
 	name = "crematorium igniter"
-	icon = 'icons/obj/power.dmi'
+	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "crema_switch"
 	anchored = 1.0
 	req_access = list(ACCESS_MARINE_MEDBAY)

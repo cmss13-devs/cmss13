@@ -81,13 +81,22 @@
 		src.pixel_y = rand(0, 16)
 	return
 
-/*/obj/item/tool/screwdriver/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/tool/screwdriver/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M))	return ..()
 	if(user.zone_selected != "eyes") // && user.zone_selected != "head")
 		return ..()
 	if((CLUMSY in user.mutations) && prob(50))
 		M = user
-	return eyestab(M,user)*/
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
+		if(E)
+			var/safety = H.get_eye_protection()
+			if(!safety)
+				to_chat(user, SPAN_DANGER("You stab [H] in the eyes with the [src]!"))
+				visible_message(SPAN_DANGER("[user] stabs [H] in the eyes with the [src]!"))
+				E.damage += rand(8,20)
+	return ..()
 
 /*
  * Wirecutters

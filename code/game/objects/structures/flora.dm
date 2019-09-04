@@ -8,7 +8,7 @@
 
 /obj/structure/flora/tree/pine
 	name = "pine tree"
-	icon = 'icons/obj/flora/pinetrees.dmi'
+	icon = 'icons/obj/structures/props/pinetrees.dmi'
 	icon_state = "pine_1"
 
 /obj/structure/flora/tree/pine/New()
@@ -17,7 +17,7 @@
 
 /obj/structure/flora/tree/pine/xmas
 	name = "xmas tree"
-	icon = 'icons/obj/flora/pinetrees.dmi'
+	icon = 'icons/obj/structures/props/pinetrees.dmi'
 	icon_state = "pine_c"
 
 /obj/structure/flora/tree/pine/xmas/New()
@@ -25,7 +25,7 @@
 	icon_state = "pine_c"
 
 /obj/structure/flora/tree/dead
-	icon = 'icons/obj/flora/deadtrees.dmi'
+	icon = 'icons/obj/structures/props/deadtrees.dmi'
 	icon_state = "tree_1"
 
 /obj/structure/flora/tree/dead/New()
@@ -35,7 +35,7 @@
 /obj/structure/flora/tree/joshua
 	name = "joshua tree"
 	desc = "A tall tree covered in spiky-like needles, covering it's trunk."
-	icon = 'icons/obj/flora/joshuatree.dmi'
+	icon = 'icons/obj/structures/props/joshuatree.dmi'
 	icon_state = "joshua_1"
 	pixel_x = 0
 	density = 0
@@ -47,7 +47,7 @@
 //grass
 /obj/structure/flora/grass
 	name = "grass"
-	icon = 'icons/obj/flora/snowflora.dmi'
+	icon = 'icons/obj/structures/props/snowflora.dmi'
 	anchored = 1
 
 /obj/structure/flora/grass/brown
@@ -76,7 +76,7 @@
 //bushes
 /obj/structure/flora/bush
 	name = "bush"
-	icon = 'icons/obj/flora/snowflora.dmi'
+	icon = 'icons/obj/structures/props/snowflora.dmi'
 	icon_state = "snowbush1"
 	anchored = 1
 
@@ -86,7 +86,7 @@
 
 /obj/structure/flora/pottedplant
 	name = "potted plant"
-	icon = 'icons/obj/flora/plants.dmi'
+	icon = 'icons/obj/structures/props/plants.dmi'
 	icon_state = "plant-26"
 
 /obj/structure/flora/pottedplant/random
@@ -99,7 +99,7 @@
 
 /obj/structure/flora/ausbushes
 	name = "bush"
-	icon = 'icons/obj/flora/ausflora.dmi'
+	icon = 'icons/obj/structures/props/ausflora.dmi'
 	icon_state = "firstbush_1"
 	anchored = 1
 
@@ -217,10 +217,13 @@
 //*********************//
 // Generic undergrowth //
 //*********************//
+
+/obj/structure/flora/
+	var/icon_tag = null
+
 /obj/structure/flora/desert
 	anchored = 1
-	icon = 'icons/obj/flora/dam.dmi'
-	var/icon_tag = null
+	icon = 'icons/obj/structures/props/dam.dmi'
 	var/variations = null
 
 /obj/structure/flora/desert/New()
@@ -241,48 +244,85 @@
 	//variations = 16
 
 //TALLGRASS
-/obj/structure/flora/desert/tallgrass
+/obj/structure/flora/tallgrass
 	name = "tallgrass"
+	icon = 'icons/obj/structures/props/tallgrass.dmi'
 	unacidable = 1
+	var/center = TRUE //Determine if we want less or more ash when burned
 	var/overlay_type = "tallgrass_overlay"
 
-/obj/structure/flora/desert/tallgrass/New()
+/obj/structure/flora/tallgrass/center
+	icon_state = "tallgrass"
+	icon_tag = "tallgrass"
+
+/obj/structure/flora/tallgrass/New()
 	update_icon()
 
-/obj/structure/flora/desert/tallgrass/update_icon()
+/obj/structure/flora/tallgrass/update_icon()
 	..()
 	overlays.Cut()
 	overlays += image("icon"=src.icon,"icon_state"=overlay_type,"layer"=ABOVE_XENO_LAYER,"dir"=dir)
 
-/obj/structure/flora/desert/tallgrass/flamer_fire_act()
+/obj/structure/flora/tallgrass/flamer_fire_act()
 	fire_act()
 
-/obj/structure/flora/desert/tallgrass/fire_act()
+/obj/structure/flora/tallgrass/fire_act()
 	if(!disposed)
 		spawn(rand(75,150))
 			for(var/D in cardinal) //Spread fire
 				var/turf/T = get_step(src.loc, D)
 				if(T && T.contents)
-					for(var/obj/structure/flora/desert/tallgrass/G in T.contents)
-						if(istype(G,/obj/structure/flora/desert/tallgrass))
-							new /obj/flamer_fire(T)
+					for(var/obj/structure/flora/tallgrass/G in T.contents)
+						if(istype(G,/obj/structure/flora/tallgrass))
+							new /obj/flamer_fire(T, "wildfire")
 							G.fire_act()
 		spawn(rand(125,225))
-			if(istype(src,/obj/structure/flora/desert/tallgrass/center))
+			new /obj/effect/decal/cleanable/dirt(src.loc)
+			if(center)
 				new /obj/effect/decal/cleanable/dirt(src.loc) //Produces more ash at the center
-				new /obj/effect/decal/cleanable/dirt(src.loc)
-			else
-				new /obj/effect/decal/cleanable/dirt(src.loc)
 			qdel(src)
+///MAP VARIANTS///
+///PARENT FOR COLOR, CORNERS AND CENTERS, BASED ON DIRECTIONS///
 
-/obj/structure/flora/desert/tallgrass/center
+///TRIJENT - WHISKEY OUTPOST///
+/obj/structure/flora/tallgrass/desert
+	//color = COLOR_G_DES
+	icon = 'icons/obj/structures/props/dam.dmi' //Override since the greyscale can't match
 	icon_state = "tallgrass"
 	icon_tag = "tallgrass"
 
-/obj/structure/flora/desert/tallgrass/tallgrass_corner
+/obj/structure/flora/tallgrass/desert/corner
 	icon_state = "tallgrass_corner"
 	icon_tag = "tallgrass"
 	overlay_type = "tallgrass_overlay_corner"
+	center = FALSE
+
+///ICE COLONY - SOROKYNE///
+/obj/structure/flora/tallgrass/ice
+	color = COLOR_G_ICE
+	icon_state = "tallgrass"
+	icon_tag = "tallgrass"
+	desc = "A large swathe of bristling snowgrass"
+
+/obj/structure/flora/tallgrass/ice/corner
+	icon_state = "tallgrass_corner"
+	icon_tag = "tallgrass"
+	overlay_type = "tallgrass_overlay_corner"
+	center = FALSE
+
+///LV - JUNGLE MAPS///
+
+/obj/structure/flora/tallgrass/jungle
+	color = COLOR_G_JUNG
+	icon_state = "tallgrass"
+	icon_tag = "tallgrass"
+	desc = "A clump of vibrant jungle grasses"
+
+/obj/structure/flora/tallgrass/jungle/corner
+	icon_state = "tallgrass_corner"
+	icon_tag = "tallgrass"
+	overlay_type = "tallgrass_overlay_corner"
+	center = FALSE
 
 //BUSHES
 /obj/structure/flora/desert/bush
@@ -337,7 +377,7 @@
 	icon_state = "planttop1"
 
 /obj/structure/jungle/tree
-	icon = 'icons/obj/flora/ground_map64.dmi'
+	icon = 'icons/obj/structures/props/ground_map64.dmi'
 	desc = "What an enormous tree!"
 	layer = ABOVE_FLY_LAYER
 

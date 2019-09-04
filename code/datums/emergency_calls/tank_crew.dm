@@ -23,7 +23,7 @@
 	if(H.client) H.client.change_view(world.view)
 
 	sleep(5)
-	arm_equipment(H, "USCM Tank Crewman (TC)", TRUE)
+	arm_equipment(H, "USCM Tank Crewman (TC)", TRUE, TRUE)
 	to_chat(H, "<font size='3'>\red You are a tank crewman in the USCM, you are here to assist in the defence of the [map_tag]. Listen to the chain of command.</B>")
 		
 	sleep(10)

@@ -8,7 +8,7 @@
 //Should likely just replace this with an actual AI mob in the future. Might as well.
 /mob/living/silicon/decoy
 	name = "AI"
-	icon = 'icons/Marine/ai.dmi'
+	icon = 'icons/obj/structures/machinery/ai.dmi'
 	icon_state = "hydra"
 	anchored = 1
 	canmove = 0
@@ -29,7 +29,7 @@
 	else
 		health = 100 - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss()
 
-/mob/living/silicon/decoy/death(gibbed, deathmessage = "sparks up and falls silent...")
+/mob/living/silicon/decoy/death(cause, gibbed, deathmessage = "sparks up and falls silent...")
 	set waitfor = 0
 	if(stat == DEAD) r_FAL
 	icon_state = "hydra-off"

@@ -56,6 +56,7 @@
 			var/list/injected = list()
 			for(var/datum/reagent/R in src.reagents.reagent_list)
 				injected += R.name
+				R.last_source_mob = user
 			var/contained = english_list(injected)
 			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [src.name] by [user.name] ([user.ckey]). Reagents: [contained]</font>")
 			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to inject [M.name] ([M.key]). Reagents: [contained]</font>")

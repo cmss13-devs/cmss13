@@ -36,7 +36,7 @@
 /datum/supply_packs/ammo_rounds_box_smg_ap/asrs/
 	buyable = 0
 	group = "Munition"
-	cost = ASRS_LOW_WEIGHT
+	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs/ammo_rounds_box_rifle/asrs/
 	buyable = 0
@@ -46,7 +46,7 @@
 /datum/supply_packs/ammo_rounds_box_rifle_ap/asrs/
 	buyable = 0
 	group = "Munition"
-	cost = ASRS_LOW_WEIGHT
+	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs/ammo_m4a3_mag_box/asrs/
 	buyable = 0
@@ -170,14 +170,4 @@
 	containertype = /obj/structure/closet/crate/supply
 	containername = "Motion Detector crate"
 	group = "Utility"
-	buyable = 0
-
-/datum/supply_packs/spec_kit/
-	name = "Specialist gear crate (x1)"
-	contains = list(/obj/item/spec_kit/asrs)
-	cost = ASRS_LOWEST_WEIGHT
-	containertype = /obj/structure/closet/crate/supply
-	containername = "specialist gear crate"
-	group = "Utility"
-	iteration_needed = 300
 	buyable = 0

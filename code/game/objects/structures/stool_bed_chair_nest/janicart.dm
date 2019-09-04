@@ -3,7 +3,7 @@
 //old style retardo-cart
 /obj/structure/bed/chair/janicart
 	name = "janicart"
-	icon = 'icons/obj/vehicles.dmi'
+	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "pussywagon"
 	anchored = 0
 	density = 1
@@ -108,6 +108,6 @@
 /obj/item/key
 	name = "key"
 	desc = "A keyring with a small steel key, and a pink fob reading \"Pussy Wagon\"."
-	icon = 'icons/obj/vehicles.dmi'
+	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "keys"
 	w_class = SIZE_TINY

@@ -164,8 +164,7 @@
 	for(var/i = 0, i < range, i++)
 		var/radius = i * 1.5
 		if(!radius)
-			spawn(0)
-				spawnSmoke(location, I, 1)
+			INVOKE_ASYNC(src, .proc/spawnSmoke, location, I, 1)
 			continue
 
 		var/offset = 0
@@ -183,8 +182,7 @@
 			if(!T)
 				continue
 			if(T in targetTurfs)
-				spawn(0)
-					spawnSmoke(T, I, range)
+				INVOKE_ASYNC(src, .proc/spawnSmoke, T, I, range)
 
 //------------------------------------------
 // Randomizes and spawns the smoke effect.

@@ -4,7 +4,7 @@
 
 /obj/structure/shuttle/window
 	name = "shuttle window"
-	icon = 'icons/obj/podwindows.dmi'
+	icon = 'icons/turf/podwindows.dmi'
 	icon_state = "1"
 	density = 1
 	opacity = 0

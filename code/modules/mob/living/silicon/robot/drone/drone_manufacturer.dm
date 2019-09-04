@@ -12,7 +12,7 @@
 	var/produce_drones = 1
 	var/time_last_drone = 500
 
-	icon = 'icons/obj/machines/drone_fab.dmi'
+	icon = 'icons/obj/structures/machinery/drone_fab.dmi'
 	icon_state = "drone_fab_idle"
 
 /obj/machinery/drone_fabricator/New()

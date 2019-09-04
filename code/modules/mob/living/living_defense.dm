@@ -91,6 +91,8 @@
 			var/mob/M = O.thrower
 			var/client/assailant = M.client
 			if(assailant)
+				last_damage_source = initial(AM.name)
+				last_damage_mob = M
 				src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with a [O], thrown by [M.name] ([assailant.ckey])</font>")
 				M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [src.name] ([src.ckey]) with a thrown [O]</font>")
 				if(!istype(src,/mob/living/simple_animal/mouse))

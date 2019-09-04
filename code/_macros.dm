@@ -25,7 +25,7 @@
 
 #define QDEL_NULL(x) if(x) { qdel(x) ; x = null }
 
-#define QDEL_IN(item, time) addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, item), time, TIMER_STOPPABLE)
+#define QDEL_IN(item, time) add_timer(CALLBACK(GLOBAL_PROC, .proc/qdel, item), time, TIMER_STOPPABLE)
 
 #define DROP_NULL(x) if(x) { x.dropInto(loc); x = null; }
 
@@ -73,13 +73,13 @@
 
 #define FLAGS_EQUALS(flag, flags) ((flag & (flags)) == (flags))
 
-#define JOINTEXT(X) jointext(X, null)
-
 // Style class macros
 
 #define SPAN_BOLDANNOUNCE(X) "<span class='boldannounce'>[X]</span>"
 
 #define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
+
+#define SPAN_BOLDNOTICE(X) "<span class='boldnotice'>[X]</span>"
 
 #define SPAN_XENOANNOUNCE(X) "<span class='xenoannounce'>[X]</span>"
 
@@ -114,3 +114,9 @@
 #define SPAN_MOOC(X) "<span class='mooc'>[X]</span>"
 
 #define SPAN_HELPFUL(X) "<span class='helpful'>[X]</span>"
+
+#define SPAN_DEADSAY(X) "<span class='deadsay'>[X]</span>"
+
+#define SPAN_ROLE_HEADER(X) "<span class='role_header'>[X]</span>"
+
+#define SPAN_ROLE_BODY(X) "<span class='role_body'>[X]</span>"

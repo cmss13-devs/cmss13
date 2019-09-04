@@ -5,7 +5,7 @@
 //Snow Floor
 /turf/open/snow
 	name = "snow layer"
-	icon = 'icons/turf/snow2.dmi'
+	icon = 'icons/turf/floors/snow2.dmi'
 	icon_state = "snow_0"
 	is_groundmap_turf = TRUE
 
@@ -89,7 +89,7 @@
 			T = get_step(src, dirn)
 			if(istype(T))
 				if(slayer > T.slayer && T.slayer < 1)
-					var/image/I = new('icons/turf/snow2.dmi', "snow_[(dirn & (dirn-1)) ? "outercorner" : pick("innercorner", "outercorner")]", dir = dirn)
+					var/image/I = new('icons/turf/floors/snow2.dmi', "snow_[(dirn & (dirn-1)) ? "outercorner" : pick("innercorner", "outercorner")]", dir = dirn)
 					switch(dirn)
 						if(NORTH)
 							I.pixel_y = 32

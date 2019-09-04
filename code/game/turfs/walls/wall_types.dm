@@ -102,7 +102,7 @@
 /turf/closed/wall/sulaco
 	name = "spaceship hull"
 	desc = "A metal wall used to separate rooms on spaceships from the cold void of space."
-	icon = 'icons/turf/walls.dmi'
+	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "sulaco"
 	hull = 0 //Can't be deconstructed
 
@@ -160,7 +160,7 @@
 
 /turf/closed/wall/indestructible
 	name = "wall"
-	icon = 'icons/turf/walls.dmi'
+	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "riveted"
 	opacity = 1
 	hull = 1
@@ -192,7 +192,7 @@
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"
 	desc = "Assorted artworks by NicBoone & Triiodine. Holiday artwork by Monkeysfist."
-	icon = 'icons/misc/title.dmi'
+	icon = 'icons/lobby/title.dmi'
 	icon_state = "title_painting1"
 //	icon_state = "title_holiday"
 	layer = FLY_LAYER
@@ -201,7 +201,7 @@
 /turf/closed/wall/indestructible/splashscreen/initialize()
 	..()
 	if(icon_state == "title_painting1") // default
-		icon_state = "title_painting[rand(1,7)]"
+		icon_state = "title_painting[rand(1,8)]"
 
 /turf/closed/wall/indestructible/other
 	icon_state = "r_wall"
@@ -229,7 +229,7 @@
 /turf/closed/wall/mineral/gold
 	name = "gold wall"
 	desc = "A wall with gold plating. Swag!"
-	icon = 'icons/turf/walls.dmi'
+	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "gold0"
 	walltype = WALL_GOLD
 	mineral = "gold"
@@ -390,7 +390,7 @@
 /turf/closed/wall/resin
 	name = "resin wall"
 	desc = "Weird slime solidified into a wall."
-	icon = 'icons/Xeno/structures.dmi'
+	icon = 'icons/mob/xenos/structures.dmi'
 	icon_state = "resin"
 	walltype = WALL_RESIN
 	damage_cap = 200

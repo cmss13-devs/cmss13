@@ -15,7 +15,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 /obj/machinery/computer/cryopod
 	name = "hypersleep bay console"
 	desc = "A large console controlling the ship's hypersleep bay. Most of the options are disabled and locked, although it allows recovery of items from long-term hypersleeping crew."
-	icon = 'icons/obj/machines/computer.dmi'
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "cellconsole"
 	circuit = "/obj/item/circuitboard/computer/cryopodcontrol"
 	exproof = TRUE
@@ -137,7 +137,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 
 	name = "hypersleep chamber feed"
 	desc = "A bewildering tangle of machinery and pipes linking the hypersleep chambers to the hypersleep bay.."
-	icon = 'icons/obj/machines/cryogenics.dmi'
+	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "cryo_rear"
 	anchored = 1
 	density = 1
@@ -160,7 +160,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 /obj/machinery/cryopod
 	name = "hypersleep chamber"
 	desc = "A large automated capsule with LED displays intended to put anyone inside into 'hypersleep', a form of non-cryogenic statis used on most ships, linked to a long-term hypersleep bay on a lower level."
-	icon = 'icons/obj/machines/cryogenics.dmi'
+	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "body_scanner_0"
 	density = 1
 	anchored = 1
@@ -391,6 +391,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 			else
 				icon_state = "body_scanner_0"
 
+			occupant.track_death_calculations()
 
 			occupant.ghostize(0) //We want to make sure they are not kicked to lobby.
 			//TODO: Check objectives/mode, update new targets if this mob is the target, spawn new antags?

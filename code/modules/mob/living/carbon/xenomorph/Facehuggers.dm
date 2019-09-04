@@ -11,7 +11,7 @@
 /obj/item/clothing/mask/facehugger
 	name = "alien"
 	desc = "It has some sort of a tube at the end of its tail."
-	icon = 'icons/Xeno/Effects.dmi'
+	icon = 'icons/mob/xenos/Effects.dmi'
 	icon_state = "facehugger"
 	item_state = "facehugger"
 	w_class = SIZE_TINY //Note: can be picked up by aliens unlike most other items of w_class below 4
@@ -340,7 +340,7 @@
 	else
 		target.visible_message(SPAN_DANGER("[src] violates [target]'s face!"))
 
-	if(ishuman(target))
+	if(round_statistics && ishuman(target))
 		round_statistics.total_huggers_applied++
 
 

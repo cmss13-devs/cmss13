@@ -205,15 +205,6 @@ proc/checkhtml(var/t)
 	if(start)
 		return findtextEx(text, suffix, start, null)
 
-/*
- * Text modification
- */
-/proc/oldreplacetext(text, find, replacement)
-	return list2text(text2list(text, find), replacement)
-
-/proc/oldreplacetextEx(text, find, replacement)
-	return list2text(text2listEx(text, find), replacement)
-
 //Adds 'u' number of zeros ahead of the text 't'
 /proc/add_zero(t, u)
 	while (length(t) < u)
@@ -329,3 +320,6 @@ proc/TextPreview(var/string,var/len=40)
 			return string
 	else
 		return "[copytext(string, 1, 37)]..."
+
+proc/strip_improper(input_text)
+	return replacetext(replacetext(input_text, "\proper", ""), "\improper", "")

@@ -44,7 +44,7 @@ display round(lastgen) and phorontank amount
 /obj/machinery/power/port_gen
 	name = "Placeholder Generator"	//seriously, don't use this. It can't be anchored without VV magic.
 	desc = "A portable generator for emergency backup power"
-	icon = 'icons/obj/power.dmi'
+	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "portgen0"
 	density = 1
 	anchored = 0

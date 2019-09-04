@@ -91,7 +91,7 @@
 		sleep(-1)
 
 /**
- * Fill a given tile with its area/turf/objects/mobs
+ * Fill a given tile with its area/turf/obj/mobs
  * Variable model is one full map line (e.g /turf/closed/wall{icon_state = "rock"},/area/mine/explored)
  *
  * WORKING :
@@ -140,7 +140,7 @@
 		var/variables_start = findtext(full_def,"{")
 		if(variables_start)//if there's any variable
 			full_def = copytext(full_def,variables_start+1,length(full_def))//removing the last '}'
-			fields = text2list(full_def,";")
+			fields = splittext(full_def,";")
 
 		//then fill the members_attributes list with the corresponding variables
 		members_attributes.len++
@@ -247,54 +247,6 @@
 		next_opening = findtext(text,opening_escape,position,0)
 
 	return next_delimiter
-
-
-//build a list from variables in text form (e.g {var1="derp"; var2; var3=7} => list(var1="derp", var2, var3=7))
-//return the filled list
-/dmm_suite/proc/text2list(var/text as text,var/delimiter=",")
-
-	var/list/to_return = list()
-
-	var/position
-	var/old_position = 1
-
-	do
-		//find next delimiter that is not within  "..."
-		position = find_next_delimiter_position(text,old_position,delimiter)
-
-		//check if this is a simple variable (as in list(var1, var2)) or an associative one (as in list(var1="foo",var2=7))
-		var/equal_position = findtext(text,"=",old_position, position)
-
-		var/trim_left = trim_text(copytext(text,old_position,(equal_position ? equal_position : position)),1)//the name of the variable, must trim quotes to build a BYOND compliant associatives list
-		old_position = position + 1
-
-		if(equal_position)//associative var, so do the association
-			var/trim_right = trim_text(copytext(text,equal_position+1,position))//the content of the variable
-
-			//Check for string
-			if(findtext(trim_right,quote,1,2))
-				trim_right = copytext(trim_right,2,findtext(trim_right,quote,3,0))
-
-			//Check for number
-			else if(isnum(text2num(trim_right)))
-				trim_right = text2num(trim_right)
-
-			//Check for file
-			else if(copytext(trim_right,1,2) == "'")
-				trim_right = file(copytext(trim_right,2,length(trim_right)))
-
-			//Check for list
-			else if(copytext(trim_right,1,5) == "list")
-				trim_right = text2list(copytext(trim_right,6,length(trim_right)))
-
-			to_return[trim_left] = trim_right
-
-		else//simple var
-			to_return[trim_left] = null
-
-	while(position != 0)
-
-	return to_return
 
 //atom creation method that preloads variables before creation
 atom/New(atom/loc, dmm_suite/preloader/_dmm_preloader)

@@ -167,7 +167,7 @@ Just found out there was already a string explode function, did some benchmarkin
 */
 proc/string_explode(var/string, var/separator)
 	if(istext(string) && istext(separator))
-		return text2list(string, separator)
+		return splittext(string, separator)
 
 proc/n_repeat(var/string, var/amount)
 	if(istext(string) && isnum(amount))
@@ -247,7 +247,7 @@ proc/n_inrange(var/num, var/min=-1, var/max=1)
 
 // Non-recursive
 // Imported from Mono string.ReplaceUnchecked
-/proc/string_oldreplacetext(var/haystack,var/a,var/b)
+/proc/string_replacetext(var/haystack,var/a,var/b)
 	if(istext(haystack)&&istext(a)&&istext(b))
 		var/i = 1
 		var/lenh=lentext(haystack)

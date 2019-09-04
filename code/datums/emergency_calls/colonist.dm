@@ -21,7 +21,7 @@
 	H.key = M.key
 	if(H.client) H.client.change_view(world.view)
 	ticker.mode.traitors += H.mind
-	arm_equipment(H, preset, TRUE)
+	arm_equipment(H, preset, TRUE, TRUE)
 
 	sleep(20)
 	if(H && H.loc)

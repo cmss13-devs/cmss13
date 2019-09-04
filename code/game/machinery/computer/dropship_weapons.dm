@@ -3,9 +3,9 @@
 	name = "abstract dropship weapons controls"
 	desc = "A computer to manage equipments and weapons installed on the dropship."
 	density = 1
-	icon = 'icons/Marine/shuttle-parts.dmi'
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "consoleright"
-	var/faction = "uscm"
+	var/faction = FACTION_MARINE
 	circuit = null
 	unacidable = TRUE
 	exproof = TRUE
@@ -149,7 +149,7 @@
 					firemission_edit_data += list(list("name" = sanitize(copytext(firerec.weapon.name, 1, 50)), "ammo" = ammo, "gimbal" = gimbal, "offsets" = firerec.offsets))
 
 		if(!found_selected)
-			selected_firemission = null
+			selected_firemission = firemission_envelope.generate_mission()
 		
 		if(editing_firemission)
 			fm_length = editing_firemission.mission_length

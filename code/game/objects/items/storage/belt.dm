@@ -1,7 +1,7 @@
 /obj/item/storage/belt
 	name = "belt"
 	desc = "Can hold various things."
-	icon = 'icons/obj/clothing/belts.dmi'
+	icon = 'icons/obj/items/clothing/belts.dmi'
 	icon_state = "utilitybelt"
 	item_state = "utility"
 	flags_equip_slot = SLOT_WAIST
@@ -450,11 +450,13 @@
 	w_class = SIZE_LARGE
 	max_w_class = SIZE_MEDIUM
 	flags_equip_slot = SLOT_WAIST
-	icon = 'icons/obj/clothing/belts.dmi'
-	icon_state="sparepouch"
-	item_state="marine_s"
+	icon = 'icons/obj/items/clothing/belts.dmi'
+	icon_state="g8pouch"
+	item_state="g8pouch"
 
-
+/obj/item/storage/sparepouch/New()
+	select_gamemode_skin(type)
+	..()
 
 
 ////////////////////////////// GUN BELTS /////////////////////////////////////

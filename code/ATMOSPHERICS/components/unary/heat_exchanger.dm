@@ -2,7 +2,7 @@
 
 	name = "heat exchanger"
 	desc = "Exchanges heat between two input gases. Setup for fast heat transfer"
-	icon = 'icons/atmos/heat_exchanger.dmi'
+	icon = 'icons/obj/pipes/heat_exchanger.dmi'
 	icon_state = "intact"
 	density = 1
 

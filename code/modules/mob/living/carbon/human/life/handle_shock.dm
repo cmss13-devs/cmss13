@@ -51,14 +51,10 @@
 	if(species.pain_mod >= 1) //Pain mods lower than one will avoid pain consequences.
 
 		//This just adds up effects together at each step, with a few small exceptions. Preferable to copy and paste rather than have a billion if statements.
-		var/message = pick("It hurts so much", "You really need some painkillers", "Dear god, the pain")
-		message = SPAN_DANGER("[message]!")
-		var/message_numb = pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")
-		message_numb = SPAN_DANGER("[message_numb]!")
-		var/message_dying = pick("You black out", "You feel like you could die any moment now", "You're about to lose consciousness")
-		message_dying = SPAN_DANGER("[message_dying]!")
+		var/message = SPAN_DANGER("You really need some painkillers!")
+		var/message_numb = SPAN_DANGER("The pain is excruciating!")
+		var/message_dying = SPAN_DANGER("You feel like you could die any moment now!")
 		switch(shock_stage)
-			
 			// Low pain/damage
 			if(10 to 29) to_chat(src, message)
 			if(30 to 39)

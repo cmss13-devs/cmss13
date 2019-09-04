@@ -91,6 +91,14 @@
 				M.tail_attack(src, damage)
 				return 1
 
+			
+			// Check for guaranteed Ravager tail stab
+			if(isXenoRavager(M))
+				var/mob/living/carbon/Xenomorph/Ravager/R = M
+				if(R.mutation_type == RAVAGER_NORMAL)
+					if(R.tail_stab(src, damage))
+						return TRUE
+
 			//Somehow we will deal no damage on this attack
 			if(!damage)
 				playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
@@ -130,6 +138,9 @@
 			M.visible_message(SPAN_DANGER("\The [M] slashes [src]!"), \
 			SPAN_DANGER("You slash [src]!"))
 
+			last_damage_source = initial(M.name)
+			last_damage_mob = M
+
 			//Logging, including anti-rulebreak logging
 			if(src.status_flags & XENO_HOST && src.stat != DEAD)
 				if(istype(src.buckled, /obj/structure/bed/nest)) //Host was buckled to nest while infected, this is a rule break
@@ -144,10 +155,13 @@
 				M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [src.name] ([src.ckey])</font>")
 			log_attack("[M.name] ([M.ckey]) slashed [src.name] ([src.ckey])")
 
-			if (isXenoRavager(M))
+			if(isXenoRavager(M))
 				var/mob/living/carbon/Xenomorph/Ravager/R = M
-				if (R.delimb(src, affecting))
-					return 1
+				if(R.mutation_type == RAVAGER_VETERAN)
+					if(R.delimb(src, affecting))
+						return TRUE
+				if(R.mutation_type == RAVAGER_NORMAL)
+					R.shrapnel_embed(src, affecting)
 			
 			// Snowflake code for Praetorian, unfortunately there's no place to put this other than here. Fortunately its very cheap
 			if (isXenoPraetorian(M))
@@ -306,6 +320,8 @@
 				SPAN_DANGER("You lunge at [src]!"), null, 5)
 				return 0
 
+			last_damage_source = initial(M.name)
+			last_damage_mob = M
 			M.visible_message(SPAN_DANGER("\The [M] slashes [src]!"), \
 			SPAN_DANGER("You slash [src]!"), null, 5)
 			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [M.name] ([M.ckey])</font>")
@@ -756,8 +772,8 @@
 	SPAN_DANGER("You slash \the [src]!"), null, 5)
 	playsound(loc, "alien_claw_metal", 25, 1)
 	var/allcut = 1
-	for(var/wire in apcwirelist)
-		if(!isWireCut(apcwirelist[wire]))
+	for(var/wire = 1; wire < get_wire_descriptions().len; wire++)
+		if(!isWireCut(wire))
 			allcut = 0
 			break
 
@@ -767,8 +783,8 @@
 		visible_message(SPAN_DANGER("\The [src]'s cover swings open, exposing the wires!"), null, null, 5)
 
 	else if(wiresexposed == 1 && allcut == 0)
-		for(var/wire in apcwirelist)
-			cut(apcwirelist[wire])
+		for(var/wire = 1; wire < get_wire_descriptions().len; wire++)
+			cut(wire)
 		update_icon()
 		visible_message("<span class='danger'>\The [src]'s wires snap apart in a rain of sparks!", null, null, 5)
 	else

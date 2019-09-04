@@ -2,7 +2,7 @@
 
 /obj/machinery/constructable_frame //Made into a seperate type to make future revisions easier.
 	name = "machine frame"
-	icon = 'icons/obj/stock_parts.dmi'
+	icon = 'icons/obj/structures/machinery/stock_parts.dmi'
 	icon_state = "box_0"
 	var/base_state = "box"
 	density = 0

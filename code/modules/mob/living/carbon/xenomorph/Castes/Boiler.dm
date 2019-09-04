@@ -57,7 +57,7 @@
 	caste_name = "Boiler"
 	name = "Boiler"
 	desc = "A huge, grotesque xenomorph covered in glowing, oozing acid slime."
-	icon = 'icons/Xeno/xenomorph_64x64.dmi'
+	icon = 'icons/mob/xenos/xenomorph_64x64.dmi'
 	icon_state = "Boiler Walking"
 	plasma_types = list(PLASMA_NEUROTOXIN)
 	pixel_x = -16
@@ -66,13 +66,13 @@
 	tier = 3
 	gib_chance = 100
 	drag_delay = 6 //pulling a big dead xeno is hard
+	mutation_type = BOILER_NORMAL
 
 	var/is_bombarding = 0
 	var/obj/item/explosive/grenade/grenade_type = "/obj/item/explosive/grenade/xeno"
 	var/bomb_cooldown = 0
 	var/bomb_delay = 200 //20 seconds per glob at Young, -2.5 per upgrade down to 10 seconds
 	var/bombard_speed = 50 //50 for normal boiler, 25 for Railgun boiler
-	var/mutation_type = BOILER_NORMAL
 
 	tileoffset = 5
 	viewsize = 12
@@ -181,23 +181,10 @@
 	visible_message(SPAN_WARNING("\The [src] launches a huge glob of acid hurling into the distance!"), \
 	SPAN_WARNING("You launch a huge glob of acid hurling into the distance!"), null, 5)
 
-	var/obj/item/projectile/P = new /obj/item/projectile(loc)
+	var/obj/item/projectile/P = new /obj/item/projectile("[caste_name] gas", src, loc)
 	P.generate_bullet(ammo)
 	P.fire_at(target, src, null, ammo.max_range, ammo.shell_speed)
 	playsound(src, 'sound/effects/blobattack.ogg', 25, 1)
-
-	if(mutation_type == BOILER_RAILGUN)
-		round_statistics.boiler_railgun_shots++
-	if(mutation_type == BOILER_SHATTER)
-		if(ammo.type == /datum/ammo/xeno/boiler_gas/shatter/acid)
-			round_statistics.boiler_shatter_acid_shots++
-		else
-			round_statistics.boiler_shatter_neuro_shots++
-	if(mutation_type == BOILER_NORMAL)
-		if(ammo.type == /datum/ammo/xeno/boiler_gas/corrosive)
-			round_statistics.boiler_acid_smokes++
-		else
-			round_statistics.boiler_neuro_smokes++
 
 	ammo.damage = temp_damage // Restore damage to its original value
 

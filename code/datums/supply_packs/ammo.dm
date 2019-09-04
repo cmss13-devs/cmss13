@@ -653,12 +653,12 @@ AMMO
 	name = "M402 mortar shells crate (x6 HE)"
 	cost = RO_PRICE_VERY_CHEAP
 	contains = list(
-					/obj/item/mortal_shell/he,
-					/obj/item/mortal_shell/he,
-					/obj/item/mortal_shell/he,
-					/obj/item/mortal_shell/he,
-					/obj/item/mortal_shell/he,
-					/obj/item/mortal_shell/he
+					/obj/item/mortar_shell/he,
+					/obj/item/mortar_shell/he,
+					/obj/item/mortar_shell/he,
+					/obj/item/mortar_shell/he,
+					/obj/item/mortar_shell/he,
+					/obj/item/mortar_shell/he
 					)
 	containertype = /obj/structure/closet/crate/secure/mortar_ammo
 	containername = "\improper M402 mortar HE shells crate"
@@ -668,12 +668,12 @@ AMMO
 	name = "M402 mortar shells crate (x6 Incend)"
 	cost = RO_PRICE_VERY_CHEAP
 	contains = list(
-					/obj/item/mortal_shell/incendiary,
-					/obj/item/mortal_shell/incendiary,
-					/obj/item/mortal_shell/incendiary,
-					/obj/item/mortal_shell/incendiary,
-					/obj/item/mortal_shell/incendiary,
-					/obj/item/mortal_shell/incendiary
+					/obj/item/mortar_shell/incendiary,
+					/obj/item/mortar_shell/incendiary,
+					/obj/item/mortar_shell/incendiary,
+					/obj/item/mortar_shell/incendiary,
+					/obj/item/mortar_shell/incendiary,
+					/obj/item/mortar_shell/incendiary
 					)
 	containertype = /obj/structure/closet/crate/secure/mortar_ammo
 	containername = "\improper M402 mortar incendiary shells crate"
@@ -683,12 +683,12 @@ AMMO
 	name = "M402 mortar shells crate (x6 Flare)"
 	cost = RO_PRICE_VERY_CHEAP
 	contains = list(
-					/obj/item/mortal_shell/flare,
-					/obj/item/mortal_shell/flare,
-					/obj/item/mortal_shell/flare,
-					/obj/item/mortal_shell/flare,
-					/obj/item/mortal_shell/flare,
-					/obj/item/mortal_shell/flare
+					/obj/item/mortar_shell/flare,
+					/obj/item/mortar_shell/flare,
+					/obj/item/mortar_shell/flare,
+					/obj/item/mortar_shell/flare,
+					/obj/item/mortar_shell/flare,
+					/obj/item/mortar_shell/flare
 					)
 	containertype = /obj/structure/closet/crate/secure/mortar_ammo
 	containername = "\improper M402 mortar flare shells crate"

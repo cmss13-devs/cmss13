@@ -14,7 +14,7 @@
 
 /obj/effect/mark
 	var/mark = ""
-	icon = 'icons/misc/mark.dmi'
+	icon = 'icons/old_stuff/mark.dmi'
 	icon_state = "blank"
 	anchored = 1
 	layer = 99
@@ -30,7 +30,7 @@
 
 /obj/effect/begin
 	name = "begin"
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "begin"
 	anchored = 1.0
 	unacidable = 1

@@ -5,7 +5,7 @@
 	name = "empty sandbags"
 	desc = "Some empty sandbags, best to fill them up if you want to use them."
 	singular_name = "sandbag"
-	icon = 'icons/Marine/marine-items.dmi'
+	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "sandbag_stack"
 	w_class = SIZE_MEDIUM
 	force = 2
@@ -55,7 +55,7 @@
 	name = "sandbags"
 	desc = "Some bags filled with sand. For now, just cumbersome, but soon to be used for fortifications."
 	singular_name = "sandbag"
-	icon = 'icons/Marine/marine-items.dmi'
+	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "sandbag_pile"
 	w_class = SIZE_LARGE
 	force = 9.0

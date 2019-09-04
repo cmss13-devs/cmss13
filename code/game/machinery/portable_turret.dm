@@ -614,7 +614,7 @@ Status: []<BR>"},
 	if(sound)
 		playsound(src.loc, 'sound/weapons/Taser.ogg', 75, 1)
 	var/obj/item/projectile/A
-	A = new projectile( loc )
+	A = new projectile(initial(name), loc)
 	A.original = target.loc
 	use_power(reqpower)
 

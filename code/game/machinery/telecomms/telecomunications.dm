@@ -48,12 +48,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 		return
 	var/send_count = 0
 
-	signal.data["slow"] += rand(0, round((100-integrity))) // apply some lag based on integrity
-
-	// Apply some lag based on traffic rates
-	var/netlag = round(traffic / 50)
-	if(netlag > signal.data["slow"])
-		signal.data["slow"] = netlag
+	signal.data["slow"] = 0 // no lag pls
 
 // Loop through all linked machines and send the signal or copy.
 	for(var/obj/machinery/telecomms/machine in links)
@@ -243,7 +238,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 
 /obj/machinery/telecomms/receiver
 	name = "Subspace Receiver"
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "broadcast receiver"
 	desc = "This machine has a dish-like shape and green lights. It is designed to detect and process subspace radio activity."
 	density = 1
@@ -300,7 +295,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 
 /obj/machinery/telecomms/hub
 	name = "Telecommunication Hub"
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "hub"
 	desc = "A mighty piece of hardware used to send/receive massive amounts of data."
 	density = 1
@@ -334,7 +329,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 
 /obj/machinery/telecomms/relay
 	name = "Telecommunication Relay"
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "relay"
 	desc = "A mighty piece of hardware used to send massive amounts of data far away."
 	density = 1
@@ -386,7 +381,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 
 /obj/machinery/telecomms/bus
 	name = "Bus Mainframe"
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "bus"
 	desc = "A mighty piece of hardware used to send massive amounts of data quickly."
 	density = 1
@@ -412,16 +407,12 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 			if(send_to_processor)
 				return
 			// failed to send to a processor, relay information anyway
-			signal.data["slow"] += rand(1, 5) // slow the signal down only slightly
 			src.receive_information(signal, src)
 
 		// Try sending it!
 		var/list/try_send = list("/obj/machinery/telecomms/server", "/obj/machinery/telecomms/hub", "/obj/machinery/telecomms/broadcaster", "/obj/machinery/telecomms/bus")
-		var/i = 0
+
 		for(var/send in try_send)
-			if(i)
-				signal.data["slow"] += rand(0, 1) // slow the signal down only slightly
-			i++
 			var/can_send = relay_information(signal, send)
 			if(can_send)
 				break
@@ -438,7 +429,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 
 /obj/machinery/telecomms/processor
 	name = "Processor Unit"
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "processor"
 	desc = "This machine is used to process large quantities of information."
 	density = 1
@@ -454,15 +445,11 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 
 	if(is_freq_listening(signal))
 
-		if(process_mode)
-			signal.data["compression"] = 0 // uncompress subspace signal
-		else
-			signal.data["compression"] = 100 // even more compressed signal
+		signal.data["compression"] = 0
 
 		if(istype(machine_from, /obj/machinery/telecomms/bus))
 			relay_direct_information(signal, machine_from) // send the signal back to the machine
 		else // no bus detected - send the signal to servers instead
-			signal.data["slow"] += rand(5, 10) // slow the signal down
 			relay_information(signal, "/obj/machinery/telecomms/server")
 
 
@@ -476,7 +463,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 
 /obj/machinery/telecomms/server
 	name = "Telecommunication Server"
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "comm_server"
 	desc = "A machine used to store data and network statistics."
 	density = 1
@@ -516,54 +503,6 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 
 			if(traffic > 0)
 				totaltraffic += traffic // add current traffic to total traffic
-
-			//Is this a test signal? Bypass logging
-			if(signal.data["type"] != 4)
-
-				// If signal has a message and appropriate frequency
-
-				update_logs()
-
-				var/datum/comm_log_entry/log = new
-				var/mob/M = signal.data["mob"]
-
-				// Copy the signal.data entries we want
-				log.parameters["mobtype"] = signal.data["mobtype"]
-				log.parameters["job"] = signal.data["job"]
-				log.parameters["key"] = signal.data["key"]
-				log.parameters["vmessage"] = signal.data["message"]
-				log.parameters["vname"] = signal.data["vname"]
-				log.parameters["message"] = signal.data["message"]
-				log.parameters["name"] = signal.data["name"]
-				log.parameters["realname"] = signal.data["realname"]
-
-				if(!istype(M, /mob/new_player) && M)
-					log.parameters["uspeech"] = M.universal_speak
-				else
-					log.parameters["uspeech"] = 0
-
-				// If the signal is still compressed, make the log entry gibberish
-				if(signal.data["compression"] > 0)
-					log.parameters["message"] = Gibberish(signal.data["message"], signal.data["compression"] + 50)
-					log.parameters["job"] = Gibberish(signal.data["job"], signal.data["compression"] + 50)
-					log.parameters["name"] = Gibberish(signal.data["name"], signal.data["compression"] + 50)
-					log.parameters["realname"] = Gibberish(signal.data["realname"], signal.data["compression"] + 50)
-					log.parameters["vname"] = Gibberish(signal.data["vname"], signal.data["compression"] + 50)
-					log.input_type = "Corrupt File"
-
-				// Log and store everything that needs to be logged
-				log_entries.Add(log)
-				if(!(signal.data["name"] in stored_names))
-					stored_names.Add(signal.data["name"])
-				logs++
-				signal.data["server"] = src
-
-				// Give the log a name
-				var/identifier = num2text( rand(-1000,1000) + world.time )
-				log.name = "data packet ([md5(identifier)])"
-
-				if(Compiler && autoruncode)
-					Compiler.Run(signal)	// execute the code
 
 			var/can_send = relay_information(signal, "/obj/machinery/telecomms/hub")
 			if(!can_send)

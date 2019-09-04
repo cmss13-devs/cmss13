@@ -15,7 +15,7 @@
 /obj/item/storage/box/sentry
 	name = "\improper UA 571-C sentry crate"
 	desc = "A large case containing all you need to set up an automated sentry, minus the tools."
-	icon = 'icons/Marine/marine-weapons.dmi'
+	icon = 'icons/obj/items/weapons/guns/marine-weapons.dmi'
 	icon_state = "sentry_case"
 	w_class = SIZE_HUGE
 	storage_slots = 6
@@ -35,7 +35,7 @@
 /obj/machinery/marine_turret_frame
 	name = "\improper UA 571-C turret frame"
 	desc = "An unfinished turret frame. It requires wrenching, cable coil, a turret piece, a sensor, and metal plating."
-	icon = 'icons/Marine/turret.dmi'
+	icon = 'icons/obj/structures/turret.dmi'
 	icon_state = "sentry_base"
 	anchored = 0
 	density = 1
@@ -234,6 +234,7 @@
 			qdel(O)
 
 			var/obj/machinery/marine_turret/T = new(loc)  //Bing! Create a new turret.
+			T.owner_mob = user
 			T.dir = dir
 			qdel(src)
 			return
@@ -245,7 +246,7 @@
 	desc = "An AI control and locking sensor for an automated sentry. This must be installed on the final product for it to work."
 	unacidable = 1
 	w_class = SIZE_TINY
-	icon = 'icons/Marine/turret.dmi'
+	icon = 'icons/obj/structures/turret.dmi'
 	icon_state = "sentry_sensor"
 
 /obj/item/device/turret_top
@@ -253,7 +254,7 @@
 	desc = "The turret part of an automated sentry turret. This must be installed on a turret frame and welded together for it to do anything."
 	unacidable = 1
 	w_class = SIZE_HUGE
-	icon = 'icons/Marine/turret.dmi'
+	icon = 'icons/obj/structures/turret.dmi'
 	icon_state = "sentry_head"
 
 #define SENTRY_FUNCTIONAL 		0
@@ -263,7 +264,7 @@
 /obj/machinery/marine_turret
 	name = "\improper UA 571-C sentry gun"
 	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 500-round drum magazine."
-	icon = 'icons/Marine/turret.dmi'
+	icon = 'icons/obj/structures/turret.dmi'
 	icon_state = "sentry_off"
 	anchored = 1
 	unacidable = 1
@@ -299,6 +300,7 @@
 	var/obj/item/projectile/in_chamber = null
 	var/angle = 1
 	var/list/angle_list = list(180,135,90,60,30)
+	var/owner_mob
 
 /obj/machinery/marine_turret/New()
 	spark_system = new /datum/effect_system/spark_spread
@@ -663,7 +665,7 @@
 			sleep(2)
 		spawn(10)
 			if(src && loc)
-				explosion(loc, -1, -1, 2, 0)
+				explosion(loc, -1, -1, 2, 0, , , , "sentry explosion")
 				//new /obj/machinery/marine_turret_frame(loc) // disabling this because why -spookydonut
 				if(!disposed)
 					qdel(src)
@@ -779,7 +781,7 @@
 	if(!on || !cell || rounds == 0 || stat)
 		return 0
 
-	in_chamber = new /obj/item/projectile(loc) //New bullet!
+	in_chamber = new /obj/item/projectile(initial(name), null, loc) //New bullet!
 	in_chamber.generate_bullet(ammo)
 	return 1
 
@@ -848,6 +850,7 @@
 			in_chamber.dir = dir
 			in_chamber.accuracy = round(in_chamber.accuracy * (config.base_hit_accuracy_mult - config.med_hit_accuracy_mult)) //This is gross but needed to make accuracy behave like the minigun's
 			in_chamber.def_zone = pick("chest", "chest", "chest", "head")
+			in_chamber.weapon_source_mob = owner_mob
 
 			//Shoot at the thing
 			playsound(loc, 'sound/weapons/gun_sentry.ogg', 75, 1)
@@ -871,7 +874,7 @@
 	var/image_layer = layer + 0.1
 	var/offset = 13
 
-	var/image/I = image('icons/obj/items/projectiles.dmi',src,"muzzle_flash",image_layer)
+	var/image/I = image('icons/obj/items/weapons/projectiles.dmi',src,"muzzle_flash",image_layer)
 	var/matrix/rotate = matrix() //Change the flash angle.
 	rotate.Translate(0, offset)
 	rotate.Turn(angle)
@@ -1007,7 +1010,7 @@
 	name = "UA 571-C Turret Control Laptop"
 	desc = "A small device used for remotely controlling sentry turrets."
 	w_class = SIZE_LARGE
-	icon = 'icons/obj/machines/computer.dmi'
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "turret_off"
 	unacidable = 1
 	var/linked_turret = null

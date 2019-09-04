@@ -2,7 +2,7 @@
 /obj/machinery/door/poddoor
 	name = "\improper Podlock"
 	desc = "That looks like it doesn't open easily."
-	icon = 'icons/obj/doors/rapid_pdoor.dmi'
+	icon = 'icons/obj/structures/doors/rapid_pdoor.dmi'
 	icon_state = "pdoor1"
 	id = 1.0
 	dir = 1
@@ -279,7 +279,7 @@
 /obj/machinery/door/poddoor/two_tile_hor
 	var/obj/machinery/door/poddoor/filler_object/f1
 	var/obj/machinery/door/poddoor/filler_object/f2
-	icon = 'icons/obj/doors/1x2blast_hor.dmi'
+	icon = 'icons/obj/structures/doors/1x2blast_hor.dmi'
 
 	New()
 		..()
@@ -300,7 +300,7 @@
 /obj/machinery/door/poddoor/two_tile_ver
 	var/obj/machinery/door/poddoor/filler_object/f1
 	var/obj/machinery/door/poddoor/filler_object/f2
-	icon = 'icons/obj/doors/1x2blast_vert.dmi'
+	icon = 'icons/obj/structures/doors/1x2blast_vert.dmi'
 
 	New()
 		..()
@@ -323,7 +323,7 @@
 	var/obj/machinery/door/poddoor/filler_object/f2
 	var/obj/machinery/door/poddoor/filler_object/f3
 	var/obj/machinery/door/poddoor/filler_object/f4
-	icon = 'icons/obj/doors/1x4blast_hor.dmi'
+	icon = 'icons/obj/structures/doors/1x4blast_hor.dmi'
 
 	New()
 		..()
@@ -356,7 +356,7 @@
 	var/obj/machinery/door/poddoor/filler_object/f2
 	var/obj/machinery/door/poddoor/filler_object/f3
 	var/obj/machinery/door/poddoor/filler_object/f4
-	icon = 'icons/obj/doors/1x4blast_vert.dmi'
+	icon = 'icons/obj/structures/doors/1x4blast_vert.dmi'
 
 	New()
 		..()
@@ -390,22 +390,22 @@
 	unacidable = 1
 
 /obj/machinery/door/poddoor/four_tile_hor/secure
-	icon = 'icons/obj/doors/1x4blast_hor_secure.dmi'
+	icon = 'icons/obj/structures/doors/1x4blast_hor_secure.dmi'
 	openspeed = 17
 	unacidable = 1
 
 /obj/machinery/door/poddoor/four_tile_ver/secure
-	icon = 'icons/obj/doors/1x4blast_vert_secure.dmi'
+	icon = 'icons/obj/structures/doors/1x4blast_vert_secure.dmi'
 	openspeed = 17
 	unacidable = 1
 
 /obj/machinery/door/poddoor/two_tile_hor/secure
-	icon = 'icons/obj/doors/1x2blast_hor.dmi'
+	icon = 'icons/obj/structures/doors/1x2blast_hor.dmi'
 	openspeed = 17
 	unacidable = 1
 
 /obj/machinery/door/poddoor/two_tile_ver/secure
-	icon = 'icons/obj/doors/1x2blast_vert.dmi'
+	icon = 'icons/obj/structures/doors/1x2blast_vert.dmi'
 	openspeed = 17
 	unacidable = 1
 
@@ -413,7 +413,7 @@
 
 
 /obj/machinery/door/poddoor/almayer
-	icon = 'icons/obj/doors/almayer/blastdoors_shutters.dmi'
+	icon = 'icons/obj/structures/doors/blastdoors_shutters.dmi'
 	openspeed = 4 //shorter open animation.
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,

@@ -18,6 +18,7 @@
 	aura_strength = 0.5 //Drone's aura is the weakest. At the top of their evolution, it's equivalent to a Young Queen Climbs by 0.5 to 2
 	caste_desc = "A builder of hives. Only drones may evolve into Queens."
 	evolves_to = list("Queen", "Burrower", "Carrier", "Hivelord") //Add more here seperated by commas
+	deevolves_to = "Larva"
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
 	can_denest_hosts = 1
@@ -55,7 +56,7 @@
 	caste_name = "Drone"
 	name = "Drone"
 	desc = "An Alien Drone"
-	icon = 'icons/Xeno/xenomorph_48x48.dmi'
+	icon = 'icons/mob/xenos/xenomorph_48x48.dmi'
 	icon_state = "Drone Walking"
 	plasma_types = list(PLASMA_PURPLE)
 	tier = 1
@@ -75,3 +76,4 @@
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		)
+	mutation_type = DRONE_NORMAL

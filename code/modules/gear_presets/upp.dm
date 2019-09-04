@@ -2,7 +2,7 @@
 	name = "UPP"
 
 	languages = list("Russian", "English")
-	faction = "UPP"
+	faction = FACTION_UPP
 
 /datum/equipment_preset/upp/New()
 	. = ..()

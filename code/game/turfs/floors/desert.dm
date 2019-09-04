@@ -100,7 +100,7 @@
 //Desert shore
 
 /turf/open/desert/desert_shore
-	icon = 'icons/turf/desert_water.dmi'
+	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "shore1"
 	var/toxic = 0
 
@@ -109,13 +109,13 @@
 	switch(toxic)
 		if(1)
 			SetLuminosity(2)
-			icon = 'icons/turf/desert_water_toxic.dmi'
+			icon = 'icons/turf/floors/desert_water_toxic.dmi'
 		if(0)
 			SetLuminosity(1)
-			icon = 'icons/turf/desert_water.dmi'
+			icon = 'icons/turf/floors/desert_water.dmi'
 		if(-1)
 			SetLuminosity(1)
-			icon = 'icons/turf/desert_water_transition.dmi'
+			icon = 'icons/turf/floors/desert_water_transition.dmi'
 
 /turf/open/desert/desert_shore/is_weedable()
 	return FALSE
@@ -142,19 +142,19 @@
 
 //Desert Waterway
 /turf/open/desert/waterway
-	icon = 'icons/turf/desert_water.dmi'
+	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "dock"
 /turf/open/desert/waterway/desert_waterway
-	icon = 'icons/turf/desert_water.dmi'
+	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "dock"
 /turf/open/desert/waterway/desert_waterway_c
-	icon = 'icons/turf/desert_water.dmi'
+	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "dock_c"
 /turf/open/desert/waterway/desert_waterway_cave
-	icon = 'icons/turf/desert_water.dmi'
+	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "dock_caves"
 /turf/open/desert/waterway/desert_waterway_cave_c
-	icon = 'icons/turf/desert_water.dmi'
+	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "dock_caves_c"
 
 
@@ -180,7 +180,7 @@
 //inner cave shore
 /turf/open/desert/cave/cave_shore
 	name = "cave shore"
-	icon = 'icons/turf/desert_water.dmi'
+	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "shore_caves"
 	var/toxic = 0
 
@@ -189,18 +189,18 @@
 	switch(toxic)
 		if(1)
 			SetLuminosity(2)
-			icon = 'icons/turf/desert_water_toxic.dmi'
+			icon = 'icons/turf/floors/desert_water_toxic.dmi'
 		if(0)
 			SetLuminosity(1)
-			icon = 'icons/turf/desert_water.dmi'
+			icon = 'icons/turf/floors/desert_water.dmi'
 		if(-1)
 			SetLuminosity(1)
-			icon = 'icons/turf/desert_water_transition.dmi'
+			icon = 'icons/turf/floors/desert_water_transition.dmi'
 
 //Desert River Toxic
 /turf/open/gm/river/desert
 	name = "water"
-	icon = 'icons/turf/desert_water.dmi'
+	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "shallow"
 	icon_overlay = "_shallow"
 	var/toxic = 0
@@ -214,13 +214,13 @@
 	switch(toxic)
 		if(1)
 			SetLuminosity(2)
-			icon = 'icons/turf/desert_water_toxic.dmi'
+			icon = 'icons/turf/floors/desert_water_toxic.dmi'
 		if(0)
 			SetLuminosity(1)
-			icon = 'icons/turf/desert_water.dmi'
+			icon = 'icons/turf/floors/desert_water.dmi'
 		if(-1)
 			SetLuminosity(1)
-			icon = 'icons/turf/desert_water_transition.dmi'
+			icon = 'icons/turf/floors/desert_water_transition.dmi'
 	update_overlays()
 
 
@@ -231,7 +231,7 @@
 
 /turf/open/gm/river/desert/shallow/covered
 	covered = 1
-	icon = 'icons/turf/desert_water_covered.dmi'
+	icon = 'icons/turf/floors/desert_water_covered.dmi'
 
 //shallow water transition to deep
 /turf/open/gm/river/desert/shallow_edge
@@ -240,7 +240,7 @@
 
 /turf/open/gm/river/desert/shallow_edge/covered
 	covered = 1
-	icon = 'icons/turf/desert_water_covered.dmi'
+	icon = 'icons/turf/floors/desert_water_covered.dmi'
 
 //shallow water transition to deep corner
 /turf/open/gm/river/desert/shallow_corner
@@ -249,7 +249,7 @@
 
 /turf/open/gm/river/desert/shallow_corner/covered
 	covered = 1
-	icon = 'icons/turf/desert_water_covered.dmi'
+	icon = 'icons/turf/floors/desert_water_covered.dmi'
 
 
 //deep water
@@ -259,7 +259,7 @@
 
 /turf/open/gm/river/desert/deep/covered
 	covered = 1
-	icon = 'icons/turf/desert_water_covered.dmi'
+	icon = 'icons/turf/floors/desert_water_covered.dmi'
 
 //shallow water channel plain
 /turf/open/gm/river/desert/channel
@@ -275,7 +275,7 @@
 
 
 turf/open/desert/excavation
-	icon = 'icons/turf/desert_excavation.dmi'
+	icon = 'icons/turf/floors/desert_excavation.dmi'
 //Engineer Ship
 turf/open/desert/excavation/component1
 	icon_state = "component1"

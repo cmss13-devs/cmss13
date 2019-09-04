@@ -37,6 +37,7 @@
 		/obj/machinery/smartfridge/,
 		/obj/machinery/biogenerator,
 		/obj/machinery/reagent_analyzer,
+		/obj/machinery/centrifuge,
 		/obj/machinery/constructable_frame)
 
 	New()
@@ -81,6 +82,8 @@
 		for(var/datum/reagent/R in src.reagents.reagent_list)
 			injected += R.name
 		var/contained = english_list(injected)
+		M.last_damage_source = initial(name)
+		M.last_damage_mob = user
 		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been splashed with [src.name] by [user.name] ([user.ckey]). Reagents: [contained]</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to splash [M.name] ([M.key]). Reagents: [contained]</font>")
 		msg_admin_attack("[user.name] ([user.ckey]) splashed [M.name] ([M.key]) with [src.name]. Reagents: [contained] (INTENT: [uppertext(user.a_intent)]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
@@ -171,7 +174,7 @@
 	overlays.Cut()
 
 	if(reagents.total_volume)
-		var/image/filling = image('icons/obj/reagentfillings.dmi', src, "[icon_state]10")
+		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]10")
 
 		var/percent = round((reagents.total_volume / volume) * 100)
 		switch(percent)

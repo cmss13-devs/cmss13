@@ -1,8 +1,12 @@
+#define FRIDGE_WIRE_SHOCK 1
+#define FRIDGE_WIRE_SHOOT_INV 2
+#define FRIDGE_WIRE_IDSCAN 3
+
 /* SmartFridge.  Much todo
 */
 /obj/machinery/smartfridge
 	name = "\improper SmartFridge"
-	icon = 'icons/obj/machines/vending.dmi'
+	icon = 'icons/obj/structures/machinery/vending.dmi'
 	icon_state = "smartfridge"
 	layer = BELOW_OBJ_LAYER
 	density = 1
@@ -24,10 +28,6 @@
 	var/locked = 0
 	var/panel_open = 0 //Hacking a smartfridge
 	var/wires = 7
-	var/const/WIRE_SHOCK = 1
-	var/const/WIRE_SHOOTINV = 2
-	var/const/WIRE_SCANID = 3 //Only used by the secure smartfridge, but required by the cut, mend and pulse procs.
-
 
 /obj/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/food/snacks/grown/) || istype(O,/obj/item/seeds/))
@@ -162,29 +162,17 @@
 	if (items.len > 0)
 		data["contents"] = items
 
-	var/list/vendwires = null
-	if (is_secure_fridge)
-		vendwires = list(
-			"Violet" = 1,
-			"Orange" = 2,
-			"Green" = 3)
-	else
-		vendwires = list(
-			"Blue" = 1,
-			"Red" = 2,
-			"Black" = 3)
+	var/list/wire_descriptions = get_wire_descriptions()
+	var/list/panel_wires = list()
+	for(var/wire = 1 to wire_descriptions.len)
+		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire)))
 
-	var/list/vendor_wires[0]
-	for (var/wire in vendwires)
-		var is_uncut = wires & APCWireColorToFlag[vendwires[wire]]
-		vendor_wires.Add(list(list("wire" = wire, "cut" = !is_uncut, "index" = vendwires[wire])))
-
-	if (vendor_wires.len > 0)
-		data["wires"] = vendor_wires
+	if (panel_wires)
+		data["wires"] = panel_wires
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
-		ui = new(user, src, ui_key, "smartfridge.tmpl", src.name, 400, 500)
+		ui = new(user, src, ui_key, "smartfridge.tmpl", src.name, 420, 500)
 		ui.set_initial_data(data)
 		ui.open()
 
@@ -236,11 +224,11 @@
 				to_chat(user, "You need wirecutters!")
 				return 1
 
-			var/wire_index = text2num(href_list["cutwire"])
-			if (isWireColorCut(wire_index))
-				mend(wire_index)
+			var/wire = text2num(href_list["cutwire"])
+			if (isWireCut(wire))
+				mend(wire)
 			else
-				cut(wire_index)
+				cut(wire)
 			return 1
 
 		if (href_list["pulsewire"])
@@ -248,12 +236,12 @@
 				to_chat(usr, "You need a multitool!")
 				return 1
 
-			var/wire_index = text2num(href_list["pulsewire"])
-			if (isWireColorCut(wire_index))
+			var/wire = text2num(href_list["pulsewire"])
+			if (isWireCut(wire))
 				to_chat(usr, "You can't pulse a cut wire.")
 				return 1
 
-			pulse(wire_index)
+			pulse(wire)
 			return 1
 
 	return 0
@@ -262,48 +250,57 @@
 *	Hacking
 **************/
 
-/obj/machinery/smartfridge/proc/cut(var/wireColor)
-	var/wireFlag = APCWireColorToFlag[wireColor]
-	var/wireIndex = APCWireColorToIndex[wireColor]
-	src.wires &= ~wireFlag
-	switch(wireIndex)
-		if(WIRE_SHOCK)
-			src.seconds_electrified = -1
-		if (WIRE_SHOOTINV)
-			if(!src.shoot_inventory)
-				src.shoot_inventory = 1
-		if(WIRE_SCANID)
-			src.locked = 1
+/obj/machinery/smartfridge/proc/get_wire_descriptions()
+	return list(
+		FRIDGE_WIRE_SHOCK      = "Ground safety",
+		FRIDGE_WIRE_SHOOT_INV  = "Dispenser motor control",
+		FRIDGE_WIRE_IDSCAN     = "ID scanner"
+	)
 
-/obj/machinery/smartfridge/proc/mend(var/wireColor)
-	var/wireFlag = APCWireColorToFlag[wireColor]
-	var/wireIndex = APCWireColorToIndex[wireColor]
-	src.wires |= wireFlag
-	switch(wireIndex)
-		if(WIRE_SHOCK)
-			src.seconds_electrified = 0
-		if (WIRE_SHOOTINV)
-			src.shoot_inventory = 0
-		if(WIRE_SCANID)
-			src.locked = 0
+/obj/machinery/smartfridge/proc/cut(var/wire)
+	wires ^= getWireFlag(wire)
 
-/obj/machinery/smartfridge/proc/pulse(var/wireColor)
-	var/wireIndex = APCWireColorToIndex[wireColor]
-	switch(wireIndex)
-		if(WIRE_SHOCK)
-			src.seconds_electrified = 30
-		if(WIRE_SHOOTINV)
-			src.shoot_inventory = !src.shoot_inventory
-		if(WIRE_SCANID)
-			src.locked = -1
+	switch(wire)
+		if(FRIDGE_WIRE_SHOCK)
+			seconds_electrified = -1
+			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
+		if (FRIDGE_WIRE_SHOOT_INV)
+			if(!shoot_inventory)
+				shoot_inventory = 1
+				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
+		if(FRIDGE_WIRE_IDSCAN)
+			locked = 1
+			visible_message(SPAN_NOTICE("\The [src] emits a slight thunk."))
 
-/obj/machinery/smartfridge/proc/isWireColorCut(var/wireColor)
-	var/wireFlag = APCWireColorToFlag[wireColor]
-	return ((src.wires & wireFlag) == 0)
+/obj/machinery/smartfridge/proc/mend(var/wire)
+	wires |= getWireFlag(wire)
+	switch(wire)
+		if(FRIDGE_WIRE_SHOCK)
+			seconds_electrified = 0
+		if (FRIDGE_WIRE_SHOOT_INV)
+			shoot_inventory = 0
+			visible_message(SPAN_NOTICE("\The [src] stops whirring."))
+		if(FRIDGE_WIRE_IDSCAN)
+			locked = 0
+			visible_message(SPAN_NOTICE("\The [src] emits a click."))
 
-/obj/machinery/smartfridge/proc/isWireCut(var/wireIndex)
-	var/wireFlag = APCIndexToFlag[wireIndex]
-	return ((src.wires & wireFlag) == 0)
+/obj/machinery/smartfridge/proc/pulse(var/wire)
+	switch(wire)
+		if(FRIDGE_WIRE_SHOCK)
+			seconds_electrified = 30
+			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
+		if(FRIDGE_WIRE_SHOOT_INV)
+			shoot_inventory = !shoot_inventory
+			if(shoot_inventory)
+				visible_message(SPAN_WARNING("\The [src] begins whirring noisily."))
+			else
+				visible_message(SPAN_NOTICE("\The [src] stops whirring."))
+		if(FRIDGE_WIRE_IDSCAN)
+			locked = -1
+			visible_message(SPAN_NOTICE("\The [src] emits a click."))
+
+/obj/machinery/smartfridge/proc/isWireCut(var/wire)
+	return !(wires & getWireFlag(wire))
 
 /obj/machinery/smartfridge/proc/throw_item()
 	var/obj/throw_item = null
@@ -339,7 +336,7 @@
 /obj/machinery/smartfridge/seeds
 	name = "\improper MegaSeed Servitor"
 	desc = "When you need seeds fast!"
-	icon = 'icons/obj/machines/vending.dmi'
+	icon = 'icons/obj/structures/machinery/vending.dmi'
 	icon_state = "seeds"
 	icon_on = "seeds"
 	icon_off = "seeds-off"
@@ -390,7 +387,7 @@
 	req_one_access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_CHEMISTRY)
 
 /obj/machinery/smartfridge/chemistry/accept_check(var/obj/item/O as obj)
-	if(istype(O,/obj/item/storage/pill_bottle) || istype(O,/obj/item/reagent_container))
+	if(istype(O,/obj/item/storage/pill_bottle) || istype(O,/obj/item/reagent_container) || istype(O,/obj/item/storage/fancy/vials))
 		return 1
 	return 0
 

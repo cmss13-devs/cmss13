@@ -19,6 +19,7 @@
 	tackle_chance = 40
 	spit_types = list(/datum/ammo/xeno/toxin, /datum/ammo/xeno/toxin/burst)
 	evolves_to = list("Spitter")
+	deevolves_to = "Larva"
 	acid_level = 1
 
 /datum/caste_datum/sentinel/mature
@@ -51,7 +52,7 @@
 	caste_name = "Sentinel"
 	name = "Sentinel"
 	desc = "A slithery, spitting kind of alien."
-	icon = 'icons/Xeno/xenomorph_48x48.dmi'
+	icon = 'icons/mob/xenos/xenomorph_48x48.dmi'
 	icon_state = "Sentinel Walking"
 	plasma_types = list(PLASMA_NEUROTOXIN)
 	pixel_x = -12
@@ -68,3 +69,4 @@
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		)
+	mutation_type = SENTINEL_NORMAL

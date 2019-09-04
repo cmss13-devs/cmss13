@@ -3,8 +3,9 @@
 	name = "Colonist"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Colonist"
+	rank = "Colonist"
 	special_role = "MODE"
-	faction = "Colonists"
+	faction = FACTION_COLONIST
 
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 	skills = /datum/skills/civilian

@@ -1,0 +1,121 @@
+/datum/entity/player_stats
+	var/datum/entity/player_entity/player = null // "mattatlas"
+	var/total_kills = 0
+	var/total_deaths = 0
+	var/total_playtime = 0
+	var/total_rounds_played = 0
+	var/steps_walked = 0
+	var/round_played = FALSE
+	var/datum/entity/statistic/nemesis = null // "runner" = 3
+	var/list/humans_killed = list() // list of type /datum/entity/statistic, "jobname2" = number
+	var/list/xenos_killed = list() // list of type /datum/entity/statistic, "caste" = number
+	var/list/death_list = list() // list of type /datum/entity/death_stats
+	var/display_stat = TRUE
+
+/datum/entity/player_stats/proc/count_personal_human_kill(var/job_name, var/cause, var/job)
+	return
+
+/datum/entity/player_stats/proc/count_personal_xeno_kill(var/job_name, var/cause, var/job)
+	return
+
+/datum/entity/player_stats/proc/count_human_kill(var/job_name, var/cause, var/job)
+	if(!job_name)
+		return
+	if(!humans_killed["[job_name]"])
+		var/datum/entity/statistic/N = new()
+		N.name = job_name
+		humans_killed["[job_name]"] = N
+	var/datum/entity/statistic/S = humans_killed["[job_name]"]
+	S.value += 1
+	if(job)
+		count_personal_human_kill(job_name, cause, job)
+	total_kills += 1
+
+/datum/entity/player_stats/proc/count_xeno_kill(var/caste, var/cause, var/job)
+	if(!caste)
+		return
+	if(!xenos_killed["[caste]"])
+		var/datum/entity/statistic/N = new()
+		N.name = caste
+		xenos_killed["[caste]"] = N
+	var/datum/entity/statistic/S = xenos_killed["[caste]"]
+	S.value += 1
+	if(job)
+		count_personal_xeno_kill(caste, cause, job)
+	total_kills += 1
+
+//*****************
+//Mob Procs - death
+//*****************
+
+/datum/entity/player_stats/proc/recalculate_nemesis()
+	var/list/causes = list()
+	for(var/datum/entity/death_stats/stat_entity in death_list)
+		if(!stat_entity.cause_name)
+			continue
+		causes["[stat_entity.cause_name]"] += 1
+		if(!nemesis)
+			nemesis = new()
+			nemesis.name = stat_entity.cause_name
+			nemesis.value = 1
+			continue
+		if(causes["[stat_entity.cause_name]"] > nemesis.value)
+			nemesis.name = stat_entity.cause_name
+			nemesis.value = causes["[stat_entity.cause_name]"]
+
+/datum/entity/player_stats/proc/count_personal_death(var/job)
+	return
+
+/mob/proc/track_death_calculations()
+	if(statistic_exempt)
+		return
+	if(round_statistics)
+		round_statistics.recalculate_nemesis()
+	if(client && client.player_entity)
+		client.player_entity.update_panel_data(round_statistics)
+
+//*****************
+//Mob Procs - kills
+//*****************
+
+/mob/proc/count_human_kill(var/job_name, var/cause)
+	return
+
+/mob/proc/count_xeno_kill(var/caste_name, var/cause)
+	return
+
+//Human
+/mob/living/carbon/human/count_human_kill(var/job_name, var/cause)
+	if(statistic_exempt || !mind)
+		return
+	var/datum/entity/player_stats/human/human_stats = mind.setup_human_stats()
+	human_stats.count_human_kill(job_name, cause, job)
+
+/mob/living/carbon/human/count_xeno_kill(var/caste_name, var/cause)
+	if(statistic_exempt || !mind)
+		return
+	var/datum/entity/player_stats/human/human_stats = mind.setup_human_stats()
+	human_stats.count_xeno_kill(caste_name, cause, job)
+
+//Xeno
+/mob/living/carbon/Xenomorph/count_human_kill(var/job_name, var/cause)
+	if(statistic_exempt || !mind)
+		return
+	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
+	xeno_stats.count_human_kill(job_name, cause, caste_name)
+
+/mob/living/carbon/Xenomorph/count_xeno_kill(var/caste_name, var/cause)
+	if(statistic_exempt || !mind)
+		return
+	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
+	xeno_stats.count_xeno_kill(caste_name, cause, caste_name)
+
+//*****************
+//Mob Procs - minor
+//*****************
+
+/datum/entity/player_stats/proc/count_personal_steps_walked(var/job)
+	return
+
+/mob/proc/track_steps_walked()
+	return

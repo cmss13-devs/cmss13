@@ -184,6 +184,7 @@
 	desc = "Used for emergency sealing of air breaches."
 	path = 1
 	stage = 2
+	harmful = FALSE
 
 /obj/item/explosive/grenade/chem_grenade/metalfoam/New()
 	..()
@@ -230,6 +231,7 @@
 	desc = "Used for purging large areas of invasive plant species. Contents under pressure. Do not directly inhale contents."
 	path = 1
 	stage = 2
+	harmful = FALSE
 
 /obj/item/explosive/grenade/chem_grenade/antiweed/New()
 	..()
@@ -253,6 +255,7 @@
 	desc = "BLAM!-brand foaming space cleaner. In a special applicator for rapid cleaning of wide areas."
 	stage = 2
 	path = 1
+	harmful = FALSE
 
 /obj/item/explosive/grenade/chem_grenade/cleaner/New()
 	..()
@@ -276,6 +279,7 @@
 	name = "\improper M66 teargas grenade"
 	desc = "Tear gas grenade used for nonlethal riot control. Please wear adequate gas protection."
 	stage = 2
+	harmful = FALSE
 
 /obj/item/explosive/grenade/chem_grenade/teargas/New()
 	..()

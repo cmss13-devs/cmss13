@@ -81,8 +81,7 @@
 
 	src.cmd_admin_dress_human(M)
 
-/client/proc/cmd_admin_dress_human(var/mob/living/carbon/human/M in mob_list, var/datum/equipment_preset/dresscode, var/no_logs = 0)
-
+/client/proc/cmd_admin_dress_human(var/mob/living/carbon/human/M in mob_list, var/datum/equipment_preset/dresscode, var/no_logs = 0, var/count_participant = FALSE)
 	if (!no_logs)
 		dresscode = input("Select dress for [M]", "Robust quick dress shop") as null|anything in gear_presets_list
 
@@ -103,7 +102,7 @@
 			to_chat(usr, "Something went wrong with mob transformation...")
 			return
 
-	arm_equipment(M, dresscode)
+	arm_equipment(M, dresscode, count_participant)
 	M.regenerate_icons()
 	if(!no_logs)
 		log_admin("[key_name(usr)] changed the equipment of [key_name(M)] to [dresscode].")
@@ -129,12 +128,12 @@
 
 //note: when adding new dresscodes, on top of adding a proper skills_list, make sure the ID given has
 //a rank that matches a job title unless you want the human to bypass the skill system.
-/proc/arm_equipment(var/mob/living/carbon/human/M, var/dresscode, var/randomise = FALSE)
+/proc/arm_equipment(var/mob/living/carbon/human/M, var/dresscode, var/randomise = FALSE, var/count_participant = FALSE)
 	if(!gear_presets_list)
 		error("arm_equipment !gear_presets_list")
 		return
 	if(!gear_presets_list[dresscode])
 		error("arm_equipment !gear_presets_list[dresscode]")
 		return
-	gear_presets_list[dresscode].load_preset(M, randomise)
+	gear_presets_list[dresscode].load_preset(M, randomise, count_participant)
 	return

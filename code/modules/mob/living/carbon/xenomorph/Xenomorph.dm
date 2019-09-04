@@ -29,7 +29,7 @@
 /mob/living/carbon/Xenomorph
 	name = "Drone"
 	desc = "What the hell is THAT?"
-	icon = 'icons/Xeno/1x1_Xenos.dmi'
+	icon = 'icons/mob/xenos/1x1_Xenos.dmi'
 	icon_state = "Drone Walking"
 	voice_name = "xenomorph"
 	speak_emote = list("hisses")
@@ -46,9 +46,12 @@
 	see_invisible = SEE_INVISIBLE_MINIMUM
 	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO)
 	unacidable = TRUE
+	faction = FACTION_XENOMORPH
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/datum/mutator_set/individual_mutators/mutators = new
 
+	// Mutatotion types/Strain names
+	var/mutation_type = null
 		
 	// Armor
 	var/armor_deflection_buff = 0
@@ -293,6 +296,9 @@
 
 
 /mob/living/carbon/Xenomorph/New(var/new_loc, var/mob/living/carbon/Xenomorph/oldXeno)
+	var/area/A = get_area(src)
+	if(A.statistic_exempt)
+		statistic_exempt = TRUE
 	if(oldXeno)
 		hivenumber = oldXeno.hivenumber
 		nicknumber = oldXeno.nicknumber
@@ -301,6 +307,11 @@
 	set_hivenumber(hivenumber)
 	update_caste()
 	generate_name()
+
+	if(isXenoQueen(src))
+		SStracking.set_leader("hive_[hivenumber]", src)
+	SStracking.start_tracking("hive_[hivenumber]", src)
+
 	..(new_loc)
 	//WO GAMEMODE
 	if(map_tag == MAP_WHISKEY_OUTPOST)
@@ -331,7 +342,6 @@
 
 	living_xeno_list += src
 	xeno_mob_list += src
-	round_statistics.total_xenos_created++
 
 	if(caste.adjust_size_x != 1)
 		var/matrix/M = matrix()
@@ -376,8 +386,10 @@
 				hive.tier_2_xenos |= src
 			if(3)
 				hive.tier_3_xenos |= src
-
 		hive.totalXenos |= src
+
+	if(round_statistics && !statistic_exempt)
+		round_statistics.track_new_participant(faction, 1)
 	generate_name()
 
 /mob/living/carbon/Xenomorph/proc/update_caste()
@@ -445,7 +457,7 @@
 /mob/living/carbon/Xenomorph/examine(mob/user)
 	..()
 	if(isXeno(user) && caste.caste_desc)
-		user << caste.caste_desc
+		to_chat(user, caste.caste_desc)
 
 	if(stat == DEAD)
 		to_chat(user, "It is DEAD. Kicked the bucket. Off to that great hive in the sky.")
@@ -467,6 +479,11 @@
 
 	if(hivenumber != XENO_HIVE_NORMAL)
 		to_chat(user, "It appears to belong to the [hive.prefix]hive")
+
+	if(isXeno(user) || isobserver(user))
+		if(mutation_type != "Normal")
+			to_chat(user, "It has specialized into a [mutation_type].")
+
 	return
 
 /mob/living/carbon/Xenomorph/Dispose()
@@ -487,6 +504,9 @@
 		hive.living_xeno_queen.set_queen_overwatch(src, TRUE) // This is actually totally extraneous as this is handled in the life proc anyways.
 	if(src in hive.xeno_leader_list)
 		hive.xeno_leader_list -= src
+
+	SStracking.stop_tracking("hive_[hivenumber]", src)
+
 	. = ..()
 
 
@@ -584,9 +604,16 @@
 		log_debug("Invalid hivenumber forwarded - [hivenumber]. Let the devs know!")
 	hive = hive_datum[hivenumber]
 
+/mob/living/carbon/Xenomorph/proc/set_faction(var/new_faction = FACTION_XENOMORPH)
+	if(round_statistics && !statistic_exempt)
+		round_statistics.track_new_participant(faction, -1)
+		round_statistics.track_new_participant(new_faction, 1)
+	faction = new_faction
+
 //Call this function to set the hivenumber and do other cleanup
-/mob/living/carbon/Xenomorph/proc/set_hivenumber_and_update(var/new_hivenumber = XENO_HIVE_NORMAL)
+/mob/living/carbon/Xenomorph/proc/set_hivenumber_and_update(var/new_hivenumber = XENO_HIVE_NORMAL, var/new_faction = FACTION_XENOMORPH)
 	set_hivenumber(new_hivenumber)
+	set_faction(new_faction)
 
 	if(istype(src, /mob/living/carbon/Xenomorph/Larva))
 		var/mob/living/carbon/Xenomorph/Larva/L = src

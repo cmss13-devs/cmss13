@@ -6,7 +6,7 @@
 //Might want to move this into several files later but for now it works here
 /obj/item/robot/stun
 	name = "electrified arm"
-	icon = 'icons/obj/decals.dmi'
+	icon = 'icons/obj/structures/props/decals.dmi'
 	icon_state = "shock"
 
 	attack(mob/M as mob, mob/living/silicon/robot/user as mob)
@@ -28,14 +28,14 @@
 
 /obj/item/robot/overdrive
 	name = "overdrive"
-	icon = 'icons/obj/decals.dmi'
+	icon = 'icons/obj/structures/props/decals.dmi'
 	icon_state = "shock"
 
 /**********************************************************************
 						HUD/SIGHT things
 ***********************************************************************/
 /obj/item/robot/sight
-	icon = 'icons/obj/decals.dmi'
+	icon = 'icons/obj/structures/props/decals.dmi'
 	icon_state = "securearea"
 	var/sight_mode = null
 
@@ -49,14 +49,14 @@
 	name = "\proper thermal vision"
 	sight_mode = BORGTHERM
 	icon_state = "thermal"
-	icon = 'icons/obj/clothing/glasses.dmi'
+	icon = 'icons/obj/items/clothing/glasses.dmi'
 
 
 /obj/item/robot/sight/meson
 	name = "\proper meson vision"
 	sight_mode = BORGMESON
 	icon_state = "meson"
-	icon = 'icons/obj/clothing/glasses.dmi'
+	icon = 'icons/obj/items/clothing/glasses.dmi'
 
 /obj/item/robot/sight/hud
 	name = "hud"
@@ -66,7 +66,7 @@
 /obj/item/robot/sight/hud/med
 	name = "medical hud"
 	icon_state = "healthhud"
-	icon = 'icons/obj/clothing/glasses.dmi'
+	icon = 'icons/obj/items/clothing/glasses.dmi'
 
 	New()
 		..()
@@ -77,7 +77,7 @@
 /obj/item/robot/sight/hud/sec
 	name = "security hud"
 	icon_state = "securityhud"
-	icon = 'icons/obj/clothing/glasses.dmi'
+	icon = 'icons/obj/items/clothing/glasses.dmi'
 
 	New()
 		..()

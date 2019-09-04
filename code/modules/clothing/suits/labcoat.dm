@@ -210,7 +210,7 @@
 /obj/item/clothing/suit/storage/snow_suit
 	name = "snow suit"
 	desc = "A standard snow suit. It can protect the wearer from extreme cold."
-	icon = 'icons/obj/clothing/suits.dmi'
+	icon = 'icons/obj/items/clothing/suits.dmi'
 	icon_state = "snowsuit_alpha"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS

@@ -136,7 +136,7 @@
 /obj/machinery/computer/security/telescreen
 	name = "Telescreen"
 	desc = "Used for watching an empty arena."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "telescreen"
 	network = list("thunder")
 	density = 0
@@ -151,7 +151,7 @@
 /obj/machinery/computer/security/telescreen/entertainment
 	name = "entertainment monitor"
 	desc = "Damn, why do they never have anything interesting on these things?"
-	icon = 'icons/obj/status_display.dmi'
+	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "entertainment"
 	circuit = null
 
@@ -197,7 +197,7 @@
 	name = "abstract dropship camera computer"
 	desc = "A computer to monitor cameras linked to the dropship."
 	density = 1
-	icon = 'icons/Marine/shuttle-parts.dmi'
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "consoleleft"
 	circuit = null
 	unacidable = TRUE

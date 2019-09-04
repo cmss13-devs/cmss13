@@ -1,6 +1,6 @@
 /obj/machinery/portable_atmospherics/canister
 	name = "canister"
-	icon = 'icons/obj/machines/atmos.dmi'
+	icon = 'icons/obj/structures/machinery/atmos.dmi'
 	icon_state = "yellow"
 	density = 1
 	health = 100.0

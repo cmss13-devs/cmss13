@@ -10,7 +10,7 @@ var/global/image/typing_indicator
 /mob/proc/set_typing_indicator(var/state)
 
 	if(!typing_indicator)
-		typing_indicator = image('icons/mob/talk.dmi',null,"typing")
+		typing_indicator = image('icons/mob/hud/talk.dmi',null,"typing")
 
 	if(client)
 		if(client.prefs.toggles_chat & SHOW_TYPING)

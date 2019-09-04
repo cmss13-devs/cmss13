@@ -11,137 +11,139 @@
 	possible_transfer_amounts = list(5,10,25)
 	volume = 50
 
-	on_reagent_change()
-		if (gulp_size < 5) gulp_size = 5
-		else gulp_size = max(round(reagents.total_volume / 5), 5)
+/obj/item/reagent_container/food/drinks/on_reagent_change()
+	if (gulp_size < 5) gulp_size = 5
+	else gulp_size = max(round(reagents.total_volume / 5), 5)
 
-	attack_self(mob/user as mob)
-		return
+/obj/item/reagent_container/food/drinks/attack_self(mob/user as mob)
+	return
 
-	attack(mob/M as mob, mob/user as mob, def_zone)
-		var/datum/reagents/R = src.reagents
-		var/fillevel = gulp_size
+/obj/item/reagent_container/food/drinks/attack(mob/M as mob, mob/user as mob, def_zone)
+	var/datum/reagents/R = src.reagents
+	var/fillevel = gulp_size
 
-		if(!R.total_volume || !R)
-			to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
-			return 0
-
-		if(M == user)
-
-			if(istype(M,/mob/living/carbon/human))
-				var/mob/living/carbon/human/H = M
-				if(H.species.flags & IS_SYNTHETIC)
-					to_chat(H, SPAN_DANGER("You have a monitor for a head, where do you think you're going to put that?"))
-					return
-
-			to_chat(M, SPAN_NOTICE(" You swallow a gulp from \the [src]."))
-			if(reagents.total_volume)
-				reagents.trans_to_ingest(M, gulp_size)
-
-			playsound(M.loc,'sound/items/drink.ogg', 15, 1)
-			return 1
-		else if( istype(M, /mob/living/carbon/human) )
-
-			var/mob/living/carbon/human/H = M
-			if(H.species.flags & IS_SYNTHETIC)
-				to_chat(H, SPAN_DANGER("They have a monitor for a head, where do you think you're going to put that?"))
-				return
-
-			user.affected_message(M,
-				SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
-				SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
-				SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
-
-			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
-			user.affected_message(M,
-				SPAN_HELPFUL("You <b>fed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
-				SPAN_HELPFUL("[user] <b>fed</b> you <b>[src]</b>."),
-				SPAN_NOTICE("[user] fed [user == M ? "themselves" : "[M]"] [src]."))
-
-			var/rgt_list_text = get_reagent_list_text()
-
-			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been fed [src.name] by [user.name] ([user.ckey]) Reagents: [rgt_list_text]</font>")
-			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [M.name] by [M.name] ([M.ckey]) Reagents: [rgt_list_text]</font>")
-			msg_admin_attack("[key_name(user)] fed [key_name(M)] with [src.name] Reagents: [rgt_list_text] (INTENT: [uppertext(user.a_intent)]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
-
-			if(reagents.total_volume)
-				reagents.trans_to_ingest(M, gulp_size)
-
-			if(isrobot(user)) //Cyborg modules that include drinks automatically refill themselves, but drain the borg's cell
-				var/mob/living/silicon/robot/bro = user
-				bro.cell.use(30)
-				var/refill = R.get_master_reagent_id()
-				spawn(MINUTES_1)
-					R.add_reagent(refill, fillevel)
-
-			playsound(M.loc,'sound/items/drink.ogg', 15, 1)
-			return 1
-
+	if(!R.total_volume || !R)
+		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
 		return 0
 
+	if(M == user)
 
-	afterattack(obj/target, mob/user, proximity)
-		if(!proximity) return
-
-		if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
-
-			if(!target.reagents.total_volume)
-				to_chat(user, SPAN_DANGER("[target] is empty."))
+		if(istype(M,/mob/living/carbon/human))
+			var/mob/living/carbon/human/H = M
+			if(H.species.flags & IS_SYNTHETIC)
+				to_chat(H, SPAN_DANGER("You have a monitor for a head, where do you think you're going to put that?"))
 				return
 
-			if(reagents.total_volume >= reagents.maximum_volume)
-				to_chat(user, SPAN_DANGER("[src] is full."))
-				return
+		to_chat(M, SPAN_NOTICE(" You swallow a gulp from \the [src]."))
+		if(reagents.total_volume)
+			reagents.set_source_mob(user)
+			reagents.trans_to_ingest(M, gulp_size)
 
-			var/trans = target.reagents.trans_to(src, target:amount_per_transfer_from_this)
-			to_chat(user, SPAN_NOTICE(" You fill [src] with [trans] units of the contents of [target]."))
+		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
+		return 1
+	else if( istype(M, /mob/living/carbon/human) )
 
-		else if(target.is_open_container()) //Something like a glass. Player probably wants to transfer TO it.
-			if(!reagents.total_volume)
-				to_chat(user, SPAN_DANGER("[src] is empty."))
-				return
+		var/mob/living/carbon/human/H = M
+		if(H.species.flags & IS_SYNTHETIC)
+			to_chat(H, SPAN_DANGER("They have a monitor for a head, where do you think you're going to put that?"))
+			return
 
-			if(target.reagents.total_volume >= target.reagents.maximum_volume)
-				to_chat(user, SPAN_DANGER("[target] is full."))
-				return
+		user.affected_message(M,
+			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
+			SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
+			SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
+
+		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
+		user.affected_message(M,
+			SPAN_HELPFUL("You <b>fed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
+			SPAN_HELPFUL("[user] <b>fed</b> you <b>[src]</b>."),
+			SPAN_NOTICE("[user] fed [user == M ? "themselves" : "[M]"] [src]."))
+
+		var/rgt_list_text = get_reagent_list_text()
+
+		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been fed [src.name] by [user.name] ([user.ckey]) Reagents: [rgt_list_text]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [M.name] by [M.name] ([M.ckey]) Reagents: [rgt_list_text]</font>")
+		msg_admin_attack("[key_name(user)] fed [key_name(M)] with [src.name] Reagents: [rgt_list_text] (INTENT: [uppertext(user.a_intent)]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
+
+		if(reagents.total_volume)
+			reagents.set_source_mob(user)
+			reagents.trans_to_ingest(M, gulp_size)
+
+		if(isrobot(user)) //Cyborg modules that include drinks automatically refill themselves, but drain the borg's cell
+			var/mob/living/silicon/robot/bro = user
+			bro.cell.use(30)
+			var/refill = R.get_master_reagent_id()
+			spawn(MINUTES_1)
+				R.add_reagent(refill, fillevel)
+
+		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
+		return 1
+
+	return 0
+
+
+/obj/item/reagent_container/food/drinks/afterattack(obj/target, mob/user, proximity)
+	if(!proximity) return
+
+	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
+
+		if(!target.reagents.total_volume)
+			to_chat(user, SPAN_DANGER("[target] is empty."))
+			return
+
+		if(reagents.total_volume >= reagents.maximum_volume)
+			to_chat(user, SPAN_DANGER("[src] is full."))
+			return
+
+		var/trans = target.reagents.trans_to(src, target:amount_per_transfer_from_this)
+		to_chat(user, SPAN_NOTICE(" You fill [src] with [trans] units of the contents of [target]."))
+
+	else if(target.is_open_container()) //Something like a glass. Player probably wants to transfer TO it.
+		if(!reagents.total_volume)
+			to_chat(user, SPAN_DANGER("[src] is empty."))
+			return
+
+		if(target.reagents.total_volume >= target.reagents.maximum_volume)
+			to_chat(user, SPAN_DANGER("[target] is full."))
+			return
 
 
 
-			var/datum/reagent/refill
-			var/datum/reagent/refillName
-			if(isrobot(user))
-				refill = reagents.get_master_reagent_id()
-				refillName = reagents.get_master_reagent_name()
+		var/datum/reagent/refill
+		var/datum/reagent/refillName
+		if(isrobot(user))
+			refill = reagents.get_master_reagent_id()
+			refillName = reagents.get_master_reagent_name()
 
-			var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
-			to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the solution to [target]."))
+		var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
+		to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the solution to [target]."))
 
-			if(isrobot(user)) //Cyborg modules that include drinks automatically refill themselves, but drain the borg's cell
-				var/mob/living/silicon/robot/bro = user
-				var/chargeAmount = max(30,4*trans)
-				bro.cell.use(chargeAmount)
-				to_chat(user, "Now synthesizing [trans] units of [refillName]...")
+		if(isrobot(user)) //Cyborg modules that include drinks automatically refill themselves, but drain the borg's cell
+			var/mob/living/silicon/robot/bro = user
+			var/chargeAmount = max(30,4*trans)
+			bro.cell.use(chargeAmount)
+			to_chat(user, "Now synthesizing [trans] units of [refillName]...")
 
 
-				spawn(SECONDS_30)
-					reagents.add_reagent(refill, trans)
-					to_chat(user, "Cyborg [src] refilled.")
+			spawn(SECONDS_30)
+				reagents.add_reagent(refill, trans)
+				to_chat(user, "Cyborg [src] refilled.")
 
-		return ..()
+	return ..()
 
-	examine(mob/user)
-		..()
-		if (get_dist(user, src) > 1 && user != loc) return
-		if(!reagents || reagents.total_volume==0)
-			to_chat(user, SPAN_NOTICE(" \The [src] is empty!"))
-		else if (reagents.total_volume<=src.volume/4)
-			to_chat(user, SPAN_NOTICE(" \The [src] is almost empty!"))
-		else if (reagents.total_volume<=src.volume*0.66)
-			to_chat(user, SPAN_NOTICE(" \The [src] is half full!"))
-		else if (reagents.total_volume<=src.volume*0.90)
-			to_chat(user, SPAN_NOTICE(" \The [src] is almost full!"))
-		else
-			to_chat(user, SPAN_NOTICE(" \The [src] is full!"))
+/obj/item/reagent_container/food/drinks/examine(mob/user)
+	..()
+	if (get_dist(user, src) > 1 && user != loc) return
+	if(!reagents || reagents.total_volume==0)
+		to_chat(user, SPAN_NOTICE(" \The [src] is empty!"))
+	else if (reagents.total_volume<=src.volume/4)
+		to_chat(user, SPAN_NOTICE(" \The [src] is almost empty!"))
+	else if (reagents.total_volume<=src.volume*0.66)
+		to_chat(user, SPAN_NOTICE(" \The [src] is half full!"))
+	else if (reagents.total_volume<=src.volume*0.90)
+		to_chat(user, SPAN_NOTICE(" \The [src] is almost full!"))
+	else
+		to_chat(user, SPAN_NOTICE(" \The [src] is full!"))
 
 
 ////////////////////////////////////////////////////////////////////////////////

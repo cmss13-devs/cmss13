@@ -1,7 +1,7 @@
 /obj/effect/spawner/random
 	name = "Random Object"
 	desc = "This item type is used to spawn random objects at round-start"
-	icon = 'icons/misc/mark.dmi'
+	icon = 'icons/old_stuff/mark.dmi'
 	icon_state = "rup"
 	var/spawn_nothing_percentage = 0 // this variable determines the likelyhood that this random object will not spawn anything
 
@@ -53,7 +53,7 @@
 /obj/effect/spawner/random/powercell
 	name = "Random Powercell"
 	desc = "This is a random powercell."
-	icon = 'icons/obj/power.dmi'
+	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "cell"
 	item_to_spawn()
 		return pick(prob(10);/obj/item/cell/crap,\
@@ -66,7 +66,7 @@
 /obj/effect/spawner/random/bomb_supply
 	name = "Bomb Supply"
 	desc = "This is a random bomb supply."
-	icon = 'icons/obj/assemblies/new_assemblies.dmi'
+	icon = 'icons/obj/items/new_assemblies.dmi'
 	icon_state = "signaller"
 	item_to_spawn()
 		return pick(/obj/item/device/assembly/igniter,\
@@ -78,7 +78,7 @@
 /obj/effect/spawner/random/toolbox
 	name = "Random Toolbox"
 	desc = "This is a random toolbox."
-	icon = 'icons/obj/items/storage/storage.dmi'
+	icon = 'icons/obj/items/storage.dmi'
 	icon_state = "red"
 	item_to_spawn()
 		return pick(prob(3);/obj/item/storage/toolbox/mechanical,\
@@ -89,7 +89,7 @@
 /obj/effect/spawner/random/tech_supply
 	name = "Random Tech Supply"
 	desc = "This is a random piece of technology supplies."
-	icon = 'icons/obj/power.dmi'
+	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "cell"
 	spawn_nothing_percentage = 50
 	item_to_spawn()
@@ -108,7 +108,7 @@
 /obj/effect/spawner/random/attachment
 	name = "Random Attachment"
 	desc = "This is a random attachment"
-	icon = 'icons/Marine/marine-weapons.dmi'
+	icon = 'icons/obj/items/weapons/guns/marine-weapons.dmi'
 	icon_state = "hbarrel"
 	item_to_spawn()
 		return pick(prob(3);/obj/item/attachable/flashlight,\
@@ -128,7 +128,7 @@
 /obj/effect/spawner/random/supply_kit
 	name = "Random Supply Kit"
 	desc = "This is a random kit."
-	icon = 'icons/Marine/pro_case.dmi'
+	icon = 'icons/obj/items/pro_case.dmi'
 	icon_state = "pro_case_mini"
 	item_to_spawn()
 		return pick(prob(3);/obj/item/storage/box/kit/pursuit,\

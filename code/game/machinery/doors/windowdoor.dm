@@ -1,7 +1,7 @@
 /obj/machinery/door/window
 	name = "Glass door"
 	desc = "A window, that is also a door. A windoor if you will."
-	icon = 'icons/obj/doors/windoor.dmi'
+	icon = 'icons/obj/structures/doors/windoor.dmi'
 	icon_state = "left"
 	layer = WINDOW_LAYER
 	var/base_state = "left"

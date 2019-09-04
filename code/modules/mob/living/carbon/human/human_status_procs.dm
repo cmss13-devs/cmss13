@@ -11,7 +11,7 @@
 
 /mob/living/carbon/human/KnockDown(amount)
 	if(HULK in mutations)	return
-	if(isYautja(src)) 
+	if(isYautja(src))
 		amount *= 0.5
 		if(round(amount) && src.contents && src.contents.len)
 			for(var/obj/item/weapon/wristblades/W in src.contents)

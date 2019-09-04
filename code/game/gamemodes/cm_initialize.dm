@@ -40,6 +40,7 @@ Additional game mode variables.
 
 /datum/game_mode
 	var/datum/mind/xenomorphs[] = list() //These are our basic lists to keep track of who is in the game.
+	var/datum/mind/picked_queen = null
 	var/datum/mind/survivors[] = list()
 	var/datum/mind/synth_survivor = null
 	var/datum/mind/predators[] = list()
@@ -164,6 +165,9 @@ datum/game_mode/proc/initialize_special_clamps()
 			if(player.client.prefs.be_special & BE_PREDATOR) //Are their prefs turned on?
 				if(!player.mind) //They have to have a key if they have a client.
 					player.mind_initialize() //Will work on ghosts too, but won't add them to active minds.
+				player.mind.setup_human_stats()
+				player.mind.faction = FACTION_YAUTJA
+				player.faction = FACTION_YAUTJA
 				players += player.mind
 	return players
 
@@ -223,7 +227,7 @@ datum/game_mode/proc/initialize_special_clamps()
 	if(!new_predator.client.prefs) new_predator.client.prefs = new /datum/preferences(new_predator.client) //Let's give them one.
 
 	if(wants_elder)
-		arm_equipment(new_predator, "Yautja Elder")
+		arm_equipment(new_predator, "Yautja Elder", FALSE, TRUE)
 
 		spawn(10)
 			to_chat(new_predator, SPAN_NOTICE("<B> Welcome Elder!</B>"))
@@ -232,14 +236,14 @@ datum/game_mode/proc/initialize_special_clamps()
 			to_chat(new_predator, SPAN_NOTICE("You come equipped as an Elder should, with a bonus glaive and heavy armor."))
 
 	else if(wants_leader)
-		arm_equipment(new_predator, "Yautja Councillor")
+		arm_equipment(new_predator, "Yautja Councillor", FALSE, TRUE)
 
 		spawn(10)
 			to_chat(new_predator, SPAN_NOTICE("<B> Welcome Councillor!</B>"))
 			to_chat(new_predator, SPAN_NOTICE("You are responsible for the well-being of your pupils. Hunting is secondary in priority."))
 			to_chat(new_predator, SPAN_NOTICE("That does not mean you can't go out and show the youngsters how it's done."))
 	else
-		arm_equipment(new_predator, "Yautja Blooded")
+		arm_equipment(new_predator, "Yautja Blooded", FALSE, TRUE)
 
 		spawn(12)
 			to_chat(new_predator, SPAN_NOTICE("You are <B>Yautja</b>, a great and noble predator!"))
@@ -263,11 +267,27 @@ datum/game_mode/proc/initialize_special_clamps()
 //If this is an optional behavior, just override this proc or make an override here.
 /datum/game_mode/proc/initialize_starting_xenomorph_list()
 	var/list/datum/mind/possible_xenomorphs = get_players_for_role(BE_ALIEN)
-	if(possible_xenomorphs.len < xeno_required_num) //We don't have enough aliens.
+	var/list/datum/mind/possible_queens = get_players_for_role(BE_QUEEN)
+	if(possible_xenomorphs.len < xeno_required_num) //We don't have enough aliens, we don't consider people rolling for only Queen.
 		to_world("<h2 style=\"color:red\">Not enough players have chosen to be a xenomorph in their character setup. <b>Aborting</b>.</h2>")
 		return
 
 	//Minds are not transferred at this point, so we have to clean out those who may be already picked to play.
+	for(var/datum/mind/A in possible_queens)
+		var/mob/living/original = A.current
+		if(A.assigned_role == "MODE" || jobban_isbanned(original, "Queen"))
+			possible_queens -= A
+
+	if(possible_queens.len) // Pink one of the people who want to be Queen and put them in
+		var/datum/mind/new_queen = pick(possible_queens)
+		if(new_queen)
+			new_queen.assigned_role = "MODE"
+			new_queen.special_role = "Xenomorph"
+			picked_queen = new_queen
+			new_queen.setup_xeno_stats()
+			new_queen.faction = FACTION_XENOMORPH
+
+	// Do this after we picked the Queen, so they get removed from possible xenos
 	for(var/datum/mind/A in possible_xenomorphs)
 		if(A.assigned_role == "MODE")
 			possible_xenomorphs -= A
@@ -286,13 +306,16 @@ datum/game_mode/proc/initialize_special_clamps()
 		else //Out of candidates, spawn in empty larvas directly
 			larvae_spawn = pick(xeno_spawn)
 			new /mob/living/carbon/Xenomorph/Larva(larvae_spawn)
+		if(new_xeno)
+			new_xeno.setup_xeno_stats()
+			new_xeno.faction = FACTION_XENOMORPH
 		i--
 
 	/*
 	Our list is empty. This can happen if we had someone ready as alien and predator, and predators are picked first.
 	So they may have been removed from the list, oh well.
 	*/
-	if(xenomorphs.len < xeno_required_num)
+	if(xenomorphs.len < xeno_required_num && isnull(picked_queen))
 		to_world("<h2 style=\"color:red\">Could not find any candidates after initial alien list pass. <b>Aborting</b>.</h2>")
 		return
 
@@ -301,6 +324,9 @@ datum/game_mode/proc/initialize_special_clamps()
 /datum/game_mode/proc/initialize_post_xenomorph_list()
 	for(var/datum/mind/new_xeno in xenomorphs) //Build and move the xenos.
 		transform_xeno(new_xeno)
+	// Have to spawn the queen last or the mind will be added to xenomorphs and double spawned
+	if(picked_queen)
+		transform_queen(picked_queen)
 
 /datum/game_mode/proc/check_xeno_late_join(mob/xeno_candidate)
 	if(jobban_isbanned(xeno_candidate, "Alien")) // User is jobbanned
@@ -404,40 +430,42 @@ datum/game_mode/proc/initialize_special_clamps()
 		if(X.is_ventcrawling) X.add_ventcrawl(X.loc) //If we are in a vent, fetch a fresh vent map
 	return 1
 
+/datum/game_mode/proc/transform_queen(datum/mind/ghost_mind)
+	var/mob/living/original = ghost_mind.current
+	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
+	if(hive.living_xeno_queen || !original || !original.client)
+		return
+	var/mob/living/carbon/Xenomorph/new_queen = new /mob/living/carbon/Xenomorph/Queen (pick(xeno_spawn))
+	ghost_mind.transfer_to(new_queen) //The mind is fine, since we already labeled them as a xeno. Away they go.
+	ghost_mind.name = ghost_mind.current.name
+
+	to_chat(new_queen, "<B>You are now the alien queen!</B>")
+	to_chat(new_queen, "<B>Your job is to spread the hive.</B>")
+	to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
+
+	new_queen.update_icons()
+
 /datum/game_mode/proc/transform_xeno(datum/mind/ghost_mind)
 	var/mob/living/original = ghost_mind.current
-	var/mob/living/carbon/Xenomorph/new_xeno
-	var/is_queen = FALSE
-	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
-	if(!hive.living_xeno_queen && original && original.client && original.client.prefs && (original.client.prefs.be_special & BE_QUEEN) && !jobban_isbanned(original, "Queen"))
-		new_xeno = new /mob/living/carbon/Xenomorph/Queen (pick(xeno_spawn))
-		is_queen = TRUE
-		ghost_mind.transfer_to(new_xeno) //The mind is fine, since we already labeled them as a xeno. Away they go.
-		ghost_mind.name = ghost_mind.current.name
-	else
-		original.first_xeno = TRUE
-		original.stat = 1
-		transform_survivor(ghost_mind) //Create a new host
-		original.adjustBruteLoss(50) //Do some damage to the host
-		var/obj/structure/bed/nest/start_nest = new /obj/structure/bed/nest(original.loc) //Create a new nest for the host
-		original.buckled = start_nest
-		original.dir = start_nest.dir
-		original.update_canmove()
-		start_nest.buckled_mob = original
-		start_nest.afterbuckle(original)
-		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(original) //Put the initial larva in a host
-		embryo.stage = 5 //Give the embryo a head-start (make the larva burst instantly)
 
-	if(is_queen)
-		to_chat(new_xeno, "<B>You are now the alien queen!</B>")
-		to_chat(new_xeno, "<B>Your job is to spread the hive.</B>")
-		to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
+	original.first_xeno = TRUE
+	original.stat = 1
+	transform_survivor(ghost_mind) //Create a new host
+	original.adjustBruteLoss(50) //Do some damage to the host
+	
+	var/obj/structure/bed/nest/start_nest = new /obj/structure/bed/nest(original.loc) //Create a new nest for the host
+	original.buckled = start_nest
+	original.dir = start_nest.dir
+	original.update_canmove()
+	start_nest.buckled_mob = original
+	start_nest.afterbuckle(original)
 
-	if(new_xeno)
-		new_xeno.update_icons()
+	var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(original) //Put the initial larva in a host
+	embryo.stage = 5 //Give the embryo a head-start (make the larva burst instantly)
 
-	if(original && !original.first_xeno) qdel(original) //Just to be sure.
-	if(original.first_xeno) qdel(new_xeno)
+	if(original && !original.first_xeno)
+		original.statistic_exempt = TRUE
+		qdel(original)
 
 //===================================================\\
 
@@ -574,7 +602,7 @@ datum/game_mode/proc/initialize_special_clamps()
 
 	//Give them proper jobs and stuff here later
 	var/randjob = pick(survivor_types)
-	arm_equipment(H, randjob, FALSE)
+	arm_equipment(H, randjob, FALSE, TRUE)
 
 
 /datum/game_mode/proc/survivor_event_transform(var/mob/living/carbon/human/H, var/obj/effect/landmark/survivor_spawner/spawner, var/is_synth = FALSE)
@@ -586,7 +614,7 @@ datum/game_mode/proc/initialize_special_clamps()
 	if(!spawner.equipment || is_synth)
 		survivor_old_equipment(H, is_synth)
 	else
-		if(arm_equipment(H,spawner.equipment) == -1)
+		if(arm_equipment(H, spawner.equipment, FALSE, TRUE) == -1)
 			to_chat(H, "SET02: Something went wrong, tell a coder. You may ask admin to spawn you as a survivor.")
 			return
 	H.name = H.get_visible_name()

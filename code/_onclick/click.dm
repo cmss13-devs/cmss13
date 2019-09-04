@@ -275,7 +275,7 @@
 
 
 /obj/screen/click_catcher
-	icon = 'icons/mob/screen1.dmi'
+	icon = 'icons/mob/hud/screen1.dmi'
 	icon_state = "catcher"
 	layer = 0
 	plane = -99
@@ -285,7 +285,7 @@
 
 
 /obj/screen/click_catcher/proc/UpdateGreed(view_size_x = 15, view_size_y = 15)
-	var/icon/newicon = icon('icons/mob/screen1.dmi', "catcher")
+	var/icon/newicon = icon('icons/mob/hud/screen1.dmi', "catcher")
 	var/ox = min((33 * 32)/ world.icon_size, view_size_x)
 	var/oy = min((33 * 32)/ world.icon_size, view_size_y)
 	var/px = view_size_x * world.icon_size

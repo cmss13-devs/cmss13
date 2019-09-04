@@ -336,7 +336,7 @@ should be alright.
 		iff_enabled_current = TRUE
 	if(in_chamber) //Hi, I'm an old bullet. I don't have a fucking IFF enabled yet.
 		qdel(in_chamber)
-		in_chamber = create_bullet(ammo) //OK
+		in_chamber = create_bullet(ammo, initial(name)) //OK
 
 /obj/item/weapon/gun/proc/can_attach_to_gun(mob/user, obj/item/attachable/attachment)
 	if(attachable_allowed && !(attachment.type in attachable_allowed) )
@@ -397,6 +397,8 @@ should be alright.
 	else attachable_overlays[slot] = null
 
 /obj/item/weapon/gun/proc/update_mag_overlay()
+	if(!attachable_overlays["mag"])
+		return
 	var/image/I = attachable_overlays["mag"]
 	overlays -= I
 	qdel(I)

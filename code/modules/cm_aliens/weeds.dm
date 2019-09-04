@@ -3,7 +3,7 @@
 /obj/effect/alien/weeds
 	name = "weeds"
 	desc = "Weird black weeds..."
-	icon = 'icons/Xeno/weeds.dmi'
+	icon = 'icons/mob/xenos/weeds.dmi'
 	icon_state = "base"
 
 	anchored = 1

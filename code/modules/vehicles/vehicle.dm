@@ -1,12 +1,14 @@
 /obj/vehicle
 	name = "vehicle"
-	icon = 'icons/obj/vehicles.dmi'
+	icon = 'icons/obj/vehicles/vehicles.dmi'
 	layer = ABOVE_MOB_LAYER //so it sits above objects including mobs
 	density = 1
 	anchored = 1
 	animate_movement = 1
 	luminosity = 2
 	can_buckle = TRUE
+
+	var/mob/driver
 
 	var/attack_log = null
 	var/on = 0
@@ -117,6 +119,9 @@
 //-------------------------------------------
 // Vehicle procs
 //-------------------------------------------
+/obj/vehicle/proc/set_driver(var/mob/M)
+	driver = M
+
 /obj/vehicle/proc/turn_on()
 	if(stat)
 		return 0

@@ -22450,8 +22450,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/green{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
 	},
 /turf/open/floor{
 	tag = "icon-dark2";
@@ -22729,7 +22730,6 @@
 	},
 /area/ice_colony/surface/excavation)
 "beM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/structure/table,
 /obj/item/storage/firstaid,
 /turf/open/floor{
@@ -22863,16 +22863,6 @@
 	},
 /area/ice_colony/surface/excavation)
 "bfd" = (
-/obj/structure/bed/chair/comfy{
-	dir = 1
-	},
-/turf/open/floor{
-	tag = "icon-dark2";
-	icon_state = "dark2"
-	},
-/area/ice_colony/surface/excavation)
-"bfe" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/structure/bed/chair/comfy{
 	dir = 1
 	},
@@ -23027,7 +23017,6 @@
 	},
 /area/ice_colony/surface/excavation)
 "bfz" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/machinery/light,
 /turf/open/floor{
 	tag = "icon-darkblue2";
@@ -23231,10 +23220,6 @@
 	icon_state = "warnplate"
 	},
 /area/ice_colony/surface/excavation/storage)
-"bfZ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/turf/closed/wall,
-/area/ice_colony/surface/excavation)
 "bga" = (
 /obj/structure/ice/thin/end{
 	tag = "icon-End (WEST)";
@@ -23327,10 +23312,6 @@
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
-"bgn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/turf/closed/ice,
-/area/ice_colony/exterior/surface/cliff)
 "bgo" = (
 /obj/structure/rack,
 /obj/item/storage/box/lightstick/red,
@@ -23712,10 +23693,6 @@
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
-"bhl" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/turf/closed/ice/junction,
-/area/ice_colony/exterior/surface/cliff)
 "bhm" = (
 /obj/machinery/light{
 	dir = 4;
@@ -23779,10 +23756,6 @@
 	dir = 6
 	},
 /area/ice_colony/underground/hangar)
-"bhv" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/turf/closed/ice/end,
-/area/ice_colony/exterior/surface/cliff)
 "bhw" = (
 /obj/machinery/light{
 	dir = 8;
@@ -23943,10 +23916,6 @@
 	},
 /turf/open/snow/layer1,
 /area/ice_colony/exterior/surface/valley/south/excavation)
-"bhN" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/turf/open/snow/layer1,
-/area/ice_colony/exterior/surface/valley/south/excavation)
 "bhO" = (
 /obj/structure/rack,
 /obj/item/clothing/mask/rebreather,
@@ -24002,10 +23971,6 @@
 	dir = 10
 	},
 /area/ice_colony/underground/hangar)
-"bhX" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/turf/open/snow/layer0,
-/area/ice_colony/exterior/surface/valley/south/excavation)
 "bhY" = (
 /obj/machinery/constructable_frame,
 /turf/open/floor{
@@ -24382,14 +24347,6 @@
 /obj/item/device/flashlight,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
-"bjj" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/turf/closed/ice/straight{
-	tag = "icon-Straight (EAST)";
-	icon_state = "Straight";
-	dir = 4
-	},
-/area/ice_colony/exterior/surface/cliff)
 "bjk" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -24560,10 +24517,6 @@
 /obj/structure/table/reinforced,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
-"bjL" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/turf/closed/ice_rock/northWall,
-/area/ice_colony/exterior/surface/cliff)
 "bjM" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -24645,10 +24598,6 @@
 /obj/structure/table/reinforced,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
-"bjW" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/turf/closed/ice_rock/corners,
-/area/ice_colony/exterior/surface/cliff)
 "bjX" = (
 /obj/structure/table/woodentable,
 /obj/item/device/flashlight/lamp,
@@ -25025,10 +24974,6 @@
 	icon_state = "wood"
 	},
 /area/ice_colony/underground/crew/library)
-"blb" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/turf/closed/ice,
-/area/ice_colony/exterior/underground/caves)
 "blc" = (
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/research)
@@ -26390,10 +26335,6 @@
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hallway/south_east)
-"boL" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/turf/closed/wall/r_wall,
-/area/ice_colony/underground/engineering)
 "boM" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
@@ -26546,11 +26487,6 @@
 	dir = 5
 	},
 /area/ice_colony/underground/hallway/south_east)
-"bph" = (
-/obj/structure/window/framed/colony/reinforced,
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/turf/open/floor/plating,
-/area/ice_colony/underground/engineering)
 "bpi" = (
 /obj/machinery/light{
 	dir = 1
@@ -26808,11 +26744,14 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/green,
 /obj/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Underground Power Substation";
 	req_access = list(100)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
 	},
 /turf/open/floor{
 	tag = "icon-dark2";
@@ -39074,15 +39013,6 @@
 	},
 /turf/open/floor,
 /area/ice_colony/surface/tcomms)
-"bTZ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/ice/thin/straight{
-	tag = "icon-Straight (EAST)";
-	icon_state = "Straight";
-	dir = 4
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/surface/valley/south/excavation)
 "bUc" = (
 /obj/machinery/door/airlock/multi_tile/elevator/access/arrivals,
 /turf/open/floor{
@@ -40041,7 +39971,7 @@
 /obj{
 	anchored = 1;
 	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/doors/hightechsecurity.dmi';
+	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
 	icon_state = "door_open";
 	name = "strange airlock"
 	},
@@ -40153,7 +40083,7 @@
 "bWN" = (
 /obj/structure/inflatable/door,
 /turf/open/floor/icefloor{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors/floors.dmi';
 	icon_state = "ramptop"
 	},
 /area/ice_colony/exterior/underground/caves/dig)
@@ -40162,7 +40092,7 @@
 /obj{
 	anchored = 1;
 	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/doors/hightechsecurity.dmi';
+	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
 	icon_state = "door_open";
 	name = "strange airlock"
 	},
@@ -40240,7 +40170,7 @@
 /obj{
 	anchored = 1;
 	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/doors/hightechsecurity.dmi';
+	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
 	icon_state = "door_open";
 	name = "strange airlock"
 	},
@@ -40263,7 +40193,7 @@
 /obj{
 	anchored = 1;
 	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/doors/hightechsecurity.dmi';
+	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
 	icon_state = "door_open";
 	name = "strange airlock"
 	},
@@ -40348,7 +40278,7 @@
 	anchored = 1;
 	density = 1;
 	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/doors/hightechsecurity.dmi';
+	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
 	icon_state = "door_closed";
 	name = "strange airlock";
 	opacity = 1
@@ -40388,7 +40318,7 @@
 	anchored = 1;
 	density = 1;
 	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/doors/hightechsecurity.dmi';
+	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
 	icon_state = "door_closed";
 	name = "strange airlock";
 	opacity = 1
@@ -40400,7 +40330,7 @@
 /area/ice_colony/exterior/underground/caves/dig)
 "bXo" = (
 /obj/machinery/door/poddoor{
-	icon = 'icons/obj/doors/hightechsecurity.dmi';
+	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
 	icon_state = "door_closed";
 	name = "Strange Airlock"
 	},
@@ -40414,7 +40344,7 @@
 	anchored = 1;
 	density = 1;
 	desc = "This doors looks like it has been made by aliens...";
-	icon = 'icons/obj/doors/hightechsecurity.dmi';
+	icon = 'icons/obj/structures/doors/hightechsecurity.dmi';
 	icon_state = "door_closed";
 	name = "strange airlock";
 	opacity = 1
@@ -40454,7 +40384,7 @@
 /area/ice_colony/exterior/underground/caves/open)
 "bXu" = (
 /turf/open/floor/icefloor{
-	icon = 'icons/turf/floors.dmi';
+	icon = 'icons/turf/floors/floors.dmi';
 	icon_state = "ramptop"
 	},
 /area/ice_colony/exterior/underground/caves/dig)
@@ -41065,6 +40995,13 @@
 	dir = 1
 	},
 /area/ice_colony/underground/reception/checkpoint_north)
+"hmT" = (
+/turf/closed/ice_rock/corners{
+	tag = "icon-full_corners (NORTHWEST)";
+	icon_state = "full_corners";
+	dir = 9
+	},
+/area/ice_colony/exterior/surface/valley/south)
 "iBu" = (
 /obj/structure/table/reinforced,
 /obj/item/paper/research_notes,
@@ -41073,13 +41010,6 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/underground/research)
-"hmT" = (
-/turf/closed/ice_rock/corners{
-	tag = "icon-full_corners (NORTHWEST)";
-	icon_state = "full_corners";
-	dir = 9
-	},
-/area/ice_colony/exterior/surface/valley/south)
 "jsn" = (
 /obj/machinery/colony_floodlight,
 /turf/open/snow/layer1,
@@ -41478,11 +41408,6 @@
 /obj/item/document_objective/folder,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
-"yle" = (
-/obj/structure/filingcabinet,
-/obj/item/paper/research_notes,
-/turf/open/floor/wood,
-/area/ice_colony/surface/command/crisis)
 "xrT" = (
 /obj/structure/rack,
 /turf/open/floor{
@@ -41499,6 +41424,11 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/tcomms)
+"yle" = (
+/obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
+/turf/open/floor/wood,
+/area/ice_colony/surface/command/crisis)
 
 (1,1,1) = {"
 aaa
@@ -70973,38 +70903,38 @@ bcK
 bdn
 bed
 beM
-bfe
+bfd
 bfz
-bfZ
-bgn
-bgn
-bgn
-bgn
-bhl
-bhv
-bhN
-bhX
-bhX
-bhX
-bTZ
-bjj
-bgn
-bjL
-bjW
-bjW
-bjW
-bjW
-blb
-blb
-blb
-blb
-blb
-blb
-blb
-blb
-boL
-bph
-boQ
+bci
+aaC
+aaC
+aaC
+aaC
+abj
+abn
+bbJ
+bbK
+bbK
+bbK
+bbX
+aaQ
+aaC
+acm
+aac
+aac
+aac
+aac
+aZF
+aZF
+aZF
+aZF
+aZF
+aZF
+aZF
+aZF
+bnk
+bpl
+box
 bpV
 bpl
 bnk

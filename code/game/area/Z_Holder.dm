@@ -17,7 +17,7 @@
 	var/Planet = 0 //Set true if this is a planet, and the ground shouldn't "breach to space"
 	var/Station = 0 //Set true if this is a station, and it should breach to space
 	var/Sulaco = 0 //Set true if this is a deck of the Sulaco.
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "relay"
 	unacidable = 1
 	anchored = 1

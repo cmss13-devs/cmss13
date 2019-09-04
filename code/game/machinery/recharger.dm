@@ -2,7 +2,7 @@
 
 obj/machinery/recharger
 	name = "recharger"
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "recharger"
 	anchored = 1
 	use_power = 1
@@ -210,7 +210,7 @@ obj/machinery/recharger/update_icon()	//we have an update_icon() in addition to 
 /*
 obj/machinery/recharger/wallcharger
 	name = "wall recharger"
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "wrecharger0"
 	active_power_usage = 25000	//25 kW , It's more specialized than the standalone recharger (guns and batons only) so make it more powerful
 	allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/baton)

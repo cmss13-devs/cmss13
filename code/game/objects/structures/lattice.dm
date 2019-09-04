@@ -15,7 +15,7 @@
 	for(var/obj/structure/lattice/LAT in src.loc)
 		if(LAT != src)
 			qdel(LAT)
-	icon = 'icons/obj/smoothlattice.dmi'
+	icon = 'icons/obj/structures/props/smoothlattice.dmi'
 	icon_state = "latticeblank"
 	updateOverlays()
 	for (var/dir in cardinal)

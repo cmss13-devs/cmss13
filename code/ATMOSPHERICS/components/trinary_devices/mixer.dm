@@ -1,5 +1,5 @@
 /obj/machinery/atmospherics/trinary/mixer
-	icon = 'icons/atmos/mixer.dmi'
+	icon = 'icons/obj/pipes/mixer.dmi'
 	icon_state = "map"
 	density = 0
 	level = 1

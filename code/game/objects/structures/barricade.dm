@@ -1,7 +1,7 @@
 // Snow, wood, sandbags, metal, plasteel
 
 /obj/structure/barricade
-	icon = 'icons/Marine/barricades.dmi'
+	icon = 'icons/obj/structures/barricades.dmi'
 	climbable = TRUE
 	anchored = TRUE
 	density = 1
@@ -17,13 +17,13 @@
 	var/crusher_resistant = TRUE //Whether a crusher can ram through it.
 	var/barricade_resistance = 5 //How much force an item needs to even damage it at all.
 	var/barricade_hitsound
-
 	var/barricade_type = "barricade" //"metal", "plasteel", etc.
 	var/can_change_dmg_state = TRUE
 	var/damage_state = BARRICADE_DMG_NONE
 	var/closed = FALSE
 	var/can_wire = FALSE
 	var/is_wired = FALSE
+	var/bullet_divider = 10
 	flags_barrier = HANDLE_BARRIER_CHANCE
 	projectile_coverage = PROJECTILE_COVERAGE_HIGH
 
@@ -136,10 +136,14 @@
 			user.visible_message(SPAN_NOTICE("[user] starts setting up [W.name] on [src]."),
 			SPAN_NOTICE("You start setting up [W.name] on [src]."))
 			if(do_after(user, 20, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) && can_wire)
+				// Make sure there's still enough wire in the stack
+				if(!B.use(1))
+					return
+
 				playsound(src.loc, 'sound/effects/barbed_wire_movement.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] sets up [W.name] on [src]."),
 				SPAN_NOTICE("You set up [W.name] on [src]."))
-				B.use(1)
+
 				maxhealth += 50
 				update_health(-50)
 				can_wire = FALSE
@@ -170,6 +174,19 @@
 		if(barricade_hitsound)
 			playsound(src, barricade_hitsound, 25, 1)
 		hit_barricade(W)
+
+/obj/structure/barricade/bullet_act(obj/item/projectile/P)
+	bullet_ping(P)
+
+	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
+		take_damage(50)
+
+	else if (P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
+		take_damage(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
+
+	take_damage(round(P.damage/bullet_divider))
+
+	return TRUE
 
 /obj/structure/barricade/destroy(deconstruct)
 	if(deconstruct && is_wired)
@@ -228,9 +245,9 @@
 
 	if(is_wired)
 		if(!closed)
-			overlays += image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_wire")
+			overlays += image('icons/obj/structures/barricades.dmi', icon_state = "[src.barricade_type]_wire")
 		else
-			overlays += image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_closed_wire")
+			overlays += image('icons/obj/structures/barricades.dmi', icon_state = "[src.barricade_type]_closed_wire")
 
 // This proc is called whenever the cade is moved, so I thought it was appropriate,
 // especially since the barricade's direction needs to be handled when moving
@@ -330,6 +347,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	stack_amount = 3
 	destroyed_stack_amount = 0
 	can_wire = FALSE
+	bullet_divider = 2
 
 /obj/structure/barricade/snow/New(loc, direction)
 	if(direction)
@@ -371,18 +389,6 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 	return
 
-/obj/structure/barricade/snow/bullet_act(var/obj/item/projectile/P)
-	bullet_ping(P)
-
-	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage(50)
-
-	else if (P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
-		take_damage(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
-
-	take_damage(round(P.damage/2)) //Not that durable.
-
-	return TRUE
 
 /*----------------------*/
 // WOOD
@@ -403,6 +409,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	can_change_dmg_state = 0
 	barricade_type = "wooden"
 	can_wire = FALSE
+	bullet_divider = 2
 
 /obj/structure/barricade/wooden/attackby(obj/item/W as obj, mob/user as mob)
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
@@ -430,18 +437,6 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		if("brute")
 			take_damage( I.force * 0.75 )
 
-/obj/structure/barricade/wooden/bullet_act(var/obj/item/projectile/P)
-	bullet_ping(P)
-
-	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage(50)
-
-	else if (P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
-		take_damage(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
-
-	take_damage(round(P.damage/2)) //Not that durable.
-
-	return TRUE
 
 /*----------------------*/
 // METAL
@@ -462,6 +457,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	barricade_hitsound = "sound/effects/metalhit.ogg"
 	barricade_type = "metal"
 	can_wire = TRUE
+	bullet_divider = 5
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 
 /obj/structure/barricade/metal/examine(mob/user)
@@ -585,18 +581,6 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 	. = ..()
 
-/obj/structure/barricade/metal/bullet_act(obj/item/projectile/P)
-	bullet_ping(P)
-
-	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage(50)
-
-	else if (P.ammo.flags_ammo_behavior * AMMO_ANTISTRUCT)
-		take_damage(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
-
-	take_damage(round(P.damage/5))
-
-	return TRUE
 
 /*----------------------*/
 // DEPLOYABLE
@@ -707,18 +691,6 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		user.put_in_active_hand(FB)
 	qdel(src)
 
-/obj/structure/barricade/deployable/bullet_act(obj/item/projectile/P)
-	bullet_ping(P)
-
-	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage(50)
-
-	else if (P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
-		take_damage(P.damage * ANTISTRUCT_DMG_MULT_BARRICADES)
-
-	take_damage(round(P.damage/10))
-
-	return TRUE
 
 //CADE IN HANDS
 /obj/item/folding_barricade
@@ -729,7 +701,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	icon_state = "folding"
-	icon = 'icons/Marine/marine-items.dmi'
+	icon = 'icons/obj/items/marine-items.dmi'
 
 /obj/item/folding_barricade/attack_self(mob/user as mob)
 	for(var/obj/structure/barricade/B in loc)
@@ -788,9 +760,9 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			for(var/obj/structure/barricade/plasteel/cade in get_step(src, direction))
 				if(((dir & (NORTH|SOUTH) && get_dir(src, cade) & (EAST|WEST)) || (dir & (EAST|WEST) && get_dir(src, cade) & (NORTH|SOUTH))) && dir == cade.dir && cade.linked && cade.closed == src.closed)
 					if(closed)
-						overlays += image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_closed_connection_[get_dir(src, cade)]")
+						overlays += image('icons/obj/structures/barricades.dmi', icon_state = "[src.barricade_type]_closed_connection_[get_dir(src, cade)]")
 					else
-						overlays += image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_connection_[get_dir(src, cade)]")
+						overlays += image('icons/obj/structures/barricades.dmi', icon_state = "[src.barricade_type]_connection_[get_dir(src, cade)]")
 					continue
 
 
@@ -1005,18 +977,6 @@ obj/structure/barricade/proc/take_damage(var/damage)
 					cade.close(src)
 	update_icon()
 
-/obj/structure/barricade/plasteel/bullet_act(obj/item/projectile/P)
-	bullet_ping(P)
-
-	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage(50)
-
-	else if (P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
-		take_damage(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
-
-	take_damage(round(P.damage/10))
-
-	return TRUE
 
 /*----------------------*/
 // SANDBAGS
@@ -1088,18 +1048,179 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	else
 		. = ..()
 
-/obj/structure/barricade/sandbags/bullet_act(obj/item/projectile/P)
-	bullet_ping(P)
 
-	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage(50)
+/*----------------------*/
+// HANDRAILS
+/*----------------------*/
 
-	else if (P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
-		take_damage(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
+/obj/structure/barricade/handrail
+	name = "handrail"
+	desc = "A railing, for your hands. Woooow."
+	icon = 'icons/obj/structures/handrail.dmi'
+	icon_state = "handrail_a_0"
+	barricade_type = "handrail"
+	health = 30 
+	maxhealth = 30
+	climb_delay = 5
+	stack_type = /obj/item/stack/sheet/metal
+	debris = list(/obj/item/stack/sheet/metal)
+	stack_amount = 2
+	destroyed_stack_amount = 1
+	crusher_resistant = FALSE
+	can_wire = FALSE
+	barricade_hitsound = "sound/effects/metalhit.ogg"
+	projectile_coverage = PROJECTILE_COVERAGE_LOW
+	var/build_state = BARRICADE_BSTATE_SECURED 
+	var/reinforced = FALSE	//Reinforced to be a cade or not
 
-	take_damage(round(P.damage/10))
+/obj/structure/barricade/handrail/update_icon()
+	overlays.Cut()
+	switch(dir)
+		if(SOUTH) layer = ABOVE_MOB_LAYER
+		if(NORTH) layer = initial(layer) - 0.01
+		else layer = initial(layer)
+	if(!anchored)
+		layer = initial(layer)
+	if(build_state == BARRICADE_BSTATE_FORTIFIED)
+		if(reinforced)
+			overlays += image('icons/obj/structures/handrail.dmi', icon_state = "[barricade_type]_reinforced_[damage_state]")
+		else
+			overlays += image('icons/obj/structures/handrail.dmi', icon_state = "[barricade_type]_welder_step")
 
-	return TRUE
+/obj/structure/barricade/handrail/examine(mob/user)
+	..()
+	switch(build_state)
+		if(BARRICADE_BSTATE_SECURED)
+			to_chat(user, SPAN_INFO("The [barricade_type] is safely secured to the ground."))
+		if(BARRICADE_BSTATE_UNSECURED)
+			to_chat(user, SPAN_INFO("The bolts nailing it to the ground has been unsecured."))
+		if(BARRICADE_BSTATE_FORTIFIED)
+			if(reinforced)
+				to_chat(user, SPAN_INFO("The [barricade_type] has been reinforced with metal."))
+			else
+				to_chat(user, SPAN_INFO("Metal has been laid across the [barricade_type]. Weld it to secure it."))
+
+/obj/structure/barricade/handrail/proc/reinforce()
+	if(reinforced)
+		if(health == maxhealth)	// Drop metal if full hp when unreinforcing
+			new /obj/item/stack/sheet/metal(loc)	
+		health = initial(health)
+		maxhealth = initial(maxhealth)
+		projectile_coverage = initial(projectile_coverage)
+	else
+		health = 350
+		maxhealth = 350
+		projectile_coverage = PROJECTILE_COVERAGE_HIGH
+	reinforced = !reinforced
+	update_icon()
+
+/obj/structure/barricade/handrail/attackby(obj/item/W, mob/user)
+	for(var/obj/effect/xenomorph/acid/A in src.loc)
+		if(A.acid_t == src)
+			to_chat(user, "You can't get near that, it's melting!")
+			return
+
+	switch(build_state)
+		if(BARRICADE_BSTATE_SECURED) //Non-reinforced. Wrench to unsecure. Screwdriver to disassemble into metal. 1 metal to reinforce.
+			if(iswrench(W)) // Make unsecure
+				if(user.action_busy)
+					return
+				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
+					to_chat(user, SPAN_WARNING("You are not trained to unsecure [src]..."))
+					return
+				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+				user.visible_message(SPAN_NOTICE("[user] loosens [src]'s anchor bolts."),
+				SPAN_NOTICE("You loosen [src]'s anchor bolts."))
+				anchored = FALSE
+				build_state = BARRICADE_BSTATE_UNSECURED
+				update_icon()
+				return
+			if(istype(W, /obj/item/stack/sheet/metal)) // Start reinforcing
+				if(user.action_busy)
+					return
+				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
+					to_chat(user, SPAN_WARNING("You are not trained to reinforce [src]..."))
+					return
+				var/obj/item/stack/sheet/metal/M = W
+				playsound(src.loc, 'sound/items/Screwdriver2.ogg', 25, 1)
+				if(M.amount >= 1 && do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) //Shouldnt be possible, but doesnt hurt to check
+					if(!M.use(1))
+						return
+					build_state = BARRICADE_BSTATE_FORTIFIED
+					update_icon()
+				else
+					to_chat(user, SPAN_WARNING("You need at least one metal sheet to do this."))
+				return
+
+		if(BARRICADE_BSTATE_UNSECURED) 
+			if(iswrench(W)) // Secure again
+				if(user.action_busy)
+					return
+				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
+					to_chat(user, SPAN_WARNING("You are not trained to secure [src]..."))
+					return
+				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+				user.visible_message(SPAN_NOTICE("[user] tightens [src]'s anchor bolts."),
+				SPAN_NOTICE("You tighten [src]'s anchor bolts."))
+				anchored = TRUE
+				build_state = BARRICADE_BSTATE_SECURED
+				update_icon()
+				return
+			if(isscrewdriver(W)) // Disassemble into metal
+				if(user.action_busy)
+					return
+				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
+					to_chat(user, SPAN_WARNING("You are not trained to disassemble [src]..."))
+					return
+				user.visible_message(SPAN_NOTICE("[user] starts unscrewing [src]'s panels."),
+				SPAN_NOTICE("You remove [src]'s panels and start taking it apart."))
+				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+				user.visible_message(SPAN_NOTICE("[user] takes apart [src]."),
+				SPAN_NOTICE("You take apart [src]."))
+				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
+				destroy(TRUE) 
+				return
+			
+		if(BARRICADE_BSTATE_FORTIFIED) 
+			if(reinforced)
+				if(iscrowbar(W)) // Un-reinforce
+					if(user.action_busy)
+						return
+					if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
+						to_chat(user, SPAN_WARNING("You are not trained to unreinforce [src]..."))
+						return
+					playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
+					if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+					user.visible_message(SPAN_NOTICE("[user] pries off [src]'s extra metal panel."),
+					SPAN_NOTICE("You pry off [src]'s extra metal panel."))
+					build_state = BARRICADE_BSTATE_SECURED
+					reinforce()
+					return
+			else
+				if(iswelder(W))	// Finish reinforcing
+					if(user.action_busy)
+						return
+					if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
+						to_chat(user, SPAN_WARNING("You are not trained to reinforce [src]..."))
+						return
+					playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
+					if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+					user.visible_message(SPAN_NOTICE("[user] secures [src]'s metal panel."),
+					SPAN_NOTICE("You secure [src]'s metal panel."))
+					reinforce()
+					return
+	. = ..()
+
+/obj/structure/barricade/handrail/type_b
+	icon_state = "handrail_b_0"
+
+
+/*----------------------*/
+// WIRED STATES
+/*----------------------*/
 
 /obj/structure/barricade/sandbags/wired/New()
 	maxhealth += 50

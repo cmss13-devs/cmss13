@@ -182,6 +182,7 @@
 						var/list/injected = list()
 						for(var/datum/reagent/R in src.reagents.reagent_list)
 							injected += R.name
+							R.last_source_mob = user
 						var/contained = english_list(injected)
 						M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [src.name] by [user.name] ([user.ckey]). Reagents: [contained]</font>")
 						user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to inject [M.name] ([M.key]). Reagents: [contained]</font>")
@@ -222,7 +223,7 @@
 	item_state = "syringe_[rounded_vol]"
 
 	if(reagents.total_volume)
-		var/image/filling = image('icons/obj/reagentfillings.dmi', src, "syringe10")
+		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "syringe10")
 
 		filling.icon_state = "syringe[rounded_vol]"
 

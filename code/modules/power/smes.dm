@@ -65,19 +65,19 @@
 	overlays.Cut()
 	if(stat & BROKEN)	return
 
-	overlays += image('icons/obj/power.dmi', "smes_op[online]")
+	overlays += image('icons/obj/structures/machinery/power.dmi', "smes_op[online]")
 
 	if(charging == 2)
-		overlays += image('icons/obj/power.dmi', "smes_oc2")
+		overlays += image('icons/obj/structures/machinery/power.dmi', "smes_oc2")
 	else if (charging == 1)
-		overlays += image('icons/obj/power.dmi', "smes_oc1")
+		overlays += image('icons/obj/structures/machinery/power.dmi', "smes_oc1")
 	else
 		if(chargemode)
-			overlays += image('icons/obj/power.dmi', "smes_oc0")
+			overlays += image('icons/obj/structures/machinery/power.dmi', "smes_oc0")
 
 	var/clevel = chargedisplay()
 	if(clevel>0)
-		overlays += image('icons/obj/power.dmi', "smes_og[clevel]")
+		overlays += image('icons/obj/structures/machinery/power.dmi', "smes_og[clevel]")
 	return
 
 

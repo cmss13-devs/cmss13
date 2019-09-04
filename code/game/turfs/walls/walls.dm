@@ -1,7 +1,7 @@
 /turf/closed/wall
 	name = "wall"
 	desc = "A huge chunk of metal used to seperate rooms."
-	icon = 'icons/turf/walls.dmi'
+	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "0"
 	opacity = 1
 	var/hull = 0 //1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
@@ -188,7 +188,7 @@
 		if(!istype(src, /turf/closed/wall/resin) && prob(25))
 			if(prob(50)) // prevents spam in close corridors etc
 				src.visible_message(SPAN_WARNING("The explosion causes shards to spall off of [src]!"))
-			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light)
+			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/spall)
 		take_damage(exp_damage)
 
 	return

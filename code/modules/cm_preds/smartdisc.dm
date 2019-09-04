@@ -3,7 +3,7 @@
 	spawner_type = /mob/living/simple_animal/hostile/smartdisc
 	deliveryamt = 1
 	desc = "A strange piece of alien technology. It has many jagged, whirring blades and bizarre writing."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "disk"
 	item_state = "pred_disk"
 	force = 15
@@ -86,7 +86,7 @@
 /mob/living/simple_animal/hostile/smartdisc
 	name = "smart-disc"
 	desc = "A furious, whirling array of blades and alien technology."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "disk_active"
 	icon_living = "disk_active"
 	icon_dead = "disk"
@@ -123,7 +123,7 @@
 	break_stuff_probability = 0
 	destroy_surroundings = 0
 
-	faction = "yautja"
+	faction = FACTION_YAUTJA
 	var/lifetime = 8 //About 15 seconds.
 	var/time_idle = 0
 
@@ -150,9 +150,9 @@
 	spawn(1)
 		if(src) qdel(src)
 
-/mob/living/simple_animal/hostile/smartdisc/gib()
+/mob/living/simple_animal/hostile/smartdisc/gib(var/cause = "gibbing")
 	visible_message("\The [src] explodes!")
-	..(icon_gib,1)
+	..(cause, icon_gib,1)
 	spawn(1)
 		if(src)
 			qdel(src)

@@ -17,6 +17,7 @@
 	charge_type = 1 //Pounce - Runner
 	attack_delay = -4
 	evolves_to = list("Lurker")
+	deevolves_to = "Larva"
 	pounce_delay = 35
 	xeno_explosion_resistance = XENO_LOW_EXPLOSIVE_ARMOR
 
@@ -47,7 +48,7 @@
 	caste_name = "Runner"
 	name = "Runner"
 	desc = "A small red alien that looks like it could run fairly quickly..."
-	icon = 'icons/xeno/xenomorph_64x64.dmi' //They are now like, 2x1 or something
+	icon = 'icons/mob/xenos/xenomorph_64x64.dmi' //They are now like, 2x1 or something
 	icon_state = "Runner Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
 	flags_pass = PASSTABLE
@@ -69,3 +70,4 @@
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		)
+	mutation_type = RUNNER_NORMAL

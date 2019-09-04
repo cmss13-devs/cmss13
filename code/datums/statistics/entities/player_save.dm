@@ -1,0 +1,372 @@
+
+/datum/entity/player_entity/proc/setup_save(var/key)
+	if(key && !IsGuestKey(key))
+		load_path(lowertext(key))
+		load_statistics()
+		savefile_version = PREFFILE_VERSION_MAX
+
+/datum/entity/player_entity/proc/load_path(ckey,filename="statistics.sav")
+	if(!ckey)	return
+	path = "data/player_saves/[copytext(ckey,1,2)]/[ckey]/[filename]"
+	savefile_version = PREFFILE_VERSION_MAX
+
+/datum/entity/player_entity/proc/save_statistics()
+	if(!path)				return 0
+	var/savefile/S = new /savefile(path)
+	if(!S)					return 0
+	S.cd = "/"
+
+	S["version"] 		<< savefile_version
+	S["xeno"]			<< data["xeno"]
+	S["human"]			<< data["human"]
+
+	return 1
+
+/datum/entity/player_entity/proc/load_statistics()
+	if(!path)				return 0
+	if(!fexists(path))		return 0
+	var/savefile/S = new /savefile(path)
+	if(!S)					return 0
+	S.cd = "/"
+
+	if(S["version"] < PREFFILE_VERSION_MIN) return 0
+
+	S["version"] 		>> savefile_version
+
+	var/list/human_save = list()
+	var/list/xeno_save = list()
+
+	S["human"]			>> human_save
+	S["xeno"]			>> xeno_save
+
+	if(human_save)
+		setup_human_stats()
+		var/datum/entity/player_stats/human/human_stats = player_stats["human"]
+		human_stats.total_kills = human_save["total_kills"]
+		human_stats.total_deaths = human_save["total_deaths"]
+		human_stats.total_playtime = text2duration(human_save["total_playtime"])
+		human_stats.total_rounds_played = human_save["total_rounds_played"]
+		human_stats.steps_walked = human_save["steps_walked"]
+
+		human_stats.total_friendly_fire = human_save["total_friendly_fire"]
+		human_stats.total_revives = human_save["total_revives"]
+		human_stats.total_lives_saved = human_save["total_lives_saved"]
+		human_stats.total_shots = human_save["total_shots"]
+		human_stats.total_shots_hit = human_save["total_shots_hit"]
+		human_stats.total_screams = human_save["total_screams"]
+
+		if(human_save["nemesis"])
+			var/save_nemesis = human_save["nemesis"]
+			var/datum/entity/statistic/new_nemesis = new()
+			new_nemesis.name = save_nemesis["name"]
+			new_nemesis.value = save_nemesis["value"]
+			human_stats.nemesis = new_nemesis
+		
+		if(human_save["humans_killed"])
+			var/save_humans_killed = human_save["humans_killed"]
+			var/list/new_humans_killed_list = new()
+			for(var/save_kill in save_humans_killed)
+				var/datum/entity/statistic/new_human_killed = new()
+				new_human_killed.name = save_kill["name"]
+				new_human_killed.value = save_kill["value"]
+				new_humans_killed_list["[new_human_killed.name]"] = new_human_killed
+			human_stats.humans_killed = new_humans_killed_list
+		
+		if(human_save["xenos_killed"])
+			var/save_xeno_killed = human_save["xenos_killed"]
+			var/list/new_xenos_killed_list = new()
+			for(var/save_kill in save_xeno_killed)
+				var/datum/entity/statistic/new_xeno_killed = new()
+				new_xeno_killed.name = save_kill["name"]
+				new_xeno_killed.value = save_kill["value"]
+				new_xenos_killed_list["[new_xeno_killed.name]"] = new_xeno_killed
+			human_stats.xenos_killed = new_xenos_killed_list
+
+		if(human_save["death_list"])
+			var/save_death_list = human_save["death_list"]
+			var/list/new_death_list = new()
+			for(var/save_death in save_death_list)
+				var/datum/entity/death_stats/new_death = new()
+				new_death.player = src
+				new_death.mob_name = save_death["mob_name"]
+				new_death.job_name = save_death["job_name"]
+				new_death.area_name = save_death["area_name"]
+				new_death.cause_name = save_death["cause_name"]
+				new_death.total_kills = save_death["total_kills"]
+				new_death.time_of_death = text2duration(save_death["time_of_death"])
+				new_death.steps_walked = save_death["steps_walked"]
+				new_death.total_time_alive = text2duration(save_death["total_time_alive"])
+				new_death.x = save_death["x"]
+				new_death.y = save_death["y"]
+				new_death.z = save_death["z"]
+	
+				if(save_death["total_damage"])
+					var/save_death_damage = save_death["total_damage"]
+					var/list/new_damage_list = new()
+					for(var/save_damage in save_death_damage)
+						var/datum/entity/statistic/new_death_damage = new()
+						new_death_damage.name = save_damage["name"]
+						new_death_damage.value = save_damage["value"]
+						new_damage_list["[new_death_damage.name]"] = new_death_damage
+					new_death.total_damage = new_damage_list
+				new_death_list += new_death
+			human_stats.death_list = new_death_list
+
+		if(human_save["weapon_stats_list"])
+			var/save_weapon_list = human_save["weapon_stats_list"]
+			var/list/new_weapon_list = new()
+			for(var/save_weapon in save_weapon_list)
+				var/datum/entity/weapon_stats/new_weapon = new()
+				new_weapon.player = src
+				new_weapon.name = save_weapon["name"]
+				new_weapon.total_kills = save_weapon["total_kills"]
+				new_weapon.total_hits = save_weapon["total_hits"]
+				new_weapon.total_shots = save_weapon["total_shots"]
+				new_weapon.total_shots_hit = save_weapon["total_shots_hit"]
+				new_weapon.total_friendly_fire = save_weapon["total_friendly_fire"]
+	
+				if(save_weapon["humans_killed"])
+					var/save_humans_killed = save_weapon["humans_killed"]
+					var/list/new_humans_killed_list = new()
+					for(var/save_kill in save_humans_killed)
+						var/datum/entity/statistic/new_human_killed = new()
+						new_human_killed.name = save_kill["name"]
+						new_human_killed.value = save_kill["value"]
+						new_humans_killed_list["[new_human_killed.name]"] = new_human_killed
+					new_weapon.humans_killed = new_humans_killed_list
+				
+				if(save_weapon["xenos_killed"])
+					var/save_xeno_killed = save_weapon["xenos_killed"]
+					var/list/new_xenos_killed_list = new()
+					for(var/save_kill in save_xeno_killed)
+						var/datum/entity/statistic/new_xeno_killed = new()
+						new_xeno_killed.name = save_kill["name"]
+						new_xeno_killed.value = save_kill["value"]
+						new_xenos_killed_list["[new_xeno_killed.name]"] = new_xeno_killed
+					new_weapon.xenos_killed = new_xenos_killed_list
+				
+				new_weapon_list["[new_weapon.name]"] = new_weapon
+			human_stats.weapon_stats_list = new_weapon_list
+			
+		if(human_save["job_stats_list"])
+			var/save_job_list = human_save["job_stats_list"]
+			var/list/new_job_list = new()
+			for(var/save_job in save_job_list)
+				var/datum/entity/player_stats/job/new_job = new()
+				new_job.total_kills = save_job["total_kills"]
+				new_job.total_deaths = save_job["total_deaths"]
+				new_job.total_playtime = text2duration(save_job["total_playtime"])
+				new_job.total_rounds_played = save_job["total_rounds_played"]
+				new_job.steps_walked = save_job["steps_walked"]
+
+				new_job.name = save_job["name"]
+				new_job.total_friendly_fire = save_job["total_friendly_fire"]
+				new_job.total_revives = save_job["total_revives"]
+				new_job.total_lives_saved = save_job["total_lives_saved"]
+				new_job.total_shots = save_job["total_shots"]
+				new_job.total_shots_hit = save_job["total_shots_hit"]
+				new_job.total_screams = save_job["total_screams"]
+
+				if(save_job["nemesis"])
+					var/save_nemesis = save_job["nemesis"]
+					var/datum/entity/statistic/new_nemesis = new()
+					new_nemesis.name = save_nemesis["name"]
+					new_nemesis.value = save_nemesis["value"]
+					new_job.nemesis = new_nemesis
+
+				if(save_job["humans_killed"])
+					var/save_humans_killed = save_job["humans_killed"]
+					var/list/new_humans_killed_list = new()
+					for(var/save_kill in save_humans_killed)
+						var/datum/entity/statistic/new_human_killed = new()
+						new_human_killed.name = save_kill["name"]
+						new_human_killed.value = save_kill["value"]
+						new_humans_killed_list["[new_human_killed.name]"] = new_human_killed
+					new_job.humans_killed = new_humans_killed_list
+				
+				if(save_job["xenos_killed"])
+					var/save_xeno_killed = save_job["xenos_killed"]
+					var/list/new_xenos_killed_list = new()
+					for(var/save_kill in save_xeno_killed)
+						var/datum/entity/statistic/new_xeno_killed = new()
+						new_xeno_killed.name = save_kill["name"]
+						new_xeno_killed.value = save_kill["value"]
+						new_xenos_killed_list["[new_xeno_killed.name]"] = new_xeno_killed
+					new_job.xenos_killed = new_xenos_killed_list
+
+				if(save_job["death_list"])
+					var/save_death_list = save_job["death_list"]
+					var/list/new_death_list = new()
+					for(var/save_death in save_death_list)
+						var/datum/entity/death_stats/new_death = new()
+						new_death.player = src
+						new_death.mob_name = save_death["mob_name"]
+						new_death.job_name = save_death["job_name"]
+						new_death.area_name = save_death["area_name"]
+						new_death.cause_name = save_death["cause_name"]
+						new_death.total_kills = save_death["total_kills"]
+						new_death.time_of_death = text2duration(save_death["time_of_death"])
+						new_death.steps_walked = save_death["steps_walked"]
+						new_death.total_time_alive = text2duration(save_death["total_time_alive"])
+						new_death.x = save_death["x"]
+						new_death.y = save_death["y"]
+						new_death.z = save_death["z"]
+			
+						if(save_death["total_damage"])
+							var/save_death_damage = save_death["total_damage"]
+							var/list/new_damage_list = new()
+							for(var/save_damage in save_death_damage)
+								var/datum/entity/statistic/new_death_damage = new()
+								new_death_damage.name = save_damage["name"]
+								new_death_damage.value = save_damage["value"]
+								new_damage_list["[new_death_damage.name]"] = new_death_damage
+							new_death.total_damage = new_damage_list
+						new_death_list += new_death
+					new_job.death_list = new_death_list
+				new_job_list["[new_job.name]"] = new_job
+			human_stats.job_stats_list = new_job_list
+
+		human_stats.recalculate_nemesis()
+		human_stats.recalculate_top_weapon()
+
+
+	if(xeno_save)
+		setup_xeno_stats()
+		var/datum/entity/player_stats/xeno/xeno_stats = player_stats["xeno"]
+		xeno_stats.total_kills = xeno_save["total_kills"]
+		xeno_stats.total_deaths = xeno_save["total_deaths"]
+		xeno_stats.total_playtime = text2duration(xeno_save["total_playtime"])
+		xeno_stats.total_rounds_played = xeno_save["total_rounds_played"]
+		xeno_stats.steps_walked = xeno_save["steps_walked"]
+
+		xeno_stats.total_hits = xeno_save["total_hits"]
+
+		if(xeno_save["nemesis"])
+			var/save_nemesis = xeno_save["nemesis"]
+			var/datum/entity/statistic/new_nemesis = new()
+			new_nemesis.name = save_nemesis["name"]
+			new_nemesis.value = save_nemesis["value"]
+			xeno_stats.nemesis = new_nemesis
+	
+		if(xeno_save["humans_killed"])
+			var/save_humans_killed = xeno_save["humans_killed"]
+			var/list/new_humans_killed_list = new()
+			for(var/save_kill in save_humans_killed)
+				var/datum/entity/statistic/new_human_killed = new()
+				new_human_killed.name = save_kill["name"]
+				new_human_killed.value = save_kill["value"]
+				new_humans_killed_list["[new_human_killed.name]"] = new_human_killed
+			xeno_stats.humans_killed = new_humans_killed_list
+		
+		if(xeno_save["xenos_killed"])
+			var/save_xeno_killed = xeno_save["xenos_killed"]
+			var/list/new_xenos_killed_list = new()
+			for(var/save_kill in save_xeno_killed)
+				var/datum/entity/statistic/new_xeno_killed = new()
+				new_xeno_killed.name = save_kill["name"]
+				new_xeno_killed.value = save_kill["value"]
+				new_xenos_killed_list["[new_xeno_killed.name]"] = new_xeno_killed
+			xeno_stats.xenos_killed = new_xenos_killed_list
+
+		if(xeno_save["death_list"])
+			var/save_death_list = xeno_save["death_list"]
+			var/list/new_death_list = new()
+			for(var/save_death in save_death_list)
+				var/datum/entity/death_stats/new_death = new()
+				new_death.player = src
+				new_death.mob_name = save_death["mob_name"]
+				new_death.job_name = save_death["job_name"]
+				new_death.area_name = save_death["area_name"]
+				new_death.cause_name = save_death["cause_name"]
+				new_death.total_kills = save_death["total_kills"]
+				new_death.time_of_death = text2duration(save_death["time_of_death"])
+				new_death.steps_walked = save_death["steps_walked"]
+				new_death.total_time_alive = text2duration(save_death["total_time_alive"])
+				new_death.x = save_death["x"]
+				new_death.y = save_death["y"]
+				new_death.z = save_death["z"]
+	
+				if(save_death["total_damage"])
+					var/save_death_damage = save_death["total_damage"]
+					var/list/new_damage_list = new()
+					for(var/save_damage in save_death_damage)
+						var/datum/entity/statistic/new_death_damage = new()
+						new_death_damage.name = save_damage["name"]
+						new_death_damage.value = save_damage["value"]
+						new_damage_list["[new_death_damage.name]"] = new_death_damage
+					new_death.total_damage = new_damage_list
+				new_death_list += new_death
+			xeno_stats.death_list = new_death_list
+
+		if(xeno_save["caste_stats_list"])
+			var/save_caste_list = xeno_save["caste_stats_list"]
+			var/list/new_caste_list = new()
+			for(var/save_caste in save_caste_list)
+				var/datum/entity/player_stats/caste/new_caste = new()
+				new_caste.total_kills = save_caste["total_kills"]
+				new_caste.total_deaths = save_caste["total_deaths"]
+				new_caste.total_playtime = text2duration(save_caste["total_playtime"])
+				new_caste.total_rounds_played = save_caste["total_rounds_played"]
+				new_caste.steps_walked = save_caste["steps_walked"]
+
+				new_caste.name = save_caste["name"]
+				new_caste.total_hits = save_caste["total_hits"]
+
+				if(save_caste["nemesis"])
+					var/save_nemesis = save_caste["nemesis"]
+					var/datum/entity/statistic/new_nemesis = new()
+					new_nemesis.name = save_nemesis["name"]
+					new_nemesis.value = save_nemesis["value"]
+					new_caste.nemesis = new_nemesis
+
+				if(save_caste["humans_killed"])
+					var/save_humans_killed = save_caste["humans_killed"]
+					var/datum/entity/statistic/new_humans_killed = new()
+					new_humans_killed.name = save_humans_killed["name"]
+					new_humans_killed.value = save_humans_killed["value"]
+					new_caste.humans_killed = new_humans_killed
+				
+				if(save_caste["xenos_killed"])
+					var/save_xenos_killed = save_caste["xenos_killed"]
+					var/datum/entity/statistic/new_xenos_killed = new()
+					new_xenos_killed.name = save_xenos_killed["name"]
+					new_xenos_killed.value = save_xenos_killed["value"]
+					new_caste.xenos_killed = new_xenos_killed
+
+				if(save_caste["death_list"])
+					var/save_death_list = save_caste["death_list"]
+					var/list/new_death_list = new()
+					for(var/save_death in save_death_list)
+						var/datum/entity/death_stats/new_death = new()
+						new_death.player = src
+						new_death.mob_name = save_death["mob_name"]
+						new_death.job_name = save_death["job_name"]
+						new_death.area_name = save_death["area_name"]
+						new_death.cause_name = save_death["cause_name"]
+						new_death.total_kills = save_death["total_kills"]
+						new_death.time_of_death = text2duration(save_death["time_of_death"])
+						new_death.steps_walked = save_death["steps_walked"]
+						new_death.total_time_alive = text2duration(save_death["total_time_alive"])
+						new_death.x = save_death["x"]
+						new_death.y = save_death["y"]
+						new_death.z = save_death["z"]
+			
+						if(save_death["total_damage"])
+							var/save_death_damage = save_death["total_damage"]
+							var/list/new_damage_list = new()
+							for(var/save_damage in save_death_damage)
+								var/datum/entity/statistic/new_death_damage = new()
+								new_death_damage.name = save_damage["name"]
+								new_death_damage.value = save_damage["value"]
+								new_damage_list["[new_death_damage.name]"] = new_death_damage
+							new_death.total_damage = new_damage_list
+						new_death_list += new_death
+					new_caste.death_list = new_death_list
+				new_caste_list["[new_caste.name]"] = new_caste
+			xeno_stats.caste_stats_list = new_caste_list
+
+		xeno_stats.recalculate_nemesis()
+		xeno_stats.recalculate_top_caste()
+
+	update_panel_data()
+	return 1

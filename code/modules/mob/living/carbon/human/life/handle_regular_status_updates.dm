@@ -12,7 +12,7 @@
 		//updatehealth() // moved to Life()
 
 		if(health <= config.health_threshold_dead || (species.has_organ["brain"] && !has_brain()))
-			death()
+			death(last_damage_source)
 			blinded = 1
 			silent = 0
 			return 1
@@ -70,13 +70,6 @@
 			stat = CONSCIOUS
 
 		if(in_stasis == STASIS_IN_CRYO_CELL) blinded = TRUE //Always blinded while in stasisTUBES
-
-		//Periodically double-check embedded_flag
-		if(embedded_flag && !(life_tick % 10))
-			var/list/E
-			E = get_visible_implants(0)
-			if(!E.len)
-				embedded_flag = 0
 
 		//Eyes
 		if(!species.has_organ["eyes"]) //Presumably if a species has no eyes, they see via something else.

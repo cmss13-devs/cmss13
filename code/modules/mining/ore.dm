@@ -1,6 +1,6 @@
 /obj/item/ore
 	name = "rock"
-	icon = 'icons/obj/mining.dmi'
+	icon = 'icons/obj/structures/props/mining.dmi'
 	icon_state = "ore2"
 	var/oretag
 

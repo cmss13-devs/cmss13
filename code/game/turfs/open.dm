@@ -66,21 +66,21 @@
 // Prison grass
 /turf/open/organic/grass
 	name = "grass"
-	icon = 'icons/turf/floors.dmi'
+	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "grass1"
 
 // Mars grounds
 
 /turf/open/mars
 	name = "sand"
-	icon = 'icons/turf/bigred.dmi'
+	icon = 'icons/turf/floors/bigred.dmi'
 	icon_state = "mars_sand_1"
 	is_groundmap_turf = TRUE
 
 
 /turf/open/mars_cave
 	name = "cave"
-	icon = 'icons/turf/bigred.dmi'
+	icon = 'icons/turf/floors/bigred.dmi'
 	icon_state = "mars_cave_1"
 
 
@@ -95,7 +95,7 @@
 
 /turf/open/mars_dirt
 	name = "dirt"
-	icon = 'icons/turf/bigred.dmi'
+	icon = 'icons/turf/floors/bigred.dmi'
 	icon_state = "mars_dirt_1"
 
 
@@ -128,7 +128,7 @@
 
 /turf/open/beach
 	name = "Beach"
-	icon = 'icons/misc/beach.dmi'
+	icon = 'icons/turf/floors/beach.dmi'
 
 
 /turf/open/beach/sand
@@ -137,7 +137,7 @@
 
 /turf/open/beach/coastline
 	name = "Coastline"
-	icon = 'icons/misc/beach2.dmi'
+	icon = 'icons/turf/beach2.dmi'
 	icon_state = "sandwater"
 
 /turf/open/beach/water
@@ -147,7 +147,7 @@
 
 /turf/open/beach/water/New()
 	..()
-	overlays += image("icon"='icons/misc/beach.dmi',"icon_state"="water2","layer"=MOB_LAYER+0.1)
+	overlays += image("icon"='icons/turf/floors/beach.dmi',"icon_state"="water2","layer"=MOB_LAYER+0.1)
 
 /turf/open/beach/water2
 	name = "Water"
@@ -156,7 +156,7 @@
 
 /turf/open/beach/water2/New()
 	..()
-	overlays += image("icon"='icons/misc/beach.dmi',"icon_state"="water5","layer"=MOB_LAYER+0.1)
+	overlays += image("icon"='icons/turf/floors/beach.dmi',"icon_state"="water5","layer"=MOB_LAYER+0.1)
 
 
 
@@ -345,7 +345,7 @@
 //ELEVATOR SHAFT-----------------------------------//
 /turf/open/gm/empty
 	name = "empty space"
-	icon = 'icons/turf/floors.dmi'
+	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "black"
 	density = 1
 
@@ -384,7 +384,7 @@
 // Colony tiles
 /turf/open/asphalt
 	name = "asphalt"
-	icon = 'icons/turf/asphalt.dmi'
+	icon = 'icons/turf/floors/asphalt.dmi'
 	icon_state = "sunbleached_asphalt"
 
 /turf/open/asphalt/cement
@@ -418,13 +418,13 @@
 				I = image('code/WorkInProgress/Cael_Aislinn/Jungle/jungle.dmi',"plant[rand(1,7)]")
 			else
 				if(prob(30))
-					I = image('icons/obj/flora/ausflora.dmi',"reedbush_[rand(1,4)]")
+					I = image('icons/obj/structures/props/ausflora.dmi',"reedbush_[rand(1,4)]")
 				else if(prob(33))
-					I = image('icons/obj/flora/ausflora.dmi',"leafybush_[rand(1,3)]")
+					I = image('icons/obj/structures/props/ausflora.dmi',"leafybush_[rand(1,3)]")
 				else if(prob(50))
-					I = image('icons/obj/flora/ausflora.dmi',"fernybush_[rand(1,3)]")
+					I = image('icons/obj/structures/props/ausflora.dmi',"fernybush_[rand(1,3)]")
 				else
-					I = image('icons/obj/flora/ausflora.dmi',"stalkybush_[rand(1,3)]")
+					I = image('icons/obj/structures/props/ausflora.dmi',"stalkybush_[rand(1,3)]")
 			I.pixel_x = rand(-6,6)
 			I.pixel_y = rand(-6,6)
 			overlays += I
@@ -510,7 +510,7 @@
 	bushes_spawn = 0
 	name = "murky water"
 	desc = "thick, murky water"
-	icon = 'icons/misc/beach.dmi'
+	icon = 'icons/turf/floors//beach.dmi'
 	icon_state = "water"
 	icon_spawn_state = "water"
 	can_bloody = FALSE
@@ -586,7 +586,7 @@
 //not really plating, just the look
 /turf/open/shuttle/plating
 	name = "plating"
-	icon = 'icons/turf/floors.dmi'
+	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "plating"
 
 /turf/open/shuttle/brig // Added this floor tile so that I have a seperate turf to check in the shuttle -- Polymorph

@@ -54,6 +54,17 @@
 #define SS_SLEEPING 4 // fire() slept.
 #define SS_PAUSING 5  // in the middle of pausing
 
-//Timing subsystem
-#define TIMER_NORMAL "normal"
-#define TIMER_UNIQUE "unique"
+// ---------------
+// Timing subsystem
+// ---------------
+#define TIMER_UNIQUE				0x1  //Doesn't run when an identical unique timer is running
+#define TIMER_OVERRIDE_UNIQUE		0x2  //Used with TIMER_UNIQUE. Replaces timer with the new one instead of not running.
+#define TIMER_NO_WAIT_UNIQUE		0x4  //Used with TIMER_UNIQUE. Ignores the wait variable when comparing timers
+
+#define TIMER_CLIENT_TIME			0x8  //Matches timing to client, only use with client side things.
+#define TIMER_STOPPABLE				0x10 //Can be stopped with delete_timer()
+
+//Ticks until the timer system sends out a warning that its hanging.
+#define TIMER_HANGS_WARNING			600
+
+#define TIMER_ID_NULL				-1

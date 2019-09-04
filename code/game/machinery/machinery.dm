@@ -95,7 +95,7 @@ Class Procs:
 
 /obj/machinery
 	name = "machinery"
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	var/stat = 0
 	var/use_power = 1
 	var/processable = 1

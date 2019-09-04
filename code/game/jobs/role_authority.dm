@@ -108,7 +108,7 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 		if(!length(i)) continue
 		else if (copytext(i, 1, 2) == "#") continue
 
-		P = text2list(i, "+")
+		P = splittext(i, "+")
 		if(!P.len) continue
 		ckey = ckey(P[1]) //Converting their key to canonical form. ckey() does this by stripping all spaces, underscores and converting to lower case.
 
@@ -440,8 +440,8 @@ roles willy nilly.
 			H.mind.initial_account = A
 
 		if((J.title == "Commanding Officer") && roles_whitelist && (roles_whitelist[H.ckey] & WHITELIST_COMMANDER_COUNCIL))
-			arm_equipment(H, J.gear_preset_council)
-		arm_equipment(H, J.gear_preset) //After we move them, we want to equip anything else they should have.
+			arm_equipment(H, J.gear_preset_council, FALSE, TRUE)
+		arm_equipment(H, J.gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
 		/*var/alt_title
 		if(H.mind)
 			H.mind.assigned_role = J.title

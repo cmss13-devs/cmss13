@@ -171,7 +171,7 @@
 
 /obj/effect/beam/i_beam
 	name = "i beam"
-	icon = 'icons/obj/items/projectiles.dmi'
+	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "ibeam"
 	var/obj/effect/beam/i_beam/next = null
 	var/obj/item/device/assembly/infra/master = null

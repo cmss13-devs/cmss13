@@ -31,6 +31,7 @@
 	var/gen_tier = 0 //Decides the chance of the chem being good during generation
 	// How valuable it is to identify the chemical. (Only works on chemclass SPECIAL or ULTRA)
 	var/objective_value
+	var/last_source_mob
 
 /datum/reagent/proc/reaction_mob(var/mob/M, var/method=TOUCH, var/volume) //By default we have a chance to transfer some
 	if(!istype(M, /mob/living))	return 0
@@ -78,12 +79,17 @@
 /datum/reagent/proc/on_mob_life(mob/living/M, alien)
 	if((!isliving(M) || alien == IS_HORROR)) return //Noticed runtime errors from pacid trying to damage ghosts, this should fix. --NEO
 	//We do not horrors to metabolize anything.
+	var/overdose_message = "[name] overdose"
 	holder.remove_reagent(id, custom_metabolism) //By default it slowly disappears.
 	if(overdose && volume >= overdose)
-		on_overdose(M, alien) //Small OD
+		on_overdose(M, alien, overdose_message) //Small OD
+		M.last_damage_source = overdose_message
+		M.last_damage_mob = last_source_mob
 
 	if(overdose_critical && volume > overdose_critical)
-		on_overdose_critical(M, alien) //Big OD
+		on_overdose_critical(M, alien, overdose_message) //Big OD
+		M.last_damage_source = overdose_message
+		M.last_damage_mob = last_source_mob
 	return 1
 
 /datum/reagent/proc/on_overdose(mob/living/M, alien)

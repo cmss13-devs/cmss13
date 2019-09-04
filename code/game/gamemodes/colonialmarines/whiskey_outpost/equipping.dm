@@ -247,25 +247,26 @@ You just gotta get out of this jungle to tell the tale!"}
 	if(H.client) H.client.change_view(world.view)
 	if(!H.mind)
 		H.mind = new(H.key)
+		H.mind_initialize()
 
 	//Squad ID and backpack are already spawned in job datum
 	switch(H.mind.assigned_role)
 		if("Squad Leader")
-			arm_equipment(H, "WO Dust Raider Squad Leader")
+			arm_equipment(H, "WO Dust Raider Squad Leader", FALSE, TRUE)
 		//SQUAD SPECIALIST
 		if("Squad Specialist")
-			arm_equipment(H, "WO Dust Raider Squad Specialist")
+			arm_equipment(H, "WO Dust Raider Squad Specialist", FALSE, TRUE)
 		//SQUAD SMARTGUNNER
 		if("Squad Smartgunner")
-			arm_equipment(H, "WO Dust Raider Squad Smartgunner")
+			arm_equipment(H, "WO Dust Raider Squad Smartgunner", FALSE, TRUE)
 		//SQUAD ENGINEER
 		if("Squad Engineer")
-			arm_equipment(H, "WO Dust Raider Squad Engineer")
+			arm_equipment(H, "WO Dust Raider Squad Engineer", FALSE, TRUE)
 		//SQUAD MEDIC
 		if("Squad Medic")
-			arm_equipment(H, "WO Dust Raider Squad Medic")
+			arm_equipment(H, "WO Dust Raider Squad Medic", FALSE, TRUE)
 		else
-			arm_equipment(H, "WO Dust Raider Squad Marine (PFC)")
+			arm_equipment(H, "WO Dust Raider Squad Marine (PFC)", FALSE, TRUE)
 
 	//Give them some information
 	sleep(40)

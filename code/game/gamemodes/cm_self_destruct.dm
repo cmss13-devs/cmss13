@@ -256,7 +256,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 				if(T.z in z_levels)
 					if(istype(M.loc, /obj/structure/closet/secure_closet/freezer/fridge))
 						continue
-					M.death()
+					M.death("nuclear explosion")
 				else
 					if(play_anim)
 						M.client.screen -= C //those who managed to escape the z level at last second shouldn't have their view obstructed.
@@ -293,7 +293,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 //Generic parent base for the self_destruct items.
 /obj/machinery/self_destruct
-	icon = 'icons/obj/machines/self_destruct.dmi'
+	icon = 'icons/obj/structures/machinery/self_destruct.dmi'
 	use_power = 0 //Runs unpowered, may need to change later.
 	density = 0
 	anchored = 1 //So it doesn't go anywhere.
@@ -302,20 +302,21 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	var/in_progress = 0 //Cannot interact with while it's doing something, like an animation.
 	var/active_state = SELF_DESTRUCT_MACHINE_INACTIVE //What step of the process it's on.
 
-	New()
-		..()
-		icon_state += "_1"
+/obj/machinery/self_destruct/New()
+	..()
+	icon_state += "_1"
 
-	Dispose()
-		. = ..()
-		machines -= src
-		operator = null
+/obj/machinery/self_destruct/Dispose()
+	. = ..()
+	machines -= src
+	operator = null
 
-	ex_act(severity) r_FAL
+/obj/machinery/self_destruct/ex_act(severity)
+	r_FAL
 
-	attack_hand()
-		if(..() || in_progress) r_FAL //This check is backward, ugh.
-		r_TRU
+/obj/machinery/self_destruct/attack_hand()
+	if(..() || in_progress) r_FAL //This check is backward, ugh.
+	r_TRU
 
 //Add sounds.
 /obj/machinery/self_destruct/proc/lock_or_unlock(lock)

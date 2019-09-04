@@ -433,10 +433,10 @@
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[oldreplacetext(job.title, " ", "&nbsp")]</font></a></td>"
+				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
 				counter++
 			else
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'>[oldreplacetext(job.title, " ", "&nbsp")]</a></td>"
+				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
 				counter++
 
 			if(counter >= 6) //So things dont get squiiiiished!
@@ -455,10 +455,10 @@
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[oldreplacetext(job.title, " ", "&nbsp")]</font></a></td>"
+				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
 				counter++
 			else
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'>[oldreplacetext(job.title, " ", "&nbsp")]</a></td>"
+				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
 				counter++
 
 			if(counter >= 5) //So things dont get squiiiiished!
@@ -476,10 +476,10 @@
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[oldreplacetext(job.title, " ", "&nbsp")]</font></a></td>"
+				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
 				counter++
 			else
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'>[oldreplacetext(job.title, " ", "&nbsp")]</a></td>"
+				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
 				counter++
 
 			if(counter >= 5) //So things dont get squiiiiished!
@@ -497,10 +497,10 @@
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[oldreplacetext(job.title, " ", "&nbsp")]</font></a></td>"
+				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
 				counter++
 			else
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'>[oldreplacetext(job.title, " ", "&nbsp")]</a></td>"
+				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
 				counter++
 
 			if(counter >= 5) //So things dont get squiiiiished!
@@ -518,10 +518,10 @@
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[oldreplacetext(job.title, " ", "&nbsp")]</font></a></td>"
+				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
 				counter++
 			else
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'>[oldreplacetext(job.title, " ", "&nbsp")]</a></td>"
+				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
 				counter++
 
 			if(counter >= 5) //So things dont get squiiiiished!
@@ -536,41 +536,41 @@
 
 		//Traitor
 		if(jobban_isbanned(M, "traitor") || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=traitor;jobban4=\ref[M]'><font color=red>[oldreplacetext("Traitor", " ", "&nbsp")]</font></a></td>"
+			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=traitor;jobban4=\ref[M]'><font color=red>[replacetext("Traitor", " ", "&nbsp")]</font></a></td>"
 		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=traitor;jobban4=\ref[M]'>[oldreplacetext("Traitor", " ", "&nbsp")]</a></td>"
+			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=traitor;jobban4=\ref[M]'>[replacetext("Traitor", " ", "&nbsp")]</a></td>"
 
 		//Changeling
 		if(jobban_isbanned(M, "changeling") || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=changeling;jobban4=\ref[M]'><font color=red>[oldreplacetext("Changeling", " ", "&nbsp")]</font></a></td>"
+			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=changeling;jobban4=\ref[M]'><font color=red>[replacetext("Changeling", " ", "&nbsp")]</font></a></td>"
 		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=changeling;jobban4=\ref[M]'>[oldreplacetext("Changeling", " ", "&nbsp")]</a></td>"
+			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=changeling;jobban4=\ref[M]'>[replacetext("Changeling", " ", "&nbsp")]</a></td>"
 
 		//Nuke Operative
 		if(jobban_isbanned(M, "operative") || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=operative;jobban4=\ref[M]'><font color=red>[oldreplacetext("Nuke Operative", " ", "&nbsp")]</font></a></td>"
+			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=operative;jobban4=\ref[M]'><font color=red>[replacetext("Nuke Operative", " ", "&nbsp")]</font></a></td>"
 		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=operative;jobban4=\ref[M]'>[oldreplacetext("Nuke Operative", " ", "&nbsp")]</a></td>"
+			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=operative;jobban4=\ref[M]'>[replacetext("Nuke Operative", " ", "&nbsp")]</a></td>"
 
 		//Revolutionary
 		if(jobban_isbanned(M, "revolutionary") || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=revolutionary;jobban4=\ref[M]'><font color=red>[oldreplacetext("Revolutionary", " ", "&nbsp")]</font></a></td>"
+			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=revolutionary;jobban4=\ref[M]'><font color=red>[replacetext("Revolutionary", " ", "&nbsp")]</font></a></td>"
 		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=revolutionary;jobban4=\ref[M]'>[oldreplacetext("Revolutionary", " ", "&nbsp")]</a></td>"
+			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=revolutionary;jobban4=\ref[M]'>[replacetext("Revolutionary", " ", "&nbsp")]</a></td>"
 
 		jobs += "</tr><tr align='center'>" //Breaking it up so it fits nicer on the screen every 5 entries
 
 		//Cultist
 		if(jobban_isbanned(M, "cultist") || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=cultist;jobban4=\ref[M]'><font color=red>[oldreplacetext("Cultist", " ", "&nbsp")]</font></a></td>"
+			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=cultist;jobban4=\ref[M]'><font color=red>[replacetext("Cultist", " ", "&nbsp")]</font></a></td>"
 		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=cultist;jobban4=\ref[M]'>[oldreplacetext("Cultist", " ", "&nbsp")]</a></td>"
+			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=cultist;jobban4=\ref[M]'>[replacetext("Cultist", " ", "&nbsp")]</a></td>"
 
 		//Wizard
 		if(jobban_isbanned(M, "wizard") || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=wizard;jobban4=\ref[M]'><font color=red>[oldreplacetext("Wizard", " ", "&nbsp")]</font></a></td>"
+			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=wizard;jobban4=\ref[M]'><font color=red>[replacetext("Wizard", " ", "&nbsp")]</font></a></td>"
 		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=wizard;jobban4=\ref[M]'>[oldreplacetext("Wizard", " ", "&nbsp")]</a></td>"
+			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=wizard;jobban4=\ref[M]'>[replacetext("Wizard", " ", "&nbsp")]</a></td>"
 
 		//ERT
 		if(jobban_isbanned(M, "Emergency Response Team") || isbanned_dept)
@@ -805,7 +805,7 @@
 				jobban_remove(t)
 				jobban_savebanfile()
 				href_list["ban"] = 1 // lets it fall through and refresh
-				var/t_split = text2list(t, " - ")
+				var/t_split = splittext(t, " - ")
 				var/key = t_split[1]
 				var/job = t_split[2]
 				DB_ban_unban(ckey(key), BANTYPE_JOB_PERMA, job)
@@ -950,7 +950,7 @@
 				var/tier = input(usr,"Enter the generation tier you wish. This will affect the number of properties (tier + 1), rarity of components and potential for good properties. Ought to be 1-4, max 10.") as num
 				if(tier > 10) tier = 10
 				var/datum/reagent/generated/R = new /datum/reagent/generated
-				var/list/stats_holder = list("name","properties","overdose","overdose_critical","nutriment_factor","custom_metabolism","color")
+				var/list/stats_holder = list("name","properties","description","overdose","overdose_critical","nutriment_factor","custom_metabolism","color")
 				chemical_gen_stats_list["[target]"] += stats_holder
 				R.id = target
 				R.gen_tier = tier
@@ -961,6 +961,7 @@
 				//Save all variables from our holder
 				R.name = chemical_gen_stats_list["[target]"]["name"]
 				R.properties = chemical_gen_stats_list["[target]"]["properties"]
+				R.description = chemical_gen_stats_list["[target]"]["description"]
 				R.overdose = chemical_gen_stats_list["[target]"]["overdose"]
 				R.overdose_critical = chemical_gen_stats_list["[target]"]["overdose_critical"]
 				R.nutriment_factor = chemical_gen_stats_list["[target]"]["nutriment_factor"]
@@ -1055,7 +1056,7 @@
 					to_chat(usr,SPAN_WARNING("This ID is already in use."))
 					return
 				var/datum/reagent/generated/R = new /datum/reagent/generated
-				var/list/stats_holder = list("name" = target,"properties" = list(),"overdose" = 15,"overdose_critical" = 30,"nutriment_factor" = 0,"custom_metabolism" = 0.2,"color" = text("#[][][]",num2hex(rand(0,255)),num2hex(rand(0,255)),num2hex(rand(0,255))))
+				var/list/stats_holder = list("name" = target,"properties" = list(),"description" = "","overdose" = 15,"overdose_critical" = 30,"nutriment_factor" = 0,"custom_metabolism" = 0.2,"color" = text("#[][][]",num2hex(rand(0,255)),num2hex(rand(0,255)),num2hex(rand(0,255))))
 				chemical_gen_stats_list["[target]"] += stats_holder
 				R.id = target
 				R.chemclass = CHEM_CLASS_NONE //So we don't count it towards defcon
@@ -1076,11 +1077,11 @@
 							var/list/pool
 							switch(property_type)
 								if("Negative")
-									pool = get_negative_chem_properties()
+									pool = get_negative_chem_properties(1)
 								if("Neutral")
-									pool = get_neutral_chem_properties()
+									pool = get_neutral_chem_properties(1)
 								if("Positive")
-									pool = get_positive_chem_properties()
+									pool = get_positive_chem_properties(1)
 								else
 									response = alert(usr,"No? Then..","Custom reagent [target]","Specific property","Specific number","No more properties")
 							pool = sortAssoc(pool)
@@ -1105,6 +1106,7 @@
 				//Save all variables from our holder
 				R.name = chemical_gen_stats_list["[target]"]["name"]
 				R.properties = chemical_gen_stats_list["[target]"]["properties"]
+				R.description = chemical_gen_stats_list["[target]"]["description"]
 				R.overdose = chemical_gen_stats_list["[target]"]["overdose"]
 				R.overdose_critical = chemical_gen_stats_list["[target]"]["overdose_critical"]
 				R.nutriment_factor = chemical_gen_stats_list["[target]"]["nutriment_factor"]
@@ -1346,20 +1348,27 @@
 			to_chat(usr, "This mob no longer exists")
 			return
 		var/newhivenumber
+		var/newhivefaction
 		switch(newhive)
 			if("Normal")
 				newhivenumber = XENO_HIVE_NORMAL
+				newhivefaction = FACTION_XENOMORPH
 			if("Corrupted")
 				newhivenumber = XENO_HIVE_CORRUPTED
+				newhivefaction = FACTION_XENOMORPH_CORRPUTED
 			if("Alpha")
 				newhivenumber = XENO_HIVE_ALPHA
+				newhivefaction = FACTION_XENOMORPH_ALPHA
 			if("Beta")
 				newhivenumber = XENO_HIVE_BETA
+				newhivefaction = FACTION_XENOMORPH_BETA
 			if("Zeta")
 				newhivenumber = XENO_HIVE_ZETA
+				newhivefaction = FACTION_XENOMORPH_ZETA
 
 		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)
 		embryo.hivenumber = newhivenumber
+		embryo.faction = newhivefaction
 
 		log_admin("[key_name(usr)] infected [key_name(H)] with a xeno ([newhive]) larva.")
 		message_admins(SPAN_NOTICE("[key_name_admin(usr)] infected [key_name_admin(H)] with a xeno ([newhive]) larva."))
@@ -2185,9 +2194,9 @@
 			alert("Select fewer object types, (max 5)")
 			return
 		else if(length(removed_paths))
-			alert("Removed:\n" + list2text(removed_paths, "\n"))
+			alert("Removed:\n" + jointext(removed_paths, "\n"))
 
-		var/list/offset = text2list(href_list["offset"],",")
+		var/list/offset = splittext(href_list["offset"],",")
 		var/number = dd_range(1, 100, text2num(href_list["object_count"]))
 		var/X = offset.len > 0 ? text2num(offset[1]) : 0
 		var/Y = offset.len > 1 ? text2num(offset[2]) : 0
@@ -2214,12 +2223,16 @@
 				where = "onfloor"
 
 		if ( where == "inmarked" )
-			if ( !marked_datum )
-				to_chat(usr, "You don't have any object marked. Abandoning spawn.")
+			if ( !marked_datums.len )
+				to_chat(usr, "You don't have any datum marked. Abandoning spawn.")
 				return
 			else
-				if ( !istype(marked_datum,/atom) )
-					to_chat(usr, "The object you have marked cannot be used as a target. Target must be of type /atom. Abandoning spawn.")
+				var/datum/D = input_marked_datum(marked_datums)
+				if(!D)
+					return
+
+				if ( !istype(D,/atom) )
+					to_chat(usr, "The datum you have marked cannot be used as a target. Target must be of type /atom. Abandoning spawn.")
 					return
 
 		var/atom/target //Where the object will be spawned
@@ -2231,7 +2244,12 @@
 					if ("relative")
 						target = locate(loc.x + X,loc.y + Y,loc.z + Z)
 			if ( "inmarked" )
-				target = marked_datum
+				var/datum/D = input_marked_datum(marked_datums)
+				if(!D)
+					to_chat(usr, "Invalid marked datum. Abandoning.")
+					return
+
+				target = D
 
 		if(target)
 			for (var/path in paths)

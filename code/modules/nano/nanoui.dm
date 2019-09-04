@@ -74,13 +74,11 @@ nanoui is used to open and update nano browser uis
   *
   * @return /nanoui new nanoui object
   */
-/datum/nanoui/New(nuser, nsrc_object, nui_key, ntemplate_filename, ntitle = 0, nwidth = 0, nheight = 0, var/atom/nref = null)
+/datum/nanoui/New(nuser, nsrc_object, nui_key, ntemplate_filename, ntitle = 0, nwidth = 0, nheight = 0, var/atom/nref = null, var/nallowed = 0)
 	user = nuser
 	src_object = nsrc_object
 	ui_key = nui_key
-	// Lets make sure the dead admins can use STUI!
-	if(ui_key == "STUI")
-		allowed_user_stat = -1
+	allowed_user_stat = nallowed
 	window_id = "[ui_key]\ref[src_object]"
 
 	// add the passed template filename as the "main" template, this is required
@@ -142,10 +140,11 @@ nanoui is used to open and update nano browser uis
   */
 /datum/nanoui/proc/update_status(var/push_update = 0)
 	set waitfor = 0
-	//To make STUI useable from the lobby
 	if (isnewplayer(user) && check_rights(R_ADMIN|R_MOD))
 		set_status(STATUS_INTERACTIVE, push_update) // interactive (green visibility)
 	if (isAI(user))
+		set_status(STATUS_INTERACTIVE, push_update) // interactive (green visibility)
+	else if (allowed_user_stat == -1 || user == src_object)
 		set_status(STATUS_INTERACTIVE, push_update) // interactive (green visibility)
 	else if (isrobot(user))
 		if (src_object in view(7, user)) // robots can see and interact with things they can see within 7 tiles
@@ -164,7 +163,7 @@ nanoui is used to open and update nano browser uis
 			set_status(STATUS_UPDATE, push_update) // update only (orange visibility)
 		else if (!(src_object in view(4, user))) // If the src object is not in visable, set status to 0
 			set_status(STATUS_DISABLED, push_update) // interactive (green visibility)
-		else if (dist <= 1)
+		else if (user == src_object || dist <= 1)
 			set_status(STATUS_INTERACTIVE, push_update) // interactive (green visibility)
 		else if (dist <= 2)
 			set_status(STATUS_UPDATE, push_update) // update only (orange visibility)
@@ -367,12 +366,13 @@ nanoui is used to open and update nano browser uis
 
 	var/template_data_json = "{}" // An empty JSON object
 	if (templates.len > 0)
-		template_data_json = list2json(templates)
+		template_data_json = strip_improper(json_encode(templates))
 
 	var/list/send_data = get_send_data(initial_data)
-	var/initial_data_json = list2json(send_data)
+	var/initial_data_json = replacetext(replacetext(json_encode(send_data), "&#34;", "&amp;#34;"), "'", "&#39;")
+	initial_data_json = strip_improper(initial_data_json)
 
-	var/url_parameters_json = list2json(list("src" = "\ref[src]"))
+	var/url_parameters_json = json_encode(list("src" = "\ref[src]"))
 
 	return {"
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -453,16 +453,15 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/push_data(data, force_push = 0)
-
-	if(ui_key != "STUI")
+	if(allowed_user_stat > -1)
 		update_status(0)
 		if (status == STATUS_DISABLED && !force_push)
 			return // Cannot update UI, no visibility
 
 	var/list/send_data = get_send_data(data)
 
-	//user << list2json(data) // used for debugging
-	user << output(list2params(list(list2json(send_data))),"[window_id].browser:receiveUpdateData")
+	//user << json_encode(data) // used for debugging
+	user << output(list2params(list(strip_improper(json_encode(send_data)))),"[window_id].browser:receiveUpdateData")
 
  /**
   * This Topic() proc is called whenever a user clicks on a link within a Nano UI
@@ -472,11 +471,6 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/Topic(href, href_list)
-	if(ui_key == "STUI")
-		STUI.Topic(href,href_list)
-		nanomanager.update_uis(src_object)
-		return
-
 	update_status(0) // update the status
 	if (status != STATUS_INTERACTIVE || user != usr) // If UI is not interactive or usr calling Topic is not the UI user
 		return
@@ -519,7 +513,4 @@ nanoui is used to open and update nano browser uis
   */
 /datum/nanoui/proc/update(var/force_open = 0)
 	set waitfor = 0
-	if(ui_key == "STUI")
-		STUI.ui_interact(user, ui_key, src, force_open)
-	else
-		src_object.ui_interact(user, ui_key, src, force_open)
+	src_object.ui_interact(user, ui_key, src, force_open)

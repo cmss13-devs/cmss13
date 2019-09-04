@@ -14,7 +14,7 @@
 /obj/machinery/door/firedoor
 	name = "\improper Emergency Shutter"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas."
-	icon = 'icons/obj/doors/DoorHazard.dmi'
+	icon = 'icons/obj/structures/doors/DoorHazard.dmi'
 	icon_state = "door_open"
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING)
 	opacity = 0
@@ -115,7 +115,7 @@
 		to_chat(user, "These people have opened \the [src] during an alert: [users_to_open_string].")
 
 /obj/machinery/door/firedoor/Bumped(atom/AM)
-	if(p_open || operating)
+	if(panel_open || operating)
 		return
 	if(!density)
 		return ..()
@@ -322,12 +322,12 @@
 /obj/machinery/door/firedoor/border_only/almayer
 	name = "\improper Emergency Shutter"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas."
-	icon = 'icons/obj/doors/almayer/purinadoor.dmi'
+	icon = 'icons/obj/structures/doors/purinadoor.dmi'
 	openspeed = 4
 
 
 /obj/machinery/door/firedoor/multi_tile
-	icon = 'icons/obj/doors/DoorHazard2x1.dmi'
+	icon = 'icons/obj/structures/doors/DoorHazard2x1.dmi'
 	width = 2
 
 /obj/machinery/door/firedoor/border_only/almayer/antag

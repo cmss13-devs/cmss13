@@ -50,7 +50,7 @@ mob/living/carbon/proc/handle_hallucinations()
 						halitem.layer = 50
 						switch(rand(1,6))
 							if(1) //revolver
-								halitem.icon = 'icons/obj/items/gun.dmi'
+								halitem.icon = 'icons/obj/items/weapons/guns/gun.dmi'
 								halitem.icon_state = "revolver"
 								halitem.name = "Revolver"
 							if(2) //c4
@@ -60,11 +60,11 @@ mob/living/carbon/proc/handle_hallucinations()
 								if(prob(25))
 									halitem.icon_state = "c4small_1"
 							if(3) //sword
-								halitem.icon = 'icons/obj/items/weapons.dmi'
+								halitem.icon = 'icons/obj/items/weapons/weapons.dmi'
 								halitem.icon_state = "sword1"
 								halitem.name = "Sword"
 							if(4) //stun baton
-								halitem.icon = 'icons/obj/items/weapons.dmi'
+								halitem.icon = 'icons/obj/items/weapons/weapons.dmi'
 								halitem.icon_state = "stunbaton"
 								halitem.name = "Stun Baton"
 							if(5) //emag
@@ -72,7 +72,7 @@ mob/living/carbon/proc/handle_hallucinations()
 								halitem.icon_state = "emag"
 								halitem.name = "Cryptographic Sequencer"
 							if(6) //flashbang
-								halitem.icon = 'icons/obj/items/grenade.dmi'
+								halitem.icon = 'icons/obj/items/weapons/grenade.dmi'
 								halitem.icon_state = "flashbang1"
 								halitem.name = "Flashbang"
 						if(client) client.screen += halitem
@@ -93,7 +93,7 @@ mob/living/carbon/proc/handle_hallucinations()
 						switch(rand(1,3))
 							if(1)
 								//to_chat(src, "Space")
-								halimage = image('icons/turf/space.dmi',target,"[rand(1,25)]",TURF_LAYER)
+								halimage = image('icons/turf/floors/space.dmi',target,"[rand(1,25)]",TURF_LAYER)
 							if(2)
 								//to_chat(src, "Fire")
 								halimage = image('icons/effects/fire.dmi',target,"1",TURF_LAYER)
@@ -153,11 +153,11 @@ mob/living/carbon/proc/handle_hallucinations()
 						var/turf/open/floor/target = pick(possible_points)
 						switch(rand(1,4))
 							if(1)
-								halbody = image('icons/mob/human.dmi',target,"husk_l",TURF_LAYER)
+								halbody = image('icons/mob/humans/human.dmi',target,"husk_l",TURF_LAYER)
 							if(2,3)
-								halbody = image('icons/mob/human.dmi',target,"husk_s",TURF_LAYER)
+								halbody = image('icons/mob/humans/human.dmi',target,"husk_s",TURF_LAYER)
 							if(4)
-								halbody = image('icons/mob/alien.dmi',target,"alienother",TURF_LAYER)
+								halbody = image('icons/mob/xenos/alien.dmi',target,"alienother",TURF_LAYER)
 	//						if(5)
 	//							halbody = image('xcomalien.dmi',target,"chryssalid",TURF_LAYER)
 

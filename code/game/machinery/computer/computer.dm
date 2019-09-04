@@ -1,6 +1,6 @@
 /obj/machinery/computer
 	name = "computer"
-	icon = 'icons/obj/machines/computer.dmi'
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	density = 1
 	anchored = 1.0
 	use_power = 1
@@ -90,7 +90,7 @@
 
 /obj/machinery/computer/proc/decode(text)
 	// Adds line breaks
-	text = oldreplacetext(text, "\n", "<BR>")
+	text = replacetext(text, "\n", "<BR>")
 	return text
 
 

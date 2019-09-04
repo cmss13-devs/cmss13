@@ -30,7 +30,7 @@
 
 /obj/machinery/computer/shuttle_control/almayer/hangar
 	name = "Elevator Console"
-	icon = 'icons/obj/machines/computer.dmi'
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "supply"
 	unacidable = 1
 	exproof = 1
@@ -40,7 +40,7 @@
 
 /obj/machinery/computer/shuttle_control/almayer/maintenance
 	name = "Elevator Console"
-	icon = 'icons/obj/machines/computer.dmi'
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"
 	unacidable = 1
 	exproof = 1
@@ -416,8 +416,18 @@
 	icon_state = "science"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/medical/testlab
+	name = "\improper Medical Research test lab"
+	icon_state = "science"
+	fake_zlevel = 1 // upperdeck
+
 /area/almayer/medical/containment
 	name = "\improper Medical Research containment"
+	icon_state = "science"
+	fake_zlevel = 1 // upperdeck
+
+/area/almayer/medical/containment/cell
+	name = "\improper Medical Research containment cells"
 	icon_state = "science"
 	fake_zlevel = 1 // upperdeck
 	flags_atom = AREA_AVOID_BIOSCAN|AREA_NOTUNNEL

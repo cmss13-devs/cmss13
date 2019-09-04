@@ -89,6 +89,7 @@
 	var/modded = 0
 	var/obj/item/device/assembly_holder/rig = null
 	var/exploding = 0
+	var/source_mob
 
 /obj/structure/reagent_dispensers/fueltank/New()
 	..()
@@ -150,6 +151,8 @@
 	if(istype(Proj.firer,/mob/living/carbon/human))
 		message_admins("[key_name_admin(Proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
 		log_game("[key_name(Proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
+	if(Proj.firer)
+		source_mob = Proj.firer
 
 	if(Proj.damage > 10 && prob(60))
 		exploding = 1
@@ -169,8 +172,8 @@
 	if(expower > 40)
 		create_shrapnel(src.loc, shrapnel, , ,shrapneltype)
 		sleep(2)
-	explosion_rec(src.loc, expower, 24)
-	new /obj/flamer_fire(src.loc, 12, 10, , flamesize, FALSE, FLAMESHAPE_STAR)
+	explosion_rec(src.loc, expower, 24, initial(name), source_mob)
+	new /obj/flamer_fire(src.loc, initial(name), source_mob, 12, 10, , flamesize, FALSE, FLAMESHAPE_STAR)
 	if(src)
 		qdel(src)
 
@@ -215,7 +218,7 @@
 	name = "water cooler"
 	desc = "A machine that dispenses water to drink. It has levers for hot and cold, but it only dispenses room-temperature water."
 	amount_per_transfer_from_this = 5
-	icon = 'icons/obj/machines/vending.dmi'
+	icon = 'icons/obj/structures/machinery/vending.dmi'
 	icon_state = "water_cooler"
 	possible_transfer_amounts = null
 	anchored = 1

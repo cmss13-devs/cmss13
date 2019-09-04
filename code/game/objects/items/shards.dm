@@ -78,18 +78,6 @@
 				H.updatehealth()
 	..()
 
-// Shrapnel
-
-/obj/item/shard/shrapnel
-	name = "shrapnel"
-	icon_state = "shrapnel"
-	desc = "A bunch of tiny bits of shattered metal."
-	matter = list("metal" = 50)
-	source_sheet_type = null
-
-
-
-
 /obj/item/shard/phoron
 	name = "phoron shard"
 	desc = "A shard of phoron glass. Considerably tougher then normal glass shards. Apparently not tough enough to be a window."
@@ -98,5 +86,35 @@
 	icon_state = "phoron"
 	source_sheet_type = /obj/item/stack/sheet/glass/phoronglass
 
+
+// Shrapnel. 
+// on_embed is called from projectile.dm, bullet_act(obj/item/projectile/P).
+// on_embedded_movement is called from human.dm, handle_embedded_objects().
+
+/obj/item/shard/shrapnel
+	name = "shrapnel"
+	icon_state = "shrapnel"
+	desc = "A bunch of tiny bits of shattered metal."
+	matter = list("metal" = 50)
+	source_sheet_type = null
+	var/damage_on_move = 0.5
+
+/obj/item/shard/shrapnel/proc/on_embed(var/mob/embedded_mob, var/datum/limb/target_organ)
+	if(ishuman(embedded_mob) && !isYautja(embedded_mob))
+		if(istype(target_organ))
+			target_organ.embed(src)
+
+/obj/item/shard/shrapnel/proc/on_embedded_movement(var/mob/embedded_mob)
+	if(ishuman(embedded_mob) && !isYautja(embedded_mob))
+		var/datum/limb/organ = embedded_organ
+		if(istype(organ))
+			organ.take_damage(damage_on_move, 0, 0)
+
+
+/obj/item/shard/shrapnel/bone_chips
+	name = "bone shrapnel chips"
+	icon_state = "shrapnel"
+	desc = "It looks like it came from a prehistoric animal."
+	damage_on_move = 0.4
 
 

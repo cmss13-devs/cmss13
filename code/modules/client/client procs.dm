@@ -122,6 +122,7 @@
 
 	clients += src
 	directory[ckey] = src
+	player_entity = setup_player_entity(key)
 
 	//Admin Authorisation
 	admin_holder = admin_datums[ckey]
@@ -180,7 +181,7 @@
 
 
 	var/file = file2text("config/donators.txt")
-	var/lines = text2list(file, "\n")
+	var/lines = splittext(file, "\n")
 
 	for(var/line in lines)
 		if(src.ckey == line)
@@ -282,30 +283,30 @@
 		'html/search.js',
 		'html/panels.css',
 		'html/loading.gif',
-		'icons/pda_icons/pda_atmos.png',
-		'icons/pda_icons/pda_back.png',
-		'icons/pda_icons/pda_bell.png',
-		'icons/pda_icons/pda_blank.png',
-		'icons/pda_icons/pda_boom.png',
-		'icons/pda_icons/pda_bucket.png',
-		'icons/pda_icons/pda_crate.png',
-		'icons/pda_icons/pda_cuffs.png',
-		'icons/pda_icons/pda_eject.png',
-		'icons/pda_icons/pda_exit.png',
-		'icons/pda_icons/pda_flashlight.png',
-		'icons/pda_icons/pda_honk.png',
-		'icons/pda_icons/pda_mail.png',
-		'icons/pda_icons/pda_medical.png',
-		'icons/pda_icons/pda_menu.png',
-		'icons/pda_icons/pda_mule.png',
-		'icons/pda_icons/pda_notes.png',
-		'icons/pda_icons/pda_power.png',
-		'icons/pda_icons/pda_rdoor.png',
-		'icons/pda_icons/pda_reagent.png',
-		'icons/pda_icons/pda_refresh.png',
-		'icons/pda_icons/pda_scanner.png',
-		'icons/pda_icons/pda_signaler.png',
-		'icons/pda_icons/pda_status.png',
+		'icons/old_stuff/pda_icons/pda_atmos.png',
+		'icons/old_stuff/pda_icons/pda_back.png',
+		'icons/old_stuff/pda_icons/pda_bell.png',
+		'icons/old_stuff/pda_icons/pda_blank.png',
+		'icons/old_stuff/pda_icons/pda_boom.png',
+		'icons/old_stuff/pda_icons/pda_bucket.png',
+		'icons/old_stuff/pda_icons/pda_crate.png',
+		'icons/old_stuff/pda_icons/pda_cuffs.png',
+		'icons/old_stuff/pda_icons/pda_eject.png',
+		'icons/old_stuff/pda_icons/pda_exit.png',
+		'icons/old_stuff/pda_icons/pda_flashlight.png',
+		'icons/old_stuff/pda_icons/pda_honk.png',
+		'icons/old_stuff/pda_icons/pda_mail.png',
+		'icons/old_stuff/pda_icons/pda_medical.png',
+		'icons/old_stuff/pda_icons/pda_menu.png',
+		'icons/old_stuff/pda_icons/pda_mule.png',
+		'icons/old_stuff/pda_icons/pda_notes.png',
+		'icons/old_stuff/pda_icons/pda_power.png',
+		'icons/old_stuff/pda_icons/pda_rdoor.png',
+		'icons/old_stuff/pda_icons/pda_reagent.png',
+		'icons/old_stuff/pda_icons/pda_refresh.png',
+		'icons/old_stuff/pda_icons/pda_scanner.png',
+		'icons/old_stuff/pda_icons/pda_signaler.png',
+		'icons/old_stuff/pda_icons/pda_status.png',
 		'html/images/wylogo.png',
 		'html/images/uscmlogo.png'
 		)
@@ -330,3 +331,19 @@
 	// Nothing happening, long sleep
 	sleep(5)
 	return .
+
+/proc/setup_player_entity(var/key)
+	var/key_ref = lowertext(key)
+	if(player_entities["[key_ref]"])
+		return player_entities["[key_ref]"]
+	var/datum/entity/player_entity/P = new()
+	P.ckey = key
+	P.name = key
+	player_entities["[key_ref]"] = P
+	P.setup_save(key)
+	return P
+
+/proc/save_player_entities()
+	for(var/key_ref in player_entities)
+		var/datum/entity/player_entity/P = player_entities["[key_ref]"]
+		P.save_statistics()

@@ -75,6 +75,9 @@
 			A.give_action(X)
 
 
+/*	----------
+	BOILERS
+*/	
 /datum/xeno_mutator/railgun
 	name = "STRAIN: Boiler - Railgun"
 	description = "In exchange for your gas and neurotoxin gas, you gain a new type of glob - the railgun glob. This will do a lot of damage to barricades and humans, with no scatter and perfect accuracy!"
@@ -128,6 +131,9 @@
 	MS.recalculate_actions(description)
 
 
+/*	----------
+	DRONES
+*/	
 /datum/xeno_mutator/healer
 	name = "STRAIN: Drone - Healer"
 	description = "In exchange for your ability to build, you gain better pheromones and the ability to transfer life to other Xenomorphs. Be wary, this is a dangerous process, overexert yourself and you might die..."
@@ -144,12 +150,17 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Drone/D = MS.xeno
+	D.mutation_type = DRONE_HEALER
 	D.phero_modifier += XENO_PHERO_MOD_LARGE
 	D.plasma_types += PLASMA_PHEROMONE
 	mutator_update_actions(D)
 	MS.recalculate_actions(description)
 	D.recalculate_pheromones()
 
+
+/*	----------
+	SPITTERS
+*/	
 /datum/xeno_mutator/vomiter 
 	name = "STRAIN: Spitter - Vomiter"
 	description = "In exchange for your ability to spit, you gain the ability to spray a weaker variant of acid spray that does not stun, but still damages."
@@ -166,10 +177,15 @@
 		return
 	
 	var/mob/living/carbon/Xenomorph/Spitter/S = MS.xeno
+	S.mutation_type = SPITTER_VOMITER
 	S.plasma_types -= PLASMA_NEUROTOXIN
 	mutator_update_actions(S)
 	MS.recalculate_actions(description)
 
+
+/*	----------
+	DEFENDERS
+*/	
 /datum/xeno_mutator/steel_crest 
 	name = "STRAIN: Defender - Steel Crest"
 	description = "In exchange for your tail sweep and some of your damage, you gain the ability to move while in Fortify. Your headbutt can now be used while your crest is lowered. It also reaches further and does more damage."
@@ -184,6 +200,7 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Defender/D = MS.xeno
+	D.mutation_type = DEFENDER_STEELCREST
 	D.remove_action("Tail Sweep")
 	D.speed_modifier += XENO_SPEED_MOD_SMALL
 	D.damage_modifier -= XENO_DAMAGE_MOD_VERYSMALL
@@ -193,6 +210,10 @@
 	MS.recalculate_actions(description)
 	D.recalculate_stats()
 
+
+/*	----------
+	CARRIERS
+*/	
 /datum/xeno_mutator/egg_sacs 
 	name = "STRAIN: Carrier - Egg Sacs"
 	description = "In exchange for your ability to store huggers, you gain the ability to produce eggs."
@@ -208,12 +229,16 @@
 	if (. == 0)
 		return
 	var/mob/living/carbon/Xenomorph/Carrier/C = MS.xeno
+	C.mutation_type = CARRIER_EGGSACS
 	MS.egg_sac = TRUE
 	C.plasma_types += PLASMA_EGG
 	mutator_update_actions(C)
 	MS.recalculate_actions(description)
 	
 
+/*	----------
+	BURROWERS
+*/	
 /datum/xeno_mutator/tremor 
 	name = "STRAIN: Burrower - Tremor"
 	description = "In exchange for your ability to create traps, you gain the ability to create tremors in the ground. These tremors will knock down those next to you, while confusing everyone on your screen."
@@ -230,9 +255,14 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Burrower/B = MS.xeno
+	B.mutation_type = BURROWER_TREMOR
 	mutator_update_actions(B)
 	MS.recalculate_actions(description)
 
+
+/*	----------
+	WARRIORS
+*/	
 /datum/xeno_mutator/boxer
 	name = "STRAIN: Warrior - Boxer"
 	description = "In exchange for your ability to fling, you gain the ability to Jab. Your punches no longer break bones, but they do more damage and confuse your enemies. Jab knocks down your target for a very short time, while also pulling you out of agility mode and refreshing your Punch cooldown."
@@ -249,30 +279,68 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Warrior/W = MS.xeno
+	W.mutation_type = WARRIOR_BOXER
 	mutator_update_actions(W)
 	MS.recalculate_actions(description)
 
-/datum/xeno_mutator/spin_slash
-	// I like to call this one... the decappucino!
-	name = "STRAIN: Ravager - Spin Slash"
-	description = "In exchange for your charge, you gain the ability to perform a deadly spinning slash attack that reaches targets all around you."
+
+/*	----------
+	RAVAGERS
+*/	
+/datum/xeno_mutator/veteran
+	name = "STRAIN: Ravager - Veteran"
+	description = "In exchange for your armor and some health, you gain the ability to charge forward, slash off limbs, and move faster."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Ravager")  	// Only Ravager.
-	mutator_actions_to_remove = list("Charge (20)")
-	mutator_actions_to_add = list(/datum/action/xeno_action/activable/spin_slash)
+	mutator_actions_to_add = list(/datum/action/xeno_action/activable/charge)
 	keystone = TRUE
 
-/datum/xeno_mutator/spin_slash/apply_mutator(datum/mutator_set/individual_mutators/MS)
+/datum/xeno_mutator/veteran/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()
 	if (. == 0)
 		return	
 
 	var/mob/living/carbon/Xenomorph/Ravager/R = MS.xeno
-	R.used_lunge = 0
+	R.armor_modifier -= XENO_HEAVY_ARMOR //Remove armour
+	R.speed_modifier -= XENO_SPEED_MOD_ULTRA
+	R.evasion_modifier += XENO_EVASION_MOD_VERYLARGE
+	R.damage_modifier += XENO_DAMAGE_MOD_SMALL
+	R.health_modifier -= XENO_HEALTH_MOD_VERYLARGE
+	R.explosivearmor_modifier -= XENO_EXPOSIVEARMOR_MOD_SMALL
+	R.mutation_type = RAVAGER_VETERAN
+	mutator_update_actions(R)
+	MS.recalculate_actions(description)
+	R.recalculate_everything()
+
+
+/datum/xeno_mutator/hedgehog
+	name = "STRAIN: Ravager - Hedgehog"
+	description = "You lose the ability to chip shrapnel from your claws. In exchange, you grow a set of spikes that can be thrown at targets at range. You also gain the ability to spin your claws for an AOE attack."
+	cost = MUTATOR_COST_EXPENSIVE
+	individual_only = TRUE
+	caste_whitelist = list("Ravager")  	// Only Ravager.
+	mutator_actions_to_add = list(/datum/action/xeno_action/activable/spike_spray, /datum/action/xeno_action/activable/spin_slash)
+	keystone = TRUE
+
+/datum/xeno_mutator/hedgehog/apply_mutator(datum/mutator_set/individual_mutators/MS)
+	. = ..()
+	if (. == 0)
+		return	
+
+	var/mob/living/carbon/Xenomorph/Ravager/R = MS.xeno
+	R.used_lunge = FALSE
+	R.used_pounce = FALSE
+	R.speed_modifier -= XENO_SPEED_MOD_LARGE
+	R.health_modifier -= XENO_HEALTH_MOD_MED
+	R.mutation_type = RAVAGER_HEDGEHOG
 	mutator_update_actions(R)
 	MS.recalculate_actions(description)
 
+
+/*	----------
+	PRAETORIANS 
+*/	
 /datum/xeno_mutator/royal_guard
 	name = "STRAIN: Praetorian - Royal Guard"
 	description = "You gain better pheromones, more damage, tail sweep, and another way to acid spray together with a lower activation time. Your screech now increases your sister's strength in combat."

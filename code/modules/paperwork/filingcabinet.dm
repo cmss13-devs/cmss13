@@ -12,11 +12,11 @@
 /obj/structure/filingcabinet
 	name = "filing cabinet"
 	desc = "A large cabinet with drawers."
-	icon = 'icons/obj/structures/misc.dmi'
+	icon = 'icons/obj/structures/props/misc.dmi'
 	icon_state = "filingcabinet"
 	density = 1
 	anchored = 1
-	var/list/allowed_types = list(/obj/item/paper, /obj/item/folder, /obj/item/photo, /obj/item/paper_bundle, /obj/item/document_objective/paper, /obj/item/document_objective/report, /obj/item/document_objective/folder)
+	var/list/allowed_types = list(/obj/item/paper, /obj/item/folder,/obj/item/clipboard, /obj/item/photo, /obj/item/paper_bundle, /obj/item/document_objective/paper, /obj/item/document_objective/report, /obj/item/document_objective/folder)
 
 /obj/structure/filingcabinet/Dispose()
 	for(var/obj/item/W in contents)

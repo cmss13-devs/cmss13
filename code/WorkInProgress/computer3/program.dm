@@ -6,7 +6,7 @@ Programs are a file that can be executed
 /datum/file/program
 	name					= "Untitled"
 	extension				= "prog"
-	image					= 'icons/ntos/program.png'
+	image					= 'icons/old_stuff/ntos/program.png'
 	var/desc				= "An unidentifiable program."
 
 	var/image/overlay		= null							// Icon to be put on top of the computer frame.
@@ -32,12 +32,12 @@ Programs are a file that can be executed
 	..()
 	if(!active_state)
 		active_state = "generic"
-	overlay = image('icons/obj/machines/computer3.dmi',icon_state = active_state)
+	overlay = image('icons/obj/structures/machinery/computer3.dmi',icon_state = active_state)
 
 
 /datum/file/program/proc/decode(text)
 		//adds line breaks
-		text = oldreplacetext(text, "\n","<BR>")
+		text = replacetext(text, "\n","<BR>")
 		return text
 
 
@@ -155,7 +155,7 @@ Programs are a file that can be executed
 		if(!popup)
 			popup = new(user, "\ref[computer]", name, nref=src)
 			popup.set_title_image(usr.browse_rsc_icon(overlay.icon, overlay.icon_state))
-			popup.set_title_buttons(topic_link(src,"quit","<img src=\ref['icons/ntos/tb_close.png']>"))
+			popup.set_title_buttons(topic_link(src,"quit","<img src=\ref['icons/old_stuff/ntos/tb_close.png']>"))
 		if(popup.user != user)
 			popup.user = user
 			popup.set_title_image(usr.browse_rsc_icon(overlay.icon, overlay.icon_state))
@@ -263,85 +263,85 @@ Programs are a file that can be executed
 
 /datum/file/program/RD
 	name = "R&D Manager"
-	image = 'icons/ntos/research.png'
+	image = 'icons/old_stuff/ntos/research.png'
 	desc = "A software suit for generic research and development machinery interaction. Comes pre-packaged with extensive cryptographic databanks for secure connections with external devices."
 	active_state = "rdcomp"
 	volume = 11000
 
 /datum/file/program/RDserv
 	name = "R&D Server"
-	image = 'icons/ntos/server.png'
+	image = 'icons/old_stuff/ntos/server.png'
 	active_state = "rdcomp"
 	volume = 9000
 
 /datum/file/program/SuitSensors
 	name = "Crew Monitoring"
-	image = 'icons/ntos/monitoring.png'
+	image = 'icons/old_stuff/ntos/monitoring.png'
 	active_state = "crew"
 	volume = 3400
 
 /datum/file/program/Genetics
 	name = "Genetics Suite"
-	image = 'icons/ntos/genetics.png'
+	image = 'icons/old_stuff/ntos/genetics.png'
 	desc = "A sophisticated software suite containing read-only genetics hardware specifications and a highly compressed genome databank."
 	active_state = "dna"
 	volume = 8000
 
 /datum/file/program/Cloning
 	name = "Cloning Platform"
-	image = 'icons/ntos/cloning.png'
+	image = 'icons/old_stuff/ntos/cloning.png'
 	desc = "A software platform for accessing external cloning apparatus."
 	active_state = "dna"
 	volume = 7000
 
 /datum/file/program/TCOMmonitor
 	name = "TComm Monitor"
-	image = 'icons/ntos/tcomms.png'
+	image = 'icons/old_stuff/ntos/tcomms.png'
 	active_state = "comm_monitor"
 	volume = 5500
 
 /datum/file/program/TCOMlogs
 	name = "TComm Log View"
-	image = 'icons/ntos/tcomms.png'
+	image = 'icons/old_stuff/ntos/tcomms.png'
 	active_state = "comm_logs"
 	volume = 5230
 
 /datum/file/program/TCOMtraffic
 	name = "TComm Traffic"
-	image = 'icons/ntos/tcomms.png'
+	image = 'icons/old_stuff/ntos/tcomms.png'
 	active_state = "generic"
 	volume = 8080
 
 /datum/file/program/securitycam
 	name = "Sec-Cam Viewport"
-	image = 'icons/ntos/camera.png'
+	image = 'icons/old_stuff/ntos/camera.png'
 	drm = 1
 	active_state = "cameras"
 	volume = 2190
 
 /datum/file/program/securityrecords
 	name = "Security Records"
-	image = 'icons/ntos/records.png'
+	image = 'icons/old_stuff/ntos/records.png'
 	drm = 1
 	active_state = "security"
 	volume = 2520
 
 /datum/file/program/medicalrecords
 	name = "Medical Records"
-	image = 'icons/ntos/medical.png'
+	image = 'icons/old_stuff/ntos/medical.png'
 	drm = 1
 	active_state = "medcomp"
 	volume = 5000
 
 /datum/file/program/SMSmonitor
 	name = "Messaging Monitor"
-	image = 'icons/ntos/pda.png'
+	image = 'icons/old_stuff/ntos/pda.png'
 	active_state = "comm_monitor"
 	volume = 3070
 
 /datum/file/program/OperationMonitor
 	name = "OR Monitor"
-	image = 'icons/ntos/operating.png'
+	image = 'icons/old_stuff/ntos/operating.png'
 	active_state = "operating"
 	volume = 4750
 
@@ -352,38 +352,38 @@ Programs are a file that can be executed
 
 /datum/file/program/powermon
 	name = "Power Grid"
-	image = 'icons/ntos/power.png'
+	image = 'icons/old_stuff/ntos/power.png'
 	active_state = "power"
 	volume = 7200
 
 /datum/file/program/prisoner
 	name = "Prisoner Control"
-	image = 'icons/ntos/prison.png'
+	image = 'icons/old_stuff/ntos/prison.png'
 	drm = 1
 	active_state = "power"
 	volume = 5000
 
 /datum/file/program/borg_control
 	name = "Cyborg Maint"
-	image = 'icons/ntos/borgcontrol.png'
+	image = 'icons/old_stuff/ntos/borgcontrol.png'
 	active_state = "robot"
 	volume = 9050
 
 /datum/file/program/AIupload
 	name = "AI Upload"
-	image = 'icons/ntos/aiupload.png'
+	image = 'icons/old_stuff/ntos/aiupload.png'
 	active_state = "command"
 	volume = 5000
 
 /datum/file/program/Cyborgupload
 	name = "Cyborg Upload"
-	image = 'icons/ntos/borgupload.png'
+	image = 'icons/old_stuff/ntos/borgupload.png'
 	active_state = "command"
 	volume = 5000
 
 /datum/file/program/Exosuit
 	name = "Exosuit Monitor"
-	image = 'icons/ntos/exocontrol.png'
+	image = 'icons/old_stuff/ntos/exocontrol.png'
 	active_state = "mecha"
 	volume = 7000
 
@@ -394,7 +394,7 @@ Programs are a file that can be executed
 
 /datum/file/program/Stationalert
 	name = "Alert Monitor"
-	image = 'icons/ntos/alerts.png'
+	image = 'icons/old_stuff/ntos/alerts.png'
 	active_state = "computer_generic"
 	volume = 10150
 

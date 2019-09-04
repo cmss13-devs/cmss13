@@ -10,7 +10,6 @@
 	color = "#CF3600" // rgb: 207, 54, 0
 	var/toxpwr = 0.7 // Toxins are really weak, but without being treated, last very long.
 	custom_metabolism = 0.1
-	chemclass = CHEM_CLASS_COMMON
 
 	on_mob_life(mob/living/M,alien)
 		. = ..()
@@ -27,7 +26,6 @@
 	description = "A toxic chemical."
 	custom_metabolism = 1
 	toxpwr = 1
-	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/toxin/pttoxin
 	name = "Toxin"
@@ -35,7 +33,6 @@
 	description = "A toxic chemical."
 	custom_metabolism = 1
 	toxpwr = 1
-	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/toxin/sdtoxin
 	name = "Toxin"
@@ -43,7 +40,6 @@
 	description = "A toxic chemical."
 	custom_metabolism = 1
 	toxpwr = 0
-	chemclass = CHEM_CLASS_NONE
 	on_mob_life(mob/living/M,alien)
 		. = ..()
 		if(!.) return
@@ -138,7 +134,6 @@
 	reagent_state = LIQUID
 	color = "#CF3600" // rgb: 207, 54, 0
 	toxpwr = 0
-	chemclass = CHEM_CLASS_NONE
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -153,7 +148,6 @@
 	reagent_state = LIQUID
 	color = "#003333" // rgb: 0, 51, 51
 	toxpwr = 2
-	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/toxin/zombiepowder
 	name = "Zombie Powder"
@@ -162,7 +156,6 @@
 	reagent_state = SOLID
 	color = "#669900" // rgb: 102, 153, 0
 	toxpwr = 0.5
-	chemclass = CHEM_CLASS_NONE
 
 	on_mob_life(mob/living/carbon/M)
 		. = ..()
@@ -216,22 +209,18 @@
 	reagent_state = LIQUID
 	toxpwr = 0.2 //It's not THAT poisonous.
 	color = "#664330" // rgb: 102, 67, 48
-	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/toxin/fertilizer/eznutrient
 	name = "EZ Nutrient"
 	id = "eznutrient"
-	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/toxin/fertilizer/left4zed
 	name = "Left-4-Zed"
 	id = "left4zed"
-	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/toxin/fertilizer/robustharvest
 	name = "Robust Harvest"
 	id = "robustharvest"
-	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/toxin/dinitroaniline
 	name = "Dinitroaniline"
@@ -246,7 +235,6 @@
 	reagent_state = LIQUID
 	color = "#49002E" // rgb: 73, 0, 46
 	toxpwr = 1
-	chemclass = CHEM_CLASS_NONE
 
 	reaction_obj(var/obj/O, var/volume)
 		if(istype(O,/obj/effect/alien/weeds/))
@@ -399,7 +387,6 @@
 	custom_metabolism = 0.15 // Sleep toxins should always be consumed pretty fast
 	overdose = REAGENTS_OVERDOSE/2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
-	chemclass = CHEM_CLASS_NONE
 
 	on_mob_life(mob/living/M)
 		. = ..()

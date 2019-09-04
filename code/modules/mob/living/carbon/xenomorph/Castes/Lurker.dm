@@ -75,7 +75,7 @@
 	caste_name = "Lurker"
 	name = "Lurker"
 	desc = "A beefy, fast alien with sharp claws."
-	icon = 'icons/Xeno/xenomorph_48x48.dmi'
+	icon = 'icons/mob/xenos/xenomorph_48x48.dmi'
 	icon_state = "Lurker Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
 	pixel_x = -12
@@ -90,3 +90,4 @@
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		)
+	mutation_type = LURKER_NORMAL

@@ -1,0 +1,608 @@
+/datum/entity/player_entity/proc/show_statistics(mob/user, var/datum/entity/round_stats/viewing_round = round_statistics, var/update_data = FALSE)
+	if(update_data)
+		update_panel_data(round_statistics)
+	ui_interact(user)
+
+/datum/entity/player_entity/proc/ui_interact(mob/user, ui_key = "statistics", var/datum/nanoui/ui = null, var/force_open = 1)
+	data["menu"] = menu
+	data["subMenu"] = subMenu
+	data["dataMenu"] = dataMenu
+
+	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+
+	if(!ui)
+		ui = new(user, src, ui_key, "cm_stat_panel.tmpl", "Statistics", 800, 900, null, -1)
+		ui.set_initial_data(data)
+		ui.open()
+		ui.set_auto_update(0)
+
+/datum/entity/player_entity/Topic(href, href_list)
+	var/mob/user = usr
+	user.set_interaction(src)
+
+	if(href_list["menu"])
+		menu = href_list["menu"]
+	if(href_list["subMenu"])
+		subMenu = href_list["subMenu"]
+	if(href_list["dataMenu"])
+		dataMenu = href_list["dataMenu"]	
+
+	nanomanager.update_uis(src)
+
+/datum/entity/player_entity/proc/check_eye()
+	return
+
+/datum/entity/round_stats/proc/show_kill_feed(mob/user)
+	ui_interact(user)
+
+/datum/entity/round_stats/proc/ui_interact(mob/user, ui_key = "kills", var/datum/nanoui/ui = null, var/force_open = 1)
+	ui = nanomanager.try_update_ui(user, src, ui_key, ui, death_data, force_open)
+
+	if(!ui)
+		ui = new(user, src, ui_key, "cm_kill_panel.tmpl", "Kill Feed", 800, 900, null, -1)
+		ui.set_initial_data(death_data)
+		ui.open()
+		ui.set_auto_update(1)
+
+/datum/entity/round_stats/proc/check_eye()
+	return
+
+//*******************************************************
+//*******************PLAYER DATA*************************
+//*******************************************************
+
+/datum/entity/player_entity/proc/update_panel_data(var/datum/entity/round_stats/viewing_round = round_statistics)
+	data["current_time"] = worldtime2text()
+
+	if(viewing_round)
+		viewing_round.update_panel_data()
+		data["round"] = viewing_round.round_data["round"]
+
+	if(player_stats["human"])
+		var/datum/entity/player_stats/human/H = player_stats["human"]
+		var/list/humans_killed = list()
+		var/list/xenos_killed = list()
+		var/list/death_list = list()
+		var/list/weapon_stats_list = list()
+		var/list/job_stats_list = list()
+		var/list/top_weapon = null
+		var/list/human_nemesis = null
+
+		if(H.nemesis)
+			human_nemesis = list("name" = H.nemesis.name, "value" = H.nemesis.value)
+
+		if(H.top_weapon)
+			top_weapon = list(
+				"name" = sanitize(H.top_weapon.name),
+				"total_kills" = H.top_weapon.total_kills,
+				"total_hits" = H.top_weapon.total_hits,
+				"total_shots" = H.top_weapon.total_shots,
+				"total_shots_hit" = H.top_weapon.total_shots_hit,
+				"total_friendly_fire" = H.top_weapon.total_friendly_fire
+			)
+
+		for(var/iteration in H.humans_killed)
+			var/datum/entity/statistic/S = H.humans_killed[iteration]
+			humans_killed += list(list("name" = S.name, "value" = S.value))
+
+		for(var/iteration in H.xenos_killed)
+			var/datum/entity/statistic/S = H.xenos_killed[iteration]
+			xenos_killed += list(list("name" = S.name, "value" = S.value))
+
+		for(var/datum/entity/death_stats/S in H.death_list)
+			var/list/damage_list = list()
+			for(var/damage_iteration in S.total_damage)
+				var/datum/entity/statistic/D = S.total_damage[damage_iteration]
+				damage_list += list(list("name" = D.name, "value" = D.value))
+			death_list += list(list(
+				"mob_name" = sanitize(S.mob_name),
+				"job_name" = S.job_name,
+				"area_name" = sanitize(S.area_name),
+				"cause_name" = sanitize(S.cause_name),
+				"total_kills" = S.total_kills,
+				"total_damage" = damage_list,
+				"time_of_death" = duration2text(S.time_of_death),
+				"total_time_alive" = duration2text(S.total_time_alive),
+				"x" = S.x,
+				"y" = S.y,
+				"z" = S.z
+			))
+
+		for(var/iteration in H.weapon_stats_list)
+			var/datum/entity/weapon_stats/S = H.weapon_stats_list[iteration]
+			if(!S.display_stat)
+				continue
+			var/list/weapon_humans_killed = list()
+			var/list/weapon_xenos_killed = list()
+
+			for(var/sub_iteration in S.humans_killed)
+				var/datum/entity/statistic/D = S.humans_killed[sub_iteration]
+				weapon_humans_killed += list(list("name" = D.name, "value" = D.value))
+
+			for(var/sub_iteration in S.xenos_killed)
+				var/datum/entity/statistic/D = S.xenos_killed[sub_iteration]
+				weapon_xenos_killed += list(list("name" = D.name, "value" = D.value))
+
+			weapon_stats_list += list(list(
+				"name" = sanitize(S.name),
+				"total_kills" = S.total_kills,
+				"total_hits" = S.total_hits,
+				"total_shots" = S.total_shots,
+				"total_shots_hit" = S.total_shots_hit,
+				"total_friendly_fire" = S.total_friendly_fire,
+				"humans_killed" = weapon_humans_killed,
+				"xenos_killed" = weapon_xenos_killed
+			))
+
+		for(var/iteration in H.job_stats_list)
+			var/datum/entity/player_stats/job/S = H.job_stats_list[iteration]
+			if(!S.display_stat)
+				continue
+			var/list/job_humans_killed = list()
+			var/list/job_xenos_killed = list()
+			var/list/job_death_list = list()
+			var/list/job_nemesis = null
+
+			if(S.nemesis)
+				job_nemesis = list("name" = S.nemesis.name, "value" = S.nemesis.value)
+
+			for(var/sub_iteration in S.humans_killed)
+				var/datum/entity/statistic/D = S.humans_killed[sub_iteration]
+				job_humans_killed += list(list("name" = D.name, "value" = D.value))
+
+			for(var/sub_iteration in S.xenos_killed)
+				var/datum/entity/statistic/D = S.xenos_killed[sub_iteration]
+				job_xenos_killed += list(list("name" = D.name, "value" = D.value))
+
+			for(var/datum/entity/death_stats/DS in S.death_list)
+				var/list/damage_list = list()
+				for(var/damage_iteration in DS.total_damage)
+					var/datum/entity/statistic/D = DS.total_damage[damage_iteration]
+					damage_list += list(list("name" = D.name, "value" = D.value))
+				job_death_list += list(list(
+					"mob_name" = sanitize(DS.mob_name),
+					"job_name" = DS.job_name,
+					"area_name" = sanitize(DS.area_name),
+					"cause_name" = sanitize(DS.cause_name),
+					"total_kills" = DS.total_kills,
+					"total_damage" = damage_list,
+					"time_of_death" = duration2text(DS.time_of_death),
+					"total_time_alive" = duration2text(DS.total_time_alive),
+					"x" = DS.x,
+					"y" = DS.y,
+					"z" = DS.z
+				))
+			
+			job_stats_list += list(list(
+				"name" = S.name,
+				"total_kills" = S.total_kills,
+				"total_deaths" = S.total_deaths,
+				"total_playtime" = duration2text(S.total_playtime),
+				"total_rounds_played" = S.total_rounds_played,
+				"steps_walked" = S.steps_walked,
+				"total_friendly_fire" = S.total_friendly_fire,
+				"total_revives" = S.total_revives,
+				"total_lives_saved" = S.total_lives_saved,
+				"total_shots" = S.total_shots,
+				"total_shots_hit" = S.total_shots_hit,
+				"total_screams" = S.total_screams,
+				"nemesis" = job_nemesis,
+				"humans_killed" = job_humans_killed,
+				"xenos_killed" = job_xenos_killed,
+				"job_death_list" = job_death_list
+			))
+
+		data["human"] = list(
+			"total_kills" = H.total_kills,
+			"total_deaths" = H.total_deaths,
+			"total_playtime" = duration2text(H.total_playtime),
+			"total_rounds_played" = H.total_rounds_played,
+			"steps_walked" = H.steps_walked,
+			"total_friendly_fire" = H.total_friendly_fire,
+			"total_revives" = H.total_revives,
+			"total_lives_saved" = H.total_lives_saved,
+			"total_shots" = H.total_shots,
+			"total_shots_hit" = H.total_shots_hit,
+			"total_screams" = H.total_screams,
+			"nemesis" = human_nemesis,
+			"humans_killed" = humans_killed,
+			"xenos_killed" = xenos_killed,
+			"death_list" = death_list,
+			"weapon_stats_list" = weapon_stats_list,
+			"job_stats_list" = job_stats_list,
+			"top_weapon" = top_weapon
+		)
+
+	if(player_stats["xeno"])
+		var/datum/entity/player_stats/xeno/H = player_stats["xeno"]
+		var/list/humans_killed = list()
+		var/list/xenos_killed = list()
+		var/list/death_list = list()
+		var/list/caste_stats_list = list()
+		var/list/top_caste = null
+		var/list/xeno_nemesis = null
+
+		if(H.nemesis)
+			xeno_nemesis = list("name" = H.nemesis.name, "value" = H.nemesis.value)
+
+		if(H.top_caste)
+			top_caste = list(
+				"name" = H.top_caste.name,
+				"total_kills" = H.top_caste.total_kills,
+				"total_deaths" = H.top_caste.total_deaths,
+				"total_playtime" = duration2text(H.top_caste.total_playtime),
+				"total_rounds_played" = H.top_caste.total_rounds_played,
+			)
+
+		for(var/iteration in H.humans_killed)
+			var/datum/entity/statistic/S = H.humans_killed[iteration]
+			humans_killed += list(list("name" = S.name, "value" = S.value))
+
+		for(var/iteration in H.xenos_killed)
+			var/datum/entity/statistic/S = H.xenos_killed[iteration]
+			xenos_killed += list(list("name" = S.name, "value" = S.value))
+
+		for(var/datum/entity/death_stats/S in H.death_list)
+			var/list/damage_list = list()
+			for(var/damage_iteration in S.total_damage)
+				var/datum/entity/statistic/D = S.total_damage[damage_iteration]
+				damage_list += list(list("name" = D.name, "value" = D.value))
+			death_list += list(list(
+				"mob_name" = sanitize(S.mob_name),
+				"job_name" = S.job_name,
+				"area_name" = sanitize(S.area_name),
+				"cause_name" = sanitize(S.cause_name),
+				"total_kills" = S.total_kills,
+				"total_damage" = damage_list,
+				"time_of_death" = duration2text(S.time_of_death),
+				"total_time_alive" = duration2text(S.total_time_alive),
+				"x" = S.x,
+				"y" = S.y,
+				"z" = S.z
+			))
+
+		for(var/iteration in H.caste_stats_list)
+			var/datum/entity/player_stats/caste/S = H.caste_stats_list[iteration]
+			if(!S.display_stat)
+				continue
+			var/list/caste_abilities_used = list()
+			var/list/caste_humans_killed = list()
+			var/list/caste_xenos_killed = list()
+			var/list/caste_death_list = list()
+			var/list/caste_nemesis = null
+
+			if(S.nemesis)
+				caste_nemesis = list("name" = S.nemesis.name, "value" = S.nemesis.value)
+			
+			for(var/sub_iteration in S.abilities_used)
+				var/datum/entity/statistic/D = S.abilities_used[sub_iteration]
+				caste_abilities_used += list(list("name" = D.name, "value" = D.value))
+
+			for(var/sub_iteration in S.humans_killed)
+				var/datum/entity/statistic/D = S.humans_killed[sub_iteration]
+				caste_humans_killed += list(list("name" = D.name, "value" = D.value))
+
+			for(var/sub_iteration in S.xenos_killed)
+				var/datum/entity/statistic/D = S.xenos_killed[sub_iteration]
+				caste_xenos_killed += list(list("name" = D.name, "value" = D.value))
+
+			for(var/datum/entity/death_stats/DS in S.death_list)
+				var/list/damage_list = list()
+				for(var/damage_iteration in DS.total_damage)
+					var/datum/entity/statistic/D = DS.total_damage[damage_iteration]
+					damage_list += list(list("name" = D.name, "value" = D.value))
+				caste_death_list += list(list(
+					"mob_name" = sanitize(DS.mob_name),
+					"job_name" = DS.job_name,
+					"area_name" = sanitize(DS.area_name),
+					"cause_name" = sanitize(DS.cause_name),
+					"total_kills" = DS.total_kills,
+					"total_damage" = damage_list,
+					"time_of_death" = duration2text(DS.time_of_death),
+					"total_time_alive" = duration2text(DS.total_time_alive),
+					"x" = DS.x,
+					"y" = DS.y,
+					"z" = DS.z
+				))
+			
+			caste_stats_list += list(list(
+				"name" = S.name,
+				"total_kills" = S.total_kills,
+				"total_hits" = S.total_hits,
+				"total_deaths" = S.total_deaths,
+				"total_playtime" = duration2text(S.total_playtime),
+				"total_rounds_played" = S.total_rounds_played,
+				"steps_walked" = S.steps_walked,
+				"nemesis" = caste_nemesis,
+				"humans_killed" = caste_humans_killed,
+				"xenos_killed" = caste_xenos_killed,
+				"death_list" = caste_death_list,
+				"abilities_used" = caste_abilities_used
+			))
+
+		data["xeno"] = list(
+			"total_kills" = H.total_kills,
+			"total_deaths" = H.total_deaths,
+			"total_playtime" = duration2text(H.total_playtime),
+			"total_rounds_played" = H.total_rounds_played,
+			"steps_walked" = H.steps_walked,
+			"total_hits" = H.total_hits,
+			"nemesis" = xeno_nemesis,
+			"humans_killed" = humans_killed,
+			"xenos_killed" = xenos_killed,
+			"death_list" = death_list,
+			"caste_stats_list" = caste_stats_list,
+			"top_caste" = top_caste
+		)
+
+//*******************************************************
+//*******************ROUND DATA**************************
+//*******************************************************
+
+/datum/entity/round_stats/proc/update_panel_data()
+	var/map_name
+	if(current_map)
+		map_name = current_map.name
+
+	var/list/participants_list = list()
+	var/list/hijack_participants_list = list()
+	var/list/final_participants_list = list()
+	var/list/total_deaths_list = list()
+	var/list/new_death_stats_list = list()
+	var/list/new_weapon_stats_list = list()
+	var/list/new_job_stats_list = list()
+	var/list/new_caste_stats_list = list()
+
+	for(var/iteration in participants)
+		var/datum/entity/statistic/S = participants[iteration]
+		participants_list += list(list("name" = S.name, "value" = S.value))
+
+	for(var/iteration in hijack_participants)
+		var/datum/entity/statistic/S = hijack_participants[iteration]
+		hijack_participants_list += list(list("name" = S.name, "value" = S.value))
+
+	for(var/iteration in final_participants)
+		var/datum/entity/statistic/S = final_participants[iteration]
+		final_participants_list += list(list("name" = S.name, "value" = S.value))
+
+	for(var/iteration in total_deaths)
+		var/datum/entity/statistic/S = total_deaths[iteration]
+		total_deaths_list += list(list("name" = S.name, "value" = S.value))
+	
+	for(var/datum/entity/death_stats/S in death_stats_list)
+		if(new_death_stats_list.len >= STATISTICS_DEATH_LIST_LEN)
+			break
+		var/list/damage_list = list()
+		for(var/damage_iteration in S.total_damage)
+			var/datum/entity/statistic/D = S.total_damage[damage_iteration]
+			damage_list += list(list("name" = D.name, "value" = D.value))
+
+		var/new_time_of_death
+		if(S.time_of_death)
+			new_time_of_death = duration2text(S.time_of_death)
+		var/new_total_time_alive
+		if(S.total_time_alive)
+			new_total_time_alive = duration2text(S.total_time_alive)
+		
+		var/death = list(list(
+			"mob_name" = sanitize(S.mob_name),
+			"job_name" = S.job_name,
+			"area_name" = sanitize(S.area_name),
+			"cause_name" = sanitize(S.cause_name),
+			"total_kills" = S.total_kills,
+			"total_damage" = damage_list,
+			"time_of_death" = new_time_of_death,
+			"total_time_alive" = new_total_time_alive,
+			"x" = S.x,
+			"y" = S.y,
+			"z" = S.z
+		))
+		if(new_death_stats_list.len < STATISTICS_DEATH_LIST_LEN)
+			new_death_stats_list += death
+
+	for(var/iteration in weapon_stats_list)
+		var/datum/entity/weapon_stats/S = weapon_stats_list[iteration]
+		if(!S.display_stat)
+			continue
+		var/list/weapon_humans_killed = list()
+		var/list/weapon_xenos_killed = list()
+
+		for(var/sub_iteration in S.humans_killed)
+			var/datum/entity/statistic/D = S.humans_killed[sub_iteration]
+			weapon_humans_killed += list(list("name" = D.name, "value" = D.value))
+
+		for(var/sub_iteration in S.xenos_killed)
+			var/datum/entity/statistic/D = S.xenos_killed[sub_iteration]
+			weapon_xenos_killed += list(list("name" = D.name, "value" = D.value))
+
+		new_weapon_stats_list += list(list(
+			"name" = sanitize(S.name),
+			"total_kills" = S.total_kills,
+			"total_hits" = S.total_hits,
+			"total_shots" = S.total_shots,
+			"total_shots_hit" = S.total_shots_hit,
+			"total_friendly_fire" = S.total_friendly_fire,
+			"humans_killed" = weapon_humans_killed,
+			"xenos_killed" = weapon_xenos_killed
+		))
+
+	for(var/iteration in job_stats_list)
+		var/datum/entity/player_stats/job/S = job_stats_list[iteration]
+		if(!S.display_stat)
+			continue
+		var/list/job_humans_killed = list()
+		var/list/job_xenos_killed = list()
+		var/list/job_death_list = list()
+		var/list/job_nemesis = null
+
+		if(S.nemesis)
+			job_nemesis = list("name" = S.nemesis.name, "value" = S.nemesis.value)
+
+		for(var/sub_iteration in S.humans_killed)
+			var/datum/entity/statistic/D = S.humans_killed[sub_iteration]
+			job_humans_killed += list(list("name" = D.name, "value" = D.value))
+
+		for(var/sub_iteration in S.xenos_killed)
+			var/datum/entity/statistic/D = S.xenos_killed[sub_iteration]
+			job_xenos_killed += list(list("name" = D.name, "value" = D.value))
+
+		for(var/datum/entity/death_stats/DS in S.death_list)
+			var/list/damage_list = list()
+			for(var/damage_iteration in DS.total_damage)
+				var/datum/entity/statistic/D = DS.total_damage[damage_iteration]
+				damage_list += list(list("name" = D.name, "value" = D.value))
+
+			var/new_time_of_death
+			if(DS.time_of_death)
+				new_time_of_death = duration2text(DS.time_of_death)
+			var/new_total_time_alive
+			if(DS.total_time_alive)
+				new_total_time_alive = duration2text(DS.total_time_alive)
+
+			job_death_list += list(list(
+				"mob_name" = sanitize(DS.mob_name),
+				"job_name" = DS.job_name,
+				"area_name" = sanitize(DS.area_name),
+				"cause_name" = sanitize(DS.cause_name),
+				"total_damage" = damage_list,
+				"total_kills" = DS.total_kills,
+				"time_of_death" = new_time_of_death,
+				"total_time_alive" = new_total_time_alive,
+				"x" = DS.x,
+				"y" = DS.y,
+				"z" = DS.z
+			))
+		
+		new_job_stats_list += list(list(
+			"name" = S.name,
+			"total_kills" = S.total_kills,
+			"total_deaths" = S.total_deaths,
+			"total_playtime" = duration2text(S.total_playtime),
+			"total_rounds_played" = S.total_rounds_played,
+			"steps_walked" = S.steps_walked,
+			"total_friendly_fire" = S.total_friendly_fire,
+			"total_revives" = S.total_revives,
+			"total_lives_saved" = S.total_lives_saved,
+			"total_shots" = S.total_shots,
+			"total_shots_hit" = S.total_shots_hit,
+			"total_screams" = S.total_screams,
+			"nemesis" = job_nemesis,
+			"humans_killed" = job_humans_killed,
+			"xenos_killed" = job_xenos_killed,
+			"job_death_list" = job_death_list
+		))
+
+	for(var/iteration in caste_stats_list)
+		var/datum/entity/player_stats/caste/S = caste_stats_list[iteration]
+		if(!S.display_stat)
+			continue
+		var/list/caste_abilities_used = list()
+		var/list/caste_humans_killed = list()
+		var/list/caste_xenos_killed = list()
+		var/list/caste_death_list = list()
+		var/list/caste_nemesis = null
+
+		if(S.nemesis)
+			caste_nemesis = list("name" = S.nemesis.name, "value" = S.nemesis.value)
+		
+		for(var/sub_iteration in S.abilities_used)
+			var/datum/entity/statistic/D = S.abilities_used[sub_iteration]
+			caste_abilities_used += list(list("name" = D.name, "value" = D.value))
+
+		for(var/sub_iteration in S.humans_killed)
+			var/datum/entity/statistic/D = S.humans_killed[sub_iteration]
+			caste_humans_killed += list(list("name" = D.name, "value" = D.value))
+
+		for(var/sub_iteration in S.xenos_killed)
+			var/datum/entity/statistic/D = S.xenos_killed[sub_iteration]
+			caste_xenos_killed += list(list("name" = D.name, "value" = D.value))
+
+		for(var/datum/entity/death_stats/DS in S.death_list)
+			var/list/damage_list = list()
+			for(var/damage_iteration in DS.total_damage)
+				var/datum/entity/statistic/D = DS.total_damage[damage_iteration]
+				damage_list += list(list("name" = D.name, "value" = D.value))
+
+			var/new_time_of_death
+			if(DS.time_of_death)
+				new_time_of_death = duration2text(DS.time_of_death)
+			var/new_total_time_alive
+			if(DS.total_time_alive)
+				new_total_time_alive = duration2text(DS.total_time_alive)
+
+			caste_death_list += list(list(
+				"mob_name" = sanitize(DS.mob_name),
+				"job_name" = DS.job_name,
+				"area_name" = sanitize(DS.area_name),
+				"cause_name" = sanitize(DS.cause_name),
+				"total_damage" = damage_list,
+				"time_of_death" = new_time_of_death,
+				"total_kills" = DS.total_kills,
+				"total_time_alive" = new_total_time_alive,
+				"x" = DS.x,
+				"y" = DS.y,
+				"z" = DS.z
+			))
+		
+		new_caste_stats_list += list(list(
+			"name" = S.name,
+			"total_kills" = S.total_kills,
+			"total_hits" = S.total_hits,
+			"total_deaths" = S.total_deaths,
+			"total_playtime" = duration2text(S.total_playtime),
+			"total_rounds_played" = S.total_rounds_played,
+			"steps_walked" = S.steps_walked,
+			"nemesis" = caste_nemesis,
+			"humans_killed" = caste_humans_killed,
+			"xenos_killed" = caste_xenos_killed,
+			"death_list" = caste_death_list,
+			"abilities_used" = caste_abilities_used
+		))
+
+	var/new_time_start
+	if(real_time_start)
+		new_time_start = time2text(real_time_start)
+
+	var/new_round_length
+	if(round_length)
+		new_round_length = duration2text(round_length)
+
+	var/new_hijack_time
+	if(round_hijack_time)
+		new_hijack_time = time2text(round_hijack_time)
+
+	var/new_time_end
+	if(real_time_end)
+		new_time_end = time2text(real_time_end)
+
+	death_data["death_stats_list"] = new_death_stats_list
+	round_data["round"] = list(
+		"name" = name,
+		"game_mode" = game_mode,
+		"map_name" = map_name,
+		"round_result" = round_result,
+		"real_time_start" = new_time_start,
+		"real_time_end" = new_time_end,
+		"round_length" = new_round_length,
+		"round_hijack_time" = new_hijack_time,
+		"end_round_player_population" = end_round_player_population,
+		"defcon_level" = defcon_level,
+		"objective_points" = objective_points,
+		"total_projectiles_fired" = total_projectiles_fired,
+		"total_projectiles_hit" = total_projectiles_hit,
+		"total_projectiles_hit_human" = total_projectiles_hit_human,
+		"total_projectiles_hit_xeno" = total_projectiles_hit_xeno,
+		"total_slashes" = total_slashes,
+		"total_friendly_fire_instances" = total_friendly_fire_instances,
+		"total_friendly_fire_kills" = total_friendly_fire_kills,
+		"total_huggers_applied" = total_huggers_applied,
+		"total_larva_burst" = total_larva_burst,
+		"participants" = participants_list,
+		"hijack_participants" = hijack_participants_list,
+		"final_participants" = final_participants_list,
+		"total_deaths" = total_deaths_list,
+		"death_stats_list" = new_death_stats_list,
+		"weapon_stats_list" = new_weapon_stats_list,
+		"job_stats_list" = new_job_stats_list,
+		"caste_stats_list" = new_caste_stats_list
+	)

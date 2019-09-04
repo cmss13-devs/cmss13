@@ -68,7 +68,7 @@
 "l" = (
 /obj/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access_txt = "0"
+	req_one_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,

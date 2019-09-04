@@ -108,7 +108,7 @@
 	caste_name = "Praetorian"
 	name = "Praetorian"
 	desc = "A huge, looming beast of an alien."
-	icon = 'icons/Xeno/xenomorph_64x64.dmi'
+	icon = 'icons/mob/xenos/xenomorph_64x64.dmi'
 	icon_state = "Praetorian Walking"
 	plasma_types = list(PLASMA_PHEROMONE,PLASMA_NEUROTOXIN)
 	pixel_x = -16
@@ -116,10 +116,10 @@
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
+	mutation_type = PRAETORIAN_NORMAL
 	
 	// Variables unique to Praetorians.
 	var/screech_sound_effect = 'sound/voice/xeno_praetorian_screech.ogg'
-	var/mutation_type = PRAETORIAN_NORMAL
 
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,

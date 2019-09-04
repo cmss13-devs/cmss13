@@ -284,6 +284,7 @@
 					playsound(loc, 'sound/voice/monkey_scream.ogg', 50)
 				if(player_caused)
 					start_audio_emote_cooldown()
+				track_scream(job)
 			else
 				to_chat(src, "You just did an audible emote. Wait a while.")
 				return
@@ -320,6 +321,7 @@
 					playsound(loc, 'sound/voice/monkey_scream.ogg', 50)
 				if(player_caused)
 					start_audio_emote_cooldown()
+				track_scream(job)
 			else
 				to_chat(src, "You just did an audible emote. Wait a while.")
 				return

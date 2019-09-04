@@ -4,7 +4,7 @@
 #define MAXCOIL 30
 /obj/item/stack/cable_coil
 	name = "cable coil"
-	icon = 'icons/obj/power.dmi'
+	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "coil"
 	amount = MAXCOIL
 	max_amount = MAXCOIL

@@ -386,7 +386,7 @@
 		//Warn everyone
 		visible_message(SPAN_DANGER("[src] tears [T] apart!"))
 
-		T.gib()
+		T.gib(initial(name))
 
 		//Logging stuff
 		T.attack_log += text("\[[time_stamp()]\] <font color='red'>has been torn apart by [src]!</font>")

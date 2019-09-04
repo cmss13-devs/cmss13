@@ -9,7 +9,7 @@
 	assignment = "Colonist"
 	rank = "MODE"
 	special_role = "CLF"
-	faction = "CLF"
+	faction = FACTION_CLF
 	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/clf/New()

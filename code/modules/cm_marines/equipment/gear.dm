@@ -62,7 +62,7 @@
 	anchored = 1
 	opacity = 1
 	density = 1
-	icon = 'icons/Marine/apc.dmi'
+	icon = 'icons/obj/apc.dmi'
 	icon_state = "apc"
 
 

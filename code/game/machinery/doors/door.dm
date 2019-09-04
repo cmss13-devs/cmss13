@@ -2,7 +2,7 @@
 /obj/machinery/door
 	name = "\improper Door"
 	desc = "It opens and closes."
-	icon = 'icons/obj/doors/Doorint.dmi'
+	icon = 'icons/obj/structures/doors/Doorint.dmi'
 	icon_state = "door1"
 	anchored = 1
 	opacity = 1
@@ -15,7 +15,7 @@
 
 	var/secondsElectrified = 0
 	var/visible = 1
-	var/p_open = 0
+	var/panel_open = 0
 	var/operating = 0
 	var/autoclose = 0
 	var/glass = 0
@@ -64,7 +64,7 @@
 	//return
 
 /obj/machinery/door/Bumped(atom/AM)
-	if(p_open || operating) return
+	if(panel_open || operating) return
 	if(ismob(AM))
 		var/mob/M = AM
 		if(world.time - M.last_bumped <= openspeed) return	//Can bump-open one airlock per second. This is to prevent shock spam.
@@ -195,12 +195,12 @@
 /obj/machinery/door/proc/do_animate(animation)
 	switch(animation)
 		if("opening")
-			if(p_open)
+			if(panel_open)
 				flick("o_doorc0", src)
 			else
 				flick("doorc0", src)
 		if("closing")
-			if(p_open)
+			if(panel_open)
 				flick("o_doorc1", src)
 			else
 				flick("doorc1", src)
@@ -286,4 +286,4 @@
 
 
 /obj/machinery/door/morgue
-	icon = 'icons/obj/doors/doormorgue.dmi'
+	icon = 'icons/obj/structures/doors/doormorgue.dmi'

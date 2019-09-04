@@ -16,7 +16,7 @@
 	unacidable = 1
 
 /obj/machinery/telecomms/relay/preset/ice_colony
-	icon = 'icons/obj/machines/comm_tower.dmi'
+	icon = 'icons/obj/structures/machinery/comm_tower.dmi'
 	icon_state = "comm_tower"
 	id = "Station Relay"
 	listening_level = 1
@@ -29,7 +29,7 @@
 		
 /obj/machinery/telecomms/relay/preset/tower
 	name = "TC-4T telecommunications tower"
-	icon = 'icons/obj/machines/comm_tower2.dmi'
+	icon = 'icons/obj/structures/machinery/comm_tower2.dmi'
 	icon_state = "comm_tower"
 	desc = "A portable compact TC-4T telecommunications tower. Used to set up subspace communications lines between planetary and extra-planetary locations."
 	id = "Station Relay"
@@ -334,7 +334,7 @@
 
 /obj/machinery/telecomms/allinone
 	name = "Telecommunications Mainframe"
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "comm_server"
 	desc = "A compact machine used for portable subspace telecommuniations processing."
 	density = 1

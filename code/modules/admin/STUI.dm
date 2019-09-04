@@ -15,7 +15,7 @@
 
 
 /datum/STUI
-
+	var/name = "STUI"
 	var/list/attack	= list()		//Attack logs
 	var/list/admin = list()			//Admin logs
 	var/list/staff = list()			//Staff Chat
@@ -42,7 +42,7 @@
 				data["colour"] = "bad"
 				if(attack.len > config.STUI_length+1)
 					attack.Cut(,attack.len-config.STUI_length)
-				data["log"] = list2text(attack)
+				data["log"] = jointext(attack, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
 		if(2)
@@ -50,7 +50,7 @@
 				data["colour"] = "blue"
 				if(admin.len > config.STUI_length+1)
 					admin.Cut(,admin.len-config.STUI_length)
-				data["log"] = list2text(admin)
+				data["log"] = jointext(admin, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
 		if(3)
@@ -58,7 +58,7 @@
 				data["colour"] = "average"
 				if(staff.len > config.STUI_length+1)
 					staff.Cut(,staff.len-config.STUI_length)
-				data["log"] = list2text(staff)
+				data["log"] = jointext(staff, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
 		if(4)
@@ -66,7 +66,7 @@
 				data["colour"] = "average"
 				if(ooc.len > config.STUI_length+1)
 					ooc.Cut(,ooc.len-config.STUI_length)
-				data["log"] = list2text(ooc)
+				data["log"] = jointext(ooc, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
 		if(5)
@@ -74,7 +74,7 @@
 				data["colour"] = "white"
 				if(game.len > config.STUI_length+1)
 					game.Cut(,game.len-config.STUI_length)
-				data["log"] = list2text(game)
+				data["log"] = jointext(game, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
 
@@ -83,13 +83,13 @@
 				data["colour"] = "average"
 				if(debug.len > config.STUI_length+1)
 					debug.Cut(,debug.len-config.STUI_length)
-				data["log"] = list2text(debug)
+				data["log"] = jointext(debug, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
-	ui = nanomanager.try_update_ui(user, user, ui_key, ui, data, force_open)
+	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if(!ui)
-		ui = new(user, user, ui_key, "STUI.tmpl", "STUI", 700, 500)
+		ui = new(user, src, ui_key, "STUI.tmpl", "STUI", 700, 500, null, -1)
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)

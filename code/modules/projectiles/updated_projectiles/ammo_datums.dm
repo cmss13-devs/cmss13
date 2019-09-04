@@ -19,7 +19,7 @@
 	var/name 		= "generic bullet"
 	var/impact_name	= null // Name of icon when trying to give a mob a projectile impact overlay
 	var/impact_limbs = NO_BODY // The body parts that have an impact icon
-	var/icon 		= 'icons/obj/items/projectiles.dmi'
+	var/icon 		= 'icons/obj/items/weapons/projectiles.dmi'
 	var/icon_state 	= "bullet"
 	var/ping 		= "ping_b" //The icon that is displayed when the bullet bounces off something.
 	var/sound_hit //When it deals damage.
@@ -43,6 +43,7 @@
 	var/damage_type 				= BRUTE 	// BRUTE, BURN, TOX, OXY, CLONE are the only things that should be in here
 	var/penetration					= 0 		// How much armor it ignores before calculations take place
 	var/shrapnel_chance 			= 0 		// The % chance it will imbed in a human
+	var/shrapnel_type				= 0			// The shrapnel type the ammo will embed, if the chance rolls
 	var/shell_speed 				= 0 		// How fast the projectile moves
 	var/bonus_projectiles_type 					// Type path of the extra projectiles
 	var/bonus_projectiles_amount 	= 0 		// How many extra projectiles it shoots out. Works kind of like firing on burst, but all of the projectiles travel together
@@ -96,7 +97,7 @@
 		if(isliving(M)) //This is pretty ugly, but what can you do.
 			if(isXeno(M))
 				var/mob/living/carbon/Xenomorph/target = M
-				if(target.mob_size == MOB_SIZE_BIG) 
+				if(target.mob_size == MOB_SIZE_BIG)
 					target.apply_effect(2, SLOW)
 					return //Big xenos are not affected.
 				target.apply_effect(0.1, WEAKEN)
@@ -170,7 +171,7 @@
 
 		var/final_angle = initial_angle
 
-		var/obj/item/projectile/P = new /obj/item/projectile(original_P.shot_from)
+		var/obj/item/projectile/P = new /obj/item/projectile(original_P.weapon_source, original_P.weapon_source_mob, original_P.shot_from)
 		P.generate_bullet(ammo_list[bonus_projectiles_type]) //No bonus damage or anything.
 		P.accuracy = round(P.accuracy * original_P.accuracy/initial(original_P.accuracy)) //if the gun changes the accuracy of the main projectile, it also affects the bonus ones.
 
@@ -199,7 +200,7 @@
 					target.apply_effect(4, SLOW)
 					return
 				if("DEATH SQUAD")
-					target.apply_effect(1, WEAKEN) //Almost unaffacted.					
+					target.apply_effect(1, WEAKEN) //Almost unaffacted.
 					target.apply_effect(2, SLOW)
 					return
 				if("ANTAGONIST") //Completely unaffected.
@@ -209,10 +210,10 @@
 		target.apply_effect(20, SUPERSLOW)
 		target.apply_effect(30, SLOW)
 
-/datum/ammo/proc/drop_flame(turf/T) // ~Art updated fire 20JAN17
+/datum/ammo/proc/drop_flame(turf/T, var/source, var/source_mob) // ~Art updated fire 20JAN17
 	if(!istype(T)) return
 	if(locate(/obj/flamer_fire) in T) return
-	new /obj/flamer_fire(T, 20, 20)
+	new /obj/flamer_fire(T, source, source_mob, 20, 20)
 
 
 /*
@@ -236,6 +237,7 @@
 	..()
 	damage = config.base_hit_damage
 	shrapnel_chance = config.low_shrapnel_chance
+	shrapnel_type = /obj/item/shard/shrapnel
 	shell_speed = config.super_shell_speed
 
 /*
@@ -498,14 +500,14 @@
 	damage_falloff = config.reg_damage_falloff
 
 /datum/ammo/bullet/rifle/explosive/on_hit_mob(mob/M, obj/item/projectile/P)
-	explosion_rec(get_turf(M), 80, 40)
+	explosion_rec(get_turf(M), 80, 40, P.weapon_source, P.firer)
 
 /datum/ammo/bullet/rifle/explosive/on_hit_obj(obj/O, obj/item/projectile/P)
-	explosion_rec(get_turf(O), 80, 40)
+	explosion_rec(get_turf(O), 80, 40, P.weapon_source, P.firer)
 
 /datum/ammo/bullet/rifle/explosive/on_hit_turf(turf/T, obj/item/projectile/P)
 	if(T.density)
-		explosion_rec(T, 80, 40)
+		explosion_rec(T, 80, 40, P.weapon_source, P.firer)
 
 /datum/ammo/bullet/rifle/ap
 	name = "armor-piercing rifle bullet"
@@ -919,9 +921,9 @@
 	damage_falloff = config.tactical_damage_falloff
 	damage = config.med_hit_damage
 	penetration = config.hmed_armor_penetration
-	damage_armor_punch = 1	
-	
-	
+	damage_armor_punch = 1
+
+
 /datum/ammo/bullet/turret
 	name = "autocannon bullet"
 	icon_state 	= "redbullet" //Red bullets to indicate friendly fire restriction
@@ -1010,22 +1012,22 @@
 	. = ..()
 
 /datum/ammo/rocket/on_hit_mob(mob/M, obj/item/projectile/P)
-	explosion_rec(get_turf(M), 200, 40)
+	explosion_rec(get_turf(M), 200, 40, P.weapon_source, P.firer)
 	smoke.set_up(1, get_turf(M))
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_obj(obj/O, obj/item/projectile/P)
-	explosion_rec(get_turf(O), 200, 40)
+	explosion_rec(get_turf(O), 200, 40, P.weapon_source, P.firer)
 	smoke.set_up(1, get_turf(O))
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_turf(turf/T, obj/item/projectile/P)
-	explosion_rec(T, 200, 40)
+	explosion_rec(T, 200, 40, P.weapon_source, P.firer)
 	smoke.set_up(1, T)
 	smoke.start()
 
 /datum/ammo/rocket/do_at_max_range(obj/item/projectile/P)
-	explosion_rec(get_turf(P), 200, 40)
+	explosion_rec(get_turf(P), 200, 40, P.weapon_source, P.firer)
 	smoke.set_up(1, get_turf(P))
 	smoke.start()
 
@@ -1044,24 +1046,24 @@
 
 /datum/ammo/rocket/ap/on_hit_mob(mob/M, obj/item/projectile/P)
 	var/turf/T = get_turf(M)
-	M.ex_act(150, P.dir, 100)
+	M.ex_act(150, P.dir, P.weapon_source, P.firer, 100)
 	M.KnockDown(2)
 	M.KnockOut(2)
-	explosion_rec(T, 100, 30)
+	explosion_rec(T, 100, 30, P.weapon_source, P.firer)
 	smoke.set_up(1, T)
 	smoke.start()
 
 /datum/ammo/rocket/ap/on_hit_obj(obj/O, obj/item/projectile/P)
 	var/turf/T = get_turf(O)
-	O.ex_act(150, P.dir, 100)
-	explosion_rec(T, 100, 30)
+	O.ex_act(150, P.dir, P.weapon_source, P.firer, 100)
+	explosion_rec(T, 100, 30, P.weapon_source, P.firer)
 	smoke.set_up(1, T)
 	smoke.start()
 
 /datum/ammo/rocket/ap/on_hit_turf(turf/T, obj/item/projectile/P)
 	var/hit_something = 0
 	for(var/mob/M in T)
-		M.ex_act(150,P.dir, 100)
+		M.ex_act(150, P.dir, P.weapon_source, P.firer, 100)
 		M.KnockDown(2)
 		M.KnockOut(2)
 		hit_something = 1
@@ -1069,13 +1071,13 @@
 	if(!hit_something)
 		for(var/obj/O in T)
 			if(O.density)
-				O.ex_act(150,P.dir, 100)
+				O.ex_act(150, P.dir, P.weapon_source, P.firer, 100)
 				hit_something = 1
 				continue
 	if(!hit_something)
-		T.ex_act(150,P.dir, 200)
+		T.ex_act(150, P.dir, P.weapon_source, P.firer, 200)
 
-	explosion_rec(T, 100, 30)
+	explosion_rec(T, 100, 30, P.weapon_source, P.firer)
 	smoke.set_up(1, T)
 	smoke.start()
 
@@ -1083,7 +1085,7 @@
 	var/turf/T = get_turf(P)
 	var/hit_something = 0
 	for(var/mob/M in T)
-		M.ex_act(250,P.dir,100)
+		M.ex_act(250, P.dir, P.weapon_source, P.firer, 100)
 		M.KnockDown(2)
 		M.KnockOut(2)
 		hit_something = 1
@@ -1091,12 +1093,12 @@
 	if(!hit_something)
 		for(var/obj/O in T)
 			if(O.density)
-				O.ex_act(250,P.dir,100)
+				O.ex_act(250, P.dir, P.weapon_source, P.firer, 100)
 				hit_something = 1
 				continue
 	if(!hit_something)
-		T.ex_act(250,P.dir)
-	explosion_rec(T, 100, 30)
+		T.ex_act(250, P.dir, P.weapon_source, P.firer)
+	explosion_rec(T, 100, 30, P.weapon_source, P.firer)
 	smoke.set_up(1, T)
 	smoke.start()
 
@@ -1114,20 +1116,20 @@
 	shell_speed = config.fast_shell_speed
 
 /datum/ammo/rocket/ltb/on_hit_mob(mob/M, obj/item/projectile/P)
-	explosion_rec(get_turf(M), 220, 50)
-	explosion_rec(get_turf(M), 200, 100)
+	explosion_rec(get_turf(M), 220, 50, P.weapon_source, P.firer)
+	explosion_rec(get_turf(M), 200, 100, P.weapon_source, P.firer)
 
 /datum/ammo/rocket/ltb/on_hit_obj(obj/O, obj/item/projectile/P)
-	explosion_rec(get_turf(O), 220, 50)
-	explosion_rec(get_turf(O), 200, 100)
+	explosion_rec(get_turf(O), 220, 50, P.weapon_source, P.firer)
+	explosion_rec(get_turf(O), 200, 100, P.weapon_source, P.firer)
 
 /datum/ammo/rocket/ltb/on_hit_turf(turf/T, obj/item/projectile/P)
-	explosion_rec(get_turf(T), 220, 50)
-	explosion_rec(get_turf(T), 200, 100)
+	explosion_rec(get_turf(T), 220, 50, P.weapon_source, P.firer)
+	explosion_rec(get_turf(T), 200, 100, P.weapon_source, P.firer)
 
 /datum/ammo/rocket/ltb/do_at_max_range(obj/item/projectile/P)
-	explosion_rec(get_turf(P), 220, 50)
-	explosion_rec(get_turf(P), 200, 100)
+	explosion_rec(get_turf(P), 220, 50, P.weapon_source, P.firer)
+	explosion_rec(get_turf(P), 200, 100, P.weapon_source, P.firer)
 
 /datum/ammo/rocket/wp
 	name = "white phosphorous rocket"
@@ -1141,12 +1143,12 @@
 	damage = config.super_hit_damage
 	max_range = config.norm_shell_range
 
-/datum/ammo/rocket/wp/drop_flame(turf/T)
+/datum/ammo/rocket/wp/drop_flame(turf/T, var/source, var/source_mob)
 	playsound(T, 'sound/weapons/gun_flamethrower3.ogg', 75, 1, 7)
 	if(!istype(T)) return
 	smoke.set_up(1, T)
 	smoke.start()
-	new /obj/flamer_fire(T, pick(40, 50), 50, "blue", fire_spread_amount = 3)
+	new /obj/flamer_fire(T, source, source_mob, pick(40, 50), 50, "blue", fire_spread_amount = 3)
 
 	var/datum/effect_system/smoke_spread/phosphorus/landingSmoke = new /datum/effect_system/smoke_spread/phosphorus
 	landingSmoke.set_up(3, 0, T, null, 6)
@@ -1155,7 +1157,7 @@
 
 	var/shard_type = /datum/ammo/bullet/shrapnel/incendiary
 	var/shard_amount = 12
-	create_shrapnel(T, shard_amount, , ,shard_type)
+	create_shrapnel(T, shard_amount, , ,shard_type, source, source_mob)
 
 
 /datum/ammo/rocket/wp/on_hit_mob(mob/M,obj/item/projectile/P)
@@ -1181,19 +1183,19 @@
 
 /datum/ammo/rocket/wp/quad/on_hit_mob(mob/M,obj/item/projectile/P)
 	drop_flame(get_turf(M))
-	explosion(P.loc,  -1, 2, 4, 5)
+	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_source, P.firer)
 
 /datum/ammo/rocket/wp/quad/on_hit_obj(obj/O,obj/item/projectile/P)
 	drop_flame(get_turf(O))
-	explosion(P.loc,  -1, 2, 4, 5)
+	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_source, P.firer)
 
 /datum/ammo/rocket/wp/quad/on_hit_turf(turf/T,obj/item/projectile/P)
 	drop_flame(T)
-	explosion(P.loc,  -1, 2, 4, 5)
+	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_source, P.firer)
 
 /datum/ammo/rocket/wp/quad/do_at_max_range(obj/item/projectile/P)
 	drop_flame(get_turf(P))
-	explosion(P.loc,  -1, 2, 4, 5)
+	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_source, P.firer)
 
 /*
 //================================================
@@ -1281,16 +1283,16 @@
 	max_range = config.long_shell_range
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_mob(mob/M,obj/item/projectile/P)
-	explosion_rec(get_turf(M), 170, 50)
+	explosion_rec(get_turf(M), 170, 50, P.weapon_source, P.firer)
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_turf(turf/T,obj/item/projectile/P)
-	explosion_rec(T, 170, 40)
+	explosion_rec(T, 170, 40, P.weapon_source, P.firer)
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_obj(obj/O,obj/item/projectile/P)
-	explosion_rec(get_turf(O), 170, 50)
+	explosion_rec(get_turf(O), 170, 50, P.weapon_source, P.firer)
 
 /datum/ammo/energy/yautja/caster/sphere/do_at_max_range(obj/item/projectile/P)
-	explosion_rec(get_turf(P), 170, 50)
+	explosion_rec(get_turf(P), 170, 50, P.weapon_source, P.firer)
 
 /datum/ammo/energy/yautja/rifle/New()
 	..()
@@ -1303,11 +1305,11 @@
 
 /datum/ammo/energy/yautja/rifle/on_hit_turf(turf/T,obj/item/projectile/P)
 	if(P.damage > 25)
-		explosion(T, -1, -1, 2, -1)
+		explosion(T, -1, -1, 2, -1, P.weapon_source, P.firer)
 
 /datum/ammo/energy/yautja/rifle/on_hit_obj(obj/O,obj/item/projectile/P)
 	if(P.damage > 25)
-		explosion(get_turf(P), -1, -1, 2, -1)
+		explosion(get_turf(P), -1, -1, 2, -1, P.weapon_source, P.firer)
 
 /datum/ammo/energy/yautja/rifle/bolt
 	name = "plasma rifle bolt"
@@ -1434,13 +1436,13 @@
 	shell_speed = config.fast_shell_speed
 
 /datum/ammo/xeno/toxin/heavy //Praetorian
-	name = "neurotoxic splash"	
+	name = "neurotoxic splash"
 	effect_power = 1.5
 	spit_cost = 50
 
 
 /datum/ammo/xeno/toxin/burst //sentinel burst
-	name = "neurotoxic air splash"	
+	name = "neurotoxic air splash"
 	effect_power = 1
 	spit_cost = 50
 	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST|AMMO_SCANS_NEARBY
@@ -1667,11 +1669,11 @@
 	sound_bounce = "acid_bounce"
 	debilitate = list(19,21,0,0,11,12,0,0)
 	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
-	var/shrapnel_type = /datum/ammo/xeno/toxin/shatter
+	var/shrapnel_xeno = /datum/ammo/xeno/toxin/shatter
 	var/shrapnel_amount = 32
 
 /datum/ammo/xeno/boiler_gas/shatter/drop_nade(turf/T, obj/item/projectile/P)
-	create_shrapnel(T, shrapnel_amount, , ,shrapnel_type)
+	create_shrapnel(T, shrapnel_amount, , ,shrapnel_xeno, P.weapon_source, P.weapon_source_mob)
 	T.visible_message(SPAN_DANGER("A huge ball of neurotoxin splashes down, sending drops and splashes in every direction!"))
 	playsound(T, 'sound/effects/squelch1.ogg', 25, 1)
 
@@ -1683,11 +1685,11 @@
 	sound_bounce = "acid_bounce"
 	debilitate = list(1,1,0,0,1,1,0,0)
 	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
-	shrapnel_type = /datum/ammo/xeno/acid/shatter
+	shrapnel_xeno = /datum/ammo/xeno/acid/shatter
 	shrapnel_amount = 32
 
 /datum/ammo/xeno/boiler_gas/shatter/acid/drop_nade(turf/T, obj/item/projectile/P)
-	create_shrapnel(T, shrapnel_amount, , ,shrapnel_type)
+	create_shrapnel(T, shrapnel_amount, , ,shrapnel_xeno, P.weapon_source, P.weapon_source_mob)
 	T.visible_message(SPAN_DANGER("A huge ball of acid splashes down, sending drops and splashes in every direction!"))
 	playsound(T, 'sound/effects/squelch1.ogg', 25, 1)
 
@@ -1717,6 +1719,40 @@
 		var/obj/structure/barricade/B = O
 		B.health -= damage + rand(5)
 		B.update_health(1)
+
+/datum/ammo/xeno/bone_chips
+	name = "bone chips"
+	icon_state = "shrapnel_light"
+	ping = null
+	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
+	bonus_projectiles_type = /datum/ammo/xeno/bone_chips/spread
+
+/datum/ammo/xeno/bone_chips/on_hit_mob(mob/M, obj/item/projectile/P)
+	if(isHumanStrict(M))
+		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
+		if(M.slowed < 7)
+			M.AdjustSlowed(6)
+
+/datum/ammo/xeno/bone_chips/New()
+	..()
+	point_blank_range = -1
+	damage = 5
+	damage_type = BRUTE
+	accuracy = config.max_hit_accuracy
+	accuracy_var_low = config.med_proj_variance
+	accuracy_var_high = config.med_proj_variance
+	max_range = config.short_shell_range
+	bonus_projectiles_amount = config.high_proj_extra
+	shrapnel_type = /obj/item/shard/shrapnel/bone_chips
+	shrapnel_chance = 100
+
+/datum/ammo/xeno/bone_chips/spread
+	name = "small bone chips"
+
+/datum/ammo/xeno/bone_chips/spread/New()
+	..()
+	scatter = 50 // We want a wild scatter angle
+	bonus_projectiles_amount = 0
 
 /*
 //================================================
@@ -1765,6 +1801,17 @@
 	icon_state = "shrapnel_light"
 
 /datum/ammo/bullet/shrapnel/light/New()
+	..()
+	damage = config.base_hit_damage
+	penetration = config.min_armor_penetration
+	shell_speed = config.slow_shell_speed
+	shrapnel_chance = 0
+
+/datum/ammo/bullet/shrapnel/spall // weak shrapnel
+	name = "spall"
+	icon_state = "shrapnel_light"
+
+/datum/ammo/bullet/shrapnel/spall/New()
 	..()
 	damage = config.base_hit_damage
 	penetration = config.min_armor_penetration
@@ -1834,10 +1881,10 @@
 /datum/ammo/flamethrower/do_at_max_range(obj/item/projectile/P)
 	drop_flame(get_turf(P))
 
-/datum/ammo/flamethrower/tank_flamer/drop_flame(var/turf/T)
+/datum/ammo/flamethrower/tank_flamer/drop_flame(var/turf/T, var/source, var/source_mob)
 	if(!istype(T)) return
 	if(locate(/obj/flamer_fire) in T) return
-	new /obj/flamer_fire(T, 20, 20, fire_spread_amount = 2)
+	new /obj/flamer_fire(T, source, source_mob, 20, 20, fire_spread_amount = 2)
 
 /datum/ammo/flare
 	name = "flare"

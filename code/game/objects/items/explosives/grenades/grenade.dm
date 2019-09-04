@@ -2,7 +2,7 @@
 	name = "grenade"
 	desc = "A hand held grenade, with an adjustable timer."
 	w_class = SIZE_SMALL
-	icon = 'icons/obj/items/grenade.dmi'
+	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "grenade"
 	item_state = "flashbang"
 	throw_speed = 3
@@ -13,11 +13,12 @@
 	var/active = 0
 	var/det_time = 40
 	var/dangerous = 0		//Make an danger overlay for humans?
+	var/harmful = TRUE      //Is it harmful? Can synths use them?
 	var/arm_sound = 'sound/weapons/armbomb.ogg'
 	var/underslug_launchable = FALSE
+	var/source_mob
 
 /obj/item/explosive/grenade/New()
-
 	..()
 
 	det_time = rand(det_time - 5, det_time + 5)
@@ -29,8 +30,14 @@
 			to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 			return
 
+		if(harmful && isSynth(user))
+			to_chat(user, SPAN_WARNING("Your programming prevents you from wearing this!"))
+			return
+
 		add_fingerprint(user)
 		activate(user)
+		if(user)
+			source_mob = user
 		if((CLUMSY in user.mutations) && prob(50))
 			to_chat(user, SPAN_WARNING("Huh? How does this thing work?"))
 			spawn(5) prime()
@@ -59,9 +66,7 @@
 	playsound(loc, arm_sound, 25, 1, 6)
 	if(dangerous)
 		updateicon()
-	spawn(det_time)
-		prime()
-		return
+	add_timer(CALLBACK(src, .proc/prime), det_time)
 
 /obj/item/explosive/grenade/proc/updateicon()
 	if(dangerous)

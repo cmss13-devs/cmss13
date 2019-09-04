@@ -290,7 +290,7 @@
 "aH" = (
 /obj/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access_txt = "0"
+	req_one_access = list()
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/ne)
@@ -695,7 +695,7 @@
 /obj/machinery/door/airlock/almayer/command{
 	dir = 4;
 	name = "Civilian Residences Admin";
-	req_access_txt = "0"
+	req_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
@@ -910,7 +910,7 @@
 /obj/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "High-Security Monitoring";
-	req_access_txt = "0"
+	req_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -929,7 +929,7 @@
 /obj/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "High-Security Monitoring";
-	req_access_txt = "0"
+	req_access = list()
 	},
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
@@ -1006,7 +1006,7 @@
 /obj/machinery/door/airlock/almayer/command{
 	dir = 2;
 	name = "Civilian Residences Admin";
-	req_access_txt = "0"
+	req_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1122,7 +1122,7 @@
 /obj/machinery/door/airlock/almayer/engineering{
 	dir = 2;
 	name = "Storage";
-	req_one_access_txt = "0"
+	req_one_access = list()
 	},
 /turf/open/floor/plating,
 /area/prison/security/monitoring/highsec)
@@ -2055,7 +2055,7 @@
 	icon_state = "door_open";
 	name = "Solitary Confinement";
 	opacity = 0;
-	req_access_txt = "0"
+	req_access = list()
 	},
 /turf/open/floor/prison{
 	icon_state = "redfull"
@@ -2167,7 +2167,7 @@
 /obj/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "High-Security Monitoring";
-	req_access_txt = "0"
+	req_access = list()
 	},
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
@@ -2268,7 +2268,7 @@
 	},
 /obj/machinery/door/airlock/almayer/security/glass{
 	name = "Security Booth";
-	req_access_txt = "0"
+	req_access = list()
 	},
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
@@ -2387,7 +2387,7 @@
 "eA" = (
 /obj/machinery/door/airlock/almayer/security/glass{
 	name = "High-Security Monitoring";
-	req_access_txt = "0"
+	req_access = list()
 	},
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
@@ -2650,7 +2650,7 @@
 	icon_state = "door_open";
 	name = "Solitary Confinement";
 	opacity = 0;
-	req_access_txt = "0"
+	req_access = list()
 	},
 /turf/open/floor/prison{
 	icon_state = "redfull"

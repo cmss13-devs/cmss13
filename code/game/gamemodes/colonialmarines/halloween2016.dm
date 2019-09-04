@@ -269,7 +269,7 @@
 //////////////////////////////////
 /obj/effect/landmark/battlefield
 	name = "battlefield"
-	icon = 'icons/misc/mark.dmi'
+	icon = 'icons/old_stuff/mark.dmi'
 
 /obj/effect/landmark/battlefield/attune
 	icon_state = "spawn_event"

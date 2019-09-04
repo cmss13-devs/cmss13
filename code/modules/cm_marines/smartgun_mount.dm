@@ -494,11 +494,11 @@
 		update_icon() //make sure the user can see the lack of ammo.
 		return 0 //Out of ammo.
 
-	in_chamber = new /obj/item/projectile(loc) //New bullet!
+	in_chamber = new /obj/item/projectile(initial(name), null, loc) //New bullet!
 	in_chamber.generate_bullet(ammo)
 	return 1
 
-/obj/machinery/m56d_hmg/proc/process_shot()
+/obj/machinery/m56d_hmg/proc/process_shot(var/mob/user)
 	set waitfor = 0
 
 	if(isnull(target)) return //Acqure our victim.
@@ -511,7 +511,7 @@
 		if(rounds > 3)
 			for(var/i = 1 to 3)
 				is_bursting = 1
-				fire_shot(i)
+				fire_shot(i, user)
 				sleep(2)
 			spawn(0)
 				last_fired = 1
@@ -521,11 +521,11 @@
 		is_bursting = 0
 
 	if(!burst_fire && target && !last_fired)
-		fire_shot()
+		fire_shot(1, user)
 
 	target = null
 
-/obj/machinery/m56d_hmg/proc/fire_shot(shots_fired = 1) //Bang Bang
+/obj/machinery/m56d_hmg/proc/fire_shot(shots_fired = 1, var/mob/user) //Bang Bang
 	if(!ammo) return //No ammo.
 	if(last_fired) return //still shooting.
 
@@ -557,6 +557,7 @@
 				final_angle += rand(-total_scatter_angle, total_scatter_angle)
 				target = get_angle_target_turf(T, final_angle, 30)
 
+			in_chamber.weapon_source_mob = user
 			in_chamber.dir = src.dir
 			in_chamber.def_zone = pick("chest","chest","chest","head")
 			playsound(src.loc, 'sound/weapons/gun_rifle.ogg', 75, 1)
@@ -605,7 +606,7 @@
 			to_chat(user, SPAN_WARNING("<b>*click*</b>"))
 			playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
 		else
-			process_shot()
+			process_shot(user)
 		return HANDLE_CLICK_HANDLED
 
 	return HANDLE_CLICK_UNHANDLED
@@ -620,7 +621,7 @@
 	var/image_layer = layer + 0.1
 	var/offset = 8
 
-	var/image/I = image('icons/obj/items/projectiles.dmi', src, "muzzle_flash",image_layer)
+	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', src, "muzzle_flash",image_layer)
 	var/matrix/rotate = matrix() //Change the flash angle.
 	rotate.Translate(0, offset)
 	rotate.Turn(angle)

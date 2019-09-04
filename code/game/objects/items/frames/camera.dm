@@ -1,7 +1,7 @@
 /obj/item/frame/camera
 	name = "camera assembly"
 	desc = "The basic construction for Corporate-Always-Watching-You cameras."
-	icon = 'icons/obj/monitors.dmi'
+	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "cameracase"
 	w_class = SIZE_SMALL
 	anchored = 0
@@ -83,7 +83,7 @@
 					to_chat(usr, "No input found please hang up and try your call again.")
 					return
 
-				var/list/tempnetwork = text2list(input, ",")
+				var/list/tempnetwork = splittext(input, ",")
 				if(tempnetwork.len < 1)
 					to_chat(usr, "No network found please hang up and try your call again.")
 					return

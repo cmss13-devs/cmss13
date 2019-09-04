@@ -119,6 +119,9 @@
 
 
 /client/Move(n, direct)
+	if(mob.clone != null)
+		mob.update_clone() //Update the mob's clone if it has one
+
 	if(mob.control_object)
 		return Move_object(direct) //admins possessing object
 
@@ -177,7 +180,9 @@
 
 			if (mob.tile_contents)
 				mob.tile_contents = list()
-
+		if(.)
+			mob.track_steps_walked()
+			mob.life_steps_total += 1
 		moving = 0
 		next_movement = start_move_time + move_delay
 		return .

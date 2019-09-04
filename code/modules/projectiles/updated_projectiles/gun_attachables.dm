@@ -24,7 +24,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable
 	name = "attachable item"
 	desc = "It's an attachment. You should never see this."
-	icon = 'icons/Marine/marine-weapons.dmi'
+	icon = 'icons/obj/items/weapons/guns/marine-weapons.dmi'
 	icon_state = null
 	item_state = null
 	var/attach_icon //the sprite to show when the attachment is attached when we want it different from the icon_state.
@@ -595,10 +595,12 @@ Defined in conflicts.dm of the #defines folder.
 /datum/event_handler/miniscope_zoomout
 	var/obj/item/weapon/gun/G = null
 	var/aim_slowdown = 0
+	var/fire_delay = 0
 	single_fire = 1
 	handle(sender, datum/event_args/ev_args)
 		if(G.zoom)
 			G.slowdown -= aim_slowdown
+			G.fire_delay -= fire_delay
 
 
 /obj/item/attachable/scope/mini
@@ -616,7 +618,7 @@ Defined in conflicts.dm of the #defines folder.
 	damage_falloff_scoped_buff = -0.2 //has to be negative
 
 /obj/item/attachable/scope/mini/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
-	if(istype(G, /obj/item/weapon/gun/launcher/rocket))
+	if(istype(G, /obj/item/weapon/gun/launcher/rocket) || istype(G, /obj/item/weapon/gun/launcher/m92))
 		allows_movement	= 0
 		if(do_after(user, 25, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			. = ..()
@@ -629,6 +631,9 @@ Defined in conflicts.dm of the #defines folder.
 			handler.aim_slowdown = dynamic_aim_slowdown
 
 			G.slowdown += dynamic_aim_slowdown
+			if(istype(G, /obj/item/weapon/gun/launcher/m92))
+				G.fire_delay += config.max_fire_delay
+				handler.fire_delay = config.max_fire_delay
 
 			user.add_zoomout_handler(handler)
 
@@ -1252,7 +1257,7 @@ Defined in conflicts.dm of the #defines folder.
 	if(!istype(T)) return
 
 	if(!locate(/obj/flamer_fire) in T) // No stacking flames!
-		new/obj/flamer_fire(T)
+		new/obj/flamer_fire(T, initial(name), user)
 
 
 /obj/item/attachable/attached_gun/shotgun

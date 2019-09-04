@@ -73,7 +73,7 @@
 /datum/file/program/ntos/proc/window(var/title,var/buttonbar,var/content)
 	return {"
 	<div class='filewin'>
-		<div class='titlebar'>[title] <a href='?src=\ref[src];winclose'><img src=\ref['icons/ntos/tb_close.png']></a></div>
+		<div class='titlebar'>[title] <a href='?src=\ref[src];winclose'><img src=\ref['icons/old_stuff/ntos/tb_close.png']></a></div>
 		<div class='buttonbar'>[buttonbar]</div>
 		<div class='contentpane'>[content]</div>
 	</div>"}
@@ -194,19 +194,19 @@
 	// Battery level icon
 	switch(computer.check_battery_status())
 		if(-1)
-			dat += "<img src=\ref['icons/ntos/battery_icons/batt_none.gif']>"
+			dat += "<img src=\ref['icons/old_stuff/ntos/battery_icons/batt_none.gif']>"
 		if(0 to 5)
-			dat += "<img src=\ref['icons/ntos/battery_icons/batt_5.gif']>"
+			dat += "<img src=\ref['icons/old_stuff/ntos/battery_icons/batt_5.gif']>"
 		if(6 to 20)
-			dat += "<img src=\ref['icons/ntos/battery_icons/batt_20.gif']>"
+			dat += "<img src=\ref['icons/old_stuff/ntos/battery_icons/batt_20.gif']>"
 		if(21 to 40)
-			dat += "<img src=\ref['icons/ntos/battery_icons/batt_40.gif']>"
+			dat += "<img src=\ref['icons/old_stuff/ntos/battery_icons/batt_40.gif']>"
 		if(41 to 60)
-			dat += "<img src=\ref['icons/ntos/battery_icons/batt_60.gif']>"
+			dat += "<img src=\ref['icons/old_stuff/ntos/battery_icons/batt_60.gif']>"
 		if(61 to 80)
-			dat += "<img src=\ref['icons/ntos/battery_icons/batt_80.gif']>"
+			dat += "<img src=\ref['icons/old_stuff/ntos/battery_icons/batt_80.gif']>"
 		if(81 to 100)
-			dat += "<img src=\ref['icons/ntos/battery_icons/batt_100.gif']>"
+			dat += "<img src=\ref['icons/old_stuff/ntos/battery_icons/batt_100.gif']>"
 	dat += "<br>"
 	return dat
 

@@ -14,7 +14,7 @@
 	name 		= "Security Records"
 	desc 		= "Used to view and edit personnel's security records"
 	active_state = "security"
-	image			= 'icons/ntos/records.png'
+	image			= 'icons/old_stuff/ntos/records.png'
 
 	req_one_access = list(ACCESS_MARINE_BRIG)
 
@@ -301,7 +301,7 @@ What a mess.*/
 					return
 				Perp = new/list()
 				t1 = lowertext(t1)
-				var/list/components = text2list(t1, " ")
+				var/list/components = splittext(t1, " ")
 				if(components.len > 5)
 					return //Lets not let them search too greedily.
 				for(var/datum/data/record/R in data_core.general)
@@ -606,5 +606,5 @@ What a mess.*/
 	..(severity)
 
 /obj/machinery/computer3/secure_data/detective_computer
-	icon = 'icons/obj/machines/computer.dmi'
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "messyfiles"

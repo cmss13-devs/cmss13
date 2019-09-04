@@ -5,7 +5,7 @@
 	var/mob/living/carbon/occupant
 	var/locked
 	name = "Body Scanner"
-	icon = 'icons/obj/machines/cryogenics.dmi'
+	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "body_scanner_0"
 	density = 1
 	anchored = 1
@@ -107,10 +107,10 @@
 	//G = null
 
 
-/obj/machinery/bodyscanner/ex_act(severity)
+/obj/machinery/bodyscanner/ex_act(var/severity, var/source)
 	for(var/atom/movable/A as mob|obj in src)
 		A.loc = src.loc
-		ex_act(severity)
+		A.ex_act(severity, , source)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
@@ -156,7 +156,7 @@
 	var/delete
 	var/temphtml
 	name = "Body Scanner Console"
-	icon = 'icons/obj/machines/cryogenics.dmi'
+	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "body_scannerconsole"
 	density = 0
 	anchored = 1

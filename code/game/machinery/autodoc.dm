@@ -2,7 +2,7 @@
 /obj/machinery/autodoc
 	name = "\improper autodoc medical system"
 	desc = "A fancy machine developed to be capable of operating on people with minimal human intervention. The interface is rather complex and would only be useful to trained Doctors however."
-	icon = 'icons/obj/machines/cryogenics.dmi'
+	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "autodoc_open"
 	density = 1
 	anchored = 1
@@ -453,6 +453,7 @@
 								if(!is_type_in_list(I,known_implants))
 									sleep(REMOVE_OBJECT_MAX_DURATION*surgery_mod)
 									S.limb_ref.implants -= I
+									H.embedded_items -= I
 									qdel(I)
 						if(S.limb_ref.name == "chest" || S.limb_ref.name == "head")
 							close_encased(H,S.limb_ref)
@@ -585,7 +586,7 @@
 			else
 				visible_message("[usr] engages the internal release mechanism, and climbs out of \the [src].")
 			return
-		if (!usr.mind || !usr.mind.cm_skills || (usr.mind.cm_skills.research == null) || (usr.mind.cm_skills.research < SKILL_SURGERY_BEGINNER))
+		if (!usr.mind || !usr.mind.cm_skills || (usr.mind.cm_skills.surgery == null) || (usr.mind.cm_skills.surgery < SKILL_SURGERY_BEGINNER))
 			to_chat(usr, SPAN_WARNING("You don't have the training to use this."))
 			return
 		if(surgery)
@@ -708,7 +709,7 @@
 //Auto Doc console that links up to it.
 /obj/machinery/autodoc_console
 	name = "\improper autodoc medical system control console"
-	icon = 'icons/obj/machines/cryogenics.dmi'
+	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "sleeperconsole"
 	var/obj/machinery/autodoc/connected = null
 	dir = 2

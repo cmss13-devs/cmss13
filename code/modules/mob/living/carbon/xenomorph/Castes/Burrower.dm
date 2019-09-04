@@ -71,7 +71,7 @@
 	caste_name = "Burrower"
 	name = "Burrower"
 	desc = "A beefy, alien with sharp claws."
-	icon = 'icons/Xeno/xenomorph_64x64.dmi'
+	icon = 'icons/mob/xenos/xenomorph_64x64.dmi'
 	icon_state = "Burrower Walking"
 	plasma_stored = 100
 	plasma_types = list(PLASMA_PURPLE)
@@ -93,6 +93,7 @@
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
 		)
+	mutation_type = BURROWER_NORMAL
 
 /mob/living/carbon/Xenomorph/Burrower/New()
 	. = ..()

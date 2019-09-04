@@ -51,9 +51,10 @@
 	caste_name = "Predalien"
 	name = "Abomination"
 	desc = "A strange looking creature with fleshy strands on its head. It appears like a mixture of armor and flesh, smooth, but well carapaced."
-	icon = 'icons/Xeno/2x2_Xenos.dmi'
+	icon = 'icons/mob/xenos/2x2_Xenos.dmi'
 	icon_state = "Predalien Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
+	faction = FACTION_PREDALIEN
 	melee_damage_lower = 65
 	melee_damage_upper = 80
 	amount_grown = 0
@@ -82,6 +83,7 @@
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/Predalien/proc/claim_trophy
 		)
+	mutation_type = "Normal"
 
 	New()
 		..()
@@ -125,8 +127,6 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 
 	emote("roar")
 
-	round_statistics.total_predaliens++
-
 
 /mob/living/carbon/Xenomorph/Predalien/proc/claim_trophy()
 	set category = "Alien"
@@ -169,7 +169,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 		var/datum/limb/head/O = H.get_limb("head")
 		if(!(O.status & LIMB_DESTROYED))
 			H.apply_damage(150, BRUTE, "head", FALSE, TRUE, TRUE)
-			if(!(O.status & LIMB_DESTROYED)) O.droplimb() //Still not actually detached?
+			if(!(O.status & LIMB_DESTROYED)) O.droplimb(0, 0, initial(name)) //Still not actually detached?
 			visible_message(SPAN_DANGER("[src] reaches down and rips off [H]'s spinal cord and skull!"),
 			SPAN_XENODANGER("You slice and pull on [H]'s head until it comes off in a bloody arc!"))
 			playsound(loc, 'sound/weapons/slice.ogg', 25)

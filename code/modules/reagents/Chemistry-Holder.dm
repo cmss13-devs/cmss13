@@ -174,6 +174,9 @@ var/const/INGEST = 2
 
 	return amount
 
+/datum/reagents/proc/set_source_mob(var/source_mob)
+	for(var/datum/reagent/R in reagent_list)
+		R.last_source_mob = source_mob
 
 /datum/reagents/proc/copy_to(var/obj/target, var/amount=1, var/multiplier=1, var/preserve_data=1, var/safety = 0)
 	if(!target)
@@ -450,7 +453,7 @@ var/const/INGEST = 2
 
 		var/datum/reagent/R = new D.type()
 		for(var/V in D.vars)//We do this so admin spawned chemicals don't get defaulted
-			if(V in list("id","name","properties","overdose", "overdose_critical", "nutriment_factor","custom_metabolism","color","key"))
+			if(V in list("id","name","description","properties","overdose", "overdose_critical", "nutriment_factor","custom_metabolism","last_source_mob","color","key"))
 				R.vars[V] = D.vars[V]
 		reagent_list += R
 		R.holder = src

@@ -535,7 +535,8 @@ var/global/spawn_next_wo_wave = 0
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
 /datum/game_mode/whiskey_outpost/declare_completion()
-	round_statistics.count_end_of_round_mobs_for_statistics()
+	if(round_statistics)
+		round_statistics.track_round_end()
 	if(finished == 1)
 		feedback_set_details("round_end_result","Xenos won")
 		to_world("<span class='round_header'>The Xenos have succesfully defended their hive from colonization.</span>")
@@ -543,7 +544,8 @@ var/global/spawn_next_wo_wave = 0
 		to_world("<span class='round_body'>It will be another five years before the USCM returns to the Tychon's Rift sector, with the arrival of the 7th 'Falling Falcons' Battalion and the USS Almayer.</span>")
 		to_world("<span class='round_body'>The xenomorph hive on LV-624 remains unthreatened until then..</span>")
 		world << sound('sound/misc/Game_Over_Man.ogg')
-		round_statistics.round_finished = MODE_INFESTATION_X_MAJOR
+		if(round_statistics)
+			round_statistics.round_result = MODE_INFESTATION_X_MAJOR
 
 	else if(finished == 2)
 		feedback_set_details("round_end_result","Marines Won")
@@ -552,22 +554,25 @@ var/global/spawn_next_wo_wave = 0
 		to_world("<span class='round_body'>Eventually, the Dust Raiders secure LV-624 and the entire Tychon's Rift sector in 2182, pacifiying it and establishing peace in the sector for decades to come.</span>")
 		to_world("<span class='round_body'>The USS Almayer and the 7th 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186.</span>")
 		world << sound('sound/misc/hell_march.ogg')
-		round_statistics.round_finished = MODE_INFESTATION_M_MAJOR
+		if(round_statistics)
+			round_statistics.round_result = MODE_INFESTATION_M_MAJOR
 
 	else
 		feedback_set_details("round_end_result","no winners")
 		to_world("<span class='round_header'>NOBODY WON!</span>")
 		to_world("<span class='round_body'>How? Don't ask me...</span>")
 		world << 'sound/misc/sadtrombone.ogg'
-		round_statistics.round_finished = MODE_INFESTATION_DRAW_DEATH
+		if(round_statistics)
+			round_statistics.round_result = MODE_INFESTATION_DRAW_DEATH
 
-	round_statistics.game_mode = name
-	round_statistics.round_time = duration2text()
-	round_statistics.end_round_player_population = clients.len
+	if(round_statistics)
+		round_statistics.game_mode = name
+		round_statistics.round_length = world.time
+		round_statistics.end_round_player_population = clients.len
 
-	round_statistics.log_round_statistics()
+		round_statistics.log_round_statistics()
 
-	round_finished = 1
+		round_finished = 1
 	return 1
 
 /datum/game_mode/proc/auto_declare_completion_whiskey_outpost()
@@ -718,7 +723,7 @@ var/global/spawn_next_wo_wave = 0
 
 //Whiskey Outpost Recycler Machine. Teleports objects to centcomm so it doesnt lag
 /obj/machinery/wo_recycler
-	icon = 'icons/obj/recycling.dmi'
+	icon = 'icons/obj/structures/machinery/recycling.dmi'
 	icon_state = "grinder-o0"
 	var/icon_on = "grinder-o1"
 

@@ -103,7 +103,7 @@
 
 /obj/structure/holowindow
 	name = "reinforced window"
-	icon = 'icons/obj/structures/windows.dmi'
+	icon = 'icons/turf/walls/windows.dmi'
 	icon_state = "rwindow"
 	desc = "A window."
 	density = 1
@@ -126,7 +126,7 @@
 /obj/structure/holohoop
 	name = "basketball hoop"
 	desc = "Boom, Shakalaka!"
-	icon = 'icons/obj/structures/misc.dmi'
+	icon = 'icons/obj/structures/props/misc.dmi'
 	icon_state = "hoop"
 	anchored = 1
 	density = 1
@@ -181,7 +181,7 @@
 /obj/machinery/readybutton
 	name = "Ready Declaration Device"
 	desc = "This device is used to declare ready. If all devices in an area are ready, the event will begin!"
-	icon = 'icons/obj/monitors.dmi'
+	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "auth_off"
 	var/ready = 0
 	var/area/currentarea = null

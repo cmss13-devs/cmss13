@@ -42,7 +42,7 @@
 
 // INTERRUPT FLAGS
 // These flags define whether specific actions will be interrupted by a given timed action
-#define INTERRUPT_NONE 0
+#define INTERRUPT_NONE              0
 #define INTERRUPT_DIFF_LOC          (1<<0)
 #define INTERRUPT_DIFF_TURF         (1<<1)  // Might want to consider adding a separate flag for DIFF_COORDS
 #define INTERRUPT_UNCONSCIOUS       (1<<2)  // Relevant to stat var for mobs
@@ -50,7 +50,6 @@
 #define INTERRUPT_STUNNED           (1<<4)
 #define INTERRUPT_NEEDHAND          (1<<5)
 #define INTERRUPT_RESIST            (1<<6)  // Allows timed actions to be cancelled upon hitting resist, on by default
-#define INTERRUPT_DAZED             (1<<16)
 #define INTERRUPT_DIFF_SELECT_ZONE  (1<<7)  // By default not in INTERRUPT_ALL (too niche)
 #define INTERRUPT_OUT_OF_RANGE      (1<<8)  // By default not in INTERRUPT_ALL, should not be used in conjunction with
                                             // INTERRUPT_DIFF_TURF
@@ -60,18 +59,19 @@
 #define INTERRUPT_ALTCLICK          (1<<12)
 #define INTERRUPT_CTRLCLICK         (1<<13)
 #define INTERRUPT_MIDDLECLICK       (1<<14)
+#define INTERRUPT_DAZED             (1<<15)
 
-#define INTERRUPT_ALL               (INTERRUPT_DIFF_LOC|INTERRUPT_DIFF_TURF|INTERRUPT_UNCONSCIOUS|INTERRUPT_KNOCKED_DOWN|INTERRUPT_STUNNED|INTERRUPT_NEEDHAND|INTERRUPT_RESIST|INTERRUPT_DAZED)
-#define INTERRUPT_ALL_OUT_OF_RANGE  (INTERRUPT_ALL & (~INTERRUPT_DIFF_TURF))|INTERRUPT_OUT_OF_RANGE
-#define INTERRUPT_MOVED             (INTERRUPT_DIFF_LOC|INTERRUPT_DIFF_TURF)
+#define INTERRUPT_ALL               (INTERRUPT_DIFF_LOC|INTERRUPT_DIFF_TURF|INTERRUPT_UNCONSCIOUS|INTERRUPT_KNOCKED_DOWN|INTERRUPT_STUNNED|INTERRUPT_NEEDHAND|INTERRUPT_RESIST)
+#define INTERRUPT_ALL_OUT_OF_RANGE  (INTERRUPT_ALL & (~INTERRUPT_DIFF_TURF)|INTERRUPT_OUT_OF_RANGE)
+#define INTERRUPT_MOVED             (INTERRUPT_DIFF_LOC|INTERRUPT_DIFF_TURF|INTERRUPT_RESIST)
 #define INTERRUPT_NO_NEEDHAND       (INTERRUPT_ALL & (~INTERRUPT_NEEDHAND))
-#define INTERRUPT_INCAPACITATED     (INTERRUPT_UNCONSCIOUS|INTERRUPT_KNOCKED_DOWN|INTERRUPT_STUNNED)
-#define INTERRUPT_CLICK             (INTERRUPT_LCLICK|INTERRUPT_RCLICK|INTERRUPT_SHIFTCLICK|INTERRUPT_ALTCLICK|INTERRUPT_CTRLCLICK|INTERRUPT_MIDDLECLICK)
+#define INTERRUPT_INCAPACITATED     (INTERRUPT_UNCONSCIOUS|INTERRUPT_KNOCKED_DOWN|INTERRUPT_STUNNED|INTERRUPT_RESIST)
+#define INTERRUPT_CLICK             (INTERRUPT_LCLICK|INTERRUPT_RCLICK|INTERRUPT_SHIFTCLICK|INTERRUPT_ALTCLICK|INTERRUPT_CTRLCLICK|INTERRUPT_MIDDLECLICK|INTERRUPT_RESIST)
 
 // BEHAVIOR FLAGS
 // These flags describe behaviors related to a given timed action.
 // These behaviors are either of the person performing the action or any targets.
-#define BEHAVIOR_IMMOBILE           (1<<15) // You cannot move the person while this action is being performed
+#define BEHAVIOR_IMMOBILE           (1<<16) // You cannot move the person while this action is being performed
 
 // *************************************** //
 //           END DO_AFTER FLAGS            //
@@ -90,3 +90,6 @@
 #define SIZE_LARGE      4       // Size of rifles, SMGs
 #define SIZE_HUGE       5       // Using Large does the same job
 #define SIZE_MASSIVE    6       
+
+// Statistics defines
+#define STATISTICS_DEATH_LIST_LEN 10

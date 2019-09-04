@@ -83,7 +83,7 @@
 	X.strain = src
 
 	B.ammo = ammo_list[/datum/ammo/xeno/boiler_gas/shatter/acid]
-	button.overlays += image('icons/mob/actions.dmi', button, "toggle_bomb1")
+	button.overlays += image('icons/mob/hud/actions.dmi', button, "toggle_bomb1")
 	B.bomb_delay = SHATTER_GLOB_BOMB_DELAY // 25s flat, doesn't decrease with maturity anymore
 	recalculate_actions(description)
 

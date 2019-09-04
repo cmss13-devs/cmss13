@@ -399,7 +399,7 @@
 /obj/machinery/autolathe/yautja
 	name = "\improper yautja autolathe"
 	desc = "It produces items using metal and glass."
-	icon = 'icons/obj/machines/predautolathe.dmi'
+	icon = 'icons/obj/structures/machinery/predautolathe.dmi'
 
 /obj/machinery/autolathe/full
 	stored_material =  list("metal" = 75000, "glass" = 37500)

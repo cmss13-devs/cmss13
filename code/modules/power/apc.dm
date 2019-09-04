@@ -1,7 +1,9 @@
-#define APC_WIRE_IDSCAN 1
-#define APC_WIRE_MAIN_POWER1 2
-#define APC_WIRE_MAIN_POWER2 3
-#define APC_WIRE_AI_CONTROL 4
+#define APC_WIRE_MAIN_POWER 1
+#define APC_WIRE_IDSCAN 2
+
+#define APC_COVER_CLOSED 0
+#define APC_COVER_OPEN 1
+#define APC_COVER_REMOVED 2
 
 //update_state
 #define UPSTATE_CELL_IN 1
@@ -56,18 +58,21 @@
 /obj/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
-	icon = 'icons/obj/power.dmi'
+	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "apc0"
 	anchored = 1
 	use_power = 0
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_ENGINEERING)
 	unacidable = 1
+
 	var/area/area
 	var/areastring = null
+
 	var/obj/item/cell/cell
 	var/start_charge = 90 //Initial cell charge %
 	var/cell_type = /obj/item/cell/apc //0 = no cell, 1 = regular, 2 = high-cap (x5) <- old, now it's just 0 = no cell, otherwise dictate cellcapacity by changing this value. 1 used to be 1000, 2 was 2500
-	var/opened = 0 //0 = closed, 1 = opened, 2 = cover removed
+
+	var/opened = APC_COVER_CLOSED
 	var/shorted = 0
 	var/lighting = 3
 	var/equipment = 3
@@ -86,56 +91,28 @@
 	var/lastused_environ = 0
 	var/lastused_total = 0
 	var/main_status = 0
+
 	var/wiresexposed = 0
-	var/apcwires = 15
+	var/apcwires = 3
+
 	powernet = 0 //Set so that APCs aren't found as powernet nodes //Hackish, Horrible, was like this before I changed it :(
 	var/debug = 0
 	var/autoflag = 0 // 0 = off, 1 = eqp and lights off, 2 = eqp off, 3 = all on.
 	var/has_electronics = 0 // 0 - none, 1 - plugged in, 2 - secured by screwdriver
 	var/overload = 1 //Used for the Blackout malf module
 	var/beenhit = 0 //Used for counting how many times it has been hit, used for Aliens at the moment
-	var/list/apcwirelist = list(
-		"Orange" = 1,
-		"Dark red" = 2,
-		"White" = 3,
-		"Yellow" = 4,
-	)
 	var/longtermpower = 10
 	var/update_state = -1
 	var/update_overlay = -1
 	var/global/status_overlays = 0
 	var/updating_icon = 0
 	var/crash_break_probability = 85 //Probability of APC being broken by a shuttle crash on the same z-level
+
 	var/global/list/status_overlays_lock
 	var/global/list/status_overlays_charging
 	var/global/list/status_overlays_equipment
 	var/global/list/status_overlays_lighting
 	var/global/list/status_overlays_environ
-
-/proc/RandomAPCWires()
-	//To make this not randomize the wires, just set index to 1 and increment it in the flag for loop (after doing everything else).
-	var/list/apcwires = list(0, 0, 0, 0)
-	APCIndexToFlag = list(0, 0, 0, 0)
-	APCIndexToWireColor = list(0, 0, 0, 0)
-	APCWireColorToIndex = list(0, 0, 0, 0)
-	var/flagIndex = 1
-	for(var/flag = 1, flag < 16, flag += flag)
-		var/valid = 0
-		while(!valid)
-			var/colorIndex = rand(1, 4)
-			if(apcwires[colorIndex] == 0)
-				valid = 1
-				apcwires[colorIndex] = flag
-				APCIndexToFlag[flagIndex] = flag
-				APCIndexToWireColor[flagIndex] = colorIndex
-				APCWireColorToIndex[colorIndex] = flagIndex
-		flagIndex += 1
-	return apcwires
-
-/obj/machinery/power/apc/updateDialog()
-	if(stat & (BROKEN|MAINT))
-		return
-	..()
 
 /obj/machinery/power/apc/New(turf/loc, var/ndir, var/building=0)
 	..()
@@ -154,7 +131,7 @@
 	else
 		area = loc.loc:master
 		area.apc |= src
-		opened = 1
+		opened = APC_COVER_OPEN
 		operating = 0
 		name = "\improper [area.name] APC"
 		stat |= MAINT
@@ -162,7 +139,9 @@
 		spawn(5)
 			update()
 	start_processing_power()
+
 	sleep(0) //Break few ACPs on the colony
+
 	if(!start_charge && z == 1 && prob(10))
 		set_broken()
 
@@ -193,6 +172,7 @@
 	else
 		area = get_area_name(areastring)
 		name = "\improper [area.name] APC"
+
 	area.apc |= src
 	update_icon()
 	make_terminal()
@@ -201,7 +181,7 @@
 		update()
 
 /obj/machinery/power/apc/examine(mob/user)
-	user << desc
+	to_chat(user, desc)
 	if(stat & BROKEN)
 		to_chat(user, SPAN_INFO("It appears to be completely broken. It's hard to see what else is wrong with it."))
 		return
@@ -407,15 +387,15 @@
 					user.visible_message(SPAN_NOTICE("[user] removes [src]'s power control board."),
 					SPAN_NOTICE("You remove [src]'s power control board."))
 					new /obj/item/circuitboard/apc(loc)
-		else if(opened != 2) //Cover isn't removed
-			opened = 0
+		else if(opened != APC_COVER_REMOVED) //Cover isn't removed
+			opened = APC_COVER_CLOSED
 			update_icon()
 	else if(iscrowbar(W) && !((stat & BROKEN)))
 		if(coverlocked && !(stat & MAINT))
 			to_chat(user, SPAN_WARNING("The cover is locked and cannot be opened."))
 			return
 		else
-			opened = 1
+			opened = APC_COVER_OPEN
 			update_icon()
 	else if(istype(W, /obj/item/cell) && opened) //Trying to put a cell inside
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
@@ -587,11 +567,11 @@
 			qdel(W)
 			stat &= ~BROKEN
 			if(opened == 2)
-				opened = 1
+				opened = APC_COVER_OPEN
 			update_icon()
 	else
 		if(((stat & BROKEN)) && !opened && W.force >= 5)
-			opened = 2
+			opened = APC_COVER_REMOVED
 			user.visible_message(SPAN_WARNING("[user] knocks down [src]'s cover with [W]!"), \
 				SPAN_WARNING("You knock down [src]'s cover with [W]!"))
 			update_icon()
@@ -646,8 +626,8 @@
 			SPAN_WARNING("You slash [src]!"))
 			playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
 			var/allcut = 1
-			for(var/wire in apcwirelist)
-				if(!isWireCut(apcwirelist[wire]))
+			for(var/wire = 1; wire < get_wire_descriptions().len; wire++)
+				if(!isWireCut(wire))
 					allcut = 0
 					break
 			if(beenhit >= pick(3, 4) && wiresexposed != 1)
@@ -656,8 +636,8 @@
 				visible_message(SPAN_WARNING("[src]'s cover flies open, exposing the wires!"))
 
 			else if(wiresexposed == 1 && allcut == 0)
-				for(var/wire in apcwirelist)
-					cut(apcwirelist[wire])
+				for(var/wire = 1; wire < get_wire_descriptions().len; wire++)
+					cut(wire)
 				update_icon()
 				visible_message(SPAN_WARNING("[src]'s wires are shredded!"))
 			else
@@ -683,32 +663,7 @@
 	if(stat & (BROKEN|MAINT))
 		return
 
-	interact(user)
-
-/obj/machinery/power/apc/interact(mob/user)
-	if(!user)
-		return
-	user.set_interaction(src)
-	if(wiresexposed /*&& !issiicon(user)*/) //Commented out the typecheck to allow engiborgs to repair damaged apcs.
-		var/t1 = text("<html><head><title>[area.name] APC wires</title></head><body><B>Access Panel</B><br>\n")
-
-		for(var/wiredesc in apcwirelist)
-			var/is_uncut = src.apcwires & APCWireColorToFlag[apcwirelist[wiredesc]]
-			t1 += "[wiredesc] wire: "
-			if(!is_uncut)
-				t1 += "<a href='?src=\ref[src];apcwires=[apcwirelist[wiredesc]]'>Mend</a>"
-			else
-				t1 += "<a href='?src=\ref[src];apcwires=[apcwirelist[wiredesc]]'>Cut</a> "
-				t1 += "<a href='?src=\ref[src];pulse=[apcwirelist[wiredesc]]'>Pulse</a> "
-			t1 += "<br>"
-		t1 += text("<br>\n[(src.locked ? "The APC is locked." : "The APC is unlocked.")]<br>\n[(shorted ? "The APC's power has been shorted." : "The APC is working properly!")]<br>\n[(src.aidisabled ? "The 'AI control allowed' light is off." : "The 'AI control allowed' light is on.")]")
-		t1 += text("<p><a href='?src=\ref[src];close2=1'>Close</a></p></body></html>")
-		user << browse(t1, "window=apcwires")
-		onclose(user, "apcwires")
-
-	//Open the APC NanoUI
 	ui_interact(user)
-	return
 
 /obj/machinery/power/apc/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 	if(!user)
@@ -716,6 +671,7 @@
 
 	var/list/data = list(
 		"locked" = locked,
+		"wiresExposed" = wiresexposed,
 		"isOperating" = operating,
 		"externalPower" = main_status,
 		"powerCellStatus" = cell ? cell.percent() : null,
@@ -756,8 +712,18 @@
 					"off"  = list("env" = 1)
 				)
 			)
-		)
+		),
+
+		"wires" = null
 	)
+
+	var/list/wire_descriptions = get_wire_descriptions()
+	var/list/panel_wires = list()
+	for(var/wire = 1 to wire_descriptions.len)
+		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire)))
+
+	if(panel_wires.len)
+		data["wires"] = panel_wires
 
 	//Update the ui if it exists, returns null if no ui is passed/found
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -786,90 +752,60 @@
 		area.power_environ = 0
 	area.power_change()
 
-/obj/machinery/power/apc/proc/isWireColorCut(var/wireColor)
-	var/wireFlag = APCWireColorToFlag[wireColor]
-	return ((src.apcwires & wireFlag) == 0)
+/obj/machinery/power/apc/proc/get_wire_descriptions()
+	return list(
+		APC_WIRE_MAIN_POWER   = "Main power",
+		APC_WIRE_IDSCAN       = "ID scanner"
+	)
 
-/obj/machinery/power/apc/proc/isWireCut(var/wireIndex)
-	var/wireFlag = APCIndexToFlag[wireIndex]
-	return ((src.apcwires & wireFlag) == 0)
+/obj/machinery/power/apc/proc/isWireCut(var/wire)
+	var/wireFlag = getWireFlag(wire)
+	return !(apcwires & wireFlag)
 
-/obj/machinery/power/apc/proc/cut(var/wireColor)
-	var/wireFlag = APCWireColorToFlag[wireColor]
-	var/wireIndex = APCWireColorToIndex[wireColor]
-	apcwires &= ~wireFlag
-	switch(wireIndex)
-		if(APC_WIRE_MAIN_POWER1)
+/obj/machinery/power/apc/proc/cut(var/wire)
+	apcwires ^= getWireFlag(wire)
+
+	switch(wire)
+		if(APC_WIRE_MAIN_POWER)
 			shock(usr, 50)
 			shorted = 1
-			updateDialog()
-		if(APC_WIRE_MAIN_POWER2)
-			shock(usr, 50)
-			shorted = 1
-			updateDialog()
-		if(APC_WIRE_AI_CONTROL)
-			if(aidisabled == 0)
-				aidisabled = 1
-			updateDialog()
+			visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
+		if(APC_WIRE_IDSCAN)
+			locked = 0
+			visible_message(SPAN_NOTICE("\The [src] emits a click."))
 	if(isXeno(usr)) //So aliens don't see this when they cut all of the wires.
 		return
-	interact(usr)
-	updateUsrDialog()
 
-/obj/machinery/power/apc/proc/mend(var/wireColor)
-	var/wireFlag = APCWireColorToFlag[wireColor]
-	var/wireIndex = APCWireColorToIndex[wireColor] //Not used in this function
-	apcwires |= wireFlag
-	switch(wireIndex)
-		if(APC_WIRE_MAIN_POWER1)
-			if((!isWireCut(APC_WIRE_MAIN_POWER1)) && (!isWireCut(APC_WIRE_MAIN_POWER2)))
+/obj/machinery/power/apc/proc/mend(var/wire)
+	apcwires |= getWireFlag(wire)
+
+	switch(wire)
+		if(APC_WIRE_MAIN_POWER)
+			if(!isWireCut(APC_WIRE_MAIN_POWER))
 				shorted = 0
 				shock(usr, 50)
-				updateDialog()
-		if(APC_WIRE_MAIN_POWER2)
-			if((!isWireCut(APC_WIRE_MAIN_POWER1)) && (!isWireCut(APC_WIRE_MAIN_POWER2)))
-				shorted = 0
-				shock(usr, 50)
-				updateDialog()
-		if(APC_WIRE_AI_CONTROL)
-			//One wire for AI control. Cutting this prevents the AI from controlling the door unless it has hacked the door through the power connection (which takes about a minute). If both main and backup power are cut, as well as this wire, then the AI cannot operate or hack the door at all.
-			//aidisabledDisabled: If 1, AI control is disabled until the AI hacks back in and disables the lock. If 2, the AI has bypassed the lock. If -1, the control is enabled but the AI had bypassed it earlier, so if it is disabled again the AI would have no trouble getting back in.
-			if(aidisabled == 1)
-				aidisabled = 0
-			updateUsrDialog()
-	updateUsrDialog()
-	interact(usr)
 
-/obj/machinery/power/apc/proc/pulse(var/wireColor)
-	var/wireIndex = APCWireColorToIndex[wireColor]
-	switch(wireIndex)
+		if(APC_WIRE_IDSCAN)
+			locked = 1
+			visible_message(SPAN_NOTICE("\The [src] emits a slight thunk."))
+
+/obj/machinery/power/apc/proc/pulse(var/wire)
+	switch(wire)
 		if(APC_WIRE_IDSCAN) //Unlocks the APC for 30 seconds, if you have a better way to hack an APC I'm all ears
 			locked = 0
+			visible_message(SPAN_NOTICE("\The [src] emits a click."))
 			spawn(SECONDS_30)
 				locked = 1
-				updateDialog()
-		if(APC_WIRE_MAIN_POWER1)
+				visible_message(SPAN_NOTICE("\The [src] emits a slight thunk."))
+
+		if(APC_WIRE_MAIN_POWER)
 			if(shorted == 0)
 				shorted = 1
+				visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
 			spawn(1200)
 				if(shorted == 1)
 					shorted = 0
-				updateDialog()
-		if(APC_WIRE_MAIN_POWER2)
-			if(shorted == 0)
-				shorted = 1
-			spawn(1200)
-				if(shorted == 1)
-					shorted = 0
-				updateDialog()
-		if(APC_WIRE_AI_CONTROL)
-			if(aidisabled == 0)
-				aidisabled = 1
-			updateDialog()
-			spawn(10)
-				if(aidisabled == 1)
-					aidisabled = 0
-				updateDialog()
+
 
 /obj/machinery/power/apc/proc/can_use(mob/user as mob, var/loud = 0) //used by attack_hand() and Topic()
 	if(user.stat)
@@ -920,25 +856,31 @@
 		to_chat(usr, SPAN_WARNING("You don't know how to use [src]'s interface."))
 		return
 
-	if(href_list["apcwires"])
-		var/t1 = text2num(href_list["apcwires"])
-		if(!( istype(usr.get_active_hand(), /obj/item/tool/wirecutters) ))
+	if(href_list["apcwire"])
+		var/wire = text2num(href_list["apcwire"])
+
+		if(!iswirecutter(usr.get_active_hand()))
 			to_chat(usr, SPAN_WARNING("You need wirecutters!"))
 			return 0
-		if(isWireColorCut(t1))
-			mend(t1)
+
+		if(isWireCut(wire))
+			mend(wire)
 		else
-			cut(t1)
+			cut(wire)
+
 	else if(href_list["pulse"])
-		var/t1 = text2num(href_list["pulse"])
-		if(!istype(usr.get_active_hand(), /obj/item/device/multitool))
+		var/wire = text2num(href_list["pulse"])
+
+		if(!ismultitool(usr.get_active_hand()))
 			to_chat(usr, SPAN_WARNING("You need a multitool!"))
 			return 0
-		if(isWireColorCut(t1))
+
+		if(isWireCut(wire))
 			to_chat(usr, SPAN_WARNING("You can't pulse a cut wire."))
 			return 0
 		else
-			pulse(t1)
+			pulse(wire)
+
 	else if(href_list["lock"])
 		coverlocked = !coverlocked
 
@@ -982,9 +924,6 @@
 	else if(href_list["overload"])
 		if(issilicon(usr) && !aidisabled)
 			overload_lighting()
-
-	if(usingUI)
-		updateDialog()
 
 	return 1
 
@@ -1189,7 +1128,6 @@
 		update()
 	else if (last_ch != charging)
 		queue_icon_update()
-	updateDialog()
 
 //val 0 = off, 1 = off(auto) 2 = on, 3 = on(auto)
 //on 0 = off, 1 = auto-on, 2 = auto-off

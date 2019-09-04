@@ -1,5 +1,5 @@
 /obj/machinery/atmospherics/trinary/filter
-	icon = 'icons/atmos/filter.dmi'
+	icon = 'icons/obj/pipes/filter.dmi'
 	icon_state = "map"
 	density = 0
 	level = 1

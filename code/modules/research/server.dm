@@ -1,6 +1,6 @@
 /obj/machinery/r_n_d/server
 	name = "R&D Server"
-	icon = 'icons/obj/machines/research.dmi'
+	icon = 'icons/obj/structures/machinery/research.dmi'
 	icon_state = "server"
 	var/datum/research/files
 	health = 100
@@ -39,12 +39,12 @@
 	var/list/temp_list
 	if(!id_with_upload.len)
 		temp_list = list()
-		temp_list = text2list(id_with_upload_string, ";")
+		temp_list = splittext(id_with_upload_string, ";")
 		for(var/N in temp_list)
 			id_with_upload += text2num(N)
 	if(!id_with_download.len)
 		temp_list = list()
-		temp_list = text2list(id_with_download_string, ";")
+		temp_list = splittext(id_with_download_string, ";")
 		for(var/N in temp_list)
 			id_with_download += text2num(N)
 

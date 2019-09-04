@@ -22,7 +22,7 @@
 /obj/item/clothing/mask/gas/yautja
 	name = "clan mask"
 	desc = "A beautifully designed metallic face mask, both ornate and functional."
-	icon = 'icons/obj/clothing/masks.dmi'
+	icon = 'icons/obj/items/clothing/masks.dmi'
 	icon_state = "pred_mask1"
 	item_state = "helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -157,13 +157,13 @@
 /obj/item/clothing/suit/armor/yautja
 	name = "clan armor"
 	desc = "A suit of armor with light padding. It looks old, yet functional."
-	icon = 'icons/obj/clothing/cm_suits.dmi'
+	icon = 'icons/obj/items/clothing/cm_suits.dmi'
 	icon_state = "halfarmor1"
 	item_state = "armor"
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
 	)
-	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
@@ -270,7 +270,7 @@
 /obj/item/clothing/cape/eldercape
 	name = "clan elder cape"
 	desc = "A dusty, yet powerful cape worn and passed down by elder Yautja."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "cape_elder"
 	flags_equip_slot = SLOT_BACK
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
@@ -363,7 +363,7 @@
 
 /obj/item/clothing/under/chainshirt
 	name = "body mesh"
-	icon = 'icons/obj/clothing/uniforms.dmi'
+	icon = 'icons/obj/items/clothing/uniforms.dmi'
 	desc = "A set of very fine chainlink in a meshwork for comfort and utility."
 	icon_state = "mesh_shirt"
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|FEET|HANDS //Does not cover the head though.
@@ -383,7 +383,7 @@
 /obj/item/clothing/gloves/yautja
 	name = "clan bracers"
 	desc = "An extremely complex, yet simple-to-operate set of armored bracers worn by the Yautja. It has many functions, activate them to use some."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "bracer"
 	origin_tech = "combat=8;materials=8;magnets=8;programming=8"
 	siemens_coefficient = 0
@@ -856,13 +856,15 @@
 	playsound(src.loc,'sound/effects/pred_countdown.ogg', 100, 0, 15, 10)
 	do_after(victim, rand(72, 80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 	var/turf/T = get_turf(victim)
+	var/mob/user = usr
+	var/source_mob = user
 	if(istype(T) && exploding)
 		victim.apply_damage(50,BRUTE,"chest")
 		if(victim) victim.gib() //Let's make sure they actually gib.
 		if(explosion_type == 0)
-			explosion_rec(T, 600, 50) //Dramatically BIG explosion.
+			explosion_rec(T, 600, 50, "yautja self destruct", source_mob) //Dramatically BIG explosion.
 		else
-			explosion_rec(T, 800, 550)
+			explosion_rec(T, 800, 550, "yautja self destruct", source_mob)
 
 /obj/item/clothing/gloves/yautja/verb/activate_suicide()
 	set name = "Final Countdown (!)"
@@ -1100,17 +1102,17 @@
 	if(!msg || !usr.client) return
 
 	msg = sanitize(msg)
-	msg = oldreplacetext(msg, "a", "@")
-	msg = oldreplacetext(msg, "e", "3")
-	msg = oldreplacetext(msg, "i", "1")
-	msg = oldreplacetext(msg, "o", "0")
-	//msg = oldreplacetext(msg, "u", "^")
-	//msg = oldreplacetext(msg, "y", "7")
-	//msg = oldreplacetext(msg, "r", "9")
-	msg = oldreplacetext(msg, "s", "5")
-	//msg = oldreplacetext(msg, "t", "7")
-	msg = oldreplacetext(msg, "l", "1")
-	//msg = oldreplacetext(msg, "n", "*")
+	msg = replacetext(msg, "a", "@")
+	msg = replacetext(msg, "e", "3")
+	msg = replacetext(msg, "i", "1")
+	msg = replacetext(msg, "o", "0")
+	//msg = replacetext(msg, "u", "^")
+	//msg = replacetext(msg, "y", "7")
+	//msg = replacetext(msg, "r", "9")
+	msg = replacetext(msg, "s", "5")
+	//msg = replacetext(msg, "t", "7")
+	msg = replacetext(msg, "l", "1")
+	//msg = replacetext(msg, "n", "*")
 	   //Preds now speak in bastardized 1337speak BECAUSE. -because abby is retarded -spookydonut
 
 	spawn(10)
@@ -1169,7 +1171,7 @@
 /obj/item/storage/backpack/yautja
 	name = "hunting pouch"
 	desc = "A Yautja hunting pouch worn around the waist, made from a thick tanned hide. Capable of holding various devices and tools and used for the transport of trophies."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "beltbag"
 	flags_equip_slot = SLOT_WAIST
 	max_w_class = SIZE_MEDIUM
@@ -1192,7 +1194,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/yautja
 	name = "unusual crystal"
 	desc = "A strange glowing crystal with a spike at one end."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "crystal"
 	amount_per_transfer_from_this = 35
 	volume = 35
@@ -1206,7 +1208,7 @@
 /obj/item/device/yautja_teleporter
 	name = "relay beacon"
 	desc = "A device covered in sacred text. It whirrs and beeps every couple of seconds."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "teleporter"
 	origin_tech = "materials=7;bluespace=7;engineering=7"
 	flags_atom = FPRINT|CONDUCT
@@ -1324,7 +1326,7 @@
 /obj/item/weapon/harpoon/yautja
 	name = "large harpoon"
 	desc = "A huge metal spike, with a hook at the end. It's carved with mysterious alien writing."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "spike"
 	item_state = "harpoon"
 	force = 15
@@ -1337,7 +1339,7 @@
 /obj/item/weapon/wristblades
 	name = "wrist blades"
 	desc = "A pair of huge, serrated blades extending from a metal gauntlet."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "wrist"
 	item_state = "wristblade"
 	force = 33
@@ -1393,7 +1395,7 @@
 /obj/item/weapon/yautja_chain
 	name = "chainwhip"
 	desc = "A segmented, lightweight whip made of durable, acid-resistant metal. Not very common among Yautja Hunters, but still a dangerous weapon capable of shredding prey."
-	icon = 'icons/obj/items/weapons.dmi'
+	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "whip"
 	item_state = "whip"
 	flags_atom = FPRINT|CONDUCT
@@ -1425,67 +1427,11 @@
 	add_to_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/yautja_knife
-	name = "ceremonial dagger"
-	desc = "A viciously sharp dagger enscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
-	icon = 'icons/obj/items/predator.dmi'
-	icon_state = "predknife"
-	item_state = "knife"
-	flags_atom = FPRINT|CONDUCT
-	flags_item = ITEM_PREDATOR
-	flags_equip_slot = SLOT_STORE
-	sharp = IS_SHARP_ITEM_ACCURATE
-	force = 24
-	w_class = SIZE_TINY
-	throwforce = 28
-	throw_speed = 3
-	throw_range = 6
-	hitsound = 'sound/weapons/slash.ogg'
-	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	actions_types = list(/datum/action/item_action)
-	unacidable = 1
-
-/obj/item/weapon/yautja_knife/attack_self(mob/living/carbon/human/user)
-	if(!isYautja(user)) return
-	if(!hasorgans(user)) return
-
-	var/mob/living/carbon/human/yautja/Y = user
-	var/pain_factor = 0 //Preds don't normally feel pain. This is an exception.
-
-	to_chat(Y, SPAN_NOTICE("You begin using your knife to rip shrapnel out. Hold still. This will probably hurt..."))
-
-	if(do_after(Y,50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-		var/obj/item/shard/shrapnel/S
-		for(var/datum/limb/O in Y.limbs)
-			for(S in O.implants)
-				to_chat(Y, SPAN_NOTICE("You dig shrapnel out of your [O.display_name]."))
-				S.loc = Y.loc
-				O.implants -= S
-				pain_factor++
-				O.take_damage(rand(2,5), 0, 0)
-				O.status |= LIMB_BLEEDING
-
-		for(var/datum/internal_organ/I in Y.internal_organs) //Now go in and clean out the internal ones.
-			for(var/obj/Q in I)
-				Q.loc = Y.loc
-				I.take_damage(rand(1,2), 0, 0)
-				pain_factor += 3 //OWWW! No internal bleeding though.
-
-		switch(pain_factor)
-			if(0) to_chat(Y, SPAN_WARNING("There was nothing to dig out!"))
-			if(1 to 4) to_chat(Y, SPAN_WARNING("That hurt like hell!!"))
-			if(5 to INFINITY) Y.emote("roar")
-
-	else to_chat(Y, SPAN_WARNING("You were interrupted!"))
-
-/obj/item/weapon/yautja_knife/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
 
 /obj/item/weapon/yautja_sword
 	name = "clan sword"
 	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp, and capable of cutting flesh into ribbons. Commonly carried by aggresive and lethal hunters."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "clansword"
 	flags_atom = FPRINT|CONDUCT
 	flags_item = ITEM_PREDATOR
@@ -1538,7 +1484,7 @@
 /obj/item/weapon/yautja_scythe
 	name = "double war scythe"
 	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes.."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "predscythe"
 	item_state = "scythe"
 	flags_atom = FPRINT|CONDUCT
@@ -1587,7 +1533,7 @@
 			if(affecting)
 				if(affecting.body_part != UPPER_TORSO && affecting.body_part != LOWER_TORSO) //as hilarious as it is
 					user.visible_message(SPAN_DANGER("The limb is sliced clean off!"),SPAN_DANGER("You slice off a limb!"))
-					affecting.droplimb(1) //the second 1 is  amputation. This amputates.
+					affecting.droplimb(1, 0, initial(name)) //the second 1 is  amputation. This amputates.
 	else //Probably an alien
 		if(prob(14))
 			..() //Do it again! CRIT!
@@ -1598,7 +1544,7 @@
 /obj/item/weapon/combistick
 	name = "combi-stick"
 	desc = "A compact yet deadly personal weapon. Can be concealed when folded. Functions well as a throwing weapon or defensive tool. A common sight in Yautja packs due to its versatility."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "combistick"
 	flags_atom = FPRINT|CONDUCT|ITEM_UNCATCHABLE
 	flags_equip_slot = SLOT_BACK
@@ -1750,7 +1696,7 @@
 	spawner_type = /mob/living/carbon/hellhound
 	deliveryamt = 1
 	desc = "A strange piece of alien technology. It seems to call forth a hellhound."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "hellnade"
 	force = 25
 	throwforce = 55

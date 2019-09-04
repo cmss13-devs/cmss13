@@ -142,13 +142,13 @@
 		if(client) client.change_view(world.view)
 		src.name = "Spider-bot ([M.brainmob.name])"
 
-/mob/living/simple_animal/spiderbot/proc/explode() //When emagged.
+/mob/living/simple_animal/spiderbot/proc/explode(var/cause = "exploding") //When emagged.
 	for(var/mob/M in viewers(src, null))
 		if ((M.client && !( M.blinded )))
 			M.show_message(SPAN_DANGER("[src] makes an odd warbling noise, fizzles, and explodes."))
 	explosion(get_turf(loc), -1, -1, 3, 5)
 	eject_brain()
-	death()
+	death(cause)
 
 /mob/living/simple_animal/spiderbot/proc/update_icon()
 	if(mmi)

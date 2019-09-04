@@ -3,7 +3,7 @@
 /obj/machinery/computer/hologram_comp
 	name = "Hologram Computer"
 	desc = "Rumoured to control holograms."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "holo_console0"
 	var/obj/machinery/hologram/projector/projector = null
 	var/temp = null
@@ -30,17 +30,17 @@
 	..()
 
 /obj/machinery/computer/hologram_comp/proc/render()
-	var/icon/I = new /icon('icons/mob/human.dmi', "body_m_s")
+	var/icon/I = new /icon('icons/mob/humans/human.dmi', "body_m_s")
 
 	if (src.lumens >= 0)
 		I.Blend(rgb(src.lumens, src.lumens, src.lumens), ICON_ADD)
 	else
 		I.Blend(rgb(- src.lumens,  -src.lumens,  -src.lumens), ICON_SUBTRACT)
 
-	I.Blend(new /icon('icons/mob/human.dmi', "mouth_m_s"), ICON_OVERLAY)
-	I.Blend(new /icon('icons/mob/human.dmi', "underwear1_m_s"), ICON_OVERLAY)
+	I.Blend(new /icon('icons/mob/humans/human.dmi', "mouth_m_s"), ICON_OVERLAY)
+	I.Blend(new /icon('icons/mob/humans/human.dmi', "underwear1_m_s"), ICON_OVERLAY)
 
-	var/icon/U = new /icon('icons/mob/human_hair.dmi', "hair_a_s")
+	var/icon/U = new /icon('icons/mob/humans/human_hair.dmi', "hair_a_s")
 	U.Blend(rgb(src.h_r, src.h_g, src.h_b), ICON_ADD)
 
 	I.Blend(U, ICON_OVERLAY)
@@ -70,7 +70,7 @@
 				projector.hologram = null
 			else
 				projector.hologram = new(projector.loc)
-				projector.hologram.icon = 'icons/mob/human.dmi'
+				projector.hologram.icon = 'icons/mob/humans/human.dmi'
 				projector.hologram.icon_state = "body_m_s"
 				projector.icon_state = "hologram1"
 				src.render()

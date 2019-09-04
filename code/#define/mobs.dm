@@ -265,6 +265,13 @@
 #define LIMB_PRINTING_TIME 550
 #define LIMB_METAL_AMOUNT 125
 
+// Surgery chance modifiers
+
+#define SURGERY_MULTIPLIER_SMALL 	0.10
+#define SURGERY_MULTIPLIER_MEDIUM 	0.20
+#define SURGERY_MULTIPLIER_LARGE	0.40
+#define SURGERY_MULTIPLIER_HUGE 	0.60
+
 //=================================================
 
 //Languages!
@@ -378,17 +385,67 @@
 #define CAN_HOLD_TWO_HANDS 1
 #define CAN_HOLD_ONE_HAND 2
 
-// boiler flags
+//	------------	//
+//	STRAIN FLAGS	//
+//	------------	//
 
-#define BOILER_NORMAL	1
-#define BOILER_RAILGUN	2
-#define BOILER_SHATTER  3
+// Queen strain flags
+#define QUEEN_NORMAL		"Normal"
+
+// Drone strain flags
+#define DRONE_NORMAL		"Normal"
+#define DRONE_HEALER		"Healer"
+
+// Hivelord strain flags
+#define HIVELORD_NORMAL		"Normal"
+
+// Carrier strain flags
+#define CARRIER_NORMAL 		"Normal"
+#define CARRIER_EGGSACS		"Eggsac"
+
+// Burrower strain flags
+#define BURROWER_NORMAL 	"Normal"
+#define BURROWER_TREMOR		"Tremor"
+
+// Sentinel strain flags
+#define SENTINEL_NORMAL		"Normal"
+
+// Spitter strain flags
+#define SPITTER_NORMAL		"Normal"
+#define SPITTER_VOMITER		"Vomiter"
+
+// Boiler strain flags
+#define BOILER_NORMAL		"Normal"
+#define BOILER_RAILGUN		"Railgun"
+#define BOILER_SHATTER  	"Shatter"
+
+// Runner strain flags
+#define RUNNER_NORMAL		"Normal"
+
+// Lurker strain flags
+#define LURKER_NORMAL		"Normal"
+
+// Ravager strain flags
+#define RAVAGER_NORMAL 		"Normal"
+#define RAVAGER_VETERAN 	"Veteran"
+#define RAVAGER_HEDGEHOG 	"Hedgehog"
+
+// Defender strain flags
+#define DEFENDER_NORMAL 	"Normal"
+#define DEFENDER_STEELCREST "Steelcrest"
+
+// Warrior strain flags
+#define WARRIOR_NORMAL		"Normal"
+#define WARRIOR_BOXER		"Boxer"
+
+// Crusher strain flags
+#define CRUSHER_NORMAL		"Normal"
 
 // Praetorian strain flags
-#define PRAETORIAN_NORMAL	  1
-#define PRAETORIAN_ROYALGUARD 2
-#define PRAETORIAN_DANCER	  3
-#define PRAETORIAN_OPPRESSOR  4
+#define PRAETORIAN_NORMAL	  "Normal"
+#define PRAETORIAN_ROYALGUARD "Royal Guard"
+#define PRAETORIAN_DANCER	  "Dancer"
+#define PRAETORIAN_OPPRESSOR  "Oppressor"
 
 // Praetorian strain flags
 #define PRAE_SCREECH_BUFFED  	1
@@ -397,23 +454,23 @@
 #define PRAE_ROYALGUARD_ACIDSPRAY_TYPE 4 // 0 = cone, 1 = line
 
 var/list/default_onmob_icons = list(
-		WEAR_L_HAND = 'icons/mob/items_lefthand_0.dmi',
-		WEAR_R_HAND = 'icons/mob/items_righthand_0.dmi',
-		WEAR_WAIST = 'icons/mob/belt.dmi',
-		WEAR_BACK = 'icons/mob/back.dmi',
-		WEAR_EAR = 'icons/mob/ears.dmi',
-		WEAR_EYES = 'icons/mob/eyes.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/belt.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/back.dmi',
+		WEAR_EAR = 'icons/mob/humans/onmob/ears.dmi',
+		WEAR_EYES = 'icons/mob/humans/onmob/eyes.dmi',
 		WEAR_ID = 'icons/mob/mob.dmi',
-		WEAR_BODY = 'icons/mob/uniform_0.dmi',
-		WEAR_JACKET = 'icons/mob/suit_0.dmi',
-		WEAR_HEAD = 'icons/mob/head_0.dmi',
-		WEAR_FEET = 'icons/mob/feet.dmi',
-		WEAR_FACE = 'icons/mob/mask.dmi',
+		WEAR_BODY = 'icons/mob/humans/onmob/uniform_0.dmi',
+		WEAR_JACKET = 'icons/mob/humans/onmob/suit_0.dmi',
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_0.dmi',
+		WEAR_FEET = 'icons/mob/humans/onmob/feet.dmi',
+		WEAR_FACE = 'icons/mob/humans/onmob/mask.dmi',
 		WEAR_HANDCUFFED = 'icons/mob/mob.dmi',
 		WEAR_LEGCUFFED = 'icons/mob/mob.dmi',
-		WEAR_HANDS = 'icons/mob/hands.dmi',
-		WEAR_J_STORE = 'icons/mob/suit_slot.dmi',
-		WEAR_ACCESSORIES = 'icons/mob/ties.dmi'
+		WEAR_HANDS = 'icons/mob/humans/onmob/hands.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/suit_slot.dmi',
+		WEAR_ACCESSORIES = 'icons/mob/humans/onmob/ties.dmi'
 		)
 
 // species names

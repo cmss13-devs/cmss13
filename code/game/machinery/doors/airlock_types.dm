@@ -1,126 +1,126 @@
 
 /obj/machinery/door/airlock/secure
 	name = "\improper Secure Airlock"
-	icon = 'icons/obj/doors/Door_secure.dmi'
+	icon = 'icons/obj/structures/doors/Door_secure.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_com
 	openspeed = 17
 
 /obj/machinery/door/airlock/command
 	name = "\improper Command Airlock"
-	icon = 'icons/obj/doors/Doorcom.dmi'
+	icon = 'icons/obj/structures/doors/Doorcom.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_com
 
 /obj/machinery/door/airlock/security
 	name = "\improper Security Airlock"
-	icon = 'icons/obj/doors/Doorsec.dmi'
+	icon = 'icons/obj/structures/doors/Doorsec.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_sec
 
 /obj/machinery/door/airlock/engineering
 	name = "\improper Engineering Airlock"
-	icon = 'icons/obj/doors/Dooreng.dmi'
+	icon = 'icons/obj/structures/doors/Dooreng.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_eng
 
 /obj/machinery/door/airlock/medical
 	name = "\improper Medical Airlock"
-	icon = 'icons/obj/doors/Doormed.dmi'
+	icon = 'icons/obj/structures/doors/Doormed.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_med
 
 /obj/machinery/door/airlock/maintenance
 	name = "\improper Maintenance Hatch"
-	icon = 'icons/obj/doors/Doormaint.dmi'
+	icon = 'icons/obj/structures/doors/Doormaint.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_mai
 
 /obj/machinery/door/airlock/external
 	name = "\improper External Airlock"
-	icon = 'icons/obj/doors/Doorext.dmi'
+	icon = 'icons/obj/structures/doors/Doorext.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_ext
 
 /obj/machinery/door/airlock/glass
 	name = "\improper Glass Airlock"
-	icon = 'icons/obj/doors/Doorglass.dmi'
+	icon = 'icons/obj/structures/doors/Doorglass.dmi'
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/centcom
 	name = "\improper Airlock"
-	icon = 'icons/obj/doors/Doorele.dmi'
+	icon = 'icons/obj/structures/doors/Doorele.dmi'
 	opacity = 1
 
 /obj/machinery/door/airlock/vault
 	name = "\improper Vault"
-	icon = 'icons/obj/doors/vault.dmi'
+	icon = 'icons/obj/structures/doors/vault.dmi'
 	opacity = 1
 	assembly_type = /obj/structure/door_assembly/door_assembly_highsecurity //Until somebody makes better sprites.
 
 /obj/machinery/door/airlock/freezer
 	name = "\improper Freezer Airlock"
-	icon = 'icons/obj/doors/Doorfreezer.dmi'
+	icon = 'icons/obj/structures/doors/Doorfreezer.dmi'
 	opacity = 1
 	assembly_type = /obj/structure/door_assembly/door_assembly_fre
 
 /obj/machinery/door/airlock/hatch
 	name = "\improper Airtight Hatch"
-	icon = 'icons/obj/doors/Doorhatchele.dmi'
+	icon = 'icons/obj/structures/doors/Doorhatchele.dmi'
 	opacity = 1
 	assembly_type = /obj/structure/door_assembly/door_assembly_hatch
 
 /obj/machinery/door/airlock/maintenance_hatch
 	name = "\improper Maintenance Hatch"
-	icon = 'icons/obj/doors/Doorhatchmaint2.dmi'
+	icon = 'icons/obj/structures/doors/Doorhatchmaint2.dmi'
 	opacity = 1
 	assembly_type = /obj/structure/door_assembly/door_assembly_mhatch
 
 /obj/machinery/door/airlock/glass_command
 	name = "\improper Command Airlock"
-	icon = 'icons/obj/doors/Doorcomglass.dmi'
+	icon = 'icons/obj/structures/doors/Doorcomglass.dmi'
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_com
 	glass = 1
 
 /obj/machinery/door/airlock/glass_engineering
 	name = "\improper Engineering Airlock"
-	icon = 'icons/obj/doors/Doorengglass.dmi'
+	icon = 'icons/obj/structures/doors/Doorengglass.dmi'
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_eng
 	glass = 1
 
 /obj/machinery/door/airlock/glass_security
 	name = "\improper Security Airlock"
-	icon = 'icons/obj/doors/Doorsecglass.dmi'
+	icon = 'icons/obj/structures/doors/Doorsecglass.dmi'
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_sec
 	glass = 1
 
 /obj/machinery/door/airlock/glass_medical
 	name = "\improper Medical Airlock"
-	icon = 'icons/obj/doors/Doormedglass.dmi'
+	icon = 'icons/obj/structures/doors/Doormedglass.dmi'
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_med
 	glass = 1
 
 /obj/machinery/door/airlock/mining
 	name = "\improper Mining Airlock"
-	icon = 'icons/obj/doors/Doormining.dmi'
+	icon = 'icons/obj/structures/doors/Doormining.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_min
 
 /obj/machinery/door/airlock/marine
     name = "\improper Airlock"
-    icon = 'icons/obj/doors/door_marines.dmi'
+    icon = 'icons/obj/structures/doors/door_marines.dmi'
     assembly_type = /obj/structure/door_assembly/door_assembly_min
 
 /obj/machinery/door/airlock/atmos
 	name = "\improper Atmospherics Airlock"
-	icon = 'icons/obj/doors/Dooratmo.dmi'
+	icon = 'icons/obj/structures/doors/Dooratmo.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_atmo
 
 /obj/machinery/door/airlock/research
 	name = "\improper Research Airlock"
-	icon = 'icons/obj/doors/Doorresearch.dmi'
+	icon = 'icons/obj/structures/doors/Doorresearch.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_research
 
 /obj/machinery/door/airlock/glass_research
 	name = "\improper Research Airlock"
-	icon = 'icons/obj/doors/Doorresearchglass.dmi'
+	icon = 'icons/obj/structures/doors/Doorresearchglass.dmi'
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_research
 	glass = 1
@@ -128,37 +128,37 @@
 
 /obj/machinery/door/airlock/glass_mining
 	name = "\improper Mining Airlock"
-	icon = 'icons/obj/doors/Doorminingglass.dmi'
+	icon = 'icons/obj/structures/doors/Doorminingglass.dmi'
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_min
 	glass = 1
 
 /obj/machinery/door/airlock/glass_atmos
 	name = "\improper Atmospherics Airlock"
-	icon = 'icons/obj/doors/Dooratmoglass.dmi'
+	icon = 'icons/obj/structures/doors/Dooratmoglass.dmi'
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_atmo
 	glass = 1
 
 /obj/machinery/door/airlock/gold
 	name = "\improper Gold Airlock"
-	icon = 'icons/obj/doors/Doorgold.dmi'
+	icon = 'icons/obj/structures/doors/Doorgold.dmi'
 	mineral = "gold"
 
 /obj/machinery/door/airlock/silver
 	name = "\improper Silver Airlock"
-	icon = 'icons/obj/doors/Doorsilver.dmi'
+	icon = 'icons/obj/structures/doors/Doorsilver.dmi'
 	mineral = "silver"
 
 /obj/machinery/door/airlock/diamond
 	name = "\improper Diamond Airlock"
-	icon = 'icons/obj/doors/Doordiamond.dmi'
+	icon = 'icons/obj/structures/doors/Doordiamond.dmi'
 	mineral = "diamond"
 
 /obj/machinery/door/airlock/uranium
 	name = "\improper Uranium Airlock"
 	desc = "And they said I was crazy."
-	icon = 'icons/obj/doors/Dooruranium.dmi'
+	icon = 'icons/obj/structures/doors/Dooruranium.dmi'
 	mineral = "uranium"
 	var/last_event = 0
 
@@ -177,31 +177,31 @@
 /obj/machinery/door/airlock/phoron
 	name = "\improper Phoron Airlock"
 	desc = "No way this can end badly."
-	icon = 'icons/obj/doors/Doorphoron.dmi'
+	icon = 'icons/obj/structures/doors/Doorphoron.dmi'
 	mineral = "phoron"
 
 
 
 /obj/machinery/door/airlock/sandstone
 	name = "\improper Sandstone Airlock"
-	icon = 'icons/obj/doors/Doorsand.dmi'
+	icon = 'icons/obj/structures/doors/Doorsand.dmi'
 	mineral = "sandstone"
 
 /obj/machinery/door/airlock/science
 	name = "\improper Research Airlock"
-	icon = 'icons/obj/doors/Doorsci.dmi'
+	icon = 'icons/obj/structures/doors/Doorsci.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_science
 
 /obj/machinery/door/airlock/glass_science
 	name = "\improper Research Airlock"
-	icon = 'icons/obj/doors/Doorsciglass.dmi'
+	icon = 'icons/obj/structures/doors/Doorsciglass.dmi'
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_science
 	glass = 1
 
 /obj/machinery/door/airlock/highsecurity
 	name = "\improper High Tech Security Airlock"
-	icon = 'icons/obj/doors/hightechsecurity.dmi'
+	icon = 'icons/obj/structures/doors/hightechsecurity.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_highsecurity
 
 
@@ -212,7 +212,7 @@
 
 /obj/machinery/door/airlock/almayer
 	name = "\improper Airlock"
-	icon = 'icons/obj/doors/almayer/comdoor.dmi' //Tiles with is here FOR SAFETY PURPOSES
+	icon = 'icons/obj/structures/doors/comdoor.dmi' //Tiles with is here FOR SAFETY PURPOSES
 	openspeed = 4 //shorter open animation.
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
@@ -226,34 +226,34 @@
 
 /obj/machinery/door/airlock/almayer/security
 	name = "\improper Security Airlock"
-	icon = 'icons/obj/doors/almayer/secdoor.dmi'
+	icon = 'icons/obj/structures/doors/secdoor.dmi'
 	req_access = list(ACCESS_MARINE_BRIG)
 
 /obj/machinery/door/airlock/almayer/security/glass
 	name = "\improper Security Airlock"
-	icon = 'icons/obj/doors/almayer/secdoor_glass.dmi'
+	icon = 'icons/obj/structures/doors/secdoor_glass.dmi'
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/command
 	name = "\improper Command Airlock"
-	icon = 'icons/obj/doors/almayer/comdoor.dmi'
+	icon = 'icons/obj/structures/doors/comdoor.dmi'
 	req_access = list(ACCESS_MARINE_BRIDGE)
 
 /obj/machinery/door/airlock/almayer/secure
 	name = "\improper Secure Airlock"
-	icon = 'icons/obj/doors/almayer/securedoor.dmi'
+	icon = 'icons/obj/structures/doors/securedoor.dmi'
 	req_access = list(ACCESS_MARINE_BRIDGE)
 
 /obj/machinery/door/airlock/almayer/maint
 	name = "\improper Maintenance Hatch"
-	icon = 'icons/obj/doors/almayer/maintdoor.dmi'
+	icon = 'icons/obj/structures/doors/maintdoor.dmi'
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_ENGINEERING)
 
 /obj/machinery/door/airlock/almayer/engineering
 	name = "\improper Engineering Airlock"
-	icon = 'icons/obj/doors/almayer/engidoor.dmi'
+	icon = 'icons/obj/structures/doors/engidoor.dmi'
 	opacity = 0
 	glass = 1
 	req_access = list()
@@ -261,13 +261,13 @@
 
 /obj/machinery/door/airlock/almayer/medical
 	name = "\improper Medical Airlock"
-	icon = 'icons/obj/doors/almayer/medidoor.dmi'
+	icon = 'icons/obj/structures/doors/medidoor.dmi'
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_BRIDGE)
 
 /obj/machinery/door/airlock/almayer/medical/glass
 	name = "\improper Medical Airlock"
-	icon = 'icons/obj/doors/almayer/medidoor_glass.dmi'
+	icon = 'icons/obj/structures/doors/medidoor_glass.dmi'
 	opacity = 0
 	glass = 1
 	req_access = list()
@@ -275,34 +275,34 @@
 
 /obj/machinery/door/airlock/almayer/research
 	name = "\improper Research Airlock"
-	icon = 'icons/obj/doors/almayer/medidoor.dmi'
+	icon = 'icons/obj/structures/doors/medidoor.dmi'
 	req_access = list(ACCESS_MARINE_RESEARCH)
 
 /obj/machinery/door/airlock/almayer/research/glass
 	name = "\improper Research Airlock"
-	icon = 'icons/obj/doors/almayer/medidoor_glass.dmi'
+	icon = 'icons/obj/structures/doors/medidoor_glass.dmi'
 	opacity = 0
 	glass = 1
 	req_access = list(ACCESS_MARINE_RESEARCH)
 
 /obj/machinery/door/airlock/almayer/generic
 	name = "\improper Airlock"
-	icon = 'icons/obj/doors/almayer/personaldoor.dmi'
+	icon = 'icons/obj/structures/doors/personaldoor.dmi'
 
 /obj/machinery/door/airlock/almayer/generic/corporate
 	name = "Corporate Liaison's Quarters"
-	icon = 'icons/obj/doors/almayer/personaldoor.dmi'
+	icon = 'icons/obj/structures/doors/personaldoor.dmi'
 	req_access = list(ACCESS_WY_CORPORATE)
 
 /obj/machinery/door/airlock/almayer/marine
 	name = "\improper Airlock"
-	icon = 'icons/obj/doors/almayer/prepdoor.dmi'
+	icon = 'icons/obj/structures/doors/prepdoor.dmi'
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/requisitions
 	name = "\improper Requisitions Bay"
-	icon = 'icons/obj/doors/almayer/prepdoor.dmi'
+	icon = 'icons/obj/structures/doors/prepdoor.dmi'
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO)
 	opacity = 0
@@ -310,7 +310,7 @@
 
 /obj/machinery/door/airlock/almayer/marine/alpha
 	name = "\improper Alpha Squad Preparations"
-	icon = 'icons/obj/doors/almayer/prepdoor_alpha.dmi'
+	icon = 'icons/obj/structures/doors/prepdoor_alpha.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA)
 	opacity = 0
@@ -358,7 +358,7 @@
 
 /obj/machinery/door/airlock/almayer/marine/bravo
 	name = "\improper Bravo Squad Preparations"
-	icon = 'icons/obj/doors/almayer/prepdoor_bravo.dmi'
+	icon = 'icons/obj/structures/doors/prepdoor_bravo.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_BRAVO)
 	opacity = 0
@@ -406,7 +406,7 @@
 
 /obj/machinery/door/airlock/almayer/marine/charlie
 	name = "\improper Charlie Squad Preparations"
-	icon = 'icons/obj/doors/almayer/prepdoor_charlie.dmi'
+	icon = 'icons/obj/structures/doors/prepdoor_charlie.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_CHARLIE)
 	opacity = 0
@@ -454,7 +454,7 @@
 
 /obj/machinery/door/airlock/almayer/marine/delta
 	name = "\improper Delta Squad Preparations"
-	icon = 'icons/obj/doors/almayer/prepdoor_delta.dmi'
+	icon = 'icons/obj/structures/doors/prepdoor_delta.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_DELTA)
 	opacity = 0
@@ -506,7 +506,7 @@
 
 /obj/machinery/door/airlock/dropship_hatch
 	name = "\improper Dropship Hatch"
-	icon = 'icons/obj/doors/almayer/dropship1_side.dmi' //Tiles with is here FOR SAFETY PURPOSES
+	icon = 'icons/obj/structures/doors/dropship1_side.dmi' //Tiles with is here FOR SAFETY PURPOSES
 	id = "sh_dropship1"
 	openspeed = 4 //shorter open animation.
 	no_panel = 1
@@ -532,11 +532,11 @@
 	..()
 
 /obj/machinery/door/airlock/dropship_hatch/two
-	icon = 'icons/obj/doors/almayer/dropship2_side.dmi' //Tiles with is here FOR SAFETY PURPOSES
+	icon = 'icons/obj/structures/doors/dropship2_side.dmi' //Tiles with is here FOR SAFETY PURPOSES
 	id = "sh_dropship2"
 
 /obj/machinery/door/airlock/hatch/cockpit
-	icon = 'icons/obj/doors/almayer/dropship1_pilot.dmi'
+	icon = 'icons/obj/structures/doors/dropship1_pilot.dmi'
 	name = "\improper Cockpit"
 	req_access = list(ACCESS_MARINE_DROPSHIP)
 	req_one_access = list()
@@ -545,12 +545,12 @@
 	not_weldable = 1
 
 /obj/machinery/door/airlock/hatch/cockpit/two
-	icon = 'icons/obj/doors/almayer/dropship2_pilot.dmi'
+	icon = 'icons/obj/structures/doors/dropship2_pilot.dmi'
 
 //PRISON AIRLOCKS
 /obj/machinery/door/airlock/prison/
 	name = "\improper Cell Door"
-	icon = 'icons/obj/doors/prison/celldoor.dmi'
+	icon = 'icons/obj/structures/doors/celldoor.dmi'
 	glass = 0
 
 /obj/machinery/door/airlock/prison/horizontal

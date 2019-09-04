@@ -11,6 +11,8 @@
  *
  */
 
+var/global/datum/entity/round_stats/round_statistics
+var/global/list/datum/entity/player_entity/player_entities = list()
 
 /datum/game_mode
 	var/name = "invalid"
@@ -34,6 +36,8 @@
 	var/is_in_endgame = FALSE //Set it to TRUE when we trigger DELTA alert or dropship crashes
 	var/list/datum/mind/traitors = list()
 	var/obj/machinery/computer/shuttle_control/active_lz = null
+
+	var/datum/entity/round_stats/round_stats = null
 
 	var/scheduler_logging_current_interval = MINUTES_30//30 minutes in
 	var/scheduler_logging_ongoing_interval = MINUTES_30//every 30 minutes
@@ -61,6 +65,7 @@
 ///pre_setup()
 ///Attempts to select players for special roles the mode might have.
 /datum/game_mode/proc/pre_setup()
+	setup_round_stats()
 	return 1
 
 
@@ -70,6 +75,8 @@
 	spawn (ROUNDSTART_LOGOUT_REPORT_TIME)
 		display_roundstart_logout_report()
 
+	for(var/mob/new_player/np in player_list)
+		np.new_player_panel_proc()
 	feedback_set_details("round_start","[time2text(world.realtime)]")
 	if(ticker && ticker.mode)
 		feedback_set_details("game_mode","[ticker.mode]")
@@ -80,9 +87,6 @@
 ///process()
 ///Called by the gameticker
 /datum/game_mode/proc/process()
-	if(world.time > scheduler_logging_current_interval)
-		log_scheduler()
-		scheduler_logging_current_interval += scheduler_logging_ongoing_interval
 	return 0
 
 
@@ -93,7 +97,8 @@
 	return
 
 /datum/game_mode/proc/announce_ending()
-	round_statistics.count_end_of_round_mobs_for_statistics()
+	if(round_statistics)
+		round_statistics.track_round_end()
 	to_world("<span class='round_header'>|Round Complete|</span>")
 	feedback_set_details("round_end_result",round_finished)
 
@@ -103,7 +108,8 @@
 
 
 /datum/game_mode/proc/declare_completion()
-	round_statistics.count_end_of_round_mobs_for_statistics()
+	if(round_statistics)
+		round_statistics.track_round_end()
 	var/clients = 0
 	var/surviving_humans = 0
 	var/surviving_total = 0
@@ -133,6 +139,13 @@
 	//send2mainirc("A round of [src.name] has ended - [surviving_total] survivors, [ghosts] ghosts.")
 
 	return 0
+
+/datum/game_mode/proc/show_end_statistics()
+	round_statistics.update_panel_data()
+	for(var/mob/M in player_list)
+		if(M.client && M.client.player_entity)
+			M.client.player_entity.show_statistics(M, round_statistics, TRUE)
+	save_player_entities()
 
 /datum/game_mode/proc/check_win() //universal trigger to be called at mob death, nuke explosion, etc. To be called from everywhere.
 	return 0
@@ -367,3 +380,20 @@ proc/get_nt_opposed()
 	text += ")"
 
 	return text
+
+/datum/game_mode/proc/setup_round_stats()
+	if(!round_stats)
+		var/operation_name
+		operation_name = "[pick(operation_titles)]"
+		operation_name += " [pick(operation_prefixes)]"
+		operation_name += "-[pick(operation_postfixes)]"
+		round_stats = new()
+		round_stats.name = operation_name
+		round_stats.real_time_start = world.realtime
+		var/datum/entity/map_stats/new_map = new()
+		new_map.name = map_tag
+		new_map.linked_round = round_stats
+		new_map.death_stats_list = round_stats.death_stats_list
+		round_stats.game_mode = name
+		round_stats.current_map = new_map
+		round_statistics = round_stats

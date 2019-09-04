@@ -415,6 +415,12 @@ proc/pick_element_by_weight_byindex(list/L)
 			i++
 	return i
 
+// Return a list of the values in an assoc list (including null)
+/proc/list_values(var/list/L)
+	. = list()
+	for(var/e in L)
+		. += L[e]
+
 //Don't use this on lists larger than half a dozen or so
 /proc/insertion_sort_numeric_list_ascending(var/list/L)
 	//world.log << "ascending len input: [L.len]"
@@ -654,3 +660,44 @@ datum/proc/dd_SortValue()
 	for(var/path in subtypesof(prototype))
 		L += new path()
 	return L
+
+//Copies a list, and all lists inside it recusively
+//Does not copy any other reference type
+/proc/deepCopyList(list/L)
+	if(!islist(L))
+		return L
+	. = L.Copy()
+	for(var/i in 1 to length(L))
+		var/key = .[i]
+		if(isnum(key))
+			// numbers cannot ever be associative keys
+			continue
+		var/value = .[key]
+		if(islist(value))
+			value = deepCopyList(value)
+			.[key] = value
+		if(islist(key))
+			key = deepCopyList(key)
+			.[i] = key
+			.[key] = value
+
+/proc/copyListList(list/L)
+	var/newList = L.Copy()
+	for(var/i in L)
+		var/temp_key = i
+		var/temp_value = L[i]
+		if(islist(i))
+			var/list/i_two = i
+			temp_key = i_two.Copy()
+		if(islist(L[i]))
+			temp_value = L[i].Copy()
+		newList[temp_key] = temp_value
+	return newList
+
+/atom/proc/contents_recursive()
+	var/list/found = list()
+	for(var/atom/A in contents)
+		found += A
+		if(A.contents.len)
+			found += A.contents_recursive()
+	return found

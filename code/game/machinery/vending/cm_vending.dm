@@ -39,7 +39,7 @@
 /obj/machinery/cm_vending
 	name = "\improper Theoretical Marine selector"
 	desc = ""
-	icon = 'icons/obj/machines/vending.dmi'
+	icon = 'icons/obj/structures/machinery/vending.dmi'
 	density = TRUE
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
@@ -300,7 +300,7 @@
 		ui_interact(usr) //updates the nanoUI window
 
 
-/obj/machinery/cm_vending/clothes
+/obj/machinery/cm_vending/clothing
 	name = "ColMarTech Automated Closet"
 	desc = "An automated closet hooked up to a colossal storage of standard-issue uniform and armor."
 	icon_state = "uniform_marine"
@@ -399,25 +399,25 @@
 
 
 
-/obj/machinery/cm_vending/clothes/alpha
+/obj/machinery/cm_vending/clothing/alpha
 	squad_tag = "Alpha"
 	req_access = list(ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/alpha
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha
 
-/obj/machinery/cm_vending/clothes/bravo
+/obj/machinery/cm_vending/clothing/bravo
 	squad_tag = "Bravo"
 	req_access = list(ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/bravo
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo
 
-/obj/machinery/cm_vending/clothes/charlie
+/obj/machinery/cm_vending/clothing/charlie
 	squad_tag = "Charlie"
 	req_access = list(ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/charlie
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie
 
-/obj/machinery/cm_vending/clothes/delta
+/obj/machinery/cm_vending/clothing/delta
 	squad_tag = "Delta"
 	req_access = list(ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/delta
@@ -425,7 +425,7 @@
 
 
 
-/obj/machinery/cm_vending/clothes/engi
+/obj/machinery/cm_vending/clothing/engi
 	req_access = list(ACCESS_MARINE_ENGPREP)
 	vendor_role = "Squad Engineer"
 
@@ -477,25 +477,25 @@
 	)
 
 
-/obj/machinery/cm_vending/clothes/engi/alpha
+/obj/machinery/cm_vending/clothing/engi/alpha
 	squad_tag = "Alpha"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/alpha/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/engi
 
-/obj/machinery/cm_vending/clothes/engi/bravo
+/obj/machinery/cm_vending/clothing/engi/bravo
 	squad_tag = "Bravo"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/bravo/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/engi
 
-/obj/machinery/cm_vending/clothes/engi/charlie
+/obj/machinery/cm_vending/clothing/engi/charlie
 	squad_tag = "Charlie"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/charlie/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/engi
 
-/obj/machinery/cm_vending/clothes/engi/delta
+/obj/machinery/cm_vending/clothing/engi/delta
 	squad_tag = "Delta"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/delta/insulated
@@ -503,7 +503,7 @@
 
 
 
-/obj/machinery/cm_vending/clothes/medic
+/obj/machinery/cm_vending/clothing/medic
 	req_access = list(ACCESS_MARINE_MEDPREP)
 	vendor_role = "Squad Medic"
 
@@ -554,25 +554,25 @@
 
 
 
-/obj/machinery/cm_vending/clothes/medic/alpha
+/obj/machinery/cm_vending/clothing/medic/alpha
 	squad_tag = "Alpha"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/alpha
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/med
 
-/obj/machinery/cm_vending/clothes/medic/bravo
+/obj/machinery/cm_vending/clothing/medic/bravo
 	squad_tag = "Bravo"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/bravo
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/med
 
-/obj/machinery/cm_vending/clothes/medic/charlie
+/obj/machinery/cm_vending/clothing/medic/charlie
 	squad_tag = "Charlie"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/charlie
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/med
 
-/obj/machinery/cm_vending/clothes/medic/delta
+/obj/machinery/cm_vending/clothing/medic/delta
 	squad_tag = "Delta"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/delta
@@ -584,7 +584,7 @@
 
 
 
-/obj/machinery/cm_vending/clothes/smartgun
+/obj/machinery/cm_vending/clothing/smartgun
 	req_access = list(ACCESS_MARINE_SMARTPREP)
 	vendor_role = "Squad Smartgunner"
 	gives_webbing = TRUE
@@ -622,25 +622,25 @@
 
 
 
-/obj/machinery/cm_vending/clothes/smartgun/alpha
+/obj/machinery/cm_vending/clothing/smartgun/alpha
 	squad_tag = "Alpha"
 	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/alpha
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha
 
-/obj/machinery/cm_vending/clothes/smartgun/bravo
+/obj/machinery/cm_vending/clothing/smartgun/bravo
 	squad_tag = "Bravo"
 	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/bravo
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo
 
-/obj/machinery/cm_vending/clothes/smartgun/charlie
+/obj/machinery/cm_vending/clothing/smartgun/charlie
 	squad_tag = "Charlie"
 	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/charlie
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie
 
-/obj/machinery/cm_vending/clothes/smartgun/delta
+/obj/machinery/cm_vending/clothing/smartgun/delta
 	squad_tag = "Delta"
 	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/delta
@@ -648,7 +648,7 @@
 
 
 
-/obj/machinery/cm_vending/clothes/specialist
+/obj/machinery/cm_vending/clothing/specialist
 	req_access = list(ACCESS_MARINE_SPECPREP)
 	vendor_role = "Squad Specialist"
 	gives_webbing = TRUE
@@ -690,25 +690,25 @@
 
 
 
-/obj/machinery/cm_vending/clothes/specialist/alpha
+/obj/machinery/cm_vending/clothing/specialist/alpha
 	squad_tag = "Alpha"
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/alpha
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha
 
-/obj/machinery/cm_vending/clothes/specialist/bravo
+/obj/machinery/cm_vending/clothing/specialist/bravo
 	squad_tag = "Bravo"
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/bravo
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo
 
-/obj/machinery/cm_vending/clothes/specialist/charlie
+/obj/machinery/cm_vending/clothing/specialist/charlie
 	squad_tag = "Charlie"
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/charlie
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie
 
-/obj/machinery/cm_vending/clothes/specialist/delta
+/obj/machinery/cm_vending/clothing/specialist/delta
 	squad_tag = "Delta"
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/delta
@@ -719,7 +719,7 @@
 
 
 
-/obj/machinery/cm_vending/clothes/leader
+/obj/machinery/cm_vending/clothing/leader
 	req_access = list(ACCESS_MARINE_LEADER)
 	vendor_role = "Squad Leader"
 	gives_webbing = TRUE
@@ -763,32 +763,32 @@
 
 
 
-/obj/machinery/cm_vending/clothes/leader/alpha
+/obj/machinery/cm_vending/clothing/leader/alpha
 	squad_tag = "Alpha"
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/alpha
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/lead
 
-/obj/machinery/cm_vending/clothes/leader/bravo
+/obj/machinery/cm_vending/clothing/leader/bravo
 	squad_tag = "Bravo"
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/bravo
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/lead
 
-/obj/machinery/cm_vending/clothes/leader/charlie
+/obj/machinery/cm_vending/clothing/leader/charlie
 	squad_tag = "Charlie"
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/charlie
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/lead
 
-/obj/machinery/cm_vending/clothes/leader/delta
+/obj/machinery/cm_vending/clothing/leader/delta
 	squad_tag = "Delta"
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/delta
 	headset_type = /obj/item/device/radio/headset/almayer/marine/delta/lead
 
 
-/obj/machinery/cm_vending/clothes/synth
+/obj/machinery/cm_vending/clothing/synth
 	req_access = list(ACCESS_MARINE_COMMANDER)
 	vendor_role = "Synthetic"
 
@@ -855,7 +855,7 @@
 		list("Sterile mask", 0, /obj/item/clothing/mask/surgical, MARINE_CAN_BUY_MASK, "black"),
 	)
 
-/obj/machinery/cm_vending/clothes/intelligence_officer
+/obj/machinery/cm_vending/clothing/intelligence_officer
 	name = "Intelligence Officer Equipment Rack"
 	req_access = list(ACCESS_MARINE_BRIDGE)
 	vendor_role = "Intelligence Officer"
@@ -1790,8 +1790,8 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Special Ammunition", -1, null, null),
 		list("M44 Heavy Speed Loader (.44)", round(scale * 2.5), /obj/item/ammo_magazine/revolver/heavy, "black"),
 		list("M44 Marksman Speed Loader (.44)", round(scale * 2.5), /obj/item/ammo_magazine/revolver/marksman, "black"),
-		list("SU-6 Smartpistol Magazine (.45)", round(scale * 2.5), /obj/item/ammo_magazine/pistol/smart, "black"),
-		list("VP78 Magazine", round(scale * 2.5), /obj/item/ammo_magazine/pistol/vp78, "black"),
+		list("SU-6 Smartpistol Magazine (.45)", round(scale * 6), /obj/item/ammo_magazine/pistol/smart, "black"),
+		list("VP78 Magazine", round(scale * 6), /obj/item/ammo_magazine/pistol/vp78, "black"),
 		list("M39 LE Magazine (10x20mm)", round(scale * 3.5) + 1, /obj/item/ammo_magazine/smg/m39/le, "black"),
 		list("M56 Smartgun Drum", 4, /obj/item/ammo_magazine/smartgun, "black"),
 		list("M56 Powerpack", 2, /obj/item/smartgun_powerpack, "black"),
@@ -1846,8 +1846,8 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Special Ammunition", -1, null, null),
 		list("M44 Heavy Speed Loader (.44)", round(scale * 2), /obj/item/ammo_magazine/revolver/heavy, "black"),
 		list("M44 Marksman Speed Loader (.44)", round(scale * 2), /obj/item/ammo_magazine/revolver/marksman, "black"),
-		list("SU-6 Smartpistol Magazine (.45)", round(scale * 2), /obj/item/ammo_magazine/pistol/smart, "black"),
-		list("VP78 Magazine", round(scale * 1.3), /obj/item/ammo_magazine/pistol/vp78, "black"),
+		list("SU-6 Smartpistol Magazine (.45)", round(scale * 3), /obj/item/ammo_magazine/pistol/smart, "black"),
+		list("VP78 Magazine", round(scale * 3), /obj/item/ammo_magazine/pistol/vp78, "black"),
 		list("M39 LE Magazine (10x20mm)", round(scale * 2), /obj/item/ammo_magazine/smg/m39/le, "black"),
 		list("M56 Smartgun Drum", 1, /obj/item/ammo_magazine/smartgun, "black"),
 		list("Incinerator Tank", round(scale * 1.5), /obj/item/ammo_magazine/flamer_tank, "black"),
@@ -2088,8 +2088,8 @@ obj/machinery/cm_vending/sorted/uniform_supply
 		list("Marine Radio Headset", 5, /obj/item/device/radio/headset/almayer, "black"),
 		list("Alpha Squad radio encryption key", 5, /obj/item/device/encryptionkey/alpha, "black"),
 		list("Bravo Squad radio encryption key", 5, /obj/item/device/encryptionkey/bravo, "black"),
-		list("Charlie Squad radio encryption key", 5, /obj/item/device/encryptionkey/delta, "black"),
-		list("Delta Squad radio encryption key", 5, /obj/item/device/encryptionkey/charlie, "black"),
+		list("Charlie Squad radio encryption key", 5, /obj/item/device/encryptionkey/charlie, "black"),
+		list("Delta Squad radio encryption key", 5, /obj/item/device/encryptionkey/delta, "black"),
 		list("Supply Radio Encryption Key", 5, /obj/item/device/encryptionkey/req, "black"),
 		list("Engineering Radio Encryption Key", 5, /obj/item/device/encryptionkey/engi, "black")
 		)

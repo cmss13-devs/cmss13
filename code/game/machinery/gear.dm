@@ -9,7 +9,7 @@
 
 /obj/machinery/elevator_strut
 	name = "\improper strut"
-	icon = 'icons/obj/elevator_strut.dmi'
+	icon = 'icons/turf/elevator_strut.dmi'
 	anchored = 1
 	unacidable = 1
 	density = 0

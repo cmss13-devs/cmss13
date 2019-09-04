@@ -34,10 +34,10 @@
 	..()
 
 /obj/structure/catwalk/prison
-	icon = 'icons/turf/prison.dmi'
+	icon = 'icons/turf/floors/prison.dmi'
 	icon_state = "catwalk"
 
 /obj/structure/catwalk/bigred
-	icon = 'icons/turf/catwalks.dmi'
+	icon = 'icons/turf/floors/catwalks.dmi'
 	icon_state = "catwalk0"
 	base_state = "catwalk0"

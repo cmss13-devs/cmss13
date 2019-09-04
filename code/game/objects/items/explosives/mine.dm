@@ -5,7 +5,7 @@
 /obj/item/explosive/mine
 	name = "\improper M20 Claymore anti-personnel mine"
 	desc = "The M20 Claymore is a directional proximity-triggered anti-personnel mine designed by Armat Systems for use by the United States Colonial Marines. The mine is triggered by movement both on the mine itself, and on the space immediately in front of it. Detonation sprays shrapnel forwards in a 120-degree cone. The words \"FRONT TOWARD ENEMY\" are embossed on the front."
-	icon = 'icons/obj/items/grenade.dmi'
+	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "m20"
 	force = 5.0
 	w_class = SIZE_SMALL
@@ -22,6 +22,7 @@
 	var/disarming = 0//Tracks if the mine is being disarmed.
 	var/trigger_type = "explosive" //Calls that proc
 	var/obj/effect/mine_tripwire/tripwire
+	var/source_mob
 	/*
 		"explosive"
 		//"incendiary" //New bay//
@@ -65,6 +66,8 @@
 			return
 		user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."), \
 			SPAN_NOTICE("You finish deploying [src]."))
+		if(user)
+			source_mob = user
 		anchored = 1
 		armed = 1
 		playsound(src.loc, 'sound/weapons/mine_armed.ogg', 25, 1)
@@ -123,9 +126,9 @@
 
 	switch(trigger_type)
 		if("explosive")
-			create_shrapnel(loc, 12, dir, 60)
+			create_shrapnel(loc, 12, dir, 60, , initial(name), source_mob)
 			sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
-			explosion_rec(src.loc, 60, 20)
+			explosion_rec(src.loc, 60, 20, initial(name), source_mob)
 			qdel(src)
 
 /obj/item/explosive/mine/attack_alien(mob/living/carbon/Xenomorph/M)

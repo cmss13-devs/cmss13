@@ -3,7 +3,7 @@ var/bomb_set = FALSE
 /obj/machinery/nuclearbomb
 	name = "\improper Nuclear Fission Explosive"
 	desc = "Nuke the entire site from orbit, it's the only way to be sure. Too bad we don't have any orbital nukes."
-	icon = 'icons/obj/nuclearbomb.dmi'
+	icon = 'icons/obj/structures/machinery/nuclearbomb.dmi'
 	icon_state = "nuclearbomb0"
 	density = 1
 	unacidable = 1
@@ -230,7 +230,7 @@ var/bomb_set = FALSE
 	EvacuationAuthority.trigger_self_destruct(list(z), src, FALSE, NUKE_EXPLOSION_GROUND_FINISHED, FALSE, end_round)
 
 	sleep(100)
-	explosion_rec(loc, 500, 150)
+	explosion_rec(loc, 500, 150, initial(name))
 	qdel(src)
 	r_TRU
 

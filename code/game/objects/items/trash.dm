@@ -103,7 +103,7 @@
 /obj/item/trash/cigbutt
 	name = "cigarette butt"
 	desc = "A manky old cigarette butt."
-	icon = 'icons/obj/clothing/masks.dmi'
+	icon = 'icons/obj/items/clothing/masks.dmi'
 	icon_state = "cigbutt"
 	w_class = SIZE_TINY
 	throwforce = 1
@@ -117,7 +117,7 @@
 /obj/item/trash/ucigbutt
 	name = "cigarette butt"
 	desc = "A manky old unfiltered cigarette butt."
-	icon = 'icons/obj/clothing/masks.dmi'
+	icon = 'icons/obj/items/clothing/masks.dmi'
 	icon_state = "ucigbutt"
 	w_class = SIZE_TINY
 	throwforce = 1
@@ -125,7 +125,7 @@
 /obj/item/trash/bcigbutt
 	name = "cigarette butt"
 	desc = "A manky old cigarette butt in a fancy black package."
-	icon = 'icons/obj/clothing/masks.dmi'
+	icon = 'icons/obj/items/clothing/masks.dmi'
 	icon_state = "bcigbutt"
 	w_class = SIZE_TINY
 	throwforce = 1

@@ -142,7 +142,7 @@
 		probability = 1
 		damage = 3
 	if(prob(probability))
-		droplimb()
+		droplimb(0, 0, "EMP")
 	else
 		take_damage(damage, 0, 1, 1, used_weapon = "EMP")
 
@@ -181,7 +181,7 @@
 	Less clear vars:
 	*	impact_name: name of an "impact icon." For now, is only relevant for projectiles but can be expanded to apply to melee weapons with special impact sprites.
 */
-/datum/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, impact_name = null)
+/datum/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, impact_name = null, var/damage_source = "dismemberment")
 	if((brute <= 0) && (burn <= 0))
 		return 0
 
@@ -209,7 +209,7 @@
 	if(config.bones_can_break && !(status & LIMB_ROBOT))
 		take_damage_bone_break(brute)
 
-	if(status & LIMB_BROKEN && prob(40) && brute)
+	if(status & LIMB_BROKEN && prob(40) && brute > 10)
 		if(!(owner.species && (owner.species.flags & NO_PAIN)))
 			owner.emote("scream") //Getting hit on broken hand hurts
 	if(used_weapon)
@@ -277,7 +277,7 @@
 		)
 			var/cut_prob = brute/max_damage * 5
 			if(prob(cut_prob))
-				droplimb()
+				droplimb(0, 0, damage_source)
 				return
 
 	owner.updatehealth()
@@ -336,6 +336,8 @@ This function completely restores a damaged organ to perfect condition.
 		if(!istype(implanted_object,/obj/item/implant))	// We don't want to remove REAL implants. Just shrapnel etc.
 			implanted_object.loc = owner.loc
 			implants -= implanted_object
+			if(is_sharp(implanted_object) || istype(implanted_object, /obj/item/shard/shrapnel))
+				owner.embedded_items -= implanted_object
 
 	owner.updatehealth()
 
@@ -442,7 +444,7 @@ This function completely restores a damaged organ to perfect condition.
 			if(trace_chemicals[chemID] <= 0)
 				trace_chemicals.Remove(chemID)
 
-	//Bone fracurtes	
+	//Bone fractures	
 	if(!(status & LIMB_BROKEN))
 		perma_injury = 0
 	if(knitting_time > 0)
@@ -701,20 +703,20 @@ Note that amputating the affected organ does in fact remove the infection from t
 	var/tburn = 0
 	var/tbrute = 0
 
-	if(burn_dam ==0)
+	if(burn_dam == 0)
 		tburn = 0
-	else if (burn_dam < (max_damage * 0.25 / 2))
+	else if (burn_dam < (max_damage * 0.25 / 1.5))
 		tburn = 1
-	else if (burn_dam < (max_damage * 0.75 / 2))
+	else if (burn_dam < (max_damage * 0.75 / 1.5))
 		tburn = 2
 	else
 		tburn = 3
 
 	if (brute_dam == 0)
 		tbrute = 0
-	else if (brute_dam < (max_damage * 0.25 / 5))
+	else if (brute_dam < (max_damage * 0.25 / 1.5))
 		tbrute = 1
-	else if (brute_dam < (max_damage * 0.75 / 5))
+	else if (brute_dam < (max_damage * 0.75 / 1.5))
 		tbrute = 2
 	else
 		tbrute = 3
@@ -739,7 +741,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(limbs_to_remove.len)
 		var/datum/limb/L = pick(limbs_to_remove)
 		var/limb_name = L.display_name
-		L.droplimb(0,delete_limb)
+		L.droplimb(0, delete_limb)
 		return limb_name
 	return null
 
@@ -751,7 +753,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	owner.limbs_to_process -= src
 
 //Handles dismemberment
-/datum/limb/proc/droplimb(amputation, var/delete_limb = 0)
+/datum/limb/proc/droplimb(amputation, var/delete_limb = 0, var/cause)
 	if(status & LIMB_DESTROYED)
 		return
 	else
@@ -775,7 +777,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 		// If any organs are attached to this, destroy them
 		for(var/datum/limb/O in children) 
-			O.droplimb(amputation, delete_limb)
+			O.droplimb(amputation, delete_limb, cause)
 
 		//Replace all wounds on that arm with one wound on parent organ.
 		wounds.Cut()
@@ -876,7 +878,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		// OK so maybe your limb just flew off, but if it was attached to a pair of cuffs then hooray! Freedom!
 		release_restraints()
 
-		if(vital) owner.death()
+		if(vital) owner.death(cause)
 
 /****************************************************
 			   HELPERS
@@ -1040,7 +1042,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /datum/limb/proc/get_icon(var/icon/race_icon, var/icon/deform_icon,gender="")
 
 	if (status & LIMB_ROBOT && !(owner.species && owner.species.flags & IS_SYNTHETIC))
-		return new /icon('icons/mob/human_races/robotic.dmi', "[icon_name][gender ? "_[gender]" : ""]")
+		return new /icon('icons/mob/robotic.dmi', "[icon_name][gender ? "_[gender]" : ""]")
 
 	if (status & LIMB_MUTATED)
 		return new /icon(deform_icon, "[icon_name][gender ? "_[gender]" : ""]")
@@ -1104,9 +1106,14 @@ Note that amputating the affected organ does in fact remove the infection from t
 		owner.visible_message(SPAN_DANGER("\The [W] sticks in the wound!"))
 	implants += W
 	start_processing()
-	owner.embedded_flag = 1
-	owner.verbs += /mob/proc/yank_out_object
+	
+	if(is_sharp(W) || istype(W, /obj/item/shard/shrapnel))
+		W.embedded_organ = src		
+		owner.embedded_items += W
+		if(is_sharp(W)) // Only add the verb if its not a shrapnel
+			owner.verbs += /mob/proc/yank_out_object
 	W.add_mob_blood(owner)
+
 	if(ismob(W.loc))
 		var/mob/living/H = W.loc
 		H.drop_held_item()

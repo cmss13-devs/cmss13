@@ -2,7 +2,7 @@
 /obj/machinery/gibber
 	name = "Gibber"
 	desc = "The name isn't descriptive enough?"
-	icon = 'icons/obj/kitchen.dmi'
+	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "grinder"
 	density = 1
 	anchored = 1
@@ -47,20 +47,20 @@
 
 /obj/machinery/gibber/New()
 	..()
-	src.overlays += image('icons/obj/kitchen.dmi', "grjam")
+	src.overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grjam")
 
 /obj/machinery/gibber/update_icon()
 	overlays.Cut()
 	if (dirty)
-		src.overlays += image('icons/obj/kitchen.dmi', "grbloody")
+		src.overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grbloody")
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if (!occupant)
-		src.overlays += image('icons/obj/kitchen.dmi', "grjam")
+		src.overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grjam")
 	else if (operating)
-		src.overlays += image('icons/obj/kitchen.dmi', "gruse")
+		src.overlays += image('icons/obj/structures/machinery/kitchen.dmi', "gruse")
 	else
-		src.overlays += image('icons/obj/kitchen.dmi', "gridle")
+		src.overlays += image('icons/obj/structures/machinery/kitchen.dmi', "gridle")
 
 /obj/machinery/gibber/relaymove(mob/user)
 	if(user.is_mob_incapacitated(TRUE)) return
@@ -168,7 +168,7 @@
 		user.attack_log += "\[[time_stamp()]\] Gibbed <b>[src.occupant]/[src.occupant.ckey]</b>"
 		msg_admin_attack("[user.name] ([user.ckey]) gibbed [src.occupant] ([src.occupant.ckey]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
 
-		src.occupant.death(1)
+		src.occupant.death("gibber", 1)
 		src.occupant.ghostize()
 
 	else if( istype(src.occupant, /mob/living/carbon/) || istype(src.occupant, /mob/living/simple_animal/ ) )
@@ -203,7 +203,7 @@
 			user.attack_log += "\[[time_stamp()]\] Gibbed <b>[src.occupant]/[src.occupant.ckey]</b>"
 			msg_admin_attack("\[[time_stamp()]\] <b>[key_name(user)]</b> gibbed <b>[key_name(src.occupant)]</b>")
 
-		src.occupant.death(1)
+		src.occupant.death("gibber", 1)
 		src.occupant.ghostize()
 
 	qdel(occupant)

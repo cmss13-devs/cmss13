@@ -1,7 +1,7 @@
 /obj/item/marine/fuelpack
 	name = "\improper Broiler-T flexible refueling system"
 	desc = "A specialized back harness that carries the Broiler-T flexible refueling system. Designed by and for USCM Pyrotechnicians."
-	icon = 'icons/obj/items/storage/storage.dmi'
+	icon = 'icons/obj/items/storage.dmi'
 	icon_state = "flamethrower_broiler"
 	item_state = "flamethrower_broiler"
 	flags_atom = FPRINT|CONDUCT
@@ -12,6 +12,7 @@
 	var/obj/item/ammo_magazine/flamer_tank/large/X/fuelX
 	var/obj/item/ammo_magazine/flamer_tank/large/active_fuel
 	var/flamer
+	var/toggling = FALSE
 	actions_types = list(/datum/action/item_action/toggle)
 
 /obj/item/marine/fuelpack/New()
@@ -27,26 +28,27 @@
 		overlays.Cut()
 
 	if(flamer)
-		overlays += overlay_image('icons/obj/items/storage/storage.dmi', "+m240t")
+		overlays += overlay_image('icons/obj/items/storage.dmi', "+m240t")
 
 	// Handles toggling of fuel. Snowflake way of changing action icon. Change icon, update action icon, change icon back
-	icon = 'icons/obj/items/ammo.dmi'
-	if(istype(active_fuel, /obj/item/ammo_magazine/flamer_tank/large/X/))
-		active_fuel = fuel
-		icon_state = "flametank_large"
-	else if(istype(active_fuel, /obj/item/ammo_magazine/flamer_tank/large/B/))
-		active_fuel = fuelX
-		icon_state = "flametank_large_blue"
-	else if(istype(active_fuel, /obj/item/ammo_magazine/flamer_tank/large/))
-		active_fuel = fuelB
-		icon_state = "flametank_large_green"
+	if(toggling)
+		icon = 'icons/obj/items/weapons/guns/ammo.dmi'
+		if(istype(active_fuel, /obj/item/ammo_magazine/flamer_tank/large/X/))
+			active_fuel = fuel
+			icon_state = "flametank_large"
+		else if(istype(active_fuel, /obj/item/ammo_magazine/flamer_tank/large/B/))
+			active_fuel = fuelX
+			icon_state = "flametank_large_blue"
+		else if(istype(active_fuel, /obj/item/ammo_magazine/flamer_tank/large/))
+			active_fuel = fuelB
+			icon_state = "flametank_large_green"
 	
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.update_button_icon()
+		for(var/X in actions)
+			var/datum/action/A = X
+			A.update_button_icon()
 
-	icon = 'icons/obj/items/storage/storage.dmi'
-	icon_state = "flamethrower_broiler"
+		icon = 'icons/obj/items/storage.dmi'
+		icon_state = "flamethrower_broiler"
 
 	// Update onmob
 	if(istype(user)) 
@@ -57,7 +59,7 @@
 	var/image/ret = ..()
 
 	if(flamer)
-		var/image/weapon_holstered = overlay_image('icons/mob/back.dmi', "+m240t", color, RESET_COLOR)
+		var/image/weapon_holstered = overlay_image('icons/mob/humans/onmob/back.dmi', "+m240t", color, RESET_COLOR)
 		ret.overlays += weapon_holstered
 
 	return ret
@@ -74,12 +76,14 @@
 		return
 
 	// Toggle to the next one
+	toggling = TRUE
 	update_icon()
 	flamer.update_icon()
 	flamer.current_mag.update_icon()
 	to_chat(user, "You switched the fuel tank to <b>[active_fuel.caliber]</b>")
 	playsound(src,'sound/machines/click.ogg', 25, 1)
 	flamer.current_mag = active_fuel
+	toggling = FALSE
 
 	return TRUE
 

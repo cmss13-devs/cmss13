@@ -124,7 +124,7 @@ You can serve a variety of roles, so choose carefully."}
 	title = "Squad Marine"
 	flag = ROLE_MARINE_STANDARD
 	department_flag = ROLEGROUP_MARINE_SQUAD_MARINES
-	faction = "Station"
+	faction = FACTION_MARINE
 	total_positions = -1
 	spawn_positions = -1
 	minimal_player_age = 0

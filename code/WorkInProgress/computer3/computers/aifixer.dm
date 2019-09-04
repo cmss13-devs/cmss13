@@ -7,7 +7,7 @@
 /datum/file/program/aifixer
 	name			= "AI system integrity restorer"
 	desc			= "Repairs and revives artificial intelligence cores."
-	image			= 'icons/ntos/airestore.png'
+	image			= 'icons/old_stuff/ntos/airestore.png'
 	active_state	= "ai-fixer-empty"
 	req_access		= list(access_captain, access_robotics, access_heads)
 
@@ -82,7 +82,7 @@
 			if(!occupant) return
 
 			computer.cradle.busy = 1
-			computer.overlays += image('icons/obj/machines/computer.dmi', "ai-fixer-on")
+			computer.overlays += image('icons/obj/structures/machinery/computer.dmi', "ai-fixer-on")
 
 			var/i = 0
 			while (occupant.health < 100)
@@ -111,7 +111,7 @@
 
 				sleep(10)
 			computer.cradle.busy = 0
-			computer.overlays -= image('icons/obj/machines/computer.dmi', "ai-fixer-on")
+			computer.overlays -= image('icons/obj/structures/machinery/computer.dmi', "ai-fixer-on")
 
 		computer.updateUsrDialog()
 		return

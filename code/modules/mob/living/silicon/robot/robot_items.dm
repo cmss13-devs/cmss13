@@ -165,7 +165,7 @@
 /obj/item/robot/combat/shield
 	name = "personal shielding"
 	desc = "A powerful experimental module that turns aside or absorbs incoming attacks at the cost of charge."
-	icon = 'icons/obj/decals.dmi'
+	icon = 'icons/obj/structures/props/decals.dmi'
 	icon_state = "shock"
 	var/shield_level = 0.5 //Percentage of damage absorbed by the shield.
 
@@ -181,5 +181,5 @@
 /obj/item/robot/combat/mobility
 	name = "mobility module"
 	desc = "By retracting limbs and tucking in its head, a combat android can roll at high speeds."
-	icon = 'icons/obj/decals.dmi'
+	icon = 'icons/obj/structures/props/decals.dmi'
 	icon_state = "shock"

@@ -1,7 +1,7 @@
 // AI (i.e. game AI, not the AI player) controlled bots
 
 /obj/machinery/bot
-	icon = 'icons/obj/aibots.dmi'
+	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	layer = MOB_LAYER
 	luminosity = 3
 	use_power = 0
@@ -50,6 +50,7 @@
 	health -= M.melee_damage_upper
 	visible_message(SPAN_DANGER("<B>[M] has [M.attacktext] [src]!</B>"))
 	M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
+	M.last_damage_source = initial(name)
 	if(prob(10))
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)
 	healthcheck()

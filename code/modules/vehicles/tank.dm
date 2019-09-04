@@ -9,13 +9,12 @@
 	name = "M34A2 Longstreet Light Tank"
 	desc = "A giant piece of armor with a big gun, you know what to do. Entrance in the back."
 
-	icon = 'icons/obj/tank_NS.dmi'
+	icon = 'icons/obj/vehicles/tank_NS.dmi'
 	icon_state = "tank_base"
 	pixel_x = -32
 	pixel_y = -32
 
 	var/mob/gunner
-	var/mob/driver
 
 	var/occupant_exiting = 0
 	var/next_sound_play = 0
@@ -161,7 +160,7 @@
 		to_chat(driver, SPAN_DANGER("You dismount to as the smoke and flames start to choke you!"))
 		driver.Move(entrance.loc)
 		driver.unset_interaction()
-		driver = null
+		set_driver(null)
 	else if(gunner)
 		to_chat(gunner, SPAN_DANGER("You dismount to as the smoke and flames start to choke you!"))
 		gunner.Move(entrance.loc)
@@ -178,7 +177,7 @@
 		if(driver) driver.forceMove(entrance.loc)
 
 	gunner = null
-	driver = null
+	set_driver(null)
 
 //Let's you switch into the other seat, doesn't work if it's occupied
 /obj/vehicle/multitile/root/cm_armored/tank/verb/switch_seats()
@@ -206,7 +205,7 @@
 
 		deactivate_all_hardpoints()
 
-		driver = gunner
+		set_driver(gunner)
 		gunner = null
 
 	else if(usr == driver)
@@ -225,7 +224,7 @@
 		to_chat(usr, SPAN_NOTICE("You switch seats."))
 
 		gunner = driver
-		driver = null
+		set_driver(null)
 
 /obj/vehicle/multitile/root/cm_armored/tank/can_use_hp(var/mob/M)
 	return (M == gunner)
@@ -256,7 +255,7 @@
 	var/mob/targ
 	if(driver)
 		targ = driver
-		driver = null
+		set_driver(null)
 	else
 		targ = gunner
 		gunner = null
@@ -313,7 +312,7 @@
 			for(var/obj/item/I in M.contents)
 				if(I.zoom)
 					I.zoom() // cancel zoom.
-			driver = M
+			set_driver(M)
 			M.loc = src
 			to_chat(M, SPAN_NOTICE("You enter the driver's seat."))
 			M.set_interaction(src)
@@ -376,7 +375,8 @@
 		if(M == gunner)
 			deactivate_all_hardpoints()
 			gunner = null
-		else if(M == driver) driver = null
+		else if(M == driver)
+			set_driver(null)
 		M.unset_interaction()
 		to_chat(M, SPAN_NOTICE("You climb out of [src]."))
 

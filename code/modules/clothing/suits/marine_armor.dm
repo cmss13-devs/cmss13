@@ -37,17 +37,17 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	for(i=1, i<6, i++)
 		var/image/armor
 		var/image/helmet
-		armor = image('icons/mob/suit_1.dmi',icon_state = "std-armor")
+		armor = image('icons/mob/humans/onmob/suit_1.dmi',icon_state = "std-armor")
 		armor.color = squad_colors[i]
 		armormarkings += armor
-		armor = image('icons/mob/suit_1.dmi',icon_state = "sql-armor")
+		armor = image('icons/mob/humans/onmob/suit_1.dmi',icon_state = "sql-armor")
 		armor.color = squad_colors[i]
 		armormarkings_sql += armor
 
-		helmet = image('icons/mob/head_1.dmi',icon_state = "std-helmet")
+		helmet = image('icons/mob/humans/onmob/head_1.dmi',icon_state = "std-helmet")
 		helmet.color = squad_colors[i]
 		helmetmarkings += helmet
-		helmet = image('icons/mob/head_1.dmi',icon_state = "sql-helmet")
+		helmet = image('icons/mob/humans/onmob/head_1.dmi',icon_state = "sql-helmet")
 		helmet.color = squad_colors[i]
 		helmetmarkings_sql += helmet
 
@@ -59,11 +59,11 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 /obj/item/clothing/suit/storage/marine
 	name = "\improper M3 pattern marine armor"
 	desc = "A standard Colonial Marines M3 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
-	icon = 'icons/obj/clothing/cm_suits.dmi'
+	icon = 'icons/obj/items/clothing/cm_suits.dmi'
 	icon_state = "1"
 	item_state = "armor"
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
 	)
 	flags_atom = FPRINT|CONDUCT
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
@@ -112,7 +112,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	var/specialty = "M3 pattern marine" //Same thing here. Give them a specialty so that they show up correctly in vendors.
 	w_class = SIZE_HUGE
 	uniform_restricted = list(/obj/item/clothing/under/marine)
-	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	time_to_unequip = 20
 	time_to_equip = 20
 
@@ -145,9 +145,9 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	qdel(I)
 	if(flags_marine_armor & ARMOR_LAMP_OVERLAY)
 		if(flags_marine_armor & ARMOR_LAMP_ON)
-			I = image('icons/obj/clothing/cm_suits.dmi', src, "lamp-on")
+			I = image('icons/obj/items/clothing/cm_suits.dmi', src, "lamp-on")
 		else
-			I = image('icons/obj/clothing/cm_suits.dmi', src, "lamp-off")
+			I = image('icons/obj/items/clothing/cm_suits.dmi', src, "lamp-off")
 		armor_overlays["lamp"] = I
 		overlays += I
 	else armor_overlays["lamp"] = null
@@ -829,13 +829,13 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 //=====================================================================\\
 
 /obj/item/clothing/suit/storage/faction
-	icon = 'icons/obj/clothing/cm_suits.dmi'
+	icon = 'icons/obj/items/clothing/cm_suits.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
 	)
-	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
-	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
-	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	flags_atom = FPRINT|CONDUCT
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
@@ -882,9 +882,9 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	qdel(I)
 	if(flags_faction_armor & ARMOR_LAMP_OVERLAY)
 		if(flags_faction_armor & ARMOR_LAMP_ON)
-			I = image('icons/obj/clothing/cm_suits.dmi', src, "lamp-on")
+			I = image('icons/obj/items/clothing/cm_suits.dmi', src, "lamp-on")
 		else
-			I = image('icons/obj/clothing/cm_suits.dmi', src, "lamp-off")
+			I = image('icons/obj/items/clothing/cm_suits.dmi', src, "lamp-off")
 		armor_overlays["lamp"] = I
 		overlays += I
 	else armor_overlays["lamp"] = null
@@ -1048,12 +1048,12 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 /obj/item/clothing/suit/storage/militia
 	name = "\improper colonial militia hauberk"
 	desc = "The hauberk of a colonist militia member, created from boiled leather and some modern armored plates. While not the most powerful form of armor, and primitive compared to most modern suits of armor, it gives the wearer almost perfect mobility, which suits the needs of the local colonists. It is also quick to don, easy to hide, and cheap to produce in large workshops."
-	icon = 'icons/obj/clothing/cm_suits.dmi'
+	icon = 'icons/obj/items/clothing/cm_suits.dmi'
 	icon_state = "rebel_armor"
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
 	)
-	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
@@ -1183,3 +1183,11 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/weapon/combat_knife)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/mercenary)
 	item_state_slots = list(WEAR_JACKET = "mercenary_engineer_armor")
+
+/obj/item/clothing/suit/storage/marine/M3G/hefa
+	name = "\improper HEFA Knight armor"
+	desc = "A thick piece of armor adorning a HEFA. Usually seen on a HEFA knight."
+	specialty = "HEFA Knight"
+	icon_state = "hefadier"
+	flags_atom = UNIQUE_ITEM_TYPE
+	flags_marine_armor = ARMOR_LAMP_OVERLAY

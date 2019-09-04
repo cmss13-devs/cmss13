@@ -265,6 +265,11 @@ div.notice {
     color: #e9c183;
 }
 
+.itemLabelNoWidth {
+    float: left;
+    color: #e9c183;
+}
+
 .itemContentWide {
     float: left;
     width: 79%;
@@ -549,4 +554,9 @@ th.misc {
 
 .oxyloss {
     color: blue;
+}
+
+.fieldContainer {
+    background-color: #202020;
+    padding: 1px 4px 1px 4px;
 }

@@ -4,16 +4,16 @@
 	tier = 3
 	upgrade = 0
 
-	melee_damage_lower = XENO_DAMAGE_MEDIUMHIGH
-	melee_damage_upper = XENO_DAMAGE_HIGH
-	max_health = XENO_HEALTH_HIGHMEDIUM
+	melee_damage_lower = XENO_DAMAGE_MEDIUMLOW
+	melee_damage_upper = XENO_DAMAGE_MEDIUM
+	max_health = XENO_HEALTH_VERYHIGH
 	plasma_gain = XENO_PLASMA_GAIN_VERYHIGH
 	plasma_max = XENO_PLASMA_LOW
-	xeno_explosion_resistance = XENO_HEAVY_EXPLOSIVE_ARMOR
-	armor_deflection = XENO_MEDIUM_ARMOR
+	xeno_explosion_resistance = XENO_ULTRA_EXPLOSIVE_ARMOR
+	armor_deflection = XENO_HEAVY_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_MEDIUM
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_HIGHFAST
+	speed = XENO_SPEED_MEDIUM
 	speed_mod = XENO_SPEED_MOD_MED
 
 	tacklemin = 3
@@ -29,6 +29,11 @@
 	charge_distance = 4 //shorter than regular charges
 
 	// Strain variables
+
+	// Vanilla
+
+	// Spike shed variables
+	var/spike_shed_cooldown = 100 
 
 	// Spin slash variables
 	var/spin_cooldown = 250;
@@ -80,64 +85,72 @@
 	caste_name = "Ravager"
 	name = "Ravager"
 	desc = "A huge, nasty red alien with enormous scythed claws."
-	icon = 'icons/Xeno/xenomorph_64x64.dmi'
+	icon = 'icons/mob/xenos/xenomorph_64x64.dmi'
 	icon_state = "Ravager Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
 	var/used_charge = 0
+	var/tail_stab_ready = 0
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
 	pixel_x = -16
 	old_x = -16
+	mutation_type = RAVAGER_NORMAL
 
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
 		/datum/action/xeno_action/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/charge,
 		)
 
-
-/mob/living/carbon/Xenomorph/Ravager/proc/charge(atom/T)
-	if(!T) return
-
-	if(!check_state())
-		return
-
-	if(used_pounce)
-		return
-
-	if(!check_plasma(20))
-		return
-
-	if(legcuffed)
-		to_chat(src, SPAN_XENODANGER("You can't charge with that thing on your leg!"))
-		return
-
-	visible_message(SPAN_DANGER("[src] charges towards \the [T]!"), \
-	SPAN_DANGER("You charge towards \the [T]!") )
-	emote("roar") //heheh
-	used_pounce = 1 //This has to come before throw_at, which checks impact. So we don't do end-charge specials when thrown
-	use_plasma(20)
-	throw_at(T, caste.charge_distance + mutators.pounce_boost, caste.charge_speed, src)
-	spawn(caste.pounce_delay)
-		used_pounce = 0
-		to_chat(src, SPAN_NOTICE("Your exoskeleton quivers as you get ready to charge again."))
-		for(var/X in actions)
-			var/datum/action/A = X
-			A.update_button_icon()
-
+/mob/living/carbon/Xenomorph/Ravager/New()
+	..()
+	ammo = ammo_list[/datum/ammo/xeno/bone_chips]
 
 //Chance of insta limb amputation after a melee attack.
 /mob/living/carbon/Xenomorph/Ravager/proc/delimb(var/mob/living/carbon/human/H, var/datum/limb/O)
-	if (!iszombie(H) && prob(isYautja(H)?20:40)) // lets halve this for preds
+	if(!iszombie(H) && prob(isYautja(H)?20:40)) // lets halve this for preds
 		O = H.get_limb(check_zone(zone_selected))
 		if (O.body_part != UPPER_TORSO && O.body_part != LOWER_TORSO && O.body_part != HEAD && O.brute_dam >= 5) //Only limbs.
 			visible_message(SPAN_DANGER("The limb is sliced clean off!"),SPAN_DANGER("You slice off a limb!"))
-			O.droplimb()
-			return 1
+			O.droplimb(0, 0, initial(name))
+			return TRUE
+	return FALSE
 
-	return 0
+/mob/living/carbon/Xenomorph/Ravager/proc/shrapnel_embed(var/mob/living/carbon/human/H, var/datum/limb/organ)
+	if(isHumanStrict(H))
+		if(!istype(organ))
+			return
+			
+		var/chance = 100
+		var/attacked_armor = H.getarmor(zone_selected, ARMOR_MELEE)
+		if (attacked_armor > 29) // Medium armor
+			chance = 50
+		if (attacked_armor > 34) // Heavy armor
+			chance = 30
+			
+		if(!prob(chance))
+			return
+
+		var/obj/item/shard/shrapnel/shrap = new /obj/item/shard/shrapnel/bone_chips()
+		shrap.on_embed(H, organ)
+
+		if(!stat && !(species && species.flags & NO_PAIN))
+			to_chat(H, SPAN_DANGER("Bits of bone and shrapnel embed themselves in the wound! It hurts like hell!"))
+
+/mob/living/carbon/Xenomorph/Ravager/proc/tail_stab(var/mob/living/carbon/human/H, var/damage)
+	if(tail_stab_ready)
+		return FALSE
+
+	var/tail_stab_cooldown = 70 // 7 seconds
+	tail_stab_ready = TRUE
+
+	tail_attack(H, damage)
+
+	spawn(tail_stab_cooldown)
+		tail_stab_ready = FALSE
+		to_chat(src, SPAN_WARNING("You feel you tail is ready to strike again!"))
+	return TRUE
 
 /datum/caste_datum/ravager/ravenger
 	caste_name = "Ravenger"
@@ -227,7 +240,7 @@
 	if(!istype(T))
 		return
 	if(!locate(/obj/flamer_fire) in T) // No stacking flames!
-		new/obj/flamer_fire(T)
+		new/obj/flamer_fire(T, initial(name), src)
 	else
 		return
 

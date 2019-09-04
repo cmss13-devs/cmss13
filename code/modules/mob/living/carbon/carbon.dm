@@ -47,15 +47,18 @@
 			for(var/mob/M in viewers(user, null))
 				if(M.client)
 					M.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s stomach wall with the [I.name]!")), 2)
+			user.track_hit(initial(I.name))
 			playsound(user.loc, 'sound/effects/attackblob.ogg', 25, 1)
 
 			if(prob(max(4*(100*getBruteLoss()/maxHealth - 75),0))) //4% at 24% health, 80% at 5% health
-				gib()
+				last_damage_source = "chestbursting"
+				last_damage_mob = user
+				gib("chestbursting")
 	else if(!chestburst && (status_flags & XENO_HOST) && isXenoLarva(user))
 		var/mob/living/carbon/Xenomorph/Larva/L = user
 		L.chest_burst(src)
 
-/mob/living/carbon/ex_act(severity, direction)
+/mob/living/carbon/ex_act(var/severity, var/direction, var/source, var/source_mob)
 
 	if(lying)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
@@ -63,8 +66,13 @@
 	if(severity >= 30)
 		flash_eyes()
 
+	if(source)
+		last_damage_source = source
+	if(source_mob)
+		last_damage_mob = source_mob
+
 	if(severity >= health && severity >= EXPLOSION_THRESHOLD_GIB)
-		gib()
+		gib(source)
 		return
 
 	adjustBruteLoss(severity)
@@ -76,7 +84,7 @@
 		KnockOut(knock_value)
 		explosion_throw(severity, direction)
 
-/mob/living/carbon/gib()
+/mob/living/carbon/gib(var/cause = "gibbing")
 	if(legcuffed)
 		drop_inv_item_on_ground(legcuffed)
 
@@ -87,7 +95,14 @@
 		if(ismob(A))
 			visible_message(SPAN_DANGER("[A] bursts out of [src]!"))
 
-	. = ..()
+	for(var/atom/movable/A in contents_recursive())
+		if(isobj(A))
+			var/obj/O = A
+			if(O.unacidable)
+				O.forceMove(get_turf(loc))
+				O.throw_at(pick(range(get_turf(loc), 1)), 1, 1)
+
+	. = ..(cause)
 
 
 /mob/living/carbon/revive()

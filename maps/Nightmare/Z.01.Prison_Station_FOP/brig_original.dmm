@@ -1326,7 +1326,6 @@
 "bTu" = (
 /obj/machinery/atmospherics/binary/pump/high_power{
 	dir = 1;
-	target_pressure = 4500
 	},
 /turf/open/floor/plating,
 /area/prison/engineering/atmos)
@@ -1599,7 +1598,6 @@
 "bWo" = (
 /obj/machinery/atmospherics/binary/pump/high_power{
 	on = 1;
-	target_pressure = 200
 	},
 /turf/open/floor/plating,
 /area/prison/engineering/atmos)
@@ -2152,7 +2150,7 @@
 /area/prison/security/head)
 "caS" = (
 /obj/structure/table/reinforced,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/wood,
 /area/prison/parole/main)
 "caT" = (
@@ -4547,7 +4545,7 @@
 /area/prison/execution)
 "csS" = (
 /obj/structure/table/reinforced,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
 	icon_state = "darkredfull2";

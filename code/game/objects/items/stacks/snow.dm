@@ -5,7 +5,7 @@
 	name = "snow pile"
 	desc = "Some snow pile."
 	singular_name = "layer"
-	icon = 'icons/Marine/marine-items.dmi'
+	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "snow_stack"
 	w_class = SIZE_HUGE
 	force = 2

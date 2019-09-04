@@ -154,7 +154,7 @@ obj/machinery/door/airlock/New()
 
 
 obj/machinery/airlock_sensor
-	icon = 'icons/obj/airlock_machines.dmi'
+	icon = 'icons/obj/structures/machinery/airlock_machines.dmi'
 	icon_state = "airlock_sensor_off"
 	name = "airlock sensor"
 
@@ -232,7 +232,7 @@ obj/machinery/airlock_sensor/airlock_exterior
 	command = "cycle_exterior"
 
 obj/machinery/access_button
-	icon = 'icons/obj/airlock_machines.dmi'
+	icon = 'icons/obj/structures/machinery/airlock_machines.dmi'
 	icon_state = "access_button_standby"
 	name = "access button"
 

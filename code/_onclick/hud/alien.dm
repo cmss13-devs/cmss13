@@ -4,25 +4,25 @@
 	var/obj/screen/inventory/inv_box
 
 	using = new /obj/screen/act_intent/corner()
-	using.icon = 'icons/mob/screen1_alien.dmi'
+	using.icon = 'icons/mob/hud/screen1_alien.dmi'
 	using.icon_state = "intent_"+owner.a_intent
 	static_inventory += using
 	action_intent = using
 
 
 	using = new /obj/screen/mov_intent()
-	using.icon = 'icons/mob/screen1_alien.dmi'
+	using.icon = 'icons/mob/hud/screen1_alien.dmi'
 	using.icon_state = (owner.m_intent == MOVE_INTENT_RUN ? "running" : "walking")
 	static_inventory += using
 	move_intent = using
 
 	using = new /obj/screen/drop()
-	using.icon = 'icons/mob/screen1_alien.dmi'
+	using.icon = 'icons/mob/hud/screen1_alien.dmi'
 	static_inventory += using
 
 	inv_box = new /obj/screen/inventory()
 	inv_box.name = "r_hand"
-	inv_box.icon = 'icons/mob/screen1_alien.dmi'
+	inv_box.icon = 'icons/mob/hud/screen1_alien.dmi'
 	inv_box.dir = 1 //north is sprite for right hand, south is left hand.
 	inv_box.icon_state = "hand_inactive"
 	if(owner && !owner.hand)	//This being 0 or null means the right hand is in use
@@ -35,7 +35,7 @@
 
 	inv_box = new /obj/screen/inventory()
 	inv_box.name = "l_hand"
-	inv_box.icon = 'icons/mob/screen1_alien.dmi'
+	inv_box.icon = 'icons/mob/hud/screen1_alien.dmi'
 	inv_box.icon_state = "hand_inactive"
 	if(owner && owner.hand)	//This being 1 means the left hand is in use
 		inv_box.icon_state = "hand_active"
@@ -47,7 +47,7 @@
 
 	using = new /obj/screen/inventory()
 	using.name = "hand"
-	using.icon = 'icons/mob/screen1_alien.dmi'
+	using.icon = 'icons/mob/hud/screen1_alien.dmi'
 	using.icon_state = "hand1"
 	using.screen_loc = ui_swaphand1
 	using.layer = HUD_LAYER
@@ -55,7 +55,7 @@
 
 	using = new /obj/screen/inventory()
 	using.name = "hand"
-	using.icon = 'icons/mob/screen1_alien.dmi'
+	using.icon = 'icons/mob/hud/screen1_alien.dmi'
 	using.icon_state = "hand2"
 	using.screen_loc = ui_swaphand2
 	using.layer = HUD_LAYER
@@ -66,7 +66,7 @@
 	hotkeybuttons += using
 
 	throw_icon = new /obj/screen/throw_catch()
-	throw_icon.icon = 'icons/mob/screen1_alien.dmi'
+	throw_icon.icon = 'icons/mob/hud/screen1_alien.dmi'
 	hotkeybuttons += throw_icon
 
 	healths = new /obj/screen/healths/alien()
@@ -77,14 +77,14 @@
 	owner.verbs += /datum/action/xeno_action/verb/verb_night_vision
 
 	alien_plasma_display = new /obj/screen()
-	alien_plasma_display.icon = 'icons/mob/screen1_alien.dmi'
+	alien_plasma_display.icon = 'icons/mob/hud/screen1_alien.dmi'
 	alien_plasma_display.icon_state = "power_display2"
 	alien_plasma_display.name = "plasma stored"
 	alien_plasma_display.screen_loc = ui_alienplasmadisplay
 	infodisplay += alien_plasma_display
 
 	alien_armor_display = new /obj/screen()
-	alien_armor_display.icon = 'icons/mob/screen1_alien.dmi'
+	alien_armor_display.icon = 'icons/mob/hud/screen1_alien.dmi'
 	alien_armor_display.icon_state = "armor_100"
 	alien_armor_display.name = "armor integrity"
 	alien_armor_display.screen_loc = ui_alienarmordisplay
@@ -94,7 +94,7 @@
 	infodisplay += locate_leader
 
 	pull_icon = new /obj/screen/pull()
-	pull_icon.icon = 'icons/mob/screen1_alien.dmi'
+	pull_icon.icon = 'icons/mob/hud/screen1_alien.dmi'
 	pull_icon.screen_loc = ui_pull_resist
 	pull_icon.update_icon(owner)
 	hotkeybuttons += pull_icon

@@ -9,7 +9,7 @@
 
 /obj/screen
 	name = ""
-	icon = 'icons/mob/screen1.dmi'
+	icon = 'icons/mob/hud/screen1.dmi'
 	layer = ABOVE_HUD_LAYER
 	unacidable = 1
 	var/obj/master = null	//A reference to the object in the slot. Grabs or items, generally.
@@ -49,7 +49,7 @@
 
 
 /obj/screen/action_button
-	icon = 'icons/mob/actions.dmi'
+	icon = 'icons/mob/hud/actions.dmi'
 	icon_state = "template"
 	var/datum/action/source_action
 	var/click_delay = 6 // if you want stuff to have a different delay, change this var in the action's New() with button.click_delay = xxx
@@ -82,7 +82,7 @@
 
 /obj/screen/action_button/hide_toggle
 	name = "Hide Buttons"
-	icon = 'icons/mob/actions.dmi'
+	icon = 'icons/mob/hud/actions.dmi'
 	icon_state = "hide"
 	var/hidden = 0
 
@@ -247,7 +247,7 @@
 
 /obj/screen/zone_sel/update_icon(mob/living/user)
 	overlays.Cut()
-	overlays += image('icons/mob/zone_sel.dmi', "[selecting]")
+	overlays += image('icons/mob/hud/zone_sel.dmi', "[selecting]")
 	user.zone_selected = selecting
 
 /obj/screen/zone_sel/clicked(var/mob/user, var/list/mods)
@@ -315,10 +315,10 @@
 
 
 /obj/screen/zone_sel/alien
-	icon = 'icons/mob/screen1_alien.dmi'
+	icon = 'icons/mob/hud/screen1_alien.dmi'
 
 /obj/screen/zone_sel/robot
-	icon = 'icons/mob/screen1_robot.dmi'
+	icon = 'icons/mob/hud/screen1_robot.dmi'
 
 
 
@@ -447,7 +447,7 @@
 
 /obj/screen/throw_catch
 	name = "throw/catch"
-	icon = 'icons/mob/screen1_Midnight.dmi'
+	icon = 'icons/mob/hud/screen1_Midnight.dmi'
 	icon_state = "act_throw_off"
 	screen_loc = ui_drop_throw
 
@@ -459,7 +459,7 @@
 
 /obj/screen/drop
 	name = "drop"
-	icon = 'icons/mob/screen1_Midnight.dmi'
+	icon = 'icons/mob/hud/screen1_Midnight.dmi'
 	icon_state = "act_drop"
 	screen_loc = ui_drop_throw
 	layer = HUD_LAYER
@@ -471,7 +471,7 @@
 
 /obj/screen/resist
 	name = "resist"
-	icon = 'icons/mob/screen1_Midnight.dmi'
+	icon = 'icons/mob/hud/screen1_Midnight.dmi'
 	icon_state = "act_resist"
 	layer = HUD_LAYER
 	screen_loc = ui_pull_resist
@@ -483,13 +483,13 @@
 		return 1
 
 /obj/screen/resist/alien
-	icon = 'icons/mob/screen1_alien.dmi'
+	icon = 'icons/mob/hud/screen1_alien.dmi'
 	screen_loc = ui_storage2
 
 
 /obj/screen/mov_intent
 	name = "run/walk toggle"
-	icon = 'icons/mob/screen1_Midnight.dmi'
+	icon = 'icons/mob/hud/screen1_Midnight.dmi'
 	icon_state = "running"
 	screen_loc = ui_movi
 
@@ -639,21 +639,21 @@
 	name = "health"
 	icon_state = "health0"
 	screen_loc = ui_health
-	icon = 'icons/mob/screen1_Midnight.dmi'
+	icon = 'icons/mob/hud/screen1_Midnight.dmi'
 
 /obj/screen/healths/alien
-	icon = 'icons/mob/screen1_alien.dmi'
+	icon = 'icons/mob/hud/screen1_alien.dmi'
 	screen_loc = ui_alien_health
 
 /obj/screen/healths/robot
-	icon = 'icons/mob/screen1_robot.dmi'
+	icon = 'icons/mob/hud/screen1_robot.dmi'
 	screen_loc = ui_borg_health
 
 
 
 /obj/screen/pull
 	name = "stop pulling"
-	icon = 'icons/mob/screen1_Midnight.dmi'
+	icon = 'icons/mob/hud/screen1_Midnight.dmi'
 	icon_state = "pull0"
 	screen_loc = ui_pull_resist
 
@@ -673,7 +673,7 @@
 
 
 /obj/screen/squad_leader_locator
-	icon = 'icons/mob/screen1_Midnight.dmi'
+	icon = 'icons/mob/hud/screen1_Midnight.dmi'
 	icon_state = "trackoff"
 	name = "squad leader locator"
 	alpha = 0 //invisible
@@ -681,15 +681,15 @@
 	screen_loc = ui_sl_locator
 
 /obj/screen/queen_locator
-	icon = 'icons/mob/screen1_alien.dmi'
+	icon = 'icons/mob/hud/screen1_alien.dmi'
 	icon_state = "trackoff"
 	name = "queen locator"
 	screen_loc = ui_queen_locator
 
 /obj/screen/xenonightvision
-	icon = 'icons/mob/screen1_alien.dmi'
+	icon = 'icons/mob/hud/screen1_alien.dmi'
 	name = "toggle night vision"
-	icon = 'icons/mob/screen1_alien.dmi'
+	icon = 'icons/mob/hud/screen1_alien.dmi'
 	icon_state = "nightvision1"
 	screen_loc = ui_alien_nightvision
 

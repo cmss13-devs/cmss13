@@ -1,6 +1,6 @@
 /obj/machinery/door/poddoor/shutters
 	name = "\improper Shutters"
-	icon = 'icons/obj/doors/rapid_pdoor.dmi'
+	icon = 'icons/obj/structures/doors/rapid_pdoor.dmi'
 	icon_state = "shutter1"
 	power_channel = ENVIRON
 	processable = 0
@@ -64,7 +64,7 @@
 	return
 
 /obj/machinery/door/poddoor/shutters/almayer
-	icon = 'icons/obj/doors/almayer/blastdoors_shutters.dmi'
+	icon = 'icons/obj/structures/doors/blastdoors_shutters.dmi'
 	openspeed = 4 //shorter open animation.
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
@@ -80,7 +80,7 @@
 /obj/machinery/door/poddoor/shutters/transit
 	name = "Transit shutters"
 	desc = "Safety shutters to prevent dangerous depressurization during flight"
-	icon = 'icons/obj/doors/almayer/blastdoors_shutters.dmi'
+	icon = 'icons/obj/structures/doors/blastdoors_shutters.dmi'
 	unacidable = 1
 
 	ex_act(severity) //immune to explosions

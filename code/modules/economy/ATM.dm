@@ -17,7 +17,7 @@ log transactions
 /obj/machinery/atm
 	name = "W-Y Automatic Teller Machine"
 	desc = "For all your monetary needs!"
-	icon = 'icons/obj/terminals.dmi'
+	icon = 'icons/obj/structures/machinery/terminals.dmi'
 	icon_state = "atm"
 	anchored = 1
 	use_power = 1

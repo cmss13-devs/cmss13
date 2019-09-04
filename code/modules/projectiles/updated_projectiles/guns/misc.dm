@@ -81,7 +81,7 @@
 /obj/item/weapon/gun/launcher/spike
 	name = "spike launcher"
 	desc = "A compact Yautja device in the shape of a crescent. It can rapidly fire damaging spikes and automatically recharges."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "spikelauncher"
 	item_state = "spikelauncher"
 	muzzle_flash = null // TO DO, add a decent one.
@@ -156,7 +156,7 @@
 
 /obj/item/weapon/gun/launcher/spike/load_into_chamber()
 	if(spikes > 0)
-		in_chamber = create_bullet(ammo)
+		in_chamber = create_bullet(ammo, initial(name))
 		spikes--
 		return in_chamber
 
@@ -178,7 +178,7 @@
 /obj/item/weapon/gun/syringe
 	name = "syringe gun"
 	desc = "A spring loaded rifle designed to fit syringes, designed to incapacitate unruly patients from a distance."
-	icon = 'icons/obj/items/gun.dmi'
+	icon = 'icons/obj/items/weapons/guns/gun.dmi'
 	icon_state = "syringegun"
 	item_state = "syringegun"
 	w_class = SIZE_MEDIUM
@@ -260,6 +260,8 @@
 							R += A.id + " ("
 							R += num2text(A.volume) + "),"
 					if (istype(M, /mob))
+						M.last_damage_source = initial(name)
+						M.last_damage_mob = user
 						M.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[M]/[M.ckey]</b> with a <b>syringegun</b> ([R])"
 						user.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[M]/[M.ckey]</b> with a <b>syringegun</b> ([R])"
 						msg_admin_attack("[user] ([user.ckey]) shot [M] ([M.ckey]) with a syringegun ([R]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")

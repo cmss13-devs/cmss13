@@ -15,6 +15,11 @@
 
 /obj/structure/Dispose()
 	. = ..()
+	for(var/atom/movable/A in contents_recursive())
+		if(isobj(A))
+			var/obj/O = A
+			if(O.unacidable)
+				O.forceMove(get_turf(loc))
 	structure_list -= src
 
 /obj/structure/proc/destroy(deconstruct)
@@ -47,11 +52,17 @@
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob( severity-EXPLOSION_THRESHOLD_LOW ))
 				handle_debris(severity, direction)
-				qdel(src)
+				if(src.health)
+					src.health -= severity
+					if(src.health < 0) //Prevents unbreakable objects from being destroyed
+						qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			handle_debris(severity, direction)
-			qdel(src)
+			if(src.health)
+				src.health -= severity
+				if(src.health < 0)
+					qdel(src)
 			return
 
 /obj/structure/proc/handle_debris(severity = 0, direction = 0)
@@ -130,10 +141,14 @@
 				to_chat(user, SPAN_WARNING("You cannot leap this way."))
 				return
 			for(var/atom/movable/A in target)
-				if(A && A.density && !(A.flags_atom & ON_BORDER))
+				if(A && A.density)
 					if(istype(A, /obj/structure))
 						var/obj/structure/S = A
-						if(!S.climbable) //Transfer onto climbable surface
+						if (S.flags_atom & ON_BORDER)
+							if (!S.climbable && turn(dir, 180) == S.dir)
+								to_chat(user, SPAN_WARNING("You cannot leap this way."))
+								return
+						else if(!S.climbable) //Transfer onto climbable surface
 							to_chat(user, SPAN_WARNING("You cannot leap this way."))
 							return
 					else

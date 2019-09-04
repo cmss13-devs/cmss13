@@ -20,6 +20,7 @@
 
 /mob/new_player/verb/new_player_panel()
 	set src = usr
+	client.player_entity.update_panel_data(null)
 	new_player_panel_proc()
 
 
@@ -33,6 +34,8 @@
 	output +="<br><b>[client.prefs.real_name]</b>"
 	output +="<br><b>[xeno_text]</b>"
 	output += "<p><a href='byond://?src=\ref[src];lobby_choice=show_preferences'>Setup Character</A></p>"
+
+	output += "<p><a href='byond://?src=\ref[src];lobby_choice=show_statistics'>View Statistics</A></p>"
 
 	if(!ticker || !ticker.mode || ticker.current_state <= GAME_STATE_PREGAME)
 		output += "<p>\[ [ready? "<b>Ready</b>":"<a href='byond://?src=\ref[src];lobby_choice=ready'>Ready</a>"] | [ready? "<a href='byond://?src=\ref[src];lobby_choice=ready'>Not Ready</a>":"<b>Not Ready</b>"] \]</p>"
@@ -98,6 +101,12 @@
 	switch(href_list["lobby_choice"])
 		if("show_preferences")
 			client.prefs.ShowChoices(src)
+			return 1
+
+		if("show_statistics")
+			if(client.player_entity)
+				client.player_entity.menu = 1
+				client.player_entity.show_statistics(src, null)
 			return 1
 
 		if("ready")
@@ -431,17 +440,22 @@
 		TP.randomize_appearance(new_character)
 
 	if(mind)
+		mind_initialize()
 		mind.active = 0					//we wish to transfer the key manually
 		mind.original = new_character
 		mind.transfer_to(new_character)					//won't transfer key since the mind is not active
+		mind.setup_human_stats()
 
 	new_character.name = real_name
 
 	if(client.prefs.disabilities)
 		new_character.disabilities |= NEARSIGHTED
 
-	// Do the initial caching of the player's body icons.
-	new_character.regenerate_icons()
+	// Update the character icons
+	// This is done in set_species when the mob is created as well, but 
+	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/regenerate_icons)
+	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_body, 1, 0)
+	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_hair)
 
 	new_character.key = key		//Manually transfer the key to log them in
 	if(new_character.client) new_character.client.change_view(world.view)
@@ -462,6 +476,11 @@
 	src << browse(null, "window=latechoices") //closes late choices window
 	src << browse(null, "window=playersetup") //closes the player setup window
 	src << sound(null, repeat = 0, wait = 0, volume = 85, channel = 1) // Stops lobby music.
+	if(src:open_uis)
+		for(var/datum/nanoui/ui in src:open_uis)
+			if(ui.allowed_user_stat == -1)
+				ui.close()
+				continue
 
 /mob/new_player/proc/has_admin_rights()
 	return client.admin_holder.rights & R_ADMIN

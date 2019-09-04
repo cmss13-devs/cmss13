@@ -437,3 +437,5 @@ datum/projectile_data
 /proc/convert_c2k(var/temp)
 	return ((temp + T0C))
 
+/proc/getWireFlag(var/wire)
+	return 2**(wire-1)

@@ -281,7 +281,7 @@ What a mess.*/
 					return
 				Perp = new/list()
 				t1 = lowertext(t1)
-				var/list/components = text2list(t1, " ")
+				var/list/components = splittext(t1, " ")
 				if(components.len > 5)
 					return //Lets not let them search too greedily.
 				for(var/datum/data/record/R in data_core.general)
@@ -611,5 +611,5 @@ What a mess.*/
 	..(severity)
 
 /obj/machinery/computer/secure_data/detective_computer
-	icon = 'icons/obj/machines/computer.dmi'
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "messyfiles"

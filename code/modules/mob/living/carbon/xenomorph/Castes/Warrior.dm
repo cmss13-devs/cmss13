@@ -65,13 +65,12 @@
 	caste_name = "Warrior"
 	name = "Warrior"
 	desc = "A beefy, alien with an armored carapace."
-	icon = 'icons/Xeno/xenomorph_64x64.dmi'
+	icon = 'icons/mob/xenos/xenomorph_64x64.dmi'
 	icon_state = "Warrior Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
 	pixel_x = -16
 	old_x = -16
 	tier = 2
-
 
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
@@ -86,6 +85,7 @@
 	new_actions = list(
 		/datum/action/xeno_action/activable/jab,
 	)
+	mutation_type = WARRIOR_NORMAL
 
 /mob/living/carbon/Xenomorph/Warrior/update_icons()
 	if (stat == DEAD)
@@ -142,7 +142,6 @@
 	if(.) //successful pull
 		if(should_neckgrab)
 			use_plasma(10)
-			round_statistics.warrior_grabs++
 			used_lunge = 1
 			grab_level = GRAB_NECK
 			L.drop_held_items()

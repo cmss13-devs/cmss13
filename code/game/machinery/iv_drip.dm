@@ -1,6 +1,6 @@
 /obj/machinery/iv_drip
 	name = "\improper IV drip"
-	icon = 'icons/obj/iv_drip.dmi'
+	icon = 'icons/obj/structures/machinery/iv_drip.dmi'
 	anchored = 0
 	density = 0
 	drag_delay = 1
@@ -20,7 +20,7 @@
 	if(beaker)
 		var/datum/reagents/reagents = beaker.reagents
 		if(reagents.total_volume)
-			var/image/filling = image('icons/obj/iv_drip.dmi', src, "reagent")
+			var/image/filling = image('icons/obj/structures/machinery/iv_drip.dmi', src, "reagent")
 
 			var/percent = round((reagents.total_volume / beaker.volume) * 100)
 			switch(percent)
@@ -51,7 +51,7 @@
 			stop_processing()
 			return
 
-		if(in_range(src, usr) && ishuman(over_object) && get_dist(over_object, src) <= 1)
+		if(in_range(src, usr) && iscarbon(over_object) && get_dist(over_object, src) <= 1)
 			H.visible_message("[H] attaches \the [src] to \the [over_object].", \
 			"You attach \the [src] to \the [over_object].")
 			attached = over_object
@@ -117,7 +117,7 @@
 				if(prob(5)) visible_message("\The [src] pings.")
 				return
 
-			var/mob/living/carbon/human/T = attached
+			var/mob/living/carbon/T = attached
 
 			if(!istype(T)) return
 

@@ -26,7 +26,7 @@ Because if you select a player mob as owner it tries to do the proc for
 But you can call procs that are of type /mob/living/carbon/human/proc/ for that player.
 */
 
-/client/proc/callproc()
+/client/proc/callproc(var/datum/target_datum=null)
 	set category = "Debug"
 	set name = "Advanced ProcCall"
 	set waitfor = 0
@@ -34,17 +34,22 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	if(!check_rights(R_DEBUG)) return
 	if(config.debugparanoid && !check_rights(R_ADMIN)) return
 
-	var/target = null
-	var/targetselected = 0
+	var/target = target_datum
+	var/targetselected = 1
 	var/lst[] // List reference
 	lst = new/list() // Make the list
 	var/returnval = null
 	var/class = null
 
-	switch(alert("Proc owned by something?",,"Yes","No"))
-		if("Yes")
+	if(isnull(target))
+		targetselected = 0
+		if(alert("Proc owned by something?",,"Yes","No") == "Yes")
 			targetselected = 1
-			class = input("Proc owned by...","Owner",null) as null|anything in list("Obj","Mob","Area or Turf","Client")
+			var/list/options = list("Obj","Mob","Area or Turf","Client")
+			if(admin_holder && admin_holder.marked_datums.len)
+				options += "Marked datum"
+
+			class = input("Proc owned by...","Owner",null) as null|anything in options
 			switch(class)
 				if("Obj")
 					target = input("Enter target:","Target",usr) as obj in object_list
@@ -57,11 +62,11 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 					for(var/client/C)
 						keys += C
 					target = input("Please, select a player!", "Selection", null, null) as null|anything in keys
+				if("Marked datum")
+					var/datum/D = input_marked_datum(admin_holder.marked_datums)
+					target = D
 				else
 					return
-		if("No")
-			target = null
-			targetselected = 0
 
 	var/procname = input("Proc path, eg: /proc/fake_blood","Path:", null) as text|null
 	if(!procname)	return
@@ -78,7 +83,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	for(i=1, i<argnum+1, i++) // Lists indexed from 1 forwards in byond
 
 		// Make a list with each index containing one variable, to be given to the proc
-		class = input("What kind of variable?","Variable Type") in list("text","num","type","reference","mob reference","icon","file","client","mob's area","CANCEL")
+		class = input("What kind of variable?","Variable Type") in list("text","num","type","reference","mob reference","icon","file","client","mob's area","marked datum","CANCEL")
 		switch(class)
 			if("CANCEL")
 				return
@@ -113,6 +118,10 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			if("mob's area")
 				var/mob/temp = input("Select mob", "Selection", usr) as mob in mob_list
 				lst[i] = temp.loc
+
+			if("marked datum")
+				var/datum/D = input_marked_datum(admin_holder.marked_datums)
+				lst[i] = D
 
 	if(targetselected)
 		if(!target)
@@ -175,7 +184,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	for(i=1, i<argnum+1, i++) // Lists indexed from 1 forwards in byond
 
 		// Make a list with each index containing one variable, to be given to the proc
-		class = input("What kind of variable?","Variable Type") in list("text","num","type","reference","mob reference","icon","file","client","mob's area","CANCEL")
+		class = input("What kind of variable?","Variable Type") in list("text","num","type","reference","mob reference","icon","file","client","mob's area","marked datum","CANCEL")
 		switch(class)
 			if("CANCEL")
 				return
@@ -210,6 +219,10 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			if("mob's area")
 				var/mob/temp = input("Select mob", "Selection", usr) as mob in mob_list
 				lst[i] = temp.loc
+
+			if("marked datum")
+				var/datum/D = input_marked_datum(admin_holder.marked_datums)
+				lst[i] = D
 
 	log_admin("[key_name(src)] called [A]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"].")
 	message_admins(SPAN_NOTICE("[key_name_admin(src)] called [A]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"]."))
@@ -316,22 +329,28 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		to_chat(usr, "This xeno no longer exists")
 		return
 	var/newhivenumber
+	var/newhivefaction
 	switch(newhive)
 		if("Normal")
 			newhivenumber = XENO_HIVE_NORMAL
+			newhivefaction = FACTION_XENOMORPH
 		if("Corrupted")
 			newhivenumber = XENO_HIVE_CORRUPTED
+			newhivefaction = FACTION_XENOMORPH_CORRPUTED
 		if("Alpha")
 			newhivenumber = XENO_HIVE_ALPHA
+			newhivefaction = FACTION_XENOMORPH_ALPHA
 		if("Beta")
 			newhivenumber = XENO_HIVE_BETA
+			newhivefaction = FACTION_XENOMORPH_BETA
 		if("Zeta")
 			newhivenumber = XENO_HIVE_ZETA
+			newhivefaction = FACTION_XENOMORPH_ZETA
 	if(X.hivenumber != hivenumber_status)
 		to_chat(usr, "Someone else changed this xeno while you were deciding")
 		return
 
-	X.set_hivenumber_and_update(newhivenumber)
+	X.set_hivenumber_and_update(newhivenumber, newhivefaction)
 	feedback_add_details("admin_verb","CHHN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	message_admins(SPAN_NOTICE("[key_name(src)] changed hivenumber of [X] to [X.hivenumber]."), 1)
 
@@ -615,17 +634,17 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 	switch(input("Which list?") in list("Players","Admins","Mobs","Living Mobs","Dead Mobs", "Clients"))
 		if("Players")
-			usr << list2text(player_list,",")
+			usr << jointext(player_list,",")
 		if("Admins")
-			usr << list2text(admins,",")
+			usr << jointext(admins,",")
 		if("Mobs")
-			usr << list2text(mob_list,",")
+			usr << jointext(mob_list,",")
 		if("Living Mobs")
-			usr << list2text(living_mob_list,",")
+			usr << jointext(living_mob_list,",")
 		if("Dead Mobs")
-			usr << list2text(dead_mob_list,",")
+			usr << jointext(dead_mob_list,",")
 		if("Clients")
-			usr << list2text(clients,",")
+			usr << jointext(clients,",")
 
 
 /client/proc/cmd_debug_list_processing_items()

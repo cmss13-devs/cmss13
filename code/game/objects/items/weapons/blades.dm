@@ -233,3 +233,41 @@
 		return TRUE
 	return FALSE
 
+/obj/item/weapon/claymore/hefa
+	name = "HEFA sword"
+	icon_state = "hefasword"
+	item_state = "hefasword"
+	desc = "A blade known to be used by the Order of the HEFA, this highly dangerous blade blows up in a shower of shrapnel on impact."
+	attack_verb = list("bapped", "smacked", "clubbed")
+
+	var/primed = FALSE
+
+/obj/item/weapon/claymore/hefa/proc/apply_explosion_overlay()
+	var/obj/effect/overlay/O = new /obj/effect/overlay(loc)
+	O.name = "grenade"
+	O.icon = 'icons/effects/explosion.dmi'
+	flick("grenade", O)
+	spawn(7)
+		qdel(O)
+	return
+
+/obj/item/weapon/claymore/hefa/attack_self(var/mob/user)
+	..()
+
+	primed = !primed
+	var/msg = "You prime \the [src]! It will now explode when you strike someone."
+	if(!primed)
+		msg = "You de-activate \the [src]!"
+	to_chat(user, SPAN_NOTICE(msg))
+
+/obj/item/weapon/claymore/hefa/attack(var/mob/target, var/mob/user)
+	. = ..()
+	if(!primed)
+		return
+
+	create_shrapnel(loc, 48, , ,/datum/ammo/bullet/shrapnel, initial(name), user)
+	sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
+	apply_explosion_overlay()
+	explosion_rec(loc, 40, 18, initial(name), user)
+	qdel(src)
+

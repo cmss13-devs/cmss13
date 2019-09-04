@@ -50,17 +50,23 @@ var/rollovercheck_last_timeofday = 0
 	return midnight_rollovers
 
 
-proc/worldtime2text(time = world.time) // Shows current time starting at noon 12:00 (station time)
+/proc/worldtime2text(time = world.time) // Shows current time starting at noon 12:00 (station time)
 	return "[round(time / HOURS_1)+12]:[(time / MINUTES_1 % 60) < 10 ? add_zero(time / MINUTES_1 % 60, 1) : time / MINUTES_1 % 60]"
 
-proc/time_stamp() // Shows current GMT time
+/proc/time_stamp() // Shows current GMT time
 	return time2text(world.timeofday, "hh:mm:ss")
 
-proc/duration2text(time = world.time) // Shows current time starting at 0:00
+/proc/duration2text(time = world.time) // Shows current time starting at 0:00
 	return "[round(time / HOURS_1)]:[(time / MINUTES_1 % 60) < 10 ? add_zero(time / MINUTES_1 % 60, 1) : time / MINUTES_1 % 60]"
 
+/proc/text2duration(text = "00:00") // Attempts to convert time text back to time value
+	var/split_text = splittext(text, ":")
+	var/time_hours = text2num(split_text[1]) * HOURS_1
+	var/time_minutes = text2num(split_text[2]) * MINUTES_1
+	return time_hours + time_minutes
+
 /* Preserving this so future generations can see how fucking retarded some people are
-proc/time_stamp()
+/proc/time_stamp()
 	var/hh = text2num(time2text(world.timeofday, "hh")) // Set the hour
 	var/mm = text2num(time2text(world.timeofday, "mm")) // Set the minute
 	var/ss = text2num(time2text(world.timeofday, "ss")) // Set the second
@@ -74,7 +80,7 @@ proc/time_stamp()
 */
 
 /* Returns 1 if it is the selected month and day */
-proc/isDay(var/month, var/day)
+/proc/isDay(var/month, var/day)
 	if(isnum(month) && isnum(day))
 		var/MM = text2num(time2text(world.timeofday, "MM")) // get the current month
 		var/DD = text2num(time2text(world.timeofday, "DD")) // get the current day

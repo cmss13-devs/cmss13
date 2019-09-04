@@ -7,13 +7,17 @@
 //Stat Procs - setup
 //******************
 
-/datum/entity/player_stats/xeno/proc/setup_caste_stats(var/caste)
+/datum/entity/player_stats/xeno/proc/setup_caste_stats(var/caste, var/noteworthy = TRUE)
 	if(!caste)
 		return
 	var/caste_key = strip_improper(caste)
 	if(caste_stats_list["[caste_key]"])
-		return caste_stats_list["[caste_key]"]
+		var/datum/entity/player_stats/caste/S = caste_stats_list["[caste_key]"]
+		if(!S.display_stat && noteworthy)
+			S.display_stat = noteworthy
+		return S
 	var/datum/entity/player_stats/caste/new_stat = new()
+	new_stat.display_stat = noteworthy
 	new_stat.player = player
 	new_stat.name = caste_key
 	caste_stats_list["[caste_key]"] = new_stat

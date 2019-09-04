@@ -76,10 +76,4 @@
 	med_hud_set_status()
 
 	update_icons()
-
-//This is an expensive proc, let's not fire it on EVERY death. It already gets checked in gamemodes.
-//	if(ticker && ticker.mode)
-//		ticker.mode.check_win()
-
-
 	return 1

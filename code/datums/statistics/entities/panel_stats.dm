@@ -75,6 +75,7 @@
 			top_weapon = list(
 				"name" = sanitize(H.top_weapon.name),
 				"total_kills" = H.top_weapon.total_kills,
+				"total_hits" = H.top_weapon.total_hits,
 				"total_shots" = H.top_weapon.total_shots,
 				"total_shots_hit" = H.top_weapon.total_shots_hit,
 				"total_friendly_fire" = H.top_weapon.total_friendly_fire
@@ -109,6 +110,8 @@
 
 		for(var/iteration in H.weapon_stats_list)
 			var/datum/entity/weapon_stats/S = H.weapon_stats_list[iteration]
+			if(!S.display_stat)
+				continue
 			var/list/weapon_humans_killed = list()
 			var/list/weapon_xenos_killed = list()
 
@@ -123,6 +126,7 @@
 			weapon_stats_list += list(list(
 				"name" = sanitize(S.name),
 				"total_kills" = S.total_kills,
+				"total_hits" = S.total_hits,
 				"total_shots" = S.total_shots,
 				"total_shots_hit" = S.total_shots_hit,
 				"total_friendly_fire" = S.total_friendly_fire,
@@ -132,6 +136,8 @@
 
 		for(var/iteration in H.job_stats_list)
 			var/datum/entity/player_stats/job/S = H.job_stats_list[iteration]
+			if(!S.display_stat)
+				continue
 			var/list/job_humans_killed = list()
 			var/list/job_xenos_killed = list()
 			var/list/job_death_list = list()
@@ -257,6 +263,8 @@
 
 		for(var/iteration in H.caste_stats_list)
 			var/datum/entity/player_stats/caste/S = H.caste_stats_list[iteration]
+			if(!S.display_stat)
+				continue
 			var/list/caste_abilities_used = list()
 			var/list/caste_humans_killed = list()
 			var/list/caste_xenos_killed = list()
@@ -394,6 +402,8 @@
 
 	for(var/iteration in weapon_stats_list)
 		var/datum/entity/weapon_stats/S = weapon_stats_list[iteration]
+		if(!S.display_stat)
+			continue
 		var/list/weapon_humans_killed = list()
 		var/list/weapon_xenos_killed = list()
 
@@ -408,6 +418,7 @@
 		new_weapon_stats_list += list(list(
 			"name" = sanitize(S.name),
 			"total_kills" = S.total_kills,
+			"total_hits" = S.total_hits,
 			"total_shots" = S.total_shots,
 			"total_shots_hit" = S.total_shots_hit,
 			"total_friendly_fire" = S.total_friendly_fire,
@@ -417,6 +428,8 @@
 
 	for(var/iteration in job_stats_list)
 		var/datum/entity/player_stats/job/S = job_stats_list[iteration]
+		if(!S.display_stat)
+			continue
 		var/list/job_humans_killed = list()
 		var/list/job_xenos_killed = list()
 		var/list/job_death_list = list()
@@ -481,6 +494,8 @@
 
 	for(var/iteration in caste_stats_list)
 		var/datum/entity/player_stats/caste/S = caste_stats_list[iteration]
+		if(!S.display_stat)
+			continue
 		var/list/caste_abilities_used = list()
 		var/list/caste_humans_killed = list()
 		var/list/caste_xenos_killed = list()

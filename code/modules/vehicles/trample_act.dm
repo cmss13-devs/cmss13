@@ -50,7 +50,11 @@
 			L.apply_damage(7 + rand(0, 5), BRUTE)
 
 		playsound(loc, "punch", 25, 1)
-		L.last_damage_source = "[initial(name)] roadkill"
+		L.last_damage_mob = driver
+		if(root)
+			L.last_damage_source = "[initial(root.name)] roadkill"
+		else
+			L.last_damage_source = "[initial(name)] roadkill"
 		L.visible_message(SPAN_DANGER("[src] rams [L]!"), SPAN_DANGER("[src] rams you! Get out of the way!"))
 
 		var/list/slots = CA.get_activatable_hardpoints()

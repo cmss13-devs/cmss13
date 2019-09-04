@@ -13,25 +13,33 @@
 //Stat Procs - setup
 //******************
 
-/datum/entity/player_stats/human/proc/setup_job_stats(var/job)
+/datum/entity/player_stats/human/proc/setup_job_stats(var/job, var/noteworthy = TRUE)
 	if(!job)
 		return
 	var/job_key = strip_improper(job)
 	if(job_stats_list["[job_key]"])
-		return job_stats_list["[job_key]"]
+		var/datum/entity/player_stats/job/S = job_stats_list["[job_key]"]
+		if(!S.display_stat && noteworthy)
+			S.display_stat = noteworthy
+		return S
 	var/datum/entity/player_stats/job/new_stat = new()
+	new_stat.display_stat = noteworthy
 	new_stat.player = player
 	new_stat.name = job_key
 	job_stats_list["[job_key]"] = new_stat
 	return new_stat
 
-/datum/entity/player_stats/human/proc/setup_weapon_stats(var/weapon)
+/datum/entity/player_stats/human/proc/setup_weapon_stats(var/weapon, var/noteworthy = TRUE)
 	if(!weapon)
 		return
 	var/weapon_key = strip_improper(weapon)
 	if(weapon_stats_list["[weapon_key]"])
-		return weapon_stats_list["[weapon_key]"]
+		var/datum/entity/weapon_stats/S = weapon_stats_list["[weapon_key]"]
+		if(!S.display_stat && noteworthy)
+			S.display_stat = noteworthy
+		return S
 	var/datum/entity/weapon_stats/new_stat = new()
+	new_stat.display_stat = noteworthy
 	new_stat.player = src
 	new_stat.name = weapon_key
 	weapon_stats_list["[weapon_key]"] = new_stat
@@ -147,10 +155,10 @@
 /datum/entity/player_stats/human/count_personal_steps_walked(var/job, var/amount = 1)
 	if(!job)
 		return
-	var/datum/entity/player_stats/job/S = setup_job_stats(job)
+	var/datum/entity/player_stats/job/S = setup_job_stats(job, FALSE)
 	S.steps_walked += amount
 	if(round_statistics)
-		var/datum/entity/player_stats/job/R = round_statistics.setup_job_stats(job)
+		var/datum/entity/player_stats/job/R = round_statistics.setup_job_stats(job, FALSE)
 		R.steps_walked += amount
 
 /mob/living/carbon/human/track_steps_walked(var/amount = 1)
@@ -161,10 +169,29 @@
 	if(job)
 		S.count_personal_steps_walked(job, amount)
 
+/datum/entity/player_stats/human/proc/count_weapon_hit(var/weapon, var/amount = 1)
+	if(!weapon)
+		return
+	var/datum/entity/weapon_stats/S = setup_weapon_stats(weapon)
+	if(isnull(S.total_hits))
+		S.total_hits = 0
+	S.total_hits += amount
+	if(round_statistics)
+		var/datum/entity/weapon_stats/R = round_statistics.setup_weapon_stats(weapon)
+		R.total_hits +=amount
+
+/mob/proc/track_hit(var/weapon, var/amount = 1)
+	if(statistic_exempt || !client || !ishuman(src))
+		return
+	var/datum/entity/player_stats/human/human_stats = mind.setup_human_stats()
+	human_stats.count_weapon_hit(weapon, amount)
+
 /datum/entity/player_stats/human/proc/count_weapon_shot(var/weapon, var/amount = 1)
 	if(!weapon)
 		return
 	var/datum/entity/weapon_stats/S = setup_weapon_stats(weapon)
+	if(isnull(S.total_shots))
+		S.total_shots = 0
 	S.total_shots += amount
 	if(round_statistics)
 		var/datum/entity/weapon_stats/R = round_statistics.setup_weapon_stats(weapon)
@@ -174,6 +201,8 @@
 	if(!job)
 		return
 	var/datum/entity/player_stats/job/S = setup_job_stats(job)
+	if(isnull(S.total_shots))
+		S.total_shots = 0
 	S.total_shots += amount
 	if(round_statistics)
 		var/datum/entity/player_stats/job/R = round_statistics.setup_job_stats(job)
@@ -191,6 +220,8 @@
 	if(!weapon)
 		return
 	var/datum/entity/weapon_stats/S = setup_weapon_stats(weapon)
+	if(isnull(S.total_shots_hit))
+		S.total_shots_hit = 0
 	S.total_shots_hit += amount
 	if(round_statistics)
 		var/datum/entity/weapon_stats/R = round_statistics.setup_weapon_stats(weapon)
@@ -200,6 +231,8 @@
 	if(!job)
 		return
 	var/datum/entity/player_stats/job/S = setup_job_stats(job)
+	if(isnull(S.total_shots_hit))
+		S.total_shots_hit = 0
 	S.total_shots_hit += amount
 	if(round_statistics)
 		var/datum/entity/player_stats/job/R = round_statistics.setup_job_stats(job)
@@ -224,6 +257,8 @@
 	if(!weapon)
 		return
 	var/datum/entity/weapon_stats/S = setup_weapon_stats(weapon)
+	if(isnull(S.total_friendly_fire))
+		S.total_friendly_fire = 0
 	S.total_friendly_fire += amount
 	if(round_statistics)
 		var/datum/entity/weapon_stats/R = round_statistics.setup_weapon_stats(weapon)
@@ -233,6 +268,8 @@
 	if(!job)
 		return
 	var/datum/entity/player_stats/job/S = setup_job_stats(job)
+	if(isnull(S.total_friendly_fire))
+		S.total_friendly_fire = 0
 	S.total_friendly_fire += amount
 	if(round_statistics)
 		var/datum/entity/player_stats/job/R = round_statistics.setup_job_stats(job)
@@ -250,6 +287,8 @@
 	if(!job)
 		return
 	var/datum/entity/player_stats/job/S = setup_job_stats(job)
+	if(isnull(S.total_revives))
+		S.total_revives = 0
 	S.total_revives += amount
 	if(round_statistics)
 		var/datum/entity/player_stats/job/R = round_statistics.setup_job_stats(job)
@@ -266,6 +305,8 @@
 	if(!job)
 		return
 	var/datum/entity/player_stats/job/S = setup_job_stats(job)
+	if(isnull(S.total_lives_saved))
+		S.total_lives_saved = 0
 	S.total_lives_saved += amount
 	if(round_statistics)
 		var/datum/entity/player_stats/job/R = round_statistics.setup_job_stats(job)
@@ -282,6 +323,8 @@
 	if(!job)
 		return
 	var/datum/entity/player_stats/job/S = setup_job_stats(job)
+	if(isnull(S.total_screams))
+		S.total_screams = 0
 	S.total_screams += amount
 	if(round_statistics)
 		var/datum/entity/player_stats/job/R = round_statistics.setup_job_stats(job)
@@ -291,5 +334,7 @@
 	if(statistic_exempt || !client || !ishuman(src))
 		return
 	var/datum/entity/player_stats/human/human_stats = mind.setup_human_stats()
+	if(isnull(human_stats.total_screams))
+		human_stats.total_screams = 0
 	human_stats.total_screams += 1
 	human_stats.count_personal_scream(job, amount)

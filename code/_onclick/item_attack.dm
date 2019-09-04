@@ -94,6 +94,10 @@
 				if (!(COLD_RESISTANCE in M.mutations))
 					M.apply_damage(power,BURN)
 					to_chat(M, SPAN_WARNING("It burns!"))
+		if(power > 5)
+			user.track_hit(initial(name))
+			if(user.faction == M.faction)
+				user.track_friendly_fire(initial(name))
 		M.updatehealth()
 	else
 		var/mob/living/carbon/human/H = M

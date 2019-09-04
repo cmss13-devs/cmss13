@@ -245,7 +245,7 @@
 		if(ishuman(victim))
 			var/mob/living/carbon/human/H = victim
 			H.last_damage_source = "chestbursting"
-			H.last_damage_mob = src
+			H.last_damage_mob = null
 			var/datum/internal_organ/O
 			var/i
 			for(i in list("heart","lungs")) //This removes (and later garbage collects) both organs. No heart means instant death.

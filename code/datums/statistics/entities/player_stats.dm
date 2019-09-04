@@ -10,6 +10,7 @@
 	var/list/humans_killed = list() // list of type /datum/entity/statistic, "jobname2" = number
 	var/list/xenos_killed = list() // list of type /datum/entity/statistic, "caste" = number
 	var/list/death_list = list() // list of type /datum/entity/death_stats
+	var/display_stat = TRUE
 
 /datum/entity/player_stats/proc/count_personal_human_kill(var/job_name, var/cause, var/job)
 	return
@@ -85,26 +86,26 @@
 
 //Human
 /mob/living/carbon/human/count_human_kill(var/job_name, var/cause)
-	if(statistic_exempt)
+	if(statistic_exempt || !mind)
 		return
 	var/datum/entity/player_stats/human/human_stats = mind.setup_human_stats()
 	human_stats.count_human_kill(job_name, cause, job)
 
 /mob/living/carbon/human/count_xeno_kill(var/caste_name, var/cause)
-	if(statistic_exempt)
+	if(statistic_exempt || !mind)
 		return
 	var/datum/entity/player_stats/human/human_stats = mind.setup_human_stats()
 	human_stats.count_xeno_kill(caste_name, cause, job)
 
 //Xeno
 /mob/living/carbon/Xenomorph/count_human_kill(var/job_name, var/cause)
-	if(statistic_exempt)
+	if(statistic_exempt || !mind)
 		return
 	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
 	xeno_stats.count_human_kill(job_name, cause, caste_name)
 
 /mob/living/carbon/Xenomorph/count_xeno_kill(var/caste_name, var/cause)
-	if(statistic_exempt)
+	if(statistic_exempt || !mind)
 		return
 	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
 	xeno_stats.count_xeno_kill(caste_name, cause, caste_name)

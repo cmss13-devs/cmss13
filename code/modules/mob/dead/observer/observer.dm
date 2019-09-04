@@ -149,7 +149,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(stat == DEAD)
 		ghostize(1)
-		track_death_calculations()
 		if(client && client.player_entity)
 			client.player_entity.update_panel_data(round_statistics)
 	else

@@ -195,13 +195,17 @@
 
 /datum/equipment_preset/fun/hefa
 	name = "HEFA Knight"
-	flags = EQUIPMENT_PRESET_EXTRA
 
+	flags = EQUIPMENT_PRESET_EXTRA
+	uses_special_name = TRUE
+
+	// Cooperate!
+	access = list(ACCESS_IFF_MARINE)
 	idtype = /obj/item/card/id/gold
-	assignment = "HEFA Knight"
-	rank = "Shrapnelsworn"
-	paygrade = "HEFA"
-	role_comm_title = "HEFA"
+	assignment = "Shrapnelsworn"
+	rank = "Brother of the Order"
+	paygrade = "Ser"
+	role_comm_title = "OHEFA"
 
 	skills = /datum/skills/specialist
 
@@ -211,9 +215,16 @@
 
 /datum/equipment_preset/fun/hefa/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = MALE
-	H.real_name = "HEFA Knight"
-	H.name = H.real_name
+	var/list/names = list(
+		"Lancelot", "Gawain", "Geraint", "Percival", "Bors", "Lamorak", "Kay", "Gareth", "Bedivere", "Gaheris", "Galahad", "Tristan", "Palamedes",
+		"Aban", "Abrioris", "Aglovale", "Agravain", "Aqiff", "Bagdemagus", "Baudwin", "Brastius", "Bredbeddle", "Breunor", "Caradoc", "Calogrenant",
+		"Degore", "Daniel", "Dinadan", "Dornar", "Ector", "Elyan", "Galeshin", "Gingalain", "Griflet", "Lionel", "Lucan", "Mador", "Maleagant",
+		"Mordred", "Morien", "Pelleas", "Pinel", "Sagramore", "Safir", "Segwarides", "Tor", "Ulfius", "Yvain", "Ywain"
+	)
+
+	H.real_name = pick(names) + " of the HEFA Order"
 	H.f_style = "5 O'clock Shadow"
+	H.name = H.real_name
 
 /datum/equipment_preset/fun/hefa/load_gear(mob/living/carbon/human/H)
 	var/obj/item/clothing/under/marine/M = new(H)
@@ -223,8 +234,8 @@
 	H.equip_to_slot_or_del(M, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/hefa(H), WEAR_HEAD)
-	var/jacket_success = H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/M3G(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/specialist/hefa(H), WEAR_HEAD)
+	var/jacket_success = H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/M3G/hefa(H), WEAR_JACKET)
 	var/satchel_success = H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
 	var/waist_success = H.equip_to_slot_or_del(new /obj/item/storage/belt/grenade/large(H), WEAR_WAIST)
 	var/pouch_r_success = H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive(H), WEAR_R_STORE)
@@ -290,4 +301,65 @@
 	for(var/i = 1 to W.slots)
 		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.back), WEAR_IN_ACCESSORY)
 
-	to_chat(H, SPAN_WARNING("You are a HEFA knight! Born and shaped into a physical incarnation of friendly fire, your only desire is to wreak havoc and destruction."))
+/datum/equipment_preset/fun/hefa/melee
+	name = "HEFA Knight - Melee"
+
+/datum/equipment_preset/fun/hefa/melee/load_gear(mob/living/carbon/human/H)
+	var/obj/item/clothing/under/marine/M = new(H)
+	M.name = "HEFA Knight uniform"
+	var/obj/item/clothing/accessory/storage/webbing/W = new()
+	M.attach_accessory(H, W)
+
+	H.equip_to_slot_or_del(M, WEAR_BODY)
+	var/shoes_success = H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/specialist/hefa(H), WEAR_HEAD)
+	var/jacket_success = H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/M3G/hefa(H), WEAR_JACKET)
+	var/satchel_success = H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
+	var/waist_success = H.equip_to_slot_or_del(new /obj/item/storage/belt/grenade/large(H), WEAR_WAIST)
+	var/pouch_r_success = H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive(H), WEAR_R_STORE)
+	var/pouch_l_success = H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/hefa(H), WEAR_R_HAND)
+
+	if(shoes_success)
+		var/obj/item/clothing/shoes/marine/shoes = H.shoes
+		shoes.name = "HEFA Knight combat boots"
+
+	// Now pump /everything/ full of HEFAs
+	
+	// Satchel
+	if(satchel_success)
+		var/obj/item/storage/backpack/marine/satchel = H.back
+		satchel.name = "HEFA storage bag"
+		for(var/i = 1 to 7)
+			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.back), WEAR_IN_BACK)
+
+	// Belt
+	if(waist_success)
+		var/obj/item/storage/belt/grenade/large/belt = H.belt
+		belt.name = "M42 HEFA rig Mk. XVII"
+		for(var/i = 1 to belt.storage_slots)
+			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.belt), WEAR_IN_BELT)
+
+	// Armor/suit
+	if(jacket_success)
+		var/obj/item/clothing/suit/storage/marine/M3G/armor = H.wear_suit
+		armor.name = "HEFA Knight armor"
+		for(var/i = 1 to armor.storage_slots)
+			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.wear_suit), WEAR_IN_JACKET)
+
+	// Pouches
+	if(pouch_r_success)
+		var/obj/item/storage/pouch/explosive/pouch = H.r_store
+		pouch.name = "HEFA pouch"
+		for(var/i = 1 to pouch.storage_slots)
+			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.r_store), WEAR_IN_R_STORE)
+	if(pouch_l_success)
+		var/obj/item/storage/pouch/explosive/pouch = H.l_store
+		pouch.name = "HEFA pouch"
+		for(var/i = 1 to pouch.storage_slots)
+			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.l_store), WEAR_IN_L_STORE)
+
+	// Webbing
+	for(var/i = 1 to W.slots)
+		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.back), WEAR_IN_ACCESSORY)

@@ -83,7 +83,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	for(i=1, i<argnum+1, i++) // Lists indexed from 1 forwards in byond
 
 		// Make a list with each index containing one variable, to be given to the proc
-		class = input("What kind of variable?","Variable Type") in list("text","num","type","reference","mob reference","icon","file","client","mob's area","CANCEL")
+		class = input("What kind of variable?","Variable Type") in list("text","num","type","reference","mob reference","icon","file","client","mob's area","marked datum","CANCEL")
 		switch(class)
 			if("CANCEL")
 				return
@@ -118,6 +118,10 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			if("mob's area")
 				var/mob/temp = input("Select mob", "Selection", usr) as mob in mob_list
 				lst[i] = temp.loc
+
+			if("marked datum")
+				var/datum/D = input_marked_datum(admin_holder.marked_datums)
+				lst[i] = D
 
 	if(targetselected)
 		if(!target)
@@ -180,7 +184,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	for(i=1, i<argnum+1, i++) // Lists indexed from 1 forwards in byond
 
 		// Make a list with each index containing one variable, to be given to the proc
-		class = input("What kind of variable?","Variable Type") in list("text","num","type","reference","mob reference","icon","file","client","mob's area","CANCEL")
+		class = input("What kind of variable?","Variable Type") in list("text","num","type","reference","mob reference","icon","file","client","mob's area","marked datum","CANCEL")
 		switch(class)
 			if("CANCEL")
 				return
@@ -215,6 +219,10 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			if("mob's area")
 				var/mob/temp = input("Select mob", "Selection", usr) as mob in mob_list
 				lst[i] = temp.loc
+
+			if("marked datum")
+				var/datum/D = input_marked_datum(admin_holder.marked_datums)
+				lst[i] = D
 
 	log_admin("[key_name(src)] called [A]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"].")
 	message_admins(SPAN_NOTICE("[key_name_admin(src)] called [A]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"]."))

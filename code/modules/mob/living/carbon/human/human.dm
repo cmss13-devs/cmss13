@@ -1112,7 +1112,7 @@
 
 
 /mob/living/carbon/human/get_visible_implants(var/class = 0)
-	var/list/visible_objects
+	var/list/visible_objects = list()
 	for(var/obj/item/W in embedded_items)
 		if(!istype(W, /obj/item/shard/shrapnel))
 			visible_objects += W

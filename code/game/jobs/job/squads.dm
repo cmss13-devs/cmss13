@@ -116,7 +116,9 @@
 			num_smartgun++
 		if("Squad Leader")
 			if(squad_leader && (!squad_leader.mind || squad_leader.mind.assigned_role != "Squad Leader")) //field promoted SL
+				var/old_lead = squad_leader
 				demote_squad_leader() //replaced by the real one
+				SStracking.start_tracking(tracking_id, old_lead)
 			assignment = "Squad Leader"
 			squad_leader = M
 			SStracking.set_leader(tracking_id, M)

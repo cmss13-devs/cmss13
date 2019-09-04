@@ -392,7 +392,7 @@
 	if(chestburst == 2)
 		msg += SPAN_WARNING("<b>[t_He] has a giant hole in [t_his] chest!</b>\n")
 
-	for(var/implant in get_visible_implants(0))
+	for(var/implant in get_visible_implants())
 		msg += SPAN_WARNING("<b>[t_He] has \a [implant] sticking out of [t_his] flesh!\n")
 
 	if(hasHUD(user,"security"))

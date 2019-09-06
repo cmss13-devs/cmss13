@@ -101,7 +101,7 @@
 	if(stat == UNCONSCIOUS)
 		to_chat(src, "<I>... You can almost hear someone talking ...</I>")
 	else
-		src << msg
+		to_chat(src, msg)
 
 
 // Show a message to all mobs in sight of this one
@@ -130,12 +130,12 @@
 // message_affected: "Y does something to you!"
 // message_viewer: "X does something to Y!"
 /mob/proc/affected_message(mob/affected, message_mob, message_affected, message_viewer)
-	to_chat(src,message_mob)
+	src.show_message(message_mob, 1)
 	if(src != affected)
-		to_chat(affected,message_affected)
+		affected.show_message(message_affected, 1)
 	for(var/mob/V in viewers(7, src))
 		if(V != src && V != affected)
-			to_chat(V,message_viewer)
+			V.show_message(message_viewer, 1)
 
 // Show a message to all mobs in sight of this atom
 // Use for objects performing visible actions

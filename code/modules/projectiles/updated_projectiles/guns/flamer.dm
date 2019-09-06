@@ -8,7 +8,7 @@
 	desc = "M240A1 incinerator unit has proven to be one of the most effective weapons at clearing out soft-targets. This is a weapon to be feared and respected as it is quite deadly."
 	origin_tech = "combat=4;materials=3"
 	icon_state = "m240"
-	item_state = "flamer"
+	item_state = "m240"
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
 	force = 15
@@ -48,6 +48,13 @@
 
 /obj/item/weapon/gun/flamer/update_icon()
 	..()
+
+	// Have to redo this here because we don't want the empty sprite when the tank is empty (just when it's not in the gun)
+	var/new_icon_state = base_gun_icon
+	if(has_empty_icon && !current_mag)
+		new_icon_state += "_e"
+	icon_state = new_icon_state
+
 	if(lit)
 		var/image/I = image('icons/obj/items/weapons/guns/gun.dmi', src, "+lit")
 		I.pixel_x += 3
@@ -297,6 +304,7 @@
 	icon_state = "m240t"
 	item_state = "m240t"
 	unacidable = 1
+	indestructible = 1
 	current_mag = null
 	var/obj/item/marine/fuelpack/fuelpack
 

@@ -8,7 +8,7 @@
 
 /datum/action/xeno_action/watch_xeno/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
-	if (!X.check_state(1))
+	if (X.is_mob_incapacitated() || X.buckled)
 		return FALSE
 	else
 		return TRUE

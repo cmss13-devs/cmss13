@@ -385,7 +385,7 @@ should be alright.
 	var/image/I = attachable_overlays[slot]
 	overlays -= I
 	qdel(I)
-	if(A) //Only updates if the attachment exists for that slot.
+	if(A && !A.hidden) //Only updates if the attachment exists for that slot.
 		var/item_icon = A.icon_state
 		if(A.attach_icon)
 			item_icon = A.attach_icon

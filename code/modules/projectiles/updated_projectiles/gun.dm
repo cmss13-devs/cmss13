@@ -142,9 +142,11 @@
 	damage_falloff_mult = config.reg_damage_falloff
 	recoil = config.no_recoil_value
 	recoil_unwielded = config.no_recoil_value
-	aim_slowdown = config.slowdown_none
-	wield_delay = WIELD_DELAY_FAST
 	movement_acc_penalty_mult = config.high_movement_accuracy_penalty_mult
+
+	//reset initial define-values
+	aim_slowdown = initial(aim_slowdown)
+	wield_delay = initial(wield_delay)
 
 /obj/item/weapon/gun/proc/recalculate_attachment_bonuses()
 	//Reset silencer mod

@@ -245,13 +245,9 @@
 /obj/item/weapon/gun/rifle/m46c/New()
 	..()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17, "rail_x" = 12, "rail_y" = 18, "under_x" = 24, "under_y" = 12, "stock_x" = 24, "stock_y" = 13)
-
-/obj/item/weapon/gun/rifle/m46c/New()
-	..()
 	var/obj/item/attachable/stock/rifle/S = new(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.attach_icon = ""
-	S.icon_state = ""
+	S.hidden = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
 
@@ -592,7 +588,7 @@
 	origin_tech = "combat=4;materials=2;syndicate=4"
 	fire_sound = list('sound/weapons/gun_type71.ogg')
 	current_mag = /obj/item/ammo_magazine/rifle/type71
-	wield_delay = 4
+	wield_delay = WIELD_DELAY_FAST
 	//type_of_casings = "cartridge"
 
 	attachable_allowed = list(
@@ -665,7 +661,7 @@
 	name = "\improper Type 71 pulse carbine"
 	icon_state = "type71c"
 	item_state = "type71c"
-	wield_delay = 2 //Carbine is more lightweight
+	wield_delay = WIELD_DELAY_VERY_FAST //Carbine is more lightweight
 
 
 /obj/item/weapon/gun/rifle/type71/carbine/New()

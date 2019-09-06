@@ -112,6 +112,8 @@
 	..()					//This only affects guns you can get from vendors for now. Special guns spawn with their own things regardless.
 	base_gun_icon = icon_state
 	attachable_overlays = list("muzzle", "rail", "under", "stock", "mag", "special")
+	item_state_slots = list("back" = item_state, "j_store" = item_state)
+
 	if(current_mag)
 		if(spawn_empty && !(flags_gun_features & GUN_INTERNAL_MAG)) //Internal mags will still spawn, but they won't be filled.
 			current_mag = null

@@ -23,6 +23,7 @@
 	icon_state = "m42a"
 	item_state = "m42a"
 	unacidable = 1
+	indestructible = 1
 	origin_tech = "combat=6;materials=5"
 	fire_sound = 'sound/weapons/gun_sniper.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper
@@ -63,6 +64,7 @@
 	icon_state = "xm42b"
 	item_state = "xm42b"
 	unacidable = 1
+	indestructible = 1
 	origin_tech = "combat=6;materials=5"
 	fire_sound = 'sound/weapons/sniper_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/anti_tank
@@ -197,6 +199,7 @@
 	icon_state = "m41b"
 	item_state = "m4ra" //PLACEHOLDER
 	unacidable = 1
+	indestructible = 1
 	origin_tech = "combat=5;materials=4"
 	fire_sound = list('sound/weapons/gun_m4ra.ogg')
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra
@@ -774,6 +777,7 @@
 	icon_state = "m92"
 	item_state = "m92" //NEED TWO HANDED SPRITE
 	unacidable = 1
+	indestructible = 1
 	origin_tech = "combat=5;materials=5"
 	matter = list("metal" = 6000)
 	w_class = SIZE_LARGE
@@ -1033,6 +1037,7 @@
 	icon_state = "m5"
 	item_state = "m5"
 	unacidable = 1
+	indestructible = 1
 	origin_tech = "combat=6;materials=5"
 	matter = list("metal" = 10000)
 	current_mag = /obj/item/ammo_magazine/internal/launcher/rocket

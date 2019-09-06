@@ -40,6 +40,8 @@
 	var/flags_heat_protection = NOFLAGS //flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
 	var/flags_cold_protection = NOFLAGS //flags which determine which body parts are protected from cold. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
 
+	var/indestructible = 0 //determines whether or not the item can be destroyed by explosions
+
 	var/max_heat_protection_temperature //Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by flags_heat_protection flags
 	var/min_cold_protection_temperature //Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by flags_cold_protection flags
 
@@ -122,16 +124,19 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
-				qdel(src)
+				if(!indestructible)
+					qdel(src)
 			else
 				explosion_throw(severity, explosion_direction)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				qdel(src)
+				if(!indestructible)
+					qdel(src)
 			else
 				explosion_throw(severity, explosion_direction)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			if(!indestructible)
+				qdel(src)
 
 
 

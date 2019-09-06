@@ -75,6 +75,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/attachment_action_type
 
 	var/has_marine_iff = FALSE //adds IFF to bullets
+	var/hidden = FALSE //Render on gun?
 
 
 

@@ -365,7 +365,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/mateba/long/Attach(obj/item/weapon/gun/G)
 	..()
-	G.attachable_offset["muzzle_x"] = 31
+	G.attachable_offset["muzzle_x"] = 27
 
 /obj/item/attachable/mateba/long/dark
 	icon_state = "mateba_long_a"
@@ -383,7 +383,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/mateba/short/Attach(obj/item/weapon/gun/G)
 	..()
-	G.attachable_offset["muzzle_x"] = 24
+	G.attachable_offset["muzzle_x"] = 27
 
 /obj/item/attachable/mateba/short/dark
 	icon_state = "mateba_short_a"
@@ -1052,7 +1052,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/obj/item/weapon/gun/revolver/m44/R = G
 	if(!istype(R))
 		return 0
-	
+
 	if(folded)
 		R.folded = FALSE
 	else

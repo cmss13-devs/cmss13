@@ -25974,15 +25974,15 @@
 	},
 /area/almayer/hallways/hangar)
 "bqd" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (EAST)";
-	icon_state = "intact-scrubbers";
-	dir = 4
-	},
 /turf/open/floor/almayer{
 	tag = "icon-orange (WEST)";
 	icon_state = "orange";
 	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop)
@@ -54420,6 +54420,7 @@
 /area/almayer/living/port_emb)
 "pCr" = (
 /obj/machinery/cm_vending/sorted/attachments,
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -60325,15 +60326,6 @@
 /obj/item/paper_bin/uscm,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig)
-"wsl" = (
-/obj/structure/rack,
-/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
-/turf/open/floor/almayer{
-	tag = "icon-bluecorner (NORTH)";
-	icon_state = "cargo";
-	dir = 2
-	},
-/area/almayer/squads/req)
 "wsH" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-W";
@@ -103058,7 +103050,7 @@ bdl
 bEt
 bNP
 bmD
-wsl
+bNP
 bmD
 bNP
 byu

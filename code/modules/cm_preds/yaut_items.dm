@@ -1228,12 +1228,12 @@
 		user.visible_message(SPAN_INFO("[user] starts becoming shimmery and indistinct..."))
 		if(do_after(user,100, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			// Teleport self.
-			user.visible_message(SPAN_WARNING("\icon[user][user] disappears!"))
+			user.visible_message(SPAN_WARNING("[htmlicon(user, viewers(src))][user] disappears!"))
 			var/tele_time = animation_teleport_quick_out(user)
 			// Also teleport whoever you're pulling.
 			var/mob/living/M = user.pulling
 			if(istype(M))
-				M.visible_message(SPAN_WARNING("\icon[M][M] disappears!"))
+				M.visible_message(SPAN_WARNING("[htmlicon(M, viewers(src))][M] disappears!"))
 				animation_teleport_quick_out(M)
 			sleep(tele_time)
 
@@ -1268,12 +1268,12 @@
 	user.visible_message(SPAN_INFO("[user] starts becoming shimmery and indistinct..."))
 	if(do_after(user,100, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		// Teleport self.
-		user.visible_message(SPAN_WARNING("\icon[user][user] disappears!"))
+		user.visible_message(SPAN_WARNING("[htmlicon(user, viewers(src))][user] disappears!"))
 		var/tele_time = animation_teleport_quick_out(user)
 		// Also teleport whoever you're pulling.
 		var/mob/living/M = user.pulling
 		if(istype(M))
-			M.visible_message(SPAN_WARNING("\icon[M][M] disappears!"))
+			M.visible_message(SPAN_WARNING("[htmlicon(M, viewers(src))][M] disappears!"))
 			animation_teleport_quick_out(M)
 		sleep(tele_time)
 

@@ -96,7 +96,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		enter_allowed = 0 //No joining during evac.
 		evac_time = world.time
 		evac_status = EVACUATION_STATUS_INITIATING
-		ai_system.Announce("Attention. Emergency. All personel must evacuate immediately. You have [round(EVACUATION_ESTIMATE_DEPARTURE/60,1)] minute\s until departure.", 'sound/AI/evacuate.ogg')
+		ai_announcement("Attention. Emergency. All personel must evacuate immediately. You have [round(EVACUATION_ESTIMATE_DEPARTURE/60,1)] minute\s until departure.", 'sound/AI/evacuate.ogg')
 		xeno_message("A wave of adrenaline ripples through the hive. The fleshy creatures are trying to escape!")
 		var/datum/shuttle/ferry/marine/evacuation_pod/P
 		for(var/i = 1 to MAIN_SHIP_ESCAPE_POD_NUMBER)
@@ -110,7 +110,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		enter_allowed = 1
 		evac_time = null
 		evac_status = EVACUATION_STATUS_STANDING_BY
-		ai_system.Announce("Evacuation has been cancelled.", 'sound/AI/evacuate_cancelled.ogg')
+		ai_announcement("Evacuation has been cancelled.", 'sound/AI/evacuate_cancelled.ogg')
 		var/datum/shuttle/ferry/marine/evacuation_pod/P
 		for(var/i = 1 to MAIN_SHIP_ESCAPE_POD_NUMBER)
 			P = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [i]"]
@@ -121,7 +121,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	if(evac_status == EVACUATION_STATUS_INITIATING)
 		evac_status = EVACUATION_STATUS_IN_PROGRESS //Cannot cancel at this point. All shuttles are off.
 		spawn() //One of the few times spawn() is appropriate. No need for a new proc.
-			ai_system.Announce("WARNING: Evacuation order confirmed. Launching escape pods.", 'sound/AI/evacuation_confirmed.ogg')
+			ai_announcement("WARNING: Evacuation order confirmed. Launching escape pods.", 'sound/AI/evacuation_confirmed.ogg')
 			var/datum/shuttle/ferry/marine/evacuation_pod/P
 			var/L[] = new
 			var/i
@@ -133,7 +133,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 				L -= i
 				sleep(50) //Sleeps 5 seconds each launch.
 			sleep(300) //Sleep 30 more seconds to make sure everyone had a chance to leave.
-			ai_system.Announce("ATTENTION: Evacuation complete. Outbound lifesigns detected: [P.passengers ? P.passengers  : "none"].", 'sound/AI/evacuation_complete.ogg')
+			ai_announcement("ATTENTION: Evacuation complete. Outbound lifesigns detected: [P.passengers ? P.passengers  : "none"].", 'sound/AI/evacuation_complete.ogg')
 			evac_status = EVACUATION_STATUS_COMPLETE
 		r_TRU
 
@@ -188,7 +188,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			if(I.active_state == SELF_DESTRUCT_MACHINE_ACTIVE || (I.active_state == SELF_DESTRUCT_MACHINE_ARMED && override)) I.lock_or_unlock(1)
 		dest_master.lock_or_unlock(1)
 		dest_index = 1
-		ai_system.Announce("The emergency destruct system has been deactivated.", 'sound/AI/selfdestruct_deactivated.ogg')
+		ai_announcement("The emergency destruct system has been deactivated.", 'sound/AI/selfdestruct_deactivated.ogg')
 		if(evac_status == EVACUATION_STATUS_STANDING_BY) //the evac has also been cancelled or was never started.
 			set_security_level(SEC_LEVEL_RED, TRUE) //both SD and evac are inactive, lowering the security level.
 		r_TRU
@@ -206,7 +206,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		for(i in EvacuationAuthority.dest_rods)
 			I = i
 			I.in_progress = 1
-		ai_system.Announce("DANGER. DANGER. Self destruct system activated. DANGER. DANGER. Self destruct in progress. DANGER. DANGER.")
+		ai_announcement("DANGER. DANGER. Self destruct system activated. DANGER. DANGER. Self destruct in progress. DANGER. DANGER.")
 		trigger_self_destruct(,,override)
 		r_TRU
 
@@ -353,7 +353,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			if("dest_start")
 				to_chat(usr, SPAN_NOTICE("You press a few keys on the panel."))
 				to_chat(usr, SPAN_NOTICE("The system must be booting up the self-destruct sequence now."))
-				ai_system.Announce("Danger. The emergency destruct system is now activated. The ship will detonate in T-minus 20 minutes. Automatic detonation is unavailable. Manual detonation is required.", 'sound/AI/selfdestruct.ogg')
+				ai_announcement("Danger. The emergency destruct system is now activated. The ship will detonate in T-minus 20 minutes. Automatic detonation is unavailable. Manual detonation is required.", 'sound/AI/selfdestruct.ogg')
 				active_state = SELF_DESTRUCT_MACHINE_ARMED //Arm it here so the process can execute it later.
 				var/obj/machinery/self_destruct/rod/I = EvacuationAuthority.dest_rods[EvacuationAuthority.dest_index]
 				I.activate_time = world.time

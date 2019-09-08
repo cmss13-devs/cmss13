@@ -46,7 +46,7 @@
 				input += "[O.get_clue()]\n"
 				clues++
 		if(clues)
-			command_announcement.Announce(input, name, new_sound = 'sound/AI/commandreport.ogg')
+			marine_announcement(input, name, 'sound/AI/commandreport.ogg')
 		return 1
 	return 0
 

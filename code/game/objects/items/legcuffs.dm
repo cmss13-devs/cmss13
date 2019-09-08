@@ -114,7 +114,7 @@
 		src.loc = H
 		H.legcuff_update()
 		playsound(H,'sound/weapons/tablehit1.ogg', 25, 1)
-		to_chat(H, "\icon[src] \red <B>You get caught in \the [src]!</B>")
+		to_chat(H, "[htmlicon(src, H)] \red <B>You get caught in \the [src]!</B>")
 		H.KnockDown(4)
 		if(ishuman(H))
 			H.emote("pain")
@@ -136,7 +136,7 @@
 							for(var/mob/O in viewers(H, null))
 								if(O == H)
 									continue
-								O.show_message(SPAN_WARNING("\icon[src] <B>[H] gets caught in \the [src].</B>"), 1)
+								O.show_message(SPAN_WARNING("[htmlicon(src, O)] <B>[H] gets caught in \the [src].</B>"), 1)
 				if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot) && !istype(AM, /mob/living/simple_animal/construct) && !istype(AM, /mob/living/simple_animal/shade))
 					armed = 0
 					var/mob/living/simple_animal/SA = AM

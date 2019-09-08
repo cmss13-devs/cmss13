@@ -47,11 +47,6 @@
 	matter = list("metal" = 75)
 	attack_verb = list("stabbed")
 
-	suicide_act(mob/user)
-		viewers(user) << pick(SPAN_DANGER("<b>[user] is stabbing the [src.name] into \his temple! It looks like \he's trying to commit suicide.</b>"), \
-							SPAN_DANGER("<b>[user] is stabbing the [src.name] into \his heart! It looks like \he's trying to commit suicide.</b>"))
-		return(BRUTELOSS)
-
 /obj/item/tool/screwdriver/New()
 	. = ..()
 	switch(pick("red","blue","purple","brown","green","cyan","yellow"))

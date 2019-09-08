@@ -93,11 +93,6 @@
 	throwforce = 10.0
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = 1
-	suicide_act(mob/user)
-		viewers(user) << pick(SPAN_DANGER("<b>[user] is slitting \his wrists with the [src.name]! It looks like \he's trying to commit suicide.</b>"), \
-							SPAN_DANGER("<b>[user] is slitting \his throat with the [src.name]! It looks like \he's trying to commit suicide.</b>"), \
-							SPAN_DANGER("<b>[user] is slitting \his stomach open with the [src.name]! It looks like \he's trying to commit seppuku.</b>"))
-		return (BRUTELOSS)
 
 /obj/item/tool/kitchen/utensil/knife/attack(target as mob, mob/living/user as mob)
 	if ((CLUMSY in user.mutations) && prob(50))
@@ -142,12 +137,6 @@
 	matter = list("metal" = 12000)
 	origin_tech = "materials=1"
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-
-	suicide_act(mob/user)
-		viewers(user) << pick(SPAN_DANGER("<b>[user] is slitting \his wrists with the [src.name]! It looks like \he's trying to commit suicide.</b>"), \
-							SPAN_DANGER("<b>[user] is slitting \his throat with the [src.name]! It looks like \he's trying to commit suicide.</b>"), \
-							SPAN_DANGER("<b>[user] is slitting \his stomach open with the [src.name]! It looks like \he's trying to commit seppuku.</b>"))
-		return (BRUTELOSS)
 
 /obj/item/tool/kitchen/knife/ritual
 	name = "ritual knife"

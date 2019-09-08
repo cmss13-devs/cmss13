@@ -527,7 +527,7 @@
 		var/mob/living/M = O
 		//slip in the murky water if we try to run through it
 		if(prob(10 + (M.m_intent == MOVE_INTENT_RUN ? 40 : 0)))
-			M << pick(SPAN_NOTICE("You slip on something slimy."),SPAN_NOTICE("You fall over into the murk."))
+			to_chat(M, pick(SPAN_NOTICE("You slip on something slimy."),SPAN_NOTICE("You fall over into the murk.")))
 			M.Stun(2)
 			M.KnockDown(1)
 
@@ -538,25 +538,25 @@
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)
 					if(istype(T, /turf/open/jungle/water))
-						M << pick(SPAN_DANGER("Something sharp bites you!"),SPAN_DANGER("Sharp teeth grab hold of you!"),SPAN_DANGER("You feel something take a chunk out of your leg!"))
+						to_chat(M, pick(SPAN_DANGER("Something sharp bites you!"),SPAN_DANGER("Sharp teeth grab hold of you!"),SPAN_DANGER("You feel something take a chunk out of your leg!")))
 						M.apply_damage(rand(0,1), BRUTE, sharp=1)
 			if(prob(50))
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)
 					if(istype(T, /turf/open/jungle/water))
-						M << pick(SPAN_DANGER("Something sharp bites you!"),SPAN_DANGER("Sharp teeth grab hold of you!"),SPAN_DANGER("You feel something take a chunk out of your leg!"))
+						to_chat(M, pick(SPAN_DANGER("Something sharp bites you!"),SPAN_DANGER("Sharp teeth grab hold of you!"),SPAN_DANGER("You feel something take a chunk out of your leg!")))
 						M.apply_damage(rand(0,1), BRUTE, sharp=1)
 			if(prob(50))
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)
 					if(istype(T, /turf/open/jungle/water))
-						M << pick(SPAN_DANGER("Something sharp bites you!"),SPAN_DANGER("Sharp teeth grab hold of you!"),SPAN_DANGER("You feel something take a chunk out of your leg!"))
+						to_chat(M, pick(SPAN_DANGER("Something sharp bites you!"),SPAN_DANGER("Sharp teeth grab hold of you!"),SPAN_DANGER("You feel something take a chunk out of your leg!")))
 						M.apply_damage(rand(0,1), BRUTE, sharp=1)
 			if(prob(50))
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)
 					if(istype(T, /turf/open/jungle/water))
-						M << pick(SPAN_DANGER("Something sharp bites you!"),SPAN_DANGER("Sharp teeth grab hold of you!"),SPAN_DANGER("You feel something take a chunk out of your leg!"))
+						to_chat(M, pick(SPAN_DANGER("Something sharp bites you!"),SPAN_DANGER("Sharp teeth grab hold of you!"),SPAN_DANGER("You feel something take a chunk out of your leg!")))
 						M.apply_damage(rand(0,1), BRUTE, sharp=1)
 
 /turf/open/jungle/water/deep

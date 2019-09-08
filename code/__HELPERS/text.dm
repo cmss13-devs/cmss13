@@ -323,3 +323,7 @@ proc/TextPreview(var/string,var/len=40)
 
 proc/strip_improper(input_text)
 	return replacetext(replacetext(input_text, "\proper", ""), "\improper", "")
+	
+// Used to remove the string shortcuts for a clean transfer
+/proc/sanitize_filename(t)
+	return sanitize_simple(t, list("\n"="", "\t"="", "/"="", "\\"="", "?"="", "%"="", "*"="", ":"="", "|"="", "\""="", "<"="", ">"=""))

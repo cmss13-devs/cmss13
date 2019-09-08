@@ -11,7 +11,7 @@
 			to_chat(src, SPAN_DANGER("You cannot talk in deadchat (muted)."))
 			return
 
-		if (src.client.handle_spam_prevention(message,MUTE_DEADCHAT))
+		if (src.client.handle_spam_prevention(message, MUTE_DEADCHAT))
 			return
 
 	. = src.say_dead(message)

@@ -250,13 +250,15 @@ var/global/datum/controller/gameticker/ticker = new()
 				if(!delay_end)
 					world.Reboot()
 				else
-					to_world("<hr>")
-					to_world("<span class='centerbold'><b>An admin has delayed the round end.</b></span>")
-					to_world("<hr>")
+					to_world({"<hr>
+					[SPAN_CENTERBOLD("An admin has delayed the round end.")]
+					<hr>
+					"})
 			else
-				to_world("<hr>")
-				to_world("<span class='centerbold'><b>An admin has delayed the round end.</b></span>")
-				to_world("<hr>")
+				to_world({"<hr>
+					[SPAN_CENTERBOLD("An admin has delayed the round end.")]
+					<hr>
+					"})
 
 	else if (mode_finished)
 		post_game = TRUE

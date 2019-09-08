@@ -1066,7 +1066,7 @@
 	var/msg = sanitize(input("Message:", "Psychic Whisper") as text|null)
 	if(msg)
 		log_say("PsychicWhisper: [key_name(X)]->[M.key] : [msg]")
-		to_chat(M, "<span class='alien'>You hear a strange, alien voice in your head. \italic \")[msg]\"</span>")
+		to_chat(M, SPAN_XENO("You hear a strange, alien voice in your head. \"[msg]\""))
 		to_chat(X, SPAN_XENONOTICE("You said: \")[msg]\" to [M]"))
 
 /datum/action/xeno_action/toggle_queen_zoom

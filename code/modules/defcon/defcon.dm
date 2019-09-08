@@ -61,7 +61,7 @@ var/global/datum/defcon/defcon_controller
 	//Send ARES message about new DEFCON level
 	var/name = "ALMAYER DEFCON LEVEL LOWERED"
 	var/input = "THREAT ASSESSMENT LEVEL INCREASED TO [last_objectives_completion_percentage*100]%.\n\nShip DEFCON level lowered to [current_defcon_level]. Additional assets have been authorised to handle the situation."
-	command_announcement.Announce(input, name, new_sound = 'sound/AI/commandreport.ogg')
+	marine_announcement(input, name, 'sound/AI/commandreport.ogg')
 
 /datum/defcon/proc/list_and_purchase_rewards()
 	var/list/rewards_for_purchase = available_rewards()
@@ -137,7 +137,7 @@ var/global/datum/defcon/defcon_controller
 /datum/defcon_reward/proc/announce_reward()
 	//Send ARES message about special asset authorisation
 	var/name = "ALMAYER SPECIAL ASSETS AUTHORISED"
-	command_announcement.Announce(announcement_message, name, new_sound = 'sound/misc/notice2.ogg')
+	marine_announcement(announcement_message, name, 'sound/misc/notice2.ogg')
 
 /datum/defcon_reward/New()
 	. = ..()
@@ -284,4 +284,4 @@ var/global/datum/defcon/defcon_controller
 /datum/defcon_reward/nuke/announce_reward(var/announcement_message)
 	//Send ARES message about special asset authorisation
 	var/name = "STRATEGIC NUKE AUTHORISED"
-	command_announcement.Announce(announcement_message, name, new_sound = 'sound/misc/notice1.ogg')
+	marine_announcement(announcement_message, name, 'sound/misc/notice1.ogg')

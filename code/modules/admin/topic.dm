@@ -768,9 +768,9 @@
 				return
 			var/reason = input("Please enter reason")
 			if(!reason)
-				to_chat(M, SPAN_WARNING("You have been kicked from the server"))
+				to_chat_forced(M, SPAN_WARNING("You have been kicked from the server"))
 			else
-				to_chat(M, SPAN_WARNING("You have been kicked from the server: [reason]"))
+				to_chat_forced(M, SPAN_WARNING("You have been kicked from the server: [reason]"))
 			log_admin("[key_name(usr)] booted [key_name(M)].")
 			message_admins(SPAN_NOTICE("[key_name_admin(usr)] booted [key_name_admin(M)]."), 1)
 			//M.client = null
@@ -834,15 +834,15 @@
 			return
 		if (AddBan(mob_key, mob_id, reason, usr.ckey, 1, mins, mob_ip))
 			ban_unban_log_save("[usr.client.ckey] has banned [mob_key]|Duration: [mins] minutes|Reason: [sanitize(reason)]")
-			to_chat(M, SPAN_WARNING("<BIG><B>You have been banned by [usr.client.ckey].\nReason: [sanitize(reason)].</B></BIG>"))
-			to_chat(M, SPAN_WARNING("This is a temporary ban, it will be removed in [mins] minutes."))
+			to_chat_forced(M, SPAN_WARNING("<BIG><B>You have been banned by [usr.client.ckey].\nReason: [sanitize(reason)].</B></BIG>"))
+			to_chat_forced(M, SPAN_WARNING("This is a temporary ban, it will be removed in [mins] minutes."))
 			feedback_inc("ban_tmp",1)
 			DB_ban_record(BANTYPE_TEMP, M, mins, reason)
 			feedback_inc("ban_tmp_mins",mins)
 			if(config.banappeals)
-				to_chat(M, SPAN_WARNING("To try to resolve this matter head to [config.banappeals]"))
+				to_chat_forced(M, SPAN_WARNING("To try to resolve this matter head to [config.banappeals]"))
 			else
-				to_chat(M, SPAN_WARNING("No ban appeals URL has been set."))
+				to_chat_forced(M, SPAN_WARNING("No ban appeals URL has been set."))
 			log_admin("[usr.client.ckey] has banned [mob_key]|Duration: [mins] minutes|Reason: [sanitize(reason)]")
 			message_admins("\blue[usr.client.ckey] has banned [mob_key].\nReason: [sanitize(reason)]\nThis will be removed in [mins] minutes.")
 			notes_add(mob_key, "Banned by [usr.client.ckey]|Duration: [mins] minutes|Reason: [sanitize(reason)]", usr)
@@ -870,14 +870,14 @@
 				return
 		AddBan(M.ckey, M.computer_id, reason, usr.ckey, 1, mins)
 		ban_unban_log_save("[usr.client.ckey] has banned [M.ckey]|Duration: [mins] minutes|Reason: [reason]")
-		to_chat(M, SPAN_WARNING("<BIG><B>You have been banned by [usr.client.ckey].\nReason: [reason].</B></BIG>"))
-		to_chat(M, SPAN_WARNING("This is a temporary ban, it will be removed in [mins] minutes."))
-		to_chat(M, SPAN_NOTICE(" This ban was made using a one-click ban system. If you think an error has been made, please visit our forums' ban appeal section."))
-		to_chat(M, SPAN_NOTICE(" If you make sure to mention that this was a one-click ban, MadSnailDisease will personally double-check this code for you."))
+		to_chat_forced(M, SPAN_WARNING("<BIG><B>You have been banned by [usr.client.ckey].\nReason: [reason].</B></BIG>"))
+		to_chat_forced(M, SPAN_WARNING("This is a temporary ban, it will be removed in [mins] minutes."))
+		to_chat_forced(M, SPAN_NOTICE(" This ban was made using a one-click ban system. If you think an error has been made, please visit our forums' ban appeal section."))
+		to_chat_forced(M, SPAN_NOTICE(" If you make sure to mention that this was a one-click ban, MadSnailDisease will personally double-check this code for you."))
 		if(config.banappeals)
-			to_chat(M, SPAN_NOTICE(" The ban appeal forums are located here: [config.banappeals]"))
+			to_chat_forced(M, SPAN_NOTICE(" The ban appeal forums are located here: [config.banappeals]"))
 		else
-			to_chat(M, SPAN_NOTICE(" Unfortunately, no ban appeals URL has been set."))
+			to_chat_forced(M, SPAN_NOTICE(" Unfortunately, no ban appeals URL has been set."))
 		feedback_inc("ban_tmp", 1)
 		DB_ban_record(BANTYPE_TEMP, M, mins, reason)
 		feedback_inc("ban_tmp_mins", mins)
@@ -2300,11 +2300,11 @@
 				if(gravity_is_on)
 					log_admin("[key_name(usr)] toggled gravity on.", 1)
 					message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled gravity on."), 1)
-					command_announcement.Announce("Gravity generators are again functioning within normal parameters. Sorry for any inconvenience.")
+					marine_announcement("Gravity generators are again functioning within normal parameters. Sorry for any inconvenience.")
 				else
 					log_admin("[key_name(usr)] toggled gravity off.", 1)
 					message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled gravity off."), 1)
-					command_announcement.Announce("Feedback surge detected in mass-distributions systems. Artifical gravity has been disabled whilst the system reinitializes. Further failures may result in a gravitational collapse and formation of blackholes. Have a nice day.")
+					marine_announcement("Feedback surge detected in mass-distributions systems. Artifical gravity has been disabled whilst the system reinitializes. Further failures may result in a gravitational collapse and formation of blackholes. Have a nice day.")
 			if("spiders")
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","SL")
@@ -2585,7 +2585,7 @@
 		STUI.processing |= 3
 		var/msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> has marked your request and is preparing to respond...</b>")
 
-		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
+		to_chat(ref_person, msgplayer)
 
 		unansweredAhelps.Remove(ref_person.computer_id) //It has been answered so take it off of the unanswered list
 		src.viewUnheardAhelps() //This SHOULD refresh the page
@@ -2611,7 +2611,7 @@
 		STUI.processing |= 3
 		var/msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> has received your Adminhelp and marked it as 'No response necessary'. Either your Adminhelp is being handled, it's fixed, or it's nonsensical.</font></b>")
 
-		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
+		to_chat(ref_person, msgplayer) //send a message to the player when the Admin clicks "Mark"
 		ref_person << sound('sound/effects/adminhelp-error.ogg')
 
 		unansweredAhelps.Remove(ref_person.computer_id) //It has been answered so take it off of the unanswered list
@@ -2637,7 +2637,7 @@
 		STUI.processing |= 3
 		var/msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> has given you a <font color=red>warning</font>. Adminhelps are for serious inquiries only. Please do not abuse this system.</b>")
 
-		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
+		to_chat(ref_person, msgplayer) //send a message to the player when the Admin clicks "Mark"
 		ref_person << sound('sound/effects/adminhelp-error.ogg')
 
 		unansweredAhelps.Remove(ref_person.computer_id) //It has been answered so take it off of the unanswered list
@@ -2706,7 +2706,7 @@
 		log_admin("[usr.key] is autoresponding to [ref_person] with <font color='#009900'>'[choice]'</font>.", 1) //No need to log the text we send them.
 		STUI.staff.Add("\[[time_stamp()]][usr.key] is autoresponding to [ref_person] with [choice].<br>")
 		STUI.processing |= 3
-		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
+		to_chat(ref_person, msgplayer) //send a message to the player when the Admin clicks "Mark"
 		ref_person << sound('sound/effects/adminhelp-reply.ogg')
 
 		unansweredAhelps.Remove(ref_person.computer_id) //It has been answered so take it off of the unanswered list
@@ -2740,13 +2740,13 @@
 		//send this msg to all admins
 		for(var/client/X in admins)
 			if((R_ADMIN|R_MOD) & X.admin_holder.rights)
-				X << msg
+				to_chat(X, msg)
 
 		//unanswered_distress -= ref_person
 
 	if(href_list["ccdeny"]) // CentComm-deny. The distress call is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["ccdeny"])
-		command_announcement.Announce("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon")
+		marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon")
 		log_game("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
 		message_mods("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]", 1)
 
@@ -2787,7 +2787,7 @@
 
 	if(href_list["sddeny"]) // CentComm-deny. The self destruct is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["sddeny"])
-		command_announcement.Announce("The self destruct request has not received a response, ARES is now recalculating statistics.", "Self Destruct System")
+		marine_announcement("The self destruct request has not received a response, ARES is now recalculating statistics.", "Self Destruct System")
 		log_game("[key_name_admin(usr)] has denied self destruct, requested by [key_name_admin(ref_person)]")
 		message_mods("[key_name_admin(usr)] has denied self destruct, requested by [key_name_admin(ref_person)]", 1)
 

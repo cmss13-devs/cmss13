@@ -450,7 +450,7 @@
 /mob/proc/show_viewers(message)
 	for(var/mob/M in viewers())
 		if(!M.stat)
-			src << message
+			to_chat(src, message)
 
 
 /*

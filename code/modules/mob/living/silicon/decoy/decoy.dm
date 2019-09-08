@@ -4,6 +4,7 @@
 		name = MAIN_AI_SYSTEM
 		desc = "This is the artificial intelligence system for the [MAIN_SHIP_NAME]. Like many other military-grade AI systems, this one was manufactured by Weyland-Yutani."
 		ai_headset = new(src)
+		ai_mob_list += src
 
 //Should likely just replace this with an actual AI mob in the future. Might as well.
 /mob/living/silicon/decoy

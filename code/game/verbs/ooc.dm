@@ -69,11 +69,11 @@ var/global/normal_ooc_colour = "#002eb8"
 			display_colour = "#1b521f"	//dark green
 		else if(admin_holder.rights & R_COLOR)
 			if(config.allow_admin_ooccolor)
-				display_colour = src.prefs.ooccolor
+				display_colour = prefs.ooccolor
 			else
 				display_colour = "#b82e00"	//orange
 	if(donator)
-		display_colour = src.prefs.ooccolor
+		display_colour = prefs.ooccolor
 
 	for(var/client/C in clients)
 		if(C.prefs.toggles_chat & CHAT_OOC)
@@ -84,8 +84,7 @@ var/global/normal_ooc_colour = "#002eb8"
 						display_name = "[admin_holder.fakekey]/([src.key])"
 					else
 						display_name = admin_holder.fakekey
-			var/message = "<font color='[display_colour]'><span class='ooc'>[src.donator ? "\[D\] " : ""]<span class='prefix'>OOC:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>"
-			to_chat(C, message)
+			to_chat(C, "<font color='[display_colour]'><span class='ooc'>[src.donator ? "\[D\] " : ""]<span class='prefix'>OOC: [display_name]</span>: <span class='message'>[msg]</span></span></font>")
 
 			/*
 			if(admin_holder)

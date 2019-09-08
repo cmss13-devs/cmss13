@@ -340,7 +340,7 @@
 	src.desc = initial(src.desc)
 	if(being_built)
 		src.being_built.Move(get_step(src,output_dir))
-		src.visible_message("\icon[src] <b>[src]</b> beeps, \"The following has been completed: [src.being_built] is built\".")
+		src.visible_message("[htmlicon(src, viewers(src))] <b>[src]</b> beeps, \"The following has been completed: [src.being_built] is built\".")
 		src.being_built = null
 	src.updateUsrDialog()
 	return 1
@@ -386,14 +386,14 @@
 		if(stat&(NOPOWER|BROKEN))
 			return 0
 		if(!check_resources(part))
-			src.visible_message("\icon[src] <b>[src]</b> beeps, \"Not enough resources. Queue processing stopped\".")
+			src.visible_message("[htmlicon(src, viewers(src))] <b>[src]</b> beeps, \"Not enough resources. Queue processing stopped\".")
 			temp = {"<font color='red'>Not enough resources to build next part.</font><br>
 						<a href='?src=\ref[src];process_queue=1'>Try again</a>|<a href='?src=\ref[src];clear_temp=1'>Return</a><a>"}
 			return 0
 		remove_from_queue(1)
 		build_part(part)
 		part = listgetindex(src.queue, 1)
-	src.visible_message("\icon[src] <b>[src]</b> beeps, \"Queue processing finished successfully\".")
+	src.visible_message("[htmlicon(src, viewers(src))] <b>[src]</b> beeps, \"Queue processing finished successfully\".")
 	return 1
 
 /obj/machinery/mecha_part_fabricator/proc/list_queue()
@@ -486,12 +486,12 @@
 			temp += "<a href='?src=\ref[src];clear_temp=1'>Return</a>"
 			src.updateUsrDialog()
 		if(i || tech_output)
-			src.visible_message("\icon[src] <b>[src]</b> beeps, \"Successfully synchronized with R&D server. New data processed.\"")
+			src.visible_message("[htmlicon(src, viewers(src))] <b>[src]</b> beeps, \"Successfully synchronized with R&D server. New data processed.\"")
 	if(found == 0)
 		temp = "Couldn't contact R&D server.<br>"
 		temp += "<a href='?src=\ref[src];clear_temp=1'>Return</a>"
 		src.updateUsrDialog()
-		src.visible_message("\icon[src] <b>[src]</b> beeps, \"Error! Couldn't connect to R&D server.\"")
+		src.visible_message("[htmlicon(src, viewers(src))] <b>[src]</b> beeps, \"Error! Couldn't connect to R&D server.\"")
 	return
 
 /obj/machinery/mecha_part_fabricator/proc/get_resource_cost_w_coeff(var/obj/item/part as obj,var/resource as text, var/roundto=1)
@@ -518,7 +518,7 @@
 	user.set_interaction(src)
 	var/turf/exit = get_step(src,SOUTH)
 	if(exit.density)
-		src.visible_message("\icon[src] <b>[src]</b> beeps, \"Error! Part outlet is obstructed\".")
+		src.visible_message("[htmlicon(src, viewers(src))] <b>[src]</b> beeps, \"Error! Part outlet is obstructed\".")
 		return
 	if(temp)
 		left_part = temp

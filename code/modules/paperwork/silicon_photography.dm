@@ -61,7 +61,7 @@
 	var/obj/item/photo/P = new/obj/item/photo()
 	P.construct(selection)
 	P.show(usr)
-	usr << P.desc
+	to_chat(usr, P.desc)
 
 	// TG uses a special garbage collector.. qdel(P)
 	qdel(P) //so 10 thousand pictures items are not left in memory should an AI take them and then view them all.

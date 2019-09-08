@@ -61,7 +61,7 @@
 		dat += {"
 		<td>
 			<a href='?src=\ref[src];[peripheralop]=\ref[C]'>
-				\icon[C]<br>
+				[htmlicon(C)]<br>
 				<span>[C.name]</span>
 			</a>
 		</td>"}

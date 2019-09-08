@@ -203,9 +203,9 @@ cases. Override_icon_state should be a list.*/
 			size = "huge"
 		else
 	//if ((CLUMSY in usr.mutations) && prob(50)) t = "funny-looking"
-	to_chat(user, "This is a [blood_DNA ? blood_color != "#030303" ? "bloody " : "oil-stained " : ""]\icon[src][src.name]. It is a [size] item.")
+	to_chat(user, "This is a [blood_DNA ? blood_color != "#030303" ? "bloody " : "oil-stained " : ""][htmlicon(src, user)][src.name]. It is a [size] item.")
 	if(desc)
-		user << desc
+		to_chat(user, desc)
 
 /obj/item/attack_hand(mob/user)
 	if (!user) return

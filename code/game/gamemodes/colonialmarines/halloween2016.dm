@@ -198,7 +198,7 @@
 		spawn_battlefield_player(M)
 
 	sleep (100)
-	command_announcement.Announce("An automated distress signal has been received from archaeology site Lazarus Landing, on border world LV-624. Beginning playback.", "[MAIN_SHIP_NAME]")
+	marine_announcement("An automated distress signal has been received from archaeology site Lazarus Landing, on border world LV-624. Beginning playback.", "[MAIN_SHIP_NAME]")
 	world << 'sound/misc/eventhorizon_shiplog.ogg'
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -1202,7 +1202,7 @@
 	to_world("<span class='event_announcement'>An otherwordly presence is reaching through the fabric of reality!</span>")
 	sleep(10)
 	switch(shuffle1)
-		if(1 to 4) horror << "<span class='alien'>You must baptize everything in fire! The world will burn! ROAR!</span>"
+		if(1 to 4) horror << "<span class='xeno'>You must baptize everything in fire! The world will burn! ROAR!</span>"
 		if(5 to 15) horror << "<span class='rough'>You hunger for blood of the living! Murder! Death! KILL!</span>"
 		else horror << SPAN_NOTICE("You have been transported to who-knows where from elsewhere! Fight the horrors of this place!")
 	if(entry_sound) world << entry_sound
@@ -1527,7 +1527,7 @@
 				stored_blood -= 0.1
 		if(0.1 to 0.9)
 			if(prob(5))
-				visible_message(SPAN_WARNING("\icon[src] [src]'s eyes glow ruby red for a moment!"))
+				visible_message(SPAN_WARNING("[htmlicon(src, viewers(src))] [src]'s eyes glow ruby red for a moment!"))
 				stored_blood -= 0.1
 
 	//Check the shadow wights and auto-remove them if they get too far.

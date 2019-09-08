@@ -44,11 +44,9 @@ var/global/cooldown_message = 0 //Based on world.time.
 	var/status_display_freq = "1435"
 	var/stat_msg1
 	var/stat_msg2
-	var/datum/announcement/priority/command/crew_announcement = new
 
 /obj/machinery/computer/communications/New()
 	..()
-	crew_announcement.newscast = 1
 	start_processing()
 
 /obj/machinery/computer/communications/process()
@@ -97,17 +95,14 @@ var/global/cooldown_message = 0 //Based on world.time.
 				if(check_access(I)) authenticated = 1
 				if(ACCESS_MARINE_COMMANDER in I.access)
 					authenticated = 2
-					crew_announcement.announcer = GetNameAndAssignmentFromId(I)
 			else
 				I = C.wear_id
 				if(istype(I))
 					if(check_access(I)) authenticated = 1
 					if(ACCESS_MARINE_COMMANDER in I.access)
 						authenticated = 2
-						crew_announcement.announcer = GetNameAndAssignmentFromId(I)
 		if("logout")
 			authenticated = 0
-			crew_announcement.announcer = ""
 
 		if("swipeidseclevel")
 			var/mob/M = usr
@@ -142,7 +137,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 				var/input = input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "") as message|null
 				if(!input || !(usr in view(1,src)) || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE) r_FAL
 
-				crew_announcement.Announce(input, to_xenos = 0)
+				marine_announcement(input)
 				log_announcement("[usr.name] ([usr.ckey]) has announced the following: [input]")
 				cooldown_message = world.time
 

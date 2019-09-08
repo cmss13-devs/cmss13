@@ -152,8 +152,8 @@
 	show_join_message() //Show our potential candidates the message to let them join.
 	message_admins("Distress beacon: '[name]' activated. Looking for candidates.", 1)
 
-	if (announce)
-		command_announcement.Announce("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", new_sound='sound/AI/distressbeacon.ogg')
+	if(announce)
+		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg')
 
 	if(is_emergency) //non-emergency ERTs don't count as emergency
 		ticker.mode.has_called_emergency = TRUE
@@ -167,7 +167,7 @@
 		candidates = list()
 
 		if (announce)
-			command_announcement.Announce("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon")
+			marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon")
 
 		ticker.mode.distress_cooldown = 1
 		ticker.mode.picked_call = null
@@ -196,8 +196,8 @@
 					if(I.current)
 						to_chat(I.current, SPAN_WARNING("You didn't get selected to join the distress team. Better luck next time!"))
 
-		if (announce)
-			command_announcement.Announce(dispatch_message, "Distress Beacon", new_sound='sound/AI/distressreceived.ogg') //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
+		if(announce)
+			marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg') //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
 
 		message_admins("Distress beacon: [src.name] finalized, setting up candidates.", 1)
 		var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_id]

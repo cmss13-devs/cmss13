@@ -284,7 +284,7 @@
 
 /obj/machinery/atmospherics/unary/cryo_cell/proc/display_message(msg)
 	playsound(src.loc, 'sound/machines/ping.ogg', 25, 1)
-	visible_message("\icon[src] <span class='notice'>\The [src] pings: Patient's " + msg + " healed.</span>")
+	visible_message("[htmlicon(src, viewers(src))] <span class='notice'>\The [src] pings: Patient's " + msg + " healed.</span>")
 	
 /obj/machinery/atmospherics/unary/cryo_cell/verb/move_eject()
 	set name = "Eject occupant"

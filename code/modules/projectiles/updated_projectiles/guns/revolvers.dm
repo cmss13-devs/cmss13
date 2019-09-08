@@ -206,7 +206,7 @@
 
 	invisibility = 100
 	for(var/mob/M in viewers(user))
-		M << trick
+		to_chat(M, trick)
 	sleep(5)
 	trick.loc = null
 	if(loc && user)

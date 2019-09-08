@@ -1,5 +1,3 @@
-var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
-
 /datum/job/command
 	department_flag = ROLEGROUP_MARINE_COMMAND
 	selection_color = "#ddddff"
@@ -31,7 +29,7 @@ Godspeed, captain!"}
 /datum/job/command/commander/announce_entry_message(mob/living/carbon/human/H)
 	sleep(15)
 	if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE && map_tag != MAP_WHISKEY_OUTPOST)
-		captain_announcement.Announce("All hands, [H.get_paygrade(0)] [H.real_name] on deck!")
+		ai_announcement("[H.get_paygrade(0)] [H.real_name] enjoy your stay on [MAIN_SHIP_NAME].")
 		for(var/obj/structure/closet/secure_closet/securecom/S in world)
 			var/obj/item/weapon/gun/rifle/m46c/I = new/obj/item/weapon/gun/rifle/m46c/
 			if(S.opened == 0)

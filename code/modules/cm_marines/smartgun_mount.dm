@@ -259,7 +259,7 @@
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] screws the M56D into the mount."),SPAN_NOTICE("You finalize the M56D heavy machine gun."))
 				var/obj/machinery/m56d_hmg/G = new(src.loc) //Here comes our new turret.
-				G.visible_message("\icon[G] <B>[G] is now complete!</B>") //finished it for everyone to
+				G.visible_message("[htmlicon(G)] <B>[G] is now complete!</B>") //finished it for everyone to
 				G.dir = src.dir //make sure we face the right direction
 				G.rounds = src.gun_rounds //Inherent the amount of ammo we had.
 				G.update_icon()
@@ -567,7 +567,7 @@
 			in_chamber = null
 			rounds--
 			if(!rounds)
-				visible_message(SPAN_NOTICE(" \icon[src] \The M56D beeps steadily and its ammo light blinks red."))
+				visible_message(SPAN_NOTICE(" [htmlicon(src, viewers(src))] \The M56D beeps steadily and its ammo light blinks red."))
 				playsound(src.loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
 				update_icon() //final safeguard.
 	return
@@ -636,7 +636,7 @@
 	if((over_object == user && (in_range(src, user) || locate(src) in user))) //Make sure its on ourselves
 		if(user.interactee == src)
 			user.unset_interaction()
-			visible_message("\icon[src] <span class='notice'>[user] decided to let someone else have a go </span>")
+			visible_message("[htmlicon(src, viewers(src))] <span class='notice'>[user] decided to let someone else have a go </span>")
 			to_chat(usr, SPAN_NOTICE("You decided to let someone else have a go on the MG "))
 			return
 		if(operator) //If there is already a operator then they're manning it.
@@ -652,7 +652,7 @@
 			if(user.get_active_hand() != null)
 				to_chat(user, SPAN_WARNING("You need a free hand to man the [src]."))
 			else
-				visible_message("\icon[src] <span class='notice'>[user] mans the M56D!</span>")
+				visible_message("[htmlicon(src, viewers(src))] <span class='notice'>[user] mans the M56D!</span>")
 				to_chat(user, SPAN_NOTICE("You man the gun!"))
 				user.set_interaction(src)
 

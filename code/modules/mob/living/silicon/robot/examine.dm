@@ -3,7 +3,7 @@
 		to_chat(user, SPAN_NOTICE("Something is there but you can't see it."))
 		return
 
-	var/msg = "<span class='info'>*---------*\nThis is \icon[src] \a <EM>[src]</EM>[custom_name ? ", [modtype] [braintype]" : ""]!\n"
+	var/msg = "<span class='info'>*---------*\nThis is [htmlicon(src)] \a <EM>[src]</EM>[custom_name ? ", [modtype] [braintype]" : ""]!\n"
 	msg += "<span class='warning'>"
 	if (src.getBruteLoss())
 		if (src.getBruteLoss() < maxHealth*0.5)
@@ -41,5 +41,5 @@
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.
 		msg += "\nIt is [pose]"
 
-	user << msg
+	to_chat(user, msg)
 	return

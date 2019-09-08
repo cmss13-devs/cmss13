@@ -24,7 +24,7 @@ var/global/list/mob_list = list()					//List of all mobs, including clientless
 var/global/list/living_mob_list = list()			//List of all alive mobs, including clientless. Excludes /mob/new_player
 var/global/list/dead_mob_list = list()				//List of all dead mobs, including clientless. Excludes /mob/new_player
 
-var/global/list/xeno_mob_list = list() // list of all /mob/living/carbon/Xenomorph mobs
+var/global/list/xeno_mob_list = list() 				// list of all /mob/living/carbon/Xenomorph mobs
 var/global/list/living_xeno_list = list()			//List of all alive mob/living/carbon/Xenomorph mobs
 
 var/global/list/yautja_mob_list = list()
@@ -33,6 +33,8 @@ var/global/list/human_mob_list = list() // list of all /mob/living/carbon/human 
 var/global/list/living_human_list = list() // list of alive marines
 
 var/global/list/living_misc_mobs = list() // anything that isnt a xeno or human
+
+var/global/list/ai_mob_list = list()				//List of all AIs
 
 
 var/global/list/dead_hardcore_xeno_list = list() // mostly for WO clean up

@@ -61,5 +61,14 @@
 	var/xeno_postfix = ""
 
 	var/datum/entity/player_entity/player_entity = null
+	
+	//Chat stuff
+	var/datum/chatOutput/chatOutput
+
+	//Asset cache
+	var/list/cache = list() // List of all assets sent to this client by the asset cache.
+	var/list/completed_asset_jobs = list() // List of all completed jobs, awaiting acknowledgement.
+	var/list/sending = list()
+	var/last_asset_job = 0 // Last job done.
 
 	preload_rsc = 0 // This is 0 so we can set it to an URL once the player logs in and have them download the resources from a different server.

@@ -101,10 +101,10 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 
 	if(!mob)	return	//this doesn't happen
 
-	var/mentor_msg = "<br><br><font color='#009900'><b>[selected_upper]: [get_options_bar(mob, 0, 0, 1, 0)]:</b></font> <br><font color='#DA6200'><b>[msg]</font></b><br>"
+	var/mentor_msg = "<font color='#009900'><b>[selected_upper]: [get_options_bar(mob, 0, 0, 1, 0)]:</b></font> <br><font color='#DA6200'><b>[msg]</font></b><br>"
 	STUI.staff.Add("\[[time_stamp()]] <font color=red>[key_name(src)] AHELP: </font><font color='#006400'>[get_options_bar(mob, 4, 1, 1, 0)]:</b> [msg]</font><br>")
 	STUI.processing |= 3
-	msg = "<br><br><font color='#009900'><b>[selected_upper]: [get_options_bar(mob, 2, 1, 1)]:</b></font> <br><font color='#DA6200'><b>[msg]</font></b><br>"
+	msg = "<font color='#009900'><b>[selected_upper]: [get_options_bar(mob, 2, 1, 1)]:</b></font> <br><font color='#DA6200'><b>[msg]</font></b><br>"
 
 
 	var/list/current_staff = get_staff_by_category()
@@ -125,7 +125,7 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 				to_chat(X, msg)
 
 	//show it to the person adminhelping too
-	to_chat(src, "<br><font color='#009900'><b>PM to Staff ([selected_type]): <font color='#DA6200'>[original_msg]</b></font><br>")
+	to_chat(src, "<font color='#009900'><b>PM to Staff ([selected_type]): <font color='#DA6200'>[original_msg]</b></font><br>")
 
 	// Adminhelp cooldown
 	verbs -= /client/verb/adminhelp

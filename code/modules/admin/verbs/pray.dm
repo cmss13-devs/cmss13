@@ -28,7 +28,7 @@
 	log_admin(msg)
 	for(var/client/C in admins)
 		if(C.prefs.toggles_chat & CHAT_PRAYER)
-			C << msg
+			to_chat(C, msg)
 	if(liaison)
 		to_chat(usr, "Your corporate overlords at Weyland-Yutani have received your message.")
 	else
@@ -43,7 +43,7 @@
 	for(var/client/C in admins)
 		log_admin(msg)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
-			C << msg
+			to_chat(msg)
 			C << 'sound/effects/sos-morse-code.ogg'
 
 /proc/Syndicate_announce(var/text , var/mob/Sender)
@@ -52,4 +52,4 @@
 	log_admin(msg)
 	for(var/client/C in admins)
 		if(R_ADMIN & C.admin_holder.rights)
-			C << msg
+			to_chat(C, msg)

@@ -58,7 +58,7 @@
 		H.AddDisease(D)
 		break
 	spawn(rand(SECONDS_150, MINUTES_5)) //Delayed announcements to keep the crew on their toes.
-		command_announcement.Announce("Confirmed outbreak of level 7 viral biohazard aboard [station_name]. All personnel must contain the outbreak.", "Biohazard Alert", new_sound = 'sound/AI/outbreak7.ogg')
+		marine_announcement("Confirmed outbreak of level 7 viral biohazard aboard [station_name]. All personnel must contain the outbreak.", "Biohazard Alert", 'sound/AI/outbreak7.ogg')
 
 /proc/high_radiation_event()
 
@@ -80,7 +80,7 @@
 			if (prob(5))
 				H.apply_effect((rand(90,150)),IRRADIATE,0)
 	sleep(100)
-	command_announcement.Announce("High levels of radiation have been detected. Report to the Medical Bay if you begin to feel symptoms such as disorientation, nausea, or halucinations.", "Anomaly Alert", new_sound = 'sound/AI/radiation.ogg')
+	marine_announcement("High levels of radiation have been detected. Report to the Medical Bay if you begin to feel symptoms such as disorientation, nausea, or halucinations.", "Anomaly Alert", 'sound/AI/radiation.ogg')
 
 
 /proc/carp_migration() // -- Darem
@@ -89,11 +89,11 @@
 			new /mob/living/simple_animal/hostile/carp(C.loc)
 	//sleep(100)
 	spawn(rand(300, 600)) //Delayed announcements to keep the crew on their toes.
-		command_announcement.Announce("Unknown biological entities have been detected near [station_name], please stand-by.", "Lifesign Alert", new_sound = 'sound/AI/commandreport.ogg')
+		marine_announcement("Unknown biological entities have been detected near [station_name], please stand-by.", "Lifesign Alert", 'sound/AI/commandreport.ogg')
 
 /proc/lightsout(isEvent = 0, lightsoutAmount = 1,lightsoutRange = 25) //leave lightsoutAmount as 0 to break ALL lights
 	if(isEvent)
-		command_announcement.Announce("An Electrical storm has been detected in your area, please repair potential electronic overloads.","Electrical Storm Alert")
+		marine_announcement("An electrical storm has been detected in your area, please repair potential electronic overloads.", "Electrical Storm Alert")
 
 	if(lightsoutAmount)
 		var/list/epicentreList = list()

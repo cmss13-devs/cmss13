@@ -20,7 +20,7 @@
 
 	sleep(100)
 	if(announce)
-		command_announcement.Announce("Abnormal activity detected in the ship power system. As a precaution, power must be shut down for an indefinite duration.", "Critical Power Failure", new_sound = 'sound/AI/poweroff.ogg')
+		marine_announcement("Abnormal activity detected in the ship power system. As a precaution, power must be shut down for an indefinite duration.", "Critical Power Failure", 'sound/AI/poweroff.ogg')
 
 /proc/power_restore(var/announce = 1)
 	for(var/obj/machinery/power/smes/S in machines)
@@ -38,7 +38,7 @@
 
 	sleep(100)
 	if(announce)
-		command_announcement.Announce("Power has been restored. Reason: Unknown.", "Power Systems Nominal", new_sound = 'sound/AI/poweron.ogg')
+		marine_announcement("Power has been restored. Reason: Unknown.", "Power Systems Nominal", 'sound/AI/poweron.ogg')
 
 /proc/power_restore_quick(var/announce = 1)
 
@@ -53,7 +53,7 @@
 
 	sleep(100)
 	if(announce)
-		command_announcement.Announce("Power has been restored. Reason: Unknown.", "Power Systems Nominal", new_sound = 'sound/AI/poweron.ogg')
+		marine_announcement("Power has been restored. Reason: Unknown.", "Power Systems Nominal", 'sound/AI/poweron.ogg')
 
 /proc/power_restore_everything(var/announce = 1)
 
@@ -70,7 +70,7 @@
 
 	sleep(100)
 	if(announce)
-		command_announcement.Announce("Power has been restored. Reason: Unknown.", "Power Systems Nominal", new_sound = 'sound/AI/poweron.ogg')
+		marine_announcement("Power has been restored. Reason: Unknown.", "Power Systems Nominal", 'sound/AI/poweron.ogg')
 
 /proc/power_restore_ship_reactors(var/announce = 1)
 	for(var/obj/machinery/power/fusion_engine/FE in machines)
@@ -84,4 +84,4 @@
 
 	sleep(100)
 	if(announce)
-		command_announcement.Announce("Power has been restored. Reason: Unknown.", "Power Systems Nominal", new_sound = 'sound/AI/poweron.ogg')
+		marine_announcement("Power has been restored. Reason: Unknown.", "Power Systems Nominal", 'sound/AI/poweron.ogg')

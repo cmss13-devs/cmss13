@@ -313,15 +313,15 @@
 		var/obj/item/attachable/R = attachments[slot]
 		if(!R) continue
 		switch(R.slot)
-			if("rail") 	dat += "It has \icon[R] [R.name] mounted on the top.<br>"
-			if("muzzle") 	dat += "It has \icon[R] [R.name] mounted on the front.<br>"
-			if("stock") 	dat += "It has \icon[R] [R.name] for a stock.<br>"
+			if("rail") 	dat += "It has [htmlicon(R)] [R.name] mounted on the top.<br>"
+			if("muzzle") 	dat += "It has [htmlicon(R)] [R.name] mounted on the front.<br>"
+			if("stock") 	dat += "It has [htmlicon(R)] [R.name] for a stock.<br>"
 			if("under")
-				dat += "It has \icon[R] [R.name]"
+				dat += "It has [htmlicon(R)] [R.name]"
 				if(R.flags_attach_features & ATTACH_WEAPON)
 					dat += " ([R.current_rounds]/[R.max_rounds])"
 				dat += " mounted underneath.<br>"
-			else dat += "It has \icon[R] [R.name] attached.<br>"
+			else dat += "It has [htmlicon(R)] [R.name] attached.<br>"
 
 
 	if(!(flags_gun_features & (GUN_INTERNAL_MAG|GUN_UNUSUAL_DESIGN))) //Internal mags and unusual guns have their own stuff set.
@@ -330,7 +330,7 @@
 			else 								dat += "It's loaded[in_chamber?" and has a round chambered":""].<br>"
 		else 									dat += "It's unloaded[in_chamber?" but has a round chambered":""].<br>"
 	if(dat)
-		user << dat
+		to_chat(user, dat)
 
 /obj/item/weapon/gun/wield(var/mob/user)
 

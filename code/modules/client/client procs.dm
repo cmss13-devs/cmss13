@@ -29,8 +29,24 @@
 		return
 	next_allowed_topic_time = world.time + TOPIC_SPAM_DELAY
 
+	//Asset cache
+	var/job
+	if(href_list["asset_cache_confirm_arrival"])
+		job = round(text2num(href_list["asset_cache_confirm_arrival"]))
+		//because we skip the limiter, we have to make sure this is a valid arrival and not somebody tricking us
+		//into letting append to a list without limit.
+		if(job > 0 && job <= last_asset_job && !(job in completed_asset_jobs))
+			completed_asset_jobs += job
+			return
+		else if(job in completed_asset_jobs) 
+			to_chat(src, "<span class='danger'>An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
+			src << browse("...", "window=asset_cache_browser") 
+
+	if(href_list["_src_"] == "chat") //Hopefully this catches pings before we log
+		return chatOutput.Topic(href, href_list)
+
 	//search the href for script injection
-	if( findtext(href,"<script",1,0) )
+	if(findtext(href,"<script",1,0) )
 		world.log << "Attempted use of scripts within a topic call, by [src]"
 		message_admins("Attempted use of scripts within a topic call, by [src]")
 		//del(usr)
@@ -60,13 +76,27 @@
 	if(config && config.log_hrefs && href_logfile)
 		href_logfile << "<small>[time2text(world.timeofday,"hh:mm")] [src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>"
 
-	switch(href_list["_src_"])
-		if("admin_holder")	hsrc = admin_holder
-		if("usr")		hsrc = mob
-		if("prefs")		return prefs.process_link(usr,href_list)
-		if("vars")		return view_var_Topic(href,href_list,hsrc)
+	if(job && (job in completed_asset_jobs))
+		to_chat(src, "<span class='danger'>An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
+		src << browse("...", "window=asset_cache_browser")
 
-	..()	//redirect to hsrc.Topic()
+	switch(href_list["_src_"])
+		if("admin_holder")	
+			hsrc = admin_holder
+		if("usr")		
+			hsrc = mob
+		if("prefs")		
+			return prefs.process_link(usr, href_list)
+		if("vars")		
+			return view_var_Topic(href, href_list, hsrc)
+		if("chat")
+			return chatOutput.Topic(href, href_list)
+
+	switch(href_list["action"])
+		if ("openLink")
+			src << link(href_list["link"])
+
+	return ..()	//redirect to hsrc.Topic()
 
 /client/proc/handle_spam_prevention(var/message, var/mute_type)
 	if(config.automute_on && !admin_holder && src.last_message == message)
@@ -102,6 +132,7 @@
 	//CONNECT//
 	///////////
 /client/New(TopicData)
+	chatOutput = new /datum/chatOutput(src)
 	TopicData = null							//Prevent calls to client.Topic from connect
 
 	if(!(connection in list("seeker", "web")))					//Invalid connection type.
@@ -144,6 +175,7 @@
 	if(!xeno_postfix)
 		xeno_postfix = ""
 	. = ..()	//calls mob.Login()
+	chatOutput.start()
 
 	// Version check below if we ever need to start checking against BYOND versions again.
 
@@ -170,7 +202,7 @@
 
 	log_client_to_db()
 
-	send_resources()
+	send_assets()
 	nanomanager.send_resources(src)
 
 	create_clickcatcher()
@@ -277,39 +309,16 @@
 	return 0
 
 //send resources to the client. It's here in its own proc so we can move it around easiliy if need be
-/client/proc/send_resources()
-
+/client/proc/send_assets()
+	//get the common files
 	getFiles(
 		'html/search.js',
 		'html/panels.css',
 		'html/loading.gif',
-		'icons/old_stuff/pda_icons/pda_atmos.png',
-		'icons/old_stuff/pda_icons/pda_back.png',
-		'icons/old_stuff/pda_icons/pda_bell.png',
-		'icons/old_stuff/pda_icons/pda_blank.png',
-		'icons/old_stuff/pda_icons/pda_boom.png',
-		'icons/old_stuff/pda_icons/pda_bucket.png',
-		'icons/old_stuff/pda_icons/pda_crate.png',
-		'icons/old_stuff/pda_icons/pda_cuffs.png',
-		'icons/old_stuff/pda_icons/pda_eject.png',
-		'icons/old_stuff/pda_icons/pda_exit.png',
-		'icons/old_stuff/pda_icons/pda_flashlight.png',
-		'icons/old_stuff/pda_icons/pda_honk.png',
-		'icons/old_stuff/pda_icons/pda_mail.png',
-		'icons/old_stuff/pda_icons/pda_medical.png',
-		'icons/old_stuff/pda_icons/pda_menu.png',
-		'icons/old_stuff/pda_icons/pda_mule.png',
-		'icons/old_stuff/pda_icons/pda_notes.png',
-		'icons/old_stuff/pda_icons/pda_power.png',
-		'icons/old_stuff/pda_icons/pda_rdoor.png',
-		'icons/old_stuff/pda_icons/pda_reagent.png',
-		'icons/old_stuff/pda_icons/pda_refresh.png',
-		'icons/old_stuff/pda_icons/pda_scanner.png',
-		'icons/old_stuff/pda_icons/pda_signaler.png',
-		'icons/old_stuff/pda_icons/pda_status.png',
 		'html/images/wylogo.png',
 		'html/images/uscmlogo.png'
 		)
+	add_timer(CALLBACK(GLOBAL_PROC, .proc/get_files_slot, src, SSassets.preload, FALSE), 10)
 
 /client/Stat()
 	// We just did a short sleep because of a change, do another to render quickly, but flip the flag back.

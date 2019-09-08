@@ -417,27 +417,27 @@
 			if(burst_fire)
 				burst_fire = 0
 				fire_delay = 3
-				visible_message("\icon[src] A green light on [src] blinks slowly.")
+				visible_message("[htmlicon(src, viewers(src))] A green light on [src] blinks slowly.")
 				to_chat(usr, SPAN_NOTICE(" You deactivate the burst fire mode."))
 			else
 				burst_fire = 1
 				fire_delay = 15
 				user.visible_message(SPAN_NOTICE("[user] activates [src]'s burst fire mode."),
 				SPAN_NOTICE("You activate [src]'s burst fire mode."))
-				visible_message("\icon[src] <span class='notice'>A green light on [src] blinks rapidly.</span>")
+				visible_message("[htmlicon(src, viewers(src))] <span class='notice'>A green light on [src] blinks rapidly.</span>")
 
 		if("angle")
 			var/angle_selected = input(user, "Please select a FoF:", "Field of Fire", null) in angle_list
 			angle = angle_list.Find(angle_selected)
 			//range = 2+angle
-			visible_message("\icon[src] <span class='notice'>The [name] beeps [angle+1] times, confirming the field of fire is set to [angle_selected] degrees.</span>")
+			visible_message("[htmlicon(src, viewers(src))] <span class='notice'>The [name] beeps [angle+1] times, confirming the field of fire is set to [angle_selected] degrees.</span>")
 
 		if("power")
 			if(!on)
 				user.visible_message(SPAN_NOTICE("[user] activates [src]."),
 				SPAN_NOTICE("You activate [src]."))
-				visible_message("\icon[src] <span class='notice'>The [name] hums to life and emits several beeps.</span>")
-				visible_message("\icon[src] <span class='notice'>The [name] buzzes in a monotone voice: 'Default systems initiated'.</span>'")
+				visible_message("[htmlicon(src, viewers(src))] <span class='notice'>The [name] hums to life and emits several beeps.</span>")
+				visible_message("[htmlicon(src, viewers(src))] <span class='notice'>The [name] buzzes in a monotone voice: 'Default systems initiated'.</span>'")
 				target = null
 				on = TRUE
 				SetLuminosity(7)
@@ -450,7 +450,7 @@
 				on = FALSE
 				user.visible_message(SPAN_NOTICE("[user] deactivates [src]."),
 				SPAN_NOTICE("You deactivate [src]."))
-				visible_message("\icon[src] <span class='notice'>The [name] powers down and goes silent.</span>")
+				visible_message("[htmlicon(src, viewers(src))] <span class='notice'>The [name] powers down and goes silent.</span>")
 				update_icon()
 
 	attack_hand(user)
@@ -658,7 +658,7 @@
 	health -= damage
 	if(health <= 0 && stat != 2)
 		stat |= SENTRY_DESTROYED
-		visible_message("\icon[src] <span class='warning'>The [name] starts spitting out sparks and smoke!")
+		visible_message("[htmlicon(src, viewers(src))] <span class='warning'>The [name] starts spitting out sparks and smoke!")
 		playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
 		for(var/i = 1 to 6)
 			dir = pick(1, 2, 3, 4)
@@ -677,7 +677,7 @@
 		if(prob(10))
 			spark_system.start()
 		if(prob(5 + round(damage/5)))
-			visible_message(SPAN_DANGER("\icon[src] The [name] is knocked over!"))
+			visible_message(SPAN_DANGER("[htmlicon(src, viewers(src))] The [name] is knocked over!"))
 			stat |= SENTRY_KNOCKED_DOWN
 			on = FALSE
 	if(stat & SENTRY_KNOCKED_DOWN)
@@ -698,7 +698,7 @@
 
 	if(cell.charge - power <= 0)
 		cell.charge = 0
-		visible_message("\icon[src] <span class='warning'>[src] emits a low power warning and immediately shuts down!</span>")
+		visible_message("[htmlicon(src, viewers(src))] <span class='warning'>[src] emits a low power warning and immediately shuts down!</span>")
 		playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
 		on = FALSE
 		update_icon()
@@ -714,7 +714,7 @@
 		check_power(-(rand(100, 500)))
 	if(on)
 		if(prob(50))
-			visible_message("\icon[src] <span class='danger'>[src] beeps and buzzes wildly, flashing odd symbols on its screen before shutting down!</span>")
+			visible_message("[htmlicon(src, viewers(src))] <span class='danger'>[src] beeps and buzzes wildly, flashing odd symbols on its screen before shutting down!</span>")
 			playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
 			for(var/i = 1 to 6)
 				dir = pick(1, 2, 3, 4)
@@ -859,7 +859,7 @@
 			in_chamber = null
 			rounds--
 			if(rounds == 0)
-				visible_message("\icon[src] <span class='warning'>The [name] beeps steadily and its ammo light blinks red.</span>")
+				visible_message("[htmlicon(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red.</span>")
 				playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
 	return 1
 
@@ -968,7 +968,7 @@
 	if(get_dist(user, src) > 1 || user.is_mob_incapacitated())
 		user.visible_message(SPAN_NOTICE("[user] lets go of [src]"),
 		SPAN_NOTICE("You let go of [src]"))
-		visible_message("\icon[src] <span class='notice'>The [name] buzzes: AI targeting re-initialized.</span>")
+		visible_message("[htmlicon(src, viewers(src))] <span class='notice'>The [name] buzzes: AI targeting re-initialized.</span>")
 		user.unset_interaction()
 		return HANDLE_CLICK_UNHANDLED
 	if(user.get_active_hand() != null)
@@ -1067,7 +1067,7 @@
 	if(!on)
 		to_chat(user, "You turn on the [src].")
 		visible_message(SPAN_NOTICE("[src] hums to life and emits several beeps."))
-		visible_message("\icon[src] [src] buzzes in a monotone: 'Default systems initiated.'")
+		visible_message("[htmlicon(src, viewers(src))] [src] buzzes in a monotone: 'Default systems initiated.'")
 		target = null
 		on = TRUE
 		SetLuminosity(7)
@@ -1080,7 +1080,7 @@
 		on = FALSE
 		user.visible_message(SPAN_NOTICE("[user] deactivates [src]."),
 		SPAN_NOTICE("You deactivate [src]."))
-		visible_message("\icon[src] <span class='notice'>The [name] powers down and goes silent.</span>")
+		visible_message("[htmlicon(src, viewers(src))] <span class='notice'>The [name] powers down and goes silent.</span>")
 		update_icon()
 
 //the turret inside the sentry deployment system

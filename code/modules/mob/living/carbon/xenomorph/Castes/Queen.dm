@@ -246,7 +246,7 @@
 				spawn_buried_larva(pick(players_with_xeno_pref))
 
 		// Update vitals for all xenos in the Queen's hive
-		hive.hive_ui.update_xeno_vitals(TRUE)
+		hive.hive_ui.update_xeno_vitals()
 
 /mob/living/carbon/Xenomorph/Queen/Stat()
 	..()

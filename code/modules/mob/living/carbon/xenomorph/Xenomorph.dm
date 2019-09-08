@@ -621,7 +621,7 @@
 	// Update the hive status UI
 	new_hive.hive_ui.update_xeno_counts()
 	new_hive.hive_ui.update_xeno_vitals()
-	new_hive.hive_ui.update_xeno_info(TRUE)
+	new_hive.hive_ui.update_xeno_info()
 
 //*********************************************************//
 //********************Mutator functions********************//
@@ -755,7 +755,7 @@
 
 		hive.hive_ui.update_xeno_counts()
 		hive.hive_ui.update_xeno_vitals()
-		hive.hive_ui.update_xeno_info(TRUE)
+		hive.hive_ui.update_xeno_info()
 
 		if(caste_name == "Queen")
 			New()

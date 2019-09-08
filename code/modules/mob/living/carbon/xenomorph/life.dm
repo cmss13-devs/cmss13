@@ -152,7 +152,7 @@
 			if(!check_weeds_for_healing()) //In crit, damage is maximal if you're caught off weeds
 				adjustBruteLoss(2.5 - warding_aura*0.5) //Warding can heavily lower the impact of bleedout. Halved at 2.5 phero, stopped at 5 phero
 			else
-				adjustBruteLoss(-warding_aura * 1)
+				adjustBruteLoss(-warding_aura)
 
 	updatehealth()
 
@@ -429,7 +429,7 @@ updatehealth()
 				else if(isXenoCrusher() || isXenoRavager())
 					XENO_HEAL_WOUNDS(0.66,recoveryActual)
 				else
-					XENO_HEAL_WOUNDS(0.33,recoveryActual) //Major healing nerf if standing
+					XENO_HEAL_WOUNDS(0.40,recoveryActual) //Healing nerf if standing
 				updatehealth()
 
 			if(armor_integrity < armor_integrity_max && armor_deflection > 0 && world.time > armor_integrity_last_damage_time + XENO_ARMOR_REGEN_DELAY)

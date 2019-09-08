@@ -608,9 +608,130 @@
 	var/larva_gestation_multiplier = 1.0
 	var/bonus_larva_spawn_chance = 1.0
 
+	var/datum/hive_status_ui/hive_ui = new
+
 /datum/hive_status/New()
 	mutators.hive = src
+	hive_ui.set_hive(src)
 
+// Adds a xeno to this hive
+/datum/hive_status/proc/add_xeno(var/mob/living/carbon/Xenomorph/X)
+	if(!X || !istype(X))
+		return
+
+	// If the xeno is part of another hive, they should be removed from that one first
+	if(X.hive && X.hive != src)
+		X.hive.remove_xeno(X, TRUE)
+
+	// Already in the hive
+	if(X in totalXenos)
+		return
+
+	// Can only have one queen
+	if(istype(X, /mob/living/carbon/Xenomorph/Queen))
+		if(living_xeno_queen)
+			return
+		set_living_xeno_queen(X)
+
+	X.hivenumber = hivenumber
+	X.hive = src
+
+	totalXenos += X
+	if(X.tier == 2)
+		tier_2_xenos += X
+	else if(X.tier == 3)
+		tier_3_xenos += X
+
+	// Xenos are a fuckfest of cross-dependencies of different datums that are initialized at different times
+	// So don't even bother trying updating UI here without large refactors
+
+// Removes the xeno from the hive
+/datum/hive_status/proc/remove_xeno(var/mob/living/carbon/Xenomorph/X, var/hard=FALSE)
+	if(!X || !istype(X))
+		return
+
+	// Make sure the xeno was in the hive in the first place
+	if(!(X in totalXenos))
+		return
+
+	if(istype(X, /mob/living/carbon/Xenomorph/Queen))
+		set_living_xeno_queen(null)
+
+	// We allow "soft" removals from the hive (the xeno still retains information about the hive)
+	// This is so that xenos can add themselves back to the hive if they should die or otherwise go "on leave" from the hive
+	if(hard)
+		X.hivenumber = 0
+		X.hive = null
+
+	totalXenos -= X
+	if(X.tier == 2)
+		tier_2_xenos -= X
+	else if(X.tier == 3)
+		tier_3_xenos -= X
+
+	// At least UI updates when xenos are removed are safe
+	hive_ui.update_xeno_counts()
+	hive_ui.update_xeno_info(TRUE)
+
+// Returns a list of how many of each caste of xeno there are, sorted by tier
+/datum/hive_status/proc/get_xeno_counts()
+	// Every caste is manually defined here so you get
+	var/list/xeno_counts = list(
+		// Yes, Queen is technically considered to be tier 0
+		list("Bloody Larva" = 0, "Queen" = 0),
+		list("Drone" = 0, "Runner" = 0, "Sentinel" = 0, "Defender" = 0),
+		list("Hivelord" = 0, "Burrower" = 0, "Carrier" = 0, "Lurker" = 0, "Spitter" = 0, "Warrior" = 0),
+		list("Boiler" = 0, "Crusher" = 0, "Praetorian" = 0, "Ravager" = 0)
+	)
+
+	for(var/mob/living/carbon/Xenomorph/X in totalXenos)
+		//don't show xenos in the thunderdome when admins test stuff.
+		if(X.z == ADMIN_Z_LEVEL)
+			continue
+		xeno_counts[X.caste.tier+1][X.caste.caste_name]++
+
+	return xeno_counts
+
+// Returns a list of some general info about all the xenos in the hive
+/datum/hive_status/proc/get_xeno_info()
+	var/list/xenos = list()
+
+	for(var/mob/living/carbon/Xenomorph/X in totalXenos)
+		if(X.z == ADMIN_Z_LEVEL)
+			continue
+
+		var/xeno_name = X.name
+		// goddamn fucking larvas with their weird ass maturing system
+		// its name updates with its icon, unlike other castes which only update the mature/elder, etc. prefix on evolve
+		if(istype(X, /mob/living/carbon/Xenomorph/Larva))
+			xeno_name = "Larva ([X.nicknumber])"
+		xenos["[X.nicknumber]"] = list(
+			"name" = xeno_name,
+			"strain" = X.mutation_type,
+			"leader" = (X in X.hive.xeno_leader_list),
+			"is_queen" = istype(X.caste, /datum/caste_datum/queen),
+			"ref" = "\ref[X]"
+		)
+
+	return xenos
+
+// Returns a list of xeno healths and locations
+/datum/hive_status/proc/get_xeno_vitals()
+	var/list/xenos = list()
+
+	for(var/mob/living/carbon/Xenomorph/X in totalXenos)
+		if(X.z == ADMIN_Z_LEVEL)
+			continue
+
+		var/area/A = get_area(X)
+
+		xenos["[X.nicknumber]"] = list(
+			"health" = round((X.health / X.maxHealth) * 100, 1),
+			"area" = A.name,
+			"is_ssd" = (!X.client)
+		)
+
+	return xenos
 
 /datum/hive_status/proc/set_living_xeno_queen(var/mob/living/carbon/Xenomorph/Queen/M)
 	if(M == null)
@@ -648,12 +769,17 @@
 	xeno_leader_list += xeno
 	xeno.queen_chosen_lead = TRUE
 	xeno.handle_xeno_leader_pheromones()
+
+	hive_ui.update_xeno_info(TRUE)
+
 	return TRUE
 
 /datum/hive_status/proc/remove_hive_leader(var/mob/living/carbon/Xenomorph/xeno)
 	xeno_leader_list -= xeno
 	xeno.queen_chosen_lead = FALSE
 	xeno.handle_xeno_leader_pheromones()
+
+	hive_ui.update_xeno_info(TRUE)
 
 /datum/hive_status/proc/handle_xeno_leader_pheromones()
 	for(var/mob/living/carbon/Xenomorph/L in xeno_leader_list)

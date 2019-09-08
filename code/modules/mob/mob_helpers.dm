@@ -205,7 +205,7 @@ proc/isXenoQueenLeadingHive(A)
 	if(!isXenoQueen(A))
 		return FALSE
 	var/mob/living/carbon/Xenomorph/Queen/Q = A
-	if(Q.hive.living_xeno_queen == Q)
+	if(Q.hive && Q.hive.living_xeno_queen == Q)
 		return TRUE
 	return FALSE
 

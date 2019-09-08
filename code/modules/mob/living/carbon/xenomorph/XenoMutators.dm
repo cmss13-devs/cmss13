@@ -60,6 +60,12 @@
 		return 0
 	MS.remaining_points -= cost
 	MS.purchased_mutators += name
+
+	if(istype(MS, /datum/mutator_set/individual_mutators))
+		var/datum/mutator_set/individual_mutators/IS = MS
+		if(IS.xeno)
+			IS.xeno.hive.hive_ui.update_xeno_info(TRUE)
+
 	return 1
 
 // Sets up actions for when a mutator is taken 

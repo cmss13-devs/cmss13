@@ -167,7 +167,11 @@
 	else
 		new_xeno = new(affected_mob)
 
-	new_xeno.set_hivenumber(hivenumber)
+	
+	var/datum/hive_status/hive = hive_datum[hivenumber]
+	if(hive)
+		hive.add_xeno(new_xeno)
+
 	new_xeno.set_faction(faction)
 	new_xeno.update_icons()
 
@@ -230,6 +234,7 @@
 			if(round_statistics && !L.statistic_exempt)
 				round_statistics.track_new_participant(faction, -1) // keep stats sane
 			hive.stored_larva++
+			hive.hive_ui.update_burrowed_larva()
 			qdel(L)
 
 		if(!victim.first_xeno)

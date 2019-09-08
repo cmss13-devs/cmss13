@@ -645,7 +645,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	check_hive_status()
+	hive_datum[XENO_HIVE_NORMAL].hive_ui.open_hive_status(mob)
 
 /client/proc/show_objectives_status()
 	set name = "Show Objectives Status"

@@ -11747,16 +11747,6 @@
 	dir = 8
 	},
 /area/almayer/hallways/port_hallway)
-"azF" = (
-/obj/structure/ladder{
-	height = 1;
-	id = "l12"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/hull/lower_hull)
 "azG" = (
 /obj/machinery/door_control{
 	id = "laddersouthwest";
@@ -11857,13 +11847,6 @@
 	},
 /area/almayer/hallways/port_hallway)
 "azR" = (
-/obj/machinery/camera/autoname/almayer{
-	dir = 8;
-	icon_state = "camera";
-	name = "ship-grade camera";
-	network = list("almayer");
-	tag = "icon-camera (EAST)"
-	},
 /obj/machinery/door_control{
 	id = "laddersouthwest";
 	name = "South West Ladders Shutters";
@@ -13231,7 +13214,6 @@
 	icon_state = "NE-out";
 	tag = "icon-NE-out"
 	},
-/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/open/floor/almayer{
 	tag = "icon-silvercorner (EAST)";
 	icon_state = "silvercorner";
@@ -44029,6 +44011,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig)
+"cyG" = (
+/obj/effect/step_trigger/clone_cleaner,
+/obj/machinery/camera/autoname/almayer{
+	dir = 2;
+	icon_state = "camera";
+	name = "ship-grade camera";
+	network = list("almayer");
+	tag = ""
+	},
+/turf/open/floor/plating/almayer,
+/area/almayer/hallways/port_hallway)
 "cyU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (NORTHEAST)";
@@ -50625,10 +50618,10 @@
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/firing_range_north)
 "kYK" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (NORTHEAST)";
+	icon_state = "intact-supply";
+	dir = 5
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -60965,6 +60958,18 @@
 	icon_state = "tcomms"
 	},
 /area/almayer/engineering/engine_core)
+"xfm" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (SOUTHWEST)";
+	icon_state = "intact-supply";
+	dir = 10
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/cafeteria_officer)
 "xfw" = (
 /obj/structure/table/almayer,
 /obj/item/storage/fancy/cigarettes/lucky_strikes,
@@ -88447,7 +88452,7 @@ bei
 hFa
 buH
 hop
-buH
+vMx
 aQF
 aQF
 aQF
@@ -88853,7 +88858,7 @@ ber
 ott
 buH
 hop
-vMx
+buH
 auC
 afz
 avz
@@ -91495,7 +91500,7 @@ bHL
 buH
 auq
 ajX
-ajX
+cyG
 aKW
 aKW
 aKW
@@ -93734,7 +93739,7 @@ ciX
 cqw
 bKG
 aLd
-azF
+bPS
 aLf
 aSm
 cqo
@@ -99488,7 +99493,7 @@ afH
 agV
 ain
 kYK
-als
+ael
 ajD
 abg
 anf
@@ -99690,8 +99695,8 @@ ael
 afI
 agY
 aiq
-ajJ
-alB
+xfm
+als
 ani
 aow
 aqU
@@ -99893,8 +99898,8 @@ ael
 afJ
 agY
 aiq
-ajT
-ael
+ajJ
+alB
 amN
 ali
 aqU

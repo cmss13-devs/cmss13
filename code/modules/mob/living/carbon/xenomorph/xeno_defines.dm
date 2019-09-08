@@ -671,7 +671,7 @@
 
 	// At least UI updates when xenos are removed are safe
 	hive_ui.update_xeno_counts()
-	hive_ui.update_xeno_info(TRUE)
+	hive_ui.update_xeno_info()
 
 // Returns a list of how many of each caste of xeno there are, sorted by tier
 /datum/hive_status/proc/get_xeno_counts()
@@ -770,7 +770,7 @@
 	xeno.queen_chosen_lead = TRUE
 	xeno.handle_xeno_leader_pheromones()
 
-	hive_ui.update_xeno_info(TRUE)
+	hive_ui.update_xeno_info()
 
 	return TRUE
 
@@ -779,7 +779,7 @@
 	xeno.queen_chosen_lead = FALSE
 	xeno.handle_xeno_leader_pheromones()
 
-	hive_ui.update_xeno_info(TRUE)
+	hive_ui.update_xeno_info()
 
 /datum/hive_status/proc/handle_xeno_leader_pheromones()
 	for(var/mob/living/carbon/Xenomorph/L in xeno_leader_list)

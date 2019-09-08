@@ -1,0 +1,6 @@
+author: Atebite
+delete-after: true
+changes:
+  - tweak: The hive status panel has been updated to use NanoUI
+  - tweak: The hive status panel now shows the strain of each xeno
+  - tweak: The hive status panel now shows the health of each xenos

@@ -303,8 +303,14 @@
 		hivenumber = oldXeno.hivenumber
 		nicknumber = oldXeno.nicknumber
 
+	// Well, not yet, technically
+	var/datum/hive_status/in_hive = hive_datum[hivenumber]
+	if(in_hive)
+		in_hive.add_xeno(src)
+		// But now we are!
+
 	mutators.xeno = src
-	set_hivenumber(hivenumber)
+
 	update_caste()
 	generate_name()
 
@@ -380,17 +386,13 @@
 			if(hive.living_xeno_queen)
 				handle_xeno_leader_pheromones()
 
-	if(z != ADMIN_Z_LEVEL)//Do not add thunderdome xenos
-		switch(tier) //They have evolved/been created, add them to the slot count
-			if(2)
-				hive.tier_2_xenos |= src
-			if(3)
-				hive.tier_3_xenos |= src
-		hive.totalXenos |= src
-
 	if(round_statistics && !statistic_exempt)
 		round_statistics.track_new_participant(faction, 1)
 	generate_name()
+
+	hive.hive_ui.update_xeno_counts()
+	hive.hive_ui.update_xeno_vitals()
+	hive.hive_ui.update_xeno_info(TRUE)
 
 /mob/living/carbon/Xenomorph/proc/update_caste()
 	if(caste_name && xeno_datum_list[caste_name] && xeno_datum_list[caste_name][max(1,upgrade+1)])
@@ -410,10 +412,6 @@
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos
 //We set their name first, then update their real_name AND their mind name
 /mob/living/carbon/Xenomorph/proc/generate_name()
-	if(!hive)
-		set_hivenumber(hivenumber)
-
-
 	//We don't have a nicknumber yet, assign one to stick with us
 	if(!nicknumber)
 		var/tempnumber = rand(1, 999)
@@ -426,18 +424,22 @@
 
 		nicknumber = tempnumber
 
+	// Even if we don't have the hive datum we usually still have the hive number
+	var/datum/hive_status/in_hive = hive
+	if(!in_hive)
+		in_hive = hive_datum[hivenumber]
 
 	//Larvas have their own, very weird naming conventions, let's not kick a beehive, not yet
 	if(isXenoLarva(src))
 		return
 
-	var/name_prefix = hive.prefix
+	var/name_prefix = in_hive.prefix
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
 	if(client)
 		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
-	color = hive.color
+	color = in_hive.color
 
 	//Queens have weird, hardcoded naming conventions based on upgrade levels. They also never get nicknumbers
 	if(isXenoQueen(src))
@@ -453,6 +455,9 @@
 	//Update linked data so they show up properly
 	real_name = name
 	if(mind) mind.name = name //This gives them the proper name in deadchat if they explode on death. It's always the small things
+
+	// Since we updated our name we should update the info in the UI
+	in_hive.hive_ui.update_xeno_info()
 
 /mob/living/carbon/Xenomorph/examine(mob/user)
 	..()
@@ -493,19 +498,15 @@
 	living_xeno_list -= src
 	xeno_mob_list -= src
 
-	switch(tier)
-		if(2)
-			hive.tier_2_xenos -= src
-		if(3)
-			hive.tier_3_xenos -= src
-	hive.totalXenos -= src
-
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 		hive.living_xeno_queen.set_queen_overwatch(src, TRUE) // This is actually totally extraneous as this is handled in the life proc anyways.
 	if(src in hive.xeno_leader_list)
 		hive.xeno_leader_list -= src
 
 	SStracking.stop_tracking("hive_[hivenumber]", src)
+
+	// Dispose means the xeno is getting deleted, so hard remove them from the hive
+	hive.remove_xeno(src, TRUE)
 
 	. = ..()
 
@@ -594,25 +595,18 @@
 /mob/living/carbon/Xenomorph/get_pull_miltiplier()
 	return pull_multiplier
 
-
-//Call this function to set the hivenumber
-//It also assigns the hive datum, since a lot of things reference that
-/mob/living/carbon/Xenomorph/proc/set_hivenumber(var/new_hivenumber = XENO_HIVE_NORMAL)
-	hivenumber = new_hivenumber
-	if(!hivenumber || hivenumber > hive_datum.len)
-		hivenumber = XENO_HIVE_NORMAL //Someone passed a bad number
-		log_debug("Invalid hivenumber forwarded - [hivenumber]. Let the devs know!")
-	hive = hive_datum[hivenumber]
-
 /mob/living/carbon/Xenomorph/proc/set_faction(var/new_faction = FACTION_XENOMORPH)
 	if(round_statistics && !statistic_exempt)
 		round_statistics.track_new_participant(faction, -1)
 		round_statistics.track_new_participant(new_faction, 1)
 	faction = new_faction
 
-//Call this function to set the hivenumber and do other cleanup
-/mob/living/carbon/Xenomorph/proc/set_hivenumber_and_update(var/new_hivenumber = XENO_HIVE_NORMAL, var/new_faction = FACTION_XENOMORPH)
-	set_hivenumber(new_hivenumber)
+//Call this function to set the hive and do other cleanup
+/mob/living/carbon/Xenomorph/proc/set_hive_and_update(var/new_hivenumber = XENO_HIVE_NORMAL, var/new_faction = FACTION_XENOMORPH)
+	var/datum/hive_status/new_hive = hive_datum[new_hivenumber]
+	if(new_hive)
+		new_hive.add_xeno(src)
+
 	set_faction(new_faction)
 
 	if(istype(src, /mob/living/carbon/Xenomorph/Larva))
@@ -623,6 +617,11 @@
 	if(istype(src, /mob/living/carbon/Xenomorph/Queen))
 		update_living_queens()
 	recalculate_everything()
+
+	// Update the hive status UI
+	new_hive.hive_ui.update_xeno_counts()
+	new_hive.hive_ui.update_xeno_vitals()
+	new_hive.hive_ui.update_xeno_info(TRUE)
 
 //*********************************************************//
 //********************Mutator functions********************//
@@ -751,12 +750,13 @@
 /mob/living/carbon/Xenomorph/rejuvenate()
 	if(stat == DEAD)
 		living_xeno_list += src
-		switch(tier)
-			if(2)
-				hive.tier_2_xenos += src
-			if(3)
-				hive.tier_3_xenos += src
-		hive.totalXenos += src
+		
+		hive.add_xeno(src)
+
+		hive.hive_ui.update_xeno_counts()
+		hive.hive_ui.update_xeno_vitals()
+		hive.hive_ui.update_xeno_info(TRUE)
+
 		if(caste_name == "Queen")
 			New()
 	armor_integrity = 100

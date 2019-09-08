@@ -514,7 +514,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Check the status of the hive."
 	set category = "Ghost"
 
-	check_hive_status(src)
+	hive_datum[XENO_HIVE_NORMAL].hive_ui.open_hive_status(src)
 
 /mob/dead/verb/join_as_alien()
 	set category = "Ghost"

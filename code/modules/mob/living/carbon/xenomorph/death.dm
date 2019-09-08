@@ -48,6 +48,7 @@
 						new_xeno << sound('sound/effects/xeno_newlarva.ogg')
 
 					hive_datum[hivenumber].stored_larva--
+					hive_datum[hivenumber].hive_ui.update_burrowed_larva()
 
 			if(hive.living_xeno_queen == src)
 				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"),3, hivenumber)
@@ -90,7 +91,7 @@
 		if(3)
 			hive.tier_3_xenos -= src
 
-	hive.totalXenos -= src
+	hive.remove_xeno(src)
 	
 	if(hive.totalXenos.len == 1)
 		xeno_message(SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"),3, hivenumber)

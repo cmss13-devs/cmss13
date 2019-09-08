@@ -350,7 +350,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		to_chat(usr, "Someone else changed this xeno while you were deciding")
 		return
 
-	X.set_hivenumber_and_update(newhivenumber, newhivefaction)
+	X.set_hive_and_update(newhivenumber, newhivefaction)
 	feedback_add_details("admin_verb","CHHN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	message_admins(SPAN_NOTICE("[key_name(src)] changed hivenumber of [X] to [X.hivenumber]."), 1)
 

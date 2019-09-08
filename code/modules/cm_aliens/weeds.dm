@@ -13,10 +13,14 @@
 	health = 1
 	var/weed_strength = 1
 
+	// Which node is responsible for keeping this weed patch alive?
+	var/obj/effect/alien/weeds/node/parent = null
+
 /obj/effect/alien/weeds/New(pos, obj/effect/alien/weeds/node/node)
 	..()
 	if(node)
 		weed_strength = node.weed_strength
+		node.add_child(src)
 
 	health = 1
 
@@ -27,12 +31,10 @@
 			if(loc && node && node.loc)
 				weed_expand(node)
 
-
 /obj/effect/alien/weeds/Dispose()
 	var/oldloc = loc
 	. = ..()
 	update_neighbours(oldloc)
-
 
 /obj/effect/alien/weeds/examine(mob/user)
 	..()
@@ -40,13 +42,25 @@
 	if(istype(T, /turf/open))
 		T.ceiling_desc(user)
 
-
 /obj/effect/alien/weeds/Crossed(atom/movable/AM)
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
 		if(!has_species(H,"Yautja")) //predators are immune to weed slowdown effect
 			H.next_move_slowdown += 1
 
+// Uh oh, we might be dying!
+// I know this is bad proc naming but it was too good to pass on and it's only used in this file anyways
+// If you're still confused, scroll aaaall the way down to the bottom of the file.
+// that's /obj/effect/alien/weeds/node/Dispose(). on line 275.
+/obj/effect/alien/weeds/proc/avoid_orphanage()
+	for(var/obj/effect/alien/weeds/node/N in orange(NODERANGE, get_turf(src)))
+		// WE FOUND A NEW MOMMY
+		N.add_child(src)
+		break
+
+	// NO MORE FOOD ON THE TABLE. WE DIE
+	if(!parent)
+		qdel(src)
 
 /obj/effect/alien/weeds/proc/weed_expand(obj/effect/alien/weeds/node/node)
 	var/turf/U = get_turf(src)
@@ -94,7 +108,6 @@
 
 			new /obj/effect/alien/weeds(T, node)
 
-
 /obj/effect/alien/weeds/proc/update_neighbours(turf/U)
 	if(!U)
 		U = loc
@@ -108,7 +121,6 @@
 			var/obj/effect/alien/weeds/W = locate() in T
 			if(W)
 				W.update_sprite()
-
 
 /obj/effect/alien/weeds/proc/update_sprite()
 	var/my_dir = 0
@@ -129,7 +141,6 @@
 		icon_state = "base"
 	else
 		icon_state = "weed_dir[my_dir]"
-
 
 /obj/effect/alien/weeds/ex_act(severity)
 	switch(severity)
@@ -215,7 +226,6 @@
 		icon_state = "weedframe[WF.junction]"
 
 
-
 /obj/effect/alien/weeds/node
 	name = "purple sac"
 	desc = "A weird, pulsating node."
@@ -225,6 +235,20 @@
 	health = 15
 	flags_atom = OPENCONTAINER
 
+	// Which weeds are being kept alive by this node?
+	var/list/obj/effect/alien/weeds/children = list()
+
+/obj/effect/alien/weeds/node/proc/add_child(var/obj/effect/alien/weeds/weed)
+	if(!weed || !istype(weed))
+		return
+	weed.parent = src
+	children += weed
+
+/obj/effect/alien/weeds/node/proc/remove_child(var/obj/effect/alien/weeds/weed)
+	if(!weed || !istype(weed) || !(weed in children))
+		return
+	weed.parent = null
+	children -= weed
 
 /obj/effect/alien/weeds/node/update_icon()
 	overlays.Cut()
@@ -247,5 +271,14 @@
 		health = 15
 		node_range = node_range + weed_strength - 1//stronger weeds expand further!
 	..(loc, src)
+
+/obj/effect/alien/weeds/node/Dispose()
+	// When the node is removed, weeds should start dying out
+	// Make all the children look for a new parent node
+	for(var/obj/effect/alien/weeds/W in children)
+		remove_child(W)
+		add_timer(CALLBACK(W, .proc/avoid_orphanage), rand(70, 130))
+
+	. = ..()
 
 #undef NODERANGE

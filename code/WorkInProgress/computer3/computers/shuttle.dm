@@ -41,7 +41,7 @@
 					if (src.auth_need - src.authorized.len > 0)
 						message_admins("[key_name_admin(user)] has authorized early shuttle launch")
 						log_game("[user.ckey] has authorized early shuttle launch")
-						world << text(SPAN_NOTICE("<B>Alert: [] authorizations needed until shuttle is launched early</B>"), src.auth_need - src.authorized.len)
+						to_world(text(SPAN_NOTICE("<B>Alert: [] authorizations needed until shuttle is launched early</B>"), src.auth_need - src.authorized.len)
 					else
 						message_admins("[key_name_admin(user)] has launched the shuttle")
 						log_game("[user.ckey] has launched the shuttle early")
@@ -54,7 +54,7 @@
 
 				if("Repeal")
 					src.authorized -= W:registered_name
-					world << text(SPAN_NOTICE("<B>Alert: [] authorizations needed until shuttle is launched early</B>"), src.auth_need - src.authorized.len)
+					to_world(text(SPAN_NOTICE("<B>Alert: [] authorizations needed until shuttle is launched early</B>"), src.auth_need - src.authorized.len))
 
 				if("Abort")
 					to_world(SPAN_NOTICE(" <B>All authorizations to shorting time for shuttle launch have been revoked!</B>"))

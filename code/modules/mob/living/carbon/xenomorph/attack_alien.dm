@@ -837,7 +837,7 @@
 		return 0
 
 	if(!slayer)
-		M  << SPAN_WARNING("There is nothing to clear out!")
+		to_chat(M, SPAN_WARNING("There is nothing to clear out!"))
 		return
 
 	M.visible_message(SPAN_NOTICE("\The [M] clears out \the [src]."), \

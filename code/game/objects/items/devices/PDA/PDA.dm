@@ -891,14 +891,14 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		if (!P.silent)
 			playsound(P.loc, 'sound/machines/twobeep.ogg', 25, 1)
 		for (var/mob/O in hearers(3, P.loc))
-			if(!P.silent) O.show_message(text("\icon[P] *[P.ttone]*"))
+			if(!P.silent) O.show_message(text("[htmlicon(P)] *[P.ttone]*"))
 		//Search for holder of the PDA.
 		var/mob/living/L = null
 		if(P.loc && isliving(P.loc))
 			L = P.loc
 
 		if(L)
-			to_chat(L, "\icon[P] <b>Message from [src.owner] ([ownjob]), </b>\")[t]\" (<a href='byond://?src=\ref[P];choice=Message;notap=[issilicon(L)];skiprefresh=1;target=\ref[src]'>Reply</a>)")
+			to_chat(L, "[htmlicon(P)] <b>Message from [src.owner] ([ownjob]), </b>\")[t]\" (<a href='byond://?src=\ref[P];choice=Message;notap=[issilicon(L)];skiprefresh=1;target=\ref[src]'>Reply</a>)")
 			nanomanager.update_user_uis(L, P) // Update the receiving user's PDA UI so that they can see the new message
 
 		nanomanager.update_user_uis(U, P) // Update the sending user's PDA UI so that they can see the new message
@@ -1041,7 +1041,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 						user.show_message(text(SPAN_DANGER("<b>Warning: [D.form] Detected</b>\nName: [D.name].\nType: [D.spread].\nStage: [D.stage]/[D.max_stages].\nPossible Cure: [D.cure]")))
 
 			if(2)
-				user << text(SPAN_NOTICE("[C]'s Fingerprints: [C:fingerprint]"))
+				to_chat(user, "[C]'s Fingerprints: [C:fingerprint]")
 				if (!C.blood_DNA || !C.blood_DNA.len)
 					to_chat(user, SPAN_NOTICE(" No blood found on [C]"))
 					if(C.blood_DNA)
@@ -1086,12 +1086,12 @@ var/global/list/obj/item/device/pda/PDAs = list()
 			if(istype(A, /obj/item/tank) || istype(A, /obj/machinery/portable_atmospherics) || istype(A, /obj/machinery/atmospherics/pipe/tank))
 				var/obj/icon = A
 				for (var/mob/O in viewers(user, null))
-					to_chat(O, SPAN_DANGER("[user] has used [src] on \icon[icon] [A]"))
+					to_chat(O, SPAN_DANGER("[user] has used [src] on [htmlicon(icon)] [A]"))
 				var/pressure = A.return_pressure()
 				var/temperature = A.return_temperature()
 				var/gas = A.return_gas()
 
-				to_chat(user, SPAN_NOTICE(" Results of analysis of \icon[icon]"))
+				to_chat(user, SPAN_NOTICE(" Results of analysis of [htmlicon(icon)]"))
 				if (pressure>0)
 					to_chat(user, SPAN_NOTICE(" Pressure: [round(pressure,0.1)] kPa"))
 					to_chat(user, SPAN_NOTICE(" Gas Type: [gas]"))

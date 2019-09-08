@@ -423,7 +423,7 @@ Buildable meters
 			P.level = pipelevel
 			P.initialize()
 			if (!P)
-				usr << pipefailtext
+				to_chat(usr, pipefailtext)
 				return 1
 			P.build_network()
 			if (P.node1)
@@ -441,7 +441,7 @@ Buildable meters
 			P.level = pipelevel
 			P.initialize()
 			if (!P)
-				usr << pipefailtext
+				to_chat(usr, pipefailtext)
 				return 1
 			P.build_network()
 			if (P.node1)
@@ -459,7 +459,7 @@ Buildable meters
 			P.level = pipelevel
 			P.initialize()
 			if (!P)
-				usr << pipefailtext
+				to_chat(usr, pipefailtext)
 				return 1
 			P.build_network()
 			if (P.node1)
@@ -477,7 +477,7 @@ Buildable meters
 			P.level = pipelevel
 			P.initialize()
 			if (!P)
-				usr << pipefailtext
+				to_chat(usr, pipefailtext)
 				return 1
 			P.build_network()
 			if (P.node1)
@@ -494,7 +494,7 @@ Buildable meters
 			P.initialize_directions_he = pipe_dir
 			P.initialize()
 			if (!P)
-				usr << pipefailtext
+				to_chat(usr, pipefailtext)
 				return 1
 			P.build_network()
 			if (P.node1)
@@ -527,7 +527,7 @@ Buildable meters
 			M.level = pipelevel
 			M.initialize()
 			if (!M)
-				usr << pipefailtext
+				to_chat(usr, pipefailtext)
 				return 1
 			M.build_network()
 			if (M.node1)
@@ -593,7 +593,7 @@ Buildable meters
 			M.level = pipelevel
 			M.initialize()
 			if (!M)
-				usr << pipefailtext
+				to_chat(usr, pipefailtext)
 				return 1
 			M.build_network()
 			if (M.node1)
@@ -669,7 +669,7 @@ Buildable meters
 
 			P.initialize()
 			if (!P)
-				usr << pipefailtext //"There's nothing to connect this pipe to! (with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)"
+				to_chat(usr, pipefailtext) //"There's nothing to connect this pipe to! (with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)"
 				return 1
 			P.build_network()
 			if (P.node1)
@@ -850,7 +850,7 @@ Buildable meters
 			P.level = pipelevel
 			P.initialize()
 			if (!P)
-				usr << pipefailtext
+				to_chat(usr, pipefailtext)
 				return 1
 			P.build_network()
 			if (P.node1)

@@ -89,7 +89,7 @@
 			fingerprint_hash = H.fingerprint
 
 /obj/item/card/id/attack_self(mob/user as mob)
-	user.visible_message("[user] shows you: \icon[src] [name]: assignment: [assignment]")
+	user.visible_message("[user] shows you: [htmlicon(src, viewers(user))] [name]: assignment: [assignment]")
 
 	src.add_fingerprint(user)
 	return
@@ -106,7 +106,7 @@
 	set category = "Object"
 	set src in usr
 
-	usr << text("\icon[] []: The current assignment on the card is [].", src, src.name, src.assignment)
+	to_chat(usr, "[htmlicon(src, usr)] [name]: The current assignment on the card is [assignment]")
 	to_chat(usr, "The blood type on the card is [blood_type].")
 	to_chat(usr, "The DNA hash on the card is [dna_hash].")
 	to_chat(usr, "The fingerprint hash on the card is [fingerprint_hash].")

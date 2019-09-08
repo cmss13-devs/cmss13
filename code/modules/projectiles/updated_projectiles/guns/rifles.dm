@@ -229,14 +229,14 @@
 			return
 		if(burst_amount == config.med_burst_value && (flags_gun_features & GUN_BURST_ON))
 			playsound(usr, 'sound/machines/click.ogg', 15, 1)
-			to_chat(usr, SPAN_NOTICE("\icon[src] You set [src] to full auto mode."))
+			to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to full auto mode."))
 			burst_amount = config.mhigh_burst_value
 			burst_scatter_mult = config.high_scatter_value
 			return
 		if(burst_amount == config.mhigh_burst_value && !(flags_gun_features & GUN_BURST_ON))
 			flags_gun_features |= GUN_BURST_ON
 			playsound(usr, 'sound/machines/click.ogg', 15, 1)
-			to_chat(usr, SPAN_NOTICE("\icon[src] You set [src] to semi auto mode."))
+			to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to semi auto mode."))
 			burst_amount = config.med_burst_value
 			burst_scatter_mult = config.low_scatter_value
 			return

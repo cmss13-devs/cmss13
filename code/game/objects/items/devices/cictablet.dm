@@ -36,7 +36,6 @@
     var/status_display_freq = "1435"
     var/stat_msg1
     var/stat_msg2
-    var/datum/announcement/priority/command/crew_announcement = new
 
 /obj/item/device/cotablet/attack_self(mob/user as mob)
     if(src.allowed(user))
@@ -218,7 +217,6 @@
                     interact(usr)
                 if(ACCESS_MARINE_COMMANDER in I.access)
                     authenticated = 2
-                    crew_announcement.announcer = GetNameAndAssignmentFromId(I)
                     interact(usr)
             else
                 I = C.wear_id
@@ -226,11 +224,9 @@
                     if(check_access(I)) authenticated = 1
                     if(ACCESS_MARINE_COMMANDER in I.access)
                         authenticated = 2
-                        crew_announcement.announcer = GetNameAndAssignmentFromId(I)
                         interact(usr)
         if("logout")
             authenticated = 0
-            crew_announcement.announcer = ""
             interact(usr)
         if("swipeidseclevel")
             var/mob/M = usr
@@ -266,7 +262,7 @@
                 var/input = input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "") as message|null
                 if(!input || !(usr in view(1,src)) || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE) r_FAL
 
-                crew_announcement.Announce(input, to_xenos = 0)
+                marine_announcement(input)
                 log_announcement("[usr.name] ([usr.ckey]) has announced the following: [input]")
                 cooldown_message = world.time
 

@@ -8,14 +8,14 @@
 
 /datum/event/radiation_storm/start()
 	spawn()
-		command_announcement.Announce("High levels of radiation have been detected. Report to the Medical Bay if you begin to feel symptoms such as disorientation, nausea, or halucinations.", "Anomaly Alert", new_sound = 'sound/AI/radiation.ogg')
+		marine_announcement("High levels of radiation have been detected. Report to the Medical Bay if you begin to feel symptoms such as disorientation, nausea, or halucinations.", "Anomaly Alert", 'sound/AI/radiation.ogg')
 		make_maint_all_access()
 
 
 		sleep(600)
 
 
-		command_announcement.Announce("The [station_name] has entered the radiation belt. Please remain in a sheltered area until it has passed.", "Anomaly Alert")
+		marine_announcement("The [station_name] has entered the radiation belt. Please remain in a sheltered area until it has passed.", "Anomaly Alert")
 
 		for(var/i = 0, i < 10, i++)
 			for(var/mob/living/carbon/human/H in living_mob_list)
@@ -32,7 +32,7 @@
 			sleep(100)
 
 
-		command_announcement.Announce("The [station_name] has passed the radiation belt. Please report to medbay if you experience any unusual symptoms. Maintenance will lose all access again shortly.", "Anomaly Alert")
+		marine_announcement("The [station_name] has passed the radiation belt. Please report to medbay if you experience any unusual symptoms. Maintenance will lose all access again shortly.", "Anomaly Alert")
 
 
 		sleep(600) // Want to give them time to get out of maintenance.

@@ -163,7 +163,8 @@ This can probably be done a lot more elegantly either way, but it'll suffice for
 	for(var/obj/machinery/cryopod/evacuation/C in cryo_cells)
 		if(C.occupant)
 			n++
-			if(C.occupant.stat != DEAD && msg) C.occupant << msg
+			if(C.occupant.stat != DEAD && msg) 
+				to_chat(C.occupant, msg)
 	//Hardcoded typecast, which should be changed into some weight system of some kind eventually.
 	var/area/A = msg ? evacuation_program.master.loc.loc : staging_area //Before or after launch.
 	for(var/i in A)
@@ -172,16 +173,19 @@ This can probably be done a lot more elegantly either way, but it'll suffice for
 			M = locate(/mob/living/carbon/human) in i
 			if(M)
 				n++ //No hiding in closets.
-				if(M.stat != DEAD && msg) M << msg
+				if(M.stat != DEAD && msg) 
+					to_chat(M, msg)
 		else if(istype(i, /mob/living/carbon/human) || isrobot(i))
 			n++ //Dead or alive, counts as a thing.
 			M = i
-			if(M.stat != DEAD && msg) M << msg
+			if(M.stat != DEAD && msg) 
+				to_chat(M, msg)
 		else if(istype(i, /mob/living/carbon/Xenomorph))
 			var/mob/living/carbon/Xenomorph/X = i
 			if(X.mob_size == MOB_SIZE_BIG) r_FAL //Huge xenomorphs will automatically fail the launch.
 			n++
-			if(X.stat != DEAD && msg) X << msg
+			if(X.stat != DEAD && msg) 
+				to_chat(X, msg)
 	if(n > cryo_cells.len)  . = FALSE //Default is 3 cryo cells and three people inside the pod.
 	if(msg)
 		passengers += n //Return the total number of occupants instead if it successfully launched.

@@ -904,7 +904,7 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 	if(isXeno(usr) && (usr.loc == src))
 		pick_tunnel(usr)
 	else
-		to_chat(usr, "You stare into the dark abyss") + "[contents.len ? ", making out what appears to be two little lights... almost like something is watching." : "."]"
+		to_chat(usr, "You stare into the dark abyss" + "[contents.len ? ", making out what appears to be two little lights... almost like something is watching." : "."]")
 
 /obj/structure/tunnel/verb/exit_tunnel_verb()
 	set name = "Exit Tunnel"

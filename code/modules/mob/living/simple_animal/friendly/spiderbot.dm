@@ -259,4 +259,4 @@
 /mob/living/simple_animal/spiderbot/examine(mob/user)
 	..()
 	if(held_item)
-		to_chat(user, "It is carrying \a [held_item] \icon[held_item].")
+		to_chat(user, "It is carrying \a [held_item] [htmlicon(held_item, user)].")

@@ -231,7 +231,7 @@
 				qdel(src)
 		if(ismouse(M))
 			var/mob/living/simple_animal/mouse/N = M
-			N << text(SPAN_NOTICE("You nibble away at [src]."))
+			to_chat(N, text(SPAN_NOTICE("You nibble away at [src].")))
 			if(prob(50))
 				N.visible_message("[N] nibbles away at [src].", "")
 			//N.emote("nibbles away at the [src]")

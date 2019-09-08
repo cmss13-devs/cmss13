@@ -217,9 +217,9 @@ var/list/alldepartments = list()
 	for(var/client/C in admins)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 			if(msg_admin)
-				C << msg_admin
+				to_chat(C, msg_admin)
 			else
-				C << msg_ghost
+				to_chat(C, msg_ghost)
 			C << 'sound/effects/sos-morse-code.ogg'
 	if(msg_ghost)
 		for(var/mob/dead/observer/g in player_list)
@@ -229,7 +229,7 @@ var/list/alldepartments = list()
 			if(C && C.admin_holder)
 				if((R_ADMIN|R_MOD) & C.admin_holder.rights) //staff don't need to see the fax twice
 					continue
-			C << msg_ghost
+			to_chat(C, msg_ghost)
 			C << 'sound/effects/sos-morse-code.ogg'
 
 proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/dpt)

@@ -574,7 +574,7 @@ var/list/admin_verbs_mentor = list(
 		ban_unban_log_save("[ckey] warned [warned_ckey], resulting in a [AUTOBANTIME] minute autoban.")
 		if(C)
 			message_admins("[key_name_admin(src)] has warned [key_name_admin(C)] resulting in a [AUTOBANTIME] minute ban.")
-			to_chat(C, "<font color='red'><BIG><B>You have been autobanned due to a warning by [ckey].</B></BIG><br>This is a temporary ban, it will be removed in [AUTOBANTIME] minutes.")
+			to_chat_forced(C, "<font color='red'><BIG><B>You have been autobanned due to a warning by [ckey].</B></BIG><br>This is a temporary ban, it will be removed in [AUTOBANTIME] minutes.")
 			qdel(C)
 		else
 			message_admins("[key_name_admin(src)] has warned [warned_ckey] resulting in a [AUTOBANTIME] minute ban.")
@@ -837,7 +837,7 @@ var/list/admin_verbs_mentor = list(
 		if(!ticker || !ticker.mode)
 			to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 			return
-		src << ticker.mode.pred_current_num
+		to_chat(src, ticker.mode.pred_current_num)
 		var/value = input(src,"What is the new maximum number of predators?","Input:", ticker.mode.pred_maximum_num) as num|null
 		if(value < ticker.mode.pred_current_num)
 			to_chat(src, SPAN_WARNING("Can't have max number of predators than there already are."))

@@ -46,7 +46,7 @@
 /obj/item/photo/examine(mob/user)
 	if(in_range(user, src))
 		show(user)
-		user << desc
+		to_chat(user, desc)
 	else
 		to_chat(user, SPAN_NOTICE("It is too far away."))
 

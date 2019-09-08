@@ -112,7 +112,7 @@
 
 /mob/living/simple_animal/hostile/mimic/crate/proc/trigger()
 	if(!attempt_open)
-		visible_message(SPAN_WARNING("\icon[src] [src] starts to move!"))
+		visible_message(SPAN_WARNING("[htmlicon(src, viewers(src))] [src] starts to move!"))
 		attempt_open = 1
 
 //

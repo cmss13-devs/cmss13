@@ -284,4 +284,4 @@
 		to_chat(src, "-")
 	else
 		for(var/m in src.mutators.purchased_mutators)
-			src << m
+			to_chat(src, m)

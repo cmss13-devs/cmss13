@@ -2,11 +2,6 @@
 	var/active = 0
 	flags_atom = FPRINT|NOBLOODY
 
-	suicide_act(mob/user)
-		viewers(user) << pick(SPAN_DANGER("<b>[user] is slitting \his stomach open with the [src.name]! It looks like \he's trying to commit seppuku.</b>"), \
-							SPAN_DANGER("<b>[user] is falling on the [src.name]! It looks like \he's trying to commit suicide.</b>"))
-		return (BRUTELOSS|FIRELOSS)
-
 
 
 /obj/item/weapon/energy/axe

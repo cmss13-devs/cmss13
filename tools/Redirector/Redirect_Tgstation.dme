@@ -16,6 +16,6 @@
 #include "Configurations.dm"
 #include "Redirector.dm"
 #include "textprocs.dm"
-#include "skin.dmf"
+#include "skintwo.dmf"
 // END_INCLUDE
 

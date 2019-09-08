@@ -9,21 +9,21 @@ var/global/floorIsLava = 0
 	log_adminwarn(msg)
 	for(var/client/C in admins)
 		if(R_ADMIN & C.admin_holder.rights)
-			C << msg
+			to_chat(C, msg)
 
 /proc/message_mods(var/msg) // +MOD and above (not Mentors)
 	msg = "<span class=\"admin\"><span class=\"prefix\">MOD LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_adminwarn(msg)
 	for(var/client/C in admins)
 		if(R_MOD & C.admin_holder.rights)
-			C << msg
+			to_chat(C, msg)
 
 /proc/message_staff(var/msg) // ALL staff - including Mentors
 	msg = "<span class=\"admin\"><span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_adminwarn(msg)
 	for(var/client/C in admins)
 		if(C.admin_holder.rights)
-			C << msg
+			to_chat(C, msg)
 
 /proc/msg_admin_attack(var/text) //Toggleable Attack Messages
 	log_attack(text)
@@ -32,7 +32,7 @@ var/global/floorIsLava = 0
 		if(R_MOD & C.admin_holder.rights)
 			if(C.prefs.toggles_chat & CHAT_ATTACKLOGS)
 				var/msg = rendered
-				C << msg
+				to_chat(C, msg)
 
 /proc/msg_admin_niche(var/msg) //Toggleable Niche Messages
 	log_admin(msg)
@@ -40,7 +40,7 @@ var/global/floorIsLava = 0
 	for(var/client/C in admins)
 		if(R_MOD & C.admin_holder.rights)
 			if(C.prefs.toggles_chat & CHAT_NICHELOGS)
-				C << msg
+				to_chat(C, msg)
 
 /proc/msg_admin_ff(var/text)
 	log_attack(text) //Do everything normally BUT IN GREEN SO THEY KNOW
@@ -49,7 +49,7 @@ var/global/floorIsLava = 0
 		if(R_MOD & C.admin_holder.rights)
 			if(C.prefs.toggles_chat & CHAT_FFATTACKLOGS)
 				var/msg = rendered
-				C << msg
+				to_chat(C, msg)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////Panels
 
@@ -624,9 +624,11 @@ var/global/floorIsLava = 0
 		log_admin("[key_name(usr)] has made the round end early.")
 		message_admins(SPAN_NOTICE("[key_name(usr)] has made the round end early."), 1)
 		for(var/client/C in admins)
-			to_chat(C, "<hr>")
-			to_chat(C, "<span class='centerbold'>Staff-Only Alert: <EM>[usr.key]</EM> has made the round end early")
-			to_chat(C, "<hr>")
+			to_chat(C, {"
+			<hr>
+			[SPAN_CENTERBOLD("Staff-Only Alert: <EM>[usr.key]</EM> has made the round end early")]
+			<hr>
+			"})
 
 		return
 
@@ -641,9 +643,9 @@ var/global/floorIsLava = 0
 		log_admin("[key_name(usr)] [ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
 		message_admins("<span class='notice'>[key_name(usr)] [ticker.delay_end ? "delayed the round end" : "has made the round end normally"].</span>i	", 1)
 		for(var/client/C in admins)
-			to_chat(C, "<hr>")
-			to_chat(C, "<span class='centerbold'>Staff-Only Alert: <EM>[usr.key]</EM> [ticker.delay_end ? "delayed the round end" : "has made the round end normally"]")
-			to_chat(C, "<hr>")
+			to_chat(C, {"<hr>
+			[SPAN_CENTERBOLD("Staff-Only Alert: <EM>[usr.key]</EM> [ticker.delay_end ? "delayed the round end" : "has made the round end normally"]")]
+			<hr>"})
 
 		return //alert("Round end delayed", null, null, null, null, null)
 	going = !( going )

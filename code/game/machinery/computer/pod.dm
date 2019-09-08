@@ -28,7 +28,7 @@
 		return
 
 	if(!( connected ))
-		viewers(null, null) << "Cannot locate mass driver connector. Cancelling firing sequence!"
+		to_chat(viewers(null, null), "Cannot locate mass driver connector. Cancelling firing sequence!")
 		return
 
 	for(var/obj/machinery/door/poddoor/M in machines)

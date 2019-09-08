@@ -97,7 +97,7 @@
 	if(admin_holder && !C.admin_holder)
 		recieve_message = "<font color='[recieve_color]'><b>-- Click the [recieve_pm_type]'s name to reply --</b></font>\n"
 		if(C.adminhelped)
-			C << recieve_message
+			to_chat(C, recieve_message)
 			C.adminhelped = 0
 
 		//AdminPM popup for ApocStation and anybody else who wants to use it. Set it with POPUP_ADMIN_PM in config.txt ~Carn
@@ -113,9 +113,9 @@
 						adminhelp(reply)													//sender has left, adminhelp instead
 				return
 
-	recieve_message = "<br><br><font color='[recieve_color]'><b>[recieve_pm_type] PM from [get_options_bar(src, C.admin_holder ? 1 : 0, C.admin_holder ? 1 : 0, 1)]: <font color='#DA6200'>[msg]</b></font><br>"
-	C << recieve_message
-	to_chat(src, "<br><br><font color='#009900'><b>[send_pm_type]PM to [get_options_bar(C, admin_holder ? 1 : 0, admin_holder ? 1 : 0, 1)]: <font color='#DA6200'>[msg]</b></font><br>")
+	recieve_message = "<font color='[recieve_color]'><b>[recieve_pm_type] PM from [get_options_bar(src, C.admin_holder ? 1 : 0, C.admin_holder ? 1 : 0, 1)]: <font color='#DA6200'>[msg]</b></font><br>"
+	to_chat(C, recieve_message)
+	to_chat(src, "<font color='#009900'><b>[send_pm_type]PM to [get_options_bar(C, admin_holder ? 1 : 0, admin_holder ? 1 : 0, 1)]: <font color='#DA6200'>[msg]</b></font><br>")
 
 	//play the recieving admin the adminhelp sound (if they have them enabled)
 	//non-admins shouldn't be able to disable this

@@ -422,7 +422,7 @@
 
 	//This is where things change and shit gets real
 
-	command_announcement.Announce("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", new_sound='sound/AI/dropship_emergency.ogg')
+	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg')
 
 	playsound(turfs_int[sound_target], sound_landing, 100, 0)
 

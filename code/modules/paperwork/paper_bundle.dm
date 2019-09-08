@@ -76,7 +76,7 @@
 				to_chat(user, SPAN_DANGER("You must hold \the [P] steady to burn \the [src]."))
 
 /obj/item/paper_bundle/examine(mob/user)
-	user << desc
+	to_chat(usr, desc)
 	if(in_range(user, src))
 		src.attack_self(user)
 	else

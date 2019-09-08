@@ -99,7 +99,7 @@ log transactions
 
 /obj/machinery/atm/attack_hand(mob/user as mob)
 	if(issilicon(user))
-		to_chat(user, SPAN_DANGER("\icon[src] Artificial unit recognized. Artificial units do not currently receive monetary compensation, as per Weyland Yutani regulation #1005."))
+		to_chat(user, SPAN_DANGER("[htmlicon(src, usr)] Artificial unit recognized. Artificial units do not currently receive monetary compensation, as per Weyland Yutani regulation #1005."))
 		return
 	if(get_dist(src,user) <= 1)
 
@@ -205,7 +205,7 @@ log transactions
 						var/target_account_number = text2num(href_list["target_acc_number"])
 						var/transfer_purpose = href_list["purpose"]
 						if(charge_to_account(target_account_number, authenticated_account.owner_name, transfer_purpose, machine_id, transfer_amount))
-							to_chat(usr, "\icon[src]<span class='info'>Funds transfer successful.</span>")
+							to_chat(usr, "[htmlicon(src, usr)]<span class='info'>Funds transfer successful.</span>")
 							authenticated_account.money -= transfer_amount
 
 							//create an entry in the account transaction log
@@ -218,10 +218,10 @@ log transactions
 							T.amount = "([transfer_amount])"
 							authenticated_account.transaction_log.Add(T)
 						else
-							to_chat(usr, "\icon[src]<span class='warning'>Funds transfer failed.</span>")
+							to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>Funds transfer failed.</span>")
 
 					else
-						to_chat(usr, "\icon[src]<span class='warning'>You don't have enough funds to do that!</span>")
+						to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>You don't have enough funds to do that!</span>")
 			if("view_screen")
 				view_screen = text2num(href_list["view_screen"])
 			if("change_security_level")
@@ -259,11 +259,11 @@ log transactions
 									T.time = worldtime2text()
 									failed_account.transaction_log.Add(T)
 							else
-								to_chat(usr, SPAN_DANGER("\icon[src] Incorrect pin/account combination entered, [max_pin_attempts - number_incorrect_tries] attempts remaining."))
+								to_chat(usr, SPAN_DANGER("[htmlicon(src, usr)] Incorrect pin/account combination entered, [max_pin_attempts - number_incorrect_tries] attempts remaining."))
 								previous_account_number = tried_account_num
 								playsound(src, 'sound/machines/buzz-sigh.ogg', 25, 1)
 						else
-							to_chat(usr, SPAN_DANGER("\icon[src] incorrect pin/account combination entered."))
+							to_chat(usr, SPAN_DANGER("[htmlicon(src, usr)] incorrect pin/account combination entered."))
 							number_incorrect_tries = 0
 					else
 						playsound(src, 'sound/machines/twobeep.ogg', 25, 1)
@@ -279,7 +279,7 @@ log transactions
 						T.time = worldtime2text()
 						authenticated_account.transaction_log.Add(T)
 
-						to_chat(usr, SPAN_NOTICE(" \icon[src] Access granted. Welcome user '[authenticated_account.owner_name].'"))
+						to_chat(usr, SPAN_NOTICE(" [htmlicon(src, usr)] Access granted. Welcome user '[authenticated_account.owner_name].'"))
 
 					previous_account_number = tried_account_num
 			if("e_withdrawal")
@@ -307,7 +307,7 @@ log transactions
 						T.time = worldtime2text()
 						authenticated_account.transaction_log.Add(T)
 					else
-						to_chat(usr, "\icon[src]<span class='warning'>You don't have enough funds to do that!</span>")
+						to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>You don't have enough funds to do that!</span>")
 			if("withdrawal")
 				var/amount = max(text2num(href_list["funds_amount"]),0)
 				amount = round(amount, 0.01)
@@ -332,7 +332,7 @@ log transactions
 						T.time = worldtime2text()
 						authenticated_account.transaction_log.Add(T)
 					else
-						to_chat(usr, "\icon[src]<span class='warning'>You don't have enough funds to do that!</span>")
+						to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>You don't have enough funds to do that!</span>")
 			if("balance_statement")
 				if(authenticated_account)
 					var/obj/item/paper/R = new(src.loc)
@@ -428,7 +428,7 @@ log transactions
 			if(I)
 				authenticated_account = attempt_account_access(I.associated_account_number)
 				if(authenticated_account)
-					to_chat(human_user, SPAN_NOTICE(" \icon[src] Access granted. Welcome user '[authenticated_account.owner_name].'"))
+					to_chat(human_user, SPAN_NOTICE(" [htmlicon(src, human_user)] Access granted. Welcome user '[authenticated_account.owner_name].'"))
 
 					//create a transaction log entry
 					var/datum/transaction/T = new()

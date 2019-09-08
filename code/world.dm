@@ -218,12 +218,10 @@ var/world_topic_spam_protect_time = world.timeofday
 
 				var/text = ""
 				text += "<hr><br>"
-				text += "<span class='centerbold'>"
-				text += "<font color='#00CC00'><b>You have 30 seconds to vote for the next map! Use the \"Map Vote\" verb in the OOC tab or click <a href='?src=\ref[src];vote_for_map=1'>here</a> to select an option.</b></font>"
-				text += "</span>"
+				text += SPAN_CENTERBOLD("<font color='#00CC00'>You have 30 seconds to vote for the next map! Use the \"Map Vote\" verb in the OOC tab or click <a href='?src=\ref[src];vote_for_map=1'>here</a> to select an option.</font>")
 				text += "<hr><br>"
 
-				world << text
+				to_world(text)
 				world << 'sound/voice/start_your_voting.ogg'
 
 			ticker.delay_end = TRUE
@@ -239,7 +237,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			message_admins("World/Topic() call (likely MapDaemon.exe) has resumed the round end.", 1)
 
 			//So admins have a chance to make EORG bans and do whatever
-			message_staff("<span class='round_body'>NOTICE: Delay round within 30 seconds in order to prevent auto-restart!</span>", 1)
+			message_staff(SPAN_BOLDANNOUNCE("NOTICE: Delay round within 30 seconds in order to prevent auto-restart!</span>"), 1)
 
 			MapDaemonHandleRestart() //Doesn't hold
 
@@ -299,7 +297,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 			text += "</font>"
 
-			world << text
+			to_world(text)
 
 			return next_map
 

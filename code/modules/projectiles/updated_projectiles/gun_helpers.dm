@@ -689,17 +689,17 @@ should be alright.
 			if(flags_gun_features & GUN_FULL_AUTO_ON)
 				flags_gun_features &= ~GUN_FULL_AUTO_ON
 				flags_gun_features &= ~GUN_BURST_ON
-				to_chat(usr, SPAN_NOTICE("\icon[src] You set [src] to single fire mode."))
+				to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to single fire mode."))
 			else
 				flags_gun_features|= GUN_FULL_AUTO_ON
-				to_chat(usr, SPAN_NOTICE("\icon[src] You set [src] to full auto mode."))
+				to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to full auto mode."))
 		else
 			flags_gun_features |= GUN_BURST_ON
-			to_chat(usr, SPAN_NOTICE("\icon[src] You set [src] to burst fire mode."))
+			to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to burst fire mode."))
 	else
 		flags_gun_features ^= GUN_BURST_ON
 
-		to_chat(usr, SPAN_NOTICE("\icon[src] You [flags_gun_features & GUN_BURST_ON ? "<B>enable</b>" : "<B>disable</b>"] [src]'s burst fire mode."))
+		to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You [flags_gun_features & GUN_BURST_ON ? "<B>enable</b>" : "<B>disable</b>"] [src]'s burst fire mode."))
 
 
 /obj/item/weapon/gun/verb/empty_mag()

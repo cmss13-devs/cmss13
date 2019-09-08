@@ -54,7 +54,7 @@
 
 			if(alarms_to_show.len < 5)
 				for(var/msg in alarms_to_show)
-					src << msg
+					to_chat(src, msg)
 			else if(alarms_to_show.len)
 
 				var/msg = "--- "

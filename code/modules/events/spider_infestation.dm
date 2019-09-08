@@ -13,7 +13,7 @@
 	sent_spiders_to_station = 0
 
 /datum/event/spider_infestation/announce()
-	command_announcement.Announce("Unidentified lifesigns detected.", "Lifesign Alert", new_sound = 'sound/AI/aliens.ogg')
+	marine_announcement("Unidentified lifesigns detected.", "Lifesign Alert", 'sound/AI/aliens.ogg')
 
 
 /datum/event/spider_infestation/start()

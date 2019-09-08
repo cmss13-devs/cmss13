@@ -319,23 +319,10 @@
 	if(!input)
 		return
 
-	var/queensWord = "<br><h2 class='alert'>The words of the queen reverberate in your head...</h2>"
-	queensWord += "<br><span class='alert'>[input]</span><br>"
-
-	if(ticker && ticker.mode)
-		for(var/datum/mind/L in ticker.mode.xenomorphs)
-			var/mob/living/carbon/Xenomorph/X = L.current
-			if(X && X.client && istype(X) && !X.stat && hivenumber == X.hivenumber)
-				X << sound(get_sfx("queen"),wait = 0,volume = 50)
-				to_chat(X, "[queensWord]")
-
-	spawn(0)
-		for(var/mob/dead/observer/G in player_list)
-			G << sound(get_sfx("queen"),wait = 0,volume = 50)
-			to_chat(G, "[queensWord]")
+	xeno_announcement(input, hivenumber)
 
 	log_admin("[key_name(src)] has created a Word of the Queen report:")
-	log_admin("[queensWord]")
+	log_admin("[input]")
 	message_admins("[key_name_admin(src)] has created a Word of the Queen report.", 1)
 
 

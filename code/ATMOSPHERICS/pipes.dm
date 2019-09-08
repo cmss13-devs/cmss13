@@ -1106,9 +1106,9 @@
 
 	if(istype(W, /obj/item/device/analyzer) && in_range(user, src))
 		for (var/mob/O in viewers(user, null))
-			to_chat(O, SPAN_DANGER("[user] has used the analyzer on \icon[icon]"))
+			to_chat(O, SPAN_DANGER("[user] has used the analyzer on [htmlicon(icon, O)]"))
 
-		to_chat(user, SPAN_NOTICE(" Results of analysis of \icon[icon]"))
+		to_chat(user, SPAN_NOTICE(" Results of analysis of [htmlicon(icon, user)]"))
 		if (pressure>0)
 			to_chat(user, SPAN_NOTICE(" Pressure: [round(pressure,0.1)] kPa"))
 			to_chat(user, SPAN_NOTICE(" [gas_type]: [100]%"))

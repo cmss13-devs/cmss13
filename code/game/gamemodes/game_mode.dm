@@ -315,11 +315,9 @@ proc/display_roundstart_logout_report()
 						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (<font color='red'><b>Ghosted</b></font>)\n"
 						continue //Ghosted while alive
 
-
-
 	for(var/mob/M in mob_list)
 		if(M.client && M.client.admin_holder)
-			M << msg
+			to_chat(M, msg)
 
 
 proc/get_nt_opposed()
@@ -353,7 +351,7 @@ proc/get_nt_opposed()
 		return
 
 	var/obj_count = 1
-	player.to_chat(current, SPAN_NOTICE(" Your current objectives:"))
+	to_chat(player.current, SPAN_NOTICE(" Your current objectives:"))
 	for(var/datum/objective/objective in player.objectives)
 		to_chat(player.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 		obj_count++

@@ -149,7 +149,7 @@
 					firemission_edit_data += list(list("name" = sanitize(copytext(firerec.weapon.name, 1, 50)), "ammo" = ammo, "gimbal" = gimbal, "offsets" = firerec.offsets))
 
 		if(!found_selected)
-			selected_firemission = firemission_envelope.generate_mission()
+			selected_firemission = null
 		
 		if(editing_firemission)
 			fm_length = editing_firemission.mission_length

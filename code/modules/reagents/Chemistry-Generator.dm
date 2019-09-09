@@ -478,11 +478,12 @@
 	if(!chemical_gen_reactions_list)
 		chemical_gen_reactions_list = list()
 	if(!chemical_gen_reactions_list["[src.id]"])
-		var/list/recipe_holder = list("required_reagents","required_catalysts")
+		var/list/recipe_holder = list("required_reagents","required_catalysts","result")
 		chemical_gen_reactions_list["[src.id]"] += recipe_holder
 		generate_recipe()
 	required_reagents = chemical_gen_reactions_list["[src.id]"]["required_reagents"]
 	required_catalysts = chemical_gen_reactions_list["[src.id]"]["required_catalysts"]
+	result = chemical_gen_reactions_list["[src.id]"]["result"]
 
 /////////Tier 1
 //alpha

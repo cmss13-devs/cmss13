@@ -1146,10 +1146,10 @@
 					to_chat(usr,SPAN_WARNING("This ID is already in use."))
 					return
 				var/datum/chemical_reaction/generated/R = new /datum/chemical_reaction/generated
-				var/list/recipe_holder = list("required_reagents","required_catalysts")
+				var/list/recipe_holder = list("required_reagents","required_catalysts","result")
 				chemical_gen_reactions_list["[target]"] += recipe_holder
 				R.id = target
-				R.result = input(usr,"Enter the reagent ID the reaction should result in:")
+				chemical_gen_reactions_list["[target]"]["result"] = input(usr,"Enter the reagent ID the reaction should result in:")
 				R.name = capitalize(target)
 				var/modifier = 1
 				var/component = "water"

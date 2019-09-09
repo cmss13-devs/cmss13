@@ -299,6 +299,7 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Ravager")  	// Only Ravager.
+	mutator_actions_to_remove = list("Empower (100)")
 	mutator_actions_to_add = list(/datum/action/xeno_action/activable/charge)
 	keystone = TRUE
 
@@ -326,6 +327,7 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Ravager")  	// Only Ravager.
+	mutator_actions_to_remove = list("Empower (100)")
 	mutator_actions_to_add = list(/datum/action/xeno_action/activable/spike_spray, /datum/action/xeno_action/activable/spin_slash)
 	keystone = TRUE
 

@@ -31,6 +31,7 @@
 	// Strain variables
 
 	// Vanilla
+	var/empower_cooldown = 300
 
 	// Spike shed variables
 	var/spike_shed_cooldown = 100 
@@ -101,6 +102,7 @@
 		/datum/action/xeno_action/xeno_resting,
 		/datum/action/xeno_action/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/empower
 		)
 
 /mob/living/carbon/Xenomorph/Ravager/New()

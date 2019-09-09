@@ -87,11 +87,14 @@
 			temp_health = 0
 			damage -= temp_health
 
-	switch(damagetype)
-		if(BRUTE)
-			adjustBruteLoss(damage)
-		if(BURN)
-			adjustFireLoss(damage)
+	if(overheal > 0)
+		apply_overheal_damage(damage)
+	else
+		switch(damagetype)
+			if(BRUTE)
+				adjustBruteLoss(damage)
+			if(BURN)
+				adjustFireLoss(damage)
 
 	updatehealth()
 	return 1
@@ -189,3 +192,9 @@
 				if(prob(60) && !victim.stat && !(victim.species.flags & NO_PAIN))
 					victim.emote("scream") //Topkek
 				victim.take_limb_damage(0, rand(10, 25)) //Sizzledam! This automagically burns a random existing body part.
+
+/mob/living/carbon/Xenomorph/proc/apply_overheal_damage(var/damage)
+	overheal -= damage
+	if(overheal < 0)
+		adjustBruteLoss(-overheal)
+		overheal = 0

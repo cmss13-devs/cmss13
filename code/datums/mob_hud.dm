@@ -199,6 +199,15 @@ var/datum/mob_hud/huds = list(
 		if(!amount) amount = 1 //don't want the 'zero health' icon when we still have 4% of our health
 		holder.icon_state = "xenohealth[amount]"
 
+/mob/living/carbon/Xenomorph/proc/overlay_overheal()
+	var/image/holder = hud_list[HEALTH_HUD_XENO]
+	holder.overlays.Cut()
+	var/percentage_overheal = round(overheal*100/max_overheal, 10)
+	if(percentage_overheal > 1)
+		holder.overlays += image('icons/mob/hud/hud.dmi', "xenooverheal[percentage_overheal]")
+	else 
+		holder.overlays += image('icons/mob/hud/hud.dmi', "xenooverheal0")
+
 /mob/living/carbon/Xenomorph/med_hud_set_armor()
 	var/image/holder = hud_list[ARMOR_HUD_XENO]
 	if(stat == DEAD || armor_deflection <=0)

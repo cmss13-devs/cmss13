@@ -87,6 +87,10 @@
 	// Temporary HP.
 	var/temp_health = 0 // As dumb as it sounds, literally just an HP buffer. Should be reset to 0 by whatever adds it to begin with.
 
+	// Overheal - Gives you temporary extra health
+	var/overheal = 0
+	var/max_overheal = 0
+
 	var/plasma_stored = 10
 	var/plasma_max = 10
 	var/plasma_gain = 5
@@ -385,6 +389,9 @@
 			hud_set_queen_overwatch()
 			if(hive.living_xeno_queen)
 				handle_xeno_leader_pheromones()
+
+	// Set the maximum overheal to % of the xeno's max health
+	max_overheal = round(maxHealth*XENO_MAXOVERHEAL_OF_MAXHEALTH)
 
 	if(round_statistics && !statistic_exempt)
 		round_statistics.track_new_participant(faction, 1)

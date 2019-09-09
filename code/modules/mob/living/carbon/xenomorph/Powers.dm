@@ -1252,6 +1252,69 @@
 			var/datum/action/act = X
 			act.update_button_icon()
 
+
+// Ravager Empower
+/mob/living/carbon/Xenomorph/proc/empower()
+	var/datum/caste_datum/ravager/rCaste = src.caste
+
+	if (!check_state())
+		return
+
+	if (used_lunge)
+		to_chat(src, SPAN_XENOWARNING("You must gather your strength before using empower again."))
+		return
+
+	if (!check_plasma(100))
+		to_chat(src, SPAN_XENOWARNING("You don't have enough plasma! You need [100-src.plasma_stored] more.</span>"))
+		return
+
+	visible_message(SPAN_XENOWARNING("[src] gets empowered by the surrounding enemies!"), SPAN_XENOWARNING("You feel a rush of power from the surrounding enemies!"))
+
+	create_empower()
+
+	var/range = 2
+	var/list/mobs_in_range = orange(range)
+	// Spook patrol
+	emote("tail")
+
+	var/accumulative_health = 0
+	for(var/mob/living/carbon/human/H in mobs_in_range)
+		if(H.stat == DEAD || istype(H.buckled, /obj/structure/bed/nest)) 
+			continue
+
+		accumulative_health += round(max_overheal/XENO_ENEMIES_FOR_MAXOVERHEAL)
+		
+		shake_camera(H, 2, 1)
+
+		if(accumulative_health >= max_overheal)
+			accumulative_health = max_overheal
+			break
+
+	set_overheal(accumulative_health)
+
+	used_lunge = 1
+	use_plasma(100)
+
+	add_timer(CALLBACK(src, .proc/empower_cooldown), rCaste.empower_cooldown)
+
+// Adds overheal to the xeno
+/mob/living/carbon/Xenomorph/proc/set_overheal(var/added_health)
+	if(added_health > max_overheal)
+		added_health = max_overheal
+
+	overheal = added_health
+
+	updatehealth()
+
+// Cooldown proc for Ravager Empower
+/mob/living/carbon/Xenomorph/proc/empower_cooldown()
+	used_lunge = 0
+	to_chat(src, SPAN_NOTICE("You gather enough strength to use your empower again."))
+	for(var/X in actions)
+		var/datum/action/act = X
+		act.update_button_icon()
+
+
 // Utility ability for dancer praes
 /mob/living/carbon/Xenomorph/proc/praetorian_dance()
 	var/mob/living/carbon/Xenomorph/Praetorian/P = src

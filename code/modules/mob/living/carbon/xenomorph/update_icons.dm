@@ -112,14 +112,18 @@
 	
 	overlays_standing[X_SUIT_LAYER] = screech_image
 	apply_overlay(X_SUIT_LAYER)
-	spawn(30)
-		remove_overlay(X_SUIT_LAYER)
+	add_timer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 30)
 
 /mob/living/carbon/Xenomorph/proc/create_stomp()
 	overlays_standing[X_SUIT_LAYER] = image("icon"='icons/mob/xenos/2x2_Xenos.dmi', "icon_state" = "stomp") //Ehh, suit layer's not being used.
 	apply_overlay(X_SUIT_LAYER)
-	spawn(12)
-		remove_overlay(X_SUIT_LAYER)
+	add_timer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 12)
+
+/mob/living/carbon/Xenomorph/proc/create_empower()
+	overlays_standing[X_SUIT_LAYER] = image("icon"='icons/mob/xenos/xenomorph_64x64.dmi', "icon_state" = "empower")
+	apply_overlay(X_SUIT_LAYER)
+	add_timer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 20)
+
 
 /mob/living/carbon/Xenomorph/update_fire()
 	remove_overlay(X_FIRE_LAYER)

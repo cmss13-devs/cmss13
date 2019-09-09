@@ -10,7 +10,6 @@
 #define XENO_UNIVERSAL_PLASMAMULT 1.0	// Use to unilaterally buff every caste's total PLASMA.
 #define XENO_UNIVERSAL_DAMAGEMULT 1.0	// Use to unilaterally buff every caste's DAMAGE.
 
-
 /////////////////////////////////////////////////////////////////////////////////////
 //
 //	Stat Baselines

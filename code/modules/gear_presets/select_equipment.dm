@@ -26,6 +26,7 @@
 	H.age = rand(21,45)
 
 /datum/equipment_preset/proc/load_gear(mob/living/carbon/human/H)
+
 /datum/equipment_preset/proc/load_status(mob/living/carbon/human/H)
 
 /datum/equipment_preset/proc/load_skills(mob/living/carbon/human/H)
@@ -287,7 +288,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/head/ushanka(H), WEAR_HEAD)
 		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/snow_suit(H), WEAR_JACKET)
 		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather(H), WEAR_FACE)
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/snow(H), WEAR_FEET)
+		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 		H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
 
 /datum/equipment_preset/proc/add_random_survivor_equipment(var/mob/living/carbon/human/H)
@@ -318,7 +319,7 @@
 
 /datum/equipment_preset/proc/add_random_survivor_weapon(var/mob/living/carbon/human/H)
 	if(map_tag != MAP_PRISON_STATION)
-		var/random_weap = rand(0,4)
+		var/random_weap = rand(0,3)
 		switch(random_weap)
 			if(0)
 				H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/holdout(H), WEAR_WAIST)
@@ -327,6 +328,4 @@
 			if(2)
 				H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/kt42(H), WEAR_WAIST)
 			if(3)
-				H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/uzi(H), WEAR_WAIST)
-			if(4)
 				H.equip_to_slot_or_del(new /obj/item/weapon/gun/revolver/small(H), WEAR_WAIST)

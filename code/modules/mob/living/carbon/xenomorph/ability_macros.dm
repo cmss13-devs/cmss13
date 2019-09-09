@@ -352,6 +352,13 @@
 	var/action_name = "Give Plasma (600)"
 	handle_xeno_macro(src, action_name) 
 
+/datum/action/xeno_action/verb/verb_empower()
+	set category = "Alien"
+	set name = "Empower"
+	set hidden = 1
+	var/action_name = "Empower (100)"
+	handle_xeno_macro(src, action_name) 
+
 /datum/action/xeno_action/verb/verb_charge_rav()
 	set category = "Alien"
 	set name = "Charge"

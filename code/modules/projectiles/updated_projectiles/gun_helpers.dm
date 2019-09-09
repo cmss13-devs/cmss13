@@ -397,8 +397,6 @@ should be alright.
 	else attachable_overlays[slot] = null
 
 /obj/item/weapon/gun/proc/update_mag_overlay()
-	if(!attachable_overlays["mag"])
-		return
 	var/image/I = attachable_overlays["mag"]
 	overlays -= I
 	qdel(I)

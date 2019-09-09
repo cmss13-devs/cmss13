@@ -1349,7 +1349,24 @@
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the xeno you want to de-evolve."))
 
+
 //Ravager strain
+/datum/action/xeno_action/activable/empower
+	name = "Empower (100)"
+	action_icon_state = "empower"
+	ability_name = "empower"
+	macro_path = /datum/action/xeno_action/verb/verb_empower
+	action_type = XENO_ACTION_ACTIVATE
+
+/datum/action/xeno_action/activable/empower/use_ability()
+	var/mob/living/carbon/Xenomorph/X = owner
+	X.empower()
+	..()
+
+/datum/action/xeno_action/activable/empower/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/Ravager/X = owner
+	return !X.used_lunge
+
 
 /datum/action/xeno_action/activable/charge
 	name = "Charge (20)"

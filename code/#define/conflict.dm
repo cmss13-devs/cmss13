@@ -88,8 +88,8 @@
 #define EXPLOSION_PRONE_MULTIPLIER	0.5 //prone mobs recieve less damage from explosions
 
 //Explosion damage multipliers for different objects
-#define EXPLOSION_DAMAGE_MULTIPLIER_AIRLOCK     2.5
-#define EXPLOSION_DAMAGE_MULTIPLIER_WALL		5
+#define EXPLOSION_DAMAGE_MULTIPLIER_AIRLOCK     15
+#define EXPLOSION_DAMAGE_MULTIPLIER_WALL		15
 #define EXPLOSION_DAMAGE_MULTIPLIER_WINDOW		10
 
 //Projectile block probabilities for different types of cover
@@ -132,3 +132,15 @@
 //OB timings
 #define OB_TRAVEL_TIMING 12 SECONDS
 #define OB_CRASHING_DOWN 1 SECONDS
+//=================================================
+
+//Health of various items
+#define HEALTH_WALL 						3000
+#define HEALTH_WALL_REINFORCED 				9000
+#define HEALTH_WALL_XENO 					1000
+#define HEALTH_WALL_XENO_THICK 				2000
+#define HEALTH_WALL_XENO_MEMBRANE 			750
+#define HEALTH_WALL_XENO_MEMBRANE_THICK 	1500
+
+#define HEALTH_DOOR 		2000
+#define HEALTH_DOOR_XENO 	750

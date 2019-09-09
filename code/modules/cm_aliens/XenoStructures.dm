@@ -30,7 +30,7 @@
 		qdel(src)
 
 /obj/effect/alien/resin/bullet_act(var/obj/item/projectile/Proj)
-	health -= Proj.damage/2
+	health -= Proj.damage
 	..()
 	healthcheck()
 	return 1
@@ -472,7 +472,7 @@
 	mineralType = "resin"
 	icon = 'icons/mob/xenos/Effects.dmi'
 	hardness = 1.5
-	health = 80
+	health = HEALTH_DOOR_XENO
 	var/close_delay = 100
 
 	tiles_with = list(/obj/structure/mineral_door/resin)

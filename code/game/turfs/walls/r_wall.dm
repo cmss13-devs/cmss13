@@ -5,7 +5,7 @@
 	opacity = 1
 	density = 1
 
-	damage_cap = 3000
+	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 6000
 
 	walltype = WALL_REINFORCED

@@ -285,7 +285,7 @@
 #define XENO_SCALAR_EVASION_VERYHIGH		1.20
 #define XENO_SCALAR_EVASION_ULTRAHIGH		1.25
 
-// Actual caste datum basedef 
+// Actual caste datum basedef
 /datum/caste_datum
 	var/caste_name = ""
 	var/display_name = ""
@@ -352,7 +352,7 @@
 	var/toggle_agility_cooldown = 5
 
 	// Resin building-related vars
-	var/build_time = 10 // Default build time and build distance
+	var/build_time = 50 // Default build time and build distance
 	var/max_build_dist = 0
 
 	//Boiler vars
@@ -740,7 +740,7 @@
 	else
 		mutators.user_levelled_up(M.upgrade)
 		SStracking.set_leader("hive_[hivenumber]", M)
-	
+
 	living_xeno_queen = M
 
 	recalculate_hive()

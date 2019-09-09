@@ -42,7 +42,7 @@
 	var/not_weldable = 0 // stops people welding the door if true
 
 	var/damage = 0
-	var/damage_cap = 800 // Airlock gets destroyed
+	var/damage_cap = HEALTH_DOOR // Airlock gets destroyed
 
 /obj/machinery/door/airlock/bumpopen(mob/living/user as mob) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
 	if(istype(user) && !issilicon(user))
@@ -219,7 +219,7 @@
 			//Cutting either one disables the main door power, but unless backup power is also cut, the backup power re-powers the door in 10 seconds. While unpowered, the door may be crowbarred open, but bolts-raising will not work. Cutting these wires may electocute the user.
 			loseMainPower()
 			shock(usr, 50)
-			
+
 		if(AIRLOCK_WIRE_DOOR_BOLTS)
 			//Cutting this wire also drops the door bolts, and mending it does not raise them. (This is what happens now, except there are a lot more wires going to door bolts at present)
 			lock()
@@ -228,7 +228,7 @@
 			//Cutting either one disables the backup door power (allowing it to be crowbarred open, but disabling bolts-raising), but may electocute the user.
 			loseBackupPower()
 			shock(usr, 50)
-			
+
 		if(AIRLOCK_WIRE_ELECTRIFY)
 			//Cutting this wire electrifies the door, so that the next person to touch the door without insulated gloves gets electrocuted.
 			if(secondsElectrified != -1)
@@ -240,14 +240,14 @@
 		if (AIRLOCK_WIRE_SAFETY)
 			safe = 0
 			visible_message(SPAN_WARNING("\The [src] airlock flashes a red light and beeps once."))
-			
+
 		if(AIRLOCK_WIRE_SPEED)
 			autoclose = 0
 			visible_message(SPAN_WARNING("\The [src] airlock flashes a red light."))
-			
+
 		if(AIRLOCK_WIRE_LIGHT)
 			lights = 0
-			
+
 /obj/machinery/door/airlock/proc/mend(var/wire)
 	wires |= getWireFlag(wire)
 
@@ -256,27 +256,27 @@
 			if(!isWireCut(AIRLOCK_WIRE_MAIN_POWER))
 				regainMainPower()
 				shock(usr, 50)
-				
+
 		if(AIRLOCK_WIRE_BACKUP_POWER)
 			if(!isWireCut(AIRLOCK_WIRE_BACKUP_POWER))
 				regainBackupPower()
 				shock(usr, 50)
-				
+
 		if(AIRLOCK_WIRE_ELECTRIFY)
 			if(secondsElectrified == -1)
 				secondsElectrified = 0
 
 		if (AIRLOCK_WIRE_SAFETY)
 			safe = 1
-			
+
 		if(AIRLOCK_WIRE_SPEED)
 			autoclose = 1
 			if(!density)
 				close()
-			
+
 		if(AIRLOCK_WIRE_LIGHT)
 			lights = 1
-			
+
 
 /obj/machinery/door/airlock/proc/isElectrified()
 	if(secondsElectrified != 0)

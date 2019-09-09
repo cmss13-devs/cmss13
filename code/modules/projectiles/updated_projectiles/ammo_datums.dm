@@ -423,6 +423,8 @@
 				H.apply_damage(500, BRUTE, "head", no_limb_loss = TRUE, impact_name = impact_name, impact_limbs = impact_limbs, permanent_kill = TRUE) //not coming back
 				H.visible_message(SPAN_DANGER("[M] WAS EXECUTED!"), \
 					SPAN_HIGHDANGER("You were Executed!"))
+				if(user)
+					user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_source)
 		else
 			return -1
 /*

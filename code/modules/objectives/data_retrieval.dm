@@ -218,6 +218,7 @@
 		return 1
 	uploading = 1
 	to_chat(user, SPAN_NOTICE("You start uploading the data."))
+	user.count_niche_stat(STATISTICS_NICHE_UPLOAD)
 
 // --------------------------------------------
 // *** Upload data from an inserted disk ***
@@ -264,3 +265,4 @@
 		user.drop_inv_item_to_loc(W, src)
 		disk = W
 		to_chat(user, SPAN_NOTICE("You insert \the [W] and enter the decryption key."))
+		user.count_niche_stat(STATISTICS_NICHE_DISK)

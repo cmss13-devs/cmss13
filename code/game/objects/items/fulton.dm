@@ -121,6 +121,7 @@ var/global/list/deployed_fultons = list()
 			F.copy_evidences(src)
 			src.add_fingerprint(user)
 			F.add_fingerprint(user)
+			user.count_niche_stat(STATISTICS_NICHE_FULTON)
 			use(1)
 			F.deploy_fulton()
 	else

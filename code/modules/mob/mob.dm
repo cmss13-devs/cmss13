@@ -16,7 +16,7 @@
 		living_mob_list += src
 		life_time_start = world.time
 	var/area/current_area = get_area(src)
-	if(current_area.statistic_exempt)
+	if(current_area && current_area.statistic_exempt)
 		statistic_exempt = TRUE
 	prepare_huds()
 	..()

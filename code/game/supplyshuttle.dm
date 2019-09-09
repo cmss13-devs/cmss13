@@ -237,6 +237,9 @@ var/list/mechtoys = list(
 			to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>Launch aborted! No crate detected on the drop pad.</span>")
 			return
 		S.supply_cooldown = world.time
+		if(ismob(usr))
+			var/mob/M = usr
+			M.count_niche_stat(STATISTICS_NICHE_CRATES)
 
 		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
 		C.anchored = FALSE

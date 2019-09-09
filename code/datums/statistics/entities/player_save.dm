@@ -82,6 +82,16 @@
 				new_xenos_killed_list["[new_xeno_killed.name]"] = new_xeno_killed
 			human_stats.xenos_killed = new_xenos_killed_list
 
+		if(human_save["niche_stats"])
+			var/save_niche_stats = human_save["niche_stats"]
+			var/list/new_niche_stat_list = new()
+			for(var/save_niche in save_niche_stats)
+				var/datum/entity/statistic/new_niche_stat = new()
+				new_niche_stat.name = save_niche["name"]
+				new_niche_stat.value = save_niche["value"]
+				new_niche_stat_list["[new_niche_stat.name]"] = new_niche_stat
+			human_stats.niche_stats = new_niche_stat_list
+
 		if(human_save["death_list"])
 			var/save_death_list = human_save["death_list"]
 			var/list/new_death_list = new()
@@ -145,6 +155,16 @@
 						new_xenos_killed_list["[new_xeno_killed.name]"] = new_xeno_killed
 					new_weapon.xenos_killed = new_xenos_killed_list
 				
+				if(save_weapon["niche_stats"])
+					var/save_niche_stats = save_weapon["niche_stats"]
+					var/list/new_niche_stat_list = new()
+					for(var/save_niche in save_niche_stats)
+						var/datum/entity/statistic/new_niche_stat = new()
+						new_niche_stat.name = save_niche["name"]
+						new_niche_stat.value = save_niche["value"]
+						new_niche_stat_list["[new_niche_stat.name]"] = new_niche_stat
+					new_weapon.niche_stats = new_niche_stat_list
+
 				new_weapon_list["[new_weapon.name]"] = new_weapon
 			human_stats.weapon_stats_list = new_weapon_list
 			
@@ -193,6 +213,16 @@
 						new_xeno_killed.value = save_kill["value"]
 						new_xenos_killed_list["[new_xeno_killed.name]"] = new_xeno_killed
 					new_job.xenos_killed = new_xenos_killed_list
+
+				if(save_job["niche_stats"])
+					var/save_niche_stats = save_job["niche_stats"]
+					var/list/new_niche_stat_list = new()
+					for(var/save_niche in save_niche_stats)
+						var/datum/entity/statistic/new_niche_stat = new()
+						new_niche_stat.name = save_niche["name"]
+						new_niche_stat.value = save_niche["value"]
+						new_niche_stat_list["[new_niche_stat.name]"] = new_niche_stat
+					new_job.niche_stats = new_niche_stat_list
 
 				if(save_job["death_list"])
 					var/save_death_list = save_job["death_list"]
@@ -268,6 +298,16 @@
 				new_xenos_killed_list["[new_xeno_killed.name]"] = new_xeno_killed
 			xeno_stats.xenos_killed = new_xenos_killed_list
 
+		if(xeno_save["niche_stats"])
+			var/save_niche_stats = xeno_save["niche_stats"]
+			var/list/new_niche_stat_list = new()
+			for(var/save_niche in save_niche_stats)
+				var/datum/entity/statistic/new_niche_stat = new()
+				new_niche_stat.name = save_niche["name"]
+				new_niche_stat.value = save_niche["value"]
+				new_niche_stat_list["[new_niche_stat.name]"] = new_niche_stat
+			xeno_stats.niche_stats = new_niche_stat_list
+
 		if(xeno_save["death_list"])
 			var/save_death_list = xeno_save["death_list"]
 			var/list/new_death_list = new()
@@ -321,17 +361,33 @@
 
 				if(save_caste["humans_killed"])
 					var/save_humans_killed = save_caste["humans_killed"]
-					var/datum/entity/statistic/new_humans_killed = new()
-					new_humans_killed.name = save_humans_killed["name"]
-					new_humans_killed.value = save_humans_killed["value"]
-					new_caste.humans_killed = new_humans_killed
+					var/list/new_humans_killed_list = new()
+					for(var/save_kill in save_humans_killed)
+						var/datum/entity/statistic/new_human_killed = new()
+						new_human_killed.name = save_kill["name"]
+						new_human_killed.value = save_kill["value"]
+						new_humans_killed_list["[new_human_killed.name]"] = new_human_killed
+					new_caste.humans_killed = new_humans_killed_list
 				
 				if(save_caste["xenos_killed"])
-					var/save_xenos_killed = save_caste["xenos_killed"]
-					var/datum/entity/statistic/new_xenos_killed = new()
-					new_xenos_killed.name = save_xenos_killed["name"]
-					new_xenos_killed.value = save_xenos_killed["value"]
-					new_caste.xenos_killed = new_xenos_killed
+					var/save_xeno_killed = save_caste["xenos_killed"]
+					var/list/new_xenos_killed_list = new()
+					for(var/save_kill in save_xeno_killed)
+						var/datum/entity/statistic/new_xeno_killed = new()
+						new_xeno_killed.name = save_kill["name"]
+						new_xeno_killed.value = save_kill["value"]
+						new_xenos_killed_list["[new_xeno_killed.name]"] = new_xeno_killed
+					new_caste.xenos_killed = new_xenos_killed_list
+
+				if(save_caste["niche_stats"])
+					var/save_niche_stats = save_caste["niche_stats"]
+					var/list/new_niche_stat_list = new()
+					for(var/save_niche in save_niche_stats)
+						var/datum/entity/statistic/new_niche_stat = new()
+						new_niche_stat.name = save_niche["name"]
+						new_niche_stat.value = save_niche["value"]
+						new_niche_stat_list["[new_niche_stat.name]"] = new_niche_stat
+					new_caste.niche_stats = new_niche_stat_list
 
 				if(save_caste["death_list"])
 					var/save_death_list = save_caste["death_list"]

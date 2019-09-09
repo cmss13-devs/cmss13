@@ -77,6 +77,11 @@
 /obj/item/explosive/grenade/proc/prime()
 //	playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 
+/obj/item/explosive/grenade/throw_at(atom/target, range, speed, thrower)
+	if(active && ismob(thrower))
+		var/mob/M = thrower
+		M.count_niche_stat(STATISTICS_NICHE_GRENADES)
+	. = ..()
 
 
 /obj/item/explosive/grenade/attackby(obj/item/W as obj, mob/user as mob)

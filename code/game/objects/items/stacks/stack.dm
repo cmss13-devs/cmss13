@@ -160,7 +160,7 @@
 				return
 		if(amount < R.req_amount * multiplier)
 			return
-		var/atom/O = new R.result_type(usr.loc)
+		var/atom/O = new R.result_type(usr.loc, usr)
 		usr.visible_message(SPAN_NOTICE("[usr] assembles \a [O]."),
 		SPAN_NOTICE("You assemble \a [O]."))
 		O.dir = usr.dir

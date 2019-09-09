@@ -219,6 +219,8 @@
 	var/found_shrapnel = helper_shrapnel_removal(embedded_human)
 	if(!found_shrapnel)
 		to_chat(H_user, SPAN_NOTICE("You couldn't find any shrapnel."))
+	else
+		H_user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
 
 /obj/item/weapon/proc/helper_shrapnel_removal(var/mob/living/carbon/human/embedded_human)
 	for(var/obj/item/shard/shrapnel/embedded in embedded_human.embedded_items)

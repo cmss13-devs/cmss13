@@ -23,9 +23,7 @@
 		human_stats.total_deaths += 1
 		
 		// Update job-specific stats
-		var/job_name = D.assigned_role
-		if(job_name == "MODE")
-			job_name = D.special_role
+		var/job_name = get_actual_job_name(M)
 		if(job_name)
 			var/datum/entity/player_stats/job/job_stats
 			if(human_stats.job_stats_list[job_name])
@@ -152,11 +150,8 @@
 		human_stats.death_list.Insert(1, .)
 	if(cause_mob)
 		var/mob/M = cause_mob
-		var/job_name = job
-		if(mind)
-			job_name = mind.assigned_role
-			if(job_name == "MODE")
-				job_name = mind.special_role
+		var/job_name = get_actual_job_name(src)
+
 		if(M.faction == faction && round_statistics)
 			round_statistics.total_friendly_fire_kills += 1
 		if(!M.statistic_exempt && M != src)

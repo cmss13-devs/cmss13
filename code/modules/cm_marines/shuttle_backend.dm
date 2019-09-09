@@ -439,6 +439,7 @@ qdel(src)
 
 			if (isliving(A))
 				var/mob/living/L = A
+				L.last_damage_mob = null
 				L.gib()
 
 		// Moving the turfs over

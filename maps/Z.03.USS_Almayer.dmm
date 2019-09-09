@@ -6103,15 +6103,15 @@
 /area/almayer/command/self_destruct)
 "anz" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin/uscm{
-	pixel_y = 8
-	},
 /obj/item/tool/pen{
 	pixel_y = 8
 	},
 /obj/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
+	},
+/obj/item/paper_bin/wy{
+	pixel_y = 7
 	},
 /turf/open/floor/wood,
 /area/almayer/medical/medical_science)
@@ -46440,8 +46440,8 @@
 /area/almayer/medical/lockerroom)
 "fwP" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
+/obj/item/paper_bin/uscm,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (NORTH)";
 	icon_state = "sterile_green_side";
@@ -48528,8 +48528,8 @@
 /area/almayer/command/airoom)
 "itj" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
+/obj/item/paper_bin/uscm,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (NORTH)";
 	icon_state = "sterile_green_corner";
@@ -53076,14 +53076,14 @@
 /area/almayer/shipboard/port_point_defense)
 "nGr" = (
 /obj/structure/table/almayer,
-/obj/item/paper_bin/uscm{
-	pixel_y = 8
-	},
 /obj/item/tool/pen{
 	pixel_y = 8
 	},
 /obj/machinery/power/apc/almayer{
 	dir = 1
+	},
+/obj/item/paper_bin/wy{
+	pixel_y = 7
 	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (NORTH)";
@@ -60526,7 +60526,6 @@
 	req_access = list(5);
 	unacidable = 1
 	},
-/obj/item/paper_bin/wy,
 /obj/machinery/door_control{
 	id = "researchlockdownint";
 	name = "Research Interior Lockdown";
@@ -60536,6 +60535,7 @@
 	req_access = list(5);
 	unacidable = 1
 	},
+/obj/item/paper_bin/wy,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (WEST)";
 	icon_state = "sterile_green_corner";

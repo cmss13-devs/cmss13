@@ -157,6 +157,7 @@ Burn time = How long do we want our flames to last?
 
 	var/tactical_damage_falloff = 0.8 //MK221 Tactical, auto-shotty.
 	var/reg_damage_falloff = 1 //in config it was 0.89 but referenced wrong var
+	var/med_damage_falloff = 2
 	var/buckshot_v2_damage_falloff = 3
 	var/buckshot_damage_falloff = 5 //ditto but 18.3 (!!!)
 	var/extra_damage_falloff = 10 //ditto but 9.75

@@ -281,6 +281,15 @@
 	penetration= config.med_armor_penetration
 	shrapnel_chance = config.med_shrapnel_chance
 
+/datum/ammo/bullet/pistol/le
+	name = "armor-shredding pistol bullet"
+
+/datum/ammo/bullet/pistol/le/New()
+	..()
+	damage = config.min_hit_damage
+	penetration = config.low_armor_penetration
+	pen_armor_punch = 3
+
 // Used by M1911, Deagle and KT-42
 /datum/ammo/bullet/pistol/heavy
 	name = "heavy pistol bullet"
@@ -464,11 +473,11 @@
 /datum/ammo/bullet/smg/le/New()
 	..()
 	scatter = config.min_scatter_value
-	damage = config.base_hit_damage
+	damage = config.mlow_hit_damage
 	penetration = config.low_armor_penetration
 	shell_speed = config.fast_shell_speed
 	damage_falloff = config.reg_damage_falloff
-	pen_armor_punch = 1.25
+	pen_armor_punch = 4
 
 /*
 //================================================
@@ -497,7 +506,7 @@
 	damage = config.hlmed_hit_damage
 	accuracy = 0
 	shell_speed = config.super_shell_speed
-	damage_falloff = config.reg_damage_falloff
+	damage_falloff = config.med_damage_falloff
 
 /datum/ammo/bullet/rifle/explosive/on_hit_mob(mob/M, obj/item/projectile/P)
 	explosion_rec(get_turf(M), 80, 40, P.weapon_source, P.firer)
@@ -516,9 +525,15 @@
 	..()
 	damage = config.hlow_hit_damage
 	penetration = config.med_armor_penetration
-	shell_speed = config.super_shell_speed
-	damage_falloff = config.reg_damage_falloff
 
+/datum/ammo/bullet/rifle/le
+	name = "armor-shredding rifle bullet"
+
+/datum/ammo/bullet/rifle/le/New()
+	..()
+	damage = config.mlow_hit_damage
+	penetration = config.low_armor_penetration
+	pen_armor_punch = 5
 
 /datum/ammo/bullet/rifle/incendiary
 	name = "incendiary rifle bullet"
@@ -921,9 +936,9 @@
 	damage_falloff = config.tactical_damage_falloff
 	damage = config.med_hit_damage
 	penetration = config.hmed_armor_penetration
-	damage_armor_punch = 1
-
-
+	damage_armor_punch = 3	
+	
+	
 /datum/ammo/bullet/turret
 	name = "autocannon bullet"
 	icon_state 	= "redbullet" //Red bullets to indicate friendly fire restriction

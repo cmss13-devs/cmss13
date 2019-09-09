@@ -93,7 +93,7 @@
 // Shift Spits
 /datum/action/xeno_action/shift_spits
 	name = "Toggle Spit Type"
-	action_icon_state = "shift_spit_neurotoxin" 
+	action_icon_state = "shift_spit_neurotoxin"
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_spit_type
 	action_type = XENO_ACTION_CLICK
@@ -179,10 +179,10 @@
 
 // Secrete Resin
 /datum/action/xeno_action/activable/secrete_resin
-	name = "Secrete Resin (75)"
+	name = "Secrete Resin (150)"
 	action_icon_state = "secrete_resin"
 	ability_name = "secrete resin"
-	var/resin_plasma_cost = 75
+	var/resin_plasma_cost = 150
 	macro_path = /datum/action/xeno_action/verb/verb_secrete_resin
 	action_type = XENO_ACTION_CLICK
 
@@ -192,8 +192,8 @@
 	..()
 
 /datum/action/xeno_action/activable/secrete_resin/hivelord
-	name = "Secrete Resin (100)"
-	resin_plasma_cost = 100
+	name = "Secrete Resin (200)"
+	resin_plasma_cost = 200
 
 
 // Corrosive Acid
@@ -441,7 +441,7 @@
 // Defender Fortify
 /datum/action/xeno_action/activable/fortify
 	name = "Fortify"
-	action_icon_state = "fortify"	
+	action_icon_state = "fortify"
 	ability_name = "fortify"
 	macro_path = /datum/action/xeno_action/verb/verb_fortify
 	action_type = XENO_ACTION_ACTIVATE
@@ -1473,7 +1473,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_spray_acid
 	action_type = XENO_ACTION_CLICK
 
-#define PRAE_SPRAY_CONE 0 
+#define PRAE_SPRAY_CONE 0
 #define PRAE_SPRAY_LINE 1
 
 /datum/action/xeno_action/activable/prae_spray_acid/use_ability(atom/A)
@@ -1488,7 +1488,7 @@
 			log_admin("[src] tried to acid spray with an invalid bitflag set. Tell the devs! Code: PRAE_ACID_00")
 			log_debug("[src] tried to acid spray with an invalid bitflag set. Code: PRAE_ACID_00")
 	..()
-	
+
 #undef PRAE_SPRAY_CONE
 #undef PRAE_SPRAY_LINE
 
@@ -1514,22 +1514,22 @@
 
 	if(!X.check_state(1))
 		return
-		
+
 	if (!(X.prae_status_flags & PRAE_ROYALGUARD_ACIDSPRAY_TYPE)) // 0 = cone, 1 = line
-		action_icon_result = "acid_spray_line" 
+		action_icon_result = "acid_spray_line"
 		to_chat(X, SPAN_WARNING("You will now spray a line of acid with your acid spray."))
-	else 
-		action_icon_result = "acid_spray_cone" 
+	else
+		action_icon_result = "acid_spray_cone"
 		to_chat(X, SPAN_WARNING("You will now spray a cone of acid with your acid spray."))
-	
-	X.prae_status_flags = X.prae_status_flags^(PRAE_ROYALGUARD_ACIDSPRAY_TYPE) // flip the bit 
+
+	X.prae_status_flags = X.prae_status_flags^(PRAE_ROYALGUARD_ACIDSPRAY_TYPE) // flip the bit
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_result)
 
 /datum/action/xeno_action/activable/prae_dance
 	name = "Dance (200)"
-	action_icon_state = "prae_dance" 
+	action_icon_state = "prae_dance"
 	ability_name = "dance"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_dance
 	action_type = XENO_ACTION_ACTIVATE
@@ -1545,7 +1545,7 @@
 
 /datum/action/xeno_action/activable/prae_tailattack
 	name = "Tail Attack (150)"
-	action_icon_state = "prae_tailattack" 
+	action_icon_state = "prae_tailattack"
 	ability_name = "tail attack"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_tailattack
 	action_type = XENO_ACTION_CLICK
@@ -1562,7 +1562,7 @@
 // Toggle impale type for Prae dancer
 /datum/action/xeno_action/prae_shift_tailattack
 	name = "Toggle tail attack type"
-	action_icon_state = "prae_tailattack_impale" 
+	action_icon_state = "prae_tailattack_impale"
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_prae_shift_tailattack
 	action_type = XENO_ACTION_CLICK
@@ -1579,14 +1579,14 @@
 	if(!X.check_state(1))
 		return
 
-	if (!(X.prae_status_flags & PRAE_DANCER_TAILATTACK_TYPE)) // 0 = damage, 1 = abduct 
-		action_icon_result = "prae_tailattack_abduct" 
+	if (!(X.prae_status_flags & PRAE_DANCER_TAILATTACK_TYPE)) // 0 = damage, 1 = abduct
+		action_icon_result = "prae_tailattack_abduct"
 		to_chat(X, SPAN_WARNING("You will now abduct marines with your tail attack."))
-	else 
-		action_icon_result = "prae_tailattack_impale" 
+	else
+		action_icon_result = "prae_tailattack_impale"
 		to_chat(X, SPAN_WARNING("You will now impale marines with your tail attack."))
-	
-	X.prae_status_flags = X.prae_status_flags^(PRAE_DANCER_TAILATTACK_TYPE) // flip the bit 
+
+	X.prae_status_flags = X.prae_status_flags^(PRAE_DANCER_TAILATTACK_TYPE) // flip the bit
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_result)

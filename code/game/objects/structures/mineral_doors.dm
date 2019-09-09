@@ -6,6 +6,7 @@
 	density = 1
 	anchored = 1
 	opacity = 1
+	health = HEALTH_DOOR
 
 	icon = 'icons/obj/structures/doors/mineral_doors.dmi'
 	icon_state = "metal"

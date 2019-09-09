@@ -26,7 +26,7 @@
 	acid_level = 2
 	aura_strength = 1.5
 	weed_level = 2 //Starts with wider weeds by default
-	build_time = 5
+	build_time = 25
 	max_build_dist = 1
 
 /datum/caste_datum/hivelord/mature

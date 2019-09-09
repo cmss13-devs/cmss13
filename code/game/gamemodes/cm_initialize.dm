@@ -298,10 +298,10 @@ datum/game_mode/proc/initialize_special_clamps()
 	while(i > 0) //While we can still pick someone for the role.
 		if(possible_xenomorphs.len) //We still have candidates
 			new_xeno = pick(possible_xenomorphs)
-			if(!new_xeno) break  //Looks like we didn't get anyone. Back out.
+			possible_xenomorphs -= new_xeno
+			if(!new_xeno) continue  //Looks like we didn't get anyone. Back out.
 			new_xeno.assigned_role = "MODE"
 			new_xeno.special_role = "Xenomorph"
-			possible_xenomorphs -= new_xeno
 			xenomorphs += new_xeno
 		else //Out of candidates, spawn in empty larvas directly
 			larvae_spawn = pick(xeno_spawn)

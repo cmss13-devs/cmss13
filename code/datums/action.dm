@@ -171,7 +171,7 @@
 
 //the thing to do when the selected action ability is selected and triggered by middle_click
 /datum/action/xeno_action/activable/proc/use_ability(atom/A)
-	if(round_statistics && ability_name)
+	if(action_cooldown_check() && round_statistics && ability_name)
 		var/mob/living/carbon/Xenomorph/X = owner
 		round_statistics.track_ability_usage(ability_name)
 		X.track_ability_usage(ability_name, X.caste_name)

@@ -32,6 +32,7 @@
 /datum/surgery_step/cut_limb/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] cuts off [target]'s [affected.display_name] with \the [tool]."), \
 	SPAN_NOTICE("You cut off [target]'s [affected.display_name] with \the [tool]."))
+	user.count_niche_stat(STATISTICS_NICHE_SURGERY_AMPUTATE)
 	affected.droplimb(1, 0, "amputation")
 	target.updatehealth()
 

@@ -158,11 +158,15 @@
 	var/created_by // ckey
 	var/list/notify_list = list() // list of xeno mobs to notify on trigger
 	var/datum/effect_system/smoke_spread/smoke_system
+	var/source_name
+	var/source_mob
 
 /obj/effect/alien/resin/trap/New(loc, mob/living/carbon/Xenomorph/X)
 	if(X)
 		created_by = X.ckey
 		hivenumber = X.hivenumber
+		source_name = X.caste_name
+		source_mob = X
 	..()
 
 /obj/effect/alien/resin/trap/examine(mob/user)
@@ -294,9 +298,9 @@
 			set_state()
 			clear_tripwires()
 		if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
-			new /obj/effect/xenomorph/spray(loc)
+			new /obj/effect/xenomorph/spray(loc, , source_name, source_mob)
 			for(var/turf/T in range(1,loc))
-				new /obj/effect/xenomorph/spray(T, trap_type-RESIN_TRAP_ACID1+1) //adding extra acid damage for better acid types
+				new /obj/effect/xenomorph/spray(T, trap_type-RESIN_TRAP_ACID1+1, source_name, source_mob) //adding extra acid damage for better acid types
 			set_state()
 			clear_tripwires()
 

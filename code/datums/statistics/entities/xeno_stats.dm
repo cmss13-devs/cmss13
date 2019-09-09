@@ -96,6 +96,13 @@
 //Mob Procs - minor
 //*****************
 
+/datum/entity/player_stats/xeno/count_personal_niche_stat(var/niche_name, var/amount = 1, var/caste)
+	var/datum/entity/player_stats/caste/S = setup_caste_stats(caste)
+	S.count_niche_stat(niche_name, amount)
+	if(round_statistics)
+		var/datum/entity/player_stats/caste/R = round_statistics.setup_caste_stats(caste)
+		R.count_niche_stat(niche_name, amount)
+
 /datum/entity/player_stats/xeno/proc/track_personal_abilities_used(var/caste, var/ability, var/amount = 1)
 	var/datum/entity/player_stats/caste/S = setup_caste_stats(caste)
 	S.track_personal_abilities_used(ability, amount)

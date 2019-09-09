@@ -374,6 +374,18 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                 {{:job_value.total_screams}}
                             </div>
                         {{/if}}
+                        {{if job_value.niche_stats}}
+                            <br>
+                            {{props job_value.niche_stats :niche_value:niche_index}}
+                                <div class="itemLabel">
+                                    {{:niche_value.name}}
+                                </div>
+                                <div class="itemContent">
+                                    {{:niche_value.value}}
+                                </div>
+                            {{/props}}
+                            <br>
+                        {{/if}}
                         {{if job_value.total_kills}}
                             <div class="itemLabel">
                                 Kills:
@@ -433,6 +445,18 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                             <div class="itemContent">
                                 {{:caste_value.total_deaths}}
                             </div>
+                        {{/if}}
+                        {{if caste_value.niche_stats}}
+                            <br>
+                            {{props caste_value.niche_stats :niche_value:niche_index}}
+                                <div class="itemLabel">
+                                    {{:niche_value.name}}
+                                </div>
+                                <div class="itemContent">
+                                    {{:niche_value.value}}
+                                </div>
+                            {{/props}}
+                            <br>
                         {{/if}}
                         {{if caste_value.total_kills}}
                             <div class="itemLabel">
@@ -531,6 +555,18 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                     {{:value.total_friendly_fire}}
                                 </div>
                             {{/if}}
+                            {{if value.niche_stats}}
+                                <br>
+                                {{props value.niche_stats :niche_value:niche_index}}
+                                    <div class="itemLabel">
+                                        {{:niche_value.name}}
+                                    </div>
+                                    <div class="itemContent">
+                                        {{:niche_value.value}}
+                                    </div>
+                                {{/props}}
+                                <br>
+                            {{/if}}
                             {{if value.total_kills}}
                                 <div class="itemLabel">
                                     Kills:
@@ -593,30 +629,38 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                     <div class="itemContent">
                         {{:data.human.total_shots_hit}}
                     </div>
-                    <div class="itemLabel">
-                        Total Friendly Fire Instances:
-                    </div>
-                    <div class="itemContent">
-                        {{:data.human.total_friendly_fire}}
-                    </div>
-                    <div class="itemLabel">
-                        Total Times Revived:
-                    </div>
-                    <div class="itemContent">
-                        {{:data.human.total_revives}}
-                    </div>
-                    <div class="itemLabel">
-                        Total Lives Saved:
-                    </div>
-                    <div class="itemContent">
-                        {{:data.human.total_lives_saved}}
-                    </div>
-                    <div class="itemLabel">
-                        Total Screams:
-                    </div>
-                    <div class="itemContent">
-                        {{:data.human.total_screams}}
-                    </div>
+                    {{if data.human.total_lives_saved}}
+                        <div class="itemLabel">
+                            Total Friendly Fire Instances:
+                        </div>
+                        <div class="itemContent">
+                            {{:data.human.total_friendly_fire}}
+                        </div>
+                    {{/if}}
+                    {{if data.human.total_revives}}
+                        <div class="itemLabel">
+                            Total Times Revived:
+                        </div>
+                        <div class="itemContent">
+                            {{:data.human.total_revives}}
+                        </div>
+                    {{/if}}
+                    {{if data.human.total_lives_saved}}
+                        <div class="itemLabel">
+                            Total Lives Saved:
+                        </div>
+                        <div class="itemContent">
+                            {{:data.human.total_lives_saved}}
+                        </div>
+                    {{/if}}
+                    {{if data.human.total_lives_saved}}
+                        <div class="itemLabel">
+                            Total Screams:
+                        </div>
+                        <div class="itemContent">
+                            {{:data.human.total_screams}}
+                        </div>
+                    {{/if}}
                     {{if data.human.top_weapon}}
                         <div class="itemLabel">
                             Top Weapon:
@@ -671,6 +715,18 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                 {{:data.human.nemesis.value}}
                             </div>
                         </fieldset>
+                        <br>
+                    {{/if}}
+                    {{if data.human.niche_stats}}
+                        <br>
+                        {{props data.human.niche_stats :niche_value:niche_index}}
+                            <div class="itemLabel">
+                                {{:niche_value.name}}
+                            </div>
+                            <div class="itemContent">
+                                {{:niche_value.value}}
+                            </div>
+                        {{/props}}
                         <br>
                     {{/if}}
                 {{else data.dataMenu == 1}}
@@ -808,6 +864,18 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                         {{:value.total_friendly_fire}}
                                     </div>
                                 {{/if}}
+                                {{if value.niche_stats}}
+                                    <br>
+                                    {{props value.niche_stats :niche_value:niche_index}}
+                                        <div class="itemLabel">
+                                            {{:niche_value.name}}
+                                        </div>
+                                        <div class="itemContent">
+                                            {{:niche_value.value}}
+                                        </div>
+                                    {{/props}}
+                                    <br>
+                                {{/if}}
                                 {{if value.total_kills}}
                                     <div class="itemLabel">
                                         Kills:
@@ -906,6 +974,18 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                     {{:job_value.total_screams}}
                                 </div>
                             {{/if}}
+                            {{if job_value.niche_stats}}
+                                <br>
+                                {{props job_value.niche_stats :niche_value:niche_index}}
+                                    <div class="itemLabel">
+                                        {{:niche_value.name}}
+                                    </div>
+                                    <div class="itemContent">
+                                        {{:niche_value.value}}
+                                    </div>
+                                {{/props}}
+                                <br>
+                            {{/if}}
                             <div class="itemLabel">
                                 Kills:
                             </div>
@@ -991,25 +1071,25 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                 Kills:
                             </div>
                             <div class="itemContent">
-                                {{:data.xeno.total_kills}}
+                                {{:data.xeno.top_caste.total_kills}}
                             </div>
                             <div class="itemLabel">
                                 Total Deaths:
                             </div>
                             <div class="itemContent">
-                                {{:data.xeno.total_deaths}}
+                                {{:data.xeno.top_caste.total_deaths}}
                             </div>
                             <div class="itemLabel">
                                 Total Playtime:
                             </div>
                             <div class="itemContent">
-                                {{:data.xeno.total_playtime}}
+                                {{:data.xeno.top_caste.total_playtime}}
                             </div>
                             <div class="itemLabel">
                                 Total Rounds Played:
                             </div>
                             <div class="itemContent">
-                                {{:data.xeno.total_rounds_played}}
+                                {{:data.xeno.top_caste.total_rounds_played}}
                             </div>
                         </fieldset>
                         <br>
@@ -1031,6 +1111,18 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                 {{:data.xeno.nemesis.value}}
                             </div>
                         </fieldset>
+                    {{/if}}
+                    {{if data.xeno.niche_stats}}
+                        <br>
+                        {{props data.xeno.niche_stats :niche_value:niche_index}}
+                            <div class="itemLabel">
+                                {{:niche_value.name}}
+                            </div>
+                            <div class="itemContent">
+                                {{:niche_value.value}}
+                            </div>
+                        {{/props}}
+                        <br>
                     {{/if}}
                 {{else data.dataMenu == 1}}
                     <div class="itemLabel">
@@ -1150,6 +1242,18 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                             <div class="itemContent">
                                 {{:caste_value.total_rounds_played}}
                             </div>
+                            {{if caste_value.niche_stats}}
+                                <br>
+                                {{props caste_value.niche_stats :niche_value:niche_index}}
+                                    <div class="itemLabel">
+                                        {{:niche_value.name}}
+                                    </div>
+                                    <div class="itemContent">
+                                        {{:niche_value.value}}
+                                    </div>
+                                {{/props}}
+                                <br>
+                            {{/if}}
                             <div class="itemLabel">
                                 Kills:
                             </div>

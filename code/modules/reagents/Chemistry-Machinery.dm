@@ -1169,6 +1169,7 @@
 	icon_state = "reagent_analyzer"
 	active_power_usage = 5000 //This is how many watts the big XRF machines usually take
 	
+	var/mob/last_used
 	var/obj/item/reagent_container/sample = null //Object containing our sample
 	var/clearance_level = 0
 	var/sample_number = 1 //Just for printing fluff
@@ -1221,6 +1222,7 @@
 			else
 				icon_state = "reagent_analyzer_processing"
 				start_processing()
+			last_used = user
 		return
 	else
 		to_chat(user, SPAN_WARNING("[src] only accepts samples in vials."))
@@ -1265,7 +1267,7 @@
 	icon_state = "reagent_analyzer"
 	return
 
-/obj/machinery/reagent_analyzer/proc/print_report(var/result,var/reason)
+/obj/machinery/reagent_analyzer/proc/print_report(var/result, var/reason)
 	var/obj/item/paper/report = new /obj/item/paper/(src.loc)
 	report.name = "Analysis "
 	report.icon_state = "paper_wy_words"
@@ -1287,6 +1289,8 @@
 			report.info += "<I>No details on this reagent could be found in the database.</I><BR>\n"
 		if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[S.id])
 			report.info += text("<BR><I>Saved emission spectrum of [] to the database.</I><BR>\n",S.name)
+			if(last_used)
+				last_used.count_niche_stat(STATISTICS_NICHE_CHEMS)
 			chemical_identified_list[S.id] = S.objective_value
 			defcon_controller.check_defcon_level()
 		report.info += "<BR><B>Composition Details:</B><BR>\n"

@@ -93,3 +93,39 @@
 
 // Statistics defines
 #define STATISTICS_DEATH_LIST_LEN 10
+
+#define STATISTICS_NICHE_EXECUTION                  "Executions Made"
+#define STATISTICS_NICHE_SHOCK                      "Times Shocked"
+#define STATISTICS_NICHE_GRENADES                   "Grenades Thrown"
+#define STATISTICS_NICHE_FLIGHT                     "Flights Piloted"
+#define STATISTICS_NICHE_HANDCUFF                   "Handcuffs Applied"
+#define STATISTICS_NICHE_PILLS                      "Pills Fed"
+#define STATISTICS_NICHE_DISCHARGE                  "Accidental Discharges"
+#define STATISTICS_NICHE_FULTON                     "Fultons Deployed"
+#define STATISTICS_NICHE_DISK                       "Disks Decrypted"
+#define STATISTICS_NICHE_UPLOAD                     "Data Uploaded"
+#define STATISTICS_NICHE_CHEMS                      "Chemicals Discovered"
+#define STATISTICS_NICHE_CRATES                     "Supplies Airdropped"
+#define STATISTICS_NICHE_OB                         "Bombardments Fired"
+
+#define STATISTICS_NICHE_CADES                      "Barricades Built"
+#define STATISTICS_NICHE_REPAIR_CADES               "Barricades Repaired"
+#define STATISTICS_NICHE_REPAIR_GENERATOR           "Generators Repaired"
+#define STATISTICS_NICHE_REPAIR_APC                 "APCs Repaired"
+
+#define STATISTICS_NICHE_CORGI                      "Corgis Murdered"
+#define STATISTICS_NICHE_CAT                        "Cats Murdered"
+#define STATISTICS_NICHE_COW                        "Cows Murdered"
+#define STATISTICS_NICHE_CHICKEN                    "Chickens Murdered"
+
+#define STATISTICS_NICHE_SURGERY_BONES              "Bones Mended"
+#define STATISTICS_NICHE_SURGERY_IB                 "Internal Bleedings Stopped"
+#define STATISTICS_NICHE_SURGERY_NECRO              "Necrosis Stopped"
+#define STATISTICS_NICHE_SURGERY_BRAIN              "Brains Mended"
+#define STATISTICS_NICHE_SURGERY_EYE                "Eyes Mended"
+#define STATISTICS_NICHE_SURGERY_LARVA              "Larvae Removed"
+#define STATISTICS_NICHE_SURGERY_SHRAPNEL           "Shrapnel Removed"
+#define STATISTICS_NICHE_SURGERY_AMPUTATE           "Limbs Amputated"
+#define STATISTICS_NICHE_SURGERY_ORGAN_REPAIR       "Organs Repaired"
+#define STATISTICS_NICHE_SURGERY_ORGAN_ATTACH       "Organs Implanted"
+#define STATISTICS_NICHE_SURGERY_ORGAN_REMOVE       "Organs Harvested"

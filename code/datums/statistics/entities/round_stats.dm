@@ -79,7 +79,6 @@
 		return
 	var/caste_key = strip_improper(caste)
 	if(caste_stats_list["[caste_key]"])
-		return caste_stats_list["[caste_key]"]
 		var/datum/entity/player_stats/caste/S = caste_stats_list["[caste_key]"]
 		if(!S.display_stat && noteworthy)
 			S.display_stat = noteworthy

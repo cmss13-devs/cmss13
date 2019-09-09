@@ -133,11 +133,11 @@
 		if(round_statistics)
 			var/datum/entity/weapon_stats/R = round_statistics.setup_weapon_stats(cause)
 			R.total_kills +=1
-	recalculate_top_weapon()
+		recalculate_top_weapon()
 	..()
 
-/datum/entity/player_stats/human/count_xeno_kill(var/caste, var/cause, var/caste)
-	if(!caste)
+/datum/entity/player_stats/human/count_xeno_kill(var/job_name, var/cause, var/caste)
+	if(!job_name)
 		return
 	if(cause)
 		var/datum/entity/weapon_stats/W = setup_weapon_stats(cause)
@@ -145,12 +145,31 @@
 		if(round_statistics)
 			var/datum/entity/weapon_stats/R = round_statistics.setup_weapon_stats(cause)
 			R.total_kills +=1
-	recalculate_top_weapon()
+		recalculate_top_weapon()
 	..()
 
 //*****************
 //Mob Procs - minor
 //*****************
+
+/datum/entity/player_stats/human/count_personal_niche_stat(var/niche_name, var/amount = 1, var/job)
+	var/datum/entity/player_stats/job/S = setup_job_stats(job)
+	S.count_niche_stat(niche_name, amount)
+	if(round_statistics)
+		var/datum/entity/player_stats/job/R = round_statistics.setup_job_stats(job)
+		R.count_niche_stat(niche_name, amount)
+
+/datum/entity/player_stats/human/count_niche_stat(var/niche_name, var/amount = 1, var/job, var/weapon)
+	if(!niche_name)
+		return
+	if(weapon)
+		var/datum/entity/weapon_stats/W = setup_weapon_stats(weapon)
+		W.count_niche_stat(niche_name, amount)
+		if(round_statistics)
+			var/datum/entity/weapon_stats/R = round_statistics.setup_weapon_stats(weapon)
+			R.count_niche_stat(niche_name, amount)
+		recalculate_top_weapon()
+	..()
 
 /datum/entity/player_stats/human/count_personal_steps_walked(var/job, var/amount = 1)
 	if(!job)

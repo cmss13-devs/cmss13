@@ -13,8 +13,8 @@
 /datum/equipment_preset/yautja/load_id(mob/living/carbon/human/H)
 	//No ID for preds!
 	if(H.mind)
-		H.mind.assigned_role = "PRED"
-		H.mind.special_role = "Yautja"
+		H.mind.assigned_role = "MODE"
+		H.mind.special_role = "Predator"
 
 /datum/equipment_preset/yautja/load_vanity(mob/living/carbon/human/H)
 	return //No vanity items for Yautja!

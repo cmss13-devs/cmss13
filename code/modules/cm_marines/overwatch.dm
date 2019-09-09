@@ -781,6 +781,9 @@
 		var/turf/target = locate(T.x + rand(-3, 3), T.y + rand(-3, 3), T.z)
 		if(target && istype(target))
 			almayer_orbital_cannon.fire_ob_cannon(target, usr)
+			if(ismob(usr))
+				var/mob/M = usr
+				M.count_niche_stat(STATISTICS_NICHE_OB)
 
 /obj/machinery/computer/overwatch/proc/handle_supplydrop()
 
@@ -826,6 +829,9 @@
 			to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>Launch aborted! No crate detected on the drop pad.</span>")
 			return
 		S.supply_cooldown = world.time
+		if(ismob(usr))
+			var/mob/M = usr
+			M.count_niche_stat(STATISTICS_NICHE_CRATES)
 
 		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
 		C.anchored = FALSE

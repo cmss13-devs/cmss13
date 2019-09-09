@@ -49,9 +49,17 @@
 	mouse_opacity = 0
 	flags_pass = PASSTABLE|PASSMOB|PASSGRILLE
 	var/acid_strength = 1
+	var/source_mob
+	var/source_name
 
-/obj/effect/xenomorph/spray/New(loc, var/acid_level = 1) //Self-deletes
+/obj/effect/xenomorph/spray/New(loc, var/acid_level = 1, var/new_source_name, var/new_source_mob) //Self-deletes
 	..(loc)
+	if(new_source_mob)
+		source_mob = new_source_mob
+	if(new_source_name)
+		source_name = new_source_name
+	else
+		source_name = initial(name)
 	for(var/atom/atm in loc)
 		if(istype(atm, /obj/flamer_fire))
 			var/obj/flamer_fire/FF = atm
@@ -82,6 +90,8 @@
 			to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
 			H.emote("pain")
 			H.KnockDown(3)
+			H.last_damage_mob = source_mob
+			H.last_damage_source = source_name
 			var/datum/limb/affecting = H.get_limb("l_foot")
 			if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(5, 10)))
 				H.UpdateDamageIcon()
@@ -116,8 +126,14 @@
 	mouse_opacity = 0
 	flags_pass = PASSTABLE|PASSMOB|PASSGRILLE
 
-/obj/effect/xenomorph/spray/weak/New(loc, var/acid_level = 1) //Self-deletes
+/obj/effect/xenomorph/spray/weak/New(loc, var/acid_level = 1, var/new_source_name, var/new_source_mob) //Self-deletes
 	..(loc)
+	if(new_source_mob)
+		source_mob = new_source_mob
+	if(new_source_name)
+		source_name = new_source_name
+	else
+		source_name = initial(name)
 	for(var/atom/atm in loc)
 		if(istype(atm, /obj/flamer_fire))
 			var/obj/flamer_fire/FF = atm
@@ -148,6 +164,8 @@
 			H.emote("pain")
 			H.KnockDown(0.1)
 			var/datum/limb/affecting = H.get_limb("l_foot")
+			H.last_damage_mob = source_mob
+			H.last_damage_source = source_name
 			if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(2, 7)))
 				H.UpdateDamageIcon()
 			affecting = H.get_limb("r_foot")

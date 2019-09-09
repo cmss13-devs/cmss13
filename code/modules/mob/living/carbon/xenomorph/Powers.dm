@@ -261,8 +261,8 @@
 	if(!locate(/obj/effect/xenomorph/spray) in target) //No stacking flames!
 		
 		// Spray type
-		if (isXenoSpitter(src)) new /obj/effect/xenomorph/spray/weak(target)
-		else new /obj/effect/xenomorph/spray(target)
+		if (isXenoSpitter(src)) new /obj/effect/xenomorph/spray/weak(target, , initial(caste_name), src)
+		else new /obj/effect/xenomorph/spray(target,  , initial(caste_name), src)
 
 		for(var/mob/living/carbon/M in target)
 			if(ishuman(M))
@@ -363,7 +363,7 @@
 /mob/living/carbon/Xenomorph/proc/acid_splat_turf(var/turf/T)
 	. = locate(/obj/effect/xenomorph/spray) in T
 	if(!.)
-		. = new /obj/effect/xenomorph/spray(T)
+		. = new /obj/effect/xenomorph/spray(T, , initial(caste_name), src)
 
 		// This should probably be moved into obj/effect/xenomorph/spray or something
 		for (var/obj/structure/barricade/B in T)
@@ -415,6 +415,8 @@
 	use_plasma(10)
 	H.apply_effect(1, STUN)
 	H.apply_effect(2, WEAKEN)
+	H.last_damage_mob = src
+	H.last_damage_source = initial(caste_name)
 	shake_camera(H, 2, 1)
 
 	var/facing = get_dir(src, H)
@@ -466,6 +468,8 @@
 	if (!L || (L.status & LIMB_DESTROYED))
 		return
 
+	H.last_damage_mob = src
+	H.last_damage_source = initial(caste_name)
 	visible_message(SPAN_XENOWARNING("\The [src] hits [H] in the [L.display_name] with a devastatingly powerful punch!"), \
 	SPAN_XENOWARNING("You hit [H] in the [L.display_name] with a devastatingly powerful punch!"))
 	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
@@ -560,6 +564,8 @@
 	if (!Adjacent(H))
 		return
 
+	H.last_damage_mob = src
+	H.last_damage_source = initial(caste_name)
 	visible_message(SPAN_XENOWARNING("\The [src] hits [H] with a powerful jab!"), \
 	SPAN_XENOWARNING("You hit [H] with a powerful jab!"))
 	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
@@ -774,6 +780,8 @@
 	if (!Adjacent(H))
 		return
 
+	H.last_damage_mob = src
+	H.last_damage_source = initial(caste_name)
 	visible_message(SPAN_XENOWARNING("\The [src] rams [H] with its armored crest!"), \
 	SPAN_XENOWARNING("You ram [H] with your armored crest!"))
 
@@ -839,6 +847,8 @@
 		if(H.stat == DEAD) continue
 		if(istype(H.buckled, /obj/structure/bed/nest)) continue
 		step_away(H, src, sweep_range, 2)
+		H.last_damage_mob = src
+		H.last_damage_source = initial(caste_name)
 		H.apply_damage(10)
 		shake_camera(H, 2, 1)
 
@@ -1202,6 +1212,8 @@
 		// Flat bonus damage that ignores armor
 		damage += rCaste.spin_damage_ignore_armor
 
+		H.last_damage_mob = src
+		H.last_damage_source = initial(caste_name)
 		H.apply_damage(damage, BRUTE, target_zone)
 		shake_camera(H, 2, 1)
 		H.KnockDown(2, 1)
@@ -1240,7 +1252,7 @@
 	spin_circle()
 
 	var/turf/target = locate(T.x, T.y, T.z)
-	var/obj/item/projectile/P = new /obj/item/projectile("[caste_name] spikes", src, loc)
+	var/obj/item/projectile/P = new /obj/item/projectile(initial(caste_name), src, loc)
 	P.generate_bullet(R.ammo)
 	P.fire_at(target, src, src, R.ammo.max_range, R.ammo.shell_speed)
 	playsound(src, 'sound/effects/spike_spray.ogg', 25, 1)
@@ -1455,6 +1467,8 @@
 				show_message(SPAN_WARNING("Your armor absorbs the blow!"))
 			else if (n_damage <= 0.67*damage)
 				show_message(SPAN_WARNING("Your armor softens the blow!"))
+			T.last_damage_mob = src
+			T.last_damage_source = initial(caste_name)
 			T.apply_damage(n_damage, BRUTE, target_zone, 0, sharp = 1, edge = 1)
 			
 			playsound(T.loc, "alien_claw_flesh", 30, 1) 
@@ -1931,7 +1945,7 @@
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
 	playsound(src.loc, sound_to_play, 25, 1)
 
-	var/obj/item/projectile/A = new /obj/item/projectile("[caste_name] spit", src, current_turf)
+	var/obj/item/projectile/A = new /obj/item/projectile(initial(caste_name), src, current_turf)
 	A.generate_bullet(ammo)
 	A.permutated += src
 	A.def_zone = get_limbzone_target()

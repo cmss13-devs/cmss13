@@ -1,5 +1,6 @@
 /datum/entity/weapon_stats
 	var/datum/entity/player = null // "deanthelis"
+	var/list/niche_stats = list() // list of type /datum/entity/statistic, "Total Reloads" = number
 	var/list/humans_killed = list() // list of type /datum/entity/statistic, "jobname2" = number
 	var/list/xenos_killed = list() // list of type /datum/entity/statistic, "caste" = number
 	var/name = null
@@ -29,3 +30,13 @@
 		xenos_killed["[caste]"] = N
 	var/datum/entity/statistic/S = xenos_killed["[caste]"]
 	S.value += 1
+
+/datum/entity/weapon_stats/proc/count_niche_stat(var/niche_name, var/amount = 1)
+	if(!niche_name)
+		return
+	if(!niche_stats["[niche_name]"])
+		var/datum/entity/statistic/N = new()
+		N.name = niche_name
+		niche_stats["[niche_name]"] = N
+	var/datum/entity/statistic/S = xenos_killed["[niche_name]"]
+	S.value += amount

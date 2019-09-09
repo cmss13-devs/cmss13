@@ -41,6 +41,7 @@
 	if(A)
 		user.visible_message(SPAN_WARNING("[user] rips a wriggling parasite out of [target]'s ribcage!"),
 							 SPAN_WARNING("You rip a wriggling parasite out of [target]'s ribcage!"))
+		user.count_niche_stat(STATISTICS_NICHE_SURGERY_LARVA)
 		var/mob/living/carbon/Xenomorph/Larva/L = locate() in target //the larva was fully grown, ready to burst.
 		if(L)
 			L.forceMove(target.loc)
@@ -104,6 +105,7 @@
 		if(I && I.damage > 0 && I.robotic != ORGAN_ROBOT)
 			user.visible_message(SPAN_NOTICE("[user] treats damage to [target]'s [I.name] with [tool_name]."), \
 			SPAN_NOTICE("You treat damage to [target]'s [I.name] with [tool_name].") )
+			user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
 			I.rejuvenate()
 
 /datum/surgery_step/internal/fix_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
@@ -289,6 +291,7 @@
 /datum/surgery_step/internal/remove_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] has removed [target]'s [affected.surgery_organ] with \the [tool]."), \
 	SPAN_NOTICE("You have removed [target]'s [affected.surgery_organ] with \the [tool]."))
+	user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REMOVE)
 
 	//Extract the organ!
 	if(affected.surgery_organ)
@@ -469,6 +472,7 @@
 /datum/surgery_step/internal/attach_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] has reattached [target]'s [affected.surgery_organ] with \the [tool].") , \
 	SPAN_NOTICE("You have reattached [target]'s [affected.surgery_organ] with \the [tool]."))
+	user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_ATTACH)
 
 	var/datum/internal_organ/I = target.internal_organs_by_name[affected.surgery_organ]
 	I.cut_away = FALSE

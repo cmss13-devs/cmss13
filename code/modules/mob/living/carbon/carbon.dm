@@ -151,6 +151,7 @@
 		else
 			Stun(10)//This should work for now, more is really silly and makes you lay there forever
 			KnockDown(10)
+		count_niche_stat(STATISTICS_NICHE_SHOCK)
 	else
 		src.visible_message(
 			SPAN_DANGER("[src] was mildly shocked by the [source]."), \

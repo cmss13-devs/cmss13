@@ -60,6 +60,7 @@
 				if(H.has_limb_for_slot(WEAR_HANDCUFFS))
 					user.drop_inv_item_on_ground(src)
 					H.equip_to_slot_if_possible(src, WEAR_HANDCUFFS, 1, 0, 1, 1)
+					user.count_niche_stat(STATISTICS_NICHE_HANDCUFF)
 
 	else if (ismonkey(target))
 		user.visible_message(SPAN_NOTICE("[user] tries to put [src] on [target]."))

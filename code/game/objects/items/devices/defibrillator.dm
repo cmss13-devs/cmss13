@@ -224,6 +224,8 @@
 			H.life_time_start = world.time
 			H.life_time_total = 0
 			H.life_steps_total = 0
+			H.last_damage_mob = null
+			H.last_damage_source = null
 			H.tod = null
 			H.stat = UNCONSCIOUS
 			H.emote("gasp")

@@ -102,6 +102,7 @@
 /datum/surgery_step/eye/mend_eyes/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] mends the nerves and lenses in [target]'s with \the [tool].") ,	\
 	SPAN_NOTICE("You mend the nerves and lenses in [target]'s with \the [tool]."))
+	user.count_niche_stat(STATISTICS_NICHE_SURGERY_EYE)
 	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
 	E.eye_surgery_stage = 3
 

@@ -30,6 +30,7 @@
 /datum/surgery_step/fix_vein/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] has patched the damaged vein in [target]'s [affected.display_name] with \the [tool]."), \
 		SPAN_NOTICE("You have patched the damaged vein in [target]'s [affected.display_name] with \the [tool]."))
+	user.count_niche_stat(STATISTICS_NICHE_SURGERY_IB)
 
 	for(var/datum/wound/W in affected.wounds)
 		if(W.internal)

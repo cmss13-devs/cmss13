@@ -394,6 +394,15 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/magazine_box/ap/empty
 	spawn_full = 0
 
+/obj/item/magazine_box/le
+	name = "magazine box (LE M41A x 10)"
+	icon_state = "mag_box_m41_le_closed"
+	icon_base_name = "mag_box_m41_le"
+	magazine_type = /obj/item/ammo_magazine/rifle/le
+
+/obj/item/magazine_box/le/empty
+	spawn_full = 0
+
 /obj/item/magazine_box/ext
 	name = "magazine box (Ext M41A x 8)"
 	icon_state = "mag_box_m41_ext_closed"
@@ -492,6 +501,15 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/magazine_box/l42mk1/ap/empty
 	spawn_full = 0
 
+/obj/item/magazine_box/l42mk1/le
+	name = "magazine box (LE L42-MK1 x 16)"
+	icon_state = "mag_box_l42_le_closed"
+	icon_base_name = "mag_box_l42_le"
+	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1/le
+
+/obj/item/magazine_box/l42mk1/le/empty
+	spawn_full = 0
+
 /obj/item/magazine_box/l42mk1/ext
 	name = "magazine box (Ext L42-MK1 x 12)"
 	icon_state = "mag_box_l42_ext_closed"
@@ -560,7 +578,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 //-----------------------88M4 Pistol Mag Box-----------------------
 
 /obj/item/magazine_box/mod88
-	name = "magazine box (88 Mod 4 AP x 16)"
+	name = "magazine box (88 Mod 4 LE x 16)"
 	icon_state = "mag_box_mod88_closed"
 	icon_base_name = "mag_box_mod88"
 	num_of_magazines = 16
@@ -779,6 +797,14 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	item_state = "big_ammo_box"
 	default_ammo = /datum/ammo/bullet/rifle/ap
 
+/obj/item/big_ammo_box/le
+	name = "rifle ammunition box (10x24mm LE)"
+	desc = "A 10x24mm armor-shredding ammunition box. Used to refill M41A MK2 and L42MK1 LE magazines. It comes with a leather strap."
+	icon_state = "big_ammo_box_le"
+	base_icon_state = "big_ammo_box_le"
+	item_state = "big_ammo_box"
+	default_ammo = /datum/ammo/bullet/rifle/le
+
 /obj/item/big_ammo_box/incen
 	name = "rifle ammunition box (10x24mm Incen)"
 	desc = "A 10x24mm incendiary ammunition box. Used to refill M41A MK2 and L42MK1 incendiary magazines. It comes with a leather strap."
@@ -832,9 +858,9 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/big_ammo_box/smg/le
 	name = "SMG ammunition box (10x20mm LE)"
-	desc = "A 10x20mm light explosive ammunition box. Used to refill M39 LE magazines. It comes with a leather strap."
+	desc = "A 10x20mm armor-shredding ammunition box. Used to refill M39 LE magazines. It comes with a leather strap."
 	caliber = "10x20mm"
-	icon_state = "big_ammo_box_m39_le"
+	icon_state = "big_ammo_box_le_m39"
 	base_icon_state = "big_ammo_box_le_m39"
-	item_state = "big_ammo_box_m39"
+	item_state = "big_ammo_box_le_m39"
 	default_ammo = /datum/ammo/bullet/smg/le

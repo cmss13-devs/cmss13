@@ -64,6 +64,7 @@
 						/obj/item/attachable/attached_gun/grenade,
 						/obj/item/attachable/attached_gun/flamer,
 						/obj/item/attachable/attached_gun/shotgun,
+						/obj/item/attachable/quickfire,
 						/obj/item/attachable/scope,
 						/obj/item/attachable/scope/mini)
 

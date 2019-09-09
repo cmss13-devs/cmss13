@@ -43,13 +43,17 @@
 //88M4 based off VP70
 
 /obj/item/ammo_magazine/pistol/mod88
-	name = "\improper 88M4 AP magazine (9mm)"
-	default_ammo = /datum/ammo/bullet/pistol/ap
+	name = "\improper 88M4 LE magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/le
 	caliber = "9mm"
-	icon_state = "88m4"
+	icon_state = "88m4_mag_le"
 	max_rounds = 19
 	gun_type = /obj/item/weapon/gun/pistol/mod88
 
+/obj/item/ammo_magazine/pistol/mod88/ap
+	name = "\improper 88M4 AP magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/ap
+	icon_state = "88m4_mag_ap"
 
 //-------------------------------------------------------
 //VP78

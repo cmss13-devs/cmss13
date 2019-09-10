@@ -163,8 +163,8 @@
 
 		// Area denial, light damage, large AOE, long burntime
 		if("Napalm B")
-			burnlevel = config.min_burnlevel
-			burntime = config.max_burntime
+			burnlevel = config.low_burnlevel
+			burntime = config.instant_burntime
 			max_range = config.min_shell_range
 			playsound(user, src.get_fire_sound(), 50, 1)
 			triangular_flame(target, user, burntime, burnlevel)
@@ -174,12 +174,7 @@
 			burnlevel = config.low_burnlevel
 			burntime = config.instant_burntime
 			max_range = config.near_shell_range
-			playsound(user, src.get_fire_sound(), 50, 1)
-
-		if("Napalm A Gel") //long range, higher damage, cuz spec.
-			burnlevel = config.high_burnlevel
-			burntime = config.instant_burntime
-			max_range = config.near_shell_range
+			fire_color = "green"
 			playsound(user, src.get_fire_sound(), 50, 1)
 
 		if("Napalm X") //Probably can end up as a spec fuel or DS flamer fuel. Also this was the original fueltype, the madman i am.

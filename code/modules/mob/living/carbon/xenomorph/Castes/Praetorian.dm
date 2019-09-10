@@ -13,7 +13,7 @@
 	armor_deflection = XENO_LOWMED_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_MEDIUM
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_HIGH
+	speed = XENO_SPEED_LOWHIGH
 	speed_mod = XENO_SPEED_MOD_LARGE
 
 	tackle_chance = 45
@@ -21,7 +21,7 @@
 	deevolves_to = "Warrior"
 	spit_delay = 20
 	caste_desc = "The warleader of the hive."
-	aura_strength = 1.0 // Base Prae: 1.0 -> 2.0 -> 3.0 -> 4.0. Royal Guard: 2.0 -> 3.0 -> 4.0 -> 4.0. Dancer/Oppressor: .5 -> 1.5 -> 2.5 -> 3.5
+	aura_strength = 0.5 // Base Prae: 1.0 -> 2.0 -> 3.0 -> 4.0. Royal Guard: 2.0 -> 3.0 -> 4.0 -> 4.0. Dancer/Oppressor: .5 -> 1.5 -> 2.5 -> 3.5
 	spit_types = list(/datum/ammo/xeno/toxin/heavy, /datum/ammo/xeno/acid/heavy, /datum/ammo/xeno/sticky)
 	acid_level = 2
 
@@ -45,8 +45,8 @@
 	var/xenoarmor_screech_armorbuff = XENO_ARMOR_MOD_SMALL	 		 // Amount to buff xeno armor by (10)
 	var/xenoarmor_screech_explosivebuff = XENO_EXPOSIVEARMOR_MOD_VERYSMALL // Amount to buff xeno explosion armor by (30)
 	var/oppressor_grenade_cooldown = 400
-	var/oppressor_grenade_setup = 12
-	var/oppressor_grenade_fuse = 12
+	var/oppressor_grenade_setup = 7
+	var/oppressor_grenade_fuse = 10
 	var/oppressor_punch_cooldown = 75
 	var/oppressor_punch_fling_dist = 3
 	
@@ -69,7 +69,7 @@
 	caste_desc = "The warleader of the hive. It looks a little stronger."
 	upgrade = 1
 	tackle_chance = 50
-	aura_strength = 2.0
+	aura_strength = 1.5
 
 /datum/caste_datum/praetorian/elder
 	upgrade_name = "Elder"
@@ -78,7 +78,7 @@
 
 	spit_delay = 15
 	tackle_chance = 55
-	aura_strength = 3.0
+	aura_strength = 2.5
 
 /datum/caste_datum/praetorian/ancient
 	upgrade_name = "Ancient"
@@ -87,7 +87,7 @@
 
 	spit_delay = 12
 	tackle_chance = 55
-	aura_strength = 4.0
+	aura_strength = 3.5
 
 /datum/caste_datum/praetorian/primordial
 	upgrade_name = "Primordial"

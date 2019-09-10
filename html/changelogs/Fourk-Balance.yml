@@ -1,0 +1,58 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: Fourkhan
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes: 
+  - tweak: "Increased the explosive armor of the Oppressor Praetorian."
+  - tweak: "Decreased the windup and activation time of the Oppressor Praetorian grenade."
+  - tweak: "Oppressor Praetorian smoke grenades now extinguish fire on living creatures and the ground in their radius."
+  - tweak: "Oppressor Praetorian smoke grenades now deal more damage and stun more consistently."
+  - tweak: "Decreased the damage of sniper specialist flak ammunition."
+  - tweak: "Sniper flak ammunition no longer deals explosive damage."
+  - tweak: "Reduced the fire rate of the sniper specialist with bipod deployed."
+  - bugfix: "The incendiary OB now works again (isn't just a 3x3 square of blue fire)."
+  - tweak: "Buffed the duration of the incendiary OB."
+  - tweak: "Increased the damage of the incendiary OB."
+  - tweak: "Dramatically increased the power of the HE OB."
+  - tweak: "Increased the duration of the cluster OB."
+  - tweak: "Increased the power of the individual explosions in the cluster OB."
+  - tweak: "Removing shrapnel with your bootknife now removes ALL shrapnel in your body in one go."
+  - tweak: "Decreased the explosive armor of Ravagers."
+  - tweak: "Reduced the stun associated with shocked doors."
+  - tweak: "Nerfed Praetorain pheromones slightly."
+  - tweak: "Nerfed Ravager hitpoint total slightly."
+  - tweak: "Nerfed the pheromone increase from Royal Guard Praetorian ."
+  - tweak: "Nerfed Praetorian speed slightly."
+  - tweak: "Buffed the fire delay, accuracy, and ammo of the M41AMK2."
+  - tweak: "Dramatically buffed the burst performance of the M41AMK2."
+

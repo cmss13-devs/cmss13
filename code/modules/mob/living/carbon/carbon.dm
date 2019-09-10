@@ -149,9 +149,11 @@
 			Stun(1)//Sadly, something has to stop them from bumping them 10 times in a second
 			KnockDown(1)
 		else
-			Stun(10)//This should work for now, more is really silly and makes you lay there forever
-			KnockDown(10)
+			Stun(6)//This should work for now, more is really silly and makes you lay there forever
+			KnockDown(6)
+		
 		count_niche_stat(STATISTICS_NICHE_SHOCK)
+		
 	else
 		src.visible_message(
 			SPAN_DANGER("[src] was mildly shocked by the [source]."), \

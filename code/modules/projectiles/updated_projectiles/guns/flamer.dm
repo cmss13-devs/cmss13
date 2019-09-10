@@ -646,7 +646,8 @@
 		if(T.density)
 			continue
 
-		INVOKE_ASYNC(src, .proc/fire_spread_recur, T, source, source_mob, spread_direction, fire_lvl, burn_lvl, f_color) //spread further
+		spawn(0)
+			fire_spread_recur(T, source, source_mob, spread_power, spread_direction, fire_lvl, burn_lvl, f_color)
 
 /proc/fire_spread(var/turf/target, var/source, var/source_mob, range, fire_lvl, burn_lvl, f_color)
 	new/obj/flamer_fire(target, source, source_mob, fire_lvl, burn_lvl, f_color)

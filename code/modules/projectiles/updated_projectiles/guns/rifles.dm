@@ -66,7 +66,8 @@
 						/obj/item/attachable/attached_gun/shotgun,
 						/obj/item/attachable/quickfire,
 						/obj/item/attachable/scope,
-						/obj/item/attachable/scope/mini)
+						/obj/item/attachable/scope/mini
+						)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade)
@@ -81,12 +82,12 @@
 	fire_delay = config.med_fire_delay
 	burst_amount = config.med_burst_value
 	burst_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult
+	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.med_scatter_value
+	scatter = config.low_scatter_value
+	burst_scatter_mult = config.mlow_scatter_value
 	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult
+	damage_mult = config.base_hit_damage_mult + config.min_hit_damage_mult
 	recoil_unwielded = config.high_recoil_value
 
 

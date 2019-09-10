@@ -301,7 +301,7 @@ datum/game_mode/proc/initialize_special_clamps()
 			possible_xenomorphs -= new_xeno
 			if(!new_xeno)
 				hive.stored_larva++
-				continue  //Looks like we didn't get anyone. Back out.
+				continue  //Looks like we didn't get anyone. Keep going.
 			new_xeno.assigned_role = "MODE"
 			new_xeno.special_role = "Xenomorph"
 			new_xeno.setup_xeno_stats()

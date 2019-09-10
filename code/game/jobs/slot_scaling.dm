@@ -1,4 +1,3 @@
-
 /proc/get_total_marines()
 	var/count = 0
 	var/mob/M
@@ -9,6 +8,8 @@
 // https://docs.google.com/spreadsheets/d/1PlnIwKhq-bVWWFPoBrzWYh1mWK04pyBSQUtUMEw3qSw/edit#gid=1290768907
 
 /proc/job_slot_formula(var/marine_count,var/factor,var/c,var/min,var/max)
+	if(marine_count <= factor)
+		return min
 	return round(Clamp((marine_count/factor)+c, min, max))
 
 /proc/medic_slot_formula(var/playercount)
@@ -40,3 +41,12 @@
 
 /proc/int_slot_formula(var/playercount)
 	return job_slot_formula(playercount,30,1,1,3)
+
+/proc/spec_slot_formula(var/playercount)
+	return job_slot_formula(playercount,20,1,2,4)
+
+/proc/sg_slot_formula(var/playercount)
+	return job_slot_formula(playercount,20,1,2,4)
+
+/proc/tank_slot_formula(var/playercount)
+	return job_slot_formula(playercount,80,2,0,2)

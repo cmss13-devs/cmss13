@@ -29,7 +29,6 @@
 	..()
 	if(!disp_title) disp_title = title
 
-
 /datum/job/proc/get_access()
 	if(!gear_preset)
 		return null

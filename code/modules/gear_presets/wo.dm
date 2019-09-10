@@ -21,6 +21,21 @@
 	skills = /datum/skills/commander
 	idtype = /obj/item/card/id/gold
 
+	utility_under = /obj/item/clothing/under/marine
+	utility_hat = /obj/item/clothing/head/cmcap
+	utility_gloves = /obj/item/clothing/gloves/marine
+	utility_shoes = /obj/item/clothing/shoes/marine
+	utility_extra = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
+
+	service_under = /obj/item/clothing/under/marine/officer/bridge
+	service_over = /obj/item/clothing/suit/storage/jacket/marine
+	service_hat = /obj/item/clothing/head/cmcap
+	service_shoes = /obj/item/clothing/shoes/dress
+
+	dress_under = /obj/item/clothing/under/marine/dress
+	dress_over = /obj/item/clothing/suit/storage/jacket/marine/dress
+	dress_gloves = /obj/item/clothing/gloves/marine/dress
+	dress_shoes = /obj/item/clothing/shoes/dress
 
 /datum/equipment_preset/wo/commander/New()
 	. = ..()
@@ -33,7 +48,7 @@
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/command(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marinechief/commander(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress/commander(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/techofficer/commander(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm/tan(H), WEAR_HEAD)
@@ -41,7 +56,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/RO(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_HAND)
-	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword/commander(H), WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword/ceremonial(H), WEAR_J_STORE)
 
 
 /*****************************************************************************************************/
@@ -253,7 +268,7 @@
 		backItem = /obj/item/storage/backpack/industrial
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/logistics(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/techofficer(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m44/full(H), WEAR_WAIST)

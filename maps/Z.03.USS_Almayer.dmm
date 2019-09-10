@@ -2530,13 +2530,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
-"agi" = (
-/obj/structure/largecrate/random/case/double,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/hull/upper_hull)
 "agj" = (
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -3323,6 +3316,14 @@
 /obj/structure/flora/pottedplant{
 	tag = "icon-plant-10";
 	icon_state = "plant-10"
+	},
+/obj/machinery/door_control{
+	id = "bot_uniforms";
+	name = "Uniform Vendor Lockdown";
+	pixel_x = 0;
+	pixel_y = -20;
+	req_access = list(1);
+	unacidable = 1
 	},
 /turf/open/floor/wood,
 /area/almayer/living/commandbunks)
@@ -39294,13 +39295,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/hallways/port_hallway)
-"cbA" = (
-/obj/structure/closet/emcloset,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/hallways/port_hallway)
 "cbC" = (
 /obj/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Cryogenics Bay"
@@ -44545,6 +44539,17 @@
 /obj/structure/table/almayer,
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
+"dhU" = (
+/obj/machinery/door/poddoor/shutters/almayer{
+	dir = 2;
+	id = "bot_uniforms";
+	name = "\improper Uniform Vendor Shutters"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/port_hallway)
 "dix" = (
 /obj/machinery/door/airlock/almayer/secure{
 	dir = 1;
@@ -47592,6 +47597,17 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig_cells)
+"hdd" = (
+/obj/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "bot_uniforms";
+	name = "\improper Uniform Vendor Shutters"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/command/cichallway)
 "hds" = (
 /obj/structure/table/almayer,
 /obj/item/folder/black,
@@ -47712,6 +47728,14 @@
 	dir = 10
 	},
 /area/almayer/shipboard/brig_cells)
+"hlK" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/almayer{
+	tag = "icon-green (NORTH)";
+	icon_state = "green";
+	dir = 1
+	},
+/area/almayer/hallways/port_hallway)
 "hme" = (
 /turf/open/floor/almayer/research/containment/floor2,
 /area/almayer/medical/containment/cell)
@@ -48049,6 +48073,18 @@
 	dir = 8
 	},
 /area/almayer/medical/medical_science)
+"hGk" = (
+/obj/machinery/light/small{
+	tag = "icon-bulb1 (WEST)";
+	icon_state = "bulb1";
+	dir = 8
+	},
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/upper_hull)
 "hIo" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-S";
@@ -50368,10 +50404,6 @@
 	},
 /area/almayer/engineering/engineering_workshop)
 "kFy" = (
-/obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
-	},
 /turf/open/floor/almayer{
 	tag = "icon-red";
 	icon_state = "red"
@@ -51189,6 +51221,17 @@
 	dir = 2
 	},
 /area/almayer/shipboard/brig_cells)
+"lGz" = (
+/obj/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "bot_uniforms";
+	name = "\improper Uniform Vendor Shutters"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/command/cic)
 "lHY" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/surgical_tray,
@@ -52036,6 +52079,13 @@
 	dir = 4
 	},
 /area/almayer/hallways/aft_hallway)
+"mCm" = (
+/obj/machinery/cm_vending/clothes_personal,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull)
 "mCo" = (
 /obj/structure/window/framed/almayer,
 /obj/machinery/door/firedoor/border_only/almayer{
@@ -53433,6 +53483,10 @@
 	icon_state = "tube1";
 	dir = 8
 	},
+/obj/structure/flora/pottedplant{
+	tag = "icon-plant-10";
+	icon_state = "plant-10"
+	},
 /turf/open/floor/almayer{
 	tag = "icon-red (WEST)";
 	icon_state = "red";
@@ -54585,6 +54639,10 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/firing_range_north)
+"pOD" = (
+/obj/machinery/cm_vending/clothes_personal,
+/turf/open/floor/wood,
+/area/almayer/living/commandbunks)
 "pOJ" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
@@ -55667,6 +55725,17 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/hydroponics)
+"rgJ" = (
+/obj/machinery/door/poddoor/shutters/almayer{
+	dir = 2;
+	id = "bot_uniforms";
+	name = "\improper Uniform Vendor Shutters"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull)
 "rhO" = (
 /obj/machinery/firealarm{
 	pixel_y = 28
@@ -57071,6 +57140,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig_cells)
+"sHS" = (
+/obj/machinery/cm_vending/clothes_personal,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/upper_hull)
 "sIf" = (
 /obj/machinery/door/window/southleft{
 	opacity = 0;
@@ -57949,6 +58025,13 @@
 	icon_state = "redfull"
 	},
 /area/almayer/shipboard/firing_range_north)
+"tJc" = (
+/obj/machinery/cm_vending/clothes_personal,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/squads/req)
 "tKf" = (
 /obj/structure/table/almayer,
 /obj/item/ashtray/plastic,
@@ -59535,6 +59618,17 @@
 	dir = 1
 	},
 /area/almayer/shipboard/weapon_room)
+"vwV" = (
+/obj/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "bot_uniforms";
+	name = "\improper Uniform Vendor Shutters"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/upper_hull)
 "vxX" = (
 /obj/machinery/door/airlock/almayer/marine/alpha{
 	name = "\improper Alpha Squad Requisitions";
@@ -60390,10 +60484,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/command/cic)
-"wxq" = (
-/obj/structure/closet/firecloset,
-/turf/open/floor/almayer,
-/area/almayer/hallways/starboard_hallway)
 "wxO" = (
 /obj/structure/table/almayer,
 /obj/item/storage/box/cups{
@@ -79371,10 +79461,10 @@ aft
 aft
 ank
 aar
-agb
-agb
-agb
-agb
+sHS
+sHS
+sHS
+aar
 agb
 agb
 ceE
@@ -79388,10 +79478,10 @@ iQj
 ceE
 agb
 agb
-agb
-agb
-agb
-agb
+aar
+sHS
+sHS
+sHS
 aar
 aVP
 aAM
@@ -79574,9 +79664,9 @@ aft
 aji
 akZ
 aar
-ceE
-ceE
-akh
+hdd
+hdd
+lGz
 akh
 akh
 akh
@@ -79592,9 +79682,9 @@ ceE
 akh
 akh
 akh
-akh
-ceE
-ceE
+lGz
+hdd
+hdd
 aar
 ang
 aWP
@@ -79779,8 +79869,8 @@ ala
 akC
 ahE
 aou
-azC
 aom
+azC
 aom
 azC
 aom
@@ -79794,8 +79884,8 @@ aom
 aom
 azC
 aom
-aom
 azC
+aom
 uNg
 ahE
 amz
@@ -81396,7 +81486,7 @@ adG
 afa
 age
 agc
-afn
+pOD
 acX
 akk
 alb
@@ -86678,9 +86768,9 @@ adG
 aXp
 akv
 aiX
-ami
-and
-apu
+amd
+amh
+amb
 aiX
 asf
 atT
@@ -86881,9 +86971,9 @@ abf
 ada
 ada
 ada
-aiX
-aiX
-aiX
+ami
+and
+apu
 aiX
 aiX
 aiX
@@ -87084,12 +87174,12 @@ add
 acT
 abD
 ada
-aao
-aao
-aao
-agi
+aar
+aar
+aar
+aar
 aiE
-acD
+hGk
 bzE
 aao
 awf
@@ -87287,10 +87377,10 @@ ace
 ace
 ace
 ada
-aap
-aap
-aap
-aap
+sHS
+sHS
+sHS
+aar
 aap
 aap
 aao
@@ -87490,9 +87580,9 @@ adt
 ace
 auz
 ada
-aar
-aar
-aar
+vwV
+vwV
+vwV
 aar
 aar
 aar
@@ -97366,7 +97456,7 @@ bni
 vOQ
 uiB
 aok
-bto
+lJr
 aLd
 aLd
 aLd
@@ -97532,8 +97622,8 @@ aLd
 usX
 usX
 usX
-usX
-usX
+aLd
+aLd
 aLd
 aLB
 baf
@@ -97569,10 +97659,10 @@ bni
 bni
 bni
 bni
-lJr
+bto
+rgJ
+mCm
 aLd
-usX
-usX
 usX
 usX
 usX
@@ -97735,10 +97825,10 @@ aLd
 usX
 usX
 usX
-usX
-usX
 aLd
-wxq
+mCm
+rgJ
+aLG
 aLG
 aYO
 aLG
@@ -97773,9 +97863,9 @@ cxj
 bNj
 iVw
 kFy
+rgJ
+mCm
 aLd
-usX
-usX
 usX
 usX
 usX
@@ -97938,9 +98028,9 @@ aLd
 usX
 usX
 usX
-usX
-usX
 aLd
+mCm
+rgJ
 beB
 beB
 aYT
@@ -97977,8 +98067,8 @@ iZQ
 iVw
 ayC
 aLd
-usX
-usX
+aLd
+aLd
 usX
 usX
 usX
@@ -98141,9 +98231,9 @@ aLd
 usX
 usX
 usX
-usX
-usX
 aLd
+mCm
+rgJ
 aLG
 aLG
 eTF
@@ -105679,7 +105769,7 @@ sgc
 xCa
 noj
 bdl
-pJJ
+hlK
 bHc
 bHa
 bIT
@@ -105882,7 +105972,7 @@ bdl
 bdl
 bdl
 bdl
-pJJ
+bGb
 vzu
 vYi
 bIT
@@ -106084,8 +106174,8 @@ jaR
 jaR
 mJa
 bdl
-bdl
-pJJ
+tJc
+dhU
 buH
 xpn
 bIT
@@ -106287,8 +106377,8 @@ oPC
 nPT
 nsm
 bdl
-bdl
-cbA
+tJc
+dhU
 buH
 xpn
 bIU

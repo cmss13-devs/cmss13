@@ -118,14 +118,6 @@
 	specialty = "technical officer"
 	flags_atom = NO_SNOW_TYPE
 
-/obj/item/clothing/under/marine/officer/logistics
-	name = "marine officer uniform"
-	desc = "A uniform worn by commissioned officers of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
-	icon_state = "BO_jumpsuit"
-	worn_state = "BO_jumpsuit"
-	specialty = "marine officer"
-	flags_atom = NO_SNOW_TYPE
-
 /obj/item/clothing/under/marine/officer/pilot
 	name = "pilot officer bodysuit"
 	desc = "A bodysuit worn by pilot officers of the USCM, and is meant for survival in inhospitable conditions. Fly the marines onwards to glory. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
@@ -149,11 +141,11 @@
 	item_state_slots = list(WEAR_BODY = "marine_tanker")
 
 /obj/item/clothing/under/marine/officer/bridge
-	name = "staff officer uniform"
-	desc = "A uniform worn by commissioned officers of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
+	name = "marine service uniform"
+	desc = "A service uniform worn by members of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "BO_jumpsuit"
 	worn_state = "BO_jumpsuit"
-	specialty = "staff officer"
+	specialty = "marine service"
 
 /obj/item/clothing/under/marine/officer/exec
 	name = "executive officer uniform"
@@ -163,11 +155,11 @@
 	specialty = "executive officer"
 
 /obj/item/clothing/under/marine/officer/command
-	name = "commanding officer uniform"
-	desc = "The well-ironed uniform of a USCM commanding officer. Even looking at it the wrong way could result in being court-marshalled. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
+	name = "\improper USCM officer uniform"
+	desc = "The well-ironed utility uniform of a USCM officer. Even looking at it the wrong way could result in being court-marshalled. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "CO_jumpsuit"
 	worn_state = "CO_jumpsuit"
-	specialty = "commanding officer"
+	specialty = "USCM officer"
 
 /obj/item/clothing/under/marine/officer/admiral
 	name = "admiral uniform"
@@ -225,6 +217,23 @@
 	icon_state = "research_jumpsuit"
 	worn_state = "research_jumpsuit"
 	specialty = "researcher"
+	flags_atom = NO_SNOW_TYPE
+
+/obj/item/clothing/under/marine/dress
+	name = "marine dress uniform"
+	desc = "A dress uniform typically worn marines of the USCM. The Sergeant Major would kill you if you got this dirty."
+	suit_restricted = list(/obj/item/clothing/suit/storage/jacket/marine/dress)
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	icon_state = "marine_formal"
+	worn_state = "marine_formal"
+	specialty = "marine dress"
 	flags_atom = NO_SNOW_TYPE
 
 //=========================//RESPONDERS\\================================\\

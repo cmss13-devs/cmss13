@@ -305,7 +305,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/storage/sparepouch,
 		/obj/item/device/hailer,
 		/obj/item/storage/belt/gun,
-		/obj/item/weapon/claymore/mercsword/commander)
+		/obj/item/weapon/claymore/mercsword/ceremonial)
 	uniform_restricted = list(/obj/item/clothing/under/marine/mp)
 	specialty = "M2 pattern MP"
 	item_state_slots = list(WEAR_JACKET = "mp")

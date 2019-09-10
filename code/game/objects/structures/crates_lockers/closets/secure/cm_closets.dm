@@ -273,14 +273,8 @@
 	..()
 	new /obj/item/storage/mateba_case(src)
 	new /obj/item/storage/backpack/mcommander(src)
-	new /obj/item/clothing/shoes/marinechief/commander(src)
-	new /obj/item/clothing/gloves/marine/techofficer/commander(src)
-	new /obj/item/clothing/under/marine/officer/command(src)
-	new /obj/item/clothing/head/beret/marine/commander(src)
-	new /obj/item/clothing/head/beret/marine/commander/peaked(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
 	new /obj/item/device/radio/headset/almayer/mcom/cdrcom(src)
-	new /obj/item/clothing/suit/storage/co_jacket(src)
 
 /obj/structure/closet/secure_closet/securecom
 	name = "commanding officer's secure box"

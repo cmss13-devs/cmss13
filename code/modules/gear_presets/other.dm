@@ -404,7 +404,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot(H), WEAR_R_HAND)
-	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword/commander(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword(H), WEAR_L_HAND)
 
 	var/obj/item/lantern = new /obj/item/device/flashlight/lantern(H)
 	lantern.name = "Beacon of Holy Light"
@@ -429,7 +429,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot(H), WEAR_R_HAND)
-	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword/commander(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword(H), WEAR_L_HAND)
 
 	var/obj/item/lantern = new /obj/item/device/flashlight/lantern(H)
 	lantern.name = "Beacon of Holy Light"

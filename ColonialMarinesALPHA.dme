@@ -539,6 +539,7 @@
 #include "code\game\objects\effects\spawners\vaultspawner.dm"
 #include "code\game\objects\effects\spawners\wo_spawners\players.dm"
 #include "code\game\objects\effects\spawners\wo_spawners\supplies.dm"
+#include "code\game\objects\structures\flora.dm"
 #include "code\game\objects\items\artifacts.dm"
 #include "code\game\objects\items\ashtray.dm"
 #include "code\game\objects\items\blueprints.dm"

@@ -310,8 +310,6 @@ datum/game_mode/proc/initialize_special_clamps()
 		else //Out of candidates, fill the xeno hive with burrowed larva
 			hive.stored_larva += i
 			break
-			
-		i--
 
 	/*
 	Our list is empty. This can happen if we had someone ready as alien and predator, and predators are picked first.

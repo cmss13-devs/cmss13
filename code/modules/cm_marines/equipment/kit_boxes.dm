@@ -369,7 +369,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		new /obj/item/device/encryptionkey/intel(src)
 
 /obj/item/storage/box/kit/veteran_enlist
-	name = "\improper Veteran Enlist Assault Kit"
+	name = "\improper Veteran Enlisted Assault Kit"
 
 /obj/item/storage/box/kit/veteran_enlist/New()
 	..()

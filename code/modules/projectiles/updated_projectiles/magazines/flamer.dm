@@ -56,14 +56,6 @@
 	max_rounds = 90
 	current_rounds = 90
 
-/obj/item/ammo_magazine/flamer_tank/large/gellied
-	name = "large incinerator tank (A Gel)"
-	desc = "A large fuel tank full of heavier gel fuel. Unlike its liquid contemporaries, this stuff shoots far, and burns up fast. Handle with exceptional care."
-	icon_state = "flametank_gel"
-	caliber = "Napalm A Gel"
-	max_rounds = 140
-	current_rounds = 140
-
 /obj/item/ammo_magazine/flamer_tank/large/B
 	name = "large incinerator tank (B)"
 	desc = "A large fuel tank of Ultra Thick Napthal Fuel type B, a wide-spreading sticky combustable liquid chemical, for use in the M240-T incinerator unit. Handle with care."

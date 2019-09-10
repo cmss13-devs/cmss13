@@ -322,9 +322,9 @@
 	camouflage()
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/verb/camouflage()
-	set name = "Toggle M68 Thermal Camouflage"
+	set name = "Specialist Activation"
 	set desc = "Activate your cloak's camouflage."
-	set category = "Scout"
+	set category = "Weapons"
 
 	if (!usr || usr.is_mob_incapacitated(TRUE))
 		return

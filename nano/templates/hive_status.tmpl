@@ -71,10 +71,10 @@
 {{:helper.xenoMode()}}
 <center>
 	<h3 class="whiteTitle">The Queen is in:</h3>
-	{{props data.xeno_info :info:nicknumber}}
-		{{props info :val:key}}
+	{{props data.xeno_keys :keys:index}}
+		{{props keys :val:key}}
 			{{if key == "is_queen" && val}}
-				<h1 class="whiteTitle">{{:data.xeno_vitals[nicknumber].area}}</h1>
+				<h1 class="whiteTitle">{{:data.xeno_vitals[keys.nicknumber].area}}</h1>
 			{{/if}}
 		{{/props}}
 	{{/for}}
@@ -117,32 +117,32 @@
 		<th></th>
 	</tr>
 
-	{{props data.xeno_info :info:nicknumber}}
-		<tr class="{{if data.xeno_vitals[nicknumber].is_ssd}} ssdRow {{/if}}">
+	{{props data.xeno_keys :keys:index}}
+		<tr class="{{if data.xeno_vitals[keys.nicknumber].is_ssd}} ssdRow {{/if}}">
 			<!-- Leader/SSD icon -->
 			<!-- You might think using an image for rounded corners is stupid, but I shit you not, BYOND's version of IE doesn't support border-radius -->
 			<td class="noPadCell">
-				{{if data.xeno_vitals[nicknumber].is_ssd}}
+				{{if data.xeno_vitals[keys.nicknumber].is_ssd}}
 					<div unselectable="on" class="ssdIcon"></div>
 				{{else}}
-					{{if info.leader || info.is_queen}}
+					{{if keys.leader || keys.is_queen}}
 						<div unselectable="on" class="leaderIcon">
 							{{:helper.icon('star', 'noMargin')}}
 						</div>
 					{{/if}}
 				{{/if}}
 			</td>
-			<td>{{:info.name}}</td>
-			<td>{{:info.strain}}</td>
-			<td>{{:data.xeno_vitals[nicknumber].area}}</td>
+			<td>{{:data.xeno_info[keys.nicknumber].name}}</td>
+			<td>{{:data.xeno_info[keys.nicknumber].strain}}</td>
+			<td>{{:data.xeno_vitals[keys.nicknumber].area}}</td>
 			<td>
-				{{if data.xeno_vitals[nicknumber].health < 30}}
-					<b style="color: red;">{{:data.xeno_vitals[nicknumber].health}}%</b>
+				{{if data.xeno_vitals[keys.nicknumber].health < 30}}
+					<b style="color: red;">{{:data.xeno_vitals[keys.nicknumber].health}}%</b>
 				{{else}}
-					{{:data.xeno_vitals[nicknumber].health}}%
+					{{:data.xeno_vitals[keys.nicknumber].health}}%
 				{{/if}}
 			</td>
-			<td>{{:helper.link('Watch', '', { 'xeno_overwatch_src_href' : data.userref, 'xeno_overwatch_href' : info.ref }, null, 'xenoButton')}}</td>
+			<td>{{:helper.link('Watch', '', { 'xeno_overwatch_src_href' : data.userref, 'xeno_overwatch_href' : data.xeno_info[keys.nicknumber].ref }, null, 'xenoButton')}}</td>
 		</tr>
 	{{/props}}
 </table>

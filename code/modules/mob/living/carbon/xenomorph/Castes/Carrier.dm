@@ -80,7 +80,7 @@
 	drag_delay = 6 //pulling a big dead xeno is hard
 
 	mob_size = MOB_SIZE_BIG
-	tier = 3
+	tier = 2
 	pixel_x = -16 //Needed for 2x2
 	old_x = -16
 

@@ -97,6 +97,15 @@ nanoui is used to open and update nano browser uis
 	var/datum/asset/assets = get_asset_datum(/datum/asset/nanoui)
 	assets.send(user, ntemplate_filename)
 
+/**
+ * Clear references to the nanoui instance to prepare for garbage collection
+ */
+/datum/nanoui/Dispose()
+	user = null
+	src_object = null
+
+	..()
+
  /**
   * Use this proc to add assets which are common to (and required by) all nano uis
   *
@@ -435,6 +444,8 @@ nanoui is used to open and update nano browser uis
 	is_auto_updating = 0
 	nanomanager.ui_closed(src)
 	user << browse(null, "window=[window_id]")
+
+	qdel(src)
 
  /**
   * Set the UI window to call the nanoclose verb when the window is closed

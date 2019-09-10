@@ -91,7 +91,9 @@
 		if(3)
 			hive.tier_3_xenos -= src
 
-	hive.remove_xeno(src)
+	// If gibbed, we'll be hard removed from the hive in dispose()
+	if(!gibbed)
+		hive.remove_xeno(src)
 	
 	if(hive.totalXenos.len == 1)
 		xeno_message(SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"),3, hivenumber)

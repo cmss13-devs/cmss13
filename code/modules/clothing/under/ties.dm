@@ -29,7 +29,7 @@
 	. = ..()
 
 //when user attached an accessory to S
-/obj/item/clothing/accessory/proc/on_attached(obj/item/clothing/under/S, mob/living/user)
+/obj/item/clothing/accessory/proc/on_attached(obj/item/clothing/S, mob/living/user)
 	if(!istype(S))
 		return
 	has_suit = S
@@ -254,7 +254,6 @@
 	var/rank_short = "E1"
 	slot = ACCESSORY_SLOT_RANK
 	high_visibility = TRUE
-	removable = FALSE
 	gender = PLURAL
 
 /obj/item/clothing/accessory/ranks/New()
@@ -319,12 +318,12 @@
 /obj/item/clothing/accessory/ranks/o5
 	name = "rank boards"
 	rank_short = "O5"
-	icon_state = "ranks_seniorofficer"
+	icon_state = "ranks_flagofficer"
 
 /obj/item/clothing/accessory/ranks/o5e
 	name = "rank boards"
 	rank_short = "O5E"
-	icon_state = "ranks_seniorofficer"
+	icon_state = "ranks_flagofficer"
 
 /obj/item/clothing/accessory/ranks/o6
 	name = "rank boards"

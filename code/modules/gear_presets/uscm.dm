@@ -4,6 +4,23 @@
 	languages = list("English")
 	idtype = /obj/item/card/id/dogtag
 
+	utility_under = list(/obj/item/clothing/under/marine)
+	utility_hat = list(/obj/item/clothing/head/cmcap)
+	utility_gloves = list(/obj/item/clothing/gloves/marine)
+	utility_shoes = list(/obj/item/clothing/shoes/marine)
+	utility_extra = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
+
+	service_under = list(/obj/item/clothing/under/marine/officer/bridge)
+	service_over = list(/obj/item/clothing/suit/storage/jacket/marine)
+	service_hat = list(/obj/item/clothing/head/cmcap)
+	service_shoes = list(/obj/item/clothing/shoes/dress)
+
+	dress_under = list(/obj/item/clothing/under/marine/dress)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress)
+	dress_hat = list(/obj/item/clothing/head/marine/peaked)
+	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
+	dress_shoes = list(/obj/item/clothing/shoes/dress)
+
 /datum/equipment_preset/uscm/load_status(mob/living/carbon/human/H)
 	H.nutrition = rand(60,250)
 
@@ -111,6 +128,8 @@
 	role_comm_title = "TC"
 	skills = /datum/skills/tank_crew
 
+	utility_under = list(/obj/item/clothing/under/marine/officer/tanker)
+
 /datum/equipment_preset/uscm/tank/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -144,6 +163,8 @@
 	paygrade = "O1"
 	role_comm_title = "IO"
 	skills = /datum/skills/intel
+
+	utility_under = list(/obj/item/clothing/under/marine/officer/intel)
 
 /datum/equipment_preset/uscm/intel/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/intel
@@ -226,6 +247,8 @@
 	role_comm_title = "Med"
 	skills = /datum/skills/combat_medic
 
+	utility_under = list(/obj/item/clothing/under/marine/medic)
+
 /datum/equipment_preset/uscm/medic/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -245,6 +268,8 @@
 	paygrade = "E3"
 	role_comm_title = "Eng"
 	skills = /datum/skills/combat_engineer
+
+	utility_under = list(/obj/item/clothing/under/marine/engineer)
 
 /datum/equipment_preset/uscm/engineer/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
@@ -300,7 +325,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/box/attachments(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE(H), WEAR_IN_BACK)
-	
+
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a(H), WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m41a(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
@@ -383,6 +408,8 @@
 	role_comm_title = "Eng"
 	skills = /datum/skills/combat_engineer
 
+	utility_under = list(/obj/item/clothing/under/marine/engineer)
+
 /datum/equipment_preset/uscm/engineer_equipped/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/engineer(H), WEAR_BODY)
@@ -420,6 +447,8 @@
 	paygrade = "E3"
 	role_comm_title = "Med"
 	skills = /datum/skills/combat_medic
+
+	utility_under = list(/obj/item/clothing/under/marine/medic)
 
 /datum/equipment_preset/uscm/medic_equipped/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/medic(H), WEAR_BODY)
@@ -481,4 +510,3 @@
 
 /*****************************************************************************************************/
 
-	

@@ -135,10 +135,6 @@
 	..()
 	upgrade_xeno(3)
 
-/mob/living/carbon/Xenomorph/Praetorian/primordial/New()
-	..()
-	upgrade_xeno(4)
-
 /mob/living/carbon/Xenomorph/Ravager/mature/New()
 	..()
 	upgrade_xeno(1)
@@ -150,10 +146,6 @@
 /mob/living/carbon/Xenomorph/Ravager/ancient/New()
 	..()
 	upgrade_xeno(3)
-
-/mob/living/carbon/Xenomorph/Ravager/primordial/New()
-	..()
-	upgrade_xeno(4)
 
 /mob/living/carbon/Xenomorph/Sentinel/mature/New()
 	..()
@@ -191,10 +183,6 @@
 	..()
 	upgrade_xeno(3)
 
-/mob/living/carbon/Xenomorph/Lurker/primordial/New()
-	..()
-	upgrade_xeno(4)
-
 /mob/living/carbon/Xenomorph/Queen/mature/New()
 	..()
 	upgrade_xeno(1)
@@ -206,10 +194,6 @@
 /mob/living/carbon/Xenomorph/Queen/ancient/New()
 	..()
 	upgrade_xeno(3)
-
-/mob/living/carbon/Xenomorph/Queen/primordial/New()
-	..()
-	upgrade_xeno(4)
 
 /mob/living/carbon/Xenomorph/Crusher/mature/New()
 	..()
@@ -223,10 +207,6 @@
 	..()
 	upgrade_xeno(3)
 
-/mob/living/carbon/Xenomorph/Crusher/primordial/New()
-	..()
-	upgrade_xeno(4)
-
 /mob/living/carbon/Xenomorph/Boiler/mature/New()
 	..()
 	upgrade_xeno(1)
@@ -238,8 +218,6 @@
 /mob/living/carbon/Xenomorph/Boiler/ancient/New()
 	..()
 	upgrade_xeno(3)
-
-
 
 /mob/living/carbon/Xenomorph/Defender/mature/New()
 	..()
@@ -266,10 +244,6 @@
 	..()
 	upgrade_xeno(3)
 
-/mob/living/carbon/Xenomorph/Warrior/primordial/New()
-	..()
-	upgrade_xeno(4)
-
 /mob/living/carbon/Xenomorph/Burrower/mature/New()
 	..()
 	upgrade_xeno(1)
@@ -281,7 +255,3 @@
 /mob/living/carbon/Xenomorph/Burrower/ancient/New()
 	..()
 	upgrade_xeno(3)
-
-/mob/living/carbon/Xenomorph/Predalien/primordial/New()
-	..()
-	upgrade_xeno(4)

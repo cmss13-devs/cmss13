@@ -1,8 +1,0 @@
-author: Atebite
-delete-after: true
-changes:
-  - bugfix: Specialist weapons will no longer get destroyed by explosions
-  - bugfix: HSDP (smoke) grenades now detonate properly again
-  - bugfix: You will no longer see heal messages when unconscious or dead
-  - bugfix: Gun sprites should now appear correctly on your back/suit, even when empty
-  - bugfix: ... and some other stuff

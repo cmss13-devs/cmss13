@@ -1,5 +1,0 @@
-author: Atebite
-delete-after: true
-changes:
-  - tweak: Weeds will now die when there is no node nearby that can sustain the weeds
-  - tweak: To compensate for the fact that weed removal is now easier, the health regenerating effect of weeds have been slightly increased

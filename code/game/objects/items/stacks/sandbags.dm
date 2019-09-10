@@ -109,7 +109,7 @@
 		if(O.density)
 			if(!(O.flags_atom & ON_BORDER) || O.dir == user.dir)
 				return
-	var/obj/structure/barricade/sandbags/SB = new(user.loc, user.dir)
+	var/obj/structure/barricade/sandbags/SB = new(user.loc, user, user.dir)
 	user.visible_message(SPAN_NOTICE("[user] assembles a sandbag barricade."),
 	SPAN_NOTICE("You assemble a sandbag barricade."))
 	SB.dir = user.dir

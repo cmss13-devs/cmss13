@@ -27,8 +27,8 @@
 	flags_barrier = HANDLE_BARRIER_CHANCE
 	projectile_coverage = PROJECTILE_COVERAGE_HIGH
 
-/obj/structure/barricade/New(mob/user)
-	..()
+/obj/structure/barricade/New(loc, mob/user)
+	..(loc)
 	if(user)
 		user.count_niche_stat(STATISTICS_NICHE_CADES)
 	INVOKE_ASYNC(src, .proc/update_icon)
@@ -350,10 +350,10 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	can_wire = FALSE
 	bullet_divider = 2
 
-/obj/structure/barricade/snow/New(loc, direction)
+/obj/structure/barricade/snow/New(loc, mob/user, direction)
 	if(direction)
 		dir = direction
-	..()
+	..(loc, user)
 
 
 
@@ -997,7 +997,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	barricade_type = "sandbag"
 	can_wire = TRUE
 
-/obj/structure/barricade/sandbags/New(loc, direction)
+/obj/structure/barricade/sandbags/New(loc, mob/user, direction)
 	if(direction)
 		dir = direction
 
@@ -1005,7 +1005,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		pixel_y = -7
 	else if(dir == NORTH)
 		pixel_y = 7
-	..()
+	..(loc, user)
 
 
 /obj/structure/barricade/sandbags/attackby(obj/item/W, mob/user)

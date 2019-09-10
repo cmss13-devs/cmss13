@@ -292,23 +292,25 @@ datum/game_mode/proc/initialize_special_clamps()
 		if(A.assigned_role == "MODE")
 			possible_xenomorphs -= A
 
-	var/i = xeno_starting_num
 	var/datum/mind/new_xeno
 	var/turf/larvae_spawn
-	while(i > 0) //While we can still pick someone for the role.
+	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
+	for(var/i = xeno_starting_num to 1) //While we can still pick someone for the role.
 		if(possible_xenomorphs.len) //We still have candidates
 			new_xeno = pick(possible_xenomorphs)
 			possible_xenomorphs -= new_xeno
-			if(!new_xeno) continue  //Looks like we didn't get anyone. Back out.
+			if(!new_xeno)
+				hive.stored_larva++
+				continue  //Looks like we didn't get anyone. Back out.
 			new_xeno.assigned_role = "MODE"
 			new_xeno.special_role = "Xenomorph"
-			xenomorphs += new_xeno
-		else //Out of candidates, spawn in empty larvas directly
-			larvae_spawn = pick(xeno_spawn)
-			new /mob/living/carbon/Xenomorph/Larva(larvae_spawn)
-		if(new_xeno)
 			new_xeno.setup_xeno_stats()
 			new_xeno.faction = FACTION_XENOMORPH
+			xenomorphs += new_xeno
+		else //Out of candidates, fill the xeno hive with burrowed larva
+			hive.stored_larva += i
+			break
+			
 		i--
 
 	/*

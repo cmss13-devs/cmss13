@@ -33,6 +33,6 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - tweak: "Specialist and Smartgunner slots will now scale at 1 slot per 30 marines in the round."
+  - tweak: "Specialist and Smartgunner slots will now scale at 1 slot per 20 marines in the round, with a minimum of 2."
   - tweak: "Tank crewmen will no longer be playable under 80 marines in the round."
 

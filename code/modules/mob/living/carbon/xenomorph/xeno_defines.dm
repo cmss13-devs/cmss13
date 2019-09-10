@@ -670,67 +670,7 @@
 
 	// At least UI updates when xenos are removed are safe
 	hive_ui.update_xeno_counts()
-	hive_ui.update_xeno_info()
-
-// Returns a list of how many of each caste of xeno there are, sorted by tier
-/datum/hive_status/proc/get_xeno_counts()
-	// Every caste is manually defined here so you get
-	var/list/xeno_counts = list(
-		// Yes, Queen is technically considered to be tier 0
-		list("Bloody Larva" = 0, "Queen" = 0),
-		list("Drone" = 0, "Runner" = 0, "Sentinel" = 0, "Defender" = 0),
-		list("Hivelord" = 0, "Burrower" = 0, "Carrier" = 0, "Lurker" = 0, "Spitter" = 0, "Warrior" = 0),
-		list("Boiler" = 0, "Crusher" = 0, "Praetorian" = 0, "Ravager" = 0)
-	)
-
-	for(var/mob/living/carbon/Xenomorph/X in totalXenos)
-		//don't show xenos in the thunderdome when admins test stuff.
-		if(X.z == ADMIN_Z_LEVEL)
-			continue
-		xeno_counts[X.caste.tier+1][X.caste.caste_name]++
-
-	return xeno_counts
-
-// Returns a list of some general info about all the xenos in the hive
-/datum/hive_status/proc/get_xeno_info()
-	var/list/xenos = list()
-
-	for(var/mob/living/carbon/Xenomorph/X in totalXenos)
-		if(X.z == ADMIN_Z_LEVEL)
-			continue
-
-		var/xeno_name = X.name
-		// goddamn fucking larvas with their weird ass maturing system
-		// its name updates with its icon, unlike other castes which only update the mature/elder, etc. prefix on evolve
-		if(istype(X, /mob/living/carbon/Xenomorph/Larva))
-			xeno_name = "Larva ([X.nicknumber])"
-		xenos["[X.nicknumber]"] = list(
-			"name" = xeno_name,
-			"strain" = X.mutation_type,
-			"leader" = (X in X.hive.xeno_leader_list),
-			"is_queen" = istype(X.caste, /datum/caste_datum/queen),
-			"ref" = "\ref[X]"
-		)
-
-	return xenos
-
-// Returns a list of xeno healths and locations
-/datum/hive_status/proc/get_xeno_vitals()
-	var/list/xenos = list()
-
-	for(var/mob/living/carbon/Xenomorph/X in totalXenos)
-		if(X.z == ADMIN_Z_LEVEL)
-			continue
-
-		var/area/A = get_area(X)
-
-		xenos["[X.nicknumber]"] = list(
-			"health" = round((X.health / X.maxHealth) * 100, 1),
-			"area" = A.name,
-			"is_ssd" = (!X.client)
-		)
-
-	return xenos
+	hive_ui.xeno_removed(X)
 
 /datum/hive_status/proc/set_living_xeno_queen(var/mob/living/carbon/Xenomorph/Queen/M)
 	if(M == null)
@@ -769,7 +709,7 @@
 	xeno.queen_chosen_lead = TRUE
 	xeno.handle_xeno_leader_pheromones()
 
-	hive_ui.update_xeno_info()
+	hive_ui.update_xeno_keys()
 
 	return TRUE
 
@@ -778,7 +718,7 @@
 	xeno.queen_chosen_lead = FALSE
 	xeno.handle_xeno_leader_pheromones()
 
-	hive_ui.update_xeno_info()
+	hive_ui.update_xeno_keys()
 
 /datum/hive_status/proc/handle_xeno_leader_pheromones()
 	for(var/mob/living/carbon/Xenomorph/L in xeno_leader_list)
@@ -792,6 +732,131 @@
 		xeno_message(SPAN_XENOANNOUNCE("The tallhosts have deployed a hive killer at [loc.name]! Stop it at all costs!"),2, hivenumber)
 	else
 		xeno_message(SPAN_XENOANNOUNCE("The hive killer has been disabled! Rejoice!"),2, hivenumber)
+
+/*
+ *    Helper procs for the Hive Status UI
+ *    These are all called by the hive status UI manager to update its data
+ */
+
+// Returns a list of how many of each caste of xeno there are, sorted by tier
+/datum/hive_status/proc/get_xeno_counts()
+	// Every caste is manually defined here so you get
+	var/list/xeno_counts = list(
+		// Yes, Queen is technically considered to be tier 0
+		list("Bloody Larva" = 0, "Queen" = 0),
+		list("Drone" = 0, "Runner" = 0, "Sentinel" = 0, "Defender" = 0),
+		list("Hivelord" = 0, "Burrower" = 0, "Carrier" = 0, "Lurker" = 0, "Spitter" = 0, "Warrior" = 0),
+		list("Boiler" = 0, "Crusher" = 0, "Praetorian" = 0, "Ravager" = 0)
+	)
+
+	for(var/mob/living/carbon/Xenomorph/X in totalXenos)
+		//don't show xenos in the thunderdome when admins test stuff.
+		if(X.z == ADMIN_Z_LEVEL)
+			continue
+		xeno_counts[X.caste.tier+1][X.caste.caste_name]++
+
+	return xeno_counts
+
+// Returns a sorted list of some basic info (stuff that's needed for sorting) about all the xenos in the hive
+// The idea is that we sort this list, and use it as a "key" for all the other information (especially the nicknumber)
+// in the hive status UI. That way we can minimize the amount of sorts performed by only calling this when xenos are created/disposed
+/datum/hive_status/proc/get_xeno_keys()
+	var/list/xenos[totalXenos.len]
+
+	var/index = 1
+	for(var/mob/living/carbon/Xenomorph/X in totalXenos)
+		if(X.z == ADMIN_Z_LEVEL)
+			continue
+
+		// Insert without doing list merging
+		xenos[index++] = list(
+			"nicknumber" = X.nicknumber,
+			"tier" = X.tier, // This one is only important for sorting
+			"leader" = (X in X.hive.xeno_leader_list),
+			"is_queen" = istype(X.caste, /datum/caste_datum/queen),
+		)
+
+	// Make it all nice and fancy by sorting the list before returning it
+	return sort_xeno_keys(xenos)
+
+// This sorts the xeno info list by multiple criteria. Prioritized in order:
+// 1. Queen
+// 2. Leaders
+// 3. Tier
+// It uses a slightly modified insertion sort to accomplish this
+/datum/hive_status/proc/sort_xeno_keys(var/list/xenos)
+	var/list/sorted_list = xenos.Copy()
+
+	for(var/index = 3 to xenos.len)
+		var/j = index
+
+		// j > 2 because the queen is always in the first slot
+		while(j > 2)
+			// Queen comes first, always. Just swap her into the first slot immediately if she's not there already
+			if(sorted_list[j]["is_queen"])
+				sorted_list.Swap(1, j)
+
+			var/info = sorted_list[j-1]
+
+			// Leaders before normal xenos
+			if(!info["leader"] && sorted_list[j]["leader"])
+				sorted_list.Swap(j-1, j)
+				j--
+				continue
+
+			// Make sure we're only comparing leaders to leaders and non-leaders to non-leaders when sorting by tier
+			// This means we get leaders sorted by tier first, then non-leaders sorted by tier
+
+			// Sort by tier otherwise, higher tiers first
+			if((sorted_list[j]["leader"] || !info["leader"]) && (info["tier"] < sorted_list[j]["tier"]))
+				sorted_list.Swap(j-1, j)
+
+			j--
+
+	return sorted_list
+
+// Returns a list with some more info about all xenos in the hive
+/datum/hive_status/proc/get_xeno_info()
+	var/list/xenos = list()
+
+	for(var/mob/living/carbon/Xenomorph/X in totalXenos)
+		if(X.z == ADMIN_Z_LEVEL)
+			continue
+
+		var/xeno_name = X.name
+		// goddamn fucking larvas with their weird ass maturing system
+		// its name updates with its icon, unlike other castes which only update the mature/elder, etc. prefix on evolve
+		if(istype(X, /mob/living/carbon/Xenomorph/Larva))
+			xeno_name = "Larva ([X.nicknumber])"
+
+		xenos["[X.nicknumber]"] = list(
+			"name" = xeno_name,
+			"strain" = X.mutation_type,
+			"ref" = "\ref[X]"
+		)
+
+	return xenos
+
+// Returns a list of xeno healths and locations
+/datum/hive_status/proc/get_xeno_vitals()
+	var/list/xenos = list()
+
+	for(var/mob/living/carbon/Xenomorph/X in totalXenos)
+		if(X.z == ADMIN_Z_LEVEL)
+			continue
+
+		if(!X in living_xeno_list)
+			continue
+
+		var/area/A = get_area(X)
+
+		xenos["[X.nicknumber]"] = list(
+			"health" = round((X.health / X.maxHealth) * 100, 1),
+			"area" = A.name,
+			"is_ssd" = (!X.client)
+		)
+
+	return xenos
 
 /datum/hive_status/corrupted
 	hivenumber = XENO_HIVE_CORRUPTED

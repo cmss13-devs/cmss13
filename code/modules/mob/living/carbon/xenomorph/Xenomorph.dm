@@ -397,9 +397,7 @@
 		round_statistics.track_new_participant(faction, 1)
 	generate_name()
 
-	hive.hive_ui.update_xeno_counts()
-	hive.hive_ui.update_xeno_vitals()
-	hive.hive_ui.update_xeno_info(TRUE)
+	hive.hive_ui.update_all_xeno_data()
 
 /mob/living/carbon/Xenomorph/proc/update_caste()
 	if(caste_name && xeno_datum_list[caste_name] && xeno_datum_list[caste_name][max(1,upgrade+1)])
@@ -504,11 +502,6 @@
 
 	living_xeno_list -= src
 	xeno_mob_list -= src
-
-	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
-		hive.living_xeno_queen.set_queen_overwatch(src, TRUE) // This is actually totally extraneous as this is handled in the life proc anyways.
-	if(src in hive.xeno_leader_list)
-		hive.xeno_leader_list -= src
 
 	SStracking.stop_tracking("hive_[hivenumber]", src)
 
@@ -626,9 +619,7 @@
 	recalculate_everything()
 
 	// Update the hive status UI
-	new_hive.hive_ui.update_xeno_counts()
-	new_hive.hive_ui.update_xeno_vitals()
-	new_hive.hive_ui.update_xeno_info()
+	new_hive.hive_ui.update_all_xeno_data()
 
 //*********************************************************//
 //********************Mutator functions********************//
@@ -759,10 +750,7 @@
 		living_xeno_list += src
 		
 		hive.add_xeno(src)
-
-		hive.hive_ui.update_xeno_counts()
-		hive.hive_ui.update_xeno_vitals()
-		hive.hive_ui.update_xeno_info()
+		hive.hive_ui.update_all_xeno_data()
 
 		if(caste_name == "Queen")
 			New()

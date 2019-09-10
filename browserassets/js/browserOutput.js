@@ -730,6 +730,7 @@ $(function() {
 				'<a href="#" data-font="Verdana" style="font-family: Verdana;">Verdana</a>'+
 				'<a href="#" data-font="Courier New" style="font-family: Courier New;">Courier New</a>'+
 				'<a href="#" data-font="Lucida Console" style="font-family: Lucida Console;">Lucida Console</a>'+
+				'<a href="#" data-font="Comic Sans MS" style="font-family: Comic Sans MS;">Comic Sans</a>'+
 			'</div>';
 		createPopup(popupContent, 200);
 	});

@@ -10085,7 +10085,6 @@
 /area/bigredv2/caves/lambda/research)
 "azh" = (
 /obj/structure/table,
-/obj/item/device/laptop,
 /turf/open/floor{
 	tag = "icon-whitepurple (NORTH)";
 	icon_state = "whitepurple";
@@ -31812,7 +31811,6 @@
 /area/bigredv2/caves/eta/living)
 "bDI" = (
 /obj/structure/table,
-/obj/item/computer3_part/storage/hdd/big,
 /turf/open/floor{
 	icon_state = "wood"
 	},

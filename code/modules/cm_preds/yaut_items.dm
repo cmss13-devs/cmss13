@@ -1288,31 +1288,6 @@
 		sleep(10)
 		if(loc) timer = 0
 
-//Doesn't give heat or anything yet, it's just a light source.
-/obj/structure/campfire
-	name = "fire"
-	desc = "A crackling fire. What is it even burning?"
-	icon = 'code/WorkInProgress/Cael_Aislinn/Jungle/jungle.dmi'
-	icon_state = "campfire"
-	density = 0
-	layer = TURF_LAYER
-	anchored = 1
-	unacidable = 1
-
-	New()
-		..()
-		l_color = "#FFFF0C" //Yeller
-		SetLuminosity(4)
-		spawn(MINUTES_5)
-			if(ticker && istype(ticker.mode,/datum/game_mode/huntergames)) loop_firetick()
-
-
-	proc/loop_firetick() //Crackly!
-		while(src && ticker)
-			SetLuminosity(0)
-			SetLuminosity(rand(3,4))
-			sleep(rand(15,30))
-
 //=================//\\=================\\
 //======================================\\
 

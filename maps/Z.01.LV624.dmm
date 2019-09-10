@@ -1328,7 +1328,6 @@
 	},
 /area/lv624/ground/sand6)
 "er" = (
-/obj/effect/rune,
 /obj/effect/landmark{
 	name = "good_item"
 	},
@@ -8226,10 +8225,6 @@
 	pixel_x = 11;
 	pixel_y = 0
 	},
-/obj/structure/nobugs{
-	layer = 2;
-	pixel_x = 16
-	},
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/item/clothing/mask/facehugger{
 	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
@@ -9223,7 +9218,6 @@
 /area/lv624/lazarus/sleep_female)
 "Bf" = (
 /obj/structure/table,
-/obj/item/device/laptop,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "purple"

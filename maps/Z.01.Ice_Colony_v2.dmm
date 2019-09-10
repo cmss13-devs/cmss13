@@ -1444,7 +1444,6 @@
 /area/ice_colony/surface/engineering/tool)
 "aeo" = (
 /obj/structure/table,
-/obj/item/tool/taperoll/engineering,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
 /obj/machinery/power/apc{
@@ -33642,7 +33641,6 @@
 /area/ice_colony/underground/storage)
 "bHk" = (
 /obj/structure/table,
-/obj/item/tool/taperoll/engineering,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
 /turf/open/floor{

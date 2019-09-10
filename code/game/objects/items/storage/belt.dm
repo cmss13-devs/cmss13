@@ -51,7 +51,6 @@
 		/obj/item/stack/cable_coil,
 		/obj/item/device/t_scanner,
 		/obj/item/device/analyzer,
-		/obj/item/tool/taperoll/engineering,
 		/obj/item/tool/shovel/etool
 	)
 	bypass_w_limit = list(/obj/item/tool/shovel/etool)
@@ -211,8 +210,7 @@
 		/obj/item/device/flashlight,
 		/obj/item/device/pda,
 		/obj/item/device/radio/headset,
-		/obj/item/weapon,
-		/obj/item/tool/taperoll/police
+		/obj/item/weapon
 	)
 
 

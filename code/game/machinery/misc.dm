@@ -1,5 +1,44 @@
+/obj/machinery/biogenerator
+	name = "Biogenerator"
+	desc = ""
+	icon = 'icons/obj/structures/machinery/biogenerator.dmi'
+	icon_state = "biogen-stand"
+	density = 1
+	anchored = 1
+	use_power = 1
+	idle_power_usage = 40
+
+
 var/list/obj/machinery/faxmachine/allfaxes = list()
 var/list/alldepartments = list()
+
+
+/obj/machinery/computer3
+	name = "computer"
+	icon = 'icons/obj/structures/machinery/computer3.dmi'
+	icon_state = "frame"
+	density = 1
+	anchored = 1.0
+	projectile_coverage = PROJECTILE_COVERAGE_LOW
+
+	idle_power_usage	= 20
+	active_power_usage	= 50
+
+/obj/machinery/computer3/New(var/L, var/built = 0)
+	..()
+	spawn(2)
+		power_change()
+		
+	update_icon()
+	start_processing()
+
+
+/obj/machinery/computer3/laptop/secure_data
+	icon_state = "laptop"
+
+/obj/machinery/computer3/powermonitor
+	icon_state = "frame-eng"
+
 
 /obj/machinery/faxmachine
 	name = "fax machine"
@@ -248,3 +287,29 @@ proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/dpt)
 					P.update_icon()
 
 					playsound(F.loc, "sound/items/polaroid1.ogg", 15, 1)
+
+/obj/machinery/computer3/server
+	name			= "server"
+	icon			= 'icons/obj/structures/machinery/computer3.dmi'
+	icon_state		= "serverframe"
+
+/obj/machinery/computer3/server/rack
+	name = "server rack"
+	icon_state = "rackframe"
+
+	update_icon()
+		//overlays.Cut()
+		return
+
+	attack_hand() // Racks have no screen, only AI can use them
+		return
+
+
+/obj/machinery/lapvend
+	name = "Laptop Vendor"
+	desc = "A generic vending machine."
+	icon = 'icons/obj/structures/machinery/vending.dmi'
+	icon_state = "robotics"
+	layer = BELOW_OBJ_LAYER
+	anchored = 1
+	density = 1

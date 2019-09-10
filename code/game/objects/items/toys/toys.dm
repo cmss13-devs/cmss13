@@ -463,3 +463,35 @@
 		user.visible_message(SPAN_NOTICE("[user] hugs [src]! How cute! "), \
 							 SPAN_NOTICE("You hug [src]. Dawwww... "))
 		last_hug_time = world.time + 50 //5 second cooldown
+
+
+/obj/item/computer3_part
+	name = "computer part"
+	desc = "Holy jesus you donnit now"
+	gender = PLURAL
+	icon = 'icons/obj/structures/machinery/stock_parts.dmi'
+	icon_state = "hdd1"
+	w_class = SIZE_SMALL
+	crit_fail = 0
+
+/obj/item/computer3_part/toybox
+	var/list/prizes = list(	/obj/item/storage/box/snappops			= 2,
+							/obj/item/toy/blink								= 2,
+							/obj/item/toy/sword								= 2,
+							/obj/item/toy/gun								= 2,
+							/obj/item/toy/crossbow							= 2,
+							/obj/item/clothing/suit/syndicatefake			= 2,
+							/obj/item/storage/fancy/crayons			= 2,
+							/obj/item/toy/spinningtoy						= 2,
+							/obj/item/toy/prize/ripley						= 1,
+							/obj/item/toy/prize/fireripley					= 1,
+							/obj/item/toy/prize/deathripley					= 1,
+							/obj/item/toy/prize/gygax						= 1,
+							/obj/item/toy/prize/durand						= 1,
+							/obj/item/toy/prize/honk						= 1,
+							/obj/item/toy/prize/marauder					= 1,
+							/obj/item/toy/prize/seraph						= 1,
+							/obj/item/toy/prize/mauler						= 1,
+							/obj/item/toy/prize/odysseus					= 1,
+							/obj/item/toy/prize/phazon						= 1
+							)

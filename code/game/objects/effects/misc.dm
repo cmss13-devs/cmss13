@@ -74,3 +74,23 @@
 
 		spawn(20)
 			loc = null
+
+/obj/effect/blocker/fog
+	name = "dense fog"
+	desc = "It looks way too dangerous to traverse. Best wait until it has cleared up."
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "smoke"
+	anchored = 1
+	density = 1
+	opacity = 1
+	unacidable = 1
+
+	New()
+		..()
+		dir  = pick(CARDINAL_DIRS)
+
+	attack_hand(mob/M)
+		to_chat(M, SPAN_NOTICE("You peer through the fog, but it's impossible to tell what's on the other side..."))
+
+	attack_alien(M)
+		return attack_hand(M)

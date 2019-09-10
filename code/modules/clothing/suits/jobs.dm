@@ -155,7 +155,6 @@
 		/obj/item/tool/wrench,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/clothing/mask/gas,
-		/obj/item/tool/taperoll/engineering,
 	)
 	flags_armor_protection = UPPER_TORSO
 

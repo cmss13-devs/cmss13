@@ -191,7 +191,6 @@
 		src.modules += new /obj/item/device/multitool(src)
 		src.modules += new /obj/item/device/t_scanner(src)
 		src.modules += new /obj/item/device/analyzer(src)
-		src.modules += new /obj/item/tool/taperoll/engineering(src)
 		src.modules += new /obj/item/device/gripper(src)
 		src.modules += new /obj/item/device/matter_decompiler(src)
 		src.modules += new /obj/item/device/lightreplacer(src)
@@ -221,7 +220,6 @@
 		src.modules += new /obj/item/robot/stun(src)
 		src.modules += new /obj/item/tool/crowbar(src)
 //		src.modules += new /obj/item/weapon/gun/energy/taser/cyborg(src)
-		src.modules += new /obj/item/tool/taperoll/police(src)
 //		src.emag = new /obj/item/weapon/gun/energy/laser/cyborg(src)
 		return
 

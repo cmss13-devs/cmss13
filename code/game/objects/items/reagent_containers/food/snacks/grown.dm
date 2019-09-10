@@ -511,22 +511,6 @@
 	filling_color = "#F714BE"
 	plantname = "plumphelmet"
 
-/obj/item/reagent_container/food/snacks/grown/mushroom/walkingmushroom
-	name = "walking mushroom"
-	desc = "<I>Plumus Locomotus</I>: The beginning of the great walk."
-	icon_state = "walkingmushroom"
-	filling_color = "#FFBFEF"
-	potency = 30
-	plantname = "walkingmushroom"
-
-/obj/item/reagent_container/food/snacks/grown/mushroom/walkingmushroom/attack_self(mob/user as mob)
-	if(istype(user.loc,/turf/open/space))
-		return
-	new /mob/living/simple_animal/mushroom(user.loc)
-	qdel(src)
-
-	to_chat(user, SPAN_NOTICE("You plant the walking mushroom."))
-
 /obj/item/reagent_container/food/snacks/grown/mushroom/chanterelle
 	name = "chanterelle cluster"
 	desc = "<I>Cantharellus Cibarius</I>: These jolly yellow little shrooms sure look tasty!"

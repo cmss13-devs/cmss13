@@ -1099,22 +1099,6 @@ proc/populate_seed_list()
 	biolum = 1
 	biolum_colour = "#006622"
 
-/datum/seed/mushroom/walking
-	name = "walkingmushroom"
-	seed_name = "walking mushroom"
-	display_name = "walking mushrooms"
-	products = list(/obj/item/reagent_container/food/snacks/grown/mushroom/walkingmushroom)
-	mutants = null
-	packet_icon = "mycelium-walkingmushroom"
-	plant_icon = "walkingmushroom"
-	chems = list("nutriment" = list(2,10))
-
-	lifespan = 30
-	maturation = 5
-	yield = 1
-	potency = 0
-	growth_stages = 6
-
 /datum/seed/mushroom/plastic
 	name = "plastic"
 	seed_name = "plastellium"

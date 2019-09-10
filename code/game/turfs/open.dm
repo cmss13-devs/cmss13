@@ -404,7 +404,7 @@
 	var/plants_spawn = 1
 	name = "wet grass"
 	desc = "Thick, long wet grass"
-	icon = 'code/WorkInProgress/Cael_Aislinn/Jungle/jungle.dmi'
+	icon = 'icons/turf/floors/jungle.dmi'
 	icon_state = "grass1"
 	var/icon_spawn_state = "grass1"
 
@@ -415,7 +415,7 @@
 		if(prob(90))
 			var/image/I
 			if(prob(35))
-				I = image('code/WorkInProgress/Cael_Aislinn/Jungle/jungle.dmi',"plant[rand(1,7)]")
+				I = image('icons/obj/structures/props/jungleplants.dmi',"plant[rand(1,7)]")
 			else
 				if(prob(30))
 					I = image('icons/obj/structures/props/ausflora.dmi',"reedbush_[rand(1,4)]")
@@ -487,7 +487,7 @@
 	bushes_spawn = 0
 	name = "dirt"
 	desc = "it is very dirty."
-	icon = 'code/WorkInProgress/Cael_Aislinn/Jungle/jungle.dmi'
+	icon = 'icons/turf/floors/jungle.dmi'
 	icon_state = "grass_path"
 	icon_spawn_state = "dirt"
 

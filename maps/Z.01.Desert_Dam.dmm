@@ -17102,7 +17102,6 @@
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aYg" = (
 /obj/structure/rack,
-/obj/item/tool/taperoll/engineering,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/hallway)
 "aYh" = (
@@ -26198,7 +26197,6 @@
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bxl" = (
 /obj/structure/table,
-/obj/item/tool/taperoll/engineering,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison{

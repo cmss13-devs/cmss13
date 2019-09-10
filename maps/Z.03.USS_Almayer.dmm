@@ -8154,8 +8154,6 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/tool/taperoll/police,
-/obj/item/tool/taperoll/police,
 /obj/machinery/vending/wallmed1{
 	pixel_y = 25
 	},
@@ -11625,7 +11623,6 @@
 /obj/item/stack/rods{
 	amount = 40
 	},
-/obj/item/tool/taperoll/engineering,
 /obj/item/device/lightreplacer,
 /turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering)
@@ -47486,8 +47483,6 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/tool/taperoll/police,
-/obj/item/tool/taperoll/police,
 /obj/machinery/light/small{
 	tag = "icon-bulb1 (WEST)";
 	icon_state = "bulb1";
@@ -59958,22 +59953,6 @@
 /area/almayer/engineering/lower_engineering)
 "vXq" = (
 /obj/structure/table/almayer,
-/obj/item/tool/taperoll/police{
-	pixel_x = 14;
-	pixel_y = 19
-	},
-/obj/item/tool/taperoll/police{
-	pixel_x = 5;
-	pixel_y = 15
-	},
-/obj/item/tool/taperoll/police{
-	pixel_x = 13;
-	pixel_y = 8
-	},
-/obj/item/tool/taperoll/police{
-	pixel_x = 4;
-	pixel_y = 6
-	},
 /obj/item/clipboard{
 	pixel_x = 1;
 	pixel_y = 4
@@ -61364,10 +61343,6 @@
 	},
 /area/almayer/command/securestorage)
 "xDD" = (
-/obj/item/tool/taperoll/police{
-	pixel_x = 31;
-	pixel_y = 17
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},

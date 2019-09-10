@@ -13,10 +13,8 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Chief Engineer (CE)"
 
-	generate_entry_message(mob/living/carbon/human/H)
-		. = {"Your job is to maintain the ship's engine and keep everything running.
-If you have no idea how to set up the engine, or it's your first time, adminhelp so that a mentor can assist you.
-You are also next in the chain of command, should the bridge crew fall in the line of duty."}
+/datum/job/logistics/engineering/generate_entry_message(mob/living/carbon/human/H)
+	. = {"Your job is to maintain the ship's engine and keep everything running. If you have no idea how to set up the engine, or it's your first time, adminhelp so that a mentor can assist you. You are also next in the chain of command, should the bridge crew fall in the line of duty."}
 
 //Requisitions Officer
 /datum/job/logistics/requisition
@@ -27,10 +25,8 @@ You are also next in the chain of command, should the bridge crew fall in the li
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Requisitions Officer (RO)"
 
-	generate_entry_message(mob/living/carbon/human/H)
-		. = {"Your job is to dispense supplies to the marines, including weapon attachments.
-Your cargo techs can help you out, but you have final say in your department. Make sure they're not goofing off.
-While you may request paperwork for supplies, do not go out of your way to screw with marines, unless you want to get deposed.
+/datum/job/logistics/requisition/generate_entry_message(mob/living/carbon/human/H)
+	. = {"Your job is to dispense supplies to the marines, including weapon attachments. Your cargo techs can help you out, but you have final say in your department. Make sure they're not goofing off. While you may request paperwork for supplies, do not go out of your way to screw with marines, unless you want to get deposed.
 A happy ship is a well-functioning ship."}
 
 /datum/job/logistics/tech
@@ -51,15 +47,14 @@ A happy ship is a well-functioning ship."}
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Maintenance Tech (MT)"
 
-	set_spawn_positions(var/count)
-		spawn_positions = mt_slot_formula(count)
+/datum/job/logistics/tech/maint/set_spawn_positions(var/count)
+	spawn_positions = mt_slot_formula(count)
 
-	get_total_positions(var/latejoin = 0)
-		return (latejoin ? mt_slot_formula(get_total_marines()) : spawn_positions)
+/datum/job/logistics/tech/maint/get_total_positions(var/latejoin = 0)
+	return (latejoin ? mt_slot_formula(get_total_marines()) : spawn_positions)
 
-	generate_entry_message(mob/living/carbon/human/H)
-		. = {"Your job is to make sure the ship is clean and the powergrid is operational.
-Start with the ship's engine, and don't forget radiation equipment."}
+/datum/job/logistics/tech/maint/generate_entry_message(mob/living/carbon/human/H)
+	. = {"Your job is to make sure the ship is clean and the powergrid is operational. Start with the ship's engine, and don't forget radiation equipment."}
 
 //Cargo Tech. Don't ask why this is in engineering
 /datum/job/logistics/tech/cargo
@@ -75,13 +70,11 @@ Start with the ship's engine, and don't forget radiation equipment."}
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Cargo Technician (CT)"
 
-	set_spawn_positions(var/count)
-		spawn_positions = ct_slot_formula(count)
+/datum/job/logistics/tech/cargo/set_spawn_positions(var/count)
+	spawn_positions = ct_slot_formula(count)
 
-	get_total_positions(var/latejoin = 0)
-		return (latejoin ? ct_slot_formula(get_total_marines()) : spawn_positions)
+/datum/job/logistics/tech/cargo/get_total_positions(var/latejoin = 0)
+	return (latejoin ? ct_slot_formula(get_total_marines()) : spawn_positions)
 
-	generate_entry_message(mob/living/carbon/human/H)
-		. = {"Your job is to dispense supplies to the marines, including weapon attachments.
-Stay in your department when possible to ensure the marines have full access to the supplies they may require.
-Listen to the radio in case someone requests a supply drop via the overwatch system."}
+/datum/job/logistics/tech/cargo/generate_entry_message(mob/living/carbon/human/H)
+	. = {"Your job is to dispense supplies to the marines, including weapon attachments. Stay in your department when possible to ensure the marines have full access to the supplies they may require. Listen to the radio in case someone requests a supply drop via the overwatch system."}

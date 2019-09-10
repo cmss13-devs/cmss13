@@ -1,5 +1,4 @@
 /datum/job
-
 	//The name of the job
 	var/title = ""				 //The internal title for the job, used for the job ban system and so forth. Don't change these, change the disp_title instead.
 	var/special_role 			 //In case they have some special role on spawn.
@@ -26,9 +25,9 @@
 	var/gear_preset //Gear preset name used for this job
 	var/gear_preset_council //Gear preset name used for council snowflakes ;)
 
-	New()
-		..()
-		if(!disp_title) disp_title = title
+/datum/job/New()
+	..()
+	if(!disp_title) disp_title = title
 
 
 /datum/job/proc/get_access()

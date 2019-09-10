@@ -493,7 +493,7 @@
 /datum/ammo/bullet/rifle/New()
 	..()
 	accurate_range = config.norm_shell_range
-	damage = config.lhigh_hit_damage
+	damage = config.llhigh_hit_damage
 	accuracy = config.hmed_hit_accuracy
 	scatter = config.min_scatter_value
 	shell_speed = config.ultra_shell_speed
@@ -802,13 +802,14 @@
 /datum/ammo/bullet/sniper/flak
 	name = "flak sniper bullet"
 	iff_signal = ACCESS_IFF_MARINE
+	damage_type = BRUTE
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_SKIPS_HUMANS|AMMO_IGNORE_COVER|AMMO_SCANS_NEARBY
 
 /datum/ammo/bullet/sniper/flak/New()
 	..()
 	accuracy = config.max_hit_accuracy
 	scatter = config.low_scatter_value
-	damage = config.max_hit_damage
+	damage = config.mhigh_hit_damage
 	damage_var_high = config.low_proj_variance
 	penetration= 0
 
@@ -982,7 +983,7 @@
 	accuracy_var_low = config.low_proj_variance
 	accuracy_var_high = config.low_proj_variance
 	accurate_range = config.short_shell_range
-	damage = config.high_hit_damage
+	damage = config.lhigh_hit_damage
 	penetration= config.hmed_armor_penetration
 	shrapnel_chance = config.med_shrapnel_chance
 

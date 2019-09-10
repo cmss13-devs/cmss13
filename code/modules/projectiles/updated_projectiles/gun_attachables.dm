@@ -1419,7 +1419,7 @@ Defined in conflicts.dm of the #defines folder.
 	if(istype(G,/obj/item/weapon/gun/rifle/lmg))
 		delay_mod += config.min_fire_delay
 	else if(istype(G,/obj/item/weapon/gun/rifle/sniper/M42A))
-		delay_mod += config.high_fire_delay + config.min_fire_delay + config.mlow_fire_delay
+		delay_mod += config.high_fire_delay + config.min_fire_delay
 	else
 		delay_mod += config.min_fire_delay + config.mlow_fire_delay
 	G.recalculate_attachment_bonuses()
@@ -1447,7 +1447,7 @@ Defined in conflicts.dm of the #defines folder.
 				if(istype(G,/obj/item/weapon/gun/rifle/lmg))
 					delay_mod -= config.min_fire_delay
 				else if(istype(G,/obj/item/weapon/gun/rifle/sniper/M42A))
-					delay_mod -= config.high_fire_delay + config.min_fire_delay + config.mlow_fire_delay
+					delay_mod -= config.high_fire_delay + config.min_fire_delay
 				else
 					delay_mod -= config.min_fire_delay + config.mlow_fire_delay
 				G.recalculate_attachment_bonuses()

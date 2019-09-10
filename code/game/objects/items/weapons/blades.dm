@@ -218,6 +218,7 @@
 
 	if (!(embedded_human.embedded_items - embedded_human.get_visible_implants()))
 		to_chat(H_user, SPAN_NOTICE("You couldn't find any shrapnel."))
+		return
 	else
 		H_user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
 
@@ -227,11 +228,12 @@
 		S.loc = embedded_human.loc
 		organ.implants -= S
 		embedded_human.embedded_items -= S
-		organ = null
 		if(!(organ.status & LIMB_ROBOT) && !(embedded_human.species.flags & NO_BLOOD)) //Big thing makes us bleed when moving
 			organ.status |= LIMB_BLEEDING
+		organ = null
 
 	to_chat(H_user, SPAN_NOTICE("You dig out all the shrapnel you can find from your body."))
+
 
 /obj/item/weapon/claymore/hefa
 	name = "HEFA sword"

@@ -339,6 +339,91 @@
 		var/mob/living/carbon/human/H = M
 		H.temporary_slowdown = max(H.temporary_slowdown, round(effect_amt*1.5)) //One tick every two second
 
+/obj/effect/particle_effect/smoke/xeno_weak_fire
+	time_to_live = 8
+	color = "#b33e1e" 
+	spread_speed = 7
+	amount = 1 
+	smokeranking = SMOKE_RANK_BOILER
+
+//No effect when merely entering the smoke turf, for balance reasons
+/obj/effect/particle_effect/smoke/xeno_weak_fire/Crossed(mob/living/carbon/M as mob)
+	return
+
+/obj/effect/particle_effect/smoke/xeno_weak_fire/affect(var/mob/living/carbon/M)
+	..()
+	if(isXeno(M))
+		return
+	if(isYautja(M) && prob(75))
+		return
+	if(M.stat == DEAD)
+		return
+	if(istype(M.buckled, /obj/structure/bed/nest) && M.status_flags & XENO_HOST)
+		return
+
+	var/effect_amt = round(6 + amount*6)
+
+	//Gas masks protect from inhalation and face contact effects, even without internals. Breath masks don't for balance reasons
+	if(!istype(M.wear_mask, /obj/item/clothing/mask/gas))
+		M.adjustOxyLoss(20) // MUCH harsher
+		M.ear_deaf = max(M.ear_deaf, round(effect_amt*1.5)) //Paralysis of hearing system, aka deafness
+		if(!M.eye_blind) //Eye exposure damage
+			to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
+		M.eye_blurry = max(M.eye_blurry, effect_amt*2)
+		M.eye_blind = max(M.eye_blind, round(effect_amt))
+		if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
+			M.coughedtime = 1
+			if(prob(50))
+				M.emote("cough")
+			else
+				M.emote("gasp")
+			spawn(15)
+				M.coughedtime = 0
+		if (prob(20))
+			M.KnockDown(5)
+
+	//Topical damage (neurotoxin on exposed skin)
+	to_chat(M, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
+	if(prob(40 + round(amount*15))) //Highly likely to drop items due to arms/hands seizing up
+		M.drop_held_item()
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		H.temporary_slowdown = max(H.temporary_slowdown, 4) //One tick every two second
+
+
+/obj/effect/particle_effect/smoke/xeno_weak_fire/spread_smoke(direction)
+	set waitfor = 0
+	sleep(spread_speed)
+	if(disposed) return
+	var/turf/U = get_turf(src)
+	if(!U) return
+	for(var/i in cardinal)
+		if(direction && i != direction)
+			continue
+		var/turf/T = get_step(U, i)
+		if(check_airblock(U,T)) //smoke can't spread that way
+			continue
+		var/obj/effect/particle_effect/smoke/foundsmoke = locate() in T // Check for existing smoke and act accordingly
+		if(foundsmoke) 
+			if(foundsmoke.smokeranking <= src.smokeranking)
+				qdel(foundsmoke)
+			else
+				continue
+		var/obj/effect/particle_effect/smoke/S = new type(T, amount)
+
+		for (var/atom/A in T)
+			if (istype(A, /mob/living))
+				var/mob/living/M = A
+				M.ExtinguishMob()
+			if(istype(A, /obj/flamer_fire))
+				qdel(A)
+
+		S.dir = pick(cardinal)
+		S.time_to_live = time_to_live
+		if(S.amount>0)
+			S.spread_smoke()
+
+
 /////////////////////////////////////////////
 // Smoke spread
 /////////////////////////////////////////////
@@ -388,6 +473,27 @@
 
 /datum/effect_system/smoke_spread/xeno_weaken
 	smoke_type = /obj/effect/particle_effect/smoke/xeno_weak
+
+/datum/effect_system/smoke_spread/xeno_extinguish_fire
+	smoke_type = /obj/effect/particle_effect/smoke/xeno_weak_fire
+
+/datum/effect_system/smoke_spread/xeno_extinguish_fire/start()
+	if(holder)
+		location = get_turf(holder)
+	var/obj/effect/particle_effect/smoke/S = new smoke_type(location, amount+1)
+	
+	for (var/atom/A in location)
+		if (istype(A, /mob/living))
+			var/mob/living/M = A
+			M.ExtinguishMob()
+		if(istype(A, /obj/flamer_fire))
+			qdel(A)
+
+	if(lifetime)
+		S.time_to_live = lifetime
+	if(S.amount)
+		S.spread_smoke(direction)
+
 
 
 

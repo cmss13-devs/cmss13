@@ -384,7 +384,7 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_warhead_1"
 
 /obj/structure/ob_ammo/warhead/explosive/warhead_impact(turf/target, inaccuracy_amt = 0)
-	explosion_rec(target, 500, 30, initial(name), source_mob) //massive boom
+	explosion_rec(target, 600, 30, initial(name), source_mob) //massive boom
 
 
 
@@ -394,13 +394,14 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_warhead_2"
 
 /obj/structure/ob_ammo/warhead/incendiary/warhead_impact(turf/target, inaccuracy_amt = 0)
-	fire_spread(target, initial(name), source_mob, 12, 45, 75, "blue")
+	fire_spread(target, initial(name), source_mob, 12, 70, 85, "blue")
 
 
 /obj/structure/ob_ammo/warhead/cluster
 	name = "\improper Cluster orbital warhead"
 	warhead_kind = "cluster"
 	icon_state = "ob_warhead_3"
+	var/total_amount = 40 
 
 /obj/structure/ob_ammo/warhead/cluster/warhead_impact(turf/target, inaccuracy_amt = 0)
 	set waitfor = 0
@@ -409,12 +410,11 @@ var/list/ob_type_fuel_requirements
 	var/list/turf_list = list()
 	for(var/turf/T in range(range_num,target))
 		turf_list += T
-	var/total_amt = 30
-	for(var/i = 1 to total_amt)
+	for(var/i = 1 to total_amount)
 		var/turf/U = pick_n_take(turf_list)
 		playsound(U, 'sound/weapons/gun_flare.ogg', 50, 1)
 		sleep(pick(1,2,3))
-		explosion_rec(U,150, 30, initial(name), source_mob) //rocket barrage
+		explosion_rec(U,175, 30, initial(name), source_mob) //rocket barrage
 
 
 

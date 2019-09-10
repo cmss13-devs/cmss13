@@ -17,4 +17,8 @@
 			if(Z)
 				Z.affect(src)
 				break
+		for (var/obj/effect/particle_effect/smoke/xeno_weak_fire/X in get_turf(src))
+			if (X)
+				X.affect(src)
+				break
 

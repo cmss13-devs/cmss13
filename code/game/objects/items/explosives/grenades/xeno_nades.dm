@@ -5,11 +5,11 @@
 	icon_state = "neuro_nade"
 	det_time = 30
 	item_state = "neuro_nade"
-	var/datum/effect_system/smoke_spread/xeno_weaken/smoke
+	var/datum/effect_system/smoke_spread/xeno_extinguish_fire/smoke
 
 /obj/item/explosive/grenade/xeno_neuro_grenade/New()
 		..()
-		smoke = new /datum/effect_system/smoke_spread/xeno_weaken
+		smoke = new /datum/effect_system/smoke_spread/xeno_extinguish_fire
 		smoke.attach(src)
 
 /obj/item/explosive/grenade/xeno_neuro_grenade/prime()

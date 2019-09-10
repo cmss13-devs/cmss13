@@ -601,6 +601,7 @@
 #include "code\game\objects\items\devices\teleportation.dm"
 #include "code\game\objects\items\devices\transfer_valve.dm"
 #include "code\game\objects\items\devices\violin.dm"
+#include "code\game\objects\items\devices\walkman.dm"
 #include "code\game\objects\items\devices\whistle.dm"
 #include "code\game\objects\items\devices\PDA\cart.dm"
 #include "code\game\objects\items\devices\PDA\chatroom.dm"

@@ -455,6 +455,28 @@
 					/obj/item/tool/screwdriver = 5,/obj/item/tool/crowbar = 5)
 	//everything after the power cell had no amounts, I improvised.  -Sayu
 
+/obj/machinery/vending/walkman  
+	name = "Walkman vendor"
+	desc = "It vends walkmans. How surprising"
+	icon_state = "walkman"
+	products = list(/obj/item/device/walkman = 50,
+					/obj/item/device/cassette_tape/pop1 = 9,
+					/obj/item/device/cassette_tape/pop2 = 9,
+					/obj/item/device/cassette_tape/pop3 = 9,
+					/obj/item/device/cassette_tape/pop4 = 9,
+					/obj/item/device/cassette_tape/heavymetal = 9,
+					/obj/item/device/cassette_tape/hairmetal = 9,
+					)
+
+/obj/machinery/vending/walkman/stock(obj/item/item_to_stock, mob/user)
+	if(istype(item_to_stock,/obj/item/device/walkman))
+		var/obj/item/device/walkman/W = item_to_stock
+		if(W.tape)
+			to_chat(user,SPAN_WARNING("Remove the tape first!"))
+			return
+	..()
+	
+
 
 
 

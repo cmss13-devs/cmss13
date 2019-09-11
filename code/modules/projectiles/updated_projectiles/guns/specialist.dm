@@ -540,8 +540,9 @@
 			blip_pool = list()
 		if(!detector_mode)
 			long_range_cooldown--
-			if(long_range_cooldown) return
-		else long_range_cooldown = initial(long_range_cooldown)
+			if(long_range_cooldown)
+				return
+			long_range_cooldown = initial(long_range_cooldown)
 		scan()
 
 /obj/item/weapon/gun/smartgun/proc/scan()

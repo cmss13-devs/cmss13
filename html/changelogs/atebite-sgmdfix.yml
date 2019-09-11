@@ -1,0 +1,4 @@
+author: Atebite
+delete-after: true
+changes:
+  - bugfix: The smartgun's motion detector should now work properly

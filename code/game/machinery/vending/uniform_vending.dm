@@ -13,12 +13,6 @@
 
 	var/m_points = 0
 	var/obj/item/card/id/I = H.wear_id
-	if(istype(I)) //wearing an ID
-		if(use_snowflake_points)
-			m_points = I.marine_snowflake_points
-		else
-			m_points = I.marine_points
-
 	var/list/role_specific_uniforms
 	var/list/vended_items
 	if(istype(I))
@@ -27,8 +21,10 @@
 	var/category_index = 1
 	for(var/category_type in uniform_categories)
 		var/display_category = FALSE
+		if(!uniform_categories[category_type])
+			continue
 		for(var/category in uniform_categories[category_type])
-			if(role_specific_uniforms[category].len)
+			if(role_specific_uniforms[category])
 				display_category = TRUE
 				break
 		if(!display_category)
@@ -36,6 +32,8 @@
 		display_list += list(list("prod_index" = category_index, "prod_path" = null, "prod_name" = category_type, "prod_available" = null, "prod_color" = null))
 		category_index++
 		for(var/object_type in uniform_categories[category_type])
+			if(!role_specific_uniforms[object_type])
+				continue
 			for(var/uniform_path in role_specific_uniforms[object_type])
 				var/obj/O = uniform_path
 				var/can_vend = TRUE

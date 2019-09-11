@@ -588,7 +588,7 @@
 	icon_state = "type71"
 	item_state = "type71"
 	origin_tech = "combat=4;materials=2;syndicate=4"
-	fire_sound = list('sound/weapons/gun_type71.ogg')
+	fire_sound = 'sound/weapons/gun_type71.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/type71
 	wield_delay = WIELD_DELAY_FAST
 	//type_of_casings = "cartridge"

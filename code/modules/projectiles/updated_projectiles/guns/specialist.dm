@@ -201,7 +201,7 @@
 	unacidable = 1
 	indestructible = 1
 	origin_tech = "combat=5;materials=4"
-	fire_sound = list('sound/weapons/gun_m4ra.ogg')
+	fire_sound = 'sound/weapons/gun_m4ra.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra
 	force = 16
 	attachable_allowed = list(

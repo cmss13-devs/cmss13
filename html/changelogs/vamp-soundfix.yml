@@ -1,0 +1,4 @@
+author: Vampmare
+delete-after: true
+changes:
+  - bugfix: "M4RA and Type 71 now have firing sounds again"

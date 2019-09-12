@@ -441,7 +441,7 @@
 
 /obj/item/weapon/gun/revolver/mateba/New()
 	..()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 24, "under_x" = 19, "under_y" = 17, "stock_x" = 19, "stock_y" = 17, "special_x" = 22, "special_y" = 19)
+	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 20,"rail_x" = 11, "rail_y" = 24, "under_x" = 19, "under_y" = 17, "stock_x" = 19, "stock_y" = 17, "special_x" = 23, "special_y" = 22)
 	var/obj/item/attachable/mateba/Q = new default_barrel(src)
 	Q.Attach(src)
 	update_icon()

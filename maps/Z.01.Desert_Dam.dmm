@@ -10915,7 +10915,6 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aFQ" = (
-/obj/structure/flora/tallgrass/grass/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aFR" = (
@@ -12937,8 +12936,7 @@
 	icon_state = "cement_sunbleached1"
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
-"aLyl" = (
-,
+"aLy" = (
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
 "aLz" = (
@@ -39810,8 +39808,7 @@
 	icon_state = "darkbrown2"
 	},
 /area/desert_dam/building/warehouse/warehouse)
-"ckzl" = (
-,
+"ckz" = (
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
 "ckA" = (
@@ -48578,8 +48575,7 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
-"cHZl" = (
-,
+"cHZ" = (
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "cIa" = (
@@ -51556,8 +51552,7 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
-"cQMl" = (
-,
+"cQM" = (
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "cQN" = (
@@ -57025,8 +57020,7 @@
 	icon_state = "cement_sunbleached1"
 	},
 /area/desert_dam/exterior/valley/valley_medical)
-"doal" = (
-,
+"doa" = (
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_dam)
 "dob" = (
@@ -57399,8 +57393,7 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
-"drMl" = (
-,
+"drM" = (
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "drN" = (
@@ -57903,8 +57896,7 @@
 	dir = 8
 	},
 /area/desert_dam/building/administration/overseer_office)
-"dvdl" = (
-,
+"dvd" = (
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "dvf" = (
@@ -61906,8 +61898,7 @@
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
-"dNzl" = (
-,
+"dNz" = (
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "dNB" = (
@@ -67384,8 +67375,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"faal" = (
-,
+"faa" = (
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
 "fpu" = (
@@ -67910,8 +67900,7 @@
 "kJY" = (
 /turf/closed/wall/rock/orange,
 /area/desert_dam/interior/dam_interior/engine_east_wing)
-"kKal" = (
-,
+"kKa" = (
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo{
 	is_resin_allowed = 0

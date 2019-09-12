@@ -183,17 +183,20 @@
 	action_icon_state = "secrete_resin"
 	ability_name = "secrete resin"
 	var/resin_plasma_cost = 150
+	var/thick = FALSE
+	var/make_message = TRUE
 	macro_path = /datum/action/xeno_action/verb/verb_secrete_resin
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/secrete_resin/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	X.build_resin(A, resin_plasma_cost)
+	. = X.build_resin(A, resin_plasma_cost, thick, make_message)
 	..()
 
 /datum/action/xeno_action/activable/secrete_resin/hivelord
 	name = "Secrete Resin (200)"
 	resin_plasma_cost = 200
+	thick = TRUE
 
 
 // Corrosive Acid
@@ -337,23 +340,6 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	return !X.used_punch
 
-//Warrior Jab (Boxer Ability)
-/datum/action/xeno_action/activable/jab
-	name = "Jab"
-	action_icon_state = "pounce"
-	ability_name = "jab"
-	macro_path = /datum/action/xeno_action/verb/verb_jab
-	action_type = XENO_ACTION_CLICK
-
-/datum/action/xeno_action/activable/jab/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	X.jab(A)
-	..()
-
-/datum/action/xeno_action/activable/jab/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/X = owner
-	return !X.used_jab
-
 // Burrower Abilities
 /datum/action/xeno_action/activable/burrow
 	name = "Burrow"
@@ -368,22 +354,6 @@
 		X.tunnel(get_turf(A))
 	else
 		X.burrow()
-	..()
-
-/datum/action/xeno_action/activable/tremor
-	name = "Tremor (100)"
-	action_icon_state = "screech"
-	ability_name = "screech"
-	macro_path = /datum/action/xeno_action/verb/verb_tremor
-	action_type = XENO_ACTION_ACTIVATE
-
-/datum/action/xeno_action/activable/tremor/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/X = owner
-	return !X.used_tremor
-
-/datum/action/xeno_action/activable/tremor/use_ability()
-	var/mob/living/carbon/Xenomorph/X = owner
-	X.tremor()
 	..()
 
 // Defender Headbutt
@@ -761,22 +731,6 @@
 	playsound(X.loc, "alien_resin_build", 25)
 	new /obj/effect/alien/resin/trap(X.loc, X)
 	to_chat(X, SPAN_XENONOTICE("You place a resin hole on the weeds, it still needs a sister to fill it with acid."))
-
-/datum/action/xeno_action/activable/lay_egg
-	name = "Lay Egg (50)"
-	action_icon_state = "lay_egg"
-	ability_name = "lay egg"
-	macro_path = /datum/action/xeno_action/verb/verb_lay_egg
-	action_type = XENO_ACTION_CLICK
-
-/datum/action/xeno_action/activable/lay_egg/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/Carrier/X = owner
-	return !X.laid_egg
-
-/datum/action/xeno_action/activable/lay_egg/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Carrier/X = owner
-	X.lay_egg(A)
-	..()
 
 //Crusher abilities
 /datum/action/xeno_action/activable/stomp
@@ -1367,74 +1321,6 @@
 	var/mob/living/carbon/Xenomorph/Ravager/X = owner
 	return !X.used_lunge
 
-
-/datum/action/xeno_action/activable/charge
-	name = "Charge (20)"
-	action_icon_state = "charge"
-	ability_name = "charge"
-	macro_path = /datum/action/xeno_action/verb/verb_charge_rav
-	action_type = XENO_ACTION_CLICK
-
-/datum/action/xeno_action/activable/charge/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Ravager/X = owner
-	X.Pounce(A)
-	..()
-
-/datum/action/xeno_action/activable/charge/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/Ravager/X = owner
-	return !X.used_pounce
-
-
-/datum/action/xeno_action/activable/spin_slash
-	name = "Spin Slash (60)"
-	action_icon_state = "spin_slash"
-	ability_name = "spin slash"
-	macro_path = /datum/action/xeno_action/verb/verb_spin_slash
-	action_type = XENO_ACTION_ACTIVATE
-
-/datum/action/xeno_action/activable/spin_slash/use_ability()
-	var/mob/living/carbon/Xenomorph/X = owner
-	X.spin_slash()
-	..()
-
-/datum/action/xeno_action/activable/spin_slash/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/Ravager/X = owner
-	return !X.used_lunge
-
-
-/datum/action/xeno_action/activable/spike_spray
-	name = "Spike Spray (30)"
-	action_icon_state = "rav_spike"
-	ability_name = "spike spray"
-	macro_path = /datum/action/xeno_action/verb/verb_spike_spray
-	action_type = XENO_ACTION_CLICK
-
-/datum/action/xeno_action/activable/spike_spray/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	X.spike_spray(A)
-	..()
-
-/datum/action/xeno_action/activable/spike_spray/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/Ravager/X = owner
-	return !X.used_pounce
-
-
-//Drone Abilities
-/datum/action/xeno_action/activable/transfer_health
-	name = "Transfer Health"
-	action_icon_state = "transfer_health"
-	ability_name = "transfer health"
-	var/health_transfer_amount = 25
-	var/transfer_delay = 50
-	var/max_range = 1
-	macro_path = /datum/action/xeno_action/verb/verb_transfer_health
-	action_type = XENO_ACTION_CLICK
-
-/datum/action/xeno_action/activable/transfer_health/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	X.xeno_transfer_health(A, health_transfer_amount, transfer_delay, max_range)
-	..()
-
 //Ravenger
 
 /datum/action/xeno_action/activable/breathe_fire
@@ -1526,102 +1412,6 @@
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_result)
-
-/datum/action/xeno_action/activable/prae_dance
-	name = "Dance (200)"
-	action_icon_state = "prae_dance"
-	ability_name = "dance"
-	macro_path = /datum/action/xeno_action/verb/verb_prae_dance
-	action_type = XENO_ACTION_ACTIVATE
-
-/datum/action/xeno_action/activable/prae_dance/use_ability()
-	var/mob/living/carbon/Xenomorph/X = owner
-	X.praetorian_dance()
-	..()
-
-/datum/action/xeno_action/activable/prae_dance/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/X = owner
-	return !X.used_pounce
-
-/datum/action/xeno_action/activable/prae_tailattack
-	name = "Tail Attack (150)"
-	action_icon_state = "prae_tailattack"
-	ability_name = "tail attack"
-	macro_path = /datum/action/xeno_action/verb/verb_prae_tailattack
-	action_type = XENO_ACTION_CLICK
-
-/datum/action/xeno_action/activable/prae_tailattack/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	X.praetorian_tailattack(A)
-	..()
-
-/datum/action/xeno_action/activable/prae_tailattack/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/X = owner
-	return !X.used_punch
-
-// Toggle impale type for Prae dancer
-/datum/action/xeno_action/prae_shift_tailattack
-	name = "Toggle tail attack type"
-	action_icon_state = "prae_tailattack_impale"
-	plasma_cost = 0
-	macro_path = /datum/action/xeno_action/verb/verb_prae_shift_tailattack
-	action_type = XENO_ACTION_CLICK
-
-/datum/action/xeno_action/prae_shift_tailattack/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
-	if(X && !X.buckled && !X.is_mob_incapacitated())
-		return TRUE
-
-/datum/action/xeno_action/prae_shift_tailattack/action_activate()
-	var/mob/living/carbon/Xenomorph/X = owner
-	var/action_icon_result
-
-	if(!X.check_state(1))
-		return
-
-	if (!(X.prae_status_flags & PRAE_DANCER_TAILATTACK_TYPE)) // 0 = damage, 1 = abduct
-		action_icon_result = "prae_tailattack_abduct"
-		to_chat(X, SPAN_WARNING("You will now abduct marines with your tail attack."))
-	else
-		action_icon_result = "prae_tailattack_impale"
-		to_chat(X, SPAN_WARNING("You will now impale marines with your tail attack."))
-
-	X.prae_status_flags = X.prae_status_flags^(PRAE_DANCER_TAILATTACK_TYPE) // flip the bit
-
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_result)
-
-/datum/action/xeno_action/activable/prae_bomb
-	name = "Toxin Bomb (300)"
-	action_icon_state = "bombard"
-	ability_name = "toxin bomb"
-	macro_path = /datum/action/xeno_action/verb/verb_prae_bomb
-	action_type = XENO_ACTION_CLICK
-
-/datum/action/xeno_action/activable/prae_bomb/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	X.praetorian_neuro_grenade(A)
-	..()
-
-/datum/action/xeno_action/activable/prae_bomb/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/X = owner
-	return !X.has_spat
-
-/datum/action/xeno_action/activable/prae_punch
-	name = "Punch (75)"
-	action_icon_state = "punch"
-	ability_name = "punch"
-	macro_path = /datum/action/xeno_action/verb/verb_prae_punch
-	action_type = XENO_ACTION_CLICK
-
-/datum/action/xeno_action/activable/prae_punch/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	X.praetorian_punch(A)
-	..()
-
-/datum/action/xeno_action/activable/prae_punch/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/X = owner
-	return !X.used_punch
 
 /datum/action/xeno_action/activable/prae_screech
 	name = "Screech (300)"

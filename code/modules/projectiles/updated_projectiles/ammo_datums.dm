@@ -1473,18 +1473,6 @@
 /datum/ammo/xeno/toxin/burst/on_near_target(turf/T, obj/item/projectile/P)
 	return neuro_flak(T,P, effect_power, FALSE, 2)
 
-/datum/ammo/xeno/toxin/shatter // Used by boiler shatter glob strain
-	name = "neurotoxin spatter"
-
-/datum/ammo/xeno/toxin/shatter/New()
-	..()
-	accuracy = config.med_hit_accuracy
-	accurate_range = config.max_shell_range
-	point_blank_range = -1
-	max_range = config.close_shell_range
-	shell_speed = config.slow_shell_speed
-	scatter = config.med_scatter_value
-
 /datum/ammo/xeno/sticky
 	name = "sticky resin spit"
 	icon_state = "sticky"
@@ -1710,33 +1698,6 @@
 	create_shrapnel(T, shrapnel_amount, , ,shrapnel_xeno, P.weapon_source, P.weapon_source_mob)
 	T.visible_message(SPAN_DANGER("A huge ball of acid splashes down, sending drops and splashes in every direction!"))
 	playsound(T, 'sound/effects/squelch1.ogg', 25, 1)
-
-/datum/ammo/xeno/railgun_glob
-	name = "railgun glob of acid"
-	icon_state = "boiler_railgun"
-	ping = "ping_x_railgun"
-	sound_hit = "acid_hit"
-	sound_bounce = "acid_bounce"
-	debilitate = list(1,1,0,0,1,1,0,0)
-	flags_ammo_behavior = AMMO_XENO_ACID|AMMO_SKIPS_ALIENS|AMMO_IGNORE_ARMOR|AMMO_ANTISTRUCT|AMMO_STOPPED_BY_COVER
-
-/datum/ammo/xeno/railgun_glob/New()
-	..()
-	accurate_range = config.max_shell_range
-	damage = config.mhigh_hit_damage
-	damage_var_high = config.min_proj_variance
-	damage_type = BURN
-	scatter = config.min_scatter_value
-	accuracy = config.max_hit_accuracy
-	max_range = config.long_shell_range
-	penetration = config.hmed_armor_penetration
-	shell_speed = config.ultra_shell_speed
-
-/datum/ammo/xeno/railgun_glob/on_hit_obj(obj/O, obj/item/projectile/P)
-	if(istype(O, /obj/structure/barricade))
-		var/obj/structure/barricade/B = O
-		B.health -= damage + rand(5)
-		B.update_health(1)
 
 /datum/ammo/xeno/bone_chips
 	name = "bone chips"

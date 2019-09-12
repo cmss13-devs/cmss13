@@ -531,67 +531,6 @@
 			var/datum/action/act = X
 			act.update_button_icon()
 
-/mob/living/carbon/Xenomorph/proc/jab(atom/A)
-
-	if (!A || !ishuman(A))
-		return
-
-	if (!check_state())
-		return
-
-	if (used_jab)
-		to_chat(src, SPAN_XENOWARNING("You must gather your strength before jabbing."))
-		return
-
-	if (!check_plasma(10))
-		return
-
-	var/distance = get_dist(src, A)
-
-	if (distance > 2)
-		return
-
-	var/mob/living/carbon/human/H = A
-	if(H.stat == DEAD) return
-	if(istype(H.buckled, /obj/structure/bed/nest)) return
-	if(H.status_flags & XENO_HOST)
-		to_chat(src, SPAN_XENOWARNING("This would harm the embryo!"))
-		return
-
-	if (distance > 1)
-		step_towards(src, H, 1)
-
-	if (!Adjacent(H))
-		return
-
-	H.last_damage_mob = src
-	H.last_damage_source = initial(caste_name)
-	visible_message(SPAN_XENOWARNING("\The [src] hits [H] with a powerful jab!"), \
-	SPAN_XENOWARNING("You hit [H] with a powerful jab!"))
-	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
-	playsound(H,S, 50, 1)
-	used_jab = 1
-	use_plasma(10)
-
-	if(!isYautja(H))
-		H.KnockDown(0.1)
-
-	if(agility)
-		toggle_agility()
-
-	if(used_punch)
-		used_punch = FALSE
-
-	shake_camera(H, 3, 1)
-	step_away(H, src, 2)
-
-	spawn(caste.jab_cooldown)
-		used_jab = 0
-		to_chat(src, SPAN_NOTICE("You gather enough strength to jab again."))
-		for(var/X in actions)
-			var/datum/action/act = X
-			act.update_button_icon()
-
 /mob/living/carbon/Xenomorph/proc/lunge(atom/A)
 
 	if (!A)
@@ -1138,133 +1077,6 @@
 		T.tunnel_desc = "[new_name]"
 	return
 
-/mob/living/carbon/Xenomorph/proc/tremor() //More support focused version of crusher earthquakes.
-	if(burrow)
-		to_chat(src, SPAN_NOTICE("You must be above ground to do this."))
-		return
-
-	if(!check_state())
-		return
-
-	if(used_tremor)
-		to_chat(src, SPAN_XENOWARNING("Your aren't ready to cause more tremors yet!"))
-		return
-
-	if(!check_plasma(100)) return
-
-	use_plasma(100)
-	playsound(loc, 'sound/effects/alien_footstep_charge3.ogg', 75, 0)
-	visible_message(SPAN_XENODANGER("[src] digs itself into the ground and shakes the earth itself, causing violent tremors!"), \
-	SPAN_XENODANGER("You dig into the ground and shake it around, causing violent tremors!"))
-	create_stomp() //Adds the visual effect. Wom wom wom
-	used_tremor = 1
-
-	for(var/mob/living/carbon/M in range(7, loc))
-		to_chat(M, SPAN_WARNING("You struggle to remain on your feet as the ground shakes beneath your feet!"))
-		shake_camera(M, 2, 3)
-
-	for(var/mob/living/carbon/human/H in range(3, loc))
-		to_chat(H, SPAN_WARNING("The violent tremors make you lose your footing!"))
-		H.KnockDown(1)
-
-	spawn(caste.tremor_cooldown)
-		used_tremor = 0
-		to_chat(src, SPAN_NOTICE("You gather enough strength to cause tremors again."))
-		for(var/X in actions)
-			var/datum/action/act = X
-			act.update_button_icon()
-
-// Ravager spin slash
-/mob/living/carbon/Xenomorph/proc/spin_slash()
-	var/datum/caste_datum/ravager/rCaste = src.caste
-
-	if (!check_state())
-		return
-
-	if (used_lunge)
-		to_chat(src, SPAN_XENOWARNING("You must gather your strength before using your spin slash again."))
-		return
-
-	if (!check_plasma(60))
-		to_chat(src, SPAN_XENOWARNING("You don't have enough plasma! You need [60-src.plasma_stored] more.</span>"))
-		return
-
-	visible_message(SPAN_XENOWARNING("[src] lashes out with its sycthe-like claws!"), SPAN_XENOWARNING("You unleash a flurry of slashes around you!"))
-
-	spin_circle()
-
-	var/sweep_range = 1
-	var/list/L = orange(sweep_range)
-	// Spook patrol
-	src.emote("roar")
-
-	for (var/mob/living/carbon/human/H in L)
-		if(H != H.handle_barriers(src)) continue
-		if(H.stat == DEAD) continue
-		if(istype(H.buckled, /obj/structure/bed/nest)) continue
-		step_away(H, src, sweep_range, 3)
-
-		// MOST of the time, hit our target zone.
-		var/target_zone = ran_zone("chest", 75)
-		var/armor = H.getarmor(target_zone, ARMOR_MELEE)
-		var/damage = armor_damage_reduction(config.marine_melee, rand(rCaste.melee_damage_lower, rCaste.melee_damage_upper)+rCaste.spin_damage_offset, armor, 10)
-		
-		// Flat bonus damage that ignores armor
-		damage += rCaste.spin_damage_ignore_armor
-
-		H.last_damage_mob = src
-		H.last_damage_source = initial(caste_name)
-		H.apply_damage(damage, BRUTE, target_zone)
-		shake_camera(H, 2, 1)
-		H.KnockDown(2, 1)
-
-		to_chat(H, SPAN_DANGER("You are slashed by \the [src]'s claws!"))
-		playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)
-
-	used_lunge = 1
-	use_plasma(60)
-
-	spawn(rCaste.spin_cooldown)
-		used_lunge = 0
-		to_chat(src, SPAN_NOTICE("You gather enough strength to use your spin slash again."))
-		for(var/X in actions)
-			var/datum/action/act = X
-			act.update_button_icon()
-
-
-// Ravager spike spray 
-/mob/living/carbon/Xenomorph/proc/spike_spray(var/turf/T)
-	var/mob/living/carbon/Xenomorph/Ravager/R = src
-	var/datum/caste_datum/ravager/rCaste = src.caste
-	
-	if(!T || T.layer >= FLY_LAYER || !isturf(loc) || !check_state() || used_pounce) 
-		return
-
-	if(!check_plasma(30))
-		to_chat(src, SPAN_NOTICE("You don't have enough plasma!"))
-		return
-
-	visible_message(SPAN_XENOWARNING("\The [src] launches their spikes at [T]!"), \
-	SPAN_XENOWARNING("You launch your spikes toward [T]!"))
-	used_pounce = TRUE
-	use_plasma(30)
-	
-	spin_circle()
-
-	var/turf/target = locate(T.x, T.y, T.z)
-	var/obj/item/projectile/P = new /obj/item/projectile(initial(caste_name), src, loc)
-	P.generate_bullet(R.ammo)
-	P.fire_at(target, src, src, R.ammo.max_range, R.ammo.shell_speed)
-	playsound(src, 'sound/effects/spike_spray.ogg', 25, 1)
-
-	spawn(rCaste.spike_shed_cooldown)
-		used_pounce = FALSE
-		to_chat(src, SPAN_NOTICE("Your spikes regrow. They can be launched again."))
-		for(var/X in actions)
-			var/datum/action/act = X
-			act.update_button_icon()
-
-
 // Ravager Empower
 /mob/living/carbon/Xenomorph/proc/empower()
 	var/datum/caste_datum/ravager/rCaste = src.caste
@@ -1325,328 +1137,6 @@
 	for(var/X in actions)
 		var/datum/action/act = X
 		act.update_button_icon()
-
-
-// Utility ability for dancer praes
-/mob/living/carbon/Xenomorph/proc/praetorian_dance()
-	var/mob/living/carbon/Xenomorph/Praetorian/P = src
-	var/datum/caste_datum/praetorian/pCaste = src.caste
-	
-	if(!check_state())
-		return
-
-	if(P.used_pounce)
-		to_chat(src, SPAN_XENOWARNING("You are not ready to dance again."))
-		return
-	
-	if(!check_plasma(200))
-		return
-
-	// Dance time
-	P.used_pounce = TRUE
-
-	to_chat(src, SPAN_XENOWARNING("You begin to move at a fever pace!"))
-
-	P.speed_modifier -= pCaste.dance_speed_buff
-	P.evasion_modifier += pCaste.dance_evasion_buff
-	P.recalculate_speed()
-	P.recalculate_evasion()
-	P.prae_status_flags |= PRAE_DANCER_STATSBUFFED
-
-	spawn(pCaste.dance_duration)
-		
-		// Reset our stats just in case they haven't been reset already somewhere else.
-		if (prae_status_flags & PRAE_DANCER_STATSBUFFED)
-			to_chat(src, SPAN_XENOWARNING("You feel the effects of your dance wane!"))
-			P.speed_modifier += pCaste.dance_speed_buff
-			P.evasion_modifier -= pCaste.dance_evasion_buff
-			P.recalculate_speed()
-			P.recalculate_evasion()
-			P.prae_status_flags &= ~PRAE_DANCER_STATSBUFFED
-	
-	spawn (pCaste.dance_cooldown)
-		to_chat(src, SPAN_XENOWARNING("You gather enough strength to dance again."))
-		used_pounce = FALSE
-		for(var/X in actions)
-			var/datum/action/act = X
-			act.update_button_icon()
-
-// Praetorian dancer impale
-/mob/living/carbon/Xenomorph/proc/praetorian_tailattack(atom/A)
-	var/mob/living/carbon/Xenomorph/Praetorian/P = src
-	var/datum/caste_datum/praetorian/pCaste = src.caste
-	var/mob/living/carbon/human/T
-	
-	if(!check_state())
-		return
-
-	if(P.used_punch)
-		to_chat(src, SPAN_XENOWARNING("You are not ready to use your tail attack again."))
-		return
-
-	if (!A || !ishuman(A))
-		return
-	else
-		T = A // Target
-
-	if (T.stat == DEAD)
-		to_chat(src, SPAN_XENOWARNING("[T] is dead, why would you want to attack it?"))
-		return
-	
-	if(!check_plasma(150))
-		return
-	
-	var/dist = get_dist(src, T)
-	var/buffed = prae_status_flags & PRAE_DANCER_STATSBUFFED
-
-	if (dist > pCaste.tailattack_max_range)
-		to_chat(src, SPAN_WARNING("[T] is too far away!"))
-		return 
-
-	if (dist > 1)
-		var/turf/targetTurf = get_step(src, get_dir(src, T))
-		if (targetTurf.density)
-			to_chat(src, SPAN_WARNING("You can't attack through [targetTurf]!"))
-			return
-		else
-			for (var/atom/I in targetTurf)
-				if (I.density && !I.throwpass && !istype(I, /obj/structure/barricade) && !istype(I, /mob/living))
-					to_chat(src, SPAN_WARNING("You can't attack through [I]!"))
-					return
-
-	used_punch = TRUE
-	use_plasma(150)
-
-	// Hmm today I will kill a marine while looking away from them
-	face_atom(T)
-
-	if (buffed) // Now we've exhausted our dance, time to go slow again
-		to_chat(src, SPAN_WARNING("You expend your dance to empower your tail attack!"))
-		P.speed_modifier += pCaste.dance_speed_buff
-		P.evasion_modifier -= pCaste.dance_evasion_buff
-		P.recalculate_speed()
-		P.recalculate_evasion()
-		P.prae_status_flags &= ~PRAE_DANCER_STATSBUFFED
-
-	var/damage = rand(melee_damage_lower, melee_damage_upper) + pCaste.tailattack_damagebuff
-	var/target_zone = T.get_limb("chest")
-	var/armor_block = getarmor(target_zone, ARMOR_MELEE)
-
-	switch(!!(prae_status_flags & PRAE_DANCER_TAILATTACK_TYPE)) // Bit fuckery to simpify 0,4 to 0,1
-		
-		if (0) // Direct damage impale
-			
-			visible_message(SPAN_DANGER("\The [src] violently impales [T] with its tail[buffed?" twice":""]!"), \
-			SPAN_DANGER("You impale [T] with your tail[buffed?" twice":""]!"))
-			
-			if (buffed)
-				
-				// Do two attacks instead of one 
-				animation_attack_on(T, 15) // Slightly further than standard animation, because we want to clearly indicate a double-tile attack 
-				flick_attack_overlay(T, "slash")
-				emote("roar") // Feedback for the player that we got the magic double impale
-				
-				var/n_damage = armor_damage_reduction(config.marine_melee, damage, armor_block)
-				if (n_damage <= 0.34*damage)
-					show_message(SPAN_WARNING("Your armor absorbs the blow!"))
-				else if (n_damage <= 0.67*damage)
-					show_message(SPAN_WARNING("Your armor softens the blow!"))
-				T.apply_damage(n_damage, BRUTE, target_zone, 0, sharp = 1, edge = 1) // Stolen from attack_alien. thanks Neth
-				playsound(T.loc, "alien_claw_flesh", 30, 1)
-				
-				// Reroll damage
-				damage = rand(melee_damage_lower, melee_damage_upper) + pCaste.tailattack_damagebuff
-				sleep(4) // Short sleep so the animation and sounds will be distinct, but this creates some strange effects if the prae runs away 
-						 // not entirely happy with this, but I think its benefits outweigh its drawbacks
-
-			animation_attack_on(T, 15) // Slightly further than standard animation, because we want to clearly indicate a double-tile attack 
-			flick_attack_overlay(T, "slash")
-				
-			var/n_damage = armor_damage_reduction(config.marine_melee, damage, armor_block)
-			if (n_damage <= 0.34*damage)
-				show_message(SPAN_WARNING("Your armor absorbs the blow!"))
-			else if (n_damage <= 0.67*damage)
-				show_message(SPAN_WARNING("Your armor softens the blow!"))
-			T.last_damage_mob = src
-			T.last_damage_source = initial(caste_name)
-			T.apply_damage(n_damage, BRUTE, target_zone, 0, sharp = 1, edge = 1)
-			
-			playsound(T.loc, "alien_claw_flesh", 30, 1) 
-
-		if (1) // 'Abduct' tail attack
-
-			var/leap_range = pCaste.tailattack_abduct_range
-			var/delay = pCaste.tailattack_abduct_usetime_long // Delay before we jump back
-			if (buffed)
-				delay = pCaste.tailattack_abduct_usetime_short
-				emote("roar") // Same as before, give player feedback for hitting the combo
-
-			var/leap_dir = turn(get_dir(src, T), 180) // Leap the opposite direction of the vector between us and our target
-			
-			var/turf/target_turf = get_turf(src)
-			var/turf/temp = get_turf(src)
-			for (var/x = 0, x < leap_range, x++)
-				temp = get_step(target_turf, leap_dir)
-				if (!temp || temp.density) // Stop if we run into a dense turf
-					break
-				target_turf = temp
-
-			// Warrior grab but with less stun
-			if (!Adjacent(T))
-				T.throw_at(get_step_towards(T, src), 6, 2, src)
-
-			// Just making sure..
-			if (Adjacent(T) && start_pulling(T, 0, TRUE))
-				
-				T.drop_held_items()
-				T.KnockDown(2) // So ungas can blast the Praetorian
-				T.Stun(2)
-				grab_level = GRAB_NECK
-				T.pulledby = src
-				visible_message(SPAN_WARNING("\The [src] grabs [T] by the neck with its tail!"), \
-				SPAN_XENOWARNING("You grab [T] by the neck with your tail!"))
-		
-			if (do_after(src, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, show_remaining_time = TRUE) || T.pulledby != src || !src.Adjacent(T))
-				to_chat(src, SPAN_XENOWARNING("You stop abducting [T]!"))
-				if (T.pulledby)
-					T.pulledby.stop_pulling()
-			else
-				throw_at(target_turf, leap_range, 2, src)
-				T.throw_at(target_turf, leap_range, 2, src)
-				T.Stun(2)
-				visible_message(SPAN_WARNING("\The [src] leaps backwards with [T]!"), \
-				SPAN_XENOWARNING("You leap backwards with [T]!"))
-
-		else 
-			log_debug("[src] tried to impale with an invalid flag. Error code: PRAE_IMP_1")
-			log_admin("[src] tried to impale with an invalid flag. Tell the devs. Error code: PRAE_IMP_1")
-
-	spawn (pCaste.tailattack_cooldown)
-		used_punch = FALSE
-		to_chat(src, SPAN_XENOWARNING("You regain enough strength to use your tail attack again."))
-		for(var/X in actions)
-			var/datum/action/act = X
-			act.update_button_icon()
-
-// Praetorian Oppressor neuro 'grenade'
-/mob/living/carbon/Xenomorph/proc/praetorian_neuro_grenade(atom/T)
-	var/datum/caste_datum/praetorian/pCaste = src.caste
-	if (!check_state())
-		return
-
-	if (has_spat)
-		to_chat(src, SPAN_XENOWARNING("You must gather your strength before launching another toxin bomb."))
-		return
-
-	if (!check_plasma(300))
-		return
-
-	var/turf/current_turf = get_turf(src)
-
-	if (!current_turf)
-		return
-
-	if (do_after(src, pCaste.oppressor_grenade_setup, INTERRUPT_NO_NEEDHAND|INTERRUPT_LCLICK, BUSY_ICON_HOSTILE, show_remaining_time = TRUE))
-		to_chat(src, SPAN_XENOWARNING("You decide not to use your toxin bomb."))
-		return 
-	
-	to_chat(src, SPAN_XENOWARNING("You lob a compressed ball of neurotoxin into the air!"))
-	
-	var/obj/item/explosive/grenade/xeno_neuro_grenade/grenade = new /obj/item/explosive/grenade/xeno_neuro_grenade
-	grenade.loc = loc
-	grenade.throw_at(T, 5, 3, src, TRUE)
-
-	spawn (pCaste.oppressor_grenade_fuse)
-		grenade.prime()
-
-	spawn (pCaste.oppressor_grenade_cooldown)
-		has_spat = FALSE
-		to_chat(src, SPAN_XENOWARNING("You gather enough strength to use your toxin bomb again."))
-		for(var/X in actions)
-			var/datum/action/act = X
-			act.update_button_icon()
-
-	has_spat = TRUE
-	plasma_stored -= 300
-
-// Superbuffed warrior punch
-/mob/living/carbon/Xenomorph/proc/praetorian_punch(atom/A)
-
-	var/datum/caste_datum/praetorian/pCaste = src.caste
-
-	if (!A || !ishuman(A))
-		return
-
-	if (!check_state())
-		return
-
-	if (used_punch)
-		to_chat(src, "<span class='xenowarning'>You must gather your strength before punching again.</span>")
-		return
-
-	if (!check_plasma(75))
-		return
-
-	if (!Adjacent(A))
-		return
-
-	use_plasma(75)
-	var/mob/living/carbon/human/H = A
-	if(H.stat == DEAD) return
-	if(istype(H.buckled, /obj/structure/bed/nest)) return
-	
-	var/datum/limb/L = H.get_limb(check_zone(zone_selected))
-
-	if (!L || (L.status & LIMB_DESTROYED))
-		return
-
-	visible_message("<span class='xenowarning'>\The [src] hits [H] in the [L.display_name] with a devastatingly powerful punch!</span>", \
-	"<span class='xenowarning'>You hit [H] in the [L.display_name] with a devastatingly powerful punch!</span>")
-	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
-	playsound(H,S, 50, 1)
-	used_punch = 1
-	
-	if(L.status & LIMB_SPLINTED) //If they have it splinted, the splint won't hold.
-		L.status &= ~LIMB_SPLINTED
-		to_chat(H, "<span class='danger'>The splint on your [L.display_name] comes apart!</span>")
-
-	if(isYautja(H))
-		L.take_damage(rand(8,12))
-	else
-		var/fracture_chance = 50
-		switch(L.body_part)
-			if(HEAD)
-				fracture_chance = 20
-			if(UPPER_TORSO)
-				fracture_chance = 30
-			if(LOWER_TORSO)
-				fracture_chance = 40
-
-		L.take_damage(rand(40,50), 0, 0)
-		if(prob(fracture_chance))
-			L.fracture()
-
-	shake_camera(H, 2, 1)
-
-	var/facing = get_dir(src, H)
-	var/fling_distance = pCaste.oppressor_punch_fling_dist
-	var/turf/T = loc
-	var/turf/temp = loc
-
-	for (var/x = 0, x < fling_distance, x++)
-		temp = get_step(T, facing)
-		if (!temp)
-			break
-		T = temp
-
-	H.throw_at(T, fling_distance, 1, src, 1)
-
-	spawn(pCaste.oppressor_punch_cooldown)
-		used_punch = 0
-		to_chat(src, SPAN_NOTICE("You gather enough strength to punch again."))
-		for(var/X in actions)
-			var/datum/action/act = X
-			act.update_button_icon()
 
 // Praetorain screech ability. Varies based on the strain of the Praetorian
 /mob/living/carbon/Xenomorph/proc/praetorian_screech()
@@ -1875,49 +1365,6 @@
 	to_chat(src, SPAN_XENOWARNING("You have transferred [amount] plasma to \the [target]. You now have [plasma_stored]."))
 	playsound(src, "alien_drool", 25)
 
-/mob/living/carbon/Xenomorph/proc/xeno_transfer_health(atom/A, amount = 40, transfer_delay = 50, max_range = 1)
-	if(!istype(A, /mob/living/carbon/Xenomorph))
-		return
-	var/mob/living/carbon/Xenomorph/target = A
-
-	if(target == src)
-		to_chat(src, "You can't heal yourself!")
-		return
-
-	if(!check_state())
-		return
-
-	if(!isturf(loc))
-		to_chat(src, SPAN_WARNING("You can't transfer health from here!"))
-		return
-
-	if(get_dist(src, target) > max_range)
-		to_chat(src, SPAN_WARNING("You need to be closer to [target]."))
-		return
-
-	to_chat(src, SPAN_NOTICE("You start transfering some of your health towards [target]."))
-	to_chat(target, SPAN_NOTICE("You feel that [src] starts transferring some of their health to you."))
-	if(!do_after(src, transfer_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL, numticks = 10))
-		return
-
-	if(!check_state())
-		return
-
-	if(!isturf(loc))
-		to_chat(src, SPAN_WARNING("You can't transfer health from here!"))
-		return
-
-	if(get_dist(src, target) > max_range)
-		to_chat(src, SPAN_WARNING("You need to be closer to [target]."))
-		return
-
-	bruteloss += amount * 1.5
-	target.gain_health(amount)
-	to_chat(target, SPAN_XENOWARNING("\The [src] has transfered some of their health to you. You feel reinvigorated!"))
-	to_chat(src, SPAN_XENOWARNING("You have transferred some of your health to \the [target]. You feel weakened..."))
-	playsound(src, "alien_drool", 25)
-
-
 //Note: All the neurotoxin projectile items are stored in XenoProcs.dm
 /mob/living/carbon/Xenomorph/proc/xeno_spit(atom/T)
 
@@ -1968,19 +1415,19 @@
 
 
 
-/mob/living/carbon/Xenomorph/proc/build_resin(atom/A, resin_plasma_cost)
+/mob/living/carbon/Xenomorph/proc/build_resin(atom/A, resin_plasma_cost, thick=FALSE, message=TRUE)
 	if (action_busy)
-		return
+		return FALSE
 	if (!check_state())
-		return
+		return FALSE
 	if (!check_plasma(resin_plasma_cost))
-		return
+		return FALSE
 
 	var/turf/current_turf = get_turf(A)
 
 	if (get_dist(src, A) > src.caste.max_build_dist) // Hivelords have max_build_dist of 1, drones and queens 0
 		current_turf = get_turf(src)
-	else if (isXenoHivelord(src)) //hivelords can thicken existing resin structures.
+	else if (thick) //hivelords can thicken existing resin structures.
 		var/thickened = FALSE
 		if(istype(A, /turf/closed/wall/resin))
 			var/turf/closed/wall/resin/WR = A
@@ -1994,7 +1441,7 @@
 				WR.old_turf = prev_old_turf
 			else
 				to_chat(src, SPAN_XENOWARNING("[WR] can't be made thicker."))
-				return
+				return FALSE
 			thickened = TRUE
 
 		else if(istype(A, /obj/structure/mineral_door/resin))
@@ -2005,39 +1452,40 @@
 				new /obj/structure/mineral_door/resin/thick (oldloc)
 			else
 				to_chat(src, SPAN_XENOWARNING("[DR] can't be made thicker."))
-				return
+				return FALSE
 			thickened = TRUE
 
 		if (thickened)
-			visible_message(SPAN_XENONOTICE("\The [src] regurgitates a thick substance and thickens [A]."), \
-				SPAN_XENONOTICE("You regurgitate some resin and thicken [A]."), null, 5)
-			use_plasma(resin_plasma_cost)
-			playsound(loc, "alien_resin_build", 25)
+			if(message)
+				visible_message(SPAN_XENONOTICE("\The [src] regurgitates a thick substance and thickens [A]."), \
+					SPAN_XENONOTICE("You regurgitate some resin and thicken [A]."), null, 5)
+				use_plasma(resin_plasma_cost)
+				playsound(loc, "alien_resin_build", 25)
 			A.add_hiddenprint(src) //so admins know who thickened the walls
-			return
+			return TRUE
 
 	var/mob/living/carbon/Xenomorph/blocker = locate() in current_turf
 	if(blocker && blocker != src && blocker.stat != DEAD)
 		to_chat(src, SPAN_WARNING("Can't do that with [blocker] in the way!"))
-		return
+		return FALSE
 
 	if(!istype(current_turf) || !current_turf.is_weedable())
 		to_chat(src, SPAN_WARNING("You can't do that here."))
-		return
+		return FALSE
 
 	var/area/AR = get_area(current_turf)
 	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2)) //Bandaid for atmospherics bug when Xenos build around the shuttles
 		to_chat(src, SPAN_WARNING("You sense this is not a suitable area for expanding the hive."))
-		return
+		return FALSE
 
 	var/obj/effect/alien/weeds/alien_weeds = locate() in current_turf
 
 	if(!alien_weeds)
 		to_chat(src, SPAN_WARNING("You can only shape on weeds. Find some resin before you start building!"))
-		return
+		return FALSE
 
 	if(!check_alien_construction(current_turf))
-		return
+		return FALSE
 
 	if(selected_resin == RESIN_DOOR)
 		var/wall_support = FALSE
@@ -2052,34 +1500,44 @@
 					break
 		if(!wall_support)
 			to_chat(src, SPAN_WARNING("Resin doors need a wall or resin door next to them to stand up."))
-			return
+			return FALSE
 
 	var/wait_time = src.caste.build_time
 
+	alien_weeds.secreting = 1
+	alien_weeds.update_icon()
+
 	if(!do_after(src, wait_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		return
+		alien_weeds.secreting = 0
+		alien_weeds.update_icon()
+
+		return FALSE
+
+	alien_weeds.secreting = 0
+	alien_weeds.update_icon()
+
 	blocker = locate() in current_turf
 	if(blocker && blocker != src && blocker.stat != DEAD)
-		return
+		return FALSE
 
 	if(!check_state())
-		return
+		return FALSE
 	if(!check_plasma(resin_plasma_cost))
-		return
+		return FALSE
 
 	if(!istype(current_turf) || !current_turf.is_weedable())
-		return
+		return FALSE
 
 	AR = get_area(current_turf)
 	if(istype(AR,/area/shuttle/drop1/lz1 || istype(AR,/area/shuttle/drop2/lz2))) //Bandaid for atmospherics bug when Xenos build around the shuttles
-		return
+		return FALSE
 
 	alien_weeds = locate() in current_turf
 	if(!alien_weeds)
-		return
+		return FALSE
 
 	if(!check_alien_construction(current_turf))
-		return
+		return FALSE
 
 	if(selected_resin == RESIN_DOOR)
 		var/wall_support = FALSE
@@ -2094,29 +1552,30 @@
 					break
 		if(!wall_support)
 			to_chat(src, SPAN_WARNING("Resin doors need a wall or resin door next to them to stand up."))
-			return
+			return FALSE
 
 	use_plasma(resin_plasma_cost)
-	visible_message(SPAN_XENONOTICE("\The [src] regurgitates a thick substance and shapes it into \a [resin2text(selected_resin, isXenoHivelord(src))]!"), \
-		SPAN_XENONOTICE("You regurgitate some resin and shape it into \a [resin2text(selected_resin, isXenoHivelord(src))]."), null, 5)
-	playsound(loc, "alien_resin_build", 25)
+	if(message)
+		visible_message(SPAN_XENONOTICE("\The [src] regurgitates a thick substance and shapes it into \a [resin2text(selected_resin, thick)]!"), \
+			SPAN_XENONOTICE("You regurgitate some resin and shape it into \a [resin2text(selected_resin, thick)]."), null, 5)
+		playsound(loc, "alien_resin_build", 25)
 
 	var/atom/new_resin
 
 	switch(selected_resin)
 		if(RESIN_DOOR)
-			if (isXenoHivelord(src))
+			if (thick)
 				new_resin = new /obj/structure/mineral_door/resin/thick(current_turf)
 			else
 				new_resin = new /obj/structure/mineral_door/resin(current_turf)
 		if(RESIN_WALL)
-			if (isXenoHivelord(src))
+			if (thick)
 				current_turf.ChangeTurf(/turf/closed/wall/resin/thick)
 			else
 				current_turf.ChangeTurf(/turf/closed/wall/resin)
 			new_resin = current_turf
 		if(RESIN_MEMBRANE)
-			if (isXenoHivelord(src))
+			if (thick)
 				current_turf.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
 			else
 				current_turf.ChangeTurf(/turf/closed/wall/resin/membrane)
@@ -2129,6 +1588,7 @@
 			new_resin = new /obj/effect/alien/resin/sticky/fast(current_turf)
 
 	new_resin.add_hiddenprint(src) //so admins know who placed it
+	return TRUE
 
 
 //Corrosive acid is consolidated -- it checks for specific castes for strength now, but works identically to each other.

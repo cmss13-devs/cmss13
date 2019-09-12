@@ -311,7 +311,7 @@
 	listed_products = list(
 		list("STANDARD EQUIPMENT (take all)", 0, null, null, null),
 		list("Uniform", 0, /obj/item/clothing/under/marine, MARINE_CAN_BUY_UNIFORM, "white"),
-		list("Boots", 0, /obj/item/clothing/shoes/marine, MARINE_CAN_BUY_SHOES, "white"),
+		list("Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, "white"),
 		list("Helmet", 0, /obj/item/clothing/head/helmet/marine, MARINE_CAN_BUY_HELMET, "white"),
 		list("Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, "white"),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/marine, MARINE_CAN_BUY_EAR, "white"),

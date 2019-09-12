@@ -293,7 +293,7 @@
 
 /obj/item/weapon/gun/revolver/m44/New()
 	..()
-	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 21,"rail_x" = 14, "rail_y" = 23, "under_x" = 20, "under_y" = 16, "stock_x" = 18, "stock_y" = 20)
+	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 21,"rail_x" = 12, "rail_y" = 23, "under_x" = 21, "under_y" = 18, "stock_x" = 16, "stock_y" = 20)
 
 /obj/item/weapon/gun/revolver/m44/set_gun_config_values()
 	..()

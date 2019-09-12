@@ -429,11 +429,11 @@
 			I.pixel_y = rand(-6,6)
 			overlays += I
 		else
-			var/obj/structure/jungle_plant/J = new(src)
+			var/obj/structure/flora/jungle/thickbush/jungle_plant/J = new(src)
 			J.pixel_x = rand(-6,6)
 			J.pixel_y = rand(-6,6)
 	if(bushes_spawn && prob(90))
-		new /obj/structure/bush(src)
+		new /obj/structure/flora/jungle/thickbush(src)
 
 
 
@@ -493,7 +493,7 @@
 
 /turf/open/jungle/path/New()
 	..()
-	for(var/obj/structure/bush/B in src)
+	for(var/obj/structure/flora/jungle/thickbush/B in src)
 		qdel(B)
 
 /turf/open/jungle/impenetrable
@@ -502,7 +502,7 @@
 	icon_spawn_state = "grass1"
 	New()
 		..()
-		var/obj/structure/bush/B = new(src)
+		var/obj/structure/flora/jungle/thickbush/B = new(src)
 		B.indestructable = 1
 
 
@@ -518,7 +518,7 @@
 
 /turf/open/jungle/water/New()
 	..()
-	for(var/obj/structure/bush/B in src)
+	for(var/obj/structure/flora/jungle/thickbush/B in src)
 		qdel(B)
 
 /turf/open/jungle/water/Entered(atom/movable/O)

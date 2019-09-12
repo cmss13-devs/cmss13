@@ -591,7 +591,25 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/internal_affairs)
 "bG" = (
-/obj/structure/jungle/planttop1,
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle9)
+"pv" = (
+/turf/open/gm/grass,
+/area/lv624/lazarus/landing_zones/lz2)
+"wG" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	icon_tag = "light_2"
+	},
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	pixel_x = 0
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle9)
+"Kh" = (
+/obj/structure/flora/jungle/vines,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
 "Kl" = (
@@ -599,26 +617,36 @@
 /obj/item/storage/fancy/vials/random,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
+"MD" = (
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle3)
+"RK" = (
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle9)
 
 (1,1,1) = {"
-aa
-aa
-aa
-aa
-aa
+pv
+pv
+pv
+pv
+pv
 ab
-ah
-aK
-ah
 ab
-bf
-bf
-bf
-bf
+ab
+ab
+ab
+MD
+MD
+MD
+MD
 bf
 "}
 (2,1,1) = {"
-aa
+pv
 ab
 ah
 ah
@@ -628,14 +656,14 @@ aD
 aL
 am
 ab
-ah
-ah
-ah
+ab
+ab
+ab
 ab
 bf
 "}
 (3,1,1) = {"
-aa
+pv
 ac
 ai
 ar
@@ -652,7 +680,7 @@ ac
 bf
 "}
 (4,1,1) = {"
-aa
+pv
 ac
 aj
 as
@@ -669,7 +697,7 @@ ac
 bf
 "}
 (5,1,1) = {"
-aa
+pv
 ac
 aj
 as
@@ -841,7 +869,7 @@ bG
 (15,1,1) = {"
 aa
 aa
-aa
+RK
 aa
 aa
 ab
@@ -850,8 +878,8 @@ aK
 ah
 ab
 aa
-aa
-aa
-aa
+wG
+Kh
+wG
 aa
 "}

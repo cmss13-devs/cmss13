@@ -1206,6 +1206,10 @@
 "fm" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/sand4)
+"jA" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirt,
+/area/lv624/ground/river1)
 "kK" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/sand1)
@@ -1222,7 +1226,7 @@
 	},
 /area/lv624/ground/river1)
 "mk" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand1)
 "mp" = (
@@ -1241,11 +1245,11 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "mz" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand1)
 "mG" = (
-/obj/structure/jungle/plantbot1{
+/obj/structure/flora/jungle/plantbot1{
 	icon_state = "alienplant1";
 	luminosity = 2
 	},
@@ -1288,7 +1292,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river1)
 "nu" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
 /area/lv624/ground/river1)
 "nz" = (
@@ -1300,34 +1304,48 @@
 	},
 /area/lv624/ground/river1)
 "oS" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirt,
 /area/lv624/ground/river1)
 "oZ" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/river,
 /area/lv624/ground/river1)
 "pa" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast{
 	dir = 8;
 	icon_state = "beachcorner2"
 	},
 /area/lv624/ground/river1)
 "pD" = (
+/obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv624/ground/jungle6)
 "pO" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/river,
 /area/lv624/ground/river1)
 "pP" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
 	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/jungle6)
+"Ed" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv624/ground/jungle6)
+"Jn" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner2"
 	},
 /area/lv624/ground/jungle6)
 "YP" = (
@@ -1354,7 +1372,7 @@
 	},
 /area/lv624/ground/river1)
 "YV" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast{
 	dir = 2;
@@ -3190,7 +3208,7 @@ lD
 lD
 lD
 lD
-lD
+mG
 lD
 lD
 nN
@@ -3334,7 +3352,7 @@ lD
 nN
 mp
 mI
-nh
+Ed
 "}
 (43,1,1) = {"
 bR
@@ -3426,7 +3444,7 @@ mG
 nN
 mp
 mp
-mp
+jA
 mp
 mJ
 "}
@@ -3473,7 +3491,7 @@ nu
 nN
 mp
 oS
-mI
+Jn
 nh
 mK
 "}

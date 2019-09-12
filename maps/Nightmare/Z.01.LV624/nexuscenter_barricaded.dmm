@@ -18,7 +18,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "ad" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/item/stack/sheet/metal,
 /turf/open/floor/grass,
@@ -505,7 +505,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bk" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/structure/table,
 /turf/open/floor/grass,
@@ -944,7 +944,7 @@
 	},
 /area/lv624/lazarus/chapel)
 "FT" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/ausbushes/grassybush,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
@@ -1366,7 +1366,7 @@
 	},
 /area/lv624/lazarus/security)
 "OM" = (
-/obj/structure/flora/grass/green,
+/obj/structure/flora/grass,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)

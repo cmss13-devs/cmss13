@@ -7,36 +7,13 @@
 	dir = 8
 	},
 /area/lv624/ground/jungle8)
-"c" = (
-/turf/open/gm/grass,
-/area/lv624/ground/jungle8)
-"d" = (
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
-/area/lv624/ground/jungle8)
 "e" = (
 /turf/closed/gm/dense{
 	icon_state = "wall2"
 	},
 /area/lv624/ground/jungle8)
-"f" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
-/area/lv624/ground/jungle8)
-"g" = (
-/turf/open/gm/dirtgrassborder,
-/area/lv624/ground/jungle8)
-"h" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
-/area/lv624/ground/jungle8)
 "i" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirt,
 /area/lv624/ground/river3)
 "j" = (
@@ -63,25 +40,25 @@
 	},
 /area/lv624/ground/river3)
 "n" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast{
 	dir = 8
 	},
 /area/lv624/ground/river3)
 "o" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/dirt,
 /area/lv624/ground/river3)
 "p" = (
-/obj/structure/jungle/plantbot1{
+/obj/structure/flora/jungle/plantbot1{
 	icon_state = "alienplant1";
 	luminosity = 2
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/river3)
 "q" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirt,
 /area/lv624/ground/river3)
 "r" = (
@@ -91,7 +68,7 @@
 	},
 /area/lv624/ground/jungle5)
 "s" = (
-/obj/structure/jungle/plantbot1{
+/obj/structure/flora/jungle/plantbot1{
 	icon_state = "alienplant1";
 	luminosity = 2
 	},
@@ -104,7 +81,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/river3)
 "v" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /turf/closed/gm/dense{
 	icon_state = "wall2"
 	},
@@ -134,12 +111,39 @@
 	icon_state = "grass2"
 	},
 /area/lv624/ground/jungle5)
+"F" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle5)
+"K" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/jungle8)
+"P" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle5)
+"W" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 1
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle5)
+"Z" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle5)
 
 (1,1,1) = {"
 a
-a
-a
 m
+l
+l
 l
 n
 l
@@ -149,12 +153,12 @@ l
 y
 A
 C
-C
-C
+P
+W
 "}
 (2,1,1) = {"
-b
-f
+K
+K
 a
 a
 i
@@ -166,12 +170,12 @@ a
 q
 A
 C
-D
-C
+F
+Z
 "}
 (3,1,1) = {"
-c
-g
+K
+K
 i
 a
 a
@@ -184,11 +188,11 @@ a
 A
 C
 D
-C
+D
 "}
 (4,1,1) = {"
-d
-h
+b
+b
 j
 j
 j

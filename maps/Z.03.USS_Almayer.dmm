@@ -568,7 +568,7 @@
 /turf/open/floor/plating/almayer,
 /area/almayer/hallways/aft_hallway)
 "abD" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
 "abE" = (
@@ -803,14 +803,14 @@
 	},
 /area/almayer/evacuation/pod9)
 "acd" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
 "ace" = (
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
 "acf" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /obj/item/device/radio/intercom{
 	anyai = 1;
 	freerange = 1;
@@ -1133,7 +1133,7 @@
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod6)
 "acT" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/ppflowers,
 /obj/machinery/light{
 	tag = "icon-tube1 (WEST)";
 	icon_state = "tube1";
@@ -1160,7 +1160,7 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "acW" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
 "acX" = (
@@ -1314,7 +1314,7 @@
 	},
 /area/almayer/living/starboard_garden)
 "adt" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
 "adu" = (
@@ -3312,8 +3312,8 @@
 	dir = 4
 	},
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /obj/machinery/door_control{
 	id = "bot_uniforms";
@@ -3818,14 +3818,14 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "aja" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/ppflowers,
 /obj/machinery/power/apc/almayer{
 	dir = 1
 	},
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
 "ajb" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/machinery/light{
 	tag = "icon-tube1 (EAST)";
 	icon_state = "tube1";
@@ -4378,14 +4378,14 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/floor/grass,
 /area/almayer/hull/upper_hull)
 "akj" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/floor/grass,
 /area/almayer/hull/upper_hull)
 "akk" = (
@@ -5033,8 +5033,8 @@
 /area/almayer/hallways/aft_hallway)
 "alr" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-18"
+	icon_state = "pottedplant_18";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -5832,8 +5832,8 @@
 /area/shuttle/drop1/sulaco)
 "ana" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -6490,8 +6490,8 @@
 /area/almayer/medical/upper_medical)
 "aot" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/wood,
 /area/almayer/medical/upper_medical)
@@ -6564,7 +6564,7 @@
 	},
 /area/almayer/living/cafeteria_starboard)
 "aoz" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/machinery/light{
 	tag = "icon-tube1 (EAST)";
 	icon_state = "tube1";
@@ -7517,8 +7517,8 @@
 /area/almayer/command/self_destruct)
 "aqF" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-silver (NORTHWEST)";
@@ -9536,8 +9536,8 @@
 /area/almayer/hallways/aft_hallway)
 "avk" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/officer_rnr)
@@ -10576,8 +10576,8 @@
 /area/almayer/shipboard/brig_cells)
 "axw" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /obj/machinery/light{
 	icon_state = "tube1";
@@ -11000,8 +11000,8 @@
 /area/almayer/hallways/repair_bay)
 "ayk" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -12400,8 +12400,8 @@
 /area/almayer/command/telecomms)
 "aBa" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (NORTH)";
@@ -12661,8 +12661,8 @@
 "aBw" = (
 /obj/machinery/light,
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
@@ -12701,8 +12701,8 @@
 /area/almayer/engineering/upper_engineering)
 "aBC" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-18"
+	icon_state = "pottedplant_18";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
@@ -12759,8 +12759,8 @@
 /area/almayer/command/cic)
 "aBS" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-silver (SOUTHWEST)";
@@ -12983,8 +12983,8 @@
 /area/almayer/medical/upper_medical)
 "aCD" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
@@ -13625,8 +13625,8 @@
 /area/almayer/command/cic)
 "aED" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	dir = 6;
@@ -13827,8 +13827,8 @@
 	dir = 1
 	},
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -14636,8 +14636,8 @@
 /area/almayer/hull/upper_hull)
 "aHK" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -15124,8 +15124,8 @@
 /area/almayer/engineering/upper_engineering)
 "aJl" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-05"
+	icon_state = "pottedplant_5";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-orange (NORTH)";
@@ -16470,8 +16470,8 @@
 	tag = "icon-tube1 (EAST)"
 	},
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (WEST)";
@@ -16666,8 +16666,8 @@
 /area/almayer/engineering/upper_engineering)
 "aOE" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	dir = 2;
@@ -18280,8 +18280,8 @@
 /area/almayer/command/cichallway)
 "aTm" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	dir = 6;
@@ -19192,8 +19192,8 @@
 /area/almayer/command/cichallway)
 "aVX" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/bridgebunks)
@@ -20313,8 +20313,8 @@
 	dir = 1
 	},
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliason)
@@ -27928,8 +27928,8 @@
 /area/almayer/command/corporateliason)
 "bwy" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -30042,8 +30042,8 @@
 /area/almayer/living/briefing)
 "bCz" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
@@ -31025,8 +31025,8 @@
 /area/almayer/hallways/hangar)
 "bEP" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (WEST)";
@@ -35986,8 +35986,8 @@
 /area/almayer/medical/surgery_hallway)
 "bRL" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -36825,8 +36825,8 @@
 	pixel_y = 28
 	},
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
@@ -39210,8 +39210,8 @@
 	pixel_y = 28
 	},
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/wood,
 /area/almayer/living/captain_mess)
@@ -43515,11 +43515,11 @@
 	},
 /area/almayer/medical/morgue)
 "coc" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/floor/grass,
 /area/almayer/hull/upper_hull)
 "cod" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/floor/grass,
 /area/almayer/hull/upper_hull)
 "cog" = (
@@ -44585,8 +44585,8 @@
 /area/almayer/command/cic)
 "dkq" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /obj/machinery/camera/autoname/almayer{
 	dir = 4;
@@ -44766,8 +44766,8 @@
 /area/almayer/living/port_emb)
 "dvg" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (WEST)";
@@ -44939,8 +44939,8 @@
 /area/almayer/shipboard/brig_cells)
 "dBf" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-red (WEST)";
@@ -45752,7 +45752,7 @@
 "ezi" = (
 /obj/structure/flora/pottedplant{
 	desc = "A foul smelling potted plant, reeking of rotten eggs. It has a crudely etched label visible on the pot, reading 'Steve'.";
-	icon_state = "plant-14";
+	icon_state = "pottedplant_14";
 	name = "smelly potted plant";
 	tag = "icon-plant-10"
 	},
@@ -46192,8 +46192,8 @@
 /area/almayer/hallways/port_hallway)
 "feD" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-silver (NORTHEAST)";
@@ -47031,8 +47031,8 @@
 /area/almayer/shipboard/starboard_point_defense)
 "gol" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-red (WEST)";
@@ -49342,8 +49342,8 @@
 /area/almayer/medical/medical_science)
 "jmP" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-18"
+	icon_state = "pottedplant_18";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/wood,
 /area/almayer/living/captain_mess)
@@ -49823,8 +49823,8 @@
 /area/almayer/evacuation/pod18)
 "jSY" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-red (NORTH)";
@@ -50403,7 +50403,7 @@
 "kFy" = (
 /turf/open/floor/almayer{
 	tag = "icon-red";
-	icon_state = "red"
+	
 	},
 /area/almayer/shipboard/firing_range_south)
 "kGh" = (
@@ -50466,8 +50466,8 @@
 /area/almayer/hallways/starboard_umbilical)
 "kIW" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-red (EAST)";
@@ -50498,8 +50498,8 @@
 	icon_state = "tube1"
 	},
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (EAST)";
@@ -51679,8 +51679,8 @@
 /area/almayer/shipboard/firing_range_north)
 "mdR" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (WEST)";
@@ -52649,8 +52649,8 @@
 /area/almayer/shipboard/brig_cells)
 "njw" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-green (SOUTHWEST)";
@@ -53895,8 +53895,8 @@
 /area/almayer/medical/upper_medical)
 "oPy" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	dir = 6;
@@ -57383,8 +57383,8 @@
 /area/almayer/medical/hydroponics)
 "sXd" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
@@ -58923,8 +58923,8 @@
 /area/almayer/hallways/aft_hallway)
 "uMv" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /obj/machinery/power/apc/almayer{
 	dir = 1
@@ -60015,8 +60015,8 @@
 /area/almayer/medical/chemistry)
 "vTu" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-22"
+	icon_state = "pottedplant_22";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-silver (NORTHEAST)";

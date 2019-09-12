@@ -1,0 +1,54 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: Aceluke / Foolosopher / Cakey
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes:
+  - wip: "Reworked the southern side of LV almost in its entirely, information on what was done is down below. It is highly suggested to take a machete or knife down to the colony now as you have a lot more natural flora to deal with on the colony in exchange for the new FoB changes which were made. To summarize, both LZ1 and LZ2 are highly defensible now but outside their safety is a highly untamed jungle which can be cut or burned down. More updates will come for LV, but for now the main change has been added."
+  - maptweak: "Walled off both LZs on LV, allowing for more secure FoBs and a more set defense for marines with one major entry way and 2 side entrances."
+  - rscadd: "Added doorways and walls to the side entrances of the LZs so marines have some starting defences against xenos upon deployment."
+  - rscadd: "New mechanics for cutting down flora has been added. There are two types of blades which can be used. Small bladed weapons and large bladed weapons. Small bladed weapons, like the combat knife, can cut down small vegetation with one hit, while taking multiple hits to take down large vegetation in multiple hits. Large bladed weapons, like the machete, can still cut down all flora in one hit."
+  - rscadd: "Added bushes and grass-like flora all across LV, these can be cut down with a combat knife or higher bladed weapon in one hit."
+  - rscadd: "Added tallgrass all across LV, this can be cut down just like vines with a machete level bladed weapon in one hit, while taking 3 hits with a smaller bladed weapon."
+  - tweak: "Changed Vines to be able to be cut down by small bladed weapons."
+  - rscadd: "Fire can now burn down all types of flora. Bushes, vines, and tallgrass. Fire still spreads on tallgrass as it used to do."
+  - tweak: "Fire does not spread on tallgrass anymore, this was changed so vines could be burned down and not spread which would have resulted in a forest fire."
+  - tweak: "Changed predator/Yautja wristblades to be considered small blades, enabling them to cut down all types of flora added. Tallgrass, vines, and bushes."
+  - tweak: "Changed the pathing for several flora objects, allowing them to be able cut down if desired by staff."
+  - maptweak: "Cargo north of LZ1 has been moved and its outsides redesigned.
+  - maptweak: "Remodeled the engineering dome on LV, allowing for more open space for an easier time setting up power and more space to move around in."
+  - tweak: "Reduced the power requirement for colony floodlights. Expect them to last a lot longer if power is setup on both LV and Ice colony."
+  - tweak: "Very slightly increased the amount of damage a floodlight can take, it isn't much, but they should be able to take one more slash before breaking."
+  - maptweak: "More floodlights have been added to LV, allowing for almost all colony pathways to be lit up if turned on."
+  - maptweak: "Remapped a few of the nightmare creations to fit with the reworked map, expect some new variations for LV's nightmare modes soon."
+  - maptweak: "Removed the cargo containers entirely from LV's LZ1."
+  - bugfix: "The Lazarus Landing signs now at both LZs can be walked/shot through now."

@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/open/space,
-/area/space)
+/turf/open/gm/river,
+/area/lv624/ground/river2)
 "ab" = (
 /obj/structure/fence,
 /turf/open/floor/plating{
@@ -68,10 +68,10 @@
 	icon_state = "asteroidfloor"
 	},
 /area/lv624/ground/river2)
-"jq" = (
-/obj/effect/landmark/lv624/fog_blocker,
+"dC" = (
 /turf/open/gm/coast{
-	icon_state = "beachcorner"
+	dir = 8;
+	icon_state = "beachcorner2"
 	},
 /area/lv624/ground/river2)
 "jr" = (
@@ -95,14 +95,11 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/river,
 /area/lv624/ground/river2)
-"lp" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast{
-	tag = "icon-beach (SOUTHEAST)";
-	icon_state = "beach";
-	dir = 6
+"lS" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1
 	},
-/area/lv624/ground/river2)
+/area/lv624/ground/jungle7)
 "lW" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast{
@@ -115,11 +112,6 @@
 	icon_state = "asteroidwarning"
 	},
 /area/lv624/ground/river2)
-"mo" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirt,
-/area/lv624/ground/river2)
 "mq" = (
 /obj/machinery/colony_floodlight,
 /turf/open/gm/dirt,
@@ -129,7 +121,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/river2)
 "ms" = (
-/obj/structure/jungle/planttop1,
+/obj/structure/flora/jungle/planttop1,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirt,
 /area/lv624/ground/river2)
@@ -140,26 +132,42 @@
 	},
 /area/lv624/ground/jungle7)
 "mE" = (
-/obj/structure/jungle/plantbot1,
+/obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/dirtgrassborder{
 	dir = 1
 	},
 /area/lv624/ground/jungle7)
+"pF" = (
+/turf/open/gm/coast{
+	dir = 1
+	},
+/area/lv624/ground/river2)
+"yj" = (
+/turf/open/gm/coast{
+	dir = 4;
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/river2)
+"yu" = (
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle7)
 
 (1,1,1) = {"
-jq
-lp
+jr
+km
 aa
 aa
 aa
 aa
 aa
 aa
-aa
-aa
+pF
+ai
 mD
-aa
-aa
+aj
+aj
 "}
 (2,1,1) = {"
 jr
@@ -170,11 +178,11 @@ aa
 aa
 aa
 aa
-aa
-mo
-aa
+pF
+mr
+lS
 aj
-aa
+aj
 "}
 (3,1,1) = {"
 jr
@@ -186,9 +194,9 @@ aa
 aa
 aa
 lW
-aa
-aa
-aa
+ai
+lS
+aj
 aj
 "}
 (4,1,1) = {"
@@ -201,10 +209,10 @@ aa
 aa
 aa
 lW
-aa
-aa
+ai
+lS
 aj
-aa
+yu
 "}
 (5,1,1) = {"
 jr
@@ -216,10 +224,10 @@ km
 km
 km
 lW
-aa
-aa
+ai
+lS
 ak
-aa
+yu
 "}
 (6,1,1) = {"
 ab
@@ -232,8 +240,8 @@ ae
 ae
 ag
 ai
-aa
-aa
+lS
+aj
 aj
 "}
 (7,1,1) = {"
@@ -247,8 +255,8 @@ jV
 jV
 lY
 ai
-aa
-aa
+lS
+aj
 ak
 "}
 (8,1,1) = {"
@@ -262,8 +270,8 @@ jV
 jV
 lY
 ai
-aa
-aa
+lS
+aj
 aj
 "}
 (9,1,1) = {"
@@ -277,8 +285,8 @@ jV
 jV
 lY
 ai
-aa
-aa
+lS
+aj
 aj
 "}
 (10,1,1) = {"
@@ -292,8 +300,8 @@ af
 af
 ah
 ai
-aa
-aa
+lS
+aj
 aj
 "}
 (11,1,1) = {"
@@ -307,8 +315,8 @@ km
 km
 lW
 mq
-aa
-aa
+lS
+aj
 aj
 "}
 (12,1,1) = {"
@@ -320,11 +328,11 @@ aa
 aa
 aa
 aa
-aa
+pF
 mr
-aa
+lS
 aj
-aa
+yu
 "}
 (13,1,1) = {"
 km
@@ -334,10 +342,10 @@ aa
 aa
 aa
 aa
-aa
-aa
+dC
+yj
 ms
 mE
 ak
-aa
+yu
 "}

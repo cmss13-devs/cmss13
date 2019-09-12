@@ -11,10 +11,33 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+"fe" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"iz" = (
+/obj/effect/landmark{
+	name = "surv_spawn";
+	pixel_x = -1
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"la" = (
+/obj/structure/closet/crate/hydroponics/prespawned,
+/obj/item/document_objective/folder,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
 "lG" = (
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "lI" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass{
 	icon_state = "grass2"
 	},
@@ -32,13 +55,15 @@
 /turf/closed/wall,
 /area/lv624/lazarus/hydroponics)
 "nI" = (
-/obj/structure/window/framed/colony/reinforced,
+/obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "nJ" = (
 /obj/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
-	name = "\improper Hydroponics Dome"
+	name = "\improper Hydroponics Dome";
+	req_access = list(100);
+	req_one_access = list()
 	},
 /turf/open/floor{
 	dir = 1;
@@ -138,6 +163,7 @@
 /area/lv624/lazarus/hydroponics)
 "oy" = (
 /obj/structure/table,
+/obj/item/disk/objective,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "green"
@@ -242,7 +268,9 @@
 "pJ" = (
 /obj/machinery/door/airlock/almayer/medical/glass{
 	dir = 4;
-	name = "\improper Hydroponics Dome"
+	name = "\improper Hydroponics Dome";
+	req_access = list(100);
+	req_one_access = list()
 	},
 /turf/open/floor{
 	dir = 1;
@@ -252,7 +280,8 @@
 "qa" = (
 /obj/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Hydroponics Dome"
+	name = "\improper Hydroponics Dome";
+	req_access = list(100)
 	},
 /turf/open/floor{
 	dir = 1;
@@ -325,6 +354,13 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+"ro" = (
+/obj/item/document_objective/paper,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
 "rp" = (
 /obj/structure/table,
 /obj/item/tool/hatchet{
@@ -364,6 +400,7 @@
 "rt" = (
 /obj/structure/table,
 /obj/machinery/light,
+/obj/item/disk/objective,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "green"
@@ -372,6 +409,7 @@
 "ru" = (
 /obj/structure/table,
 /obj/item/tool/shovel/spade,
+/obj/item/document_objective/technical_manual,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "green"
@@ -420,6 +458,34 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/compound/ne)
+"sG" = (
+/obj/structure/flora/bush/ausbushes/palebush,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"ux" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"AR" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"Bo" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"Ns" = (
+/obj/structure/flora/bush/ausbushes/genericbush,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"QE" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"VO" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
 
 (1,1,1) = {"
 lG
@@ -428,7 +494,7 @@ lG
 lG
 lG
 lG
-lG
+QE
 lG
 nI
 pG
@@ -445,7 +511,7 @@ lG
 lI
 lG
 lG
-lG
+Ns
 lG
 lG
 nG
@@ -487,11 +553,11 @@ of
 oy
 oM
 oz
-nT
+ro
 pH
 nT
 qp
-qB
+la
 qT
 qB
 nI
@@ -500,7 +566,7 @@ sb
 (5,1,1) = {"
 lP
 lG
-lG
+Bo
 nI
 og
 oz
@@ -526,7 +592,7 @@ oz
 oN
 oz
 oO
-nT
+iz
 oO
 oA
 oP
@@ -556,7 +622,7 @@ nH
 "}
 (8,1,1) = {"
 lG
-lG
+fe
 nI
 nT
 nT
@@ -593,7 +659,7 @@ nT
 nJ
 "}
 (10,1,1) = {"
-lP
+VO
 lG
 nI
 nU
@@ -632,7 +698,7 @@ nH
 "}
 (12,1,1) = {"
 lG
-lG
+ux
 lG
 nG
 ok
@@ -670,7 +736,7 @@ sd
 "}
 (14,1,1) = {"
 lG
-lP
+lG
 lG
 nV
 om
@@ -678,7 +744,7 @@ oC
 oR
 oA
 nT
-nT
+ro
 nT
 oz
 qD
@@ -697,7 +763,7 @@ nI
 nI
 nG
 nT
-nT
+iz
 qb
 nG
 nI
@@ -708,7 +774,7 @@ sa
 "}
 (16,1,1) = {"
 lG
-lG
+QE
 lG
 lG
 lG
@@ -721,16 +787,17 @@ nI
 nH
 lG
 lG
-lG
+VO
 lG
 sa
 "}
 (17,1,1) = {"
-lG
+sG
 lG
 lG
 lP
 lG
+AR
 lG
 lG
 lG
@@ -740,7 +807,6 @@ lG
 lG
 lG
 lG
-lG
-lG
+ux
 se
 "}

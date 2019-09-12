@@ -282,12 +282,12 @@
 	var/damaged = 0 //Can be smashed by xenos
 	var/is_lit = 0 //whether the floodlight is switched to on or off. Does not necessarily mean it emits light.
 	unacidable = 1
-	var/power_tick = 800 // power each floodlight takes up per process
+	var/power_tick = 50 // power each floodlight takes up per process
 	use_power = 0 //It's the switch that uses the actual power, not the lights
 	var/obj/machinery/colony_floodlight_switch/fswitch = null //Reverse lookup for power grabbing in area
 	var/lum_value = 7
 	var/repair_state = 0
-	health = 120
+	health = 150
 
 /obj/machinery/colony_floodlight/Dispose()
 	SetLuminosity(0)

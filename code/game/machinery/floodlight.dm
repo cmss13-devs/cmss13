@@ -121,7 +121,7 @@
 	icon_state = "flood01"
 	on = 1
 	in_use = 1
-	luminosity = 5
+	luminosity = 6
 	use_power = 0
 
 	attack_hand()

@@ -50,8 +50,9 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "ai" = (
-/obj/structure/jungle/vines{
-	icon_state = "Light3"
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3";
+	icon_tag = "light_3"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
@@ -61,18 +62,20 @@
 	},
 /area/lv624/ground/jungle7)
 "ak" = (
-/obj/structure/jungle/vines,
+/obj/structure/flora/jungle/vines,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle8)
 "al" = (
-/obj/structure/jungle/vines{
-	icon_state = "Light3"
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3";
+	icon_tag = "light_3"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle8)
 "am" = (
-/obj/structure/jungle/vines{
-	icon_state = "Light2"
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	icon_tag = "light_2"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle8)
@@ -85,7 +88,7 @@
 	},
 /area/lv624/ground/jungle8)
 "ap" = (
-/obj/structure/jungle/plantbot1,
+/obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle8)
 "aq" = (
@@ -103,12 +106,13 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "as" = (
-/obj/structure/jungle/vines,
+/obj/structure/flora/jungle/vines,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "at" = (
-/obj/structure/jungle/vines{
-	icon_state = "Light2"
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	icon_tag = "light_2"
 	},
 /turf/closed/gm/dense{
 	icon_state = "wall2"
@@ -163,22 +167,25 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "aB" = (
-/obj/structure/jungle/vines{
-	icon_state = "Light2"
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	icon_tag = "light_2"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "aC" = (
-/obj/structure/jungle/vines{
-	icon_state = "Light2"
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	icon_tag = "light_2"
 	},
 /turf/closed/gm/dense{
 	icon_state = "wall2"
 	},
 /area/lv624/ground/jungle7)
 "aD" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Hvy2";
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	icon_tag = "heavy";
 	pixel_x = 0
 	},
 /turf/open/gm/grass,
@@ -200,19 +207,13 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "aI" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Hvy3";
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	icon_tag = "heavy";
 	pixel_x = 0
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
-"aJ" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Hvy3";
-	pixel_x = 0
-	},
-/turf/open/gm/grass,
-/area/lv624/ground/jungle8)
 "aK" = (
 /obj/effect/landmark{
 	name = "surv_spawn";
@@ -224,20 +225,6 @@
 /obj/structure/sign/botany,
 /turf/closed/wall,
 /area/lv624/lazarus/hydroponics)
-"aM" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Med1";
-	pixel_x = 0
-	},
-/turf/open/gm/grass,
-/area/lv624/ground/jungle7)
-"aN" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Med1";
-	pixel_x = 0
-	},
-/turf/open/gm/grass,
-/area/lv624/ground/jungle8)
 "aO" = (
 /obj/effect/landmark{
 	name = "hunter_secondary"
@@ -258,23 +245,18 @@
 	},
 /area/lv624/ground/compound/n)
 "aS" = (
-/obj/structure/jungle/vines{
-	icon_state = "Light2"
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	icon_tag = "light_2"
 	},
 /turf/closed/gm/dense{
 	icon_state = "wall2"
 	},
 /area/lv624/ground/compound/n)
-"aT" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Hvy2";
-	pixel_x = 0
-	},
-/turf/open/gm/grass,
-/area/lv624/ground/jungle7)
 "aU" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Med1";
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	icon_tag = "heavy";
 	pixel_x = 0
 	},
 /turf/closed/gm/dense{
@@ -282,8 +264,9 @@
 	},
 /area/lv624/ground/jungle7)
 "aV" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Med2";
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	icon_tag = "heavy";
 	pixel_x = 0;
 	pixel_y = 0
 	},
@@ -294,23 +277,26 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle8)
 "aX" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Hvy2";
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	icon_tag = "heavy";
 	pixel_x = 0
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/compound/n)
 "aY" = (
-/obj/structure/jungle/vines{
-	icon_state = "Light3"
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3";
+	icon_tag = "light_3"
 	},
 /turf/closed/gm/dense{
 	icon_state = "wall2"
 	},
 /area/lv624/ground/jungle7)
 "aZ" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Hvy2";
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	icon_tag = "heavy";
 	pixel_x = 0
 	},
 /turf/closed/gm/dense{
@@ -318,8 +304,9 @@
 	},
 /area/lv624/ground/jungle8)
 "ba" = (
-/obj/structure/jungle/vines{
-	icon_state = "Light3"
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3";
+	icon_tag = "light_3"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/compound/n)
@@ -342,8 +329,9 @@
 	},
 /area/lv624/ground/jungle7)
 "be" = (
-/obj/structure/jungle/vines{
-	icon_state = "Light3"
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3";
+	icon_tag = "light_3"
 	},
 /turf/closed/gm/dense{
 	icon_state = "wall2"
@@ -367,8 +355,9 @@
 	},
 /area/lv624/ground/compound/n)
 "bi" = (
-/obj/structure/jungle/vines{
-	icon_state = "Light2"
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	icon_tag = "light_2"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/compound/n)
@@ -443,15 +432,6 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/lv624/lazarus/fitness)
-"bx" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Hvy2";
-	pixel_x = 0
-	},
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
-/area/lv624/ground/jungle7)
 "by" = (
 /turf/open/floor/plating{
 	icon_state = "platebotc"
@@ -464,7 +444,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
 "bB" = (
-/obj/structure/jungle/vines,
+/obj/structure/flora/jungle/vines,
 /turf/open/gm/grass,
 /area/lv624/ground/compound/n)
 "bC" = (
@@ -492,15 +472,6 @@
 	icon_state = "whitepurplecorner"
 	},
 /area/lv624/lazarus/fitness)
-"bF" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Hvy3";
-	pixel_x = 0
-	},
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
-/area/lv624/ground/jungle7)
 "bG" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
@@ -527,8 +498,9 @@
 	},
 /area/lv624/lazarus/fitness)
 "bK" = (
-/obj/structure/jungle/vines{
-	icon_state = "Light3"
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3";
+	icon_tag = "light_3"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
@@ -538,13 +510,14 @@
 	},
 /area/lv624/ground/jungle9)
 "bM" = (
-/obj/structure/jungle/vines{
-	icon_state = "Light2"
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	icon_tag = "light_2"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
 "bN" = (
-/obj/structure/jungle/planttop1,
+/obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "bO" = (
@@ -558,7 +531,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "bR" = (
-/obj/structure/jungle/plantbot1,
+/obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "bS" = (
@@ -600,6 +573,148 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
+"fl" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 8
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
+"fF" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle9)
+"gB" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
+"iI" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
+"jM" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"mK" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
+"sz" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"to" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
+"uW" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/compound/n)
+"AM" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 3
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/compound/n)
+"BG" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 1
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"BZ" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"DY" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 1
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
+"Ed" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 4
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"Hk" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 4
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle9)
+"IW" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 8
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle9)
+"NK" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle9)
+"Of" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"Pe" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
+"SN" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/compound/n)
+"TT" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle9)
+"UT" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"XD" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle9)
+"XR" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
+"Ym" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 4
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
 
 (1,1,1) = {"
 aa
@@ -680,10 +795,10 @@ ag
 ag
 aR
 ag
-ag
-bA
-bA
-bA
+uW
+Hk
+Hk
+NK
 bA
 bA
 bA
@@ -702,11 +817,11 @@ ag
 aR
 aR
 ag
-ag
-bA
-bA
-bA
-bA
+AM
+XD
+XD
+XD
+NK
 bA
 bA
 bA
@@ -724,11 +839,11 @@ bi
 ag
 bi
 ba
-ag
-bA
-bA
-bA
-bA
+SN
+XD
+XD
+IW
+TT
 bA
 bA
 bA
@@ -747,8 +862,8 @@ bi
 aR
 aX
 bi
-bA
-bA
+fF
+TT
 bA
 bL
 bL
@@ -783,7 +898,7 @@ aj
 aj
 ah
 aB
-aT
+aI
 ai
 aj
 aC
@@ -809,9 +924,9 @@ aB
 ai
 ai
 aB
-aM
+aI
 aV
-aM
+aI
 ah
 as
 aS
@@ -829,13 +944,13 @@ ah
 aB
 aC
 ai
-aM
-aM
+aI
+aI
 ai
 aC
 aU
 ai
-aM
+aI
 ai
 aY
 ai
@@ -853,14 +968,14 @@ aj
 ai
 ai
 aV
-aT
+aI
 aj
-bx
+aU
 ah
 ai
 aB
 aC
-aT
+aI
 ai
 bK
 bA
@@ -872,7 +987,7 @@ ai
 ai
 aC
 aj
-aM
+aI
 aB
 aY
 ah
@@ -880,11 +995,11 @@ ai
 ah
 ah
 ai
-aM
-aT
+aI
+aI
 ai
 aj
-aT
+aI
 ag
 "}
 (14,1,1) = {"
@@ -926,7 +1041,7 @@ bq
 ai
 aC
 aB
-aT
+aI
 aC
 aj
 ag
@@ -946,7 +1061,7 @@ bl
 bl
 br
 aj
-bF
+aU
 ai
 ai
 aB
@@ -958,10 +1073,10 @@ ak
 ak
 aj
 aB
-aM
+aI
 aV
 ah
-aT
+aI
 aY
 ah
 aj
@@ -969,7 +1084,7 @@ ah
 ah
 aj
 aC
-aM
+aI
 ai
 ah
 ah
@@ -991,7 +1106,7 @@ aj
 ai
 aY
 aj
-aM
+aI
 aB
 ah
 ah
@@ -1004,14 +1119,14 @@ ao
 aI
 ai
 aC
-aT
+aI
 ah
 ah
 ah
 ah
 aj
 ai
-aM
+aI
 aY
 aC
 ai
@@ -1024,7 +1139,7 @@ ak
 ak
 ao
 al
-aM
+aI
 aj
 aY
 bb
@@ -1032,11 +1147,11 @@ bj
 bp
 ah
 ai
-aT
+aI
 aI
 ai
 aC
-aT
+aI
 aB
 aj
 bV
@@ -1047,7 +1162,7 @@ ao
 at
 al
 al
-aT
+aI
 aY
 bc
 bk
@@ -1069,7 +1184,7 @@ al
 aD
 am
 al
-aN
+aD
 ai
 bd
 bl
@@ -1080,17 +1195,17 @@ aY
 ai
 aB
 ai
-ah
-ah
-ah
+Of
+Ed
+sz
 bV
 "}
 (23,1,1) = {"
 an
 an
 ao
-aJ
-aN
+aD
+aD
 am
 al
 aB
@@ -1099,12 +1214,12 @@ aB
 aC
 aj
 aj
-aM
+aI
 ai
 aC
-ah
-ah
-ah
+BZ
+jM
+BG
 bV
 "}
 (24,1,1) = {"
@@ -1115,18 +1230,18 @@ am
 am
 al
 al
-aN
+aD
 al
 ah
-aT
-aM
+aI
+aI
 ai
 aB
 aj
 aj
 ah
-ah
-ah
+BZ
+UT
 bV
 "}
 (25,1,1) = {"
@@ -1135,16 +1250,16 @@ an
 aD
 al
 al
-aJ
+aD
 aZ
 be
 am
-aJ
+aD
 aj
 ai
 ah
 aB
-bx
+aU
 aB
 ah
 ah
@@ -1191,7 +1306,7 @@ ao
 ah
 ah
 ah
-bx
+aU
 ah
 bW
 "}
@@ -1202,10 +1317,10 @@ ao
 an
 an
 an
-an
-an
-an
-an
+mK
+Ym
+Ym
+Pe
 an
 ao
 ao
@@ -1224,17 +1339,17 @@ an
 an
 an
 an
-an
-an
-an
-an
+iI
+to
+to
+DY
 an
 an
 an
 an
 ah
 ah
-aT
+aI
 aC
 aj
 ah
@@ -1246,11 +1361,11 @@ an
 an
 an
 an
-an
-an
-an
-an
-an
+gB
+to
+to
+to
+Pe
 an
 an
 an
@@ -1269,10 +1384,10 @@ an
 aO
 aW
 an
-an
-an
-an
-an
+gB
+fl
+fl
+XR
 an
 an
 an

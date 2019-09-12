@@ -402,9 +402,6 @@
 	icon_state = "whitepurple"
 	},
 /area/lv624/lazarus/research)
-"bt" = (
-/turf/open/gm/grass,
-/area/lv624/lazarus/research)
 "bx" = (
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor{
@@ -697,9 +694,9 @@ ab
 aI
 aI
 ab
-bt
-bt
-bt
-bt
+bE
+bE
+bE
+bE
 bF
 "}

@@ -1475,8 +1475,8 @@
 /area/centcom/living)
 "ey" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/carpet,
 /area/centcom/living)
@@ -1678,8 +1678,8 @@
 /area/centcom/living)
 "eW" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/carpet{
 	tag = "icon-carpetside (WEST)";
@@ -1816,8 +1816,8 @@
 /area/centcom/living)
 "fM" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/carpet{
 	tag = "icon-carpetside (EAST)";
@@ -3924,8 +3924,8 @@
 /area/shuttle/distress/start_big)
 "lo" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-21"
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/wood,
 /area/shuttle/distress/start_big)
@@ -8279,8 +8279,8 @@
 /area/tdome/tdome2)
 "Bd" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (EAST)";
@@ -8328,8 +8328,8 @@
 /area/adminlevel/bunker01/medbay)
 "BU" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-20"
+	icon_state = "pottedplant_20";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-blue (NORTHEAST)";

@@ -1,7 +1,168 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"LU" = (
-/obj/structure/jungle/plantbot1,
+"al" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	icon_tag = "light"
+	},
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	icon_tag = "heavy";
+	pixel_x = 0
+	},
 /turf/open/gm/grass,
+/area/lv624/ground/jungle1)
+"br" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/jungle1)
+"cC" = (
+/obj/structure/flora/jungle/vines,
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle1)
+"eR" = (
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/turf/closed/wall/mineral/sandstone,
+/area/lv624/ground/jungle1)
+"gO" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3";
+	icon_tag = "light"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle1)
+"gU" = (
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	pixel_x = 0;
+	pixel_y = 26
+	},
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	pixel_y = -22
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/jungle1)
+"kd" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle1)
+"lV" = (
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	pixel_x = 0;
+	pixel_y = 26
+	},
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle1)
+"nI" = (
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	pixel_x = 0
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle1)
+"rA" = (
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	pixel_x = 0;
+	pixel_y = 26
+	},
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle1)
+"uk" = (
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	pixel_x = 0;
+	pixel_y = 26
+	},
+/turf/closed/wall/mineral/sandstone,
+/area/lv624/ground/jungle1)
+"un" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/jungle1)
+"ur" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	icon_tag = "light_2"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle1)
+"wQ" = (
+/obj/structure/flora/jungle/vines/heavy{
+	pixel_x = -28
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle1)
+"yg" = (
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	pixel_x = 0;
+	pixel_y = 26
+	},
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/jungle1)
+"zg" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3";
+	icon_tag = "light"
+	},
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle1)
+"Be" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/jungle1)
+"CW" = (
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	pixel_x = 0;
+	pixel_y = 26
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/gm/dirt,
+/area/lv624/ground/jungle1)
+"EZ" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3"
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
 /area/lv624/ground/jungle1)
 "LV" = (
 /turf/open/gm/grass,
@@ -11,11 +172,28 @@
 	icon_state = "wall2"
 	},
 /area/lv624/ground/jungle1)
-"Vw" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
+"NU" = (
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	pixel_x = 0;
+	pixel_y = 26
 	},
+/turf/open/gm/dirt,
+/area/lv624/ground/jungle1)
+"Tl" = (
+/obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass,
+/area/lv624/ground/jungle1)
+"Uc" = (
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	pixel_x = 0;
+	pixel_y = 26
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
 /area/lv624/ground/jungle1)
 "VR" = (
 /obj/effect/landmark{
@@ -23,129 +201,31 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle1)
-"VS" = (
-/obj/structure/jungle/vines{
-	icon_state = "Light3"
-	},
-/turf/open/gm/grass,
-/area/lv624/ground/jungle1)
-"VT" = (
-/obj/structure/jungle/vines/heavy,
-/turf/open/gm/grass,
-/area/lv624/ground/jungle1)
-"VU" = (
-/obj/structure/jungle/vines{
-	icon_state = "Light2";
-	pixel_y = -22
-	},
-/turf/open/gm/grass,
-/area/lv624/ground/jungle1)
-"Wk" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Hvy2";
-	pixel_x = 0
-	},
-/turf/open/gm/grass,
-/area/lv624/ground/jungle1)
 "Wl" = (
 /turf/closed/wall/mineral/sandstone,
 /area/lv624/ground/jungle1)
-"Wm" = (
-/obj/structure/jungle/vines{
-	icon_state = "Light2";
+"Wp" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
 	pixel_y = -22
 	},
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/jungle1)
-"Wn" = (
-/obj/structure/jungle/vines{
-	icon_state = "Light2";
-	pixel_y = -22
+"Wr" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	icon_tag = "light"
 	},
-/turf/closed/wall/mineral/sandstone,
-/area/lv624/ground/jungle1)
-"Wo" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Med2";
-	pixel_x = 0;
-	pixel_y = 26
-	},
-/obj/effect/decal/cleanable/cobweb,
-/turf/open/gm/dirt,
-/area/lv624/ground/jungle1)
-"Wp" = (
-/obj/structure/jungle/vines{
-	icon_state = "Light3"
-	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
-/area/lv624/ground/jungle1)
-"Wq" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Med2";
-	pixel_x = 0;
-	pixel_y = 26
-	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
-/area/lv624/ground/jungle1)
-"Ws" = (
-/obj/structure/jungle/vines{
-	icon_state = "Light2";
-	pixel_y = -22
-	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
+/turf/closed/gm/dense{
+	icon_state = "wall2"
 	},
 /area/lv624/ground/jungle1)
 "Wt" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Med2";
-	pixel_x = 0;
-	pixel_y = 26
-	},
-/obj/structure/jungle/vines{
-	icon_state = "Light2";
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
 	pixel_y = -22
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
-/area/lv624/ground/jungle1)
-"WN" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Med2";
-	pixel_x = 0;
-	pixel_y = 26
-	},
-/obj/structure/jungle/vines{
-	icon_state = "Light3"
-	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
-/area/lv624/ground/jungle1)
-"WO" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Med2";
-	pixel_x = 0;
-	pixel_y = 26
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/jungle1)
-"WP" = (
-/obj/structure/jungle/vines/heavy{
-	pixel_x = -28
-	},
-/obj/structure/jungle/vines,
-/turf/open/gm/grass,
+/turf/closed/wall/mineral/sandstone,
 /area/lv624/ground/jungle1)
 "WQ" = (
 /turf/open/gm/dirtgrassborder{
@@ -167,26 +247,20 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle1)
-"XA" = (
-/obj/structure/jungle/vines/heavy{
-	pixel_x = -28
-	},
-/obj/structure/jungle/vines/heavy,
-/turf/open/gm/grass,
-/area/lv624/ground/jungle1)
 "XB" = (
-/obj/structure/jungle/vines,
+/obj/structure/flora/jungle/vines,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle1)
-"XQ" = (
-/obj/structure/jungle/vines/heavy{
-	pixel_x = -28
+"XN" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	icon_tag = "light"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle1)
 "XR" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Hvy2";
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
 	pixel_x = 0
 	},
 /turf/closed/gm/dense{
@@ -194,71 +268,11 @@
 	},
 /area/lv624/ground/jungle1)
 "XS" = (
-/obj/structure/jungle/vines/heavy,
-/turf/closed/wall/mineral/sandstone,
-/area/lv624/ground/jungle1)
-"XT" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Med2";
-	pixel_x = 0;
-	pixel_y = 0
-	},
+/obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/mineral/sandstone,
 /area/lv624/ground/jungle1)
 "Ya" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
-/turf/open/gm/grass,
-/area/lv624/ground/jungle1)
-"Yk" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
-/area/lv624/ground/jungle1)
-"Yl" = (
-/obj/structure/jungle/vines/heavy{
-	pixel_x = -28
-	},
-/obj/structure/jungle/vines{
-	icon_state = "Light3"
-	},
-/turf/open/gm/grass,
-/area/lv624/ground/jungle1)
-"Ym" = (
-/obj/structure/jungle/vines,
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
-/area/lv624/ground/jungle1)
-"Yn" = (
-/obj/structure/flora/ausbushes/reedbush,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
-/area/lv624/ground/jungle1)
-"Yo" = (
-/obj/structure/jungle/vines/heavy,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
-/area/lv624/ground/jungle1)
-"Yp" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Med2";
-	pixel_x = 0;
-	pixel_y = 26
-	},
-/turf/closed/wall/mineral/sandstone,
-/area/lv624/ground/jungle1)
-"Yq" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Med1";
-	pixel_x = -28
-	},
-/obj/structure/jungle/vines,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle1)
 "Yr" = (
@@ -266,9 +280,9 @@
 	icon_state = "grass2"
 	},
 /area/lv624/ground/jungle1)
-"Yv" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Hvy3";
+"Yz" = (
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
 	pixel_x = 0;
 	pixel_y = 24
 	},
@@ -276,175 +290,137 @@
 	icon_state = "wall2"
 	},
 /area/lv624/ground/jungle1)
-"Zc" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Med2";
-	pixel_x = 0;
-	pixel_y = 26
+"YD" = (
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	icon_tag = "heavy";
+	pixel_x = 0
 	},
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
-/area/lv624/ground/jungle1)
-"Zd" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Hvy3";
-	pixel_x = 0;
-	pixel_y = 24
-	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
+/turf/open/gm/grass,
 /area/lv624/ground/jungle1)
 "Ze" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1
 	},
 /area/lv624/ground/jungle1)
-"Zf" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Med2";
-	pixel_x = 0;
-	pixel_y = 26
-	},
-/obj/structure/jungle/vines,
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
-/area/lv624/ground/jungle1)
-"Zg" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Hvy3";
+"Zi" = (
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
 	pixel_x = 0;
 	pixel_y = 24
 	},
-/obj/structure/jungle/vines,
+/obj/structure/flora/jungle/vines,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle1)
-"Zh" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Med2";
-	pixel_x = 0;
-	pixel_y = 26
-	},
-/obj/structure/jungle/vines{
-	icon_state = "Light3"
-	},
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
-/area/lv624/ground/jungle1)
-"Zi" = (
-/obj/structure/jungle/vines,
-/obj/structure/jungle/planttop1,
+"Zp" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle1)
 
 (1,1,1) = {"
 LV
-LV
-VS
-VT
-Wk
-Wk
-LV
+nI
+gO
+LW
+LW
+nI
+ur
 XB
 XR
-Ym
+cC
 LV
 LV
 LV
-LW
+LV
 "}
 (2,1,1) = {"
-LV
-LV
-VT
+gO
+zg
+gO
 LW
+LW
+al
+gO
+gO
+LV
+LV
+LV
+LV
+LV
+gO
+"}
+(3,1,1) = {"
+nI
+LW
+LW
+LW
+gO
 Wl
 Wl
 WQ
-Wl
+WQ
 XS
-Wk
-Wk
-Yr
-LV
-LW
-"}
-(3,1,1) = {"
-LV
-LV
-LV
-LW
-Wl
-Wo
-Xl
-Xl
-XT
-XS
-XS
-LW
+nI
+nI
 Yr
 LW
 "}
 (4,1,1) = {"
-LV
-LV
+cC
 LW
-LW
+Wr
+XN
+YD
 Wl
-Wp
+CW
 Xl
-Xy
-Xy
-Wp
-Wl
-Yv
-LV
+Xl
+eR
+XS
+XS
+LW
 LW
 "}
 (5,1,1) = {"
 LW
-LW
-LW
-LW
-Wl
-Wq
-Xy
-Xy
-Xy
-Yn
-Wl
-Zc
+YD
+YD
 LV
-LV
+gO
+Wl
+EZ
+Xl
+Xy
+Xy
+EZ
+Wl
+Yz
+LW
 "}
 (6,1,1) = {"
+LW
+LW
+XN
 LV
 LV
-LV
-VU
-Wm
-Ws
-Xy
-Xy
-Xy
-Xl
 Wl
-Zd
-LV
-LV
+Uc
+Xy
+Xy
+Xy
+un
+Wl
+rA
+LW
 "}
 (7,1,1) = {"
 LV
-LW
+gO
+YD
 LV
-LW
-Wn
+LV
 Wt
+gU
 Xz
 Xy
 Xl
@@ -452,114 +428,113 @@ Xl
 Xl
 Ze
 LV
-LV
 "}
 (8,1,1) = {"
 LV
 LV
-LW
-LW
+LV
+LV
+LV
 Wl
-Wp
+EZ
 Xy
 Xy
 Xy
 Xl
-Wl
-Zf
-VS
+Xl
+Ze
 LV
 "}
 (9,1,1) = {"
 LV
-LV
 LW
+kd
+Tl
 LW
 Wl
-WN
+yg
 Xy
 Xl
-Yk
-Wp
+br
+EZ
 Wl
-Zg
 Zi
-LU
+LV
 "}
 (10,1,1) = {"
+LW
+LW
 LV
 LV
 LV
-VU
-Wl
 Wp
+EZ
 Xy
 Xy
-Wp
-Yo
+EZ
+Be
 Wl
-Zh
-LV
+lV
 LV
 "}
 (11,1,1) = {"
 LV
 LV
+Zp
 LV
-VT
-Wl
-WO
-WN
+LV
 Wp
-Wl
-Yp
+EZ
+Xy
+Xy
+EZ
+uk
 Wl
 XB
-LV
 LV
 "}
 (12,1,1) = {"
 LV
-Vw
-LW
-LW
-Wl
-Wl
-Wl
-Wl
-Wl
-Yq
-XQ
 LV
+LV
+LW
+LV
+Wp
+NU
+yg
+EZ
+Xl
+Ze
+wQ
 LV
 LV
 "}
 (13,1,1) = {"
 LV
 LV
+LW
+LW
+LW
+Wl
+Wl
+Wl
+Wl
+Wl
 LV
-LW
-LW
-WP
-XA
-XQ
-Yl
 LV
-LW
-LW
 LV
 LV
 "}
 (14,1,1) = {"
 LW
 LW
+LW
+LW
+LW
+LW
+LW
+Ya
 LV
-LV
-LW
-LW
-LW
-LW
-LW
 LV
 LV
 VR
@@ -569,16 +544,16 @@ LW
 (15,1,1) = {"
 LW
 LW
-LV
-LV
-LV
-LV
-LV
-Ya
+LW
+LW
+LW
+LW
+LW
 LW
 LV
 LV
 LV
 LV
+LW
 LW
 "}

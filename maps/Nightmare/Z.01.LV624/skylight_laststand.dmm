@@ -6,11 +6,11 @@
 /turf/open/gm/grass,
 /area/lv624/ground/caves/central2)
 "ac" = (
-/obj/structure/jungle/planttop1,
+/obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass,
 /area/lv624/ground/caves/central2)
 "ad" = (
-/obj/structure/jungle/plantbot1,
+/obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass,
 /area/lv624/ground/caves/central2)
 "ae" = (
@@ -84,7 +84,7 @@
 	},
 /area/lv624/ground/caves/central2)
 "as" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central2)
 "at" = (
@@ -149,14 +149,14 @@
 	},
 /area/lv624/ground/caves/central2)
 "aF" = (
-/obj/structure/jungle/plantbot1{
+/obj/structure/flora/jungle/plantbot1{
 	icon_state = "alienplant1";
 	luminosity = 2
 	},
 /turf/open/gm/river,
 /area/lv624/ground/caves/central2)
 "aG" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
 /area/lv624/ground/caves/central2)
 "aH" = (

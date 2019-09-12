@@ -36,25 +36,25 @@
 	},
 /area/lv624/ground/river1)
 "ai" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/river,
 /area/lv624/ground/river1)
 "aj" = (
-/obj/structure/jungle/plantbot1{
+/obj/structure/flora/bush/ausbushes{
 	icon_state = "alienplant1";
 	luminosity = 2
 	},
 /turf/open/gm/river,
 /area/lv624/ground/river1)
 "ak" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast{
 	icon_state = "beachcorner"
 	},
 /area/lv624/ground/river1)
 "al" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/river,
 /area/lv624/ground/river1)
 "am" = (
@@ -77,11 +77,11 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/river1)
 "aq" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
 /area/lv624/ground/river1)
 "ar" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/river,
 /area/lv624/ground/river1)
 "as" = (
@@ -112,7 +112,7 @@
 	},
 /area/lv624/ground/river1)
 "aw" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirt,
 /area/lv624/ground/river1)
 "ax" = (
@@ -124,7 +124,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle6)
 "az" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle6)
 "aA" = (
@@ -139,7 +139,7 @@
 	},
 /area/lv624/ground/jungle6)
 "aC" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirtgrassborder{
 	dir = 1
 	},
@@ -174,38 +174,41 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/jungle6)
 "aJ" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Med1";
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
+	icon_tag = "heavy";
 	pixel_x = 0
 	},
 /turf/open/gm/grass,
-/area/lv624/ground/jungle6)
+/area/space)
 "aK" = (
-/obj/structure/jungle/vines/heavy,
+/obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass{
 	icon_state = "grass2"
 	},
-/area/lv624/ground/jungle6)
+/area/space)
 "aL" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Hvy3";
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
 	pixel_x = 0
 	},
+/obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/grass,
-/area/lv624/ground/jungle6)
+/area/space)
 "aM" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Med2";
-	pixel_x = 0;
-	pixel_y = 0
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3";
+	icon_tag = "light"
 	},
 /turf/open/gm/grass,
-/area/lv624/ground/jungle6)
+/area/space)
 "aN" = (
 /obj/effect/landmark{
 	name = "hunter_primary"
 	},
-/turf/open/gm/grass,
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
 /area/lv624/ground/jungle6)
 "aO" = (
 /turf/open/gm/dirtgrassborder{
@@ -229,7 +232,7 @@
 	},
 /area/lv624/ground/jungle6)
 "aS" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner2"
 	},
@@ -287,7 +290,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/jungle4)
 "bd" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast{
 	icon_state = "beachcorner"
@@ -299,11 +302,11 @@
 	},
 /area/lv624/ground/jungle4)
 "bf" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
 /area/lv624/ground/jungle4)
 "bg" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river,
 /area/lv624/ground/jungle4)
 "bh" = (
@@ -342,11 +345,12 @@
 	},
 /area/lv624/ground/jungle4)
 "bn" = (
+/obj/structure/flora/grass/tallgrass/jungle,
 /obj/item/bananapeel,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle4)
 "bo" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/river,
 /area/lv624/ground/river1)
 "bp" = (
@@ -356,7 +360,7 @@
 	},
 /area/lv624/ground/jungle6)
 "bq" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast{
 	dir = 2;
@@ -370,7 +374,7 @@
 	},
 /area/lv624/ground/jungle4)
 "bs" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast{
 	dir = 2;
@@ -384,14 +388,14 @@
 	},
 /area/lv624/ground/jungle4)
 "bu" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Med1";
+/obj/structure/flora/jungle/vines/heavy{
+	icon_state = "heavy_6";
 	pixel_x = 0
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle4)
 "bv" = (
-/obj/structure/flora/ausbushes/pointybush,
+/obj/structure/flora/bush/ausbushes/pointybush,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast{
 	dir = 2;
@@ -408,7 +412,7 @@
 	},
 /area/lv624/ground/jungle4)
 "by" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/river,
 /area/lv624/ground/jungle6)
 "bz" = (
@@ -419,18 +423,18 @@
 	},
 /area/lv624/ground/jungle4)
 "bA" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/river,
 /area/lv624/ground/jungle6)
 "bB" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
 /area/lv624/ground/jungle6)
 "bC" = (
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/jungle6)
 "bD" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river,
 /area/lv624/ground/jungle6)
 "bE" = (
@@ -440,19 +444,15 @@
 	icon_state = "beachcorner2"
 	},
 /area/lv624/ground/jungle4)
-"bF" = (
-/obj/effect/landmark/lv624/fog_time_extender,
-/turf/open/gm/grass,
-/area/lv624/ground/jungle6)
 "bI" = (
-/obj/structure/jungle/plantbot1{
+/obj/structure/flora/bush/ausbushes{
 	icon_state = "alienplant1";
 	luminosity = 2
 	},
 /turf/open/gm/river,
 /area/lv624/ground/jungle6)
 "bJ" = (
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/river,
 /area/lv624/ground/jungle4)
 "bK" = (
@@ -462,22 +462,22 @@
 /turf/open/gm/river,
 /area/lv624/ground/jungle4)
 "bL" = (
-/obj/structure/jungle/plantbot1{
+/obj/structure/flora/bush/ausbushes{
 	icon_state = "alienplant1";
 	luminosity = 2
 	},
 /turf/open/gm/river,
 /area/lv624/ground/jungle4)
 "bM" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/river,
 /area/lv624/ground/jungle4)
 "bN" = (
-/obj/structure/flora/ausbushes,
+/obj/structure/flora/bush/ausbushes,
 /turf/open/gm/river,
 /area/lv624/ground/jungle4)
 "bO" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/river,
 /area/lv624/ground/jungle4)
 "bP" = (
@@ -487,7 +487,7 @@
 	},
 /area/lv624/ground/jungle4)
 "bQ" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/coast{
 	dir = 1
 	},
@@ -498,7 +498,7 @@
 	},
 /area/lv624/ground/jungle4)
 "bS" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast{
 	dir = 4;
@@ -510,7 +510,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle4)
 "bU" = (
-/obj/structure/jungle/vines,
+/obj/structure/flora/jungle/vines,
 /obj/effect/landmark{
 	name = "monkey_spawn"
 	},
@@ -523,6 +523,183 @@
 	dir = 1
 	},
 /area/lv624/ground/jungle4)
+"di" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 4
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle6)
+"ds" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle6)
+"fu" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle6)
+"jo" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle6)
+"js" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 1
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle6)
+"jH" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle6)
+"kU" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle6)
+"mo" = (
+/turf/open/gm/grass,
+/area/space)
+"oM" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle6)
+"pi" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle6)
+"pn" = (
+/obj/structure/flora/bush/ausbushes/pointybush,
+/turf/open/gm/grass,
+/area/space)
+"qV" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/grass,
+/area/space)
+"rj" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle4)
+"su" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle6)
+"vs" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 5
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle4)
+"vB" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_3";
+	icon_tag = "light"
+	},
+/turf/closed/wall/rock/brown,
+/area/space)
+"wC" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle6)
+"xW" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle6)
+"yW" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle6)
+"DL" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle4)
+"Ed" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	icon_tag = "light_2"
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/space)
+"FJ" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 8
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle4)
+"JC" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle4)
+"LZ" = (
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/space)
+"Ns" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 8
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle6)
+"Ok" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle4)
+"Pe" = (
+/obj/structure/flora/jungle/vines,
+/turf/open/gm/grass,
+/area/space)
+"PX" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 3
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle4)
+"UW" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle6)
+"VD" = (
+/obj/structure/flora/jungle/vines,
+/turf/closed/wall/rock/brown,
+/area/space)
+"Wn" = (
+/obj/structure/flora/jungle/vines,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/space)
+"XG" = (
+/turf/closed/wall/rock/brown,
+/area/space)
+"XP" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle4)
 
 (1,1,1) = {"
 aa
@@ -533,12 +710,12 @@ am
 am
 ax
 ax
-ax
-ax
-ax
-ax
-ax
-ax
+LZ
+LZ
+LZ
+LZ
+LZ
+LZ
 ax
 ax
 ax
@@ -571,12 +748,12 @@ ap
 an
 ay
 aB
-aF
+Ed
 aJ
 aL
 aJ
-aG
-aG
+Pe
+mo
 aG
 aG
 ax
@@ -609,12 +786,12 @@ an
 an
 az
 aB
-aF
+Wn
 aK
-aI
+vB
 aM
-aG
-aG
+mo
+mo
 aG
 aN
 ax
@@ -626,7 +803,7 @@ aU
 aV
 aV
 aV
-bh
+aV
 aV
 aU
 aU
@@ -647,24 +824,24 @@ ah
 au
 aA
 aE
+pn
+VD
+XG
+aM
+mo
+qV
 aG
-aI
-aI
-aG
-aG
-aG
-aG
-ax
+wC
 ax
 ax
 ax
 aU
 aU
+XP
+vs
 aV
-aV
-aV
-aV
-aV
+DL
+bh
 aV
 aV
 aV
@@ -693,22 +870,22 @@ ax
 aG
 aG
 aG
+aG
 ax
 ax
-ax
+aV
+XP
+rj
+rj
+vs
 aV
 aV
-aV
-aV
-aV
-aV
-bi
 aV
 aV
 bh
 aV
-aV
-aV
+XP
+vs
 aV
 aV
 aV
@@ -722,32 +899,32 @@ ag
 ag
 as
 aB
+aI
+aG
+yW
+di
+jH
 aG
 aG
-aG
-aG
-aG
-aG
-aG
-aG
+xW
 aG
 aG
 aG
 aG
 aV
-aV
-aV
-aV
+Ok
+FJ
+FJ
+JC
+aU
+bi
 aV
 aU
-aV
-aV
 aU
-aU
-aV
-aV
+DL
+PX
 bn
-aV
+vs
 aV
 aV
 aV
@@ -760,11 +937,11 @@ ag
 aq
 as
 aC
-aF
-aG
-aG
-aG
-aN
+aI
+jo
+ds
+ds
+js
 aG
 aG
 aG
@@ -783,9 +960,9 @@ be
 aU
 aU
 aV
-aV
-aV
-aV
+Ok
+FJ
+JC
 aV
 aV
 aV
@@ -799,10 +976,10 @@ ar
 as
 aB
 aF
-aI
-aI
-aG
-bF
+UW
+ds
+ds
+pi
 aG
 ax
 aG
@@ -836,14 +1013,14 @@ ag
 ag
 as
 aB
-aF
+kU
+aG
+oM
+js
 aG
 aG
 aG
-aG
-aG
-aG
-aG
+su
 aG
 aG
 aF
@@ -875,13 +1052,13 @@ ao
 av
 aC
 aG
-aF
+jo
+ds
+Ns
+di
+jH
 aG
 aG
-aG
-aG
-aG
-aF
 aG
 aG
 aO
@@ -913,11 +1090,11 @@ as
 aw
 aD
 aH
-aG
-aG
+fu
+pi
 ax
-aG
-aG
+fu
+pi
 aG
 aO
 aQ

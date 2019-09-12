@@ -1320,7 +1320,7 @@
 	force = 33
 	w_class = SIZE_HUGE
 	edge = 1
-	sharp = 1
+	sharp = 2
 	flags_item = NOSHIELD|NODROP|ITEM_PREDATOR
 	flags_equip_slot = NOFLAGS
 	hitsound = 'sound/weapons/wristblades_hit.ogg'

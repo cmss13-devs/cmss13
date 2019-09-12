@@ -1,3 +1,6 @@
+#define MUTATOR_GAIN_PER_QUEEN_LEVEL 6
+#define MUTATOR_GAIN_PER_XENO_LEVEL 3
+
 //A class that holds mutators for a given Xeno hive
 //Each time a Queen matures, the hive gets more points
 //Each time a Queen dies, the mutators are reset

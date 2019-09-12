@@ -234,33 +234,3 @@
 	if(!istype(E)) //something else in our hand
 		to_chat(src, SPAN_WARNING("You need an empty hand to grab one of your stored eggs!"))
 		return
-
-/mob/living/carbon/Xenomorph/Carrier/proc/lay_egg()
-
-	if(!check_state())
-		return
-
-	if(laid_egg)
-		to_chat(src, SPAN_XENOWARNING("You must wait before laying another egg."))
-		return
-
-	if(!check_plasma(50))
-		return
-
-	var/obj/item/xeno_egg/E = get_active_hand()
-	if(!E)
-		E = new()
-		E.hivenumber = hivenumber
-		put_in_active_hand(E)
-		use_plasma(50)
-		to_chat(src, SPAN_XENONOTICE("You produce an egg."))
-		playsound(loc, "alien_resin_build", 25)
-		laid_egg = TRUE
-		spawn(caste.egg_cooldown)
-			laid_egg = FALSE
-			to_chat(src, SPAN_XENONOTICE("You can produce an egg again."))
-			for(var/X in actions)
-				var/datum/action/A = X
-				A.update_button_icon()
-
-	return 1

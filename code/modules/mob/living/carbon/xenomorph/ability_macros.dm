@@ -147,25 +147,11 @@
 	var/action_name = "Punch"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/verb/verb_jab()
-	set category = "Alien"
-	set name = "Jab"
-	set hidden = 1
-	var/action_name = "Jab"
-	handle_xeno_macro(src, action_name)
-
 /datum/action/xeno_action/verb/verb_burrow()
 	set category = "Alien"
 	set name = "Burrow"
 	set hidden = 1
 	var/action_name = "Burrow"
-	handle_xeno_macro(src, action_name)
-
-/datum/action/xeno_action/verb/verb_tremor()
-	set category = "Alien"
-	set name = "Tremor"
-	set hidden = 1
-	var/action_name = "Tremor (100)"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_headbutt()
@@ -275,13 +261,6 @@
 	var/action_name = "Place resin hole (200)"
 	handle_xeno_macro(src, action_name) 
 
-/datum/action/xeno_action/verb/verb_lay_egg()
-	set category = "Alien"
-	set name = "Lay Egg"
-	set hidden = 1
-	var/action_name = "Lay Egg (50)"
-	handle_xeno_macro(src, action_name) 
-
 /datum/action/xeno_action/verb/verb_stomp()
 	set category = "Alien"
 	set name = "Stomp"
@@ -359,34 +338,6 @@
 	var/action_name = "Empower (100)"
 	handle_xeno_macro(src, action_name) 
 
-/datum/action/xeno_action/verb/verb_charge_rav()
-	set category = "Alien"
-	set name = "Charge"
-	set hidden = 1
-	var/action_name = "Charge (20)"
-	handle_xeno_macro(src, action_name) 
-
-/datum/action/xeno_action/verb/verb_spin_slash()
-	set category = "Alien"
-	set name = "Spin Slash"
-	set hidden = 1
-	var/action_name = "Spin Slash (60)"
-	handle_xeno_macro(src, action_name) 
-
-/datum/action/xeno_action/verb/verb_spike_spray()
-	set category = "Alien"
-	set name = "Spike Spray"
-	set hidden = 1
-	var/action_name = "Spike Spray (30)"
-	handle_xeno_macro(src, action_name) 
-
-/datum/action/xeno_action/verb/verb_transfer_health()
-	set category = "Alien"
-	set name = "Transfer Health"
-	set hidden = 1
-	var/action_name = "Transfer Health"
-	handle_xeno_macro(src, action_name) 
-
 // night vision is special
 /datum/action/xeno_action/verb/verb_night_vision()
 	set category = "Alien"
@@ -422,42 +373,3 @@
 	set hidden = 1
 	var/action_name = "Toggle acid spray type"
 	handle_xeno_macro(src, action_name) 
-
-/datum/action/xeno_action/verb/verb_prae_tailattack()
-	set category = "Alien"
-	set name = "Praetorian Tail Attack"
-	set hidden = 1
-	var/action_name = "Tail Attack (150)"
-	handle_xeno_macro(src, action_name) 
-
-/datum/action/xeno_action/verb/verb_prae_shift_tailattack()
-	set category = "Alien"
-	set name = "Praetorian Shift Tail Attack"
-	set hidden = 1
-	var/action_name = "Toggle tail attack type"
-	handle_xeno_macro(src, action_name) 
-
-/datum/action/xeno_action/verb/verb_prae_dance()
-	set category = "Alien"
-	set name = "Praetorian Dance"
-	set hidden = 1
-	var/action_name = "Dance (200)"
-	handle_xeno_macro(src, action_name) 
-
-/datum/action/xeno_action/verb/verb_prae_punch()
-	set category = "Alien"
-	set name = "Praetorian Punch"
-	set hidden = 1
-	var/action_name = "Punch (75)"
-	handle_xeno_macro(src, action_name) 
-
-/datum/action/xeno_action/verb/verb_prae_bomb()
-	set category = "Alien"
-	set name = "Praetorian Bomb"
-	set hidden = 1
-	var/action_name = "Toxin Bomb (300)"
-	handle_xeno_macro(src, action_name) 
-
-
-
-

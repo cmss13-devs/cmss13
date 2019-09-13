@@ -1,5 +1,5 @@
 #define to_world_log(message)                               world.log << (message)
-#define debug_msg(message)                                  world << (message) // Difference from to_world is that it is designed to be easily found and deleted
+#define debug_msg(message)                                  to_world(message) // Difference from to_world is that it is designed to be easily found and deleted
 #define sound_to(target, sound)                             target << (sound)
 #define to_file(file_entry, source_var)                     file_entry << (source_var)
 #define from_file(file_entry, target_var)                   file_entry >> (target_var)
@@ -72,6 +72,12 @@
 #define FLAGS_EQUALS(flag, flags) ((flag & (flags)) == (flags))
 
 // Style class macros
+
+#define FONT_SIZE_HUGE(X) "<span class='huge'>[X]</span>"
+#define FONT_SIZE_XL(X) "<span class='extra_large'>[X]</span>"
+#define FONT_SIZE_LARGE(X) "<span class='large'>[X]</span>"
+#define FONT_SIZE_BIG(X) "<span class='medium'>[X]</span>"
+#define FONT_SIZE_MEDIUM(X) "<span class='small'>[X]</span>"
 
 #define SPAN_XENO(X) "<span class='xeno'>[X]</span>"
 #define SPAN_XENOLEADER(X) "<span class='xenoleader'>[X]</span>"

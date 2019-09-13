@@ -1797,6 +1797,18 @@
 		log_admin("[src.owner] has cancelled the orbital strike.")
 		message_admins("[src.owner] has cancelled the orbital strike.")
 
+	else if(href_list["admincancelpredsd"])
+		if (!check_rights(R_MOD))	return
+		var/obj/item/clothing/gloves/yautja/bracer = locate(href_list["bracer"])
+		var/mob/living/carbon/victim = locate(href_list["victim"])
+		if (!istype(bracer))
+			return
+		if (alert("Are you sure you want to cancel this pred SD?",,"Yes","No") != "Yes")
+			return
+		bracer.exploding = FALSE
+		log_admin("[src.owner] has cancelled the predator self-destruct sequence [victim ? "of [victim] ([victim.key])":""].")
+		message_admins("[src.owner] has cancelled the predator self-destruct sequence [victim ? "of [victim] ([victim.key])":""].")
+
 	else if(href_list["adminmoreinfo"])
 		var/mob/M = locate(href_list["adminmoreinfo"])
 		if(!ismob(M))

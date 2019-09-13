@@ -483,7 +483,8 @@
 		generate_recipe()
 	required_reagents = chemical_gen_reactions_list["[src.id]"]["required_reagents"]
 	required_catalysts = chemical_gen_reactions_list["[src.id]"]["required_catalysts"]
-	result = chemical_gen_reactions_list["[src.id]"]["result"]
+	if(!result)
+		result = chemical_gen_reactions_list["[src.id]"]["result"]
 
 /////////Tier 1
 //alpha

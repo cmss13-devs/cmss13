@@ -789,7 +789,10 @@
 /datum/hive_status/proc/sort_xeno_keys(var/list/xenos)
 	var/list/sorted_list = xenos.Copy()
 
-	for(var/index = 3 to xenos.len)
+	if(!sorted_list || !sorted_list.len)
+		return
+
+	for(var/index = 3 to sorted_list.len)
 		var/j = index
 
 		// j > 2 because the queen is always in the first slot
@@ -851,10 +854,13 @@
 			continue
 
 		var/area/A = get_area(X)
+		var/area_name = "Unknown"
+		if(A)
+			area_name = A.name
 
 		xenos["[X.nicknumber]"] = list(
 			"health" = round((X.health / X.maxHealth) * 100, 1),
-			"area" = A.name,
+			"area" = area_name,
 			"is_ssd" = (!X.client)
 		)
 

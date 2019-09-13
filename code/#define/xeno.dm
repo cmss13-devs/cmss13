@@ -19,3 +19,6 @@
 
 #define XENO_MAXOVERHEAL_OF_MAXHEALTH 0.9 //Determines the max overheal of xenos, based on a procentage of max health.
 #define XENO_ENEMIES_FOR_MAXOVERHEAL 6 //Amount of enemies required to get max overheal
+
+#define BUILD_TIME_XENO		20 //time taken for a xeno to place down a resin structure
+#define BUILD_TIME_HIVELORD	10

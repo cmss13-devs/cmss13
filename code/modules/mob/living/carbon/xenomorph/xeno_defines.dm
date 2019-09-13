@@ -354,7 +354,7 @@
 	var/toggle_agility_cooldown = 5
 
 	// Resin building-related vars
-	var/build_time = 50 // Default build time and build distance
+	var/build_time = BUILD_TIME_XENO // Default build time and build distance
 	var/max_build_dist = 0
 
 	//Boiler vars

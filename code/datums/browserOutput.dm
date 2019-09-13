@@ -11,6 +11,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 	var/loaded = FALSE 					//Has the client loaded the browser output area?
 	var/list/messageQueue = list() 		//If they haven't loaded chat, this is where messages will go until they do
 	var/cookieSent = FALSE				//Has the client sent a cookie for analysis
+	var/noWindow = FALSE				//If the user has the new skin.dm
 	var/list/connectionHistory = list() //Contains the connection history passed from chat cookie
 
 /datum/chatOutput/New(client/C)
@@ -23,6 +24,13 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 	//Check for existing chat
 	if (!owner) 
 		return 0
+
+	if(!winexists(owner, "browseroutput"))
+		set waitfor = FALSE
+		noWindow = TRUE
+		. = FALSE
+		alert(owner.mob, "Goonchat hasn't loaded for you. Please wait a minute or try reconnecting.")
+		return
 
 	if (winget(owner, "browseroutput", "is-disabled") == "false") //Already setup
 		doneLoading()
@@ -213,7 +221,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 			if(!C)
 				continue
 
-			if (C && C.chatOutput && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
+			if (C && C.chatOutput && !C.chatOutput.noWindow && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
 				//Client sucks at loading things, put their messages in a queue
 				C.chatOutput.messageQueue += message
 				continue
@@ -231,7 +239,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 		if(!C)
 			return
 
-		if (C && C.chatOutput && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
+		if (C && C.chatOutput && !C.chatOutput.noWindow && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
 			C.chatOutput.messageQueue += message
 			return
 

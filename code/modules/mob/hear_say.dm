@@ -152,6 +152,15 @@
 			speaker_name = "[speaker.real_name] ([speaker_name])"
 		track = "[speaker_name] (<a href='byond://?src=\ref[src];track=\ref[speaker]'>follow</a>)"
 
+	var/fontsize_style
+	switch(command)
+		if(1)
+			fontsize_style = "medium"
+		if(2)
+			fontsize_style = "big"
+		if(3)
+			fontsize_style = "large"
+
 	if(sdisabilities & DEAF || ear_deaf)
 		if(prob(20))
 			to_chat(src, SPAN_WARNING("You feel your headset vibrate but can hear nothing from it!"))
@@ -159,13 +168,13 @@
 		if(!command)
 			to_chat(src, "[part_a][comm_paygrade][track][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span>")
 		else
-			to_chat(src, "<font size='[command]'>[part_a][comm_paygrade][track][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span></font>")
+			to_chat(src, "<span class=\"[fontsize_style]\">[part_a][comm_paygrade][track][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span></span>")
 		if(sound_to_play) src << sound(sound_to_play, volume = 65)
 	else
 		if(!command)
 			to_chat(src, "[part_a][comm_paygrade][speaker_name][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span>")
 		else
-			to_chat(src, "<font size = '[command]'>[part_a][comm_paygrade][speaker_name][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span></font>")
+			to_chat(src, "<span class=\"[fontsize_style]\">[part_a][comm_paygrade][speaker_name][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span></span>")
 		if(sound_to_play) src << sound(sound_to_play, volume = 65)
 
 /mob/proc/hear_signlang(var/message, var/verb = "gestures", var/datum/language/language, var/mob/speaker = null)

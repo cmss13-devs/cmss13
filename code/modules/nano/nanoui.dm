@@ -231,6 +231,10 @@ nanoui is used to open and update nano browser uis
   * @return /list data to send to the ui
   */
 /datum/nanoui/proc/get_send_data(var/list/data)
+	if(disposed)
+		// Don't send any data if the UI is being qdeleted
+		return list("config" = list())
+
 	var/list/config_data = get_config_data()
 
 	var/list/send_data = list("config" = config_data)
@@ -426,6 +430,8 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/open()
+	if(disposed)
+		return
 	if(!user.client)
 		return
 	var/window_size = ""
@@ -469,6 +475,9 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/push_data(data, force_push = 0)
+	if(disposed)
+		return
+
 	if(allowed_user_stat > -1)
 		update_status(0)
 		if (status == STATUS_DISABLED && !force_push)
@@ -487,6 +496,9 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/Topic(href, href_list)
+	if(disposed)
+		return
+
 	update_status(0) // update the status
 	if (status != STATUS_INTERACTIVE || user != usr) // If UI is not interactive or usr calling Topic is not the UI user
 		return

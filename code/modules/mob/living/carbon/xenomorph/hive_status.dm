@@ -43,6 +43,9 @@
 // Mildly related to the above, but only for when xenos are removed from the hive
 // If a xeno dies, we don't have to regenerate all xeno info and sort it again, just remove them from the data list
 /datum/hive_status_ui/proc/xeno_removed(var/mob/living/carbon/Xenomorph/X)
+	if(!data["xeno_keys"])
+		return
+
 	for(var/index = 1 to data["xeno_keys"].len)
 		var/list/info = data["xeno_keys"][index]
 		if(info["nicknumber"] == X.nicknumber)

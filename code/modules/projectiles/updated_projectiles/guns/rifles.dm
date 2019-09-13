@@ -87,7 +87,7 @@
 	scatter = config.low_scatter_value
 	burst_scatter_mult = config.mlow_scatter_value
 	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult + config.min_hit_damage_mult
+	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.high_recoil_value
 
 
@@ -538,6 +538,7 @@
 	reload_sound = 'sound/weapons/handling/hpr_reload.ogg'
 	unload_sound = 'sound/weapons/handling/hpr_unload.ogg'
 	fire_sound = 'sound/weapons/gun_m41ae2.ogg'
+	aim_slowdown = SLOWDOWN_ADS_LMG
 	current_mag = /obj/item/ammo_magazine/rifle/lmg
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
@@ -565,7 +566,7 @@
 	..()
 	fire_delay = config.mlow_fire_delay
 	burst_amount = config.high_burst_value
-	burst_delay = config.low_fire_delay
+	burst_delay = config.mlow_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.max_hit_accuracy_mult
 	scatter = config.med_scatter_value
@@ -763,7 +764,7 @@
 	burst_delay = 1
 	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
-	damage_mult = config.base_hit_damage_mult
+	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
 	recoil_unwielded = config.low_recoil_value
 	damage_falloff_mult = 0
 

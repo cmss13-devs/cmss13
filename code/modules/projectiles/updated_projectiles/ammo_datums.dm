@@ -438,7 +438,7 @@
 
 /datum/ammo/bullet/smg/New()
 	..()
-	damage = config.lmed_plus_hit_damage
+	damage = config.lmed_hit_damage
 	accurate_range = config.lshort_shell_range
 	penetration = 0
 	shell_speed = config.fast_shell_speed
@@ -493,7 +493,7 @@
 /datum/ammo/bullet/rifle/New()
 	..()
 	accurate_range = config.norm_shell_range
-	damage = config.llhigh_hit_damage
+	damage = config.hmed_hit_damage
 	accuracy = config.hmed_hit_accuracy
 	scatter = config.min_scatter_value
 	shell_speed = config.ultra_shell_speed
@@ -505,7 +505,7 @@
 /datum/ammo/bullet/rifle/explosive/New()
 	..()
 	accurate_range = config.norm_shell_range
-	damage = config.hlmed_hit_damage
+	damage = config.hlow_hit_damage
 	accuracy = 0
 	shell_speed = config.super_shell_speed
 	damage_falloff = config.med_damage_falloff
@@ -898,7 +898,7 @@
 	accurate_range = config.norm_shell_range
 	accuracy = config.med_hit_accuracy
 	damage_falloff = config.tactical_damage_falloff
-	damage = config.lmed_plus_hit_damage
+	damage = config.lmed_hit_damage
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/armor_piercing

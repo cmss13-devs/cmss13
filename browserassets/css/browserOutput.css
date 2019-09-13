@@ -256,6 +256,10 @@ a.popt {text-decoration: none;}
 .charlieradio			{color: #AA55AA;}
 .deltaradio				{color: #007FCF;}
 
+.medium					{					font-size: 105%}
+.big					{					font-size: 110%}
+.large					{					font-size: 115%}
+
 .alert					{color: #ff0000;}
 h1.alert, h2.alert		{color: #000000;}
 

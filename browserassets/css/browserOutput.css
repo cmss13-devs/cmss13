@@ -259,6 +259,8 @@ a.popt {text-decoration: none;}
 .medium					{					font-size: 105%}
 .big					{					font-size: 110%}
 .large					{					font-size: 115%}
+.extra_large			{					font-size: 130%}
+.huge					{					font-size: 150%}
 
 .alert					{color: #ff0000;}
 h1.alert, h2.alert		{color: #000000;}

@@ -136,7 +136,7 @@
 	caliber = "10x24mm"
 	icon_state = "l42mk1"
 	default_ammo = /datum/ammo/bullet/rifle
-	max_rounds = 20
+	max_rounds = 25
 	gun_type = /obj/item/weapon/gun/rifle/l42mk1
 	w_class = SIZE_MEDIUM
 
@@ -146,7 +146,7 @@
 	caliber = "10x24mm"
 	icon_state = "l42mk1_ap"
 	default_ammo = /datum/ammo/bullet/rifle/ap
-	max_rounds = 20
+	max_rounds = 25
 	gun_type = /obj/item/weapon/gun/rifle/l42mk1
 	w_class = SIZE_MEDIUM
 
@@ -156,7 +156,7 @@
 	caliber = "10x24mm"
 	icon_state = "l42mk1_le"
 	default_ammo = /datum/ammo/bullet/rifle/le
-	max_rounds = 20
+	max_rounds = 25
 	gun_type = /obj/item/weapon/gun/rifle/l42mk1
 	w_class = SIZE_MEDIUM
 

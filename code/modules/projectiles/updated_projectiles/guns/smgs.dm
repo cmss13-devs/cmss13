@@ -9,6 +9,7 @@
 	force = 8
 	w_class = SIZE_LARGE
 	movement_acc_penalty_mult = 4
+	aim_slowdown = SLOWDOWN_ADS_SMG
 	wield_delay = WIELD_DELAY_FAST
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
@@ -73,10 +74,10 @@
 	burst_amount = config.high_burst_value
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
-	scatter = config.lmed_scatter_value
+	scatter = config.med_scatter_value
 	burst_scatter_mult = config.low_scatter_value
 	scatter_unwielded = config.high_scatter_value
-	damage_mult = config.base_hit_damage_mult - config.min_hit_damage_mult
+	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
 
 

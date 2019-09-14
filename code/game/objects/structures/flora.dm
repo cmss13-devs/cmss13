@@ -356,6 +356,7 @@ ICE GRASS
 */
 
 /obj/structure/flora/bush/desert
+	icon = 'icons/obj/structures/props/dam.dmi'
 	desc = "A small, leafy bush."
 	icon_state = "tree_1"
 	layer = ABOVE_XENO_LAYER
@@ -363,11 +364,12 @@ ICE GRASS
 /obj/structure/flora/bush/desert/cactus
 	name = "cactus"
 	desc = "It's a small, spiky cactus."
-	icon_state = "cactus_1"
+	icon_state = "cactus_3"
+	layer = BELOW_MOB_LAYER
 
 /obj/structure/flora/bush/desert/cactus/multiple
 	name = "cacti"
-	icon_state = "cactus_1"
+	icon_state = "cacti_1"
 
 /*
 
@@ -379,6 +381,7 @@ ICE GRASS
 	name = "potted plant"
 	icon = 'icons/obj/structures/props/plants.dmi'
 	icon_state = "pottedplant_26"
+	density = 0
 
 /obj/structure/flora/pottedplant/random
 	icon_tag = "pottedplant"

@@ -35,6 +35,7 @@ var/datum/subsystem/chat/SSchat
 
 	var/clean_message = message
 	//Some macros remain in the string even after parsing and fuck up the eventual output
+	message = replacetext(message, "`", "")
 	message = replacetext(message, "\improper", "")
 	message = replacetext(message, "\proper", "")
 	message = replacetext(message, "\n", "<br>")
@@ -56,7 +57,7 @@ var/datum/subsystem/chat/SSchat
 				C = T:current:client
 
 			// If they are using the old chat, send it the old way
-			if(C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)
+			if(C && C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)
 				C << clean_message
 				continue
 			
@@ -75,7 +76,7 @@ var/datum/subsystem/chat/SSchat
 		else if (istype(target, /datum/mind) && target:current)
 			C = target:current:client
 
-		if(C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)
+		if(C && C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)
 			C << clean_message
 			return
 

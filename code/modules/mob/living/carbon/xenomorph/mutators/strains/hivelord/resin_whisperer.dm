@@ -13,7 +13,7 @@
 	)
 	keystone = TRUE
 
-/datum/xeno_mutator/resinwhisperer/apply_mutator(datum/mutator_set/individual_mutators/MS)
+/datum/xeno_mutator/resinwhisperer/apply_mutator(var/datum/mutator_set/individual_mutators/MS)
 	. = ..()
 	if(. == 0)
 		return
@@ -29,6 +29,11 @@
 	mutator_update_actions(H)
 	MS.recalculate_actions(description)
 	H.recalculate_plasma()
+
+/datum/xeno_mutator/resinwhisperer/on_upgrade(var/datum/mutator_set/individual_mutators/MS, var/level)
+	// Caste got upgraded, so re-apply the build distance modifier
+	var/mob/living/carbon/Xenomorph/Hivelord/H = MS.xeno
+	H.caste.max_build_dist = 13
 
 /*
  *    Coerce Resin ability

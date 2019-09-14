@@ -505,8 +505,8 @@
 
 	SStracking.stop_tracking("hive_[hivenumber]", src)
 
-	// Dispose means the xeno is getting deleted, so hard remove them from the hive
-	hive.remove_xeno(src, TRUE)
+	if(hive)
+		hive.remove_xeno(src, TRUE)
 
 	. = ..()
 

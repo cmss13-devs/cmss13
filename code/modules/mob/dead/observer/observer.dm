@@ -99,6 +99,10 @@
 		var/mob/target = locate(href_list["track"]) in mob_list
 		if(target)
 			ManualFollow(target)
+	if(href_list[XENO_OVERWATCH_TARGET_HREF])
+		var/mob/target = locate(href_list[XENO_OVERWATCH_TARGET_HREF]) in living_xeno_list
+		if(target)
+			ManualFollow(target)
 	if(href_list["jumptocoord"])
 		if(istype(usr, /mob/dead/observer))
 			var/mob/dead/observer/A = usr

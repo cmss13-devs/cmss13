@@ -779,7 +779,10 @@
 		)
 
 	// Make it all nice and fancy by sorting the list before returning it
-	return sort_xeno_keys(xenos)
+	var/list/sorted_keys = sort_xeno_keys(xenos)
+	if(sorted_keys && sorted_keys.len)
+		return sorted_keys
+	return xenos
 
 // This sorts the xeno info list by multiple criteria. Prioritized in order:
 // 1. Queen
@@ -787,21 +790,30 @@
 // 3. Tier
 // It uses a slightly modified insertion sort to accomplish this
 /datum/hive_status/proc/sort_xeno_keys(var/list/xenos)
+	if(!xenos || !xenos.len)
+		return
+
 	var/list/sorted_list = xenos.Copy()
 
 	if(!sorted_list || !sorted_list.len)
 		return
 
-	for(var/index = 3 to sorted_list.len)
+	for(var/index = 2 to sorted_list.len)
 		var/j = index
 
-		// j > 2 because the queen is always in the first slot
-		while(j > 2)
-			// Queen comes first, always. Just swap her into the first slot immediately if she's not there already
+		while(j > 1)
+			// Queen comes first, always
 			if(sorted_list[j]["is_queen"])
-				sorted_list.Swap(1, j)
+				sorted_list.Swap(j-1, j)
+				j--
+				continue
 
 			var/info = sorted_list[j-1]
+
+			// don't muck up queen's slot
+			if(info["is_queen"])
+				j--
+				continue
 
 			// Leaders before normal xenos
 			if(!info["leader"] && sorted_list[j]["leader"])

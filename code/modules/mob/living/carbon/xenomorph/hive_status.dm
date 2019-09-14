@@ -18,7 +18,6 @@
 		if(isnull(ui))
 			continue
 		ui.close()
-		qdel(ui)
 
 	update_all_data()
 

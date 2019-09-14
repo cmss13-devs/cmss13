@@ -207,6 +207,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 
 	var/clean_message = message
 	//Some macros remain in the string even after parsing and fuck up the eventual output
+	message = replacetext(message, "`", "")
 	message = replacetext(message, "\improper", "")
 	message = replacetext(message, "\proper", "")
 	message = replacetext(message, "\n", "<br>")

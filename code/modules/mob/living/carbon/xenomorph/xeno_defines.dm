@@ -766,8 +766,10 @@
 	var/list/xenos[totalXenos.len]
 
 	var/index = 1
+	var/useless_slots = 0
 	for(var/mob/living/carbon/Xenomorph/X in totalXenos)
 		if(X.z == ADMIN_Z_LEVEL)
+			useless_slots++
 			continue
 
 		// Insert without doing list merging
@@ -777,6 +779,9 @@
 			"leader" = (X in X.hive.xeno_leader_list),
 			"is_queen" = istype(X.caste, /datum/caste_datum/queen),
 		)
+
+	// Clear nulls from the xenos list
+	xenos.len -= useless_slots
 
 	// Make it all nice and fancy by sorting the list before returning it
 	var/list/sorted_keys = sort_xeno_keys(xenos)

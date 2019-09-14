@@ -43,7 +43,7 @@
 	for(var/client/C in admins)
 		log_admin(msg)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
-			to_chat(msg)
+			to_chat(C, msg)
 			C << 'sound/effects/sos-morse-code.ogg'
 
 /proc/Syndicate_announce(var/text , var/mob/Sender)

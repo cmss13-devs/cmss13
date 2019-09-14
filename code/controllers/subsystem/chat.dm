@@ -33,6 +33,7 @@ var/datum/subsystem/chat/SSchat
 	if(target == world)
 		target = clients
 
+	var/clean_message = message
 	//Some macros remain in the string even after parsing and fuck up the eventual output
 	message = replacetext(message, "\improper", "")
 	message = replacetext(message, "\proper", "")
@@ -53,6 +54,11 @@ var/datum/subsystem/chat/SSchat
 				C = T:client
 			else if (istype(T, /datum/mind) && T:current)
 				C = T:current:client
+
+			// If they are using the old chat, send it the old way
+			if(C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)
+				C << clean_message
+				continue
 			
 			if (C && C.chatOutput && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
 				//Client sucks at loading things, put their messages in a queue
@@ -68,6 +74,10 @@ var/datum/subsystem/chat/SSchat
 			C = target:client
 		else if (istype(target, /datum/mind) && target:current)
 			C = target:current:client
+
+		if(C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)
+			C << clean_message
+			return
 
 		if (C && C.chatOutput && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
 			C.chatOutput.messageQueue += message

@@ -13,6 +13,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 	var/cookieSent = FALSE				//Has the client sent a cookie for analysis
 	var/noWindow = FALSE				//If the user has the new skin.dm
 	var/list/connectionHistory = list() //Contains the connection history passed from chat cookie
+	var/oldChat = TRUE					//If they are using the old chat
 
 /datum/chatOutput/New(client/C)
 	. = ..()
@@ -91,13 +92,18 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 		return
 	
 	loaded = TRUE
-	winset(owner, "browseroutput", "is-disabled=false")
+	oldChat = FALSE
+	enableChat()
 
 	for (var/msg in messageQueue)
 		to_chat_forced(owner, msg)
 	
 	messageQueue = null
 	sendClientData()
+
+/datum/chatOutput/proc/enableChat()
+	winset(owner, "output", "is-visible=false")
+	winset(owner, "browseroutput", "is-disabled=false;is-visible=true")
 
 //Sends client connection details to the chat to handle and save
 /datum/chatOutput/proc/sendClientData()
@@ -199,6 +205,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 	if(target == world)
 		target = clients
 
+	var/clean_message = message
 	//Some macros remain in the string even after parsing and fuck up the eventual output
 	message = replacetext(message, "\improper", "")
 	message = replacetext(message, "\proper", "")
@@ -221,7 +228,12 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 			if(!C)
 				continue
 
-			if (C && C.chatOutput && !C.chatOutput.noWindow && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
+			// If they are using the old chat, send it the old way
+			if(C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)
+				C << clean_message
+				continue
+
+			if (C.chatOutput && !C.chatOutput.noWindow && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
 				//Client sucks at loading things, put their messages in a queue
 				C.chatOutput.messageQueue += message
 				continue
@@ -239,7 +251,11 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 		if(!C)
 			return
 
-		if (C && C.chatOutput && !C.chatOutput.noWindow && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
+		if(C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)
+			C << clean_message
+			return
+
+		if (C.chatOutput && !C.chatOutput.noWindow && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
 			C.chatOutput.messageQueue += message
 			return
 

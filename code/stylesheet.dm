@@ -48,6 +48,12 @@ em						{font-style: normal;	font-weight: bold;}
 .charlieradio			{color: #AA55AA;}
 .deltaradio				{color: #007FCF;}
 
+.medium					{					font-size: 2}
+.big					{					font-size: 2}
+.large					{					font-size: 3}
+.extra_large			{					font-size: 4}
+.huge					{					font-size: 5}
+
 .alert					{color: #ff0000;}
 h1.alert, h2.alert		{color: #000000;}
 
@@ -89,7 +95,9 @@ h1.alert, h2.alert		{color: #000000;}
 .objectivesuccess		{color: #00ff00;	font-weight: bold; font-size: 3;}
 .objectivefail			{color: #ff0000;	font-weight: bold; font-size: 3;}
 
-.alien					{color: #543354;}
+.xeno					{color: #900090;	font-style: italic;}
+.xenoleader				{color: #730d73;	font-style: italic;						font-size: 3;}
+.xenoqueen				{color: #730d73; 	font-style: italic; font-weight: bold; font-size: 3;}
 .newscaster				{color: #800000;}
 
 .role_header			{color: #db0000		text-align: center; font-weight: bold; font-family: trebuchet-ms; font-size: 2;}
@@ -99,6 +107,10 @@ h1.alert, h2.alert		{color: #000000;}
 .round_header			{color: #db0000; 	text-align: center; font-family: courier; font-weight: bold; font-size: 4;}
 .round_body				{color: #001427; 	text-align: center; font-family: trebuchet-ms; font-weight: bold; font-size: 3;}
 .event_announcement		{color: #600d48; 	font-family: arial-narrow; font-weight: bold; font-size: 3;}
+
+.announce_header		{color: #000000;	font-weight: bold; font-size: 3;}
+.announce_header_blue	{color: #000099;	font-weight: bold; font-size: 3;}
+.announce_body			{color: #ff0000;	font-weight: normal;}
 
 .centerbold				{				 	text-align: center; font-weight: bold;}
 

@@ -220,3 +220,32 @@ var/global/normal_ooc_colour = "#002eb8"
 	set desc = "Information about the current round"
 	set category = "OOC"
 	to_chat(usr, "The current map is [map_tag]")
+
+
+/client/verb/old_chat()
+	set name = "Old Chat"
+	set category = "OOC"
+	if(alert(src, "Are you sure you want to switch back to the old chat?", "", "Yes", "Cancel") == "Yes")
+		if(chatOutput)
+			chatOutput.oldChat = TRUE
+		winset(src, "output", "is-visible=true;is-disabled=false")
+		winset(src, "browseroutput", "is-visible=false")
+
+
+/client/verb/reload_chat()
+	set name = "Reload Goonchat"
+	set category = "OOC"
+	if (!chatOutput)
+		chatOutput = new /datum/chatOutput(src)
+		chatOutput.start()
+		if(alert(src, "Goonchat is starting up again, wait for a bit before answering. Is it fixed?", "", "Yes", "No") == "No")
+			chatOutput.load()
+	else if (chatOutput.loaded)
+		chatOutput.loaded = FALSE
+		chatOutput.start()
+		if(alert(src, "Goonchat is starting up again, wait for a bit before answering. Is it fixed?", "", "Yes", "No") == "No")
+			chatOutput.load()
+	else
+		chatOutput.start()
+		if(alert(src, "Goonchat is starting up again, wait for a bit before answering. Is it fixed?", "", "Yes", "No") == "No")
+			chatOutput.load()

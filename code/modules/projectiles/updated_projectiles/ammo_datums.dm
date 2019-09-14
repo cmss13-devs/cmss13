@@ -281,6 +281,15 @@
 	penetration= config.med_armor_penetration
 	shrapnel_chance = config.med_shrapnel_chance
 
+/datum/ammo/bullet/pistol/le
+	name = "armor-shredding pistol bullet"
+
+/datum/ammo/bullet/pistol/le/New()
+	..()
+	damage = config.min_hit_damage
+	penetration = config.low_armor_penetration
+	pen_armor_punch = 3
+
 // Used by M1911, Deagle and KT-42
 /datum/ammo/bullet/pistol/heavy
 	name = "heavy pistol bullet"
@@ -414,6 +423,8 @@
 				H.apply_damage(500, BRUTE, "head", no_limb_loss = TRUE, impact_name = impact_name, impact_limbs = impact_limbs, permanent_kill = TRUE) //not coming back
 				H.visible_message(SPAN_DANGER("[M] WAS EXECUTED!"), \
 					SPAN_HIGHDANGER("You were Executed!"))
+				if(user)
+					user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_source)
 		else
 			return -1
 /*
@@ -427,7 +438,7 @@
 
 /datum/ammo/bullet/smg/New()
 	..()
-	damage = config.lmed_plus_hit_damage
+	damage = config.lmed_hit_damage
 	accurate_range = config.lshort_shell_range
 	penetration = 0
 	shell_speed = config.fast_shell_speed
@@ -464,11 +475,11 @@
 /datum/ammo/bullet/smg/le/New()
 	..()
 	scatter = config.min_scatter_value
-	damage = config.base_hit_damage
+	damage = config.mlow_hit_damage
 	penetration = config.low_armor_penetration
 	shell_speed = config.fast_shell_speed
 	damage_falloff = config.reg_damage_falloff
-	pen_armor_punch = 1.25
+	pen_armor_punch = 4
 
 /*
 //================================================
@@ -482,7 +493,7 @@
 /datum/ammo/bullet/rifle/New()
 	..()
 	accurate_range = config.norm_shell_range
-	damage = config.lhigh_hit_damage
+	damage = config.hmed_hit_damage
 	accuracy = config.hmed_hit_accuracy
 	scatter = config.min_scatter_value
 	shell_speed = config.ultra_shell_speed
@@ -494,10 +505,10 @@
 /datum/ammo/bullet/rifle/explosive/New()
 	..()
 	accurate_range = config.norm_shell_range
-	damage = config.hlmed_hit_damage
+	damage = config.hlow_hit_damage
 	accuracy = 0
 	shell_speed = config.super_shell_speed
-	damage_falloff = config.reg_damage_falloff
+	damage_falloff = config.med_damage_falloff
 
 /datum/ammo/bullet/rifle/explosive/on_hit_mob(mob/M, obj/item/projectile/P)
 	explosion_rec(get_turf(M), 80, 40, P.weapon_source, P.firer)
@@ -516,9 +527,15 @@
 	..()
 	damage = config.hlow_hit_damage
 	penetration = config.med_armor_penetration
-	shell_speed = config.super_shell_speed
-	damage_falloff = config.reg_damage_falloff
 
+/datum/ammo/bullet/rifle/le
+	name = "armor-shredding rifle bullet"
+
+/datum/ammo/bullet/rifle/le/New()
+	..()
+	damage = config.mlow_hit_damage
+	penetration = config.low_armor_penetration
+	pen_armor_punch = 5
 
 /datum/ammo/bullet/rifle/incendiary
 	name = "incendiary rifle bullet"
@@ -785,13 +802,14 @@
 /datum/ammo/bullet/sniper/flak
 	name = "flak sniper bullet"
 	iff_signal = ACCESS_IFF_MARINE
+	damage_type = BRUTE
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_SKIPS_HUMANS|AMMO_IGNORE_COVER|AMMO_SCANS_NEARBY
 
 /datum/ammo/bullet/sniper/flak/New()
 	..()
 	accuracy = config.max_hit_accuracy
 	scatter = config.low_scatter_value
-	damage = config.max_hit_damage
+	damage = config.mhigh_hit_damage
 	damage_var_high = config.low_proj_variance
 	penetration= 0
 
@@ -880,7 +898,7 @@
 	accurate_range = config.norm_shell_range
 	accuracy = config.med_hit_accuracy
 	damage_falloff = config.tactical_damage_falloff
-	damage = config.lmed_plus_hit_damage
+	damage = config.lmed_hit_damage
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/armor_piercing
@@ -921,9 +939,9 @@
 	damage_falloff = config.tactical_damage_falloff
 	damage = config.med_hit_damage
 	penetration = config.hmed_armor_penetration
-	damage_armor_punch = 1
-
-
+	damage_armor_punch = 3	
+	
+	
 /datum/ammo/bullet/turret
 	name = "autocannon bullet"
 	icon_state 	= "redbullet" //Red bullets to indicate friendly fire restriction
@@ -965,7 +983,7 @@
 	accuracy_var_low = config.low_proj_variance
 	accuracy_var_high = config.low_proj_variance
 	accurate_range = config.short_shell_range
-	damage = config.high_hit_damage
+	damage = config.lhigh_hit_damage
 	penetration= config.hmed_armor_penetration
 	shrapnel_chance = config.med_shrapnel_chance
 
@@ -1455,18 +1473,6 @@
 /datum/ammo/xeno/toxin/burst/on_near_target(turf/T, obj/item/projectile/P)
 	return neuro_flak(T,P, effect_power, FALSE, 2)
 
-/datum/ammo/xeno/toxin/shatter // Used by boiler shatter glob strain
-	name = "neurotoxin spatter"
-
-/datum/ammo/xeno/toxin/shatter/New()
-	..()
-	accuracy = config.med_hit_accuracy
-	accurate_range = config.max_shell_range
-	point_blank_range = -1
-	max_range = config.close_shell_range
-	shell_speed = config.slow_shell_speed
-	scatter = config.med_scatter_value
-
 /datum/ammo/xeno/sticky
 	name = "sticky resin spit"
 	icon_state = "sticky"
@@ -1692,33 +1698,6 @@
 	create_shrapnel(T, shrapnel_amount, , ,shrapnel_xeno, P.weapon_source, P.weapon_source_mob)
 	T.visible_message(SPAN_DANGER("A huge ball of acid splashes down, sending drops and splashes in every direction!"))
 	playsound(T, 'sound/effects/squelch1.ogg', 25, 1)
-
-/datum/ammo/xeno/railgun_glob
-	name = "railgun glob of acid"
-	icon_state = "boiler_railgun"
-	ping = "ping_x_railgun"
-	sound_hit = "acid_hit"
-	sound_bounce = "acid_bounce"
-	debilitate = list(1,1,0,0,1,1,0,0)
-	flags_ammo_behavior = AMMO_XENO_ACID|AMMO_SKIPS_ALIENS|AMMO_IGNORE_ARMOR|AMMO_ANTISTRUCT|AMMO_STOPPED_BY_COVER
-
-/datum/ammo/xeno/railgun_glob/New()
-	..()
-	accurate_range = config.max_shell_range
-	damage = config.mhigh_hit_damage
-	damage_var_high = config.min_proj_variance
-	damage_type = BURN
-	scatter = config.min_scatter_value
-	accuracy = config.max_hit_accuracy
-	max_range = config.long_shell_range
-	penetration = config.hmed_armor_penetration
-	shell_speed = config.ultra_shell_speed
-
-/datum/ammo/xeno/railgun_glob/on_hit_obj(obj/O, obj/item/projectile/P)
-	if(istype(O, /obj/structure/barricade))
-		var/obj/structure/barricade/B = O
-		B.health -= damage + rand(5)
-		B.update_health(1)
 
 /datum/ammo/xeno/bone_chips
 	name = "bone chips"

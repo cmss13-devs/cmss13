@@ -20,10 +20,6 @@
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	stack_id = "cable coil"
 
-	suicide_act(mob/user)
-		viewers(user) << SPAN_WARNING("<b>[user] is strangling \himself with the [src.name]! It looks like \he's trying to commit suicide.</b>")
-		return(OXYLOSS)
-
 
 /obj/item/stack/cable_coil/New(loc, length = MAXCOIL, var/param_color = null)
 	..()

@@ -138,7 +138,7 @@
 	if( !msg )
 		return
 
-	M << msg
+	to_chat(M, msg)
 	log_admin("DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]): [msg]")
 	message_admins(SPAN_NOTICE("\bold DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]): [msg]<BR>"), 1)
 	feedback_add_details("admin_verb","DIRN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -219,7 +219,7 @@ proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
 
 	var/show_log = alert(src, "Show ion message?", "Message", "Yes", "No")
 	if(show_log == "Yes")
-		command_announcement.Announce("Ion storm detected in proximity. Recommendation: Check all AI-controlled equipment for data corruption.", "Anomaly Alert", new_sound = 'sound/AI/ionstorm.ogg')
+		marine_announcement("Ion storm detected in proximity. Recommendation: Check all AI-controlled equipment for data corruption.", "Anomaly Alert", 'sound/AI/ionstorm.ogg')
 
 	feedback_add_details("admin_verb","ION") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -497,7 +497,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	var/show_log = alert(src, "Show ion message?", "Message", "Yes", "No")
 	if(show_log == "Yes")
-		command_announcement.Announce("Ion storm detected in proximity. Recommendation: Check all AI-controlled equipment for data corruption.", "Anomaly Alert", new_sound = 'sound/AI/ionstorm.ogg')
+		marine_announcement("Ion storm detected in proximity. Recommendation: Check all AI-controlled equipment for data corruption.", "Anomaly Alert", 'sound/AI/ionstorm.ogg')
 	feedback_add_details("admin_verb","IONC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/turn_everyone_into_primitives()
@@ -603,7 +603,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	switch(alert("Should this be announced to the general population?",,"Yes","No"))
 		if("Yes")
-			command_announcement.Announce(input, customname, new_sound = 'sound/AI/commandreport.ogg');
+			marine_announcement(input, customname, 'sound/AI/commandreport.ogg');
 		//if("No")
 		//	world << sound('sound/AI/commandreport.ogg')
 
@@ -619,8 +619,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 	var/input = input(usr, "This should be a message from the ship's AI.  Check with online staff before you send this. Do not use html.", "What?", "") as message|null
 	if(!input) r_FAL
-	if(ai_system.Announce(input))
-
+	if(ai_announcement(input))
 		for (var/obj/machinery/computer/communications/C in machines)
 			if(! (C.stat & (BROKEN|NOPOWER) ) )
 				var/obj/item/paper/P = new /obj/item/paper( C.loc )
@@ -645,7 +644,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	check_hive_status()
+	hive_datum[XENO_HIVE_NORMAL].hive_ui.open_hive_status(mob)
 
 /client/proc/show_objectives_status()
 	set name = "Show Objectives Status"
@@ -655,7 +654,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		to_chat(src, "Only administrators may use this command.")
 		return
 	if(objectives_controller)
-		src << objectives_controller.get_objectives_progress()
+		to_chat(src, objectives_controller.get_objectives_progress())
 
 /client/proc/show_objectives_status_to_all()
 	set name = "Show Objectives Status To Everyone"
@@ -665,7 +664,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		to_chat(src, "Only administrators may use this command.")
 		return
 	if(objectives_controller)
-		world << objectives_controller.get_objectives_progress()
+		to_world(objectives_controller.get_objectives_progress())
 
 /client/proc/cmd_admin_xeno_report()
 	set category = "Special Verbs"
@@ -676,13 +675,14 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 	var/input = input(usr, "This should be a message from the ruler of the Xenomorph race.", "What?", "") as message|null
 	var/customname = "Queen Mother Psychic Directive"
-	if(!input) r_FAL
+	if(!input) 
+		return FALSE
 
-	var/data = "<h1>[customname]</h1><br><br><br>\red[input]<br><br>"
+	var/data = "<br>[SPAN_ANNOUNCEMENT_HEADER_BLUE(customname)]<br><br>[SPAN_ANNOUNCEMENT_BODY(input)]<br>"
 
 	for(var/mob/M in player_list)
 		if(isXeno(M) || isobserver(M))
-			M << data
+			to_chat(M, data)
 
 	log_admin("[key_name(src)] has created a Queen Mother report: [input]")
 	message_admins("[key_name_admin(src)] has created a Queen Mother report", 1)

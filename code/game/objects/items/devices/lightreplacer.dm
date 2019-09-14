@@ -150,7 +150,7 @@
 			return
 
 		else
-			U << failmsg
+			to_chat(U, failmsg)
 			return
 	else
 		to_chat(U, "There is a working [target.fitting] already inserted.")

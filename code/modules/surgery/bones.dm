@@ -66,6 +66,7 @@
 	else
 		user.visible_message(SPAN_NOTICE("[user] sets the bone in [target]'s [affected.display_name] in place with \the [tool]."), \
 		SPAN_NOTICE("You set the bone in [target]'s [affected.display_name] in place with \the [tool]."))
+	user.count_niche_stat(STATISTICS_NICHE_SURGERY_BONES)
 	affected.status &= ~LIMB_BROKEN
 	affected.status &= ~LIMB_SPLINTED
 	affected.status |= LIMB_REPAIRED

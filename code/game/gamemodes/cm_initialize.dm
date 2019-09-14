@@ -266,6 +266,7 @@ datum/game_mode/proc/initialize_special_clamps()
 //If we are selecting xenomorphs, we NEED them to play the round. This is the expected behavior.
 //If this is an optional behavior, just override this proc or make an override here.
 /datum/game_mode/proc/initialize_starting_xenomorph_list()
+
 	var/list/datum/mind/possible_xenomorphs = get_players_for_role(BE_ALIEN)
 	var/list/datum/mind/possible_queens = get_players_for_role(BE_QUEEN)
 	if(possible_xenomorphs.len < xeno_required_num) //We don't have enough aliens, we don't consider people rolling for only Queen.
@@ -278,38 +279,39 @@ datum/game_mode/proc/initialize_special_clamps()
 		if(A.assigned_role == "MODE" || jobban_isbanned(original, "Queen"))
 			possible_queens -= A
 
+	var/datum/mind/new_queen
 	if(possible_queens.len) // Pink one of the people who want to be Queen and put them in
-		var/datum/mind/new_queen = pick(possible_queens)
+		new_queen = pick(possible_queens)
 		if(new_queen)
-			new_queen.assigned_role = "MODE"
-			new_queen.special_role = "Xenomorph"
+			setup_new_xeno(new_queen)
 			picked_queen = new_queen
-			new_queen.setup_xeno_stats()
-			new_queen.faction = FACTION_XENOMORPH
+			possible_xenomorphs -= new_queen	
 
-	// Do this after we picked the Queen, so they get removed from possible xenos
-	for(var/datum/mind/A in possible_xenomorphs)
-		if(A.assigned_role == "MODE")
-			possible_xenomorphs -= A
 
-	var/i = xeno_starting_num
 	var/datum/mind/new_xeno
-	var/turf/larvae_spawn
-	while(i > 0) //While we can still pick someone for the role.
+
+	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
+
+
+	for(var/i in 1 to xeno_starting_num) //While we can still pick someone for the role.
+
 		if(possible_xenomorphs.len) //We still have candidates
 			new_xeno = pick(possible_xenomorphs)
-			if(!new_xeno) break  //Looks like we didn't get anyone. Back out.
-			new_xeno.assigned_role = "MODE"
-			new_xeno.special_role = "Xenomorph"
 			possible_xenomorphs -= new_xeno
+
+			if(!new_xeno)
+				hive.stored_larva++
+				hive.hive_ui.update_burrowed_larva()
+				continue  //Looks like we didn't get anyone. Keep going.
+
+			setup_new_xeno(new_xeno)
+
 			xenomorphs += new_xeno
-		else //Out of candidates, spawn in empty larvas directly
-			larvae_spawn = pick(xeno_spawn)
-			new /mob/living/carbon/Xenomorph/Larva(larvae_spawn)
-		if(new_xeno)
-			new_xeno.setup_xeno_stats()
-			new_xeno.faction = FACTION_XENOMORPH
-		i--
+		else //Out of candidates, fill the xeno hive with burrowed larva
+			hive.stored_larva += round((xeno_starting_num - i))
+			hive.hive_ui.update_burrowed_larva()
+			break
+	
 
 	/*
 	Our list is empty. This can happen if we had someone ready as alien and predator, and predators are picked first.
@@ -320,6 +322,14 @@ datum/game_mode/proc/initialize_special_clamps()
 		return
 
 	return 1
+
+// Helper proc to set some constants
+/proc/setup_new_xeno(var/datum/mind/new_xeno)
+	new_xeno.assigned_role = "MODE"
+	new_xeno.special_role = "Xenomorph"
+	new_xeno.setup_xeno_stats()
+	new_xeno.faction = FACTION_XENOMORPH
+
 
 /datum/game_mode/proc/initialize_post_xenomorph_list()
 	for(var/datum/mind/new_xeno in xenomorphs) //Build and move the xenos.
@@ -623,7 +633,7 @@ datum/game_mode/proc/initialize_special_clamps()
 		if(spawner.intro_text && spawner.intro_text.len)
 			spawn(4)
 				for(var/line in spawner.intro_text)
-					H << line
+					to_chat(H, line)
 		else
 			spawn(4)
 				to_chat(H, "<h2>You are a survivor!</h2>")
@@ -640,7 +650,7 @@ datum/game_mode/proc/initialize_special_clamps()
 			. = 1
 			spawn(6)
 				var/temp_story = "<b>Your story thus far</b>: " + spawner.story_text
-				H <<  temp_story
+				to_chat(H, temp_story)
 				H.mind.memory += temp_story
 				//remove ourselves, so we don't get stuff generated for us
 				survivors -= H.mind
@@ -720,10 +730,10 @@ datum/game_mode/proc/initialize_special_clamps()
 					story = replacetext(story, "{name}", "[random_name]")
 					spawn(6)
 						var/temp_story = "<b>Your story thus far</b>: " + replacetext(story, "{surv}", "[another_survivor.current.real_name]")
-						survivor.current <<  temp_story
+						to_chat(survivor.current, temp_story)
 						survivor.memory += temp_story //Add it to their memories.
 						temp_story = "<b>Your story thus far</b>: " + replacetext(story, "{surv}", "[survivor.current.real_name]")
-						another_survivor.current << temp_story
+						to_chat(another_survivor.current, temp_story)
 						another_survivor.memory += temp_story
 			else
 				if(survivor_story.len) //Shouldn't happen, but technically possible.
@@ -731,7 +741,7 @@ datum/game_mode/proc/initialize_special_clamps()
 					survivor_story -= story
 					spawn(6)
 						var/temp_story = "<b>Your story thus far</b>: " + replacetext(story, "{name}", "[random_name]")
-						survivor.current << temp_story
+						to_chat(survivor.current, temp_story)
 						survivor.memory += temp_story
 		current_survivors -= survivor
 	return 1

@@ -38,9 +38,9 @@
 				if("Praetorian")
 					to_chat(src, SPAN_XENOANNOUNCE("You are the most fearsome of warleaders. You are inevitable. Bring death to the opponents of the hive!"))
 				if("Drone")
-					src <<SPAN_XENOANNOUNCE("You are the ultimate worker of the Hive. Time to clock in, and clock the tallhosts out.")
+					to_chat(src, SPAN_XENOANNOUNCE("You are the ultimate worker of the Hive. Time to clock in, and clock the tallhosts out."))
 				if("Hivelord")
-					src <<SPAN_XENOANNOUNCE("You are the builder of walls. Ensure that the marines are the ones who pay for them.")
+					to_chat(src, SPAN_XENOANNOUNCE("You are the builder of walls. Ensure that the marines are the ones who pay for them."))
 				if("Carrier")
 					to_chat(src, SPAN_XENOANNOUNCE("You are the master of huggers. Throw them like baseballs at the marines!"))
 				if("Burrower")
@@ -67,6 +67,9 @@
 	generate_name() //Give them a new name now
 
 	hud_set_queen_overwatch() //update the upgrade level insignia on our xeno hud.
+
+	// Update the hive status
+	hive.hive_ui.update_xeno_info()
 
 	//One last shake for the sake of it
 	xeno_jitter(25)
@@ -132,10 +135,6 @@
 	..()
 	upgrade_xeno(3)
 
-/mob/living/carbon/Xenomorph/Praetorian/primordial/New()
-	..()
-	upgrade_xeno(4)
-
 /mob/living/carbon/Xenomorph/Ravager/mature/New()
 	..()
 	upgrade_xeno(1)
@@ -147,10 +146,6 @@
 /mob/living/carbon/Xenomorph/Ravager/ancient/New()
 	..()
 	upgrade_xeno(3)
-
-/mob/living/carbon/Xenomorph/Ravager/primordial/New()
-	..()
-	upgrade_xeno(4)
 
 /mob/living/carbon/Xenomorph/Sentinel/mature/New()
 	..()
@@ -188,10 +183,6 @@
 	..()
 	upgrade_xeno(3)
 
-/mob/living/carbon/Xenomorph/Lurker/primordial/New()
-	..()
-	upgrade_xeno(4)
-
 /mob/living/carbon/Xenomorph/Queen/mature/New()
 	..()
 	upgrade_xeno(1)
@@ -203,10 +194,6 @@
 /mob/living/carbon/Xenomorph/Queen/ancient/New()
 	..()
 	upgrade_xeno(3)
-
-/mob/living/carbon/Xenomorph/Queen/primordial/New()
-	..()
-	upgrade_xeno(4)
 
 /mob/living/carbon/Xenomorph/Crusher/mature/New()
 	..()
@@ -220,10 +207,6 @@
 	..()
 	upgrade_xeno(3)
 
-/mob/living/carbon/Xenomorph/Crusher/primordial/New()
-	..()
-	upgrade_xeno(4)
-
 /mob/living/carbon/Xenomorph/Boiler/mature/New()
 	..()
 	upgrade_xeno(1)
@@ -235,8 +218,6 @@
 /mob/living/carbon/Xenomorph/Boiler/ancient/New()
 	..()
 	upgrade_xeno(3)
-
-
 
 /mob/living/carbon/Xenomorph/Defender/mature/New()
 	..()
@@ -263,10 +244,6 @@
 	..()
 	upgrade_xeno(3)
 
-/mob/living/carbon/Xenomorph/Warrior/primordial/New()
-	..()
-	upgrade_xeno(4)
-
 /mob/living/carbon/Xenomorph/Burrower/mature/New()
 	..()
 	upgrade_xeno(1)
@@ -278,7 +255,3 @@
 /mob/living/carbon/Xenomorph/Burrower/ancient/New()
 	..()
 	upgrade_xeno(3)
-
-/mob/living/carbon/Xenomorph/Predalien/primordial/New()
-	..()
-	upgrade_xeno(4)

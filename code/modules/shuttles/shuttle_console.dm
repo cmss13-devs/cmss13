@@ -178,9 +178,10 @@
 		if(shuttle.moving_status == SHUTTLE_IDLE) //Multi consoles, hopefully this will work
 
 			if(shuttle.locked) return
+			var/mob/M = usr
 
 			//Alert code is the Queen is the one calling it, the shuttle is on the ground and the shuttle still allows alerts
-			if(isXenoQueen(usr) && shuttle.location == 1 && shuttle.alerts_allowed && onboard && !shuttle.iselevator)
+			if(isXenoQueen(M) && shuttle.location == 1 && shuttle.alerts_allowed && onboard && !shuttle.iselevator)
 				var/i = alert("Warning: Once you launch the shuttle you will not be able to bring it back. Confirm anyways?", "WARNING", "Yes", "No")
 				if(shuttle.moving_status != SHUTTLE_IDLE || shuttle.locked || shuttle.location != 1 || !shuttle.alerts_allowed || !shuttle.queen_locked || shuttle.recharging) return
 				if(istype(shuttle, /datum/shuttle/ferry/marine) && src.z == 1 && i == "Yes") //Shit's about to kick off now
@@ -189,13 +190,13 @@
 					shuttle1.launch_crash()
 					if(round_statistics)
 						round_statistics.track_hijack()
-					command_announcement.Announce("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", \
-					"Dropship Alert", new_sound = 'sound/AI/hijack.ogg')
+					marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg')
 					shuttle.alerts_allowed--
-					to_chat(usr, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
-					var/mob/living/carbon/Xenomorph/Queen/Q = usr // typechecked above
+					to_chat(M, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
+					var/mob/living/carbon/Xenomorph/Queen/Q = M // typechecked above
 					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"),3,Q.hivenumber)
 					playsound(src, 'sound/misc/queen_alarm.ogg')
+					M.count_niche_stat(STATISTICS_NICHE_FLIGHT)
 					if(bomb_set)
 						for(var/obj/machinery/nuclearbomb/bomb in world)
 							bomb.end_round = FALSE
@@ -204,14 +205,16 @@
 				else
 					shuttle.launch(src)
 
-			else if(!onboard && isXenoQueen(usr) && shuttle.location == 1 && !shuttle.iselevator)
-				to_chat(usr, "<span class='alert'>Hrm, that didn't work. Maybe try the one on the ship?</span>")
+			else if(!onboard && isXenoQueen(M) && shuttle.location == 1 && !shuttle.iselevator)
+				to_chat(M, "<span class='alert'>Hrm, that didn't work. Maybe try the one on the ship?</span>")
 				return
 			else
 				if(z == 1) shuttle.transit_gun_mission = 0 //remote launch always do transport flight.
 				shuttle.launch(src)
-			log_admin("[usr] ([usr.key]) launched a [shuttle.iselevator? "elevator" : "shuttle"] from [src]")
-			message_admins("[usr] ([usr.key]) launched a [shuttle.iselevator? "elevator" : "shuttle"] using [src].")
+				if(onboard && !shuttle.iselevator)
+					M.count_niche_stat(STATISTICS_NICHE_FLIGHT)
+			log_admin("[M] ([M.key]) launched a [shuttle.iselevator? "elevator" : "shuttle"] from [src]")
+			message_admins("[M] ([M.key]) launched a [shuttle.iselevator? "elevator" : "shuttle"] using [src].")
 
 	if(href_list["optimize"])
 		if(shuttle.transit_optimized) return

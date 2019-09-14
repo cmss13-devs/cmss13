@@ -149,7 +149,7 @@
 					firemission_edit_data += list(list("name" = sanitize(copytext(firerec.weapon.name, 1, 50)), "ammo" = ammo, "gimbal" = gimbal, "offsets" = firerec.offsets))
 
 		if(!found_selected)
-			selected_firemission = firemission_envelope.generate_mission()
+			selected_firemission = null
 		
 		if(editing_firemission)
 			fm_length = editing_firemission.mission_length
@@ -531,21 +531,21 @@
 	
 	var/result = firemission_envelope.execute_firemission(firemission_envelope.recorded_loc, firemission_envelope.recorded_offset, firemission_envelope.recorded_dir, fmid)
 	if(result<1)
-		to_chat(usr, "Screen beeps with an error: ") + firemission_envelope.mission_error
+		to_chat(usr, "Screen beeps with an error: "+ firemission_envelope.mission_error)
 	else
 		update_trace_loc()
 
 /obj/machinery/computer/dropship_weapons/proc/update_offset(new_offset)
 	var/result = firemission_envelope.change_offset(new_offset)
 	if(result<1)
-		to_chat(usr, "Screen beeps with an error: ") + firemission_envelope.mission_error
+		to_chat(usr, "Screen beeps with an error: "+ firemission_envelope.mission_error)
 	else
 		update_trace_loc()
 
 /obj/machinery/computer/dropship_weapons/proc/update_location(new_location)
 	var/result = firemission_envelope.change_target_loc(new_location)
 	if(result<1)
-		to_chat(usr, "Screen beeps with an error: ") + firemission_envelope.mission_error
+		to_chat(usr, "Screen beeps with an error: "+ firemission_envelope.mission_error)
 	else
 		update_trace_loc()
 
@@ -553,7 +553,7 @@
 /obj/machinery/computer/dropship_weapons/proc/update_direction(new_direction)
 	var/result = firemission_envelope.change_direction(new_direction)
 	if(result<1)
-		to_chat(usr, "Screen beeps with an error: ") + firemission_envelope.mission_error
+		to_chat(usr, "Screen beeps with an error: " + firemission_envelope.mission_error)
 	else
 		update_trace_loc()
 

@@ -153,7 +153,7 @@ var/bomb_set = FALSE
 						start_processing()
 						var/name = "[MAIN_AI_SYSTEM] Nuclear Tracker"
 						var/input = "ALERT.\n\nNUCLEAR EXPLOSIVE ORDINANCE ACTIVATED.\n\nDETONATION IN [timeleft] SECONDS."
-						command_announcement.Announce(input, name, new_sound = 'sound/misc/notice1.ogg')
+						marine_announcement(input, name, 'sound/misc/notice1.ogg')
 					else
 						bomb_set = FALSE
 				else
@@ -215,7 +215,7 @@ var/bomb_set = FALSE
 	bomb_set = FALSE
 	var/name = "[MAIN_AI_SYSTEM] Nuclear Tracker"
 	var/input = "ALERT.\n\nNUCLEAR EXPLOSIVE ORDINANCE DEACTIVATED"
-	command_announcement.Announce(input, name, new_sound = 'sound/misc/notice1.ogg')
+	marine_announcement(input, name, 'sound/misc/notice1.ogg')
 	announce_xenos()
 
 /obj/machinery/nuclearbomb/proc/explode()

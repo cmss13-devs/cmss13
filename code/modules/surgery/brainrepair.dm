@@ -66,6 +66,7 @@
 /datum/surgery_step/brain/hematoma/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] mends hematoma in [target]'s brain with \the [tool]."),	\
 	SPAN_NOTICE("You mend hematoma in [target]'s brain with \the [tool]."))
+	user.count_niche_stat(STATISTICS_NICHE_SURGERY_BRAIN)
 	var/datum/internal_organ/brain/sponge = target.internal_organs_by_name["brain"]
 	if(sponge)
 		sponge.damage = BONECHIPS_MAX_DAMAGE

@@ -153,3 +153,31 @@ obj/item/alienjar
 	layer = 2
 	density = 0
 	opacity = 0
+
+
+// Prop
+/obj/structure/ore_box
+	icon = 'icons/obj/structures/props/mining.dmi'
+	icon_state = "orebox0"
+	name = "ore box"
+	desc = "A heavy box used for storing ore."
+	density = 1
+	anchored = 0
+
+
+/obj/structure/computer3frame
+	density = 1
+	anchored = 0
+	name = "computer frame"
+	icon = 'icons/obj/structures/machinery/stock_parts.dmi'
+	icon_state = "0"
+	var/state = 0
+
+/obj/structure/computer3frame/server
+	name = "server frame"
+
+/obj/structure/computer3frame/wallcomp
+	name = "wall-computer frame"
+
+/obj/structure/computer3frame/laptop
+	name = "laptop frame"

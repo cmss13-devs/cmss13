@@ -121,3 +121,11 @@
 	icon_state = "capacitor"
 	desc = "A debug item for research."
 	origin_tech = "materials=8;programming=8;magnets=8;powerstorage=8;bluespace=8;combat=8;biotech=8;syndicate=8;phorontech=8;engineering=8"
+
+/obj/item/moneybag
+	icon = 'icons/obj/items/storage.dmi'
+	name = "Money bag"
+	icon_state = "moneybag"
+	force = 10.0
+	throwforce = 2.0
+	w_class = SIZE_LARGE

@@ -70,6 +70,7 @@
 
 	user.visible_message(SPAN_NOTICE("[user] applies \the [tool] on the affected tissue in [target]'s [affected.display_name]."), \
 	SPAN_NOTICE("You apply \the [tool] on the affected tissue in [target]'s [affected.display_name]."))
+	user.count_niche_stat(STATISTICS_NICHE_SURGERY_NECRO)
 	affected.necro_surgery_stage = 0
 
 /datum/surgery_step/treat_necrosis/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)

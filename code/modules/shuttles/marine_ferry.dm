@@ -395,6 +395,7 @@
 				left_behind += xeno
 		if(with_queen.len > left_behind.len) // to stop solo-suiciding by queens
 			hive.stored_larva = 0
+			hive.hive_ui.update_burrowed_larva()
 			for(var/mob/living/carbon/Xenomorph/about_to_die in left_behind)
 				to_chat(about_to_die, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
 				qdel(about_to_die) // just delete them
@@ -421,7 +422,7 @@
 
 	//This is where things change and shit gets real
 
-	command_announcement.Announce("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", new_sound='sound/AI/dropship_emergency.ogg')
+	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg')
 
 	playsound(turfs_int[sound_target], sound_landing, 100, 0)
 

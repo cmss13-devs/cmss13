@@ -99,6 +99,10 @@
 		var/mob/target = locate(href_list["track"]) in mob_list
 		if(target)
 			ManualFollow(target)
+	if(href_list[XENO_OVERWATCH_TARGET_HREF])
+		var/mob/target = locate(href_list[XENO_OVERWATCH_TARGET_HREF]) in living_xeno_list
+		if(target)
+			ManualFollow(target)
 	if(href_list["jumptocoord"])
 		if(istype(usr, /mob/dead/observer))
 			var/mob/dead/observer/A = usr
@@ -191,7 +195,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		S.Crossed(src)
 
 /mob/dead/observer/examine(mob/user)
-	user << desc
+	to_chat(user, desc)
 
 /mob/dead/observer/can_use_hands()
 	return 0
@@ -514,7 +518,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Check the status of the hive."
 	set category = "Ghost"
 
-	check_hive_status(src)
+	hive_datum[XENO_HIVE_NORMAL].hive_ui.open_hive_status(src)
 
 /mob/dead/verb/join_as_alien()
 	set category = "Ghost"

@@ -139,11 +139,17 @@
 						chance = !hand ? 40 : 20
 
 					if (prob(chance))
-						visible_message("<span class='danger'>[src]'s [W.name] goes off during struggle!", null, null, 5)
+						visible_message("<span class='danger'>[src]'s [W.name] goes off during the struggle!", null, null, 5)
 						var/list/turfs = list()
 						for(var/turf/T in view())
 							turfs += T
 						var/turf/target = pick(turfs)
+						count_niche_stat(STATISTICS_NICHE_DISCHARGE)
+						
+						attack_log += "\[[time_stamp()]\] <b>[src]/[src.ckey]</b> accidentally fired <b>[W.name]</b> in [get_area(src)] triggered by <b>[M]/[M.ckey]</b>."
+						M:attack_log += "\[[time_stamp()]\] <b>[src]/[src.ckey]</b> accidentally fired <b>[W.name]</b> in [get_area(src)] triggered by <b>[M]/[M.ckey]</b>."
+						msg_admin_attack("[src] ([src.ckey]) accidentally fired <b>[W.name]</b> in [get_area(src)] triggered by [M] ([M.ckey]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[M.x];Y=[M.y];Z=[M.z]'>JMP</a>)")
+
 						return W.afterattack(target,src)
 
 			var/randn = rand(1, 100)

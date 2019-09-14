@@ -9,7 +9,7 @@
 	endWhen = rand(600,1200)
 
 /datum/event/carp_migration/announce()
-	command_announcement.Announce("Unknown biological entities have been detected near [station_name], please stand-by.", "Lifesign Alert")
+	marine_announcement("Unknown biological entities have been detected near [station_name], please stand-by.", "Lifesign Alert")
 
 /datum/event/carp_migration/start()
 	for(var/obj/effect/landmark/C in landmarks_list)

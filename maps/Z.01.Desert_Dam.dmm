@@ -750,7 +750,7 @@
 	},
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "acy" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_4"
 	},
 /turf/open/desert/rock,
@@ -806,7 +806,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_labs)
 "acI" = (
-/obj/structure/flora/desert/cactus/multiple{
+/obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_7"
 	},
 /turf/open/desert/dirt{
@@ -971,7 +971,7 @@
 	},
 /area/desert_dam/exterior/landing_pad_one)
 "adg" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_6"
 	},
 /turf/open/desert/dirt,
@@ -1329,7 +1329,7 @@
 /turf/open/desert/desert_shore/shore_corner2,
 /area/desert_dam/exterior/river/riverside_east)
 "aeo" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_4"
 	},
 /turf/open/desert/dirt,
@@ -1413,8 +1413,9 @@
 	},
 /area/desert_dam/exterior/valley/valley_labs)
 "aeB" = (
-/obj/structure/flora/desert/bush{
-	icon_state = "tree_4"
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_4";
+	icon_tag = "tree"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
@@ -2060,7 +2061,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_labs)
 "agx" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_7"
 	},
 /turf/open/desert/rock/deep/transition{
@@ -4367,7 +4368,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "amN" = (
-/obj/structure/flora/desert/grass,
+/obj/structure/flora/grass/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "amO" = (
@@ -4382,7 +4383,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
 "amQ" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_8"
 	},
 /turf/open/desert/dirt,
@@ -4632,13 +4633,13 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "anE" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_6"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
 "anF" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_12"
 	},
 /turf/open/desert/dirt,
@@ -5185,7 +5186,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
 "apc" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_2"
 	},
 /turf/open/desert/dirt,
@@ -5465,7 +5466,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
 "apP" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_7"
 	},
 /turf/open/desert/dirt,
@@ -5711,7 +5712,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
 "aqz" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_9"
 	},
 /turf/open/desert/dirt,
@@ -6572,7 +6573,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "atb" = (
-/obj/structure/flora/desert/cactus/multiple{
+/obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_11"
 	},
 /turf/open/desert/dirt,
@@ -6771,7 +6772,7 @@
 	icon_state = "2,7"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "atB" = (
@@ -7927,7 +7928,7 @@
 	icon_state = "3,7"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "awV" = (
@@ -8884,7 +8885,7 @@
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "azE" = (
-/obj/structure/flora/desert/cactus/multiple{
+/obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_11"
 	},
 /turf/open/desert/dirt,
@@ -8947,8 +8948,9 @@
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "azL" = (
-/obj/structure/flora/desert/bush{
-	icon_state = "tree_4"
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_4";
+	icon_tag = "tree"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
@@ -8979,7 +8981,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "azP" = (
-/obj/structure/flora/tallgrass/desert/corner,
+/obj/structure/flora/grass/tallgrass/desert/corner,
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
 "azQ" = (
@@ -9009,11 +9011,11 @@
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "azV" = (
-/obj/structure/flora/desert/bush,
+/obj/structure/flora/bush/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
 "azW" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_11"
 	},
 /turf/open/desert/dirt,
@@ -9025,11 +9027,11 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "azY" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 8
 	},
-/obj/structure/flora/tallgrass/desert,
+/obj/structure/flora/grass/tallgrass/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
 "azZ" = (
@@ -9125,7 +9127,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aAp" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_3"
 	},
 /turf/open/desert/rock,
@@ -9167,13 +9169,14 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aAv" = (
-/obj/structure/flora/desert/bush{
-	icon_state = "tree_3"
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_3";
+	icon_tag = "tree"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
 "aAw" = (
-/obj/structure/flora/desert/cactus/multiple{
+/obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_8"
 	},
 /turf/open/desert/dirt,
@@ -10485,7 +10488,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aEC" = (
-/obj/structure/flora/desert/cactus/multiple{
+/obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_7"
 	},
 /turf/open/desert/dirt,
@@ -10656,11 +10659,11 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aFb" = (
-/obj/structure/flora/desert/grass,
+/obj/structure/flora/grass/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aFc" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_5"
 	},
 /turf/open/desert/dirt,
@@ -10687,7 +10690,7 @@
 	icon_state = "6,7"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aFh" = (
@@ -10716,24 +10719,24 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aFk" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_7"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aFl" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 6
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aFm" = (
-/obj/structure/flora/tallgrass/desert/corner,
+/obj/structure/flora/grass/tallgrass/desert/corner,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aFn" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 10
 	},
@@ -10898,7 +10901,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_labs)
 "aFN" = (
-/obj/structure/flora/desert/cactus/multiple{
+/obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_10"
 	},
 /turf/open/desert/dirt,
@@ -10908,29 +10911,25 @@
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
 "aFP" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 5
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"aFQ" = (
-/obj/structure/flora/tallgrass/desert,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_crashsite)
 "aFR" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 8
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aFS" = (
-/obj/structure/flora/desert/grass,
+/obj/structure/flora/grass/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
 "aFT" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_11"
 	},
 /turf/open/desert/dirt,
@@ -10969,7 +10968,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aGb" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_7"
 	},
 /turf/open/desert/dirt,
@@ -11006,7 +11005,7 @@
 	},
 /area/desert_dam/interior/caves/central_caves)
 "aGh" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 5
 	},
@@ -11019,14 +11018,14 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aGj" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 4
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aGk" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_7"
 	},
 /turf/open/desert/rock,
@@ -11058,7 +11057,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aGp" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_9"
 	},
 /turf/open/desert/dirt,
@@ -11068,7 +11067,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aGr" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_4"
 	},
 /turf/open/desert/dirt,
@@ -11093,7 +11092,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aGv" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_7"
 	},
 /turf/open/desert/dirt,
@@ -11104,7 +11103,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aGx" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_5"
 	},
 /turf/open/desert/dirt,
@@ -11148,7 +11147,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aGF" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_4"
 	},
 /turf/open/desert/dirt,
@@ -11176,7 +11175,7 @@
 	},
 /area/desert_dam/interior/caves/central_caves)
 "aGJ" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_9"
 	},
 /turf/open/desert/dirt,
@@ -11193,7 +11192,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aGL" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 10
 	},
@@ -11210,14 +11209,14 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aGN" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 9
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
 "aGO" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_2"
 	},
 /turf/open/desert/dirt,
@@ -11256,7 +11255,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aGV" = (
-/obj/structure/flora/desert/cactus/multiple{
+/obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_12"
 	},
 /turf/open/desert/dirt,
@@ -11324,13 +11323,13 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aHf" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_10"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "aHg" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_5"
 	},
 /turf/open/desert/dirt,
@@ -11485,7 +11484,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aHz" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_3"
 	},
 /turf/open/desert/dirt,
@@ -11502,19 +11501,19 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aHC" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_2"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aHD" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_8"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
 "aHE" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 9
 	},
@@ -11525,7 +11524,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
 "aHG" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_3"
 	},
 /turf/open/desert/dirt,
@@ -11541,7 +11540,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aHI" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 1
 	},
@@ -11564,7 +11563,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aHL" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_3"
 	},
 /turf/open/desert/dirt,
@@ -11579,7 +11578,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aHN" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_3"
 	},
 /turf/open/desert/dirt,
@@ -11607,13 +11606,13 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aHR" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_7"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aHS" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_10"
 	},
 /turf/open/desert/dirt,
@@ -11635,7 +11634,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aHW" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_4"
 	},
 /turf/open/desert/dirt,
@@ -11742,7 +11741,7 @@
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aIk" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_6"
 	},
 /turf/open/desert/dirt,
@@ -11769,7 +11768,7 @@
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aIp" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_4"
 	},
 /turf/open/desert/dirt,
@@ -11800,7 +11799,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aIu" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_8"
 	},
 /turf/open/desert/dirt,
@@ -12284,7 +12283,7 @@
 	},
 /area/desert_dam/interior/caves/central_caves)
 "aJS" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_12"
 	},
 /turf/open/desert/dirt,
@@ -12507,13 +12506,13 @@
 	},
 /area/desert_dam/interior/caves/central_caves)
 "aKC" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_8"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aKD" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_5"
 	},
 /turf/open/desert/dirt,
@@ -12540,13 +12539,13 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aKH" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_12"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
 "aKI" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 6
 	},
@@ -12937,10 +12936,6 @@
 	icon_state = "cement_sunbleached1"
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
-"aLy" = (
-/obj/structure/flora/tallgrass/desert,
-/turf/open/desert/dirt,
-/area/desert_dam/interior/caves/central_caves)
 "aLz" = (
 /obj/structure/platform{
 	dir = 4
@@ -13021,7 +13016,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aLH" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 8
 	},
@@ -13116,7 +13111,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aLS" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 1
 	},
@@ -13252,7 +13247,7 @@
 	icon_state = "1,5"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aMm" = (
@@ -13306,7 +13301,7 @@
 	icon_state = "6,6"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aMt" = (
@@ -13341,7 +13336,7 @@
 "aMx" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aMy" = (
@@ -13532,7 +13527,7 @@
 	icon_state = "7,6"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aMZ" = (
@@ -13638,7 +13633,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_medical)
 "aNr" = (
-/obj/structure/flora/desert/cactus/multiple{
+/obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_11"
 	},
 /turf/open/desert/dirt,
@@ -13825,7 +13820,7 @@
 	icon_state = "1,2"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aOe" = (
@@ -13872,7 +13867,7 @@
 /obj/structure/filtration/flacculation_arm,
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aOm" = (
@@ -13936,7 +13931,7 @@
 	icon_state = "7,2"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aOw" = (
@@ -14006,7 +14001,7 @@
 	icon_state = "2,1"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aOE" = (
@@ -14062,7 +14057,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_labs)
 "aOQ" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 4
 	},
@@ -14172,7 +14167,7 @@
 	icon_state = "6,1"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aPn" = (
@@ -15022,7 +15017,7 @@
 	icon_state = "2,7"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aRK" = (
@@ -15190,7 +15185,7 @@
 	icon_state = "3,7"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aSi" = (
@@ -15438,7 +15433,7 @@
 	icon_state = "6,7"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aTa" = (
@@ -15447,7 +15442,7 @@
 	icon_state = "1,5"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aTb" = (
@@ -15456,7 +15451,7 @@
 	icon_state = "6,6"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aTc" = (
@@ -15465,7 +15460,7 @@
 	icon_state = "7,6"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aTe" = (
@@ -16017,7 +16012,7 @@
 "aUT" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aUU" = (
@@ -16612,7 +16607,7 @@
 	icon_state = "1,2"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aWJ" = (
@@ -16621,7 +16616,7 @@
 	icon_state = "7,2"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aWK" = (
@@ -16805,7 +16800,7 @@
 	icon_state = "2,1"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aXm" = (
@@ -16888,7 +16883,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aXx" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_3"
 	},
 /turf/open/desert/dirt,
@@ -17102,7 +17097,6 @@
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aYg" = (
 /obj/structure/rack,
-/obj/item/tool/taperoll/engineering,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/hallway)
 "aYh" = (
@@ -17250,7 +17244,7 @@
 	},
 /area/desert_dam/building/administration/control_room)
 "aYx" = (
-/obj/structure/flora/desert/cactus/multiple{
+/obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_12"
 	},
 /turf/open/desert/dirt,
@@ -17386,7 +17380,7 @@
 /obj/structure/filtration/coagulation_arm,
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aYR" = (
@@ -17535,7 +17529,7 @@
 	icon_state = "6,1"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aZj" = (
@@ -17570,8 +17564,9 @@
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/office)
 "aZo" = (
-/obj/structure/flora/desert/bush{
-	icon_state = "tree_3"
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_3";
+	icon_tag = "tree"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
@@ -17620,7 +17615,7 @@
 "aZv" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "aZw" = (
@@ -18057,7 +18052,7 @@
 	},
 /area/desert_dam/building/administration/archives)
 "bay" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_2"
 	},
 /turf/open/desert/dirt,
@@ -18166,8 +18161,9 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "baK" = (
-/obj/structure/flora/desert/bush{
-	icon_state = "tree_4"
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_4";
+	icon_tag = "tree"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
@@ -18790,7 +18786,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bci" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_4"
 	},
 /turf/open/desert/dirt,
@@ -18807,13 +18803,13 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bcl" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_4"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bcm" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_4"
 	},
 /turf/open/desert/dirt,
@@ -18917,7 +18913,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "bcy" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_4"
 	},
 /turf/open/desert/dirt,
@@ -18991,7 +18987,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
 "bcG" = (
-/obj/structure/flora/desert/grass,
+/obj/structure/flora/grass/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bcH" = (
@@ -19026,7 +19022,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/water_treatment_two/hallway)
 "bcL" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_5"
 	},
 /turf/open/desert/dirt,
@@ -19116,7 +19112,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/hallway)
 "bdc" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_10"
 	},
 /turf/open/desert/dirt,
@@ -19227,13 +19223,13 @@
 	},
 /area/desert_dam/exterior/river/riverside_central_north)
 "bdu" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_7"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bdv" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_3"
 	},
 /turf/open/desert/dirt,
@@ -19251,7 +19247,7 @@
 	},
 /area/desert_dam/building/security/lobby)
 "bdy" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_6"
 	},
 /turf/open/desert/dirt,
@@ -19406,8 +19402,9 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/courtroom)
 "bdR" = (
-/obj/structure/flora/desert/bush{
-	icon_state = "tree_2"
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_2";
+	icon_tag = "tree"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
@@ -19541,7 +19538,7 @@
 	},
 /area/desert_dam/building/administration/meetingrooom)
 "bej" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_3"
 	},
 /turf/open/desert/dirt,
@@ -19609,7 +19606,7 @@
 "ber" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bes" = (
@@ -19674,7 +19671,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/meetingrooom)
 "beA" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_7"
 	},
 /turf/open/desert/dirt,
@@ -19689,7 +19686,7 @@
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "beD" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_4"
 	},
 /turf/open/desert/dirt,
@@ -19813,13 +19810,13 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
 "beU" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_10"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "beV" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_6"
 	},
 /turf/open/desert/dirt,
@@ -19965,7 +19962,7 @@
 	},
 /area/desert_dam/exterior/landing_pad_one)
 "bfp" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_9"
 	},
 /turf/open/desert/dirt,
@@ -19992,7 +19989,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bft" = (
-/obj/structure/flora/desert/cactus/multiple{
+/obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_9"
 	},
 /turf/open/desert/dirt,
@@ -20328,11 +20325,11 @@
 	icon_state = "2,7"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bgw" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 8
 	},
@@ -20350,7 +20347,7 @@
 	icon_state = "3,7"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bgz" = (
@@ -20410,7 +20407,7 @@
 	},
 /area/desert_dam/building/water_treatment_two/equipment)
 "bgK" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 6
 	},
@@ -20537,7 +20534,7 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_central_south)
 "bhd" = (
-/obj/structure/flora/tallgrass/desert/corner,
+/obj/structure/flora/grass/tallgrass/desert/corner,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bhe" = (
@@ -21767,13 +21764,13 @@
 	},
 /area/desert_dam/exterior/valley/valley_dam)
 "bkw" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_3"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_dam)
 "bkx" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_7"
 	},
 /turf/open/desert/dirt,
@@ -22027,7 +22024,7 @@
 	icon_state = "6,7"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "blq" = (
@@ -22036,7 +22033,7 @@
 	icon_state = "2,7"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "blr" = (
@@ -22045,7 +22042,7 @@
 	icon_state = "3,7"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "blt" = (
@@ -22060,7 +22057,7 @@
 	icon_state = "6,7"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "blw" = (
@@ -22201,7 +22198,7 @@
 	icon_state = "1,5"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "blR" = (
@@ -22210,7 +22207,7 @@
 	icon_state = "6,6"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "blS" = (
@@ -22219,7 +22216,7 @@
 	icon_state = "7,6"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "blT" = (
@@ -22234,7 +22231,7 @@
 	icon_state = "1,5"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "blV" = (
@@ -22243,7 +22240,7 @@
 	icon_state = "6,6"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "blW" = (
@@ -22333,7 +22330,7 @@
 	icon_state = "7,6"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bmf" = (
@@ -22359,7 +22356,7 @@
 	icon_state = "1,2"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bmj" = (
@@ -22368,7 +22365,7 @@
 	icon_state = "7,2"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bmk" = (
@@ -22538,7 +22535,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_dam)
 "bmC" = (
-/obj/structure/flora/desert/grass,
+/obj/structure/flora/grass/desert,
 /turf/open/desert/dirt{
 	icon_state = "desert_transition_edge1";
 	dir = 2
@@ -22622,7 +22619,7 @@
 	icon_state = "1,2"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bmQ" = (
@@ -22642,7 +22639,7 @@
 	icon_state = "7,2"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bmS" = (
@@ -22651,7 +22648,7 @@
 	icon_state = "2,1"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bmT" = (
@@ -22660,11 +22657,11 @@
 	icon_state = "6,1"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bmU" = (
-/obj/structure/flora/desert/cactus/multiple{
+/obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_10"
 	},
 /turf/open/desert/dirt,
@@ -22695,7 +22692,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/marshals_office)
 "bmY" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_9"
 	},
 /turf/open/desert/dirt,
@@ -22847,7 +22844,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_dam)
 "bnv" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_4"
 	},
 /turf/open/desert/dirt,
@@ -22864,11 +22861,11 @@
 	icon_state = "2,1"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bny" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_8"
 	},
 /turf/open/desert/dirt,
@@ -22954,7 +22951,7 @@
 	icon_state = "6,1"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bnL" = (
@@ -23280,7 +23277,7 @@
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
 "boG" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 6
 	},
@@ -23310,7 +23307,7 @@
 /obj/structure/filtration/flacculation_arm,
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "boL" = (
@@ -23724,7 +23721,7 @@
 /obj/structure/filtration/coagulation_arm,
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bpT" = (
@@ -25096,7 +25093,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/southern_hallway)
 "btY" = (
-/obj/structure/flora/tallgrass/desert/corner,
+/obj/structure/flora/grass/tallgrass/desert/corner,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
 "btZ" = (
@@ -26198,7 +26195,6 @@
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bxl" = (
 /obj/structure/table,
-/obj/item/tool/taperoll/engineering,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison{
@@ -27926,7 +27922,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_mining)
 "bCK" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_4"
 	},
 /turf/open/desert/dirt,
@@ -31948,7 +31944,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/prison)
 "bOE" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_7"
 	},
 /turf/open/desert/dirt,
@@ -32371,7 +32367,7 @@
 	},
 /area/desert_dam/building/security/prison)
 "bPN" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 10
 	},
@@ -32770,7 +32766,7 @@
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/interior/dam_interior/western_dam_cave)
 "bQQ" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_2"
 	},
 /turf/open/desert/dirt{
@@ -33082,7 +33078,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
 "bRG" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_8"
 	},
 /turf/open/desert/dirt,
@@ -33885,7 +33881,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_dam)
 "bTR" = (
-/obj/structure/flora/desert/grass,
+/obj/structure/flora/grass/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_dam)
 "bTU" = (
@@ -34032,13 +34028,13 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bUt" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_4"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_dam)
 "bUu" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_10"
 	},
 /turf/open/desert/dirt,
@@ -34401,19 +34397,19 @@
 	},
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "bVr" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_12"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_dam)
 "bVs" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_9"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_dam)
 "bVt" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_3"
 	},
 /turf/open/desert/dirt,
@@ -34733,19 +34729,19 @@
 	},
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "bWi" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_5"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_dam)
 "bWj" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_7"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_dam)
 "bWk" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_2"
 	},
 /turf/open/desert/dirt,
@@ -35046,7 +35042,7 @@
 	},
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "bXc" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_4"
 	},
 /turf/open/desert/dirt,
@@ -37071,8 +37067,7 @@
 	icon_state = "shutter0";
 	id = "hangar_dam_2";
 	name = "\improper Hangar Shutters";
-	opacity = 0;
-	p_open = 1
+	opacity = 0
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -37770,7 +37765,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_central_south)
 "cej" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_6"
 	},
 /turf/open/desert/dirt,
@@ -39813,10 +39808,6 @@
 	icon_state = "darkbrown2"
 	},
 /area/desert_dam/building/warehouse/warehouse)
-"ckz" = (
-/obj/structure/flora/tallgrass/desert,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_medical)
 "ckA" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -40225,7 +40216,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_south)
 "clF" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 9
 	},
@@ -40580,7 +40571,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "cmI" = (
-/obj/structure/flora/desert/bush,
+/obj/structure/flora/bush/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "cmJ" = (
@@ -41212,8 +41203,9 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
 "coD" = (
-/obj/structure/flora/desert/bush{
-	icon_state = "tree_3"
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_3";
+	icon_tag = "tree"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_dam)
@@ -41248,13 +41240,13 @@
 	},
 /area/desert_dam/exterior/valley/valley_medical)
 "coI" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_4"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
 "coJ" = (
-/obj/structure/flora/desert/grass,
+/obj/structure/flora/grass/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
 "coK" = (
@@ -41383,7 +41375,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "cpa" = (
-/obj/structure/flora/desert/grass,
+/obj/structure/flora/grass/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "cpb" = (
@@ -41521,7 +41513,7 @@
 	},
 /area/desert_dam/building/warehouse/breakroom)
 "cpu" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_3"
 	},
 /turf/open/desert/dirt,
@@ -41698,7 +41690,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/telecommunication)
 "cpT" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_6"
 	},
 /turf/open/desert/dirt,
@@ -41863,14 +41855,14 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cqp" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 10
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "cqq" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_6"
 	},
 /turf/open/desert/dirt,
@@ -42063,7 +42055,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
 "cqT" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_2"
 	},
 /turf/open/desert/dirt,
@@ -42204,13 +42196,13 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cru" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_3"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "crv" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_4"
 	},
 /turf/open/desert/dirt,
@@ -42405,19 +42397,19 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "csa" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_3"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "csb" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_9"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "csc" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_3"
 	},
 /turf/open/desert/dirt,
@@ -42600,7 +42592,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "csE" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_2"
 	},
 /turf/open/desert/dirt,
@@ -43906,8 +43898,9 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/CMO)
 "cwi" = (
-/obj/structure/flora/desert/bush{
-	icon_state = "tree_4"
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_4";
+	icon_tag = "tree"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
@@ -44577,7 +44570,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cxT" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_6"
 	},
 /turf/open/desert/dirt,
@@ -44890,13 +44883,13 @@
 	},
 /area/desert_dam/exterior/river/riverside_central_north)
 "cyN" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_11"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cyO" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 5
 	},
@@ -44909,7 +44902,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_south)
 "cyQ" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_5"
 	},
 /turf/open/desert/dirt,
@@ -45115,7 +45108,7 @@
 	},
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "czv" = (
-/obj/structure/flora/desert/grass,
+/obj/structure/flora/grass/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "czw" = (
@@ -45128,7 +45121,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "czx" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_8"
 	},
 /turf/open/desert/dirt,
@@ -45292,7 +45285,7 @@
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/medical/office2)
 "czQ" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_8"
 	},
 /turf/open/desert/dirt,
@@ -45391,14 +45384,14 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "cAc" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 6
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_dam)
 "cAd" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_9"
 	},
 /turf/open/desert/dirt,
@@ -45674,7 +45667,7 @@
 	},
 /area/desert_dam/building/medical/emergency_room)
 "cAL" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_8"
 	},
 /turf/open/desert/dirt,
@@ -45765,7 +45758,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cAW" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_3"
 	},
 /turf/open/desert/dirt,
@@ -46162,7 +46155,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cBW" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_8"
 	},
 /turf/open/desert/dirt,
@@ -46178,7 +46171,7 @@
 	},
 /area/desert_dam/building/bar/bar)
 "cBY" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_5"
 	},
 /turf/open/desert/dirt,
@@ -46568,7 +46561,7 @@
 	},
 /area/desert_dam/exterior/landing_pad_two)
 "cDc" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_4"
 	},
 /turf/open/desert/dirt,
@@ -47281,13 +47274,13 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "cEU" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_3"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "cEV" = (
-/obj/structure/flora/desert/cactus/multiple{
+/obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_9"
 	},
 /turf/open/desert/dirt,
@@ -47647,7 +47640,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "cFK" = (
-/obj/structure/flora/desert/cactus/multiple{
+/obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_11"
 	},
 /turf/open/desert/dirt,
@@ -47827,7 +47820,7 @@
 	},
 /area/desert_dam/building/medical/treatment_room)
 "cGh" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_4"
 	},
 /turf/open/desert/dirt{
@@ -47836,7 +47829,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cGi" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_5"
 	},
 /turf/open/desert/dirt{
@@ -47963,7 +47956,7 @@
 	},
 /area/desert_dam/exterior/landing_pad_two)
 "cGv" = (
-/obj/structure/flora/desert/bush,
+/obj/structure/flora/bush/desert,
 /turf/open/desert/dirt{
 	icon_state = "desert_transition_edge1";
 	dir = 6
@@ -48283,7 +48276,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "cHl" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_3"
 	},
 /turf/open/desert/dirt{
@@ -48420,7 +48413,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cHC" = (
-/obj/structure/flora/desert/grass,
+/obj/structure/flora/grass/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "cHD" = (
@@ -48431,13 +48424,13 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/workshop)
 "cHE" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_6"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "cHF" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 6
 	},
@@ -48564,25 +48557,21 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "cHV" = (
-/obj/structure/flora/tallgrass/desert/corner,
+/obj/structure/flora/grass/tallgrass/desert/corner,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "cHX" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 10
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "cHY" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 5
 	},
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_telecoms)
-"cHZ" = (
-/obj/structure/flora/tallgrass/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "cIa" = (
@@ -48592,26 +48581,26 @@
 	},
 /area/desert_dam/exterior/river/riverside_east)
 "cIc" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 9
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "cId" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_5"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "cIe" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_4"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "cIg" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_4"
 	},
 /turf/open/desert/dirt,
@@ -48994,7 +48983,7 @@
 	},
 /area/desert_dam/building/church)
 "cJl" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_12"
 	},
 /turf/open/desert/dirt,
@@ -49383,8 +49372,9 @@
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
 "cKm" = (
-/obj/structure/flora/desert/bush{
-	icon_state = "tree_3"
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_3";
+	icon_tag = "tree"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo{
@@ -49567,7 +49557,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cKK" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 6
 	},
@@ -49606,14 +49596,14 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cKQ" = (
-/obj/structure/flora/tallgrass/desert/corner,
+/obj/structure/flora/grass/tallgrass/desert/corner,
 /turf/open/desert/dirt{
 	icon_state = "desert_transition_edge1";
 	dir = 2
 	},
 /area/desert_dam/building/warehouse/breakroom)
 "cKR" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 10
 	},
@@ -49659,7 +49649,7 @@
 	},
 /area/desert_dam/building/security/deathrow)
 "cLa" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_6"
 	},
 /turf/open/desert/dirt{
@@ -50071,7 +50061,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/loading)
 "cMF" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_3"
 	},
 /turf/open/desert/dirt,
@@ -50359,7 +50349,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cNu" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_12"
 	},
 /turf/open/desert/dirt,
@@ -50513,13 +50503,13 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "cNP" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_7"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cNQ" = (
-/obj/structure/flora/desert/bush,
+/obj/structure/flora/bush/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cNR" = (
@@ -50557,7 +50547,7 @@
 	},
 /area/desert_dam/building/church)
 "cNV" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_3"
 	},
 /turf/open/desert/dirt{
@@ -51119,7 +51109,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/loading)
 "cPz" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_4"
 	},
 /turf/open/desert/dirt,
@@ -51364,7 +51354,7 @@
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
 "cQf" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 6
 	},
@@ -51547,20 +51537,16 @@
 	},
 /area/desert_dam/building/bar/bar_restroom)
 "cQK" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_11"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "cQL" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 10
 	},
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_northwest)
-"cQM" = (
-/obj/structure/flora/tallgrass/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "cQN" = (
@@ -51671,7 +51657,7 @@
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
 "cRc" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 8
 	},
@@ -52084,7 +52070,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "cSp" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_8"
 	},
 /turf/open/desert/dirt,
@@ -52291,7 +52277,7 @@
 	},
 /area/desert_dam/building/mining/workshop)
 "cSZ" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 5
 	},
@@ -52318,7 +52304,7 @@
 	},
 /area/desert_dam/building/mining/workshop)
 "cTh" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_10"
 	},
 /turf/open/desert/dirt,
@@ -52378,7 +52364,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "cTp" = (
-/obj/structure/flora/desert/cactus/multiple{
+/obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_10"
 	},
 /turf/open/desert/dirt,
@@ -52796,7 +52782,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_south)
 "cUK" = (
-/obj/structure/flora/desert/cactus/multiple{
+/obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_7"
 	},
 /turf/open/desert/dirt,
@@ -53084,8 +53070,9 @@
 	},
 /area/desert_dam/exterior/river/riverside_south)
 "cVZ" = (
-/obj/structure/flora/desert/bush{
-	icon_state = "tree_3"
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_3";
+	icon_tag = "tree"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
@@ -53524,7 +53511,7 @@
 /turf/open/gm/river/desert/shallow_edge,
 /area/desert_dam/exterior/river/riverside_south)
 "cYj" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_4"
 	},
 /turf/open/desert/dirt,
@@ -55119,7 +55106,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "dec" = (
-/obj/structure/flora/desert/cactus/multiple{
+/obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_12"
 	},
 /turf/open/desert/dirt,
@@ -56124,8 +56111,9 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dhb" = (
-/obj/structure/flora/desert/bush{
-	icon_state = "tree_2"
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_2";
+	icon_tag = "tree"
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo{
@@ -57028,10 +57016,6 @@
 	icon_state = "cement_sunbleached1"
 	},
 /area/desert_dam/exterior/valley/valley_medical)
-"doa" = (
-/obj/structure/flora/tallgrass/desert,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_dam)
 "dob" = (
 /obj/effect/blocker/toxic_water/Group_1,
 /turf/open/gm/river/desert/shallow/covered,
@@ -57378,7 +57362,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "drh" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 10
 	},
@@ -57396,25 +57380,21 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "drL" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 6
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
-"drM" = (
-/obj/structure/flora/tallgrass/desert,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_cargo)
 "drN" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 9
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "drO" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 5
 	},
@@ -57429,7 +57409,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/lobby)
 "drT" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 1
 	},
@@ -57548,7 +57528,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/lobby)
 "dsE" = (
-/obj/structure/flora/tallgrass/desert/corner,
+/obj/structure/flora/grass/tallgrass/desert/corner,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "dsJ" = (
@@ -57732,14 +57712,14 @@
 	},
 /area/desert_dam/exterior/river/riverside_south)
 "duc" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 10
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "dud" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 8
 	},
@@ -57906,10 +57886,6 @@
 	dir = 8
 	},
 /area/desert_dam/building/administration/overseer_office)
-"dvd" = (
-/obj/structure/flora/tallgrass/desert,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_wilderness)
 "dvf" = (
 /obj/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -58036,14 +58012,14 @@
 	},
 /area/desert_dam/building/dorms/hallway_northwing)
 "dvW" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 1
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "dvZ" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 9
 	},
@@ -58133,7 +58109,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_two)
 "dwv" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 1
 	},
@@ -58327,7 +58303,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dxO" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 5
 	},
@@ -58400,14 +58376,14 @@
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dyc" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 9
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "dye" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_12"
 	},
 /turf/open/desert/dirt,
@@ -58755,7 +58731,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dzE" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_10"
 	},
 /turf/open/desert/dirt,
@@ -58979,8 +58955,9 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dBg" = (
-/obj/structure/flora/desert/bush{
-	icon_state = "tree_3"
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_3";
+	icon_tag = "tree"
 	},
 /turf/open/desert/dirt{
 	icon_state = "desert_transition_edge1";
@@ -58988,7 +58965,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
 "dBh" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 1
 	},
@@ -59165,7 +59142,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_medical)
 "dBQ" = (
-/obj/structure/flora/desert/grass/heavy{
+/obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_3"
 	},
 /turf/open/desert/dirt,
@@ -59288,7 +59265,7 @@
 	},
 /area/desert_dam/building/dorms/pool)
 "dCt" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_3"
 	},
 /turf/open/desert/dirt,
@@ -61650,7 +61627,7 @@
 /turf/open/desert/desert_shore/desert_shore1,
 /area/desert_dam/exterior/river/riverside_east)
 "dLS" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 6
 	},
@@ -61766,7 +61743,7 @@
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dMN" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 1
 	},
@@ -61778,11 +61755,11 @@
 	},
 /area/desert_dam/building/substation/southwest)
 "dMX" = (
-/obj/structure/flora/tallgrass/desert/corner,
+/obj/structure/flora/grass/tallgrass/desert/corner,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "dNa" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 10
 	},
@@ -61909,10 +61886,6 @@
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
-"dNz" = (
-/obj/structure/flora/tallgrass/desert,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_civilian)
 "dNB" = (
 /obj/structure/table,
 /obj/item/storage/box/lightstick/red,
@@ -62151,7 +62124,7 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "dOw" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 9
 	},
@@ -64044,7 +64017,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "dTx" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 5
 	},
@@ -66252,7 +66225,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/equipment)
 "ebN" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 8
 	},
@@ -66669,7 +66642,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "edC" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 4
 	},
@@ -67358,6 +67331,10 @@
 /obj/item/document_objective/paper,
 /turf/open/floor/prison,
 /area/desert_dam/building/hydroponics/hydroponics)
+"eJh" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_dam)
 "eKN" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -67387,10 +67364,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"faa" = (
-/obj/structure/flora/tallgrass/desert,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_labs)
 "fpu" = (
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo{
@@ -67472,7 +67445,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "fSc" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_12"
 	},
 /turf/open/desert/dirt,
@@ -67604,7 +67577,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "hcP" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 6
 	},
@@ -67664,7 +67637,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_labs)
 "hwc" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_4"
 	},
 /turf/open/desert/dirt,
@@ -67688,7 +67661,7 @@
 	is_resin_allowed = 0
 	})
 "hDT" = (
-/obj/structure/flora/desert/cactus{
+/obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_4"
 	},
 /turf/open/desert/dirt,
@@ -67896,6 +67869,10 @@
 	dir = 10
 	},
 /area/desert_dam/interior/dam_interior/hanger)
+"kiP" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_crashsite)
 "kxd" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
@@ -67913,12 +67890,6 @@
 "kJY" = (
 /turf/closed/wall/rock/orange,
 /area/desert_dam/interior/dam_interior/engine_east_wing)
-"kKa" = (
-/obj/structure/flora/tallgrass/desert,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_cargo{
-	is_resin_allowed = 0
-	})
 "kKc" = (
 /obj/structure/table,
 /obj/item/document_objective/paper,
@@ -68092,7 +68063,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
 "mdP" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 1
 	},
@@ -68210,8 +68181,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
+"mVy" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
 "naH" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 5
 	},
@@ -68282,6 +68257,10 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
+"nzB" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_northwest)
 "nJZ" = (
 /obj/machinery/landinglight/ds1/delaythree{
 	tag = "icon-landingstripe (WEST)";
@@ -68381,7 +68360,7 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "onU" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 6
 	},
@@ -68515,7 +68494,7 @@
 	is_resin_allowed = 0
 	})
 "plo" = (
-/obj/structure/flora/desert/grass,
+/obj/structure/flora/grass/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
 "poi" = (
@@ -68530,7 +68509,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_labs)
 "poH" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 10
 	},
@@ -68555,6 +68534,12 @@
 	icon_state = "whitegreen"
 	},
 /area/desert_dam/building/medical/virology_isolation)
+"pvs" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo{
+	is_resin_allowed = 0
+	})
 "pvy" = (
 /obj/effect/alien/weeds/node,
 /turf/open/floor/prison{
@@ -68582,6 +68567,10 @@
 	icon_state = "cement_sunbleached4"
 	},
 /area/desert_dam/exterior/valley/valley_labs)
+"pJW" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_telecoms)
 "pLm" = (
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/valley/valley_dam)
@@ -68703,7 +68692,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "qQz" = (
-/obj/structure/flora/tallgrass/desert/corner,
+/obj/structure/flora/grass/tallgrass/desert/corner,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo{
 	is_resin_allowed = 0
@@ -68773,6 +68762,10 @@
 "ruW" = (
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/valley/valley_northwest)
+"rAo" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/dirt,
+/area/desert_dam/interior/caves/central_caves)
 "rAP" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -68916,7 +68909,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_labs)
 "ssy" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_6"
 	},
 /turf/open/desert/dirt,
@@ -68966,7 +68959,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "sEL" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_2"
 	},
 /turf/open/desert/dirt,
@@ -69131,7 +69124,7 @@
 	is_resin_allowed = 0
 	})
 "uiH" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 10
 	},
@@ -69148,7 +69141,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
 "uml" = (
-/obj/structure/flora/desert/grass{
+/obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_9"
 	},
 /turf/open/desert/dirt,
@@ -69211,6 +69204,10 @@
 	icon_state = "blue"
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
+"uTo" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
 "uWT" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-N";
@@ -69394,7 +69391,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "wbv" = (
-/obj/structure/flora/tallgrass/desert/corner{
+/obj/structure/flora/grass/tallgrass/desert/corner{
 	icon_state = "tallgrass_corner";
 	dir = 9
 	},
@@ -69470,6 +69467,10 @@
 	icon_state = "cement_sunbleached12"
 	},
 /area/desert_dam/exterior/valley/valley_labs)
+"wQZ" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
 "wRi" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
@@ -69489,6 +69490,10 @@
 /obj/item/document_objective/paper,
 /turf/open/floor/greengrid,
 /area/desert_dam/interior/dam_interior/tech_storage)
+"wTh" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_labs)
 "wTP" = (
 /obj/structure/closet/crate,
 /obj/item/stack/sheet/mineral/phoron{
@@ -69579,6 +69584,10 @@
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/valley_labs)
+"xmR" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "xof" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 2;
@@ -72499,7 +72508,7 @@ aQI
 cCM
 ceA
 cHV
-cHZ
+pJW
 cHY
 bRG
 ceA
@@ -72761,7 +72770,7 @@ bao
 cCJ
 cHC
 cHV
-cHZ
+pJW
 cIc
 ceA
 ceA
@@ -74702,8 +74711,8 @@ aiZ
 aDd
 amN
 cQf
-cQM
-cQM
+nzB
+nzB
 cSZ
 apP
 aiZ
@@ -74965,7 +74974,7 @@ aDd
 aHg
 cQL
 cRc
-cQM
+nzB
 dvW
 aGx
 aiZ
@@ -75722,7 +75731,7 @@ fpu
 fpu
 tlh
 hcP
-kKa
+pvs
 wbv
 hpw
 nil
@@ -78300,7 +78309,7 @@ cxr
 cwz
 doE
 dsE
-drM
+uTo
 drO
 cJx
 cfd
@@ -78562,7 +78571,7 @@ dTs
 csB
 czv
 dsE
-drM
+uTo
 drN
 cJx
 cfd
@@ -87477,7 +87486,7 @@ dvo
 crx
 dFo
 drL
-drM
+uTo
 drT
 cDc
 cPG
@@ -87739,7 +87748,7 @@ dvo
 dvo
 dFo
 dsE
-drM
+uTo
 drT
 doE
 cPG
@@ -88231,7 +88240,7 @@ dTs
 doE
 cru
 dsE
-drM
+uTo
 drO
 doE
 cNP
@@ -88492,8 +88501,8 @@ dTs
 dTs
 csE
 drL
-drM
-drM
+uTo
+uTo
 drN
 doE
 doE
@@ -88505,7 +88514,7 @@ cuH
 dTs
 dTs
 cKQ
-drM
+uTo
 drO
 doE
 cuM
@@ -88767,7 +88776,7 @@ cuH
 dTs
 dTs
 cKQ
-drM
+uTo
 drT
 doE
 cuM
@@ -89029,7 +89038,7 @@ dTs
 dTs
 dTs
 cKR
-drM
+uTo
 drT
 doE
 cuM
@@ -91360,7 +91369,7 @@ cJx
 cfd
 cBY
 drL
-drM
+uTo
 drT
 cDc
 doE
@@ -91622,7 +91631,7 @@ cTr
 cfd
 cTh
 dsE
-drM
+uTo
 drT
 doE
 doE
@@ -92664,7 +92673,7 @@ doE
 doE
 crv
 drL
-drM
+uTo
 drT
 cJx
 cfd
@@ -92926,7 +92935,7 @@ doE
 doE
 csE
 dsE
-drM
+uTo
 drN
 cJx
 cfd
@@ -94751,7 +94760,7 @@ bhj
 bhi
 bUt
 cAc
-drM
+uTo
 drT
 czv
 cuM
@@ -95012,8 +95021,8 @@ bhi
 bhi
 bhi
 cAc
-doa
-drM
+eJh
+uTo
 drN
 doE
 cuM
@@ -96753,8 +96762,8 @@ aez
 aez
 hDT
 onU
-faa
-cQM
+wTh
+nzB
 dvW
 bej
 aiZ
@@ -97015,8 +97024,8 @@ aez
 aez
 bOE
 poH
-faa
-cQM
+wTh
+nzB
 dvZ
 aiZ
 aqy
@@ -101558,7 +101567,7 @@ dTs
 dTs
 cdE
 boG
-ckz
+mVy
 dBh
 coH
 cfw
@@ -101820,7 +101829,7 @@ dTs
 dTs
 bmC
 btY
-ckz
+mVy
 clF
 coH
 cfw
@@ -101994,8 +102003,8 @@ aOh
 aOh
 bcm
 bgK
-dvd
-dvd
+xmR
+xmR
 cyO
 bdu
 bdc
@@ -102256,7 +102265,7 @@ aOh
 aOh
 bay
 bhd
-dvd
+xmR
 bgw
 dyc
 aOh
@@ -113160,7 +113169,7 @@ cUc
 clW
 cmH
 dLS
-dNz
+wQZ
 dMN
 csb
 cmH
@@ -113403,7 +113412,7 @@ cmH
 cmH
 cmH
 dLS
-dNz
+wQZ
 dOw
 cmH
 dIi
@@ -113422,7 +113431,7 @@ cUc
 clW
 cpa
 dMX
-dNz
+wQZ
 dOw
 cmH
 cmH
@@ -113700,7 +113709,7 @@ cxm
 cmH
 csc
 dMX
-dNz
+wQZ
 dOw
 cmH
 cmH
@@ -114438,7 +114447,7 @@ clW
 cmH
 cmH
 dLS
-dNz
+wQZ
 dMN
 csc
 cmH
@@ -114700,7 +114709,7 @@ clW
 cmH
 csc
 dMX
-dNz
+wQZ
 dOw
 cmH
 cmH
@@ -117242,7 +117251,7 @@ adA
 adA
 aJS
 aFl
-aFQ
+kiP
 aHI
 aKD
 aLr
@@ -117503,9 +117512,9 @@ aEq
 adA
 adA
 aFl
-aFQ
-aFQ
-aFQ
+kiP
+kiP
+kiP
 aFP
 adK
 aRV
@@ -117765,9 +117774,9 @@ aEq
 adA
 adA
 aFn
-aFQ
-aFQ
-aFQ
+kiP
+kiP
+kiP
 aHI
 adK
 aRV
@@ -118029,7 +118038,7 @@ adA
 aIk
 aFn
 aFR
-aFQ
+kiP
 aHI
 adK
 aRV
@@ -121678,7 +121687,7 @@ aEV
 adA
 aGr
 aFl
-aFQ
+kiP
 aHI
 aHS
 adA
@@ -121779,7 +121788,7 @@ cmH
 cmH
 cAL
 dMX
-dNz
+wQZ
 dTx
 cmH
 daO
@@ -121903,8 +121912,8 @@ aOh
 aOh
 bcm
 bgK
-dvd
-dvd
+xmR
+xmR
 cyO
 bdc
 bcG
@@ -121939,8 +121948,8 @@ agD
 adA
 adA
 aFl
-aFQ
-aFQ
+kiP
+kiP
 aHI
 aFT
 adA
@@ -122040,8 +122049,8 @@ cmH
 cmH
 cPz
 dLS
-dNz
-dNz
+wQZ
+wQZ
 dOw
 cmH
 daO
@@ -122165,9 +122174,9 @@ baK
 aOh
 bcl
 cqp
-dvd
-dvd
-dvd
+xmR
+xmR
+xmR
 cyO
 aXx
 dTs
@@ -122201,8 +122210,8 @@ aEV
 adA
 adA
 aFn
-aFQ
-aFQ
+kiP
+kiP
 aHE
 aHz
 adA
@@ -122302,7 +122311,7 @@ cmH
 sMi
 cpT
 dMX
-dNz
+wQZ
 dOw
 cQK
 cmH
@@ -122429,7 +122438,7 @@ bay
 bcl
 cqp
 bgw
-dvd
+xmR
 dwv
 bdc
 bcG
@@ -122977,7 +122986,7 @@ aES
 adA
 adA
 aFm
-aFQ
+kiP
 aGj
 aFP
 aGp
@@ -123240,8 +123249,8 @@ agK
 agC
 aFn
 aFR
-aFQ
-aFQ
+kiP
+kiP
 aFP
 adA
 adA
@@ -126633,7 +126642,7 @@ aFz
 aFz
 aFS
 azP
-aLy
+rAo
 aGh
 azW
 aGg
@@ -126895,8 +126904,8 @@ aFz
 aFz
 aGO
 aGL
-aLy
-aLy
+rAo
+rAo
 aGh
 aFz
 aFz
@@ -126930,7 +126939,7 @@ adA
 adA
 aGr
 aFl
-aFQ
+kiP
 aHI
 aHS
 adA
@@ -127191,8 +127200,8 @@ adA
 adA
 adA
 aFl
-aFQ
-aFQ
+kiP
+kiP
 aHI
 aFT
 adA
@@ -127453,8 +127462,8 @@ adA
 adA
 adA
 aFn
-aFQ
-aFQ
+kiP
+kiP
 aHE
 aHz
 adA

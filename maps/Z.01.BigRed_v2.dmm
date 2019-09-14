@@ -6956,8 +6956,8 @@
 /area/bigredv2/caves/lambda/breakroom)
 "arI" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
@@ -10085,7 +10085,6 @@
 /area/bigredv2/caves/lambda/research)
 "azh" = (
 /obj/structure/table,
-/obj/item/device/laptop,
 /turf/open/floor{
 	tag = "icon-whitepurple (NORTH)";
 	icon_state = "whitepurple";
@@ -23755,7 +23754,7 @@
 "bgj" = (
 /obj/structure/table,
 /obj/structure/flora/pottedplant{
-	icon_state = "plant-15";
+	icon_state = "pottedplant_15";
 	pixel_y = 10;
 	tag = "icon-plant-15"
 	},
@@ -24451,8 +24450,8 @@
 /area/bigredv2/outside/office_complex)
 "bhX" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -29749,8 +29748,8 @@
 /area/bigredv2/caves/eta/research)
 "byY" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/research)
@@ -31812,7 +31811,6 @@
 /area/bigredv2/caves/eta/living)
 "bDI" = (
 /obj/structure/table,
-/obj/item/computer3_part/storage/hdd/big,
 /turf/open/floor{
 	icon_state = "wood"
 	},

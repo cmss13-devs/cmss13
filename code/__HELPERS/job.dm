@@ -48,6 +48,15 @@
 		if(I.rank in centcom) 			return "Centcom"
 	return "Unknown" //Return unknown if none of the above apply
 
+/proc/get_actual_job_name(var/mob/M)
+	if(!M)
+		return null
+	var/job_name = M.job
+	if(M.mind)
+		job_name = M.mind.assigned_role
+		if(job_name == "MODE")
+			job_name = M.mind.special_role
+	return job_name
 
 /proc/get_marine_jobs()
 		return list(
@@ -134,3 +143,9 @@
 		if("O9") . = /obj/item/clothing/accessory/ranks/o9
 		if("O9E") . = /obj/item/clothing/accessory/ranks/o9e
 		else . = null
+
+/proc/get_role_uniforms(rank)
+	for(var/job_name in gear_presets_list)
+		var/datum/equipment_preset/job = gear_presets_list[job_name]
+		if(job.rank == rank)
+			return job.uniform_sets

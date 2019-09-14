@@ -6,8 +6,8 @@
 /obj/item/clothing/gloves/marine
 	name = "marine combat gloves"
 	desc = "Standard issue marine tactical gloves. It reads: 'knit by Marine Widows Association'."
-	icon_state = "gray"
-	item_state = "graygloves"
+	icon_state = "black"
+	item_state = "bgloves"
 	siemens_coefficient = 0.6
 	permeability_coefficient = 0.05
 	flags_cold_protection = HANDS
@@ -147,3 +147,9 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	unacidable = 1
+
+/obj/item/clothing/gloves/marine/dress
+	name = "dress gloves"
+	desc = "A pair of fashionable white gloves, worn by marines in dress."
+	icon_state = "latex"
+	item_state = "lgloves"

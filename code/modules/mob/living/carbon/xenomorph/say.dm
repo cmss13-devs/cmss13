@@ -116,25 +116,25 @@
 				if(S.client.prefs && S.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
 					track = "(<a href='byond://?src=\ref[S];track=\ref[src]'>follow</a>)"
 					if(isXenoQueen(src))
-						ghostrend = "<font size='3' font color='purple'><i><span class='game say'>Hivemind, <span class='name'>[name]</span> [track]<span class='message'> hisses, '[message]'</span></span></i></font>"
+						ghostrend = SPAN_XENOQUEEN("Hivemind, [name] [track] hisses, '[message]'")
 					else if(src in hive.xeno_leader_list)
-						ghostrend = "<font color='purple'><i><span class='game say'>Hivemind, <span class='name'>[name]</span> [track]<span class='message'> hisses, '[message]'</span></span></i></font>"
+						ghostrend = SPAN_XENOLEADER("Hivemind, Leader [name] [track] hisses, '[message]'")
 					else
-						ghostrend = "<i><span class='game say'>Hivemind, <span class='name'>[name]</span> [track]<span class='message'> hisses, '[message]'</span></span></i>"
+						ghostrend = SPAN_XENO("Hivemind, [name] [track] hisses, '[message]'")
 					S.show_message(ghostrend, 2)
 
 			else if(hivenumber == xeno_hivenumber(S))
 				overwatch_insert = "(<a href='byond://?src=\ref[S];[overwatch_target]=\ref[src];[overwatch_src]=\ref[S]'>watch</a>)"
 
 				if(isXenoQueen(src))
-					rendered = "<font size='3' font color='purple'><i><span class='game say'>Hivemind, <span class='name'>[name]</span> [overwatch_insert]<span class='message'> hisses, '[message]'</span></span></i></font>"
+					rendered = SPAN_XENOQUEEN("Hivemind, [name] [overwatch_insert] hisses, '[message]'")
 				else if(src in hive.xeno_leader_list)
-					rendered = "<font color='purple'><i><span class='game say'>Hivemind, <span class='name'>[name]</span> [overwatch_insert]<span class='message'> hisses, '[message]'</span></span></i></font>"
+					rendered = SPAN_XENOLEADER("Hivemind, Leader [name] [overwatch_insert] hisses, '[message]'")
 				else if(caste.is_robotic)
 					var/message_b = pick("high-pitched blast of static","series of pings","long string of numbers","loud, mechanical squeal", "series of beeps")
 					rendered = "<i><span class='game say'>Hivemind, <span class='name'>[name]</span> [overwatch_insert]emits a [message_b]!</span></i>"
 				else
-					rendered = "<i><span class='game say'>Hivemind, <span class='name'>[name]</span> [overwatch_insert]<span class='message'> hisses, '[message]'</span></span></i>"
+					rendered = SPAN_XENO("Hivemind, [name] [overwatch_insert] hisses, '[message]'")
 				
 				S.show_message(rendered, 2)
 				

@@ -200,18 +200,6 @@
 	build_path = /obj/machinery/computer/telecomms/traffic
 	origin_tech = "programming=3"
 
-/obj/item/circuitboard/computer/mining_shuttle
-	name = "Circuit board (Mining Shuttle)"
-	build_path = /obj/machinery/computer/shuttle_control/mining
-	origin_tech = "programming=2"
-/obj/item/circuitboard/computer/engineering_shuttle
-	name = "Circuit board (Engineering Shuttle)"
-	build_path = /obj/machinery/computer/shuttle_control/engineering
-	origin_tech = "programming=2"
-/obj/item/circuitboard/computer/research_shuttle
-	name = "Circuit board (Research Shuttle)"
-	build_path = /obj/machinery/computer/shuttle_control/research
-	origin_tech = "programming=2"
 /obj/item/circuitboard/computer/aifixer
 	name = "Circuit board (AI Integrity Restorer)"
 	build_path = /obj/machinery/computer/aifixer

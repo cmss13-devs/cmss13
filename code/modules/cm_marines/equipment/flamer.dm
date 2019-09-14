@@ -65,11 +65,18 @@
 	return ret
 
 /obj/item/marine/fuelpack/attack_self(mob/user)
-	if(!ishuman(user) || user.stat) return 0
+	toggle_fuel()
 
-	var/obj/item/weapon/gun/flamer/M240T/flamer = user.get_active_hand()
+/obj/item/marine/fuelpack/verb/toggle_fuel()
+	set name = "Specialist Activation"
+	set desc = "Toggle between the fuel types."
+	set category = "Weapons"
+	
+	if(!ishuman(usr) || usr.stat) return 0
+
+	var/obj/item/weapon/gun/flamer/M240T/flamer = usr.get_active_hand()
 	if(isnull(flamer) || !flamer || !istype(flamer))
-		to_chat(user, "You must be holding the M240-T incinerator unit to use the [name]") //Hardcoding flamer name or we get null reads.
+		to_chat(usr, "You must be holding the M240-T incinerator unit to use the [name]") //Hardcoding flamer name or we get null reads.
 		return
 
 	if(!active_fuel)
@@ -79,8 +86,9 @@
 	toggling = TRUE
 	update_icon()
 	flamer.update_icon()
-	flamer.current_mag.update_icon()
-	to_chat(user, "You switched the fuel tank to <b>[active_fuel.caliber]</b>")
+	if(flamer.current_mag)
+		flamer.current_mag.update_icon()
+	to_chat(usr, "You switched the fuel tank to <b>[active_fuel.caliber]</b>")
 	playsound(src,'sound/machines/click.ogg', 25, 1)
 	flamer.current_mag = active_fuel
 	toggling = FALSE
@@ -97,6 +105,8 @@
 		desc = initial(desc) + " It is storing \a [flamer]."
 		update_icon()
 	else
+		if(istype(A, /obj/item/weapon/gun/flamer/M240T)) //Auto equip likes to attackby twice
+			return
 		to_chat(user, "This thing doesn't fit in the [src.name]!")
 		..()
 

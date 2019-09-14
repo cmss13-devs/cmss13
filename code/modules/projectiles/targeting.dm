@@ -122,7 +122,7 @@
 		I.target += src
 	else if(I.target.len >= 5)
 		if(ismob(I.loc))
-			I.to_chat(loc, "You can only target 5 people at once!")
+			to_chat(loc, "You can only target 5 people at once!")
 		return
 	else
 		return

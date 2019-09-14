@@ -161,12 +161,12 @@
 
 			if(client.prefs.species != "Human")
 				if(!is_alien_whitelisted(src, client.prefs.species) && config.usealienwhitelist)
-					src << alert("You are currently not whitelisted to play [client.prefs.species].")
+					to_chat(src, "You are currently not whitelisted to play [client.prefs.species].")
 					return
 
 				var/datum/species/S = all_species[client.prefs.species]
 				if(!(S.flags & IS_WHITELISTED))
-					src << alert("Your current species,[client.prefs.species], is not available for play on the station.")
+					to_chat(src, alert("Your current species,[client.prefs.species], is not available for play on the station."))
 					return
 
 			LateChoices()
@@ -207,12 +207,12 @@
 
 			if(client.prefs.species != "Human")
 				if(!is_alien_whitelisted(src, client.prefs.species) && config.usealienwhitelist)
-					src << alert("You are currently not whitelisted to play [client.prefs.species].")
+					to_chat(src, alert("You are currently not whitelisted to play [client.prefs.species]."))
 					return 0
 
 				var/datum/species/S = all_species[client.prefs.species]
 				if(!(S.flags & IS_WHITELISTED))
-					src << alert("Your current species,[client.prefs.species], is not available for play on the station.")
+					to_chat(src, alert("Your current species,[client.prefs.species], is not available for play on the station."))
 					return 0
 
 			AttemptLateSpawn(href_list["job_selected"],client.prefs.spawnpoint)
@@ -332,7 +332,7 @@
 		to_chat(usr, "<span class='warning'>There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)<spawn>")
 		return
 	if(!RoleAuthority.assign_role(src, RoleAuthority.roles_for_mode[rank], 1))
-		src << alert("[rank] is not available. Please try another.")
+		to_chat(src, alert("[rank] is not available. Please try another."))
 		return
 
 	spawning = 1
@@ -368,6 +368,7 @@
 		for(var/datum/hive_status/hs in hive_datum)
 			if(hs.living_xeno_queen) //Only give larva to hives that actually exist not to throw off the bioscans for dchat
 				hs.stored_larva++
+				hs.hive_ui.update_burrowed_larva()
 
 	qdel(src)
 

@@ -66,9 +66,9 @@
 			update_icon()
 			if(power_gen_percent < 100) power_gen_percent++
 			switch(power_gen_percent)
-				if(10) visible_message("\icon[src] <span class='notice'><b>[src]</b> begins to whirr as it powers up.</span>")
-				if(50) visible_message("\icon[src] <span class='notice'><b>[src]</b> begins to hum loudly as it reaches half capacity.</span>")
-				if(99) visible_message("\icon[src] <span class='notice'><b>[src]</b> rumbles loudly as the combustion and thermal chambers reach full strength.</span>")
+				if(10) visible_message("[htmlicon(src, viewers(src))] <span class='notice'><b>[src]</b> begins to whirr as it powers up.</span>")
+				if(50) visible_message("[htmlicon(src, viewers(src))] <span class='notice'><b>[src]</b> begins to hum loudly as it reaches half capacity.</span>")
+				if(99) visible_message("[htmlicon(src, viewers(src))] <span class='notice'><b>[src]</b> rumbles loudly as the combustion and thermal chambers reach full strength.</span>")
 			add_avail(power_generation_max * (power_gen_percent / 100) ) //Nope, all good, just add the power
 
 /obj/machinery/power/geothermal/proc/check_failure()
@@ -79,11 +79,11 @@
 		cur_tick = 0
 	if(rand(1,100) < fail_rate) //Oh snap, we failed! Shut it down!
 		if(rand(0,3) == 0)
-			visible_message("\icon[src] <span class='notice'><b>[src]</b> beeps wildly and a fuse blows! Use wirecutters, then a wrench to repair it.")
+			visible_message("[htmlicon(src, viewers(src))] <span class='notice'><b>[src]</b> beeps wildly and a fuse blows! Use wirecutters, then a wrench to repair it.")
 			buildstate = 2
 			icon_state = "wire"
 		else
-			visible_message("\icon[src] <span class='notice'><b>[src]</b> beeps wildly and sprays random pieces everywhere! Use a wrench to repair it.")
+			visible_message("[htmlicon(src, viewers(src))] <span class='notice'><b>[src]</b> beeps wildly and sprays random pieces everywhere! Use a wrench to repair it.")
 			buildstate = 3
 			icon_state = "wrench"
 		is_on = 0
@@ -117,14 +117,14 @@
 		to_chat(usr, "<span class='info'>Use a wrench to repair it.")
 		return 0
 	if(is_on)
-		visible_message("\icon[src] <span class='warning'><b>[src]</b> beeps softly and the humming stops as [usr] shuts off the turbines.")
+		visible_message("[htmlicon(src, viewers(src))] <span class='warning'><b>[src]</b> beeps softly and the humming stops as [usr] shuts off the turbines.")
 		is_on = 0
 		power_gen_percent = 0
 		cur_tick = 0
 		icon_state = "off"
 		stop_processing_power()
 		return 1
-	visible_message("\icon[src] <span class='warning'><b>[src]</b> beeps loudly as [usr] turns on the turbines and the generator begins spinning up.")
+	visible_message("[htmlicon(src, viewers(src))] <span class='warning'><b>[src]</b> beeps loudly as [usr] turns on the turbines and the generator begins spinning up.")
 	icon_state = "on10"
 	is_on = 1
 	cur_tick = 0
@@ -182,6 +182,7 @@
 				if(buildstate != 3 || is_on) r_FAL
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				buildstate = 0
+				user.count_niche_stat(STATISTICS_NICHE_REPAIR_GENERATOR)
 				user.visible_message(SPAN_NOTICE("[user] repairs [src]'s tubing and plating."),
 				SPAN_NOTICE("You repair [src]'s tubing and plating."))
 				update_icon()
@@ -281,12 +282,12 @@
 	var/damaged = 0 //Can be smashed by xenos
 	var/is_lit = 0 //whether the floodlight is switched to on or off. Does not necessarily mean it emits light.
 	unacidable = 1
-	var/power_tick = 800 // power each floodlight takes up per process
+	var/power_tick = 50 // power each floodlight takes up per process
 	use_power = 0 //It's the switch that uses the actual power, not the lights
 	var/obj/machinery/colony_floodlight_switch/fswitch = null //Reverse lookup for power grabbing in area
 	var/lum_value = 7
 	var/repair_state = 0
-	health = 120
+	health = 150
 
 /obj/machinery/colony_floodlight/Dispose()
 	SetLuminosity(0)

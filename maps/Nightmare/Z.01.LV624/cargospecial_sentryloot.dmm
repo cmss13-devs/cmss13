@@ -30,19 +30,6 @@
 	icon_state = "beachcorner"
 	},
 /area/lv624/ground/river3)
-"g" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast{
-	dir = 1
-	},
-/area/lv624/ground/river3)
-"h" = (
-/obj/structure/flora/ausbushes/reedbush,
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast{
-	dir = 1
-	},
-/area/lv624/ground/river3)
 "i" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
@@ -54,20 +41,9 @@
 	dir = 1
 	},
 /area/lv624/ground/jungle5)
-"k" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/turf/open/gm/grass,
-/area/lv624/ground/jungle5)
 "l" = (
 /obj/machinery/colony_floodlight,
 /turf/open/gm/grass,
-/area/lv624/ground/jungle5)
-"m" = (
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
 /area/lv624/ground/jungle5)
 "n" = (
 /turf/closed/wall,
@@ -117,7 +93,7 @@
 /area/lv624/ground/jungle5)
 
 (1,1,1) = {"
-a
+b
 a
 a
 n
@@ -127,9 +103,9 @@ v
 r
 "}
 (2,1,1) = {"
-b
 a
-k
+a
+a
 a
 p
 r
@@ -137,7 +113,7 @@ r
 r
 "}
 (3,1,1) = {"
-c
+a
 a
 a
 a
@@ -147,7 +123,7 @@ r
 r
 "}
 (4,1,1) = {"
-d
+b
 a
 l
 a
@@ -157,8 +133,8 @@ r
 r
 "}
 (5,1,1) = {"
-e
-i
+c
+a
 a
 o
 n
@@ -167,8 +143,8 @@ p
 p
 "}
 (6,1,1) = {"
-f
-j
+d
+a
 a
 a
 a
@@ -177,22 +153,22 @@ a
 w
 "}
 (7,1,1) = {"
-g
-j
+e
+i
 a
-a
+o
 a
 a
 a
 a
 "}
 (8,1,1) = {"
-h
+f
 j
-m
 a
 a
-b
+a
+a
 a
 a
 "}

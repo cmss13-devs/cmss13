@@ -63,9 +63,11 @@
 #define SLOWDOWN_ARMOR_HEAVIER		1.10
 #define SLOWDOWN_ARMOR_VERY_HEAVY	1.15
 
-#define SLOWDOWN_ADS_SHOTGUN		0.75
-#define SLOWDOWN_ADS_RIFLE			0.75 //anything below that doesn't change anything.
-#define SLOWDOWN_ADS_SCOPE			1
+#define SLOWDOWN_ADS_SHOTGUN		0.75 //anything below that doesn't change anything.
+#define SLOWDOWN_ADS_SMG			0.85
+#define SLOWDOWN_ADS_RIFLE			1 
+#define SLOWDOWN_ADS_SCOPE			1.20
+#define SLOWDOWN_ADS_LMG			1.75
 #define SLOWDOWN_ADS_INCINERATOR	1.75
 #define SLOWDOWN_ADS_SPECIALIST		1.75
 #define SLOWDOWN_ADS_SUPERWEAPON	2.75
@@ -88,8 +90,8 @@
 #define EXPLOSION_PRONE_MULTIPLIER	0.5 //prone mobs recieve less damage from explosions
 
 //Explosion damage multipliers for different objects
-#define EXPLOSION_DAMAGE_MULTIPLIER_AIRLOCK     2.5
-#define EXPLOSION_DAMAGE_MULTIPLIER_WALL		5
+#define EXPLOSION_DAMAGE_MULTIPLIER_AIRLOCK     15
+#define EXPLOSION_DAMAGE_MULTIPLIER_WALL		15
 #define EXPLOSION_DAMAGE_MULTIPLIER_WINDOW		10
 
 //Projectile block probabilities for different types of cover
@@ -132,3 +134,15 @@
 //OB timings
 #define OB_TRAVEL_TIMING 12 SECONDS
 #define OB_CRASHING_DOWN 1 SECONDS
+//=================================================
+
+//Health of various items
+#define HEALTH_WALL 						3000
+#define HEALTH_WALL_REINFORCED 				9000
+#define HEALTH_WALL_XENO 					600
+#define HEALTH_WALL_XENO_THICK 				1200
+#define HEALTH_WALL_XENO_MEMBRANE 			200
+#define HEALTH_WALL_XENO_MEMBRANE_THICK 	400
+
+#define HEALTH_DOOR 		2000
+#define HEALTH_DOOR_XENO 	750

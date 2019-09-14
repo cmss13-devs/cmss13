@@ -25,8 +25,6 @@ var/global/list/datum/entity/player_entity/player_entities = list()
 	var/list/protected_jobs = list()	// Jobs that can't be traitors because
 	var/required_players = 0
 	var/required_players_secret = 0 //Minimum number of players for that game mode to be chose in Secret
-	var/required_enemies = 0
-	var/recommended_enemies = 0
 	var/newscaster_announcements = null
 	var/ert_disabled = 0
 	var/uplink_welcome = "Syndicate Uplink Console:"
@@ -153,8 +151,6 @@ var/global/list/datum/entity/player_entity/player_entities = list()
 /datum/game_mode/proc/get_players_for_role(var/role, override_jobbans = 0)
 	var/list/players = list()
 	var/list/candidates = list()
-	var/list/drafted = list()
-	var/datum/mind/applicant = null
 
 	var/roletext
 	switch(role)
@@ -180,16 +176,6 @@ var/global/list/datum/entity/player_entity/player_entities = list()
 			candidates += player.mind
 			players -= player
 
-	//If we don't have enough antags, draft people who voted for the round.
-	if(candidates.len < recommended_enemies)
-		for(var/key in round_voters)
-			for(var/mob/new_player/player in players)
-				if(player.ckey == key)
-					log_debug("[player.key] voted for this round, so we are drafting them.")
-					candidates += player.mind
-					players -= player
-					break
-
 	//Remove candidates who want to be antagonist but have a job that precludes it
 	if(restricted_jobs)
 		for(var/datum/mind/player in candidates)
@@ -197,42 +183,7 @@ var/global/list/datum/entity/player_entity/player_entities = list()
 				if(player.assigned_role == job)
 					candidates -= player
 
-	if(candidates.len < recommended_enemies)
-		for(var/mob/new_player/player in players)
-			if(player.client && player.ready)
-				if(!(player.client.prefs.be_special & role)) //We don't have enough people who want to be antagonist, make a seperate list of people who don't want to be one
-					if(!jobban_isbanned(player, roletext)) //Nodrak/Carn: Antag Job-bans
-						drafted += player.mind
-
-	if(candidates.len < recommended_enemies && override_jobbans) //If we still don't have enough people, we're going to start drafting banned people.
-		for(var/mob/new_player/player in players)
-			if (player.client && player.ready)
-				if(jobban_isbanned(player, roletext)) //Nodrak/Carn: Antag Job-bans
-					drafted += player.mind
-
-	if(restricted_jobs)
-		for(var/datum/mind/player in drafted) //Remove people who can't be an antagonist
-			for(var/job in restricted_jobs)
-				if(player.assigned_role == job)
-					drafted -= player
-
-	drafted = shuffle(drafted) // Will hopefully increase randomness, Donkie
-
-	while(candidates.len < recommended_enemies) //Pick randomly just the number of people we need and add them to our list of candidates
-		if(drafted.len > 0)
-			applicant = pick(drafted)
-			if(applicant)
-				candidates += applicant
-				drafted.Remove(applicant)
-				to_world(SPAN_DANGER("[applicant.key] was force-drafted as [roletext], because there aren't enough candidates."))
-				log_debug("[applicant.key] was force-drafted as [roletext], because there aren't enough candidates.")
-
-		else //Not enough scrubs, ABORT ABORT ABORT
-			break
-
-	return candidates		//Returns:	The number of people who had the antagonist role set to yes, regardless of recomended_enemies, if that number is greater than recommended_enemies
-							//			recommended_enemies if the number of people with that role set to yes is less than recomended_enemies,
-							//			Less if there are not enough valid players in the game entirely to make recommended_enemies.
+	return candidates		//Returns:	The number of people who had the antagonist role set to yes
 
 
 /datum/game_mode/proc/latespawn(var/mob)
@@ -315,11 +266,9 @@ proc/display_roundstart_logout_report()
 						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (<font color='red'><b>Ghosted</b></font>)\n"
 						continue //Ghosted while alive
 
-
-
 	for(var/mob/M in mob_list)
 		if(M.client && M.client.admin_holder)
-			M << msg
+			to_chat(M, msg)
 
 
 proc/get_nt_opposed()
@@ -353,7 +302,7 @@ proc/get_nt_opposed()
 		return
 
 	var/obj_count = 1
-	player.to_chat(current, SPAN_NOTICE(" Your current objectives:"))
+	to_chat(player.current, SPAN_NOTICE(" Your current objectives:"))
 	for(var/datum/objective/objective in player.objectives)
 		to_chat(player.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 		obj_count++

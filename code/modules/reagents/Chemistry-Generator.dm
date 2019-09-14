@@ -300,7 +300,7 @@
 	if(admin_properties)
 		negative_properties += list(	PROPERTY_EMBRYONIC = "The chemical agent carries causes an infection of type REDACTED parasitic embryonic organism.",\
 										PROPERTY_TRANSFORMING = "The chemical agent carries REDACTED, altering the host psychologically and physically.",\
-										PROPERTY_RAVENING = "Binds to and neutralizes the X-65 biological organism.")
+										PROPERTY_RAVENING = "The chemical agent carries the X-65 biological organism.")
 	return negative_properties
 
 /datum/proc/get_neutral_chem_properties(var/admin_properties)
@@ -478,11 +478,13 @@
 	if(!chemical_gen_reactions_list)
 		chemical_gen_reactions_list = list()
 	if(!chemical_gen_reactions_list["[src.id]"])
-		var/list/recipe_holder = list("required_reagents","required_catalysts")
+		var/list/recipe_holder = list("required_reagents","required_catalysts","result")
 		chemical_gen_reactions_list["[src.id]"] += recipe_holder
 		generate_recipe()
 	required_reagents = chemical_gen_reactions_list["[src.id]"]["required_reagents"]
 	required_catalysts = chemical_gen_reactions_list["[src.id]"]["required_catalysts"]
+	if(!result)
+		result = chemical_gen_reactions_list["[src.id]"]["result"]
 
 /////////Tier 1
 //alpha

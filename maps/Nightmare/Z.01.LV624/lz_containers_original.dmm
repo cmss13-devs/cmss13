@@ -1,33 +1,50 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aDG" = (
+"a" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
-"aGz" = (
-/turf/open/floor,
-/area/shuttle/drop1/lz1)
-"aGQ" = (
-/turf/open/floor{
-	dir = 10;
-	icon_state = "warning"
+/area/lv624/lazarus/landing_zones/lz1)
+"b" = (
+/obj/item/stack/sheet/wood{
+	amount = 2
 	},
-/area/shuttle/drop1/lz1)
-"aHM" = (
 /turf/open/floor{
 	icon_state = "bot";
 	dir = 1
 	},
-/area/shuttle/drop1/lz1)
-"aIw" = (
+/area/lv624/lazarus/landing_zones/lz1)
+"c" = (
+/obj/structure/largecrate,
+/turf/open/floor{
+	icon_state = "bot";
+	dir = 1
+	},
+/area/lv624/lazarus/landing_zones/lz1)
+"d" = (
+/turf/open/floor{
+	icon_state = "bot";
+	dir = 1
+	},
+/area/lv624/lazarus/landing_zones/lz1)
+"e" = (
+/obj/structure/largecrate/random,
+/turf/open/floor{
+	icon_state = "bot";
+	dir = 1
+	},
+/area/lv624/lazarus/landing_zones/lz1)
+"f" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "loadingarea";
 	tag = "loading"
 	},
-/area/shuttle/drop1/lz1)
-"aJl" = (
+/area/lv624/lazarus/landing_zones/lz1)
+"g" = (
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz1)
+"h" = (
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -36,8 +53,8 @@
 	icon_state = "loadingarea";
 	tag = "loading"
 	},
-/area/shuttle/drop1/lz1)
-"aJR" = (
+/area/lv624/lazarus/landing_zones/lz1)
+"i" = (
 /obj/effect/decal/cleanable/blood/tracks/footprints{
 	dir = 4
 	},
@@ -48,14 +65,14 @@
 	dir = 8;
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
-"aJS" = (
+/area/lv624/lazarus/landing_zones/lz1)
+"j" = (
 /obj/effect/landmark{
 	name = "hunter_primary"
 	},
 /turf/open/floor,
-/area/shuttle/drop1/lz1)
-"aMp" = (
+/area/lv624/lazarus/landing_zones/lz1)
+"k" = (
 /obj/item/device/radio/intercom{
 	anyai = 1;
 	freerange = 1;
@@ -68,175 +85,128 @@
 	dir = 10;
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
-"aMq" = (
+/area/lv624/lazarus/landing_zones/lz1)
+"l" = (
 /turf/open/floor{
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
-"aOf" = (
-/obj/structure/cargo_container{
-	tag = "icon-blue 0,0";
-	icon_state = "blue 0,0"
+/area/lv624/lazarus/landing_zones/lz1)
+"m" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "loadingarea"
 	},
-/turf/open/floor,
-/area/shuttle/drop1/lz1)
-"aOg" = (
-/obj/structure/cargo_container{
-	tag = "icon-blue 1,0";
-	icon_state = "blue 1,0"
+/area/lv624/lazarus/landing_zones/lz1)
+"n" = (
+/turf/open/floor{
+	icon_state = "warningcorner";
+	dir = 4
 	},
+/area/lv624/lazarus/landing_zones/lz1)
+"o" = (
+/obj/structure/largecrate/random,
 /turf/open/floor,
-/area/shuttle/drop1/lz1)
-"aOh" = (
-/obj/structure/cargo_container{
-	tag = "icon-blue 2,0";
-	icon_state = "blue 2,0"
-	},
-/turf/open/floor,
-/area/shuttle/drop1/lz1)
-"aOS" = (
-/obj/structure/cargo_container{
-	tag = "icon-WY 0,0";
-	icon_state = "WY 0,0"
-	},
-/turf/open/floor,
-/area/shuttle/drop1/lz1)
-"aOT" = (
-/obj/structure/cargo_container{
-	tag = "icon-WY 1,0";
-	icon_state = "WY 1,0"
-	},
-/turf/open/floor,
-/area/shuttle/drop1/lz1)
-"aOU" = (
-/obj/structure/cargo_container{
-	tag = "icon-WY 2,0";
-	icon_state = "WY 2,0"
-	},
-/turf/open/floor,
-/area/shuttle/drop1/lz1)
-"aQR" = (
-/obj/structure/cargo_container{
-	tag = "icon-green 0,0";
-	icon_state = "green 0,0"
-	},
-/turf/open/floor,
-/area/shuttle/drop1/lz1)
-"aQS" = (
-/obj/structure/cargo_container{
-	tag = "icon-green 1,0";
-	icon_state = "green 1,0"
-	},
-/turf/open/floor,
-/area/shuttle/drop1/lz1)
-"aQT" = (
-/obj/structure/cargo_container{
-	tag = "icon-green 2,0";
-	icon_state = "green 2,0"
-	},
-/turf/open/floor,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 
 (1,1,1) = {"
-aDG
-aDG
-aDG
-aJR
-aDG
-aDG
-aDG
-aMp
-aDG
-aDG
-aDG
-aDG
-aDG
-aDG
-aGQ
+a
+a
+a
+i
+a
+a
+a
+k
+a
+a
+n
+g
+g
+g
+l
 "}
 (2,1,1) = {"
-aHM
-aIw
-aJl
-aIw
-aIw
-aIw
-aHM
-aMq
-aGz
-aOf
-aOS
-aGz
-aGz
-aGz
-aMq
+b
+f
+h
+f
+f
+f
+d
+l
+b
+d
+c
+b
+d
+e
+l
 "}
 (3,1,1) = {"
-aHM
-aGz
-aHM
-aGz
-aHM
-aGz
-aHM
-aMq
-aGz
-aOg
-aOT
-aGz
-aGz
-aQR
-aMq
+c
+g
+d
+g
+d
+g
+e
+l
+m
+g
+g
+g
+g
+g
+l
 "}
 (4,1,1) = {"
-aHM
-aGz
-aHM
-aGz
-aHM
-aGz
-aHM
-aMq
-aGz
-aOh
-aOU
-aGz
-aGz
-aQS
-aMq
+d
+g
+e
+g
+b
+g
+b
+l
+m
+g
+d
+e
+d
+c
+l
 "}
 (5,1,1) = {"
-aHM
-aGz
-aHM
-aJS
-aHM
-aGz
-aHM
-aMq
-aGz
-aGz
-aGz
-aGz
-aGz
-aQT
-aMq
+d
+g
+d
+j
+d
+g
+c
+l
+m
+g
+o
+g
+g
+g
+l
 "}
 (6,1,1) = {"
-aHM
-aGz
-aHM
-aGz
-aHM
-aGz
-aHM
-aMq
-aGz
-aGz
-aGz
-aGz
-aGz
-aGz
-aMq
+e
+g
+d
+g
+b
+g
+d
+l
+b
+d
+d
+d
+e
+b
+l
 "}

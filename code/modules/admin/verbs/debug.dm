@@ -350,7 +350,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		to_chat(usr, "Someone else changed this xeno while you were deciding")
 		return
 
-	X.set_hivenumber_and_update(newhivenumber, newhivefaction)
+	X.set_hive_and_update(newhivenumber, newhivefaction)
 	feedback_add_details("admin_verb","CHHN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	message_admins(SPAN_NOTICE("[key_name(src)] changed hivenumber of [X] to [X.hivenumber]."), 1)
 
@@ -367,6 +367,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		to_chat(usr, "This mob no longer exists")
 		return
 
+	var/old_name = X.name
 	X.name = newname
 	X.real_name = newname
 	if(istype(X, /mob/living/carbon/human))
@@ -377,7 +378,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			if(H.wear_id.assignment)
 				H.wear_id.name += " ([H.wear_id.assignment])"
 	feedback_add_details("admin_verb","CHTN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	message_admins(SPAN_NOTICE("[key_name(src)] changed name of [X] to [newname]."), 1)
+	message_admins(SPAN_NOTICE("[key_name(src)] changed name of [old_name] to [newname]."), 1)
 
 /client/proc/cmd_debug_toggle_should_check_for_win()
 	set category = "Debug"

@@ -1,7 +1,5 @@
-#define to_chat(target, message)                            target << (message)
-#define to_world(message)                                   world << (message)
 #define to_world_log(message)                               world.log << (message)
-#define debug_msg(message)                                  world << (message) // Difference from to_world is that it is designed to be easily found and deleted
+#define debug_msg(message)                                  to_world(message) // Difference from to_world is that it is designed to be easily found and deleted
 #define sound_to(target, sound)                             target << (sound)
 #define to_file(file_entry, source_var)                     file_entry << (source_var)
 #define from_file(file_entry, target_var)                   file_entry >> (target_var)
@@ -75,17 +73,24 @@
 
 // Style class macros
 
+#define FONT_SIZE_HUGE(X) "<span class='huge'>[X]</span>"
+#define FONT_SIZE_XL(X) "<span class='extra_large'>[X]</span>"
+#define FONT_SIZE_LARGE(X) "<span class='large'>[X]</span>"
+#define FONT_SIZE_BIG(X) "<span class='medium'>[X]</span>"
+#define FONT_SIZE_MEDIUM(X) "<span class='small'>[X]</span>"
+
+#define SPAN_XENO(X) "<span class='xeno'>[X]</span>"
+#define SPAN_XENOLEADER(X) "<span class='xenoleader'>[X]</span>"
+#define SPAN_XENOQUEEN(X) "<span class='xenoqueen'>[X]</span>"
+#define SPAN_XENOANNOUNCE(X) "<span class='xenoannounce'>[X]</span>"
+#define SPAN_XENONOTICE(X) "<span class='xenonotice'>[X]</span>"
+#define SPAN_XENODANGER(X) "<span class='xenodanger'>[X]</span>"
+
 #define SPAN_BOLDANNOUNCE(X) "<span class='boldannounce'>[X]</span>"
 
 #define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
 
 #define SPAN_BOLDNOTICE(X) "<span class='boldnotice'>[X]</span>"
-
-#define SPAN_XENOANNOUNCE(X) "<span class='xenoannounce'>[X]</span>"
-
-#define SPAN_XENONOTICE(X) "<span class='xenonotice'>[X]</span>"
-
-#define SPAN_XENODANGER(X) "<span class='xenodanger'>[X]</span>"
 
 #define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
 
@@ -120,3 +125,9 @@
 #define SPAN_ROLE_HEADER(X) "<span class='role_header'>[X]</span>"
 
 #define SPAN_ROLE_BODY(X) "<span class='role_body'>[X]</span>"
+
+#define SPAN_ANNOUNCEMENT_HEADER(X) "<spawn class='announce_header'>[X]</span>"
+
+#define SPAN_ANNOUNCEMENT_HEADER_BLUE(X) "<spawn class='announce_header_blue'>[X]</span>"
+
+#define SPAN_ANNOUNCEMENT_BODY(X) "<spawn class='announce_body'>[X]</span>"

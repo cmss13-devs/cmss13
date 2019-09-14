@@ -10,7 +10,7 @@
 	walltype = WALL_HULL
 
 	damage = 0
-	damage_cap = 1000 //Wall will break down to girders if damage reaches this point
+	damage_cap = HEALTH_WALL //Wall will break down to girders if damage reaches this point
 
 	max_temperature = 18000 //K, walls will take damage if they're next to a fire hotter than this
 
@@ -106,7 +106,7 @@
 	icon_state = "sulaco"
 	hull = 0 //Can't be deconstructed
 
-	damage_cap = 1000 //As tough as R_walls.
+	damage_cap = HEALTH_WALL
 	max_temperature = 28000 //K, walls will take damage if they're next to a fire hotter than this
 	walltype = WALL_SULACO //Changes all the sprites and icons.
 
@@ -393,7 +393,7 @@
 	icon = 'icons/mob/xenos/structures.dmi'
 	icon_state = "resin"
 	walltype = WALL_RESIN
-	damage_cap = 200
+	damage_cap = HEALTH_WALL_XENO
 	layer = RESIN_STRUCTURE_LAYER
 	blend_turfs = list(/turf/closed/wall/resin)
 	blend_objects = list(/obj/structure/mineral_door/resin)
@@ -413,7 +413,7 @@
 /turf/closed/wall/resin/thick
 	name = "thick resin wall"
 	desc = "Weird slime solidified into a thick wall."
-	damage_cap = 400
+	damage_cap = HEALTH_WALL_XENO_THICK
 	icon_state = "thickresin"
 	walltype = WALL_THICKRESIN
 
@@ -422,7 +422,7 @@
 	desc = "Weird slime translucent enough to let light pass through."
 	icon_state = "membrane"
 	walltype = WALL_MEMBRANE
-	damage_cap = 120
+	damage_cap = HEALTH_WALL_XENO_MEMBRANE
 	opacity = 0
 	alpha = 180
 
@@ -433,7 +433,7 @@
 /turf/closed/wall/resin/membrane/thick
 	name = "thick resin membrane"
 	desc = "Weird thick slime just translucent enough to let light pass through."
-	damage_cap = 240
+	damage_cap = HEALTH_WALL_XENO_MEMBRANE_THICK
 	icon_state = "thickmembrane"
 	walltype = WALL_THICKMEMBRANE
 	alpha = 210
@@ -473,7 +473,7 @@
 		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
 		SPAN_XENONOTICE("You claw \the [src]."))
 		playsound(src, "alien_resin_break", 25)
-		take_damage((M.melee_damage_upper + 50)) //Beef up the damage a bit
+		take_damage(Ceiling(HEALTH_WALL_XENO/4)) //Four hits for a regular wall
 
 
 /turf/closed/wall/resin/attack_animal(mob/living/M)

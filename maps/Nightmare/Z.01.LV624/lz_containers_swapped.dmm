@@ -4,72 +4,39 @@
 	dir = 8;
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "b" = (
 /turf/open/floor{
 	icon_state = "bot";
 	dir = 1
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "c" = (
-/obj/structure/cargo_container{
-	tag = "icon-blue 0,0";
-	icon_state = "blue 0,0"
-	},
 /turf/open/floor{
 	dir = 8;
 	icon_state = "loadingarea";
 	tag = "loading"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "d" = (
-/obj/structure/cargo_container{
-	tag = "icon-blue 1,0";
-	icon_state = "blue 1,0"
-	},
 /turf/open/floor,
-/area/shuttle/drop1/lz1)
-"e" = (
-/obj/structure/cargo_container{
-	tag = "icon-blue 2,0";
-	icon_state = "blue 2,0"
-	},
-/turf/open/floor,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "f" = (
+/obj/effect/landmark{
+	name = "hunter_primary"
+	},
 /turf/open/floor,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "g" = (
-/obj/structure/cargo_container{
-	tag = "icon-WY 0,0";
-	icon_state = "WY 0,0"
+/obj/effect/landmark{
+	name = "crap_item"
 	},
 /turf/open/floor{
 	dir = 8;
 	icon_state = "loadingarea";
 	tag = "loading"
 	},
-/area/shuttle/drop1/lz1)
-"h" = (
-/obj/structure/cargo_container{
-	tag = "icon-WY 1,0";
-	icon_state = "WY 1,0"
-	},
-/turf/open/floor{
-	icon_state = "bot";
-	dir = 1
-	},
-/area/shuttle/drop1/lz1)
-"i" = (
-/obj/structure/cargo_container{
-	tag = "icon-WY 2,0";
-	icon_state = "WY 2,0"
-	},
-/turf/open/floor{
-	icon_state = "bot";
-	dir = 1
-	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "j" = (
 /obj/effect/decal/cleanable/blood/tracks/footprints{
 	dir = 4
@@ -81,35 +48,20 @@
 	dir = 8;
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "k" = (
+/obj/machinery/bot/mulebot{
+	auto_pickup = 0;
+	auto_return = 0;
+	health = 1;
+	on = 0
+	},
 /turf/open/floor{
 	dir = 8;
 	icon_state = "loadingarea";
 	tag = "loading"
 	},
-/area/shuttle/drop1/lz1)
-"l" = (
-/obj/structure/cargo_container{
-	tag = "icon-green 0,0";
-	icon_state = "green 0,0"
-	},
-/turf/open/floor,
-/area/shuttle/drop1/lz1)
-"m" = (
-/obj/structure/cargo_container{
-	tag = "icon-green 1,0";
-	icon_state = "green 1,0"
-	},
-/turf/open/floor,
-/area/shuttle/drop1/lz1)
-"n" = (
-/obj/structure/cargo_container{
-	tag = "icon-green 2,0";
-	icon_state = "green 2,0"
-	},
-/turf/open/floor,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "o" = (
 /obj/item/device/radio/intercom{
 	anyai = 1;
@@ -123,30 +75,54 @@
 	dir = 10;
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "p" = (
 /turf/open/floor{
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
-"q" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/area/lv624/lazarus/landing_zones/lz1)
+"F" = (
+/obj/vehicle/train/cargo/trolley,
 /turf/open/floor,
-/area/shuttle/drop1/lz1)
-"r" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/turf/open/floor,
-/area/shuttle/drop1/lz1)
-"s" = (
+/area/lv624/lazarus/landing_zones/lz1)
+"O" = (
 /turf/open/floor{
-	dir = 10;
-	icon_state = "warning"
+	dir = 1;
+	icon_state = "loadingarea"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
+"P" = (
+/obj/vehicle/train/cargo/engine,
+/obj/effect/landmark{
+	name = "good_item"
+	},
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz1)
+"R" = (
+/turf/open/floor{
+	icon_state = "warningcorner";
+	dir = 4
+	},
+/area/lv624/lazarus/landing_zones/lz1)
+"U" = (
+/obj/vehicle/train/cargo/trolley,
+/turf/open/floor{
+	icon_state = "bot";
+	dir = 1
+	},
+/area/lv624/lazarus/landing_zones/lz1)
+"X" = (
+/obj/machinery/bot/mulebot{
+	auto_pickup = 0;
+	auto_return = 0;
+	health = 1;
+	on = 0
+	},
+/turf/open/floor{
+	icon_state = "bot";
+	dir = 1
+	},
+/area/lv624/lazarus/landing_zones/lz1)
 
 (1,1,1) = {"
 a
@@ -159,94 +135,94 @@ a
 o
 a
 a
-a
-a
-a
-a
-s
+R
+d
+d
+d
+p
 "}
 (2,1,1) = {"
 b
 c
 g
-k
-k
+c
+c
 k
 b
 p
-f
-f
-f
-f
-r
-f
+b
+b
+U
+b
+b
+b
 p
 "}
 (3,1,1) = {"
 b
 d
-h
-f
 b
-l
+d
+b
+d
 b
 p
-f
-f
-f
-f
-f
-f
+O
+d
+F
+d
+d
+d
 p
 "}
 (4,1,1) = {"
 b
-e
-i
-f
+d
 b
-m
+d
+b
+d
 b
 p
-f
-f
-f
-f
-f
-f
+O
+d
+U
+b
+b
+b
 p
 "}
 (5,1,1) = {"
 b
+d
+X
 f
 b
-f
-b
-n
+d
 b
 p
-f
-f
-f
-q
-f
-f
+O
+d
+P
+d
+d
+d
 p
 "}
 (6,1,1) = {"
 b
-f
+d
 b
-f
+d
 b
-f
+d
 b
 p
-f
-f
-f
-f
-f
-f
+b
+b
+b
+b
+b
+b
 p
 "}

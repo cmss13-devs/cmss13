@@ -340,29 +340,29 @@
 		if("change_operator")
 			if(operator != usr)
 				if(ishighersilicon(operator))
-					visible_message("\icon[src] <span class='boldnotice'>AI override in progress. Access denied.</span>")
+					visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>AI override in progress. Access denied.</span>")
 				if(current_squad)
 					current_squad.overwatch_officer = usr
 				operator = usr
 				if(ishighersilicon(usr))
-					to_chat(usr, "\icon[src] <span class='boldnotice'>Overwatch system AI override protocol successful.</span>")
+					to_chat(usr, "[htmlicon(src, usr)] <span class='boldnotice'>Overwatch system AI override protocol successful.</span>")
 					send_to_squad("Attention. [operator.name] has engaged overwatch system control override.")
 				else
 					var/mob/living/carbon/human/H = operator
 					var/obj/item/card/id/ID = H.get_idcard()
-					visible_message("\icon[src] <span class='boldnotice'>Basic overwatch systems initialized. Welcome, [ID ? "[ID.rank] ":""][operator.name]. Please select a squad.</span>")
+					visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>Basic overwatch systems initialized. Welcome, [ID ? "[ID.rank] ":""][operator.name]. Please select a squad.</span>")
 					send_to_squad("Attention. Your Overwatch officer is now [ID ? "[ID.rank] ":""][operator.name].") //This checks for squad, so we don't need to.
 		if("logout")
 			if(current_squad)
 				current_squad.overwatch_officer = null //Reset the squad's officer.
 			if(ishighersilicon(usr))
 				send_to_squad("Attention. [operator.name] has released overwatch system control. Overwatch functions deactivated.")
-				to_chat(usr, "\icon[src] <span class='boldnotice'>Overwatch system control override disengaged.</span>")
+				to_chat(usr, "[htmlicon(src, usr)] <span class='boldnotice'>Overwatch system control override disengaged.</span>")
 			else
 				var/mob/living/carbon/human/H = operator
 				var/obj/item/card/id/ID = H.get_idcard()
 				send_to_squad("Attention. [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"] is no longer your Overwatch officer. Overwatch functions deactivated.")
-				visible_message("\icon[src] <span class='boldnotice'>Overwatch systems deactivated. Goodbye, [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"].</span>")
+				visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>Overwatch systems deactivated. Goodbye, [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"].</span>")
 			operator = null
 			current_squad = null
 			if(cam && !ishighersilicon(usr))
@@ -372,7 +372,7 @@
 		if("pick_squad")
 			if(operator == usr)
 				if(current_squad)
-					to_chat(usr, SPAN_WARNING("\icon[src] You are already selecting a squad."))
+					to_chat(usr, SPAN_WARNING("[htmlicon(src, usr)] You are already selecting a squad."))
 				else
 					var/list/squad_list = list()
 					for(var/datum/squad/S in RoleAuthority.squads)
@@ -384,7 +384,7 @@
 					if(operator != usr)
 						return
 					if(current_squad)
-						to_chat(usr, SPAN_WARNING("\icon[src] You are already selecting a squad."))
+						to_chat(usr, SPAN_WARNING("[htmlicon(src, usr)] You are already selecting a squad."))
 						return
 					var/datum/squad/selected = get_squad_by_name(name_sel)
 					if(selected)
@@ -392,89 +392,89 @@
 						current_squad = selected
 						send_to_squad("Attention - Your squad has been selected for Overwatch. Check your Status pane for objectives.")
 						send_to_squad("Your Overwatch officer is: [operator.name].")
-						visible_message("\icon[src] <span class='boldnotice'>Tactical data for squad '[current_squad]' loaded. All tactical functions initialized.</span>")
+						visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>Tactical data for squad '[current_squad]' loaded. All tactical functions initialized.</span>")
 						attack_hand(usr)
 						if(!current_squad.drop_pad) //Why the hell did this not link?
 							for(var/obj/structure/supply_drop/S in item_list)
 								S.force_link() //LINK THEM ALL!
 
 					else
-						to_chat(usr, "\icon[src] <span class='warning'>Invalid input. Aborting.</span>")
+						to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>Invalid input. Aborting.</span>")
 		if("message")
 			if(current_squad && operator == usr)
 				var/input = stripped_input(usr, "Please write a message to announce to the squad:", "Squad Message")
 				if(input)
 					send_to_squad(input, 1) //message, adds username
-					visible_message("\icon[src] <span class='boldnotice'>Message sent to all Marines of squad '[current_squad]'.</span>")
+					visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>Message sent to all Marines of squad '[current_squad]'.</span>")
 		if("sl_message")
 			if(current_squad && operator == usr)
 				var/input = stripped_input(usr, "Please write a message to announce to the squad leader:", "SL Message")
 				if(input)
 					send_to_squad(input, 1, 1) //message, adds usrname, only to leader
-					visible_message("\icon[src] <span class='boldnotice'>Message sent to Squad Leader [current_squad.squad_leader] of squad '[current_squad]'.</span>")
+					visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>Message sent to Squad Leader [current_squad.squad_leader] of squad '[current_squad]'.</span>")
 		if("check_primary")
 			if(current_squad) //This is already checked, but ehh.
 				if(current_squad.primary_objective)
-					visible_message("\icon[src] <span class='boldnotice'>Reminding primary objectives of squad '[current_squad]'.</span>")
-					to_chat(usr, "\icon[src] <b>Primary Objective:</b> [current_squad.primary_objective]")
+					visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>Reminding primary objectives of squad '[current_squad]'.</span>")
+					to_chat(usr, "[htmlicon(src, usr)] <b>Primary Objective:</b> [current_squad.primary_objective]")
 		if("check_secondary")
 			if(current_squad) //This is already checked, but ehh.
 				if(current_squad.secondary_objective)
-					visible_message("\icon[src] <span class='boldnotice'>Reminding secondary objectives of squad '[current_squad]'.</span>")
-					to_chat(usr, "\icon[src] <b>Secondary Objective:</b> [current_squad.secondary_objective]")
+					visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>Reminding secondary objectives of squad '[current_squad]'.</span>")
+					to_chat(usr, "[htmlicon(src, usr)] <b>Secondary Objective:</b> [current_squad.secondary_objective]")
 		if("set_primary")
 			var/input = stripped_input(usr, "What will be the squad's primary objective?", "Primary Objective")
 			if(input)
 				current_squad.primary_objective = "[input] ([worldtime2text()])"
 				send_to_squad("Your primary objective has changed. See Status pane for details.")
-				visible_message("\icon[src] <span class='boldnotice'>Primary objective of squad '[current_squad]' set.</span>")
+				visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>Primary objective of squad '[current_squad]' set.</span>")
 		if("set_secondary")
 			var/input = stripped_input(usr, "What will be the squad's secondary objective?", "Secondary Objective")
 			if(input)
 				current_squad.secondary_objective = input + " ([worldtime2text()])"
 				send_to_squad("Your secondary objective has changed. See Status pane for details.")
-				visible_message("\icon[src] <span class='boldnotice'>Secondary objective of squad '[current_squad]' set.</span>")
+				visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>Secondary objective of squad '[current_squad]' set.</span>")
 		if("supply_x")
 			var/input = input(usr,"What longitude should be targetted? (Increments towards the east)", "X Coordinate", 0) as num
-			to_chat(usr, "\icon[src] <span class='notice'>Longitude is now [input].</span>")
+			to_chat(usr, "[htmlicon(src, usr)] <span class='notice'>Longitude is now [input].</span>")
 			x_supply = input
 		if("supply_y")
 			var/input = input(usr,"What latitude should be targetted? (Increments towards the north)", "Y Coordinate", 0) as num
-			to_chat(usr, "\icon[src] <span class='notice'>Latitude is now [input].</span>")
+			to_chat(usr, "[htmlicon(src, usr)] <span class='notice'>Latitude is now [input].</span>")
 			y_supply = input
 		if("bomb_x")
 			var/input = input(usr,"What longitude should be targetted? (Increments towards the east)", "X Coordinate", 0) as num
-			to_chat(usr, "\icon[src] <span class='notice'>Longitude is now [input].</span>")
+			to_chat(usr, "[htmlicon(src, usr)] <span class='notice'>Longitude is now [input].</span>")
 			x_bomb = input
 		if("bomb_y")
 			var/input = input(usr,"What latitude should be targetted? (Increments towards the north)", "Y Coordinate", 0) as num
-			to_chat(usr, "\icon[src] <span class='notice'>Latitude is now [input].</span>")
+			to_chat(usr, "[htmlicon(src, usr)] <span class='notice'>Latitude is now [input].</span>")
 			y_bomb = input
 		if("refresh")
 			src.attack_hand(usr)
 		if("change_sort")
 			living_marines_sorting = !living_marines_sorting
 			if(living_marines_sorting)
-				to_chat(usr, "\icon[src] <span class='notice'>Marines are now sorted by health status.</span>")
+				to_chat(usr, "[htmlicon(src, usr)] <span class='notice'>Marines are now sorted by health status.</span>")
 			else
-				to_chat(usr, "\icon[src] <span class='notice'>Marines are now sorted by rank.</span>")
+				to_chat(usr, "[htmlicon(src, usr)] <span class='notice'>Marines are now sorted by rank.</span>")
 		if("hide_dead")
 			dead_hidden = !dead_hidden
 			if(dead_hidden)
-				to_chat(usr, "\icon[src] <span class='notice'>Dead marines are now not shown.</span>")
+				to_chat(usr, "[htmlicon(src, usr)] <span class='notice'>Dead marines are now not shown.</span>")
 			else
-				to_chat(usr, "\icon[src] <span class='notice'>Dead marines are now shown again.</span>")
+				to_chat(usr, "[htmlicon(src, usr)] <span class='notice'>Dead marines are now shown again.</span>")
 		if("choose_z")
 			switch(z_hidden)
 				if(0)
 					z_hidden = MAIN_SHIP_Z_LEVEL
-					to_chat(usr, "\icon[src] <span class='notice'>Marines on the Almayer are now hidden.</span>")
+					to_chat(usr, "[htmlicon(src, usr)] <span class='notice'>Marines on the Almayer are now hidden.</span>")
 				if(MAIN_SHIP_Z_LEVEL)
 					z_hidden = 1
-					to_chat(usr, "\icon[src] <span class='notice'>Marines on the ground are now hidden.</span>")
+					to_chat(usr, "[htmlicon(src, usr)] <span class='notice'>Marines on the ground are now hidden.</span>")
 				else
 					z_hidden = 0
-					to_chat(usr, "\icon[src] <span class='notice'>No location is ignored anymore.</span>")
+					to_chat(usr, "[htmlicon(src, usr)] <span class='notice'>No location is ignored anymore.</span>")
 
 		if("change_lead")
 			change_lead()
@@ -485,27 +485,27 @@
 		if("dropsupply")
 			if(current_squad)
 				if((current_squad.supply_cooldown + 5000) > world.time)
-					to_chat(usr, "\icon[src] <span class='warning'>Supply drop not yet available!</span>")
+					to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>Supply drop not yet available!</span>")
 				else
 					handle_supplydrop()
 		if("dropbomb")
 			if((almayer_orbital_cannon.last_orbital_firing + 5000) > world.time)
-				to_chat(usr, "\icon[src] <span class='warning'>Orbital bombardment not yet available!</span>")
+				to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>Orbital bombardment not yet available!</span>")
 			else
 				handle_bombard()
 		if("back")
 			state = 0
 		if("use_cam")
 			if(isAI(usr))
-				to_chat(usr, "\icon[src] <span class='warning'>Unable to override console camera viewer. Track with camera instead. </span>")
+				to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>Unable to override console camera viewer. Track with camera instead. </span>")
 				return
 			if(current_squad)
 				var/mob/cam_target = locate(href_list["cam_target"])
 				var/obj/machinery/camera/new_cam = get_camera_from_target(cam_target)
 				if(!new_cam || !new_cam.can_use())
-					to_chat(usr, "\icon[src] <span class='warning'>Searching for helmet cam. No helmet cam found for this marine! Tell your squad to put their helmets on!</span>")
+					to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>Searching for helmet cam. No helmet cam found for this marine! Tell your squad to put their helmets on!</span>")
 				else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
-					visible_message("\icon[src] <span class='boldnotice'>Stopping helmet cam view of [cam_target].</span>")
+					visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>Stopping helmet cam view of [cam_target].</span>")
 					cam = null
 					usr.reset_view(null)
 				else if(usr.client.view != world.view)
@@ -550,19 +550,19 @@
 			if(!only_leader)
 				if(plus_name)
 					M << sound('sound/effects/radiostatic.ogg')
-				to_chat(M, "\icon[src] <font color='blue'><B>\[Overwatch\]:</b> [nametext][text]</font>")
+				to_chat(M, "[htmlicon(src, M)] <font color='blue'><B>\[Overwatch\]:</b> [nametext][text]</font>")
 			else
 				if(current_squad.squad_leader == M)
 					if(plus_name)
 						M << sound('sound/effects/radiostatic.ogg')
-					to_chat(M, "\icon[src] <font color='blue'><B>\[SL Overwatch\]:</b> [nametext][text]</font>")
+					to_chat(M, "[htmlicon(src, M)] <font color='blue'><B>\[SL Overwatch\]:</b> [nametext][text]</font>")
 					return
 
 /obj/machinery/computer/overwatch/proc/change_lead()
 	if(!usr || usr != operator)
 		return
 	if(!current_squad)
-		to_chat(usr, "\icon[src] <span class='warning'>No squad selected!</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>No squad selected!</span>")
 		return
 	var/sl_candidates = list()
 	for(var/mob/living/carbon/human/H in current_squad.marines_list)
@@ -572,26 +572,26 @@
 	if(!new_lead || new_lead == "Cancel") return
 	var/mob/living/carbon/human/H = new_lead
 	if(!istype(H) || !H.mind || H.stat == DEAD) //marines_list replaces mob refs of gibbed marines with just a name string
-		to_chat(usr, "\icon[src] <span class='warning'>[H] is KIA!</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>[H] is KIA!</span>")
 		return
 	if(H == current_squad.squad_leader)
-		to_chat(usr, "\icon[src] <span class='warning'>[H] is already the Squad Leader!</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>[H] is already the Squad Leader!</span>")
 		return
 	if(jobban_isbanned(H, "Squad Leader"))
-		to_chat(usr, "\icon[src] <span class='warning'>[H] is unfit to lead!</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>[H] is unfit to lead!</span>")
 		return
 	if(current_squad.squad_leader)
 		send_to_squad("Attention: [current_squad.squad_leader] is [current_squad.squad_leader.stat == DEAD ? "stepping down" : "demoted"]. A new Squad Leader has been set: [H.real_name].")
-		visible_message("\icon[src] <span class='boldnotice'>Squad Leader [current_squad.squad_leader] of squad '[current_squad]' has been [current_squad.squad_leader.stat == DEAD ? "replaced" : "demoted and replaced"] by [H.real_name]! Logging to enlistment files.</span>")
+		visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>Squad Leader [current_squad.squad_leader] of squad '[current_squad]' has been [current_squad.squad_leader.stat == DEAD ? "replaced" : "demoted and replaced"] by [H.real_name]! Logging to enlistment files.</span>")
 		var/old_lead = current_squad.squad_leader
 		current_squad.demote_squad_leader(current_squad.squad_leader.stat != DEAD)
 		SStracking.start_tracking(current_squad.tracking_id, old_lead)
 	else
 		send_to_squad("Attention: A new Squad Leader has been set: [H.real_name].")
-		visible_message("\icon[src] <span class='boldnotice'>[H.real_name] is the new Squad Leader of squad '[current_squad]'! Logging to enlistment file.</span>")
+		visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>[H.real_name] is the new Squad Leader of squad '[current_squad]'! Logging to enlistment file.</span>")
 
-	to_chat(H, "\icon[src] <font size='3' color='blue'><B>\[Overwatch\]: You've been promoted to \'[H.mind.assigned_role == "Squad Leader" ? "SQUAD LEADER" : "ACTING SQUAD LEADER"]\' for [current_squad.name]. Your headset has access to the command channel (:v).</B></font>")
-	to_chat(usr, "\icon[src] [H.real_name] is [current_squad]'s new leader!")
+	to_chat(H, "[htmlicon(src, H)] <font size='3' color='blue'><B>\[Overwatch\]: You've been promoted to \'[H.mind.assigned_role == "Squad Leader" ? "SQUAD LEADER" : "ACTING SQUAD LEADER"]\' for [current_squad.name]. Your headset has access to the command channel (:v).</B></font>")
+	to_chat(usr, "[htmlicon(src, usr)] [H.real_name] is [current_squad]'s new leader!")
 
 	current_squad.squad_leader = H
 
@@ -625,12 +625,12 @@
 	if(!usr || usr != operator)
 		return
 	if(!current_squad)
-		to_chat(usr, "\icon[src] <span class='warning'>No squad selected!</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>No squad selected!</span>")
 		return
 	var/mob/living/carbon/human/wanted_marine = input(usr, "Report a marine for insubordination") as null|anything in current_squad.marines_list
 	if(!wanted_marine) return
 	if(!istype(wanted_marine))//gibbed/deleted, all we have is a name.
-		to_chat(usr, "\icon[src] <span class='warning'>[wanted_marine] is missing in action.</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>[wanted_marine] is missing in action.</span>")
 		return
 
 	for (var/datum/data/record/E in data_core.general)
@@ -644,12 +644,12 @@
 						else
 							R.fields["ma_crim"] += "Insubordination."
 
-						var/insub = "\icon[src] <span class='boldnotice'>[wanted_marine] has been reported for insubordination. Logging to enlistment file.</span>"
+						var/insub = "[htmlicon(src, usr)] <span class='boldnotice'>[wanted_marine] has been reported for insubordination. Logging to enlistment file.</span>"
 						if(isAI(usr))
 							usr << insub
 						else
 							visible_message(insub)
-						to_chat(wanted_marine, "\icon[src] <font size='3' color='blue'><B>\[Overwatch\]:</b> You've been reported for insubordination by your overwatch officer.</font>")
+						to_chat(wanted_marine, "[htmlicon(src, wanted_marine)] <font size='3' color='blue'><B>\[Overwatch\]:</b> You've been reported for insubordination by your overwatch officer.</font>")
 						wanted_marine.sec_hud_set_security_status()
 					return
 
@@ -657,7 +657,7 @@
 	if(!usr || usr != operator)
 		return
 	if(!current_squad)
-		to_chat(usr, "\icon[src] <span class='warning'>No squad selected!</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>No squad selected!</span>")
 		return
 	var/datum/squad/S = current_squad
 	var/mob/living/carbon/human/transfer_marine = input(usr, "Choose marine to transfer") as null|anything in current_squad.marines_list
@@ -665,11 +665,11 @@
 	if(S != current_squad) return //don't change overwatched squad, idiot.
 
 	if(!istype(transfer_marine) || !transfer_marine.mind || transfer_marine.stat == DEAD) //gibbed, decapitated, dead
-		to_chat(usr, "\icon[src] <span class='warning'>[transfer_marine] is KIA.</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>[transfer_marine] is KIA.</span>")
 		return
 
 	if(!istype(transfer_marine.wear_id, /obj/item/card/id))
-		to_chat(usr, "\icon[src] <span class='warning'>Transfer aborted. [transfer_marine] isn't wearing an ID.</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>Transfer aborted. [transfer_marine] isn't wearing an ID.</span>")
 		return
 
 	var/datum/squad/new_squad = input(usr, "Choose the marine's new squad") as null|anything in RoleAuthority.squads
@@ -677,16 +677,16 @@
 	if(S != current_squad) return
 
 	if(!istype(transfer_marine) || !transfer_marine.mind || transfer_marine.stat == DEAD)
-		to_chat(usr, "\icon[src] <span class='warning'>[transfer_marine] is KIA.</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>[transfer_marine] is KIA.</span>")
 		return
 
 	if(!istype(transfer_marine.wear_id, /obj/item/card/id))
-		to_chat(usr, "\icon[src] <span class='warning'>Transfer aborted. [transfer_marine] isn't wearing an ID.</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>Transfer aborted. [transfer_marine] isn't wearing an ID.</span>")
 		return
 
 	var/datum/squad/old_squad = transfer_marine.assigned_squad
 	if(new_squad == old_squad)
-		to_chat(usr, "\icon[src] <span class='warning'>[transfer_marine] is already in [new_squad]!</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>[transfer_marine] is already in [new_squad]!</span>")
 		return
 
 
@@ -709,7 +709,7 @@
 				no_place = TRUE
 
 	if(no_place)
-		to_chat(usr, "\icon[src] <span class='warning'>Transfer aborted. [new_squad] can't have another [transfer_marine.mind.assigned_role].</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>Transfer aborted. [new_squad] can't have another [transfer_marine.mind.assigned_role].</span>")
 		return
 
 	old_squad.remove_marine_from_squad(transfer_marine)
@@ -724,22 +724,22 @@
 	ID.assigned_fireteam = 0 //reset fireteam assignment
 
 	transfer_marine.hud_set_squad()
-	visible_message("\icon[src] <span class='boldnotice'>[transfer_marine] has been transfered from squad '[old_squad]' to squad '[new_squad]'. Logging to enlistment file.</span>")
-	to_chat(transfer_marine, "\icon[src] <font size='3' color='blue'><B>\[Overwatch\]:</b> You've been transfered to [new_squad]!</font>")
+	visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>[transfer_marine] has been transfered from squad '[old_squad]' to squad '[new_squad]'. Logging to enlistment file.</span>")
+	to_chat(transfer_marine, "[htmlicon(src, transfer_marine)] <font size='3' color='blue'><B>\[Overwatch\]:</b> You've been transfered to [new_squad]!</font>")
 
 /obj/machinery/computer/overwatch/proc/handle_bombard()
 	if(!usr) return
 
 	if(busy)
-		to_chat(usr, "\icon[src] <span class='warning'>The [name] is busy processing another action!</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>The [name] is busy processing another action!</span>")
 		return
 
 	if(!current_squad)
-		to_chat(usr, "\icon[src] <span class='warning'>No squad selected!</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>No squad selected!</span>")
 		return
 
 	if(!almayer_orbital_cannon.chambered_tray)
-		to_chat(usr, "\icon[src] <span class='warning'>The orbital cannon has no ammo chambered.</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>The orbital cannon has no ammo chambered.</span>")
 		return
 
 	var/x_coord = deobfuscate_x(x_bomb)
@@ -749,16 +749,16 @@
 
 	var/area/A = get_area(T)
 	if(istype(A) && A.ceiling >= CEILING_DEEP_UNDERGROUND)
-		to_chat(usr, "\icon[src] <span class='warning'>The target zone is deep underground. The orbital strike cannot reach here.</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>The target zone is deep underground. The orbital strike cannot reach here.</span>")
 		return
 
 	if(istype(T, /turf/open/space))
-		to_chat(usr, "\icon[src] <span class='warning'>The target zone appears to be out of bounds. Please check coordinates.</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>The target zone appears to be out of bounds. Please check coordinates.</span>")
 		return
 
 	//All set, let's do this.
 	busy = 1
-	visible_message("\icon[src] <span class='boldnotice'>Orbital bombardment request for squad '[current_squad]' accepted. Orbital cannons are now calibrating.</span>")
+	visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>Orbital bombardment request for squad '[current_squad]' accepted. Orbital cannons are now calibrating.</span>")
 	send_to_squad("Initializing fire coordinates.")
 	playsound(T,'sound/effects/alert.ogg', 25, 1)  //Placeholder
 	sleep(20)
@@ -771,16 +771,19 @@
 			to_chat(H, SPAN_WARNING("The deck of the USS Almayer shudders as the orbital cannons open fire on the colony."))
 			if(H.client)
 				shake_camera(H, 10, 1)
-	visible_message("\icon[src] <span class='boldnotice'>Orbital bombardment for squad '[current_squad]' has fired! Impact imminent!</span>")
+	visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>Orbital bombardment for squad '[current_squad]' has fired! Impact imminent!</span>")
 	send_to_squad("WARNING! Ballistic trans-atmospheric launch detected! Get outside of Danger Close!")
 	spawn(6)
 		if(A)
-			message_mods("<font size=4>ALERT: [usr] ([usr.key]) fired an orbital bombardment in [A.name] for squad '[current_squad]' (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)</font>")
+			message_mods(FONT_SIZE_HUGE("ALERT: [usr] ([usr.key]) fired an orbital bombardment in [A.name] for squad '[current_squad]' (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
 			log_attack("[usr.name] ([usr.ckey]) fired an orbital bombardment in [A.name] for squad '[current_squad]'")
 		busy = 0
 		var/turf/target = locate(T.x + rand(-3, 3), T.y + rand(-3, 3), T.z)
 		if(target && istype(target))
 			almayer_orbital_cannon.fire_ob_cannon(target, usr)
+			if(ismob(usr))
+				var/mob/M = usr
+				M.count_niche_stat(STATISTICS_NICHE_OB)
 
 /obj/machinery/computer/overwatch/proc/handle_supplydrop()
 
@@ -788,12 +791,12 @@
 		return
 
 	if(busy)
-		to_chat(usr, "\icon[src] <span class='warning'>The [name] is busy processing another action!</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>The [name] is busy processing another action!</span>")
 		return
 
 	var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc //This thing should ALWAYS exist.
 	if(!istype(C))
-		to_chat(usr, "\icon[src] <span class='warning'>No crate was detected on the drop pad. Get Requisitions on the line!</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>No crate was detected on the drop pad. Get Requisitions on the line!</span>")
 		return
 
 	var/x_coord = deobfuscate_x(x_supply)
@@ -801,21 +804,21 @@
 
 	var/turf/T = locate(x_coord, y_coord, 1)
 	if(!T)
-		to_chat(usr, "\icon[src] <span class='warning'>Error, invalid coordinates.</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>Error, invalid coordinates.</span>")
 		return
 
 	var/area/A = get_area(T)
 	if(A && A.ceiling >= CEILING_UNDERGROUND)
-		to_chat(usr, "\icon[src] <span class='warning'>The landing zone is underground. The supply drop cannot reach here.</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>The landing zone is underground. The supply drop cannot reach here.</span>")
 		return
 
 	if(istype(T, /turf/open/space) || T.density)
-		to_chat(usr, "\icon[src] <span class='warning'>The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.</span>")
+		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.</span>")
 		return
 
 	busy = 1
 
-	visible_message("\icon[src] <span class='boldnotice'>'[C.name]' supply drop is now loading into the launch tube! Stand by!</span>")
+	visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>'[C.name]' supply drop is now loading into the launch tube! Stand by!</span>")
 	C.visible_message(SPAN_WARNING("\The [C] begins to load into a launch tube. Stand clear!"))
 	C.anchored = TRUE //To avoid accidental pushes
 	send_to_squad("'[C.name]' supply drop incoming. Heads up!")
@@ -823,9 +826,12 @@
 	spawn(100)
 		if(!C || C.loc != S.drop_pad.loc) //Crate no longer on pad somehow, abort.
 			if(C) C.anchored = FALSE
-			to_chat(usr, "\icon[src] <span class='warning'>Launch aborted! No crate detected on the drop pad.</span>")
+			to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>Launch aborted! No crate detected on the drop pad.</span>")
 			return
 		S.supply_cooldown = world.time
+		if(ismob(usr))
+			var/mob/M = usr
+			M.count_niche_stat(STATISTICS_NICHE_CRATES)
 
 		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
 		C.anchored = FALSE
@@ -835,8 +841,8 @@
 		var/turf/TC = get_turf(C)
 		TC.ceiling_debris_check(3)
 		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehhhhhhhhh.
-		C.visible_message("\icon[C] <span class='boldnotice'>The '[C.name]' supply drop falls from the sky!</span>")
-		visible_message("\icon[src] <span class='boldnotice'>'[C.name]' supply drop launched! Another launch will be available in five minutes.</span>")
+		C.visible_message("[htmlicon(C)] <span class='boldnotice'>The '[C.name]' supply drop falls from the sky!</span>")
+		visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>'[C.name]' supply drop launched! Another launch will be available in five minutes.</span>")
 		busy = 0
 
 /obj/machinery/computer/overwatch/almayer

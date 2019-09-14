@@ -175,8 +175,6 @@
 /mob/living/carbon/Xenomorph/Queen/New()
 	..()
 	if(z != ADMIN_Z_LEVEL)//so admins can safely spawn Queens in Thunderdome for tests.
-		if(!hive.living_xeno_queen)
-			hive.set_living_xeno_queen(src)
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
 
@@ -205,6 +203,7 @@
 			new_xeno << sound('sound/effects/xeno_newlarva.ogg')
 
 			hive_datum[hivenumber].stored_larva--
+			hive.hive_ui.update_burrowed_larva()
 
 
 
@@ -237,6 +236,7 @@
 			if(!L.ckey || !L.client) // no one home
 				visible_message(SPAN_XENODANGER("[L] quickly burrows into the ground."))
 				hive_datum[hivenumber].stored_larva++
+				hive.hive_ui.update_burrowed_larva()
 				qdel(L)
 
 		if((last_larva_time + 30 SECONDS) < world.time) // every minute
@@ -244,6 +244,9 @@
 			var/list/players_with_xeno_pref = get_alien_candidates()
 			if(players_with_xeno_pref && players_with_xeno_pref.len && can_spawn_larva())
 				spawn_buried_larva(pick(players_with_xeno_pref))
+
+		// Update vitals for all xenos in the Queen's hive
+		hive.hive_ui.update_xeno_vitals()
 
 /mob/living/carbon/Xenomorph/Queen/Stat()
 	..()
@@ -316,23 +319,10 @@
 	if(!input)
 		return
 
-	var/queensWord = "<br><h2 class='alert'>The words of the queen reverberate in your head...</h2>"
-	queensWord += "<br><span class='alert'>[input]</span><br>"
-
-	if(ticker && ticker.mode)
-		for(var/datum/mind/L in ticker.mode.xenomorphs)
-			var/mob/living/carbon/Xenomorph/X = L.current
-			if(X && X.client && istype(X) && !X.stat && hivenumber == X.hivenumber)
-				X << sound(get_sfx("queen"),wait = 0,volume = 50)
-				to_chat(X, "[queensWord]")
-
-	spawn(0)
-		for(var/mob/dead/observer/G in player_list)
-			G << sound(get_sfx("queen"),wait = 0,volume = 50)
-			to_chat(G, "[queensWord]")
+	xeno_announcement(input, hivenumber)
 
 	log_admin("[key_name(src)] has created a Word of the Queen report:")
-	log_admin("[queensWord]")
+	log_admin("[input]")
 	message_admins("[key_name_admin(src)] has created a Word of the Queen report.", 1)
 
 

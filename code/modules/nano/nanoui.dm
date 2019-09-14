@@ -94,6 +94,17 @@ nanoui is used to open and update nano browser uis
 		ref = nref
 
 	add_common_assets()
+	var/datum/asset/assets = get_asset_datum(/datum/asset/nanoui)
+	assets.send(user, ntemplate_filename)
+
+/**
+ * Clear references to the nanoui instance to prepare for garbage collection
+ */
+/datum/nanoui/Dispose()
+	user = null
+	src_object = null
+
+	..()
 
  /**
   * Use this proc to add assets which are common to (and required by) all nano uis
@@ -196,9 +207,12 @@ nanoui is used to open and update nano browser uis
   * @return /list config data
   */
 /datum/nanoui/proc/get_config_data()
+	var/objname = ""
+	if(src_object)
+		objname = src_object.name
 	var/list/config_data = list(
 			"title" = title,
-			"srcObject" = list("name" = src_object.name),
+			"srcObject" = list("name" = objname),
 			"stateKey" = state_key,
 			"status" = status,
 			"autoUpdateLayout" = auto_update_layout,
@@ -217,6 +231,10 @@ nanoui is used to open and update nano browser uis
   * @return /list data to send to the ui
   */
 /datum/nanoui/proc/get_send_data(var/list/data)
+	if(disposed)
+		// Don't send any data if the UI is being qdeleted
+		return list("config" = list())
+
 	var/list/config_data = get_config_data()
 
 	var/list/send_data = list("config" = config_data)
@@ -412,6 +430,8 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/open()
+	if(disposed)
+		return
 	if(!user.client)
 		return
 	var/window_size = ""
@@ -434,6 +454,8 @@ nanoui is used to open and update nano browser uis
 	nanomanager.ui_closed(src)
 	user << browse(null, "window=[window_id]")
 
+	qdel(src)
+
  /**
   * Set the UI window to call the nanoclose verb when the window is closed
   * This allows Nano to handle closed windows
@@ -453,6 +475,9 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/push_data(data, force_push = 0)
+	if(disposed)
+		return
+
 	if(allowed_user_stat > -1)
 		update_status(0)
 		if (status == STATUS_DISABLED && !force_push)
@@ -471,6 +496,9 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/Topic(href, href_list)
+	if(disposed)
+		return
+
 	update_status(0) // update the status
 	if (status != STATUS_INTERACTIVE || user != usr) // If UI is not interactive or usr calling Topic is not the UI user
 		return

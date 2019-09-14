@@ -1,0 +1,149 @@
+<style type="text/css">
+	.xenoButton {
+		float: right;
+		padding: 0 4px 0 4px;
+		background-color: #52375C;
+		cursor: default;
+	}
+
+	.xenoButton:hover {
+		background-color: #684675;
+	}
+
+	.xenoCountTable {
+		text-align: center;
+		border-collapse: collapse;
+		table-layout: fixed;
+	}
+
+	.xenoCountTable td, th {
+		padding: 2px;
+	}
+
+	.underlineCell {
+		border-bottom: 1px solid #fff;
+	}
+
+	.ssdRow {
+		background-color: #1D2128;
+		font-style: italic;
+	}
+
+	.whiteTitle {
+		color: white;
+	}
+
+	.noMargin {
+		margin: 0;
+	}
+
+	.noPadCell {
+		padding: 2px;
+	}
+
+	td, th {
+		padding: 10px 10px 10px 10px;
+		border-bottom: 1px solid #252933;
+	}
+
+	h3 {
+		margin: 0;
+		padding: 0;
+	}
+
+	h1 {
+		margin: 0;
+		padding: 0;
+	}
+
+	.leaderIcon {
+		width: 16px;
+		height: 16px;
+		background-image: url(xenoLeaderBg.png);
+	}
+
+	.ssdIcon {
+		width: 16px;
+		height: 16px;
+		background-image: url(xenoSSDIcon.png);
+	}
+</style>
+
+{{:helper.xenoMode()}}
+<center>
+	<h3 class="whiteTitle">The Queen is in:</h3>
+	{{props data.xeno_keys :keys:index}}
+		{{props keys :val:key}}
+			{{if key == "is_queen" && val}}
+				<h1 class="whiteTitle">{{:data.xeno_vitals[keys.nicknumber].area}}</h1>
+			{{/if}}
+		{{/props}}
+	{{/for}}
+	<br>
+	<i>Total sisters: {{:data.total_xenos}}</i>
+	<br>
+	<i>Burrowed larvae: {{:data.burrowed_larva}}</i>
+</center>
+
+<hr>
+
+{{for data.xeno_counts}}
+	<center><h1 class="whiteTitle">Tier {{:3-index}}</h1></center>
+	<table class="xenoCountTable">
+		<tr>
+			{{props data.xeno_counts[3-index] :count:caste}}
+				<th class="underlineCell">{{if caste == 'Bloody Larva'}}Larva{{else}}{{:caste}}{{/if}}</th>
+			{{/props}}
+		</tr>
+
+		<tr style="background-color: #52375C;">
+		{{props data.xeno_counts[3-index] :count:caste}}
+			<td class="underlineCell">{{:count}}</td>
+		{{/props}}
+		</tr>
+	</table>
+	<br>
+{{/for}}
+
+<hr>
+
+<table style="border-collapse: collapse; width: 100%;">
+	<tr style="text-align: left;">
+		<th class="noPadCell"></th>
+		<th>Name</th>
+		<th>Strain</th>
+		<th>Location</th>
+		<th>Health</th>
+		<!--For the watch button-->
+		<th></th>
+	</tr>
+
+	{{props data.xeno_keys :keys:index}}
+		<tr class="{{if data.xeno_vitals[keys.nicknumber].is_ssd}} ssdRow {{/if}}">
+			<!-- Leader/SSD icon -->
+			<!-- You might think using an image for rounded corners is stupid, but I shit you not, BYOND's version of IE doesn't support border-radius -->
+			<td class="noPadCell">
+				{{if data.xeno_vitals[keys.nicknumber].is_ssd}}
+					<div unselectable="on" class="ssdIcon"></div>
+				{{else}}
+					{{if keys.leader || keys.is_queen}}
+						<div unselectable="on" class="leaderIcon">
+							{{:helper.icon('star', 'noMargin')}}
+						</div>
+					{{/if}}
+				{{/if}}
+			</td>
+			<td>{{:data.xeno_info[keys.nicknumber].name}}</td>
+			<td>{{:data.xeno_info[keys.nicknumber].strain}}</td>
+			<td>{{:data.xeno_vitals[keys.nicknumber].area}}</td>
+			<td>
+				{{if data.xeno_vitals[keys.nicknumber].health < 30}}
+					<b style="color: red;">{{:data.xeno_vitals[keys.nicknumber].health}}%</b>
+				{{else}}
+					{{:data.xeno_vitals[keys.nicknumber].health}}%
+				{{/if}}
+			</td>
+			<td><div unselectable="on">{{:helper.link('Watch', '', { 'xeno_overwatch_src_href' : data.userref, 'xeno_overwatch_href' : data.xeno_info[keys.nicknumber].ref }, null, 'xenoButton')}}</div></td>
+		</tr>
+	{{/props}}
+</table>

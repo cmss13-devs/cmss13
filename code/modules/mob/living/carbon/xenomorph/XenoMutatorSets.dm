@@ -1,3 +1,6 @@
+#define MUTATOR_GAIN_PER_QUEEN_LEVEL 6
+#define MUTATOR_GAIN_PER_XENO_LEVEL 3
+
 //A class that holds mutators for a given Xeno hive
 //Each time a Queen matures, the hive gets more points
 //Each time a Queen dies, the mutators are reset
@@ -222,6 +225,11 @@
 	remaining_points += MUTATOR_GAIN_PER_XENO_LEVEL * (new_level - user_level)
 	user_level = new_level
 
+	// Let the mutators know too
+	for(var/name in purchased_mutators)
+		var/datum/xeno_mutator/M = xeno_mutator_list[name]
+		M.on_upgrade(src, new_level)
+
 /datum/mutator_set/individual_mutators/can_purchase_mutator(var/mutator_name)
 	if (..() == FALSE)
 		return FALSE //Can't buy it regardless
@@ -284,4 +292,4 @@
 		to_chat(src, "-")
 	else
 		for(var/m in src.mutators.purchased_mutators)
-			src << m
+			to_chat(src, m)

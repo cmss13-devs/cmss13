@@ -91,7 +91,7 @@
 				M.tail_attack(src, damage)
 				return 1
 
-			
+
 			// Check for guaranteed Ravager tail stab
 			if(isXenoRavager(M))
 				var/mob/living/carbon/Xenomorph/Ravager/R = M
@@ -162,7 +162,7 @@
 						return TRUE
 				if(R.mutation_type == RAVAGER_NORMAL)
 					R.shrapnel_embed(src, affecting)
-			
+
 			// Snowflake code for Praetorian, unfortunately there's no place to put this other than here. Fortunately its very cheap
 			if (isXenoPraetorian(M))
 				var/mob/living/carbon/Xenomorph/Praetorian/P = M
@@ -676,7 +676,7 @@
 			M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
 			SPAN_XENONOTICE("You claw \the [src]."))
 			playsound(loc, "alien_resin_break", 25)
-			health -= rand(35,45) // takes two or three hits
+			health -= Ceiling(HEALTH_DOOR_XENO/3) // takes three hits
 		qdel(src)
 
 //Xenomorphs can't use machinery, not even the "intelligent" ones
@@ -837,7 +837,7 @@
 		return 0
 
 	if(!slayer)
-		M  << SPAN_WARNING("There is nothing to clear out!")
+		to_chat(M, SPAN_WARNING("There is nothing to clear out!"))
 		return
 
 	M.visible_message(SPAN_NOTICE("\The [M] clears out \the [src]."), \

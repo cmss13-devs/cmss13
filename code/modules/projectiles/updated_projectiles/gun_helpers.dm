@@ -385,7 +385,7 @@ should be alright.
 	var/image/I = attachable_overlays[slot]
 	overlays -= I
 	qdel(I)
-	if(A) //Only updates if the attachment exists for that slot.
+	if(A && !A.hidden) //Only updates if the attachment exists for that slot.
 		var/item_icon = A.icon_state
 		if(A.attach_icon)
 			item_icon = A.attach_icon
@@ -397,8 +397,6 @@ should be alright.
 	else attachable_overlays[slot] = null
 
 /obj/item/weapon/gun/proc/update_mag_overlay()
-	if(!attachable_overlays["mag"])
-		return
 	var/image/I = attachable_overlays["mag"]
 	overlays -= I
 	qdel(I)
@@ -508,6 +506,9 @@ should be alright.
 							back.attack_hand(src)
 							return
 					if(istype(back,/obj/item/weapon)) //then check for weapons
+						back.attack_hand(src)
+						return
+					if(istype(back, /obj/item/marine/fuelpack)) //Exception for pyro fuelpack
 						back.attack_hand(src)
 						return
 
@@ -689,17 +690,17 @@ should be alright.
 			if(flags_gun_features & GUN_FULL_AUTO_ON)
 				flags_gun_features &= ~GUN_FULL_AUTO_ON
 				flags_gun_features &= ~GUN_BURST_ON
-				to_chat(usr, SPAN_NOTICE("\icon[src] You set [src] to single fire mode."))
+				to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to single fire mode."))
 			else
 				flags_gun_features|= GUN_FULL_AUTO_ON
-				to_chat(usr, SPAN_NOTICE("\icon[src] You set [src] to full auto mode."))
+				to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to full auto mode."))
 		else
 			flags_gun_features |= GUN_BURST_ON
-			to_chat(usr, SPAN_NOTICE("\icon[src] You set [src] to burst fire mode."))
+			to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to burst fire mode."))
 	else
 		flags_gun_features ^= GUN_BURST_ON
 
-		to_chat(usr, SPAN_NOTICE("\icon[src] You [flags_gun_features & GUN_BURST_ON ? "<B>enable</b>" : "<B>disable</b>"] [src]'s burst fire mode."))
+		to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You [flags_gun_features & GUN_BURST_ON ? "<B>enable</b>" : "<B>disable</b>"] [src]'s burst fire mode."))
 
 
 /obj/item/weapon/gun/verb/empty_mag()

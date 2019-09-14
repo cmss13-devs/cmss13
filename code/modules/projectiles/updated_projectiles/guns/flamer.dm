@@ -8,7 +8,7 @@
 	desc = "M240A1 incinerator unit has proven to be one of the most effective weapons at clearing out soft-targets. This is a weapon to be feared and respected as it is quite deadly."
 	origin_tech = "combat=4;materials=3"
 	icon_state = "m240"
-	item_state = "flamer"
+	item_state = "m240"
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
 	force = 15
@@ -26,25 +26,35 @@
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
 	gun_skill_category = GUN_SKILL_HEAVY_WEAPONS
 
-	New()
-		..()
-		fire_delay = config.max_fire_delay * 5
-		attachable_offset = list("rail_x" = 9, "rail_y" = 21)
-		update_icon()
+/obj/item/weapon/gun/flamer/New()
+	..()
+	attachable_offset = list("rail_x" = 9, "rail_y" = 21)
+	update_icon()
 
-	unique_action(mob/user)
-		toggle_flame(user)
+/obj/item/weapon/gun/flamer/set_gun_config_values()
+	..()
+	fire_delay = config.max_fire_delay * 5
 
-	examine(mob/user)
-		..()
-		to_chat(user, "It's turned [lit? "on" : "off"].")
-		if(current_mag)
-			to_chat(user, "The fuel gauge shows the current tank is [round(current_mag.get_ammo_percent())]% full!")
-		else
-			to_chat(user, "There's no tank in [src]!")
+/obj/item/weapon/gun/flamer/unique_action(mob/user)
+	toggle_flame(user)
+
+/obj/item/weapon/gun/flamer/examine(mob/user)
+	..()
+	to_chat(user, "It's turned [lit? "on" : "off"].")
+	if(current_mag)
+		to_chat(user, "The fuel gauge shows the current tank is [round(current_mag.get_ammo_percent())]% full!")
+	else
+		to_chat(user, "There's no tank in [src]!")
 
 /obj/item/weapon/gun/flamer/update_icon()
 	..()
+
+	// Have to redo this here because we don't want the empty sprite when the tank is empty (just when it's not in the gun)
+	var/new_icon_state = base_gun_icon
+	if(has_empty_icon && !current_mag)
+		new_icon_state += "_e"
+	icon_state = new_icon_state
+
 	if(lit)
 		var/image/I = image('icons/obj/items/weapons/guns/gun.dmi', src, "+lit")
 		I.pixel_x += 3
@@ -153,8 +163,8 @@
 
 		// Area denial, light damage, large AOE, long burntime
 		if("Napalm B")
-			burnlevel = config.min_burnlevel
-			burntime = config.max_burntime
+			burnlevel = config.low_burnlevel
+			burntime = config.instant_burntime
 			max_range = config.min_shell_range
 			playsound(user, src.get_fire_sound(), 50, 1)
 			triangular_flame(target, user, burntime, burnlevel)
@@ -164,12 +174,7 @@
 			burnlevel = config.low_burnlevel
 			burntime = config.instant_burntime
 			max_range = config.near_shell_range
-			playsound(user, src.get_fire_sound(), 50, 1)
-
-		if("Napalm A Gel") //long range, higher damage, cuz spec.
-			burnlevel = config.high_burnlevel
-			burntime = config.instant_burntime
-			max_range = config.near_shell_range
+			fire_color = "green"
 			playsound(user, src.get_fire_sound(), 50, 1)
 
 		if("Napalm X") //Probably can end up as a spec fuel or DS flamer fuel. Also this was the original fueltype, the madman i am.
@@ -294,6 +299,7 @@
 	icon_state = "m240t"
 	item_state = "m240t"
 	unacidable = 1
+	indestructible = 1
 	current_mag = null
 	var/obj/item/marine/fuelpack/fuelpack
 
@@ -640,7 +646,8 @@
 		if(T.density)
 			continue
 
-		INVOKE_ASYNC(src, .proc/fire_spread_recur, T, source, source_mob, spread_direction, fire_lvl, burn_lvl, f_color) //spread further
+		spawn(0)
+			fire_spread_recur(T, source, source_mob, spread_power, spread_direction, fire_lvl, burn_lvl, f_color)
 
 /proc/fire_spread(var/turf/target, var/source, var/source_mob, range, fire_lvl, burn_lvl, f_color)
 	new/obj/flamer_fire(target, source, source_mob, fire_lvl, burn_lvl, f_color)

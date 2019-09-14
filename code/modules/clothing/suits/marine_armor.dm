@@ -100,7 +100,8 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/storage/belt/gun/m44,
 		/obj/item/storage/belt/gun/smartpistol,
 		/obj/item/device/healthanalyzer,
-		/obj/item/device/motiondetector
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman
 	)
 
 	var/brightness_on = 6 //Average attachable pocket light
@@ -305,7 +306,9 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/storage/sparepouch,
 		/obj/item/device/hailer,
 		/obj/item/storage/belt/gun,
-		/obj/item/weapon/claymore/mercsword/commander)
+		/obj/item/weapon/claymore/mercsword/ceremonial,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman)
 	uniform_restricted = list(/obj/item/clothing/under/marine/mp)
 	specialty = "M2 pattern MP"
 	item_state_slots = list(WEAR_JACKET = "mp")
@@ -385,7 +388,9 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 					/obj/item/explosive/mine,
 					/obj/item/weapon/combat_knife,
 					/obj/item/weapon/gun/smartgun,
-					/obj/item/storage/sparepouch)
+					/obj/item/storage/sparepouch,
+					/obj/item/device/motiondetector,
+					/obj/item/device/walkman)
 
 /obj/item/clothing/suit/storage/marine/smartgunner/New(loc)
 	. = ..()
@@ -705,7 +710,9 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/explosive/grenade,
 		/obj/item/storage/bible,
 		/obj/item/weapon/claymore/mercsword/machete,
-		/obj/item/weapon/combat_knife)
+		/obj/item/weapon/combat_knife,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/PMC)
 	item_state_slots = list(WEAR_JACKET = "pmc_armor")
 
@@ -862,7 +869,9 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/device/binoculars,
 		/obj/item/weapon/combat_knife,
 		/obj/item/storage/sparepouch,
-		/obj/item/storage/large_holster/machete)
+		/obj/item/storage/large_holster/machete,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman)
 	var/brightness_on = 5 //Average attachable pocket light
 	var/flashlight_cooldown = 0 //Cooldown for toggling the light
 	var/locate_cooldown = 0 //Cooldown for SL locator
@@ -1076,7 +1085,9 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/storage/sparepouch,
 		/obj/item/storage/large_holster/machete,
 		/obj/item/weapon/baseballbat,
-		/obj/item/weapon/baseballbat/metal)
+		/obj/item/weapon/baseballbat/metal,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman)
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	min_cold_protection_temperature = SPACE_SUIT_min_cold_protection_temperature
 
@@ -1122,7 +1133,9 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/explosive/grenade,
 		/obj/item/storage/bible,
 		/obj/item/weapon/claymore/mercsword/machete,
-		/obj/item/weapon/combat_knife)
+		/obj/item/weapon/combat_knife,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/mercenary)
 	item_state_slots = list(WEAR_JACKET = "mercenary_heavy_armor")
 
@@ -1151,7 +1164,9 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/explosive/grenade,
 		/obj/item/storage/bible,
 		/obj/item/weapon/claymore/mercsword/machete,
-		/obj/item/weapon/combat_knife)
+		/obj/item/weapon/combat_knife,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/mercenary)
 	item_state_slots = list(WEAR_JACKET = "mercenary_miner_armor")
 
@@ -1180,7 +1195,9 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/explosive/grenade,
 		/obj/item/storage/bible,
 		/obj/item/weapon/claymore/mercsword/machete,
-		/obj/item/weapon/combat_knife)
+		/obj/item/weapon/combat_knife,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/mercenary)
 	item_state_slots = list(WEAR_JACKET = "mercenary_engineer_armor")
 

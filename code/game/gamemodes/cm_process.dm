@@ -50,8 +50,8 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	sleep(SECONDS_2)
 	if(fallen_list.len)
 		var/dat = "<br>"
-		dat += SPAN_ROUNDBODY("<br>In Flanders fields...")
-		dat +=  SPAN_CENTERBOLD("In memoriam of our fallen soldiers:")
+		dat += SPAN_ROUNDBODY("In Flanders fields...<br>")
+		dat += SPAN_CENTERBOLD("In memoriam of our fallen soldiers: <br>")
 		for(var/i = 1 to fallen_list.len)
 			if(i != fallen_list.len)
 				dat += "[fallen_list[i]], "
@@ -152,7 +152,7 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 	// The announcement to all Humans.
 	var/name = "[MAIN_AI_SYSTEM] Operation Staging Order"
 	var/input = "Command Order Issued.\n\n[active_lz.loc.loc] has been designated as the primary landing zone."
-	command_announcement.Announce(input, name)
+	marine_announcement(input, name)
 
 //Delta is the randomness interval, in +/-. Might not be the exact mathematical definition
 /datum/game_mode/proc/announce_bioscans(var/delta = 2)
@@ -279,7 +279,7 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 		// The announcement to all Humans. Slightly off for the planet and elsewhere, accurate for the ship.
 		var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
 		var/input = "Bioscan complete.\n\nSensors indicate [numXenosShipAres ? "[numXenosShipAres]":"no"] unknown lifeform signature[!numXenosShipAres || numXenosShipAres > 1 ? "s":""] present on the ship[numXenosShipAres&&RandomXenosShipLocation?", including one in [RandomXenosShipLocation],":""] and [numXenosPlanet ? "approximately [numXenosPlanet]":"no"] signature[!numXenosPlanet || numXenosPlanet > 1 ? "s":""] located elsewhere[numXenosPlanet&&RandomXenosPlanetLocation?", including one in [RandomXenosPlanetLocation]":""]."
-		command_announcement.Announce(input, name, new_sound = 'sound/AI/bioscan.ogg')
+		marine_announcement(input, name, 'sound/AI/bioscan.ogg')
 
 /*
 Count up surviving humans and aliens.

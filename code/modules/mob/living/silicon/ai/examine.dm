@@ -3,7 +3,7 @@
 		to_chat(user, SPAN_NOTICE("Something is there but you can't see it."))
 		return
 
-	var/msg = "<span class='info'>*---------*\nThis is \icon[src] <EM>[src]</EM>!\n"
+	var/msg = "<span class='info'>*---------*\nThis is [htmlicon(src)] <EM>[src]</EM>!\n"
 	if (src.stat == DEAD)
 		msg += "<span class='deadsay'>It appears to be powered-down.</span>\n"
 	else
@@ -24,4 +24,4 @@
 		msg += "</span>"
 	msg += "*---------*</span>"
 
-	user << msg
+	to_chat(user, msg)

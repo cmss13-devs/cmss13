@@ -214,7 +214,7 @@ var/list/ob_type_fuel_requirements
 		tray.warhead.source_mob = user
 	playsound(target, 'sound/weapons/gun_orbital_travel.ogg', 100, 1)
 	var/cancellation_token = rand(0,32000)
-	message_mods("<font size=3><A HREF='?_src_=admin_holder;admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a></font>")
+	message_mods(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
 	orbital_cannon_cancellation["[cancellation_token]"] = src
 	target.visible_message(SPAN_HIGHDANGER("The sky erupts into flames!"), SPAN_HIGHDANGER("You hear a very loud sound coming from above!"), 30)
 	sleep(OB_TRAVEL_TIMING)
@@ -384,7 +384,7 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_warhead_1"
 
 /obj/structure/ob_ammo/warhead/explosive/warhead_impact(turf/target, inaccuracy_amt = 0)
-	explosion_rec(target, 500, 30, initial(name), source_mob) //massive boom
+	explosion_rec(target, 600, 30, initial(name), source_mob) //massive boom
 
 
 
@@ -394,13 +394,14 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_warhead_2"
 
 /obj/structure/ob_ammo/warhead/incendiary/warhead_impact(turf/target, inaccuracy_amt = 0)
-	fire_spread(target, initial(name), source_mob, 12, 45, 75, "blue")
+	fire_spread(target, initial(name), source_mob, 12, 70, 85, "blue")
 
 
 /obj/structure/ob_ammo/warhead/cluster
 	name = "\improper Cluster orbital warhead"
 	warhead_kind = "cluster"
 	icon_state = "ob_warhead_3"
+	var/total_amount = 40 
 
 /obj/structure/ob_ammo/warhead/cluster/warhead_impact(turf/target, inaccuracy_amt = 0)
 	set waitfor = 0
@@ -409,12 +410,11 @@ var/list/ob_type_fuel_requirements
 	var/list/turf_list = list()
 	for(var/turf/T in range(range_num,target))
 		turf_list += T
-	var/total_amt = 30
-	for(var/i = 1 to total_amt)
+	for(var/i = 1 to total_amount)
 		var/turf/U = pick_n_take(turf_list)
 		playsound(U, 'sound/weapons/gun_flare.ogg', 50, 1)
 		sleep(pick(1,2,3))
-		explosion_rec(U,150, 30, initial(name), source_mob) //rocket barrage
+		explosion_rec(U,175, 30, initial(name), source_mob) //rocket barrage
 
 
 

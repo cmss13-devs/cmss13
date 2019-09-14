@@ -34,10 +34,16 @@
 	stored_item = new /obj/item/weapon/combat_knife(src)
 	update_icon()
 
-/obj/item/clothing/shoes/marinechief
-	name = "chief officer shoes"
+/obj/item/clothing/shoes/dress
+	name = "dress shoes"
 	desc = "Only a small amount of monkeys, kittens, and orphans were killed in making this."
 	icon_state = "laceups"
+	flags_inventory = NOSLIPPING
+	siemens_coefficient = 0.6
+
+/obj/item/clothing/shoes/dress/commander
+	name = "commanding officer dress shoes"
+	desc = "Has special soles for better trampling those underneath."
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -46,15 +52,6 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	flags_inventory = NOSLIPPING
-	siemens_coefficient = 0.6
-
-/obj/item/clothing/shoes/marinechief/commander
-	name = "commanding officer shoes"
-	desc = "Has special soles for better trampling those underneath."
-
-
-/obj/item/clothing/shoes/veteran
 
 /obj/item/clothing/shoes/veteran/PMC
 	name = "polished shoes"

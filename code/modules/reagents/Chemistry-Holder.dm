@@ -315,7 +315,7 @@ var/const/INGEST = 2
 
 					var/list/seen = viewers(4, get_turf(my_atom))
 					for(var/mob/M in seen)
-						to_chat(M, SPAN_NOTICE(" \icon[my_atom] The solution begins to bubble."))
+						to_chat(M, SPAN_NOTICE("[htmlicon(my_atom, M)] The solution begins to bubble."))
 
 					playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 15, 1)
 

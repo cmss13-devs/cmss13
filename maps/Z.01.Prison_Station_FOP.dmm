@@ -12241,8 +12241,8 @@
 /area/prison/medbay)
 "azG" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/prison{
 	tag = "icon-bright_clean2 (SOUTHWEST)";
@@ -13916,7 +13916,7 @@
 	},
 /area/prison/residential/north)
 "aDE" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/organic/grass,
 /area/prison/residential/north)
 "aDF" = (
@@ -14453,7 +14453,7 @@
 	},
 /area/prison/research)
 "aEv" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/organic/grass,
 /area/prison/residential/north)
 "aEw" = (
@@ -29663,12 +29663,12 @@
 /area/prison/yard)
 "blp" = (
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/organic/grass,
 /area/prison/yard)
 "blq" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/organic/grass,
 /area/prison/yard)
 "blr" = (
@@ -30381,11 +30381,11 @@
 /obj/effect/landmark{
 	name = "good_item"
 	},
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/organic/grass,
 /area/prison/yard)
 "bmD" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/organic/grass,
 /area/prison/yard)
 "bmE" = (
@@ -35417,7 +35417,7 @@
 	},
 /area/prison/cellblock/lowsec/se)
 "bxO" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/organic/grass,
 /area/prison/residential/central)
 "bxP" = (
@@ -42063,7 +42063,7 @@
 	},
 /area/prison/residential/south)
 "bLY" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/organic/grass,
 /area/prison/residential/central)
 "bLZ" = (
@@ -45783,8 +45783,8 @@
 /area/prison/pirate)
 "bUT" = (
 /obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-10"
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/prison{
 	tag = "icon-bright_clean2 (SOUTHWEST)";
@@ -58939,7 +58939,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "duu" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 8
@@ -59377,7 +59377,7 @@
 	},
 /area/prison/residential/central)
 "gML" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/organic/grass,
 /area/prison/residential/south)
 "gRU" = (
@@ -60126,7 +60126,7 @@
 	},
 /area/prison/maintenance/residential/access/south)
 "mAT" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
@@ -60318,7 +60318,7 @@
 	},
 /area/prison/hallway/central/south)
 "nXE" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/organic/grass,
 /area/prison/residential/south)
 "obq" = (
@@ -60481,7 +60481,7 @@
 	},
 /area/prison/cellblock/highsec/north/south)
 "pkV" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 8
@@ -60631,7 +60631,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/sw)
 "qtz" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/organic/grass,
 /area/prison/residential/south)
 "qun" = (
@@ -60702,7 +60702,7 @@
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "rpB" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -61192,7 +61192,7 @@
 /turf/open/floor/carpet,
 /area/prison/residential/central)
 "wUz" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/organic/grass,
 /area/prison/residential/north)
 "wUS" = (
@@ -61301,7 +61301,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/se)
 "xSK" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/machinery/light{
 	dir = 4;
 	icon_state = "tube1"

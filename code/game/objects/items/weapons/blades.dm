@@ -21,12 +21,12 @@
 	force = 39
 
 
-/obj/item/weapon/claymore/mercsword/commander
+/obj/item/weapon/claymore/mercsword/ceremonial
 	name = "Ceremonial Sword"
-	desc = "A fancy ceremonial sword passed down from generation to generation. Despite this, it has been very well cared for, and is in top condition. Has the name 'Chang' printed along the blade."
-	icon_state = "mercsword"
+	desc = "A fancy ceremonial sword passed down from generation to generation. Despite this, it has been very well cared for, and is in top condition."
+	icon_state = "ceremonial"
 	item_state = "machete"
-	force = 65
+	force = 25
 
 /obj/item/weapon/claymore/mercsword/machete
 	name = "\improper M2132 machete"
@@ -216,22 +216,24 @@
 			to_chat(H_user, SPAN_NOTICE("You were interrupted!"))
 			return
 
-	var/found_shrapnel = helper_shrapnel_removal(embedded_human)
-	if(!found_shrapnel)
+	if (!(embedded_human.embedded_items - embedded_human.get_visible_implants()))
 		to_chat(H_user, SPAN_NOTICE("You couldn't find any shrapnel."))
+		return
+	else
+		H_user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
 
-/obj/item/weapon/proc/helper_shrapnel_removal(var/mob/living/carbon/human/embedded_human)
-	for(var/obj/item/shard/shrapnel/embedded in embedded_human.embedded_items)
-		var/datum/limb/organ = embedded.embedded_organ
-		to_chat(embedded_human, SPAN_NOTICE("[embedded] is removed from your [organ.display_name]."))
-		embedded.loc = embedded_human.loc
-		organ.implants -= embedded
-		embedded_human.embedded_items -= embedded
+	for (var/obj/item/shard/shrapnel/S in embedded_human.embedded_items)
+		var/datum/limb/organ = S.embedded_organ
+		to_chat(embedded_human, SPAN_NOTICE("You remove [S] from your [organ.display_name]."))
+		S.loc = embedded_human.loc
+		organ.implants -= S
+		embedded_human.embedded_items -= S
 		if(!(organ.status & LIMB_ROBOT) && !(embedded_human.species.flags & NO_BLOOD)) //Big thing makes us bleed when moving
 			organ.status |= LIMB_BLEEDING
 		organ = null
-		return TRUE
-	return FALSE
+
+	to_chat(H_user, SPAN_NOTICE("You dig out all the shrapnel you can find from your body."))
+
 
 /obj/item/weapon/claymore/hefa
 	name = "HEFA sword"

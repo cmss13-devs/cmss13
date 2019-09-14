@@ -40,6 +40,8 @@
 	var/flags_heat_protection = NOFLAGS //flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
 	var/flags_cold_protection = NOFLAGS //flags which determine which body parts are protected from cold. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
 
+	var/indestructible = 0 //determines whether or not the item can be destroyed by explosions
+
 	var/max_heat_protection_temperature //Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by flags_heat_protection flags
 	var/min_cold_protection_temperature //Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by flags_cold_protection flags
 
@@ -122,16 +124,19 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
-				qdel(src)
+				if(!indestructible)
+					qdel(src)
 			else
 				explosion_throw(severity, explosion_direction)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				qdel(src)
+				if(!indestructible)
+					qdel(src)
 			else
 				explosion_throw(severity, explosion_direction)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			if(!indestructible)
+				qdel(src)
 
 
 
@@ -198,9 +203,9 @@ cases. Override_icon_state should be a list.*/
 			size = "huge"
 		else
 	//if ((CLUMSY in usr.mutations) && prob(50)) t = "funny-looking"
-	to_chat(user, "This is a [blood_DNA ? blood_color != "#030303" ? "bloody " : "oil-stained " : ""]\icon[src][src.name]. It is a [size] item.")
+	to_chat(user, "This is a [blood_DNA ? blood_color != "#030303" ? "bloody " : "oil-stained " : ""][htmlicon(src, user)][src.name]. It is a [size] item.")
 	if(desc)
-		user << desc
+		to_chat(user, desc)
 
 /obj/item/attack_hand(mob/user)
 	if (!user) return
@@ -492,10 +497,15 @@ cases. Override_icon_state should be a list.*/
 								return 1
 				return 0
 			if(WEAR_IN_SCABBARD)
-				if (H.back && istype(H.back, /obj/item/storage/large_holster))
+				if(H.back && istype(H.back, /obj/item/storage/large_holster))
 					var/obj/item/storage/large_holster/B = H.back
 					if(B.can_be_inserted(src, 1))
 						return 1
+				if(H.back && istype(H.back, /obj/item/marine/fuelpack)) // Shitty exception for pyro fuelpack
+					var/obj/item/marine/fuelpack/FP = H.back
+					if(istype(src, /obj/item/weapon/gun/flamer/M240T))
+						FP.attackby(src, H)
+						return TRUE
 				return 0
 			if(WEAR_IN_BELT)
 				if(H.belt && istype(H.belt, /obj/item/storage))

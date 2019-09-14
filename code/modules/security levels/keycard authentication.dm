@@ -163,11 +163,11 @@ var/global/maint_all_access = 0
 
 /proc/make_maint_all_access()
 	maint_all_access = 1
-	command_announcement.Announce("The maintenance access requirement has been revoked on all airlocks.")
+	marine_announcement("The maintenance access requirement has been revoked on all airlocks.")
 
 /proc/revoke_maint_all_access()
 	maint_all_access = 0
-	command_announcement.Announce("The maintenance access requirement has been readded on all airlocks.")
+	marine_announcement("The maintenance access requirement has been readded on all airlocks.")
 
 /obj/machinery/door/airlock/allowed(mob/M)
 	if(maint_all_access && src.check_access_list(list(ACCESS_MARINE_ENGINEERING)))

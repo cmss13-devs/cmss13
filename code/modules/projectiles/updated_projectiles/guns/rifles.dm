@@ -64,8 +64,10 @@
 						/obj/item/attachable/attached_gun/grenade,
 						/obj/item/attachable/attached_gun/flamer,
 						/obj/item/attachable/attached_gun/shotgun,
+						/obj/item/attachable/quickfire,
 						/obj/item/attachable/scope,
-						/obj/item/attachable/scope/mini)
+						/obj/item/attachable/scope/mini
+						)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade)
@@ -80,10 +82,10 @@
 	fire_delay = config.med_fire_delay
 	burst_amount = config.med_burst_value
 	burst_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult
+	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.med_scatter_value
+	scatter = config.low_scatter_value
+	burst_scatter_mult = config.mlow_scatter_value
 	scatter_unwielded = config.max_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.high_recoil_value
@@ -229,14 +231,14 @@
 			return
 		if(burst_amount == config.med_burst_value && (flags_gun_features & GUN_BURST_ON))
 			playsound(usr, 'sound/machines/click.ogg', 15, 1)
-			to_chat(usr, SPAN_NOTICE("\icon[src] You set [src] to full auto mode."))
+			to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to full auto mode."))
 			burst_amount = config.mhigh_burst_value
 			burst_scatter_mult = config.high_scatter_value
 			return
 		if(burst_amount == config.mhigh_burst_value && !(flags_gun_features & GUN_BURST_ON))
 			flags_gun_features |= GUN_BURST_ON
 			playsound(usr, 'sound/machines/click.ogg', 15, 1)
-			to_chat(usr, SPAN_NOTICE("\icon[src] You set [src] to semi auto mode."))
+			to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to semi auto mode."))
 			burst_amount = config.med_burst_value
 			burst_scatter_mult = config.low_scatter_value
 			return
@@ -245,13 +247,9 @@
 /obj/item/weapon/gun/rifle/m46c/New()
 	..()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17, "rail_x" = 12, "rail_y" = 18, "under_x" = 24, "under_y" = 12, "stock_x" = 24, "stock_y" = 13)
-
-/obj/item/weapon/gun/rifle/m46c/New()
-	..()
 	var/obj/item/attachable/stock/rifle/S = new(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.attach_icon = ""
-	S.icon_state = ""
+	S.hidden = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
 
@@ -540,6 +538,7 @@
 	reload_sound = 'sound/weapons/handling/hpr_reload.ogg'
 	unload_sound = 'sound/weapons/handling/hpr_unload.ogg'
 	fire_sound = 'sound/weapons/gun_m41ae2.ogg'
+	aim_slowdown = SLOWDOWN_ADS_LMG
 	current_mag = /obj/item/ammo_magazine/rifle/lmg
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
@@ -567,7 +566,7 @@
 	..()
 	fire_delay = config.mlow_fire_delay
 	burst_amount = config.high_burst_value
-	burst_delay = config.low_fire_delay
+	burst_delay = config.mlow_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.max_hit_accuracy_mult
 	scatter = config.med_scatter_value
@@ -590,9 +589,9 @@
 	icon_state = "type71"
 	item_state = "type71"
 	origin_tech = "combat=4;materials=2;syndicate=4"
-	fire_sound = list('sound/weapons/gun_type71.ogg')
+	fire_sound = 'sound/weapons/gun_type71.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/type71
-	wield_delay = 4
+	wield_delay = WIELD_DELAY_FAST
 	//type_of_casings = "cartridge"
 
 	attachable_allowed = list(
@@ -665,7 +664,7 @@
 	name = "\improper Type 71 pulse carbine"
 	icon_state = "type71c"
 	item_state = "type71c"
-	wield_delay = 2 //Carbine is more lightweight
+	wield_delay = WIELD_DELAY_VERY_FAST //Carbine is more lightweight
 
 
 /obj/item/weapon/gun/rifle/type71/carbine/New()
@@ -765,7 +764,7 @@
 	burst_delay = 1
 	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
-	damage_mult = config.base_hit_damage_mult
+	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
 	recoil_unwielded = config.low_recoil_value
 	damage_falloff_mult = 0
 

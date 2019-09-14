@@ -12,27 +12,30 @@
 	unacidable = 1
 	health = 1
 	var/weed_strength = 1
+	var/secreting = FALSE
+
+	// Which node is responsible for keeping this weed patch alive?
+	var/obj/effect/alien/weeds/node/parent = null
 
 /obj/effect/alien/weeds/New(pos, obj/effect/alien/weeds/node/node)
 	..()
 	if(node)
 		weed_strength = node.weed_strength
+		node.add_child(src)
 
 	health = 1
 
-	update_sprite()
+	update_icon()
 	update_neighbours()
 	if(node && node.loc && (get_dist(node, src) < node.node_range))
 		spawn(rand(150, 200) / weed_strength) //stronger weeds expand faster
 			if(loc && node && node.loc)
 				weed_expand(node)
 
-
 /obj/effect/alien/weeds/Dispose()
 	var/oldloc = loc
 	. = ..()
 	update_neighbours(oldloc)
-
 
 /obj/effect/alien/weeds/examine(mob/user)
 	..()
@@ -40,13 +43,25 @@
 	if(istype(T, /turf/open))
 		T.ceiling_desc(user)
 
-
 /obj/effect/alien/weeds/Crossed(atom/movable/AM)
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
 		if(!has_species(H,"Yautja")) //predators are immune to weed slowdown effect
 			H.next_move_slowdown += 1
 
+// Uh oh, we might be dying!
+// I know this is bad proc naming but it was too good to pass on and it's only used in this file anyways
+// If you're still confused, scroll aaaall the way down to the bottom of the file.
+// that's /obj/effect/alien/weeds/node/Dispose(). on line 275.
+/obj/effect/alien/weeds/proc/avoid_orphanage()
+	for(var/obj/effect/alien/weeds/node/N in orange(NODERANGE, get_turf(src)))
+		// WE FOUND A NEW MOMMY
+		N.add_child(src)
+		break
+
+	// NO MORE FOOD ON THE TABLE. WE DIE
+	if(!parent)
+		qdel(src)
 
 /obj/effect/alien/weeds/proc/weed_expand(obj/effect/alien/weeds/node/node)
 	var/turf/U = get_turf(src)
@@ -94,7 +109,6 @@
 
 			new /obj/effect/alien/weeds(T, node)
 
-
 /obj/effect/alien/weeds/proc/update_neighbours(turf/U)
 	if(!U)
 		U = loc
@@ -107,10 +121,11 @@
 
 			var/obj/effect/alien/weeds/W = locate() in T
 			if(W)
-				W.update_sprite()
+				W.update_icon()
 
+/obj/effect/alien/weeds/update_icon()
+	overlays.Cut()
 
-/obj/effect/alien/weeds/proc/update_sprite()
 	var/my_dir = 0
 	for (var/check_dir in cardinal)
 		var/turf/check = get_step(src, check_dir)
@@ -123,13 +138,30 @@
 		else if (locate(/obj/effect/alien/weeds) in check)
 			my_dir |= check_dir
 
+	// big brain the icon dir by letting -15 represent the base icon,
+	// 0-15 be for omnidirectional and -1 to -14 be the rest
+
+	var/icon_dir = -15
 	if (my_dir == 15) //weeds in all four directions
-		icon_state = "weed[rand(0,15)]"
+		icon_dir = rand(0,15)
+		icon_state = "weed[icon_dir]"
 	else if(my_dir == 0) //no weeds in any direction
 		icon_state = "base"
 	else
+		icon_dir = -my_dir
 		icon_state = "weed_dir[my_dir]"
 
+	if(secreting)
+		var/image/secretion
+
+		if (icon_dir >= 0)
+			secretion = image('icons/mob/xenos/Effects.dmi', "secrete[icon_dir]")
+		else if(icon_dir == -15)
+			secretion = image('icons/mob/xenos/Effects.dmi', "secrete_base")
+		else
+			secretion = image('icons/mob/xenos/Effects.dmi', "secrete_dir[-icon_dir]")
+
+		overlays += secretion
 
 /obj/effect/alien/weeds/ex_act(severity)
 	switch(severity)
@@ -174,9 +206,6 @@
 	if(health <= 0)
 		qdel(src)
 
-/obj/effect/alien/weeds/update_icon()
-	return
-
 /obj/effect/alien/weeds/fire_act()
 	if(!disposed)
 		spawn(rand(100,175))
@@ -188,7 +217,7 @@
 	icon_state = "weedwall"
 	var/list/wall_connections = list("0", "0", "0", "0")
 
-/obj/effect/alien/weeds/weedwall/update_sprite()
+/obj/effect/alien/weeds/weedwall/update_icon()
 	if(istype(loc, /turf/closed/wall))
 		var/turf/closed/wall/W = loc
 		wall_connections = W.wall_connections
@@ -201,7 +230,7 @@
 /obj/effect/alien/weeds/weedwall/window
 	layer = ABOVE_TABLE_LAYER
 
-/obj/effect/alien/weeds/weedwall/window/update_sprite()
+/obj/effect/alien/weeds/weedwall/window/update_icon()
 	var/obj/structure/window/framed/F = locate() in loc
 	if(F && F.junction)
 		icon_state = "weedwall[F.junction]"
@@ -209,11 +238,10 @@
 /obj/effect/alien/weeds/weedwall/frame
 	layer = ABOVE_TABLE_LAYER
 
-/obj/effect/alien/weeds/weedwall/frame/update_sprite()
+/obj/effect/alien/weeds/weedwall/frame/update_icon()
 	var/obj/structure/window_frame/WF = locate() in loc
 	if(WF && WF.junction)
 		icon_state = "weedframe[WF.junction]"
-
 
 
 /obj/effect/alien/weeds/node
@@ -225,9 +253,23 @@
 	health = 15
 	flags_atom = OPENCONTAINER
 
+	// Which weeds are being kept alive by this node?
+	var/list/obj/effect/alien/weeds/children = list()
+
+/obj/effect/alien/weeds/node/proc/add_child(var/obj/effect/alien/weeds/weed)
+	if(!weed || !istype(weed))
+		return
+	weed.parent = src
+	children += weed
+
+/obj/effect/alien/weeds/node/proc/remove_child(var/obj/effect/alien/weeds/weed)
+	if(!weed || !istype(weed) || !(weed in children))
+		return
+	weed.parent = null
+	children -= weed
 
 /obj/effect/alien/weeds/node/update_icon()
-	overlays.Cut()
+	..()
 	overlays += "weednode"
 
 /obj/effect/alien/weeds/node/New(loc, obj/effect/alien/weeds/node/node, mob/living/carbon/Xenomorph/X)
@@ -247,5 +289,14 @@
 		health = 15
 		node_range = node_range + weed_strength - 1//stronger weeds expand further!
 	..(loc, src)
+
+/obj/effect/alien/weeds/node/Dispose()
+	// When the node is removed, weeds should start dying out
+	// Make all the children look for a new parent node
+	for(var/obj/effect/alien/weeds/W in children)
+		remove_child(W)
+		add_timer(CALLBACK(W, .proc/avoid_orphanage), rand(70, 130))
+
+	. = ..()
 
 #undef NODERANGE

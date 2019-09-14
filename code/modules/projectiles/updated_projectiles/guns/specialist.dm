@@ -23,11 +23,12 @@
 	icon_state = "m42a"
 	item_state = "m42a"
 	unacidable = 1
+	indestructible = 1
 	origin_tech = "combat=6;materials=5"
 	fire_sound = 'sound/weapons/gun_sniper.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper
 	force = 12
-	wield_delay = 12 //Ends up being 1.6 seconds due to scope
+	wield_delay = WIELD_DELAY_HORRIBLE //Ends up being 1.6 seconds due to scope
 	zoomdevicename = "scope"
 	attachable_allowed = list(/obj/item/attachable/bipod)
 
@@ -63,11 +64,12 @@
 	icon_state = "xm42b"
 	item_state = "xm42b"
 	unacidable = 1
+	indestructible = 1
 	origin_tech = "combat=6;materials=5"
 	fire_sound = 'sound/weapons/sniper_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/anti_tank
 	force = 12
-	wield_delay = 12 //Ends up being 1.6 seconds due to scope
+	wield_delay = WIELD_DELAY_HORRIBLE //Ends up being 1.6 seconds due to scope
 	zoomdevicename = "scope"
 	attachable_allowed = list(/obj/item/attachable/bipod)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
@@ -197,8 +199,9 @@
 	icon_state = "m41b"
 	item_state = "m4ra" //PLACEHOLDER
 	unacidable = 1
+	indestructible = 1
 	origin_tech = "combat=5;materials=4"
-	fire_sound = list('sound/weapons/gun_m4ra.ogg')
+	fire_sound = 'sound/weapons/gun_m4ra.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra
 	force = 16
 	attachable_allowed = list(
@@ -426,15 +429,15 @@
 
 /obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
 	if(!iff_enabled)
-		to_chat(user, "\icon[src] Can't switch ammunition type when the [src]'s fire restriction is disabled.")
+		to_chat(user, "[htmlicon(src, usr)] Can't switch ammunition type when the [src]'s fire restriction is disabled.")
 		return
 	secondary_toggled = !secondary_toggled
-	to_chat(user, "\icon[src] You changed the [src]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor shredding rounds" : "highly precise rounds"].")
+	to_chat(user, "[htmlicon(src, usr)] You changed the [src]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor shredding rounds" : "highly precise rounds"].")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
 
 /obj/item/weapon/gun/smartgun/proc/toggle_lethal_mode(mob/user)
-	to_chat(user, "\icon[src] You [iff_enabled? "<B>disable</b>" : "<B>enable</b>"] the [src]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")
+	to_chat(user, "[htmlicon(src, usr)] You [iff_enabled? "<B>disable</b>" : "<B>enable</b>"] the [src]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	iff_enabled = !iff_enabled
 	ammo = ammo_primary
@@ -468,7 +471,7 @@
 	src.powerpack = null
 
 /obj/item/weapon/gun/smartgun/proc/toggle_recoil_compensation(mob/user)
-	to_chat(user, "\icon[src] You [recoil_compensation? "<B>disable</b>" : "<B>enable</b>"] the [src]'s recoil compensation.")
+	to_chat(user, "[htmlicon(src, usr)] You [recoil_compensation? "<B>disable</b>" : "<B>enable</b>"] the [src]'s recoil compensation.")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	recoil_compensation = !recoil_compensation
 	recoil_compensation()
@@ -484,7 +487,7 @@
 		src.drain -= 50
 
 /obj/item/weapon/gun/smartgun/proc/toggle_accuracy_improvement(mob/user)
-	to_chat(user, "\icon[src] You [accuracy_improvement? "<B>disable</b>" : "<B>enable</b>"] the [src]'s accuracy improvement.")
+	to_chat(user, "[htmlicon(src, usr)] You [accuracy_improvement? "<B>disable</b>" : "<B>enable</b>"] the [src]'s accuracy improvement.")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	accuracy_improvement = !accuracy_improvement
 	accuracy_improvement()
@@ -499,9 +502,9 @@
 
 /obj/item/weapon/gun/smartgun/proc/toggle_auto_fire(mob/user)
 	if(!(flags_item & WIELDED))
-		to_chat(user, "\icon[src] You need to wield the [src] to enable autofire.")
+		to_chat(user, "[htmlicon(src, usr)] You need to wield the [src] to enable autofire.")
 		return //Have to be actually be wielded.
-	to_chat(user, "\icon[src] You [auto_fire? "<B>disable</b>" : "<B>enable</b>"] the [src]'s auto fire mode.")
+	to_chat(user, "[htmlicon(src, usr)] You [auto_fire? "<B>disable</b>" : "<B>enable</b>"] the [src]'s auto fire mode.")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	auto_fire = !auto_fire
 	auto_fire()
@@ -537,8 +540,9 @@
 			blip_pool = list()
 		if(!detector_mode)
 			long_range_cooldown--
-			if(long_range_cooldown) return
-		else long_range_cooldown = initial(long_range_cooldown)
+			if(long_range_cooldown)
+				return
+			long_range_cooldown = initial(long_range_cooldown)
 		scan()
 
 /obj/item/weapon/gun/smartgun/proc/scan()
@@ -698,7 +702,7 @@
 	target = null
 
 /obj/item/weapon/gun/smartgun/proc/toggle_motion_detector(mob/user)
-	to_chat(user, "\icon[src] You [motion_detector? "<B>disable</b>" : "<B>enable</b>"] the [src]'s motion detector.")
+	to_chat(user, "[htmlicon(src, usr)] You [motion_detector? "<B>disable</b>" : "<B>enable</b>"] the [src]'s motion detector.")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	motion_detector = !motion_detector
 	motion_detector()
@@ -774,6 +778,7 @@
 	icon_state = "m92"
 	item_state = "m92" //NEED TWO HANDED SPRITE
 	unacidable = 1
+	indestructible = 1
 	origin_tech = "combat=5;materials=5"
 	matter = list("metal" = 6000)
 	w_class = SIZE_LARGE
@@ -1033,6 +1038,7 @@
 	icon_state = "m5"
 	item_state = "m5"
 	unacidable = 1
+	indestructible = 1
 	origin_tech = "combat=6;materials=5"
 	matter = list("metal" = 10000)
 	current_mag = /obj/item/ammo_magazine/internal/launcher/rocket
@@ -1220,8 +1226,7 @@
 	..()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 20, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 	var/obj/item/attachable/scope/mini/S = new(src)
-	S.attach_icon = "" //Let's make it invisible, since the scope won't fit with the popped sprite anywho.
-	S.icon_state = ""
+	S.hidden = TRUE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachables()

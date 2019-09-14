@@ -18,7 +18,7 @@
 		/obj/machinery/door)
 
 	var/damage = 0
-	var/damage_cap = 1000 //Wall will break down to girders if damage reaches this point
+	var/damage_cap = HEALTH_WALL //Wall will break down to girders if damage reaches this point
 
 	var/damage_overlay
 	var/global/damage_overlays[8]

@@ -52,7 +52,7 @@
 	updateUsrDialog()
 	if(occupant)
 		if(occupant.stat == DEAD)
-			visible_message("\icon[src] \The <b>[src]</b> speaks: Patient has expired.")
+			visible_message("[htmlicon(src, viewers(src), viewers(src))] \The <b>[src]</b> speaks: Patient has expired.")
 			surgery = 0
 			go_out()
 			return
@@ -67,22 +67,22 @@
 					filtered += 3
 				if(!filtered)
 					filtering = 0
-					visible_message("\icon[src] \The <b>[src]</b> speaks: Blood filtering complete.")
+					visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Blood filtering complete.")
 				else if(prob(10))
-					visible_message("\icon[src] \The <b>[src]</b> whirrs and gurgles as the dialysis module operates.")
+					visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> whirrs and gurgles as the dialysis module operates.")
 					to_chat(occupant, SPAN_INFO("You feel slightly better."))
 			if(blood_transfer)
 				if(occupant.blood_volume < BLOOD_VOLUME_NORMAL)
 					if(blood_pack.reagents.get_reagent_amount("blood") < 4)
 						blood_pack.reagents.add_reagent("blood", 195, list("donor"=null,"viruses"=null,"blood_DNA"=null,"blood_type"="O-","resistances"=null))
-						visible_message("\icon[src] \The <b>[src]</b> speaks: Blood reserves depleted, switching to fresh bag.")
+						visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Blood reserves depleted, switching to fresh bag.")
 					occupant.inject_blood(blood_pack, 8) // double iv stand rate
 					if(prob(10))
 						visible_message("\The [src] whirrs and gurgles as it tranfuses blood.")
 						to_chat(occupant, SPAN_INFO("You feel slightly less faint."))
 				else
 					blood_transfer = 0
-					visible_message("\icon[src] \The <b>[src]</b> speaks: Blood transfer complete.")
+					visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Blood transfer complete.")
 			if(heal_brute)
 				if(occupant.getBruteLoss() > 0)
 					heal_limb(occupant, 3, 0)
@@ -91,7 +91,7 @@
 						to_chat(occupant, SPAN_INFO("You feel your wounds being stitched and sealed shut."))
 				else
 					heal_brute = 0
-					visible_message("\icon[src] \The <b>[src]</b> speaks: Trauma repair surgery complete.")
+					visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Trauma repair surgery complete.")
 			if(heal_burn)
 				if(occupant.getFireLoss() > 0)
 					heal_limb(occupant, 0, 3)
@@ -100,7 +100,7 @@
 						to_chat(occupant, SPAN_INFO("You feel your burned flesh being sliced away and replaced."))
 				else
 					heal_burn = 0
-					visible_message("\icon[src] \The <b>[src]</b> speaks: Skin grafts complete.")
+					visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Skin grafts complete.")
 			if(heal_toxin)
 				if(occupant.getToxLoss() > 0)
 					occupant.adjustToxLoss(-3)
@@ -109,7 +109,7 @@
 						to_chat(occupant, SPAN_INFO("You feel slighly less ill."))
 				else
 					heal_toxin = 0
-					visible_message("\icon[src] \The <b>[src]</b> speaks: Chelation complete.")
+					visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Chelation complete.")
 
 
 #define LIMB_SURGERY 1
@@ -227,7 +227,7 @@
 		visible_message("\The [src] buzzes, no surgical procedures were queued.")
 		return
 
-	visible_message("\icon[src] \The <b>[src]</b> begins to operate, loud audible clicks lock the pod.")
+	visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> begins to operate, loud audible clicks lock the pod.")
 	surgery = 1
 	icon_state = "autodoc_operate"
 
@@ -260,7 +260,7 @@
 			if(ORGAN_SURGERY)
 				switch(S.surgery_procedure)
 					if("germs") // Just dose them with the maximum amount of antibiotics and hope for the best
-						if(prob(30)) visible_message("\icon[src] \The <b>[src]</b> speaks: Beginning organ disinfection.");
+						if(prob(30)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Beginning organ disinfection.");
 						var/datum/reagent/R = chemical_reagents_list["spaceacillin"]
 						var/amount = R.overdose - H.reagents.get_reagent_amount("spaceacillin")
 						var/inject_per_second = 3
@@ -276,10 +276,10 @@
 								sleep(10*surgery_mod)
 
 					if("damage")
-						if(prob(30)) visible_message("\icon[src] \The <b>[src]</b> speaks: Beginning organ restoration.");
+						if(prob(30)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Beginning organ restoration.");
 						if(S.unneeded)
 							sleep(UNNEEDED_DELAY)
-							visible_message("\icon[src] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
+							visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
 							surgery_todo_list -= S
 							continue
 						open_incision(H,S.limb_ref)
@@ -297,7 +297,7 @@
 						if(istype(S.organ_ref,/datum/internal_organ))
 							S.organ_ref.rejuvenate()
 						else
-							visible_message("\icon[src] \The <b>[src]</b> speaks: Organ is missing.");
+							visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Organ is missing.");
 
 						// close them
 						if(S.limb_ref.name != "groin") // TODO: fix brute damage before closing
@@ -305,10 +305,10 @@
 						close_incision(H,S.limb_ref)
 
 					if("eyes")
-						if(prob(30)) visible_message("\icon[src] \The <b>[src]</b> speaks: Beginning corrective eye surgery.");
+						if(prob(30)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Beginning corrective eye surgery.");
 						if(S.unneeded)
 							sleep(UNNEEDED_DELAY)
-							visible_message("\icon[src] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
+							visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
 							surgery_todo_list -= S
 							continue
 						if(istype(S.organ_ref,/datum/internal_organ/eyes))
@@ -342,10 +342,10 @@
 			if(LIMB_SURGERY)
 				switch(S.surgery_procedure)
 					if("internal")
-						if(prob(30)) visible_message("\icon[src] \The <b>[src]</b> speaks: Beginning internal bleeding procedure.");
+						if(prob(30)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Beginning internal bleeding procedure.");
 						if(S.unneeded)
 							sleep(UNNEEDED_DELAY)
-							visible_message("\icon[src] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
+							visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
 							surgery_todo_list -= S
 							continue
 						open_incision(H,S.limb_ref)
@@ -358,10 +358,10 @@
 						close_incision(H,S.limb_ref)
 
 					if("broken")
-						if(prob(30)) visible_message("\icon[src] \The <b>[src]</b> speaks: Beginning broken bone procedure.");
+						if(prob(30)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Beginning broken bone procedure.");
 						if(S.unneeded)
 							sleep(UNNEEDED_DELAY)
-							visible_message("\icon[src] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
+							visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
 							surgery_todo_list -= S
 							continue
 						open_incision(H,S.limb_ref)
@@ -379,10 +379,10 @@
 						close_incision(H,S.limb_ref)
 
 					if("missing")
-						if(prob(30)) visible_message("\icon[src] \The <b>[src]</b> speaks: Beginning limb replacement.");
+						if(prob(30)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Beginning limb replacement.");
 						if(S.unneeded)
 							sleep(UNNEEDED_DELAY)
-							visible_message("\icon[src] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
+							visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
 							surgery_todo_list -= S
 							continue
 
@@ -391,7 +391,7 @@
 						sleep(CAUTERY_MAX_DURATION*surgery_mod)
 
 						if(stored_metal < LIMB_METAL_AMOUNT)
-							visible_message("\icon[src] \The <b>[src]</b> croaks: Metal reserves depleted.")
+							visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> croaks: Metal reserves depleted.")
 							playsound(src.loc, 'sound/machines/buzz-two.ogg', 15, 1)
 							surgery_todo_list -= S
 							continue // next surgery
@@ -399,7 +399,7 @@
 						stored_metal -= LIMB_METAL_AMOUNT
 
 						if(S.limb_ref.parent.status & LIMB_DESTROYED) // there's nothing to attach to
-							visible_message("\icon[src] \The <b>[src]</b> croaks: Limb attachment failed.")
+							visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> croaks: Limb attachment failed.")
 							playsound(src.loc, 'sound/machines/buzz-two.ogg', 15, 1)
 							surgery_todo_list -= S
 							continue
@@ -421,10 +421,10 @@
 						H.UpdateDamageIcon()
 
 					if("necro")
-						if(prob(30)) visible_message("\icon[src] \The <b>[src]</b> speaks: Beginning necrotic tissue removal.");
+						if(prob(30)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Beginning necrotic tissue removal.");
 						if(S.unneeded)
 							sleep(UNNEEDED_DELAY)
-							visible_message("\icon[src] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
+							visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
 							surgery_todo_list -= S
 							continue
 
@@ -437,10 +437,10 @@
 						close_incision(H,S.limb_ref)
 
 					if("shrapnel")
-						if(prob(30)) visible_message("\icon[src] \The <b>[src]</b> speaks: Beginning shrapnel removal.");
+						if(prob(30)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Beginning shrapnel removal.");
 						if(S.unneeded)
 							sleep(UNNEEDED_DELAY)
-							visible_message("\icon[src] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
+							visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
 							surgery_todo_list -= S
 							continue
 
@@ -461,7 +461,7 @@
 						close_incision(H,S.limb_ref)
 
 					if("germ")
-						if(prob(30)) visible_message("\icon[src] \The <b>[src]</b> speaks: Beginning limb disinfection.");
+						if(prob(30)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Beginning limb disinfection.");
 
 						var/datum/reagent/R = chemical_reagents_list["spaceacillin"]
 						var/amount = (R.overdose/2) - H.reagents.get_reagent_amount("spaceacillin")
@@ -478,10 +478,10 @@
 								sleep(10)
 
 					if("facial") // dumb but covers for incomplete facial surgery
-						if(prob(30)) visible_message("\icon[src] \The <b>[src]</b> speaks: Beginning Facial Reconstruction Surgery.");
+						if(prob(30)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Beginning Facial Reconstruction Surgery.");
 						if(S.unneeded)
 							sleep(UNNEEDED_DELAY)
-							visible_message("\icon[src] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
+							visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
 							surgery_todo_list -= S
 							continue
 						if(istype(S.limb_ref,/datum/limb/head))
@@ -507,20 +507,20 @@
 								F.face_surgery_stage = 0
 
 					if("open")
-						if(prob(30)) visible_message("\icon[src] \The <b>[src]</b>croaks: Closing surgical incision.");
+						if(prob(30)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b>croaks: Closing surgical incision.");
 						close_encased(H,S.limb_ref)
 						close_incision(H,S.limb_ref)
 
-		if(prob(30)) visible_message("\icon[src] \The <b>[src]</b> speaks: Procedure complete.");
+		if(prob(30)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Procedure complete.");
 		surgery_todo_list -= S
 		continue
 
 	while(heal_brute||heal_burn||heal_toxin||filtering||blood_transfer)
 		if(!surgery) break
 		sleep(20)
-		if(prob(5)) visible_message("\icon[src] \The <b>[src]</b> beeps as it continues working.");
+		if(prob(5)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> beeps as it continues working.");
 
-	visible_message("\icon[src] \The <b>[src]</b> clicks and opens up having finished the requested operations.")
+	visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> clicks and opens up having finished the requested operations.")
 	surgery = 0
 	go_out()
 
@@ -590,7 +590,7 @@
 			to_chat(usr, SPAN_WARNING("You don't have the training to use this."))
 			return
 		if(surgery)
-			visible_message("\icon[src] \The <b>[src]</b> malfunctions as [usr] aborts the surgery in progress.")
+			visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> malfunctions as [usr] aborts the surgery in progress.")
 			occupant.take_limb_damage(rand(30,50),rand(30,50))
 			surgery = 0
 			// message_staff for now, may change to message_admins later

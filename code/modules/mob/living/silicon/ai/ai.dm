@@ -88,11 +88,6 @@ var/list/ai_verbs_default = list(
 	src.verbs -= ai_verbs_default
 
 /mob/living/silicon/ai/New(loc, var/obj/item/device/mmi/B, var/safety = 0)
-	announcement = new()
-	announcement.title = "A.I. Announcement"
-	announcement.announcement_type = "A.I. Announcement"
-	announcement.newscast = 1
-
 	var/list/possibleNames = ai_names
 
 	var/pickedName = null
@@ -160,7 +155,6 @@ var/list/ai_verbs_default = list(
 /mob/living/silicon/ai/proc/SetName(pickedName as text)
 	real_name = pickedName
 	name = pickedName
-	announcement.announcer = pickedName
 	if(eyeobj)
 		eyeobj.name = "[pickedName] (AI Eye)"
 
@@ -288,7 +282,7 @@ var/list/ai_verbs_default = list(
 	if(check_unable(AI_CHECK_WIRELESS|AI_CHECK_RADIO))
 		return
 
-	announcement.Announce(input)
+	ai_announcement(input)
 	message_cooldown = 1
 	spawn(MINUTES_1)//One minute cooldown
 		message_cooldown = 0

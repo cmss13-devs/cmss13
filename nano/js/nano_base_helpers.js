@@ -3,13 +3,13 @@ NanoBaseHelpers = function ()
 {
 	var _baseHelpers = {
             // change ui styling to "syndicate mode"
-			syndicateMode: function() {
-				$('body').css("background-color","#8f1414");
-				$('body').css("background-image","url('uiBackground-Syndicate.png')");
+			xenoMode: function() {
+				$('body').css("background-color","#1B1E25");
+				$('body').css("background-image","url('uiBackground-Xeno.png')");
 				$('body').css("background-position","50% 0");
 				$('body').css("background-repeat","repeat-x");
 
-				$('#uiTitleFluff').css("background-image","url('uiTitleFluff-Syndicate.png')");
+				$('#uiTitleFluff').css("background-image","url('uiTitleFluff-Xeno.png')");
 				$('#uiTitleFluff').css("background-position","50% 50%");
 				$('#uiTitleFluff').css("background-repeat", "no-repeat");
 
@@ -43,6 +43,18 @@ NanoBaseHelpers = function ()
 				}
 
 				return '<div unselectable="on" class="linkActive ' + iconClass + ' ' + elementClass + '" data-href="' + NanoUtility.generateHref(parameters) + '" ' + elementIdHtml + '>' + iconHtml + text + '</div>';
+			},
+			// Insert an icon
+			icon: function(icon, elementClass) {
+				var iconHtml = '';
+				var iconClass = 'noIcon';
+				if (typeof icon != 'undefined' && icon)
+				{
+					iconHtml = '<div class="uiLinkPendingIcon"></div><div class="uiIcon16 icon-' + icon + ' ' + elementClass + '"></div>';
+					iconClass = 'hasIcon';
+				}
+
+				return iconHtml;
 			},
 			// Round a number to the nearest integer
 			round: function(number) {

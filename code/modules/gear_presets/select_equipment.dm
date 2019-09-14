@@ -14,6 +14,55 @@
 	var/special_role
 	var/faction = FACTION_NEUTRAL
 
+	//Uniform data
+	var/utility_under = null
+	var/utility_over = null
+	var/utility_gloves = null
+	var/utility_shoes = null
+	var/utility_hat = null
+	var/utility_extra = null
+
+	var/service_under = null
+	var/service_over = null
+	var/service_shoes = null
+	var/service_hat = null
+	var/service_gloves = null
+	var/service_extra = null
+
+	var/dress_under = null
+	var/dress_over = null
+	var/dress_shoes = null
+	var/dress_hat = null
+	var/dress_gloves = null
+	var/dress_extra = null
+
+	var/list/uniform_sets = null
+
+
+/datum/equipment_preset/New()
+	uniform_sets = list(
+		UNIFORM_VEND_UTILITY_UNIFORM = utility_under,
+		UNIFORM_VEND_UTILITY_JACKET = utility_over,
+		UNIFORM_VEND_UTILITY_HEAD = utility_hat,
+		UNIFORM_VEND_UTILITY_GLOVES = utility_gloves,
+		UNIFORM_VEND_UTILITY_SHOES = utility_shoes,
+		UNIFORM_VEND_UTILITY_EXTRA = utility_extra,
+
+		UNIFORM_VEND_SERVICE_UNIFORM = service_under,
+		UNIFORM_VEND_SERVICE_JACKET = service_over,
+		UNIFORM_VEND_SERVICE_HEAD = service_hat,
+		UNIFORM_VEND_SERVICE_GLOVES = service_gloves,
+		UNIFORM_VEND_SERVICE_SHOES = service_shoes,
+		UNIFORM_VEND_SERVICE_EXTRA = service_extra,
+
+		UNIFORM_VEND_DRESS_UNIFORM = dress_under,
+		UNIFORM_VEND_DRESS_JACKET = dress_over,
+		UNIFORM_VEND_DRESS_HEAD = dress_hat,
+		UNIFORM_VEND_DRESS_GLOVES = dress_gloves,
+		UNIFORM_VEND_DRESS_SHOES = dress_shoes,
+		UNIFORM_VEND_DRESS_EXTRA = dress_extra
+	)
+
 	//load_appearance()
 /datum/equipment_preset/proc/load_race(mob/living/carbon/human/H)
 
@@ -26,6 +75,7 @@
 	H.age = rand(21,45)
 
 /datum/equipment_preset/proc/load_gear(mob/living/carbon/human/H)
+
 /datum/equipment_preset/proc/load_status(mob/living/carbon/human/H)
 
 /datum/equipment_preset/proc/load_skills(mob/living/carbon/human/H)
@@ -45,6 +95,7 @@
 	W.rank = rank
 	W.registered_name = H.real_name
 	W.paygrade = paygrade
+	W.uniform_sets = uniform_sets
 	H.equip_to_slot_or_del(W, WEAR_ID)
 	H.faction = faction
 	if(H.mind)
@@ -88,7 +139,10 @@
 		var/rankpath = get_rank_pins(paygrade)
 		if(rankpath)
 			var/obj/item/clothing/accessory/ranks/R = new rankpath()
-			H.w_uniform.attach_accessory(H, R)
+			if(H.wear_suit && H.wear_suit.can_attach_accessory(R))
+				H.wear_suit.attach_accessory(H, R)
+			else if(H.w_uniform && H.w_uniform.can_attach_accessory(R))
+				H.w_uniform.attach_accessory(H, R)
 
 	//Gives glasses to the vision impaired
 	if(H.disabilities & NEARSIGHTED)
@@ -287,7 +341,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/head/ushanka(H), WEAR_HEAD)
 		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/snow_suit(H), WEAR_JACKET)
 		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather(H), WEAR_FACE)
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/snow(H), WEAR_FEET)
+		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 		H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
 
 /datum/equipment_preset/proc/add_random_survivor_equipment(var/mob/living/carbon/human/H)
@@ -318,7 +372,7 @@
 
 /datum/equipment_preset/proc/add_random_survivor_weapon(var/mob/living/carbon/human/H)
 	if(map_tag != MAP_PRISON_STATION)
-		var/random_weap = rand(0,4)
+		var/random_weap = rand(0,3)
 		switch(random_weap)
 			if(0)
 				H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/holdout(H), WEAR_WAIST)
@@ -327,6 +381,4 @@
 			if(2)
 				H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/kt42(H), WEAR_WAIST)
 			if(3)
-				H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/uzi(H), WEAR_WAIST)
-			if(4)
 				H.equip_to_slot_or_del(new /obj/item/weapon/gun/revolver/small(H), WEAR_WAIST)

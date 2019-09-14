@@ -3,6 +3,23 @@
 	faction = FACTION_MARINE
 	languages = list("English")
 
+	utility_under = list(/obj/item/clothing/under/marine/officer/command)
+	utility_hat = list(/obj/item/clothing/head/cmcap)
+	utility_gloves = list(/obj/item/clothing/gloves/marine)
+	utility_shoes = list(/obj/item/clothing/shoes/marine)
+	utility_extra = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
+
+	service_under = list(/obj/item/clothing/under/marine/officer/bridge)
+	service_over = list(/obj/item/clothing/suit/storage/jacket/marine)
+	service_hat = list(/obj/item/clothing/head/cmcap)
+	service_shoes = list(/obj/item/clothing/shoes/dress)
+
+	dress_under = list(/obj/item/clothing/under/marine/dress)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress)
+	dress_hat = list(/obj/item/clothing/head/marine/peaked)
+	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
+	dress_shoes = list(/obj/item/clothing/shoes/dress)
+
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/cmo
@@ -16,6 +33,23 @@
 	paygrade = "CCMO"
 	role_comm_title = "CMO"
 	skills = /datum/skills/CMO
+
+	utility_under = list(/obj/item/clothing/under/rank/medical/green)
+	utility_hat = list(/obj/item/clothing/head/surgery/green)
+	utility_gloves = list(/obj/item/clothing/gloves/latex)
+	utility_shoes = list(/obj/item/clothing/shoes/white)
+	utility_extra = list(/obj/item/clothing/suit/storage/labcoat)
+
+	service_under = list()
+	service_over = list()
+	service_hat = list()
+	service_shoes = list()
+
+	dress_under = list(/obj/item/clothing/under/suit_jacket)
+	dress_over = list()
+	dress_hat = list()
+	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
+	dress_shoes = list(/obj/item/clothing/shoes/laceup)
 
 /datum/equipment_preset/uscm_ship/cmo/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
@@ -48,6 +82,23 @@
 	role_comm_title = "Doc"
 	skills = /datum/skills/doctor
 
+	utility_under = list(/obj/item/clothing/under/rank/medical/green)
+	utility_hat = list(/obj/item/clothing/head/surgery/green)
+	utility_gloves = list(/obj/item/clothing/gloves/latex)
+	utility_shoes = list(/obj/item/clothing/shoes/white)
+	utility_extra = list(/obj/item/clothing/suit/storage/labcoat)
+
+	service_under = list()
+	service_over = list()
+	service_hat = list()
+	service_shoes = list(/obj/item/clothing/shoes/laceup)
+
+	dress_under = list(/obj/item/clothing/under/suit_jacket)
+	dress_over = list()
+	dress_hat = list()
+	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
+	dress_shoes = list(/obj/item/clothing/shoes/laceup)
+
 /datum/equipment_preset/uscm_ship/doctor/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -77,6 +128,23 @@
 	paygrade = "CD"
 	role_comm_title = "Rsr"
 	skills = /datum/skills/researcher
+
+	utility_under = list(/obj/item/clothing/under/rank/medical/green)
+	utility_hat = list(/obj/item/clothing/head/surgery/green)
+	utility_gloves = list(/obj/item/clothing/gloves/latex)
+	utility_shoes = list(/obj/item/clothing/shoes/white)
+	utility_extra = list(/obj/item/clothing/suit/storage/labcoat/researcher)
+
+	service_under = list(/obj/item/clothing/under/marine/officer/researcher)
+	service_over = list()
+	service_hat = list()
+	service_shoes = list(/obj/item/clothing/shoes/laceup)
+
+	dress_under = list(/obj/item/clothing/under/suit_jacket)
+	dress_over = list()
+	dress_hat = list()
+	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
+	dress_shoes = list(/obj/item/clothing/shoes/laceup)
 
 /datum/equipment_preset/uscm_ship/researcher/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
@@ -113,6 +181,23 @@
 	role_comm_title = "CL"
 	skills = /datum/skills/civilian
 
+	utility_under = list(/obj/item/clothing/under/liaison_suit/outing)
+	utility_hat = list()
+	utility_gloves = list()
+	utility_shoes = list(/obj/item/clothing/shoes)
+	utility_extra = list(/obj/item/clothing/under/liaison_suit/suspenders)
+
+	service_under = list(/obj/item/clothing/under/liaison_suit)
+	service_over = list()
+	service_hat = list()
+	service_shoes = list(/obj/item/clothing/shoes/laceup)
+
+	dress_under = list(/obj/item/clothing/under/liaison_suit/formal)
+	dress_over = list()
+	dress_hat = list()
+	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
+	dress_shoes = list(/obj/item/clothing/shoes/laceup)
+
 /datum/equipment_preset/uscm_ship/liaison/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel
 	//There is no suitable backpack for a CL really...
@@ -146,6 +231,8 @@
 	role_comm_title = "CE"
 	skills = /datum/skills/CE
 
+	utility_under = list(/obj/item/clothing/under/marine/officer/ce)
+
 /datum/equipment_preset/uscm_ship/chief_engineer/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -171,6 +258,8 @@
 	paygrade = "E5"
 	role_comm_title = "MT"
 	skills = /datum/skills/MT
+
+	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
 
 /datum/equipment_preset/uscm_ship/maint/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
@@ -200,6 +289,8 @@
 	role_comm_title = "RO"
 	skills = /datum/skills/RO
 
+	utility_under = list(/obj/item/clothing/under/rank/ro_suit)
+
 /datum/equipment_preset/uscm_ship/ro/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -226,6 +317,8 @@
 	paygrade = "E5"
 	role_comm_title = "CT"
 	skills = /datum/skills/CT
+
+	utility_under = list(/obj/item/clothing/under/rank/cargotech)
 
 /datum/equipment_preset/uscm_ship/cargo/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
@@ -254,6 +347,17 @@
 	role_comm_title = "CO"
 	skills = /datum/skills/commander
 
+	utility_hat = list(/obj/item/clothing/head/beret/cm)
+	utility_gloves = list(/obj/item/clothing/gloves/marine/techofficer/commander)
+	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm/tan)
+
+	service_hat = list(/obj/item/clothing/head/beret/cm)
+	service_shoes = list(/obj/item/clothing/shoes/dress/commander)
+
+	dress_extra = list(/obj/item/clothing/head/beret/marine/commander/dress, /obj/item/storage/large_holster/ceremonial_sword/full)
+	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain)
+	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
+
 /datum/equipment_preset/uscm_ship/commander/New()
 	. = ..()
 	access = get_all_marine_access()
@@ -264,11 +368,11 @@
 		backItem = /obj/item/storage/backpack/mcommander
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/command(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marinechief/commander(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/techofficer/commander(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress/commander(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/cmateba/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm/tan(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_HAND)
@@ -304,6 +408,8 @@
 	role_comm_title = "XO"
 	skills = /datum/skills/XO
 
+	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
+
 /datum/equipment_preset/uscm_ship/xo/New()
 	. = ..()
 	access = get_all_marine_access()
@@ -314,8 +420,9 @@
 		backItem = /obj/item/storage/backpack/marine
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/exec(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
@@ -344,7 +451,7 @@
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/commander(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/ro(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
@@ -366,6 +473,8 @@
 	paygrade = "O1" //Technically Second Lieutenant equivalent, but 2ndLT doesn't exist in Marine pay grade, so Ensign
 	role_comm_title = "PO"
 	skills = /datum/skills/pilot
+
+	utility_under = list(/obj/item/clothing/under/marine/officer/pilot)
 
 /datum/equipment_preset/uscm_ship/po/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel
@@ -398,6 +507,10 @@
 	role_comm_title = "MP"
 	skills = /datum/skills/MP
 
+	utility_under = list(/obj/item/clothing/under/marine/mp)
+	utility_hat = list(/obj/item/clothing/head/beret/cm/red)
+	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
+
 /datum/equipment_preset/uscm_ship/mp/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -426,6 +539,10 @@
 	paygrade = "O3"
 	role_comm_title = "CMP"
 	skills = /datum/skills/CMP
+
+	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
+	utility_hat = list(/obj/item/clothing/head/beret/cm/wo)
+	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
 /datum/equipment_preset/uscm_ship/cmp/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -456,6 +573,17 @@
 	paygrade = "O5"
 	role_comm_title = "Cpt"
 	skills = /datum/skills/commander
+
+	utility_hat = list(/obj/item/clothing/head/beret/cm)
+	utility_gloves = list(/obj/item/clothing/gloves/marine/techofficer/commander)
+	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm/tan)
+
+	service_hat = list(/obj/item/clothing/head/beret/cm)
+	service_shoes = list(/obj/item/clothing/shoes/dress/commander)
+
+	dress_extra = list(/obj/item/clothing/head/beret/marine/commander/dress, /obj/item/storage/large_holster/ceremonial_sword/full)
+	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain)
+	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
 
 /datum/equipment_preset/uscm_ship/officer/New()
 	. = ..()
@@ -491,6 +619,11 @@
 	paygrade = "O7"
 	role_comm_title = "ADM"
 	skills = /datum/skills/admiral
+
+	service_under = list(/obj/item/clothing/under/marine/officer/admiral)
+	service_over = list(/obj/item/clothing/suit/armor/vest/admiral)
+	service_gloves = list(/obj/item/clothing/gloves/black)
+	service_hat = list(/obj/item/clothing/head/admiral)
 
 /datum/equipment_preset/uscm_ship/admiral/New()
 	. = ..()
@@ -577,6 +710,10 @@
 	role_comm_title = "FADM"
 	skills = /datum/skills/admiral
 
+	service_under = list(/obj/item/clothing/under/soviet)
+	service_over = list(/obj/item/clothing/suit/hgpirate)
+	service_hat = list(/obj/item/clothing/head/hgpiratecap)
+
 /datum/equipment_preset/uscm_ship/fleet_admiral/New()
 	. = ..()
 	access = get_all_accesses() + get_all_centcom_access()
@@ -606,6 +743,10 @@
 	role_comm_title = "RMP"
 	skills = /datum/skills/CMP
 	special_role = "RIOT"
+
+	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
+	utility_hat = list(/obj/item/clothing/head/beret/cm/wo)
+	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
 /datum/equipment_preset/uscm_ship/riot_mp/New()
 	. = ..()

@@ -9,7 +9,7 @@
 	max_health = XENO_HEALTH_VERYHIGH
 	plasma_gain = XENO_PLASMA_GAIN_VERYHIGH
 	plasma_max = XENO_PLASMA_LOW
-	xeno_explosion_resistance = XENO_ULTRA_EXPLOSIVE_ARMOR
+	xeno_explosion_resistance = XENO_LOWULTRA_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_HEAVY_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_MEDIUM
 	evasion = XENO_EVASION_NONE
@@ -31,6 +31,7 @@
 	// Strain variables
 
 	// Vanilla
+	var/empower_cooldown = 300
 
 	// Spike shed variables
 	var/spike_shed_cooldown = 100 
@@ -101,6 +102,7 @@
 		/datum/action/xeno_action/xeno_resting,
 		/datum/action/xeno_action/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/empower
 		)
 
 /mob/living/carbon/Xenomorph/Ravager/New()

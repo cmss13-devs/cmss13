@@ -853,11 +853,13 @@
 /obj/item/clothing/gloves/yautja/proc/explodey(var/mob/living/carbon/victim)
 	set waitfor = 0
 	exploding = 1
-	playsound(src.loc,'sound/effects/pred_countdown.ogg', 100, 0, 15, 10)
-	do_after(victim, rand(72, 80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 	var/turf/T = get_turf(victim)
 	var/mob/user = usr
 	var/source_mob = user
+
+	playsound(src.loc,'sound/effects/pred_countdown.ogg', 100, 0, 15, 10)
+	message_mods(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))
+	do_after(victim, rand(72, 80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 	if(istype(T) && exploding)
 		victim.apply_damage(50,BRUTE,"chest")
 		if(victim) victim.gib() //Let's make sure they actually gib.
@@ -915,6 +917,11 @@
 			if(istype(bracer))
 				if(forced || alert("Are you sure you want to send this Yautja into the great hunting grounds?","Explosive Bracers", "Yes", "No") == "Yes")
 					if(M.get_active_hand() == G && comrade && comrade.gloves == bracer && !bracer.exploding)
+						var/area/A = get_area(M)
+						var/turf/T = get_turf(M)
+						if(A)
+							message_mods(FONT_SIZE_HUGE("ALERT: [usr] ([usr.key]) triggered the predator self-destruct sequence of [comrade] ([comrade.key]) in [A.name] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)</font>"))
+							log_attack("[usr.name] ([usr.ckey]) triggered the predator self-destruct sequence of [comrade] ([comrade.key]) in [A.name]")
 						bracer.explodey(comrade)
 						M.visible_message(SPAN_WARNING("[M] presses a few buttons on [comrade]'s wrist bracer."),SPAN_DANGER("You activate the timer. May [comrade]'s final hunt be swift."))
 			else
@@ -950,6 +957,10 @@
 			to_chat(M, SPAN_WARNING("Not while you're unconcious..."))
 			return
 		to_chat(M, "<span class='userdanger'>You set the timer. May your journey to the great hunting grounds be swift.</span>")
+		var/area/A = get_area(M)
+		var/turf/T = get_turf(M)
+		message_mods(FONT_SIZE_HUGE("ALERT: [usr] ([usr.key]) triggered their predator self-destruct sequence [A ? "in [A.name]":""] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
+		log_attack("[usr.name] ([usr.ckey]) triggered their predator self-destruct sequence in [A ? "in [A.name]":""]")
 		explodey(M)
 	return 1
 
@@ -1228,12 +1239,12 @@
 		user.visible_message(SPAN_INFO("[user] starts becoming shimmery and indistinct..."))
 		if(do_after(user,100, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			// Teleport self.
-			user.visible_message(SPAN_WARNING("\icon[user][user] disappears!"))
+			user.visible_message(SPAN_WARNING("[htmlicon(user, viewers(src))][user] disappears!"))
 			var/tele_time = animation_teleport_quick_out(user)
 			// Also teleport whoever you're pulling.
 			var/mob/living/M = user.pulling
 			if(istype(M))
-				M.visible_message(SPAN_WARNING("\icon[M][M] disappears!"))
+				M.visible_message(SPAN_WARNING("[htmlicon(M, viewers(src))][M] disappears!"))
 				animation_teleport_quick_out(M)
 			sleep(tele_time)
 
@@ -1268,12 +1279,12 @@
 	user.visible_message(SPAN_INFO("[user] starts becoming shimmery and indistinct..."))
 	if(do_after(user,100, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		// Teleport self.
-		user.visible_message(SPAN_WARNING("\icon[user][user] disappears!"))
+		user.visible_message(SPAN_WARNING("[htmlicon(user, viewers(src))][user] disappears!"))
 		var/tele_time = animation_teleport_quick_out(user)
 		// Also teleport whoever you're pulling.
 		var/mob/living/M = user.pulling
 		if(istype(M))
-			M.visible_message(SPAN_WARNING("\icon[M][M] disappears!"))
+			M.visible_message(SPAN_WARNING("[htmlicon(M, viewers(src))][M] disappears!"))
 			animation_teleport_quick_out(M)
 		sleep(tele_time)
 
@@ -1287,31 +1298,6 @@
 	else
 		sleep(10)
 		if(loc) timer = 0
-
-//Doesn't give heat or anything yet, it's just a light source.
-/obj/structure/campfire
-	name = "fire"
-	desc = "A crackling fire. What is it even burning?"
-	icon = 'code/WorkInProgress/Cael_Aislinn/Jungle/jungle.dmi'
-	icon_state = "campfire"
-	density = 0
-	layer = TURF_LAYER
-	anchored = 1
-	unacidable = 1
-
-	New()
-		..()
-		l_color = "#FFFF0C" //Yeller
-		SetLuminosity(4)
-		spawn(MINUTES_5)
-			if(ticker && istype(ticker.mode,/datum/game_mode/huntergames)) loop_firetick()
-
-
-	proc/loop_firetick() //Crackly!
-		while(src && ticker)
-			SetLuminosity(0)
-			SetLuminosity(rand(3,4))
-			sleep(rand(15,30))
 
 //=================//\\=================\\
 //======================================\\
@@ -1345,7 +1331,7 @@
 	force = 33
 	w_class = SIZE_HUGE
 	edge = 1
-	sharp = 1
+	sharp = 2
 	flags_item = NOSHIELD|NODROP|ITEM_PREDATOR
 	flags_equip_slot = NOFLAGS
 	hitsound = 'sound/weapons/wristblades_hit.ogg'

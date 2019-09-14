@@ -1444,7 +1444,6 @@
 /area/ice_colony/surface/engineering/tool)
 "aeo" = (
 /obj/structure/table,
-/obj/item/tool/taperoll/engineering,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
 /obj/machinery/power/apc{
@@ -7422,11 +7421,11 @@
 /turf/open/floor/plating,
 /area/ice_colony/surface/hydroponics/lobby)
 "atM" = (
-/obj/structure/flora/grass/green,
+/obj/structure/flora/grass/ice/green,
 /turf/open/floor/grass,
 /area/ice_colony/surface/hydroponics/lobby)
 "atN" = (
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/floor/grass,
 /area/ice_colony/surface/hydroponics/lobby)
 "atO" = (
@@ -7446,7 +7445,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "atQ" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/floor/grass,
 /area/ice_colony/surface/hydroponics/lobby)
 "atR" = (
@@ -7632,7 +7631,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "aun" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/floor/grass,
 /area/ice_colony/surface/hydroponics/lobby)
 "auo" = (
@@ -7831,7 +7830,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "auJ" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/floor/grass,
 /area/ice_colony/surface/hydroponics/lobby)
 "auK" = (
@@ -8587,7 +8586,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "awp" = (
-/obj/structure/flora/ausbushes/pointybush,
+/obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/floor/grass,
 /area/ice_colony/surface/hydroponics/lobby)
 "awq" = (
@@ -8675,7 +8674,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "awD" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/floor/grass,
 /area/ice_colony/surface/hydroponics/lobby)
 "awE" = (
@@ -33642,7 +33641,6 @@
 /area/ice_colony/underground/storage)
 "bHk" = (
 /obj/structure/table,
-/obj/item/tool/taperoll/engineering,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
 /turf/open/floor{

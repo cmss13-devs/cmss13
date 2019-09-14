@@ -16,6 +16,8 @@
 	var/obj/vehicle/train/lead
 	var/obj/vehicle/train/tow
 
+	var/display_to_chat = FALSE
+
 
 //-------------------------------------------
 // Standard procs
@@ -79,23 +81,30 @@
 
 //attempts to attach src as a follower of the train T
 /obj/vehicle/train/proc/attach_to(obj/vehicle/train/T, mob/user)
+	if(istype(user))
+		display_to_chat = TRUE
+
 	if (get_dist(src, T) > 1)
-		to_chat(user, SPAN_DANGER("[src] is too far away from [T] to hitch them together."))
+		if(display_to_chat)
+			to_chat(user, SPAN_DANGER("[src] is too far away from [T] to hitch them together."))
 		return
 
 	if (lead)
-		to_chat(user, SPAN_DANGER("[src] is already hitched to something."))
+		if(display_to_chat)
+			to_chat(user, SPAN_DANGER("[src] is already hitched to something."))
 		return
 
 	if (T.tow)
-		to_chat(user, SPAN_DANGER("[T] is already towing something."))
+		if(display_to_chat)
+			to_chat(user, SPAN_DANGER("[T] is already towing something."))
 		return
 
 	//check for cycles.
 	var/obj/vehicle/train/next_car = T
 	while (next_car)
 		if (next_car == src)
-			to_chat(user, SPAN_DANGER("That seems very silly."))
+			if(display_to_chat)
+				to_chat(user, SPAN_DANGER("That seems very silly."))
 			return
 		next_car = next_car.lead
 
@@ -104,7 +113,7 @@
 	T.tow = src
 	dir = lead.dir
 
-	if(user)
+	if(user && display_to_chat)
 		to_chat(user, SPAN_NOTICE(" You hitch [src] to [T]."))
 
 	update_stats()
@@ -112,14 +121,19 @@
 
 //detaches the train from whatever is towing it
 /obj/vehicle/train/proc/unattach(mob/user)
+	if(istype(user))
+		display_to_chat = TRUE
+
 	if (!lead)
-		to_chat(user, SPAN_DANGER("[src] is not hitched to anything."))
+		if(display_to_chat)
+			to_chat(user, SPAN_DANGER("[src] is not hitched to anything."))
 		return
 
 	lead.tow = null
 	lead.update_stats()
 
-	to_chat(user, SPAN_NOTICE(" You unhitch [src] from [lead]."))
+	if(display_to_chat)
+		to_chat(user, SPAN_NOTICE(" You unhitch [src] from [lead]."))
 	lead = null
 
 	update_stats()

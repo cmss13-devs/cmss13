@@ -26,18 +26,12 @@
 	if(accessories && accessories.len > ties.len)
 		.+= ". <a href='?src=\ref[src];list_acc=1'>\[See accessories\]</a>"
 
-/obj/item/clothing/attackby(var/obj/item/I, var/mob/living/M)
-	..()
-	if(accessories.len && is_sharp(I))
-		for(var/obj/item/clothing/accessory/ranks/R in accessories)
-			M.visible_message(SPAN_WARNING("You rip off \the [R] from [src]!"), SPAN_WARNING("[M] rips off \the [R] from [src]!"))
-
 /obj/item/clothing/Topic(href, href_list)
 	if(href_list["list_acc"])
 		if(accessories && accessories.len)
 			var/list/ties = list()
 			for(var/accessory in accessories)
-				ties += "\icon[accessory] \a [accessory]"
+				ties += "[htmlicon(accessory)] \a [accessory]"
 			to_chat(usr, "Attached to \the [src] are [english_list(ties)].")
 		return
 

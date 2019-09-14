@@ -146,7 +146,7 @@
 /mob/living/simple_animal/scp/shyguy/examine(var/userguy)
 	if (istype(userguy, /mob/living/carbon))
 		if (!(userguy in shitlist))
-			userguy <<  target_desc_1
+			to_chat(userguy, target_desc_1)
 			shitlist += userguy
 			spawn(20)
 				if(userguy)
@@ -155,7 +155,7 @@
 				if(userguy)
 					to_chat(userguy, SPAN_DANGER("RUN"))
 		else
-			userguy << target_desc_2
+			to_chat(userguy, target_desc_2)
 		if(will_scream)
 			if(!buckled) dir = 2
 			visible_message(SPAN_DANGER("[src] SCREAMS!"))

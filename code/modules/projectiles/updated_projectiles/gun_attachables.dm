@@ -75,6 +75,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/attachment_action_type
 
 	var/has_marine_iff = FALSE //adds IFF to bullets
+	var/hidden = FALSE //Render on gun?
 
 
 
@@ -364,7 +365,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/mateba/long/Attach(obj/item/weapon/gun/G)
 	..()
-	G.attachable_offset["muzzle_x"] = 31
+	G.attachable_offset["muzzle_x"] = 27
 
 /obj/item/attachable/mateba/long/dark
 	icon_state = "mateba_long_a"
@@ -382,7 +383,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/mateba/short/Attach(obj/item/weapon/gun/G)
 	..()
-	G.attachable_offset["muzzle_x"] = 24
+	G.attachable_offset["muzzle_x"] = 27
 
 /obj/item/attachable/mateba/short/dark
 	icon_state = "mateba_short_a"
@@ -1051,7 +1052,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/obj/item/weapon/gun/revolver/m44/R = G
 	if(!istype(R))
 		return 0
-	
+
 	if(folded)
 		R.folded = FALSE
 	else
@@ -1418,7 +1419,7 @@ Defined in conflicts.dm of the #defines folder.
 	if(istype(G,/obj/item/weapon/gun/rifle/lmg))
 		delay_mod += config.min_fire_delay
 	else if(istype(G,/obj/item/weapon/gun/rifle/sniper/M42A))
-		delay_mod += config.high_fire_delay + config.min_fire_delay + config.mlow_fire_delay
+		delay_mod += config.high_fire_delay + config.min_fire_delay
 	else
 		delay_mod += config.min_fire_delay + config.mlow_fire_delay
 	G.recalculate_attachment_bonuses()
@@ -1446,7 +1447,7 @@ Defined in conflicts.dm of the #defines folder.
 				if(istype(G,/obj/item/weapon/gun/rifle/lmg))
 					delay_mod -= config.min_fire_delay
 				else if(istype(G,/obj/item/weapon/gun/rifle/sniper/M42A))
-					delay_mod -= config.high_fire_delay + config.min_fire_delay + config.mlow_fire_delay
+					delay_mod -= config.high_fire_delay + config.min_fire_delay
 				else
 					delay_mod -= config.min_fire_delay + config.mlow_fire_delay
 				G.recalculate_attachment_bonuses()

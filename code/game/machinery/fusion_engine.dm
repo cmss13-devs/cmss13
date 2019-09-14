@@ -43,7 +43,7 @@
 			stop_processing_power()
 		return 0
 	if (fusion_cell.fuel_amount <= 0)
-		visible_message("\icon[src] <b>[src]</b> flashes that the fuel cell is empty as the engine seizes.")
+		visible_message("[htmlicon(src, viewers(src))] <b>[src]</b> flashes that the fuel cell is empty as the engine seizes.")
 		fuel_rate = 0
 		buildstate = 2  //No fuel really fucks it.
 		is_on = 0
@@ -59,13 +59,13 @@
 
 		switch(power_gen_percent) //Flavor text!
 			if(10)
-				visible_message("\icon[src] <span class='notice'><b>[src]</b> begins to whirr as it powers up.</span>")
+				visible_message("[htmlicon(src, viewers(src))] <span class='notice'><b>[src]</b> begins to whirr as it powers up.</span>")
 				fuel_rate = 0.025
 			if(50)
-				visible_message("\icon[src] <span class='notice'><b>[src]</b> begins to hum loudly as it reaches half capacity.</span>")
+				visible_message("[htmlicon(src, viewers(src))] <span class='notice'><b>[src]</b> begins to hum loudly as it reaches half capacity.</span>")
 				fuel_rate = 0.05
 			if(99)
-				visible_message("\icon[src] <span class='notice'><b>[src]</b> rumbles loudly as the combustion and thermal chambers reach full strength.</span>")
+				visible_message("[htmlicon(src, viewers(src))] <span class='notice'><b>[src]</b> rumbles loudly as the combustion and thermal chambers reach full strength.</span>")
 				fuel_rate = 0.1
 
 		add_avail(FUSION_ENGINE_MAX_POWER_GEN * (power_gen_percent / 100) ) //Nope, all good, just add the power
@@ -100,7 +100,7 @@
 			to_chat(user, SPAN_NOTICE("Use a wrench to repair it."))
 			r_FAL
 	if(is_on)
-		visible_message("\icon[src] <span class='warning'><b>[src]</b> beeps softly and the humming stops as [usr] shuts off the generator.</span>")
+		visible_message("[htmlicon(src, viewers(src))] <span class='warning'><b>[src]</b> beeps softly and the humming stops as [usr] shuts off the generator.</span>")
 		is_on = 0
 		power_gen_percent = 0
 		cur_tick = 0
@@ -118,8 +118,8 @@
 			r_FAL
 
 	if(fusion_cell.fuel_amount <= 10)
-		to_chat(user, "\icon[src] <span class='warning'><b>[src]</b>: Fuel levels critically low.</span>")
-	visible_message("\icon[src] <span class='warning'><b>[src]</b> beeps loudly as [user] turns the generator on and begins the process of fusion...</span>")
+		to_chat(user, "[htmlicon(src, user)] <span class='warning'><b>[src]</b>: Fuel levels critically low.</span>")
+	visible_message("[htmlicon(src, viewers(src))] <span class='warning'><b>[src]</b> beeps loudly as [user] turns the generator on and begins the process of fusion...</span>")
 	fuel_rate = 0.01
 	is_on = 1
 	cur_tick = 0
@@ -198,6 +198,7 @@
 				if(buildstate != 3 || is_on) r_FAL
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				buildstate = 0
+				user.count_niche_stat(STATISTICS_NICHE_REPAIR_GENERATOR)
 				user.visible_message(SPAN_NOTICE("[user] repairs [src]'s tubing and plating."),
 				SPAN_NOTICE("You repair [src]'s tubing and plating."))
 				update_icon()
@@ -301,10 +302,10 @@
 	cur_tick = 0 //reset the timer
 	if(rand(1,100) < fail_rate) //Oh snap, we failed! Shut it down!
 		if(prob(25))
-			visible_message("\icon[src] <span class='notice'><b>[src]</b> beeps wildly and a fuse blows! Use wirecutters, then a wrench to repair it.")
+			visible_message("[htmlicon(src, viewers(src))] <span class='notice'><b>[src]</b> beeps wildly and a fuse blows! Use wirecutters, then a wrench to repair it.")
 			buildstate = 2
 		else
-			visible_message("\icon[src] <span class='notice'><b>[src]</b> beeps wildly and sprays random pieces everywhere! Use a wrench to repair it.")
+			visible_message("[htmlicon(src, viewers(src))] <span class='notice'><b>[src]</b> beeps wildly and sprays random pieces everywhere! Use a wrench to repair it.")
 			buildstate = 3
 		is_on = 0
 		power_gen_percent = 0

@@ -7,7 +7,7 @@
 		var/msg = "<span class='info'>*---------*\nThis is "
 
 		if(icon)
-			msg += "\icon[icon] "
+			msg += "[htmlicon(icon, user)] "
 		msg += "<EM>[src.name]</EM>!\n"
 
 		if(species.flags & IS_SYNTHETIC)
@@ -26,7 +26,7 @@
 		else if(stat || !client)
 			msg += "<span class='xenowarning'>It doesn't seem responsive.\n"
 		msg += "*---------*</span>"
-		user << msg
+		to_chat(user, msg)
 		return
 
 	var/skipgloves = 0
@@ -71,7 +71,7 @@
 		t_is = "are"
 	else
 		if(icon)
-			msg += "\icon[icon] " //fucking BYOND: this should stop dreamseeker crashing if we -somehow- examine somebody before their icon is generated
+			msg += "[htmlicon(src, user)] "
 		switch(gender)
 			if(MALE)
 				t_He = "He"
@@ -125,7 +125,7 @@
 	if(shoes && !skipshoes)
 		msg += "[t_He] [t_is] wearing [shoes.get_examine_line()] on [t_his] feet.\n"
 	else if(feet_blood_DNA)
-		msg += "<span class='warning'>[t_He] [t_has] [(shoes.blood_color != "#030303") ? "blood" : "oil"]-stained feet!</span>\n"
+		msg += "<span class='warning'>[t_He] [t_has] [(feet_blood_color != "#030303") ? "blood" : "oil"]-stained feet!</span>\n"
 
 	//mask
 	if(wear_mask && !skipmask)
@@ -464,15 +464,17 @@
 				msg += "<a href='?src=\ref[src];squadfireteam=1'>\[Assign to a fireteam.\]</a>\n"
 
 
-	if(print_flavor_text()) msg += "[print_flavor_text()]\n"
+	if(print_flavor_text()) 
+		msg += "[print_flavor_text()]\n"
 
 	msg += "*---------*</span>"
+
 	if (pose)
 		if( findtext(pose,".",lentext(pose)) == 0 && findtext(pose,"!",lentext(pose)) == 0 && findtext(pose,"?",lentext(pose)) == 0 )
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.
 		msg += "\n[t_He] is [pose]"
 
-	user << msg
+	to_chat(user, msg)
 
 //Helper procedure. Called by /mob/living/carbon/human/examine() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.
 /proc/hasHUD(mob/M, hudtype)

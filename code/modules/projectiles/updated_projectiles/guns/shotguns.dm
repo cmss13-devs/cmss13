@@ -223,8 +223,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 21, "under_x" = 14, "under_y" = 16, "stock_x" = 14, "stock_y" = 16)
 	var/obj/item/attachable/attached_gun/grenade/G = new(src)
 	G.flags_attach_features &= ~ATTACH_REMOVABLE
-	G.attach_icon = "" //gun already has a better one
-	G.icon_state = ""
+	G.hidden = TRUE
 	G.Attach(src)
 	update_attachable(G.slot)
 	G.icon_state = initial(G.icon_state)

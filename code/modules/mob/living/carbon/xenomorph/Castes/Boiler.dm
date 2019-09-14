@@ -181,7 +181,7 @@
 	visible_message(SPAN_WARNING("\The [src] launches a huge glob of acid hurling into the distance!"), \
 	SPAN_WARNING("You launch a huge glob of acid hurling into the distance!"), null, 5)
 
-	var/obj/item/projectile/P = new /obj/item/projectile("[caste_name] gas", src, loc)
+	var/obj/item/projectile/P = new /obj/item/projectile(initial(caste_name), src, loc)
 	P.generate_bullet(ammo)
 	P.fire_at(target, src, null, ammo.max_range, ammo.shell_speed)
 	playsound(src, 'sound/effects/blobattack.ogg', 25, 1)

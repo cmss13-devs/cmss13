@@ -199,6 +199,12 @@
 
 	update_clothing_icon()
 
+/obj/item/clothing/head/cmcap/co
+	name = "\improper USCM captain cap"
+	icon_state = "cocap"
+	desc = "A hat usually worn by senior officers in the USCM. While it has limited combat functionality, some prefer to wear it instead of the standard issue helmet."
+	
+
 /obj/item/clothing/head/cmcap/ro
 	name = "\improper USCM officer cap"
 	desc = "A hat usually worn by officers in the USCM. While it has limited combat functionality, some prefer to wear it instead of the standard issue helmet."
@@ -262,6 +268,10 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
+/obj/item/clothing/head/beret/marine/commander/dress
+	name = "marine captain dress beret"
+	icon_state = "codressberet"
+
 /obj/item/clothing/head/beret/marine/commander/cdre
 	name = "marine commodore bere"
 	desc = "A navy beret with the commodore insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders. Often passed onto Captains by Commodores as sign of respect, promise, or any other multitude of reasoning."
@@ -271,15 +281,19 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
-/obj/item/clothing/head/beret/marine/commander/peaked
-	name = "marine captain peaked cap"
-	desc = "A peaked cap with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
+/obj/item/clothing/head/marine/peaked
+	name = "marine peaked cap"
+	desc = "A peaked cap. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "copeaked"
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
+/obj/item/clothing/head/marine/peaked/captain
+	name = "marine captain peaked cap"
+	desc = "A peaked cap with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
+	
 /obj/item/clothing/head/beret/marine/chiefofficer
 	name = "chief officer beret"
 	desc = "A beret with the lieutenant-commander insignia emblazoned on it. It emits a dark aura and may corrupt the soul."

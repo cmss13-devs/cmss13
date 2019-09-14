@@ -39,6 +39,12 @@
 	icon_state = "m41a_AP"
 	default_ammo = /datum/ammo/bullet/rifle/ap
 
+/obj/item/ammo_magazine/rifle/le
+	name = "\improper M41A LE magazine (10x24mm)"
+	desc = "A 10mm armor shredding magazine."
+	icon_state = "m41a_LE"
+	default_ammo = /datum/ammo/bullet/rifle/le
+
 
 //-------------------------------------------------------
 //M41A (MK1) TRUE AND ORIGINAL
@@ -130,7 +136,7 @@
 	caliber = "10x24mm"
 	icon_state = "l42mk1"
 	default_ammo = /datum/ammo/bullet/rifle
-	max_rounds = 20
+	max_rounds = 25
 	gun_type = /obj/item/weapon/gun/rifle/l42mk1
 	w_class = SIZE_MEDIUM
 
@@ -140,7 +146,17 @@
 	caliber = "10x24mm"
 	icon_state = "l42mk1_ap"
 	default_ammo = /datum/ammo/bullet/rifle/ap
-	max_rounds = 20
+	max_rounds = 25
+	gun_type = /obj/item/weapon/gun/rifle/l42mk1
+	w_class = SIZE_MEDIUM
+
+/obj/item/ammo_magazine/rifle/l42mk1/le
+	name = "\improper L42-MK1 LE magazine (10x24mm)"
+	desc = "A 10mm pulse carbine armor shredding magazine."
+	caliber = "10x24mm"
+	icon_state = "l42mk1_le"
+	default_ammo = /datum/ammo/bullet/rifle/le
+	max_rounds = 25
 	gun_type = /obj/item/weapon/gun/rifle/l42mk1
 	w_class = SIZE_MEDIUM
 

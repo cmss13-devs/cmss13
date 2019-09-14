@@ -207,3 +207,34 @@ var/global/list/image/splatter_cache=list()
 /obj/effect/decal/cleanable/mucus/New()
 	spawn(DRYING_TIME * 2)
 		dry=1
+
+
+/obj/effect/decal/cleanable/blood/splatter/animated
+	var/turf/target_turf
+	var/loc_last_process
+
+	New()
+		..()
+		processing_objects += src
+		loc_last_process = loc
+
+	Dispose()
+		animation_destruction_fade(src)
+		. = ..()
+		processing_objects -= src
+
+/obj/effect/decal/cleanable/blood/splatter/animated/process()
+	if(target_turf && loc != target_turf)
+		step_towards(src,target_turf)
+		if(loc == loc_last_process) target_turf = null
+		loc_last_process = loc
+
+		//Leaves drips.
+		if(prob(50))
+			var/obj/effect/decal/cleanable/blood/drip/D = new(get_turf(src))
+			var/i = 0
+			while(++i < 3)
+				if(prob(50))
+					D = new(get_turf(src))
+					D.blood_DNA = blood_DNA
+	else ..()

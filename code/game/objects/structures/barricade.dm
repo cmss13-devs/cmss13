@@ -27,10 +27,11 @@
 	flags_barrier = HANDLE_BARRIER_CHANCE
 	projectile_coverage = PROJECTILE_COVERAGE_HIGH
 
-	New()
-		..()
-		spawn(0)
-			update_icon()
+/obj/structure/barricade/New(loc, mob/user)
+	..(loc)
+	if(user)
+		user.count_niche_stat(STATISTICS_NICHE_CADES)
+	INVOKE_ASYNC(src, .proc/update_icon)
 
 /obj/structure/barricade/handle_barrier_chance(mob/living/M)
 	return prob(max(30,(100.0*health)/maxhealth))
@@ -349,10 +350,10 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	can_wire = FALSE
 	bullet_divider = 2
 
-/obj/structure/barricade/snow/New(loc, direction)
+/obj/structure/barricade/snow/New(loc, mob/user, direction)
 	if(direction)
 		dir = direction
-	..()
+	..(loc, user)
 
 
 
@@ -499,6 +500,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			if(do_after(user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src))
 				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 				SPAN_NOTICE("You repair [src]."))
+				user.count_niche_stat(STATISTICS_NICHE_REPAIR_CADES)
 				update_health(-150)
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		return
@@ -995,7 +997,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	barricade_type = "sandbag"
 	can_wire = TRUE
 
-/obj/structure/barricade/sandbags/New(loc, direction)
+/obj/structure/barricade/sandbags/New(loc, mob/user, direction)
 	if(direction)
 		dir = direction
 
@@ -1003,7 +1005,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		pixel_y = -7
 	else if(dir == NORTH)
 		pixel_y = 7
-	..()
+	..(loc, user)
 
 
 /obj/structure/barricade/sandbags/attackby(obj/item/W, mob/user)

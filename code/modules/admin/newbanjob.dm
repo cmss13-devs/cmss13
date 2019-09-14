@@ -141,7 +141,7 @@ var/savefile/Banlistjob
 
 	Banlistjob.cd = "/base"
 	if ( Banlistjob.dir.Find("[ckey][computerid][rank]") )
-		usr << text(SPAN_DANGER("Banjob already exists."))
+		to_chat(usr, text(SPAN_DANGER("Banjob already exists.")))
 		return 0
 	else
 		Banlistjob.dir.Add("[ckey][computerid][rank]")

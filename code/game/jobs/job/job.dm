@@ -1,5 +1,4 @@
 /datum/job
-
 	//The name of the job
 	var/title = ""				 //The internal title for the job, used for the job ban system and so forth. Don't change these, change the disp_title instead.
 	var/special_role 			 //In case they have some special role on spawn.
@@ -26,10 +25,9 @@
 	var/gear_preset //Gear preset name used for this job
 	var/gear_preset_council //Gear preset name used for council snowflakes ;)
 
-	New()
-		..()
-		if(!disp_title) disp_title = title
-
+/datum/job/New()
+	..()
+	if(!disp_title) disp_title = title
 
 /datum/job/proc/get_access()
 	if(!gear_preset)
@@ -81,14 +79,11 @@
 		var/t = {"
 <span class='role_body'>|______________________|</span>
 <span class='role_header'>You are \a [title_given]![flags_startup_parameters & ROLE_ADMIN_NOTIFY? "\nYou are playing a job that is important for game progression. If you have to disconnect, please notify the admins via adminhelp." : ""]</span>
-
-<span class='role_body'>[generate_entry_message(H)]</span>
-
-<span class='role_body'>As the [title_given] you answer to [supervisors]. Special circumstances may change this.[M ? "\nYour account number is: <b>[M.account_number]</b>. Your account pin is: <b>[M.remote_access_pin]</b>." : ""]</span>
+<span class='role_body'>[generate_entry_message(H)]
+As the [title_given] you answer to [supervisors]. Special circumstances may change this.[M ? "\nYour account number is: <b>[M.account_number]</b>. Your account pin is: <b>[M.remote_access_pin]</b>." : ""]</span>
 <span class='role_body'>|______________________|</span>
-"}
-
-		H << t
+		"}
+		to_chat(H, t)
 
 /datum/job/proc/generate_entry_conditions(mob/living/M) return //Anything special that should happen to the mob upon entering the world.
 

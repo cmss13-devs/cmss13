@@ -1,5 +1,3 @@
-var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
-
 /datum/job/command
 	department_flag = ROLEGROUP_MARINE_COMMAND
 	selection_color = "#ddddff"
@@ -31,7 +29,7 @@ Godspeed, captain!"}
 /datum/job/command/commander/announce_entry_message(mob/living/carbon/human/H)
 	sleep(15)
 	if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE && map_tag != MAP_WHISKEY_OUTPOST)
-		captain_announcement.Announce("All hands, [H.get_paygrade(0)] [H.real_name] on deck!")
+		ai_announcement("[H.get_paygrade(0)] [H.real_name] enjoy your stay on [MAIN_SHIP_NAME].")
 		for(var/obj/structure/closet/secure_closet/securecom/S in world)
 			var/obj/item/weapon/gun/rifle/m46c/I = new/obj/item/weapon/gun/rifle/m46c/
 			if(S.opened == 0)
@@ -113,12 +111,19 @@ If you are not piloting, there is an autopilot fallback for command, but don't l
 	total_positions = 2
 	spawn_positions = 2
 	allow_additional = 1
+	scaled = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Tank Crewman (TC)"
 
 /datum/job/command/tank_crew/generate_entry_message(mob/living/carbon/human/H)
 		. = {"Your job is to operate and maintain the ship's armored vehicles.
 You are in charge of representing the armored presence amongst the marines during the operation, as well as maintaining and repairing your own tank."}
+
+/datum/job/command/tank_crew/set_spawn_positions(var/count)
+	spawn_positions = tank_slot_formula(count)
+
+/datum/job/command/tank_crew/get_total_positions(var/latejoin = 0)
+	return (latejoin ? tank_slot_formula(get_total_marines()) : spawn_positions)
 
 //Intelligence Officer
 /datum/job/command/intel

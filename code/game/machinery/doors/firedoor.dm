@@ -94,7 +94,7 @@
 				o += "WEST: "
 		if(tile_info[index] == null)
 			o += SPAN_WARNING("DATA UNAVAILABLE")
-			user << o
+			to_chat(user, o)
 			continue
 		var/celsius = convert_k2c(tile_info[index][1])
 		var/pressure = tile_info[index][2]
@@ -105,7 +105,7 @@
 		o += "[celsius]&deg;C</span> "
 		o += "<span style='color:blue'>"
 		o += "[pressure]kPa</span></li>"
-		user << o
+		to_chat(user, o)
 
 	if(islist(users_to_open) && users_to_open.len)
 		var/users_to_open_string = users_to_open[1]

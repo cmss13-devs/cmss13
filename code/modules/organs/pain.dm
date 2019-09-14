@@ -70,7 +70,7 @@ mob/living/carbon/human/proc/custom_pain(message, flash_strength)
 	// Anti message spam checks
 	if(msg && ((msg != last_pain_message) || (world.time >= next_pain_time)))
 		last_pain_message = msg
-		src << msg
+		to_chat(src, msg)
 	next_pain_time = world.time + 100
 
 mob/living/carbon/human/proc/handle_pain()

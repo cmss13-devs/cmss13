@@ -9,7 +9,7 @@
 	var/ask_verb = "asks"            // Used when sentence ends in a ?
 	var/exclaim_verb = "exclaims"    // Used when sentence ends in a !
 	var/signlang_verb = list()       // list of emotes that might be displayed if this language has NONVERBAL or SIGNLANG flags
-	var/colour = "body"         // CSS style to use for strings in this language.
+	var/colour = "body"         	 // CSS style to use for strings in this language.
 	var/key = "x"                    // Character used to speak in language eg. :o for Unathi.
 	var/flags = 0                    // Various language flags.
 	var/native                       // If set, non-native speakers will have trouble speaking.
@@ -104,7 +104,7 @@
 
 /datum/language/xenocommon
 	name = "Xenomorph"
-	colour = "alien"
+	colour = "xeno"
 	desc = "The common tongue of the xenomorphs."
 	speech_verb = "hisses"
 	ask_verb = "hisses"
@@ -118,7 +118,7 @@
 	speech_verb = "hiveminds"
 	ask_verb = "hiveminds"
 	exclaim_verb = "hiveminds"
-	colour = "soghun"
+	colour = "xeno"
 	key = "a"
 	flags = RESTRICTED|HIVEMIND
 

@@ -96,6 +96,19 @@
 	icon_state = "katana_holster_full"
 	new /obj/item/weapon/katana(src)
 
+/obj/item/storage/large_holster/ceremonial_sword
+	name = "ceremonial sword scabbard"
+	desc = "A large, vibrantly colored scabbard used to carry a ceremonial sword."
+	base_icon = "ceremonial_sword_holster"
+	icon_state = "ceremonial_sword_holster"
+	force = 12
+	flags_equip_slot = SLOT_WAIST
+	can_hold = list(/obj/item/weapon/claymore/mercsword/ceremonial)
+
+/obj/item/storage/large_holster/ceremonial_sword/full/New()
+	..()
+	icon_state = "ceremonial_sword_holster_full"
+	new /obj/item/weapon/claymore/mercsword/ceremonial(src)
 
 /obj/item/storage/large_holster/m39
 	name = "\improper M276 pattern M39 holster rig"

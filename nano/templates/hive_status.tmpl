@@ -3,6 +3,7 @@
 		float: right;
 		padding: 0 4px 0 4px;
 		background-color: #52375C;
+		cursor: default;
 	}
 
 	.xenoButton:hover {
@@ -142,7 +143,7 @@
 					{{:data.xeno_vitals[keys.nicknumber].health}}%
 				{{/if}}
 			</td>
-			<td>{{:helper.link('Watch', '', { 'xeno_overwatch_src_href' : data.userref, 'xeno_overwatch_href' : data.xeno_info[keys.nicknumber].ref }, null, 'xenoButton')}}</td>
+			<td><div unselectable="on">{{:helper.link('Watch', '', { 'xeno_overwatch_src_href' : data.userref, 'xeno_overwatch_href' : data.xeno_info[keys.nicknumber].ref }, null, 'xenoButton')}}</div></td>
 		</tr>
 	{{/props}}
 </table>

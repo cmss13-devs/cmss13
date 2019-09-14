@@ -308,7 +308,7 @@ datum/game_mode/proc/initialize_special_clamps()
 
 			xenomorphs += new_xeno
 		else //Out of candidates, fill the xeno hive with burrowed larva
-			hive.stored_larva += (xeno_starting_num - i)
+			hive.stored_larva += round((xeno_starting_num - i))
 			hive.hive_ui.update_burrowed_larva()
 			break
 	

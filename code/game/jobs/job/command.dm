@@ -111,6 +111,7 @@ If you are not piloting, there is an autopilot fallback for command, but don't l
 	total_positions = 2
 	spawn_positions = 2
 	allow_additional = 1
+	scaled = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Tank Crewman (TC)"
 

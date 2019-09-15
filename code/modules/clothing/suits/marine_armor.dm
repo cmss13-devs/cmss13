@@ -557,7 +557,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 /obj/item/clothing/suit/storage/marine/M3G/mob_can_equip(mob/M, slot, disable_warning = 0)
 	. = ..()
 	if(.)
-		if(M.mind && M.mind.cm_skills && M.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && M.mind.cm_skills.spec_weapons != SKILL_SPEC_GRENADIER)
+		if(!skillcheck(M, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && M.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
 			to_chat(M, SPAN_WARNING("You are not trained to use [src]!"))
 			return 0
 
@@ -600,7 +600,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 /obj/item/clothing/suit/storage/marine/M3S/mob_can_equip(mob/M, slot, disable_warning = 0)
 	. = ..()
 	if(.)
-		if(M.mind && M.mind.cm_skills && M.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && M.mind.cm_skills.spec_weapons != SKILL_SPEC_SCOUT)
+		if(!skillcheck(M, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && M.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)
 			to_chat(M, SPAN_WARNING("You are not trained to use [src]!"))
 			return 0
 
@@ -627,7 +627,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 /obj/item/clothing/suit/storage/marine/M35/mob_can_equip(mob/M, slot, disable_warning = 0)
 	. = ..()
 	if(.)
-		if(M.mind && M.mind.cm_skills && M.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && M.mind.cm_skills.spec_weapons != SKILL_SPEC_PYRO)
+		if(!skillcheck(M, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && M.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_PYRO)
 			to_chat(M, SPAN_WARNING("You are not trained to use [src]!"))
 			return 0
 
@@ -673,7 +673,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 /obj/item/clothing/suit/storage/marine/ghillie/mob_can_equip(mob/M, slot, disable_warning = 0)
 	. = ..()
 	if(.)
-		if(M.mind && M.mind.cm_skills && M.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && M.mind.cm_skills.spec_weapons != SKILL_SPEC_SNIPER)
+		if(!skillcheck(M, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && M.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)
 			to_chat(M, SPAN_WARNING("You are not trained to use [src]!"))
 			return 0
 

@@ -20,7 +20,7 @@
 	var/obj/item/cell/high/cell //10000 power.
 	var/charge_cost = 100 //100 shots.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
-	gun_skill_category = GUN_SKILL_PISTOLS
+	gun_skill_category = SKILL_PISTOLS
 	movement_acc_penalty_mult = 0
 
 /obj/item/weapon/gun/energy/taser/New()
@@ -51,7 +51,7 @@
 /obj/item/weapon/gun/energy/taser/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.police < SKILL_POLICE_MP)
+		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
 

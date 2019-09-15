@@ -1039,7 +1039,7 @@
 		return
 	if(!ship_base) //not installed
 		return
-	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.pilot < SKILL_PILOT_TRAINED)
+	if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
 		to_chat(user, SPAN_WARNING(" You don't know how to use [src]."))
 		return
 

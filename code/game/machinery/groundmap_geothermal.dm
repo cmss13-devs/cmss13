@@ -103,7 +103,7 @@
 
 	add_fingerprint(user)
 
-	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You have no clue how this thing works..."))
 		return 0
 
@@ -134,7 +134,7 @@
 /obj/machinery/power/geothermal/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(iswelder(O))
 		if(buildstate == 1 && !is_on)
-			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return 0
 			var/obj/item/tool/weldingtool/WT = O
@@ -156,7 +156,7 @@
 				return
 	else if(iswirecutter(O))
 		if(buildstate == 2 && !is_on)
-			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return 0
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
@@ -172,7 +172,7 @@
 				r_TRU
 	else if(iswrench(O))
 		if(buildstate == 3 && !is_on)
-			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return 0
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -307,7 +307,7 @@
 /obj/machinery/colony_floodlight/attackby(obj/item/I, mob/user)
 	if(damaged)
 		if(isscrewdriver(I))
-			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
 				return 0
 
@@ -342,7 +342,7 @@
 			return TRUE
 
 		else if(iscrowbar(I))
-			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
 				return 0
 
@@ -362,7 +362,7 @@
 		else if(iswelder(I))
 			var/obj/item/tool/weldingtool/WT = I
 
-			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
 				return 0
 
@@ -385,7 +385,7 @@
 
 		else if(iscoil(I))
 			var/obj/item/stack/cable_coil/C = I
-			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
 				return 0
 
@@ -424,7 +424,7 @@
 	if(ishuman(user))
 		if(damaged)
 			to_chat(user, SPAN_WARNING("It is damaged."))
-			if(!user.mind || !user.mind.cm_skills || user.mind.cm_skills.engineer >= SKILL_ENGINEER_ENGI)
+			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				switch(repair_state)
 					if(FLOODLIGHT_REPAIR_UNSCREW) to_chat(user, SPAN_INFO("You must first unscrew its maintenance hatch."))
 					if(FLOODLIGHT_REPAIR_CROWBAR) to_chat(user, SPAN_INFO("You must crowbar its maintenance hatch open."))

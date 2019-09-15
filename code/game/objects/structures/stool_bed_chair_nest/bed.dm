@@ -299,7 +299,7 @@ var/global/list/activated_medevac_stretchers = list()
 	if(!ishuman(user))
 		return
 
-	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
+	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 		to_chat(user, SPAN_WARNING("You don't know how to use [src]."))
 		return
 

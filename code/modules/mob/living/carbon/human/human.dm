@@ -399,7 +399,7 @@
 						to_chat(usr, SPAN_WARNING("Someone's already taken [src]'s information tag."))
 					return
 			//police skill lets you strip multiple items from someone at once.
-			if(!usr.action_busy || (!usr.mind || !usr.mind.cm_skills || usr.mind.cm_skills.police >= SKILL_POLICE_MP))
+			if(!usr.action_busy || skillcheck(usr, SKILL_POLICE, SKILL_POLICE_MP))
 				var/slot = href_list["item"]
 				var/obj/item/what = get_item_by_slot(slot)
 				if(what)
@@ -759,7 +759,7 @@
 									R.fields[text("com_[counter]")] = text("Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
 
 	if (href_list["medholocard"])
-		if(usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
+		if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 			to_chat(usr, SPAN_WARNING("You're not trained to use this."))
 			return
 		if(!has_species(src, "Human"))
@@ -781,7 +781,7 @@
 
 	if (href_list["scanreport"])
 		if(hasHUD(usr,"medical"))
-			if(usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
+			if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 				to_chat(usr, SPAN_WARNING("You're not trained to use this."))
 				return
 			if(!has_species(src, "Human"))
@@ -1460,26 +1460,26 @@
 	if(!usr || !usr.mind || !usr.mind.cm_skills)
 		dat += "NULL<br/>"
 	else
-		dat += "CQC: [usr.mind.cm_skills.cqc]<br/>"
-		dat += "Melee: [usr.mind.cm_skills.melee_weapons]<br/>"
-		dat += "Firearms: [usr.mind.cm_skills.firearms]<br/>"
-		dat += "Pistols: [usr.mind.cm_skills.pistols]<br/>"
-		dat += "Shotguns: [usr.mind.cm_skills.shotguns]<br/>"
-		dat += "Rifles: [usr.mind.cm_skills.rifles]<br/>"
-		dat += "SMGs: [usr.mind.cm_skills.smgs]<br/>"
-		dat += "Heavy Weapons: [usr.mind.cm_skills.heavy_weapons]<br/>"
-		dat += "Smartgun: [usr.mind.cm_skills.smartgun]<br/>"
-		dat += "Specialist Weapons: [usr.mind.cm_skills.spec_weapons]<br/>"
-		dat += "Endurance: [usr.mind.cm_skills.endurance]<br/>"
-		dat += "Engineer: [usr.mind.cm_skills.engineer]<br/>"
-		dat += "Construction: [usr.mind.cm_skills.construction]<br/>"
-		dat += "Leadership: [usr.mind.cm_skills.leadership]<br/>"
-		dat += "Medical: [usr.mind.cm_skills.medical]<br/>"
-		dat += "Surgery: [usr.mind.cm_skills.surgery]<br/>"
-		dat += "Pilot: [usr.mind.cm_skills.pilot]<br/>"
-		dat += "Police: [usr.mind.cm_skills.police]<br/>"
-		dat += "Powerloader: [usr.mind.cm_skills.powerloader]<br/>"
-		dat += "Large Vehicle: [usr.mind.cm_skills.large_vehicle]<br/>"
+		dat += "CQC: [usr.mind.cm_skills.get_skill_level(SKILL_CQC)]<br/>"
+		dat += "Melee: [usr.mind.cm_skills.get_skill_level(SKILL_MELEE_WEAPONS)]<br/>"
+		dat += "Firearms: [usr.mind.cm_skills.get_skill_level(SKILL_FIREARMS)]<br/>"
+		dat += "Pistols: [usr.mind.cm_skills.get_skill_level(SKILL_PISTOLS)]<br/>"
+		dat += "Shotguns: [usr.mind.cm_skills.get_skill_level(SKILL_SHOTGUNS)]<br/>"
+		dat += "Rifles: [usr.mind.cm_skills.get_skill_level(SKILL_RIFLES)]<br/>"
+		dat += "SMGs: [usr.mind.cm_skills.get_skill_level(SKILL_SMGS)]<br/>"
+		dat += "Heavy Weapons: [usr.mind.cm_skills.get_skill_level(SKILL_HEAVY_WEAPONS)]<br/>"
+		dat += "Smartgun: [usr.mind.cm_skills.get_skill_level(SKILL_SMARTGUN)]<br/>"
+		dat += "Specialist Weapons: [usr.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS)]<br/>"
+		dat += "Endurance: [usr.mind.cm_skills.get_skill_level(SKILL_ENDURANCE)]<br/>"
+		dat += "Engineer: [usr.mind.cm_skills.get_skill_level(SKILL_ENGINEER)]<br/>"
+		dat += "Construction: [usr.mind.cm_skills.get_skill_level(SKILL_CONSTRUCTION)]<br/>"
+		dat += "Leadership: [usr.mind.cm_skills.get_skill_level(SKILL_LEADERSHIP)]<br/>"
+		dat += "Medical: [usr.mind.cm_skills.get_skill_level(SKILL_MEDICAL)]<br/>"
+		dat += "Surgery: [usr.mind.cm_skills.get_skill_level(SKILL_SURGERY)]<br/>"
+		dat += "Pilot: [usr.mind.cm_skills.get_skill_level(SKILL_PILOT)]<br/>"
+		dat += "Police: [usr.mind.cm_skills.get_skill_level(SKILL_POLICE)]<br/>"
+		dat += "Powerloader: [usr.mind.cm_skills.get_skill_level(SKILL_POWERLOADER)]<br/>"
+		dat += "Large Vehicle: [usr.mind.cm_skills.get_skill_level(SKILL_LARGE_VEHICLE)]<br/>"
 
 	src << browse(dat, "window=checkskills")
 	return

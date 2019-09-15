@@ -44,14 +44,14 @@
 
 
 /obj/item/clothing/glasses/hud/health/attack_self(mob/living/user)
-	if(!user.mind || !user.mind.cm_skills || user.mind.cm_skills.medical >= SKILL_MEDICAL_CHEM)
+	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
 		..()
 	else
 		to_chat(user, SPAN_WARNING("You have no idea what any of the data means and power it off before it makes you nauseated."))
 		active = 0
 
 /obj/item/clothing/glasses/hud/health/equipped(mob/living/carbon/human/user, slot)
-	if(!user.mind || !user.mind.cm_skills || user.mind.cm_skills.medical >= SKILL_MEDICAL_CHEM)
+	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
 		..()
 	else
 		to_chat(user, SPAN_WARNING("You have no idea what any of the data means and power it off before it makes you nauseated."))

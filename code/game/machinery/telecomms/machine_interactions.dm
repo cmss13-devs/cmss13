@@ -23,7 +23,7 @@
 		attack_hand(user)
 
 	else
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_MT)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MT))
 			to_chat(user, SPAN_WARNING("You stare at [src] cluelessly..."))
 			return 0
 
@@ -116,7 +116,7 @@
 
 	// You need a multitool to use this, or be silicon
 	if(!ishighersilicon(user))
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_MT)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MT))
 			to_chat(user, SPAN_WARNING("You stare at [src] cluelessly..."))
 			return
 		// istype returns false if the value is null

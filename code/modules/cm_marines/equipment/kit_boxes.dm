@@ -188,7 +188,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	icon_state = "deliverycrate"
 
 /obj/item/spec_kit/attack_self(mob/user)
-	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED)
+	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED))
 		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a specialist!"))
 		return
 	var/selection = input(user, "Pick your equipment", "Specialist Kit Selection") as null|anything in kits
@@ -221,7 +221,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/spec_kit/asrs/attack_self(mob/user)
 	if(user.mind && user.mind.assigned_role == "Squad Marine")
-		user.mind.cm_skills.spec_weapons = SKILL_SPEC_TRAINED
+		user.mind.cm_skills.set_skill(SKILL_SPEC_WEAPONS)
 	else
 		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a squad marine!"))
 	..()

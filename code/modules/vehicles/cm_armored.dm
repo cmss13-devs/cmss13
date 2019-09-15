@@ -330,7 +330,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 			var/msg = "There is a [HP] installed on the [i] hardpoint slot."
 			if(P <= 0)
 				msg += " It's busted!"
-			else if(isobserver(user) || (user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer >= SKILL_ENGINEER_ENGI))
+			else if(isobserver(user) || skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				msg += " It's at [round(P, 1)]% integrity!"
 			to_chat(user, msg)
 	if(clamped)
@@ -618,7 +618,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		if(!HP)
 			to_chat(user, SPAN_WARNING("There are no treads to attach [O.name] to."))
 			return
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.police == SKILL_POLICE_MP)
+		if(skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
 			user.visible_message(SPAN_WARNING("[user] starts attaching the vehicle clamp to [src]."), SPAN_NOTICE("You start attaching the vehicle clamp to [src]."))
 			if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_BUILD))
 				user.visible_message(SPAN_WARNING("[user] stops attaching the vehicle clamp to [src]."), SPAN_WARNING("You stop attaching the vehicle clamp to [src]."))
@@ -632,7 +632,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	if(isscrewdriver(O)) //Are we trying to remove tank clamp?
 		if(!clamped)
 			return
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.police == SKILL_POLICE_MP)
+		if(skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
 			user.visible_message(SPAN_WARNING("[user] starts removing the vehicle clamp from [src]."), SPAN_NOTICE("You start removing the vehicle clamp from [src]."))
 			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_BUILD))
 				user.visible_message(SPAN_WARNING("[user] stops removing the vehicle clamp from [src]."), SPAN_WARNING("You stop removing the vehicle clamp from [src]."))
@@ -651,7 +651,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 /obj/vehicle/multitile/root/cm_armored/proc/handle_hardpoint_repair(var/obj/item/vehicle_clamp/O, var/mob/user)
 
 	//Need to the what the hell you're doing
-	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_MT)
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MT))
 		to_chat(user, SPAN_WARNING("You don't know what to do with [O] on [src]."))
 		return
 
@@ -746,7 +746,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 //Similar to repairing stuff, down to the time delay
 /obj/vehicle/multitile/root/cm_armored/proc/install_hardpoint(var/obj/item/hardpoint/HP, var/mob/user)
 
-	if(!user.mind || !(!user.mind.cm_skills || user.mind.cm_skills.engineer >= SKILL_ENGINEER_MT))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MT))
 		to_chat(user, SPAN_WARNING("You don't know what to do with [HP] on [src]."))
 		return
 
@@ -786,7 +786,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 //Again, similar to the above ones
 /obj/vehicle/multitile/root/cm_armored/proc/uninstall_hardpoint(var/obj/item/O, var/mob/user)
 
-	if(!user.mind || !(!user.mind.cm_skills || user.mind.cm_skills.engineer >= SKILL_ENGINEER_MT))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MT))
 		to_chat(user, SPAN_WARNING("You don't know what to do with [O] on [src]."))
 		return
 

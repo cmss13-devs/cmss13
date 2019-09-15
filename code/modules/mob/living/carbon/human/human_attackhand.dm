@@ -87,7 +87,7 @@
 
 			var/max_dmg = 5
 			if(M.mind && M.mind.cm_skills)
-				max_dmg += M.mind.cm_skills.cqc
+				max_dmg += M.mind.cm_skills.get_skill_level(SKILL_CQC)
 			var/damage = rand(0, max_dmg)
 			if(!damage)
 				playsound(loc, attack.miss_sound, 25, 1)
@@ -125,7 +125,7 @@
 			var/datum/limb/affecting = get_limb(ran_zone(M.zone_selected))
 
 			//Accidental gun discharge
-			if(!M.mind || !M.mind.cm_skills || M.mind.cm_skills.cqc < SKILL_CQC_MP)
+			if(!skillcheck(M, SKILL_CQC, SKILL_CQC_MP))
 				if (istype(r_hand,/obj/item/weapon/gun) || istype(l_hand,/obj/item/weapon/gun))
 					var/obj/item/weapon/gun/W = null
 					var/chance = 0
@@ -154,10 +154,10 @@
 
 			var/randn = rand(1, 100)
 			if(M.mind && M.mind.cm_skills)
-				randn -= 5 * M.mind.cm_skills.cqc //attacker's martial arts training
+				randn -= 5 * M.mind.cm_skills.get_skill_level(SKILL_CQC) //attacker's martial arts training
 
 			if(mind && mind.cm_skills)
-				randn += 5 * mind.cm_skills.cqc //defender's martial arts training
+				randn += 5 * mind.cm_skills.get_skill_level(SKILL_CQC) //defender's martial arts training
 
 
 			if (randn <= 25)

@@ -74,7 +74,7 @@
 	flags_armor_protection = SLOT_FACE
 
 /obj/item/weapon/combat_knife/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
-	if(user.mind.cm_skills.medical >= SKILL_MEDICAL_MEDIC && ishuman(user) && user.a_intent == "help") //Squad medics and above
+	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC) && ishuman(user) && user.a_intent == "help") //Squad medics and above
 		dig_out_shrapnel(target, user)
 	else
 		..()

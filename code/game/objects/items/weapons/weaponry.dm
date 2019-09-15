@@ -212,7 +212,7 @@
 		power *= 2
 
 	if(user.mind && user.mind.cm_skills)
-		power = round(power * (1 + 0.3*user.mind.cm_skills.melee_weapons)) //30% bonus per melee level
+		power = round(power * (1 + 0.3*user.mind.cm_skills.get_skill_level(SKILL_MELEE_WEAPONS))) //30% bonus per melee level
 
 
 	//if the target also has a katana (and we aren't attacking ourselves), we add some suspense

@@ -115,10 +115,6 @@ datum/preferences
 	//Keeps track of preferrence for not getting any wanted jobs
 	var/alternate_option = RETURN_TO_LOBBY //Be a marine.
 
-	var/used_skillpoints = 0
-	var/skill_specialization = null
-	var/list/skills = list() // skills can range from 0 to 3
-
 	// maps each organ to either null(intact), "cyborg" or "amputated"
 	// will probably not be able to do this for head and torso ;)
 	var/list/organ_data = list()
@@ -154,94 +150,6 @@ datum/preferences
 	gender = pick(MALE, FEMALE)
 	real_name = random_name(gender)
 	gear = list()
-
-/datum/preferences/proc/ZeroSkills(var/forced = 0)
-	for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
-		if(!skills.Find(S.ID) || forced)
-			skills[S.ID] = SKILL_NONE
-
-/datum/preferences/proc/CalculateSkillPoints()
-	used_skillpoints = 0
-	for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
-		var/multiplier = 1
-		switch(skills[S.ID])
-			if(SKILL_NONE)
-				used_skillpoints += 0 * multiplier
-			if(SKILL_BASIC)
-				used_skillpoints += 1 * multiplier
-			if(SKILL_ADEPT)
-				// secondary skills cost less
-				if(S.secondary)
-					used_skillpoints += 1 * multiplier
-				else
-					used_skillpoints += 3 * multiplier
-			if(SKILL_EXPERT)
-				// secondary skills cost less
-				if(S.secondary)
-					used_skillpoints += 3 * multiplier
-				else
-					used_skillpoints += 6 * multiplier
-
-/datum/preferences/proc/GetSkillClass(points)
-	// skill classes describe how your character compares in total points
-	var/original_points = points
-	points -= min(round((age - 20) / 2.5), 4) // every 2.5 years after 20, one extra skillpoint
-	if(age > 30)
-		points -= round((age - 30) / 5) // every 5 years after 30, one extra skillpoint
-	if(original_points > 0 && points <= 0) points = 1
-	switch(points)
-		if(0)
-			return "Unconfigured"
-		if(1 to 3)
-			return "Terrifying"
-		if(4 to 6)
-			return "Below Average"
-		if(7 to 10)
-			return "Average"
-		if(11 to 14)
-			return "Above Average"
-		if(15 to 18)
-			return "Exceptional"
-		if(19 to 24)
-			return "Genius"
-		if(24 to 1000)
-			return "God"
-
-/datum/preferences/proc/SetSkills(mob/user)
-	if(SKILLS == null)
-		setup_skills()
-
-	if(skills.len == 0)
-		ZeroSkills()
-
-
-	var/HTML = "<body>"
-	HTML += "<b>Select your Skills</b><br>"
-	HTML += "Current skill level: <b>[GetSkillClass(used_skillpoints)]</b> ([used_skillpoints])<br>"
-	HTML += "<a href=\"byond://?src=\ref[user];preference=skills;skill_select=preconfigured;\">Use preconfigured skillset</a><br>"
-	HTML += "<table>"
-	for(var/V in SKILLS)
-		HTML += "<tr><th colspan = 5><b>[V]</b>"
-		HTML += "</th></tr>"
-		for(var/datum/skill/S in SKILLS[V])
-			var/level = skills[S.ID]
-			HTML += "<tr style='text-align:left;'>"
-			HTML += "<th><a href='byond://?src=\ref[user];preference=skills;skill_select=info;skillinfo=\ref[S]'>[S.name]</a></th>"
-			HTML += "<th><a href='byond://?src=\ref[user];preference=skills;skill_select=set;setskill=\ref[S];newvalue=[SKILL_NONE]'><font color=[(level == SKILL_NONE) ? "red" : "black"]>\[Untrained\]</font></a></th>"
-			// secondary skills don't have an amateur level
-			if(S.secondary)
-				HTML += "<th></th>"
-			else
-				HTML += "<th><a href='byond://?src=\ref[user];preference=skills;skill_select=set;setskill=\ref[S];newvalue=[SKILL_BASIC]'><font color=[(level == SKILL_BASIC) ? "red" : "black"]>\[Amateur\]</font></a></th>"
-			HTML += "<th><a href='byond://?src=\ref[user];preference=skills;skill_select=set;setskill=\ref[S];newvalue=[SKILL_ADEPT]'><font color=[(level == SKILL_ADEPT) ? "red" : "black"]>\[Trained\]</font></a></th>"
-			HTML += "<th><a href='byond://?src=\ref[user];preference=skills;skill_select=set;setskill=\ref[S];newvalue=[SKILL_EXPERT]'><font color=[(level == SKILL_EXPERT) ? "red" : "black"]>\[Professional\]</font></a></th>"
-			HTML += "</tr>"
-	HTML += "</table>"
-	HTML += "<a href=\"byond://?src=\ref[user];preference=skills;skill_select=cancel;\">\[Done\]</a>"
-
-	user << browse(null, "window=preferences")
-	user << browse(HTML, "window=show_skills;size=600x800")
-	return
 
 /datum/preferences/proc/ShowChoices(mob/user)
 	if(!user || !user.client)	return
@@ -748,37 +656,6 @@ datum/preferences
 					SetJob(user, href_list["text"])
 				else
 					SetChoices(user)
-			return 1
-		if("skills")
-			switch(href_list["skill_select"])
-				if("cancel")
-					user << browse(null, "window=show_skills")
-					ShowChoices(user)
-				if("skill")
-					var/datum/skill/S = locate(href_list["skillinfo"])
-					var/HTML = "<b>[S.name]</b><br>[S.desc]"
-					user << browse(HTML, "window=\ref[user]skillinfo")
-				if("set")
-					var/datum/skill/S = locate(href_list["setskill"])
-					var/value = text2num(href_list["newvalue"])
-					skills[S.ID] = value
-					CalculateSkillPoints()
-					SetSkills(user)
-				if("preconfigured")
-					var/selected = input(user, "Select a skillset", "Skillset") as null|anything in SKILL_PRE
-					if(!selected) return
-
-					ZeroSkills(1)
-					for(var/V in SKILL_PRE[selected])
-						if(V == "field")
-							skill_specialization = SKILL_PRE[selected]["field"]
-							continue
-						skills[V] = SKILL_PRE[selected][V]
-					CalculateSkillPoints()
-
-					SetSkills(user)
-				else SetSkills(user)
-
 			return 1
 		if("loadout")
 			switch(href_list["task"])
@@ -1411,9 +1288,6 @@ datum/preferences
 	character.personal_faction = faction
 	character.religion = religion
 
-	character.skills = skills
-	character.used_skillpoints = used_skillpoints
-
 	// Destroy/cyborgize organs
 
 	for(var/name in organ_data)
@@ -1560,9 +1434,6 @@ datum/preferences
 	character.citizenship = citizenship
 	character.personal_faction = faction
 	character.religion = religion
-
-	character.skills = skills
-	character.used_skillpoints = used_skillpoints
 
 
 /datum/preferences/proc/open_load_dialog(mob/user)

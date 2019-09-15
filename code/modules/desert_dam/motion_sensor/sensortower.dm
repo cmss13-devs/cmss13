@@ -74,7 +74,7 @@
 
 	add_fingerprint(user)
 
-	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You have no clue how this thing works..."))
 		return 0
 
@@ -104,7 +104,7 @@
 /obj/machinery/sensortower/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(iswelder(O))
 		if(buildstate == 1 && !is_on)
-			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return 0
 			var/obj/item/tool/weldingtool/WT = O
@@ -126,7 +126,7 @@
 				return
 	else if(iswirecutter(O))
 		if(buildstate == 2 && !is_on)
-			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return 0
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
@@ -142,7 +142,7 @@
 				r_TRU
 	else if(iswrench(O))
 		if(buildstate == 3 && !is_on)
-			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return 0
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)

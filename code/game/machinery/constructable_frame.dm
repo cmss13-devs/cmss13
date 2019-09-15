@@ -47,7 +47,7 @@
 	switch(state)
 		if(CONSTRUCTION_STATE_BEGIN)
 			if(iscoil(P))
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < required_skill)
+				if(!skillcheck(user, SKILL_CONSTRUCTION, required_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to build machines..."))
 					return
 				var/obj/item/stack/cable_coil/C = P
@@ -64,7 +64,7 @@
 						state = CONSTRUCTION_STATE_PROGRESS
 						anchored = 1
 			else if(iswrench(P))
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < required_dismantle_skill)
+				if(!skillcheck(user, SKILL_ENGINEER, required_dismantle_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -73,7 +73,7 @@
 				qdel(src)
 		if(CONSTRUCTION_STATE_PROGRESS)
 			if(istype(P, /obj/item/circuitboard/machine))
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < required_skill)
+				if(!skillcheck(user, SKILL_CONSTRUCTION, required_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to build machines..."))
 					return
 				if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -99,7 +99,7 @@
 					to_chat(user, requirements_left)
 
 			else if(istype(P, /obj/item/tool/wirecutters))
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < required_dismantle_skill)
+				if(!skillcheck(user, SKILL_ENGINEER, required_dismantle_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 					return
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
@@ -110,7 +110,7 @@
 
 		if(CONSTRUCTION_STATE_FINISHED)
 			if(istype(P, /obj/item/tool/crowbar))
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < required_dismantle_skill)
+				if(!skillcheck(user, SKILL_ENGINEER, required_dismantle_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 					return
 				if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -129,7 +129,7 @@
 				req_components = null
 				components = null
 			else if(istype(P, /obj/item/tool/screwdriver))
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < required_skill)
+				if(!skillcheck(user, SKILL_CONSTRUCTION, required_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to build machines..."))
 					return
 				var/component_check = 1
@@ -149,7 +149,7 @@
 					new_machine.RefreshParts()
 					qdel(src)
 			else if(istype(P, /obj/item))
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < required_skill)
+				if(!skillcheck(user, SKILL_CONSTRUCTION, required_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to build machines..."))
 					return
 				for(var/I in req_components)

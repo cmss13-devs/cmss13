@@ -703,7 +703,7 @@ client
 			return
 
 		if(!H.mind.cm_skills)
-			H.mind.cm_skills = new /datum/skills/pfc()
+			H.mind.cm_skills = new /datum/skills/pfc(H.mind)
 
 		var/selected_skill = input("Please choose a skill to edit.","Skills",null) as null|anything in list("cqc","endurance","engineer", "construction","firearms", "pistols", "rifles", "smgs", "shotguns", "heavy_weapons","smartgun","spec_weapons","leadership","medical","surgery","research","melee_weapons","pilot","police","powerloader")
 		if(!selected_skill)
@@ -729,48 +729,7 @@ client
 			to_chat(usr, "Mob lost its mind.")
 			return
 
-		switch(selected_skill)
-			if("cqc")
-				H.mind.cm_skills.cqc = new_skill_level
-			if("melee_weapons")
-				H.mind.cm_skills.melee_weapons = new_skill_level
-			if("firearms")
-				H.mind.cm_skills.firearms = new_skill_level
-			if("pistols")
-				H.mind.cm_skills.pistols = new_skill_level
-			if("rifles")
-				H.mind.cm_skills.rifles = new_skill_level
-			if("smgs")
-				H.mind.cm_skills.smgs = new_skill_level
-			if("shotguns")
-				H.mind.cm_skills.shotguns = new_skill_level
-			if("heavy_weapons")
-				H.mind.cm_skills.heavy_weapons = new_skill_level
-			if("smartgun")
-				H.mind.cm_skills.smartgun = new_skill_level
-			if("spec_weapons")
-				H.mind.cm_skills.spec_weapons = new_skill_level
-			if("leadership")
-				H.mind.cm_skills.leadership = new_skill_level
-			if("medical")
-				H.mind.cm_skills.medical = new_skill_level
-			if("surgery")
-				H.mind.cm_skills.surgery = new_skill_level
-			if("research")
-				H.mind.cm_skills.research = new_skill_level
-			if("pilot")
-				H.mind.cm_skills.pilot = new_skill_level
-			if("endurance")
-				H.mind.cm_skills.endurance = new_skill_level
-			if("engineer")
-				H.mind.cm_skills.engineer = new_skill_level
-			if("construction")
-				H.mind.cm_skills.construction = new_skill_level
-			if("police")
-				H.mind.cm_skills.police = new_skill_level
-			if("powerloader")
-				H.mind.cm_skills.powerloader = new_skill_level
-
+		H.mind.cm_skills.set_skill(selected_skill, new_skill_level)
 		to_chat(usr, "[H]'s [selected_skill] skill is now set to [new_skill_level].")
 
 

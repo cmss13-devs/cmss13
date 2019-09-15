@@ -229,7 +229,7 @@
 			new pill_type_to_fill(src)
 
 /obj/item/storage/pill_bottle/attack_self(mob/living/user)
-	if(skilllock && user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_CHEM)
+	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
 		to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return
 	if(user.get_inactive_hand())
@@ -250,7 +250,7 @@
 
 
 /obj/item/storage/pill_bottle/open(mob/user)
-	if(skilllock && user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_CHEM)
+	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
 		to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return
 	..()
@@ -260,7 +260,7 @@
 /obj/item/storage/pill_bottle/can_be_inserted(obj/item/W, stop_messages = 0)
 	. = ..()
 	if(.)
-		if(skilllock && usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.medical < SKILL_MEDICAL_CHEM)
+		if(skilllock && !skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
 			to_chat(usr, SPAN_NOTICE("You can't open [src], it has some kind of lock."))
 			return 0
 
@@ -271,7 +271,7 @@
 		if(istype(loc, /obj/item/storage/belt/medical))
 			var/obj/item/storage/belt/medical/M = loc
 			if(M.mode)
-				if(skilllock && user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_CHEM)
+				if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
 					to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
 					return 0
 				if(user.get_active_hand())

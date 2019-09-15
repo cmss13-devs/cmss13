@@ -1201,7 +1201,7 @@
 		else
 			visible_message(SPAN_NOTICE("[user] swipes their ID card on the [src], but it refused."))
 		return
-	if (!usr.mind || !usr.mind.cm_skills || (usr.mind.cm_skills.research == null) || (usr.mind.cm_skills.research < SKILL_RESEARCH_TRAINED))
+	if(!skillcheck(usr, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return
 	if(istype(B, /obj/item/reagent_container/glass/beaker/vial))
@@ -1341,7 +1341,7 @@
 	if(processing)
 		to_chat(user, SPAN_WARNING("The [src] is still running!"))
 		return
-	if (!usr.mind || !usr.mind.cm_skills || (usr.mind.cm_skills.research == null) || (usr.mind.cm_skills.research < SKILL_RESEARCH_TRAINED))
+	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return
 	if(istype(B, /obj/item/reagent_container/glass))

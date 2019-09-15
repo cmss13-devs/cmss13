@@ -68,7 +68,7 @@
 		if((CLUMSY in user.mutations) && prob(50))
 			target = user
 		var/mob/M = target
-		if(M != user && M.stat != DEAD && M.a_intent != "help" && !M.is_mob_incapacitated() && ((M.mind && M.mind.cm_skills && M.mind.cm_skills.cqc >= SKILL_CQC_MP) || isYautja(M))) // preds have null skills
+		if(M != user && M.stat != DEAD && M.a_intent != "help" && !M.is_mob_incapacitated() && (skillcheck(M, SKILL_CQC, SKILL_CQC_MP) || isYautja(M))) // preds have null skills
 			user.KnockDown(3)
 			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Used cqc skill to stop [user.name] ([user.ckey]) injecting them.</font>")
 			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Was stopped from injecting [M] ([M.ckey]) by their cqc skill.</font>")
@@ -83,11 +83,11 @@
 
 	var/injection_time = 30
 	if(user.mind && user.mind.cm_skills)
-		if(user.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
+		if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 			to_chat(user, SPAN_WARNING("You aren't trained to use syringes..."))
 			return
 		else
-			injection_time = max(5, 50 - 10*user.mind.cm_skills.medical)
+			injection_time = max(5, 50 - 10*user.mind.cm_skills.get_skill_level(SKILL_MEDICAL))
 
 
 	switch(mode)

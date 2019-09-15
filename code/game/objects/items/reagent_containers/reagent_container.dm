@@ -32,7 +32,7 @@
 
 /obj/item/reagent_container/proc/display_contents(mob/user) // Used on examine for properly skilled people to see contents.
 	if(isXeno()) return
-	if(!user.mind || !user.mind.cm_skills || user.mind.cm_skills.medical >= SKILL_MEDICAL_CHEM) // If they have no skillset(admin-spawn, etc), or are properly skilled.
+	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
 		to_chat(user, "This [src] contains: [get_reagent_list_text()]")
 	else
 		to_chat(user, "You don't know what's in it.")

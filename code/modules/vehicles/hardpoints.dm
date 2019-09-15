@@ -150,7 +150,7 @@ Currently only has the tank hardpoints
 
 /obj/item/hardpoint/examine(mob/user)
 	..()
-	if(isobserver(user) || (user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer >= SKILL_ENGINEER_ENGI))
+	if(isobserver(user) || skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, "It's at [round(get_integrity_percent(), 1)]% integrity!")
 
 /obj/item/hardpoint/proc/muzzle_flash(var/angle)

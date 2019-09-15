@@ -236,7 +236,7 @@
 	if(dazed)
 		var/skill = 1
 		if(mind && mind.cm_skills)
-			skill += (mind.cm_skills.endurance-1)*0.2
+			skill += (mind.cm_skills.get_skill_level(SKILL_ENDURANCE)-1)*0.2
 		AdjustDazed(-skill)
 	if(dazed)
 		speech_problem_flag = 1
@@ -246,7 +246,7 @@
 	if(knocked_down && client)
 		var/skill = species.knock_down_reduction
 		if(mind && mind.cm_skills)
-			skill += (mind.cm_skills.endurance-1)*0.1
+			skill += (mind.cm_skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1
 		knocked_down = max(knocked_down - skill, 0)
 	return knocked_down
 

@@ -6,13 +6,13 @@
 //Note that this means that snipers will have a slowdown of 3, due to the scope
 /obj/item/weapon/gun/rifle/sniper
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	gun_skill_category = GUN_SKILL_SPEC
+	gun_skill_category = SKILL_SPEC_WEAPONS
 	wield_delay = WIELD_DELAY_SLOW
 
 	able_to_fire(mob/living/user)
 		. = ..()
 		if(. && istype(user)) //Let's check all that other stuff first.
-			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && user.mind.cm_skills.spec_weapons != SKILL_SPEC_SNIPER)
+			if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)
 				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 				return 0
 
@@ -212,7 +212,7 @@
 						/obj/item/attachable/compensator)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK
-	gun_skill_category = GUN_SKILL_SPEC
+	gun_skill_category = SKILL_SPEC_WEAPONS
 
 /obj/item/weapon/gun/rifle/m4ra/New()
 	..()
@@ -241,7 +241,7 @@
 /obj/item/weapon/gun/rifle/m4ra/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && user.mind.cm_skills.spec_weapons != SKILL_SPEC_SCOUT)
+		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
 
@@ -289,7 +289,7 @@
 	var/long_range_cooldown = 2
 	var/blip_type = "detector"
 	var/iff_signal = ACCESS_IFF_MARINE
-	gun_skill_category = GUN_SKILL_SMARTGUN
+	gun_skill_category = SKILL_SMARTGUN
 	attachable_allowed = list(
 						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/burstfire_assembly,
@@ -401,7 +401,7 @@
 	if(.)
 		if(!ishuman(user)) return 0
 		var/mob/living/carbon/human/H = user
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.smartgun < SKILL_SMART_USE)
+		if(!skillcheck(user, SKILL_SMARTGUN, SKILL_SMART_USE))
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
 		if ( !istype(H.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner) || !istype(H.back,/obj/item/smartgun_powerpack))
@@ -795,7 +795,7 @@
 	attachable_allowed = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/scope/mini)
 
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
-	gun_skill_category = GUN_SKILL_SPEC
+	gun_skill_category = SKILL_SPEC_WEAPONS
 
 /obj/item/weapon/gun/launcher/m92/New()
 	set waitfor = 0
@@ -871,7 +871,7 @@
 /obj/item/weapon/gun/launcher/m92/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && user.mind.cm_skills.spec_weapons != SKILL_SPEC_GRENADIER)
+		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
 
@@ -912,7 +912,7 @@
 	cocked_sound = 'sound/weapons/gun_m92_cocked.ogg'
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
-	gun_skill_category = GUN_SKILL_SPEC
+	gun_skill_category = SKILL_SPEC_WEAPONS
 	var/grenade
 	var/grenade_type_allowed = /obj/item/explosive/grenade
 	var/riot_version
@@ -991,10 +991,10 @@
 	if (. && istype(user)) //Let's check all that other stuff first.
 		if(user.mind && user.mind.cm_skills)
 			if(riot_version)
-				if(user.mind.cm_skills.police < SKILL_POLICE_MP)
+				if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
 					to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 					return 0
-			else if(user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && user.mind.cm_skills.spec_weapons != SKILL_SPEC_GRENADIER)
+			else if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
 				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 				return 0
 
@@ -1053,7 +1053,7 @@
 						/obj/item/attachable/scope/mini)
 
 	flags_gun_features = GUN_INTERNAL_MAG|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
-	gun_skill_category = GUN_SKILL_SPEC
+	gun_skill_category = SKILL_SPEC_WEAPONS
 	var/datum/effect_system/smoke_spread/smoke
 
 /obj/item/weapon/gun/launcher/rocket/New()
@@ -1085,7 +1085,7 @@
 			click_empty(user)
 			to_chat(user, SPAN_WARNING("You can't fire that here!"))
 			return 0*/
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && user.mind.cm_skills.spec_weapons != SKILL_SPEC_ROCKET)
+		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ROCKET)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
 		if(src.current_mag.current_rounds > 0)

@@ -34,7 +34,7 @@
 	if(..())  //Checks for power outages
 		return
 
-	if(!ishighersilicon(usr) && user.mind.cm_skills && user.mind.cm_skills.leadership < SKILL_LEAD_EXPERT && !Check_WO())
+	if(!ishighersilicon(usr) && !skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) && !Check_WO())
 		to_chat(user, SPAN_WARNING("You don't have the training to use [src]."))
 		return
 
@@ -603,7 +603,7 @@
 	else //an acting SL
 		H.mind.role_comm_title = "aSL"
 	if(H.mind.cm_skills)
-		H.mind.cm_skills.leadership = max(SKILL_LEAD_TRAINED, H.mind.cm_skills.leadership)
+		H.mind.cm_skills.set_skill(SKILL_LEADERSHIP, max(SKILL_LEAD_TRAINED, H.mind.cm_skills.get_skill_level(SKILL_LEADERSHIP)))
 
 	if(istype(H.wear_ear, /obj/item/device/radio/headset/almayer/marine))
 		var/obj/item/device/radio/headset/almayer/marine/R = H.wear_ear
@@ -900,7 +900,7 @@
 	set desc = "Issue an order to nearby humans, using your authority to strengthen their resolve."
 	set category = "IC"
 
-	if(!mind.cm_skills || (mind.cm_skills && mind.cm_skills.leadership < SKILL_LEAD_TRAINED))
+	if(!skillcheck(src, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
 		to_chat(src, SPAN_WARNING("You are not competent enough in leadership to issue an order."))
 		return
 

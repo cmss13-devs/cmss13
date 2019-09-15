@@ -363,23 +363,23 @@
 	guaranteed_delay_time = world.time + WEAPON_GUARANTEED_DELAY
 	//slower or faster wield delay depending on skill.
 	if(user.mind && user.mind.cm_skills)
-		if(user.mind.cm_skills.firearms == 0) //no training in any firearms
+		if(user.mind.cm_skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
 			wield_time += 3
 		else
 			var/skill_value = 0
 			switch(gun_skill_category)
-				if(GUN_SKILL_PISTOLS)
-					skill_value = user.mind.cm_skills.pistols
-				if(GUN_SKILL_SMGS)
-					skill_value = user.mind.cm_skills.smgs
-				if(GUN_SKILL_RIFLES)
-					skill_value = user.mind.cm_skills.rifles
-				if(GUN_SKILL_SHOTGUNS)
-					skill_value = user.mind.cm_skills.shotguns
-				if(GUN_SKILL_HEAVY_WEAPONS)
-					skill_value = user.mind.cm_skills.heavy_weapons
-				if(GUN_SKILL_SMARTGUN)
-					skill_value = user.mind.cm_skills.smartgun
+				if(SKILL_PISTOLS)
+					skill_value = user.mind.cm_skills.get_skill_level(SKILL_PISTOLS)
+				if(SKILL_SMGS)
+					skill_value = user.mind.cm_skills.get_skill_level(SKILL_SMGS)
+				if(SKILL_RIFLES)
+					skill_value = user.mind.cm_skills.get_skill_level(SKILL_RIFLES)
+				if(SKILL_SHOTGUNS)
+					skill_value = user.mind.cm_skills.get_skill_level(SKILL_SHOTGUNS)
+				if(SKILL_HEAVY_WEAPONS)
+					skill_value = user.mind.cm_skills.get_skill_level(SKILL_HEAVY_WEAPONS)
+				if(SKILL_SMARTGUN)
+					skill_value = user.mind.cm_skills.get_skill_level(SKILL_SMARTGUN)
 			if(skill_value)
 				wield_time -= 2*skill_value
 	return 1
@@ -943,16 +943,16 @@ and you're good to go.
 				added_delay = active_attachable.attachment_firing_delay
 		else
 			if(user && user.mind && user.mind.cm_skills)
-				if(user.mind.cm_skills.firearms == 0) //no training in any firearms
+				if(user.mind.cm_skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
 					added_delay += config.low_fire_delay //untrained humans fire more slowly.
 				else
 					switch(gun_skill_category)
-						if(GUN_SKILL_HEAVY_WEAPONS)
+						if(SKILL_HEAVY_WEAPONS)
 							if(fire_delay > 10) //long delay to fire
-								added_delay = max(fire_delay - 3*user.mind.cm_skills.heavy_weapons, 6)
-						if(GUN_SKILL_SMARTGUN)
-							if(user.mind.cm_skills.smartgun < 0)
-								added_delay += 2*user.mind.cm_skills.smartgun
+								added_delay = max(fire_delay - 3*user.mind.cm_skills.get_skill_level(SKILL_HEAVY_WEAPONS), 6)
+						if(SKILL_SMARTGUN)
+							if(!skillcheck(user, SKILL_SMARTGUN, SKILL_SMART_TRAINED))
+								added_delay += 2*user.mind.cm_skills.get_skill_level(SKILL_SMARTGUN)
 		if(world.time >= last_fired + added_delay + extra_delay) //check the last time it was fired.
 			extra_delay = 0
 		else
@@ -984,7 +984,7 @@ and you're good to go.
 		gun_scatter += max(0, movement_acc_penalty_mult * config.min_scatter_value)
 
 	if(dual_wield) //akimbo firing gives terrible accuracy
-		if(gun_skill_category == GUN_SKILL_SMGS)
+		if(gun_skill_category == SKILL_SMGS)
 			gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(2,4))
 			gun_scatter += config.med_scatter_value
 		else
@@ -994,22 +994,22 @@ and you're good to go.
 	// Apply any skill-based bonuses to accuracy
 	if(user && user.mind && user.mind.cm_skills)
 		var/skill_accuracy = 0
-		if(user.mind.cm_skills.firearms == 0) //no training in any firearms
+		if(user.mind.cm_skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
 			skill_accuracy = -1
 		else
 			switch(gun_skill_category)
-				if(GUN_SKILL_PISTOLS)
-					skill_accuracy = user.mind.cm_skills.pistols
-				if(GUN_SKILL_SMGS)
-					skill_accuracy = user.mind.cm_skills.smgs
-				if(GUN_SKILL_RIFLES)
-					skill_accuracy = user.mind.cm_skills.rifles
-				if(GUN_SKILL_SHOTGUNS)
-					skill_accuracy = user.mind.cm_skills.shotguns
-				if(GUN_SKILL_HEAVY_WEAPONS)
-					skill_accuracy = user.mind.cm_skills.heavy_weapons
-				if(GUN_SKILL_SMARTGUN)
-					skill_accuracy = user.mind.cm_skills.smartgun
+				if(SKILL_PISTOLS)
+					skill_accuracy = user.mind.cm_skills.get_skill_level(SKILL_PISTOLS)
+				if(SKILL_SMGS)
+					skill_accuracy = user.mind.cm_skills.get_skill_level(SKILL_SMGS)
+				if(SKILL_RIFLES)
+					skill_accuracy = user.mind.cm_skills.get_skill_level(SKILL_RIFLES)
+				if(SKILL_SHOTGUNS)
+					skill_accuracy = user.mind.cm_skills.get_skill_level(SKILL_SHOTGUNS)
+				if(SKILL_HEAVY_WEAPONS)
+					skill_accuracy = user.mind.cm_skills.get_skill_level(SKILL_HEAVY_WEAPONS)
+				if(SKILL_SMARTGUN)
+					skill_accuracy = user.mind.cm_skills.get_skill_level(SKILL_SMARTGUN)
 		if(skill_accuracy)
 			gun_accuracy_mult += skill_accuracy * config.low_hit_accuracy_mult // Accuracy mult increase/decrease per level is equal to attaching/removing a red dot sight
 
@@ -1076,23 +1076,23 @@ and you're good to go.
 		total_scatter_angle += max(0, (flags_item & WIELDED) ? (bullets_fired-1) * (burst_scatter_mult + burst_scatter_mod) : 2 * (bullets_fired-1) * (burst_scatter_mult + burst_scatter_mod)  )
 
 	if(user && user.mind && user.mind.cm_skills)
-		if(user.mind.cm_skills.firearms == 0) //no training in any firearms
+		if(user.mind.cm_skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
 			total_scatter_angle += config.low_scatter_value
 		else
 			var/scatter_tweak = 0
 			switch(gun_skill_category)
-				if(GUN_SKILL_PISTOLS)
-					scatter_tweak = user.mind.cm_skills.pistols
-				if(GUN_SKILL_SMGS)
-					scatter_tweak = user.mind.cm_skills.smgs
-				if(GUN_SKILL_RIFLES)
-					scatter_tweak = user.mind.cm_skills.rifles
-				if(GUN_SKILL_SHOTGUNS)
-					scatter_tweak = user.mind.cm_skills.shotguns
-				if(GUN_SKILL_HEAVY_WEAPONS)
-					scatter_tweak = user.mind.cm_skills.heavy_weapons
-				if(GUN_SKILL_SMARTGUN)
-					scatter_tweak = user.mind.cm_skills.smartgun
+				if(SKILL_PISTOLS)
+					scatter_tweak = user.mind.cm_skills.get_skill_level(SKILL_PISTOLS)
+				if(SKILL_SMGS)
+					scatter_tweak = user.mind.cm_skills.get_skill_level(SKILL_SMGS)
+				if(SKILL_RIFLES)
+					scatter_tweak = user.mind.cm_skills.get_skill_level(SKILL_RIFLES)
+				if(SKILL_SHOTGUNS)
+					scatter_tweak = user.mind.cm_skills.get_skill_level(SKILL_SHOTGUNS)
+				if(SKILL_HEAVY_WEAPONS)
+					scatter_tweak = user.mind.cm_skills.get_skill_level(SKILL_HEAVY_WEAPONS)
+				if(SKILL_SMARTGUN)
+					scatter_tweak = user.mind.cm_skills.get_skill_level(SKILL_SMARTGUN)
 			if(scatter_tweak)
 				total_scatter_angle -= scatter_tweak*config.low_scatter_value
 
@@ -1116,24 +1116,23 @@ and you're good to go.
 
 	if(user && user.mind && user.mind.cm_skills)
 
-		if(user.mind.cm_skills.firearms == 0) //no training in any firearms
+		if(user.mind.cm_skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
 			total_recoil += config.min_recoil_value
 		else
 			var/recoil_tweak
 			switch(gun_skill_category)
-				if(GUN_SKILL_PISTOLS)
-					recoil_tweak = user.mind.cm_skills.pistols
-				if(GUN_SKILL_SMGS)
-					recoil_tweak = user.mind.cm_skills.smgs
-				if(GUN_SKILL_RIFLES)
-					recoil_tweak = user.mind.cm_skills.rifles
-				if(GUN_SKILL_SHOTGUNS)
-					recoil_tweak = user.mind.cm_skills.shotguns
-				if(GUN_SKILL_HEAVY_WEAPONS)
-					recoil_tweak = user.mind.cm_skills.heavy_weapons
-				if(GUN_SKILL_SMARTGUN)
-					recoil_tweak = user.mind.cm_skills.smartgun
-
+				if(SKILL_PISTOLS)
+					recoil_tweak = user.mind.cm_skills.get_skill_level(SKILL_PISTOLS)
+				if(SKILL_SMGS)
+					recoil_tweak = user.mind.cm_skills.get_skill_level(SKILL_SMGS)
+				if(SKILL_RIFLES)
+					recoil_tweak = user.mind.cm_skills.get_skill_level(SKILL_RIFLES)
+				if(SKILL_SHOTGUNS)
+					recoil_tweak = user.mind.cm_skills.get_skill_level(SKILL_SHOTGUNS)
+				if(SKILL_HEAVY_WEAPONS)
+					recoil_tweak = user.mind.cm_skills.get_skill_level(SKILL_HEAVY_WEAPONS)
+				if(SKILL_SMARTGUN)
+					recoil_tweak = user.mind.cm_skills.get_skill_level(SKILL_SMARTGUN)
 			if(recoil_tweak)
 				total_recoil -= recoil_tweak*config.min_recoil_value
 	if(total_recoil > 0 && ishuman(user))

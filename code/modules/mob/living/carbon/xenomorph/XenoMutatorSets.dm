@@ -225,11 +225,6 @@
 	remaining_points += MUTATOR_GAIN_PER_XENO_LEVEL * (new_level - user_level)
 	user_level = new_level
 
-	// Let the mutators know too
-	for(var/name in purchased_mutators)
-		var/datum/xeno_mutator/M = xeno_mutator_list[name]
-		M.on_upgrade(src, new_level)
-
 /datum/mutator_set/individual_mutators/can_purchase_mutator(var/mutator_name)
 	if (..() == FALSE)
 		return FALSE //Can't buy it regardless

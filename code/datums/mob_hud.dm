@@ -384,7 +384,7 @@ var/datum/mob_hud/huds = list(
 			if(hive.living_xeno_queen)
 				if(hive.living_xeno_queen.observed_xeno == src)
 					holder.icon_state = "queen_overwatch"
-				if(queen_chosen_lead)
+				if(hive_pos != NORMAL_XENO)
 					var/image/I = image('icons/mob/hud/hud.dmi',src, "hudxenoleader")
 					holder.overlays += I
 		if(upgrade)

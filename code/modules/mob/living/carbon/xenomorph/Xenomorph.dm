@@ -176,8 +176,6 @@
 
 	var/xeno_mobhud = FALSE //whether the xeno mobhud is activated or not.
 
-	var/queen_chosen_lead //whether the xeno has been selected by the queen as a leader.
-
 	//Old crusher specific vars, moved here so the Queen can use charge, and potential future Xenos
 	var/charge_dir = 0 //Stores initial charge dir to immediately cut out any direction change shenanigans
 	var/charge_timer = 0 //Has a small charge window. has to keep moving to build speed.
@@ -298,6 +296,8 @@
 	var/charge_speed = 0 //Modifier on base move delay as charge builds up
 	var/charge_roar = 0 //Did we roar in our charge yet?
 
+	var/hive_pos = NORMAL_XENO // The position of the xeno in the hive (0 = normal xeno; 1 = queen; 2+ = hive leader)
+
 
 
 /mob/living/carbon/Xenomorph/New(var/new_loc, var/mob/living/carbon/Xenomorph/oldXeno)
@@ -384,9 +384,9 @@
 
 		oldXeno.empty_gut()
 
-		if(oldXeno.queen_chosen_lead && caste_name != "Queen") // xeno leader is removed by Dispose()
-			queen_chosen_lead = TRUE
-			hive.xeno_leader_list += src
+		if(oldXeno.hive_pos != NORMAL_XENO && caste_name != "Queen") // xeno leader is removed by Dispose()
+			hive_pos = oldXeno.hive_pos
+			hive.xeno_leader_list[GET_XENO_LEADER_NUM(hive_pos)] = src
 			hud_set_queen_overwatch()
 			if(hive.living_xeno_queen)
 				handle_xeno_leader_pheromones()
@@ -577,7 +577,7 @@
 
 /mob/living/carbon/Xenomorph/point_to_atom(atom/A, turf/T)
 	//xeno leader get a bit arrow and less cooldown
-	if(queen_chosen_lead || isXenoQueen(src))
+	if(hive_pos != NORMAL_XENO)
 		recently_pointed_to = world.time + 10
 		new /obj/effect/overlay/temp/point/big(T)
 	else

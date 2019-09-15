@@ -1051,7 +1051,7 @@
 		if(X.queen_ability_cooldown > world.time)
 			to_chat(X, SPAN_XENOWARNING("You're still recovering from your last overwatch ability. Wait [round((X.queen_ability_cooldown-world.time)*0.1)] seconds."))
 			return
-		if(hive.queen_leader_limit <= hive.xeno_leader_list.len && !X.observed_xeno.queen_chosen_lead)
+		if(!hive.open_xeno_leader_positions.len && X.observed_xeno.hive_pos == NORMAL_XENO)
 			to_chat(X, SPAN_XENOWARNING("You currently have [hive.xeno_leader_list.len] promoted leaders. You may not maintain additional leaders until your power grows."))
 			return
 		var/mob/living/carbon/Xenomorph/T = X.observed_xeno
@@ -1059,7 +1059,7 @@
 			to_chat(X, SPAN_XENOWARNING("You cannot add yourself as a leader!"))
 			return
 		X.queen_ability_cooldown = world.time + 150 //15 seconds
-		if(!T.queen_chosen_lead)
+		if(T.hive_pos == NORMAL_XENO)
 			if(!hive.add_hive_leader(T))
 				to_chat(X, SPAN_XENOWARNING("Unable to add the leader."))
 				return
@@ -1067,7 +1067,7 @@
 			to_chat(T, SPAN_XENOANNOUNCE("[X] has selected you as a Hive Leader. The other Xenomorphs must listen to you. You will also act as a beacon for the Queen's pheromones."))
 		else
 			hive.remove_hive_leader(T)
-			to_chat(X, SPAN_XENONOTICE("You've demoted [T] from Lead."))
+			to_chat(X, SPAN_XENONOTICE("You've demoted [T] from Hive Leader."))
 			to_chat(T, SPAN_XENOANNOUNCE("[X] has demoted you from Hive Leader. Your leadership rights and abilities have waned."))
 		T.hud_set_queen_overwatch()
 	else
@@ -1077,7 +1077,7 @@
 
 		if(possible_xenos.len > 1)
 			var/mob/living/carbon/Xenomorph/selected_xeno = input(X, "Target", "Watch which xenomorph leader?") as null|anything in possible_xenos
-			if(!selected_xeno || !selected_xeno.queen_chosen_lead || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z != X.z || !X.check_state())
+			if(!selected_xeno || selected_xeno.hive_pos == NORMAL_XENO || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z != X.z || !X.check_state())
 				return
 			X.set_queen_overwatch(selected_xeno)
 		else if(possible_xenos.len)

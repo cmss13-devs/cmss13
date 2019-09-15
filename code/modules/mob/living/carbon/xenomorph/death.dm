@@ -70,8 +70,9 @@
 		if(hive.living_xeno_queen)
 			xeno_message("Hive: \The [src] has <b>died</b>[A? " at [sanitize(A.name)]":""]!", 3, hivenumber)
 
-	if(src in hive.xeno_leader_list)	//Strip them from the Xeno leader list, if they are indexed in here
-		hive.xeno_leader_list -= src
+	if (IS_XENO_LEADER(hive_pos))	//Strip them from the Xeno leader list, if they are indexed in here
+		hive.xeno_leader_list[GET_XENO_LEADER_NUM(hive_pos)] = null
+		hive_pos = NORMAL_XENO
 		if(hive.living_xeno_queen)
 			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE("A leader has fallen!")) //alert queens so they can choose another leader
 

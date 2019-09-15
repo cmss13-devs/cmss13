@@ -397,7 +397,7 @@
 	if(!skills_path)
 		cm_skills = null
 	else
-		cm_skills = new skills_path()
+		cm_skills = new skills_path(src)
 
 /datum/mind/proc/setup_human_stats()
 	if(!player_entity)

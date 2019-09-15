@@ -481,7 +481,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	if(iswelder(W))
 		if(user.action_busy)
 			return
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_METAL)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
 			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
 			return
 		var/obj/item/tool/weldingtool/WT = W
@@ -510,7 +510,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			if(isscrewdriver(W))
 				if(user.action_busy)
 					return
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
 					to_chat(user, SPAN_WARNING("You are not trained to disassemble [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -523,7 +523,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			if(isscrewdriver(W))
 				if(user.action_busy)
 					return
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -535,7 +535,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			if(iswrench(W))
 				if(user.action_busy)
 					return
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
 					to_chat(user, SPAN_WARNING("You are not trained to disassemble [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -550,7 +550,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			if(iswrench(W))
 				if(user.action_busy)
 					return
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				for(var/obj/structure/barricade/B in loc)
@@ -568,7 +568,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			if(iscrowbar(W))
 				if(user.action_busy)
 					return
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
 					to_chat(user, SPAN_WARNING("You are not trained to disassemble [src]..."))
 					return
 				user.visible_message(SPAN_NOTICE("[user] starts unseating [src]'s panels."),
@@ -636,7 +636,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	else if(iswrench(W))
 		if(user.action_busy)
 			return
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_PLASTEEL))
 			to_chat(user, SPAN_WARNING("You do not know where the loosening bolts are on [src]..."))
 			return
 		else
@@ -654,7 +654,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			return
 		if(user.action_busy)
 			return
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_PLASTEEL))
 			to_chat(user, SPAN_WARNING("You do not know how to collapse [src] using a crowbar..."))
 			return
 		else
@@ -795,7 +795,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		if(busy || tool_cooldown > world.time)
 			return
 		tool_cooldown = world.time + 10
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_METAL)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
 			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
 			return
 		var/obj/item/tool/weldingtool/WT = W
@@ -827,7 +827,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
+				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_PLASTEEL))
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 
@@ -842,7 +842,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				build_state = BARRICADE_BSTATE_UNSECURED
 				return
 			if(iscrowbar(W))
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
+				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_PLASTEEL))
 					to_chat(user, SPAN_WARNING("You are not trained to modify [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
@@ -862,7 +862,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
+				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_PLASTEEL))
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
@@ -875,7 +875,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
+				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_PLASTEEL))
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
@@ -892,7 +892,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
+				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_PLASTEEL))
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
@@ -907,7 +907,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
+				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_PLASTEEL))
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				user.visible_message(SPAN_NOTICE("[user] starts unseating [src]'s panels."),
@@ -1127,7 +1127,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			if(iswrench(W)) // Make unsecure
 				if(user.action_busy)
 					return
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
 					to_chat(user, SPAN_WARNING("You are not trained to unsecure [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -1141,7 +1141,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			if(istype(W, /obj/item/stack/sheet/metal)) // Start reinforcing
 				if(user.action_busy)
 					return
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
 					to_chat(user, SPAN_WARNING("You are not trained to reinforce [src]..."))
 					return
 				var/obj/item/stack/sheet/metal/M = W
@@ -1159,7 +1159,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			if(iswrench(W)) // Secure again
 				if(user.action_busy)
 					return
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
 					to_chat(user, SPAN_WARNING("You are not trained to secure [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -1173,7 +1173,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			if(isscrewdriver(W)) // Disassemble into metal
 				if(user.action_busy)
 					return
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
 					to_chat(user, SPAN_WARNING("You are not trained to disassemble [src]..."))
 					return
 				user.visible_message(SPAN_NOTICE("[user] starts unscrewing [src]'s panels."),
@@ -1191,7 +1191,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(iscrowbar(W)) // Un-reinforce
 					if(user.action_busy)
 						return
-					if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
+					if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
 						to_chat(user, SPAN_WARNING("You are not trained to unreinforce [src]..."))
 						return
 					playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
@@ -1205,7 +1205,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(iswelder(W))	// Finish reinforcing
 					if(user.action_busy)
 						return
-					if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
+					if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
 						to_chat(user, SPAN_WARNING("You are not trained to reinforce [src]..."))
 						return
 					playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)

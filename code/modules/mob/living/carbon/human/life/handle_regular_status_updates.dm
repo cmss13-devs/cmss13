@@ -138,7 +138,7 @@
 			if(command_aura_tick < 1)
 				command_aura = null
 		if(command_aura && !stat)
-			command_aura_strength = mind.cm_skills.leadership - 1 //2 is SL, so base of 1. Goes up to 3 (CO, XO)
+			command_aura_strength = mind.cm_skills.get_skill_level(SKILL_LEADERSHIP) - 1 //2 is SL, so base of 1. Goes up to 3 (CO, XO)
 			var/command_aura_range = round(4 + command_aura_strength * 1)
 			for(var/mob/living/carbon/human/H in range(command_aura_range, src)) //Goes from 7 for Young Drone to 16 for Ancient Queen
 				if(command_aura == "move" && command_aura_strength > H.mobility_new)

@@ -114,7 +114,7 @@
 		if(!multiplier || (multiplier <= 0)) //href exploit protection
 			return
 		if(R.skill_req)
-			if(ishuman(usr) && usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.construction < R.skill_req)
+			if(ishuman(usr) && !skillcheck(usr, SKILL_CONSTRUCTION, R.skill_req))
 				to_chat(usr, SPAN_WARNING("You are not trained to build this..."))
 				return
 		if(amount < R.req_amount * multiplier)

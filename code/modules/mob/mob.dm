@@ -281,7 +281,7 @@
 
 /mob/proc/point_to_atom(atom/A, turf/T)
 	//Squad Leaders and above have reduced cooldown and get a bigger arrow
-	if(!mind || !mind.cm_skills || mind.cm_skills.leadership < SKILL_LEAD_TRAINED)
+	if(!skillcheck(src, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
 		recently_pointed_to = world.time + 50
 		new /obj/effect/overlay/temp/point(T)
 

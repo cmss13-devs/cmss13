@@ -181,7 +181,7 @@
 			to_chat(user, "You [src.panel_open ? "open" : "close"] the maintenance panel.")
 			update_icon()
 			return TRUE
-		else if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+		else if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
 		else if(stat & BROKEN)
@@ -208,7 +208,7 @@
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return FALSE
 	else if(istype(W, /obj/item/tool/wirecutters))
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
 		else if(stat == WORKING && panel_open)
@@ -228,7 +228,7 @@
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return FALSE
 	else if(istype(W, /obj/item/stack/cable_coil))
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
 		var/obj/item/stack/cable_coil/CC = W
@@ -251,7 +251,7 @@
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return
 	else if(istype(W, /obj/item/stack/sheet/metal))
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
 		var/obj/item/stack/sheet/metal/M = W
@@ -527,7 +527,7 @@
 		else if ((href_list["cutwire"]) && (src.panel_open))
 			var/wire = text2num(href_list["cutwire"])
 
-			if(usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return 0
 
@@ -543,7 +543,7 @@
 		else if ((href_list["pulsewire"]) && (src.panel_open))
 			var/wire = text2num(href_list["pulsewire"])
 
-			if(usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return 0
 

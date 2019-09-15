@@ -207,9 +207,6 @@
 	S["be_special"]			>> be_special
 	S["disabilities"]		>> disabilities
 	S["player_alt_titles"]	>> player_alt_titles
-	S["used_skillpoints"]	>> used_skillpoints
-	S["skills"]				>> skills
-	S["skill_specialization"] >> skill_specialization
 	S["organ_data"]			>> organ_data
 	S["gear"]				>> gear
 	S["home_system"] 		>> home_system
@@ -282,8 +279,6 @@
 	job_marines_med = sanitize_integer(job_marines_med, 0, 65535, initial(job_marines_med))
 	job_marines_low = sanitize_integer(job_marines_low, 0, 65535, initial(job_marines_low))
 
-	if(!skills) skills = list()
-	if(!used_skillpoints) used_skillpoints= 0
 	if(isnull(disabilities)) disabilities = 0
 	if(!player_alt_titles) player_alt_titles = new()
 	if(!organ_data) src.organ_data = list()
@@ -367,9 +362,6 @@
 	S["player_alt_titles"]		<< player_alt_titles
 	S["be_special"]			<< be_special
 	S["disabilities"]		<< disabilities
-	S["used_skillpoints"]	<< used_skillpoints
-	S["skills"]				<< skills
-	S["skill_specialization"] << skill_specialization
 	S["organ_data"]			<< organ_data
 	S["gear"]				<< gear
 	S["home_system"] 		<< home_system

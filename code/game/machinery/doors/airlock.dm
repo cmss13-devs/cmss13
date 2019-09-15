@@ -406,7 +406,7 @@
 				return
 
 	if(panel_open)
-		if(ishuman(usr) && usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+		if(ishuman(usr) && !skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(usr, SPAN_WARNING("You look into \the [src]'s access panel and can only see a jumbled mess of colored wires..."))
 			return 0
 
@@ -443,7 +443,7 @@
 	add_fingerprint(usr)
 
 	if((in_range(src, usr) && istype(loc, /turf)) && panel_open)
-		if(ishuman(usr) && usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+		if(ishuman(usr) && !skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(usr, SPAN_WARNING("You don't understand anything about [src]'s wiring!"))
 			return 0
 
@@ -567,7 +567,7 @@
 
 	else if(C.pry_capable)
 		if(C.pry_capable == IS_PRY_CAPABLE_CROWBAR && panel_open && (operating == -1 || (density && welded && operating != 1 && !arePowerSystemsOn() && !locked)) )
-			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You don't seem to know how to deconstruct machines."))
 				return
 			if(width > 1)

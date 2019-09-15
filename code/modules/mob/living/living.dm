@@ -442,10 +442,10 @@
 	if(!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
 		to_chat(usr, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
-	if(!ignore_delay && user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
+	if(!ignore_delay && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 		to_chat(user, SPAN_WARNING("You start fumbling around with [src]..."))
 		var/fduration = 60
-		if(user.mind.cm_skills.medical > 0)
+		if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DEFAULT))
 			fduration = 30
 		if(!do_after(user, fduration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY) || !user.Adjacent(src))
 			return

@@ -100,15 +100,16 @@
 /obj/item/document_objective/attack_self(mob/living/carbon/human/user)
 	switch(skill_required)
 		if(DOCUMENT_SKILL_SURGERY)
-			if(!user.mind || !user.mind.cm_skills || !user.mind.cm_skills.surgery)
+			if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_BEGINNER))
 				to_chat(user, SPAN_WARNING("You can't understand this."))
 				return 0
 		if(DOCUMENT_SKILL_ENGINEERING)
-			if(!user.mind || !user.mind.cm_skills || user.mind.cm_skills.engineer < SKILL_ENGINEER_MT)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MT))
 				to_chat(user, SPAN_WARNING("You can't understand this."))
 				return 0
 		if(DOCUMENT_SKILL_WEAPONS)
-			if(!user.mind || !user.mind.cm_skills || !user.mind.cm_skills.spec_weapons)
+			// Needs skill in any spec weapon
+			if(!skillcheck(user, SKILL_SPEC_WEAPONS, 1))
 				to_chat(user, SPAN_WARNING("You can't understand this."))
 				return 0
 	to_chat(user, "<span class='notice'>You start reading \the [src].")

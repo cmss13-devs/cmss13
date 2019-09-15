@@ -273,7 +273,7 @@
 
 	if(!M || M.client == null) return
 
-	if(!M.mind || !(!M.mind.cm_skills || M.mind.cm_skills.large_vehicle >= SKILL_LARGE_VEHICLE_TRAINED))
+	if(!skillcheck(M, SKILL_LARGE_VEHICLE, SKILL_LARGE_VEHICLE_TRAINED))
 		to_chat(M, SPAN_NOTICE("You have no idea how to operate this thing."))
 		return
 

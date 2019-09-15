@@ -89,7 +89,7 @@
 /obj/structure/fence/attackby(obj/item/W, mob/user)
 
 	if(istype(W, /obj/item/stack/barbed_wire) && health < health_max)
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_PLASTEEL)
+		if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_PLASTEEL))
 			to_chat(user, SPAN_WARNING("You don't have the skill needed to fix [src]'s wiring."))
 			return
 		var/obj/item/stack/barbed_wire/R = W

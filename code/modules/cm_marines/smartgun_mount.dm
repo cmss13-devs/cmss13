@@ -402,7 +402,7 @@
 
 	if(istype(O, /obj/item/ammo_magazine/m56d)) // RELOADING DOCTOR FREEMAN.
 		var/obj/item/ammo_magazine/m56d/M = O
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.heavy_weapons < SKILL_HEAVY_WEAPONS_TRAINED)
+		if(!skillcheck(user, SKILL_HEAVY_WEAPONS, SKILL_HEAVY_WEAPONS_TRAINED))
 			if(rounds)
 				to_chat(user, SPAN_WARNING("You only know how to swap the ammo drum when it's empty."))
 				return

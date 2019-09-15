@@ -808,20 +808,6 @@ var/global/floorIsLava = 0
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled guests game entering [guests_allowed ? "":"dis"]allowed."), 1)
 	feedback_add_details("admin_verb","TGU") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/datum/admins/proc/show_skills(var/mob/living/carbon/human/M as mob in player_list)
-	set category = "Admin"
-	set name = "Show Skills"
-
-	if (!istype(src,/datum/admins))
-		src = usr.client.admin_holder
-	if (!istype(src,/datum/admins))
-		to_chat(usr, "Error: you are not an admin!")
-		return
-
-	show_skill_window(usr, M)
-
-	return
-
 /client/proc/update_mob_sprite(mob/living/carbon/human/H as mob)
 	set category = "Admin"
 	set name = "Update Mob Sprite"

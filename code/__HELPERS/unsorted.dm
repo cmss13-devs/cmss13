@@ -1948,3 +1948,13 @@ var/list/WALLITEMS = list(
 			return D
 
 	return null
+
+/proc/skillcheck(var/mob/user, var/skill, var/req_level)
+	if(!user.mind)
+		return FALSE
+	// For the purpose of a skillcheck, not having a skillset counts as being skilled in everything
+	if(!user.mind.cm_skills)
+		return TRUE
+
+	// Not that is_skilled checks if the skillset contains the skill internally, so a has_skill check is unnecessary
+	return user.mind.cm_skills.is_skilled(skill, req_level)

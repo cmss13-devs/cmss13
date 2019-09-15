@@ -369,7 +369,7 @@
 	if(iscrowbar(W) && opened)
 		if(has_electronics == 1)
 			if(user.action_busy) return
-			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no idea how to deconstruct [src]."))
 				return
 			if(terminal)
@@ -398,7 +398,7 @@
 			opened = APC_COVER_OPEN
 			update_icon()
 	else if(istype(W, /obj/item/cell) && opened) //Trying to put a cell inside
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You have no idea how to fit [W] into [src]."))
 			return
 		if(cell)
@@ -416,7 +416,7 @@
 				update_icon()
 	else if(isscrewdriver(W)) //Haxing
 		if(opened)
-			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("[src]'s wiring confuses you."))
 				return
 			if(cell)
@@ -446,7 +446,7 @@
 			update_icon()
 
 	else if(istype(W, /obj/item/card/id) || istype(W, /obj/item/device/pda)) //Trying to unlock the interface with an ID card
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You're not sure where to swipe [W] on [src]."))
 			return
 		if(opened)
@@ -464,7 +464,7 @@
 			else
 				to_chat(user, SPAN_WARNING("Access denied."))
 	else if(iswire(W) && !terminal && opened && has_electronics != 2)
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [src]."))
 			return
 		if(loc:intact_tile)
@@ -491,7 +491,7 @@
 				make_terminal()
 				terminal.connect_to_network()
 	else if(iswirecutter(W) && terminal && opened && has_electronics != 2)
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
 		if(loc:intact_tile)
@@ -512,7 +512,7 @@
 			qdel(terminal)
 			terminal = null
 	else if(istype(W, /obj/item/circuitboard/apc) && opened && has_electronics == 0 && !(stat & BROKEN))
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts inserting the power control board into [src]."),
@@ -524,13 +524,13 @@
 			SPAN_NOTICE("You insert the power control board into [src]."))
 			qdel(W)
 	else if(istype(W, /obj/item/circuitboard/apc) && opened && has_electronics == 0 && (stat & BROKEN))
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
 		to_chat(user, SPAN_WARNING("You cannot put the board inside, the frame is damaged."))
 		return
 	else if(iswelder(W) && opened && has_electronics == 0 && !terminal)
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
 		var/obj/item/tool/weldingtool/WT = W
@@ -553,7 +553,7 @@
 			qdel(src)
 			return
 	else if(istype(W, /obj/item/frame/apc) && opened && (stat & BROKEN))
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
 			return
 		if(has_electronics)
@@ -648,7 +648,7 @@
 
 	if(usr == user && opened && (!issilicon(user)))
 		if(cell)
-			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no idea how to remove the power cell from [src]."))
 				return
 			user.put_in_hands(cell)
@@ -853,7 +853,7 @@
 		if(!can_use(usr, 1))
 			return 0
 	add_fingerprint(usr)
-	if(ishuman(usr) && usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+	if(ishuman(usr) && !skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(usr, SPAN_WARNING("You don't know how to use [src]'s interface."))
 		return
 

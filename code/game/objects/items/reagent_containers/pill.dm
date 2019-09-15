@@ -66,7 +66,7 @@ var/global/list/randomized_pill_icons
 
 		var/ingestion_time = 30
 		if(user.mind && user.mind.cm_skills)
-			ingestion_time = max(10, 30 - 10*user.mind.cm_skills.medical)
+			ingestion_time = max(10, 30 - 10*user.mind.cm_skills.get_skill_level(SKILL_MEDICAL))
 
 		if(!do_after(user, ingestion_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)) return
 

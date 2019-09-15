@@ -16,7 +16,7 @@
 	. = ..()
 
 /obj/item/explosive/plastique/attack_self(mob/user)
-	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_METAL)
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 	var/newtime = input(usr, "Please set the timer.", "Timer", 10) as num
@@ -29,7 +29,7 @@
 
 /obj/item/explosive/plastique/afterattack(atom/target, mob/user, flag)
 	if(!flag) r_FAL
-	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_METAL)
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open))

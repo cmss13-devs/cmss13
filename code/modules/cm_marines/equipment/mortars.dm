@@ -28,7 +28,7 @@
 	if(isYautja(user))
 		to_chat(user, SPAN_WARNING("You kick [src] but nothing happens."))
 		return
-	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You don't have the training to use [src]."))
 		return
 	if(busy)
@@ -112,7 +112,7 @@
 	if(istype(O, /obj/item/mortar_shell))
 
 		var/obj/item/mortar_shell/mortar_shell = O
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You don't have the training to fire [src]."))
 			return
 		if(busy)
@@ -167,7 +167,7 @@
 			busy = 0
 
 	if(istype(O, /obj/item/tool/wrench))
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You don't have the training to undeploy [src]."))
 			return
 		if(fixed)
@@ -216,7 +216,7 @@
 
 /obj/item/mortar_kit/attack_self(mob/user)
 
-	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You don't have the training to deploy [src]."))
 		return
 	if(user.z != 1)

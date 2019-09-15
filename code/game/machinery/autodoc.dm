@@ -586,7 +586,7 @@
 			else
 				visible_message("[usr] engages the internal release mechanism, and climbs out of \the [src].")
 			return
-		if (!usr.mind || !usr.mind.cm_skills || (usr.mind.cm_skills.surgery == null) || (usr.mind.cm_skills.surgery < SKILL_SURGERY_BEGINNER))
+		if(!skillcheck(usr, SKILL_SURGERY, SKILL_SURGERY_BEGINNER))
 			to_chat(usr, SPAN_WARNING("You don't have the training to use this."))
 			return
 		if(surgery)
@@ -614,7 +614,7 @@
 		to_chat(usr, SPAN_NOTICE("\The [src] is non-functional!"))
 		return
 
-	if(usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.surgery < SKILL_SURGERY_BEGINNER && !event)
+	if(!skillcheck(usr, SKILL_SURGERY, SKILL_SURGERY_BEGINNER) && !event)
 		to_chat(usr, SPAN_WARNING("You're going to need someone trained in the use of \the [src] to help you get into it."))
 		return
 
@@ -681,7 +681,7 @@
 			to_chat(user, SPAN_NOTICE("\The [src] is non-functional!"))
 			return
 
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.surgery < SKILL_SURGERY_BEGINNER && !event)
+		if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_BEGINNER) && !event)
 			to_chat(user, SPAN_WARNING("You have no idea how to put someone into \the [src]!"))
 			return
 
@@ -751,7 +751,7 @@
 		dat += "This console is not connected to a Med-Pod or the Med-Pod is non-functional."
 		to_chat(user, "This console seems to be powered down.")
 	else
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.surgery < SKILL_SURGERY_BEGINNER && !connected.event)
+		if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_BEGINNER) && !connected.event)
 			to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 			return
 		var/mob/living/occupant = connected.occupant

@@ -96,7 +96,7 @@
 
 /obj/machinery/computer/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/tool/screwdriver) && circuit)
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You don't know how to deconstruct [src]..."))
 			return
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)

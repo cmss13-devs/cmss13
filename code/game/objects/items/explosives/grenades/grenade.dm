@@ -57,12 +57,13 @@
 				C.throw_mode_on()
 
 
-/obj/item/explosive/grenade/proc/activate(mob/user as mob)
+/obj/item/explosive/grenade/proc/activate(mob/user = null)
 	if(active)
 		return
 
 	icon_state = initial(icon_state) + "_active"
 	active = 1
+	source_mob = user
 	playsound(loc, arm_sound, 25, 1, 6)
 	if(dangerous)
 		updateicon()

@@ -1176,7 +1176,7 @@ Defined in conflicts.dm of the #defines folder.
 	log_game("[key_name_admin(user)] used an underslung grenade launcher.")
 	G.det_time = 15
 	G.throw_range = max_range
-	G.activate()
+	G.activate(user)
 	G.throw_at(target, max_range, 2, user)
 	current_rounds--
 	loaded_grenades.Cut(1,2)

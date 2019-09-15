@@ -252,7 +252,7 @@ explosion resistance exactly as much as their health
 			T = locate(x,y,z)
 		for(var/atom/A in T)
 			spawn(0)
-				if(ismob(A))
+				if(isliving(A))
 					var/mob/M = A
 					log_attack("Mob [M.name] ([M.ckey]) was harmed by explosion in [T.loc.name] caused by [explosion_source] at ([M.loc.x],[M.loc.y],[M.loc.z])")
 					if(ismob(explosion_source_mob))

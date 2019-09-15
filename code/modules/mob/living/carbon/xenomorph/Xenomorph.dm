@@ -80,7 +80,8 @@
 	var/armor_deflection = 10
 	var/evasion = 0
 	var/list/plasma_types = list() //The types of plasma the caste contains
-	
+	var/extra_build_dist = 0 // For drones/hivelords. Extends the maximum build range they have
+
 	// Action to perform on the next click.
 	var/datum/action/xeno_action/activable/queued_action
 

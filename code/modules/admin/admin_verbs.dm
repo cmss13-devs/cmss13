@@ -168,7 +168,7 @@ var/list/admin_verbs_debug = list(
 	///client/proc/show_distribution_map,
 	// /client/proc/show_plant_genes,
 	/client/proc/enable_debug_verbs,
-	/client/proc/callproc,
+	/client/proc/advproccall,
 	/client/proc/callatomproc,
 	/client/proc/toggledebuglogs,
 	/client/proc/togglenichelogs,
@@ -177,7 +177,7 @@ var/list/admin_verbs_debug = list(
 	)
 
 var/list/admin_verbs_paranoid_debug = list(
-	/client/proc/callproc,
+	/client/proc/advproccall,
 	/client/proc/callatomproc,
 	/client/proc/debug_controller
 	)
@@ -242,7 +242,7 @@ var/list/admin_verbs_hideable = list(
 	/datum/admins/proc/adjump,
 	/client/proc/restart_controller,
 	/client/proc/cmd_admin_list_open_jobs,
-	/client/proc/callproc,
+	/client/proc/advproccall,
 	/client/proc/callatomproc,
 	/client/proc/Debug2,
 	/client/proc/reload_admins,

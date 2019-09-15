@@ -146,7 +146,7 @@
 	if (!message)
 		return
 
-	var/obj/machinery/hologram/holopad/T = src.holo
+	var/obj/structure/machinery/hologram/holopad/T = src.holo
 	if(T && T.hologram && T.master == src)//If there is a hologram and its master is the user.
 		var/verb = say_quote(message)
 

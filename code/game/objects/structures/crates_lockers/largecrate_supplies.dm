@@ -260,12 +260,12 @@
 /obj/structure/largecrate/supply/floodlights
 	name = "floodlight crate (x4)"
 	desc = "A crate containing four floodlights."
-	supplies = list(/obj/machinery/floodlight = 4)
+	supplies = list(/obj/structure/machinery/floodlight = 4)
 
 /obj/structure/largecrate/supply/generator
 	name = "\improper P.A.C.M.A.N. crate"
 	desc = "A crate containing a P.A.C.M.A.N. generator, some fuel, and some cable coil to get your power up and going."
-	supplies = list(/obj/machinery/power/port_gen/pacman = 1, /obj/item/stack/sheet/mineral/phoron/medium_stack = 1, /obj/item/stack/cable_coil/yellow = 3)
+	supplies = list(/obj/structure/machinery/power/port_gen/pacman = 1, /obj/item/stack/sheet/mineral/phoron/medium_stack = 1, /obj/item/stack/cable_coil/yellow = 3)
 
 /obj/structure/largecrate/supply/medicine
 	name = "medical crate"
@@ -291,17 +291,17 @@
 /obj/structure/largecrate/supply/medicine/iv
 	name = "\improper IV stand crate (x3)"
 	desc = "A medical supply crate containing three IV drips."
-	supplies = list(/obj/machinery/iv_drip = 3)
+	supplies = list(/obj/structure/machinery/iv_drip = 3)
 
 /obj/structure/largecrate/supply/medicine/optable
 	name = "medical operation crate (x1)"
 	desc = "A crate containing an operating table, two tanks of anasthetic, a surgery kit, some anasthetic injectors, and some space cleaner."
-	supplies = list(/obj/machinery/optable = 1, /obj/item/storage/surgical_tray = 1, /obj/item/tank/anesthetic = 2, /obj/item/reagent_container/spray/cleaner = 1)
+	supplies = list(/obj/structure/machinery/optable = 1, /obj/item/storage/surgical_tray = 1, /obj/item/tank/anesthetic = 2, /obj/item/reagent_container/spray/cleaner = 1)
 
 /obj/structure/largecrate/supply/medicine/medivend
 	name = "\improper WeylandMed Plus crate (x1)"
 	desc = "A crate containing one Weyland Plus medical vendor."
-	supplies = list(/obj/machinery/vending/medical = 1)
+	supplies = list(/obj/structure/machinery/vending/medical = 1)
 
 
 /obj/structure/largecrate/machine
@@ -337,7 +337,7 @@
 	if(istype(W, /obj/item/tool/crowbar))
 		var/turf/T = get_turf(loc)
 		if(istype(T, /turf/open))
-			new /obj/machinery/wo_recycler (T)
+			new /obj/structure/machinery/wo_recycler (T)
 	..()
 
 /obj/structure/largecrate/machine/autodoc
@@ -348,8 +348,8 @@
 	if(istype(W, /obj/item/tool/crowbar))
 		var/turf/T = get_turf(loc)
 		if(istype(T, /turf/open))
-			var/obj/machinery/autodoc/event/E = new (T)
-			var/obj/machinery/autodoc_console/C = new (T)
+			var/obj/structure/machinery/autodoc/event/E = new (T)
+			var/obj/structure/machinery/autodoc_console/C = new (T)
 			C.loc = get_step(T, EAST)
 			E.connected = C
 			C.connected = E
@@ -363,8 +363,8 @@
 	if(istype(W, /obj/item/tool/crowbar))
 		var/turf/T = get_turf(loc)
 		if(istype(T, /turf/open))
-			var/obj/machinery/bodyscanner/E = new (T)
-			var/obj/machinery/body_scanconsole/C = new (T)
+			var/obj/structure/machinery/bodyscanner/E = new (T)
+			var/obj/structure/machinery/body_scanconsole/C = new (T)
 			C.loc = get_step(T, EAST)
 			C.connected = E
 	..()
@@ -377,8 +377,8 @@
 	if(istype(W, /obj/item/tool/crowbar))
 		var/turf/T = get_turf(loc)
 		if(istype(T, /turf/open))
-			var/obj/machinery/sleeper/E = new (T)
-			var/obj/machinery/sleep_console/C = new (T)
+			var/obj/structure/machinery/sleeper/E = new (T)
+			var/obj/structure/machinery/sleep_console/C = new (T)
 			C.loc = get_step(T, EAST)
 			E.connected = C
 			C.connected = E

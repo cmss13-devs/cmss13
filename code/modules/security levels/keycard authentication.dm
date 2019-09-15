@@ -1,4 +1,4 @@
-/obj/machinery/keycard_auth
+/obj/structure/machinery/keycard_auth
 	name = "Keycard Authentication Device"
 	desc = "This device is used to trigger station functions, which require more than one ID card to authenticate."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
@@ -9,7 +9,7 @@
 	var/confirmed = 0 //This variable is set by the device that confirms the request.
 	var/confirm_delay = 20 //(2 seconds)
 	var/busy = 0 //Busy when waiting for authentication or an event request has been sent from this device.
-	var/obj/machinery/keycard_auth/event_source
+	var/obj/structure/machinery/keycard_auth/event_source
 	var/mob/event_triggered_by
 	var/mob/event_confirmed_by
 	//1 = select event
@@ -20,11 +20,11 @@
 	active_power_usage = 6
 	power_channel = ENVIRON
 
-/obj/machinery/keycard_auth/attack_ai(mob/user as mob)
+/obj/structure/machinery/keycard_auth/attack_ai(mob/user as mob)
 	to_chat(user, "The station AI is not to interact with these devices.")
 	return
 
-/obj/machinery/keycard_auth/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/keycard_auth/attackby(obj/item/W as obj, mob/user as mob)
 	if(stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
 		return
@@ -40,12 +40,12 @@
 				event_triggered_by = usr
 				broadcast_request() //This is the device making the initial event request. It needs to broadcast to other devices
 
-/obj/machinery/keycard_auth/power_change()
+/obj/structure/machinery/keycard_auth/power_change()
 	..()
 	if(stat &NOPOWER)
 		icon_state = "auth_off"
 
-/obj/machinery/keycard_auth/attack_hand(mob/user as mob)
+/obj/structure/machinery/keycard_auth/attack_hand(mob/user as mob)
 	if(user.stat || stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
 		return
@@ -77,7 +77,7 @@
 	return
 
 
-/obj/machinery/keycard_auth/Topic(href, href_list)
+/obj/structure/machinery/keycard_auth/Topic(href, href_list)
 	..()
 	if(busy)
 		to_chat(usr, "This device is busy.")
@@ -95,7 +95,7 @@
 	add_fingerprint(usr)
 	return
 
-/obj/machinery/keycard_auth/proc/reset()
+/obj/structure/machinery/keycard_auth/proc/reset()
 	active = 0
 	event = ""
 	screen = 1
@@ -105,9 +105,9 @@
 	event_triggered_by = null
 	event_confirmed_by = null
 
-/obj/machinery/keycard_auth/proc/broadcast_request()
+/obj/structure/machinery/keycard_auth/proc/broadcast_request()
 	icon_state = "auth_on"
-	for(var/obj/machinery/keycard_auth/KA in machines)
+	for(var/obj/structure/machinery/keycard_auth/KA in machines)
 		if(KA == src) continue
 		KA.reset()
 		spawn()
@@ -121,7 +121,7 @@
 		message_admins("[key_name(event_triggered_by)] triggered and [key_name(event_confirmed_by)] confirmed event [event]", 1)
 	reset()
 
-/obj/machinery/keycard_auth/proc/receive_request(var/obj/machinery/keycard_auth/source)
+/obj/structure/machinery/keycard_auth/proc/receive_request(var/obj/structure/machinery/keycard_auth/source)
 	if(stat & (BROKEN|NOPOWER))
 		return
 	event_source = source
@@ -136,7 +136,7 @@
 	active = 0
 	busy = 0
 
-/obj/machinery/keycard_auth/proc/trigger_event()
+/obj/structure/machinery/keycard_auth/proc/trigger_event()
 	switch(event)
 		if("Red alert")
 			set_security_level(SEC_LEVEL_RED)
@@ -155,7 +155,7 @@
 			trigger_armed_response_team(1)
 			feedback_inc("alert_keycard_auth_ert",1)
 
-/obj/machinery/keycard_auth/proc/is_ert_blocked()
+/obj/structure/machinery/keycard_auth/proc/is_ert_blocked()
 	if(config.ert_admin_call_only) return 1
 	return ticker.mode && ticker.mode.ert_disabled
 
@@ -169,7 +169,7 @@ var/global/maint_all_access = 0
 	maint_all_access = 0
 	marine_announcement("The maintenance access requirement has been readded on all airlocks.")
 
-/obj/machinery/door/airlock/allowed(mob/M)
+/obj/structure/machinery/door/airlock/allowed(mob/M)
 	if(maint_all_access && src.check_access_list(list(ACCESS_MARINE_ENGINEERING)))
 		return 1
 	return ..(M)

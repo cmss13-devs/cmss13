@@ -170,7 +170,7 @@ var/global/datum/controller/gameticker/ticker = new()
 		statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
 		for(var/obj/structure/closet/C in structure_list) //Set up special equipment for lockers and vendors, depending on gamemode
 			C.select_gamemode_equipment(mode.type)
-		for(var/obj/machinery/vending/V in machines)
+		for(var/obj/structure/machinery/vending/V in machines)
 			V.select_gamemode_equipment(mode.type)
 	return 1
 

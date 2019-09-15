@@ -1,4 +1,4 @@
-/obj/machinery/computer
+/obj/structure/machinery/computer
 	name = "computer"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	density = 1
@@ -12,27 +12,27 @@
 	var/processing = 0
 	var/exproof = 0
 
-/obj/machinery/computer/New()
+/obj/structure/machinery/computer/New()
 	..()
 	if(ticker)
 		initialize()
 	start_processing()
 
 
-/obj/machinery/computer/initialize()
+/obj/structure/machinery/computer/initialize()
 	power_change()
 
-/obj/machinery/computer/process()
+/obj/structure/machinery/computer/process()
 	if(stat & (NOPOWER|BROKEN))
 		return 0
 	return 1
 
-/obj/machinery/computer/emp_act(severity)
+/obj/structure/machinery/computer/emp_act(severity)
 	if(prob(20/severity)) set_broken()
 	..()
 
 
-/obj/machinery/computer/ex_act(severity)
+/obj/structure/machinery/computer/ex_act(severity)
 	if(exproof)
 		return
 	switch(severity)
@@ -55,7 +55,7 @@
 		else
 	return
 
-/obj/machinery/computer/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/machinery/computer/bullet_act(var/obj/item/projectile/Proj)
 	if(exproof)
 		visible_message("[Proj] ricochets off [src]!")
 		return 0
@@ -65,7 +65,7 @@
 		..()
 		return 1
 
-/obj/machinery/computer/update_icon()
+/obj/structure/machinery/computer/update_icon()
 	..()
 	icon_state = initial(icon_state)
 	// Broken
@@ -79,22 +79,22 @@
 
 
 
-/obj/machinery/computer/power_change()
+/obj/structure/machinery/computer/power_change()
 	..()
 	update_icon()
 
 
-/obj/machinery/computer/proc/set_broken()
+/obj/structure/machinery/computer/proc/set_broken()
 	stat |= BROKEN
 	update_icon()
 
-/obj/machinery/computer/proc/decode(text)
+/obj/structure/machinery/computer/proc/decode(text)
 	// Adds line breaks
 	text = replacetext(text, "\n", "<BR>")
 	return text
 
 
-/obj/machinery/computer/attackby(obj/item/I, mob/user)
+/obj/structure/machinery/computer/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/tool/screwdriver) && circuit)
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You don't know how to deconstruct [src]..."))
@@ -125,14 +125,14 @@
 		src.attack_hand(user)
 	return
 
-/obj/machinery/computer/attack_hand()
+/obj/structure/machinery/computer/attack_hand()
 	. = ..()
 	if(!.) //not broken or unpowered
 		if(ishuman(usr))
 			pick(playsound(src, 'sound/machines/computer_typing1.ogg', 5, 1), playsound(src, 'sound/machines/computer_typing2.ogg', 5, 1), playsound(src, 'sound/machines/computer_typing3.ogg', 5, 1))
 
-/obj/machinery/computer/fixer
+/obj/structure/machinery/computer/fixer
 	var/all_configs
 
-/obj/machinery/computer/fixer/New()
+/obj/structure/machinery/computer/fixer/New()
 	all_configs = config

@@ -1,5 +1,5 @@
 
-/obj/machinery/computer/station_alert
+/obj/structure/machinery/computer/station_alert
 	name = "Station Alert Computer"
 	desc = "Used to access the station's automated alert system."
 	icon_state = "atmos"
@@ -7,7 +7,7 @@
 	var/alarms = list("Fire"=list(), "Atmosphere"=list(), "Power"=list())
 
 
-/obj/machinery/computer/station_alert/attack_ai(mob/user)
+/obj/structure/machinery/computer/station_alert/attack_ai(mob/user)
 	add_fingerprint(user)
 	if(stat & (BROKEN|NOPOWER))
 		return
@@ -15,7 +15,7 @@
 	return
 
 
-/obj/machinery/computer/station_alert/attack_hand(mob/user)
+/obj/structure/machinery/computer/station_alert/attack_hand(mob/user)
 	add_fingerprint(user)
 	if(stat & (BROKEN|NOPOWER))
 		return
@@ -23,7 +23,7 @@
 	return
 
 
-/obj/machinery/computer/station_alert/interact(mob/user)
+/obj/structure/machinery/computer/station_alert/interact(mob/user)
 	usr.set_interaction(src)
 	var/dat = "<HEAD><TITLE>Current Station Alerts</TITLE><META HTTP-EQUIV='Refresh' CONTENT='10'></HEAD><BODY>\n"
 	dat += "<A HREF='?src=\ref[user];mach_close=alerts'>Close</A><br><br>"
@@ -48,13 +48,13 @@
 	onclose(user, "alerts")
 
 
-/obj/machinery/computer/station_alert/Topic(href, href_list)
+/obj/structure/machinery/computer/station_alert/Topic(href, href_list)
 	if(..())
 		return
 	return
 
 
-/obj/machinery/computer/station_alert/proc/triggerAlarm(var/class, area/A, var/O, var/alarmsource)
+/obj/structure/machinery/computer/station_alert/proc/triggerAlarm(var/class, area/A, var/O, var/alarmsource)
 	if(stat & (BROKEN))
 		return
 	var/list/L = src.alarms[class]
@@ -65,19 +65,19 @@
 			if (!(alarmsource in sources))
 				sources += alarmsource
 			return 1
-	var/obj/machinery/camera/C = null
+	var/obj/structure/machinery/camera/C = null
 	var/list/CL = null
 	if (O && istype(O, /list))
 		CL = O
 		if (CL.len == 1)
 			C = CL[1]
-	else if (O && istype(O, /obj/machinery/camera))
+	else if (O && istype(O, /obj/structure/machinery/camera))
 		C = O
 	L[A.name] = list(A, (C) ? C : O, list(alarmsource))
 	return 1
 
 
-/obj/machinery/computer/station_alert/proc/cancelAlarm(var/class, area/A as area, obj/origin)
+/obj/structure/machinery/computer/station_alert/proc/cancelAlarm(var/class, area/A as area, obj/origin)
 	if(stat & (BROKEN))
 		return
 	var/list/L = src.alarms[class]
@@ -94,7 +94,7 @@
 	return !cleared
 
 
-/obj/machinery/computer/station_alert/process()
+/obj/structure/machinery/computer/station_alert/process()
 	if(stat & (BROKEN|NOPOWER))
 		icon_state = "atmos0"
 		return

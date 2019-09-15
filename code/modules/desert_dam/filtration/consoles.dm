@@ -1,6 +1,6 @@
 var/global/river_activated = 0
 
-/obj/machinery/filtration/console
+/obj/structure/machinery/filtration/console
 	name = "console"
 	desc = "A console."
 	icon = 'icons/obj/structures/machinery/filtration.dmi'
@@ -12,7 +12,7 @@ var/global/river_activated = 0
 	var/id = null
 	var/damaged = 0
 
-/obj/machinery/filtration/console/update_icon()
+/obj/structure/machinery/filtration/console/update_icon()
 	..()
 	if(damaged)
 		icon_state = "[initial(icon_state)]-d"
@@ -22,7 +22,7 @@ var/global/river_activated = 0
 		icon_state = initial(icon_state)
 	return
 
-/obj/machinery/filtration/console/ex_act(severity)
+/obj/structure/machinery/filtration/console/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			get_broken()
@@ -38,7 +38,7 @@ var/global/river_activated = 0
 		else
 	return
 
-/obj/machinery/filtration/console/proc/get_broken()
+/obj/structure/machinery/filtration/console/proc/get_broken()
 	if(damaged)
 		return //We're already broken
 	damaged = !damaged
@@ -47,7 +47,7 @@ var/global/river_activated = 0
 	update_icon()
 	return
 
-/obj/machinery/filtration/console/attack_hand(mob/user as mob)
+/obj/structure/machinery/filtration/console/attack_hand(mob/user as mob)
 	user.set_interaction(src)
 	//var/area/A = src.loc
 	var/d1
@@ -60,7 +60,7 @@ var/global/river_activated = 0
 		user << browse(dat, "window=console")
 		onclose(user, "console")
 
-/obj/machinery/filtration/console/Topic(href, href_list)
+/obj/structure/machinery/filtration/console/Topic(href, href_list)
 	..()
 	if (usr.stat || stat & (BROKEN|NOPOWER))
 		return

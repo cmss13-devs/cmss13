@@ -592,7 +592,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 	if(!customname)
 		customname = "USCM Update"
-	for (var/obj/machinery/computer/communications/C in machines)
+	for (var/obj/structure/machinery/computer/communications/C in machines)
 		if(! (C.stat & (BROKEN|NOPOWER) ) )
 			var/obj/item/paper/P = new /obj/item/paper( C.loc )
 			P.name = "'[command_name] Update.'"
@@ -620,7 +620,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	var/input = input(usr, "This should be a message from the ship's AI.  Check with online staff before you send this. Do not use html.", "What?", "") as message|null
 	if(!input) r_FAL
 	if(ai_announcement(input))
-		for (var/obj/machinery/computer/communications/C in machines)
+		for (var/obj/structure/machinery/computer/communications/C in machines)
 			if(! (C.stat & (BROKEN|NOPOWER) ) )
 				var/obj/item/paper/P = new /obj/item/paper( C.loc )
 				P.name = "'[MAIN_AI_SYSTEM] Update.'"

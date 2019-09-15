@@ -3,7 +3,7 @@
 //All devices that link into the R&D console fall into thise type for easy identification and some shared procs.
 
 
-/obj/machinery/r_n_d
+/obj/structure/machinery/r_n_d
 	name = "R&D Device"
 	icon = 'icons/obj/structures/machinery/research.dmi'
 	density = 1
@@ -18,9 +18,9 @@
 	var/disable_wire
 	var/shock_wire
 	var/opened = 0
-	var/obj/machinery/computer/rdconsole/linked_console
+	var/obj/structure/machinery/computer/rdconsole/linked_console
 
-/obj/machinery/r_n_d/New()
+/obj/structure/machinery/r_n_d/New()
 	..()
 	wires["Red"] = 0
 	wires["Blue"] = 0
@@ -36,7 +36,7 @@
 	src.disable_wire = pick(w)
 	w -= src.disable_wire
 
-/obj/machinery/r_n_d/attack_hand(mob/user as mob)
+/obj/structure/machinery/r_n_d/attack_hand(mob/user as mob)
 	if (shocked)
 		shock(user,50)
 	if(opened)
@@ -52,7 +52,7 @@
 	return
 
 
-/obj/machinery/r_n_d/Topic(href, href_list)
+/obj/structure/machinery/r_n_d/Topic(href, href_list)
 	if(..())
 		return
 	usr.set_interaction(src)

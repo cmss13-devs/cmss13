@@ -7,7 +7,7 @@
 /area/lv624/lazarus/internal_affairs)
 "ac" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	dir = 1;
 	id = "corporate_blast";
 	layer = 3.3;
@@ -32,7 +32,7 @@
 /area/lv624/lazarus/internal_affairs)
 "ah" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
 	id = "corporate_blast";
 	layer = 3.3;
@@ -67,7 +67,7 @@
 	},
 /area/lv624/lazarus/internal_affairs)
 "an" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor{
@@ -90,7 +90,7 @@
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "ar" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/bluegrid,
@@ -99,7 +99,7 @@
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "at" = (
-/obj/machinery/door/airlock/almayer/generic/corporate{
+/obj/structure/machinery/door/airlock/almayer/generic/corporate{
 	density = 0;
 	dir = 4;
 	icon_state = "door_open";
@@ -131,7 +131,7 @@
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "ay" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
@@ -156,7 +156,7 @@
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "aB" = (
-/obj/machinery/door/airlock/almayer/generic/corporate{
+/obj/structure/machinery/door/airlock/almayer/generic/corporate{
 	density = 0;
 	dir = 1;
 	icon_state = "door_open";
@@ -166,14 +166,14 @@
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/internal_affairs)
 "aC" = (
-/obj/machinery/door/airlock/almayer/generic/corporate{
+/obj/structure/machinery/door/airlock/almayer/generic/corporate{
 	dir = 1;
 	name = "Corporate Dome"
 	},
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/internal_affairs)
 "aD" = (
-/obj/machinery/vending/cola,
+/obj/structure/machinery/vending/cola,
 /turf/open/floor{
 	tag = "icon-whiteblue";
 	icon_state = "whiteblue"
@@ -206,17 +206,17 @@
 	},
 /area/lv624/lazarus/internal_affairs)
 "aH" = (
-/obj/machinery/firealarm{
+/obj/structure/machinery/firealarm{
 	pixel_y = 28
 	},
-/obj/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor{
 	tag = "icon-whiteblue";
 	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/internal_affairs)
 "aI" = (
-/obj/machinery/power/apc{
+/obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Corporate Office APC";
 	pixel_y = 30;
@@ -228,11 +228,11 @@
 	},
 /area/lv624/lazarus/internal_affairs)
 "aJ" = (
-/obj/machinery/status_display{
+/obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
 /obj/item/folder/white,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor{
@@ -241,13 +241,13 @@
 	},
 /area/lv624/lazarus/internal_affairs)
 "aK" = (
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
 	id = "corporate_blast";
 	layer = 3.3;
 	name = "\improper Corporate Dome Blast Door"
 	},
-/obj/machinery/door/airlock/almayer/generic/corporate{
+/obj/structure/machinery/door/airlock/almayer/generic/corporate{
 	dir = 4;
 	name = "Corporate Dome"
 	},
@@ -295,7 +295,7 @@
 	},
 /area/lv624/lazarus/internal_affairs)
 "aS" = (
-/obj/machinery/light/small,
+/obj/structure/machinery/light/small,
 /turf/open/floor{
 	tag = "icon-whiteblue (NORTH)";
 	icon_state = "whiteblue";
@@ -303,7 +303,7 @@
 	},
 /area/lv624/lazarus/internal_affairs)
 "aT" = (
-/obj/machinery/door_control{
+/obj/structure/machinery/door_control{
 	id = "corporate_blast";
 	name = "Dome Lockdown";
 	pixel_y = -25
@@ -345,7 +345,7 @@
 	},
 /area/lv624/lazarus/internal_affairs)
 "aY" = (
-/obj/machinery/newscaster{
+/obj/structure/machinery/newscaster{
 	pixel_y = -28
 	},
 /turf/open/floor{
@@ -363,7 +363,7 @@
 	},
 /area/lv624/lazarus/internal_affairs)
 "ba" = (
-/obj/machinery/vending/coffee,
+/obj/structure/machinery/vending/coffee,
 /turf/open/floor{
 	tag = "icon-whiteblue (NORTH)";
 	icon_state = "whiteblue";
@@ -442,7 +442,7 @@
 	pixel_x = -12
 	},
 /obj/item/reagent_container/food/drinks/bottle/sake,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor{
@@ -462,13 +462,13 @@
 /area/lv624/lazarus/internal_affairs)
 "bn" = (
 /obj/item/poster,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "bo" = (
-/obj/machinery/door/airlock/almayer/generic/corporate{
+/obj/structure/machinery/door/airlock/almayer/generic/corporate{
 	dir = 4;
 	name = "Corporate Dome"
 	},
@@ -510,7 +510,7 @@
 /area/lv624/lazarus/internal_affairs)
 "bv" = (
 /obj/structure/table/woodentable/fancy,
-/obj/machinery/computer/crew,
+/obj/structure/machinery/computer/crew,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "bw" = (
@@ -521,7 +521,7 @@
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "bx" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor{
@@ -531,11 +531,11 @@
 	},
 /area/lv624/lazarus/internal_affairs)
 "bz" = (
-/obj/machinery/light/small,
+/obj/structure/machinery/light/small,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "bA" = (
-/obj/machinery/vending/snack,
+/obj/structure/machinery/vending/snack,
 /turf/open/floor{
 	tag = "icon-whiteblue (EAST)";
 	icon_state = "whiteblue";
@@ -549,13 +549,13 @@
 	},
 /area/lv624/lazarus/internal_affairs)
 "bD" = (
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	dir = 1;
 	id = "corporate_blast";
 	layer = 3.3;
 	name = "\improper Corporate Dome Blast Door"
 	},
-/obj/machinery/door/airlock/almayer/generic/corporate{
+/obj/structure/machinery/door/airlock/almayer/generic/corporate{
 	dir = 1;
 	name = "Corporate Dome"
 	},

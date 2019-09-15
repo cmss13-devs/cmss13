@@ -115,7 +115,7 @@
 		AddUses(1)
 		charge = 1
 
-/obj/item/device/lightreplacer/proc/ReplaceLight(var/obj/machinery/light/target, var/mob/living/U)
+/obj/item/device/lightreplacer/proc/ReplaceLight(var/obj/structure/machinery/light/target, var/mob/living/U)
 
 	if(target.status != LIGHT_OK)
 		if(CanUse(U))

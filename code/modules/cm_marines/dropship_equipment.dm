@@ -130,7 +130,7 @@
 	var/uses_ammo = FALSE //whether it uses ammo
 	var/obj/structure/ship_ammo/ammo_equipped //the ammo currently equipped.
 	var/is_weapon = FALSE //whether the equipment is a weapon usable for dropship bombardment.
-	var/obj/machinery/computer/dropship_weapons/linked_console //the weapons console of the dropship we're installed on.
+	var/obj/structure/machinery/computer/dropship_weapons/linked_console //the weapons console of the dropship we're installed on.
 	var/is_interactable = FALSE //whether they get a button when shown on the shuttle console's equipment list.
 	var/datum/shuttle/ferry/marine/linked_shuttle
 	var/screen_mode = 0 //used by the dropship console code when this equipment is selected
@@ -245,7 +245,7 @@
 	is_interactable = TRUE
 	point_cost = 500
 	var/deployment_cooldown
-	var/obj/machinery/marine_turret/premade/dropship/deployed_turret
+	var/obj/structure/machinery/marine_turret/premade/dropship/deployed_turret
 
 /obj/structure/dropship_equipment/sentry_holder/initialize()
 	if(!deployed_turret)
@@ -367,7 +367,7 @@
 	icon_state = "mg_system"
 	point_cost = 300
 	var/deployment_cooldown
-	var/obj/machinery/m56d_hmg/mg_turret/dropship/deployed_mg
+	var/obj/structure/machinery/m56d_hmg/mg_turret/dropship/deployed_mg
 
 /obj/structure/dropship_equipment/mg_holder/initialize()
 	if(!deployed_mg)
@@ -596,12 +596,12 @@
 	desc = "An electronic device linked to the dropship's camera system that lets you observe laser targets on the ground mid-flight."
 	icon_state = "laser_detector"
 	point_cost = 400
-	var/obj/machinery/computer/security/dropship/linked_cam_console
+	var/obj/structure/machinery/computer/security/dropship/linked_cam_console
 
 /obj/structure/dropship_equipment/electronics/laser_detector/update_equipment()
 	if(ship_base)
 		if(!linked_cam_console)
-			for(var/obj/machinery/computer/security/dropship/D in range(5, loc))
+			for(var/obj/structure/machinery/computer/security/dropship/D in range(5, loc))
 				linked_cam_console = D
 				break
 		icon_state = "[initial(icon_state)]_installed"
@@ -626,12 +626,12 @@
 	desc = "An electronic device linked to the dropship's camera system that lets you observe your landing zone mid-flight."
 	icon_state = "lz_detector"
 	point_cost = 400
-	var/obj/machinery/computer/security/dropship/linked_cam_console
+	var/obj/structure/machinery/computer/security/dropship/linked_cam_console
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/update_equipment()
 	if(ship_base)
 		if(!linked_cam_console)
-			for(var/obj/machinery/computer/security/dropship/D in range(5, loc))
+			for(var/obj/structure/machinery/computer/security/dropship/D in range(5, loc))
 				linked_cam_console = D
 				break
 		icon_state = "[initial(icon_state)]_installed"

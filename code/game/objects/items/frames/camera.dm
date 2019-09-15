@@ -93,7 +93,7 @@
 				input = strip_html(input(usr, "How would you like to name the camera?", "Set Camera Name", temptag))
 
 				state = 4
-				var/obj/machinery/camera/C = new(src.loc)
+				var/obj/structure/machinery/camera/C = new(src.loc)
 				src.loc = C
 				C.assembly = src
 

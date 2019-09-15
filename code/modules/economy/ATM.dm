@@ -14,7 +14,7 @@ log transactions
 
 /obj/item/card/id/var/money = 2000
 
-/obj/machinery/atm
+/obj/structure/machinery/atm
 	name = "W-Y Automatic Teller Machine"
 	desc = "For all your monetary needs!"
 	icon = 'icons/obj/structures/machinery/terminals.dmi'
@@ -34,7 +34,7 @@ log transactions
 	var/view_screen = NO_SCREEN
 	var/datum/effect_system/spark_spread/spark_system
 
-/obj/machinery/atm/New()
+/obj/structure/machinery/atm/New()
 	..()
 	machine_id = "[station_name] RT #[num_financial_terminals++]"
 	spark_system = new /datum/effect_system/spark_spread
@@ -42,7 +42,7 @@ log transactions
 	spark_system.attach(src)
 	start_processing()
 
-/obj/machinery/atm/process()
+/obj/structure/machinery/atm/process()
 	if(stat & NOPOWER)
 		return
 
@@ -63,7 +63,7 @@ log transactions
 			playsound(loc, 'sound/items/polaroid2.ogg', 15, 1)
 		break
 
-/obj/machinery/atm/attackby(obj/item/I as obj, mob/user as mob)
+/obj/structure/machinery/atm/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/card))
 		var/obj/item/card/id/idcard = I
 		if(!held_card)
@@ -97,13 +97,13 @@ log transactions
 	else
 		..()
 
-/obj/machinery/atm/attack_hand(mob/user as mob)
+/obj/structure/machinery/atm/attack_hand(mob/user as mob)
 	if(issilicon(user))
 		to_chat(user, SPAN_DANGER("[htmlicon(src, usr)] Artificial unit recognized. Artificial units do not currently receive monetary compensation, as per Weyland Yutani regulation #1005."))
 		return
 	if(get_dist(src,user) <= 1)
 
-		//js replicated from obj/machinery/computer/card
+		//js replicated from obj/structure/machinery/computer/card
 		var/dat = "<h1>Weyland Yutani Automatic Teller Machine</h1>"
 		dat += "For all your monetary needs!<br>"
 		dat += "<i>This terminal is</i> [machine_id]. <i>Report this code when contacting Weyland Yutani IT Support</i><br/>"
@@ -192,7 +192,7 @@ log transactions
 	else
 		user << browse(null,"window=atm")
 
-/obj/machinery/atm/Topic(var/href, var/href_list)
+/obj/structure/machinery/atm/Topic(var/href, var/href_list)
 	if(href_list["choice"])
 		switch(href_list["choice"])
 			if("transfer")
@@ -416,7 +416,7 @@ log transactions
 	src.attack_hand(usr)
 
 //stolen wholesale and then edited a bit from newscasters, which are awesome and by Agouri
-/obj/machinery/atm/proc/scan_user(mob/living/carbon/human/human_user as mob)
+/obj/structure/machinery/atm/proc/scan_user(mob/living/carbon/human/human_user as mob)
 	if(!authenticated_account)
 		if(human_user.wear_id)
 			var/obj/item/card/id/I
@@ -442,7 +442,7 @@ log transactions
 					view_screen = NO_SCREEN
 
 // put the currently held id on the ground or in the hand of the user
-/obj/machinery/atm/proc/release_held_id(mob/living/carbon/human/human_user as mob)
+/obj/structure/machinery/atm/proc/release_held_id(mob/living/carbon/human/human_user as mob)
 	if(!held_card)
 		return
 
@@ -454,7 +454,7 @@ log transactions
 	held_card = null
 
 
-/obj/machinery/atm/proc/spawn_ewallet(var/sum, loc, mob/living/carbon/human/human_user as mob)
+/obj/structure/machinery/atm/proc/spawn_ewallet(var/sum, loc, mob/living/carbon/human/human_user as mob)
 	var/obj/item/spacecash/ewallet/E = new /obj/item/spacecash/ewallet(loc)
 	if(ishuman(human_user) && !human_user.get_active_hand())
 		human_user.put_in_hands(E)

@@ -54,12 +54,12 @@
 // *** Upload data from a terminal ***
 // --------------------------------------------
 /datum/cm_objective/retrieve_data/terminal
-	var/obj/machinery/computer/objective/data_source
+	var/obj/structure/machinery/computer/objective/data_source
 	priority = OBJECTIVE_HIGH_VALUE
 	objective_flags = OBJ_FAILABLE | OBJ_REQUIRES_POWER | OBJ_REQUIRES_COMMS
 	prerequisites_required = PREREQUISITES_MAJORITY
 
-/datum/cm_objective/retrieve_data/terminal/New(var/obj/machinery/computer/objective/D)
+/datum/cm_objective/retrieve_data/terminal/New(var/obj/structure/machinery/computer/objective/D)
 	data_source = D
 	initial_location = get_area(data_source)
 	..()
@@ -96,8 +96,8 @@
 
 /datum/cm_objective/retrieve_data/disk/complete()
 	if(..())
-		if(istype(disk.loc,/obj/machinery/computer/disk_reader))
-			var/obj/machinery/computer/disk_reader/reader = disk.loc
+		if(istype(disk.loc,/obj/structure/machinery/computer/disk_reader))
+			var/obj/structure/machinery/computer/disk_reader/reader = disk.loc
 			reader.visible_message("\The [reader] pings softly as the upload finishes and ejects the disk.")
 			playsound(reader, 'sound/machines/ping.ogg', 25, 1)
 			disk.forceMove(reader.loc)
@@ -111,9 +111,9 @@
 
 /datum/cm_objective/retrieve_data/disk/data_is_avaliable()
 	. = ..()
-	if(!istype(disk.loc,/obj/machinery/computer/disk_reader))
+	if(!istype(disk.loc,/obj/structure/machinery/computer/disk_reader))
 		return 0
-	var/obj/machinery/computer/disk_reader/reader = disk.loc
+	var/obj/structure/machinery/computer/disk_reader/reader = disk.loc
 	if(!reader.powered())
 		return 0
 	if(reader.z != MAIN_SHIP_Z_LEVEL)
@@ -168,7 +168,7 @@
 // --------------------------------------------
 // *** Upload data from a terminal ***
 // --------------------------------------------
-/obj/machinery/computer/objective
+/obj/structure/machinery/computer/objective
 	name = "data terminal"
 	desc = "A computer data terminal with an incomprehensible label."
 	var/uploading = 0
@@ -176,18 +176,18 @@
 	unacidable = 1
 	var/datum/cm_objective/retrieve_data/terminal/objective
 
-/obj/machinery/computer/objective/New()
+/obj/structure/machinery/computer/objective/New()
 	..()
 	var/letters = list("Alpha","Beta","Gamma","Delta","Epsilon","Zeta","Eta","Theta","Iota","Kappa","Lambda","Mu","Nu","Xi","Omicron","Pi","Rho","Sigma","Tau","Upsilon","Phi","Chi","Psi","Omega")
 	name = "data terminal [pick(letters)]-[rand(100,999)]"
 	objective = new /datum/cm_objective/retrieve_data/terminal(src)
 
-/obj/machinery/computer/objective/Dispose()
+/obj/structure/machinery/computer/objective/Dispose()
 	if(objective)
 		objective.fail()
 	..()
 
-/obj/machinery/computer/objective/attack_hand(mob/living/user)
+/obj/structure/machinery/computer/objective/attack_hand(mob/living/user)
 	if(!powered())
 		to_chat(user, SPAN_WARNING("This terminal has no power!"))
 		return 0
@@ -223,14 +223,14 @@
 // --------------------------------------------
 // *** Upload data from an inserted disk ***
 // --------------------------------------------
-/obj/machinery/computer/disk_reader
+/obj/structure/machinery/computer/disk_reader
 	name = "universal disk reader"
 	desc = "A console able to read any format of disk known to man."
 	var/obj/item/disk/objective/disk
 	icon_state = "medlaptop"
 	unacidable = 1
 
-/obj/machinery/computer/disk_reader/attack_hand(mob/living/user)
+/obj/structure/machinery/computer/disk_reader/attack_hand(mob/living/user)
 	if(isXeno(user))
 		return
 	if(disk)
@@ -241,7 +241,7 @@
 				return
 		to_chat(user, SPAN_NOTICE("No data is being uploaded."))
 
-/obj/machinery/computer/disk_reader/attackby(obj/item/W, mob/living/user)
+/obj/structure/machinery/computer/disk_reader/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/disk/objective))
 		if(istype(disk))
 			to_chat(user, SPAN_WARNING("There is a disk in the drive being uploaded already!"))

@@ -9,7 +9,7 @@
 //  Date: 01/September/2010
 //  Programmer: Veryinky
 /////////////////////////////////////////////////////////////////////////////////////////////////
-/obj/machinery/door_timer
+/obj/structure/machinery/door_timer
 	name = "Door Timer"
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "frame"
@@ -21,21 +21,21 @@
 	var/releasetime = 0		// when world.timeofday reaches it - release the prisoner
 	var/timing = 1    		// boolean, true/1 timer is on, false/0 means it's not timing
 	var/picture_state		// icon_state of alert picture, if not displaying text/numbers
-	var/list/obj/machinery/targets = list()
+	var/list/obj/structure/machinery/targets = list()
 	var/timetoset = 0		// Used to set releasetime upon starting the timer
 
 	maptext_height = 26
 	maptext_width = 32
 
-/obj/machinery/door_timer/New()
+/obj/structure/machinery/door_timer/New()
 	..()
 
 	spawn(20)
-		for(var/obj/machinery/door/window/brigdoor/M in machines)
+		for(var/obj/structure/machinery/door/window/brigdoor/M in machines)
 			if (M.id == src.id)
 				targets += M
 
-		for(var/obj/machinery/flasher/F in machines)
+		for(var/obj/structure/machinery/flasher/F in machines)
 			if(F.id == src.id)
 				targets += F
 
@@ -53,7 +53,7 @@
 //Main door timer loop, if it's timing and time is >0 reduce time by 1.
 // if it's less than 0, open door, reset timer
 // update the door_timer window and the icon
-/obj/machinery/door_timer/process()
+/obj/structure/machinery/door_timer/process()
 
 	if(stat & (NOPOWER|BROKEN))	return
 	if(src.timing)
@@ -79,7 +79,7 @@
 
 
 // has the door power situation changed, if so update icon.
-/obj/machinery/door_timer/power_change()
+/obj/structure/machinery/door_timer/power_change()
 	..()
 	update_icon()
 	return
@@ -89,13 +89,13 @@
 // linked door is open/closed (by density) then opens it/closes it.
 
 // Closes and locks doors, power check
-/obj/machinery/door_timer/proc/timer_start()
+/obj/structure/machinery/door_timer/proc/timer_start()
 	if(stat & (NOPOWER|BROKEN))	return 0
 
 	// Set releasetime
 	releasetime = world.timeofday + timetoset
 
-	for(var/obj/machinery/door/window/brigdoor/door in targets)
+	for(var/obj/structure/machinery/door/window/brigdoor/door in targets)
 		if(door.density)	continue
 		spawn(0)
 			door.close()
@@ -110,13 +110,13 @@
 
 
 // Opens and unlocks doors, power check
-/obj/machinery/door_timer/proc/timer_end()
+/obj/structure/machinery/door_timer/proc/timer_end()
 	if(stat & (NOPOWER|BROKEN))	return 0
 
 	// Reset releasetime
 	releasetime = 0
 
-	for(var/obj/machinery/door/window/brigdoor/door in targets)
+	for(var/obj/structure/machinery/door/window/brigdoor/door in targets)
 		if(!door.density)	continue
 		spawn(0)
 			door.open()
@@ -131,13 +131,13 @@
 
 
 // Check for releasetime timeleft
-/obj/machinery/door_timer/proc/timeleft()
+/obj/structure/machinery/door_timer/proc/timeleft()
 	. = (releasetime - world.timeofday)/10
 	if(. < 0)
 		. = 0
 
 // Set timetoset
-/obj/machinery/door_timer/proc/timeset(var/seconds)
+/obj/structure/machinery/door_timer/proc/timeset(var/seconds)
 	timetoset = seconds * 10
 
 	if(timetoset <= 0)
@@ -146,7 +146,7 @@
 	return
 
 //Allows AIs to use door_timer, see human attack_hand function below
-/obj/machinery/door_timer/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/door_timer/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
 
@@ -154,7 +154,7 @@
 //Opens dialog window when someone clicks on door timer
 // Allows altering timer and the timing boolean.
 // Flasher activation limited to 150 seconds
-/obj/machinery/door_timer/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/door_timer/attack_hand(var/mob/user as mob)
 	if(..())
 		return
 
@@ -194,7 +194,7 @@
 	dat += "<a href='?src=\ref[src];tp=-60'>-</a> <a href='?src=\ref[src];tp=-1'>-</a> <a href='?src=\ref[src];tp=1'>+</a> <A href='?src=\ref[src];tp=60'>+</a><br/>"
 
 	// Mounted flash controls
-	for(var/obj/machinery/flasher/F in targets)
+	for(var/obj/structure/machinery/flasher/F in targets)
 		if(F.last_flash && (F.last_flash + 150) > world.time)
 			dat += "<br/><A href='?src=\ref[src];fc=1'>Flash Charging</A>"
 		else
@@ -215,7 +215,7 @@
 //  "fc" activates flasher
 // 	"change" resets the timer to the timetoset amount while the timer is counting down
 // Also updates dialog window and timer icon
-/obj/machinery/door_timer/Topic(href, href_list)
+/obj/structure/machinery/door_timer/Topic(href, href_list)
 	if(..())
 		return 0
 	if(!src.allowed(usr))
@@ -241,7 +241,7 @@
 			timeset(addtime)
 
 		if(href_list["fc"])
-			for(var/obj/machinery/flasher/F in targets)
+			for(var/obj/structure/machinery/flasher/F in targets)
 				F.flash()
 
 		if(href_list["change"])
@@ -258,7 +258,7 @@
 // if NOPOWER, display blank
 // if BROKEN, display blue screen of death icon AI uses
 // if timing=true, run update display function
-/obj/machinery/door_timer/update_icon()
+/obj/structure/machinery/door_timer/update_icon()
 	if(stat & (NOPOWER))
 		icon_state = "frame"
 		return
@@ -278,7 +278,7 @@
 
 
 // Adds an icon in case the screen is broken/off, stolen from status_display.dm
-/obj/machinery/door_timer/proc/set_picture(var/state)
+/obj/structure/machinery/door_timer/proc/set_picture(var/state)
 	picture_state = state
 	overlays.Cut()
 	overlays += image('icons/obj/structures/machinery/status_display.dmi', icon_state=picture_state)
@@ -286,7 +286,7 @@
 
 //Checks to see if there's 1 line or 2, adds text-icons-numbers/letters over display
 // Stolen from status_display
-/obj/machinery/door_timer/proc/update_display(var/line1, var/line2)
+/obj/structure/machinery/door_timer/proc/update_display(var/line1, var/line2)
 	var/new_text = {"<div style="font-size:'5pt'; color:'#09f'; font:'Arial Black';text-align:center;" valign="top">[line1]<br>[line2]</div>"}
 	if(maptext != new_text)
 		maptext = new_text
@@ -294,7 +294,7 @@
 
 //Actual string input to icon display for loop, with 5 pixel x offsets for each letter.
 //Stolen from status_display
-/obj/machinery/door_timer/proc/texticon(var/tn, var/px = 0, var/py = 0)
+/obj/structure/machinery/door_timer/proc/texticon(var/tn, var/px = 0, var/py = 0)
 	var/image/I = image('icons/obj/structures/machinery/status_display.dmi', "blank")
 	var/len = lentext(tn)
 
@@ -309,26 +309,26 @@
 	return I
 
 
-/obj/machinery/door_timer/cell_1
+/obj/structure/machinery/door_timer/cell_1
 	name = "Cell 1"
 	id = "Cell 1"
 
-/obj/machinery/door_timer/cell_2
+/obj/structure/machinery/door_timer/cell_2
 	name = "Cell 2"
 	id = "Cell 2"
 
-/obj/machinery/door_timer/cell_3
+/obj/structure/machinery/door_timer/cell_3
 	name = "Cell 3"
 	id = "Cell 3"
 
-/obj/machinery/door_timer/cell_4
+/obj/structure/machinery/door_timer/cell_4
 	name = "Cell 4"
 	id = "Cell 4"
 
-/obj/machinery/door_timer/cell_5
+/obj/structure/machinery/door_timer/cell_5
 	name = "Cell 5"
 	id = "Cell 5"
 
-/obj/machinery/door_timer/cell_6
+/obj/structure/machinery/door_timer/cell_6
 	name = "Cell 6"
 	id = "Cell 6"

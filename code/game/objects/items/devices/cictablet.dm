@@ -428,7 +428,7 @@
         if("selectlz")
             if(!ticker.mode.active_lz)
                 var/lz_choices = list()
-                for(var/obj/machinery/computer/shuttle_control/console in machines)
+                for(var/obj/structure/machinery/computer/shuttle_control/console in machines)
                     if(console.z == 1 && !console.onboard)
                         lz_choices += console
                 var/new_lz = input(usr, "Choose the primary LZ for this operation", "Operation Staging")  as null|anything in lz_choices

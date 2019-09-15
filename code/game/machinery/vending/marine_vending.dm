@@ -3,7 +3,7 @@
 
 ///******MARINE VENDOR******/
 
-/obj/machinery/vending/marine
+/obj/structure/machinery/vending/marine
 	name = "ColMarTech Automated Weapons rack"
 	desc = "A automated weapon rack hooked up to a colossal storage of standard-issue weapons."
 	icon_state = "armory"
@@ -19,7 +19,7 @@
 	premium = list()
 	prices = list()
 
-/obj/machinery/vending/marine/proc/populate_product_list(var/scale)
+/obj/structure/machinery/vending/marine/proc/populate_product_list(var/scale)
 	//Forcefully reset the product list
 	product_records = list()
 
@@ -60,7 +60,7 @@
 	build_inventory(contraband, 1)
 	build_inventory(premium, 0, 1)
 
-/obj/machinery/vending/marine/select_gamemode_equipment(gamemode)
+/obj/structure/machinery/vending/marine/select_gamemode_equipment(gamemode)
 	var/products2[]
 	switch(map_tag)
 		if(MAP_ICE_COLONY)
@@ -69,16 +69,16 @@
 							)
 	build_inventory(products2)
 
-/obj/machinery/vending/marine/New()
+/obj/structure/machinery/vending/marine/New()
 	..()
 	populate_product_list(1)
 	marine_vendors.Add(src)
 
-/obj/machinery/vending/marine/Dispose()
+/obj/structure/machinery/vending/marine/Dispose()
 	. = ..()
 	marine_vendors.Remove(src)
 
-/obj/machinery/vending/marine/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/vending/marine/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/weapon/gun))
 		stock(W, user)
 		return TRUE
@@ -87,7 +87,7 @@
 		return TRUE
 	. = ..()
 
-/obj/machinery/vending/marine/ex_act(severity)
+/obj/structure/machinery/vending/marine/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
@@ -95,7 +95,7 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
 
-/obj/machinery/vending/marine/cargo_guns
+/obj/structure/machinery/vending/marine/cargo_guns
 	name = "\improper ColMarTech automated armaments vendor"
 	desc = "A automated rack hooked up to a small supply of various firearms and explosives."
 	hacking_safety = 1
@@ -106,7 +106,7 @@
 	premium = list()
 
 
-/obj/machinery/vending/marine/cargo_guns/populate_product_list(var/scale)
+/obj/structure/machinery/vending/marine/cargo_guns/populate_product_list(var/scale)
 	//Forcefully reset the product list
 	product_records = list()
 
@@ -187,9 +187,9 @@
 	//Rebuild the vendor's inventory to make our changes apply
 	build_inventory(products)
 
-/obj/machinery/vending/marine/cargo_guns/wo
+/obj/structure/machinery/vending/marine/cargo_guns/wo
 
-/obj/machinery/vending/marine/cargo_guns/wo/populate_product_list(var/scale)
+/obj/structure/machinery/vending/marine/cargo_guns/wo/populate_product_list(var/scale)
 	//Forcefully reset the product list
 	product_records = list()
 
@@ -239,19 +239,19 @@
 
 	premium = list()
 
-/obj/machinery/vending/marine/cargo_guns/select_gamemode_equipment(gamemode)
+/obj/structure/machinery/vending/marine/cargo_guns/select_gamemode_equipment(gamemode)
 	return
 
-/obj/machinery/vending/marine/cargo_guns/New()
+/obj/structure/machinery/vending/marine/cargo_guns/New()
 	..()
 	cargo_guns_vendors.Add(src)
 	marine_vendors.Remove(src)
 
-/obj/machinery/vending/marine/cargo_guns/Dispose()
+/obj/structure/machinery/vending/marine/cargo_guns/Dispose()
 	. = ..()
 	cargo_guns_vendors.Remove(src)
 
-/obj/machinery/vending/marine/cargo_ammo
+/obj/structure/machinery/vending/marine/cargo_ammo
 	name = "\improper ColMarTech automated munition vendor"
 	desc = "A automated rack hooked up to a small supply of ammo magazines."
 	hacking_safety = 1
@@ -261,7 +261,7 @@
 	contraband = list()
 	premium = list()
 
-/obj/machinery/vending/marine/cargo_ammo/populate_product_list(var/scale)
+/obj/structure/machinery/vending/marine/cargo_ammo/populate_product_list(var/scale)
 	//Forcefully reset the product list
 	product_records = list()
 
@@ -318,9 +318,9 @@
 	//Rebuild the vendor's inventory to make our changes apply
 	build_inventory(products)
 
-/obj/machinery/vending/marine/cargo_ammo/wo
+/obj/structure/machinery/vending/marine/cargo_ammo/wo
 
-/obj/machinery/vending/marine/cargo_ammo/wo/populate_product_list(var/scale)
+/obj/structure/machinery/vending/marine/cargo_ammo/wo/populate_product_list(var/scale)
 	//Forcefully reset the product list
 	product_records = list()
 
@@ -352,24 +352,24 @@
 		/obj/item/ammo_magazine/smartgun = round(scale * 5)
 	)
 
-/obj/machinery/vending/marine/cargo_ammo/select_gamemode_equipment(gamemode)
+/obj/structure/machinery/vending/marine/cargo_ammo/select_gamemode_equipment(gamemode)
 	return
 
-/obj/machinery/vending/marine/cargo_ammo/New()
+/obj/structure/machinery/vending/marine/cargo_ammo/New()
 	..()
 	cargo_ammo_vendors.Add(src)
 	marine_vendors.Remove(src)
 
-/obj/machinery/vending/marine/cargo_ammo/Dispose()
+/obj/structure/machinery/vending/marine/cargo_ammo/Dispose()
 	. = ..()
 	cargo_ammo_vendors.Remove(src)
 
-/obj/machinery/vending/marine/cargo_ammo/squad
+/obj/structure/machinery/vending/marine/cargo_ammo/squad
 	name = "\improper ColMarTech automated munition squad vendor"
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
 
-/obj/machinery/vending/marine/cargo_ammo/squad/populate_product_list(var/scale)
+/obj/structure/machinery/vending/marine/cargo_ammo/squad/populate_product_list(var/scale)
 	product_records = list()
 
 	products = list(
@@ -396,7 +396,7 @@
 
 
 //MARINE FOOD VENDOR APOPHIS775 23DEC2017
-/obj/machinery/vending/marineFood
+/obj/structure/machinery/vending/marineFood
 	name = "\improper Marine Food and Drinks Vendor"
 	desc = "Standard Issue Food and Drinks Vendor, containing standard military food and drinks."
 	icon_state = "generic"
@@ -423,7 +423,7 @@
 
 
 //MARINE MEDICAL VENDOR -APOPHIS775 31JAN2017
-/obj/machinery/vending/MarineMed
+/obj/structure/machinery/vending/MarineMed
 	name = "\improper MarineMed"
 	desc = "Marine Medical Drug Dispenser - Provided by Weyland-Yutani Pharmaceuticals Division(TM)"
 	icon_state = "marinemed"
@@ -460,7 +460,7 @@
 
 	contraband = list()
 
-/obj/machinery/vending/MarineMed/antag
+/obj/structure/machinery/vending/MarineMed/antag
 	name = "\improper Medical Supply Vendor"
 	desc = "Medical vending machine, dispensing various pieces of equipment for both doctors and medics."
 	product_ads = ""
@@ -493,7 +493,7 @@
 	contraband = list()
 
 //NEW BLOOD VENDOR CODE - APOPHIS775 22JAN2015
-/obj/machinery/vending/MarineMed/Blood
+/obj/structure/machinery/vending/MarineMed/Blood
 	name = "\improper MM Blood Dispenser"
 	desc = "Marine Med brand Blood Pack Dispensery"
 	icon_state = "bloodvendor"
@@ -506,7 +506,7 @@
 					/obj/item/reagent_container/blood/empty = 10)
 	contraband = list()
 
-/obj/machinery/vending/MarineMed/Blood/build_inventory(productlist[])
+/obj/structure/machinery/vending/MarineMed/Blood/build_inventory(productlist[])
 	. = ..()
 	var/temp_list[] = productlist
 	var/obj/item/reagent_container/blood/temp_path
@@ -520,10 +520,10 @@
 			temp_list -= R.product_path
 			if(!temp_list.len) break
 
-/obj/machinery/vending/MarineMed/Blood/antag
+/obj/structure/machinery/vending/MarineMed/Blood/antag
 	req_access = list(ACCESS_ILLEGAL_PIRATE)
 
-/obj/machinery/vending/marine_medic
+/obj/structure/machinery/vending/marine_medic
 	name = "\improper ColMarTech Medic Vendor"
 	desc = "A marine medic equipment vendor"
 	product_ads = "They were gonna die anyway.;Let's get space drugged!"
@@ -553,7 +553,7 @@
 	contraband = list(/obj/item/reagent_container/blood/OMinus = 1)
 
 
-/obj/machinery/vending/shared_vending/marine_engi
+/obj/structure/machinery/vending/shared_vending/marine_engi
 	name = "\improper ColMarTech Engineer System Vendor"
 	desc = "A marine engineering system vendor"
 	product_ads = "If it breaks, wrench it!;If it wrenches, weld it!;If it snips, snip it!"
@@ -575,7 +575,7 @@
 				)
 	prices = list()
 
-/obj/machinery/vending/shared_vending/marine_engi/New()
+/obj/structure/machinery/vending/shared_vending/marine_engi/New()
 
 	if(shared_products.len == 0)
 		var/i
@@ -584,7 +584,7 @@
 			shared_products.Add(new /datum/data/vending_product())
 	..()
 
-/obj/machinery/vending/marine_smartgun
+/obj/structure/machinery/vending/marine_smartgun
 	name = "\improper ColMarTech Smartgun Vendor"
 	desc = "A marine smartgun equipment vendor"
 	hacking_safety = 1
@@ -606,7 +606,7 @@
 	premium = list()
 	prices = list()
 
-/obj/machinery/vending/marine_leader
+/obj/structure/machinery/vending/marine_leader
 	name = "\improper ColMarTech Leader Vendor"
 	desc = "A marine leader equipment vendor"
 	hacking_safety = 1
@@ -636,7 +636,7 @@
 						/obj/item/storage/box/zipcuffs = 2
 					)
 
-/obj/machinery/vending/marine_leader/select_gamemode_equipment(gamemode)
+/obj/structure/machinery/vending/marine_leader/select_gamemode_equipment(gamemode)
 	var/products2[]
 	switch(map_tag)
 		if(MAP_ICE_COLONY)
@@ -653,7 +653,7 @@
 
 
 
-/obj/machinery/vending/attachments
+/obj/structure/machinery/vending/attachments
 	name = "\improper Armat Systems Attachments Vendor"
 	desc = "A subsidiary-owned vendor of weapon attachments. This can only be accessed by the Requisitions Officer and Cargo Techs."
 	hacking_safety = 1
@@ -666,7 +666,7 @@
 	products = list()
 
 
-/obj/machinery/vending/attachments/proc/populate_product_list(scale)
+/obj/structure/machinery/vending/attachments/proc/populate_product_list(scale)
 	//Forcefully reset the product list
 	product_records = list()
 
@@ -713,16 +713,16 @@
 	//Rebuild the vendor's inventory to make our changes apply
 	build_inventory(products)
 
-/obj/machinery/vending/attachments/New()
+/obj/structure/machinery/vending/attachments/New()
 	..()
 	attachment_vendors.Add(src)
 
-/obj/machinery/vending/attachments/Dispose()
+/obj/structure/machinery/vending/attachments/Dispose()
 	. = ..()
 	attachment_vendors.Remove(src)
 
 // Req's diagonal vending
-/obj/machinery/vending/attachments/req/release_item(datum/data/vending_product/R, delay_vending = 0, dump_product = 0)
+/obj/structure/machinery/vending/attachments/req/release_item(datum/data/vending_product/R, delay_vending = 0, dump_product = 0)
 	set waitfor = 0
 	if(delay_vending)
 		use_power(vend_power_usage)
@@ -736,7 +736,7 @@
 	else
 		. = new R.product_path(get_turf(src))
 
-/obj/machinery/vending/uniform_supply
+/obj/structure/machinery/vending/uniform_supply
 	name = "\improper ColMarTech surplus uniform vendor"
 	desc = "A automated weapon rack hooked up to a colossal storage of uniforms"
 	icon_state = "uniform_marine"
@@ -768,7 +768,7 @@
 
 	prices = list()
 
-/obj/machinery/vending/uniform_supply/New()
+/obj/structure/machinery/vending/uniform_supply/New()
 	..()
 	var/products2 = list(
 		/obj/item/device/radio/headset/almayer = 10,
@@ -800,6 +800,6 @@
 	marine_vendors.Add(src)
 
 
-/obj/machinery/vending/uniform_supply/Dispose()
+/obj/structure/machinery/vending/uniform_supply/Dispose()
 	. = ..()
 	marine_vendors.Remove(src)

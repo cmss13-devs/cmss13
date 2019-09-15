@@ -614,8 +614,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 				if(W.damage <= 0 && W.created + MINUTES_2 <= world.time)	// sped up healing due to cryo magics
 					wounds -= W
 					wound_disappeared = TRUE
-					if(istype(owner.loc, /obj/machinery/atmospherics/unary/cryo_cell))	// check in case they cheesed the location
-						var/obj/machinery/atmospherics/unary/cryo_cell/cell = owner.loc
+					if(istype(owner.loc, /obj/structure/machinery/atmospherics/unary/cryo_cell))	// check in case they cheesed the location
+						var/obj/structure/machinery/atmospherics/unary/cryo_cell/cell = owner.loc
 						cell.display_message("internal bleeding is")
 
 		if(owner.reagents.get_reagent_amount("thwei") >= 0.05) //Note: This used to turn internal wounds into external wounds, for QC's effect

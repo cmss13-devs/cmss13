@@ -12,7 +12,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 
 //Main cryopod console.
 
-/obj/machinery/computer/cryopod
+/obj/structure/machinery/computer/cryopod
 	name = "hypersleep bay console"
 	desc = "A large console controlling the ship's hypersleep bay. Most of the options are disabled and locked, although it allows recovery of items from long-term hypersleeping crew."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
@@ -23,31 +23,31 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 	var/cryotype = "REQ"
 	var/mode = null
 
-/obj/machinery/computer/cryopod/medical
+/obj/structure/machinery/computer/cryopod/medical
 	cryotype = "Med"
 
-/obj/machinery/computer/cryopod/brig
+/obj/structure/machinery/computer/cryopod/brig
 	cryotype = "MP"
 
-/obj/machinery/computer/cryopod/eng
+/obj/structure/machinery/computer/cryopod/eng
 	cryotype = "Eng"
 
-/obj/machinery/computer/cryopod/alpha
+/obj/structure/machinery/computer/cryopod/alpha
 	cryotype = "Alpha"
 
-/obj/machinery/computer/cryopod/bravo
+/obj/structure/machinery/computer/cryopod/bravo
 	cryotype = "Bravo"
 
-/obj/machinery/computer/cryopod/charlie
+/obj/structure/machinery/computer/cryopod/charlie
 	cryotype = "Charlie"
 
-/obj/machinery/computer/cryopod/delta
+/obj/structure/machinery/computer/cryopod/delta
 	cryotype = "Delta"
 
-/obj/machinery/computer/cryopod/attack_ai()
+/obj/structure/machinery/computer/cryopod/attack_ai()
 	src.attack_hand()
 
-/obj/machinery/computer/cryopod/attack_hand(mob/user = usr)
+/obj/structure/machinery/computer/cryopod/attack_hand(mob/user = usr)
 	if(stat & (NOPOWER|BROKEN))
 		return
 
@@ -69,7 +69,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 	user << browse(dat, "window=cryopod_console")
 	onclose(user, "cryopod_console")
 
-/obj/machinery/computer/cryopod/Topic(href, href_list)
+/obj/structure/machinery/computer/cryopod/Topic(href, href_list)
 
 	//if(..())
 	//	return
@@ -157,7 +157,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 	..()
 
 //Cryopods themselves.
-/obj/machinery/cryopod
+/obj/structure/machinery/cryopod
 	name = "hypersleep chamber"
 	desc = "A large automated capsule with LED displays intended to put anyone inside into 'hypersleep', a form of non-cryogenic statis used on most ships, linked to a long-term hypersleep bay on a lower level."
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
@@ -171,11 +171,11 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 	var/time_entered = 0 //Used to keep track of the safe period.
 	var/obj/item/device/radio/intercom/announce //Intercom for cryo announcements
 
-/obj/machinery/cryopod/right
+/obj/structure/machinery/cryopod/right
 	orient_right = 1
 	icon_state = "body_scanner_0-r"
 
-/obj/machinery/cryopod/New()
+/obj/structure/machinery/cryopod/New()
 
 	announce = new /obj/item/device/radio/intercom(src)
 
@@ -186,7 +186,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 	..()
 
 //Lifted from Unity stasis.dm and refactored. ~Zuhayr
-/obj/machinery/cryopod/process()
+/obj/structure/machinery/cryopod/process()
 	if(occupant)
 		//Allow a ten minute gap between entering the pod and actually despawning.
 		if(world.time - time_entered < time_till_despawn)
@@ -409,7 +409,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 			stop_processing()
 
 
-/obj/machinery/cryopod/attackby(obj/item/W, mob/living/user)
+/obj/structure/machinery/cryopod/attackby(obj/item/W, mob/living/user)
 
 	if(istype(W, /obj/item/grab))
 		if(isXeno(user)) return
@@ -469,7 +469,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 			//Despawning occurs when process() is called with an occupant without a client.
 			add_fingerprint(M)
 
-/obj/machinery/cryopod/verb/eject()
+/obj/structure/machinery/cryopod/verb/eject()
 
 	set name = "Eject Pod"
 	set category = "Object"
@@ -498,7 +498,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 	add_fingerprint(usr)
 	return
 
-/obj/machinery/cryopod/verb/move_inside()
+/obj/structure/machinery/cryopod/verb/move_inside()
 	set name = "Enter Pod"
 	set category = "Object"
 	set src in oview(1)
@@ -543,7 +543,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 
 	return
 
-/obj/machinery/cryopod/proc/go_out()
+/obj/structure/machinery/cryopod/proc/go_out()
 
 	if(!occupant)
 		return

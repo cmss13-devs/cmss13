@@ -84,12 +84,12 @@
 			for(var/obj/structure/grille/G in next_turf)
 				G.ex_act(EXPLOSION_THRESHOLD_MEDIUM)
 				sleep(5)
-			for(var/obj/machinery/door/airlock/A in next_turf)
+			for(var/obj/structure/machinery/door/airlock/A in next_turf)
 				if(A.welded || A.locked) //Snowflakey code to take in account bolts and welding
 					break
 				A.open()
 				sleep(5)
-			for(var/obj/machinery/door/D in next_turf)
+			for(var/obj/structure/machinery/door/D in next_turf)
 				D.open()
 				sleep(5)
 			if(!next_turf.CanPass(src, next_turf)) //Once we cleared everything we could, check one last time if we can pass
@@ -135,12 +135,12 @@
 				for(var/obj/structure/grille/G in next_turf)
 					G.ex_act(EXPLOSION_THRESHOLD_MEDIUM)
 					sleep(5)
-				for(var/obj/machinery/door/airlock/A in next_turf)
+				for(var/obj/structure/machinery/door/airlock/A in next_turf)
 					if(A.welded || A.locked) //Snowflakey code to take in account bolts and welding
 						break
 					A.open()
 					sleep(5)
-				for(var/obj/machinery/door/D in next_turf)
+				for(var/obj/structure/machinery/door/D in next_turf)
 					D.open()
 					sleep(5)
 				if(!next_turf.CanPass(src, next_turf)) //Once we cleared everything we could, check one last time if we can pass
@@ -161,14 +161,14 @@
 		..()
 		if(entry_vent.network && entry_vent.network.normal_members.len)
 			var/list/vents = list()
-			for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in entry_vent.network.normal_members)
+			for(var/obj/structure/machinery/atmospherics/unary/vent_pump/temp_vent in entry_vent.network.normal_members)
 				vents.Add(temp_vent)
 			if(!vents.len)
 				entry_vent = null
 				return
 			if(check_los()) //Someone started looking at us
 				return
-			var/obj/machinery/atmospherics/unary/vent_pump/exit_vent = pick(vents)
+			var/obj/structure/machinery/atmospherics/unary/vent_pump/exit_vent = pick(vents)
 			spawn()
 				visible_message(SPAN_DANGER("\The [src] suddenly disappears into the vent!"))
 				loc = exit_vent
@@ -261,7 +261,7 @@
 		snuff_out_light_in_list(stuff)
 
 /mob/living/simple_animal/scp/sculpture/proc/snuff_out_light_in_list(var/list/stuff, var/mob/wearer = null)
-	var/obj/machinery/light/light //wall lights
+	var/obj/structure/machinery/light/light //wall lights
 	for(light in stuff)
 		if(light.luminosity != 0)
 			visible_message(SPAN_NOTICE("[light.name] breaks suddenly."))

@@ -205,7 +205,7 @@ That prevents a few funky behaviors.
 							to_chat(U, SPAN_NOTICE(" <b>Transfer successful</b>: \black [A.name] ([rand(1000,9999)].exe) installed and executed succesfully. Local copy has been removed."))
 							qdel(T)
 			if("AIFIXER")//AI Fixer terminal.
-				var/obj/machinery/computer/aifixer/T = target
+				var/obj/structure/machinery/computer/aifixer/T = target
 				switch(interaction)
 					if("AICARD")
 						var/obj/item/device/aicard/C = src

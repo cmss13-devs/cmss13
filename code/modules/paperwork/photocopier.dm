@@ -1,4 +1,4 @@
-/obj/machinery/photocopier
+/obj/structure/machinery/photocopier
 	name = "photocopier"
 	icon = 'icons/obj/structures/machinery/library.dmi'
 	icon_state = "bigscanner"
@@ -192,7 +192,7 @@
 				qdel(src)
 		return
 
-/obj/machinery/photocopier/proc/copy(obj/item/paper/original)
+/obj/structure/machinery/photocopier/proc/copy(obj/item/paper/original)
 	var/obj/item/paper/copy = new /obj/item/paper (loc)
 	if(toner > 10)	//lots of toner, make it dark
 		copy.info = "<font color = #101010>"
@@ -228,7 +228,7 @@
 	return copy
 
 
-/obj/machinery/photocopier/on_stored_atom_del(atom/movable/AM)
+/obj/structure/machinery/photocopier/on_stored_atom_del(atom/movable/AM)
 	if(AM == copy)
 		copy = null
 	else if(AM == photocopy)
@@ -236,7 +236,7 @@
 	else if(AM == bundle)
 		bundle = null
 
-/obj/machinery/photocopier/proc/photocopy(obj/item/photo/photocopy)
+/obj/structure/machinery/photocopier/proc/photocopy(obj/item/photo/photocopy)
 	var/obj/item/photo/p = new /obj/item/photo (src.loc)
 	var/icon/I = icon(photocopy.icon, photocopy.icon_state)
 	var/icon/img = icon(photocopy.img)

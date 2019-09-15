@@ -1,4 +1,4 @@
-/obj/machinery/portable_atmospherics/powered/pump
+/obj/structure/machinery/portable_atmospherics/powered/pump
 	name = "portable air pump"
 
 	icon = 'icons/obj/structures/machinery/atmos.dmi'
@@ -7,11 +7,11 @@
 
 	var/on = 0
 
-/obj/machinery/portable_atmospherics/powered/pump/New()
+/obj/structure/machinery/portable_atmospherics/powered/pump/New()
 	..()
 	cell = new/obj/item/cell(src)
 
-/obj/machinery/portable_atmospherics/powered/pump/update_icon()
+/obj/structure/machinery/portable_atmospherics/powered/pump/update_icon()
 	src.overlays = 0
 
 	if(on && cell && cell.charge)
@@ -24,7 +24,7 @@
 
 	return
 
-/obj/machinery/portable_atmospherics/powered/pump/CanPass(atom/movable/mover, turf/target)
+/obj/structure/machinery/portable_atmospherics/powered/pump/CanPass(atom/movable/mover, turf/target)
 	if(density == 0) //Because broken racks -Agouri |TODO: SPRITE!|
 		return 1
 	if(istype(mover) && mover.checkpass(PASSTABLE))

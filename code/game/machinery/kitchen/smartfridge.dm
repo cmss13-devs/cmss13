@@ -4,7 +4,7 @@
 
 /* SmartFridge.  Much todo
 */
-/obj/machinery/smartfridge
+/obj/structure/machinery/smartfridge
 	name = "\improper SmartFridge"
 	icon = 'icons/obj/structures/machinery/vending.dmi'
 	icon_state = "smartfridge"
@@ -29,12 +29,12 @@
 	var/panel_open = 0 //Hacking a smartfridge
 	var/wires = 7
 
-/obj/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/food/snacks/grown/) || istype(O,/obj/item/seeds/))
 		return 1
 	return 0
 
-/obj/machinery/smartfridge/process()
+/obj/structure/machinery/smartfridge/process()
 	if(!src.ispowered)
 		return
 	if(src.seconds_electrified > 0)
@@ -42,7 +42,7 @@
 	if(src.shoot_inventory && prob(2))
 		src.throw_item()
 
-/obj/machinery/smartfridge/power_change()
+/obj/structure/machinery/smartfridge/power_change()
 	..()
 	if( !(stat & NOPOWER) )
 		src.ispowered = 1
@@ -58,7 +58,7 @@
 *   Item Adding
 ********************/
 
-/obj/machinery/smartfridge/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/smartfridge/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/tool/screwdriver))
 		panel_open = !panel_open
 		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
@@ -89,8 +89,8 @@
 				else
 					item_quants[O.name] = 1
 
-				user.visible_message("<span class='notice'>[user] has added \the [O] to \the [src].", \
-									 "<span class='notice'>You add \the [O] to \the [src].")
+				user.visible_message(SPAN_NOTICE("[user] has added \the [O] to \the [src]."), \
+									 SPAN_NOTICE("You add \the [O] to \the [src]."))
 
 			nanomanager.update_uis(src)
 
@@ -123,10 +123,10 @@
 		to_chat(user, SPAN_NOTICE("\The [src] smartly refuses [O]."))
 		return 1
 
-/obj/machinery/smartfridge/attack_ai(mob/user)
+/obj/structure/machinery/smartfridge/attack_ai(mob/user)
 	return 0
 
-/obj/machinery/smartfridge/attack_hand(mob/user)
+/obj/structure/machinery/smartfridge/attack_hand(mob/user)
 	if(!ispowered)
 		to_chat(user, SPAN_WARNING("[src] has no power."))
 		return
@@ -140,7 +140,7 @@
 *   SmartFridge Menu
 ********************/
 
-/obj/machinery/smartfridge/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/structure/machinery/smartfridge/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_interaction(src)
 
 	var/data[0]
@@ -176,7 +176,7 @@
 		ui.set_initial_data(data)
 		ui.open()
 
-/obj/machinery/smartfridge/Topic(href, href_list)
+/obj/structure/machinery/smartfridge/Topic(href, href_list)
 	if (..()) return 0
 
 	var/mob/user = usr
@@ -250,14 +250,14 @@
 *	Hacking
 **************/
 
-/obj/machinery/smartfridge/proc/get_wire_descriptions()
+/obj/structure/machinery/smartfridge/proc/get_wire_descriptions()
 	return list(
 		FRIDGE_WIRE_SHOCK      = "Ground safety",
 		FRIDGE_WIRE_SHOOT_INV  = "Dispenser motor control",
 		FRIDGE_WIRE_IDSCAN     = "ID scanner"
 	)
 
-/obj/machinery/smartfridge/proc/cut(var/wire)
+/obj/structure/machinery/smartfridge/proc/cut(var/wire)
 	wires ^= getWireFlag(wire)
 
 	switch(wire)
@@ -272,7 +272,7 @@
 			locked = 1
 			visible_message(SPAN_NOTICE("\The [src] emits a slight thunk."))
 
-/obj/machinery/smartfridge/proc/mend(var/wire)
+/obj/structure/machinery/smartfridge/proc/mend(var/wire)
 	wires |= getWireFlag(wire)
 	switch(wire)
 		if(FRIDGE_WIRE_SHOCK)
@@ -284,7 +284,7 @@
 			locked = 0
 			visible_message(SPAN_NOTICE("\The [src] emits a click."))
 
-/obj/machinery/smartfridge/proc/pulse(var/wire)
+/obj/structure/machinery/smartfridge/proc/pulse(var/wire)
 	switch(wire)
 		if(FRIDGE_WIRE_SHOCK)
 			seconds_electrified = 30
@@ -299,10 +299,10 @@
 			locked = -1
 			visible_message(SPAN_NOTICE("\The [src] emits a click."))
 
-/obj/machinery/smartfridge/proc/isWireCut(var/wire)
+/obj/structure/machinery/smartfridge/proc/isWireCut(var/wire)
 	return !(wires & getWireFlag(wire))
 
-/obj/machinery/smartfridge/proc/throw_item()
+/obj/structure/machinery/smartfridge/proc/throw_item()
 	var/obj/throw_item = null
 	var/mob/living/target = locate() in view(7,src)
 	if(!target)
@@ -333,7 +333,7 @@
 *	Smartfridge types
 *********************/
 
-/obj/machinery/smartfridge/seeds
+/obj/structure/machinery/smartfridge/seeds
 	name = "\improper MegaSeed Servitor"
 	desc = "When you need seeds fast!"
 	icon = 'icons/obj/structures/machinery/vending.dmi'
@@ -341,13 +341,13 @@
 	icon_on = "seeds"
 	icon_off = "seeds-off"
 
-/obj/machinery/smartfridge/seeds/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/seeds/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/seeds/))
 		return 1
 	return 0
 
 //the secure subtype does nothing, I'm only keeping it to avoid conflicts with maps.
-/obj/machinery/smartfridge/secure/medbay
+/obj/structure/machinery/smartfridge/secure/medbay
 	name = "\improper Refrigerated Medicine Storage"
 	desc = "A refrigerated storage unit for storing medicine and chemicals."
 	icon_state = "smartfridge" //To fix the icon in the map editor.
@@ -355,7 +355,7 @@
 	is_secure_fridge = TRUE
 	req_one_access = list(ACCESS_MARINE_CMO, 33)
 
-/obj/machinery/smartfridge/secure/medbay/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/secure/medbay/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/glass/))
 		return 1
 	if(istype(O,/obj/item/storage/pill_bottle/))
@@ -365,7 +365,7 @@
 	return 0
 
 
-/obj/machinery/smartfridge/secure/virology
+/obj/structure/machinery/smartfridge/secure/virology
 	name = "\improper Refrigerated Virus Storage"
 	desc = "A refrigerated storage unit for storing viral material."
 	is_secure_fridge = TRUE
@@ -374,35 +374,35 @@
 	icon_on = "smartfridge_virology"
 	icon_off = "smartfridge_virology-off"
 
-/obj/machinery/smartfridge/secure/virology/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/secure/virology/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/glass/beaker/vial/))
 		return 1
 	return 0
 
 
-/obj/machinery/smartfridge/chemistry
+/obj/structure/machinery/smartfridge/chemistry
 	name = "\improper Smart Chemical Storage"
 	desc = "A refrigerated storage unit for medicine and chemical storage."
 	is_secure_fridge = TRUE
 	req_one_access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_CHEMISTRY)
 
-/obj/machinery/smartfridge/chemistry/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/chemistry/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/storage/pill_bottle) || istype(O,/obj/item/reagent_container) || istype(O,/obj/item/storage/fancy/vials))
 		return 1
 	return 0
 
-/obj/machinery/smartfridge/chemistry/antag
+/obj/structure/machinery/smartfridge/chemistry/antag
 	req_one_access = list(ACCESS_ILLEGAL_PIRATE)
 
-/obj/machinery/smartfridge/chemistry/virology
+/obj/structure/machinery/smartfridge/chemistry/virology
 	name = "\improper Smart Virus Storage"
 	desc = "A refrigerated storage unit for volatile sample storage."
 
 
-/obj/machinery/smartfridge/drinks
+/obj/structure/machinery/smartfridge/drinks
 	name = "\improper Drink Showcase"
 	desc = "A refrigerated storage unit for tasty tasty alcohol."
 
-/obj/machinery/smartfridge/drinks/accept_check(var/obj/item/O as obj)
+/obj/structure/machinery/smartfridge/drinks/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/glass) || istype(O,/obj/item/reagent_container/food/drinks) || istype(O,/obj/item/reagent_container/food/condiment))
 		return 1

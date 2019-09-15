@@ -6,7 +6,7 @@
 #define PRESSURE_TANK_VOLUME 70	//L - a 0.3 m diameter * 1 m long cylindrical tank. Happens to be the same volume as the regular oxygen tanks, so seems appropriate.
 #define PUMP_MAX_FLOW_RATE 50	//L/s - 8 m/s using a 15 cm by 15 cm inlet
 
-/obj/machinery/disposal
+/obj/structure/machinery/disposal
 	name = "disposal unit"
 	desc = "A pneumatic waste disposal unit."
 	icon = 'icons/obj/pipes/disposal.dmi'
@@ -25,7 +25,7 @@
 	var/disposal_pressure = 0
 
 //Create a new disposal, find the attached trunk (if present) and init gas resvr.
-/obj/machinery/disposal/New()
+/obj/structure/machinery/disposal/New()
 	..()
 	spawn(5)
 		trunk = locate() in loc
@@ -39,7 +39,7 @@
 		start_processing()
 
 //Attack by item places it in to disposal
-/obj/machinery/disposal/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/machinery/disposal/attackby(var/obj/item/I, var/mob/user)
 	if(stat & BROKEN || !I || !user)
 		return
 
@@ -123,7 +123,7 @@
 	update()
 
 //Mouse drop another mob or self
-/obj/machinery/disposal/MouseDrop_T(mob/target, mob/user)
+/obj/structure/machinery/disposal/MouseDrop_T(mob/target, mob/user)
 	return
 /*
 	if(!istype(target) || target.anchored || target.buckled || get_dist(user, src) > 1 || get_dist(user, target) > 1 || user.is_mob_incapacitated(TRUE) || isAI(user) || target.mob_size >= MOB_SIZE_BIG)
@@ -160,14 +160,14 @@
 	update()*/
 
 //Attempt to move while inside
-/obj/machinery/disposal/relaymove(mob/user)
+/obj/structure/machinery/disposal/relaymove(mob/user)
 	if(user.stat || user.stunned || user.knocked_down || flushing)
 		return
 	if(user.loc == src)
 		go_out(user)
 
 //Leave the disposal
-/obj/machinery/disposal/proc/go_out(mob/user)
+/obj/structure/machinery/disposal/proc/go_out(mob/user)
 
 	if(user.client)
 		user.client.eye = user.client.mob
@@ -181,11 +181,11 @@
 		update()
 
 //AI as human but can't flush
-/obj/machinery/disposal/attack_ai(mob/user as mob)
+/obj/structure/machinery/disposal/attack_ai(mob/user as mob)
 	interact(user, 1)
 
 //Human interact with machine
-/obj/machinery/disposal/attack_hand(mob/user as mob)
+/obj/structure/machinery/disposal/attack_hand(mob/user as mob)
 	if(user && user.loc == src)
 		to_chat(usr, SPAN_DANGER("You cannot reach the controls from inside."))
 		return
@@ -193,7 +193,7 @@
 	interact(user, 0)
 
 //User interaction
-/obj/machinery/disposal/interact(mob/user, var/ai=0)
+/obj/structure/machinery/disposal/interact(mob/user, var/ai=0)
 
 	add_fingerprint(user)
 	if(stat & BROKEN)
@@ -224,7 +224,7 @@
 	onclose(user, "disposal")
 
 //Handle machine interaction
-/obj/machinery/disposal/Topic(href, href_list)
+/obj/structure/machinery/disposal/Topic(href, href_list)
 	if(usr.loc == src)
 		to_chat(usr, SPAN_WARNING("You cannot reach the controls from inside."))
 		return
@@ -265,7 +265,7 @@
 		return
 
 //Eject the contents of the disposal unit
-/obj/machinery/disposal/proc/eject()
+/obj/structure/machinery/disposal/proc/eject()
 	for(var/atom/movable/AM in src)
 		AM.loc = loc
 		AM.pipe_eject(0)
@@ -279,7 +279,7 @@
 	update()
 
 //Pipe affected by explosion
-/obj/machinery/disposal/ex_act(severity)
+/obj/structure/machinery/disposal/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(25))
@@ -292,13 +292,13 @@
 			qdel(src)
 			return
 
-/obj/machinery/disposal/Dispose()
+/obj/structure/machinery/disposal/Dispose()
 	if(contents.len)
 		eject()
 	. = ..()
 
 //Update the icon & overlays to reflect mode & status
-/obj/machinery/disposal/proc/update()
+/obj/structure/machinery/disposal/proc/update()
 	overlays.Cut()
 	if(stat & BROKEN)
 		icon_state = "disposal-broken"
@@ -325,7 +325,7 @@
 		overlays += image('icons/obj/pipes/disposal.dmi', "dispover-ready")
 
 //Timed process, charge the gas reservoir and perform flush if ready
-/obj/machinery/disposal/process()
+/obj/structure/machinery/disposal/process()
 	if(stat & BROKEN) //Nothing can happen if broken
 		update_use_power(0)
 		return
@@ -352,13 +352,13 @@
 	else
 		pressurize() //Otherwise charge
 
-/obj/machinery/disposal/proc/pressurize()
+/obj/structure/machinery/disposal/proc/pressurize()
 	if(disposal_pressure < SEND_PRESSURE)
 		disposal_pressure += 5
 	return
 
 //Perform a flush
-/obj/machinery/disposal/proc/flush()
+/obj/structure/machinery/disposal/proc/flush()
 
 	flushing = 1
 	flick("[icon_state]-flush", src)
@@ -397,13 +397,13 @@
 	return
 
 //Called when area power changes
-/obj/machinery/disposal/power_change()
+/obj/structure/machinery/disposal/power_change()
 	..()	//Do default setting/reset of stat NOPOWER bit
 	update()	//Update icon
 	return
 
 //Called when holder is expelled from a disposal, should usually only occur if the pipe network is modified
-/obj/machinery/disposal/proc/expel(var/obj/structure/disposalholder/H)
+/obj/structure/machinery/disposal/proc/expel(var/obj/structure/disposalholder/H)
 	var/turf/target
 	playsound(src, 'sound/machines/hiss.ogg', 25, 0)
 	if(H) //Somehow, someone managed to flush a window which broke mid-transit and caused the disposal to go in an infinite loop trying to expel null, hopefully this fixes it
@@ -417,7 +417,7 @@
 						AM.throw_at(target, 5, 1)
 		qdel(H)
 
-/obj/machinery/disposal/CanPass(atom/movable/mover, turf/target)
+/obj/structure/machinery/disposal/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/item) && mover.throwing)
 		var/obj/item/I = mover
 		if(istype(I, /obj/item/projectile))
@@ -450,7 +450,7 @@
 		. = ..()
 
 //initialize a holder from the contents of a disposal unit
-/obj/structure/disposalholder/proc/init(var/obj/machinery/disposal/D)
+/obj/structure/disposalholder/proc/init(var/obj/structure/machinery/disposal/D)
 
 	//Check for any living mobs trigger hasmob.
 	//hasmob effects whether the package goes to cargo or its tagged destination.
@@ -487,7 +487,7 @@
 
 //Start the movement process
 //Argument is the disposal unit the holder started in
-/obj/structure/disposalholder/proc/start(var/obj/machinery/disposal/D)
+/obj/structure/disposalholder/proc/start(var/obj/structure/machinery/disposal/D)
 
 	if(!D.trunk)
 		D.expel(src) //No trunk connected, so expel immediately
@@ -1209,7 +1209,7 @@
 //A trunk joining to a disposal bin or outlet on the same turf
 /obj/structure/disposalpipe/trunk
 	icon_state = "pipe-t"
-	var/obj/linked 	//The linked obj/machinery/disposal or obj/disposaloutlet
+	var/obj/linked 	//The linked obj/structure/machinery/disposal or obj/disposaloutlet
 
 /obj/structure/disposalpipe/trunk/New()
 	..()
@@ -1220,7 +1220,7 @@
 
 /obj/structure/disposalpipe/trunk/proc/getlinked()
 	linked = null
-	var/obj/machinery/disposal/D = locate() in loc
+	var/obj/structure/machinery/disposal/D = locate() in loc
 	if(D)
 		linked = D
 		if(!D.trunk)
@@ -1271,7 +1271,7 @@
 		if(istype(O) && H && H.loc)
 			O.expel(H) //Expel at outlet
 		else
-			var/obj/machinery/disposal/D = linked
+			var/obj/structure/machinery/disposal/D = linked
 			if(H && H.loc)
 				D.expel(H) //Expel at disposal
 	else

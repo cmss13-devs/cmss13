@@ -31,9 +31,9 @@
 	//inner atmos 						//These go in airtight.dm, not all vehicles are space-faring -Agouri
 	//var/use_internal_tank = 0
 	//var/internal_tank_valve = ONE_ATMOSPHERE
-	//var/obj/machinery/portable_atmospherics/canister/internal_tank
+	//var/obj/structure/machinery/portable_atmospherics/canister/internal_tank
 	//var/datum/gas_mixture/cabin_air
-	//var/obj/machinery/atmospherics/portables_connector/connected_port = null
+	//var/obj/structure/machinery/atmospherics/portables_connector/connected_port = null
 
 	var/obj/item/device/radio/radio = null
 
@@ -90,7 +90,7 @@
 	verbs += verb_path
 
 /*/obj/vehicle/proc/add_airtank() //In airtight.dm -Agouri
-	internal_tank = new /obj/machinery/portable_atmospherics/canister/air(src)
+	internal_tank = new /obj/structure/machinery/portable_atmospherics/canister/air(src)
 	return internal_tank*/
 
 /obj/vehicle/proc/add_cell(var/obj/item/weapon/cell/C=null)

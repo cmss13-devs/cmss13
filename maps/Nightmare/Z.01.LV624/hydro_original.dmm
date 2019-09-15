@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/machinery/power/apc{
+/obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Hydroponics APC";
 	pixel_y = 30;
@@ -59,7 +59,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "nJ" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Hydroponics Dome";
 	req_access = list(100);
@@ -107,7 +107,7 @@
 /area/lv624/lazarus/hydroponics)
 "oh" = (
 /obj/structure/table,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor{
@@ -116,7 +116,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "oi" = (
-/obj/machinery/smartfridge/seeds,
+/obj/structure/machinery/smartfridge/seeds,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
@@ -126,15 +126,15 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "oj" = (
-/obj/machinery/biogenerator,
+/obj/structure/machinery/biogenerator,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
 "ok" = (
-/obj/machinery/seed_extractor,
-/obj/machinery/light{
+/obj/structure/machinery/seed_extractor,
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor{
@@ -143,7 +143,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "ol" = (
-/obj/machinery/smartfridge,
+/obj/structure/machinery/smartfridge,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -209,21 +209,21 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "oN" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
 "oO" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
 "oP" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -266,7 +266,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "pJ" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 4;
 	name = "\improper Hydroponics Dome";
 	req_access = list(100);
@@ -278,7 +278,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "qa" = (
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Hydroponics Dome";
 	req_access = list(100)
@@ -383,7 +383,7 @@
 "rr" = (
 /obj/structure/table,
 /obj/item/reagent_container/food/drinks/flask/vacuumflask,
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -399,7 +399,7 @@
 /area/lv624/lazarus/hydroponics)
 "rt" = (
 /obj/structure/table,
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /obj/item/disk/objective,
 /turf/open/floor{
 	dir = 5;

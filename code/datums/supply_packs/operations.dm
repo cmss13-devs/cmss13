@@ -200,7 +200,7 @@ OPERATIONS
 /datum/supply_packs/nuclearbomb
 	name = "Operational Nuke"
 	cost = 0
-	containertype = /obj/machinery/nuclearbomb
+	containertype = /obj/structure/machinery/nuclearbomb
 	buyable = 0
 	group = "Operations"
 	iteration_needed = null

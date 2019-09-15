@@ -1,4 +1,4 @@
-/obj/machinery/computer/teleporter
+/obj/structure/machinery/computer/teleporter
 	name = "Teleporter"
 	desc = "Used to control a linked teleportation Hub and Station."
 	icon_state = "teleport"
@@ -9,19 +9,19 @@
 	var/one_time_use = 0 //Used for one-time-use teleport cards (such as clown planet coordinates.)
 						 //Setting this to 1 will set src.locked to null after a player enters the portal and will not allow hand-teles to open portals to that location.
 
-/obj/machinery/computer/teleporter/New()
+/obj/structure/machinery/computer/teleporter/New()
 	src.id = "[rand(1000, 9999)]"
 	..()
 	underlays.Cut()
 	underlays += image('icons/obj/structures/props/stationobjs.dmi', icon_state = "telecomp-wires")
 	return
 
-/obj/machinery/computer/teleporter/initialize()
+/obj/structure/machinery/computer/teleporter/initialize()
 	..()
-	var/obj/machinery/teleport/station/station = locate(/obj/machinery/teleport/station, get_step(src, dir))
-	var/obj/machinery/teleport/hub/hub
+	var/obj/structure/machinery/teleport/station/station = locate(/obj/structure/machinery/teleport/station, get_step(src, dir))
+	var/obj/structure/machinery/teleport/hub/hub
 	if(station)
-		hub = locate(/obj/machinery/teleport/hub, get_step(station, dir))
+		hub = locate(/obj/structure/machinery/teleport/hub, get_step(station, dir))
 
 	if(istype(station))
 		station.com = hub
@@ -31,7 +31,7 @@
 		hub.com = src
 		hub.dir = dir
 
-/obj/machinery/computer/teleporter/attackby(I as obj, mob/living/user as mob)
+/obj/structure/machinery/computer/teleporter/attackby(I as obj, mob/living/user as mob)
 	if(istype(I, /obj/item/card/data/))
 		var/obj/item/card/data/C = I
 		if(stat & (NOPOWER|BROKEN) & (C.function != "teleporter"))
@@ -60,7 +60,7 @@
 				for(var/mob/O in hearers(src, null))
 					O.show_message(SPAN_DANGER("Incoming bluespace portal detected, unable to lock in."), 2)
 
-				for(var/obj/machinery/teleport/hub/H in range(1))
+				for(var/obj/structure/machinery/teleport/hub/H in range(1))
 					var/amount = rand(2,5)
 					for(var/i=0;i<amount;i++)
 						new /mob/living/simple_animal/hostile/carp(get_turf(H))
@@ -77,10 +77,10 @@
 
 	return
 
-/obj/machinery/teleport/station/attack_ai()
+/obj/structure/machinery/teleport/station/attack_ai()
 	src.attack_hand()
 
-/obj/machinery/computer/teleporter/attack_hand()
+/obj/structure/machinery/computer/teleporter/attack_hand()
 	if(stat & (NOPOWER|BROKEN))
 		return
 
@@ -130,7 +130,7 @@
 	src.add_fingerprint(usr)
 	return
 
-/obj/machinery/computer/teleporter/verb/set_id(t as text)
+/obj/structure/machinery/computer/teleporter/verb/set_id(t as text)
 	set category = "Object"
 	set name = "Set teleporter ID"
 	set src in oview(1)
@@ -150,7 +150,7 @@
 		if(!T || istype(T, /area))	return null
 	return T
 
-/obj/machinery/teleport
+/obj/structure/machinery/teleport
 	name = "teleport"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	density = 1
@@ -158,7 +158,7 @@
 	var/lockeddown = 0
 
 
-/obj/machinery/teleport/hub
+/obj/structure/machinery/teleport/hub
 	name = "teleporter hub"
 	desc = "It's the hub of a teleporting machine."
 	icon_state = "tele0"
@@ -167,21 +167,21 @@
 	use_power = 1
 	idle_power_usage = 10
 	active_power_usage = 2000
-	var/obj/machinery/computer/teleporter/com
+	var/obj/structure/machinery/computer/teleporter/com
 
-/obj/machinery/teleport/hub/New()
+/obj/structure/machinery/teleport/hub/New()
 	..()
 	underlays.Cut()
 	underlays += image('icons/obj/structures/props/stationobjs.dmi', icon_state = "tele-wires")
 
-/obj/machinery/teleport/hub/Bumped(M as mob|obj)
+/obj/structure/machinery/teleport/hub/Bumped(M as mob|obj)
 	spawn()
 		if (src.icon_state == "tele1")
 			teleport(M)
 			use_power(5000)
 	return
 
-/obj/machinery/teleport/hub/proc/teleport(atom/movable/M as mob|obj)
+/obj/structure/machinery/teleport/hub/proc/teleport(atom/movable/M as mob|obj)
 	if (!com)
 		return
 	if (!com.locked)
@@ -293,7 +293,7 @@
 	return
 */
 
-/obj/machinery/teleport/station
+/obj/structure/machinery/teleport/station
 	name = "station"
 	desc = "It's the station thingy of a teleport thingy." //seriously, wtf.
 	icon_state = "controller"
@@ -303,26 +303,26 @@
 	use_power = 1
 	idle_power_usage = 10
 	active_power_usage = 2000
-	var/obj/machinery/teleport/hub/com
+	var/obj/structure/machinery/teleport/hub/com
 
-/obj/machinery/teleport/station/New()
+/obj/structure/machinery/teleport/station/New()
 	..()
 	overlays.Cut()
 	overlays += image('icons/obj/structures/props/stationobjs.dmi', icon_state = "controller-wires")
 
-/obj/machinery/teleport/station/attackby(var/obj/item/W)
+/obj/structure/machinery/teleport/station/attackby(var/obj/item/W)
 	src.attack_hand()
 
-/obj/machinery/teleport/station/attack_ai()
+/obj/structure/machinery/teleport/station/attack_ai()
 	src.attack_hand()
 
-/obj/machinery/teleport/station/attack_hand()
+/obj/structure/machinery/teleport/station/attack_hand()
 	if(engaged)
 		src.disengage()
 	else
 		src.engage()
 
-/obj/machinery/teleport/station/proc/engage()
+/obj/structure/machinery/teleport/station/proc/engage()
 	if(stat & (BROKEN|NOPOWER))
 		return
 
@@ -335,7 +335,7 @@
 	src.engaged = 1
 	return
 
-/obj/machinery/teleport/station/proc/disengage()
+/obj/structure/machinery/teleport/station/proc/disengage()
 	if(stat & (BROKEN|NOPOWER))
 		return
 
@@ -348,7 +348,7 @@
 	src.engaged = 0
 	return
 
-/obj/machinery/teleport/station/verb/testfire()
+/obj/structure/machinery/teleport/station/verb/testfire()
 	set name = "Test Fire Teleporter"
 	set category = "Object"
 	set src in oview(1)
@@ -369,7 +369,7 @@
 	src.add_fingerprint(usr)
 	return
 
-/obj/machinery/teleport/station/power_change()
+/obj/structure/machinery/teleport/station/power_change()
 	..()
 	if(stat & NOPOWER)
 		icon_state = "controller-p"

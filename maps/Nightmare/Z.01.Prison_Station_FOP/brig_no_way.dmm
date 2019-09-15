@@ -14,8 +14,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/closed/wall/prison,
 /area/prison/quarters/security)
 "ae" = (
@@ -29,12 +29,12 @@
 /area/prison/intake)
 "ap" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Security Department";
 	req_access = list()
 	},
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	dir = 2;
 	name = "\improper Security Lockdown"
 	},
@@ -45,12 +45,12 @@
 	},
 /area/prison/security)
 "aq" = (
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Security Department";
 	req_access = list()
 	},
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	dir = 2;
 	name = "\improper Security Lockdown"
 	},
@@ -77,7 +77,7 @@
 /turf/closed/wall/prison,
 /area/prison/security)
 "bW" = (
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	density = 0;
 	dir = 2;
 	icon_state = "pdoor0";
@@ -89,7 +89,7 @@
 /area/prison/security)
 "bX" = (
 /obj/structure/window/framed/prison/reinforced,
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	dir = 2;
 	name = "\improper Security Lockdown"
 	},
@@ -105,15 +105,15 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Intake Processing";
 	req_access = list()
 	},
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	dir = 2;
 	name = "\improper Security Lockdown"
 	},
@@ -124,12 +124,12 @@
 	},
 /area/prison/security)
 "cO" = (
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Intake Processing";
 	req_access = list()
 	},
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	dir = 2;
 	name = "\improper Security Lockdown"
 	},
@@ -163,7 +163,7 @@
 /area/prison/security/briefing)
 "fF" = (
 /obj/structure/window/framed/prison/reinforced,
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
 	name = "\improper Security Lockdown"
 	},
@@ -176,12 +176,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -199,11 +199,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Department";
 	req_access = list()
 	},
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
 	name = "\improper Security Lockdown"
 	},
@@ -215,11 +215,11 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Department";
 	req_access = list()
 	},
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
 	name = "\improper Security Lockdown"
 	},
@@ -246,7 +246,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "Intake Processing"
 	},
 /turf/open/floor/prison{
@@ -279,9 +279,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 2;
 	name = "Execution";
 	req_access = list()
@@ -293,7 +293,7 @@
 	tag = "icon-N";
 	icon_state = "N"
 	},
-/obj/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 2;
 	name = "Execution";
 	req_access = list()

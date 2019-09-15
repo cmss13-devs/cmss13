@@ -1,6 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
-/obj/machinery/computer/card
+/obj/structure/machinery/computer/card
 	name = "Identification Computer"
 	desc = "Terminal for programming USCM employee ID card access."
 	icon_state = "id"
@@ -11,16 +11,16 @@
 	var/mode = 0.0
 	var/printing = null
 
-/obj/machinery/computer/card/proc/is_centcom()
+/obj/structure/machinery/computer/card/proc/is_centcom()
 	return 0
 
-/obj/machinery/computer/card/proc/is_authenticated()
+/obj/structure/machinery/computer/card/proc/is_authenticated()
 	return scan ? check_access(scan) : 0
 
-/obj/machinery/computer/card/proc/get_target_rank()
+/obj/structure/machinery/computer/card/proc/get_target_rank()
 	return modify && modify.assignment ? modify.assignment : "Unassigned"
 
-/obj/machinery/computer/card/proc/format_jobs(list/jobs)
+/obj/structure/machinery/computer/card/proc/format_jobs(list/jobs)
 	var/list/formatted = list()
 	for(var/job in jobs)
 		formatted.Add(list(list(
@@ -30,7 +30,7 @@
 
 	return formatted
 
-/obj/machinery/computer/card/verb/eject_id()
+/obj/structure/machinery/computer/card/verb/eject_id()
 	set category = "Object"
 	set name = "Eject ID Card"
 	set src in oview(1)
@@ -53,7 +53,7 @@
 		to_chat(usr, "There is nothing to remove from the console.")
 	return
 
-/obj/machinery/computer/card/attackby(obj/item/card/id/id_card, mob/user)
+/obj/structure/machinery/computer/card/attackby(obj/item/card/id/id_card, mob/user)
 	if(!istype(id_card))
 		return ..()
 
@@ -69,15 +69,15 @@
 	nanomanager.update_uis(src)
 	attack_hand(user)
 
-/obj/machinery/computer/card/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/card/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/card/attack_hand(mob/user as mob)
+/obj/structure/machinery/computer/card/attack_hand(mob/user as mob)
 	if(..()) return
 	if(stat & (NOPOWER|BROKEN)) return
 	ui_interact(user)
 
-/obj/machinery/computer/card/ui_interact(mob/user, ui_key="main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/structure/machinery/computer/card/ui_interact(mob/user, ui_key="main", var/datum/nanoui/ui = null, var/force_open = 1)
 
 	user.set_interaction(src)
 
@@ -138,7 +138,7 @@
 		ui.set_initial_data(data)
 		ui.open()
 
-/obj/machinery/computer/card/Topic(href, href_list)
+/obj/structure/machinery/computer/card/Topic(href, href_list)
 	if(..())
 		return 1
 
@@ -289,11 +289,11 @@
 
 	return 1
 
-/obj/machinery/computer/card/centcom
+/obj/structure/machinery/computer/card/centcom
 	name = "CentCom Identification Computer"
 	circuit = "/obj/item/circuitboard/computer/card/centcom"
 	req_access = list(ACCESS_WY_CORPORATE)
 
 
-/obj/machinery/computer/card/centcom/is_centcom()
+/obj/structure/machinery/computer/card/centcom/is_centcom()
 	return 1

@@ -1,4 +1,4 @@
-/obj/machinery/cell_charger
+/obj/structure/machinery/cell_charger
 	name = "heavy-duty cell charger"
 	desc = "A much more powerful version of the standard recharger that is specially designed for charging power cells."
 	icon = 'icons/obj/structures/machinery/power.dmi'
@@ -11,7 +11,7 @@
 	var/obj/item/cell/charging = null
 	var/chargelevel = -1
 
-/obj/machinery/cell_charger/proc/updateicon()
+/obj/structure/machinery/cell_charger/proc/updateicon()
 	icon_state = "ccharger[charging ? 1 : 0]"
 
 	if(charging && !(stat & (BROKEN|NOPOWER)) )
@@ -27,13 +27,13 @@
 	else
 		overlays.Cut()
 
-/obj/machinery/cell_charger/examine(mob/user)
+/obj/structure/machinery/cell_charger/examine(mob/user)
 	..()
 	to_chat(user, "There's [charging ? "a" : "no"] cell in the charger.")
 	if(charging)
 		to_chat(user, "Current charge: [charging.charge]")
 
-/obj/machinery/cell_charger/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/cell_charger/attackby(obj/item/W, mob/user)
 	if(stat & BROKEN)
 		return
 
@@ -64,7 +64,7 @@
 		to_chat(user, "You [anchored ? "attach" : "detach"] the cell charger [anchored ? "to" : "from"] the ground.")
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 
-/obj/machinery/cell_charger/attack_hand(mob/user)
+/obj/structure/machinery/cell_charger/attack_hand(mob/user)
 	if(charging)
 		usr.put_in_hands(charging)
 		charging.add_fingerprint(user)
@@ -76,10 +76,10 @@
 		updateicon()
 		stop_processing()
 
-/obj/machinery/cell_charger/attack_ai(mob/user)
+/obj/structure/machinery/cell_charger/attack_ai(mob/user)
 	return
 
-/obj/machinery/cell_charger/emp_act(severity)
+/obj/structure/machinery/cell_charger/emp_act(severity)
 	if(stat & (BROKEN|NOPOWER))
 		return
 	if(charging)
@@ -87,7 +87,7 @@
 	..(severity)
 
 
-/obj/machinery/cell_charger/process()
+/obj/structure/machinery/cell_charger/process()
 	if((stat & (BROKEN|NOPOWER)) || !anchored)
 		update_use_power(0)
 		return

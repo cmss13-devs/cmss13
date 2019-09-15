@@ -4,7 +4,7 @@
 // Use to show shuttle ETA/ETD times
 // Alert status
 // And arbitrary messages set by comms computer
-/obj/machinery/status_display
+/obj/structure/machinery/status_display
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "frame"
 	name = "status display"
@@ -40,25 +40,25 @@
 	var/const/STATUS_DISPLAY_TIME = 4
 	var/const/STATUS_DISPLAY_CUSTOM = 99
 
-/obj/machinery/status_display/New()
+/obj/structure/machinery/status_display/New()
 	..()
 	set_picture("default")
 	start_processing()
 
 // register for radio system
-/obj/machinery/status_display/initialize()
+/obj/structure/machinery/status_display/initialize()
 	..()
 	/*if(radio_controller)
 		radio_controller.add_object(src, frequency)*/
 
 // timed process
-/obj/machinery/status_display/process()
+/obj/structure/machinery/status_display/process()
 	if(stat & NOPOWER)
 		remove_display()
 		return
 	update()
 
-/obj/machinery/status_display/emp_act(severity)
+/obj/structure/machinery/status_display/emp_act(severity)
 	if(stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
@@ -66,7 +66,7 @@
 	..(severity)
 
 // set what is displayed
-/obj/machinery/status_display/proc/update()
+/obj/structure/machinery/status_display/proc/update()
 	if(friendc && !ignore_friendc)
 		set_picture("ai_friend")
 		return 1
@@ -113,12 +113,12 @@
 			return 1
 	return 0
 
-/obj/machinery/status_display/examine(mob/user)
+/obj/structure/machinery/status_display/examine(mob/user)
 	..()
 	if(mode != STATUS_DISPLAY_BLANK && mode != STATUS_DISPLAY_ALERT)
 		to_chat(user, "The display says:<br>\t[sanitize(message1)]<br>\t[sanitize(message2)]")
 
-/obj/machinery/status_display/proc/set_message(m1, m2)
+/obj/structure/machinery/status_display/proc/set_message(m1, m2)
 	if(m1)
 		index1 = (length(m1) > CHARS_PER_LINE)
 		message1 = m1
@@ -133,18 +133,18 @@
 		message2 = ""
 		index2 = 0
 
-/obj/machinery/status_display/proc/set_picture(state)
+/obj/structure/machinery/status_display/proc/set_picture(state)
 	picture_state = state
 	mode = 3
 	remove_display()
 	overlays += image('icons/obj/structures/machinery/status_display.dmi', icon_state=picture_state)
 
-/obj/machinery/status_display/proc/update_display(line1, line2)
+/obj/structure/machinery/status_display/proc/update_display(line1, line2)
 	var/new_text = {"<div style="font-size:[FONT_SIZE];color:[FONT_COLOR];font:'[FONT_STYLE]';text-align:center;" valign="top">[line1]<br>[line2]</div>"}
 	if(maptext != new_text)
 		maptext = new_text
 
-/obj/machinery/status_display/proc/get_supply_shuttle_timer()
+/obj/structure/machinery/status_display/proc/get_supply_shuttle_timer()
 	var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
 	if (!shuttle)
 		return "Error"
@@ -156,13 +156,13 @@
 		return "[add_zero(num2text((timeleft / 60) % 60),2)]:[add_zero(num2text(timeleft % 60), 2)]"
 	return ""
 
-/obj/machinery/status_display/proc/remove_display()
+/obj/structure/machinery/status_display/proc/remove_display()
 	if(overlays.len)
 		overlays.Cut()
 	if(maptext)
 		maptext = ""
 
-/obj/machinery/status_display/receive_signal(datum/signal/signal)
+/obj/structure/machinery/status_display/receive_signal(datum/signal/signal)
 	/*switch(signal.data["command"])
 		if("blank")
 			mode = STATUS_DISPLAY_BLANK
@@ -181,7 +181,7 @@
 		if("time")
 			mode = STATUS_DISPLAY_TIME*/
 
-/obj/machinery/ai_status_display
+/obj/structure/machinery/ai_status_display
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "frame"
 	name = "AI display"
@@ -196,21 +196,21 @@
 
 	var/emotion = "Neutral"
 
-/obj/machinery/ai_status_display/process()
+/obj/structure/machinery/ai_status_display/process()
 	if(stat & NOPOWER)
 		overlays.Cut()
 		return
 
 	update()
 
-/obj/machinery/ai_status_display/emp_act(severity)
+/obj/structure/machinery/ai_status_display/emp_act(severity)
 	if(stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
 	set_picture("ai_bsod")
 	..(severity)
 
-/obj/machinery/ai_status_display/proc/update()
+/obj/structure/machinery/ai_status_display/proc/update()
 	if(mode==0) //Blank
 		overlays.Cut()
 		return
@@ -256,7 +256,7 @@
 		return
 
 
-/obj/machinery/ai_status_display/proc/set_picture(var/state)
+/obj/structure/machinery/ai_status_display/proc/set_picture(var/state)
 	picture_state = state
 	if(overlays.len)
 		overlays.Cut()

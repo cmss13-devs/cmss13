@@ -3,7 +3,7 @@
 
 //Machines
 //The one that works safely.
-/obj/machinery/power/smes/batteryrack
+/obj/structure/machinery/power/smes/batteryrack
 	name = "Substation PSU"//"power cell rack PSU"
 	desc = "A rack of power cells working as a PSU."
 	charge = 0 //you dont really want to make a potato PSU which already is overloaded
@@ -19,7 +19,7 @@
 
 	// Smaller capacity, but higher I/O
 	// Starts fully charged, as it's used in substations. This replaces Engineering SMESs round start charge.
-/obj/machinery/power/smes/batteryrack/substation
+/obj/structure/machinery/power/smes/batteryrack/substation
 	name = "Substation PSU"
 	desc = "A rack of power cells working as a PSU. This one seems to be equipped for higher power loads."
 	output = 150000
@@ -28,7 +28,7 @@
 
 	// One high capacity cell, two regular cells. Lots of room for engineer upgrades
 	// Also five basic capacitors. Again, upgradeable.
-/obj/machinery/power/smes/batteryrack/substation/add_parts()
+/obj/structure/machinery/power/smes/batteryrack/substation/add_parts()
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/machine/batteryrack
 	component_parts += new /obj/item/cell/high
@@ -40,7 +40,7 @@
 	component_parts += new /obj/item/stock_parts/capacitor
 	component_parts += new /obj/item/stock_parts/capacitor
 
-/obj/machinery/power/smes/batteryrack/New()
+/obj/structure/machinery/power/smes/batteryrack/New()
 	..()
 	add_parts()
 	RefreshParts()
@@ -48,8 +48,8 @@
 	return
 
 
-//Maybe this should be moved up to obj/machinery
-/obj/machinery/power/smes/batteryrack/proc/add_parts()
+//Maybe this should be moved up to obj/structure/machinery
+/obj/structure/machinery/power/smes/batteryrack/proc/add_parts()
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/machine/batteryrack
 	component_parts += new /obj/item/cell/high
@@ -58,7 +58,7 @@
 	return
 
 
-/obj/machinery/power/smes/batteryrack/RefreshParts()
+/obj/structure/machinery/power/smes/batteryrack/RefreshParts()
 	capacitors_amount = 0
 	cells_amount = 0
 	var/max_level = 0 //for both input and output
@@ -75,7 +75,7 @@
 	capacity = C * 40   //Basic cells are such crap. Hyper cells needed to get on normal SMES levels.
 
 
-/obj/machinery/power/smes/batteryrack/updateicon()
+/obj/structure/machinery/power/smes/batteryrack/updateicon()
 	overlays.Cut()
 	if(stat & BROKEN)	return
 
@@ -90,18 +90,18 @@
 	return
 
 
-/obj/machinery/power/smes/batteryrack/chargedisplay()
+/obj/structure/machinery/power/smes/batteryrack/chargedisplay()
 	return round(4 * charge/(capacity ? capacity : 5e6))
 
 
-/obj/machinery/power/smes/batteryrack/attackby(var/obj/item/W as obj, var/mob/user as mob) //these can only be moved by being reconstructed, solves having to remake the powernet.
+/obj/structure/machinery/power/smes/batteryrack/attackby(var/obj/item/W as obj, var/mob/user as mob) //these can only be moved by being reconstructed, solves having to remake the powernet.
 	..() //SMES attackby for now handles screwdriver, cable coils and wirecutters, no need to repeat that here
 	if(open_hatch)
 		if(istype(W, /obj/item/tool/crowbar))
 			if (charge < (capacity / 100))
 				if (!online && !chargemode)
 					playsound(get_turf(src), 'sound/items/Crowbar.ogg', 25, 1)
-					var/obj/machinery/constructable_frame/M = new /obj/machinery/constructable_frame(src.loc)
+					var/obj/structure/machinery/constructable_frame/M = new /obj/structure/machinery/constructable_frame(src.loc)
 					M.state = CONSTRUCTION_STATE_PROGRESS
 					M.update_icon()
 					for(var/obj/I in component_parts)
@@ -133,13 +133,13 @@
 
 
 //The shitty one that will blow up.
-/obj/machinery/power/smes/batteryrack/makeshift
+/obj/structure/machinery/power/smes/batteryrack/makeshift
 	name = "makeshift PSU"
 	desc = "A rack of batteries connected by a mess of wires posing as a PSU."
 	var/overcharge_percent = 0
 
 
-/obj/machinery/power/smes/batteryrack/makeshift/add_parts()
+/obj/structure/machinery/power/smes/batteryrack/makeshift/add_parts()
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/machine/ghettosmes
 	component_parts += new /obj/item/cell/high
@@ -148,7 +148,7 @@
 
 
 
-/obj/machinery/power/smes/batteryrack/makeshift/updateicon()
+/obj/structure/machinery/power/smes/batteryrack/makeshift/updateicon()
 	overlays.Cut()
 	if(stat & BROKEN)	return
 
@@ -170,7 +170,7 @@
 //[1.2M-2.4M]: 6% ion_act from 120%. 1% of EMP from 140%.
 //(2.4M-3.6M] :7% ion_act from 115%. 1% of EMP from 130%. 1% of non-hull-breaching explosion at 150%.
 //(3.6M-INFI): 8% ion_act from 115%. 2% of EMP from 125%. 1% of Hull-breaching explosion from 140%.
-/obj/machinery/power/smes/batteryrack/makeshift/proc/overcharge_consequences()
+/obj/structure/machinery/power/smes/batteryrack/makeshift/proc/overcharge_consequences()
 	switch (capacity)
 		if (0 to (1.2e6-1))
 			if (overcharge_percent >= 125)
@@ -214,7 +214,7 @@
 
 
 #define SMESRATE 0.05			// rate of internal charge to external power
-/obj/machinery/power/smes/batteryrack/makeshift/process()
+/obj/structure/machinery/power/smes/batteryrack/makeshift/process()
 	if(stat & BROKEN)	return
 
 	//store machine state to see if we need to update the icon overlays

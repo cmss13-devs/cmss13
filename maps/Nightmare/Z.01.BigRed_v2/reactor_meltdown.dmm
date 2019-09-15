@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/machinery/shower{
+/obj/structure/machinery/shower{
 	icon_state = "shower";
 	dir = 8
 	},
@@ -19,7 +19,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "af" = (
-/obj/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure{
 	name = "\improper Engineering Secure Storage";
 	req_access = list()
 	},
@@ -30,7 +30,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "ai" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aj" = (
@@ -47,26 +47,26 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "am" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "an" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "ao" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "ap" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -84,7 +84,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/s)
 "at" = (
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/structure/machinery/atmospherics/unary/vent_pump,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "au" = (
@@ -102,7 +102,7 @@
 /area/bigredv2/outside/engineering)
 "ax" = (
 /obj/structure/closet/firecloset/full,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -121,7 +121,7 @@
 "aC" = (
 /obj/structure/table,
 /obj/effect/spawner/random/tool,
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 2
 	},
 /turf/open/floor,
@@ -148,8 +148,8 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "aH" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Chief Engineer's Office";
 	req_one_access = list()
@@ -158,7 +158,7 @@
 /area/bigredv2/outside/engineering)
 "aI" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 4;
 	name = "\improper Engineering Complex"
 	},
@@ -166,7 +166,7 @@
 /area/bigredv2/outside/engineering)
 "aK" = (
 /obj/structure/reagent_dispensers/watertank,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -178,8 +178,8 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Engineering Tool Storage";
 	req_one_access = list()
@@ -187,7 +187,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aN" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -216,8 +216,8 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aR" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Engineering Lockers";
 	req_one_access = list()
@@ -225,7 +225,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aS" = (
-/obj/machinery/power/apc{
+/obj/structure/machinery/power/apc{
 	start_charge = 0
 	},
 /turf/open/floor,
@@ -245,17 +245,17 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aW" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aY" = (
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/manifold4w/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aZ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -263,7 +263,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "ba" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -272,7 +272,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bb" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -280,17 +280,17 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bc" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bd" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -300,11 +300,11 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "be" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bf" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -312,7 +312,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bg" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 4
 	},
 /turf/open/floor,
@@ -323,13 +323,13 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bj" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/item/stack/sheet/metal,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bk" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/alarm{
+/obj/structure/machinery/alarm{
 	dir = 1;
 	icon_state = "alarm0";
 	pixel_y = -30;
@@ -339,7 +339,7 @@
 /area/bigredv2/outside/engineering)
 "bl" = (
 /obj/effect/decal/cleanable/liquid_fuel,
-/obj/machinery/door_control{
+/obj/structure/machinery/door_control{
 	id = "Engineering";
 	name = "Storm Shutters";
 	pixel_x = 0;
@@ -371,17 +371,17 @@
 /area/bigredv2/outside/engineering)
 "bp" = (
 /obj/item/folder/yellow,
-/obj/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bq" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
-/obj/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 4;
 	name = "\improper Engineering Workshop";
 	req_one_access = list()
@@ -390,7 +390,7 @@
 /area/bigredv2/outside/engineering)
 "br" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -398,7 +398,7 @@
 /area/bigredv2/outside/engineering)
 "bs" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor/plating{
@@ -406,7 +406,7 @@
 	},
 /area/bigredv2/outside/engineering)
 "bu" = (
-/obj/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Engine Reactor Control";
 	req_one_access = list()
@@ -424,12 +424,12 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bx" = (
-/obj/machinery/computer/arcade,
+/obj/structure/machinery/computer/arcade,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "by" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bz" = (
@@ -459,7 +459,7 @@
 /area/bigredv2/outside/engineering)
 "bE" = (
 /obj/structure/table,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -467,13 +467,13 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bF" = (
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bG" = (
-/obj/machinery/power/breakerbox,
+/obj/structure/machinery/power/breakerbox,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bH" = (
@@ -489,7 +489,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -500,15 +500,15 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bL" = (
-/obj/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bM" = (
-/obj/machinery/vending/snack,
+/obj/structure/machinery/vending/snack,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bN" = (
-/obj/machinery/vending/cola,
+/obj/structure/machinery/vending/cola,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bO" = (
@@ -528,7 +528,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bR" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
 	},
@@ -539,13 +539,13 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bT" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	on = 1
 	},
@@ -564,14 +564,14 @@
 /area/bigredv2/outside/engineering)
 "bV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bX" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor,
@@ -601,7 +601,7 @@
 /area/bigredv2/outside/engineering)
 "ce" = (
 /obj/item/tool/lighter/random,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
@@ -615,7 +615,7 @@
 	},
 /area/bigredv2/outside/engineering)
 "cg" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -642,7 +642,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cn" = (
-/obj/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 1;
 	name = "\improper Engine Reactor";
 	req_access = list()
@@ -671,11 +671,11 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cs" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
-/obj/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 4;
 	name = "\improper Engine Reactor Control";
 	req_one_access = list()
@@ -683,7 +683,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "ct" = (
-/obj/machinery/door_control{
+/obj/structure/machinery/door_control{
 	desc = "A remote control-switch for opening the engines blast doors.";
 	id = "rad_door";
 	name = "Reactor Radiation Shielding control";
@@ -696,7 +696,7 @@
 	},
 /area/bigredv2/outside/engineering)
 "cv" = (
-/obj/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 4;
 	name = "\improper Engine Reactor Control";
 	req_one_access = list()
@@ -704,7 +704,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor/plating{
@@ -712,19 +712,19 @@
 	},
 /area/bigredv2/outside/engineering)
 "cx" = (
-/obj/machinery/constructable_frame{
+/obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/constructable_frame,
+/obj/structure/machinery/constructable_frame,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cz" = (
 /obj/structure/table,
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /obj/effect/spawner/random/tool,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -737,7 +737,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cB" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
 	},
@@ -747,7 +747,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cC" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -756,11 +756,11 @@
 	},
 /area/bigredv2/outside/engineering)
 "cD" = (
-/obj/machinery/computer/area_atmos,
+/obj/structure/machinery/computer/area_atmos,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cE" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -776,7 +776,7 @@
 /area/bigredv2/outside/engineering)
 "cG" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Engineering";
 	name = "\improper Engineering Shutters"
 	},
@@ -833,11 +833,11 @@
 	},
 /area/bigredv2/outside/sw)
 "cX" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Engineering Complex"
 	},
@@ -873,11 +873,11 @@
 	},
 /area/bigredv2/outside/sw)
 "df" = (
-/obj/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "di" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -913,14 +913,14 @@
 /turf/open/mars_cave,
 /area/bigredv2/outside/sw)
 "do" = (
-/obj/machinery/compressor{
+/obj/structure/machinery/compressor{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "dp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_construct{
+/obj/structure/machinery/light_construct{
 	icon_state = "tube-construct-stage1";
 	dir = 8
 	},
@@ -937,7 +937,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "dr" = (
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	id = "rad_door";
 	name = "\improper Radiation Shielding"
 	},
@@ -956,7 +956,7 @@
 	},
 /area/bigredv2/outside/sw)
 "dv" = (
-/obj/machinery/power/turbine,
+/obj/structure/machinery/power/turbine,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "dx" = (
@@ -971,14 +971,14 @@
 	},
 /area/bigredv2/outside/engineering)
 "dy" = (
-/obj/machinery/power/geothermal{
+/obj/structure/machinery/power/geothermal{
 	name = "Reactor Turbine";
 	power_generation_max = 1e+006
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "dz" = (
-/obj/machinery/light_construct,
+/obj/structure/machinery/light_construct,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "dA" = (
@@ -1004,7 +1004,7 @@
 	},
 /area/bigredv2/outside/s)
 "dG" = (
-/obj/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/port_gen/pacman,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
@@ -1027,7 +1027,7 @@
 	},
 /area/bigredv2/outside/sw)
 "dK" = (
-/obj/machinery/compressor{
+/obj/structure/machinery/compressor{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -1147,7 +1147,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "ef" = (
-/obj/machinery/light_construct{
+/obj/structure/machinery/light_construct{
 	icon_state = "tube-construct-stage1";
 	dir = 4
 	},
@@ -1164,7 +1164,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "ei" = (
-/obj/machinery/compressor{
+/obj/structure/machinery/compressor{
 	dir = 1
 	},
 /turf/open/floor/plating{
@@ -1172,7 +1172,7 @@
 	},
 /area/bigredv2/outside/engineering)
 "ej" = (
-/obj/machinery/light_construct{
+/obj/structure/machinery/light_construct{
 	icon_state = "tube-construct-stage1";
 	dir = 4
 	},
@@ -1181,24 +1181,24 @@
 	},
 /area/bigredv2/outside/engineering)
 "ek" = (
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
-/obj/machinery/light_construct{
+/obj/structure/machinery/light_construct{
 	icon_state = "tube-construct-stage1";
 	dir = 8
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "el" = (
-/obj/machinery/light_construct{
+/obj/structure/machinery/light_construct{
 	icon_state = "tube-construct-stage1";
 	dir = 8
 	},
 /turf/open/gm/river,
 /area/bigredv2/outside/engineering)
 "em" = (
-/obj/machinery/light_construct{
+/obj/structure/machinery/light_construct{
 	icon_state = "tube-construct-stage1";
 	dir = 1
 	},
@@ -1243,7 +1243,7 @@
 	},
 /area/bigredv2/outside/engineering)
 "ev" = (
-/obj/machinery/light_construct,
+/obj/structure/machinery/light_construct,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -1266,7 +1266,7 @@
 	},
 /area/bigredv2/outside/engineering)
 "ey" = (
-/obj/machinery/light_construct{
+/obj/structure/machinery/light_construct{
 	icon_state = "tube-construct-stage1";
 	dir = 4
 	},
@@ -1280,7 +1280,7 @@
 	},
 /area/bigredv2/outside/engineering)
 "eA" = (
-/obj/machinery/light_construct{
+/obj/structure/machinery/light_construct{
 	icon_state = "tube-construct-stage1";
 	dir = 1
 	},

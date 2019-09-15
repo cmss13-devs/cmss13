@@ -21,7 +21,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "f" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
 	},
@@ -87,14 +87,14 @@
 /turf/open/ice,
 /area/bigredv2/caves/eta/xenobiology)
 "p" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
 /turf/open/mars,
 /area/bigredv2/caves/eta/xenobiology)
 "q" = (
-/obj/machinery/door/airlock/almayer/research/glass{
+/obj/structure/machinery/door/airlock/almayer/research/glass{
 	dir = 4;
 	name = "\improper Eta Lab Cell";
 	req_access = list()
@@ -130,13 +130,13 @@
 /turf/open/ice,
 /area/bigredv2/caves/eta/xenobiology)
 "u" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/ice,
 /area/bigredv2/caves/eta/xenobiology)
 "v" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
@@ -157,7 +157,7 @@
 /turf/open/ice,
 /area/bigredv2/caves/eta/xenobiology)
 "y" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
 	},
@@ -181,7 +181,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "B" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},

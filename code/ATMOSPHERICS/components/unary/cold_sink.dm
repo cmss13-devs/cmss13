@@ -1,7 +1,7 @@
 //TODO: Put this under a common parent type with heaters to cut down on the copypasta
 #define FREEZER_PERF_MULT 2.5
 
-/obj/machinery/atmospherics/unary/freezer
+/obj/structure/machinery/atmospherics/unary/freezer
 	name = "gas cooling system"
 	desc = "Cools gas when connected to pipe network"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
@@ -16,7 +16,7 @@
 	var/cooling = 0
 	var/opened = 0	//for deconstruction
 
-/obj/machinery/atmospherics/unary/freezer/New()
+/obj/structure/machinery/atmospherics/unary/freezer/New()
 	..()
 	initialize_directions = dir
 
@@ -29,12 +29,12 @@
 
 	start_processing()
 
-/obj/machinery/atmospherics/unary/freezer/initialize()
+/obj/structure/machinery/atmospherics/unary/freezer/initialize()
 	if(node) return
 
 	var/node_connect = dir
 
-	for(var/obj/machinery/atmospherics/target in get_step(src,node_connect))
+	for(var/obj/structure/machinery/atmospherics/target in get_step(src,node_connect))
 		if(target.initialize_directions & get_dir(target,src))
 			node = target
 			break
@@ -42,7 +42,7 @@
 	update_icon()
 
 
-/obj/machinery/atmospherics/unary/freezer/update_icon()
+/obj/structure/machinery/atmospherics/unary/freezer/update_icon()
 	if(src.node)
 		if(src.on && cooling)
 			icon_state = "freezer_1"
@@ -52,15 +52,15 @@
 		icon_state = "freezer_0"
 	return
 
-/obj/machinery/atmospherics/unary/freezer/attack_ai(mob/user as mob)
+/obj/structure/machinery/atmospherics/unary/freezer/attack_ai(mob/user as mob)
 	src.ui_interact(user)
 
-/obj/machinery/atmospherics/unary/freezer/attack_hand(mob/user as mob)
+/obj/structure/machinery/atmospherics/unary/freezer/attack_hand(mob/user as mob)
 	src.ui_interact(user)
 
 
 //upgrading parts
-/obj/machinery/atmospherics/unary/freezer/RefreshParts()
+/obj/structure/machinery/atmospherics/unary/freezer/RefreshParts()
 	..()
 	var/cap_rating = 0
 	var/cap_count = 0
@@ -85,7 +85,7 @@
 
 
 //dismantling code. copied from autolathe
-/obj/machinery/atmospherics/unary/freezer/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/atmospherics/unary/freezer/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/tool/screwdriver))
 		opened = !opened
 		to_chat(user, "You [opened ? "open" : "close"] the maintenance hatch of [src].")
@@ -97,7 +97,7 @@
 
 	..()
 
-/obj/machinery/atmospherics/unary/freezer/examine(mob/user)
+/obj/structure/machinery/atmospherics/unary/freezer/examine(mob/user)
 	..()
 	if(opened)
 		to_chat(user, "The maintenance hatch is open.")

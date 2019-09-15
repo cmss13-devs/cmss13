@@ -1,6 +1,6 @@
 //#define AMAP
 
-/obj/machinery/computer/security/verb/station_map()
+/obj/structure/machinery/computer/security/verb/station_map()
 	set name = ".map"
 	set category = "Object"
 	set src in view(1)
@@ -11,7 +11,7 @@
 
 	src.drawmap(usr)
 
-/obj/machinery/computer/security/proc/drawmap(var/mob/user as mob)
+/obj/structure/machinery/computer/security/proc/drawmap(var/mob/user as mob)
 
 	var/icx = round(world.maxx/16) + 1
 	var/icy = round(world.maxy/16) + 1
@@ -81,14 +81,14 @@
 
 					for(var/atom/AM in T.contents)
 
-						if(istype(AM, /obj/machinery/door) && !istype(AM, /obj/machinery/door/window))
+						if(istype(AM, /obj/structure/machinery/door) && !istype(AM, /obj/structure/machinery/door/window))
 							if(AM.density)
 								colour = rgb(96,96,192)
 								colour2 = colour
 							else
 								colour = rgb(128,192,128)
 
-						if(istype(AM, /obj/machinery/alarm))
+						if(istype(AM, /obj/structure/machinery/alarm))
 							colour = rgb(0,255,0)
 							colour2 = colour
 							if(AM.icon_state=="alarm:1")
@@ -203,13 +203,13 @@
 
 					for(var/atom/AM in T.contents)
 
-						if(istype(AM, /obj/machinery/door) && !istype(AM, /obj/machinery/door/window))
+						if(istype(AM, /obj/structure/machinery/door) && !istype(AM, /obj/structure/machinery/door/window))
 							if(AM.density)
 								colour = rgb(0,96,192)
 							else
 								colour = rgb(96,192,128)
 
-						if(istype(AM, /obj/machinery/alarm))
+						if(istype(AM, /obj/structure/machinery/alarm))
 							colour = rgb(0,255,0)
 
 							if(AM.icon_state=="alarm:1")
@@ -283,11 +283,11 @@
 
 
 
-/obj/machinery/computer/security/proc/close(mob/user)
+/obj/structure/machinery/computer/security/proc/close(mob/user)
 	spawn(20)
 		var/using = null
 		if(user.mapobjs)
-			for(var/obj/machinery/computer/security/seccomp in oview(1,user))
+			for(var/obj/structure/machinery/computer/security/seccomp in oview(1,user))
 				if(seccomp == src)
 					using = 1
 					break

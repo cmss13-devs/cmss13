@@ -4,15 +4,15 @@
 /area/bigredv2/outside/chapel)
 "ac" = (
 /obj/structure/window/framed/colony,
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Chapel";
 	name = "\improper Chapel Shutters"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/chapel)
 "ad" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 4;
 	name = "\improper Chapel"
 	},
@@ -71,7 +71,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "ak" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor{
@@ -81,7 +81,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "al" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -93,7 +93,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "an" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 9
 	},
 /obj/effect/decal/cleanable/blood{
@@ -108,7 +108,7 @@
 /area/bigredv2/outside/chapel)
 "ao" = (
 /obj/structure/window/framed/colony,
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "Chapel";
 	name = "\improper Chapel Shutters"
@@ -193,7 +193,7 @@
 	icon_state = "wooden_chair";
 	tag = ""
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "chapel"
@@ -251,7 +251,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aE" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -310,7 +310,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aJ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/structure/bed/chair/wood/normal{
 	dir = 8;
 	icon_state = "wooden_chair";
@@ -333,7 +333,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aN" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
@@ -346,7 +346,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aO" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -368,7 +368,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -386,7 +386,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -402,7 +402,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aT" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -416,7 +416,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aU" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
 /obj/item/tool/candle,
 /turf/open/floor{
 	tag = "icon-darkish";
@@ -425,7 +425,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -439,7 +439,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aW" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -451,7 +451,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aX" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	on = 1
 	},
@@ -547,7 +547,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "bk" = (
-/obj/machinery/door_control{
+/obj/structure/machinery/door_control{
 	id = "Chapel";
 	name = "Storm Shutters";
 	pixel_x = -32;
@@ -560,7 +560,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "bl" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /obj/item/ectoplasm,
 /turf/open/floor{
 	tag = "icon-darkish";
@@ -569,7 +569,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "bm" = (
-/obj/machinery/power/apc,
+/obj/structure/machinery/power/apc,
 /obj/effect/decal/cleanable/blood{
 	tag = "icon-gib6";
 	icon_state = "gib6"
@@ -581,7 +581,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "bo" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor{
 	tag = "icon-darkish";
 	icon_state = "darkish";
@@ -589,7 +589,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "bp" = (
-/obj/machinery/alarm{
+/obj/structure/machinery/alarm{
 	dir = 1;
 	icon_state = "alarm0";
 	pixel_y = -30;

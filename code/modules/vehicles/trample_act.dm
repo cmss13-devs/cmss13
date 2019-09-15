@@ -66,8 +66,8 @@
 		return
 
 	// Attempt to open doors before crushing them
-	if(istype(A, /obj/machinery/door))
-		var/obj/machinery/door/D = A
+	if(istype(A, /obj/structure/machinery/door))
+		var/obj/structure/machinery/door/D = A
 		// Check if we can even fit through first
 		var/list/vehicle_dimensions = root.get_dimensions()
 		// The door should be facing east/west when the tank is facing north/south, and north/south when the tank is facing east/west

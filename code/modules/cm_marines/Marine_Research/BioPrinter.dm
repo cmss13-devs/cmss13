@@ -3,7 +3,7 @@ BioPrinter.
 Basically a cheap knock-off of the Protolathe that I wrote in the middle of the night...
 
 */
-/obj/machinery/r_n_d/bioprinter
+/obj/structure/machinery/r_n_d/bioprinter
 	name = "Weyland Yutani Brand Bio-Organic Printer(TM)"
 	icon_state = "protolathe"
 	flags_atom = OPENCONTAINER
@@ -17,7 +17,7 @@ Basically a cheap knock-off of the Protolathe that I wrote in the middle of the 
 	var/blood_amount = 0.0
 	var/chitin_amount = 0.0
 
-/obj/machinery/r_n_d/bioprinter/New()
+/obj/structure/machinery/r_n_d/bioprinter/New()
 	..()
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/machine/protolathe(src) //We'll need to make our own board one day
@@ -29,10 +29,10 @@ Basically a cheap knock-off of the Protolathe that I wrote in the middle of the 
 	component_parts += new /obj/item/reagent_container/glass/beaker(src)
 	RefreshParts()
 
-/obj/machinery/r_n_d/bioprinter/proc/TotalMaterials()
+/obj/structure/machinery/r_n_d/bioprinter/proc/TotalMaterials()
 	return resin_amount+blood_amount+chitin_amount
 
-/obj/machinery/r_n_d/bioprinter/RefreshParts()
+/obj/structure/machinery/r_n_d/bioprinter/RefreshParts()
 	var/T = 0
 	for(var/obj/item/reagent_container/glass/G in component_parts)
 		T += G.reagents.maximum_volume
@@ -44,7 +44,7 @@ Basically a cheap knock-off of the Protolathe that I wrote in the middle of the 
 		T += M.rating
 	max_material_storage = T * 75000
 
-/obj/machinery/r_n_d/bioprinter/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/r_n_d/bioprinter/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if (shocked)
 		shock(user,50)
 	if (O.is_open_container())
@@ -65,7 +65,7 @@ Basically a cheap knock-off of the Protolathe that I wrote in the middle of the 
 	if (opened)
 		if(istype(O, /obj/item/tool/crowbar))
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-			var/obj/machinery/constructable_frame/M = new /obj/machinery/constructable_frame(src.loc)
+			var/obj/structure/machinery/constructable_frame/M = new /obj/structure/machinery/constructable_frame(src.loc)
 			M.state = CONSTRUCTION_STATE_PROGRESS
 			M.update_icon()
 			for(var/obj/I in component_parts)
@@ -119,5 +119,5 @@ Basically a cheap knock-off of the Protolathe that I wrote in the middle of the 
 	return
 
 
-/obj/machinery/r_n_d/bioprinter/attack_hand(mob/user as mob)
+/obj/structure/machinery/r_n_d/bioprinter/attack_hand(mob/user as mob)
 	return

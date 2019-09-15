@@ -80,7 +80,7 @@ var/list/mechtoys = list(
 	desc = "Heavy duty, airtight, plastic flaps."
 
 
-/obj/machinery/computer/supplycomp
+/obj/structure/machinery/computer/supplycomp
 	name = "ASRS console"
 	desc = "A console for an Automated Storage and Retrieval System"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
@@ -93,7 +93,7 @@ var/list/mechtoys = list(
 	var/can_order_contraband = 0
 	var/last_viewed_group = "categories"
 
-/obj/machinery/computer/ordercomp
+/obj/structure/machinery/computer/ordercomp
 	name = "Supply ordering console"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "request"
@@ -102,7 +102,7 @@ var/list/mechtoys = list(
 	var/reqtime = 0 //Cooldown for requisitions - Quarxink
 	var/last_viewed_group = "categories"
 
-/obj/machinery/computer/supply_drop_console
+/obj/structure/machinery/computer/supply_drop_console
 	name = "Supply Drop Console"
 	desc = "An old fashioned computer hooked into the nearby Supply Drop system."
 	icon_state = "security_cam"
@@ -115,7 +115,7 @@ var/list/mechtoys = list(
 	var/drop_cooldown = 5000
 	var/can_pick_squad = TRUE
 
-/obj/machinery/computer/supply_drop_console/attack_hand(mob/user)
+/obj/structure/machinery/computer/supply_drop_console/attack_hand(mob/user)
 	if(..())  //Checks for power outages
 		return
 	if(!allowed(user))
@@ -155,7 +155,7 @@ var/list/mechtoys = list(
 	user << browse(dat, "window=overwatch;size=550x550")
 	return
 
-/obj/machinery/computer/supply_drop_console/Topic(href, href_list)
+/obj/structure/machinery/computer/supply_drop_console/Topic(href, href_list)
 	if(..())  //Checks for power outages
 		return
 	if(!href_list["operation"])
@@ -197,7 +197,7 @@ var/list/mechtoys = list(
 					handle_supplydrop()
 	src.attack_hand(usr) //Refresh
 
-/obj/machinery/computer/supply_drop_console/proc/handle_supplydrop()
+/obj/structure/machinery/computer/supply_drop_console/proc/handle_supplydrop()
 	if(busy)
 		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>The [name] is busy processing another action!</span>")
 		return
@@ -255,7 +255,7 @@ var/list/mechtoys = list(
 
 
 //Sends a string to our currently selected squad.
-/obj/machinery/computer/supply_drop_console/proc/send_to_squad(var/txt = "", var/plus_name = 0, var/only_leader = 0)
+/obj/structure/machinery/computer/supply_drop_console/proc/send_to_squad(var/txt = "", var/plus_name = 0, var/only_leader = 0)
 	if(txt == "" || !current_squad) return //Logic
 
 	var/text = copytext(sanitize(txt), 1, MAX_MESSAGE_LEN)
@@ -280,14 +280,14 @@ var/list/mechtoys = list(
 //A limited version of the above console
 //Can't pick squads, drops less often
 //Uses Echo squad as a placeholder to access its own drop pad
-/obj/machinery/computer/supply_drop_console/limited
+/obj/structure/machinery/computer/supply_drop_console/limited
 	drop_cooldown = 5 MINUTES //higher cooldown than usual
 	can_pick_squad = FALSE//Can't pick squads
 
-/obj/machinery/computer/supply_drop_console/limited/New()
+/obj/structure/machinery/computer/supply_drop_console/limited/New()
 	current_squad = get_squad_by_name("Echo") //Hardwired into Echo
 
-/obj/machinery/computer/supply_drop_console/limited/attack_hand(mob/user)
+/obj/structure/machinery/computer/supply_drop_console/limited/attack_hand(mob/user)
 	if(!current_squad)
 		current_squad = get_squad_by_name("Echo") //Hardwired into Echo
 	. = ..()
@@ -549,13 +549,13 @@ var/list/mechtoys = list(
 	name = "Supply Manifest"
 
 
-/obj/machinery/computer/ordercomp/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/ordercomp/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/supplycomp/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/supplycomp/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/ordercomp/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/ordercomp/attack_hand(var/mob/user as mob)
 	if(..())
 		return
 	user.set_interaction(src)
@@ -577,7 +577,7 @@ var/list/mechtoys = list(
 	onclose(user, "computer")
 	return
 
-/obj/machinery/computer/ordercomp/Topic(href, href_list)
+/obj/structure/machinery/computer/ordercomp/Topic(href, href_list)
 	if(..())
 		return
 
@@ -677,7 +677,7 @@ var/list/mechtoys = list(
 	updateUsrDialog()
 	return
 
-/obj/machinery/computer/supplycomp/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/supplycomp/attack_hand(var/mob/user as mob)
 	if(z != MAIN_SHIP_Z_LEVEL) return
 	if(!allowed(user))
 		to_chat(user, SPAN_DANGER("Access Denied."))
@@ -737,7 +737,7 @@ var/list/mechtoys = list(
 	onclose(user, "computer")
 	return
 
-/obj/machinery/computer/supplycomp/Topic(href, href_list)
+/obj/structure/machinery/computer/supplycomp/Topic(href, href_list)
 	if(z != MAIN_SHIP_Z_LEVEL) return
 	if(!supply_controller)
 		world.log << "## ERROR: Eek. The supply_controller controller datum is missing somehow."
@@ -937,7 +937,7 @@ var/list/mechtoys = list(
 	updateUsrDialog()
 	return
 
-/obj/machinery/computer/supplycomp/proc/post_signal(var/command)
+/obj/structure/machinery/computer/supplycomp/proc/post_signal(var/command)
 
 	var/datum/radio_frequency/frequency = radio_controller.return_frequency(1435)
 

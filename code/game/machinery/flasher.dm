@@ -1,6 +1,6 @@
 // It is a gizmo that flashes a small area
 
-/obj/machinery/flasher
+/obj/structure/machinery/flasher
 	name = "Mounted flash"
 	desc = "A wall-mounted flashbulb device."
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
@@ -13,7 +13,7 @@
 	var/base_state = "mflash"
 	anchored = 1
 
-/obj/machinery/flasher/portable //Portable version of the flasher. Only flashes when anchored
+/obj/structure/machinery/flasher/portable //Portable version of the flasher. Only flashes when anchored
 	name = "portable flasher"
 	desc = "A portable flashing device. Wrench to activate and deactivate. Cannot detect slow movements."
 	icon_state = "pflash1"
@@ -23,11 +23,11 @@
 	density = 1
 
 /*
-/obj/machinery/flasher/New()
+/obj/structure/machinery/flasher/New()
 	sleep(4)					//<--- What the fuck are you doing? D=
 	src.sd_SetLuminosity(2)
 */
-/obj/machinery/flasher/power_change()
+/obj/structure/machinery/flasher/power_change()
 	..()
 	if ( !(stat & NOPOWER) )
 		icon_state = "[base_state]1"
@@ -37,7 +37,7 @@
 //		src.sd_SetLuminosity(0)
 
 //Don't want to render prison breaks impossible
-/obj/machinery/flasher/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/flasher/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/tool/wirecutters))
 		add_fingerprint(user)
 		src.disable = !src.disable
@@ -47,13 +47,13 @@
 			user.visible_message(SPAN_DANGER("[user] has connected the [src]'s flashbulb!"), SPAN_DANGER("You connect the [src]'s flashbulb!"))
 
 //Let the AI trigger them directly.
-/obj/machinery/flasher/attack_ai()
+/obj/structure/machinery/flasher/attack_ai()
 	if (src.anchored)
 		return src.flash()
 	else
 		return
 
-/obj/machinery/flasher/proc/flash()
+/obj/structure/machinery/flasher/proc/flash()
 	if (!(powered()))
 		return
 
@@ -88,7 +88,7 @@
 			O.flash_eyes()
 
 
-/obj/machinery/flasher/emp_act(severity)
+/obj/structure/machinery/flasher/emp_act(severity)
 	if(stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
@@ -96,7 +96,7 @@
 		flash()
 	..(severity)
 
-/obj/machinery/flasher/portable/HasProximity(atom/movable/AM as mob|obj)
+/obj/structure/machinery/flasher/portable/HasProximity(atom/movable/AM as mob|obj)
 	if ((src.disable) || (src.last_flash && world.time < src.last_flash + 150))
 		return
 
@@ -105,7 +105,7 @@
 		if ((M.m_intent != MOVE_INTENT_WALK) && (src.anchored))
 			src.flash()
 
-/obj/machinery/flasher/portable/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/flasher/portable/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/tool/wrench))
 		add_fingerprint(user)
 		src.anchored = !src.anchored
@@ -118,13 +118,13 @@
 			user.show_message(text(SPAN_DANGER("[src] is now secured.")))
 			src.overlays += "[base_state]-s"
 
-/obj/machinery/flasher_button/attack_ai(mob/user as mob)
+/obj/structure/machinery/flasher_button/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/flasher_button/attackby(obj/item/W, mob/user as mob)
+/obj/structure/machinery/flasher_button/attackby(obj/item/W, mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/flasher_button/attack_hand(mob/user as mob)
+/obj/structure/machinery/flasher_button/attack_hand(mob/user as mob)
 
 	if(stat & (NOPOWER|BROKEN))
 		return
@@ -140,7 +140,7 @@
 	active = 1
 	icon_state = "launcheract"
 
-	for(var/obj/machinery/flasher/M in machines)
+	for(var/obj/structure/machinery/flasher/M in machines)
 		if(M.id == src.id)
 			spawn()
 				M.flash()

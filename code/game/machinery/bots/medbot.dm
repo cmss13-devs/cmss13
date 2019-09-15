@@ -3,7 +3,7 @@
 //MEDBOT ASSEMBLY
 
 
-/obj/machinery/bot/medbot
+/obj/structure/machinery/bot/medbot
 	name = "Medibot"
 	desc = "A little medical robot. He looks somewhat underwhelmed."
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
@@ -38,7 +38,7 @@
 	var/declare_treatment = 0 //When attempting to treat a patient, should it notify everyone wearing medhuds?
 	var/shut_up = 0 //self explanatory :)
 
-/obj/machinery/bot/medbot/mysterious
+/obj/structure/machinery/bot/medbot/mysterious
 	name = "Mysterious Medibot"
 	desc = "International Medibot of mystery."
 	skin = "bezerk"
@@ -50,7 +50,7 @@
 
 
 
-/obj/machinery/bot/medbot/New()
+/obj/structure/machinery/bot/medbot/New()
 	..()
 	src.icon_state = "medibot[src.on]"
 
@@ -66,12 +66,12 @@
 			src.botcard.access = src.botcard_access
 	start_processing()
 
-/obj/machinery/bot/medbot/turn_on()
+/obj/structure/machinery/bot/medbot/turn_on()
 	. = ..()
 	src.icon_state = "medibot[src.on]"
 	src.updateUsrDialog()
 
-/obj/machinery/bot/medbot/turn_off()
+/obj/structure/machinery/bot/medbot/turn_off()
 	..()
 	src.patient = null
 	src.oldpatient = null
@@ -82,7 +82,7 @@
 	src.icon_state = "medibot[src.on]"
 	src.updateUsrDialog()
 
-/obj/machinery/bot/medbot/attack_hand(mob/user as mob)
+/obj/structure/machinery/bot/medbot/attack_hand(mob/user as mob)
 	. = ..()
 	if (.)
 		return
@@ -127,7 +127,7 @@
 	onclose(user, "automed")
 	return
 
-/obj/machinery/bot/medbot/Topic(href, href_list)
+/obj/structure/machinery/bot/medbot/Topic(href, href_list)
 	if(..())
 		return
 	usr.set_interaction(src)
@@ -176,7 +176,7 @@
 	src.updateUsrDialog()
 	return
 
-/obj/machinery/bot/medbot/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/bot/medbot/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/card/id)||istype(W, /obj/item/device/pda))
 		if (src.allowed(user) && !open)
 			src.locked = !src.locked
@@ -207,7 +207,7 @@
 		if (health < maxhealth && !istype(W, /obj/item/tool/screwdriver) && W.force)
 			step_to(src, (get_step_away(src,user)))
 
-/obj/machinery/bot/medbot/process()
+/obj/structure/machinery/bot/medbot/process()
 	set background = 1
 
 	if(!src.on)
@@ -299,7 +299,7 @@
 
 	return
 
-/obj/machinery/bot/medbot/proc/assess_patient(mob/living/carbon/C as mob)
+/obj/structure/machinery/bot/medbot/proc/assess_patient(mob/living/carbon/C as mob)
 	//Time to see if they need medical help!
 	if(C.stat == 2)
 		return 0 //welp too late for them!
@@ -339,7 +339,7 @@
 
 	return 0
 
-/obj/machinery/bot/medbot/proc/medicate_patient(mob/living/carbon/C as mob)
+/obj/structure/machinery/bot/medbot/proc/medicate_patient(mob/living/carbon/C as mob)
 	if(!src.on)
 		return
 
@@ -424,13 +424,13 @@
 	return
 
 
-/obj/machinery/bot/medbot/proc/speak(var/message)
+/obj/structure/machinery/bot/medbot/proc/speak(var/message)
 	if((!src.on) || (!message))
 		return
 	visible_message("[src] beeps, \"[message]\"")
 	return
 
-/obj/machinery/bot/medbot/explode()
+/obj/structure/machinery/bot/medbot/explode()
 	src.on = 0
 	visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), 1)
 	var/turf/Tsec = get_turf(src)
@@ -454,10 +454,10 @@
 	qdel(src)
 	return
 
-/obj/machinery/bot/medbot/Bump(M as mob|obj) //Leave no door unopened!
-	if ((istype(M, /obj/machinery/door)) && (!isnull(src.botcard)))
-		var/obj/machinery/door/D = M
-		if (!istype(D, /obj/machinery/door/firedoor) && D.check_access(src.botcard) && !istype(D,/obj/machinery/door/poddoor))
+/obj/structure/machinery/bot/medbot/Bump(M as mob|obj) //Leave no door unopened!
+	if ((istype(M, /obj/structure/machinery/door)) && (!isnull(src.botcard)))
+		var/obj/structure/machinery/door/D = M
+		if (!istype(D, /obj/structure/machinery/door/firedoor) && D.check_access(src.botcard) && !istype(D,/obj/structure/machinery/door/poddoor))
 			D.open()
 			src.frustration = 0
 	else if ((istype(M, /mob/living/)) && (!src.anchored))
@@ -466,7 +466,7 @@
 	return
 
 /* terrible
-/obj/machinery/bot/medbot/Bumped(atom/movable/M as mob|obj)
+/obj/structure/machinery/bot/medbot/Bumped(atom/movable/M as mob|obj)
 	spawn(0)
 		if (M)
 			var/turf/T = get_turf(src)

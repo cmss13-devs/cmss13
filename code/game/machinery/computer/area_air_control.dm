@@ -1,4 +1,4 @@
-/obj/machinery/computer/area_atmos
+/obj/structure/machinery/computer/area_atmos
 	name = "Area Air Control"
 	desc = "A computer used to control the stationary scrubbers and pumps in the area."
 	icon_state = "area_atmos"
@@ -68,7 +68,7 @@
 				<font color="red">[status]</font><br>
 				<a href="?src=\ref[src];scan=1">Scan</a>
 				<table border="1" width="90%">"}
-		for(var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber in connectedscrubbers)
+		for(var/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/scrubber in connectedscrubbers)
 			dat += {"
 					<tr>
 						<td>
@@ -94,7 +94,7 @@
 		if(href_list["scan"])
 			scanscrubbers()
 		else if(href_list["toggle"])
-			var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber = locate(href_list["scrub"])
+			var/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/scrubber = locate(href_list["scrub"])
 
 			if(!validscrubber(scrubber))
 				spawn(20)
@@ -106,7 +106,7 @@
 			scrubber.on = text2num(href_list["toggle"])
 			scrubber.update_icon()
 
-	proc/validscrubber( var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber as obj )
+	proc/validscrubber( var/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/scrubber as obj )
 		if(!isobj(scrubber) || get_dist(scrubber.loc, src.loc) > src.range || scrubber.loc.z != src.loc.z)
 			return 0
 
@@ -116,7 +116,7 @@
 		connectedscrubbers = new()
 
 		var/found = 0
-		for(var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber in range(range, src.loc))
+		for(var/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/scrubber in range(range, src.loc))
 			if(istype(scrubber))
 				found = 1
 				connectedscrubbers += scrubber
@@ -127,10 +127,10 @@
 		src.updateUsrDialog()
 
 
-/obj/machinery/computer/area_atmos/area
+/obj/structure/machinery/computer/area_atmos/area
 	zone = "This computer is working in a wired network limited to this area."
 
-	validscrubber( var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber as obj )
+	validscrubber( var/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/scrubber as obj )
 		if(!isobj(scrubber))
 			return 0
 
@@ -164,7 +164,7 @@
 		var/area/A = T.loc
 		if (A.master)
 			A = A.master
-		for(var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber in machines )
+		for(var/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/scrubber in machines )
 			var/turf/T2 = get_turf(scrubber)
 			if(T2 && T2.loc)
 				var/area/A2 = T2.loc

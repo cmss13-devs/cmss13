@@ -1,6 +1,6 @@
 "a" = (/turf/open/space,/area/space)
 "b" = (/turf/closed/wall/indestructible,/area/space)
-"c" = (/obj/machinery/telecomms/relay/preset/station{idle_power_usage = 0; listening_level = 1; unacidable = 1; use_power = 0},/turf/open/floor,/area/space)
+"c" = (/obj/structure/machinery/telecomms/relay/preset/station{idle_power_usage = 0; listening_level = 1; unacidable = 1; use_power = 0},/turf/open/floor,/area/space)
 "d" = (/obj/effect/step_trigger/teleporter/random{affect_ghosts = 1; name = "tele_ground1"; teleport_x = 180; teleport_x_offset = 200; teleport_y = 50; teleport_y_offset = 80; teleport_z = 1; teleport_z_offset = 1},/turf/open/space/transit/north/shuttlespace_ns2,/area/space)
 "e" = (/obj/effect/step_trigger/teleporter/random{affect_ghosts = 1; name = "escapeshuttle_leave"; teleport_x = 25; teleport_x_offset = 245; teleport_y = 25; teleport_y_offset = 245; teleport_z = 1; teleport_z_offset = 1},/turf/open/space/transit/north/shuttlespace_ns2,/area/space)
 "f" = (/turf/open/space/transit/north/shuttlespace_ns4,/area/space)

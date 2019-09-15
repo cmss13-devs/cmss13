@@ -1,11 +1,11 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 
-/obj/machinery/computer/security
+/obj/structure/machinery/computer/security
 	name = "Security Cameras"
 	desc = "Used to access the various cameras on the station."
 	icon_state = "cameras"
-	var/obj/machinery/camera/current = null
+	var/obj/structure/machinery/camera/current = null
 	var/last_pic = 1.0
 	var/list/network = list("military")
 	var/mapping = 0//For the overview file, interesting bit of code.
@@ -45,14 +45,14 @@
 			user.set_interaction(src)
 
 		var/list/L = list()
-		for (var/obj/machinery/camera/C in cameranet.cameras)
+		for (var/obj/structure/machinery/camera/C in cameranet.cameras)
 			L.Add(C)
 
 		camera_sort(L)
 
 		var/list/D = list()
 		D["Cancel"] = "Cancel"
-		for(var/obj/machinery/camera/C in L)
+		for(var/obj/structure/machinery/camera/C in L)
 			if(can_access_camera(C))
 				D["[C.c_tag][C.can_use() ? null : " (Deactivated)"]"] = C
 
@@ -61,7 +61,7 @@
 			user.unset_interaction()
 			return 0
 
-		var/obj/machinery/camera/C = D[t]
+		var/obj/structure/machinery/camera/C = D[t]
 		if(t == "Cancel")
 			user.unset_interaction()
 			return 0
@@ -73,13 +73,13 @@
 				attack_hand(user)
 		return
 
-	proc/can_access_camera(obj/machinery/camera/C)
+	proc/can_access_camera(obj/structure/machinery/camera/C)
 		var/list/shared_networks = src.network & C.network
 		if(shared_networks.len)
 			return 1
 		return 0
 
-	proc/switch_to_camera(mob/user, obj/machinery/camera/C)
+	proc/switch_to_camera(mob/user, obj/structure/machinery/camera/C)
 		//don't need to check if the camera works for AI because the AI jumps to the camera location and doesn't actually look through cameras.
 		if(isAI(user))
 			var/mob/living/silicon/ai/A = user
@@ -98,8 +98,8 @@
 	proc/jump_on_click(var/mob/user,var/A)
 		if(user.interactee != src)
 			return
-		var/obj/machinery/camera/jump_to
-		if(istype(A,/obj/machinery/camera))
+		var/obj/structure/machinery/camera/jump_to
+		if(istype(A,/obj/structure/machinery/camera))
 			jump_to = A
 		else if(ismob(A))
 			if(ishuman(A))
@@ -110,7 +110,7 @@
 			jump_to = locate() in A
 		else if(isturf(A))
 			var/best_dist = INFINITY
-			for(var/obj/machinery/camera/camera in get_area(A))
+			for(var/obj/structure/machinery/camera/camera in get_area(A))
 				if(!camera.can_use())
 					continue
 				if(!can_access_camera(camera))
@@ -125,7 +125,7 @@
 			switch_to_camera(user,jump_to)
 
 //Camera control: mouse.
-/obj/machinery/computer/security/clicked(var/mob/user, var/list/mods)
+/obj/structure/machinery/computer/security/clicked(var/mob/user, var/list/mods)
 	if (mods["ctrl"] && mods["middle"])
 		if (src == user.interactee)
 			jump_on_click(user, src)
@@ -133,7 +133,7 @@
 
 	..()
 
-/obj/machinery/computer/security/telescreen
+/obj/structure/machinery/computer/security/telescreen
 	name = "Telescreen"
 	desc = "Used for watching an empty arena."
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
@@ -142,41 +142,41 @@
 	density = 0
 	circuit = null
 
-/obj/machinery/computer/security/telescreen/update_icon()
+/obj/structure/machinery/computer/security/telescreen/update_icon()
 	icon_state = initial(icon_state)
 	if(stat & BROKEN)
 		icon_state += "b"
 	return
 
-/obj/machinery/computer/security/telescreen/entertainment
+/obj/structure/machinery/computer/security/telescreen/entertainment
 	name = "entertainment monitor"
 	desc = "Damn, why do they never have anything interesting on these things?"
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "entertainment"
 	circuit = null
 
-/obj/machinery/computer/security/wooden_tv
+/obj/structure/machinery/computer/security/wooden_tv
 	name = "Security Cameras"
 	desc = "An old TV hooked into the stations camera network."
 	icon_state = "security_det"
 	circuit = null
 
 
-/obj/machinery/computer/security/mining
+/obj/structure/machinery/computer/security/mining
 	name = "Outpost Cameras"
 	desc = "Used to access the various cameras on the outpost."
 	icon_state = "miningcameras"
 	network = list("MINE")
 	circuit = /obj/item/circuitboard/computer/security/mining
 
-/obj/machinery/computer/security/engineering
+/obj/structure/machinery/computer/security/engineering
 	name = "Engineering Cameras"
 	desc = "Used to monitor fires and breaches."
 	icon_state = "engineeringcameras"
 	network = list("Engineering","Power Alarms","Atmosphere Alarms","Fire Alarms")
 	circuit = /obj/item/circuitboard/computer/security/engineering
 
-/obj/machinery/computer/security/nuclear
+/obj/structure/machinery/computer/security/nuclear
 	name = "Mission Monitor"
 	desc = "Used to access the built-in cameras in helmets."
 	icon_state = "syndicam"
@@ -184,16 +184,16 @@
 	circuit = null
 
 
-/obj/machinery/computer/security/almayer
+/obj/structure/machinery/computer/security/almayer
 	density = 0
 	icon_state = "security_cam"
 	network = list("almayer")
 
-/obj/machinery/computer/security/almayer_network
+/obj/structure/machinery/computer/security/almayer_network
 	network = list("almayer")
 
 
-/obj/machinery/computer/security/dropship
+/obj/structure/machinery/computer/security/dropship
 	name = "abstract dropship camera computer"
 	desc = "A computer to monitor cameras linked to the dropship."
 	density = 1
@@ -204,11 +204,11 @@
 	exproof = TRUE
 
 
-/obj/machinery/computer/security/dropship/one
+/obj/structure/machinery/computer/security/dropship/one
 	name = "\improper 'Alamo' camera controls"
 	network = list("dropship1")
 
-/obj/machinery/computer/security/dropship/two
+/obj/structure/machinery/computer/security/dropship/two
 	name = "\improper 'Normandy' camera controls"
 	network = list("dropship2")
 

@@ -1,6 +1,6 @@
 #define HEAT_CAPACITY_HUMAN 100 //249840 J/K, for a 72 kg person.
 
-/obj/machinery/atmospherics/unary/cryo_cell
+/obj/structure/machinery/atmospherics/unary/cryo_cell
 	name = "cryo cell"
 	icon = 'icons/obj/structures/machinery/cryogenics2.dmi'
 	icon_state = "cell-off"
@@ -19,21 +19,21 @@
 	var/mob/living/carbon/occupant = null
 	var/obj/item/reagent_container/glass/beaker = null
 
-/obj/machinery/atmospherics/unary/cryo_cell/New()
+/obj/structure/machinery/atmospherics/unary/cryo_cell/New()
 	..()
 	initialize_directions = dir
 	processable = 1
 	start_processing()
 
-/obj/machinery/atmospherics/unary/cryo_cell/initialize()
+/obj/structure/machinery/atmospherics/unary/cryo_cell/initialize()
 	if(node) return
 	var/node_connect = dir
-	for(var/obj/machinery/atmospherics/target in get_step(src,node_connect))
+	for(var/obj/structure/machinery/atmospherics/target in get_step(src,node_connect))
 		if(target.initialize_directions & get_dir(target,src))
 			node = target
 			break
 
-/obj/machinery/atmospherics/unary/cryo_cell/process()
+/obj/structure/machinery/atmospherics/unary/cryo_cell/process()
 	if(!node)
 		return
 	if(!on)
@@ -50,16 +50,16 @@
 	return 1
 
 
-/obj/machinery/atmospherics/unary/cryo_cell/allow_drop()
+/obj/structure/machinery/atmospherics/unary/cryo_cell/allow_drop()
 	return 0
 
 
-/obj/machinery/atmospherics/unary/cryo_cell/relaymove(mob/user)
+/obj/structure/machinery/atmospherics/unary/cryo_cell/relaymove(mob/user)
 	if(user.is_mob_incapacitated(TRUE)) return
 	go_out()
 
 
-/obj/machinery/atmospherics/unary/cryo_cell/attack_hand(mob/user)
+/obj/structure/machinery/atmospherics/unary/cryo_cell/attack_hand(mob/user)
 	ui_interact(user)
 
  /**
@@ -73,7 +73,7 @@
   *
   * @return nothing
   */
-/obj/machinery/atmospherics/unary/cryo_cell/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/structure/machinery/atmospherics/unary/cryo_cell/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 
 	if(user == occupant || user.stat)
 		return
@@ -133,7 +133,7 @@
 		// auto update every Master Controller tick
 		ui.set_auto_update(1)
 
-/obj/machinery/atmospherics/unary/cryo_cell/Topic(href, href_list)
+/obj/structure/machinery/atmospherics/unary/cryo_cell/Topic(href, href_list)
 	if(usr == occupant)
 		return 0 // don't update UIs attached to this object
 
@@ -161,7 +161,7 @@
 	add_fingerprint(usr)
 	return 1 // update UIs attached to this object
 
-/obj/machinery/atmospherics/unary/cryo_cell/attackby(obj/item/W, mob/living/user)
+/obj/structure/machinery/atmospherics/unary/cryo_cell/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/reagent_container/glass))
 		if(beaker)
 			to_chat(user, SPAN_WARNING("A beaker is already loaded into the machine."))
@@ -192,7 +192,7 @@
 	updateUsrDialog()
 
 
-/obj/machinery/atmospherics/unary/cryo_cell/update_icon()
+/obj/structure/machinery/atmospherics/unary/cryo_cell/update_icon()
 	if(on)
 		if(occupant)
 			icon_state = "cell-occupied"
@@ -201,7 +201,7 @@
 		return
 	icon_state = "cell-off"
 
-/obj/machinery/atmospherics/unary/cryo_cell/proc/process_occupant()
+/obj/structure/machinery/atmospherics/unary/cryo_cell/proc/process_occupant()
 	if(pressure < 10)
 		return
 	if(occupant)
@@ -234,7 +234,7 @@
 			display_message("external wounds are")
 			go_out()
 
-/obj/machinery/atmospherics/unary/cryo_cell/proc/go_out()
+/obj/structure/machinery/atmospherics/unary/cryo_cell/proc/go_out()
 	if(!( occupant ))
 		return
 	if (occupant.client)
@@ -256,7 +256,7 @@
 	update_icon()
 	return
 	
-/obj/machinery/atmospherics/unary/cryo_cell/proc/put_mob(mob/living/carbon/M as mob)
+/obj/structure/machinery/atmospherics/unary/cryo_cell/proc/put_mob(mob/living/carbon/M as mob)
 	if (stat & (NOPOWER|BROKEN))
 		to_chat(usr, SPAN_DANGER("The cryo cell is not functioning."))
 		return
@@ -282,11 +282,11 @@
 	update_icon()
 	return 1
 
-/obj/machinery/atmospherics/unary/cryo_cell/proc/display_message(msg)
+/obj/structure/machinery/atmospherics/unary/cryo_cell/proc/display_message(msg)
 	playsound(src.loc, 'sound/machines/ping.ogg', 25, 1)
 	visible_message("[htmlicon(src, viewers(src))] <span class='notice'>\The [src] pings: Patient's " + msg + " healed.</span>")
 	
-/obj/machinery/atmospherics/unary/cryo_cell/verb/move_eject()
+/obj/structure/machinery/atmospherics/unary/cryo_cell/verb/move_eject()
 	set name = "Eject occupant"
 	set category = "Object"
 	set src in oview(1)
@@ -305,7 +305,7 @@
 	add_fingerprint(usr)
 	return
 
-/obj/machinery/atmospherics/unary/cryo_cell/verb/move_inside()
+/obj/structure/machinery/atmospherics/unary/cryo_cell/verb/move_inside()
 	set name = "Move Inside"
 	set category = "Object"
 	set src in oview(1)

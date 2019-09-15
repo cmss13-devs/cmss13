@@ -232,7 +232,7 @@
 			if(locate(/obj/structure/girder, T))
 				break //Nope.avi
 
-			var/obj/machinery/M = locate() in T
+			var/obj/structure/machinery/M = locate() in T
 			if(M)
 				if(M.density)
 					break
@@ -1611,7 +1611,7 @@
 	if(isobj(O))
 		var/obj/I = O
 
-		if(I.unacidable || istype(I, /obj/machinery/computer) || istype(I, /obj/effect)) //So the aliens don't destroy energy fields/singularies/other aliens/etc with their acid.
+		if(I.unacidable || istype(I, /obj/structure/machinery/computer) || istype(I, /obj/effect)) //So the aliens don't destroy energy fields/singularies/other aliens/etc with their acid.
 			to_chat(src, SPAN_WARNING("You cannot dissolve \the [I].")) // ^^ Note for obj/effect.. this might check for unwanted stuff. Oh well
 			return
 		if(istype(O, /obj/structure/window_frame))
@@ -1684,7 +1684,7 @@
 	if(isturf(O))
 		A.icon_state += "_wall"
 
-	if(istype(O, /obj/structure) || istype(O, /obj/machinery)) //Always appears above machinery
+	if(istype(O, /obj/structure) || istype(O, /obj/structure/machinery)) //Always appears above machinery
 		A.layer = O.layer + 0.1
 	else //If not, appear on the floor or on an item
 		A.layer = LOWER_ITEM_LAYER //below any item, above BELOW_OBJ_LAYER (smartfridge)

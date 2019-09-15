@@ -343,7 +343,7 @@
 			src.currTag = href_list["nextTag"]
 		openwindow(usr)
 
-/obj/machinery/disposal/deliveryChute
+/obj/structure/machinery/disposal/deliveryChute
 	name = "Delivery chute"
 	desc = "A chute for big and small packages alike!"
 	density = 1

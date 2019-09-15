@@ -228,7 +228,7 @@
 
 				playsound(loc, "alien_footstep_large", 30)
 
-				for(var/obj/machinery/door/D in next_turf)
+				for(var/obj/structure/machinery/door/D in next_turf)
 					if(D.density)
 						D.open()
 						playsound(src, 'sound/effects/metal_creaking.ogg', 50, 1)
@@ -448,12 +448,12 @@
 		..()
 		if(entry_vent.network && entry_vent.network.normal_members.len)
 			var/list/vents = list()
-			for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in entry_vent.network.normal_members)
+			for(var/obj/structure/machinery/atmospherics/unary/vent_pump/temp_vent in entry_vent.network.normal_members)
 				vents.Add(temp_vent)
 			if(!vents.len)
 				entry_vent = null
 				return
-			var/obj/machinery/atmospherics/unary/vent_pump/exit_vent = pick(vents)
+			var/obj/structure/machinery/atmospherics/unary/vent_pump/exit_vent = pick(vents)
 			spawn()
 				visible_message(SPAN_DANGER("\The [src] suddenly disappears into the vent!"))
 				loc = exit_vent

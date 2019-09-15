@@ -115,7 +115,7 @@
 	handle_icon_junction(jun_1, jun_2)
 
 // Special case for smoothing walls around multi-tile doors.
-/obj/machinery/door/airlock/multi_tile/relativewall_neighbours()
+/obj/structure/machinery/door/airlock/multi_tile/relativewall_neighbours()
 	var/turf/T //The turf we are checking
 	var/atom/k
 	var/j

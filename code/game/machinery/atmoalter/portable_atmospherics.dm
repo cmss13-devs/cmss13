@@ -1,27 +1,27 @@
-/obj/machinery/portable_atmospherics
+/obj/structure/machinery/portable_atmospherics
 	name = "atmoalter"
 	use_power = 0
 
-	var/obj/machinery/atmospherics/portables_connector/connected_port
+	var/obj/structure/machinery/atmospherics/portables_connector/connected_port
 	var/destroyed = 0
 
 
-/obj/machinery/portable_atmospherics/initialize()
+/obj/structure/machinery/portable_atmospherics/initialize()
 	. = ..()
 	spawn()
-		var/obj/machinery/atmospherics/portables_connector/port = locate() in loc
+		var/obj/structure/machinery/atmospherics/portables_connector/port = locate() in loc
 		if(port)
 			connect(port)
 			update_icon()
 
-/obj/machinery/portable_atmospherics/process()
+/obj/structure/machinery/portable_atmospherics/process()
 	if(connected_port)
 		update_icon()
 
-/obj/machinery/portable_atmospherics/update_icon()
+/obj/structure/machinery/portable_atmospherics/update_icon()
 	return null
 
-/obj/machinery/portable_atmospherics/proc/connect(obj/machinery/atmospherics/portables_connector/new_port)
+/obj/structure/machinery/portable_atmospherics/proc/connect(obj/structure/machinery/atmospherics/portables_connector/new_port)
 	//Make sure not already connected to something else
 	if(connected_port || !new_port || new_port.connected_device)
 		return 0
@@ -38,7 +38,7 @@
 
 	return 1
 
-/obj/machinery/portable_atmospherics/proc/disconnect()
+/obj/structure/machinery/portable_atmospherics/proc/disconnect()
 	if(!connected_port)
 		return 0
 
@@ -49,12 +49,12 @@
 
 	return 1
 
-/obj/machinery/portable_atmospherics/proc/update_connected_network()
+/obj/structure/machinery/portable_atmospherics/proc/update_connected_network()
 	if(!connected_port)
 		return
 
 
-/obj/machinery/portable_atmospherics/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/portable_atmospherics/attackby(obj/item/W, mob/user)
 	var/obj/icon = src
 	if (istype(W, /obj/item/tool/wrench))
 		if(connected_port)
@@ -63,7 +63,7 @@
 			update_icon()
 			return
 		else
-			var/obj/machinery/atmospherics/portables_connector/possible_port = locate(/obj/machinery/atmospherics/portables_connector/) in loc
+			var/obj/structure/machinery/atmospherics/portables_connector/possible_port = locate(/obj/structure/machinery/atmospherics/portables_connector/) in loc
 			if(possible_port)
 				if(connect(possible_port))
 					to_chat(user, SPAN_NOTICE(" You connect [name] to the port."))
@@ -84,13 +84,13 @@
 
 
 
-/obj/machinery/portable_atmospherics/powered
+/obj/structure/machinery/portable_atmospherics/powered
 	var/power_rating
 	var/power_losses
 	var/last_power_draw = 0
 	var/obj/item/cell/cell
 
-/obj/machinery/portable_atmospherics/powered/attackby(obj/item/I, mob/user)
+/obj/structure/machinery/portable_atmospherics/powered/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/cell))
 		if(cell)
 			to_chat(user, "There is already a power cell installed.")

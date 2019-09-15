@@ -1,7 +1,7 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 
-/obj/machinery/computer/robotics
+/obj/structure/machinery/computer/robotics
 	name = "Robotics Control"
 	desc = "Used to remotely lockdown or detonate linked Cyborgs."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
@@ -17,10 +17,10 @@
 	var/screen = 0 // 0 - Main Menu, 1 - Cyborg Status, 2 - Kill 'em All! -- In text
 
 
-/obj/machinery/computer/robotics/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/robotics/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/robotics/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/robotics/attack_hand(var/mob/user as mob)
 	if(..())
 		return
 	if (src.z > 6)
@@ -97,7 +97,7 @@
 	onclose(user, "computer")
 	return
 
-/obj/machinery/computer/robotics/Topic(href, href_list)
+/obj/structure/machinery/computer/robotics/Topic(href, href_list)
 	if(..())
 		return
 	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (issilicon(usr)))
@@ -202,7 +202,7 @@
 	src.updateUsrDialog()
 	return
 
-/obj/machinery/computer/robotics/proc/start_sequence()
+/obj/structure/machinery/computer/robotics/proc/start_sequence()
 	while(src.timeleft)
 		if(src.stop)
 			src.stop = 0

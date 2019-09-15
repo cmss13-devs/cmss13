@@ -1,5 +1,5 @@
 
-/obj/machinery/line_nexter
+/obj/structure/machinery/line_nexter
 	name = "Turnstile"
 	desc = "a one way barrier combined with a bar to pull people out of line."
 	icon = 'icons/obj/structures/barricades.dmi'
@@ -10,14 +10,14 @@
 	var/last_use
 	var/id
 
-/obj/machinery/line_nexter/New()
+/obj/structure/machinery/line_nexter/New()
 	..()
 	last_use = world.time
 
-/obj/machinery/line_nexter/ex_act(severity)
+/obj/structure/machinery/line_nexter/ex_act(severity)
 	return
 
-/obj/machinery/line_nexter/CheckExit(atom/movable/O, turf/target)
+/obj/structure/machinery/line_nexter/CheckExit(atom/movable/O, turf/target)
 	if(iscarbon(O))
 		var/mob/living/carbon/C = O
 		if(C.pulledby)
@@ -25,32 +25,32 @@
 				return 0
 	return 1
 
-/obj/machinery/line_nexter/CanPass(atom/movable/mover, turf/target)
+/obj/structure/machinery/line_nexter/CanPass(atom/movable/mover, turf/target)
 	if(get_dir(loc, target) == dir)
 		return 0
 	else
 		return 1
 
-/obj/machinery/line_nexter/proc/next()
+/obj/structure/machinery/line_nexter/proc/next()
 	//if((last_use + 20) > world.time) // 20 seconds
 	for(var/mob/living/carbon/human/H in locate(x,y,z))
 		step(H,dir)
 	last_use = world.time
 
-/obj/machinery/line_nexter_control
+/obj/structure/machinery/line_nexter_control
 	name = "Next Button"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "doorctrl0"
 	var/id
 
-/obj/machinery/line_nexter_control/verb/push_button()
+/obj/structure/machinery/line_nexter_control/verb/push_button()
 	set name = "Push Button"
 	set category = "Object"
 	if(isliving(usr))
 		var/mob/living/L = usr
 		attack_hand(L)
 
-/obj/machinery/line_nexter_control/attack_hand(mob/living/user)
+/obj/structure/machinery/line_nexter_control/attack_hand(mob/living/user)
 	add_fingerprint(user)
 	if(istype(user,/mob/living/carbon/Xenomorph))
 		return
@@ -58,7 +58,7 @@
 	icon_state = "doorctrl1"
 	add_fingerprint(user)
 
-	for(var/obj/machinery/line_nexter/L in machines)
+	for(var/obj/structure/machinery/line_nexter/L in machines)
 		if(id == L.id)
 			L.next()
 

@@ -2,27 +2,27 @@
 
 // EMP
 
-/obj/machinery/camera/emp_proof/New()
+/obj/structure/machinery/camera/emp_proof/New()
 	..()
 	upgradeEmpProof()
 
 // X-RAY
 
-/obj/machinery/camera/xray
+/obj/structure/machinery/camera/xray
 	icon_state = "xraycam" // Thanks to Krutchen for the icons.
 
-/obj/machinery/camera/xray/New()
+/obj/structure/machinery/camera/xray/New()
 	..()
 	upgradeXRay()
 
 // MOTION
 
-/obj/machinery/camera/motion/New()
+/obj/structure/machinery/camera/motion/New()
 	..()
 	upgradeMotion()
 
 //used by the laser camera dropship equipment
-/obj/machinery/camera/laser_cam
+/obj/structure/machinery/camera/laser_cam
 	name = "laser camera"
 	invuln = TRUE
 	icon_state = ""
@@ -45,7 +45,7 @@
 
 // ALL UPGRADES
 
-/obj/machinery/camera/all/New()
+/obj/structure/machinery/camera/all/New()
 	..()
 	upgradeEmpProof()
 	upgradeXRay()
@@ -53,17 +53,17 @@
 
 // AUTONAME
 
-/obj/machinery/camera/autoname
+/obj/structure/machinery/camera/autoname
 	var/number = 0 //camera number in area
 
 //This camera type automatically sets it's name to whatever the area that it's in is called.
-/obj/machinery/camera/autoname/New()
+/obj/structure/machinery/camera/autoname/New()
 	..()
 	spawn(10)
 		number = 1
 		var/area/A = get_area(src)
 		if(A)
-			for(var/obj/machinery/camera/autoname/C in machines)
+			for(var/obj/structure/machinery/camera/autoname/C in machines)
 				if(C == src) continue
 				var/area/CA = get_area(C)
 				if(CA.type == A.type)
@@ -72,19 +72,19 @@
 			c_tag = "[A.name] #[number]"
 
 //cameras installed inside the dropships, accessible via both cockpit monitor and Almayer camera computers
-/obj/machinery/camera/autoname/almayer/dropship_one
+/obj/structure/machinery/camera/autoname/almayer/dropship_one
 	network = list("almayer", "dropship1")
 
-/obj/machinery/camera/autoname/almayer/dropship_two
+/obj/structure/machinery/camera/autoname/almayer/dropship_two
 	network = list("almayer", "dropship2")
 
-/obj/machinery/camera/autoname/almayer
+/obj/structure/machinery/camera/autoname/almayer
 	name = "military-grade camera"
 	network = list("almayer")
 
 //used by the landing camera dropship equipment. Do not place them right under where the dropship lands.
 //Should place them near each corner of your LZs.
-/obj/machinery/camera/autoname/lz_camera
+/obj/structure/machinery/camera/autoname/lz_camera
 	name = "landing zone camera"
 	invuln = TRUE
 	icon_state = ""
@@ -101,36 +101,36 @@
 
 // CHECKS
 
-/obj/machinery/camera/proc/isEmpProof()
+/obj/structure/machinery/camera/proc/isEmpProof()
 	var/O = locate(/obj/item/stack/sheet/mineral/osmium) in assembly.upgrades
 	return O
 
-/obj/machinery/camera/proc/isXRay()
+/obj/structure/machinery/camera/proc/isXRay()
 	var/obj/item/stock_parts/scanning_module/O = locate(/obj/item/stock_parts/scanning_module) in assembly.upgrades
 	if (O && O.rating >= 2)
 		return O
 	return null
 
-/obj/machinery/camera/proc/isMotion()
+/obj/structure/machinery/camera/proc/isMotion()
 	var/O = locate(/obj/item/device/assembly/prox_sensor) in assembly.upgrades
 	return O
 
 // UPGRADE PROCS
 
-/obj/machinery/camera/proc/upgradeEmpProof()
+/obj/structure/machinery/camera/proc/upgradeEmpProof()
 	assembly.upgrades.Add(new /obj/item/stack/sheet/mineral/osmium(assembly))
 	setPowerUsage()
 
-/obj/machinery/camera/proc/upgradeXRay()
+/obj/structure/machinery/camera/proc/upgradeXRay()
 	assembly.upgrades.Add(new /obj/item/stock_parts/scanning_module/adv(assembly))
 	setPowerUsage()
 
 // If you are upgrading Motion, and it isn't in the camera's New(), add it to the machines list.
-/obj/machinery/camera/proc/upgradeMotion()
+/obj/structure/machinery/camera/proc/upgradeMotion()
 	assembly.upgrades.Add(new /obj/item/device/assembly/prox_sensor(assembly))
 	setPowerUsage()
 
-/obj/machinery/camera/proc/setPowerUsage()
+/obj/structure/machinery/camera/proc/setPowerUsage()
 	var/mult = 1
 	if (isXRay())
 		mult++
@@ -140,14 +140,14 @@
 
 //Desert Dam camera networks
 
-/obj/machinery/camera/autoname/dam/laboratory_cameras
+/obj/structure/machinery/camera/autoname/dam/laboratory_cameras
 	network = list("laboratory_cameras")
 
-/obj/machinery/camera/autoname/dam/dam_interior_cameras
+/obj/structure/machinery/camera/autoname/dam/dam_interior_cameras
 	network = list("dam_interior_cameras")
 
-/obj/machinery/camera/autoname/dam/security_cameras
+/obj/structure/machinery/camera/autoname/dam/security_cameras
 	network = list("security_cameras")
 
-/obj/machinery/camera/autoname/dam/medical_cameras
+/obj/structure/machinery/camera/autoname/dam/medical_cameras
 	network = list("medical_cameras")

@@ -1,20 +1,20 @@
-/obj/machinery/door/unpowered
+/obj/structure/machinery/door/unpowered
 	autoclose = 0
 	var/locked = 0
 
-/obj/machinery/door/unpowered/Bumped(atom/AM)
+/obj/structure/machinery/door/unpowered/Bumped(atom/AM)
 	if(src.locked)
 		return
 	..()
 	return
 
-/obj/machinery/door/unpowered/attackby(obj/item/I as obj, mob/user as mob)
+/obj/structure/machinery/door/unpowered/attackby(obj/item/I as obj, mob/user as mob)
 	if(src.locked)
 		return
 	..()
 	return
 
-/obj/machinery/door/unpowered/shuttle
+/obj/structure/machinery/door/unpowered/shuttle
 	icon = 'icons/turf/shuttle.dmi'
 	name = "door"
 	icon_state = "door1"

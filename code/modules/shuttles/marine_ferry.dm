@@ -50,13 +50,13 @@
 		var/turf/T_src = pick(locs_dock)
 		var/list/turfs = get_shuttle_turfs(T_src, info_datums)
 		for(var/turf/T in turfs)
-			for(var/obj/machinery/M in T)
-				if(istype(M, /obj/machinery/computer/shuttle_control))
+			for(var/obj/structure/machinery/M in T)
+				if(istype(M, /obj/structure/machinery/computer/shuttle_control))
 					controls += M
-				else if(istype(M, /obj/machinery/door/airlock/multi_tile/almayer/dropshiprear))
+				else if(istype(M, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear))
 					main_doors += M
 
-	for(var/obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/D in main_doors)
+	for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/D in main_doors)
 		for(var/obj/vehicle/multitile/M in D.loc)
 			if(M) return 0
 
@@ -70,7 +70,7 @@
 
 
 /datum/shuttle/ferry/marine/announce_preflight_failure()
-	for(var/obj/machinery/computer/shuttle_control/control in controls)
+	for(var/obj/structure/machinery/computer/shuttle_control/control in controls)
 		playsound(control, 'sound/effects/adminhelp-error.ogg', 20) //Arbitrary notification sound
 		control.visible_message(fail_flavortext)
 		return //Kill it so as not to repeat
@@ -230,7 +230,7 @@
 	close_doors(turfs_int) // adding this for safety.
 
 	var/list/lightssource = get_landing_lights(T_src)
-	for(var/obj/machinery/landinglight/F in lightssource)
+	for(var/obj/structure/machinery/landinglight/F in lightssource)
 		if(F.id == shuttle_tag)
 			F.turn_off()
 
@@ -247,7 +247,7 @@
 	playsound(turfs_trg[sound_target], sound_landing, 100, 0)
 
 	var/list/lightsdest = get_landing_lights(T_trg)
-	for(var/obj/machinery/landinglight/F in lightsdest)
+	for(var/obj/structure/machinery/landinglight/F in lightsdest)
 		if(F.id == shuttle_tag)
 			F.turn_on()
 
@@ -374,7 +374,7 @@
 	close_doors(turfs_int) // adding this for safety.
 
 	var/list/lights = get_landing_lights(T_src)
-	for(var/obj/machinery/landinglight/F in lights)
+	for(var/obj/structure/machinery/landinglight/F in lights)
 		if(F.id == shuttle_tag)
 			F.turn_off()
 
@@ -435,7 +435,7 @@
 
 	shake_cameras(turfs_int) //shake for 1.5 seconds before crash, 0.5 after
 
-	for(var/obj/machinery/power/apc/A in machines) //break APCs
+	for(var/obj/structure/machinery/power/apc/A in machines) //break APCs
 		if(A.z != T_trg.z) continue
 		if(prob(A.crash_break_probability))
 			A.overload_lighting()
@@ -487,10 +487,10 @@
 	open_doors_crashed(turfs_trg) //And now open the doors
 
 	//Stolen from events.dm. WARNING: This code is old as hell
-	for (var/obj/machinery/power/apc/APC in machines)
+	for (var/obj/structure/machinery/power/apc/APC in machines)
 		if(APC.z == MAIN_SHIP_Z_LEVEL || APC.z == LOW_ORBIT_Z_LEVEL)
 			APC.ion_act()
-	for (var/obj/machinery/power/smes/SMES in machines)
+	for (var/obj/structure/machinery/power/smes/SMES in machines)
 		if(SMES.z == MAIN_SHIP_Z_LEVEL || SMES.z == LOW_ORBIT_Z_LEVEL)
 			SMES.ion_act()
 
@@ -562,7 +562,7 @@
 		if(!istype(T)) continue
 
 		//I know an iterator is faster, but this broke for some reason when I used it so I won't argue
-		for(var/obj/machinery/door/poddoor/shutters/transit/ST in T)
+		for(var/obj/structure/machinery/door/poddoor/shutters/transit/ST in T)
 			if(!istype(ST)) continue
 			if(!ST.density)
 				//"But MadSnailDisease!", you say, "Don't use spawn! Use sleep() and waitfor instead!
@@ -571,24 +571,24 @@
 				//"Well then why not change the proc itself?"
 				//Excellent question!
 				//Because when you open doors by Bumped() it would have you fly through before the animation is complete
-				INVOKE_ASYNC(ST, /obj/machinery/door.proc/close)
+				INVOKE_ASYNC(ST, /obj/structure/machinery/door.proc/close)
 				break
 
 		//Elevators
 		if (iselevator)
-			for(var/obj/machinery/door/airlock/A in T)
+			for(var/obj/structure/machinery/door/airlock/A in T)
 				spawn(0)
 					A.unlock()
 					A.close(1)
 					A.lock()
 		else
-			for(var/obj/machinery/door/airlock/dropship_hatch/M in T)
+			for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in T)
 				spawn(0)
 					M.unlock()
 					M.close(1)
 					M.lock()
 
-			for(var/obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/D in T)
+			for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/D in T)
 				spawn(0)
 					D.unlock()
 					D.close(1)
@@ -603,25 +603,25 @@
 		if(!istype(T)) continue
 
 		//Just so marines can't land with shutters down and turtle the rasputin
-		for(var/obj/machinery/door/poddoor/shutters/P in T)
+		for(var/obj/structure/machinery/door/poddoor/shutters/P in T)
 			if(!istype(P)) continue
 			if(P.density)
-				INVOKE_ASYNC(P, /obj/machinery/door.proc/close)
+				INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/close)
 				//No break since transit shutters are the same parent type
 
 		if (iselevator)
-			for(var/obj/machinery/door/airlock/A in T)
+			for(var/obj/structure/machinery/door/airlock/A in T)
 				if(!istype(A)) continue
 				if(A.locked)
 					A.unlock()
 				if(A.density)
-					INVOKE_ASYNC(A, /obj/machinery/door.proc/close)
+					INVOKE_ASYNC(A, /obj/structure/machinery/door.proc/close)
 				break
 		else
-			for(var/obj/machinery/door/airlock/dropship_hatch/M in T)
+			for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in T)
 				M.unlock()
 
-			for(var/obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/D in T)
+			for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/D in T)
 				D.unlock()
 
 
@@ -642,7 +642,7 @@
 			continue
 
 		//Just so marines can't land with shutters down and turtle the rasputin
-		for(var/obj/machinery/door/poddoor/shutters/P in T)
+		for(var/obj/structure/machinery/door/poddoor/shutters/P in T)
 			if(!istype(P)) continue
 			if(P.density)
 				spawn(0)
@@ -654,10 +654,10 @@
 				qdel(R) //This is all that it's dismantle() does so this is okay
 				break
 
-		for(var/obj/machinery/door/airlock/dropship_hatch/M in T)
+		for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in T)
 			qdel(M)
 
-		for(var/obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/D in T)
+		for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/D in T)
 			qdel(D)
 
 /datum/shuttle/ferry/marine/proc/shake_cameras(var/list/L)
@@ -719,10 +719,10 @@
 
 /datum/shuttle/ferry/elevator/New()
 	..()
-	for(var/obj/machinery/M in get_location_area(location))
-		if(istype(M, /obj/machinery/computer/shuttle_control))
+	for(var/obj/structure/machinery/M in get_location_area(location))
+		if(istype(M, /obj/structure/machinery/computer/shuttle_control))
 			controls += M
-		else if(istype(M, /obj/machinery/door/airlock/multi_tile/elevator))
+		else if(istype(M, /obj/structure/machinery/door/airlock/multi_tile/elevator))
 			main_doors += M
 
 //Kinda messy proc, but the best solution to prevent shearing of multitile vehicles
@@ -733,7 +733,7 @@
 //		-Issues here are that this is not atomic at all and vics get left behind unless the entirety of them is on the shuttle/elevator,
 //			plus then part of the vic would be in space since elevators leave that behind
 /datum/shuttle/ferry/elevator/preflight_checks()
-	for(var/obj/machinery/door/airlock/multi_tile/elevator/E in main_doors)
+	for(var/obj/structure/machinery/door/airlock/multi_tile/elevator/E in main_doors)
 		//If there is part of a multitile vic in any of the turfs the door occupies, cancel
 		//An argument can be made for tanks being allowed to block the door, but
 		//	that would make this already relatively expensive and inefficent even more so
@@ -751,7 +751,7 @@
 
 
 /datum/shuttle/ferry/elevator/announce_preflight_failure()
-	for(var/obj/machinery/computer/shuttle_control/control in controls)
+	for(var/obj/structure/machinery/computer/shuttle_control/control in controls)
 		playsound(control, 'sound/effects/adminhelp-error.ogg', 20) //Arbitrary notification sound
 		control.visible_message(fail_flavortext)
 		return //Kill it so as not to repeat

@@ -4,7 +4,7 @@
 
 
 
-/obj/machinery/computer/message_monitor
+/obj/structure/machinery/computer/message_monitor
 	name = "Message Monitor Console"
 	desc = "Used to Monitor the crew's messages, that are sent via PDA. Can also be used to view Request Console messages."
 	icon_state = "comm_logs"
@@ -12,7 +12,7 @@
 	var/normal_icon = "comm_logs"
 	circuit = "/obj/item/circuitboard/computer/message_monitor"
 	//Server linked to.
-	var/obj/machinery/message_server/linkedServer = null
+	var/obj/structure/machinery/message_server/linkedServer = null
 	//Sparks effect - For emag
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
 	//Messages - Saves me time if I want to change something.
@@ -33,7 +33,7 @@
 	var/custommessage 	= "This is a test, please ignore."
 
 
-/obj/machinery/computer/message_monitor/attackby(obj/item/O as obj, mob/living/user as mob)
+/obj/structure/machinery/computer/message_monitor/attackby(obj/item/O as obj, mob/living/user as mob)
 	if(stat & (NOPOWER|BROKEN))
 		..()
 		return
@@ -42,7 +42,7 @@
 	..()
 	return
 
-/obj/machinery/computer/message_monitor/update_icon()
+/obj/structure/machinery/computer/message_monitor/update_icon()
 	..()
 	if(stat & (NOPOWER|BROKEN))
 		return
@@ -51,14 +51,14 @@
 	else
 		icon_state = normal_icon
 
-/obj/machinery/computer/message_monitor/initialize()
+/obj/structure/machinery/computer/message_monitor/initialize()
 	//Is the server isn't linked to a server, and there's a server available, default it to the first one in the list.
 	if(!linkedServer)
 		if(message_servers && message_servers.len > 0)
 			linkedServer = message_servers[1]
 	return
 
-/obj/machinery/computer/message_monitor/attack_hand(var/mob/living/user as mob)
+/obj/structure/machinery/computer/message_monitor/attack_hand(var/mob/living/user as mob)
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if(!istype(user))
@@ -238,10 +238,10 @@
 	onclose(user, "message")
 	return
 
-/obj/machinery/computer/message_monitor/attack_ai(mob/user as mob)
+/obj/structure/machinery/computer/message_monitor/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/message_monitor/proc/BruteForce(mob/user as mob)
+/obj/structure/machinery/computer/message_monitor/proc/BruteForce(mob/user as mob)
 	if(isnull(linkedServer))
 		to_chat(user, SPAN_WARNING("Could not complete brute-force: Linked Server Disconnected!"))
 	else
@@ -251,16 +251,16 @@
 	src.icon_state = normal_icon
 	src.screen = 0 // Return the screen back to normal
 
-/obj/machinery/computer/message_monitor/proc/UnmagConsole()
+/obj/structure/machinery/computer/message_monitor/proc/UnmagConsole()
 	src.icon_state = normal_icon
 
-/obj/machinery/computer/message_monitor/proc/ResetMessage()
+/obj/structure/machinery/computer/message_monitor/proc/ResetMessage()
 	customsender 	= "System Administrator"
 	customrecepient = null
 	custommessage 	= "This is a test, please ignore."
 	customjob 		= "Admin"
 
-/obj/machinery/computer/message_monitor/Topic(href, href_list)
+/obj/structure/machinery/computer/message_monitor/Topic(href, href_list)
 	if(..())
 		return
 	if(stat & (NOPOWER|BROKEN))
@@ -503,13 +503,13 @@
 /obj/item/paper/monitorkey
 	//..()
 	name = "Monitor Decryption Key"
-	var/obj/machinery/message_server/server = null
+	var/obj/structure/machinery/message_server/server = null
 
 /obj/item/paper/monitorkey/New()
 	..()
 	spawn(10)
 		if(message_servers)
-			for(var/obj/machinery/message_server/server in message_servers)
+			for(var/obj/structure/machinery/message_server/server in message_servers)
 				if(!isnull(server))
 					if(!isnull(server.decryptkey))
 						info = "<center><h2>Daily Key Reset</h2></center><br>The new message monitor key is '[server.decryptkey]'.<br>Please keep this a secret and away from the clown.<br>If necessary, change the password to a more secure one."

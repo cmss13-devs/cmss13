@@ -1,4 +1,4 @@
-/obj/machinery/computer/HolodeckControl
+/obj/structure/machinery/computer/HolodeckControl
 	name = "Holodeck Control Computer"
 	desc = "A computer used to control a nearby holodeck."
 	icon_state = "holocontrol"
@@ -144,7 +144,7 @@
 				return
 			M.forceMove(loc)
 			M.KnockDown(5)
-			for(var/obj/machinery/scoreboard/X in machines)
+			for(var/obj/structure/machinery/scoreboard/X in machines)
 				if(X.id == id)
 					X.score(side, 3)// 3 points for dunking a mob
 					// no break, to update multiple scoreboards
@@ -152,7 +152,7 @@
 		return
 	else if (istype(W, /obj/item) && get_dist(src,user)<2)
 		user.drop_inv_item_to_loc(W, loc)
-		for(var/obj/machinery/scoreboard/X in machines)
+		for(var/obj/structure/machinery/scoreboard/X in machines)
 			if(X.id == id)
 				X.score(side)
 				// no break, to update multiple scoreboards
@@ -166,7 +166,7 @@
 			return
 		if(prob(50))
 			I.loc = src.loc
-			for(var/obj/machinery/scoreboard/X in machines)
+			for(var/obj/structure/machinery/scoreboard/X in machines)
 				if(X.id == id)
 					X.score(side)
 					// no break, to update multiple scoreboards
@@ -178,7 +178,7 @@
 		return ..()
 
 
-/obj/machinery/readybutton
+/obj/structure/machinery/readybutton
 	name = "Ready Declaration Device"
 	desc = "This device is used to declare ready. If all devices in an area are ready, the event will begin!"
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
@@ -193,18 +193,18 @@
 	active_power_usage = 6
 	power_channel = ENVIRON
 
-/obj/machinery/readybutton/attack_ai(mob/user as mob)
+/obj/structure/machinery/readybutton/attack_ai(mob/user as mob)
 	to_chat(user, "The station AI is not to interact with these devices!")
 	return
 
-/obj/machinery/readybutton/New()
+/obj/structure/machinery/readybutton/New()
 	..()
 
 
-/obj/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob)
 	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
 
-/obj/machinery/readybutton/attack_hand(mob/user as mob)
+/obj/structure/machinery/readybutton/attack_hand(mob/user as mob)
 	if(user.stat || stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
 		return
@@ -223,7 +223,7 @@
 
 	var/numbuttons = 0
 	var/numready = 0
-	for(var/obj/machinery/readybutton/button in currentarea)
+	for(var/obj/structure/machinery/readybutton/button in currentarea)
 		numbuttons++
 		if (button.ready)
 			numready++
@@ -231,13 +231,13 @@
 	if(numbuttons == numready)
 		begin_event()
 
-/obj/machinery/readybutton/update_icon()
+/obj/structure/machinery/readybutton/update_icon()
 	if(ready)
 		icon_state = "auth_on"
 	else
 		icon_state = "auth_off"
 
-/obj/machinery/readybutton/proc/begin_event()
+/obj/structure/machinery/readybutton/proc/begin_event()
 
 	eventstarted = 1
 

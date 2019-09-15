@@ -269,13 +269,13 @@ obj/structure/door_assembly
 			to_chat(user, SPAN_NOTICE(" You finish the airlock!"))
 			var/path
 			if(istext(glass))
-				path = text2path("/obj/machinery/door/airlock/[glass]")
+				path = text2path("/obj/structure/machinery/door/airlock/[glass]")
 			else if (glass == 1)
-				path = text2path("/obj/machinery/door/airlock[glass_type]")
+				path = text2path("/obj/structure/machinery/door/airlock[glass_type]")
 			else
-				path = text2path("/obj/machinery/door/airlock[airlock_type]")
+				path = text2path("/obj/structure/machinery/door/airlock[airlock_type]")
 
-			var/obj/machinery/door/airlock/door = new path(src.loc)
+			var/obj/structure/machinery/door/airlock/door = new path(src.loc)
 
 			door.assembly_type = type
 			door.electronics = src.electronics

@@ -3,9 +3,9 @@
 	endWhen			= 1000	//Ends when all vending machines are subverted anyway.
 	oneShot			= 1
 
-	var/list/obj/machinery/vending/vendingMachines = list()
-	var/list/obj/machinery/vending/infectedVendingMachines = list()
-	var/obj/machinery/vending/originMachine
+	var/list/obj/structure/machinery/vending/vendingMachines = list()
+	var/list/obj/structure/machinery/vending/infectedVendingMachines = list()
+	var/obj/structure/machinery/vending/originMachine
 
 
 /datum/event/brand_intelligence/announce()
@@ -13,7 +13,7 @@
 
 
 /datum/event/brand_intelligence/start()
-	for(var/obj/machinery/vending/V in machines)
+	for(var/obj/structure/machinery/vending/V in machines)
 		if(V.z != 3 || V.z != 4)	continue
 		vendingMachines.Add(V)
 
@@ -35,7 +35,7 @@
 
 	if(IsMultiple(activeFor, 5))
 		if(prob(15))
-			var/obj/machinery/vending/infectedMachine = pick(vendingMachines)
+			var/obj/structure/machinery/vending/infectedMachine = pick(vendingMachines)
 			vendingMachines.Remove(infectedMachine)
 			infectedVendingMachines.Add(infectedMachine)
 			infectedMachine.shut_up = 0
@@ -51,6 +51,6 @@
 										 "You don't want to buy anything? Yeah, well I didn't want to buy your mom either."))
 
 /datum/event/brand_intelligence/end()
-	for(var/obj/machinery/vending/infectedMachine in infectedVendingMachines)
+	for(var/obj/structure/machinery/vending/infectedMachine in infectedVendingMachines)
 		infectedMachine.shut_up = 1
 		infectedMachine.shoot_inventory = 0

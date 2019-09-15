@@ -136,7 +136,7 @@
 	external_type = /obj/item/robot_parts/robot_component/camera
 	idle_usage = 10
 	max_damage = 40
-	var/obj/machinery/camera/camera
+	var/obj/structure/machinery/camera/camera
 
 /datum/robot_component/camera/New(mob/living/silicon/robot/R)
 	..()

@@ -1,4 +1,4 @@
-/obj/machinery/mech_sensor
+/obj/structure/machinery/mech_sensor
 	icon = 'icons/obj/structures/machinery/airlock_machines.dmi'
 	icon_state = "airlock_sensor_off"
 	name = "mechatronic sensor"
@@ -15,7 +15,7 @@
 	var/frequency = 1379
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/mech_sensor/CanPass(atom/movable/mover, turf/target)
+/obj/structure/machinery/mech_sensor/CanPass(atom/movable/mover, turf/target)
 	if(!enabled()) return 1
 
 	if((get_dir(loc, target) & dir) && is_blocked(mover))
@@ -23,7 +23,7 @@
 		return 0
 	return 1
 
-/obj/machinery/mech_sensor/proc/is_blocked(O as obj)
+/obj/structure/machinery/mech_sensor/proc/is_blocked(O as obj)
 	if(istype(O, /obj/mecha/medical/odysseus))
 		var/obj/mecha/medical/odysseus/M = O
 		for(var/obj/item/mecha_parts/mecha_equipment/ME in M.equipment)
@@ -34,7 +34,7 @@
 
 	return istype(O, /obj/mecha) || istype(O, /obj/vehicle)
 
-/obj/machinery/mech_sensor/proc/give_feedback(O as obj)
+/obj/structure/machinery/mech_sensor/proc/give_feedback(O as obj)
 	var/block_message = SPAN_WARNING("Movement control overridden. Area denial active.")
 	var/feedback_timer = 0
 	if(feedback_timer)
@@ -49,32 +49,32 @@
 	spawn(50) //Without this timer the feedback becomes horribly spamy
 		feedback_timer = 0
 
-/obj/machinery/mech_sensor/proc/enabled()
+/obj/structure/machinery/mech_sensor/proc/enabled()
 	return on && !(stat & NOPOWER)
 
-/obj/machinery/mech_sensor/power_change()
+/obj/structure/machinery/mech_sensor/power_change()
 	var/old_stat = stat
 	..()
 	if(old_stat != stat)
 		update_icon()
 
-/obj/machinery/mech_sensor/update_icon(var/safety = 0)
+/obj/structure/machinery/mech_sensor/update_icon(var/safety = 0)
 	if (enabled())
 		icon_state = "airlock_sensor_standby"
 	else
 		icon_state = "airlock_sensor_off"
 
-/obj/machinery/mech_sensor/initialize()
+/obj/structure/machinery/mech_sensor/initialize()
 	set_frequency(frequency)
 
-/obj/machinery/mech_sensor/proc/set_frequency(new_frequency)
+/obj/structure/machinery/mech_sensor/proc/set_frequency(new_frequency)
 	if(radio_connection)
 		radio_controller.remove_object(src, frequency)
 	frequency = new_frequency
 	if(frequency)
 		radio_connection = radio_controller.add_object(src, frequency)
 
-/obj/machinery/mech_sensor/receive_signal(datum/signal/signal)
+/obj/structure/machinery/mech_sensor/receive_signal(datum/signal/signal)
 	if(stat & NOPOWER)
 		return
 

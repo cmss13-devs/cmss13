@@ -20,7 +20,7 @@
 
 // The communications computer
 var/global/cooldown_message = 0 //Based on world.time.
-/obj/machinery/computer/communications
+/obj/structure/machinery/computer/communications
 	name = "communications console"
 	desc = "This can be used for various important functions."
 	icon_state = "comm"
@@ -45,16 +45,16 @@ var/global/cooldown_message = 0 //Based on world.time.
 	var/stat_msg1
 	var/stat_msg2
 
-/obj/machinery/computer/communications/New()
+/obj/structure/machinery/computer/communications/New()
 	..()
 	start_processing()
 
-/obj/machinery/computer/communications/process()
+/obj/structure/machinery/computer/communications/process()
 	if(..())
 		if(state != STATE_STATUSDISPLAY)
 			updateDialog()
 
-/obj/machinery/computer/communications/proc/update_mapview(var/close = 0)
+/obj/structure/machinery/computer/communications/proc/update_mapview(var/close = 0)
 	if(close || (current_mapviewer && !Adjacent(current_mapviewer)))
 		if(current_mapviewer)
 			current_mapviewer << browse(null, "window=marineminimap")
@@ -65,7 +65,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 	current_mapviewer << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
 	current_mapviewer << browse("<img src=marine_minimap.png>","window=marineminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
 
-/obj/machinery/computer/communications/Topic(href, href_list)
+/obj/structure/machinery/computer/communications/Topic(href, href_list)
 	if(..()) r_FAL
 
 	usr.set_interaction(src)
@@ -342,7 +342,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 		if("selectlz")
 			if(!ticker.mode.active_lz)
 				var/lz_choices = list()
-				for(var/obj/machinery/computer/shuttle_control/console in machines)
+				for(var/obj/structure/machinery/computer/shuttle_control/console in machines)
 					if(console.z == 1 && !console.onboard && console.shuttle_type & SHUTTLE_DROPSHIP)
 						lz_choices += console
 				var/new_lz = input(usr, "Choose the primary LZ for this operation", "Operation Staging")  as null|anything in lz_choices
@@ -353,10 +353,10 @@ var/global/cooldown_message = 0 //Based on world.time.
 
 	updateUsrDialog()
 
-/obj/machinery/computer/communications/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/communications/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/communications/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/communications/attack_hand(var/mob/user as mob)
 	if(..()) r_FAL
 
 	//Should be refactored later, if there's another ship that can appear during a mode with a comm console.
@@ -495,7 +495,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 	onclose(user, "communications")
 
 /*
-/obj/machinery/computer/communications/proc/interact_ai(var/mob/living/silicon/ai/user as mob)
+/obj/structure/machinery/computer/communications/proc/interact_ai(var/mob/living/silicon/ai/user as mob)
 	var/dat = ""
 	switch(aistate)
 		if(STATE_DEFAULT)
@@ -542,7 +542,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 	return dat
 */
 
-/obj/machinery/computer/communications/proc/post_status(command, data1, data2)
+/obj/structure/machinery/computer/communications/proc/post_status(command, data1, data2)
 
 	/*var/datum/radio_frequency/frequency = radio_controller.return_frequency(1435)
 
@@ -565,10 +565,10 @@ var/global/cooldown_message = 0 //Based on world.time.
 	frequency.post_signal(src, status_signal)*/
 
  //A simpler version that doesn't have everything the other one has
- /obj/machinery/computer/communications/simple
+ /obj/structure/machinery/computer/communications/simple
  	circuit = null
 
-/obj/machinery/computer/communications/simple/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/communications/simple/attack_hand(var/mob/user as mob)
 	user.set_interaction(src)
 	var/dat = "<head><title>Communications Console</title></head><body>"
 

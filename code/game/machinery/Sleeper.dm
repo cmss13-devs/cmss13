@@ -2,11 +2,11 @@
 // SLEEPER CONSOLE
 /////////////////////////////////////////
 
-/obj/machinery/sleep_console
+/obj/structure/machinery/sleep_console
 	name = "Sleeper Console"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "sleeperconsole"
-	var/obj/machinery/sleeper/connected = null
+	var/obj/structure/machinery/sleeper/connected = null
 	anchored = 1 //About time someone fixed this.
 	density = 0
 	var/orient = "LEFT" // "RIGHT" changes the dir suffix to "-r"
@@ -14,13 +14,13 @@
 	use_power = 1
 	idle_power_usage = 40
 
-/obj/machinery/sleep_console/process()
+/obj/structure/machinery/sleep_console/process()
 	if(stat & (NOPOWER|BROKEN))
 		return
 	updateUsrDialog()
 	return
 
-/obj/machinery/sleep_console/ex_act(severity)
+/obj/structure/machinery/sleep_console/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
@@ -32,22 +32,22 @@
 		else
 	return
 
-/obj/machinery/sleep_console/New()
+/obj/structure/machinery/sleep_console/New()
 	..()
 	spawn(7)
 		if(dir == EAST || dir == SOUTH)
-			connected = locate(/obj/machinery/sleeper,get_step(src, WEST))
+			connected = locate(/obj/structure/machinery/sleeper,get_step(src, WEST))
 		if(dir == WEST || dir == NORTH)
-			connected = locate(/obj/machinery/sleeper,get_step(src, EAST))
+			connected = locate(/obj/structure/machinery/sleeper,get_step(src, EAST))
 		if(!connected)
 			qdel(src)
 		else
 			connected.connected = src
 
-/obj/machinery/sleep_console/attack_ai(mob/living/user)
+/obj/structure/machinery/sleep_console/attack_ai(mob/living/user)
 	return attack_hand(user)
 
-/obj/machinery/sleep_console/attack_hand(mob/living/user)
+/obj/structure/machinery/sleep_console/attack_hand(mob/living/user)
 	if(..())
 		return
 	if(stat & (NOPOWER|BROKEN))
@@ -110,7 +110,7 @@
 	onclose(user, "sleeper")
 	return
 
-/obj/machinery/sleep_console/Topic(href, href_list)
+/obj/structure/machinery/sleep_console/Topic(href, href_list)
 	if(..())
 		return
 	if(!ishuman(usr))
@@ -156,7 +156,7 @@
 // THE SLEEPER ITSELF
 /////////////////////////////////////////
 
-/obj/machinery/sleeper
+/obj/structure/machinery/sleeper
 	name = "Sleeper"
 	desc = "A fancy bed with built-in injectors, a dialysis machine, and a limited health scanner."
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
@@ -169,14 +169,14 @@
 	var/amounts = list(5, 10)
 	var/obj/item/reagent_container/glass/beaker = null
 	var/filtering = 0
-	var/obj/machinery/sleep_console/connected
+	var/obj/structure/machinery/sleep_console/connected
 
 	use_power = 1
 	idle_power_usage = 15
 	active_power_usage = 200 //builtin health analyzer, dialysis machine, injectors.
 
 
-/obj/machinery/sleeper/New()
+/obj/structure/machinery/sleeper/New()
 	..()
 	beaker = new /obj/item/reagent_container/glass/beaker/large()
 	spawn( 5 )
@@ -186,15 +186,15 @@
 	return
 
 
-/obj/machinery/sleeper/allow_drop()
+/obj/structure/machinery/sleeper/allow_drop()
 	return 0
 
 
-/obj/machinery/sleeper/on_stored_atom_del(atom/movable/AM)
+/obj/structure/machinery/sleeper/on_stored_atom_del(atom/movable/AM)
 	if(AM == beaker)
 		beaker = null
 
-/obj/machinery/sleeper/process()
+/obj/structure/machinery/sleeper/process()
 	if (stat & (NOPOWER|BROKEN))
 		return
 
@@ -208,7 +208,7 @@
 	updateUsrDialog()
 
 
-/obj/machinery/sleeper/attackby(var/obj/item/W, var/mob/living/user)
+/obj/structure/machinery/sleeper/attackby(var/obj/item/W, var/mob/living/user)
 	if(istype(W, /obj/item/reagent_container/glass))
 		if(!beaker)
 			if(user.drop_inv_item_to_loc(W, src))
@@ -251,7 +251,7 @@
 
 
 
-/obj/machinery/sleeper/ex_act(severity)
+/obj/structure/machinery/sleeper/ex_act(severity)
 	if(filtering)
 		toggle_filter()
 	switch(severity)
@@ -265,7 +265,7 @@
 			qdel(src)
 
 
-/obj/machinery/sleeper/emp_act(severity)
+/obj/structure/machinery/sleeper/emp_act(severity)
 	if(filtering)
 		toggle_filter()
 	if(stat & (BROKEN|NOPOWER))
@@ -275,7 +275,7 @@
 		go_out()
 	..()
 
-/obj/machinery/sleeper/proc/toggle_filter()
+/obj/structure/machinery/sleeper/proc/toggle_filter()
 	if(!occupant)
 		filtering = 0
 		return
@@ -284,7 +284,7 @@
 	else
 		filtering = 1
 
-/obj/machinery/sleeper/proc/go_out()
+/obj/structure/machinery/sleeper/proc/go_out()
 	if(filtering)
 		toggle_filter()
 	if(!occupant)
@@ -299,7 +299,7 @@
 	return
 
 
-/obj/machinery/sleeper/proc/inject_chemical(mob/living/user as mob, chemical, amount)
+/obj/structure/machinery/sleeper/proc/inject_chemical(mob/living/user as mob, chemical, amount)
 	if(occupant && occupant.reagents)
 		if(occupant.reagents.get_reagent_amount(chemical) + amount <= 20)
 			occupant.reagents.add_reagent(chemical, amount, , , user)
@@ -309,7 +309,7 @@
 	return
 
 
-/obj/machinery/sleeper/proc/check(mob/living/user)
+/obj/structure/machinery/sleeper/proc/check(mob/living/user)
 	if(occupant)
 		var/msg_occupant = "[occupant]"
 		to_chat(user, SPAN_NOTICE("<B>Occupant ([msg_occupant]) Statistics:</B>"))
@@ -339,7 +339,7 @@
 	return
 
 
-/obj/machinery/sleeper/verb/eject()
+/obj/structure/machinery/sleeper/verb/eject()
 	set name = "Eject Sleeper"
 	set category = "Object"
 	set src in oview(1)
@@ -352,7 +352,7 @@
 	add_fingerprint(usr)
 
 
-/obj/machinery/sleeper/verb/remove_beaker()
+/obj/structure/machinery/sleeper/verb/remove_beaker()
 	set name = "Remove Beaker"
 	set category = "Object"
 	set src in oview(1)
@@ -365,7 +365,7 @@
 	add_fingerprint(usr)
 
 
-/obj/machinery/sleeper/verb/move_inside()
+/obj/structure/machinery/sleeper/verb/move_inside()
 	set name = "Enter Sleeper"
 	set category = "Object"
 	set src in oview(1)

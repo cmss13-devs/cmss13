@@ -1,4 +1,4 @@
-/obj/machinery/iv_drip
+/obj/structure/machinery/iv_drip
 	name = "\improper IV drip"
 	icon = 'icons/obj/structures/machinery/iv_drip.dmi'
 	anchored = 0
@@ -9,7 +9,7 @@
 	var/mode = 1 // 1 is injecting, 0 is taking blood.
 	var/obj/item/reagent_container/beaker = null
 
-/obj/machinery/iv_drip/update_icon()
+/obj/structure/machinery/iv_drip/update_icon()
 	if(src.attached)
 		icon_state = "hooked"
 	else
@@ -35,7 +35,7 @@
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			overlays += filling
 
-/obj/machinery/iv_drip/MouseDrop(over_object, src_location, over_location)
+/obj/structure/machinery/iv_drip/MouseDrop(over_object, src_location, over_location)
 	..()
 
 	if(ishuman(usr))
@@ -59,7 +59,7 @@
 			start_processing()
 
 
-/obj/machinery/iv_drip/attackby(obj/item/W, mob/living/user)
+/obj/structure/machinery/iv_drip/attackby(obj/item/W, mob/living/user)
 	if (istype(W, /obj/item/reagent_container))
 		if(beaker)
 			to_chat(user, SPAN_WARNING("There is already a reagent container loaded!"))
@@ -86,7 +86,7 @@
 		return ..()
 
 
-/obj/machinery/iv_drip/process()
+/obj/structure/machinery/iv_drip/process()
 	if(src.attached)
 
 		if(!(get_dist(src, src.attached) <= 1 && isturf(src.attached.loc)))
@@ -131,7 +131,7 @@
 			T.take_blood(beaker,amount)
 			update_icon()
 
-/obj/machinery/iv_drip/attack_hand(mob/user as mob)
+/obj/structure/machinery/iv_drip/attack_hand(mob/user as mob)
 	if(src.beaker)
 		src.beaker.loc = get_turf(src)
 		src.beaker = null
@@ -140,7 +140,7 @@
 		return ..()
 
 
-/obj/machinery/iv_drip/verb/toggle_mode()
+/obj/structure/machinery/iv_drip/verb/toggle_mode()
 	set category = "Object"
 	set name = "Toggle Mode"
 	set src in view(1)
@@ -154,7 +154,7 @@
 	mode = !mode
 	to_chat(usr, "The IV drip is now [mode ? "injecting" : "taking blood"].")
 
-/obj/machinery/iv_drip/examine(mob/user)
+/obj/structure/machinery/iv_drip/examine(mob/user)
 	..()
 	to_chat(user, "The IV drip is [mode ? "injecting" : "taking blood"].")
 

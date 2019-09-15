@@ -3,7 +3,7 @@
 //////////////////////////////////////
 
 
-/obj/machinery/suit_storage_unit
+/obj/structure/machinery/suit_storage_unit
 	name = "Suit Storage Unit"
 	desc = "An industrial U-Stor-It Storage unit designed to accomodate all kinds of space suits. Its on-board equipment also allows the user to decontaminate the contents through a UV-ray purging cycle. There's a warning label dangling from the control pad, reading \"STRICTLY NO BIOLOGICALS IN THE CONFINES OF THE UNIT\"."
 	icon = 'icons/obj/structures/machinery/suitstorage.dmi'
@@ -23,7 +23,7 @@
 
 
 
-/obj/machinery/suit_storage_unit/New()
+/obj/structure/machinery/suit_storage_unit/New()
 	..()
 	if(starting_suit_type)
 		inserted_suit = new starting_suit_type(src)
@@ -36,7 +36,7 @@
 	update_icon()
 
 
-/obj/machinery/suit_storage_unit/update_icon()
+/obj/structure/machinery/suit_storage_unit/update_icon()
 	overlays.Cut()
 	if(isUV)
 		icon_state = "disinfecting"
@@ -60,7 +60,7 @@
 		icon_state += "_off"
 
 
-/obj/machinery/suit_storage_unit/power_change()
+/obj/structure/machinery/suit_storage_unit/power_change()
 	..()
 	if(stat & NOPOWER)
 		dump_everything()
@@ -68,7 +68,7 @@
 	update_icon()
 
 
-/obj/machinery/suit_storage_unit/ex_act(severity)
+/obj/structure/machinery/suit_storage_unit/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
@@ -80,7 +80,7 @@
 			qdel(src)
 
 
-/obj/machinery/suit_storage_unit/attack_hand(mob/user)
+/obj/structure/machinery/suit_storage_unit/attack_hand(mob/user)
 	var/dat
 	if(..())
 		return
@@ -122,7 +122,7 @@
 	return
 
 
-/obj/machinery/suit_storage_unit/Topic(href, href_list) //I fucking HATE this proc
+/obj/structure/machinery/suit_storage_unit/Topic(href, href_list) //I fucking HATE this proc
 	if(..())
 		return
 	if (Adjacent(usr))
@@ -157,40 +157,40 @@
 
 
 
-/obj/machinery/suit_storage_unit/proc/dispense_helmet()
+/obj/structure/machinery/suit_storage_unit/proc/dispense_helmet()
 	if(inserted_helmet)
 		inserted_helmet.forceMove(loc)
 		inserted_helmet = null
 
 
 
-/obj/machinery/suit_storage_unit/proc/dispense_suit()
+/obj/structure/machinery/suit_storage_unit/proc/dispense_suit()
 	if(inserted_suit)
 		inserted_suit.forceMove(loc)
 		inserted_suit = null
 
 
 
-/obj/machinery/suit_storage_unit/proc/dispense_mask()
+/obj/structure/machinery/suit_storage_unit/proc/dispense_mask()
 	if(inserted_mask)
 		inserted_mask.forceMove(loc)
 		inserted_mask = null
 
 
-/obj/machinery/suit_storage_unit/proc/dispense_tank()
+/obj/structure/machinery/suit_storage_unit/proc/dispense_tank()
 	if(inserted_tank)
 		inserted_tank.forceMove(loc)
 		inserted_tank = null
 
 
-/obj/machinery/suit_storage_unit/proc/dump_everything()
+/obj/structure/machinery/suit_storage_unit/proc/dump_everything()
 	dispense_helmet()
 	dispense_suit()
 	dispense_mask()
 	dispense_tank()
 
 
-/obj/machinery/suit_storage_unit/proc/toggle_open(mob/user as mob)
+/obj/structure/machinery/suit_storage_unit/proc/toggle_open(mob/user as mob)
 	if(isUV)
 		to_chat(user, "<font color='red'>Unable to open unit.</font>")
 		return
@@ -198,7 +198,7 @@
 	update_icon()
 
 
-/obj/machinery/suit_storage_unit/proc/start_UV(mob/user)
+/obj/structure/machinery/suit_storage_unit/proc/start_UV(mob/user)
 	set waitfor = 0
 
 	if(isopen)
@@ -235,7 +235,7 @@
 
 
 
-/obj/machinery/suit_storage_unit/attackby(obj/item/I, mob/living/user)
+/obj/structure/machinery/suit_storage_unit/attackby(obj/item/I, mob/living/user)
 
 	if(!(stat & NOPOWER))
 
@@ -291,16 +291,16 @@
 
 
 
-/obj/machinery/suit_storage_unit/attack_ai(mob/user as mob)
+/obj/structure/machinery/suit_storage_unit/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/suit_storage_unit/carbon_unit
+/obj/structure/machinery/suit_storage_unit/carbon_unit
 	starting_suit_type = /obj/item/clothing/suit/space/uscm
 	starting_helmet_type = /obj/item/clothing/head/helmet/space/uscm
 	starting_mask_type = /obj/item/clothing/mask/breath
 	starting_tank_type = /obj/item/tank/oxygen
 
-/obj/machinery/suit_storage_unit/standard_unit
+/obj/structure/machinery/suit_storage_unit/standard_unit
 	starting_suit_type = /obj/item/clothing/suit/space
 	starting_helmet_type = /obj/item/clothing/head/helmet/space
 	starting_mask_type = /obj/item/clothing/mask/breath

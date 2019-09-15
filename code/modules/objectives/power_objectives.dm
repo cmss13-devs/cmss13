@@ -16,7 +16,7 @@
 
 /datum/cm_objective/establish_power/check_completion()
 	var/total_power_output = 0
-	for(var/obj/machinery/power/smes/colony_smes in machines)
+	for(var/obj/structure/machinery/power/smes/colony_smes in machines)
 		if(!(colony_smes.loc.z in SURFACE_Z_LEVELS))
 			continue
 		if(colony_smes.charge <= 0)
@@ -56,14 +56,14 @@
 	priority = OBJECTIVE_LOW_VALUE
 
 /datum/cm_objective/repair_apcs/pre_round_start()
-	for(var/obj/machinery/power/apc/colony_apc in machines)
+	for(var/obj/structure/machinery/power/apc/colony_apc in machines)
 		if(!(colony_apc.z in SURFACE_Z_LEVELS))
 			continue
 		total_apcs++
 
 /datum/cm_objective/repair_apcs/check_completion()
 	var/total_functioning = 0
-	for(var/obj/machinery/power/apc/colony_apc in machines)
+	for(var/obj/structure/machinery/power/apc/colony_apc in machines)
 		if(!(colony_apc.z in SURFACE_Z_LEVELS))
 			continue
 		if(colony_apc.stat & (BROKEN|MAINT))

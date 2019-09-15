@@ -4,9 +4,9 @@
 var/req_console_assistance = list()
 var/req_console_supplies = list()
 var/req_console_information = list()
-var/list/obj/machinery/requests_console/allConsoles = list()
+var/list/obj/structure/machinery/requests_console/allConsoles = list()
 
-/obj/machinery/requests_console
+/obj/structure/machinery/requests_console
 	name = "Requests Console"
 	desc = "A console intended to send requests to different departments on the station."
 	anchored = 1
@@ -56,11 +56,11 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	var/priority = -1 ; //Priority of the message being sent
 	luminosity = 0
 
-/obj/machinery/requests_console/power_change()
+/obj/structure/machinery/requests_console/power_change()
 	..()
 	update_icon()
 
-/obj/machinery/requests_console/update_icon()
+/obj/structure/machinery/requests_console/update_icon()
 	if(stat & NOPOWER)
 		if(icon_state != "req_comp_off")
 			icon_state = "req_comp_off"
@@ -68,7 +68,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		if(icon_state == "req_comp_off")
 			icon_state = "req_comp0"
 
-/obj/machinery/requests_console/New()
+/obj/structure/machinery/requests_console/New()
 	..()
 
 	name = "[department] Requests Console"
@@ -108,7 +108,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 				req_console_information += department
 
 
-/obj/machinery/requests_console/attack_hand(user as mob)
+/obj/structure/machinery/requests_console/attack_hand(user as mob)
 	if(..(user))
 		return
 	var/dat
@@ -157,7 +157,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 				dat += text("<A href='?src=\ref[src];setScreen=0'>Continue</A><BR>")
 
 			if(8)	//view messages
-				for (var/obj/machinery/requests_console/Console in allConsoles)
+				for (var/obj/structure/machinery/requests_console/Console in allConsoles)
 					if (Console.department == department)
 						Console.newmessagepriority = 0
 						Console.icon_state = "req_comp0"
@@ -211,7 +211,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		onclose(user, "req_console")
 	return
 
-/obj/machinery/requests_console/Topic(href, href_list)
+/obj/structure/machinery/requests_console/Topic(href, href_list)
 	if(..())	return
 	usr.set_interaction(src)
 	add_fingerprint(usr)
@@ -263,14 +263,14 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		screen = 7 //if it's successful, this will get overrwritten (7 = unsufccessfull, 6 = successfull)
 		if (sending)
 			var/pass = 0
-			for (var/obj/machinery/message_server/MS in machines)
+			for (var/obj/structure/machinery/message_server/MS in machines)
 				if(!MS.active) continue
 				MS.send_rc_message(href_list["department"],department,log_msg,msgStamped,msgVerified,priority)
 				pass = 1
 
 			if(pass)
 
-				for (var/obj/machinery/requests_console/Console in allConsoles)
+				for (var/obj/structure/machinery/requests_console/Console in allConsoles)
 					if (ckey(Console.department) == ckey(href_list["department"]))
 
 						switch(priority)
@@ -354,7 +354,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	return
 
 					//err... hacking code, which has no reason for existing... but anyway... it's supposed to unlock priority 3 messanging on that console (EXTREME priority...) the code for that actually exists.
-/obj/machinery/requests_console/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/requests_console/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	/*
 	if (istype(O, /obj/item/tool/crowbar))
 		if(open)
@@ -397,10 +397,10 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 			updateUsrDialog()
 	return
 
-/obj/machinery/requests_console/proc/reset_announce()
+/obj/structure/machinery/requests_console/proc/reset_announce()
 	announceAuth = 0
 	message = ""
 
-/obj/machinery/requests_console/Dispose()
+/obj/structure/machinery/requests_console/Dispose()
 	SetLuminosity(0)
 	. = ..()

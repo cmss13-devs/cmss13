@@ -1,13 +1,13 @@
 client/verb/tcssave()
 	set hidden = 1
 	if(mob.interactee || issilicon(mob))
-		if((istype(mob.interactee, /obj/machinery/computer/telecomms/traffic) && mob.interactee in view(1, mob)) || issilicon(mob))
-			var/obj/machinery/computer/telecomms/traffic/Machine = mob.interactee
+		if((istype(mob.interactee, /obj/structure/machinery/computer/telecomms/traffic) && mob.interactee in view(1, mob)) || issilicon(mob))
+			var/obj/structure/machinery/computer/telecomms/traffic/Machine = mob.interactee
 			if(Machine.editingcode != mob)
 				return
 
 			if(Machine.SelectedServer)
-				var/obj/machinery/telecomms/server/Server = Machine.SelectedServer
+				var/obj/structure/machinery/telecomms/server/Server = Machine.SelectedServer
 				var/tcscode=winget(src, "tcscode", "text")
 				var/msg="[mob.name] is adding script to server [Server]: [tcscode]"
 				log_misc(msg)
@@ -28,13 +28,13 @@ client/verb/tcssave()
 client/verb/tcscompile()
 	set hidden = 1
 	if(mob.interactee || issilicon(mob))
-		if((istype(mob.interactee, /obj/machinery/computer/telecomms/traffic) && mob.interactee in view(1, mob)) || (issilicon(mob) && istype(mob.interactee, /obj/machinery/computer/telecomms/traffic) ))
-			var/obj/machinery/computer/telecomms/traffic/Machine = mob.interactee
+		if((istype(mob.interactee, /obj/structure/machinery/computer/telecomms/traffic) && mob.interactee in view(1, mob)) || (issilicon(mob) && istype(mob.interactee, /obj/structure/machinery/computer/telecomms/traffic) ))
+			var/obj/structure/machinery/computer/telecomms/traffic/Machine = mob.interactee
 			if(Machine.editingcode != mob)
 				return
 
 			if(Machine.SelectedServer)
-				var/obj/machinery/telecomms/server/Server = Machine.SelectedServer
+				var/obj/structure/machinery/telecomms/server/Server = Machine.SelectedServer
 				Server.setcode( winget(src, "tcscode", "text") ) // save code first
 				var/list/compileerrors = Server.compile() // then compile the code!
 
@@ -79,13 +79,13 @@ client/verb/tcscompile()
 client/verb/tcsrun()
 	set hidden = 1
 	if(mob.interactee || issilicon(mob))
-		if((istype(mob.interactee, /obj/machinery/computer/telecomms/traffic) && mob.interactee in view(1, mob)) || (issilicon(mob) && istype(mob.interactee, /obj/machinery/computer/telecomms/traffic) ))
-			var/obj/machinery/computer/telecomms/traffic/Machine = mob.interactee
+		if((istype(mob.interactee, /obj/structure/machinery/computer/telecomms/traffic) && mob.interactee in view(1, mob)) || (issilicon(mob) && istype(mob.interactee, /obj/structure/machinery/computer/telecomms/traffic) ))
+			var/obj/structure/machinery/computer/telecomms/traffic/Machine = mob.interactee
 			if(Machine.editingcode != mob)
 				return
 
 			if(Machine.SelectedServer)
-				var/obj/machinery/telecomms/server/Server = Machine.SelectedServer
+				var/obj/structure/machinery/telecomms/server/Server = Machine.SelectedServer
 				Server.setcode( winget(src, "tcscode", "text") ) // save code first
 				var/list/compileerrors = Server.compile() // then compile the code!
 
@@ -145,8 +145,8 @@ client/verb/tcsrun()
 client/verb/exittcs()
 	set hidden = 1
 	if(mob.interactee || issilicon(mob))
-		if((istype(mob.interactee, /obj/machinery/computer/telecomms/traffic) && mob.interactee in view(1, mob)) || (issilicon(mob) && istype(mob.interactee, /obj/machinery/computer/telecomms/traffic) ))
-			var/obj/machinery/computer/telecomms/traffic/Machine = mob.interactee
+		if((istype(mob.interactee, /obj/structure/machinery/computer/telecomms/traffic) && mob.interactee in view(1, mob)) || (issilicon(mob) && istype(mob.interactee, /obj/structure/machinery/computer/telecomms/traffic) ))
+			var/obj/structure/machinery/computer/telecomms/traffic/Machine = mob.interactee
 			if(Machine.editingcode == mob)
 				Machine.storedcode = "[winget(mob, "tcscode", "text")]"
 				Machine.editingcode = null
@@ -157,13 +157,13 @@ client/verb/exittcs()
 client/verb/tcsrevert()
 	set hidden = 1
 	if(mob.interactee || issilicon(mob))
-		if((istype(mob.interactee, /obj/machinery/computer/telecomms/traffic) && mob.interactee in view(1, mob)) || (issilicon(mob) && istype(mob.interactee, /obj/machinery/computer/telecomms/traffic) ))
-			var/obj/machinery/computer/telecomms/traffic/Machine = mob.interactee
+		if((istype(mob.interactee, /obj/structure/machinery/computer/telecomms/traffic) && mob.interactee in view(1, mob)) || (issilicon(mob) && istype(mob.interactee, /obj/structure/machinery/computer/telecomms/traffic) ))
+			var/obj/structure/machinery/computer/telecomms/traffic/Machine = mob.interactee
 			if(Machine.editingcode != mob)
 				return
 
 			if(Machine.SelectedServer)
-				var/obj/machinery/telecomms/server/Server = Machine.SelectedServer
+				var/obj/structure/machinery/telecomms/server/Server = Machine.SelectedServer
 
 				// Replace quotation marks with quotation macros for proper winset() compatibility
 				var/showcode = replacetext(Server.rawcode, "\\\"", "\\\\\"")
@@ -186,13 +186,13 @@ client/verb/tcsrevert()
 client/verb/tcsclearmem()
 	set hidden = 1
 	if(mob.interactee || issilicon(mob))
-		if((istype(mob.interactee, /obj/machinery/computer/telecomms/traffic) && mob.interactee in view(1, mob)) || (issilicon(mob) && istype(mob.interactee, /obj/machinery/computer/telecomms/traffic) ))
-			var/obj/machinery/computer/telecomms/traffic/Machine = mob.interactee
+		if((istype(mob.interactee, /obj/structure/machinery/computer/telecomms/traffic) && mob.interactee in view(1, mob)) || (issilicon(mob) && istype(mob.interactee, /obj/structure/machinery/computer/telecomms/traffic) ))
+			var/obj/structure/machinery/computer/telecomms/traffic/Machine = mob.interactee
 			if(Machine.editingcode != mob)
 				return
 
 			if(Machine.SelectedServer)
-				var/obj/machinery/telecomms/server/Server = Machine.SelectedServer
+				var/obj/structure/machinery/telecomms/server/Server = Machine.SelectedServer
 				Server.memory = list() // clear the memory
 				// Show results
 				src << output(null, "tcserror")

@@ -7,7 +7,7 @@ It is used to destroy hand-held objects and advance technological research. Cont
 
 Note: Must be placed within 3 tiles of the R&D Console
 */
-/obj/machinery/r_n_d/destructive_analyzer
+/obj/structure/machinery/r_n_d/destructive_analyzer
 	name = "Destructive Analyzer"
 	icon_state = "d_analyzer"
 	var/obj/item/loaded_item = null
@@ -17,7 +17,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 	idle_power_usage = 30
 	active_power_usage = 2500
 
-/obj/machinery/r_n_d/destructive_analyzer/New()
+/obj/structure/machinery/r_n_d/destructive_analyzer/New()
 	..()
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/machine/destructive_analyzer(src)
@@ -26,21 +26,21 @@ Note: Must be placed within 3 tiles of the R&D Console
 	component_parts += new /obj/item/stock_parts/micro_laser(src)
 	RefreshParts()
 
-/obj/machinery/r_n_d/destructive_analyzer/RefreshParts()
+/obj/structure/machinery/r_n_d/destructive_analyzer/RefreshParts()
 	var/T = 0
 	for(var/obj/item/stock_parts/S in src)
 		T += S.rating * 0.1
 	T = between (0, T, 1)
 	decon_mod = T
 
-/obj/machinery/r_n_d/destructive_analyzer/proc/ConvertReqString2List(var/list/source_list)
+/obj/structure/machinery/r_n_d/destructive_analyzer/proc/ConvertReqString2List(var/list/source_list)
 	var/list/temp_list = params2list(source_list)
 	for(var/O in temp_list)
 		temp_list[O] = text2num(temp_list[O])
 	return temp_list
 
 
-/obj/machinery/r_n_d/destructive_analyzer/attackby(var/obj/O as obj, var/mob/user as mob)
+/obj/structure/machinery/r_n_d/destructive_analyzer/attackby(var/obj/O as obj, var/mob/user as mob)
 	if (shocked)
 		shock(user,50)
 	if (istype(O, /obj/item/tool/screwdriver))
@@ -59,7 +59,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 	if (opened)
 		if(istype(O, /obj/item/tool/crowbar))
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-			var/obj/machinery/constructable_frame/M = new /obj/machinery/constructable_frame(src.loc)
+			var/obj/structure/machinery/constructable_frame/M = new /obj/structure/machinery/constructable_frame(src.loc)
 			M.state = CONSTRUCTION_STATE_PROGRESS
 			M.update_icon()
 			for(var/obj/I in component_parts)

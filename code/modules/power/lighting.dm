@@ -1,6 +1,6 @@
 // The lighting system
 //
-// consists of light fixtures (/obj/machinery/light) and light tube/bulb items (/obj/item/light)
+// consists of light fixtures (/obj/structure/machinery/light) and light tube/bulb items (/obj/item/light)
 
 
 // status values shared between lighting fixtures and items
@@ -11,7 +11,7 @@
 
 
 
-/obj/machinery/light_construct
+/obj/structure/machinery/light_construct
 	name = "light fixture frame"
 	desc = "A light fixture under construction."
 	icon = 'icons/obj/items/lighting.dmi'
@@ -21,14 +21,14 @@
 	var/stage = 1
 	var/fixture_type = "tube"
 	var/sheets_refunded = 2
-	var/obj/machinery/light/newlight = null
+	var/obj/structure/machinery/light/newlight = null
 
-/obj/machinery/light_construct/New()
+/obj/structure/machinery/light_construct/New()
 	..()
 	if (fixture_type == "bulb")
 		icon_state = "bulb-construct-stage1"
 
-/obj/machinery/light_construct/examine(mob/user)
+/obj/structure/machinery/light_construct/examine(mob/user)
 	..()
 	switch(stage)
 		if(1)
@@ -39,7 +39,7 @@
 			to_chat(user, "The casing is closed.")
 
 
-/obj/machinery/light_construct/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/light_construct/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 	if (istype(W, /obj/item/tool/wrench))
 		if (src.stage == 1)
@@ -103,9 +103,9 @@
 			switch(fixture_type)
 
 				if("tube")
-					newlight = new /obj/machinery/light/built(src.loc)
+					newlight = new /obj/structure/machinery/light/built(src.loc)
 				if ("bulb")
-					newlight = new /obj/machinery/light/small/built(src.loc)
+					newlight = new /obj/structure/machinery/light/small/built(src.loc)
 
 			newlight.dir = src.dir
 			src.transfer_fingerprints_to(newlight)
@@ -113,7 +113,7 @@
 			return
 	..()
 
-/obj/machinery/light_construct/small
+/obj/structure/machinery/light_construct/small
 	name = "small light fixture frame"
 	desc = "A small light fixture under construction."
 	icon = 'icons/obj/items/lighting.dmi'
@@ -124,7 +124,7 @@
 	sheets_refunded = 1
 
 // the standard tube light fixture
-/obj/machinery/light
+/obj/structure/machinery/light
 	name = "light fixture"
 	icon = 'icons/obj/items/lighting.dmi'
 	var/base_state = "tube"		// base description and icon_state
@@ -151,7 +151,7 @@
 
 // the smaller bulb light fixture
 
-/obj/machinery/light/small
+/obj/structure/machinery/light/small
 	icon_state = "bulb1"
 	base_state = "bulb"
 	fitting = "bulb"
@@ -159,24 +159,24 @@
 	desc = "A small lighting fixture."
 	light_type = /obj/item/light_bulb/bulb
 
-/obj/machinery/light/spot
+/obj/structure/machinery/light/spot
 	name = "spotlight"
 	fitting = "large tube"
 	light_type = /obj/item/light_bulb/tube/large
 	brightness = 12
 
-/obj/machinery/light/built/New()
+/obj/structure/machinery/light/built/New()
 	status = LIGHT_EMPTY
 	update(0)
 	..()
 
-/obj/machinery/light/small/built/New()
+/obj/structure/machinery/light/small/built/New()
 	status = LIGHT_EMPTY
 	update(0)
 	..()
 
 // create a new lighting fixture
-/obj/machinery/light/New()
+/obj/structure/machinery/light/New()
 	..()
 
 	spawn(2)
@@ -213,7 +213,7 @@
 				if(WEST)
 					pixel_x = -10
 
-/obj/machinery/light/Dispose()
+/obj/structure/machinery/light/Dispose()
 	var/area/A = get_area(src)
 	if(A)
 		on = 0
@@ -221,12 +221,12 @@
 	SetLuminosity(0)
 	. = ..()
 
-/obj/machinery/light/proc/is_broken()
+/obj/structure/machinery/light/proc/is_broken()
 	if(status == LIGHT_BROKEN)
 		return 1
 	return 0
 
-/obj/machinery/light/update_icon()
+/obj/structure/machinery/light/update_icon()
 
 	switch(status)		// set icon_states
 		if(LIGHT_OK)
@@ -243,7 +243,7 @@
 	return
 
 // update the icon_state and luminosity of the light depending on its state
-/obj/machinery/light/proc/update(var/trigger = 1)
+/obj/structure/machinery/light/proc/update(var/trigger = 1)
 	global_changed_lights.Add(light)
 	update_icon()
 	if(on)
@@ -275,12 +275,12 @@
 
 // attempt to set the light's on/off status
 // will not switch on if broken/burned/empty
-/obj/machinery/light/proc/seton(var/s)
+/obj/structure/machinery/light/proc/seton(var/s)
 	on = (s && status == LIGHT_OK)
 	update()
 
 // examine verb
-/obj/machinery/light/examine(mob/user)
+/obj/structure/machinery/light/examine(mob/user)
 	..()
 	switch(status)
 		if(LIGHT_OK)
@@ -296,7 +296,7 @@
 
 // attack with item - insert light (if right type), otherwise try to break the light
 
-/obj/machinery/light/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/light/attackby(obj/item/W, mob/user)
 
 	//Light replacer code
 	if(istype(W, /obj/item/device/lightreplacer))
@@ -365,14 +365,14 @@
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			user.visible_message("[user.name] opens [src]'s casing.", \
 				"You open [src]'s casing.", "You hear a noise.")
-			var/obj/machinery/light_construct/newlight = null
+			var/obj/structure/machinery/light_construct/newlight = null
 			switch(fitting)
 				if("tube")
-					newlight = new /obj/machinery/light_construct(src.loc)
+					newlight = new /obj/structure/machinery/light_construct(src.loc)
 					newlight.icon_state = "tube-construct-stage2"
 
 				if("bulb")
-					newlight = new /obj/machinery/light_construct/small(src.loc)
+					newlight = new /obj/structure/machinery/light_construct/small(src.loc)
 					newlight.icon_state = "bulb-construct-stage2"
 			newlight.dir = src.dir
 			newlight.stage = 2
@@ -394,11 +394,11 @@
 
 // returns whether this light has power
 // true if area has power and lightswitch is on
-/obj/machinery/light/proc/has_power()
+/obj/structure/machinery/light/proc/has_power()
 	var/area/A = src.loc.loc
 	return A.master.lightswitch && A.master.power_light
 
-/obj/machinery/light/proc/flicker(var/amount = rand(10, 20))
+/obj/structure/machinery/light/proc/flicker(var/amount = rand(10, 20))
 	if(flickering) return
 	flickering = 1
 	spawn(0)
@@ -414,11 +414,11 @@
 
 // ai attack - make lights flicker, because why not
 
-/obj/machinery/light/attack_ai(mob/user)
+/obj/structure/machinery/light/attack_ai(mob/user)
 	src.flicker(1)
 	return
 
-/obj/machinery/light/attack_animal(mob/living/M)
+/obj/structure/machinery/light/attack_animal(mob/living/M)
 	if(M.melee_damage_upper == 0)	return
 	if(status == LIGHT_EMPTY||status == LIGHT_BROKEN)
 		to_chat(M, SPAN_WARNING("That object is useless to you."))
@@ -431,7 +431,7 @@
 // attack with hand - remove tube/bulb
 // if hands aren't protected and the light is on, burn the player
 
-/obj/machinery/light/attack_hand(mob/user)
+/obj/structure/machinery/light/attack_hand(mob/user)
 
 	add_fingerprint(user)
 
@@ -493,7 +493,7 @@
 
 // break the light and make sparks if was on
 
-/obj/machinery/light/proc/broken(var/skip_sound_and_sparks = 0)
+/obj/structure/machinery/light/proc/broken(var/skip_sound_and_sparks = 0)
 	if(status == LIGHT_EMPTY)
 		return
 
@@ -507,7 +507,7 @@
 	status = LIGHT_BROKEN
 	update()
 
-/obj/machinery/light/proc/fix()
+/obj/structure/machinery/light/proc/fix()
 	if(status == LIGHT_OK)
 		return
 	status = LIGHT_OK
@@ -518,7 +518,7 @@
 // explosion effect
 // destroy the whole light fixture or just shatter it
 
-/obj/machinery/light/ex_act(severity)
+/obj/structure/machinery/light/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(50))
@@ -536,13 +536,13 @@
 #define LIGHTING_POWER_FACTOR 20		//20W per unit luminosity
 
 /*
-/obj/machinery/light/process()//TODO: remove/add this from machines to save on processing as needed ~Carn PRIORITY
+/obj/structure/machinery/light/process()//TODO: remove/add this from machines to save on processing as needed ~Carn PRIORITY
 	if(on)
 		use_power(luminosity * LIGHTING_POWER_FACTOR, LIGHT)
 */
 
 // called when area power state changes
-/obj/machinery/light/power_change()
+/obj/structure/machinery/light/power_change()
 	spawn(10)
 		if(loc)
 			var/area/A = src.loc.loc
@@ -551,11 +551,11 @@
 
 // called when on fire
 
-/obj/machinery/light/fire_act(exposed_temperature, exposed_volume)
+/obj/structure/machinery/light/fire_act(exposed_temperature, exposed_volume)
 	if(prob(max(0, exposed_temperature - 673)))   //0% at <400C, 100% at >500C
 		broken()
 
-/obj/machinery/light/bullet_act(obj/item/projectile/P)
+/obj/structure/machinery/light/bullet_act(obj/item/projectile/P)
 	src.bullet_ping(P)
 	if(P.ammo.damage_type == BRUTE)
 		if(P.damage > config.base_hit_damage)
@@ -566,7 +566,7 @@
 
 // explode the light
 
-/obj/machinery/light/proc/explode()
+/obj/structure/machinery/light/proc/explode()
 	var/turf/T = get_turf(src.loc)
 	spawn(0)
 		broken()	// break it first to give a warning
@@ -577,7 +577,7 @@
 
 // the light item
 // can be tube or bulb subtypes
-// will fit into empty /obj/machinery/light of the corresponding type
+// will fit into empty /obj/structure/machinery/light of the corresponding type
 
 /obj/item/light_bulb
 	icon = 'icons/obj/items/lighting.dmi'
@@ -679,7 +679,7 @@
 
 /obj/item/light_bulb/afterattack(atom/target, mob/user, proximity)
 	if(!proximity) return
-	if(istype(target, /obj/machinery/light))
+	if(istype(target, /obj/structure/machinery/light))
 		return
 	if(user.a_intent != "hurt")
 		return
@@ -695,7 +695,7 @@
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 		update()
 
-/obj/machinery/landinglight
+/obj/structure/machinery/landinglight
 	name = "landing light"
 	icon = 'icons/obj/structures/props/landinglights.dmi'
 	icon_state = "landingstripetop"
@@ -711,46 +711,46 @@
 	unacidable = 1
 
 //Don't allow blowing those up, so Marine nades don't fuck them
-/obj/machinery/landinglight/ex_act(severity)
+/obj/structure/machinery/landinglight/ex_act(severity)
 	return
 
-/obj/machinery/landinglight/New()
+/obj/structure/machinery/landinglight/New()
 	turn_off()
 
-/obj/machinery/landinglight/proc/turn_off()
+/obj/structure/machinery/landinglight/proc/turn_off()
 	icon_state = "landingstripe"
 	SetLuminosity(0)
 
-/obj/machinery/landinglight/ds1
+/obj/structure/machinery/landinglight/ds1
 	id = "USS Almayer Dropship 1" // ID for landing zone
 
-/obj/machinery/landinglight/ds2
+/obj/structure/machinery/landinglight/ds2
 	id = "USS Almayer Dropship 2" // ID for landing zone
 
-/obj/machinery/landinglight/proc/turn_on()
+/obj/structure/machinery/landinglight/proc/turn_on()
 	icon_state = "landingstripe0"
 	SetLuminosity(2)
 
-/obj/machinery/landinglight/ds1/delayone/turn_on()
+/obj/structure/machinery/landinglight/ds1/delayone/turn_on()
 	icon_state = "landingstripe1"
 	SetLuminosity(2)
 
-/obj/machinery/landinglight/ds1/delaytwo/turn_on()
+/obj/structure/machinery/landinglight/ds1/delaytwo/turn_on()
 	icon_state = "landingstripe2"
 	SetLuminosity(2)
 
-/obj/machinery/landinglight/ds1/delaythree/turn_on()
+/obj/structure/machinery/landinglight/ds1/delaythree/turn_on()
 	icon_state = "landingstripe3"
 	SetLuminosity(2)
 
-/obj/machinery/landinglight/ds2/delayone/turn_on()
+/obj/structure/machinery/landinglight/ds2/delayone/turn_on()
 	icon_state = "landingstripe1"
 	SetLuminosity(2)
 
-/obj/machinery/landinglight/ds2/delaytwo/turn_on()
+/obj/structure/machinery/landinglight/ds2/delaytwo/turn_on()
 	icon_state = "landingstripe2"
 	SetLuminosity(2)
 
-/obj/machinery/landinglight/ds2/delaythree/turn_on()
+/obj/structure/machinery/landinglight/ds2/delaythree/turn_on()
 	icon_state = "landingstripe3"
 	SetLuminosity(2)

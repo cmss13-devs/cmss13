@@ -1,4 +1,4 @@
-/obj/machinery/recharge_station
+/obj/structure/machinery/recharge_station
 	name = "cyborg recharging station"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "borgcharger0"
@@ -16,12 +16,12 @@
 
 
 
-/obj/machinery/recharge_station/New()
+/obj/structure/machinery/recharge_station/New()
 	..()
 	build_icon()
 	update_icon()
 
-/obj/machinery/recharge_station/process()
+/obj/structure/machinery/recharge_station/process()
 	if(stat & (BROKEN))
 		return
 
@@ -67,22 +67,22 @@
 	return 1
 
 
-/obj/machinery/recharge_station/allow_drop()
+/obj/structure/machinery/recharge_station/allow_drop()
 	return 0
 
-/obj/machinery/recharge_station/examine(mob/user)
+/obj/structure/machinery/recharge_station/examine(mob/user)
 	to_chat(user, "The charge meter reads: [round(chargepercentage())]%")
 
-/obj/machinery/recharge_station/proc/chargepercentage()
+/obj/structure/machinery/recharge_station/proc/chargepercentage()
 	return ((current_internal_charge / max_internal_charge) * 100)
 
-/obj/machinery/recharge_station/relaymove(mob/user as mob)
+/obj/structure/machinery/recharge_station/relaymove(mob/user as mob)
 	if(user.stat)
 		return
 	src.go_out()
 	return
 
-/obj/machinery/recharge_station/emp_act(severity)
+/obj/structure/machinery/recharge_station/emp_act(severity)
 	if(stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
@@ -91,7 +91,7 @@
 		go_out()
 	..(severity)
 
-/obj/machinery/recharge_station/update_icon()
+/obj/structure/machinery/recharge_station/update_icon()
 	..()
 	overlays.Cut()
 	switch(round(chargepercentage()))
@@ -108,7 +108,7 @@
 		if(99 to 110)
 			overlays += image('icons/obj/objects.dmi', "statn_c100")
 
-/obj/machinery/recharge_station/proc/build_icon()
+/obj/structure/machinery/recharge_station/proc/build_icon()
 	if(NOPOWER|BROKEN)
 		if(src.occupant)
 			icon_state = "borgcharger1"
@@ -117,7 +117,7 @@
 	else
 		icon_state = "borgcharger0"
 
-/obj/machinery/recharge_station/proc/process_occupant()
+/obj/structure/machinery/recharge_station/proc/process_occupant()
 	if(src.occupant)
 		if (isrobot(occupant))
 			var/mob/living/silicon/robot/R = occupant
@@ -133,7 +133,7 @@
 			else
 				update_use_power(1)
 
-/obj/machinery/recharge_station/proc/go_out()
+/obj/structure/machinery/recharge_station/proc/go_out()
 	if(!( src.occupant ))
 		return
 	//for(var/obj/O in src)
@@ -149,7 +149,7 @@
 	return
 
 
-/obj/machinery/recharge_station/verb/move_eject()
+/obj/structure/machinery/recharge_station/verb/move_eject()
 	set category = "Object"
 	set src in oview(1)
 	if (usr.stat != 0)
@@ -158,7 +158,7 @@
 	add_fingerprint(usr)
 	return
 
-/obj/machinery/recharge_station/verb/move_inside()
+/obj/structure/machinery/recharge_station/verb/move_inside()
 	set category = "Object"
 	set src in oview(1)
 	if (usr.stat == 2)

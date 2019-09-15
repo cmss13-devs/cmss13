@@ -7,7 +7,7 @@
 #define	IMPRINTER	1	//For circuits. Uses glass/chemicals.
 #define PROTOLATHE	2	//New stuff. Uses glass/metal/chemicals
 
-/obj/machinery/computer/WYresearch
+/obj/structure/machinery/computer/WYresearch
 	name = "R&D Console"
 	icon = 'icons/obj/structures/machinery/mainframe.dmi'
 	icon_state = "aimainframe"
@@ -17,12 +17,12 @@
 
 
 //THIS WILL BE FOR LINKING THE ANALYZER AND FABRICATOR
-	var/obj/machinery/r_n_d/destructive_analyzer/linked_destroy = null	//Linked Destructive Analyzer
-	var/obj/machinery/r_n_d/protolathe/linked_lathe = null				//Linked Protolathe
-	var/obj/machinery/r_n_d/circuit_imprinter/linked_imprinter = null	//Linked Circuit Imprinter
+	var/obj/structure/machinery/r_n_d/destructive_analyzer/linked_destroy = null	//Linked Destructive Analyzer
+	var/obj/structure/machinery/r_n_d/protolathe/linked_lathe = null				//Linked Protolathe
+	var/obj/structure/machinery/r_n_d/circuit_imprinter/linked_imprinter = null	//Linked Circuit Imprinter
 	//CM MACHINES
-	var/obj/machinery/r_n_d/organic_analyzer/linked_organic = null      //linked Organic Analyzer
-	var/obj/machinery/r_n_d/bioprinter/linked_bioprinter = null			//linked bioprinter
+	var/obj/structure/machinery/r_n_d/organic_analyzer/linked_organic = null      //linked Organic Analyzer
+	var/obj/structure/machinery/r_n_d/bioprinter/linked_bioprinter = null			//linked bioprinter
 
 	var/screen = 1.0	//Which screen is currently showing.
 	var/id = 0			//ID of the computer (for server restrictions).
@@ -33,7 +33,7 @@
 
 
 
-/obj/machinery/computer/WYresearch/proc/CallTechName(var/ID) //A simple helper proc to find the name of a tech with a given ID.
+/obj/structure/machinery/computer/WYresearch/proc/CallTechName(var/ID) //A simple helper proc to find the name of a tech with a given ID.
 	var/datum/tech/check_tech
 	var/return_name = null
 	for(var/T in typesof(/datum/tech) - /datum/tech)
@@ -47,7 +47,7 @@
 
 	return return_name
 
-/obj/machinery/computer/WYresearch/proc/CallMaterialName(var/ID)
+/obj/structure/machinery/computer/WYresearch/proc/CallMaterialName(var/ID)
 	var/datum/reagent/temp_reagent
 	var/return_name = null
 	if (copytext(ID, 1, 2) == "$")
@@ -84,57 +84,57 @@
 				break
 	return return_name
 
-/obj/machinery/computer/WYresearch/proc/SyncRDevices() //Makes sure it is properly sync'ed up with the devices attached to it (if any).
+/obj/structure/machinery/computer/WYresearch/proc/SyncRDevices() //Makes sure it is properly sync'ed up with the devices attached to it (if any).
 			//These are the old consoles.  This will need to be rewritten for the new ones.
 
-	for(var/obj/machinery/r_n_d/D in oview(3,src))
+	for(var/obj/structure/machinery/r_n_d/D in oview(3,src))
 		if(D.linked_console != null || D.disabled || D.opened)
 			continue
-		if(istype(D, /obj/machinery/r_n_d/organic_analyzer)) // CM MACHINE
+		if(istype(D, /obj/structure/machinery/r_n_d/organic_analyzer)) // CM MACHINE
 			if(linked_organic == null)
 				linked_organic = D
 				D.linked_console = src
-		if(istype(D, /obj/machinery/r_n_d/destructive_analyzer))
+		if(istype(D, /obj/structure/machinery/r_n_d/destructive_analyzer))
 			if(linked_destroy == null)
 				linked_destroy = D
 				D.linked_console = src
-		else if(istype(D, /obj/machinery/r_n_d/protolathe))
+		else if(istype(D, /obj/structure/machinery/r_n_d/protolathe))
 			if(linked_lathe == null)
 				linked_lathe = D
 				D.linked_console = src
-		else if(istype(D, /obj/machinery/r_n_d/circuit_imprinter))
+		else if(istype(D, /obj/structure/machinery/r_n_d/circuit_imprinter))
 			if(linked_imprinter == null)
 				linked_imprinter = D
 				D.linked_console = src
-		else if(istype(D, /obj/machinery/r_n_d/bioprinter)) // CM MACHINE
+		else if(istype(D, /obj/structure/machinery/r_n_d/bioprinter)) // CM MACHINE
 			if(linked_imprinter == null)
 				linked_bioprinter = D
 				D.linked_console = src
 
 	return
 
-/obj/machinery/computer/WYresearch/proc/griefProtection()
+/obj/structure/machinery/computer/WYresearch/proc/griefProtection()
 //this should be fine.  The RND server will get adjusted to work so that we can support legacy as well.
-	for(var/obj/machinery/r_n_d/server/centcom/C in machines)
+	for(var/obj/structure/machinery/r_n_d/server/centcom/C in machines)
 		for(var/datum/tech/T in files.known_tech)
 			C.files.AddTech2Known(T)
 		for(var/datum/design/D in files.known_designs)
 			C.files.AddDesign2Known(D)
 		C.files.RefreshResearch()
 
-/obj/machinery/computer/WYresearch/New()
+/obj/structure/machinery/computer/WYresearch/New()
 	..()
 	files = new /datum/XenoResearch(src) //Setup the research data holder.
 	/*if(!id)
-		for(var/obj/machinery/r_n_d/server/centcom/S in machines)
+		for(var/obj/structure/machinery/r_n_d/server/centcom/S in machines)
 			S.initialize()
 			break*/  //THIS TOO!
 
-/obj/machinery/computer/WYresearch/initialize()
+/obj/structure/machinery/computer/WYresearch/initialize()
 	SyncRDevices()
 
 /*  //LEAVING THIS FOR NOW.  Eventually, they'll be able to use a W-Y DATACUBE to copy the entire system.  Either for merc theft, Russian shenanigans, or W-Y retreival.
-/obj/machinery/computer/rdconsole/attackby(var/obj/item/D as obj, var/mob/user as mob)
+/obj/structure/machinery/computer/rdconsole/attackby(var/obj/item/D as obj, var/mob/user as mob)
 	//Loading a disk into it.
 	if(istype(D, /obj/item/disk))
 		if(t_disk || d_disk)
@@ -158,7 +158,7 @@
 
 
 	//THIS IS A BIG'UN.  Also, I've temporarily brutalized it, but we can fix the syntax/formatting later.
-/obj/machinery/computer/WYresearch/Topic(href, href_list)
+/obj/structure/machinery/computer/WYresearch/Topic(href, href_list)
 	if(..())
 		return
 
@@ -251,25 +251,25 @@
 			griefProtection() //Putting this here because I dont trust the sync process
 			spawn(30)
 				if(src)
-					for(var/obj/machinery/r_n_d/server/S in machines)
+					for(var/obj/structure/machinery/r_n_d/server/S in machines)
 						var/server_processed = 0
 						if(S.disabled)
 							continue
-						if((id in S.id_with_upload) || istype(S, /obj/machinery/r_n_d/server/centcom))
+						if((id in S.id_with_upload) || istype(S, /obj/structure/machinery/r_n_d/server/centcom))
 							for(var/datum/tech/T in files.known_tech)
 								S.files.AddTech2Known(T)
 							for(var/datum/design/D in files.known_designs)
 								S.files.AddDesign2Known(D)
 							S.files.RefreshResearch()
 							server_processed = 1
-						if(((id in S.id_with_download) && !istype(S, /obj/machinery/r_n_d/server/centcom)) || S.hacked)
+						if(((id in S.id_with_download) && !istype(S, /obj/structure/machinery/r_n_d/server/centcom)) || S.hacked)
 							for(var/datum/tech/T in S.files.known_tech)
 								files.AddTech2Known(T)
 							for(var/datum/design/D in S.files.known_designs)
 								files.AddDesign2Known(D)
 							files.RefreshResearch()
 							server_processed = 1
-						if(!istype(S, /obj/machinery/r_n_d/server/centcom) && server_processed)
+						if(!istype(S, /obj/structure/machinery/r_n_d/server/centcom) && server_processed)
 							S.produce_heat()
 					screen = 1.6
 					updateUsrDialog()
@@ -569,7 +569,7 @@
 
 
 
-/obj/machinery/computer/WYresearch/attack_hand(mob/user as mob)
+/obj/structure/machinery/computer/WYresearch/attack_hand(mob/user as mob)
 	if(stat & (BROKEN|NOPOWER))
 		return
 
@@ -955,6 +955,6 @@
 	onclose(user, "rdconsole")
 
 
-/obj/machinery/computer/WYresearch/core
+/obj/structure/machinery/computer/WYresearch/core
 	name = "Core Weyland Research Console"
 	id = 1

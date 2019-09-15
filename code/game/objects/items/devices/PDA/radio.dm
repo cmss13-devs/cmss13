@@ -35,7 +35,7 @@
 
 /obj/item/radio/integrated/mule
 	var/list/botlist = null		// list of bots
-	var/obj/machinery/bot/mulebot/active 	// the active bot; if null, show bot list
+	var/obj/structure/machinery/bot/mulebot/active 	// the active bot; if null, show bot list
 	var/list/botstatus			// the status signal sent by the bot
 	var/list/beacons
 

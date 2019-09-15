@@ -11,13 +11,13 @@
 	unacidable = 1
 	layer = LADDER_LAYER
 	var/is_watching = 0
-	var/obj/machinery/camera/cam
+	var/obj/structure/machinery/camera/cam
 	var/busy = 0 //Ladders are wonderful creatures, only one person can use it at a time
 
 /obj/structure/ladder/New()
 	..()
 	spawn(8)
-		cam = new /obj/machinery/camera(src)
+		cam = new /obj/structure/machinery/camera(src)
 		cam.network = list("LADDER")
 		cam.c_tag = name
 

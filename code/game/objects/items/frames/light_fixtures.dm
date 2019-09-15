@@ -7,7 +7,7 @@
 	icon_state = "tube-construct-item"
 	flags_atom = FPRINT|CONDUCT
 	var/fixture_type = "tube"
-	var/obj/machinery/light/newlight = null
+	var/obj/structure/machinery/light/newlight = null
 	var/sheets_refunded = 2
 
 /obj/item/frame/light_fixture/attackby(obj/item/W as obj, mob/user as mob)
@@ -35,9 +35,9 @@
 		return
 	switch(fixture_type)
 		if("bulb")
-			newlight = new /obj/machinery/light_construct/small(constrloc)
+			newlight = new /obj/structure/machinery/light_construct/small(constrloc)
 		if("tube")
-			newlight = new /obj/machinery/light_construct(constrloc)
+			newlight = new /obj/structure/machinery/light_construct(constrloc)
 	newlight.dir = constrdir
 	newlight.fingerprints = src.fingerprints
 	newlight.fingerprintshidden = src.fingerprintshidden

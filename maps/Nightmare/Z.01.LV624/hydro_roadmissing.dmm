@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "green"
@@ -13,7 +13,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "ac" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "green"
@@ -138,7 +138,7 @@
 /area/lv624/lazarus/hydroponics)
 "ax" = (
 /obj/structure/table,
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /obj/item/disk/objective,
 /turf/open/floor{
 	dir = 5;
@@ -163,7 +163,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aA" = (
-/obj/machinery/colony_floodlight,
+/obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "aB" = (
@@ -521,7 +521,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "bO" = (
-/obj/machinery/vending/wallmed1{
+/obj/structure/machinery/vending/wallmed1{
 	pixel_x = 29
 	},
 /obj/structure/reagent_dispensers/watertank,

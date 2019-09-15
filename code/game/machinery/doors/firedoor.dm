@@ -11,7 +11,7 @@
 #define FIREDOOR_ALERT_COLD     2
 
 
-/obj/machinery/door/firedoor
+/obj/structure/machinery/door/firedoor
 	name = "\improper Emergency Shutter"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas."
 	icon = 'icons/obj/structures/doors/DoorHazard.dmi'
@@ -48,7 +48,7 @@
 
 	New()
 		. = ..()
-		for(var/obj/machinery/door/firedoor/F in loc)
+		for(var/obj/structure/machinery/door/firedoor/F in loc)
 			if(F != src)
 				spawn(1)
 					qdel(src)
@@ -72,7 +72,7 @@
 		. = ..()
 
 
-/obj/machinery/door/firedoor/examine(mob/user)
+/obj/structure/machinery/door/firedoor/examine(mob/user)
 	..()
 	if(get_dist(src, user) > 1 && !isAI(user))
 		return
@@ -114,7 +114,7 @@
 				users_to_open_string += ", [users_to_open[i]]"
 		to_chat(user, "These people have opened \the [src] during an alert: [users_to_open_string].")
 
-/obj/machinery/door/firedoor/Bumped(atom/AM)
+/obj/structure/machinery/door/firedoor/Bumped(atom/AM)
 	if(panel_open || operating)
 		return
 	if(!density)
@@ -128,7 +128,7 @@
 			attack_hand(M)
 	return 0
 
-/obj/machinery/door/firedoor/attack_hand(mob/user as mob)
+/obj/structure/machinery/door/firedoor/attack_hand(mob/user as mob)
 	add_fingerprint(user)
 	if(operating)
 		return//Already doing something.
@@ -183,7 +183,7 @@
 				nextstate = CLOSED
 				close()
 
-/obj/machinery/door/firedoor/attackby(obj/item/C as obj, mob/user as mob)
+/obj/structure/machinery/door/firedoor/attackby(obj/item/C as obj, mob/user as mob)
 	add_fingerprint(user)
 	if(operating)
 		return//Already doing something.
@@ -244,18 +244,18 @@
 					close()
 			return
 
-/obj/machinery/door/firedoor/try_to_activate_door(mob/user)
+/obj/structure/machinery/door/firedoor/try_to_activate_door(mob/user)
 	return
 
 // CHECK PRESSURE
-/obj/machinery/door/firedoor/process()
+/obj/structure/machinery/door/firedoor/process()
 	..()
 
 	if(density && next_process_time <= world.time)
 		next_process_time = world.time + 100		// 10 second delays between process updates
 
 
-/obj/machinery/door/firedoor/proc/latetoggle()
+/obj/structure/machinery/door/firedoor/proc/latetoggle()
 	if(operating || !nextstate)
 		return
 	switch(nextstate)
@@ -267,11 +267,11 @@
 			close()
 	return
 
-/obj/machinery/door/firedoor/close()
+/obj/structure/machinery/door/firedoor/close()
 	latetoggle()
 	return ..()
 
-/obj/machinery/door/firedoor/open(var/forced = 0)
+/obj/structure/machinery/door/firedoor/open(var/forced = 0)
 	if(!forced)
 		if(stat & (BROKEN|NOPOWER))
 			return //needs power to open unless it was forced
@@ -283,7 +283,7 @@
 	latetoggle()
 	return ..()
 
-/obj/machinery/door/firedoor/do_animate(animation)
+/obj/structure/machinery/door/firedoor/do_animate(animation)
 	switch(animation)
 		if("opening")
 			flick("door_opening", src)
@@ -293,7 +293,7 @@
 	return
 
 
-/obj/machinery/door/firedoor/update_icon()
+/obj/structure/machinery/door/firedoor/update_icon()
 	overlays.Cut()
 	if(density)
 		icon_state = "door_closed"
@@ -314,21 +314,21 @@
 	return
 
 
-/obj/machinery/door/firedoor/border_only
+/obj/structure/machinery/door/firedoor/border_only
 
 
 //ALMAYER FIRE DOOR
 
-/obj/machinery/door/firedoor/border_only/almayer
+/obj/structure/machinery/door/firedoor/border_only/almayer
 	name = "\improper Emergency Shutter"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas."
 	icon = 'icons/obj/structures/doors/purinadoor.dmi'
 	openspeed = 4
 
 
-/obj/machinery/door/firedoor/multi_tile
+/obj/structure/machinery/door/firedoor/multi_tile
 	icon = 'icons/obj/structures/doors/DoorHazard2x1.dmi'
 	width = 2
 
-/obj/machinery/door/firedoor/border_only/almayer/antag
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag
 	req_one_access = list(ACCESS_ILLEGAL_PIRATE)

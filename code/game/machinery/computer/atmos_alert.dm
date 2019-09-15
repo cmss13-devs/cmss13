@@ -1,7 +1,7 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 
-/obj/machinery/computer/atmos_alert
+/obj/structure/machinery/computer/atmos_alert
 	name = "Atmospheric Alert Computer"
 	desc = "Used to access the station's atmospheric sensors."
 	circuit = "/obj/item/circuitboard/computer/atmos_alert"
@@ -12,11 +12,11 @@
 	var/datum/radio_frequency/radio_connection
 
 
-/obj/machinery/computer/atmos_alert/initialize()
+/obj/structure/machinery/computer/atmos_alert/initialize()
 	..()
 	set_frequency(receive_frequency)
 
-/obj/machinery/computer/atmos_alert/receive_signal(datum/signal/signal)
+/obj/structure/machinery/computer/atmos_alert/receive_signal(datum/signal/signal)
 	if(!signal || signal.encryption) return
 
 	var/zone = signal.data["zone"]
@@ -34,24 +34,24 @@
 	return
 
 
-/obj/machinery/computer/atmos_alert/proc/set_frequency(new_frequency)
+/obj/structure/machinery/computer/atmos_alert/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, receive_frequency)
 	receive_frequency = new_frequency
 	radio_connection = radio_controller.add_object(src, receive_frequency, RADIO_ATMOSIA)
 
 
-/obj/machinery/computer/atmos_alert/attack_hand(mob/user)
+/obj/structure/machinery/computer/atmos_alert/attack_hand(mob/user)
 	if(..(user))
 		return
 	user << browse(return_text(),"window=computer")
 	user.set_interaction(src)
 	onclose(user, "computer")
 
-/obj/machinery/computer/atmos_alert/process()
+/obj/structure/machinery/computer/atmos_alert/process()
 	if(..())
 		src.updateDialog()
 
-/obj/machinery/computer/atmos_alert/update_icon()
+/obj/structure/machinery/computer/atmos_alert/update_icon()
 	..()
 	if(stat & (NOPOWER|BROKEN))
 		return
@@ -66,7 +66,7 @@
 	return
 
 
-/obj/machinery/computer/atmos_alert/proc/return_text()
+/obj/structure/machinery/computer/atmos_alert/proc/return_text()
 	var/priority_text
 	var/minor_text
 
@@ -94,7 +94,7 @@
 	return output
 
 
-/obj/machinery/computer/atmos_alert/Topic(href, href_list)
+/obj/structure/machinery/computer/atmos_alert/Topic(href, href_list)
 	if(..())
 		return
 

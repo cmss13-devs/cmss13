@@ -126,8 +126,8 @@
 
 
 /obj/item/weapon/zombie_claws/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if (istype(O, /obj/machinery/door/airlock) && get_dist(src, O) <= 1)
-		var/obj/machinery/door/airlock/D = O
+	if (istype(O, /obj/structure/machinery/door/airlock) && get_dist(src, O) <= 1)
+		var/obj/structure/machinery/door/airlock/D = O
 		if(!D.density)
 			return
 

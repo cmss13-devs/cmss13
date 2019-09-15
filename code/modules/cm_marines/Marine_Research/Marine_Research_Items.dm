@@ -105,7 +105,7 @@
 	if (A.unacidable == 1)
 		to_chat(usr, "It's already resistant to acid...")
 		return
-	if (istype(A, /obj/machinery/door))
+	if (istype(A, /obj/structure/machinery/door))
 		to_chat(usr, "It doesn't work on doors...")
 		return
 	to_chat(usr, "You spray [A] with the Anti-Acid spray making it unacidable...")

@@ -1,4 +1,4 @@
-/obj/machinery/atmospherics/unary/heat_exchanger
+/obj/structure/machinery/atmospherics/unary/heat_exchanger
 
 	name = "heat exchanger"
 	desc = "Exchanges heat between two input gases. Setup for fast heat transfer"
@@ -6,20 +6,20 @@
 	icon_state = "intact"
 	density = 1
 
-	var/obj/machinery/atmospherics/unary/heat_exchanger/partner = null
+	var/obj/structure/machinery/atmospherics/unary/heat_exchanger/partner = null
 	var/update_cycle
 
-/obj/machinery/atmospherics/unary/heat_exchanger/update_icon()
+/obj/structure/machinery/atmospherics/unary/heat_exchanger/update_icon()
 	if(node)
 		icon_state = "intact"
 	else
 		icon_state = "exposed"
 
-/obj/machinery/atmospherics/unary/heat_exchanger/initialize()
+/obj/structure/machinery/atmospherics/unary/heat_exchanger/initialize()
 	if(!partner)
 		var/partner_connect = turn(dir,180)
 
-		for(var/obj/machinery/atmospherics/unary/heat_exchanger/target in get_step(src, partner_connect))
+		for(var/obj/structure/machinery/atmospherics/unary/heat_exchanger/target in get_step(src, partner_connect))
 			if(target.dir & get_dir(src, target))
 				partner = target
 				partner.partner = src
@@ -27,13 +27,13 @@
 
 	..()
 
-/obj/machinery/atmospherics/unary/heat_exchanger/process()
+/obj/structure/machinery/atmospherics/unary/heat_exchanger/process()
 	..()
 	if(!partner)
 		return 0
 	return 0
 
-/obj/machinery/atmospherics/unary/heat_exchanger/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/atmospherics/unary/heat_exchanger/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(!iswrench(W))
 		return ..()
 	var/turf/T = loc

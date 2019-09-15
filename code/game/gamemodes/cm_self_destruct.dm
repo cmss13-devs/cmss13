@@ -50,7 +50,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	var/evac_time	//Time the evacuation was initiated.
 	var/evac_status = EVACUATION_STATUS_STANDING_BY //What it's doing now? It can be standing by, getting ready to launch, or finished.
 
-	var/obj/machinery/self_destruct/console/dest_master //The main console that does the brunt of the work.
+	var/obj/structure/machinery/self_destruct/console/dest_master //The main console that does the brunt of the work.
 	var/dest_rods[] //Slave devices to make the explosion work.
 	var/dest_cooldown //How long it takes between rods, determined by the amount of total rods present.
 	var/dest_index = 1	//What rod the thing is currently on.
@@ -67,7 +67,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			to_world("<span class='debuginfo'>ERROR CODE SD1: could not find master self-destruct console</span>")
 			r_FAL
 		dest_rods = new
-		for(var/obj/machinery/self_destruct/rod/I in dest_master.loc.loc) dest_rods += I
+		for(var/obj/structure/machinery/self_destruct/rod/I in dest_master.loc.loc) dest_rods += I
 		if(!dest_rods.len)
 			log_debug("ERROR CODE SD2: could not find any self destruct rods")
 			to_world("<span class='debuginfo'>ERROR CODE SD2: could not find any self destruct rods</span>")
@@ -164,7 +164,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		dest_started_at = world.time
 		set_security_level(SEC_LEVEL_DELTA) //also activate Delta alert, to open the SD shutters.
 		spawn(0)
-			for(var/obj/machinery/door/poddoor/shutters/almayer/D in machines)
+			for(var/obj/structure/machinery/door/poddoor/shutters/almayer/D in machines)
 				if(D.id == "sd_lockdown")
 					D.open()
 		return TRUE
@@ -172,7 +172,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 //Override is for admins bypassing normal player restrictions.
 /datum/authority/branch/evacuation/proc/cancel_self_destruct(override)
 	if(dest_status == NUKE_EXPLOSION_ACTIVE)
-		var/obj/machinery/self_destruct/rod/I
+		var/obj/structure/machinery/self_destruct/rod/I
 		var/i
 		for(i in EvacuationAuthority.dest_rods)
 			I = i
@@ -195,7 +195,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /datum/authority/branch/evacuation/proc/initiate_self_destruct(override)
 	if(dest_status < NUKE_EXPLOSION_IN_PROGRESS)
-		var/obj/machinery/self_destruct/rod/I
+		var/obj/structure/machinery/self_destruct/rod/I
 		var/i
 		for(i in dest_rods)
 			I = i
@@ -283,7 +283,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	set background = 1
 
 	spawn while(dest_master && dest_master.loc && dest_master.active_state == SELF_DESTRUCT_MACHINE_ARMED && dest_status == NUKE_EXPLOSION_ACTIVE && dest_index <= dest_rods.len)
-		var/obj/machinery/self_destruct/rod/I = dest_rods[dest_index]
+		var/obj/structure/machinery/self_destruct/rod/I = dest_rods[dest_index]
 		if(world.time >= dest_cooldown + I.activate_time)
 			I.lock_or_unlock() //Unlock it.
 			if(++dest_index <= dest_rods.len)
@@ -292,7 +292,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		sleep(10) //Checks every second. Could integrate into another controller for better tracking.
 
 //Generic parent base for the self_destruct items.
-/obj/machinery/self_destruct
+/obj/structure/machinery/self_destruct
 	icon = 'icons/obj/structures/machinery/self_destruct.dmi'
 	use_power = 0 //Runs unpowered, may need to change later.
 	density = 0
@@ -302,24 +302,24 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	var/in_progress = 0 //Cannot interact with while it's doing something, like an animation.
 	var/active_state = SELF_DESTRUCT_MACHINE_INACTIVE //What step of the process it's on.
 
-/obj/machinery/self_destruct/New()
+/obj/structure/machinery/self_destruct/New()
 	..()
 	icon_state += "_1"
 
-/obj/machinery/self_destruct/Dispose()
+/obj/structure/machinery/self_destruct/Dispose()
 	. = ..()
 	machines -= src
 	operator = null
 
-/obj/machinery/self_destruct/ex_act(severity)
+/obj/structure/machinery/self_destruct/ex_act(severity)
 	r_FAL
 
-/obj/machinery/self_destruct/attack_hand()
+/obj/structure/machinery/self_destruct/attack_hand()
 	if(..() || in_progress) r_FAL //This check is backward, ugh.
 	r_TRU
 
 //Add sounds.
-/obj/machinery/self_destruct/proc/lock_or_unlock(lock)
+/obj/structure/machinery/self_destruct/proc/lock_or_unlock(lock)
 	set waitfor = 0
 	in_progress = 1
 	flick(initial(icon_state) + (lock? "_5" : "_2"),src)
@@ -329,7 +329,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	in_progress = 0
 	active_state = active_state > SELF_DESTRUCT_MACHINE_INACTIVE ? SELF_DESTRUCT_MACHINE_INACTIVE : SELF_DESTRUCT_MACHINE_ACTIVE
 
-/obj/machinery/self_destruct/console
+/obj/structure/machinery/self_destruct/console
 	name = "self destruct control panel"
 	icon_state = "console"
 
@@ -355,7 +355,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 				to_chat(usr, SPAN_NOTICE("The system must be booting up the self-destruct sequence now."))
 				ai_announcement("Danger. The emergency destruct system is now activated. The ship will detonate in T-minus 20 minutes. Automatic detonation is unavailable. Manual detonation is required.", 'sound/AI/selfdestruct.ogg')
 				active_state = SELF_DESTRUCT_MACHINE_ARMED //Arm it here so the process can execute it later.
-				var/obj/machinery/self_destruct/rod/I = EvacuationAuthority.dest_rods[EvacuationAuthority.dest_index]
+				var/obj/structure/machinery/self_destruct/rod/I = EvacuationAuthority.dest_rods[EvacuationAuthority.dest_index]
 				I.activate_time = world.time
 				EvacuationAuthority.process_self_destruct()
 				var/data[] = list(
@@ -383,7 +383,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			ui.set_initial_data(data)
 			ui.open()
 
-/obj/machinery/self_destruct/rod
+/obj/structure/machinery/self_destruct/rod
 	name = "self destruct control rod"
 	desc = "It is part of a complicated self-destruct sequence, but relatively simple to operate. Twist to arm or disarm."
 	icon_state = "rod"

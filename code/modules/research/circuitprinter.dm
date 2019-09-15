@@ -4,7 +4,7 @@ a /datum/desgin on the linked R&D console. You can then print them out in a fasi
 using metal and glass, it uses glass and reagents (usually sulfuric acis).
 
 */
-/obj/machinery/r_n_d/circuit_imprinter
+/obj/structure/machinery/r_n_d/circuit_imprinter
 	name = "Circuit Imprinter"
 	icon_state = "circuit_imprinter"
 	flags_atom = OPENCONTAINER
@@ -63,7 +63,7 @@ using metal and glass, it uses glass and reagents (usually sulfuric acis).
 		if (opened)
 			if(istype(O, /obj/item/tool/crowbar))
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-				var/obj/machinery/constructable_frame/M = new /obj/machinery/constructable_frame(src.loc)
+				var/obj/structure/machinery/constructable_frame/M = new /obj/structure/machinery/constructable_frame(src.loc)
 				M.state = CONSTRUCTION_STATE_PROGRESS
 				M.update_icon()
 				for(var/obj/I in component_parts)
@@ -139,5 +139,5 @@ using metal and glass, it uses glass and reagents (usually sulfuric acis).
 		src.updateUsrDialog()
 
 //This is to stop these machines being hackable via clicking.
-/obj/machinery/r_n_d/circuit_imprinter/attack_hand(mob/user as mob)
+/obj/structure/machinery/r_n_d/circuit_imprinter/attack_hand(mob/user as mob)
 	return

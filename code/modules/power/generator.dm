@@ -1,5 +1,5 @@
 
-/obj/machinery/power/generator
+/obj/structure/machinery/power/generator
 	name = "thermoelectric generator"
 	desc = "It's a high efficiency thermoelectric generator."
 	icon_state = "teg"
@@ -9,13 +9,13 @@
 	use_power = 1
 	idle_power_usage = 100 //Watts, I hope.  Just enough to do the computer and display things.
 
-	var/obj/machinery/atmospherics/binary/circulator/circ1
-	var/obj/machinery/atmospherics/binary/circulator/circ2
+	var/obj/structure/machinery/atmospherics/binary/circulator/circ1
+	var/obj/structure/machinery/atmospherics/binary/circulator/circ2
 
 	var/lastgen = 0
 	var/lastgenlev = -1
 
-/obj/machinery/power/generator/New()
+/obj/structure/machinery/power/generator/New()
 	..()
 
 	spawn(1)
@@ -27,13 +27,13 @@
 //so a circulator to the NORTH of the generator connects first to the EAST, then to the WEST
 //and a circulator to the WEST of the generator connects first to the NORTH, then to the SOUTH
 //note that the circulator's outlet dir is it's always facing dir, and it's inlet is always the reverse
-/obj/machinery/power/generator/proc/reconnect()
+/obj/structure/machinery/power/generator/proc/reconnect()
 	circ1 = null
 	circ2 = null
 	if(src.loc && anchored)
 		if(src.dir & (EAST|WEST))
-			circ1 = locate(/obj/machinery/atmospherics/binary/circulator) in get_step(src,EAST)
-			circ2 = locate(/obj/machinery/atmospherics/binary/circulator) in get_step(src,WEST)
+			circ1 = locate(/obj/structure/machinery/atmospherics/binary/circulator) in get_step(src,EAST)
+			circ2 = locate(/obj/structure/machinery/atmospherics/binary/circulator) in get_step(src,WEST)
 
 			if(circ1 && circ2)
 				if(circ1.dir != SOUTH || circ2.dir != NORTH)
@@ -41,14 +41,14 @@
 					circ2 = null
 
 		else if(src.dir & (NORTH|SOUTH))
-			circ1 = locate(/obj/machinery/atmospherics/binary/circulator) in get_step(src,NORTH)
-			circ2 = locate(/obj/machinery/atmospherics/binary/circulator) in get_step(src,SOUTH)
+			circ1 = locate(/obj/structure/machinery/atmospherics/binary/circulator) in get_step(src,NORTH)
+			circ2 = locate(/obj/structure/machinery/atmospherics/binary/circulator) in get_step(src,SOUTH)
 
 			if(circ1 && circ2 && (circ1.dir != EAST || circ2.dir != WEST))
 				circ1 = null
 				circ2 = null
 
-/obj/machinery/power/generator/proc/updateicon()
+/obj/structure/machinery/power/generator/proc/updateicon()
 	if(stat & (NOPOWER|BROKEN))
 		overlays.Cut()
 	else
@@ -57,7 +57,7 @@
 		if(lastgenlev != 0)
 			overlays += image('icons/obj/structures/machinery/power.dmi', "teg-op[lastgenlev]")
 
-/obj/machinery/power/generator/process()
+/obj/structure/machinery/power/generator/process()
 	if(!circ1 || !circ2 || !anchored || stat & (BROKEN|NOPOWER))
 		return
 
@@ -77,11 +77,11 @@
 		updateicon()
 	add_avail(lastgen)
 
-/obj/machinery/power/generator/attack_ai(mob/user)
+/obj/structure/machinery/power/generator/attack_ai(mob/user)
 	if(stat & (BROKEN|NOPOWER)) return
 	interact(user)
 
-/obj/machinery/power/generator/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/power/generator/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/tool/wrench))
 		anchored = !anchored
 		to_chat(user, SPAN_NOTICE(" You [anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor."))
@@ -90,13 +90,13 @@
 	else
 		..()
 
-/obj/machinery/power/generator/attack_hand(mob/user)
+/obj/structure/machinery/power/generator/attack_hand(mob/user)
 	add_fingerprint(user)
 	if(stat & (BROKEN|NOPOWER) || !anchored) return
 	interact(user)
 
 
-/obj/machinery/power/generator/interact(mob/user)
+/obj/structure/machinery/power/generator/interact(mob/user)
 	if ( (get_dist(src, user) > 1 ) && (!isAI(user)))
 		user.unset_interaction()
 		user << browse(null, "window=teg")
@@ -134,7 +134,7 @@
 	return 1
 
 
-/obj/machinery/power/generator/Topic(href, href_list)
+/obj/structure/machinery/power/generator/Topic(href, href_list)
 	..()
 	if( href_list["close"] )
 		usr << browse(null, "window=teg")
@@ -145,12 +145,12 @@
 	return 1
 
 
-/obj/machinery/power/generator/power_change()
+/obj/structure/machinery/power/generator/power_change()
 	..()
 	updateicon()
 
 
-/obj/machinery/power/generator/verb/rotate_clock()
+/obj/structure/machinery/power/generator/verb/rotate_clock()
 	set category = "Object"
 	set name = "Rotate Generator (Clockwise)"
 	set src in view(1)
@@ -160,7 +160,7 @@
 
 	src.dir = turn(src.dir, 90)
 
-/obj/machinery/power/generator/verb/rotate_anticlock()
+/obj/structure/machinery/power/generator/verb/rotate_anticlock()
 	set category = "Object"
 	set name = "Rotate Generator (Counterclockwise)"
 	set src in view(1)

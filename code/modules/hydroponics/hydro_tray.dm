@@ -1,6 +1,6 @@
 #define HYDRO_SPEED_MULTIPLIER 1
 
-/obj/machinery/portable_atmospherics/hydroponics
+/obj/structure/machinery/portable_atmospherics/hydroponics
 	name = "hydroponics tray"
 	icon = 'icons/obj/structures/machinery/hydroponics.dmi'
 	icon_state = "hydrotray3"
@@ -134,7 +134,7 @@
 		"mutagen" = 15
 		)
 
-/obj/machinery/portable_atmospherics/hydroponics/New()
+/obj/structure/machinery/portable_atmospherics/hydroponics/New()
 	..()
 	temp_chem_holder = new()
 	temp_chem_holder.create_reagents(10)
@@ -143,7 +143,7 @@
 	update_icon()
 	start_processing()
 
-/obj/machinery/portable_atmospherics/hydroponics/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/machinery/portable_atmospherics/hydroponics/bullet_act(var/obj/item/projectile/Proj)
 
 	//Don't act on seeds like dionaea that shouldn't change.
 	if(seed && seed.immutable > 0)
@@ -151,14 +151,14 @@
 
 	..()
 
-/obj/machinery/portable_atmospherics/hydroponics/CanPass(atom/movable/mover, turf/target)
+/obj/structure/machinery/portable_atmospherics/hydroponics/CanPass(atom/movable/mover, turf/target)
 	if(!density) return 1
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return 1
 	else
 		return 0
 
-/obj/machinery/portable_atmospherics/hydroponics/process()
+/obj/structure/machinery/portable_atmospherics/hydroponics/process()
 
 	//Do this even if we're not ready for a plant cycle.
 	process_reagents()
@@ -290,7 +290,7 @@
 	return
 
 //Process reagents being input into the tray.
-/obj/machinery/portable_atmospherics/hydroponics/proc/process_reagents()
+/obj/structure/machinery/portable_atmospherics/hydroponics/proc/process_reagents()
 
 	if(!reagents) return
 
@@ -342,7 +342,7 @@
 	update_icon()
 
 //Harvests the product of a plant.
-/obj/machinery/portable_atmospherics/hydroponics/proc/harvest(var/mob/user)
+/obj/structure/machinery/portable_atmospherics/hydroponics/proc/harvest(var/mob/user)
 
 	//Harvest the product of the plant,
 	if(!seed || !harvest || !user)
@@ -371,7 +371,7 @@
 	return
 
 //Clears out a dead plant.
-/obj/machinery/portable_atmospherics/hydroponics/proc/remove_dead(var/mob/user)
+/obj/structure/machinery/portable_atmospherics/hydroponics/proc/remove_dead(var/mob/user)
 	if(!user || !dead) return
 
 	if(closed_system)
@@ -391,7 +391,7 @@
 	return
 
 //Refreshes the icon and sets the luminosity
-/obj/machinery/portable_atmospherics/hydroponics/update_icon()
+/obj/structure/machinery/portable_atmospherics/hydroponics/update_icon()
 
 	overlays.Cut()
 
@@ -447,7 +447,7 @@
 	return
 
  // If a weed growth is sufficient, this proc is called.
-/obj/machinery/portable_atmospherics/hydroponics/proc/weed_invasion()
+/obj/structure/machinery/portable_atmospherics/hydroponics/proc/weed_invasion()
 
 	//Remove the seed if something is already planted.
 	if(seed) seed = null
@@ -467,7 +467,7 @@
 
 	return
 
-/obj/machinery/portable_atmospherics/hydroponics/proc/mutate(var/severity)
+/obj/structure/machinery/portable_atmospherics/hydroponics/proc/mutate(var/severity)
 
 	// No seed, no mutations.
 	if(!seed)
@@ -487,7 +487,7 @@
 
 	return
 
-/obj/machinery/portable_atmospherics/hydroponics/proc/check_level_sanity()
+/obj/structure/machinery/portable_atmospherics/hydroponics/proc/check_level_sanity()
 	//Make sure various values are sane.
 	if(seed)
 		health =     max(0,min(seed.endurance,health))
@@ -502,7 +502,7 @@
 	weedlevel =      max(0,min(weedlevel,10))
 	toxins =         max(0,min(toxins,10))
 
-/obj/machinery/portable_atmospherics/hydroponics/proc/mutate_species()
+/obj/structure/machinery/portable_atmospherics/hydroponics/proc/mutate_species()
 
 	var/previous_plant = seed.display_name
 	var/newseed = seed.get_mutant_variant()
@@ -524,7 +524,7 @@
 
 	return
 
-/obj/machinery/portable_atmospherics/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
 
 	if (O.is_open_container())
 		return 0
@@ -652,14 +652,14 @@
 	else if(istype(O, /obj/item/tool/wrench))
 
 		//If there's a connector here, the portable_atmospherics setup can handle it.
-		if(locate(/obj/machinery/atmospherics/portables_connector/) in loc)
+		if(locate(/obj/structure/machinery/atmospherics/portables_connector/) in loc)
 			return ..()
 
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		anchored = !anchored
 		to_chat(user, "You [anchored ? "wrench" : "unwrench"] \the [src].")
 
-/obj/machinery/portable_atmospherics/hydroponics/attack_hand(mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/hydroponics/attack_hand(mob/user as mob)
 
 	if(istype(usr,/mob/living/silicon))
 		return
@@ -683,7 +683,7 @@
 		if(pestlevel >= 5)
 			to_chat(usr, "[src] is \red filled with tiny worms!")
 
-		if(!istype(src,/obj/machinery/portable_atmospherics/hydroponics/soil))
+		if(!istype(src,/obj/structure/machinery/portable_atmospherics/hydroponics/soil))
 
 			var/turf/T = loc
 			var/area/A = T.loc
@@ -696,7 +696,7 @@
 
 			to_chat(usr, "The tray's sensor suite is reporting a light level of [light_available] lumens.")
 
-/obj/machinery/portable_atmospherics/hydroponics/verb/close_lid()
+/obj/structure/machinery/portable_atmospherics/hydroponics/verb/close_lid()
 	set name = "Toggle Tray Lid"
 	set category = "Object"
 	set src in view(1)
@@ -708,7 +708,7 @@
 	to_chat(usr, "You [closed_system ? "close" : "open"] the tray's lid.")
 	update_icon()
 
-/obj/machinery/portable_atmospherics/hydroponics/verb/flush() //used to reset the tray
+/obj/structure/machinery/portable_atmospherics/hydroponics/verb/flush() //used to reset the tray
 	set name = "Flush Tray"
 	set category = "Object"
 	set src in view(1)
@@ -736,7 +736,7 @@
 	check_level_sanity()
 	update_icon()
 
-/obj/machinery/portable_atmospherics/hydroponics/soil
+/obj/structure/machinery/portable_atmospherics/hydroponics/soil
 	name = "soil"
 	icon = 'icons/obj/structures/machinery/hydroponics.dmi'
 	icon_state = "soil"
@@ -744,7 +744,7 @@
 	use_power = 0
 	draw_warnings = 0
 
-/obj/machinery/portable_atmospherics/hydroponics/soil/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/hydroponics/soil/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/tool/shovel))
 		to_chat(user, "You clear up [src]!")
 		qdel(src)
@@ -753,8 +753,8 @@
 	else
 		..()
 
-/obj/machinery/portable_atmospherics/hydroponics/soil/New()
+/obj/structure/machinery/portable_atmospherics/hydroponics/soil/New()
 	..()
-	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/close_lid
+	verbs -= /obj/structure/machinery/portable_atmospherics/hydroponics/verb/close_lid
 
 #undef HYDRO_SPEED_MULTIPLIER

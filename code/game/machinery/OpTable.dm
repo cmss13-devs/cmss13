@@ -1,4 +1,4 @@
-/obj/machinery/optable
+/obj/structure/machinery/optable
 	name = "Operating Table"
 	desc = "Used for advanced medical procedures."
 	icon = 'icons/obj/structures/machinery/surgery.dmi'
@@ -7,6 +7,7 @@
 	layer = TABLE_LAYER
 	anchored = 1
 	unacidable = 1
+	climbable = TRUE
 	use_power = 1
 	idle_power_usage = 1
 	active_power_usage = 5
@@ -16,19 +17,19 @@
 	buckle_lying = TRUE
 	var/obj/item/tank/anesthetic/anes_tank
 
-	var/obj/machinery/computer/operating/computer = null
+	var/obj/structure/machinery/computer/operating/computer = null
 
-/obj/machinery/optable/New()
+/obj/structure/machinery/optable/New()
 	..()
 	for(dir in list(NORTH,EAST,SOUTH,WEST))
-		computer = locate(/obj/machinery/computer/operating, get_step(src, dir))
+		computer = locate(/obj/structure/machinery/computer/operating, get_step(src, dir))
 		if (computer)
 			computer.table = src
 			break
 //	spawn(100) //Wont the MC just call this process() before and at the 10 second mark anyway?
 //		process()
 
-/obj/machinery/optable/ex_act(severity)
+/obj/structure/machinery/optable/ex_act(severity)
 
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
@@ -44,14 +45,14 @@
 		else
 	return
 
-/obj/machinery/optable/examine(mob/user)
+/obj/structure/machinery/optable/examine(mob/user)
 	..()
 	if(get_dist(user, src) > 2 && !isobserver(user))
 		return
 	if(anes_tank)
 		to_chat(user, "<span class='information'>It has an [anes_tank] connected with the gauge showing [round(anes_tank.pressure,0.1)] kPa.</span>")
 
-/obj/machinery/optable/attack_hand(mob/living/user)
+/obj/structure/machinery/optable/attack_hand(mob/living/user)
 	if (HULK in usr.mutations)
 		to_chat(user, SPAN_NOTICE("You destroy the table."))
 		visible_message(SPAN_DANGER("[usr] destroys the operating table!"))
@@ -67,7 +68,7 @@
 		anes_tank = null
 
 
-/obj/machinery/optable/buckle_mob(mob/living/carbon/human/H, mob/living/user)
+/obj/structure/machinery/optable/buckle_mob(mob/living/carbon/human/H, mob/living/user)
 	if(!istype(H) || H == user || H.buckled || user.action_busy || user.stat) 
 		return
 	if(H != victim)
@@ -96,12 +97,12 @@
 		qdel(B)
 		return
 	H.internal = anes_tank
-	H.visible_message("<span class='notice'>[user] fits the mask over [H]'s face and turns on the anesthetic.</span>'")
+	H.visible_message(SPAN_NOTICE("[user] fits the mask over [H]'s face and turns on the anesthetic."))
 	to_chat(H, "<span class='information'>You begin to feel sleepy.</span>")
 	H.dir = SOUTH
 	..()
 
-/obj/machinery/optable/unbuckle(mob/living/user)
+/obj/structure/machinery/optable/unbuckle(mob/living/user)
 	if(!buckled_mob)
 		return
 	if(ishuman(buckled_mob)) // sanity check
@@ -115,14 +116,14 @@
 
 
 
-/obj/machinery/optable/CanPass(atom/movable/mover, turf/target)
+/obj/structure/machinery/optable/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return 1
 	else
 		return 0
 
 
-/obj/machinery/optable/MouseDrop_T(atom/A, mob/user)
+/obj/structure/machinery/optable/MouseDrop_T(atom/A, mob/user)
 
 	if(istype(A, /obj/item))
 		var/obj/item/I = A
@@ -134,7 +135,7 @@
 	else if(ismob(A))
 		..(A, user)
 
-/obj/machinery/optable/proc/check_victim()
+/obj/structure/machinery/optable/proc/check_victim()
 	if(locate(/mob/living/carbon/human, loc))
 		var/mob/living/carbon/human/M = locate(/mob/living/carbon/human, loc)
 		if(M.lying)
@@ -146,12 +147,13 @@
 	icon_state = "table2-idle"
 	return 0
 
-/obj/machinery/optable/process()
+/obj/structure/machinery/optable/process()
 	check_victim()
 
-/obj/machinery/optable/proc/take_victim(mob/living/carbon/C, mob/living/carbon/user)
+/obj/structure/machinery/optable/proc/take_victim(mob/living/carbon/C, mob/living/carbon/user)
 	if (C == user)
-		user.visible_message(SPAN_NOTICE("[user] climbs on the operating table."), SPAN_NOTICE("You climb on the operating table."), null, null, 4)
+		user.visible_message(SPAN_NOTICE("[user] climbs on the operating table."), \
+			SPAN_NOTICE("You climb on the operating table."), null, null, 4)
 	else
 		visible_message(SPAN_NOTICE("[C] has been laid on the operating table by [user]."), null, 4)
 	C.resting = 1
@@ -166,17 +168,18 @@
 	else
 		icon_state = "table2-idle"
 
-/obj/machinery/optable/verb/climb_on()
-	set name = "Climb On Table"
+/obj/structure/machinery/optable/verb/mount_table()
+	set name = "Mount Operating Table"
 	set category = "Object"
 	set src in oview(1)
 
-	if(usr.stat || !ishuman(usr) || usr.is_mob_restrained() || !check_table(usr))
+	var/mob/living/carbon/human/H = usr
+	if(!istype(H) || H.stat || H.is_mob_restrained() || !check_table(H))
 		return
 
-	take_victim(usr,usr)
+	take_victim(H, H)
 
-/obj/machinery/optable/attackby(obj/item/W, mob/living/user)
+/obj/structure/machinery/optable/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/tank/anesthetic))
 		if(!anes_tank)
 			user.drop_inv_item_to_loc(W, src)
@@ -207,13 +210,13 @@
 
 		take_victim(M,user)
 
-/obj/machinery/optable/proc/check_table(mob/living/carbon/patient as mob)
+/obj/structure/machinery/optable/proc/check_table(mob/living/carbon/patient)
 	if(victim)
-		to_chat(usr, SPAN_NOTICE(" <B>The table is already occupied!</B>"))
-		return 0
+		to_chat(patient, SPAN_NOTICE(" <B>The table is already occupied!</B>"))
+		return FALSE
 
 	if(patient.buckled)
-		to_chat(usr, SPAN_NOTICE(" <B>Unbuckle first!</B>"))
-		return 0
+		to_chat(patient, SPAN_NOTICE(" <B>Unbuckle first!</B>"))
+		return FALSE
 
-	return 1
+	return TRUE

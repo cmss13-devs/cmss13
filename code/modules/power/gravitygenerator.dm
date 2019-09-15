@@ -1,16 +1,16 @@
 // It.. uses a lot of power.  Everything under power is engineering stuff, at least.
 
-/obj/machinery/computer/gravity_control_computer
+/obj/structure/machinery/computer/gravity_control_computer
 	name = "Gravity Generator Control"
 	desc = "A computer to control a local gravity generator.  Qualified personnel only."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "airtunnel0e"
 	anchored = 1
 	density = 1
-	var/obj/machinery/gravity_generator = null
+	var/obj/structure/machinery/gravity_generator = null
 
 
-/obj/machinery/gravity_generator/
+/obj/structure/machinery/gravity_generator/
 	name = "Gravitational Generator"
 	desc = "A device which produces a gravaton field when set up."
 	icon = 'icons/obj/structures/props/singularity.dmi'
@@ -25,14 +25,14 @@
 	var/effectiverange = 25
 
 	// Borrows code from cloning computer
-/obj/machinery/computer/gravity_control_computer/New()
+/obj/structure/machinery/computer/gravity_control_computer/New()
 	..()
 	spawn(5)
 		updatemodules()
 		return
 	return
 
-/obj/machinery/gravity_generator/New()
+/obj/structure/machinery/gravity_generator/New()
 	..()
 	spawn(5)
 		locatelocalareas()
@@ -41,30 +41,30 @@
 
 
 
-/obj/machinery/computer/gravity_control_computer/proc/updatemodules()
+/obj/structure/machinery/computer/gravity_control_computer/proc/updatemodules()
 	src.gravity_generator = findgenerator()
 
 
 
-/obj/machinery/gravity_generator/proc/locatelocalareas()
+/obj/structure/machinery/gravity_generator/proc/locatelocalareas()
 	for(var/area/A in range(src,effectiverange))
 		if(A.name == "Space")
 			continue // No (de)gravitizing space.
 		if(A.master && !( A.master in localareas) )
 			localareas += A.master
 
-/obj/machinery/computer/gravity_control_computer/proc/findgenerator()
-	var/obj/machinery/gravity_generator/foundgenerator = null
+/obj/structure/machinery/computer/gravity_control_computer/proc/findgenerator()
+	var/obj/structure/machinery/gravity_generator/foundgenerator = null
 	for(dir in list(NORTH,EAST,SOUTH,WEST))
-		foundgenerator = locate(/obj/machinery/gravity_generator/, get_step(src, dir))
+		foundgenerator = locate(/obj/structure/machinery/gravity_generator/, get_step(src, dir))
 		if (!isnull(foundgenerator))
 			break
 	return foundgenerator
 
-/obj/machinery/computer/gravity_control_computer/attack_ai(mob/user as mob)
+/obj/structure/machinery/computer/gravity_control_computer/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/gravity_control_computer/attack_hand(mob/user as mob)
+/obj/structure/machinery/computer/gravity_control_computer/attack_hand(mob/user as mob)
 	user.set_interaction(src)
 	add_fingerprint(user)
 
@@ -106,7 +106,7 @@
 	onclose(user, "gravgen")
 
 
-/obj/machinery/computer/gravity_control_computer/Topic(href, href_list)
+/obj/structure/machinery/computer/gravity_control_computer/Topic(href, href_list)
 	set background = 1
 	..()
 
@@ -121,7 +121,7 @@
 			gravity_generator:on = 0
 
 			for(var/area/A in gravity_generator:localareas)
-				var/obj/machinery/gravity_generator/G
+				var/obj/structure/machinery/gravity_generator/G
 				for(G in machines)
 					if((A.master in G.localareas) && (G.on))
 						break

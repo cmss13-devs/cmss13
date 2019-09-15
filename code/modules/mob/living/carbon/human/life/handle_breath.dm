@@ -6,7 +6,7 @@
 
 	if(reagents.has_reagent("lexorin"))
 		return
-	if(istype(loc, /obj/machinery/atmospherics/unary/cryo_cell))
+	if(istype(loc, /obj/structure/machinery/atmospherics/unary/cryo_cell))
 		return
 	if(species && (species.flags & NO_BREATHE || species.flags & IS_SYNTHETIC))
 		return
@@ -59,8 +59,8 @@
 
 /mob/living/carbon/human/proc/get_breath_from_internal()
 	if(internal)
-		if(istype(buckled,/obj/machinery/optable))
-			var/obj/machinery/optable/O = buckled
+		if(istype(buckled,/obj/structure/machinery/optable))
+			var/obj/structure/machinery/optable/O = buckled
 			if(O.anes_tank)
 				return O.anes_tank.return_air()
 			return null

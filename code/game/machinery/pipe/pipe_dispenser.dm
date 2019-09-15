@@ -1,4 +1,4 @@
-/obj/machinery/pipedispenser
+/obj/structure/machinery/pipedispenser
 	name = "Pipe Dispenser"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "pipe_d"
@@ -7,7 +7,7 @@
 	var/unwrenched = 0
 	var/wait = 0
 
-/obj/machinery/pipedispenser/attack_hand(user as mob)
+/obj/structure/machinery/pipedispenser/attack_hand(user as mob)
 	if(..())
 		return
 ///// Z-Level stuff
@@ -71,7 +71,7 @@
 	onclose(user, "pipedispenser")
 	return
 
-/obj/machinery/pipedispenser/Topic(href, href_list)
+/obj/structure/machinery/pipedispenser/Topic(href, href_list)
 	if(..())
 		return
 	if(unwrenched || !usr.canmove || usr.stat || usr.is_mob_restrained() || !in_range(loc, usr))
@@ -97,7 +97,7 @@
 				wait = 0
 	return
 
-/obj/machinery/pipedispenser/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/pipedispenser/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	src.add_fingerprint(usr)
 	if (istype(W, /obj/item/pipe) || istype(W, /obj/item/pipe_meter))
 		to_chat(usr, SPAN_NOTICE(" You put [W] back to [src]."))
@@ -133,7 +133,7 @@
 	else
 		return ..()
 
-/obj/machinery/pipedispenser/disposal
+/obj/structure/machinery/pipedispenser/disposal
 	name = "Disposal Pipe Dispenser"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "pipe_d"
@@ -142,7 +142,7 @@
 
 /*
 //Allow you to push disposal pipes into it (for those with density 1)
-/obj/machinery/pipedispenser/disposal/Crossed(var/obj/structure/disposalconstruct/pipe as obj)
+/obj/structure/machinery/pipedispenser/disposal/Crossed(var/obj/structure/disposalconstruct/pipe as obj)
 	if(istype(pipe) && !pipe.anchored)
 		qdel(pipe)
 
@@ -150,7 +150,7 @@ Nah
 */
 
 //Allow you to drag-drop disposal pipes into it
-/obj/machinery/pipedispenser/disposal/MouseDrop_T(var/obj/structure/disposalconstruct/pipe as obj, mob/usr as mob)
+/obj/structure/machinery/pipedispenser/disposal/MouseDrop_T(var/obj/structure/disposalconstruct/pipe as obj, mob/usr as mob)
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
 		return
 
@@ -162,7 +162,7 @@ Nah
 
 	qdel(pipe)
 
-/obj/machinery/pipedispenser/disposal/attack_hand(user as mob)
+/obj/structure/machinery/pipedispenser/disposal/attack_hand(user as mob)
 	if(..())
 		return
 
@@ -187,7 +187,7 @@ Nah
 // 0=straight, 1=bent, 2=junction-j1, 3=junction-j2, 4=junction-y, 5=trunk
 
 
-/obj/machinery/pipedispenser/disposal/Topic(href, href_list)
+/obj/structure/machinery/pipedispenser/disposal/Topic(href, href_list)
 	if(..())
 		return
 	usr.set_interaction(src)
@@ -233,10 +233,10 @@ Nah
 	return
 
 // adding a pipe dispensers that spawn unhooked from the ground
-/obj/machinery/pipedispenser/orderable
+/obj/structure/machinery/pipedispenser/orderable
 	anchored = 0
 	unwrenched = 1
 
-/obj/machinery/pipedispenser/disposal/orderable
+/obj/structure/machinery/pipedispenser/disposal/orderable
 	anchored = 0
 	unwrenched = 1

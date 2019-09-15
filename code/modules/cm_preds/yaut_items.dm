@@ -1365,8 +1365,8 @@
 		var/obj/item/weapon/wristblades/W = user.get_inactive_hand()
 		attack_speed = (istype(W)) ? 4 : initial(attack_speed)
 
-	if (istype(A, /obj/machinery/door/airlock))
-		var/obj/machinery/door/airlock/D = A
+	if (istype(A, /obj/structure/machinery/door/airlock))
+		var/obj/structure/machinery/door/airlock/D = A
 		if(D.operating || !D.density) return
 		to_chat(user, SPAN_NOTICE("You jam [src] into [D] and strain to rip it open."))
 		playsound(user,'sound/weapons/wristblades_hit.ogg', 15, 1)
@@ -1654,7 +1654,7 @@
 
 /obj/item/weapon/combistick/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
 	if(!isYautja(user))
-		user.visible_message("<span class='notice'>You start to untangle the chain on \the [src]...")
+		user.visible_message(SPAN_NOTICE("You start to untangle the chain on \the [src]..."))
 		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			..()
 	else ..()
@@ -1688,7 +1688,7 @@
 	throwforce = 55
 	w_class = SIZE_TINY
 	det_time = 30
-	var/obj/machinery/camera/current = null
+	var/obj/structure/machinery/camera/current = null
 	var/turf/activated_turf = null
 
 	dropped(mob/user)

@@ -1,7 +1,7 @@
 //node1, network1 correspond to input
 //node2, network2 correspond to output
 
-/obj/machinery/atmospherics/binary/circulator
+/obj/structure/machinery/atmospherics/binary/circulator
 	name = "circulator/heat exchanger"
 	desc = "A gas circulator pump and heat exchanger."
 	icon = 'icons/obj/pipes/pipes3.dmi'
@@ -9,19 +9,19 @@
 	anchored = 0
 	density = 1
 
-/obj/machinery/atmospherics/binary/circulator/New()
+/obj/structure/machinery/atmospherics/binary/circulator/New()
 	..()
 	desc = initial(desc) + "  Its outlet port is to the [dir2text(dir)]."
 
 
-/obj/machinery/atmospherics/binary/circulator/update_icon()
+/obj/structure/machinery/atmospherics/binary/circulator/update_icon()
 	if(stat & (BROKEN|NOPOWER) || !anchored)
 		icon_state = "circ-p"
 	else
 		icon_state = "circ-run"
 	return 1
 
-/obj/machinery/atmospherics/binary/circulator/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/atmospherics/binary/circulator/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/tool/wrench))
 		anchored = !anchored
 		to_chat(user, SPAN_NOTICE(" You [anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor."))
@@ -54,7 +54,7 @@
 	else
 		..()
 
-/obj/machinery/atmospherics/binary/circulator/verb/rotate_clockwise()
+/obj/structure/machinery/atmospherics/binary/circulator/verb/rotate_clockwise()
 	set category = "Object"
 	set name = "Rotate Circulator (Clockwise)"
 	set src in view(1)
@@ -66,7 +66,7 @@
 	desc = initial(desc) + " Its outlet port is to the [dir2text(dir)]."
 
 
-/obj/machinery/atmospherics/binary/circulator/verb/rotate_anticlockwise()
+/obj/structure/machinery/atmospherics/binary/circulator/verb/rotate_anticlockwise()
 	set category = "Object"
 	set name = "Rotate Circulator (Counterclockwise)"
 	set src in view(1)

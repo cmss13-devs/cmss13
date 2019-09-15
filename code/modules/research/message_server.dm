@@ -1,7 +1,7 @@
 #define MESSAGE_SERVER_SPAM_REJECT 1
 #define MESSAGE_SERVER_DEFAULT_SPAM_LIMIT 10
 
-var/global/list/obj/machinery/message_server/message_servers = list()
+var/global/list/obj/structure/machinery/message_server/message_servers = list()
 
 /datum/data_pda_msg
 	var/recipient = "Unspecified" //name of the person
@@ -47,7 +47,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 			else
 				priority = "Undetermined"
 
-/obj/machinery/message_server
+/obj/structure/machinery/message_server
 	icon = 'icons/obj/structures/machinery/research.dmi'
 	icon_state = "server"
 	name = "Messaging Server"
@@ -68,7 +68,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 			//Messages having theese tokens will be rejected by server. Case sensitive
 	var/spamfilter_limit = MESSAGE_SERVER_DEFAULT_SPAM_LIMIT	//Maximal amount of tokens
 
-/obj/machinery/message_server/New()
+/obj/structure/machinery/message_server/New()
 	message_servers += src
 	decryptkey = GenerateKey()
 	send_pda_message("System Administrator", "system", "This is an automated message. The messaging system is functioning correctly.")
@@ -76,11 +76,11 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	start_processing()
 	return
 
-/obj/machinery/message_server/Dispose()
+/obj/structure/machinery/message_server/Dispose()
 	message_servers -= src
 	. = ..()
 
-/obj/machinery/message_server/proc/GenerateKey()
+/obj/structure/machinery/message_server/proc/GenerateKey()
 	//Feel free to move to Helpers.
 	var/newKey
 	newKey += pick("the", "if", "of", "as", "in", "a", "you", "from", "to", "an", "too", "little", "snow", "dead", "drunk", "rosebud", "duck", "al", "le")
@@ -88,7 +88,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	newKey += pick("1", "2", "3", "4", "5", "6", "7", "8", "9", "0")
 	return newKey
 
-/obj/machinery/message_server/process()
+/obj/structure/machinery/message_server/process()
 	//if(decryptkey == "password")
 	//	decryptkey = generateKey()
 	if(active && (stat & (BROKEN|NOPOWER)))
@@ -97,7 +97,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	update_icon()
 	return
 
-/obj/machinery/message_server/proc/send_pda_message(var/recipient = "",var/sender = "",var/message = "")
+/obj/structure/machinery/message_server/proc/send_pda_message(var/recipient = "",var/sender = "",var/message = "")
 	var/result
 	for (var/token in spamfilter)
 		if (findtextEx(message,token))
@@ -106,10 +106,10 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	pda_msgs += new/datum/data_pda_msg(recipient,sender,message)
 	return result
 
-/obj/machinery/message_server/proc/send_rc_message(var/recipient = "",var/sender = "",var/message = "",var/stamp = "", var/id_auth = "", var/priority = 1)
+/obj/structure/machinery/message_server/proc/send_rc_message(var/recipient = "",var/sender = "",var/message = "",var/stamp = "", var/id_auth = "", var/priority = 1)
 	rc_msgs += new/datum/data_rc_msg(recipient,sender,message,stamp,id_auth)
 
-/obj/machinery/message_server/attack_hand(user as mob)
+/obj/structure/machinery/message_server/attack_hand(user as mob)
 //	to_chat(user, SPAN_NOTICE(" There seem to be some parts missing from this server. They should arrive on the station in a few days, give or take a few CentCom delays."))
 	to_chat(user, "You toggle PDA message passing from [active ? "On" : "Off"] to [active ? "Off" : "On"]")
 	active = !active
@@ -117,7 +117,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 
 	return
 
-/obj/machinery/message_server/attackby(obj/item/O as obj, mob/living/user as mob)
+/obj/structure/machinery/message_server/attackby(obj/item/O as obj, mob/living/user as mob)
 	if (active && !(stat & (BROKEN|NOPOWER)) && (spamfilter_limit < MESSAGE_SERVER_DEFAULT_SPAM_LIMIT*2) && \
 		istype(O,/obj/item/circuitboard/computer/message_monitor))
 		spamfilter_limit += round(MESSAGE_SERVER_DEFAULT_SPAM_LIMIT / 2)
@@ -127,7 +127,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	else
 		..(O, user)
 
-/obj/machinery/message_server/update_icon()
+/obj/structure/machinery/message_server/update_icon()
 	if((stat & (BROKEN|NOPOWER)))
 		icon_state = "server-nopower"
 	else if (!active)
@@ -194,9 +194,9 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 /datum/feedback_variable/proc/get_parsed()
 	return list(variable,value,details)
 
-var/obj/machinery/blackbox_recorder/blackbox
+var/obj/structure/machinery/blackbox_recorder/blackbox
 
-/obj/machinery/blackbox_recorder
+/obj/structure/machinery/blackbox_recorder
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "blackbox"
 	name = "Blackbox Recorder"
@@ -221,17 +221,17 @@ var/obj/machinery/blackbox_recorder/blackbox
 	var/list/datum/feedback_variable/feedback = new()
 
 	//Only one can exsist in the world!
-/obj/machinery/blackbox_recorder/New()
+/obj/structure/machinery/blackbox_recorder/New()
 	if(blackbox)
-		if(istype(blackbox,/obj/machinery/blackbox_recorder))
+		if(istype(blackbox,/obj/structure/machinery/blackbox_recorder))
 			qdel(src)
 	blackbox = src
 
-/obj/machinery/blackbox_recorder/Dispose()
+/obj/structure/machinery/blackbox_recorder/Dispose()
 	var/turf/T = locate(1,1,2)
 	if(T)
 		blackbox = null
-		var/obj/machinery/blackbox_recorder/BR = new/obj/machinery/blackbox_recorder(T)
+		var/obj/structure/machinery/blackbox_recorder/BR = new/obj/structure/machinery/blackbox_recorder(T)
 		BR.msg_common = msg_common
 		BR.msg_science = msg_science
 		BR.msg_command = msg_command
@@ -248,7 +248,7 @@ var/obj/machinery/blackbox_recorder/blackbox
 			blackbox = BR
 	. = ..()
 
-/obj/machinery/blackbox_recorder/proc/find_feedback_datum(var/variable)
+/obj/structure/machinery/blackbox_recorder/proc/find_feedback_datum(var/variable)
 	for(var/datum/feedback_variable/FV in feedback)
 		if(FV.get_variable() == variable)
 			return FV
@@ -256,15 +256,15 @@ var/obj/machinery/blackbox_recorder/blackbox
 	feedback += FV
 	return FV
 
-/obj/machinery/blackbox_recorder/proc/get_round_feedback()
+/obj/structure/machinery/blackbox_recorder/proc/get_round_feedback()
 	return feedback
 
-/obj/machinery/blackbox_recorder/proc/round_end_data_gathering()
+/obj/structure/machinery/blackbox_recorder/proc/round_end_data_gathering()
 
 	var/pda_msg_amt = 0
 	var/rc_msg_amt = 0
 
-	for(var/obj/machinery/message_server/MS in machines)
+	for(var/obj/structure/machinery/message_server/MS in machines)
 		if(MS.pda_msgs.len > pda_msg_amt)
 			pda_msg_amt = MS.pda_msgs.len
 		if(MS.rc_msgs.len > rc_msg_amt)
@@ -290,7 +290,7 @@ var/obj/machinery/blackbox_recorder/blackbox
 
 
 //This proc is only to be called at round end.
-/obj/machinery/blackbox_recorder/proc/save_all_data_to_sql()
+/obj/structure/machinery/blackbox_recorder/proc/save_all_data_to_sql()
 	if(!feedback) return
 
 	round_end_data_gathering() //round_end time logging and some other data processing

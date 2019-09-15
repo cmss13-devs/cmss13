@@ -231,7 +231,7 @@
 	force = 15
 	throwforce = 15 // https://i.imgur.com/VW09I4B.gif
 	attack_verb = list("whacked", "hit", "smacked", "beaten", "battered")
-	var/obj/machinery/camera/camera
+	var/obj/structure/machinery/camera/camera
 	var/helmet_overlays[]
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
@@ -288,7 +288,7 @@
 	pockets.bypass_w_limit = allowed_helmet_items
 	pockets.max_storage_space = 3
 
-	camera = new /obj/machinery/camera(src)
+	camera = new /obj/structure/machinery/camera(src)
 	camera.network = list("Overwatch")
 
 /obj/item/clothing/head/helmet/marine/attack_hand(mob/user)

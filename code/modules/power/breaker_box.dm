@@ -4,7 +4,7 @@
 // Humans need 30 seconds (AI is faster when it comes to complex electronics)
 // Used for advanced grid control (read: Substations)
 
-/obj/machinery/power/breakerbox
+/obj/structure/machinery/power/breakerbox
 	name = "Breaker Box"
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "bbox_off"
@@ -18,21 +18,21 @@
 	var/busy = 0
 	var/directions = list(1,2,4,8,5,6,9,10)
 
-/obj/machinery/power/breakerbox/activated
+/obj/structure/machinery/power/breakerbox/activated
 	icon_state = "bbox_on"
 
 	// Enabled on server startup. Used in substations to keep them in bypass mode.
-/obj/machinery/power/breakerbox/activated/initialize()
+/obj/structure/machinery/power/breakerbox/activated/initialize()
 	set_state(1)
 
-/obj/machinery/power/breakerbox/examine(mob/user)
+/obj/structure/machinery/power/breakerbox/examine(mob/user)
 	to_chat(user, "Large machine with heavy duty switching circuits used for advanced grid control")
 	if(on)
 		to_chat(user, SPAN_XENOWARNING(" It seems to be online."))
 	else
 		to_chat(user, SPAN_DANGER("It seems to be offline"))
 
-/obj/machinery/power/breakerbox/attack_ai(mob/user)
+/obj/structure/machinery/power/breakerbox/attack_ai(mob/user)
 	if(busy)
 		to_chat(user, SPAN_DANGER("System is busy. Please wait until current operation is finished before changing power settings."))
 		return
@@ -45,7 +45,7 @@
 	busy = 0
 
 
-/obj/machinery/power/breakerbox/attack_hand(mob/user)
+/obj/structure/machinery/power/breakerbox/attack_hand(mob/user)
 
 	if(busy)
 		to_chat(user, SPAN_DANGER("System is busy. Please wait until current operation is finished before changing power settings."))
@@ -62,7 +62,7 @@
 		SPAN_NOTICE("You [on ? "enabled" : "disabled"] the breaker box!"))
 	busy = 0
 
-/obj/machinery/power/breakerbox/proc/set_state(var/state)
+/obj/structure/machinery/power/breakerbox/proc/set_state(var/state)
 	on = state
 	if(on)
 		icon_state = icon_state_on

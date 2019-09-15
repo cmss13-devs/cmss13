@@ -1,5 +1,5 @@
 
-/obj/machinery/recycler
+/obj/structure/machinery/recycler
 	name = "recycler"
 	desc = "A large crushing machine used to recycle trash."
 	icon = 'icons/obj/structures/machinery/recycling.dmi'
@@ -12,21 +12,21 @@
 	var/last_recycle_sound //for sound cooldown
 	var/ignored_items = list(/obj/item/limb)
 
-/obj/machinery/recycler/New()
+/obj/structure/machinery/recycler/New()
 	..()
 	update_icon()
 
 
-/obj/machinery/recycler/power_change()
+/obj/structure/machinery/recycler/power_change()
 	..()
 	update_icon()
 
 
-/obj/machinery/recycler/update_icon()
+/obj/structure/machinery/recycler/update_icon()
 	icon_state = "separator-AO[(stat & (BROKEN|NOPOWER)) ? "0":"1"]"
 
 
-/obj/machinery/recycler/Bumped(atom/movable/AM)
+/obj/structure/machinery/recycler/Bumped(atom/movable/AM)
 	if(stat & (BROKEN|NOPOWER))
 		return
 	var/move_dir = get_dir(loc, AM.loc)
@@ -37,7 +37,7 @@
 			AM.loc = loc
 
 
-/obj/machinery/recycler/proc/recycle(obj/item/I)
+/obj/structure/machinery/recycler/proc/recycle(obj/item/I)
 	var/turf/T = get_turf(I)
 
 	for(var/forbidden_path in ignored_items)

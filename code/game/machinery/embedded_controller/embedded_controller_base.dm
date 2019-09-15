@@ -1,4 +1,4 @@
-/obj/machinery/embedded_controller
+/obj/structure/machinery/embedded_controller
 	var/datum/computer/file/embedded_program/program	//the currently executing program
 
 	name = "Embedded Controller"
@@ -9,33 +9,33 @@
 
 	var/on = 1
 
-/obj/machinery/embedded_controller/proc/post_signal(datum/signal/signal, comm_line)
+/obj/structure/machinery/embedded_controller/proc/post_signal(datum/signal/signal, comm_line)
 	return 0
 
-/obj/machinery/embedded_controller/receive_signal(datum/signal/signal, receive_method, receive_param)
+/obj/structure/machinery/embedded_controller/receive_signal(datum/signal/signal, receive_method, receive_param)
 	if(!signal || signal.encryption) return
 
 	if(program)
 		program.receive_signal(signal, receive_method, receive_param)
 			//spawn(5) program.process() //no, program.process sends some signals and machines respond and we here again and we lag -rastaf0
 
-/obj/machinery/embedded_controller/process()
+/obj/structure/machinery/embedded_controller/process()
 	if(program)
 		program.process()
 
 	update_icon()
 	src.updateDialog()
 
-/obj/machinery/embedded_controller/attack_ai(mob/user as mob)
+/obj/structure/machinery/embedded_controller/attack_ai(mob/user as mob)
 	src.ui_interact(user)
 
-/obj/machinery/embedded_controller/attack_hand(mob/user as mob)
+/obj/structure/machinery/embedded_controller/attack_hand(mob/user as mob)
 	src.ui_interact(user)
 
-/obj/machinery/embedded_controller/ui_interact()
+/obj/structure/machinery/embedded_controller/ui_interact()
 	return
 
-/obj/machinery/embedded_controller/radio
+/obj/structure/machinery/embedded_controller/radio
 	icon = 'icons/obj/structures/machinery/airlock_machines.dmi'
 	icon_state = "airlock_control_standby"
 	power_channel = ENVIRON
@@ -49,10 +49,10 @@
 	var/datum/radio_frequency/radio_connection
 	unacidable = 1
 
-/obj/machinery/embedded_controller/radio/initialize()
+/obj/structure/machinery/embedded_controller/radio/initialize()
 	set_frequency(frequency)
 
-/obj/machinery/embedded_controller/radio/update_icon()
+/obj/structure/machinery/embedded_controller/radio/update_icon()
 	if(on && program)
 		if(program.memory["processing"])
 			icon_state = "airlock_control_process"
@@ -61,7 +61,7 @@
 	else
 		icon_state = "airlock_control_off"
 
-/obj/machinery/embedded_controller/radio/post_signal(datum/signal/signal, var/filter = null)
+/obj/structure/machinery/embedded_controller/radio/post_signal(datum/signal/signal, var/filter = null)
 	signal.transmission_method = TRANSMISSION_RADIO
 	if(radio_connection)
 		//use_power(radio_power_use)	//neat idea, but causes way too much lag.
@@ -69,7 +69,7 @@
 	else
 		qdel(signal)
 
-/obj/machinery/embedded_controller/radio/proc/set_frequency(new_frequency)
+/obj/structure/machinery/embedded_controller/radio/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)
 	frequency = new_frequency
 	radio_connection = radio_controller.add_object(src, frequency, radio_filter)

@@ -60,17 +60,17 @@
 	icon_state = "hangar_comp_open"
 	w_class = SIZE_LARGE
 
-/obj/machinery/prop/almayer
+/obj/structure/machinery/prop/almayer
 	name = "GENERIC USS ALMAYER PROP"
 	desc = "THIS SHOULDN'T BE VISIBLE, AHELP 'ART-P01' IF SEEN IN ROUND WITH LOCATION"
 
-/obj/machinery/prop/almayer/hangar/dropship_part_fabricator
-/obj/machinery/prop/almayer/computer/PC
+/obj/structure/machinery/prop/almayer/hangar/dropship_part_fabricator
+/obj/structure/machinery/prop/almayer/computer/PC
 	name = "personal desktop"
 	desc = "A small computer hooked up into the ship's computer network."
 	icon_state = "terminal1"
 
-/obj/machinery/prop/almayer/computer
+/obj/structure/machinery/prop/almayer/computer
 	name = "systems computer"
 	desc = "A small computer hooked up into the ship's systems."
 
@@ -82,7 +82,7 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "terminal"
 
-/obj/machinery/prop/almayer/computer/ex_act(severity)
+/obj/structure/machinery/prop/almayer/computer/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
@@ -99,15 +99,15 @@
 		else
 			return
 
-/obj/machinery/prop/almayer/computer/proc/set_broken()
+/obj/structure/machinery/prop/almayer/computer/proc/set_broken()
 	stat |= BROKEN
 	update_icon()
 
-/obj/machinery/prop/almayer/computer/power_change()
+/obj/structure/machinery/prop/almayer/computer/power_change()
 	..()
 	update_icon()
 
-/obj/machinery/prop/almayer/computer/update_icon()
+/obj/structure/machinery/prop/almayer/computer/update_icon()
 	..()
 	icon_state = initial(icon_state)
 	if(stat & BROKEN)
@@ -116,7 +116,7 @@
 		icon_state = initial(icon_state)
 		icon_state += "0"
 
-/obj/machinery/prop/almayer/NavCon
+/obj/structure/machinery/prop/almayer/NavCon
 	name = "NavCon"
 	desc = "Navigational console for ploting course and heading of the ship. Since the AI calculates all long range navigation, this is only used for in system curse corrections and orbital maneuvers. Don't touch it!"
 
@@ -128,7 +128,7 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "retro"
 
-/obj/machinery/prop/almayer/NavCon/ex_act(severity)
+/obj/structure/machinery/prop/almayer/NavCon/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
@@ -145,15 +145,15 @@
 		else
 			return
 
-/obj/machinery/prop/almayer/NavCon/proc/set_broken()
+/obj/structure/machinery/prop/almayer/NavCon/proc/set_broken()
 	stat |= BROKEN
 	update_icon()
 
-/obj/machinery/prop/almayer/NavCon/power_change()
+/obj/structure/machinery/prop/almayer/NavCon/power_change()
 	..()
 	update_icon()
 
-/obj/machinery/prop/almayer/NavCon/update_icon()
+/obj/structure/machinery/prop/almayer/NavCon/update_icon()
 	..()
 	icon_state = initial(icon_state)
 	if(stat & BROKEN)
@@ -162,7 +162,7 @@
 		icon_state = initial(icon_state)
 		icon_state += "0"
 
-/obj/machinery/prop/almayer/NavCon2
+/obj/structure/machinery/prop/almayer/NavCon2
 	name = "NavCon 2"
 	desc = "Navigational console for ploting course and heading of the ship. Since the AI calculates all long range navigation, this is only used for in system curse corrections and orbital maneuvers. Don't touch it!"
 
@@ -174,7 +174,7 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "retro2"
 
-/obj/machinery/prop/almayer/NavCon2/ex_act(severity)
+/obj/structure/machinery/prop/almayer/NavCon2/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
@@ -191,15 +191,15 @@
 		else
 			return
 
-/obj/machinery/prop/almayer/NavCon2/proc/set_broken()
+/obj/structure/machinery/prop/almayer/NavCon2/proc/set_broken()
 	stat |= BROKEN
 	update_icon()
 
-/obj/machinery/prop/almayer/NavCon2/power_change()
+/obj/structure/machinery/prop/almayer/NavCon2/power_change()
 	..()
 	update_icon()
 
-/obj/machinery/prop/almayer/NavCon2/update_icon()
+/obj/structure/machinery/prop/almayer/NavCon2/update_icon()
 	..()
 	icon_state = initial(icon_state)
 	if(stat & BROKEN)
@@ -208,7 +208,7 @@
 		icon_state = initial(icon_state)
 		icon_state += "0"
 
-/obj/machinery/prop/almayer/CICmap
+/obj/structure/machinery/prop/almayer/CICmap
 	name = "map table"
 	desc = "A table that displays a map of the current target location"
 
@@ -221,7 +221,7 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "maptable"
 
-/obj/machinery/prop/almayer/CICmap/Dispose()
+/obj/structure/machinery/prop/almayer/CICmap/Dispose()
 	for(var/mob/living/L in current_viewers)
 		to_chat(L, SPAN_NOTICE("You stop looking at the map."))
 		L << browse(null, "window=marineminimap")
@@ -229,7 +229,7 @@
 		continue
 	..()
 
-/obj/machinery/prop/almayer/CICmap/examine(mob/living/user)
+/obj/structure/machinery/prop/almayer/CICmap/examine(mob/living/user)
 	if(ishuman(user) && get_dist(src,user) < 3 && powered())
 		if(user in current_viewers)
 			to_chat(user, SPAN_NOTICE("You stop looking at the map."))
@@ -245,7 +245,7 @@
 		return
 	..()
 
-/obj/machinery/prop/almayer/CICmap/proc/update_mapview()
+/obj/structure/machinery/prop/almayer/CICmap/proc/update_mapview()
 	if(!istype(marine_mapview_overlay_5))
 		overlay_marine_mapview()
 	for(var/mob/living/L in current_viewers)
@@ -349,7 +349,7 @@
 				faltext += "[fallen_list[i]], "
 			else
 				faltext += fallen_list[i]
-		to_chat(user, "<span class='notice'>To our fallen soldiers:</span> <b>[faltext]</b>.")
+		to_chat(user, SPAN_NOTICE("To our fallen soldiers:</span> <b>[faltext]</b>."))
 
 /obj/structure/prop/almayer/particle_cannon
 	name = "\improper 75cm/140 Mark 74 General Atomics railgun"
@@ -443,7 +443,7 @@
 // Wanted to put this in, but since we still have extra time until tomorrow and this is really simple thing. It just recycles opened cryobags to make it nice-r for medics.
 // Also the lack of sleep makes me keep typing cyro instead of cryo. FFS ~Art
 
-/obj/machinery/cryobag_recycler
+/obj/structure/machinery/cryobag_recycler
 	name = "cryogenic bag recycler"
 	desc = "A small tomb like structure. Capable of taking in used and opened cryobags and refill the liner and attach new sealants."
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
@@ -455,7 +455,7 @@
 	idle_power_usage = 20
 
 //What is this even doing? Why is it making a new item?
-/obj/machinery/cryobag_recycler/attackby(obj/item/W, mob/user) //Hope this works. Don't see why not.
+/obj/structure/machinery/cryobag_recycler/attackby(obj/item/W, mob/user) //Hope this works. Don't see why not.
 	..()
 	if (istype(W, /obj/item))
 		if(W.name == "used stasis bag") //possiblity for abuse, but fairly low considering its near impossible to rename something without VV

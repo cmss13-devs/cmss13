@@ -1,4 +1,4 @@
-/obj/machinery/bluespace_beacon
+/obj/structure/machinery/bluespace_beacon
 
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "floor_beaconf"

@@ -1,4 +1,4 @@
-/obj/machinery/computer/mecha
+/obj/structure/machinery/computer/mecha
 	name = "Exosuit Control"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "mecha"

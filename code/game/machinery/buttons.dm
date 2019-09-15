@@ -1,4 +1,4 @@
-/obj/machinery/driver_button
+/obj/structure/machinery/driver_button
 	name = "mass driver button"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "launcherbtt"
@@ -10,7 +10,7 @@
 	idle_power_usage = 2
 	active_power_usage = 4
 
-/obj/machinery/ignition_switch
+/obj/structure/machinery/ignition_switch
 	name = "ignition switch"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "launcherbtt"
@@ -22,7 +22,7 @@
 	idle_power_usage = 2
 	active_power_usage = 4
 
-/obj/machinery/flasher_button
+/obj/structure/machinery/flasher_button
 	name = "flasher button"
 	desc = "A remote control switch for a mounted flasher."
 	icon = 'icons/obj/objects.dmi'
@@ -34,7 +34,7 @@
 	idle_power_usage = 2
 	active_power_usage = 4
 
-/obj/machinery/crema_switch
+/obj/structure/machinery/crema_switch
 	desc = "Burn baby burn!"
 	name = "crematorium igniter"
 	icon = 'icons/obj/structures/machinery/power.dmi'

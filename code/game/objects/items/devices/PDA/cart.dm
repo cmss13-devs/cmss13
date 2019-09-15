@@ -28,7 +28,7 @@
 	var/datum/data/record/active1 = null //General
 	var/datum/data/record/active2 = null //Medical
 	var/datum/data/record/active3 = null //Security
-	var/obj/machinery/power/monitor/powmonitor = null // Power Monitor
+	var/obj/structure/machinery/power/monitor/powmonitor = null // Power Monitor
 	var/list/powermonitors = list()
 	var/message1	// used for status_displays
 	var/message2
@@ -251,7 +251,7 @@
 	if(mode==43 || mode==433)
 		var/pMonData[0]
 		var/apcData[0]
-		for(var/obj/machinery/power/monitor/pMon in machines)
+		for(var/obj/structure/machinery/power/monitor/pMon in machines)
 			if(!(pMon.stat & (NOPOWER|BROKEN)) )
 				var/turf/monitorturf = locate(pMon.x,pMon.y,pMon.z)
 				var/area/monitorarea = monitorturf.loc
@@ -265,14 +265,14 @@
 			values["poweravail"] = powmonitor.powernet.avail
 			values["powerload"] = num2text(powmonitor.powernet.viewload,10)
 			var/list/L = list()
-			for(var/obj/machinery/power/terminal/term in powmonitor.powernet.nodes)
-				if(istype(term.master, /obj/machinery/power/apc))
-					var/obj/machinery/power/apc/A = term.master
+			for(var/obj/structure/machinery/power/terminal/term in powmonitor.powernet.nodes)
+				if(istype(term.master, /obj/structure/machinery/power/apc))
+					var/obj/structure/machinery/power/apc/A = term.master
 					L += A
 
 			var/list/Status = list(0,0,1,1) // Status:  off, auto-off, on, auto-on
 			var/list/chg = list(0,1,1)	// Charging: nope, charging, full
-			for(var/obj/machinery/power/apc/A in L)
+			for(var/obj/structure/machinery/power/apc/A in L)
 				apcData[++apcData.len] = list("Name" = html_encode(A.area.name), "Equipment" = Status[A.equipment+1], "Lights" = Status[A.lighting+1], "Environment" = Status[A.environ+1], "CellPct" = A.cell ? round(A.cell.percent(),1) : -1, "CellStatus" = A.cell ? chg[A.charging+1] : 0)
 
 			values["apcs"] = apcData
@@ -339,7 +339,7 @@
 
 
 			var/mulebotsCount=0
-			for(var/obj/machinery/bot/B in QC.botlist)
+			for(var/obj/structure/machinery/bot/B in QC.botlist)
 				mulebotsCount++
 				if(B.loc)
 					mulebotsData[++mulebotsData.len] = list("Name" = sanitize(B.name), "Location" = sanitize(B.loc.loc.name), "ref" = "\ref[B]")
@@ -434,7 +434,7 @@
 			BucketData[++BucketData.len] = list("x" = 0, "y" = 0, dir=null, status = null)
 
 		var/CbotData[0]
-		for(var/obj/machinery/bot/cleanbot/B in machines)
+		for(var/obj/structure/machinery/bot/cleanbot/B in machines)
 			var/turf/bl = get_turf(B)
 			if(bl)
 				if(bl.z != cl.z)

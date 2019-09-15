@@ -1,15 +1,15 @@
 //a docking port that uses a single door
-/obj/machinery/embedded_controller/radio/simple_docking_controller
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller
 	name = "docking hatch controller"
 	var/tag_door
 	var/datum/computer/file/embedded_program/docking/simple/docking_program
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/initialize()
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/initialize()
 	..()
 	docking_program = new/datum/computer/file/embedded_program/docking/simple(src)
 	program = docking_program
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 
 	data = list(
@@ -27,7 +27,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/Topic(href, href_list)
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/Topic(href, href_list)
 	if(..())
 		return 1
 
@@ -51,12 +51,12 @@
 /datum/computer/file/embedded_program/docking/simple
 	var/tag_door
 
-/datum/computer/file/embedded_program/docking/simple/New(var/obj/machinery/embedded_controller/M)
+/datum/computer/file/embedded_program/docking/simple/New(var/obj/structure/machinery/embedded_controller/M)
 	..(M)
 	memory["door_status"] = list(state = "closed", lock = "locked")		//assume closed and locked in case the doors dont report in
 
-	if (istype(M, /obj/machinery/embedded_controller/radio/simple_docking_controller))
-		var/obj/machinery/embedded_controller/radio/simple_docking_controller/controller = M
+	if (istype(M, /obj/structure/machinery/embedded_controller/radio/simple_docking_controller))
+		var/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/controller = M
 
 		tag_door = controller.tag_door? controller.tag_door : "[id_tag]_hatch"
 
@@ -136,12 +136,12 @@
 
 /*** DEBUG VERBS ***
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/verb/view_state()
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/verb/view_state()
 	set category = "Debug"
 	set src in view(1)
 	src.program:print_state()
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/verb/spoof_signal(var/command as text, var/sender as text)
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/verb/spoof_signal(var/command as text, var/sender as text)
 	set category = "Debug"
 	set src in view(1)
 	var/datum/signal/signal = new
@@ -151,12 +151,12 @@
 
 	src.program:receive_signal(signal)
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/verb/debug_init_dock(var/target as text)
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/verb/debug_init_dock(var/target as text)
 	set category = "Debug"
 	set src in view(1)
 	src.program:initiate_docking(target)
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/verb/debug_init_undock()
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/verb/debug_init_undock()
 	set category = "Debug"
 	set src in view(1)
 	src.program:initiate_undocking()

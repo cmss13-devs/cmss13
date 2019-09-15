@@ -10,7 +10,7 @@
 var/list/recentmessages = list() // global list of recent messages broadcasted : used to circumvent massive radio spam
 var/message_delay = 0 // To make sure restarting the recentmessages list is kept in sync
 
-/obj/machinery/telecomms/broadcaster
+/obj/structure/machinery/telecomms/broadcaster
 	name = "Subspace Broadcaster"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "broadcaster"
@@ -24,7 +24,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	delay = 7
 	circuitboard = "/obj/item/circuitboard/machine/telecomms/broadcaster"
 
-/obj/machinery/telecomms/broadcaster/receive_information(datum/signal/signal, obj/machinery/telecomms/machine_from)
+/obj/structure/machinery/telecomms/broadcaster/receive_information(datum/signal/signal, obj/structure/machinery/telecomms/machine_from)
 	// Don't broadcast rejected signals
 	if(signal.data["reject"])
 		return
@@ -98,7 +98,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		/* --- Do a snazzy animation! --- */
 		flick("broadcaster_send", src)
 
-/obj/machinery/telecomms/broadcaster/Dispose()
+/obj/structure/machinery/telecomms/broadcaster/Dispose()
 	// In case message_delay is left on 1, otherwise it won't reset the list and people can't say the same thing twice anymore.
 	if(message_delay)
 		message_delay = 0
@@ -648,7 +648,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 	signal.frequency = PUB_FREQ// Common channel
 
   //#### Sending the signal to all subspace receivers ####//
-	for(var/obj/machinery/telecomms/receiver/R in telecomms_list)
+	for(var/obj/structure/machinery/telecomms/receiver/R in telecomms_list)
 		R.receive_signal(signal)
 
 	sleep(rand(10,25))

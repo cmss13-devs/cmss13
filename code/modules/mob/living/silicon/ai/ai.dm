@@ -48,7 +48,7 @@ var/list/ai_verbs_default = list(
 	med_hud = MOB_HUD_MEDICAL_BASIC
 	sec_hud = MOB_HUD_SECURITY_BASIC
 	var/list/network = list("almayer")
-	var/obj/machinery/camera/camera = null
+	var/obj/structure/machinery/camera/camera = null
 	var/list/connected_robots = list()
 	var/aiRestorePowerRoutine = 0
 	//var/list/laws = list()
@@ -71,7 +71,7 @@ var/list/ai_verbs_default = list(
 	var/control_disabled = 0 // Set to 1 to stop AI from interacting via Click() -- TLE
 	var/malfhacking = 0 // More or less a copy of the above var, so that malf AIs can hack and still get new cyborgs -- NeoFite
 
-	var/obj/machinery/power/apc/malfhack = null
+	var/obj/structure/machinery/power/apc/malfhack = null
 	var/explosive = 0 //does the AI explode when it dies?
 
 	var/mob/living/silicon/ai/parent = null
@@ -142,7 +142,7 @@ var/list/ai_verbs_default = list(
 			job = "AI"
 
 	spawn(5)
-		new /obj/machinery/ai_powersupply(src)
+		new /obj/structure/machinery/ai_powersupply(src)
 
 	ai_list += src
 	..()
@@ -170,7 +170,7 @@ var/list/ai_verbs_default = list(
 	The AI Power supply is a dummy object used for powering the AI since only machinery should be using power.
 	The alternative was to rewrite a bunch of AI code instead here we are.
 */
-/obj/machinery/ai_powersupply
+/obj/structure/machinery/ai_powersupply
 	name="Power Supply"
 	active_power_usage=1000
 	use_power = 2
@@ -178,7 +178,7 @@ var/list/ai_verbs_default = list(
 	var/mob/living/silicon/ai/powered_ai = null
 	invisibility = 100
 
-/obj/machinery/ai_powersupply/New(var/mob/living/silicon/ai/ai=null)
+/obj/structure/machinery/ai_powersupply/New(var/mob/living/silicon/ai/ai=null)
 	powered_ai = ai
 	if(isnull(powered_ai))
 		qdel(src)
@@ -188,7 +188,7 @@ var/list/ai_verbs_default = list(
 	//start_processing()
 	//..()
 
-/obj/machinery/ai_powersupply/process()
+/obj/structure/machinery/ai_powersupply/process()
 	if(!powered_ai || powered_ai.stat & DEAD)
 		qdel(src)
 		return
@@ -244,7 +244,7 @@ var/list/ai_verbs_default = list(
 
 				var/cameratext = ""
 				if (alarm.cameras)
-					for (var/obj/machinery/camera/I in alarm.cameras)
+					for (var/obj/structure/machinery/camera/I in alarm.cameras)
 						cameratext += text("[]<A HREF=?src=\ref[];switchcamera=\ref[]>[]</A>", (cameratext=="") ? "" : "|", src, I, I.c_tag)
 				dat += text("-- [] ([])", alarm.area.name, (cameratext)? cameratext : "No Camera")
 
@@ -316,7 +316,7 @@ var/list/ai_verbs_default = list(
 		ai_alerts()
 	//Carn: holopad requests
 	if (href_list["jumptoholopad"])
-		var/obj/machinery/hologram/holopad/H = locate(href_list["jumptoholopad"])
+		var/obj/structure/machinery/hologram/holopad/H = locate(href_list["jumptoholopad"])
 		if(stat == CONSCIOUS)
 			if(H)
 				H.attack_ai(src) //may as well recycle
@@ -353,15 +353,15 @@ var/list/ai_verbs_default = list(
 /mob/living/silicon/ai/reset_view(atom/A)
 	if(camera)
 		camera.SetLuminosity(0)
-	if(istype(A,/obj/machinery/camera))
+	if(istype(A,/obj/structure/machinery/camera))
 		camera = A
 	..()
-	if(istype(A,/obj/machinery/camera))
+	if(istype(A,/obj/structure/machinery/camera))
 		if(camera_light_on)	A.SetLuminosity(AI_CAMERA_LUMINOSITY)
 		else				A.SetLuminosity(0)
 
 
-/mob/living/silicon/ai/proc/switchCamera(var/obj/machinery/camera/C)
+/mob/living/silicon/ai/proc/switchCamera(var/obj/structure/machinery/camera/C)
 	if (!C || stat == DEAD) //C.can_use())
 		return 0
 
@@ -381,7 +381,7 @@ var/list/ai_verbs_default = list(
 	..()
 
 	var/cameratext = ""
-	for (var/obj/machinery/camera/C in cameralist)
+	for (var/obj/structure/machinery/camera/C in cameralist)
 		cameratext += "[(cameratext == "")? "" : "|"]<A HREF=?src=\ref[src];switchcamera=\ref[C]>[C.c_tag]</A>"
 
 	queueAlarm("--- [class] alarm detected in [A.name]! ([(cameratext)? cameratext : "No Camera"])", class)
@@ -419,7 +419,7 @@ var/list/ai_verbs_default = list(
 
 	var/mob/living/silicon/ai/U = usr
 
-	for (var/obj/machinery/camera/C in cameranet.cameras)
+	for (var/obj/structure/machinery/camera/C in cameranet.cameras)
 		if(!C.can_use())
 			continue
 
@@ -437,7 +437,7 @@ var/list/ai_verbs_default = list(
 	if(isnull(network))
 		network = old_network // If nothing is selected
 	else
-		for(var/obj/machinery/camera/C in cameranet.cameras)
+		for(var/obj/structure/machinery/camera/C in cameranet.cameras)
 			if(!C.can_use())
 				continue
 			if(network in C.network)
@@ -455,14 +455,14 @@ var/list/ai_verbs_default = list(
 
 	var/list/ai_emotions = list("Very Happy", "Happy", "Neutral", "Unsure", "Confused", "Surprised", "Sad", "Upset", "Angry", "Awesome", "BSOD", "Blank", "Problems?", "Facepalm", "Friend Computer")
 	var/emote = input("Please, select a status!", "AI Status", null, null) in ai_emotions
-	for (var/obj/machinery/M in machines) //change status
-		if(istype(M, /obj/machinery/ai_status_display))
-			var/obj/machinery/ai_status_display/AISD = M
+	for (var/obj/structure/machinery/M in machines) //change status
+		if(istype(M, /obj/structure/machinery/ai_status_display))
+			var/obj/structure/machinery/ai_status_display/AISD = M
 			AISD.emotion = emote
 		//if Friend Computer, change ALL displays
-		else if(istype(M, /obj/machinery/status_display))
+		else if(istype(M, /obj/structure/machinery/status_display))
 
-			var/obj/machinery/status_display/SD = M
+			var/obj/structure/machinery/status_display/SD = M
 			if(emote=="Friend Computer")
 				SD.friendc = 1
 			else
@@ -518,7 +518,7 @@ var/list/ai_verbs_default = list(
 	set category = "Malfunction"
 	set name = "Return to Main Core"
 
-	var/obj/machinery/power/apc/apc = src.loc
+	var/obj/structure/machinery/power/apc/apc = src.loc
 	if(!istype(apc))
 		to_chat(src, SPAN_NOTICE(" You are already in your Main Core."))
 		return
@@ -550,7 +550,7 @@ var/list/ai_verbs_default = list(
 /mob/living/silicon/ai/proc/lightNearbyCamera()
 	if(camera_light_on && camera_light_on < world.timeofday)
 		if(src.camera)
-			var/obj/machinery/camera/camera = near_range_camera(src.eyeobj)
+			var/obj/structure/machinery/camera/camera = near_range_camera(src.eyeobj)
 			if(camera && src.camera != camera)
 				src.camera.SetLuminosity(0)
 				if(!camera.light_disabled)
@@ -562,7 +562,7 @@ var/list/ai_verbs_default = list(
 				src.camera.SetLuminosity(0)
 				src.camera = null
 		else
-			var/obj/machinery/camera/camera = near_range_camera(src.eyeobj)
+			var/obj/structure/machinery/camera/camera = near_range_camera(src.eyeobj)
 			if(camera && !camera.light_disabled)
 				src.camera = camera
 				src.camera.SetLuminosity(AI_CAMERA_LUMINOSITY)

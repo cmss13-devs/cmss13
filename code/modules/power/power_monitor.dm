@@ -1,6 +1,6 @@
 // the power monitoring computer
 // for the moment, just report the status of all APCs in the same powernet
-/obj/machinery/power/monitor
+/obj/structure/machinery/power/monitor
 	name = "power monitoring computer"
 	desc = "It monitors power levels across the station."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
@@ -14,7 +14,7 @@
 	idle_power_usage = 300
 	active_power_usage = 300
 
-/obj/machinery/power/monitor/New()
+/obj/structure/machinery/power/monitor/New()
 	..()
 	//var/obj/structure/cable/attached = null
 	//var/turf/T = loc
@@ -23,21 +23,21 @@
 	//if(attached)
 	//	powernet = attached.get_powernet()
 
-/obj/machinery/power/monitor/attack_ai(mob/user)
+/obj/structure/machinery/power/monitor/attack_ai(mob/user)
 	add_fingerprint(user)
 
 	if(stat & (BROKEN|NOPOWER))
 		return
 	interact(user)
 
-/obj/machinery/power/monitor/attack_hand(mob/user)
+/obj/structure/machinery/power/monitor/attack_hand(mob/user)
 	add_fingerprint(user)
 
 	if(stat & (BROKEN|NOPOWER))
 		return
 	interact(user)
 
-/obj/machinery/power/monitor/interact(mob/user)
+/obj/structure/machinery/power/monitor/interact(mob/user)
 
 	if ( (get_dist(src, user) > 1 ) || (stat & (BROKEN|NOPOWER)) )
 		if (!issilicon(user))
@@ -57,9 +57,9 @@
 	else
 
 		var/list/L = list()
-		for(var/obj/machinery/power/terminal/term in powernet.nodes)
-			if(istype(term.master, /obj/machinery/power/apc))
-				var/obj/machinery/power/apc/A = term.master
+		for(var/obj/structure/machinery/power/terminal/term in powernet.nodes)
+			if(istype(term.master, /obj/structure/machinery/power/apc))
+				var/obj/structure/machinery/power/apc/A = term.master
 				L += A
 
 		t += "<PRE>Total power: [powernet.avail] W<BR>Total load:  [num2text(powernet.viewload,10)] W<BR>"
@@ -73,7 +73,7 @@
 			var/list/S = list(" Off","AOff","  On", " AOn")
 			var/list/chg = list("N","C","F")
 
-			for(var/obj/machinery/power/apc/A in L)
+			for(var/obj/structure/machinery/power/apc/A in L)
 
 				t += copytext(add_tspace("\The [A.area]", 30), 1, 30)
 				t += " [S[A.equipment+1]] [S[A.lighting+1]] [S[A.environ+1]] [add_lspace(A.lastused_total, 6)]  [A.cell ? "[add_lspace(round(A.cell.percent()), 3)]% [chg[A.charging+1]]" : "  N/C"]<BR>"
@@ -86,7 +86,7 @@
 	onclose(user, "powcomp")
 
 
-/obj/machinery/power/monitor/Topic(href, href_list)
+/obj/structure/machinery/power/monitor/Topic(href, href_list)
 	..()
 	if( href_list["close"] )
 		usr << browse(null, "window=powcomp")
@@ -97,7 +97,7 @@
 		return
 
 
-/obj/machinery/power/monitor/power_change()
+/obj/structure/machinery/power/monitor/power_change()
 	..()
 	if(stat & BROKEN)
 		icon_state = "broken"
@@ -110,7 +110,7 @@
 
 
 //copied from computer.dm
-/obj/machinery/power/monitor/attackby(I as obj, user as mob)
+/obj/structure/machinery/power/monitor/attackby(I as obj, user as mob)
 	if(istype(I, /obj/item/tool/screwdriver) && circuit)
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))

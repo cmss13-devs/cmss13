@@ -42,7 +42,7 @@
 	if (A.always_unpowered)
 		to_chat(usr, SPAN_WARNING("This area is unsuitable for an APC."))
 		return
-	for(var/obj/machinery/power/terminal/T in loc)
+	for(var/obj/structure/machinery/power/terminal/T in loc)
 		if (T.master)
 			to_chat(usr, SPAN_WARNING("There is another network terminal here."))
 			return
@@ -51,5 +51,5 @@
 			C.amount = 10
 			to_chat(usr, "You cut the cables and disassemble the unused power terminal.")
 			qdel(T)
-	new /obj/machinery/power/apc(loc, ndir, 1)
+	new /obj/structure/machinery/power/apc(loc, ndir, 1)
 	qdel(src)

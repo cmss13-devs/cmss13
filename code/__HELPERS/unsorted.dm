@@ -208,9 +208,9 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		if(D.is_full_window())	return 1
 		if(D.dir == direction) return 1
 
-	for(var/obj/machinery/door/D in loc)
+	for(var/obj/structure/machinery/door/D in loc)
 		if(!D.density)			continue
-		if(istype(D, /obj/machinery/door/window))
+		if(istype(D, /obj/structure/machinery/door/window))
 			if(D.dir == direction)		return 1
 		else return 1	// it's a real, air blocking door
 	for(var/obj/structure/mineral_door/D in loc)
@@ -1333,7 +1333,7 @@ var/global/image/busy_indicator_hostile
 
 	if(toupdate.len)
 		for(var/turf/T1 in toupdate)
-			for(var/obj/machinery/door/D2 in T1)
+			for(var/obj/structure/machinery/door/D2 in T1)
 				doors += D2
 			/*if(T1.parent)
 				air_master.groups_to_rebuild += T1.parent
@@ -1342,7 +1342,7 @@ var/global/image/busy_indicator_hostile
 
 	if(fromupdate.len)
 		for(var/turf/T2 in fromupdate)
-			for(var/obj/machinery/door/D2 in T2)
+			for(var/obj/structure/machinery/door/D2 in T2)
 				doors += D2
 			/*if(T2.parent)
 				air_master.groups_to_rebuild += T2.parent
@@ -1704,13 +1704,13 @@ proc/is_hot(obj/item/I)
 Checks if that loc and dir has a item on the wall
 */
 var/list/WALLITEMS = list(
-	"/obj/machinery/power/apc", "/obj/machinery/alarm", "/obj/item/device/radio/intercom",
+	"/obj/structure/machinery/power/apc", "/obj/structure/machinery/alarm", "/obj/item/device/radio/intercom",
 	"/obj/structure/extinguisher_cabinet", "/obj/structure/reagent_dispensers/peppertank",
-	"/obj/machinery/status_display", "/obj/machinery/requests_console", "/obj/machinery/light_switch", "/obj/effect/sign",
-	"/obj/machinery/newscaster", "/obj/machinery/firealarm", "/obj/structure/noticeboard", "/obj/machinery/door_control",
-	"/obj/machinery/computer/security/telescreen", "/obj/machinery/embedded_controller/radio/simple_vent_controller",
-	"/obj/item/storage/secure/safe", "/obj/machinery/door_timer", "/obj/machinery/flasher", "/obj/machinery/keycard_auth",
-	"/obj/structure/mirror", "/obj/structure/closet/fireaxecabinet", "/obj/machinery/computer/security/telescreen/entertainment"
+	"/obj/structure/machinery/status_display", "/obj/structure/machinery/requests_console", "/obj/structure/machinery/light_switch", "/obj/effect/sign",
+	"/obj/structure/machinery/newscaster", "/obj/structure/machinery/firealarm", "/obj/structure/noticeboard", "/obj/structure/machinery/door_control",
+	"/obj/structure/machinery/computer/security/telescreen", "/obj/structure/machinery/embedded_controller/radio/simple_vent_controller",
+	"/obj/item/storage/secure/safe", "/obj/structure/machinery/door_timer", "/obj/structure/machinery/flasher", "/obj/structure/machinery/keycard_auth",
+	"/obj/structure/mirror", "/obj/structure/closet/fireaxecabinet", "/obj/structure/machinery/computer/security/telescreen/entertainment"
 	)
 /proc/gotwallitem(loc, dir)
 	for(var/obj/O in loc)

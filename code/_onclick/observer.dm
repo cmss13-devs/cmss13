@@ -21,7 +21,7 @@
 				return 1								// seems legit.
 
 		// Things you might plausibly want to follow
-		if((ismob(A) && A != src) || istype(A,/obj/machinery/bot))
+		if((ismob(A) && A != src) || istype(A,/obj/structure/machinery/bot))
 			ManualFollow(A)
 
 		// Otherwise jump
@@ -50,9 +50,9 @@
 // And here are some good things for free:
 // Now you can click through portals, wormholes, gateways, and teleporters while observing. -Sayu
 
-/obj/machinery/teleport/hub/attack_ghost(mob/user as mob)
+/obj/structure/machinery/teleport/hub/attack_ghost(mob/user as mob)
 	var/atom/l = loc
-	var/obj/machinery/computer/teleporter/com = locate(/obj/machinery/computer/teleporter, locate(l.x - 2, l.y, l.z))
+	var/obj/structure/machinery/computer/teleporter/com = locate(/obj/structure/machinery/computer/teleporter, locate(l.x - 2, l.y, l.z))
 	if(com && com.locked)
 		user.loc = get_turf(com.locked)
 

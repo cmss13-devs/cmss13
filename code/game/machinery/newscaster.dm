@@ -47,10 +47,10 @@
 
 var/datum/feed_network/news_network = new /datum/feed_network     //The global news-network, which is coincidentally a global list.
 
-var/list/obj/machinery/newscaster/allCasters = list() //Global list that will contain reference to all newscasters in existence.
+var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list that will contain reference to all newscasters in existence.
 
 
-/obj/machinery/newscaster
+/obj/structure/machinery/newscaster
 	name = "newscaster"
 	desc = "A standard Nanotrasen-licensed newsfeed handler for use in commercial space stations. All the news you absolutely have no use for, in one place!"
 	icon = 'icons/obj/structures/machinery/terminals.dmi'
@@ -97,14 +97,14 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	anchored = 1
 
 
-/obj/machinery/newscaster/security_unit                   //Security unit
+/obj/structure/machinery/newscaster/security_unit                   //Security unit
 	name = "Security Newscaster"
 	securityCaster = 1
 
 	New()         //Constructor, ho~
 		allCasters += src
 		src.paper_remaining = 15            // Will probably change this to something better
-		for(var/obj/machinery/newscaster/NEWSCASTER in allCasters) // Let's give it an appropriate unit number
+		for(var/obj/structure/machinery/newscaster/NEWSCASTER in allCasters) // Let's give it an appropriate unit number
 			src.unit_no++
 		src.update_icon() //for any custom ones on the map...
 		..()                                //I just realised the newscasters weren't in the global machines list. The superconstructor call will tend to that
@@ -114,7 +114,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		SetLuminosity(0)
 		. = ..()
 
-/obj/machinery/newscaster/update_icon()
+/obj/structure/machinery/newscaster/update_icon()
 	if(!ispowered || isbroken)
 		icon_state = "newscaster_off"
 		if(isbroken) //If the thing is smashed, add crack overlay on top of the unpowered sprite.
@@ -137,7 +137,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	icon_state = "newscaster_normal"
 	return
 
-/obj/machinery/newscaster/power_change()
+/obj/structure/machinery/newscaster/power_change()
 	if(isbroken) //Broken shit can't be powered.
 		return
 	..()
@@ -150,7 +150,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			src.update_icon()
 
 
-/obj/machinery/newscaster/ex_act(severity)
+/obj/structure/machinery/newscaster/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(50))
@@ -169,10 +169,10 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			return
 	return
 
-/obj/machinery/newscaster/attack_ai(mob/user as mob)
+/obj/structure/machinery/newscaster/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/newscaster/attack_hand(mob/user as mob)            //########### THE MAIN BEEF IS HERE! And in the proc below this...############
+/obj/structure/machinery/newscaster/attack_hand(mob/user as mob)            //########### THE MAIN BEEF IS HERE! And in the proc below this...############
 	if(!src.ispowered || src.isbroken)
 		return
 	if(istype(user, /mob/living/carbon/human) || istype(user,/mob/living/silicon) )
@@ -430,7 +430,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	src.update_icon()*/
 
 
-/obj/machinery/newscaster/Topic(href, href_list)
+/obj/structure/machinery/newscaster/Topic(href, href_list)
 	if(..())
 		return
 	if ((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (issilicon(usr)))
@@ -471,7 +471,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 					newChannel.author = src.scanned_user
 					newChannel.locked = c_locked
 					feedback_inc("newscaster_channels",1)
-					/*for(var/obj/machinery/newscaster/NEWSCASTER in allCasters)    //Let's add the new channel in all casters.
+					/*for(var/obj/structure/machinery/newscaster/NEWSCASTER in allCasters)    //Let's add the new channel in all casters.
 						NEWSCASTER.channel_list += newChannel*/                     //Now that it is sane, get it into the list. -OBSOLETE
 					news_network.network_channels += newChannel                        //Adding channel to the global network
 					src.screen=5
@@ -512,7 +512,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 						FC.messages += newMsg                  //Adding message to the network's appropriate feed_channel
 						break
 				src.screen=4
-				for(var/obj/machinery/newscaster/NEWSCASTER in allCasters)
+				for(var/obj/structure/machinery/newscaster/NEWSCASTER in allCasters)
 					NEWSCASTER.newsAlert(src.channel_name)
 
 			src.updateUsrDialog()
@@ -582,7 +582,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 						if(photo)
 							WANTED.img = photo.img
 						news_network.wanted_issue = WANTED
-						for(var/obj/machinery/newscaster/NEWSCASTER in allCasters)
+						for(var/obj/structure/machinery/newscaster/NEWSCASTER in allCasters)
 							NEWSCASTER.newsAlert()
 							NEWSCASTER.update_icon()
 						src.screen = 15
@@ -606,7 +606,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			var/choice = alert("Please confirm Wanted Issue removal","Network Security Handler","Confirm","Cancel")
 			if(choice=="Confirm")
 				news_network.wanted_issue = null
-				for(var/obj/machinery/newscaster/NEWSCASTER in allCasters)
+				for(var/obj/structure/machinery/newscaster/NEWSCASTER in allCasters)
 					NEWSCASTER.update_icon()
 				src.screen=17
 			src.updateUsrDialog()
@@ -699,7 +699,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			src.updateUsrDialog()
 
 
-/obj/machinery/newscaster/attackby(obj/item/I as obj, mob/user as mob)
+/obj/structure/machinery/newscaster/attackby(obj/item/I as obj, mob/user as mob)
 
 	if (src.isbroken)
 		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
@@ -726,10 +726,10 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			to_chat(user, "<FONT COLOR='blue'>This does nothing.</FONT>")
 	src.update_icon()
 
-/obj/machinery/newscaster/attack_ai(mob/user as mob)
+/obj/structure/machinery/newscaster/attack_ai(mob/user as mob)
 	return src.attack_hand(user) //or maybe it'll have some special functions? No idea.
 
-/obj/machinery/newscaster/proc/AttachPhoto(mob/user as mob)
+/obj/structure/machinery/newscaster/proc/AttachPhoto(mob/user as mob)
 	if(photo)
 		if(!issilicon(user))
 			photo.loc = src.loc
@@ -905,7 +905,7 @@ obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
 ////////////////////////////////////helper procs
 
 
-/obj/machinery/newscaster/proc/scan_user(mob/living/user as mob)
+/obj/structure/machinery/newscaster/proc/scan_user(mob/living/user as mob)
 	if(istype(user,/mob/living/carbon/human))                       //User is a human
 		var/mob/living/carbon/human/human_user = user
 		if(human_user.wear_id)                                      //Newscaster scans you
@@ -927,7 +927,7 @@ obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
 		src.scanned_user = "[ai_user.name] ([ai_user.job])"
 
 
-/obj/machinery/newscaster/proc/print_paper()
+/obj/structure/machinery/newscaster/proc/print_paper()
 	feedback_inc("newscaster_newspapers_printed",1)
 	var/obj/item/newspaper/NEWSPAPER = new /obj/item/newspaper
 	for(var/datum/feed_channel/FC in news_network.network_channels)
@@ -939,10 +939,10 @@ obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
 	return
 
 //Removed for now so these aren't even checked every tick. Left this here in-case Agouri needs it later.
-///obj/machinery/newscaster/process()       //Was thinking of doing the icon update through process, but multiple iterations per second does not
+///obj/structure/machinery/newscaster/process()       //Was thinking of doing the icon update through process, but multiple iterations per second does not
 //	return                                  //bode well with a newscaster network of 10+ machines. Let's just return it, as it's added in the machines list.
 
-/obj/machinery/newscaster/proc/newsAlert(channel)   //This isn't Agouri's work, for it is ugly and vile.
+/obj/structure/machinery/newscaster/proc/newsAlert(channel)   //This isn't Agouri's work, for it is ugly and vile.
 	var/turf/T = get_turf(src)                      //Who the fuck uses spawn(600) anyway, jesus christ
 	if(channel)
 		for(var/mob/O in hearers(world.view-1, T))

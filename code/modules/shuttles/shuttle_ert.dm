@@ -23,7 +23,7 @@
 	if(!A || !istype(A)) //somehow
 		return
 
-	for(var/obj/machinery/door/D in A)
+	for(var/obj/structure/machinery/door/D in A)
 		if(!D.density)
 			spawn(0)
 				D.close()
@@ -35,7 +35,7 @@
 		else if(istype(area_station, /area/shuttle/distress/arrive_s_hangar))
 			umbili_id = "s_umbilical"
 		else return
-		for(var/obj/machinery/door/poddoor/PD in machines)
+		for(var/obj/structure/machinery/door/poddoor/PD in machines)
 			if(!PD.density && PD.id == umbili_id)
 				spawn(0)
 					PD.close()
@@ -46,12 +46,12 @@
 	if(!A || !istype(A)) //somehow
 		return
 
-	for(var/obj/machinery/door/unpowered/D in A)
+	for(var/obj/structure/machinery/door/unpowered/D in A)
 		if(D.density)
 			spawn(0)
 				D.open()
 
-	for(var/obj/machinery/door/airlock/D in A)
+	for(var/obj/structure/machinery/door/airlock/D in A)
 		if(D.density)
 			spawn(0)
 				D.open()
@@ -65,13 +65,13 @@
 			umbili_id = "s_umbilical"
 		else return
 		//open the almayer's north of south umbilical shutters and the shuttle's north or south shutters
-		for(var/obj/machinery/door/poddoor/PD in machines)
+		for(var/obj/structure/machinery/door/poddoor/PD in machines)
 			if(PD.density && PD.id == umbili_id)
 				spawn(0)
 					PD.open()
 
 	else
-		for(var/obj/machinery/door/poddoor/shutters/P in A)
+		for(var/obj/structure/machinery/door/poddoor/shutters/P in A)
 			if(P.density)
 				spawn(0)
 					P.open()
@@ -84,19 +84,19 @@
 		else if(istype(area_station, /area/shuttle/distress/arrive_3))
 			shutter_id = "aftert"
 		if(shutter_id)
-			for(var/obj/machinery/door/poddoor/shutters/T in machines)
+			for(var/obj/structure/machinery/door/poddoor/shutters/T in machines)
 				if(T.density && shutter_id == T.id)
 					spawn(0)
 						T.open()
 
 
 
-/obj/machinery/computer/shuttle_control/ert
+/obj/structure/machinery/computer/shuttle_control/ert
 	icon_state = "syndishuttle"
 	shuttle_tag = "Distress"
 	unacidable = TRUE
 
-/obj/machinery/computer/shuttle_control/ert/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/computer/shuttle_control/ert/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 	var/data[0]
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(shuttle))
@@ -148,7 +148,7 @@
 		ui.set_auto_update(1)
 
 
-/obj/machinery/computer/shuttle_control/ert/Topic(href, href_list)
+/obj/structure/machinery/computer/shuttle_control/ert/Topic(href, href_list)
 	if(..())
 		return
 

@@ -7,7 +7,7 @@ it creates. All the menus and other manipulation commands are in the R&D console
 Note: Must be placed west/left of and R&D console to function.
 
 */
-/obj/machinery/r_n_d/protolathe
+/obj/structure/machinery/r_n_d/protolathe
 	name = "Protolathe"
 	icon_state = "protolathe"
 	flags_atom = OPENCONTAINER
@@ -25,7 +25,7 @@ Note: Must be placed west/left of and R&D console to function.
 	var/uranium_amount = 0.0
 	var/diamond_amount = 0.0
 
-/obj/machinery/r_n_d/protolathe/New()
+/obj/structure/machinery/r_n_d/protolathe/New()
 	..()
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/machine/protolathe(src)
@@ -37,10 +37,10 @@ Note: Must be placed west/left of and R&D console to function.
 	component_parts += new /obj/item/reagent_container/glass/beaker(src)
 	RefreshParts()
 
-/obj/machinery/r_n_d/protolathe/proc/TotalMaterials() //returns the total of all the stored materials. Makes code neater.
+/obj/structure/machinery/r_n_d/protolathe/proc/TotalMaterials() //returns the total of all the stored materials. Makes code neater.
 	return m_amount + g_amount + gold_amount + silver_amount + phoron_amount + uranium_amount + diamond_amount
 
-/obj/machinery/r_n_d/protolathe/RefreshParts()
+/obj/structure/machinery/r_n_d/protolathe/RefreshParts()
 	var/T = 0
 	for(var/obj/item/reagent_container/glass/G in component_parts)
 		T += G.reagents.maximum_volume
@@ -52,7 +52,7 @@ Note: Must be placed west/left of and R&D console to function.
 		T += M.rating
 	max_material_storage = T * 75000
 
-/obj/machinery/r_n_d/protolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/r_n_d/protolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if (shocked)
 		shock(user,50)
 	if (O.is_open_container())
@@ -73,7 +73,7 @@ Note: Must be placed west/left of and R&D console to function.
 	if (opened)
 		if(istype(O, /obj/item/tool/crowbar))
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-			var/obj/machinery/constructable_frame/M = new /obj/machinery/constructable_frame(src.loc)
+			var/obj/structure/machinery/constructable_frame/M = new /obj/structure/machinery/constructable_frame(src.loc)
 			M.state = CONSTRUCTION_STATE_PROGRESS
 			M.update_icon()
 			for(var/obj/I in component_parts)
@@ -174,5 +174,5 @@ Note: Must be placed west/left of and R&D console to function.
 	return
 
 //This is to stop these machines being hackable via clicking.
-/obj/machinery/r_n_d/protolathe/attack_hand(mob/user as mob)
+/obj/structure/machinery/r_n_d/protolathe/attack_hand(mob/user as mob)
 	return

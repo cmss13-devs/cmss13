@@ -33,7 +33,7 @@
 /turf/closed/wall/mineral/sandstone,
 /area/lv624/ground/sand6)
 "aj" = (
-/obj/machinery/door/airlock/sandstone{
+/obj/structure/machinery/door/airlock/sandstone{
 	desc = "This strange temple is covered in runes. It looks extremely ancient.";
 	icon_state = "door_locked";
 	locked = 1;
@@ -67,7 +67,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand6)
 "aq" = (
-/obj/machinery/door/airlock/sandstone,
+/obj/structure/machinery/door/airlock/sandstone,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -302,7 +302,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand3)
 "aY" = (
-/obj/machinery/door/airlock/sandstone,
+/obj/structure/machinery/door/airlock/sandstone,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"

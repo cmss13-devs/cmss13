@@ -2,7 +2,7 @@
 
 
 //PACMAN variant that can run on the small plasma tanks.
-/obj/machinery/power/port_gen/pacman2
+/obj/structure/machinery/power/port_gen/pacman2
 	name = "Pacman II"
 	desc = "P.A.C.M.A.N. type II portable generator. Uses liquid phoron as a fuel source."
 	power_gen = 4500
@@ -97,7 +97,7 @@
 				else
 					to_chat(user, SPAN_NOTICE(" You close the access panel."))
 			else if(istype(O, /obj/item/weapon/crowbar) && !open)
-				var/obj/machinery/constructable_frame/machine_frame/new_frame = new /obj/machinery/constructable_frame/machine_frame(src.loc)
+				var/obj/structure/machinery/constructable_frame/machine_frame/new_frame = new /obj/structure/machinery/constructable_frame/machine_frame(src.loc)
 				for(var/obj/item/I in component_parts)
 					if(I.reliability < 100)
 						I.crit_fail = 1

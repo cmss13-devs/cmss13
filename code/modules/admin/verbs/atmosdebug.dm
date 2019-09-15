@@ -1,19 +1,19 @@
 /proc/isscrubberpipe(atom/A)
-	if(istype(A, /obj/machinery/atmospherics/pipe/simple/visible/scrubbers)) return 1
-	if(istype(A, /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers)) return 1
-	if(istype(A, /obj/machinery/atmospherics/pipe/manifold/visible/scrubbers)) return 1
-	if(istype(A, /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers)) return 1
-	if(istype(A, /obj/machinery/atmospherics/pipe/manifold4w/visible/scrubbers)) return 1
-	if(istype(A, /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers)) return 1
+	if(istype(A, /obj/structure/machinery/atmospherics/pipe/simple/visible/scrubbers)) return 1
+	if(istype(A, /obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers)) return 1
+	if(istype(A, /obj/structure/machinery/atmospherics/pipe/manifold/visible/scrubbers)) return 1
+	if(istype(A, /obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers)) return 1
+	if(istype(A, /obj/structure/machinery/atmospherics/pipe/manifold4w/visible/scrubbers)) return 1
+	if(istype(A, /obj/structure/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers)) return 1
 	return 0
 
 /proc/issupplypipe(atom/A)
-	if(istype(A, /obj/machinery/atmospherics/pipe/simple/visible/supply)) return 1
-	if(istype(A, /obj/machinery/atmospherics/pipe/simple/hidden/supply)) return 1
-	if(istype(A, /obj/machinery/atmospherics/pipe/manifold/visible/supply)) return 1
-	if(istype(A, /obj/machinery/atmospherics/pipe/manifold/hidden/supply)) return 1
-	if(istype(A, /obj/machinery/atmospherics/pipe/manifold4w/visible/supply)) return 1
-	if(istype(A, /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply)) return 1
+	if(istype(A, /obj/structure/machinery/atmospherics/pipe/simple/visible/supply)) return 1
+	if(istype(A, /obj/structure/machinery/atmospherics/pipe/simple/hidden/supply)) return 1
+	if(istype(A, /obj/structure/machinery/atmospherics/pipe/manifold/visible/supply)) return 1
+	if(istype(A, /obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply)) return 1
+	if(istype(A, /obj/structure/machinery/atmospherics/pipe/manifold4w/visible/supply)) return 1
+	if(istype(A, /obj/structure/machinery/atmospherics/pipe/manifold4w/hidden/supply)) return 1
 	return 0
 
 
@@ -31,17 +31,17 @@
 
 	to_chat(usr, "Checking for disconnected pipes...")
 	//all plumbing - yes, some things might get stated twice, doesn't matter.
-	for (var/obj/machinery/atmospherics/plumbing in machines)
+	for (var/obj/structure/machinery/atmospherics/plumbing in machines)
 		if (plumbing.nodealert)
 			to_chat(usr, "Unconnected [plumbing.name] located at [plumbing.x],[plumbing.y],[plumbing.z] ([get_area(plumbing.loc)])")
 
 	//Manifolds
-	for (var/obj/machinery/atmospherics/pipe/manifold/pipe in machines)
+	for (var/obj/structure/machinery/atmospherics/pipe/manifold/pipe in machines)
 		if (!pipe.node1 || !pipe.node2 || !pipe.node3)
 			to_chat(usr, "Unconnected [pipe.name] located at [pipe.x],[pipe.y],[pipe.z] ([get_area(pipe.loc)])")
 
 	//Pipes
-	for (var/obj/machinery/atmospherics/pipe/simple/pipe in machines)
+	for (var/obj/structure/machinery/atmospherics/pipe/simple/pipe in machines)
 		if (!pipe.node1 || !pipe.node2)
 			to_chat(usr, "Unconnected [pipe.name] located at [pipe.x],[pipe.y],[pipe.z] ([get_area(pipe.loc)])")
 
@@ -52,7 +52,7 @@
 				var/check = 0
 				var/scrubber = 0
 				var/supply = 0
-				for(var/obj/machinery/atmospherics/pipe in T)
+				for(var/obj/structure/machinery/atmospherics/pipe in T)
 					if(dir & pipe.initialize_directions)
 						if(isscrubberpipe(pipe))
 							scrubber++

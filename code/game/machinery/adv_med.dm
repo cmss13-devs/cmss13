@@ -1,7 +1,7 @@
 // Pretty much everything here is stolen from the dna scanner FYI
 
 
-/obj/machinery/bodyscanner
+/obj/structure/machinery/bodyscanner
 	var/mob/living/carbon/occupant
 	var/locked
 	name = "Body Scanner"
@@ -14,15 +14,15 @@
 	idle_power_usage = 60
 	active_power_usage = 10000	//10 kW. It's a big all-body scanner.
 
-/*/obj/machinery/bodyscanner/allow_drop()
+/*/obj/structure/machinery/bodyscanner/allow_drop()
 	return 0*/
 
-/obj/machinery/bodyscanner/relaymove(mob/user)
+/obj/structure/machinery/bodyscanner/relaymove(mob/user)
 	if(user.is_mob_incapacitated(TRUE)) return
 	go_out()
 
 
-/obj/machinery/bodyscanner/verb/eject()
+/obj/structure/machinery/bodyscanner/verb/eject()
 	set src in oview(1)
 	set category = "Object"
 	set name = "Eject Body Scanner"
@@ -33,7 +33,7 @@
 	add_fingerprint(usr)
 	return
 
-/obj/machinery/bodyscanner/verb/move_inside()
+/obj/structure/machinery/bodyscanner/verb/move_inside()
 	set src in oview(1)
 	set category = "Object"
 	set name = "Enter Body Scanner"
@@ -57,7 +57,7 @@
 	src.add_fingerprint(usr)
 	return
 
-/obj/machinery/bodyscanner/proc/go_out()
+/obj/structure/machinery/bodyscanner/proc/go_out()
 	if ((!( src.occupant ) || src.locked))
 		return
 	for(var/obj/O in src)
@@ -69,10 +69,10 @@
 	src.icon_state = "body_scanner_0"
 	return
 
-/obj/machinery/bodyscanner/attack_hand(mob/living/user)
+/obj/structure/machinery/bodyscanner/attack_hand(mob/living/user)
 	go_out()
 
-/obj/machinery/bodyscanner/attackby(obj/item/I, mob/living/user)
+/obj/structure/machinery/bodyscanner/attackby(obj/item/I, mob/living/user)
 	var/mob/M
 	if (istype(I, /obj/item/grab))
 		if (occupant)
@@ -107,7 +107,7 @@
 	//G = null
 
 
-/obj/machinery/bodyscanner/ex_act(var/severity, var/source)
+/obj/structure/machinery/bodyscanner/ex_act(var/severity, var/source)
 	for(var/atom/movable/A as mob|obj in src)
 		A.loc = src.loc
 		A.ex_act(severity, , source)
@@ -126,7 +126,7 @@
 		else
 	return
 
-/obj/machinery/body_scanconsole/ex_act(severity)
+/obj/structure/machinery/body_scanconsole/ex_act(severity)
 
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
@@ -139,7 +139,7 @@
 		else
 	return
 
-/obj/machinery/body_scanconsole/power_change()
+/obj/structure/machinery/body_scanconsole/power_change()
 	..()
 	if(stat & BROKEN)
 		icon_state = "body_scannerconsole-p"
@@ -150,8 +150,8 @@
 		else
 			icon_state = initial(icon_state)
 
-/obj/machinery/body_scanconsole
-	var/obj/machinery/bodyscanner/connected
+/obj/structure/machinery/body_scanconsole
+	var/obj/structure/machinery/bodyscanner/connected
 	var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/neurostim)
 	var/delete
 	var/temphtml
@@ -162,19 +162,19 @@
 	anchored = 1
 	dir = 2
 
-/obj/machinery/body_scanconsole/New()
+/obj/structure/machinery/body_scanconsole/New()
 	..()
 	spawn(7)
 		if(dir == EAST || dir == SOUTH)
-			connected = locate(/obj/machinery/bodyscanner,get_step(src, WEST))
+			connected = locate(/obj/structure/machinery/bodyscanner,get_step(src, WEST))
 		if(dir == WEST || dir == NORTH)
-			connected = locate(/obj/machinery/bodyscanner,get_step(src, EAST))
+			connected = locate(/obj/structure/machinery/bodyscanner,get_step(src, EAST))
 		if(!connected)
 			qdel(src)
 
 /*
 
-/obj/machinery/body_scanconsole/process() //not really used right now
+/obj/structure/machinery/body_scanconsole/process() //not really used right now
 	if(stat & (NOPOWER|BROKEN))
 		return
 	//use_power(250) // power stuff
@@ -195,10 +195,10 @@
 
 */
 
-/obj/machinery/body_scanconsole/attack_ai(user as mob)
+/obj/structure/machinery/body_scanconsole/attack_ai(user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/body_scanconsole/attack_hand(var/mob/living/user)
+/obj/structure/machinery/body_scanconsole/attack_hand(var/mob/living/user)
 	if(..())
 		return
 	if(stat & (NOPOWER|BROKEN))
@@ -240,7 +240,7 @@
 	return
 
 
-/obj/machinery/body_scanconsole/Topic(href, href_list)
+/obj/structure/machinery/body_scanconsole/Topic(href, href_list)
 	if (..())
 		return
 
@@ -260,7 +260,7 @@
 		R.info = format_occupant_data(src.connected.get_occupant_data())
 
 
-/obj/machinery/bodyscanner/proc/get_occupant_data()
+/obj/structure/machinery/bodyscanner/proc/get_occupant_data()
 	if (!occupant || !istype(occupant, /mob/living/carbon/human))
 		return
 	var/mob/living/carbon/human/H = occupant
@@ -293,7 +293,7 @@
 	return occupant_data
 
 
-/obj/machinery/body_scanconsole/proc/format_occupant_data(var/list/occ)
+/obj/structure/machinery/body_scanconsole/proc/format_occupant_data(var/list/occ)
 	var/dat = "<font color='blue'><b>Scan performed at [occ["stationtime"]]</b></font><br>"
 	dat += "<font color='blue'><b>Occupant Statistics:</b></font><br>"
 	var/aux

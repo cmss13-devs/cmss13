@@ -1,6 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
-/obj/machinery/computer/prisoner
+/obj/structure/machinery/computer/prisoner
 	name = "Prisoner Management"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "explosive"
@@ -14,11 +14,11 @@
 	var/screen = 0 // 0 - No Access Denied, 1 - Access allowed
 
 
-/obj/machinery/computer/prisoner/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/prisoner/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
 
-/obj/machinery/computer/prisoner/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/prisoner/attack_hand(var/mob/user as mob)
 	if(..())
 		return
 	user.set_interaction(src)
@@ -60,13 +60,13 @@
 	return
 
 
-/obj/machinery/computer/prisoner/process()
+/obj/structure/machinery/computer/prisoner/process()
 	if(!..())
 		src.updateDialog()
 	return
 
 
-/obj/machinery/computer/prisoner/Topic(href, href_list)
+/obj/structure/machinery/computer/prisoner/Topic(href, href_list)
 	if(..())
 		return
 	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (issilicon(usr)))

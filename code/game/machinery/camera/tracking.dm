@@ -16,14 +16,14 @@
 		return
 
 	var/list/L = list()
-	for (var/obj/machinery/camera/C in cameranet.cameras)
+	for (var/obj/structure/machinery/camera/C in cameranet.cameras)
 		L.Add(C)
 
 	camera_sort(L)
 
 	var/list/T = list()
 	T["Cancel"] = "Cancel"
-	for (var/obj/machinery/camera/C in L)
+	for (var/obj/structure/machinery/camera/C in L)
 		T[text("[][]", C.c_tag, (C.can_use() ? null : " (Deactivated)"))] = C
 
 	track = new()
@@ -42,7 +42,7 @@
 	if (!camera || camera == "Cancel")
 		return 0
 
-	var/obj/machinery/camera/C = track.cameras[camera]
+	var/obj/structure/machinery/camera/C = track.cameras[camera]
 	src.eyeobj.setLoc(C)
 
 	return
@@ -218,7 +218,7 @@
 		return 0
 	return 1
 
-/obj/machinery/camera/attack_ai(var/mob/living/silicon/ai/user as mob)
+/obj/structure/machinery/camera/attack_ai(var/mob/living/silicon/ai/user as mob)
 	if (!istype(user))
 		return
 	if (!src.can_use())
@@ -230,8 +230,8 @@
 	ai_camera_list()
 
 /proc/camera_sort(list/L) // TODO: replace this bubblesort with a mergesort - spookydonut
-	var/obj/machinery/camera/a
-	var/obj/machinery/camera/b
+	var/obj/structure/machinery/camera/a
+	var/obj/structure/machinery/camera/b
 
 	for (var/i = L.len, i > 0, i--)
 		for (var/j = 1 to i - 1)

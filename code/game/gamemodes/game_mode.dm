@@ -33,7 +33,7 @@ var/global/list/datum/entity/player_entity/player_entities = list()
 	var/xeno_evo_speed = 0 // if not 0 - gives xeno an evo boost/nerf
 	var/is_in_endgame = FALSE //Set it to TRUE when we trigger DELTA alert or dropship crashes
 	var/list/datum/mind/traitors = list()
-	var/obj/machinery/computer/shuttle_control/active_lz = null
+	var/obj/structure/machinery/computer/shuttle_control/active_lz = null
 
 	var/datum/entity/round_stats/round_stats = null
 

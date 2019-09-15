@@ -8,5 +8,5 @@
 			to_chat(A, "<br>")
 			to_chat(A, SPAN_WARNING("<b>Ionic radiation flare detected from nearby star. Imminent telecommunication failu*3mga;b4;'1v�-BZZZT<b>"))
 			to_chat(A, "<br>")
-	for(var/obj/machinery/telecomms/T in telecomms_list)
+	for(var/obj/structure/machinery/telecomms/T in telecomms_list)
 		T.emp_act(1)

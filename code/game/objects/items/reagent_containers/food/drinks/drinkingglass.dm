@@ -610,7 +610,7 @@
 			center_of_mass = list("x"=16, "y"=10)
 			return
 
-// for /obj/machinery/vending/sovietsoda
+// for /obj/structure/machinery/vending/sovietsoda
 /obj/item/reagent_container/food/drinks/drinkingglass/soda
 	name = "soda glass"
 	desc = "A drinking glass for soda."

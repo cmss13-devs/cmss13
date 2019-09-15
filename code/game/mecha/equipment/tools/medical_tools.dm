@@ -566,7 +566,7 @@
 				if(!(D.CanPass(S, loc)))
 					occupant_message("Unable to load syringe.")
 					return 0
-			for(var/obj/machinery/door/D in S.loc)//Checks for doors
+			for(var/obj/structure/machinery/door/D in S.loc)//Checks for doors
 				if(!(D.CanPass(S, loc)))
 					occupant_message("Unable to load syringe.")
 					return 0

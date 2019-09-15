@@ -6,12 +6,12 @@
 /turf/closed/wall/prison,
 /area/prison/hanger/main)
 "ac" = (
-/obj/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	req_one_access = list()
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "ad" = (
@@ -36,7 +36,7 @@
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "ah" = (
-/obj/machinery/door/poddoor/four_tile_ver{
+/obj/structure/machinery/door/poddoor/four_tile_ver{
 	name = "Civilian Residences Hangar Door";
 	unacidable = 1
 	},
@@ -47,7 +47,7 @@
 	tag = "icon-S";
 	icon_state = "S"
 	},
-/obj/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/ds1/delaytwo{
 	tag = "icon-landingstripe";
 	icon_state = "landingstripe"
 	},
@@ -80,7 +80,7 @@
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "al" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/prison,
@@ -101,7 +101,7 @@
 	tag = "icon-S";
 	icon_state = "S"
 	},
-/obj/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/ds1/delayone{
 	tag = "icon-landingstripe";
 	icon_state = "landingstripe"
 	},
@@ -112,7 +112,7 @@
 	tag = "icon-S";
 	icon_state = "S"
 	},
-/obj/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight/ds1{
 	tag = "icon-landingstripe";
 	icon_state = "landingstripe"
 	},
@@ -123,7 +123,7 @@
 	tag = "icon-S";
 	icon_state = "S"
 	},
-/obj/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/ds1/delaythree{
 	tag = "icon-landingstripe";
 	icon_state = "landingstripe"
 	},
@@ -149,7 +149,7 @@
 	icon_state = "E";
 	tag = "icon-E"
 	},
-/obj/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/ds1/delaythree{
 	tag = "icon-landingstripe (EAST)";
 	icon_state = "landingstripe";
 	dir = 4
@@ -157,7 +157,7 @@
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "at" = (
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 2;
 	name = "Civilian Residences Hangar"
 	},
@@ -175,7 +175,7 @@
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "av" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "aw" = (
@@ -190,7 +190,7 @@
 	tag = "icon-W";
 	icon_state = "W"
 	},
-/obj/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/ds1/delaythree{
 	tag = "icon-landingstripe (WEST)";
 	icon_state = "landingstripe";
 	dir = 8
@@ -198,7 +198,7 @@
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "ay" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
@@ -209,7 +209,7 @@
 	icon_state = "E";
 	tag = "icon-E"
 	},
-/obj/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight/ds1{
 	tag = "icon-landingstripe (EAST)";
 	icon_state = "landingstripe";
 	dir = 4
@@ -224,7 +224,7 @@
 	tag = "icon-W";
 	icon_state = "W"
 	},
-/obj/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/ds1/delaytwo{
 	tag = "icon-landingstripe (WEST)";
 	icon_state = "landingstripe";
 	dir = 8
@@ -232,18 +232,18 @@
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "aC" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "aD" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 8
 	},
 /turf/open/floor/prison,
@@ -253,7 +253,7 @@
 	icon_state = "E";
 	tag = "icon-E"
 	},
-/obj/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/ds1/delayone{
 	tag = "icon-landingstripe (EAST)";
 	icon_state = "landingstripe";
 	dir = 4
@@ -265,7 +265,7 @@
 	tag = "icon-W";
 	icon_state = "W"
 	},
-/obj/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/ds1/delayone{
 	tag = "icon-landingstripe (WEST)";
 	icon_state = "landingstripe";
 	dir = 8
@@ -273,17 +273,17 @@
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "aG" = (
-/obj/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	req_one_access = list()
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "aH" = (
 /obj/structure/table/reinforced,
-/obj/machinery/computer/shuttle_control/dropship1{
+/obj/structure/machinery/computer/shuttle_control/dropship1{
 	onboard = 0;
 	use_power = 0
 	},
@@ -298,7 +298,7 @@
 	icon_state = "E";
 	tag = "icon-E"
 	},
-/obj/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/ds1/delaytwo{
 	tag = "icon-landingstripe (EAST)";
 	icon_state = "landingstripe";
 	dir = 4
@@ -310,7 +310,7 @@
 	tag = "icon-W";
 	icon_state = "W"
 	},
-/obj/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight/ds1{
 	tag = "icon-landingstripe (WEST)";
 	icon_state = "landingstripe";
 	dir = 8
@@ -322,7 +322,7 @@
 	icon_state = "E";
 	tag = "icon-E"
 	},
-/obj/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/ds1/delaythree{
 	tag = "icon-landingstripe (EAST)";
 	icon_state = "landingstripe";
 	dir = 4
@@ -337,7 +337,7 @@
 	tag = "icon-W";
 	icon_state = "W"
 	},
-/obj/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/ds1/delaythree{
 	tag = "icon-landingstripe (WEST)";
 	icon_state = "landingstripe";
 	dir = 8
@@ -380,7 +380,7 @@
 	tag = "icon-N";
 	icon_state = "N"
 	},
-/obj/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight/ds1{
 	tag = "icon-landingstripe (NORTH)";
 	icon_state = "landingstripe";
 	dir = 1
@@ -392,7 +392,7 @@
 	tag = "icon-N";
 	icon_state = "N"
 	},
-/obj/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/ds1/delayone{
 	tag = "icon-landingstripe (NORTH)";
 	icon_state = "landingstripe";
 	dir = 1
@@ -404,7 +404,7 @@
 	tag = "icon-N";
 	icon_state = "N"
 	},
-/obj/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/ds1/delaytwo{
 	tag = "icon-landingstripe (NORTH)";
 	icon_state = "landingstripe";
 	dir = 1
@@ -416,7 +416,7 @@
 	tag = "icon-N";
 	icon_state = "N"
 	},
-/obj/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/ds1/delaythree{
 	tag = "icon-landingstripe (NORTH)";
 	icon_state = "landingstripe";
 	dir = 1

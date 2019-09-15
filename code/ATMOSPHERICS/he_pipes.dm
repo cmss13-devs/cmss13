@@ -1,5 +1,5 @@
 
-obj/machinery/atmospherics/pipe/simple/heat_exchanging
+obj/structure/machinery/atmospherics/pipe/simple/heat_exchanging
 	icon = 'icons/obj/pipes/heat.dmi'
 	icon_state = "intact"
 	pipe_icon = "hepipe"
@@ -10,12 +10,12 @@ obj/machinery/atmospherics/pipe/simple/heat_exchanging
 	minimum_temperature_difference = 20
 
 // BubbleWrap
-obj/machinery/atmospherics/pipe/simple/heat_exchanging/New()
+obj/structure/machinery/atmospherics/pipe/simple/heat_exchanging/New()
 	..()
 	initialize_directions_he = initialize_directions	// The auto-detection from /pipe is good enough for a simple HE pipe
 // BubbleWrap END
 
-obj/machinery/atmospherics/pipe/simple/heat_exchanging/initialize()
+obj/structure/machinery/atmospherics/pipe/simple/heat_exchanging/initialize()
 	normalize_dir()
 	var/node1_dir
 	var/node2_dir
@@ -27,11 +27,11 @@ obj/machinery/atmospherics/pipe/simple/heat_exchanging/initialize()
 			else if (!node2_dir)
 				node2_dir = direction
 
-	for(var/obj/machinery/atmospherics/pipe/simple/heat_exchanging/target in get_step(src,node1_dir))
+	for(var/obj/structure/machinery/atmospherics/pipe/simple/heat_exchanging/target in get_step(src,node1_dir))
 		if(target.initialize_directions_he & get_dir(target,src))
 			node1 = target
 			break
-	for(var/obj/machinery/atmospherics/pipe/simple/heat_exchanging/target in get_step(src,node2_dir))
+	for(var/obj/structure/machinery/atmospherics/pipe/simple/heat_exchanging/target in get_step(src,node2_dir))
 		if(target.initialize_directions_he & get_dir(target,src))
 			node2 = target
 			break
@@ -43,11 +43,11 @@ obj/machinery/atmospherics/pipe/simple/heat_exchanging/initialize()
 	return
 
 
-obj/machinery/atmospherics/pipe/simple/heat_exchanging/process()
+obj/structure/machinery/atmospherics/pipe/simple/heat_exchanging/process()
 	if(!parent)
 		..()
 
-obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction
+obj/structure/machinery/atmospherics/pipe/simple/heat_exchanging/junction
 	icon = 'icons/obj/pipes/junction.dmi'
 	icon_state = "intact"
 	pipe_icon = "hejunction"
@@ -55,7 +55,7 @@ obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction
 	minimum_temperature_difference = 300
 
 // BubbleWrap
-obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction/New()
+obj/structure/machinery/atmospherics/pipe/simple/heat_exchanging/junction/New()
 	.. ()
 	switch ( dir )
 		if ( SOUTH )
@@ -72,12 +72,12 @@ obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction/New()
 			initialize_directions_he = WEST
 // BubbleWrap END
 
-obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction/initialize()
-	for(var/obj/machinery/atmospherics/target in get_step(src,initialize_directions))
+obj/structure/machinery/atmospherics/pipe/simple/heat_exchanging/junction/initialize()
+	for(var/obj/structure/machinery/atmospherics/target in get_step(src,initialize_directions))
 		if(target.initialize_directions & get_dir(target,src))
 			node1 = target
 			break
-	for(var/obj/machinery/atmospherics/pipe/simple/heat_exchanging/target in get_step(src,initialize_directions_he))
+	for(var/obj/structure/machinery/atmospherics/pipe/simple/heat_exchanging/target in get_step(src,initialize_directions_he))
 		if(target.initialize_directions_he & get_dir(target,src))
 			node2 = target
 			break

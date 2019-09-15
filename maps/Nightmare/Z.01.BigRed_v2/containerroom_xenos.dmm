@@ -9,7 +9,7 @@
 	},
 /area/bigredv2/outside/nw)
 "d" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "warnplate"
@@ -20,7 +20,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "f" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	tag = "icon-tube1 (NORTH)";
 	icon_state = "tube1";
 	dir = 1
@@ -37,7 +37,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "i" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	tag = "icon-tube1 (NORTH)";
 	icon_state = "tube1";
 	dir = 1
@@ -48,7 +48,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "k" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "l" = (
@@ -66,7 +66,7 @@
 	},
 /area/bigredv2/outside/nw)
 "p" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -76,7 +76,7 @@
 	},
 /area/bigredv2/outside/nw)
 "q" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -86,18 +86,18 @@
 /obj/effect/landmark{
 	name = "hunter_primary"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "s" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "u" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
@@ -130,7 +130,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "z" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
@@ -140,7 +140,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "B" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 

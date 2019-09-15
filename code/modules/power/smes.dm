@@ -4,7 +4,7 @@
 #define SMESMAXCHARGELEVEL 250000
 #define SMESMAXOUTPUT 250000
 
-/obj/machinery/power/smes
+/obj/structure/machinery/power/smes
 	name = "power storage unit"
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit."
 	icon_state = "smes"
@@ -23,7 +23,7 @@
 	var/chargelevel = 0		//Amount of power it tries to charge from powernet
 	var/online = 1			//1 if it's outputting power, 0 if not.
 	var/name_tag = null
-	var/obj/machinery/power/terminal/terminal = null
+	var/obj/structure/machinery/power/terminal/terminal = null
 	//Holders for powerout event.
 	var/last_output = 0
 	var/last_charge = 0
@@ -34,7 +34,7 @@
 	var/output_level_max = 200000
 	var/should_be_mapped = 0 // If this is set to 0 it will send out warning on New()
 
-/obj/machinery/power/smes/New()
+/obj/structure/machinery/power/smes/New()
 	..()
 	spawn(5)
 		if(!powernet)
@@ -43,7 +43,7 @@
 		dir_loop:
 			for(var/d in cardinal)
 				var/turf/T = get_step(src, d)
-				for(var/obj/machinery/power/terminal/term in T)
+				for(var/obj/structure/machinery/power/terminal/term in T)
 					if(term && term.dir == turn(d, 180))
 						terminal = term
 						break dir_loop
@@ -61,7 +61,7 @@
 
 	return
 
-/obj/machinery/power/smes/proc/updateicon()
+/obj/structure/machinery/power/smes/proc/updateicon()
 	overlays.Cut()
 	if(stat & BROKEN)	return
 
@@ -81,13 +81,13 @@
 	return
 
 
-/obj/machinery/power/smes/proc/chargedisplay()
+/obj/structure/machinery/power/smes/proc/chargedisplay()
 	return round(5.5*charge/(capacity ? capacity : 5e6))
 
 #define SMESRATE 0.05			// rate of internal charge to external power
 
 
-/obj/machinery/power/smes/process()
+/obj/structure/machinery/power/smes/process()
 	if(stat & BROKEN)	return
 
 	//store machine state to see if we need to update the icon overlays
@@ -126,7 +126,7 @@
 
 // called after all power processes are finished
 // restores charge level to smes if there was excess this ptick
-/obj/machinery/power/smes/proc/restore()
+/obj/structure/machinery/power/smes/proc/restore()
 	if(stat & BROKEN)
 		return
 
@@ -154,7 +154,7 @@
 	return
 
 //Will return 1 on failure
-/obj/machinery/power/smes/proc/make_terminal(const/mob/user)
+/obj/structure/machinery/power/smes/proc/make_terminal(const/mob/user)
 	if (user.loc == loc)
 		to_chat(user, SPAN_WARNING("You must not be on the same tile as the [src]."))
 		return 1
@@ -176,32 +176,32 @@
 			return 1
 	to_chat(user, SPAN_NOTICE("You start adding cable to the [src]."))
 	if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		terminal = new /obj/machinery/power/terminal(tempLoc)
+		terminal = new /obj/structure/machinery/power/terminal(tempLoc)
 		terminal.dir = tempDir
 		terminal.master = src
 		return 0
 	return 1
 
 
-/obj/machinery/power/smes/add_load(var/amount)
+/obj/structure/machinery/power/smes/add_load(var/amount)
 	if(terminal && terminal.powernet)
 		return terminal.powernet.draw_power(amount)
 	return 0
 
-/obj/machinery/power/smes/power_change()
+/obj/structure/machinery/power/smes/power_change()
 	return
 
-/obj/machinery/power/smes/attack_ai(mob/user)
+/obj/structure/machinery/power/smes/attack_ai(mob/user)
 	add_fingerprint(user)
 	ui_interact(user)
 
 
-/obj/machinery/power/smes/attack_hand(mob/user)
+/obj/structure/machinery/power/smes/attack_hand(mob/user)
 	add_fingerprint(user)
 	ui_interact(user)
 
 
-/obj/machinery/power/smes/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/power/smes/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(istype(W, /obj/item/tool/screwdriver))
 		if(!open_hatch)
 			open_hatch = 1
@@ -261,7 +261,7 @@
 		return 0
 	return 1
 
-/obj/machinery/power/smes/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/structure/machinery/power/smes/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 
 	if(stat & BROKEN)
 		return
@@ -293,7 +293,7 @@
 		ui.set_auto_update(1)
 
 
-/obj/machinery/power/smes/Topic(href, href_list)
+/obj/structure/machinery/power/smes/Topic(href, href_list)
 	..()
 
 	if (usr.stat || usr.is_mob_restrained() )
@@ -344,7 +344,7 @@
 	return 1
 
 
-/obj/machinery/power/smes/proc/ion_act()
+/obj/structure/machinery/power/smes/proc/ion_act()
 	if(src.z == 1)
 		if(prob(1)) //explosion
 			for(var/mob/M in viewers(src))
@@ -372,7 +372,7 @@
 			smoke.start()
 
 
-/obj/machinery/power/smes/emp_act(severity)
+/obj/structure/machinery/power/smes/emp_act(severity)
 	online = 0
 	charging = 0
 	output = 0
@@ -387,14 +387,14 @@
 
 
 
-/obj/machinery/power/smes/magical
+/obj/structure/machinery/power/smes/magical
 	name = "magical power storage unit"
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. Magically produces power."
 	capacity = 9000000
 	output = 250000
 	should_be_mapped = 1
 
-/obj/machinery/power/smes/magical/process()
+/obj/structure/machinery/power/smes/magical/process()
 	charge = 5000000
 	..()
 

@@ -1,4 +1,4 @@
-/obj/machinery/robotic_fabricator
+/obj/structure/machinery/robotic_fabricator
 	name = "Robotic Fabricator"
 	icon = 'icons/obj/structures/machinery/robotics.dmi'
 	icon_state = "fab-idle"
@@ -11,7 +11,7 @@
 	idle_power_usage = 40
 	active_power_usage = 10000
 
-/obj/machinery/robotic_fabricator/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/robotic_fabricator/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if (istype(O, /obj/item/stack/sheet/metal))
 		var/obj/item/stack/sheet/metal/M = O
 		if (src.metal_amount < 150000.0)
@@ -32,7 +32,7 @@
 		else
 			to_chat(user, "The robot part maker is full. Please remove metal from the robot part maker in order to insert more.")
 
-/obj/machinery/robotic_fabricator/attack_hand(user as mob)
+/obj/structure/machinery/robotic_fabricator/attack_hand(user as mob)
 	var/dat
 	if (..())
 		return
@@ -60,7 +60,7 @@ Please wait until completion...</TT><BR>
 	onclose(user, "robot_fabricator")
 	return
 
-/obj/machinery/robotic_fabricator/Topic(href, href_list)
+/obj/structure/machinery/robotic_fabricator/Topic(href, href_list)
 	if (..())
 		return
 

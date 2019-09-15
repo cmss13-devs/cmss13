@@ -1,6 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
-/obj/machinery/computer/telecomms/traffic
+/obj/structure/machinery/computer/telecomms/traffic
 	name = "Telecommunications Traffic Control"
 	icon_state = "comm_traffic"
 
@@ -9,7 +9,7 @@
 	var/mob/editingcode
 	var/mob/lasteditor
 	var/list/viewingcode = list()
-	var/obj/machinery/telecomms/server/SelectedServer
+	var/obj/structure/machinery/telecomms/server/SelectedServer
 
 	var/network = "NULL"		// the network to probe
 	var/temp = ""				// temporary feedback messages
@@ -18,7 +18,7 @@
 	req_access = list(ACCESS_MARINE_BRIDGE)
 
 
-/obj/machinery/computer/telecomms/traffic/proc/update_ide()
+/obj/structure/machinery/computer/telecomms/traffic/proc/update_ide()
 	// loop if there's someone manning the keyboard
 	while(editingcode)
 		if(!editingcode.client)
@@ -65,7 +65,7 @@
 
 
 
-/obj/machinery/computer/telecomms/traffic/attack_hand(mob/user as mob)
+/obj/structure/machinery/computer/telecomms/traffic/attack_hand(mob/user as mob)
 	if(stat & (BROKEN|NOPOWER))
 		return
 	user.set_interaction(src)
@@ -81,7 +81,7 @@
 			dat += "<br>Current Network: <a href='?src=\ref[src];network=1'>[network]</a><br>"
 			if(servers.len)
 				dat += "<br>Detected Telecommunication Servers:<ul>"
-				for(var/obj/machinery/telecomms/T in servers)
+				for(var/obj/structure/machinery/telecomms/T in servers)
 					dat += "<li><a href='?src=\ref[src];viewserver=[T.id]'>\ref[T] [T.name]</a> ([T.id])</li>"
 				dat += "</ul>"
 				dat += "<br><a href='?src=\ref[src];operation=release'>\[Flush Buffer\]</a>"
@@ -112,7 +112,7 @@
 	return
 
 
-/obj/machinery/computer/telecomms/traffic/Topic(href, href_list)
+/obj/structure/machinery/computer/telecomms/traffic/Topic(href, href_list)
 	if(..())
 		return
 
@@ -124,7 +124,7 @@
 
 	if(href_list["viewserver"])
 		screen = 1
-		for(var/obj/machinery/telecomms/T in servers)
+		for(var/obj/structure/machinery/telecomms/T in servers)
 			if(T.id == href_list["viewserver"])
 				SelectedServer = T
 				break
@@ -144,7 +144,7 @@
 					temp = "<font color = #D70B00>- FAILED: CANNOT PROBE WHEN BUFFER FULL -</font color>"
 
 				else
-					for(var/obj/machinery/telecomms/server/T in range(25, src))
+					for(var/obj/structure/machinery/telecomms/server/T in range(25, src))
 						if(T.network == network)
 							servers.Add(T)
 
@@ -204,7 +204,7 @@
 	updateUsrDialog()
 	return
 
-/obj/machinery/computer/telecomms/traffic/attackby(var/obj/item/D as obj, var/mob/user as mob)
+/obj/structure/machinery/computer/telecomms/traffic/attackby(var/obj/item/D as obj, var/mob/user as mob)
 	if(istype(D, /obj/item/tool/screwdriver))
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))

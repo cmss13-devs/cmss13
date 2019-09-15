@@ -1,5 +1,5 @@
 
-/obj/machinery/computer/dropship_weapons
+/obj/structure/machinery/computer/dropship_weapons
 	name = "abstract dropship weapons controls"
 	desc = "A computer to manage equipments and weapons installed on the dropship."
 	density = 1
@@ -20,12 +20,12 @@
 	var/in_firemission_mode = FALSE
 	
 
-/obj/machinery/computer/dropship_weapons/New()
+/obj/structure/machinery/computer/dropship_weapons/New()
 	..()
 	if(firemission_envelope)
 		firemission_envelope.linked_console = src
 
-/obj/machinery/computer/dropship_weapons/attack_hand(mob/user)
+/obj/structure/machinery/computer/dropship_weapons/attack_hand(mob/user)
 	if(..())
 		return
 	if(!allowed(user))
@@ -36,7 +36,7 @@
 	ui_interact(user)
 
 
-/obj/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 	var/data[0]
 	var/datum/shuttle/ferry/marine/FM = shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(FM))
@@ -213,7 +213,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/machinery/computer/dropship_weapons/Topic(href, href_list)
+/obj/structure/machinery/computer/dropship_weapons/Topic(href, href_list)
 	if(..())
 		return
 
@@ -512,7 +512,7 @@
 		
 	ui_interact(usr)
 
-/obj/machinery/computer/dropship_weapons/proc/initiate_firemission()
+/obj/structure/machinery/computer/dropship_weapons/proc/initiate_firemission()
 	set waitfor = 0
 	var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(shuttle))
@@ -535,14 +535,14 @@
 	else
 		update_trace_loc()
 
-/obj/machinery/computer/dropship_weapons/proc/update_offset(new_offset)
+/obj/structure/machinery/computer/dropship_weapons/proc/update_offset(new_offset)
 	var/result = firemission_envelope.change_offset(new_offset)
 	if(result<1)
 		to_chat(usr, "Screen beeps with an error: "+ firemission_envelope.mission_error)
 	else
 		update_trace_loc()
 
-/obj/machinery/computer/dropship_weapons/proc/update_location(new_location)
+/obj/structure/machinery/computer/dropship_weapons/proc/update_location(new_location)
 	var/result = firemission_envelope.change_target_loc(new_location)
 	if(result<1)
 		to_chat(usr, "Screen beeps with an error: "+ firemission_envelope.mission_error)
@@ -550,20 +550,20 @@
 		update_trace_loc()
 
 
-/obj/machinery/computer/dropship_weapons/proc/update_direction(new_direction)
+/obj/structure/machinery/computer/dropship_weapons/proc/update_direction(new_direction)
 	var/result = firemission_envelope.change_direction(new_direction)
 	if(result<1)
 		to_chat(usr, "Screen beeps with an error: " + firemission_envelope.mission_error)
 	else
 		update_trace_loc()
 
-/obj/machinery/computer/dropship_weapons/on_unset_interaction(mob/user)
+/obj/structure/machinery/computer/dropship_weapons/on_unset_interaction(mob/user)
 	..()
 	if(firemission_envelope && firemission_envelope.guidance)
 		firemission_envelope.remove_user_from_tracking(user)
 
 
-/obj/machinery/computer/dropship_weapons/proc/update_trace_loc()
+/obj/structure/machinery/computer/dropship_weapons/proc/update_trace_loc()
 	if(!firemission_envelope)
 		return
 	if(firemission_envelope.recorded_loc == null || firemission_envelope.recorded_dir == null || firemission_envelope.recorded_offset == null)
@@ -602,7 +602,7 @@
 		firemission_envelope.change_current_loc(shootloc)
 
 
-/obj/machinery/computer/dropship_weapons/dropship1
+/obj/structure/machinery/computer/dropship_weapons/dropship1
 	name = "\improper 'Alamo' weapons controls"
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
@@ -610,7 +610,7 @@
 		..()
 		shuttle_tag = "[MAIN_SHIP_NAME] Dropship 1"
 
-/obj/machinery/computer/dropship_weapons/dropship2
+/obj/structure/machinery/computer/dropship_weapons/dropship2
 	name = "\improper 'Normandy' weapons controls"
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()

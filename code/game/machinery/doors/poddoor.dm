@@ -1,5 +1,5 @@
 
-/obj/machinery/door/poddoor
+/obj/structure/machinery/door/poddoor
 	name = "\improper Podlock"
 	desc = "That looks like it doesn't open easily."
 	icon = 'icons/obj/structures/doors/rapid_pdoor.dmi'
@@ -10,7 +10,7 @@
 	open_layer = PODDOOR_OPEN_LAYER
 	closed_layer = PODDOOR_CLOSED_LAYER
 
-/obj/machinery/door/poddoor/New()
+/obj/structure/machinery/door/poddoor/New()
 	..()
 	if(density)
 		layer = PODDOOR_CLOSED_LAYER //to override door.New() proc
@@ -18,13 +18,13 @@
 		layer = PODDOOR_OPEN_LAYER
 	return
 
-/obj/machinery/door/poddoor/Bumped(atom/AM)
+/obj/structure/machinery/door/poddoor/Bumped(atom/AM)
 	if(!density)
 		return ..()
 	else
 		return 0
 
-/obj/machinery/door/poddoor/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/door/poddoor/attackby(obj/item/W, mob/user)
 	add_fingerprint(user)
 	if(!W.pry_capable)
 		return
@@ -39,10 +39,10 @@
 			operating = 0
 
 
-/obj/machinery/door/poddoor/try_to_activate_door(mob/user)
+/obj/structure/machinery/door/poddoor/try_to_activate_door(mob/user)
 	return
 
-/obj/machinery/door/poddoor/open()
+/obj/structure/machinery/door/poddoor/open()
 	if(operating == 1) //doors can still open when emag-disabled
 		return
 	if(!ticker)
@@ -63,7 +63,7 @@
 			autoclose()
 	return 1
 
-/obj/machinery/door/poddoor/close()
+/obj/structure/machinery/door/poddoor/close()
 	if(operating)
 		return
 	operating = 1
@@ -78,7 +78,7 @@
 	return
 
 
-/obj/machinery/door/poddoor/two_tile_hor/open()
+/obj/structure/machinery/door/poddoor/two_tile_hor/open()
 	if(operating == 1) //doors can still open when emag-disabled
 		return
 	if(!ticker)
@@ -103,7 +103,7 @@
 			autoclose()
 	return 1
 
-/obj/machinery/door/poddoor/two_tile_hor/close()
+/obj/structure/machinery/door/poddoor/two_tile_hor/close()
 	if(operating)
 		return
 	operating = 1
@@ -122,7 +122,7 @@
 	operating = 0
 	return
 
-/obj/machinery/door/poddoor/four_tile_hor/open()
+/obj/structure/machinery/door/poddoor/four_tile_hor/open()
 	if(operating == 1) //doors can still open when emag-disabled
 		return
 	if(!ticker)
@@ -151,7 +151,7 @@
 			autoclose()
 	return 1
 
-/obj/machinery/door/poddoor/four_tile_hor/close()
+/obj/structure/machinery/door/poddoor/four_tile_hor/close()
 	if(operating)
 		return
 	operating = 1
@@ -175,7 +175,7 @@
 	operating = 0
 	return
 
-/obj/machinery/door/poddoor/two_tile_ver/open()
+/obj/structure/machinery/door/poddoor/two_tile_ver/open()
 	if(operating == 1) //doors can still open when emag-disabled
 		return
 	if(!ticker)
@@ -200,7 +200,7 @@
 			autoclose()
 	return 1
 
-/obj/machinery/door/poddoor/two_tile_ver/close()
+/obj/structure/machinery/door/poddoor/two_tile_ver/close()
 	if(operating)
 		return
 	operating = 1
@@ -220,7 +220,7 @@
 	operating = 0
 	return
 
-/obj/machinery/door/poddoor/four_tile_ver/open()
+/obj/structure/machinery/door/poddoor/four_tile_ver/open()
 	if(operating == 1) //doors can still open when emag-disabled
 		return
 	if(!ticker)
@@ -249,7 +249,7 @@
 			autoclose()
 	return 1
 
-/obj/machinery/door/poddoor/four_tile_ver/close()
+/obj/structure/machinery/door/poddoor/four_tile_ver/close()
 	if(operating)
 		return
 	operating = 1
@@ -276,15 +276,15 @@
 
 
 
-/obj/machinery/door/poddoor/two_tile_hor
-	var/obj/machinery/door/poddoor/filler_object/f1
-	var/obj/machinery/door/poddoor/filler_object/f2
+/obj/structure/machinery/door/poddoor/two_tile_hor
+	var/obj/structure/machinery/door/poddoor/filler_object/f1
+	var/obj/structure/machinery/door/poddoor/filler_object/f2
 	icon = 'icons/obj/structures/doors/1x2blast_hor.dmi'
 
 	New()
 		..()
-		f1 = new/obj/machinery/door/poddoor/filler_object (loc)
-		f2 = new/obj/machinery/door/poddoor/filler_object (get_step(src,EAST))
+		f1 = new/obj/structure/machinery/door/poddoor/filler_object (loc)
+		f2 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(src,EAST))
 		f1.density = density
 		f2.density = density
 		f1.SetOpacity(opacity)
@@ -297,15 +297,15 @@
 		f2 = null
 		. = ..()
 
-/obj/machinery/door/poddoor/two_tile_ver
-	var/obj/machinery/door/poddoor/filler_object/f1
-	var/obj/machinery/door/poddoor/filler_object/f2
+/obj/structure/machinery/door/poddoor/two_tile_ver
+	var/obj/structure/machinery/door/poddoor/filler_object/f1
+	var/obj/structure/machinery/door/poddoor/filler_object/f2
 	icon = 'icons/obj/structures/doors/1x2blast_vert.dmi'
 
 	New()
 		..()
-		f1 = new/obj/machinery/door/poddoor/filler_object (loc)
-		f2 = new/obj/machinery/door/poddoor/filler_object (get_step(src,NORTH))
+		f1 = new/obj/structure/machinery/door/poddoor/filler_object (loc)
+		f2 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(src,NORTH))
 		f1.density = density
 		f2.density = density
 		f1.SetOpacity(opacity)
@@ -318,19 +318,19 @@
 		f2 = null
 		. = ..()
 
-/obj/machinery/door/poddoor/four_tile_hor
-	var/obj/machinery/door/poddoor/filler_object/f1
-	var/obj/machinery/door/poddoor/filler_object/f2
-	var/obj/machinery/door/poddoor/filler_object/f3
-	var/obj/machinery/door/poddoor/filler_object/f4
+/obj/structure/machinery/door/poddoor/four_tile_hor
+	var/obj/structure/machinery/door/poddoor/filler_object/f1
+	var/obj/structure/machinery/door/poddoor/filler_object/f2
+	var/obj/structure/machinery/door/poddoor/filler_object/f3
+	var/obj/structure/machinery/door/poddoor/filler_object/f4
 	icon = 'icons/obj/structures/doors/1x4blast_hor.dmi'
 
 	New()
 		..()
-		f1 = new/obj/machinery/door/poddoor/filler_object (loc)
-		f2 = new/obj/machinery/door/poddoor/filler_object (get_step(f1,EAST))
-		f3 = new/obj/machinery/door/poddoor/filler_object (get_step(f2,EAST))
-		f4 = new/obj/machinery/door/poddoor/filler_object (get_step(f3,EAST))
+		f1 = new/obj/structure/machinery/door/poddoor/filler_object (loc)
+		f2 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(f1,EAST))
+		f3 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(f2,EAST))
+		f4 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(f3,EAST))
 		f1.density = density
 		f2.density = density
 		f3.density = density
@@ -351,19 +351,19 @@
 		f4 = null
 		. = ..()
 
-/obj/machinery/door/poddoor/four_tile_ver
-	var/obj/machinery/door/poddoor/filler_object/f1
-	var/obj/machinery/door/poddoor/filler_object/f2
-	var/obj/machinery/door/poddoor/filler_object/f3
-	var/obj/machinery/door/poddoor/filler_object/f4
+/obj/structure/machinery/door/poddoor/four_tile_ver
+	var/obj/structure/machinery/door/poddoor/filler_object/f1
+	var/obj/structure/machinery/door/poddoor/filler_object/f2
+	var/obj/structure/machinery/door/poddoor/filler_object/f3
+	var/obj/structure/machinery/door/poddoor/filler_object/f4
 	icon = 'icons/obj/structures/doors/1x4blast_vert.dmi'
 
 	New()
 		..()
-		f1 = new/obj/machinery/door/poddoor/filler_object (loc)
-		f2 = new/obj/machinery/door/poddoor/filler_object (get_step(f1,NORTH))
-		f3 = new/obj/machinery/door/poddoor/filler_object (get_step(f2,NORTH))
-		f4 = new/obj/machinery/door/poddoor/filler_object (get_step(f3,NORTH))
+		f1 = new/obj/structure/machinery/door/poddoor/filler_object (loc)
+		f2 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(f1,NORTH))
+		f3 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(f2,NORTH))
+		f4 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(f3,NORTH))
 		f1.density = density
 		f2.density = density
 		f3.density = density
@@ -384,27 +384,27 @@
 		f4 = null
 		. = ..()
 
-/obj/machinery/door/poddoor/filler_object
+/obj/structure/machinery/door/poddoor/filler_object
 	name = ""
 	icon_state = ""
 	unacidable = 1
 
-/obj/machinery/door/poddoor/four_tile_hor/secure
+/obj/structure/machinery/door/poddoor/four_tile_hor/secure
 	icon = 'icons/obj/structures/doors/1x4blast_hor_secure.dmi'
 	openspeed = 17
 	unacidable = 1
 
-/obj/machinery/door/poddoor/four_tile_ver/secure
+/obj/structure/machinery/door/poddoor/four_tile_ver/secure
 	icon = 'icons/obj/structures/doors/1x4blast_vert_secure.dmi'
 	openspeed = 17
 	unacidable = 1
 
-/obj/machinery/door/poddoor/two_tile_hor/secure
+/obj/structure/machinery/door/poddoor/two_tile_hor/secure
 	icon = 'icons/obj/structures/doors/1x2blast_hor.dmi'
 	openspeed = 17
 	unacidable = 1
 
-/obj/machinery/door/poddoor/two_tile_ver/secure
+/obj/structure/machinery/door/poddoor/two_tile_ver/secure
 	icon = 'icons/obj/structures/doors/1x2blast_vert.dmi'
 	openspeed = 17
 	unacidable = 1
@@ -412,22 +412,22 @@
 
 
 
-/obj/machinery/door/poddoor/almayer
+/obj/structure/machinery/door/poddoor/almayer
 	icon = 'icons/obj/structures/doors/blastdoors_shutters.dmi'
 	openspeed = 4 //shorter open animation.
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
-		/obj/machinery/door/airlock)
+		/obj/structure/machinery/door/airlock)
 
-/obj/machinery/door/poddoor/almayer/New()
+/obj/structure/machinery/door/poddoor/almayer/New()
 	spawn(10) // No fucken idea but this somehow makes it work. What the actual fuck.
 		relativewall_neighbours()
 	..()
 
-/obj/machinery/door/poddoor/almayer/locked
+/obj/structure/machinery/door/poddoor/almayer/locked
 	unacidable = 1
 
-/obj/machinery/door/poddoor/almayer/locked/attackby(obj/item/C as obj, mob/user as mob)
+/obj/structure/machinery/door/poddoor/almayer/locked/attackby(obj/item/C as obj, mob/user as mob)
 	if(iscrowbar(C))
 		return
 	..()

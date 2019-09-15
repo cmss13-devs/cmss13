@@ -1,4 +1,4 @@
-/obj/machinery/biogenerator
+/obj/structure/machinery/biogenerator
 	name = "Biogenerator"
 	desc = ""
 	icon = 'icons/obj/structures/machinery/biogenerator.dmi'
@@ -9,11 +9,11 @@
 	idle_power_usage = 40
 
 
-var/list/obj/machinery/faxmachine/allfaxes = list()
+var/list/obj/structure/machinery/faxmachine/allfaxes = list()
 var/list/alldepartments = list()
 
 
-/obj/machinery/computer3
+/obj/structure/machinery/computer3
 	name = "computer"
 	icon = 'icons/obj/structures/machinery/computer3.dmi'
 	icon_state = "frame"
@@ -24,7 +24,7 @@ var/list/alldepartments = list()
 	idle_power_usage	= 20
 	active_power_usage	= 50
 
-/obj/machinery/computer3/New(var/L, var/built = 0)
+/obj/structure/machinery/computer3/New(var/L, var/built = 0)
 	..()
 	spawn(2)
 		power_change()
@@ -33,14 +33,14 @@ var/list/alldepartments = list()
 	start_processing()
 
 
-/obj/machinery/computer3/laptop/secure_data
+/obj/structure/machinery/computer3/laptop/secure_data
 	icon_state = "laptop"
 
-/obj/machinery/computer3/powermonitor
+/obj/structure/machinery/computer3/powermonitor
 	icon_state = "frame-eng"
 
 
-/obj/machinery/faxmachine
+/obj/structure/machinery/faxmachine
 	name = "fax machine"
 	icon = 'icons/obj/structures/machinery/library.dmi'
 	icon_state = "fax"
@@ -63,7 +63,7 @@ var/list/alldepartments = list()
 	var/dpt = "Weyland Yutani" // the department we're sending to
 
 
-/obj/machinery/faxmachine/New()
+/obj/structure/machinery/faxmachine/New()
 	..()
 	allfaxes += src
 
@@ -74,13 +74,13 @@ var/list/alldepartments = list()
 	if(!("USCM High Command" in alldepartments))
 		alldepartments += "USCM High Command"
 
-/obj/machinery/faxmachine/process()
+/obj/structure/machinery/faxmachine/process()
 	return 0
 
-/obj/machinery/faxmachine/attack_ai(mob/user as mob)
+/obj/structure/machinery/faxmachine/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/faxmachine/attack_hand(mob/user as mob)
+/obj/structure/machinery/faxmachine/attack_hand(mob/user as mob)
 	user.set_interaction(src)
 
 	var/dat = "Fax Machine<BR>"
@@ -131,7 +131,7 @@ var/list/alldepartments = list()
 	onclose(user, "copier")
 	return
 
-/obj/machinery/faxmachine/Topic(href, href_list)
+/obj/structure/machinery/faxmachine/Topic(href, href_list)
 	if(href_list["send"])
 		if(tofax)
 
@@ -193,7 +193,7 @@ var/list/alldepartments = list()
 
 	updateUsrDialog()
 
-/obj/machinery/faxmachine/attackby(obj/item/O as obj, mob/user as mob)
+/obj/structure/machinery/faxmachine/attackby(obj/item/O as obj, mob/user as mob)
 
 	if(istype(O, /obj/item/paper))
 		if(!tofax)
@@ -273,7 +273,7 @@ var/list/alldepartments = list()
 
 proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/dpt)
 
-	for(var/obj/machinery/faxmachine/F in allfaxes)
+	for(var/obj/structure/machinery/faxmachine/F in allfaxes)
 		if( F.department == dpt )
 			if(! (F.stat & (BROKEN|NOPOWER) ) )
 
@@ -288,12 +288,12 @@ proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/dpt)
 
 					playsound(F.loc, "sound/items/polaroid1.ogg", 15, 1)
 
-/obj/machinery/computer3/server
+/obj/structure/machinery/computer3/server
 	name			= "server"
 	icon			= 'icons/obj/structures/machinery/computer3.dmi'
 	icon_state		= "serverframe"
 
-/obj/machinery/computer3/server/rack
+/obj/structure/machinery/computer3/server/rack
 	name = "server rack"
 	icon_state = "rackframe"
 
@@ -305,7 +305,7 @@ proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/dpt)
 		return
 
 
-/obj/machinery/lapvend
+/obj/structure/machinery/lapvend
 	name = "Laptop Vendor"
 	desc = "A generic vending machine."
 	icon = 'icons/obj/structures/machinery/vending.dmi'

@@ -1,4 +1,4 @@
-/obj/machinery/gear
+/obj/structure/machinery/gear
 	name = "\improper gear"
 	icon_state = "gear"
 	anchored = 1
@@ -7,7 +7,7 @@
 	use_power = 0
 	var/id
 
-/obj/machinery/elevator_strut
+/obj/structure/machinery/elevator_strut
 	name = "\improper strut"
 	icon = 'icons/turf/elevator_strut.dmi'
 	anchored = 1
@@ -18,8 +18,8 @@
 	layer = ABOVE_MOB_LAYER
 	var/id
 
-/obj/machinery/elevator_strut/top
+/obj/structure/machinery/elevator_strut/top
 	icon_state = "strut_top"
 
-/obj/machinery/elevator_strut/bottom
+/obj/structure/machinery/elevator_strut/bottom
 	icon_state = "strut_bottom"

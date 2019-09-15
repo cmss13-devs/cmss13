@@ -37,7 +37,7 @@ var/list/robot_verbs_default = list(
 	var/obj/item/device/radio/borg/radio = null
 	var/mob/living/silicon/ai/connected_ai = null
 	var/obj/item/cell/cell = null
-	var/obj/machinery/camera/camera = null
+	var/obj/structure/machinery/camera/camera = null
 
 	// Components are basically robot organs.
 	var/list/components = list()
@@ -100,7 +100,7 @@ var/list/robot_verbs_default = list(
 
 	radio = new /obj/item/device/radio/borg(src)
 	if(!scrambledcodes && !camera)
-		camera = new /obj/machinery/camera(src)
+		camera = new /obj/structure/machinery/camera(src)
 		camera.c_tag = real_name
 		camera.network = list("SS13","Robots")
 		if(isWireCut(5)) // 5 = BORG CAMERA
@@ -416,8 +416,8 @@ var/list/robot_verbs_default = list(
 
 /mob/living/silicon/robot/Bump(atom/movable/AM as mob|obj, yes)
 	..()
-	if (istype(AM, /obj/machinery/recharge_station))
-		var/obj/machinery/recharge_station/F = AM
+	if (istype(AM, /obj/structure/machinery/recharge_station))
+		var/obj/structure/machinery/recharge_station/F = AM
 		F.move_inside()
 		return
 

@@ -94,35 +94,35 @@
 /atom/proc/BorgCtrlShiftClick(var/mob/living/silicon/robot/user) //forward to human click if not overriden
 	return 1
 
-/obj/machinery/door/airlock/BorgCtrlShiftClick()
+/obj/structure/machinery/door/airlock/BorgCtrlShiftClick()
 	AICtrlShiftClick()
 
 /atom/proc/BorgShiftClick(var/mob/living/silicon/robot/user) //this should only return 1 if it is not overridden. this prevents things like examining objects also clicking them with an activated module.
 	return 1
 
-/obj/machinery/door/airlock/BorgShiftClick()  // Opens and closes doors! Forwards to AI code.
+/obj/structure/machinery/door/airlock/BorgShiftClick()  // Opens and closes doors! Forwards to AI code.
 	AIShiftClick()
 
 
 /atom/proc/BorgCtrlClick(var/mob/living/silicon/robot/user) //forward to human click if not overriden
 	return 1
 
-/obj/machinery/door/airlock/BorgCtrlClick() // Bolts doors. Forwards to AI code.
+/obj/structure/machinery/door/airlock/BorgCtrlClick() // Bolts doors. Forwards to AI code.
 	AICtrlClick()
 
-/obj/machinery/power/apc/BorgCtrlClick() // turns off/on APCs. Forwards to AI code.
+/obj/structure/machinery/power/apc/BorgCtrlClick() // turns off/on APCs. Forwards to AI code.
 	AICtrlClick()
 
-/obj/machinery/turretid/BorgCtrlClick() //turret control on/off. Forwards to AI code.
+/obj/structure/machinery/turretid/BorgCtrlClick() //turret control on/off. Forwards to AI code.
 	AICtrlClick()
 
 /atom/proc/BorgAltClick(var/mob/living/silicon/robot/user)
 	return 1
 
-/obj/machinery/door/airlock/BorgAltClick() // Eletrifies doors. Forwards to AI code.
+/obj/structure/machinery/door/airlock/BorgAltClick() // Eletrifies doors. Forwards to AI code.
 	AIAltClick()
 
-/obj/machinery/turretid/BorgAltClick() //turret lethal on/off. Forwards to AI code.
+/obj/structure/machinery/turretid/BorgAltClick() //turret lethal on/off. Forwards to AI code.
 	AIAltClick()
 
 /*

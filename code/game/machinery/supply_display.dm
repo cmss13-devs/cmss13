@@ -1,7 +1,7 @@
-/obj/machinery/status_display/supply_display
+/obj/structure/machinery/status_display/supply_display
 	ignore_friendc = 1
 
-/obj/machinery/status_display/supply_display/update()
+/obj/structure/machinery/status_display/supply_display/update()
 	if(!..() && mode == STATUS_DISPLAY_CUSTOM)
 		message1 = "SUPPLY"
 		message2 = ""
@@ -27,7 +27,7 @@
 		return 1
 	return 0
 
-/obj/machinery/status_display/supply_display/receive_signal/(datum/signal/signal)
+/obj/structure/machinery/status_display/supply_display/receive_signal/(datum/signal/signal)
 	if(signal.data["command"] == "supply")
 		mode = STATUS_DISPLAY_CUSTOM
 	else

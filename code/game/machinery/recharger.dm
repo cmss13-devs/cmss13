@@ -1,6 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
-obj/machinery/recharger
+obj/structure/machinery/recharger
 	name = "recharger"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "recharger"
@@ -12,7 +12,7 @@ obj/machinery/recharger
 	var/percent_charge_complete = 0
 	var/list/allowed_devices = list(/obj/item/weapon/baton, /obj/item/cell, /obj/item/weapon/gun/energy/taser, /obj/item/device/defibrillator)
 
-obj/machinery/recharger/attackby(obj/item/G as obj, mob/user as mob)
+obj/structure/machinery/recharger/attackby(obj/item/G as obj, mob/user as mob)
 	if(istype(user,/mob/living/silicon))
 		return
 
@@ -46,7 +46,7 @@ obj/machinery/recharger/attackby(obj/item/G as obj, mob/user as mob)
 		to_chat(user, "You [anchored ? "attached" : "detached"] the recharger.")
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 
-obj/machinery/recharger/attack_hand(mob/user as mob)
+obj/structure/machinery/recharger/attack_hand(mob/user as mob)
 	if(istype(user,/mob/living/silicon))
 		return
 
@@ -60,7 +60,7 @@ obj/machinery/recharger/attack_hand(mob/user as mob)
 		percent_charge_complete = 0
 		update_icon()
 
-obj/machinery/recharger/process()
+obj/structure/machinery/recharger/process()
 	if(stat & (NOPOWER|BROKEN) || !anchored)
 		update_use_power(0)
 		update_icon()
@@ -145,11 +145,11 @@ obj/machinery/recharger/process()
 			return
 		*/
 
-/obj/machinery/recharger/power_change()
+/obj/structure/machinery/recharger/power_change()
 	..()
 	update_icon()
 
-obj/machinery/recharger/emp_act(severity)
+obj/structure/machinery/recharger/emp_act(severity)
 	if(stat & (NOPOWER|BROKEN) || !anchored)
 		..(severity)
 		return
@@ -165,7 +165,7 @@ obj/machinery/recharger/emp_act(severity)
 			B.bcell.charge = 0
 	..(severity)
 
-obj/machinery/recharger/update_icon()	//we have an update_icon() in addition to the stuff in process to make it feel a tiny bit snappier.
+obj/structure/machinery/recharger/update_icon()	//we have an update_icon() in addition to the stuff in process to make it feel a tiny bit snappier.
 	src.overlays = 0
 	if((stat & (NOPOWER|BROKEN)))
 		return
@@ -190,7 +190,7 @@ obj/machinery/recharger/update_icon()	//we have an update_icon() in addition to 
 		overlays += "recharger-baton"
 
 /*
-obj/machinery/recharger/wallcharger
+obj/structure/machinery/recharger/wallcharger
 	name = "wall recharger"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "wrecharger0"

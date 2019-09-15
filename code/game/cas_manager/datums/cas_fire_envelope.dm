@@ -1,5 +1,5 @@
 /datum/cas_fire_envelope
-	var/obj/machinery/computer/dropship_weapons/linked_console
+	var/obj/structure/machinery/computer/dropship_weapons/linked_console
 	var/list/datum/cas_fire_mission/missions = list()
 	var/max_mission_len = 5
 	var/fire_length
@@ -294,16 +294,16 @@
 	return istype(target_turf) && target_turf.valid_signal()
 
 //debugging procs
-/obj/machinery/computer/dropship_weapons/proc/generate_mission(firemission_name, length)
+/obj/structure/machinery/computer/dropship_weapons/proc/generate_mission(firemission_name, length)
 	firemission_envelope.generate_mission(firemission_name, length)
 
-/obj/machinery/computer/dropship_weapons/proc/update_mission(mission_id, weapon_id, offset_step, offset)
+/obj/structure/machinery/computer/dropship_weapons/proc/update_mission(mission_id, weapon_id, offset_step, offset)
 	var/result = firemission_envelope.update_mission(mission_id, weapon_id, offset_step, offset)
 	if(result<1)
 		return firemission_envelope.mission_error
 	return "OK"
 
-/obj/machinery/computer/dropship_weapons/proc/execute_firemission(obj/location, offset, dir, mission_id)
+/obj/structure/machinery/computer/dropship_weapons/proc/execute_firemission(obj/location, offset, dir, mission_id)
 	var/result = firemission_envelope.execute_firemission(get_turf(location), offset, dir, mission_id)
 	if(result<1)
 		return firemission_envelope.mission_error

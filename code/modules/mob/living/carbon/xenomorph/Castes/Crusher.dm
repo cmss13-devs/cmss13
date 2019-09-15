@@ -208,8 +208,8 @@
 			stop_momentum(charge_dir)
 			r_FAL
 
-	else if(istype(target, /obj/machinery/m56d_hmg))
-		var/obj/machinery/m56d_hmg/HMG = target
+	else if(istype(target, /obj/structure/machinery/m56d_hmg))
+		var/obj/structure/machinery/m56d_hmg/HMG = target
 		if(charge_speed > charge_speed_buildup * charge_turfs_to_charge)
 			visible_message(SPAN_DANGER("[src] rams [HMG]!"),
 				SPAN_XENODANGER("You ram [HMG]!"))
@@ -283,7 +283,7 @@
 
 	r_TRU
 
-/obj/machinery/door/airlock/charge_act(mob/living/carbon/Xenomorph/X)
+/obj/structure/machinery/door/airlock/charge_act(mob/living/carbon/Xenomorph/X)
 	if(unacidable)
 		X.stop_momentum(X.charge_dir)
 		r_FAL
@@ -309,7 +309,7 @@
 
 	r_TRU
 
-/obj/machinery/vending/charge_act(mob/living/carbon/Xenomorph/X)
+/obj/structure/machinery/vending/charge_act(mob/living/carbon/Xenomorph/X)
 	if(X.charge_speed > X.charge_speed_max/2) //Halfway to full speed or more
 		if(unacidable)
 			X.stop_momentum(X.charge_dir, TRUE)
@@ -344,7 +344,7 @@
 		X.charge_speed -= X.charge_speed_buildup * 3 //Lose three turfs worth of speed
 	r_TRU
 
-/obj/machinery/marine_turret/charge_act(mob/living/carbon/Xenomorph/X)
+/obj/structure/machinery/marine_turret/charge_act(mob/living/carbon/Xenomorph/X)
 	if(unacidable)
 		X.stop_momentum(X.charge_dir, TRUE)
 		r_FAL

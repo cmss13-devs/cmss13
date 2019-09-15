@@ -32,7 +32,7 @@
 	new /obj/item/cell/high(src)
 	new /obj/item/ammo_magazine/sentry(src)
 
-/obj/machinery/marine_turret_frame
+/obj/structure/machinery/marine_turret_frame
 	name = "\improper UA 571-C turret frame"
 	desc = "An unfinished turret frame. It requires wrenching, cable coil, a turret piece, a sensor, and metal plating."
 	icon = 'icons/obj/structures/turret.dmi'
@@ -48,7 +48,7 @@
 	health = 100
 
 
-/obj/machinery/marine_turret_frame/update_health(damage)
+/obj/structure/machinery/marine_turret_frame/update_health(damage)
 	health -= damage
 	if(health <= 0)
 		if(has_cable)
@@ -60,7 +60,7 @@
 		qdel(src)
 
 
-/obj/machinery/marine_turret_frame/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/marine_turret_frame/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoLarva(M)) return //Larvae can't do shit
 	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),
 	SPAN_DANGER("You slash [src]!"))
@@ -69,7 +69,7 @@
 	playsound(loc, "alien_claw_metal", 25)
 	update_health(rand(M.melee_damage_lower,M.melee_damage_upper))
 
-/obj/machinery/marine_turret_frame/examine(mob/user as mob)
+/obj/structure/machinery/marine_turret_frame/examine(mob/user as mob)
 	..()
 	if(!anchored)
 		to_chat(user, SPAN_INFO("It must be <B>wrenched</B> to the floor."))
@@ -84,7 +84,7 @@
 	if(!has_sensor)
 		to_chat(user, SPAN_INFO("It does not have a <b>turret sensor</B> installed."))
 
-/obj/machinery/marine_turret_frame/attackby(var/obj/item/O as obj, mob/user as mob)
+/obj/structure/machinery/marine_turret_frame/attackby(var/obj/item/O as obj, mob/user as mob)
 	if(!ishuman(user))
 		return
 	//Rotate/Secure Sentry
@@ -103,7 +103,7 @@
 				if(WEST)
 					dir = NORTH
 		else
-			if(locate(/obj/machinery/marine_turret) in loc)
+			if(locate(/obj/structure/machinery/marine_turret) in loc)
 				to_chat(user, SPAN_WARNING("There already is a turret in this position."))
 				return
 
@@ -233,7 +233,7 @@
 			user.drop_held_item()
 			qdel(O)
 
-			var/obj/machinery/marine_turret/T = new(loc)  //Bing! Create a new turret.
+			var/obj/structure/machinery/marine_turret/T = new(loc)  //Bing! Create a new turret.
 			T.owner_mob = user
 			T.dir = dir
 			qdel(src)
@@ -261,7 +261,7 @@
 #define SENTRY_KNOCKED_DOWN		1
 #define SENTRY_DESTROYED	 	2
 
-/obj/machinery/marine_turret
+/obj/structure/machinery/marine_turret
 	name = "\improper UA 571-C sentry gun"
 	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 500-round drum magazine."
 	icon = 'icons/obj/structures/turret.dmi'
@@ -288,7 +288,7 @@
 	var/obj/item/cell/high/cell = null
 	var/burst_fire = 0
 	var/burst_scatter_mult = 4
-	var/obj/machinery/camera/camera = null
+	var/obj/structure/machinery/camera/camera = null
 	var/fire_delay = 3
 	var/last_fired = 0
 	var/is_bursting = FALSE
@@ -302,7 +302,7 @@
 	var/list/angle_list = list(180,135,90,60,30)
 	var/owner_mob
 
-/obj/machinery/marine_turret/New()
+/obj/structure/machinery/marine_turret/New()
 	spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
@@ -316,7 +316,7 @@
 	spawn(2)
 		start_processing()
 
-/obj/machinery/marine_turret/Dispose() //Clear these for safety's sake.
+/obj/structure/machinery/marine_turret/Dispose() //Clear these for safety's sake.
 	if(operator)
 		operator.unset_interaction()
 		operator = null
@@ -332,7 +332,7 @@
 	//processing_objects.Remove(src)
 	. = ..()
 
-/obj/machinery/marine_turret/attack_hand(mob/user as mob)
+/obj/structure/machinery/marine_turret/attack_hand(mob/user as mob)
 	if(isYautja(user))
 		to_chat(user, SPAN_WARNING("You punch [src] but nothing happens."))
 		return
@@ -371,7 +371,7 @@
 
 	return
 
-/obj/machinery/marine_turret/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/marine_turret/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 
 	var/list/data = list(
 		"self_ref" = "\ref[src]",
@@ -397,7 +397,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/machinery/marine_turret/Topic(href, href_list)
+/obj/structure/machinery/marine_turret/Topic(href, href_list)
 	if(usr.stat)
 		return
 
@@ -442,7 +442,7 @@
 				on = TRUE
 				SetLuminosity(7)
 				if(!camera)
-					camera = new /obj/machinery/camera(src)
+					camera = new /obj/structure/machinery/camera(src)
 					camera.network = list("military")
 					camera.c_tag = src.name
 				update_icon()
@@ -456,17 +456,17 @@
 	attack_hand(user)
 
 //Manual override turns off automatically once the user no longer interacts with the turret.
-/obj/machinery/marine_turret/on_unset_interaction(mob/user)
+/obj/structure/machinery/marine_turret/on_unset_interaction(mob/user)
 	..()
 	if(manual_override && operator == user)
 		operator = null
 		manual_override = 0
 
-/obj/machinery/marine_turret/check_eye(mob/user)
+/obj/structure/machinery/marine_turret/check_eye(mob/user)
 	if(user.is_mob_incapacitated() || get_dist(user, src) > 1 || user.blinded || user.lying || !user.client)
 		user.unset_interaction()
 
-/obj/machinery/marine_turret/attackby(var/obj/item/O as obj, mob/user as mob)
+/obj/structure/machinery/marine_turret/attackby(var/obj/item/O as obj, mob/user as mob)
 	if(!ishuman(user))
 		return ..()
 
@@ -636,7 +636,7 @@
 		update_health(O.force/2)
 	return ..()
 
-/obj/machinery/marine_turret/update_icon()
+/obj/structure/machinery/marine_turret/update_icon()
 	if(stat & SENTRY_KNOCKED_DOWN && health > 0) //Knocked over
 		icon_state = "sentry_fallen"
 		return
@@ -654,7 +654,7 @@
 	else
 		icon_state = "sentry_off"
 
-/obj/machinery/marine_turret/update_health(var/damage) //Negative damage restores health.
+/obj/structure/machinery/marine_turret/update_health(var/damage) //Negative damage restores health.
 	health -= damage
 	if(health <= 0 && stat != 2)
 		stat |= SENTRY_DESTROYED
@@ -666,7 +666,7 @@
 		spawn(10)
 			if(src && loc)
 				explosion(loc, -1, -1, 2, 0, , , , "sentry explosion")
-				//new /obj/machinery/marine_turret_frame(loc) // disabling this because why -spookydonut
+				//new /obj/structure/machinery/marine_turret_frame(loc) // disabling this because why -spookydonut
 				if(!disposed)
 					qdel(src)
 		return
@@ -686,7 +686,7 @@
 		density = initial(density)
 	update_icon()
 
-/obj/machinery/marine_turret/proc/check_power(var/power)
+/obj/structure/machinery/marine_turret/proc/check_power(var/power)
 	if (!cell)
 		icon_state = "sentry_battery_none"
 		return 0
@@ -709,7 +709,7 @@
 	cell.charge -= power
 	return 1
 
-/obj/machinery/marine_turret/emp_act(severity)
+/obj/structure/machinery/marine_turret/emp_act(severity)
 	if(cell)
 		check_power(-(rand(100, 500)))
 	if(on)
@@ -724,13 +724,13 @@
 		update_health(25)
 	return
 
-/obj/machinery/marine_turret/ex_act(severity)
+/obj/structure/machinery/marine_turret/ex_act(severity)
 	if(health <= 0)
 		return
 	update_health(severity)
 
 
-/obj/machinery/marine_turret/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/marine_turret/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoLarva(M)) return //Larvae can't do shit
 	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),
 	SPAN_DANGER("You slash [src]!"))
@@ -742,7 +742,7 @@
 			new /obj/effect/decal/cleanable/blood/oil(loc)
 	update_health(rand(M.melee_damage_lower,M.melee_damage_upper))
 
-/obj/machinery/marine_turret/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/machinery/marine_turret/bullet_act(var/obj/item/projectile/Proj)
 	bullet_ping(Proj)
 	visible_message(SPAN_WARNING("[src] is hit by the [Proj.name]!"))
 	var/ammo_flags = Proj.ammo.flags_ammo_behavior | Proj.projectile_override_flags
@@ -752,7 +752,7 @@
 		update_health(round(Proj.damage/10))
 	return 1
 
-/obj/machinery/marine_turret/process()
+/obj/structure/machinery/marine_turret/process()
 
 	if(!anchored)
 		return
@@ -775,7 +775,7 @@
 	process_shot()
 	return
 
-/obj/machinery/marine_turret/proc/load_into_chamber()
+/obj/structure/machinery/marine_turret/proc/load_into_chamber()
 	if(in_chamber)
 		return 1 //Already set!
 	if(!on || !cell || rounds == 0 || stat)
@@ -785,7 +785,7 @@
 	in_chamber.generate_bullet(ammo)
 	return 1
 
-/obj/machinery/marine_turret/proc/process_shot()
+/obj/structure/machinery/marine_turret/proc/process_shot()
 	set waitfor = 0
 
 	if(isnull(target)) return //Acquire our victim.
@@ -813,7 +813,7 @@
 
 	target = null
 
-/obj/machinery/marine_turret/proc/fire_shot(shots_fired = 1)
+/obj/structure/machinery/marine_turret/proc/fire_shot(shots_fired = 1)
 	if(!target || !on || !ammo) return
 
 	var/turf/my_loc = get_turf(src)
@@ -864,7 +864,7 @@
 	return 1
 
 //Mostly taken from gun code.
-/obj/machinery/marine_turret/proc/muzzle_flash(var/angle)
+/obj/structure/machinery/marine_turret/proc/muzzle_flash(var/angle)
 	if(isnull(angle)) return
 
 	SetLuminosity(muzzle_flash_lum)
@@ -881,7 +881,7 @@
 	I.transform = rotate
 	I.flick_overlay(src, 3)
 
-/obj/machinery/marine_turret/proc/get_target()
+/obj/structure/machinery/marine_turret/proc/get_target()
 	var/list/conscious_targets = list()
 	var/list/unconscious_targets = list()
 
@@ -939,7 +939,7 @@
 					if(S.opacity)
 						blocked = TRUE
 						break
-				for(var/obj/machinery/MA in T)
+				for(var/obj/structure/machinery/MA in T)
 					if(MA.opacity)
 						blocked = TRUE
 						break
@@ -958,7 +958,7 @@
 		. = pick(unconscious_targets)
 
 //Direct replacement to new proc. Everything works.
-/obj/machinery/marine_turret/handle_click(mob/living/carbon/human/user, atom/A, params)
+/obj/structure/machinery/marine_turret/handle_click(mob/living/carbon/human/user, atom/A, params)
 	if(!operator || !istype(user)) return HANDLE_CLICK_UNHANDLED
 	if(operator != user) return HANDLE_CLICK_UNHANDLED
 	if(istype(A, /obj/screen)) return HANDLE_CLICK_UNHANDLED
@@ -1016,7 +1016,7 @@
 	var/linked_turret = null
 	var/on = 0
 	var/mob/living/carbon/human/user = null
-	var/obj/machinery/camera/current = null
+	var/obj/structure/machinery/camera/current = null
 
 	check_eye(var/mob/user as mob)
 		if (user.z == 0 || user.stat || ((get_dist(user, src) > 1 || user.blinded) && !issilicon(user))) //user can't see - not sure why canmove is here.
@@ -1029,7 +1029,7 @@
 	attack_self(mob/living/user as mob)
 		if(!linked_turret)
 */
-/obj/machinery/marine_turret/premade
+/obj/structure/machinery/marine_turret/premade
 	name = "UA-577 Gauss Turret"
 	immobile = 1
 	on = TRUE
@@ -1038,19 +1038,19 @@
 	rounds_max = 500
 	icon_state = "sentry_on"
 
-/obj/machinery/marine_turret/premade/New()
+/obj/structure/machinery/marine_turret/premade/New()
 	..()
 	var/obj/item/cell/super/H = new(src) //Better cells in these ones.
 	cell = H
 
-/obj/machinery/marine_turret/premade/dumb
+/obj/structure/machinery/marine_turret/premade/dumb
 	name = "Modified UA-577 Gauss Turret"
 	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a high-capacity drum magazine. This one's IFF system has been disabled, and it will open fire on any targets within range."
 	iff_signal = 0
 	rounds = 1000000
 	ammo = /datum/ammo/bullet/turret/dumb
 
-/obj/machinery/marine_turret/premade/dumb/attack_hand(mob/user as mob)
+/obj/structure/machinery/marine_turret/premade/dumb/attack_hand(mob/user as mob)
 	if(isYautja(user))
 		to_chat(user, SPAN_WARNING("You punch [src] but nothing happens."))
 		return
@@ -1072,7 +1072,7 @@
 		on = TRUE
 		SetLuminosity(7)
 		if(!camera)
-			camera = new /obj/machinery/camera(src)
+			camera = new /obj/structure/machinery/camera(src)
 			camera.network = list("military")
 			camera.c_tag = src.name
 		update_icon()
@@ -1084,12 +1084,12 @@
 		update_icon()
 
 //the turret inside the sentry deployment system
-/obj/machinery/marine_turret/premade/dropship
+/obj/structure/machinery/marine_turret/premade/dropship
 	density = 1
 	angle = -1
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 
-/obj/machinery/marine_turret/premade/dropship/Dispose()
+/obj/structure/machinery/marine_turret/premade/dropship/Dispose()
 	if(deployment_system)
 		deployment_system.deployed_turret = null
 		deployment_system = null

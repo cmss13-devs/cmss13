@@ -1,5 +1,5 @@
 
-/obj/machinery/gibber
+/obj/structure/machinery/gibber
 	name = "Gibber"
 	desc = "The name isn't descriptive enough?"
 	icon = 'icons/obj/structures/machinery/kitchen.dmi'
@@ -15,14 +15,14 @@
 	active_power_usage = 500
 
 //auto-gibs anything that bumps into it
-/obj/machinery/gibber/autogibber
+/obj/structure/machinery/gibber/autogibber
 	var/turf/input_plate
 
 	New()
 		..()
 		spawn(5)
 			for(var/i in cardinal)
-				var/obj/machinery/mineral/input/input_obj = locate( /obj/machinery/mineral/input, get_step(src.loc, i) )
+				var/obj/structure/machinery/mineral/input/input_obj = locate( /obj/structure/machinery/mineral/input, get_step(src.loc, i) )
 				if(input_obj)
 					if(isturf(input_obj.loc))
 						input_plate = input_obj.loc
@@ -45,11 +45,11 @@
 				M.gib()
 
 
-/obj/machinery/gibber/New()
+/obj/structure/machinery/gibber/New()
 	..()
 	src.overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grjam")
 
-/obj/machinery/gibber/update_icon()
+/obj/structure/machinery/gibber/update_icon()
 	overlays.Cut()
 	if (dirty)
 		src.overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grbloody")
@@ -62,12 +62,12 @@
 	else
 		src.overlays += image('icons/obj/structures/machinery/kitchen.dmi', "gridle")
 
-/obj/machinery/gibber/relaymove(mob/user)
+/obj/structure/machinery/gibber/relaymove(mob/user)
 	if(user.is_mob_incapacitated(TRUE)) return
 	go_out()
 
 
-/obj/machinery/gibber/attack_hand(mob/user as mob)
+/obj/structure/machinery/gibber/attack_hand(mob/user as mob)
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if(operating)
@@ -76,7 +76,7 @@
 	else
 		src.startgibbing(user)
 
-/obj/machinery/gibber/attackby(obj/item/grab/G as obj, mob/user as mob)
+/obj/structure/machinery/gibber/attackby(obj/item/grab/G as obj, mob/user as mob)
 	if(src.occupant)
 		to_chat(user, SPAN_WARNING("The gibber is full, empty it first!"))
 		return
@@ -110,7 +110,7 @@
 		occupant = M
 		update_icon()
 
-/obj/machinery/gibber/verb/eject()
+/obj/structure/machinery/gibber/verb/eject()
 	set category = "Object"
 	set name = "Empty Gibber"
 	set src in oview(1)
@@ -121,7 +121,7 @@
 	add_fingerprint(usr)
 	return
 
-/obj/machinery/gibber/proc/go_out()
+/obj/structure/machinery/gibber/proc/go_out()
 	if (!src.occupant)
 		return
 	for(var/obj/O in src)
@@ -135,7 +135,7 @@
 	return
 
 
-/obj/machinery/gibber/proc/startgibbing(mob/user as mob)
+/obj/structure/machinery/gibber/proc/startgibbing(mob/user as mob)
 	if(src.operating)
 		return
 	if(!src.occupant)

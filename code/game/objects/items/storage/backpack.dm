@@ -399,7 +399,7 @@
 
 	spawn while (!camo_ready && !camo_active)
 		if (world.time > camo_cooldown_timer)
-			to_chat(user, "<span class='notice'>Your cloak's thermal dampeners have recharged!")
+			to_chat(user, SPAN_NOTICE("Your cloak's thermal dampeners have recharged!"))
 			camo_ready = 1
 
 		sleep(10)	// Process every second.

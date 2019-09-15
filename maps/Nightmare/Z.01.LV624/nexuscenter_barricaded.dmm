@@ -19,7 +19,7 @@
 /area/lv624/lazarus/main_hall)
 "ad" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/item/stack/sheet/metal,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
@@ -38,7 +38,7 @@
 /area/lv624/lazarus/main_hall)
 "ag" = (
 /obj/structure/flora/pottedplant,
-/obj/machinery/light/spot{
+/obj/structure/machinery/light/spot{
 	dir = 1
 	},
 /obj/structure/barricade/wooden{
@@ -49,7 +49,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "ah" = (
-/obj/machinery/vending/snack,
+/obj/structure/machinery/vending/snack,
 /obj/item/stack/sheet/metal{
 	amount = 30;
 	pixel_x = 4;
@@ -101,7 +101,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "an" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -169,7 +169,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -264,7 +264,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aH" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/item/frame/table,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -391,7 +391,7 @@
 "aX" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/item/ammo_casing,
 /turf/open/floor{
 	icon_state = "floorscorched1"
@@ -506,7 +506,7 @@
 /area/lv624/lazarus/main_hall)
 "bk" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/structure/table,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
@@ -523,7 +523,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/item/ammo_casing,
 /turf/closed/wall/mineral/gold,
 /area/lv624/lazarus/main_hall)
@@ -654,7 +654,7 @@
 /obj/effect/decal/cleanable/blood{
 	pixel_y = 12
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/item/limb/hand/l_hand,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -743,7 +743,7 @@
 /area/lv624/lazarus/main_hall)
 "bL" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/structure/table{
 	dir = 2;
 	flipped = 1
@@ -793,7 +793,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/item/ammo_casing,
 /turf/open/floor{
 	icon_state = "white"
@@ -834,7 +834,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -907,11 +907,11 @@
 	},
 /area/lv624/lazarus/chapel)
 "Ft" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "Fu" = (
-/obj/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering{
 	density = 0;
 	icon_state = "door_open";
 	name = "\improper Nexus Cargo Storage"
@@ -945,7 +945,7 @@
 /area/lv624/lazarus/chapel)
 "FT" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "FU" = (
@@ -957,7 +957,7 @@
 /area/lv624/lazarus/quart)
 "FV" = (
 /obj/structure/table,
-/obj/machinery/door/window/westright{
+/obj/structure/machinery/door/window/westright{
 	layer = 2.9
 	},
 /obj/item/paper_bin,
@@ -977,7 +977,7 @@
 	},
 /area/lv624/lazarus/quart)
 "Gp" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
@@ -991,7 +991,7 @@
 	},
 /area/lv624/lazarus/quart)
 "Gq" = (
-/obj/machinery/status_display{
+/obj/structure/machinery/status_display{
 	pixel_y = -32
 	},
 /turf/open/floor{
@@ -1000,7 +1000,7 @@
 	},
 /area/lv624/lazarus/quart)
 "Gr" = (
-/obj/machinery/door/window/westleft,
+/obj/structure/machinery/door/window/westleft,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -1028,7 +1028,7 @@
 	},
 /area/lv624/lazarus/quart)
 "He" = (
-/obj/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor{
 	tag = "icon-whiteblue (NORTHWEST)";
 	icon_state = "whiteblue";
@@ -1037,7 +1037,7 @@
 /area/lv624/lazarus/main_hall)
 "Hf" = (
 /obj/structure/flora/pottedplant,
-/obj/machinery/light/spot{
+/obj/structure/machinery/light/spot{
 	dir = 1
 	},
 /turf/open/floor{
@@ -1045,7 +1045,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "Hj" = (
-/obj/machinery/recharge_station,
+/obj/structure/machinery/recharge_station,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -1055,7 +1055,7 @@
 	},
 /area/lv624/lazarus/quart)
 "HH" = (
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Nexus Dome Chapel"
 	},
 /turf/open/floor{
@@ -1098,7 +1098,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "Ir" = (
-/obj/machinery/atm{
+/obj/structure/machinery/atm{
 	name = "Automatic Teller Machine";
 	pixel_y = 30
 	},
@@ -1177,7 +1177,7 @@
 	},
 /area/lv624/lazarus/security)
 "Me" = (
-/obj/machinery/vending/cola,
+/obj/structure/machinery/vending/cola,
 /turf/open/floor{
 	tag = "icon-whiteblue (SOUTHWEST)";
 	icon_state = "whiteblue";
@@ -1186,7 +1186,7 @@
 /area/lv624/lazarus/main_hall)
 "Mf" = (
 /obj/structure/flora/pottedplant,
-/obj/machinery/light/spot,
+/obj/structure/machinery/light/spot,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -1201,7 +1201,7 @@
 /area/lv624/lazarus/main_hall)
 "Mj" = (
 /obj/structure/device/broken_piano,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor{
@@ -1257,7 +1257,7 @@
 	},
 /area/lv624/lazarus/security)
 "NR" = (
-/obj/machinery/power/apc{
+/obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Security Office APC"
 	},
@@ -1272,7 +1272,7 @@
 	},
 /area/lv624/lazarus/security)
 "NT" = (
-/obj/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security{
 	locked = 1;
 	name = "\improper Nexus Dome Marshal Office"
 	},
@@ -1287,7 +1287,7 @@
 /area/lv624/lazarus/kitchen)
 "NV" = (
 /obj/structure/table,
-/obj/machinery/chem_dispenser/soda{
+/obj/structure/machinery/chem_dispenser/soda{
 	pixel_y = 22
 	},
 /turf/open/floor{
@@ -1367,11 +1367,11 @@
 /area/lv624/lazarus/security)
 "OM" = (
 /obj/structure/flora/grass,
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "ON" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Nexus Dome Canteen"
 	},
 /turf/open/floor{

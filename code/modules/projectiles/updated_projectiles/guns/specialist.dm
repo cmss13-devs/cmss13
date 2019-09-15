@@ -666,7 +666,7 @@
 					if(S.opacity)
 						blocked = TRUE
 						break
-				for(var/obj/machinery/MA in T)
+				for(var/obj/structure/machinery/MA in T)
 					if(MA.opacity)
 						blocked = TRUE
 						break

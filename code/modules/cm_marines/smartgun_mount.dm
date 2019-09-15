@@ -96,7 +96,7 @@
 	if(!has_mount)
 		return FALSE
 	if(do_after(user, 1 SECOND, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		var/obj/machinery/m56d_post/M = new /obj/machinery/m56d_post(user.loc)
+		var/obj/structure/machinery/m56d_post/M = new /obj/structure/machinery/m56d_post(user.loc)
 		M.dir = user.dir // Make sure we face the right direction
 		M.gun_rounds = src.rounds //Inherit the amount of ammo we had.
 		M.gun_mounted = TRUE
@@ -127,7 +127,7 @@
 	return ..()
 
 
-/obj/item/device/m56d_post //Adding this because I was fucken stupid and put a obj/machinery in a box. Realized I couldn't take it out
+/obj/item/device/m56d_post //Adding this because I was fucken stupid and put a obj/structure/machinery in a box. Realized I couldn't take it out
 	name = "\improper M56D folded mount"
 	desc = "The folded, foldable tripod mount for the M56D.  (Place on ground and drag to you to unfold)."
 	unacidable = 1
@@ -138,12 +138,12 @@
 /obj/item/device/m56d_post/attack_self(mob/user) //click the tripod to unfold it.
 	if(!ishuman(usr)) return
 	to_chat(user, SPAN_NOTICE("You deploy [src]."))
-	new /obj/machinery/m56d_post(user.loc)
+	new /obj/structure/machinery/m56d_post(user.loc)
 	qdel(src)
 
 
 //The mount for the weapon.
-/obj/machinery/m56d_post
+/obj/structure/machinery/m56d_post
 	name = "\improper M56D mount"
 	desc = "A foldable tripod mount for the M56D, provides stability to the M56D."
 	icon = 'icons/turf/whiskeyoutpost.dmi'
@@ -156,14 +156,14 @@
 	var/gun_rounds = 0 //Did the gun come with any ammo?
 	health = 100
 
-/obj/machinery/m56d_post/update_health(damage)
+/obj/structure/machinery/m56d_post/update_health(damage)
 	health -= damage
 	if(health <= 0)
 		if(prob(30))
 			new /obj/item/device/m56d_post (src)
 		qdel(src)
 
-/obj/machinery/m56d_post/update_icon()
+/obj/structure/machinery/m56d_post/update_icon()
 	var/icon_name = "M56D"
 	if(gun_mounted)
 		if(!gun_rounds)
@@ -172,7 +172,7 @@
 		icon_name += "_mount"
 	icon_state = icon_name
 
-/obj/machinery/m56d_post/examine(mob/user)
+/obj/structure/machinery/m56d_post/examine(mob/user)
 	..()
 	if(!anchored)
 		to_chat(user, "It must be <B>screwed</b> to the floor.")
@@ -181,7 +181,7 @@
 	else
 		to_chat(user, "The M56D isn't screwed into the mount. Use a <b>screwdriver</b> to finish the job.")
 
-/obj/machinery/m56d_post/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/m56d_post/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoLarva(M)) return //Larvae can't do shit
 	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),
 	SPAN_DANGER("You slash [src]!"))
@@ -190,7 +190,7 @@
 	playsound(loc, "alien_claw_metal", 25)
 	update_health(rand(M.melee_damage_lower,M.melee_damage_upper))
 
-/obj/machinery/m56d_post/MouseDrop(over_object, src_location, over_location) //Drag the tripod onto you to fold it.
+/obj/structure/machinery/m56d_post/MouseDrop(over_object, src_location, over_location) //Drag the tripod onto you to fold it.
 	if(!ishuman(usr)) return
 	var/mob/living/carbon/human/user = usr //this is us
 	if(over_object == user && in_range(src, user))
@@ -202,7 +202,7 @@
 		user.put_in_hands(P)
 		qdel(src)
 
-/obj/machinery/m56d_post/attackby(obj/item/O, mob/user)
+/obj/structure/machinery/m56d_post/attackby(obj/item/O, mob/user)
 	if(!ishuman(user)) //first make sure theres no funkiness
 		return
 
@@ -258,7 +258,7 @@
 			if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] screws the M56D into the mount."),SPAN_NOTICE("You finalize the M56D heavy machine gun."))
-				var/obj/machinery/m56d_hmg/G = new(src.loc) //Here comes our new turret.
+				var/obj/structure/machinery/m56d_hmg/G = new(src.loc) //Here comes our new turret.
 				G.visible_message("[htmlicon(G)] <B>[G] is now complete!</B>") //finished it for everyone to
 				G.dir = src.dir //make sure we face the right direction
 				G.rounds = src.gun_rounds //Inherent the amount of ammo we had.
@@ -297,7 +297,7 @@
 
 
 // The actual Machinegun itself, going to borrow some stuff from current sentry code to make sure it functions. Also because they're similiar.
-/obj/machinery/m56d_hmg
+/obj/structure/machinery/m56d_hmg
 	name = "\improper M56D heavy machine gun"
 	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<br>Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire.<br><span class='notice'> !!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
 	icon = 'icons/turf/whiskeyoutpost.dmi'
@@ -328,19 +328,19 @@
 	var/zoom = 0 // 0 is it doesn't zoom, 1 is that it zooms.
 	var/damage_state = M56D_DMG_NONE
 
-/obj/machinery/m56d_hmg/New()
+/obj/structure/machinery/m56d_hmg/New()
 	ammo = ammo_list[ammo] //dunno how this works but just sliding this in from sentry-code.
 	burst_scatter_mult = config.lmed_scatter_value
 	update_icon()
 
-/obj/machinery/m56d_hmg/Dispose() //Make sure we pick up our trash.
+/obj/structure/machinery/m56d_hmg/Dispose() //Make sure we pick up our trash.
 	if(operator)
 		operator.unset_interaction()
 	SetLuminosity(0)
 	processing_objects.Remove(src)
 	. = ..()
 
-/obj/machinery/m56d_hmg/examine(mob/user) //Let us see how much ammo we got in this thing.
+/obj/structure/machinery/m56d_hmg/examine(mob/user) //Let us see how much ammo we got in this thing.
 	..()
 	if(ishuman(user))
 		if(rounds)
@@ -353,14 +353,14 @@
 			if(M56D_DMG_MODERATE) to_chat(user, SPAN_WARNING("It's damaged, but holding, rattling with each shot fired."))
 			if(M56D_DMG_HEAVY) to_chat(user, SPAN_WARNING("It's falling apart, barely able to handle the force of its own shots."))
 
-/obj/machinery/m56d_hmg/update_icon() //Lets generate the icon based on how much ammo it has.
+/obj/structure/machinery/m56d_hmg/update_icon() //Lets generate the icon based on how much ammo it has.
 	if(!rounds)
 		icon_state = "[icon_empty]"
 	else
 		icon_state = "[icon_full]"
 	return
 
-/obj/machinery/m56d_hmg/attackby(var/obj/item/O as obj, mob/user as mob) //This will be how we take it apart.
+/obj/structure/machinery/m56d_hmg/attackby(var/obj/item/O as obj, mob/user as mob) //This will be how we take it apart.
 	if(!ishuman(user))
 		return ..()
 
@@ -444,12 +444,12 @@
 		return
 	return ..()
 
-/obj/machinery/m56d_hmg/update_health(amount) //Negative values restores health.
+/obj/structure/machinery/m56d_hmg/update_health(amount) //Negative values restores health.
 	health -= amount
 	if(health <= 0)
 		var/destroyed = rand(0,1) //Ammo cooks off or something. Who knows.
 		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-		if(!destroyed) new /obj/machinery/m56d_post(loc)
+		if(!destroyed) new /obj/structure/machinery/m56d_post(loc)
 		else
 			var/obj/item/device/m56d_gun/HMG = new(loc)
 			HMG.rounds = src.rounds //Inherent the amount of ammo we had.
@@ -461,11 +461,11 @@
 	update_damage_state()
 	update_icon()
 
-/obj/machinery/m56d_hmg/ex_act(severity)
+/obj/structure/machinery/m56d_hmg/ex_act(severity)
 	update_health(severity)
 	return
 
-/obj/machinery/m56d_hmg/proc/update_damage_state()
+/obj/structure/machinery/m56d_hmg/proc/update_damage_state()
 	var/health_percent = round(health/health_max * 100)
 	switch(health_percent)
 		if(0 to 25) damage_state = M56D_DMG_HEAVY
@@ -473,13 +473,13 @@
 		if(50 to 75) damage_state = M56D_DMG_SLIGHT
 		if(75 to INFINITY) damage_state = M56D_DMG_NONE
 
-/obj/machinery/m56d_hmg/bullet_act(var/obj/item/projectile/P) //Nope.
+/obj/structure/machinery/m56d_hmg/bullet_act(var/obj/item/projectile/P) //Nope.
 	bullet_ping(P)
 	visible_message(SPAN_WARNING("[src] is hit by the [P.name]!"))
 	update_health(round(P.damage / 10)) //Universal low damage to what amounts to a post with a gun.
 	return 1
 
-/obj/machinery/m56d_hmg/attack_alien(mob/living/carbon/Xenomorph/M) // Those Ayy lmaos.
+/obj/structure/machinery/m56d_hmg/attack_alien(mob/living/carbon/Xenomorph/M) // Those Ayy lmaos.
 	if(isXenoLarva(M)) return //Larvae can't do shit
 	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),
 	SPAN_DANGER("You slash [src]!"))
@@ -488,7 +488,7 @@
 	playsound(loc, "alien_claw_metal", 25)
 	update_health(rand(M.melee_damage_lower,M.melee_damage_upper))
 
-/obj/machinery/m56d_hmg/proc/load_into_chamber()
+/obj/structure/machinery/m56d_hmg/proc/load_into_chamber()
 	if(in_chamber) return 1 //Already set!
 	if(rounds == 0)
 		update_icon() //make sure the user can see the lack of ammo.
@@ -498,7 +498,7 @@
 	in_chamber.generate_bullet(ammo)
 	return 1
 
-/obj/machinery/m56d_hmg/proc/process_shot(var/mob/user)
+/obj/structure/machinery/m56d_hmg/proc/process_shot(var/mob/user)
 	set waitfor = 0
 
 	if(isnull(target)) return //Acqure our victim.
@@ -525,7 +525,7 @@
 
 	target = null
 
-/obj/machinery/m56d_hmg/proc/fire_shot(shots_fired = 1, var/mob/user) //Bang Bang
+/obj/structure/machinery/m56d_hmg/proc/fire_shot(shots_fired = 1, var/mob/user) //Bang Bang
 	if(!ammo) return //No ammo.
 	if(last_fired) return //still shooting.
 
@@ -573,7 +573,7 @@
 	return
 
 // New proc for MGs and stuff replaced handle_manual_fire(). Same arguements though, so alls good.
-/obj/machinery/m56d_hmg/handle_click(mob/living/carbon/human/user, atom/A, var/list/mods)
+/obj/structure/machinery/m56d_hmg/handle_click(mob/living/carbon/human/user, atom/A, var/list/mods)
 	if(!operator) return HANDLE_CLICK_UNHANDLED
 	if(operator != user) return HANDLE_CLICK_UNHANDLED
 	if(istype(A,/obj/screen)) return HANDLE_CLICK_UNHANDLED
@@ -611,7 +611,7 @@
 
 	return HANDLE_CLICK_UNHANDLED
 
-/obj/machinery/m56d_hmg/proc/muzzle_flash(var/angle) // Might as well keep this too.
+/obj/structure/machinery/m56d_hmg/proc/muzzle_flash(var/angle) // Might as well keep this too.
 	if(isnull(angle)) return
 
 	SetLuminosity(muzzle_flash_lum)
@@ -628,7 +628,7 @@
 	I.transform = rotate
 	I.flick_overlay(src, 3)
 
-/obj/machinery/m56d_hmg/MouseDrop(over_object, src_location, over_location) //Drag the MG to us to man it.
+/obj/structure/machinery/m56d_hmg/MouseDrop(over_object, src_location, over_location) //Drag the MG to us to man it.
 	if(!ishuman(usr)) return
 	var/mob/living/carbon/human/user = usr //this is us
 	if(!Adjacent(user)) return
@@ -656,7 +656,7 @@
 				to_chat(user, SPAN_NOTICE("You man the gun!"))
 				user.set_interaction(src)
 
-/obj/machinery/m56d_hmg/on_set_interaction(mob/user)
+/obj/structure/machinery/m56d_hmg/on_set_interaction(mob/user)
 	flags_atom |= RELAY_CLICK
 	user.reset_view(src)
 	if(zoom)
@@ -677,7 +677,7 @@
 				user.client.pixel_y = 0
 	operator = user
 
-/obj/machinery/m56d_hmg/on_unset_interaction(mob/user)
+/obj/structure/machinery/m56d_hmg/on_unset_interaction(mob/user)
 	flags_atom &= ~RELAY_CLICK
 	user.reset_view(null)
 	if(zoom && user.client)
@@ -687,11 +687,11 @@
 	if(operator == user)
 		operator = null
 
-/obj/machinery/m56d_hmg/check_eye(mob/user)
+/obj/structure/machinery/m56d_hmg/check_eye(mob/user)
 	if(user.lying || get_dist(user,src) > 1 || user.is_mob_incapacitated() || !user.client)
 		user.unset_interaction()
 
-/obj/machinery/m56d_hmg/clicked(var/mob/user, var/list/mods) //Making it possible to toggle burst fire. Perhaps have altclick be the safety on the gun?
+/obj/structure/machinery/m56d_hmg/clicked(var/mob/user, var/list/mods) //Making it possible to toggle burst fire. Perhaps have altclick be the safety on the gun?
 	if (isobserver(user)) return
 
 	if (mods["ctrl"])
@@ -702,7 +702,7 @@
 		return 1
 	return ..()
 
-/obj/machinery/m56d_hmg/Bumped(atom/A)
+/obj/structure/machinery/m56d_hmg/Bumped(atom/A)
 	..()
 
 	if(istype(A, /mob/living/carbon/Xenomorph/Crusher))
@@ -711,7 +711,7 @@
 		update_health(C.charge_speed * 400)
 
 
-/obj/machinery/m56d_hmg/mg_turret //Our mapbound version with stupid amounts of ammo.
+/obj/structure/machinery/m56d_hmg/mg_turret //Our mapbound version with stupid amounts of ammo.
 	name = "\improper scoped M56D heavy machine gun nest"
 	desc = "A scoped M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire.<span class='notice'>!!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
 	burst_fire = 1
@@ -725,7 +725,7 @@
 	icon_empty = "towergun"
 	zoom = 1
 
-/obj/machinery/m56d_hmg/mg_turret/dropship
+/obj/structure/machinery/m56d_hmg/mg_turret/dropship
 	name = "\improper scoped M56D heavy machine gun"
 	desc = "A scoped M56D heavy machine gun mounted behind a metal shield. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire.<span class='notice'>!!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
 	icon_full = "towergun_folding"

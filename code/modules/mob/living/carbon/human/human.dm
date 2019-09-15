@@ -263,8 +263,8 @@
 // called when something steps onto a human
 // this handles mulebots and vehicles
 /mob/living/carbon/human/Crossed(var/atom/movable/AM)
-	if(istype(AM, /obj/machinery/bot/mulebot))
-		var/obj/machinery/bot/mulebot/MB = AM
+	if(istype(AM, /obj/structure/machinery/bot/mulebot))
+		var/obj/structure/machinery/bot/mulebot/MB = AM
 		MB.RunOver(src)
 
 	if(istype(AM, /obj/vehicle))
@@ -1360,8 +1360,8 @@
 
 /mob/living/carbon/proc/locate_nearest_nuke()
 	if(!bomb_set) return
-	var/obj/machinery/nuclearbomb/N
-	for(var/obj/machinery/nuclearbomb/bomb in world)
+	var/obj/structure/machinery/nuclearbomb/N
+	for(var/obj/structure/machinery/nuclearbomb/bomb in world)
 		if(!istype(N) || N.z != src.z )
 			N = bomb
 		if(bomb.z == src.z && get_dist(src,bomb) < get_dist(src,N))

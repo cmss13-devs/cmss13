@@ -1,4 +1,4 @@
-/obj/machinery/scoreboard
+/obj/structure/machinery/scoreboard
 	icon = 'icons/obj/structures/machinery/scoreboard.dmi'
 	icon_state = "scoreboard"
 	name = "basketball scoreboard"
@@ -11,11 +11,11 @@
 	var/scoreleft = 0
 	var/scoreright = 0
 
-/obj/machinery/scoreboard/New()
+/obj/structure/machinery/scoreboard/New()
 	..()
 	update_display()
 
-/obj/machinery/scoreboard/proc/update_display()
+/obj/structure/machinery/scoreboard/proc/update_display()
 	if(overlays.len)
 		overlays.Cut()
 
@@ -28,7 +28,7 @@
 	score_state = "s[scoreright%10]d"
 	overlays += image('icons/obj/structures/machinery/scoreboard.dmi', icon_state=score_state)
 
-/obj/machinery/scoreboard/proc/score(var/side, var/points=2)
+/obj/structure/machinery/scoreboard/proc/score(var/side, var/points=2)
 	switch(side)
 		if("left")
 			scoreleft += points
@@ -40,12 +40,12 @@
 				scoreright %= 100
 	update_display()
 
-/obj/machinery/scoreboard/proc/reset_scores()
+/obj/structure/machinery/scoreboard/proc/reset_scores()
 	scoreleft = 0
 	scoreright = 0
 	update_display()
 
-/obj/machinery/scoreboard_button
+/obj/structure/machinery/scoreboard_button
 	name = "scoreboard button"
 	desc = "A remote control button to reset a scoreboard."
 	icon = 'icons/obj/objects.dmi'
@@ -57,7 +57,7 @@
 	idle_power_usage = 2
 	active_power_usage = 4
 
-/obj/machinery/scoreboard_button/attack_hand(mob/user as mob)
+/obj/structure/machinery/scoreboard_button/attack_hand(mob/user as mob)
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if(active)
@@ -68,7 +68,7 @@
 	active = 1
 	icon_state = "launcheract"
 
-	for(var/obj/machinery/scoreboard/X in machines)
+	for(var/obj/structure/machinery/scoreboard/X in machines)
 		if(X.id == id)
 			X.reset_scores()
 

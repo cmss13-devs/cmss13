@@ -237,7 +237,7 @@
  * Crematorium switch
  */
 
-/obj/machinery/crema_switch/attack_hand(mob/user)
+/obj/structure/machinery/crema_switch/attack_hand(mob/user)
 	if(allowed(user))
 		for (var/obj/structure/morgue/crematorium/C in range(7,src))
 			if (C.id == id)

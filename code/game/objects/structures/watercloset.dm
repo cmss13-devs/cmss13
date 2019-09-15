@@ -118,7 +118,7 @@
 
 
 
-/obj/machinery/shower
+/obj/structure/machinery/shower
 	name = "shower"
 	desc = "The HS-451. Installed in the 2050s by the Weyland Hygiene Division."
 	icon = 'icons/obj/structures/props/watercloset.dmi'
@@ -133,7 +133,7 @@
 	var/mobpresent = 0		//true if there is a mob on the shower's loc, this is to ease process()
 	var/is_washing = 0
 
-/obj/machinery/shower/New()
+/obj/structure/machinery/shower/New()
 	..()
 	create_reagents(2)
 
@@ -147,7 +147,7 @@
 	anchored = 1
 	mouse_opacity = 0
 
-/obj/machinery/shower/attack_hand(mob/M as mob)
+/obj/structure/machinery/shower/attack_hand(mob/M as mob)
 	on = !on
 	update_icon()
 	if(on)
@@ -160,7 +160,7 @@
 	else
 		stop_processing()
 
-/obj/machinery/shower/attackby(obj/item/I as obj, mob/user as mob)
+/obj/structure/machinery/shower/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.type == /obj/item/device/analyzer)
 		to_chat(user, SPAN_NOTICE("The water temperature seems to be [watertemp]."))
 	if(istype(I, /obj/item/tool/wrench))
@@ -176,7 +176,7 @@
 			user.visible_message(SPAN_NOTICE("[user] adjusts the shower with \the [I]."), SPAN_NOTICE("You adjust the shower with \the [I]."))
 			add_fingerprint(user)
 
-/obj/machinery/shower/update_icon()	//this is terribly unreadable, but basically it makes the shower mist up
+/obj/structure/machinery/shower/update_icon()	//this is terribly unreadable, but basically it makes the shower mist up
 	overlays.Cut()					//once it's been on for a while, in addition to handling the water overlay.
 	if(mymist)
 		qdel(mymist)
@@ -203,20 +203,20 @@
 				mymist = null
 				ismist = 0
 
-/obj/machinery/shower/Crossed(atom/movable/O)
+/obj/structure/machinery/shower/Crossed(atom/movable/O)
 	..()
 	wash(O)
 	if(ismob(O))
 		mobpresent += 1
 		check_heat(O)
 
-/obj/machinery/shower/Uncrossed(atom/movable/O)
+/obj/structure/machinery/shower/Uncrossed(atom/movable/O)
 	if(ismob(O))
 		mobpresent -= 1
 	..()
 
 //Yes, showers are super powerful as far as washing goes.
-/obj/machinery/shower/proc/wash(atom/movable/O as obj|mob)
+/obj/structure/machinery/shower/proc/wash(atom/movable/O as obj|mob)
 	if(!on) return
 
 
@@ -300,14 +300,14 @@
 			if(istype(E,/obj/effect/decal/cleanable) || istype(E,/obj/effect/overlay))
 				qdel(E)
 
-/obj/machinery/shower/process()
+/obj/structure/machinery/shower/process()
 	if(!on) return
 	wash_floor()
 	if(!mobpresent)	return
 	for(var/mob/living/carbon/C in loc)
 		check_heat(C)
 
-/obj/machinery/shower/proc/wash_floor()
+/obj/structure/machinery/shower/proc/wash_floor()
 	if(!ismist && is_washing)
 		return
 	is_washing = 1
@@ -317,7 +317,7 @@
 	spawn(100)
 		is_washing = 0
 
-/obj/machinery/shower/proc/check_heat(mob/M as mob)
+/obj/structure/machinery/shower/proc/check_heat(mob/M as mob)
 	if(!on || watertemp == "normal") return
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M

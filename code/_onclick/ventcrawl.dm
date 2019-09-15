@@ -1,4 +1,4 @@
-var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/unary/vent_pump, /obj/machinery/atmospherics/unary/vent_scrubber)
+var/list/ventcrawl_machinery = list(/obj/structure/machinery/atmospherics/unary/vent_pump, /obj/structure/machinery/atmospherics/unary/vent_scrubber)
 
 /mob/living/proc/can_ventcrawl()
 	return 0
@@ -12,7 +12,7 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/unary/vent_pump,
 
 // Vent crawling whitelisted items, whoo
 /mob/living
-	var/canEnterVentWith = "/obj/item/implant=0&/obj/item/clothing/mask/facehugger=0&/obj/item/device/radio/borg=0&/obj/machinery/camera=0&/obj/item/verbs=0"
+	var/canEnterVentWith = "/obj/item/implant=0&/obj/item/clothing/mask/facehugger=0&/obj/item/device/radio/borg=0&/obj/structure/machinery/camera=0&/obj/item/verbs=0"
 
 /mob/living/click(var/atom/A, var/list/mods)
 	if (..())
@@ -26,7 +26,7 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/unary/vent_pump,
 /mob/proc/start_ventcrawl()
 	var/atom/pipe
 	var/list/pipes = list()
-	for(var/obj/machinery/atmospherics/unary/U in range(1))
+	for(var/obj/structure/machinery/atmospherics/unary/U in range(1))
 		if(is_type_in_list(U,ventcrawl_machinery) && Adjacent(U))
 			pipes |= U
 	if(!pipes || !pipes.len)
@@ -50,7 +50,7 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/unary/vent_pump,
 	if(!stat)
 		if(!lying)
 
-			var/obj/machinery/atmospherics/unary/vent_found
+			var/obj/structure/machinery/atmospherics/unary/vent_found
 
 			if(clicked_on && Adjacent(clicked_on))
 				vent_found = clicked_on
@@ -58,7 +58,7 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/unary/vent_pump,
 					vent_found = null
 
 			if(!vent_found)
-				var/obj/machinery/atmospherics/P
+				var/obj/structure/machinery/atmospherics/P
 				var/obj/O
 				for(O in range(1, src))
 					P = O
@@ -120,14 +120,14 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/unary/vent_pump,
 		to_chat(src, SPAN_WARNING("You must be conscious to do this!"))
 	return
 
-/mob/living/proc/add_ventcrawl(obj/machinery/atmospherics/starting_machine)
+/mob/living/proc/add_ventcrawl(obj/structure/machinery/atmospherics/starting_machine)
 	is_ventcrawling = 1
 	var/datum/pipe_network/network = starting_machine.return_network(starting_machine)
 	if(!network)
 		return
 	for(var/datum/pipeline/pipeline in network.line_members)
 		for(var/atom/X in (pipeline.members || pipeline.edges))
-			var/obj/machinery/atmospherics/A = X
+			var/obj/structure/machinery/atmospherics/A = X
 			if(!A.pipe_vision_img)
 				A.pipe_vision_img = image(A, A.loc, layer = BELOW_MOB_LAYER, dir = A.dir)
 				A.pipe_vision_img.alpha = 180

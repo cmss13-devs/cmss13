@@ -11,11 +11,11 @@
 	var/list/children_ready
 	var/list/children_override
 
-/datum/computer/file/embedded_program/docking/multi/New(var/obj/machinery/embedded_controller/M)
+/datum/computer/file/embedded_program/docking/multi/New(var/obj/structure/machinery/embedded_controller/M)
 	..(M)
 
-	if (istype(M,/obj/machinery/embedded_controller/radio/docking_port_multi))	//if our parent controller is the right type, then we can auto-init stuff at construction
-		var/obj/machinery/embedded_controller/radio/docking_port_multi/controller = M
+	if (istype(M,/obj/structure/machinery/embedded_controller/radio/docking_port_multi))	//if our parent controller is the right type, then we can auto-init stuff at construction
+		var/obj/structure/machinery/embedded_controller/radio/docking_port_multi/controller = M
 		//parse child_tags_txt and create child tags
 		children_tags = splittext(controller.child_tags_txt, ";")
 
@@ -115,11 +115,11 @@
 	var/docking_mode = 0	//0 = docking, 1 = undocking
 	var/response_sent = 0
 
-/datum/computer/file/embedded_program/airlock/multi_docking/New(var/obj/machinery/embedded_controller/M)
+/datum/computer/file/embedded_program/airlock/multi_docking/New(var/obj/structure/machinery/embedded_controller/M)
 	..(M)
 
-	if (istype(M, /obj/machinery/embedded_controller/radio/airlock/docking_port_multi))	//if our parent controller is the right type, then we can auto-init stuff at construction
-		var/obj/machinery/embedded_controller/radio/airlock/docking_port_multi/controller = M
+	if (istype(M, /obj/structure/machinery/embedded_controller/radio/airlock/docking_port_multi))	//if our parent controller is the right type, then we can auto-init stuff at construction
+		var/obj/structure/machinery/embedded_controller/radio/airlock/docking_port_multi/controller = M
 		src.master_tag = controller.master_tag
 
 /datum/computer/file/embedded_program/airlock/multi_docking/receive_user_command(command)

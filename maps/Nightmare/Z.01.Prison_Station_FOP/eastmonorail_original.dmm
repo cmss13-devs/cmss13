@@ -13,11 +13,11 @@
 /turf/closed/wall/prison,
 /area/prison/monorail/east)
 "bzo" = (
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "East Monorail Station"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -43,7 +43,7 @@
 /area/space)
 "bAQ" = (
 /obj/structure/flora/pottedplant,
-/obj/machinery/alarm/almayer{
+/obj/structure/machinery/alarm/almayer{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -53,8 +53,8 @@
 	},
 /area/prison/monorail/east)
 "bAR" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -72,7 +72,7 @@
 	},
 /area/prison/monorail/east)
 "bAT" = (
-/obj/machinery/vending/cola,
+/obj/structure/machinery/vending/cola,
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
 	icon_state = "darkredfull2";
@@ -109,8 +109,8 @@
 	},
 /area/prison/monorail/east)
 "bBW" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -128,7 +128,7 @@
 	},
 /area/prison/monorail/east)
 "bBY" = (
-/obj/machinery/vending/snack,
+/obj/structure/machinery/vending/snack,
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
 	icon_state = "darkredfull2";
@@ -166,8 +166,8 @@
 	},
 /area/prison/monorail/east)
 "bDm" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 4;
@@ -195,7 +195,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
+/obj/structure/machinery/power/apc{
 	dir = 4;
 	pixel_x = 28;
 	start_charge = 0
@@ -207,7 +207,7 @@
 	},
 /area/prison/monorail/east)
 "bER" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
@@ -218,12 +218,12 @@
 	},
 /area/prison/monorail/east)
 "bES" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkred2"
@@ -246,8 +246,8 @@
 	},
 /area/prison/monorail/east)
 "bGi" = (
-/obj/machinery/door/unpowered/shuttle,
-/obj/machinery/door/poddoor/shutters/transit{
+/obj/structure/machinery/door/unpowered/shuttle,
+/obj/structure/machinery/door/poddoor/shutters/transit{
 	density = 0;
 	icon_state = "shutter0";
 	opacity = 0
@@ -258,8 +258,8 @@
 	},
 /area/prison/monorail/east)
 "bGj" = (
-/obj/machinery/door/airlock/almayer/generic,
-/obj/machinery/door/poddoor/shutters/transit{
+/obj/structure/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/poddoor/shutters/transit{
 	density = 0;
 	icon_state = "shutter0";
 	opacity = 0
@@ -267,7 +267,7 @@
 /turf/open/floor/prison,
 /area/prison/monorail/east)
 "bGk" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkred2"
@@ -277,7 +277,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 8
 	},
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
 	},
@@ -297,7 +297,7 @@
 /turf/open/space,
 /area/space)
 "bKj" = (
-/obj/machinery/door/airlock/glass,
+/obj/structure/machinery/door/airlock/glass,
 /turf/open/floor{
 	icon_regular_floor = "delivery";
 	icon_state = "delivery"
@@ -310,7 +310,7 @@
 /turf/open/space,
 /area/space)
 "bMx" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -320,7 +320,7 @@
 	},
 /area/prison/monorail/east)
 "bMy" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (NORTHWEST)";
 	icon_state = "intact-scrubbers";
 	dir = 9
@@ -337,7 +337,7 @@
 	},
 /area/prison/monorail/east)
 "bNq" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
 	},

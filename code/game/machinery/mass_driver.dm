@@ -1,6 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
-/obj/machinery/mass_driver
+/obj/structure/machinery/mass_driver
 	name = "mass driver"
 	desc = "Shoots things into space."
 	icon = 'icons/obj/structures/props/stationobjs.dmi'

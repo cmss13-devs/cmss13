@@ -38,7 +38,7 @@
 	var/obj/structure/dropship_equipment/weapon/error_weapon
 	var/name = "Unnamed Firemission"
 
-/datum/cas_fire_mission/proc/check(obj/machinery/computer/dropship_weapons/linked_console)
+/datum/cas_fire_mission/proc/check(obj/structure/machinery/computer/dropship_weapons/linked_console)
 	error_weapon = null
 	if(records.len == 0)
 		return FIRE_MISSION_ALL_GOOD //I mean yes... but why?
@@ -113,7 +113,7 @@
 		return "Weapon [weapon_string] has not enough ammunition to complete this Fire Mission"
 	return "Unknown Error"
 
-/datum/cas_fire_mission/proc/execute_firemission(obj/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope = null)
+/datum/cas_fire_mission/proc/execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope = null)
 	if(initial_turf == null || check(linked_console) != FIRE_MISSION_ALL_GOOD)
 		return -1
 	var/turf/current_turf = initial_turf

@@ -1,4 +1,4 @@
-/obj/machinery/power/generator_type2
+/obj/structure/machinery/power/generator_type2
 	name = "thermoelectric generator"
 	desc = "It's a high efficiency thermoelectric generator."
 	icon_state = "teg"
@@ -6,25 +6,25 @@
 	density = 1
 	use_power = 0
 
-	var/obj/machinery/atmospherics/unary/generator_input/input1
-	var/obj/machinery/atmospherics/unary/generator_input/input2
+	var/obj/structure/machinery/atmospherics/unary/generator_input/input1
+	var/obj/structure/machinery/atmospherics/unary/generator_input/input2
 
 	var/lastgen = 0
 	var/lastgenlev = -1
 
 
-/obj/machinery/power/generator_type2/New()
+/obj/structure/machinery/power/generator_type2/New()
 	..()
 	spawn(5)
-		input1 = locate(/obj/machinery/atmospherics/unary/generator_input) in get_step(src,turn(dir, 90))
-		input2 = locate(/obj/machinery/atmospherics/unary/generator_input) in get_step(src,turn(dir, -90))
+		input1 = locate(/obj/structure/machinery/atmospherics/unary/generator_input) in get_step(src,turn(dir, 90))
+		input2 = locate(/obj/structure/machinery/atmospherics/unary/generator_input) in get_step(src,turn(dir, -90))
 		if(!input1 || !input2)
 			stat |= BROKEN
 		updateicon()
 		start_processing_power()
 
 
-/obj/machinery/power/generator_type2/proc/updateicon()
+/obj/structure/machinery/power/generator_type2/proc/updateicon()
 
 	if(stat & (NOPOWER|BROKEN))
 		overlays.Cut()
@@ -37,7 +37,7 @@
 #define GENRATE 800		// generator output coefficient from Q
 
 
-/obj/machinery/power/generator_type2/process()
+/obj/structure/machinery/power/generator_type2/process()
 	if(!input1 || !input2)
 		return
 
@@ -51,18 +51,18 @@
 	src.updateDialog()
 
 
-/obj/machinery/power/generator_type2/attack_ai(mob/user)
+/obj/structure/machinery/power/generator_type2/attack_ai(mob/user)
 	if(stat & (BROKEN|NOPOWER)) return
 	interact(user)
 
 
-/obj/machinery/power/generator_type2/attack_hand(mob/user)
+/obj/structure/machinery/power/generator_type2/attack_hand(mob/user)
 	add_fingerprint(user)
 	if(stat & (BROKEN|NOPOWER)) return
 	interact(user)
 
 
-/obj/machinery/power/generator_type2/interact(mob/user)
+/obj/structure/machinery/power/generator_type2/interact(mob/user)
 	if ( (get_dist(src, user) > 1 ) && (!isAI(user)))
 		user.unset_interaction()
 		user << browse(null, "window=teg")
@@ -90,7 +90,7 @@
 	return 1
 
 
-/obj/machinery/power/generator_type2/Topic(href, href_list)
+/obj/structure/machinery/power/generator_type2/Topic(href, href_list)
 	..()
 
 	if( href_list["close"] )
@@ -101,6 +101,6 @@
 	return 1
 
 
-/obj/machinery/power/generator_type2/power_change()
+/obj/structure/machinery/power/generator_type2/power_change()
 	..()
 	updateicon()

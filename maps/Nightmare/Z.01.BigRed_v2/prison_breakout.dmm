@@ -55,7 +55,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "ag" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor{
@@ -74,7 +74,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/n)
 "ak" = (
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/structure/machinery/atmospherics/unary/vent_pump,
 /turf/open/floor{
 	tag = "icon-white";
 	icon_state = "white";
@@ -119,7 +119,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "ap" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	tag = "icon-white";
 	icon_state = "white";
@@ -133,7 +133,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "ar" = (
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
 /turf/open/floor{
@@ -142,7 +142,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "as" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Marshall Office Prison";
 	req_one_access = list()
@@ -157,8 +157,8 @@
 /turf/closed/wall,
 /area/bigredv2/outside/marshall_office)
 "au" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Marshall Office Prison";
 	req_one_access = list()
@@ -170,7 +170,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "av" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Marshall Office Prison Toilet"
 	},
@@ -189,7 +189,7 @@
 /area/bigredv2/outside/marshall_office)
 "ax" = (
 /obj/structure/table,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -200,7 +200,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "ay" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor{
@@ -210,7 +210,7 @@
 /area/bigredv2/outside/marshall_office)
 "az" = (
 /obj/structure/table,
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 2
 	},
 /turf/open/floor{
@@ -232,7 +232,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aB" = (
-/obj/machinery/flasher/portable,
+/obj/structure/machinery/flasher/portable,
 /turf/open/floor{
 	icon_state = "vault";
 	dir = 8
@@ -240,7 +240,7 @@
 /area/bigredv2/outside/marshall_office)
 "aC" = (
 /obj/structure/closet/l3closet/security,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	tag = "icon-tube1 (NORTH)";
 	icon_state = "tube1";
 	dir = 1
@@ -282,7 +282,7 @@
 /area/bigredv2/outside/marshall_office)
 "aH" = (
 /obj/structure/rack,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	tag = "icon-tube1 (NORTH)";
 	icon_state = "tube1";
 	dir = 1
@@ -294,7 +294,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aI" = (
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
 	icon_state = "door_locked";
 	locked = 1;
@@ -308,8 +308,8 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aJ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
 	icon_state = "door_locked";
 	locked = 1;
@@ -323,7 +323,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aK" = (
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	density = 0;
 	dir = 1;
 	icon_state = "door_open";
@@ -337,7 +337,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aL" = (
-/obj/machinery/deployable/barrier,
+/obj/structure/machinery/deployable/barrier,
 /turf/open/floor{
 	icon_state = "vault";
 	dir = 8
@@ -371,7 +371,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "redcorner";
 	dir = 4
@@ -412,7 +412,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aW" = (
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/structure/machinery/atmospherics/unary/vent_pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "dark"
@@ -420,7 +420,7 @@
 /area/bigredv2/outside/marshall_office)
 "aX" = (
 /obj/structure/table/reinforced,
-/obj/machinery/door/window/brigdoor/eastleft,
+/obj/structure/machinery/door/window/brigdoor/eastleft,
 /obj/item/weapon/shield/riot,
 /turf/open/floor{
 	icon_state = "vault";
@@ -439,13 +439,13 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "ba" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "bb" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -453,7 +453,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "bc" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -462,28 +462,28 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "bd" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "be" = (
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 2
 	},
-/obj/machinery/power/apc,
+/obj/structure/machinery/power/apc,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshall_office)
 "bg" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshall_office)
 "bh" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "redcorner"
@@ -496,7 +496,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bj" = (
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 2
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -531,7 +531,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 2;
@@ -539,8 +539,8 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bp" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	density = 0;
 	dir = 1;
 	icon_state = "door_open";
@@ -552,7 +552,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bq" = (
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 4;
 	name = "\improper Marshall Office Brig"
 	},
@@ -561,7 +561,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "br" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "delivery"
 	},
@@ -580,7 +580,7 @@
 /area/bigredv2/outside/marshall_office)
 "bu" = (
 /obj/structure/table,
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
 /obj/item/ammo_magazine/shotgun/buckshot,
@@ -596,7 +596,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bw" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/item/ammo_casing/shell,
@@ -605,14 +605,14 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bx" = (
-/obj/machinery/computer/secure_data,
+/obj/structure/machinery/computer/secure_data,
 /obj/structure/table,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshall_office)
 "by" = (
-/obj/machinery/computer/forensic_scanning,
+/obj/structure/machinery/computer/forensic_scanning,
 /turf/open/floor{
 	tag = "icon-bcircuit";
 	icon_state = "bcircuit";
@@ -627,7 +627,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bA" = (
-/obj/machinery/computer/security,
+/obj/structure/machinery/computer/security,
 /obj/structure/table,
 /turf/open/floor{
 	tag = "icon-bcircuit";
@@ -667,7 +667,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bF" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "redcorner"
@@ -712,7 +712,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshall_office)
 "bM" = (
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
 /turf/open/floor{
@@ -747,7 +747,7 @@
 /area/bigredv2/outside/marshall_office)
 "bQ" = (
 /obj/structure/table/reinforced,
-/obj/machinery/door/window/brigdoor/westright,
+/obj/structure/machinery/door/window/brigdoor/westright,
 /turf/open/floor{
 	icon_state = "vault";
 	dir = 8
@@ -777,7 +777,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bU" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 8
 	},
 /obj/item/ammo_casing/shell,
@@ -786,7 +786,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -795,11 +795,11 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bW" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 4;
 	icon_state = "door_locked";
 	locked = 1;
@@ -820,7 +820,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bY" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -848,7 +848,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cb" = (
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 4;
 	name = "\improper Marshall Office Interrogation";
 	req_access = list()
@@ -881,7 +881,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cg" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "dark"
@@ -889,13 +889,13 @@
 /area/bigredv2/outside/marshall_office)
 "ch" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/computer/prisoner,
+/obj/structure/machinery/computer/prisoner,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshall_office)
 "ci" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -911,7 +911,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "ck" = (
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
 /turf/open/floor{
@@ -921,7 +921,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cl" = (
-/obj/machinery/door_control{
+/obj/structure/machinery/door_control{
 	id = "Marshall Offices";
 	name = "Storm Shutters";
 	pixel_x = -32
@@ -937,7 +937,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cm" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/shell,
 /turf/open/floor{
@@ -947,7 +947,7 @@
 /area/bigredv2/outside/marshall_office)
 "cn" = (
 /obj/structure/table/reinforced,
-/obj/machinery/door/window/brigdoor/southright,
+/obj/structure/machinery/door/window/brigdoor/southright,
 /turf/open/floor{
 	icon_state = "vault";
 	dir = 8
@@ -963,7 +963,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshall_office)
 "cq" = (
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
 	name = "\improper Marshall Office Evidence Room";
 	req_access = list()
@@ -973,7 +973,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cr" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -984,7 +984,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cs" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "ct" = (
@@ -1022,7 +1022,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cy" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor{
@@ -1031,7 +1031,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cz" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1041,7 +1041,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cA" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1051,10 +1051,10 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cB" = (
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1064,7 +1064,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cC" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1075,33 +1075,33 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cE" = (
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/manifold4w/hidden/green,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "cF" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "cK" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "cL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "cM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1110,7 +1110,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "cN" = (
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Marshall Office"
 	},
@@ -1150,7 +1150,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cR" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
 	on = 1
 	},
@@ -1160,7 +1160,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cS" = (
-/obj/machinery/alarm{
+/obj/structure/machinery/alarm{
 	dir = 1;
 	icon_state = "alarm0";
 	pixel_y = -30;
@@ -1174,14 +1174,14 @@
 "cT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/frame/table,
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "redcorner"
 	},
 /area/bigredv2/outside/marshall_office)
 "cU" = (
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	density = 0;
 	dir = 1;
 	icon_state = "door_open";
@@ -1193,7 +1193,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cV" = (
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
 	icon_state = "door_locked";
 	locked = 1;
@@ -1205,7 +1205,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cW" = (
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
 	name = "\improper Marshall Office Checkpoint";
 	req_access = list()
@@ -1217,8 +1217,8 @@
 /area/bigredv2/outside/marshall_office)
 "cX" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 4;
 	name = "\improper Marshall Office"
 	},
@@ -1241,7 +1241,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "db" = (
-/obj/machinery/door_control{
+/obj/structure/machinery/door_control{
 	id = "Marshall Offices";
 	name = "Storm Shutters";
 	pixel_x = -32
@@ -1260,7 +1260,7 @@
 /area/bigredv2/outside/marshall_office)
 "dd" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "de" = (
@@ -1276,7 +1276,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "dg" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -1306,8 +1306,8 @@
 /turf/closed/wall/r_wall,
 /area/bigredv2/outside/medical)
 "dk" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 4;
 	name = "\improper Marshall Office"
 	},

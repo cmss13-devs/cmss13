@@ -104,7 +104,7 @@
 				else if(istype(O, /obj/structure/window_frame))
 					new /obj/effect/alien/weeds/weedwall/frame(T)
 					continue direction_loop
-				else if(istype(O, /obj/machinery/door) && O.density && (!(O.flags_atom & ON_BORDER) || O.dir != dirn))
+				else if(istype(O, /obj/structure/machinery/door) && O.density && (!(O.flags_atom & ON_BORDER) || O.dir != dirn))
 					continue direction_loop
 
 			new /obj/effect/alien/weeds(T, node)

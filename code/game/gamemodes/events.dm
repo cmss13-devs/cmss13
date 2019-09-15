@@ -63,7 +63,7 @@
 /proc/high_radiation_event()
 
 /* // Haha, this is way too laggy. I'll keep the prison break though.
-	for(var/obj/machinery/light/L in machines)
+	for(var/obj/structure/machinery/light/L in machines)
 		if(L.z != 1) continue
 		L.flicker(50)
 
@@ -112,11 +112,11 @@
 			return
 
 		for(var/obj/effect/landmark/epicentre in epicentreList)
-			for(var/obj/machinery/power/apc/apc in range(epicentre,lightsoutRange))
+			for(var/obj/structure/machinery/power/apc/apc in range(epicentre,lightsoutRange))
 				apc.overload_lighting()
 
 	else
-		for(var/obj/machinery/power/apc/apc in machines)
+		for(var/obj/structure/machinery/power/apc/apc in machines)
 			apc.overload_lighting()
 
 	return

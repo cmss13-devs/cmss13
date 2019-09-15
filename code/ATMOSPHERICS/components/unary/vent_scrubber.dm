@@ -1,4 +1,4 @@
-/obj/machinery/atmospherics/unary/vent_scrubber
+/obj/structure/machinery/atmospherics/unary/vent_scrubber
 	icon = 'icons/obj/pipes/vent_scrubber.dmi'
 	icon_state = "map_scrubber"
 
@@ -20,10 +20,10 @@
 
 	var/area_uid
 
-/obj/machinery/atmospherics/unary/vent_scrubber/on
+/obj/structure/machinery/atmospherics/unary/vent_scrubber/on
 	on = 1
 
-/obj/machinery/atmospherics/unary/vent_scrubber/New()
+/obj/structure/machinery/atmospherics/unary/vent_scrubber/New()
 	..()
 
 	icon = null
@@ -37,7 +37,7 @@
 	if(ticker && ticker.current_state == GAME_STATE_PLAYING)//if the game is running
 		src.initialize()
 
-/obj/machinery/atmospherics/unary/vent_scrubber/update_icon(var/safety = 0)
+/obj/structure/machinery/atmospherics/unary/vent_scrubber/update_icon(var/safety = 0)
 	if(!check_icon_cache())
 		return
 
@@ -61,13 +61,13 @@
 
 	overlays += icon_manager.get_atmos_icon("device", , , scrubber_icon)
 
-/obj/machinery/atmospherics/unary/vent_scrubber/update_underlays()
+/obj/structure/machinery/atmospherics/unary/vent_scrubber/update_underlays()
 	if(..())
 		underlays.Cut()
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		if(T.intact_tile && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+		if(T.intact_tile && node && node.level == 1 && istype(node, /obj/structure/machinery/atmospherics/pipe))
 			return
 		else
 			if(node)
@@ -75,11 +75,11 @@
 			else
 				add_underlay(T,, dir)
 
-/obj/machinery/atmospherics/unary/vent_scrubber/hide(var/i) //to make the little pipe section invisible, the icon changes.
+/obj/structure/machinery/atmospherics/unary/vent_scrubber/hide(var/i) //to make the little pipe section invisible, the icon changes.
 	update_icon()
 	update_underlays()
 
-/obj/machinery/atmospherics/unary/vent_scrubber/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/atmospherics/unary/vent_scrubber/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(1, user))
@@ -127,7 +127,7 @@
 		new /obj/item/pipe(loc, make_from = src)
 		qdel(src)
 
-/obj/machinery/atmospherics/unary/vent_scrubber/examine(mob/user)
+/obj/structure/machinery/atmospherics/unary/vent_scrubber/examine(mob/user)
 	..()
 	if(get_dist(user, src) <= 1)
 		to_chat(user, SPAN_INFO("A small gauge in the corner reads [round(last_flow_rate, 0.1)] L/s; 0W."))
@@ -136,11 +136,11 @@
 	if(welded)
 		to_chat(user, SPAN_INFO("It seems welded shut."))
 
-/obj/machinery/atmospherics/unary/vent_scrubber/Dispose()
+/obj/structure/machinery/atmospherics/unary/vent_scrubber/Dispose()
 	if(initial_loc)
 		initial_loc.air_scrub_info -= id_tag
 		initial_loc.air_scrub_names -= id_tag
 	. = ..()
 
-/obj/machinery/atmospherics/unary/vent_scrubber/can_crawl_through()
+/obj/structure/machinery/atmospherics/unary/vent_scrubber/can_crawl_through()
 	return !welded

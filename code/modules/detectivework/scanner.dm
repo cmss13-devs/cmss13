@@ -24,8 +24,8 @@
 		F.add_fingerprint(M)
 		F.icon_state = "fingerprint1"
 		F.name = text("FPrintC- '[M.name]'")
-		to_chat(user, "<span class='notice'>Done printing.")
-		to_chat(user, "<span class='notice'>[M]'s Fingerprints: [M.fingerprint]")
+		to_chat(user, SPAN_NOTICE("Done printing."))
+		to_chat(user, SPAN_NOTICE("[M]'s Fingerprints: [M.fingerprint]"))
 	if ( M.blood_DNA && M.blood_DNA.len )
 		to_chat(user, SPAN_NOTICE("Blood found on [M]. Analysing..."))
 		spawn(15)
@@ -37,10 +37,10 @@
 	if(!proximity) return
 	if(ismob(A))
 		return
-	if(istype(A,/obj/machinery/computer/forensic_scanning))
+	if(istype(A,/obj/structure/machinery/computer/forensic_scanning))
 		user.visible_message("[user] takes a cord out of [src] and hooks its end into [A]" ,\
 		SPAN_NOTICE("You download data from [src] to [A]"))
-		var/obj/machinery/computer/forensic_scanning/F = A
+		var/obj/structure/machinery/computer/forensic_scanning/F = A
 		F.sync_data(stored)
 		return
 
@@ -95,7 +95,7 @@
 
 	//FIBERS
 	if(A.suit_fibers && A.suit_fibers.len)
-		to_chat(user, "<span class='notice'>Fibers/Materials Data Stored: Scan with Hi-Res Forensic Scanner to retrieve.")
+		to_chat(user, SPAN_NOTICE("Fibers/Materials Data Stored: Scan with Hi-Res Forensic Scanner to retrieve."))
 		flick("forensic2",src)
 
 	//Blood

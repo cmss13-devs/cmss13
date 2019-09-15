@@ -27,7 +27,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 */
 
 // Wrapper verb for advanced proccall
-/client/verb/advproccall()
+/client/proc/advproccall()
 	set category = "Debug"
 	set name = "Advanced ProcCall"
 

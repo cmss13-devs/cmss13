@@ -597,7 +597,8 @@
 	var/color = null
 	var/prefix = ""
 	var/queen_leader_limit = 2
-	var/list/xeno_leader_list = list()
+	var/list/open_xeno_leader_positions = list(1, 2) // Ordered list of xeno leader positions (indexes in xeno_leader_list) that are not occupied
+	var/list/xeno_leader_list[2] // Ordered list (i.e. index n holds the nth xeno leader)
 	var/stored_larva = 0
 	var/list/tier_2_xenos = list()//list of living tier2 xenos
 	var/list/tier_3_xenos = list()//list of living tier3 xenos
@@ -688,13 +689,24 @@
 	recalculate_hive()
 
 /datum/hive_status/proc/recalculate_hive()
-	if(!living_xeno_queen)
+	if (!living_xeno_queen)
 		queen_leader_limit = 0 //No leaders for a Hive without a Queen!
 	else
 		queen_leader_limit = 2 + living_xeno_queen.upgrade + mutators.leader_count_boost
-	while(xeno_leader_list.len > queen_leader_limit)
-		//Removing Hive leaders from the most freshly added to the oldest ones
-		remove_hive_leader(xeno_leader_list[xeno_leader_list.len])
+
+	if (xeno_leader_list.len > queen_leader_limit)
+		var/diff = 0
+		for (var/i = queen_leader_limit + 1 to xeno_leader_list.len)
+			if(!open_xeno_leader_positions.Remove(i))
+				remove_hive_leader(xeno_leader_list[i])
+			diff++
+		xeno_leader_list.len -= diff // Changing the size of xeno_leader_list needs to go at the end or else it won't iterate through the list properly
+	else if (xeno_leader_list.len < queen_leader_limit)
+		for (var/i = xeno_leader_list.len + 1 to queen_leader_limit)
+			open_xeno_leader_positions += i
+			xeno_leader_list.len++
+
+
 	tier_slot_multiplier = mutators.tier_slot_multiplier
 
 	larva_gestation_multiplier = mutators.larva_gestation_multiplier
@@ -703,22 +715,33 @@
 /datum/hive_status/proc/add_hive_leader(var/mob/living/carbon/Xenomorph/xeno)
 	if(!xeno)
 		return FALSE //How did this even happen?
-	if(xeno_leader_list.len >= queen_leader_limit)
-		return FALSE //Too many leaders already
-	if(xeno in xeno_leader_list)
+	if(!open_xeno_leader_positions.len)
+		return FALSE //Too many leaders already (no available xeno leader positions)
+	if(xeno.hive_pos != NORMAL_XENO)
 		return FALSE //Already on the list
-	xeno_leader_list += xeno
-	xeno.queen_chosen_lead = TRUE
+	var/leader_num = open_xeno_leader_positions[1]
+	xeno_leader_list[leader_num] = xeno
+	xeno.hive_pos = XENO_LEADER(leader_num)
 	xeno.handle_xeno_leader_pheromones()
+	open_xeno_leader_positions -= leader_num
 
 	hive_ui.update_xeno_keys()
 
 	return TRUE
 
 /datum/hive_status/proc/remove_hive_leader(var/mob/living/carbon/Xenomorph/xeno)
-	xeno_leader_list -= xeno
-	xeno.queen_chosen_lead = FALSE
+	var/leader_num = GET_XENO_LEADER_NUM(xeno.hive_pos)
+	
+	xeno.hive_pos = NORMAL_XENO
 	xeno.handle_xeno_leader_pheromones()
+
+	xeno_leader_list[leader_num] = null
+
+	// Need to maintain ascending order of open_xeno_leader_positions
+	for (var/i = 1 to open_xeno_leader_positions.len + 1)
+		if (i > open_xeno_leader_positions.len || open_xeno_leader_positions[i] > leader_num)
+			open_xeno_leader_positions.Insert(i, leader_num)
+			break
 
 	hive_ui.update_xeno_keys()
 
@@ -776,7 +799,7 @@
 		xenos[index++] = list(
 			"nicknumber" = X.nicknumber,
 			"tier" = X.tier, // This one is only important for sorting
-			"leader" = (X in X.hive.xeno_leader_list),
+			"leader" = (IS_XENO_LEADER(X.hive_pos)),
 			"is_queen" = istype(X.caste, /datum/caste_datum/queen),
 		)
 

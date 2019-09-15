@@ -117,7 +117,7 @@
 					track = "(<a href='byond://?src=\ref[S];track=\ref[src]'>follow</a>)"
 					if(isXenoQueen(src))
 						ghostrend = SPAN_XENOQUEEN("Hivemind, [name] [track] hisses, '[message]'")
-					else if(src in hive.xeno_leader_list)
+					else if(IS_XENO_LEADER(hive_pos))
 						ghostrend = SPAN_XENOLEADER("Hivemind, Leader [name] [track] hisses, '[message]'")
 					else
 						ghostrend = SPAN_XENO("Hivemind, [name] [track] hisses, '[message]'")
@@ -128,7 +128,7 @@
 
 				if(isXenoQueen(src))
 					rendered = SPAN_XENOQUEEN("Hivemind, [name] [overwatch_insert] hisses, '[message]'")
-				else if(src in hive.xeno_leader_list)
+				else if(IS_XENO_LEADER(hive_pos))
 					rendered = SPAN_XENOLEADER("Hivemind, Leader [name] [overwatch_insert] hisses, '[message]'")
 				else if(caste.is_robotic)
 					var/message_b = pick("high-pitched blast of static","series of pings","long string of numbers","loud, mechanical squeal", "series of beeps")

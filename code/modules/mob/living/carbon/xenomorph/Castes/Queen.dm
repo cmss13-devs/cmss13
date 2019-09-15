@@ -106,6 +106,7 @@
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 0 //Queen doesn't count towards population limit.
+	hive_pos = XENO_QUEEN
 
 	var/map_view = 0
 	var/breathing_counter = 0
@@ -251,9 +252,10 @@
 /mob/living/carbon/Xenomorph/Queen/Stat()
 	..()
 	var/stored_larvae = hive_datum[hivenumber].stored_larva
+	var/xeno_leader_num = hive.queen_leader_limit - hive.open_xeno_leader_positions.len
 
 	stat("Burrowed Larvae:", "[stored_larvae]")
-	stat("Leaders:", "[hive.xeno_leader_list.len] / [hive.queen_leader_limit]")
+	stat("Leaders:", "[xeno_leader_num] / [hive.queen_leader_limit]")
 	return 1
 
 //Custom bump for crushers. This overwrites normal bumpcode from carbon.dm

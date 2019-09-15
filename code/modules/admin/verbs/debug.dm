@@ -26,9 +26,14 @@ Because if you select a player mob as owner it tries to do the proc for
 But you can call procs that are of type /mob/living/carbon/human/proc/ for that player.
 */
 
-/client/proc/callproc(var/datum/target_datum=null)
+// Wrapper verb for advanced proccall
+/client/verb/advproccall()
 	set category = "Debug"
 	set name = "Advanced ProcCall"
+
+	callproc(null)
+
+/client/proc/callproc(var/datum/target_datum=null)
 	set waitfor = 0
 
 	if(!check_rights(R_DEBUG)) return

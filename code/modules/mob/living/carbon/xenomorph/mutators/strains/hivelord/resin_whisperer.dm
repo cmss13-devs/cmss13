@@ -20,7 +20,7 @@
 	
 	var/mob/living/carbon/Xenomorph/Hivelord/H = MS.xeno
 	H.plasmapool_modifier = 0.8 // -20% plasma pool
-	H.caste.max_build_dist = 13 // 13 tile build range
+	H.extra_build_dist = 12 // 1 + 12 = 13 tile build range
 
 	H.tileoffset = 3
 	H.viewsize = 10 // +3 tiles ahead
@@ -29,11 +29,6 @@
 	mutator_update_actions(H)
 	MS.recalculate_actions(description)
 	H.recalculate_plasma()
-
-/datum/xeno_mutator/resinwhisperer/on_upgrade(var/datum/mutator_set/individual_mutators/MS, var/level)
-	// Caste got upgraded, so re-apply the build distance modifier
-	var/mob/living/carbon/Xenomorph/Hivelord/H = MS.xeno
-	H.caste.max_build_dist = 13
 
 /*
  *    Coerce Resin ability

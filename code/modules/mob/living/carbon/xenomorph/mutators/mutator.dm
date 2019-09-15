@@ -77,7 +77,3 @@
 		for (var/action_datum in mutator_actions_to_add)
 			var/datum/action/xeno_action/A = new action_datum()
 			A.give_action(X)
-
-// Called when the xeno upgrades
-/datum/xeno_mutator/proc/on_upgrade(datum/mutator_set/MS, level)
-	return

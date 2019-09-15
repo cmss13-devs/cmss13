@@ -1,4 +1,4 @@
-/obj/machinery/hydro_floodlight_switch
+/obj/structure/machinery/hydro_floodlight_switch
 	name = "Biodome Floodlight Switch"
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "panelnopower"
@@ -11,23 +11,23 @@
 	unacidable = 1
 	var/list/floodlist = list() // This will save our list of floodlights on the map
 
-/obj/machinery/hydro_floodlight_switch/New() //Populate our list of floodlights so we don't need to scan for them ever again
+/obj/structure/machinery/hydro_floodlight_switch/New() //Populate our list of floodlights so we don't need to scan for them ever again
 	sleep(5) //let's make sure it exists first..
-	for(var/obj/machinery/hydro_floodlight/F in machines)
+	for(var/obj/structure/machinery/hydro_floodlight/F in machines)
 		floodlist += F
 		F.fswitch = src
 	..()
 	start_processing()
 
-/obj/machinery/hydro_floodlight_switch/process()
+/obj/structure/machinery/hydro_floodlight_switch/process()
 	var/lightpower = 0
-	for(var/obj/machinery/hydro_floodlight/H in floodlist)
+	for(var/obj/structure/machinery/hydro_floodlight/H in floodlist)
 		if(!H.is_lit)
 			continue
 		lightpower += H.power_tick
 	use_power(lightpower)
 
-/obj/machinery/hydro_floodlight_switch/update_icon()
+/obj/structure/machinery/hydro_floodlight_switch/update_icon()
 	if(!ispowered)
 		icon_state = "panelnopower"
 	else if(turned_on)
@@ -35,7 +35,7 @@
 	else
 		icon_state = "paneloff"
 
-/obj/machinery/hydro_floodlight_switch/power_change()
+/obj/structure/machinery/hydro_floodlight_switch/power_change()
 	..()
 	if((stat & NOPOWER))
 		if(ispowered && turned_on)
@@ -47,8 +47,8 @@
 		ispowered = 1
 		update_icon()
 
-/obj/machinery/hydro_floodlight_switch/proc/toggle_lights()
-	for(var/obj/machinery/hydro_floodlight/F in floodlist)
+/obj/structure/machinery/hydro_floodlight_switch/proc/toggle_lights()
+	for(var/obj/structure/machinery/hydro_floodlight/F in floodlist)
 		if(!istype(F) || isnull(F) || F.damaged) continue //Missing or damaged, skip it
 
 		spawn(rand(0,50))
@@ -60,7 +60,7 @@
 			F.update_icon()
 	return 0
 
-/obj/machinery/hydro_floodlight_switch/attack_hand(mob/user as mob)
+/obj/structure/machinery/hydro_floodlight_switch/attack_hand(mob/user as mob)
 	if(!ishuman(user))
 		to_chat(user, "Nice try.")
 		return 0
@@ -74,7 +74,7 @@
 	update_icon()
 	return 1
 
-/obj/machinery/hydro_floodlight
+/obj/structure/machinery/hydro_floodlight
 	name = "Biodome Floodlight"
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "floodoff"
@@ -85,14 +85,14 @@
 	unacidable = 1
 	var/power_tick = 800 // power each floodlight takes up per process
 	use_power = 0 //It's the switch that uses the actual power, not the lights
-	var/obj/machinery/hydro_floodlight_switch/fswitch = null //Reverse lookup for power grabbing in area
+	var/obj/structure/machinery/hydro_floodlight_switch/fswitch = null //Reverse lookup for power grabbing in area
 	var/lum_value = 7
 
 	Dispose()
 		SetLuminosity(0)
 		. = ..()
 
-/obj/machinery/hydro_floodlight/update_icon()
+/obj/structure/machinery/hydro_floodlight/update_icon()
 	if(damaged)
 		icon_state = "flooddmg"
 	else if(is_lit)
@@ -100,7 +100,7 @@
 	else
 		icon_state = "floodoff"
 
-/obj/machinery/hydro_floodlight/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/hydro_floodlight/attackby(obj/item/W as obj, mob/user as mob)
 	var/obj/item/tool/weldingtool/WT = W
 	if(istype(WT))
 		if(!damaged) return
@@ -124,7 +124,7 @@
 	..()
 	return 0
 
-/obj/machinery/hydro_floodlight/attack_hand(mob/user as mob)
+/obj/structure/machinery/hydro_floodlight/attack_hand(mob/user as mob)
 	if(ishuman(user))
 		to_chat(user, SPAN_WARNING("Nothing happens. Looks like it's powered elsewhere."))
 		return 0

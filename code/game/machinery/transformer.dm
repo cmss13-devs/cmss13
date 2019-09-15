@@ -1,4 +1,4 @@
-/obj/machinery/transformer
+/obj/structure/machinery/transformer
 	name = "Automatic Robotic Factory 5000"
 	desc = "A large metalic machine with an entrance and an exit. A sign on the side reads, 'human go in, robot come out', human must be lying down and alive."
 	icon = 'icons/obj/structures/machinery/recycling.dmi'
@@ -9,12 +9,12 @@
 	var/transform_dead = 0
 	var/transform_standing = 0
 
-/obj/machinery/transformer/New()
+/obj/structure/machinery/transformer/New()
 	// On us
 	..()
-	new /obj/machinery/conveyor(loc, WEST, 1)
+	new /obj/structure/machinery/conveyor(loc, WEST, 1)
 
-/obj/machinery/transformer/Bumped(var/atom/movable/AM)
+/obj/structure/machinery/transformer/Bumped(var/atom/movable/AM)
 	// HasEntered didn't like people lying down.
 	if(ishuman(AM))
 		// Only humans can enter from the west side, while lying down.
@@ -24,7 +24,7 @@
 			AM.loc = src.loc
 			transform(AM)
 
-/obj/machinery/transformer/proc/transform(var/mob/living/carbon/human/H)
+/obj/structure/machinery/transformer/proc/transform(var/mob/living/carbon/human/H)
 	if(stat & (BROKEN|NOPOWER))
 		return
 	if(!transform_dead && H.stat == DEAD)
@@ -39,7 +39,7 @@
 		if(robot)
 			robot.lying = 0
 
-/obj/machinery/transformer/conveyor/New()
+/obj/structure/machinery/transformer/conveyor/New()
 	..()
 	var/turf/T = loc
 	if(T)
@@ -48,9 +48,9 @@
 		//East
 		var/turf/east = locate(T.x + 1, T.y, T.z)
 		if(istype(east, /turf/simulated/floor))
-			new /obj/machinery/conveyor(east, WEST, 1)
+			new /obj/structure/machinery/conveyor(east, WEST, 1)
 
 		// West
 		var/turf/west = locate(T.x - 1, T.y, T.z)
 		if(istype(west, /turf/simulated/floor))
-			new /obj/machinery/conveyor(west, WEST, 1)
+			new /obj/structure/machinery/conveyor(west, WEST, 1)

@@ -1,27 +1,27 @@
-/obj/machinery/meter
+/obj/structure/machinery/meter
 	name = "meter"
 	desc = "It measures something."
 	icon = 'icons/obj/structures/machinery/meter.dmi'
 	icon_state = "meterX"
-	var/obj/machinery/atmospherics/pipe/target = null
+	var/obj/structure/machinery/atmospherics/pipe/target = null
 	anchored = 1.0
 	power_channel = ENVIRON
 	use_power = 0
 
-/obj/machinery/meter/New()
+/obj/structure/machinery/meter/New()
 	..()
-	src.target = locate(/obj/machinery/atmospherics/pipe) in loc
+	src.target = locate(/obj/structure/machinery/atmospherics/pipe) in loc
 	return 1
 
-/obj/machinery/meter/Dispose()
+/obj/structure/machinery/meter/Dispose()
 	target = null
 	. = ..()
 
-/obj/machinery/meter/initialize()
+/obj/structure/machinery/meter/initialize()
 	if (!target)
-		src.target = locate(/obj/machinery/atmospherics/pipe) in loc
+		src.target = locate(/obj/structure/machinery/atmospherics/pipe) in loc
 
-/obj/machinery/meter/examine(mob/user)
+/obj/structure/machinery/meter/examine(mob/user)
 	var/t = "A gas flow meter. "
 
 	if(get_dist(user, src) > 3 && !(isAI(user) || istype(user, /mob/dead)))
@@ -40,14 +40,14 @@
 
 	to_chat(user, t)
 
-/obj/machinery/meter/clicked(var/mob/user)
+/obj/structure/machinery/meter/clicked(var/mob/user)
 	..()
 
 	if(isAI(user)) // ghosts can call ..() for examine
 		examine(user)
 		return 1
 
-/obj/machinery/meter/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/meter/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if (!istype(W, /obj/item/tool/wrench))
 		return ..()
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -62,15 +62,15 @@
 
 // TURF METER - REPORTS A TILE'S AIR CONTENTS
 
-/obj/machinery/meter/turf/New()
+/obj/structure/machinery/meter/turf/New()
 	..()
 	src.target = loc
 	return 1
 
 
-/obj/machinery/meter/turf/initialize()
+/obj/structure/machinery/meter/turf/initialize()
 	if (!target)
 		src.target = loc
 
-/obj/machinery/meter/turf/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/meter/turf/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	return

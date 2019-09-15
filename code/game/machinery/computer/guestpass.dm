@@ -39,7 +39,7 @@
 //Guest pass terminal////////////////////////
 /////////////////////////////////////////////
 
-/obj/machinery/computer/guestpass
+/obj/structure/machinery/computer/guestpass
 	name = "guest pass terminal"
 	icon_state = "guest"
 	density = 0
@@ -54,11 +54,11 @@
 	var/list/internal_log = list()
 	var/mode = 0  // 0 - making pass, 1 - viewing logs
 
-/obj/machinery/computer/guestpass/New()
+/obj/structure/machinery/computer/guestpass/New()
 	..()
 	uid = "[rand(100,999)]-G[rand(10,99)]"
 
-/obj/machinery/computer/guestpass/attackby(obj/O, mob/user)
+/obj/structure/machinery/computer/guestpass/attackby(obj/O, mob/user)
 	if(istype(O, /obj/item/card/id))
 		if(!giver)
 			if(user.drop_held_item())
@@ -68,10 +68,10 @@
 		else
 			to_chat(user, SPAN_WARNING("There is already ID card inside."))
 
-/obj/machinery/computer/guestpass/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/guestpass/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/guestpass/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/guestpass/attack_hand(var/mob/user as mob)
 	if(..())
 		return
 
@@ -104,7 +104,7 @@
 	onclose(user, "guestpass")
 
 
-/obj/machinery/computer/guestpass/Topic(href, href_list)
+/obj/structure/machinery/computer/guestpass/Topic(href, href_list)
 	if(..())
 		return
 	usr.set_interaction(src)

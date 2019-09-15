@@ -90,8 +90,8 @@
 				"<span class='warning'>You stop disarming [src].")
 				disarming = 0
 				return
-			user.visible_message("<span class='notice'>[user] finishes disarming [src].", \
-			"<span class='notice'>You finish disarming [src].")
+			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
+			SPAN_NOTICE("You finish disarming [src]."))
 			anchored = 0
 			armed = 0
 			disarming = 0

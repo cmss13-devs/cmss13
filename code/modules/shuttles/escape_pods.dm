@@ -23,7 +23,7 @@ with the original.*/
 	var/cryo_cells[] //List of the crypods attached to the evac pod.
 	var/area/staging_area //The area the shuttle starts in, used to link the various machinery.
 	var/datum/computer/file/embedded_program/docking/simple/escape_pod/evacuation_program //The program that runs the doors.
-	var/obj/machinery/door/airlock/evacuation/D //TODO Get rid of this.
+	var/obj/structure/machinery/door/airlock/evacuation/D //TODO Get rid of this.
 	//docking_controller is the program that runs doors.
 	//TODO: Make sure that the area has light once evac is in progress.
 
@@ -43,7 +43,7 @@ with the original.*/
 			switch(evacuation_program.dock_state)
 				if(STATE_READY) r_TRU
 				if(STATE_DELAYED)
-					for(var/obj/machinery/cryopod/evacuation/C in cryo_cells) //If all are occupied, the pod will launch anyway.
+					for(var/obj/structure/machinery/cryopod/evacuation/C in cryo_cells) //If all are occupied, the pod will launch anyway.
 						if(!C.occupant) r_FAL
 					r_TRU
 
@@ -83,7 +83,7 @@ suffice.
 	D.id_tag = shuttle_tag //So that the door can be operated via controller later.
 
 
-	var/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/R = locate() in staging_area //Grab the controller.
+	var/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/R = locate() in staging_area //Grab the controller.
 	if(!R)
 		log_debug("ERROR CODE EV1.5: could not find controller in [shuttle_tag].")
 		to_world(SPAN_DEBUG("ERROR CODE EV1: could not find controller in [shuttle_tag]."))
@@ -98,7 +98,7 @@ suffice.
 	evacuation_program = R.evacuation_program //For the shuttle, to shortcut the controller program.
 
 	cryo_cells = new
-	for(var/obj/machinery/cryopod/evacuation/E in staging_area)
+	for(var/obj/structure/machinery/cryopod/evacuation/E in staging_area)
 		cryo_cells += E
 		E.evacuation_program = evacuation_program
 	if(!cryo_cells.len)
@@ -107,7 +107,7 @@ suffice.
 		r_FAL
 
 #define MOVE_MOB_OUTSIDE \
-for(var/obj/machinery/cryopod/evacuation/C in cryo_cells) C.go_out()
+for(var/obj/structure/machinery/cryopod/evacuation/C in cryo_cells) C.go_out()
 
 /datum/shuttle/ferry/marine/evacuation_pod/proc/toggle_ready()
 	switch(evacuation_program.dock_state)
@@ -160,7 +160,7 @@ This can probably be done a lot more elegantly either way, but it'll suffice for
 	. = TRUE
 	var/n = 0 //Generic counter.
 	var/mob/M
-	for(var/obj/machinery/cryopod/evacuation/C in cryo_cells)
+	for(var/obj/structure/machinery/cryopod/evacuation/C in cryo_cells)
 		if(C.occupant)
 			n++
 			if(C.occupant.stat != DEAD && msg) 
@@ -201,7 +201,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 */
 
 //This controller goes on the escape pod itself.
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod
 	name = "escape pod controller"
 	unacidable = 1
 	var/datum/computer/file/embedded_program/docking/simple/escape_pod/evacuation_program //Runs the doors and states.
@@ -279,7 +279,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 //================================Evacuation Sleeper=======================================
 //=========================================================================================
 
-/obj/machinery/cryopod/evacuation
+/obj/structure/machinery/cryopod/evacuation
 	stat = MACHINE_DO_NOT_PROCESS
 	unacidable = 1
 	time_till_despawn = 6000000 //near infinite so despawn never occurs.
@@ -373,7 +373,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE)) go_out() //Force the occupant out.
 		being_forced = !being_forced
 
-/obj/machinery/cryopod/evacuation/proc/move_mob_inside(mob/M)
+/obj/structure/machinery/cryopod/evacuation/proc/move_mob_inside(mob/M)
 	if(occupant)
 		to_chat(M, SPAN_WARNING("The cryogenic pod is already in use. You will need to find another."))
 		r_FAL
@@ -386,7 +386,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 	icon_state = orient_right ? "body_scanner_1-r" : "body_scanner_1"
 
 
-/obj/machinery/door/airlock/evacuation
+/obj/structure/machinery/door/airlock/evacuation
 	name = "\improper Evacuation Airlock"
 	icon = 'icons/obj/structures/doors/pod_doors.dmi'
 	heat_proof = 1
@@ -413,15 +413,15 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 //Leaving this commented out for the CL pod, which should have a way to open from the outside.
 
 //This controller is for the escape pod berth (station side)
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth
 	name = "escape pod berth controller"
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/initialize()
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/initialize()
 	..()
 	docking_program = new/datum/computer/file/embedded_program/docking/simple/escape_pod(src)
 	program = docking_program
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/armed = null
 	if (istype(docking_program, /datum/computer/file/embedded_program/docking/simple/escape_pod))
 		var/datum/computer/file/embedded_program/docking/simple/escape_pod/P = docking_program

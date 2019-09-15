@@ -1,4 +1,4 @@
-/obj/machinery/fuelcell_recycler
+/obj/structure/machinery/fuelcell_recycler
 	name = "fuel cell recycler"
 	desc = "A large machine with whirring fans and two cylindrical holes in the top. Used to regenerate fuel cells."
 	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
@@ -13,7 +13,7 @@
 	var/obj/item/fuelCell/cell_right = null
 	unacidable = 1
 
-/obj/machinery/fuelcell_recycler/attackby(obj/item/I, mob/user)
+/obj/structure/machinery/fuelcell_recycler/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/fuelCell))
 		if(!cell_left)
 			if(user.drop_inv_item_to_loc(I, src))
@@ -31,7 +31,7 @@
 		to_chat(user, SPAN_NOTICE("You can't see how you'd use [I] with [src]..."))
 		return
 
-/obj/machinery/fuelcell_recycler/attack_hand(mob/M)
+/obj/structure/machinery/fuelcell_recycler/attack_hand(mob/M)
 	if(cell_left == null && cell_right == null)
 		to_chat(M, SPAN_NOTICE("The recycler is empty."))
 		return
@@ -60,7 +60,7 @@
 			cell_right = null
 			update_icon()
 
-/obj/machinery/fuelcell_recycler/process()
+/obj/structure/machinery/fuelcell_recycler/process()
 	if(stat & (BROKEN|NOPOWER))
 		update_use_power(0)
 		update_icon()
@@ -88,11 +88,11 @@
 
 		update_icon()
 
-/obj/machinery/fuelcell_recycler/power_change()
+/obj/structure/machinery/fuelcell_recycler/power_change()
 	..()
 	update_icon()
 
-/obj/machinery/fuelcell_recycler/update_icon()
+/obj/structure/machinery/fuelcell_recycler/update_icon()
 	src.overlays.Cut()
 
 	if(stat & (BROKEN|NOPOWER))

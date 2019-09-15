@@ -184,7 +184,7 @@
 				namecounts[name] = 1
 			creatures[name] = O
 
-		if(istype(O, /obj/machinery/bot))
+		if(istype(O, /obj/structure/machinery/bot))
 			var/name = "BOT: [O.name]"
 			if (names.Find(name))
 				namecounts[name]++

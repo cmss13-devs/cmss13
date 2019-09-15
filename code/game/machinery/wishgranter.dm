@@ -1,5 +1,5 @@
 /*
-/obj/machinery/wish_granter
+/obj/structure/machinery/wish_granter
 	name = "Wish Granter"
 	desc = "You're not so sure about this, anymore..."
 	icon = 'icons/obj/items/devices.dmi'
@@ -12,7 +12,7 @@
 	var/charges = 1
 	var/insisting = 0
 
-/obj/machinery/wish_granter/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/wish_granter/attack_hand(var/mob/user as mob)
 	usr.set_interaction(src)
 
 	if(charges <= 0)

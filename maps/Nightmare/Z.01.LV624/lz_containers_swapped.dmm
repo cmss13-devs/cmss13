@@ -50,7 +50,7 @@
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "k" = (
-/obj/machinery/bot/mulebot{
+/obj/structure/machinery/bot/mulebot{
 	auto_pickup = 0;
 	auto_return = 0;
 	health = 1;
@@ -112,7 +112,7 @@
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "X" = (
-/obj/machinery/bot/mulebot{
+/obj/structure/machinery/bot/mulebot{
 	auto_pickup = 0;
 	auto_return = 0;
 	health = 1;

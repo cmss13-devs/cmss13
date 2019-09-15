@@ -1,5 +1,5 @@
 
-/obj/machinery/door
+/obj/structure/machinery/door
 	name = "\improper Door"
 	desc = "It opens and closes."
 	icon = 'icons/obj/structures/doors/Doorint.dmi'
@@ -47,7 +47,7 @@
 			filler = null
 		density = 0
 
-/obj/machinery/door/proc/handle_multidoor()
+/obj/structure/machinery/door/proc/handle_multidoor()
 	if(width > 1)
 		if(dir in list(EAST, WEST))
 			bound_width = width * world.icon_size
@@ -63,7 +63,7 @@
 //process()
 	//return
 
-/obj/machinery/door/Bumped(atom/AM)
+/obj/structure/machinery/door/Bumped(atom/AM)
 	if(panel_open || operating) return
 	if(ismob(AM))
 		var/mob/M = AM
@@ -78,8 +78,8 @@
 		if(O.buckled_mob)
 			Bumped(O.buckled_mob)
 
-	if(istype(AM, /obj/machinery/bot))
-		var/obj/machinery/bot/bot = AM
+	if(istype(AM, /obj/structure/machinery/bot))
+		var/obj/structure/machinery/bot/bot = AM
 		if(src.check_access(bot.botcard))
 			if(density)
 				open()
@@ -94,12 +94,12 @@
 				flick("door_deny", src)
 
 
-/obj/machinery/door/CanPass(atom/movable/mover, turf/target)
+/obj/structure/machinery/door/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSGLASS))
 		return !opacity
 	return !density
 
-/obj/machinery/door/proc/bumpopen(mob/user as mob)
+/obj/structure/machinery/door/proc/bumpopen(mob/user as mob)
 	if(operating)	return
 	src.add_fingerprint(user)
 	if(!src.requiresID())
@@ -110,13 +110,13 @@
 		else				flick("door_deny", src)
 	return
 
-/obj/machinery/door/attack_ai(mob/user)
+/obj/structure/machinery/door/attack_ai(mob/user)
 	return src.attack_hand(user)
 
-/obj/machinery/door/attack_hand(mob/user)
+/obj/structure/machinery/door/attack_hand(mob/user)
 	return try_to_activate_door(user)
 
-/obj/machinery/door/proc/try_to_activate_door(mob/user)
+/obj/structure/machinery/door/proc/try_to_activate_door(mob/user)
 	add_fingerprint(user)
 	if(operating)
 		return
@@ -134,13 +134,13 @@
 		flick("door_deny", src)
 
 
-/obj/machinery/door/attackby(obj/item/I, mob/user)
+/obj/structure/machinery/door/attackby(obj/item/I, mob/user)
 	if(!(I.flags_item & NOBLUDGEON))
 		try_to_activate_door(user)
 		return 1
 
-/obj/machinery/door/emp_act(severity)
-	if(prob(20/severity) && (istype(src,/obj/machinery/door/airlock) || istype(src,/obj/machinery/door/window)) )
+/obj/structure/machinery/door/emp_act(severity)
+	if(prob(20/severity) && (istype(src,/obj/structure/machinery/door/airlock) || istype(src,/obj/structure/machinery/door/window)) )
 		open()
 	if(prob(40/severity))
 		if(secondsElectrified == 0)
@@ -150,7 +150,7 @@
 	..()
 
 
-/obj/machinery/door/ex_act(severity)
+/obj/structure/machinery/door/ex_act(severity)
 	if(unacidable) return
 
 	if(density)
@@ -174,7 +174,7 @@
 	return
 
 
-/obj/machinery/door/get_explosion_resistance()
+/obj/structure/machinery/door/get_explosion_resistance()
 	if(density)
 		if(unacidable)
 			return 1000000
@@ -184,7 +184,7 @@
 		return 0
 
 
-/obj/machinery/door/update_icon()
+/obj/structure/machinery/door/update_icon()
 	if(density)
 		icon_state = "door1"
 	else
@@ -192,7 +192,7 @@
 	return
 
 
-/obj/machinery/door/proc/do_animate(animation)
+/obj/structure/machinery/door/proc/do_animate(animation)
 	switch(animation)
 		if("opening")
 			if(panel_open)
@@ -209,7 +209,7 @@
 	return
 
 
-/obj/machinery/door/proc/open(var/forced=0)
+/obj/structure/machinery/door/proc/open(var/forced=0)
 	if(!density)		return 1
 	if(operating > 0 || !loc)	return
 	if(!ticker)			return 0
@@ -238,7 +238,7 @@
 	return 1
 
 
-/obj/machinery/door/proc/close()
+/obj/structure/machinery/door/proc/close()
 	if(density)	return 1
 	if(operating > 0 || !loc)	return
 	operating = 1
@@ -255,20 +255,20 @@
 	operating = 0
 	return
 
-/obj/machinery/door/proc/requiresID()
+/obj/structure/machinery/door/proc/requiresID()
 	return 1
 
 
-/obj/machinery/door/proc/update_flags_heat_protection(var/turf/source)
+/obj/structure/machinery/door/proc/update_flags_heat_protection(var/turf/source)
 
 
-/obj/machinery/door/proc/autoclose()
-	var/obj/machinery/door/airlock/A = src
+/obj/structure/machinery/door/proc/autoclose()
+	var/obj/structure/machinery/door/airlock/A = src
 	if(!A.density && !A.operating && !A.locked && !A.welded && A.autoclose)
 		close()
 	return
 
-/obj/machinery/door/Move(new_loc, new_dir)
+/obj/structure/machinery/door/Move(new_loc, new_dir)
 	. = ..()
 	if(width > 1)
 		if(dir in list(EAST, WEST))
@@ -285,5 +285,5 @@
 			filler.SetOpacity(opacity)
 
 
-/obj/machinery/door/morgue
+/obj/structure/machinery/door/morgue
 	icon = 'icons/obj/structures/doors/doormorgue.dmi'

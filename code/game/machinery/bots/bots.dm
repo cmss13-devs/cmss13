@@ -1,6 +1,6 @@
 // AI (i.e. game AI, not the AI player) controlled bots
 
-/obj/machinery/bot
+/obj/structure/machinery/bot
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	layer = MOB_LAYER
 	luminosity = 3
@@ -15,29 +15,29 @@
 	var/locked = 1
 
 
-/obj/machinery/bot/proc/turn_on()
+/obj/structure/machinery/bot/proc/turn_on()
 	if(stat)
 		return 0
 	on = 1
 	SetLuminosity(initial(luminosity))
 	return 1
 
-/obj/machinery/bot/proc/turn_off()
+/obj/structure/machinery/bot/proc/turn_off()
 	on = 0
 	SetLuminosity(0)
 
-/obj/machinery/bot/proc/explode()
+/obj/structure/machinery/bot/proc/explode()
 	qdel(src)
 
-/obj/machinery/bot/proc/healthcheck()
+/obj/structure/machinery/bot/proc/healthcheck()
 	if(health <= 0)
 		explode()
 
-/obj/machinery/bot/Dispose()
+/obj/structure/machinery/bot/Dispose()
 	SetLuminosity(0)
 	. = ..()
 
-/obj/machinery/bot/examine(mob/user)
+/obj/structure/machinery/bot/examine(mob/user)
 	..()
 	if(health < maxhealth)
 		if(health > maxhealth/3)
@@ -45,7 +45,7 @@
 		else
 			to_chat(user, SPAN_DANGER("[src]'s parts look very loose!"))
 
-/obj/machinery/bot/attack_animal(var/mob/living/simple_animal/M as mob)
+/obj/structure/machinery/bot/attack_animal(var/mob/living/simple_animal/M as mob)
 	if(M.melee_damage_upper == 0)	return
 	health -= M.melee_damage_upper
 	visible_message(SPAN_DANGER("<B>[M] has [M.attacktext] [src]!</B>"))
@@ -55,7 +55,7 @@
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)
 	healthcheck()
 
-/obj/machinery/bot/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/bot/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/tool/screwdriver))
 		if(!locked)
 			open = !open
@@ -81,13 +81,13 @@
 		else
 			..()
 
-/obj/machinery/bot/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/machinery/bot/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.ammo.damage
 	..()
 	healthcheck()
 	return 1
 
-/obj/machinery/bot/ex_act(severity)
+/obj/structure/machinery/bot/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(50))
@@ -102,7 +102,7 @@
 			explode()
 
 
-/obj/machinery/bot/emp_act(severity)
+/obj/structure/machinery/bot/emp_act(severity)
 	var/was_on = on
 	stat |= EMPED
 	new /obj/effect/overlay/temp/emp_sparks (loc)
@@ -113,10 +113,10 @@
 		if(was_on)
 			turn_on()
 
-/obj/machinery/bot/attack_ai(mob/user as mob)
+/obj/structure/machinery/bot/attack_ai(mob/user as mob)
 	attack_hand(user)
 
-/obj/machinery/bot/attack_hand(var/mob/living/carbon/human/user)
+/obj/structure/machinery/bot/attack_hand(var/mob/living/carbon/human/user)
 
 	if(!istype(user))
 		return ..()
@@ -170,7 +170,7 @@
 		return 1
 
 	for(var/obj/O in B)
-		if(O.density && !istype(O, /obj/machinery/door) && !(O.flags_atom & ON_BORDER))
+		if(O.density && !istype(O, /obj/structure/machinery/door) && !(O.flags_atom & ON_BORDER))
 			return 1
 
 	return 0
@@ -183,9 +183,9 @@
 		if(D.dir == SOUTHWEST)	return 1
 		if(D.dir == dir)		return 1
 
-	for(var/obj/machinery/door/D in loc)
+	for(var/obj/structure/machinery/door/D in loc)
 		if(!D.density)			continue
-		if(istype(D, /obj/machinery/door/window))
+		if(istype(D, /obj/structure/machinery/door/window))
 			if( dir & D.dir )	return !D.check_access(ID)
 
 			//if((dir & SOUTH) && (D.dir & (EAST|WEST)))		return !D.check_access(ID)

@@ -221,7 +221,7 @@
 			disabled = 1
 		else
 			disabled = 0
-		if(!istype(target, /turf) && !istype(target, /obj/machinery/door/airlock))
+		if(!istype(target, /turf) && !istype(target, /obj/structure/machinery/door/airlock))
 			target = get_turf(target)
 		if(!action_checks(target) || disabled || get_dist(chassis, target)>3) return
 		playsound(chassis, 'sound/machines/click.ogg', 15, 1)
@@ -246,7 +246,7 @@
 						target:ChangeTurf(/turf/open/space)
 						playsound(target, 'sound/items/Deconstruct.ogg', 25, 1)
 						chassis.use_power(energy_drain)
-				else if (istype(target, /obj/machinery/door/airlock))
+				else if (istype(target, /obj/structure/machinery/door/airlock))
 					occupant_message("Deconstructing [target]...")
 					set_ready_state(0)
 					if(do_after_cooldown(target))
@@ -281,7 +281,7 @@
 					if(do_after_cooldown(target))
 						if(disabled) return
 						chassis.spark_system.start()
-						var/obj/machinery/door/airlock/T = new /obj/machinery/door/airlock(target)
+						var/obj/structure/machinery/door/airlock/T = new /obj/structure/machinery/door/airlock(target)
 						T.autoclose = 1
 						playsound(target, 'sound/items/Deconstruct.ogg', 25, 1)
 						playsound(target, 'sound/effects/sparks2.ogg', 25, 1)

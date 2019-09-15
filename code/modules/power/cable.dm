@@ -1,6 +1,6 @@
 // attach a wire to a power machine - leads from the turf you are standing on
 
-/obj/machinery/power/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/power/attackby(obj/item/W, mob/user)
 
 	if(istype(W, /obj/item/stack/cable_coil))
 
@@ -36,7 +36,7 @@
 	var/d2 = 1
 	layer = WIRE_LAYER
 	color = COLOR_RED
-	var/obj/machinery/power/breakerbox/breaker_box
+	var/obj/structure/machinery/power/breakerbox/breaker_box
 	unacidable = 1
 	var/id
 

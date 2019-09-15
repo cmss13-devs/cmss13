@@ -146,7 +146,7 @@
 							if(O.anchored)
 								continue
 
-							if(istype(O, /obj/item) || istype(O, /obj/structure) || istype(O, /obj/machinery))
+							if(istype(O, /obj/item) || istype(O, /obj/structure) || istype(O, /obj/structure/machinery))
 								cocoon_target = O
 								busy = MOVING_TO_TARGET
 								stop_automated_movement = 1
@@ -183,7 +183,7 @@
 									if(!S.anchored)
 										S.loc = C
 										large_cocoon = 1
-								for(var/obj/machinery/M in C.loc)
+								for(var/obj/structure/machinery/M in C.loc)
 									if(!M.anchored)
 										M.loc = C
 										large_cocoon = 1

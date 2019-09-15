@@ -119,8 +119,8 @@
 						if(istype(m, f2))
 							from_objs += m
 
-				else if(text_starts_with(f, "/obj/machinery"))
-					for(var/obj/machinery/m in machines)
+				else if(text_starts_with(f, "/obj/structure/machinery"))
+					for(var/obj/structure/machinery/m in machines)
 						if(istype(m, f2))
 							from_objs += m
 
@@ -188,8 +188,8 @@
 							if(istype(m, f2))
 								objs += m
 
-					else if(text_starts_with(f, "/obj/machinery"))
-						for(var/obj/machinery/m in from_obj)
+					else if(text_starts_with(f, "/obj/structure/machinery"))
+						for(var/obj/structure/machinery/m in from_obj)
 							if(istype(m, f2))
 								objs += m
 

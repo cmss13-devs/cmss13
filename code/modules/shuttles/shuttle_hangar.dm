@@ -71,7 +71,7 @@
 	if(isnull(location))
 		return
 
-	for(var/obj/machinery/computer/shuttle_control/almayer/hangar/H in machines)
+	for(var/obj/structure/machinery/computer/shuttle_control/almayer/hangar/H in machines)
 		qdel(H)
 	lower_railings(1)
 	if(!at_station())
@@ -150,7 +150,7 @@
 
 /datum/shuttle/ferry/hangar/proc/raise_railings()
 	var/effective = 0
-	for(var/obj/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if((M.id == railing_lower_id || M.id == railing_upper_id) && !M.density)
 			effective = 1
 			spawn()
@@ -173,7 +173,7 @@
 		railing_id = railing_upper_id
 		other_id = railing_lower_id
 		soundturf = locate(HangarElevatorUpper_x,HangarElevatorUpper_y,HangarElevatorUpper_z)
-	for(var/obj/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == railing_id && M.density)
 			effective = 1
 			spawn()
@@ -185,14 +185,14 @@
 		playsound(soundturf, 'sound/machines/elevator_openclose.ogg', 50, 0)
 
 /datum/shuttle/ferry/hangar/proc/start_gears(var/direction = 1)
-	for(var/obj/machinery/gear/M in machines)
+	for(var/obj/structure/machinery/gear/M in machines)
 		if(M.id == gear_id)
 			spawn()
 				M.icon_state = "gear_moving"
 				M.dir = direction
 
 /datum/shuttle/ferry/hangar/proc/stop_gears()
-	for(var/obj/machinery/gear/M in machines)
+	for(var/obj/structure/machinery/gear/M in machines)
 		if(M.id == gear_id)
 			spawn()
 				M.icon_state = "gear"
@@ -204,14 +204,14 @@
 	gear_id = "maintenance_elevator_strut"
 
 /datum/shuttle/ferry/hangar/maintenance/start_gears(var/direction = 1)
-	var/list/obj/machinery/elevator_strut/top/strut_top = list()
-	var/list/obj/machinery/elevator_strut/bottom/strut_bottom = list()
+	var/list/obj/structure/machinery/elevator_strut/top/strut_top = list()
+	var/list/obj/structure/machinery/elevator_strut/bottom/strut_bottom = list()
 
-	for (var/obj/machinery/elevator_strut/top/S in machines)
+	for (var/obj/structure/machinery/elevator_strut/top/S in machines)
 		if (S.id == gear_id)
 			strut_top += S
 
-	for (var/obj/machinery/elevator_strut/bottom/S in machines)
+	for (var/obj/structure/machinery/elevator_strut/bottom/S in machines)
 		if (S.id == gear_id)
 			strut_bottom += S
 
@@ -222,14 +222,14 @@
 			x.icon_state = "strut_bottom_moving"
 
 /datum/shuttle/ferry/hangar/maintenance/stop_gears()
-	var/list/obj/machinery/elevator_strut/top/strut_top = list()
-	var/list/obj/machinery/elevator_strut/bottom/strut_bottom = list()
+	var/list/obj/structure/machinery/elevator_strut/top/strut_top = list()
+	var/list/obj/structure/machinery/elevator_strut/bottom/strut_bottom = list()
 
-	for (var/obj/machinery/elevator_strut/top/S in machines)
+	for (var/obj/structure/machinery/elevator_strut/top/S in machines)
 		if (S.id == gear_id)
 			strut_top += S
 
-	for (var/obj/machinery/elevator_strut/bottom/S in machines)
+	for (var/obj/structure/machinery/elevator_strut/bottom/S in machines)
 		if (S.id == gear_id)
 			strut_bottom += S
 

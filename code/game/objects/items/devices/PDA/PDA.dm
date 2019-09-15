@@ -653,7 +653,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 		if("Toggle Door")
 			if(cartridge && cartridge.access_remote_door)
-				for(var/obj/machinery/door/poddoor/M in machines)
+				for(var/obj/structure/machinery/door/poddoor/M in machines)
 					if(M.id == cartridge.remote_door_id)
 						if(M.density)
 							M.open()
@@ -663,9 +663,9 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		if("Detonate")//Detonate PDA... maybe
 			// check if telecomms I/O route 1459 is stable
 			//var/telecomms_intact = telecomms_process(P.owner, owner, t)
-			var/obj/machinery/message_server/useMS = null
+			var/obj/structure/machinery/message_server/useMS = null
 			if(message_servers)
-				for (var/obj/machinery/message_server/MS in message_servers)
+				for (var/obj/structure/machinery/message_server/MS in message_servers)
 				//PDAs are now dependant on the Message Server.
 					if(MS.active)
 						useMS = MS
@@ -834,9 +834,9 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	last_text = world.time
 	// check if telecomms I/O route 1459 is stable
 	//var/telecomms_intact = telecomms_process(P.owner, owner, t)
-	var/obj/machinery/message_server/useMS = null
+	var/obj/structure/machinery/message_server/useMS = null
 	if(message_servers)
-		for (var/obj/machinery/message_server/MS in message_servers)
+		for (var/obj/structure/machinery/message_server/MS in message_servers)
 		//PDAs are now dependent on the Message Server.
 			if(MS.active)
 				useMS = MS
@@ -1083,7 +1083,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 		if(5)
 
-			if(istype(A, /obj/item/tank) || istype(A, /obj/machinery/portable_atmospherics) || istype(A, /obj/machinery/atmospherics/pipe/tank))
+			if(istype(A, /obj/item/tank) || istype(A, /obj/structure/machinery/portable_atmospherics) || istype(A, /obj/structure/machinery/atmospherics/pipe/tank))
 				var/obj/icon = A
 				for (var/mob/O in viewers(user, null))
 					to_chat(O, SPAN_DANGER("[user] has used [src] on [htmlicon(icon)] [A]"))

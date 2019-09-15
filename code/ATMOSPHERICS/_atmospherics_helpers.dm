@@ -8,11 +8,11 @@
 */
 
 
-/obj/machinery/portable_atmospherics/var/last_flow_rate = 0
+/obj/structure/machinery/portable_atmospherics/var/last_flow_rate = 0
 
 
 
-/client/proc/atmos_toggle_debug(var/obj/machinery/atmospherics/M in view())
+/client/proc/atmos_toggle_debug(var/obj/structure/machinery/atmospherics/M in view())
 	set name = "Toggle Debug Messages"
 	set category = "Debug"
 	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
@@ -24,7 +24,7 @@
 //Calling update_use_power() or use_power() too often will result in lag since updating area power can be costly.
 //This proc implements an approximation scheme that will cause area power updates to be triggered less often.
 //By having atmos machinery use this proc it is easy to change the power usage approximation for all atmos machines
-/obj/machinery/proc/handle_power_draw(var/usage_amount)
+/obj/structure/machinery/proc/handle_power_draw(var/usage_amount)
 	//This code errs on the side of using more power. Using this will mean that sometimes atmos machines use more power than they need, but won't get power for free.
 	if (usage_amount > idle_power_usage)
 		update_use_power(2)

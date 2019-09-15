@@ -1,6 +1,6 @@
 var/bomb_set = FALSE
 
-/obj/machinery/nuclearbomb
+/obj/structure/machinery/nuclearbomb
 	name = "\improper Nuclear Fission Explosive"
 	desc = "Nuke the entire site from orbit, it's the only way to be sure. Too bad we don't have any orbital nukes."
 	icon = 'icons/obj/structures/machinery/nuclearbomb.dmi'
@@ -18,7 +18,7 @@ var/bomb_set = FALSE
 	req_access = list(ACCESS_MARINE_PREP)
 	flags_atom = FPRINT
 
-/obj/machinery/nuclearbomb/process()
+/obj/structure/machinery/nuclearbomb/process()
 	. = ..()
 	if(timing)
 		bomb_set = TRUE //So long as there is one nuke timing, it means one nuke is armed.
@@ -28,10 +28,10 @@ var/bomb_set = FALSE
 	else
 		stop_processing()
 
-/obj/machinery/nuclearbomb/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/nuclearbomb/attack_alien(mob/living/carbon/Xenomorph/M)
 	return attack_hand(M)
 
-/obj/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)
+/obj/structure/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)
 	if(anchored && timing && bomb_set && iswirecutter(O))
 		user.visible_message(SPAN_DANGER("[user] begins to diffuse [src]."), SPAN_DANGER("You begin to diffuse [src]. This will take some time..."))
 		if(do_after(user, 150, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
@@ -40,7 +40,7 @@ var/bomb_set = FALSE
 		return
 	..()
 
-/obj/machinery/nuclearbomb/attack_hand(mob/user as mob)
+/obj/structure/machinery/nuclearbomb/attack_hand(mob/user as mob)
 	if(user.is_mob_incapacitated() || !user.canmove || get_dist(src, user) > 1 || isAI(user))
 		return
 
@@ -61,7 +61,7 @@ var/bomb_set = FALSE
 	else
 		make_deployable()
 
-/obj/machinery/nuclearbomb/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/nuclearbomb/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 	if(user.is_mob_incapacitated() || !user.canmove || get_dist(src, user) > 1 || isAI(user) || being_used)
 		return
 
@@ -81,7 +81,7 @@ var/bomb_set = FALSE
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/machinery/nuclearbomb/verb/make_deployable()
+/obj/structure/machinery/nuclearbomb/verb/make_deployable()
 	set category = "Object"
 	set name = "Make Deployable"
 	set src in oview(1)
@@ -112,7 +112,7 @@ var/bomb_set = FALSE
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 100, 1)
 	being_used = FALSE
 
-/obj/machinery/nuclearbomb/Topic(href, href_list)
+/obj/structure/machinery/nuclearbomb/Topic(href, href_list)
 	..()
 	if (!usr.canmove || usr.stat || usr.is_mob_restrained() || being_used || !in_range(src, usr))
 		return
@@ -201,14 +201,14 @@ var/bomb_set = FALSE
 			attack_hand(M)
 
 
-/obj/machinery/nuclearbomb/proc/announce_xenos()
+/obj/structure/machinery/nuclearbomb/proc/announce_xenos()
 	for(var/datum/hive_status/hive in hive_datum)
 		hive.handle_nuke_alert(timing, get_area(loc))
 
-/obj/machinery/nuclearbomb/ex_act(severity)
+/obj/structure/machinery/nuclearbomb/ex_act(severity)
 	return
 
-/obj/machinery/nuclearbomb/proc/disable()
+/obj/structure/machinery/nuclearbomb/proc/disable()
 	if(!timing)
 		return
 	timing = FALSE
@@ -218,7 +218,7 @@ var/bomb_set = FALSE
 	marine_announcement(input, name, 'sound/misc/notice1.ogg')
 	announce_xenos()
 
-/obj/machinery/nuclearbomb/proc/explode()
+/obj/structure/machinery/nuclearbomb/proc/explode()
 	if(safety)
 		timing = FALSE
 		stop_processing()

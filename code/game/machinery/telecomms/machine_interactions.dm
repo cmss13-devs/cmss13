@@ -10,13 +10,13 @@
 #define STATION_Z 1
 #define TELECOMM_Z 3
 
-/obj/machinery/telecomms
+/obj/structure/machinery/telecomms
 	var/temp = "" // output message
 	var/construct_op = 0
 	var/deconstructable = FALSE
 
 
-/obj/machinery/telecomms/attackby(obj/item/P as obj, mob/user as mob)
+/obj/structure/machinery/telecomms/attackby(obj/item/P as obj, mob/user as mob)
 
 	// Using a multitool lets you access the receiver's interface
 	if(istype(P, /obj/item/device/multitool))
@@ -104,15 +104,15 @@
 						C.loc = user.loc
 
 					// Create a machine frame and delete the current machine
-					var/obj/machinery/constructable_frame/F = new
+					var/obj/structure/machinery/constructable_frame/F = new
 					F.loc = src.loc
 					qdel(src)
 
 
-/obj/machinery/telecomms/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/telecomms/attack_ai(var/mob/user as mob)
 	attack_hand(user)
 
-/obj/machinery/telecomms/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/telecomms/attack_hand(var/mob/user as mob)
 
 	// You need a multitool to use this, or be silicon
 	if(!ishighersilicon(user))
@@ -148,7 +148,7 @@
 		dat += "<br>Linked Network Entities: <ol>"
 
 		var/i = 0
-		for(var/obj/machinery/telecomms/T in links)
+		for(var/obj/structure/machinery/telecomms/T in links)
 			i++
 			if(T.hide && !src.hide)
 				continue
@@ -189,7 +189,7 @@
 // the relay is on the telecomm satellite (changable in the TELECOMM_Z #define)
 
 
-/obj/machinery/telecomms/relay/proc/toggle_level()
+/obj/structure/machinery/telecomms/relay/proc/toggle_level()
 
 	var/turf/position = get_turf(src)
 
@@ -204,7 +204,7 @@
 
 // Returns a multitool from a user depending on their mobtype.
 
-/obj/machinery/telecomms/proc/get_multitool(mob/user as mob)
+/obj/structure/machinery/telecomms/proc/get_multitool(mob/user as mob)
 
 	var/obj/item/device/multitool/P = null
 	// Let's double check
@@ -221,22 +221,22 @@
 // Additional Options for certain machines. Use this when you want to add an option to a specific machine.
 // Example of how to use below.
 
-/obj/machinery/telecomms/proc/Options_Menu()
+/obj/structure/machinery/telecomms/proc/Options_Menu()
 	return ""
 
 /*
 // Add an option to the processor to switch processing mode. (COMPRESS -> UNCOMPRESS or UNCOMPRESS -> COMPRESS)
-/obj/machinery/telecomms/processor/Options_Menu()
+/obj/structure/machinery/telecomms/processor/Options_Menu()
 	var/dat = "<br>Processing Mode: <A href='?src=\ref[src];process=1'>[process_mode ? "UNCOMPRESS" : "COMPRESS"]</a>"
 	return dat
 */
 // The topic for Additional Options. Use this for checking href links for your specific option.
 // Example of how to use below.
-/obj/machinery/telecomms/proc/Options_Topic(href, href_list)
+/obj/structure/machinery/telecomms/proc/Options_Topic(href, href_list)
 	return
 
 /*
-/obj/machinery/telecomms/processor/Options_Topic(href, href_list)
+/obj/structure/machinery/telecomms/processor/Options_Topic(href, href_list)
 
 	if(href_list["process"])
 		temp = "<font color = #666633>-% Processing mode changed. %-</font color>"
@@ -245,7 +245,7 @@
 
 // RELAY
 
-/obj/machinery/telecomms/relay/Options_Menu()
+/obj/structure/machinery/telecomms/relay/Options_Menu()
 	var/dat = ""
 	if(src.z == TELECOMM_Z)
 		dat += "<br>Signal Locked to Station: <A href='?src=\ref[src];change_listening=1'>[listening_level == STATION_Z ? "TRUE" : "FALSE"]</a>"
@@ -253,7 +253,7 @@
 	dat += "<br>Receiving:    <A href='?src=\ref[src];receive=1'>[receiving ? "YES" : "NO"]</a>"
 	return dat
 
-/obj/machinery/telecomms/relay/Options_Topic(href, href_list)
+/obj/structure/machinery/telecomms/relay/Options_Topic(href, href_list)
 
 	if(href_list["receive"])
 		receiving = !receiving
@@ -272,11 +272,11 @@
 
 // BUS
 
-/obj/machinery/telecomms/bus/Options_Menu()
+/obj/structure/machinery/telecomms/bus/Options_Menu()
 	var/dat = "<br>Change Signal Frequency: <A href='?src=\ref[src];change_freq=1'>[change_frequency ? "YES ([change_frequency])" : "NO"]</a>"
 	return dat
 
-/obj/machinery/telecomms/bus/Options_Topic(href, href_list)
+/obj/structure/machinery/telecomms/bus/Options_Topic(href, href_list)
 
 	if(href_list["change_freq"])
 
@@ -293,7 +293,7 @@
 				temp = "<font color = #666633>-% Frequency changing deactivated %-</font color>"
 
 
-/obj/machinery/telecomms/Topic(href, href_list)
+/obj/structure/machinery/telecomms/Topic(href, href_list)
 
 	if(!ishighersilicon(usr))
 		if(!istype(usr.get_active_hand(), /obj/item/device/multitool))
@@ -333,7 +333,7 @@
 						temp = "<font color = #666633>-% Too many characters in new network tag %-</font color>"
 
 					else
-						for(var/obj/machinery/telecomms/T in links)
+						for(var/obj/structure/machinery/telecomms/T in links)
 							T.links.Remove(src)
 
 						network = newnet
@@ -361,7 +361,7 @@
 	if(href_list["unlink"])
 
 		if(text2num(href_list["unlink"]) <= length(links))
-			var/obj/machinery/telecomms/T = links[text2num(href_list["unlink"])]
+			var/obj/structure/machinery/telecomms/T = links[text2num(href_list["unlink"])]
 			if(istype(T))
 				temp = "<font color = #666633>-% Removed \ref[T] [T.name] from linked entities. %-</font color>"
 
@@ -404,7 +404,7 @@
 
 	updateUsrDialog()
 
-/obj/machinery/telecomms/proc/canAccess(var/mob/user)
+/obj/structure/machinery/telecomms/proc/canAccess(var/mob/user)
 	if(issilicon(user) || in_range(user, src))
 		return 1
 	return 0

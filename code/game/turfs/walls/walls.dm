@@ -15,7 +15,7 @@
 		/obj/structure/window/framed,
 		/obj/structure/window_frame,
 		/obj/structure/girder,
-		/obj/machinery/door)
+		/obj/structure/machinery/door)
 
 	var/damage = 0
 	var/damage_cap = HEALTH_WALL //Wall will break down to girders if damage reaches this point
@@ -37,8 +37,8 @@
 
 	var/special_icon = 0
 	var/list/blend_turfs = list(/turf/closed/wall)
-	var/list/blend_objects = list(/obj/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed) // Objects which to blend with
-	var/list/noblend_objects = list(/obj/machinery/door/window, /turf/closed/wall/resin, /turf/closed/wall/mineral) //Objects to avoid blending with (such as children of listed blend objects.
+	var/list/blend_objects = list(/obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed) // Objects which to blend with
+	var/list/noblend_objects = list(/obj/structure/machinery/door/window, /turf/closed/wall/resin, /turf/closed/wall/mineral) //Objects to avoid blending with (such as children of listed blend objects.
 
 
 /turf/closed/wall/New()

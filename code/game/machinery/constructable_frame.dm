@@ -1,6 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
-/obj/machinery/constructable_frame //Made into a seperate type to make future revisions easier.
+/obj/structure/machinery/constructable_frame //Made into a seperate type to make future revisions easier.
 	name = "machine frame"
 	icon = 'icons/obj/structures/machinery/stock_parts.dmi'
 	icon_state = "box_0"
@@ -17,11 +17,11 @@
 	var/required_skill = SKILL_CONSTRUCTION_MASTER
 	var/required_dismantle_skill = SKILL_ENGINEER_ENGI
 
-/obj/machinery/constructable_frame/New()
+/obj/structure/machinery/constructable_frame/New()
 	..()
 	update_desc()
 
-/obj/machinery/constructable_frame/proc/update_desc()
+/obj/structure/machinery/constructable_frame/proc/update_desc()
 	if(CONSTRUCTION_STATE_BEGIN)
 		requirements_left = " Requires 5 lengths of cable."
 	if(req_components)
@@ -36,11 +36,11 @@
 		requirements_left += "."
 	desc = initial(desc) + SPAN_WARNING(requirements_left)
 
-/obj/machinery/constructable_frame/update_icon()
+/obj/structure/machinery/constructable_frame/update_icon()
     ..()
     icon_state = "[base_state]_[state]"
 
-/obj/machinery/constructable_frame/attackby(obj/item/P as obj, mob/user as mob)
+/obj/structure/machinery/constructable_frame/attackby(obj/item/P as obj, mob/user as mob)
 	if(P.crit_fail)
 		to_chat(user, SPAN_DANGER("This part is faulty, you cannot add this to the machine!"))
 		return
@@ -139,7 +139,7 @@
 						break
 				if(component_check)
 					playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-					var/obj/machinery/new_machine = new src.circuit.build_path(src.loc)
+					var/obj/structure/machinery/new_machine = new src.circuit.build_path(src.loc)
 					new_machine.component_parts.Cut()
 					src.circuit.construct(new_machine)
 					for(var/obj/O in src)

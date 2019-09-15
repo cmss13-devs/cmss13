@@ -133,7 +133,7 @@
 /area/bigredv2/caves_north)
 "aA" = (
 /obj/structure/window/framed/colony,
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Dormitories";
 	name = "\improper Dormitories Shutters"
 	},
@@ -173,7 +173,7 @@
 /turf/closed/wall/r_wall,
 /area/bigredv2/outside/general_offices)
 "aJ" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
@@ -184,7 +184,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "aL" = (
-/obj/machinery/washing_machine,
+/obj/structure/machinery/washing_machine,
 /obj/item/clothing/under/darkred,
 /turf/open/floor{
 	tag = "icon-freezerfloor";
@@ -192,14 +192,14 @@
 	},
 /area/bigredv2/outside/general_offices)
 "aM" = (
-/obj/machinery/washing_machine,
+/obj/structure/machinery/washing_machine,
 /turf/open/floor{
 	tag = "icon-freezerfloor";
 	icon_state = "freezerfloor"
 	},
 /area/bigredv2/outside/general_offices)
 "aN" = (
-/obj/machinery/washing_machine,
+/obj/structure/machinery/washing_machine,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -267,7 +267,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "aY" = (
-/obj/machinery/suit_storage_unit/carbon_unit,
+/obj/structure/machinery/suit_storage_unit/carbon_unit,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -321,7 +321,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
 "bg" = (
-/obj/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin3";
 	icon_state = "rasputin3"
@@ -363,7 +363,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "bm" = (
-/obj/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 4;
 	name = "\improper Dormitories EVA";
 	req_one_access = list()
@@ -379,7 +379,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "bo" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 4;
 	name = "\improper Dormitories Lavatory"
 	},
@@ -476,7 +476,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "bB" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor,
@@ -536,7 +536,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "bK" = (
-/obj/machinery/washing_machine,
+/obj/structure/machinery/washing_machine,
 /obj/item/clothing/under/lightbrown,
 /turf/open/floor{
 	tag = "icon-freezerfloor";
@@ -544,7 +544,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "bL" = (
-/obj/machinery/washing_machine,
+/obj/structure/machinery/washing_machine,
 /obj/item/clothing/under/brown,
 /turf/open/floor{
 	tag = "icon-freezerfloor";
@@ -596,7 +596,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "bS" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/structure/rack,
@@ -633,7 +633,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "bW" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor{
@@ -641,19 +641,19 @@
 	},
 /area/bigredv2/outside/general_offices)
 "bX" = (
-/obj/machinery/vending/engivend,
+/obj/structure/machinery/vending/engivend,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/general_offices)
 "bY" = (
-/obj/machinery/vending/engineering,
+/obj/structure/machinery/vending/engineering,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/general_offices)
 "bZ" = (
-/obj/machinery/vending/tool,
+/obj/structure/machinery/vending/tool,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -746,7 +746,7 @@
 /area/bigredv2/outside/general_offices)
 "ck" = (
 /obj/structure/table,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
@@ -832,7 +832,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "cx" = (
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 2
 	},
 /obj/item/stack/sheet/plasteel,
@@ -855,7 +855,7 @@
 /turf/closed/wall,
 /area/bigredv2/outside/dorms)
 "cA" = (
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 4;
 	name = "\improper Dormitories Tool Storage"
 	},
@@ -880,7 +880,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "cE" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor,
@@ -948,21 +948,21 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "cQ" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/machinery/vending/cola,
+/obj/structure/machinery/vending/cola,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "cR" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "cS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -974,7 +974,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "cT" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	on = 1
 	},
@@ -1025,11 +1025,11 @@
 	},
 /area/bigredv2/outside/general_offices)
 "da" = (
-/obj/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "db" = (
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Dormitories"
 	},
@@ -1042,7 +1042,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "dd" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -1058,13 +1058,13 @@
 	},
 /area/bigredv2/outside/general_offices)
 "df" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/general_offices)
 "dg" = (
-/obj/machinery/vending/snack,
+/obj/structure/machinery/vending/snack,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "dh" = (
@@ -1082,7 +1082,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "dj" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Dormitories Bedroom"
 	},
@@ -1171,7 +1171,7 @@
 /turf/closed/wall,
 /area/bigredv2/outside/bar)
 "dy" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	tag = "icon-tube1 (WEST)";
 	icon_state = "tube1";
 	dir = 8
@@ -1187,7 +1187,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "dA" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	tag = "icon-tube1 (WEST)";
 	icon_state = "tube1";
 	dir = 8
@@ -1203,7 +1203,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "dC" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	tag = "icon-tube1 (WEST)";
 	icon_state = "tube1";
 	dir = 8
@@ -1238,31 +1238,31 @@
 /turf/open/mars,
 /area/bigredv2/outside/ne)
 "dH" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
-/obj/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	name = "\improper Bar Maintenance";
 	req_one_access = list()
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
 "dI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
 "dJ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
 "dK" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	tag = "icon-tube1 (NORTH)";
 	icon_state = "tube1";
 	dir = 1
@@ -1276,31 +1276,31 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
 "dN" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
 "dO" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "dP" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
-/obj/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	name = "\improper Bar Maintenance";
 	req_one_access = list()
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "dQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1312,7 +1312,7 @@
 	},
 /area/bigredv2/outside/ne)
 "dR" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1323,7 +1323,7 @@
 	},
 /area/bigredv2/outside/ne)
 "dS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1333,7 +1333,7 @@
 	},
 /area/bigredv2/outside/ne)
 "dT" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1342,7 +1342,7 @@
 	},
 /area/bigredv2/outside/ne)
 "dU" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor{
@@ -1367,7 +1367,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/ne)
 "dY" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
 "dZ" = (
@@ -1394,7 +1394,7 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "ed" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1423,7 +1423,7 @@
 /turf/closed/wall,
 /area/bigredv2/outside/hydroponics)
 "ei" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "ej" = (
@@ -1446,7 +1446,7 @@
 	},
 /area/bigredv2/outside/ne)
 "em" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -1458,7 +1458,7 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "eo" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor{
 	tag = "icon-whitegreenfull";
 	icon_state = "whitegreenfull";
@@ -1470,11 +1470,11 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/hydroponics)
 "eq" = (
-/obj/machinery/vending/hydronutrients,
+/obj/structure/machinery/vending/hydronutrients,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "er" = (
-/obj/machinery/vending/hydroseeds,
+/obj/structure/machinery/vending/hydroseeds,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "es" = (
@@ -1484,7 +1484,7 @@
 "et" = (
 /obj/structure/table,
 /obj/item/tool/shovel/spade,
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
 /turf/open/floor,
@@ -1495,12 +1495,12 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "ev" = (
-/obj/machinery/fermenter,
+/obj/structure/machinery/fermenter,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "ew" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
 	name = "\improper Bar Maintenance";
 	req_one_access = list()
@@ -1527,7 +1527,7 @@
 	},
 /area/bigredv2/outside/ne)
 "eA" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor/plating{
@@ -1536,7 +1536,7 @@
 /area/bigredv2/outside/hydroponics)
 "eB" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor/plating{
@@ -1594,7 +1594,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "eL" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
 	},
 /turf/open/shuttle/dropship{

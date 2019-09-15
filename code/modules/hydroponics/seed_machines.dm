@@ -32,7 +32,7 @@
 	for(var/i = 0;i<14;i++)
 		new /obj/item/disk/botany(src)
 
-/obj/machinery/botany
+/obj/structure/machinery/botany
 	icon = 'icons/obj/structures/machinery/hydroponics.dmi'
 	icon_state = "hydrotray3"
 	density = 1
@@ -50,7 +50,7 @@
 	var/failed_task = 0
 	var/disk_needs_genes = 0
 
-/obj/machinery/botany/process()
+/obj/structure/machinery/botany/process()
 
 	..()
 	if(!active) return
@@ -58,13 +58,13 @@
 	if(world.time > last_action + action_time)
 		finished_task()
 
-/obj/machinery/botany/attack_ai(mob/user as mob)
+/obj/structure/machinery/botany/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/botany/attack_hand(mob/user as mob)
+/obj/structure/machinery/botany/attack_hand(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/botany/proc/finished_task()
+/obj/structure/machinery/botany/proc/finished_task()
 	active = 0
 	if(failed_task)
 		failed_task = 0
@@ -80,7 +80,7 @@
 			loaded_disk = null
 	stop_processing()
 
-/obj/machinery/botany/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/botany/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/seeds))
 		if(seed)
 			to_chat(user, "There is already a seed loaded.")
@@ -130,14 +130,14 @@
 	..()
 
 // Allows for a trait to be extracted from a seed packet, destroying that seed.
-/obj/machinery/botany/extractor
+/obj/structure/machinery/botany/extractor
 	name = "lysis-isolation centrifuge"
 	icon_state = "traitcopier"
 
 	var/datum/seed/genetics // Currently scanned seed genetic structure.
 	var/degradation = 0     // Increments with each scan, stops allowing gene mods after a certain point.
 
-/obj/machinery/botany/extractor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/structure/machinery/botany/extractor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 
 	if(!user)
 		return
@@ -178,7 +178,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/machinery/botany/Topic(href, href_list)
+/obj/structure/machinery/botany/Topic(href, href_list)
 
 	if(..())
 		return 1
@@ -206,7 +206,7 @@
 	usr.set_interaction(src)
 	src.add_fingerprint(usr)
 
-/obj/machinery/botany/extractor/Topic(href, href_list)
+/obj/structure/machinery/botany/extractor/Topic(href, href_list)
 
 	if(..())
 		return 1
@@ -265,12 +265,12 @@
 
 // Fires an extracted trait into another packet of seeds with a chance
 // of destroying it based on the size/complexity of the plasmid.
-/obj/machinery/botany/editor
+/obj/structure/machinery/botany/editor
 	name = "bioballistic delivery system"
 	icon_state = "traitgun"
 	disk_needs_genes = 1
 
-/obj/machinery/botany/editor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/structure/machinery/botany/editor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 
 	if(!user)
 		return
@@ -310,7 +310,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/machinery/botany/editor/Topic(href, href_list)
+/obj/structure/machinery/botany/editor/Topic(href, href_list)
 
 	if(..())
 		return 1

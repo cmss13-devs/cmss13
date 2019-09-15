@@ -1,15 +1,15 @@
-/obj/machinery/door/poddoor/shutters
+/obj/structure/machinery/door/poddoor/shutters
 	name = "\improper Shutters"
 	icon = 'icons/obj/structures/doors/rapid_pdoor.dmi'
 	icon_state = "shutter1"
 	power_channel = ENVIRON
 	processable = 0
 
-/obj/machinery/door/poddoor/shutters/New()
+/obj/structure/machinery/door/poddoor/shutters/New()
 	..()
 	layer = PODDOOR_CLOSED_LAYER
 
-/obj/machinery/door/poddoor/shutters/attackby(obj/item/C as obj, mob/user as mob)
+/obj/structure/machinery/door/poddoor/shutters/attackby(obj/item/C as obj, mob/user as mob)
 	add_fingerprint(user)
 	if(!C.pry_capable)
 		return
@@ -25,7 +25,7 @@
 			return
 	return
 
-/obj/machinery/door/poddoor/shutters/open()
+/obj/structure/machinery/door/poddoor/shutters/open()
 	if(operating == 1) //doors can still open when emag-disabled
 		return
 	if(!ticker)
@@ -47,7 +47,7 @@
 			autoclose()		//TODO: note to self: look into this ~Carn
 	return 1
 
-/obj/machinery/door/poddoor/shutters/close()
+/obj/structure/machinery/door/poddoor/shutters/close()
 	if(operating)
 		return
 	operating = 1
@@ -63,21 +63,21 @@
 	operating = 0
 	return
 
-/obj/machinery/door/poddoor/shutters/almayer
+/obj/structure/machinery/door/poddoor/shutters/almayer
 	icon = 'icons/obj/structures/doors/blastdoors_shutters.dmi'
 	openspeed = 4 //shorter open animation.
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
-		/obj/machinery/door/airlock)
+		/obj/structure/machinery/door/airlock)
 
-/obj/machinery/door/poddoor/shutters/almayer/New()
+/obj/structure/machinery/door/poddoor/shutters/almayer/New()
 	spawn(10) // No fucken idea but this somehow makes it work. What the actual fuck.
 		relativewall_neighbours()
 	..()
 
 
 //transit shutters used by marine dropships
-/obj/machinery/door/poddoor/shutters/transit
+/obj/structure/machinery/door/poddoor/shutters/transit
 	name = "Transit shutters"
 	desc = "Safety shutters to prevent dangerous depressurization during flight"
 	icon = 'icons/obj/structures/doors/blastdoors_shutters.dmi'
@@ -86,7 +86,7 @@
 	ex_act(severity) //immune to explosions
 		return
 
-/obj/machinery/door/poddoor/shutters/almayer/pressure
+/obj/structure/machinery/door/poddoor/shutters/almayer/pressure
 	name = "pressure shutters"
 	density = 0
 	opacity = 0

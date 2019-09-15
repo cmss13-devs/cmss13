@@ -1,7 +1,7 @@
 //sensor tower for deser dam. It is there to add the xeno's to the tactical map for marines.
 
 
-/obj/machinery/sensortower
+/obj/structure/machinery/sensortower
 	name = "\improper experimental sensor tower"
 	icon = 'icons/obj/structures/machinery/motion_sensor_v2.dmi'
 	icon_state = "sensor_broken"
@@ -19,7 +19,7 @@
 	var/cur_tick = 0 //Tick updater
 
 
-/obj/machinery/sensortower/update_icon()
+/obj/structure/machinery/sensortower/update_icon()
 	..()
 	if(!buildstate && is_on)
 		desc = "A tower with a lot of delicate sensors made to track weather conditions. This one has been adjusted to track biosignatures. It looks like it is online."
@@ -37,14 +37,14 @@
 		desc = "A tower with a lot of delicate sensors made to track weather conditions. This one has been adjusted to track biosignatures. This one is heavily damaged. Use a wrench to repair it."
 		icon_state = "sensor_broken"
 
-/obj/machinery/sensortower/process()
+/obj/structure/machinery/sensortower/process()
 	if(!is_on || buildstate || !anchored) //Default logic checking
 		return 0
 	if(stat & (BROKEN|NOPOWER))
 		return 0
 	checkfailure()
 
-/obj/machinery/sensortower/proc/checkfailure()
+/obj/structure/machinery/sensortower/proc/checkfailure()
 	cur_tick++
 	if(cur_tick < fail_check_ticks) //Nope, not time for it yet
 		return 0
@@ -65,7 +65,7 @@
 		return 1
 	return 0
 
-/obj/machinery/sensortower/attack_hand(mob/user as mob)
+/obj/structure/machinery/sensortower/attack_hand(mob/user as mob)
 	if(!anchored) return 0 //Shouldn't actually be possible
 	if(user.is_mob_incapacitated()) return 0
 	if(!ishuman(user))
@@ -101,7 +101,7 @@
 	start_processing()
 	return 1
 
-/obj/machinery/sensortower/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/sensortower/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(iswelder(O))
 		if(buildstate == 1 && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
@@ -160,14 +160,14 @@
 		return ..() //Deal with everything else, like hitting with stuff
 
 
-/obj/machinery/sensortower/stop_processing()
+/obj/structure/machinery/sensortower/stop_processing()
 	ticker.toweractive = FALSE
 	..()
 
-/obj/machinery/sensortower/start_processing()
+/obj/structure/machinery/sensortower/start_processing()
 	ticker.toweractive = TRUE
 	..()
 
-/obj/machinery/sensortower/power_change()
+/obj/structure/machinery/sensortower/power_change()
 	..()
 	update_icon()

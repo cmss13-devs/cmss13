@@ -9,7 +9,7 @@
 */
 
 
-/obj/machinery/porta_turret
+/obj/structure/machinery/porta_turret
 	name = "turret"
 	icon = 'icons/obj/turrets.dmi'
 	icon_state = "grey_target_prism"
@@ -38,7 +38,7 @@
 	var/iconholder = null//holder for the icon_state
 	var/egun = null//holder to handle certain guns switching bullettypes
 
-	var/obj/machinery/porta_turret_cover/cover = null	// the cover that is covering this turret
+	var/obj/structure/machinery/porta_turret_cover/cover = null	// the cover that is covering this turret
 	var/last_fired = 0		// 1: if the turret is cooling down from a shot, 0: turret is ready to fire
 	var/shot_delay = 15		// 1.5 seconds between each shot
 
@@ -183,10 +183,10 @@
 		..()
 
 
-/obj/machinery/porta_turret/attack_ai(mob/user as mob)
+/obj/structure/machinery/porta_turret/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/porta_turret/attack_hand(mob/user as mob)
+/obj/structure/machinery/porta_turret/attack_hand(mob/user as mob)
 	. = ..()
 	if (.)
 		return
@@ -232,7 +232,7 @@ Status: []<BR>"},
 	onclose(user, "autosec")
 	return
 
-/obj/machinery/porta_turret/Topic(href, href_list)
+/obj/structure/machinery/porta_turret/Topic(href, href_list)
 	if (..())
 		return
 	usr.set_machine(src)
@@ -260,7 +260,7 @@ Status: []<BR>"},
 	updateUsrDialog()
 
 
-/obj/machinery/porta_turret/power_change()
+/obj/structure/machinery/porta_turret/power_change()
 
 	if(!anchored)
 		icon_state = "turretCover"
@@ -286,7 +286,7 @@ Status: []<BR>"},
 
 
 
-/obj/machinery/porta_turret/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/porta_turret/attackby(obj/item/W as obj, mob/user as mob)
 	if(stat & BROKEN)
 		if(istype(W, /obj/item/weapon/crowbar))
 
@@ -316,7 +316,7 @@ Status: []<BR>"},
 			invisibility = INVISIBILITY_LEVEL_TWO
 			icon_state = "[lasercolor]grey_target_prism"
 			to_chat(user, "You secure the exterior bolts on the turret.")
-			cover=new/obj/machinery/porta_turret_cover(src.loc) // create a new turret. While this is handled in process(), this is to workaround a bug where the turret becomes invisible for a split second
+			cover=new/obj/structure/machinery/porta_turret_cover(src.loc) // create a new turret. While this is handled in process(), this is to workaround a bug where the turret becomes invisible for a split second
 			cover.Parent_Turret = src // make the cover's parent src
 		else
 			anchored = 0
@@ -348,7 +348,7 @@ Status: []<BR>"},
 
 
 
-/obj/machinery/porta_turret/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/machinery/porta_turret/bullet_act(var/obj/item/projectile/Proj)
 
 	if(Proj.ammo.damage_type == HALLOSS)
 		return
@@ -367,7 +367,7 @@ Status: []<BR>"},
 		src.die() // the death process :(
 	return
 
-/obj/machinery/porta_turret/emp_act(severity)
+/obj/structure/machinery/porta_turret/emp_act(severity)
 	if(on)
 		// if the turret is on, the EMP no matter how severe disables the turret for a while
 		// and scrambles its settings, with a slight chance of having an emag effect
@@ -382,13 +382,13 @@ Status: []<BR>"},
 
 	..()
 
-/obj/machinery/porta_turret/ex_act(severity)
+/obj/structure/machinery/porta_turret/ex_act(severity)
 	if(severity >= 0) // turret dies if an explosion touches it!
 		del(src)
 	else
 		src.die()
 
-/obj/machinery/porta_turret/proc/die() // called when the turret dies, ie, health <= 0
+/obj/structure/machinery/porta_turret/proc/die() // called when the turret dies, ie, health <= 0
 	src.health = 0
 	src.density = 0
 	src.stat |= BROKEN // enables the BROKEN bit
@@ -400,7 +400,7 @@ Status: []<BR>"},
 
 
 
-/obj/machinery/porta_turret/process()
+/obj/structure/machinery/porta_turret/process()
 	// the main machinery process
 
 	set background = 1
@@ -410,7 +410,7 @@ Status: []<BR>"},
 			del(cover) // delete its cover, assuming it has one. Workaround for a pesky little bug
 		else
 
-			src.cover = new /obj/machinery/porta_turret_cover(src.loc) // if the turret has no cover and is anchored, give it a cover
+			src.cover = new /obj/structure/machinery/porta_turret_cover(src.loc) // if the turret has no cover and is anchored, give it a cover
 			src.cover.Parent_Turret = src // assign the cover its Parent_Turret, which would be this (src)
 
 	if(stat & (NOPOWER|BROKEN))
@@ -487,7 +487,7 @@ Status: []<BR>"},
 		else
 			spawn() popDown()
 
-/obj/machinery/porta_turret/proc
+/obj/structure/machinery/porta_turret/proc
 	popUp() // pops the turret up
 		if(disabled)
 			return
@@ -519,7 +519,7 @@ Status: []<BR>"},
 		icon_state="[lasercolor]grey_target_prism"
 
 
-/obj/machinery/porta_turret/proc/assess_perp(mob/living/carbon/human/perp as mob)
+/obj/structure/machinery/porta_turret/proc/assess_perp(mob/living/carbon/human/perp as mob)
 	var/threatcount = 0 // the integer returned
 /*
 	if((stun_all && !src.allowed(perp)) || attacked && !src.allowed(perp))
@@ -583,7 +583,7 @@ Status: []<BR>"},
 
 
 
-/obj/machinery/porta_turret/proc/shootAt(var/atom/movable/target) // shoots at a target
+/obj/structure/machinery/porta_turret/proc/shootAt(var/atom/movable/target) // shoots at a target
 	if(disabled)
 		return
 
@@ -636,7 +636,7 @@ Status: []<BR>"},
 
 */
 
-/obj/machinery/porta_turret_construct
+/obj/structure/machinery/porta_turret_construct
 	name = "turret frame"
 	icon = 'icons/obj/turrets.dmi'
 	icon_state = "turret_frame"
@@ -648,7 +648,7 @@ Status: []<BR>"},
 
 
 
-/obj/machinery/porta_turret_construct/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/porta_turret_construct/attackby(obj/item/W as obj, mob/user as mob)
 
 	// this is a bit unweildy but self-explanitory
 	switch(build_step)
@@ -774,12 +774,12 @@ Status: []<BR>"},
 					to_chat(user, SPAN_NOTICE(" You weld the turret's armor down."))
 
 					// The final step: create a full turret
-					var/obj/machinery/porta_turret/Turret = new/obj/machinery/porta_turret(locate(x,y,z))
+					var/obj/structure/machinery/porta_turret/Turret = new/obj/structure/machinery/porta_turret(locate(x,y,z))
 					Turret.name = finish_name
 					Turret.installation = src.installation
 					Turret.gun_charge = src.gun_charge
 
-//					Turret.cover=new/obj/machinery/porta_turret_cover(src.loc)
+//					Turret.cover=new/obj/structure/machinery/porta_turret_cover(src.loc)
 //					Turret.cover.Parent_Turret=Turret
 //					Turret.cover.name = finish_name
 					Turret.New()
@@ -805,7 +805,7 @@ Status: []<BR>"},
 
 
 
-/obj/machinery/porta_turret_construct/attack_hand(mob/user as mob)
+/obj/structure/machinery/porta_turret_construct/attack_hand(mob/user as mob)
 	switch(build_step)
 		if(4)
 			if(!installation) return
@@ -834,20 +834,20 @@ Status: []<BR>"},
 
 
 
-/obj/machinery/porta_turret_cover
+/obj/structure/machinery/porta_turret_cover
 	name = "turret"
 	icon = 'icons/obj/turrets.dmi'
 	icon_state = "turretCover"
 	anchored = 1
 	layer = 3.5
 	density = 0
-	var/obj/machinery/porta_turret/Parent_Turret = null
+	var/obj/structure/machinery/porta_turret/Parent_Turret = null
 
 
 
 // The below code is pretty much just recoded from the initial turret object. It's necessary but uncommented because it's exactly the same!
 
-/obj/machinery/porta_turret_cover/attack_ai(mob/user as mob)
+/obj/structure/machinery/porta_turret_cover/attack_ai(mob/user as mob)
 	. = ..()
 	if (.)
 		return
@@ -884,7 +884,7 @@ Status: []<BR>"},
 	onclose(user, "autosec")
 	return
 
-/obj/machinery/porta_turret_cover/attack_hand(mob/user as mob)
+/obj/structure/machinery/porta_turret_cover/attack_hand(mob/user as mob)
 	. = ..()
 	if (.)
 		return
@@ -929,7 +929,7 @@ Status: []<BR>"},
 	onclose(user, "autosec")
 	return
 
-/obj/machinery/porta_turret_cover/Topic(href, href_list)
+/obj/structure/machinery/porta_turret_cover/Topic(href, href_list)
 	if (..())
 		return
 	usr.set_machine(src)
@@ -963,7 +963,7 @@ Status: []<BR>"},
 
 
 
-/obj/machinery/porta_turret_cover/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/porta_turret_cover/attackby(obj/item/W as obj, mob/user as mob)
 	if((istype(W, /obj/item/weapon/wrench)) && (!Parent_Turret.on))
 		if(Parent_Turret.raised) return
 
@@ -1002,7 +1002,7 @@ Status: []<BR>"},
 
 
 
-/obj/machinery/porta_turret/stationary
+/obj/structure/machinery/porta_turret/stationary
 	New()
 		installation = new/obj/item/weapon/gun/energy/laser(src.loc)
 		..()

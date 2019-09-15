@@ -79,13 +79,13 @@
 /atom/proc/AICtrlShiftClick()
 	return
 
-/obj/machinery/door/airlock/AICtrlShiftClick()
+/obj/structure/machinery/door/airlock/AICtrlShiftClick()
 	return
 
 /atom/proc/AIShiftClick()
 	return
 
-/obj/machinery/door/airlock/AIShiftClick()  // Opens and closes doors!
+/obj/structure/machinery/door/airlock/AIShiftClick()  // Opens and closes doors!
 	if(density)
 		Topic("aiEnable=7", list("aiEnable"="7"), 1) // 1 meaning no window (consistency!)
 	else
@@ -98,19 +98,19 @@
 atom/proc/AIAltClick()
 	return
 
-/obj/machinery/door/airlock/AICtrlClick() // Bolts doors
+/obj/structure/machinery/door/airlock/AICtrlClick() // Bolts doors
 	if(locked)
 		Topic("aiEnable=4", list("aiEnable"="4"), 1)// 1 meaning no window (consistency!)
 	else
 		Topic("aiDisable=4", list("aiDisable"="4"), 1)
 
-/obj/machinery/power/apc/AICtrlClick() // turns off/on APCs.
+/obj/structure/machinery/power/apc/AICtrlClick() // turns off/on APCs.
 	Topic("breaker=1", list("breaker"="1"), 0) // 0 meaning no window (consistency! wait...)
 
-/obj/machinery/turretid/AICtrlClick() //turns off/on Turrets
+/obj/structure/machinery/turretid/AICtrlClick() //turns off/on Turrets
 	Topic("toggleOn", list("toggleOn" = 1), 1) // 1 meaning no window (consistency!)
 
-/obj/machinery/door/airlock/AIAltClick() // Electrifies doors.
+/obj/structure/machinery/door/airlock/AIAltClick() // Electrifies doors.
 	if(!secondsElectrified)
 		// permanent shock
 		Topic("aiEnable=6", list("aiEnable"="6"), 1) // 1 meaning no window (consistency!)
@@ -119,13 +119,13 @@ atom/proc/AIAltClick()
 		Topic("aiDisable=5", list("aiDisable"="5"), 1)
 	return
 
-/obj/machinery/turretid/AIAltClick() //toggles lethal on turrets
+/obj/structure/machinery/turretid/AIAltClick() //toggles lethal on turrets
 	Topic("toggleLethal", list("toggleLethal" = 1), 1) // 1 meaning no window (consistency!)
 
 /atom/proc/AIMiddleClick()
 	return
 
-/obj/machinery/door/airlock/AIMiddleClick() // Toggles door bolt lights.
+/obj/structure/machinery/door/airlock/AIMiddleClick() // Toggles door bolt lights.
 	if(!src.lights)
 		Topic("aiEnable=10", list("aiEnable"="10"), 1) // 1 meaning no window (consistency!)
 	else

@@ -1,4 +1,4 @@
-/obj/machinery/processor
+/obj/structure/machinery/processor
 	name = "Food Processor"
 	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "processor"
@@ -53,7 +53,7 @@
 		process(loc, what)
 			..()
 
-/obj/machinery/processor/proc/select_recipe(var/X)
+/obj/structure/machinery/processor/proc/select_recipe(var/X)
 	for (var/Type in typesof(/datum/food_processor_process) - /datum/food_processor_process - /datum/food_processor_process/mob)
 		var/datum/food_processor_process/P = new Type()
 		if (!istype(X, P.input))
@@ -61,7 +61,7 @@
 		return P
 	return 0
 
-/obj/machinery/processor/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/processor/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(src.processing)
 		to_chat(user, SPAN_DANGER("The processor is in the process of processing."))
 		return 1
@@ -82,7 +82,7 @@
 	user.drop_held_item()
 	what.forceMove(src)
 
-/obj/machinery/processor/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/processor/attack_hand(var/mob/user as mob)
 	if (src.stat != 0) //NOPOWER etc
 		return
 	if(src.processing)

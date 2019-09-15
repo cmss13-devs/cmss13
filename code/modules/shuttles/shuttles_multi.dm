@@ -43,10 +43,10 @@
 	marine_announcement(arrival_message,(announcer ? announcer : "Central Command"))
 
 
-/obj/machinery/computer/shuttle_control/multi
+/obj/structure/machinery/computer/shuttle_control/multi
 	icon_state = "syndishuttle"
 
-/obj/machinery/computer/shuttle_control/multi/attack_hand(mob/user)
+/obj/structure/machinery/computer/shuttle_control/multi/attack_hand(mob/user)
 
 	if(..())
 		return
@@ -76,7 +76,7 @@
 
 	user << browse("[dat]", "window=[shuttle_tag]shuttlecontrol;size=300x600")
 
-/obj/machinery/computer/shuttle_control/multi/Topic(href, href_list)
+/obj/structure/machinery/computer/shuttle_control/multi/Topic(href, href_list)
 	if(..())
 		return
 

@@ -432,7 +432,7 @@ var/list/ob_type_fuel_requirements
 
 
 
-/obj/machinery/computer/orbital_cannon_console
+/obj/structure/machinery/computer/orbital_cannon_console
 	name = "\improper Orbital Cannon Console"
 	desc = "The console controlling the orbital cannon loading systems."
 	icon_state = "ob_console"
@@ -442,14 +442,14 @@ var/list/ob_type_fuel_requirements
 
 
 
-/obj/machinery/computer/orbital_cannon_console/ex_act()
+/obj/structure/machinery/computer/orbital_cannon_console/ex_act()
 	return
 
-/obj/machinery/computer/orbital_cannon_console/bullet_act()
+/obj/structure/machinery/computer/orbital_cannon_console/bullet_act()
 	return
 
 
-/obj/machinery/computer/orbital_cannon_console/attack_hand(mob/user)
+/obj/structure/machinery/computer/orbital_cannon_console/attack_hand(mob/user)
 	if(..())
 		return
 
@@ -496,7 +496,7 @@ var/list/ob_type_fuel_requirements
 	onclose(user, "orbital_console")
 
 
-/obj/machinery/computer/orbital_cannon_console/Topic(href, href_list)
+/obj/structure/machinery/computer/orbital_cannon_console/Topic(href, href_list)
 	if(..())
 		return
 

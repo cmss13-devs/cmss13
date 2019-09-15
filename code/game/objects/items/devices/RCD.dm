@@ -84,7 +84,7 @@ RCD
 			return 0
 		if(istype(A,/area/shuttle) || istype(A,/turf/open/space/transit))
 			return 0
-		if(!(istype(A, /turf) || istype(A, /obj/machinery/door/airlock)))
+		if(!(istype(A, /turf) || istype(A, /obj/structure/machinery/door/airlock)))
 			return 0
 
 		switch(mode)
@@ -116,7 +116,7 @@ RCD
 						if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 							if(!useResource(10, user)) return 0
 							activate()
-							var/obj/machinery/door/airlock/T = new /obj/machinery/door/airlock( A )
+							var/obj/structure/machinery/door/airlock/T = new /obj/structure/machinery/door/airlock( A )
 							T.autoclose = 1
 							return 1
 						return 0
@@ -150,7 +150,7 @@ RCD
 							return 1
 					return 0
 
-				if(istype(A, /obj/machinery/door/airlock))
+				if(istype(A, /obj/structure/machinery/door/airlock))
 					if(checkResource(10, user))
 						to_chat(user, "Deconstructing Airlock...")
 						playsound(src.loc, 'sound/machines/click.ogg', 15, 1)

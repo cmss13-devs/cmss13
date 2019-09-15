@@ -1,4 +1,4 @@
-/obj/machinery/air_sensor
+/obj/structure/machinery/air_sensor
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "gsensor1"
 	name = "Gas Sensor"
@@ -22,10 +22,10 @@
 
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/air_sensor/update_icon()
+/obj/structure/machinery/air_sensor/update_icon()
 	icon_state = "gsensor[on]"
 
-/obj/machinery/air_sensor/process()
+/obj/structure/machinery/air_sensor/process()
 	if(on)
 		var/datum/signal/signal = new
 		signal.transmission_method = 1 //radio signal
@@ -50,15 +50,15 @@
 		radio_connection.post_signal(src, signal, filter = RADIO_ATMOSIA)
 
 
-/obj/machinery/air_sensor/proc/set_frequency(new_frequency)
+/obj/structure/machinery/air_sensor/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)
 	frequency = new_frequency
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_ATMOSIA)
 
-/obj/machinery/air_sensor/initialize()
+/obj/structure/machinery/air_sensor/initialize()
 	set_frequency(frequency)
 
-/obj/machinery/air_sensor/New()
+/obj/structure/machinery/air_sensor/New()
 	..()
 
 	if(radio_controller)

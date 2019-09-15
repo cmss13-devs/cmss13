@@ -1,5 +1,5 @@
 
-/obj/machinery/juicer
+/obj/structure/machinery/juicer
 	name = "Juicer"
 	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "juicer1"
@@ -24,15 +24,15 @@
 		/obj/item/reagent_container/food/snacks/grown/poisonberries = "poisonberryjuice",
 	)
 
-/obj/machinery/juicer/New()
+/obj/structure/machinery/juicer/New()
 	beaker = new /obj/item/reagent_container/glass/beaker/large(src)
 
-/obj/machinery/juicer/update_icon()
+/obj/structure/machinery/juicer/update_icon()
 	icon_state = "juicer"+num2text(!isnull(beaker))
 	return
 
 
-/obj/machinery/juicer/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/juicer/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if (istype(O,/obj/item/reagent_container/glass) || \
 		istype(O,/obj/item/reagent_container/food/drinks/drinkingglass))
 		if (beaker)
@@ -41,7 +41,7 @@
 			if(user.drop_held_item())
 				O.forceMove(src)
 				beaker = O
-				verbs += /obj/machinery/juicer/verb/detach
+				verbs += /obj/structure/machinery/juicer/verb/detach
 				update_icon()
 			updateUsrDialog()
 			return 0
@@ -53,14 +53,14 @@
 	updateUsrDialog()
 	return 0
 
-/obj/machinery/juicer/attack_ai(mob/user as mob)
+/obj/structure/machinery/juicer/attack_ai(mob/user as mob)
 	return 0
 
-/obj/machinery/juicer/attack_hand(mob/user as mob)
+/obj/structure/machinery/juicer/attack_hand(mob/user as mob)
 	user.set_interaction(src)
 	interact(user)
 
-/obj/machinery/juicer/interact(mob/user as mob) // The microwave Menu
+/obj/structure/machinery/juicer/interact(mob/user as mob) // The microwave Menu
 	var/is_chamber_empty = 0
 	var/is_beaker_ready = 0
 	var/processing_chamber = ""
@@ -100,7 +100,7 @@
 	return
 
 
-/obj/machinery/juicer/Topic(href, href_list)
+/obj/structure/machinery/juicer/Topic(href, href_list)
 	if(..())
 		return
 	usr.set_interaction(src)
@@ -113,7 +113,7 @@
 	src.updateUsrDialog()
 	return
 
-/obj/machinery/juicer/verb/detach()
+/obj/structure/machinery/juicer/verb/detach()
 	set category = "Object"
 	set name = "Detach Beaker from the juicer"
 	set src in oview(1)
@@ -121,17 +121,17 @@
 		return
 	if (!beaker)
 		return
-	src.verbs -= /obj/machinery/juicer/verb/detach
+	src.verbs -= /obj/structure/machinery/juicer/verb/detach
 	beaker.loc = src.loc
 	beaker = null
 	update_icon()
 
-/obj/machinery/juicer/proc/get_juice_id(var/obj/item/reagent_container/food/snacks/grown/O)
+/obj/structure/machinery/juicer/proc/get_juice_id(var/obj/item/reagent_container/food/snacks/grown/O)
 	for (var/i in allowed_items)
 		if (istype(O, i))
 			return allowed_items[i]
 
-/obj/machinery/juicer/proc/get_juice_amount(var/obj/item/reagent_container/food/snacks/grown/O)
+/obj/structure/machinery/juicer/proc/get_juice_amount(var/obj/item/reagent_container/food/snacks/grown/O)
 	if (!istype(O))
 		return 5
 	else if (O.potency == -1)
@@ -139,7 +139,7 @@
 	else
 		return round(5*sqrt(O.potency))
 
-/obj/machinery/juicer/proc/juice()
+/obj/structure/machinery/juicer/proc/juice()
 	power_change() //it is a portable machine
 	if(stat & (NOPOWER|BROKEN))
 		return
@@ -156,7 +156,7 @@
 /obj/structure/closet/crate/juice
 	New()
 		..()
-		new/obj/machinery/juicer(src)
+		new/obj/structure/machinery/juicer(src)
 		new/obj/item/reagent_container/food/snacks/grown/tomato(src)
 		new/obj/item/reagent_container/food/snacks/grown/carrot(src)
 		new/obj/item/reagent_container/food/snacks/grown/berries(src)

@@ -210,7 +210,7 @@ obj/structure/windoor_assembly/Dispose()
 					to_chat(user, SPAN_NOTICE(" You finish the windoor!"))
 
 					if(secure)
-						var/obj/machinery/door/window/brigdoor/windoor = new /obj/machinery/door/window/brigdoor(src.loc)
+						var/obj/structure/machinery/door/window/brigdoor/windoor = new /obj/structure/machinery/door/window/brigdoor(src.loc)
 						if(src.facing == "l")
 							windoor.icon_state = "leftsecureopen"
 							windoor.base_state = "leftsecure"
@@ -228,7 +228,7 @@ obj/structure/windoor_assembly/Dispose()
 						windoor.electronics = src.electronics
 						src.electronics.loc = windoor
 					else
-						var/obj/machinery/door/window/windoor = new /obj/machinery/door/window(src.loc)
+						var/obj/structure/machinery/door/window/windoor = new /obj/structure/machinery/door/window(src.loc)
 						if(src.facing == "l")
 							windoor.icon_state = "leftopen"
 							windoor.base_state = "left"

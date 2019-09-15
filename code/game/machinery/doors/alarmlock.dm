@@ -1,4 +1,4 @@
-/obj/machinery/door/airlock/alarmlock
+/obj/structure/machinery/door/airlock/alarmlock
 
 	name = "Glass Alarm Airlock"
 	icon = 'icons/obj/structures/doors/Doorglass.dmi'
@@ -9,18 +9,18 @@
 	var/air_frequency = 1437
 	autoclose = 0
 
-/obj/machinery/door/airlock/alarmlock/New()
+/obj/structure/machinery/door/airlock/alarmlock/New()
 	..()
 	air_connection = new
 
-/obj/machinery/door/airlock/alarmlock/initialize()
+/obj/structure/machinery/door/airlock/alarmlock/initialize()
 	..()
 	radio_controller.remove_object(src, air_frequency)
 	air_connection = radio_controller.add_object(src, air_frequency, RADIO_TO_AIRALARM)
 	open()
 
 
-/obj/machinery/door/airlock/alarmlock/receive_signal(datum/signal/signal)
+/obj/structure/machinery/door/airlock/alarmlock/receive_signal(datum/signal/signal)
 	..()
 	if(stat & (NOPOWER|BROKEN))
 		return

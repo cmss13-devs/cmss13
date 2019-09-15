@@ -52,7 +52,7 @@
 /turf/closed/wall/sulaco,
 /area/lv624/ground/sand6)
 "al" = (
-/obj/machinery/constructable_frame{
+/obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
 	},
 /turf/open/shuttle{
@@ -306,7 +306,7 @@
 	},
 /area/lv624/ground/sand5)
 "aX" = (
-/obj/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 4;
 	icon_state = "door_locked";
 	id = "";
@@ -328,7 +328,7 @@
 	amount = 5
 	},
 /obj/item/stack/sheet/mineral/platinum,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
 	},

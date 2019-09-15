@@ -1,4 +1,4 @@
-/obj/machinery/vending/antag
+/obj/structure/machinery/vending/antag
 	req_access = list(ACCESS_ILLEGAL_PIRATE)
 	req_one_access = list()
 	wrenchable = FALSE
@@ -8,7 +8,7 @@
 	var/upp_products = list()
 	var/current_faction = ""
 
-/obj/machinery/vending/antag/attack_hand(var/mob/living/carbon/human/H)
+/obj/structure/machinery/vending/antag/attack_hand(var/mob/living/carbon/human/H)
 	if(!istype(H) ||!H.wear_id || !H.wear_id.faction) //TODO: convert mind.faction into ID faction when ID has factions...
 		to_chat(H, SPAN_WARNING("Access denied."))
 		return
@@ -27,14 +27,14 @@
 
 	. = ..()
 
-/obj/machinery/vending/antag/gear
+/obj/structure/machinery/vending/antag/gear
 	name = "\improper Automated Gear Vendor"
 	desc = "An automated gear vendor, dispensing various pieces of equipment."
 	icon_state = "uniform_marine"
 	icon_vend = "uniform_marine_vend"
 	icon_deny = "uniform_marine"
 
-/obj/machinery/vending/antag/gear/New()
+/obj/structure/machinery/vending/antag/gear/New()
 	//Forcefully reset the product list
 	product_records = list()
 
@@ -81,14 +81,14 @@
 		/obj/item/clothing/accessory/storage/webbing = 40
 	)
 
-/obj/machinery/vending/antag/weapons
+/obj/structure/machinery/vending/antag/weapons
 	name = "\improper Automated Weapons Rack"
 	desc = "An automated weapons rack, dispensing various arms."
 	icon_state = "armory"
 	icon_vend = "armory-vend"
 	icon_deny = "armory"
 
-/obj/machinery/vending/antag/weapons/New()
+/obj/structure/machinery/vending/antag/weapons/New()
 	//Forcefully reset the product list
 	product_records = list()
 
@@ -121,13 +121,13 @@
 		/obj/item/weapon/gun/pistol/c99/upp = 40
 	)
 
-/obj/machinery/vending/antag/munition
+/obj/structure/machinery/vending/antag/munition
 	name = "\improper Automated Munitions Vendor"
 	desc = "An automated munitions vendor, dispensing various types of ammunition, explosives, and tools."
 	icon_state = "robotics"
 	icon_deny = "robotics-deny"
 
-/obj/machinery/vending/antag/munition/New()
+/obj/structure/machinery/vending/antag/munition/New()
 	//Forcefully reset the product list
 	product_records = list()
 

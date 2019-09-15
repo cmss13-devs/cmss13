@@ -9,12 +9,12 @@
 /turf/closed/wall/prison,
 /area/prison/maintenance/residential/nw)
 "d" = (
-/obj/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	req_one_access = list()
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/nw)
 "e" = (
@@ -28,25 +28,25 @@
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "g" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "h" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "i" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (NORTHEAST)";
 	icon_state = "intact-scrubbers";
 	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
@@ -54,7 +54,7 @@
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "j" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 8
 	},
 /turf/open/floor/prison,
@@ -143,13 +143,13 @@
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "t" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/prison,
 /area/prison/residential/central)
 "u" = (
-/obj/machinery/door/poddoor/four_tile_ver{
+/obj/structure/machinery/door/poddoor/four_tile_ver{
 	name = "Civilian Residences Hangar Door";
 	unacidable = 1
 	},
@@ -210,7 +210,7 @@
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "C" = (
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 2;
 	name = "Civilian Residences Hangar"
 	},
@@ -242,16 +242,16 @@
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "G" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "H" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
 /turf/open/floor/plating,
@@ -263,17 +263,17 @@
 /turf/closed/wall/prison,
 /area/prison/maintenance/residential/sw)
 "K" = (
-/obj/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	req_one_access = list()
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/sw)
 "L" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "M" = (

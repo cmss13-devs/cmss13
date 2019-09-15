@@ -424,7 +424,7 @@
 	return prob(hitchance)
 
 
-/obj/machinery/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/structure/machinery/get_projectile_hit_boolean(obj/item/projectile/P)
 
 	if(src == P.original && src.layer > ATMOS_DEVICE_LAYER) //clicking on the object itself hits the object
 		var/hitchance = get_effective_accuracy(P)
@@ -568,7 +568,7 @@
 	else if(!(flags_atom & ON_BORDER) || (P.dir & dir) || (P.dir & reverse_direction(dir)))
 		return TRUE
 
-/obj/machinery/door/poddoor/railing/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/structure/machinery/door/poddoor/railing/get_projectile_hit_boolean(obj/item/projectile/P)
 	return src == P.original
 
 /obj/effect/alien/egg/get_projectile_hit_boolean(obj/item/projectile/P)

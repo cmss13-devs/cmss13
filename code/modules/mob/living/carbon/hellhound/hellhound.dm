@@ -10,7 +10,7 @@
 	maxHealth = 120
 
 	var/obj/item/device/radio/headset/yautja/radio
-	var/obj/machinery/camera/camera
+	var/obj/structure/machinery/camera/camera
 	var/mob/living/carbon/human/master
 	speed = -0.6
 	var/attack_timer = 0
@@ -27,7 +27,7 @@
 		real_name = name
 
 	radio = new /obj/item/device/radio/headset/yautja(src)
-	camera = new /obj/machinery/camera(src)
+	camera = new /obj/structure/machinery/camera(src)
 	camera.network = list("PRED")
 	camera.c_tag = src.real_name
 	..()

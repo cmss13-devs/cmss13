@@ -1,7 +1,7 @@
 
 //computer that displays random emails from the Almayer crew, purely for backstory.
 
-/obj/machinery/computer/emails
+/obj/structure/machinery/computer/emails
 	name = "Personal Computer"
 	desc = "A personal computer used to view emails"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
@@ -12,7 +12,7 @@
 	var/selected_mail
 
 
-/obj/machinery/computer/emails/New()
+/obj/structure/machinery/computer/emails/New()
 	..()
 	email_list = list()
 	var/list/L = typesof(email_type) - email_type
@@ -21,12 +21,12 @@
 		var/path = pick_n_take(L)
 		email_list += new path()
 
-/obj/machinery/computer/emails/Dispose()
+/obj/structure/machinery/computer/emails/Dispose()
 	email_list = null
 	. = ..()
 
 
-/obj/machinery/computer/emails/attack_hand(mob/user)
+/obj/structure/machinery/computer/emails/attack_hand(mob/user)
 	if(..())
 		return
 
@@ -55,7 +55,7 @@
 	onclose(user, "email")
 
 
-/obj/machinery/computer/emails/Topic(href, href_list)
+/obj/structure/machinery/computer/emails/Topic(href, href_list)
 	if(..())
 		return
 

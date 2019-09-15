@@ -41,7 +41,7 @@
 		to_chat(user, SPAN_WARNING("Best not to plant this thing outside of a containment cell."))
 		return
 	for (var/obj/O in T)
-		if (!istype(O,/obj/machinery/light/small))
+		if (!istype(O,/obj/structure/machinery/light/small))
 			to_chat(user, SPAN_WARNING("The floor needs to be clear to plant this!"))
 			return
 	user.visible_message(SPAN_NOTICE("[user] starts planting [src]."), \
@@ -49,7 +49,7 @@
 	if(!do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	for (var/obj/O in T)
-		if (!istype(O,/obj/machinery/light/small))
+		if (!istype(O,/obj/structure/machinery/light/small))
 			return
 	var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T)
 	newegg.add_hiddenprint(user)

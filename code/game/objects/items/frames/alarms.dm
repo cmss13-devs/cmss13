@@ -40,7 +40,7 @@ Code shamelessly copied from apc_frame
 		to_chat(usr, SPAN_DANGER("There's already an item on this wall!"))
 		return
 
-	new /obj/machinery/alarm(loc, ndir, 1)
+	new /obj/structure/machinery/alarm(loc, ndir, 1)
 	qdel(src)
 
 /*
@@ -83,6 +83,6 @@ Code shamelessly copied from apc_frame
 		to_chat(usr, SPAN_DANGER("There's already an item on this wall!"))
 		return
 
-	new /obj/machinery/firealarm(loc, ndir, 1)
+	new /obj/structure/machinery/firealarm(loc, ndir, 1)
 
 	qdel(src)

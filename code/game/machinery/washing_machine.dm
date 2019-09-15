@@ -1,4 +1,4 @@
-/obj/machinery/washing_machine
+/obj/structure/machinery/washing_machine
 	name = "Washing Machine"
 	icon = 'icons/obj/structures/machinery/washing_machine.dmi'
 	icon_state = "wm_10"
@@ -22,7 +22,7 @@
 	var/gibs_ready = 0
 	var/obj/crayon
 
-/obj/machinery/washing_machine/verb/start()
+/obj/structure/machinery/washing_machine/verb/start()
 	set name = "Start Washing"
 	set category = "Object"
 	set src in oview(1)
@@ -57,7 +57,7 @@
 		state = 4
 	update_icon()
 
-/obj/machinery/washing_machine/verb/climb_out()
+/obj/structure/machinery/washing_machine/verb/climb_out()
 	set name = "Climb out"
 	set category = "Object"
 	set src in usr.loc
@@ -67,10 +67,10 @@
 		usr.loc = src.loc
 
 
-/obj/machinery/washing_machine/update_icon()
+/obj/structure/machinery/washing_machine/update_icon()
 	icon_state = "wm_[state][panel]"
 
-/obj/machinery/washing_machine/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/washing_machine/attackby(obj/item/W as obj, mob/user as mob)
 	/*if(istype(W,/obj/item/tool/screwdriver))
 		panel = !panel
 		to_chat(user, SPAN_NOTICE(" you [panel ? "))open" : "close"] the [src]'s maintenance panel"*/
@@ -143,7 +143,7 @@
 		..()
 	update_icon()
 
-/obj/machinery/washing_machine/attack_hand(mob/user as mob)
+/obj/structure/machinery/washing_machine/attack_hand(mob/user as mob)
 	switch(state)
 		if(1)
 			state = 2

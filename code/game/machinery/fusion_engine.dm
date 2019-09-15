@@ -5,7 +5,7 @@
 
 #define FUSION_ENGINE_FAIL_CHECK_TICKS	100 //Check for failure every this many ticks
 
-/obj/machinery/power/fusion_engine
+/obj/structure/machinery/power/fusion_engine
 	name = "\improper S-52 fusion reactor"
 	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
 	icon_state = "off-0"
@@ -24,17 +24,17 @@
 	var/obj/item/fuelCell/fusion_cell = new //Starts with a fuel cell loaded in.  Maybe replace with the plasma tanks in the future and have it consume plasma?  Possibly remove this later if it's irrelevent...
 	var/fuel_rate = 0.00 //Rate at which fuel is used.  Based mostly on how long the generator has been running.
 
-/obj/machinery/power/fusion_engine/New()
+/obj/structure/machinery/power/fusion_engine/New()
 	buildstate = rand(0,3) //This is needed to set the state for repair interactions
 	fusion_cell.fuel_amount = rand(15,100)
 	update_icon()
 	connect_to_network() //Should start with a cable piece underneath, if it doesn't, something's messed up in mapping
 	..()
 
-/obj/machinery/power/fusion_engine/power_change()
+/obj/structure/machinery/power/fusion_engine/power_change()
 	return
 
-/obj/machinery/power/fusion_engine/process()
+/obj/structure/machinery/power/fusion_engine/process()
 	if(!is_on || buildstate || !anchored || !powernet || !fusion_cell) //Default logic checking
 		if(is_on)
 			is_on = FALSE
@@ -84,7 +84,7 @@
 				icon_state = "on-100"
 
 
-/obj/machinery/power/fusion_engine/attack_hand(mob/user)
+/obj/structure/machinery/power/fusion_engine/attack_hand(mob/user)
 	if(!ishuman(user))
 		to_chat(user, SPAN_WARNING("You have no idea how to use that.")) //No ayylamos
 		r_FAL
@@ -128,7 +128,7 @@
 	r_TRU
 
 
-/obj/machinery/power/fusion_engine/attackby(obj/item/O, mob/user)
+/obj/structure/machinery/power/fusion_engine/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/fuelCell))
 		if(is_on)
 			to_chat(user, SPAN_WARNING("The [src] needs to be turned off first."))
@@ -233,7 +233,7 @@
 	else
 		return ..()
 
-/obj/machinery/power/fusion_engine/examine(mob/user)
+/obj/structure/machinery/power/fusion_engine/examine(mob/user)
 	..()
 	if(ishuman(user))
 		if(buildstate)
@@ -268,7 +268,7 @@
 		else
 			to_chat(user, SPAN_INFO("There is no fuel cell in the receptacle."))
 
-/obj/machinery/power/fusion_engine/update_icon()
+/obj/structure/machinery/power/fusion_engine/update_icon()
 	switch(buildstate)
 		if(0)
 			if(fusion_cell)
@@ -295,7 +295,7 @@
 			icon_state = "wrench"
 
 
-/obj/machinery/power/fusion_engine/proc/check_failure()
+/obj/structure/machinery/power/fusion_engine/proc/check_failure()
 	if(cur_tick < FUSION_ENGINE_FAIL_CHECK_TICKS) //Nope, not time for it yet
 		cur_tick++
 		return 0

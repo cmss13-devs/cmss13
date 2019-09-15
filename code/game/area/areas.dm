@@ -54,7 +54,7 @@
 		if(istype(source))	//Only report power alarms on the z-level where the source is located.
 			var/list/cameras = list()
 			for (var/area/RA in related)
-				for (var/obj/machinery/camera/C in RA)
+				for (var/obj/structure/machinery/camera/C in RA)
 					cameras += C
 					if(state == 1)
 						C.network.Remove("Power Alarms")
@@ -66,7 +66,7 @@
 						aiPlayer.cancelAlarm("Power", src, source)
 					else
 						aiPlayer.triggerAlarm("Power", src, cameras, source)
-			for(var/obj/machinery/computer/station_alert/a in machines)
+			for(var/obj/structure/machinery/computer/station_alert/a in machines)
 				if(a.z == source.z)
 					if(state == 1)
 						a.cancelAlarm("Power", src, source)
@@ -80,7 +80,7 @@
 
 	//Check all the alarms before lowering atmosalm. Raising is perfectly fine.
 	for (var/area/RA in related)
-		for (var/obj/machinery/alarm/AA in RA)
+		for (var/obj/structure/machinery/alarm/AA in RA)
 			if ( !(AA.stat & (NOPOWER|BROKEN)) && !AA.shorted)
 				danger_level = max(danger_level, AA.danger_level)
 
@@ -91,29 +91,29 @@
 
 		if (danger_level < 2 && atmosalm >= 2)
 			for(var/area/RA in related)
-				for(var/obj/machinery/camera/C in RA)
+				for(var/obj/structure/machinery/camera/C in RA)
 					C.network.Remove("Atmosphere Alarms")
 			for(var/mob/living/silicon/aiPlayer in player_list)
 				aiPlayer.cancelAlarm("Atmosphere", src, src)
-			for(var/obj/machinery/computer/station_alert/a in machines)
+			for(var/obj/structure/machinery/computer/station_alert/a in machines)
 				a.cancelAlarm("Atmosphere", src, src)
 
 		if (danger_level >= 2 && atmosalm < 2)
 			var/list/cameras = list()
 			for(var/area/RA in related)
 				//updateicon()
-				for(var/obj/machinery/camera/C in RA)
+				for(var/obj/structure/machinery/camera/C in RA)
 					cameras += C
 					C.network.Add("Atmosphere Alarms")
 			for(var/mob/living/silicon/aiPlayer in player_list)
 				aiPlayer.triggerAlarm("Atmosphere", src, cameras, src)
-			for(var/obj/machinery/computer/station_alert/a in machines)
+			for(var/obj/structure/machinery/computer/station_alert/a in machines)
 				a.triggerAlarm("Atmosphere", src, cameras, src)
 			air_doors_close()
 
 		atmosalm = danger_level
 		for(var/area/RA in related)
-			for (var/obj/machinery/alarm/AA in RA)
+			for (var/obj/structure/machinery/alarm/AA in RA)
 				AA.update_icon()
 
 		return 1
@@ -122,22 +122,22 @@
 /area/proc/air_doors_close()
 	if(!src.master.air_doors_activated)
 		src.master.air_doors_activated = 1
-		for(var/obj/machinery/door/firedoor/E in src.master.all_doors)
+		for(var/obj/structure/machinery/door/firedoor/E in src.master.all_doors)
 			if(!E:blocked)
 				if(E.operating)
 					E:nextstate = OPEN
 				else if(!E.density)
-					INVOKE_ASYNC(E, /obj/machinery/door.proc/close)
+					INVOKE_ASYNC(E, /obj/structure/machinery/door.proc/close)
 
 /area/proc/air_doors_open()
 	if(src.master.air_doors_activated)
 		src.master.air_doors_activated = 0
-		for(var/obj/machinery/door/firedoor/E in src.master.all_doors)
+		for(var/obj/structure/machinery/door/firedoor/E in src.master.all_doors)
 			if(!E:blocked)
 				if(E.operating)
 					E:nextstate = OPEN
 				else if(E.density)
-					INVOKE_ASYNC(E, /obj/machinery/door.proc/open)
+					INVOKE_ASYNC(E, /obj/structure/machinery/door.proc/open)
 
 
 /area/proc/firealert()
@@ -148,20 +148,20 @@
 		master.flags_alarm_state |= ALARM_WARNING_FIRE		//used for firedoor checks
 		updateicon()
 		mouse_opacity = 0
-		for(var/obj/machinery/door/firedoor/D in all_doors)
+		for(var/obj/structure/machinery/door/firedoor/D in all_doors)
 			if(!D.blocked)
 				if(D.operating)
 					D.nextstate = CLOSED
 				else if(!D.density)
-					INVOKE_ASYNC(D, /obj/machinery/door.proc/close)
+					INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
 		var/list/cameras = list()
 		for(var/area/RA in related)
-			for (var/obj/machinery/camera/C in RA)
+			for (var/obj/structure/machinery/camera/C in RA)
 				cameras.Add(C)
 				C.network.Add("Fire Alarms")
 		for (var/mob/living/silicon/ai/aiPlayer in player_list)
 			aiPlayer.triggerAlarm("Fire", src, cameras, src)
-		for (var/obj/machinery/computer/station_alert/a in machines)
+		for (var/obj/structure/machinery/computer/station_alert/a in machines)
 			a.triggerAlarm("Fire", src, cameras, src)
 
 /area/proc/firereset()
@@ -170,18 +170,18 @@
 		master.flags_alarm_state &= ~ALARM_WARNING_FIRE		//used for firedoor checks
 		mouse_opacity = 0
 		updateicon()
-		for(var/obj/machinery/door/firedoor/D in all_doors)
+		for(var/obj/structure/machinery/door/firedoor/D in all_doors)
 			if(!D.blocked)
 				if(D.operating)
 					D.nextstate = OPEN
 				else if(D.density)
-					INVOKE_ASYNC(D, /obj/machinery/door.proc/open)
+					INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
 		for(var/area/RA in related)
-			for (var/obj/machinery/camera/C in RA)
+			for (var/obj/structure/machinery/camera/C in RA)
 				C.network.Remove("Fire Alarms")
 		for (var/mob/living/silicon/ai/aiPlayer in player_list)
 			aiPlayer.cancelAlarm("Fire", src, src)
-		for (var/obj/machinery/computer/station_alert/a in machines)
+		for (var/obj/structure/machinery/computer/station_alert/a in machines)
 			a.cancelAlarm("Fire", src, src)
 
 /area/proc/readyalert()
@@ -256,7 +256,7 @@
 /area/proc/power_change()
 	master.powerupdate = 2
 	for(var/area/RA in related)
-		for(var/obj/machinery/M in RA)	// for each machine in the area
+		for(var/obj/structure/machinery/M in RA)	// for each machine in the area
 			M.power_change()				// reverify power status (to update icons etc.)
 		if(flags_alarm_state)
 			RA.updateicon()
@@ -295,7 +295,7 @@
 	var/musVolume = 20
 	var/sound = 'sound/ambience/ambigen1.ogg'
 
-	if(istype(A, /obj/machinery))
+	if(istype(A, /obj/structure/machinery))
 		var/area/newarea = get_area(A)
 		var/area/oldarea = get_area(OldLoc)
 		oldarea.master.area_machines -= A

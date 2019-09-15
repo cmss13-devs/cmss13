@@ -1,4 +1,4 @@
-/obj/machinery/atmospherics/tvalve
+/obj/structure/machinery/atmospherics/tvalve
 	icon = 'icons/obj/pipes/tvalve.dmi'
 	icon_state = "map_tvalve0"
 
@@ -12,25 +12,25 @@
 	var/state = 0 // 0 = go straight, 1 = go to side
 
 	// like a trinary component, node1 is input, node2 is side output, node3 is straight output
-	var/obj/machinery/atmospherics/node1
-	var/obj/machinery/atmospherics/node2
-	var/obj/machinery/atmospherics/node3
+	var/obj/structure/machinery/atmospherics/node1
+	var/obj/structure/machinery/atmospherics/node2
+	var/obj/structure/machinery/atmospherics/node3
 
 	var/datum/pipe_network/network_node1
 	var/datum/pipe_network/network_node2
 	var/datum/pipe_network/network_node3
 
-/obj/machinery/atmospherics/tvalve/bypass
+/obj/structure/machinery/atmospherics/tvalve/bypass
 	icon_state = "map_tvalve1"
 	state = 1
 
-/obj/machinery/atmospherics/tvalve/update_icon(animation)
+/obj/structure/machinery/atmospherics/tvalve/update_icon(animation)
 	if(animation)
 		flick("tvalve[src.state][!src.state]",src)
 	else
 		icon_state = "tvalve[state]"
 
-/obj/machinery/atmospherics/tvalve/update_underlays()
+/obj/structure/machinery/atmospherics/tvalve/update_underlays()
 	if(..())
 		underlays.Cut()
 		var/turf/T = get_turf(src)
@@ -38,21 +38,21 @@
 			return
 		add_underlay(T, node1, turn(dir, -180))
 
-		if(istype(src, /obj/machinery/atmospherics/tvalve/mirrored))
+		if(istype(src, /obj/structure/machinery/atmospherics/tvalve/mirrored))
 			add_underlay(T, node2, turn(dir, 90))
 		else
 			add_underlay(T, node2, turn(dir, -90))
 
 		add_underlay(T, node3, dir)
 
-/obj/machinery/atmospherics/tvalve/hide(var/i)
+/obj/structure/machinery/atmospherics/tvalve/hide(var/i)
 	update_underlays()
 
-/obj/machinery/atmospherics/tvalve/New()
+/obj/structure/machinery/atmospherics/tvalve/New()
 	initialize_directions()
 	..()
 
-/obj/machinery/atmospherics/tvalve/proc/initialize_directions()
+/obj/structure/machinery/atmospherics/tvalve/proc/initialize_directions()
 	switch(dir)
 		if(NORTH)
 			initialize_directions = SOUTH|NORTH|EAST
@@ -63,7 +63,7 @@
 		if(WEST)
 			initialize_directions = EAST|WEST|NORTH
 
-/obj/machinery/atmospherics/tvalve/network_expand(datum/pipe_network/new_network, obj/machinery/atmospherics/pipe/reference)
+/obj/structure/machinery/atmospherics/tvalve/network_expand(datum/pipe_network/new_network, obj/structure/machinery/atmospherics/pipe/reference)
 	if(reference == node1)
 		network_node1 = new_network
 		if(state)
@@ -101,7 +101,7 @@
 
 	return null
 
-/obj/machinery/atmospherics/tvalve/Dispose()
+/obj/structure/machinery/atmospherics/tvalve/Dispose()
 	if(node1)
 		node1.disconnect(src)
 		del(network_node1)
@@ -116,7 +116,7 @@
 	node3 = null
 	. = ..()
 
-/obj/machinery/atmospherics/tvalve/proc/go_to_side()
+/obj/structure/machinery/atmospherics/tvalve/proc/go_to_side()
 
 	if(state) return 0
 
@@ -135,7 +135,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/tvalve/proc/go_straight()
+/obj/structure/machinery/atmospherics/tvalve/proc/go_straight()
 
 	if(!state)
 		return 0
@@ -155,10 +155,10 @@
 
 	return 1
 
-/obj/machinery/atmospherics/tvalve/attack_ai(mob/user as mob)
+/obj/structure/machinery/atmospherics/tvalve/attack_ai(mob/user as mob)
 	return
 
-/obj/machinery/atmospherics/tvalve/attack_hand(mob/user as mob)
+/obj/structure/machinery/atmospherics/tvalve/attack_hand(mob/user as mob)
 	src.add_fingerprint(usr)
 	update_icon(1)
 	sleep(10)
@@ -167,7 +167,7 @@
 	else
 		src.go_to_side()
 
-/obj/machinery/atmospherics/tvalve/process()
+/obj/structure/machinery/atmospherics/tvalve/process()
 	..()
 	//. = PROCESS_KILL
 	stop_processing()
@@ -175,7 +175,7 @@
 
 	return
 
-/obj/machinery/atmospherics/tvalve/initialize()
+/obj/structure/machinery/atmospherics/tvalve/initialize()
 	var/node1_dir
 	var/node2_dir
 	var/node3_dir
@@ -184,7 +184,7 @@
 	node2_dir = turn(dir, -90)
 	node3_dir = dir
 
-	for(var/obj/machinery/atmospherics/target in get_step(src,node1_dir))
+	for(var/obj/structure/machinery/atmospherics/target in get_step(src,node1_dir))
 		if(target.initialize_directions & get_dir(target,src))
 			var/c = check_connect_types(target,src)
 			if (c)
@@ -192,7 +192,7 @@
 				src.connected_to = c
 				node1 = target
 				break
-	for(var/obj/machinery/atmospherics/target in get_step(src,node2_dir))
+	for(var/obj/structure/machinery/atmospherics/target in get_step(src,node2_dir))
 		if(target.initialize_directions & get_dir(target,src))
 			var/c = check_connect_types(target,src)
 			if (c)
@@ -200,7 +200,7 @@
 				src.connected_to = c
 				node2 = target
 				break
-	for(var/obj/machinery/atmospherics/target in get_step(src,node3_dir))
+	for(var/obj/structure/machinery/atmospherics/target in get_step(src,node3_dir))
 		if(target.initialize_directions & get_dir(target,src))
 			var/c = check_connect_types(target,src)
 			if (c)
@@ -212,7 +212,7 @@
 	update_icon()
 	update_underlays()
 
-/obj/machinery/atmospherics/tvalve/build_network()
+/obj/structure/machinery/atmospherics/tvalve/build_network()
 	if(!network_node1 && node1)
 		network_node1 = new /datum/pipe_network()
 		network_node1.normal_members += src
@@ -229,7 +229,7 @@
 		network_node3.build_network(node3, src)
 
 
-/obj/machinery/atmospherics/tvalve/return_network(obj/machinery/atmospherics/reference)
+/obj/structure/machinery/atmospherics/tvalve/return_network(obj/structure/machinery/atmospherics/reference)
 	build_network()
 
 	if(reference==node1)
@@ -243,7 +243,7 @@
 
 	return null
 
-/obj/machinery/atmospherics/tvalve/reassign_network(datum/pipe_network/old_network, datum/pipe_network/new_network)
+/obj/structure/machinery/atmospherics/tvalve/reassign_network(datum/pipe_network/old_network, datum/pipe_network/new_network)
 	if(network_node1 == old_network)
 		network_node1 = new_network
 	if(network_node2 == old_network)
@@ -253,10 +253,10 @@
 
 	return 1
 
-/obj/machinery/atmospherics/tvalve/return_network_air(datum/network/reference)
+/obj/structure/machinery/atmospherics/tvalve/return_network_air(datum/network/reference)
 	return null
 
-/obj/machinery/atmospherics/tvalve/disconnect(obj/machinery/atmospherics/reference)
+/obj/structure/machinery/atmospherics/tvalve/disconnect(obj/structure/machinery/atmospherics/reference)
 	if(reference==node1)
 		del(network_node1)
 		node1 = null
@@ -273,7 +273,7 @@
 	start_processing()
 	return null
 
-/obj/machinery/atmospherics/tvalve/digital		// can be controlled by AI
+/obj/structure/machinery/atmospherics/tvalve/digital		// can be controlled by AI
 	name = "digital switching valve"
 	desc = "A digitally controlled valve."
 	icon = 'icons/obj/pipes/digital_tvalve.dmi'
@@ -282,25 +282,25 @@
 	var/id = null
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/atmospherics/tvalve/digital/bypass
+/obj/structure/machinery/atmospherics/tvalve/digital/bypass
 	icon_state = "map_tvalve1"
 	state = 1
 
-/obj/machinery/atmospherics/tvalve/digital/power_change()
+/obj/structure/machinery/atmospherics/tvalve/digital/power_change()
 	var/old_stat = stat
 	..()
 	if(old_stat != stat)
 		update_icon()
 
-/obj/machinery/atmospherics/tvalve/digital/update_icon()
+/obj/structure/machinery/atmospherics/tvalve/digital/update_icon()
 	..()
 	if(!powered())
 		icon_state = "tvalvenopower"
 
-/obj/machinery/atmospherics/tvalve/digital/attack_ai(mob/user as mob)
+/obj/structure/machinery/atmospherics/tvalve/digital/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/atmospherics/tvalve/digital/attack_hand(mob/user as mob)
+/obj/structure/machinery/atmospherics/tvalve/digital/attack_hand(mob/user as mob)
 	if(!powered())
 		return
 	if(!src.allowed(user))
@@ -310,7 +310,7 @@
 
 //Radio remote control
 
-/obj/machinery/atmospherics/tvalve/digital/proc/set_frequency(new_frequency)
+/obj/structure/machinery/atmospherics/tvalve/digital/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)
 	frequency = new_frequency
 	if(frequency)
@@ -318,12 +318,12 @@
 
 
 
-/obj/machinery/atmospherics/tvalve/digital/initialize()
+/obj/structure/machinery/atmospherics/tvalve/digital/initialize()
 	..()
 	if(frequency)
 		set_frequency(frequency)
 
-/obj/machinery/atmospherics/tvalve/digital/receive_signal(datum/signal/signal)
+/obj/structure/machinery/atmospherics/tvalve/digital/receive_signal(datum/signal/signal)
 	if(!signal.data["tag"] || (signal.data["tag"] != id))
 		return 0
 
@@ -342,10 +342,10 @@
 			else
 				go_to_side()
 
-/obj/machinery/atmospherics/tvalve/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/atmospherics/tvalve/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(!iswrench(W))
 		return ..()
-	if(istype(src, /obj/machinery/atmospherics/tvalve/digital))
+	if(istype(src, /obj/structure/machinery/atmospherics/tvalve/digital))
 		to_chat(user, SPAN_WARNING("You cannot unwrench [src], it's too complicated."))
 		return 1
 
@@ -359,14 +359,14 @@
 		new /obj/item/pipe(loc, make_from = src)
 		qdel(src)
 
-/obj/machinery/atmospherics/tvalve/mirrored
+/obj/structure/machinery/atmospherics/tvalve/mirrored
 	icon_state = "map_tvalvem0"
 
-/obj/machinery/atmospherics/tvalve/mirrored/bypass
+/obj/structure/machinery/atmospherics/tvalve/mirrored/bypass
 	icon_state = "map_tvalvem1"
 	state = 1
 
-/obj/machinery/atmospherics/tvalve/mirrored/initialize_directions()
+/obj/structure/machinery/atmospherics/tvalve/mirrored/initialize_directions()
 	switch(dir)
 		if(NORTH)
 			initialize_directions = SOUTH|NORTH|WEST
@@ -377,7 +377,7 @@
 		if(WEST)
 			initialize_directions = EAST|WEST|SOUTH
 
-/obj/machinery/atmospherics/tvalve/mirrored/initialize()
+/obj/structure/machinery/atmospherics/tvalve/mirrored/initialize()
 	var/node1_dir
 	var/node2_dir
 	var/node3_dir
@@ -386,15 +386,15 @@
 	node2_dir = turn(dir, 90)
 	node3_dir = dir
 
-	for(var/obj/machinery/atmospherics/target in get_step(src,node1_dir))
+	for(var/obj/structure/machinery/atmospherics/target in get_step(src,node1_dir))
 		if(target.initialize_directions & get_dir(target,src))
 			node1 = target
 			break
-	for(var/obj/machinery/atmospherics/target in get_step(src,node2_dir))
+	for(var/obj/structure/machinery/atmospherics/target in get_step(src,node2_dir))
 		if(target.initialize_directions & get_dir(target,src))
 			node2 = target
 			break
-	for(var/obj/machinery/atmospherics/target in get_step(src,node3_dir))
+	for(var/obj/structure/machinery/atmospherics/target in get_step(src,node3_dir))
 		if(target.initialize_directions & get_dir(target,src))
 			node3 = target
 			break
@@ -402,13 +402,13 @@
 	update_icon()
 	update_underlays()
 
-/obj/machinery/atmospherics/tvalve/mirrored/update_icon(animation)
+/obj/structure/machinery/atmospherics/tvalve/mirrored/update_icon(animation)
 	if(animation)
 		flick("tvalvem[src.state][!src.state]",src)
 	else
 		icon_state = "tvalvem[state]"
 
-/obj/machinery/atmospherics/tvalve/mirrored/digital		// can be controlled by AI
+/obj/structure/machinery/atmospherics/tvalve/mirrored/digital		// can be controlled by AI
 	name = "digital switching valve"
 	desc = "A digitally controlled valve."
 	icon = 'icons/obj/pipes/digital_tvalve.dmi'
@@ -417,25 +417,25 @@
 	var/id = null
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/atmospherics/tvalve/mirrored/digital/bypass
+/obj/structure/machinery/atmospherics/tvalve/mirrored/digital/bypass
 	icon_state = "map_tvalvem1"
 	state = 1
 
-/obj/machinery/atmospherics/tvalve/mirrored/digital/power_change()
+/obj/structure/machinery/atmospherics/tvalve/mirrored/digital/power_change()
 	var/old_stat = stat
 	..()
 	if(old_stat != stat)
 		update_icon()
 
-/obj/machinery/atmospherics/tvalve/mirrored/digital/update_icon()
+/obj/structure/machinery/atmospherics/tvalve/mirrored/digital/update_icon()
 	..()
 	if(!powered())
 		icon_state = "tvalvemnopower"
 
-/obj/machinery/atmospherics/tvalve/mirrored/digital/attack_ai(mob/user as mob)
+/obj/structure/machinery/atmospherics/tvalve/mirrored/digital/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/atmospherics/tvalve/mirrored/digital/attack_hand(mob/user as mob)
+/obj/structure/machinery/atmospherics/tvalve/mirrored/digital/attack_hand(mob/user as mob)
 	if(!powered())
 		return
 	if(!src.allowed(user))
@@ -445,18 +445,18 @@
 
 //Radio remote control -eh?
 
-/obj/machinery/atmospherics/tvalve/mirrored/digital/proc/set_frequency(new_frequency)
+/obj/structure/machinery/atmospherics/tvalve/mirrored/digital/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)
 	frequency = new_frequency
 	if(frequency)
 		radio_connection = radio_controller.add_object(src, frequency, RADIO_ATMOSIA)
 
-/obj/machinery/atmospherics/tvalve/mirrored/digital/initialize()
+/obj/structure/machinery/atmospherics/tvalve/mirrored/digital/initialize()
 	..()
 	if(frequency)
 		set_frequency(frequency)
 
-/obj/machinery/atmospherics/tvalve/mirrored/digital/receive_signal(datum/signal/signal)
+/obj/structure/machinery/atmospherics/tvalve/mirrored/digital/receive_signal(datum/signal/signal)
 	if(!signal.data["tag"] || (signal.data["tag"] != id))
 		return 0
 

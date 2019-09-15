@@ -766,20 +766,20 @@ datum/game_mode/proc/initialize_special_clamps()
 	var/scale = max(marine_pop_size / MARINE_GEAR_SCALING_NORMAL, 1) //This gives a decimal value representing a scaling multiplier. Cannot go below 1
 
 	//Set up attachment vendor contents related to Marine count
-	for(var/obj/machinery/vending/attachments/A in attachment_vendors)
+	for(var/obj/structure/machinery/vending/attachments/A in attachment_vendors)
 		A.populate_product_list(scale)
 
-	for(var/obj/machinery/vending/marine/cargo_ammo/CA in cargo_ammo_vendors)
+	for(var/obj/structure/machinery/vending/marine/cargo_ammo/CA in cargo_ammo_vendors)
 		CA.populate_product_list(scale)
 
-	for(var/obj/machinery/vending/marine/cargo_guns/CG in cargo_guns_vendors)
+	for(var/obj/structure/machinery/vending/marine/cargo_guns/CG in cargo_guns_vendors)
 		CG.populate_product_list(scale)
 
-	for(var/obj/machinery/cm_vending/sorted/CVS in cm_vending_vendors)
+	for(var/obj/structure/machinery/cm_vending/sorted/CVS in cm_vending_vendors)
 		CVS.populate_product_list(scale)
 
 
-	for(var/obj/machinery/vending/marine/M in marine_vendors)
+	for(var/obj/structure/machinery/vending/marine/M in marine_vendors)
 		M.populate_product_list(scale)
 
 		var/products2[]

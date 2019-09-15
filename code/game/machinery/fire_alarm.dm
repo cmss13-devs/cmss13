@@ -4,7 +4,7 @@
 /*
 FIRE ALARM
 */
-/obj/machinery/firealarm
+/obj/structure/machinery/firealarm
 	name = "fire alarm"
 	desc = "<i>\"Pull this in case of emergency\"</i>. Thus, keep pulling it forever."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
@@ -24,7 +24,7 @@ FIRE ALARM
 	var/wiresexposed = 0
 	var/buildstage = 2 // 2 = complete, 1 = no wires,  0 = circuit gone
 
-/obj/machinery/firealarm/update_icon()
+/obj/structure/machinery/firealarm/update_icon()
 
 	if(wiresexposed)
 		switch(buildstage)
@@ -46,23 +46,23 @@ FIRE ALARM
 	else
 		icon_state = "fire0"
 
-/obj/machinery/firealarm/fire_act(temperature, volume)
+/obj/structure/machinery/firealarm/fire_act(temperature, volume)
 	if(src.detecting)
 		if(temperature > T0C+200)
 			src.alarm()			// added check of detector status here
 	return
 
-/obj/machinery/firealarm/attack_ai(mob/user as mob)
+/obj/structure/machinery/firealarm/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/firealarm/bullet_act(BLAH)
+/obj/structure/machinery/firealarm/bullet_act(BLAH)
 	return src.alarm()
 
-/obj/machinery/firealarm/emp_act(severity)
+/obj/structure/machinery/firealarm/emp_act(severity)
 	if(prob(50/severity)) alarm()
 	..()
 
-/obj/machinery/firealarm/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/firealarm/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 
 	if (istype(W, /obj/item/tool/screwdriver) && buildstage == 2)
@@ -121,7 +121,7 @@ FIRE ALARM
 	..()
 	return
 
-/obj/machinery/firealarm/process()//Note: this processing was mostly phased out due to other code, and only runs when needed
+/obj/structure/machinery/firealarm/process()//Note: this processing was mostly phased out due to other code, and only runs when needed
 	if(stat & (NOPOWER|BROKEN))
 		return
 
@@ -141,12 +141,12 @@ FIRE ALARM
 */
 	return
 
-/obj/machinery/firealarm/power_change()
+/obj/structure/machinery/firealarm/power_change()
 	..()
 	spawn(rand(0,15))
 		update_icon()
 
-/obj/machinery/firealarm/attack_hand(mob/user as mob)
+/obj/structure/machinery/firealarm/attack_hand(mob/user as mob)
 	if(user.stat || stat & (NOPOWER|BROKEN))
 		return
 
@@ -190,7 +190,7 @@ FIRE ALARM
 		onclose(user, "firealarm")
 	return
 
-/obj/machinery/firealarm/Topic(href, href_list)
+/obj/structure/machinery/firealarm/Topic(href, href_list)
 	..()
 	if (usr.stat || stat & (BROKEN|NOPOWER))
 		return
@@ -221,7 +221,7 @@ FIRE ALARM
 		return
 	return
 
-/obj/machinery/firealarm/proc/reset()
+/obj/structure/machinery/firealarm/proc/reset()
 	if (!( src.working ))
 		return
 	var/area/A = src.loc
@@ -232,7 +232,7 @@ FIRE ALARM
 	update_icon()
 	return
 
-/obj/machinery/firealarm/proc/alarm()
+/obj/structure/machinery/firealarm/proc/alarm()
 	if (!( src.working ))
 		return
 	var/area/A = src.loc
@@ -244,7 +244,7 @@ FIRE ALARM
 	//playsound(src.loc, 'sound/ambience/signal.ogg', 50, 0)
 	return
 
-/obj/machinery/firealarm/New(loc, dir, building)
+/obj/structure/machinery/firealarm/New(loc, dir, building)
 	..()
 
 	if(loc)

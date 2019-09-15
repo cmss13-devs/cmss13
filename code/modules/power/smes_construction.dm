@@ -6,7 +6,7 @@
 
 
 // SMES itself
-/obj/machinery/power/smes/buildable
+/obj/structure/machinery/power/smes/buildable
 	var/max_coils = 6 			//30M capacity, 1.5MW input/output when fully upgraded /w default coils
 	var/cur_coils = 1 			// Current amount of installed coils
 	var/safeties_enabled = 1 	// If 0 modifications can be done without discharging the SMES, at risk of critical failure.
@@ -14,10 +14,10 @@
 	should_be_mapped = 1
 	unacidable = 1
 
-/obj/machinery/power/smes/buildable/charged
+/obj/structure/machinery/power/smes/buildable/charged
 	charge = 1e+006
 
-/obj/machinery/power/smes/buildable/New()
+/obj/structure/machinery/power/smes/buildable/New()
 	component_parts = list()
 	component_parts += new /obj/item/stack/cable_coil(src,30)
 	component_parts += new /obj/item/circuitboard/machine/smes(src)
@@ -29,7 +29,7 @@
 	recalc_coils()
 	..()
 
-/obj/machinery/power/smes/buildable/proc/recalc_coils()
+/obj/structure/machinery/power/smes/buildable/proc/recalc_coils()
 	if ((cur_coils <= max_coils) && (cur_coils >= 1))
 		capacity = 0
 		input_level_max = 0
@@ -52,7 +52,7 @@
 	// Light Overload - X% chance to overload each lighting circuit in connected powernet. APC based.
 	// APC Failure - X% chance to destroy APC causing very weak explosion too. Won't cause hull breach or serious harm.
 	// SMES Explosion - X% chance to destroy the SMES, in moderate explosion. May cause small hull breach.
-/obj/machinery/power/smes/buildable/proc/total_system_failure(var/intensity = 0, var/mob/user as mob)
+/obj/structure/machinery/power/smes/buildable/proc/total_system_failure(var/intensity = 0, var/mob/user as mob)
 	if (!intensity)
 		return
 
@@ -158,27 +158,27 @@
 
 
 	// Gets powernet APCs and overloads lights or breaks the APC completely, depending on percentages.
-/obj/machinery/power/smes/buildable/proc/apcs_overload(var/failure_chance, var/overload_chance)
+/obj/structure/machinery/power/smes/buildable/proc/apcs_overload(var/failure_chance, var/overload_chance)
 	if (!src.powernet)
 		return
 
-	for(var/obj/machinery/power/terminal/T in src.powernet.nodes)
-		if(istype(T.master, /obj/machinery/power/apc))
-			var/obj/machinery/power/apc/A = T.master
+	for(var/obj/structure/machinery/power/terminal/T in src.powernet.nodes)
+		if(istype(T.master, /obj/structure/machinery/power/apc))
+			var/obj/structure/machinery/power/apc/A = T.master
 			if (prob(overload_chance))
 				A.overload_lighting()
 			if (prob(failure_chance))
 				A.set_broken()
 
 	// Failing SMES has special icon overlay.
-/obj/machinery/power/smes/buildable/updateicon()
+/obj/structure/machinery/power/smes/buildable/updateicon()
 	if (failing)
 		overlays.Cut()
 		overlays += image('icons/obj/structures/machinery/power.dmi', "smes_crit")
 	else
 		..()
 
-/obj/machinery/power/smes/buildable/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/power/smes/buildable/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	// No more disassembling of overloaded SMESs. You broke it, now enjoy the consequences.
 	if (failing)
 		to_chat(user, SPAN_WARNING("The [src]'s screen is flashing with alerts. It seems to be overloaded! Touching it now is probably not a good idea."))
@@ -219,7 +219,7 @@
 					return
 
 				to_chat(usr, SPAN_DANGER("You have disassembled the SMES cell!"))
-				var/obj/machinery/constructable_frame/M = new /obj/machinery/constructable_frame(src.loc)
+				var/obj/structure/machinery/constructable_frame/M = new /obj/structure/machinery/constructable_frame(src.loc)
 				M.state = CONSTRUCTION_STATE_PROGRESS
 				M.update_icon()
 				for(var/obj/I in component_parts)

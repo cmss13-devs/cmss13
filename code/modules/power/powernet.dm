@@ -27,8 +27,8 @@
 	var/numapc = 0
 
 	if(nodes && nodes.len) // Added to fix a bad list bug -- TLE
-		for(var/obj/machinery/power/terminal/term in nodes)
-			if( istype( term.master, /obj/machinery/power/apc ) )
+		for(var/obj/structure/machinery/power/terminal/term in nodes)
+			if( istype( term.master, /obj/structure/machinery/power/apc ) )
 				numapc++
 
 	netexcess = avail - load
@@ -46,7 +46,7 @@
 
 	if( netexcess > 100)		// if there was excess power last cycle
 		if(nodes && nodes.len)
-			for(var/obj/machinery/power/smes/S in nodes)	// find the SMESes in the network
+			for(var/obj/structure/machinery/power/smes/S in nodes)	// find the SMESes in the network
 				if(S.powernet == src)
 					S.restore()				// and restore some of the power that was used
 				else

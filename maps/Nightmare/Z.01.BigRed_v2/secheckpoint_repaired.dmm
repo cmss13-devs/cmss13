@@ -36,7 +36,7 @@
 	},
 /area/bigred/ground/security)
 "f" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -79,7 +79,7 @@
 	},
 /area/bigred/ground/security)
 "k" = (
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
 /turf/open/floor{
@@ -89,7 +89,7 @@
 	},
 /area/bigred/ground/security)
 "l" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor{
@@ -111,7 +111,7 @@
 /turf/open/floor/plating,
 /area/bigred/ground/security)
 "r" = (
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
 	name = "\improper Checkpoint Office";
 	req_access = list()
@@ -137,7 +137,7 @@
 /area/bigred/ground/security)
 "v" = (
 /obj/structure/table/almayer,
-/obj/machinery/computer/security/wooden_tv{
+/obj/structure/machinery/computer/security/wooden_tv{
 	dir = 8
 	},
 /turf/open/floor/greengrid,
@@ -149,7 +149,7 @@
 	},
 /area/bigred/ground/security)
 "x" = (
-/obj/machinery/power/apc{
+/obj/structure/machinery/power/apc{
 	dir = 1;
 	pixel_y = 28;
 	start_charge = 0
@@ -170,7 +170,7 @@
 	},
 /area/bigred/ground/security)
 "B" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -191,7 +191,7 @@
 /area/bigred/ground/security)
 "D" = (
 /obj/structure/table/almayer,
-/obj/machinery/computer/secure_data{
+/obj/structure/machinery/computer/secure_data{
 	dir = 8
 	},
 /turf/open/floor{
@@ -215,7 +215,7 @@
 /obj/effect/landmark{
 	name = "crap_item"
 	},
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor{
@@ -237,7 +237,7 @@
 	},
 /area/bigred/ground/security)
 "J" = (
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
 /turf/open/floor{
@@ -245,7 +245,7 @@
 	},
 /area/bigred/ground/security)
 "K" = (
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
 /obj/structure/rack,
@@ -262,7 +262,7 @@
 	},
 /area/bigred/ground/security)
 "M" = (
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 4;
 	icon_state = "door_locked";
 	locked = 1;
@@ -295,7 +295,7 @@
 	},
 /area/bigred/ground/security)
 "Q" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -314,7 +314,7 @@
 /obj/structure/rack,
 /obj/item/clothing/mask/gas,
 /obj/item/device/flashlight,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor{
@@ -322,7 +322,7 @@
 	},
 /area/bigred/ground/security)
 "T" = (
-/obj/machinery/vending/security,
+/obj/structure/machinery/vending/security,
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
 "U" = (
@@ -343,7 +343,7 @@
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
 "Y" = (
-/obj/machinery/deployable/barrier,
+/obj/structure/machinery/deployable/barrier,
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
 "Z" = (

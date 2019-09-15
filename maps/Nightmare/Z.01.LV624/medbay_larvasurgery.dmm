@@ -6,7 +6,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
 "ad" = (
-/obj/machinery/colony_floodlight,
+/obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "ae" = (
@@ -58,7 +58,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "am" = (
-/obj/machinery/vending/medical,
+/obj/structure/machinery/vending/medical,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "whitebluecorner";
@@ -157,7 +157,7 @@
 /area/lv624/ground/jungle7)
 "av" = (
 /obj/structure/closet/crate/medical,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
 	},
@@ -169,7 +169,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "aw" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -180,7 +180,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "ax" = (
-/obj/machinery/optable,
+/obj/structure/machinery/optable,
 /obj/item/tool/surgery/scalpel/manager,
 /obj/effect/landmark/corpsespawner/scientist{
 	corpseback = null;
@@ -197,7 +197,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "ay" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor{
@@ -213,7 +213,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/medbay)
 "aA" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
@@ -323,8 +323,8 @@
 	},
 /area/lv624/lazarus/medbay)
 "aN" = (
-/obj/machinery/vending/medical,
-/obj/machinery/light{
+/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor{
@@ -354,7 +354,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "aQ" = (
-/obj/machinery/bioprinter,
+/obj/structure/machinery/bioprinter,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "whitebluecorner";
@@ -362,7 +362,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "aR" = (
-/obj/machinery/iv_drip,
+/obj/structure/machinery/iv_drip,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "whitebluecorner";
@@ -370,7 +370,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "aS" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	locked = 1;
 	name = "\improper Medical Dome Locker"
@@ -382,7 +382,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "aT" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	locked = 1;
 	name = "\improper Medical Dome Surgery"
@@ -420,7 +420,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "aW" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	locked = 1;
 	name = "\improper Medical Dome Storage"
@@ -454,7 +454,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "bc" = (
-/obj/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 1;
 	name = "\improper Medical Dome"
 	},
@@ -465,7 +465,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "bd" = (
-/obj/machinery/bodyscanner,
+/obj/structure/machinery/bodyscanner,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "whitebluecorner";
@@ -473,7 +473,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "be" = (
-/obj/machinery/body_scanconsole,
+/obj/structure/machinery/body_scanconsole,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "whitebluecorner";
@@ -481,7 +481,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "bg" = (
-/obj/machinery/sleeper,
+/obj/structure/machinery/sleeper,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "whitebluecorner";
@@ -489,7 +489,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "bh" = (
-/obj/machinery/sleep_console{
+/obj/structure/machinery/sleep_console{
 	density = 0
 	},
 /turf/open/floor{
@@ -517,7 +517,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/compound/n)
 "bk" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/structure/table,
@@ -530,7 +530,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "bl" = (
-/obj/machinery/power/apc{
+/obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Medbay APC";
 	pixel_y = 30;
@@ -545,7 +545,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "bm" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/structure/barricade/metal{
@@ -570,7 +570,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "bp" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "whitebluecorner";
@@ -667,7 +667,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "bB" = (
-/obj/machinery/door/window/southright,
+/obj/structure/machinery/door/window/southright,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 2;
@@ -699,7 +699,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/compound/n)
 "bG" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Medical Dome"
 	},
@@ -720,7 +720,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/compound/n)
 "bL" = (
-/obj/machinery/door/window/southleft,
+/obj/structure/machinery/door/window/southleft,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor{
 	dir = 2;

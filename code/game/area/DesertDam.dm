@@ -703,7 +703,7 @@
 	icon_state = "bluenew"
 	var/filtered = 0
 	var/list/Next_areas = list()//The next river to update - that is, unless...
-	var/obj/machinery/console/toggle/Floodgate = null //If there's a floodgate at the end of us, this is it's ID
+	var/obj/structure/machinery/console/toggle/Floodgate = null //If there's a floodgate at the end of us, this is it's ID
 
 /area/desert_dam/exterior/river/proc/check_filtered()
 	var/turf/open/gm/river/desert/R

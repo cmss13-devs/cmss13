@@ -420,7 +420,7 @@
 	static_frame = 1
 	flags_atom = FPRINT
 	var/window_frame //For perspective windows,so the window frame doesn't magically dissapear
-	var/list/tiles_special = list(/obj/machinery/door/airlock,
+	var/list/tiles_special = list(/obj/structure/machinery/door/airlock,
 		/obj/structure/window/framed,
 		/obj/structure/girder,
 		/obj/structure/window_frame)
@@ -660,7 +660,7 @@
 		if(direction == from_dir) continue //doesn't check backwards
 		for(var/obj/structure/window/framed/prison/reinforced/hull/W in get_step(src,direction) )
 			W.spawn_shutters(turn(direction,180))
-	var/obj/machinery/door/poddoor/shutters/almayer/pressure/P = new(get_turf(src))
+	var/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/P = new(get_turf(src))
 	switch(junction)
 		if(4,5,8,9,12)
 			P.dir = 2

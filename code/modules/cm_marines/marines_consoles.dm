@@ -1,6 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
-/obj/machinery/computer/marine_card
+/obj/structure/machinery/computer/marine_card
 	name = "Identification Computer"
 	desc = "You can use this to change ID's."
 	icon_state = "id"
@@ -13,7 +13,7 @@
 	var/printing = null
 
 
-/obj/machinery/computer/marine_card/attackby(O as obj, user as mob)//TODO:SANITY
+/obj/structure/machinery/computer/marine_card/attackby(O as obj, user as mob)//TODO:SANITY
 	if(istype(O, /obj/item/card/id))
 		var/obj/item/card/id/idcard = O
 		if(ACCESS_MARINE_LOGISTICS in idcard.access)
@@ -38,13 +38,13 @@
 		..()
 
 
-/obj/machinery/computer/marine_card/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/marine_card/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/marine_card/bullet_act()
+/obj/structure/machinery/computer/marine_card/bullet_act()
 	return 0
 
-/obj/machinery/computer/marine_card/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/marine_card/attack_hand(var/mob/user as mob)
 	if(..())
 		return
 
@@ -182,7 +182,7 @@
 				paygrade += "<input type='submit' value='Modify'>"
 				paygrade += "</form>"
 			var/accesses = ""
-			if(istype(src,/obj/machinery/computer/card/centcom))
+			if(istype(src,/obj/structure/machinery/computer/card/centcom))
 				accesses += "<h5>Central Command:</h5>"
 				for(var/A in get_all_centcom_access())
 					if(A in ID_to_modify.access)
@@ -215,7 +215,7 @@
 	onclose(user, "id_com")
 	return
 
-/obj/machinery/computer/marine_card/Topic(href, href_list)
+/obj/structure/machinery/computer/marine_card/Topic(href, href_list)
 	if(..())
 		return
 	usr.set_interaction(src)
@@ -357,7 +357,7 @@
 //Which means you could get sillyiness like "Alpha Sulaco Chief Medical Officer" or "Delta Logistics Officer".
 //But in the long run it's not really a big deal.
 
-/obj/machinery/computer/squad_changer
+/obj/structure/machinery/computer/squad_changer
 	name = "Squad Distribution Computer"
 	desc = "You can use this to change someone's squad."
 	icon_state = "guest"
@@ -366,7 +366,7 @@
 	var/mob/living/carbon/human/person_to_modify = null
 	var/screen = 0 //0: main, 1: squad menu
 
-/obj/machinery/computer/squad_changer/attackby(obj/O as obj, mob/user as mob)
+/obj/structure/machinery/computer/squad_changer/attackby(obj/O as obj, mob/user as mob)
 	if(user)
 		add_fingerprint(user)
 	if(ishuman(user))
@@ -390,13 +390,13 @@
 		..()
 
 
-/obj/machinery/computer/squad_changer/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/squad_changer/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/squad_changer/bullet_act()
+/obj/structure/machinery/computer/squad_changer/bullet_act()
 	return 0
 
-/obj/machinery/computer/squad_changer/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/squad_changer/attack_hand(var/mob/user as mob)
 	if(..())
 		return
 	if(user) add_fingerprint(user)
@@ -430,7 +430,7 @@
 	onclose(user, "computer")
 
 
-/obj/machinery/computer/squad_changer/Topic(href, href_list)
+/obj/structure/machinery/computer/squad_changer/Topic(href, href_list)
 	if(..())
 		return
 
@@ -495,7 +495,7 @@
 	return
 
 
-/obj/machinery/computer/crew
+/obj/structure/machinery/computer/crew
 	name = "Crew monitoring computer"
 	desc = "Used to monitor active health sensors built into marine jumpsuits."
 	icon_state = "crew"
@@ -506,23 +506,23 @@
 	var/list/tracked = list(  )
 
 
-/obj/machinery/computer/crew/New()
+/obj/structure/machinery/computer/crew/New()
 	tracked = list()
 	..()
 
-/obj/machinery/computer/crew/attack_ai(mob/living/user)
+/obj/structure/machinery/computer/crew/attack_ai(mob/living/user)
 	attack_hand(user)
 	ui_interact(user)
 
 
-/obj/machinery/computer/crew/attack_hand(mob/living/user)
+/obj/structure/machinery/computer/crew/attack_hand(mob/living/user)
 	add_fingerprint(user)
 	if(stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)
 
 
-/obj/machinery/computer/crew/update_icon()
+/obj/structure/machinery/computer/crew/update_icon()
 
 	if(stat & BROKEN)
 		icon_state = "crewb"
@@ -535,7 +535,7 @@
 			stat &= ~NOPOWER
 
 
-/obj/machinery/computer/crew/Topic(href, href_list)
+/obj/structure/machinery/computer/crew/Topic(href, href_list)
 	if(..()) return
 	if( href_list["close"] )
 		var/mob/user = usr
@@ -547,10 +547,10 @@
 		updateDialog()
 		return 1
 
-/obj/machinery/computer/crew/interact(mob/living/user)
+/obj/structure/machinery/computer/crew/interact(mob/living/user)
 	ui_interact(user)
 
-/obj/machinery/computer/crew/ui_interact(mob/living/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/structure/machinery/computer/crew/ui_interact(mob/living/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	if(stat & (BROKEN|NOPOWER))
 		return
 	user.set_interaction(src)
@@ -620,7 +620,7 @@
 		ui.set_auto_update(1)
 
 
-/obj/machinery/computer/crew/proc/scan()
+/obj/structure/machinery/computer/crew/proc/scan()
 	for(var/mob/living/carbon/human/H in mob_list)
 		if(!H || !istype(H)) continue
 		if(isYautja(H)) continue

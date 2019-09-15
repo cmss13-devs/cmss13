@@ -31,11 +31,11 @@
 /area/bigredv2/outside/nw)
 "af" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
-/obj/machinery/door/poddoor/two_tile_ver{
+/obj/structure/machinery/door/poddoor/two_tile_ver{
 	density = 0;
 	icon_state = "pdoor0";
 	name = "\improper Virology Lockdown";
@@ -137,7 +137,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aw" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	tag = "icon-tube1 (EAST)";
 	icon_state = "tube1";
 	dir = 4
@@ -150,7 +150,7 @@
 	},
 /area/bigredv2/outside/virology)
 "ax" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -170,7 +170,7 @@
 	},
 /area/bigredv2/outside/virology)
 "az" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor{
@@ -180,7 +180,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aA" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -191,7 +191,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aC" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -227,7 +227,7 @@
 /turf/open/floor/interior/plastic,
 /area/bigredv2/outside/virology)
 "aI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 6
 	},
 /obj/structure/inflatable/door,
@@ -238,7 +238,7 @@
 	},
 /area/bigredv2/outside/nw)
 "aJ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	tag = "icon-asteroidwarning (WEST)";
 	icon_state = "asteroidwarning";
@@ -253,7 +253,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -288,18 +288,18 @@
 	},
 /area/bigredv2/outside/virology)
 "aQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor/interior/plastic,
 /area/bigredv2/outside/virology)
 "aR" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
-/obj/machinery/door/poddoor/two_tile_ver{
+/obj/structure/machinery/door/poddoor/two_tile_ver{
 	density = 0;
 	icon_state = "pdoor0";
 	name = "\improper Virology Lockdown";
@@ -327,7 +327,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/nw)
 "aW" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 9
 	},
 /obj/structure/inflatable/popped/door,
@@ -338,7 +338,7 @@
 	},
 /area/bigredv2/outside/nw)
 "aX" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
@@ -365,7 +365,7 @@
 	},
 /area/bigredv2/outside/virology)
 "ba" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
 	icon_state = "asteroidfloor";
@@ -385,8 +385,8 @@
 /turf/closed/wall/r_wall,
 /area/bigredv2/outside/virology)
 "be" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/research{
 	dir = 1;
 	name = "\improper Virology Lab Decontamination";
 	req_access = list()
@@ -422,7 +422,7 @@
 	},
 /area/bigredv2/outside/virology)
 "bi" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	tag = "icon-tube1 (EAST)";
 	icon_state = "tube1";
 	dir = 4
@@ -553,7 +553,7 @@
 /turf/open/floor/interior/plastic,
 /area/bigredv2/outside/virology)
 "bD" = (
-/obj/machinery/smartfridge/chemistry,
+/obj/structure/machinery/smartfridge/chemistry,
 /turf/open/floor/interior/plastic,
 /area/bigredv2/outside/virology)
 "bE" = (
@@ -566,7 +566,7 @@
 /area/bigredv2/outside/virology)
 "bF" = (
 /obj/structure/table/almayer,
-/obj/machinery/computer/med_data/laptop{
+/obj/structure/machinery/computer/med_data/laptop{
 	dir = 8
 	},
 /turf/open/floor/interior/plastic,

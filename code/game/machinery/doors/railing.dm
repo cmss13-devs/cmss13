@@ -1,4 +1,4 @@
-/obj/machinery/door/poddoor/railing
+/obj/structure/machinery/door/poddoor/railing
 	name = "\improper retractable railing"
 	icon = 'icons/obj/structures/doors/railing.dmi'
 	icon_state = "railing1"
@@ -13,13 +13,13 @@
 	closed_layer = WINDOW_LAYER
 	var/closed_layer_south = ABOVE_MOB_LAYER
 
-/obj/machinery/door/poddoor/railing/New()
+/obj/structure/machinery/door/poddoor/railing/New()
 	..()
 	switch(dir)
 		if(SOUTH) layer = closed_layer_south
 		else layer = closed_layer
 
-/obj/machinery/door/poddoor/railing/CheckExit(atom/movable/O, turf/target)
+/obj/structure/machinery/door/poddoor/railing/CheckExit(atom/movable/O, turf/target)
 	if(!density)
 		return 1
 
@@ -31,7 +31,7 @@
 	else
 		return 1
 
-/obj/machinery/door/poddoor/railing/CanPass(atom/movable/mover, turf/target)
+/obj/structure/machinery/door/poddoor/railing/CanPass(atom/movable/mover, turf/target)
 	if(!density)
 		return 1
 
@@ -43,7 +43,7 @@
 	else
 		return 1
 
-/obj/machinery/door/poddoor/railing/open()
+/obj/structure/machinery/door/poddoor/railing/open()
 	if (src.operating == 1) //doors can still open when emag-disabled
 		return 0
 	if (!ticker)
@@ -61,7 +61,7 @@
 		src.operating = 0
 	return 1
 
-/obj/machinery/door/poddoor/railing/close()
+/obj/structure/machinery/door/poddoor/railing/close()
 	if (src.operating)
 		return 0
 	src.density = 1

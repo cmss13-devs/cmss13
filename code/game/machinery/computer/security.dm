@@ -1,6 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
-/obj/machinery/computer/secure_data//TODO:SANITY
+/obj/structure/machinery/computer/secure_data//TODO:SANITY
 	name = "Security Records"
 	desc = "Used to view and edit personnel's security records"
 	icon_state = "security"
@@ -22,7 +22,7 @@
 	var/sortBy = "name"
 	var/order = 1 // -1 = Descending - 1 = Ascending
 
-/obj/machinery/computer/secure_data/verb/eject_id()
+/obj/structure/machinery/computer/secure_data/verb/eject_id()
 	set category = "Object"
 	set name = "Eject ID Card"
 	set src in oview(1)
@@ -39,7 +39,7 @@
 		to_chat(usr, "There is nothing to remove from the console.")
 	return
 
-/obj/machinery/computer/secure_data/attackby(obj/item/O as obj, user as mob)
+/obj/structure/machinery/computer/secure_data/attackby(obj/item/O as obj, user as mob)
 	if(istype(O, /obj/item/card/id) && !scan)
 		if(usr.drop_held_item())
 			O.forceMove(src)
@@ -47,11 +47,11 @@
 			to_chat(user, "You insert [O].")
 	..()
 
-/obj/machinery/computer/secure_data/attack_ai(mob/user as mob)
+/obj/structure/machinery/computer/secure_data/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
 //Someone needs to break down the dat += into chunks instead of long ass lines.
-/obj/machinery/computer/secure_data/attack_hand(mob/user as mob)
+/obj/structure/machinery/computer/secure_data/attack_hand(mob/user as mob)
 	if(..())
 		return
 	if (src.z > 6)
@@ -202,7 +202,7 @@
 /*Revised /N
 I can't be bothered to look more of the actual code outside of switch but that probably needs revising too.
 What a mess.*/
-/obj/machinery/computer/secure_data/Topic(href, href_list)
+/obj/structure/machinery/computer/secure_data/Topic(href, href_list)
 	if(..())
 		return
 	if (!( data_core.general.Find(active1) ))
@@ -566,10 +566,10 @@ What a mess.*/
 	updateUsrDialog()
 	return
 
-/obj/machinery/computer/secure_data/proc/is_not_allowed(var/mob/user)
+/obj/structure/machinery/computer/secure_data/proc/is_not_allowed(var/mob/user)
 	return !src.authenticated || user.stat || user.is_mob_restrained() || (!in_range(src, user) && (!ishighersilicon(user)))
 
-/obj/machinery/computer/secure_data/proc/get_photo(var/mob/user)
+/obj/structure/machinery/computer/secure_data/proc/get_photo(var/mob/user)
 	if(istype(user.get_active_hand(), /obj/item/photo))
 		var/obj/item/photo/photo = user.get_active_hand()
 		return photo.img
@@ -579,7 +579,7 @@ What a mess.*/
 		if (selection)
 			return selection.fields["img"]
 
-/obj/machinery/computer/secure_data/emp_act(severity)
+/obj/structure/machinery/computer/secure_data/emp_act(severity)
 	if(stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
@@ -610,6 +610,6 @@ What a mess.*/
 
 	..(severity)
 
-/obj/machinery/computer/secure_data/detective_computer
+/obj/structure/machinery/computer/secure_data/detective_computer
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "messyfiles"

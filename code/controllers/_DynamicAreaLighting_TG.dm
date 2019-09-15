@@ -529,7 +529,7 @@ var/global/list/global_changed_lights = list()
 /atom/movable/get_light_range()
 	return min(luminosity, LIGHTING_MAX_LUMINOSITY_MOBILE)
 
-/obj/machinery/light/get_light_range()
+/obj/structure/machinery/light/get_light_range()
 	return min(luminosity, LIGHTING_MAX_LUMINOSITY_STATIC)
 
 /turf/get_light_range()

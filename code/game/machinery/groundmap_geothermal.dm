@@ -1,4 +1,4 @@
-/obj/machinery/power/geothermal
+/obj/structure/machinery/power/geothermal
 	name = "\improper G-11 geothermal generator"
 	icon = 'icons/obj/structures/machinery/geothermal.dmi'
 	icon_state = "weld"
@@ -17,7 +17,7 @@
 	var/cur_tick = 0 //Tick updater
 
 //We don't want to cut/update the power overlays every single proc. Just when it actually changes. This should save on CPU cycles. Efficiency!
-/obj/machinery/power/geothermal/update_icon()
+/obj/structure/machinery/power/geothermal/update_icon()
 	..()
 	if(!buildstate && is_on)
 		desc = "A thermoelectric generator sitting atop a borehole dug deep in the planet's surface. It generates energy by boiling the plasma steam that rises from the well.\nIt is old technology and has a large failure rate, and must be repaired frequently.\nIt is currently on, and beeping randomly amid faint hisses of steam."
@@ -42,15 +42,15 @@
 			icon_state = "wrench"
 			desc = "A thermoelectric generator sitting atop a plasma-filled borehole. This one is lightly damaged. Use a wrench to repair it."
 
-/obj/machinery/power/geothermal/New()
+/obj/structure/machinery/power/geothermal/New()
 	..()
 	if(!connect_to_network()) //Should start with a cable piece underneath, if it doesn't, something's messed up in mapping
 		powernet_connection_failed = 1
 
-/obj/machinery/power/geothermal/power_change()
+/obj/structure/machinery/power/geothermal/power_change()
 	return
 
-/obj/machinery/power/geothermal/process()
+/obj/structure/machinery/power/geothermal/process()
 	if(!is_on || buildstate || !anchored) //Default logic checking
 		return 0
 
@@ -71,7 +71,7 @@
 				if(99) visible_message("[htmlicon(src, viewers(src))] <span class='notice'><b>[src]</b> rumbles loudly as the combustion and thermal chambers reach full strength.</span>")
 			add_avail(power_generation_max * (power_gen_percent / 100) ) //Nope, all good, just add the power
 
-/obj/machinery/power/geothermal/proc/check_failure()
+/obj/structure/machinery/power/geothermal/proc/check_failure()
 	cur_tick++
 	if(cur_tick < fail_check_ticks) //Nope, not time for it yet
 		return 0
@@ -94,7 +94,7 @@
 		return 1
 	return 0 //Nope, all fine
 
-/obj/machinery/power/geothermal/attack_hand(mob/user as mob)
+/obj/structure/machinery/power/geothermal/attack_hand(mob/user as mob)
 	if(!anchored) return 0 //Shouldn't actually be possible
 	if(user.is_mob_incapacitated()) return 0
 	if(!ishuman(user))
@@ -131,7 +131,7 @@
 	start_processing_power()
 	return 1
 
-/obj/machinery/power/geothermal/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/power/geothermal/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(iswelder(O))
 		if(buildstate == 1 && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
@@ -191,7 +191,7 @@
 		return ..() //Deal with everything else, like hitting with stuff
 
 //Putting these here since it's power-related
-/obj/machinery/colony_floodlight_switch
+/obj/structure/machinery/colony_floodlight_switch
 	name = "Colony Floodlight Switch"
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "panelnopower"
@@ -204,15 +204,15 @@
 	unacidable = 1
 	var/list/floodlist = list() // This will save our list of floodlights on the map
 
-/obj/machinery/colony_floodlight_switch/New() //Populate our list of floodlights so we don't need to scan for them ever again
+/obj/structure/machinery/colony_floodlight_switch/New() //Populate our list of floodlights so we don't need to scan for them ever again
 	sleep(5) //let's make sure it exists first..
-	for(var/obj/machinery/colony_floodlight/F in machines)
+	for(var/obj/structure/machinery/colony_floodlight/F in machines)
 		floodlist += F
 		F.fswitch = src
 	..()
 	start_processing_power()
 
-/obj/machinery/colony_floodlight_switch/update_icon()
+/obj/structure/machinery/colony_floodlight_switch/update_icon()
 	if(!ispowered)
 		icon_state = "panelnopower"
 	else if(turned_on)
@@ -220,15 +220,15 @@
 	else
 		icon_state = "paneloff"
 
-/obj/machinery/colony_floodlight_switch/process()
+/obj/structure/machinery/colony_floodlight_switch/process()
 	var/lightpower = 0
-	for(var/obj/machinery/colony_floodlight/C in floodlist)
+	for(var/obj/structure/machinery/colony_floodlight/C in floodlist)
 		if(!C.is_lit)
 			continue
 		lightpower += C.power_tick
 	use_power(lightpower)
 
-/obj/machinery/colony_floodlight_switch/power_change()
+/obj/structure/machinery/colony_floodlight_switch/power_change()
 	..()
 	if((stat & NOPOWER))
 		if(ispowered && turned_on)
@@ -240,8 +240,8 @@
 		ispowered = 1
 		update_icon()
 
-/obj/machinery/colony_floodlight_switch/proc/toggle_lights()
-	for(var/obj/machinery/colony_floodlight/F in floodlist)
+/obj/structure/machinery/colony_floodlight_switch/proc/toggle_lights()
+	for(var/obj/structure/machinery/colony_floodlight/F in floodlist)
 		spawn(rand(0,50))
 			F.is_lit = !F.is_lit
 			if(!F.damaged)
@@ -252,7 +252,7 @@
 			F.update_icon()
 	return 0
 
-/obj/machinery/colony_floodlight_switch/attack_hand(mob/user as mob)
+/obj/structure/machinery/colony_floodlight_switch/attack_hand(mob/user as mob)
 	if(!ishuman(user))
 		to_chat(user, "Nice try.")
 		return 0
@@ -273,7 +273,7 @@
 #define FLOODLIGHT_REPAIR_CABLE 	3
 #define FLOODLIGHT_REPAIR_SCREW 	4
 
-/obj/machinery/colony_floodlight
+/obj/structure/machinery/colony_floodlight
 	name = "Colony Floodlight"
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "floodoff"
@@ -284,19 +284,19 @@
 	unacidable = 1
 	var/power_tick = 50 // power each floodlight takes up per process
 	use_power = 0 //It's the switch that uses the actual power, not the lights
-	var/obj/machinery/colony_floodlight_switch/fswitch = null //Reverse lookup for power grabbing in area
+	var/obj/structure/machinery/colony_floodlight_switch/fswitch = null //Reverse lookup for power grabbing in area
 	var/lum_value = 7
 	var/repair_state = 0
 	health = 150
 
-/obj/machinery/colony_floodlight/Dispose()
+/obj/structure/machinery/colony_floodlight/Dispose()
 	SetLuminosity(0)
 	if(fswitch)
 		fswitch.floodlist -= src
 		fswitch = null
 	. = ..()
 
-/obj/machinery/colony_floodlight/update_icon()
+/obj/structure/machinery/colony_floodlight/update_icon()
 	if(damaged)
 		icon_state = "flooddmg"
 	else if(is_lit)
@@ -304,7 +304,7 @@
 	else
 		icon_state = "floodoff"
 
-/obj/machinery/colony_floodlight/attackby(obj/item/I, mob/user)
+/obj/structure/machinery/colony_floodlight/attackby(obj/item/I, mob/user)
 	if(damaged)
 		if(isscrewdriver(I))
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
@@ -410,7 +410,7 @@
 	..()
 	return 0
 
-/obj/machinery/colony_floodlight/attack_hand(mob/user)
+/obj/structure/machinery/colony_floodlight/attack_hand(mob/user)
 	if(ishuman(user))
 		if(damaged)
 			to_chat(user, SPAN_WARNING("[src] is damaged."))
@@ -419,7 +419,7 @@
 		return 0
 	..()
 
-/obj/machinery/colony_floodlight/examine(mob/user)
+/obj/structure/machinery/colony_floodlight/examine(mob/user)
 	..()
 	if(ishuman(user))
 		if(damaged)

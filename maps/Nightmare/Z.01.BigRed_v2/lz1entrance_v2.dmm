@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/ds1/delaythree{
 	tag = "icon-landingstripe (WEST)";
 	icon_state = "landingstripe";
 	dir = 8
@@ -36,14 +36,14 @@
 /area/bigredv2/outside/space_port)
 "ai" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Spaceport2";
 	name = "\improper Spaceport Shutters"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aj" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/closed/wall/r_wall,
@@ -81,7 +81,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "ao" = (
-/obj/machinery/disposal,
+/obj/structure/machinery/disposal,
 /turf/open/floor{
 	tag = "icon-darkgreen2 (NORTH)";
 	icon_state = "darkgreen2";
@@ -115,7 +115,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "as" = (
-/obj/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor{
 	tag = "icon-darkgreen2 (NORTHEAST)";
 	icon_state = "darkgreen2";
@@ -155,7 +155,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "ax" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 6
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -166,7 +166,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "ay" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -177,7 +177,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "az" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	on = 1
 	},
@@ -205,7 +205,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aC" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor{
@@ -215,7 +215,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aD" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -226,7 +226,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aE" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -238,7 +238,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aF" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 1
 	},
 /turf/open/floor{
@@ -248,7 +248,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aG" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -259,11 +259,11 @@
 	},
 /area/bigredv2/outside/space_port)
 "aI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Spaceport"
 	},
@@ -274,7 +274,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aJ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor{
@@ -294,7 +294,7 @@
 "aL" = (
 /obj/structure/table,
 /obj/item/device/flashlight/lamp,
-/obj/machinery/door_control{
+/obj/structure/machinery/door_control{
 	id = "Spaceport2";
 	name = "Storm Shutters";
 	pixel_x = 32;
@@ -307,7 +307,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
 	icon_state = "asteroidfloor";
@@ -329,7 +329,7 @@
 /area/bigredv2/outside/space_port)
 "aP" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "Spaceport2";
 	name = "\improper Spaceport Shutters"
@@ -364,7 +364,7 @@
 /area/bigredv2/outside/space_port)
 "aT" = (
 /obj/structure/table,
-/obj/machinery/computer/objective{
+/obj/structure/machinery/computer/objective{
 	icon_state = "medlaptop";
 	dir = 8
 	},
@@ -375,7 +375,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aU" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor{
@@ -401,7 +401,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aX" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
@@ -422,7 +422,7 @@
 /area/bigredv2/outside/space_port)
 "aZ" = (
 /obj/structure/table,
-/obj/machinery/computer/security{
+/obj/structure/machinery/computer/security{
 	icon_state = "cameras";
 	dir = 1
 	},
@@ -514,7 +514,7 @@
 	},
 /area/bigredv2/outside/nw)
 "bo" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	tag = "icon-asteroidwarning";
 	icon_state = "asteroidwarning"
@@ -569,7 +569,7 @@
 	},
 /area/bigredv2/outside/nw)
 "bw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
@@ -590,7 +590,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/nw)
 "bz" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
 	icon_state = "asteroidfloor";
@@ -693,7 +693,7 @@
 	},
 /area/bigredv2/outside/nw)
 "bL" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor{
@@ -703,7 +703,7 @@
 	},
 /area/bigredv2/outside/nw)
 "bM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -714,7 +714,7 @@
 	},
 /area/bigredv2/outside/nw)
 "bN" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor{
@@ -774,7 +774,7 @@
 	},
 /area/bigredv2/outside/nw)
 "bV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	tag = "icon-asteroidwarning (EAST)";
 	icon_state = "asteroidwarning";

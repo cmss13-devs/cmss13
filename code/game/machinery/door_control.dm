@@ -3,7 +3,7 @@
 #define CONTROL_EMITTERS 2
 #define CONTROL_DROPSHIP 3
 
-/obj/machinery/door_control
+/obj/structure/machinery/door_control
 	name = "remote door-control"
 	desc = "It controls doors, remotely."
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
@@ -36,16 +36,16 @@
 	idle_power_usage = 2
 	active_power_usage = 4
 
-/obj/machinery/door_control/attack_ai(mob/user as mob)
+/obj/structure/machinery/door_control/attack_ai(mob/user as mob)
 	if(wires & 2)
 		return src.attack_hand(user)
 	else
 		to_chat(user, "Error, no route to host.")
 
-/obj/machinery/door_control/attack_alien(mob/user as mob)
+/obj/structure/machinery/door_control/attack_alien(mob/user as mob)
 	return
 
-/obj/machinery/door_control/attackby(obj/item/W, mob/user as mob)
+/obj/structure/machinery/door_control/attackby(obj/item/W, mob/user as mob)
 	/* For later implementation
 	if (istype(W, /obj/item/tool/screwdriver))
 	{
@@ -64,7 +64,7 @@
 		return
 	return src.attack_hand(user)
 
-/obj/machinery/door_control/proc/handle_dropship(var/ship_id)
+/obj/structure/machinery/door_control/proc/handle_dropship(var/ship_id)
 	var/shuttle_tag
 	switch(ship_id)
 		if("sh_dropship1")
@@ -80,7 +80,7 @@
 		return // its been locked down by the queen
 	if(z == 3) // on the almayer
 		return
-	for(var/obj/machinery/door/airlock/dropship_hatch/M in machines)
+	for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in machines)
 		if(M.id == ship_id)
 			if(M.locked && M.density)
 				continue // jobs done
@@ -90,13 +90,13 @@
 			else
 				M.do_command("secure_close")
 
-	var/obj/machinery/door/airlock/multi_tile/almayer/reardoor
+	var/obj/structure/machinery/door/airlock/multi_tile/almayer/reardoor
 	switch(ship_id)
 		if("sh_dropship1")
-			for(var/obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in machines)
+			for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in machines)
 				reardoor = D
 		if("sh_dropship2")
-			for(var/obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
+			for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
 				reardoor = D
 
 	if(!reardoor.locked && reardoor.density)
@@ -114,8 +114,8 @@
 			sleep(reardoor.openspeed + 1)
 			reardoor.lock()
 
-/obj/machinery/door_control/proc/handle_door()
-	for(var/obj/machinery/door/airlock/D in range(range))
+/obj/structure/machinery/door_control/proc/handle_door()
+	for(var/obj/structure/machinery/door/airlock/D in range(range))
 		if(D.id_tag == src.id)
 			if(specialfunctions & OPEN)
 				if (D.density)
@@ -146,8 +146,8 @@
 				if(specialfunctions & SAFE)
 					D.safe = 1
 
-/obj/machinery/door_control/proc/handle_pod()
-	for(var/obj/machinery/door/poddoor/M in machines)
+/obj/structure/machinery/door_control/proc/handle_pod()
+	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == id)
 			var/datum/shuttle/ferry/marine/S
 			var/area/A = get_area(M)
@@ -162,14 +162,14 @@
 				spawn()
 					M.close()
 
-/obj/machinery/door_control/verb/push_button()
+/obj/structure/machinery/door_control/verb/push_button()
 	set name = "Push Button"
 	set category = "Object"
 	if(isliving(usr))
 		var/mob/living/L = usr
 		attack_hand(L)
 
-/obj/machinery/door_control/attack_hand(mob/living/user)
+/obj/structure/machinery/door_control/attack_hand(mob/living/user)
 	add_fingerprint(user)
 	if(istype(user,/mob/living/carbon/Xenomorph))
 		return
@@ -199,23 +199,23 @@
 		if(!(stat & NOPOWER))
 			icon_state = "doorctrl0"
 
-/obj/machinery/door_control/power_change()
+/obj/structure/machinery/door_control/power_change()
 	..()
 	if(stat & NOPOWER)
 		icon_state = "doorctrl-p"
 	else
 		icon_state = "doorctrl0"
 
-/obj/machinery/driver_button/attack_ai(mob/user as mob)
+/obj/structure/machinery/driver_button/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/driver_button/attackby(obj/item/W, mob/user as mob)
+/obj/structure/machinery/driver_button/attackby(obj/item/W, mob/user as mob)
 
 	if(istype(W, /obj/item/device/detective_scanner))
 		return
 	return src.attack_hand(user)
 
-/obj/machinery/driver_button/attack_hand(mob/user as mob)
+/obj/structure/machinery/driver_button/attack_hand(mob/user as mob)
 
 	src.add_fingerprint(usr)
 	if(stat & (NOPOWER|BROKEN))
@@ -229,7 +229,7 @@
 	active = 1
 	icon_state = "launcheract"
 
-	for(var/obj/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == src.id)
 			spawn(0)
 				M.open()
@@ -237,13 +237,13 @@
 
 	sleep(20)
 
-	for(var/obj/machinery/mass_driver/M in machines)
+	for(var/obj/structure/machinery/mass_driver/M in machines)
 		if(M.id == src.id)
 			M.drive()
 
 	sleep(50)
 
-	for(var/obj/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == src.id)
 			spawn(0)
 				M.close()
@@ -254,19 +254,19 @@
 
 	return
 
-/obj/machinery/door_control/timed_automatic
+/obj/structure/machinery/door_control/timed_automatic
 	var/trigger_delay = 1 //in minutes
 	var/trigger_time
 	var/triggered = 0
 	use_power = 0
 
-/obj/machinery/door_control/timed_automatic/New()
+/obj/structure/machinery/door_control/timed_automatic/New()
 		..()
 		trigger_time = world.time + trigger_delay*600
 		processing_objects.Add(src)
 		start_processing()  // should really be using this -spookydonut
 
-/obj/machinery/door_control/timed_automatic/process()
+/obj/structure/machinery/door_control/timed_automatic/process()
 	if (!triggered && world.time >= trigger_time)
 		icon_state = "doorctrl1"
 

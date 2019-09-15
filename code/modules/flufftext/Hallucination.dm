@@ -181,7 +181,7 @@ mob/living/carbon/proc/handle_hallucinations()
 
 
 
-/*obj/machinery/proc/mockpanel(list/buttons,start_txt,end_txt,list/mid_txts)
+/*obj/structure/machinery/proc/mockpanel(list/buttons,start_txt,end_txt,list/mid_txts)
 
 	if(!mocktxt)
 

@@ -1,12 +1,12 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
-/obj/machinery/computer/telecomms/server
+/obj/structure/machinery/computer/telecomms/server
 	name = "Telecommunications Server Monitor"
 	icon_state = "comm_logs"
 
 	var/screen = 0				// the screen number:
 	var/list/servers = list()	// the servers located by the computer
-	var/obj/machinery/telecomms/server/SelectedServer
+	var/obj/structure/machinery/telecomms/server/SelectedServer
 
 	var/network = "NULL"		// the network to probe
 	var/temp = ""				// temporary feedback messages
@@ -31,7 +31,7 @@
 				dat += "<br>Current Network: <a href='?src=\ref[src];network=1'>[network]</a><br>"
 				if(servers.len)
 					dat += "<br>Detected Telecommunication Servers:<ul>"
-					for(var/obj/machinery/telecomms/T in servers)
+					for(var/obj/structure/machinery/telecomms/T in servers)
 						dat += "<li><a href='?src=\ref[src];viewserver=[T.id]'>\ref[T] [T.name]</a> ([T.id])</li>"
 					dat += "</ul>"
 					dat += "<br><a href='?src=\ref[src];operation=release'>\[Flush Buffer\]</a>"
@@ -143,7 +143,7 @@
 
 		if(href_list["viewserver"])
 			screen = 1
-			for(var/obj/machinery/telecomms/T in servers)
+			for(var/obj/structure/machinery/telecomms/T in servers)
 				if(T.id == href_list["viewserver"])
 					SelectedServer = T
 					break
@@ -163,7 +163,7 @@
 						temp = "<font color = #D70B00>- FAILED: CANNOT PROBE WHEN BUFFER FULL -</font color>"
 
 					else
-						for(var/obj/machinery/telecomms/server/T in range(25, src))
+						for(var/obj/structure/machinery/telecomms/server/T in range(25, src))
 							if(T.network == network)
 								servers.Add(T)
 

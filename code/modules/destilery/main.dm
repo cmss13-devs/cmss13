@@ -9,7 +9,7 @@
 
 // I. The mill is intended to be loaded with produce and returns ground up items. For example: Wheat should become flour and grapes should become raisins.
 
-/obj/machinery/mill
+/obj/structure/machinery/mill
 	var/list/obj/item/reagent_container/food/input = list()
 	var/list/obj/item/reagent_container/food/output = list()
 	var/obj/item/reagent_container/food/milled_item
@@ -31,7 +31,7 @@
 			milled_item = null
 		. = ..()
 
-/obj/machinery/mill/process()
+/obj/structure/machinery/mill/process()
 	if(error)
 		return
 
@@ -63,14 +63,14 @@
 	milled_item = null
 	busy = 0
 
-/obj/machinery/mill/attackby(var/obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/mill/attackby(var/obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food))
 		if(user.drop_inv_item_to_loc(W, src))
 			input += W
 	else
 		..()
 
-/obj/machinery/mill/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/mill/attack_hand(var/mob/user as mob)
 	for(var/obj/item/reagent_container/food/F in output)
 		F.forceMove(loc)
 		output -= F
@@ -82,7 +82,7 @@
 
 // II. The fermenter is intended to be loaded with food items and returns medium-strength alcohol items, sucha s wine and beer.
 
-/obj/machinery/fermenter
+/obj/structure/machinery/fermenter
 	var/list/obj/item/reagent_container/food/input = list()
 	var/list/obj/item/reagent_container/food/output = list()
 	var/obj/item/reagent_container/food/fermenting_item
@@ -105,7 +105,7 @@
 			fermenting_item = null
 		. = ..()
 
-/obj/machinery/fermenter/process()
+/obj/structure/machinery/fermenter/process()
 	if(error)
 		return
 
@@ -139,14 +139,14 @@
 	fermenting_item = null
 	busy = 0
 
-/obj/machinery/fermenter/attackby(var/obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/fermenter/attackby(var/obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food))
 		if(user.drop_inv_item_to_loc(W, src))
 			input += W
 	else
 		..()
 
-/obj/machinery/fermenter/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/fermenter/attack_hand(var/mob/user as mob)
 	for(var/obj/item/reagent_container/food/F in output)
 		F.forceMove(loc)
 		output -= F
@@ -155,7 +155,7 @@
 
 // III. The still is a machine that is loaded with food items and returns hard liquor, such as vodka.
 
-/obj/machinery/still
+/obj/structure/machinery/still
 	var/list/obj/item/reagent_container/food/input = list()
 	var/list/obj/item/reagent_container/food/output = list()
 	var/obj/item/reagent_container/food/destilling_item
@@ -177,7 +177,7 @@
 			destilling_item = null
 		. = ..()
 
-/obj/machinery/still/process()
+/obj/structure/machinery/still/process()
 	if(error)
 		return
 
@@ -206,14 +206,14 @@
 	destilling_item = null
 	busy = 0
 
-/obj/machinery/still/attackby(var/obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/still/attackby(var/obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food))
 		if(user.drop_inv_item_to_loc(W, loc))
 			input += W
 	else
 		..()
 
-/obj/machinery/still/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/still/attack_hand(var/mob/user as mob)
 	for(var/obj/item/reagent_container/food/F in output)
 		F.forceMove(loc)
 		output -= F
@@ -223,7 +223,7 @@
 
 // IV. The squeezer is intended to destroy inserted food items, but return some of the reagents they contain.
 
-/obj/machinery/squeezer
+/obj/structure/machinery/squeezer
 	var/list/obj/item/reagent_container/food/input = list()
 	var/obj/item/reagent_container/food/squeezed_item
 	var/water_level = 0
@@ -245,7 +245,7 @@
 
 // V. The centrifuge spins inserted food items. It is intended to squeeze out the reagents that are common food catalysts (enzymes currently)
 
-/obj/machinery/centrifuge
+/obj/structure/machinery/centrifuge
 	var/list/obj/item/reagent_container/food/input = list()
 	var/list/obj/item/reagent_container/food/output = list()
 	var/obj/item/reagent_container/food/spinning_item
@@ -263,7 +263,7 @@
 	idle_power_usage = 10
 	active_power_usage = 10000
 
-/obj/machinery/centrifuge/process()
+/obj/structure/machinery/centrifuge/process()
 	if(error)
 		return
 
@@ -290,14 +290,14 @@
 	output += spinning_item
 	busy = 0
 
-/obj/machinery/centrifuge/attackby(var/obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/centrifuge/attackby(var/obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food))
 		if(user.drop_inv_item_to_loc(W, src))
 			input += W
 	else
 		..()
 
-/obj/machinery/centrifuge/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/centrifuge/attack_hand(var/mob/user as mob)
 	for(var/obj/item/reagent_container/food/F in output)
 		F.forceMove(loc)
 		output -= F

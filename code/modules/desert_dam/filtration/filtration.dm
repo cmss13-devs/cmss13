@@ -252,7 +252,7 @@ var/global/east_riverstart = 0
 		dispersing = 0
 
 
-/obj/machinery/dispersal_initiator
+/obj/structure/machinery/dispersal_initiator
 	name = "\improper Dispersal Initiator"
 	icon = 'icons/old_stuff/mark.dmi'
 	icon_state = "spawn_shuttle_move"
@@ -260,22 +260,22 @@ var/global/east_riverstart = 0
 	mouse_opacity = 0
 	var/id = null
 
-/obj/machinery/dispersal_initiator/New()
+/obj/structure/machinery/dispersal_initiator/New()
 	..()
 	icon_state = null
 
-/obj/machinery/dispersal_initiator/proc/initiate()
+/obj/structure/machinery/dispersal_initiator/proc/initiate()
 	var/area/A = get_area(src)
 	A.ambience = list('sound/ambience/ambiatm1.ogg')
 	sleep(30)
 	for(var/obj/effect/blocker/toxic_water/W in get_turf(src))
 		W.disperse_spread()
 
-/obj/machinery/dispersal_initiator/ex_act()
+/obj/structure/machinery/dispersal_initiator/ex_act()
 	return
 
 
-/obj/machinery/filtration_button
+/obj/structure/machinery/filtration_button
 	name = "\improper Filtration Activation"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "launcherbtt"
@@ -288,7 +288,7 @@ var/global/east_riverstart = 0
 	active_power_usage = 4
 	unacidable = 1
 
-/obj/machinery/filtration_button/attack_hand(mob/user as mob)
+/obj/structure/machinery/filtration_button/attack_hand(mob/user as mob)
 
 	if(stat & (NOPOWER|BROKEN))
 		return
@@ -303,7 +303,7 @@ var/global/east_riverstart = 0
 	var/area/A = get_area(src)
 	A.ambience = list('sound/ambience/ambiatm1.ogg')
 
-	for(var/obj/machinery/dispersal_initiator/M in machines)
+	for(var/obj/structure/machinery/dispersal_initiator/M in machines)
 		if (M.id == src.id)
 			M.initiate()
 
@@ -314,7 +314,7 @@ var/global/east_riverstart = 0
 
 	return
 
-/obj/machinery/filtration_button/ex_act()
+/obj/structure/machinery/filtration_button/ex_act()
 	return
 
 /*

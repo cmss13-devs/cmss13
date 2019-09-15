@@ -181,7 +181,7 @@
 			if(!hive.living_xeno_queen && hive.xeno_queen_timer && world.time>hive.xeno_queen_timer) xeno_message("The Hive is ready for a new Queen to evolve.", 3, hive.hivenumber)
 
 		if(!active_lz && world.time > lz_selection_timer)
-			for(var/obj/machinery/computer/shuttle_control/dropship1/default_console in machines)
+			for(var/obj/structure/machinery/computer/shuttle_control/dropship1/default_console in machines)
 				if(default_console.z == 1 && !default_console.onboard)
 					select_lz(default_console)
 					break

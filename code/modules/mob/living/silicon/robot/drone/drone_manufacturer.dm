@@ -1,4 +1,4 @@
-/obj/machinery/drone_fabricator
+/obj/structure/machinery/drone_fabricator
 	name = "drone fabricator"
 	desc = "A large automated factory for producing maintenance drones."
 
@@ -15,16 +15,16 @@
 	icon = 'icons/obj/structures/machinery/drone_fab.dmi'
 	icon_state = "drone_fab_idle"
 
-/obj/machinery/drone_fabricator/New()
+/obj/structure/machinery/drone_fabricator/New()
 	..()
 	start_processing()
 
-/obj/machinery/drone_fabricator/power_change()
+/obj/structure/machinery/drone_fabricator/power_change()
 	..()
 	if (stat & NOPOWER)
 		icon_state = "drone_fab_nopower"
 
-/obj/machinery/drone_fabricator/process()
+/obj/structure/machinery/drone_fabricator/process()
 
 	if(ticker.current_state < GAME_STATE_PLAYING)
 		return
@@ -44,19 +44,19 @@
 	if(drone_progress >= 100)
 		visible_message("\The [src] voices a strident beep, indicating a drone chassis is prepared.")
 
-/obj/machinery/drone_fabricator/examine(mob/user)
+/obj/structure/machinery/drone_fabricator/examine(mob/user)
 	..()
 	if(produce_drones && drone_progress >= 100 && istype(user,/mob/dead) && config.allow_drone_spawn && count_drones() < config.max_maint_drones)
 		to_chat(user, "<BR><B>A drone is prepared. Select 'Join As Drone' from the Ghost tab to spawn as a maintenance drone.</B>")
 
-/obj/machinery/drone_fabricator/proc/count_drones()
+/obj/structure/machinery/drone_fabricator/proc/count_drones()
 	var/drones = 0
 	for(var/mob/living/silicon/robot/drone/D in player_list)
 		if(D.key && D.client)
 			drones++
 	return drones
 
-/obj/machinery/drone_fabricator/proc/create_drone(var/client/player)
+/obj/structure/machinery/drone_fabricator/proc/create_drone(var/client/player)
 
 	if(stat & NOPOWER)
 		return
@@ -126,7 +126,7 @@
 		to_chat(usr, "You must wait 10 minutes to respawn as a drone!")
 		return
 
-	for(var/obj/machinery/drone_fabricator/DF in machines)
+	for(var/obj/structure/machinery/drone_fabricator/DF in machines)
 		if(DF.stat & NOPOWER || !DF.produce_drones)
 			continue
 

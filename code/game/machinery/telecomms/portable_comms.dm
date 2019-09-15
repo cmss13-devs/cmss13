@@ -1,4 +1,4 @@
-/obj/machinery/constructable_frame/porta_comms
+/obj/structure/machinery/constructable_frame/porta_comms
 	name = "portable telecommunications unit"
 	desc = "A portable compact TC-4T telecommunications construction kit. Used to set up subspace communications lines between planetary and extra-planetary locations. Needs cabling."
 	icon = 'icons/obj/structures/machinery/comm_tower2.dmi'
@@ -9,7 +9,7 @@
 	anchored = 0
 	unacidable = 1
 
-/obj/machinery/constructable_frame/porta_comms/update_icon()
+/obj/structure/machinery/constructable_frame/porta_comms/update_icon()
 	..()
 	var/is_wired = 0
 	for(var/obj/item/I in contents)
@@ -27,10 +27,10 @@
 	else
 		icon_state = "construct_0_0"
 
-/obj/machinery/constructable_frame/porta_comms/ex_act(severity)
+/obj/structure/machinery/constructable_frame/porta_comms/ex_act(severity)
 	return
 
-/obj/machinery/constructable_frame/porta_comms/attackby(obj/item/I, mob/user)
+/obj/structure/machinery/constructable_frame/porta_comms/attackby(obj/item/I, mob/user)
 	var/area/A = get_area(src)
 	if (!A.can_nuke_area)
 		to_chat(usr, SPAN_DANGER("You don't want to deploy this here!"))

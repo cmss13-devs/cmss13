@@ -164,15 +164,15 @@ move an amendment</a> to the drawing.</p>
 	if (!oldtitle) // or replacetext goes to infinite loop
 		return
 	for(var/area/RA in A.related)
-		for(var/obj/machinery/alarm/M in RA)
+		for(var/obj/structure/machinery/alarm/M in RA)
 			M.name = replacetext(M.name,oldtitle,title)
-		for(var/obj/machinery/power/apc/M in RA)
+		for(var/obj/structure/machinery/power/apc/M in RA)
 			M.name = replacetext(M.name,oldtitle,title)
-		for(var/obj/machinery/atmospherics/unary/vent_scrubber/M in RA)
+		for(var/obj/structure/machinery/atmospherics/unary/vent_scrubber/M in RA)
 			M.name = replacetext(M.name,oldtitle,title)
-		for(var/obj/machinery/atmospherics/unary/vent_pump/M in RA)
+		for(var/obj/structure/machinery/atmospherics/unary/vent_pump/M in RA)
 			M.name = replacetext(M.name,oldtitle,title)
-		for(var/obj/machinery/door/M in RA)
+		for(var/obj/structure/machinery/door/M in RA)
 			M.name = replacetext(M.name,oldtitle,title)
 	//TODO: much much more. Unnamed airlocks, cameras, etc.
 
@@ -193,10 +193,10 @@ move an amendment</a> to the drawing.</p>
 			return BORDER_BETWEEN
 		if (W.dir in list(NORTHEAST,SOUTHEAST,NORTHWEST,SOUTHWEST))
 			return BORDER_2NDTILE
-	for(var/obj/machinery/door/window/D in T2)
+	for(var/obj/structure/machinery/door/window/D in T2)
 		if(turn(dir,180) == D.dir)
 			return BORDER_BETWEEN
-	if (locate(/obj/machinery/door) in T2)
+	if (locate(/obj/structure/machinery/door) in T2)
 		return BORDER_2NDTILE
 
 	return BORDER_NONE
@@ -215,7 +215,7 @@ move an amendment</a> to the drawing.</p>
 				if(dir == W.dir || (W.dir in list(NORTHEAST,SOUTHEAST,NORTHWEST,SOUTHWEST)))
 					skip = 1; break
 			if (skip) continue
-			for(var/obj/machinery/door/window/D in T)
+			for(var/obj/structure/machinery/door/window/D in T)
 				if(dir == D.dir)
 					skip = 1; break
 			if (skip) continue

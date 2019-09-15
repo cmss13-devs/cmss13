@@ -18,7 +18,7 @@
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 
 	tiles_with = list(/turf/closed/wall)
-	var/tiles_special[] = list(/obj/machinery/door/airlock,
+	var/tiles_special[] = list(/obj/structure/machinery/door/airlock,
 		/obj/structure/window/framed,
 		/obj/structure/girder,
 		/obj/structure/window_frame)

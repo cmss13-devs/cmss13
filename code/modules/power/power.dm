@@ -1,4 +1,4 @@
-/obj/machinery/power
+/obj/structure/machinery/power
 	name = null
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	anchored = 1.0
@@ -9,27 +9,27 @@
 	idle_power_usage = 0
 	active_power_usage = 0
 
-/obj/machinery/power/Dispose()
+/obj/structure/machinery/power/Dispose()
 	disconnect_from_network()
 	. = ..()
 
 // common helper procs for all power machines
-/obj/machinery/power/proc/add_avail(var/amount)
+/obj/structure/machinery/power/proc/add_avail(var/amount)
 	if(powernet)
 		powernet.newavail += amount
 
-/obj/machinery/power/proc/add_load(var/amount)
+/obj/structure/machinery/power/proc/add_load(var/amount)
 	if(powernet)
 		return powernet.draw_power(amount)
 	return 0
 
-/obj/machinery/power/proc/surplus()
+/obj/structure/machinery/power/proc/surplus()
 	if(powernet)
 		return powernet.surplus()
 	else
 		return 0
 
-/obj/machinery/power/proc/avail()
+/obj/structure/machinery/power/proc/avail()
 	if(powernet)
 		return powernet.avail
 	else
@@ -38,7 +38,7 @@
 // returns true if the area has power on given channel (or doesn't require power).
 // defaults to power_channel
 
-/obj/machinery/proc/powered(var/chan = -1)
+/obj/structure/machinery/proc/powered(var/chan = -1)
 
 	if(!src.loc)
 		return 0
@@ -57,7 +57,7 @@
 
 // increment the power usage stats for an area
 
-/obj/machinery/proc/use_power(var/amount, var/chan = -1, var/autocalled = 0) // defaults to power_channel
+/obj/structure/machinery/proc/use_power(var/amount, var/chan = -1, var/autocalled = 0) // defaults to power_channel
 	var/area/A = get_area(src)		// make sure it's in an area
 	if(!A || !isarea(A) || !A.master)
 		return
@@ -70,7 +70,7 @@
 	return 1
 
 //The master_area optional argument can be used to save on a lot of processing if the master area is already known. This is mainly intended for when this proc is called by the master controller.
-/obj/machinery/proc/power_change(var/area/master_area = null)		// called whenever the power settings of the containing area change
+/obj/structure/machinery/proc/power_change(var/area/master_area = null)		// called whenever the power settings of the containing area change
 										// by default, check equipment channel & set flag
 										// can override if needed
 	var/has_power
@@ -112,7 +112,7 @@
 		powernets += PN
 		powernets_by_name[A.powernet_name] = PN
 
-	for(var/obj/machinery/power/M in machines)
+	for(var/obj/structure/machinery/power/M in machines)
 		M.connect_to_network()
 
 	return 1
@@ -138,8 +138,8 @@
 	for(var/AM in T)
 		if(AM == source)	continue			//we don't want to return source
 
-		if(istype(AM,/obj/machinery/power))
-			var/obj/machinery/power/P = AM
+		if(istype(AM,/obj/structure/machinery/power))
+			var/obj/structure/machinery/power/P = AM
 			if(P.powernet == 0)	continue		// exclude APCs which have powernet=0
 
 			if(!unmarked || !P.powernet)		//if unmarked=1 we only return things with no powernet
@@ -214,7 +214,7 @@
 	return .
 
 
-/obj/machinery/power/proc/get_connections()
+/obj/structure/machinery/power/proc/get_connections()
 
 	. = list()
 
@@ -233,7 +233,7 @@
 				. += C
 	return .
 
-/obj/machinery/power/proc/get_indirect_connections()
+/obj/structure/machinery/power/proc/get_indirect_connections()
 	. = list()
 	for(var/obj/structure/cable/C in loc)
 		if(C.powernet)	continue
@@ -241,7 +241,7 @@
 			. += C
 	return .
 
-/obj/machinery/power/proc/connect_to_network()
+/obj/structure/machinery/power/proc/connect_to_network()
 	// First disconnect us from the old powernet
 	if(powernet)
 		powernet.nodes -= src
@@ -258,7 +258,7 @@
 	powernet.nodes += src
 	return 1
 
-/obj/machinery/power/proc/disconnect_from_network()
+/obj/structure/machinery/power/proc/disconnect_from_network()
 	if(!powernet)
 		return 0
 	powernet.nodes -= src
@@ -276,7 +276,7 @@
 
 /area/proc/get_apc()
 	for(var/area/RA in src.related)
-		var/obj/machinery/power/apc/FINDME = locate() in RA
+		var/obj/structure/machinery/power/apc/FINDME = locate() in RA
 		if (FINDME)
 			return FINDME
 
@@ -315,8 +315,8 @@
 		PN = power_source
 	else if(istype(power_source,/obj/item/cell))
 		cell = power_source
-	else if(istype(power_source,/obj/machinery/power/apc))
-		var/obj/machinery/power/apc/apc = power_source
+	else if(istype(power_source,/obj/structure/machinery/power/apc))
+		var/obj/structure/machinery/power/apc/apc = power_source
 		cell = apc.cell
 		if (apc.terminal)
 			PN = apc.terminal.powernet

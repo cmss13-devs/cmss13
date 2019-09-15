@@ -72,7 +72,7 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/security)
 "k" = (
-/obj/machinery/light/small,
+/obj/structure/machinery/light/small,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -96,7 +96,7 @@
 	},
 /area/lv624/lazarus/security)
 "n" = (
-/obj/machinery/deployable/barrier,
+/obj/structure/machinery/deployable/barrier,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor{
 	icon_state = "cult";
@@ -121,7 +121,7 @@
 	},
 /area/lv624/lazarus/armory)
 "r" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor{
@@ -130,7 +130,7 @@
 	},
 /area/lv624/lazarus/security)
 "s" = (
-/obj/machinery/deployable/barrier,
+/obj/structure/machinery/deployable/barrier,
 /turf/open/floor{
 	icon_state = "cult";
 	dir = 2
@@ -143,7 +143,7 @@
 	},
 /area/lv624/lazarus/security)
 "u" = (
-/obj/machinery/power/apc{
+/obj/structure/machinery/power/apc{
 	dir = 8;
 	name = "Secure Vault APC";
 	pixel_x = -28;
@@ -181,7 +181,7 @@
 	},
 /area/lv624/ground/jungle9)
 "A" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /obj/item/stack/sheet/metal,
@@ -191,7 +191,7 @@
 	},
 /area/lv624/lazarus/armory)
 "B" = (
-/obj/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure{
 	locked = 1;
 	name = "\improper Nexus Dome Armory"
 	},

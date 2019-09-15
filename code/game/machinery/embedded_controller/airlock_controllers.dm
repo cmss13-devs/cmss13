@@ -1,5 +1,5 @@
 //base type for controllers of two-door systems
-/obj/machinery/embedded_controller/radio/airlock
+/obj/structure/machinery/embedded_controller/radio/airlock
 	// Setup parameters only
 	radio_filter = RADIO_AIRLOCK
 	var/tag_exterior_door
@@ -12,15 +12,15 @@
 	var/tag_shuttle_mech_sensor
 	var/tag_secure = 0
 
-/obj/machinery/embedded_controller/radio/airlock/initialize()
+/obj/structure/machinery/embedded_controller/radio/airlock/initialize()
 	..()
 	program = new/datum/computer/file/embedded_program/airlock(src)
 
 //Advanced airlock controller for when you want a more versatile airlock controller - useful for turning simple access control rooms into airlocks
-/obj/machinery/embedded_controller/radio/airlock/advanced_airlock_controller
+/obj/structure/machinery/embedded_controller/radio/airlock/advanced_airlock_controller
 	name = "Advanced Airlock Controller"
 
-/obj/machinery/embedded_controller/radio/airlock/advanced_airlock_controller/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/structure/machinery/embedded_controller/radio/airlock/advanced_airlock_controller/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 
 	data = list(
@@ -43,7 +43,7 @@
 
 		ui.set_auto_update(1)
 
-/obj/machinery/embedded_controller/radio/airlock/advanced_airlock_controller/Topic(href, href_list)
+/obj/structure/machinery/embedded_controller/radio/airlock/advanced_airlock_controller/Topic(href, href_list)
 	if(..())
 		return
 
@@ -74,11 +74,11 @@
 
 
 //Airlock controller for airlock control - most airlocks on the station use this
-/obj/machinery/embedded_controller/radio/airlock/airlock_controller
+/obj/structure/machinery/embedded_controller/radio/airlock/airlock_controller
 	name = "Airlock Controller"
 	tag_secure = 1
 
-/obj/machinery/embedded_controller/radio/airlock/airlock_controller/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/structure/machinery/embedded_controller/radio/airlock/airlock_controller/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 
 	data = list(
@@ -99,7 +99,7 @@
 
 		ui.set_auto_update(1)
 
-/obj/machinery/embedded_controller/radio/airlock/airlock_controller/Topic(href, href_list)
+/obj/structure/machinery/embedded_controller/radio/airlock/airlock_controller/Topic(href, href_list)
 	if(..())
 		return
 
@@ -126,7 +126,7 @@
 
 
 //Access controller for door control - used in virology and the like
-/obj/machinery/embedded_controller/radio/airlock/access_controller
+/obj/structure/machinery/embedded_controller/radio/airlock/access_controller
 	icon = 'icons/obj/structures/machinery/airlock_machines.dmi'
 	icon_state = "access_control_standby"
 
@@ -134,7 +134,7 @@
 	tag_secure = 1
 
 
-/obj/machinery/embedded_controller/radio/airlock/access_controller/update_icon()
+/obj/structure/machinery/embedded_controller/radio/airlock/access_controller/update_icon()
 	if(on && program)
 		if(program.memory["processing"])
 			icon_state = "access_control_process"
@@ -143,7 +143,7 @@
 	else
 		icon_state = "access_control_off"
 
-/obj/machinery/embedded_controller/radio/airlock/access_controller/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/structure/machinery/embedded_controller/radio/airlock/access_controller/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 
 	data = list(
@@ -163,7 +163,7 @@
 
 		ui.set_auto_update(1)
 
-/obj/machinery/embedded_controller/radio/airlock/access_controller/Topic(href, href_list)
+/obj/structure/machinery/embedded_controller/radio/airlock/access_controller/Topic(href, href_list)
 	if(..())
 		return
 

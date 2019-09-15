@@ -5,7 +5,7 @@
 var/datum/cameranet/cameranet = new()
 
 /datum/cameranet
-	// The cameras on the map, no matter if they work or not. Updated in obj/machinery/camera/New() and Dispose().
+	// The cameras on the map, no matter if they work or not. Updated in obj/structure/machinery/camera/New() and Dispose().
 	var/list/cameras = list()
 	// The chunks of the map, mapping the areas that the cameras can see.
 	var/list/chunks = list()
@@ -72,19 +72,19 @@ var/datum/cameranet/cameranet = new()
 
 // Removes a camera from a chunk.
 
-/datum/cameranet/proc/removeCamera(obj/machinery/camera/c)
+/datum/cameranet/proc/removeCamera(obj/structure/machinery/camera/c)
 	if(c.can_use())
 		majorChunkChange(c, 0)
 
 // Add a camera to a chunk.
 
-/datum/cameranet/proc/addCamera(obj/machinery/camera/c)
+/datum/cameranet/proc/addCamera(obj/structure/machinery/camera/c)
 	if(c.can_use())
 		majorChunkChange(c, 1)
 
 // Used for Cyborg cameras. Since portable cameras can be in ANY chunk.
 
-/datum/cameranet/proc/updatePortableCamera(obj/machinery/camera/c)
+/datum/cameranet/proc/updatePortableCamera(obj/structure/machinery/camera/c)
 	if(c.can_use())
 		majorChunkChange(c, 1)
 	//else

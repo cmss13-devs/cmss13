@@ -120,8 +120,8 @@ Code:
 
 
 /obj/item/device/assembly/signaler/pulse(var/radio = 0)
-	if(istype(src.loc, /obj/machinery/door/airlock) && src.airlock_wire && src.wires)
-		var/obj/machinery/door/airlock/A = src.loc
+	if(istype(src.loc, /obj/structure/machinery/door/airlock) && src.airlock_wire && src.wires)
+		var/obj/structure/machinery/door/airlock/A = src.loc
 		A.pulse(src.airlock_wire)
 	else if(holder)
 		holder.process_activation(src, 1, 0)

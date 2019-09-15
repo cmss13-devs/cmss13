@@ -24,7 +24,7 @@
 /area/lv624/lazarus/crashed_ship)
 "ad" = (
 /obj/structure/table,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/carpet,
@@ -42,7 +42,7 @@
 /area/lv624/ground/caves/west1)
 "ag" = (
 /obj/structure/table,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /obj/item/weapon/gun/shotgun/pump/cmb,
@@ -51,7 +51,7 @@
 /turf/open/floor/carpet,
 /area/lv624/lazarus/crashed_ship)
 "ah" = (
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
 	id = "Curie_blast";
 	layer = 3.3;
@@ -63,7 +63,7 @@
 	},
 /area/lv624/ground/caves/west1)
 "ai" = (
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
 	id = "Curie_blast";
 	layer = 3.3;
@@ -75,12 +75,12 @@
 	},
 /area/lv624/ground/caves/west1)
 "aj" = (
-/obj/machinery/door/airlock/multi_tile/secure{
+/obj/structure/machinery/door/airlock/multi_tile/secure{
 	dir = 2;
 	locked = 1;
 	name = "Marie Curie Secondary Airlock"
 	},
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
 	id = "Curie_blast";
 	layer = 3.3;
@@ -92,7 +92,7 @@
 	},
 /area/lv624/ground/caves/west1)
 "ak" = (
-/obj/machinery/computer/crew{
+/obj/structure/machinery/computer/crew{
 	icon_state = "crewb";
 	stat = 1
 	},
@@ -102,7 +102,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "al" = (
-/obj/machinery/computer/communications{
+/obj/structure/machinery/computer/communications{
 	icon_state = "commb";
 	stat = 1
 	},
@@ -129,7 +129,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "ao" = (
-/obj/machinery/computer/station_alert{
+/obj/structure/machinery/computer/station_alert{
 	icon_state = "atmosb";
 	stat = 1
 	},
@@ -140,7 +140,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "ap" = (
-/obj/machinery/suit_storage_unit,
+/obj/structure/machinery/suit_storage_unit,
 /turf/open/floor{
 	tag = "icon-whitebluefull";
 	icon_state = "whitebluefull"
@@ -155,7 +155,7 @@
 /area/lv624/lazarus/crashed_ship)
 "as" = (
 /obj/item/ammo_magazine/pistol/b92fs,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
@@ -202,7 +202,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "ax" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
 	},
@@ -245,7 +245,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "aE" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -265,7 +265,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "aH" = (
-/obj/machinery/power/apc{
+/obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Crashed Ship APC";
 	pixel_y = 30;
@@ -290,7 +290,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "aK" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor{
 	tag = "icon-whitebluefull";
 	icon_state = "whitebluefull"
@@ -332,7 +332,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "aP" = (
-/obj/machinery/power/smes/buildable/charged,
+/obj/structure/machinery/power/smes/buildable/charged,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "aR" = (
@@ -340,12 +340,12 @@
 /turf/closed/shuttle,
 /area/lv624/lazarus/crashed_ship)
 "aS" = (
-/obj/machinery/door/airlock/multi_tile/secure{
+/obj/structure/machinery/door/airlock/multi_tile/secure{
 	dir = 2;
 	locked = 1;
 	name = "Marie Curie Secondary Airlock"
 	},
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
 	id = "Curie_blast";
 	layer = 3.3;
@@ -357,7 +357,7 @@
 	},
 /area/lv624/ground/caves/west1)
 "aT" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -393,25 +393,25 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "aW" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/machinery/vending/coffee,
+/obj/structure/machinery/vending/coffee,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "aX" = (
-/obj/machinery/vending/snack,
+/obj/structure/machinery/vending/snack,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "aY" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "aZ" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor{
@@ -520,7 +520,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "bn" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -566,13 +566,13 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "bt" = (
-/obj/machinery/door/airlock/alarmlock{
+/obj/structure/machinery/door/airlock/alarmlock{
 	name = "Kitchen and Meeting Room"
 	},
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "bu" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /obj/structure/bed/chair{
 	dir = 1
 	},
@@ -586,7 +586,7 @@
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "bw" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /obj/structure/bed/chair{
 	dir = 1
 	},
@@ -625,7 +625,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "bA" = (
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/structure/machinery/door/airlock/maintenance_hatch,
 /turf/open/floor/carpet,
 /area/lv624/lazarus/crashed_ship)
 "bB" = (
@@ -641,7 +641,7 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor{
@@ -661,7 +661,7 @@
 /turf/closed/shuttle,
 /area/lv624/lazarus/crashed_ship)
 "bG" = (
-/obj/machinery/door/airlock/multi_tile/secure,
+/obj/structure/machinery/door/airlock/multi_tile/secure,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "bH" = (
@@ -865,7 +865,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "ch" = (
-/obj/machinery/marine_turret/premade/dumb{
+/obj/structure/machinery/marine_turret/premade/dumb{
 	angle = 3;
 	locked = 1
 	},
@@ -894,7 +894,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "ck" = (
-/obj/machinery/floodlight,
+/obj/structure/machinery/floodlight,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "cl" = (
@@ -978,7 +978,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "ct" = (
-/obj/machinery/marine_turret/premade/dumb{
+/obj/structure/machinery/marine_turret/premade/dumb{
 	angle = 3;
 	locked = 1
 	},
@@ -992,7 +992,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "cu" = (
-/obj/machinery/marine_turret/premade/dumb{
+/obj/structure/machinery/marine_turret/premade/dumb{
 	angle = 3;
 	locked = 1
 	},
@@ -1119,7 +1119,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "cK" = (
-/obj/machinery/door/poddoor/four_tile_hor{
+/obj/structure/machinery/door/poddoor/four_tile_hor{
 	density = 0;
 	icon_state = "pdoor0";
 	opacity = 0
@@ -1153,22 +1153,22 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "cO" = (
-/obj/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor{
 	tag = "icon-whitebluefull";
 	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/crashed_ship)
 "cP" = (
-/obj/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "cQ" = (
-/obj/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor/carpet,
 /area/lv624/lazarus/crashed_ship)
 "cR" = (
-/obj/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"

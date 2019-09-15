@@ -113,7 +113,7 @@
 	},
 /area/lv624/ground/river2)
 "mq" = (
-/obj/machinery/colony_floodlight,
+/obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirt,
 /area/lv624/ground/river2)
 "mr" = (

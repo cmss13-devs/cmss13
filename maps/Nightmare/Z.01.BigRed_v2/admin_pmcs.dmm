@@ -14,8 +14,8 @@
 /turf/closed/wall,
 /area/bigredv2/outside/admin_building)
 "af" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/machinery/light{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
@@ -90,7 +90,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "an" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	tag = "icon-darkred2 (WEST)";
 	icon_state = "darkred2";
@@ -124,7 +124,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "ar" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -203,7 +203,7 @@
 /area/bigredv2/outside/admin_building)
 "aB" = (
 /obj/structure/table,
-/obj/machinery/computer3/laptop/secure_data,
+/obj/structure/machinery/computer3/laptop/secure_data,
 /turf/open/floor{
 	tag = "icon-carpet15-15 (WEST)";
 	icon_state = "carpet15-15";
@@ -229,7 +229,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aG" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -239,7 +239,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aH" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -284,7 +284,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/structure/barricade/sandbags/wired,
 /turf/open/floor{
 	tag = "icon-darkred2 (WEST)";
@@ -327,7 +327,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "aS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/effect/landmark/corpsespawner/PMC,
 /turf/open/floor{
 	tag = "icon-darkred2 (WEST)";
@@ -344,7 +344,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aU" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/item/storage/toolbox/syndicate,
@@ -373,7 +373,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aX" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -391,7 +391,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aZ" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -403,7 +403,7 @@
 /area/bigredv2/outside/admin_building)
 "ba" = (
 /obj/structure/table,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
@@ -418,7 +418,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -430,7 +430,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bc" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -442,13 +442,13 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bd" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "be" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/floor{
@@ -458,7 +458,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bf" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -469,7 +469,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bg" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -480,11 +480,11 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bh" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
-/obj/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command{
 	name = "\improper Operations Office";
 	req_access = list()
 	},
@@ -515,24 +515,24 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bl" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "bm" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
-/obj/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command{
 	name = "\improper Operations Meeting Room";
 	req_access = list()
 	},
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "bn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor{
@@ -555,7 +555,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bp" = (
-/obj/machinery/vending/coffee,
+/obj/structure/machinery/vending/coffee,
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "bq" = (

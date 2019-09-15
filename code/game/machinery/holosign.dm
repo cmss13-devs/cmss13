@@ -1,5 +1,5 @@
 ////////////////////HOLOSIGN///////////////////////////////////////
-/obj/machinery/holosign
+/obj/structure/machinery/holosign
 	name = "holosign"
 	desc = "Small wall-mounted holographic projector"
 	icon = 'icons/obj/structures/machinery/holosign.dmi'
@@ -10,30 +10,30 @@
 	var/id = null
 	var/on_icon = "sign_on"
 
-/obj/machinery/holosign/proc/toggle()
+/obj/structure/machinery/holosign/proc/toggle()
 	if(stat & (BROKEN|NOPOWER))
 		return
 	lit = !lit
 	update_icon()
 
-/obj/machinery/holosign/update_icon()
+/obj/structure/machinery/holosign/update_icon()
 	if(!lit)
 		icon_state = "sign_off"
 	else
 		icon_state = on_icon
 
-/obj/machinery/holosign/power_change()
+/obj/structure/machinery/holosign/power_change()
 	if(stat & NOPOWER)
 		lit = 0
 	update_icon()
 
-/obj/machinery/holosign/surgery
+/obj/structure/machinery/holosign/surgery
 	name = "surgery holosign"
 	desc = "Small wall-mounted holographic projector. This one reads SURGERY."
 	on_icon = "surgery"
 ////////////////////SWITCH///////////////////////////////////////
 
-/obj/machinery/holosign_switch
+/obj/structure/machinery/holosign_switch
 	name = "holosign switch"
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "light1"
@@ -45,15 +45,15 @@
 	idle_power_usage = 2
 	active_power_usage = 4
 
-/obj/machinery/holosign_switch/attack_ai(mob/user as mob)
+/obj/structure/machinery/holosign_switch/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/holosign_switch/attackby(obj/item/W, mob/user as mob)
+/obj/structure/machinery/holosign_switch/attackby(obj/item/W, mob/user as mob)
 	if(istype(W, /obj/item/device/detective_scanner))
 		return
 	return src.attack_hand(user)
 
-/obj/machinery/holosign_switch/attack_hand(mob/user as mob)
+/obj/structure/machinery/holosign_switch/attack_hand(mob/user as mob)
 	src.add_fingerprint(usr)
 	if(stat & (NOPOWER|BROKEN))
 		return
@@ -67,7 +67,7 @@
 	else
 		icon_state = "light0"
 
-	for(var/obj/machinery/holosign/M in machines)
+	for(var/obj/structure/machinery/holosign/M in machines)
 		if (M.id == src.id)
 			spawn(0)
 				M.toggle()

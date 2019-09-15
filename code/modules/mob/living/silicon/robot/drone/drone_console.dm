@@ -1,4 +1,4 @@
-/obj/machinery/computer/drone_control
+/obj/structure/machinery/computer/drone_control
 	name = "Maintenance Drone Control"
 	desc = "Used to monitor the station's drone population and the assembler that services them."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
@@ -9,12 +9,12 @@
 	//Used when pinging drones.
 	var/drone_call_area = "Engineering"
 	//Used to enable or disable drone fabrication.
-	var/obj/machinery/drone_fabricator/dronefab
+	var/obj/structure/machinery/drone_fabricator/dronefab
 
-/obj/machinery/computer/drone_control/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/drone_control/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/drone_control/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/drone_control/attack_hand(var/mob/user as mob)
 	if(..())
 		return
 
@@ -41,7 +41,7 @@
 	return
 
 
-/obj/machinery/computer/drone_control/Topic(href, href_list)
+/obj/structure/machinery/computer/drone_control/Topic(href, href_list)
 	if(..())
 		return
 
@@ -84,7 +84,7 @@
 		if(dronefab)
 			return
 
-		for(var/obj/machinery/drone_fabricator/fab in oview(3,src))
+		for(var/obj/structure/machinery/drone_fabricator/fab in oview(3,src))
 
 			if(fab.stat & NOPOWER)
 				continue

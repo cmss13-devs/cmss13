@@ -15,8 +15,8 @@ var/datum/subsystem/mapview/SSmapview
 	NEW_SS_GLOBAL(SSmapview)
 	spawn(20)
 		map_machines = list()
-		for(var/obj/machinery/C in machines)
-			if(istype(C, /obj/machinery/computer/communications) || istype(C, /obj/machinery/prop/almayer/CICmap) || istype(C, /obj/machinery/computer/overwatch))
+		for(var/obj/structure/machinery/C in machines)
+			if(istype(C, /obj/structure/machinery/computer/communications) || istype(C, /obj/structure/machinery/prop/almayer/CICmap) || istype(C, /obj/structure/machinery/computer/overwatch))
 				map_machines += C
 
 ///datum/subsystem/mob/stat_entry()
@@ -42,20 +42,20 @@ var/datum/subsystem/mapview/SSmapview
 	if(RoleAuthority)
 		//if(current_squad_overlay == 5)
 		var/update = 0
-		for(var/obj/machinery/MM in map_machines)
-			var/obj/machinery/computer/communications/C = MM
+		for(var/obj/structure/machinery/MM in map_machines)
+			var/obj/structure/machinery/computer/communications/C = MM
 			if(istype(C) && C.current_mapviewer)
 				overlay_marine_mapview()
 				update = 1
 				C.update_mapview()
 
-			var/obj/machinery/prop/almayer/CICmap/M = MM
+			var/obj/structure/machinery/prop/almayer/CICmap/M = MM
 			if(istype(M) && M.current_viewers.len)
 				if(!update)
 					overlay_marine_mapview()
 				M.update_mapview()
 
-			var/obj/machinery/computer/overwatch/O = MM
+			var/obj/structure/machinery/computer/overwatch/O = MM
 			if(istype(O) && O.current_squad && O.current_mapviewer)
 				overlay_marine_mapview(O.current_squad)
 				O.update_mapview()

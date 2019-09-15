@@ -155,7 +155,7 @@
 /turf/closed/wall/r_wall,
 /area/bigredv2/outside/space_port)
 "v" = (
-/obj/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
 	name = "\improper Mining Operations";
 	req_one_access = list()

@@ -122,10 +122,10 @@
 							return
 						to_chat(src, "Connection verified. Searching for APC in power network.")
 						sleep(50)
-						var/obj/machinery/power/apc/theAPC = null
+						var/obj/structure/machinery/power/apc/theAPC = null
 /*
 						for (var/something in loc)
-							if (istype(something, /obj/machinery/power/apc))
+							if (istype(something, /obj/structure/machinery/power/apc))
 								if (!(something:stat & BROKEN))
 									theAPC = something
 									break
@@ -134,7 +134,7 @@
 						for (PRP=1, PRP<=4, PRP++)
 							var/area/AIarea = get_area(src)
 							for(var/area/A in AIarea.master.related)
-								for (var/obj/machinery/power/apc/APC in A)
+								for (var/obj/structure/machinery/power/apc/APC in A)
 									if (!(APC.stat & BROKEN))
 										theAPC = APC
 										break

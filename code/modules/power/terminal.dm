@@ -3,26 +3,26 @@
 // all conduit connects go to this object instead of the APC
 // using this solves the problem of having the APC in a wall yet also inside an area
 
-/obj/machinery/power/terminal
+/obj/structure/machinery/power/terminal
 	name = "terminal"
 	icon_state = "term"
 	desc = "It's an underfloor wiring terminal for power equipment."
 	level = 1
-	var/obj/machinery/power/master = null
+	var/obj/structure/machinery/power/master = null
 	anchored = 1
 	directwired = 0		// must have a cable on same turf connecting to terminal
 	layer = WIRE_TERMINAL_LAYER
 	unacidable = TRUE //so xenos can't melt visible SMES terminals on the planet to break the SMES
 
 
-/obj/machinery/power/terminal/New()
+/obj/structure/machinery/power/terminal/New()
 	..()
 	var/turf/T = src.loc
 	if(level==1) hide(T.intact_tile)
 	return
 
 
-/obj/machinery/power/terminal/hide(var/i)
+/obj/structure/machinery/power/terminal/hide(var/i)
 	if(i)
 		invisibility = 101
 		icon_state = "term-f"
@@ -32,5 +32,5 @@
 
 // Needed so terminals are not removed from machines list.
 // Powernet rebuilds need this to work properly.
-/obj/machinery/power/terminal/process()
+/obj/structure/machinery/power/terminal/process()
 	return 1

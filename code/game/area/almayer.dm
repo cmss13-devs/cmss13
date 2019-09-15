@@ -28,7 +28,7 @@
 	icon_state = "shuttle"
 	fake_zlevel = 3
 
-/obj/machinery/computer/shuttle_control/almayer/hangar
+/obj/structure/machinery/computer/shuttle_control/almayer/hangar
 	name = "Elevator Console"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "supply"
@@ -38,7 +38,7 @@
 	req_access = null
 	shuttle_tag = "Hangar"
 
-/obj/machinery/computer/shuttle_control/almayer/maintenance
+/obj/structure/machinery/computer/shuttle_control/almayer/maintenance
 	name = "Elevator Console"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"

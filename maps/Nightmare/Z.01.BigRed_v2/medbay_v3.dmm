@@ -17,7 +17,7 @@
 	tag = "icon-gib6";
 	icon_state = "gib6"
 	},
-/obj/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "\improper Medical Clinic";
 	req_one_access = list()
 	},
@@ -27,7 +27,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ae" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "warnwhite";
 	dir = 1
@@ -88,7 +88,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ao" = (
-/obj/machinery/chem_master,
+/obj/structure/machinery/chem_master,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "damaged4";
@@ -110,7 +110,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ar" = (
-/obj/machinery/computer/crew,
+/obj/structure/machinery/computer/crew,
 /turf/open/floor{
 	tag = "icon-whitegreenfull";
 	icon_state = "whitegreenfull";
@@ -119,7 +119,7 @@
 /area/bigredv2/outside/medical)
 "as" = (
 /obj/structure/table,
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/structure/machinery/atmospherics/unary/vent_pump,
 /obj/item/device/autopsy_scanner/objective,
 /turf/open/floor{
 	icon_state = "dark"
@@ -147,7 +147,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aw" = (
-/obj/machinery/chem_dispenser,
+/obj/structure/machinery/chem_dispenser,
 /turf/open/floor{
 	icon_state = "damaged4";
 	dir = 8
@@ -160,7 +160,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ay" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/item/trash/chips,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -217,7 +217,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aF" = (
-/obj/machinery/computer/med_data,
+/obj/structure/machinery/computer/med_data,
 /turf/open/floor{
 	tag = "icon-whitegreenfull";
 	icon_state = "whitegreenfull";
@@ -225,8 +225,8 @@
 	},
 /area/bigredv2/outside/medical)
 "aG" = (
-/obj/machinery/optable,
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/optable,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -239,7 +239,7 @@
 /area/bigredv2/outside/medical)
 "aI" = (
 /obj/structure/bed/roller,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/item/frame/table,
@@ -291,7 +291,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aP" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	on = 1
 	},
@@ -365,7 +365,7 @@
 /area/bigredv2/outside/medical)
 "ba" = (
 /obj/structure/table,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	tag = "icon-tube1 (EAST)";
 	icon_state = "tube1";
 	dir = 4
@@ -379,7 +379,7 @@
 	},
 /area/bigredv2/outside/medical)
 "bb" = (
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/structure/machinery/atmospherics/unary/vent_pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -392,7 +392,7 @@
 	},
 /area/bigredv2/outside/medical)
 "bd" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor{
@@ -400,7 +400,7 @@
 	},
 /area/bigredv2/outside/medical)
 "bf" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
 /turf/open/floor{
 	icon_state = "damaged5";
 	dir = 8
@@ -422,7 +422,7 @@
 	},
 /area/bigredv2/outside/medical)
 "bi" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "damaged5";
 	dir = 8
@@ -446,7 +446,7 @@
 	},
 /area/bigredv2/outside/medical)
 "bl" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -465,8 +465,8 @@
 	},
 /area/bigredv2/outside/medical)
 "bo" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Medical Clinic";
 	req_one_access = list()
@@ -486,7 +486,7 @@
 /obj/effect/landmark{
 	name = "crap_item"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -523,14 +523,14 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "damaged3";
 	dir = 8
 	},
 /area/bigredv2/outside/medical)
 "bw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "damaged2";
 	dir = 8
@@ -558,7 +558,7 @@
 	},
 /area/bigredv2/outside/medical)
 "bA" = (
-/obj/machinery/chem_dispenser,
+/obj/structure/machinery/chem_dispenser,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -572,7 +572,7 @@
 	},
 /area/bigredv2/outside/medical)
 "bC" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/item/stack/cable_coil{
 	amount = 1;
 	icon_state = "coil2"
@@ -598,7 +598,7 @@
 	},
 /area/bigredv2/outside/medical)
 "bF" = (
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 2;
 	network = list("interrogation")
 	},
@@ -642,7 +642,7 @@
 	},
 /area/bigredv2/outside/medical)
 "bL" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -652,11 +652,11 @@
 	},
 /area/bigredv2/outside/medical)
 "bM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -667,13 +667,13 @@
 	},
 /area/bigredv2/outside/medical)
 "bN" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
 /area/bigredv2/outside/medical)
 "bO" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor{
@@ -681,7 +681,7 @@
 	},
 /area/bigredv2/outside/medical)
 "bP" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor{
@@ -689,7 +689,7 @@
 	},
 /area/bigredv2/outside/medical)
 "bQ" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor{
 	icon_state = "damaged5";
 	dir = 8
@@ -703,7 +703,7 @@
 	},
 /area/bigredv2/outside/medical)
 "bS" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Medical Clinic Scanner Room";
 	req_one_access = list()
 	},
@@ -712,7 +712,7 @@
 	},
 /area/bigredv2/outside/medical)
 "bT" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -722,7 +722,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/medical)
 "bW" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -739,7 +739,7 @@
 	},
 /area/bigredv2/outside/medical)
 "bY" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "white"
@@ -765,8 +765,8 @@
 	},
 /area/bigredv2/outside/medical)
 "cc" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Medical Clinic CMO's Office";
 	req_one_access = list()
@@ -777,7 +777,7 @@
 /area/bigredv2/outside/medical)
 "cd" = (
 /obj/effect/decal/cleanable/blood,
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -788,7 +788,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cf" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/item/stack/sheet/metal{
 	amount = 1
 	},
@@ -827,7 +827,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ck" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/item/stack/cable_coil{
 	amount = 1;
 	icon_state = "coil2"
@@ -843,14 +843,14 @@
 	},
 /area/bigredv2/outside/medical)
 "cm" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/medical)
 "cn" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/item/stack/rods,
@@ -867,7 +867,7 @@
 /area/bigredv2/outside/medical)
 "cp" = (
 /obj/structure/table/reinforced,
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -901,7 +901,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cu" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "damaged4";
 	dir = 8
@@ -915,7 +915,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark{
 	name = "crap_item"
@@ -942,7 +942,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cz" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 6
 	},
 /obj/item/shard,
@@ -953,7 +953,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cA" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -966,7 +966,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cB" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -980,7 +980,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cC" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -991,7 +991,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cD" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1006,7 +1006,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cE" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1020,7 +1020,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cF" = (
-/obj/machinery/vending/medical,
+/obj/structure/machinery/vending/medical,
 /turf/open/floor{
 	tag = "icon-whitegreen (NORTH)";
 	icon_state = "whitegreen";
@@ -1028,7 +1028,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cH" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
 /obj/item/stack/cable_coil{
 	amount = 1;
 	icon_state = "coil2"
@@ -1040,7 +1040,7 @@
 /area/bigredv2/outside/medical)
 "cI" = (
 /obj/effect/decal/cleanable/blood,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1054,7 +1054,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cJ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1068,7 +1068,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cK" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1085,7 +1085,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cL" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
 /obj/item/stack/cable_coil{
 	amount = 1;
 	icon_state = "coil2"
@@ -1095,7 +1095,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1104,7 +1104,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cN" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1140,7 +1140,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cT" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "damaged2";
@@ -1149,7 +1149,7 @@
 /area/bigredv2/outside/medical)
 "cU" = (
 /obj/effect/decal/cleanable/blood,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1159,7 +1159,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cV" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "white"
@@ -1189,7 +1189,7 @@
 /area/bigredv2/outside/medical)
 "cZ" = (
 /obj/effect/decal/cleanable/blood,
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/effect/landmark/corpsespawner/PMC,
 /turf/open/floor{
 	icon_state = "damaged5";
@@ -1205,7 +1205,7 @@
 	},
 /area/bigredv2/outside/medical)
 "dc" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1239,7 +1239,7 @@
 	},
 /area/bigredv2/outside/medical)
 "dh" = (
-/obj/machinery/vending/medical,
+/obj/structure/machinery/vending/medical,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1274,7 +1274,7 @@
 	},
 /area/bigredv2/outside/medical)
 "dm" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "damaged3";
@@ -1282,7 +1282,7 @@
 	},
 /area/bigredv2/outside/medical)
 "dn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1296,7 +1296,7 @@
 	},
 /area/bigredv2/outside/medical)
 "do" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 9
 	},
 /obj/item/ammo_casing/bullet,
@@ -1341,7 +1341,7 @@
 /area/bigredv2/outside/medical)
 "dt" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	tag = "icon-tube1 (EAST)";
 	icon_state = "tube1";
 	dir = 4
@@ -1384,7 +1384,7 @@
 	},
 /area/bigredv2/outside/medical)
 "dx" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1401,7 +1401,7 @@
 	},
 /area/bigredv2/outside/medical)
 "dz" = (
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 2;
 	network = list("interrogation")
 	},
@@ -1420,7 +1420,7 @@
 	},
 /area/bigredv2/outside/medical)
 "dB" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/floor/plating{
@@ -1428,7 +1428,7 @@
 	},
 /area/bigredv2/outside/medical)
 "dC" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1449,7 +1449,7 @@
 	},
 /area/bigredv2/outside/medical)
 "dE" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1459,7 +1459,7 @@
 /area/bigredv2/outside/medical)
 "dF" = (
 /obj/effect/decal/cleanable/blood,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1468,7 +1468,7 @@
 	},
 /area/bigredv2/outside/medical)
 "dG" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1480,7 +1480,7 @@
 	},
 /area/bigredv2/outside/medical)
 "dH" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1490,7 +1490,7 @@
 	},
 /area/bigredv2/outside/medical)
 "dI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1561,7 +1561,7 @@
 /area/bigredv2/outside/medical)
 "dU" = (
 /obj/structure/bed/chair,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor{
@@ -1569,14 +1569,14 @@
 	},
 /area/bigredv2/outside/medical)
 "dV" = (
-/obj/machinery/bodyscanner,
+/obj/structure/machinery/bodyscanner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "white"
 	},
 /area/bigredv2/outside/medical)
 "dW" = (
-/obj/machinery/body_scanconsole,
+/obj/structure/machinery/body_scanconsole,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	tag = "icon-whitegreen (SOUTHEAST)";
@@ -1606,13 +1606,13 @@
 	},
 /area/bigredv2/outside/medical)
 "ea" = (
-/obj/machinery/vending/MarineMed/Blood,
+/obj/structure/machinery/vending/MarineMed/Blood,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/medical)
 "eb" = (
-/obj/machinery/sleeper,
+/obj/structure/machinery/sleeper,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "white"
@@ -1626,7 +1626,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ed" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1638,7 +1638,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ee" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1669,7 +1669,7 @@
 /area/bigredv2/outside/medical)
 "eg" = (
 /obj/item/device/healthanalyzer,
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/structure/machinery/atmospherics/unary/vent_pump,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -1683,14 +1683,14 @@
 	},
 /area/bigredv2/outside/medical)
 "ei" = (
-/obj/machinery/sleep_console,
+/obj/structure/machinery/sleep_console,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "white"
 	},
 /area/bigredv2/outside/medical)
 "ej" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 8
 	},
 /obj/item/ammo_casing/bullet,
@@ -1699,11 +1699,11 @@
 	},
 /area/bigredv2/outside/medical)
 "ek" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Medical Clinic Storage";
 	req_one_access = list()
 	},
@@ -1713,7 +1713,7 @@
 /area/bigredv2/outside/medical)
 "el" = (
 /obj/item/clothing/glasses/meson,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1724,7 +1724,7 @@
 /area/bigredv2/outside/medical)
 "em" = (
 /obj/item/reagent_container/pill/happy,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor{
@@ -1732,7 +1732,7 @@
 	},
 /area/bigredv2/outside/medical)
 "en" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Medical Clinic Storage";
 	req_one_access = list()
 	},
@@ -1741,11 +1741,11 @@
 	},
 /area/bigredv2/outside/medical)
 "eo" = (
-/obj/machinery/vending/snack,
-/obj/machinery/light{
+/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1758,7 +1758,7 @@
 	},
 /area/bigredv2/outside/medical)
 "eq" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	tag = "icon-whitegreenfull";
@@ -1792,7 +1792,7 @@
 /area/bigredv2/outside/medical)
 "eu" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/door_control{
+/obj/structure/machinery/door_control{
 	id = "Medical";
 	name = "Storm Shutters";
 	pixel_x = 0;
@@ -1875,7 +1875,7 @@
 /area/bigredv2/outside/medical)
 "eD" = (
 /obj/structure/table/reinforced,
-/obj/machinery/computer/objective,
+/obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -1896,7 +1896,7 @@
 	},
 /area/bigredv2/outside/medical)
 "eG" = (
-/obj/machinery/bioprinter{
+/obj/structure/machinery/bioprinter{
 	stored_metal = 1000
 	},
 /turf/open/floor{
@@ -1906,7 +1906,7 @@
 	},
 /area/bigredv2/outside/medical)
 "eH" = (
-/obj/machinery/optable,
+/obj/structure/machinery/optable,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/corpsespawner,
 /obj/item/reagent_container/food/snacks/margheritaslice,
@@ -1936,7 +1936,7 @@
 	},
 /area/bigredv2/outside/medical)
 "eL" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/item/shard,
@@ -1946,7 +1946,7 @@
 	},
 /area/bigredv2/outside/medical)
 "eM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark{
 	name = "crap_item"
@@ -2019,8 +2019,8 @@
 	},
 /area/bigredv2/outside/medical)
 "eV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "\improper Medical Clinic";
 	req_one_access = list()
 	},
@@ -2036,7 +2036,7 @@
 	},
 /area/bigredv2/outside/medical)
 "eX" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor{
@@ -2054,7 +2054,7 @@
 	},
 /area/bigredv2/outside/medical)
 "eZ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor{
@@ -2063,11 +2063,11 @@
 	},
 /area/bigredv2/outside/medical)
 "fa" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Medical Clinic Operating Theatre";
 	req_one_access = list()
 	},
@@ -2077,7 +2077,7 @@
 	},
 /area/bigredv2/outside/medical)
 "fb" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 4
 	},
 /obj/item/ammo_casing/bullet,
@@ -2151,7 +2151,7 @@
 	},
 /area/bigredv2/outside/medical)
 "fk" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 5
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -2161,7 +2161,7 @@
 	},
 /area/bigredv2/outside/medical)
 "fl" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	on = 1
 	},
@@ -2180,7 +2180,7 @@
 /area/bigredv2/outside/c)
 "fn" = (
 /obj/structure/bed,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	tag = "icon-tube1 (EAST)";
 	icon_state = "tube1";
 	dir = 4
@@ -2190,7 +2190,7 @@
 	},
 /area/bigredv2/outside/medical)
 "fo" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /obj/item/tool/surgery/cautery,
 /turf/open/floor{
 	tag = "icon-whitebluefull (NORTHEAST)";
@@ -2199,7 +2199,7 @@
 	},
 /area/bigredv2/outside/medical)
 "fp" = (
-/obj/machinery/bodyscanner,
+/obj/structure/machinery/bodyscanner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "platingdmg1"

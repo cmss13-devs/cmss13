@@ -1,4 +1,4 @@
-/obj/machinery/chem_dispenser
+/obj/structure/machinery/chem_dispenser
 	name = "chem dispenser"
 	density = 1
 	anchored = 1
@@ -20,7 +20,7 @@
 	"sodium","aluminum","silicon","phosphorus","sulfur","chlorine","potassium","iron",
 	"copper","mercury","radium","water","ethanol","sugar","sacid","tungsten")
 
-/obj/machinery/chem_dispenser/proc/recharge()
+/obj/structure/machinery/chem_dispenser/proc/recharge()
 	if(stat & (BROKEN|NOPOWER)) return
 	var/addenergy = 10
 	var/oldenergy = energy
@@ -29,25 +29,25 @@
 		use_power(1500) // This thing uses up alot of power (this is still low as shit for creating reagents from thin air)
 		nanomanager.update_uis(src) // update all UIs attached to src
 
-/obj/machinery/chem_dispenser/power_change()
+/obj/structure/machinery/chem_dispenser/power_change()
 	..()
 	nanomanager.update_uis(src) // update all UIs attached to src
 
-/obj/machinery/chem_dispenser/process()
+/obj/structure/machinery/chem_dispenser/process()
 	if(recharged <= 0)
 		recharge()
 		recharged = 15
 	else
 		recharged -= 1
 
-/obj/machinery/chem_dispenser/New()
+/obj/structure/machinery/chem_dispenser/New()
 	..()
 	recharge()
 	dispensable_reagents = sortList(dispensable_reagents)
 	start_processing()
 
 
-/obj/machinery/chem_dispenser/ex_act(severity)
+/obj/structure/machinery/chem_dispenser/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
@@ -58,7 +58,7 @@
 			return
 
 
-/obj/machinery/chem_dispenser/on_stored_atom_del(atom/movable/AM)
+/obj/structure/machinery/chem_dispenser/on_stored_atom_del(atom/movable/AM)
 	if(AM == beaker)
 		beaker = null
 
@@ -72,7 +72,7 @@
   *
   * @return nothing
   */
-/obj/machinery/chem_dispenser/ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/chem_dispenser/ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null, var/force_open = 0)
 	if(stat & (BROKEN|NOPOWER)) return
 	if(user.stat || user.is_mob_restrained()) return
 
@@ -116,7 +116,7 @@
 		// open the new ui window
 		ui.open()
 
-/obj/machinery/chem_dispenser/Topic(href, href_list)
+/obj/structure/machinery/chem_dispenser/Topic(href, href_list)
 	if(stat & (NOPOWER|BROKEN))
 		return 0 // don't update UIs attached to this object
 
@@ -146,7 +146,7 @@
 	attack_hand(usr)
 	return 1 // update UIs attached to this object
 
-/obj/machinery/chem_dispenser/attackby(var/obj/item/reagent_container/B as obj, var/mob/user as mob)
+/obj/structure/machinery/chem_dispenser/attackby(var/obj/item/reagent_container/B as obj, var/mob/user as mob)
 	if(isrobot(user))
 		return
 	if(src.beaker)
@@ -161,10 +161,10 @@
 			nanomanager.update_uis(src) // update all UIs attached to src
 		return
 
-/obj/machinery/chem_dispenser/attack_ai(mob/user as mob)
+/obj/structure/machinery/chem_dispenser/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/chem_dispenser/attack_hand(mob/user as mob)
+/obj/structure/machinery/chem_dispenser/attack_hand(mob/user as mob)
 	if(stat & BROKEN)
 		return
 	var/mob/living/carbon/human/H = user
@@ -173,7 +173,7 @@
 		return
 	ui_interact(user)
 
-/obj/machinery/chem_dispenser/soda
+/obj/structure/machinery/chem_dispenser/soda
 	icon_state = "soda_dispenser"
 	name = "soda fountain"
 	desc = "A drink fabricating machine, capable of producing many sugary drinks with just one touch."
@@ -184,7 +184,7 @@
 	max_energy = 100
 	dispensable_reagents = list("water","ice","coffee","cream","tea","icetea","cola","spacemountainwind","dr_gibb","space_up","tonic","sodawater","lemon_lime","sugar","orangejuice","limejuice","watermelonjuice")
 
-/obj/machinery/chem_dispenser/soda/attackby(var/obj/item/B as obj, var/mob/user as mob)
+/obj/structure/machinery/chem_dispenser/soda/attackby(var/obj/item/B as obj, var/mob/user as mob)
 	..()
 	if(istype(B, /obj/item/device/multitool))
 		if(hackedcheck == 0)
@@ -199,7 +199,7 @@
 			hackedcheck = 0
 			return
 
-/obj/machinery/chem_dispenser/beer
+/obj/structure/machinery/chem_dispenser/beer
 	icon_state = "booze_dispenser"
 	name = "booze dispenser"
 	ui_title = "Booze Portal 9001"
@@ -210,7 +210,7 @@
 	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
 	dispensable_reagents = list("lemon_lime","sugar","orangejuice","limejuice","sodawater","tonic","beer","kahlua","whiskey","sake","wine","vodka","gin","rum","tequilla","vermouth","cognac","ale","mead")
 
-/obj/machinery/chem_dispenser/beer/attackby(var/obj/item/B as obj, var/mob/user as mob)
+/obj/structure/machinery/chem_dispenser/beer/attackby(var/obj/item/B as obj, var/mob/user as mob)
 	..()
 
 	if(istype(B, /obj/item/device/multitool))
@@ -228,7 +228,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/obj/machinery/chem_master
+/obj/structure/machinery/chem_master
 	name = "ChemMaster 3000"
 	density = 1
 	anchored = 1
@@ -248,13 +248,13 @@
 	var/client/has_sprites = list()
 	var/max_pill_count = 20
 
-/obj/machinery/chem_master/New()
+/obj/structure/machinery/chem_master/New()
 	..()
 	var/datum/reagents/R = new/datum/reagents(240)
 	reagents = R
 	R.my_atom = src
 
-/obj/machinery/chem_master/ex_act(severity)
+/obj/structure/machinery/chem_master/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
@@ -264,7 +264,7 @@
 			qdel(src)
 			return
 
-/obj/machinery/chem_master/attackby(obj/item/B, mob/living/user)
+/obj/structure/machinery/chem_master/attackby(obj/item/B, mob/living/user)
 
 	if(istype(B, /obj/item/reagent_container/glass))
 
@@ -289,7 +289,7 @@
 		updateUsrDialog()
 	return
 
-/obj/machinery/chem_master/proc/transfer_chemicals(var/obj/dest, var/obj/source, var/amount, var/reagent_id)
+/obj/structure/machinery/chem_master/proc/transfer_chemicals(var/obj/dest, var/obj/source, var/amount, var/reagent_id)
 	if(istype(source))
 		if(amount > 0 && source.reagents && amount <= source.reagents.maximum_volume)
 			if(!istype(dest))
@@ -297,7 +297,7 @@
 			else if(dest.reagents)
 				source.reagents.trans_id_to(dest, reagent_id, amount)
 
-/obj/machinery/chem_master/Topic(href, href_list)
+/obj/structure/machinery/chem_master/Topic(href, href_list)
 	if(stat & (BROKEN|NOPOWER)) return
 	if(!ishuman(usr))
 		return
@@ -445,7 +445,7 @@
 	//src.updateUsrDialog()
 	attack_hand(user)
 
-/obj/machinery/chem_master/attack_hand(mob/living/user)
+/obj/structure/machinery/chem_master/attack_hand(mob/living/user)
 	if(stat & BROKEN)
 		return
 	user.set_interaction(src)
@@ -510,7 +510,7 @@
 	onclose(user, "chem_master")
 	return
 
-/obj/machinery/chem_master/condimaster
+/obj/structure/machinery/chem_master/condimaster
 	name = "CondiMaster 3000"
 	condi = 1
 
@@ -518,7 +518,7 @@
 ////////////////////////////////////////////////////////////////////////
 
 //this machine does nothing
-/obj/machinery/disease2/diseaseanalyser
+/obj/structure/machinery/disease2/diseaseanalyser
 	name = "Disease Analyser"
 	icon = 'icons/obj/structures/machinery/virology.dmi'
 	icon_state = "analyser"
@@ -526,7 +526,7 @@
 	density = 1
 
 
-/obj/machinery/computer/pandemic
+/obj/structure/machinery/computer/pandemic
 	name = "PanD.E.M.I.C 2200"
 	density = 1
 	anchored = 1
@@ -540,12 +540,12 @@
 	var/list/discovered_diseases = list()
 
 
-/obj/machinery/computer/pandemic/set_broken()
+/obj/structure/machinery/computer/pandemic/set_broken()
 	icon_state = (beaker?"mixer1_b":"mixer0_b")
 	stat |= BROKEN
 
 
-/obj/machinery/computer/pandemic/power_change()
+/obj/structure/machinery/computer/pandemic/power_change()
 	..()
 	if(stat & BROKEN)
 		icon_state = (beaker?"mixer1_b":"mixer0_b")
@@ -558,7 +558,7 @@
 			icon_state = (beaker?"mixer1_nopower":"mixer0_nopower")
 
 
-/obj/machinery/computer/pandemic/Topic(href, href_list)
+/obj/structure/machinery/computer/pandemic/Topic(href, href_list)
 	if(stat & (NOPOWER|BROKEN)) return
 	if(!ishuman(usr))
 		return
@@ -666,7 +666,7 @@
 	add_fingerprint(user)
 	return
 
-/obj/machinery/computer/pandemic/attack_hand(mob/living/user)
+/obj/structure/machinery/computer/pandemic/attack_hand(mob/living/user)
 	if(..())
 		return
 	user.set_interaction(src)
@@ -762,7 +762,7 @@
 	return
 
 
-/obj/machinery/computer/pandemic/attackby(obj/item/I, mob/living/user)
+/obj/structure/machinery/computer/pandemic/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/reagent_container/glass))
 		if(stat & (NOPOWER|BROKEN)) return
 		if(beaker)
@@ -780,7 +780,7 @@
 	return
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
-/obj/machinery/reagentgrinder
+/obj/structure/machinery/reagentgrinder
 
 	name = "All-In-One Grinder"
 	icon = 'icons/obj/structures/machinery/kitchen.dmi'
@@ -839,17 +839,17 @@
 
 	var/list/holdingitems = list()
 
-/obj/machinery/reagentgrinder/New()
+/obj/structure/machinery/reagentgrinder/New()
 	..()
 	beaker = new /obj/item/reagent_container/glass/beaker/large(src)
 	return
 
-/obj/machinery/reagentgrinder/update_icon()
+/obj/structure/machinery/reagentgrinder/update_icon()
 	icon_state = "juicer"+num2text(!isnull(beaker))
 	return
 
 
-/obj/machinery/reagentgrinder/attackby(obj/item/O, mob/living/user)
+/obj/structure/machinery/reagentgrinder/attackby(obj/item/O, mob/living/user)
 
 	if (istype(O,/obj/item/reagent_container/glass) || \
 		istype(O,/obj/item/reagent_container/food/drinks/drinkingglass) || \
@@ -904,11 +904,11 @@
 	updateUsrDialog()
 	return 0
 
-/obj/machinery/reagentgrinder/attack_hand(mob/living/user)
+/obj/structure/machinery/reagentgrinder/attack_hand(mob/living/user)
 	user.set_interaction(src)
 	interact(user)
 
-/obj/machinery/reagentgrinder/interact(mob/living/user) // The microwave Menu
+/obj/structure/machinery/reagentgrinder/interact(mob/living/user) // The microwave Menu
 	var/is_chamber_empty = 0
 	var/is_beaker_ready = 0
 	var/processing_chamber = ""
@@ -954,7 +954,7 @@
 	return
 
 
-/obj/machinery/reagentgrinder/Topic(href, href_list)
+/obj/structure/machinery/reagentgrinder/Topic(href, href_list)
 	if(..())
 		return
 	usr.set_interaction(src)
@@ -970,7 +970,7 @@
 	updateUsrDialog()
 	return
 
-/obj/machinery/reagentgrinder/proc/detach()
+/obj/structure/machinery/reagentgrinder/proc/detach()
 
 	if (usr.stat != 0)
 		return
@@ -980,7 +980,7 @@
 	beaker = null
 	update_icon()
 
-/obj/machinery/reagentgrinder/proc/eject()
+/obj/structure/machinery/reagentgrinder/proc/eject()
 
 	if (usr.stat != 0)
 		return
@@ -992,28 +992,28 @@
 		holdingitems -= O
 	holdingitems = list()
 
-/obj/machinery/reagentgrinder/proc/is_allowed(var/obj/item/reagent_container/O)
+/obj/structure/machinery/reagentgrinder/proc/is_allowed(var/obj/item/reagent_container/O)
 	for (var/i in blend_items)
 		if(istype(O, i))
 			return 1
 	return 0
 
-/obj/machinery/reagentgrinder/proc/get_allowed_by_id(var/obj/item/grown/O)
+/obj/structure/machinery/reagentgrinder/proc/get_allowed_by_id(var/obj/item/grown/O)
 	for (var/i in blend_items)
 		if (istype(O, i))
 			return blend_items[i]
 
-/obj/machinery/reagentgrinder/proc/get_allowed_snack_by_id(var/obj/item/reagent_container/food/snacks/O)
+/obj/structure/machinery/reagentgrinder/proc/get_allowed_snack_by_id(var/obj/item/reagent_container/food/snacks/O)
 	for(var/i in blend_items)
 		if(istype(O, i))
 			return blend_items[i]
 
-/obj/machinery/reagentgrinder/proc/get_allowed_juice_by_id(var/obj/item/reagent_container/food/snacks/O)
+/obj/structure/machinery/reagentgrinder/proc/get_allowed_juice_by_id(var/obj/item/reagent_container/food/snacks/O)
 	for(var/i in juice_items)
 		if(istype(O, i))
 			return juice_items[i]
 
-/obj/machinery/reagentgrinder/proc/get_grownweapon_amount(var/obj/item/grown/O)
+/obj/structure/machinery/reagentgrinder/proc/get_grownweapon_amount(var/obj/item/grown/O)
 	if (!istype(O))
 		return 5
 	else if (O.potency == -1)
@@ -1021,7 +1021,7 @@
 	else
 		return round(O.potency)
 
-/obj/machinery/reagentgrinder/proc/get_juice_amount(var/obj/item/reagent_container/food/snacks/grown/O)
+/obj/structure/machinery/reagentgrinder/proc/get_juice_amount(var/obj/item/reagent_container/food/snacks/grown/O)
 	if (!istype(O))
 		return 5
 	else if (O.potency == -1)
@@ -1029,11 +1029,11 @@
 	else
 		return round(5*sqrt(O.potency))
 
-/obj/machinery/reagentgrinder/proc/remove_object(var/obj/item/O)
+/obj/structure/machinery/reagentgrinder/proc/remove_object(var/obj/item/O)
 	holdingitems -= O
 	qdel(O)
 
-/obj/machinery/reagentgrinder/proc/juice()
+/obj/structure/machinery/reagentgrinder/proc/juice()
 	power_change()
 	if(stat & (NOPOWER|BROKEN))
 		return
@@ -1065,7 +1065,7 @@
 
 		remove_object(O)
 
-/obj/machinery/reagentgrinder/proc/grind()
+/obj/structure/machinery/reagentgrinder/proc/grind()
 
 	power_change()
 	if(stat & (NOPOWER|BROKEN))
@@ -1162,7 +1162,7 @@
 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
-/obj/machinery/reagent_analyzer
+/obj/structure/machinery/reagent_analyzer
 	name = "Advanced XRF Scanner"
 	desc = "A spectrometer that bombards a sample in high energy radiation to detect emitted fluorescent x-ray patterns. By using the emission spectrum of the sample it can identify its chemical composition."
 	icon = 'icons/obj/structures/machinery/chemical_machines.dmi'
@@ -1176,7 +1176,7 @@
 	var/processing = 0
 	var/status = 0
 
-/obj/machinery/reagent_analyzer/attackby(obj/item/B, mob/living/user)
+/obj/structure/machinery/reagent_analyzer/attackby(obj/item/B, mob/living/user)
 	if(processing)
 		to_chat(user, SPAN_WARNING("The [src] is still processing!"))
 		return
@@ -1228,7 +1228,7 @@
 		to_chat(user, SPAN_WARNING("[src] only accepts samples in vials."))
 		return
 
-/obj/machinery/reagent_analyzer/process()
+/obj/structure/machinery/reagent_analyzer/process()
 	status++
 	if(status <= 3)
 		return
@@ -1254,7 +1254,7 @@
 	sample_number++
 	return
 
-/obj/machinery/reagent_analyzer/attack_hand(mob/user as mob)
+/obj/structure/machinery/reagent_analyzer/attack_hand(mob/user as mob)
 	if(processing)
 		to_chat(user, SPAN_WARNING("The [src] is still processing!"))
 		return
@@ -1267,7 +1267,7 @@
 	icon_state = "reagent_analyzer"
 	return
 
-/obj/machinery/reagent_analyzer/proc/print_report(var/result, var/reason)
+/obj/structure/machinery/reagent_analyzer/proc/print_report(var/result, var/reason)
 	var/obj/item/paper/report = new /obj/item/paper/(src.loc)
 	report.name = "Analysis "
 	report.icon_state = "paper_wy_words"
@@ -1324,7 +1324,7 @@
 		report.info += text("<B>Reason for error:</B><BR><I>[]</I><BR>\n",reason)
 	report.info += text("<BR><HR><font size = \"1\"><I>This report was automatically printed by the Advanced X-Ray Fluorescence Scanner.<BR>The USS Almayer,  []/2186, []</I></font><BR>\n<span class=\"paper_field\"></span>",time2text(world.timeofday, "MM/DD"),worldtime2text())
 	
-/obj/machinery/centrifuge
+/obj/structure/machinery/centrifuge
 	name = "Chemical Centrifuge"
 	desc = "A machine that uses centrifugal forces to separate fluids of different densities. Needs a glass container for input and a vialbox for output."
 	icon = 'icons/obj/structures/machinery/chemical_machines.dmi'
@@ -1337,7 +1337,7 @@
 	var/processing = 0
 	var/status = 0
 
-/obj/machinery/centrifuge/attackby(obj/item/B, mob/living/user)
+/obj/structure/machinery/centrifuge/attackby(obj/item/B, mob/living/user)
 	if(processing)
 		to_chat(user, SPAN_WARNING("The [src] is still running!"))
 		return
@@ -1378,7 +1378,7 @@
 	else
 		to_chat(user, SPAN_NOTICE("You insert [B] into the [src]."))
 
-/obj/machinery/centrifuge/attack_hand(mob/user as mob)
+/obj/structure/machinery/centrifuge/attack_hand(mob/user as mob)
 	if(processing)
 		to_chat(user, SPAN_WARNING("The [src] is still running!"))
 		return
@@ -1400,7 +1400,7 @@
 		icon_state = "centrifuge_empty_open"
 	return
 
-/obj/machinery/centrifuge/process()
+/obj/structure/machinery/centrifuge/process()
 	status++
 	if(status <= 1)
 		centrifuge()
@@ -1411,7 +1411,7 @@
 		stop_processing()
 		return
 
-/obj/machinery/centrifuge/proc/centrifuge()
+/obj/structure/machinery/centrifuge/proc/centrifuge()
 	if(!output_container.contents.len) return //Is output empty?
 	
 	var/initial_reagents = input_container.reagents.reagent_list.len

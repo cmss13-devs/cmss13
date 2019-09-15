@@ -1,12 +1,12 @@
 /datum/pipe_network
 	var/volume = 0	//caches the total volume for atmos machines to use in gas calculations
 
-	var/list/obj/machinery/atmospherics/normal_members = list()
+	var/list/obj/structure/machinery/atmospherics/normal_members = list()
 	var/list/datum/pipeline/line_members = list()
 		//membership roster to go through for updates and what not
 
 
-/datum/pipe_network/proc/build_network(obj/machinery/atmospherics/start_normal, obj/machinery/atmospherics/reference)
+/datum/pipe_network/proc/build_network(obj/structure/machinery/atmospherics/start_normal, obj/structure/machinery/atmospherics/reference)
 	//Purpose: Generate membership roster
 	//Notes: Assuming that members will add themselves to appropriate roster in network_expand()
 
@@ -29,7 +29,7 @@
 
 	line_members |= giver.line_members
 
-	for(var/obj/machinery/atmospherics/normal_member in giver.normal_members)
+	for(var/obj/structure/machinery/atmospherics/normal_member in giver.normal_members)
 		normal_member.reassign_network(giver, src)
 
 	for(var/datum/pipeline/line_member in giver.line_members)

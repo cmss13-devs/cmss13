@@ -4,7 +4,7 @@
 // tl;dr: it's magnets lol
 // This was created for firing ranges, but I suppose this could have other applications - Doohl
 
-/obj/machinery/magnetic_module
+/obj/structure/machinery/magnetic_module
 
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "floor_magnet-f"
@@ -193,7 +193,7 @@
 
 
 
-/obj/machinery/magnetic_controller
+/obj/structure/machinery/magnetic_controller
 	name = "Magnetic Control Console"
 	icon = 'icons/obj/structures/machinery/airlock_machines.dmi' // uses an airlock machine icon, THINK GREEN HELP THE ENVIRONMENT - RECYCLING!
 	icon_state = "airlock_control_standby"
@@ -222,7 +222,7 @@
 		..()
 
 		if(autolink)
-			for(var/obj/machinery/magnetic_module/M in machines)
+			for(var/obj/structure/machinery/magnetic_module/M in machines)
 				if(M.freq == frequency && M.code == code)
 					magnets.Add(M)
 
@@ -238,7 +238,7 @@
 
 	process()
 		if(magnets.len == 0 && autolink)
-			for(var/obj/machinery/magnetic_module/M in machines)
+			for(var/obj/structure/machinery/magnetic_module/M in machines)
 				if(M.freq == frequency && M.code == code)
 					magnets.Add(M)
 
@@ -262,7 +262,7 @@
 
 			dat += "Magnets confirmed: <br>"
 			var/i = 0
-			for(var/obj/machinery/magnetic_module/M in magnets)
+			for(var/obj/structure/machinery/magnetic_module/M in magnets)
 				i++
 				dat += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;< \[[i]\] (<a href='?src=\ref[src];radio-op=togglepower'>[M.on ? "On":"Off"]</a>)|Electricity level: <a href='?src=\ref[src];radio-op=minuselec'>-</a> [M.electricity_level] <a href='?src=\ref[src];radio-op=pluselec'>+</a>; Magnetic field: <a href='?src=\ref[src];radio-op=minusmag'>-</a> [M.magnetic_field] <a href='?src=\ref[src];radio-op=plusmag'>+</a><br>"
 

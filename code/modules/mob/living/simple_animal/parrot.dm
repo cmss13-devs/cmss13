@@ -72,11 +72,11 @@
 	//These vars store their preffered perch and if they dont have one, what they can use as a perch
 	var/obj/parrot_perch = null
 	var/obj/desired_perches = list(/obj/structure/computerframe, 		/obj/structure/displaycase, \
-									/obj/structure/filingcabinet,		/obj/machinery/teleport, \
-									/obj/machinery/computer,			/obj/machinery/suit_storage_unit, \
-									/obj/machinery/telecomms, \
-									/obj/machinery/smartfridge, \
-									/obj/machinery/recharge_station)
+									/obj/structure/filingcabinet,		/obj/structure/machinery/teleport, \
+									/obj/structure/machinery/computer,			/obj/structure/machinery/suit_storage_unit, \
+									/obj/structure/machinery/telecomms, \
+									/obj/structure/machinery/smartfridge, \
+									/obj/structure/machinery/recharge_station)
 
 	//Parrots are kleptomaniacs. This variable ... stores the item a parrot is holding.
 	var/obj/item/held_item = null

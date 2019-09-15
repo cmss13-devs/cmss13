@@ -52,13 +52,13 @@
 
 //all air alarms in area are connected via magic
 /area
-	var/obj/machinery/alarm/master_air_alarm
+	var/obj/structure/machinery/alarm/master_air_alarm
 	var/list/air_vent_names = list()
 	var/list/air_scrub_names = list()
 	var/list/air_vent_info = list()
 	var/list/air_scrub_info = list()
 
-/obj/machinery/alarm
+/obj/structure/machinery/alarm
 	name = "alarm"
 	icon = 'icons/obj/structures/machinery/monitors.dmi' // I made these really quickly because idk where they have their new air alarm ~Art
 	icon_state = "alarm0"
@@ -108,7 +108,7 @@
 
 
 
-/obj/machinery/alarm/New(var/loc, var/direction, var/building = 0)
+/obj/structure/machinery/alarm/New(var/loc, var/direction, var/building = 0)
 	..()
 
 	if(building)
@@ -138,7 +138,7 @@
 	start_processing()
 
 
-/obj/machinery/alarm/proc/first_run()
+/obj/structure/machinery/alarm/proc/first_run()
 	alarm_area = get_area(src)
 	if (alarm_area.master)
 		alarm_area = alarm_area.master
@@ -155,12 +155,12 @@
 	TLV["temperature"] =	list(T0C-26, T0C, T0C+40, T0C+66) // K
 
 
-/obj/machinery/alarm/initialize()
+/obj/structure/machinery/alarm/initialize()
 	set_frequency(frequency)
 	if (!master_is_operating())
 		elect_master()
 
-/obj/machinery/alarm/process()
+/obj/structure/machinery/alarm/process()
 	if((stat & (NOPOWER|BROKEN)) || shorted || buildstage != 2)
 		return
 
@@ -198,10 +198,10 @@
 	updateDialog()
 	return
 
-/obj/machinery/alarm/proc/handle_heating_cooling()
+/obj/structure/machinery/alarm/proc/handle_heating_cooling()
 	return
 
-/obj/machinery/alarm/proc/overall_danger_level(turf/T)
+/obj/structure/machinery/alarm/proc/overall_danger_level(turf/T)
 	pressure_dangerlevel = get_danger_level(T.return_pressure(), TLV["pressure"])
 	temperature_dangerlevel = get_danger_level(T.return_temperature(), TLV["temperature"])
 
@@ -211,7 +211,7 @@
 		)
 
 // Returns whether this air alarm thinks there is a breach, given the sensors that are available to it.
-/obj/machinery/alarm/proc/breach_detected()
+/obj/structure/machinery/alarm/proc/breach_detected()
 	var/turf/location = loc
 
 	if(!istype(location))
@@ -229,28 +229,28 @@
 	return 0
 
 
-/obj/machinery/alarm/proc/master_is_operating()
+/obj/structure/machinery/alarm/proc/master_is_operating()
 	return alarm_area && alarm_area.master_air_alarm && !(alarm_area.master_air_alarm.stat & (NOPOWER|BROKEN))
 
 
-/obj/machinery/alarm/proc/elect_master()
+/obj/structure/machinery/alarm/proc/elect_master()
 	if(!alarm_area)
 		return 0
 	for (var/area/A in alarm_area.related)
-		for (var/obj/machinery/alarm/AA in A)
+		for (var/obj/structure/machinery/alarm/AA in A)
 			if (!(AA.stat & (NOPOWER|BROKEN)))
 				alarm_area.master_air_alarm = AA
 				return 1
 	return 0
 
-/obj/machinery/alarm/proc/get_danger_level(var/current_value, var/list/danger_levels)
+/obj/structure/machinery/alarm/proc/get_danger_level(var/current_value, var/list/danger_levels)
 	if((current_value >= danger_levels[4] && danger_levels[4] > 0) || current_value <= danger_levels[1])
 		return 2
 	if((current_value >= danger_levels[3] && danger_levels[3] > 0) || current_value <= danger_levels[2])
 		return 1
 	return 0
 
-/obj/machinery/alarm/update_icon()
+/obj/structure/machinery/alarm/update_icon()
 	if(wiresexposed)
 		icon_state = "alarmx"
 		return
@@ -270,7 +270,7 @@
 		if (2)
 			icon_state = "alarm1"
 
-/obj/machinery/alarm/receive_signal(datum/signal/signal)
+/obj/structure/machinery/alarm/receive_signal(datum/signal/signal)
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if (alarm_area.master_air_alarm != src)
@@ -297,7 +297,7 @@
 	else if(dev_type == "AVP")
 		alarm_area.air_vent_info[id_tag] = signal.data
 
-/obj/machinery/alarm/proc/register_env_machine(var/m_id, var/device_type)
+/obj/structure/machinery/alarm/proc/register_env_machine(var/m_id, var/device_type)
 	var/new_name
 	if (device_type=="AVP")
 		new_name = "[alarm_area.name] Vent Pump #[alarm_area.air_vent_names.len+1]"
@@ -310,7 +310,7 @@
 	spawn (10)
 		send_signal(m_id, list("init" = new_name) )
 
-/obj/machinery/alarm/proc/refresh_all()
+/obj/structure/machinery/alarm/proc/refresh_all()
 	for(var/id_tag in alarm_area.air_vent_names)
 		var/list/I = alarm_area.air_vent_info[id_tag]
 		if (I && I["timestamp"]+AALARM_REPORT_TIMEOUT/2 > world.time)
@@ -322,12 +322,12 @@
 			continue
 		send_signal(id_tag, list("status") )
 
-/obj/machinery/alarm/proc/set_frequency(new_frequency)
+/obj/structure/machinery/alarm/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)
 	frequency = new_frequency
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_TO_AIRALARM)
 
-/obj/machinery/alarm/proc/send_signal(var/target, var/list/command)//sends signal 'command' to 'target'. Returns 0 if no radio connection, 1 otherwise
+/obj/structure/machinery/alarm/proc/send_signal(var/target, var/list/command)//sends signal 'command' to 'target'. Returns 0 if no radio connection, 1 otherwise
 	if(!radio_connection)
 		return 0
 
@@ -344,11 +344,11 @@
 
 	return 1
 
-/obj/machinery/alarm/proc/apply_mode()
+/obj/structure/machinery/alarm/proc/apply_mode()
 	//propagate mode to other air alarms in the area
 	//TODO: make it so that players can choose between applying the new mode to the room they are in (related area) vs the entire alarm area
 	for (var/area/RA in alarm_area.related)
-		for (var/obj/machinery/alarm/AA in RA)
+		for (var/obj/structure/machinery/alarm/AA in RA)
 			AA.mode = mode
 
 	switch(mode)
@@ -382,13 +382,13 @@
 			for(var/device_id in alarm_area.air_vent_names)
 				send_signal(device_id, list("power"= 0) )
 
-/obj/machinery/alarm/proc/apply_danger_level(var/new_danger_level)
+/obj/structure/machinery/alarm/proc/apply_danger_level(var/new_danger_level)
 	if (apply_danger_level && alarm_area.atmosalert(new_danger_level))
 		post_alert(new_danger_level)
 
 	update_icon()
 
-/obj/machinery/alarm/proc/post_alert(alert_level)
+/obj/structure/machinery/alarm/proc/post_alert(alert_level)
 	if(!post_alert)
 		return
 
@@ -415,15 +415,15 @@
 ///////////
 //HACKING//
 ///////////
-/obj/machinery/alarm/proc/isWireColorCut(var/wireColor)
+/obj/structure/machinery/alarm/proc/isWireColorCut(var/wireColor)
 	var/wireFlag = AAlarmWireColorToFlag[wireColor]
 	return ((AAlarmwires & wireFlag) == 0)
 
-/obj/machinery/alarm/proc/isWireCut(var/wireIndex)
+/obj/structure/machinery/alarm/proc/isWireCut(var/wireIndex)
 	var/wireFlag = AAlarmIndexToFlag[wireIndex]
 	return ((AAlarmwires & wireFlag) == 0)
 
-/obj/machinery/alarm/proc/allWiresCut()
+/obj/structure/machinery/alarm/proc/allWiresCut()
 	var/i = 1
 	while(i<=5)
 		if(AAlarmwires & AAlarmIndexToFlag[i])
@@ -431,7 +431,7 @@
 		i++
 	return 1
 
-/obj/machinery/alarm/proc/cut(var/wireColor)
+/obj/structure/machinery/alarm/proc/cut(var/wireColor)
 	var/wireFlag = AAlarmWireColorToFlag[wireColor]
 	var/wireIndex = AAlarmWireColorToIndex[wireColor]
 	AAlarmwires &= ~wireFlag
@@ -464,7 +464,7 @@
 
 	return
 
-/obj/machinery/alarm/proc/mend(var/wireColor)
+/obj/structure/machinery/alarm/proc/mend(var/wireColor)
 	var/wireFlag = AAlarmWireColorToFlag[wireColor]
 	var/wireIndex = AAlarmWireColorToIndex[wireColor] //not used in this function
 	AAlarmwires |= wireFlag
@@ -483,7 +483,7 @@
 	updateDialog()
 	return
 
-/obj/machinery/alarm/proc/pulse(var/wireColor)
+/obj/structure/machinery/alarm/proc/pulse(var/wireColor)
 	//var/wireFlag = AAlarmWireColorToFlag[wireColor] //not used in this function
 	var/wireIndex = AAlarmWireColorToIndex[wireColor]
 	switch(wireIndex)
@@ -530,16 +530,16 @@
 //END HACKING//
 ///////////////
 
-/obj/machinery/alarm/attack_ai(mob/user)
+/obj/structure/machinery/alarm/attack_ai(mob/user)
 	return interact(user)
 
-/obj/machinery/alarm/attack_hand(mob/user)
+/obj/structure/machinery/alarm/attack_hand(mob/user)
 	. = ..()
 	if (.)
 		return
 	return interact(user)
 
-/obj/machinery/alarm/interact(mob/user)
+/obj/structure/machinery/alarm/interact(mob/user)
 	user.set_interaction(src)
 
 	if(buildstage!=2)
@@ -589,13 +589,13 @@
 
 	return
 
-/obj/machinery/alarm/proc/return_text(mob/user)
+/obj/structure/machinery/alarm/proc/return_text(mob/user)
 	if(!(issilicon(user)) && locked)
 		return "<html><head><title>\The [src]</title></head><body>[return_status()]<hr>[rcon_text()]<hr><i>(Swipe ID card to unlock interface)</i></body></html>"
 	else
 		return "<html><head><title>\The [src]</title></head><body>[return_status()]<hr>[rcon_text()]<hr>[return_controls()]</body></html>"
 
-/obj/machinery/alarm/proc/return_status()
+/obj/structure/machinery/alarm/proc/return_status()
 	var/turf/location = get_turf(src)
 
 	var/output = "<b>Air Status:</b><br>"
@@ -644,7 +644,7 @@ Pressure: <span class='dl[pressure_dangerlevel]'>[environment_pressure]</span>kP
 
 	return output
 
-/obj/machinery/alarm/proc/rcon_text()
+/obj/structure/machinery/alarm/proc/rcon_text()
 	var/dat = "<table width=\"100%\"><td align=\"center\"><b>Remote Control:</b><br>"
 	if(rcon_setting == RCON_NO)
 		dat += "<b>Off</b>"
@@ -666,7 +666,7 @@ Pressure: <span class='dl[pressure_dangerlevel]'>[environment_pressure]</span>kP
 
 	return dat
 
-/obj/machinery/alarm/proc/return_controls()
+/obj/structure/machinery/alarm/proc/return_controls()
 	var/output = ""//"<B>[alarm_zone] Air [name]</B><HR>"
 
 	switch(screen)
@@ -829,7 +829,7 @@ table tr:first-child th:first-child { border: none;}
 
 	return output
 
-/obj/machinery/alarm/Topic(href, href_list)
+/obj/structure/machinery/alarm/Topic(href, href_list)
 	if(..() || !( Adjacent(usr) || issilicon(usr)) ) // dont forget calling super in machine Topics -walter0o
 		usr.unset_interaction()
 		usr << browse(null, "window=air_alarm")
@@ -987,7 +987,7 @@ table tr:first-child th:first-child { border: none;}
 	updateUsrDialog()
 
 
-/obj/machinery/alarm/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/alarm/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 
 	switch(buildstage)
@@ -1057,11 +1057,11 @@ table tr:first-child th:first-child { border: none;}
 
 	return ..()
 
-/obj/machinery/alarm/power_change()
+/obj/structure/machinery/alarm/power_change()
 	..()
 	update_icon()
 
-/obj/machinery/alarm/examine(mob/user)
+/obj/structure/machinery/alarm/examine(mob/user)
 	..()
 	if (buildstage < 2)
 		to_chat(user, "It is not wired.")
@@ -1071,12 +1071,12 @@ table tr:first-child th:first-child { border: none;}
 
 
 
-/obj/machinery/alarm/monitor
+/obj/structure/machinery/alarm/monitor
 	apply_danger_level = 0
 	breach_detection = 0
 	post_alert = 0
 
-/obj/machinery/alarm/server/New()
+/obj/structure/machinery/alarm/server/New()
 	..()
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING)
 	TLV["oxygen"] =			list(-1.0, -1.0,-1.0,-1.0) // Partial pressure, kpa
@@ -1089,6 +1089,6 @@ table tr:first-child th:first-child { border: none;}
 
 
 //Almayer version
-/obj/machinery/alarm/almayer
+/obj/structure/machinery/alarm/almayer
 
 

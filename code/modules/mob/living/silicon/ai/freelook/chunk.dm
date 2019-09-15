@@ -73,7 +73,7 @@
 	var/list/newVisibleTurfs = list()
 
 	for(var/camera in cameras)
-		var/obj/machinery/camera/c = camera
+		var/obj/structure/machinery/camera/c = camera
 
 		if(!c)
 			continue
@@ -135,7 +135,7 @@
 	src.y = y
 	src.z = z
 
-	for(var/obj/machinery/camera/c in range(16, locate(x + 8, y + 8, z)))
+	for(var/obj/structure/machinery/camera/c in range(16, locate(x + 8, y + 8, z)))
 		if(c.can_use())
 			cameras += c
 
@@ -144,7 +144,7 @@
 			turfs[t] = t
 
 	for(var/camera in cameras)
-		var/obj/machinery/camera/c = camera
+		var/obj/structure/machinery/camera/c = camera
 		if(!c)
 			continue
 

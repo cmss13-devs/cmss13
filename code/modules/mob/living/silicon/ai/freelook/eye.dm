@@ -65,7 +65,7 @@
 	var/sprint = 10
 	var/cooldown = 0
 	var/acceleration = 1
-	var/obj/machinery/hologram/holopad/holo = null
+	var/obj/structure/machinery/hologram/holopad/holo = null
 
 // Intiliaze the eye by assigning it's "ai" variable to us. Then set it's loc to us.
 /mob/living/silicon/ai/New()

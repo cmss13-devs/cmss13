@@ -1,4 +1,4 @@
-/obj/machinery/computer/overwatch
+/obj/structure/machinery/computer/overwatch
 	name = "Overwatch Console"
 	desc = "State of the art machinery for giving orders to a squad."
 	icon_state = "dummy"
@@ -7,7 +7,7 @@
 	var/mob/living/carbon/human/current_mapviewer = null
 	var/datum/squad/current_squad = null
 	var/state = 0
-	var/obj/machinery/camera/cam = null
+	var/obj/structure/machinery/camera/cam = null
 	var/list/network = list("Overwatch")
 	var/x_supply = 0
 	var/y_supply = 0
@@ -20,17 +20,17 @@
 //	var/console_locked = 0
 
 
-/obj/machinery/computer/overwatch/attackby(var/obj/I as obj, var/mob/user as mob)  //Can't break or disassemble.
+/obj/structure/machinery/computer/overwatch/attackby(var/obj/I as obj, var/mob/user as mob)  //Can't break or disassemble.
 	return
 
-/obj/machinery/computer/overwatch/bullet_act(var/obj/item/projectile/Proj) //Can't shoot it
+/obj/structure/machinery/computer/overwatch/bullet_act(var/obj/item/projectile/Proj) //Can't shoot it
 	return 0
 
-/obj/machinery/computer/overwatch/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/overwatch/attack_ai(var/mob/user as mob)
 	if(!ismaintdrone(user))
 		return src.attack_hand(user)
 
-/obj/machinery/computer/overwatch/attack_hand(mob/user)
+/obj/structure/machinery/computer/overwatch/attack_hand(mob/user)
 	if(..())  //Checks for power outages
 		return
 
@@ -282,7 +282,7 @@
 	onclose(user, "overwatch")
 	return
 
-/obj/machinery/computer/overwatch/proc/update_mapview(var/close = 0)
+/obj/structure/machinery/computer/overwatch/proc/update_mapview(var/close = 0)
 	if(close || !current_squad || (current_mapviewer && !Adjacent(current_mapviewer)))
 		if(current_mapviewer)
 			current_mapviewer << browse(null, "window=marineminimap")
@@ -310,7 +310,7 @@
 		current_mapviewer << browse_rsc(O, "marine_minimap.png")
 		current_mapviewer << browse("<html><head><script type=\"text/javascript\">function ref() { document.body.innerHTML = '<img src=\"marine_minimap.png?'+Math.random()+'\">'; } setInterval('ref()',1000);</script></head><body><img src=marine_minimap.png></body></html>","window=marineminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
 
-/obj/machinery/computer/overwatch/Topic(href, href_list)
+/obj/structure/machinery/computer/overwatch/Topic(href, href_list)
 	if(..())
 		return
 
@@ -501,7 +501,7 @@
 				return
 			if(current_squad)
 				var/mob/cam_target = locate(href_list["cam_target"])
-				var/obj/machinery/camera/new_cam = get_camera_from_target(cam_target)
+				var/obj/structure/machinery/camera/new_cam = get_camera_from_target(cam_target)
 				if(!new_cam || !new_cam.can_use())
 					to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>Searching for helmet cam. No helmet cam found for this marine! Tell your squad to put their helmets on!</span>")
 				else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
@@ -515,28 +515,28 @@
 					usr.reset_view(cam)
 	attack_hand(usr) //The above doesn't ever seem to work.
 
-/obj/machinery/computer/overwatch/check_eye(mob/user)
+/obj/structure/machinery/computer/overwatch/check_eye(mob/user)
 	if(user.is_mob_incapacitated(TRUE) || get_dist(user, src) > 1 || user.blinded) //user can't see - not sure why canmove is here.
 		user.unset_interaction()
 	else if(!cam || !cam.can_use()) //camera doesn't work, is no longer selected or is gone
 		user.unset_interaction()
 
 
-/obj/machinery/computer/overwatch/on_unset_interaction(mob/user)
+/obj/structure/machinery/computer/overwatch/on_unset_interaction(mob/user)
 	..()
 	if(!isAI(user))
 		cam = null
 		user.reset_view(null)
 
 //returns the helmet camera the human is wearing
-/obj/machinery/computer/overwatch/proc/get_camera_from_target(mob/living/carbon/human/H)
+/obj/structure/machinery/computer/overwatch/proc/get_camera_from_target(mob/living/carbon/human/H)
 	if (current_squad)
 		if (H && istype(H) && istype(H.head, /obj/item/clothing/head/helmet/marine))
 			var/obj/item/clothing/head/helmet/marine/helm = H.head
 			return helm.camera
 
 //Sends a string to our currently selected squad.
-/obj/machinery/computer/overwatch/proc/send_to_squad(var/txt = "", var/plus_name = 0, var/only_leader = 0)
+/obj/structure/machinery/computer/overwatch/proc/send_to_squad(var/txt = "", var/plus_name = 0, var/only_leader = 0)
 	if(txt == "" || !current_squad || !operator) return //Logic
 
 	var/text = copytext(sanitize(txt), 1, MAX_MESSAGE_LEN)
@@ -558,7 +558,7 @@
 					to_chat(M, "[htmlicon(src, M)] <font color='blue'><B>\[SL Overwatch\]:</b> [nametext][text]</font>")
 					return
 
-/obj/machinery/computer/overwatch/proc/change_lead()
+/obj/structure/machinery/computer/overwatch/proc/change_lead()
 	if(!usr || usr != operator)
 		return
 	if(!current_squad)
@@ -621,7 +621,7 @@
 	H.update_inv_head() //updating marine helmet leader overlays
 	H.update_inv_wear_suit()
 
-/obj/machinery/computer/overwatch/proc/mark_insubordination()
+/obj/structure/machinery/computer/overwatch/proc/mark_insubordination()
 	if(!usr || usr != operator)
 		return
 	if(!current_squad)
@@ -653,7 +653,7 @@
 						wanted_marine.sec_hud_set_security_status()
 					return
 
-/obj/machinery/computer/overwatch/proc/transfer_squad()
+/obj/structure/machinery/computer/overwatch/proc/transfer_squad()
 	if(!usr || usr != operator)
 		return
 	if(!current_squad)
@@ -727,7 +727,7 @@
 	visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>[transfer_marine] has been transfered from squad '[old_squad]' to squad '[new_squad]'. Logging to enlistment file.</span>")
 	to_chat(transfer_marine, "[htmlicon(src, transfer_marine)] <font size='3' color='blue'><B>\[Overwatch\]:</b> You've been transfered to [new_squad]!</font>")
 
-/obj/machinery/computer/overwatch/proc/handle_bombard()
+/obj/structure/machinery/computer/overwatch/proc/handle_bombard()
 	if(!usr) return
 
 	if(busy)
@@ -785,7 +785,7 @@
 				var/mob/M = usr
 				M.count_niche_stat(STATISTICS_NICHE_OB)
 
-/obj/machinery/computer/overwatch/proc/handle_supplydrop()
+/obj/structure/machinery/computer/overwatch/proc/handle_supplydrop()
 
 	if(!usr || usr != operator)
 		return
@@ -845,7 +845,7 @@
 		visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>'[C.name]' supply drop launched! Another launch will be available in five minutes.</span>")
 		busy = 0
 
-/obj/machinery/computer/overwatch/almayer
+/obj/structure/machinery/computer/overwatch/almayer
 	density = 0
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "overwatch"

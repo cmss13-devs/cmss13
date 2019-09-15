@@ -1,5 +1,5 @@
 //Autodoc
-/obj/machinery/autodoc
+/obj/structure/machinery/autodoc
 	name = "\improper autodoc medical system"
 	desc = "A fancy machine developed to be capable of operating on people with minimal human intervention. The interface is rather complex and would only be useful to trained Doctors however."
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
@@ -18,7 +18,7 @@
 	var/heal_toxin = 0
 	var/event = FALSE
 
-	var/obj/machinery/autodoc_console/connected
+	var/obj/structure/machinery/autodoc_console/connected
 
 	//It uses power
 	use_power = 1
@@ -27,7 +27,7 @@
 
 	var/stored_metal = 500 // starts with 500 metal loaded
 
-/obj/machinery/autodoc/power_change(var/area/master_area = null)
+/obj/structure/machinery/autodoc/power_change(var/area/master_area = null)
 	..()
 	if(stat & NOPOWER)
 		visible_message("\The [src] engages the safety override, ejecting the occupant.")
@@ -35,7 +35,7 @@
 		go_out()
 		return
 
-/obj/machinery/autodoc/proc/heal_limb(var/mob/living/carbon/human/human, var/brute, var/burn)
+/obj/structure/machinery/autodoc/proc/heal_limb(var/mob/living/carbon/human/human, var/brute, var/burn)
 	var/list/datum/limb/parts = human.get_damaged_limbs(brute,burn)
 	if(!parts.len)	return
 	var/datum/limb/picked = pick(parts)
@@ -46,7 +46,7 @@
 	human.UpdateDamageIcon()
 	human.updatehealth()
 
-/obj/machinery/autodoc/process()
+/obj/structure/machinery/autodoc/process()
 	set background = 1
 
 	updateUsrDialog()
@@ -134,7 +134,7 @@
 	A.organ_ref = organ_ref
 	return A
 
-/obj/machinery/autodoc/allow_drop()
+/obj/structure/machinery/autodoc/allow_drop()
 	return 0
 
 /proc/generate_autodoc_surgery_list(mob/living/carbon/human/M)
@@ -203,7 +203,7 @@
 		surgery_list += create_autodoc_surgery(null,EXTERNAL_SURGERY,"blood")
 	return surgery_list
 
-/obj/machinery/autodoc/proc/surgery_op(mob/living/carbon/M)
+/obj/structure/machinery/autodoc/proc/surgery_op(mob/living/carbon/M)
 	set background = 1
 
 	if(M.stat == DEAD||!ishuman(M))
@@ -525,7 +525,7 @@
 	go_out()
 
 
-/obj/machinery/autodoc/proc/open_incision(mob/living/carbon/human/target, var/datum/limb/L)
+/obj/structure/machinery/autodoc/proc/open_incision(mob/living/carbon/human/target, var/datum/limb/L)
 	if(target && L && L.surgery_open_stage < 2)
 		sleep(INCISION_MANAGER_MAX_DURATION*surgery_mod)
 		if(!surgery) return
@@ -534,7 +534,7 @@
 		L.surgery_open_stage = 2 //Can immediately proceed to other surgery steps
 		target.updatehealth()
 
-/obj/machinery/autodoc/proc/close_incision(mob/living/carbon/human/target, var/datum/limb/L)
+/obj/structure/machinery/autodoc/proc/close_incision(mob/living/carbon/human/target, var/datum/limb/L)
 	if(target && L && 0 < L.surgery_open_stage <= 2)
 		sleep(CAUTERY_MAX_DURATION*surgery_mod)
 		if(!surgery) return
@@ -543,7 +543,7 @@
 		L.status &= ~LIMB_BLEEDING
 		target.updatehealth()
 
-/obj/machinery/autodoc/proc/open_encased(mob/living/carbon/human/target, var/datum/limb/L)
+/obj/structure/machinery/autodoc/proc/open_encased(mob/living/carbon/human/target, var/datum/limb/L)
 	if(target && L && L.surgery_open_stage >= 2)
 		if(L.surgery_open_stage == 2) // this will cover for half completed surgeries
 			sleep(CIRCULAR_SAW_MAX_DURATION*surgery_mod)
@@ -554,7 +554,7 @@
 			if(!surgery) return
 			L.surgery_open_stage = 3
 
-/obj/machinery/autodoc/proc/close_encased(mob/living/carbon/human/target, var/datum/limb/L)
+/obj/structure/machinery/autodoc/proc/close_encased(mob/living/carbon/human/target, var/datum/limb/L)
 	if(target && L && L.surgery_open_stage > 2)
 		if(L.surgery_open_stage == 3) // this will cover for half completed surgeries
 			sleep(RETRACTOR_MAX_DURATION*surgery_mod)
@@ -565,7 +565,7 @@
 			if(!surgery) return
 			L.surgery_open_stage = 2
 
-/obj/machinery/autodoc/verb/eject()
+/obj/structure/machinery/autodoc/verb/eject()
 	set name = "Eject Med-Pod"
 	set category = "Object"
 	set src in oview(1)
@@ -599,7 +599,7 @@
 		go_out()
 		add_fingerprint(usr)
 
-/obj/machinery/autodoc/verb/move_inside()
+/obj/structure/machinery/autodoc/verb/move_inside()
 	set name = "Enter Autodoc"
 	set category = "Object"
 	set src in oview(1)
@@ -643,7 +643,7 @@
 			qdel(O)
 		add_fingerprint(usr)
 
-/obj/machinery/autodoc/proc/go_out()
+/obj/structure/machinery/autodoc/proc/go_out()
 	if(!occupant) return
 	occupant.forceMove(loc)
 	occupant.update_med_icon()
@@ -658,7 +658,7 @@
 	else
 		to_chat(usr, "Autodoc not properly connected")
 
-/obj/machinery/autodoc/attackby(obj/item/W, mob/living/user)
+/obj/structure/machinery/autodoc/attackby(obj/item/W, mob/living/user)
 	if(!ishuman(user))
 		return // no
 	if(istype(W, /obj/item/stack/sheet/metal))
@@ -707,11 +707,11 @@
 /////////////////////////////////////////////////////////////
 
 //Auto Doc console that links up to it.
-/obj/machinery/autodoc_console
+/obj/structure/machinery/autodoc_console
 	name = "\improper autodoc medical system control console"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "sleeperconsole"
-	var/obj/machinery/autodoc/connected = null
+	var/obj/structure/machinery/autodoc/connected = null
 	dir = 2
 	anchored = 1 //About time someone fixed this.
 	density = 0
@@ -719,19 +719,19 @@
 	use_power = 1
 	idle_power_usage = 40
 
-/obj/machinery/autodoc_console/New()
+/obj/structure/machinery/autodoc_console/New()
 	..()
 	spawn(7)
 		if(dir == EAST || dir == SOUTH)
-			connected = locate(/obj/machinery/autodoc,get_step(src, WEST))
+			connected = locate(/obj/structure/machinery/autodoc,get_step(src, WEST))
 		if(dir == WEST || dir == NORTH)
-			connected = locate(/obj/machinery/autodoc,get_step(src, EAST))
+			connected = locate(/obj/structure/machinery/autodoc,get_step(src, EAST))
 		if(!connected)
 			qdel(src)
 		else
 			connected.connected = src
 
-/obj/machinery/autodoc_console/power_change(var/area/master_area = null)
+/obj/structure/machinery/autodoc_console/power_change(var/area/master_area = null)
 	..()
 	if(stat & NOPOWER)
 		if(icon_state != "sleeperconsole-p")
@@ -740,10 +740,10 @@
 	if(icon_state != "sleeperconsole")
 		icon_state = "sleeperconsole"
 
-/obj/machinery/autodoc_console/process()
+/obj/structure/machinery/autodoc_console/process()
 	updateUsrDialog()
 
-/obj/machinery/autodoc_console/attack_hand(mob/living/user)
+/obj/structure/machinery/autodoc_console/attack_hand(mob/living/user)
 	if(..())
 		return
 	var/dat = ""
@@ -894,7 +894,7 @@
 	user << browse(dat, "window=sleeper;size=600x600")
 	onclose(user, "sleeper")
 
-/obj/machinery/autodoc_console/Topic(href, href_list)
+/obj/structure/machinery/autodoc_console/Topic(href, href_list)
 	if(..())
 		return
 	if((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))))
@@ -1041,5 +1041,5 @@
 			updateUsrDialog()
 		add_fingerprint(usr)
 
-/obj/machinery/autodoc/event
+/obj/structure/machinery/autodoc/event
 	event = TRUE

@@ -711,7 +711,7 @@ var/global/spawn_next_wo_wave = 0
 			if(OT == "sup")
 				if(I && istype(I,/obj/item/stack/sheet/mineral/phoron) || istype(I,/obj/item/stack/rods) || istype(I,/obj/item/stack/sheet/glass) || istype(I,/obj/item/stack/sheet/metal) || istype(I,/obj/item/stack/sheet/plasteel) || istype(I,/obj/item/stack/sheet/wood))
 					I:amount = rand(30,50) //Give them more building materials.
-				if(I && istype(I,/obj/machinery/floodlight))
+				if(I && istype(I,/obj/structure/machinery/floodlight))
 					I.anchored = 0
 
 
@@ -721,7 +721,7 @@ var/global/spawn_next_wo_wave = 0
 				new path(crate)
 
 //Whiskey Outpost Recycler Machine. Teleports objects to centcomm so it doesnt lag
-/obj/machinery/wo_recycler
+/obj/structure/machinery/wo_recycler
 	icon = 'icons/obj/structures/machinery/recycling.dmi'
 	icon_state = "grinder-o0"
 	var/icon_on = "grinder-o1"

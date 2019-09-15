@@ -1,6 +1,6 @@
 
 //Cleanbot
-/obj/machinery/bot/cleanbot
+/obj/structure/machinery/bot/cleanbot
 	name = "Cleanbot"
 	desc = "A little cleaning robot, he looks so excited!"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
@@ -29,7 +29,7 @@
 	var/next_dest
 	var/next_dest_loc
 
-/obj/machinery/bot/cleanbot/New()
+/obj/structure/machinery/bot/cleanbot/New()
 	..()
 	src.get_targets()
 	src.icon_state = "cleanbot[src.on]"
@@ -48,12 +48,12 @@
 	start_processing()
 
 
-/obj/machinery/bot/cleanbot/turn_on()
+/obj/structure/machinery/bot/cleanbot/turn_on()
 	. = ..()
 	src.icon_state = "cleanbot[src.on]"
 	src.updateUsrDialog()
 
-/obj/machinery/bot/cleanbot/turn_off()
+/obj/structure/machinery/bot/cleanbot/turn_off()
 	..()
 	if(!isnull(src.target))
 		target.targeted_by = null
@@ -64,14 +64,14 @@
 	src.path = new()
 	src.updateUsrDialog()
 
-/obj/machinery/bot/cleanbot/attack_hand(mob/user as mob)
+/obj/structure/machinery/bot/cleanbot/attack_hand(mob/user as mob)
 	. = ..()
 	if (.)
 		return
 	usr.set_interaction(src)
 	interact(user)
 
-/obj/machinery/bot/cleanbot/interact(mob/user as mob)
+/obj/structure/machinery/bot/cleanbot/interact(mob/user as mob)
 	var/dat
 	dat += text({"
 <TT><B>Automatic Station Cleaner v1.0</B></TT><BR><BR>
@@ -94,7 +94,7 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 	onclose(user, "autocleaner")
 	return
 
-/obj/machinery/bot/cleanbot/Topic(href, href_list)
+/obj/structure/machinery/bot/cleanbot/Topic(href, href_list)
 	if(..())
 		return
 	usr.set_interaction(src)
@@ -127,7 +127,7 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 			to_chat(usr, SPAN_NOTICE("You press the weird button."))
 			src.updateUsrDialog()
 
-/obj/machinery/bot/cleanbot/attackby(obj/item/W, mob/user as mob)
+/obj/structure/machinery/bot/cleanbot/attackby(obj/item/W, mob/user as mob)
 	if (istype(W, /obj/item/card/id)||istype(W, /obj/item/device/pda))
 		if(src.allowed(usr) && !open)
 			src.locked = !src.locked
@@ -140,7 +140,7 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 	else
 		return ..()
 
-/obj/machinery/bot/cleanbot/process()
+/obj/structure/machinery/bot/cleanbot/process()
 	set background = 1
 
 	if(!src.on)
@@ -226,7 +226,7 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 
 	src.oldloc = src.loc
 
-/obj/machinery/bot/cleanbot/proc/patrol_move()
+/obj/structure/machinery/bot/cleanbot/proc/patrol_move()
 	if (src.patrol_path.len <= 0)
 		return
 
@@ -245,7 +245,7 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 	else
 		failed_steps = 0
 
-/obj/machinery/bot/cleanbot/receive_signal(datum/signal/signal)
+/obj/structure/machinery/bot/cleanbot/receive_signal(datum/signal/signal)
 	var/recv = signal.data["beacon"]
 	var/valid = signal.data["patrol"]
 	if(!recv || !valid)
@@ -261,7 +261,7 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 		next_dest_loc = signal.source.loc
 		next_dest = signal.data["next_patrol"]
 
-/obj/machinery/bot/cleanbot/proc/get_targets()
+/obj/structure/machinery/bot/cleanbot/proc/get_targets()
 	src.target_types = new/list()
 
 	target_types += /obj/effect/decal/cleanable/blood/oil
@@ -274,7 +274,7 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 	if(src.blood)
 		target_types += /obj/effect/decal/cleanable/blood/
 
-/obj/machinery/bot/cleanbot/proc/clean(var/obj/effect/decal/cleanable/target)
+/obj/structure/machinery/bot/cleanbot/proc/clean(var/obj/effect/decal/cleanable/target)
 	anchored = 1
 	icon_state = "cleanbot-c"
 	visible_message(SPAN_DANGER("[src] begins to clean up the [target]"))
@@ -289,7 +289,7 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 		anchored = 0
 		target = null
 
-/obj/machinery/bot/cleanbot/explode()
+/obj/structure/machinery/bot/cleanbot/explode()
 	src.on = 0
 	src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), 1)
 	var/turf/Tsec = get_turf(src)

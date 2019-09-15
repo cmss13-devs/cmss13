@@ -1,7 +1,7 @@
 // Navigation beacon for AI robots
 // Functions as a transponder: looks for incoming signal matching
 
-/obj/machinery/navbeacon
+/obj/structure/machinery/navbeacon
 
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "navbeacon0-f"

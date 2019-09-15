@@ -1,4 +1,4 @@
-/obj/machinery/camera
+/obj/structure/machinery/camera
 	name = "security camera"
 	desc = "It's used to monitor rooms."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
@@ -33,12 +33,12 @@
 	var/light_disabled = 0
 	var/alarm_on = 0
 
-/obj/machinery/camera/New()
+/obj/structure/machinery/camera/New()
 	WireColorToFlag = randomCameraWires()
 	assembly = new(src)
 	assembly.state = 4
 	/* // Use this to look for cameras that have the same c_tag.
-	for(var/obj/machinery/camera/C in cameranet.cameras)
+	for(var/obj/structure/machinery/camera/C in cameranet.cameras)
 		var/list/tempnetwork = C.network&src.network
 		if(C != src && C.c_tag == src.c_tag && tempnetwork.len)
 			world.log << "[src.c_tag] [src.x] [src.y] [src.z] conflicts with [C.c_tag] [C.x] [C.y] [C.z]"
@@ -59,7 +59,7 @@
 
 	..()
 
-/obj/machinery/camera/emp_act(severity)
+/obj/structure/machinery/camera/emp_act(severity)
 	if(!isEmpProof())
 		if(prob(100/severity))
 			icon_state = "[initial(icon_state)]emp"
@@ -80,18 +80,18 @@
 			..()
 
 
-/obj/machinery/camera/ex_act(severity)
+/obj/structure/machinery/camera/ex_act(severity)
 	if(src.invuln)
 		return
 	else
 		..(severity)
 	return
 
-/obj/machinery/camera/proc/setViewRange(var/num = 7)
+/obj/structure/machinery/camera/proc/setViewRange(var/num = 7)
 	src.view_range = num
 	cameranet.updateVisibility(src, 0)
 
-/obj/machinery/camera/attack_hand(mob/living/carbon/human/user as mob)
+/obj/structure/machinery/camera/attack_hand(mob/living/carbon/human/user as mob)
 
 	if(!istype(user))
 		return
@@ -103,7 +103,7 @@
 		light_disabled = 0
 		toggle_cam_status(user, TRUE)
 
-/obj/machinery/camera/attackby(W as obj, mob/living/user as mob)
+/obj/structure/machinery/camera/attackby(W as obj, mob/living/user as mob)
 
 	// DECONSTRUCTION
 	if(isscrewdriver(W))
@@ -148,8 +148,8 @@
 			else to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
 			O << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", itemname, info), text("window=[]", itemname))
 		for(var/mob/O in player_list)
-			if (istype(O.interactee, /obj/machinery/computer/security))
-				var/obj/machinery/computer/security/S = O.interactee
+			if (istype(O.interactee, /obj/structure/machinery/computer/security))
+				var/obj/structure/machinery/computer/security/S = O.interactee
 				if (S.current == src)
 					to_chat(O, "[U] holds \a [itemname] up to one of the cameras ...")
 					O << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", itemname, info), text("window=[]", itemname))
@@ -167,7 +167,7 @@
 		..()
 	return
 
-/obj/machinery/camera/proc/toggle_cam_status(mob/user, silent)
+/obj/structure/machinery/camera/proc/toggle_cam_status(mob/user, silent)
 	status = !status
 	add_hiddenprint(user)
 	if(!silent)
@@ -186,34 +186,34 @@
 	kick_viewers()
 
 //This might be redundant, because of check_eye()
-/obj/machinery/camera/proc/kick_viewers()
+/obj/structure/machinery/camera/proc/kick_viewers()
 	for(var/mob/O in player_list)
-		if (istype(O.interactee, /obj/machinery/computer/security))
-			var/obj/machinery/computer/security/S = O.interactee
+		if (istype(O.interactee, /obj/structure/machinery/computer/security))
+			var/obj/structure/machinery/computer/security/S = O.interactee
 			if (S.current == src)
 				O.unset_interaction()
 				O.reset_view(null)
 				to_chat(O, "The screen bursts into static.")
 
-/obj/machinery/camera/proc/triggerCameraAlarm()
+/obj/structure/machinery/camera/proc/triggerCameraAlarm()
 	alarm_on = 1
 	for(var/mob/living/silicon/S in mob_list)
 		S.triggerAlarm("Camera", get_area(src), list(src), src)
 
 
-/obj/machinery/camera/proc/cancelCameraAlarm()
+/obj/structure/machinery/camera/proc/cancelCameraAlarm()
 	alarm_on = 0
 	for(var/mob/living/silicon/S in mob_list)
 		S.cancelAlarm("Camera", get_area(src), src)
 
-/obj/machinery/camera/proc/can_use()
+/obj/structure/machinery/camera/proc/can_use()
 	if(!status)
 		return 0
 	if(stat & EMPED)
 		return 0
 	return 1
 
-/obj/machinery/camera/proc/can_see()
+/obj/structure/machinery/camera/proc/can_see()
 	var/list/see = null
 	var/turf/pos = get_turf(src)
 	if(isXRay())
@@ -243,7 +243,7 @@
 //Return a working camera that can see a given mob
 //or null if none
 /proc/seen_by_camera(var/mob/M)
-	for(var/obj/machinery/camera/C in oview(4, M))
+	for(var/obj/structure/machinery/camera/C in oview(4, M))
 		if(C.can_use())	// check if camera disabled
 			return C
 			break
@@ -251,14 +251,14 @@
 
 /proc/near_range_camera(var/mob/M)
 
-	for(var/obj/machinery/camera/C in range(4, M))
+	for(var/obj/structure/machinery/camera/C in range(4, M))
 		if(C.can_use())	// check if camera disabled
 			return C
 			break
 
 	return null
 
-/obj/machinery/camera/proc/weld(var/obj/item/tool/weldingtool/WT, var/mob/user)
+/obj/structure/machinery/camera/proc/weld(var/obj/item/tool/weldingtool/WT, var/mob/user)
 
 	if(user.action_busy)
 		return 0

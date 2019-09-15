@@ -16,7 +16,7 @@
 	},
 /area/prison/cellblock/highsec/south/north)
 "ac" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -59,8 +59,8 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "red"
@@ -85,8 +85,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	dir = 4;
@@ -127,12 +127,12 @@
 	},
 /area/prison/recreation/highsec/s)
 "an" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (NORTHEAST)";
 	icon_state = "intact-scrubbers";
 	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
@@ -141,12 +141,12 @@
 /area/prison/recreation/highsec/s)
 "ao" = (
 /obj/structure/table/gamblingtable,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -160,12 +160,12 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -180,12 +180,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -199,12 +199,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -222,12 +222,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -244,12 +244,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -265,12 +265,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -291,10 +291,10 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
 /obj/item/ammo_casing,
@@ -333,7 +333,7 @@
 	},
 /area/prison/cellblock/highsec/south/north)
 "aA" = (
-/obj/machinery/door/airlock/prison{
+/obj/structure/machinery/door/airlock/prison{
 	density = 0;
 	icon_state = "door_open";
 	opacity = 0
@@ -354,8 +354,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "redcorner"
@@ -369,7 +369,7 @@
 /area/prison/cellblock/highsec/south/north)
 "aE" = (
 /obj/structure/bed/chair,
-/obj/machinery/alarm/almayer{
+/obj/structure/machinery/alarm/almayer{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -397,8 +397,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	dir = 4;
@@ -413,14 +413,14 @@
 	},
 /area/prison/cellblock/highsec/south/north)
 "aJ" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 4
 	},
 /obj/item/ammo_magazine/rifle/m16,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/cellblock/highsec/south/north)
 "aK" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -430,7 +430,7 @@
 	},
 /area/prison/recreation/highsec/s)
 "aL" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/prison,
 /area/prison/recreation/highsec/s)
 "aM" = (
@@ -445,7 +445,7 @@
 	},
 /area/prison/recreation/highsec/s)
 "aO" = (
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 2;
 	name = "South High-Security Recreation"
 	},
@@ -475,8 +475,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -496,8 +496,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/prison{
 	tag = "icon-floor (SOUTHWEST)";
 	icon_state = "floor";
@@ -517,15 +517,15 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "red"
 	},
 /area/prison/cellblock/highsec/south/north)
 "aX" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
 	on = 1
 	},
@@ -563,8 +563,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -572,7 +572,7 @@
 	},
 /area/prison/recreation/highsec/s)
 "bd" = (
-/obj/machinery/power/apc{
+/obj/structure/machinery/power/apc{
 	dir = 1;
 	pixel_y = 24;
 	start_charge = 0
@@ -588,13 +588,13 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "bf" = (
-/obj/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	name = "South Civilian Residences Access"
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "bg" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
@@ -610,10 +610,10 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "red"
@@ -651,7 +651,7 @@
 	},
 /area/prison/recreation/highsec/s)
 "bm" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
@@ -681,8 +681,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
 /obj/item/ammo_casing,
@@ -691,7 +691,7 @@
 	},
 /area/prison/recreation/highsec/s)
 "br" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 8
 	},
 /turf/open/floor/prison{
@@ -700,12 +700,12 @@
 	},
 /area/prison/recreation/highsec/s)
 "bs" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -724,12 +724,12 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "bt" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -743,12 +743,12 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "bu" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -759,18 +759,18 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	name = "South Civilian Residences Access"
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "bv" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -797,10 +797,10 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -817,7 +817,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "by" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -827,7 +827,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "bz" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/structure/cable{
@@ -835,8 +835,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -848,7 +848,7 @@
 /turf/closed/wall/prison,
 /area/prison/cellblock/highsec/south/south)
 "bB" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
 	},
@@ -857,8 +857,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "red"
@@ -869,7 +869,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "bD" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
@@ -885,8 +885,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/prison{
 	tag = "icon-floor (SOUTHWEST)";
 	icon_state = "floor";
@@ -928,8 +928,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	dir = 4;
@@ -988,8 +988,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "red"
@@ -997,7 +997,7 @@
 /area/prison/cellblock/highsec/south/south)
 "bP" = (
 /obj/structure/table/reinforced,
-/obj/machinery/computer/security{
+/obj/structure/machinery/computer/security{
 	network = list("PRISON")
 	},
 /turf/open/floor/prison{
@@ -1044,8 +1044,8 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/prison{
 	icon_state = "redcorner"
 	},
@@ -1072,13 +1072,13 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/item/ammo_casing,
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
 "bY" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -1091,7 +1091,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/cellblock/highsec/south/south)
 "cb" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -1116,7 +1116,7 @@
 	},
 /area/prison/maintenance/residential/access/south)
 "ce" = (
-/obj/machinery/light/small,
+/obj/structure/machinery/light/small,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkred2"
@@ -1129,7 +1129,7 @@
 	},
 /area/prison/maintenance/residential/access/south)
 "cg" = (
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Booth"
 	},
 /turf/open/floor/prison,
@@ -1140,8 +1140,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "red"
@@ -1158,8 +1158,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
 "ck" = (
@@ -1207,7 +1207,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
 "cq" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -1251,8 +1251,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
 "cv" = (
@@ -1260,7 +1260,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
 "cw" = (
-/obj/machinery/door/airlock/prison/horizontal{
+/obj/structure/machinery/door/airlock/prison/horizontal{
 	density = 0;
 	icon_state = "door_open";
 	opacity = 0
@@ -1268,7 +1268,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
 "cx" = (
-/obj/machinery/door/airlock/prison/horizontal{
+/obj/structure/machinery/door/airlock/prison/horizontal{
 	density = 0;
 	icon_state = "door_open";
 	opacity = 0
@@ -1281,7 +1281,7 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/prison/cellblock/highsec/south/south)
 "cz" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -1308,8 +1308,8 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 4;
@@ -1348,10 +1348,10 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -1362,13 +1362,13 @@
 	icon_state = "coil1";
 	name = "cable piece"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
 /obj/item/weapon/gun/rifle/mar40,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4;
 	icon_state = "exposed01-scrubbers";
 	tag = "icon-exposed01-scrubbers"
@@ -1382,12 +1382,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -1402,12 +1402,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -1421,12 +1421,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4;
 	icon_state = "exposed01-scrubbers";
 	tag = "icon-exposed01-scrubbers"
@@ -1450,12 +1450,12 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -1469,12 +1469,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -1483,15 +1483,15 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
 "cL" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -1521,12 +1521,12 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -1551,12 +1551,12 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -1573,12 +1573,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -1595,12 +1595,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -1615,12 +1615,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -1646,10 +1646,10 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -1677,7 +1677,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "cU" = (
-/obj/machinery/door/airlock/prison{
+/obj/structure/machinery/door/airlock/prison{
 	density = 0;
 	icon_state = "door_open";
 	opacity = 0
@@ -1742,7 +1742,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "de" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 1
 	},
 /obj/item/ammo_casing,
@@ -1762,16 +1762,16 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	icon_state = "redcorner"
 	},
 /area/prison/cellblock/highsec/south/south)
 "dh" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	on = 1
 	},
@@ -1794,7 +1794,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "dj" = (
-/obj/machinery/light/small,
+/obj/structure/machinery/light/small,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "dk" = (
@@ -1873,9 +1873,9 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/light{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -1903,7 +1903,7 @@
 /turf/closed/wall/sulaco/unmeltable,
 /area/prison/pirate)
 "dy" = (
-/obj/machinery/door/poddoor/two_tile_hor{
+/obj/structure/machinery/door/poddoor/two_tile_hor{
 	density = 0;
 	icon_state = "pdoor0";
 	id = "pirate_cargo";
@@ -1923,7 +1923,7 @@
 	},
 /area/prison/pirate)
 "dA" = (
-/obj/machinery/door/poddoor/two_tile_hor{
+/obj/structure/machinery/door/poddoor/two_tile_hor{
 	density = 0;
 	icon_state = "pdoor0";
 	id = "pirate_cargo";
@@ -1980,8 +1980,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 4;
@@ -1997,7 +1997,7 @@
 	icon_state = "NE-out";
 	tag = "icon-NE-out"
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -2033,7 +2033,7 @@
 	icon_state = "NW-out"
 	},
 /obj/structure/largecrate/random,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -2046,7 +2046,7 @@
 	},
 /area/prison/pirate)
 "dO" = (
-/obj/machinery/alarm/almayer{
+/obj/structure/machinery/alarm/almayer{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -2070,7 +2070,7 @@
 	},
 /area/prison/pirate)
 "dT" = (
-/obj/machinery/power/apc{
+/obj/structure/machinery/power/apc{
 	dir = 8;
 	pixel_x = -24;
 	start_charge = 0
@@ -2095,8 +2095,8 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "red"
@@ -2116,7 +2116,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "dW" = (
-/obj/machinery/atmospherics/unary/vent_scrubber,
+/obj/structure/machinery/atmospherics/unary/vent_scrubber,
 /obj/effect/landmark/corpsespawner/realpirate,
 /obj/item/weapon/gun/rifle/mar40,
 /turf/open/floor/prison{
@@ -2162,7 +2162,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/prison/security/checkpoint/highsec_medsec)
 "ee" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
 	},
@@ -2171,28 +2171,28 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "red"
 	},
 /area/prison/cellblock/highsec/south/south)
 "ef" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/cellblock/highsec/south/south)
 "eg" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "red"
 	},
 /area/prison/cellblock/highsec/south/south)
 "eh" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/plating{
@@ -2210,7 +2210,7 @@
 	},
 /area/prison/pirate)
 "ej" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/plating{
@@ -2265,8 +2265,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "redcorner"
@@ -2288,12 +2288,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (NORTHEAST)";
 	icon_state = "intact-scrubbers";
 	dir = 5
@@ -2310,12 +2310,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -2337,8 +2337,8 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "redcorner"
@@ -2351,12 +2351,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -2374,7 +2374,7 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -2409,7 +2409,7 @@
 	icon_state = "officechair_dark";
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
 /obj/effect/landmark/corpsespawner/prison_security,
@@ -2431,8 +2431,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -2449,12 +2449,12 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "eE" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
 	on = 1
 	},
@@ -2482,7 +2482,7 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "eH" = (
-/obj/machinery/marine_turret/premade/dumb{
+/obj/structure/machinery/marine_turret/premade/dumb{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -2495,16 +2495,16 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "eJ" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
 /turf/open/floor/prison,
 /area/prison/security/checkpoint/highsec_medsec)
 "eK" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 8
 	},
 /turf/open/floor/prison,
@@ -2517,7 +2517,7 @@
 	},
 /area/prison/security/checkpoint/highsec_medsec)
 "eM" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
@@ -2532,10 +2532,10 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -2573,12 +2573,12 @@
 	},
 /area/prison/pirate)
 "eR" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (NORTHEAST)";
 	icon_state = "intact-scrubbers";
 	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
@@ -2586,12 +2586,12 @@
 /turf/open/floor/prison,
 /area/prison/security/checkpoint/highsec_medsec)
 "eS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -2600,11 +2600,11 @@
 /area/prison/security/checkpoint/highsec_medsec)
 "eT" = (
 /obj/structure/table/reinforced,
-/obj/machinery/recharger,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/recharger,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
@@ -2615,7 +2615,7 @@
 	},
 /area/prison/security/checkpoint/highsec_medsec)
 "eU" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -2629,8 +2629,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -2663,7 +2663,7 @@
 	},
 /area/prison/pirate)
 "eZ" = (
-/obj/machinery/marine_turret/premade/dumb{
+/obj/structure/machinery/marine_turret/premade/dumb{
 	dir = 1
 	},
 /turf/open/floor/plating{
@@ -2680,7 +2680,7 @@
 /turf/open/floor/plating,
 /area/prison/security/checkpoint/highsec_medsec)
 "fc" = (
-/obj/machinery/power/apc{
+/obj/structure/machinery/power/apc{
 	dir = 2;
 	pixel_x = 0;
 	pixel_y = -24;
@@ -2699,12 +2699,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (NORTHEAST)";
 	icon_state = "intact-scrubbers";
 	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
@@ -2718,17 +2718,17 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Booth";
 	req_access = list()
 	},
@@ -2741,12 +2741,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -2768,8 +2768,8 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
@@ -2781,12 +2781,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -2855,26 +2855,26 @@
 "fp" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/structure/closet/walllocker/emerglocker/west,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
-/obj/machinery/light/small,
+/obj/structure/machinery/light/small,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "fq" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "fr" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -2918,29 +2918,29 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "fw" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "fx" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "fy" = (
 /obj/structure/closet/walllocker/emerglocker/east,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	on = 1
 	},
-/obj/machinery/light/small,
+/obj/structure/machinery/light/small,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "fz" = (
@@ -2997,11 +2997,11 @@
 /turf/closed/wall/sulaco,
 /area/prison/pirate)
 "fH" = (
-/obj/machinery/door/airlock/maintenance_hatch{
+/obj/structure/machinery/door/airlock/maintenance_hatch{
 	name = "Rocinante Crew Quarters"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "fI" = (
@@ -3014,7 +3014,7 @@
 	pixel_y = 8
 	},
 /obj/structure/table/reinforced,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
@@ -3022,7 +3022,7 @@
 /turf/open/shuttle,
 /area/prison/pirate)
 "fJ" = (
-/obj/machinery/computer/communications{
+/obj/structure/machinery/computer/communications{
 	icon_state = "commb";
 	stat = 1
 	},
@@ -3031,7 +3031,7 @@
 /turf/open/shuttle,
 /area/prison/pirate)
 "fK" = (
-/obj/machinery/computer/communications{
+/obj/structure/machinery/computer/communications{
 	icon_state = "commb";
 	stat = 1
 	},
@@ -3041,17 +3041,17 @@
 "fL" = (
 /obj/structure/table/reinforced,
 /obj/item/paper/prison_station/pirate_note,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/shuttle,
 /area/prison/pirate)
 "fM" = (
-/obj/machinery/door/airlock/maintenance_hatch{
+/obj/structure/machinery/door/airlock/maintenance_hatch{
 	name = "Rocinante Storage/Medical"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "fN" = (
@@ -3063,7 +3063,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/west)
 "fO" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (WEST)";
 	icon_state = "bulb1";
 	dir = 8
@@ -3104,15 +3104,15 @@
 	},
 /area/prison/pirate)
 "fU" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/shuttle{
 	icon_state = "floor7"
 	},
 /area/prison/pirate)
 "fV" = (
 /obj/structure/bed,
-/obj/machinery/alarm/almayer{
+/obj/structure/machinery/alarm/almayer{
 	dir = 1
 	},
 /turf/open/shuttle{
@@ -3134,7 +3134,7 @@
 /turf/open/floor/carpet,
 /area/prison/pirate)
 "fZ" = (
-/obj/machinery/door_control{
+/obj/structure/machinery/door_control{
 	id = "pirate_cargo";
 	name = "Cargo Door Control";
 	pixel_x = 24;
@@ -3147,8 +3147,8 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "gb" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "gc" = (
@@ -3179,23 +3179,23 @@
 /area/prison/cellblock/mediumsec/west)
 "gg" = (
 /obj/structure/table/reinforced,
-/obj/machinery/microwave,
+/obj/structure/machinery/microwave,
 /turf/open/shuttle{
 	icon_state = "floor7"
 	},
 /area/prison/pirate)
 "gh" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/shuttle{
 	icon_state = "floor7"
 	},
 /area/prison/pirate)
 "gi" = (
 /obj/structure/bed,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -3205,10 +3205,10 @@
 	},
 /area/prison/pirate)
 "gj" = (
-/obj/machinery/door/airlock/centcom{
+/obj/structure/machinery/door/airlock/centcom{
 	name = "Rocinante Bridge"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -3216,7 +3216,7 @@
 /turf/open/shuttle,
 /area/prison/pirate)
 "gk" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 8
 	},
 /turf/open/floor/carpet,
@@ -3235,25 +3235,25 @@
 /turf/open/floor/carpet,
 /area/prison/pirate)
 "gn" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
 /turf/open/shuttle,
 /area/prison/pirate)
 "go" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/door/airlock/centcom{
+/obj/structure/machinery/door/airlock/centcom{
 	name = "Rocinante Bridge"
 	},
 /turf/open/shuttle,
 /area/prison/pirate)
 "gp" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -3261,10 +3261,10 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "gq" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "gr" = (
@@ -3293,7 +3293,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/west)
 "gu" = (
-/obj/machinery/door/airlock/prison/horizontal{
+/obj/structure/machinery/door/airlock/prison/horizontal{
 	density = 0;
 	icon_state = "door_open";
 	opacity = 0
@@ -3313,7 +3313,7 @@
 "gx" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/donkpockets,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /obj/item/device/mass_spectrometer/adv/objective,
@@ -3327,7 +3327,7 @@
 	},
 /area/prison/pirate)
 "gz" = (
-/obj/machinery/door/airlock/centcom{
+/obj/structure/machinery/door/airlock/centcom{
 	name = "Rocinante Captain's Quarters"
 	},
 /turf/open/shuttle,
@@ -3336,7 +3336,7 @@
 /obj/structure/closet/crate/medical,
 /obj/item/storage/firstaid/rad,
 /obj/item/storage/firstaid/fire,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /obj/item/storage/firstaid/fire,
@@ -3344,7 +3344,7 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "gB" = (
-/obj/machinery/pipedispenser/disposal/orderable,
+/obj/structure/machinery/pipedispenser/disposal/orderable,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "gC" = (
@@ -3358,12 +3358,12 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
 /turf/open/floor/plating,
@@ -3375,12 +3375,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -3407,12 +3407,12 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -3423,7 +3423,7 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "gF" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -3432,12 +3432,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -3459,12 +3459,12 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -3489,7 +3489,7 @@
 /area/prison/pirate)
 "gJ" = (
 /obj/structure/bed,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /obj/item/weapon/gun/rifle/mar40,
@@ -3504,7 +3504,7 @@
 	},
 /area/prison/pirate)
 "gL" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/carpet,
@@ -3522,11 +3522,11 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "gO" = (
-/obj/machinery/pipedispenser/orderable,
+/obj/structure/machinery/pipedispenser/orderable,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "gP" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -3537,8 +3537,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
 /turf/open/floor/plating,
@@ -3549,7 +3549,7 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "gS" = (
-/obj/machinery/power/apc{
+/obj/structure/machinery/power/apc{
 	dir = 2;
 	pixel_x = 0;
 	pixel_y = -24;
@@ -3567,16 +3567,16 @@
 /turf/open/space,
 /area/space)
 "gU" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/shuttle{
 	icon_state = "floor7"
 	},
 /area/prison/pirate)
 "gV" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	on = 1
 	},
@@ -3602,7 +3602,7 @@
 /turf/open/floor/carpet,
 /area/prison/pirate)
 "gZ" = (
-/obj/machinery/door/airlock/highsecurity{
+/obj/structure/machinery/door/airlock/highsecurity{
 	name = "Solitary Confinement"
 	},
 /turf/open/floor/plating,
@@ -3621,7 +3621,7 @@
 	},
 /area/prison/pirate)
 "hc" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 8
 	},
 /turf/open/shuttle{
@@ -3629,15 +3629,15 @@
 	},
 /area/prison/pirate)
 "hd" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "he" = (
 /obj/structure/closet/walllocker/emerglocker/east,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	on = 1
 	},
@@ -3649,7 +3649,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "yellow"
@@ -3657,7 +3657,7 @@
 /area/prison/cellblock/mediumsec/west)
 "hg" = (
 /obj/structure/bed,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/shuttle{
@@ -3666,12 +3666,12 @@
 /area/prison/pirate)
 "hh" = (
 /obj/structure/bed,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (NORTHEAST)";
 	icon_state = "intact-scrubbers";
 	dir = 5
@@ -3681,12 +3681,12 @@
 	},
 /area/prison/pirate)
 "hi" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -3696,12 +3696,12 @@
 	},
 /area/prison/pirate)
 "hj" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
 /obj/item/ammo_magazine/rifle/mar40,
@@ -3716,7 +3716,7 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "hl" = (
-/obj/machinery/power/apc{
+/obj/structure/machinery/power/apc{
 	dir = 1;
 	pixel_y = 24;
 	start_charge = 90
@@ -3728,12 +3728,12 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "hm" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
 /obj/structure/cable{
@@ -3741,18 +3741,18 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/alarm/almayer{
+/obj/structure/machinery/alarm/almayer{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "hn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -3760,8 +3760,8 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "ho" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
@@ -3769,10 +3769,10 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "hp" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 8
 	},
-/obj/machinery/light/small,
+/obj/structure/machinery/light/small,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "hq" = (
@@ -3787,22 +3787,22 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "hr" = (
-/obj/machinery/sleeper,
+/obj/structure/machinery/sleeper,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "hs" = (
-/obj/machinery/sleep_console,
+/obj/structure/machinery/sleep_console,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "ht" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -3824,17 +3824,17 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "hv" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (NORTHEAST)";
 	icon_state = "intact-scrubbers";
 	dir = 5
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/shuttle{
@@ -3842,26 +3842,26 @@
 	},
 /area/prison/pirate)
 "hw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
-/obj/machinery/door/airlock/maintenance_hatch{
+/obj/structure/machinery/door/airlock/maintenance_hatch{
 	name = "Rocinante Storage/Medical"
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "hx" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -3872,8 +3872,8 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "hy" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 8;
@@ -3883,17 +3883,17 @@
 /area/prison/pirate)
 "hz" = (
 /obj/structure/closet/walllocker/emerglocker/north,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
-/obj/machinery/marine_turret/premade/dumb{
+/obj/structure/machinery/marine_turret/premade/dumb{
 	dir = 4
 	},
 /turf/open/shuttle{
@@ -3902,10 +3902,10 @@
 /area/prison/pirate)
 "hA" = (
 /obj/structure/closet/walllocker/emerglocker/north,
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 8
 	},
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/structure/table/reinforced{
@@ -3923,7 +3923,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/west)
 "hC" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -3932,7 +3932,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor{
@@ -3951,7 +3951,7 @@
 	},
 /area/prison/pirate)
 "hF" = (
-/obj/machinery/door/airlock{
+/obj/structure/machinery/door/airlock{
 	name = "Toilet"
 	},
 /turf/open/floor{
@@ -3972,8 +3972,8 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "hH" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -3982,7 +3982,7 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "hI" = (
-/obj/machinery/door/airlock/multi_tile/secure{
+/obj/structure/machinery/door/airlock/multi_tile/secure{
 	dir = 2;
 	name = "Rocinante Secondary Airlock"
 	},
@@ -3991,7 +3991,7 @@
 	},
 /area/prison/pirate)
 "hJ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
@@ -4002,7 +4002,7 @@
 	},
 /area/prison/pirate)
 "hK" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	on = 1
 	},
@@ -4051,11 +4051,11 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "hO" = (
-/obj/machinery/door/airlock/engineering{
+/obj/structure/machinery/door/airlock/engineering{
 	name = "Rocinante Engine Room"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -4064,7 +4064,7 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "hP" = (
-/obj/machinery/door/airlock/prison{
+/obj/structure/machinery/door/airlock/prison{
 	density = 0;
 	icon_state = "door_open";
 	opacity = 0
@@ -4079,7 +4079,7 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "hR" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -4089,7 +4089,7 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "hS" = (
-/obj/machinery/atmospherics/pipe/tank/air{
+/obj/structure/machinery/atmospherics/pipe/tank/air{
 	dir = 4
 	},
 /turf/open/floor/plating{
@@ -4098,13 +4098,13 @@
 	},
 /area/prison/pirate)
 "hT" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/cyan{
+/obj/structure/machinery/atmospherics/pipe/manifold/visible/cyan{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "hU" = (
-/obj/machinery/atmospherics/pipe/simple/visible/universal{
+/obj/structure/machinery/atmospherics/pipe/simple/visible/universal{
 	tag = "icon-map_universal (EAST)";
 	icon_state = "map_universal";
 	dir = 4
@@ -4113,10 +4113,10 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "hV" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -4128,12 +4128,12 @@
 	icon_state = "2-4";
 	tag = "icon-1-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/machinery/alarm/almayer{
+/obj/structure/machinery/alarm/almayer{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -4143,7 +4143,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/smes/buildable{
+/obj/structure/machinery/power/smes/buildable{
 	charge = 5e+006;
 	chargelevel = 450000;
 	chargemode = 1;
@@ -4162,7 +4162,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/power/smes/buildable{
+/obj/structure/machinery/power/smes/buildable{
 	charge = 5e+006;
 	chargelevel = 450000;
 	chargemode = 1;
@@ -4183,8 +4183,8 @@
 	icon_state = "2-8";
 	tag = "icon-1-4"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (NORTHEAST)";
 	icon_state = "intact-scrubbers";
 	dir = 5
@@ -4197,22 +4197,22 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "ia" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "ib" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/purple{
+/obj/structure/machinery/atmospherics/pipe/manifold/visible/purple{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "ic" = (
-/obj/machinery/atmospherics/pipe/tank/carbon_dioxide{
+/obj/structure/machinery/atmospherics/pipe/tank/carbon_dioxide{
 	dir = 8;
 	start_pressure = 435
 	},
@@ -4235,7 +4235,7 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "ie" = (
-/obj/machinery/atmospherics/portables_connector{
+/obj/structure/machinery/atmospherics/portables_connector{
 	tag = "icon-map_connector (EAST)";
 	icon_state = "map_connector";
 	dir = 4
@@ -4251,25 +4251,25 @@
 	icon_state = "rwindow";
 	dir = 1
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "if" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+/obj/structure/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/pump/high_power{
+/obj/structure/machinery/atmospherics/binary/pump/high_power{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "ig" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
+/obj/structure/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 1
 	},
-/obj/machinery/meter,
+/obj/structure/machinery/meter,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "ih" = (
@@ -4279,10 +4279,10 @@
 	icon_state = "2-4";
 	tag = "icon-1-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+/obj/structure/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "ii" = (
@@ -4290,12 +4290,12 @@
 	tag = "icon-1-8";
 	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+/obj/structure/machinery/atmospherics/pipe/simple/visible/yellow{
 	tag = "icon-intact (SOUTHWEST)";
 	icon_state = "intact";
 	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
@@ -4307,12 +4307,12 @@
 	tag = "icon-0-2";
 	icon_state = "0-2"
 	},
-/obj/machinery/power/terminal{
+/obj/structure/machinery/power/terminal{
 	tag = "icon-term (NORTH)";
 	icon_state = "term";
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -4324,10 +4324,10 @@
 	tag = "icon-1-4";
 	icon_state = "1-4"
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+/obj/structure/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
@@ -4341,21 +4341,21 @@
 	icon_state = "2-8";
 	tag = "icon-1-4"
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+/obj/structure/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "im" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+/obj/structure/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
-/obj/machinery/atmospherics/binary/pump/high_power,
+/obj/structure/machinery/atmospherics/binary/pump/high_power,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "in" = (
-/obj/machinery/atmospherics/portables_connector{
+/obj/structure/machinery/atmospherics/portables_connector{
 	tag = "icon-map_connector (WEST)";
 	icon_state = "map_connector";
 	dir = 8
@@ -4366,13 +4366,13 @@
 	icon_state = "rwindow";
 	dir = 8
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "io" = (
-/obj/machinery/atmospherics/portables_connector{
+/obj/structure/machinery/atmospherics/portables_connector{
 	tag = "icon-map_connector (EAST)";
 	icon_state = "map_connector";
 	dir = 4
@@ -4386,16 +4386,16 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "ip" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+/obj/structure/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
-/obj/machinery/atmospherics/portables_connector{
+/obj/structure/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "iq" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
+/obj/structure/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -4405,14 +4405,14 @@
 	tag = "icon-1-2";
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
 	on = 1
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "is" = (
-/obj/machinery/atmospherics/binary/circulator{
+/obj/structure/machinery/atmospherics/binary/circulator{
 	anchored = 1;
 	dir = 1;
 	icon_state = "circ-off";
@@ -4423,7 +4423,7 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "it" = (
-/obj/machinery/power/generator{
+/obj/structure/machinery/power/generator{
 	anchored = 1;
 	dir = 4;
 	icon_state = "teg-broken";
@@ -4435,7 +4435,7 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "iu" = (
-/obj/machinery/atmospherics/binary/circulator{
+/obj/structure/machinery/atmospherics/binary/circulator{
 	anchored = 1
 	},
 /obj/effect/decal/warning_stripes,
@@ -4447,19 +4447,19 @@
 	tag = "icon-1-2";
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "iw" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
+/obj/structure/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 8
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "ix" = (
-/obj/machinery/atmospherics/portables_connector{
+/obj/structure/machinery/atmospherics/portables_connector{
 	tag = "icon-map_connector (WEST)";
 	icon_state = "map_connector";
 	dir = 8
@@ -4488,13 +4488,13 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "iA" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+/obj/structure/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "iB" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+/obj/structure/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 9
 	},
 /turf/open/floor/plating,
@@ -4507,7 +4507,7 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "iD" = (
-/obj/machinery/atmospherics/pipe/simple/insulated{
+/obj/structure/machinery/atmospherics/pipe/simple/insulated{
 	tag = "icon-intact (NORTHEAST)";
 	icon_state = "intact";
 	dir = 5
@@ -4521,7 +4521,7 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "iE" = (
-/obj/machinery/atmospherics/pipe/simple/insulated{
+/obj/structure/machinery/atmospherics/pipe/simple/insulated{
 	tag = "icon-intact (SOUTHWEST)";
 	icon_state = "intact";
 	dir = 10
@@ -4529,7 +4529,7 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "iF" = (
-/obj/machinery/atmospherics/pipe/simple/insulated{
+/obj/structure/machinery/atmospherics/pipe/simple/insulated{
 	tag = "icon-intact (SOUTHEAST)";
 	icon_state = "intact";
 	dir = 6
@@ -4537,7 +4537,7 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "iG" = (
-/obj/machinery/atmospherics/pipe/simple/insulated{
+/obj/structure/machinery/atmospherics/pipe/simple/insulated{
 	tag = "icon-intact (NORTHWEST)";
 	icon_state = "intact";
 	dir = 9
@@ -4558,7 +4558,7 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "iI" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+/obj/structure/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 5
 	},
 /turf/open/floor/plating,
@@ -4572,7 +4572,7 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "iL" = (
-/obj/machinery/door/airlock/prison{
+/obj/structure/machinery/door/airlock/prison{
 	density = 0;
 	icon_state = "door_open";
 	opacity = 0
@@ -4582,31 +4582,31 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "iM" = (
-/obj/machinery/atmospherics/pipe/simple/insulated{
+/obj/structure/machinery/atmospherics/pipe/simple/insulated{
 	tag = "icon-intact (SOUTHEAST)";
 	icon_state = "intact";
 	dir = 6
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "iN" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/green{
+/obj/structure/machinery/atmospherics/pipe/manifold/visible/green{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "iO" = (
-/obj/machinery/meter,
-/obj/machinery/atmospherics/pipe/manifold/visible/green{
+/obj/structure/machinery/meter,
+/obj/structure/machinery/atmospherics/pipe/manifold/visible/green{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
 "iP" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/structure/machinery/atmospherics/binary/pump{
 	tag = "icon-map_off (EAST)";
 	icon_state = "map_off";
 	dir = 4
@@ -4618,16 +4618,16 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "iQ" = (
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/manifold4w/hidden/green,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "iR" = (
-/obj/machinery/meter,
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/green,
+/obj/structure/machinery/meter,
+/obj/structure/machinery/atmospherics/pipe/manifold4w/hidden/green,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "iS" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/structure/machinery/atmospherics/binary/pump{
 	tag = "icon-map_off (WEST)";
 	icon_state = "map_off";
 	dir = 8
@@ -4639,12 +4639,12 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "iT" = (
-/obj/machinery/atmospherics/pipe/simple/insulated{
+/obj/structure/machinery/atmospherics/pipe/simple/insulated{
 	tag = "icon-intact (SOUTHWEST)";
 	icon_state = "intact";
 	dir = 10
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -4657,7 +4657,7 @@
 	},
 /area/prison/pirate)
 "iV" = (
-/obj/machinery/atmospherics/pipe/tank/phoron{
+/obj/structure/machinery/atmospherics/pipe/tank/phoron{
 	dir = 1;
 	start_pressure = 0;
 	volume = 0
@@ -4675,11 +4675,11 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "iX" = (
-/obj/machinery/atmospherics/pipe/simple/insulated,
+/obj/structure/machinery/atmospherics/pipe/simple/insulated,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "iY" = (
-/obj/machinery/atmospherics/pipe/tank/oxygen{
+/obj/structure/machinery/atmospherics/pipe/tank/oxygen{
 	dir = 1;
 	icon_state = "o2_map";
 	tag = "icon-o2_map (WEST)";
@@ -4713,7 +4713,7 @@
 /area/prison/pirate)
 "jc" = (
 /obj/structure/window/framed/prison/reinforced/hull,
-/obj/machinery/atmospherics/pipe/simple/insulated,
+/obj/structure/machinery/atmospherics/pipe/simple/insulated,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "jd" = (
@@ -4740,7 +4740,7 @@
 "jf" = (
 /obj/structure/shuttle/engine/heater,
 /obj/effect/decal/warning_stripes,
-/obj/machinery/atmospherics/pipe/simple/insulated,
+/obj/structure/machinery/atmospherics/pipe/simple/insulated,
 /obj/structure/window/reinforced/toughened{
 	tag = "icon-rwindow (NORTH)";
 	icon_state = "rwindow";
@@ -4769,7 +4769,7 @@
 	},
 /area/prison/recreation/highsec/s)
 "jj" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -4812,12 +4812,12 @@
 "jo" = (
 /obj/structure/rack,
 /obj/item/clothing/under/color/orange,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (NORTHEAST)";
 	icon_state = "intact-scrubbers";
 	dir = 5
@@ -4829,10 +4829,10 @@
 	},
 /area/prison/laundry)
 "jp" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
 /turf/open/floor/prison{
@@ -4850,12 +4850,12 @@
 	},
 /area/prison/recreation/highsec/s)
 "jr" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
 /turf/open/floor/prison{
@@ -4865,7 +4865,7 @@
 	},
 /area/prison/laundry)
 "js" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "Toilet";
 	req_one_access = list()
@@ -4877,7 +4877,7 @@
 	},
 /area/prison/recreation/highsec/s)
 "jt" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
@@ -4889,7 +4889,7 @@
 	},
 /area/prison/laundry)
 "ju" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 1
 	},
 /obj/effect/landmark{
@@ -4912,7 +4912,7 @@
 	},
 /area/prison/recreation/highsec/s)
 "jw" = (
-/obj/machinery/light/small,
+/obj/structure/machinery/light/small,
 /turf/open/floor/prison{
 	tag = "icon-kitchen (SOUTHWEST)";
 	icon_state = "kitchen";
@@ -4920,7 +4920,7 @@
 	},
 /area/prison/recreation/highsec/s)
 "jx" = (
-/obj/machinery/washing_machine,
+/obj/structure/machinery/washing_machine,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -4944,7 +4944,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "jA" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (WEST)";
 	icon_state = "bulb1";
 	dir = 8
@@ -4982,7 +4982,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "jD" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -5013,7 +5013,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "jF" = (
-/obj/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
 	req_one_access = list()
 	},
@@ -5073,7 +5073,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "jM" = (
-/obj/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure{
 	density = 0;
 	dir = 2;
 	icon_state = "door_open";
@@ -5097,7 +5097,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "jP" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -5117,12 +5117,12 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
 /turf/open/floor/prison{
@@ -5135,16 +5135,16 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	req_one_access = list()
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
 "jT" = (
-/obj/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	req_one_access = list()
 	},
@@ -5156,8 +5156,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/west)
 "jV" = (
@@ -5170,9 +5170,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/light/small{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -5183,16 +5183,16 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	req_one_access = list()
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/west)
 "jY" = (
-/obj/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	req_one_access = list()
 	},
@@ -5210,8 +5210,8 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "yellow"
@@ -5229,10 +5229,10 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -5252,8 +5252,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	icon_state = "yellowcorner"
 	},
@@ -5267,7 +5267,7 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "ke" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
@@ -5283,12 +5283,12 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "yellow"
@@ -5306,7 +5306,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	dir = 4;
@@ -5324,7 +5324,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "yellow"
@@ -5354,7 +5354,7 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "kl" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -5368,7 +5368,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
 /turf/open/floor/prison{
@@ -5384,7 +5384,7 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "ko" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/blood,
@@ -5435,7 +5435,7 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "ks" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
 	},
@@ -5500,7 +5500,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	req_one_access = list()
 	},
@@ -5542,13 +5542,13 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/south)
 "kD" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	on = 1
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/south)
 "kE" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"

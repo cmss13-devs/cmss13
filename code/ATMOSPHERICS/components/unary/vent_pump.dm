@@ -1,6 +1,6 @@
 #define PRESSURE_CHECK_INTERNAL 2
 
-/obj/machinery/atmospherics/unary/vent_pump
+/obj/structure/machinery/atmospherics/unary/vent_pump
 	icon = 'icons/obj/pipes/vent_pump.dmi'
 	icon_state = "map_vent"
 
@@ -21,18 +21,18 @@
 
 	var/welded = 0 // Added for aliens -- TLE
 
-/obj/machinery/atmospherics/unary/vent_pump/on
+/obj/structure/machinery/atmospherics/unary/vent_pump/on
 	on = 1
 	icon_state = "map_vent_out"
 
-/obj/machinery/atmospherics/unary/vent_pump/siphon
+/obj/structure/machinery/atmospherics/unary/vent_pump/siphon
 	pump_direction = 0
 
-/obj/machinery/atmospherics/unary/vent_pump/siphon/on
+/obj/structure/machinery/atmospherics/unary/vent_pump/siphon/on
 	on = 1
 	icon_state = "map_vent_in"
 
-/obj/machinery/atmospherics/unary/vent_pump/New()
+/obj/structure/machinery/atmospherics/unary/vent_pump/New()
 	..()
 
 	icon = null
@@ -46,14 +46,14 @@
 	if(ticker && ticker.current_state == GAME_STATE_PLAYING)//if the game is running
 		src.initialize()
 
-/obj/machinery/atmospherics/unary/vent_pump/high_volume
+/obj/structure/machinery/atmospherics/unary/vent_pump/high_volume
 	name = "Large Air Vent"
 
 
-/obj/machinery/atmospherics/unary/vent_pump/engine
+/obj/structure/machinery/atmospherics/unary/vent_pump/engine
 	name = "Engine Core Vent"
 
-/obj/machinery/atmospherics/unary/vent_pump/update_icon(var/safety = 0)
+/obj/structure/machinery/atmospherics/unary/vent_pump/update_icon(var/safety = 0)
 	if(!check_icon_cache())
 		return
 	if (!node)
@@ -67,7 +67,7 @@
 	if(!istype(T))
 		return
 
-	if(T.intact_tile && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+	if(T.intact_tile && node && node.level == 1 && istype(node, /obj/structure/machinery/atmospherics/pipe))
 		vent_icon += "h"
 
 	if(welded)
@@ -79,13 +79,13 @@
 
 	overlays += icon_manager.get_atmos_icon("device", , , vent_icon)
 
-/obj/machinery/atmospherics/unary/vent_pump/update_underlays()
+/obj/structure/machinery/atmospherics/unary/vent_pump/update_underlays()
 	if(..())
 		underlays.Cut()
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		if(T.intact_tile && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
+		if(T.intact_tile && node && node.level == 1 && istype(node, /obj/structure/machinery/atmospherics/pipe))
 			return
 		else
 			if(node)
@@ -93,11 +93,11 @@
 			else
 				add_underlay(T,, dir)
 
-/obj/machinery/atmospherics/unary/vent_pump/hide()
+/obj/structure/machinery/atmospherics/unary/vent_pump/hide()
 	update_icon()
 	update_underlays()
 
-/obj/machinery/atmospherics/unary/vent_pump/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/atmospherics/unary/vent_pump/attackby(obj/item/W, mob/user)
 	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(1, user))
@@ -148,7 +148,7 @@
 		new /obj/item/pipe(loc, make_from = src)
 		qdel(src)
 
-/obj/machinery/atmospherics/unary/vent_pump/examine(mob/user)
+/obj/structure/machinery/atmospherics/unary/vent_pump/examine(mob/user)
 	..()
 	if(get_dist(user, src) <= 1)
 		to_chat(user, SPAN_INFO("A small gauge in the corner reads [round(last_flow_rate, 0.1)] L/s; 0W."))
@@ -157,12 +157,12 @@
 	if(welded)
 		to_chat(user, SPAN_INFO("It seems welded shut."))
 
-/obj/machinery/atmospherics/unary/vent_pump/Dispose()
+/obj/structure/machinery/atmospherics/unary/vent_pump/Dispose()
 	if(initial_loc)
 		initial_loc.air_vent_info -= id_tag
 		initial_loc.air_vent_names -= id_tag
 	. = ..()
 
 
-/obj/machinery/atmospherics/unary/vent_pump/can_crawl_through()
+/obj/structure/machinery/atmospherics/unary/vent_pump/can_crawl_through()
 	return !welded

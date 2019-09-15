@@ -1,6 +1,6 @@
 
 /proc/power_failure(var/announce = 1)
-	for(var/obj/machinery/power/smes/S in machines)
+	for(var/obj/structure/machinery/power/smes/S in machines)
 		if(S.z != 3) // Ship only
 			continue
 		S.last_charge = S.charge
@@ -12,7 +12,7 @@
 		S.updateicon()
 		S.power_change()
 
-	for(var/obj/machinery/power/apc/C in machines)
+	for(var/obj/structure/machinery/power/apc/C in machines)
 		if(C.cell && C.z == 3)
 			C.cell.charge = 0
 
@@ -23,7 +23,7 @@
 		marine_announcement("Abnormal activity detected in the ship power system. As a precaution, power must be shut down for an indefinite duration.", "Critical Power Failure", 'sound/AI/poweroff.ogg')
 
 /proc/power_restore(var/announce = 1)
-	for(var/obj/machinery/power/smes/S in machines)
+	for(var/obj/structure/machinery/power/smes/S in machines)
 		if(S.z != 3)
 			continue
 		S.charge = S.capacity
@@ -32,7 +32,7 @@
 		S.updateicon()
 		S.power_change()
 
-	for(var/obj/machinery/power/apc/C in machines)
+	for(var/obj/structure/machinery/power/apc/C in machines)
 		if(C.cell && C.z == 3)
 			C.cell.charge = C.cell.maxcharge
 
@@ -42,7 +42,7 @@
 
 /proc/power_restore_quick(var/announce = 1)
 
-	for(var/obj/machinery/power/smes/S in machines)
+	for(var/obj/structure/machinery/power/smes/S in machines)
 		if(S.z != 3) // Ship only
 			continue
 		S.charge = S.capacity
@@ -57,14 +57,14 @@
 
 /proc/power_restore_everything(var/announce = 1)
 
-	for(var/obj/machinery/power/smes/S in machines)
+	for(var/obj/structure/machinery/power/smes/S in machines)
 		S.charge = S.capacity
 		S.output = S.output_level_max
 		S.online = 1
 		S.updateicon()
 		S.power_change()
 
-	for(var/obj/machinery/power/apc/C in machines)
+	for(var/obj/structure/machinery/power/apc/C in machines)
 		if(C.cell)
 			C.cell.charge = C.cell.maxcharge
 
@@ -73,7 +73,7 @@
 		marine_announcement("Power has been restored. Reason: Unknown.", "Power Systems Nominal", 'sound/AI/poweron.ogg')
 
 /proc/power_restore_ship_reactors(var/announce = 1)
-	for(var/obj/machinery/power/fusion_engine/FE in machines)
+	for(var/obj/structure/machinery/power/fusion_engine/FE in machines)
 		FE.buildstate = 0
 		FE.is_on = 1
 		FE.fusion_cell = new

@@ -52,8 +52,8 @@ var/list/power_machines = list()
 		if (!X || X.gcDestroyed || X.disposed)
 			continue
 
-		if (istype(X, /obj/machinery))
-			var/obj/machinery/M = X
+		if (istype(X, /obj/structure/machinery))
+			var/obj/structure/machinery/M = X
 			if (M.process() == PROCESS_KILL)
 				//M.inMachineList = FALSE
 				power_machines.Remove(M)
@@ -70,7 +70,7 @@ var/list/power_machines = list()
 			if(A.powerupdate)
 				A.powerupdate -= 1
 				A.clear_usage()
-				for(var/obj/machinery/M in A.area_machines) // should take it to O(n^2) and hopefully less expensive.
+				for(var/obj/structure/machinery/M in A.area_machines) // should take it to O(n^2) and hopefully less expensive.
 					if(M)
 						//check if the area has power for M's channel
 						//this will keep stat updated in case the machine is moved from one area to another.

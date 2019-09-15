@@ -23,7 +23,7 @@
 	var/state = STATE_IDLE
 	var/target_state = TARGET_NONE
 
-/datum/computer/file/embedded_program/airlock/New(var/obj/machinery/embedded_controller/M)
+/datum/computer/file/embedded_program/airlock/New(var/obj/structure/machinery/embedded_controller/M)
 	..(M)
 
 	memory["chamber_sensor_pressure"] = ONE_ATMOSPHERE
@@ -36,8 +36,8 @@
 	memory["purge"] = 0
 	memory["secure"] = 0
 
-	if (istype(M, /obj/machinery/embedded_controller/radio/airlock))	//if our controller is an airlock controller than we can auto-init our tags
-		var/obj/machinery/embedded_controller/radio/airlock/controller = M
+	if (istype(M, /obj/structure/machinery/embedded_controller/radio/airlock))	//if our controller is an airlock controller than we can auto-init our tags
+		var/obj/structure/machinery/embedded_controller/radio/airlock/controller = M
 		tag_exterior_door = controller.tag_exterior_door? controller.tag_exterior_door : "[id_tag]_outer"
 		tag_interior_door = controller.tag_interior_door? controller.tag_interior_door : "[id_tag]_inner"
 		tag_airpump = controller.tag_airpump? controller.tag_airpump : "[id_tag]_pump"
@@ -81,7 +81,7 @@
 			memory["pump_status"] = "off"
 
 	else if(receive_tag==id_tag)
-		if(istype(master, /obj/machinery/embedded_controller/radio/airlock/access_controller))
+		if(istype(master, /obj/structure/machinery/embedded_controller/radio/airlock/access_controller))
 			switch(signal.data["command"])
 				if("cycle_exterior")
 					receive_user_command("cycle_ext_door")

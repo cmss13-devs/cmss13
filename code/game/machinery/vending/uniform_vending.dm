@@ -1,10 +1,10 @@
-/obj/machinery/cm_vending/clothes_personal
+/obj/structure/machinery/cm_vending/clothes_personal
 	name = "ColMarTech Automated Personal Uniform Closet"
 	desc = "An automated closet hooked up to a colossal storage of standard-issue uniform variants."
 	icon_state = "uniform_marine"
 	use_points = TRUE
 
-/obj/machinery/cm_vending/clothes_personal/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/cm_vending/clothes_personal/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 
 	if(!ishuman(user)) return
 	var/mob/living/carbon/human/H = user
@@ -56,7 +56,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/machinery/cm_vending/clothes_personal/Topic(href, href_list)
+/obj/structure/machinery/cm_vending/clothes_personal/Topic(href, href_list)
 	if(stat & (BROKEN|NOPOWER))
 		return
 	if(usr.is_mob_incapacitated())

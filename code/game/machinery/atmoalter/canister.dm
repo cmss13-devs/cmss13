@@ -1,4 +1,4 @@
-/obj/machinery/portable_atmospherics/canister
+/obj/structure/machinery/portable_atmospherics/canister
 	name = "canister"
 	icon = 'icons/obj/structures/machinery/atmos.dmi'
 	icon_state = "yellow"
@@ -11,55 +11,55 @@
 	var/can_label = 1
 	use_power = 0
 
-/obj/machinery/portable_atmospherics/canister/sleeping_agent
+/obj/structure/machinery/portable_atmospherics/canister/sleeping_agent
 	name = "Canister: \[N2O\]"
 	icon_state = "redws"
 	canister_color = "redws"
 	can_label = 0
 
-/obj/machinery/portable_atmospherics/canister/nitrogen
+/obj/structure/machinery/portable_atmospherics/canister/nitrogen
 	name = "Canister: \[N2\]"
 	icon_state = "red"
 	canister_color = "red"
 	can_label = 0
 
-/obj/machinery/portable_atmospherics/canister/oxygen
+/obj/structure/machinery/portable_atmospherics/canister/oxygen
 	name = "Canister: \[O2\]"
 	icon_state = "blue"
 	canister_color = "blue"
 	can_label = 0
 
-/obj/machinery/portable_atmospherics/canister/phoron
+/obj/structure/machinery/portable_atmospherics/canister/phoron
 	name = "Canister \[Phoron\]"
 	icon_state = "orange"
 	canister_color = "orange"
 	can_label = 0
 
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide
+/obj/structure/machinery/portable_atmospherics/canister/carbon_dioxide
 	name = "Canister \[CO2\]"
 	icon_state = "black"
 	canister_color = "black"
 	can_label = 0
 
-/obj/machinery/portable_atmospherics/canister/air
+/obj/structure/machinery/portable_atmospherics/canister/air
 	name = "Canister \[Air\]"
 	icon_state = "grey"
 	canister_color = "grey"
 	can_label = 0
 
-/obj/machinery/portable_atmospherics/canister/air/airlock
+/obj/structure/machinery/portable_atmospherics/canister/air/airlock
 
-/obj/machinery/portable_atmospherics/canister/empty/oxygen
+/obj/structure/machinery/portable_atmospherics/canister/empty/oxygen
 	name = "Canister: \[O2\]"
 	icon_state = "blue"
 	canister_color = "blue"
 
-/obj/machinery/portable_atmospherics/canister/empty/phoron
+/obj/structure/machinery/portable_atmospherics/canister/empty/phoron
 	name = "Canister \[Phoron\]"
 	icon_state = "orange"
 	canister_color = "orange"
 
-/obj/machinery/portable_atmospherics/canister/update_icon()
+/obj/structure/machinery/portable_atmospherics/canister/update_icon()
 /*
 update_flag
 2 = connected_port
@@ -82,7 +82,7 @@ update_flag
 	return
 
 
-/obj/machinery/portable_atmospherics/canister/update_health(var/damage = 0)
+/obj/structure/machinery/portable_atmospherics/canister/update_health(var/damage = 0)
 	..()
 	if (health <= 20)
 		destroyed = 1
@@ -90,19 +90,18 @@ update_flag
 		density = 0
 		update_icon()
 
-/obj/machinery/portable_atmospherics/canister/process()
+/obj/structure/machinery/portable_atmospherics/canister/process()
 	if (destroyed)
 		return
 	..()
 
-
-/obj/machinery/portable_atmospherics/canister/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/machinery/portable_atmospherics/canister/bullet_act(var/obj/item/projectile/Proj)
 	if(Proj.ammo.damage)
 		update_health(round(Proj.ammo.damage / 2))
 	..()
 	return 1
 
-/obj/machinery/portable_atmospherics/canister/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/canister/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(!istype(W, /obj/item/tool/wrench) && !istype(W, /obj/item/tank) && !istype(W, /obj/item/device/analyzer) && !istype(W, /obj/item/device/pda))
 		visible_message(SPAN_DANGER("[user] hits the [src] with a [W]!"))
 		update_health(W.force)
@@ -111,39 +110,39 @@ update_flag
 
 	nanomanager.update_uis(src) // Update all NanoUIs attached to src
 
-/obj/machinery/portable_atmospherics/canister/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/canister/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/portable_atmospherics/canister/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/canister/attack_hand(var/mob/user as mob)
 	return src.ui_interact(user)
 
-/obj/machinery/portable_atmospherics/canister/phoron/New()
+/obj/structure/machinery/portable_atmospherics/canister/phoron/New()
 	..()
 	src.update_icon()
 	return 1
 
-/obj/machinery/portable_atmospherics/canister/oxygen/New()
+/obj/structure/machinery/portable_atmospherics/canister/oxygen/New()
 	..()
 	src.update_icon()
 	return 1
 
-/obj/machinery/portable_atmospherics/canister/sleeping_agent/New()
+/obj/structure/machinery/portable_atmospherics/canister/sleeping_agent/New()
 	..()
 	src.update_icon()
 	return 1
 
 
-/obj/machinery/portable_atmospherics/canister/nitrogen/New()
+/obj/structure/machinery/portable_atmospherics/canister/nitrogen/New()
 	..()
 	src.update_icon()
 	return 1
 
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide/New()
+/obj/structure/machinery/portable_atmospherics/canister/carbon_dioxide/New()
 	..()
 	return 1
 
 
-/obj/machinery/portable_atmospherics/canister/air/New()
+/obj/structure/machinery/portable_atmospherics/canister/air/New()
 	..()
 	src.update_icon()
 	return 1

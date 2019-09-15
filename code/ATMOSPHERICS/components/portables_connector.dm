@@ -1,4 +1,4 @@
-/obj/machinery/atmospherics/portables_connector
+/obj/structure/machinery/atmospherics/portables_connector
 	icon = 'icons/obj/pipes/connector.dmi'
 	icon_state = "map_connector"
 
@@ -8,9 +8,9 @@
 	dir = SOUTH
 	initialize_directions = SOUTH
 
-	var/obj/machinery/portable_atmospherics/connected_device
+	var/obj/structure/machinery/portable_atmospherics/connected_device
 
-	var/obj/machinery/atmospherics/node
+	var/obj/structure/machinery/atmospherics/node
 
 	var/datum/pipe_network/network
 
@@ -19,14 +19,14 @@
 	level = 1
 
 
-/obj/machinery/atmospherics/portables_connector/New()
+/obj/structure/machinery/atmospherics/portables_connector/New()
 	initialize_directions = dir
 	..()
 
-/obj/machinery/atmospherics/portables_connector/update_icon()
+/obj/structure/machinery/atmospherics/portables_connector/update_icon()
 	icon_state = "connector"
 
-/obj/machinery/atmospherics/portables_connector/update_underlays()
+/obj/structure/machinery/atmospherics/portables_connector/update_underlays()
 	if(..())
 		underlays.Cut()
 		var/turf/T = get_turf(src)
@@ -34,10 +34,10 @@
 			return
 		add_underlay(T, node, dir)
 
-/obj/machinery/atmospherics/portables_connector/hide(var/i)
+/obj/structure/machinery/atmospherics/portables_connector/hide(var/i)
 	update_underlays()
 
-/obj/machinery/atmospherics/portables_connector/process()
+/obj/structure/machinery/atmospherics/portables_connector/process()
 	..()
 	if(!on)
 		return
@@ -47,7 +47,7 @@
 	return 1
 
 // Housekeeping and pipe network stuff below
-/obj/machinery/atmospherics/portables_connector/network_expand(datum/pipe_network/new_network, obj/machinery/atmospherics/pipe/reference)
+/obj/structure/machinery/atmospherics/portables_connector/network_expand(datum/pipe_network/new_network, obj/structure/machinery/atmospherics/pipe/reference)
 	if(reference == node)
 		network = new_network
 
@@ -58,7 +58,7 @@
 
 	return null
 
-/obj/machinery/atmospherics/portables_connector/Dispose()
+/obj/structure/machinery/atmospherics/portables_connector/Dispose()
 	if(connected_device)
 		connected_device.disconnect()
 	if(node)
@@ -67,12 +67,12 @@
 	node = null
 	. = ..()
 
-/obj/machinery/atmospherics/portables_connector/initialize()
+/obj/structure/machinery/atmospherics/portables_connector/initialize()
 	if(node) return
 
 	var/node_connect = dir
 
-	for(var/obj/machinery/atmospherics/target in get_step(src,node_connect))
+	for(var/obj/structure/machinery/atmospherics/target in get_step(src,node_connect))
 		if(target.initialize_directions & get_dir(target,src))
 			var/c = check_connect_types(target,src)
 			if (c)
@@ -84,14 +84,14 @@
 	update_icon()
 	update_underlays()
 
-/obj/machinery/atmospherics/portables_connector/build_network()
+/obj/structure/machinery/atmospherics/portables_connector/build_network()
 	if(!network && node)
 		network = new /datum/pipe_network()
 		network.normal_members += src
 		network.build_network(node, src)
 
 
-/obj/machinery/atmospherics/portables_connector/return_network(obj/machinery/atmospherics/reference)
+/obj/structure/machinery/atmospherics/portables_connector/return_network(obj/structure/machinery/atmospherics/reference)
 	build_network()
 
 	if(reference==node)
@@ -102,17 +102,17 @@
 
 	return null
 
-/obj/machinery/atmospherics/portables_connector/reassign_network(datum/pipe_network/old_network, datum/pipe_network/new_network)
+/obj/structure/machinery/atmospherics/portables_connector/reassign_network(datum/pipe_network/old_network, datum/pipe_network/new_network)
 	if(network == old_network)
 		network = new_network
 
 	return 1
 
-/obj/machinery/atmospherics/portables_connector/return_network_air(datum/pipe_network/reference)
+/obj/structure/machinery/atmospherics/portables_connector/return_network_air(datum/pipe_network/reference)
 	var/list/results = list()
 	return results
 
-/obj/machinery/atmospherics/portables_connector/disconnect(obj/machinery/atmospherics/reference)
+/obj/structure/machinery/atmospherics/portables_connector/disconnect(obj/structure/machinery/atmospherics/reference)
 	if(reference==node)
 		del(network)
 		node = null
@@ -122,13 +122,13 @@
 	return null
 
 
-/obj/machinery/atmospherics/portables_connector/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/atmospherics/portables_connector/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(!iswrench(W))
 		return ..()
 	if(connected_device)
 		to_chat(user, SPAN_WARNING("You cannot unwrench [src], dettach [connected_device] first."))
 		return 1
-	if(locate(/obj/machinery/portable_atmospherics, loc))
+	if(locate(/obj/structure/machinery/portable_atmospherics, loc))
 		return 1
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)

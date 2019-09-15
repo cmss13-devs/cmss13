@@ -215,7 +215,7 @@
 					qdel(object)
 					return
 			else if(istype(object,/turf) && mods["alt"] && mods["left"])
-				new/obj/machinery/door/airlock(get_turf(object))
+				new/obj/structure/machinery/door/airlock(get_turf(object))
 			else if(istype(object,/turf) && mods["ctrl"] && mods["left"])
 				switch(holder.builddir.dir)
 					if(NORTH)

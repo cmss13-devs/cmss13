@@ -2,7 +2,7 @@
 #define REGULATE_INPUT	1	//shuts off when input side is below the target pressure
 #define REGULATE_OUTPUT	2	//shuts off when output side is above the target pressure
 
-/obj/machinery/atmospherics/binary/passive_gate
+/obj/structure/machinery/atmospherics/binary/passive_gate
 	icon = 'icons/obj/pipes/passive_gate.dmi'
 	icon_state = "map"
 	level = 1
@@ -14,10 +14,10 @@
 	var/on = 0	//doesn't actually use power. this is just whether the valve is open or not
 
 
-/obj/machinery/atmospherics/binary/passive_gate/update_icon()
+/obj/structure/machinery/atmospherics/binary/passive_gate/update_icon()
 	icon_state = on? "on" : "off"
 
-/obj/machinery/atmospherics/binary/passive_gate/update_underlays()
+/obj/structure/machinery/atmospherics/binary/passive_gate/update_underlays()
 	if(..())
 		underlays.Cut()
 		var/turf/T = get_turf(src)
@@ -26,20 +26,20 @@
 		add_underlay(T, node1, turn(dir, 180))
 		add_underlay(T, node2, dir)
 
-/obj/machinery/atmospherics/binary/passive_gate/hide(var/i)
+/obj/structure/machinery/atmospherics/binary/passive_gate/hide(var/i)
 	update_underlays()
 
 
 //Radio remote control
 
 
-/obj/machinery/atmospherics/binary/passive_gate/attack_hand(user as mob)
+/obj/structure/machinery/atmospherics/binary/passive_gate/attack_hand(user as mob)
 	if(..())
 		return
 	src.add_fingerprint(usr)
 	return
 
-/obj/machinery/atmospherics/binary/passive_gate/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/atmospherics/binary/passive_gate/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(!iswrench(W))
 		return ..()
 	if(on)

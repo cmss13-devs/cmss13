@@ -1960,7 +1960,7 @@
 
 	else if(href_list["USCMFaxReply"])
 		var/mob/living/carbon/human/H = locate(href_list["USCMFaxReply"])
-		var/obj/machinery/faxmachine/fax = locate(href_list["originfax"])
+		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = input("Use which template or roll your own?") in list("USCM High Command", "USCM Provost General", "Custom")
 		var/fax_message = ""
@@ -2004,7 +2004,7 @@
 		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
 		announce_fax( ,msg_ghost)
 
-		for(var/obj/machinery/faxmachine/F in machines)
+		for(var/obj/structure/machinery/faxmachine/F in machines)
 			if(F == fax)
 				if(! (F.stat & (BROKEN|NOPOWER) ) )
 
@@ -2037,7 +2037,7 @@
 
 	else if(href_list["CLFaxReply"])
 		var/mob/living/carbon/human/H = locate(href_list["CLFaxReply"])
-		var/obj/machinery/faxmachine/fax = locate(href_list["originfax"])
+		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = input("Use the template or roll your own?") in list("Template", "Custom")
 		var/fax_message = ""
@@ -2078,7 +2078,7 @@
 		announce_fax( ,msg_ghost)
 
 
-		for(var/obj/machinery/faxmachine/F in machines)
+		for(var/obj/structure/machinery/faxmachine/F in machines)
 			if(F == fax)
 				if(! (F.stat & (BROKEN|NOPOWER) ) )
 
@@ -2349,7 +2349,7 @@
 			if("whiteout")
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","WO")
-				for(var/obj/machinery/light/L in machines)
+				for(var/obj/structure/machinery/light/L in machines)
 					L.fix()
 				message_admins("[key_name_admin(usr)] fixed all lights", 1)
 			if("power")

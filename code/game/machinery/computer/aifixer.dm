@@ -1,4 +1,4 @@
-/obj/machinery/computer/aifixer
+/obj/structure/machinery/computer/aifixer
 	name = "AI System Integrity Restorer"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "ai-fixer"
@@ -7,11 +7,11 @@
 	var/mob/living/silicon/ai/occupant = null
 	var/active = 0
 
-/obj/machinery/computer/aifixer/New()
+/obj/structure/machinery/computer/aifixer/New()
 	src.overlays += image('icons/obj/structures/machinery/computer.dmi', "ai-fixer-empty")
 
 
-/obj/machinery/computer/aifixer/attackby(I as obj, user as mob)
+/obj/structure/machinery/computer/aifixer/attackby(I as obj, user as mob)
 	if(istype(I, /obj/item/device/aicard))
 		if(stat & (NOPOWER|BROKEN))
 			to_chat(user, "This terminal isn't functioning right now, get it working!")
@@ -21,10 +21,10 @@
 	..()
 	return
 
-/obj/machinery/computer/aifixer/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/aifixer/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/aifixer/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/aifixer/attack_hand(var/mob/user as mob)
 	if(..())
 		return
 
@@ -48,12 +48,12 @@
 	onclose(user, "computer")
 	return
 
-/obj/machinery/computer/aifixer/process()
+/obj/structure/machinery/computer/aifixer/process()
 	if(..())
 		src.updateDialog()
 		return
 
-/obj/machinery/computer/aifixer/Topic(href, href_list)
+/obj/structure/machinery/computer/aifixer/Topic(href, href_list)
 	if(..())
 		return
 	if (href_list["fix"])
@@ -85,7 +85,7 @@
 	return
 
 
-/obj/machinery/computer/aifixer/update_icon()
+/obj/structure/machinery/computer/aifixer/update_icon()
 	..()
 	// Broken / Unpowered
 	if((stat & BROKEN) || (stat & NOPOWER))

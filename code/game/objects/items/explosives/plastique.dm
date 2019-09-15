@@ -34,7 +34,7 @@
 		return
 	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open))
 		r_FAL
-	if(istype(target, /obj/effect) || istype(target, /obj/machinery))
+	if(istype(target, /obj/effect) || istype(target, /obj/structure/machinery))
 		var/obj/O = target
 		if(O.unacidable) r_FAL
 	if(istype(target, /turf/closed/wall))

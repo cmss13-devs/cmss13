@@ -1,6 +1,6 @@
 var/datum/subsystem/pipenet/SSpipenet
 
-var/list/obj/machinery/atmospherics/atmos_machines = list()
+var/list/obj/structure/machinery/atmospherics/atmos_machines = list()
 var/list/datum/pipe_network/pipe_networks = list()
 
 
@@ -24,7 +24,7 @@ var/list/datum/pipe_network/pipe_networks = list()
 
 
 /datum/subsystem/pipenet/Initialize()
-	for (var/obj/machinery/atmospherics/machine in atmos_machines)
+	for (var/obj/structure/machinery/atmospherics/machine in atmos_machines)
 		machine.build_network()
 	..()
 
@@ -34,7 +34,7 @@ var/list/datum/pipe_network/pipe_networks = list()
 		currentrun_atmos_machines = global.atmos_machines.Copy()
 
 	while (currentrun_atmos_machines.len)
-		var/obj/machinery/atmospherics/atmosmachinery = currentrun_atmos_machines[currentrun_atmos_machines.len]
+		var/obj/structure/machinery/atmospherics/atmosmachinery = currentrun_atmos_machines[currentrun_atmos_machines.len]
 		currentrun_atmos_machines.len--
 
 		if (!atmosmachinery || atmosmachinery.gcDestroyed || atmosmachinery.disposed)

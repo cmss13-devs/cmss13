@@ -1,4 +1,4 @@
-/obj/machinery/atmospherics/valve
+/obj/structure/machinery/atmospherics/valve
 	icon = 'icons/obj/pipes/valve.dmi'
 	icon_state = "map_valve0"
 
@@ -12,23 +12,23 @@
 	var/open = 0
 	var/openDuringInit = 0
 
-	var/obj/machinery/atmospherics/node1
-	var/obj/machinery/atmospherics/node2
+	var/obj/structure/machinery/atmospherics/node1
+	var/obj/structure/machinery/atmospherics/node2
 
 	var/datum/pipe_network/network_node1
 	var/datum/pipe_network/network_node2
 
-/obj/machinery/atmospherics/valve/open
+/obj/structure/machinery/atmospherics/valve/open
 	open = 1
 	icon_state = "map_valve1"
 
-/obj/machinery/atmospherics/valve/update_icon(animation)
+/obj/structure/machinery/atmospherics/valve/update_icon(animation)
 	if(animation)
 		flick("valve[src.open][!src.open]",src)
 	else
 		icon_state = "valve[open]"
 
-/obj/machinery/atmospherics/valve/update_underlays()
+/obj/structure/machinery/atmospherics/valve/update_underlays()
 	if(..())
 		underlays.Cut()
 		var/turf/T = get_turf(src)
@@ -37,10 +37,10 @@
 		add_underlay(T, node1, get_dir(src, node1))
 		add_underlay(T, node2, get_dir(src, node2))
 
-/obj/machinery/atmospherics/valve/hide(var/i)
+/obj/structure/machinery/atmospherics/valve/hide(var/i)
 	update_underlays()
 
-/obj/machinery/atmospherics/valve/New()
+/obj/structure/machinery/atmospherics/valve/New()
 	switch(dir)
 		if(NORTH || SOUTH)
 			initialize_directions = NORTH|SOUTH
@@ -48,7 +48,7 @@
 			initialize_directions = EAST|WEST
 	..()
 
-/obj/machinery/atmospherics/valve/network_expand(datum/pipe_network/new_network, obj/machinery/atmospherics/pipe/reference)
+/obj/structure/machinery/atmospherics/valve/network_expand(datum/pipe_network/new_network, obj/structure/machinery/atmospherics/pipe/reference)
 	if(reference == node1)
 		network_node1 = new_network
 		if(open)
@@ -73,7 +73,7 @@
 
 	return null
 
-/obj/machinery/atmospherics/valve/Dispose()
+/obj/structure/machinery/atmospherics/valve/Dispose()
 	if(node1)
 		node1.disconnect(src)
 		del(network_node1)
@@ -84,7 +84,7 @@
 	node2 = null
 	. = ..()
 
-/obj/machinery/atmospherics/valve/proc/open()
+/obj/structure/machinery/atmospherics/valve/proc/open()
 	if(open) return 0
 
 	open = 1
@@ -96,7 +96,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/valve/proc/close()
+/obj/structure/machinery/atmospherics/valve/proc/close()
 	if(!open)
 		return 0
 
@@ -112,16 +112,16 @@
 
 	return 1
 
-/obj/machinery/atmospherics/valve/proc/normalize_dir()
+/obj/structure/machinery/atmospherics/valve/proc/normalize_dir()
 	if(dir==3)
 		dir = 1
 	else if(dir==12)
 		dir = 4
 
-/obj/machinery/atmospherics/valve/attack_ai(mob/user as mob)
+/obj/structure/machinery/atmospherics/valve/attack_ai(mob/user as mob)
 	return
 
-/obj/machinery/atmospherics/valve/attack_hand(mob/user as mob)
+/obj/structure/machinery/atmospherics/valve/attack_hand(mob/user as mob)
 	src.add_fingerprint(usr)
 	update_icon(1)
 	sleep(10)
@@ -130,14 +130,14 @@
 	else
 		src.open()
 
-/obj/machinery/atmospherics/valve/process()
+/obj/structure/machinery/atmospherics/valve/process()
 	..()
 	//. = PROCESS_KILL
 	stop_processing()
 
 	return
 
-/obj/machinery/atmospherics/valve/initialize()
+/obj/structure/machinery/atmospherics/valve/initialize()
 	normalize_dir()
 
 	var/node1_dir
@@ -150,7 +150,7 @@
 			else if (!node2_dir)
 				node2_dir = direction
 
-	for(var/obj/machinery/atmospherics/target in get_step(src,node1_dir))
+	for(var/obj/structure/machinery/atmospherics/target in get_step(src,node1_dir))
 		if(target.initialize_directions & get_dir(target,src))
 			var/c = check_connect_types(target,src)
 			if (c)
@@ -158,7 +158,7 @@
 				src.connected_to = c
 				node1 = target
 				break
-	for(var/obj/machinery/atmospherics/target in get_step(src,node2_dir))
+	for(var/obj/structure/machinery/atmospherics/target in get_step(src,node2_dir))
 		if(target.initialize_directions & get_dir(target,src))
 			var/c = check_connect_types(target,src)
 			if (c)
@@ -177,7 +177,7 @@
 		open()
 		openDuringInit = 0
 
-/obj/machinery/atmospherics/valve/build_network()
+/obj/structure/machinery/atmospherics/valve/build_network()
 	if(!network_node1 && node1)
 		network_node1 = new /datum/pipe_network()
 		network_node1.normal_members += src
@@ -188,7 +188,7 @@
 		network_node2.normal_members += src
 		network_node2.build_network(node2, src)
 
-/obj/machinery/atmospherics/valve/return_network(obj/machinery/atmospherics/reference)
+/obj/structure/machinery/atmospherics/valve/return_network(obj/structure/machinery/atmospherics/reference)
 	build_network()
 
 	if(reference==node1)
@@ -199,7 +199,7 @@
 
 	return null
 
-/obj/machinery/atmospherics/valve/reassign_network(datum/pipe_network/old_network, datum/pipe_network/new_network)
+/obj/structure/machinery/atmospherics/valve/reassign_network(datum/pipe_network/old_network, datum/pipe_network/new_network)
 	if(network_node1 == old_network)
 		network_node1 = new_network
 	if(network_node2 == old_network)
@@ -207,10 +207,10 @@
 
 	return 1
 
-/obj/machinery/atmospherics/valve/return_network_air(datum/network/reference)
+/obj/structure/machinery/atmospherics/valve/return_network_air(datum/network/reference)
 	return null
 
-/obj/machinery/atmospherics/valve/disconnect(obj/machinery/atmospherics/reference)
+/obj/structure/machinery/atmospherics/valve/disconnect(obj/structure/machinery/atmospherics/reference)
 	if(reference==node1)
 		del(network_node1)
 		node1 = null
@@ -223,7 +223,7 @@
 	start_processing()
 	return null
 
-/obj/machinery/atmospherics/valve/digital		// can be controlled by AI
+/obj/structure/machinery/atmospherics/valve/digital		// can be controlled by AI
 	name = "digital valve"
 	desc = "A digitally controlled valve."
 	icon = 'icons/obj/pipes/digital_valve.dmi'
@@ -232,10 +232,10 @@
 	var/id = null
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/atmospherics/valve/digital/attack_ai(mob/user as mob)
+/obj/structure/machinery/atmospherics/valve/digital/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/atmospherics/valve/digital/attack_hand(mob/user as mob)
+/obj/structure/machinery/atmospherics/valve/digital/attack_hand(mob/user as mob)
 	if(!powered())
 		return
 	if(!src.allowed(user))
@@ -243,33 +243,33 @@
 		return
 	..()
 
-/obj/machinery/atmospherics/valve/digital/open
+/obj/structure/machinery/atmospherics/valve/digital/open
 	open = 1
 	icon_state = "map_valve1"
 
-/obj/machinery/atmospherics/valve/digital/power_change()
+/obj/structure/machinery/atmospherics/valve/digital/power_change()
 	var/old_stat = stat
 	..()
 	if(old_stat != stat)
 		update_icon()
 
-/obj/machinery/atmospherics/valve/digital/update_icon()
+/obj/structure/machinery/atmospherics/valve/digital/update_icon()
 	..()
 	if(!powered())
 		icon_state = "valve[open]nopower"
 
-/obj/machinery/atmospherics/valve/digital/proc/set_frequency(new_frequency)
+/obj/structure/machinery/atmospherics/valve/digital/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)
 	frequency = new_frequency
 	if(frequency)
 		radio_connection = radio_controller.add_object(src, frequency, RADIO_ATMOSIA)
 
-/obj/machinery/atmospherics/valve/digital/initialize()
+/obj/structure/machinery/atmospherics/valve/digital/initialize()
 	..()
 	if(frequency)
 		set_frequency(frequency)
 
-/obj/machinery/atmospherics/valve/digital/receive_signal(datum/signal/signal)
+/obj/structure/machinery/atmospherics/valve/digital/receive_signal(datum/signal/signal)
 	if(!signal.data["tag"] || (signal.data["tag"] != id))
 		return 0
 
@@ -288,10 +288,10 @@
 			else
 				open()
 
-/obj/machinery/atmospherics/valve/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/atmospherics/valve/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(!iswrench(W))
 		return ..()
-	if(istype(src, /obj/machinery/atmospherics/valve/digital))
+	if(istype(src, /obj/structure/machinery/atmospherics/valve/digital))
 		to_chat(user, SPAN_WARNING("You cannot unwrench [src], it's too complicated."))
 		return 1
 

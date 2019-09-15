@@ -1,5 +1,5 @@
 
-/obj/machinery/part_fabricator
+/obj/structure/machinery/part_fabricator
 	name = "part fabricator"
 	desc = "A large automated 3D printer for producing runtime errors."
 	density = 1
@@ -13,25 +13,25 @@
 	var/valid_parts = null
 	var/valid_ammo = null
 
-/obj/machinery/part_fabricator/New()
+/obj/structure/machinery/part_fabricator/New()
 	..()
 	start_processing()
 
-/obj/machinery/part_fabricator/proc/get_point_store()
+/obj/structure/machinery/part_fabricator/proc/get_point_store()
     return 0
     
-/obj/machinery/part_fabricator/proc/add_to_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/proc/add_to_point_store(var/number = 1)
     return
     
-/obj/machinery/part_fabricator/proc/spend_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/proc/spend_point_store(var/number = 1)
     return
 
-/obj/machinery/part_fabricator/power_change()
+/obj/structure/machinery/part_fabricator/power_change()
 	..()
 	if (stat & NOPOWER)
 		icon_state = "drone_fab_nopower"
 
-/obj/machinery/part_fabricator/process()
+/obj/structure/machinery/part_fabricator/process()
 	if(ticker.current_state < GAME_STATE_PLAYING)
 		return
 	if(stat & NOPOWER)
@@ -45,7 +45,7 @@
 	if(generate_points)
 		add_to_point_store()
 
-/obj/machinery/part_fabricator/proc/build_part(part_type, cost, mob/user)
+/obj/structure/machinery/part_fabricator/proc/build_part(part_type, cost, mob/user)
 	set waitfor = 0
 	if(stat & NOPOWER) return
 	if(get_point_store() < text2num(cost))
@@ -62,7 +62,7 @@
 	new part_type(T)
 	icon_state = "drone_fab_idle"
 
-/obj/machinery/part_fabricator/Topic(href, href_list)
+/obj/structure/machinery/part_fabricator/Topic(href, href_list)
 	if(..())
 		return
 
@@ -98,29 +98,29 @@
 		log_admin("Bad topic: [usr] may be trying to HREF exploit [src]")
 		return
 
-/obj/machinery/part_fabricator/attack_hand(mob/user)
+/obj/structure/machinery/part_fabricator/attack_hand(mob/user)
 	if(!allowed(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return 1
 	return . = ..()
 
-/obj/machinery/part_fabricator/dropship
+/obj/structure/machinery/part_fabricator/dropship
 	name = "dropship part fabricator"
 	desc = "A large automated 3D printer for producing dropship parts."
 	req_access = list(ACCESS_MARINE_DROPSHIP)
 	valid_parts = /obj/structure/dropship_equipment
 	valid_ammo = /obj/structure/ship_ammo
 
-/obj/machinery/part_fabricator/dropship/get_point_store()
+/obj/structure/machinery/part_fabricator/dropship/get_point_store()
     return supply_controller.dropship_points
     
-/obj/machinery/part_fabricator/dropship/add_to_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/dropship/add_to_point_store(var/number = 1)
     supply_controller.dropship_points += number
 
-/obj/machinery/part_fabricator/dropship/spend_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/dropship/spend_point_store(var/number = 1)
     supply_controller.dropship_points -= number
 
-/obj/machinery/part_fabricator/dropship/attack_hand(mob/user)
+/obj/structure/machinery/part_fabricator/dropship/attack_hand(mob/user)
 	if(..())
 		return
 	user.set_interaction(src)
@@ -147,7 +147,7 @@
 	onclose(user, "dropship_part_fab")
 	return
 
-/obj/machinery/part_fabricator/tank
+/obj/structure/machinery/part_fabricator/tank
 	name = "tank part fabricator"
 	desc = "A large automated 3D printer for producing tank parts."
 	req_access = list(ACCESS_MARINE_TANK)
@@ -155,16 +155,16 @@
 	valid_parts = /obj/item/hardpoint
 	valid_ammo = /obj/item/ammo_magazine/tank
 
-/obj/machinery/part_fabricator/tank/get_point_store()
+/obj/structure/machinery/part_fabricator/tank/get_point_store()
     return supply_controller.tank_points
     
-/obj/machinery/part_fabricator/tank/add_to_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/tank/add_to_point_store(var/number = 1)
     supply_controller.tank_points += number
 
-/obj/machinery/part_fabricator/tank/spend_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/tank/spend_point_store(var/number = 1)
     supply_controller.tank_points -= number
 
-/obj/machinery/part_fabricator/tank/attack_hand(mob/user)
+/obj/structure/machinery/part_fabricator/tank/attack_hand(mob/user)
 	if(..())
 		return
 	user.set_interaction(src)

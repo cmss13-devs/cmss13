@@ -2,7 +2,7 @@
 //but it does not permit gas to flow back from the environment into the injector. Can be turned off to prevent any gas flow.
 //When it receives the "inject" signal, it will try to pump it's entire contents into the environment regardless of pressure, using power.
 
-/obj/machinery/atmospherics/unary/outlet_injector
+/obj/structure/machinery/atmospherics/unary/outlet_injector
 	icon = 'icons/obj/pipes/injector.dmi'
 	icon_state = "map_injector"
 	use_power = 1
@@ -17,13 +17,13 @@
 	var/id = null
 	level = 1
 
-/obj/machinery/atmospherics/unary/outlet_injector/update_icon()
+/obj/structure/machinery/atmospherics/unary/outlet_injector/update_icon()
 	if(!powered())
 		icon_state = "off"
 	else
 		icon_state = "[on ? "on" : "off"]"
 
-/obj/machinery/atmospherics/unary/outlet_injector/update_underlays()
+/obj/structure/machinery/atmospherics/unary/outlet_injector/update_underlays()
 	if(..())
 		underlays.Cut()
 		var/turf/T = get_turf(src)
@@ -31,5 +31,5 @@
 			return
 		add_underlay(T, node, dir)
 
-/obj/machinery/atmospherics/unary/outlet_injector/hide(var/i)
+/obj/structure/machinery/atmospherics/unary/outlet_injector/hide(var/i)
 	update_underlays()

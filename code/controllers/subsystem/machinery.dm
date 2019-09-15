@@ -30,7 +30,7 @@ var/list/datum/powernet/powernets_by_name = list() //Holds all powernet datums i
 		currentrunmachines = processing_machines.Copy()
 
 	while (currentrunmachines.len)
-		var/obj/machinery/M = currentrunmachines[currentrunmachines.len]
+		var/obj/structure/machinery/M = currentrunmachines[currentrunmachines.len]
 		currentrunmachines.len--		
 
 		if (!M || M.gcDestroyed || M.disposed)

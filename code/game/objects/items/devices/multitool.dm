@@ -19,4 +19,4 @@
 	matter = list("metal" = 50,"glass" = 20)
 
 	origin_tech = "magnets=1;engineering=1"
-	var/obj/machinery/telecomms/buffer // simple machine buffer for device linkage
+	var/obj/structure/machinery/telecomms/buffer // simple machine buffer for device linkage

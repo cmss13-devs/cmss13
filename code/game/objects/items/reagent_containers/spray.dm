@@ -75,7 +75,7 @@
 			D.reagents.reaction(get_turf(D))
 			for(var/atom/T in get_turf(D))
 				D.reagents.reaction(T)
-				if(istype(T,/obj/machinery/portable_atmospherics/hydroponics) || istype(T, /obj/item/reagent_container/glass))
+				if(istype(T,/obj/structure/machinery/portable_atmospherics/hydroponics) || istype(T, /obj/item/reagent_container/glass))
 					reagents.trans_to(T)
 
 				// When spraying against the wall, also react with the wall, but

@@ -59,7 +59,7 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 		new/datum/stack_recipe("multi-tile airlock assembly", /obj/structure/door_assembly/multi_tile, 4, time = 50, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
 		), 4), \
 	new/datum/stack_recipe("computer frame", /obj/structure/computerframe, 5, time = 25, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
-	new/datum/stack_recipe("machine frame", /obj/machinery/constructable_frame, 5, time = 25, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
+	new/datum/stack_recipe("machine frame", /obj/structure/machinery/constructable_frame, 5, time = 25, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_MASTER), \
 	null, \
 	new/datum/stack_recipe("metal baseball bat", /obj/item/weapon/baseballbat/metal, 10, time = 20, one_per_turf = 0, on_floor = 1), \
 	null, \
@@ -97,7 +97,7 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 	new/datum/stack_recipe("metal crate", /obj/structure/closet/crate, 5, time = 50, one_per_turf = 1), \
 	new/datum/stack_recipe("plasteel barricade", /obj/structure/barricade/plasteel, 5, time = 80, one_per_turf = 1, on_floor = 1, skill_req =  SKILL_CONSTRUCTION_PLASTEEL),
-	new/datum/stack_recipe("sentry turret frame", /obj/machinery/marine_turret_frame, 20, time = 60, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_PLASTEEL),
+	new/datum/stack_recipe("sentry turret frame", /obj/structure/machinery/marine_turret_frame, 20, time = 60, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_PLASTEEL),
 	new/datum/stack_recipe("plasteel rod", /obj/item/stack/rods/plasteel, 1, 1, 30),
 	)
 

@@ -1,11 +1,11 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
-/obj/machinery/computer/hologram_comp
+/obj/structure/machinery/computer/hologram_comp
 	name = "Hologram Computer"
 	desc = "Rumoured to control holograms."
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "holo_console0"
-	var/obj/machinery/hologram/projector/projector = null
+	var/obj/structure/machinery/hologram/projector/projector = null
 	var/temp = null
 	var/lumens = 0.0
 	var/h_r = 245.0
@@ -13,14 +13,14 @@
 	var/h_b = 245.0
 
 
-/obj/machinery/computer/hologram_comp/New()
+/obj/structure/machinery/computer/hologram_comp/New()
 	..()
 	spawn( 10 )
-		projector = locate(/obj/machinery/hologram/projector, get_step(src.loc, NORTH))
+		projector = locate(/obj/structure/machinery/hologram/projector, get_step(src.loc, NORTH))
 		return
 	return
 
-/obj/machinery/computer/hologram_comp/clicked(var/mob/user, var/list/mods)
+/obj/structure/machinery/computer/hologram_comp/clicked(var/mob/user, var/list/mods)
 	if (mods["ctrl"] && mods["middle"])
 		if (!in_range(src, user))
 			return 1
@@ -29,7 +29,7 @@
 
 	..()
 
-/obj/machinery/computer/hologram_comp/proc/render()
+/obj/structure/machinery/computer/hologram_comp/proc/render()
 	var/icon/I = new /icon('icons/mob/humans/human.dmi', "body_m_s")
 
 	if (src.lumens >= 0)
@@ -47,7 +47,7 @@
 
 	projector.hologram.icon = I
 
-/obj/machinery/computer/hologram_comp/proc/show_console(var/mob/user as mob)
+/obj/structure/machinery/computer/hologram_comp/proc/show_console(var/mob/user as mob)
 	var/dat
 	user.set_interaction(src)
 	if (src.temp)
@@ -58,7 +58,7 @@
 	onclose(user, "hologram_console")
 	return
 
-/obj/machinery/computer/hologram_comp/Topic(href, href_list)
+/obj/structure/machinery/computer/hologram_comp/Topic(href, href_list)
 	if(..())
 		return
 	if (in_range(src, usr))

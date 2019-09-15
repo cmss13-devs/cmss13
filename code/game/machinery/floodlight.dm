@@ -1,6 +1,6 @@
 //these are probably broken
 
-/obj/machinery/floodlight
+/obj/structure/machinery/floodlight
 	name = "Emergency Floodlight"
 	icon = 'icons/obj/structures/machinery/floodlight.dmi'
 	icon_state = "flood00"
@@ -23,10 +23,10 @@
 		SetLuminosity(0)
 		. = ..()
 
-/obj/machinery/floodlight/proc/updateicon()
+/obj/structure/machinery/floodlight/proc/updateicon()
 	icon_state = "flood[open ? "o" : ""][open && cell ? "b" : ""]0[on]"
 /*
-/obj/machinery/floodlight/process()
+/obj/structure/machinery/floodlight/process()
 	if(on && cell)
 		if(cell.charge >= use)
 			cell.use(use)
@@ -37,7 +37,7 @@
 			src.visible_message(SPAN_WARNING("[src] shuts down due to lack of power!"))
 			return
 */
-/obj/machinery/floodlight/attack_hand(mob/user as mob)
+/obj/structure/machinery/floodlight/attack_hand(mob/user as mob)
 	if(open && cell)
 		if(ishuman(user))
 			if(!user.get_active_hand())
@@ -72,7 +72,7 @@
 	updateicon()
 
 
-/obj/machinery/floodlight/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/floodlight/attackby(obj/item/W as obj, mob/user as mob)
 	if(!ishuman(user))
 		return
 
@@ -115,7 +115,7 @@
 	updateicon()
 
 //Magical floodlight that cannot be destroyed or interacted with.
-/obj/machinery/floodlight/landing
+/obj/structure/machinery/floodlight/landing
 	name = "Landing Light"
 	desc = "A powerful light stationed near landing zones to provide better visibility."
 	icon_state = "flood01"

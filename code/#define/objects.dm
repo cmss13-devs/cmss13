@@ -63,25 +63,25 @@
 #define GAS_N2O	(1 << 4)
 
 var/list/liftable_structures = list(
-	/obj/machinery/autolathe,
-	/obj/machinery/constructable_frame,
-	/obj/machinery/portable_atmospherics/hydroponics,
-	/obj/machinery/computer,
-	/obj/machinery/optable,
+	/obj/structure/machinery/autolathe,
+	/obj/structure/machinery/constructable_frame,
+	/obj/structure/machinery/portable_atmospherics/hydroponics,
+	/obj/structure/machinery/computer,
+	/obj/structure/machinery/optable,
 	/obj/structure/dispenser,
-	/obj/machinery/gibber,
-	/obj/machinery/microwave,
-	/obj/machinery/vending,
-	/obj/machinery/seed_extractor,
-	/obj/machinery/space_heater,
-	/obj/machinery/recharge_station,
-	/obj/machinery/flasher,
+	/obj/structure/machinery/gibber,
+	/obj/structure/machinery/microwave,
+	/obj/structure/machinery/vending,
+	/obj/structure/machinery/seed_extractor,
+	/obj/structure/machinery/space_heater,
+	/obj/structure/machinery/recharge_station,
+	/obj/structure/machinery/flasher,
 	/obj/structure/bed/stool,
 	/obj/structure/closet,
-	/obj/machinery/photocopier,
+	/obj/structure/machinery/photocopier,
 	/obj/structure/filingcabinet,
 	/obj/structure/reagent_dispensers,
-	/obj/machinery/portable_atmospherics/canister)
+	/obj/structure/machinery/portable_atmospherics/canister)
 
 //Pulse levels, very simplified
 #define PULSE_NONE		0	//so !M.pulse checks would be possible

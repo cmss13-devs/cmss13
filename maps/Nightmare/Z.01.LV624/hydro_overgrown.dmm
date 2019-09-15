@@ -14,7 +14,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "aac" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Hydroponics Dome"
 	},
@@ -89,7 +89,7 @@
 /turf/open/gm/grass,
 /area/lv624/lazarus/hydroponics)
 "aak" = (
-/obj/machinery/smartfridge/seeds,
+/obj/structure/machinery/smartfridge/seeds,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
@@ -109,12 +109,12 @@
 /area/lv624/ground/compound/n)
 "aam" = (
 /obj/structure/window/framed/colony/reinforced{
-	tiles_special = list(/obj/machinery/door/airlock,/obj/structure/window/framed,/obj/structure/window_frame)
+	tiles_special = list(/obj/structure/machinery/door/airlock,/obj/structure/window/framed,/obj/structure/window_frame)
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "aan" = (
-/obj/machinery/biogenerator,
+/obj/structure/machinery/biogenerator,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0
@@ -122,7 +122,7 @@
 /turf/open/gm/grass,
 /area/lv624/lazarus/hydroponics)
 "aao" = (
-/obj/machinery/smartfridge,
+/obj/structure/machinery/smartfridge,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0
@@ -138,7 +138,7 @@
 /turf/open/gm/grass,
 /area/lv624/lazarus/hydroponics)
 "aaq" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0
@@ -157,7 +157,7 @@
 /turf/open/gm/dirtgrassborder,
 /area/lv624/lazarus/hydroponics)
 "aas" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0
@@ -165,7 +165,7 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/hydroponics)
 "aat" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0
@@ -204,7 +204,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aaw" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0;
@@ -224,7 +224,7 @@
 /turf/open/gm/dirtgrassborder,
 /area/lv624/lazarus/hydroponics)
 "aay" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0;
@@ -235,7 +235,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aaz" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0;
@@ -244,7 +244,7 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/hydroponics)
 "aaA" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0;
@@ -256,7 +256,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aaB" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0;
@@ -291,7 +291,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "anJ" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Hydroponics Dome"
 	},
@@ -420,7 +420,7 @@
 /area/lv624/ground/jungle7)
 "aoR" = (
 /obj/structure/table,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/gm/dirtgrassborder{
@@ -457,14 +457,14 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "apJ" = (
-/obj/machinery/seed_extractor,
-/obj/machinery/light{
+/obj/structure/machinery/seed_extractor,
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/gm/grass,
 /area/lv624/lazarus/hydroponics)
 "aqa" = (
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Hydroponics Dome"
 	},
@@ -559,7 +559,7 @@
 "arr" = (
 /obj/structure/table,
 /obj/item/reagent_container/food/drinks/flask/vacuumflask,
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -571,7 +571,7 @@
 /area/lv624/lazarus/hydroponics)
 "art" = (
 /obj/structure/table,
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "green"
@@ -667,7 +667,7 @@
 /turf/open/gm/grass,
 /area/lv624/lazarus/hydroponics)
 "aZe" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0
@@ -762,7 +762,7 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/hydroponics)
 "aZn" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0
@@ -789,7 +789,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aZp" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0
@@ -817,7 +817,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aZr" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 4;
 	name = "\improper Hydroponics Dome"
 	},
@@ -832,7 +832,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aZs" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0;
@@ -858,7 +858,7 @@
 /turf/open/gm/dirtgrassborder,
 /area/lv624/lazarus/hydroponics)
 "aZw" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0
@@ -891,7 +891,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aZz" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0
@@ -1021,7 +1021,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aZQ" = (
-/obj/machinery/power/apc{
+/obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Hydroponics APC";
 	pixel_y = 30;
@@ -1033,7 +1033,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aZR" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0
@@ -1057,7 +1057,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aZT" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0

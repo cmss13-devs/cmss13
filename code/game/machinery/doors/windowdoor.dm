@@ -1,4 +1,4 @@
-/obj/machinery/door/window
+/obj/structure/machinery/door/window
 	name = "Glass door"
 	desc = "A window, that is also a door. A windoor if you will."
 	icon = 'icons/obj/structures/doors/windoor.dmi'
@@ -26,7 +26,7 @@
 		. = ..()
 
 //Enforces perspective layering like it's contemporary; windows.
-/obj/machinery/door/window/update_icon(loc, direction)
+/obj/structure/machinery/door/window/update_icon(loc, direction)
 	if(direction)
 		dir = direction
 	switch(dir)
@@ -34,9 +34,9 @@
 		if(SOUTH) layer = ABOVE_MOB_LAYER
 		else layer = initial(layer)
 
-/obj/machinery/door/window/Bumped(atom/movable/AM as mob|obj)
+/obj/structure/machinery/door/window/Bumped(atom/movable/AM as mob|obj)
 	if (!( ismob(AM) ))
-		var/obj/machinery/bot/bot = AM
+		var/obj/structure/machinery/bot/bot = AM
 		if(istype(bot))
 			if(density && src.check_access(bot.botcard))
 				open()
@@ -64,7 +64,7 @@
 		close()
 	return
 
-/obj/machinery/door/window/CanPass(atom/movable/mover, turf/target)
+/obj/structure/machinery/door/window/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSGLASS))
 		return 1
 	if(get_dir(loc, target) == dir) //Make sure looking at appropriate border
@@ -72,7 +72,7 @@
 	else
 		return 1
 
-/obj/machinery/door/window/CheckExit(atom/movable/mover, turf/target)
+/obj/structure/machinery/door/window/CheckExit(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSGLASS))
 		return 1
 	if(get_dir(loc, target) == dir)
@@ -80,7 +80,7 @@
 	else
 		return 1
 
-/obj/machinery/door/window/open()
+/obj/structure/machinery/door/window/open()
 	if (src.operating == 1) //doors can still open when emag-disabled
 		return 0
 	if (!ticker)
@@ -98,7 +98,7 @@
 		src.operating = 0
 	return 1
 
-/obj/machinery/door/window/close()
+/obj/structure/machinery/door/window/close()
 	if (src.operating)
 		return 0
 	src.operating = 1
@@ -113,7 +113,7 @@
 	src.operating = 0
 	return 1
 
-/obj/machinery/door/window/proc/take_damage(var/damage)
+/obj/structure/machinery/door/window/proc/take_damage(var/damage)
 	src.health = max(0, src.health - damage)
 	if (src.health <= 0)
 		new /obj/item/shard(src.loc)
@@ -140,7 +140,7 @@
 		qdel(src)
 		return
 
-/obj/machinery/door/window/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/machinery/door/window/bullet_act(var/obj/item/projectile/Proj)
 	bullet_ping(Proj)
 	if(Proj.ammo.damage)
 		take_damage(round(Proj.ammo.damage / 2))
@@ -149,7 +149,7 @@
 	return 1
 
 //When an object is thrown at the window
-/obj/machinery/door/window/hitby(AM as mob|obj)
+/obj/structure/machinery/door/window/hitby(AM as mob|obj)
 
 	..()
 	visible_message(SPAN_DANGER("<B>The glass door was hit by [AM].</B>"), 1)
@@ -164,10 +164,10 @@
 	return
 
 
-/obj/machinery/door/window/attack_ai(mob/user as mob)
+/obj/structure/machinery/door/window/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/door/window/attack_hand(mob/user)
+/obj/structure/machinery/door/window/attack_hand(mob/user)
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
@@ -177,7 +177,7 @@
 			return
 	return try_to_activate_door(user)
 
-/obj/machinery/door/window/attackby(obj/item/I, mob/user)
+/obj/structure/machinery/door/window/attackby(obj/item/I, mob/user)
 
 	//If it's in the process of opening/closing, ignore the click
 	if (src.operating == 1)
@@ -191,7 +191,7 @@
 			to_chat(user, SPAN_NOTICE(" You removed the windoor electronics!"))
 
 			var/obj/structure/windoor_assembly/wa = new/obj/structure/windoor_assembly(src.loc)
-			if (istype(src, /obj/machinery/door/window/brigdoor))
+			if (istype(src, /obj/structure/machinery/door/window/brigdoor))
 				wa.secure = "secure_"
 				wa.name = "Secure Wired Windoor Assembly"
 			else
@@ -232,76 +232,76 @@
 	else
 		return try_to_activate_door(user)
 
-/obj/machinery/door/window/brigdoor
+/obj/structure/machinery/door/window/brigdoor
 	name = "Secure glass door"
 	desc = "A thick chunk of tempered glass on metal track. Probably more robust than you."
 	req_access = list(ACCESS_MARINE_BRIG)
 	health = 300.0 //Stronger doors for prison (regular window door health is 150)
 
 
-/obj/machinery/door/window/northleft
+/obj/structure/machinery/door/window/northleft
 	dir = NORTH
 
-/obj/machinery/door/window/eastleft
+/obj/structure/machinery/door/window/eastleft
 	dir = EAST
 
-/obj/machinery/door/window/westleft
+/obj/structure/machinery/door/window/westleft
 	dir = WEST
 
-/obj/machinery/door/window/southleft
+/obj/structure/machinery/door/window/southleft
 	dir = SOUTH
 
-/obj/machinery/door/window/northright
-	dir = NORTH
-	icon_state = "right"
-	base_state = "right"
-
-/obj/machinery/door/window/eastright
-	dir = EAST
-	icon_state = "right"
-	base_state = "right"
-
-/obj/machinery/door/window/westright
-	dir = WEST
-	icon_state = "right"
-	base_state = "right"
-
-/obj/machinery/door/window/southright
-	dir = SOUTH
-	icon_state = "right"
-	base_state = "right"
-
-/obj/machinery/door/window/brigdoor/northleft
-	dir = NORTH
-
-/obj/machinery/door/window/brigdoor/eastleft
-	dir = EAST
-
-/obj/machinery/door/window/brigdoor/westleft
-	dir = WEST
-
-/obj/machinery/door/window/brigdoor/southleft
-	dir = SOUTH
-
-/obj/machinery/door/window/brigdoor/northright
+/obj/structure/machinery/door/window/northright
 	dir = NORTH
 	icon_state = "right"
 	base_state = "right"
 
-/obj/machinery/door/window/brigdoor/eastright
+/obj/structure/machinery/door/window/eastright
 	dir = EAST
 	icon_state = "right"
 	base_state = "right"
 
-/obj/machinery/door/window/brigdoor/westright
+/obj/structure/machinery/door/window/westright
 	dir = WEST
 	icon_state = "right"
 	base_state = "right"
 
-/obj/machinery/door/window/brigdoor/southright
+/obj/structure/machinery/door/window/southright
 	dir = SOUTH
 	icon_state = "right"
 	base_state = "right"
 
-/obj/machinery/door/window/tinted
+/obj/structure/machinery/door/window/brigdoor/northleft
+	dir = NORTH
+
+/obj/structure/machinery/door/window/brigdoor/eastleft
+	dir = EAST
+
+/obj/structure/machinery/door/window/brigdoor/westleft
+	dir = WEST
+
+/obj/structure/machinery/door/window/brigdoor/southleft
+	dir = SOUTH
+
+/obj/structure/machinery/door/window/brigdoor/northright
+	dir = NORTH
+	icon_state = "right"
+	base_state = "right"
+
+/obj/structure/machinery/door/window/brigdoor/eastright
+	dir = EAST
+	icon_state = "right"
+	base_state = "right"
+
+/obj/structure/machinery/door/window/brigdoor/westright
+	dir = WEST
+	icon_state = "right"
+	base_state = "right"
+
+/obj/structure/machinery/door/window/brigdoor/southright
+	dir = SOUTH
+	icon_state = "right"
+	base_state = "right"
+
+/obj/structure/machinery/door/window/tinted
 	opacity = 1

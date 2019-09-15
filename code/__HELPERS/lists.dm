@@ -570,7 +570,7 @@ proc/dd_sortedTextList(list/incoming)
 datum/proc/dd_SortValue()
 	return "[src]"
 
-/obj/machinery/dd_SortValue()
+/obj/structure/machinery/dd_SortValue()
 	return "[sanitize(name)]"
 
 //Move a single element from position fromIndex within a list, to position toIndex

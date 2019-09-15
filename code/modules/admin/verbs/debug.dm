@@ -407,7 +407,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	set name = "Delete Instance"
 
 	// to prevent REALLY stupid deletions
-	var/blocked = list(/obj, /obj/item, /obj/effect, /obj/mecha, /obj/machinery, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/Xenomorph, /mob/living/carbon/human, /mob/dead, /mob/dead/observer, /mob/living/silicon, /mob/living/silicon/robot, /mob/living/silicon/ai)
+	var/blocked = list(/obj, /obj/item, /obj/effect, /obj/mecha, /obj/structure/machinery, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/Xenomorph, /mob/living/carbon/human, /mob/dead, /mob/dead/observer, /mob/living/silicon, /mob/living/silicon/robot, /mob/living/silicon/ai)
 	var/chosen_deletion = input(usr, "Type the path of the object you want to delete", "Delete:") as null|text
 	if(chosen_deletion)
 		chosen_deletion = text2path(chosen_deletion)
@@ -542,27 +542,27 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		if(!(A.type in areas_all))
 			areas_all.Add(A.type)
 
-	for(var/obj/machinery/power/apc/APC in machines)
+	for(var/obj/structure/machinery/power/apc/APC in machines)
 		var/area/A = get_area(APC)
 		if(!(A.type in areas_with_APC))
 			areas_with_APC.Add(A.type)
 
-	for(var/obj/machinery/alarm/alarm in machines)
+	for(var/obj/structure/machinery/alarm/alarm in machines)
 		var/area/A = get_area(alarm)
 		if(!(A.type in areas_with_air_alarm))
 			areas_with_air_alarm.Add(A.type)
 
-	for(var/obj/machinery/requests_console/RC in machines)
+	for(var/obj/structure/machinery/requests_console/RC in machines)
 		var/area/A = get_area(RC)
 		if(!(A.type in areas_with_RC))
 			areas_with_RC.Add(A.type)
 
-	for(var/obj/machinery/light/L in machines)
+	for(var/obj/structure/machinery/light/L in machines)
 		var/area/A = get_area(L)
 		if(!(A.type in areas_with_light))
 			areas_with_light.Add(A.type)
 
-	for(var/obj/machinery/light_switch/LS in machines)
+	for(var/obj/structure/machinery/light_switch/LS in machines)
 		var/area/A = get_area(LS)
 		if(!(A.type in areas_with_LS))
 			areas_with_LS.Add(A.type)
@@ -572,7 +572,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		if(!(A.type in areas_with_intercom))
 			areas_with_intercom.Add(A.type)
 
-	for(var/obj/machinery/camera/C in machines)
+	for(var/obj/structure/machinery/camera/C in machines)
 		var/area/A = get_area(C)
 		if(!(A.type in areas_with_camera))
 			areas_with_camera.Add(A.type)
@@ -665,7 +665,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		individual_counts["[M.type]"]++
 	for(var/mob/M in human_mob_list)
 		individual_counts["[M.type]"]++
-	for(var/obj/machinery/M in processing_machines)
+	for(var/obj/structure/machinery/M in processing_machines)
 		individual_counts["[M.type]"]++
 	for(var/datum/powernet/M in powernets)
 		individual_counts["[M.type]"]++
@@ -683,7 +683,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	for(var/area/A in active_areas)
 		if(A.master == A)
 			if(A.powerupdate)
-				for(var/obj/machinery/M in A.area_machines)
+				for(var/obj/structure/machinery/M in A.area_machines)
 					individual_counts["[M.type]"]++
 
 	var/str = ""

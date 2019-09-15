@@ -1,6 +1,6 @@
 //These machines are mostly just here for debugging/spawning. Skeletons of the feature to come.
 
-/obj/machinery/bioprinter
+/obj/structure/machinery/bioprinter
 	name = "bio/synthetic printer"
 	desc = "It's a machine that can either grow replacement or manufacture synthetic organs."
 	icon = 'icons/obj/structures/machinery/surgery.dmi'
@@ -22,7 +22,7 @@
 		"synthetic right leg (125 - Metal)" = list(/obj/item/robot_parts/r_leg,  0, LIMB_METAL_AMOUNT, LIMB_PRINTING_TIME)
 		)
 
-/obj/machinery/bioprinter/attack_hand(mob/user)
+/obj/structure/machinery/bioprinter/attack_hand(mob/user)
 	if(stat & (BROKEN|NOPOWER))
 		return
 
@@ -49,7 +49,7 @@
 	else
 		to_chat(user, "There is not enough materials in the printer.")
 
-/obj/machinery/bioprinter/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/bioprinter/attackby(obj/item/W, mob/user)
 //Matter
 	if(istype(W, /obj/item/reagent_container/food/snacks/meat))
 		to_chat(user, SPAN_NOTICE(" \The [src] processes \the [W]."))
@@ -68,6 +68,6 @@
 	else
 		return..()
 
-/obj/machinery/bioprinter/examine(mob/user)
+/obj/structure/machinery/bioprinter/examine(mob/user)
 	..()
 	to_chat(user, "It has [stored_matter] matter and [stored_metal] metal left.")

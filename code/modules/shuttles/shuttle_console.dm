@@ -1,4 +1,4 @@
-/obj/machinery/computer/shuttle_control
+/obj/structure/machinery/computer/shuttle_control
 	name = "shuttle control console"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"
@@ -15,7 +15,7 @@
 	var/can_abort_flyby = TRUE
 	var/abort_timer = 100 //10 seconds
 
-/obj/machinery/computer/shuttle_control/attack_hand(mob/user)
+/obj/structure/machinery/computer/shuttle_control/attack_hand(mob/user)
 	if(..(user))
 		return
 	//src.add_fingerprint(user)	//shouldn't need fingerprints just for looking at it.
@@ -58,7 +58,7 @@
 				shuttle.door_override = 0
 	ui_interact(user)
 
-/obj/machinery/computer/shuttle_control/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/computer/shuttle_control/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 	var/data[0]
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(shuttle))
@@ -147,7 +147,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/machinery/computer/shuttle_control/Topic(href, href_list)
+/obj/structure/machinery/computer/shuttle_control/Topic(href, href_list)
 	if(..())
 		return
 
@@ -198,7 +198,7 @@
 					playsound(src, 'sound/misc/queen_alarm.ogg')
 					M.count_niche_stat(STATISTICS_NICHE_FLIGHT)
 					if(bomb_set)
-						for(var/obj/machinery/nuclearbomb/bomb in world)
+						for(var/obj/structure/machinery/nuclearbomb/bomb in world)
 							bomb.end_round = FALSE
 				else if(i == "No")
 					return
@@ -248,7 +248,7 @@
 		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
 			ship_id = "sh_dropship2"
 
-		for(var/obj/machinery/door/airlock/dropship_hatch/M in machines)
+		for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in machines)
 			if(M.id == ship_id)
 				if(M.locked && M.density)
 					continue // jobs done
@@ -258,13 +258,13 @@
 				else
 					M.do_command("secure_close")
 
-		var/obj/machinery/door/airlock/multi_tile/almayer/reardoor
+		var/obj/structure/machinery/door/airlock/multi_tile/almayer/reardoor
 		switch(ship_id)
 			if("sh_dropship1")
-				for(var/obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in machines)
+				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in machines)
 					reardoor = D
 			if("sh_dropship2")
-				for(var/obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
+				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
 					reardoor = D
 
 		if(!reardoor.locked && reardoor.density)
@@ -287,18 +287,18 @@
 		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
 			ship_id = "sh_dropship2"
 
-		for(var/obj/machinery/door/airlock/dropship_hatch/M in machines)
+		for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in machines)
 			if(M.id == ship_id)
 				if(M.z != 4)
 					M.unlock()
 
-		var/obj/machinery/door/airlock/multi_tile/almayer/reardoor
+		var/obj/structure/machinery/door/airlock/multi_tile/almayer/reardoor
 		switch(ship_id)
 			if("sh_dropship1")
-				for(var/obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in machines)
+				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in machines)
 					reardoor = D
 			if("sh_dropship2")
-				for(var/obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
+				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
 					reardoor = D
 		if(reardoor.z != 4)
 			reardoor.unlock()
@@ -311,7 +311,7 @@
 		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
 			ship_id = "sh_dropship2"
 
-		for(var/obj/machinery/door/airlock/dropship_hatch/M in machines)
+		for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in machines)
 			if(M.id == ship_id)
 				var/is_right_side = text2num(href_list["right side"])
 				if(is_right_side)
@@ -337,13 +337,13 @@
 		var/ship_id = "sh_dropship1"
 		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
 			ship_id = "sh_dropship2"
-		var/obj/machinery/door/airlock/multi_tile/almayer/reardoor
+		var/obj/structure/machinery/door/airlock/multi_tile/almayer/reardoor
 		switch(ship_id)
 			if("sh_dropship1")
-				for(var/obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in machines)
+				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in machines)
 					reardoor = D
 			if("sh_dropship2")
-				for(var/obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
+				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
 					reardoor = D
 		if(reardoor)
 			if(reardoor.locked)
@@ -367,11 +367,11 @@
 
 	ui_interact(usr)
 
-/obj/machinery/computer/shuttle_control/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/machinery/computer/shuttle_control/bullet_act(var/obj/item/projectile/Proj)
 	visible_message("[Proj] ricochets off [src]!")
 	return 0
 
-/obj/machinery/computer/shuttle_control/ex_act(severity)
+/obj/structure/machinery/computer/shuttle_control/ex_act(severity)
 	if(unacidable) return //unacidable shuttle consoles are also immune to explosions.
 	..()
 
@@ -380,7 +380,7 @@
 
 //Dropship control console
 
-/obj/machinery/computer/shuttle_control/dropship1
+/obj/structure/machinery/computer/shuttle_control/dropship1
 	name = "\improper 'Alamo' dropship console"
 	desc = "The remote controls for the 'Alamo' Dropship. Named after the Alamo Mission, stage of the Battle of the Alamo in the United States' state of Texas in the Spring of 1836. The defenders held to the last, encouraging other Texans to rally to the flag."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
@@ -391,18 +391,18 @@
 	exproof = 1
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
 
-/obj/machinery/computer/shuttle_control/dropship1/New()
+/obj/structure/machinery/computer/shuttle_control/dropship1/New()
 	..()
 	shuttle_tag = "[MAIN_SHIP_NAME] Dropship 1"
 
-/obj/machinery/computer/shuttle_control/dropship1/onboard
+/obj/structure/machinery/computer/shuttle_control/dropship1/onboard
 	name = "\improper 'Alamo' flight controls"
 	desc = "The flight controls for the 'Alamo' Dropship. Named after the Alamo Mission, stage of the Battle of the Alamo in the United States' state of Texas in the Spring of 1836. The defenders held to the last, encouraging other Texians to rally to the flag."
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
 	onboard = 1
 
-/obj/machinery/computer/shuttle_control/dropship2
+/obj/structure/machinery/computer/shuttle_control/dropship2
 	name = "\improper 'Normandy' dropship console"
 	desc = "The remote controls for the 'Normandy' Dropship. Named after a department in France, noteworthy for the famous naval invasion of Normandy on the 6th of June 1944, a bloody but decisive victory in World War II and the campaign for the Liberation of France."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
@@ -413,11 +413,11 @@
 	exproof = 1
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
 
-/obj/machinery/computer/shuttle_control/dropship2/New()
+/obj/structure/machinery/computer/shuttle_control/dropship2/New()
 	..()
 	shuttle_tag = "[MAIN_SHIP_NAME] Dropship 2"
 
-/obj/machinery/computer/shuttle_control/dropship2/onboard
+/obj/structure/machinery/computer/shuttle_control/dropship2/onboard
 	name = "\improper 'Normandy' flight controls"
 	desc = "The flight controls for the 'Normandy' Dropship. Named after a department in France, noteworthy for the famous naval invasion of Normandy on the 6th of June 1944, a bloody but decisive victory in World War II and the campaign for the Liberation of France."
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
@@ -430,7 +430,7 @@
 
 //Elevator control console
 
-/obj/machinery/computer/shuttle_control/ice_colony
+/obj/structure/machinery/computer/shuttle_control/ice_colony
 	name = "Elevator Console"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "elevator_screen"
@@ -441,20 +441,20 @@
 	density = 0
 	req_access = null
 
-/obj/machinery/computer/shuttle_control/ice_colony/proc/animate_on()
+/obj/structure/machinery/computer/shuttle_control/ice_colony/proc/animate_on()
 	icon_state = "elevator_screen_animated"
 
-/obj/machinery/computer/shuttle_control/ice_colony/proc/animate_off()
+/obj/structure/machinery/computer/shuttle_control/ice_colony/proc/animate_off()
 	icon_state = "elevator_screen"
 
-/obj/machinery/computer/shuttle_control/ice_colony/elevator1
+/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator1
 	shuttle_tag = "Elevator 1"
 
-/obj/machinery/computer/shuttle_control/ice_colony/elevator2
+/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator2
 	shuttle_tag = "Elevator 2"
 
-/obj/machinery/computer/shuttle_control/ice_colony/elevator3
+/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator3
 	shuttle_tag = "Elevator 3"
 
-/obj/machinery/computer/shuttle_control/ice_colony/elevator4
+/obj/structure/machinery/computer/shuttle_control/ice_colony/elevator4
 	shuttle_tag = "Elevator 4"

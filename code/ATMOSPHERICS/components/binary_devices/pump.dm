@@ -5,7 +5,7 @@ node2, network2 correspond to output
 
 */
 
-/obj/machinery/atmospherics/binary/pump
+/obj/structure/machinery/atmospherics/binary/pump
 	icon = 'icons/obj/pipes/pump.dmi'
 	icon_state = "map_off"
 	level = 1
@@ -16,18 +16,18 @@ node2, network2 correspond to output
 	var/on = 0
 	use_power = 0
 
-/obj/machinery/atmospherics/binary/pump/on
+/obj/structure/machinery/atmospherics/binary/pump/on
 	icon_state = "map_on"
 	on = 1
 
 
-/obj/machinery/atmospherics/binary/pump/update_icon()
+/obj/structure/machinery/atmospherics/binary/pump/update_icon()
 	if(!powered())
 		icon_state = "off"
 	else
 		icon_state = "[on ? "on" : "off"]"
 
-/obj/machinery/atmospherics/binary/pump/update_underlays()
+/obj/structure/machinery/atmospherics/binary/pump/update_underlays()
 	if(..())
 		underlays.Cut()
 		var/turf/T = get_turf(src)
@@ -36,16 +36,15 @@ node2, network2 correspond to output
 		add_underlay(T, node1, turn(dir, -180))
 		add_underlay(T, node2, dir)
 
-/obj/machinery/atmospherics/binary/pump/hide(var/i)
+/obj/structure/machinery/atmospherics/binary/pump/hide(var/i)
 	update_underlays()
 
-
-/obj/machinery/atmospherics/binary/pump/attack_hand(user as mob)
+/obj/structure/machinery/atmospherics/binary/pump/attack_hand(user as mob)
 	if(..())
 		return
 	src.add_fingerprint(usr)
 
-/obj/machinery/atmospherics/binary/pump/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/atmospherics/binary/pump/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(!iswrench(W))
 		return ..()
 	if(!(stat & NOPOWER) && on)

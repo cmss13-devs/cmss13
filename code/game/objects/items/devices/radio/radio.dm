@@ -326,11 +326,11 @@
 
 	  //#### Sending the signal to all subspace receivers ####//
 
-		for(var/obj/machinery/telecomms/receiver/R in telecomms_list)
+		for(var/obj/structure/machinery/telecomms/receiver/R in telecomms_list)
 			R.receive_signal(signal)
 
 		// Allinone can act as receivers.
-		for(var/obj/machinery/telecomms/allinone/R in telecomms_list)
+		for(var/obj/structure/machinery/telecomms/allinone/R in telecomms_list)
 			R.receive_signal(signal)
 
 		// Receiving code can be located in Telecommunications.dm
@@ -379,7 +379,7 @@
 	)
 	signal.frequency = connection.frequency // Quick frequency set
 
-	for(var/obj/machinery/telecomms/receiver/R in telecomms_list)
+	for(var/obj/structure/machinery/telecomms/receiver/R in telecomms_list)
 		R.receive_signal(signal)
 
 

@@ -17,28 +17,28 @@
 	var/label_text = ""
 
 	var/list/can_be_placed_into = list(
-		/obj/machinery/chem_master/,
-		/obj/machinery/chem_dispenser/,
-		/obj/machinery/reagentgrinder,
+		/obj/structure/machinery/chem_master/,
+		/obj/structure/machinery/chem_dispenser/,
+		/obj/structure/machinery/reagentgrinder,
 		/obj/structure/table,
 		/obj/structure/closet,
 		/obj/structure/sink,
 		/obj/item/storage,
-		/obj/machinery/atmospherics/unary/cryo_cell,
+		/obj/structure/machinery/atmospherics/unary/cryo_cell,
 		/obj/item/explosive/grenade/chem_grenade,
-		/obj/machinery/bot/medbot,
-		/obj/machinery/computer/pandemic,
+		/obj/structure/machinery/bot/medbot,
+		/obj/structure/machinery/computer/pandemic,
 		/obj/item/storage/secure/safe,
-		/obj/machinery/iv_drip,
-		/obj/machinery/disposal,
+		/obj/structure/machinery/iv_drip,
+		/obj/structure/machinery/disposal,
 		/mob/living/simple_animal/cow,
 		/mob/living/simple_animal/hostile/retaliate/goat,
-		/obj/machinery/sleeper,
-		/obj/machinery/smartfridge/,
-		/obj/machinery/biogenerator,
-		/obj/machinery/reagent_analyzer,
-		/obj/machinery/centrifuge,
-		/obj/machinery/constructable_frame)
+		/obj/structure/machinery/sleeper,
+		/obj/structure/machinery/smartfridge/,
+		/obj/structure/machinery/biogenerator,
+		/obj/structure/machinery/reagent_analyzer,
+		/obj/structure/machinery/centrifuge,
+		/obj/structure/machinery/constructable_frame)
 
 	New()
 		..()
@@ -119,7 +119,7 @@
 		var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
 		to_chat(user, SPAN_NOTICE("You transfer [trans] units of the solution to [target]."))
 
-	else if(istype(target, /obj/machinery/smartfridge))
+	else if(istype(target, /obj/structure/machinery/smartfridge))
 		return
 
 	else if(reagents.total_volume)

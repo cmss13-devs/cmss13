@@ -437,7 +437,7 @@
 	unbuckle()
 
 //Smashing lights
-/obj/machinery/light/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/light/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(status == 2) //Ignore if broken. Note that we can't use defines here
 		return 0
 	M.animation_attack_on(src)
@@ -456,7 +456,7 @@
 		attack_generic(M, M.melee_damage_lower)
 
 //Slashing bots
-/obj/machinery/bot/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/bot/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)
 	health -= rand(15, 30)
 	if(health <= 0)
@@ -471,7 +471,7 @@
 	healthcheck()
 
 //Slashing cameras
-/obj/machinery/camera/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/camera/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(status)
 		M.visible_message(SPAN_DANGER("\The [M] slices [src] apart!"), \
 		SPAN_DANGER("You slice [src] apart!"), null, 5)
@@ -481,7 +481,7 @@
 		toggle_cam_status(M, TRUE)
 
 //Slashing windoors
-/obj/machinery/door/window/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/door/window/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)
 	playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 	M.visible_message(SPAN_DANGER("[M] smashes against [src]!"), \
@@ -564,7 +564,7 @@
 			SPAN_DANGER("You tear some shreds off [src]!"), null, 5)
 
 //Prying open doors
-/obj/machinery/door/airlock/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/door/airlock/attack_alien(mob/living/carbon/Xenomorph/M)
 	var/turf/cur_loc = M.loc
 	if(isElectrified())
 		if(shock(M, 70))
@@ -608,7 +608,7 @@
 				M.visible_message(SPAN_DANGER("\The [M] pries \the [src] open."), \
 				SPAN_DANGER("You pry \the [src] open."), null, 5)
 
-/obj/machinery/door/airlock/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
+/obj/structure/machinery/door/airlock/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
 	for(var/atom/movable/AM in get_turf(src))
 		if(AM != src && AM.density && !AM.CanPass(M, M.loc))
 			to_chat(M, SPAN_WARNING("\The [AM] prevents you from squeezing under \the [src]!"))
@@ -621,7 +621,7 @@
 	M.forceMove(loc)
 
 //Prying open FIREdoors
-/obj/machinery/door/firedoor/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/door/firedoor/attack_alien(mob/living/carbon/Xenomorph/M)
 	var/turf/cur_loc = M.loc
 	if(blocked)
 		to_chat(M, SPAN_WARNING("\The [src] is welded shut."))
@@ -681,7 +681,7 @@
 
 //Xenomorphs can't use machinery, not even the "intelligent" ones
 //Exception is Queen and shuttles, because plot power
-/obj/machinery/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(health <= 0)
 		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
 	else
@@ -718,22 +718,22 @@
 		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
 			ship_id = "sh_dropship2"
 
-		for(var/obj/machinery/door/airlock/dropship_hatch/D in machines)
+		for(var/obj/structure/machinery/door/airlock/dropship_hatch/D in machines)
 			if(D.id == ship_id)
 				D.unlock()
 
-		var/obj/machinery/door/airlock/multi_tile/almayer/reardoor
+		var/obj/structure/machinery/door/airlock/multi_tile/almayer/reardoor
 		switch(ship_id)
 			if("sh_dropship1")
-				for(var/obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in machines)
+				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in machines)
 					reardoor = D
 			if("sh_dropship2")
-				for(var/obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
+				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
 					reardoor = D
 
 		reardoor.unlock()
 
-/obj/machinery/computer/shuttle_control/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/computer/shuttle_control/attack_alien(mob/living/carbon/Xenomorph/M)
 	var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(shuttle))
 		..()
@@ -747,7 +747,7 @@
 	else
 		..()
 
-/obj/machinery/door_control/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/door_control/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(M.caste.is_intelligent && normaldoorcontrol == CONTROL_DROPSHIP)
 		var/shuttle_tag
 		switch(id)
@@ -766,7 +766,7 @@
 		..()
 
 //APCs.
-/obj/machinery/power/apc/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/power/apc/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_DANGER("[M] slashes \the [src]!"), \
 	SPAN_DANGER("You slash \the [src]!"), null, 5)
@@ -796,7 +796,7 @@
 /obj/structure/ladder/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
 	return attack_hand(M)
 
-/obj/machinery/colony_floodlight/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/colony_floodlight/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(!is_lit)
 		to_chat(M, "Why bother? It's just some weird metal thing.")
 		return 0
@@ -816,7 +816,7 @@
 		else
 			playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 
-/obj/machinery/colony_floodlight/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
+/obj/structure/machinery/colony_floodlight/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
 	M.visible_message("[M] starts biting [src]!","In a rage, you start biting [src], but with no effect!", null, 5)
 
 
@@ -890,7 +890,7 @@
 			SPAN_DANGER("You slash \the [src]!"), null, 5)
 			playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
 
-/obj/machinery/vending/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/vending/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(tipped_level)
 		to_chat(M, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
 		return 0
@@ -928,7 +928,7 @@
 	M.animation_attack_on(src)
 	deflate(1)
 
-/obj/machinery/vending/proc/tip_over()
+/obj/structure/machinery/vending/proc/tip_over()
 	var/matrix/A = matrix()
 	tipped_level = 2
 	density = 0
@@ -936,7 +936,7 @@
 	transform = A
 	malfunction()
 
-/obj/machinery/vending/proc/flip_back()
+/obj/structure/machinery/vending/proc/flip_back()
 	icon_state = initial(icon_state)
 	tipped_level = 0
 	density = 1

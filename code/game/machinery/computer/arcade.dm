@@ -1,4 +1,4 @@
-/obj/machinery/computer/arcade
+/obj/structure/machinery/computer/arcade
 	name = "Black Donnovan II: Double Revenge"
 	desc = "Two years after the average high school teenager Josh transformed into the powerful ninja 'Black Donnovan' and defeated the evil forces of Colonel Ranchenko and his UPP experiments to save his captured ninja girlfriend Reino, chaos is unleashed again on the world. Josh's Canadian cousin, transforming into the powerful ninja 'Fury Fuhrer', has created a world in Florida no longer exists. Josh once again transforms into 'Black Donnovan' to fight against Fury Fuhrer's legions of goons and restore the hellscape world to its former glory."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
@@ -25,10 +25,10 @@
 							/obj/item/tool/hand_labeler					= 1
 							)
 
-/obj/machinery/computer/arcade
+/obj/structure/machinery/computer/arcade
 	var/turtle = 0
 
-/obj/machinery/computer/arcade/New()
+/obj/structure/machinery/computer/arcade/New()
 	..()
 	//Disabled for now to make sense with the splash screen.
 	/*
@@ -46,10 +46,10 @@
 	*/
 
 
-/obj/machinery/computer/arcade/attack_ai(mob/user as mob)
+/obj/structure/machinery/computer/arcade/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/arcade/attack_hand(mob/user as mob)
+/obj/structure/machinery/computer/arcade/attack_hand(mob/user as mob)
 	if(..())
 		return
 	user.set_interaction(src)
@@ -72,7 +72,7 @@
 	onclose(user, "arcade")
 	return
 
-/obj/machinery/computer/arcade/Topic(href, href_list)
+/obj/structure/machinery/computer/arcade/Topic(href, href_list)
 	if(..())
 		return
 
@@ -133,7 +133,7 @@
 	src.updateUsrDialog()
 	return
 
-/obj/machinery/computer/arcade/proc/arcade_action()
+/obj/structure/machinery/computer/arcade/proc/arcade_action()
 	if ((src.enemy_mp <= 0) || (src.enemy_hp <= 0))
 		if(!gameover)
 			src.gameover = 1
@@ -185,7 +185,7 @@
 	src.blocked = 0
 	return
 
-/obj/machinery/computer/arcade/emp_act(severity)
+/obj/structure/machinery/computer/arcade/emp_act(severity)
 	if(stat & (NOPOWER|BROKEN))
 		..(severity)
 		return

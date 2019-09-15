@@ -21,7 +21,7 @@
 /area/tdome)
 "ag" = (
 /obj/structure/window/framed/almayer/hull,
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	density = 0;
 	icon_state = "pdoor0";
 	id = "tdome_observer";
@@ -35,7 +35,7 @@
 	},
 /area/tdome)
 "aj" = (
-/obj/machinery/autolathe/full,
+/obj/structure/machinery/autolathe/full,
 /turf/open/floor/almayer{
 	tag = "icon-orange (NORTHWEST)";
 	icon_state = "orange";
@@ -71,7 +71,7 @@
 	},
 /area/tdome)
 "aB" = (
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
 	id = "tdome_t2";
 	name = "\improper Team 2 Shutters"
@@ -450,7 +450,7 @@
 	icon_state = "heater";
 	dir = 1
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor{
@@ -459,7 +459,7 @@
 	},
 /area/yautja)
 "cn" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor{
@@ -474,7 +474,7 @@
 	},
 /area/yautja)
 "cp" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (EAST)";
 	icon_state = "bulb1";
 	dir = 4
@@ -485,14 +485,14 @@
 	},
 /area/yautja)
 "cq" = (
-/obj/machinery/light/small,
+/obj/structure/machinery/light/small,
 /turf/open/floor{
 	tag = "icon-floor4";
 	icon_state = "floor4"
 	},
 /area/yautja)
 "cu" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "Storage Chamber"
 	},
 /turf/open/floor{
@@ -501,7 +501,7 @@
 	},
 /area/yautja)
 "cv" = (
-/obj/machinery/power/smes/magical{
+/obj/structure/machinery/power/smes/magical{
 	capacity = 9e+008;
 	charge = 9e+008;
 	dir = 4;
@@ -513,7 +513,7 @@
 	},
 /area/yautja)
 "cw" = (
-/obj/machinery/power/apc/almayer{
+/obj/structure/machinery/power/apc/almayer{
 	dir = 1
 	},
 /obj/structure/table/reinforced{
@@ -528,7 +528,7 @@
 /obj/structure/table/reinforced{
 	layer = 2.69
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (NORTH)";
 	icon_state = "bulb1";
 	dir = 1
@@ -586,12 +586,12 @@
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
 "cD" = (
-/obj/machinery/power/terminal{
+/obj/structure/machinery/power/terminal{
 	tag = "icon-term (NORTH)";
 	icon_state = "term";
 	dir = 1
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor{
@@ -600,7 +600,7 @@
 	},
 /area/yautja)
 "cE" = (
-/obj/machinery/power/terminal{
+/obj/structure/machinery/power/terminal{
 	tag = "icon-term (NORTH)";
 	icon_state = "term";
 	dir = 1
@@ -616,7 +616,7 @@
 	icon_state = "heater";
 	dir = 1
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (NORTH)";
 	icon_state = "bulb1";
 	dir = 1
@@ -670,7 +670,7 @@
 	},
 /area/yautja)
 "cM" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (NORTH)";
 	icon_state = "bulb1";
 	dir = 1
@@ -693,7 +693,7 @@
 "cO" = (
 /obj/structure/table/reinforced,
 /obj/item/device/flashlight/lantern,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/holofloor{
@@ -711,7 +711,7 @@
 /area/yautja)
 "cQ" = (
 /obj/structure/rack,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /obj/item/device/flashlight/lantern,
@@ -723,7 +723,7 @@
 /area/yautja)
 "cR" = (
 /obj/structure/rack,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (EAST)";
 	icon_state = "bulb1";
 	dir = 4
@@ -785,12 +785,12 @@
 	},
 /area/yautja)
 "cX" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (NORTH)";
 	icon_state = "bulb1";
 	dir = 1
 	},
-/obj/machinery/optable,
+/obj/structure/machinery/optable,
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2
@@ -835,7 +835,7 @@
 	},
 /area/yautja)
 "dc" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (WEST)";
 	icon_state = "bulb1";
 	dir = 8
@@ -846,7 +846,7 @@
 	},
 /area/yautja)
 "dd" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (EAST)";
 	icon_state = "bulb1";
 	dir = 4
@@ -870,7 +870,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/door/window/southleft,
+/obj/structure/machinery/door/window/southleft,
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2
@@ -896,7 +896,7 @@
 	},
 /area/yautja)
 "dk" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "\improper Operation Room"
 	},
 /turf/open/floor/holofloor{
@@ -905,7 +905,7 @@
 	},
 /area/yautja)
 "dl" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "Blooded Chambers"
 	},
 /turf/open/floor/holofloor{
@@ -914,7 +914,7 @@
 	},
 /area/yautja)
 "dm" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/holofloor{
@@ -923,7 +923,7 @@
 	},
 /area/yautja)
 "dn" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "Elder Quarters"
 	},
 /turf/open/floor/holofloor{
@@ -942,7 +942,7 @@
 	dir = 4;
 	health = 80
 	},
-/obj/machinery/door/window/southleft{
+/obj/structure/machinery/door/window/southleft{
 	dir = 1;
 	icon_state = "left";
 	layer = 2.8;
@@ -962,7 +962,7 @@
 	},
 /area/yautja)
 "dq" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "\improper Houndmaster's Quarters"
 	},
 /turf/open/floor/holofloor{
@@ -998,7 +998,7 @@
 /obj/item/stack/medical/splint{
 	name = "splints"
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /obj/item/stack/medical/splint{
@@ -1031,7 +1031,7 @@
 /obj/structure/table/reinforced{
 	layer = 2.69
 	},
-/obj/machinery/door/window/southleft,
+/obj/structure/machinery/door/window/southleft,
 /obj/structure/window/reinforced{
 	dir = 4;
 	health = 80
@@ -1109,7 +1109,7 @@
 /obj/item/stack/medical/ointment/tajaran{
 	name = "soothing herbs"
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/holofloor{
@@ -1140,7 +1140,7 @@
 	},
 /area/yautja)
 "dP" = (
-/obj/machinery/light/small,
+/obj/structure/machinery/light/small,
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2
@@ -1150,7 +1150,7 @@
 /turf/open/space,
 /area/shuttle/distress/transit_upp)
 "dR" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "\improper Medicine Room"
 	},
 /turf/open/floor/holofloor{
@@ -1159,7 +1159,7 @@
 	},
 /area/yautja)
 "dS" = (
-/obj/machinery/autolathe/yautja,
+/obj/structure/machinery/autolathe/yautja,
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2
@@ -1184,7 +1184,7 @@
 /obj/item/stack/sheet/glass{
 	amount = 50
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (NORTH)";
 	icon_state = "bulb1";
 	dir = 1
@@ -1198,7 +1198,7 @@
 	},
 /area/yautja)
 "dU" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "\improper Hellhound Quarters"
 	},
 /turf/open/floor/holofloor{
@@ -1207,7 +1207,7 @@
 	},
 /area/yautja)
 "dV" = (
-/obj/machinery/light/small,
+/obj/structure/machinery/light/small,
 /turf/open/shuttle{
 	icon_state = "floor6"
 	},
@@ -1217,7 +1217,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/door/window/northright{
+/obj/structure/machinery/door/window/northright{
 	icon_state = "right";
 	dir = 2
 	},
@@ -1240,7 +1240,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/door/window/northright{
+/obj/structure/machinery/door/window/northright{
 	icon_state = "right";
 	dir = 2
 	},
@@ -1260,7 +1260,7 @@
 	dir = 8;
 	health = 80
 	},
-/obj/machinery/door/window/northright{
+/obj/structure/machinery/door/window/northright{
 	icon_state = "right";
 	dir = 2
 	},
@@ -1381,7 +1381,7 @@
 	dir = 8;
 	health = 80
 	},
-/obj/machinery/door/window/northright{
+/obj/structure/machinery/door/window/northright{
 	icon_state = "right";
 	dir = 2
 	},
@@ -1393,7 +1393,7 @@
 	},
 /area/yautja)
 "en" = (
-/obj/machinery/door/airlock/centcom{
+/obj/structure/machinery/door/airlock/centcom{
 	name = "Airlock Out"
 	},
 /turf/open/floor/holofloor{
@@ -1503,7 +1503,7 @@
 "eB" = (
 /obj/structure/rack,
 /obj/item/reagent_container/food/snacks/meat,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (EAST)";
 	icon_state = "bulb1";
 	dir = 4
@@ -1516,7 +1516,7 @@
 "eC" = (
 /obj/structure/rack,
 /obj/item/reagent_container/food/snacks/xenomeat,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/holofloor{
@@ -1552,7 +1552,7 @@
 /obj/structure/rack,
 /obj/item/weapon/yautja_knife,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (WEST)";
 	icon_state = "bulb1";
 	dir = 8
@@ -1567,7 +1567,7 @@
 /obj/structure/rack,
 /obj/item/weapon/yautja_knife,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (EAST)";
 	icon_state = "bulb1";
 	dir = 4
@@ -1580,7 +1580,7 @@
 /area/yautja)
 "eM" = (
 /obj/structure/xenoautopsy/tank,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/holofloor{
@@ -1610,7 +1610,7 @@
 /area/yautja)
 "eP" = (
 /obj/structure/xenoautopsy/tank,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (EAST)";
 	icon_state = "bulb1";
 	dir = 4
@@ -1662,7 +1662,7 @@
 	},
 /area/yautja)
 "eS" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "Central Chamber"
 	},
 /turf/open/shuttle{
@@ -1698,7 +1698,7 @@
 	},
 /area/centcom/living)
 "fc" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "Storage Chamber"
 	},
 /turf/open/floor/holofloor{
@@ -1717,7 +1717,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/door/window/southleft{
+/obj/structure/machinery/door/window/southleft{
 	layer = 2.8
 	},
 /turf/open/floor/holofloor{
@@ -1731,7 +1731,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/door/window/southleft{
+/obj/structure/machinery/door/window/southleft{
 	layer = 2.8
 	},
 /turf/open/floor/holofloor{
@@ -1764,35 +1764,35 @@
 /turf/open/floor/carpet,
 /area/centcom/living)
 "fz" = (
-/obj/machinery/telecomms/receiver/preset_cent,
+/obj/structure/machinery/telecomms/receiver/preset_cent,
 /turf/open/floor/almayer{
 	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
 "fA" = (
-/obj/machinery/telecomms/bus/preset_cent,
+/obj/structure/machinery/telecomms/bus/preset_cent,
 /turf/open/floor/almayer{
 	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
 "fB" = (
-/obj/machinery/telecomms/processor/preset_cent,
+/obj/structure/machinery/telecomms/processor/preset_cent,
 /turf/open/floor/almayer{
 	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
 "fC" = (
-/obj/machinery/telecomms/server/presets/centcomm,
+/obj/structure/machinery/telecomms/server/presets/centcomm,
 /turf/open/floor/almayer{
 	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
 "fD" = (
-/obj/machinery/account_database{
+/obj/structure/machinery/account_database{
 	name = "CentComm Accounts database"
 	},
 /turf/open/floor/almayer{
@@ -1845,7 +1845,7 @@
 	},
 /area/centcom/living)
 "fQ" = (
-/obj/machinery/telecomms/relay/preset/centcom,
+/obj/structure/machinery/telecomms/relay/preset/centcom,
 /turf/open/floor/almayer{
 	icon_regular_floor = "mono";
 	icon_state = "mono"
@@ -1897,7 +1897,7 @@
 	dir = 4;
 	health = 80
 	},
-/obj/machinery/door/window/southleft{
+/obj/structure/machinery/door/window/southleft{
 	dir = 8;
 	icon_state = "left";
 	layer = 2.8;
@@ -1919,7 +1919,7 @@
 /turf/closed/wall/rock/brown,
 /area/adminlevel/bunker01/caves)
 "ga" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "\improper Meeting Chamber"
 	},
 /turf/open/floor/holofloor{
@@ -1928,7 +1928,7 @@
 	},
 /area/yautja)
 "gb" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "Trophy Room"
 	},
 /turf/open/floor/holofloor{
@@ -1940,28 +1940,28 @@
 /turf/open/mars_cave,
 /area/adminlevel/bunker01/caves)
 "gd" = (
-/obj/machinery/telecomms/allinone/interceptor,
+/obj/structure/machinery/telecomms/allinone/interceptor,
 /turf/open/floor/almayer{
 	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
 "ge" = (
-/obj/machinery/telecomms/broadcaster/preset_cent,
+/obj/structure/machinery/telecomms/broadcaster/preset_cent,
 /turf/open/floor/almayer{
 	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
 "gf" = (
-/obj/machinery/telecomms/hub/preset_cent,
+/obj/structure/machinery/telecomms/hub/preset_cent,
 /turf/open/floor/almayer{
 	icon_regular_floor = "mono";
 	icon_state = "mono"
 	},
 /area/centcom/control)
 "gg" = (
-/obj/machinery/computer/rdservercontrol{
+/obj/structure/machinery/computer/rdservercontrol{
 	badmin = 1;
 	name = "Master R&amp;D Server Controller"
 	},
@@ -1971,7 +1971,7 @@
 	},
 /area/centcom/control)
 "gh" = (
-/obj/machinery/r_n_d/server/centcom,
+/obj/structure/machinery/r_n_d/server/centcom,
 /turf/open/floor/almayer{
 	icon_regular_floor = "mono";
 	icon_state = "mono"
@@ -1983,7 +1983,7 @@
 "gk" = (
 /obj/structure/table/reinforced,
 /obj/item/device/flashlight/lantern,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/holofloor{
@@ -2112,7 +2112,7 @@
 	dir = 4;
 	health = 80
 	},
-/obj/machinery/door/window/southleft{
+/obj/structure/machinery/door/window/southleft{
 	dir = 1;
 	icon_state = "left";
 	layer = 2.8;
@@ -2129,7 +2129,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/door/window/southleft{
+/obj/structure/machinery/door/window/southleft{
 	dir = 1;
 	icon_state = "left";
 	layer = 2.8;
@@ -2224,7 +2224,7 @@
 "gB" = (
 /obj/item/reagent_container/food/snacks/stew,
 /obj/structure/table/reinforced,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (NORTH)";
 	icon_state = "bulb1";
 	dir = 1
@@ -2236,7 +2236,7 @@
 	},
 /area/yautja)
 "gC" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "Practice Chamber"
 	},
 /turf/open/shuttle{
@@ -2244,7 +2244,7 @@
 	},
 /area/yautja)
 "gD" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /obj/structure/table/reinforced,
@@ -2281,7 +2281,7 @@
 	},
 /area/yautja)
 "gG" = (
-/obj/machinery/door/airlock/freezer{
+/obj/structure/machinery/door/airlock/freezer{
 	name = "\improper Cooler Room"
 	},
 /turf/open/floor/holofloor{
@@ -2299,7 +2299,7 @@
 	},
 /area/yautja)
 "gI" = (
-/obj/machinery/door/airlock/glass{
+/obj/structure/machinery/door/airlock/glass{
 	id = "Prisoner Cell 1";
 	name = "\improper Prisoner Cell 1"
 	},
@@ -2309,7 +2309,7 @@
 	},
 /area/yautja)
 "gJ" = (
-/obj/machinery/door_display/research_cell{
+/obj/structure/machinery/door_display/research_cell{
 	id = "Prisoner Cell 1"
 	},
 /turf/closed/wall/indestructible/other{
@@ -2317,7 +2317,7 @@
 	},
 /area/yautja)
 "gK" = (
-/obj/machinery/door/airlock/glass{
+/obj/structure/machinery/door/airlock/glass{
 	id = "Prisoner Cell 2";
 	name = "\improper Prisoner Cell 2"
 	},
@@ -2327,7 +2327,7 @@
 	},
 /area/yautja)
 "gL" = (
-/obj/machinery/door_display/research_cell{
+/obj/structure/machinery/door_display/research_cell{
 	id = "Prisoner Cell 2"
 	},
 /turf/closed/wall/indestructible/other{
@@ -2335,7 +2335,7 @@
 	},
 /area/yautja)
 "gM" = (
-/obj/machinery/door/airlock/glass{
+/obj/structure/machinery/door/airlock/glass{
 	id = "Prisoner Cell 3";
 	name = "\improper Prisoner Cell 3"
 	},
@@ -2345,7 +2345,7 @@
 	},
 /area/yautja)
 "gN" = (
-/obj/machinery/door_display/research_cell{
+/obj/structure/machinery/door_display/research_cell{
 	id = "Prisoner Cell 3"
 	},
 /turf/closed/wall/indestructible/other{
@@ -2360,7 +2360,7 @@
 	},
 /area/yautja)
 "gP" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "\improper Feeder Room"
 	},
 /turf/open/floor/holofloor{
@@ -2370,7 +2370,7 @@
 /area/yautja)
 "gQ" = (
 /obj/structure/table/reinforced,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (EAST)";
 	icon_state = "bulb1";
 	dir = 4
@@ -2381,7 +2381,7 @@
 	},
 /area/yautja)
 "gR" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "\improper Feed Hall"
 	},
 /turf/open/floor/holofloor{
@@ -2390,7 +2390,7 @@
 	},
 /area/yautja)
 "gS" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/holofloor{
@@ -2399,7 +2399,7 @@
 	},
 /area/yautja)
 "gT" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "\improper Containment Cells"
 	},
 /turf/open/shuttle{
@@ -2407,7 +2407,7 @@
 	},
 /area/yautja)
 "gU" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "\improper Wargear Storage"
 	},
 /turf/open/floor/holofloor{
@@ -2416,7 +2416,7 @@
 	},
 /area/yautja)
 "gV" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (EAST)";
 	icon_state = "bulb1";
 	dir = 4
@@ -2434,7 +2434,7 @@
 	},
 /area/yautja)
 "gX" = (
-/obj/machinery/door/airlock/glass{
+/obj/structure/machinery/door/airlock/glass{
 	name = "\improper Fighting Pit"
 	},
 /turf/open/floor/holofloor{
@@ -2495,7 +2495,7 @@
 	},
 /area/yautja)
 "hi" = (
-/obj/machinery/light/small,
+/obj/structure/machinery/light/small,
 /obj/structure/kitchenspike,
 /turf/open/floor/holofloor{
 	icon_state = "cult";
@@ -2503,7 +2503,7 @@
 	},
 /area/yautja)
 "hj" = (
-/obj/machinery/door/airlock/glass{
+/obj/structure/machinery/door/airlock/glass{
 	id = "Prisoner Cell 4";
 	name = "\improper Prisoner Cell 4"
 	},
@@ -2513,7 +2513,7 @@
 	},
 /area/yautja)
 "hk" = (
-/obj/machinery/door_display/research_cell{
+/obj/structure/machinery/door_display/research_cell{
 	id = "Prisoner Cell 4"
 	},
 /turf/closed/wall/indestructible/other{
@@ -2521,7 +2521,7 @@
 	},
 /area/yautja)
 "hl" = (
-/obj/machinery/door/airlock/glass{
+/obj/structure/machinery/door/airlock/glass{
 	id = "Prisoner Cell 5";
 	name = "\improper Prisoner Cell 5"
 	},
@@ -2531,7 +2531,7 @@
 	},
 /area/yautja)
 "hm" = (
-/obj/machinery/door_display/research_cell{
+/obj/structure/machinery/door_display/research_cell{
 	id = "Prisoner Cell 5"
 	},
 /turf/closed/wall/indestructible/other{
@@ -2539,7 +2539,7 @@
 	},
 /area/yautja)
 "hn" = (
-/obj/machinery/door/airlock/glass{
+/obj/structure/machinery/door/airlock/glass{
 	id = "Prisoner Cell 6";
 	name = "\improper Prisoner Cell 6"
 	},
@@ -2549,7 +2549,7 @@
 	},
 /area/yautja)
 "ho" = (
-/obj/machinery/door_display/research_cell{
+/obj/structure/machinery/door_display/research_cell{
 	id = "Prisoner Cell 6"
 	},
 /turf/closed/wall/indestructible/other{
@@ -2570,7 +2570,7 @@
 	},
 /area/shuttle/distress/start)
 "ht" = (
-/obj/machinery/computer/shuttle_control/ert,
+/obj/structure/machinery/computer/shuttle_control/ert,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -2592,7 +2592,7 @@
 	},
 /area/shuttle/distress/start_pmc)
 "hx" = (
-/obj/machinery/computer/shuttle_control/ert{
+/obj/structure/machinery/computer/shuttle_control/ert{
 	shuttle_tag = "Distress_PMC"
 	},
 /turf/open/shuttle/dropship{
@@ -2616,7 +2616,7 @@
 	},
 /area/shuttle/distress/start_upp)
 "hB" = (
-/obj/machinery/computer/shuttle_control/ert{
+/obj/structure/machinery/computer/shuttle_control/ert{
 	shuttle_tag = "Distress_UPP"
 	},
 /turf/open/shuttle/dropship{
@@ -2748,7 +2748,7 @@
 	},
 /area/shuttle/distress/start_upp)
 "ii" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/shuttle{
@@ -2782,8 +2782,8 @@
 	},
 /area/yautja)
 "in" = (
-/obj/machinery/door/airlock/almayer/generic,
-/obj/machinery/door/poddoor/shutters/transit{
+/obj/structure/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/poddoor/shutters/transit{
 	dir = 4
 	},
 /turf/open/shuttle/dropship{
@@ -2817,8 +2817,8 @@
 	},
 /area/shuttle/distress/start)
 "ir" = (
-/obj/machinery/door/airlock/almayer/generic,
-/obj/machinery/door/poddoor/shutters/transit{
+/obj/structure/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/poddoor/shutters/transit{
 	dir = 4
 	},
 /turf/open/shuttle/dropship{
@@ -2852,8 +2852,8 @@
 	},
 /area/shuttle/distress/start_pmc)
 "iv" = (
-/obj/machinery/door/airlock/almayer/generic,
-/obj/machinery/door/poddoor/shutters/transit{
+/obj/structure/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/poddoor/shutters/transit{
 	dir = 4
 	},
 /turf/open/shuttle/dropship{
@@ -2981,7 +2981,7 @@
 	},
 /area/yautja)
 "iJ" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "\improper Fore Rooms"
 	},
 /turf/open/shuttle{
@@ -3006,7 +3006,7 @@
 	},
 /area/yautja)
 "iM" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /obj/structure/table/reinforced,
@@ -3018,7 +3018,7 @@
 /area/yautja)
 "iN" = (
 /obj/effect/alien/egg,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (NORTH)";
 	icon_state = "bulb1";
 	dir = 1
@@ -3042,10 +3042,10 @@
 /turf/closed/wall/almayer/white,
 /area/shuttle/distress/start_big)
 "iV" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
 	},
-/obj/machinery/door/poddoor/shutters/transit,
+/obj/structure/machinery/door/poddoor/shutters/transit,
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
 "iW" = (
@@ -3053,7 +3053,7 @@
 /turf/open/floor/plating,
 /area/shuttle/distress/start_big)
 "iX" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/holofloor{
@@ -3071,10 +3071,10 @@
 	},
 /area/yautja)
 "iZ" = (
-/obj/machinery/door/window/southleft{
+/obj/structure/machinery/door/window/southleft{
 	layer = 2.8
 	},
-/obj/machinery/door/window/southleft{
+/obj/structure/machinery/door/window/southleft{
 	dir = 1;
 	icon_state = "left";
 	layer = 2.8;
@@ -3103,7 +3103,7 @@
 	},
 /area/shuttle/distress/start_big)
 "jf" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "\improper Burial Room"
 	},
 /turf/open/floor/holofloor{
@@ -3112,7 +3112,7 @@
 	},
 /area/yautja)
 "jg" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "\improper Growth and Research Chamber"
 	},
 /turf/open/floor/holofloor{
@@ -3121,7 +3121,7 @@
 	},
 /area/yautja)
 "jh" = (
-/obj/machinery/door/airlock/external{
+/obj/structure/machinery/door/airlock/external{
 	name = "\improper Airlock"
 	},
 /turf/open/floor/holofloor{
@@ -3235,7 +3235,7 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
 "jw" = (
-/obj/machinery/door/airlock/secure{
+/obj/structure/machinery/door/airlock/secure{
 	name = "Navigator's Room"
 	},
 /turf/open/floor/holofloor{
@@ -3245,7 +3245,7 @@
 /area/yautja)
 "jx" = (
 /obj/effect/alien/egg,
-/obj/machinery/light/small,
+/obj/structure/machinery/light/small,
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2
@@ -3423,10 +3423,10 @@
 	},
 /area/shuttle/distress/start)
 "kd" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
 	},
-/obj/machinery/door/poddoor/shutters/transit,
+/obj/structure/machinery/door/poddoor/shutters/transit,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -3459,10 +3459,10 @@
 	},
 /area/shuttle/distress/start_pmc)
 "kj" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
 	},
-/obj/machinery/door/poddoor/shutters/transit,
+/obj/structure/machinery/door/poddoor/shutters/transit,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -3496,10 +3496,10 @@
 	},
 /area/shuttle/distress/start_upp)
 "kp" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
 	},
-/obj/machinery/door/poddoor/shutters/transit,
+/obj/structure/machinery/door/poddoor/shutters/transit,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -3543,7 +3543,7 @@
 	},
 /area/yautja)
 "kw" = (
-/obj/machinery/computer/crew,
+/obj/structure/machinery/computer/crew,
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2
@@ -3568,7 +3568,7 @@
 	},
 /area/shuttle/distress/start_big)
 "kA" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
@@ -3587,7 +3587,7 @@
 	},
 /area/shuttle/distress/start_big)
 "kC" = (
-/obj/machinery/bioprinter{
+/obj/structure/machinery/bioprinter{
 	stored_metal = 1000
 	},
 /turf/open/floor/almayer{
@@ -3624,7 +3624,7 @@
 	},
 /area/shuttle/distress/start_big)
 "kG" = (
-/obj/machinery/microwave,
+/obj/structure/machinery/microwave,
 /obj/structure/table/almayer,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -3635,7 +3635,7 @@
 /turf/open/floor/almayer,
 /area/shuttle/distress/start_big)
 "kI" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
 	},
@@ -3657,7 +3657,7 @@
 	},
 /area/shuttle/distress/start_big)
 "kL" = (
-/obj/machinery/door/airlock/almayer/medical{
+/obj/structure/machinery/door/airlock/almayer/medical{
 	name = "Operating Theatre";
 	req_one_access = list()
 	},
@@ -3667,10 +3667,10 @@
 	},
 /area/shuttle/distress/start_big)
 "kM" = (
-/obj/machinery/optable,
+/obj/structure/machinery/optable,
 /obj/item/tank/anesthetic,
 /obj/item/clothing/mask/breath/medical,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
 	},
@@ -3716,20 +3716,20 @@
 /turf/open/floor/almayer,
 /area/shuttle/distress/start_big)
 "kR" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
 "kS" = (
-/obj/machinery/vending/medical,
+/obj/structure/machinery/vending/medical,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
 /area/shuttle/distress/start_big)
 "kT" = (
-/obj/machinery/iv_drip,
+/obj/structure/machinery/iv_drip,
 /obj/structure/mirror{
 	pixel_y = -28
 	},
@@ -3775,7 +3775,7 @@
 /turf/open/floor/wood,
 /area/shuttle/distress/start_big)
 "kZ" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
 	name = "Crew Bunks"
 	},
@@ -3800,7 +3800,7 @@
 	},
 /area/shuttle/distress/start_big)
 "lc" = (
-/obj/machinery/door/airlock/almayer/medical{
+/obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
 	name = "Operating Theatre";
 	req_one_access = list()
@@ -3812,8 +3812,8 @@
 /area/shuttle/distress/start_big)
 "ld" = (
 /obj/structure/table/almayer,
-/obj/machinery/computer/communications,
-/obj/machinery/light{
+/obj/structure/machinery/computer/communications,
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
@@ -3852,7 +3852,7 @@
 	},
 /area/shuttle/distress/start_big)
 "lh" = (
-/obj/machinery/vending/engivend,
+/obj/structure/machinery/vending/engivend,
 /obj/item/device/radio/intercom{
 	anyai = 1;
 	freerange = 1;
@@ -3860,7 +3860,7 @@
 	pixel_x = 0;
 	pixel_y = 28
 	},
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
 	},
@@ -3896,7 +3896,7 @@
 /area/shuttle/distress/start_big)
 "ll" = (
 /obj/structure/bed/chair/dropship/passenger,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/almayer{
@@ -3940,13 +3940,13 @@
 /turf/open/floor/wood,
 /area/shuttle/distress/start_big)
 "lr" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
 	},
 /obj/structure/table/almayer,
-/obj/machinery/computer/security,
+/obj/structure/machinery/computer/security,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -3954,14 +3954,14 @@
 /area/shuttle/distress/start_big)
 "lt" = (
 /obj/structure/table/almayer,
-/obj/machinery/computer/secure_data,
+/obj/structure/machinery/computer/secure_data,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
 /area/shuttle/distress/start_big)
 "lu" = (
-/obj/machinery/autolathe,
+/obj/structure/machinery/autolathe,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -4079,7 +4079,7 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
 "lE" = (
-/obj/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "Captain's Quarters"
 	},
@@ -4121,7 +4121,7 @@
 /area/shuttle/distress/start_big)
 "lI" = (
 /obj/structure/table/almayer,
-/obj/machinery/computer/card,
+/obj/structure/machinery/computer/card,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -4136,7 +4136,7 @@
 	tag = "icon-S";
 	icon_state = "S"
 	},
-/obj/machinery/power/apc/almayer{
+/obj/structure/machinery/power/apc/almayer{
 	cell_type = /obj/item/cell/hyper;
 	dir = 8
 	},
@@ -4149,7 +4149,7 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
 "lM" = (
-/obj/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "Aft Storage"
 	},
 /turf/open/floor/plating/almayer,
@@ -4166,7 +4166,7 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
 "lO" = (
-/obj/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command{
 	dir = 4;
 	name = "Bridge"
 	},
@@ -4181,7 +4181,7 @@
 	tag = "icon-N";
 	icon_state = "N"
 	},
-/obj/machinery/light/small,
+/obj/structure/machinery/light/small,
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
 "lQ" = (
@@ -4223,7 +4223,7 @@
 	tag = "icon-N";
 	icon_state = "N"
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/plating/almayer,
@@ -4251,7 +4251,7 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
 "lV" = (
-/obj/machinery/computer/shuttle_control/ert{
+/obj/structure/machinery/computer/shuttle_control/ert{
 	shuttle_tag = "Distress_Big"
 	},
 /obj/effect/decal/warning_stripes{
@@ -4368,7 +4368,7 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
 "mc" = (
-/obj/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "Captain's Storage"
 	},
@@ -4408,7 +4408,7 @@
 /area/shuttle/distress/start_big)
 "mg" = (
 /obj/structure/table/almayer,
-/obj/machinery/computer/communications,
+/obj/structure/machinery/computer/communications,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -4429,7 +4429,7 @@
 /area/shuttle/distress/start_big)
 "mi" = (
 /obj/structure/reagent_dispensers/fueltank,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
 	},
@@ -4440,7 +4440,7 @@
 /area/shuttle/distress/start_big)
 "mk" = (
 /obj/structure/bed/chair/dropship/passenger,
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -4492,20 +4492,20 @@
 	},
 /area/shuttle/distress/start_big)
 "mp" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
 	},
 /obj/structure/table/almayer,
-/obj/machinery/computer/med_data/laptop,
+/obj/structure/machinery/computer/med_data/laptop,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
 /area/shuttle/distress/start_big)
 "mq" = (
-/obj/machinery/computer/crew,
+/obj/structure/machinery/computer/crew,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -4523,21 +4523,21 @@
 	},
 /area/shuttle/distress/start_big)
 "ms" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
 	name = "Secure Storage"
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
 "mt" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
 	name = "Crew Lockers"
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
 "mu" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
@@ -4598,7 +4598,7 @@
 	},
 /area/shuttle/distress/start_big)
 "my" = (
-/obj/machinery/cryopod/right,
+/obj/structure/machinery/cryopod/right,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -4630,10 +4630,10 @@
 	},
 /area/shuttle/distress/start_big)
 "mB" = (
-/obj/machinery/door/window/westright{
+/obj/structure/machinery/door/window/westright{
 	dir = 2
 	},
-/obj/machinery/shower{
+/obj/structure/machinery/shower{
 	tag = "icon-shower (EAST)";
 	icon_state = "shower";
 	dir = 4
@@ -4682,7 +4682,7 @@
 /obj/item/clothing/mask/gas,
 /obj/item/tool/extinguisher,
 /obj/item/tool/extinguisher,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
 	},
@@ -4700,7 +4700,7 @@
 /area/shuttle/distress/start_big)
 "mH" = (
 /obj/structure/closet,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
@@ -4726,7 +4726,7 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
 "mJ" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 4;
 	name = "Restroom"
 	},
@@ -4785,7 +4785,7 @@
 	},
 /area/shuttle/distress/start_big)
 "mO" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
 	pixel_y = 0
@@ -4814,7 +4814,7 @@
 	},
 /area/shuttle/distress/start_big)
 "mR" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (EAST)";
 	icon_state = "bulb1";
 	dir = 4
@@ -4824,7 +4824,7 @@
 	},
 /area/yautja)
 "mS" = (
-/obj/machinery/disposal,
+/obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
@@ -4833,8 +4833,8 @@
 	},
 /area/adminlevel/bunker01/bathroom)
 "mT" = (
-/obj/machinery/washing_machine,
-/obj/machinery/light{
+/obj/structure/machinery/washing_machine,
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -4844,7 +4844,7 @@
 	},
 /area/adminlevel/bunker01/bathroom)
 "mU" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/shuttle{
@@ -4852,8 +4852,8 @@
 	},
 /area/yautja)
 "mV" = (
-/obj/machinery/washing_machine,
-/obj/machinery/firealarm{
+/obj/structure/machinery/washing_machine,
+/obj/structure/machinery/firealarm{
 	pixel_y = 24
 	},
 /turf/open/floor/prison{
@@ -4875,7 +4875,7 @@
 /area/adminlevel/bunker01/bathroom)
 "mX" = (
 /obj/structure/table/reinforced,
-/obj/machinery/computer/secure_data{
+/obj/structure/machinery/computer/secure_data{
 	req_access = list(201);
 	req_one_access = null
 	},
@@ -4883,20 +4883,20 @@
 /area/adminlevel/bunker01/command)
 "mY" = (
 /obj/structure/table/reinforced,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	on = 1
 	},
-/obj/machinery/computer/guestpass{
+/obj/structure/machinery/computer/guestpass{
 	reason = "Visitor"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/command)
 "mZ" = (
 /obj/structure/table/reinforced,
-/obj/machinery/faxmachine{
+/obj/structure/machinery/faxmachine{
 	department = "CLASSIFIED"
 	},
 /turf/open/floor/almayer,
@@ -4905,10 +4905,10 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
@@ -4919,10 +4919,10 @@
 	},
 /area/adminlevel/bunker01/bathroom)
 "nb" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Toilet"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -4934,7 +4934,7 @@
 	},
 /area/adminlevel/bunker01/bathroom)
 "nc" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (SOUTHWEST)";
 	icon_state = "intact-supply";
 	dir = 10
@@ -4962,7 +4962,7 @@
 	},
 /area/adminlevel/bunker01/bathroom)
 "nf" = (
-/obj/machinery/shower{
+/obj/structure/machinery/shower{
 	icon_state = "shower";
 	dir = 8
 	},
@@ -4976,7 +4976,7 @@
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
-/obj/machinery/firealarm{
+/obj/structure/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24;
 	pixel_y = 0
@@ -4987,11 +4987,11 @@
 /obj/structure/bed/chair/comfy{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/command)
 "ni" = (
-/obj/machinery/power/apc/antag{
+/obj/structure/machinery/power/apc/antag{
 	dir = 4;
 	pixel_x = 24
 	},
@@ -5001,13 +5001,13 @@
 /turf/closed/wall,
 /area/adminlevel/bunker01/bathroom)
 "nk" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (WEST)";
 	icon_state = "map-supply";
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
-/obj/machinery/power/apc/antag{
+/obj/structure/machinery/power/apc/antag{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -5018,7 +5018,7 @@
 	},
 /area/adminlevel/bunker01/bathroom)
 "nl" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -5030,7 +5030,7 @@
 	},
 /area/adminlevel/bunker01/bathroom)
 "nm" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	on = 1
 	},
@@ -5041,7 +5041,7 @@
 	},
 /area/adminlevel/bunker01/bathroom)
 "nn" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -5055,14 +5055,14 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/command)
 "np" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/command)
 "nq" = (
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/command)
 "nr" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (EAST)";
 	icon_state = "map-supply";
 	dir = 4
@@ -5090,13 +5090,13 @@
 	},
 /area/adminlevel/bunker01/bathroom)
 "nt" = (
-/obj/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "\improper Command Room";
 	req_access = list(201)
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer,
@@ -5105,13 +5105,13 @@
 /turf/closed/wall,
 /area/adminlevel/bunker01/bedroom)
 "nv" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
 	name = "\improper Bathroom"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer,
@@ -5132,7 +5132,7 @@
 	},
 /area/adminlevel/bunker01/bedroom)
 "nz" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/carpet{
 	tag = "icon-carpetside (NORTH)";
 	icon_state = "carpetside";
@@ -5155,26 +5155,26 @@
 /area/adminlevel/bunker01/bedroom)
 "nC" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/item/reagent_container/food/snacks/cheesecakeslice,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/bedroom)
 "nD" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/bedroom)
 "nE" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/bedroom)
 "nF" = (
-/obj/machinery/disposal,
+/obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/almayer,
@@ -5183,7 +5183,7 @@
 /turf/closed/wall/r_wall,
 /area/adminlevel/bunker01/hydroponics)
 "nH" = (
-/obj/machinery/disposal,
+/obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
@@ -5192,10 +5192,10 @@
 	},
 /area/adminlevel/bunker01/kitchen)
 "nI" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/structure/machinery/atmospherics/unary/vent_pump,
 /obj/structure/closet/secure_closet/freezer/fridge/full,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
@@ -5205,7 +5205,7 @@
 /area/adminlevel/bunker01/kitchen)
 "nJ" = (
 /obj/structure/closet/secure_closet/freezer/meat,
-/obj/machinery/firealarm{
+/obj/structure/machinery/firealarm{
 	pixel_y = 24
 	},
 /turf/open/floor/prison{
@@ -5216,7 +5216,7 @@
 /area/adminlevel/bunker01/kitchen)
 "nK" = (
 /obj/structure/table/reinforced,
-/obj/machinery/juicer,
+/obj/structure/machinery/juicer,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
 	icon_state = "sterile_white";
@@ -5247,7 +5247,7 @@
 /area/adminlevel/bunker01/hydroponics)
 "nO" = (
 /obj/structure/bed,
-/obj/machinery/firealarm{
+/obj/structure/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24;
 	pixel_y = 0
@@ -5259,7 +5259,7 @@
 	},
 /area/adminlevel/bunker01/bedroom)
 "nP" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (WEST)";
 	icon_state = "map-supply";
 	dir = 8
@@ -5267,7 +5267,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/bunker01/bedroom)
 "nQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -5279,23 +5279,23 @@
 	},
 /area/adminlevel/bunker01/bedroom)
 "nR" = (
-/obj/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command{
 	name = "\improper Leader's Bedroom";
 	req_access = list(201)
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/door/firedoor/border_only/almayer/antag,
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/bedroom)
 "nS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -5303,7 +5303,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/bedroom)
 "nT" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (EAST)";
 	icon_state = "map-supply";
 	dir = 4
@@ -5319,7 +5319,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/bedroom)
 "nW" = (
-/obj/machinery/hydro_floodlight,
+/obj/structure/machinery/hydro_floodlight,
 /turf/open/floor/almayer{
 	tag = "icon-blue (NORTHEAST)";
 	icon_state = "blue";
@@ -5338,7 +5338,7 @@
 	},
 /area/adminlevel/bunker01/kitchen)
 "nY" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
@@ -5351,8 +5351,8 @@
 /area/adminlevel/bunker01/kitchen)
 "oa" = (
 /obj/structure/table/reinforced,
-/obj/machinery/microwave,
-/obj/machinery/power/apc/antag{
+/obj/structure/machinery/microwave,
+/obj/structure/machinery/power/apc/antag{
 	dir = 4;
 	pixel_x = 24
 	},
@@ -5363,7 +5363,7 @@
 	},
 /area/adminlevel/bunker01/kitchen)
 "ob" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -5390,7 +5390,7 @@
 /obj/structure/closet/secure_closet/guncabinet{
 	req_access = list(201)
 	},
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /obj/item/storage/pouch/magazine/upp,
 /obj/item/storage/pouch/magazine/upp,
 /obj/item/weapon/gun/rifle/type71/carbine,
@@ -5409,7 +5409,7 @@
 "oi" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (WEST)";
 	icon_state = "map-supply";
 	dir = 8
@@ -5423,7 +5423,7 @@
 "oj" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -5436,7 +5436,7 @@
 "ok" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (NORTH)";
 	icon_state = "map-supply";
 	dir = 1
@@ -5447,7 +5447,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/bedroom)
 "ol" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -5458,7 +5458,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/bedroom)
 "om" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (NORTH)";
 	icon_state = "map-supply";
 	dir = 1
@@ -5467,16 +5467,16 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/bedroom)
 "on" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Kitchen";
 	req_access = list(201)
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/door/firedoor/border_only/almayer/antag,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
 	icon_state = "sterile_white";
@@ -5484,7 +5484,7 @@
 	},
 /area/adminlevel/bunker01/bedroom)
 "oo" = (
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor/almayer{
 	tag = "icon-blue (EAST)";
 	icon_state = "blue";
@@ -5499,7 +5499,7 @@
 /area/adminlevel/ert_station)
 "oq" = (
 /obj/structure/table/reinforced,
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
@@ -5508,7 +5508,7 @@
 	},
 /area/adminlevel/bunker01/kitchen)
 "or" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -5521,8 +5521,8 @@
 /area/adminlevel/bunker01/kitchen)
 "os" = (
 /obj/structure/table/reinforced,
-/obj/machinery/microwave,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/microwave,
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	id_tag = "mining_outpost_pump";
 	on = 1
@@ -5547,21 +5547,21 @@
 /turf/closed/wall,
 /area/adminlevel/bunker01/storage)
 "ow" = (
-/obj/machinery/power/apc/antag{
+/obj/structure/machinery/power/apc/antag{
 	dir = 8;
 	pixel_x = -24
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/bedroom)
 "ox" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
 	on = 1
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/bedroom)
 "oy" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	on = 1
 	},
 /turf/open/floor/almayer,
@@ -5577,7 +5577,7 @@
 /obj/structure/table/reinforced,
 /obj/item/tool/kitchen/rollingpin,
 /obj/item/tool/kitchen/knife,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
@@ -5586,8 +5586,8 @@
 	},
 /area/adminlevel/bunker01/kitchen)
 "oB" = (
-/obj/machinery/processor,
-/obj/machinery/light{
+/obj/structure/machinery/processor,
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -5601,11 +5601,11 @@
 /turf/closed/wall,
 /area/adminlevel/bunker01/kitchen)
 "oD" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/hydroponics)
 "oE" = (
-/obj/machinery/disposal,
+/obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/almayer{
 	tag = "icon-green (NORTHWEST)";
@@ -5614,7 +5614,7 @@
 	},
 /area/adminlevel/bunker01/storage)
 "oF" = (
-/obj/machinery/recharge_station,
+/obj/structure/machinery/recharge_station,
 /turf/open/floor/almayer{
 	tag = "icon-green (NORTH)";
 	icon_state = "green";
@@ -5622,10 +5622,10 @@
 	},
 /area/adminlevel/bunker01/storage)
 "oG" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/machinery/vending/engivend/antag,
+/obj/structure/machinery/vending/engivend/antag,
 /turf/open/floor/almayer{
 	tag = "icon-green (NORTH)";
 	icon_state = "green";
@@ -5633,7 +5633,7 @@
 	},
 /area/adminlevel/bunker01/storage)
 "oH" = (
-/obj/machinery/vending/tool/antag,
+/obj/structure/machinery/vending/tool/antag,
 /turf/open/floor/almayer{
 	tag = "icon-green (NORTH)";
 	icon_state = "green";
@@ -5654,7 +5654,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/bedroom)
 "oK" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
 /turf/open/floor/almayer,
@@ -5663,12 +5663,12 @@
 /obj/structure/sign/safety/breakroom{
 	pixel_y = -32
 	},
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/bedroom)
 "oM" = (
-/obj/machinery/vending/hydroseeds,
-/obj/machinery/light{
+/obj/structure/machinery/vending/hydroseeds,
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -5678,7 +5678,7 @@
 	},
 /area/adminlevel/bunker01/hydroponics)
 "oN" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (WEST)";
 	icon_state = "map-supply";
 	dir = 8
@@ -5691,20 +5691,20 @@
 	},
 /area/adminlevel/bunker01/kitchen)
 "oO" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Hydroponics";
 	req_access = list(201)
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/door/firedoor/border_only/almayer/antag,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/kitchen)
 "oP" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -5712,12 +5712,12 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/hydroponics)
 "oQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (NORTHWEST)";
 	icon_state = "intact-supply";
 	dir = 9
 	},
-/obj/machinery/power/apc/antag{
+/obj/structure/machinery/power/apc/antag{
 	pixel_y = -24
 	},
 /turf/open/floor/almayer{
@@ -5755,7 +5755,7 @@
 /obj/item/stack/sheet/glass{
 	amount = 50
 	},
-/obj/machinery/firealarm{
+/obj/structure/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24;
 	pixel_y = 0
@@ -5773,7 +5773,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/storage)
 "oT" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (SOUTHEAST)";
 	icon_state = "intact-supply";
 	dir = 6
@@ -5785,7 +5785,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/storage)
 "oU" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	on = 1
 	},
@@ -5799,7 +5799,7 @@
 	},
 /area/adminlevel/bunker01/storage)
 "oW" = (
-/obj/machinery/vending/hydronutrients,
+/obj/structure/machinery/vending/hydronutrients,
 /turf/open/floor/almayer{
 	tag = "icon-blue (SOUTHEAST)";
 	icon_state = "blue";
@@ -5807,21 +5807,21 @@
 	},
 /area/adminlevel/bunker01/hydroponics)
 "oX" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Bedroom";
 	req_access = list(201)
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/bedroom)
 "oY" = (
 /obj/structure/table/reinforced,
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/prison{
@@ -5833,9 +5833,9 @@
 "oZ" = (
 /obj/structure/table/reinforced,
 /obj/item/tool/kitchen/tray,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/prison{
@@ -5854,7 +5854,7 @@
 /obj/item/storage/box/lights/mixed,
 /obj/item/storage/box/lights/mixed,
 /obj/item/storage/box/lights/mixed,
-/obj/machinery/power/apc/antag{
+/obj/structure/machinery/power/apc/antag{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -5869,7 +5869,7 @@
 /area/adminlevel/bunker01/storage)
 "pc" = (
 /obj/structure/rack,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (WEST)";
 	icon_state = "map-supply";
 	dir = 8
@@ -5921,7 +5921,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/storage)
 "pd" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -5932,8 +5932,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/storage)
 "pe" = (
-/obj/machinery/vending/dinnerware,
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/vending/dinnerware,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/prison{
@@ -5943,12 +5943,12 @@
 	},
 /area/adminlevel/bunker01/kitchen)
 "pf" = (
-/obj/machinery/door/airlock/almayer/marine/requisitions{
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
 	name = "\improper Storage";
 	req_access = list(201);
 	req_one_access = null
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -5956,14 +5956,14 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/border_only/almayer/antag,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/storage)
 "ph" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (SOUTHWEST)";
 	icon_state = "intact-supply";
 	dir = 10
@@ -5978,38 +5978,38 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/machinery/vending/cigarette/free,
+/obj/structure/machinery/vending/cigarette/free,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "pj" = (
-/obj/machinery/vending/coffee/simple,
+/obj/structure/machinery/vending/coffee/simple,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "pk" = (
-/obj/machinery/vending/snack/packaged,
+/obj/structure/machinery/vending/snack/packaged,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "pl" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "pm" = (
-/obj/machinery/disposal,
+/obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "pn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/junction,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "po" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/almayer,
@@ -6019,7 +6019,7 @@
 /area/adminlevel/bunker01/mainroom)
 "pq" = (
 /obj/structure/rack,
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -6039,7 +6039,7 @@
 /area/adminlevel/bunker01/storage)
 "ps" = (
 /obj/structure/rack,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/item/stack/sheet/plasteel{
 	amount = 30
 	},
@@ -6064,7 +6064,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/storage)
 "pt" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -6074,7 +6074,7 @@
 	},
 /area/adminlevel/bunker01/storage)
 "pu" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
@@ -6087,7 +6087,7 @@
 /turf/closed/wall,
 /area/adminlevel/bunker01/storage)
 "px" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (NORTHEAST)";
 	icon_state = "intact-supply";
 	dir = 5
@@ -6095,7 +6095,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "py" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (NORTH)";
 	icon_state = "map-supply";
 	dir = 1
@@ -6107,7 +6107,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "pz" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/disposalpipe/junction{
 	tag = "icon-pipe-j1 (WEST)";
 	icon_state = "pipe-j1";
@@ -6116,7 +6116,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "pA" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -6127,7 +6127,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "pB" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (EAST)";
 	icon_state = "map-supply";
 	dir = 4
@@ -6139,7 +6139,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "pC" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/almayer,
@@ -6162,14 +6162,14 @@
 	},
 /area/adminlevel/bunker01/storage)
 "pG" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/storage)
 "pH" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (EAST)";
 	icon_state = "map-supply";
 	dir = 4
@@ -6177,11 +6177,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/storage)
 "pL" = (
-/obj/machinery/vending/antag/gear,
+/obj/structure/machinery/vending/antag/gear,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "pM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "pN" = (
@@ -6189,7 +6189,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "pO" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
@@ -6210,11 +6210,11 @@
 	},
 /area/adminlevel/bunker01/storage)
 "pS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/storage)
 "pT" = (
-/obj/machinery/autolathe/full,
+/obj/structure/machinery/autolathe/full,
 /turf/open/floor/almayer{
 	tag = "icon-green (SOUTHEAST)";
 	icon_state = "green";
@@ -6222,12 +6222,12 @@
 	},
 /area/adminlevel/bunker01/storage)
 "pV" = (
-/obj/machinery/power/smes/buildable/charged{
+/obj/structure/machinery/power/smes/buildable/charged{
 	charge = 4e+006;
 	chargelevel = 50000;
 	charging = 1
 	},
-/obj/machinery/firealarm{
+/obj/structure/machinery/firealarm{
 	pixel_y = 24
 	},
 /turf/open/floor/almayer{
@@ -6236,12 +6236,12 @@
 	},
 /area/adminlevel/bunker01/engineering)
 "pW" = (
-/obj/machinery/power/smes/buildable/charged{
+/obj/structure/machinery/power/smes/buildable/charged{
 	charge = 4e+006;
 	chargelevel = 50000;
 	charging = 1
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
 	},
@@ -6251,18 +6251,18 @@
 	},
 /area/adminlevel/bunker01/engineering)
 "pX" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
-/obj/machinery/vending/antag/gear,
+/obj/structure/machinery/vending/antag/gear,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "pY" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
@@ -6290,7 +6290,7 @@
 	icon_state = "chair";
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "qd" = (
@@ -6298,19 +6298,19 @@
 /turf/closed/wall,
 /area/adminlevel/bunker01/storage)
 "qe" = (
-/obj/machinery/door/airlock/almayer/marine/requisitions{
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
 	dir = 1;
 	name = "\improper Storage";
 	req_access = list(201);
 	req_one_access = null
 	},
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/storage)
 "qf" = (
-/obj/machinery/power/apc/antag{
+/obj/structure/machinery/power/apc/antag{
 	dir = 4;
 	pixel_x = 24
 	},
@@ -6320,7 +6320,7 @@
 /turf/closed/wall/r_wall,
 /area/adminlevel/bunker01/engineering)
 "qh" = (
-/obj/machinery/power/terminal{
+/obj/structure/machinery/power/terminal{
 	icon_state = "term";
 	dir = 1
 	},
@@ -6331,7 +6331,7 @@
 	},
 /area/adminlevel/bunker01/engineering)
 "qi" = (
-/obj/machinery/power/terminal{
+/obj/structure/machinery/power/terminal{
 	icon_state = "term";
 	dir = 1
 	},
@@ -6342,8 +6342,8 @@
 	},
 /area/adminlevel/bunker01/engineering)
 "qj" = (
-/obj/machinery/vending/antag/weapons,
-/obj/machinery/firealarm{
+/obj/structure/machinery/vending/antag/weapons,
+/obj/structure/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24;
 	pixel_y = 0
@@ -6353,7 +6353,7 @@
 "qk" = (
 /obj/structure/table/almayer,
 /obj/item/trash/cigbutt,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	id_tag = "mining_outpost_pump";
 	on = 1
@@ -6362,7 +6362,7 @@
 /area/adminlevel/bunker01/mainroom)
 "ql" = (
 /obj/structure/table/almayer,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
@@ -6375,7 +6375,7 @@
 	icon_state = "chair";
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (EAST)";
 	icon_state = "map-supply";
 	dir = 4
@@ -6384,7 +6384,7 @@
 /area/adminlevel/bunker01/mainroom)
 "qn" = (
 /obj/structure/closet/firecloset,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -6397,16 +6397,16 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/engineering)
 "qr" = (
-/obj/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Engineering";
 	req_access = list(201);
 	req_one_access = null
 	},
-/obj/machinery/door/firedoor/border_only/almayer/antag,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/engineering)
 "qt" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (WEST)";
 	icon_state = "map-supply";
 	dir = 8
@@ -6414,12 +6414,12 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/engineering)
 "qu" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 4
 	},
 /obj/structure/table/reinforced,
 /obj/effect/spawner/random/toolbox,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	id_tag = "mining_outpost_pump";
 	on = 1
@@ -6437,7 +6437,7 @@
 "qy" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/gloves/yellow,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
@@ -6445,7 +6445,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/machinery/power/apc/antag{
+/obj/structure/machinery/power/apc/antag{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -6478,18 +6478,18 @@
 /area/tdome/tdomeobserve)
 "qA" = (
 /obj/structure/window/framed/almayer/white,
-/obj/machinery/door/poddoor/shutters/transit{
+/obj/structure/machinery/door/poddoor/shutters/transit{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/shuttle/distress/start_big)
 "qC" = (
-/obj/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Engineering";
 	req_access = list(201);
 	req_one_access = null
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -6497,11 +6497,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/border_only/almayer/antag,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/engineering)
 "qD" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -6512,7 +6512,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/engineering)
 "qE" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (EAST)";
 	icon_state = "map-supply";
 	dir = 4
@@ -6529,11 +6529,11 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/engineering)
 "qG" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
-/obj/machinery/vending/antag/munition,
+/obj/structure/machinery/vending/antag/munition,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "qH" = (
@@ -6551,7 +6551,7 @@
 	},
 /area/adminlevel/bunker01/engineering)
 "qJ" = (
-/obj/machinery/power/geothermal{
+/obj/structure/machinery/power/geothermal{
 	buildstate = 4;
 	icon_state = "on100";
 	is_on = 1
@@ -6562,10 +6562,10 @@
 	},
 /area/adminlevel/bunker01/engineering)
 "qK" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	pixel_y = 0
 	},
-/obj/machinery/power/geothermal{
+/obj/structure/machinery/power/geothermal{
 	buildstate = 4;
 	icon_state = "on100";
 	is_on = 1
@@ -6583,20 +6583,20 @@
 /turf/closed/wall/r_wall,
 /area/adminlevel/bunker01/security)
 "qN" = (
-/obj/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security{
 	dir = 1;
 	name = "\improper Security";
 	req_access = list(201)
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/security)
 "qO" = (
-/obj/machinery/vending/antag/munition,
+/obj/structure/machinery/vending/antag/munition,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "qP" = (
@@ -6606,7 +6606,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "qQ" = (
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/structure/machinery/atmospherics/unary/vent_pump,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "qR" = (
@@ -6614,7 +6614,7 @@
 /turf/closed/wall/r_wall,
 /area/adminlevel/bunker01/engineering)
 "qS" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/structure/closet/firecloset,
@@ -6625,12 +6625,12 @@
 	},
 /area/adminlevel/bunker01/security)
 "qT" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/security)
 "qU" = (
-/obj/machinery/disposal,
+/obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/almayer{
 	tag = "icon-red (NORTHEAST)";
@@ -6639,14 +6639,14 @@
 	},
 /area/adminlevel/bunker01/security)
 "qV" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "qW" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (WEST)";
 	icon_state = "map-supply";
 	dir = 8
@@ -6658,14 +6658,14 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "qY" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "qZ" = (
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
@@ -6673,7 +6673,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "ra" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -6684,7 +6684,7 @@
 /obj/structure/stairs{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -6695,10 +6695,10 @@
 /obj/structure/stairs{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/cap/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/cap/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
 	},
@@ -6713,7 +6713,7 @@
 /area/adminlevel/bunker01/engineering)
 "re" = (
 /obj/structure/toilet,
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
 	},
@@ -6735,7 +6735,7 @@
 	},
 /area/adminlevel/bunker01/security)
 "rh" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (WEST)";
 	icon_state = "map-supply";
 	dir = 8
@@ -6747,7 +6747,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/security)
 "ri" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (NORTH)";
 	icon_state = "map-supply";
 	dir = 1
@@ -6760,7 +6760,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/security)
 "rj" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -6771,11 +6771,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/security)
 "rk" = (
-/obj/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security{
 	name = "\improper Security";
 	req_access = list(201)
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -6783,11 +6783,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/border_only/almayer/antag,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/security)
 "rl" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (NORTHWEST)";
 	icon_state = "intact-supply";
 	dir = 9
@@ -6802,11 +6802,11 @@
 /obj/structure/sign/safety/medical{
 	pixel_y = -32
 	},
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "rn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (NORTH)";
 	icon_state = "intact-supply";
 	dir = 1
@@ -6815,7 +6815,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "ro" = (
-/obj/machinery/door/airlock/multi_tile/secure{
+/obj/structure/machinery/door/airlock/multi_tile/secure{
 	dir = 1;
 	name = "\improper Entrance";
 	req_access = list(201)
@@ -6832,21 +6832,21 @@
 /obj/structure/stairs{
 	dir = 8
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	pixel_y = 0
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "rr" = (
 /obj/structure/bed,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/security)
 "rs" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -6854,11 +6854,11 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/security)
 "rt" = (
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Cell 3";
 	req_access = list(201)
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -6866,7 +6866,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/security)
 "ru" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (EAST)";
 	icon_state = "map-supply";
 	dir = 4
@@ -6874,7 +6874,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/security)
 "rv" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
 	on = 1
 	},
@@ -6901,15 +6901,15 @@
 /turf/closed/wall/r_wall,
 /area/adminlevel/bunker01/medbay)
 "rz" = (
-/obj/machinery/smartfridge/secure/medbay,
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/smartfridge/secure/medbay,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
 	icon_state = "shutter0";
 	id = "bunker_medbay";
 	name = "\improper Medbay Shutters";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer{
@@ -6919,15 +6919,15 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "rA" = (
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
 	icon_state = "shutter0";
 	id = "bunker_medbay";
 	name = "\improper Medbay Shutters";
 	opacity = 0
 	},
-/obj/machinery/vending/MarineMed/antag,
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/vending/MarineMed/antag,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer{
@@ -6937,15 +6937,15 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "rB" = (
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
 	icon_state = "shutter0";
 	id = "bunker_medbay";
 	name = "\improper Medbay Shutters";
 	opacity = 0
 	},
-/obj/machinery/vending/medical/antag,
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/vending/medical/antag,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer{
@@ -6956,15 +6956,15 @@
 /area/adminlevel/bunker01/medbay)
 "rC" = (
 /obj/structure/table/reinforced,
-/obj/machinery/recharger,
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/recharger,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
 	icon_state = "shutter0";
 	id = "bunker_medbay";
 	name = "\improper Medbay Shutters";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer{
@@ -6975,15 +6975,15 @@
 /area/adminlevel/bunker01/medbay)
 "rD" = (
 /obj/structure/table/reinforced,
-/obj/machinery/recharger,
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/recharger,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
 	icon_state = "shutter0";
 	id = "bunker_medbay";
 	name = "\improper Medbay Shutters";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer{
@@ -6995,7 +6995,7 @@
 /turf/closed/wall/r_wall,
 /area/adminlevel/bunker01/medbay)
 "rF" = (
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
 	icon_state = "shutter0";
 	id = "bunker_medbay";
@@ -7003,7 +7003,7 @@
 	opacity = 0
 	},
 /obj/structure/window/framed/colony/reinforced,
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer{
@@ -7012,25 +7012,25 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "rG" = (
-/obj/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "\improper Medbay";
 	req_access = list(201);
 	req_one_access = null
 	},
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
 	icon_state = "shutter0";
 	id = "bunker_medbay";
 	name = "\improper Medbay Shutters";
 	opacity = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (NORTH)";
 	icon_state = "intact-supply";
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer{
@@ -7039,14 +7039,14 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "rH" = (
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
 	icon_state = "shutter0";
 	id = "bunker_medbay";
 	name = "\improper Medbay Shutters";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer{
@@ -7055,22 +7055,22 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "rI" = (
-/obj/machinery/power/apc/antag{
+/obj/structure/machinery/power/apc/antag{
 	dir = 8;
 	pixel_x = -24
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/security)
 "rJ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/light{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/security)
 "rK" = (
-/obj/machinery/chem_master,
-/obj/machinery/light{
+/obj/structure/machinery/chem_master,
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -7095,7 +7095,7 @@
 /area/adminlevel/bunker01/medbay)
 "rN" = (
 /obj/structure/window/framed/colony,
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer{
@@ -7104,7 +7104,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "rO" = (
-/obj/machinery/bodyscanner,
+/obj/structure/machinery/bodyscanner,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (NORTH)";
 	icon_state = "sterile_green_corner";
@@ -7112,7 +7112,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "rP" = (
-/obj/machinery/body_scanconsole,
+/obj/structure/machinery/body_scanconsole,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (NORTH)";
 	icon_state = "sterile_green_side";
@@ -7120,7 +7120,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "rQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (NORTH)";
 	icon_state = "intact-supply";
 	dir = 1
@@ -7132,7 +7132,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "rR" = (
-/obj/machinery/bodyscanner,
+/obj/structure/machinery/bodyscanner,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (NORTH)";
 	icon_state = "sterile_green_side";
@@ -7140,8 +7140,8 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "rS" = (
-/obj/machinery/autodoc,
-/obj/machinery/light{
+/obj/structure/machinery/autodoc,
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/almayer{
@@ -7151,7 +7151,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "rT" = (
-/obj/machinery/autodoc_console,
+/obj/structure/machinery/autodoc_console,
 /obj/structure/sign/safety/autodoc{
 	pixel_y = 32
 	},
@@ -7162,7 +7162,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "rU" = (
-/obj/machinery/autodoc,
+/obj/structure/machinery/autodoc,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (NORTH)";
 	icon_state = "sterile_green_side";
@@ -7170,22 +7170,22 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "rV" = (
-/obj/machinery/autodoc_console,
+/obj/structure/machinery/autodoc_console,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
 	tag = "icon-sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "rW" = (
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/security)
 "rX" = (
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Cell 2";
 	req_access = list(201)
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -7193,7 +7193,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/security)
 "rY" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -7206,7 +7206,7 @@
 /area/adminlevel/bunker01/security)
 "rZ" = (
 /obj/structure/bed,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	id_tag = "mining_outpost_pump";
 	on = 1
@@ -7217,11 +7217,11 @@
 	},
 /area/adminlevel/bunker01/security)
 "sa" = (
-/obj/machinery/chem_dispenser{
+/obj/structure/machinery/chem_dispenser{
 	req_access = list(201);
 	req_one_access = null
 	},
-/obj/machinery/firealarm{
+/obj/structure/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24;
 	pixel_y = 0
@@ -7240,7 +7240,7 @@
 /obj/item/reagent_container/glass/beaker,
 /obj/item/reagent_container/glass/beaker/bluespace,
 /obj/item/reagent_container/glass/beaker/bluespace,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
@@ -7250,7 +7250,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "sc" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (NORTH)";
 	icon_state = "map-supply";
 	dir = 1
@@ -7261,7 +7261,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "sd" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -7272,11 +7272,11 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "se" = (
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Cell 1";
 	req_access = list(201)
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -7288,7 +7288,7 @@
 	},
 /area/adminlevel/bunker01/security)
 "sf" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -7296,12 +7296,12 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "sj" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (SOUTHWEST)";
 	icon_state = "intact-supply";
 	dir = 10
 	},
-/obj/machinery/firealarm{
+/obj/structure/machinery/firealarm{
 	dir = 4;
 	pixel_x = 24;
 	pixel_y = 0
@@ -7318,7 +7318,7 @@
 	icon_state = "toilet00";
 	dir = 1
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	pixel_y = 0
 	},
 /turf/open/floor/almayer,
@@ -7337,7 +7337,7 @@
 	},
 /area/adminlevel/bunker01/security)
 "sn" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
 	on = 1
 	},
@@ -7359,7 +7359,7 @@
 	icon_state = "toilet00";
 	dir = 1
 	},
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	pixel_y = 0
 	},
 /turf/open/floor/almayer{
@@ -7368,7 +7368,7 @@
 	},
 /area/adminlevel/bunker01/security)
 "sq" = (
-/obj/machinery/vending/medical/antag,
+/obj/structure/machinery/vending/medical/antag,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -7390,18 +7390,18 @@
 /area/adminlevel/bunker01/medbay)
 "ss" = (
 /obj/structure/table/reinforced,
-/obj/machinery/reagentgrinder,
+/obj/structure/machinery/reagentgrinder,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 25;
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/machinery/door_control{
+/obj/structure/machinery/door_control{
 	id = "bunker_medbay";
 	name = "Medbay Lockdown";
 	pixel_y = -23
 	},
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 25
 	},
@@ -7411,7 +7411,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "st" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (NORTH)";
 	icon_state = "intact-supply";
 	dir = 1
@@ -7422,7 +7422,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "su" = (
-/obj/machinery/iv_drip,
+/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (WEST)";
 	icon_state = "sterile_green_side";
@@ -7430,7 +7430,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "sv" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -7444,7 +7444,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "sx" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
 	on = 1
 	},
@@ -7454,8 +7454,8 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "sB" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/power/apc/antag{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/power/apc/antag{
 	dir = 4;
 	pixel_x = 24
 	},
@@ -7466,17 +7466,17 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "sC" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Chemistry";
 	req_access = list(201);
 	req_one_access = null
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/door/firedoor/border_only/almayer/antag,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -7489,19 +7489,19 @@
 /turf/closed/wall,
 /area/adminlevel/bunker01/medbay)
 "sF" = (
-/obj/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security{
 	dir = 1;
 	name = "\improper Security";
 	req_access = list(201)
 	},
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/security)
 "sG" = (
-/obj/machinery/iv_drip,
-/obj/machinery/light{
+/obj/structure/machinery/iv_drip,
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -7512,7 +7512,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "sH" = (
-/obj/machinery/disposal,
+/obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
@@ -7523,12 +7523,12 @@
 /area/adminlevel/bunker01/medbay)
 "sI" = (
 /obj/structure/bed,
-/obj/machinery/door_control{
+/obj/structure/machinery/door_control{
 	id = "bunker_medbay";
 	name = "Medbay Lockdown";
 	pixel_y = -23
 	},
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -7542,26 +7542,26 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "sK" = (
-/obj/machinery/autodoc,
+/obj/structure/machinery/autodoc,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "sL" = (
-/obj/machinery/autodoc_console,
+/obj/structure/machinery/autodoc_console,
 /obj/structure/sign/safety/autodoc{
 	pixel_y = -32
 	},
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "sM" = (
-/obj/machinery/autodoc_console,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/autodoc_console,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -7571,7 +7571,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/security)
 "sO" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
 	},
@@ -7590,7 +7590,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "sQ" = (
-/obj/machinery/vending/MarineMed/Blood/antag,
+/obj/structure/machinery/vending/MarineMed/Blood/antag,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (NORTH)";
 	icon_state = "sterile_green_side";
@@ -7599,14 +7599,14 @@
 /area/adminlevel/bunker01/medbay)
 "sR" = (
 /obj/structure/window/framed/colony,
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
 	icon_state = "shutter0";
 	id = "bunker_or1_shutters";
 	name = "\improper Surgery Shutters";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer{
@@ -7615,17 +7615,17 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "sS" = (
-/obj/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "\improper Medical Storage";
 	req_access = list(201);
 	req_one_access = null
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (NORTH)";
 	icon_state = "intact-supply";
 	dir = 1
 	},
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer{
@@ -7635,14 +7635,14 @@
 /area/adminlevel/bunker01/medbay)
 "sT" = (
 /obj/structure/window/framed/colony,
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
 	icon_state = "shutter0";
 	id = "bunker_or2_shutters";
 	name = "\improper Surgery Shutters";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer{
@@ -7651,28 +7651,28 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "sU" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/security)
 "sV" = (
-/obj/machinery/door/airlock/almayer/medical{
+/obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
 	id_tag = "bunker_or1";
 	name = "\improper Operating Room 1";
 	req_access = list(201);
 	req_one_access = null
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "sW" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -7684,7 +7684,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "sX" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (SOUTHWEST)";
 	icon_state = "intact-supply";
 	dir = 10
@@ -7695,7 +7695,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "sY" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -7705,7 +7705,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "sZ" = (
-/obj/machinery/door_control{
+/obj/structure/machinery/door_control{
 	id = "bunker_or1";
 	name = "Surgery Door Release";
 	pixel_x = -23
@@ -7717,7 +7717,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "ta" = (
-/obj/machinery/bioprinter{
+/obj/structure/machinery/bioprinter{
 	stored_metal = 1000
 	},
 /turf/open/floor/almayer{
@@ -7726,7 +7726,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "tb" = (
-/obj/machinery/door_control{
+/obj/structure/machinery/door_control{
 	id = "bunker_or2";
 	name = "Surgery Door Release";
 	pixel_x = -23
@@ -7744,7 +7744,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/medbay)
 "td" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/medbay)
 "te" = (
@@ -7781,11 +7781,11 @@
 	pixel_x = 2;
 	pixel_y = -5
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -7800,19 +7800,19 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "tf" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "tg" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},
-/obj/machinery/firealarm{
+/obj/structure/machinery/firealarm{
 	dir = 4;
 	pixel_x = 24;
 	pixel_y = 0
@@ -7824,11 +7824,11 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "th" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
 	},
@@ -7839,7 +7839,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "ti" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (NORTHWEST)";
 	icon_state = "intact-supply";
 	dir = 9
@@ -7850,18 +7850,18 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "tj" = (
-/obj/machinery/light/small{
+/obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/medbay)
 "tk" = (
-/obj/machinery/crema_switch{
+/obj/structure/machinery/crema_switch{
 	pixel_x = 23;
 	pixel_y = 0;
 	req_access = list(201)
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
 	on = 1
 	},
@@ -7888,7 +7888,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "tm" = (
-/obj/machinery/vending/MarineMed/antag,
+/obj/structure/machinery/vending/MarineMed/antag,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -7899,7 +7899,7 @@
 	pixel_x = 0;
 	pixel_y = -32
 	},
-/obj/machinery/vending/medical/antag,
+/obj/structure/machinery/vending/medical/antag,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -7921,7 +7921,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "tq" = (
-/obj/machinery/iv_drip,
+/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (WEST)";
 	icon_state = "sterile_green_corner";
@@ -7929,8 +7929,8 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "tr" = (
-/obj/machinery/optable,
-/obj/machinery/door_control{
+/obj/structure/machinery/optable,
+/obj/structure/machinery/door_control{
 	id = "bunker_or1_shutters";
 	name = "Surgery Shutters";
 	pixel_y = -23
@@ -7955,8 +7955,8 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "tt" = (
-/obj/machinery/optable,
-/obj/machinery/door_control{
+/obj/structure/machinery/optable,
+/obj/structure/machinery/door_control{
 	id = "bunker_or2_shutters";
 	name = "Surgery Shutters";
 	pixel_y = -23
@@ -7968,28 +7968,28 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "tu" = (
-/obj/machinery/door/airlock/almayer/medical{
+/obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
 	id_tag = "bunker_or2";
 	name = "\improper Operating Room 2";
 	req_access = list(201);
 	req_one_access = null
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "tv" = (
-/obj/machinery/door/airlock/almayer/medical{
+/obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
 	name = "\improper Crematorium";
 	req_access = list(201);
 	req_one_access = null
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer{
@@ -7998,24 +7998,24 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "tw" = (
-/obj/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security{
 	name = "\improper Security";
 	req_access = list(201)
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/door/firedoor/border_only/almayer/antag,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/medbay)
 "tx" = (
-/obj/machinery/hologram/holopad,
+/obj/structure/machinery/hologram/holopad,
 /turf/open/floor/carpet,
 /area/centcom/living)
 "tY" = (
-/obj/machinery/washing_machine,
+/obj/structure/machinery/washing_machine,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
 	icon_state = "sterile_white";
@@ -8023,7 +8023,7 @@
 	},
 /area/adminlevel/ert_station)
 "ug" = (
-/obj/machinery/shower,
+/obj/structure/machinery/shower,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
 	icon_state = "sterile_white";
@@ -8039,7 +8039,7 @@
 	},
 /area/adminlevel/ert_station)
 "va" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Bathroom"
 	},
@@ -8081,7 +8081,7 @@
 	},
 /area/tdome)
 "wv" = (
-/obj/machinery/vending/snack,
+/obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer{
 	tag = "icon-blue (NORTHEAST)";
 	icon_state = "plating";
@@ -8093,7 +8093,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (WEST)";
 	icon_state = "map-supply";
 	dir = 8
@@ -8104,7 +8104,7 @@
 /turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/ert_station)
 "xO" = (
-/obj/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
 	name = "Briefing Room";
 	req_access = null
@@ -8139,7 +8139,7 @@
 	},
 /area/adminlevel/ert_station)
 "yC" = (
-/obj/machinery/bioprinter{
+/obj/structure/machinery/bioprinter{
 	stored_metal = 1000
 	},
 /turf/open/floor/almayer{
@@ -8149,7 +8149,7 @@
 	},
 /area/adminlevel/ert_station)
 "yQ" = (
-/obj/machinery/sleeper,
+/obj/structure/machinery/sleeper,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (NORTH)";
 	icon_state = "sterile_green_corner";
@@ -8157,7 +8157,7 @@
 	},
 /area/adminlevel/ert_station)
 "zg" = (
-/obj/machinery/chem_master,
+/obj/structure/machinery/chem_master,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (WEST)";
 	icon_state = "sterile_green_side";
@@ -8165,7 +8165,7 @@
 	},
 /area/adminlevel/ert_station)
 "zk" = (
-/obj/machinery/vending/MarineMed{
+/obj/structure/machinery/vending/MarineMed{
 	req_access = null
 	},
 /turf/open/floor/almayer{
@@ -8194,8 +8194,8 @@
 	},
 /area/adminlevel/ert_station)
 "zz" = (
-/obj/machinery/portable_atmospherics/hydroponics,
-/obj/machinery/firealarm{
+/obj/structure/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/firealarm{
 	dir = 4;
 	pixel_x = 24;
 	pixel_y = 0
@@ -8208,11 +8208,11 @@
 /area/adminlevel/bunker01/hydroponics)
 "zE" = (
 /obj/structure/window/framed/almayer/white,
-/obj/machinery/door/poddoor/shutters/transit,
+/obj/structure/machinery/door/poddoor/shutters/transit,
 /turf/open/floor/plating,
 /area/shuttle/distress/start_big)
 "zZ" = (
-/obj/machinery/door/window/southleft,
+/obj/structure/machinery/door/window/southleft,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
 	icon_state = "sterile_white";
@@ -8266,7 +8266,7 @@
 	},
 /area/adminlevel/ert_station)
 "AP" = (
-/obj/machinery/optable,
+/obj/structure/machinery/optable,
 /obj/item/tank/anesthetic,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (EAST)";
@@ -8303,12 +8303,12 @@
 	},
 /area/tdome/tdome2)
 "BJ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/structure/machinery/firealarm{
 	pixel_y = 24
 	},
 /turf/open/floor/almayer,
@@ -8339,7 +8339,7 @@
 /area/tdome/tdomeobserve)
 "BV" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chem_dispenser/soda{
+/obj/structure/machinery/chem_dispenser/soda{
 	density = 0
 	},
 /turf/open/floor/prison{
@@ -8370,7 +8370,7 @@
 	},
 /area/adminlevel/ert_station)
 "CU" = (
-/obj/machinery/sleep_console,
+/obj/structure/machinery/sleep_console,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (NORTH)";
 	icon_state = "sterile_green_side";
@@ -8378,7 +8378,7 @@
 	},
 /area/adminlevel/ert_station)
 "Dj" = (
-/obj/machinery/door/firedoor/border_only/almayer/antag{
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer{
@@ -8406,7 +8406,7 @@
 /turf/closed/wall/almayer/outer,
 /area/tdome/tdomeobserve)
 "Ds" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Operating Room";
 	req_access = null;
@@ -8418,7 +8418,7 @@
 	},
 /area/adminlevel/ert_station)
 "Dt" = (
-/obj/machinery/door/firedoor/border_only/almayer/antag,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "DV" = (
@@ -8438,7 +8438,7 @@
 	},
 /area/tdome/tdome1)
 "En" = (
-/obj/machinery/vending/medical{
+/obj/structure/machinery/vending/medical{
 	req_access = null
 	},
 /turf/open/floor/almayer{
@@ -8472,7 +8472,7 @@
 	},
 /area/adminlevel/ert_station)
 "ET" = (
-/obj/machinery/vending/cola,
+/obj/structure/machinery/vending/cola,
 /turf/open/floor/almayer{
 	tag = "icon-sterile";
 	icon_state = "silver";
@@ -8499,7 +8499,7 @@
 /turf/open/floor/plating,
 /area/adminlevel/ert_station)
 "FD" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
@@ -8507,7 +8507,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/structure/machinery/firealarm{
 	pixel_y = 24
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -8563,7 +8563,7 @@
 /area/adminlevel/ert_station)
 "GC" = (
 /obj/structure/table/reinforced,
-/obj/machinery/recharger,
+/obj/structure/machinery/recharger,
 /obj/item/roller,
 /obj/item/roller,
 /obj/item/reagent_container/spray/cleaner,
@@ -8586,7 +8586,7 @@
 /area/adminlevel/ert_station)
 "GT" = (
 /obj/structure/table/reinforced,
-/obj/machinery/chem_dispenser/beer{
+/obj/structure/machinery/chem_dispenser/beer{
 	density = 0
 	},
 /turf/open/floor/prison{
@@ -8596,8 +8596,8 @@
 	},
 /area/adminlevel/ert_station)
 "Hq" = (
-/obj/machinery/iv_drip,
-/obj/machinery/iv_drip,
+/obj/structure/machinery/iv_drip,
+/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (WEST)";
 	icon_state = "sterile_green_corner";
@@ -8608,7 +8608,7 @@
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod18)
 "HY" = (
-/obj/machinery/vending/boozeomat,
+/obj/structure/machinery/vending/boozeomat,
 /turf/open/floor/almayer{
 	tag = "icon-sterile";
 	icon_state = "silver";
@@ -8623,7 +8623,7 @@
 	},
 /area/adminlevel/ert_station)
 "Iq" = (
-/obj/machinery/processor,
+/obj/structure/machinery/processor,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
 	icon_state = "sterile_white";
@@ -8631,7 +8631,7 @@
 	},
 /area/adminlevel/ert_station)
 "It" = (
-/obj/machinery/firealarm{
+/obj/structure/machinery/firealarm{
 	dir = 4;
 	pixel_x = 24;
 	pixel_y = 0
@@ -8661,7 +8661,7 @@
 	},
 /area/adminlevel/ert_station)
 "IE" = (
-/obj/machinery/iv_drip,
+/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (WEST)";
 	icon_state = "sterile_green_side";
@@ -8684,7 +8684,7 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
 "Jy" = (
-/obj/machinery/vending/engineering{
+/obj/structure/machinery/vending/engineering{
 	req_access = null
 	},
 /turf/open/floor/almayer{
@@ -8732,7 +8732,7 @@
 	},
 /area/adminlevel/ert_station)
 "KH" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	damage_cap = 50000;
 	id_tag = null;
 	locked = 0;
@@ -8824,7 +8824,7 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
 "LA" = (
-/obj/machinery/body_scanconsole,
+/obj/structure/machinery/body_scanconsole,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -8852,7 +8852,7 @@
 	},
 /area/shuttle/distress/start_pmc)
 "LO" = (
-/obj/machinery/disposal,
+/obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
@@ -8863,7 +8863,7 @@
 	},
 /area/tdome/tdomeobserve)
 "Mk" = (
-/obj/machinery/chem_dispenser{
+/obj/structure/machinery/chem_dispenser{
 	req_access = null;
 	req_one_access = null
 	},
@@ -8882,7 +8882,7 @@
 	},
 /area/adminlevel/ert_station)
 "MG" = (
-/obj/machinery/vending/cigarette/free,
+/obj/structure/machinery/vending/cigarette/free,
 /turf/open/floor/almayer{
 	tag = "icon-sterile";
 	icon_state = "silver";
@@ -8907,7 +8907,7 @@
 /area/adminlevel/ert_station)
 "NH" = (
 /obj/structure/table/reinforced,
-/obj/machinery/microwave,
+/obj/structure/machinery/microwave,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
 	icon_state = "sterile_white";
@@ -8931,7 +8931,7 @@
 /turf/open/space,
 /area/start)
 "NU" = (
-/obj/machinery/vending/cola,
+/obj/structure/machinery/vending/cola,
 /turf/open/floor/almayer{
 	tag = "icon-blue (NORTHEAST)";
 	icon_state = "plating";
@@ -8939,7 +8939,7 @@
 	},
 /area/tdome/tdomeobserve)
 "NZ" = (
-/obj/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Engineering Bay";
 	req_one_access = null
@@ -8950,7 +8950,7 @@
 	},
 /area/adminlevel/ert_station)
 "Od" = (
-/obj/machinery/vending/medical/chemistry{
+/obj/structure/machinery/vending/medical/chemistry{
 	req_access = null
 	},
 /turf/open/floor/almayer{
@@ -9113,7 +9113,7 @@
 	},
 /area/adminlevel/ert_station)
 "RK" = (
-/obj/machinery/vending/coffee,
+/obj/structure/machinery/vending/coffee,
 /turf/open/floor/almayer{
 	tag = "icon-sterile";
 	icon_state = "silver";
@@ -9128,7 +9128,7 @@
 	},
 /area/adminlevel/ert_station)
 "Sb" = (
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
 	id = "tdome_t1";
 	name = "\improper Team 1 Shutters"
@@ -9191,18 +9191,18 @@
 /area/adminlevel/ert_station)
 "Sz" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/machinery/firealarm{
+/obj/structure/machinery/firealarm{
 	pixel_y = 24
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/bedroom)
 "SQ" = (
-/obj/machinery/vending/antag/weapons,
+/obj/structure/machinery/vending/antag/weapons,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "ST" = (
 /obj/structure/table/reinforced,
-/obj/machinery/reagentgrinder,
+/obj/structure/machinery/reagentgrinder,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 25;
 	pixel_x = 3;
@@ -9219,19 +9219,19 @@
 /area/adminlevel/ert_station)
 "Tm" = (
 /obj/structure/table/almayer,
-/obj/machinery/door_control{
+/obj/structure/machinery/door_control{
 	name = "Team 1 Shutters (Left)";
 	step_y = 0;
 	pixel_y = -3;
 	id = "tdome_t1"
 	},
-/obj/machinery/door_control{
+/obj/structure/machinery/door_control{
 	name = "Team 2 Shutters (Right)";
 	step_y = 0;
 	pixel_y = 3;
 	id = "tdome_t2"
 	},
-/obj/machinery/door_control{
+/obj/structure/machinery/door_control{
 	name = "Observer Shutters";
 	step_y = 0;
 	pixel_y = 9;
@@ -9254,7 +9254,7 @@
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod17)
 "TU" = (
-/obj/machinery/vending/wallmed1{
+/obj/structure/machinery/vending/wallmed1{
 	pixel_y = 29
 	},
 /turf/open/floor/almayer{
@@ -9264,7 +9264,7 @@
 	},
 /area/adminlevel/ert_station)
 "Ua" = (
-/obj/machinery/autodoc_console,
+/obj/structure/machinery/autodoc_console,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (NORTH)";
 	icon_state = "sterile_green_side";
@@ -9272,7 +9272,7 @@
 	},
 /area/adminlevel/ert_station)
 "Ud" = (
-/obj/machinery/vending/MarineMed{
+/obj/structure/machinery/vending/MarineMed{
 	req_access = null
 	},
 /turf/open/floor/almayer{
@@ -9281,7 +9281,7 @@
 	},
 /area/adminlevel/ert_station)
 "Uf" = (
-/obj/machinery/iv_drip,
+/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -9316,7 +9316,7 @@
 /turf/closed/wall,
 /area/adminlevel/ert_station)
 "VC" = (
-/obj/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Dormitories"
 	},
@@ -9326,7 +9326,7 @@
 	},
 /area/adminlevel/ert_station)
 "VD" = (
-/obj/machinery/vending/cigarette/free,
+/obj/structure/machinery/vending/cigarette/free,
 /turf/open/floor/almayer{
 	tag = "icon-blue (NORTHEAST)";
 	icon_state = "plating";
@@ -9347,7 +9347,7 @@
 	},
 /area/adminlevel/ert_station)
 "Wg" = (
-/obj/machinery/smartfridge/chemistry{
+/obj/structure/machinery/smartfridge/chemistry{
 	req_one_access = null
 	},
 /turf/open/floor/almayer{
@@ -9357,12 +9357,12 @@
 	},
 /area/adminlevel/ert_station)
 "Wu" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/door/firedoor/border_only/almayer/antag,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "WG" = (
@@ -9419,7 +9419,7 @@
 	},
 /area/shuttle/distress/start_big)
 "Xi" = (
-/obj/machinery/door/window/northright,
+/obj/structure/machinery/door/window/northright,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
 	icon_state = "sterile_white";
@@ -9441,7 +9441,7 @@
 	},
 /area/shuttle/distress/start)
 "XA" = (
-/obj/machinery/vending/engivend{
+/obj/structure/machinery/vending/engivend{
 	req_access = null
 	},
 /turf/open/floor/almayer{
@@ -9454,7 +9454,7 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
 "Yn" = (
-/obj/machinery/vending/tool,
+/obj/structure/machinery/vending/tool,
 /turf/open/floor/almayer{
 	tag = "icon-sterile";
 	icon_state = "orange";
@@ -9463,7 +9463,7 @@
 /area/adminlevel/ert_station)
 "Yy" = (
 /obj/structure/table/reinforced,
-/obj/machinery/juicer,
+/obj/structure/machinery/juicer,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
 	icon_state = "sterile_white";
@@ -9471,7 +9471,7 @@
 	},
 /area/adminlevel/ert_station)
 "YE" = (
-/obj/machinery/bodyscanner,
+/obj/structure/machinery/bodyscanner,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (WEST)";
 	icon_state = "sterile_green_side";
@@ -9479,7 +9479,7 @@
 	},
 /area/adminlevel/ert_station)
 "YJ" = (
-/obj/machinery/vending/MarineMed/Blood{
+/obj/structure/machinery/vending/MarineMed/Blood{
 	req_access = null
 	},
 /turf/open/floor/almayer{
@@ -9510,7 +9510,7 @@
 	},
 /area/adminlevel/ert_station)
 "Zr" = (
-/obj/machinery/vending/snack,
+/obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer{
 	tag = "icon-sterile";
 	icon_state = "silver";
@@ -9544,7 +9544,7 @@
 	},
 /area/adminlevel/ert_station)
 "ZB" = (
-/obj/machinery/autodoc/event,
+/obj/structure/machinery/autodoc/event,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (NORTH)";
 	icon_state = "sterile_green_side";
@@ -9552,7 +9552,7 @@
 	},
 /area/adminlevel/ert_station)
 "ZI" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Medbay";
 	req_access = null;
@@ -9564,7 +9564,7 @@
 	},
 /area/adminlevel/ert_station)
 "ZU" = (
-/obj/machinery/disposal,
+/obj/structure/machinery/disposal,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
 	icon_state = "sterile_white";

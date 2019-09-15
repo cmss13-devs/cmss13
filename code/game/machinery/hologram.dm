@@ -11,7 +11,7 @@
  * Hologram
  */
 
-/obj/machinery/hologram
+/obj/structure/machinery/hologram
 	anchored = 1
 	use_power = 1
 	idle_power_usage = 5
@@ -34,7 +34,7 @@
 			clear_holo()
 		. = ..()
 
-/obj/machinery/hologram/proc/clear_holo()
+/obj/structure/machinery/hologram/proc/clear_holo()
 	if(hologram)
 		qdel(hologram)
 		hologram = null
@@ -65,7 +65,7 @@ Possible to do for anyone motivated enough:
 // 1 = AREA BASED
 var/const/HOLOPAD_MODE = 0
 
-/obj/machinery/hologram/holopad
+/obj/structure/machinery/hologram/holopad
 	name = "\improper AI holopad"
 	desc = "It's a floor-mounted device for projecting holographic images. It is activated remotely."
 	icon_state = "holopad0"
@@ -76,7 +76,7 @@ var/const/HOLOPAD_MODE = 0
 	var/last_request = 0 //to prevent request spam. ~Carn
 	var/holo_range = 5 // Change to change how far the AI can move away from the holopad before deactivating.
 
-/obj/machinery/hologram/holopad/attack_hand(var/mob/living/carbon/human/user) //Carn: Hologram requests.
+/obj/structure/machinery/hologram/holopad/attack_hand(var/mob/living/carbon/human/user) //Carn: Hologram requests.
 	if(!istype(user))
 		return
 	if(alert(user,"Would you like to request an AI's presence?",,"Yes","No") == "Yes")
@@ -90,7 +90,7 @@ var/const/HOLOPAD_MODE = 0
 		else
 			to_chat(user, SPAN_NOTICE("A request for AI presence was already sent recently."))
 
-/obj/machinery/hologram/holopad/attack_ai(mob/living/silicon/ai/user)
+/obj/structure/machinery/hologram/holopad/attack_ai(mob/living/silicon/ai/user)
 	if (!istype(user))
 		return
 	/*There are pretty much only three ways to interact here.
@@ -104,7 +104,7 @@ var/const/HOLOPAD_MODE = 0
 		clear_holo()
 	return
 
-/obj/machinery/hologram/holopad/proc/activate_holo(mob/living/silicon/ai/user)
+/obj/structure/machinery/hologram/holopad/proc/activate_holo(mob/living/silicon/ai/user)
 	if(!(stat & NOPOWER) && user.eyeobj.loc == src.loc)//If the projector has power and client eye is on it.
 		if(!hologram)//If there is not already a hologram.
 			create_holo(user)//Create one.
@@ -117,7 +117,7 @@ var/const/HOLOPAD_MODE = 0
 
 /*This is the proc for special two-way communication between AI and holopad/people talking near holopad.
 For the other part of the code, check silicon say.dm. Particularly robot talk.*/
-/obj/machinery/hologram/holopad/hear_talk(mob/living/M, text, verb)
+/obj/structure/machinery/hologram/holopad/hear_talk(mob/living/M, text, verb)
 	if(M&&hologram&&master)//Master is mostly a safety in case lag hits or something.
 		if(!master.say_understands(M))//The AI will be able to understand most mobs talking through the holopad.
 			text = stars(text)
@@ -127,7 +127,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		master.show_message(rendered, 2)
 	return
 
-/obj/machinery/hologram/holopad/proc/create_holo(mob/living/silicon/ai/A, turf/T = loc)
+/obj/structure/machinery/hologram/holopad/proc/create_holo(mob/living/silicon/ai/A, turf/T = loc)
 	hologram = new(T)//Spawn a blank effect at the location.
 	hologram.icon = A.holo_icon
 	hologram.mouse_opacity = 0//So you can't click on it.
@@ -142,7 +142,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	use_power = 2//Active power usage.
 	return 1
 
-/obj/machinery/hologram/holopad/clear_holo()
+/obj/structure/machinery/hologram/holopad/clear_holo()
 //	hologram.SetLuminosity(0)//Clear lighting.	//handled by the lighting controller when its ower is deleted
 	if(hologram)
 		qdel(hologram)//Get rid of hologram.
@@ -155,7 +155,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	use_power = 1//Passive power usage.
 	return 1
 
-/obj/machinery/hologram/holopad/process()
+/obj/structure/machinery/hologram/holopad/process()
 	if(hologram)//If there is a hologram.
 		if(master && !master.stat && master.client && master.eyeobj)//If there is an AI attached, it's not incapacitated, it has a client, and the client eye is centered on the projector.
 			if(!(stat & NOPOWER))//If the  machine has power.
@@ -173,7 +173,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		clear_holo()//If not, we want to get rid of the hologram.
 	return 1
 
-/obj/machinery/hologram/holopad/proc/move_hologram()
+/obj/structure/machinery/hologram/holopad/proc/move_hologram()
 	if(hologram)
 		step_to(hologram, master.eyeobj) // So it turns.
 		hologram.loc = get_turf(master.eyeobj)
@@ -205,7 +205,7 @@ Holographic project of everything else.
 /*
  * Other Stuff: Is this even used?
  */
-/obj/machinery/hologram/projector
+/obj/structure/machinery/hologram/projector
 	name = "hologram projector"
 	desc = "It makes a hologram appear...with magnets or something..."
 	icon = 'icons/obj/structures/props/stationobjs.dmi'

@@ -38,7 +38,7 @@
 	return 1
 
 
-/obj/machinery/turret
+/obj/structure/machinery/turret
 	name = "turret"
 	icon = 'icons/obj/turrets.dmi'
 	icon_state = "grey_target_prism"
@@ -57,7 +57,7 @@
 		// 5 = bluetag
 		// 6 = redtag
 	health = 80
-	var/obj/machinery/turretcover/cover = null
+	var/obj/structure/machinery/turretcover/cover = null
 	var/popping = 0
 	var/wasvalid = 0
 	var/lastfired = 0
@@ -71,13 +71,13 @@
 	var/targeting_active = 0
 	var/area/turret_protected/protected_area
 
-/obj/machinery/turret/proc/take_damage(damage)
+/obj/structure/machinery/turret/proc/take_damage(damage)
 	src.health -= damage
 	if(src.health<=0)
 		del src
 	return
 
-/obj/machinery/turret/attack_hand(var/mob/living/carbon/human/user)
+/obj/structure/machinery/turret/attack_hand(var/mob/living/carbon/human/user)
 
 	if(!istype(user))
 		return ..()
@@ -88,14 +88,14 @@
 		src.take_damage(15)
 	return
 
-/obj/machinery/turret/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/machinery/turret/bullet_act(var/obj/item/projectile/Proj)
 	if(Proj.ammo.damage_type == HALLOSS)
 		return
 	take_damage(Proj.ammo.damage)
 	..()
 	return
 
-/obj/machinery/turret/New()
+/obj/structure/machinery/turret/New()
 	spark_system = new /datum/effect/effect/system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
@@ -104,24 +104,24 @@
 	start_processing()
 	return
 
-/obj/machinery/turret/proc/update_health()
+/obj/structure/machinery/turret/proc/update_health()
 	if(src.health<=0)
 		del src
 	return
 
-/obj/machinery/turretcover
+/obj/structure/machinery/turretcover
 	name = "pop-up turret cover"
 	icon = 'icons/obj/turrets.dmi'
 	icon_state = "turretCover"
 	anchored = 1
 	layer = 3.5
 	density = 0
-	var/obj/machinery/turret/host = null
+	var/obj/structure/machinery/turret/host = null
 
-/obj/machinery/turret/proc/isPopping()
+/obj/structure/machinery/turret/proc/isPopping()
 	return (popping!=0)
 
-/obj/machinery/turret/power_change()
+/obj/structure/machinery/turret/power_change()
 	..()
 	if(stat & BROKEN)
 		icon_state = "grey_target_prism"
@@ -140,13 +140,13 @@
 				src.icon_state = "grey_target_prism"
 				stat |= NOPOWER
 
-/obj/machinery/turret/proc/setState(var/enabled, var/lethal)
+/obj/structure/machinery/turret/proc/setState(var/enabled, var/lethal)
 	src.enabled = enabled
 	src.lasers = lethal
 	src.power_change()
 
 
-/obj/machinery/turret/proc/get_protected_area()
+/obj/structure/machinery/turret/proc/get_protected_area()
 	var/area/turret_protected/TP = get_area(src)
 	if(istype(TP))
 		if(TP.master && TP.master != TP)
@@ -154,7 +154,7 @@
 		return TP
 	return
 
-/obj/machinery/turret/proc/check_target(var/atom/movable/T as mob|obj)
+/obj/structure/machinery/turret/proc/check_target(var/atom/movable/T as mob|obj)
 	if( T && T in protected_area.turretTargets )
 		var/area/area_T = get_area(T)
 		if( !area_T || (area_T.type != protected_area.type) )
@@ -176,7 +176,7 @@
 					return 1
 	return 0
 
-/obj/machinery/turret/proc/get_new_target()
+/obj/structure/machinery/turret/proc/get_new_target()
 	var/list/new_targets = new
 	var/new_target
 	for(var/mob/living/carbon/M in protected_area.turretTargets)
@@ -194,11 +194,11 @@
 	return new_target
 
 
-/obj/machinery/turret/process()
+/obj/structure/machinery/turret/process()
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if(src.cover==null)
-		src.cover = new /obj/machinery/turretcover(src.loc)
+		src.cover = new /obj/structure/machinery/turretcover(src.loc)
 		src.cover.host = src
 	protected_area = get_protected_area()
 	if(!enabled || !protected_area || protected_area.turretTargets.len<=0)
@@ -232,14 +232,14 @@
 	return
 
 
-/obj/machinery/turret/proc/target()
+/obj/structure/machinery/turret/proc/target()
 	while(src && enabled && !stat && check_target(cur_target))
 		src.dir = get_dir(src, cur_target)
 		shootAt(cur_target)
 		sleep(shot_delay)
 	return
 
-/obj/machinery/turret/proc/shootAt(var/atom/movable/target)
+/obj/structure/machinery/turret/proc/shootAt(var/atom/movable/target)
 	//TODO: THIS
 	return
 	/*
@@ -275,10 +275,10 @@
 	return
 */
 
-/obj/machinery/turret/proc/isDown()
+/obj/structure/machinery/turret/proc/isDown()
 	return (invisibility!=0)
 
-/obj/machinery/turret/proc/popUp()
+/obj/structure/machinery/turret/proc/popUp()
 	if ((!isPopping()) || src.popping==-1)
 		invisibility = 0
 		popping = 1
@@ -289,7 +289,7 @@
 		spawn(10)
 			if (popping==1) popping = 0
 
-/obj/machinery/turret/proc/popDown()
+/obj/structure/machinery/turret/proc/popDown()
 	if ((!isPopping()) || src.popping==1)
 		popping = -1
 		playsound(src.loc, 'sound/effects/turret/open.wav', 60, 1)
@@ -301,7 +301,7 @@
 				invisibility = INVISIBILITY_LEVEL_TWO
 				popping = 0
 
-/obj/machinery/turret/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/machinery/turret/bullet_act(var/obj/item/projectile/Proj)
 	if(Proj.ammo.damage_type == HALLOSS)
 		return
 	src.health -= Proj.ammo.damage
@@ -311,7 +311,7 @@
 		src.die()
 	return
 
-/obj/machinery/turret/attackby(obj/item/weapon/W, mob/user)//I can't believe no one added this before/N
+/obj/structure/machinery/turret/attackby(obj/item/weapon/W, mob/user)//I can't believe no one added this before/N
 	..()
 	playsound(src.loc, 'sound/weapons/smash.ogg', 60, 1)
 	src.spark_system.start()
@@ -320,7 +320,7 @@
 		src.die()
 	return
 
-/obj/machinery/turret/emp_act(severity)
+/obj/structure/machinery/turret/emp_act(severity)
 	switch(severity)
 		if(1)
 			enabled = 0
@@ -328,11 +328,11 @@
 			power_change()
 	..()
 
-/obj/machinery/turret/ex_act(severity)
+/obj/structure/machinery/turret/ex_act(severity)
 	if(severity >= 0)
 		src.die()
 
-/obj/machinery/turret/proc/die()
+/obj/structure/machinery/turret/proc/die()
 	src.health = 0
 	src.density = 0
 	src.stat |= BROKEN
@@ -344,7 +344,7 @@
 	spawn(13)
 		del(src)
 
-/obj/machinery/turretid
+/obj/structure/machinery/turretid
 	name = "Turret deactivation control"
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "motion3"
@@ -357,7 +357,7 @@
 	var/ailock = 0 // AI cannot use this
 	req_access = list(ACCESS_MARINE_COMMANDER)
 
-/obj/machinery/turretid/New()
+/obj/structure/machinery/turretid/New()
 	..()
 	if(!control_area)
 		var/area/CA = get_area(src)
@@ -373,7 +373,7 @@
 	//don't have to check if control_area is path, since get_area_all_atoms can take path.
 	return
 
-/obj/machinery/turretid/attackby(obj/item/weapon/W, mob/user)
+/obj/structure/machinery/turretid/attackby(obj/item/weapon/W, mob/user)
 	if(stat & BROKEN) return
 	if (issilicon(user))
 		return src.attack_hand(user)
@@ -392,13 +392,13 @@
 		else
 			to_chat(user, SPAN_WARNING("Access denied."))
 
-/obj/machinery/turretid/attack_ai(mob/user as mob)
+/obj/structure/machinery/turretid/attack_ai(mob/user as mob)
 	if(!ailock)
 		return attack_hand(user)
 	else
 		to_chat(user, SPAN_NOTICE("There seems to be a firewall preventing you from accessing this device."))
 
-/obj/machinery/turretid/attack_hand(mob/user as mob)
+/obj/structure/machinery/turretid/attack_hand(mob/user as mob)
 	if ( get_dist(src, user) > 0 )
 		if ( !issilicon(user) )
 			to_chat(user, SPAN_NOTICE("You are too far away."))
@@ -426,7 +426,7 @@
 	onclose(user, "turretid")
 
 
-/obj/machinery/turret/attack_animal(mob/living/M as mob)
+/obj/structure/machinery/turret/attack_animal(mob/living/M as mob)
 	if(M.melee_damage_upper == 0)	return
 	if(!(stat & BROKEN))
 		visible_message(SPAN_DANGER("<B>[M] [M.attacktext] [src]!</B>"))
@@ -440,7 +440,7 @@
 		to_chat(M, SPAN_WARNING("That object is useless to you."))
 	return
 
-/obj/machinery/turretid/Topic(href, href_list, var/nowindow = 0)
+/obj/structure/machinery/turretid/Topic(href, href_list, var/nowindow = 0)
 	if(..(href, href_list))
 		return
 	if (src.locked)
@@ -457,13 +457,13 @@
 	if(!nowindow)
 		src.attack_hand(usr)
 
-/obj/machinery/turretid/proc/updateTurrets()
+/obj/structure/machinery/turretid/proc/updateTurrets()
 	if(control_area)
-		for (var/obj/machinery/turret/aTurret in get_area_all_atoms(control_area))
+		for (var/obj/structure/machinery/turret/aTurret in get_area_all_atoms(control_area))
 			aTurret.setState(enabled, lethal)
 	src.update_icons()
 
-/obj/machinery/turretid/proc/update_icons()
+/obj/structure/machinery/turretid/proc/update_icons()
 	if (src.enabled)
 		if (src.lethal)
 			icon_state = "motion1"
@@ -473,7 +473,7 @@
 		icon_state = "motion0"
 																				//CODE FIXED BUT REMOVED
 //	if(control_area)															//USE: updates other controls in the area
-//		for (var/obj/machinery/turretid/Turret_Control in world)				//I'm not sure if this is what it was
+//		for (var/obj/structure/machinery/turretid/Turret_Control in world)				//I'm not sure if this is what it was
 //			if( Turret_Control.control_area != src.control_area )	continue	//supposed to do. Or whether the person
 //			Turret_Control.icon_state = icon_state								//who coded it originally was just tired
 //			Turret_Control.enabled = enabled									//or something. I don't see  any situation

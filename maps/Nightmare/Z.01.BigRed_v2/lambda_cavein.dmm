@@ -39,7 +39,7 @@
 /turf/closed/wall,
 /area/bigredv2/outside/library)
 "ah" = (
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
 /turf/open/floor{
@@ -52,13 +52,13 @@
 	},
 /area/bigredv2/outside/library)
 "aj" = (
-/obj/machinery/light,
+/obj/structure/machinery/light,
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/library)
 "ak" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -129,8 +129,8 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aw" = (
-/obj/machinery/light,
-/obj/machinery/door_control{
+/obj/structure/machinery/light,
+/obj/structure/machinery/door_control{
 	id = "Kitchen";
 	name = "Storm Shutters";
 	pixel_x = 32;
@@ -144,15 +144,15 @@
 /area/bigredv2/outside/hydroponics)
 "ax" = (
 /obj/structure/window/framed/colony,
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Library";
 	name = "\improper Library Shutters"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/library)
 "ay" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 4;
 	name = "\improper Library"
 	},
@@ -192,14 +192,14 @@
 /area/bigredv2/outside/hydroponics)
 "aE" = (
 /obj/structure/window/framed/colony,
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Kitchen";
 	name = "\improper Kitchen Shutters"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/hydroponics)
 "aF" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	tag = "icon-asteroidwarning (WEST)";
 	icon_state = "asteroidwarning";
@@ -259,7 +259,7 @@
 	},
 /area/bigredv2/caves_lambda)
 "aO" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -270,7 +270,7 @@
 /area/bigredv2/outside/e)
 "aP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor{
@@ -311,7 +311,7 @@
 /area/bigredv2/outside/e)
 "aU" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
 	icon_state = "asteroidfloor";
@@ -360,7 +360,7 @@
 	},
 /area/bigredv2/outside/e)
 "ba" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -371,8 +371,8 @@
 	},
 /area/bigredv2/outside/e)
 "bb" = (
-/obj/machinery/light,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/light,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -394,7 +394,7 @@
 	},
 /area/bigredv2/outside/e)
 "be" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor{
@@ -404,7 +404,7 @@
 	},
 /area/bigredv2/outside/e)
 "bf" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -416,7 +416,7 @@
 /area/bigredv2/outside/e)
 "bg" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
 /turf/open/floor{
 	tag = "icon-asteroidwarning";
 	icon_state = "asteroidwarning"
@@ -424,7 +424,7 @@
 /area/bigredv2/outside/e)
 "bh" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -435,7 +435,7 @@
 /area/bigredv2/outside/e)
 "bi" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 1
 	},
 /turf/open/floor{
@@ -444,7 +444,7 @@
 	},
 /area/bigredv2/outside/e)
 "bj" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -457,7 +457,7 @@
 /area/bigredv2/outside/e)
 "bk" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -472,7 +472,7 @@
 /area/bigredv2/outside/e)
 "bn" = (
 /obj/item/tool/pickaxe,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -482,7 +482,7 @@
 	},
 /area/bigredv2/outside/e)
 "bo" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -492,8 +492,8 @@
 	},
 /area/bigredv2/caves_lambda)
 "bp" = (
-/obj/machinery/light,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/light,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -503,7 +503,7 @@
 	},
 /area/bigredv2/outside/e)
 "br" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -547,7 +547,7 @@
 	},
 /area/bigredv2/outside/e)
 "bz" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -576,7 +576,7 @@
 	},
 /area/bigredv2/outside/e)
 "bD" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor{
@@ -587,7 +587,7 @@
 /area/bigredv2/outside/e)
 "bE" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -598,7 +598,7 @@
 	},
 /area/bigredv2/outside/e)
 "bF" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -610,7 +610,7 @@
 /area/bigredv2/outside/e)
 "bG" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor{
@@ -775,7 +775,7 @@
 	},
 /area/bigredv2/caves_east)
 "cX" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/mars{

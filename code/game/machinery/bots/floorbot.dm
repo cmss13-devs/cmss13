@@ -3,7 +3,7 @@
 
 
 //Floorbot
-/obj/machinery/bot/floorbot
+/obj/structure/machinery/bot/floorbot
 	name = "Floorbot"
 	desc = "A little floor repairing robot, he looks so excited!"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
@@ -26,17 +26,17 @@
 	var/targetdirection
 
 
-/obj/machinery/bot/floorbot/New()
+/obj/structure/machinery/bot/floorbot/New()
 	..()
 	src.updateicon()
 	start_processing()
 
-/obj/machinery/bot/floorbot/turn_on()
+/obj/structure/machinery/bot/floorbot/turn_on()
 	. = ..()
 	src.updateicon()
 	src.updateUsrDialog()
 
-/obj/machinery/bot/floorbot/turn_off()
+/obj/structure/machinery/bot/floorbot/turn_off()
 	..()
 	src.target = null
 	src.oldtarget = null
@@ -45,14 +45,14 @@
 	src.path = new()
 	src.updateUsrDialog()
 
-/obj/machinery/bot/floorbot/attack_hand(mob/user as mob)
+/obj/structure/machinery/bot/floorbot/attack_hand(mob/user as mob)
 	. = ..()
 	if (.)
 		return
 	usr.set_interaction(src)
 	interact(user)
 
-/obj/machinery/bot/floorbot/interact(mob/user as mob)
+/obj/structure/machinery/bot/floorbot/interact(mob/user as mob)
 	var/dat
 	dat += "<TT><B>Automatic Station Floor Repairer v1.0</B></TT><BR><BR>"
 	dat += "Status: <A href='?src=\ref[src];operation=start'>[src.on ? "On" : "Off"]</A><BR>"
@@ -75,7 +75,7 @@
 	return
 
 
-/obj/machinery/bot/floorbot/attackby(var/obj/item/W , mob/user as mob)
+/obj/structure/machinery/bot/floorbot/attackby(var/obj/item/W , mob/user as mob)
 	if(istype(W, /obj/item/stack/tile/plasteel))
 		var/obj/item/stack/tile/plasteel/T = W
 		if(src.amount >= 50)
@@ -98,7 +98,7 @@
 	else
 		..()
 
-/obj/machinery/bot/floorbot/Topic(href, href_list)
+/obj/structure/machinery/bot/floorbot/Topic(href, href_list)
 	if(..())
 		return
 	usr.set_interaction(src)
@@ -134,7 +134,7 @@
 					targetdirection = null
 			src.updateUsrDialog()
 
-/obj/machinery/bot/floorbot/process()
+/obj/structure/machinery/bot/floorbot/process()
 	set background = 1
 
 	if(!src.on)
@@ -231,7 +231,7 @@
 	src.oldloc = src.loc
 
 
-/obj/machinery/bot/floorbot/proc/repair(var/turf/target)
+/obj/structure/machinery/bot/floorbot/proc/repair(var/turf/target)
 	if(istype(target, /turf/open/space/))
 		if(target.loc.name == "Space")
 			return
@@ -263,7 +263,7 @@
 			src.anchored = 0
 			src.target = null
 
-/obj/machinery/bot/floorbot/proc/eattile(var/obj/item/stack/tile/plasteel/T)
+/obj/structure/machinery/bot/floorbot/proc/eattile(var/obj/item/stack/tile/plasteel/T)
 	if(!istype(T, /obj/item/stack/tile/plasteel))
 		return
 	visible_message(SPAN_DANGER("[src] begins to collect tiles."))
@@ -284,7 +284,7 @@
 		src.target = null
 		src.repairing = 0
 
-/obj/machinery/bot/floorbot/proc/maketile(var/obj/item/stack/sheet/metal/M)
+/obj/structure/machinery/bot/floorbot/proc/maketile(var/obj/item/stack/sheet/metal/M)
 	if(!istype(M, /obj/item/stack/sheet/metal))
 		return
 	if(M.get_amount() > 1)
@@ -303,13 +303,13 @@
 		src.target = null
 		src.repairing = 0
 
-/obj/machinery/bot/floorbot/proc/updateicon()
+/obj/structure/machinery/bot/floorbot/proc/updateicon()
 	if(src.amount > 0)
 		src.icon_state = "floorbot[src.on]"
 	else
 		src.icon_state = "floorbot[src.on]e"
 
-/obj/machinery/bot/floorbot/explode()
+/obj/structure/machinery/bot/floorbot/explode()
 	src.on = 0
 	src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), 1)
 	var/turf/Tsec = get_turf(src)

@@ -36,7 +36,7 @@
 
 
 
-/obj/machinery/cm_vending
+/obj/structure/machinery/cm_vending
 	name = "\improper Theoretical Marine selector"
 	desc = ""
 	icon = 'icons/obj/structures/machinery/vending.dmi'
@@ -58,7 +58,7 @@
 
 
 
-/obj/machinery/cm_vending/attack_hand(mob/user)
+/obj/structure/machinery/cm_vending/attack_hand(mob/user)
 
 	if(stat & (BROKEN|NOPOWER))
 		return
@@ -92,7 +92,7 @@
 
 
 
-/obj/machinery/cm_vending/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/cm_vending/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 
 	if(!ishuman(user)) return
 	var/mob/living/carbon/human/H = user
@@ -142,7 +142,7 @@
 		ui.set_auto_update(1)
 
 
-/obj/machinery/cm_vending/Topic(href, href_list)
+/obj/structure/machinery/cm_vending/Topic(href, href_list)
 	if(stat & (BROKEN|NOPOWER))
 		return
 	if(usr.is_mob_incapacitated())
@@ -207,7 +207,7 @@
 
 				if(vendor_role == "Tank Crewman")
 					var/p_name = L[1]
-					var/obj/machinery/cm_vending/tank/t = src
+					var/obj/structure/machinery/cm_vending/tank/t = src
 					if(!t.primary_list.Find(p_name) && !t.secondary_list.Find(p_name) && !t.support_list.Find(p_name) && !t.armor_list.Find(p_name) &&!t.treads_list.Find(p_name))
 						to_chat(H, SPAN_WARNING("That equipment is already taken."))
 						return
@@ -274,8 +274,8 @@
 					available_specialist_sets -= p_name
 			if(vendor_role == "Tank Crewman")
 				if(H.mind && H.mind.assigned_role == "Tank Crewman")
-					if(istype(src, /obj/machinery/cm_vending/tank))
-						var/obj/machinery/cm_vending/tank/t = src
+					if(istype(src, /obj/structure/machinery/cm_vending/tank))
+						var/obj/structure/machinery/cm_vending/tank/t = src
 						var/t_name = L[1]
 						if(!t.primary_list.Find(t_name) && !t.secondary_list.Find(t_name) && !t.support_list.Find(t_name) && !t.armor_list.Find(t_name) &&!t.treads_list.Find(t_name))
 							to_chat(H, SPAN_WARNING("That equipment is already taken."))
@@ -300,7 +300,7 @@
 		ui_interact(usr) //updates the nanoUI window
 
 
-/obj/machinery/cm_vending/clothing
+/obj/structure/machinery/cm_vending/clothing
 	name = "ColMarTech Automated Closet"
 	desc = "An automated closet hooked up to a colossal storage of standard-issue uniform and armor."
 	icon_state = "uniform_marine"
@@ -401,25 +401,25 @@
 
 
 
-/obj/machinery/cm_vending/clothing/alpha
+/obj/structure/machinery/cm_vending/clothing/alpha
 	squad_tag = "Alpha"
 	req_access = list(ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/alpha
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha
 
-/obj/machinery/cm_vending/clothing/bravo
+/obj/structure/machinery/cm_vending/clothing/bravo
 	squad_tag = "Bravo"
 	req_access = list(ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/bravo
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo
 
-/obj/machinery/cm_vending/clothing/charlie
+/obj/structure/machinery/cm_vending/clothing/charlie
 	squad_tag = "Charlie"
 	req_access = list(ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/charlie
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie
 
-/obj/machinery/cm_vending/clothing/delta
+/obj/structure/machinery/cm_vending/clothing/delta
 	squad_tag = "Delta"
 	req_access = list(ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/delta
@@ -427,7 +427,7 @@
 
 
 
-/obj/machinery/cm_vending/clothing/engi
+/obj/structure/machinery/cm_vending/clothing/engi
 	req_access = list(ACCESS_MARINE_ENGPREP)
 	vendor_role = "Squad Engineer"
 
@@ -479,25 +479,25 @@
 	)
 
 
-/obj/machinery/cm_vending/clothing/engi/alpha
+/obj/structure/machinery/cm_vending/clothing/engi/alpha
 	squad_tag = "Alpha"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/alpha/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/engi
 
-/obj/machinery/cm_vending/clothing/engi/bravo
+/obj/structure/machinery/cm_vending/clothing/engi/bravo
 	squad_tag = "Bravo"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/bravo/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/engi
 
-/obj/machinery/cm_vending/clothing/engi/charlie
+/obj/structure/machinery/cm_vending/clothing/engi/charlie
 	squad_tag = "Charlie"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/charlie/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/engi
 
-/obj/machinery/cm_vending/clothing/engi/delta
+/obj/structure/machinery/cm_vending/clothing/engi/delta
 	squad_tag = "Delta"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/delta/insulated
@@ -505,7 +505,7 @@
 
 
 
-/obj/machinery/cm_vending/clothing/medic
+/obj/structure/machinery/cm_vending/clothing/medic
 	req_access = list(ACCESS_MARINE_MEDPREP)
 	vendor_role = "Squad Medic"
 
@@ -556,25 +556,25 @@
 
 
 
-/obj/machinery/cm_vending/clothing/medic/alpha
+/obj/structure/machinery/cm_vending/clothing/medic/alpha
 	squad_tag = "Alpha"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/alpha
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/med
 
-/obj/machinery/cm_vending/clothing/medic/bravo
+/obj/structure/machinery/cm_vending/clothing/medic/bravo
 	squad_tag = "Bravo"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/bravo
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/med
 
-/obj/machinery/cm_vending/clothing/medic/charlie
+/obj/structure/machinery/cm_vending/clothing/medic/charlie
 	squad_tag = "Charlie"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/charlie
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/med
 
-/obj/machinery/cm_vending/clothing/medic/delta
+/obj/structure/machinery/cm_vending/clothing/medic/delta
 	squad_tag = "Delta"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/delta
@@ -586,7 +586,7 @@
 
 
 
-/obj/machinery/cm_vending/clothing/smartgun
+/obj/structure/machinery/cm_vending/clothing/smartgun
 	req_access = list(ACCESS_MARINE_SMARTPREP)
 	vendor_role = "Squad Smartgunner"
 	gives_webbing = TRUE
@@ -624,25 +624,25 @@
 
 
 
-/obj/machinery/cm_vending/clothing/smartgun/alpha
+/obj/structure/machinery/cm_vending/clothing/smartgun/alpha
 	squad_tag = "Alpha"
 	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/alpha
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha
 
-/obj/machinery/cm_vending/clothing/smartgun/bravo
+/obj/structure/machinery/cm_vending/clothing/smartgun/bravo
 	squad_tag = "Bravo"
 	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/bravo
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo
 
-/obj/machinery/cm_vending/clothing/smartgun/charlie
+/obj/structure/machinery/cm_vending/clothing/smartgun/charlie
 	squad_tag = "Charlie"
 	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/charlie
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie
 
-/obj/machinery/cm_vending/clothing/smartgun/delta
+/obj/structure/machinery/cm_vending/clothing/smartgun/delta
 	squad_tag = "Delta"
 	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/delta
@@ -650,7 +650,7 @@
 
 
 
-/obj/machinery/cm_vending/clothing/specialist
+/obj/structure/machinery/cm_vending/clothing/specialist
 	req_access = list(ACCESS_MARINE_SPECPREP)
 	vendor_role = "Squad Specialist"
 	gives_webbing = TRUE
@@ -692,25 +692,25 @@
 
 
 
-/obj/machinery/cm_vending/clothing/specialist/alpha
+/obj/structure/machinery/cm_vending/clothing/specialist/alpha
 	squad_tag = "Alpha"
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/alpha
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha
 
-/obj/machinery/cm_vending/clothing/specialist/bravo
+/obj/structure/machinery/cm_vending/clothing/specialist/bravo
 	squad_tag = "Bravo"
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/bravo
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo
 
-/obj/machinery/cm_vending/clothing/specialist/charlie
+/obj/structure/machinery/cm_vending/clothing/specialist/charlie
 	squad_tag = "Charlie"
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/charlie
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie
 
-/obj/machinery/cm_vending/clothing/specialist/delta
+/obj/structure/machinery/cm_vending/clothing/specialist/delta
 	squad_tag = "Delta"
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/delta
@@ -721,7 +721,7 @@
 
 
 
-/obj/machinery/cm_vending/clothing/leader
+/obj/structure/machinery/cm_vending/clothing/leader
 	req_access = list(ACCESS_MARINE_LEADER)
 	vendor_role = "Squad Leader"
 	gives_webbing = TRUE
@@ -765,32 +765,32 @@
 
 
 
-/obj/machinery/cm_vending/clothing/leader/alpha
+/obj/structure/machinery/cm_vending/clothing/leader/alpha
 	squad_tag = "Alpha"
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/alpha
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/lead
 
-/obj/machinery/cm_vending/clothing/leader/bravo
+/obj/structure/machinery/cm_vending/clothing/leader/bravo
 	squad_tag = "Bravo"
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/bravo
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/lead
 
-/obj/machinery/cm_vending/clothing/leader/charlie
+/obj/structure/machinery/cm_vending/clothing/leader/charlie
 	squad_tag = "Charlie"
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/charlie
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/lead
 
-/obj/machinery/cm_vending/clothing/leader/delta
+/obj/structure/machinery/cm_vending/clothing/leader/delta
 	squad_tag = "Delta"
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/delta
 	headset_type = /obj/item/device/radio/headset/almayer/marine/delta/lead
 
 
-/obj/machinery/cm_vending/clothing/synth
+/obj/structure/machinery/cm_vending/clothing/synth
 	req_access = list(ACCESS_MARINE_COMMANDER)
 	vendor_role = "Synthetic"
 
@@ -857,7 +857,7 @@
 		list("Sterile mask", 0, /obj/item/clothing/mask/surgical, MARINE_CAN_BUY_MASK, "black"),
 	)
 
-/obj/machinery/cm_vending/clothing/intelligence_officer
+/obj/structure/machinery/cm_vending/clothing/intelligence_officer
 	name = "Intelligence Officer Equipment Rack"
 	req_access = list(ACCESS_MARINE_BRIDGE)
 	vendor_role = "Intelligence Officer"
@@ -899,14 +899,14 @@
 
 
 
-/obj/machinery/cm_vending/gear
+/obj/structure/machinery/cm_vending/gear
 	name = "ColMarTech Automated Equipment Rack"
 	desc = "An automated equipment rack hooked up to a colossal storage of standard-issue equipments."
 	icon_state = "sec"
 	use_points = TRUE
 
 
-/obj/machinery/cm_vending/gear/medic
+/obj/structure/machinery/cm_vending/gear/medic
 	vendor_role = "Squad Medic"
 	req_access = list(ACCESS_MARINE_MEDPREP)
 
@@ -981,7 +981,7 @@
 
 
 
-/obj/machinery/cm_vending/gear/engi
+/obj/structure/machinery/cm_vending/gear/engi
 	vendor_role = "Squad Engineer"
 	req_access = list(ACCESS_MARINE_ENGPREP)
 
@@ -1039,7 +1039,7 @@
 
 
 
-/obj/machinery/cm_vending/gear/smartgun
+/obj/structure/machinery/cm_vending/gear/smartgun
 	vendor_role = "Squad Smartgunner"
 	req_access = list(ACCESS_MARINE_SMARTPREP)
 
@@ -1080,7 +1080,7 @@
 var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolitionist Set", "Heavy Grenadier Set", "Pyro Set")
 
 
-/obj/machinery/cm_vending/gear/spec
+/obj/structure/machinery/cm_vending/gear/spec
 	vendor_role = "Squad Specialist"
 	req_access = list(ACCESS_MARINE_SPECPREP)
 
@@ -1151,7 +1151,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 
 
 
-/obj/machinery/cm_vending/gear/leader
+/obj/structure/machinery/cm_vending/gear/leader
 	vendor_role = "Squad Leader"
 	req_access = list(ACCESS_MARINE_LEADER)
 
@@ -1202,7 +1202,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 
 
 
-/obj/machinery/cm_vending/gear/synth
+/obj/structure/machinery/cm_vending/gear/synth
 	req_access = list(ACCESS_MARINE_COMMANDER)
 	vendor_role = "Synthetic"
 
@@ -1262,7 +1262,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 
 //Five global lists - one for each slot - so that two tankers can't each get five items
 
-/obj/machinery/cm_vending/tank
+/obj/structure/machinery/cm_vending/tank
 	name = "ColMarTech Tank Equipment storage"
 	desc = "An automated weapons storage unit hooked up to the underbelly of the ship, allowing the tank crew to choose one set of free equipment for their tank. "
 	icon_state = "armory"
@@ -1302,7 +1302,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Treads", 0, /obj/item/hardpoint/treads/standard, MARINE_CAN_BUY_SHOES, "black"),
 	)
 
-/obj/machinery/cm_vending/tank/New()
+/obj/structure/machinery/cm_vending/tank/New()
 	..()
 	if(map_tag == MAP_ICE_COLONY)
 		armor_list += "Snowplow"
@@ -1461,15 +1461,15 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 //Hacking can be added if we need it. Do we need it, tho?
 
 
-/obj/machinery/cm_vending/sorted
+/obj/structure/machinery/cm_vending/sorted
 	name = "\improper ColMarTech generic sorted vendor"
 	desc = "This is pure vendor without points system."
 	icon_state = "armory"
 
-/obj/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)
 	return
 
-/obj/machinery/cm_vending/sorted/attack_hand(mob/user)
+/obj/structure/machinery/cm_vending/sorted/attack_hand(mob/user)
 
 	if(stat & (BROKEN|NOPOWER))
 		return
@@ -1480,7 +1480,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 	user.set_interaction(src)
 	ui_interact(user)
 
-/obj/machinery/cm_vending/sorted/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/cm_vending/sorted/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 
 	if(!ishuman(user)) return
 
@@ -1516,7 +1516,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		ui.set_auto_update(1)
 
 
-/obj/machinery/cm_vending/sorted/Topic(href, href_list)
+/obj/structure/machinery/cm_vending/sorted/Topic(href, href_list)
 	if(stat & (BROKEN|NOPOWER))
 		return
 	if(usr.is_mob_incapacitated())
@@ -1563,7 +1563,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		ui_interact(usr) //updates the nanoUI window
 
 
-/obj/machinery/cm_vending/sorted/MouseDrop_T(var/atom/movable/A, mob/user)
+/obj/structure/machinery/cm_vending/sorted/MouseDrop_T(var/atom/movable/A, mob/user)
 
 	if(stat & (BROKEN|NOPOWER))
 		return
@@ -1578,7 +1578,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		var/obj/item/I = A
 		stock(I, user)
 
-/obj/machinery/cm_vending/sorted/proc/stock(obj/item/item_to_stock, mob/user)
+/obj/structure/machinery/cm_vending/sorted/proc/stock(obj/item/item_to_stock, mob/user)
 	var/list/R
 	for(R in (listed_products))
 		if(item_to_stock.type == R[3] && !istype(item_to_stock,/obj/item/storage))
@@ -1630,16 +1630,16 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 //--------------------------REQ VENDORS AND THEIR SQUAD VARIANTS------------------
 
 //ARMAMENTS VENDOR
-/obj/machinery/cm_vending/sorted/cargo_guns
+/obj/structure/machinery/cm_vending/sorted/cargo_guns
 	name = "\improper ColMarTech Automated Armaments Vendor"
 	desc = "An automated rack hooked up to a small supply of various firearms and explosives."
 	req_access = list(ACCESS_MARINE_CARGO)
 
-/obj/machinery/cm_vending/sorted/cargo_guns/New()
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/New()
 	..()
 	cm_vending_vendors.Add(src)						//this is needed for cm_initialize and needs changing
 
-/obj/machinery/cm_vending/sorted/cargo_guns/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/populate_product_list(var/scale)
 	listed_products = list(
 		list("Backpacks", -1, null, null),
 		list("Lightweight IMP Backpack", round(scale * 15), /obj/item/storage/backpack/marine, "black"),
@@ -1711,13 +1711,13 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		)
 
 
-/obj/machinery/cm_vending/sorted/cargo_guns/squad
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad
 	name = "\improper ColMarTech Automated Armaments Squad Vendor"
 	desc = "An automated rack hooked up to a small supply of various firearms and explosives."
 	req_access = list(ACCESS_MARINE_ALPHA)
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
 
-/obj/machinery/cm_vending/sorted/cargo_guns/squad/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad/populate_product_list(var/scale)
 	listed_products = list(
 		list("Backpacks", -1, null, null),
 		list("Lightweight IMP Backpack", round(scale * 15), /obj/item/storage/backpack/marine, "black"),
@@ -1771,16 +1771,16 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		)
 
 //AMMUNITION VENDOR
-/obj/machinery/cm_vending/sorted/cargo_ammo
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo
 	name = "\improper ColMarTech Automated Munition Vendor"
 	desc = "An automated rack hooked up to a small supply of ammo magazines."
 	req_access = list(ACCESS_MARINE_CARGO)
 
-/obj/machinery/cm_vending/sorted/cargo_ammo/New()
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/New()
 	..()
 	cm_vending_vendors.Add(src)						//this is needed for cm_initialize and needs changing
 
-/obj/machinery/cm_vending/sorted/cargo_ammo/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/populate_product_list(var/scale)
 	listed_products = list(
 		list("Regular Ammunition", -1, null, null),
 		list("M4A3 Magazine (9mm)", round(scale * 6.1), /obj/item/ammo_magazine/pistol, "black"),
@@ -1847,13 +1847,13 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		)
 
 
-/obj/machinery/cm_vending/sorted/cargo_ammo/squad
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad
 	name = "\improper ColMarTech Automated Munition Squad Vendor"
 	desc = "An automated rack hooked up to a small supply of ammo magazines."
 	req_access = list(ACCESS_MARINE_ALPHA)
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
 
-/obj/machinery/cm_vending/sorted/cargo_ammo/squad/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/populate_product_list(var/scale)
 	listed_products = list(
 
 		list("Armor-Piercing Ammunition", -1, null, null),
@@ -1877,17 +1877,17 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		)
 
 //ATTACHMENTS VENDOR
-/obj/machinery/cm_vending/sorted/attachments
+/obj/structure/machinery/cm_vending/sorted/attachments
 	name = "\improper Armat Systems Attachments Vendor"
 	desc = "A subsidiary-owned vendor of weapon attachments. This can only be accessed by the Requisitions Officer and Cargo Techs."
 	req_access = list(ACCESS_MARINE_CARGO)
 	icon_state = "attach_vend"
 
-/obj/machinery/cm_vending/sorted/attachments/New()
+/obj/structure/machinery/cm_vending/sorted/attachments/New()
 	..()
 	cm_vending_vendors.Add(src)						//this is needed for cm_initialize and needs changing
 
-/obj/machinery/cm_vending/sorted/attachments/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/attachments/populate_product_list(var/scale)
 	listed_products = list(
 		list("Muzzle", -1, null, null),
 		list("Barrel Charger", round(scale * 2.5), /obj/item/attachable/heavy_barrel, "black"),
@@ -1928,7 +1928,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Submachinegun Stock", round(scale * 4.5), /obj/item/attachable/stock/smg, "black"),
 		)
 
-/obj/machinery/cm_vending/sorted/attachments/Topic(href, href_list)
+/obj/structure/machinery/cm_vending/sorted/attachments/Topic(href, href_list)
 	if(stat & (BROKEN|NOPOWER))
 		return
 	if(usr.is_mob_incapacitated())
@@ -1984,14 +1984,14 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		ui_interact(usr) //updates the nanoUI window
 
 
-/obj/machinery/cm_vending/sorted/attachments/squad
+/obj/structure/machinery/cm_vending/sorted/attachments/squad
 	name = "\improper Armat Systems Squad Attachments Vendor"
 	desc = "An attachment vendor made specifically for squads. Can be accessed by Squad Leaders and Squad Specialists."
 	req_access = list(ACCESS_MARINE_ALPHA)
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
 	icon_state = "attach_vend"
 
-/obj/machinery/cm_vending/sorted/attachments/squad/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/attachments/squad/populate_product_list(var/scale)
 	listed_products = list(
 		list("Muzzle", -1, null, null),
 		list("Barrel Charger", round(scale * 0.9), /obj/item/attachable/heavy_barrel, "black"),
@@ -2028,7 +2028,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Submachinegun Stock", round(scale * 1.5), /obj/item/attachable/stock/smg, "black"),
 		)
 
-/obj/machinery/cm_vending/sorted/attachments/squad/Topic(href, href_list)
+/obj/structure/machinery/cm_vending/sorted/attachments/squad/Topic(href, href_list)
 	if(stat & (BROKEN|NOPOWER))
 		return
 	if(usr.is_mob_incapacitated())
@@ -2076,7 +2076,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		ui_interact(usr) //updates the nanoUI window
 
 //UNIFORM VENDOR
-obj/machinery/cm_vending/sorted/uniform_supply
+obj/structure/machinery/cm_vending/sorted/uniform_supply
 	name = "\improper ColMarTech Surplus Uniform Vendor"
 	desc = "An automated supply rack hooked up to a colossal storage of uniforms. This can only be accessed by the Requisitions Officer and Cargo Techs."
 	icon_state = "uniform_marine"
@@ -2117,11 +2117,11 @@ obj/machinery/cm_vending/sorted/uniform_supply
 		list("Engineering Radio Encryption Key", 5, /obj/item/device/encryptionkey/engi, "black")
 		)
 
-/obj/machinery/cm_vending/sorted/uniform_supply/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/populate_product_list(var/scale)
 	return
 
 
-/obj/machinery/cm_vending/sorted/uniform_supply/squad
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad
 	name = "\improper ColMarTech Surplus Uniform Vendor"
 	desc = "An automated supply rack hooked up to a colossal storage of uniforms."
 	req_access = list()
@@ -2129,7 +2129,7 @@ obj/machinery/cm_vending/sorted/uniform_supply
 
 	listed_products = list()
 
-/obj/machinery/cm_vending/sorted/uniform_supply/squad/New()
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad/New()
 	..()
 	listed_products = list(
 		list("Uniform", -1, null, null),

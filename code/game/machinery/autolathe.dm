@@ -1,4 +1,4 @@
-/obj/machinery/autolathe
+/obj/structure/machinery/autolathe
 	name = "\improper autolathe"
 	desc = "It produces items using metal and glass."
 	icon_state = "autolathe"
@@ -23,7 +23,7 @@
 	var/disable_wire
 	var/shock_wire
 
-/obj/machinery/autolathe/interact(mob/user as mob)
+/obj/structure/machinery/autolathe/interact(mob/user as mob)
 
 	if(..() || disabled)
 		return
@@ -102,7 +102,7 @@
 	user << browse(dat, "window=autolathe")
 	onclose(user, "autolathe")
 
-/obj/machinery/autolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/autolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if (busy)
 		to_chat(user, SPAN_DANGER("\The [src] is busy. Please wait for completion of previous operation."))
 		return
@@ -186,14 +186,14 @@
 	updateUsrDialog()
 	return TRUE //so the item's afterattack isn't called
 
-/obj/machinery/autolathe/attack_hand(mob/user as mob)
+/obj/structure/machinery/autolathe/attack_hand(mob/user as mob)
 	if (stat)
 		return
 
 	user.set_interaction(src)
 	interact(user)
 
-/obj/machinery/autolathe/Topic(href, href_list)
+/obj/structure/machinery/autolathe/Topic(href, href_list)
 
 	if(..())
 		return
@@ -318,7 +318,7 @@
 	updateUsrDialog()
 
 
-/obj/machinery/autolathe/New()
+/obj/structure/machinery/autolathe/New()
 
 	..()
 
@@ -376,7 +376,7 @@
 	w -= disable_wire
 
 //Updates overall lathe storage size.
-/obj/machinery/autolathe/RefreshParts()
+/obj/structure/machinery/autolathe/RefreshParts()
 	..()
 	var/tot_rating = 0
 	for(var/obj/item/stock_parts/matter_bin/MB in component_parts)
@@ -385,7 +385,7 @@
 	storage_capacity["metal"] = tot_rating  * 25000
 	storage_capacity["glass"] = tot_rating  * 12500
 
-/obj/machinery/autolathe/dismantle()
+/obj/structure/machinery/autolathe/dismantle()
 	var/list/sheets = list("metal" = /obj/item/stack/sheet/metal, "glass" = /obj/item/stack/sheet/glass)
 
 	for(var/mat in stored_material)
@@ -396,10 +396,10 @@
 			S.loc = loc
 	..()
 
-/obj/machinery/autolathe/yautja
+/obj/structure/machinery/autolathe/yautja
 	name = "\improper yautja autolathe"
 	desc = "It produces items using metal and glass."
 	icon = 'icons/obj/structures/machinery/predautolathe.dmi'
 
-/obj/machinery/autolathe/full
+/obj/structure/machinery/autolathe/full
 	stored_material =  list("metal" = 75000, "glass" = 37500)

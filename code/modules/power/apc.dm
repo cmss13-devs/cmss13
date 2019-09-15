@@ -43,19 +43,19 @@
 
 
 //NOTE: STUFF STOLEN FROM AIRLOCK.DM thx
-/obj/machinery/power/apc/weak
+/obj/structure/machinery/power/apc/weak
 	cell_type = /obj/item/cell
 
-/obj/machinery/power/apc/high
+/obj/structure/machinery/power/apc/high
 	cell_type = /obj/item/cell/high
 
-/obj/machinery/power/apc/super
+/obj/structure/machinery/power/apc/super
 	cell_type = /obj/item/cell/super
 
-/obj/machinery/power/apc/hyper
+/obj/structure/machinery/power/apc/hyper
 	cell_type = /obj/item/cell/hyper
 
-/obj/machinery/power/apc
+/obj/structure/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
 	icon = 'icons/obj/structures/machinery/power.dmi'
@@ -85,7 +85,7 @@
 	var/coverlocked = 1
 	var/aidisabled = 0
 	var/tdir = null
-	var/obj/machinery/power/terminal/terminal = null
+	var/obj/structure/machinery/power/terminal/terminal = null
 	var/lastused_light = 0
 	var/lastused_equip = 0
 	var/lastused_environ = 0
@@ -114,7 +114,7 @@
 	var/global/list/status_overlays_lighting
 	var/global/list/status_overlays_environ
 
-/obj/machinery/power/apc/New(turf/loc, var/ndir, var/building=0)
+/obj/structure/machinery/power/apc/New(turf/loc, var/ndir, var/building=0)
 	..()
 
 	//Offset 24 pixels in direction of dir
@@ -146,17 +146,17 @@
 		set_broken()
 
 // the very fact that i have to override this screams to me that apcs shouldnt be under machinery - spookydonut
-/obj/machinery/power/apc/power_change()
+/obj/structure/machinery/power/apc/power_change()
 	return
 
-/obj/machinery/power/apc/proc/make_terminal()
+/obj/structure/machinery/power/apc/proc/make_terminal()
 	//Create a terminal object at the same position as original turf loc
 	//Wires will attach to this
-	terminal = new/obj/machinery/power/terminal(src.loc)
+	terminal = new/obj/structure/machinery/power/terminal(src.loc)
 	terminal.dir = tdir
 	terminal.master = src
 
-/obj/machinery/power/apc/proc/init()
+/obj/structure/machinery/power/apc/proc/init()
 	has_electronics = 2 //Installed and secured
 	//Is starting with a power cell installed, create it and set its charge level
 	if(cell_type)
@@ -180,7 +180,7 @@
 	spawn(5)
 		update()
 
-/obj/machinery/power/apc/examine(mob/user)
+/obj/structure/machinery/power/apc/examine(mob/user)
 	to_chat(user, desc)
 	if(stat & BROKEN)
 		to_chat(user, SPAN_INFO("It appears to be completely broken. It's hard to see what else is wrong with it."))
@@ -203,7 +203,7 @@
 
 //Update the APC icon to show the three base states
 //Also add overlays for indicator lights
-/obj/machinery/power/apc/update_icon()
+/obj/structure/machinery/power/apc/update_icon()
 
 	if(!status_overlays)
 		status_overlays = 1
@@ -284,7 +284,7 @@
 				overlays += status_overlays_lighting[lighting + 1]
 				overlays += status_overlays_environ[environ + 1]
 
-/obj/machinery/power/apc/proc/check_updates()
+/obj/structure/machinery/power/apc/proc/check_updates()
 
 	var/last_update_state = update_state
 	var/last_update_overlay = update_overlay
@@ -351,7 +351,7 @@
 		results += 2
 	return results
 
-/obj/machinery/power/apc/proc/queue_icon_update()
+/obj/structure/machinery/power/apc/proc/queue_icon_update()
 
 	if(!updating_icon)
 		updating_icon = 1
@@ -361,7 +361,7 @@
 			updating_icon = 0
 
 //Attack with an item - open/close cover, insert cell, or (un)lock interface
-/obj/machinery/power/apc/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/power/apc/attackby(obj/item/W, mob/user)
 
 	if(issilicon(user) && get_dist(src, user) > 1)
 		return attack_hand(user)
@@ -585,7 +585,7 @@
 			SPAN_DANGER("You hit [src] with [W]!"))
 
 //Attack with hand - remove cell (if cover open) or interact with the APC
-/obj/machinery/power/apc/attack_hand(mob/user)
+/obj/structure/machinery/power/apc/attack_hand(mob/user)
 
 	if(!user)
 		return
@@ -666,7 +666,7 @@
 
 	ui_interact(user)
 
-/obj/machinery/power/apc/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/power/apc/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 	if(!user)
 		return
 
@@ -739,10 +739,10 @@
 		//Auto update every Master Controller tick
 		ui.set_auto_update(1)
 
-/obj/machinery/power/apc/proc/report()
+/obj/structure/machinery/power/apc/proc/report()
 	return "[area.name] : [equipment]/[lighting]/[environ] ([lastused_equip+lastused_light+lastused_environ]) : [cell? cell.percent() : "N/C"] ([charging])"
 
-/obj/machinery/power/apc/proc/update()
+/obj/structure/machinery/power/apc/proc/update()
 	if(operating && !shorted)
 		area.power_light = (lighting > 1)
 		area.power_equip = (equipment > 1)
@@ -753,17 +753,17 @@
 		area.power_environ = 0
 	area.power_change()
 
-/obj/machinery/power/apc/proc/get_wire_descriptions()
+/obj/structure/machinery/power/apc/proc/get_wire_descriptions()
 	return list(
 		APC_WIRE_MAIN_POWER   = "Main power",
 		APC_WIRE_IDSCAN       = "ID scanner"
 	)
 
-/obj/machinery/power/apc/proc/isWireCut(var/wire)
+/obj/structure/machinery/power/apc/proc/isWireCut(var/wire)
 	var/wireFlag = getWireFlag(wire)
 	return !(apcwires & wireFlag)
 
-/obj/machinery/power/apc/proc/cut(var/wire)
+/obj/structure/machinery/power/apc/proc/cut(var/wire)
 	apcwires ^= getWireFlag(wire)
 
 	switch(wire)
@@ -777,7 +777,7 @@
 	if(isXeno(usr)) //So aliens don't see this when they cut all of the wires.
 		return
 
-/obj/machinery/power/apc/proc/mend(var/wire)
+/obj/structure/machinery/power/apc/proc/mend(var/wire)
 	apcwires |= getWireFlag(wire)
 
 	switch(wire)
@@ -790,7 +790,7 @@
 			locked = 1
 			visible_message(SPAN_NOTICE("\The [src] emits a slight thunk."))
 
-/obj/machinery/power/apc/proc/pulse(var/wire)
+/obj/structure/machinery/power/apc/proc/pulse(var/wire)
 	switch(wire)
 		if(APC_WIRE_IDSCAN) //Unlocks the APC for 30 seconds, if you have a better way to hack an APC I'm all ears
 			locked = 0
@@ -807,8 +807,7 @@
 				if(shorted == 1)
 					shorted = 0
 
-
-/obj/machinery/power/apc/proc/can_use(mob/user as mob, var/loud = 0) //used by attack_hand() and Topic()
+/obj/structure/machinery/power/apc/proc/can_use(mob/user as mob, var/loud = 0) //used by attack_hand() and Topic()
 	if(user.stat)
 		to_chat(user, SPAN_WARNING("You must be conscious to use [src]!"))
 		return 0
@@ -848,7 +847,7 @@
 			return 0
 	return 1
 
-/obj/machinery/power/apc/Topic(href, href_list, var/usingUI = 1)
+/obj/structure/machinery/power/apc/Topic(href, href_list, var/usingUI = 1)
 	if(!(isrobot(usr) && (href_list["apcwires"] || href_list["pulse"])))
 		if(!can_use(usr, 1))
 			return 0
@@ -928,7 +927,7 @@
 
 	return 1
 
-/obj/machinery/power/apc/proc/ion_act()
+/obj/structure/machinery/power/apc/proc/ion_act()
 	//intended to be a bit like an emag
 	if(prob(3))
 		locked = 0
@@ -945,34 +944,34 @@
 			s.start()
 			visible_message("<span class='warning'>[src] suddenly lets out a blast of smoke and some sparks!")
 
-/obj/machinery/power/apc/surplus()
+/obj/structure/machinery/power/apc/surplus()
 	if(terminal)
 		return terminal.surplus()
 	else
 		return 0
 
-/obj/machinery/power/apc/proc/last_surplus()
+/obj/structure/machinery/power/apc/proc/last_surplus()
 	if(terminal && terminal.powernet)
 		return terminal.powernet.last_surplus()
 	else
 		return 0
 
 //Returns 1 if the APC should attempt to charge
-/obj/machinery/power/apc/proc/attempt_charging()
+/obj/structure/machinery/power/apc/proc/attempt_charging()
 	return (chargemode && charging == 1 && operating)
 
-/obj/machinery/power/apc/add_load(var/amount)
+/obj/structure/machinery/power/apc/add_load(var/amount)
 	if(terminal && terminal.powernet)
 		return terminal.powernet.draw_power(amount)
 	return 0
 
-/obj/machinery/power/apc/avail()
+/obj/structure/machinery/power/apc/avail()
 	if(terminal)
 		return terminal.avail()
 	else
 		return 0
 
-/obj/machinery/power/apc/process()
+/obj/structure/machinery/power/apc/process()
 
 	if(stat & (BROKEN|MAINT))
 		return
@@ -1151,7 +1150,7 @@
 	return val
 
 //Damage and destruction acts
-/obj/machinery/power/apc/emp_act(severity)
+/obj/structure/machinery/power/apc/emp_act(severity)
 	if(cell)
 		cell.emp_act(severity)
 	lighting = 0
@@ -1162,7 +1161,7 @@
 		environ = 3
 	..()
 
-/obj/machinery/power/apc/ex_act(severity)
+/obj/structure/machinery/power/apc/ex_act(severity)
 
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
@@ -1181,7 +1180,7 @@
 			qdel(src)
 			return
 
-/obj/machinery/power/apc/proc/set_broken()
+/obj/structure/machinery/power/apc/proc/set_broken()
 
 	//Aesthetically much better!
 	visible_message(SPAN_WARNING("[src]'s screen flickers with warnings briefly!"))
@@ -1193,36 +1192,36 @@
 		update()
 
 //Overload all the lights in this APC area
-/obj/machinery/power/apc/proc/overload_lighting()
+/obj/structure/machinery/power/apc/proc/overload_lighting()
 	if(!operating || shorted)
 		return
 	if(cell && cell.charge >= 20)
 		cell.use(20)
 		spawn(0)
 			for(var/area/A in area.related)
-				for(var/obj/machinery/light/L in A)
+				for(var/obj/structure/machinery/light/L in A)
 					L.on = 1
 					L.broken()
 					sleep(1)
 
-/obj/machinery/power/apc/Dispose()
+/obj/structure/machinery/power/apc/Dispose()
 	area.power_light = 0
 	area.power_equip = 0
 	area.power_environ = 0
 	area.power_change()
 	. = ..()
 
-/obj/machinery/power/apc/antag
+/obj/structure/machinery/power/apc/antag
 	cell_type = /obj/item/cell/apc/full
 	req_one_access = list(ACCESS_ILLEGAL_PIRATE)
 
 
 //------Almayer APCs ------//
 
-/obj/machinery/power/apc/almayer
+/obj/structure/machinery/power/apc/almayer
 	cell_type = /obj/item/cell/high
 
-/obj/machinery/power/apc/almayer/hardened
+/obj/structure/machinery/power/apc/almayer/hardened
 	name = "hardened area power controller"
 	desc = "A control terminal for the area electrical systems. This one is hardened against sudden power fluctuations caused by electrical grid damage."
 	crash_break_probability = 0

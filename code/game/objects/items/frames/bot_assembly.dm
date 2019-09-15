@@ -20,7 +20,7 @@
 		user.drop_held_item()
 		qdel(W)
 		var/turf/T = get_turf(src.loc)
-		var/obj/machinery/bot/cleanbot/A = new /obj/machinery/bot/cleanbot(T)
+		var/obj/structure/machinery/bot/cleanbot/A = new /obj/structure/machinery/bot/cleanbot(T)
 		A.name = src.created_name
 		to_chat(user, SPAN_NOTICE("You add the robot arm to the bucket and sensor assembly. Beep boop!"))
 		user.temp_drop_inv_item(src)
@@ -89,7 +89,7 @@
 	if(istype(W, /obj/item/robot_parts/l_arm) || istype(W, /obj/item/robot_parts/r_arm))
 		qdel(W)
 		var/turf/T = get_turf(user.loc)
-		var/obj/machinery/bot/floorbot/A = new /obj/machinery/bot/floorbot(T)
+		var/obj/structure/machinery/bot/floorbot/A = new /obj/structure/machinery/bot/floorbot(T)
 		A.name = src.created_name
 		to_chat(user, SPAN_NOTICE("You add the robot arm to the odd looking toolbox assembly! Boop beep!"))
 		user.temp_drop_inv_item(src)
@@ -154,7 +154,7 @@
 					src.build_step++
 					to_chat(user, SPAN_NOTICE("You complete the Medibot! Beep boop."))
 					var/turf/T = get_turf(src)
-					var/obj/machinery/bot/medbot/S = new /obj/machinery/bot/medbot(T)
+					var/obj/structure/machinery/bot/medbot/S = new /obj/structure/machinery/bot/medbot(T)
 					S.skin = src.skin
 					S.name = src.created_name
 					user.temp_drop_inv_item(src)

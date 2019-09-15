@@ -288,8 +288,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			else
 				light(SPAN_NOTICE("[user] lights their [src] from the burning body of [M], that's stone cold."))
 
-	else if(istype(target, /obj/machinery/light))
-		var/obj/machinery/light/fixture = target
+	else if(istype(target, /obj/structure/machinery/light))
+		var/obj/structure/machinery/light/fixture = target
 		if(fixture.is_broken())
 			light(SPAN_NOTICE("[user] lights their [src] from the broken light."))
 
@@ -640,7 +640,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			if(istype(src, /obj/item/tool/lighter/zippo) )
 				bearer.visible_message("<span class='rose'>You hear a quiet click, as [bearer] shuts off [src] without even looking at what they're doing.")
 			else
-				bearer.visible_message("<span class='notice'>[bearer] quietly shuts off the [src].")
+				bearer.visible_message(SPAN_NOTICE("[bearer] quietly shuts off the [src]."))
 
 		bearer.SetLuminosity(-2)
 		processing_objects.Remove(src)

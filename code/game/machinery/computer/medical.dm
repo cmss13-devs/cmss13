@@ -1,6 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
-/obj/machinery/computer/med_data//TODO:SANITY
+/obj/structure/machinery/computer/med_data//TODO:SANITY
 	name = "Medical Records"
 	desc = "This can be used to check medical records."
 	icon_state = "medcomp"
@@ -18,7 +18,7 @@
 	var/temp = null
 	var/printing = null
 
-/obj/machinery/computer/med_data/verb/eject_id()
+/obj/structure/machinery/computer/med_data/verb/eject_id()
 	set category = "Object"
 	set name = "Eject ID Card"
 	set src in oview(1)
@@ -35,7 +35,7 @@
 		to_chat(usr, "There is nothing to remove from the console.")
 	return
 
-/obj/machinery/computer/med_data/attackby(obj/item/O as obj, user as mob)
+/obj/structure/machinery/computer/med_data/attackby(obj/item/O as obj, user as mob)
 	if(istype(O, /obj/item/card/id) && !scan)
 		if(usr.drop_held_item())
 			O.forceMove(src)
@@ -45,10 +45,10 @@
 			to_chat(user, "You insert [O].")
 	..()
 
-/obj/machinery/computer/med_data/attack_ai(user as mob)
+/obj/structure/machinery/computer/med_data/attack_ai(user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/med_data/attack_hand(mob/user as mob)
+/obj/structure/machinery/computer/med_data/attack_hand(mob/user as mob)
 	if(..())
 		return
 	var/dat
@@ -112,7 +112,7 @@
 					dat += "<a href='?src=\ref[src];screen=1'>Back</a>"
 					dat += "<br><b>Medical Robots:</b>"
 					var/bdat = null
-					for(var/obj/machinery/bot/medbot/M in machines)
+					for(var/obj/structure/machinery/bot/medbot/M in machines)
 
 						if(M.z != src.z)	continue	//only find medibots on the same z-level as the computer
 						var/turf/bl = get_turf(M)
@@ -134,7 +134,7 @@
 	onclose(user, "med_rec")
 	return
 
-/obj/machinery/computer/med_data/Topic(href, href_list)
+/obj/structure/machinery/computer/med_data/Topic(href, href_list)
 	if(..())
 		return
 
@@ -508,7 +508,7 @@
 	src.updateUsrDialog()
 	return
 
-/obj/machinery/computer/med_data/emp_act(severity)
+/obj/structure/machinery/computer/med_data/emp_act(severity)
 	if(stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
@@ -540,7 +540,7 @@
 	..(severity)
 
 
-/obj/machinery/computer/med_data/laptop
+/obj/structure/machinery/computer/med_data/laptop
 	name = "Medical Laptop"
 	desc = "Cheap Weyland Yutani Laptop."
 	icon_state = "medlaptop"

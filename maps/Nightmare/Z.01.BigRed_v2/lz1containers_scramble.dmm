@@ -14,7 +14,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "af" = (
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Spaceport"
 	},
@@ -43,7 +43,7 @@
 /obj/structure/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
-/obj/machinery/camera/autoname{
+/obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
 /turf/open/floor{
@@ -57,7 +57,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "am" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	tag = "icon-tube1 (EAST)";
 	icon_state = "tube1";
 	dir = 4
@@ -68,7 +68,7 @@
 /turf/closed/wall,
 /area/bigredv2/outside/space_port)
 "ao" = (
-/obj/machinery/power/apc{
+/obj/structure/machinery/power/apc{
 	dir = 8;
 	pixel_x = -32;
 	start_charge = 0
@@ -100,7 +100,7 @@
 "ar" = (
 /obj/structure/table,
 /obj/effect/spawner/random/toolbox,
-/obj/machinery/door_control{
+/obj/structure/machinery/door_control{
 	id = "Spaceport";
 	name = "Storm Shutters";
 	pixel_x = 32
@@ -113,8 +113,8 @@
 	},
 /area/bigredv2/outside/space_port)
 "at" = (
-/obj/machinery/disposal,
-/obj/machinery/light{
+/obj/structure/machinery/disposal,
+/obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
 	},
@@ -133,8 +133,8 @@
 	},
 /area/bigredv2/outside/space_port)
 "av" = (
-/obj/machinery/blackbox_recorder,
-/obj/machinery/light{
+/obj/structure/machinery/blackbox_recorder,
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor{
@@ -145,7 +145,7 @@
 /area/bigredv2/outside/space_port)
 "ax" = (
 /obj/structure/window/framed/colony,
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "Spaceport";
 	name = "\improper Spaceport Shutters"
@@ -153,7 +153,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "ay" = (
-/obj/machinery/computer/shuttle_control/dropship1{
+/obj/structure/machinery/computer/shuttle_control/dropship1{
 	onboard = 0
 	},
 /obj/structure/table,
@@ -260,7 +260,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aK" = (
-/obj/machinery/computer/security,
+/obj/structure/machinery/computer/security,
 /turf/open/floor{
 	tag = "icon-darkgreen2";
 	icon_state = "darkgreen2";
@@ -294,7 +294,7 @@
 /area/bigredv2/outside/space_port)
 "aP" = (
 /obj/structure/window/framed/colony,
-/obj/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Spaceport";
 	name = "\improper Spaceport Shutters"
 	},
@@ -314,7 +314,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aT" = (
-/obj/machinery/light{
+/obj/structure/machinery/light{
 	tag = "icon-tube1 (NORTH)";
 	icon_state = "tube1";
 	dir = 1
@@ -322,7 +322,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aU" = (
-/obj/machinery/floodlight/landing,
+/obj/structure/machinery/floodlight/landing,
 /turf/open/floor{
 	tag = "icon-asteroidplating";
 	icon_state = "asteroidplating";

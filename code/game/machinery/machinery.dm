@@ -93,7 +93,7 @@ Class Procs:
 	Compiled by Aygar
 */
 
-/obj/machinery
+/obj/structure/machinery
 	name = "machinery"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	var/stat = 0
@@ -116,14 +116,14 @@ Class Procs:
 	throwpass = 1
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 
-/obj/machinery/New()
+/obj/structure/machinery/New()
 	..()
 	machines += src
 	var/area/A = get_area(src)
 	if(processable && A)
 		A.master.area_machines += src
 
-/obj/machinery/Dispose()
+/obj/structure/machinery/Dispose()
 	machines -= src
 	processing_machines -= src
 	power_machines -= src
@@ -132,37 +132,37 @@ Class Procs:
 		A.master.area_machines -= src
 	. = ..()
 
-/obj/machinery/proc/start_processing()
+/obj/structure/machinery/proc/start_processing()
 	if(!machine_processing)
 		machine_processing = 1
 		processing_machines += src
 
-/obj/machinery/proc/stop_processing()
+/obj/structure/machinery/proc/stop_processing()
 	if(machine_processing)
 		machine_processing = 0
 		processing_machines -= src
 
-/obj/machinery/proc/start_processing_power()
+/obj/structure/machinery/proc/start_processing_power()
 	if(!machine_processing)
 		machine_processing = 1
 		power_machines += src
 
-/obj/machinery/proc/stop_processing_power()
+/obj/structure/machinery/proc/stop_processing_power()
 	if(machine_processing)
 		machine_processing = 0
 		power_machines -= src
 
-/obj/machinery/process()//If you dont use process or power why are you here
+/obj/structure/machinery/process()//If you dont use process or power why are you here
 	return PROCESS_KILL
 
-/obj/machinery/emp_act(severity)
+/obj/structure/machinery/emp_act(severity)
 	if(use_power && stat == 0)
 		use_power(7500/severity)
 	new /obj/effect/overlay/temp/emp_sparks (loc)
 	..()
 
 
-/obj/machinery/ex_act(severity)
+/obj/structure/machinery/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
@@ -178,7 +178,7 @@ Class Procs:
 	return
 
 //sets the use_power var and then forces an area power update
-/obj/machinery/proc/update_use_power(var/new_use_power, var/force_update = 0)
+/obj/structure/machinery/proc/update_use_power(var/new_use_power, var/force_update = 0)
 	if ((new_use_power == use_power) && !force_update)
 		return	//don't need to do anything
 
@@ -187,12 +187,12 @@ Class Procs:
 	//force area power update
 	force_power_update()
 
-/obj/machinery/proc/force_power_update()
+/obj/structure/machinery/proc/force_power_update()
 	var/area/A = get_area(src)
 	if(A && A.master)
 		A.master.powerupdate = 1
 
-/obj/machinery/proc/auto_use_power()
+/obj/structure/machinery/proc/auto_use_power()
 	if(!powered(power_channel))
 		return 0
 	if(src.use_power == 1)
@@ -201,13 +201,13 @@ Class Procs:
 		use_power(active_power_usage,power_channel, 1)
 	return 1
 
-/obj/machinery/proc/operable(var/additional_flags = 0)
+/obj/structure/machinery/proc/operable(var/additional_flags = 0)
 	return !inoperable(additional_flags)
 
-/obj/machinery/proc/inoperable(var/additional_flags = 0)
+/obj/structure/machinery/proc/inoperable(var/additional_flags = 0)
 	return (stat & (NOPOWER|BROKEN|additional_flags))
 
-/obj/machinery/Topic(href, href_list)
+/obj/structure/machinery/Topic(href, href_list)
 	..()
 	if(inoperable())
 		return 1
@@ -226,7 +226,7 @@ Class Procs:
 
 	return 0
 
-/obj/machinery/attack_ai(mob/user as mob)
+/obj/structure/machinery/attack_ai(mob/user as mob)
 	if(isrobot(user))
 		// For some reason attack_robot doesn't work
 		// This is to stop robots from using cameras to remotely control machines.
@@ -235,7 +235,7 @@ Class Procs:
 	else
 		return src.attack_hand(user)
 
-/obj/machinery/attack_hand(mob/user as mob)
+/obj/structure/machinery/attack_hand(mob/user as mob)
 	if(inoperable(MAINT))
 		return 1
 	if(user.lying || user.stat)
@@ -266,26 +266,26 @@ Class Procs:
 
 	return 0
 
-/obj/machinery/proc/RefreshParts() //Placeholder proc for machines that are built using frames.
+/obj/structure/machinery/proc/RefreshParts() //Placeholder proc for machines that are built using frames.
 	return
 	return 0
 
-/obj/machinery/proc/assign_uid()
+/obj/structure/machinery/proc/assign_uid()
 	uid = gl_uid
 	gl_uid++
 
-/obj/machinery/proc/state(var/msg)
+/obj/structure/machinery/proc/state(var/msg)
   for(var/mob/O in hearers(src, null))
     O.show_message("[htmlicon(src, O)] <span class = 'notice'>[msg]</span>", 2)
 
-/obj/machinery/proc/ping(text=null)
+/obj/structure/machinery/proc/ping(text=null)
   if (!text)
     text = "\The [src] pings."
 
   state(text, "blue")
   playsound(src.loc, 'sound/machines/ping.ogg', 25, 0)
 
-/obj/machinery/proc/shock(mob/user, prb)
+/obj/structure/machinery/proc/shock(mob/user, prb)
 	if(inoperable())
 		return 0
 	if(!prob(prb))
@@ -298,9 +298,9 @@ Class Procs:
 	else
 		return 0
 
-/obj/machinery/proc/dismantle()
+/obj/structure/machinery/proc/dismantle()
 	playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
-	var/obj/machinery/constructable_frame/M = new /obj/machinery/constructable_frame(loc)
+	var/obj/structure/machinery/constructable_frame/M = new /obj/structure/machinery/constructable_frame(loc)
 	M.state = CONSTRUCTION_STATE_PROGRESS
 	M.update_icon()
 	for(var/obj/I in component_parts)

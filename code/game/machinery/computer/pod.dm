@@ -1,21 +1,21 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
-/obj/machinery/computer/pod
+/obj/structure/machinery/computer/pod
 	name = "Pod Launch Control"
 	desc = "A controll for launching pods. Some people prefer firing Mechas."
 	icon_state = "computer_generic"
 	circuit = /obj/item/circuitboard/computer/pod
 	var/id = 1.0
-	var/obj/machinery/mass_driver/connected = null
+	var/obj/structure/machinery/mass_driver/connected = null
 	var/timing = 0.0
 	var/time = 30.0
 	var/title = "Mass Driver Controls"
 
 
-/obj/machinery/computer/pod/New()
+/obj/structure/machinery/computer/pod/New()
 	..()
 	spawn( 5 )
-		for(var/obj/machinery/mass_driver/M in machines)
+		for(var/obj/structure/machinery/mass_driver/M in machines)
 			if(M.id == id)
 				connected = M
 			else
@@ -23,7 +23,7 @@
 	return
 
 
-/obj/machinery/computer/pod/proc/alarm()
+/obj/structure/machinery/computer/pod/proc/alarm()
 	if(stat & (NOPOWER|BROKEN))
 		return
 
@@ -31,28 +31,28 @@
 		to_chat(viewers(null, null), "Cannot locate mass driver connector. Cancelling firing sequence!")
 		return
 
-	for(var/obj/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == id)
 			M.open()
 
 	sleep(20)
 
-	for(var/obj/machinery/mass_driver/M in machines)
+	for(var/obj/structure/machinery/mass_driver/M in machines)
 		if(M.id == id)
 			M.power = connected.power
 			M.drive()
 
 	sleep(50)
-	for(var/obj/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == id)
 			M.close()
 			return
 	return
 
-/obj/machinery/computer/pod/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/pod/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/pod/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/pod/attack_hand(var/mob/user as mob)
 	if(..())
 		return
 
@@ -84,7 +84,7 @@
 	return
 
 
-/obj/machinery/computer/pod/process()
+/obj/structure/machinery/computer/pod/process()
 	if(!..())
 		return
 	if(timing)
@@ -98,7 +98,7 @@
 	return
 
 
-/obj/machinery/computer/pod/Topic(href, href_list)
+/obj/structure/machinery/computer/pod/Topic(href, href_list)
 	if(..())
 		return
 	if((usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf))) || (issilicon(usr)))
@@ -111,7 +111,7 @@
 		if(href_list["alarm"])
 			alarm()
 		if(href_list["drive"])
-			for(var/obj/machinery/mass_driver/M in machines)
+			for(var/obj/structure/machinery/mass_driver/M in machines)
 				if(M.id == id)
 					M.power = connected.power
 					M.drive()
@@ -123,7 +123,7 @@
 			time += tp
 			time = min(max(round(time), 0), 120)
 		if(href_list["door"])
-			for(var/obj/machinery/door/poddoor/M in machines)
+			for(var/obj/structure/machinery/door/poddoor/M in machines)
 				if(M.id == id)
 					if(M.density)
 						M.open()
@@ -134,26 +134,26 @@
 
 
 
-/obj/machinery/computer/pod/old
+/obj/structure/machinery/computer/pod/old
 	icon_state = "old"
 	name = "DoorMex Control Computer"
 	title = "Door Controls"
 
 
 
-/obj/machinery/computer/pod/old/syndicate
+/obj/structure/machinery/computer/pod/old/syndicate
 	name = "ProComp Executive IIc"
 	desc = "The Syndicate operate on a tight budget. Operates external airlocks."
 	title = "External Airlock Controls"
 	req_access = list(ACCESS_ILLEGAL_PIRATE)
 
-/obj/machinery/computer/pod/old/syndicate/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/pod/old/syndicate/attack_hand(var/mob/user as mob)
 	if(!allowed(user))
 		to_chat(user, SPAN_DANGER("Access Denied"))
 		return
 	else
 		..()
 
-/obj/machinery/computer/pod/old/swf
+/obj/structure/machinery/computer/pod/old/swf
 	name = "Magix System IV"
 	desc = "An arcane artifact that holds much magic. Running E-Knock 2.2: Sorceror's Edition"

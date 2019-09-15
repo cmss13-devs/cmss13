@@ -104,7 +104,7 @@
 						if(container && !alertadmins)
 							if(istype(container, /datum/TCS_Compiler))
 								var/datum/TCS_Compiler/Compiler = container
-								var/obj/machinery/telecomms/server/Holder = Compiler.Holder
+								var/obj/structure/machinery/telecomms/server/Holder = Compiler.Holder
 								var/message = "Potential crash-inducing NTSL script detected at telecommunications server [Compiler.Holder] ([Holder.x], [Holder.y], [Holder.z])."
 
 								alertadmins = 1

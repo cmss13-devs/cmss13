@@ -86,7 +86,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "q" = (
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	density = 0;
 	dir = 4;
 	icon_state = "pdoor0";
@@ -115,7 +115,7 @@
 	icon_state = "E";
 	tag = "icon-E"
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	on = 1
 	},
 /obj/effect/decal/warning_stripes{
@@ -136,18 +136,18 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "u" = (
-/obj/machinery/alarm/almayer{
+/obj/structure/machinery/alarm/almayer{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "v" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -165,12 +165,12 @@
 	icon_state = "E";
 	tag = "icon-E"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -184,12 +184,12 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "x" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -200,7 +200,7 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/door/poddoor/almayer{
+/obj/structure/machinery/door/poddoor/almayer{
 	density = 0;
 	dir = 4;
 	icon_state = "pdoor0";
@@ -233,8 +233,8 @@
 	},
 /area/prison/maintenance/residential/access/south)
 "A" = (
-/obj/machinery/door/unpowered/shuttle,
-/obj/machinery/door/poddoor/shutters/transit{
+/obj/structure/machinery/door/unpowered/shuttle,
+/obj/structure/machinery/door/poddoor/shutters/transit{
 	density = 0;
 	icon_state = "shutter0";
 	opacity = 0
@@ -249,8 +249,8 @@
 	icon_state = "E";
 	tag = "icon-E"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -270,12 +270,12 @@
 	tag = "icon-W";
 	icon_state = "W"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -289,10 +289,10 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "D" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
@@ -325,7 +325,7 @@
 	icon_state = "E";
 	tag = "icon-E"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 1
 	},
 /obj/effect/decal/warning_stripes{
@@ -339,7 +339,7 @@
 	},
 /area/prison/maintenance/residential/access/south)
 "G" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
 	on = 1
 	},
@@ -355,7 +355,7 @@
 /turf/open/space,
 /area/prison/maintenance/residential/access/south)
 "J" = (
-/obj/machinery/door/airlock/glass,
+/obj/structure/machinery/door/airlock/glass,
 /turf/open/floor{
 	icon_regular_floor = "delivery";
 	icon_state = "delivery"

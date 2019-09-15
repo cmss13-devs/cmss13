@@ -99,24 +99,24 @@
 	if(!area || !istype(area)) //somehow
 		return
 
-	for(var/obj/machinery/door/unpowered/D in area)
+	for(var/obj/structure/machinery/door/unpowered/D in area)
 		if(!D.density && !D.locked)
 			spawn(0)
 				D.close()
 
-	for(var/obj/machinery/door/poddoor/shutters/P in area)
+	for(var/obj/structure/machinery/door/poddoor/shutters/P in area)
 		if(!P.density)
 			spawn(0)
 				P.close()
 
 	if (iselevator)	// Super snowflake code
-		for (var/obj/machinery/computer/shuttle_control/ice_colony/C in area)
+		for (var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
 			C.animate_on()
 
 		for (var/turf/closed/shuttle/elevator/gears/G in area)
 			G.start()
 
-		for (var/obj/machinery/door/airlock/D in area)//For elevators
+		for (var/obj/structure/machinery/door/airlock/D in area)//For elevators
 			spawn(0)
 				if (!D.density)
 					D.close()
@@ -130,24 +130,24 @@
 	if(!area || !istype(area)) //somehow
 		return
 
-	for(var/obj/machinery/door/unpowered/D in area)
+	for(var/obj/structure/machinery/door/unpowered/D in area)
 		if(D.density && !D.locked)
 			spawn(0)
 				D.open()
 
-	for(var/obj/machinery/door/poddoor/shutters/P in area)
+	for(var/obj/structure/machinery/door/poddoor/shutters/P in area)
 		if(P.density)
 			spawn(0)
 				P.open()
 
 	if (iselevator)	// Super snowflake code
-		for (var/obj/machinery/computer/shuttle_control/ice_colony/C in area)
+		for (var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
 			C.animate_off()
 
 		for (var/turf/closed/shuttle/elevator/gears/G in area)
 			G.stop()
 
-		for (var/obj/machinery/door/airlock/D in area)//For elevators
+		for (var/obj/structure/machinery/door/airlock/D in area)//For elevators
 			if (D.locked)
 				spawn(0)
 					D.unlock()

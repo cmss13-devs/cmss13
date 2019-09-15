@@ -56,12 +56,15 @@ var/datum/subsystem/chat/SSchat
 			else if (istype(T, /datum/mind) && T:current)
 				C = T:current:client
 
+			if(!C)
+				continue
+
 			// If they are using the old chat, send it the old way
-			if(C && C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)
+			if(C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)
 				C << clean_message
 				continue
 			
-			if (C && C.chatOutput && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
+			if (C.chatOutput && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
 				//Client sucks at loading things, put their messages in a queue
 				C.chatOutput.messageQueue += message
 				continue
@@ -76,11 +79,14 @@ var/datum/subsystem/chat/SSchat
 		else if (istype(target, /datum/mind) && target:current)
 			C = target:current:client
 
-		if(C && C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)
+		if(!C)
+			return
+
+		if(C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)
 			C << clean_message
 			return
 
-		if (C && C.chatOutput && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
+		if (C.chatOutput && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
 			C.chatOutput.messageQueue += message
 			return
 

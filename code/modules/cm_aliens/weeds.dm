@@ -273,6 +273,8 @@
 	overlays += "weednode"
 
 /obj/effect/alien/weeds/node/New(loc, obj/effect/alien/weeds/node/node, mob/living/carbon/Xenomorph/X)
+	..(loc, src)
+
 	create_reagents(30)
 	reagents.add_reagent("purpleplasma",30)
 	for(var/obj/effect/alien/weeds/W in loc)
@@ -288,14 +290,13 @@
 			weed_strength = 1
 		health = 15
 		node_range = node_range + weed_strength - 1//stronger weeds expand further!
-	..(loc, src)
 
 /obj/effect/alien/weeds/node/Dispose()
 	// When the node is removed, weeds should start dying out
 	// Make all the children look for a new parent node
 	for(var/obj/effect/alien/weeds/W in children)
 		remove_child(W)
-		add_timer(CALLBACK(W, .proc/avoid_orphanage), rand(70, 130))
+		add_timer(CALLBACK(W, .proc/avoid_orphanage), rand(350, 450))
 
 	. = ..()
 

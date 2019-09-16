@@ -41,7 +41,7 @@
 	ability_name = "coerce resin"
 	resin_plasma_cost = 150
 	var/last_use = 0
-	cooldown = 15
+	cooldown = 30
 	thick = FALSE
 	make_message = FALSE
 

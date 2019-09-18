@@ -70,6 +70,27 @@
 	skill_name = SKILL_LEADERSHIP
 	skill_level = SKILL_LEAD_NOVICE
 
+/datum/skill/leadership/set_skill(var/new_level, var/datum/mind/owner)
+	..()
+	if(!owner)
+		return
+
+	var/mob/living/M = owner.current
+	if(!ishuman(M))
+		return
+
+	// Give/remove issue order actions
+	if(is_skilled(SKILL_LEAD_TRAINED))
+		for(var/action_type in subtypesof(/datum/action/human_action/issue_order))
+			if(locate(action_type) in M.actions)
+				continue
+
+			var/datum/action/human_action/issue_order/O = new action_type()
+			O.give_action(M)
+	else
+		for(var/datum/action/human_action/issue_order/O in M.actions)
+			O.remove_action(M)
+
 /datum/skill/medical
 	skill_name = SKILL_MEDICAL
 	skill_level = SKILL_MEDICAL_DEFAULT
@@ -140,8 +161,8 @@
 
 // Returns the skill level for the given skill
 /datum/skills/proc/get_skill_level(var/skill)
-	var/datum/skill/S = skills[skill]
-	if(!S)
+	var/datum/skill/S = get_skill(skill)
+	if(isnull(S))
 		return -1
 	return S.get_skill_level()
 

@@ -1,6 +1,7 @@
 
 /datum/action
 	var/name = "Generic Action"
+	var/action_icon_state
 	var/obj/target = null
 	var/obj/screen/action_button/button = null
 	var/mob/living/owner
@@ -18,6 +19,9 @@
 		button.overlays += IMG
 	button.source_action = src
 	button.name = name
+
+	if(action_icon_state)
+		button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/Dispose()
 	if(owner)
@@ -102,14 +106,9 @@
 
 
 /datum/action/xeno_action
-	var/action_icon_state
 	var/plasma_cost = 0
 	var/macro_path
 	var/action_type = XENO_ACTION_CLICK // Determines how macros interact with this action. Defines are in xeno.dm in the defines folder.
-
-/datum/action/xeno_action/New(Target)
-	..()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/xeno_action/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner

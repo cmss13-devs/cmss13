@@ -83,7 +83,7 @@
 			stat("Active Order: ", "MOVE")
 		if(protection_aura)
 			stat("Active Order: ", "HOLD")
-		if(marskman_aura)
+		if(marksman_aura)
 			stat("Active Order: ", "FOCUS")
 
 		if(EvacuationAuthority)

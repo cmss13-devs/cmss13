@@ -191,3 +191,64 @@
 		to_chat(M, SPAN_XENOWARNING(" You hear a strange, alien voice in your head... \italic [msg]"))
 		to_chat(src, SPAN_XENOWARNING(" You said: \"[msg]\" to [M]"))
 	return
+
+/mob/living/carbon/human/proc/issue_order(var/order)
+	if(!skillcheck(src, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
+		to_chat(src, SPAN_WARNING("You are not competent enough in leadership to issue an order."))
+		return
+
+	if(stat)
+		to_chat(src, SPAN_WARNING("You cannot give an order in your current state."))
+		return
+
+	if(!command_aura_available)
+		to_chat(src, SPAN_WARNING("You have recently given an order. Calm down."))
+		return
+
+	if(!order)
+		order = input(src, "Choose an order") in command_aura_allowed + "help" + "cancel"
+		if(order == "help")
+			to_chat(src, SPAN_NOTICE("<br>Orders give a buff to nearby soldiers for a short period of time, followed by a cooldown, as follows:<br><B>Move</B> - Increased mobility and chance to dodge projectiles.<br><B>Hold</B> - Increased resistance to pain and combat wounds.<br><B>Focus</B> - Increased gun accuracy and effective range.<br>"))
+			return
+		if(order == "cancel") return
+
+		if(!command_aura_available)
+			to_chat(src, SPAN_WARNING("You have recently given an order. Calm down."))
+			return
+
+	command_aura_available = FALSE
+	command_aura = order
+
+	// order lasts 20 seconds
+	add_timer(CALLBACK(src, .proc/end_aura), command_aura_duration)
+	// 1min cooldown on orders
+	add_timer(CALLBACK(src, .proc/make_aura_available), command_aura_cooldown)
+
+	var/message = ""
+	switch(command_aura)
+		if("move")
+			message = pick(";GET MOVING!", ";GO, GO, GO!", ";WE ARE ON THE MOVE!", ";MOVE IT!", ";DOUBLE TIME!")
+			say(message)
+		if("hold")
+			message = pick(";DUCK AND COVER!", ";HOLD THE LINE!", ";HOLD POSITION!", ";STAND YOUR GROUND!", ";STAND AND FIGHT!")
+			say(message)
+		if("focus")
+			message = pick(";FOCUS FIRE!", ";PICK YOUR TARGETS!", ";CENTER MASS!", ";CONTROLLED BURSTS!", ";AIM YOUR SHOTS!")
+			say(message)
+
+/mob/living/carbon/human/proc/end_aura()
+	to_chat(src, SPAN_NOTICE("The effects of your order wears off."))
+	command_aura = null
+
+/mob/living/carbon/human/proc/make_aura_available()
+	to_chat(src, SPAN_NOTICE("You can issue an order again."))
+	command_aura_available = TRUE
+
+
+/mob/living/carbon/human/verb/issue_order_verb()
+
+	set name = "Issue Order"
+	set desc = "Issue an order to nearby humans, using your authority to strengthen their resolve."
+	set category = "IC"
+
+	issue_order()

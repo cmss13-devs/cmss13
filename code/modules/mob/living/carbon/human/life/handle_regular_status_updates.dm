@@ -128,34 +128,25 @@
 		if(gloves && germ_level > gloves.germ_level && prob(10))
 			gloves.germ_level += 1
 
-		if(command_aura_cooldown > 0)
-			command_aura_cooldown--
-		if(command_aura_cooldown == 0 && !command_aura_notified)
-			to_chat(src, SPAN_NOTICE("You can issue an order again."))
-			command_aura_notified = TRUE
-		if(command_aura)
-			command_aura_tick--
-			if(command_aura_tick < 1)
-				command_aura = null
 		if(command_aura && !stat)
-			command_aura_strength = mind.cm_skills.get_skill_level(SKILL_LEADERSHIP) - 1 //2 is SL, so base of 1. Goes up to 3 (CO, XO)
+			command_aura_strength = mind.cm_skills.get_skill_level(SKILL_LEADERSHIP) - SKILL_LEAD_BEGINNER //2 is SL, so base of 1. Goes up to 3 (CO, XO)
 			var/command_aura_range = round(4 + command_aura_strength * 1)
-			for(var/mob/living/carbon/human/H in range(command_aura_range, src)) //Goes from 7 for Young Drone to 16 for Ancient Queen
-				if(command_aura == "move" && command_aura_strength > H.mobility_new)
-					H.mobility_new = command_aura_strength
-				if(command_aura == "hold" && command_aura_strength > H.protection_new)
-					H.protection_new = command_aura_strength
-				if(command_aura == "focus" && command_aura_strength > H.marskman_new)
-					H.marskman_new = command_aura_strength
+			for(var/mob/living/carbon/human/H in range(command_aura_range, src))
+				if(command_aura == "move")
+					H.mobility_new = max(H.mobility_new, command_aura_strength)
+				if(command_aura == "hold")
+					H.protection_new = max(H.protection_new, command_aura_strength)
+				if(command_aura == "focus")
+					H.marksman_new = max(H.marksman_new, command_aura_strength)
 
 		mobility_aura = mobility_new
 		protection_aura = protection_new
-		marskman_aura = marskman_new
+		marksman_aura = marksman_new
 
 		//hud_set_pheromone() //TODO: HOOK THIS UP, ASK PHIL
 
 		mobility_new = 0
 		protection_new = 0
-		marskman_new = 0
+		marksman_new = 0
 
 	return 1

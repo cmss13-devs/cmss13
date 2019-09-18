@@ -292,3 +292,17 @@
 				g_eyes = 0
 				b_eyes = 0
 		update_body()
+
+/mob/living/carbon/human/proc/is_bleeding()
+	for(var/datum/limb/L in limbs)
+		for(var/datum/wound/W in L.wounds)
+			if(W.bleeding())
+				return 1
+	return 0
+
+/mob/living/carbon/human/proc/get_broken_limbs()
+	var/list/BL = list()
+	for(var/datum/limb/L in limbs)
+		if(L.status & LIMB_BROKEN)
+			BL += L.display_name
+	return BL

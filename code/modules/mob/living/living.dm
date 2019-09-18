@@ -526,22 +526,23 @@
 				infection_present = 10
 			var/org_incision = (open_incision?" <span class='scanner'>Open surgical incision</span>":"")
 			var/org_advice = ""
-			switch(org.name)
-				if("head")
-					fracture_info = ""
-					if(org.brute_dam > 40 || src.getBrainLoss() >= 20)
-						org_advice = " Possible Skull Fracture."
-						show_limb = 1
-				if("chest")
-					fracture_info = ""
-					if(org.brute_dam > 40 || src.getOxyLoss() > 50)
-						org_advice = " Possible Chest Fracture."
-						show_limb = 1
-				if("groin")
-					fracture_info = ""
-					if(org.brute_dam > 40 || src.getToxLoss() > 50)
-						org_advice = " Possible Groin Fracture."
-						show_limb = 1
+			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
+				switch(org.name)
+					if("head")
+						fracture_info = ""
+						if(org.brute_dam > 40 || src.getBrainLoss() >= 20)
+							org_advice = " Possible Skull Fracture."
+							show_limb = 1
+					if("chest")
+						fracture_info = ""
+						if(org.brute_dam > 40 || src.getOxyLoss() > 50)
+							org_advice = " Possible Chest Fracture."
+							show_limb = 1
+					if("groin")
+						fracture_info = ""
+						if(org.brute_dam > 40 || src.getToxLoss() > 50)
+							org_advice = " Possible Groin Fracture."
+							show_limb = 1
 			if(show_limb)
 				dat += "\t\t [org_name]: \t [burn_info] - [brute_info] [fracture_info][infection_info][org_bleed][org_necro][org_incision][org_advice]"
 				if(org.status & LIMB_SPLINTED)

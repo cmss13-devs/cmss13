@@ -1140,39 +1140,41 @@
 		if(prob(30))	// Spam chat less
 			to_chat(src, SPAN_WARNING("Your movement jostles [W] in your [organ.display_name] painfully."))
 
-
-/mob/living/carbon/human/verb/check_pulse()
+/mob/living/carbon/human/verb/check_status()
 	set category = "Object"
-	set name = "Check pulse"
-	set desc = "Approximately count somebody's pulse. Requires you to stand still at least 6 seconds."
+	set name = "Check Status"
 	set src in view(1)
-	var/self = 0
+	var/self = (usr == src)
+	var/msg = ""
+	
+	
+	if(usr.stat > 0 || usr.is_mob_restrained() || !ishuman(usr)) return 
 
-	if(usr.stat > 0 || usr.is_mob_restrained() || !isliving(usr)) return
-
-	if(usr == src)
-		self = 1
-	if(!self)
-		usr.visible_message(SPAN_NOTICE("[usr] kneels down, puts \his hand on [src]'s wrist and begins counting their pulse."),\
-		"You begin counting [src]'s pulse", null, 3)
+	if(self)
+		var/list/L = get_broken_limbs()	- list("chest","head","groin")
+		if(L.len > 0)
+			msg += "Your [english_list(L)] [L.len > 1 ? "are" : "is"] broken\n"
+	to_chat(usr,SPAN_NOTICE("You [self ? "take a moment to analyze yourself":"start analyzing [src]"]"))
+	if(toxloss > 20)
+		msg += "[self ? "Your" : "Their"] skin is slightly green\n"
+	if(is_bleeding())
+		msg += "[self ? "You" : "They"] have bleeding wounds on [self ? "your" : "their"] body\n"
+	if(knocked_out && stat != DEAD)
+		msg += "They seem to be unconscious\n"
+	if(stat == DEAD)
+		if(src.check_tod() && is_revivable())
+			msg += "They're not breathing"
+		else
+			if(has_limb("head"))
+				msg += "Their eyes have gone blank, there are no signs of life"
+			else
+				msg += "They are definitely dead"
 	else
-		usr.visible_message(SPAN_NOTICE("[usr] begins counting their pulse."),\
-		"You begin counting your pulse.", null, 3)
+		msg += "[self ? "You're":"They're"] alive and breathing" 
+	
 
-	if(src.pulse)
-		to_chat(usr, SPAN_NOTICE(" [self ? "You have a" : "[src] has a"] pulse! Counting..."))
-	else
-		to_chat(usr, SPAN_DANGER("[src] has no pulse!"))	//it is REALLY UNLIKELY that a dead person would check his own pulse
-		return
-
-	to_chat(usr, "Don't move until counting is finished.")
-	var/time = world.time
-	sleep(60)
-	if(usr.l_move_time >= time)	//checks if our mob has moved during the sleep()
-		to_chat(usr, "You moved while counting. Try again.")
-	else
-		var/pronoun = "[self ? "Your" : "[src]'s"]"
-		to_chat(usr, SPAN_NOTICE(" [pronoun] pulse is [src.get_pulse(GETPULSE_HAND)]."))
+	to_chat(usr,SPAN_WARNING(msg))
+	
 
 /mob/living/carbon/human/verb/view_manifest()
 	set name = "View Crew Manifest"

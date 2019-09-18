@@ -241,7 +241,6 @@
 */
 
 /datum/action/item_action/walkman
-	var/action_icon_state
 
 /datum/action/item_action/walkman/New()
 	..()

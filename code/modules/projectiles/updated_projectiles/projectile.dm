@@ -385,9 +385,9 @@
 
 	if(ishuman(P.firer))
 		var/mob/living/carbon/human/shooter_human = P.firer
-		if(shooter_human.marskman_aura)
-			effective_accuracy += shooter_human.marskman_aura * 1.5 //Flat buff of 3 % accuracy per aura level
-			effective_accuracy += P.distance_travelled * 0.35 * shooter_human.marskman_aura //Flat buff to accuracy per tile travelled
+		if(shooter_human.marksman_aura)
+			effective_accuracy += shooter_human.marksman_aura * 1.5 //Flat buff of 3 % accuracy per aura level
+			effective_accuracy += P.distance_travelled * 0.35 * shooter_human.marksman_aura //Flat buff to accuracy per tile travelled
 
 	return effective_accuracy
 

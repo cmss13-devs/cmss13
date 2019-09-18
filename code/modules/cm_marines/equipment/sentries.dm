@@ -316,6 +316,9 @@
 	spawn(2)
 		start_processing()
 
+/obj/structure/machinery/marine_turret/power_change()
+	return
+
 /obj/structure/machinery/marine_turret/Dispose() //Clear these for safety's sake.
 	if(operator)
 		operator.unset_interaction()

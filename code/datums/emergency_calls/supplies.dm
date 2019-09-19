@@ -33,7 +33,7 @@
 					new /obj/item/ammo_magazine/smg/m39/extended(W)
 					new /obj/item/ammo_magazine/smg/m39/ap(W)
 					new /obj/item/ammo_magazine/smg/m39/ap(W)
-					new /obj/item/ammo_magazine/smg/m39/le(W)
+					new /obj/item/ammo_magazine/smg/m39/ap(W)
 					new /obj/item/attachable/stock/smg(W)
 					new /obj/item/attachable/stock/smg(W)
 					new /obj/item/attachable/verticalgrip(W)

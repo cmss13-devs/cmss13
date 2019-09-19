@@ -85,7 +85,7 @@
 					new /obj/item/weapon/gun/smg/m39/elite(drop_spawn)
 					new /obj/item/ammo_magazine/smg/m39/ap
 					new /obj/item/ammo_magazine/smg/m39/ap
-					new /obj/item/ammo_magazine/smg/m39/le
+					new /obj/item/ammo_magazine/smg/m39/ap
 					continue
 				if(2)
 					new /obj/item/weapon/gun/flamer(drop_spawn)

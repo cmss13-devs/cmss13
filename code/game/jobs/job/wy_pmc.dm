@@ -20,7 +20,7 @@
 			L += list(
 					WEAR_J_STORE = /obj/item/weapon/gun/smg/m39/elite,
 					WEAR_R_STORE = /obj/item/storage/pouch/magazine/large/pmc_m39,
-					WEAR_IN_BACK = /obj/item/ammo_magazine/smg/m39/le,
+					WEAR_IN_BACK = /obj/item/ammo_magazine/smg/m39/ap,
 					WEAR_IN_BACK = /obj/item/ammo_magazine/smg/m39/ap,
 					WEAR_IN_BACK = /obj/item/ammo_magazine/smg/m39/ap
 					)

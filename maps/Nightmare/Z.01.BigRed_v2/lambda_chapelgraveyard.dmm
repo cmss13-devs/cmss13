@@ -35,8 +35,8 @@
 	},
 /area/bigredv2/outside/se)
 "h" = (
-/obj/structure/flora/desert/bush{
-	icon_state = "tree_3"
+/obj/structure/flora/bush/ausbushes{
+	cut_level = 1
 	},
 /turf/open/mars{
 	tag = "icon-mars_dirt_14";

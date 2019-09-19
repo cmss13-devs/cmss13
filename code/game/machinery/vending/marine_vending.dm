@@ -288,7 +288,6 @@
 		// SPECIAL AMMO
 		/obj/item/ammo_magazine/pistol/smart = round(scale * 12),
 		/obj/item/ammo_magazine/revolver/heavy = round(scale * 10),
-		/obj/item/ammo_magazine/smg/m39/le = round(scale * 2) % 12,
 
 		// AMMO BOXES
 		/obj/item/magazine_box/l42mk1 = round(scale * 10) % 10,
@@ -332,7 +331,6 @@
 		/obj/item/ammo_magazine/revolver/marksman = round(scale * 2),
 		/obj/item/ammo_magazine/smg/m39 = round(scale * 15),
 		/obj/item/ammo_magazine/smg/m39/ap = round(scale * 5),
-		/obj/item/ammo_magazine/smg/m39/le = round(scale * 2.5),
 		/obj/item/ammo_magazine/smg/m39/extended = round(scale * 1),
 		/obj/item/ammo_magazine/rifle = round(scale * 15),
 		/obj/item/ammo_magazine/rifle/extended = round(scale * 3),
@@ -378,7 +376,6 @@
 		/obj/item/ammo_magazine/revolver/marksman = round(scale * 3),
 		/obj/item/ammo_magazine/revolver/heavy = round(scale * 5),
 		/obj/item/ammo_magazine/smg/m39/ap = round(scale * 5) % 12,
-		/obj/item/ammo_magazine/smg/m39/le = round(scale * 2) % 12, 
 		/obj/item/ammo_magazine/smg/m39/extended = round(scale * 10) % 10,
 		/obj/item/ammo_magazine/rifle/extended = round(scale * 5) % 8,
 		/obj/item/ammo_magazine/rifle/ap = round(scale * 5) % 10,

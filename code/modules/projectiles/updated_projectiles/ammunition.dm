@@ -578,7 +578,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 //-----------------------88M4 Pistol Mag Box-----------------------
 
 /obj/item/magazine_box/mod88
-	name = "magazine box (88 Mod 4 LE x 16)"
+	name = "magazine box (88 Mod 4 AP x 16)"
 	icon_state = "mag_box_mod88_closed"
 	icon_base_name = "mag_box_mod88"
 	num_of_magazines = 16

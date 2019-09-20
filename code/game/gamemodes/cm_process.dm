@@ -102,7 +102,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 			var/datum/recipient_awards/RA = medal_awards[recipient]
 			for(var/i in 1 to RA.medal_names.len)
 				dat += "<br><b>[RA.recipient_rank] [recipient]</b> is awarded [RA.posthumous[i] ? "posthumously " : ""]the <span class='boldnotice'>[RA.medal_names[i]]</span>: \'<i>[RA.medal_citations[i]]</i>\'."
-		world << dat
+		to_world(dat)
 
 /datum/game_mode/proc/declare_random_fact()
 	set waitfor = 0

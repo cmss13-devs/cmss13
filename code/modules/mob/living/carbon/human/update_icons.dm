@@ -103,7 +103,8 @@ There are several things that need to be remembered:
 #define BURST_LAYER				28	//Chestburst overlay
 #define TARGETED_LAYER			29	//for target sprites when held at gun point, and holo cards.
 #define FIRE_LAYER				30	//If you're on fire		//BS12: Layer for the target overlay from weapon targeting system
-#define TOTAL_LAYERS			30
+#define EFFECTS_LAYER				31  //If you're hit by an acid DoT
+#define TOTAL_LAYERS			31
 //////////////////////////////////
 
 /mob/living/carbon/human
@@ -835,6 +836,18 @@ var/global/list/damage_icon_parts = list()
 	if(update_icons)
 		update_icons()
 
+/mob/living/carbon/human/proc/update_effects(var/update_icons = 1)
+	overlays_standing[EFFECTS_LAYER] = null
+
+	var/list/effect_overlays = list()
+	for(var/datum/effects/E in effects_list)
+		if(E.icon_path && E.mob_icon_state_path)
+			effect_overlays += image("icon" = E.icon_path, "icon_state" = E.mob_icon_state_path, "layer"= EFFECTS_LAYER)
+
+	overlays_standing[EFFECTS_LAYER] = effect_overlays
+
+	if(update_icons)
+		update_icons()
 
 //Human Overlays Indexes/////////
 #undef MUTANTRACE_LAYER

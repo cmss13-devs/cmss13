@@ -18,7 +18,7 @@
 
 	spit_delay = 20
 	caste_desc = "Ptui!"
-	spit_types = list(/datum/ammo/xeno/toxin/medium, /datum/ammo/xeno/acid/medium)
+	spit_types = list(/datum/ammo/xeno/toxin/medium, /datum/ammo/xeno/acid/dot)
 	evolves_to = list("Boiler")
 	deevolves_to = "Sentinel"
 	acid_spray_cooldown = 130

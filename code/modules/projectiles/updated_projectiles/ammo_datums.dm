@@ -1400,17 +1400,11 @@
 				M.visible_message(SPAN_DANGER("[M] is visibly confused."))
 		pass_down_the_line = TRUE
 
-	if(M.slowed || pass_down_the_line)
-		if(M.superslowed < 10)
-			M.AdjustSuperslowed(4 * power) // Superslow them a bit more
-			if(!pass_down_the_line)
-				M.visible_message(SPAN_DANGER("[M] movements are slowed."))
-		pass_down_the_line = TRUE
-
-	if(M.slowed < 20)
-		M.AdjustSlowed(6 * power)
+	if(M.superslowed < 10)
+		M.AdjustSuperslowed(4 * power) // Superslow them a bit more
 		if(!pass_down_the_line)
 			M.visible_message(SPAN_DANGER("[M] movements are slowed."))
+
 
 /proc/neuro_flak(turf/T,obj/item/projectile/P , power, insta_neuro, radius)
 	if(!T) return FALSE
@@ -1590,6 +1584,21 @@
 	damage_var_low = config.med_proj_variance
 	damage_var_high = config.high_proj_variance
 	shell_speed = config.reg_shell_speed
+
+/datum/ammo/xeno/acid/dot
+	name = "acid spit"
+
+/datum/ammo/xeno/acid/dot/New()
+	..()
+	damage = 5
+
+/datum/ammo/xeno/acid/dot/on_hit_mob(mob/M, obj/item/projectile/P)
+	new /datum/effects/acid(M, P.weapon_source_mob, P.weapon_source, P.def_zone)
+	..()
+
+/datum/ammo/xeno/acid/dot/on_hit_obj(obj/O, obj/item/projectile/P)
+	new /datum/effects/acid(O, P.weapon_source_mob, P.weapon_source)
+
 
 /datum/ammo/xeno/acid/shatter // Used by boiler shatter glob strain
 	name = "acid spatter"

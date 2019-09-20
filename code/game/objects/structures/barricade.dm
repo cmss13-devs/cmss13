@@ -31,7 +31,7 @@
 	..(loc)
 	if(user)
 		user.count_niche_stat(STATISTICS_NICHE_CADES)
-	INVOKE_ASYNC(src, .proc/update_icon)
+	add_timer(CALLBACK(src, .proc/update_icon), 0)
 
 /obj/structure/barricade/handle_barrier_chance(mob/living/M)
 	return prob(max(30,(100.0*health)/maxhealth))
@@ -56,8 +56,6 @@
 			C.apply_damage(10)
 			C.KnockDown(2) //Leaping into barbed wire is VERY bad
 	..()
-
-
 
 /obj/structure/barricade/Bumped(atom/A)
 	..()
@@ -115,7 +113,6 @@
 
 /obj/structure/barricade/attack_animal(mob/user as mob)
 	return attack_alien(user)
-
 
 /obj/structure/barricade/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/weapon/zombie_claws))
@@ -232,9 +229,12 @@
 		else
 			icon_state = "[barricade_type]"
 		switch(dir)
-			if(SOUTH) layer = ABOVE_MOB_LAYER
-			if(NORTH) layer = initial(layer) - 0.01
-			else layer = initial(layer)
+			if(SOUTH) 
+				layer = ABOVE_MOB_LAYER
+			else if(NORTH) 
+				layer = initial(layer) - 0.01
+			else 
+				layer = initial(layer)
 		if(!anchored)
 			layer = initial(layer)
 	else
@@ -249,6 +249,8 @@
 			overlays += image('icons/obj/structures/barricades.dmi', icon_state = "[src.barricade_type]_wire")
 		else
 			overlays += image('icons/obj/structures/barricades.dmi', icon_state = "[src.barricade_type]_closed_wire")
+
+	..()
 
 // This proc is called whenever the cade is moved, so I thought it was appropriate,
 // especially since the barricade's direction needs to be handled when moving
@@ -294,7 +296,6 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		if(25 to 50) damage_state = BARRICADE_DMG_MODERATE
 		if(50 to 75) damage_state = BARRICADE_DMG_SLIGHT
 		if(75 to INFINITY) damage_state = BARRICADE_DMG_NONE
-
 
 /obj/structure/barricade/proc/acid_smoke_damage(var/obj/effect/particle_effect/smoke/S)
 	take_damage( 15 )
@@ -1078,9 +1079,12 @@ obj/structure/barricade/proc/take_damage(var/damage)
 /obj/structure/barricade/handrail/update_icon()
 	overlays.Cut()
 	switch(dir)
-		if(SOUTH) layer = ABOVE_MOB_LAYER
-		if(NORTH) layer = initial(layer) - 0.01
-		else layer = initial(layer)
+		if(SOUTH) 
+			layer = ABOVE_MOB_LAYER
+		else if(NORTH) 
+			layer = initial(layer) - 0.01
+		else 
+			layer = initial(layer)
 	if(!anchored)
 		layer = initial(layer)
 	if(build_state == BARRICADE_BSTATE_FORTIFIED)
@@ -1088,6 +1092,10 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			overlays += image('icons/obj/structures/handrail.dmi', icon_state = "[barricade_type]_reinforced_[damage_state]")
 		else
 			overlays += image('icons/obj/structures/handrail.dmi', icon_state = "[barricade_type]_welder_step")
+			
+	for(var/datum/effects/E in effects_list)
+		if(E.icon_path && E.obj_icon_state_path)
+			overlays += image(E.icon_path, icon_state = E.obj_icon_state_path)
 
 /obj/structure/barricade/handrail/examine(mob/user)
 	..()

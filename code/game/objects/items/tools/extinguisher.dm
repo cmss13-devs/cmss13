@@ -143,6 +143,8 @@
 							for(var/obj/item/clothing/mask/cigarette/C in M.contents)
 								if(C.item_state == C.icon_on)
 									C.die()
+						if(iscarbon(atm) || istype(atm, /obj/structure/barricade))
+							atm.extinguish_acid()
 					if(W.loc == my_target) break
 					sleep(2)
 				qdel(W)

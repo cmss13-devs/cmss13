@@ -15,6 +15,9 @@ var/global/list/ghdel_profiling = list()
 	var/throwpass = 0
 	var/germ_level = GERM_LEVEL_AMBIENT // The higher the germ level, the more germ on the atom.
 
+	//Effects
+	var/list/effects_list = list()
+
 	///Chemistry.
 	var/datum/reagents/reagents = null
 
@@ -465,3 +468,8 @@ its easier to just keep the beam vertical.
 
 	clones_t.Add(src)
 	src.clone = T
+
+// EFFECTS
+/atom/proc/extinguish_acid()
+	for(var/datum/effects/acid/A in effects_list)
+		qdel(A)

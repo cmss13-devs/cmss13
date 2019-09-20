@@ -155,7 +155,7 @@
 
 	var/atom/movable/pullee = pulling
 	if(pullee && get_dist(src, pullee) > 1) //Is the pullee adjacent?
-		if(pullee.clone && get_dist(src, pullee.clone) > 1) //Is it the clone adjacent?
+		if(!pullee.clone || (pullee.clone && get_dist(src, pullee.clone) > 2)) //Be lenient with the close
 			stop_pulling()
 	var/turf/T = loc
 	. = ..()

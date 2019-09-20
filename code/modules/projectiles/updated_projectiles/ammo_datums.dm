@@ -1465,6 +1465,30 @@
 	spit_cost = 50
 	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST|AMMO_SCANS_NEARBY
 
+/datum/ammo/xeno/toxin/shotgun
+	name = "neurotoxic droplet"
+	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST
+	spit_cost = 30
+	effect_power = 2
+	bonus_projectiles_type = /datum/ammo/xeno/toxin/shotgun/additional
+
+/datum/ammo/xeno/toxin/shotgun/New()
+	..()
+	accuracy_var_low = config.med_proj_variance
+	accuracy_var_high = config.med_proj_variance
+	accurate_range = config.min_shell_range
+	max_range = config.close_shell_range
+	scatter = config.ultra_scatter_value
+	bonus_projectiles_amount = config.med_proj_extra
+
+/datum/ammo/xeno/toxin/shotgun/additional
+	name = "additional neurotoxic droplets"
+	effect_power = 1.5
+
+/datum/ammo/xeno/toxin/shotgun/additional/New()
+	..()
+	bonus_projectiles_amount = 0
+
 /datum/ammo/xeno/toxin/burst/on_hit_mob(mob/M,obj/item/projectile/P)
 	if(isXeno(M) && isXeno(P.firer) && M:hivenumber == P.firer:hivenumber)
 		apply_neuro(M, effect_power*1.5, TRUE)

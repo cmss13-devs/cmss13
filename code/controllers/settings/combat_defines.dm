@@ -189,6 +189,7 @@ Burn time = How long do we want our flames to last?
 	var/max_scatter_value = 10 //Buckshot, for reference.
 	var/super_scatter_value = 15
 	var/ultra_scatter_value = 20
+	var/giga_scatter_value = 40
 
 	var/no_recoil_value = 0
 	var/min_recoil_value = 1 //Sliding scale of recoil 1-5. You can go higher, but it just gets silly.

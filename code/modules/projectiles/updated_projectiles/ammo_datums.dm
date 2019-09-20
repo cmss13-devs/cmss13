@@ -1427,7 +1427,7 @@
 /datum/ammo/xeno/toxin/New()
 	..()
 	shell_speed = config.reg_shell_speed
-	max_range = config.close_shell_range
+	max_range = config.near_shell_range
 
 /datum/ammo/xeno/toxin/medium //Spitter
 	name = "neurotoxic spatter"
@@ -1472,7 +1472,7 @@
 	accuracy_var_high = config.med_proj_variance
 	accurate_range = config.min_shell_range
 	max_range = config.close_shell_range
-	scatter = config.ultra_scatter_value
+	scatter = config.giga_scatter_value
 	bonus_projectiles_amount = config.med_proj_extra
 
 /datum/ammo/xeno/toxin/shotgun/additional

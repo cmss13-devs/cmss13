@@ -738,7 +738,7 @@
 	xeno_leader_list[leader_num] = null
 
 	// Need to maintain ascending order of open_xeno_leader_positions
-	for (var/i = 1 to open_xeno_leader_positions.len + 1)
+	for (var/i = 1 to queen_leader_limit)
 		if (i > open_xeno_leader_positions.len || open_xeno_leader_positions[i] > leader_num)
 			open_xeno_leader_positions.Insert(i, leader_num)
 			break

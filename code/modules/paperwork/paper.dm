@@ -547,30 +547,31 @@
 			if("synthesis")
 				var/list/chem_reagents = chemical_gen_reactions_list["[random_chem]"]["required_reagents"]
 				var/list/chem_catalysts = chemical_gen_reactions_list["[random_chem]"]["required_catalysts"]
-				name = text("Synthesis of []",chem_name)
-				data += text("[] </H2></center>",name)
-				data += text("During experiment <I>[][][]</I> the theorized compound identified as [], was successfully synthesized using the following formula:<BR>\n<BR>\n",pick("C","Q","V","W","X","Y","Z"),rand(100,999),pick("a","b","c"),chem_name)
+				name = "Synthesis of [chem_name]"
+				data += "[name] </H2></center>"
+				data += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [chem_name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
 				for(var/I in chem_reagents)
 					var/datum/reagent/R = chemical_reagents_list["[I]"]
 					var/U = chem_reagents[I]
-					data += text("<font size = \"2\"><I> - [] []</I></font><BR>\n",U,R.name)
+					data += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
 				if(chem_catalysts)
 					data += "<BR>\nWhile using the following catalysts: <BR>\n<BR>\n"
 					for(var/I in chem_catalysts)
 						var/datum/reagent/R = chemical_reagents_list["[I]"]
 						var/U = chem_catalysts[I]
-						data += text("<font size = \"2\"><I> - [] []</I></font><BR>\n",U,R.name)
+						data += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
 				data += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
 				data += "<BR>\n<HR> - <I>The Company</I>"
 			if("test")
 				var/list/chem_properties = chemical_gen_stats_list["[random_chem]"]["properties"]
-				name = text("Experiment [][][]",pick("C","Q","V","W","X","Y","Z"),rand(100,999),pick("a","b","c"))
-				data += text("Note for []</H2></center>",name)
-				data += text("Subject <I>[]</I> experienced [] effects during testing of []. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n",rand(10000,99999),pick(chem_properties),chem_name)
+				name = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
+				data += "Note for [name]</H2></center>"
+				data += "Subject <I>[rand(10000,99999)]</I> experienced [pick(chem_properties)] effects during testing of [chem_name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
 				data += "<BR>\n<HR> - <I>The Company</I>"
 		info = data
 		
 /obj/item/paper/research_notes/bad
+	note_type = "synthesis"
 	tier = "T1"
 
 /obj/item/paper/research_notes/good

@@ -1273,22 +1273,25 @@
 	report.icon_state = "paper_wy_words"
 	if(result)
 		var/datum/reagent/S = sample.reagents.reagent_list[1]
-		report.name += text("of []",S.name)
-		report.info += text("<center><img src = wylogo.png><HR><I><B>Official Company Document</B><BR>Automated A-XRF Report</I><HR><H2>Analysis of []</H2></center>",S.name)
-		report.info += text("<B>Results for sample</B> #[]:<BR>\n",sample_number)
-		report.info += text("<B>ID:</B> <I>[]</I><BR><BR>\n",S.name)
+		report.name += "of [S.name]"
+		report.info += "<center><img src = wylogo.png><HR><I><B>Official Company Document</B><BR>Automated A-XRF Report</I><HR><H2>Analysis of [S.name]</H2></center>"
+		report.info += "<B>Results for sample</B> #[sample_number]:<BR>\n"
+		report.info += "<B>ID:</B> <I>[S.name]</I><BR><BR>\n"
 		report.info += "<B>Database Details:</B><BR>\n"
-		if(S.chemclass >= CHEM_CLASS_ULTRA && clearance_level >= S.gen_tier)
-			report.info += text("<I>The following information relating to [] is restricted with a level [] clearance classification.</I><BR>",S.name,S.gen_tier)
-			report.info += text("<font size = \"2.5\">[]</font>\n",S.description)
+		if(S.chemclass >= CHEM_CLASS_ULTRA)
+			if(clearance_level >= S.gen_tier)
+				report.info += "<I>The following information relating to [S.name] is restricted with a level [S.gen_tier] clearance classification.</I><BR>"
+				report.info += "<font size = \"2.5\">[S.description]</font>\n"
+			else
+				report.info += "CLASSIFIED:<I> Clearance level [S.gen_tier] required to read the database entry.</I><BR>\n"
 		else if(S.chemclass >= CHEM_CLASS_SPECIAL)
-			report.info += "CLASSIFIED:<I> Insufficient clearance level to read the database entry.</I><BR>\n"
+			report.info += "CLASSIFIED:<I> Clearance level <B>X</B> required to read the database entry.</I><BR>\n"
 		else if(S.description)
-			report.info += text("<BR><font size = \"2.5\">[]</font><BR>\n",S.description)
+			report.info += "<BR><font size = \"2.5\">[S.description]</font><BR>\n"
 		else
 			report.info += "<I>No details on this reagent could be found in the database.</I><BR>\n"
 		if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[S.id])
-			report.info += text("<BR><I>Saved emission spectrum of [] to the database.</I><BR>\n",S.name)
+			report.info += "<BR><I>Saved emission spectrum of [S.name] to the database.</I><BR>\n"
 			if(last_used)
 				last_used.count_niche_stat(STATISTICS_NICHE_CHEMS)
 			chemical_identified_list[S.id] = S.objective_value
@@ -1302,7 +1305,7 @@
 					report.info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 				else
 					var/U = C.required_reagents[I]
-					report.info += text("<font size = \"2\"><I> - [] []</I></font><BR>\n",U,R.name)
+					report.info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
 			if(C.required_catalysts)
 				if(C.required_catalysts.len)
 					report.info += "<BR>Reaction would require the following catalysts:<BR>\n"
@@ -1312,17 +1315,17 @@
 							report.info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 						else
 							var/U = C.required_catalysts[I]
-							report.info += text("<font size = \"2\"><I> - [] []</I></font><BR>\n",U,R.name)
+							report.info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
 		else if(chemical_gen_classes_list["C1"].Find(S.id))
-			report.info += text("<font size = \"2\"><I> - []</I></font><BR>\n",S.name)
+			report.info += "<font size = \"2\"><I> - [S.name]</I></font><BR>\n"
 		else
 			report.info += "<I>ERROR: Unable to analyze emission spectrum of sample.</I>" //A reaction to make this doesn't exist, so this is our IC excuse
 	else
 		report.name += "ERROR"
 		report.info += "<center><img src = wylogo.png><HR><I><B>Official Company Document</B><BR>Reagent Analysis Print</I><HR><H2>Analysis ERROR</H2></center>"
-		report.info += text("<B>Result:</B><BR>Analysis failed for sample #[].<BR><BR>\n",sample_number)
-		report.info += text("<B>Reason for error:</B><BR><I>[]</I><BR>\n",reason)
-	report.info += text("<BR><HR><font size = \"1\"><I>This report was automatically printed by the Advanced X-Ray Fluorescence Scanner.<BR>The USS Almayer,  []/2186, []</I></font><BR>\n<span class=\"paper_field\"></span>",time2text(world.timeofday, "MM/DD"),worldtime2text())
+		report.info += "<B>Result:</B><BR>Analysis failed for sample #[sample_number].<BR><BR>\n"
+		report.info += "<B>Reason for error:</B><BR><I>[reason]</I><BR>\n"
+	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the Advanced X-Ray Fluorescence Scanner.<BR>The USS Almayer,  [time2text(world.timeofday, "MM/DD")]/2186, [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
 	
 /obj/structure/machinery/centrifuge
 	name = "Chemical Centrifuge"

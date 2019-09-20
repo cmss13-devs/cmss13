@@ -92,20 +92,20 @@
 		//make sure the final recipe is not already being used. If it is, start over.
 		if(i==3)
 			var/matches = 0
-			for(var/R in chemical_gen_reactions_list["[src.id]"]["required_reagents"])
+			for(var/R in chemical_gen_reactions_list["[id]"]["required_reagents"])
 				if(chemical_reactions_filtered_list[R])
 					for(var/reaction in chemical_reactions_filtered_list[R])//We filter the chemical_reactions_filtered_list so we don't have to search through as much
 						var/datum/chemical_reaction/C = reaction
 						for(var/B in C.required_reagents)
-							if(chemical_gen_reactions_list["[src.id]"]["required_reagents"].Find(B))
+							if(chemical_gen_reactions_list["[id]"]["required_reagents"].Find(B))
 								matches++
 			if(matches >= 3)
-				chemical_gen_reactions_list["[src.id]"]["required_reagents"] = list()
+				chemical_gen_reactions_list["[id]"]["required_reagents"] = list()
 				i = 0	
-				chemical_objective_list[src.id] = 10
+				chemical_objective_list[id] = 10
 	
 	//pick catalyst
-	if(prob(40) || src.gen_tier >= 4)//chance of requiring a catalyst
+	if(prob(40) || gen_tier >= 4)//chance of requiring a catalyst
 		add_component(null,5,TRUE)
 	
 	return TRUE
@@ -127,7 +127,7 @@
 			chem_id = my_chemid
 		else
 			var/roll = rand(0,100)
-			switch(src.gen_tier)
+			switch(gen_tier)
 				if(0)
 					chem_id = pick(chemical_gen_classes_list["C"])//If gen_tier is 0, we can add any classed chemical
 				if(1)
@@ -164,7 +164,7 @@
 						chem_id = pick(chemical_gen_classes_list["C5"])
 						new_objective_value += OBJECTIVE_HIGH_VALUE
 				else
-					if(!chemical_gen_reactions_list["[src.id]"]["required_reagents"] || is_catalyst)//first component is guaranteed special in chems tier 4 or higher, catalysts are always special in tier 4 or higher
+					if(!chemical_gen_reactions_list["[id]"]["required_reagents"] || is_catalyst)//first component is guaranteed special in chems tier 4 or higher, catalysts are always special in tier 4 or higher
 						chem_id = pick(chemical_gen_classes_list["C5"])
 						new_objective_value += OBJECTIVE_HIGH_VALUE
 					else if(roll<=15)
@@ -179,8 +179,8 @@
 						new_objective_value += OBJECTIVE_HIGH_VALUE
 			
 		//if we are already using this reagent, try again
-		if(chemical_gen_reactions_list["[src.id]"]["required_reagents"])
-			if(chemical_gen_reactions_list["[src.id]"]["required_reagents"].Find(chem_id))
+		if(chemical_gen_reactions_list["[id]"]["required_reagents"])
+			if(chemical_gen_reactions_list["[id]"]["required_reagents"].Find(chem_id))
 				if(my_chemid) //If this was a manually set chemid, return FALSE so we don't cause an infinite loop
 					return FALSE
 				else
@@ -188,8 +188,8 @@
 					continue
 		else if(is_catalyst)
 			new_objective_value += 20 //Worth a little more if it doesn't use up the rare reagent!
-			if(chemical_gen_reactions_list["[src.id]"]["required_catalysts"])
-				if(chemical_gen_reactions_list["[src.id]"]["required_catalysts"].Find(chem_id))
+			if(chemical_gen_reactions_list["[id]"]["required_catalysts"])
+				if(chemical_gen_reactions_list["[id]"]["required_catalysts"].Find(chem_id))
 					if(my_chemid) //If this was a manually set chemid, return FALSE so we don't cause an infinite loop
 						return FALSE
 					else
@@ -199,11 +199,11 @@
 		var/list/component_modifier[0]
 		component_modifier["[chem_id]"] = modifier
 		if(is_catalyst) 
-			chemical_gen_reactions_list["[src.id]"]["required_catalysts"] += component_modifier
+			chemical_gen_reactions_list["[id]"]["required_catalysts"] += component_modifier
 		else 
-			chemical_gen_reactions_list["[src.id]"]["required_reagents"] += component_modifier
+			chemical_gen_reactions_list["[id]"]["required_reagents"] += component_modifier
 
-		chemical_objective_list[src.id] = chemical_objective_list[src.id] + new_objective_value
+		chemical_objective_list[id] = chemical_objective_list[id] + new_objective_value
 
 	return TRUE
 
@@ -227,16 +227,22 @@
 			if(R.name == gen_name)//if we are already using this name, try again
 				gen_name = ""
 	//set name
-	chemical_gen_stats_list["[src.id]"]["name"] = gen_name
+	chemical_gen_stats_list["[id]"]["name"] = gen_name
 	return gen_name
 
 /datum/reagent/proc/generate_stats(var/no_properties)
 	..()
 	//Properties
 	if(!no_properties)
-		for(var/i=0;i<src.gen_tier+1;i++)
-			add_property()
-	
+		var/gen_value
+		for(var/i=0;i<gen_tier+1;i++)
+			if(i == 0) //The first property is random to offset the value balance
+				gen_value = add_property()
+			else if(gen_value == -1 + gen_tier) //If we are balanced, don't add any more
+				break
+			else
+				gen_value += add_property(0,0, -1 + gen_tier - gen_value) //add property based on our offset from the prefered balance
+
 	//OD ratios
 	var/gen_overdose = 5
 	for(var/i=1;i<=rand(1,11);i++) //We add 5 units to the overdose per cycle, min 5u, max 60u
@@ -247,18 +253,18 @@
 		if(prob(20))
 			gen_overdose_critical += 5
 	
-	chemical_gen_stats_list["[src.id]"]["overdose"] = gen_overdose
-	chemical_gen_stats_list["[src.id]"]["overdose_critical"] = gen_overdose_critical
+	chemical_gen_stats_list["[id]"]["overdose"] = gen_overdose
+	chemical_gen_stats_list["[id]"]["overdose_critical"] = gen_overdose_critical
 	
 	//Nutriment factor
 	var/gen_nutriment_factor = 0
-	if(chemical_gen_stats_list["[src.id]"]["properties"] && PROPERTY_NUTRITIOUS in chemical_gen_stats_list["[src.id]"]["properties"])
+	if(chemical_gen_stats_list["[id]"]["properties"] && PROPERTY_NUTRITIOUS in chemical_gen_stats_list["[id]"]["properties"])
 		gen_nutriment_factor = 0.5
 		for(var/i=1;i<=rand(1,5);i++) //min 0.5, to max 3 (the nutriment factor of pure nutriment)
 			if(prob(60))//Deviating from 0.5 gets exponentially more rare.
 				gen_nutriment_factor += 0.5
 		
-	chemical_gen_stats_list["[src.id]"]["nutriment_factor"] = gen_nutriment_factor
+	chemical_gen_stats_list["[id]"]["nutriment_factor"] = gen_nutriment_factor
 
 	//Metabolism
 	var/gen_custom_metabolism = 0.2
@@ -272,11 +278,11 @@
 				if(gen_custom_metabolism<0.01)
 					gen_custom_metabolism = 0.01
 	
-	chemical_gen_stats_list["[src.id]"]["custom_metabolism"] = gen_custom_metabolism
+	chemical_gen_stats_list["[id]"]["custom_metabolism"] = gen_custom_metabolism
 	
 	//Color
 	var/gen_color = text("#[][][]",num2hex(rand(0,255)),num2hex(rand(0,255)),num2hex(rand(0,255)))
-	chemical_gen_stats_list["[src.id]"]["color"] = gen_color
+	chemical_gen_stats_list["[id]"]["color"] = gen_color
 	
 	return TRUE
 
@@ -350,7 +356,7 @@
 										PROPERTY_CURING = "Binds to and neutralizes the X-65 biological organism.")
 	return positive_properties
 
-/datum/reagent/proc/add_property(var/my_property, var/my_potency)
+/datum/reagent/proc/add_property(var/my_property, var/my_potency, var/value_offset = 0)
 	..()
 	var/list/negative_properties = get_negative_chem_properties()
 	var/list/neutral_properties = get_neutral_chem_properties()
@@ -371,21 +377,23 @@
 			potency = 3
 		else
 			potency = 4
-		//We limit how potent tier 1 chems can be. So something that is just level 4 healing doesn't spawn too regularly.
-		if(src.gen_tier < 2 && potency > 2)
-			potency = 2
-		//We also limit tier 2 a bit
-		else if(src.gen_tier < 3 && potency > 3)
-			potency = 2
+		//We limit how potent chems can be. So something that is just level 4 healing doesn't spawn too regularly.
+		potency = min(potency, gen_tier + 1)
 
 	//Determine properties
 	var/roll = rand(1,100)
 	var/property
-	var/info
 	if(my_property)
 		property = my_property
+	else if(value_offset > 0) //Balance the value of our chemical
+		property = pick(positive_properties)
+	else if(value_offset < 0)
+		if(roll <= gen_tier*10)
+			property = pick(negative_properties)
+		else
+			property = pick(neutral_properties)
 	else
-		switch(src.gen_tier)
+		switch(gen_tier)
 			if(1)
 				if(roll<=35)
 					property = pick(negative_properties)
@@ -415,12 +423,22 @@
 				else
 					property = pick(positive_properties)
 	
+	//Calculate what our chemical value is with our potency
+	var/new_value
+	if(negative_properties.Find(property))
+		new_value = -1 * potency
+	else if(neutral_properties.Find(property))
+		new_value = round(-1 * potency / 2)
+	else
+		new_value = potency
+
 	//Override conflicting properties
-	if(chemical_gen_stats_list["[src.id]"]["properties"])
+	var/info
+	if(chemical_gen_stats_list["[id]"]["properties"])
 		//The list below defines what properties should override each other.
 		var/list/conflicting_properties = list(PROPERTY_TOXIC = PROPERTY_ANTITOXIC,PROPERTY_CORROSIVE = PROPERTY_ANTICORROSIVE,PROPERTY_BIOCIDIC = PROPERTY_NEOGENETIC,PROPERTY_HYPERTHERMIC = PROPERTY_HYPOTHERMIC,PROPERTY_NUTRITIOUS = PROPERTY_KETOGENIC,PROPERTY_PAINING = PROPERTY_PAINKILLING,PROPERTY_HALLUCINOGENIC = PROPERTY_ANTIHALLUCINOGENIC,PROPERTY_HEPATOTOXIC = PROPERTY_HEPATOPEUTIC,PROPERTY_NEPHROTOXIC = PROPERTY_NEPHROPEUTIC,PROPERTY_PNEUMOTOXIC = PROPERTY_PNEUMOPEUTIC, PROPERTY_OCULOTOXIC = PROPERTY_OCULOPEUTIC, PROPERTY_CARDIOTOXIC = PROPERTY_CARDIOPEUTIC,PROPERTY_NEUROTOXIC = PROPERTY_NEUROPEUTIC, PROPERTY_FLUXING = PROPERTY_REPAIRING, PROPERTY_RELAXING = PROPERTY_MUSCLESTIMULATING,PROPERTY_ANTISEPTIC = PROPERTY_NECROTIZING,PROPERTY_HEMOGENIC = PROPERTY_HEMOLYTIC,PROPERTY_HEMOGENIC = PROPERTY_HEMORRAGING)
 		var/match
-		for(var/P in chemical_gen_stats_list["[src.id]"]["properties"])
+		for(var/P in chemical_gen_stats_list["[id]"]["properties"])
 			if(P == property)
 				match = P
 			else
@@ -432,7 +450,7 @@
 						match = P
 						break
 			if(match)
-				chemical_gen_stats_list["[src.id]"]["properties"] -= match
+				chemical_gen_stats_list["[id]"]["properties"] -= match
 	//Handle description
 			else
 				info += text("<BR><B>[]</B> - []<BR>",capitalize(P),all_properties["[P]"]) //We only keep the description we didn't override
@@ -441,9 +459,9 @@
 
 	var/list/property_potency[0]
 	property_potency["[property]"] = potency
-	chemical_gen_stats_list["[src.id]"]["properties"] += property_potency
-	chemical_gen_stats_list["[src.id]"]["description"] = info
-	return property_potency
+	chemical_gen_stats_list["[id]"]["properties"] += property_potency
+	chemical_gen_stats_list["[id]"]["description"] = info
+	return new_value
 
 /////////////////////////RANDOMLY GENERATED CHEMICALS/////////////////////////
 /datum/chemical_reaction/generated/
@@ -459,32 +477,32 @@
 
 /datum/reagent/generated/New()
 	//Generate stats
-	if(!chemical_gen_stats_list["[src.id]"])
+	if(!chemical_gen_stats_list["[id]"])
 		var/list/stats_holder = list("name","properties","description","overdose","overdose_critical","nutriment_factor","custom_metabolism","color")
-		chemical_gen_stats_list["[src.id]"] += stats_holder
+		chemical_gen_stats_list["[id]"] += stats_holder
 		generate_name()
 		generate_stats()
-	name = chemical_gen_stats_list["[src.id]"]["name"]
-	properties = chemical_gen_stats_list["[src.id]"]["properties"]
-	description = chemical_gen_stats_list["[src.id]"]["description"]
-	overdose = chemical_gen_stats_list["[src.id]"]["overdose"]
-	overdose_critical = chemical_gen_stats_list["[src.id]"]["overdose_critical"]
-	nutriment_factor = chemical_gen_stats_list["[src.id]"]["nutriment_factor"]
-	custom_metabolism = chemical_gen_stats_list["[src.id]"]["custom_metabolism"]
-	color = chemical_gen_stats_list["[src.id]"]["color"]
+	name = chemical_gen_stats_list["[id]"]["name"]
+	properties = chemical_gen_stats_list["[id]"]["properties"]
+	description = chemical_gen_stats_list["[id]"]["description"]
+	overdose = chemical_gen_stats_list["[id]"]["overdose"]
+	overdose_critical = chemical_gen_stats_list["[id]"]["overdose_critical"]
+	nutriment_factor = chemical_gen_stats_list["[id]"]["nutriment_factor"]
+	custom_metabolism = chemical_gen_stats_list["[id]"]["custom_metabolism"]
+	color = chemical_gen_stats_list["[id]"]["color"]
 
 /datum/chemical_reaction/generated/New()
 	//Generate recipe
 	if(!chemical_gen_reactions_list)
 		chemical_gen_reactions_list = list()
-	if(!chemical_gen_reactions_list["[src.id]"])
+	if(!chemical_gen_reactions_list["[id]"])
 		var/list/recipe_holder = list("required_reagents","required_catalysts","result")
-		chemical_gen_reactions_list["[src.id]"] += recipe_holder
+		chemical_gen_reactions_list["[id]"] += recipe_holder
 		generate_recipe()
-	required_reagents = chemical_gen_reactions_list["[src.id]"]["required_reagents"]
-	required_catalysts = chemical_gen_reactions_list["[src.id]"]["required_catalysts"]
+	required_reagents = chemical_gen_reactions_list["[id]"]["required_reagents"]
+	required_catalysts = chemical_gen_reactions_list["[id]"]["required_catalysts"]
 	if(!result)
-		result = chemical_gen_reactions_list["[src.id]"]["result"]
+		result = chemical_gen_reactions_list["[id]"]["result"]
 
 /////////Tier 1
 //alpha
@@ -995,8 +1013,8 @@
 				else
 					holder.remove_reagent("mindbreaker", 5)
 					holder.remove_reagent("space_drugs", 5)
-					M.hallucination = max(0, M.hallucination - 10)
-					M.druggy = max(0, M.druggy - 10)
+					M.hallucination = max(0, M.hallucination - 10*potency)
+					M.druggy = max(0, M.druggy - 10*potency)
 /////////Positive Properties///////// 
 			if(PROPERTY_NUTRITIOUS) //only picked if nutriment factor > 0
 				M.nutrition += nutriment_factor * potency

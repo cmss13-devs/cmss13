@@ -1,5 +1,0 @@
-author: Atebite
-delete-after: true
-changes:
-  - rscadd: If you have the skill to issue orders, you will now get action buttons for the different orders in your top-left action bar.
-  - tweak: Orders now last for 20 seconds on a 60 second cooldown

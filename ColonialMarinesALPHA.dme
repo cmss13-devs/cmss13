@@ -1191,6 +1191,7 @@
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\praetorian\royal_guard.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\ravager\hedgehog.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\ravager\veteran.dm"
+#include "code\modules\mob\living\carbon\xenomorph\mutators\strains\sentinel\scatterspit.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\spitter\vomiter.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\warrior\boxer.dm"
 #include "code\modules\mob\living\silicon\alarm.dm"

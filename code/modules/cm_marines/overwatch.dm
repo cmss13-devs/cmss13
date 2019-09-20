@@ -543,7 +543,7 @@
 	var/nametext = ""
 	if(plus_name)
 		nametext = "[usr.name] transmits: "
-		text = "<font size='3'><b>[text]<b></font>"
+		text = "[FONT_SIZE_LARGE("<b>[text]<b>")]"
 
 	for(var/mob/living/carbon/human/M in current_squad.marines_list)
 		if(!M.stat && M.client) //Only living and connected people in our squad

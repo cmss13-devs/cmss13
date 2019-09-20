@@ -526,7 +526,7 @@
 				infection_present = 10
 			var/org_incision = (open_incision?" <span class='scanner'>Open surgical incision</span>":"")
 			var/org_advice = ""
-			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
+			if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
 				switch(org.name)
 					if("head")
 						fracture_info = ""

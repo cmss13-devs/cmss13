@@ -137,8 +137,8 @@
 	var/mob/dead/observer/G = H.get_ghost()
 	if(istype(G))
 		G << 'sound/effects/adminhelp_new.ogg'
-		to_chat(G, "<span class='interface'><font size=3><span class='bold'>Someone is trying to revive your body. Return to it if you want to be resurrected!</span> \
-		(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[G];reentercorpse=1'>click here!</a>)</font></span>")
+		to_chat(G, "<span class='interface'>[FONT_SIZE_LARGE("<span class='bold'>Someone is trying to revive your body. Return to it if you want to be resurrected!</span> \
+		(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[G];reentercorpse=1'>click here!</a>)")]</span>")
 	else if(!H.client)
 		//We couldn't find a suitable ghost, this means the person is not returning
 		user.visible_message(SPAN_WARNING("[htmlicon(src, viewers(src))] \The [src] buzzes: Patient has a DNR."))

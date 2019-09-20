@@ -232,7 +232,6 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 			// If they are using the old chat, send it the old way
 			if(C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)
 				C << clean_message
-				continue
 
 			if (C.chatOutput && !C.chatOutput.noWindow && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
 				//Client sucks at loading things, put their messages in a queue
@@ -254,7 +253,6 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 
 		if(C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)
 			C << clean_message
-			return
 
 		if (C.chatOutput && !C.chatOutput.noWindow && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
 			C.chatOutput.messageQueue += message

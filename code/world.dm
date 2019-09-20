@@ -237,7 +237,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			message_admins("World/Topic() call (likely MapDaemon.exe) has resumed the round end.", 1)
 
 			//So admins have a chance to make EORG bans and do whatever
-			message_staff(SPAN_BOLDANNOUNCE("NOTICE: Delay round within 30 seconds in order to prevent auto-restart!</span>"), 1)
+			message_staff(FONT_SIZE_LARGE(SPAN_BOLDANNOUNCE("NOTICE: Delay round within 30 seconds in order to prevent auto-restart!</span>")), 1)
 
 			MapDaemonHandleRestart() //Doesn't hold
 

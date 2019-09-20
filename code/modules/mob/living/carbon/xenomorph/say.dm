@@ -116,25 +116,25 @@
 				if(S.client.prefs && S.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
 					track = "(<a href='byond://?src=\ref[S];track=\ref[src]'>follow</a>)"
 					if(isXenoQueen(src))
-						ghostrend = SPAN_XENOQUEEN("Hivemind, [name] [track] hisses, '[message]'")
+						ghostrend = SPAN_XENOQUEEN("Hivemind, [name] [track] hisses, <span class='normal'>'[message]'</span>")
 					else if(IS_XENO_LEADER(hive_pos))
-						ghostrend = SPAN_XENOLEADER("Hivemind, Leader [name] [track] hisses, '[message]'")
+						ghostrend = SPAN_XENOLEADER("Hivemind, Leader [name] [track] hisses, <span class='normal'>'[message]'</span>")
 					else
-						ghostrend = SPAN_XENO("Hivemind, [name] [track] hisses, '[message]'")
+						ghostrend = SPAN_XENO("Hivemind, [name] [track] hisses, <span class='normal'>'[message]'</span>")
 					S.show_message(ghostrend, 2)
 
 			else if(hivenumber == xeno_hivenumber(S))
 				overwatch_insert = "(<a href='byond://?src=\ref[S];[overwatch_target]=\ref[src];[overwatch_src]=\ref[S]'>watch</a>)"
 
 				if(isXenoQueen(src))
-					rendered = SPAN_XENOQUEEN("Hivemind, [name] [overwatch_insert] hisses, '[message]'")
+					rendered = SPAN_XENOQUEEN("Hivemind, [name] [overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
 				else if(IS_XENO_LEADER(hive_pos))
-					rendered = SPAN_XENOLEADER("Hivemind, Leader [name] [overwatch_insert] hisses, '[message]'")
+					rendered = SPAN_XENOLEADER("Hivemind, Leader [name] [overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
 				else if(caste.is_robotic)
 					var/message_b = pick("high-pitched blast of static","series of pings","long string of numbers","loud, mechanical squeal", "series of beeps")
 					rendered = "<i><span class='game say'>Hivemind, <span class='name'>[name]</span> [overwatch_insert]emits a [message_b]!</span></i>"
 				else
-					rendered = SPAN_XENO("Hivemind, [name] [overwatch_insert] hisses, '[message]'")
+					rendered = SPAN_XENO("Hivemind, [name] [overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
 				
 				S.show_message(rendered, 2)
 				

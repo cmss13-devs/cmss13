@@ -1130,7 +1130,7 @@
 		if(!drain_power(usr,50)) return //At this point they've upgraded.
 		for(var/mob/Q in hearers(usr))
 			if(Q.stat) continue //Unconscious
-			to_chat(Q, "[SPAN_INFO("A strange voice says")] <span class='rough'>'[msg]'</span>.")
+			to_chat(Q, "[SPAN_INFO("A strange voice says")] <span class='prefix'>'[msg]'</span>.")
 
 
 

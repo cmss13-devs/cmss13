@@ -54,6 +54,8 @@ em						{font-style: normal;	font-weight: bold;}
 .extra_large			{					font-size: 4}
 .huge					{					font-size: 5}
 
+.normal					{font-style: normal;}
+
 .alert					{color: #ff0000;}
 h1.alert, h2.alert		{color: #000000;}
 

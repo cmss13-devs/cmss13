@@ -18,12 +18,12 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 /datum/chatOutput/New(client/C)
 	. = ..()
 
-	if (C)
+	if(C)
 		owner = C
 
 /datum/chatOutput/proc/start()
 	//Check for existing chat
-	if (!owner || !istype(owner)) 
+	if (!owner || !istype(owner) || owner.gcDestroyed) 
 		return 0
 
 	if(!winexists(owner, "browseroutput"))
@@ -33,7 +33,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 		alert(owner.mob, "Goonchat hasn't loaded for you. Please wait a minute or try reconnecting.")
 		return
 
-	if (winget(owner, "browseroutput", "is-disabled") == "false") //Already setup
+	if(winget(owner, "browseroutput", "is-disabled") == "false") //Already setup
 		doneLoading()
 
 	else //Not setup

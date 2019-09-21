@@ -1372,10 +1372,17 @@
 	spit_cost = 25
 	var/effect_power = 1.75
 
+/mob/var/last_neuro_application
+
 /proc/apply_neuro(mob/M, power, insta_neuro)
 	var/pass_down_the_line = FALSE
 	if(isSynth(M))
 		return // unaffected
+	if(!M)
+		return
+	if(M.last_neuro_application == world.time)
+		return
+	M.last_neuro_application =  world.time
 	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
 		pass_down_the_line = TRUE
 	if(!isXeno(M) && !isYautja(M))

@@ -23,7 +23,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 
 /datum/chatOutput/proc/start()
 	//Check for existing chat
-	if (!owner) 
+	if (!owner || !istype(owner)) 
 		return 0
 
 	if(!winexists(owner, "browseroutput"))
@@ -181,6 +181,8 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 			return "<img class='icon icon-misc' src=\"[url_encode(name)]\">"
 		
 	var/atom/A = object
+	if(!istype(A))
+		return ""
 	I = A.icon
 
 	I = icon(I, A.icon_state, A.dir, 1, FALSE)

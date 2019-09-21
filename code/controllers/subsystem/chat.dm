@@ -56,7 +56,7 @@ var/datum/subsystem/chat/SSchat
 			else if (istype(T, /datum/mind) && T:current)
 				C = T:current:client
 
-			if(!C)
+			if(!C || !istype(C))
 				continue
 
 			// If they are using the old chat, send it the old way
@@ -79,7 +79,7 @@ var/datum/subsystem/chat/SSchat
 		else if (istype(target, /datum/mind) && target:current)
 			C = target:current:client
 
-		if(!C)
+		if(!C || !istype(C))
 			return
 
 		if(C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)

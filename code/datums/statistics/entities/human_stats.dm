@@ -79,6 +79,8 @@
 
 /datum/entity/player_stats/human/proc/track_job_playtime(var/job, var/time = 0)
 	var/datum/entity/player_stats/job/S = setup_job_stats(job)
+	if(!S)
+		return
 	if(!S.round_played)
 		S.total_rounds_played += 1
 		S.round_played = TRUE

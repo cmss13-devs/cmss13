@@ -440,14 +440,20 @@
 
 		for(var/sub_iteration in S.humans_killed)
 			var/datum/entity/statistic/D = S.humans_killed[sub_iteration]
+			if(!D)
+				continue
 			weapon_humans_killed += list(list("name" = D.name, "value" = D.value))
 
 		for(var/sub_iteration in S.xenos_killed)
 			var/datum/entity/statistic/D = S.xenos_killed[sub_iteration]
+			if(!D)
+				continue
 			weapon_xenos_killed += list(list("name" = D.name, "value" = D.value))
 
 		for(var/sub_iteration in S.niche_stats)
 			var/datum/entity/statistic/D = S.niche_stats[sub_iteration]
+			if(!D)
+				continue
 			weapon_niche_stats_list += list(list("name" = D.name, "value" = D.value))
 
 		new_weapon_stats_list += list(list(
@@ -477,20 +483,28 @@
 
 		for(var/sub_iteration in S.humans_killed)
 			var/datum/entity/statistic/D = S.humans_killed[sub_iteration]
+			if(!D)
+				continue
 			job_humans_killed += list(list("name" = D.name, "value" = D.value))
 
 		for(var/sub_iteration in S.xenos_killed)
 			var/datum/entity/statistic/D = S.xenos_killed[sub_iteration]
+			if(!D)
+				continue
 			job_xenos_killed += list(list("name" = D.name, "value" = D.value))
 
 		for(var/sub_iteration in S.niche_stats)
 			var/datum/entity/statistic/D = S.niche_stats[sub_iteration]
+			if(!D)
+				continue
 			job_niche_stats_list += list(list("name" = D.name, "value" = D.value))
 
 		for(var/datum/entity/death_stats/DS in S.death_list)
 			var/list/damage_list = list()
 			for(var/damage_iteration in DS.total_damage)
 				var/datum/entity/statistic/D = DS.total_damage[damage_iteration]
+				if(!D)
+					continue
 				damage_list += list(list("name" = D.name, "value" = D.value))
 
 			var/new_time_of_death
@@ -550,24 +564,34 @@
 		
 		for(var/sub_iteration in S.abilities_used)
 			var/datum/entity/statistic/D = S.abilities_used[sub_iteration]
+			if(!D)
+				continue
 			caste_abilities_used += list(list("name" = D.name, "value" = D.value))
 
 		for(var/sub_iteration in S.humans_killed)
 			var/datum/entity/statistic/D = S.humans_killed[sub_iteration]
+			if(!D)
+				continue
 			caste_humans_killed += list(list("name" = D.name, "value" = D.value))
 
 		for(var/sub_iteration in S.xenos_killed)
 			var/datum/entity/statistic/D = S.xenos_killed[sub_iteration]
+			if(!D)
+				continue
 			caste_xenos_killed += list(list("name" = D.name, "value" = D.value))
 
 		for(var/sub_iteration in S.niche_stats)
 			var/datum/entity/statistic/D = S.niche_stats[iteration]
+			if(!D)
+				continue
 			caste_niche_stats_list += list(list("name" = D.name, "value" = D.value))
 
 		for(var/datum/entity/death_stats/DS in S.death_list)
 			var/list/damage_list = list()
 			for(var/damage_iteration in DS.total_damage)
 				var/datum/entity/statistic/D = DS.total_damage[damage_iteration]
+				if(!D)
+					continue
 				damage_list += list(list("name" = D.name, "value" = D.value))
 
 			var/new_time_of_death

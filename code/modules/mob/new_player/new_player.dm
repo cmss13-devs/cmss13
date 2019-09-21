@@ -20,8 +20,9 @@
 
 /mob/new_player/verb/new_player_panel()
 	set src = usr
-	client.player_entity.update_panel_data(null)
-	new_player_panel_proc()
+	if(client.player_entity)
+		client.player_entity.update_panel_data(null)
+		new_player_panel_proc()
 
 
 /mob/new_player/proc/new_player_panel_proc()

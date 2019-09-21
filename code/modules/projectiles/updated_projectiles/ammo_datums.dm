@@ -1473,7 +1473,7 @@
 	accurate_range = config.min_shell_range
 	max_range = config.close_shell_range
 	scatter = config.giga_scatter_value
-	bonus_projectiles_amount = config.med_proj_extra
+	bonus_projectiles_amount = config.low_proj_extra
 
 /datum/ammo/xeno/toxin/shotgun/additional
 	name = "additional neurotoxic droplets"

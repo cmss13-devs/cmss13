@@ -46,15 +46,39 @@ var/datum/subsystem/chat/SSchat
 
 	//Grab us a client if possible
 	if(islist(target))
+		#define GCHAT_UNDEFINED_LIST 0
+		#define GCHAT_CLIENT_LIST 1
+		#define GCHAT_MOB_LIST 2
+		#define GCHAT_MIND_LIST 3
+		var/type_of_list = GCHAT_UNDEFINED_LIST
 		for(var/T in target)
 			var/client/C
 
-			if (istype(T, /client))
+			if(GCHAT_UNDEFINED_LIST)
+				if (istype(T, /client))
+					type_of_list = GCHAT_CLIENT_LIST
+				else if (istype(T, /mob))
+					type_of_list = GCHAT_MOB_LIST
+				else if (istype(T, /datum/mind))
+					type_of_list = GCHAT_MIND_LIST
+				else
+					continue
+			
+			if(type_of_list == GCHAT_CLIENT_LIST)
 				C = T
-			else if (istype(T, /mob))
-				C = T:client
-			else if (istype(T, /datum/mind) && T:current)
-				C = T:current:client
+			
+			if(type_of_list == GCHAT_MOB_LIST)
+				var/mob/M = T
+				if(!istype(M))
+					continue
+				C = M.client
+			
+			if(type_of_list == GCHAT_MOB_LIST)
+				var/datum/mind/M = T
+				if(!istype(M))
+					continue
+				if(M.current)
+					C = M.current.client
 
 			if(!C || !istype(C))
 				continue
@@ -70,6 +94,10 @@ var/datum/subsystem/chat/SSchat
 				continue
 
 			chatQueue[C] += encoded_message
+		#undef GCHAT_UNDEFINED_LIST
+		#undef GCHAT_CLIENT_LIST
+		#undef GCHAT_MOB_LIST
+		#undef GCHAT_MIND_LIST
 	else
 		var/client/C
 		if (istype(target, /client))

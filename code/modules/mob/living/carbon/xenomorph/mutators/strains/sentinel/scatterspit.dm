@@ -15,11 +15,13 @@
 		return
 	
 	var/mob/living/carbon/Xenomorph/Sentinel/S = MS.xeno
+	S.speed_modifier += XENO_SPEED_MOD_VERYLARGE
 	S.mutation_type = SENTINEL_SCATTERSPIT
 	S.armor_modifier += XENO_ARMOR_MOD_MED
 	S.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_VERYSMALL
-	S.speed_modifier += XENO_SPEED_MOD_MED
 	S.ammo = ammo_list[/datum/ammo/xeno/toxin/shotgun]
 
 	mutator_update_actions(S)
 	MS.recalculate_actions(description)
+	S.recalculate_everything()
+

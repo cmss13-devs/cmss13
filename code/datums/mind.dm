@@ -89,7 +89,7 @@
 			new_character.client.change_view(world.view) //reset view range to default.
 			new_character.client.pixel_x = 0
 			new_character.client.pixel_y = 0
-			if(usr:open_uis)
+			if(usr && usr:open_uis)
 				for(var/datum/nanoui/ui in usr:open_uis)
 					if(ui.allowed_user_stat == -1)
 						ui.close()

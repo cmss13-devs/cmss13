@@ -25,13 +25,19 @@ var/datum/subsystem/chat/SSchat
 /datum/subsystem/chat/proc/queue(var/target, var/message)
 	if(!target || !message)
 		return
-
+	#define GCHAT_UNDEFINED_LIST 0
+	#define GCHAT_CLIENT_LIST 1
+	#define GCHAT_MOB_LIST 2
+	#define GCHAT_MIND_LIST 3
 	if(!istext(message))
 		CRASH("to_chat called with invalid input type")
 		return
 
+	var/type_of_list = GCHAT_UNDEFINED_LIST
+
 	if(target == world)
 		target = clients
+		type_of_list = GCHAT_CLIENT_LIST
 
 	var/clean_message = message
 	//Some macros remain in the string even after parsing and fuck up the eventual output
@@ -45,12 +51,8 @@ var/datum/subsystem/chat/SSchat
 	var/encoded_message = url_encode(url_encode(message))
 
 	//Grab us a client if possible
-	if(islist(target))
-		#define GCHAT_UNDEFINED_LIST 0
-		#define GCHAT_CLIENT_LIST 1
-		#define GCHAT_MOB_LIST 2
-		#define GCHAT_MIND_LIST 3
-		var/type_of_list = GCHAT_UNDEFINED_LIST
+	if(islist(target))		
+		
 		for(var/T in target)
 			var/client/C
 

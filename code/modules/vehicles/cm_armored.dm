@@ -330,7 +330,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 			var/msg = "There is a [HP] installed on the [i] hardpoint slot."
 			if(P <= 0)
 				msg += " It's busted!"
-			else if(isobserver(user) || skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			else if(isobserver(user) || (!isXeno(user) && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI)))
 				msg += " It's at [round(P, 1)]% integrity!"
 			to_chat(user, msg)
 	if(clamped)

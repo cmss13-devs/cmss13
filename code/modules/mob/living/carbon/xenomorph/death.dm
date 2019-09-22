@@ -86,12 +86,6 @@
 	if(hardcore)
 		dead_hardcore_xeno_list += src
 
-	switch(tier)//They died, remove them from the tier list
-		if(2)
-			hive.tier_2_xenos -= src
-		if(3)
-			hive.tier_3_xenos -= src
-
 	hive.remove_xeno(src)
 	
 	if(hive.totalXenos.len == 1)

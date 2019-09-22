@@ -1,0 +1,8 @@
+
+author: Jeser
+
+delete-after: True
+
+
+changes: 
+  - bugfix: "Removed aliens in-depth understanding of tank engineering that allowed them to see exact modules' integrity values. Thank god it was fixed before they reverse engineered their own tank."

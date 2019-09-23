@@ -260,6 +260,7 @@
 						/obj/item/clothing/glasses/mgoggles = "goggles",
 						/obj/item/clothing/glasses/mgoggles/prescription = "goggles",
 						/obj/item/clothing/glasses/welding ="welding-h",
+						/obj/item/clothing/head/headband = "headband",
 						/obj/item/clothing/head/headband/tan = "headbandtan",
 						/obj/item/clothing/head/headband/red = "headbandred",
 						/obj/item/reagent_container/hypospray/autoinjector = "helmet_injector")

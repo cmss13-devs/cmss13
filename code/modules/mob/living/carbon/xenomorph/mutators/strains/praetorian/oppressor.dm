@@ -70,6 +70,9 @@
 	if (!current_turf)
 		return
 
+	has_spat = TRUE
+	plasma_stored -= 300
+
 	if (do_after(src, pCaste.oppressor_grenade_setup, INTERRUPT_NO_NEEDHAND|INTERRUPT_LCLICK, BUSY_ICON_HOSTILE, show_remaining_time = TRUE))
 		to_chat(src, SPAN_XENOWARNING("You decide not to use your toxin bomb."))
 		return 
@@ -89,9 +92,6 @@
 		for(var/X in actions)
 			var/datum/action/act = X
 			act.update_button_icon()
-
-	has_spat = TRUE
-	plasma_stored -= 300
 
 /*
 	PRAE PUNCH

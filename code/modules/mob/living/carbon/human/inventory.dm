@@ -462,7 +462,7 @@
 		if(!I.mob_can_equip(M, slot_to_process, TRUE))
 			to_chat(src, SPAN_WARNING("You can't put \the [I.name] on [M]!"))
 			return
-		visible_message(SPAN_NOTICE("[src] tries to put [I] on [M]."), null, 5)
+		visible_message(SPAN_NOTICE("[src] tries to put [I] on [M]."), null, null, 5)
 		if(do_after(src, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			if(I == get_active_hand() && !M.get_item_by_slot(slot_to_process) && Adjacent(M))
 				if(I.mob_can_equip(M, slot_to_process, TRUE))//Placing an item on the mob

@@ -426,6 +426,10 @@
 						SPAN_HIGHDANGER("You were Executed!"))
 					if(user)
 						user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_source)
+					var/area/A = get_area(H)
+					var/turf/T = get_turf(H)
+					message_mods(FONT_SIZE_HUGE("ALERT: [usr.name] ([usr.key]) battlefield executed [H] ([H.key]) at[A.name]. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)</font>"))
+					log_attack("[usr.name] ([usr.ckey]) battlefield executed [H] ([H.key]) at [A.name].")
 			else
 				return -1
 		else

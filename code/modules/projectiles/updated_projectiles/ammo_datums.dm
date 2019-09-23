@@ -417,16 +417,19 @@
 /datum/ammo/bullet/revolver/highimpact/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
 	if(isHumanStrict(M))
 		var/mob/living/carbon/human/H = M
-		user.visible_message(SPAN_DANGER("[user] aims at [M]'s head!"), SPAN_HIGHDANGER("You aim at [M]'s head!"))
-		if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			if(user.Adjacent(H))
-				H.apply_damage(500, BRUTE, "head", no_limb_loss = TRUE, impact_name = impact_name, impact_limbs = impact_limbs, permanent_kill = TRUE) //not coming back
-				H.visible_message(SPAN_DANGER("[M] WAS EXECUTED!"), \
-					SPAN_HIGHDANGER("You were Executed!"))
-				if(user)
-					user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_source)
+		if(user.zone_selected == "head")
+			user.visible_message(SPAN_DANGER("[user] aims at [M]'s head!"), SPAN_HIGHDANGER("You aim at [M]'s head!"))
+			if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+				if(user.Adjacent(H))
+					H.apply_damage(500, BRUTE, "head", no_limb_loss = TRUE, impact_name = impact_name, impact_limbs = impact_limbs, permanent_kill = TRUE) //not coming back
+					H.visible_message(SPAN_DANGER("[M] WAS EXECUTED!"), \
+						SPAN_HIGHDANGER("You were Executed!"))
+					if(user)
+						user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_source)
+			else
+				return -1
 		else
-			return -1
+			..()
 /*
 //================================================
 					SMG Ammo
@@ -939,9 +942,9 @@
 	damage_falloff = config.tactical_damage_falloff
 	damage = config.med_hit_damage
 	penetration = config.hmed_armor_penetration
-	damage_armor_punch = 3	
-	
-	
+	damage_armor_punch = 3
+
+
 /datum/ammo/bullet/turret
 	name = "autocannon bullet"
 	icon_state 	= "redbullet" //Red bullets to indicate friendly fire restriction

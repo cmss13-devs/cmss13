@@ -33,6 +33,11 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK)
 
+/obj/item/clothing/suit/storage/jacket/marine/New(loc)
+	..()
+	if(!(flags_atom & NO_SNOW_TYPE))
+		select_gamemode_skin(type)
+
 /obj/item/clothing/suit/storage/jacket/marine/dress
 	name = "marine dress jacket"
 	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy."
@@ -45,6 +50,7 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer
 	name = "marine officer dress jacket"

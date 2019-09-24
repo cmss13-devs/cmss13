@@ -1023,10 +1023,10 @@ var/global/image/busy_indicator_hostile
 
 	L.action_busy = TRUE // target is not tethered by action, the action is tethered by target though
 	L.resisting = FALSE
-	L.clicked_something = list("" = null)
+	L.clicked_something = list()
 	if(has_target && target_is_mob)
 		T.resisting = FALSE
-		T.clicked_something = list("" = null)
+		T.clicked_something = list()
 
 	var/cur_user_zone_sel = L.zone_selected
 	var/cur_target_zone_sel
@@ -1155,10 +1155,8 @@ var/global/image/busy_indicator_hostile
 
 	L.action_busy = FALSE
 	L.resisting = FALSE
-	L.clicked_something = null
 	if(target_is_mob)
 		T.resisting = FALSE
-		T.clicked_something = null
 	L.status_flags &= ~IMMOBILE_ACTION
 
 	if (show_remaining_time)

@@ -1204,7 +1204,8 @@ datum/preferences
 					if (!istype(np)) return
 					save_preferences()
 					save_character()
-					np.new_player_panel_proc()
+					if(istype(np))
+						np.new_player_panel_proc()
 
 				if("reload")
 					load_preferences()
@@ -1222,7 +1223,8 @@ datum/preferences
 					if (!istype(np)) return
 					load_character(text2num(href_list["num"]))
 					close_load_dialog(user)
-					np.new_player_panel_proc()
+					if(istype(np))
+						np.new_player_panel_proc()
 
 	ShowChoices(user)
 	return 1

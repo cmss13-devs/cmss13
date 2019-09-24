@@ -392,8 +392,9 @@
 	if(fire_spread_amount > 0)
 		if(flameshape == FLAMESHAPE_DEFAULT || flameshape == FLAMESHAPE_IRREGULAR) // Irregular 'stutters' in shape
 			var/turf/T
+			var/turf/source_turf = get_turf(loc)
 			for(var/dirn in cardinal)
-				T = get_step(loc, dirn)
+				T = get_step(source_turf, dirn)
 				if(istype(T,/turf/open/space)) continue
 				var/obj/flamer_fire/foundflame = locate() in T
 				if(foundflame)
@@ -404,7 +405,7 @@
 				var/new_spread_amt = T.density ? 0 : fire_spread_amount - 1 //walls stop the spread
 				if(new_spread_amt)
 					for(var/obj/O in T)
-						if(!O.CanPass(src, loc))
+						if(!O.CanPass(src, source_turf))
 							new_spread_amt = 0
 							break
 				if(flameshape == FLAMESHAPE_IRREGULAR && prob(33))
@@ -415,6 +416,7 @@
 		if(flameshape == FLAMESHAPE_STAR || flameshape == FLAMESHAPE_MINORSTAR) // spread in a star-like pattern
 			fire_spread_amount = round(fire_spread_amount * 1.5) // branch 'length'
 			var/list/dirs = alldirs
+			var/turf/source_turf = get_turf(loc)
 
 			if(flameshape == FLAMESHAPE_MINORSTAR)
 				if(prob(50))
@@ -438,7 +440,7 @@
 					if(T.density && !T.throwpass) // unpassable turfs stop the spread
 						break
 					for(var/obj/O in T) // certain object block the spread
-						if(!O.CanPass(src, loc))
+						if(!O.CanPass(src, source_turf))
 							break
 					if(prob(15) && flameshape != FLAMESHAPE_MINORSTAR) // chance to branch a little
 						new_spread_amt = 1.5

@@ -179,9 +179,10 @@
 		current_listener = null
 		processing_objects -= src
 		return
-	if(current_listener.ear_deaf > 0 && !(current_song.status & SOUND_MUTE))
+
+	if(current_listener.ear_deaf > 0 && current_song && !(current_song.status & SOUND_MUTE))
 		update_song(current_song,current_listener)
-	if(current_listener.ear_deaf == 0 && current_song.status & SOUND_MUTE)
+	if(current_listener.ear_deaf == 0 && current_song && current_song.status & SOUND_MUTE)
 		update_song(current_song,current_listener)
 
 /obj/item/device/walkman/verb/play_pause()

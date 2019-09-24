@@ -1201,6 +1201,7 @@ datum/preferences
 
 				if("save")
 					var/mob/new_player/np = user
+					if (!istype(np)) return
 					save_preferences()
 					save_character()
 					np.new_player_panel_proc()
@@ -1218,6 +1219,7 @@ datum/preferences
 
 				if("changeslot")
 					var/mob/new_player/np = user
+					if (!istype(np)) return
 					load_character(text2num(href_list["num"]))
 					close_load_dialog(user)
 					np.new_player_panel_proc()

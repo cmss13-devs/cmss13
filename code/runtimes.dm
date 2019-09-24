@@ -16,7 +16,5 @@
 	// This is converted back into a newline by the script
 	desc = replacetext(desc, "\n", ";")
 
-	to_world(desc)
-
 	var/command = "handle_runtime.bat \"[name]\" \"[file]\" \"[line]\" \"[desc]\""
 	shell(command)

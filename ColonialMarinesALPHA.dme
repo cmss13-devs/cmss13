@@ -413,7 +413,6 @@
 #include "code\game\machinery\computer\general_air_control.dm"
 #include "code\game\machinery\computer\guestpass.dm"
 #include "code\game\machinery\computer\HolodeckControl.dm"
-#include "code\game\machinery\computer\hologram.dm"
 #include "code\game\machinery\computer\medical.dm"
 #include "code\game\machinery\computer\message.dm"
 #include "code\game\machinery\computer\Operating.dm"

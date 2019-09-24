@@ -144,15 +144,14 @@ var/global/list/image/splatter_cache=list()
 	var/fleshcolor = "#830303"
 
 /obj/effect/decal/cleanable/blood/gibs/update_icon()
-
 	var/image/giblets = new(base_icon, "[icon_state]_flesh", dir)
 	if(!fleshcolor || fleshcolor == "rainbow")
 		fleshcolor = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
 	giblets.color = fleshcolor
 
-	var/icon/blood = new(base_icon,"[icon_state]",dir)
+	var/image/blood = new(base_icon,"[icon_state]",dir)
 	if(basecolor == "rainbow") basecolor = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
-	blood.Blend(basecolor,ICON_MULTIPLY)
+	blood.color = basecolor
 
 	icon = blood
 	overlays.Cut()

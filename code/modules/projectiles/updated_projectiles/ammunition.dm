@@ -216,8 +216,9 @@ the icon_state to look like more casings are hitting the ground.
 There are 8 directions, 8 bullets are possible so after that it tries to grab the next
 icon_state while reseting the direction. After 16 casings, it just ignores new
 ones. At that point there are too many anyway. Shells and bullets leave different
-items, so they do not intersect. This is far more efficient than using Blend() or
+items, so they do not intersect. This is far more efficient than using Bl*nd() or
 Turn() or Shift() as there is virtually no overhead. ~N
+Update: Censored cursed word ~Cakey
 */
 /obj/item/ammo_casing
 	name = "spent casing"

@@ -1,4 +1,3 @@
-
 // Defines for water/potassium
 #define MAXEXPOWER 		300
 #define MAXEXSHARDS 	128
@@ -307,7 +306,7 @@
 	smoke.start()
 	smoke = null
 
-	new /obj/flamer_fire(location, "Chemical fire ([initial(name)])", user, duration, intensity, firecolor, radius, FALSE, flameshape)
+	new /obj/flamer_fire(location, "[initial(name)] fire", user, duration, intensity, firecolor, radius, FALSE, flameshape)
 	sleep(5)
 	playsound(location, 'sound/weapons/gun_flamethrower1.ogg', 25, 1)
 

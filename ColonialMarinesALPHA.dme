@@ -13,6 +13,7 @@
 #include "code\_macros.dm"
 #include "code\global.dm"
 #include "code\names.dm"
+#include "code\runtimes.dm"
 #include "code\stylesheet.dm"
 #include "code\world.dm"
 #include "code\#define\__game.dm"

@@ -268,13 +268,18 @@ Contains most of the procs that are called when a mob is attacked by something
 
 		var/damage = armor_damage_reduction(config.marine_melee, throw_damage, armor, (weapon_sharp?30:0) + (weapon_edge?10:0))
 		apply_damage(damage, dtype, affecting, armor, sharp=weapon_sharp, edge=weapon_edge, used_weapon=O)
-		
-		last_damage_source = initial(AM.name)
+
+		if(damage > 5)
+			last_damage_source = initial(AM.name)
 
 		if(ismob(O.thrower))
 			var/mob/M = O.thrower
 			var/client/assailant = M.client
-			last_damage_mob = M
+			if(damage > 5)
+				last_damage_mob = M
+				M.track_hit(initial(name))
+				if(M.faction == faction)
+					M.track_friendly_fire(initial(name))
 			if(assailant)
 				src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with a [O], thrown by [M.name] ([assailant.ckey])</font>")
 				M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [src.name] ([src.ckey]) with a thrown [O]</font>")

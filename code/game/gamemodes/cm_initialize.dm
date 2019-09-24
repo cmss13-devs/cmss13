@@ -458,6 +458,7 @@ datum/game_mode/proc/initialize_special_clamps()
 /datum/game_mode/proc/transform_xeno(datum/mind/ghost_mind)
 	var/mob/living/original = ghost_mind.current
 
+	original.statistic_exempt = TRUE
 	original.first_xeno = TRUE
 	original.stat = 1
 	transform_survivor(ghost_mind) //Create a new host
@@ -474,7 +475,6 @@ datum/game_mode/proc/initialize_special_clamps()
 	embryo.stage = 5 //Give the embryo a head-start (make the larva burst instantly)
 
 	if(original && !original.first_xeno)
-		original.statistic_exempt = TRUE
 		qdel(original)
 
 //===================================================\\

@@ -78,6 +78,8 @@
 			top_weapon = stat_entity
 
 /datum/entity/player_stats/human/proc/track_job_playtime(var/job, var/time = 0)
+	if(!job)
+		return
 	var/datum/entity/player_stats/job/S = setup_job_stats(job)
 	if(!S)
 		return

@@ -145,12 +145,16 @@
 
 /mob/living/carbon/human/track_mob_death(var/cause, var/cause_mob)
 	. = ..(cause, cause_mob, job)
+	if(statistic_exempt)
+		return
 	if(mind)
 		var/datum/entity/player_stats/human/human_stats = mind.setup_human_stats()
 		human_stats.death_list.Insert(1, .)
 	if(cause_mob)
 		var/mob/M = cause_mob
 		var/job_name = get_actual_job_name(src)
+		if(!job_name)
+			return
 
 		if(M.faction == faction && round_statistics)
 			round_statistics.total_friendly_fire_kills += 1
@@ -160,6 +164,8 @@
 
 /mob/living/carbon/Xenomorph/track_mob_death(var/cause, var/cause_mob)
 	. = ..(cause, cause_mob, caste_name)
+	if(statistic_exempt)
+		return
 	if(mind)
 		var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
 		xeno_stats.death_list.Insert(1, .)

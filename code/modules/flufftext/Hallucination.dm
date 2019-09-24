@@ -388,27 +388,4 @@ var/list/non_fakeattack_weapons = list(/obj/item/device/aicard,\
 	F.up = image(clone,dir = NORTH)
 	F.down = image(clone,dir = SOUTH)
 
-//	F.base = new /icon(clone.stand_icon)
-//	F.currentimage = new /image(clone)
-
-/*
-
-
-
-	F.left = new /icon(clone.stand_icon,dir=WEST)
-	for(var/icon/i in clone.overlays)
-		F.left.Blend(i)
-	F.up = new /icon(clone.stand_icon,dir=NORTH)
-	for(var/icon/i in clone.overlays)
-		F.up.Blend(i)
-	F.down = new /icon(clone.stand_icon,dir=SOUTH)
-	for(var/icon/i in clone.overlays)
-		F.down.Blend(i)
-	F.right = new /icon(clone.stand_icon,dir=EAST)
-	for(var/icon/i in clone.overlays)
-		F.right.Blend(i)
-
-	target << F.up
-	*/
-
 	F.updateimage()

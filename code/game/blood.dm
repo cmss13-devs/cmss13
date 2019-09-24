@@ -1,8 +1,4 @@
 
-
-
-
-
 //to add a mob's dna info into an object's blood_DNA list.
 /atom/proc/transfer_mob_blood_dna(mob/living/L)
 	// Returns 0 if we have that blood already
@@ -42,10 +38,12 @@
 
 /////// add_blood ///////////////////
 
+/obj/item
+	var/global/list/blood_overlay_cache = list()
+
 //to add blood onto something, with blood dna info to include.
 /atom/proc/add_blood(list/blood_dna, b_color)
 	return 0
-
 
 /turf/add_blood(list/blood_dna, b_color)
 	var/obj/effect/decal/cleanable/blood/splatter/B = locate() in src
@@ -57,14 +55,12 @@
 	B.transfer_blood_dna(blood_dna) //give blood info to the blood decal.
 	return 1 //we bloodied the floor
 
-
 /obj/add_blood(list/blood_dna, b_color)
 	if(flags_atom & NOBLOODY)
 		return 0
 	. = transfer_blood_dna(blood_dna)
 	if(b_color)
 		blood_color = b_color
-
 
 /obj/item/add_blood(list/blood_dna, b_color)
 	if(flags_atom & NOBLOODY)
@@ -80,19 +76,18 @@
 		overlays += blood_overlay
 	return 1 //we applied blood to the item
 
-
-/obj/item/proc/generate_blood_overlay()
-	if(!blood_overlay)
-		var/icon/I = new /icon(icon, icon_state)
-		I.Blend(new /icon('icons/effects/blood.dmi', rgb(255,255,255)),ICON_ADD) //fills the icon_state with white (except where it's transparent)
-		I.Blend(new /icon('icons/effects/blood.dmi', "itemblood"),ICON_MULTIPLY) //adds blood and the remaining white areas become transparant
-		blood_overlay = image(I)
-
-		blood_overlay.color = blood_color
-		overlays += blood_overlay
-
-
-
+/obj/item/proc/generate_blood_overlay(force = FALSE)
+	if(blood_overlay && !force)
+		return
+	if(blood_overlay_cache["[icon]" + icon_state])
+		blood_overlay = blood_overlay_cache["[icon]" + icon_state]
+		return
+	var/icon/I = new /icon(icon, icon_state)
+	I.Blend(new /icon('icons/effects/blood.dmi', rgb(255,255,255)), ICON_ADD) //fills the icon_state with white (except where it's transparent)
+	I.Blend(new /icon('icons/effects/blood.dmi', "itemblood"), ICON_MULTIPLY) //adds blood and the remaining white areas become transparant
+	blood_overlay = image(I)
+	blood_overlay.appearance_flags |= NO_CLIENT_COLOR
+	blood_overlay_cache["[icon]" + icon_state] = blood_overlay
 
 /mob/living/carbon/human/add_blood(list/blood_dna, b_color)
 	if(wear_suit)
@@ -113,11 +108,6 @@
 	update_inv_gloves()	//handles bloody hands overlays and updating
 	return 1
 
-
-
-
-
-
 /atom/proc/clean_blood()
 	germ_level = 0
 	if(istype(blood_DNA, /list))
@@ -130,7 +120,6 @@
 	. = ..()
 	if(blood_overlay)
 		overlays.Remove(blood_overlay)
-
 
 /obj/item/clothing/gloves/clean_blood()
 	. = ..()
@@ -156,7 +145,3 @@
 		feet_blood_DNA = null
 		update_inv_shoes()
 		return 1
-
-
-
-

@@ -109,9 +109,15 @@ Currently only has the tank hardpoints
 	return image(icon = "[disp_icon]_[icon_suffix]", icon_state = "[disp_icon_state]_[icon_state_suffix]", pixel_x = x_offset, pixel_y = y_offset)
 
 /obj/item/hardpoint/proc/firing_arc(var/atom/A)
+	
+	if (!owner)
+		return
+
 	var/turf/T = get_turf(A)
 	var/dx = T.x - owner.x
 	var/dy = T.y - owner.y
+
+
 	var/deg = 0
 	switch(owner.dir)
 		if(EAST) deg = 0

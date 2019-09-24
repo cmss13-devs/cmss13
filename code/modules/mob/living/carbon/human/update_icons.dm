@@ -709,7 +709,7 @@ var/global/list/damage_icon_parts = list()
 
 /mob/living/carbon/human/update_inv_legcuffed(var/update_icons=1)
 	if(legcuffed)
-		overlays_standing[LEGCUFF_LAYER] = handcuffed.get_mob_overlay(src, WEAR_LEGCUFFS)
+		overlays_standing[LEGCUFF_LAYER] = legcuffed.get_mob_overlay(src, WEAR_LEGCUFFS)
 	else
 		overlays_standing[LEGCUFF_LAYER] = null
 	if(update_icons)

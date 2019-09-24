@@ -664,6 +664,8 @@ var/list/intents = list("help","disarm","grab","hurt")
 		if(istype(A, /obj/screen/zone_sel))
 			zone = A
 
+	if (!zone) return
+
 	switch(input)
 		if("head")
 			switch(usr.zone_selected)

@@ -98,6 +98,8 @@
 				var/atom/phero_center = Q
 				if(Q.observed_xeno)
 					phero_center = Q.observed_xeno
+				if(!phero_center || !phero_center.loc)
+					return
 				if(phero_center.loc.z == Q.loc.z)//Only same Z-level
 					var/pheromone_range = round(6 + aura_strength * 2)
 					for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, phero_center)) //Goes from 8 for Queen to 16 for Ancient Queen

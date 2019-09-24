@@ -778,7 +778,8 @@
 		//don't show xenos in the thunderdome when admins test stuff.
 		if(X.z == ADMIN_Z_LEVEL)
 			continue
-		xeno_counts[X.caste.tier+1][X.caste.caste_name]++
+		if(X.caste)
+			xeno_counts[X.caste.tier+1][X.caste.caste_name]++
 
 	return xeno_counts
 

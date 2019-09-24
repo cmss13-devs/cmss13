@@ -89,7 +89,7 @@
 
 //General proc for hivemind. Lame, but effective.
 /mob/living/carbon/Xenomorph/proc/hivemind_talk(var/message)
-	if(!message || src.stat)
+	if(!message || src.stat || !hive)
 		return
 
 	if(!hive || (!hive.living_xeno_queen && !Check_WO()))

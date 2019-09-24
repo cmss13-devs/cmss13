@@ -344,7 +344,7 @@
 	see_invisible = SEE_INVISIBLE_MINIMUM
 	see_in_dark = 8
 
-	if(caste.spit_types && caste.spit_types.len)
+	if(caste && caste.spit_types && caste.spit_types.len)
 		ammo = ammo_list[caste.spit_types[1]]
 
 	var/datum/reagents/R = new/datum/reagents(100)
@@ -354,7 +354,7 @@
 	living_xeno_list += src
 	xeno_mob_list += src
 
-	if(caste.adjust_size_x != 1)
+	if(caste && caste.adjust_size_x != 1)
 		var/matrix/M = matrix()
 		M.Scale(caste.adjust_size_x, caste.adjust_size_y)
 		transform = M
@@ -456,7 +456,7 @@
 			if(3) name = "\improper [name_prefix]Ancient Empress" //Ancient
 			if(4) name = "\improper [name_prefix]Primordial Empress" //Primordial
 	else if(isXenoPredalien(src)) name = "\improper [name_prefix][caste.display_name] ([name_client_prefix][nicknumber][name_client_postfix])"
-	else name = "\improper [name_prefix][caste.upgrade_name] [caste.caste_name] ([name_client_prefix][nicknumber][name_client_postfix])"
+	else if(caste) name = "\improper [name_prefix][caste.upgrade_name] [caste.caste_name] ([name_client_prefix][nicknumber][name_client_postfix])"
 
 	//Update linked data so they show up properly
 	real_name = name
@@ -708,7 +708,8 @@
 	actions -= mutators.action_to_remove
 
 /mob/living/carbon/Xenomorph/proc/recalculate_acid()
-	acid_level = caste.acid_level
+	if(caste)
+		acid_level = caste.acid_level
 	if(acid_level == 0)
 		return //Caste does not use acid
 	for(var/datum/action/xeno_action/activable/corrosive_acid/acid in actions)
@@ -724,7 +725,7 @@
 				acid.update_level()
 
 /mob/living/carbon/Xenomorph/proc/recalculate_weeds()
-	if(caste.weed_level == 0)
+	if(!caste || caste.weed_level == 0)
 		return //Caste does not use weeds
 	weed_level = caste.weed_level + weed_modifier
 	if(weed_level < 1)

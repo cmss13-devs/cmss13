@@ -46,15 +46,15 @@ Vehicle Modules and Ammo
 	group = "Vehicle Modules and Ammo"
 
 /datum/supply_packs/ammo_drgn_flamer
-	name = "DRG-NF flamethrower fuel tanks (x4)"
+	name = "Primary flamethrower fuel tanks (x4)"
 	contains = list(
-					/obj/item/ammo_magazine/tank/drgn_flamer,
-					/obj/item/ammo_magazine/tank/drgn_flamer,
-					/obj/item/ammo_magazine/tank/drgn_flamer,
-					/obj/item/ammo_magazine/tank/drgn_flamer)
+					/obj/item/ammo_magazine/tank/primary_flamer,
+					/obj/item/ammo_magazine/tank/primary_flamer,
+					/obj/item/ammo_magazine/tank/primary_flamer,
+					/obj/item/ammo_magazine/tank/primary_flamer)
 	cost = RO_PRICE_CHEAP
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "DRG-NF flamer fuel tanks crate"
+	containername = "Primary Flamer fuel tanks crate"
 	group = "Vehicle Modules and Ammo"
 
 /datum/supply_packs/ammo_glauncher
@@ -119,8 +119,8 @@ Vehicle Modules and Ammo
 /datum/supply_packs/tank_flamer_ammo
 	name = "Secondary Flamer Magazines (x2)"
 	contains = list(
-					/obj/item/ammo_magazine/tank/flamer,
-					/obj/item/ammo_magazine/tank/flamer)
+					/obj/item/ammo_magazine/tank/secondary_flamer,
+					/obj/item/ammo_magazine/tank/secondary_flamer)
 	cost = RO_PRICE_CHEAP
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "secondary flamer fuel tanks crate"

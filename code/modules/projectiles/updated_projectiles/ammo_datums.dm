@@ -1897,7 +1897,9 @@
 /datum/ammo/flamethrower/tank_flamer/drop_flame(var/turf/T, var/source, var/source_mob)
 	if(!istype(T)) return
 	if(locate(/obj/flamer_fire) in T) return
-	new /obj/flamer_fire(T, source, source_mob, 20, 20, fire_spread_amount = 2)
+	
+	// Very hot but burns out quickly
+	new /obj/flamer_fire(T, source, source_mob, 20, 35, "blue", fire_spread_amount = 2)
 
 /datum/ammo/flare
 	name = "flare"

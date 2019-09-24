@@ -852,6 +852,10 @@
 
 /obj/item/clothing/gloves/yautja/proc/explodey(var/mob/living/carbon/victim)
 	set waitfor = 0
+
+	if (exploding)
+		return
+
 	exploding = 1
 	var/turf/T = get_turf(victim)
 	var/mob/user = usr
@@ -922,7 +926,8 @@
 						if(A)
 							message_mods(FONT_SIZE_HUGE("ALERT: [usr] ([usr.key]) triggered the predator self-destruct sequence of [comrade] ([comrade.key]) in [A.name] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)</font>"))
 							log_attack("[usr.name] ([usr.ckey]) triggered the predator self-destruct sequence of [comrade] ([comrade.key]) in [A.name]")
-						bracer.explodey(comrade)
+						if (!bracer.exploding)
+							bracer.explodey(comrade)
 						M.visible_message(SPAN_WARNING("[M] presses a few buttons on [comrade]'s wrist bracer."),SPAN_DANGER("You activate the timer. May [comrade]'s final hunt be swift."))
 			else
 				to_chat(M, SPAN_WARNING("Your fallen comrade does not have a bracer. <b>Report this to your elder so that it's fixed.</b>"))
@@ -961,7 +966,8 @@
 		var/turf/T = get_turf(M)
 		message_mods(FONT_SIZE_HUGE("ALERT: [usr] ([usr.key]) triggered their predator self-destruct sequence [A ? "in [A.name]":""] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
 		log_attack("[usr.name] ([usr.ckey]) triggered their predator self-destruct sequence in [A ? "in [A.name]":""]")
-		explodey(M)
+		if (!exploding)
+			explodey(M)
 	return 1
 
 

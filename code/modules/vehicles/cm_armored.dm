@@ -1,4 +1,3 @@
-
 //NOT bitflags, just global constant values
 #define HDPT_PRIMARY "primary"
 #define HDPT_SECDGUN "secondary"
@@ -738,6 +737,10 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 
 	if(!HP)
 		to_chat(user, SPAN_WARNING("There is nothing installed on that slot."))
+		return
+
+	if (!user || !AM || !(AM == user.get_active_hand()))
+		to_chat(user, SPAN_WARNING("You can't reload \the [HP] with nothing in your hands. "))
 		return
 
 	HP.try_add_clip(AM, user)

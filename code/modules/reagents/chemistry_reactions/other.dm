@@ -1,4 +1,3 @@
-
 // Defines for water/potassium
 #define MAXEXPOWER 		300
 #define MAXEXSHARDS 	128
@@ -243,8 +242,8 @@
 
 
 /datum/chemical_reaction/chemfire
-	name = "Chemical Fire"
-	id = "chemical fire"
+	name = "Thermite"
+	id = "thermite"
 	result = null
 	required_reagents = list("aluminum" = 1, "phoron" = 1, "sacid" = 1 )
 	result_amount = 1
@@ -307,7 +306,7 @@
 	smoke.start()
 	smoke = null
 
-	new /obj/flamer_fire(location, "[initial(name)] chemical fire", user, duration, intensity, firecolor, radius, FALSE, flameshape)
+	new /obj/flamer_fire(location, "[initial(name)] fire", user, duration, intensity, firecolor, radius, FALSE, flameshape)
 	sleep(5)
 	playsound(location, 'sound/weapons/gun_flamethrower1.ogg', 25, 1)
 

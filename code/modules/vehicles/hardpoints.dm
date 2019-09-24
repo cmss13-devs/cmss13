@@ -214,6 +214,48 @@ Currently only has the tank hardpoints
 // PRIMARY SLOTS // START
 ////////////////////
 
+/obj/item/hardpoint/primary/flamer
+	name = "DRG-N Offensive Flamer Unit"
+	desc = "A primary weapon for the tank that spews fire everywhere."
+
+	health = 400
+
+	icon_state = "drgn_flamer"
+
+	disp_icon = "tank"
+	disp_icon_state = "drgn_flamer"
+
+	ammo = new /obj/item/ammo_magazine/tank/primary_flamer
+	point_cost = 400
+	max_angle = 120
+
+/obj/item/hardpoint/primary/flamer/apply_buff()
+	owner.cooldowns["primary"] = 20
+	owner.accuracies["primary"] = 0.75
+
+/obj/item/hardpoint/primary/flamer/is_ready()
+	if(world.time < next_use)
+		to_chat(usr, SPAN_WARNING("[name] is not ready to be used yet."))
+		return 0
+	if(health <= 0)
+		to_chat(usr, SPAN_WARNING("[name] is too broken to be used."))
+		return 0
+	return 1
+
+/obj/item/hardpoint/primary/flamer/active_effect(var/atom/A)
+	if(ammo.current_rounds <= 0)
+		to_chat(usr, SPAN_WARNING("This module does not have any ammo."))
+		return
+
+	next_use = world.time + owner.cooldowns["primary"] * owner.misc_ratios["prim_cool"]
+	if(!prob(owner.accuracies["primary"] * 100 * owner.misc_ratios["prim_acc"]))
+		A = get_step(get_turf(A), pick(cardinal))
+	var/obj/item/projectile/P = new(initial(name), weapon_source_mob)
+	P.generate_bullet(new ammo.default_ammo)
+	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
+	playsound(get_turf(src), 'sound/weapons/tank_flamethrower.ogg', 60, 1)
+	ammo.current_rounds--
+
 /obj/item/hardpoint/primary/cannon
 	name = "LTB Cannon"
 	desc = "A primary cannon for tanks that shoots explosive rounds"
@@ -342,72 +384,6 @@ Currently only has the tank hardpoints
 	playsound(get_turf(src), S, 60)
 	ammo.current_rounds--
 
-/obj/item/hardpoint/primary/flamer
-	name = "DRG-NF Flamethrower"
-	desc = "A primary weapon for tanks that spews hot fire. Hotter than your mixtape."
-
-	health = 350
-
-	icon_state = "drgn_flamer"
-
-	disp_icon = "tank"
-	disp_icon_state = "drgn_flamer"
-
-	ammo = new /obj/item/ammo_magazine/tank/drgn_flamer
-	max_angle = 45
-	point_cost = 600
-	var/max_range = 7
-
-/obj/item/hardpoint/primary/flamer/apply_buff()
-	owner.cooldowns["primary"] = 50
-	owner.accuracies["primary"] = 0.68
-
-/obj/item/hardpoint/primary/flamer/is_ready()
-	if(world.time < next_use)
-		to_chat(usr, SPAN_WARNING("[name] is not ready to be used yet."))
-		return 0
-	if(health <= 0)
-		to_chat(usr, SPAN_WARNING("[name] is too broken to be used."))
-		return 0
-	return 1
-
-/obj/item/hardpoint/primary/flamer/active_effect(var/atom/A)
-	if(ammo.current_rounds <= 0)
-		to_chat(usr, SPAN_WARNING("This module does not have any ammo."))
-		return
-
-	next_use = world.time + owner.cooldowns["primary"] * owner.misc_ratios["prim_cool"]
-	if(!prob(owner.accuracies["primary"] * 100 * owner.misc_ratios["prim_acc"]))
-		A = get_step(get_turf(A), pick(cardinal))
-	unleash_flame(A)
-
-/obj/item/hardpoint/primary/flamer/proc/unleash_flame(atom/target)
-	set waitfor = 0
-	var/turf/spawn_tile = get_step(get_step(owner, owner.dir), owner.dir)
-	var/list/turf/turfs = getline2(spawn_tile, target)
-	var/distance = 0
-	var/turf/prev_T
-	playsound(get_turf(src), 'sound/weapons/tank_flamethrower.ogg', 60, 1)
-	for(var/turf/T in turfs)
-		if(T == src.loc)
-			prev_T = T
-			continue
-		if(!ammo.current_rounds) 	break
-		if(distance >= max_range) 	break
-		if(prev_T && LinkBlocked(prev_T, T))
-			break
-		ammo.current_rounds--
-		flame_turf(T)
-		distance++
-		prev_T = T
-		sleep(1)
-
-
-/obj/item/hardpoint/primary/flamer/proc/flame_turf(turf/T)
-	if(!istype(T)) return
-
-	if(!locate(/obj/flamer_fire) in T) // No stacking flames!
-		new/obj/flamer_fire(T, initial(name), weapon_source_mob, 40, 50, "blue")
 
 /obj/item/hardpoint/primary/autocannon
 	name = "AC3-E Autocannon"
@@ -469,7 +445,7 @@ Currently only has the tank hardpoints
 
 /obj/item/hardpoint/secondary/flamer
 	name = "Secondary Flamer Unit"
-	desc = "A secondary weapon for tanks that shoots flames"
+	desc = "A secondary for tanks that spews hot fire."
 
 	health = 300
 
@@ -478,13 +454,14 @@ Currently only has the tank hardpoints
 	disp_icon = "tank"
 	disp_icon_state = "flamer"
 
-	ammo = new /obj/item/ammo_magazine/tank/flamer
-	max_angle = 90
+	ammo = new /obj/item/ammo_magazine/tank/secondary_flamer
+	max_angle = 60
 	point_cost = 400
+	var/max_range = 7
 
 /obj/item/hardpoint/secondary/flamer/apply_buff()
-	owner.cooldowns["secondary"] = 20
-	owner.accuracies["secondary"] = 0.5
+	owner.cooldowns["secondary"] = 40
+	owner.accuracies["secondary"] = 0.68
 
 /obj/item/hardpoint/secondary/flamer/is_ready()
 	if(world.time < next_use)
@@ -503,11 +480,34 @@ Currently only has the tank hardpoints
 	next_use = world.time + owner.cooldowns["secondary"] * owner.misc_ratios["secd_cool"]
 	if(!prob(owner.accuracies["secondary"] * 100 * owner.misc_ratios["secd_acc"]))
 		A = get_step(get_turf(A), pick(cardinal))
-	var/obj/item/projectile/P = new(initial(name), weapon_source_mob)
-	P.generate_bullet(new ammo.default_ammo)
-	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
+	unleash_flame(A)
+
+/obj/item/hardpoint/secondary/flamer/proc/unleash_flame(atom/target)
+	set waitfor = 0
+	var/turf/spawn_tile = get_step(get_step(owner, owner.dir), owner.dir)
+	var/list/turf/turfs = getline2(spawn_tile, target)
+	var/distance = 0
+	var/turf/prev_T
 	playsound(get_turf(src), 'sound/weapons/tank_flamethrower.ogg', 60, 1)
-	ammo.current_rounds--
+	for(var/turf/T in turfs)
+		if(T == src.loc)
+			prev_T = T
+			continue
+		if(!ammo.current_rounds) 	break
+		if(distance >= max_range) 	break
+		if(prev_T && LinkBlocked(prev_T, T))
+			break
+		ammo.current_rounds--
+		flame_turf(T)
+		distance++
+		prev_T = T
+		sleep(1)
+
+/obj/item/hardpoint/secondary/flamer/proc/flame_turf(turf/T)
+	if(!istype(T)) return
+
+	if(!locate(/obj/flamer_fire) in T) // No stacking flames!
+		new/obj/flamer_fire(T, initial(name), weapon_source_mob, 35, 40)
 
 /obj/item/hardpoint/secondary/towlauncher
 	name = "TOW Launcher"
@@ -999,28 +999,28 @@ obj/item/hardpoint/armor/ballistic/remove_buff()
 	point_cost = 200
 
 
-/obj/item/ammo_magazine/tank/flamer
+/obj/item/ammo_magazine/tank/secondary_flamer
 	name = "Tank Mini-Flamer Magazine"
 	desc = "A secondary armament flamethrower magazine"
 	caliber = "UT-Napthal Fuel" //correlates to flamer mags
 	icon_state = "flametank_large"
 	w_class = SIZE_LARGE
-	default_ammo = /datum/ammo/flamethrower/tank_flamer
-	max_rounds = 120
+	max_rounds = 100
 	gun_type = /obj/item/hardpoint/secondary/flamer
 	point_cost = 100
 
-/obj/item/ammo_magazine/tank/drgn_flamer
+/obj/item/ammo_magazine/tank/primary_flamer
 	name = "Tank Flamer Magazine"
 	desc = "A primary armament flamethrower magazine"
 	caliber = "Napalm B" //correlates to flamer mags
 	icon_state = "drgn_flametank"
 	w_class = SIZE_LARGE
-	max_rounds = 100
+	max_rounds = 120
 	gun_type = /obj/item/hardpoint/primary/flamer
+	default_ammo = /datum/ammo/flamethrower/tank_flamer
 	point_cost = 200
 
-/obj/item/ammo_magazine/tank/ace_autocannon/update_icon()
+/obj/item/ammo_magazine/tank/primary_flamer/update_icon()
 	if(current_rounds > 0)
 		icon_state = "drgn_flametank"
 	else

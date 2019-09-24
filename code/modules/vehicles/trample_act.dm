@@ -1,8 +1,18 @@
 //All the special cases in which the tank can run over things, and what happens.
 
+#define TANK_DAMAGE_TIER_1  22.5
+#define TANK_DAMAGE_TIER_2  18.0
+#define TANK_DAMAGE_TIER_3  13.5
+#define TANK_DAMAGE_SPECIAL 10.0 // Larva, Queen, Abomination, or Xenoborg
+#define TANK_DAMAGE_MIN		5.0	 // Minimum is 5% damage from a ram
+
+#define TANK_DAMAGE_OVERDRIVE_BUFF	3			// Overdrive enhancer damage buff
+#define TANK_DAMAGE_REDUCTION_ARMOR_MULT 12		// How much we divide our armor by to get the percentage reduction
+
 //Tramplin' time, but other than that identical
 /obj/vehicle/multitile/hitbox/cm_armored/Bump(var/atom/A)
 	. = ..()
+
 	var/obj/vehicle/multitile/root/cm_armored/CA = root
 	if(isliving(A))
 		var/mob/living/L = A
@@ -35,19 +45,42 @@
 			if (isXenoDefender(X))
 				if (X.fortify)
 					blocked = 1
-
+	
 			if(blocked)
 				X.visible_message(SPAN_DANGER("[X] digs it's claws into the ground, standing it's ground, halting [src] in it's tracks!"),
 				SPAN_DANGER("You dig your claws into the ground, stopping [src] in it's tracks!"))
 				return FALSE
 
+			// This could 100% be coded as max(TANK_DAMAGE_MIN, 22.5-4.5*X.tier) but I think this is more readable, plus it lets me avoid a special case for Queen/Larva/Abom.
+			var/damage_percentage = TANK_DAMAGE_SPECIAL // Queen and abomb
+			switch (X.tier)
+				if (1)
+					damage_percentage = TANK_DAMAGE_TIER_1 // 2.5 * 9 = 22.5
+				if (2)
+					damage_percentage = TANK_DAMAGE_TIER_2 // 18%
+				if (3)
+					damage_percentage = TANK_DAMAGE_TIER_3 // 13.5%
+
+			damage_percentage -= round((X.armor_deflection*(X.armor_integrity/100)) / TANK_DAMAGE_REDUCTION_ARMOR_MULT) // Ravager reduces percentage by ~50% by virtue of having very high armor.
+
+			if (locate(/obj/item/hardpoint/support/overdrive_enhancer) in src)
+				damage_percentage += TANK_DAMAGE_OVERDRIVE_BUFF
+
+			damage_percentage = max(TANK_DAMAGE_OVERDRIVE_BUFF, max(0, damage_percentage))
+			damage_percentage = max(damage_percentage, TANK_DAMAGE_MIN)
+	
+			X.adjustBruteLoss(round((X.maxHealth / 100) * damage_percentage))
+
+
+		else
+			if(is_knocked_down)
+				L.KnockDown(3, 1)
+
+			if(takes_damage)
+				L.apply_damage(7 + rand(0, 5), BRUTE)
+		
 		if(!L.is_mob_incapacitated())
 			step_away(L,src)
-
-		if(is_knocked_down)
-			L.KnockDown(3, 1)
-		if(takes_damage)
-			L.apply_damage(7 + rand(0, 5), BRUTE)
 
 		playsound(loc, "punch", 25, 1)
 		L.last_damage_mob = driver

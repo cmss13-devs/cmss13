@@ -777,8 +777,8 @@
 	can_hold = list(
 		/obj/item/ammo_magazine/tank/ltb_cannon,
 		/obj/item/ammo_magazine/tank/ltaaap_minigun,
-		/obj/item/ammo_magazine/tank/flamer,
-		/obj/item/ammo_magazine/tank/drgn_flamer,
+		/obj/item/ammo_magazine/tank/primary_flamer,
+		/obj/item/ammo_magazine/tank/secondary_flamer,
 		/obj/item/ammo_magazine/tank/ace_autocannon,
 		/obj/item/ammo_magazine/tank/towlauncher,
 		/obj/item/ammo_magazine/tank/m56_cupola,

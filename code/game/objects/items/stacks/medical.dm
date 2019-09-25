@@ -156,9 +156,8 @@
 
 		if(affecting.surgery_open_stage == 0)
 			var/bandaged = affecting.bandage()
-			var/disinfected = affecting.disinfect()
 
-			if(!(bandaged || disinfected))
+			if(!bandaged)
 				to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been treated."))
 				return 1
 			else

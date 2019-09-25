@@ -34,22 +34,11 @@
 	//No need to update all of these procs if the guy is dead.
 	if(!in_stasis)
 		if(stat != DEAD)
-			if(life_tick % 2 == 0 || failed_last_breath || (health < config.health_threshold_crit)) //First, resolve location and get a breath
-				breathe() //Only try to take a breath every 4 ticks, unless suffocating
-
-			// Moved this from /mob/living/carbon/Life()
-			// Increase germ_level regularly
-			if(germ_level < GERM_LEVEL_AMBIENT)	//if you're just standing there, you shouldn't get more germs beyond an ambient level
-				germ_level += 0.3
-
-			//Mutations and radiation
-			if(radiation>0) //moved check to here because fuck byond call optimization
-				handle_mutations_and_radiation()
+			if(life_tick % 3 == 0 || failed_last_breath || (health < config.health_threshold_crit)) //First, resolve location and get a breath
+				breathe() //Only try to take a breath every 3 ticks, unless suffocating
 
 			//Chemicals in the body
 			handle_chemicals_in_body()
-
-			//Disabilities ARE NOT HANDLED, NOT NEEDED
 			
 			//Organs and blood
 			handle_organs()

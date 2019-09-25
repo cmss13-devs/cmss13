@@ -155,8 +155,6 @@
 				if(I.robotic == ORGAN_ASSISTED||I.robotic == ORGAN_ROBOT)
 					// we can't deal with these
 					continue
-				if(I.germ_level > 1)
-					surgery_list += create_autodoc_surgery(L,ORGAN_SURGERY,"germs",0,I)
 				if(I.damage > 0)
 					if(I.name == "eyeballs") // treat eye surgery differently
 						continue
@@ -180,8 +178,6 @@
 				for(var/I in L.implants)
 					if(!is_type_in_list(I,known_implants))
 						surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"shrapnel")
-			if(L.germ_level > INFECTION_LEVEL_ONE)
-				surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"germs")
 			if(L.surgery_open_stage)
 				surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"open")
 	var/datum/internal_organ/I = M.internal_organs_by_name["eyes"]
@@ -259,22 +255,6 @@
 		switch(S.type_of_surgery)
 			if(ORGAN_SURGERY)
 				switch(S.surgery_procedure)
-					if("germs") // Just dose them with the maximum amount of antibiotics and hope for the best
-						if(prob(30)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Beginning organ disinfection.");
-						var/datum/reagent/R = chemical_reagents_list["spaceacillin"]
-						var/amount = R.overdose - H.reagents.get_reagent_amount("spaceacillin")
-						var/inject_per_second = 3
-						to_chat(occupant, SPAN_INFO("You feel a soft prick from a needle."))
-						while(amount > 0)
-							if(!surgery) break
-							if(amount < inject_per_second)
-								H.reagents.add_reagent("spaceacillin",amount)
-								break
-							else
-								H.reagents.add_reagent("spaceacillin",inject_per_second)
-								amount -= inject_per_second
-								sleep(10*surgery_mod)
-
 					if("damage")
 						if(prob(30)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Beginning organ restoration.");
 						if(S.unneeded)
@@ -460,23 +440,6 @@
 						if(!surgery) break
 						close_incision(H,S.limb_ref)
 
-					if("germ")
-						if(prob(30)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Beginning limb disinfection.");
-
-						var/datum/reagent/R = chemical_reagents_list["spaceacillin"]
-						var/amount = (R.overdose/2) - H.reagents.get_reagent_amount("spaceacillin")
-						var/inject_per_second = 3
-						to_chat(occupant, SPAN_INFO("You feel a soft prick from a needle."))
-						while(amount > 0)
-							if(!surgery) break
-							if(amount < inject_per_second)
-								H.reagents.add_reagent("spaceacillin",amount)
-								break
-							else
-								H.reagents.add_reagent("spaceacillin",inject_per_second)
-								amount -= inject_per_second
-								sleep(10)
-
 					if("facial") // dumb but covers for incomplete facial surgery
 						if(prob(30)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Beginning Facial Reconstruction Surgery.");
 						if(S.unneeded)
@@ -539,7 +502,6 @@
 		sleep(CAUTERY_MAX_DURATION*surgery_mod)
 		if(!surgery) return
 		L.surgery_open_stage = 0
-		L.germ_level = 0
 		L.status &= ~LIMB_BLEEDING
 		target.updatehealth()
 
@@ -807,9 +769,6 @@
 									dat += "Blood Transfer"
 						if(ORGAN_SURGERY)
 							switch(A.surgery_procedure)
-								if("germs")
-									surgeryqueue["organgerms"] = 1
-									dat += "Organ Infection Treatment"
 								if("damage")
 									surgeryqueue["organdamage"] = 1
 									dat += "Organ Damage Treatment"
@@ -833,9 +792,6 @@
 								if("shrapnel")
 									surgeryqueue["shrapnel"] = 1
 									dat += "Shrapnel Removal Surgery"
-								if("germ")
-									surgeryqueue["limbgerm"] = 1
-									dat += "Limb Disinfection Procedure"
 								if("facial")
 									surgeryqueue["facial"] = 1
 									dat += "Facial Reconstruction Surgery"
@@ -858,8 +814,6 @@
 					dat += "<a href='?src=\ref[src];broken=1'>Broken Bone Surgery</a><br>"
 				if(isnull(surgeryqueue["internal"]))
 					dat += "<a href='?src=\ref[src];internal=1'>Internal Bleeding Surgery</a><br>"
-				if(isnull(surgeryqueue["limbgerm"]))
-					dat += "<a href='?src=\ref[src];limbgerm=1'>Limb Disinfection Procedure</a><br>"
 				if(isnull(surgeryqueue["shrapnel"]))
 					dat += "<a href='?src=\ref[src];shrapnel=1'>Shrapnel Removal Surgery</a><br>"
 				dat += "<b>Organ Surgeries</b>"
@@ -870,8 +824,6 @@
 					dat += "<a href='?src=\ref[src];necro=1'>Necrosis Removal Surgery</a><br>"
 				if(isnull(surgeryqueue["organdamage"]))
 					dat += "<a href='?src=\ref[src];organdamage=1'>Organ Damage Treatment</a><br>"
-				if(isnull(surgeryqueue["organgerms"]))
-					dat += "<a href='?src=\ref[src];organgerms=1'>Organ Infection Treatment</a><br>"
 				dat += "<b>Hematology Treatments</b>"
 				dat += "<br>"
 				if(isnull(surgeryqueue["blood"]))
@@ -924,9 +876,6 @@
 				updateUsrDialog()
 			if(href_list["blood"])
 				N.fields["autodoc_manual"] += create_autodoc_surgery(null,EXTERNAL_SURGERY,"blood")
-				updateUsrDialog()
-			if(href_list["organgerms"])
-				N.fields["autodoc_manual"] += create_autodoc_surgery(null,ORGAN_SURGERY,"germs")
 				updateUsrDialog()
 			if(href_list["eyes"])
 				N.fields["autodoc_manual"] += create_autodoc_surgery(null,ORGAN_SURGERY,"eyes",0,connected.occupant.internal_organs_by_name["eyes"])
@@ -999,9 +948,6 @@
 									needed++
 				if(!needed)
 					N.fields["autodoc_manual"] += create_autodoc_surgery(null,LIMB_SURGERY,"shrapnel",1)
-				updateUsrDialog()
-			if(href_list["limbgerm"])
-				N.fields["autodoc_manual"] += create_autodoc_surgery(null,LIMB_SURGERY,"germ")
 				updateUsrDialog()
 
 			if(href_list["facial"])

@@ -921,7 +921,6 @@ client
 
 		EO.status = NOFLAGS
 		EO.perma_injury = 0
-		EO.germ_level = 0
 		EO.reset_limb_surgeries()
 		M.update_body(0)
 		M.updatehealth()

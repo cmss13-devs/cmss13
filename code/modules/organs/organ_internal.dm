@@ -20,28 +20,10 @@
 	var/rejecting            // Is this organ already being rejected?
 	var/obj/item/organ/organ_holder // If not in a body, held in this item.
 	var/list/transplant_data
-	var/germ_level = 0		// INTERNAL germs inside the organ, this is BAD if it's greater than INFECTION_LEVEL_ONE
 
 
 /datum/internal_organ/proc/process()
 		return 0
-
-//Germs
-/datum/internal_organ/proc/handle_antibiotics()
-	var/antibiotics = owner.reagents.get_reagent_amount("spaceacillin")
-
-	if (!germ_level || antibiotics < MIN_ANTIBIOTICS)
-		return
-
-	if (germ_level < 10)
-		germ_level = 0	//cure instantly
-	else if (germ_level < INFECTION_LEVEL_ONE)
-		germ_level -= 4
-	else if (germ_level < INFECTION_LEVEL_TWO)
-		germ_level -= 3	//at germ_level == 500, this should cure the infection in a minute
-	else
-		germ_level -= 2 //at germ_level == 1000, this will cure the infection in 5 minutes
-
 
 /datum/internal_organ/proc/rejuvenate()
 	damage=0
@@ -65,39 +47,6 @@
 			if(E.internal_organs == null)
 				E.internal_organs = list()
 			E.internal_organs |= src
-
-/datum/internal_organ/process()
-
-	if(germ_level == 0)
-		return
-	//Process infections
-	if (robotic >= 2 || (owner.species && owner.species.flags & IS_PLANT))	//TODO make robotic internal and external organs separate types of organ instead of a flag
-		germ_level = 0
-		return
-
-	if(owner.bodytemperature >= 170)	//cryo stops germs from moving and doing their bad stuffs
-		//** Handle antibiotics and curing infections
-		handle_antibiotics()
-
-		//** Handle the effects of infections
-		var/antibiotics = owner.reagents.get_reagent_amount("spaceacillin")
-
-		if (germ_level > 0 && germ_level < INFECTION_LEVEL_ONE/2 && prob(30))
-			germ_level--
-
-		if (germ_level >= INFECTION_LEVEL_ONE/2)
-			//aiming for germ level to go from ambient to INFECTION_LEVEL_TWO in an average of 15 minutes
-			if(antibiotics < MIN_ANTIBIOTICS && prob(round(germ_level/6)))
-				germ_level++
-
-		if (germ_level >= INFECTION_LEVEL_TWO)
-			var/datum/limb/parent = owner.get_limb(parent_limb)
-			//spread germs
-			if (antibiotics < MIN_ANTIBIOTICS && parent.germ_level < germ_level && ( parent.germ_level < INFECTION_LEVEL_ONE*2 || prob(30) ))
-				parent.germ_level++
-
-			if (prob(3))	//about once every 30 seconds
-				take_damage(1,silent=prob(30))
 
 /datum/internal_organ/proc/take_damage(amount, var/silent=0)
 	if(src.robotic == ORGAN_ROBOT)
@@ -175,9 +124,6 @@
 
 /datum/internal_organ/lungs/process()
 	..()
-	if (germ_level > INFECTION_LEVEL_ONE)
-		if(prob(5))
-			owner.emote("cough")		//respitory tract infection
 
 	if(is_bruised() && !owner.reagents.get_reagent_amount("peridaxon") >= 0.05)
 		if(prob(2))
@@ -204,13 +150,6 @@
 
 /datum/internal_organ/liver/process()
 	..()
-
-	if (germ_level > INFECTION_LEVEL_ONE)
-		if(prob(1))
-			to_chat(owner, SPAN_WARNING("Your skin itches."))
-	if (germ_level > INFECTION_LEVEL_TWO)
-		if(prob(1))
-			spawn owner.vomit()
 
 	if(owner.life_tick % PROCESS_ACCURACY == 0)
 
@@ -318,12 +257,6 @@
 /datum/internal_organ/eyes/prosthetic
 	robotic = ORGAN_ROBOT
 	removed_type = /obj/item/organ/eyes/prosthetic
-
-
-/datum/internal_organ/appendix
-	name = "appendix"
-	parent_limb = "groin"
-	removed_type = /obj/item/organ/appendix
 
 /datum/internal_organ/proc/remove(var/mob/user)
 

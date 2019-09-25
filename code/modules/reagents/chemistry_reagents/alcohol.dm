@@ -163,11 +163,6 @@
 	color = "#0064C8" // rgb: 0, 100, 200
 	boozepwr = 2
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.radiation = max(M.radiation-1,0)
-
 /datum/reagent/ethanol/bilk
 	name = "Bilk"
 	id = "bilk"

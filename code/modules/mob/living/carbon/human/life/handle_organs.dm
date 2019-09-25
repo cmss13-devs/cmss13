@@ -26,12 +26,6 @@
 					custom_pain("You feel broken bones moving in your [E.display_name]!", 1)
 					I.take_damage(rand(3,5))
 
-				//Moving makes open wounds get infected much faster
-				if (E.wounds.len)
-					for(var/datum/wound/W in E.wounds)
-						if (W.infection_check())
-							W.germ_level += 1
-
 			if(E.name in list("l_leg","l_foot","r_leg","r_foot") && !lying)
 				if (!E.is_usable() || E.is_malfunctioning() || (E.is_broken() && !(E.status & LIMB_SPLINTED)))
 					leg_tally--			// let it fail even if just foot&leg

@@ -224,7 +224,6 @@
 					/obj/item/reagent_container/glass/bottle/antitoxin = 4,
 					/obj/item/reagent_container/glass/bottle/bicaridine = 4,
 					/obj/item/reagent_container/glass/bottle/inaprovaline = 4,
-					/obj/item/reagent_container/glass/bottle/spaceacillin = 4,
 					/obj/item/reagent_container/glass/bottle/peridaxon = 2,
 					/obj/item/reagent_container/glass/bottle/kelotane = 4,
 					/obj/item/reagent_container/glass/bottle/dexalin = 4,
@@ -250,7 +249,6 @@
 	products = list(/obj/item/reagent_container/glass/bottle/antitoxin = 8,
 					/obj/item/reagent_container/glass/bottle/bicaridine = 8,
 					/obj/item/reagent_container/glass/bottle/inaprovaline = 8,
-					/obj/item/reagent_container/glass/bottle/spaceacillin = 8,
 					/obj/item/reagent_container/glass/bottle/peridaxon = 4,
 					/obj/item/reagent_container/glass/bottle/kelotane = 8,
 					/obj/item/reagent_container/glass/bottle/dexalin = 8,
@@ -277,7 +275,6 @@
 					/obj/item/reagent_container/glass/bottle/oxycodone = 10,
 					/obj/item/reagent_container/glass/bottle/peridaxon = 10,
 					/obj/item/reagent_container/glass/bottle/stoxin = 10,
-					/obj/item/reagent_container/glass/bottle/spaceacillin = 10,
 					/obj/item/reagent_container/glass/bottle/tramadol = 10,
 					/obj/item/reagent_container/hypospray = 20,
 					/obj/item/reagent_container/syringe = 20

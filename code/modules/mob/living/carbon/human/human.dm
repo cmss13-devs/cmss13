@@ -1052,13 +1052,6 @@
 		return NEUTER
 	return gender
 
-/mob/living/carbon/human/proc/increase_germ_level(n)
-	if(gloves)
-		gloves.germ_level += n
-	else
-		germ_level += n
-
-
 /mob/living/carbon/human/revive(keep_viruses)
 	for (var/datum/limb/O in limbs)
 		if(O.status & LIMB_ROBOT)
@@ -1066,7 +1059,6 @@
 		else
 			O.status = NOFLAGS
 		O.perma_injury = 0
-		O.germ_level = 0
 		O.wounds.Cut()
 		O.heal_damage(1000,1000,1,1)
 		O.reset_limb_surgeries()

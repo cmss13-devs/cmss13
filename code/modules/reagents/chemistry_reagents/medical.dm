@@ -170,17 +170,6 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	chemclass = CHEM_CLASS_UNCOMMON
 
-	//makes you squeaky clean
-/datum/reagent/sterilizine/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)
-	if(method == TOUCH)
-		M.germ_level -= min(volume*20, M.germ_level)
-
-/datum/reagent/sterilizine/reaction_obj(var/obj/O, var/volume)
-	O.germ_level -= min(volume*20, O.germ_level)
-
-/datum/reagent/sterilizine/reaction_turf(var/turf/T, var/volume)
-	T.germ_level -= min(volume*20, T.germ_level)
-
 /datum/reagent/leporazine
 	name = "Leporazine"
 	id = "leporazine"
@@ -391,7 +380,6 @@
 	M.reagents.remove_all_type(/datum/reagent/toxin, 5*REM, 0, 1)
 	M.setCloneLoss(0)
 	M.setOxyLoss(0)
-	M.radiation = 0
 	M.heal_limb_damage(5,5)
 	M.adjustToxLoss(-5)
 	M.hallucination = 0
@@ -445,7 +433,6 @@
 	M.reagents.remove_all_type(/datum/reagent/toxin, 5*REM, 0, 1)
 	M.setCloneLoss(0)
 	M.setOxyLoss(0)
-	M.radiation = 0
 	M.adjustToxLoss(-5)
 	M.hallucination = 0
 	M.setBrainLoss(0)
@@ -523,56 +510,6 @@
 	M.AdjustStunned(-2)
 	M.AdjustKnockeddown(-1)
 
-/datum/reagent/hyronalin
-	name = "Hyronalin"
-	id = "hyronalin"
-	description = "Hyronalin is a medicinal drug used to counter the effect of radiation poisoning. Overdosing is quite toxic."
-	reagent_state = LIQUID
-	color = "#C8A5DC" // rgb: 200, 165, 220
-	custom_metabolism = 0.05
-	overdose = REAGENTS_OVERDOSE
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	scannable = 1
-	chemclass = CHEM_CLASS_COMMON
-
-/datum/reagent/hyronalin/on_mob_life(var/mob/living/M as mob)
-	. = ..()
-	if(!.) return
-	M.radiation = max(M.radiation-3*REM,0)
-
-/datum/reagent/hyronalin/on_overdose(mob/living/M)
-	M.apply_damage(2, TOX)
-
-/datum/reagent/hyronalin/on_overdose_critical(mob/living/M)
-	M.apply_damages(1, 1, 3)
-
-/datum/reagent/arithrazine
-	name = "Arithrazine"
-	id = "arithrazine"
-	description = "A slightly unstable medication used to treat the most extreme cases of radiation poisoning. Functions as a mild anti-toxin and causes minor tissue damage. Overdosing is very toxic."
-	reagent_state = LIQUID
-	color = "#C8A5DC" // rgb: 200, 165, 220
-	custom_metabolism = 0.05
-	overdose = REAGENTS_OVERDOSE/2
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
-	chemclass = CHEM_CLASS_COMMON
-
-/datum/reagent/arithrazine/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	if(M.stat == DEAD)
-		return  //See above, down and around. --Agouri
-	M.radiation = max(M.radiation-7*REM,0)
-	M.adjustToxLoss(-1*REM)
-	if(prob(15))
-		M.take_limb_damage(1, 0)
-
-/datum/reagent/arithrazine/on_overdose(mob/living/M)
-		M.apply_damage(2, TOX)
-
-/datum/reagent/arithrazine/on_overdose_critical(mob/living/M)
-		M.apply_damages(1, 1, 3)
-
 /datum/reagent/russianred
 	name = "Russian Red"
 	id = "russianred"
@@ -588,7 +525,6 @@
 /datum/reagent/russianred/on_mob_life(mob/living/M)
 	. = ..()
 	if(!.) return
-	M.radiation = max(M.radiation - 10 * REM, 0)
 	M.adjustToxLoss(-1*REM)
 	if(prob(50))
 		M.take_limb_damage(3, 0)

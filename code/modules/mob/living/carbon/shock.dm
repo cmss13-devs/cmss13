@@ -36,15 +36,11 @@
 					traumatic_shock += 30
 				else
 					traumatic_shock += 10
-			if(O.germ_level >= INFECTION_LEVEL_ONE)
-				traumatic_shock += O.germ_level * 0.05
 
 		//Internal organs hurt too
 		for(var/datum/internal_organ/O in M.internal_organs)
 			if(O.damage) 											
 				traumatic_shock += O.damage * 1.5
-			if(O.germ_level >= INFECTION_LEVEL_ONE) 				
-				traumatic_shock += O.germ_level * 0.05
 
 		if(M.protection_aura)
 			traumatic_shock -= M.protection_aura * 10

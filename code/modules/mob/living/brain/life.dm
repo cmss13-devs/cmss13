@@ -4,9 +4,6 @@
 	..()
 
 	if(stat != DEAD)
-		//Mutations and radiation
-		handle_mutations_and_radiation()
-
 		//Chemicals in the body
 		handle_chemicals_in_body()
 
@@ -25,42 +22,6 @@
 
 	if(client)
 		handle_regular_hud_updates()
-
-
-
-/mob/living/brain/proc/handle_mutations_and_radiation()
-
-	if (radiation)
-		if (radiation > 100)
-			radiation = 100
-			if(!container)//If it's not in an MMI
-				to_chat(src, SPAN_DANGER("You feel weak."))
-			else//Fluff-wise, since the brain can't detect anything itself, the MMI handles thing like that
-				to_chat(src, SPAN_DANGER("STATUS: CRITICAL AMOUNTS OF RADIATION DETECTED."))
-
-		switch(radiation)
-			if(1 to 49)
-				radiation--
-				if(prob(25))
-					adjustToxLoss(1)
-					updatehealth()
-
-			if(50 to 74)
-				radiation -= 2
-				adjustToxLoss(1)
-				if(prob(5))
-					radiation -= 5
-					if(!container)
-						to_chat(src, SPAN_DANGER("You feel weak."))
-					else
-						to_chat(src, SPAN_DANGER("STATUS: DANGEROUS LEVELS OF RADIATION DETECTED."))
-				updatehealth()
-
-			if(75 to 100)
-				radiation -= 3
-				adjustToxLoss(3)
-				updatehealth()
-
 
 /mob/living/brain/proc/handle_environment()
 	if(!loc)

@@ -576,11 +576,6 @@ var/global/list/obj/item/device/pda/PDAs = list()
 				scanmode = 0
 			else if((!isnull(cartridge)) && (cartridge.access_reagent_scanner))
 				scanmode = 3
-		if("Halogen Counter")
-			if(scanmode == 4)
-				scanmode = 0
-			else if((!isnull(cartridge)) && (cartridge.access_engine))
-				scanmode = 4
 		if("Honk")
 			if ( !(last_honk && world.time < last_honk + 20) )
 				playsound(loc, 'sound/items/bikehorn.ogg', 25, 1)
@@ -1052,16 +1047,6 @@ var/global/list/obj/item/device/pda/PDAs = list()
 					spawn(15)
 						for(var/blood in C.blood_DNA)
 							to_chat(user, SPAN_NOTICE(" Blood type: [C.blood_DNA[blood]]\nDNA: [blood]"))
-
-			if(4)
-				for (var/mob/O in viewers(C, null))
-					O.show_message(SPAN_DANGER("[user] has analyzed [C]'s radiation levels!"), 1)
-
-				user.show_message(SPAN_NOTICE("Analyzing Results for [C]:"))
-				if(C.radiation)
-					user.show_message(SPAN_XENOWARNING(" Radiation Level: \black [C.radiation]"))
-				else
-					user.show_message(SPAN_NOTICE("No radiation detected."))
 
 /obj/item/device/pda/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
 	if(!proximity) return

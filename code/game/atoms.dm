@@ -13,7 +13,6 @@ var/global/list/ghdel_profiling = list()
 	var/last_bumped = 0
 	var/flags_pass = 0
 	var/throwpass = 0
-	var/germ_level = GERM_LEVEL_AMBIENT // The higher the germ level, the more germ on the atom.
 
 	//Effects
 	var/list/effects_list = list()

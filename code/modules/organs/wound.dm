@@ -22,13 +22,9 @@
 	var/clamped = 0
 	// is the wound salved?
 	var/salved = 0
-	// is the wound disinfected?
-	var/disinfected = 0
 	var/created = 0
 	// number of wounds of this type
 	var/amount = 1
-	// amount of germs in the wound
-	var/germ_level = 0
 
 	/*  These are defined by the wound type and should not be changed */
 
@@ -110,15 +106,12 @@
 		if (!(other.bandaged) != !(src.bandaged)) return 0
 		if (!(other.clamped) != !(src.clamped)) return 0
 		if (!(other.salved) != !(src.salved)) return 0
-		if (!(other.disinfected) != !(src.disinfected)) return 0
-		//if (other.germ_level != src.germ_level) return 0
 		return 1
 
 	proc/merge_wound(var/datum/wound/other)
 		src.damage += other.damage
 		src.amount += other.amount
 		src.bleed_timer += other.bleed_timer
-		src.germ_level = max(src.germ_level, other.germ_level)
 		src.created = max(src.created, other.created)	//take the newer created time
 		if(other.impact_icon)
 			impact_icon.Blend(other.impact_icon, ICON_OVERLAY)
@@ -129,9 +122,6 @@
 		if (damage < 10)	//small cuts, tiny bruises, and moderate burns shouldn't be infectable.
 			return 0
 		if (is_treated() && damage < 25)	//anything less than a flesh wound (or equivalent) isn't infectable if treated properly
-			return 0
-		if (disinfected)
-			germ_level = 0	//reset this, just in case
 			return 0
 
 		if (damage_type == BRUISE && !bleeding()) //bruises only infectable if bleeding

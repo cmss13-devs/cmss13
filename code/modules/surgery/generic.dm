@@ -93,7 +93,6 @@
 
 	affected.createwound(CUT, 1)
 	affected.clamp() //Hemostat function, clamp bleeders
-	//spread_germs_to_organ(affected, user) //I don't see the reason for infection with a clean laser incision, when scalpel or ICS is fine
 	affected.update_wounds()
 
 /datum/surgery_step/generic/cut_with_laser/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
@@ -168,7 +167,6 @@
 	user.visible_message(SPAN_NOTICE("[user] clamps bleeders in [target]'s [affected.display_name] with \the [tool]."),	\
 	SPAN_NOTICE("You clamp bleeders in [target]'s [affected.display_name] with \the [tool]."))
 	affected.clamp()
-	spread_germs_to_organ(affected, user)
 
 /datum/surgery_step/generic/clamp_bleeders/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, tearing blood vessals and causing massive bleeding in [target]'s [affected.display_name] with \the [tool]!"),	\
@@ -248,7 +246,6 @@
 	user.visible_message(SPAN_NOTICE("[user] cauterizes the incision on [target]'s [affected.display_name] with \the [tool]."), \
 	SPAN_NOTICE("You cauterize the incision on [target]'s [affected.display_name] with \the [tool]."))
 	affected.surgery_open_stage = 0
-	affected.germ_level = 0
 	affected.status &= ~LIMB_BLEEDING
 
 /datum/surgery_step/generic/cauterize/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)

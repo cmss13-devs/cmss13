@@ -480,9 +480,8 @@
 		dat += "\nHealth Analyzer results for [src]:\n\tOverall Status: [src.stat > 1 ? "<b>DEAD</b>" : "<b>[src.health - src.halloss]% healthy"]</b>\n"
 	dat += "\tType:    <font color='blue'>Oxygen</font>-<font color='green'>Toxin</font>-<font color='#FFA500'>Burns</font>-<font color='red'>Brute</font>\n"
 	dat += "\tDamage: \t<font color='blue'>[OX]</font> - <font color='green'>[TX]</font> - <font color='#FFA500'>[BU]</font> - <font color='red'>[BR]</font>\n"
-	dat += "\tUntreated: {B}=Burns,{T}=Trauma,{F}=Fracture,{I}=Infection\n"
+	dat += "\tUntreated: {B}=Burns,{T}=Trauma,{F}=Fracture\n"
 
-	var/infection_present = 0
 	var/unrevivable = 0
 
 	// Show specific limb damage
@@ -495,8 +494,7 @@
 			if(org.surgery_open_stage == 0)
 				open_incision = 0
 			var/bandaged = org.is_bandaged()
-			var/disinfected = org.is_disinfected()
-			if(!(bandaged || disinfected ) || open_incision)
+			if(!bandaged || open_incision)
 				brute_treated = 1
 			if(!org.is_salved() || org.burn_dam == 0)
 				burn_treated = 1
@@ -515,15 +513,8 @@
 			if((org.status & LIMB_BROKEN) && !(org.status & LIMB_SPLINTED))
 				fracture_info = "{F}"
 				show_limb = 1
-			var/infection_info = ""
-			if(org.has_infected_wound())
-				infection_info = "{I}"
-				show_limb = 1
 			var/org_bleed = (org.status & LIMB_BLEEDING) ? "<span class='scannerb'>(Bleeding)</span>" : ""
 			var/org_necro = ""
-			if(org.status & LIMB_NECROTIZED)
-				org_necro = "<span class='scannerb'>(Necrotizing)</span>"
-				infection_present = 10
 			var/org_incision = (open_incision?" <span class='scanner'>Open surgical incision</span>":"")
 			var/org_advice = ""
 			if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
@@ -544,12 +535,12 @@
 							org_advice = " Possible Groin Fracture."
 							show_limb = 1
 			if(show_limb)
-				dat += "\t\t [org_name]: \t [burn_info] - [brute_info] [fracture_info][infection_info][org_bleed][org_necro][org_incision][org_advice]"
+				dat += "\t\t [org_name]: \t [burn_info] - [brute_info] [fracture_info][org_bleed][org_necro][org_incision][org_advice]"
 				if(org.status & LIMB_SPLINTED)
 					dat += "(Splinted)"
 				dat += "\n"
 
-	// Show red messages - broken bokes, infection, etc
+	// Show red messages - broken bokes, etc
 	if (src.getCloneLoss())
 		dat += "\t<span class='scanner'> *Subject appears to have been imperfectly cloned.</span>\n"
 	for(var/datum/disease/D in src.viruses)
@@ -572,23 +563,6 @@
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
-		for(var/X in H.limbs)
-			var/datum/limb/e = X
-			var/limb = e.display_name
-			var/can_amputate = ""
-			/*if(e.status & LIMB_BROKEN)
-				if(((e.name == "l_arm") || (e.name == "r_arm") || (e.name == "l_leg") || (e.name == "r_leg") || (e.name == "l_hand") || (e.name == "r_hand") || (e.name == "l_foot") || (e.name == "r_foot")) && (!(e.status & LIMB_SPLINTED)))
-					dat += "\t<span class='scanner'> *Unsecured fracture in subject's <b>[limb]</b>. Splinting recommended.</span>\n"*/
-			if((e.name == "l_arm") || (e.name == "r_arm") || (e.name == "l_leg") || (e.name == "r_leg") || (e.name == "l_hand") || (e.name == "r_hand") || (e.name == "l_foot") || (e.name == "r_foot"))
-				can_amputate = "or amputation"
-			if(e.germ_level >= INFECTION_LEVEL_THREE)
-				dat += "\t<span class='scanner'> *Subject's <b>[limb]</b> is in the last stage of infection. < 30u of antibiotics [can_amputate] recommended.</span>\n"
-				infection_present = 25
-			if(e.germ_level >= INFECTION_LEVEL_ONE && e.germ_level < INFECTION_LEVEL_THREE)
-				dat += "\t<span class='scanner'> *Subject's <b>[limb]</b> has an infection. Antibiotics recommended.</span>\n"
-				infection_present = 5
-			if(e.has_infected_wound())
-				dat += "\t<span class='scanner'> *Infected wound detected in subject's <b>[limb]</b>. Disinfection recommended.</span>\n"
 
 		var/core_fracture = 0
 		for(var/X in H.limbs)
@@ -657,8 +631,6 @@
 				advice += "<span class='scanner'>Administer a single dose of dylovene.</span>\n"
 			if((H.getToxLoss() > 50 || (H.getOxyLoss() > 50 && blood_volume > 400) || H.getBrainLoss() >= 10) && reagents_in_body["peridaxon"] < 5 && !reagents_in_body["hyperzine"])
 				advice += "<span class='scanner'>Administer a single dose of peridaxon.</span>\n"
-			if(infection_present && reagents_in_body["spaceacillin"] < infection_present)
-				advice += "<span class='scanner'>Administer a single dose of spaceacillin.</span>\n"
 			if(H.getOxyLoss() > 50 && reagents_in_body["dexalin"] < 5)
 				advice += "<span class='scanner'>Administer a single dose of dexalin.</span>\n"
 			if(H.getFireLoss(1) > 30 && reagents_in_body["kelotane"] < 3)

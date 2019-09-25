@@ -211,7 +211,7 @@ var/global/list/randomized_pill_icons
 		reagents.add_reagent("dexalin", 15)
 
 /obj/item/reagent_container/pill/spaceacillin
-	pill_desc = "A Spaceacillin pill. Used to treat infected wounds and slow down viral infections."
+	pill_desc = "A Spaceacillin pill. Used to slow down viral infections."
 	New()
 		..()
 		icon_state = randomized_pill_icons[12]

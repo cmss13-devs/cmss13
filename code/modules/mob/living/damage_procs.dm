@@ -57,9 +57,6 @@
 			Superslow(effect/(blocked+1))
 		if(AGONY)
 			halloss += effect // Useful for objects that cause "subdual" damage. PAIN!
-		if(IRRADIATE)
-			var/rad_protection = getarmor(null, ARMOR_RAD)/100
-			radiation += max((1-rad_protection)*effect/(blocked+1),0)//Rads auto check armor
 		if(STUTTER)
 			if(status_flags & CANSTUN) // stun is usually associated with stutter
 				stuttering = max(stuttering,(effect/(blocked+1)))
@@ -76,7 +73,6 @@
 	if(stun)		apply_effect(stun, STUN, blocked)
 	if(weaken)		apply_effect(weaken, WEAKEN, blocked)
 	if(paralyze)	apply_effect(paralyze, PARALYZE, blocked)
-	if(irradiate)	apply_effect(irradiate, IRRADIATE, blocked)
 	if(stutter)		apply_effect(stutter, STUTTER, blocked)
 	if(eyeblur)		apply_effect(eyeblur, EYE_BLUR, blocked)
 	if(drowsy)		apply_effect(drowsy, DROWSY, blocked)

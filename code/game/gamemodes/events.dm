@@ -1,19 +1,5 @@
 //this file left in for legacy support
 
-/proc/appendicitis()
-	for(var/mob/living/carbon/human/H in living_mob_list)
-		var/foundAlready = 0 // don't infect someone that already has the virus
-		for(var/datum/disease/D in H.viruses)
-			foundAlready = 1
-		if(H.stat == 2 || foundAlready)
-			continue
-
-		var/datum/disease/D = new /datum/disease/appendicitis
-		D.holder = H
-		D.affected_mob = H
-		H.viruses += D
-		break
-
 /proc/viral_outbreak(var/virus = null)
 //	command_alert("Confirmed outbreak of level 7 viral biohazard aboard [station_name]. All personnel must contain the outbreak.", "Biohazard Alert")
 //	world << sound('sound/AI/outbreak7.ogg')
@@ -59,29 +45,6 @@
 		break
 	spawn(rand(SECONDS_150, MINUTES_5)) //Delayed announcements to keep the crew on their toes.
 		marine_announcement("Confirmed outbreak of level 7 viral biohazard aboard [station_name]. All personnel must contain the outbreak.", "Biohazard Alert", 'sound/AI/outbreak7.ogg')
-
-/proc/high_radiation_event()
-
-/* // Haha, this is way too laggy. I'll keep the prison break though.
-	for(var/obj/structure/machinery/light/L in machines)
-		if(L.z != 1) continue
-		L.flicker(50)
-
-	sleep(100)
-*/
-	for(var/mob/living/carbon/human/H in living_mob_list)
-		var/turf/T = get_turf(H)
-		if(!T)
-			continue
-		if(T.z != 1)
-			continue
-		if(istype(H,/mob/living/carbon/human))
-			H.apply_effect((rand(15,75)),IRRADIATE,0)
-			if (prob(5))
-				H.apply_effect((rand(90,150)),IRRADIATE,0)
-	sleep(100)
-	marine_announcement("High levels of radiation have been detected. Report to the Medical Bay if you begin to feel symptoms such as disorientation, nausea, or halucinations.", "Anomaly Alert", 'sound/AI/radiation.ogg')
-
 
 /proc/carp_migration() // -- Darem
 	for(var/obj/effect/landmark/C in landmarks_list)

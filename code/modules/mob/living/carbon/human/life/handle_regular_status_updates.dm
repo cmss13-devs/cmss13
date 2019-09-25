@@ -124,10 +124,6 @@
 
 		confused = max(0, confused - 1)
 
-		//If you're dirty, your gloves will become dirty, too.
-		if(gloves && germ_level > gloves.germ_level && prob(10))
-			gloves.germ_level += 1
-
 		if(command_aura && !stat)
 			command_aura_strength = mind.cm_skills.get_skill_level(SKILL_LEADERSHIP) - SKILL_LEAD_BEGINNER //2 is SL, so base of 1. Goes up to 3 (CO, XO)
 			var/command_aura_range = round(4 + command_aura_strength * 1)

@@ -106,12 +106,6 @@
 	organ_tag = "liver"
 	organ_type = /datum/internal_organ/liver
 
-/obj/item/organ/appendix
-	name = "appendix"
-	icon_state = "appendix"
-	organ_type = /datum/internal_organ/appendix
-	organ_tag = "appendix"
-
 //These are here so they can be printed out via the fabricator.
 /obj/item/organ/heart/prosthetic
 	name = "circulatory pump"
@@ -161,20 +155,6 @@
 		target.attack_log += "\[[time_stamp()]\]<font color='orange'> had a vital organ ([src]) removed by [user.name] ([user.ckey]) (INTENT: [uppertext(user.a_intent)])</font>"
 		msg_admin_attack("[user.name] ([user.ckey]) removed a vital organ ([src]) from [target.name] ([target.ckey]) (INTENT: [uppertext(user.a_intent)]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
 		target.death(cause)
-
-/obj/item/organ/appendix/removed(var/mob/living/target,var/mob/living/user)
-
-	..()
-
-	var/inflamed = 0
-	for(var/datum/disease/appendicitis/appendicitis in target.viruses)
-		inflamed = 1
-		appendicitis.cure()
-		target.resistances += appendicitis
-
-	if(inflamed)
-		icon_state = "appendixinflamed"
-		name = "inflamed appendix"
 
 /obj/item/organ/eyes/removed(var/mob/living/target,var/mob/living/user)
 

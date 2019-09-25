@@ -272,7 +272,6 @@
 		"fireloss" = H.getFireLoss(),
 		"oxyloss" = H.getOxyLoss(),
 		"toxloss" = H.getToxLoss(),
-		"rads" = H.radiation,
 		"cloneloss" = H.getCloneLoss(),
 		"brainloss" = H.getBrainLoss(),
 		"knocked_out" = H.knocked_out,
@@ -312,7 +311,6 @@
 	dat += text("[]\t-Toxin Content %: []</font><br>", (occ["toxloss"] < 60 ? "<font color='blue'>" : "<font color='red'>"), occ["toxloss"])
 	dat += text("[]\t-Burn Severity %: []</font><br><br>", (occ["fireloss"] < 60 ? "<font color='blue'>" : "<font color='red'>"), occ["fireloss"])
 
-	dat += text("[]\tRadiation Level %: []</font><br>", (occ["rads"] < 10 ?"<font color='blue'>" : "<font color='red'>"), occ["rads"])
 	dat += text("[]\tGenetic Tissue Damage %: []</font><br>", (occ["cloneloss"] < 1 ?"<font color='blue'>" : "<font color='red'>"), occ["cloneloss"])
 	dat += text("[]\tApprox. Brain Damage %: []</font><br>", (occ["brainloss"] < 1 ?"<font color='blue'>" : "<font color='red'>"), occ["brainloss"])
 	dat += text("Knocked Out Summary %: [] ([] seconds left!)<br>", occ["knocked_out"], round(occ["knocked_out"] / 4))
@@ -341,8 +339,6 @@
 	for(var/datum/limb/e in occ["external_organs"])
 		var/AN = ""
 		var/open = ""
-		var/infected = ""
-		var/necrosis = ""
 		var/imp = ""
 		var/bled = ""
 		var/robot = ""
@@ -364,32 +360,10 @@
 			bled = "Bleeding:<br>"
 		if(e.status & LIMB_BROKEN)
 			AN = "[e.broken_description]:<br>"
-		if(e.status & LIMB_NECROTIZED)
-			necrosis = "Necrotizing:<br>"
 		if(e.status & LIMB_ROBOT)
 			robot = "Prosthetic:<br>"
 		if(e.surgery_open_stage)
 			open = "Open:<br>"
-
-		switch (e.germ_level)
-			if (INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + 200)
-				infected = "Mild Infection:<br>"
-			if (INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
-				infected = "Mild Infection+:<br>"
-			if (INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
-				infected = "Mild Infection++:<br>"
-			if (INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 100)
-				infected = "Acute Infection:<br>"
-			if (INFECTION_LEVEL_TWO + 100 to INFECTION_LEVEL_TWO + 200)
-				infected = "Acute Infection+:<br>"
-			if (INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)
-				infected = "Acute Infection++:<br>"
-			if (INFECTION_LEVEL_THREE to INFECTION_LEVEL_THREE + 300)
-				infected = "Septic:<br>"
-			if (INFECTION_LEVEL_THREE to INFECTION_LEVEL_THREE + 600)
-				infected = "Septic+:<br>"
-			if (INFECTION_LEVEL_THREE to INFINITY)
-				infected = "Septic++:<br>"
 
 		var/unknown_body = 0
 		if (e.implants.len)
@@ -409,10 +383,10 @@
 			else
 				imp += "Unknown body present:<br>"
 
-		if(!AN && !open && !infected & !imp && !necrosis && !bled && !internal_bleeding && !lung_ruptured)
+		if(!AN && !open && !imp && !bled && !internal_bleeding && !lung_ruptured)
 			AN = "None:"
 		if(!(e.status & LIMB_DESTROYED))
-			dat += "<td>[e.display_name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][infected][necrosis][imp][internal_bleeding][lung_ruptured]</td>"
+			dat += "<td>[e.display_name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][imp][internal_bleeding][lung_ruptured]</td>"
 		else
 			dat += "<td>[e.display_name]</td><td>-</td><td>-</td><td>Not Found</td>"
 		dat += "</tr>"
@@ -425,29 +399,8 @@
 		if(i.robotic == ORGAN_ROBOT)
 			mech = "Mechanical:<br>"
 
-		var/infection = "None"
-		switch (i.germ_level)
-			if (1 to INFECTION_LEVEL_ONE + 200)
-				infection = "Mild Infection:<br>"
-			if (INFECTION_LEVEL_ONE + 200 to INFECTION_LEVEL_ONE + 300)
-				infection = "Mild Infection+:<br>"
-			if (INFECTION_LEVEL_ONE + 300 to INFECTION_LEVEL_ONE + 400)
-				infection = "Mild Infection++:<br>"
-			if (INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + 100)
-				infection = "Acute Infection:<br>"
-			if (INFECTION_LEVEL_TWO + 100 to INFECTION_LEVEL_TWO + 200)
-				infection = "Acute Infection+:<br>"
-			if (INFECTION_LEVEL_TWO + 200 to INFECTION_LEVEL_TWO + 300)
-				infection = "Acute Infection++:<br>"
-			if (INFECTION_LEVEL_THREE to INFECTION_LEVEL_THREE + 300)
-				infection = "Septic:<br>"
-			if (INFECTION_LEVEL_THREE to INFECTION_LEVEL_THREE + 600)
-				infection = "Septic+:<br>"
-			if (INFECTION_LEVEL_THREE to INFINITY)
-				infection = "Septic++:<br>"
-
 		dat += "<tr>"
-		dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[infection]:[mech]</td><td></td>"
+		dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[mech]</td><td></td>"
 		dat += "</tr>"
 	dat += "</table>"
 

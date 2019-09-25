@@ -427,3 +427,14 @@
 /obj/item/reagent_container/glass/bottle/oxycodone/New()
 	..()
 	reagents.add_reagent("oxycodone", 10)
+
+/obj/item/reagent_container/glass/bottle/tricordrazine
+	name = "\improper Tricordrazine bottle"
+	desc = "A very small bottle. Contains tricordrazine - A weak but catch-all stimulant for treating all sorts of damage."
+	icon = 'icons/obj/items/chemistry.dmi'
+	icon_state = "bottle18"
+	volume = 30
+
+/obj/item/reagent_container/glass/bottle/tricordrazine/New()
+	..()
+	reagents.add_reagent("tricordrazine", 30)

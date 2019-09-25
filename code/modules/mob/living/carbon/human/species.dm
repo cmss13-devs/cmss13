@@ -85,7 +85,6 @@
 		"liver" =    /datum/internal_organ/liver,
 		"kidneys" =  /datum/internal_organ/kidneys,
 		"brain" =    /datum/internal_organ/brain,
-		"appendix" = /datum/internal_organ/appendix,
 		"eyes" =     /datum/internal_organ/eyes
 		)
 

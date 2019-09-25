@@ -291,11 +291,9 @@
 										PROPERTY_TOXIC = "Poisonous substance which causes harm on contact with or through absorption by organic tissues, resulting in bad health or severe illness.",\
 										PROPERTY_CORROSIVE = "Damages or destroys other substances on contact through a chemical reaction. Causes chemical burns on contact with living tissue.",\
 										PROPERTY_BIOCIDIC = "Ruptures cell membranes on contact, destroying most types of organic tissue.",\
-										PROPERTY_RADIOACTIVE = "The elements in the compound are unstable, causing an emission of ionizing radiation.",\
 										PROPERTY_HEMOLYTIC = "Causes intravascular hemolysis, resulting in the destruction of erythrocytes (red blood cells) in the bloodstream. This can result in Hemoglobinemia, where a high concentration of hemoglobin is released into the blood plasma.",\
 										PROPERTY_HEMORRAGING = "Ruptures endothelial cells making up bloodvessels, causing blood to escape from the circulatory system.",\
 										PROPERTY_CARCINOGENIC = "Penetrates the cell nucleus causing direct damage to the deoxyribonucleic acid in cells resulting in cancer and abnormal cell proliferation. In extreme cases causing hyperactive apoptosis and potentially atrophy.",\
-										PROPERTY_NECROTIZING = "The chemical eats through and rots flesh, causing infections and necrosis. High concentrations may penetrate the bone tissue and cause osteonecrosis.",\
 										PROPERTY_HEPATOTOXIC = "Damages hepatocytes in the liver, resulting in liver deterioration and eventually liver failure.",\
 										PROPERTY_NEPHROTOXIC = "Causes deterioration and damage to podocytes in the kidney resulting in potential kidney failure.",\
 										PROPERTY_PNEUMOTOXIC = "Toxic substance which causes damage to connective tissue that forms the support structure (the interstitium) of the alveoli in the lungs.",\
@@ -340,7 +338,6 @@
 										PROPERTY_NERVESTIMULATING = "Increases neuron communication speed across synapses resulting in improved reaction time, awareness and muscular control.",\
 										PROPERTY_MUSCLESTIMULATING = "Stimulates neuromuscular junctions increasing the force of muscle contractions, resulting in increased strength. High doses might exhaust the cardiac muscles.",\
 										PROPERTY_PAINKILLING = "Binds to opioid receptors in the brain and spinal cord reducing the amount of pain signals being sent to the brain.",\
-										PROPERTY_ANTISEPTIC = "Powerful antiseptic that removes internal infections by killing germs. High concentrations are toxic, but is more effective and can potentially remove necrosis.",\
 										PROPERTY_HEPATOPEUTIC = "Treats deteriorated hepatocytes and damaged tissues in the liver, restoring organ functions.",\
 										PROPERTY_NEPHROPEUTIC = "Heals damaged and deteriorated podocytes in the kidney, restoring organ functions.",\
 										PROPERTY_PNEUMOPEUTIC = "Mends the interstitium tissue of the alveoli restoring respiratory functions in the lungs.",\
@@ -436,7 +433,7 @@
 	var/info
 	if(chemical_gen_stats_list["[id]"]["properties"])
 		//The list below defines what properties should override each other.
-		var/list/conflicting_properties = list(PROPERTY_TOXIC = PROPERTY_ANTITOXIC,PROPERTY_CORROSIVE = PROPERTY_ANTICORROSIVE,PROPERTY_BIOCIDIC = PROPERTY_NEOGENETIC,PROPERTY_HYPERTHERMIC = PROPERTY_HYPOTHERMIC,PROPERTY_NUTRITIOUS = PROPERTY_KETOGENIC,PROPERTY_PAINING = PROPERTY_PAINKILLING,PROPERTY_HALLUCINOGENIC = PROPERTY_ANTIHALLUCINOGENIC,PROPERTY_HEPATOTOXIC = PROPERTY_HEPATOPEUTIC,PROPERTY_NEPHROTOXIC = PROPERTY_NEPHROPEUTIC,PROPERTY_PNEUMOTOXIC = PROPERTY_PNEUMOPEUTIC, PROPERTY_OCULOTOXIC = PROPERTY_OCULOPEUTIC, PROPERTY_CARDIOTOXIC = PROPERTY_CARDIOPEUTIC,PROPERTY_NEUROTOXIC = PROPERTY_NEUROPEUTIC, PROPERTY_FLUXING = PROPERTY_REPAIRING, PROPERTY_RELAXING = PROPERTY_MUSCLESTIMULATING,PROPERTY_ANTISEPTIC = PROPERTY_NECROTIZING,PROPERTY_HEMOGENIC = PROPERTY_HEMOLYTIC,PROPERTY_HEMOGENIC = PROPERTY_HEMORRAGING)
+		var/list/conflicting_properties = list(PROPERTY_TOXIC = PROPERTY_ANTITOXIC,PROPERTY_CORROSIVE = PROPERTY_ANTICORROSIVE,PROPERTY_BIOCIDIC = PROPERTY_NEOGENETIC,PROPERTY_HYPERTHERMIC = PROPERTY_HYPOTHERMIC,PROPERTY_NUTRITIOUS = PROPERTY_KETOGENIC,PROPERTY_PAINING = PROPERTY_PAINKILLING,PROPERTY_HALLUCINOGENIC = PROPERTY_ANTIHALLUCINOGENIC,PROPERTY_HEPATOTOXIC = PROPERTY_HEPATOPEUTIC,PROPERTY_NEPHROTOXIC = PROPERTY_NEPHROPEUTIC,PROPERTY_PNEUMOTOXIC = PROPERTY_PNEUMOPEUTIC, PROPERTY_OCULOTOXIC = PROPERTY_OCULOPEUTIC, PROPERTY_CARDIOTOXIC = PROPERTY_CARDIOPEUTIC,PROPERTY_NEUROTOXIC = PROPERTY_NEUROPEUTIC, PROPERTY_FLUXING = PROPERTY_REPAIRING, PROPERTY_RELAXING = PROPERTY_MUSCLESTIMULATING,PROPERTY_HEMOGENIC = PROPERTY_HEMOLYTIC,PROPERTY_HEMOGENIC = PROPERTY_HEMORRAGING)
 		var/match
 		for(var/P in chemical_gen_stats_list["[id]"]["properties"])
 			if(P == property)
@@ -670,13 +667,6 @@
 						M.take_limb_damage(4*potency)
 				else
 					M.take_limb_damage(potency)
-			if(PROPERTY_RADIOACTIVE) //radiation damage
-				if(is_OD)
-					M.radiation += 2*potency
-					if(is_COD)
-						M.radiation += 4*potency
-				else
-					M.radiation += potency
 			if(PROPERTY_HEMOLYTIC) //blood loss
 				if(iscarbon(M))
 					var/mob/living/carbon/C = M
@@ -696,7 +686,6 @@
 					var/datum/limb/L = pick(C.limbs)
 					if(L && !(L.status & LIMB_ROBOT))
 						if(is_OD)
-							L.germ_level += 10*potency //germs entering the bloodstream. Think gutbacteria etc
 							if(L.internal_organs)
 								var/datum/internal_organ/O = pick(L.internal_organs)//Organs can't bleed, so we just damage them
 								O.damage += 0.5*potency
@@ -717,31 +706,6 @@
 						M.take_limb_damage(2*potency)//Hyperactive apoptosis
 				else
 					M.adjustCloneLoss(0.5*potency)
-			if(PROPERTY_NECROTIZING) //Kills and rots flesh
-				var/mob/living/carbon/human/C = M
-				if(C)
-					var/datum/limb/L = pick(C.limbs)
-					if(L && !(L.status & LIMB_ROBOT))
-						if(!L.wounds || !L.wounds.len)
-							L.wounds += new /datum/wound/bruise
-						var/datum/wound/W = pick(L.wounds)
-						W.damage += potency
-						if(is_OD)
-							W.germ_level += 200 * potency
-							if(is_COD)
-								if(L.name != "head" && L.germ_level > 1000) //the limb is so rotten it falls off
-									L.droplimb(0,0, "dangerous chemicals")
-						else
-							W.germ_level += 25 * potency
-						if(L.germ_level > INFECTION_LEVEL_THREE)
-							if(!(L.status & LIMB_NECROTIZED))
-								L.status |= LIMB_NECROTIZED
-								to_chat(M, SPAN_NOTICE("You can't feel your [L.display_name] anymore..."))
-								L.owner.update_body(1)
-						if(W.germ_level > 200)//At this point the infection becomes internal
-							L.germ_level = W.germ_level
-						L.update_wounds()
-						L.update_germs()
 			if(PROPERTY_HEPATOTOXIC) //liver damage 
 				if(ishuman(M))
 					var/mob/living/carbon/human/H = M
@@ -1120,21 +1084,6 @@
 								L.damage += 3*potency
 				else
 					M.reagent_pain_modifier += -30*potency
-			if(PROPERTY_ANTISEPTIC) //removes internal infections
-				var/mob/living/carbon/human/C = M
-				if(C)
-					var/datum/limb/L = pick(C.limbs)
-					if(L && !(L.status & LIMB_ROBOT))
-						if(is_OD)
-							L.germ_level = max(0,L.germ_level - 100*potency)
-							M.adjustToxLoss(2*potency)
-							if(L.status & LIMB_NECROTIZED)
-								L.status &= ~LIMB_NECROTIZED
-							if(is_COD)
-								var/datum/internal_organ/O = pick(C.internal_organs_by_name)
-								O.damage += 2*potency
-						else
-							L.germ_level = max(0,L.germ_level - 50*potency)
 			if(PROPERTY_HEPATOPEUTIC) //liver healing
 				if(ishuman(M))
 					var/mob/living/carbon/human/H = M
@@ -1315,7 +1264,6 @@
 				M.reagents.remove_all_type(/datum/reagent/toxin, 5*REM, 0, 1)
 				M.setCloneLoss(0)
 				M.setOxyLoss(0)
-				M.radiation = 0
 				M.heal_limb_damage(5,5)
 				M.adjustToxLoss(-5)
 				M.hallucination = 0

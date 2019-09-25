@@ -171,7 +171,7 @@
 		..()
 		new /obj/item/reagent_container/syringe( src )
 		new /obj/item/reagent_container/glass/bottle/inaprovaline( src )
-		new /obj/item/reagent_container/glass/bottle/spaceacillin( src )
+		new /obj/item/reagent_container/glass/bottle/tricordrazine( src )
 
 /obj/item/storage/syringe_case/burn
 
@@ -179,7 +179,7 @@
 		..()
 		new /obj/item/reagent_container/syringe( src )
 		new /obj/item/reagent_container/glass/bottle/kelotane( src )
-		new /obj/item/reagent_container/glass/bottle/spaceacillin( src )
+		new /obj/item/reagent_container/glass/bottle/tricordrazine( src )
 
 /obj/item/storage/syringe_case/tox
 

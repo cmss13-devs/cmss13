@@ -109,7 +109,6 @@
 	return 1
 
 /atom/proc/clean_blood()
-	germ_level = 0
 	if(istype(blood_DNA, /list))
 		qdel(blood_DNA)
 		blood_DNA = null
@@ -126,11 +125,9 @@
 	transfer_blood = 0
 
 /mob/living/carbon/human/clean_blood(clean_feet)
-	germ_level = 0
 	if(gloves)
 		if(gloves.clean_blood())
 			update_inv_gloves()
-		gloves.germ_level = 0
 	else
 		if(istype(blood_DNA, /list))
 			qdel(blood_DNA)

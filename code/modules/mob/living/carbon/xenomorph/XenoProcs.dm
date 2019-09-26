@@ -7,11 +7,20 @@
 	if(!message)
 		return
 
+	var/fontsize_style
+	switch(size)
+		if(1)
+			fontsize_style = "medium"
+		if(2)
+			fontsize_style = "big"
+		if(3)
+			fontsize_style = "large"
+
 	if(ticker && ticker.mode && ticker.mode.xenomorphs.len) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
 		for(var/datum/mind/L in ticker.mode.xenomorphs)
 			var/mob/living/carbon/Xenomorph/M = L.current
 			if(M && istype(M) && !M.stat && M.client && hivenumber == M.hivenumber) //Only living and connected xenos
-				to_chat(M, SPAN_XENODANGER("<font size=[size]> [message]</font>"))
+				to_chat(M, SPAN_XENODANGER("<span class=\"[fontsize_style]\"> [message]</span>"))
 
 //Adds stuff to your "Status" pane -- Specific castes can have their own, like carrier hugger count
 //Those are dealt with in their caste files.

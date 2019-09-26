@@ -759,8 +759,8 @@ should be alright.
 
 /obj/item/weapon/gun/verb/activate_attachment_verb()
 	set category = "Weapons"
-	set name = "Load From Attachment"
-	set desc = "Load from a gun attachment, such as a mounted grenade launcher, shotgun, or flamethrower."
+	set name = "Use Attachment"
+	set desc = "Activates one of the attached attachments on the gun."
 	set src = usr.contents
 
 	var/obj/item/weapon/gun/G = get_active_firearm(usr)
@@ -804,6 +804,41 @@ should be alright.
 	else
 		to_chat(usr, SPAN_WARNING("[src] does not have any usable rail attachments!"))
 		return
+
+/obj/item/weapon/gun/verb/toggle_auto_eject_verb()
+	set category = "Weapons"
+	set	name = "Toggle Auto Eject"
+	set desc = "Enable/Disable the gun's magazine ejection system"
+	set src = usr.contents
+
+	var/obj/item/weapon/gun/G = get_active_firearm(usr)
+	if(!G) return
+	src = G
+
+	if(src.flags_gun_features & GUN_ANTIQUE || src.flags_gun_features & GUN_INTERNAL_MAG  || src.flags_gun_features & GUN_UNUSUAL_DESIGN)
+		to_chat(usr, SPAN_WARNING("[src] has no auto ejection system!"))
+		return
+	else 
+		src.flags_gun_features ^= GUN_AUTO_EJECTOR
+		to_chat(usr, SPAN_INFO("You toggle the auto ejector [src.flags_gun_features & GUN_AUTO_EJECTOR ? "on" : "off"]"))
+
+/obj/item/weapon/gun/verb/toggle_underbarrel_attachment_verb()
+	set category = "Weapons"
+	set name = "Toggle Underbarrel attachment"
+	set desc = "Use the attachment that's mounted on your underbarrel"
+	set src = usr.contents	
+
+	var/obj/item/weapon/gun/G = get_active_firearm(usr)
+	if(!G) return
+	src = G	
+
+	var/obj/item/attachable/A = attachments["under"]
+	if(A)
+		A.activate_attachment(src, usr)
+	else
+		to_chat(usr, SPAN_WARNING("[src] does not have any usable underbarrel attachments!"))
+		return
+
 
 obj/item/weapon/gun/item_action_slot_check(mob/user, slot)
 	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND)

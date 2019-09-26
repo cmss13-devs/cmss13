@@ -171,7 +171,7 @@
 							/obj/item/attachable/extended_barrel
 								)
 
-	flags_gun_features = GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
 	New()
 		..()
@@ -304,7 +304,7 @@
 	origin_tech = "combat=3;materials=2;syndicate=4"
 	fire_sound = 'sound/weapons/smg_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/smg/ppsh
-	flags_gun_features = GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
 	New()
 		..()

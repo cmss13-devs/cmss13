@@ -458,7 +458,7 @@
 							/obj/item/attachable/extended_barrel	
 								)
 
-	flags_gun_features = GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
 /obj/item/weapon/gun/rifle/m16/New()
 	..()
@@ -507,7 +507,7 @@
 						/obj/item/attachable/attached_gun/shotgun
 						)
 
-	flags_gun_features = GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
 /obj/item/weapon/gun/rifle/m16/dutch/New()
 	..()

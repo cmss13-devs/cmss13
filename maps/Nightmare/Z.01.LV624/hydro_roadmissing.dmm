@@ -337,12 +337,6 @@
 	icon_state = "wall2"
 	},
 /area/lv624/ground/jungle8)
-"bf" = (
-/obj/structure/fence,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
-/area/lv624/lazarus/quartstorage/outdoors)
 "bg" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1
@@ -447,13 +441,6 @@
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/grass,
 /area/lv624/ground/compound/n)
-"bC" = (
-/obj/structure/fence,
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
-/area/lv624/lazarus/quartstorage/outdoors)
 "bD" = (
 /obj/structure/fence,
 /turf/open/gm/dirt,
@@ -1406,13 +1393,13 @@ aE
 aE
 aE
 aE
-bf
 aE
 aE
 aE
 aE
 aE
-bC
+aE
+aE
 bG
 ah
 bN

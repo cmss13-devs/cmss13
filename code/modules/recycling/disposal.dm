@@ -521,7 +521,8 @@
 		if(!curr && loc)
 			last.expel(src, loc, dir)
 		last = curr
-		curr = curr.transfer(src)
+		if(curr)
+			curr = curr.transfer(src)
 		if(!curr && loc)
 			last.expel(src, loc, dir)
 

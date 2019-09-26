@@ -256,9 +256,9 @@ a.popt {text-decoration: none;}
 .charlieradio			{color: #AA55AA;}
 .deltaradio				{color: #007FCF;}
 
-.medium					{					font-size: 105%}
-.big					{					font-size: 110%}
-.large					{					font-size: 115%}
+.medium					{					font-size: 110%}
+.big					{					font-size: 115%}
+.large					{					font-size: 125%}
 .extra_large			{					font-size: 130%}
 .huge					{					font-size: 150%}
 
@@ -293,9 +293,9 @@ h1.alert, h2.alert		{color: #000000;}
 .danger					{color: #ff0000;	font-weight: bold;}
 .xenodanger				{color: #2a623d;	font-weight: bold;}
 .avoidharm				{color:	#72a0e5;	font-weight: bold;}
-.highdanger				{color: #ff0000;	font-weight: bold; font-size: 110%;}
-.xenohighdanger			{color: #2a623d; 	font-weight: bold; font-size: 110%;}
-.xenoannounce           {color: #1a472a;    font-family: book-antiqua; font-weight: bold; font-size: 110%;}
+.highdanger				{color: #ff0000;	font-weight: bold; font-size: 120%;}
+.xenohighdanger			{color: #2a623d; 	font-weight: bold; font-size: 120%;}
+.xenoannounce           {color: #1a472a;    font-family: book-antiqua; font-weight: bold; font-size: 120%;}
 .yautjabold				{color: #800080;	font-weight: bold;}
 .yautjaboldbig			{color: #800080;	font-weight: bold; font-size: 110%;}
 
@@ -306,8 +306,8 @@ h1.alert, h2.alert		{color: #000000;}
 .objectivefail			{color: #ff0000;	font-weight: bold; font-size: 110%;}
 
 .xeno					{color: #900090;	font-style: italic;}
-.xenoleader				{color: #730d73;	font-style: italic;						font-size: 110%;}
-.xenoqueen				{color: #730d73; 	font-style: italic; font-weight: bold; font-size: 110%;}
+.xenoleader				{color: #730d73;	font-style: italic;						font-size: 120%;}
+.xenoqueen				{color: #730d73; 	font-style: italic; font-weight: bold; font-size: 120%;}
 .newscaster				{color: #800000;}
 
 .role_header			{color: #db0000;	display: block; text-align: center; font-weight: bold; font-family: trebuchet-ms; font-size: 120%;}

@@ -647,7 +647,7 @@
 			to_chat(user, SPAN_WARNING("You have no idea how to put someone into \the [src]!"))
 			return
 
-		visible_message("[user] starts putting [M] into [src].", 3)
+		visible_message("[user] starts putting [M] into [src].", null, null, 3)
 
 		if(do_after(user, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			if(src.occupant)

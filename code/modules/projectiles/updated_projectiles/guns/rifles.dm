@@ -197,6 +197,7 @@
 						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/scope/mini,
+						/obj/item/attachable/scope/mini_iff,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip,
 						/obj/item/attachable/flashlight/grip,
@@ -208,7 +209,8 @@
 	random_spawn_rail = list(
 							/obj/item/attachable/reddot,
 							/obj/item/attachable/reflex/,
-							/obj/item/attachable/magnetic_harness
+							/obj/item/attachable/scope/mini_iff,
+							/obj/item/attachable/magnetic_harness,
 							)
 	random_spawn_underbarrel = list(
 							/obj/item/attachable/angledgrip,
@@ -219,7 +221,7 @@
 							/obj/item/attachable/suppressor,
 							/obj/item/attachable/bayonet,
 							/obj/item/attachable/extended_barrel,
-							/obj/item/attachable/heavy_barrel,	
+							/obj/item/attachable/heavy_barrel,
 								)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 
@@ -322,7 +324,7 @@
 							/obj/item/attachable/suppressor,
 							/obj/item/attachable/bayonet,
 							/obj/item/attachable/extended_barrel,
-							/obj/item/attachable/compensator,	
+							/obj/item/attachable/compensator,
 								)
 	random_spawn_stock = list(
 							/obj/item/attachable/stock/slavic
@@ -391,7 +393,7 @@
 	random_spawn_muzzle = list(
 							/obj/item/attachable/suppressor,
 							/obj/item/attachable/bayonet,
-							/obj/item/attachable/extended_barrel	
+							/obj/item/attachable/extended_barrel
 								)
 
 /obj/item/weapon/gun/rifle/mar40/carbine/set_gun_config_values()
@@ -455,7 +457,7 @@
 							/obj/item/attachable/suppressor,
 							/obj/item/attachable/bayonet,
 							/obj/item/attachable/compensator,
-							/obj/item/attachable/extended_barrel	
+							/obj/item/attachable/extended_barrel
 								)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
@@ -613,7 +615,7 @@
 	random_spawn_muzzle = list(
 							/obj/item/attachable/suppressor,
 							/obj/item/attachable/bayonet,
-							/obj/item/attachable/extended_barrel	
+							/obj/item/attachable/extended_barrel
 								)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_BURST_ON
@@ -755,7 +757,7 @@
 /obj/item/weapon/gun/rifle/l42mk1/New()
 	select_gamemode_skin(/obj/item/weapon/gun/rifle/l42mk1)
 	..()
-	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 18, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 25, "stock_y" = 9)
+	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 18, "rail_y" = 18, "under_x" = 24, "under_y" = 13, "stock_x" = 25, "stock_y" = 9)
 
 /obj/item/weapon/gun/rifle/l42mk1/set_gun_config_values()
 	..()

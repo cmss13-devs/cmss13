@@ -62,7 +62,7 @@
 			else
 				data["log"] = "You do not have the right permissions to view this."
 		if(4)
-			if((user.client.admin_holder.rights & R_MOD) || (user.client.admin_holder.rights & R_MENTOR))
+			if(user.client.admin_holder.rights & R_MOD)
 				data["colour"] = "average"
 				if(ooc.len > config.STUI_length+1)
 					ooc.Cut(,ooc.len-config.STUI_length)

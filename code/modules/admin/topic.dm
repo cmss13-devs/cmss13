@@ -1750,7 +1750,7 @@
 		player_panel_extended()
 
 	else if(href_list["adminplayerobservejump"])
-		if(!check_rights(R_MENTOR|R_MOD|R_ADMIN))	return
+		if(!check_rights(R_MOD|R_ADMIN))	return
 
 		var/mob/M = locate(href_list["adminplayerobservejump"])
 
@@ -1760,7 +1760,7 @@
 		C.jumptomob(M)
 
 	else if(href_list["adminplayerfollow"])
-		if(!check_rights(R_MENTOR|R_MOD|R_ADMIN))	return
+		if(!check_rights(R_MOD|R_ADMIN))	return
 
 		var/mob/M = locate(href_list["adminplayerfollow"])
 
@@ -2739,6 +2739,33 @@
 	//
 	// 	ref_person << msgplayer //send a message to the player
 
+	if(href_list["defermhelp"])
+		var/mob/ref_person = locate(href_list["defermhelp"])
+		if(!ref_person)
+			return
+
+		if(alert("Are you sure you want to turn this ahelp into an mhelp?","Defer","Yes","Cancel") == "Cancel")
+			return
+
+		if(!ref_person.client)
+			return
+		var/client/C = ref_person.client
+
+		if(C.current_mhelp && C.current_mhelp.open)
+			to_chat(usr, SPAN_NOTICE("They already have a mentorhelp thread open!"))
+			return
+
+		to_chat(ref_person, SPAN_NOTICE("<b>NOTICE:</b> <font color=red>[usr.key]</font> has turned your adminhelp into a mentorhelp thread."))
+		for(var/client/X in admins)
+			if((R_ADMIN|R_MOD) & X.admin_holder.rights)
+				to_chat(X, SPAN_NOTICE("<b>NOTICE:</b> <font color=red>[usr.key]</font> has turned <font color=red>[C.key]</font>'s adminhelp into a mentorhelp thread."))
+		log_mhelp("[usr.key] turned [C.key]'s adminhelp into a mentorhelp thread")
+
+		C.current_mhelp = new(C)
+		if(href_list["ahelpmsg"])
+			C.current_mhelp.send_message(C, href_list["ahelpmsg"])
+		else
+			C.current_mhelp.input_message(C)
 
 	if(href_list["ccmark"]) // CentComm-mark. We want to let all Admins know that something is "Marked", but not let the player know because it's not very RP-friendly.
 		var/mob/ref_person = locate(href_list["ccmark"])

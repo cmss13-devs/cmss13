@@ -415,12 +415,12 @@ updatehealth()
 	if(isXenoRunner(src) && layer != initial(layer))
 		is_runner_hiding = 1
 
-	if(!caste.is_robotic && !hardcore) //Robot no heal
+	if(!caste.is_robotic) //Robot no heal
 		if(caste.innate_healing || check_weeds_for_healing())
 			plasma_stored += plasma_gain * plasma_max / 100
 			if(recovery_aura)
 				plasma_stored += round(plasma_gain * plasma_max / 100 * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
-			if(health < maxHealth)
+			if(health < maxHealth && !hardcore)
 				//var/datum/hive_status/hive = hive_datum[hivenumber]
 				//if(caste.innate_healing || !hive.living_xeno_queen || hive.living_xeno_queen.loc.z == loc.z)
 				if(lying || resting)
@@ -462,42 +462,6 @@ updatehealth()
 
 		if(current_aura)
 			plasma_stored -= 5
-
-	//START HARDCORE //This needs to be removed.
-	else if(!caste.is_robotic && hardcore)//Robot no heal
-		if(check_weeds_for_healing())
-			if(health > 0)
-				plasma_stored += plasma_gain * plasma_max / 100
-				if(recovery_aura)
-					plasma_stored += (recovery_aura * 2)
-			if(health < 35) //Barely enough to stay near critical if saved
-				adjustBruteLoss(-(maxHealth / 70) - 1) //Heal 1/60th of your max health in brute per tick. -2 as a bonus, to help smaller pools.
-				if(recovery_aura)
-					adjustBruteLoss(-(recovery_aura))
-				adjustFireLoss(-(maxHealth / 60)) //Heal from fire half as fast
-				adjustOxyLoss(-(maxHealth / 10)) //Xenos don't actually take oxyloss, oh well
-				adjustToxLoss(-(maxHealth / 5)) //hmmmm, this is probably unnecessary
-				updatehealth() //Make sure their actual health updates immediately.
-
-		else //Xenos restore plasma VERY slowly off weeds, regardless of health, as long as they are not using special abilities
-			if(prob(50) && !is_runner_hiding && !current_aura)
-				plasma_stored += 0.1 * plasma_max / 100
-			if(recovery_aura)
-				adjustBruteLoss(-(maxHealth / 80) - 1 - recovery_aura)
-				plasma_stored += round(recovery_aura + 1)
-				updatehealth()
-
-		if(isXenoHivelord(src))
-			var/mob/living/carbon/Xenomorph/Hivelord/H = src
-			if(H.weedwalking_activated)
-				plasma_stored -= 30
-				if(plasma_stored < 0)
-					H.weedwalking_activated = 0
-					to_chat(src, SPAN_WARNING("You feel dizzy as the world slows down."))
-
-		if(current_aura)
-			plasma_stored -= 5
-		//END HARDCORE
 
 	if(plasma_stored > plasma_max)
 		plasma_stored = plasma_max

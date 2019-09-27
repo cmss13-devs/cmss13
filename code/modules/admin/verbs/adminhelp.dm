@@ -114,7 +114,7 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 
 	STUI.staff.Add("\[[time_stamp()]] <font color=red>[key_name(src)] AHELP: </font><font color='#006400'>[get_options_bar(mob, 4, 1, 1, 0)]:</b> [msg]</font><br>")
 	STUI.processing |= 3
-	msg = "<font color='#009900'><b>[selected_upper]: [get_options_bar(mob, 2, 1, 1, msg=msg)]:</b></font> <br>&emsp;<font color='#DA6200'><b>[msg]</font></b><br>"
+	msg = "<font color='#009900'><b>[selected_upper]: [get_options_bar(mob, 2, 1, 1, msg=original_msg)]:</b></font> <br>&emsp;<font color='#DA6200'><b>[msg]</font></b><br>"
 
 
 	var/list/current_staff = get_staff_by_category()
@@ -200,7 +200,7 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 			<A HREF='?_src_=admin_holder;noresponse=[ref_mob]'>NR</A> |  \
 			<A HREF='?_src_=admin_holder;warning=[ref_mob]'>Warn</A> |  \
 			<A HREF='?_src_=admin_holder;autoresponse=[ref_mob]'>AutoResponse</A> |  \
-			<A HREF='?_src_=admin_holder;defermhelp=[ref_mob];ahelpmsg=[msg]'>Defer</A> |  \
+			<A HREF='?_src_=admin_holder;defermhelp=[ref_mob];ahelpmsg=[sanitize(msg)]'>Defer</A> |  \
 			<A HREF='?_src_=admin_holder;adminmoreinfo=[ref_mob]'>?</A> |  \
 			<A HREF='?_src_=admin_holder;adminplayeropts=[ref_mob]'>PP</A> |  \
 			<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A> |  \

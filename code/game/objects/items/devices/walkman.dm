@@ -58,6 +58,7 @@
 		else
 			pause()
 			to_chat(user,SPAN_INFO("You pause [src]"))
+		update_icon()
 	else
 		to_chat(user,SPAN_INFO("There's no tape to play"))
 	playsound(src,'sound/machines/click.ogg',20,1)
@@ -133,6 +134,7 @@
 	current_playlist.Cut()
 	current_songnames.Cut()
 	user.put_in_hands(tape)
+	paused = TRUE
 	tape = null
 	update_icon()
 	playsound(src,'sound/weapons/handcuffs.ogg',20,1)
@@ -177,6 +179,7 @@
 		break_sound()
 		paused = TRUE
 		current_listener = null
+		update_icon()
 		processing_objects -= src
 		return
 

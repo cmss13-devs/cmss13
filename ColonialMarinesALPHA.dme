@@ -1043,6 +1043,7 @@
 #include "code\modules\maps\swapmaps.dm"
 #include "code\modules\maps\writer.dm"
 #include "code\modules\mapview\generation.dm"
+#include "code\modules\mentor\mentorhelp.dm"
 #include "code\modules\mob\death.dm"
 #include "code\modules\mob\emote.dm"
 #include "code\modules\mob\hear_say.dm"

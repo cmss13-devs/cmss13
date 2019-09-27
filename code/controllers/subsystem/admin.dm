@@ -37,7 +37,7 @@ var/datum/subsystem/admin/SSadmin
 			return
 	
 	var/list/current_staff = get_staff_by_category()
-	current_staff = current_staff["admins"] |= current_staff["mentors"]
+	current_staff = current_staff["admins"]
 	if(current_staff.len)
 		for(var/client/X in current_staff)
 			if(X.prefs.toggles_sound & SOUND_ADMINHELP)

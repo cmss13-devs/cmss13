@@ -81,13 +81,18 @@
 		src << browse("...", "window=asset_cache_browser")
 
 	switch(href_list["_src_"])
-		if("admin_holder")	
+		if("admin_holder")
 			hsrc = admin_holder
-		if("usr")		
+		if("mhelp")
+			var/client/thread_author = directory[href_list["mhelp_key"]]
+			if(thread_author)
+				var/datum/mentorhelp/help_thread = thread_author.current_mhelp
+				hsrc = help_thread
+		if("usr")
 			hsrc = mob
-		if("prefs")		
+		if("prefs")
 			return prefs.process_link(usr, href_list)
-		if("vars")		
+		if("vars")
 			return view_var_Topic(href, href_list, hsrc)
 		if("chat")
 			return chatOutput.Topic(href, href_list)

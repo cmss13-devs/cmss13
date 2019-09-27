@@ -298,21 +298,6 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_change_their_name,
 )
 
-var/list/admin_verbs_mentor = list(
-	/client/proc/cmd_admin_pm_context,
-	/client/proc/cmd_admin_pm_panel,
-	/datum/admins/proc/player_notes_list,
-	/datum/admins/proc/player_notes_show,
-	/client/proc/admin_ghost,
-	/client/proc/cmd_mod_say,
-	/client/proc/dsay,
-	/datum/admins/proc/togglesleep,
-	/client/proc/cmd_admin_subtle_message,
-	/datum/admins/proc/viewUnheardAhelps,
-	/datum/admins/proc/viewCLFaxes,
-	/datum/admins/proc/viewUSCMFaxes,
-)
-
 /client/proc/add_admin_verbs()
 	if(admin_holder)
 		verbs += admin_verbs_default
@@ -333,7 +318,6 @@ var/list/admin_verbs_mentor = list(
 		if(admin_holder.rights & R_SOUNDS)		verbs += admin_verbs_sounds
 		if(admin_holder.rights & R_SPAWN)		verbs += admin_verbs_spawn
 		if(admin_holder.rights & R_MOD)			verbs += admin_verbs_mod
-		if(admin_holder.rights & R_MENTOR)		verbs += admin_verbs_mentor
 
 /client/proc/remove_admin_verbs()
 	verbs.Remove(
@@ -391,7 +375,10 @@ var/list/admin_verbs_mentor = list(
 /client/proc/admin_ghost()
 	set category = "Admin"
 	set name = "Aghost"
-	if(!admin_holder)	return
+
+	if(!check_rights(R_MOD))
+		return
+
 	var/new_STUI = 0
 	if(usr:open_uis)
 		for(var/datum/nanoui/ui in usr:open_uis)
@@ -405,13 +392,8 @@ var/list/admin_verbs_mentor = list(
 	if(istype(mob,/mob/dead/observer))
 		//re-enter
 		var/mob/dead/observer/ghost = mob
-		if(!is_mentor(usr.client))
-			ghost.can_reenter_corpse = 1
-		if(ghost.can_reenter_corpse)
-			ghost.reenter_corpse()
-		else
-			to_chat(ghost, "<font color='red'>Error:  Aghost:  Can't reenter corpse, mentors that use adminHUD while aghosting are not permitted to enter their corpse again</font>")
-			return
+		ghost.can_reenter_corpse = 1
+		ghost.reenter_corpse()
 
 		feedback_add_details("admin_verb","P") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

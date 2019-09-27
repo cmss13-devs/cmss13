@@ -140,7 +140,7 @@
 			to_chat(M, rendered)
 			continue
 
-		if(M.client && M.client.admin_holder && !is_mentor(M.client) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD) ) // Show the message to admins/mods with deadchat toggled on
+		if(M.client && M.client.admin_holder && (M.client.admin_holder & R_MOD) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD) ) // Show the message to admins/mods with deadchat toggled on
 			to_chat(M, rendered)	//Admins can hear deadchat, if they choose to, no matter if they're blind/deaf or not.
 
 	usr.talked = 1

@@ -122,3 +122,7 @@
 /proc/log_announcement(text)
 	diary << html_decode("\[[time_stamp()]]ANNOUNCEMENT: [text][log_end]")
 	STUI.debug.Add("\[[time_stamp()]]ANNOUNCEMENT: [text]<br>")
+
+/proc/log_mhelp(text)
+	diary << html_decode("\[[time_stamp()]]MENTORHELP: [text][log_end]")
+	STUI.admin.Add("\[[time_stamp()]]MENTORHELP: [text]<br>")

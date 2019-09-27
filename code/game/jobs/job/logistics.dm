@@ -14,7 +14,7 @@
 	gear_preset = "USCM Chief Engineer (CE)"
 
 /datum/job/logistics/engineering/generate_entry_message(mob/living/carbon/human/H)
-	. = {"Your job is to maintain the ship's engine and keep everything running. If you have no idea how to set up the engine, or it's your first time, adminhelp so that a mentor can assist you. You are also next in the chain of command, should the bridge crew fall in the line of duty."}
+	. = {"Your job is to maintain the ship's engine and keep everything running. If you have no idea how to set up the engine, or it's your first time, mentorhelp so that a mentor can assist you. You are also next in the chain of command, should the bridge crew fall in the line of duty."}
 
 //Requisitions Officer
 /datum/job/logistics/requisition

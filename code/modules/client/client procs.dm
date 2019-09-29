@@ -158,7 +158,7 @@
 
 	clients += src
 	directory[ckey] = src
-	player_entity = setup_player_entity(key)
+	player_entity = setup_player_entity(ckey)
 
 	//Admin Authorisation
 	admin_holder = admin_datums[ckey]
@@ -346,15 +346,14 @@
 	sleep(5)
 	return .
 
-/proc/setup_player_entity(var/key)
-	var/key_ref = lowertext(key)
-	if(player_entities["[key_ref]"])
-		return player_entities["[key_ref]"]
+/proc/setup_player_entity(var/ckey)
+	if(player_entities["[ckey]"])
+		return player_entities["[ckey]"]
 	var/datum/entity/player_entity/P = new()
-	P.ckey = key
-	P.name = key
-	player_entities["[key_ref]"] = P
-	P.setup_save(key)
+	P.ckey = ckey
+	P.name = ckey
+	player_entities["[ckey]"] = P
+	P.setup_save(ckey)
 	return P
 
 /proc/save_player_entities()

@@ -31,6 +31,7 @@
 
 /datum/mind
 	var/key
+	var/ckey
 	var/name				//replaces mob/var/original_name
 	var/mob/living/current
 	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
@@ -68,9 +69,10 @@
 	//put this here for easier tracking ingame
 	var/datum/money_account/initial_account
 
-/datum/mind/New(var/key)
+/datum/mind/New(var/key, var/ckey)
 	src.key = key
-	player_entity = setup_player_entity(key)
+	src.ckey = ckey
+	player_entity = setup_player_entity(ckey)
 
 /datum/mind/proc/transfer_to(mob/living/new_character)
 	if(!istype(new_character))
@@ -94,7 +96,7 @@
 					if(ui.allowed_user_stat == -1)
 						ui.close()
 						continue
-			player_entity = setup_player_entity(key)
+			player_entity = setup_player_entity(ckey)
 
 	new_character.refresh_huds(current)					//inherit the HUDs from the old body
 
@@ -401,19 +403,19 @@
 
 /datum/mind/proc/setup_human_stats()
 	if(!player_entity)
-		player_entity = setup_player_entity(key)
+		player_entity = setup_player_entity(ckey)
 	return player_entity.setup_human_stats()
 
 /datum/mind/proc/setup_xeno_stats()
 	if(!player_entity)
-		player_entity = setup_player_entity(key)
+		player_entity = setup_player_entity(ckey)
 	return player_entity.setup_xeno_stats()
 
 //Initialisation procs
 /mob/proc/mind_initialize()
 	if(mind) mind.key = key
 	else
-		mind = new /datum/mind(key)
+		mind = new /datum/mind(key, ckey)
 		mind.original = src
 		if(ticker) ticker.minds += mind
 		else world.log << "## DEBUG: mind_initialize(): No ticker ready yet! Please inform Carn"

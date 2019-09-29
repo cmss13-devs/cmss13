@@ -138,6 +138,11 @@ var/global/list/datum/entity/player_entity/player_entities = list()
 
 	return 0
 
+/datum/game_mode/proc/calculate_end_statistics()
+	for(var/mob/M in living_mob_list)
+		M.track_death_calculations()
+		M.statistic_exempt = TRUE
+
 /datum/game_mode/proc/show_end_statistics()
 	round_statistics.update_panel_data()
 	for(var/mob/M in player_list)

@@ -1,9 +1,0 @@
-author: Atebite
-delete-after: True
-changes
-  - experimental: Large parts of the human backend has been refactored or removed. Hopefully this should help a little bit with the lag
-  - rscdel: Infections have been removed
-  - rscdel: Since infections are no longer a thing, spaceacilin has been removed from medical vendors and belts
-  - tweak: The amount of storage slots in medical belts has been reduced to 13 due to the aforementioned removal of spaceacilin pill bottles
-  - rscdel: Radiation has been removed
-  - rscdel: Since radiation is no longer a thing, arithrazine and hyronalin has been removed from the game entirely

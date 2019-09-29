@@ -590,37 +590,6 @@
 	else
 		icon_state = initial(icon_state)
 
-
-/obj/structure/dropship_equipment/electronics/laser_detector
-	name = "laser detector"
-	desc = "An electronic device linked to the dropship's camera system that lets you observe laser targets on the ground mid-flight."
-	icon_state = "laser_detector"
-	point_cost = 400
-	var/obj/structure/machinery/computer/security/dropship/linked_cam_console
-
-/obj/structure/dropship_equipment/electronics/laser_detector/update_equipment()
-	if(ship_base)
-		if(!linked_cam_console)
-			for(var/obj/structure/machinery/computer/security/dropship/D in range(5, loc))
-				linked_cam_console = D
-				break
-		icon_state = "[initial(icon_state)]_installed"
-	else
-		linked_cam_console = null
-		icon_state = initial(icon_state)
-
-/obj/structure/dropship_equipment/electronics/laser_detector/Dispose()
-	linked_cam_console = null
-	. = ..()
-
-/obj/structure/dropship_equipment/electronics/laser_detector/on_launch()
-	linked_cam_console.network.Add("laser targets") //only accessible while in the air.
-
-/obj/structure/dropship_equipment/electronics/laser_detector/on_arrival()
-	linked_cam_console.network.Remove("laser targets")
-
-
-
 /obj/structure/dropship_equipment/electronics/landing_zone_detector
 	name = "\improper LZ detector"
 	desc = "An electronic device linked to the dropship's camera system that lets you observe your landing zone mid-flight."

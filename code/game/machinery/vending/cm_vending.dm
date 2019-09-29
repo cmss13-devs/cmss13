@@ -381,6 +381,7 @@
 		list("M41A extended magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/extended , null, "black"),
 		list("L42-MK1 extended magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/l42mk1/extended, null, "black"),
 		list("L42-MK1 AP magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/l42mk1/ap, null, "black"),
+		list("M44 Heavy Speed Loader (.44)", 15, /obj/item/ammo_magazine/revolver/heavy, null, "black"),
 
 		list("EXTRAS", 0, null, null, null),
 		list("Webbing", 15, /obj/item/clothing/accessory/storage/webbing, null, "black"),
@@ -1112,6 +1113,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Extended M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
 		list("AP L42-MK1 magazine", 13, /obj/item/ammo_magazine/rifle/l42mk1/ap, null, "black"),
 		list("Extended L42-MK1 magazine", 13, /obj/item/ammo_magazine/rifle/l42mk1/extended, null, "black"),
+		list("M44 Heavy Speed Loader (.44)", 15, /obj/item/ammo_magazine/revolver/heavy, null, "black"),
 
 		list("ATTACHMENTS", 0, null, null, null),
 		list("Recoil compensator", 6, /obj/item/attachable/compensator, null, "black"),
@@ -2128,7 +2130,10 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 
 	listed_products += list(list("Heat Absorbent Coif", 10, /obj/item/clothing/mask/rebreather/scarf, "black"),
 							list("M276 Pattern Ammo Load Rig", 10, /obj/item/storage/belt/marine, "black"),
-							list("M276 Pattern Shotgun Shell Loading Rig", 5, /obj/item/storage/belt/shotgun, "black"),
+							list("M276 Pattern Shotgun Shell Loading Rig", 10, /obj/item/storage/belt/shotgun, "black"),
+							list("M276 Pattern M39 Holster Rig", 10, /obj/item/storage/large_holster/m39, "black"),
+							list("M276 Pattern M44 Holster Rig", 10, /obj/item/storage/belt/gun/m44, "black"),
+							list("M276 Pattern General Pistol Holster Rig", 10, /obj/item/storage/belt/gun/m4a3, "black"),
 							list("Lightweight IMP Backpack", 10, /obj/item/storage/backpack/marine, "black"),
 							list("USCM Satchel", 10, /obj/item/storage/backpack/marine/satchel, "black"),
 							list("Armor", -1, null, null),

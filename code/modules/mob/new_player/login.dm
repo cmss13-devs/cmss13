@@ -4,7 +4,7 @@
 		to_chat_forced(src, "<div class=\"motd\">[join_motd]</div>")
 
 	if(!mind)
-		mind = new /datum/mind(key)
+		mind = new /datum/mind(key, ckey)
 		mind.active = 1
 		mind.current = src
 		mind_initialize()

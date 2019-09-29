@@ -219,8 +219,6 @@
 	if (!(embedded_human.embedded_items - embedded_human.get_visible_implants()))
 		to_chat(H_user, SPAN_NOTICE("You couldn't find any shrapnel."))
 		return
-	else
-		H_user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
 
 	for (var/obj/item/shard/shrapnel/S in embedded_human.embedded_items)
 		var/datum/limb/organ = S.embedded_organ
@@ -231,6 +229,7 @@
 		if(!(organ.status & LIMB_ROBOT) && !(embedded_human.species.flags & NO_BLOOD)) //Big thing makes us bleed when moving
 			organ.status |= LIMB_BLEEDING
 		organ = null
+		H_user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
 
 	to_chat(H_user, SPAN_NOTICE("You dig out all the shrapnel you can find from your body."))
 

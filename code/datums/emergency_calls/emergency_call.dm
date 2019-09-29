@@ -123,7 +123,7 @@
 		return
 
 	if(!usr.mind) //How? Give them a new one anyway.
-		usr.mind = new /datum/mind(usr.key)
+		usr.mind = new /datum/mind(usr.key, usr.ckey)
 		usr.mind.active = 1
 		usr.mind.current = usr
 		usr.mind_initialize()
@@ -230,7 +230,7 @@
 		candidates += M.mind
 	else
 		if(M.key)
-			M.mind = new /datum/mind(M.key)
+			M.mind = new /datum/mind(M.key, M.ckey)
 			M.mind_initialize()
 			candidates += M.mind
 	return 1

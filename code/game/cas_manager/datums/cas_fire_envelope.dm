@@ -1,6 +1,6 @@
 /datum/cas_fire_envelope
 	var/obj/structure/machinery/computer/dropship_weapons/linked_console
-	var/list/datum/cas_fire_mission/missions = list()
+	var/list/datum/cas_fire_mission/missions
 	var/max_mission_len = 5
 	var/fire_length
 	var/grace_period //how much time you have after initiating fire mission and before you can't change firemissions
@@ -19,7 +19,12 @@
 	var/recorded_offset = 0
 	var/datum/cas_signal/recorded_loc = null
 
-	var/obj/effect/firemission_guidance/guidance	
+	var/obj/effect/firemission_guidance/guidance
+
+
+/datum/cas_fire_envelope/New()
+	..()
+	missions = list()
 
 /datum/cas_fire_envelope/proc/get_total_duration()
 	return grace_period+flyto_period+flyoff_period
@@ -262,7 +267,7 @@
 	if(stat > FIRE_MISSION_STATE_IN_TRANSIT && stat < FIRE_MISSION_STATE_COOLDOWN)
 		mission_error = "Fire Mission is under way already."
 		return 0
-	if(missions[mission_id])
+	if(!missions[mission_id])
 		return -1
 	var/mission = missions[mission_id]
 	missions -= mission

@@ -206,9 +206,9 @@
 
 /obj/structure/machinery/computer/security/dropship/one
 	name = "\improper 'Alamo' camera controls"
-	network = list("dropship1")
+	network = list("dropship1","laser targets")
 
 /obj/structure/machinery/computer/security/dropship/two
 	name = "\improper 'Normandy' camera controls"
-	network = list("dropship2")
+	network = list("dropship2","laser targets")
 

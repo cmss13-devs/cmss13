@@ -3913,7 +3913,6 @@
 /area/almayer/medical/upper_medical)
 "ajm" = (
 /obj/structure/closet/secure_closet/securecom,
-/obj/item/clothing/suit/storage/marine/MP/CO,
 /turf/open/floor/almayer{
 	tag = "icon-redfull";
 	icon_state = "redfull"

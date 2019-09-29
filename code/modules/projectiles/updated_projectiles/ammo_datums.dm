@@ -414,6 +414,9 @@
 	damage_var_high = config.med_proj_variance
 	penetration = config.mlow_armor_penetration
 
+/datum/ammo/bullet/revolver/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
+	knockback(M, P, 4)
+
 /datum/ammo/bullet/revolver/highimpact/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
 	if(isHumanStrict(M))
 		var/mob/living/carbon/human/H = M

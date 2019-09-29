@@ -1,0 +1,44 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: TheDonkified
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes: 
+  - rscadd: "Added verb for toggling stock attachments called 'Toggle Stock Attachment'."
+  - rscadd: "Can repair automated closets, attachment vendor, and other similar vendors that were previously unrepairable."
+  - rscadd: "Vendors in general will be more resistant to explosions. They still have a chance to break and require repairs from weaker explosions, however they are less likely to completely get deleted unless an explosion is powerful."
+  - rscadd: "Creating items via metal, wood, etc will try to put it in your inactive hand. If there is something already in your inactive hand but it is stackable, it will try to fill that stack if the created item is of the same type."
+  - rscadd: "If there are still leftovers (the new item is not the same type as the item in your inactive hand, there was too much of the new item, or either item was not stackable), then they will try to fill your active hand."
+  - bugfix: "Trying to repair a vendor a functional vendor with power issues will give a proper message reflecting that."
+  - bugfix: "Cupola has working IFF again."
+  - bugfix: "Empty HEFA box has a sprite again."
+  - bugfix: "Fully repaired doors will no longer show as 'slightly damaged'."

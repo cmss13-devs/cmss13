@@ -265,7 +265,7 @@
 	wield_delay = WIELD_DELAY_FAST
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	var/powerpack = null
-	ammo = /datum/ammo/bullet/smartgun
+	ammo = /datum/ammo/bullet/smartgun/marine
 	var/datum/ammo/ammo_primary = /datum/ammo/bullet/smartgun//Toggled ammo type
 	var/datum/ammo/ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing//Toggled ammo type
 	var/shells_fired_max = 20 //Smartgun only; once you fire # of shells, it will attempt to reload automatically. If you start the reload, the counter resets.

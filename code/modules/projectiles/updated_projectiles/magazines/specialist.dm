@@ -92,8 +92,8 @@
 	max_rounds = 500 //Should be 500 in total.
 	icon_state = "m57"
 	w_class = SIZE_MEDIUM
-	default_ammo = /datum/ammo/bullet/smartgun
-	gun_type = /obj/item/weapon/gun/smartgun/
+	default_ammo = /datum/ammo/bullet/smartgun/marine
+	gun_type = /obj/item/weapon/gun/smartgun
 
 /obj/item/ammo_magazine/smartgun/internal
 	name = "integrated smartgun belt"

@@ -604,7 +604,8 @@
 /mob/living/carbon/human/get_projectile_hit_chance(obj/item/projectile/P)
 	. = ..()
 	if(.)
-		if((P.ammo.flags_ammo_behavior & AMMO_SKIPS_HUMANS && get_target_lock(P.ammo.iff_signal)) || (P.projectile_override_flags & AMMO_SKIPS_HUMANS) && get_target_lock(ACCESS_IFF_MARINE))
+		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+		if(ammo_flags & AMMO_SKIPS_HUMANS && get_target_lock(P.ammo.iff_signal))
 			return 0
 		if(mobility_aura)
 			. -= mobility_aura * 5

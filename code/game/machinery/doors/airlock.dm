@@ -67,12 +67,12 @@
 /obj/structure/machinery/door/airlock/examine(mob/user)
 	. = ..()
 	var/dam = damage / damage_cap
-	if(dam <= 0.3)
-		to_chat(user, SPAN_WARNING("It looks slightly damaged."))
-	else if(dam <= 0.6)
-		to_chat(user, SPAN_WARNING("It looks moderately damaged."))
-	else
+	if(dam > 0.6)
 		to_chat(user, SPAN_DANGER("It looks heavily damaged."))
+	else if(dam > 0.3)
+		to_chat(user, SPAN_WARNING("It looks moderately damaged."))
+	else if(dam > 0)
+		to_chat(user, SPAN_WARNING("It looks slightly damaged."))
 
 /obj/structure/machinery/door/airlock/proc/take_damage(dam)
 	if(!dam || unacidable)

@@ -524,6 +524,7 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	specialty = "M10 pattern captain"
+	flags_atom = NO_SNOW_TYPE
 
 
 //=============================//PMCS\\==================================\\

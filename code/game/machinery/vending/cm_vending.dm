@@ -91,6 +91,99 @@
 
 
 
+/obj/structure/machinery/cm_vending/attackby(obj/item/W, mob/user)
+	if(isscrewdriver(W))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
+			return FALSE
+		else if(stat & BROKEN)
+			to_chat(user, SPAN_NOTICE("You start to unscrew \the [src]'s broken panel."))
+			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
+				to_chat(user, SPAN_WARNING("You stop unscrewing \the [src]'s broken panel."))
+				return FALSE
+			to_chat(user, SPAN_NOTICE("You unscrew \the [src]'s broken panel and remove it, exposing many broken wires."))
+			stat &= ~BROKEN
+			stat |= REPAIR_STEP_ONE
+			return TRUE
+		else if(stat & REPAIR_STEP_FOUR)
+			to_chat(user, SPAN_NOTICE("You start to fasten \the [src]'s new panel."))
+			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
+				to_chat(user, SPAN_WARNING("You stop fastening \the [src]'s new panel."))
+				return FALSE
+			to_chat(user, SPAN_NOTICE("You fasten \the [src]'s new panel, fully repairing the vendor."))
+			stat &= ~REPAIR_STEP_FOUR
+			stat |= FULLY_REPAIRED
+			update_icon()
+			return TRUE
+		else
+			var/msg = get_repair_move_text()
+			to_chat(user, SPAN_WARNING("[msg]"))
+			return FALSE
+	else if(iswirecutter(W))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
+			return FALSE
+		else if(stat & REPAIR_STEP_ONE)
+			to_chat(user, SPAN_NOTICE("You start to remove \the [src]'s broken wires."))
+			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
+				to_chat(user, SPAN_WARNING("You stop removing \the [src]'s broken wires."))
+				return FALSE
+			to_chat(user, SPAN_NOTICE("You remove \the [src]'s broken broken wires."))
+			stat &= ~REPAIR_STEP_ONE
+			stat |= REPAIR_STEP_TWO
+			return TRUE
+		else
+			var/msg = get_repair_move_text()
+			to_chat(user, SPAN_WARNING("[msg]"))
+			return FALSE
+	else if(iswire(W))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
+			return FALSE
+		var/obj/item/stack/cable_coil/CC = W
+		if(stat & REPAIR_STEP_TWO)
+			if(CC.amount < 5)
+				to_chat(user, SPAN_WARNING("You need more cable coil to replace the removed wires."))
+			to_chat(user, SPAN_NOTICE("You start to replace \the [src]'s removed wires."))
+			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
+				to_chat(user, SPAN_WARNING("You stop replacing \the [src]'s removed wires."))
+				return FALSE
+			if(!CC || !CC.use(5))
+				to_chat(user, SPAN_WARNING("You need more cable coil to replace the removed wires."))
+				return FALSE
+			to_chat(user, SPAN_NOTICE("You remove \the [src]'s broken broken wires."))
+			stat &= ~REPAIR_STEP_TWO
+			stat |= REPAIR_STEP_THREE
+			return TRUE
+		else
+			var/msg = get_repair_move_text()
+			to_chat(user, SPAN_WARNING("[msg]"))
+			return
+	else if(istype(W, /obj/item/stack/sheet/metal))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
+			return FALSE
+		var/obj/item/stack/sheet/metal/M = W
+		if(stat & REPAIR_STEP_THREE)
+			to_chat(user, SPAN_NOTICE("You start to construct a new panel for \the [src]."))
+			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
+				to_chat(user, SPAN_WARNING("You stop constructing a new panel for \the [src]."))
+				return FALSE
+			if(!M || !M.use(1))
+				to_chat(user, SPAN_WARNING("You a sheet of metal to construct a new panel."))
+				return FALSE
+			to_chat(user, SPAN_NOTICE("You construct a new panel for \the [src]."))
+			stat &= ~REPAIR_STEP_THREE
+			stat |= REPAIR_STEP_FOUR
+			return TRUE
+		else
+			var/msg = get_repair_move_text()
+			to_chat(user, SPAN_WARNING("[msg]"))
+			return
+	
+	..()
+
+
 
 /obj/structure/machinery/cm_vending/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 
@@ -299,6 +392,40 @@
 		add_fingerprint(usr)
 		ui_interact(usr) //updates the nanoUI window
 
+/obj/structure/machinery/cm_vending/ex_act(severity)
+	switch(severity)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if (prob(25))
+				stat |= BROKEN
+				return
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if (prob(50))
+				stat |= BROKEN
+				return
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			qdel(src)
+			return
+	return
+
+/obj/structure/machinery/cm_vending/get_repair_move_text(var/include_name = TRUE)
+	if(!stat)
+		return
+
+	var/possessive = include_name ? "[src]'s" : "Its"
+	var/nominative = include_name ? "[src]" : "It" 
+	
+	if(stat & BROKEN)
+		return "[possessive] broken panel still needs to be <b>unscrewed</b> and removed."
+	else if(stat & REPAIR_STEP_ONE)
+		return "[possessive] broken wires still need to be <b>cut</b> and removed from the vendor."
+	else if(stat & REPAIR_STEP_TWO)
+		return "[nominative] needs to have <b>new wiring</b> installed."
+	else if(stat & REPAIR_STEP_THREE)
+		return "[nominative] needs to have a <b>metal</b> panel installed."
+	else if(stat & REPAIR_STEP_FOUR)
+		return "[possessive] new panel needs to be <b>fastened</b> to it."
+	else
+		return "[nominative] is being affected by some power-related issue."
 
 /obj/structure/machinery/cm_vending/clothing
 	name = "ColMarTech Automated Closet"

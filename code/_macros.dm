@@ -1,5 +1,5 @@
 #define to_world_log(message)                               world.log << (message)
-#define debug_msg(message)                                  to_world(message) // Difference from to_world is that it is designed to be easily found and deleted
+#define debug_msg(message)                                  to_world(message) // A message define designed to be easily found and deleted
 #define sound_to(target, sound)                             target << (sound)
 #define to_file(file_entry, source_var)                     file_entry << (source_var)
 #define from_file(file_entry, target_var)                   file_entry >> (target_var)

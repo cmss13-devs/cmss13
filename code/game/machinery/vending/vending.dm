@@ -103,11 +103,10 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(25))
-				spawn(0)
-					malfunction()
+				INVOKE_ASYNC(src, .proc/malfunction)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				qdel(src)
+				INVOKE_ASYNC(src, .proc/malfunction)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
 
@@ -156,19 +155,25 @@
 		R.product_name = initial(temp_path.name)
 	return
 
-/obj/structure/machinery/vending/proc/get_repair_move_text()
+/obj/structure/machinery/vending/get_repair_move_text(var/include_name = TRUE)
+	if(!stat)
+		return
+
+	var/possessive = include_name ? "[src]'s" : "Its"
+	var/nominative = include_name ? "[src]" : "It" 
+	
 	if(stat & BROKEN)
-		return "[src]'s broken panel still needs to be <b>unscrewed</b> and removed."
+		return "[possessive] broken panel still needs to be <b>unscrewed</b> and removed."
 	else if(stat & REPAIR_STEP_ONE)
-		return "[src]'s broken wires still need to be <b>cut</b> and removed from the vendor."
+		return "[possessive] broken wires still need to be <b>cut</b> and removed from the vendor."
 	else if(stat & REPAIR_STEP_TWO)
-		return "[src] needs to have <b>new wiring</b> installed."
+		return "[nominative] needs to have <b>new wiring</b> installed."
 	else if(stat & REPAIR_STEP_THREE)
-		return "[src] needs to have a <b>metal panel</b> installed."
+		return "[nominative] needs to have a <b>metal</b> panel installed."
 	else if(stat & REPAIR_STEP_FOUR)
-		return "[src]'s new panel needs to be <b>fastened</b> to it."
+		return "[possessive] new panel needs to be <b>fastened</b> to it."
 	else
-		return ""
+		return "[nominative] is being affected by some power-related issue."
 
 /obj/structure/machinery/vending/attackby(obj/item/W, mob/user)
 	if(tipped_level)
@@ -263,7 +268,7 @@
 			if(!M || !M.use(1))
 				to_chat(user, SPAN_WARNING("You a sheet of metal to construct a new panel."))
 				return FALSE
-			to_chat(user, SPAN_NOTICE("You consrtuct a new panel for \the [src]."))
+			to_chat(user, SPAN_NOTICE("You construct a new panel for \the [src]."))
 			stat &= ~REPAIR_STEP_THREE
 			stat |= REPAIR_STEP_FOUR
 			return TRUE

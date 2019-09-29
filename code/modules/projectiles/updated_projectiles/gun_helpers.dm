@@ -755,8 +755,6 @@ should be alright.
 	playsound(usr, 'sound/weapons/handling/safety_toggle.ogg', 25, 1)
 	flags_gun_features ^= GUN_TRIGGER_SAFETY
 
-
-
 /obj/item/weapon/gun/verb/activate_attachment_verb()
 	set category = "Weapons"
 	set name = "Use Attachment"
@@ -818,25 +816,42 @@ should be alright.
 	if(src.flags_gun_features & GUN_ANTIQUE || src.flags_gun_features & GUN_INTERNAL_MAG  || src.flags_gun_features & GUN_UNUSUAL_DESIGN)
 		to_chat(usr, SPAN_WARNING("[src] has no auto ejection system!"))
 		return
-	else 
+	else
 		src.flags_gun_features ^= GUN_AUTO_EJECTOR
 		to_chat(usr, SPAN_INFO("You toggle the auto ejector [src.flags_gun_features & GUN_AUTO_EJECTOR ? "on" : "off"]"))
 
 /obj/item/weapon/gun/verb/toggle_underbarrel_attachment_verb()
 	set category = "Weapons"
-	set name = "Toggle Underbarrel attachment"
-	set desc = "Use the attachment that's mounted on your underbarrel"
-	set src = usr.contents	
+	set name = "Toggle Underbarrel Attachment"
+	set desc = "Use the attachment that is mounted on your underbarrel."
+	set src = usr.contents
 
 	var/obj/item/weapon/gun/G = get_active_firearm(usr)
 	if(!G) return
-	src = G	
+	src = G
 
 	var/obj/item/attachable/A = attachments["under"]
 	if(A)
 		A.activate_attachment(src, usr)
 	else
 		to_chat(usr, SPAN_WARNING("[src] does not have any usable underbarrel attachments!"))
+		return
+
+/obj/item/weapon/gun/verb/toggle_stock_attachment_verb()
+	set category = "Weapons"
+	set name = "Toggle Stock Attachment"
+	set desc = "Use the stock attachment that is mounted on your gun."
+	set src = usr.contents
+
+	var/obj/item/weapon/gun/G = get_active_firearm(usr)
+	if(!G) return
+	src = G
+
+	var/obj/item/attachable/A = attachments["stock"]
+	if(A)
+		A.activate_attachment(src, usr)
+	else
+		to_chat(usr, SPAN_WARNING("[src] does not have any usable stock attachments!"))
 		return
 
 

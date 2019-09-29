@@ -594,7 +594,7 @@ Currently only has the tank hardpoints
 	if(!prob(owner.accuracies["secondary"] * 100 * owner.misc_ratios["secd_acc"]))
 		A = get_step(get_turf(A), pick(cardinal))
 	var/obj/item/projectile/P = new(initial(name), weapon_source_mob)
-	P.generate_bullet(new ammo.default_ammo)
+	P.generate_bullet(new ammo.default_ammo, 0, AMMO_SKIPS_HUMANS)
 	P.fire_at(A, owner, src, P.ammo.max_range * 3, P.ammo.shell_speed)
 	muzzle_flash(Get_Angle(owner, A))
 	playsound(get_turf(src), pick(list('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg')), 60, 1)
@@ -1059,7 +1059,7 @@ obj/item/hardpoint/armor/ballistic/remove_buff()
 	caliber = "10x28mm" //Correlates to smartguns
 	icon_state = "big_ammo_box"
 	w_class = SIZE_LARGE
-	default_ammo = /datum/ammo/bullet/smartgun
+	default_ammo = /datum/ammo/bullet/smartgun/marine
 	max_rounds = 500
 	gun_type = /obj/item/hardpoint/secondary/m56cupola
 	point_cost = 100

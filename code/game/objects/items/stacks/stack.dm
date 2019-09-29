@@ -167,16 +167,31 @@
 		if(R.max_res_amount > 1)
 			var/obj/item/stack/new_item = O
 			new_item.amount = R.res_amount * multiplier
-			//new_item.add_to_stacks(usr)
 		amount -= R.req_amount * multiplier
+
 		if(amount <= 0)
 			var/oldsrc = src
 			src = null //dont kill proc after qdel()
 			usr.drop_inv_item_on_ground(oldsrc)
 			qdel(oldsrc)
-			if(istype(O,/obj/item) && istype(usr,/mob/living/carbon))
-				usr.put_in_hands(O)
-		O.add_fingerprint(usr)
+		
+		if(istype(O, /obj/item) && ishuman(usr) && !usr.put_in_inactive_hand(O))
+			var/obj/item/stack/IH = usr.get_inactive_hand()
+			var/obj/item/stack/S = O
+			if (istype(IH) && istype(S) && IH.stack_id == S.stack_id)
+				var/diff = IH.max_amount - IH.amount
+				if (S.amount < diff)
+					IH.amount += S.amount
+					qdel(S)
+				else
+					S.amount -= diff
+					IH.amount += diff
+					usr.put_in_active_hand(S)
+			else
+				usr.put_in_active_hand(O)
+		
+		O?.add_fingerprint(usr)
+
 		//BubbleWrap - so newly formed boxes are empty
 		if(istype(O, /obj/item/storage))
 			for (var/obj/item/I in O)

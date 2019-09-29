@@ -917,6 +917,21 @@
 	penetration = config.hmed_armor_penetration
 	damage_armor_punch = 1
 
+/datum/ammo/bullet/smartgun/marine
+	iff_signal = ACCESS_IFF_MARINE
+
+/datum/ammo/bullet/smartgun/marine/armor_piercing
+	icon_state = "bullet"
+
+/datum/ammo/bullet/smartgun/marine/armor_piercing/New()
+	..()
+	accurate_range = config.short_shell_range
+	accuracy = config.min_hit_accuracy
+	damage_falloff = config.tactical_damage_falloff
+	damage = config.mlow_hit_damage
+	penetration = config.hmed_armor_penetration
+	damage_armor_punch = 1
+
 /datum/ammo/bullet/smartgun/dirty
 	name = "irradiated smartgun bullet"
 	iff_signal = ACCESS_IFF_PMC

@@ -510,6 +510,21 @@
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	flags_marine_helmet = NOFLAGS
 
+/obj/item/clothing/head/helmet/marine/CO
+	name = "\improper M10 pattern captain helmet"
+	desc = "A special M10 Pattern Helmet. It reads on the label, 'The difference between an open-casket and closed-casket funeral. Wear on head for best results.'."
+	icon_state = "co_officer"
+	item_state = "co_officer"
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	specialty = "M10 pattern captain"
+
 
 //=============================//PMCS\\==================================\\
 //=======================================================================\\

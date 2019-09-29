@@ -32,10 +32,16 @@ Godspeed, captain!"}
 		ai_announcement("[H.get_paygrade(0)] [H.real_name] enjoy your stay on [MAIN_SHIP_NAME].")
 		for(var/obj/structure/closet/secure_closet/securecom/S in world)
 			var/obj/item/weapon/gun/rifle/m46c/I = new/obj/item/weapon/gun/rifle/m46c/
+			var/obj/item/clothing/suit/storage/marine/MP/CO/suit = new/obj/item/clothing/suit/storage/marine/MP/CO/
+			var/obj/item/clothing/head/helmet/marine/CO/head = new/obj/item/clothing/head/helmet/marine/CO/
 			if(S.opened == 0)
 				I.loc = S
+				suit.loc = S
+				head.loc = S
 			if(S.opened == 1)
 				I.loc = S.loc
+				suit.loc = S.loc
+				head.loc = S.loc
 			if(istype(I))
 				call(/obj/item/weapon/gun/rifle/m46c/proc/name_after_co)(H, I)
 	..()

@@ -1057,6 +1057,7 @@ obj/item/hardpoint/armor/ballistic/remove_buff()
 	name = "M56 Cupola Magazine"
 	desc = "A secondary armament MG magazine"
 	caliber = "10x28mm" //Correlates to smartguns
+	icon = 'icons/obj/items/ammo_box.dmi'
 	icon_state = "big_ammo_box"
 	w_class = SIZE_LARGE
 	default_ammo = /datum/ammo/bullet/smartgun/marine

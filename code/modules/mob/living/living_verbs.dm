@@ -152,22 +152,48 @@
 				return
 
 		var/mob/living/carbon/human/CM = L
-		if(CM.on_fire && CM.canmove && !knocked_down)
-			if(isYautja(CM))
-				CM.fire_stacks = max(CM.fire_stacks - rand(6,10), 0)
-				CM.KnockDown(1, TRUE) // actually 0.5
-				CM.visible_message(SPAN_DANGER("[CM] expertly rolls on the floor, greatly reducing the amount of flames!"), \
-					SPAN_NOTICE("You expertly roll to extinguish the flames!"), null, 5)
-			else
-				CM.fire_stacks = max(CM.fire_stacks - rand(3,6), 0)
-				CM.KnockDown(4, TRUE)
-				CM.visible_message(SPAN_DANGER("[CM] rolls on the floor, trying to put themselves out!"), \
-					SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
-			if(fire_stacks <= 0)
-				CM.visible_message(SPAN_DANGER("[CM] has successfully extinguished themselves!"), \
-					SPAN_NOTICE("You extinguish yourself."), null, 5)
-				ExtinguishMob()
-			return
+		if(CM.canmove && !knocked_down)
+			if(CM.on_fire)
+				if(isYautja(CM))
+					CM.fire_stacks = max(CM.fire_stacks - rand(6,10), 0)
+					CM.KnockDown(1, TRUE) // actually 0.5
+					CM.visible_message(SPAN_DANGER("[CM] expertly rolls on the floor, greatly reducing the amount of flames!"), \
+						SPAN_NOTICE("You expertly roll to extinguish the flames!"), null, 5)
+				else
+					CM.fire_stacks = max(CM.fire_stacks - rand(3,6), 0)
+					CM.KnockDown(4, TRUE)
+					CM.visible_message(SPAN_DANGER("[CM] rolls on the floor, trying to put themselves out!"), \
+						SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
+				if(fire_stacks <= 0)
+					CM.visible_message(SPAN_DANGER("[CM] has successfully extinguished themselves!"), \
+						SPAN_NOTICE("You extinguish yourself."), null, 5)
+					ExtinguishMob()
+				return
+			
+			var/on_acid = FALSE
+			for(var/datum/effects/acid/A in effects_list)
+				on_acid = TRUE
+				break
+			
+			if(on_acid)
+				var/sleep_amount = 1
+				if(isYautja(CM))
+					CM.KnockDown(1, TRUE)
+					CM.visible_message(SPAN_DANGER("[CM] expertly rolls on the floor!"), \
+						SPAN_NOTICE("You expertly roll to get rid of the acid!"), null, 5)
+				else
+					sleep_amount = 4
+					CM.KnockDown(4, TRUE)
+					CM.visible_message(SPAN_DANGER("[CM] rolls on the floor, trying to get the acid off!"), \
+						SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
+					
+				sleep(sleep_amount)
+				if(prob(50))
+					CM.visible_message(SPAN_DANGER("[CM] has successfully removed the acid!"), \
+						SPAN_NOTICE("You get rid of the acid."), null, 5)
+					CM.extinguish_acid()
+				return
+		
 		if(CM.handcuffed && CM.canmove && (CM.last_special <= world.time))
 			var/obj/item/handcuffs/HC = CM.handcuffed
 

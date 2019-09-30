@@ -4,6 +4,7 @@
 	icon_path = 'icons/effects/status_effects.dmi'
 	obj_icon_state_path = "+acid"
 	mob_icon_state_path = "human_acid"
+	var/original_duration = 50			//Set to 50 for safety reasons if something fails
 	var/damage_in_total = 50
 
 /datum/effects/acid/New(var/atom/A, var/zone = "chest")
@@ -15,6 +16,8 @@
 	if(isobj(A))
 		var/obj/O = A
 		O.update_icon()
+
+	original_duration = duration
 
 /datum/effects/acid/validate_atom(var/atom/A)
 	if(istype(A, /obj/structure/barricade))
@@ -36,13 +39,13 @@
 	if(affected_mob)
 		affected_mob.last_damage_source = source
 		affected_mob.last_damage_mob = source_mob
-		affected_mob.apply_damage(damage_in_total/duration, BURN, def_zone)
+		affected_mob.apply_damage(damage_in_total/original_duration, BURN, def_zone)
 
 /datum/effects/acid/process_obj()
 	..()
 	var/obj/affected_obj = affected_atom
 	if(affected_obj)
-		affected_obj.update_health(damage_in_total/duration)
+		affected_obj.update_health(damage_in_total/original_duration)
 
 /datum/effects/acid/Dispose()
 	if(affected_atom)

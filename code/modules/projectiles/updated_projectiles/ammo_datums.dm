@@ -27,7 +27,7 @@
 	var/sound_miss //When it misses someone.
 	var/sound_bounce //When it bounces off something.
 
-	var/iff_signal					= 0 		// PLACEHOLDER. Bullets that can skip friendlies will call for this
+	var/iff_signal					= ACCESS_IFF_MARINE		// PLACEHOLDER. Bullets that can skip friendlies will call for this
 	var/accuracy 					= 0 		// This is added to the bullet's base accuracy
 	var/accuracy_var_low			= 0 		// How much the accuracy varies when fired
 	var/accuracy_var_high			= 0

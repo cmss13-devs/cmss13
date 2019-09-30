@@ -1,10 +1,10 @@
 /datum/effects/acid
 	effect_name = "acid"
-	duration = 10
+	duration = 20
 	icon_path = 'icons/effects/status_effects.dmi'
 	obj_icon_state_path = "+acid"
 	mob_icon_state_path = "human_acid"
-	var/damage_each_tick = 5
+	var/damage_in_total = 50
 
 /datum/effects/acid/New(var/atom/A, var/zone = "chest")
 	..()
@@ -36,13 +36,13 @@
 	if(affected_mob)
 		affected_mob.last_damage_source = source
 		affected_mob.last_damage_mob = source_mob
-		affected_mob.apply_damage(damage_each_tick, BURN, def_zone)
+		affected_mob.apply_damage(damage_in_total/duration, BURN, def_zone)
 
 /datum/effects/acid/process_obj()
 	..()
 	var/obj/affected_obj = affected_atom
 	if(affected_obj)
-		affected_obj.update_health(damage_each_tick)
+		affected_obj.update_health(damage_in_total/duration)
 
 /datum/effects/acid/Dispose()
 	if(affected_atom)

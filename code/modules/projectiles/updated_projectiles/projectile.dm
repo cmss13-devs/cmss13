@@ -727,10 +727,13 @@
 
 	bullet_message(P) //We still want this, regardless of whether or not the bullet did damage. For griefers and such.
 
-	if(damage)
+	if(damage || (ammo_flags && AMMO_SPECIAL_EMBED))
 		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, impact_name = P.ammo.impact_name, impact_limbs = P.ammo.impact_limbs)
 		P.play_damage_effect(src)
 		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + round(damage / 10)))
+			if(ammo_flags && AMMO_SPECIAL_EMBED)
+				P.ammo.on_embed(src, organ)
+
 			var/obj/item/shard/shrapnel/embedded = new P.ammo.shrapnel_type
 			if(istype(embedded))
 				embedded.on_embed(src, organ)

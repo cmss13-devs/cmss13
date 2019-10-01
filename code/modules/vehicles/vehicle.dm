@@ -224,3 +224,30 @@
 //-------------------------------------------------------
 /obj/vehicle/proc/update_stats()
 	return
+
+/obj/vehicle/souto
+	name = "Souto Mobile"
+	icon_state = "soutomobile"
+	desc = "The best ride in the universe. For the one and only Souto Man!"
+	move_delay = 2
+	buckling_y = 4
+
+/obj/vehicle/souto/New()
+	..()
+	verbs -= /atom/movable/verb/pull
+
+
+/obj/vehicle/souto/update_icon()
+	var/image/I = new(icon = 'icons/obj/vehicles/vehicles.dmi', icon_state = "soutomobile_overlay", layer = layer + 0.2) //over mobs
+	overlays += I
+
+/obj/vehicle/souto/manual_unbuckle(mob/user)
+	if(buckled_mob != user)
+		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			..()
+	else ..()
+
+/obj/vehicle/souto/relaymove(mob/user, direction)
+	if(user.mind.special_role == "Souto Man")
+		playsound(src.loc, "smash.ogg", 25, 1)
+		..()

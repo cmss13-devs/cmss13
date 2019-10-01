@@ -110,6 +110,7 @@ As such, don't expect any values assigned to common firearms to even consider ho
 .../update_projectiles/guns/code.dm
 
 */
+	var/no_hit_damage = 0
 	var/base_hit_damage = 10 //Self evident.
 	var/min_hit_damage = 16
 	var/mlow_hit_damage = 22

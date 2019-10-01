@@ -67,6 +67,9 @@
 /datum/ammo/proc/do_at_half_range(obj/item/projectile/P)
 	return
 
+/datum/ammo/proc/on_embed(var/mob/embedded_mob, var/datum/limb/target_organ)
+	return
+
 /datum/ammo/proc/do_at_max_range(obj/item/projectile/P)
 	return
 
@@ -1953,6 +1956,75 @@
 	G.icon_state = "flare-on"
 	G.damtype = "fire"
 	G.SetLuminosity(G.brightness_on)
+
+/datum/ammo/souto/
+	name = "Souto Can"
+	ping = null //no bounce off.
+	damage_type = BRUTE
+	shrapnel_type = /obj/item/reagent_container/food/drinks/cans/souto/classic
+	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_IGNORE_ARMOR|AMMO_IGNORE_RESIST|AMMO_BALLISTIC|AMMO_STOPPED_BY_COVER|AMMO_SPECIAL_EMBED
+	var/obj/item/reagent_container/food/drinks/cans/souto/can_type = new /obj/item/reagent_container/food/drinks/cans/souto/classic
+	icon = 'icons/obj/items/drinks.dmi'
+	icon_state = "souto_classic"
+
+/datum/ammo/souto/New()
+	..()
+	max_range = config.short_shell_range
+	shrapnel_chance = 10
+	accuracy = config.max_hit_accuracy + config.max_hit_accuracy
+	accurate_range = config.short_shell_range
+	shell_speed = config.slow_shell_speed
+	can_type = new /obj/item/reagent_container/food/drinks/cans/souto/classic
+
+/datum/ammo/souto/on_embed(var/mob/embedded_mob, var/datum/limb/target_organ)
+	if(ishuman(embedded_mob) && !isYautja(embedded_mob))
+		if(istype(target_organ))
+			target_organ.embed(src.can_type)
+
+/datum/ammo/souto/on_hit_mob(mob/M, obj/item/projectile/P)
+	if(!M || M == P.firer) return
+	if(M.in_throw_mode && !M.get_active_hand())	//empty active hand and we're in throw mode. If so we catch the can.
+		if(!M.is_mob_incapacitated()) // People who are not able to catch cannot catch.
+			if(P.contents.len == 1)
+				for(var/obj/item/reagent_container/food/drinks/cans/souto/S in P.contents)
+					M.put_in_active_hand(S)
+					for(var/mob/O in viewers(world.view, P)) //find all people in view.
+						O.show_message(SPAN_DANGER("[M] catches the [can_type]!"), 1) //Tell them the can was caught.
+					return //Can was caught.	
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.species.name == "Human") //no effect on synths or preds.
+			if(H.mind && H.mind.special_role)
+				H.apply_effect(1, WEAKEN) //ineffective against antags.
+			else
+				H.apply_effect(6, STUN)
+				H.apply_effect(8, WEAKEN)
+				H.apply_effect(15, DAZE)
+				H.apply_effect(15, SLOW)
+		shake_camera(H, 2, 1)
+		if(P.contents.len)
+			drop_can(P.loc, P) //We make a can at the location.
+		
+/datum/ammo/souto/on_hit_obj(obj/O,obj/item/projectile/P)
+	drop_can(P.loc, P) //We make a can at the location.
+
+/datum/ammo/souto/on_hit_turf(turf/T, obj/item/projectile/P)
+	drop_can(P.loc, P) //We make a can at the location.
+
+/datum/ammo/souto/do_at_max_range(obj/item/projectile/P)
+	drop_can(P.loc, P) //We make a can at the location.
+
+/datum/ammo/souto/on_shield_block(mob/M, obj/item/projectile/P)
+	drop_can(P.loc, P) //We make a can at the location.
+	
+/datum/ammo/souto/proc/drop_can(var/loc, obj/item/projectile/P)
+	if(P.contents.len)
+		for(var/obj/item/I in P.contents)
+			I.forceMove(loc)
+	randomize_projectile(P)
+
+/datum/ammo/souto/proc/randomize_projectile(obj/item/projectile/P)
+	shrapnel_type = pick(typesof(/obj/item/reagent_container/food/drinks/cans/souto)-/obj/item/reagent_container/food/drinks/cans/souto)
 
 /datum/ammo/grenade_container
 	name = "grenade shell"

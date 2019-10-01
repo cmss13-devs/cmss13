@@ -1,5 +1,4 @@
 
-
 /obj/item/clothing/mask/gas
 	name = "gas mask"
 	desc = "A face-covering mask that can be connected to an air supply. Filters harmful gases from the air."
@@ -162,3 +161,12 @@
 	desc = "Twoooo!"
 	icon_state = "owl"
 	vision_impair = 0
+
+/obj/item/clothing/mask/gas/fake_mustache
+	name = "fake mustache"
+	desc = "It is almost perfect."
+	icon_state = "souto_man"
+	vision_impair = 0
+	unacidable = 1
+	flags_item = NODROP|DELONDROP
+	flags_inventory = CANTSTRIP|COVEREYES|COVERMOUTH|ALLOWINTERNALS|ALLOWREBREATH|BLOCKGASEFFECT|ALLOWCPR|BLOCKSHARPOBJ

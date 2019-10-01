@@ -816,3 +816,20 @@
 	new /obj/item/ammo_magazine/pistol/hp(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
+
+/obj/item/storage/belt/souto
+	name = "\improper Souto belt"
+	desc = "A belt with break away souto cans. They cannot be put back."
+	flags_equip_slot = SLOT_WAIST
+	allow_drawing_method = FALSE
+	draw_mode = 1
+	storage_slots = 8
+	flags_item = NODROP|DELONDROP
+	flags_inventory = CANTSTRIP
+	max_w_class = 0 //this belt cannot hold anything
+
+
+/obj/item/storage/belt/souto/New()
+	..()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/reagent_container/food/drinks/cans/souto/classic(src)

@@ -370,6 +370,13 @@
 	worn_state = "redshirt2"
 	has_sensor = 0
 
+/obj/item/clothing/under/souto
+	name = "\improper Souto Man shorts"
+	desc = "The white shorts worn by the one and only Souto man. These must be worth a lot to collectors and fans!"
+	icon_state = "souto_man"
+	worn_state = "souto_man"
+	has_sensor = 0
+
 /obj/item/clothing/under/colonist
 	name = "colonist uniform"
 	desc = "A stylish grey-green jumpsuit - standard issue for colonists."

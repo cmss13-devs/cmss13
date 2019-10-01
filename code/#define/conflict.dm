@@ -22,6 +22,7 @@
 #define AMMO_IGNORE_COVER		16384
 #define AMMO_SCANS_NEARBY		32768 //ammo that is scanning stuff nearby - VERY resource intensive
 #define AMMO_STOPPED_BY_COVER	65536
+#define AMMO_SPECIAL_EMBED      131072
 
 //Gun defines for gun related thing. More in the projectile folder.
 #define GUN_CAN_POINTBLANK		1

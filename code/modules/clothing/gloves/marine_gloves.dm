@@ -153,3 +153,20 @@
 	desc = "A pair of fashionable white gloves, worn by marines in dress."
 	icon_state = "latex"
 	item_state = "lgloves"
+
+/obj/item/clothing/gloves/marine/veteran/souto
+	name = "\improper Souto Man gloves"
+	desc = "The gloves worn by Souto Man. White as sugar."
+	icon_state = "souto_man"
+	item_state = "souto_man"
+	flags_item = NODROP|DELONDROP
+	flags_inventory = CANTSTRIP
+	armor_melee = CLOTHING_ARMOR_HARDCORE
+	armor_bullet = CLOTHING_ARMOR_HARDCORE
+	armor_laser = CLOTHING_ARMOR_HARDCORE
+	armor_energy = CLOTHING_ARMOR_HARDCORE
+	armor_bomb = CLOTHING_ARMOR_HARDCORE
+	armor_bio = CLOTHING_ARMOR_HARDCORE
+	armor_rad = CLOTHING_ARMOR_HARDCORE
+	armor_internaldamage = CLOTHING_ARMOR_HARDCORE
+	unacidable = 1

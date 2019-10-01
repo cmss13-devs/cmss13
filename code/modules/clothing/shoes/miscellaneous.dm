@@ -158,3 +158,20 @@
 	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
 
+/obj/item/clothing/shoes/souto
+	name = "\improper Souto Man boots"
+	desc = "Souto Man boots"
+	icon_state = "souto_man"
+	item_state = "souto_man"
+	flags_inventory = CANTSTRIP|NOSLIPPING
+	armor_melee = CLOTHING_ARMOR_HARDCORE
+	armor_bullet = CLOTHING_ARMOR_HARDCORE
+	armor_laser = CLOTHING_ARMOR_HARDCORE
+	armor_energy = CLOTHING_ARMOR_HARDCORE
+	armor_bomb = CLOTHING_ARMOR_HARDCORE
+	armor_bio = CLOTHING_ARMOR_HARDCORE
+	armor_rad = CLOTHING_ARMOR_HARDCORE
+	armor_internaldamage = CLOTHING_ARMOR_HARDCORE
+	flags_item = NODROP|DELONDROP
+	flags_inventory = CANTSTRIP|NOSLIPPING
+	unacidable = 1

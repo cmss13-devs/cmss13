@@ -231,7 +231,10 @@
 	icon_state = "souto_classic"
 	item_state = "souto_classic"
 	center_of_mass = list("x"=16, "y"=10)
-	New()
+	embeddable = 1
+	disposed = 0
+	
+/obj/item/reagent_container/food/drinks/cans/souto/New()
 		..()
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet

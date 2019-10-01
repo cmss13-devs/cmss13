@@ -132,10 +132,16 @@
 
 /obj/item/card/id/pizza
 	name = "pizza guy badge"
-	desc = "It says: 'Pizza-guy local union No. 217','We always deliver!'"
+	desc = "It reads: 'Pizza-guy local union No. 217','We always deliver!'"
 	icon_state = "pizza"
 	item_state = "gold_id"
 
+/obj/item/card/id/souto
+	name = "Souto Man"
+	desc = "It reads: 'The one and only!'"
+	icon_state = "gold"
+	item_state = "gold_id"
+	
 /obj/item/card/id/gold
 	name = "identification holo-badge"
 	desc = "A gold plated holo-badge which shows power and might."

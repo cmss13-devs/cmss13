@@ -182,7 +182,7 @@ var/list/be_special_flags = list(
 #define FACTION_PIRATE "Pirate"
 #define FACTION_GLADIATOR "Gladiator"
 #define FACTION_PIZZA "Pizza Delivery"
-
+#define FACTION_SOUTO "Souto Man"
 #define FACTION_COLONIST "Colonist"
 #define FACTION_YAUTJA "Yautja"
 #define FACTION_PREDALIEN "Predalien"

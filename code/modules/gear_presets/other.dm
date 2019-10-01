@@ -1,4 +1,3 @@
-
 /datum/equipment_preset/other
 	name = "Other"
 
@@ -305,6 +304,47 @@
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/thirteenloko(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/holdout(H.back), WEAR_IN_BACK)
 
+/datum/equipment_preset/other/souto
+	name = "Souto Man"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	languages = list("English", "Russian", "Tradeband") //Just in case they are delivering to UPP or CLF...
+	idtype = /obj/item/card/id/souto
+	assignment = "Souto Man"
+	rank = "MODE"
+	special_role = "Souto Man"
+	skills = /datum/skills/mercenary
+	faction = FACTION_SOUTO
+
+/datum/equipment_preset/other/souto/New()
+	. = ..()
+	access = get_freelancer_access()
+
+/datum/equipment_preset/other/souto/load_name(mob/living/carbon/human/H, var/randomise)
+	H.gender = pick(MALE,FEMALE)
+	var/datum/preferences/A = new()
+	A.randomize_appearance(H)
+	H.real_name = "Carlos Souto Man Cubano"
+	H.name = H.real_name
+	H.age = rand(17,45)
+
+/datum/equipment_preset/other/souto/load_gear(mob/living/carbon/human/H)
+	//TODO: add backpacks and satchels
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/souto(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/space/souto(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/souto(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/souto(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/fake_mustache(H), WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/space/souto(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/souto(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/souto(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/souto(H), WEAR_FEET)
+	var/obj/vehicle/souto/V = new
+	V.loc = H.loc
+	V.buckle_mob(H, H)
 /*****************************************************************************************************/
 
 /datum/equipment_preset/other/zombie

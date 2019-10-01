@@ -246,4 +246,3 @@
 	w_class = SIZE_MEDIUM
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced")
 
-

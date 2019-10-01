@@ -116,3 +116,43 @@
 	armor_bio = CLOTHING_ARMOR_ULTRAHIGH
 	armor_rad = CLOTHING_ARMOR_ULTRAHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+
+
+// Souto man
+
+/obj/item/clothing/suit/space/souto
+	name = "\improper Souto Man tank top"
+	desc = "The tank top worn by Souto Man. At first glance it appears the wearer has great abs. But they are actually drawn on."
+	item_state = "souto_man"
+	icon_state = "souto_man"
+	armor_melee = CLOTHING_ARMOR_HARDCORE
+	armor_bullet = CLOTHING_ARMOR_HARDCORE
+	armor_laser = CLOTHING_ARMOR_HARDCORE
+	armor_energy = CLOTHING_ARMOR_HARDCORE
+	armor_bomb = CLOTHING_ARMOR_HARDCORE
+	armor_bio = CLOTHING_ARMOR_HARDCORE
+	armor_rad = CLOTHING_ARMOR_HARDCORE
+	armor_internaldamage = CLOTHING_ARMOR_HARDCORE
+	flags_item = NODROP|DELONDROP
+	flags_inventory = CANTSTRIP|BLOCKSHARPOBJ
+	unacidable = 1
+	flags_inv_hide = null
+	slowdown = 0
+
+/obj/item/clothing/head/helmet/space/souto
+	name = "\improper Souto Man hat"
+	desc = "The hat worn by Souto Man. So cool."
+	item_state = "souto_man"
+	icon_state = "souto_man"
+	armor_melee = CLOTHING_ARMOR_HARDCORE
+	armor_bullet = CLOTHING_ARMOR_HARDCORE
+	armor_laser = CLOTHING_ARMOR_HARDCORE
+	armor_energy = CLOTHING_ARMOR_HARDCORE
+	armor_bomb = CLOTHING_ARMOR_HARDCORE
+	armor_bio = CLOTHING_ARMOR_HARDCORE
+	armor_rad = CLOTHING_ARMOR_HARDCORE
+	armor_internaldamage = CLOTHING_ARMOR_HARDCORE
+	flags_item = NODROP|DELONDROP
+	flags_inventory = CANTSTRIP|COVEREYES|COVERMOUTH|ALLOWINTERNALS|ALLOWREBREATH|BLOCKGASEFFECT|ALLOWCPR|BLOCKSHARPOBJ
+	unacidable = 1
+	flags_inv_hide = null

@@ -380,6 +380,19 @@
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 
+/obj/item/clothing/under/chainshirt/Dispose()
+	remove_from_missing_pred_gear(src)
+	..()
+
+/obj/item/clothing/under/chainshirt/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
+
+/obj/item/clothing/under/chainshirt/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
+
 /obj/item/clothing/gloves/yautja
 	name = "clan bracers"
 	desc = "An extremely complex, yet simple-to-operate set of armored bracers worn by the Yautja. It has many functions, activate them to use some."
@@ -1234,6 +1247,19 @@
 	throwforce = 1
 	unacidable = 1
 	var/timer = 0
+
+/obj/item/device/yautja_teleporter/Dispose()
+	remove_from_missing_pred_gear(src)
+	..()
+
+/obj/item/device/yautja_teleporter/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
+
+/obj/item/device/yautja_teleporter/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
 
 /obj/item/device/yautja_teleporter/attack_self(mob/user)
 	set waitfor = 0

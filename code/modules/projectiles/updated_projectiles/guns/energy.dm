@@ -206,6 +206,18 @@
 	var/charge_time = 40
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 
+/obj/item/weapon/gun/energy/plasmapistol/Dispose()
+	remove_from_missing_pred_gear(src)
+	..()
+
+/obj/item/weapon/gun/energy/plasmapistol/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
+
+/obj/item/weapon/gun/energy/plasmapistol/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
 
 /obj/item/weapon/gun/energy/plasmapistol/New()
 	..()

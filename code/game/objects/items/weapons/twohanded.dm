@@ -122,7 +122,7 @@
 	//mute both events. otherwise we are stuck in the loop
 	on_unwield()
 		return 0
-	
+
 	on_dropped()
 		return 0
 /*
@@ -268,6 +268,19 @@
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	unacidable = 1
 	attack_speed = 12 //Default is 7.
+
+/obj/item/weapon/twohanded/glaive/Dispose()
+	remove_from_missing_pred_gear(src)
+	..()
+
+/obj/item/weapon/twohanded/glaive/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
+
+/obj/item/weapon/twohanded/glaive/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
 
 /obj/item/weapon/two_handed/glaive/attack(mob/living/target, mob/living/carbon/human/user)
 	. = ..()

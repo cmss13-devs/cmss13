@@ -16,12 +16,12 @@ var/datum/subsystem/human/SShuman
 
 
 /datum/subsystem/human/stat_entry()
-	..("P:[human_mob_list.len]")
+	..("P:[processable_human_list.len]")
 
 
 /datum/subsystem/human/fire(resumed = FALSE)
 	if (!resumed)
-		currentrun = human_mob_list.Copy()
+		currentrun = processable_human_list.Copy()
 
 	while (currentrun.len)
 		var/mob/living/carbon/human/M = currentrun[currentrun.len]

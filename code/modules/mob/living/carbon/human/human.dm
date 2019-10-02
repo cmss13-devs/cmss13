@@ -17,6 +17,7 @@
 
 	human_mob_list += src
 	living_human_list += src
+	processable_human_list += src
 
 	if(!species)
 		if(new_species)
@@ -57,6 +58,7 @@
 	remove_from_all_mob_huds()
 	human_mob_list -= src
 	living_human_list -= src
+	processable_human_list -= src
 	. = ..()
 
 /mob/living/carbon/human/Stat()

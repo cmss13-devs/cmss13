@@ -663,7 +663,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		individual_counts["[M.type]"]++
 	for(var/datum/event/M in events)
 		individual_counts["[M.type]"]++
-	for(var/mob/M in human_mob_list)
+	for(var/mob/M in processable_human_list)
 		individual_counts["[M.type]"]++
 	for(var/obj/structure/machinery/M in processing_machines)
 		individual_counts["[M.type]"]++

@@ -13,6 +13,7 @@
 	..()
 
 	if(undefibbable && stat == DEAD)
+		processable_human_list -= src
 		return
 
 	blinded = null

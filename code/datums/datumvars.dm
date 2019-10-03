@@ -270,10 +270,17 @@ client
 
 		return
 
+	proc/is_safe_variable(name)
+		if(name == "step_x" || name == "step_y" || name == "bound_x" || name == "bound_y" || name == "bound_height" || name == "bound_width" || name == "bounds")
+			return FALSE
+		return TRUE
+
 	proc/debug_variable(name, value, level, var/datum/DA = null)
 		var/html = ""
 		var/change = 0
 		//to make the value bold if changed
+		if(!is_safe_variable(name))
+			return html
 		if(DA)
 			html += "<li style='backgroundColor:white'>(<a href='?_src_=vars;datumedit=\ref[DA];varnameedit=[name]'>E</a>) (<a href='?_src_=vars;datumchange=\ref[DA];varnamechange=[name]'>C</a>) (<a href='?_src_=vars;datummass=\ref[DA];varnamemass=[name]'>M</a>) "
 			if(value != initial(DA.vars[name]))

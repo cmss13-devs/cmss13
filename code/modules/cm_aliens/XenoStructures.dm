@@ -89,9 +89,7 @@
 
 /obj/effect/alien/resin/attackby(obj/item/W, mob/user)
 	if(!(W.flags_item & NOBLUDGEON))
-		var/damage = W.force
-		if(W.w_class < SIZE_LARGE || !W.sharp || W.force < 20) //only big strong sharp weapon are adequate
-			damage /= 4
+		var/damage = W.force * RESIN_MELEE_DAMAGE_MULTIPLIER
 		health -= damage
 		if(istype(src, /obj/effect/alien/resin/sticky))
 			playsound(loc, "alien_resin_move", 25)
@@ -490,7 +488,7 @@
 	..()
 
 /obj/structure/mineral_door/resin/bullet_act(var/obj/item/projectile/Proj)
-	health -= Proj.damage/2
+	health -= Proj.damage
 	..()
 	healthcheck()
 	return 1
@@ -563,7 +561,7 @@
 /obj/structure/mineral_door/resin/ex_act(severity)
 
 	if(!density)
-		severity *= 0.5
+		severity *= EXPLOSION_DAMAGE_MODIFIER_DOOR_OPEN
 
 	health -= severity
 	healthcheck()

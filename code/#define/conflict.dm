@@ -67,7 +67,7 @@
 
 #define SLOWDOWN_ADS_SMG			0.75
 #define SLOWDOWN_ADS_SHOTGUN		0.75 //anything below that doesn't change anything.
-#define SLOWDOWN_ADS_RIFLE			1 
+#define SLOWDOWN_ADS_RIFLE			1
 #define SLOWDOWN_ADS_SCOPE			1.20
 #define SLOWDOWN_ADS_LMG			1.75
 #define SLOWDOWN_ADS_INCINERATOR	1.75
@@ -92,9 +92,15 @@
 #define EXPLOSION_PRONE_MULTIPLIER	0.5 //prone mobs recieve less damage from explosions
 
 //Explosion damage multipliers for different objects
-#define EXPLOSION_DAMAGE_MULTIPLIER_AIRLOCK     15
+#define EXPLOSION_DAMAGE_MULTIPLIER_DOOR     	15
 #define EXPLOSION_DAMAGE_MULTIPLIER_WALL		15
 #define EXPLOSION_DAMAGE_MULTIPLIER_WINDOW		10
+
+//Additional explosion damage modifier for open doors
+#define EXPLOSION_DAMAGE_MODIFIER_DOOR_OPEN		0.5
+
+//Melee weapons do more damage to resin structures
+#define RESIN_MELEE_DAMAGE_MULTIPLIER	4
 
 //Projectile block probabilities for different types of cover
 #define PROJECTILE_COVERAGE_LOW			35
@@ -141,10 +147,10 @@
 //Health of various items
 #define HEALTH_WALL 						3000
 #define HEALTH_WALL_REINFORCED 				9000
-#define HEALTH_WALL_XENO 					600
-#define HEALTH_WALL_XENO_THICK 				1200
-#define HEALTH_WALL_XENO_MEMBRANE 			300
-#define HEALTH_WALL_XENO_MEMBRANE_THICK 	600
+#define HEALTH_WALL_XENO 					1200
+#define HEALTH_WALL_XENO_THICK 				2400
+#define HEALTH_WALL_XENO_MEMBRANE 			600
+#define HEALTH_WALL_XENO_MEMBRANE_THICK 	1200
 
 #define HEALTH_DOOR 		2000
-#define HEALTH_DOOR_XENO 	450
+#define HEALTH_DOOR_XENO 	600

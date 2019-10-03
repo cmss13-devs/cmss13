@@ -129,12 +129,14 @@ explosion resistance exactly as much as their health
 		else if (istype(A, /obj/structure/ladder)) //check for ladders
 			L = A
 
-	resistance += max(0, src.get_explosion_resistance(direction) )
-	Controller.reflected_power += max(0, min(resistance, power))
-
 	Controller.explosion_turfs[src] = power  //recording the power applied
 	Controller.explosion_turf_directions[src] = direction
-	power -= resistance
+
+	//at the epicenter of an explosion, resistance doesn't subtract from power. This prevents stuff like explosions directly on reinforced walls being completely neutralized
+	if(direction)
+		resistance += max(0, src.get_explosion_resistance(direction) )
+		Controller.reflected_power += max(0, min(resistance, power))
+		power -= resistance
 
 
 	//spawn(0) is important because it paces the explosion in an expanding circle, rather than a series of squiggly lines constantly checking overlap. Reduces lag by a lot. Note that INVOKE_ASYNC doesn't have the same effect as spawn(0) for this purpose.

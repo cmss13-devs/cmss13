@@ -279,7 +279,7 @@ client
 		var/html = ""
 		var/change = 0
 		//to make the value bold if changed
-		if(!is_safe_variable(name))
+		if(!(admin_holder.rights & R_DEBUG) && !is_safe_variable(name))
 			return html
 		if(DA)
 			html += "<li style='backgroundColor:white'>(<a href='?_src_=vars;datumedit=\ref[DA];varnameedit=[name]'>E</a>) (<a href='?_src_=vars;datumchange=\ref[DA];varnamechange=[name]'>C</a>) (<a href='?_src_=vars;datummass=\ref[DA];varnamemass=[name]'>M</a>) "

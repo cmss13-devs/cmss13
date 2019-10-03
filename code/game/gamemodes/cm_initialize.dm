@@ -458,13 +458,13 @@ datum/game_mode/proc/initialize_special_clamps()
 /datum/game_mode/proc/transform_xeno(datum/mind/ghost_mind)
 	var/mob/living/original = ghost_mind.current
 
-	original.statistic_exempt = TRUE
 	original.first_xeno = TRUE
 	original.stat = 1
 	transform_survivor(ghost_mind) //Create a new host
 	original.adjustBruteLoss(50) //Do some damage to the host
 	
 	var/obj/structure/bed/nest/start_nest = new /obj/structure/bed/nest(original.loc) //Create a new nest for the host
+	original.statistic_exempt = TRUE
 	original.buckled = start_nest
 	original.dir = start_nest.dir
 	original.update_canmove()
@@ -612,11 +612,17 @@ datum/game_mode/proc/initialize_special_clamps()
 
 	//Give them proper jobs and stuff here later
 	var/randjob = pick(survivor_types)
-	arm_equipment(H, randjob, FALSE, TRUE)
+	var/not_a_xenomorph = TRUE
+	if(H.first_xeno)
+		not_a_xenomorph = FALSE
+	arm_equipment(H, randjob, FALSE, not_a_xenomorph)
 
 
 /datum/game_mode/proc/survivor_event_transform(var/mob/living/carbon/human/H, var/obj/effect/landmark/survivor_spawner/spawner, var/is_synth = FALSE)
 	H.loc = spawner.loc
+	var/not_a_xenomorph = TRUE
+	if(H.first_xeno)
+		not_a_xenomorph = FALSE
 	if(spawner.roundstart_damage_max>0)
 		while(spawner.roundstart_damage_times>0)
 			H.take_limb_damage(rand(spawner.roundstart_damage_min,spawner.roundstart_damage_max), 0)
@@ -624,7 +630,7 @@ datum/game_mode/proc/initialize_special_clamps()
 	if(!spawner.equipment || is_synth)
 		survivor_old_equipment(H, is_synth)
 	else
-		if(arm_equipment(H, spawner.equipment, FALSE, TRUE) == -1)
+		if(arm_equipment(H, spawner.equipment, FALSE, not_a_xenomorph) == -1)
 			to_chat(H, "SET02: Something went wrong, tell a coder. You may ask admin to spawn you as a survivor.")
 			return
 	H.name = H.get_visible_name()

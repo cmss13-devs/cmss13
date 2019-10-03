@@ -115,7 +115,7 @@ If you are not piloting, there is an autopilot fallback for command, but don't l
 	title = "Tank Crewman"
 	flag = ROLE_TANK_OFFICER
 	total_positions = 2
-	spawn_positions = 2
+	spawn_positions = 0
 	allow_additional = 1
 	scaled = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE

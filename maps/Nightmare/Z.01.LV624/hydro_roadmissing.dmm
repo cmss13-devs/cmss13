@@ -52,7 +52,7 @@
 "ai" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
-	icon_tag = "light_3"
+	icon_tag = "light"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
@@ -68,14 +68,14 @@
 "al" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
-	icon_tag = "light_3"
+	icon_tag = "light"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle8)
 "am" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
-	icon_tag = "light_2"
+	icon_tag = "light"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle8)
@@ -112,7 +112,7 @@
 "at" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
-	icon_tag = "light_2"
+	icon_tag = "light"
 	},
 /turf/closed/gm/dense{
 	icon_state = "wall2"
@@ -169,14 +169,14 @@
 "aB" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
-	icon_tag = "light_2"
+	icon_tag = "light"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "aC" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
-	icon_tag = "light_2"
+	icon_tag = "light"
 	},
 /turf/closed/gm/dense{
 	icon_state = "wall2"
@@ -247,7 +247,7 @@
 "aS" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
-	icon_tag = "light_2"
+	icon_tag = "light"
 	},
 /turf/closed/gm/dense{
 	icon_state = "wall2"
@@ -287,7 +287,7 @@
 "aY" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
-	icon_tag = "light_3"
+	icon_tag = "light"
 	},
 /turf/closed/gm/dense{
 	icon_state = "wall2"
@@ -306,7 +306,7 @@
 "ba" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
-	icon_tag = "light_3"
+	icon_tag = "light"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/compound/n)
@@ -331,7 +331,7 @@
 "be" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
-	icon_tag = "light_3"
+	icon_tag = "light"
 	},
 /turf/closed/gm/dense{
 	icon_state = "wall2"
@@ -351,7 +351,7 @@
 "bi" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
-	icon_tag = "light_2"
+	icon_tag = "light"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/compound/n)
@@ -487,7 +487,7 @@
 "bK" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
-	icon_tag = "light_3"
+	icon_tag = "light"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
@@ -499,7 +499,7 @@
 "bM" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
-	icon_tag = "light_2"
+	icon_tag = "light"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)

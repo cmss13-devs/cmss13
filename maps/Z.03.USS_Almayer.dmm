@@ -41716,10 +41716,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/cafeteria_port)
-"cif" = (
-/obj/structure/bed/chair,
-/turf/open/floor/almayer,
-/area/almayer/living/cafeteria_port)
 "cih" = (
 /obj/effect/landmark/shuttle_loc/marine_src/evacuation{
 	name = "16"
@@ -50401,8 +50397,7 @@
 /area/almayer/engineering/engineering_workshop)
 "kFy" = (
 /turf/open/floor/almayer{
-	tag = "icon-red";
-	
+	tag = "icon-red"
 	},
 /area/almayer/shipboard/firing_range_south)
 "kGh" = (
@@ -107804,7 +107799,7 @@ cjC
 cfv
 xRj
 wJD
-cif
+cjE
 cfv
 cjC
 bJG
@@ -108007,7 +108002,7 @@ bZM
 cfv
 vfa
 cWH
-cif
+cjE
 cfv
 cjC
 bJG
@@ -108210,7 +108205,7 @@ cfv
 cfv
 vfa
 upx
-cif
+cjE
 cfv
 cgD
 bJG
@@ -108413,7 +108408,7 @@ ceg
 ceg
 cgA
 sUj
-cif
+cjE
 cfv
 cgE
 bJG

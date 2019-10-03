@@ -149,17 +149,21 @@
 
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"
-	desc = "Assorted artworks by NicBoone & Triiodine. Holiday artwork by Monkeysfist."
+	desc = "Assorted artworks."
 	icon = 'icons/lobby/title.dmi'
-	icon_state = "title_painting1"
+	icon_state = "lobbyart1"
 //	icon_state = "title_holiday"
 	layer = FLY_LAYER
 	special_icon = 1
 
 /turf/closed/wall/indestructible/splashscreen/initialize()
 	..()
-	if(icon_state == "title_painting1") // default
-		icon_state = "title_painting[rand(1,8)]"
+	if(icon_state == "lobbyart1") // default
+		// Only pick lobby art that credits the author
+		displayed_lobby_art = rand(1,length(lobby_art_authors))
+		icon_state = "lobbyart[displayed_lobby_art]"
+
+		desc = "Artwork by [lobby_art_authors[displayed_lobby_art]]"
 
 /turf/closed/wall/indestructible/other
 	icon_state = "r_wall"

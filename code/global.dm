@@ -293,3 +293,23 @@ var/global/obfs_y = 0 //A number between -500 and 500
 
 // STUI
 var/datum/STUI/STUI = new()
+
+// Which lobby art is on display
+// This is updated by the lobby art turf when it initializes
+var/displayed_lobby_art = -1
+// Authors for the lobby art. In order.
+// You MUST credit the author here when adding new lobby art, or it will not show up in-game
+// If you legitimately don't know, write "Unknown" and it'll show up regardless
+var/list/lobby_art_authors = list(
+	"NicBoone",
+	"NicBoone",
+	"NicBoone",
+	"NicBoone",
+	"NicBoone",
+	"Triiodine",
+	"Triiodine",
+	"Triiodine",
+	"Unknown",
+	"LightCrabPress",
+	"Redsting"
+)

@@ -6,6 +6,7 @@
 	var/parts
 	var/list/debris = list()
 	var/flags_barrier = 0
+	health = 100
 	anchored = 1
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 
@@ -46,37 +47,23 @@
 			destroy()
 
 /obj/structure/ex_act(severity, direction)
-	switch(severity)
-		if(0 to EXPLOSION_THRESHOLD_LOW)
-			return
-		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if(prob( severity-EXPLOSION_THRESHOLD_LOW ))
-				handle_debris(severity, direction)
-				if(src.health)
-					src.health -= severity
-					if(src.health < 0) //Prevents unbreakable objects from being destroyed
-						qdel(src)
-				return
-		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+	if(src.health) //Prevents unbreakable objects from being destroyed
+		src.health -= severity
+		if(src.health <= 0)
 			handle_debris(severity, direction)
-			if(src.health)
-				src.health -= severity
-				if(src.health < 0)
-					qdel(src)
-			return
+			qdel(src)
 
 /obj/structure/proc/handle_debris(severity = 0, direction = 0)
 	if(!debris.len)
 		return
-	if(severity)
-		for(var/thing in debris)
-			var/obj/item/I = new thing(loc)
-			I.explosion_throw(severity, direction)
-		return
-	else
-		for(var/thing in debris)
-			new thing(loc)
-		return
+	switch(severity)
+		if(0)
+			for(var/thing in debris)
+				new thing(loc)
+		if(0 to EXPLOSION_THRESHOLD_HIGH) //beyond EXPLOSION_THRESHOLD_HIGH, the explosion is too powerful to create debris. It's all atomized.
+			for(var/thing in debris)
+				var/obj/item/I = new thing(loc)
+				I.explosion_throw(severity, direction)
 
 /obj/structure/New()
 	..()

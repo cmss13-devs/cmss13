@@ -136,21 +136,10 @@
 	qdel(src)
 
 /obj/structure/mineral_door/ex_act(severity)
-	if(unacidable) return
-
-	if(density)
-		switch(severity)
-			if(0 to EXPLOSION_THRESHOLD_LOW)
-				//nothing
-			if(EXPLOSION_THRESHOLD_LOW to INFINITY)
-				qdel(src)
-	else
-		switch(severity)
-			if(0 to EXPLOSION_THRESHOLD_MEDIUM)
-				//nothing
-			else
-				qdel(src)
-	return
+	severity *= EXPLOSION_DAMAGE_MULTIPLIER_DOOR
+	if(!density)
+		severity *= EXPLOSION_DAMAGE_MODIFIER_DOOR_OPEN
+	..()
 
 
 /obj/structure/mineral_door/get_explosion_resistance()
@@ -158,7 +147,7 @@
 		return 1000000
 
 	if(density)
-		return EXPLOSION_THRESHOLD_LOW //this should exactly match the amount of damage needed to destroy the door
+		return health/EXPLOSION_DAMAGE_MULTIPLIER_DOOR //this should exactly match the amount of damage needed to destroy the door
 	else
 		return 0
 

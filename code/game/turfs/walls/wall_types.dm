@@ -110,20 +110,6 @@
 	max_temperature = 28000 //K, walls will take damage if they're next to a fire hotter than this
 	walltype = WALL_SULACO //Changes all the sprites and icons.
 
-
-/turf/closed/wall/sulaco/ex_act(severity)
-	switch(severity)
-		if(0 to EXPLOSION_THRESHOLD_LOW)
-			take_damage(rand(0, 250))
-		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if(prob(75))
-				take_damage(rand(100, 250))
-			else
-				dismantle_wall(1, 1)
-		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			ChangeTurf(/turf/open/floor/plating)
-	return
-
 /turf/closed/wall/sulaco/hull
 	name = "outer hull"
 	desc = "A reinforced outer hull, probably to prevent breaches"
@@ -139,22 +125,6 @@
 	max_temperature = 50000 // Nearly impossible to melt
 	walltype = WALL_SULACO
 
-/turf/closed/wall/sulaco/unmeltable/ex_act(severity) //Should make it indestructable
-	return
-
-/turf/closed/wall/sulaco/unmeltable/fire_act(exposed_temperature, exposed_volume)
-	return
-
-/turf/closed/wall/sulaco/unmeltable/attackby() //This should fix everything else. No cables, etc
-	return
-
-/turf/closed/wall/sulaco/unmeltable/can_be_dissolved()
-	return 0
-
-
-
-
-
 
 
 
@@ -164,18 +134,6 @@
 	icon_state = "riveted"
 	opacity = 1
 	hull = 1
-
-/turf/closed/wall/indestructible/ex_act(severity) //Should make it indestructable
-	return
-
-/turf/closed/wall/indestructible/fire_act(exposed_temperature, exposed_volume)
-	return
-
-/turf/closed/wall/indestructible/attackby() //This should fix everything else. No cables, etc
-	return
-
-/turf/closed/wall/indestructible/can_be_dissolved()
-	return 0
 
 
 
@@ -438,15 +396,6 @@
 	walltype = WALL_THICKMEMBRANE
 	alpha = 210
 
-/turf/closed/wall/resin/bullet_act(var/obj/item/projectile/Proj)
-	take_damage(Proj.damage/2)
-	..()
-
-	return 1
-
-/turf/closed/wall/resin/ex_act(severity)
-	take_damage(severity)
-
 
 /turf/closed/wall/resin/hitby(AM as mob|obj)
 	..()
@@ -481,7 +430,7 @@
 	SPAN_DANGER("You tear \the [name]."))
 	playsound(src, "alien_resin_break", 25)
 	M.animation_attack_on(src)
-	take_damage(40)
+	take_damage(80)
 
 
 /turf/closed/wall/resin/attack_hand(mob/user)
@@ -490,7 +439,7 @@
 /turf/closed/wall/resin/attackby(obj/item/W, mob/living/user)
 	if(!(W.flags_item & NOBLUDGEON))
 		user.animation_attack_on(src)
-		take_damage(W.force)
+		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER)
 		playsound(src, "alien_resin_break", 25)
 	else
 		return attack_hand(user)

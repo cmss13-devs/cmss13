@@ -108,6 +108,9 @@
 			D.cure(0)
 		. = ..()
 
+/obj/effect/decal/cleanable/vomit/ex_act()
+	return
+
 /obj/effect/decal/cleanable/tomato_smudge
 	name = "tomato smudge"
 	desc = "It's red."

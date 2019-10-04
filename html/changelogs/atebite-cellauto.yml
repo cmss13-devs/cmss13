@@ -1,0 +1,7 @@
+author: Atebite
+delete-after: true
+changes:
+  - experiment: The explosions of the future are here! Yet another explosion system has been created, and this one is virtually lag-free
+  - experiment: A neat side-effect of the new system is that the blast wave now travels out from the epicenter in real time. This also means it is technically possible to outrun explosions. Don't look at it while you're running away, cool guy
+  - tweak: Claymore explosions are now directed. The explosion will only occur in a cone in front of the claymore
+  - bugfix: Window frames, chairs, racks, flora and more are now destroyed by explosions

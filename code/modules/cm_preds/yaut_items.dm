@@ -870,20 +870,21 @@
 		return
 
 	exploding = 1
-	var/turf/T = get_turf(victim)
 	var/mob/user = usr
 	var/source_mob = user
 
 	playsound(src.loc,'sound/effects/pred_countdown.ogg', 100, 0, 15, 10)
 	message_mods(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))
 	do_after(victim, rand(72, 80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
+
+	var/turf/T = get_turf(victim)
 	if(istype(T) && exploding)
 		victim.apply_damage(50,BRUTE,"chest")
 		if(victim) victim.gib() //Let's make sure they actually gib.
 		if(explosion_type == 0)
-			explosion_rec(T, 600, 50, "yautja self destruct", source_mob) //Dramatically BIG explosion.
+			cell_explosion(T, 600, 50, null, "yautja self destruct", source_mob) //Dramatically BIG explosion.
 		else
-			explosion_rec(T, 800, 550, "yautja self destruct", source_mob)
+			cell_explosion(T, 800, 550, null, "yautja self destruct", source_mob)
 
 /obj/item/clothing/gloves/yautja/verb/activate_suicide()
 	set name = "Final Countdown (!)"
@@ -974,13 +975,15 @@
 		if(!M.stat == CONSCIOUS)
 			to_chat(M, SPAN_WARNING("Not while you're unconcious..."))
 			return
+		if(exploding)
+			return
 		to_chat(M, "<span class='userdanger'>You set the timer. May your journey to the great hunting grounds be swift.</span>")
 		var/area/A = get_area(M)
 		var/turf/T = get_turf(M)
 		message_mods(FONT_SIZE_HUGE("ALERT: [usr] ([usr.key]) triggered their predator self-destruct sequence [A ? "in [A.name]":""] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
 		log_attack("[usr.name] ([usr.ckey]) triggered their predator self-destruct sequence in [A ? "in [A.name]":""]")
-		if (!exploding)
-			explodey(M)
+
+		explodey(M)
 	return 1
 
 

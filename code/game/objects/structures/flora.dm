@@ -194,6 +194,10 @@ ICE GRASS
 					new /obj/effect/decal/cleanable/dirt(src.loc) //Produces more ash at the center
 				qdel(src)
 
+/obj/structure/flora/ex_act(var/power)
+	if(power >= EXPLOSION_THRESHOLD_VLOW)
+		qdel(src)
+
 ///MAP VARIANTS///
 ///PARENT FOR COLOR, CORNERS AND CENTERS, BASED ON DIRECTIONS///
 

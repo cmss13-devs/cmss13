@@ -384,7 +384,7 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_warhead_1"
 
 /obj/structure/ob_ammo/warhead/explosive/warhead_impact(turf/target, inaccuracy_amt = 0)
-	explosion_rec(target, 600, 30, initial(name), source_mob) //massive boom
+	cell_explosion(target, 600, 30, null, initial(name), source_mob) //massive boom
 
 
 
@@ -414,7 +414,7 @@ var/list/ob_type_fuel_requirements
 		var/turf/U = pick_n_take(turf_list)
 		playsound(U, 'sound/weapons/gun_flare.ogg', 50, 1)
 		sleep(pick(1,2,3))
-		explosion_rec(U,175, 30, initial(name), source_mob) //rocket barrage
+		cell_explosion(U, 175, 30, null, initial(name), source_mob) //rocket barrage
 
 
 

@@ -23,6 +23,15 @@
 	else
 		return attack_hand(user)
 
+/obj/structure/largecrate/ex_act(var/power)
+	if(power >= EXPLOSION_THRESHOLD_VLOW)
+		var/turf/T = get_turf(src)
+		new /obj/item/stack/sheet/wood(T)
+		for(var/obj/O in contents)
+			O.forceMove(T)
+
+		qdel(src)
+
 /obj/structure/largecrate/mule
 	icon_state = "mulecrate"
 

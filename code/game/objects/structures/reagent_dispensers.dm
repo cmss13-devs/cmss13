@@ -172,7 +172,7 @@
 	if(expower > 40)
 		create_shrapnel(src.loc, shrapnel, , ,shrapneltype)
 		sleep(2)
-	explosion_rec(src.loc, expower, 24, initial(name), source_mob)
+	cell_explosion(src.loc, expower, 24, null, initial(name), source_mob)
 	new /obj/flamer_fire(src.loc, initial(name), source_mob, 12, 10, , flamesize, FALSE, FLAMESHAPE_STAR)
 	if(src)
 		qdel(src)

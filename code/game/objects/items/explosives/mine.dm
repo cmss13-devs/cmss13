@@ -128,7 +128,7 @@
 		if("explosive")
 			create_shrapnel(loc, 12, dir, 60, , initial(name), source_mob)
 			sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
-			explosion_rec(src.loc, 60, 20, initial(name), source_mob)
+			cell_explosion(src.loc, 60, 20, dir, initial(name), source_mob)
 			qdel(src)
 
 /obj/item/explosive/mine/attack_alien(mob/living/carbon/Xenomorph/M)
@@ -151,7 +151,6 @@
 
 /obj/item/explosive/mine/flamer_fire_act() //adding mine explosions
 	trigger_explosion()
-
 
 /obj/effect/mine_tripwire
 	name = "claymore tripwire"

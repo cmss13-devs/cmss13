@@ -348,16 +348,16 @@
 
 		dat += "<tr>"
 
-		for(var/datum/wound/W in e.wounds)
-			if(W.internal)
-				internal_bleeding = "Internal bleeding<br>"
-				break
+		for(var/datum/effects/bleeding/internal/I in e.bleeding_effects_list)
+			internal_bleeding = "Internal bleeding<br>"
+			break
 		if(istype(e, /datum/limb/chest) && occ["lung_ruptured"])
 			lung_ruptured = "Lung ruptured:<br>"
 		if(e.status & LIMB_SPLINTED)
 			splint = "Splinted:<br>"
-		if(e.status & LIMB_BLEEDING)
+		for(var/datum/effects/bleeding/external/E in e.bleeding_effects_list)
 			bled = "Bleeding:<br>"
+			break
 		if(e.status & LIMB_BROKEN)
 			AN = "[e.broken_description]:<br>"
 		if(e.status & LIMB_ROBOT)

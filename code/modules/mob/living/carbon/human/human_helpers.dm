@@ -294,11 +294,10 @@
 		update_body()
 
 /mob/living/carbon/human/proc/is_bleeding()
-	for(var/datum/limb/L in limbs)
-		for(var/datum/wound/W in L.wounds)
-			if(W.bleeding())
-				return 1
-	return 0
+	for(var/datum/effects/bleeding/external/B in effects_list)
+		return TRUE
+
+	return FALSE
 
 /mob/living/carbon/human/proc/get_broken_limbs()
 	var/list/BL = list()

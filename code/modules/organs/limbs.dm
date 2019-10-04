@@ -64,6 +64,8 @@
 
 	var/icon/splinted_icon = null
 
+	var/list/bleeding_effects_list = list()
+
 
 /datum/limb/New(datum/limb/P, mob/mob_owner)
 	if(P)
@@ -267,6 +269,12 @@
 	if(status & LIMB_ROBOT && !robo_repair)
 		return
 
+	if(brute)
+		remove_all_bleeding(TRUE)
+
+	if(internal)
+		remove_all_bleeding(FALSE, TRUE)
+
 	//Heal damage on the individual wounds
 	for(var/datum/wound/W in wounds)
 		if(brute == 0 && burn == 0)
@@ -330,12 +338,14 @@ This function completely restores a damaged organ to perfect condition.
 	
 	var/damage_ratio = armor_damage_reduction(config.marine_organ_damage, 2*damage/3, armor, 0, 0, 0, max_damage ? (100*(max_damage - brute_dam) / max_damage) : 100)
 	if(prob(damage_ratio) && damage > 10)
-		var/datum/wound/internal_bleeding/I = new (min(damage - 10, 15))
+		var/datum/wound/internal_bleeding/I = new (0)
+		add_bleeding(I, TRUE)
 		wounds += I
 		owner.custom_pain("You feel something rip in your [display_name]!", 1)
 
 /datum/limb/proc/createwound(var/type = CUT, var/damage, var/impact_name)
-	if(!damage) return
+	if(!damage) 
+		return
 
 	//moved this before the open_wound check so that having many small wounds for example doesn't somehow protect you from taking internal damage (because of the return)
 	//Possibly trigger an internal wound, too.
@@ -359,6 +369,8 @@ This function completely restores a damaged organ to perfect condition.
 			if(compatible_wounds.len)
 				W = pick(compatible_wounds)
 				W.open_wound(damage)
+				if(type != BURN)
+					add_bleeding(W)
 				if(impact_name)
 					W.add_impact_icon(impact_name, icon_name)
 				if(prob(25))
@@ -373,7 +385,8 @@ This function completely restores a damaged organ to perfect condition.
 
 	if(wound_type)
 		W = new wound_type(damage)
-
+		if(damage >= 10 && type != BURN) //Only add bleeding when its over 10 damage
+			add_bleeding(W)
 		W.add_impact_icon(impact_name, icon_name)
 
 		//Check whether we can add the wound to an existing wound
@@ -382,7 +395,43 @@ This function completely restores a damaged organ to perfect condition.
 				other.merge_wound(W)
 				W = null // to signify that the wound was added
 				break
-		if(W) wounds += W
+		if(W) 
+			wounds += W
+
+
+/datum/limb/proc/add_bleeding(var/datum/wound/W, var/internal = FALSE)
+	if(!(ticker && ticker.current_state >= GAME_STATE_PLAYING)) //If the game hasnt started, don't add bleed. Hacky fix to avoid having 100 bleed effect from roundstart.
+		return
+
+	if(status & LIMB_ROBOT)
+		return
+
+	if(bleeding_effects_list.len)
+		if(!internal)
+			for(var/datum/effects/bleeding/external/B in bleeding_effects_list)
+				B.add_on(W.damage)
+				return
+		else
+			for(var/datum/effects/bleeding/internal/B in bleeding_effects_list)
+				B.add_on(40)
+				return
+
+	var/datum/effects/bleeding/bleeding_status
+	if(internal)
+		bleeding_status = new /datum/effects/bleeding/internal(owner, src, 40)
+	else
+		bleeding_status = new /datum/effects/bleeding/external(owner, src, W.damage)
+	bleeding_effects_list += bleeding_status
+
+
+/datum/limb/proc/remove_all_bleeding(var/external = FALSE, var/internal = FALSE)
+	if(external)
+		for(var/datum/effects/bleeding/external/B in bleeding_effects_list)
+			qdel(B)
+	
+	if(internal)
+		for(var/datum/effects/bleeding/internal/I in bleeding_effects_list)
+			qdel(I)
 
 
 /****************************************************
@@ -434,43 +483,30 @@ This function completely restores a damaged organ to perfect condition.
 
 //Updating wounds. Handles wound natural I had some free spachealing, internal bleedings and infections
 /datum/limb/proc/update_wounds()
-
 	if((status & LIMB_ROBOT)) //Robotic limbs don't heal or get worse.
 		return
 
 	var/wound_disappeared = FALSE
 	for(var/datum/wound/W in wounds)
 		// we don't care about wounds after we heal them. We are not an antag simulator
-		if(W.damage <= 0)
+		if(W.damage <= 0 && !W.internal)
 			wounds -= W
 			wound_disappeared = TRUE
 			continue
 			// let the GC handle the deletion of the wound
 
 		// Internal wounds get worse over time. Low temperatures (cryo) stop them.
-		if(W.internal && !(owner.in_stasis == STASIS_IN_BAG))
-			if(owner.bodytemperature >= 170)
-				var/bicardose = owner.reagents.get_reagent_amount("bicaridine")
-				var/inaprovaline = owner.reagents.get_reagent_amount("inaprovaline")
-				if(!(W.can_autoheal() || (bicardose && inaprovaline) || owner.reagents.get_reagent_amount("quickclot")))	//bicaridine and inaprovaline stop internal wounds from growing bigger with time, unless it is so small that it is already healing
-					W.open_wound(0.1 * wound_update_accuracy)
-				if(bicardose >= 30)	//overdose of bicaridine begins healing IB
-					W.damage = max(0, W.damage - 0.2)
-				if(!owner.reagents.get_reagent_amount("quickclot")) //Quickclot stops bleeding, magic!
-					owner.blood_volume = max(0, owner.blood_volume - wound_update_accuracy * W.damage/40) //line should possibly be moved to handle_blood, so all the bleeding stuff is in one place.
-					if(prob(1 * wound_update_accuracy))
-						owner.custom_pain("You feel a stabbing pain in your [display_name]!", 1)
+		if(W.internal)
 			if(owner.bodytemperature < T0C && (owner.reagents.get_reagent_amount("cryoxadone") || owner.reagents.get_reagent_amount("clonexadone"))) // IB is healed in cryotubes
-				W.damage = max(0, W.damage - 0.5)
-				if(W.damage <= 0 && W.created + MINUTES_2 <= world.time)	// sped up healing due to cryo magics
+				if(W.created + MINUTES_2 <= world.time)	// sped up healing due to cryo magics
+					remove_all_bleeding(FALSE, TRUE)
 					wounds -= W
 					wound_disappeared = TRUE
 					if(istype(owner.loc, /obj/structure/machinery/atmospherics/unary/cryo_cell))	// check in case they cheesed the location
 						var/obj/structure/machinery/atmospherics/unary/cryo_cell/cell = owner.loc
 						cell.display_message("internal bleeding is")
-
-		if(owner.reagents.get_reagent_amount("thwei") >= 0.05) //Note: This used to turn internal wounds into external wounds, for QC's effect
-			W.internal = 0
+			if(owner.reagents.get_reagent_amount("thwei") >= 0.05)
+				remove_all_bleeding(FALSE, TRUE)
 
 		// slow healing
 		var/heal_amt = 0
@@ -499,17 +535,11 @@ This function completely restores a damaged organ to perfect condition.
 	if (wound_disappeared)
 		owner.update_med_icon()
 
-//Updates brute_damn and burn_damn from wound damages. Updates BLEEDING status.
+//Updates brute_damn and burn_damn from wound damages.
 /datum/limb/proc/update_damages()
 	number_wounds = 0
 	brute_dam = 0
 	burn_dam = 0
-	status &= ~LIMB_BLEEDING
-	var/clamped = 0
-
-	var/mob/living/carbon/human/H
-	if(istype(owner,/mob/living/carbon/human))
-		H = owner
 
 	for(var/datum/wound/W in wounds)
 		if(W.damage_type == CUT || W.damage_type == BRUISE)
@@ -517,18 +547,7 @@ This function completely restores a damaged organ to perfect condition.
 		else if(W.damage_type == BURN)
 			burn_dam += W.damage
 
-		if(!(status & LIMB_ROBOT) && W.bleeding() && !(H?.species.flags & NO_BLOOD))
-			W.bleed_timer--
-			status |= LIMB_BLEEDING
-
-		clamped |= W.clamped
-
 		number_wounds += W.amount
-
-	// Open surgery wounds or amputated limbs that have not been surgically treated will still bleed
-	if (surgery_open_stage && !clamped && !(H?.species.flags & NO_BLOOD))
-		status |= LIMB_BLEEDING
-
 
 
 // new damage icon system
@@ -746,7 +765,7 @@ This function completely restores a damaged organ to perfect condition.
 
 /datum/limb/proc/bandage()
 	var/rval = 0
-	status &= ~LIMB_BLEEDING
+	remove_all_bleeding(TRUE)
 	for(var/datum/wound/W in wounds)
 		if(W.internal) continue
 		rval |= !W.bandaged
@@ -765,7 +784,7 @@ This function completely restores a damaged organ to perfect condition.
 
 /datum/limb/proc/clamp()
 	var/rval = 0
-	src.status &= ~LIMB_BLEEDING
+	remove_all_bleeding(TRUE)
 	for(var/datum/wound/W in wounds)
 		if(W.internal) continue
 		rval |= !W.clamped
@@ -832,7 +851,6 @@ This function completely restores a damaged organ to perfect condition.
 
 /datum/limb/proc/robotize()
 	status &= ~LIMB_BROKEN
-	status &= ~LIMB_BLEEDING
 	status &= ~LIMB_SPLINTED
 	status &= ~LIMB_AMPUTATED
 	status &= ~LIMB_DESTROYED

@@ -691,10 +691,12 @@
 								O.damage += 0.5*potency
 							if(is_COD)
 								if(prob(20*potency))
-									var/datum/wound/internal_bleeding/I = new (rand(5*potency, 20*potency))
+									var/datum/wound/internal_bleeding/I = new (0)
+									L.add_bleeding(I, TRUE)
 									L.wounds += I
 						else if(prob(5*potency))
-							var/datum/wound/internal_bleeding/I = new (rand(potency, 5*potency))
+							var/datum/wound/internal_bleeding/I = new (0)
+							L.add_bleeding(I, TRUE)
 							L.wounds += I
 						if(prob(5*potency))
 							spawn L.owner.emote("me", 1, "coughs up blood!")

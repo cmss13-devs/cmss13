@@ -21,7 +21,9 @@
 */
 #define DEL_ON_DEATH	1	//Delete the effect when something dies
 #define DEL_ON_LIVING	2	//Delete the effect when something is alive
-#define DEL_ON_DURATION	4	//Only delete the effect when the duration ends
+#define INF_DURATION	4	//An effect that lasts forever
+#define NO_PROCESS_ON_DEATH	8	//Don't process while the mob is dead
+#define DEL_ON_UNDEFIBBABLE 16	//Delete the effect when human mob is undefibbable
 
 /datum/effects
 	var/effect_name = "standard"				//Name of the effect
@@ -56,7 +58,7 @@
 	return FALSE
 
 /datum/effects/proc/process()
-	if(!affected_atom || duration <= 0)
+	if(!affected_atom || (duration <= 0 && !(flags & INF_DURATION)))
 		qdel(src)
 		return
 	
@@ -69,23 +71,37 @@
 
 /datum/effects/proc/process_mob()
 	var/mob/living/carbon/affected_mob = affected_atom
-	if((flags & DEL_ON_DEATH) && affected_mob.stat == DEAD && !(flags & DEL_ON_DURATION))
+	if((flags & DEL_ON_DEATH) && affected_mob.stat == DEAD)
 		qdel(src)
-		return
+		return FALSE
 
-	if((flags & DEL_ON_LIVING) && affected_mob.stat != DEAD && !(flags & DEL_ON_DURATION))
+	if((flags & DEL_ON_LIVING) && affected_mob.stat != DEAD)
 		qdel(src)
-		return
+		return FALSE
+	
+	if((flags & DEL_ON_UNDEFIBBABLE) && ishuman(affected_atom))
+		var/mob/living/carbon/human/H = affected_atom
+		if(H.undefibbable && H.stat == DEAD)
+			qdel(src)
+			return FALSE
+
+	if((flags & NO_PROCESS_ON_DEATH) && affected_mob.stat == DEAD)
+		return FALSE
+	return TRUE
 
 /datum/effects/proc/process_obj()
 	var/obj/affected_obj = affected_atom
-	if((flags & DEL_ON_DEATH) && affected_obj.health <= 0 && !(flags & DEL_ON_DURATION))
+	if((flags & DEL_ON_DEATH) && affected_obj.health <= 0)
 		qdel(src)
-		return
+		return FALSE
 
-	if((flags & DEL_ON_LIVING) && affected_obj.health > 0 && !(flags & DEL_ON_DURATION))
+	if((flags & DEL_ON_LIVING) && affected_obj.health > 0)
 		qdel(src)
-		return
+		return FALSE
+
+	if((flags & NO_PROCESS_ON_DEATH) && affected_obj.health <= 0)
+		return FALSE
+	return TRUE
 
 /datum/effects/Dispose()
 	if(affected_atom)

@@ -502,8 +502,11 @@
 			if(org.status & LIMB_DESTROYED)
 				dat += "\t\t [capitalize(org.display_name)]: <span class='scannerb'>Missing!</span>\n"
 				continue
-
-			var/show_limb = (org.burn_dam > 0 || org.brute_dam > 0 || (org.status & (LIMB_BLEEDING | LIMB_NECROTIZED | LIMB_SPLINTED)) || open_incision)
+			var/bleeding_check = FALSE
+			for(var/datum/effects/bleeding/external/E in org.bleeding_effects_list)
+				bleeding_check = TRUE
+				break
+			var/show_limb = (org.burn_dam > 0 || org.brute_dam > 0 || (org.status & (LIMB_NECROTIZED | LIMB_SPLINTED)) || open_incision || bleeding_check)
 			var/org_name = "[capitalize(org.display_name)][org.status & LIMB_ROBOT ? " (Cybernetic)" : ""]"
 			var/burn_info = org.burn_dam > 0 ? "<span class='scannerburnb'> [round(org.burn_dam)]</span>" : "<span class='scannerburn'>0</span>"
 			burn_info += "[((burn_treated)?"":"{B}")]"
@@ -513,7 +516,9 @@
 			if((org.status & LIMB_BROKEN) && !(org.status & LIMB_SPLINTED))
 				fracture_info = "{F}"
 				show_limb = 1
-			var/org_bleed = (org.status & LIMB_BLEEDING) ? "<span class='scannerb'>(Bleeding)</span>" : ""
+			var/org_bleed = ""
+			if(bleeding_check)
+				org_bleed = "<span class='scannerb'>(Bleeding)</span>"
 			var/org_necro = ""
 			var/org_incision = (open_incision?" <span class='scanner'>Open surgical incision</span>":"")
 			var/org_advice = ""

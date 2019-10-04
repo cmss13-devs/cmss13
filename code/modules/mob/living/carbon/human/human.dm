@@ -1129,8 +1129,6 @@
 				continue
 			if(prob(20)) //Let's not make throwing knives too good in HvH
 				organ.take_damage(rand(1,2), 0, 0)
-				if(!(organ.status & LIMB_ROBOT) && !(species.flags & NO_BLOOD)) //Big thing makes us bleed when moving
-					organ.status |= LIMB_BLEEDING
 		if(prob(30))	// Spam chat less
 			to_chat(src, SPAN_WARNING("Your movement jostles [W] in your [organ.display_name] painfully."))
 

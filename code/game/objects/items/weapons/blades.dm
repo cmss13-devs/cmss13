@@ -226,8 +226,6 @@
 		S.loc = embedded_human.loc
 		organ.implants -= S
 		embedded_human.embedded_items -= S
-		if(!(organ.status & LIMB_ROBOT) && !(embedded_human.species.flags & NO_BLOOD)) //Big thing makes us bleed when moving
-			organ.status |= LIMB_BLEEDING
 		organ = null
 		H_user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
 

@@ -34,18 +34,26 @@
 	. = ..()
 
 /datum/effects/acid/process_mob()
-	..()
+	. = ..()
+	if(!.)
+		return FALSE
+
 	var/mob/living/carbon/affected_mob = affected_atom
-	if(affected_mob)
-		affected_mob.last_damage_source = source
-		affected_mob.last_damage_mob = source_mob
-		affected_mob.apply_damage(damage_in_total/original_duration, BURN, def_zone)
+	affected_mob.last_damage_source = source
+	affected_mob.last_damage_mob = source_mob
+	affected_mob.apply_damage(damage_in_total/original_duration, BURN, def_zone)
+
+	return TRUE
 
 /datum/effects/acid/process_obj()
-	..()
+	. = ..()
+	if(!.)
+		return FALSE
+
 	var/obj/affected_obj = affected_atom
-	if(affected_obj)
-		affected_obj.update_health(damage_in_total/original_duration)
+	affected_obj.update_health(damage_in_total/original_duration)
+	
+	return TRUE
 
 /datum/effects/acid/Dispose()
 	if(affected_atom)

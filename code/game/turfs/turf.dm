@@ -32,6 +32,7 @@
 	var/can_bloody = TRUE //Can blood spawn on this turf?
 	var/old_turf = "" //The previous turf's path as text. Used when deconning on LV --MadSnailDisease
 
+	var/list/datum/automata_cell/autocells = list()
 
 
 /turf/New()
@@ -39,20 +40,22 @@
 	turfs += src
 	if(src.z == 1)
 		z1turfs += src
+
 	for(var/atom/movable/AM as mob|obj in src)
 		spawn(0)
 			Entered(AM)
 
 	levelupdate()
 
-
 /turf/Dispose()
 	stop_processing()
+
 	if(old_turf != "")
 		ChangeTurf(text2path(old_turf), TRUE)
 	else
 		ChangeTurf(/turf/open/floor/plating, TRUE)
 	//..()
+
 	return TA_PURGE_ME_NOW
 
 /turf/ex_act(severity)
@@ -142,6 +145,10 @@ spookydonut august 2018
 	if(!istype(A))
 		return
 
+	// Let explosions know that the atom entered
+	for(var/datum/automata_cell/explosion/E in autocells)
+		E.on_turf_entered(A)
+
 	if(ismob(A))
 		var/mob/M = A
 		if(!M.lastarea)
@@ -153,8 +160,6 @@ spookydonut august 2018
 			M.inertia_dir = 0
 			M.make_floating(0)
 		..()
-
-
 
 /turf/proc/is_plating()
 	return 0
@@ -212,7 +217,6 @@ spookydonut august 2018
 		return
 
 	var/turf/W = new new_turf_path( locate(src.x, src.y, src.z) )
-
 
 	if(!forget_old_turf)	//e.g. if an admin spawn a new wall on a wall tile, we don't
 		W.old_turf = path	//want the new wall to change into the old wall when destroyed
@@ -330,6 +334,12 @@ spookydonut august 2018
 
 /turf/proc/wet_floor()
 	return
+
+/turf/proc/get_cell(var/type)
+	for(var/datum/automata_cell/C in autocells)
+		if(istype(C, type))
+			return C
+	return null
 
 //////////////////////////////////////////////////////////
 

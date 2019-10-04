@@ -37,6 +37,7 @@
 #define SS_PRIORITY_CHAT		   300
 #define SS_PRIORITY_TICKER         200
 #define SS_PRIORITY_MAPVIEW		   170
+#define SS_PRIORITY_CELLAUTO       150
 #define SS_PRIORITY_MOB            150
 #define SS_PRIORITY_XENO           149
 #define SS_PRIORITY_HUMAN          148
@@ -67,6 +68,7 @@
 #define SS_WAIT_MACHINERY           3.5 SECONDS //TODO move the rest of these to defines
 #define SS_WAIT_FAST_MACHINERY      0.7 SECONDS
 #define SS_WAIT_FAST_OBJECTS        0.5 SECONDS
+#define SS_WAIT_CELLAUTO            0.05 SECONDS
 #define SS_WAIT_ADMIN               5 MINUTES
 #define SS_WAIT_FZ_TRANSITIONS		1 SECONDS
 

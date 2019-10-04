@@ -445,11 +445,21 @@
 	for(var/j=0; j<10; j++)
 		sploded = locate(T_trg.x + rand(-5, 15), T_trg.y + rand(-5, 25), T_trg.z)
 		//Fucking. Kaboom.
-		explosion_rec(sploded, 200, 20, "dropship crash") //Clears out walls
+		cell_explosion(sploded, 200, 20, null, "dropship crash") //Clears out walls
 		sleep(3)
 
 	for(var/obj/structure/window/framed/almayer/requisitions/R in structure_list)
 		R.shatter_window(1) // break the reqs windows
+
+	// Sleep while the explosions do their job
+	var/explosion_alive = TRUE
+	while(explosion_alive)
+		explosion_alive = FALSE
+		for(var/datum/automata_cell/explosion/E in cellauto_cells)
+			if(E.explosion_source == "dropship crash")
+				explosion_alive = TRUE
+				break
+		sleep(1)
 
 	for(var/mob/living/carbon/M in living_human_list) //knock down mobs
 		if(M.z != T_trg.z) continue

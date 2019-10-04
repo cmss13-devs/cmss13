@@ -23,6 +23,7 @@
 #define AMMO_SCANS_NEARBY		32768 //ammo that is scanning stuff nearby - VERY resource intensive
 #define AMMO_STOPPED_BY_COVER	65536
 #define AMMO_SPECIAL_EMBED      131072
+#define AMMO_STRIKES_SURFACE    262144 // If the projectile hits a dense turf it'll do on_hit_turf on the turf just in front of the turf instead of on the turf itself
 
 //Gun defines for gun related thing. More in the projectile folder.
 #define GUN_CAN_POINTBLANK		1
@@ -83,6 +84,7 @@
 #define WIELD_DELAY_HORRIBLE		12
 
 //Explosion level thresholds. Upper bounds
+#define EXPLOSION_THRESHOLD_VLOW	50
 #define EXPLOSION_THRESHOLD_LOW		100
 #define EXPLOSION_THRESHOLD_MLOW	150
 #define EXPLOSION_THRESHOLD_MEDIUM	200

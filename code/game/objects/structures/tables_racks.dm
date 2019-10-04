@@ -621,3 +621,7 @@
 		new /obj/item/stack/sheet/metal(loc)
 	density = 0
 	qdel(src)
+
+/obj/structure/rack/ex_act(var/power)
+	if(power >= EXPLOSION_THRESHOLD_VLOW)
+		destroy(FALSE)

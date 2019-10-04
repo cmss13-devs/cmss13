@@ -37,6 +37,11 @@ obj/structure/bed/Dispose()
 		unbuckle()
 	. = ..()
 
+/obj/structure/bed/ex_act(var/power)
+	if(power >= EXPLOSION_THRESHOLD_VLOW)
+		new buildstacktype(get_turf(src), buildstackamount)
+		qdel(src)
+
 /obj/structure/bed/afterbuckle(mob/M)
 	. = ..()
 	if(. && buckled_mob == M)

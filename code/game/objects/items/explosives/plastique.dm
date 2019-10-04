@@ -68,7 +68,7 @@
 		SPAN_WARNING("You plant [name] on [target]! Timer counting down from [timer]."))
 		spawn(timer*10)
 			if(target && !target.disposed)
-				explosion_rec(get_turf(target), 120, 30, initial(name), user.mind)
+				cell_explosion(get_turf(target), 120, 30, null, initial(name), user.mind)
 				if(ismob(target))
 					var/mob/M = target
 					M.last_damage_source = initial(name)

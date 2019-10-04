@@ -111,7 +111,8 @@ var/list/admin_verbs_fun = list(
 	/client/proc/cmd_admin_select_mob_rank,
 	/client/proc/cmd_admin_gib_self,
 	/client/proc/drop_bomb,
-    /client/proc/drop_custom_bomb,
+    /client/proc/drop_custom_dorec_bomb,
+    /client/proc/drop_custom_cell_bomb,
 	// /client/proc/cmd_admin_add_freeform_ai_law,
 	// /client/proc/cmd_admin_add_random_ai_law,
 	// /client/proc/make_sound,
@@ -173,7 +174,8 @@ var/list/admin_verbs_debug = list(
 	/client/proc/toggledebuglogs,
 	/client/proc/togglenichelogs,
 	/client/proc/cmd_admin_change_hivenumber,
-	/client/proc/cmd_admin_change_their_hivenumber
+	/client/proc/cmd_admin_change_their_hivenumber,
+	/client/proc/spawn_wave
 	)
 
 var/list/admin_verbs_paranoid_debug = list(

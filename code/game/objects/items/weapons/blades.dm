@@ -264,9 +264,12 @@
 	if(!primed)
 		return
 
-	create_shrapnel(loc, 48, , ,/datum/ammo/bullet/shrapnel, initial(name), user)
+	var/turf/epicenter = get_turf(user)
+	epicenter = get_step(epicenter, user.dir)
+
+	create_shrapnel(epicenter, 48, dir, , /datum/ammo/bullet/shrapnel, initial(name), user)
 	sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
 	apply_explosion_overlay()
-	explosion_rec(loc, 40, 18, initial(name), user)
+	cell_explosion(epicenter, 40, 18, user.dir, initial(name), user)
 	qdel(src)
 

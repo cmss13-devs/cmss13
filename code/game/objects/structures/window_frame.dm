@@ -66,6 +66,20 @@
 		qdel(WF)
 	. = ..()
 
+/obj/structure/window_frame/ex_act(var/power)
+	switch(power)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if (prob(25))
+				qdel(src)
+				return
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if (prob(50))
+				qdel(src)
+				return
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			qdel(src)
+			return
+
 /obj/structure/window_frame/attackby(obj/item/W, mob/living/user)
 	if(istype(W, sheet_type))
 		var/obj/item/stack/sheet/sheet = W

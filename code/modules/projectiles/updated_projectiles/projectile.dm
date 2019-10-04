@@ -172,6 +172,20 @@
 			qdel(src)
 			return
 
+		// If the ammo should hit the surface of the target and the next turf is dense
+		// The current turf is the "surface" of the target
+		// Distance > 0 to not immediately hit the user's turf
+		if(distance_travelled > 0)
+			var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
+			if((ammo_flags & AMMO_STRIKES_SURFACE) && is_blocked_turf(next_turf))
+				// We "hit" the current turf but strike the actual blockage
+				ammo.on_hit_turf(current_turf,src)
+				next_turf.bullet_act(src)
+				in_flight = 0
+				sleep(0)
+				qdel(src)
+				return
+
 		var/proj_dir = get_dir(current_turf, next_turf)
 		if(proj_dir & (proj_dir-1)) //diagonal direction
 			if(!current_turf.Adjacent(next_turf)) //we can't reach the next turf

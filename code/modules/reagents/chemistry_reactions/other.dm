@@ -58,7 +58,7 @@
 		msg_admin_niche("Potassium + Water explosion in [sourceturf.loc.name] at ([sourceturf.x],[sourceturf.y],[sourceturf.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[sourceturf.x];Y=[sourceturf.y];Z=[sourceturf.z]'>JMP</a>)")
 		create_shrapnel(location, shards, , ,shard_type, "chemical reaction", source_mob)
 		sleep(2) // So mobs aren't knocked down before getting hit by shrapnel
-		explosion_rec(location, expower, exfalloff, "chemical reaction", source_mob)
+		cell_explosion(location, expower, exfalloff, null, "chemical reaction", source_mob)
 
 		sourceturf.chemexploded = TRUE // to prevent grenade stacking
 		spawn(20)

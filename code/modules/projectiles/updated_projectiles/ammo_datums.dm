@@ -517,14 +517,14 @@
 	damage_falloff = config.med_damage_falloff
 
 /datum/ammo/bullet/rifle/explosive/on_hit_mob(mob/M, obj/item/projectile/P)
-	explosion_rec(get_turf(M), 80, 40, P.weapon_source, P.firer)
+	cell_explosion(get_turf(M), 80, 40, P.dir, P.weapon_source, P.firer)
 
 /datum/ammo/bullet/rifle/explosive/on_hit_obj(obj/O, obj/item/projectile/P)
-	explosion_rec(get_turf(O), 80, 40, P.weapon_source, P.firer)
+	cell_explosion(get_turf(O), 80, 40, P.dir, P.weapon_source, P.firer)
 
 /datum/ammo/bullet/rifle/explosive/on_hit_turf(turf/T, obj/item/projectile/P)
 	if(T.density)
-		explosion_rec(T, 80, 40, P.weapon_source, P.firer)
+		cell_explosion(T, 80, 40, P.dir, P.weapon_source, P.firer)
 
 /datum/ammo/bullet/rifle/ap
 	name = "armor-piercing rifle bullet"
@@ -1033,7 +1033,7 @@
 	ping = null //no bounce off.
 	sound_bounce	= "rocket_bounce"
 	damage_falloff = 0
-	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ROCKET
+	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ROCKET|AMMO_STRIKES_SURFACE
 	var/datum/effect_system/smoke_spread/smoke
 
 /datum/ammo/rocket/New()
@@ -1051,22 +1051,22 @@
 	. = ..()
 
 /datum/ammo/rocket/on_hit_mob(mob/M, obj/item/projectile/P)
-	explosion_rec(get_turf(M), 200, 40, P.weapon_source, P.firer)
+	cell_explosion(get_turf(M), 200, 50, null, P.weapon_source, P.firer)
 	smoke.set_up(1, get_turf(M))
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_obj(obj/O, obj/item/projectile/P)
-	explosion_rec(get_turf(O), 200, 40, P.weapon_source, P.firer)
+	cell_explosion(get_turf(O), 200, 50, null, P.weapon_source, P.firer)
 	smoke.set_up(1, get_turf(O))
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_turf(turf/T, obj/item/projectile/P)
-	explosion_rec(T, 200, 40, P.weapon_source, P.firer)
+	cell_explosion(T, 200, 50, null, P.weapon_source, P.firer)
 	smoke.set_up(1, T)
 	smoke.start()
 
 /datum/ammo/rocket/do_at_max_range(obj/item/projectile/P)
-	explosion_rec(get_turf(P), 200, 40, P.weapon_source, P.firer)
+	cell_explosion(get_turf(P), 200, 50, null, P.weapon_source, P.firer)
 	smoke.set_up(1, get_turf(P))
 	smoke.start()
 
@@ -1088,14 +1088,14 @@
 	M.ex_act(150, P.dir, P.weapon_source, P.firer, 100)
 	M.KnockDown(2)
 	M.KnockOut(2)
-	explosion_rec(T, 100, 30, P.weapon_source, P.firer)
+	cell_explosion(T, 100, 50, null, P.weapon_source, P.firer)
 	smoke.set_up(1, T)
 	smoke.start()
 
 /datum/ammo/rocket/ap/on_hit_obj(obj/O, obj/item/projectile/P)
 	var/turf/T = get_turf(O)
 	O.ex_act(150, P.dir, P.weapon_source, P.firer, 100)
-	explosion_rec(T, 100, 30, P.weapon_source, P.firer)
+	cell_explosion(T, 100, 50, null, P.weapon_source, P.firer)
 	smoke.set_up(1, T)
 	smoke.start()
 
@@ -1116,7 +1116,7 @@
 	if(!hit_something)
 		T.ex_act(150, P.dir, P.weapon_source, P.firer, 200)
 
-	explosion_rec(T, 100, 30, P.weapon_source, P.firer)
+	cell_explosion(T, 100, 50, null, P.weapon_source, P.firer)
 	smoke.set_up(1, T)
 	smoke.start()
 
@@ -1137,14 +1137,14 @@
 				continue
 	if(!hit_something)
 		T.ex_act(250, P.dir, P.weapon_source, P.firer)
-	explosion_rec(T, 100, 30, P.weapon_source, P.firer)
+	cell_explosion(T, 100, 50, null, P.weapon_source, P.firer)
 	smoke.set_up(1, T)
 	smoke.start()
 
 /datum/ammo/rocket/ltb
 	name = "cannon round"
 	icon_state = "ltb"
-	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ROCKET
+	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ROCKET|AMMO_STRIKES_SURFACE
 
 /datum/ammo/rocket/ltb/New()
 	..()
@@ -1155,24 +1155,24 @@
 	shell_speed = config.fast_shell_speed
 
 /datum/ammo/rocket/ltb/on_hit_mob(mob/M, obj/item/projectile/P)
-	explosion_rec(get_turf(M), 220, 50, P.weapon_source, P.firer)
-	explosion_rec(get_turf(M), 200, 100, P.weapon_source, P.firer)
+	cell_explosion(get_turf(M), 220, 50, null, P.weapon_source, P.firer)
+	cell_explosion(get_turf(M), 200, 100, null, P.weapon_source, P.firer)
 
 /datum/ammo/rocket/ltb/on_hit_obj(obj/O, obj/item/projectile/P)
-	explosion_rec(get_turf(O), 220, 50, P.weapon_source, P.firer)
-	explosion_rec(get_turf(O), 200, 100, P.weapon_source, P.firer)
+	cell_explosion(get_turf(O), 220, 50, null, P.weapon_source, P.firer)
+	cell_explosion(get_turf(O), 200, 100, null, P.weapon_source, P.firer)
 
 /datum/ammo/rocket/ltb/on_hit_turf(turf/T, obj/item/projectile/P)
-	explosion_rec(get_turf(T), 220, 50, P.weapon_source, P.firer)
-	explosion_rec(get_turf(T), 200, 100, P.weapon_source, P.firer)
+	cell_explosion(get_turf(T), 220, 50, null, P.weapon_source, P.firer)
+	cell_explosion(get_turf(T), 200, 100, null, P.weapon_source, P.firer)
 
 /datum/ammo/rocket/ltb/do_at_max_range(obj/item/projectile/P)
-	explosion_rec(get_turf(P), 220, 50, P.weapon_source, P.firer)
-	explosion_rec(get_turf(P), 200, 100, P.weapon_source, P.firer)
+	cell_explosion(get_turf(P), 220, 50, null, P.weapon_source, P.firer)
+	cell_explosion(get_turf(P), 200, 100, null, P.weapon_source, P.firer)
 
 /datum/ammo/rocket/wp
 	name = "white phosphorous rocket"
-	flags_ammo_behavior = AMMO_ROCKET|AMMO_INCENDIARY|AMMO_EXPLOSIVE
+	flags_ammo_behavior = AMMO_ROCKET|AMMO_INCENDIARY|AMMO_EXPLOSIVE|AMMO_STRIKES_SURFACE
 	damage_type = BURN
 
 /datum/ammo/rocket/wp/New()
@@ -1213,7 +1213,7 @@
 
 /datum/ammo/rocket/wp/quad
 	name = "thermobaric rocket"
-	flags_ammo_behavior = AMMO_ROCKET
+	flags_ammo_behavior = AMMO_ROCKET|AMMO_STRIKES_SURFACE
 
 /datum/ammo/rocket/wp/quad/New()
 	..()
@@ -1322,16 +1322,16 @@
 	max_range = config.long_shell_range
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_mob(mob/M,obj/item/projectile/P)
-	explosion_rec(get_turf(M), 170, 50, P.weapon_source, P.firer)
+	cell_explosion(get_turf(M), 170, 50, null, P.weapon_source, P.firer)
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_turf(turf/T,obj/item/projectile/P)
-	explosion_rec(T, 170, 40, P.weapon_source, P.firer)
+	cell_explosion(T, 170, 40, null, P.weapon_source, P.firer)
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_obj(obj/O,obj/item/projectile/P)
-	explosion_rec(get_turf(O), 170, 50, P.weapon_source, P.firer)
+	cell_explosion(get_turf(O), 170, 50, null, P.weapon_source, P.firer)
 
 /datum/ammo/energy/yautja/caster/sphere/do_at_max_range(obj/item/projectile/P)
-	explosion_rec(get_turf(P), 170, 50, P.weapon_source, P.firer)
+	cell_explosion(get_turf(P), 170, 50, null, P.weapon_source, P.firer)
 
 /datum/ammo/energy/yautja/rifle/New()
 	..()

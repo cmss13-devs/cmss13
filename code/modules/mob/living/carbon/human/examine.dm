@@ -228,7 +228,6 @@
 					if(W.internal && !temp.surgery_open_stage) continue // can't see internal wounds
 					var/this_wound_desc = W.desc
 					if(W.damage_type == BURN && W.salved) this_wound_desc = "salved [this_wound_desc]"
-					if(W.bleeding()) this_wound_desc = "bleeding [this_wound_desc]"
 					else if(W.bandaged) this_wound_desc = "bandaged [this_wound_desc]"
 					if(wound_descriptors[this_wound_desc])
 						wound_descriptors[this_wound_desc] += W.amount
@@ -271,8 +270,9 @@
 					wound_flavor_text["[temp.display_name]"] = flavor_text_string
 				else
 					wound_flavor_text["[temp.display_name]"] = ""
-				if(temp.status & LIMB_BLEEDING)
-					is_bleeding["[temp.display_name]"] = 1
+				for(var/datum/effects/bleeding/external/B in temp.bleeding_effects_list)
+					is_bleeding["[temp.display_name]"] = TRUE
+					break
 			else
 				wound_flavor_text["[temp.display_name]"] = ""
 
@@ -292,47 +292,47 @@
 
 	if(wound_flavor_text["head"] && (is_destroyed["head"] || (!skipmask && !(wear_mask && istype(wear_mask, /obj/item/clothing/mask/gas)))))
 		msg += wound_flavor_text["head"]
-	else if(is_bleeding["head"])
+	if(is_bleeding["head"])
 		display_head = 1
 	if(wound_flavor_text["chest"] && !w_uniform && !skipjumpsuit) //No need.  A missing chest gibs you.
 		msg += wound_flavor_text["chest"]
-	else if(is_bleeding["chest"])
+	if(is_bleeding["chest"])
 		display_chest = 1
 	if(wound_flavor_text["left arm"] && (is_destroyed["left arm"] || (!w_uniform && !skipjumpsuit)))
 		msg += wound_flavor_text["left arm"]
-	else if(is_bleeding["left arm"])
+	if(is_bleeding["left arm"])
 		display_arm_left = 1
 	if(wound_flavor_text["left hand"] && (is_destroyed["left hand"] || (!gloves && !skipgloves)))
 		msg += wound_flavor_text["left hand"]
-	else if(is_bleeding["left hand"])
+	if(is_bleeding["left hand"])
 		display_hand_left = 1
 	if(wound_flavor_text["right arm"] && (is_destroyed["right arm"] || (!w_uniform && !skipjumpsuit)))
 		msg += wound_flavor_text["right arm"]
-	else if(is_bleeding["right arm"])
+	if(is_bleeding["right arm"])
 		display_arm_right = 1
 	if(wound_flavor_text["right hand"] && (is_destroyed["right hand"] || (!gloves && !skipgloves)))
 		msg += wound_flavor_text["right hand"]
-	else if(is_bleeding["right hand"])
+	if(is_bleeding["right hand"])
 		display_hand_right = 1
 	if(wound_flavor_text["groin"] && (is_destroyed["groin"] || (!w_uniform && !skipjumpsuit)))
 		msg += wound_flavor_text["groin"]
-	else if(is_bleeding["groin"])
+	if(is_bleeding["groin"])
 		display_groin = 1
 	if(wound_flavor_text["left leg"] && (is_destroyed["left leg"] || (!w_uniform && !skipjumpsuit)))
 		msg += wound_flavor_text["left leg"]
-	else if(is_bleeding["left leg"])
+	if(is_bleeding["left leg"])
 		display_leg_left = 1
 	if(wound_flavor_text["left foot"]&& (is_destroyed["left foot"] || (!shoes && !skipshoes)))
 		msg += wound_flavor_text["left foot"]
-	else if(is_bleeding["left foot"])
+	if(is_bleeding["left foot"])
 		display_foot_left = 1
 	if(wound_flavor_text["right leg"] && (is_destroyed["right leg"] || (!w_uniform && !skipjumpsuit)))
 		msg += wound_flavor_text["right leg"]
-	else if(is_bleeding["right leg"])
+	if(is_bleeding["right leg"])
 		display_leg_right = 1
 	if(wound_flavor_text["right foot"]&& (is_destroyed["right foot"] || (!shoes  && !skipshoes)))
 		msg += wound_flavor_text["right foot"]
-	else if(is_bleeding["right foot"])
+	if(is_bleeding["right foot"])
 		display_foot_right = 1
 
 	if (display_head)

@@ -35,6 +35,7 @@
 	for(var/datum/wound/W in affected.wounds)
 		if(W.internal)
 			affected.wounds -= W
+			affected.remove_all_bleeding(FALSE, TRUE)
 			affected.update_damages()
 	if(ishuman(user) && prob(40))
 		user:bloody_hands(target, 0)

@@ -8,7 +8,11 @@
 	priority = 1
 
 /datum/surgery_step/cavity/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected, checks_only)
-	return affected.surgery_open_stage == (affected.encased ? 3 : 2) && !(affected.status & LIMB_BLEEDING)
+	var/bleeding_check = FALSE
+	for(var/datum/effects/bleeding/external/E in affected.bleeding_effects_list)
+		bleeding_check = TRUE
+		break
+	return affected.surgery_open_stage == (affected.encased ? 3 : 2) && !bleeding_check
 
 /datum/surgery_step/cavity/proc/get_max_wclass(datum/limb/affected)
 	switch (affected.name)
@@ -119,7 +123,8 @@
 	SPAN_NOTICE("You put \the [tool] inside [target]'s [get_cavity(affected)] cavity."))
 	if(tool.w_class > get_max_wclass(affected)/2 && prob(50))
 		to_chat(user, SPAN_WARNING("You tear some blood vessels trying to fit such a big object in this cavity."))
-		var/datum/wound/internal_bleeding/I = new (10)
+		var/datum/wound/internal_bleeding/I = new (0)
+		affected.add_bleeding(I, TRUE)
 		affected.wounds += I
 		affected.owner.custom_pain("You feel something rip in your [affected.display_name]!", 1)
 	user.drop_inv_item_to_loc(tool, target)

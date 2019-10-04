@@ -208,6 +208,7 @@
 #include "code\datums\diseases\advance\symptoms\vomit.dm"
 #include "code\datums\diseases\advance\symptoms\weight.dm"
 #include "code\datums\effects\acid.dm"
+#include "code\datums\effects\bleeding.dm"
 #include "code\datums\emergency_calls\clf.dm"
 #include "code\datums\emergency_calls\colonist.dm"
 #include "code\datums\emergency_calls\cryo_marines.dm"

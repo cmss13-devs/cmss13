@@ -334,6 +334,7 @@
 							if(W.internal)
 								sleep(FIXVEIN_MAX_DURATION*surgery_mod)
 								S.limb_ref.wounds -= W
+								qdel(W)
 						if(!surgery) break
 						close_incision(H,S.limb_ref)
 
@@ -464,7 +465,7 @@
 							if(F.face_surgery_stage == 3)
 								sleep(CAUTERY_MAX_DURATION)
 								if(!surgery) break
-								F.status &= ~LIMB_BLEEDING
+								F.remove_all_bleeding(TRUE)
 								F.disfigured = 0
 								F.owner.name = F.owner.get_visible_name()
 								F.face_surgery_stage = 0
@@ -502,7 +503,7 @@
 		sleep(CAUTERY_MAX_DURATION*surgery_mod)
 		if(!surgery) return
 		L.surgery_open_stage = 0
-		L.status &= ~LIMB_BLEEDING
+		L.remove_all_bleeding(TRUE)
 		target.updatehealth()
 
 /obj/structure/machinery/autodoc/proc/open_encased(mob/living/carbon/human/target, var/datum/limb/L)

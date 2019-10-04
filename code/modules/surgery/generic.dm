@@ -46,10 +46,7 @@
 	SPAN_NOTICE("You have constructed a prepared incision on and within [target]'s [affected.display_name] with \the [tool]."),)
 	affected.surgery_open_stage = 1
 
-	if(istype(target) && !(target.species.flags & NO_BLOOD))
-		affected.status |= LIMB_BLEEDING
-
-	affected.createwound(CUT, 1)
+	affected.createwound(CUT, 10)
 	affected.clamp() //Hemostat function, clamp bleeders
 	affected.surgery_open_stage = 2 //Can immediately proceed to other surgery steps
 	target.updatehealth()
@@ -88,10 +85,7 @@
 	//Could be cleaner
 	affected.surgery_open_stage = 1
 
-	if(istype(target) && !(target.species.flags & NO_BLOOD))
-		affected.status |= LIMB_BLEEDING
-
-	affected.createwound(CUT, 1)
+	affected.createwound(CUT, 10)
 	affected.clamp() //Hemostat function, clamp bleeders
 	affected.update_wounds()
 
@@ -129,10 +123,7 @@
 	SPAN_NOTICE("You have made an incision on [target]'s [affected.display_name] with \the [tool]."),)
 	affected.surgery_open_stage = 1
 
-	if(istype(target) && !(target.species.flags & NO_BLOOD))
-		affected.status |= LIMB_BLEEDING
-
-	affected.createwound(CUT, 1)
+	affected.createwound(CUT, 10)
 	target.updatehealth()
 
 /datum/surgery_step/generic/cut_open/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
@@ -155,7 +146,11 @@
 
 /datum/surgery_step/generic/clamp_bleeders/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected, checks_only)
 	if(..())
-		return affected.surgery_open_stage && (affected.status & LIMB_BLEEDING)
+		var/bleeding_check = FALSE
+		for(var/datum/effects/bleeding/external/E in affected.bleeding_effects_list)
+			bleeding_check = TRUE
+			break
+		return affected.surgery_open_stage && bleeding_check
 
 /datum/surgery_step/generic/clamp_bleeders/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] starts clamping bleeders in [target]'s [affected.display_name] with \the [tool]."), \
@@ -246,7 +241,7 @@
 	user.visible_message(SPAN_NOTICE("[user] cauterizes the incision on [target]'s [affected.display_name] with \the [tool]."), \
 	SPAN_NOTICE("You cauterize the incision on [target]'s [affected.display_name] with \the [tool]."))
 	affected.surgery_open_stage = 0
-	affected.status &= ~LIMB_BLEEDING
+	affected.remove_all_bleeding(TRUE)
 
 /datum/surgery_step/generic/cauterize/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, leaving a small burn on [target]'s [affected.display_name] with \the [tool]!"), \

@@ -164,7 +164,6 @@
 
 // =============================
 // slowdowns
-
 #define XENO_SLOWED_AMOUNT 0.7
 #define XENO_SUPERSLOWED_AMOUNT 1.5
 #define HUMAN_SLOWED_AMOUNT 1.5
@@ -173,20 +172,17 @@
 //=================================================
 
 ///////////////////HUMAN BLOODTYPES///////////////////
-
 #define HUMAN_BLOODTYPES list("O-","O+","A-","A+","B-","B+","AB-","AB+")
 
 ///////////////////LIMB DEFINES///////////////////
-
-#define LIMB_BLEEDING 1
-#define LIMB_BROKEN 2
-#define LIMB_DESTROYED 4 //limb is missing
-#define LIMB_ROBOT 8
-#define LIMB_SPLINTED 16
-#define LIMB_NECROTIZED 32 //necrotizing limb, nerves are dead.
-#define LIMB_MUTATED 64 //limb is deformed by mutations
-#define LIMB_AMPUTATED 128 //limb was amputated cleanly or destroyed limb was cleaned up, thus causing no pain
-#define LIMB_REPAIRED 256 //we just repaired the bone, stops the gelling after setting
+#define LIMB_BROKEN 1
+#define LIMB_DESTROYED 2 //limb is missing
+#define LIMB_ROBOT 4
+#define LIMB_SPLINTED 8
+#define LIMB_NECROTIZED 16 //necrotizing limb, nerves are dead.
+#define LIMB_MUTATED 32 //limb is deformed by mutations
+#define LIMB_AMPUTATED 64 //limb was amputated cleanly or destroyed limb was cleaned up, thus causing no pain
+#define LIMB_REPAIRED 128 //we just repaired the bone, stops the gelling after setting
 
 
 /////////////////MOVE DEFINES//////////////////////

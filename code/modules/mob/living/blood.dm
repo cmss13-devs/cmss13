@@ -1,8 +1,6 @@
 /****************************************************
 				BLOOD SYSTEM
 ****************************************************/
-
-
 /mob/living
 	var/blood_volume = 0 //how much blood the mob has
 
@@ -10,38 +8,15 @@
 	blood_volume = BLOOD_VOLUME_NORMAL
 
 
-
-
 /mob/living/proc/handle_blood()
 	return
 
 // Takes care blood loss and regeneration
 /mob/living/carbon/human/handle_blood()
-
 	if(NO_BLOOD in species.flags)
 		return
 
-	//Bleeding out
-	var/blood_max = 0
-	if(stat != DEAD)
-		for(var/datum/limb/temp in limbs)
-			if(!(temp.status & LIMB_BLEEDING) || temp.status & LIMB_ROBOT)
-				continue
-			for(var/datum/wound/W in temp.wounds)
-				if(W.bleeding())
-					blood_max += (W.damage / 40)
-			if(temp.status & LIMB_DESTROYED && !(temp.status & LIMB_AMPUTATED))
-				blood_max += 5 //Yer missing a fucking limb.
-			if (temp.surgery_open_stage)
-				blood_max += 0.6  //Yer stomach is cut open
-
-	if(blood_max == 0 && blood_volume == BLOOD_VOLUME_NORMAL)
-		return
-
 	if(stat != DEAD && bodytemperature >= 170)	//Dead or cryosleep people do not pump the blood.
-
-
-
 		//Blood regeneration if there is some space
 		if(blood_volume < BLOOD_VOLUME_NORMAL)
 			blood_volume += 0.1 // regenerate blood VERY slowly
@@ -52,7 +27,6 @@
 		// being pumped properly anymore.
 		if(species && species.has_organ["heart"])
 			var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
-
 			if(!heart)
 				b_volume = 0
 			else if(reagents.get_reagent_amount("peridaxon") >= 0.05)
@@ -64,13 +38,8 @@
 			else if(heart.damage >= heart.min_broken_damage && heart.damage < INFINITY)
 				b_volume *= 0.3
 
-
-
-
-
 	//Effects of bloodloss
 		switch(blood_volume)
-
 			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
 				if(prob(1))
 					var/word = pick("dizzy","woozy","faint")
@@ -96,7 +65,6 @@
 			if(0 to BLOOD_VOLUME_SURVIVE)
 				death("blood loss")
 
-
 		// Without enough blood you slowly go hungry.
 		if(blood_volume < BLOOD_VOLUME_SAFE)
 			if(nutrition >= 300)
@@ -104,18 +72,9 @@
 			else if(nutrition >= 200)
 				nutrition -= 3
 
-		if(blood_max)
-			drip(blood_max)
-
-
-
 
 //Makes a blood drop, leaking amt units of blood from the mob
 /mob/living/carbon/proc/drip(amt)
-
-	if(reagents.get_reagent_amount("quickclot")) //Quickclot stops bleeding, magic!
-		return
-
 	if(blood_volume)
 		blood_volume = max(blood_volume - amt, 0)
 		if(isturf(src.loc)) //Blood loss still happens in locker, floor stays clean
@@ -132,7 +91,6 @@
 	..()
 
 
-
 /mob/living/proc/restore_blood()
 	blood_volume = initial(blood_volume)
 
@@ -140,61 +98,21 @@
 	blood_volume = BLOOD_VOLUME_NORMAL
 
 
-
-
 /****************************************************
 				BLOOD TRANSFERS
 ****************************************************/
-/*
-//Gets blood from mob to a container or other mob, preserving all data in it.
-/mob/living/proc/transfer_blood_to(atom/movable/AM, amount, forced)
-	if(!blood_volume || !AM.reagents)
-		return 0
-	if(blood_volume < BLOOD_VOLUME_BAD && !forced)
-		return 0
-
-	if(blood_volume < amount)
-		amount = blood_volume
-
-	var/blood_id = get_blood_id()
-	if(!blood_id)
-		return 0
-
-	blood_volume -= amount
-
-	var/list/blood_data = get_blood_data()
-
-	if(iscarbon(AM))
-		var/mob/living/carbon/C = AM
-		if(blood_id == C.get_blood_id())//both mobs have the same blood substance
-			if(blood_id == "blood") //normal blood
-				if(!(blood_data["blood_type"] in get_safe_blood(C.blood_type)))
-					C.reagents.add_reagent("toxin", amount * 0.5)
-					return 1
-
-			C.blood_volume = min(C.blood_volume + round(amount, 0.1), BLOOD_VOLUME_MAXIMUM)
-			return 1
-
-	AM.reagents.add_reagent(blood_id, amount, blood_data, bodytemperature)
-	return 1
-*/
-
-
 //Transfers blood from container to mob
 /mob/living/carbon/proc/inject_blood(obj/item/reagent_container/container, amount)
-
 	var/b_id = get_blood_id()
 	if(!b_id)
 		return
 
 	for(var/datum/reagent/blood/B in container.reagents.reagent_list)
 		if(B.id == b_id)
-
 			if(b_id == "blood" && B.data && !(B.data["blood_type"] in get_safe_blood(blood_type)))
 				reagents.add_reagent("toxin", amount * 0.5)
 			else
 				blood_volume = min(blood_volume + round(amount, 0.1), BLOOD_VOLUME_MAXIMUM)
-
 		else
 			reagents.add_reagent(B.id, amount, B.data)
 			reagents.update_total()
@@ -205,7 +123,6 @@
 
 //Transfers blood from container to human, respecting blood types compatability.
 /mob/living/carbon/human/inject_blood(obj/item/reagent_container/container, amount)
-
 	var/datum/reagent/blood/B = locate() in container.reagents.reagent_list
 
 	if(species && species.flags & NO_BLOOD)
@@ -214,9 +131,7 @@
 		container.reagents.remove_reagent(B.id, amount)
 		return
 
-
 	..()
-
 
 
 //Gets blood from mob to the container, preserving all data in it.
@@ -246,7 +161,6 @@
 
 
 /mob/living/carbon/human/take_blood(obj/O, var/amount)
-
 	if(species && species.flags & NO_BLOOD)
 		return
 
@@ -271,7 +185,6 @@
 
 
 //////////////////////////////
-
 //returns the data to give to the blood reagent this mob gives
 /mob/living/proc/get_blood_data()
 	if(!get_blood_id())
@@ -285,7 +198,6 @@
 		blood_data["blood_type"] = b_dna[i]
 
 	blood_data["blood_colour"] = get_blood_color()
-
 	blood_data["viruses"] = list()
 
 	return blood_data
@@ -340,7 +252,6 @@
 	return species.blood_color
 
 
-
 //get the id of the substance this mob uses as blood.
 /mob/proc/get_blood_id()
 	return
@@ -384,8 +295,6 @@
 	return "blood"
 
 
-
-
 // This is has more potential uses, and is probably faster than the old proc.
 /proc/get_safe_blood(bloodtype)
 	. = list()
@@ -410,12 +319,7 @@
 			return list("O-", "O+")
 
 
-
-
-
 /////////////////// add_splatter_floor ////////////////////////////////////////
-
-
 //to add a splatter of blood or other mob liquid.
 /mob/living/proc/add_splatter_floor(turf/T, small_drip, b_color)
 	if(get_blood_id() != "blood")
@@ -449,7 +353,6 @@
 				drop.color = b_color
 			return
 
-
 	// Find a blood decal or create a new one.
 	var/obj/effect/decal/cleanable/blood/B = locate() in T
 	if(!B)
@@ -481,7 +384,6 @@
 	if(!XB)
 		XB = new(T)
 	XB.blood_DNA["UNKNOWN DNA"] = "X*"
-
 
 
 /mob/living/silicon/robot/add_splatter_floor(turf/T, small_drip, b_color)

@@ -505,6 +505,7 @@ updatehealth()
 		stat = CONSCIOUS
 	else if(overheal > 0)
 		overlay_overheal()
+		health = maxHealth - getFireLoss() - getBruteLoss()
 	else
 		health = maxHealth - getFireLoss() - getBruteLoss() //Xenos can only take brute and fire damage.
 

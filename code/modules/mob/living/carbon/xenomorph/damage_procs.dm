@@ -76,9 +76,6 @@
 
 	if(stat == DEAD) return
 
-	if(def_zone == "head" || def_zone == "eyes" || def_zone == "mouth") //Little more damage vs the head
-		damage = round(damage * 8 / 7)
-
 	if (temp_health)
 		if (temp_health >= damage)
 			temp_health -= damage

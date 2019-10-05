@@ -35,6 +35,9 @@
 	xeno_counts[1] -= "Queen" // don't show queen in the amount of xenos
 	data["xeno_counts"] = xeno_counts
 
+	// Also update the amount of T2/T3 slots
+	data["tier_slots"] = assoc_hive.get_tier_slots()
+
 // Updates the sorted list of all xenos that we use as a key for all other information
 /datum/hive_status_ui/proc/update_xeno_keys()
 	data["xeno_keys"] = assoc_hive.get_xeno_keys()

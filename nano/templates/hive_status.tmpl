@@ -88,7 +88,12 @@
 <hr>
 
 {{for data.xeno_counts}}
-	<center><h1 class="whiteTitle">Tier {{:3-index}}</h1></center>
+	<center>
+		<h1 class="whiteTitle">Tier {{:3-index}}</h1>
+		{{if index < 2}}
+			<span><i>{{:data.tier_slots[1-index]}} remaining slot{{if data.tier_slots[1-index] != 1}}s{{/if}}</i></span>
+		{{/if}}
+	</center>
 	<table class="xenoCountTable">
 		<tr>
 			{{props data.xeno_counts[3-index] :count:caste}}

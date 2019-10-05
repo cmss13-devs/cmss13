@@ -907,6 +907,28 @@
 
 	return xenos
 
+// Returns a list of slots for tier 2 and 3
+/datum/hive_status/proc/get_tier_slots()
+	var/list/slots = list(0, 0)
+
+	var/burrowed_factor = min(stored_larva, sqrt(4*stored_larva))
+	burrowed_factor = round(burrowed_factor)
+
+	var/effective_total = totalXenos.len + burrowed_factor
+
+	// no division by zero here, sir, nope.
+	if(!effective_total)
+		return slots
+
+	// Tier 3 slots are always 25% of the total xenos in the hive
+	slots[2] = max(0, Ceiling(effective_total * 0.25 * tier_slot_multiplier) - tier_3_xenos.len)
+
+	// Tier 2 slots are between 25% and 50% of the hive, depending
+	// on how many T3s there are.
+	slots[1] = max(0, Ceiling(effective_total * (0.5 - tier_3_xenos.len / effective_total) * tier_slot_multiplier) - tier_2_xenos.len)
+
+	return slots
+
 /datum/hive_status/corrupted
 	hivenumber = XENO_HIVE_CORRUPTED
 	prefix = "Corrupted "

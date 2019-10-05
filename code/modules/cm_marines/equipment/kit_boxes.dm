@@ -3,7 +3,7 @@
 
 /obj/item/storage/box/spec
 	var/spec_set
-	icon = 'icons/obj/items/weapons/guns/marine-weapons.dmi'
+	icon = 'icons/obj/items/weapons/guns/attachments.dmi'
 	w_class = SIZE_HUGE
 	storage_slots = 12
 	slowdown = 1

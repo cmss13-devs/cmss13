@@ -741,7 +741,6 @@
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/quickfire,
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/stock/carbine,
 						/obj/item/attachable/lasersight,
@@ -752,21 +751,21 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	wield_delay = WIELD_DELAY_VERY_FAST
-	aim_slowdown = 0
+	aim_slowdown = SLOWDOWN_ADS_SMG
+	starting_attachment_types = list(/obj/item/attachable/stock/carbine)
 
 /obj/item/weapon/gun/rifle/l42mk1/New()
 	select_gamemode_skin(/obj/item/weapon/gun/rifle/l42mk1)
 	..()
-	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 18, "rail_y" = 18, "under_x" = 24, "under_y" = 13, "stock_x" = 25, "stock_y" = 9)
+	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 7, "rail_y" = 19, "under_x" = 16, "under_y" = 14, "stock_x" = 22, "stock_y" = 10)
 
 /obj/item/weapon/gun/rifle/l42mk1/set_gun_config_values()
 	..()
-	fire_delay = config.high_fire_delay
+	fire_delay = config.mhigh_fire_delay
 	burst_amount = 0
-	burst_delay = 1
-	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult
+	accuracy_mult = config.base_hit_accuracy_mult + config.hmed_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
-	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
+	damage_mult = config.base_hit_damage_mult + config.hmed_hit_damage_mult
 	recoil_unwielded = config.low_recoil_value
 	damage_falloff_mult = 0
 

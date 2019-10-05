@@ -112,7 +112,7 @@
 	stuff = list(/obj/item/storage/large_holster/machete/full)
 
 /obj/effect/landmark/wo_supplies/storage/sentry
-	icon = 'icons/obj/items/weapons/guns/marine-weapons.dmi'
+	icon = 'icons/obj/items/weapons/guns/attachments.dmi'
 	icon_state = "sentry_case"
 	stuff = list(/obj/item/storage/box/sentry)
 

@@ -281,7 +281,6 @@
 		/obj/item/ammo_magazine/rifle/ap = round(scale * 10) % 10,
 
 		// EXTENDED AMMO
-		/obj/item/ammo_magazine/rifle/l42mk1/extended = round(scale * 4),
 		/obj/item/ammo_magazine/smg/m39/extended = round(scale * 10) % 10,
 		/obj/item/ammo_magazine/rifle/extended = round(scale * 10) % 8,
 
@@ -292,7 +291,6 @@
 		// AMMO BOXES
 		/obj/item/magazine_box/l42mk1 = round(scale * 10) % 10,
 		/obj/item/magazine_box/l42mk1/ap = round(scale * 1),
-		/obj/item/magazine_box/l42mk1/ext = round(scale * 2),
 		/obj/item/magazine_box/m39 = round(scale * 20 / 12),
 		/obj/item/magazine_box/m39/ap = round(scale * 5 / 12),
 		/obj/item/magazine_box/m39/ext = round(scale * 10 / 10),
@@ -380,7 +378,6 @@
 		/obj/item/ammo_magazine/rifle/extended = round(scale * 5) % 8,
 		/obj/item/ammo_magazine/rifle/ap = round(scale * 5) % 10,
 		/obj/item/ammo_magazine/rifle/l42mk1/ap = round(scale * 1),
-		/obj/item/ammo_magazine/rifle/l42mk1/extended = round(scale * 2),
 		/obj/item/smartgun_powerpack = round(scale * 1),
 		/obj/item/ammo_magazine/flamer_tank = round(scale * 1)
 	)

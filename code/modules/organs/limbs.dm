@@ -633,6 +633,8 @@ This function completely restores a damaged organ to perfect condition.
 			status |= LIMB_AMPUTATED
 		for(var/i in implants)
 			implants -= i
+			if(is_sharp(i) || istype(i, /obj/item/shard/shrapnel))
+				owner.embedded_items -= i
 			qdel(i)
 
 		if(hidden)

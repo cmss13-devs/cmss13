@@ -21,6 +21,8 @@
 	R.health_modifier -= XENO_HEALTH_MOD_VERYLARGE
 	R.explosivearmor_modifier -= XENO_EXPOSIVEARMOR_MOD_SMALL
 	R.mutation_type = RAVAGER_VETERAN
+	R.overheal = 0
+	R.overlay_overheal()
 	mutator_update_actions(R)
 	MS.recalculate_actions(description)
 	R.recalculate_everything()

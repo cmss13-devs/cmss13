@@ -19,6 +19,8 @@
 	R.speed_modifier -= XENO_SPEED_MOD_LARGE
 	R.health_modifier -= XENO_HEALTH_MOD_MED
 	R.mutation_type = RAVAGER_HEDGEHOG
+	R.overheal = 0
+	R.overlay_overheal()
 	mutator_update_actions(R)
 	MS.recalculate_actions(description)
 

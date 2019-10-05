@@ -1413,6 +1413,8 @@
 				if(!pass_down_the_line)
 					M.visible_message(SPAN_DANGER("[M] falls prone."))
 			pass_down_the_line = TRUE
+			if(insta_neuro)
+				return
 
 	if(M.superslowed || pass_down_the_line)
 		if(M.dazed < 6)
@@ -1443,6 +1445,12 @@
 	return hit_someone
 
 /datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/item/projectile/P)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.status_flags & XENO_HOST)
+			apply_neuro(H, effect_power, TRUE)
+			return
+
 	apply_neuro(M, effect_power, FALSE)
 
 /datum/ammo/xeno/toxin/New()

@@ -313,6 +313,19 @@
 		H.health_scan(H, TRUE)
 		src.add_fingerprint(H)
 
+// Refills autoinjectors stocked in the nanomed
+/obj/structure/machinery/vending/wallmed1/attackby(var/obj/item/I, var/mob/user)
+	if(istype(I, /obj/item/reagent_container/hypospray/autoinjector) && I.type in products)
+		var/obj/item/reagent_container/hypospray/autoinjector/A = I
+		if(A.reagents.total_volume > 0)
+			return
+
+		to_chat(user, SPAN_NOTICE("\The [src] makes a whirring noise as it refills your [A.name]."))
+		// Since the reagent is deleted on use it's easier to make a new one instead of snowflake checking
+		var/obj/item/reagent_container/hypospray/autoinjector/new_injector = new A.type(src)
+		qdel(A)
+		user.put_in_hands(new_injector)
+
 /obj/structure/machinery/vending/security
 	name = "SecTech"
 	desc = "A security equipment vendor."

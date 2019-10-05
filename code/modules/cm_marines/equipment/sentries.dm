@@ -15,7 +15,7 @@
 /obj/item/storage/box/sentry
 	name = "\improper UA 571-C sentry crate"
 	desc = "A large case containing all you need to set up an automated sentry, minus the tools."
-	icon = 'icons/obj/items/weapons/guns/marine-weapons.dmi'
+	icon = 'icons/obj/items/weapons/guns/attachments.dmi'
 	icon_state = "sentry_case"
 	w_class = SIZE_HUGE
 	storage_slots = 6

@@ -2,7 +2,7 @@
 /obj/item/storage/box/m56_system
 	name = "\improper M56 smartgun system"
 	desc = "A large case containing the full M56 Smartgun System. Drag this sprite into you to open it up!\nNOTE: You cannot put items back inside this case."
-	icon = 'icons/obj/items/weapons/guns/marine-weapons.dmi'
+	icon = 'icons/obj/items/weapons/guns/attachments.dmi'
 	icon_state = "smartgun_case"
 	w_class = SIZE_HUGE
 	storage_slots = 4

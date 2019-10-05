@@ -168,16 +168,6 @@ AMMO
 	containername = "\improper L42-MK1 AP magazines crate"
 	group = "Ammo"
 
-/datum/supply_packs/ammo_l42_mag_box_ext
-	name = "Magazine box (L42-MK1, 12x extended mags)"
-	contains = list(
-					/obj/item/magazine_box/l42mk1/ext
-					)
-	cost = RO_PRICE_CHEAP
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper L42-MK1 extended magazines crate"
-	group = "Ammo"
-
 /datum/supply_packs/ammo_shell_box
 	name = "Shell box (100x slug shells)"
 	contains = list(
@@ -405,7 +395,6 @@ AMMO
 					/obj/item/ammo_magazine/shotgun/buckshot,
 					/obj/item/ammo_magazine/shotgun/incendiary,
 					/obj/item/ammo_magazine/rifle/l42mk1/ap,
-					/obj/item/ammo_magazine/rifle/l42mk1/extended,
 					/obj/item/ammo_magazine/rifle/l42mk1
 					)
 	cost = RO_PRICE_PRICY

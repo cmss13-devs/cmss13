@@ -108,7 +108,7 @@
 /obj/effect/spawner/random/attachment
 	name = "Random Attachment"
 	desc = "This is a random attachment"
-	icon = 'icons/obj/items/weapons/guns/marine-weapons.dmi'
+	icon = 'icons/obj/items/weapons/guns/attachments.dmi'
 	icon_state = "hbarrel"
 	item_to_spawn()
 		return pick(prob(3);/obj/item/attachable/flashlight,\

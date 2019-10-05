@@ -50,6 +50,11 @@ def generate_changelogs(pid, branch, pat):
     mrs_parsed = 0
     cls_generated = 0
 
+    # This is stored to make sure we parse all MRs merged after
+    # the MR most lately processed in the previous script run,
+    # even if the MRs were merged "out of order" by issue number.
+    initial_latest_mr_date = dateparser.parse(working_branch.get_latest_mr_date())
+
     # Keep fetching changelogs until there are none left to parse
     while mrs:
         if status_code == 429:
@@ -64,7 +69,6 @@ def generate_changelogs(pid, branch, pat):
         for merge_request in mrs:
             iid = merge_request.get("iid")
             title = merge_request.get("title")
-            print("Parsing MR #{}    {}".format(iid, title))
 
             # Check if this MR was merged later than the current most lately merged MR
             latest_mr_date = dateparser.parse(working_branch.get_latest_mr_date())
@@ -72,12 +76,13 @@ def generate_changelogs(pid, branch, pat):
 
             # This can happen if someone updates the MR between the script being run
             # So this prevents re-processing processed MRs
-            if mr_merged_date < latest_mr_date:
+            if mr_merged_date < initial_latest_mr_date:
                 continue
 
             # Update the latest MR date
             if mr_merged_date > latest_mr_date:
                 working_branch.set_latest_mr_date(merge_request.get("merged_at"))
+
 
             # Find an author for the CL (this is for fallbacks)
             author = merge_request.get("author")
@@ -86,6 +91,7 @@ def generate_changelogs(pid, branch, pat):
                 user = author.get("username")
 
             # Make the changelog
+            print("Parsing MR #{}    {}".format(iid, title))
             changelog = Changelog()
             success = changelog.parse_changelog(merge_request.get("description"))
             mrs_parsed += 1

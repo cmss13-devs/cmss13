@@ -268,7 +268,7 @@
 		return
 
 	// Make sure it's being closed by staff or the mentor handling the thread
-	if(mentor && closer != mentor && !(closer.admin_holder && closer.admin_holder.rights & R_MOD))
+	if(mentor && closer && closer != mentor && !(closer.admin_holder && closer.admin_holder.rights & R_MOD))
 		to_chat(closer, SPAN_NOTICE("<b>NOTICE:</b> Another mentor is handling this thread!"))
 		return
 
@@ -276,7 +276,10 @@
 
 	to_chat(author, SPAN_NOTICE("Your mentorhelp thread has been closed."))
 	message_staff(SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[author_key]</font>'s mentorhelp thread has been closed."))
-	log_message("[mentor.key] closed [author_key]'s mentorhelp")
+	if(!closer)
+		return
+
+	log_message("[closer.key] closed [author_key]'s mentorhelp")
 
 // We handle all clicks and links and yadda internally
 /datum/mentorhelp/Topic(var/href, var/list/href_list)

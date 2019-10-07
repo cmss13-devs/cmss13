@@ -57,7 +57,8 @@ var/global/datum/global_init/init = new ()
 
 	. = ..()
 
-	sleep_offline = 1
+	var/running_tests = (world.params && world.params["run_tests"])
+	sleep_offline = !running_tests
 
 	// Set up roundstart seed list. This is here because vendors were
 	// bugging out and not populating with the correct packet names
@@ -87,6 +88,10 @@ var/global/datum/global_init/init = new ()
 	spawn(3000)		//so we aren't adding to the round-start lag
 		if(config.ToRban)
 			ToRban_autoupdate()
+
+	// Allow the test manager to run all unit tests if this is being hosted just to run unit tests
+	if(running_tests)
+		test_executor.host_tests()
 
 #undef RECOMMENDED_VERSION
 

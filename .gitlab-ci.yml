@@ -2,11 +2,11 @@ image: i386/ubuntu:xenial
 
 stages:
   - build
-  - deploy
+  - test
 
 variables:
   BYOND_MAJOR: "512"
-  BYOND_MINOR: "1463"
+  BYOND_MINOR: "1488"
 
 before_script:
   - apt-get update -qq
@@ -17,8 +17,18 @@ before_script:
   - make install
   - cd ..
 
-
-install:
+build:
     stage: build
     script:
       - DreamMaker ColonialMarinesALPHA.dme
+    artifacts:
+      paths:
+        - ColonialMarinesALPHA.dmb
+        - ColonialMarinesALPHA.rsc
+      expire_in: 20min
+
+test:
+    stage: test
+    script:
+      - DreamDaemon ColonialMarinesALPHA.dmb -trusted -params "run_tests=1&verbose_tests=1" 2>&1 | tee test_logs.log
+      - cat test_logs.log | tail -1 | grep -q "ALL TESTS SUCCEEDED"

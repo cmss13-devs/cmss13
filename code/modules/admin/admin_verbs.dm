@@ -175,7 +175,10 @@ var/list/admin_verbs_debug = list(
 	/client/proc/togglenichelogs,
 	/client/proc/cmd_admin_change_hivenumber,
 	/client/proc/cmd_admin_change_their_hivenumber,
-	/client/proc/spawn_wave
+	/client/proc/spawn_wave,
+	/client/proc/run_all_tests,
+	/client/proc/run_test_set,
+	/client/proc/run_individual_test
 	)
 
 var/list/admin_verbs_paranoid_debug = list(

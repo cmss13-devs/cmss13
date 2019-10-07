@@ -120,7 +120,6 @@
 
 #define STATISTICS_NICHE_SURGERY_BONES              "Bones Mended"
 #define STATISTICS_NICHE_SURGERY_IB                 "Internal Bleedings Stopped"
-#define STATISTICS_NICHE_SURGERY_NECRO              "Necrosis Stopped"
 #define STATISTICS_NICHE_SURGERY_BRAIN              "Brains Mended"
 #define STATISTICS_NICHE_SURGERY_EYE                "Eyes Mended"
 #define STATISTICS_NICHE_SURGERY_LARVA              "Larvae Removed"

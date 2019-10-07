@@ -39,7 +39,6 @@
 	var/surgery_open_stage = 0
 	var/bone_repair_stage = 0
 	var/limb_replacement_stage = 0
-	var/necro_surgery_stage = 0
 	var/cavity = 0
 
 	var/in_surgery_op = FALSE //whether someone is currently doing a surgery step to this limb
@@ -856,7 +855,6 @@ This function completely restores a damaged organ to perfect condition.
 	status &= ~LIMB_SPLINTED
 	status &= ~LIMB_AMPUTATED
 	status &= ~LIMB_DESTROYED
-	status &= ~LIMB_NECROTIZED
 	status &= ~LIMB_MUTATED
 	status &= ~LIMB_REPAIRED
 	status |= LIMB_ROBOT
@@ -909,7 +907,7 @@ This function completely restores a damaged organ to perfect condition.
 
 
 /datum/limb/proc/is_usable()
-	return !(status & (LIMB_DESTROYED|LIMB_MUTATED|LIMB_NECROTIZED))
+	return !(status & (LIMB_DESTROYED|LIMB_MUTATED))
 
 /datum/limb/proc/is_broken()
 	return ((status & LIMB_BROKEN) && !(status & LIMB_SPLINTED))
@@ -987,7 +985,6 @@ This function completely restores a damaged organ to perfect condition.
 	surgery_open_stage = 0
 	bone_repair_stage = 0
 	limb_replacement_stage = 0
-	necro_surgery_stage = 0
 	surgery_organ = null
 	cavity = 0
 

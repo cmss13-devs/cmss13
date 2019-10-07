@@ -166,18 +166,11 @@ datum/chemical_reaction/adrenaline
 	required_catalysts = list("phoron" = 5)
 	result_amount = 2
 
-/datum/chemical_reaction/hyronalin
-	name = "Hyronalin"
-	id = "hyronalin"
-	result = "hyronalin"
-	required_reagents = list("radium" = 1, "anti_toxin" = 1)
-	result_amount = 2
-
 /datum/chemical_reaction/arithrazine
 	name = "Arithrazine"
 	id = "arithrazine"
 	result = "arithrazine"
-	required_reagents = list("hyronalin" = 1, "hydrogen" = 1)
+	required_reagents = list("dylovene" = 1, "phosphorous" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/kelotane

@@ -218,7 +218,6 @@ var/global/list/damage_icon_parts = list()
 /mob/living/carbon/human/proc/update_body(var/update_icons = 1, var/force_cache_update = 0)
 	var/husk_color_mod = rgb(96,88,80)
 	var/hulk_color_mod = rgb(48,224,40)
-	var/necrosis_color_mod = rgb(10,50,0)
 
 	var/husk = (HUSK in src.mutations)
 	var/fat = (FAT in src.mutations)
@@ -230,7 +229,7 @@ var/global/list/damage_icon_parts = list()
 
 
 	//CACHING: Generate an index key from visible bodyparts.
-	//0 = destroyed, 1 = normal, 2 = robotic, 3 = necrotic.
+	//0 = destroyed, 1 = normal, 2 = robotic
 
 	//Create a new, blank icon for our mob to use.
 	if(stand_icon)
@@ -248,8 +247,6 @@ var/global/list/damage_icon_parts = list()
 			icon_key = "[icon_key]0"
 		else if(part.status & LIMB_ROBOT)
 			icon_key = "[icon_key]2"
-		else if(part.status & LIMB_NECROTIZED)
-			icon_key = "[icon_key]3"
 		else
 			icon_key = "[icon_key]1"
 
@@ -275,10 +272,6 @@ var/global/list/damage_icon_parts = list()
 		var/datum/limb/chest = get_limb("chest")
 		base_icon = chest.get_icon(race_icon,deform_icon,g)
 
-		if(chest.status & LIMB_NECROTIZED)
-			base_icon.ColorTone(necrosis_color_mod)
-			base_icon.SetIntensity(0.7)
-
 		for(var/datum/limb/part in limbs)
 
 			var/icon/temp //Hold the bodypart icon for processing.
@@ -293,10 +286,6 @@ var/global/list/damage_icon_parts = list()
 				temp = part.get_icon(race_icon,deform_icon,g)
 			else
 				temp = part.get_icon(race_icon,deform_icon)
-
-			if(part.status & LIMB_NECROTIZED)
-				temp.ColorTone(necrosis_color_mod)
-				temp.SetIntensity(0.7)
 
 			//That part makes left and right legs drawn topmost and lowermost when human looks WEST or EAST
 			//And no change in rendering for other parts (they icon_position is 0, so goes to 'else' part)

@@ -172,8 +172,6 @@
 			if(L.status & LIMB_DESTROYED)
 				if(!(L.parent.status & LIMB_DESTROYED) && L.name != "head")
 					surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"missing")
-			if(L.status & LIMB_NECROTIZED)
-				surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"necro")
 			if(L.implants.len)
 				for(var/I in L.implants)
 					if(!is_type_in_list(I,known_implants))
@@ -400,22 +398,6 @@
 						H.update_body()
 						H.updatehealth()
 						H.UpdateDamageIcon()
-
-					if("necro")
-						if(prob(30)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Beginning necrotic tissue removal.");
-						if(S.unneeded)
-							sleep(UNNEEDED_DELAY)
-							visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
-							surgery_todo_list -= S
-							continue
-
-						open_incision(H,S.limb_ref)
-						sleep(SCALPEL_MAX_DURATION*surgery_mod)
-						sleep(NECRO_TREAT_MAX_DURATION*surgery_mod)
-						S.limb_ref.status &= ~LIMB_NECROTIZED
-						H.update_body()
-
-						close_incision(H,S.limb_ref)
 
 					if("shrapnel")
 						if(prob(30)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Beginning shrapnel removal.");
@@ -787,9 +769,6 @@
 								if("missing")
 									surgeryqueue["missing"] = 1
 									dat += "Limb Replacement Surgery"
-								if("necro")
-									surgeryqueue["necro"] = 1
-									dat += "Necrosis Removal Surgery"
 								if("shrapnel")
 									surgeryqueue["shrapnel"] = 1
 									dat += "Shrapnel Removal Surgery"
@@ -821,8 +800,6 @@
 				dat += "<br>"
 				if(isnull(surgeryqueue["eyes"]))
 					dat += "<a href='?src=\ref[src];eyes=1'>Corrective Eye Surgery</a><br>"
-				if(isnull(surgeryqueue["necro"]))
-					dat += "<a href='?src=\ref[src];necro=1'>Necrosis Removal Surgery</a><br>"
 				if(isnull(surgeryqueue["organdamage"]))
 					dat += "<a href='?src=\ref[src];organdamage=1'>Organ Damage Treatment</a><br>"
 				dat += "<b>Hematology Treatments</b>"
@@ -926,16 +903,6 @@
 								needed++
 				if(!needed)
 					N.fields["autodoc_manual"] += create_autodoc_surgery(null,LIMB_SURGERY,"missing",1)
-				updateUsrDialog()
-
-			if(href_list["necro"])
-				for(var/datum/limb/L in connected.occupant.limbs)
-					if(L)
-						if(L.status & LIMB_NECROTIZED)
-							N.fields["autodoc_manual"] += create_autodoc_surgery(L,LIMB_SURGERY,"necro")
-							needed++
-				if(!needed)
-					N.fields["autodoc_manual"] += create_autodoc_surgery(null,LIMB_SURGERY,"necro",1)
 				updateUsrDialog()
 
 			if(href_list["shrapnel"])

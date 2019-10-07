@@ -6,7 +6,7 @@
 	//Provisional priority list
 	//0 : Generic (Incision, Bones, Internal Bleeding, Limb Removal, Cautery)
 	//X + 0.1 : Upgrades
-	//1 : Generic Priority (Necrosis, Encased Surgery, Cavities, Implants, Reattach)
+	//1 : Generic Priority (Encased Surgery, Cavities, Implants, Reattach)
 	//2 : Sub-Surgeries (Mouth and Eyes)
 	//3 : Special surgeries (Embryos, Bone Chips, Hematoma)
 
@@ -172,4 +172,3 @@ proc/sort_surgeries()
 	var/current_organ = "organ"
 	var/in_progress = 0
 	var/is_same_target = "" //Safety check to prevent surgery juggling
-	var/necro = 0

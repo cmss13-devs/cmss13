@@ -129,7 +129,6 @@
 	var/global/list/mutagenic_reagents = list(
 		"ryetalyn" =  -8,
 		"arithrazine" = -6,
-		"hyronalin" = -4,
 		"radium" =  8,
 		"mutagen" = 15
 		)

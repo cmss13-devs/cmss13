@@ -125,7 +125,7 @@
 //M5 RPG
 
 /obj/item/ammo_magazine/rocket
-	name = "\improper 84mm high-explosive rocket"
+	name = "\improper 84mm high explosive rocket"
 	desc = "A rocket tube for an M5 RPG rocket."
 	caliber = "rocket"
 	icon_state = "rocket"
@@ -151,17 +151,17 @@
 	update_icon()
 		overlays.Cut()
 		if(default_ammo == /datum/ammo/rocket/)
-			name = "\improper 84mm high-explosive rocket"
-			desc = "A rocket tube for an M5 RPG rocket."
+			name = "\improper 84mm high explosive rocket"
+			desc = "A rocket tube for an M5 RPG rocket. When empty, use this frame to deconstruct it"
 			icon_state = "rocket"
 		if(default_ammo == /datum/ammo/rocket/ap)
 			name = "\improper 84mm anti-armor rocket"
 			icon_state = "ap_rocket"
 			desc = "A tube for an AP rocket, the warhead of which is extremely dense and turns molten on impact. When empty, use this frame to deconstruct it."
 		if(default_ammo == /datum/ammo/rocket/wp)
-			name = "\improper 84mm white-phosphorus rocket"
+			name = "\improper 84mm white phosphorous rocket"
 			icon_state = "wp_rocket"
-			desc = "A highly destructive warhead that bursts into deadly flames on impact. Use this in hand to deconstruct it."
+			desc = "A highly destructive warhead that bursts into deadly flames on impact. When empty, use this frame to deconstruct it"
 		if(current_rounds <= 0)
 			name = "empty rocket frame"
 			desc = "A spent rocket rube. Activate it to deconstruct it and receive some materials."

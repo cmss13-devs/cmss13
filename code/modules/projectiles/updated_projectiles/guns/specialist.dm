@@ -32,7 +32,7 @@
 	zoomdevicename = "scope"
 	attachable_allowed = list(/obj/item/attachable/bipod)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 
 /obj/item/weapon/gun/rifle/sniper/M42A/New()
 	..()
@@ -72,7 +72,7 @@
 	wield_delay = WIELD_DELAY_HORRIBLE //Ends up being 1.6 seconds due to scope
 	zoomdevicename = "scope"
 	attachable_allowed = list(/obj/item/attachable/bipod)
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 
 /obj/item/weapon/gun/rifle/sniper/M42B/New()
 	..()
@@ -113,7 +113,7 @@
 	current_mag = /obj/item/ammo_magazine/sniper/elite
 	force = 17
 	zoomdevicename = "scope"
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 
 /obj/item/weapon/gun/rifle/sniper/elite/New()
 	..()
@@ -211,7 +211,7 @@
 						/obj/item/attachable/bipod,
 						/obj/item/attachable/compensator)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	gun_skill_category = SKILL_SPEC_WEAPONS
 
 /obj/item/weapon/gun/rifle/m4ra/New()
@@ -808,6 +808,7 @@
 	grenades += new /obj/item/explosive/grenade/HE(src)
 	grenades += new /obj/item/explosive/grenade/HE(src)
 	grenades += new /obj/item/explosive/grenade/HE(src)
+	grenades += new /obj/item/explosive/grenade/HE(src)
 
 /obj/item/weapon/gun/launcher/m92/set_gun_config_values()
 	..()
@@ -1073,8 +1074,10 @@
 
 /obj/item/weapon/gun/launcher/rocket/examine(mob/user)
 	..()
-	if(current_mag.current_rounds)  to_chat(user, "It's ready to rocket.")
-	else 							to_chat(user, "It's empty.")
+	if(!current_mag.current_rounds)
+		to_chat(user, "It's empty.")
+	else
+		to_chat(user, "It has a 84mm [ammo.name] loaded.")
 
 
 /obj/item/weapon/gun/launcher/rocket/able_to_fire(mob/living/user)

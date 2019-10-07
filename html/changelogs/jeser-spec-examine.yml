@@ -1,0 +1,9 @@
+
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - tweak: "M42A Scoped Rifle, M42C Anti-Tank Sniper Rifle and M4RA Battle Rifle now show amount of rounds left upon examining."
+  - tweak: "M5 RPG now shows the type of rocket loaded into it."
+  - bugfix: "M92 Grenade Launcher now starts full instead of missing one HEDP grenade."

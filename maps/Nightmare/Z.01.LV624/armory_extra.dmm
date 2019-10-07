@@ -110,10 +110,7 @@
 	},
 /area/lv624/lazarus/armory)
 "m" = (
-/obj/item/target/syndicate,
-/obj/structure/target_stake{
-	layer = 2
-	},
+/obj/structure/target/syndicate,
 /turf/open/floor{
 	icon_state = "red";
 	dir = 5

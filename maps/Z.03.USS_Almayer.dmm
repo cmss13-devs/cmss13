@@ -36781,14 +36781,7 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/firing_range_south)
 "bUr" = (
-/obj/item/target,
-/obj/item/clothing/suit/apron/overalls{
-	desc = "A cheap replica of a popular armour of choice for colonial rebellions.";
-	icon = 'icons/obj/items/clothing/cm_suits.dmi';
-	icon_state = "rebel_armor";
-	item_state = null;
-	name = "replica armour"
-	},
+/obj/structure/target,
 /turf/open/floor/almayer{
 	dir = 2;
 	icon_state = "plating_striped";
@@ -43925,14 +43918,7 @@
 	},
 /area/almayer/command/cic)
 "cwe" = (
-/obj/item/target,
-/obj/item/clothing/suit/apron/overalls{
-	desc = "A cheap replica of a popular armour of choice for colonial rebellions.";
-	icon = 'icons/obj/items/clothing/cm_suits.dmi';
-	icon_state = "rebel_armor";
-	item_state = null;
-	name = "replica armour"
-	},
+/obj/structure/target,
 /turf/open/floor/almayer{
 	tag = "icon-redfull";
 	icon_state = "redfull"
@@ -47162,14 +47148,7 @@
 	},
 /area/almayer/living/port_emb)
 "gxt" = (
-/obj/item/target,
-/obj/item/clothing/suit/apron/overalls{
-	desc = "A cheap replica of a popular armour of choice for colonial rebellions.";
-	icon = 'icons/obj/items/clothing/cm_suits.dmi';
-	icon_state = "rebel_armor";
-	item_state = null;
-	name = "replica armour"
-	},
+/obj/structure/target,
 /turf/open/floor/almayer{
 	tag = "icon-emerald (NORTH)";
 	icon_state = "plating_striped";
@@ -50027,14 +50006,7 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig_cells)
 "kiV" = (
-/obj/item/target,
-/obj/item/clothing/suit/apron/overalls{
-	desc = "A cheap replica of a popular armour of choice for colonial rebellions.";
-	icon = 'icons/obj/items/clothing/cm_suits.dmi';
-	icon_state = "rebel_armor";
-	item_state = null;
-	name = "replica armour"
-	},
+/obj/structure/target,
 /turf/open/floor/almayer{
 	dir = 2;
 	icon_state = "plating_striped";
@@ -50978,12 +50950,11 @@
 	},
 /area/almayer/medical/medical_science)
 "ltI" = (
-/obj/item/target/syndicate,
-/obj/item/target/syndicate,
-/obj/item/target/syndicate,
-/obj/item/target/syndicate,
-/obj/item/target/syndicate,
-/obj/structure/closet/crate,
+/obj/structure/target/syndicate,
+/obj/structure/target/syndicate,
+/obj/structure/target/syndicate,
+/obj/structure/target/syndicate,
+/obj/structure/target/syndicate,
 /turf/open/floor/almayer{
 	tag = "icon-redfull";
 	icon_state = "redfull"
@@ -53665,13 +53636,12 @@
 	},
 /area/almayer/engineering/engine_core)
 "ozT" = (
-/obj/item/target,
-/obj/item/target,
-/obj/item/target,
-/obj/item/target,
-/obj/item/target,
-/obj/item/target,
-/obj/structure/closet/crate,
+/obj/structure/target,
+/obj/structure/target,
+/obj/structure/target,
+/obj/structure/target,
+/obj/structure/target,
+/obj/structure/target,
 /turf/open/floor/almayer{
 	tag = "icon-redfull";
 	icon_state = "redfull"
@@ -54142,14 +54112,7 @@
 /turf/open/floor/almayer,
 /area/almayer/living/officer_rnr)
 "pmX" = (
-/obj/item/target,
-/obj/item/clothing/suit/apron/overalls{
-	desc = "A cheap replica of a popular armour of choice for colonial rebellions.";
-	icon = 'icons/obj/items/clothing/cm_suits.dmi';
-	icon_state = "rebel_armor";
-	item_state = null;
-	name = "replica armour"
-	},
+/obj/structure/target,
 /turf/open/floor/almayer{
 	tag = "icon-redfull";
 	icon_state = "redfull"
@@ -55565,14 +55528,7 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig_cells)
 "qWt" = (
-/obj/item/target,
-/obj/item/clothing/suit/apron/overalls{
-	desc = "A cheap replica of a popular armour of choice for colonial rebellions.";
-	icon = 'icons/obj/items/clothing/cm_suits.dmi';
-	icon_state = "rebel_armor";
-	item_state = null;
-	name = "replica armour"
-	},
+/obj/structure/target,
 /turf/open/floor/almayer{
 	tag = "icon-emerald (NORTH)";
 	icon_state = "plating_striped";
@@ -57229,13 +57185,12 @@
 	},
 /area/almayer/hallways/repair_bay)
 "sPd" = (
-/obj/item/target,
-/obj/item/target,
-/obj/item/target,
-/obj/item/target,
-/obj/item/target,
-/obj/item/target,
-/obj/structure/closet/crate,
+/obj/structure/target,
+/obj/structure/target,
+/obj/structure/target,
+/obj/structure/target,
+/obj/structure/target,
+/obj/structure/target,
 /turf/open/floor/almayer{
 	tag = "icon-redfull";
 	icon_state = "redfull"
@@ -61564,12 +61519,11 @@
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig)
 "xOE" = (
-/obj/item/target/syndicate,
-/obj/item/target/syndicate,
-/obj/item/target/syndicate,
-/obj/item/target/syndicate,
-/obj/item/target/syndicate,
-/obj/structure/closet/crate,
+/obj/structure/target/syndicate,
+/obj/structure/target/syndicate,
+/obj/structure/target/syndicate,
+/obj/structure/target/syndicate,
+/obj/structure/target/syndicate,
 /turf/open/floor/almayer{
 	tag = "icon-redfull";
 	icon_state = "redfull"

@@ -38,6 +38,26 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
 
+/obj/structure/target
+	name = "shooting target"
+	anchored = 0
+	desc = "A shooting target."
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "target_a"
+	density = 0
+	health = 5000
+
+/obj/structure/target/syndicate
+	icon_state = "target_s"
+	desc = "A shooting target that looks like a hostile agent."
+	health = 7500
+
+/obj/structure/target/alien
+	icon_state = "target_q"
+	desc = "A shooting target with a threatening silhouette."
+	health = 6500
+
+
 /obj/structure/monorail
 	name = "monorail track"
 	icon = 'icons/obj/structures/structures.dmi'

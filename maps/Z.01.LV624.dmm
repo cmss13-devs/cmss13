@@ -13397,10 +13397,7 @@
 	},
 /area/lv624/ground/jungle1)
 "aLX" = (
-/obj/item/target/syndicate,
-/obj/structure/target_stake{
-	layer = 2
-	},
+/obj/structure/target/syndicate,
 /turf/open/floor{
 	icon_state = "red";
 	dir = 5
@@ -13413,10 +13410,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
 "aLZ" = (
-/obj/item/target,
-/obj/structure/target_stake{
-	layer = 2
-	},
+/obj/structure/target,
 /turf/open/floor{
 	icon_state = "red";
 	dir = 9

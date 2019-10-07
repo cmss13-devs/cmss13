@@ -223,26 +223,15 @@ var/datum/mob_hud/huds = list(
 	if(stat == DEAD)
 		holder.icon_state = "hudhealth-100"
 	else
-		var/percentage = round(health*100/species.total_health)
-		switch(percentage)
-			if(100 to INFINITY) holder.icon_state = "hudhealth100"
-			if(85 to 100) holder.icon_state = "hudhealth90"
-			if(75 to 85) holder.icon_state = "hudhealth80"
-			if(67 to 75) holder.icon_state = "hudhealth70"
-			if(63 to 67) holder.icon_state = "hudhealth65"
-			if(55 to 63) holder.icon_state = "hudhealth60"
-			if(47 to 55) holder.icon_state = "hudhealth50"
-			if(43 to 47) holder.icon_state = "hudhealth45"
-			if(35 to 43) holder.icon_state = "hudhealth40"
-			if(25 to 35) holder.icon_state = "hudhealth30"
-			if(17 to 25) holder.icon_state = "hudhealth20"
-			if(13 to 17) holder.icon_state = "hudhealth15"
-			if(3 to 13) holder.icon_state = "hudhealth10"
-			if(0 to 3) holder.icon_state = "hudhealth0"
-			if(-49 to 0) holder.icon_state = "hudhealth-0"
-			if(-99 to -50) holder.icon_state = "hudhealth-50"
-			else holder.icon_state = "hudhealth-100"
-
+		var/percentage = round(health*100/species.total_health, 10)
+		if(percentage > -1)
+			holder.icon_state = "hudhealth[percentage]"
+		else if(percentage > -49) 
+			holder.icon_state = "hudhealth-0"
+		else if(percentage > -99) 
+			holder.icon_state = "hudhealth-50"
+		else 
+			holder.icon_state = "hudhealth-100"
 
 
 /mob/proc/med_hud_set_status() //called when mob stat changes, or get a virus/xeno host, etc

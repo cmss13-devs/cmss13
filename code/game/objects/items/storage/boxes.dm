@@ -107,23 +107,7 @@
 		new /obj/item/reagent_container/syringe(src)
 		new /obj/item/reagent_container/syringe(src)
 		new /obj/item/reagent_container/syringe(src)
-
-/obj/item/storage/box/autoinjectors
-	name = "box of empty autoinjectors"
-	desc = "A box full of autoinjectors."
-	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/custom)
-	icon_state = "syringe"
-	w_class = SIZE_SMALL
-
-/obj/item/storage/box/autoinjectors/New()
-	..()
-	new /obj/item/reagent_container/hypospray/autoinjector/custom(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/custom(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/custom(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/custom(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/custom(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/custom(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/custom(src) // 7 empty injectors
+		
 
 /obj/item/storage/box/beakers
 	name = "box of beakers"

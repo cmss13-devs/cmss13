@@ -13368,10 +13368,6 @@
 /obj/effect/decal/cleanable/cobweb2,
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
 /obj/structure/rack,
-/obj/item/reagent_container/hypospray/autoinjector/dexP{
-	pixel_x = -2;
-	pixel_y = -2
-	},
 /obj/item/reagent_container/hypospray/autoinjector/quickclot{
 	pixel_x = 3;
 	pixel_y = 3
@@ -18296,7 +18292,6 @@
 /obj/structure/machinery/chem_dispenser/beer{
 	pixel_y = 26
 	},
-/obj/item/reagent_container/hypospray/autoinjector/dexP,
 /obj/item/document_objective/folder,
 /turf/open/floor{
 	icon_state = "grimy"

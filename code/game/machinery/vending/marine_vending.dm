@@ -426,13 +426,12 @@
 	req_access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY) //only doctors and researchers can access these
 	wrenchable = FALSE
 	products = list(/obj/item/reagent_container/hypospray/autoinjector/quickclot = 6,
-					/obj/item/reagent_container/hypospray/autoinjector/Bicard = 6,
-					/obj/item/reagent_container/hypospray/autoinjector/dexP = 6,
-					/obj/item/reagent_container/hypospray/autoinjector/Dylovene = 6,
-					/obj/item/reagent_container/hypospray/autoinjector/Inaprovaline = 6,
+					/obj/item/reagent_container/hypospray/autoinjector/bicaridine = 6,
+					/obj/item/reagent_container/hypospray/autoinjector/dexalinp = 6,
+					/obj/item/reagent_container/hypospray/autoinjector/inaprovaline = 6,
 					/obj/item/reagent_container/hypospray/autoinjector/adrenaline = 2,
-					/obj/item/reagent_container/hypospray/autoinjector/Kelo = 6,
-					/obj/item/reagent_container/hypospray/autoinjector/Oxycodone = 4,
+					/obj/item/reagent_container/hypospray/autoinjector/kelotane = 6,
+					/obj/item/reagent_container/hypospray/autoinjector/oxycodone = 4,
 					/obj/item/reagent_container/hypospray/autoinjector/tricord = 8,
 					/obj/item/storage/pill_bottle/bicaridine = 3,
 					/obj/item/storage/pill_bottle/dexalin = 3,
@@ -458,12 +457,11 @@
 	desc = "Medical vending machine, dispensing various pieces of equipment for both doctors and medics."
 	product_ads = ""
 	req_access = list(ACCESS_ILLEGAL_PIRATE)
-	products = list(/obj/item/reagent_container/hypospray/autoinjector/Bicard = 10,
-					/obj/item/reagent_container/hypospray/autoinjector/dexP = 10,
-					/obj/item/reagent_container/hypospray/autoinjector/Dylovene = 10,
-					/obj/item/reagent_container/hypospray/autoinjector/Inaprovaline = 10,
-					/obj/item/reagent_container/hypospray/autoinjector/Kelo = 10,
-					/obj/item/reagent_container/hypospray/autoinjector/Oxycodone = 10,
+	products = list(/obj/item/reagent_container/hypospray/autoinjector/bicaridine = 10,
+					/obj/item/reagent_container/hypospray/autoinjector/dexalinp = 10,
+					/obj/item/reagent_container/hypospray/autoinjector/inaprovaline = 10,
+					/obj/item/reagent_container/hypospray/autoinjector/kelotane = 10,
+					/obj/item/reagent_container/hypospray/autoinjector/oxycodone = 10,
 					/obj/item/reagent_container/hypospray/autoinjector/quickclot = 10,
 					/obj/item/reagent_container/hypospray/autoinjector/tricord = 10,
 					/obj/item/storage/pill_bottle/bicaridine = 10,

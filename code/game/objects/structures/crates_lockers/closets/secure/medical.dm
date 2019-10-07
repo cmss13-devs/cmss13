@@ -12,7 +12,6 @@
 	New()
 		..()
 		sleep(2)
-		new /obj/item/storage/box/autoinjectors(src)
 		new /obj/item/storage/box/syringes(src)
 		new /obj/item/reagent_container/dropper(src)
 		new /obj/item/reagent_container/dropper(src)

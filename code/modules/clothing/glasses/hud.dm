@@ -42,15 +42,39 @@
 	hud_type = MOB_HUD_MEDICAL_ADVANCED
 	actions_types = list(/datum/action/item_action/toggle)
 
-
 /obj/item/clothing/glasses/hud/health/attack_self(mob/living/user)
-	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
+	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 		..()
 	else
 		to_chat(user, SPAN_WARNING("You have no idea what any of the data means and power it off before it makes you nauseated."))
 		active = 0
 
 /obj/item/clothing/glasses/hud/health/equipped(mob/living/carbon/human/user, slot)
+	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		..()
+	else
+		to_chat(user, SPAN_WARNING("You have no idea what any of the data means and power it off before it makes you nauseated."))
+		active = 0
+
+
+/obj/item/clothing/glasses/hud/sensor
+	name = "\improper SensorMate HUD"
+	desc = "A much older heads-up display that displays the last known biometric data from suit sensors of any given individual."
+	icon_state = "sensorhud"
+	deactive_state = "sensorhud_d"
+	flags_armor_protection = 0
+	toggleable = 1
+	hud_type = MOB_HUD_MEDICAL_BASIC
+	actions_types = list(/datum/action/item_action/toggle)
+
+/obj/item/clothing/glasses/hud/sensor/attack_self(mob/living/user)
+	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
+		..()
+	else
+		to_chat(user, SPAN_WARNING("You have no idea what any of the data means and power it off before it makes you nauseated."))
+		active = 0
+
+/obj/item/clothing/glasses/hud/sensor/equipped(mob/living/carbon/human/user, slot)
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
 		..()
 	else

@@ -15,7 +15,7 @@
 	for(var/client/C in clients)
 		if(isobserver(C.mob))
 			count_observers++
-			if(!C.admin_holder)
+			if(!C.admin_holder || !(C.admin_holder.rights & R_MOD))
 				count_nonadmin_observers++
 		if(C.mob && C.mob.stat != DEAD)
 			if(ishuman(C.mob) && !iszombie(C.mob))
@@ -36,7 +36,7 @@
 
 	var/list/Lines = list()
 
-	if(admin_holder && (R_ADMIN & admin_holder.rights || R_MOD & admin_holder.rights))
+	if(admin_holder && ((R_ADMIN & admin_holder.rights) || (R_MOD & admin_holder.rights)))
 		for(var/client/C in clients)
 			var/entry = "\t[C.key]"
 			if(C.admin_holder && C.admin_holder.fakekey)
@@ -82,7 +82,7 @@
 	for(var/line in sortList(Lines))
 		msg += "[line]\n"
 
-	if(admin_holder)
+	if(admin_holder && (admin_holder.rights & R_MOD))
 		var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
 		msg += "<b>Total Players: [length(Lines)]</b>"
 		msg += "<br><b style='color:#777'>Observers: [count_observers] (Non-Admin: [count_nonadmin_observers])</b>"
@@ -144,17 +144,7 @@
 				num_mods_online++
 
 			else if(R_MENTOR & C.admin_holder.rights)
-				mentmsg += "\t[C] is a [C.admin_holder.rank]"
-				if(isobserver(C.mob))
-					mentmsg += " - Observing"
-				else if(istype(C.mob,/mob/new_player))
-					mentmsg += " - Lobby"
-				else
-					mentmsg += " - Playing"
-
-				if(C.is_afk())
-					mentmsg += " (AFK)"
-				mentmsg += "\n"
+				mentmsg += "\t[C] is a [C.admin_holder.rank]\n"
 				num_mentors_online++
 
 	else

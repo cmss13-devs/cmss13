@@ -23,7 +23,7 @@
 	set desc = "Give somebody access to any session logfiles saved to the /log/runtime/ folder."
 	set category = null
 
-	if(!src.admin_holder)
+	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "<font color='red'>Only Admins may use this command.</font>")
 		return
 

@@ -114,7 +114,7 @@
 	if(!src.client) //Somehow
 		return
 
-	if(!src.client.admin_holder)
+	if(!src.client.admin_holder || !(client.admin_holder.rights & R_MOD))
 		if(!dsay_allowed)
 			to_chat(src, SPAN_DANGER("Deadchat is globally muted"))
 			return

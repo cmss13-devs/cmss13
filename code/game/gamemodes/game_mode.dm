@@ -272,7 +272,7 @@ proc/display_roundstart_logout_report()
 						continue //Ghosted while alive
 
 	for(var/mob/M in mob_list)
-		if(M.client && M.client.admin_holder)
+		if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
 			to_chat(M, msg)
 
 

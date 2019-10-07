@@ -8,7 +8,7 @@
 	set name = "Jump to Area"
 	set desc = "Area to jump to"
 	set category = "Admin"
-	if(!src.admin_holder)
+	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -25,7 +25,7 @@
 /client/proc/jumptoturf(var/turf/T in turfs)
 	set name = "Jump to Turf"
 	set category = "Admin"
-	if(!src.admin_holder)
+	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 	if(config.allow_admin_jump)
@@ -42,7 +42,7 @@
 	set category = "Admin"
 	set name = "Jump to Mob"
 
-	if(!src.admin_holder)
+	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -65,7 +65,7 @@
 	set category = "Admin"
 	set name = "Jump to Coordinate"
 
-	if (!admin_holder)
+	if (!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -90,7 +90,7 @@
 	set category = "Admin"
 	set name = "Jump to Key"
 
-	if(!src.admin_holder)
+	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -132,7 +132,7 @@
 	set name = "Get Key"
 	set desc = "Key to teleport"
 
-	if(!src.admin_holder)
+	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -159,7 +159,7 @@
 /client/proc/sendmob(var/mob/M in sortmobs())
 	set category = "Admin"
 	set name = "Send Mob"
-	if(!src.admin_holder)
+	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 	var/area/A = input(usr, "Pick an area.", "Pick an area") as null|anything in return_sorted_areas()

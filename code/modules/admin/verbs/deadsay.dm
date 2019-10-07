@@ -2,7 +2,7 @@
 	set category = "Special Verbs"
 	set name = "Dsay" //Gave this shit a shorter name so you only have to time out "dsay" rather than "dead say" to use it --NeoFite
 	set hidden = 1
-	if(!src.admin_holder)
+	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 	if(!src.mob)
@@ -34,7 +34,7 @@
 		if (istype(M, /mob/new_player))
 			continue
 
-		if(M.client && M.client.admin_holder && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to admins who have deadchat toggled on
+		if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to admins who have deadchat toggled on
 			M.show_message(rendered, 2)
 
 		else if(M.stat == DEAD && M && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to regular ghosts who have deadchat toggled on

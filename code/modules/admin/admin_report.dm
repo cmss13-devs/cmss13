@@ -69,7 +69,7 @@ proc/load_reports()
 
 // check if there are any unhandled reports
 client/proc/unhandled_reports()
-	if(!src.admin_holder) return 0
+	if(!src.admin_holder || !(admin_holder.rights & R_MOD)) return 0
 	var/list/reports = load_reports()
 
 	for(var/datum/admin_report/N in reports)
@@ -93,7 +93,7 @@ client/proc/is_reported()
 client/proc/display_admin_reports()
 	set category = "Admin"
 	set name = "Display Admin Reports"
-	if(!src.admin_holder) return
+	if(!src.admin_holder || !(admin_holder.rights & R_MOD)) return
 
 	var/list/reports = load_reports()
 
@@ -120,7 +120,7 @@ client/proc/display_admin_reports()
 
 client/proc/Report(mob/M as mob in world)
 	set category = "Admin"
-	if(!src.admin_holder)
+	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		return
 
 	var/CID = "Unknown"
@@ -137,7 +137,7 @@ client/proc/Report(mob/M as mob in world)
 		display_admin_reports()
 
 client/proc/mark_report_done(ID as num)
-	if(!src.admin_holder || src.admin_holder.level < 0)
+	if(!src.admin_holder || src.admin_holder.level < 0 || !(admin_holder.rights & R_MOD))
 		return
 
 	var/savefile/Reports = new("data/reports.sav")
@@ -157,7 +157,7 @@ client/proc/mark_report_done(ID as num)
 
 
 client/proc/edit_report(ID as num)
-	if(!src.admin_holder || src.admin_holder.level < 0)
+	if(!src.admin_holder || src.admin_holder.level < 0 || !(admin_holder.rights & R_MOD))
 		to_chat(src, "<b>You tried to modify the news, but you're not an admin!")
 		return
 

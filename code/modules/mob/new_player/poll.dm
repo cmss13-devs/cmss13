@@ -50,7 +50,7 @@
 	establish_db_connection()
 	if(dbcon.IsConnected())
 		var/isadmin = 0
-		if(src.client && src.client.admin_holder)
+		if(src.client && src.client.admin_holder && (client.admin_holder & R_MOD))
 			isadmin = 1
 
 		var/DBQuery/select_query = dbcon.NewQuery("SELECT id, question FROM erro_poll_question WHERE [(isadmin ? "" : "adminonly = false AND")] Now() BETWEEN starttime AND endtime")
@@ -395,7 +395,7 @@
 			return
 
 		var/adminrank = "Player"
-		if(usr && usr.client && usr.client.admin_holder)
+		if(usr && usr.client && usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))
 			adminrank = usr.client.admin_holder.rank
 
 
@@ -444,7 +444,7 @@
 			return
 
 		var/adminrank = "Player"
-		if(usr && usr.client && usr.client.admin_holder)
+		if(usr && usr.client && usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))
 			adminrank = usr.client.admin_holder.rank
 
 
@@ -515,7 +515,7 @@
 			return
 
 		var/adminrank = "Player"
-		if(usr && usr.client && usr.client.admin_holder)
+		if(usr && usr.client && usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))
 			adminrank = usr.client.admin_holder.rank
 
 

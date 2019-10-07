@@ -49,7 +49,7 @@
 	set name = "Subtle Message"
 
 	if(!ismob(M))	return
-	if (!admin_holder)
+	if (!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -59,7 +59,7 @@
 		return
 	if(usr)
 		if (usr.client)
-			if(usr.client.admin_holder)
+			if(usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))
 				to_chat(M, "\bold You hear a voice in your head... \italic [msg]")
 
 	log_admin("SubtlePM: [key_name(usr)] -> [key_name(M)] : [msg]")
@@ -69,7 +69,7 @@
 /client/proc/cmd_mentor_check_new_players()	//Allows mentors / admins to determine who the newer players are.
 	set category = "Admin"
 	set name = "Check new Players"
-	if(!admin_holder)
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only staff members may use this command.")
 
 	var/age = alert(src, "Age check", "Show accounts yonger then _____ days","7", "30" , "All")
@@ -106,7 +106,7 @@
 	set category = "Special Verbs"
 	set name = "Narrate - Global"
 
-	if (!admin_holder)
+	if (!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -123,7 +123,7 @@
 	set category = null
 	set name = "Narrate - Direct"
 
-	if(!admin_holder)
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -146,7 +146,7 @@
 /client/proc/cmd_admin_godmode(mob/M as mob in mob_list)
 	set category = "Special Verbs"
 	set name = "Godmode"
-	if(!admin_holder)
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 	M.status_flags ^= GODMODE
@@ -163,15 +163,15 @@ proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
 	else
 		if(!usr || !usr.client)
 			return
-		if(!usr.client.admin_holder)
+		if(!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
 			to_chat(usr, "<font color='red'>Error: cmd_admin_mute: You don't have permission to do this.</font>")
 			return
 		if(!M.client)
 			to_chat(usr, "<font color='red'>Error: cmd_admin_mute: This mob doesn't have a client tied to it.</font>")
-		if(M.client.admin_holder)
+		if(M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
 			to_chat(usr, "<font color='red'>Error: cmd_admin_mute: You cannot mute an admin/mod.</font>")
 	if(!M.client)		return
-	if(M.client.admin_holder)	return
+	if(M.client.admin_holder || !(M.client.admin_holder.rights & R_MOD))	return
 
 	var/muteunmute
 	var/mute_string
@@ -209,7 +209,7 @@ proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
 /client/proc/cmd_admin_add_random_ai_law()
 	set category = "Fun"
 	set name = "Add Random AI Law"
-	if(!admin_holder)
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 	var/confirm = alert(src, "You sure?", "Confirm", "Yes", "No")
@@ -257,7 +257,7 @@ Ccomp's first proc.
 	set category = "Special Verbs"
 	set name = "Allow Player Corpse Re-Enter"
 	set desc = "Let's the player bypass the 30 minute wait to respawn or allow them to re-enter their corpse."
-	if(!admin_holder)
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -353,7 +353,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set category = "Special Verbs"
 	set name = "Respawn Character"
 	set desc = "Respawn a person that has been gibbed/dusted/killed. They must be a ghost for this to work and preferably should not have a body to go back into."
-	if(!admin_holder)
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 	var/input = ckey(input(src, "Please specify which key will be respawned.", "Key", ""))
@@ -480,7 +480,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 /client/proc/cmd_admin_add_freeform_ai_law()
 	set category = "Fun"
 	set name = "Add Custom AI law"
-	if(!admin_holder)
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 	var/input = input(usr, "Please enter anything you want the AI to do. Anything. Serious.", "What?", "") as text|null
@@ -529,7 +529,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 /client/proc/cmd_admin_rejuvenate(mob/living/M as mob in mob_list)
 	set category = null
 	set name = "Rejuvenate"
-	if(!admin_holder)
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 	if(!mob)
@@ -550,7 +550,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 /client/proc/cmd_admin_addhud(mob/M as mob in mob_list)
 	set category = null
 	set name = "Add HUD To"
-	if(!admin_holder)
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 	if(!mob)
@@ -583,7 +583,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 /client/proc/cmd_admin_create_centcom_report()
 	set category = "Special Verbs"
 	set name = "Create Command Report"
-	if(!admin_holder)
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 	var/input = input(usr, "Please enter anything you want. Anything. Serious.", "What?", "") as message|null
@@ -614,7 +614,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 /client/proc/cmd_admin_create_AI_report()
 	set category = "Special Verbs"
 	set name = "Create AI Report"
-	if(!admin_holder)
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 	var/input = input(usr, "This should be a message from the ship's AI.  Check with online staff before you send this. Do not use html.", "What?", "") as message|null
@@ -640,7 +640,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set name = "Show Hive Status"
 	set desc = "Check the status of the hive."
 	set category = "Special Verbs"
-	if(!admin_holder)
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -650,7 +650,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set name = "Show Objectives Status"
 	set desc = "Check the status of objectives."
 	set category = "Special Verbs"
-	if(!admin_holder)
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 	if(objectives_controller)
@@ -660,7 +660,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set name = "Show Objectives Status To Everyone"
 	set desc = "Check the status of objectives."
 	set category = "Special Verbs"
-	if(!admin_holder)
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 	if(objectives_controller)
@@ -670,7 +670,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set category = "Special Verbs"
 	set name = "Create Queen Mother Report"
 	set desc = "Basically a MOTHER report, but only for Xenos"
-	if(!admin_holder)
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 	var/input = input(usr, "This should be a message from the ruler of the Xenomorph race.", "What?", "") as message|null
@@ -692,7 +692,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set category = "Debug"
 	set name = "Delete"
 
-	if (!admin_holder)
+	if (!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -706,7 +706,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set category = "Admin"
 	set name = "Job Slots - List"
 
-	if (!admin_holder)
+	if (!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 	if(RoleAuthority)
@@ -721,7 +721,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 /client/proc/change_ckey(mob/M in mob_list, var/a_ckey = null)
 	var/new_ckey = a_ckey
 
-	if (!admin_holder)
+	if (!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
@@ -1049,7 +1049,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set desc = "Toggle your visibility as a ghost to other ghosts."
 	set category = "Preferences"
 
-	if(!admin_holder) return
+	if(!admin_holder || !(admin_holder.rights & R_MOD)) return
 
 	if(isobserver(usr))
 		if(usr.invisibility <> 60 && usr.layer <> 4.0)

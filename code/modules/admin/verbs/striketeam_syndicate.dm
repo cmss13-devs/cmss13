@@ -6,7 +6,7 @@ var/global/sent_syndicate_strike_team = 0
 	set category = "Fun"
 	set name = "Spawn Syndicate Strike Team"
 	set desc = "Spawns a squad of commandos in the Syndicate Mothership if you want to run an admin event."
-	if(!src.admin_holder)
+	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 	if(!ticker)
@@ -54,7 +54,7 @@ var/global/sent_syndicate_strike_team = 0
 	var/list/candidates = list()	//candidates for being a commando out of all the active ghosts in world.
 	var/list/commandos = list()			//actual commando ghosts as picked by the user.
 	for(var/mob/dead/observer/G	 in player_list)
-		if(!G.client.admin_holder && !G.client.is_afk())	//Whoever called/has the proc won't be added to the list.
+		if((!G.client.admin_holder || !(G.client.admin_holder.rights & R_MOD)) && !G.client.is_afk())	//Whoever called/has the proc won't be added to the list.
 			if(!(G.mind && G.mind.current && G.mind.current.stat != DEAD))
 				candidates += G.key
 	for(var/i=commandos_possible,(i>0&&candidates.len),i--)//Decrease with every commando selected.

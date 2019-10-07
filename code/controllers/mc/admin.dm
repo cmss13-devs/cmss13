@@ -14,7 +14,7 @@
 	var/class
 
 /obj/effect/statclick/debug/Click()
-	if(!usr.client.admin_holder)
+	if(!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
 		return
 	if(!class)
 		if(istype(target, /datum/subsystem))
@@ -36,7 +36,7 @@
 	set name = "Restart Controller"
 	set desc = "Restart one of the various periodic loop controllers for the game (be careful!)"
 
-	if (!admin_holder)
+	if (!admin_holder || !(usr.client.admin_holder.rights & R_DEBUG))
 		return
 
 	switch (controller)
@@ -65,7 +65,7 @@
 	set name = "debug controller"
 	set desc = "debug the various periodic loop controllers for the game (be careful!)."
 
-	if (!admin_holder)
+	if (!admin_holder || !(usr.client.admin_holder.rights & R_DEBUG))
 		return
 
 	debug_variables(controller)

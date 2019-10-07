@@ -126,7 +126,8 @@ These are used with qdel (clean delete). For example, qdel(atom, TA_REVIVE_ME) w
 #define DOCK_ATTEMPT_TIMEOUT 			SECONDS_20	//how long in ticks we wait before assuming the docking controller is broken or blown up.
 #define DROPSHIP_TRANSIT_DURATION		SECONDS_100	// 100 seconds
 #define ELEVATOR_TRANSIT_DURATION		SECONDS_5	// 5 seconds
-#define DROPSHIP_CRASH_TRANSIT_DURATION	SECONDS_90	// 90 seconds
+#define TRANSIT_POD_TRANSIT_DURATION	SECONDS_30 	// 30 seconds
+#define DROPSHIP_CRASH_TRANSIT_DURATION	MINUTES_3	// 180 seconds. 3 minutes
 
 #define SHUTTLE_RECHARGE  MINUTES_2 // 2 minutes
 #define ELEVATOR_RECHARGE SECONDS_15  // 15 seconds

@@ -277,3 +277,34 @@
 
 /turf/closed/shuttle/elevator/button/arrivals
 	icon_state = "wall_button_arrivals"
+
+
+
+// Transit Shuttle
+/turf/closed/shuttle/transit/
+	icon = 'icons/turf/shuttle.dmi'
+	icon_state = "wall"
+
+/turf/closed/shuttle/transit/horizontal
+	icon_state = "swall12"
+
+/turf/closed/shuttle/transit/vertical
+	icon_state = "swall3"
+
+/turf/closed/shuttle/transit/bl_corner
+	icon_state = "swallc3"
+
+/turf/closed/shuttle/transit/br_corner
+	icon_state = "swallc4"
+
+/turf/closed/shuttle/transit/tl_corner
+	icon_state = "swallc2"
+
+/turf/closed/shuttle/transit/tr_corner
+	icon_state = "swallc1"
+
+/turf/closed/shuttle/transit/l_end
+	icon_state = "swall4"
+
+/turf/closed/shuttle/transit/r_end
+	icon_state = "swall8"

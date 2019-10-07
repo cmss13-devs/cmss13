@@ -30,6 +30,9 @@
 
 	var/list/last_passangers = list() //list of living creatures that were our last passengers
 
+	var/require_link = FALSE
+	var/linked = FALSE
+
 /datum/shuttle/proc/short_jump(var/area/origin,var/area/destination)
 	if(moving_status != SHUTTLE_IDLE) return
 

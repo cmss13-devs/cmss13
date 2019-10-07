@@ -719,3 +719,19 @@
 /area/desert_dam/exterior/river_mouth/eastern
 	name = "\improper eastern river mouth"
 	icon_state = "purple"
+
+
+//Transit Shuttle
+/area/shuttle/tri_trans1/alpha
+	icon_state = "shuttle"
+/area/shuttle/tri_trans1/away
+	icon_state = "away1"
+/area/shuttle/tri_trans1/omega
+	icon_state = "shuttle2"
+
+/area/shuttle/tri_trans2/alpha
+	icon_state = "shuttlered"
+/area/shuttle/tri_trans2/away
+	icon_state = "away2"
+/area/shuttle/tri_trans2/omega
+	icon_state = "shuttle2"

@@ -69,8 +69,14 @@
 	openspeed = 31
 	req_access = null
 
-
-
+/obj/structure/machinery/door/airlock/multi_tile/shuttle
+	name = "Shuttle Podlock"
+	icon = 'icons/obj/structures/doors/1x2blast_vert.dmi'
+	icon_state = "pdoor1"
+	opacity = 1
+	openspeed = 12
+	req_access = null
+	not_weldable = 1
 
 
 // ALMAYER

@@ -335,9 +335,18 @@
 	},
 /area/almayer/evacuation/pod7)
 "aaV" = (
-/obj/structure/stairs,
-/turf/open/floor/plating/almayer,
-/area/almayer/hallways/aft_hallway)
+/turf/open/floor/almayer{
+	tag = "icon-orange (WEST)";
+	icon_state = "orange";
+	dir = 8
+	},
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/engineering/engineering_workshop)
 "aaW" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	tag = "icon-door_open";
@@ -25942,19 +25951,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/hangar)
-"bqd" = (
-/turf/open/floor/almayer{
-	tag = "icon-orange (WEST)";
-	icon_state = "orange";
-	dir = 8
-	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (EAST)";
-	icon_state = "intact-scrubbers";
-	dir = 4
-	},
-/turf/open/floor/almayer,
-/area/almayer/engineering/engineering_workshop)
 "bqe" = (
 /obj/structure/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -81065,7 +81061,7 @@ aar
 akj
 cod
 alT
-amI
+aic
 aov
 akh
 arG
@@ -81268,7 +81264,7 @@ aar
 aar
 aar
 aar
-aic
+amI
 aov
 akh
 arP
@@ -97281,11 +97277,11 @@ aaD
 aaD
 aam
 aam
-aaV
-aaV
-aaV
-aaV
-aaV
+aam
+aam
+aam
+aam
+aam
 aai
 aap
 aar
@@ -97484,11 +97480,11 @@ aaD
 aaD
 aam
 aam
-aaV
-aaV
-aaV
-aaV
-aaV
+aam
+aam
+aam
+aam
+aam
 aai
 aap
 aar
@@ -112233,7 +112229,7 @@ ccW
 bKO
 bqa
 bqa
-bqd
+aaV
 bQa
 bRk
 bSm

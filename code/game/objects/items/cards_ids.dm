@@ -123,6 +123,7 @@
 	name = "identification holo-lanyard"
 	desc = "A crude holo-lanyard. As cheap as they come."
 	icon_state = "lanyard"
+	access = list(ACCESS_IFF_MARINE)
 
 /obj/item/card/id/silver
 	name = "identification holo-badge"

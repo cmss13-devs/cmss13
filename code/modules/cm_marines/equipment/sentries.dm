@@ -13,14 +13,14 @@
 	gun_type = null
 
 /obj/item/storage/box/sentry
-	name = "\improper UA 571-C sentry crate"
+	name = "\improper UA-571-C sentry crate"
 	desc = "A large case containing all you need to set up an automated sentry, minus the tools."
 	icon = 'icons/obj/items/weapons/guns/attachments.dmi'
 	icon_state = "sentry_case"
 	w_class = SIZE_HUGE
 	storage_slots = 6
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
-	
+
 /obj/item/storage/box/sentry/New()
 	..()
 	var/obj/item/stack/sheet/plasteel/plasteel_stack = new(src)
@@ -1086,7 +1086,30 @@
 		visible_message("[htmlicon(src, viewers(src))] <span class='notice'>The [name] powers down and goes silent.</span>")
 		update_icon()
 
-//the turret inside the sentry deployment system
+//the turret inside a static sentry deployment system
+/obj/structure/machinery/marine_turret/premade/deployable
+	name = "UA-633 Static Gauss Turret"
+	desc = "An fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed."
+	density = 1
+	angle = -1
+	rounds = 1000000
+	iff_signal = ACCESS_IFF_MARINE
+	burst_size = 20
+	locked = 1
+	burst_scatter_mult = 1.2
+	fire_delay = 1
+	range = 10
+	muzzle_flash_lum = 4 //muzzle flash brightness
+	use_power = 1
+	var/obj/structure/machinery/sentry_holder/deployment_system
+
+/obj/structure/machinery/marine_turret/premade/dropship/Dispose()
+	if(deployment_system)
+		deployment_system.deployed_turret = null
+		deployment_system = null
+	. = ..()
+
+//the turret inside the shuttle sentry deployment system
 /obj/structure/machinery/marine_turret/premade/dropship
 	density = 1
 	angle = -1
@@ -1101,3 +1124,102 @@
 #undef SENTRY_FUNCTIONAL
 #undef SENTRY_KNOCKED_DOWN
 #undef SENTRY_DESTROYED
+
+/obj/structure/machinery/sentry_holder
+	name = "sentry deployment system"
+	desc = "A box that deploys a sentry turret."
+	density = 0
+	anchored = 1
+	unacidable = 1
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon_state = "sentry_system_installed"
+	active_power_usage = 5000
+	idle_power_usage = 1000
+	power_channel = 1
+	use_power = 1
+	machine_processing = 1
+	var/deployment_cooldown
+	var/obj/structure/machinery/marine_turret/premade/deployable/deployed_turret
+	var/ox = 0
+	var/oy = 0
+	var/ind = FALSE
+
+/obj/structure/machinery/sentry_holder/initialize()
+	if(!deployed_turret)
+		deployed_turret = new(src)
+		deployed_turret.deployment_system = src
+		ox = pixel_x
+		oy = pixel_y
+	..()
+
+/obj/structure/machinery/sentry_holder/New()
+	if(!deployed_turret)
+		deployed_turret = new(src)
+		deployed_turret.deployment_system = src
+		ox = pixel_x
+		oy = pixel_y
+	..()
+
+/obj/structure/machinery/sentry_holder/examine(mob/user)
+	..()
+	if(!deployed_turret)
+		to_chat(user, "Its offline.")
+
+/obj/structure/machinery/sentry_holder/attack_hand(mob/user)
+	if(deployed_turret)
+		if(deployment_cooldown > world.time)
+			to_chat(user, SPAN_WARNING("[src] is busy."))
+			return //prevents spamming deployment/undeployment
+		if(deployed_turret.loc == src) //not deployed
+			if(stat & NOPOWER)
+				to_chat(user, SPAN_WARNING("[src] is non-functional."))
+			else
+				to_chat(user, SPAN_NOTICE("You deploy [src]."))
+				deploy_sentry()
+		else
+			to_chat(user, SPAN_NOTICE("You retract [src]."))
+			undeploy_sentry()
+	else
+		to_chat(user, SPAN_WARNING("[src] is unresponsive."))
+
+/obj/structure/machinery/sentry_holder/process()
+	if(stat & NOPOWER)
+		if(deployed_turret)
+			undeploy_sentry()
+			ind = FALSE
+		else
+			icon_state = "sentry_system_destroyed"
+	else
+		update_use_power(1)
+		if(!ind)
+			deploy_sentry()
+			ind = TRUE
+
+/obj/structure/machinery/sentry_holder/proc/deploy_sentry()
+	if(deployed_turret)
+		playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
+		deployment_cooldown = world.time + 50
+		deployed_turret.on = 1
+		deployed_turret.loc = src.loc
+		icon_state = "sentry_system_deployed"
+
+		for(var/mob/M in deployed_turret.loc)
+			if(deployed_turret.loc == src.loc)
+				step( M, deployed_turret.dir )
+			else
+				step( M, get_dir(src,deployed_turret) )
+
+		if(deployed_turret)
+			deployed_turret.dir = dir
+			deployed_turret.pixel_x = 0
+			deployed_turret.pixel_y = 0
+
+/obj/structure/machinery/sentry_holder/proc/undeploy_sentry()
+	if(deployed_turret)
+		playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
+		deployment_cooldown = world.time + 50
+		deployed_turret.loc = src
+		deployed_turret.on = 0
+		pixel_x = ox
+		pixel_y = oy
+		icon_state = "sentry_system_installed"

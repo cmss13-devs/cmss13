@@ -155,6 +155,9 @@
 			user.visible_message(SPAN_NOTICE("[user] begin removing the barbed wire on [src]."),
 			SPAN_NOTICE("You begin removing the barbed wire on [src]."))
 			if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+				if(!is_wired)
+					return
+
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] removes the barbed wire on [src]."),
 				SPAN_NOTICE("You remove the barbed wire on [src]."))

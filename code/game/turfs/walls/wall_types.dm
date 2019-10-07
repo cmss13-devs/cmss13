@@ -327,6 +327,7 @@
 	name = "rock wall"
 	icon = 'icons/turf/walls/cave.dmi'
 	icon_state = "cavewall"
+	desc = "A rough wall of hardened rock."
 	walltype = WALL_CAVE
 	hull = 1
 	color = "#535963"
@@ -336,6 +337,7 @@
 
 /turf/closed/wall/rock/orange
 	color = "#994a16"
+	desc = "A rough wall of granite and sandstone."
 
 /turf/closed/wall/rock/red
 	color = "#822d21"

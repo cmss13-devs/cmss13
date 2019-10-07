@@ -360,7 +360,7 @@
 	name = "Warehouse"
 	icon_state = "yellow"
 /area/desert_dam/building/warehouse/loading
-	name = "Waregouse Loading Room"
+	name = "Warehouse Loading Room"
 	icon_state = "red"
 /area/desert_dam/building/warehouse/breakroom
 	name = "Warehouse Breakroom"
@@ -765,3 +765,19 @@
 	name = "LZ2 'Supply'"
 	icon_state = "tcomsatcham"
 	requires_power = 0
+
+
+//Transit Shuttle
+/area/shuttle/tri_trans1/alpha
+	icon_state = "shuttle"
+/area/shuttle/tri_trans1/away
+	icon_state = "away1"
+/area/shuttle/tri_trans1/omega
+	icon_state = "shuttle2"
+
+/area/shuttle/tri_trans2/alpha
+	icon_state = "shuttlered"
+/area/shuttle/tri_trans2/away
+	icon_state = "away2"
+/area/shuttle/tri_trans2/omega
+	icon_state = "shuttle2"

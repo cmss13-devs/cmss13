@@ -24,7 +24,7 @@
 	name = "desert"
 	icon_state = "desert1"
 /turf/open/desert/dirt/is_weedable()
-	return FALSE
+	return TRUE
 
 /turf/open/desert/dirt/dirt_transition_edge1
 	name = "desert"

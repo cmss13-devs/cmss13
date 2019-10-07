@@ -14,6 +14,7 @@
 	var/list/shuttle_equipments = list() //list of the equipments on the shuttle this console controls
 	var/can_abort_flyby = TRUE
 	var/abort_timer = 100 //10 seconds
+	var/link = 0 // Does this terminal activate the transport system?
 
 /obj/structure/machinery/computer/shuttle_control/attack_hand(mob/user)
 	if(..(user))
@@ -56,6 +57,16 @@
 				to_chat(user, SPAN_NOTICE("You reverse the door override."))
 				shuttle.last_door_override = world.time
 				shuttle.door_override = 0
+
+	if(link && !shuttle.linked)
+		user.visible_message(SPAN_NOTICE("The [src] blinks with blue lights."),
+		SPAN_NOTICE("Transport link activated."))
+		shuttle.linked = TRUE
+
+	if(shuttle.require_link && !shuttle.linked)
+		user.visible_message(SPAN_NOTICE("The [src] blinks with red lights."),
+		SPAN_WARNING("Transport terminal unlinked. Manual activation required."))
+		return
 	ui_interact(user)
 
 /obj/structure/machinery/computer/shuttle_control/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
@@ -203,6 +214,8 @@
 				else if(i == "No")
 					return
 				else
+					if(shuttle.require_link)
+						update_use_power(4080)
 					shuttle.launch(src)
 
 			else if(!onboard && isXenoQueen(M) && shuttle.location == 1 && !shuttle.iselevator)
@@ -458,3 +471,30 @@
 
 /obj/structure/machinery/computer/shuttle_control/ice_colony/elevator4
 	shuttle_tag = "Elevator 4"
+
+
+
+//Trijent transit control console
+
+/obj/structure/machinery/computer/shuttle_control/trijent
+	name = "Transit Console"
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "elevator_screen"
+
+	shuttle_type = SHUTTLE_ELEVATOR
+	unacidable = 1
+	exproof = 1
+	density = 0
+	req_access = null
+
+/obj/structure/machinery/computer/shuttle_control/trijent/proc/animate_on()
+	icon_state = "elevator_screen_animated"
+
+/obj/structure/machinery/computer/shuttle_control/trijent/proc/animate_off()
+	icon_state = "elevator_screen"
+
+/obj/structure/machinery/computer/shuttle_control/trijent/tri_trans1
+	shuttle_tag = "Transit 1"
+
+/obj/structure/machinery/computer/shuttle_control/trijent/tri_trans2
+	shuttle_tag = "Transit 2"

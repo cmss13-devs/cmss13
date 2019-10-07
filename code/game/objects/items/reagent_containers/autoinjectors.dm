@@ -1,189 +1,193 @@
-
-
+#define INJECTOR_USES 3
+#define INJECTOR_PERCENTAGE_OF_OD 0.5
 
 /obj/item/reagent_container/hypospray/autoinjector
 	name = "inaprovaline autoinjector"
+	var/chemname = "inaprovaline"
 	//desc = "A rapid and safe way to administer small amounts of drugs by untrained or trained personnel."
 	desc = "An autoinjector containing Inaprovaline.  Useful for saving lives."
-	icon_state = "autoinjector"
-	item_state = "hypo"
-	amount_per_transfer_from_this = 15
-	volume = 15
+	icon_state = "empty"
+	item_state = "empty"
+	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	volume = (HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
+	var/uses_left = 3
+	var/mixed_chem = FALSE
+
+/obj/item/reagent_container/hypospray/autoinjector/New()
+	..()
+	if(mixed_chem)
+		return
+	reagents.add_reagent(chemname, volume)
+	update_icon()
 
 /obj/item/reagent_container/hypospray/autoinjector/attack(mob/M as mob, mob/user as mob)
-	. = ..()
-	if(.)
-		if(reagents.total_volume <= 0) //Prevents autoinjectors to be refilled.
-			flags_atom &= ~OPENCONTAINER
-			update_icon()
+	if(uses_left <= 0)
+		return
+		
+	..()
+	uses_left--
+	update_icon()
 
 /obj/item/reagent_container/hypospray/autoinjector/attackby()
 	return
 
 /obj/item/reagent_container/hypospray/autoinjector/update_icon()
-	if(reagents.total_volume <= 0)
-		icon_state += "0"
-		name += " expended" //So people can see what have been expended since we have smexy new sprites people aren't used too...
+	overlays.Cut()
+	if(uses_left)
+		overlays += "[chemname]_[uses_left]"
 
 /obj/item/reagent_container/hypospray/autoinjector/examine(mob/user)
 	..()
-	if(reagents && reagents.reagent_list.len)
-		to_chat(user, SPAN_NOTICE("It is currently loaded."))
-	else if(flags_atom & OPENCONTAINER)
-		to_chat(user, SPAN_NOTICE("It is spent."))
+	if(uses_left)
+		to_chat(user, SPAN_NOTICE("It is currently loaded with [uses_left]."))
 	else
 		to_chat(user, SPAN_NOTICE("It is empty."))
-
-/obj/item/reagent_container/hypospray/autoinjector/custom
-	name = "custom autoinjector"
-	desc = "An autoinjector, initially unloaded, that can be used with any custom mix of chemicals. Use a syringe or beaker to fill it with chemicals."
-	icon_state = "anesthetic" // looks white and empty
-
-/obj/item/reagent_container/hypospray/autoinjector/custom/New()
-	..()
 
 
 /obj/item/reagent_container/hypospray/autoinjector/tricord
 	name = "tricordrazine autoinjector"
-	desc = "An autoinjector loaded with 15 units of Tricordrazine, a weak general use medicine for treating damage."
-	icon_state = "tricord"
-
-/obj/item/reagent_container/hypospray/autoinjector/tricord/New()
-	..()
-	reagents.add_reagent("tricordrazine", 15)
-	update_icon()
-
-/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless
-	name = "first-aid autoinjector"
-	desc = "An autoinjector loaded with a small dose of medicine for marines to treat themselves with."
-	skilllock = 0
-
+	chemname = "tricordrazine"
+	desc = "An autoinjector loaded with 3 uses of Tricordrazine, a weak general use medicine for treating damage."
+	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	volume = (REAGENTS_OVERDOSE_CRITICAL * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 
 /obj/item/reagent_container/hypospray/autoinjector/quickclot
 	name = "quick clot autoinjector"
-	desc = "An autoinjector loaded with 10 units of Quick Clot, a chemical designed to pause all bleeding. Renew doses as needed."
-	amount_per_transfer_from_this = 10
-	volume = 10
-	icon_state = "quickclot"
-
-/obj/item/reagent_container/hypospray/autoinjector/quickclot/New()
-	..()
-	reagents.add_reagent("quickclot", 10)
-	update_icon()
+	chemname = "quickclot"
+	desc = "An autoinjector loaded with 3 uses of Quick Clot, a chemical designed to pause all bleeding. Renew doses as needed."
+	amount_per_transfer_from_this = LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	volume = (LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 
 /obj/item/reagent_container/hypospray/autoinjector/adrenaline
 	name = "epinephrine autoinjector"
-	desc = "An autoinjector loaded with 10 units of Epinephrine, better known as Adrenaline, a nerve stimulant useful in restarting the heart."
-	amount_per_transfer_from_this = 10
-	volume = 10
-	icon_state = "clonefix"
+	chemname = "adrenaline"
+	desc = "An autoinjector loaded with 3 uses of Epinephrine, better known as Adrenaline, a nerve stimulant useful in restarting the heart."
+	amount_per_transfer_from_this = LOWM_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	volume = (LOWM_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 
-/obj/item/reagent_container/hypospray/autoinjector/adrenaline/New()
-	..()
-	reagents.add_reagent("adrenaline", 10)
-	update_icon()
-
-/obj/item/reagent_container/hypospray/autoinjector/dexP
+/obj/item/reagent_container/hypospray/autoinjector/dexalinp
 	name = "dexalin plus autoinjector"
-	desc = "An autoinjector loaded with 1 unit of Dexalin+, designed to immediately oxygenate the entire body."
+	chemname = "dexalin"
+	desc = "An autoinjector loaded with 3 uses of Dexalin+, designed to immediately oxygenate the entire body."
 	amount_per_transfer_from_this = 1
-	volume = 1
-	icon_state = "dexalin"
-
-/obj/item/reagent_container/hypospray/autoinjector/dexP/New()
-	..()
-	reagents.add_reagent("dexalinp", 1)
-	update_icon()
+	volume = 3
 
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate
 	name = "anesthetic autoinjector"
-	desc = "An autoinjector loaded with 1 unit of Chloral Hydrate and 9 units of Sleeping Agent. Good to quickly pacify someone, for surgery of course."
+	chemname = "anesthetic"
+	desc = "An autoinjector loaded with 3 uses of Chloral Hydrate and Sleeping Agent. Good to quickly pacify someone, for surgery of course."
 	amount_per_transfer_from_this = 10
-	volume = 10
-	icon_state = "anesthetic"
+	volume = 30
+	mixed_chem = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/New()
 	..()
-	reagents.add_reagent("chloralhydrate", 1)
-	reagents.add_reagent("stoxin", 9)
+	reagents.add_reagent("chloralhydrate", 1*3)
+	reagents.add_reagent("stoxin", 9*3)
 	update_icon()
 
-/obj/item/reagent_container/hypospray/autoinjector/Dylovene
-	name = "dylovene (anti-tox) autoinjector"
-	desc = "An auto-injector loaded with 15 units of Dylovene, an anti-toxin agent useful in cases of poisoning, overdoses and toxin build-up."
-	icon_state = "dylovene"
-
-/obj/item/reagent_container/hypospray/autoinjector/Dylovene/New()
-	..()
-	reagents.add_reagent("anti_toxin", 15)
-	update_icon()
-
-/obj/item/reagent_container/hypospray/autoinjector/Tramadol
+/obj/item/reagent_container/hypospray/autoinjector/tramadol
 	name = "tramadol autoinjector"
-	desc = "An auto-injector loaded with 15 units of Tramadol, a weak but effective painkiller for normal wounds."
-	icon_state = "tramadol"
+	chemname = "tramadol"
+	desc = "An auto-injector loaded with 3 uses of Tramadol, a weak but effective painkiller for normal wounds."
+	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 
-/obj/item/reagent_container/hypospray/autoinjector/Tramadol/New()
-	..()
-	reagents.add_reagent("tramadol", 15)
-	update_icon()
+/obj/item/reagent_container/hypospray/autoinjector/oxycodone
+	name = "oxycodone autoinjector (EXTREME PAINKILLER)"
+	chemname = "oxycodone"
+	desc = "An auto-injector loaded with 3 uses of Oxycodone, a powerful pankiller intended for life-threatening situations."
+	amount_per_transfer_from_this = MED_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	volume = (MED_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 
-/obj/item/reagent_container/hypospray/autoinjector/Tramadol/skillless
-	name = "pain-stop autoinjector"
-	desc = "An auto-injector loaded with a small amount of painkiller for marines to self-administer."
-	skilllock = 0
-
-
-/obj/item/reagent_container/hypospray/autoinjector/Oxycodone
-	name = "oxycodone (EXTREME PAINKILLER) autoinjector"
-	desc = "An auto-injector loaded with 5 units of Oxycodone, a powerful pankiller intended for life-threatening situations."
-	amount_per_transfer_from_this = 10
-	volume = 10
-	icon_state = "oxycodone"
-
-/obj/item/reagent_container/hypospray/autoinjector/Oxycodone/New()
-	..()
-	reagents.add_reagent("oxycodone", 10)
-	update_icon()
-
-/obj/item/reagent_container/hypospray/autoinjector/Kelo
+/obj/item/reagent_container/hypospray/autoinjector/kelotane
 	name = "kelotane autoinjector"
-	desc = "An auto-injector loaded with 15 units of Kelotane, a common burn medicine."
-	icon_state = "kelotine"
+	chemname = "kelotane"
+	desc = "An auto-injector loaded with 3 uses of Kelotane, a common burn medicine."
+	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 
-/obj/item/reagent_container/hypospray/autoinjector/Kelo/New()
-	..()
-	reagents.add_reagent("kelotane", 15)
-	update_icon()
-
-/obj/item/reagent_container/hypospray/autoinjector/Bicard
+/obj/item/reagent_container/hypospray/autoinjector/bicaridine
 	name = "bicaridine autoinjector"
-	desc = "An auto-injector loaded with 15 units of Bicaridine, a common brute and circulatory damage medicine."
-	icon_state = "bicaridine"
+	chemname = "bicaridine"
+	desc = "An auto-injector loaded with 3 uses of Bicaridine, a common brute and circulatory damage medicine."
+	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 
-/obj/item/reagent_container/hypospray/autoinjector/Bicard/New()
-	..()
-	reagents.add_reagent("bicaridine", 15)
-	update_icon()
-
-/obj/item/reagent_container/hypospray/autoinjector/Inaprovaline
+/obj/item/reagent_container/hypospray/autoinjector/inaprovaline
 	name = "inaprovaline autoinjector"
-	desc = "An auto-injector loaded with 15 units of Inaprovaline, an emergency stabilization medicine for patients in critical condition."
-	icon_state = "clonefix" //TEMP
-
-/obj/item/reagent_container/hypospray/autoinjector/Inaprovaline/New()
-	..()
-	reagents.add_reagent("inaprovaline", 15)
-	update_icon()
+	chemname = "inaprovaline"
+	desc = "An auto-injector loaded with 3 uses of Inaprovaline, an emergency stabilization medicine for patients in critical condition."
+	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	volume = (HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 
 /obj/item/reagent_container/hypospray/autoinjector/suxamorycin
 	name = "suxamorycin autoinjector"
-	desc = "An autoinjector loaded with 10 units of Suxamorycin. An incredibly strong muscle relaxant with dubious side effects, used for surgery."
+	chemname = "anesthetic"
+	desc = "An autoinjector loaded with 3 uses of Suxamorycin. An incredibly strong muscle relaxant with dubious side effects, used for surgery."
 	amount_per_transfer_from_this = 10
-	volume = 10
-	icon_state = "anesthetic"
+	volume = 30
 
 /obj/item/reagent_container/hypospray/autoinjector/suxamorycin/New()
 	..()
-	reagents.add_reagent("suxamorycin", 10)
+	reagents.add_reagent("suxamorycin", volume)
 	update_icon()
+
+/obj/item/reagent_container/hypospray/autoinjector/emergency
+	name = "emergency autoinjector (CAUTION)"
+	chemname = "emergency"
+	desc = "An auto-injector loaded with a special cocktail of chemicals, to be used in a life-threatening situations."
+	amount_per_transfer_from_this = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1)
+	volume = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1)
+	mixed_chem = TRUE
+	uses_left = 1
+
+/obj/item/reagent_container/hypospray/autoinjector/emergency/New()
+	..()
+	reagents.add_reagent("bicaridine", REAGENTS_OVERDOSE-1)
+	reagents.add_reagent("kelotane", REAGENTS_OVERDOSE-1)
+	reagents.add_reagent("oxycodone", MED_REAGENTS_OVERDOSE-1)
+	update_icon()
+
+/obj/item/reagent_container/hypospray/autoinjector/skillless
+	name = "first-aid autoinjector"
+	chemname = "tricordrazine"
+	desc = "An autoinjector loaded with a small dose of medicine for marines to treat themselves with."
+	icon_state = "tricord"
+	amount_per_transfer_from_this = 10
+	volume = 10
+	skilllock = 0
+	uses_left = 1
+
+/obj/item/reagent_container/hypospray/autoinjector/skillless/attack(mob/M as mob, mob/user as mob)
+	. = ..()
+	if(.)
+		if(!uses_left) //Prevents autoinjectors to be refilled.
+			flags_atom &= ~OPENCONTAINER
+			update_icon()
+
+/obj/item/reagent_container/hypospray/autoinjector/skillless/attackby()
+	return
+
+/obj/item/reagent_container/hypospray/autoinjector/skillless/update_icon()
+	if(!uses_left)
+		icon_state += "0"
+		name += " expended" //So people can see what have been expended since we have smexy new sprites people aren't used too...
+
+/obj/item/reagent_container/hypospray/autoinjector/skillless/examine(mob/user)
+	..()
+	if(reagents && reagents.reagent_list.len)
+		to_chat(user, SPAN_NOTICE("It is currently loaded."))
+	else if(!uses_left)
+		to_chat(user, SPAN_NOTICE("It is spent."))
+	else
+		to_chat(user, SPAN_NOTICE("It is empty."))
+
+/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol
+	name = "pain-stop autoinjector"
+	chemname = "tramadol"
+	desc = "An auto-injector loaded with a small amount of painkiller for marines to self-administer."
+	icon_state = "tramadol"
+
+#undef INJECTOR_USES
+#undef INJECTOR_PERCENTAGE_OF_OD

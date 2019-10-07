@@ -166,8 +166,8 @@
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/dexP(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/Oxycodone(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
 
 	if(has_gamemode_skin)
 		select_gamemode_skin(type)

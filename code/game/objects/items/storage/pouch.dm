@@ -1,7 +1,7 @@
 /obj/item/storage/pouch
 	name = "abstract pouch"
 	desc = "The physical manifestation of a concept of a pouch. Woah."
-	icon = 'icons/obj/items/clothing/marine-pouches.dmi'
+	icon = 'icons/obj/items/clothing/pouches.dmi'
 	icon_state = "small_drop"
 	w_class = SIZE_LARGE //does not fit in backpack
 	max_w_class = SIZE_SMALL
@@ -139,8 +139,8 @@
 	storage_slots = 4
 	can_hold = list(
 		/obj/item/stack/medical/ointment,
-		/obj/item/reagent_container/hypospray/autoinjector/Tramadol/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless,
 		/obj/item/stack/medical/bruise_pack
 	)
 
@@ -150,8 +150,8 @@
 /obj/item/storage/pouch/firstaid/full/New()
 	..()
 	new /obj/item/stack/medical/ointment(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/Tramadol/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/tricord/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 
 /obj/item/storage/pouch/pistol
@@ -354,13 +354,42 @@
 	new /obj/item/storage/pill_bottle/bicaridine(src)
 	new /obj/item/storage/pill_bottle/kelotane(src)
 
+/obj/item/storage/pouch/medical/frt_kit
+	name = "first responder technical pouch"
+	desc = "Holds everything one might need for rapid field triage and treatment. Make sure to coordinate with the proper field medics."
+	icon_state = "frt_med"
+	storage_slots = 4
+	can_hold = list(
+		/obj/item/stack/medical,
+		/obj/item/storage/pill_bottle,
+		/obj/item/device/healthanalyzer,
+		/obj/item/reagent_container/hypospray,
+	)
+
+/obj/item/storage/pouch/medical/frt_kit/full/New() 
+	..()
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+
+
 /obj/item/storage/pouch/autoinjector
 	name = "auto-injector pouch"
 	desc = "A pouch specifically for auto-injectors."
-	icon_state = "autoinjector"
-	storage_slots = 4
+	icon_state = "injectors"
+	storage_slots = 7
 	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector)
 
+/obj/item/storage/pouch/autoinjector/full/New()
+	..()
+	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 
 /obj/item/storage/pouch/syringe
 	name = "syringe pouch"

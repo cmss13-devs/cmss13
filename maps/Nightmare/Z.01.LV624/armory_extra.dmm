@@ -89,7 +89,7 @@
 /obj/structure/rack{
 	layer = 2.5
 	},
-/obj/item/reagent_container/hypospray/autoinjector/dexP{
+/obj/item/reagent_container/hypospray/autoinjector/dexalinp{
 	pixel_x = -2;
 	pixel_y = -2
 	},

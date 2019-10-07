@@ -329,17 +329,16 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		SND1.amount = 15
 
 /obj/item/storage/box/kit/mini_medic
-	name = "\improper First Response Medical Support Kit"
+	name = "\improper First Responder Medical Support Kit"
 
 /obj/item/storage/box/kit/mini_medic/New()
 	..()
 	overlays += image('icons/obj/items/pro_case.dmi', "+medic")
 	spawn(1)
 		new /obj/item/pamphlet/medical(src)
-		new /obj/item/storage/firstaid/adv(src)
-		new /obj/item/storage/pouch/medical/full(src)
-		new /obj/item/clothing/glasses/hud/health(src)
-		new /obj/item/device/healthanalyzer(src)
+		new /obj/item/storage/pouch/medical/frt_kit/full(src)
+		new /obj/item/storage/pouch/autoinjector/full(src)
+		new /obj/item/clothing/glasses/hud/sensor(src)
 		new /obj/item/roller(src)
 
 /obj/item/storage/box/kit/mini_jtac

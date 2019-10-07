@@ -6,7 +6,6 @@ MEDICAL
 /datum/supply_packs/medical
 	name = "medical crate"
 	contains = list(
-					/obj/item/storage/box/autoinjectors,
 					/obj/item/storage/box/syringes,
 					/obj/item/reagent_container/glass/bottle/inaprovaline,
 					/obj/item/reagent_container/glass/bottle/antitoxin,

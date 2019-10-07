@@ -7144,14 +7144,6 @@
 	pixel_x = 0;
 	pixel_y = 12
 	},
-/obj/item/storage/box/autoinjectors{
-	pixel_x = 1;
-	pixel_y = 12
-	},
-/obj/item/storage/box/autoinjectors{
-	pixel_x = 1;
-	pixel_y = -3
-	},
 /obj/item/storage/box/sprays{
 	pixel_y = 5
 	},
@@ -50514,9 +50506,6 @@
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/pillbottles,
-/obj/item/storage/box/autoinjectors,
-/obj/item/storage/box/autoinjectors,
-/obj/item/storage/box/autoinjectors,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (WEST)";
 	icon_state = "sterile_green_side";

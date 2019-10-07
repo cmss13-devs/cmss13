@@ -64,19 +64,19 @@
 		new /obj/item/device/healthanalyzer(src)
 		new /obj/item/stack/medical/ointment(src)
 		new /obj/item/stack/medical/ointment(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/Kelo(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/Kelo(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/Kelo(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/Tramadol/skillless(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
 
 /obj/item/storage/firstaid/regular
 	icon_state = "firstaid"
 
 	fill_firstaid_kit()
 		new /obj/item/device/healthanalyzer(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/tricord/skillless(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/Tramadol/skillless(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/Inaprovaline(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
 		new /obj/item/stack/medical/bruise_pack(src)
 		new /obj/item/stack/medical/ointment(src)
 		new /obj/item/stack/medical/splint(src)
@@ -90,9 +90,7 @@
 
 	fill_firstaid_kit()
 		new /obj/item/device/healthanalyzer(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/Dylovene(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/Dylovene(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/Dylovene(src)
+		new /obj/item/storage/pill_bottle/antitox(src)
 		new /obj/item/reagent_container/pill/antitox(src)
 		new /obj/item/reagent_container/pill/antitox(src)
 		new /obj/item/reagent_container/pill/antitox(src)
@@ -107,10 +105,10 @@
 		new /obj/item/device/healthanalyzer(src)
 		new /obj/item/reagent_container/pill/dexalin(src)
 		new /obj/item/reagent_container/pill/dexalin(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/dexP(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/dexP(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/dexP(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/Inaprovaline(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
 
 /obj/item/storage/firstaid/adv
 	name = "advanced first-aid kit"
@@ -134,14 +132,12 @@
 	icon_state = "purplefirstaid"
 
 	fill_firstaid_kit()
-		new /obj/item/reagent_container/hypospray/autoinjector/Dylovene(src)
 		new /obj/item/reagent_container/pill/russianRed(src)
 		new /obj/item/reagent_container/pill/russianRed(src)
 		new /obj/item/reagent_container/pill/russianRed(src)
 		new /obj/item/reagent_container/pill/russianRed(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/Dylovene(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/Bicard(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/Bicard(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
 
 
 	/*
@@ -229,7 +225,7 @@
 			new pill_type_to_fill(src)
 
 /obj/item/storage/pill_bottle/attack_self(mob/living/user)
-	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
+	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 		to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return
 	if(user.get_inactive_hand())
@@ -250,7 +246,7 @@
 
 
 /obj/item/storage/pill_bottle/open(mob/user)
-	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
+	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 		to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return
 	..()
@@ -260,7 +256,7 @@
 /obj/item/storage/pill_bottle/can_be_inserted(obj/item/W, stop_messages = 0)
 	. = ..()
 	if(.)
-		if(skilllock && !skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
+		if(skilllock && !skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 			to_chat(usr, SPAN_NOTICE("You can't open [src], it has some kind of lock."))
 			return 0
 
@@ -271,7 +267,7 @@
 		if(istype(loc, /obj/item/storage/belt/medical))
 			var/obj/item/storage/belt/medical/M = loc
 			if(M.mode)
-				if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
+				if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 					to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
 					return 0
 				if(user.get_active_hand())

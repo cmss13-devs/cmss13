@@ -215,9 +215,9 @@
 					/obj/item/storage/belt/medical = 2,
 					/obj/item/device/defibrillator = 2,
 					/obj/item/reagent_container/hypospray/autoinjector/quickclot = 5,
-					/obj/item/reagent_container/hypospray/autoinjector/dexP = 5,
+					/obj/item/reagent_container/hypospray/autoinjector/dexalinp = 5,
 					/obj/item/reagent_container/hypospray/autoinjector/suxamorycin = 10,
-					/obj/item/reagent_container/hypospray/autoinjector/Inaprovaline = 5,
+					/obj/item/reagent_container/hypospray/autoinjector/inaprovaline = 5,
 					/obj/item/reagent_container/hypospray/autoinjector/adrenaline = 2,
 					/obj/item/reagent_container/hypospray/tricordrazine = 2,
 					/obj/item/reagent_container/syringe = 20,
@@ -296,8 +296,8 @@
 	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
 	wrenchable = FALSE
-	products = list(/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless = 1,
-					/obj/item/reagent_container/hypospray/autoinjector/Tramadol/skillless = 1,
+	products = list(/obj/item/reagent_container/hypospray/autoinjector/skillless = 1,
+					/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol = 1,
 					/obj/item/stack/medical/bruise_pack = 2,
 					/obj/item/stack/medical/ointment = 2,
 					/obj/item/device/healthanalyzer = 1,

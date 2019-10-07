@@ -9,8 +9,8 @@
 	description = "Inaprovaline is a synaptic stimulant and cardiostimulant. Commonly used to stabilize patients. If the lungs are functional, inaprovaline will allow respiration while under cardiac arrest. Slows down bleeding and acts as a weak painkiller. Overdosing may cause severe damage to cardiac tissue."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
-	overdose = REAGENTS_OVERDOSE*2
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL*2
+	overdose = HIGH_REAGENTS_OVERDOSE
+	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
 
@@ -82,8 +82,8 @@
 	color = "#C855DC"
 	scannable = 1
 	custom_metabolism = 0.025 // Lasts 10 minutes for 15 units
-	overdose = REAGENTS_OVERDOSE*2
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL*2
+	overdose = HIGH_REAGENTS_OVERDOSE
+	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/paracetamol/on_mob_life(mob/living/M)
@@ -135,8 +135,8 @@
 	color = "#C805DC"
 	scannable = 1
 	custom_metabolism = 0.2 // Lasts 5 minutes for 15 units
-	overdose = REAGENTS_OVERDOSE * 0.66
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL * 0.66
+	overdose = MED_REAGENTS_OVERDOSE
+	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/oxycodone/on_mob_life(mob/living/M)
@@ -227,8 +227,8 @@
 	description = "Advanced medicine used to treat severe burn trauma. Enables the body to restore even the direst heat-damaged tissue. Overdosing on dermaline can cause severe internal tissue damage."
 	reagent_state = LIQUID
 	color = "#F8C57C"
-	overdose = REAGENTS_OVERDOSE/2
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
+	overdose = LOWH_REAGENTS_OVERDOSE 
+	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
 
@@ -280,8 +280,8 @@
 	description = "Dexalin Plus is an upgraded form of Dexalin with added iron and carbon to quicken the rate which oxygen binds to the hemoglobin in red blood cells."
 	reagent_state = LIQUID
 	color = "#C8A5FC"
-	overdose = REAGENTS_OVERDOSE/2
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
+	overdose = LOWH_REAGENTS_OVERDOSE
+	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
 
@@ -462,8 +462,8 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	custom_metabolism = 0.1
-	overdose = REAGENTS_OVERDOSE/5
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/5
+	overdose = LOW_REAGENTS_OVERDOSE
+	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
 
@@ -543,8 +543,8 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	custom_metabolism = 1
-	overdose = REAGENTS_OVERDOSE/3
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/3
+	overdose = MED_REAGENTS_OVERDOSE
+	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_RARE
 
@@ -620,8 +620,8 @@
 	description = "Prevents symptoms caused by damaged internal organs while in the bloodstream, but does not fix the organ damage. Recommended for patients awaiting internal organ surgery. Overdosing on peridaxon will cause internal tissue damage."
 	reagent_state = LIQUID
 	color = "#C845DC"
-	overdose = REAGENTS_OVERDOSE/2
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
+	overdose = LOWH_REAGENTS_OVERDOSE
+	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	custom_metabolism = 0.05
 	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
@@ -662,8 +662,8 @@
 	description = "Vastly improves the blood's natural ability to coagulate and stop bleeding by hightening platelet production and effectiveness. Overdosing will cause extreme blood clotting, resulting in severe tissue damage."
 	reagent_state = LIQUID
 	color = "#CC00FF"
-	overdose = REAGENTS_OVERDOSE/2 //Was 4, now 6 //Now 15
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
+	overdose = LOWH_REAGENTS_OVERDOSE
+	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1 //scannable now.  HUZZAH.
 	custom_metabolism = 0.05
 	chemclass = CHEM_CLASS_COMMON
@@ -681,8 +681,8 @@
 	reagent_state = LIQUID
 	ingestible = FALSE
 	color = "FFE703" // Yellow-ish
-	overdose = REAGENTS_OVERDOSE/2.95 // slightly more than 10, so 10u doesn't OD you
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2.5 //20
+	overdose = LOWM_REAGENTS_OVERDOSE
+	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL 
 	scannable = 1
 	custom_metabolism = 0.4
 	chemclass = CHEM_CLASS_COMMON
@@ -715,8 +715,8 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	custom_metabolism = 0.2
-	overdose = REAGENTS_OVERDOSE/5
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/5
+	overdose = LOW_REAGENTS_OVERDOSE
+	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/hyperzine/on_mob_life(mob/living/M)
@@ -758,8 +758,8 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	custom_metabolism = 0.0167 //5 units will last approximately 10 minutes
-	overdose = 10
-	overdose_critical = 20
+	overdose = LOWM_REAGENTS_OVERDOSE
+	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/ultrazine/on_mob_life(mob/living/M)
@@ -1035,8 +1035,8 @@
 	custom_metabolism = 0.5
 	color = "#32a852"
 	scannable = 1
-	overdose = REAGENTS_OVERDOSE/3						// 10u
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2	// 25u
+	overdose = LOWM_REAGENTS_OVERDOSE
+	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	data = 0
 
 /datum/reagent/suxamorycin/on_mob_life(mob/living/M)

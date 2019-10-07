@@ -26399,7 +26399,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/warehouse/breakroom)
 "bud" = (
-/obj/item/target,
+/obj/structure/target,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bue" = (
@@ -30239,7 +30239,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bFu" = (
-/obj/item/target,
+/obj/structure/target,
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/floor/plating{
 	dir = 2;
@@ -37247,7 +37247,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/execution_chamber)
 "bZK" = (
-/obj/item/target,
+/obj/structure/target,
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "warnplate"

@@ -30721,7 +30721,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "bBd" = (
-/obj/item/target,
+/obj/structure/target,
 /turf/open/floor{
 	tag = "icon-darkred2 (NORTH)";
 	icon_state = "darkred2";

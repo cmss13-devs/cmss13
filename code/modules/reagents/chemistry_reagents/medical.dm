@@ -510,6 +510,32 @@
 	M.AdjustStunned(-2)
 	M.AdjustKnockeddown(-1)
 
+/datum/reagent/arithrazine
+	name = "Arithrazine"
+	id = "arithrazine"
+	description = "A stabilized variant of dylovene. Its toxin-cleansing properties are weakened and there are harmful side effects, but it does not react with other compounds to create toxin."
+	reagent_state = LIQUID
+	color = "#C8A5DC" // rgb: 200, 165, 220
+	custom_metabolism = 0.05
+	overdose = REAGENTS_OVERDOSE/2
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
+	chemclass = CHEM_CLASS_COMMON
+
+/datum/reagent/arithrazine/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	if(M.stat == DEAD)
+		return
+	M.adjustToxLoss(-1*REM)
+	if(prob(15))
+		M.take_limb_damage(1, 0)
+
+/datum/reagent/arithrazine/on_overdose(mob/living/M)
+	M.apply_damage(2, TOX)
+
+/datum/reagent/arithrazine/on_overdose_critical(mob/living/M)
+	M.apply_damages(1, 1, 3)
+
 /datum/reagent/russianred
 	name = "Russian Red"
 	id = "russianred"

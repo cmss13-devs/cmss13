@@ -235,7 +235,6 @@ proc/populate_seed_list()
 			"phoron",
 			"synaptizine",
 			"impedrezene",
-			"hyronalin",
 			"peridaxon",
 			"toxin",
 			"rezadone",

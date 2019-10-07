@@ -179,10 +179,9 @@
 #define LIMB_DESTROYED 2 //limb is missing
 #define LIMB_ROBOT 4
 #define LIMB_SPLINTED 8
-#define LIMB_NECROTIZED 16 //necrotizing limb, nerves are dead.
-#define LIMB_MUTATED 32 //limb is deformed by mutations
-#define LIMB_AMPUTATED 64 //limb was amputated cleanly or destroyed limb was cleaned up, thus causing no pain
-#define LIMB_REPAIRED 128 //we just repaired the bone, stops the gelling after setting
+#define LIMB_MUTATED 16 //limb is deformed by mutations
+#define LIMB_AMPUTATED 32 //limb was amputated cleanly or destroyed limb was cleaned up, thus causing no pain
+#define LIMB_REPAIRED 64 //we just repaired the bone, stops the gelling after setting
 
 
 /////////////////MOVE DEFINES//////////////////////
@@ -196,9 +195,6 @@
 
 ///////////////SURGERY DEFINES///////////////
 #define SPECIAL_SURGERY_INVALID	"special_surgery_invalid"
-
-#define NECRO_TREAT_MIN_DURATION 40
-#define NECRO_TREAT_MAX_DURATION 60
 
 #define HEMOSTAT_MIN_DURATION 40
 #define HEMOSTAT_MAX_DURATION 60

@@ -163,7 +163,7 @@ datum/controller/vote
 
 	proc/submit_vote(var/ckey, var/vote)
 		if(mode)
-			if(config.vote_no_dead && usr.stat == DEAD && !usr.client.admin_holder)
+			if(config.vote_no_dead && usr.stat == DEAD && (!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD)))
 				return 0
 			if(current_votes[ckey])
 				choices[choices[current_votes[ckey]]]--
@@ -298,22 +298,22 @@ datum/controller/vote
 				usr << browse(null, "window=vote")
 				return
 			if("cancel")
-				if(usr.client.admin_holder)
+				if(usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))
 					reset()
 			if("toggle_restart")
-				if(usr.client.admin_holder)
+				if(usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))
 					config.allow_vote_restart = !config.allow_vote_restart
 			if("toggle_gamemode")
-				if(usr.client.admin_holder)
+				if(usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))
 					config.allow_vote_mode = !config.allow_vote_mode
 			if("restart")
-				if(config.allow_vote_restart || usr.client.admin_holder)
+				if(config.allow_vote_restart || (usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD)))
 					initiate_vote("restart",usr.key)
 			if("gamemode")
-				if(config.allow_vote_mode || usr.client.admin_holder)
+				if(config.allow_vote_mode || (usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD)))
 					initiate_vote("gamemode",usr.key)
 			if("custom")
-				if(usr.client.admin_holder)
+				if(usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))
 					initiate_vote("custom",usr.key)
 			else
 				submit_vote(usr.ckey, round(text2num(href_list["vote"])))

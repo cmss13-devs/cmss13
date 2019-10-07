@@ -39,7 +39,7 @@ var/global/normal_ooc_colour = "#002eb8"
 		to_chat(src, SPAN_DANGER("You have OOC muted."))
 		return
 
-	if(!admin_holder)
+	if(!admin_holder || !(usr.client.admin_holder.rights & R_MOD))
 		if(!ooc_allowed)
 			to_chat(src, SPAN_DANGER("OOC is globally muted"))
 			return
@@ -61,7 +61,7 @@ var/global/normal_ooc_colour = "#002eb8"
 	STUI.ooc.Add("\[[time_stamp()]] <font color='#display_colour'>OOC: [mob.name]/[key]: [msg]</font><br>")
 	STUI.processing |= 4
 	var/display_colour = normal_ooc_colour
-	if(admin_holder && !admin_holder.fakekey)
+	if(admin_holder && !admin_holder.fakekey && (admin_holder.rights & R_MENTOR) != R_MENTOR)
 		display_colour = "#2e78d9"	//light blue
 		if(admin_holder.rights & R_MOD && !(admin_holder.rights & R_ADMIN))
 			display_colour = "#184880"	//dark blue
@@ -78,7 +78,7 @@ var/global/normal_ooc_colour = "#002eb8"
 	for(var/client/C in clients)
 		if(C.prefs.toggles_chat & CHAT_OOC)
 			var/display_name = src.key
-			if(admin_holder)
+			if(admin_holder && (admin_holder.rights & R_MOD))
 				if(admin_holder.fakekey)
 					if(C.admin_holder)
 						display_name = "[admin_holder.fakekey]/([src.key])"
@@ -153,7 +153,7 @@ var/global/normal_ooc_colour = "#002eb8"
 		to_chat(src, SPAN_DANGER("You have LOOC muted."))
 		return
 
-	if(!admin_holder)
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		if(!looc_allowed)
 			to_chat(src, SPAN_DANGER("LOOC is globally muted"))
 			return
@@ -186,11 +186,11 @@ var/global/normal_ooc_colour = "#002eb8"
 		if(!M.client)
 			continue
 		var/client/C = M.client
-		if (C in admins)
+		if (C.admin_holder && (C.admin_holder.rights & R_MOD))
 			continue //they are handled after that
 
 		if(C.prefs.toggles_chat & CHAT_LOOC)
-			if(admin_holder)
+			if(admin_holder && (admin_holder.rights & R_MOD))
 				if(admin_holder.fakekey)
 					if(C.admin_holder)
 						display_name = "[admin_holder.fakekey]/([src.key])"

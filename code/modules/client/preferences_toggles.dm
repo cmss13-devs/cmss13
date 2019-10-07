@@ -62,7 +62,7 @@
 	prefs.toggles_chat ^= CHAT_DEAD
 	prefs.save_preferences()
 
-	if(src.admin_holder)
+	if(src.admin_holder && (admin_holder.rights & R_MOD))
 		to_chat(src, "You will [(prefs.toggles_chat & CHAT_DEAD) ? "now" : "no longer"] see deadchat.")
 	else
 		to_chat(src, "As a ghost, you will [(prefs.toggles_chat & CHAT_DEAD) ? "now" : "no longer"] see deadchat.")

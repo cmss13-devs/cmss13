@@ -2,7 +2,7 @@
 /client/proc/cmd_admin_pm_context(mob/M as mob in mob_list)
 	set category = null
 	set name = "Admin PM Mob"
-	if(!admin_holder)
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "<font color='red'>Error: Admin-PM-Context: Only administrators may use this command.</font>")
 		return
 	if( !ismob(M) || !M.client )	return
@@ -13,7 +13,7 @@
 /client/proc/cmd_admin_pm_panel()
 	set category = "Admin"
 	set name = "Admin PM"
-	if(!admin_holder)
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "<font color='red'>Error: Admin-PM-Panel: Only administrators may use this command.</font>")
 		return
 	var/list/client/targets[0]
@@ -42,7 +42,7 @@
 		return
 
 	if(!istype(C,/client))
-		if(admin_holder)	to_chat(src, "<font color='red'>Error: Private-Message: Client not found.</font>")
+		if(admin_holder && (admin_holder.rights & R_MOD))	to_chat(src, "<font color='red'>Error: Private-Message: Client not found.</font>")
 		else		to_chat(src, "<font color='red'>Error: Private-Message: Client not found. They may have lost connection, so try using an adminhelp!</font>")
 		return
 
@@ -52,7 +52,7 @@
 
 		if(!msg)	return
 		if(!C)
-			if(admin_holder)	to_chat(src, "<font color='red'>Error: Admin-PM: Client not found.</font>")
+			if(admin_holder && (admin_holder.rights & R_MOD))	to_chat(src, "<font color='red'>Error: Admin-PM: Client not found.</font>")
 			else		to_chat(src, "<font color='red'>Error: Private-Message: Client not found. They may have lost connection, so try using an adminhelp!</font>")
 			return
 
@@ -69,32 +69,31 @@
 	var/recieve_pm_type = "Player"
 
 
-	if(admin_holder)
+	if(admin_holder && (admin_holder.rights & R_MOD))
 		//PMs sent from admins and mods display their rank
-		if(admin_holder)
-			recieve_color = "#009900"
-			send_pm_type = admin_holder.rank + " "
-			if(!C.admin_holder && admin_holder && admin_holder.fakekey)
-				recieve_pm_type = "Admin"
-			else
-				recieve_pm_type = admin_holder.rank
-			// Automatically link certain phrases from staff.
-			msg = replacetext(msg,"T:Marine","<a href=\"https://cm-ss13.com/wiki/Marine_Quickstart_Guide\">Marine Quickstart Guide</a>")
-			msg = replacetext(msg,"T:Xeno","<a href=\"https://cm-ss13.com/wiki/Xeno_Quickstart_Guide\">Xeno Quickstart Guide</a>")
-			msg = replacetext(msg,"T:Rules","<a href=\"https://cm-ss13.com/wiki/Rules\">Rules Page</a>")
-			msg = replacetext(msg,"T:Law","<a href=\"https://cm-ss13.com/wiki/Marine_Law\">Marine Law</a>")
-			msg = replacetext(msg,"T:Forums","<a href=\"https://cm-ss13.com/\">Forums</a>")
-			msg = replacetext(msg,"T:Wiki","<a href=\"https://cm-ss13.com/wiki/Main_Page\">Wiki</a>")
-			msg = replacetext(msg,"T:Gitlab","<a href=\"https://gitlab.com/cmdevs/ColonialMarines/issues\">Gitlab</a>")
-			msg = replacetext(msg,"T:APC","<a href=\"https://cm-ss13.com/wiki/Guide_to_Engineering#APC_Maintenance\">APC Repair</a>")
+		recieve_color = "#009900"
+		send_pm_type = admin_holder.rank + " "
+		if(!C.admin_holder && admin_holder && admin_holder.fakekey)
+			recieve_pm_type = "Admin"
+		else
+			recieve_pm_type = admin_holder.rank
+		// Automatically link certain phrases from staff.
+		msg = replacetext(msg,"T:Marine","<a href=\"https://cm-ss13.com/wiki/Marine_Quickstart_Guide\">Marine Quickstart Guide</a>")
+		msg = replacetext(msg,"T:Xeno","<a href=\"https://cm-ss13.com/wiki/Xeno_Quickstart_Guide\">Xeno Quickstart Guide</a>")
+		msg = replacetext(msg,"T:Rules","<a href=\"https://cm-ss13.com/wiki/Rules\">Rules Page</a>")
+		msg = replacetext(msg,"T:Law","<a href=\"https://cm-ss13.com/wiki/Marine_Law\">Marine Law</a>")
+		msg = replacetext(msg,"T:Forums","<a href=\"https://cm-ss13.com/\">Forums</a>")
+		msg = replacetext(msg,"T:Wiki","<a href=\"https://cm-ss13.com/wiki/Main_Page\">Wiki</a>")
+		msg = replacetext(msg,"T:Gitlab","<a href=\"https://gitlab.com/cmdevs/ColonialMarines/issues\">Gitlab</a>")
+		msg = replacetext(msg,"T:APC","<a href=\"https://cm-ss13.com/wiki/Guide_to_Engineering#APC_Maintenance\">APC Repair</a>")
 
-	else if(!C.admin_holder)
+	else if(!C.admin_holder || !(C.admin_holder.rights & R_MOD))
 		to_chat(src, "<font color='red'>Error: Admin-PM: Non-admin to non-admin PM communication is forbidden.</font>")
 		return
 
 	var/recieve_message = ""
 
-	if(admin_holder && !C.admin_holder)
+	if(admin_holder && (!C.admin_holder || !(C.admin_holder.rights & R_MOD)))
 		recieve_message = "<font color='[recieve_color]'><b>-- Click the [recieve_pm_type]'s name to reply --</b></font>\n"
 		if(C.adminhelped)
 			to_chat(C, recieve_message)

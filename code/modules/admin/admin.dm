@@ -63,7 +63,7 @@ var/global/floorIsLava = 0
 		return
 	if (!istype(src,/datum/admins))
 		src = usr.client.admin_holder
-	if (!istype(src,/datum/admins))
+	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
 		to_chat(usr, "Error: you are not an admin!")
 		return
 
@@ -175,7 +175,7 @@ var/global/floorIsLava = 0
 	set name = "Player Notes List"
 	if (!istype(src,/datum/admins))
 		src = usr.client.admin_holder
-	if (!istype(src,/datum/admins))
+	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
 		to_chat(usr, "Error: you are not an admin!")
 		return
 	PlayerNotesPage(1)
@@ -233,7 +233,7 @@ var/global/floorIsLava = 0
 	set name = "Player Notes Show"
 	if (!istype(src,/datum/admins))
 		src = usr.client.admin_holder
-	if (!istype(src,/datum/admins))
+	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
 		to_chat(usr, "Error: you are not an admin!")
 		return
 	var/dat = "<html><head><title>Info on [key]</title></head>"
@@ -274,7 +274,7 @@ var/global/floorIsLava = 0
 	set name = "Player Notes Copy"
 	if (!istype(src,/datum/admins))
 		src = usr.client.admin_holder
-	if (!istype(src,/datum/admins))
+	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
 		to_chat(usr, "Error: you are not an admin!")
 		return
 	var/dat = "<html><head><title>Copying notes for [key]</title></head>"
@@ -452,7 +452,7 @@ var/global/floorIsLava = 0
 	set category = "Server"
 	set name = "Restart"
 	set desc="Restarts the world"
-	if (!usr.client.admin_holder)
+	if (!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
 		return
 	var/confirm = alert("Restart the game world?", "Restart", "Yes", "Cancel")
 	if(confirm == "Cancel")
@@ -691,7 +691,7 @@ var/global/floorIsLava = 0
 	set category = "Server"
 	set desc="Reboots the server post haste"
 	set name="Immediate Reboot"
-	if(!usr.client.admin_holder)	return
+	if(!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))	return
 	if( alert("Reboot server?",,"Yes","No") == "No")
 		return
 	to_world(SPAN_DANGER("<b>Rebooting world!</b> \blue Initiated by [usr.client.admin_holder.fakekey ? "Admin" : usr.key]!"))
@@ -813,7 +813,7 @@ var/global/floorIsLava = 0
 	set name = "Update Mob Sprite"
 	set desc = "Should fix any mob sprite update errors."
 
-	if (!admin_holder)
+	if (!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 

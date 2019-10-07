@@ -361,7 +361,7 @@ client
 
 /client/proc/view_var_Topic(href, href_list, hsrc)
 	//This should all be moved over to datum/admins/Topic() or something ~Carn
-	if( (usr.client != src) || !src.admin_holder )
+	if( (usr.client != src) || !src.admin_holder || !(admin_holder.rights & R_MOD) )
 		return
 	if(href_list["Vars"])
 		debug_variables(locate(href_list["Vars"]))

@@ -1210,7 +1210,7 @@
 					if(H)
 						for(var/content in H.contents)
 							var/obj/item/alien_embryo/A = content
-							if(A)
+							if(A && istype(A))
 								if(A.counter)
 									A.counter = max(A.counter - 1+potency,0)
 									H.take_limb_damage(0,0.2*potency)

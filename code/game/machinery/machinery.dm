@@ -232,7 +232,8 @@ Class Procs:
 	src.add_fingerprint(usr)
 
 	var/area/A = get_area(src)
-	A.master.powerupdate = 1
+	if(A)
+		A.master.powerupdate = 1
 
 	return 0
 

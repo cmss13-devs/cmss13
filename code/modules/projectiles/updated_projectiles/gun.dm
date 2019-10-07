@@ -191,38 +191,46 @@
 
 /obj/item/weapon/gun/proc/handle_random_attachments(var/randchance)
 	var/attachmentchoice
+	var/success = FALSE
 
 	if(prob(randchance)) // Rail
 		attachmentchoice = safepick(random_spawn_rail)
 		if(attachmentchoice)
 			var/obj/item/attachable/R = new attachmentchoice(src)
 			R.Attach(src)
+			update_attachable(R.slot)
 			attachmentchoice = FALSE
+			success = TRUE
 
 	if(prob(randchance)) // Muzzle
 		attachmentchoice = safepick(random_spawn_muzzle)
 		if(attachmentchoice)
 			var/obj/item/attachable/M = new attachmentchoice(src)
 			M.Attach(src)
+			update_attachable(M.slot)
 			attachmentchoice = FALSE
+			success = TRUE
 
 	if(prob(randchance)) // Underbarrel
 		attachmentchoice = safepick(random_spawn_underbarrel)
 		if(attachmentchoice)
 			var/obj/item/attachable/U = new attachmentchoice(src)
 			U.Attach(src)
+			update_attachable(U.slot)
 			attachmentchoice = FALSE
+			success = TRUE
 
 	if(prob(randchance)) // Stock
 		attachmentchoice = safepick(random_spawn_stock)
 		if(attachmentchoice)
 			var/obj/item/attachable/S = new attachmentchoice(src)
 			S.Attach(src)
+			update_attachable(S.slot)
 			attachmentchoice = FALSE
+			success = TRUE
 
-	spawn(5) // necessary because attachment locations are defined later
-		update_icon()
-
+	if(success)
+		add_timer(CALLBACK(src, .proc/update_icon), 5)
 
 
 //Hotfix for attachment offsets being set AFTER the core New() proc. Causes a small graphical artifact when spawning, hopefully works even with lag

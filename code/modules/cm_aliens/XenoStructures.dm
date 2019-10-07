@@ -63,7 +63,7 @@
 		return 0
 	if(M.a_intent == HELP_INTENT)
 		M.visible_message(SPAN_WARNING("\The [M] creepily taps on [src] with its huge claw."), \
-			SPAN_WARNING("You creepily tap on [src]."), 5)
+			SPAN_WARNING("You creepily tap on [src]."), null, 5)
 	else
 		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
 		SPAN_XENONOTICE("You claw \the [src]."))

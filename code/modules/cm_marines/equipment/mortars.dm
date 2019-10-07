@@ -263,7 +263,7 @@
 	icon_state = "mortar_ammo_frag"
 
 /obj/item/mortar_shell/frag/detonate(var/turf/T)
-	create_shrapnel(T, 60, , initial(name), source_mob)
+	create_shrapnel(T, 60, shrapnel_source = initial(name), shrapnel_source_mob = source_mob)
 	sleep(2)
 	cell_explosion(T, 60, 20, null, initial(name), source_mob)
 

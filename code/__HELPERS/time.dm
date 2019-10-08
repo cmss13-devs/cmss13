@@ -59,6 +59,10 @@ var/rollovercheck_last_timeofday = 0
 /proc/duration2text(time = world.time) // Shows current time starting at 0:00
 	return "[round(time / HOURS_1)]:[(time / MINUTES_1 % 60) < 10 ? add_zero(time / MINUTES_1 % 60, 1) : time / MINUTES_1 % 60]"
 
+/proc/duration2text_sec(time = world.time) // shows minutes:seconds
+	return "[(time / MINUTES_1 % 60) < 10 ? add_zero(time / MINUTES_1 % 60, 1) : time / MINUTES_1 % 60]:[(time / SECONDS_1 % 60) < 10 ? add_zero(time / SECONDS_1 % 60, 1) : time / SECONDS_1 % 60]"
+
+
 /proc/text2duration(text = "00:00") // Attempts to convert time text back to time value
 	var/split_text = splittext(text, ":")
 	var/time_hours = text2num(split_text[1]) * HOURS_1

@@ -476,13 +476,13 @@
 		list("Gas mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, "black"),
 
 		list("KITS", 0, null, null, null),
-		list("Combat Technician Support Kit", 45, /obj/item/storage/box/kit/mini_engineer, null, "black"),
+		list("Combat Technician Support Kit", 30, /obj/item/storage/box/kit/mini_engineer, null, "black"),
 		list("First Responder Medical Support Kit", 45, /obj/item/storage/box/kit/mini_medic, null, "black"),
 		list("Frontline M40 Grenadier Kit", 45, /obj/item/storage/box/kit/mini_grenadier, null, "black"),
-		list("L42-MK1 Sniper Kit", 45, /obj/item/storage/box/kit/mini_sniper, null, "black"),
+		list("L42-MK1 Sniper Kit", 30, /obj/item/storage/box/kit/mini_sniper, null, "black"),
 		list("M240 Pyrotechnician Support Kit", 45, /obj/item/storage/box/kit/mini_pyro, null, "black"),
 		list("Personal Self Defense Kit", 45, /obj/item/storage/box/kit/self_defense, null, "black"),
-		list("Veteran Enlisted Kit", 45, /obj/item/storage/box/kit/veteran_enlist, null, "black"),
+		list("Veteran Enlisted Kit", 30, /obj/item/storage/box/kit/veteran_enlist, null, "black"),
 
 		list("ATTACHMENTS", 0, null, null, null),
 		list("Angled grip", 15, /obj/item/attachable/angledgrip, null, "black"),

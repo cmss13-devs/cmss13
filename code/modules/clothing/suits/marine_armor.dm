@@ -634,29 +634,6 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 			to_chat(M, SPAN_WARNING("You are not trained to use [src]!"))
 			return 0
 
-/obj/item/clothing/suit/storage/marine/sniper
-	name = "\improper M3 pattern sniper armor"
-	desc = "A custom modified set of M3 armor designed for recon missions."
-	icon_state = "marine_sniper"
-	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
-	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
-	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
-	armor_rad = CLOTHING_ARMOR_MEDIUM
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	storage_slots = 2
-	slowdown = SLOWDOWN_ARMOR_LIGHT
-	specialty = "M3 pattern sniper"
-	//uniform_restricted = list(/obj/item/clothing/under/marine/sniper) //TODO : This item exists, but isn't implemented yet. Makes sense otherwise
-
-/obj/item/clothing/suit/storage/marine/sniper/jungle
-	name = "\improper M3 pattern jungle sniper armor"
-	icon_state = "marine_sniperm"
-	slowdown = SLOWDOWN_ARMOR_LIGHT
-	specialty = "M3 pattern jungle sniper"
-
 /obj/item/clothing/suit/storage/marine/ghillie
 	name = "\improper M45 pattern ghillie armor"
 	desc = "A lightweight ghillie camouflage suit, used by USCM snipers on recon missions. Very lightweight, but doesn't protect much."
@@ -670,7 +647,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 2
-	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
+	slowdown = SLOWDOWN_ARMOR_LIGHT
 	specialty = "M45 pattern ghillie"
 
 /obj/item/clothing/suit/storage/marine/ghillie/mob_can_equip(mob/M, slot, disable_warning = 0)

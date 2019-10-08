@@ -45,28 +45,18 @@
 /obj/item/storage/box/spec/sniper/New()
 	..()
 	spawn(1)
-		new /obj/item/clothing/suit/storage/marine/sniper(src)
+		new /obj/item/clothing/suit/storage/marine/ghillie(src)
+		new /obj/item/clothing/head/helmet/marine/ghillie(src)
 		new /obj/item/clothing/glasses/night/m42_night_goggles(src)
 		new /obj/item/ammo_magazine/sniper(src)
 		new /obj/item/ammo_magazine/sniper/incendiary(src)
 		new /obj/item/ammo_magazine/sniper/flak(src)
-		new /obj/item/device/binoculars(src)
 		new /obj/item/storage/backpack/marine/smock(src)
 		new /obj/item/weapon/gun/pistol/vp78(src)
 		new /obj/item/ammo_magazine/pistol/vp78(src)
 		new /obj/item/ammo_magazine/pistol/vp78(src)
 		new /obj/item/weapon/gun/rifle/sniper/M42A(src)
-
-/obj/item/storage/box/spec/sniper/open(mob/user) //A ton of runtimes were caused by ticker being null, so now we do the special items when its first opened
-	if(!opened) //First time opening it, so add the round-specific items
-		if(map_tag)
-			switch(map_tag)
-				if(MAP_ICE_COLONY)
-					new /obj/item/clothing/head/helmet/marine(src)
-				else
-					new /obj/item/clothing/head/helmet/durag(src)
-					new /obj/item/facepaint/sniper(src)
-	..()
+		new /obj/item/facepaint/sniper(src)
 
 
 /obj/item/storage/box/spec/scout
@@ -157,27 +147,6 @@
 		new /obj/item/clothing/head/helmet/marine/specialist(src)
 		new /obj/item/clothing/suit/storage/marine/specialist(src)
 
-
-/obj/item/storage/box/spec/antitank_rifle
-	name = "\improper XM42B anti-tank rifle case"
-	desc = "A large case containing sniper armour, a Mod 88, binoculars, a sniper smock and an experimental XM42B anti-tank rifle. Drag this sprite onto yourself to open it up!\nNOTE: You cannot put items back inside this case."
-	icon_state = "sniper_case"
-	spec_set = "sniper"
-
-/obj/item/storage/box/spec/antitank_rifle/New()
-	..()
-	spawn(1)
-		new /obj/item/device/binoculars(src)
-		new /obj/item/storage/backpack/marine/smock(src)
-		new /obj/item/weapon/gun/pistol/mod88(src)
-		new /obj/item/ammo_magazine/pistol/mod88(src)
-		new /obj/item/ammo_magazine/pistol/mod88(src)
-		new /obj/item/weapon/gun/rifle/sniper/M42B(src)
-		new /obj/item/clothing/suit/storage/marine/ghillie(src)
-		new /obj/item/clothing/head/helmet/marine/ghillie(src)
-		new /obj/item/ammo_magazine/sniper/anti_tank(src)
-		new /obj/item/ammo_magazine/sniper/anti_tank(src)
-		new /obj/item/ammo_magazine/sniper/anti_tank(src)
 
 var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "Demo" = 2)
 

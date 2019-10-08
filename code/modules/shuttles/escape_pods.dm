@@ -305,7 +305,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 			var/mob/living/carbon/human/M = G.grabbed_thing
 			if(!istype(M)) r_FAL
 
-			visible_message(SPAN_WARNING("[user] starts putting [M.name] into the cryo pod."), 3)
+			visible_message(SPAN_WARNING("[user] starts putting [M.name] into the cryo pod."), null, 3)
 
 			if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				if(!M || !G || !G.grabbed_thing || !G.grabbed_thing.loc || G.grabbed_thing != M) r_FAL

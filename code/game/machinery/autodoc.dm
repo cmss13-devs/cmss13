@@ -332,6 +332,7 @@
 							if(W.internal)
 								sleep(FIXVEIN_MAX_DURATION*surgery_mod)
 								S.limb_ref.wounds -= W
+								S.limb_ref.remove_all_bleeding(FALSE, TRUE)
 								qdel(W)
 						if(!surgery) break
 						close_incision(H,S.limb_ref)

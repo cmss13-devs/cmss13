@@ -17,6 +17,11 @@
 		if(M.client && (!M.client.admin_holder || !(M.client.admin_holder.rights & R_MOD)))	// Send to marines who are non-staff
 			to_chat(M, SPAN_MOOC("MOOC: [src.key]([src.admin_holder.rank]): [msg]"))
 
+	var/list/synthetics = getsynths()
+	for(var/mob/M in synthetics)
+		if(M.client && !M.client.admin_holder)
+			to_chat(M, SPAN_MOOC("MOOC: [src.key]([src.admin_holder.rank]): [msg]"))
+
 	for(var/mob/dead/observer/M in player_list)
 		if(M.client && !M.client.admin_holder)	// Send to observers who are non-staff
 			to_chat(M, SPAN_MOOC("MOOC: [src.key]([src.admin_holder.rank]): [msg]"))

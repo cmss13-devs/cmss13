@@ -172,8 +172,10 @@
 	..()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 13, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 	var/obj/item/attachable/S = new /obj/item/attachable/scope/slavic(src)
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	S = new /obj/item/attachable/slavicbarrel(src)
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	S = new /obj/item/attachable/stock/slavic(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE

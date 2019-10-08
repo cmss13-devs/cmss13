@@ -84,6 +84,9 @@
 	else
 		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
 
+/mob/living/carbon/Xenomorph/view_objective_memory()
+	set hidden = 1
+	return
 
 /mob/verb/abandon_mob()
 	set name = "Respawn"

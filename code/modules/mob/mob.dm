@@ -144,7 +144,7 @@
 	var/view_dist = 7
 	if(max_distance) view_dist = max_distance
 	for(var/mob/M in viewers(view_dist, src))
-		M.show_message( message, 1, blind_message, 2)
+		M.show_message(message, 1, blind_message, 2)
 
 
 /mob/proc/findname(msg)

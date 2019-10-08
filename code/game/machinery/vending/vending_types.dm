@@ -466,8 +466,8 @@
 	//everything after the power cell had no amounts, I improvised.  -Sayu
 
 /obj/structure/machinery/vending/walkman  
-	name = "Walkman vendor"
-	desc = "It vends walkmans. How surprising"
+	name = "Rec-Vend"
+	desc = "It vends Weyland-Yutani approved recreational items, like Walkmans and Cards."
 	icon_state = "walkman"
 	products = list(/obj/item/device/walkman = 50,
 					/obj/item/device/cassette_tape/pop1 = 9,
@@ -476,6 +476,8 @@
 					/obj/item/device/cassette_tape/pop4 = 9,
 					/obj/item/device/cassette_tape/heavymetal = 9,
 					/obj/item/device/cassette_tape/hairmetal = 9,
+					/obj/item/toy/deck = 3,
+					/obj/item/toy/deck/uno = 3,
 					)
 
 /obj/structure/machinery/vending/walkman/stock(obj/item/item_to_stock, mob/user)

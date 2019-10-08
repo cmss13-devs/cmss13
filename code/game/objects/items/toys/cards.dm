@@ -1,28 +1,69 @@
 /datum/playingcard
 	var/name = "playing card"
 	var/card_icon = "card_back"
+	var/back_icon = "card_back"
 
 /obj/item/toy/deck
 	name = "deck of cards"
 	desc = "A simple deck of playing cards."
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "deck"
+	var/base_icon = "deck"
+	var/max_cards = 52
 	w_class = SIZE_TINY
 
 	var/list/cards = list()
 
 /obj/item/toy/deck/New()
 	..()
+	populate_deck()
 
+/obj/item/toy/deck/proc/populate_deck()
 	var/datum/playingcard/P
 	for(var/suit in list("spades","clubs","diamonds","hearts"))
-
 		for(var/number in list("ace","two","three","four","five","six","seven","eight","nine","ten","jack","queen","king"))
 			P = new()
 			P.name = "[number] of [suit]"
 			P.card_icon = "[suit]_[number]"
+			P.back_icon = "back_[base_icon]"
 			cards += P
 
+/obj/item/toy/deck/uno
+	name = "deck of UNO cards"
+	desc = "A simple deck of the Weyland-Yutani classic UNO playing cards."
+	icon_state = "deck_uno"
+	base_icon = "deck_uno"
+	max_cards = 108
+
+/obj/item/toy/deck/uno/populate_deck()
+	var/datum/playingcard/P
+
+	//wild cards
+	for(var/i = 1 to 4)
+		for(var/suit in list("wild","wild-draw-four"))
+			P = new()
+			P.name = "[suit]"
+			P.card_icon = "[suit]"
+			P.back_icon = "back_[base_icon]"
+			cards += P
+
+	//color cards
+	for(var/suit in list("red","purple","blue","yellow"))
+		//1 zero per color
+		P = new()
+		P.name = "[suit] zero"
+		P.card_icon = "[suit]_zero"
+		P.back_icon = "back_[base_icon]"
+		cards += P
+
+		//2 of each 1-9, skip, draw 2, reverse per color
+		for(var/i = 1 to 2)
+			for(var/number in list("one","two","three","four","five","six","seven","eight","nine","skip","draw-two","reverse"))
+				P = new()
+				P.name = "[suit] [number]"
+				P.card_icon = "[suit]_[number]"
+				P.back_icon = "back_[base_icon]"
+				cards += P
 
 /obj/item/toy/deck/attackby(obj/item/O, mob/user)
 	if(istype(O,/obj/item/toy/handcard))
@@ -36,13 +77,11 @@
 	..()
 
 /obj/item/toy/deck/update_icon()
-	switch(cards.len)
-		if(52) icon_state = "deck"
-		if(1 to 51) icon_state = "deck_open"
-		if(0) icon_state = "deck_empty"
+	if(cards.len == max_cards) icon_state = base_icon
+	else if(cards.len == 0) icon_state = "[base_icon]_empty"
+	else icon_state = "[base_icon]_open"
 
 /obj/item/toy/deck/verb/draw_card()
-
 	set category = "Object"
 	set name = "Draw"
 	set desc = "Draw a card from a deck."
@@ -79,7 +118,6 @@
 	to_chat(user, "It's the [P].")
 
 /obj/item/toy/deck/verb/deal_card()
-
 	set category = "Object"
 	set name = "Deal"
 	set desc = "Deal a card from a deck."
@@ -116,14 +154,13 @@
 	H.concealed = 1
 	H.update_icon()
 	update_icon()
-	if(user==target)
+	if(user == target)
 		user.visible_message("\The [user] deals a card to \himself.")
 	else
 		user.visible_message("\The [user] deals a card to \the [target].")
-	H.throw_at(get_step(target,target.dir),10,1,H)
+	H.throw_at(get_step(target,target.dir), 10, 1, H)
 
 /obj/item/toy/deck/attack_self(var/mob/user as mob)
-
 	var/list/newcards = list()
 	while(cards.len)
 		var/datum/playingcard/P = pick(cards)
@@ -134,7 +171,6 @@
 
 /obj/item/toy/deck/MouseDrop(atom/over)
 	if(!usr || !over) return
-	if(!Adjacent(usr) || !over.Adjacent(usr)) return // should stop you from dragging through windows
 
 	if(!ishuman(over) || !(over in viewers(3))) return
 
@@ -143,8 +179,6 @@
 		return
 
 	deal_at(usr, over)
-
-
 
 /obj/item/toy/handcard
 	name = "hand of cards"
@@ -174,7 +208,6 @@
 	..()
 
 /obj/item/toy/handcard/verb/discard()
-
 	set category = "Object"
 	set name = "Discard"
 	set desc = "Place a card from your hand in front of you."
@@ -222,7 +255,7 @@
 		if((!concealed || loc == user))
 			to_chat(user, "The cards are: ")
 			for(var/datum/playingcard/P in cards)
-				to_chat(user, "The [P.name].")
+				to_chat(user, "A [P.name].")
 
 /obj/item/toy/handcard/update_icon(var/direction = 0)
 	if(cards.len > 1)
@@ -239,7 +272,7 @@
 
 	if(cards.len == 1)
 		var/datum/playingcard/P = cards[1]
-		var/image/I = new(src.icon, (concealed ? "card_back" : "[P.card_icon]") )
+		var/image/I = new(src.icon, (concealed ? P.back_icon : P.card_icon))
 		I.pixel_x += (-5+rand(10))
 		I.pixel_y += (-5+rand(10))
 		overlays += I
@@ -251,28 +284,27 @@
 	if(direction)
 		switch(direction)
 			if(NORTH)
-				M.Translate( 0,  0)
+				M.Translate(0, 0)
 			if(SOUTH)
-				M.Translate( 0,  4)
+				M.Translate(0, 4)
 			if(WEST)
 				M.Turn(90)
-				M.Translate( 3,  0)
+				M.Translate(3, 0)
 			if(EAST)
 				M.Turn(90)
-				M.Translate(-2,  0)
+				M.Translate(-2, 0)
 	var/i = 0
 	for(var/datum/playingcard/P in cards)
-		var/image/I = new(src.icon, (concealed ? "card_back" : "[P.card_icon]") )
-		//I.pixel_x = origin+(offset*i)
+		var/image/I = new(src.icon, (concealed ? P.back_icon : P.card_icon))
 		switch(direction)
 			if(SOUTH)
-				I.pixel_x = 8-(offset*i)
+				I.pixel_x = 8 - (offset*i)
 			if(WEST)
-				I.pixel_y = -6+(offset*i)
+				I.pixel_y = -6 + (offset*i)
 			if(EAST)
-				I.pixel_y = 8-(offset*i)
+				I.pixel_y = 8 - (offset*i)
 			else
-				I.pixel_x = -7+(offset*i)
+				I.pixel_x = -7 + (offset*i)
 		I.transform = M
 		overlays += I
 		i++

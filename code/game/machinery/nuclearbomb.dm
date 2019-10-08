@@ -7,9 +7,11 @@ var/bomb_set = FALSE
 	icon_state = "nuclearbomb0"
 	density = 1
 	unacidable = 1
+	anchored = 0
 	var/timing = FALSE
 	var/deployable = FALSE
-	var/timeleft = 480
+	var/explosion_time = null
+	var/timeleft = 4800
 	var/safety = TRUE
 	var/being_used = FALSE
 	var/end_round = TRUE
@@ -18,12 +20,15 @@ var/bomb_set = FALSE
 	req_access = list(ACCESS_MARINE_PREP)
 	flags_atom = FPRINT
 
+/obj/structure/machinery/nuclearbomb/power_change()
+	return
+
 /obj/structure/machinery/nuclearbomb/process()
 	. = ..()
 	if(timing)
 		bomb_set = TRUE //So long as there is one nuke timing, it means one nuke is armed.
-		timeleft--
-		if(timeleft <= 0)
+		timeleft = explosion_time - world.time
+		if(world.time >= explosion_time)
 			explode()
 	else
 		stop_processing()
@@ -65,12 +70,14 @@ var/bomb_set = FALSE
 	if(user.is_mob_incapacitated() || !user.canmove || get_dist(src, user) > 1 || isAI(user) || being_used)
 		return
 
+	var/timer = duration2text_sec(timeleft)
+
 	var/data[0]
 	data = list(
 		"anchor" = anchored,
 		"safety" = safety,
 		"timing" = timing,
-		"timeleft" = timeleft
+		"timeleft" = timer
 	)
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -150,9 +157,10 @@ var/bomb_set = FALSE
 					icon_state = "nuclearbomb2"
 					if(!safety)
 						bomb_set = TRUE
+						explosion_time = world.time + timeleft
 						start_processing()
 						var/name = "[MAIN_AI_SYSTEM] Nuclear Tracker"
-						var/input = "ALERT.\n\nNUCLEAR EXPLOSIVE ORDINANCE ACTIVATED.\n\nDETONATION IN [timeleft] SECONDS."
+						var/input = "ALERT.\n\nNUCLEAR EXPLOSIVE ORDINANCE ACTIVATED.\n\nDETONATION IN [timeleft/10] SECONDS."
 						marine_announcement(input, name, 'sound/misc/notice1.ogg')
 					else
 						bomb_set = FALSE
@@ -213,6 +221,8 @@ var/bomb_set = FALSE
 		return
 	timing = FALSE
 	bomb_set = FALSE
+	timeleft = explosion_time - world.time
+	explosion_time = null
 	var/name = "[MAIN_AI_SYSTEM] Nuclear Tracker"
 	var/input = "ALERT.\n\nNUCLEAR EXPLOSIVE ORDINANCE DEACTIVATED"
 	marine_announcement(input, name, 'sound/misc/notice1.ogg')

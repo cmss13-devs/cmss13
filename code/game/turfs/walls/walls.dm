@@ -23,10 +23,8 @@
 	var/damage_overlay
 	var/global/damage_overlays[8]
 
-	var/current_bulletholes = 0
-	var/bullethole_increment = 1
-	var/bullethole_state = 0
-	var/image/bullethole_overlay
+	var/current_bulletholes = null
+	var/image/bullet_overlay = null
 	var/list/wall_connections = list("0", "0", "0", "0")
 	var/neighbors_list = 0
 	var/max_temperature = 1800 //K, walls will take damage if they're next to a fire hotter than this
@@ -46,6 +44,7 @@
 	sleep(5)
 	update_connections(1)
 	update_icon()
+
 
 /turf/closed/wall/ChangeTurf(newtype)
 	if(acided_hole)

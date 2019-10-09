@@ -177,7 +177,7 @@
 	desc = "It's milk. White and nutritious goodness!"
 	icon_state = "milk"
 	item_state = "carton"
-	center_of_mass = list("x"=16, "y"=9)
+	center_of_mass = "x=16;y=9"
 	New()
 		..()
 		reagents.add_reagent("milk", 50)
@@ -201,7 +201,7 @@
 	desc = "It's soy milk. White and nutritious goodness!"
 	icon_state = "soymilk"
 	item_state = "carton"
-	center_of_mass = list("x"=16, "y"=9)
+	center_of_mass = "x=16;y=9"
 	New()
 		..()
 		reagents.add_reagent("soymilk", 50)
@@ -210,7 +210,7 @@
 	name = "\improper Coffee"
 	desc = "Careful, the beverage you're about to enjoy is extremely hot."
 	icon_state = "coffee"
-	center_of_mass = list("x"=15, "y"=10)
+	center_of_mass = "x=15;y=10"
 	New()
 		..()
 		reagents.add_reagent("coffee", 10)
@@ -221,7 +221,7 @@
 	desc = "An insult to Duke Purple is an insult to the Space Queen! Any proper gentleman will fight you, if you sully this tea."
 	icon_state = "teacup"
 	item_state = "coffee"
-	center_of_mass = list("x"=16, "y"=14)
+	center_of_mass = "x=16;y=14"
 	New()
 		..()
 		reagents.add_reagent("tea", 30)
@@ -230,7 +230,7 @@
 	name = "ice cup"
 	desc = "Careful, cold ice, do not chew."
 	icon_state = "coffee"
-	center_of_mass = list("x"=15, "y"=10)
+	center_of_mass = "x=15;y=10"
 	New()
 		..()
 		reagents.add_reagent("ice", 30)
@@ -240,7 +240,7 @@
 	desc = "Made in Space South America."
 	icon_state = "hot_coco"
 	item_state = "coffee"
-	center_of_mass = list("x"=15, "y"=13)
+	center_of_mass = "x=15;y=13"
 	New()
 		..()
 		reagents.add_reagent("hot_coco", 30)
@@ -249,7 +249,7 @@
 	name = "cup ramen"
 	desc = "Just add 10ml water, self heats! A taste that reminds you of your school years."
 	icon_state = "ramen"
-	center_of_mass = list("x"=16, "y"=11)
+	center_of_mass = "x=16;y=11"
 	New()
 		..()
 		reagents.add_reagent("dry_ramen", 30)
@@ -261,7 +261,7 @@
 	icon_state = "water_cup_e"
 	possible_transfer_amounts = null
 	volume = 10
-	center_of_mass = list("x"=16, "y"=12)
+	center_of_mass = "x=16;y=12"
 	New()
 		..()
 	on_reagent_change()
@@ -282,21 +282,21 @@
 	icon_state = "shaker"
 	amount_per_transfer_from_this = 10
 	volume = 100
-	center_of_mass = list("x"=17, "y"=10)
+	center_of_mass = "x=17;y=10"
 
 /obj/item/reagent_container/food/drinks/flask
 	name = "metal flask"
 	desc = "A metal flask with a decent liquid capacity."
 	icon_state = "flask"
 	volume = 60
-	center_of_mass = list("x"=17, "y"=8)
+	center_of_mass = "x=17;y=8"
 
 /obj/item/reagent_container/food/drinks/flask/marine
 	name = "\improper USCM flask"
 	desc = "A metal flask embossed with the USCM logo and probably filled with a slurry of water, motor oil, and medicinal alcohol."
 	icon_state = "flask_uscm"
 	volume = 60
-	center_of_mass = list("x"=17, "y"=8)
+	center_of_mass = "x=17;y=8"
 	New()
 		..()
 		reagents.add_reagent("water", 59)
@@ -307,25 +307,25 @@
 	desc = "A metal flask with a leather band and golden badge belonging to the detective."
 	icon_state = "detflask"
 	volume = 60
-	center_of_mass = list("x"=17, "y"=8)
+	center_of_mass = "x=17;y=8"
 
 /obj/item/reagent_container/food/drinks/flask/barflask
 	name = "flask"
 	desc = "For those who can't be bothered to hang out at the bar to drink."
 	icon_state = "barflask"
 	volume = 60
-	center_of_mass = list("x"=17, "y"=7)
+	center_of_mass = "x=17;y=7"
 
 /obj/item/reagent_container/food/drinks/flask/vacuumflask
 	name = "vacuum flask"
 	desc = "Keeping your drinks at the perfect temperature since 1892."
 	icon_state = "vacuumflask"
 	volume = 60
-	center_of_mass = list("x"=15, "y"=4)
+	center_of_mass = "x=15;y=4"
 
 /obj/item/reagent_container/food/drinks/britcup
 	name = "cup"
 	desc = "A cup with the British flag emblazoned on it. The sight of it irritates you."
 	icon_state = "britcup"
 	volume = 30
-	center_of_mass = list("x"=15, "y"=13)
+	center_of_mass = "x=15;y=13"

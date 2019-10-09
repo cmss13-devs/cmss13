@@ -6,7 +6,6 @@
  *		Racks
  */
 
-
 /*
  * Tables
  */
@@ -257,16 +256,13 @@
 
 //Flipping tables, nothing more, nothing less
 /obj/structure/table/MouseDrop(over_object, src_location, over_location)
-
 	..()
-
 	if(flipped)
 		do_put()
 	else
 		do_flip()
 
 /obj/structure/table/MouseDrop_T(obj/item/I, mob/user)
-
 	if (!istype(I) || user.get_active_hand() != I)
 		return ..()
 	if(isrobot(user))
@@ -275,9 +271,7 @@
 	if(I.loc != loc)
 		step(I, get_dir(I, src))
 
-
-
-/obj/structure/table/attackby(obj/item/W, mob/user)
+/obj/structure/table/attackby(obj/item/W, mob/user, click_parameters)
 	if(!W) return
 	if(istype(W, /obj/item/grab) && get_dist(src, user) <= 1)
 		if(isXeno(user)) return
@@ -324,8 +318,38 @@
 			to_chat(user, SPAN_WARNING("You slice at the table, but only claw it up a little."))
 		return
 
-	user.drop_inv_item_to_loc(W, loc)
+	// Placing stuff on tables
+	if(user.drop_inv_item_to_loc(W, loc))
+		auto_align(W, click_parameters)
+		return 1
 
+/obj/item/var/center_of_mass = "x=16;y=16"
+/obj/structure/table/proc/auto_align(obj/item/W, click_params)
+	if (!W.center_of_mass) // Clothing, material stacks, generally items with large sprites where exact placement would be unhandy.
+		W.pixel_x = rand(-W.randpixel, W.randpixel)
+		W.pixel_y = rand(-W.randpixel, W.randpixel)
+		W.pixel_z = 0
+		return
+
+	if (!click_params)
+		return
+
+	var/list/click_data = params2list(click_params)
+	if (!click_data["icon-x"] || !click_data["icon-y"])
+		return
+
+	// Calculation to apply new pixelshift.
+	var/mouse_x = text2num(click_data["icon-x"])-1 // Ranging from 0 to 31
+	var/mouse_y = text2num(click_data["icon-y"])-1
+
+	var/cell_x = Clamp(round(mouse_x/CELLSIZE), 0, CELLS-1) // Ranging from 0 to CELLS-1
+	var/cell_y = Clamp(round(mouse_y/CELLSIZE), 0, CELLS-1)
+
+	var/list/center = cached_key_number_decode(W.center_of_mass)
+
+	W.pixel_x = (CELLSIZE * (cell_x + 0.5)) - center["x"]
+	W.pixel_y = (CELLSIZE * (cell_y + 0.5)) - center["y"]
+	W.pixel_z = 0
 
 /obj/structure/table/proc/straight_table_check(var/direction)
 	var/obj/structure/table/T
@@ -364,7 +388,6 @@
 	flip_cooldown = world.time + 50
 
 /obj/structure/table/proc/unflipping_check(var/direction)
-
 	if(world.time < flip_cooldown)
 		return 0
 
@@ -405,7 +428,6 @@
 	flip_cooldown = world.time + 50
 
 /obj/structure/table/proc/flip(var/direction)
-
 	if(world.time < flip_cooldown)
 		return 0
 
@@ -438,7 +460,6 @@
 	return 1
 
 /obj/structure/table/proc/unflip()
-
 	verbs -=/obj/structure/table/proc/do_put
 	verbs +=/obj/structure/table/verb/do_flip
 
@@ -552,11 +573,6 @@
 	table_prefix = "alm"
 	parts = /obj/item/frame/table/almayer
 
-
-
-
-
-
 /*
  * Racks
  */
@@ -594,7 +610,6 @@
 	if(I.loc != loc)
 		step(I, get_dir(I, src))
 
-
 /obj/structure/rack/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/tool/wrench))
 		destroy(1)
@@ -604,6 +619,18 @@
 		return
 	user.drop_inv_item_to_loc(W, loc)
 
+/obj/structure/table/rack/auto_align(obj/item/W, click_params)
+	if(W && !W.center_of_mass)
+		..(W)
+
+	var/i = -1
+	for (var/obj/item/I in get_turf(src))
+		if (I.anchored || !I.center_of_mass)
+			continue
+		i++
+		I.pixel_x = 1  // There's a sprite layering bug for 0/0 pixelshift, so we avoid it.
+		I.pixel_y = max(3-i*3, -3) + 1
+		I.pixel_z = 0
 
 /obj/structure/rack/Crossed(atom/movable/O)
 	..()

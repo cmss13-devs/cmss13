@@ -100,7 +100,7 @@
 	name = "\improper Fruit-Beer"
 	desc = "In theory, Mango flavored root beer sounds like a pretty good idea. Weyland Yutani has disproved yet another theory with its latest line of cola. Canned by the Weyland-Yutani Corporation."
 	icon_state = "fruit_beer"
-	center_of_mass = list("x"=16, "y"=10)
+	center_of_mass = "x=16;y=10"
 	New()
 		..()
 		reagents.add_reagent("cola", 30)
@@ -109,7 +109,7 @@
 	name = "\improper Weyland-Yutani Bottled Spring Water"
 	desc = "Overpriced 'Spring' water. Bottled by the Weyland-Yutani Corporation."
 	icon_state = "wy_water"
-	center_of_mass = list("x"=15, "y"=8)
+	center_of_mass = "x=15;y=8"
 	New()
 		..()
 		reagents.add_reagent("water", 30)
@@ -118,7 +118,7 @@
 	name = "beer bottle"
 	desc = "Beer. You've dialed in your target. Time to fire for effect."
 	icon_state = "beer"
-	center_of_mass = list("x"=16, "y"=12)
+	center_of_mass = "x=16;y=12"
 	New()
 		..()
 		reagents.add_reagent("beer", 30)
@@ -128,7 +128,7 @@
 	desc = "Beer's misunderstood cousin."
 	icon_state = "alebottle"
 	item_state = "beer"
-	center_of_mass = list("x"=16, "y"=10)
+	center_of_mass = "x=16;y=10"
 	New()
 		..()
 		reagents.add_reagent("ale", 30)
@@ -138,7 +138,7 @@
 	name = "\improper Mountain Wind"
 	desc = "Blows right through you like a space wind."
 	icon_state = "space_mountain_wind"
-	center_of_mass = list("x"=16, "y"=10)
+	center_of_mass = "x=16;y=10"
 	New()
 		..()
 		reagents.add_reagent("spacemountainwind", 30)
@@ -147,7 +147,7 @@
 	name = "\improper Thirteen Loko"
 	desc = "The CMO has advised crew members that consumption of Thirteen Loko may result in seizures, blindness, drunkeness, or even death. Please Drink Responsibly."
 	icon_state = "thirteen_loko"
-	center_of_mass = list("x"=16, "y"=8)
+	center_of_mass = "x=16;y=8"
 	New()
 		..()
 		reagents.add_reagent("thirteenloko", 30)
@@ -156,7 +156,7 @@
 	name = "\improper Dr. Gibb"
 	desc = "A delicious mixture of 42 different flavors of chemicals that you can't pronoounce."
 	icon_state = "dr_gibb"
-	center_of_mass = list("x"=16, "y"=10)
+	center_of_mass = "x=16;y=10"
 	New()
 		..()
 		reagents.add_reagent("dr_gibb", 30)
@@ -165,7 +165,7 @@
 	name = "\improper Star-kist"
 	desc = "The taste of a star in liquid form. And, a bit of tuna...?"
 	icon_state = "starkist"
-	center_of_mass = list("x"=16, "y"=10)
+	center_of_mass = "x=16;y=10"
 	New()
 		..()
 		reagents.add_reagent("cola", 15)
@@ -175,7 +175,7 @@
 	name = "\improper Space-Up"
 	desc = "Tastes like a hull breach in your mouth."
 	icon_state = "space-up"
-	center_of_mass = list("x"=16, "y"=10)
+	center_of_mass = "x=16;y=10"
 	New()
 		..()
 		reagents.add_reagent("space_up", 30)
@@ -184,7 +184,7 @@
 	name = "lemon-lime"
 	desc = "You wanted ORANGE. It gave you Lemon Lime."
 	icon_state = "lemon-lime"
-	center_of_mass = list("x"=16, "y"=10)
+	center_of_mass = "x=16;y=10"
 	New()
 		..()
 		reagents.add_reagent("lemon_lime", 30)
@@ -193,7 +193,7 @@
 	name = "iced tea can"
 	desc = "Just like the squad redneck's grandmother used to buy."
 	icon_state = "ice_tea_can"
-	center_of_mass = list("x"=16, "y"=10)
+	center_of_mass = "x=16;y=10"
 	New()
 		..()
 		reagents.add_reagent("icetea", 30)
@@ -202,7 +202,7 @@
 	name = "grape juice"
 	desc = "A can of probably not grape juice."
 	icon_state = "purple_can"
-	center_of_mass = list("x"=16, "y"=10)
+	center_of_mass = "x=16;y=10"
 	New()
 		..()
 		reagents.add_reagent("grapejuice", 30)
@@ -211,7 +211,7 @@
 	name = "tonic water"
 	desc = "Step One: Tonic. Check. Step Two: Gin."
 	icon_state = "tonic"
-	center_of_mass = list("x"=16, "y"=10)
+	center_of_mass = "x=16;y=10"
 	New()
 		..()
 		reagents.add_reagent("tonic", 50)
@@ -220,7 +220,7 @@
 	name = "soda water"
 	desc = "A can of soda water. Tap water's more refreshing cousin...according to those Europe-folk."
 	icon_state = "sodawater"
-	center_of_mass = list("x"=16, "y"=10)
+	center_of_mass = "x=16;y=10"
 	New()
 		..()
 		reagents.add_reagent("sodawater", 50)
@@ -230,7 +230,7 @@
 	desc = "Canned in Havana."
 	icon_state = "souto_classic"
 	item_state = "souto_classic"
-	center_of_mass = list("x"=16, "y"=10)
+	center_of_mass = "x=16;y=10"
 	embeddable = 1
 	disposed = 0
 	
@@ -377,7 +377,7 @@
 	name = "\improper Weyland Yutani Aspen Beer"
 	desc = "Pretty good when you get past the fact that it tastes like piss. Canned by the Weyland-Yutani Corporation."
 	icon_state = "6_pack_1"
-	center_of_mass = list("x"=16, "y"=10)
+	center_of_mass = "x=16;y=10"
 	New()
 		..()
 		reagents.add_reagent("beer", 50)

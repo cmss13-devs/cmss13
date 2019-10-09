@@ -331,6 +331,11 @@
 	icon_state = "food"
 	fake_zlevel = 2 // lowerdeck
 
+/area/almayer/living/gym
+	name = "\improper Gym"
+	icon_state = "officerrnr"
+	fake_zlevel = 2 // lowerdeck
+
 /area/almayer/living/cafeteria_officer
 	name = "\improper Officer Cafeteria"
 	icon_state = "food"
@@ -369,7 +374,7 @@
 /area/almayer/living/chapel
 	name = "\improper Chapel"
 	icon_state = "officerrnr"
-	fake_zlevel = 2 // lowerdeck
+	fake_zlevel = 1 // upperdeck
 
 /area/almayer/medical/lower_medical
 	name = "\improper Medical Lower"
@@ -476,7 +481,7 @@
 	name = "\improper Squad Charlie Preparation"
 	icon_state = "charlie"
 	fake_zlevel = 2 // lowerdeck
-	
+
 /area/almayer/squads/charlie/req
 	name = "\improper Squad Charlie Requisitions"
 	icon_state = "charlie"
@@ -486,7 +491,7 @@
 	name = "\improper Squad Delta Preparation"
 	icon_state = "delta"
 	fake_zlevel = 2 // lowerdeck
-	
+
 /area/almayer/squads/delta/req
 	name = "\improper Squad Delta Requisitions"
 	icon_state = "delta"

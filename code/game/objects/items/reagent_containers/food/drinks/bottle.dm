@@ -94,7 +94,7 @@
 	name = "\improper Griffeater Gin"
 	desc = "A bottle of high quality gin, produced in the New London Space Station."
 	icon_state = "ginbottle"
-	center_of_mass = list("x"=16, "y"=4)
+	center_of_mass = "x=16;y=4"
 	New()
 		..()
 		reagents.add_reagent("gin", 100)
@@ -103,7 +103,7 @@
 	name = "\improper Uncle Git's Special Reserve"
 	desc = "A premium single-malt whiskey, gently matured for four years by hillbillies in the backwaters of Alabama."
 	icon_state = "whiskeybottle"
-	center_of_mass = list("x"=16, "y"=3)
+	center_of_mass = "x=16;y=3"
 	New()
 		..()
 		reagents.add_reagent("whiskey", 100)
@@ -112,7 +112,7 @@
 	name = "\improper Weyland-Yutani Sake"
 	desc = "Sake made with ancient techniques passed down for thousands of years. Fermented in Iowa by the Weyland Yutani Corporation."
 	icon_state = "sakebottle"
-	center_of_mass = list("x"=17, "y"=7)
+	center_of_mass = "x=17;y=7"
 	New()
 		..()
 		reagents.add_reagent("sake", 100)
@@ -121,7 +121,7 @@
 	name = "\improper Red Star Vodka"
 	desc = "Red Star Vodka: A staple of the enemy's diet. Who knew that liquid potato could smell this potent. The bottle reads, 'Ra Ra Red Star Man: Lover of the Finer Things.' Or at least that's what you assume...you can't read Russian."
 	icon_state = "red_star_vodka"
-	center_of_mass = list("x"=17, "y"=3)
+	center_of_mass = "x=17;y=3"
 	New()
 		..()
 		reagents.add_reagent("vodka", 100)
@@ -130,7 +130,7 @@
 	name = "\improper Caccavo Guaranteed Quality Tequilla"
 	desc = "Made from premium petroleum distillates, pure thalidomide and other fine quality ingredients!"
 	icon_state = "tequillabottle"
-	center_of_mass = list("x"=16, "y"=3)
+	center_of_mass = "x=16;y=3"
 	New()
 		..()
 		reagents.add_reagent("tequilla", 100)
@@ -139,7 +139,7 @@
 	name = "\improper Davenport Rye Whiskey"
 	desc = "An expensive whiskey with a distinct flavor. The bottle proudly proclaims that it's, 'A True Classic.'"
 	icon_state = "davenport"
-	center_of_mass = list("x"=16, "y"=3)
+	center_of_mass = "x=16;y=3"
 	New()
 		..()
 		reagents.add_reagent("specialwhiskey", 50)
@@ -149,7 +149,7 @@
 	name = "Bottle of Nothing"
 	desc = "A bottle filled with nothing"
 	icon_state = "bottleofnothing"
-	center_of_mass = list("x"=17, "y"=5)
+	center_of_mass = "x=17;y=5"
 	New()
 		..()
 		reagents.add_reagent("nothing", 100)
@@ -158,7 +158,7 @@
 	name = "Wrapp Artiste Patron"
 	desc = "Silver laced tequilla, served in space night clubs across the galaxy."
 	icon_state = "patronbottle"
-	center_of_mass = list("x"=16, "y"=6)
+	center_of_mass = "x=16;y=6"
 	New()
 		..()
 		reagents.add_reagent("patron", 100)
@@ -167,7 +167,7 @@
 	name = "Captain Pete's Cuban Spiced Rum"
 	desc = "Named after the famed Captain 'Cuban' Pete, this rum is about as volatile as his final mission."
 	icon_state = "rumbottle"
-	center_of_mass = list("x"=16, "y"=8)
+	center_of_mass = "x=16;y=8"
 	New()
 		..()
 		reagents.add_reagent("rum", 100)
@@ -176,7 +176,7 @@
 	name = "Flask of Holy Water"
 	desc = "A flask of the chaplain's holy water."
 	icon_state = "holyflask"
-	center_of_mass = list("x"=17, "y"=10)
+	center_of_mass = "x=17;y=10"
 	New()
 		..()
 		reagents.add_reagent("holywater", 100)
@@ -185,7 +185,7 @@
 	name = "Goldeneye Vermouth"
 	desc = "Sweet, sweet dryness~"
 	icon_state = "vermouthbottle"
-	center_of_mass = list("x"=17, "y"=3)
+	center_of_mass = "x=17;y=3"
 	New()
 		..()
 		reagents.add_reagent("vermouth", 100)
@@ -194,7 +194,7 @@
 	name = "Robert Robust's Coffee Liqueur"
 	desc = "A widely known, Mexican coffee-flavoured liqueur. In production since 1936, HONK"
 	icon_state = "kahluabottle"
-	center_of_mass = list("x"=17, "y"=3)
+	center_of_mass = "x=17;y=3"
 	New()
 		..()
 		reagents.add_reagent("kahlua", 100)
@@ -203,7 +203,7 @@
 	name = "College Girl Goldschlager"
 	desc = "Because they are the only ones who will drink 100 proof cinnamon schnapps."
 	icon_state = "goldschlagerbottle"
-	center_of_mass = list("x"=15, "y"=3)
+	center_of_mass = "x=15;y=3"
 	New()
 		..()
 		reagents.add_reagent("goldschlager", 100)
@@ -212,7 +212,7 @@
 	name = "Chateau De Baton Premium Cognac"
 	desc = "A sweet and strongly alchoholic drink, made after numerous distillations and years of maturing. You might as well not scream 'SHITCURITY' this time."
 	icon_state = "cognacbottle"
-	center_of_mass = list("x"=16, "y"=6)
+	center_of_mass = "x=16;y=6"
 	New()
 		..()
 		reagents.add_reagent("cognac", 100)
@@ -221,7 +221,7 @@
 	name = "Doublebeard Bearded Special Wine"
 	desc = "A faint aura of unease and asspainery surrounds the bottle."
 	icon_state = "winebottle"
-	center_of_mass = list("x"=16, "y"=4)
+	center_of_mass = "x=16;y=4"
 	New()
 		..()
 		reagents.add_reagent("wine", 100)
@@ -230,7 +230,7 @@
 	name = "Jailbreaker Verte"
 	desc = "One sip of this and you just know you're gonna have a good time."
 	icon_state = "absinthebottle"
-	center_of_mass = list("x"=16, "y"=6)
+	center_of_mass = "x=16;y=6"
 	New()
 		..()
 		reagents.add_reagent("absinthe", 100)
@@ -239,7 +239,7 @@
 	name = "Emeraldine Melon Liquor"
 	desc = "A bottle of 46 proof Emeraldine Melon Liquor. Sweet and light."
 	icon_state = "alco-green" //Placeholder.
-	center_of_mass = list("x"=16, "y"=6)
+	center_of_mass = "x=16;y=6"
 	New()
 		..()
 		reagents.add_reagent("melonliquor", 100)
@@ -248,7 +248,7 @@
 	name = "Miss Blue Curacao"
 	desc = "A fruity, exceptionally azure drink. Does not allow the imbiber to use the fifth magic."
 	icon_state = "alco-blue" //Placeholder.
-	center_of_mass = list("x"=16, "y"=6)
+	center_of_mass = "x=16;y=6"
 	New()
 		..()
 		reagents.add_reagent("bluecuracao", 100)
@@ -257,7 +257,7 @@
 	name = "Briar Rose Grenadine Syrup"
 	desc = "Sweet and tangy, a bar syrup used to add color or flavor to drinks."
 	icon_state = "grenadinebottle"
-	center_of_mass = list("x"=16, "y"=6)
+	center_of_mass = "x=16;y=6"
 	New()
 		..()
 		reagents.add_reagent("grenadine", 100)
@@ -266,7 +266,7 @@
 	name = "Warlock's Velvet"
 	desc = "What a delightful packaging for a surely high quality wine! The vintage must be amazing!"
 	icon_state = "pwinebottle"
-	center_of_mass = list("x"=16, "y"=4)
+	center_of_mass = "x=16;y=4"
 	New()
 		..()
 		reagents.add_reagent("pwine", 100)
@@ -278,7 +278,7 @@
 	desc = "Full of vitamins and deliciousness!"
 	icon_state = "orangejuice"
 	item_state = "carton"
-	center_of_mass = list("x"=16, "y"=7)
+	center_of_mass = "x=16;y=7"
 	isGlass = 0
 	New()
 		..()
@@ -289,7 +289,7 @@
 	desc = "It's cream. Made from milk. What else did you think you'd find in there?"
 	icon_state = "cream"
 	item_state = "carton"
-	center_of_mass = list("x"=16, "y"=8)
+	center_of_mass = "x=16;y=8"
 	isGlass = 0
 	New()
 		..()
@@ -300,7 +300,7 @@
 	desc = "Well, at least it LOOKS like tomato juice. You can't tell with all that redness."
 	icon_state = "tomatojuice"
 	item_state = "carton"
-	center_of_mass = list("x"=16, "y"=8)
+	center_of_mass = "x=16;y=8"
 	isGlass = 0
 	New()
 		..()
@@ -311,7 +311,7 @@
 	desc = "Sweet-sour goodness."
 	icon_state = "limejuice"
 	item_state = "carton"
-	center_of_mass = list("x"=16, "y"=8)
+	center_of_mass = "x=16;y=8"
 	isGlass = 0
 	New()
 		..()

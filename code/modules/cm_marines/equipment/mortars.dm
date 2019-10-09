@@ -157,7 +157,7 @@
 			for(var/mob/M in range(7))
 				shake_camera(M, 3, 1)
 			spawn(travel_time) //What goes up
-				playsound(T, 'sound/weapons/gun_mortar_travel.ogg', 50, 1)
+				playsound(T, 'sound/weapons/gun_mortar_travel.ogg', 50, 1, 35)
 				spawn(45) //Must go down //This should always be 45 ticks!
 					T.ceiling_debris_check(2)
 					mortar_shell.detonate(T)

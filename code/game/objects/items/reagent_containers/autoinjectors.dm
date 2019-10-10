@@ -149,6 +149,17 @@
 	reagents.add_reagent("oxycodone", MED_REAGENTS_OVERDOSE-1)
 	update_icon()
 
+/obj/item/reagent_container/hypospray/autoinjector/yautja
+	name = "unusual crystal"
+	chemname = "thwei"
+	desc = "A strange glowing crystal with a spike at one end."
+	icon = 'icons/obj/items/weapons/predator.dmi'
+	icon_state = "crystal"
+	amount_per_transfer_from_this = REAGENTS_OVERDOSE
+	volume = REAGENTS_OVERDOSE
+	uses_left = 1
+
+
 /obj/item/reagent_container/hypospray/autoinjector/skillless
 	name = "first-aid autoinjector"
 	chemname = "tricordrazine"

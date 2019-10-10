@@ -1224,19 +1224,6 @@
 		remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/reagent_container/hypospray/autoinjector/yautja
-	name = "unusual crystal"
-	desc = "A strange glowing crystal with a spike at one end."
-	icon = 'icons/obj/items/weapons/predator.dmi'
-	icon_state = "crystal"
-	amount_per_transfer_from_this = 35
-	volume = 35
-
-	New()
-		..()
-		spawn(1)
-			reagents.add_reagent("thwei", 30)
-
 
 /obj/item/device/yautja_teleporter
 	name = "relay beacon"

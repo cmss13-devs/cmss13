@@ -482,11 +482,11 @@ updatehealth()
 /mob/living/carbon/Xenomorph/proc/queen_locator()
 	if(!hud_used || !hud_used.locate_leader) return
 
-	if(!hive.living_xeno_queen || caste.is_intelligent || !loc)
+	if(hive && !hive.living_xeno_queen || caste.is_intelligent || !loc)
 		hud_used.locate_leader.icon_state = "trackoff"
 		return
 
-	if(hive.living_xeno_queen.loc.z != loc.z || get_dist(src,hive.living_xeno_queen) < 1 || src == hive.living_xeno_queen)
+	if(hive && hive.living_xeno_queen.loc.z != loc.z || get_dist(src,hive.living_xeno_queen) < 1 || src == hive.living_xeno_queen)
 		hud_used.locate_leader.icon_state = "trackondirect"
 	else
 		var/area/A = get_area(loc)

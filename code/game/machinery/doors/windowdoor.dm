@@ -152,7 +152,7 @@
 /obj/structure/machinery/door/window/hitby(AM as mob|obj)
 
 	..()
-	visible_message(SPAN_DANGER("<B>The glass door was hit by [AM].</B>"), 1)
+	visible_message(SPAN_DANGER("<B>The glass door was hit by [AM].</B>"), null, null, 1)
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 40

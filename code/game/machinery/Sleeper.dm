@@ -230,7 +230,7 @@
 			to_chat(user, SPAN_NOTICE("The sleeper is already occupied!"))
 			return
 
-		visible_message("[user] starts putting [G.grabbed_thing] into the sleeper.", 3)
+		visible_message("[user] starts putting [G.grabbed_thing] into the sleeper.", null, null, 3)
 
 		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			if(occupant)
@@ -379,7 +379,7 @@
 		to_chat(user, SPAN_NOTICE("The sleeper is already occupied!"))
 		return
 
-	visible_message("[user] starts climbing into the sleeper.", 3)
+	visible_message("[user] starts climbing into the sleeper.", null, null, 3)
 	if(user.pulledby)
 		if(isliving(user.pulledby))
 			var/mob/living/grabmob = user.pulledby

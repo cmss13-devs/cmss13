@@ -171,6 +171,9 @@
 	buckled_mob.old_y = 0
 	..()
 
+/obj/structure/bed/nest/ex_act(var/power)
+	if(power >= EXPLOSION_THRESHOLD_VLOW)
+		qdel(src)
 
 /obj/structure/bed/nest/update_icon()
 	overlays.Cut()

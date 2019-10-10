@@ -40,7 +40,7 @@
 
 //returns a text listing the reagents (and their volume) in the atom. Used by Attack logs for reagents in pills
 /obj/item/reagent_container/proc/get_reagent_list_text()
-	if(reagents.reagent_list && reagents.reagent_list.len)
+	if(reagents && reagents.reagent_list && reagents.reagent_list.len)
 		var/datum/reagent/R = reagents.reagent_list[1]
 		. = "[R.name]([R.volume]u)"
 		if(reagents.reagent_list.len < 2) return

@@ -401,7 +401,7 @@ var/list/ob_type_fuel_requirements
 	name = "\improper Cluster orbital warhead"
 	warhead_kind = "cluster"
 	icon_state = "ob_warhead_3"
-	var/total_amount = 40 
+	var/total_amount = 25 
 
 /obj/structure/ob_ammo/warhead/cluster/warhead_impact(turf/target, inaccuracy_amt = 0)
 	set waitfor = 0
@@ -413,8 +413,8 @@ var/list/ob_type_fuel_requirements
 	for(var/i = 1 to total_amount)
 		var/turf/U = pick_n_take(turf_list)
 		playsound(U, 'sound/weapons/gun_flare.ogg', 50, 1)
-		sleep(pick(1,2,3))
-		cell_explosion(U, 175, 30, null, initial(name), source_mob) //rocket barrage
+		sleep(pick(3,5,7))
+		cell_explosion(U, 300, 150, null, initial(name), source_mob) //rocket barrage
 
 
 

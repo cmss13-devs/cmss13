@@ -110,7 +110,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(H), WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/weapon/combat_knife(H), WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
@@ -123,7 +123,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_SURVIVOR
 	idtype = /obj/item/card/id/lanyard
-	assignment = "Survivor"
+	assignment = "Assistant"
 	special_role = "MODE"
 	skills = /datum/skills/early_synthetic
 
@@ -132,7 +132,7 @@
 
 /datum/equipment_preset/synth/survivor/New()
 	. = ..()
-	access = get_all_civilian_accesses() //crappy access!
+	access = get_all_civilian_accesses()+get_region_accesses(2)+get_region_accesses(4) //Access to civillians stuff + medbay stuff + engineering stuff
 
 /datum/equipment_preset/synth/survivor/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
@@ -140,7 +140,7 @@
 		backItem = /obj/item/storage/backpack/industrial
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
@@ -172,7 +172,7 @@
 		backItem = /obj/item/storage/backpack/industrial
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)

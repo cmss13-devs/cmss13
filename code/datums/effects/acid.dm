@@ -9,7 +9,7 @@
 
 /datum/effects/acid/New(var/atom/A, var/zone = "chest")
 	..()
-	if(isHumanStrict(A))
+	if(ishuman(A))
 		var/mob/living/carbon/human/H = A
 		H.update_effects()
 
@@ -59,7 +59,7 @@
 	if(affected_atom)
 		affected_atom.effects_list -= src
 	
-	if(isHumanStrict(affected_atom))
+	if(ishuman(affected_atom))
 		var/mob/living/carbon/human/H = affected_atom
 		H.update_effects()
 

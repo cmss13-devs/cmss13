@@ -418,7 +418,7 @@ datum/projectile_data
 	var/list/greens = list()
 	var/list/weights = list()
 
-	for (var/i = 0, ++i <= colors.len)
+	for (var/i in 1 to colors.len)
 		reds.Add(GetRedPart(colors[i]))
 		blues.Add(GetBluePart(colors[i]))
 		greens.Add(GetGreenPart(colors[i]))

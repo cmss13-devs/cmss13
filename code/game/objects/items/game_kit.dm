@@ -23,10 +23,10 @@ THAT STUPID GAME KIT
 
 /obj/item/weapon/game_kit/proc/update()
 	var/dat = text("<CENTER><B>Game Board</B></CENTER><BR><a href='?src=\ref[];mode=hia'>[]</a> <a href='?src=\ref[];mode=remove'>remove</a><HR><table width= 256  border= 0  height= 256  cellspacing= 0  cellpadding= 0 >", src, (src.selected ? text("Selected: []", src.selected) : "Nothing Selected"), src)
-	for (var/y = 1 to 8)
+	for (var/y in 1 to 8)
 		dat += "<tr>"
 
-		for (var/x = 1 to 8)
+		for (var/x in 1 to 8)
 			var/color = (y + x) % 2 ? "#ffffff" : "#999999"
 			var/piece = copytext(src.board_stat, ((y - 1) * 8 + x) * 2 - 1, ((y - 1) * 8 + x) * 2 + 1)
 

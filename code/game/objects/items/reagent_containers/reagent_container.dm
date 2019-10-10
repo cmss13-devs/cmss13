@@ -31,7 +31,8 @@
 	create_reagents(volume)
 
 /obj/item/reagent_container/proc/display_contents(mob/user) // Used on examine for properly skilled people to see contents.
-	if(isXeno()) return
+	if(isXeno(user)) 
+		return
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
 		to_chat(user, "This [src] contains: [get_reagent_list_text()]")
 	else
@@ -43,7 +44,7 @@
 		var/datum/reagent/R = reagents.reagent_list[1]
 		. = "[R.name]([R.volume]u)"
 		if(reagents.reagent_list.len < 2) return
-		for (var/i = 2, i <= reagents.reagent_list.len, i++)
+		for (var/i in 2 to reagents.reagent_list.len)
 			R = reagents.reagent_list[i]
 			if(!R) continue
 			. += "; [R.name]([R.volume]u)"

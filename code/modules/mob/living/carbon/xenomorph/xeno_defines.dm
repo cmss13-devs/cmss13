@@ -696,13 +696,13 @@
 
 	if (xeno_leader_list.len > queen_leader_limit)
 		var/diff = 0
-		for (var/i = queen_leader_limit + 1 to xeno_leader_list.len)
+		for (var/i in queen_leader_limit + 1 to xeno_leader_list.len)
 			if(!open_xeno_leader_positions.Remove(i))
 				remove_hive_leader(xeno_leader_list[i])
 			diff++
 		xeno_leader_list.len -= diff // Changing the size of xeno_leader_list needs to go at the end or else it won't iterate through the list properly
 	else if (xeno_leader_list.len < queen_leader_limit)
-		for (var/i = xeno_leader_list.len + 1 to queen_leader_limit)
+		for (var/i in xeno_leader_list.len + 1 to queen_leader_limit)
 			open_xeno_leader_positions += i
 			xeno_leader_list.len++
 
@@ -738,7 +738,7 @@
 	xeno_leader_list[leader_num] = null
 
 	// Need to maintain ascending order of open_xeno_leader_positions
-	for (var/i = 1 to queen_leader_limit)
+	for (var/i in 1 to queen_leader_limit)
 		if (i > open_xeno_leader_positions.len || open_xeno_leader_positions[i] > leader_num)
 			open_xeno_leader_positions.Insert(i, leader_num)
 			break

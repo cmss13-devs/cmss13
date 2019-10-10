@@ -121,7 +121,7 @@
 	dir = facing
 
 	T = loc
-	for (var/i = 0, i < caste.acid_spray_range, i++)
+	for (var/i in 0 to caste.acid_spray_range-1)
 
 		var/turf/next_T = get_step(T, facing)
 
@@ -259,7 +259,7 @@
 		return
 
 	if(!locate(/obj/effect/xenomorph/spray) in target) //No stacking flames!
-		
+
 		// Spray type
 		if (isXenoSpitter(src)) new /obj/effect/xenomorph/spray/weak(target, , initial(caste_name), src)
 		else new /obj/effect/xenomorph/spray(target,  , initial(caste_name), src)
@@ -292,7 +292,7 @@
 	var/normal_density_flag = 0
 	var/inverse_normal_density_flag = 0
 
-	for (var/i = 0, i < distance, i++)
+	for (var/i in 0 to distance-1)
 		if (normal_density_flag && inverse_normal_density_flag)
 			return
 
@@ -424,7 +424,7 @@
 	var/turf/T = loc
 	var/turf/temp = loc
 
-	for (var/x = 0, x < fling_distance, x++)
+	for (var/x in 0 to fling_distance-1)
 		temp = get_step(T, facing)
 		if (!temp)
 			break
@@ -737,7 +737,7 @@
 	var/turf/T = loc
 	var/turf/temp = loc
 
-	for (var/x = 0, x < headbutt_distance, x++)
+	for (var/x in 0 to headbutt_distance-1)
 		temp = get_step(T, facing)
 		if (!temp)
 			break
@@ -1103,11 +1103,11 @@
 
 	var/accumulative_health = 0
 	for(var/mob/living/carbon/human/H in mobs_in_range)
-		if(H.stat == DEAD || istype(H.buckled, /obj/structure/bed/nest)) 
+		if(H.stat == DEAD || istype(H.buckled, /obj/structure/bed/nest))
 			continue
 
 		accumulative_health += round(max_overheal/XENO_ENEMIES_FOR_MAXOVERHEAL)
-		
+
 		shake_camera(H, 2, 1)
 
 		if(accumulative_health >= max_overheal)
@@ -1143,14 +1143,14 @@
 	set waitfor = 0
 
 	var/mob/living/carbon/Xenomorph/Praetorian/P = src
-	
+
 	if(!check_state())
 		return
 
 	if(has_screeched)
 		to_chat(src, SPAN_WARNING("You are not ready to screech again."))
 		return
-	
+
 	if(!check_plasma(300))
 		return
 
@@ -1161,20 +1161,20 @@
 	has_screeched = 1
 	use_plasma(300)
 	var/screech_cooldown = 600 // Initialized later on but just making sure we get a solid default
-		
+
 	playsound(loc, P.screech_sound_effect, 45, 0)
 	visible_message("<span class='xenohighdanger'>\The [src] roars loudly!</span>")
 
 	for(var/mob/M in view())
 		if(M && M.client)
 			if(!isXeno(M))
-				shake_camera(M, 10, 1) 
+				shake_camera(M, 10, 1)
 
 	switch(P.mutation_type)
 		if (PRAETORIAN_NORMAL)
 
 			screechwave_color =  "#b7d728" // "Acid" green
-			
+
 			gain_health(pCaste.xenoheal_screech_healamount)
 			to_chat(src, SPAN_XENOWARNING("Your screech reinvigorates you!"))
 			var/range = 7
@@ -1183,7 +1183,7 @@
 				to_chat(X, SPAN_XENOWARNING("You feel reinvigorated after hearing the screech of [src]!"))
 
 			screech_cooldown = pCaste.xenoheal_screech_cooldown
-			
+
 		if (PRAETORIAN_ROYALGUARD)
 
 			screechwave_color =  "#c2242e" // Ravager red
@@ -1194,7 +1194,7 @@
 				prae_status_flags |= PRAE_SCREECH_BUFFED
 				to_chat(src, SPAN_XENOWARNING("Your screech empowers you to strike harder!"))
 
-				spawn (pCaste.screech_duration) 
+				spawn (pCaste.screech_duration)
 					damage_modifier -= pCaste.xenodamage_screech_damagebuff
 					recalculate_damage()
 					prae_status_flags &= ~PRAE_SCREECH_BUFFED
@@ -1202,7 +1202,7 @@
 
 			else
 				to_chat(src, "<span class='xenohighdanger'>Your screech's effects do NOT stack with those of your sisters!</span>")
-				
+
 			var/range = 7
 			for(var/mob/living/carbon/Xenomorph/X in oview(range, src))
 				if (!(X.prae_status_flags & PRAE_SCREECH_BUFFED))
@@ -1211,38 +1211,38 @@
 					X.prae_status_flags |= PRAE_SCREECH_BUFFED
 					to_chat(X, SPAN_XENOWARNING("You feel empowered to strike harder after hearing the screech of [src]!"))
 
-					spawn (pCaste.screech_duration) 
+					spawn (pCaste.screech_duration)
 						X.damage_modifier -= pCaste.xenodamage_screech_damagebuff
 						X.recalculate_damage()
 						X.prae_status_flags &= ~PRAE_SCREECH_BUFFED
 						to_chat(X, SPAN_XENOWARNING("You feel the power of the screech of [src] wane."))
 
-				else 
+				else
 					to_chat(X, SPAN_XENOWARNING("You can only be empowered by one Praetorian at once!"))
 
 			screech_cooldown = pCaste.xenodamage_screech_cooldown
-		
+
 		if (PRAETORIAN_OPPRESSOR)
 
 			screechwave_color = "#9539c6" // Purple
-			
+
 			if (!(prae_status_flags & PRAE_SCREECH_BUFFED))
 				armor_deflection_buff += pCaste.xenoarmor_screech_armorbuff
 				armor_explosive_buff += pCaste.xenoarmor_screech_explosivebuff
 				prae_status_flags |= PRAE_SCREECH_BUFFED
 
 				to_chat(src, SPAN_XENOWARNING("Your screech makes you feel even harder to kill than before!"))
-			
+
 				spawn (pCaste.screech_duration)
-					// TODO: Test with sleep to see it it works 
+					// TODO: Test with sleep to see it it works
 					armor_deflection_buff -= pCaste.xenoarmor_screech_armorbuff
 					armor_explosive_buff -= pCaste.xenoarmor_screech_explosivebuff
 					prae_status_flags &= ~PRAE_SCREECH_BUFFED
 					to_chat(src, SPAN_XENOWARNING("You feel the power of your screech wane!"))
-			
+
 			else
 				to_chat(src, "<span class='xenohighdanger'>Your screech's effects do NOT stack with those of your sisters!</span>")
-			
+
 			var/range = 7
 			for(var/mob/living/carbon/Xenomorph/X in oview(range, src))
 				if (!(X.prae_status_flags & PRAE_SCREECH_BUFFED))
@@ -1250,7 +1250,7 @@
 					X.armor_explosive_buff += pCaste.xenoarmor_screech_explosivebuff
 					X.prae_status_flags |= PRAE_SCREECH_BUFFED
 					to_chat(X, SPAN_XENOWARNING("You feel indestructible after heearing the screech of [src]!"))
-					
+
 					spawn (pCaste.screech_duration)
 						X.armor_deflection_buff -= pCaste.xenoarmor_screech_armorbuff
 						X.armor_explosive_buff -= pCaste.xenoarmor_screech_explosivebuff
@@ -1276,10 +1276,10 @@
 					recalculate_speed()
 					prae_status_flags &= ~PRAE_SCREECH_BUFFED
 					to_chat(src, SPAN_XENOWARNING("You feel the power of your screech wane!"))
-			
+
 			else
 				to_chat(src, "<span class='xenohighdanger'>Your screech's effects do NOT stack with those of your sisters!</span>")
-			
+
 			var/range = 7
 			for(var/mob/living/carbon/Xenomorph/X in oview(range, src))
 				if (!(X.prae_status_flags & PRAE_SCREECH_BUFFED))
@@ -1292,7 +1292,7 @@
 						X.recalculate_speed()
 						X.prae_status_flags &= ~PRAE_SCREECH_BUFFED
 						to_chat(X, SPAN_XENOWARNING("You feel the power of the screech of [src] wane!"))
-				
+
 				else
 					to_chat(src, "<span class='xenohighdanger'>Your screech's effects do NOT stack with those of your sisters!</span>")
 
@@ -1302,7 +1302,7 @@
 			log_debug("Error: [src] tried to screech with an invalid screech identifier. Error code: PRAE_SCREECH_01")
 			log_admin("Error: bugged Praetorian screech. Tell the devs. Error code: PRAE_SCREECH_01")
 			return
-	
+
 	create_shriekwave(screechwave_color)
 
 	spawn(screech_cooldown)

@@ -94,7 +94,7 @@
 		if(hivenumber == M.hivenumber)
 			switch(M.tier)
 				if(0)
-					if(isXenoLarva(M,1))
+					if(isXenoLarvaStrict(M))
 						if(M.client && M.ckey)
 							potential_queens++
 					continue

@@ -204,7 +204,7 @@
 			
 			var/turf/target_turf = get_turf(src)
 			var/turf/temp = get_turf(src)
-			for (var/x = 0, x < leap_range, x++)
+			for (var/x in 0 to leap_range-1)
 				temp = get_step(target_turf, leap_dir)
 				if (!temp || temp.density) // Stop if we run into a dense turf
 					break

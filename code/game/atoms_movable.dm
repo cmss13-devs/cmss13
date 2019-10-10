@@ -410,7 +410,7 @@
 	if (clockwise)
 		spin_degree *= -1
 
-	for (var/x = 0, x < num_circles, x++)
+	for (var/x in 0 to num_circles -1)
 		sleep(turn_delay)
 		dir = turn(dir, spin_degree)
 

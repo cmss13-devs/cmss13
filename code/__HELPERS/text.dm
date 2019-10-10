@@ -225,14 +225,14 @@ proc/checkhtml(var/t)
 
 //Returns a string with reserved characters and spaces before the first letter removed
 /proc/trim_left(text)
-	for (var/i = 1 to length(text))
+	for (var/i in 1 to length(text))
 		if (text2ascii(text, i) > 32)
 			return copytext(text, i)
 	return ""
 
 //Returns a string with reserved characters and spaces after the last letter removed
 /proc/trim_right(text)
-	for (var/i = length(text), i > 0, i--)
+	for (var/i in length(text) to 1 step -1)
 		if (text2ascii(text, i) > 32)
 			return copytext(text, 1, i + 1)
 

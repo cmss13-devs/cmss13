@@ -181,7 +181,7 @@
 	var/turf/T = loc
 	var/turf/temp = loc
 
-	for (var/x = 0, x < fling_distance, x++)
+	for (var/x in 0 to fling_distance-1)
 		temp = get_step(T, facing)
 		if (!temp)
 			break

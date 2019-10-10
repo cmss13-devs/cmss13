@@ -14,7 +14,7 @@
 	var/flagIndex = 1
 	//I think it's easier to read this way, also doesn't rely on the random number generator to land on a new wire.
 	var/list/colorIndexList = list(CAMERA_WIRE_FOCUS, CAMERA_WIRE_POWER, CAMERA_WIRE_LIGHT, CAMERA_WIRE_ALARM, CAMERA_WIRE_NOTHING1, CAMERA_WIRE_NOTHING2)
-	for (var/flag=1, flag<=32, flag+=flag)
+	for (var/flag = 1, flag <= 32, flag += flag)
 		var/colorIndex = pick(colorIndexList)
 		if (wires[colorIndex]==0)
 			wires[colorIndex] = flag

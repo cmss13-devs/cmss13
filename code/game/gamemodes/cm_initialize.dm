@@ -106,7 +106,8 @@ datum/game_mode/proc/initialize_special_clamps()
 			sq.max_engineers = engi_slot_formula(marine_starting_num)
 			sq.max_medics = medic_slot_formula(marine_starting_num)
 
-	for(var/datum/job/J in RoleAuthority.roles_by_name)
+	for(var/i in RoleAuthority.roles_by_name)	
+		var/datum/job/J = RoleAuthority.roles_by_name[i]
 		if(J.scaled)
 			J.set_spawn_positions(marine_starting_num)
 

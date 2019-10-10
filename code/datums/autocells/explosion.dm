@@ -31,6 +31,8 @@
 		  or weakened explosion
 */
 
+//#define DEBUG_EXPLOSIONS
+
 /datum/automata_cell/explosion
 	// Explosions only spread outwards and don't need to know their neighbors to propagate properly
 	neighbor_type = NEIGHBORS_NONE
@@ -57,14 +59,28 @@
 	// See on_turf_entered
 	var/list/atom/exploded_atoms = list()
 
+	#ifdef DEBUG_EXPLOSIONS
+	var/obj/effect/decal/cleanable/vomit/vomit = null
+	#endif
+
 // If we're on a fake z teleport, teleport over
 /datum/automata_cell/explosion/birth()
+	#ifdef DEBUG_EXPLOSIONS
+	vomit = new(in_turf)
+	#endif
+
 	var/obj/effect/step_trigger/teleporter_vector/V = locate() in in_turf
 	if(!V)
 		return
 
 	var/turf/new_turf = locate(in_turf.x + V.vector_x, in_turf.y + V.vector_y, in_turf.z)
 	transfer_turf(new_turf)
+
+#ifdef DEBUG_EXPLOSIONS
+/datum/automata_cell/explosion/death()
+	if(vomit)
+		qdel(vomit)
+#endif
 
 // Compare directions. If the other explosion is traveling in the same direction,
 // the explosion is amplified. If not, it's weakened
@@ -142,6 +158,7 @@
 		if(A in exploded_atoms)
 			continue
 		A.ex_act(power, direction, explosion_source, explosion_source_mob)
+		exploded_atoms += A
 		log_explosion(A, src)
 
 	// Bounce off the wall in the opposite direction, don't keep phasing through it
@@ -199,6 +216,10 @@
   as having entered the turf.
 */ 
 /datum/automata_cell/explosion/proc/on_turf_entered(var/atom/movable/A)
+	// Once is enough
+	if(A in exploded_atoms)
+		return
+
 	exploded_atoms += A
 
 	// Note that we don't want to make it a directed ex_act because

@@ -1,9 +1,0 @@
-
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - bugfix: "Fixed Nuke being spawned anchored to ground."
-  - bugfix: "Fixed Nuke being vulnerable to area depowering bug."
-  - bugfix: "Fixed Nuke 8 minute timer taking 22 real minutes."

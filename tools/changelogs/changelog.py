@@ -137,6 +137,9 @@ class Changelog:
             :param file_name: The name the changelog file should be given
         '''
 
+        if not self.changes:
+            return
+
         with open("{}.yml".format(file_name), "w+") as file:
             data = "author: \"{}\"\ndelete-after: true\nchanges:\n{}"
             change_data = ""

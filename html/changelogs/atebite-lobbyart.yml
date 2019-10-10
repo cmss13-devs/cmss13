@@ -1,9 +1,0 @@
-author: Atebite
-delete-after: true
-changes:
-  - imageadd: New lobby art has been added. The development team would like to thank all the artists for these amazing drawings, and for allowing us to use them.
-  - imageadd: A beautiful portrayal of a slow and uneventful day at the FOB. Made by LightCrabPress
-  - imageadd: CLF soldiers trudging through the deep winter snow. Made by Redsting
-  - imageadd: A painting of PFC Checkers that somehow didn't make it in before now. Made by NicBoone
-  - rscadd: The author of the lobby art on display will now be credited in chat when you join
-  - tweak: The resolution of all lobby art has been increased from 480x480 to 1056x1056

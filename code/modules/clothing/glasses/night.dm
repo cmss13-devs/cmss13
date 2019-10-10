@@ -80,4 +80,4 @@
 
 /obj/item/clothing/glasses/night/yautja/Dispose()
 	..()
-	return TA_REVIVE_ME
+	return GC_HINT_RECYCLE

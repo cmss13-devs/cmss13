@@ -24,16 +24,13 @@
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130 // number of players before we switch to lowpop maps only (LV, BR, Prison)
 
 /*
-Trash Authority Directives
-Defines for when we need to give commands to the trash authority in how to handle trash.
-These are used with qdel (clean delete). For example, qdel(atom, TA_REVIVE_ME) would tell the TA to throw the atom into the recycler.
+Garbage Collector hints
+Tells the GC how to handle deletion of the object
 */
-#define TA_TRASH_ME		1 //Trash it.
-#define TA_REVIVE_ME	2 //Not killing this one, instead adding it to the recycler. Call this on bullets, for example.
-#define TA_PURGE_ME		3 //Purge it, but later. Not different from adding it to queue regularly as the trash authority will incinerate it when possible.
-#define TA_PURGE_ME_NOW	4 //Purge it immediately. Generally don't want to use this.
-#define TA_IGNORE_ME	5 //Ignore this atom, don't do anything with it. In case the atom will die on its own or something.
-					 	  //Shouldn't usually use this as garbage collection is far better.
+#define GC_HINT_QUEUE      1 // Queue for deletion. Default
+#define GC_HINT_DELETE_NOW 2 // Hard deletes the datum immediately. You should have an exceptionally good reason to use this
+#define GC_HINT_RECYCLE    3 // Returns the datum to the datum pool if possible.
+#define GC_HINT_IGNORE     4 // Cancels the deletion.
 
 //A set of constants used to determine which type of mute an admin wishes to apply:
 //Please read and understand the muting/automuting stuff before changing these. MUTE_IC_AUTO etc = (MUTE_IC << 1)

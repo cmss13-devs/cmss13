@@ -110,7 +110,7 @@
 
 	Dispose()
 		..()
-		return TA_REVIVE_ME //So we can recycle this garbage.
+		return GC_HINT_RECYCLE //So we can recycle this garbage.
 
 	dropped(mob/user)
 		..()

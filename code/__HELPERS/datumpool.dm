@@ -86,7 +86,6 @@
 	if(isnull(masterdatumPool[D.type]))
 		masterdatumPool[D.type] = list()
 
-	D.Dispose()
 	D.resetVariables()
 	D.disposed = 1 //Set to stop processing while pooled
 

@@ -124,7 +124,7 @@ world/loop_checks = 0
  * NEVER USE THIS FOR /atom OTHER THAN /atom/movable
  * BASE ATOMS CANNOT BE QDEL'D BECAUSE THEIR LOC IS LOCKED.
  */
-/proc/qdel(const/datum/D, ignore_pooling = 0, ignore_destroy = 0)
+/proc/qdel(const/datum/D, ignore_pooling = 0)
 	if(isnull(D))
 		return
 	if(!istype(D))
@@ -138,7 +138,14 @@ world/loop_checks = 0
 	if(istype(D, /atom) && !istype(D, /atom/movable))
 		if(istype(D, /turf/))
 			var/turf/ot = D
-			ot.Dispose()
+			var/gc_hint = ot.Dispose()
+
+			if(gc_hint == GC_HINT_IGNORE)
+				return
+
+			if(gc_hint == GC_HINT_DELETE_NOW)
+				del(D)
+
 			return
 		else
 			WARNING("qdel() passed object of type [D.type]. qdel() cannot handle unmovable atoms.")
@@ -147,17 +154,27 @@ world/loop_checks = 0
 			garbageCollector.dels_count++
 			return
 
-	//This is broken. The correct index to use is D.type, not "[D.type]"
-	if(("[D.type]" in masterdatumPool) && !ignore_pooling)
+	// Dispose() the datum if it hasn't been done already
+	if(D.disposed)
+		return
+
+	// Let our friend know they're about to get fucked up.
+	var/gc_hint = D.Dispose()
+
+	if(gc_hint == GC_HINT_IGNORE)
+		return
+
+	// Return to the datum pool if the datum wants to be recycled
+	if((D.type in masterdatumPool) && gc_hint == GC_HINT_RECYCLE && !ignore_pooling)
 		returnToPool(D)
 		return
 
-	if(isnull(D.gcDestroyed))
-		// Let our friend know they're about to get fucked up.
-		if(!ignore_destroy)
-			D.Dispose()
+	// Immediately hard delete the datum if the datum requires it
+	if(gc_hint == GC_HINT_DELETE_NOW)
+		del(D)
+		return
 
-		garbageCollector.addTrash(D)
+	garbageCollector.addTrash(D)
 
 /*
 /datum/controller
@@ -173,7 +190,7 @@ world/loop_checks = 0
  */
 /datum/proc/Dispose()
 	disposed = TRUE
-	qdel(src, 1, 1)
+	return GC_HINT_QUEUE
 
 #ifdef GC_FINDREF
 /datum/garbage_collector/proc/LookForRefs(var/datum/D, var/datum/targ)

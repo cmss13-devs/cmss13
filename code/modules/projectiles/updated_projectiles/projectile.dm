@@ -71,7 +71,7 @@
 	starting = null
 	permutated = null
 	path = null
-	return TA_REVIVE_ME
+	return GC_HINT_RECYCLE
 
 /obj/item/projectile/Bumped(atom/A as mob|obj|turf|area)
 	if(A && !A in permutated)

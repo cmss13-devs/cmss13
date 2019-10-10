@@ -48,15 +48,17 @@
 	levelupdate()
 
 /turf/Dispose()
+	. = ..()
+
 	stop_processing()
 
 	if(old_turf != "")
 		ChangeTurf(text2path(old_turf), TRUE)
 	else
 		ChangeTurf(/turf/open/floor/plating, TRUE)
-	//..()
 
-	return TA_PURGE_ME_NOW
+	// Changeturf handles the transition to the new turf type
+	return GC_HINT_IGNORE
 
 /turf/ex_act(severity)
 	return 0

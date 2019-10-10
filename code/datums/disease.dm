@@ -195,4 +195,3 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 	holder = null
 	active_diseases -= src
 	. = ..()
-	return TA_PURGE_ME_NOW //immediate deletion

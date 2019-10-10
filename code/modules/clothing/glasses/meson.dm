@@ -29,5 +29,5 @@
 
 	Dispose()
 		..()
-		return TA_REVIVE_ME
+		return GC_HINT_RECYCLE
 

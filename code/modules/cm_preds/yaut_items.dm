@@ -1371,7 +1371,7 @@
 
 /obj/item/weapon/wristblades/Dispose()
 	. = ..()
-	return TA_REVIVE_ME
+	return GC_HINT_RECYCLE
 
 /obj/item/weapon/wristblades/dropped(mob/living/carbon/human/M)
 	playsound(M,'sound/weapons/wristblades_off.ogg', 15, 1)

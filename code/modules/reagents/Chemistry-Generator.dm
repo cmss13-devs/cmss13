@@ -1217,7 +1217,7 @@
 								else
 									A.stage--
 									if(A.stage <= 0)//if we reach this point, the embryo dies and the occupant takes a nasty amount of acid damage
-										A.Dispose()
+										qdel(A)
 										H.take_limb_damage(0,rand(20,40))
 										H.vomit()
 									else

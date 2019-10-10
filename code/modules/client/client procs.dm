@@ -228,15 +228,15 @@
 	//////////////
 	//DISCONNECT//
 	//////////////
-/client/Del()
+/client/Dispose()
+	. = ..()
+
 	if(admin_holder)
 		admin_holder.owner = null
 		admins -= src
 	directory -= ckey
 	clients -= src
-	return ..()
-
-
+	return GC_HINT_DELETE_NOW
 
 /client/proc/log_client_to_db()
 

@@ -33,7 +33,7 @@ Vehicles are placed on the map by a spawner or admin verb
 	invisibility = 101
 
 /obj/effect/multitile_entrance/Dispose(var/override = 0)
-	if(!override) return TA_IGNORE_ME
+	if(!override) return GC_HINT_IGNORE
 	. = ..()
 
 //Always moves where you want it to, no matter what

@@ -6,7 +6,6 @@
 	ghostize()
 	clear_fullscreens()
 	. = ..()
-	return TA_PURGE_ME_NOW
 
 /mob/New()
 	mob_list += src

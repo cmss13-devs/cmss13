@@ -72,7 +72,7 @@
 /obj/screen/fullscreen/Dispose()
 	..()
 	severity = 0
-	return TA_REVIVE_ME
+	return GC_HINT_RECYCLE
 
 
 /obj/screen/fullscreen/proc/update_for_view(client_view)

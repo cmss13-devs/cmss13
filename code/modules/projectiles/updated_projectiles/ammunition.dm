@@ -165,7 +165,7 @@ bullets/shells. ~N
 
 /obj/item/ammo_magazine/handful/Dispose()
 	..()
-	return TA_REVIVE_ME
+	return GC_HINT_RECYCLE
 
 /obj/item/ammo_magazine/handful/update_icon() //Handles the icon itself as well as some bonus things.
 	if(max_rounds >= current_rounds)

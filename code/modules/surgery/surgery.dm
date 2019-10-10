@@ -115,7 +115,7 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 							multipler += SURGERY_MULTIPLIER_MEDIUM
 					if(istype(M.loc, /turf/open/shuttle/dropship))
 						multipler -= SURGERY_MULTIPLIER_HUGE
-					Clamp(multipler, 0, 1)
+					multipler = Clamp(multipler, 0, 1)
 
 				//calculate step duration
 				var/step_duration = rand(S.min_duration, S.max_duration)

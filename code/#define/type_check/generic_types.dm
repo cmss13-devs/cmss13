@@ -1,0 +1,1 @@
+#define isitem(I) (istype(I, /obj/item))

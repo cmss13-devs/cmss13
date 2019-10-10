@@ -428,7 +428,7 @@ updatehealth()
 						XENO_HEAL_WOUNDS(0.33,recoveryActual) //Healing is much slower. Warding pheromones make up for the rest if you're curious
 					else
 						XENO_HEAL_WOUNDS(1,recoveryActual)
-				else if(isXenoCrusher() || isXenoRavager())
+				else if(isXenoCrusher(src) || isXenoRavager(src))
 					XENO_HEAL_WOUNDS(0.66,recoveryActual)
 				else
 					XENO_HEAL_WOUNDS(0.40,recoveryActual) //Healing nerf if standing
@@ -441,7 +441,7 @@ updatehealth()
 					curve_factor = 0.5
 				if(armor_integrity/armor_integrity_max < 0.3)
 					curve_factor /= 2
-					
+
 				var/factor = ((armor_deflection / 60) * MINUTES_6 / SECONDS_2) // 60 armor is restored in 10 minutes in 2 seconds intervals
 				armor_integrity += 100*curve_factor/factor
 
@@ -516,15 +516,15 @@ updatehealth()
 
 
 /mob/living/carbon/Xenomorph/handle_stunned()
-	if(stunned)		
+	if(stunned)
 		stunned = max(stunned-1.5,0)
-		
+
 	return stunned
 
 /mob/living/carbon/Xenomorph/proc/handle_interference()
 	if(interference)
 		interference -= 2
-	
+
 	if(observed_xeno && observed_xeno.interference)
 		overwatch(observed_xeno,TRUE)
 

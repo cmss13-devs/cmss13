@@ -56,11 +56,11 @@
 
 	if(freerange)
 		if(frequency < 1200 || frequency > 1600)
-			frequency = sanitize_frequency(frequency, maxf)
+			frequency = sanitize_frequency(frequency)
 	// The max freq is higher than a regular headset to decrease the chance of people listening in, if you use the higher channels.
 	else if (frequency < 1441 || frequency > maxf)
 		//world.log << "[src] ([type]) has a frequency of [frequency], sanitizing."
-		frequency = sanitize_frequency(frequency, maxf)
+		frequency = sanitize_frequency(frequency)
 
 	set_frequency(frequency)
 
@@ -135,7 +135,7 @@
 	else if (href_list["freq"])
 		var/new_frequency = (frequency + text2num(href_list["freq"]))
 		if (!freerange || (frequency < 1200 || frequency > 1600))
-			new_frequency = sanitize_frequency(new_frequency, maxf)
+			new_frequency = sanitize_frequency(new_frequency)
 		set_frequency(new_frequency)
 
 	else if (href_list["talk"])

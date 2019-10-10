@@ -110,7 +110,7 @@ proc
 
 		var/newText = "[the_list[1]]"										// Treats any object/number as text also.
 		var/count
-		for (count = 2, count <= total, count++)
+		for (count in 2 to total)
 			if (separator) newText += separator
 			newText += "[the_list[count]]"
 		return newText

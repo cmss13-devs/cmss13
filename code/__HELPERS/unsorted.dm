@@ -1,8 +1,65 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
-
 /*
- * A large number of misc global procs.
+ * A large number of misc global proc and define helpers.
  */
+
+// GLOBAL DEFINES //
+#define is_hot(I) (I?:heat_source)
+
+//Whether or not the given item counts as sharp in terms of dealing damage
+#define is_sharp(I) (isitem(I) && I?:sharp && I?:edge)
+
+//Whether or not the given item counts as cutting with an edge in terms of removing limbs
+#define has_edge(I) (isitem(I) && I?:edge)
+
+//Returns 1 if the given item is capable of popping things like balloons, inflatable barriers, or cutting police tape.
+// For the record, WHAT THE HELL IS THIS METHOD OF DOING IT?
+#define can_puncture(W) (isitem(W) && (W.sharp || W.heat_source >= 400 || \
+							istype(W, /obj/item/tool/screwdriver) || istype(W, /obj/item/tool/pen ) || istype(W, /obj/item/tool/shovel)) \
+						)
+
+#define is_surgery_tool(W) (istype(W, /obj/item/tool/surgery))
+
+//Makes sure MIDDLE is between LOW and HIGH. If not, it adjusts it. Returns the adjusted value.
+#define between(low, middle, high) (max(min(middle, high), low))
+
+#define arctan(x) (arcsin(x/sqrt(1+x*x)))
+
+//Offuscate x for coord system
+#define obfuscate_x(x) (x + obfs_x)
+
+//Offuscate y for coord system
+#define obfuscate_y(y) (y + obfs_y)
+
+//Deoffuscate x for coord system
+#define deobfuscate_x(x) (x - obfs_x)
+
+//Deoffuscate y for coord system
+#define deobfuscate_y(y) (y - obfs_y)
+
+#define can_xeno_build(T) (!T.density && !(locate(/obj/structure/fence) in T) && !(locate(/obj/structure/tunnel) in T) && (locate(/obj/effect/alien/weeds) in T))
+
+// For the purpose of a skillcheck, not having a skillset counts as being skilled in everything (!user.mind.cm_skills check)
+// Note that is_skilled() checks if the skillset contains the skill internally, so a has_skill check is unnecessary
+#define skillcheck(user, skill, req_level) (user.mind && (!user.mind.cm_skills || user.mind.cm_skills.is_skilled(skill, req_level)))
+
+// Ensure the frequency is within bounds of what it should be sending/recieving at
+// Sets f within bounds via `Clamp(round(f), 1441, 1489)`
+// If f is even, adds 1 to its value to make it odd
+#define sanitize_frequency(f) 	((Clamp(round(f), 1441, 1489) % 2) == 0 ? \
+									Clamp(round(f), 1441, 1489) + 1 : \
+									Clamp(round(f), 1441, 1489) \
+								)
+
+//Turns 1479 into 147.9
+#define format_frequency(f) "[round(f / 10)].[f % 10]"
+
+#define reverse_direction(direction) 	( \
+											( dir & (NORTH|SOUTH) ? ~dir & (NORTH|SOUTH) : 0 ) | \
+											( dir & (EAST|WEST) ? ~dir & (EAST|WEST) : 0 ) \
+										)
+
+
+// GLOBAL PROCS //
 
 //Inverts the colour of an HTML string
 /proc/invertHTML(HTMLstring)
@@ -243,21 +300,6 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		if (ch < 48 || ch > 57)
 			return 0
 	return 1
-
-//Ensure the frequency is within bounds of what it should be sending/recieving at
-/proc/sanitize_frequency(var/f)
-	f = round(f)
-	f = max(1441, f) // 144.1
-	f = min(1489, f) // 148.9
-	if ((f % 2) == 0) //Ensure the last digit is an odd number
-		f += 1
-	return f
-
-//Turns 1479 into 147.9
-/proc/format_frequency(var/f)
-	return "[round(f / 10)].[f % 10]"
-
-
 
 //This will update a mob's name, real_name, mind.name, data_core records, pda and id
 //Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
@@ -673,24 +715,6 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		synthlist.Add(M)
 	return synthlist
 
-//E = MC^2
-/proc/convert2energy(var/M)
-	var/E = M*(SPEED_OF_LIGHT_SQ)
-	return E
-
-//M = E/C^2
-/proc/convert2mass(var/E)
-	var/M = E/(SPEED_OF_LIGHT_SQ)
-	return M
-
-//Forces a variable to be posative
-/proc/modulus(var/M)
-	if(M >= 0)
-		return M
-	if(M < 0)
-		return -M
-
-
 /proc/key_name(var/whom, var/include_link = null, var/include_name = 1, var/highlight_special_characters = 1)
 	var/mob/M
 	var/client/C
@@ -837,14 +861,6 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	var/y = min(world.maxy, max(1, A.y + dy))
 	return locate(x,y,A.z)
 
-//Makes sure MIDDLE is between LOW and HIGH. If not, it adjusts it. Returns the adjusted value.
-/proc/between(var/low, var/middle, var/high)
-	return max(min(middle, high), low)
-
-proc/arctan(x)
-	var/y=arcsin(x/sqrt(1+x*x))
-	return y
-
 //returns random gauss number
 proc/GaussRand(var/sigma)
   var/x,y,rsq
@@ -904,12 +920,12 @@ proc/anim(turf/location,atom/target,a_icon,a_icon_state as text,flick_anim as te
 	return 1
 
 /proc/is_blocked_turf(var/turf/T)
-	var/cant_pass = 0
-	if(T.density) cant_pass = 1
+	if(T.density)
+		return TRUE
 	for(var/atom/A in T)
 		if(A.density)//&&A.anchored
-			cant_pass = 1
-	return cant_pass
+			return TRUE
+	return FALSE
 
 /proc/get_step_towards2(var/atom/ref , var/atom/trg)
 	var/base_dir = get_dir(ref, get_step_towards(ref,trg))
@@ -1559,9 +1575,6 @@ proc/get_mob_with_client_list()
 		loc = loc.loc
 	return null
 
-/proc/get_turf_or_move(turf/location)
-	return get_turf(location)
-
 proc/get_true_location(var/atom/loc)
 	var/atom/subLoc = loc
 	while(subLoc.z == 0 && subLoc.z == 0 && subLoc.z == 0)
@@ -1571,132 +1584,18 @@ proc/get_true_location(var/atom/loc)
 			return subLoc
 	return subLoc
 
-proc/get_true_turf(var/atom/loc)
-	return get_turf(get_true_location(loc))
-
-//Quick type checks for some tools
-var/global/list/common_tools = list(
-/obj/item/stack/cable_coil,
-/obj/item/tool/wrench,
-/obj/item/tool/weldingtool,
-/obj/item/tool/screwdriver,
-/obj/item/tool/wirecutters,
-/obj/item/device/multitool,
-/obj/item/tool/crowbar)
-
-/proc/istool(O)
-	if(O && is_type_in_list(O, common_tools))
-		return 1
-	return 0
-
-/proc/iswrench(O)
-	if(istype(O, /obj/item/tool/wrench))
-		return 1
-	return 0
-
-/proc/iswelder(O)
-	if(istype(O, /obj/item/tool/weldingtool))
-		return 1
-	return 0
-
-/proc/iscoil(O)
-	if(istype(O, /obj/item/stack/cable_coil))
-		return 1
-	return 0
-
-/proc/iswirecutter(O)
-	if(istype(O, /obj/item/tool/wirecutters))
-		return 1
-	return 0
-
-/proc/isscrewdriver(O)
-	if(istype(O, /obj/item/tool/screwdriver))
-		return 1
-	return 0
-
-/proc/ismultitool(O)
-	if(istype(O, /obj/item/device/multitool))
-		return 1
-	return 0
-
-/proc/iscrowbar(O)
-	if(istype(O, /obj/item/tool/crowbar))
-		return 1
-	return 0
-
-/proc/iswire(O)
-	if(istype(O, /obj/item/stack/cable_coil))
-		return 1
-	return 0
-
-proc/is_hot(obj/item/I)
-	return I.heat_source
-
-//Whether or not the given item counts as sharp in terms of dealing damage
-/proc/is_sharp(obj/item/I)
-	if (!istype(I)) return 0
-	if (I.sharp) return 1
-	if (I.edge) return 1
-	return 0
-
-//Whether or not the given item counts as cutting with an edge in terms of removing limbs
-/proc/has_edge(obj/item/I)
-	if (!istype(I)) return 0
-	if (I.edge) return 1
-	return 0
-
-//Returns 1 if the given item is capable of popping things like balloons, inflatable barriers, or cutting police tape.
-/proc/can_puncture(obj/item/W)		// For the record, WHAT THE HELL IS THIS METHOD OF DOING IT?
-	if(!istype(W)) return 0
-	return (W.sharp || W.heat_source >= 400 	|| \
-		istype(W, /obj/item/tool/screwdriver)	 || \
-		istype(W, /obj/item/tool/pen) 		 || \
-		istype(W, /obj/item/tool/shovel) \
-	)
-
-/proc/is_surgery_tool(obj/item/W as obj)
-	return (	\
-	istype(W, /obj/item/tool/surgery/scalpel)			||	\
-	istype(W, /obj/item/tool/surgery/hemostat)		||	\
-	istype(W, /obj/item/tool/surgery/retractor)		||	\
-	istype(W, /obj/item/tool/surgery/cautery)			||	\
-	istype(W, /obj/item/tool/surgery/bonegel)			||	\
-	istype(W, /obj/item/tool/surgery/bonesetter)
-	)
-
-
-
-
-/proc/reverse_direction(direction)
-	switch(direction)
-		if(NORTH)
-			return SOUTH
-		if(NORTHEAST)
-			return SOUTHWEST
-		if(EAST)
-			return WEST
-		if(SOUTHEAST)
-			return NORTHWEST
-		if(SOUTH)
-			return NORTH
-		if(SOUTHWEST)
-			return NORTHEAST
-		if(WEST)
-			return EAST
-		if(NORTHWEST)
-			return SOUTHEAST
+#define get_true_turf(loc) get_turf(get_true_location(loc))
 
 /proc/reverse_nearby_direction(direction)
 	switch(direction)
-		if(NORTH) 		. = list(SOUTH,     SOUTHEAST, SOUTHWEST)
-		if(NORTHEAST) 	. = list(SOUTHWEST, SOUTH,     WEST)
-		if(EAST) 		. = list(WEST,      SOUTHWEST, NORTHWEST)
-		if(SOUTHEAST) 	. = list(NORTHWEST, NORTH,     WEST)
-		if(SOUTH) 		. = list(NORTH,     NORTHEAST, NORTHWEST)
-		if(SOUTHWEST) 	. = list(NORTHEAST, NORTH,     EAST)
-		if(WEST) 		. = list(EAST,      NORTHEAST, SOUTHEAST)
-		if(NORTHWEST) 	. = list(SOUTHEAST, SOUTH,     EAST)
-
+		if(NORTH) 		return list(SOUTH,     SOUTHEAST, SOUTHWEST)
+		if(NORTHEAST) 	return list(SOUTHWEST, SOUTH,     WEST)
+		if(EAST) 		return list(WEST,      SOUTHWEST, NORTHWEST)
+		if(SOUTHEAST) 	return list(NORTHWEST, NORTH,     WEST)
+		if(SOUTH) 		return list(NORTH,     NORTHEAST, NORTHWEST)
+		if(SOUTHWEST) 	return list(NORTHEAST, NORTH,     EAST)
+		if(WEST) 		return list(EAST,      NORTHEAST, SOUTHEAST)
+		if(NORTHWEST) 	return list(SOUTHEAST, SOUTH,     EAST)
 
 /*
 Checks if that loc and dir has a item on the wall
@@ -1874,30 +1773,6 @@ var/list/WALLITEMS = list(
 			error -= deltax
 	return line
 
-//Offuscate x for coord system
-/proc/obfuscate_x(var/x)
-
-	x += obfs_x
-	return x
-
-//Offuscate y for coord system
-/proc/obfuscate_y(var/y)
-
-	y += obfs_y
-	return y
-
-//Deoffuscate x for coord system
-/proc/deobfuscate_x(var/x)
-
-	x -= obfs_x
-	return x
-
-//Deoffuscate y for coord system
-/proc/deobfuscate_y(var/y)
-
-	y -= obfs_y
-	return y
-
 //Increases delay as the server gets more overloaded,
 //as sleeps aren't cheap and sleeping only to wake up and sleep again is wasteful
 #define DELTA_CALC max(((max(world.tick_usage, world.cpu) / 100) * max(Master.sleep_delta,1)), 1)
@@ -1924,11 +1799,6 @@ var/list/WALLITEMS = list(
 	if(turfs.len)
 		return pick(turfs)
 
-/proc/can_xeno_build(var/turf/T)
-	if(T.density || (locate(/obj/structure/fence) in T) || (locate(/obj/structure/tunnel) in T) || !(locate(/obj/effect/alien/weeds) in T))
-		return FALSE
-	return TRUE
-
 /proc/input_marked_datum(var/list/marked_datums)
 	if(!marked_datums.len)
 		return null
@@ -1946,13 +1816,3 @@ var/list/WALLITEMS = list(
 			return D
 
 	return null
-
-/proc/skillcheck(var/mob/user, var/skill, var/req_level)
-	if(!user.mind)
-		return FALSE
-	// For the purpose of a skillcheck, not having a skillset counts as being skilled in everything
-	if(!user.mind.cm_skills)
-		return TRUE
-
-	// Not that is_skilled checks if the skillset contains the skill internally, so a has_skill check is unnecessary
-	return user.mind.cm_skills.is_skilled(skill, req_level)

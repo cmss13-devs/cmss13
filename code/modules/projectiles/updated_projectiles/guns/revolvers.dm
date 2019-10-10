@@ -187,9 +187,10 @@
 	set waitfor = 0
 	playsound(user, spin_sound, 25, 1)
 	if(double)
-		user.visible_message("[user] deftly flicks and spins [src] and [double]!",SPAN_NOTICE("You flick and spin [src] and [double]!"))
+		user.visible_message("[user] deftly flicks and spins [src] and [double]!",SPAN_NOTICE("You flick and spin [src] and [double]!"),  null, 3)
 		animation_wrist_flick(double, 1)
-	else user.visible_message("[user] deftly flicks and spins [src]!",SPAN_NOTICE("You flick and spin [src]!"))
+	else 
+		user.visible_message("[user] deftly flicks and spins [src]!",SPAN_NOTICE("You flick and spin [src]!"),  null, 3)
 
 	animation_wrist_flick(src, direction)
 	sleep(3)
@@ -197,7 +198,7 @@
 
 /obj/item/weapon/gun/revolver/proc/revolver_throw_catch(mob/living/carbon/human/user)
 	set waitfor = 0
-	user.visible_message("[user] deftly flicks [src] and tosses it into the air!",SPAN_NOTICE("You flick and toss [src] into the air!"))
+	user.visible_message("[user] deftly flicks [src] and tosses it into the air!", SPAN_NOTICE("You flick and toss [src] into the air!"), null, 3)
 	var/img_layer = MOB_LAYER+0.1
 	var/image/trick = image(icon,user,icon_state,img_layer)
 	switch(pick(1,2))
@@ -213,9 +214,9 @@
 		invisibility = 0
 		playsound(user, thud_sound, 25, 1)
 		if(user.get_inactive_hand())
-			user.visible_message("[user] catches [src] with the same hand!",SPAN_NOTICE("You catch [src] as it spins in to your hand!"))
+			user.visible_message("[user] catches [src] with the same hand!", SPAN_NOTICE("You catch [src] as it spins in to your hand!"), null, 3)
 		else
-			user.visible_message("[user] catches [src] with his other hand!",SPAN_NOTICE("You snatch [src] with your other hand! Awesome!"))
+			user.visible_message("[user] catches [src] with his other hand!", SPAN_NOTICE("You snatch [src] with your other hand! Awesome!"), null, 3)
 			user.temp_drop_inv_item(src)
 			user.put_in_inactive_hand(src)
 			user.swap_hand()
@@ -259,8 +260,10 @@
 				else
 					revolver_throw_catch(user)
 	else
-		if(prob(10)) to_chat(user, SPAN_WARNING("You fumble with [src] like an idiot... Uncool."))
-		else user.visible_message(SPAN_INFO("<b>[user]</b> fumbles with [src] like a huge idiot!"))
+		if(prob(10)) 
+			to_chat(user, SPAN_WARNING("You fumble with [src] like an idiot... Uncool."))
+		else 
+			user.visible_message(SPAN_INFO("<b>[user]</b> fumbles with [src] like a huge idiot!"), null, null, 3)
 
 	recent_trick = world.time //Turn on the delay for the next trick.
 

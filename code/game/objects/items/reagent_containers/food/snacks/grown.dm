@@ -39,7 +39,7 @@
 				if(reagents)
 					reagents.add_reagent(rid, max(1, rtotal))
 
-		if(reagents.total_volume > 0)
+		if(reagents && reagents.total_volume > 0)
 			bitesize = 1+round(reagents.total_volume / 2, 1)
 
 /obj/item/reagent_container/food/snacks/grown/corn

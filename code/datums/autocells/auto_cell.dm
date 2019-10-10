@@ -24,7 +24,7 @@
 /datum/automata_cell/New(var/turf/T)
 	..()
 
-	if(isnull(T))
+	if(!istype(T))
 		qdel(src)
 		return
 

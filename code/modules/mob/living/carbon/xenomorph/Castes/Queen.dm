@@ -253,10 +253,10 @@
 /mob/living/carbon/Xenomorph/Queen/Stat()
 	..()
 	var/stored_larvae = hive_datum[hivenumber].stored_larva
-	var/xeno_leader_num = hive.queen_leader_limit - hive.open_xeno_leader_positions.len
+	var/xeno_leader_num = hive?.queen_leader_limit - hive?.open_xeno_leader_positions.len
 
 	stat("Burrowed Larvae:", "[stored_larvae]")
-	stat("Leaders:", "[xeno_leader_num] / [hive.queen_leader_limit]")
+	stat("Leaders:", "[xeno_leader_num] / [hive?.queen_leader_limit]")
 	return 1
 
 //Custom bump for crushers. This overwrites normal bumpcode from carbon.dm

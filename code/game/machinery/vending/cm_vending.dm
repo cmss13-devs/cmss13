@@ -724,9 +724,8 @@
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/marine, MARINE_CAN_BUY_EAR, "white"),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, "white"),
 
-
-		list("BELT (choose 1)", 0, null, null, null),
-		list("Smartgunner ammo belt", 0, /obj/item/storage/belt/gun/smartgunner/full, MARINE_CAN_BUY_BELT, "black"),
+		list("BELT", 0, null, null, null),
+		list("Smartgunner ammo belt", 0, /obj/item/storage/belt/gun/smartgunner/full, MARINE_CAN_BUY_BELT, "white"),
 
 		list("POUCHES (choose 2)", 0, null, null, null),
 		list("Flare pouch", 0, /obj/item/storage/pouch/flare/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "orange"),
@@ -1165,7 +1164,7 @@
 		list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
 		list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
-		list("Burst Fire Assembly", 0, /obj/item/attachable/burstfire_assembly, "black"),
+		list("Burst Fire Assembly", 0, /obj/item/attachable/burstfire_assembly, MARINE_CAN_BUY_ATTACHMENT, "black"),
 
 		list("MISCELLANEOUS AND SPECIAL", 0, null, null, null),
 		list("Motion Detector", 15, /obj/item/device/motiondetector, null, "black"),

@@ -35,7 +35,7 @@
 	return
 
 /obj/item/reagent_container/food/snacks/attack(mob/M, mob/user, def_zone)
-	if(!reagents.total_volume)						//Shouldn't be needed but it checks to see if it has anything left in it.
+	if(reagents && !reagents.total_volume)						//Shouldn't be needed but it checks to see if it has anything left in it.
 		to_chat(user, SPAN_DANGER("None of [src] left, oh no!"))
 		M.drop_inv_item_on_ground(src)	//so icons update :[
 		qdel(src)

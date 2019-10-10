@@ -29,10 +29,11 @@
 			to_chat(L, "You struggle free of [H.loc].")
 			H.loc = get_turf(H)
 
-		if(istype(M))
-			for(var/atom/A in M.contents)
-				if(istype(A,/obj/item/holder))
-					return
+		if(!istype(M))
+			return
+		
+		for(var/obj/item/holder/hold in M.contents)
+			return
 
 		M.status_flags &= ~PASSEMOTES
 		return

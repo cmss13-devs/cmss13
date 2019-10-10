@@ -127,6 +127,7 @@
 	desc = "An autoinjector loaded with 3 uses of Suxamorycin. An incredibly strong muscle relaxant with dubious side effects, used for surgery."
 	amount_per_transfer_from_this = 10
 	volume = 30
+	mixed_chem = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/suxamorycin/New()
 	..()

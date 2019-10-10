@@ -597,7 +597,7 @@
 				var/obj/item/circuitboard/airlock/ae
 				if(!electronics)
 					ae = new/obj/item/circuitboard/airlock( loc )
-					if(!req_access)
+					if(!req_access || !req_one_access)
 						check_access()
 					if(req_access.len)
 						ae.conf_access = req_access

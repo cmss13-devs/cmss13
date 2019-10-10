@@ -726,12 +726,6 @@
 
 
 		list("BELT (choose 1)", 0, null, null, null),
-		list("M39 holster belt", 0, /obj/item/storage/large_holster/m39, MARINE_CAN_BUY_BELT, "orange"),
-		list("Knives belt", 0, /obj/item/storage/belt/knifepouch, MARINE_CAN_BUY_BELT, "black"),
-		list("Pistol belt", 0, /obj/item/storage/belt/gun/m4a3, MARINE_CAN_BUY_BELT, "black"),
-		list("Revolver belt", 0, /obj/item/storage/belt/gun/m44, MARINE_CAN_BUY_BELT, "black"),
-		list("Shotgun ammo belt", 0, /obj/item/storage/belt/shotgun, MARINE_CAN_BUY_BELT, "black"),
-		list("Standard ammo belt", 0, /obj/item/storage/belt/marine, MARINE_CAN_BUY_BELT, "black"),
 		list("Smartgunner ammo belt", 0, /obj/item/storage/belt/gun/smartgunner/full, MARINE_CAN_BUY_BELT, "black"),
 
 		list("POUCHES (choose 2)", 0, null, null, null),
@@ -879,6 +873,7 @@
 		list("Autoinjector pouch", 0, /obj/item/storage/pouch/autoinjector/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "white"),
 		list("Firstaid pouch", 0, /obj/item/storage/pouch/firstaid/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Flare pouch", 0, /obj/item/storage/pouch/flare/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+		list("Fuel Tank Strap Pouch", 0, /obj/item/storage/pouch/flamertank, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Large general pouch", 0, /obj/item/storage/pouch/general/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Large magazine pouch", 0, /obj/item/storage/pouch/magazine/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Large pistol magazine pouch", 0, /obj/item/storage/pouch/magazine/pistol/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
@@ -1164,24 +1159,17 @@
 		list("Essential Smartgunner Set", 0, /obj/item/storage/box/m56_system, MARINE_CAN_BUY_ESSENTIALS, "white"),
 
 		list("SPECIAL AMMUNITION", 0, null, null, null),
-
 		list("M56 powerpack", 15, /obj/item/smartgun_powerpack, null, "black"),
 		list("M56 ammo", 15, /obj/item/ammo_magazine/smartgun, null, "black"),
-		list("AP M41A magazine", 15, /obj/item/ammo_magazine/rifle/ap, null, "black"),
-		list("Extended M41A magazine", 15, /obj/item/ammo_magazine/rifle/extended, null, "black"),
-		list("AP M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/ap, null, "black"),
-		list("Extended M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
-		list("AP L42-MK1 magazine", 13, /obj/item/ammo_magazine/rifle/l42mk1/ap, null, "black"),
 
 		list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
 		list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
-		list("Rifle stock", 0, /obj/item/attachable/stock/rifle, MARINE_CAN_BUY_ATTACHMENT, "black"),
-		list("Folding submachinegun stock", 0, /obj/item/attachable/stock/smg/collapsible, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Burst Fire Assembly", 0, /obj/item/attachable/burstfire_assembly, "black"),
 
 		list("MISCELLANEOUS AND SPECIAL", 0, null, null, null),
 		list("Motion Detector", 15, /obj/item/device/motiondetector, null, "black"),
-		list("Barrel Charger", 45, /obj/item/attachable/heavy_barrel, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Barrel Charger", 45, /obj/item/attachable/heavy_barrel, MARINE_CAN_BUY_ATTACHMENT, "black")
 	)
 
 

@@ -760,6 +760,25 @@
 		/obj/item/device/flashlight/flare
 	)
 
+/obj/item/storage/belt/gun/flaregun/full/New()
+	..()
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+
 /obj/item/storage/belt/gun/flaregun/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/storage/box/m94))
 		var/obj/item/storage/box/m94/M = W

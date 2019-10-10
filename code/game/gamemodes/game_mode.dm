@@ -140,6 +140,7 @@ var/global/list/datum/entity/player_entity/player_entities = list()
 
 /datum/game_mode/proc/calculate_end_statistics()
 	for(var/mob/M in living_mob_list)
+		M.life_time_total = world.time - M.life_time_start
 		M.track_death_calculations()
 		M.statistic_exempt = TRUE
 

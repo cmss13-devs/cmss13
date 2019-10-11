@@ -1320,6 +1320,7 @@
 			report.info += "<font size = \"2\"><I> - [S.name]</I></font><BR>\n"
 		else
 			report.info += "<I>ERROR: Unable to analyze emission spectrum of sample.</I>" //A reaction to make this doesn't exist, so this is our IC excuse
+		sample.name = "vial ([S.name])"
 	else
 		report.name += "ERROR"
 		report.info += "<center><img src = wylogo.png><HR><I><B>Official Company Document</B><BR>Reagent Analysis Print</I><HR><H2>Analysis ERROR</H2></center>"

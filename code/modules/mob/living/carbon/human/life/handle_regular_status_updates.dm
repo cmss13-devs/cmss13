@@ -116,7 +116,7 @@
 			paralyzed--
 
 		if(drowsyness)
-			drowsyness--
+			drowsyness = max(0,drowsyness--)
 			eye_blurry = max(2, eye_blurry)
 			if(prob(5))
 				sleeping += 1

@@ -6476,13 +6476,6 @@
 	dir = 5
 	},
 /area/tdome/tdomeobserve)
-"qA" = (
-/obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/poddoor/shutters/transit{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/shuttle/distress/start_big)
 "qC" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Engineering";
@@ -8207,8 +8200,7 @@
 	},
 /area/adminlevel/bunker01/hydroponics)
 "zE" = (
-/obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/poddoor/shutters/transit,
+/obj/structure/window/framed/almayer/white/hull,
 /turf/open/floor/plating,
 /area/shuttle/distress/start_big)
 "zZ" = (
@@ -8874,6 +8866,9 @@
 	dir = 8
 	},
 /area/adminlevel/ert_station)
+"Mt" = (
+/turf/closed/wall/almayer/white/hull,
+/area/shuttle/distress/start_big)
 "MB" = (
 /turf/open/floor/almayer{
 	dir = 2;
@@ -14218,11 +14213,11 @@ FB
 FB
 FB
 FB
-iU
-qA
-iU
-qA
-iU
+Mt
+zE
+Mt
+zE
+Mt
 FB
 FB
 FB
@@ -14369,13 +14364,13 @@ FB
 FB
 FB
 FB
-iU
-iU
+Mt
+Mt
 lu
 lJ
 lW
-iU
-iU
+Mt
+Mt
 FB
 FB
 FB
@@ -14670,19 +14665,19 @@ KW
 FB
 FB
 FB
-iU
-qA
-iU
-iU
+Mt
+zE
+Mt
+Mt
 lh
 lw
 lL
 lY
 mi
-iU
-iU
-qA
-iU
+Mt
+Mt
+zE
+Mt
 FB
 FB
 FB
@@ -14821,8 +14816,8 @@ wW
 KW
 FB
 FB
-iU
-iU
+Mt
+Mt
 kG
 kN
 iU
@@ -14834,8 +14829,8 @@ iU
 iU
 my
 my
-iU
-iU
+Mt
+Mt
 FB
 FB
 Fo
@@ -15277,7 +15272,7 @@ wW
 KW
 FB
 FB
-iU
+Mt
 kz
 kI
 kQ
@@ -15291,7 +15286,7 @@ iU
 mz
 mF
 mN
-iU
+Mt
 FB
 FB
 Fo
@@ -15428,8 +15423,8 @@ aa
 wW
 KW
 FB
-iU
-iU
+Mt
+Mt
 iU
 iU
 iU
@@ -15443,8 +15438,8 @@ iU
 iU
 iU
 iU
-iU
-iU
+Mt
+Mt
 FB
 Fo
 wW
@@ -15580,7 +15575,7 @@ aa
 wW
 KW
 FB
-iU
+Mt
 je
 kA
 kJ
@@ -15596,7 +15591,7 @@ iW
 mG
 mO
 li
-iU
+Mt
 FB
 Fo
 wW
@@ -16036,7 +16031,7 @@ aa
 wW
 KW
 FB
-iU
+Mt
 ku
 kB
 kK
@@ -16052,7 +16047,7 @@ iW
 li
 mP
 je
-iU
+Mt
 FB
 Fo
 wW
@@ -16188,8 +16183,8 @@ aa
 wW
 KW
 FB
-iU
-iU
+Mt
+Mt
 iU
 kL
 iU
@@ -16203,8 +16198,8 @@ iU
 iU
 iU
 iU
-iU
-iU
+Mt
+Mt
 FB
 Fo
 wW
@@ -16341,7 +16336,7 @@ wW
 KW
 FB
 FB
-iU
+Mt
 kC
 kK
 kS
@@ -16355,7 +16350,7 @@ iU
 mA
 mH
 mA
-iU
+Mt
 FB
 FB
 Fo
@@ -16493,7 +16488,7 @@ wW
 KW
 FB
 FB
-iU
+Mt
 kD
 kH
 kK
@@ -16645,7 +16640,7 @@ wW
 KW
 FB
 FB
-iU
+Mt
 kE
 kH
 kT
@@ -16659,7 +16654,7 @@ iU
 iU
 mJ
 iU
-iU
+Mt
 FB
 FB
 Fo
@@ -16797,7 +16792,7 @@ wW
 KW
 FB
 FB
-iU
+Mt
 kF
 kM
 kU
@@ -16811,7 +16806,7 @@ iU
 mB
 Li
 mQ
-iU
+Mt
 FB
 FB
 Fo
@@ -16949,9 +16944,9 @@ wW
 KW
 FB
 FB
-iU
-iU
-iU
+Mt
+Mt
+Mt
 iU
 iU
 iU
@@ -16961,9 +16956,9 @@ iU
 iU
 iU
 iU
-iU
-iU
-iU
+Mt
+Mt
+Mt
 FB
 FB
 Fo
@@ -17103,7 +17098,7 @@ FB
 FB
 FB
 FB
-iU
+Mt
 Xa
 ld
 lo
@@ -17113,7 +17108,7 @@ iU
 ml
 mu
 ml
-iU
+Mt
 FB
 FB
 FB
@@ -17265,7 +17260,7 @@ iW
 mm
 mv
 mm
-iU
+Mt
 FB
 FB
 FB
@@ -17417,7 +17412,7 @@ mc
 mn
 mw
 mn
-iU
+Mt
 FB
 FB
 FB
@@ -17559,7 +17554,7 @@ FB
 FB
 FB
 FB
-iU
+Mt
 kY
 lf
 lq
@@ -17569,7 +17564,7 @@ iW
 mo
 mx
 mC
-iU
+Mt
 FB
 FB
 FB
@@ -17711,17 +17706,17 @@ FB
 FB
 FB
 FB
-iU
-qA
-iU
+Mt
+zE
+Mt
 iU
 iU
 lO
 iU
 iU
-iU
-iU
-iU
+Mt
+Mt
+Mt
 FB
 FB
 FB
@@ -17865,13 +17860,13 @@ FB
 FB
 FB
 FB
-iU
+Mt
 lr
 lF
 lL
 md
 mp
-iU
+Mt
 FB
 FB
 FB
@@ -18169,13 +18164,13 @@ FB
 FB
 FB
 FB
-iU
+Mt
 lt
 lH
 lU
 mf
 mr
-iU
+Mt
 FB
 FB
 FB
@@ -18321,13 +18316,13 @@ FB
 FB
 FB
 FB
-iU
-iU
+Mt
+Mt
 lI
 lV
 mg
-iU
-iU
+Mt
+Mt
 FB
 FB
 FB
@@ -18474,11 +18469,11 @@ FB
 FB
 FB
 FB
-iU
-qA
-qA
-qA
-iU
+Mt
+zE
+zE
+zE
+Mt
 FB
 FB
 FB

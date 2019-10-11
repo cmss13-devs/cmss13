@@ -805,17 +805,17 @@
 			if(PROPERTY_NEUROINHIBITING) //disabilities
 				if(is_OD)
 					M.adjustBrainLoss(potency)
-					M.disabilities = NERVOUS
+					M.disabilities |= NERVOUS
 					if(is_COD)
 						M.adjustBrainLoss(2*potency)
 				if(potency > 1)
-					M.sdisabilities = BLIND
+					M.sdisabilities |= BLIND
 				else
-					M.disabilities = NEARSIGHTED
+					M.disabilities |= NEARSIGHTED
 				if(potency > 2)
-					M.sdisabilities = DEAF
+					M.sdisabilities |= DEAF
 				if(potency > 3)
-					M.sdisabilities = MUTE
+					M.sdisabilities |= MUTE
 			if(PROPERTY_ALCOHOLIC) //drunkness
 				if(is_OD)
 					M.confused += min(M.confused + potency*2,20*potency)
@@ -850,7 +850,6 @@
 						M.hallucination += potency
 					M.druggy += potency
 					M.make_jittery(5)
-					M.drowsyness = min(M.drowsyness + 0.25*potency,15*potency)
 			if(PROPERTY_RELAXING) //slows movement
 				if(is_OD)
 					//heart beats slower

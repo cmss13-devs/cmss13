@@ -525,7 +525,11 @@
 	basestate = "white_rwindow"
 	window_frame = /obj/structure/window_frame/almayer/white
 
-
+/obj/structure/window/framed/almayer/white/hull
+	not_damageable = 1
+	not_deconstructable = 1
+	unacidable = 1
+	health = 1000000 //Failsafe, shouldn't matter
 
 /obj/structure/window/framed/colony
 	name = "window"

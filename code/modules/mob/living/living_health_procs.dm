@@ -127,6 +127,8 @@
 	bodytemperature = T20C
 	sdisabilities = 0
 	disabilities = 0
+	drowsyness = 0
+	hallucination = 0
 
 	// restore all of a human's blood
 	if(ishuman(src))

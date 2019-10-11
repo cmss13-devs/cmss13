@@ -40,6 +40,9 @@
 	icon = 'icons/turf/walls/almayer_white.dmi'
 	icon_state = "wwall"
 
+/turf/closed/wall/almayer/white/hull
+	hull = 1
+
 /turf/closed/wall/almayer/research/can_be_dissolved()
 	return 0
 

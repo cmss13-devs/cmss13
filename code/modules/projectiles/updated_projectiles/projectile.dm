@@ -172,20 +172,6 @@
 			qdel(src)
 			return
 
-		// If the ammo should hit the surface of the target and the next turf is dense
-		// The current turf is the "surface" of the target
-		// Distance > 0 to not immediately hit the user's turf
-		if(distance_travelled > 0)
-			var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
-			if((ammo_flags & AMMO_STRIKES_SURFACE) && is_blocked_turf(next_turf))
-				// We "hit" the current turf but strike the actual blockage
-				ammo.on_hit_turf(current_turf,src)
-				next_turf.bullet_act(src)
-				in_flight = 0
-				sleep(0)
-				qdel(src)
-				return
-
 		var/proj_dir = get_dir(current_turf, next_turf)
 		if(proj_dir & (proj_dir-1)) //diagonal direction
 			if(!current_turf.Adjacent(next_turf)) //we can't reach the next turf
@@ -234,11 +220,17 @@
 		return 0
 
 	if(T.density) // Handle wall hit
-		ammo.on_hit_turf(T,src)
+		var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 
-		if(T && T.loc)
+		// If the ammo should hit the surface of the target and the next turf is dense
+		// The current turf is the "surface" of the target
+		if(ammo_flags & AMMO_STRIKES_SURFACE)
+			// We "hit" the current turf but strike the actual blockage
+			ammo.on_hit_turf(get_turf(src),src)
 			T.bullet_act(src)
-
+		else
+			ammo.on_hit_turf(T,src)
+			T.bullet_act(src)
 		return 1
 
 	// Firer's turf, keep moving
@@ -312,9 +304,20 @@
 
 	var/hit_chance = O.get_projectile_hit_boolean(src)
 	if( hit_chance ) // Calculated from combination of both ammo accuracy and gun accuracy
-		ammo.on_hit_obj(O,src)
-		if(O && O.loc)
-			O.bullet_act(src)
+		var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
+
+		// If the ammo should hit the surface of the target and there is an object blocking
+		// The current turf is the "surface" of the target
+		if(ammo_flags & AMMO_STRIKES_SURFACE)
+			var/turf/T = get_turf(O)
+
+			// We "hit" the current turf but strike the actual blockage
+			ammo.on_hit_turf(get_turf(src),src)
+			T.bullet_act(src)
+		else
+			ammo.on_hit_obj(O,src)
+			if(O && O.loc)
+				O.bullet_act(src)
 		return 1
 
 /obj/item/projectile/proc/handle_mob(mob/living/L)
@@ -347,9 +350,18 @@
 						mob_is_hit = TRUE
 						break
 		if(mob_is_hit)
-			if(L && L.loc)
-				if(L.bullet_act(src) != -1)
-					ammo.on_hit_mob(L,src)
+			var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
+
+			// If the ammo should hit the surface of the target and there is a mob blocking
+			// The current turf is the "surface" of the target
+			if(ammo_flags & AMMO_STRIKES_SURFACE)
+				var/turf/T = get_turf(L)
+
+				// We "hit" the current turf but strike the actual blockage
+				ammo.on_hit_turf(get_turf(src),src)
+				T.bullet_act(src)
+			else if(L && L.loc && (L.bullet_act(src) != -1))
+				ammo.on_hit_mob(L,src)
 			return 1
 		else if (!L.lying)
 			animatation_displace_reset(L)

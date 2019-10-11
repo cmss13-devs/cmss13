@@ -10,6 +10,7 @@ var/global/list/ghdel_profiling = list()
 	var/fingerprintslast = null
 	var/list/blood_DNA
 	var/blood_color
+	var/unacidable = 0
 	var/last_bumped = 0
 	var/flags_pass = 0
 	var/throwpass = 0

@@ -81,7 +81,7 @@
 	name = "Transit shutters"
 	desc = "Safety shutters to prevent dangerous depressurization during flight"
 	icon = 'icons/obj/structures/doors/blastdoors_shutters.dmi'
-	unacidable = 1
+	unacidable = TRUE
 
 	ex_act(severity) //immune to explosions
 		return
@@ -90,7 +90,7 @@
 	name = "pressure shutters"
 	density = 0
 	opacity = 0
-	unacidable = 1
+	unacidable = TRUE
 	icon_state = "shutter0"
 	open_layer = PODDOOR_CLOSED_LAYER
 	closed_layer = PODDOOR_CLOSED_LAYER

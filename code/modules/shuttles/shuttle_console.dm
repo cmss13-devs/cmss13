@@ -3,6 +3,7 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"
 	circuit = null
+	unacidable = TRUE
 
 	var/shuttle_tag  // Used to coordinate data in shuttle controller.
 	var/hacked = 0   // Has been emagged, no access restrictions.

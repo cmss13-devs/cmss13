@@ -8,28 +8,28 @@ var/global/floorIsLava = 0
 	msg = "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_adminwarn(msg)
 	for(var/client/C in admins)
-		if(R_ADMIN & C.admin_holder.rights)
+		if(C && (R_ADMIN & C.admin_holder.rights))
 			to_chat(C, msg)
 
 /proc/message_mods(var/msg) // +MOD and above (not Mentors)
 	msg = "<span class=\"admin\"><span class=\"prefix\">MOD LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_adminwarn(msg)
 	for(var/client/C in admins)
-		if(R_MOD & C.admin_holder.rights)
+		if(C && (R_MOD & C.admin_holder.rights))
 			to_chat(C, msg)
 
 /proc/message_staff(var/msg) // ALL staff - including Mentors
 	msg = "<span class=\"admin\"><span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_adminwarn(msg)
 	for(var/client/C in admins)
-		if(C.admin_holder.rights)
+		if(C && (C.admin_holder.rights))
 			to_chat(C, msg)
 
 /proc/msg_admin_attack(var/text) //Toggleable Attack Messages
 	log_attack(text)
 	var/rendered = "<span class=\"admin\"><span class=\"prefix\">ATTACK:</span> <span class=\"message\">[text]</span></span>"
 	for(var/client/C in admins)
-		if(R_MOD & C.admin_holder.rights)
+		if(C && (R_MOD & C.admin_holder.rights))
 			if(C.prefs.toggles_chat & CHAT_ATTACKLOGS)
 				var/msg = rendered
 				to_chat(C, msg)
@@ -38,7 +38,7 @@ var/global/floorIsLava = 0
 	log_admin(msg)
 	msg = "<span class=\"admin\"><span class=\"prefix\">ADMIN NICHE LOG:</span> <span class=\"message\">[msg]</span></span>"
 	for(var/client/C in admins)
-		if(R_MOD & C.admin_holder.rights)
+		if(C && (R_MOD & C.admin_holder.rights))
 			if(C.prefs.toggles_chat & CHAT_NICHELOGS)
 				to_chat(C, msg)
 
@@ -46,7 +46,7 @@ var/global/floorIsLava = 0
 	log_attack(text) //Do everything normally BUT IN GREEN SO THEY KNOW
 	var/rendered = "<span class=\"admin\"><span class=\"prefix\">ATTACK:</span> <font color=#00ff00><b>[text]</b></font></span>" //I used <font> because I never learned html correctly, fix this if you want
 	for(var/client/C in admins)
-		if(R_MOD & C.admin_holder.rights)
+		if(C && (R_MOD & C.admin_holder.rights))
 			if(C.prefs.toggles_chat & CHAT_FFATTACKLOGS)
 				var/msg = rendered
 				to_chat(C, msg)

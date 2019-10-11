@@ -402,7 +402,7 @@
 					foundflame.burnlevel = burn_lvl
 					foundflame.firelevel = fire_lvl
 					continue
-				var/new_spread_amt = T.density ? 0 : fire_spread_amount - 1 //walls stop the spread
+				var/new_spread_amt = T?.density ? 0 : fire_spread_amount - 1 //walls stop the spread
 				if(new_spread_amt)
 					for(var/obj/O in T)
 						if(!O.CanPass(src, source_turf))

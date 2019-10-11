@@ -211,7 +211,7 @@
 /obj/structure/machinery/prop/almayer/CICmap
 	name = "map table"
 	desc = "A table that displays a map of the current target location"
-
+	unacidable = TRUE
 	density = 1
 	anchored = 1
 	use_power = 1

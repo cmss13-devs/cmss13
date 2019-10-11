@@ -3,6 +3,7 @@
 	desc = "State of the art machinery for giving orders to a squad."
 	icon_state = "dummy"
 	req_access = list(ACCESS_MARINE_BRIDGE)
+	unacidable = TRUE
 
 	var/mob/living/carbon/human/current_mapviewer = null
 	var/datum/squad/current_squad = null

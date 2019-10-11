@@ -45,6 +45,7 @@
 	layer = BELOW_OBJ_LAYER
 	req_access = null
 	req_one_access = null
+	unacidable = TRUE
 
 	var/gloves_type
 	var/headset_type

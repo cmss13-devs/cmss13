@@ -1,6 +1,7 @@
 /obj/structure/machinery/atmospherics/unary
 	dir = SOUTH
 	initialize_directions = SOUTH
+	health = 0
 
 	var/gas_type = GAS_TYPE_AIR
 	var/temperature = T20C

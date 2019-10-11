@@ -398,13 +398,16 @@ should be alright.
 
 /obj/item/weapon/gun/proc/update_mag_overlay()
 	var/image/I = attachable_overlays["mag"]
-	overlays -= I
-	qdel(I)
+	if(istype(I))
+		overlays -= I
+		qdel(I)
 	if(current_mag && current_mag.bonus_overlay)
 		I = image(current_mag.icon,src,current_mag.bonus_overlay)
 		attachable_overlays["mag"] = I
 		overlays += I
-	else attachable_overlays["mag"] = null
+	else 
+		attachable_overlays["mag"] = null
+	return
 
 /obj/item/weapon/gun/proc/update_special_overlay(new_icon_state)
 	overlays -= attachable_overlays["special"]

@@ -60,7 +60,7 @@
 	var/lying_prev = 0
 	var/canmove = 1
 	var/lastpuke = 0
-	var/unacidable = 0
+	unacidable = 0
 	var/mob_size = MOB_SIZE_HUMAN
 	var/list/embedded = list()          // Embedded items, since simple mobs don't have organs.
 	var/list/languages = list()         // For speaking/listening.

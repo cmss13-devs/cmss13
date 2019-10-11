@@ -682,7 +682,7 @@
 //Xenomorphs can't use machinery, not even the "intelligent" ones
 //Exception is Queen and shuttles, because plot power
 /obj/structure/machinery/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(health <= 0)
+	if(health <= 0 || unacidable)
 		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
 	else
 		M.animation_attack_on(src)
@@ -691,8 +691,7 @@
 		if(health <= 0)
 			M.visible_message(SPAN_DANGER("\The [M] slices [src] apart!"), \
 			SPAN_DANGER("You slice [src] apart!"), null, 5)
-			if(!unacidable)
-				qdel(src)
+			qdel(src)
 		else
 			M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
 			SPAN_DANGER("You slash [src]!"), null, 5)

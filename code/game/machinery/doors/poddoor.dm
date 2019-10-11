@@ -7,7 +7,6 @@
 	id = 1.0
 	dir = 1
 	health = 0
-	unacidable = TRUE
 	layer = PODDOOR_OPEN_LAYER
 	open_layer = PODDOOR_OPEN_LAYER
 	closed_layer = PODDOOR_CLOSED_LAYER

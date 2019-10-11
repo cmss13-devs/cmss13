@@ -10,6 +10,7 @@
 	density = 1
 	anchored = 0
 	opacity = 0
+	unacidable = FALSE
 	var/list/welder_salvage = list(/obj/item/stack/sheet/plasteel,/obj/item/stack/sheet/metal,/obj/item/stack/rods)
 	var/list/wirecutters_salvage = list(/obj/item/stack/cable_coil)
 	var/list/crowbar_salvage

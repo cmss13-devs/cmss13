@@ -2,6 +2,7 @@
 	name = null
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	anchored = 1.0
+	health = 0
 	var/datum/powernet/powernet = null
 	var/directwired = 1		// by default, power machines are connected by a cable in a neighbouring turf
 							// if set to 0, requires a 0-X cable on this turf

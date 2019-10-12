@@ -1,5 +1,11 @@
 var/datum/subsystem/chat/SSchat
 
+#define MAX_DEQUEUE 10 // dequeue no more than this amount of messages, to prevent noone getting a message due to high load
+
+/datum/chat_item
+	var/target
+	var/message
+
 /datum/subsystem/chat
 	name = "Chat"
 	flags = SS_TICKER
@@ -7,13 +13,31 @@ var/datum/subsystem/chat/SSchat
 	priority = SS_PRIORITY_CHAT
 	init_order = SS_INIT_CHAT
 
+	var/list/processQueue = list()
+	var/list/processQueue_current = list()
 	var/list/chatQueue = list()
 
 
 /datum/subsystem/chat/New()
 	NEW_SS_GLOBAL(SSchat)
 
+/datum/subsystem/chat/stat_entry()
+	..("P:[processQueue.len]; C:[processQueue_current.len]")
+
 /datum/subsystem/chat/fire()
+	var/this_dequeue = MAX_DEQUEUE
+	for(var/datum/chat_item/item in processQueue_current)
+		de_queue(item.target, item.message)
+		processQueue_current -= item
+		if(MC_TICK_CHECK)
+			return
+		if(this_dequeue<0)
+			break
+
+	if(processQueue_current.len==0)
+		processQueue_current = processQueue
+		processQueue = list()
+
 	for(var/i in chatQueue)
 		var/client/C = i
 		C << output(chatQueue[C], "browseroutput:output")
@@ -25,13 +49,22 @@ var/datum/subsystem/chat/SSchat
 /datum/subsystem/chat/proc/queue(var/target, var/message)
 	if(!target || !message)
 		return
+	
+	if(!istext(message))
+		CRASH("to_chat called with invalid input type")
+		return
+
+	var/datum/chat_item/ci = new()
+	ci.target = target
+	ci.message = message
+
+	processQueue.Add(ci)
+
+/datum/subsystem/chat/proc/de_queue(var/target, var/message)
 	#define GCHAT_UNDEFINED_LIST 0
 	#define GCHAT_CLIENT_LIST 1
 	#define GCHAT_MOB_LIST 2
 	#define GCHAT_MIND_LIST 3
-	if(!istext(message))
-		CRASH("to_chat called with invalid input type")
-		return
 
 	var/type_of_list = GCHAT_UNDEFINED_LIST
 

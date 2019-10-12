@@ -225,7 +225,7 @@ spookydonut august 2018
 	W.lighting_lumcount += old_lumcount
 	if(old_lumcount != W.lighting_lumcount)
 		W.lighting_changed = 1
-		lighting_controller.changed_turfs += W
+		SSlighting.changed_turfs += W
 
 	W.levelupdate()
 	return W

@@ -130,7 +130,6 @@ obj/structure/machinery/scanner/attack_hand(mob/living/carbon/human/user)
 	L.fields["b_dna"] = dna
 	L.fields["enzymes"] = user.dna.struc_enzymes
 	L.fields["identity"] = user.dna.uni_identity
-	L.fields["image"] = getFlatIcon(user,0)//What the person looks like. Naked, in this case.
 	//End locked reporting
 
 	data_core.general += G

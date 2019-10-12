@@ -138,11 +138,6 @@
 			rig = W
 			user.drop_inv_item_to_loc(W, src)
 
-			var/icon/test = getFlatIcon(W)
-			test.Shift(NORTH,1)
-			test.Shift(EAST,6)
-			overlays += test
-
 	return ..()
 
 

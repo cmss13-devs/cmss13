@@ -228,9 +228,6 @@ explosion resistance exactly as much as their health
 		if(explosion_turfs[T] >= 0)
 			num_tiles_affected++
 
-	if(num_tiles_affected > 25) //pause lighting and powernet processing until explosion damage is finished
-		lighting_controller.processing = 0
-
 	reflected_power *= reflection_multiplier
 
 	var/damage_addon = min(power * reflection_amplification_limit, reflected_power/num_tiles_affected)
@@ -293,11 +290,7 @@ explosion resistance exactly as much as their health
 			tiles_processed = 0
 			sleep(1)
 
-	spawn(8)  //resume lighting and powernet processing
-		if(!lighting_controller.processing)
-			lighting_controller.processing = 1
-			lighting_controller.process() //Restart the lighting controller
-
+	spawn(8)
 		qdel(src)
 
 

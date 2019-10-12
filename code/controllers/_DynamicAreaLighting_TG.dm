@@ -38,7 +38,6 @@
 #define DIRECTIONAL_LUM_GRADIENT 	0.2					//Used to tweak direcitonal luminosity
 #define DIRECTIONAL_LUM_MULT		1.5					//how much brighter directional luminosity is in the right direction
 
-var/global/list/global_changed_lights = list()
 /datum/light_source
 	var/atom/owner
 	var/changed = 1
@@ -63,7 +62,7 @@ var/global/list/global_changed_lights = list()
 	__y = owner.y
 	__z = owner.z
 	// the lighting object maintains a list of all light sources
-	global_changed_lights.Add(src)
+	SSlighting.lights.Add(src)
 
 
 	//Check a light to see if its effect needs reprocessing. If it does, remove any old effect and create a new one
@@ -99,7 +98,7 @@ var/global/list/global_changed_lights = list()
 
 	if(!changed)
 		changed = 1
-		global_changed_lights.Add(src)
+		SSlighting.lights.Add(src)
 
 /datum/light_source/proc/remove_effect()
 	// before we apply the effect we remove the light's current effect.
@@ -339,7 +338,7 @@ var/global/list/global_changed_lights = list()
 		color_lighting_lumcount = max(color_lighting_lumcount + amount, 0) // Minimum of 0.
 
 	if(!lighting_changed)
-		lighting_controller.changed_turfs += src
+		SSlighting.changed_turfs += src
 		lighting_changed = 1
 
 /turf/proc/lighting_tag(const/level)
@@ -363,7 +362,6 @@ var/global/list/global_changed_lights = list()
 
 	if (l_color != A.l_color)
 		A.l_color = l_color
-		//color_light = min(max(round(color_lighting_lumcount, 1), 0), lighting_controller.lighting_states)
 
 	A.SetLightLevel(level, color_light)
 	Area.related += A
@@ -375,23 +373,22 @@ var/global/list/global_changed_lights = list()
 
 	if(!istype(Area) || !Area.lighting_use_dynamic) return
 
-	var/level = min(max(round(lighting_lumcount,1),0),lighting_controller.lighting_states)
+	var/level = min(max(round(lighting_lumcount,1),0),LIGHTING_STATES)
 	var/new_tag = lighting_tag(level)
 
 	// pomf - If we have a lighting color that is not null, apply the new tag to seperate the areas.
 	if (l_color)
 		// pomf - We append the (rounded!) color lighting lumcount so we can have colored lights.
-		new_tag += "[l_color][min(max(round(color_lighting_lumcount,1),0),lighting_controller.lighting_states)]"
+		new_tag += "[l_color][min(max(round(color_lighting_lumcount,1),0),LIGHTING_STATES)]"
 
 	if(Area.tag!=new_tag)	//skip if already in this area
 		var/area/A = locate(new_tag)	// find an appropriate area
-		var/color_light = min(max(round(color_lighting_lumcount,1),0),lighting_controller.lighting_states)
+		var/color_light = min(max(round(color_lighting_lumcount,1),0),LIGHTING_STATES)
 
 		if (!A)
 			A = build_lighting_area(new_tag, level, color_light)
 		else if (l_color != A.l_color)
 			A.l_color = l_color
-			//color_light = min(max(round(color_lighting_lumcount, 1), 0), lighting_controller.lighting_states)
 			A.SetLightLevel(level, color_light)
 
 		A.contents += src	// move the turf into the area
@@ -423,14 +420,9 @@ var/global/list/global_changed_lights = list()
 	if(light <= 0)
 		light = 0
 		luminosity = 0
-	if(lighting_controller)
-		if(light > lighting_controller.lighting_states)
-			light = lighting_controller.lighting_states
-		luminosity = 1
-	else
-		if(light > LIGHTING_STATES)
-			light = LIGHTING_STATES
-		luminosity = 1
+	if(light > LIGHTING_STATES)
+		light = LIGHTING_STATES
+	luminosity = 1
 
 	if(lighting_overlay)
 		overlays -= lighting_overlay

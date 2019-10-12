@@ -55,6 +55,7 @@
 #define SS_PRIORITY_EVENT          65
 #define SS_PRIORITY_DISEASE        60
 #define SS_PRIORITY_FAST_MACHINERY 55
+#define SS_PRIORITY_MIDI       	   40
 #define SS_PRIORITY_DEFCON         35
 #define SS_PRIORITY_UNSPECIFIED    30
 #define SS_PRIORITY_LIGHTING       20

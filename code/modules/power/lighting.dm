@@ -244,7 +244,7 @@
 
 // update the icon_state and luminosity of the light depending on its state
 /obj/structure/machinery/light/proc/update(var/trigger = 1)
-	global_changed_lights.Add(light)
+	SSlighting.lights_current.Add(light)
 	update_icon()
 	if(on)
 		if(luminosity != brightness)

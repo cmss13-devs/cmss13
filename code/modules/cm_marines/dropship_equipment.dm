@@ -241,6 +241,7 @@
 	name = "sentry deployment system"
 	desc = "A box that deploys a sentry turret. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
 	density = 0
+	health = null
 	icon_state = "sentry_system"
 	is_interactable = TRUE
 	point_cost = 500

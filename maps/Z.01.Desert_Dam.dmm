@@ -5864,7 +5864,8 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = "dam_checkpoint_north";
-	name = "\improper Checkpoint Lock"
+	name = "\improper Checkpoint Lock";
+	unacidable = 0
 	},
 /turf/open/floor{
 	dir = 1;
@@ -6555,7 +6556,8 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = "dam_checkpoint_north";
-	name = "\improper Checkpoint Lock"
+	name = "\improper Checkpoint Lock";
+	unacidable = 0
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2";
@@ -7128,7 +7130,8 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = "dam_checkpoint_north";
-	name = "\improper Checkpoint Lock"
+	name = "\improper Checkpoint Lock";
+	unacidable = 0
 	},
 /turf/open/floor{
 	icon_state = "warning"
@@ -7533,7 +7536,7 @@
 	icon_state = "2,7"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "atB" = (
@@ -8886,7 +8889,7 @@
 	icon_state = "3,7"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "awV" = (
@@ -12007,7 +12010,7 @@
 	icon_state = "6,7"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aFh" = (
@@ -14761,7 +14764,7 @@
 	icon_state = "1,5"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aMm" = (
@@ -14815,7 +14818,7 @@
 	icon_state = "6,6"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aMt" = (
@@ -14850,7 +14853,7 @@
 "aMx" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aMy" = (
@@ -15089,7 +15092,7 @@
 	icon_state = "7,6"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aMZ" = (
@@ -15474,7 +15477,7 @@
 	icon_state = "1,2"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aOe" = (
@@ -15521,7 +15524,7 @@
 /obj/structure/filtration/flacculation_arm,
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aOm" = (
@@ -15591,7 +15594,7 @@
 	icon_state = "7,2"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aOw" = (
@@ -15661,7 +15664,7 @@
 	icon_state = "2,1"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aOE" = (
@@ -15897,7 +15900,7 @@
 	icon_state = "6,1"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aPn" = (
@@ -16839,7 +16842,7 @@
 	icon_state = "2,7"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aRK" = (
@@ -17007,7 +17010,7 @@
 	icon_state = "3,7"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aSi" = (
@@ -17246,7 +17249,7 @@
 	icon_state = "6,7"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aTa" = (
@@ -17255,7 +17258,7 @@
 	icon_state = "1,5"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aTb" = (
@@ -17264,7 +17267,7 @@
 	icon_state = "6,6"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aTc" = (
@@ -17273,7 +17276,7 @@
 	icon_state = "7,6"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aTe" = (
@@ -17816,7 +17819,7 @@
 "aUT" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aUU" = (
@@ -18387,7 +18390,7 @@
 	icon_state = "1,2"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aWJ" = (
@@ -18396,7 +18399,7 @@
 	icon_state = "7,2"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aWK" = (
@@ -18580,7 +18583,7 @@
 	icon_state = "2,1"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aXm" = (
@@ -19124,7 +19127,7 @@
 /obj/structure/filtration/coagulation_arm,
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aYR" = (
@@ -19273,7 +19276,7 @@
 	icon_state = "6,1"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
 "aZj" = (
@@ -19352,7 +19355,7 @@
 "aZv" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "aZw" = (
@@ -21054,7 +21057,7 @@
 "ber" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bes" = (
@@ -21767,7 +21770,7 @@
 	icon_state = "2,7"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bgx" = (
@@ -21782,7 +21785,7 @@
 	icon_state = "3,7"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bgz" = (
@@ -23370,7 +23373,7 @@
 	icon_state = "6,7"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "blq" = (
@@ -23379,7 +23382,7 @@
 	icon_state = "2,7"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "blr" = (
@@ -23388,7 +23391,7 @@
 	icon_state = "3,7"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "blt" = (
@@ -23403,7 +23406,7 @@
 	icon_state = "6,7"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "blw" = (
@@ -23537,7 +23540,7 @@
 	icon_state = "1,5"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "blR" = (
@@ -23546,7 +23549,7 @@
 	icon_state = "6,6"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "blS" = (
@@ -23555,7 +23558,7 @@
 	icon_state = "7,6"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "blT" = (
@@ -23570,7 +23573,7 @@
 	icon_state = "1,5"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "blV" = (
@@ -23579,7 +23582,7 @@
 	icon_state = "6,6"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "blW" = (
@@ -23669,7 +23672,7 @@
 	icon_state = "7,6"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bmf" = (
@@ -23695,7 +23698,7 @@
 	icon_state = "1,2"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bmj" = (
@@ -23704,7 +23707,7 @@
 	icon_state = "7,2"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bmk" = (
@@ -23946,7 +23949,7 @@
 	icon_state = "1,2"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bmQ" = (
@@ -23966,7 +23969,7 @@
 	icon_state = "7,2"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bmS" = (
@@ -23975,7 +23978,7 @@
 	icon_state = "2,1"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bmT" = (
@@ -23984,7 +23987,7 @@
 	icon_state = "6,1"
 	},
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bmV" = (
@@ -24171,7 +24174,7 @@
 	icon_state = "2,1"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bny" = (
@@ -24261,7 +24264,7 @@
 	icon_state = "6,1"
 	},
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bnL" = (
@@ -24613,7 +24616,7 @@
 /obj/structure/filtration/flacculation_arm,
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "boL" = (
@@ -25001,7 +25004,7 @@
 /obj/structure/filtration/coagulation_arm,
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bpT" = (
@@ -33633,7 +33636,8 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
 	id = "dam_checkpoint_northwest";
-	name = "\improper Checkpoint Lock"
+	name = "\improper Checkpoint Lock";
+	unacidable = 0
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
@@ -34872,7 +34876,8 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
 	id = "dam_checkpoint_northwest";
-	name = "\improper Checkpoint Lock"
+	name = "\improper Checkpoint Lock";
+	unacidable = 0
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
@@ -36394,7 +36399,8 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
 	id = "dam_checkpoint_northwest";
-	name = "\improper Checkpoint Lock"
+	name = "\improper Checkpoint Lock";
+	unacidable = 0
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
@@ -59306,7 +59312,7 @@
 	dir = 4;
 	id = "dam_stormlock_central";
 	name = "\improper Storm Lock";
-	unacidable = 1
+	unacidable = 0
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/west_tunnel)
@@ -59511,7 +59517,7 @@
 	dir = 4;
 	id = "dam_stormlock_central";
 	name = "\improper Storm Lock";
-	unacidable = 1
+	unacidable = 0
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/west_tunnel)
@@ -62465,7 +62471,7 @@
 	dir = 4;
 	id = "dam_stormlock_central";
 	name = "\improper Storm Lock";
-	unacidable = 1
+	unacidable = 0
 	},
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
@@ -62992,7 +62998,7 @@
 	dir = 4;
 	id = "dam_stormlock_central";
 	name = "\improper Storm Lock";
-	unacidable = 1
+	unacidable = 0
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/west_tunnel)

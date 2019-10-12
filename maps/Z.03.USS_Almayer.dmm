@@ -3985,7 +3985,9 @@
 	vector_x = -19;
 	vector_y = 99
 	},
-/obj/structure/catwalk,
+/obj/structure/catwalk{
+	health = null
+	},
 /turf/open/floor/plating/almayer,
 /area/almayer/hallways/starboard_hallway)
 "ajN" = (
@@ -4011,7 +4013,9 @@
 	vector_x = -19;
 	vector_y = 99
 	},
-/obj/structure/catwalk,
+/obj/structure/catwalk{
+	health = null
+	},
 /turf/open/floor/plating/almayer,
 /area/almayer/hallways/starboard_hallway)
 "ajP" = (
@@ -4034,7 +4038,9 @@
 	icon_state = "tube1";
 	pixel_y = 0
 	},
-/obj/structure/catwalk,
+/obj/structure/catwalk{
+	health = null
+	},
 /turf/open/floor/plating/almayer,
 /area/almayer/hallways/starboard_hallway)
 "ajR" = (
@@ -4252,7 +4258,9 @@
 	vector_x = -2;
 	vector_y = 99
 	},
-/obj/structure/catwalk,
+/obj/structure/catwalk{
+	health = null
+	},
 /turf/open/floor/plating/almayer,
 /area/almayer/hallways/starboard_hallway)
 "akr" = (
@@ -4358,7 +4366,9 @@
 	vector_x = -1;
 	vector_y = 103
 	},
-/obj/structure/catwalk,
+/obj/structure/catwalk{
+	health = null
+	},
 /turf/open/floor/plating/almayer,
 /area/almayer/hallways/port_hallway)
 "akG" = (
@@ -6102,7 +6112,9 @@
 	vector_x = -1;
 	vector_y = 103
 	},
-/obj/structure/catwalk,
+/obj/structure/catwalk{
+	health = null
+	},
 /turf/open/floor/plating/almayer,
 /area/almayer/hallways/port_hallway)
 "anZ" = (
@@ -6139,7 +6151,9 @@
 	vector_x = -19;
 	vector_y = 103
 	},
-/obj/structure/catwalk,
+/obj/structure/catwalk{
+	health = null
+	},
 /turf/open/floor/plating/almayer,
 /area/almayer/hallways/port_hallway)
 "aod" = (
@@ -6683,7 +6697,9 @@
 	vector_x = -19;
 	vector_y = 103
 	},
-/obj/structure/catwalk,
+/obj/structure/catwalk{
+	health = null
+	},
 /turf/open/floor/plating/almayer,
 /area/almayer/hallways/port_hallway)
 "apj" = (
@@ -44595,7 +44611,9 @@
 	vector_x = 19;
 	vector_y = -99
 	},
-/obj/structure/catwalk,
+/obj/structure/catwalk{
+	health = null
+	},
 /turf/open/floor/plating/almayer,
 /area/almayer/hallways/aft_hallway)
 "dxI" = (
@@ -46943,7 +46961,9 @@
 	vector_x = 2;
 	vector_y = -99
 	},
-/obj/structure/catwalk,
+/obj/structure/catwalk{
+	health = null
+	},
 /turf/open/floor/plating/almayer,
 /area/almayer/hallways/aft_hallway)
 "gxl" = (
@@ -52623,7 +52643,9 @@
 	vector_x = 19;
 	vector_y = -103
 	},
-/obj/structure/catwalk,
+/obj/structure/catwalk{
+	health = null
+	},
 /turf/open/floor/plating/almayer,
 /area/almayer/hallways/aft_hallway)
 "noe" = (
@@ -57964,7 +57986,9 @@
 	vector_x = 1;
 	vector_y = -103
 	},
-/obj/structure/catwalk,
+/obj/structure/catwalk{
+	health = null
+	},
 /turf/open/floor/plating/almayer,
 /area/almayer/hallways/aft_hallway)
 "tHZ" = (

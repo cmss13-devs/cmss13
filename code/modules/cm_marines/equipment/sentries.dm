@@ -1094,9 +1094,9 @@
 	angle = -1
 	rounds = 1000000
 	iff_signal = ACCESS_IFF_MARINE
-	burst_size = 20
+	burst_size = 25
 	locked = 1
-	burst_scatter_mult = 1.2
+	burst_scatter_mult = 1
 	fire_delay = 1
 	range = 10
 	muzzle_flash_lum = 4 //muzzle flash brightness

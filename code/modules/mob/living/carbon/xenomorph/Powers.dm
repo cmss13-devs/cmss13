@@ -167,6 +167,11 @@
 	if(!check_plasma(10))
 		return
 
+	if (used_acid_spray)
+		return
+
+
+
 	if(T)
 		var/turf/target
 
@@ -185,7 +190,12 @@
 		if(!target)
 			return
 
+		if(!do_after(src, acid_spray_activation_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			to_chat(src, SPAN_WARNING("You decide to cancel your acid spray."))
+			return
+
 		used_acid_spray = 1
+
 		use_plasma(10)
 		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1)
 		visible_message(SPAN_XENOWARNING("\The [src] spews forth a virulent spray of acid!"), \
@@ -272,8 +282,10 @@
 				to_chat(M, SPAN_XENODANGER("\The [src] showers you in corrosive acid!"))
 				if(!isYautja(M))
 					M.emote("scream")
-					if(!isXenoSpitter(src))
+					if(isXenoBoiler(src))
 						M.KnockDown(rand(3, 4))
+					else if (isXenoPraetorian(src))
+						M.KnockDown(rand(1,3))
 
 // Normal refers to the mathematical normal
 /mob/living/carbon/Xenomorph/proc/do_acid_spray_cone_normal(turf/T, distance, facing, obj/effect/xenomorph/spray/source_spray)
@@ -802,7 +814,7 @@
 		playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	used_tail_sweep = 1
 	use_plasma(10)
-
+	
 	spawn(caste.tail_sweep_cooldown)
 		used_tail_sweep = 0
 		to_chat(src, SPAN_NOTICE("You gather enough strength to tail sweep again."))

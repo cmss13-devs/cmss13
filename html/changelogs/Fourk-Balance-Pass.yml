@@ -1,0 +1,56 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: Fourkhan
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes: 
+  - rscadd: "Alt+Shift-Clicking on a Xenomorph now transfers your overwatch to them."
+  - tweak: "Decreased the number of Xeno slots that burrowed larva count for."
+  - experimental: "Removed click delay from Xeno abilities."
+  - experimental: "Xeno abilities are no longer subject to click delay."
+  - tweak: "Nerfed Ravager armor."
+  - tweak: "Nerfed the damage of Lurker slightly so its total damage across a pounce is the same."
+  - tweak: "Decreased Defender's armor."
+  - tweak: "Nerfed the hitpoints of thick resin walls."
+  - tweak: "Slightly decreased Runner's hitpoint total."
+  - tweak: "Increased the armor and hitpoint total of Warrior."
+  - tweak: "Dancer Praetorian's tail stab now deals much less organ damage and distributes its damage across the target's body."
+  - tweak: "It is still possible for this to break bones/deal organ damage if your brute is high enough."
+  - tweak: "Decreased the activation time on Dancer Prae's abduct ability."
+  - tweak: "Abduct now goes further if the abduct is empowered by dance."
+  - tweak: "Increased the cooldown of Royal Guard Prae's tail sweep by 3 seconds."
+  - tweak: "Increased the cooldown of Praetorian acid spray by 3 seconds."
+  - tweak: "Decreased the health and armor of Royal Guard Prae."
+  - tweak: "Acid spray now has a small windup."
+  - tweak: "Decreased the stun duration on Royal Guard acid spray."
+  - tweak: "Praetorian acid spray cooldown now decreases by 1 second for every age level gained."
+  - tweak: "Decreased the plasma cost and cooldown of Resin Whisperer Hivelord's remote building ability."

@@ -9,7 +9,7 @@
 	plasma_gain = XENO_PLASMA_GAIN_LOW
 	plasma_max = XENO_PLASMA_LOWMEDIUM
 	armor_deflection = XENO_NO_ARMOR
-	max_health = XENO_HEALTH_LOWMEDIUM
+	max_health = XENO_HEALTH_VERYLOW
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
 	evasion = XENO_EVASION_HIGH
 	speed = XENO_SPEED_SANICFAST

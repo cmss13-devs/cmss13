@@ -15,8 +15,10 @@
 
 	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
 	P.mutation_type = PRAETORIAN_ROYALGUARD
-	P.acid_spray_activation_time = 6
+	P.acid_spray_activation_time = 5
 	P.phero_modifier += XENO_PHERO_MOD_LARGE
+	P.armor_modifier -= XENO_ARMOR_MOD_VERYSMALL
+	P.health_modifier -= XENO_HEALTH_MOD_SMALL
 	mutator_update_actions(P)
 	MS.recalculate_actions(description)
 	P.recalculate_everything()

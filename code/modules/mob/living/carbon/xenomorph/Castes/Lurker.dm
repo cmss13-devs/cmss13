@@ -4,8 +4,8 @@
 	tier = 2
 	upgrade = 0
 
-	melee_damage_lower = XENO_DAMAGE_LOWPLUS
-	melee_damage_upper = XENO_DAMAGE_MEDIUM
+	melee_damage_lower = XENO_DAMAGE_LOW
+	melee_damage_upper = XENO_DAMAGE_MEDIUMLOW
 	max_health = XENO_HEALTH_MEDIUM
 	plasma_gain = XENO_PLASMA_GAIN_HIGH
 	plasma_max = XENO_PLASMA_LOW

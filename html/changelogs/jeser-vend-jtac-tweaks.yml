@@ -1,9 +1,0 @@
-
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - rscdel: "Removed rookie trap choices from Smartgunner vendor."
-  - rscadd: "Added Fuel Tank Strap Pouch to Squad Leader vendor."
-  - tweak: "Flare belt in JTAC kit starts full with 16 flares now."

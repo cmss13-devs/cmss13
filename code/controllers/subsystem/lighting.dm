@@ -6,8 +6,8 @@ var/datum/subsystem/lighting/SSlighting
 	init_order    = SS_INIT_LIGHTING
 	display_order = SS_DISPLAY_LIGHTING
 	priority      = SS_PRIORITY_LIGHTING
-	wait          = 6
-	flags         = SS_NO_TICK_CHECK
+	wait          = 5
+	flags         = SS_KEEP_TIMING
 
 	var/list/datum/light_source/lights_current = list()
 	var/list/datum/light_source/lights = list()

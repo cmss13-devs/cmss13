@@ -11,7 +11,7 @@
 	plasma_gain = XENO_PLASMA_GAIN_VERYHIGH
 	plasma_max = XENO_PLASMA_LOW
 	xeno_explosion_resistance = XENO_HEAVY_EXPLOSIVE_ARMOR
-	armor_deflection = XENO_HEAVY_ARMOR
+	armor_deflection = XENO_HEAVY_ARMOR - XENO_ARMOR_MOD_VERYSMALL
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_MEDIUM
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_HIGH

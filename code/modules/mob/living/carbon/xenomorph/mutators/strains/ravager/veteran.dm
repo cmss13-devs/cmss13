@@ -14,7 +14,7 @@
 		return	
 
 	var/mob/living/carbon/Xenomorph/Ravager/R = MS.xeno
-	R.armor_modifier -= XENO_HEAVY_ARMOR //Remove armour
+	R.armor_modifier -= XENO_MEDIUM_ARMOR + XENO_ARMOR_MOD_VERYSMALL //Remove armour
 	R.speed_modifier -= XENO_SPEED_MOD_ULTRA
 	R.evasion_modifier += XENO_EVASION_MOD_VERYLARGE
 	R.damage_modifier += XENO_DAMAGE_MOD_SMALL

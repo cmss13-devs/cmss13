@@ -44,8 +44,6 @@
 	return
 
 /mob/living/carbon/Xenomorph/click(var/atom/A, var/list/mods)
-	if(next_move >= world.time)
-		return 1
 
 	if (queued_action)
 		handle_queued_action(A)
@@ -56,11 +54,34 @@
 			selected_ability.use_ability(A)
 		return 1
 
+	if (mods["alt"] && mods["shift"])
+		if (istype(A, /mob/living/carbon/Xenomorph))
+			var/mob/living/carbon/Xenomorph/X = A
+
+			if (X && !X.disposed && X != observed_xeno && X.stat != DEAD && X.z != ADMIN_Z_LEVEL && X.check_state(1))
+				if (caste && istype(caste, /datum/caste_datum/queen))
+					var/mob/living/carbon/Xenomorph/oldXeno = observed_xeno
+					overwatch(X, FALSE, /datum/event_handler/xeno_overwatch_onmovement/queen)
+					
+					if (oldXeno)
+						oldXeno.hud_set_queen_overwatch()
+					if (X && !X.disposed)
+						X.hud_set_queen_overwatch()
+
+				else
+					overwatch(X)
+				
+				next_move = world.time + 3 // Some minimal delay so this isn't crazy spammy
+				return 1
+
 	if(mods["shift"] && !mods["middle"])
 		if(selected_ability && !middle_mouse_toggle)
 			selected_ability.use_ability(A)
 		return 1
 
+	if(next_move >= world.time)
+		return 1
+	
 	return ..()
 
 /mob/living/carbon/Xenomorph/Boiler/click(var/atom/A, var/list/mods)
@@ -126,29 +147,3 @@
 //Larva attack, will default to attack_alien behaviour unless overriden
 /atom/proc/attack_larva(mob/living/carbon/Xenomorph/Larva/user)
 	return attack_alien(user)
-
-/mob/living/carbon/Xenomorph/Queen/click(var/atom/A, var/list/mods)
-
-	if(mods["ctrl"] && mods["middle"])
-		if(ovipositor)
-			if(isXeno(A) && A != src)
-				var/mob/living/carbon/Xenomorph/X = A
-				if(X.stat != DEAD)
-					set_queen_overwatch(A)
-					return 1
-
-	if (queued_action)
-		handle_queued_action()
-		return 1
-
-	if(mods["middle"] && !mods["shift"])
-		if (selected_ability && middle_mouse_toggle)
-			selected_ability.use_ability(A)
-			return 1
-
-	if(mods["shift"])
-		if(selected_ability && !middle_mouse_toggle)
-			selected_ability.use_ability(A)
-			return 1
-
-	return ..()

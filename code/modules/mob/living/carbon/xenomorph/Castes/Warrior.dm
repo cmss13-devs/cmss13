@@ -6,12 +6,12 @@
 
 	melee_damage_lower = XENO_DAMAGE_MEDIUMLOW
 	melee_damage_upper = XENO_DAMAGE_MEDIUMHIGH
-	max_health = XENO_HEALTH_HIGHMEDIUM
+	max_health = XENO_HEALTH_LOWHIGH
 	plasma_gain = XENO_PLASMA_GAIN_VERYHIGH
 	plasma_max = XENO_PLASMA_LOW
 	xeno_explosion_resistance = XENO_HEAVY_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_LOW_ARMOR
-	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_MEDIUM
 	evasion = XENO_EVASION_LOW
 	speed = XENO_SPEED_HIGH
 	speed_mod = XENO_SPEED_MOD_LARGE

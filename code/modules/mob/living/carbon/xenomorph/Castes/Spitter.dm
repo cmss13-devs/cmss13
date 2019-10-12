@@ -66,6 +66,7 @@
 	plasma_types = list(PLASMA_NEUROTOXIN)
 	pixel_x = -12
 	old_x = -12
+	acid_spray_activation_time = 3
 
 	tier = 2
 	actions = list(

@@ -25,7 +25,8 @@
 	spit_types = list(/datum/ammo/xeno/toxin/heavy, /datum/ammo/xeno/acid/heavy, /datum/ammo/xeno/sticky)
 	acid_level = 2
 
-	acid_spray_cooldown = 150
+	acid_spray_cooldown = 180
+	tail_sweep_cooldown = 150
 	
 	// Screech buff TTL
 	var/screech_duration = 150 
@@ -57,9 +58,10 @@
 	var/dance_duration = 100
 	var/tailattack_cooldown = 150
 	var/tailattack_max_range = 2
-	var/tailattack_abduct_usetime_short = 25
-	var/tailattack_abduct_usetime_long = 35
 	var/tailattack_abduct_range = 5
+	var/tailattack_abduct_usetime_short = 15
+	var/tailattack_abduct_usetime_long = 20
+	var/tailattack_abduct_range_buff = 2 // Tiledistance buff for empowering abduct 
 	var/tailattack_damagebuff = 8 //Bonus damage for impale attacks (2x coming out of a dance)
 	var/dance_speed_buff = XENO_SPEED_MOD_VERYLARGE
 	var/dance_evasion_buff = XENO_EVASION_MOD_ULTRA + XENO_EVASION_MOD_MED // evasion base: 40. evasion w/ dance: 74
@@ -70,6 +72,7 @@
 	upgrade = 1
 	tackle_chance = 50
 	aura_strength = 1.5
+	acid_spray_cooldown = 170
 
 /datum/caste_datum/praetorian/elder
 	upgrade_name = "Elder"
@@ -79,6 +82,7 @@
 	spit_delay = 15
 	tackle_chance = 55
 	aura_strength = 2.5
+	acid_spray_cooldown = 160
 
 /datum/caste_datum/praetorian/ancient
 	upgrade_name = "Ancient"
@@ -88,6 +92,7 @@
 	spit_delay = 12
 	tackle_chance = 55
 	aura_strength = 3.5
+	acid_spray_cooldown = 150
 
 /datum/caste_datum/praetorian/primordial
 	upgrade_name = "Primordial"

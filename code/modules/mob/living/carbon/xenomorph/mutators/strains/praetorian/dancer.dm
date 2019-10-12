@@ -70,7 +70,7 @@
 		to_chat(X, SPAN_WARNING("You will now abduct marines with your tail attack."))
 	else
 		action_icon_result = "prae_tailattack_impale"
-		to_chat(X, SPAN_WARNING("You will now impale marines with your tail attack."))
+		to_chat(X, SPAN_WARNING("You will now slice marines with your tail attack."))
 
 	X.prae_status_flags = X.prae_status_flags^(PRAE_DANCER_TAILATTACK_TYPE) // flip the bit
 
@@ -148,15 +148,16 @@
 		P.prae_status_flags &= ~PRAE_DANCER_STATSBUFFED
 
 	var/damage = rand(melee_damage_lower, melee_damage_upper) + pCaste.tailattack_damagebuff
-	var/target_zone = T.get_limb("chest")
-	var/armor_block = getarmor(target_zone, ARMOR_MELEE)
+	var/armor_block = getarmor(T.get_limb("chest"), ARMOR_MELEE)
 
 	switch(!!(prae_status_flags & PRAE_DANCER_TAILATTACK_TYPE)) // Bit fuckery to simpify 0,4 to 0,1
 		
 		if (0) // Direct damage impale
 			
-			visible_message(SPAN_DANGER("\The [src] violently impales [T] with its tail[buffed?" twice":""]!"), \
-			SPAN_DANGER("You impale [T] with your tail[buffed?" twice":""]!"))
+			visible_message(SPAN_DANGER("\The [src] violently slices [T] with its tail[buffed?" twice":""]!"), \
+			SPAN_DANGER("You slice [T] with your tail[buffed?" twice":""]!"))
+
+			
 			
 			if (buffed)
 				
@@ -170,7 +171,7 @@
 					show_message(SPAN_WARNING("Your armor absorbs the blow!"))
 				else if (n_damage <= 0.67*damage)
 					show_message(SPAN_WARNING("Your armor softens the blow!"))
-				T.apply_damage(n_damage, BRUTE, target_zone, 0, sharp = 1, edge = 1) // Stolen from attack_alien. thanks Neth
+				T.adjustBruteLoss(n_damage) // Stolen from attack_alien. thanks Neth
 				playsound(T.loc, "alien_claw_flesh", 30, 1)
 				
 				// Reroll damage
@@ -188,7 +189,7 @@
 				show_message(SPAN_WARNING("Your armor softens the blow!"))
 			T.last_damage_mob = src
 			T.last_damage_source = initial(caste_name)
-			T.apply_damage(n_damage, BRUTE, target_zone, 0, sharp = 1, edge = 1)
+			T.adjustBruteLoss(n_damage)
 			
 			playsound(T.loc, "alien_claw_flesh", 30, 1) 
 
@@ -198,6 +199,7 @@
 			var/delay = pCaste.tailattack_abduct_usetime_long // Delay before we jump back
 			if (buffed)
 				delay = pCaste.tailattack_abduct_usetime_short
+				leap_range += pCaste.tailattack_abduct_range_buff
 				emote("roar") // Same as before, give player feedback for hitting the combo
 
 			var/leap_dir = turn(get_dir(src, T), 180) // Leap the opposite direction of the vector between us and our target

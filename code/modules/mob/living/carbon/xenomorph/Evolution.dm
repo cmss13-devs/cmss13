@@ -103,7 +103,7 @@
 						if(M.client && M.ckey)
 							potential_queens++
 
-	var/burrowed_factor = min(hive.stored_larva, sqrt(8*hive.stored_larva))
+	var/burrowed_factor = min(hive.stored_larva, sqrt(4*hive.stored_larva))
 	burrowed_factor = round(burrowed_factor)
 
 	var/totalXenos = hive.totalXenos.len + burrowed_factor

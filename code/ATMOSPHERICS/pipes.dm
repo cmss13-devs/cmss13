@@ -303,16 +303,15 @@
 /obj/structure/machinery/atmospherics/pipe/simple/disconnect(obj/structure/machinery/atmospherics/reference)
 	if(reference == node1)
 		if(istype(node1, /obj/structure/machinery/atmospherics/pipe))
-			del(parent)
+			qdel(parent)
 		node1 = null
 
 	if(reference == node2)
 		if(istype(node2, /obj/structure/machinery/atmospherics/pipe))
-			del(parent)
+			qdel(parent)
 		node2 = null
 
 	update_icon()
-	start_processing()
 	return null
 
 /obj/structure/machinery/atmospherics/pipe/simple/visible
@@ -456,19 +455,18 @@
 /obj/structure/machinery/atmospherics/pipe/manifold/disconnect(obj/structure/machinery/atmospherics/reference)
 	if(reference == node1)
 		if(istype(node1, /obj/structure/machinery/atmospherics/pipe))
-			del(parent)
+			qdel(parent)
 		node1 = null
 
 	if(reference == node2)
 		if(istype(node2, /obj/structure/machinery/atmospherics/pipe))
-			del(parent)
+			qdel(parent)
 		node2 = null
 
 	if(reference == node3)
 		if(istype(node3, /obj/structure/machinery/atmospherics/pipe))
-			del(parent)
+			qdel(parent)
 		node3 = null
-	start_processing()
 	update_icon()
 
 	..()
@@ -695,26 +693,25 @@
 /obj/structure/machinery/atmospherics/pipe/manifold4w/disconnect(obj/structure/machinery/atmospherics/reference)
 	if(reference == node1)
 		if(istype(node1, /obj/structure/machinery/atmospherics/pipe))
-			del(parent)
+			qdel(parent)
 		node1 = null
 
 	if(reference == node2)
 		if(istype(node2, /obj/structure/machinery/atmospherics/pipe))
-			del(parent)
+			qdel(parent)
 		node2 = null
 
 	if(reference == node3)
 		if(istype(node3, /obj/structure/machinery/atmospherics/pipe))
-			del(parent)
+			qdel(parent)
 		node3 = null
 
 	if(reference == node4)
 		if(istype(node4, /obj/structure/machinery/atmospherics/pipe))
-			del(parent)
+			qdel(parent)
 		node4 = null
 
 	update_icon()
-	start_processing()
 	..()
 
 /obj/structure/machinery/atmospherics/pipe/manifold4w/change_color(var/new_color)
@@ -946,11 +943,10 @@
 /obj/structure/machinery/atmospherics/pipe/cap/disconnect(obj/structure/machinery/atmospherics/reference)
 	if(reference == node)
 		if(istype(node, /obj/structure/machinery/atmospherics/pipe))
-			del(parent)
+			qdel(parent)
 		node = null
 
 	update_icon()
-	start_processing()
 	..()
 
 /obj/structure/machinery/atmospherics/pipe/cap/change_color(var/new_color)
@@ -1093,11 +1089,10 @@
 /obj/structure/machinery/atmospherics/pipe/tank/disconnect(obj/structure/machinery/atmospherics/reference)
 	if(reference == node1)
 		if(istype(node1, /obj/structure/machinery/atmospherics/pipe))
-			del(parent)
+			qdel(parent)
 		node1 = null
 
 	update_underlays()
-	start_processing()
 	return null
 
 /obj/structure/machinery/atmospherics/pipe/tank/attackby(var/obj/item/W as obj, var/mob/user as mob)
@@ -1236,11 +1231,10 @@
 /obj/structure/machinery/atmospherics/pipe/vent/disconnect(obj/structure/machinery/atmospherics/reference)
 	if(reference == node1)
 		if(istype(node1, /obj/structure/machinery/atmospherics/pipe))
-			del(parent)
+			qdel(parent)
 		node1 = null
 
 	update_icon()
-	start_processing()
 	return null
 
 /obj/structure/machinery/atmospherics/pipe/vent/hide(var/i) //to make the little pipe section invisible, the icon changes.

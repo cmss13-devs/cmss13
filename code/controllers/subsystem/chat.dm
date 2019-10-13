@@ -29,6 +29,7 @@ var/datum/subsystem/chat/SSchat
 	for(var/datum/chat_item/item in processQueue_current)
 		de_queue(item.target, item.message)
 		processQueue_current -= item
+		this_dequeue--
 		if(MC_TICK_CHECK)
 			return
 		if(this_dequeue<0)

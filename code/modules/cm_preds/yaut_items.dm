@@ -1409,7 +1409,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
-	force = 60
+	force = 70
 	throwforce = 12
 	w_class = SIZE_MEDIUM
 	unacidable = 1
@@ -1560,7 +1560,7 @@
 	w_class = SIZE_LARGE
 	force = 35
 	embeddable = FALSE //It shouldn't embed so that the Yautja can actually use the yank combi verb, and so that it's not useless upon throwing it at someone.
-	throwforce = 38
+	throwforce = 45
 	throw_speed = 5 //We need the throw speed to be 5 so that it can do the full 70 damage upon hitting someone with a throw.
 	unacidable = 1
 	sharp = IS_SHARP_ITEM_ACCURATE

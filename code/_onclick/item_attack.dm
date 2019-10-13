@@ -80,6 +80,9 @@
 		user.flick_attack_overlay(M, "punch")
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/XNO = M
+			if (isYautja(user))
+				power *= 1.1 // Preds get bonus melee damage vs xenos
+
 			power = armor_damage_reduction(config.xeno_melee, power, XNO.armor_deflection + XNO.armor_deflection_buff, 20, 0, 0, XNO.armor_integrity)
 			var/armor_punch = armor_break_calculation(config.xeno_melee, power, XNO.armor_deflection + XNO.armor_deflection_buff, 20, 0, 0, XNO.armor_integrity)
 			XNO.apply_armorbreak(armor_punch)

@@ -50,6 +50,7 @@ NanoStateManager = function ()
 		var updateData;
 		try
 		{
+			jsonString = jsonString.replace("\\improper","").replace("\\proper","")
 			// parse the JSON string from the server into a JSON object
 			updateData = jQuery.parseJSON(jsonString);
 		}

@@ -25,15 +25,11 @@ var/datum/subsystem/chat/SSchat
 	..("P:[processQueue.len]; C:[processQueue_current.len]")
 
 /datum/subsystem/chat/fire()
-	var/this_dequeue = MAX_DEQUEUE
 	for(var/datum/chat_item/item in processQueue_current)
 		de_queue(item.target, item.message)
 		processQueue_current -= item
-		this_dequeue--
 		if(MC_TICK_CHECK)
 			return
-		if(this_dequeue<0)
-			break
 
 	if(processQueue_current.len==0)
 		processQueue_current = processQueue

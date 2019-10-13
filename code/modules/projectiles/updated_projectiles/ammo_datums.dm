@@ -1312,26 +1312,54 @@
 	name = "plasma eradication sphere"
 	icon_state = "bluespace"
 	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ENERGY
+	var/stun_range = 4 // Big
+	var/stun_time = 6
 
 /datum/ammo/energy/yautja/caster/sphere/New()
 	..()
-	damage = config.lmed_hit_damage
+	damage = 1
 	shell_speed = config.super_shell_speed
 	accuracy = config.max_hit_accuracy
 	accurate_range = config.max_shell_range
 	max_range = config.long_shell_range
 
+
 /datum/ammo/energy/yautja/caster/sphere/on_hit_mob(mob/M,obj/item/projectile/P)
-	cell_explosion(get_turf(M), 170, 50, null, P.weapon_source, P.firer)
+	do_area_stun(P)
+	..()
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_turf(turf/T,obj/item/projectile/P)
-	cell_explosion(T, 170, 40, null, P.weapon_source, P.firer)
+	do_area_stun(P)
+	..()
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_obj(obj/O,obj/item/projectile/P)
-	cell_explosion(get_turf(O), 170, 50, null, P.weapon_source, P.firer)
+	do_area_stun(P)
+	..()
 
 /datum/ammo/energy/yautja/caster/sphere/do_at_max_range(obj/item/projectile/P)
-	cell_explosion(get_turf(P), 170, 50, null, P.weapon_source, P.firer)
+	do_area_stun(P)
+	..()
+
+/datum/ammo/energy/yautja/caster/sphere/proc/do_area_stun(obj/item/projectile/P)
+	playsound(get_turf(P), 'sound/weapons/wave.ogg', 75, 10, 25, 10)
+	for (var/mob/living/carbon/M in view(src.stun_range, get_turf(P)))
+		var/stun_time = src.stun_time
+		if (isYautja(M))
+			stun_time -= 2
+		else if (isXeno(M))
+			stun_time += 1
+
+		to_chat(M, SPAN_DANGER("A powerful electric shock ripples through your body, freezing you in place!"))
+		M.stunned += stun_time
+
+		if (ishuman(M))
+			var/mob/living/carbon/human/H = M
+			H.KnockDown(stun_time)
+		else
+			M.KnockDown(stun_time, 1)
+
+		M.adjustFireLoss(rand(20, 30))
+
 
 /datum/ammo/energy/yautja/rifle/New()
 	..()
@@ -1395,7 +1423,7 @@
 
 /proc/apply_neuro(mob/M, power, insta_neuro)
 	var/pass_down_the_line = FALSE
-	if(isSynth(M))
+	if(isSynth(M) || isYautja(M))
 		return // unaffected
 	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
 		pass_down_the_line = TRUE

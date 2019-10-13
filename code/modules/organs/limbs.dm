@@ -472,11 +472,8 @@ This function completely restores a damaged organ to perfect condition.
 	if(!(status & LIMB_BROKEN))
 		perma_injury = 0
 	if(knitting_time > 0)
-		if(!(status & LIMB_SPLINTED))
-			knitting_time = -1 // stop knitting
 		if(world.time > knitting_time)
-			to_chat(owner, SPAN_WARNING("The bones in your [display_name] feel fully knitted, you discard the splint."))
-			status &= ~LIMB_SPLINTED
+			to_chat(owner, SPAN_WARNING("The bones in your [display_name] feel fully knitted."))
 			status &= ~LIMB_BROKEN //Let it be known that this code never unbroke the limb.
 			knitting_time = -1
 
@@ -810,6 +807,9 @@ This function completely restores a damaged organ to perfect condition.
 /datum/limb/proc/fracture()
 
 	if(status & (LIMB_BROKEN|LIMB_DESTROYED|LIMB_ROBOT) )
+		if (knitting_time != -1)
+			knitting_time = -1
+			to_chat(owner, SPAN_WARNING("You feel your [src] stop knitting together as it absorbs damage!"))
 		return
 
 	owner.visible_message(\
@@ -822,6 +822,7 @@ This function completely restores a damaged organ to perfect condition.
 		owner.emote("scream")
 
 	start_processing()
+
 	status |= LIMB_BROKEN
 	status &= ~LIMB_REPAIRED
 	broken_description = pick("broken","fracture","hairline fracture")

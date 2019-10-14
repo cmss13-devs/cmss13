@@ -39,7 +39,7 @@ var/datum/test_manager/test_executor = new
 	try
 		case.setUp()
 	catch(var/exception/E)
-		E.name = "Test case [case.name] threw an exception during setup!\n[E.name]"
+		E.name = "[case.name] threw an exception during the test setup!\n[E.name]"
 		throw E
 
 	var/result = TEST_FAIL
@@ -55,19 +55,19 @@ var/datum/test_manager/test_executor = new
 	catch(var/exception/TE)
 		// Exception thrown by an assertion to fail the test
 		if(TE.name == TEST_ASSERTION_FAIL)
-			LOG_TEST("Test case [case.name] failed with the following message:")
+			LOG_TEST("[case.name] failed with the following message:")
 			LOG_TEST("[TE.desc]")
 
 			result = TEST_FAIL
 		else
-			LOG_TEST("Test case [case.name] threw an exception during the test routine:")
+			LOG_TEST("[case.name] threw an exception during the test routine:")
 			LOG_TEST(TE.name)
 			LOG_TEST(TE.desc)
 
 			result = TEST_ERROR
 
 	if(verbose)
-		LOG_TEST("Test case: [case.name] - [result_descriptions[result]]")
+		LOG_TEST("[case.name] - [result_descriptions[result]]")
 
 	return result
 
@@ -124,7 +124,7 @@ var/datum/test_manager/test_executor = new
 
 	return total_results
 
-// The server is being run to do tests only, so start the game, run them all and shut down
+// The server is being run to do tests only, so start the game, run them and shut down
 /datum/test_manager/proc/host_tests()
 	master_mode = "extended"
 
@@ -139,12 +139,18 @@ var/datum/test_manager/test_executor = new
 	while(ticker.current_state != GAME_STATE_PLAYING)
 		sleep(10)
 
-	// Run all tests
+	// Run the tests
 	var/verbose = world.params["verbose_tests"]
-	var/list/results = test_executor.run_all_tests(verbose)
+	var/test_set = world.params["test_set"]
+	var/list/results = null
+	if(test_set)
+		results = run_test_set(test_set, verbose)
+	else
+		results = run_all_tests(verbose)
 
-	var/all_tests_passed = results[TEST_FAIL] == 0 && results[TEST_ERROR] == 0
-	if(all_tests_passed)
-		world.log << TEST_HOST_SUCCESS
+	if(results)
+		var/all_tests_passed = results[TEST_FAIL] == 0 && results[TEST_ERROR] == 0
+		if(all_tests_passed)
+			world.log << TEST_HOST_SUCCESS
 
 	shutdown()

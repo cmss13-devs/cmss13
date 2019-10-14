@@ -1050,6 +1050,20 @@
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
+"adn" = (
+/obj/structure/shuttle/diagonal{
+	tag = "icon-swall0";
+	icon_state = "swall0"
+	},
+/obj/structure/shuttle/diagonal{
+	tag = "icon-heater";
+	icon_state = "heater"
+	},
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
+/area/ice_colony/surface/hangar/alpha)
 "ado" = (
 /obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 1
@@ -1108,6 +1122,20 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/engineering/electric)
+"adw" = (
+/obj/structure/shuttle/diagonal{
+	tag = "icon-swall0";
+	icon_state = "swall0"
+	},
+/obj/structure/shuttle/diagonal{
+	tag = "icon-heater";
+	icon_state = "heater"
+	},
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
+/area/ice_colony/surface/hangar/beta)
 "adx" = (
 /obj/effect/landmark{
 	name = "surv_spawn";
@@ -1195,6 +1223,21 @@
 	dir = 5
 	},
 /area/ice_colony/surface/requesitions)
+"adG" = (
+/obj/structure/shuttle/diagonal{
+	tag = "icon-burst_l";
+	icon_state = "burst_l"
+	},
+/obj/structure/shuttle/diagonal{
+	tag = "icon-platform (NORTH)";
+	icon_state = "platform";
+	dir = 1
+	},
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
+/area/ice_colony/surface/hangar/alpha)
 "adH" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/effect/decal/cleanable/blood,
@@ -1740,6 +1783,21 @@
 	dir = 2
 	},
 /area/ice_colony/surface/engineering/generator)
+"aeV" = (
+/obj/structure/shuttle/diagonal{
+	tag = "icon-burst_r";
+	icon_state = "burst_r"
+	},
+/obj/structure/shuttle/diagonal{
+	tag = "icon-platform (NORTH)";
+	icon_state = "platform";
+	dir = 1
+	},
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
+/area/ice_colony/surface/hangar/alpha)
 "aeW" = (
 /turf/open/floor{
 	tag = "icon-darkyellowcorners2 (NORTH)";
@@ -1920,6 +1978,21 @@
 	icon_state = "darkyellow2"
 	},
 /area/ice_colony/surface/engineering/generator)
+"aft" = (
+/obj/structure/shuttle/diagonal{
+	tag = "icon-burst_l";
+	icon_state = "burst_l"
+	},
+/obj/structure/shuttle/diagonal{
+	tag = "icon-platform (NORTH)";
+	icon_state = "platform";
+	dir = 1
+	},
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
+/area/ice_colony/surface/hangar/beta)
 "afu" = (
 /turf/open/floor{
 	tag = "icon-darkyellowcorners2 (WEST)";
@@ -2037,6 +2110,21 @@
 	dir = 4
 	},
 /area/ice_colony/surface/engineering/generator)
+"afI" = (
+/obj/structure/shuttle/diagonal{
+	tag = "icon-burst_r";
+	icon_state = "burst_r"
+	},
+/obj/structure/shuttle/diagonal{
+	tag = "icon-platform (NORTH)";
+	icon_state = "platform";
+	dir = 1
+	},
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
+/area/ice_colony/surface/hangar/beta)
 "afL" = (
 /obj/structure/table,
 /obj/item/book/manual/engineering_guide{
@@ -2856,15 +2944,6 @@
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
-	},
-/turf/open/floor{
-	tag = "icon-dark2";
-	icon_state = "dark2"
-	},
-/area/ice_colony/surface/engineering)
-"ahP" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 9
 	},
 /turf/open/floor{
 	tag = "icon-dark2";
@@ -10185,7 +10264,10 @@
 	tag = "icon-swall_f9";
 	icon_state = "swall_f9"
 	},
-/turf/open/space,
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
 /area/ice_colony/surface/hangar/alpha)
 "aAC" = (
 /obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
@@ -10203,7 +10285,10 @@
 	tag = "icon-swall_f5";
 	icon_state = "swall_f5"
 	},
-/turf/open/space,
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
 /area/ice_colony/surface/hangar/alpha)
 "aAH" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
@@ -10252,7 +10337,10 @@
 	tag = "icon-swall_f9";
 	icon_state = "swall_f9"
 	},
-/turf/open/space,
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
 /area/ice_colony/surface/hangar/beta)
 "aAL" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
@@ -12283,13 +12371,6 @@
 	tag = "icon-darkbrown2"
 	},
 /area/ice_colony/surface/garage/two)
-"aFh" = (
-/obj/structure/machinery/atmospherics/pipe/manifold4w/hidden/green,
-/turf/open/floor{
-	tag = "icon-dark2";
-	icon_state = "dark2"
-	},
-/area/ice_colony/surface/hydroponics/south)
 "aFi" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -15868,7 +15949,10 @@
 	tag = "icon-swall_f5";
 	icon_state = "swall_f5"
 	},
-/turf/open/space,
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
 /area/ice_colony/surface/hangar/beta)
 "aOQ" = (
 /obj/structure/machinery/power/apc{
@@ -15918,17 +16002,6 @@
 	tag = "icon-darkbrown2"
 	},
 /area/ice_colony/surface/hangar/beta)
-"aOU" = (
-/obj/structure/shuttle/diagonal{
-	tag = "icon-swall0";
-	icon_state = "swall0"
-	},
-/obj/structure/shuttle/diagonal{
-	tag = "icon-heater";
-	icon_state = "heater"
-	},
-/turf/open/space,
-/area/ice_colony/surface/hangar/alpha)
 "aOV" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -16352,17 +16425,6 @@
 	dir = 8
 	},
 /area/ice_colony/surface/hangar/alpha)
-"aPN" = (
-/obj/structure/shuttle/diagonal{
-	tag = "icon-swall0";
-	icon_state = "swall0"
-	},
-/obj/structure/shuttle/diagonal{
-	tag = "icon-heater";
-	icon_state = "heater"
-	},
-/turf/open/space,
-/area/ice_colony/surface/hangar/beta)
 "aPP" = (
 /turf/open/floor{
 	tag = "icon-darkbrown2 (WEST)";
@@ -18429,30 +18491,6 @@
 	icon_state = "swall1"
 	},
 /area/ice_colony/surface/hangar/alpha)
-"aUi" = (
-/obj/structure/shuttle/diagonal{
-	tag = "icon-burst_l";
-	icon_state = "burst_l"
-	},
-/obj/structure/shuttle/diagonal{
-	tag = "icon-platform (NORTH)";
-	icon_state = "platform";
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/ice_colony/surface/hangar/alpha)
-"aUj" = (
-/obj/structure/shuttle/diagonal{
-	tag = "icon-burst_r";
-	icon_state = "burst_r"
-	},
-/obj/structure/shuttle/diagonal{
-	tag = "icon-platform (NORTH)";
-	icon_state = "platform";
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/ice_colony/surface/hangar/alpha)
 "aUk" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 4
@@ -18483,30 +18521,6 @@
 	tag = "icon-swall1";
 	icon_state = "swall1"
 	},
-/area/ice_colony/surface/hangar/beta)
-"aUo" = (
-/obj/structure/shuttle/diagonal{
-	tag = "icon-burst_l";
-	icon_state = "burst_l"
-	},
-/obj/structure/shuttle/diagonal{
-	tag = "icon-platform (NORTH)";
-	icon_state = "platform";
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/ice_colony/surface/hangar/beta)
-"aUp" = (
-/obj/structure/shuttle/diagonal{
-	tag = "icon-burst_r";
-	icon_state = "burst_r"
-	},
-/obj/structure/shuttle/diagonal{
-	tag = "icon-platform (NORTH)";
-	icon_state = "platform";
-	dir = 1
-	},
-/turf/open/floor/plating,
 /area/ice_colony/surface/hangar/beta)
 "aUq" = (
 /obj/structure/ice/thin/single,
@@ -20549,28 +20563,6 @@
 "aYT" = (
 /turf/open/snow/layer1,
 /area/ice_colony/exterior/surface/valley/south)
-"aYU" = (
-/obj/structure/cargo_container{
-	tag = "icon-WY 1,0";
-	icon_state = "WY 1,0"
-	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
-	},
-/turf/open/floor/plating/icefloor,
-/area/ice_colony/exterior/surface/container_yard)
-"aYV" = (
-/obj/structure/cargo_container{
-	tag = "icon-WY 2,0";
-	icon_state = "WY 2,0"
-	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
-	},
-/turf/open/floor/plating/icefloor,
-/area/ice_colony/exterior/surface/container_yard)
 "aYX" = (
 /obj/structure/disposalpipe/segment{
 	tag = "icon-pipe-c (NORTH)";
@@ -40938,6 +40930,21 @@
 	dir = 4
 	},
 /area/ice_colony/surface/hangar/beta)
+"elU" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 1
+	},
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/turf/open/floor/carpet,
+/area/ice_colony/underground/crew/leisure)
+"ezT" = (
+/obj/vehicle/train/cargo/trolley,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
+/area/ice_colony/surface/research)
 "fsu" = (
 /obj/structure/table,
 /obj/item/disk/objective,
@@ -41135,6 +41142,13 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/hangar/beta)
+"pjQ" = (
+/obj/structure/table/gamblingtable,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/ice_colony/underground/crew/leisure)
 "qny" = (
 /obj/structure/table/woodentable,
 /obj/item/document_objective/folder,
@@ -59305,7 +59319,7 @@ aRa
 aRQ
 aSH
 aTk
-aTO
+ezT
 aUg
 aUv
 aUY
@@ -60683,7 +60697,7 @@ aFH
 aFH
 aFH
 aFH
-aFh
+aAu
 aFH
 aFH
 aFH
@@ -68438,9 +68452,9 @@ bpu
 bND
 bOn
 bOR
-bPk
-bPS
-bND
+pjQ
+elU
+bNE
 bRh
 bOj
 bRQ
@@ -76237,7 +76251,7 @@ aXJ
 aVW
 aVV
 aWC
-aYU
+aWF
 aVV
 aVV
 aZy
@@ -76519,7 +76533,7 @@ aVV
 aVV
 aVV
 aWD
-aYV
+aWG
 aVV
 aVV
 aZy
@@ -83839,8 +83853,8 @@ aPH
 aPH
 aPI
 aAA
-aOU
-aUi
+adn
+adG
 aPH
 aPH
 aPH
@@ -85531,8 +85545,8 @@ fUW
 wcI
 aPK
 aAG
-aOU
-aUj
+adn
+aeV
 aPH
 aPH
 aPH
@@ -86010,8 +86024,8 @@ aga
 agn
 agn
 aet
-ahP
-afo
+afW
+aet
 aiV
 ajv
 ajO
@@ -89197,8 +89211,8 @@ aPT
 aPT
 aPU
 aAK
-aPN
-aUo
+adw
+aft
 aPT
 aPT
 aPT
@@ -90889,8 +90903,8 @@ aPT
 aPT
 aPW
 aOP
-aPN
-aUp
+adw
+afI
 aPT
 aPT
 aPT

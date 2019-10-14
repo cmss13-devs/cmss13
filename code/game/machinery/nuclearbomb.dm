@@ -162,11 +162,15 @@ var/bomb_set = FALSE
 						var/name = "[MAIN_AI_SYSTEM] Nuclear Tracker"
 						var/input = "ALERT.\n\nNUCLEAR EXPLOSIVE ORDINANCE ACTIVATED.\n\nDETONATION IN [timeleft/10] SECONDS."
 						marine_announcement(input, name, 'sound/misc/notice1.ogg')
+						message_admins("[src] has been activated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;adminplayerobservejump=[usr]'>JMP</A>)")
+						log_admin("[src] has been activated by [key_name(usr)].")
 					else
 						bomb_set = FALSE
 				else
 					icon_state = "nuclearbomb1"
 					disable()
+					message_admins("[src] has been deactivated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;adminplayerobservejump=[usr]'>JMP</A>)")
+					log_admin("[src] has been deactivated by [key_name(usr)].")
 				playsound(src.loc, 'sound/effects/thud.ogg', 100, 1)
 			being_used = FALSE
 
@@ -217,8 +221,6 @@ var/bomb_set = FALSE
 	return
 
 /obj/structure/machinery/nuclearbomb/proc/disable()
-	if(!timing)
-		return
 	timing = FALSE
 	bomb_set = FALSE
 	timeleft = explosion_time - world.time

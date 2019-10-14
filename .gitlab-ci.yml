@@ -20,6 +20,8 @@ before_script:
 build:
     stage: build
     script:
+      - chmod +rwx ./insert_maps_in_dme.sh
+      - ./insert_maps_in_dme.sh
       - DreamMaker ColonialMarinesALPHA.dme
     artifacts:
       paths:

@@ -539,6 +539,7 @@
 /area/almayer/evacuation/pod18
 
 /area/almayer/evacuation/stranded
+	test_exemptions = MAP_TEST_EXEMPTION_SPACE
 
 //Placeholder.
 /area/almayer/evacuation/stranded/pod1

@@ -27,6 +27,10 @@ var/global/list/ghdel_profiling = list()
 	//Z-Level Transitions
 	var/atom/movable/clone/clone = null
 
+	// Bitflag of which test cases this atom is exempt from
+	// See #define/tests.dm
+	var/test_exemptions = 0
+
 // Temporary call in place for preparation of implementing SSatoms.
 /atom/New()
 	. = ..()

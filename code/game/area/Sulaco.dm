@@ -2,6 +2,7 @@
 /area/shuttle
 	ceiling = CEILING_METAL
 	requires_power = 0
+	test_exemptions = MAP_TEST_EXEMPTION_SPACE
 
 //Drop Pods
 /area/shuttle/drop1

@@ -970,9 +970,6 @@
 	dir = 2
 	},
 /area/yautja)
-"dr" = (
-/turf/open/space,
-/area/yautja)
 "ds" = (
 /turf/closed/wall/almayer/outer{
 	name = "reinforced hull"
@@ -5394,6 +5391,10 @@
 /obj/item/storage/pouch/magazine/upp,
 /obj/item/storage/pouch/magazine/upp,
 /obj/item/weapon/gun/rifle/type71/carbine,
+/obj/structure/machinery/atmospherics/unary/vent_pump{
+	dir = 1;
+	on = 1
+	},
 /turf/open/floor/carpet{
 	icon_state = "carpetside"
 	},
@@ -6307,6 +6308,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/storage)
 "qf" = (
@@ -8978,7 +8980,7 @@
 	dir = 8
 	},
 /turf/open/space,
-/area/tdome/tdomeobserve)
+/area/space)
 "Ou" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -31562,13 +31564,13 @@ aa
 aa
 aa
 aa
-dr
-dr
-dr
-dr
-dr
-dr
-dr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -31714,13 +31716,13 @@ aa
 aa
 aa
 aa
-dr
-dr
-dr
-dr
-dr
-dr
-dr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -31866,13 +31868,13 @@ aa
 aa
 aa
 aa
-dr
-dr
-dr
-dr
-dr
-dr
-dr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -32018,13 +32020,13 @@ aa
 aa
 aa
 aa
-dr
-dr
-dr
-dr
-dr
-dr
-dr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -32170,13 +32172,13 @@ aa
 aa
 aa
 aa
-dr
-dr
-dr
-dr
-dr
-dr
-dr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa

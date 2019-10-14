@@ -446,7 +446,7 @@
 	},
 /obj/structure/lattice,
 /turf/open/space,
-/area/prison/research/secret/testing)
+/area/space)
 "aaT" = (
 /turf/open/floor/prison{
 	dir = 10;
@@ -691,7 +691,7 @@
 	},
 /obj/structure/lattice,
 /turf/open/space,
-/area/prison/research/secret/bioengineering)
+/area/space)
 "abs" = (
 /obj/structure/table/reinforced,
 /obj/structure/machinery/computer/med_data/laptop{
@@ -23292,8 +23292,12 @@
 	},
 /area/prison/residential/central)
 "aXC" = (
-/obj/structure/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
-/obj/structure/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
 	icon_state = "sterile_white";
@@ -36299,7 +36303,7 @@
 	dir = 8
 	},
 /turf/open/space,
-/area/prison/monorail/east)
+/area/space)
 "bzS" = (
 /obj/structure/shuttle/window,
 /turf/open/floor/plating,
@@ -36309,7 +36313,7 @@
 	dir = 1
 	},
 /turf/open/space,
-/area/prison/monorail/east)
+/area/space)
 "bzV" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating,
@@ -43215,13 +43219,13 @@
 "bOM" = (
 /obj/structure/shuttle/diagonal,
 /turf/open/space,
-/area/prison/monorail/east)
+/area/space)
 "bON" = (
 /obj/structure/shuttle/diagonal{
 	dir = 4
 	},
 /turf/open/space,
-/area/prison/monorail/east)
+/area/space)
 "bOO" = (
 /obj/structure/toilet{
 	tag = "icon-toilet00 (NORTH)";
@@ -49953,6 +49957,14 @@
 /area/prison/cellblock/highsec/south/south)
 "ceg" = (
 /obj/item/ammo_magazine/rifle/mar40,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
+	icon_state = "exposed10-supply"
+	},
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-exposed01-scrubbers";
+	icon_state = "exposed10-scrubbers";
+	dir = 2
+	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
 "ceh" = (
@@ -51695,7 +51707,7 @@
 	icon_state = "diagonalWall3"
 	},
 /turf/open/space,
-/area/prison/pirate)
+/area/space)
 "civ" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating,
@@ -52883,6 +52895,10 @@
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
+	icon_state = "exposed01-supply";
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
 "cli" = (
@@ -52890,6 +52906,11 @@
 	amount = 1;
 	icon_state = "coil1";
 	name = "cable piece"
+	},
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4;
+	icon_state = "exposed01-scrubbers";
+	tag = "icon-exposed01-scrubbers"
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
@@ -52903,6 +52924,10 @@
 	dir = 10
 	},
 /obj/effect/landmark/corpsespawner/prison_security,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
+	icon_state = "exposed01-supply";
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/prison/security/checkpoint/highsec_medsec)
 "clk" = (
@@ -55631,13 +55656,6 @@
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
-"csj" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "yellow"
-	},
-/area/prison/cellblock/mediumsec/west)
 "csk" = (
 /turf/open/floor/prison{
 	dir = 8;
@@ -57635,7 +57653,7 @@
 	icon_state = "diagonalWall3"
 	},
 /turf/open/space,
-/area/prison/pirate)
+/area/space)
 "cwV" = (
 /obj/structure/machinery/atmospherics/pipe/tank/phoron{
 	dir = 1;
@@ -57720,10 +57738,13 @@
 "cxn" = (
 /obj/structure/shuttle/engine/heater,
 /obj/effect/decal/warning_stripes,
-/obj/structure/machinery/atmospherics/pipe/simple/insulated,
 /obj/structure/window/reinforced/toughened{
 	tag = "icon-rwindow (NORTH)";
 	icon_state = "rwindow";
+	dir = 1
+	},
+/obj/structure/machinery/atmospherics/pipe/cap/visible{
+	icon_state = "cap";
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -57764,7 +57785,7 @@
 "cxz" = (
 /obj/structure/shuttle/engine/propulsion,
 /turf/open/space,
-/area/prison/pirate)
+/area/space)
 "cxA" = (
 /obj/effect/landmark{
 	name = "hunter_secondary"
@@ -59184,10 +59205,6 @@
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/plating,
 /area/prison/monorail/west)
-"fwk" = (
-/obj/structure/window/framed/prison/reinforced/hull,
-/turf/open/space,
-/area/prison/residential/south)
 "fCr" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -59314,10 +59331,6 @@
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/hallway/central/south)
-"gDs" = (
-/obj/structure/window/framed/prison/reinforced/hull,
-/turf/open/organic/grass,
-/area/prison/residential/south)
 "gJu" = (
 /obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -59412,6 +59425,14 @@
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/hallway/central/west)
+"heo" = (
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-exposed01-scrubbers";
+	icon_state = "exposed10-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/prison/security/checkpoint/highsec_medsec)
 "hgJ" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -59885,10 +59906,6 @@
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/nw)
-"kTy" = (
-/obj/structure/window/framed/prison/reinforced/hull,
-/turf/open/space,
-/area/prison/residential/north)
 "kZc" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -60046,9 +60063,6 @@
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/hallway/central/south)
-"mfh" = (
-/turf/open/space,
-/area/prison/residential/south)
 "mfQ" = (
 /obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -60259,6 +60273,17 @@
 	icon_state = "asteroid"
 	},
 /area/prison/residential/south)
+"num" = (
+/obj/item/stack/cable_coil/cut{
+	amount = 1;
+	icon_state = "coil1";
+	name = "cable piece"
+	},
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
+	icon_state = "exposed10-supply"
+	},
+/turf/open/floor/plating,
+/area/prison/cellblock/mediumsec/west)
 "nuw" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -60286,6 +60311,19 @@
 	},
 /turf/open/floor/grass,
 /area/prison/residential/south)
+"nDp" = (
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-exposed01-scrubbers";
+	icon_state = "exposed10-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/prison/cellblock/highsec/south/south)
 "nIx" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -60531,6 +60569,15 @@
 	dir = 10
 	},
 /area/prison/hallway/central/south)
+"pxA" = (
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/prison/security/monitoring/highsec)
 "pHT" = (
 /obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
@@ -60637,10 +60684,6 @@
 "qun" = (
 /turf/open/organic/grass,
 /area/prison/residential/south)
-"qCt" = (
-/obj/structure/window/framed/prison/reinforced/hull,
-/turf/open/floor/plating,
-/area/space)
 "qEE" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -60720,6 +60763,19 @@
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/ne)
+"rwF" = (
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	tag = "icon-sterile_white";
+	icon_state = "sterile_white";
+	dir = 2
+	},
+/area/prison/residential/south)
 "rDL" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -60810,6 +60866,13 @@
 	icon_state = "darkred2"
 	},
 /area/prison/cellblock/highsec/north/south)
+"sBQ" = (
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
+	icon_state = "exposed10-supply";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/prison/security/checkpoint/highsec_medsec)
 "sGB" = (
 /obj/structure/bed/chair,
 /obj/structure/machinery/light{
@@ -60820,6 +60883,20 @@
 	icon_state = "red"
 	},
 /area/prison/cellblock/highsec/north/north)
+"sJQ" = (
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/item/ammo_casing,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4;
+	icon_state = "exposed01-scrubbers";
+	tag = "icon-exposed01-scrubbers"
+	},
+/turf/open/floor/plating,
+/area/prison/cellblock/highsec/south/south)
 "sMk" = (
 /obj/structure/table,
 /obj/item/paper/research_notes,
@@ -61173,6 +61250,14 @@
 	},
 /turf/open/floor/carpet,
 /area/prison/residential/north)
+"wHq" = (
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/prison/cellblock/highsec/south/south)
 "wJl" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -65537,7 +65622,7 @@ aab
 aab
 aab
 aab
-mfh
+aab
 aab
 aab
 aab
@@ -67997,7 +68082,7 @@ aab
 aab
 aab
 aab
-kTy
+avm
 duu
 wUz
 wUz
@@ -68072,7 +68157,7 @@ gML
 nXE
 nXE
 pkV
-fwk
+bGQ
 aab
 aab
 aab
@@ -68209,7 +68294,7 @@ aab
 aab
 aab
 avm
-kTy
+avm
 esR
 esR
 esR
@@ -68285,7 +68370,7 @@ qun
 qun
 qun
 bGQ
-fwk
+bGQ
 aab
 aab
 aab
@@ -68497,8 +68582,8 @@ nDg
 bTD
 bTD
 qtz
-gDs
-fwk
+bGQ
+bGQ
 aab
 aab
 aab
@@ -68710,7 +68795,7 @@ bTE
 bTG
 qLI
 gML
-fwk
+bGQ
 aab
 aab
 aab
@@ -68904,7 +68989,7 @@ bCc
 bES
 bCc
 bCc
-bES
+rwF
 bCc
 bCc
 bCc
@@ -68922,7 +69007,7 @@ bTF
 bUQ
 qLI
 nXE
-fwk
+bGQ
 aab
 aab
 aab
@@ -69134,7 +69219,7 @@ bTE
 bUR
 qLI
 gML
-fwk
+bGQ
 aab
 aab
 aab
@@ -69267,7 +69352,7 @@ aab
 aab
 aab
 aab
-qCt
+avm
 avm
 aDE
 azK
@@ -69345,8 +69430,8 @@ jan
 bTH
 bTH
 qtz
-gDs
-fwk
+bGQ
+bGQ
 aab
 aab
 aab
@@ -69481,7 +69566,7 @@ aab
 aab
 aab
 avm
-kTy
+avm
 esR
 esR
 esR
@@ -69557,7 +69642,7 @@ qun
 qun
 qun
 bGQ
-fwk
+bGQ
 aab
 aab
 aab
@@ -69693,7 +69778,7 @@ aab
 aab
 aab
 aab
-kTy
+avm
 xSK
 wUz
 wUz
@@ -69768,7 +69853,7 @@ gML
 nXE
 nXE
 mAT
-fwk
+bGQ
 aab
 aab
 aab
@@ -71238,7 +71323,7 @@ ekt
 buY
 aab
 aab
-mfh
+aab
 bKl
 bJA
 bLL
@@ -71450,7 +71535,7 @@ bxc
 xKO
 aab
 aab
-mfh
+aab
 bKl
 bJB
 bLL
@@ -71662,7 +71747,7 @@ bxc
 xKO
 aab
 aab
-mfh
+aab
 bGQ
 bKR
 bLK
@@ -71874,7 +71959,7 @@ bDd
 xKO
 aab
 aab
-mfh
+aab
 bKl
 bGU
 bJq
@@ -72086,7 +72171,7 @@ bxc
 buY
 aab
 aab
-mfh
+aab
 bKl
 bJA
 bJB
@@ -72298,7 +72383,7 @@ xKO
 buY
 aab
 aab
-mfh
+aab
 bKl
 bIf
 bJB
@@ -72510,7 +72595,7 @@ aab
 aab
 aab
 aab
-mfh
+aab
 bKl
 bGR
 bJp
@@ -72722,7 +72807,7 @@ bTR
 bTR
 bTR
 bSk
-bGQ
+bTR
 bKl
 bGU
 bGU
@@ -77157,8 +77242,8 @@ bkW
 bqK
 bdC
 aYY
-brZ
-aYY
+pxA
+bqt
 bbr
 buJ
 bKs
@@ -81643,7 +81728,7 @@ bZR
 cbg
 cax
 cbP
-cdf
+sJQ
 cav
 cfg
 civ
@@ -81855,7 +81940,7 @@ bZS
 bYP
 cay
 cbR
-cdd
+wHq
 cbc
 cbc
 cbc
@@ -81863,8 +81948,8 @@ cbc
 cbc
 cjz
 ckB
-cjA
-cjA
+heo
+sBQ
 cjA
 cjA
 cjw
@@ -82067,7 +82152,7 @@ bYC
 bYC
 cbf
 cbf
-cdc
+nDp
 cbc
 cbc
 cbc
@@ -82086,8 +82171,8 @@ cqM
 cqM
 cqu
 crt
-cpZ
-csj
+num
+ctb
 ctb
 ctb
 ctb

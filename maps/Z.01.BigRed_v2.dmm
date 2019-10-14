@@ -33895,6 +33895,16 @@
 	icon_state = "mars_cave_5"
 	},
 /area/bigredv2/caves_se)
+"uSt" = (
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor{
+	tag = "icon-dark";
+	icon_state = "dark";
+	dir = 2
+	},
+/area/bigredv2/caves/eta/research)
 "uWo" = (
 /obj/structure/machinery/atmospherics/pipe/manifold4w/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -57602,7 +57612,7 @@ kGm
 bBa
 bxo
 bBA
-xpl
+qZo
 bxo
 bBV
 xpl
@@ -57819,7 +57829,7 @@ vEp
 vEp
 bya
 bya
-xpl
+qZo
 kGm
 kGm
 bya
@@ -58036,7 +58046,7 @@ bAR
 vEp
 bxN
 phJ
-xpl
+qZo
 phJ
 bxN
 bxN
@@ -58253,7 +58263,7 @@ bAS
 vEp
 bBh
 row
-xpl
+qZo
 row
 row
 bBY
@@ -58470,7 +58480,7 @@ bAS
 vEp
 bBi
 xpl
-xpl
+qZo
 bxo
 bxo
 bxo
@@ -58687,7 +58697,7 @@ bAS
 vEp
 bBj
 xpl
-xpl
+uSt
 kfY
 bBW
 kfY

@@ -1,3 +1,4 @@
 #ignore everything here, except subdirectories.
-*
-!*/
+/*
+!example/
+!names/

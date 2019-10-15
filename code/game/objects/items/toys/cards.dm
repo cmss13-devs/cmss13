@@ -2,6 +2,7 @@
 	var/name = "playing card"
 	var/card_icon = "card_back"
 	var/back_icon = "card_back"
+	var/sort_index = 0
 
 /obj/item/toy/deck
 	name = "deck of cards"
@@ -20,12 +21,14 @@
 
 /obj/item/toy/deck/proc/populate_deck()
 	var/datum/playingcard/P
+	var/card_id = 1
 	for(var/suit in list("spades","clubs","diamonds","hearts"))
 		for(var/number in list("ace","two","three","four","five","six","seven","eight","nine","ten","jack","queen","king"))
 			P = new()
 			P.name = "[number] of [suit]"
 			P.card_icon = "[suit]_[number]"
 			P.back_icon = "back_[base_icon]"
+			P.sort_index = card_id++
 			cards += P
 
 /obj/item/toy/deck/uno
@@ -37,14 +40,16 @@
 
 /obj/item/toy/deck/uno/populate_deck()
 	var/datum/playingcard/P
-
+	var/card_id = 1
 	//wild cards
-	for(var/i = 1 to 4)
-		for(var/suit in list("wild","wild-draw-four"))
+	
+	for(var/suit in list("wild","wild-draw-four"))
+		for(var/i = 1 to 4)
 			P = new()
 			P.name = "[suit]"
 			P.card_icon = "[suit]"
 			P.back_icon = "back_[base_icon]"
+			P.sort_index = card_id++
 			cards += P
 
 	//color cards
@@ -54,6 +59,7 @@
 		P.name = "[suit] zero"
 		P.card_icon = "[suit]_zero"
 		P.back_icon = "back_[base_icon]"
+		P.sort_index = card_id++
 		cards += P
 
 		//2 of each 1-9, skip, draw 2, reverse per color
@@ -63,6 +69,7 @@
 				P.name = "[suit] [number]"
 				P.card_icon = "[suit]_[number]"
 				P.back_icon = "back_[base_icon]"
+				P.sort_index = card_id++
 				cards += P
 
 /obj/item/toy/deck/attackby(obj/item/O, mob/user)
@@ -107,8 +114,6 @@
 		H = new(get_turf(src))
 		user.put_in_hands(H)
 
-	if(!H || !user) return
-
 	var/datum/playingcard/P = cards[1]
 	H.cards += P
 	cards -= P
@@ -116,6 +121,56 @@
 	update_icon()
 	user.visible_message("\The [user] draws a card.")
 	to_chat(user, "It's the [P].")
+
+/obj/item/toy/deck/verb/draw_cards()
+	set category = "Object"
+	set name = "Draw N Cards"
+	set desc = "Draw amount cards from a deck."
+	set src in view(1)
+
+	if(usr.stat || !ishuman(usr) || !Adjacent(usr)) return
+
+	var/mob/living/carbon/human/user = usr
+
+	if(!cards.len)
+		to_chat(usr, "There are no cards in the deck.")
+		return
+
+	var/obj/item/toy/handcard/H
+	if(user.l_hand && istype(user.l_hand,/obj/item/toy/handcard))
+		H = user.l_hand
+	else if(user.r_hand && istype(user.r_hand,/obj/item/toy/handcard))
+		H = user.r_hand
+	else
+		H = new(get_turf(src))
+		user.put_in_hands(H)
+
+	var/num_cards_text = stripped_input(usr, "How many cards?", "Draw Cards" , "1", 5)
+	var/num_cards = text2num(num_cards_text)
+	if(!num_cards || num_cards < 0)
+		to_chat(usr, SPAN_WARNING("Incorrect input format."))
+		return
+
+	if(cards.len<num_cards)
+		to_chat(usr, SPAN_WARNING("Not enough cards in the deck."))
+		return
+	
+	if(num_cards==1)
+		user.visible_message("\The [user] draws a card.")
+	else
+		user.visible_message("\The [user] draws [num_cards] cards.")
+
+	var/chat_message = ""
+	while(num_cards>0)
+		var/datum/playingcard/P = cards[1]
+		H.cards += P
+		cards -= P
+		H.update_icon()
+		update_icon()
+		num_cards--
+		chat_message += "[P]; "
+	
+	to_chat(user, "You've drawn: [chat_message]")
 
 /obj/item/toy/deck/verb/deal_card()
 	set category = "Object"
@@ -188,6 +243,7 @@
 	w_class = SIZE_TINY
 
 	var/concealed = 0
+	var/discard_pile = FALSE
 	var/list/cards = list()
 
 /obj/item/toy/handcard/aceofspades
@@ -207,10 +263,38 @@
 		return
 	..()
 
+/obj/item/toy/handcard/verb/toggle_discard_state()
+	set category = "Object"
+	set name = "Toggle Discard State"
+	set desc = "Set or Unset this pile as a discard pile. Try not having multiple discard piles nearby"
+
+	if(usr.stat || !ishuman(usr) || !Adjacent(usr)) return
+
+	discard_pile = !discard_pile
+	usr.visible_message("\The [usr] [discard_pile ? "sets" : "unsets"] a discard pile.")
+
+/obj/item/toy/handcard/verb/sort_cards()
+	set category = "Object"
+	set name = "Sort Hand"
+	set desc = "Sort this hand by deck's initial order"
+
+	if(usr.stat || !ishuman(usr) || !Adjacent(usr)) return
+
+	//fuck any qsorts and merge sorts. This needs to be brutally easy
+	for(var/i=1, i<=cards.len, i++)
+		for(var/k=i+1, k<=cards.len, k++)
+			if(cards[i].sort_index > cards[k].sort_index)
+				var/crd = cards[i]
+				cards[i] = cards[k]
+				cards[k] = crd
+
+	src.update_icon()
+	usr.visible_message("\The [usr] sorts his hand.")
+
 /obj/item/toy/handcard/verb/discard()
 	set category = "Object"
 	set name = "Discard"
-	set desc = "Place a card from your hand in front of you."
+	set desc = "Place a card from your hand in front of you or onto a discard pile."
 
 	var/list/to_discard = list()
 	for(var/datum/playingcard/P in cards)
@@ -230,18 +314,26 @@
 	if(!found)
 		return
 	qdel(to_discard)
+	
+	cards -= card
+	if(!cards.len)
+		qdel(src)
+
+	usr.visible_message("\The [usr] plays \the [discarding].")
+
+	for(var/obj/item/toy/handcard/hc in orange(1, usr))
+		if(hc && hc.discard_pile)
+			hc.cards += card
+			hc.update_icon()
+			return
 
 	var/obj/item/toy/handcard/H = new(src.loc)
 	H.cards += card
-	cards -= card
 	H.concealed = 0
 	H.update_icon()
-	src.update_icon()
-	usr.visible_message("\The [usr] plays \the [discarding].")
 	H.loc = get_step(usr,usr.dir)
-
-	if(!cards.len)
-		qdel(src)
+	if(src)
+		src.update_icon()
 
 /obj/item/toy/handcard/attack_self(var/mob/user as mob)
 	concealed = !concealed
@@ -278,7 +370,7 @@
 		overlays += I
 		return
 
-	var/offset = Floor(20/cards.len)
+	var/offset = Floor(80/cards.len)
 
 	var/matrix/M = matrix()
 	if(direction)
@@ -298,13 +390,13 @@
 		var/image/I = new(src.icon, (concealed ? P.back_icon : P.card_icon))
 		switch(direction)
 			if(SOUTH)
-				I.pixel_x = 8 - (offset*i)
+				I.pixel_x = 8 - Floor(offset*i/4)
 			if(WEST)
-				I.pixel_y = -6 + (offset*i)
+				I.pixel_y = -6 + Floor(offset*i/4)
 			if(EAST)
-				I.pixel_y = 8 - (offset*i)
+				I.pixel_y = 8 - Floor(offset*i/4)
 			else
-				I.pixel_x = -7 + (offset*i)
+				I.pixel_x = -7 + Floor(offset*i/4)
 		I.transform = M
 		overlays += I
 		i++

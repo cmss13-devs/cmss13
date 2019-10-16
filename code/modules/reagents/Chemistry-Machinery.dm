@@ -1326,7 +1326,7 @@
 		report.info += "<center><img src = wylogo.png><HR><I><B>Official Company Document</B><BR>Reagent Analysis Print</I><HR><H2>Analysis ERROR</H2></center>"
 		report.info += "<B>Result:</B><BR>Analysis failed for sample #[sample_number].<BR><BR>\n"
 		report.info += "<B>Reason for error:</B><BR><I>[reason]</I><BR>\n"
-	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the Advanced X-Ray Fluorescence Scanner.<BR>The USS Almayer,  [time2text(world.timeofday, "MM/DD")]/2186, [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
+	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the Advanced X-Ray Fluorescence Scanner.<BR>The USS Almayer,  [time2text(world.timeofday, "MM/DD")]/[game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
 	
 /obj/structure/machinery/centrifuge
 	name = "Chemical Centrifuge"

@@ -104,7 +104,7 @@ var/command_name = "Central Command"
 var/station_name = "[MAIN_SHIP_NAME]"
 var/game_version = "Colonial Marines"
 var/changelog_hash = ""
-var/game_year = 2186
+var/game_year = (text2num(time2text(world.realtime, "YYYY")) + 170)
 
 var/datum/air_tunnel/air_tunnel1/SS13_airtunnel = null
 var/going = 1.0

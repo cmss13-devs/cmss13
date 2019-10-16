@@ -477,7 +477,7 @@
 					else
 						P.info += "<B>Medical Record Lost!</B><BR>"
 					P.info += "</TT>"
-					P.info += text("<BR><HR><font size = \"1\"><I>This report was printed by [] [].<BR>The USS Almayer,[]/2186, []</I></font><BR>\n<span class=\"paper_field\"></span>",last_user_rank,last_user_name,time2text(world.timeofday, "MM/DD"),worldtime2text())
+					P.info += text("<BR><HR><font size = \"1\"><I>This report was printed by [] [].<BR>The USS Almayer,[]/[], []</I></font><BR>\n<span class=\"paper_field\"></span>",last_user_rank,last_user_name,time2text(world.timeofday, "MM/DD"),game_year,worldtime2text())
 					src.printing = null
 			
 			if(href_list["print_bs"])//Prints latest body scan
@@ -499,7 +499,7 @@
 								break
 							else
 								P.info += "No scan on record."
-					P.info += text("<BR><HR><font size = \"1\"><I>This report was printed by [] [].<BR>The USS Almayer,  []/2186, []</I></font><BR>\n<span class=\"paper_field\"></span>",last_user_rank,last_user_name,time2text(world.timeofday, "MM/DD"),worldtime2text())
+					P.info += text("<BR><HR><font size = \"1\"><I>This report was printed by [] [].<BR>The USS Almayer,  []/[], []</I></font><BR>\n<span class=\"paper_field\"></span>",last_user_rank,last_user_name,time2text(world.timeofday, "MM/DD"),game_year,worldtime2text())
 					src.printing = null
 
 

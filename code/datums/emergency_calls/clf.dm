@@ -23,7 +23,7 @@
 	to_chat(mob, "<B> ")
 	to_chat(mob, "<B>With the Tychon's Rift sector existing in relative isolation from United America oversight for the last five years, many colonists have considered themselves free from governmental rule.</B>")
 	to_chat(mob, "")
-	to_chat(mob, "<B>The year is now 2186.</B>")
+	to_chat(mob, "<B>The year is now [game_year].</B>")
 	to_chat(mob, "<B>The arrival of the USCM Battalion, the Falling Falcons, and their flagship, the USS Almayer, have reaffirmed that the United Americas considers Tychon's Rift part of their holdings.</B>")
 	to_chat(mob, "<B>It is up to you and your fellow colonists to make them realize their trespasses. This sector is no longer theirs.</B>")
 

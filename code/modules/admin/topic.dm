@@ -2781,7 +2781,7 @@
 		var/mob/ref_person = locate(href_list["ccdeny"])
 		marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon")
 		log_game("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
-		message_mods("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]", 1)
+		message_staff("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]", 1)
 
 		//unanswered_distress -= ref_person
 
@@ -2822,7 +2822,7 @@
 		var/mob/ref_person = locate(href_list["sddeny"])
 		marine_announcement("The self destruct request has not received a response, ARES is now recalculating statistics.", "Self Destruct System")
 		log_game("[key_name_admin(usr)] has denied self destruct, requested by [key_name_admin(ref_person)]")
-		message_mods("[key_name_admin(usr)] has denied self destruct, requested by [key_name_admin(ref_person)]", 1)
+		message_staff("[key_name_admin(usr)] has denied self destruct, requested by [key_name_admin(ref_person)]", 1)
 
 	if(href_list["sdcancel"])
 		if(destroy_cancel)

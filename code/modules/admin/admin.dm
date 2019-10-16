@@ -11,18 +11,11 @@ var/global/floorIsLava = 0
 		if(C && C.admin_holder && (R_ADMIN & C.admin_holder.rights))
 			to_chat(C, msg)
 
-/proc/message_mods(var/msg) // +MOD and above (not Mentors)
-	msg = "<span class=\"admin\"><span class=\"prefix\">MOD LOG:</span> <span class=\"message\">[msg]</span></span>"
-	log_adminwarn(msg)
-	for(var/client/C in admins)
-		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
-			to_chat(C, msg)
-
 /proc/message_staff(var/msg) // ALL staff - including Mentors
 	msg = "<span class=\"admin\"><span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_adminwarn(msg)
 	for(var/client/C in admins)
-		if(C && C.admin_holder && (C.admin_holder.rights))
+		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
 			to_chat(C, msg)
 
 /proc/msg_admin_attack(var/text) //Toggleable Attack Messages
@@ -847,7 +840,7 @@ var/global/floorIsLava = 0
 		M.sleeping = 9999999
 
 	log_admin("[key_name(usr)] used Toggle Sleeping on [key_name(M)].")
-	message_mods("[key_name(usr)] used Toggle Sleeping on [key_name(M)].")
+	message_staff("[key_name(usr)] used Toggle Sleeping on [key_name(M)].")
 
 	return
 

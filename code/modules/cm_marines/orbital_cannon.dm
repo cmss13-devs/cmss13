@@ -214,7 +214,7 @@ var/list/ob_type_fuel_requirements
 		tray.warhead.source_mob = user
 	playsound(target, 'sound/weapons/gun_orbital_travel.ogg', 100, 1, 75)
 	var/cancellation_token = rand(0,32000)
-	message_mods(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
+	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
 	orbital_cannon_cancellation["[cancellation_token]"] = src
 	target.visible_message(SPAN_HIGHDANGER("The sky erupts into flames!"), SPAN_HIGHDANGER("You hear a very loud sound coming from above!"), 30)
 	sleep(OB_TRAVEL_TIMING)

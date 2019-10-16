@@ -39,7 +39,7 @@ var/global/normal_ooc_colour = "#002eb8"
 		to_chat(src, SPAN_DANGER("You have OOC muted."))
 		return
 
-	if(!admin_holder || !(usr.client.admin_holder.rights & R_MOD))
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		if(!ooc_allowed)
 			to_chat(src, SPAN_DANGER("OOC is globally muted"))
 			return

@@ -144,6 +144,9 @@
 				num_mods_online++
 
 			else if(R_MENTOR & C.admin_holder.rights)
+				if(C.is_afk())
+					modmsg += " (AFK)"
+
 				mentmsg += "\t[C] is a [C.admin_holder.rank]\n"
 				num_mentors_online++
 

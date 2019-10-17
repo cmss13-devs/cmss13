@@ -1,5 +1,6 @@
 #define BICAOD_BLOOD_REDUCTION 0.67 //15 OD ticks to heal 1 blood loss
 #define CRYO_BLOOD_REDUCTION 0.67
+#define BLOOD_ADD_PENALTY	1.5
 
 /datum/effects/bleeding
 	effect_name = "bleeding"
@@ -8,7 +9,7 @@
 	var/blood_loss = 0			//How much blood to lose every tick
 	var/datum/limb/limb = null
 	var/blood_duration_multiplier = 2.5
-	var/blood_loss_divider = 40
+	var/blood_loss_divider = 80
 
 /datum/effects/bleeding/New(var/atom/A, var/datum/limb/L = null, var/damage = 0)
 	..()
@@ -39,8 +40,8 @@
 
 /datum/effects/bleeding/proc/add_on(var/damage)
 	if(damage)
-		duration += damage * blood_duration_multiplier
-		blood_loss += damage / blood_loss_divider
+		duration += damage * (blood_duration_multiplier / BLOOD_ADD_PENALTY)
+		blood_loss += damage / (blood_loss_divider * BLOOD_ADD_PENALTY) //Make the first hit count, adding on bleeding has a penalty
 
 /datum/effects/bleeding/Dispose()
 	if(limb)
@@ -98,3 +99,5 @@
 	affected_mob.blood_volume = max(affected_mob.blood_volume - blood_loss, 0)
 
 	return TRUE
+
+#undef BLOOD_ADD_PENALTY

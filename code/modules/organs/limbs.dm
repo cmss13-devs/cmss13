@@ -412,7 +412,7 @@ This function completely restores a damaged organ to perfect condition.
 				return
 		else
 			for(var/datum/effects/bleeding/internal/B in bleeding_effects_list)
-				B.add_on(40)
+				B.add_on(30)
 				return
 
 	var/datum/effects/bleeding/bleeding_status

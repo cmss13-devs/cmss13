@@ -24,7 +24,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 /datum/chatOutput/proc/start()
 	//Check for existing chat
 	if (!owner || !istype(owner) || owner.gcDestroyed) 
-		return 0
+		return FALSE
 
 	if(!winexists(owner, "browseroutput"))
 		set waitfor = FALSE
@@ -102,11 +102,15 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 	sendClientData()
 
 /datum/chatOutput/proc/enableChat()
+	if (!owner || !istype(owner) || owner.gcDestroyed) 
+		return FALSE
 	winset(owner, "output", "is-visible=false")
 	winset(owner, "browseroutput", "is-disabled=false;is-visible=true")
 
 //Sends client connection details to the chat to handle and save
 /datum/chatOutput/proc/sendClientData()
+	if (!owner || !istype(owner) || owner.gcDestroyed) 
+		return FALSE
 	//Get dem deets
 	var/list/deets = list("clientData" = list())
 	deets["clientData"]["ckey"] = src.owner.ckey

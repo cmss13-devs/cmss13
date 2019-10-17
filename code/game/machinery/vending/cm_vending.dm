@@ -328,7 +328,9 @@
 			else if(type_p == /obj/item/clothing/gloves/marine)
 				type_p = gloves_type
 
-
+			if((!use_snowflake_points && I.marine_points < cost) && (use_snowflake_points && I.marine_snowflake_points < cost))
+				return
+				
 			var/obj/item/IT = new type_p(loc)
 			IT.add_fingerprint(usr)
 

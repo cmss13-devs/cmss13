@@ -131,3 +131,5 @@
 #define SPAN_ANNOUNCEMENT_HEADER_BLUE(X) "<spawn class='announce_header_blue'>[X]</span>"
 
 #define SPAN_ANNOUNCEMENT_BODY(X) "<spawn class='announce_body'>[X]</span>"
+
+#define SPAN_SCANNER(X) "<span class='scanner'>[X]</span>"

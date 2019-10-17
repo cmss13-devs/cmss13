@@ -216,7 +216,7 @@
 			to_chat(H_user, SPAN_NOTICE("You were interrupted!"))
 			return
 
-	if (!(embedded_human.embedded_items - embedded_human.get_visible_implants()))
+	if ((embedded_human.embedded_items.len - embedded_human.get_visible_implants().len) <= 0)
 		to_chat(H_user, SPAN_NOTICE("You couldn't find any shrapnel."))
 		return
 

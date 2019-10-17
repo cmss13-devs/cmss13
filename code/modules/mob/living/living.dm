@@ -567,24 +567,29 @@
 		else if(!src.client)
 			dat += "<span class='warning'>\tSSD detected.</span>\n" // SSD
 
-	var/internal_bleed_detected = 0
-
+	var/internal_bleed_detected = FALSE
+	var/embedded_item_detected = FALSE
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
+
+		if(H.embedded_items.len > 0)
+			embedded_item_detected = TRUE
 
 		var/core_fracture = 0
 		for(var/X in H.limbs)
 			var/datum/limb/e = X
-			for(var/datum/wound/W in e.wounds) if(W.internal)
-				internal_bleed_detected = 1
+			for(var/datum/effects/bleeding/internal/I in e.bleeding_effects_list)
+				internal_bleed_detected = TRUE
 				break
 			if(e.status & LIMB_BROKEN)
 				if(!((e.name == "l_arm") || (e.name == "r_arm") || (e.name == "l_leg") || (e.name == "r_leg") || (e.name == "l_hand") || (e.name == "r_hand") || (e.name == "l_foot") || (e.name == "r_foot")))
 					core_fracture = 1
 		if(core_fracture)
-			dat += "\t<span class='scanner'> *<b>Bone fractures</b> detected. Advanced scanner required for location.</span>\n"
+			dat += "\t[SPAN_SCANNER("*<b>Bone fractures</b> detected. Advanced scanner required for location.")]\n"
 		if(internal_bleed_detected)
-			dat += "\t<span class='scanner'> *<b>Internal bleeding</b> detected. Advanced scanner required for location.</span>\n"
+			dat += "\t[SPAN_SCANNER("*<b>Internal bleeding</b> detected. Advanced scanner required for location.")]\n"
+		if(embedded_item_detected)
+			dat += "\t[SPAN_SCANNER("*<b>Embedded object</b> detected. Advanced scanner required for location.")]\n"
 
 	var/reagents_in_body[0] // yes i know -spookydonut
 	if(istype(src, /mob/living/carbon))

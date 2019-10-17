@@ -1130,7 +1130,7 @@
 			if(prob(20)) //Let's not make throwing knives too good in HvH
 				organ.take_damage(rand(1,2), 0, 0)
 		if(prob(30))	// Spam chat less
-			to_chat(src, SPAN_WARNING("Your movement jostles [W] in your [organ.display_name] painfully."))
+			to_chat(src, SPAN_HIGHDANGER("Your movement jostles [W] in your [organ.display_name] painfully."))
 
 /mob/living/carbon/human/verb/check_status()
 	set category = "Object"

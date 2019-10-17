@@ -67,7 +67,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/dexalinp
 	name = "dexalin plus autoinjector"
-	chemname = "dexalin"
+	chemname = "dexalinp"
 	desc = "An autoinjector loaded with 3 uses of Dexalin+, designed to immediately oxygenate the entire body."
 	amount_per_transfer_from_this = 1
 	volume = 3

@@ -283,7 +283,7 @@
 		if(ismob(explosion_source_mob))
 			var/mob/firing_mob = explosion_source_mob
 			M.last_damage_mob = firing_mob
-
+			var/turf/location_of_mob = get_turf(firing_mob)
 			if(M == firing_mob)
 				M.attack_log += "\[[time_stamp()]\] <b>[M]/[M.ckey]</b> blew himself up with \a <b>[explosion_source]</b> in [get_area(M)]."
 			// One human blew up another, be worried about it but do everything basically the same
@@ -291,7 +291,7 @@
 				M.attack_log += "\[[time_stamp()]\] <b>[firing_mob]/[firing_mob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firing_mob)]."
 
 				firing_mob.attack_log += "\[[time_stamp()]\] <b>[firing_mob]/[firing_mob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firing_mob)]."
-				msg_admin_ff("[firing_mob] ([firing_mob.ckey]) blew up [M] ([M.ckey]) with \a [explosion_source] in [get_area(firing_mob)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[firing_mob.loc.x];Y=[firing_mob.loc.y];Z=[firing_mob.loc.z]'>JMP</a>) (<a href='?priv_msg=\ref[firing_mob.client]'>PM</a>)")
+				msg_admin_ff("[firing_mob] ([firing_mob.ckey]) blew up [M] ([M.ckey]) with \a [explosion_source] in [get_area(firing_mob)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location_of_mob.x];Y=[location_of_mob.y];Z=[location_of_mob.z]'>JMP</a>) (<a href='?priv_msg=\ref[firing_mob.client]'>PM</a>)")
 
 				if(ishuman(firing_mob))
 					var/mob/living/carbon/human/H = firing_mob
@@ -301,9 +301,10 @@
 
 				firing_mob.attack_log += "\[[time_stamp()]\] <b>[firing_mob]/[firing_mob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firing_mob)]."
 
-				msg_admin_attack("[firing_mob] ([firing_mob.ckey]) blew up [M] ([M.ckey]) with \a [explosion_source] in [get_area(firing_mob)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[firing_mob.loc.x];Y=[firing_mob.loc.y];Z=[firing_mob.loc.z]'>JMP</a>)")
+				msg_admin_attack("[firing_mob] ([firing_mob.ckey]) blew up [M] ([M.ckey]) with \a [explosion_source] in [get_area(firing_mob)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location_of_mob.x];Y=[location_of_mob.y];Z=[location_of_mob.z]'>JMP</a>)")
 		else if(explosion_source_mob)
 			var/mob/firing_mob = explosion_source_mob
+			var/turf/location_of_mob = get_turf(firing_mob)
 
 			if(ishuman(firing_mob))
 				var/mob/living/carbon/human/H = firing_mob
@@ -311,7 +312,7 @@
 
 			M.attack_log += "\[[time_stamp()]\] <b>[firing_mob]</b> blew up <b>[M]/[M.ckey]</b> with a <b>[explosion_source]</b> in [get_area(firing_mob)]."
 
-			msg_admin_attack("[firing_mob] blew up [M] ([M.ckey]) with a [explosion_source] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[firing_mob.x];Y=[firing_mob.y];Z=[firing_mob.z]'>JMP</a>)")
+			msg_admin_attack("[firing_mob] blew up [M] ([M.ckey]) with a [explosion_source] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location_of_mob.x];Y=[location_of_mob.y];Z=[location_of_mob.z]'>JMP</a>)")
 		else if(explosion_source)
 			M.attack_log += "\[[time_stamp()]\] <b>[M]/[M.ckey]</b> was blown up with a <b>[explosion_source]</b> in [get_area(M)].</b>"
 		else

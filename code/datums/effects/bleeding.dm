@@ -60,7 +60,7 @@
 
 	var/mob/living/carbon/affected_mob = affected_atom
 	if(duration % 3 == 0) //Do it every third tick
-		if(affected_mob.reagents.get_reagent_amount("quickclot")) // Annoying QC check
+		if(affected_mob.reagents && affected_mob.reagents.get_reagent_amount("quickclot")) // Annoying QC check
 			buffer_blood_loss = 0
 			return FALSE
 		affected_mob.drip(buffer_blood_loss)
@@ -82,17 +82,17 @@
 	if(affected_mob.in_stasis == STASIS_IN_BAG)
 		return FALSE
 
-	if(affected_mob.bodytemperature < T0C && (affected_mob.reagents.get_reagent_amount("cryoxadone") || affected_mob.reagents.get_reagent_amount("clonexadone")))
+	if(affected_mob.bodytemperature < T0C && (affected_mob.reagents && affected_mob.reagents.get_reagent_amount("cryoxadone") || affected_mob.reagents.get_reagent_amount("clonexadone")))
 		blood_loss -= CRYO_BLOOD_REDUCTION
 
-	var/bicaridine = affected_mob.reagents.get_reagent_amount("bicaridine")
+	var/bicaridine = affected_mob.reagents?.get_reagent_amount("bicaridine")
 	if(bicaridine > REAGENTS_OVERDOSE)
 		blood_loss -= BICAOD_BLOOD_REDUCTION
 
-	if (affected_mob.reagents.get_reagent_amount("thwei"))
+	if (affected_mob.reagents && affected_mob.reagents.get_reagent_amount("thwei"))
 		blood_loss--
 		
-	if(affected_mob.reagents.get_reagent_amount("quickclot")) // Annoying QC check
+	if(affected_mob.reagents && affected_mob.reagents.get_reagent_amount("quickclot")) // Annoying QC check
 		return FALSE
 
 	affected_mob.blood_volume = max(affected_mob.blood_volume - blood_loss, 0)

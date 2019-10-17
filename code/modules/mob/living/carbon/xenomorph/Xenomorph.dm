@@ -529,6 +529,9 @@
 	if(ishuman(L) && L.stat == DEAD && !L.chestburst)
 		var/mob/living/carbon/human/H = L
 		if(H.status_flags & XENO_HOST)
+			for(var/obj/item/alien_embryo/AE in H.contents)
+				if(AE.stage <= 1)
+					return FALSE
 			if(world.time > H.timeofdeath + H.revive_grace_period)
 				return FALSE // they ain't gonna burst now
 		else

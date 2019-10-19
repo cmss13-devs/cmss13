@@ -68,12 +68,11 @@
 			to_chat(owner, "You need a clear line of sight to do this!")
 			return
 
-	last_use = world.time
-
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!..())
 		return
 
+	last_use = world.time
 	T.visible_message(SPAN_XENONOTICE("The weeds begin pulsating wildly and secrete resin in the shape of \a [X.resin2text(X.selected_resin, FALSE)]!"), null, 5)
 	to_chat(owner, SPAN_XENONOTICE("You focus your plasma into the weeds below you and force the weeds to secrete resin in the shape of \a [X.resin2text(X.selected_resin, FALSE)]."))
 	playsound(T, "alien_resin_build", 25)

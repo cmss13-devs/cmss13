@@ -61,7 +61,6 @@
 
 // Praetorian acid spray
 /mob/living/carbon/Xenomorph/proc/acid_spray_cone(atom/A)
-
 	if (!A || !check_state())
 		return
 
@@ -80,13 +79,7 @@
 	else
 		target = get_turf(A)
 
-	if (target == loc)
-		return
-
-	if(!target)
-		return
-
-	if(action_busy)
+	if (target == loc || !target || action_busy)
 		return
 
 	if(!do_after(src, acid_spray_activation_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
@@ -152,64 +145,50 @@
 
 //Acid Spray
 /mob/living/carbon/Xenomorph/proc/acid_spray(atom/T)
-	if(!T) return
-
-	if(!check_state())
-		return
-
-	if(used_acid_spray)
+	if(!T || !check_state() || used_acid_spray) 
 		return
 
 	if(!isturf(loc) || istype(loc, /turf/open/space))
 		to_chat(src, SPAN_WARNING("You can't do that from there.</span>"))
 		return
 
-	if(!check_plasma(10))
+	if(!check_plasma(10) || used_acid_spray)
 		return
 
-	if (used_acid_spray)
-		return
-
-
-
-	if(T)
-		var/turf/target
-
-		if(isturf(T))
-			target = T
-		else
-			target = get_turf(T)
-
-		if(!istype(target)) //Something went horribly wrong. Clicked off edge of map probably
-			return
-
-		if(target == loc)
-			to_chat(src, SPAN_WARNING("That's far too close!"))
-			return
-
-		if(!target)
-			return
-
-		if(!do_after(src, acid_spray_activation_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			to_chat(src, SPAN_WARNING("You decide to cancel your acid spray."))
-			return
-
-		used_acid_spray = 1
-
-		use_plasma(10)
-		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1)
-		visible_message(SPAN_XENOWARNING("\The [src] spews forth a virulent spray of acid!"), \
-		SPAN_XENOWARNING("You spew forth a spray of acid!"), null, 5)
-		var/turflist = getline(src, target)
-		spray_turfs(turflist)
-		spawn(caste.acid_spray_cooldown) //12 second cooldown.
-			used_acid_spray = 0
-			to_chat(src, SPAN_WARNING("You feel your acid glands refill. You can spray acid again."))
-			for(var/X in actions)
-				var/datum/action/A = X
-				A.update_button_icon()
+	var/turf/target
+	if(isturf(T))
+		target = T
 	else
-		to_chat(src, SPAN_WARNING("You see nothing to spit at!"))
+		target = get_turf(T)
+
+	if(!istype(target)) //Something went horribly wrong. Clicked off edge of map probably
+		return
+
+	if(target == loc)
+		to_chat(src, SPAN_WARNING("That's far too close!"))
+		return
+
+	if(!target || action_busy)
+		return
+
+	if(!do_after(src, acid_spray_activation_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+		to_chat(src, SPAN_WARNING("You decide to cancel your acid spray."))
+		return
+
+	used_acid_spray = 1
+
+	use_plasma(10)
+	playsound(src.loc, 'sound/effects/refill.ogg', 25, 1)
+	visible_message(SPAN_XENOWARNING("\The [src] spews forth a virulent spray of acid!"), \
+	SPAN_XENOWARNING("You spew forth a spray of acid!"), null, 5)
+	var/turflist = getline(src, target)
+	spray_turfs(turflist)
+	spawn(caste.acid_spray_cooldown) //12 second cooldown.
+		used_acid_spray = 0
+		to_chat(src, SPAN_WARNING("You feel your acid glands refill. You can spray acid again."))
+		for(var/X in actions)
+			var/datum/action/A = X
+			A.update_button_icon()
 
 
 /mob/living/carbon/Xenomorph/proc/spray_turfs(list/turflist)
@@ -936,7 +915,7 @@
 	if (!check_state())
 		return
 
-	if (used_burrow || tunnel || is_ventcrawling)
+	if (used_burrow || tunnel || is_ventcrawling || action_busy)
 		return
 
 	var/turf/T = get_turf(src)

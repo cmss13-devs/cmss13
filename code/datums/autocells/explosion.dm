@@ -231,6 +231,9 @@
 
 // Spawns a cellular automaton of an explosion
 /proc/cell_explosion(var/turf/epicenter, var/power, var/falloff, var/direction, var/explosion_source, var/explosion_source_mob)
+	if(!istype(epicenter))
+		epicenter = get_turf(epicenter)
+
 	if(!epicenter)
 		return
 

@@ -291,6 +291,10 @@
 	var/long_range_cooldown = 2
 	var/blip_type = "detector"
 	var/iff_signal = ACCESS_IFF_MARINE
+
+	unacidable = 1
+	indestructible = 1
+
 	gun_skill_category = SKILL_SMARTGUN
 	attachable_allowed = list(
 						/obj/item/attachable/heavy_barrel,

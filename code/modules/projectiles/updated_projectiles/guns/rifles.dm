@@ -726,8 +726,8 @@
 //L42 MK1 Pulse Carbine
 
 /obj/item/weapon/gun/rifle/l42mk1
-	name = "\improper L42 pulse carbine MK1"
-	desc = "A L42 pulse carbine MK1. A non-standard alternative to the standard issue M41A-MK2 available to the jarheads of the USCM. Renowned for its high accuracy, but usually overlooked in favor of firearms with better stopping power. Chambered in 10x24mm caseless."
+	name = "\improper L42A battle rifle"
+	desc = "A L42A battle rifle. A non-standard alternative to the standard issue M41A-MK2 available to the jarheads of the USCM. Renowned for its high accuracy and superior stopping power compared to other rifles. Chambered in 10x24mm caseless."
 	icon_state = "l42mk1"
 	item_state = "l42mk1"
 	reload_sound = 'sound/weapons/handling/l42_reload.ogg'

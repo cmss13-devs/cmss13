@@ -515,7 +515,7 @@
 			var/brute_info =  org.brute_dam > 0 ? "<span class='scannerb'> [round(org.brute_dam)]</span>" : "<span class='scanner'>0</span>"
 			brute_info += "[(brute_treated && org.brute_dam >= 1?"":"{T}")]"
 			var/fracture_info = ""
-			if((org.status & LIMB_BROKEN) && !(org.status & LIMB_SPLINTED))
+			if(org.status & LIMB_BROKEN)
 				fracture_info = "{F}"
 				show_limb = 1
 
@@ -525,7 +525,7 @@
 
 			var/org_incision = (open_incision?" <span class='scanner'>Open surgical incision</span>":"")
 			var/org_advice = ""
-			if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
+			if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
 				switch(org.name)
 					if("head")
 						fracture_info = ""

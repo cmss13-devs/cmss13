@@ -309,6 +309,9 @@
 			var/mob/firing_mob = explosion_source_mob
 			var/turf/location_of_mob = get_turf(firing_mob)
 
+			if(isnull(location_of_mob))
+				return
+
 			if(ishuman(firing_mob))
 				var/mob/living/carbon/human/H = firing_mob
 				H.track_shot_hit("explosion", M)

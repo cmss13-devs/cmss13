@@ -325,6 +325,8 @@
 		if(hc && hc.discard_pile)
 			hc.cards += card
 			hc.update_icon()
+			if(src)
+				src.update_icon()
 			return
 
 	var/obj/item/toy/handcard/H = new(src.loc)
@@ -334,6 +336,58 @@
 	H.loc = get_step(usr,usr.dir)
 	if(src)
 		src.update_icon()
+
+/obj/item/toy/handcard/verb/take_top_card()
+	set category = "Object"
+	set name = "Take a Card"
+	set desc = "Pick a card and add it to your hand"
+	set src in view(1)
+
+	if(!ishuman(usr)) return
+
+	var/list/to_pick_up = list()
+	for(var/datum/playingcard/P in cards)
+		to_pick_up[P.name] = P
+	var/picking_up = input("Which card do you wish to pick up?") as null|anything in to_pick_up
+
+	if(!picking_up || !usr || disposed) return
+	
+	var/mob/living/carbon/human/user = usr
+
+	var/datum/playingcard/card = to_pick_up[picking_up]
+	if(card.disposed)
+		return
+	var/found = FALSE
+	for(var/datum/playingcard/P in cards)
+		if(P == card)
+			found = TRUE
+			break
+	if(!found)
+		return
+	qdel(to_pick_up)
+	
+	cards -= card
+	if(!cards.len)
+		qdel(src)
+
+	usr.visible_message("\The [user] takes \the [picking_up].")
+
+	var/obj/item/toy/handcard/H
+	if(user.l_hand && istype(user.l_hand,/obj/item/toy/handcard))
+		H = user.l_hand
+	else if(user.r_hand && istype(user.r_hand,/obj/item/toy/handcard))
+		H = user.r_hand
+	else
+		H = new(get_turf(src))
+		usr.put_in_hands(H)
+
+	var/datum/playingcard/P = card
+	H.cards += P
+	cards -= P
+	H.update_icon()
+	if(src)
+		src.update_icon()
+
 
 /obj/item/toy/handcard/attack_self(var/mob/user as mob)
 	concealed = !concealed

@@ -1,7 +1,0 @@
- 
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - bugfix: "Fixed nuke not being properly deactivated. Now both marines and aliens should get proper announcements."

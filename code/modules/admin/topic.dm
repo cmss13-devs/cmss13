@@ -816,7 +816,8 @@
 		var/mob/M = locate(href_list["newban"])
 		if(!ismob(M)) return
 
-		if(M.client && M.client.admin_holder)	return	//admins cannot be banned. Even if they could, the ban doesn't affect them anyway
+		if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
+			return	//mods+ cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 		if(!M.ckey)
 			to_chat(usr, SPAN_DANGER("<B>Warning: Mob ckey for [M.name] not found.</b>"))

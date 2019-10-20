@@ -332,6 +332,7 @@
 	var/obj/item/toy/handcard/H = new(src.loc)
 	H.cards += card
 	H.concealed = 0
+	H.discard_pile = discard_pile
 	H.update_icon()
 	H.loc = get_step(usr,usr.dir)
 	if(src)

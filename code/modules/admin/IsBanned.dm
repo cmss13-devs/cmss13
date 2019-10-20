@@ -1,7 +1,8 @@
 #ifndef OVERRIDE_BAN_SYSTEM
 //Blocks an attempt to connect before even creating our client datum thing.
 world/IsBanned(key,address,computer_id)
-	if(ckey(key) in admin_datums)
+	var/ckey = ckey(key)
+	if(ckey in admin_datums && !isnull(admin_datums[ckey]) && (admin_datums[ckey].rights & R_MOD))
 		return ..()
 
 	//Guest Checking

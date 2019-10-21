@@ -22,7 +22,7 @@
 
 /mob/Stat()
 	if(client && client.admin_holder && client.inactivity < 1200)
-		if(client.admin_holder && client.admin_holder.rights & R_DEBUG) //Skip admins.
+		if(client.admin_holder && client.admin_holder.rights & R_DEBUG && client.prefs.View_MC) //Skip admins, and check for our pref.
 			if(statpanel("MC"))
 				stat("Location:", "([x], [y], [z])")
 				stat("CPU:", "[world.cpu]")

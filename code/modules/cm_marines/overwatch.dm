@@ -174,10 +174,8 @@
 									mob_state += " (SSD)"
 
 
-							if(istype(H.wear_id, /obj/item/card/id))
-								var/obj/item/card/id/ID = H.wear_id
-								if(ID.assigned_fireteam)
-									fteam = " \[[ID.assigned_fireteam]\]"
+							if(H.assigned_fireteam)
+								fteam = " \[[H.assigned_fireteam]\]"
 
 						else //listed marine was deleted or gibbed, all we have is their name
 							if(dead_hidden)
@@ -594,6 +592,11 @@
 	to_chat(H, "[htmlicon(src, H)] <font size='3' color='blue'><B>\[Overwatch\]: You've been promoted to \'[H.mind.assigned_role == "Squad Leader" ? "SQUAD LEADER" : "ACTING SQUAD LEADER"]\' for [current_squad.name]. Your headset has access to the command channel (:v).</B></font>")
 	to_chat(usr, "[htmlicon(src, usr)] [H.real_name] is [current_squad]'s new leader!")
 
+	if(H.assigned_fireteam)
+		if(H == current_squad.fireteam_leaders[H.assigned_fireteam])
+			current_squad.unassign_ft_leader(H.assigned_fireteam, FALSE)
+		current_squad.unassign_fireteam(H)
+
 	current_squad.squad_leader = H
 
 	SStracking.set_leader(current_squad.tracking_id, H)
@@ -713,6 +716,11 @@
 		to_chat(usr, "[htmlicon(src, usr)] <span class='warning'>Transfer aborted. [new_squad] can't have another [transfer_marine.mind.assigned_role].</span>")
 		return
 
+	if(transfer_marine.assigned_fireteam)
+		if(old_squad.fireteam_leaders["FT[transfer_marine.assigned_fireteam]"] == transfer_marine)
+			old_squad.unassign_ft_leader(transfer_marine.assigned_fireteam, TRUE)
+		old_squad.unassign_fireteam(transfer_marine)	//reset fireteam assignment
+
 	old_squad.remove_marine_from_squad(transfer_marine)
 	new_squad.put_marine_in_squad(transfer_marine)
 
@@ -721,8 +729,6 @@
 			t.fields["squad"] = new_squad.name
 			break
 
-	var/obj/item/card/id/ID = transfer_marine.wear_id
-	ID.assigned_fireteam = 0 //reset fireteam assignment
 
 	transfer_marine.hud_set_squad()
 	visible_message("[htmlicon(src, viewers(src))] <span class='boldnotice'>[transfer_marine] has been transfered from squad '[old_squad]' to squad '[new_squad]'. Logging to enlistment file.</span>")

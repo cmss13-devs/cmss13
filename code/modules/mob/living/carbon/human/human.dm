@@ -488,26 +488,58 @@
 						else if(U.has_sensor == oldsens)
 							U.set_sensors(usr)
 
-
 	if (href_list["squadfireteam"])
 		if(!usr.is_mob_incapacitated() && get_dist(usr, src) <= 7 && hasHUD(usr,"squadleader"))
 			var/mob/living/carbon/human/H = usr
+			if(assigned_squad != H.assigned_squad) return //still same squad
 			if(mind)
 				var/obj/item/card/id/ID = get_idcard()
-				if(ID && (ID.rank in ROLES_MARINES))//still a marine, with an ID.
-					if(assigned_squad == H.assigned_squad) //still same squad
-						var/newfireteam = input(usr, "Assign this marine to a fireteam.", "Fire Team Assignment") as null|anything in list("None", "Fire Team 1", "Fire Team 2", "Fire Team 3")
+				if(ID && (ID.rank in ROLES_MARINES))
+					if(ID.rank == "Squad Leader" || assigned_squad.squad_leader == src)	//if SL/aSL are chosen
+						var/choice = input(usr, "Manage Fireteams and Team leaders.", "Fireteams Management") as null|anything in list("Cancel", "Unassign Fireteam 1 Leader", "Unassign Fireteam 2 Leader", "Unassign Fireteam 3 Leader", "Unassign all Team Leaders")
+						if(assigned_squad != H.assigned_squad) return
 						if(H.is_mob_incapacitated() || get_dist(H, src) > 7 || !hasHUD(H,"squadleader")) return
-						ID = get_idcard()
-						if(ID && ID.rank in ROLES_MARINES)//still a marine with an ID
-							if(assigned_squad == H.assigned_squad) //still same squad
-								switch(newfireteam)
-									if("None") ID.assigned_fireteam = 0
-									if("Fire Team 1") ID.assigned_fireteam = 1
-									if("Fire Team 2") ID.assigned_fireteam = 2
-									if("Fire Team 3") ID.assigned_fireteam = 3
-									else return
-								hud_set_squad()
+						switch(choice)
+							if("Unassign Fireteam 1 Leader") assigned_squad.unassign_ft_leader("FT1", TRUE)
+							if("Unassign Fireteam 2 Leader") assigned_squad.unassign_ft_leader("FT2", TRUE)
+							if("Unassign Fireteam 3 Leader") assigned_squad.unassign_ft_leader("FT3", TRUE)
+							if("Unassign all Team Leaders") assigned_squad.unassign_all_ft_leaders()
+							else return
+						hud_set_squad()
+						return
+
+					if(assigned_fireteam)
+						if(assigned_squad.fireteam_leaders[assigned_fireteam] == src) //Check if person already is FT leader
+							var/choice = input(usr, "Manage Fireteams and Team leaders.", "Fireteams Management") as null|anything in list("Cancel", "Unassign from Team Leader position")
+							if(assigned_squad != H.assigned_squad) return
+							if(H.is_mob_incapacitated() || get_dist(H, src) > 7 || !hasHUD(H,"squadleader")) return
+							if(choice == "Unassign from Team Leader position")
+								if("Unassign from Team Leader position") assigned_squad.unassign_ft_leader(assigned_fireteam, TRUE)
+								else return
+							hud_set_squad()
+							return
+
+						var/choice = input(usr, "Manage Fireteams and Team leaders.", "Fireteams Management") as null|anything in list("Remove from Fireteam", "Assign to Fireteam 1", "Assign to Fireteam 2", "Assign to Fireteam 3", "Assign as Team Leader")
+						if(assigned_squad != H.assigned_squad) return
+						if(H.is_mob_incapacitated() || get_dist(H, src) > 7 || !hasHUD(H,"squadleader")) return
+						switch(choice)
+							if("Remove from Fireteam") assigned_squad.unassign_fireteam(src)
+							if("Assign to Fireteam 1") assigned_squad.assign_fireteam("FT1", src)
+							if("Assign to Fireteam 2") assigned_squad.assign_fireteam("FT2", src)
+							if("Assign to Fireteam 3") assigned_squad.assign_fireteam("FT3", src)
+							if("Assign as Team Leader") assigned_squad.assign_ft_leader(assigned_fireteam, src)
+							else return
+						hud_set_squad()
+						return
+
+					var/choice = input(usr, "Manage Fireteams and Team leaders.", "Fireteams Management") as null|anything in list("Cancel", "Assign to Fireteam 1", "Assign to Fireteam 2", "Assign to Fireteam 3")
+					if(H.is_mob_incapacitated() || get_dist(H, src) > 7 || !hasHUD(H,"squadleader")) return
+					switch(choice)
+						if("Assign to Fireteam 1") assigned_squad.assign_fireteam("FT1", src)
+						if("Assign to Fireteam 2") assigned_squad.assign_fireteam("FT2", src)
+						if("Assign to Fireteam 3") assigned_squad.assign_fireteam("FT3", src)
+						else return
+					hud_set_squad()
 
 
 	if (href_list["criminal"])
@@ -1115,7 +1147,7 @@
 
 /mob/living/carbon/human/proc/handle_embedded_objects()
 	if((stat == DEAD) || lying || buckled) // Shouldnt be needed, but better safe than sorry
-		return 
+		return
 
 	for(var/obj/item/W in embedded_items)
 		var/datum/limb/organ = W.embedded_organ
@@ -1138,9 +1170,9 @@
 	set src in view(1)
 	var/self = (usr == src)
 	var/msg = ""
-	
-	
-	if(usr.stat > 0 || usr.is_mob_restrained() || !ishuman(usr)) return 
+
+
+	if(usr.stat > 0 || usr.is_mob_restrained() || !ishuman(usr)) return
 
 	if(self)
 		var/list/L = get_broken_limbs()	- list("chest","head","groin")
@@ -1162,11 +1194,11 @@
 			else
 				msg += "They are definitely dead"
 	else
-		msg += "[self ? "You're":"They're"] alive and breathing" 
-	
+		msg += "[self ? "You're":"They're"] alive and breathing"
+
 
 	to_chat(usr,SPAN_WARNING(msg))
-	
+
 
 /mob/living/carbon/human/verb/view_manifest()
 	set name = "View Crew Manifest"
@@ -1340,16 +1372,25 @@
 //very similar to xeno's queen_locator() but this is for locating squad leader.
 /mob/living/carbon/human/proc/locate_squad_leader()
 	if(!assigned_squad) return
-	var/mob/living/carbon/human/H = assigned_squad.squad_leader
-	if(!H)
-		hud_used.locate_leader.icon_state = "trackoff"
-		return
+
+	var/mob/living/carbon/human/H
+	var/tl_prefix = ""
+	hud_used.locate_leader.icon_state = "trackoff"
+
+	if(assigned_fireteam && assigned_squad.fireteam_leaders[assigned_fireteam])
+		H = assigned_squad.fireteam_leaders[assigned_fireteam]
+		tl_prefix = "_tl"
+	else if(assigned_squad.squad_leader)
+		H = assigned_squad.squad_leader
+	else return
 
 	if(H.z != src.z || get_dist(src,H) < 1 || src == H)
-		hud_used.locate_leader.icon_state = "trackondirect"
+		hud_used.locate_leader.icon_state = "trackondirect[tl_prefix]"
 	else
 		hud_used.locate_leader.dir = get_dir(src,H)
-		hud_used.locate_leader.icon_state = "trackon"
+		hud_used.locate_leader.icon_state = "trackon[tl_prefix]"
+	return
+
 
 
 /mob/living/carbon/proc/locate_nearest_nuke()

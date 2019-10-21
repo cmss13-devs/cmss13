@@ -529,10 +529,14 @@ var/datum/mob_hud/huds = list(
 				IMG.color = "#5A934A"
 			holder.overlays += IMG
 			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudmarinesquad[marine_rk]")
-		if(I && I.assigned_fireteam)
-			var/image/IMG2 = image('icons/mob/hud/hud.dmi',src, "hudmarinesquadft[I.assigned_fireteam]")
+		if(assigned_squad && assigned_fireteam)
+			var/image/IMG2 = image('icons/mob/hud/hud.dmi',src, "hudmarinesquad[assigned_fireteam]")
 			IMG2.color = squad_clr
 			holder.overlays += IMG2
+			if(assigned_squad.fireteam_leaders[assigned_fireteam] == src)
+				var/image/IMG3 = image('icons/mob/hud/hud.dmi',src, "hudmarinesquadftl")
+				IMG3.color = squad_clr
+				holder.overlays += IMG3
 	else
 		var/marine_rk
 		var/border_rk

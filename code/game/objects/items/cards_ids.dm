@@ -76,7 +76,6 @@
 	var/paygrade = 0  // Marine's paygrade
 	var/claimedgear = 1 // For medics and engineers to 'claim' a locker
 
-	var/assigned_fireteam = "" //which fire team this ID belongs to, only used by squad marines.
 	var/list/uniform_sets = null
 	var/list/vended_items = list()
 

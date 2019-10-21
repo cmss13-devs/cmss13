@@ -25,6 +25,16 @@
 	var/radio_freq = 1461 //Squad radio headset frequency.
 	//vvv Do not set these in squad defines
 	var/mob/living/carbon/human/squad_leader = null //Who currently leads it.
+	var/list/fireteam_leaders = list(
+									"FT1" = null,
+									"FT2" = null,
+									"FT3" = null
+									)	//FT leaders stored here
+	var/list/fireteams = list(
+							"FT1" = list(),
+							"FT2" = list(),
+							"FT3" = list()
+							)			//3 FTs where references to marines stored.
 	var/num_engineers = 0
 	var/num_medics = 0
 	var/count = 0 //Current # in the squad
@@ -77,12 +87,15 @@
 	. = ..()
 
 	tracking_id = SStracking.setup_trackers()
+	SStracking.setup_trackers(null, "FT1")
+	SStracking.setup_trackers(null, "FT2")
+	SStracking.setup_trackers(null, "FT3")
 
 //Straight-up insert a marine into a squad.
 //This sets their ID, increments the total count, and so on. Everything else is done in job_controller.dm.
 //So it does not check if the squad is too full already, or randomize it, etc.
 /datum/squad/proc/put_marine_in_squad(var/mob/living/carbon/human/M, var/obj/item/card/id/ID)
-	
+
 	if(!M || !istype(M,/mob/living/carbon/human)) return 0//Logic
 	if(!src.usable) return 0
 	if(!M.mind) return 0
@@ -92,7 +105,7 @@
 	var/obj/item/card/id/C = ID
 	if(!C)
 		C = M.wear_id
-	if(!C) 
+	if(!C)
 		C = M.get_active_hand()
 	if(!istype(C))
 		return 0 // No ID found
@@ -111,7 +124,7 @@
 		if("Squad Specialist")
 			assignment = "Squad Specialist"
 			num_specialists++
-		if("Squad Smartgunner") 
+		if("Squad Smartgunner")
 			assignment = "Squad Smartgunner"
 			num_smartgun++
 		if("Squad Leader")
@@ -126,7 +139,7 @@
 
 			if(M.mind.assigned_role == "Squad Leader") //field promoted SL don't count as real ones
 				num_leaders++
-				
+
 	if(assignment != "Squad Leader")
 		SStracking.start_tracking(tracking_id, M)
 
@@ -250,3 +263,58 @@
 
 	return null
 
+
+//used for assigning fireteams
+/datum/squad/proc/assign_fireteam(fireteam, mob/living/carbon/human/H)
+	if(H.assigned_fireteam)
+		SStracking.stop_tracking(H.assigned_fireteam, H)	//remove from previous FT group
+		fireteams[H.assigned_fireteam].Remove(H)
+		fireteams[fireteam].Add(H)
+		H.assigned_fireteam = fireteam	//adding to fireteam
+		if(fireteam_leaders[fireteam])								//if TL exists -> FT group, otherwise -> SL group
+			SStracking.start_tracking(fireteam, H)
+		else
+			SStracking.start_tracking(tracking_id, H)
+	else
+		fireteams[fireteam].Add(H)
+		H.assigned_fireteam = fireteam	//adding to fireteam
+		if(fireteam_leaders[fireteam])
+			SStracking.stop_tracking(tracking_id, H)	//remove from previous FT group
+			SStracking.start_tracking(fireteam, H)
+
+/datum/squad/proc/unassign_fireteam(mob/living/carbon/human/H)
+	SStracking.stop_tracking(H.assigned_fireteam, H)	//remove from FT group
+	fireteams[H.assigned_fireteam].Remove(H)
+	H.assigned_fireteam = 0
+	SStracking.start_tracking(tracking_id, H)	//add to SL group
+
+/datum/squad/proc/assign_ft_leader(fireteam, mob/living/carbon/human/H)
+	if(fireteam_leaders[fireteam])
+		unassign_ft_leader(fireteam, FALSE)
+	if(H.mind)
+		fireteam_leaders[fireteam] = H
+		H.hud_set_squad()
+		SStracking.set_leader(H.assigned_fireteam, H)		//Set FT leader as leader of this group
+		SStracking.start_tracking("marine_sl", H)
+	return null
+
+/datum/squad/proc/unassign_ft_leader(fireteam, clear_group_id)
+	if(!fireteam_leaders[fireteam])
+		return
+	var/mob/living/carbon/human/H = fireteam_leaders[fireteam]
+	if(clear_group_id)
+		reassign_ft_tracker_group(fireteam, H.assigned_fireteam, tracking_id)	//transfer whole FT to SL group
+	fireteam_leaders[fireteam] = null
+	H.hud_set_squad()
+	return null
+
+/datum/squad/proc/unassign_all_ft_leaders()
+	for(var/team in fireteam_leaders)
+		if(fireteam_leaders[team])
+			unassign_ft_leader(team, TRUE)
+	return null
+
+/datum/squad/proc/reassign_ft_tracker_group(fireteam, old_id, new_id)
+	for(var/mob/living/carbon/human/H in fireteams[fireteam])
+		SStracking.stop_tracking(old_id, H)
+		SStracking.start_tracking(new_id, H)

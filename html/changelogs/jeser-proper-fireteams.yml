@@ -1,0 +1,12 @@
+
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - rscadd: "Reworked fire teams code. To manage fire teams you still need to be Squad Leader or acting Squad Leader. After assigning marine to a fire team, you can assign him to be a Team Leader."
+  - rscadd: "Marine's fire team is shown in squad comms."
+  - rscadd: "Team Leader has additional HUD icon and has his position shown in squad comms."
+  - rscadd: "If fire team has a Team Leader assigned, all fire team members' locators will be showing direction to their Team Leader."
+  - rscadd: "Squad Leaders and acting Squad Leaders can't be assigned to fire teams. Instead, they have options to unassign Team Leaders remotely."
+  - imageadd: "Changed sprites for SL/TL Locator."

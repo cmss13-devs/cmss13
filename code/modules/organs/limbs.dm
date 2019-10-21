@@ -780,7 +780,7 @@ This function completely restores a damaged organ to perfect condition.
 		rval |= !W.bandaged
 	return rval
 
-/datum/limb/proc/clamp()
+/datum/limb/proc/clamp_wounds()
 	var/rval = 0
 	remove_all_bleeding(TRUE)
 	for(var/datum/wound/W in wounds)

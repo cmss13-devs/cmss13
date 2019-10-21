@@ -1,5 +1,11 @@
 // List defines
+
+#if DM_VERSION > 513
+#warn 513 is definitely stable now, remove this
+#endif
+#if DM_VERSION < 513
 #define islist(L) (istype(L, /list))
+#endif
 #define isemptylist(L) (!L.len)
 
 /*

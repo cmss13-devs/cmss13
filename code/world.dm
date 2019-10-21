@@ -17,8 +17,6 @@ var/global/datum/global_init/init = new ()
 	cache_lifespan = 0	//stops player uploaded stuff from being kept in the rsc past the current session
 	hub = "Exadv1.spacestation13"
 
-#define RECOMMENDED_VERSION 511
-
 /world/New()
 	
 	hub_password = "[config.hub_password]"
@@ -37,7 +35,7 @@ var/global/datum/global_init/init = new ()
 	mutator_logs << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
 	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
 
-	if(byond_version < RECOMMENDED_VERSION)
+	if(byond_version < DM_VERSION)
 		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please update BYOND"
 
 	initialize_marine_armor()
@@ -93,15 +91,7 @@ var/global/datum/global_init/init = new ()
 	if(running_tests)
 		test_executor.host_tests()
 
-#undef RECOMMENDED_VERSION
-
 	return
-
-//world/Topic(href, href_list[])
-//		for(var/a in href_list)
-//		if(href_list["hello"])
-//			return "Hello world!"
-//		..()
 
 var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday

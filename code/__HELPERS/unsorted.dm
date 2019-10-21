@@ -22,7 +22,12 @@
 //Makes sure MIDDLE is between LOW and HIGH. If not, it adjusts it. Returns the adjusted value.
 #define between(low, middle, high) (max(min(middle, high), low))
 
+#if DM_VERSION > 513
+#warn 513 is definitely stable now, remove this
+#endif
+#if DM_VERSION < 513
 #define arctan(x) (arcsin(x/sqrt(1+x*x)))
+#endif
 
 //Offuscate x for coord system
 #define obfuscate_x(x) (x + obfs_x)

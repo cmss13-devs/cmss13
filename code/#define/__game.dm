@@ -4,6 +4,8 @@
 #define r_TRU return TRUE //Handy shorthand.
 #define r_FAL return FALSE
 
+#define DM_VERSION 512
+
 //Game defining directives.
 #define SURFACE_Z_LEVELS list(1)
 #define MAIN_SHIP_Z_LEVEL 3 //the main ship

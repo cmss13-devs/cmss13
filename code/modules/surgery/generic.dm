@@ -47,7 +47,7 @@
 	affected.surgery_open_stage = 1
 
 	affected.createwound(CUT, 10)
-	affected.clamp() //Hemostat function, clamp bleeders
+	affected.clamp_wounds() //Hemostat function, clamp bleeders
 	affected.surgery_open_stage = 2 //Can immediately proceed to other surgery steps
 	target.updatehealth()
 
@@ -86,7 +86,7 @@
 	affected.surgery_open_stage = 1
 
 	affected.createwound(CUT, 10)
-	affected.clamp() //Hemostat function, clamp bleeders
+	affected.clamp_wounds() //Hemostat function, clamp bleeders
 	affected.update_wounds()
 
 /datum/surgery_step/generic/cut_with_laser/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
@@ -161,7 +161,7 @@
 /datum/surgery_step/generic/clamp_bleeders/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] clamps bleeders in [target]'s [affected.display_name] with \the [tool]."),	\
 	SPAN_NOTICE("You clamp bleeders in [target]'s [affected.display_name] with \the [tool]."))
-	affected.clamp()
+	affected.clamp_wounds()
 
 /datum/surgery_step/generic/clamp_bleeders/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, tearing blood vessals and causing massive bleeding in [target]'s [affected.display_name] with \the [tool]!"),	\

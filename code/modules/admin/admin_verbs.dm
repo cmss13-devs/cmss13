@@ -305,7 +305,7 @@ var/list/admin_verbs_mod = list(
 
 /client/proc/add_admin_verbs()
 	// mentors don't have access to admin verbs
-	if(admin_holder && (admin_holder.rights & ~R_MENTOR))
+	if(admin_holder && !AHOLD_IS_ONLY_MENTOR(admin_holder))
 		verbs += admin_verbs_default
 		if(admin_holder.rights & R_BUILDMODE)	verbs += /client/proc/togglebuildmodeself
 		if(admin_holder.rights & R_ADMIN)		verbs += admin_verbs_admin

@@ -186,7 +186,7 @@
 
 	if(sender != author)
 		// It's not the thread author sending the message, so make sure it's a mentor/staff sending the message
-		if(!sender.admin_holder || !(sender.admin_holder.rights & (R_MENTOR|R_MOD)))
+		if(!AHOLD_IS_MOD(sender.admin_holder) && !AHOLD_IS_MENTOR(sender.admin_holder))
 			return
 
 		// If the mentor forgot to mark the mentorhelp, mark it for them
@@ -222,7 +222,7 @@
 		return
 
 	// Not a mentor/staff
-	if(!thread_mentor.admin_holder || !(thread_mentor.admin_holder.rights & (R_MENTOR|R_MOD)))
+	if(!AHOLD_IS_MOD(thread_mentor.admin_holder) && !AHOLD_IS_MENTOR(thread_mentor.admin_holder))
 		return
 
 	mentor = thread_mentor
@@ -244,7 +244,7 @@
 		return
 
 	// If we're not the thread mentor and not a staff member
-	if((!thread_mentor || thread_mentor != mentor) && !(thread_mentor.admin_holder && thread_mentor.admin_holder.rights & R_MOD))
+	if((!thread_mentor || thread_mentor != mentor) && !AHOLD_IS_MOD(thread_mentor.admin_holder))
 		return
 
 	to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.key]</font> has unmarked your thread and is no longer responding to it."))
@@ -316,7 +316,7 @@
 	if(!check_open(responder))
 		return
 
-	if(!responder.admin_holder || !(responder.admin_holder.rights & (R_MENTOR|R_MOD)))
+	if(!AHOLD_IS_MOD(responder.admin_holder) && !AHOLD_IS_MENTOR(responder.admin_holder))
 		return
 
 	// If the mentor forgot to mark the mentorhelp, mark it for them
@@ -335,7 +335,7 @@
 		return
 
 	// i mean, pretty unlikely, but still possible
-	if(!responder.admin_holder || !(responder.admin_holder.rights & (R_MENTOR|R_MOD)))
+	if(!AHOLD_IS_MOD(responder.admin_holder) && !AHOLD_IS_MENTOR(responder.admin_holder))
 		return
 
 	// Re-mark if they unmarked it while the dialog was open (???)

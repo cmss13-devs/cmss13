@@ -30,6 +30,11 @@
 // #define R_PERMISSION	4194304
 //=================================================
 
+#define AHOLD_IS_MENTOR(ahold) (ahold && (ahold.rights & R_MENTOR))
+#define AHOLD_IS_ONLY_MENTOR(ahold) (ahold && (ahold.rights & R_MENTOR) == ahold.rights)
+
+#define AHOLD_IS_MOD(ahold) (ahold && (ahold.rights & R_MOD))
+#define AHOLD_IS_ADMIN(ahold) (ahold && (ahold.rights & R_ADMIN))
 
 var/global/obj/effect/datacore/data_core = null
 

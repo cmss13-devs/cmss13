@@ -157,11 +157,11 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 	var/list/afk_staff = list()
 	var/list/staff = list("mentors","devs","admins","afk")
 	for(var/client/X in admins)
-		if(R_MENTOR & X.admin_holder.rights && !((R_ADMIN|R_MOD) & X.admin_holder.rights)) // we don't want to count admins twice. This list should be JUST mentors
+		if(AHOLD_IS_ONLY_MENTOR(X.admin_holder)) // we don't want to count admins twice. This list should be JUST mentors
 			mentoradmin_holders += X
 		if(R_DEBUG & X.admin_holder.rights) // Looking for anyone with +Debug which will be devs and host-tier permissions
 			debugadmin_holders += X
-		if((R_ADMIN|R_MOD) & X.admin_holder.rights) // just admins+ here please
+		if(AHOLD_IS_MOD(X.admin_holder)) // just admins+ here please
 			adminadmin_holders += X
 			if(X.is_afk())
 				afk_staff += X

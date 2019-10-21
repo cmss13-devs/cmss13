@@ -61,7 +61,7 @@ var/global/normal_ooc_colour = "#002eb8"
 	STUI.ooc.Add("\[[time_stamp()]] <font color='#display_colour'>OOC: [mob.name]/[key]: [msg]</font><br>")
 	STUI.processing |= 4
 	var/display_colour = normal_ooc_colour
-	if(admin_holder && !admin_holder.fakekey && (admin_holder.rights & R_MENTOR) != R_MENTOR)
+	if(admin_holder && !admin_holder.fakekey && !AHOLD_IS_ONLY_MENTOR(admin_holder))
 		display_colour = "#2e78d9"	//light blue
 		if(admin_holder.rights & R_MOD && !(admin_holder.rights & R_ADMIN))
 			display_colour = "#184880"	//dark blue

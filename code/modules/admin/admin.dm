@@ -824,7 +824,7 @@ var/global/floorIsLava = 0
 	if(!C.admin_holder)
 		return 0
 
-	if(C.admin_holder.rights == R_MENTOR)
+	if(AHOLD_IS_ONLY_MENTOR(C.admin_holder))
 		return 1
 	return 0
 

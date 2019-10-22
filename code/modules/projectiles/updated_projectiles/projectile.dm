@@ -972,16 +972,8 @@
 	if(P.weapon_source_mob)
 		last_damage_mob = P.weapon_source_mob
 
-	if(P.firer)
-		var/mob/firingMob = P.firer
-		if(ishuman(firingMob))
-			var/mob/living/carbon/human/H = firingMob
-			H.track_shot_hit(initial(name), src)
-		attack_log += "\[[time_stamp()]\] <b>[firingMob]</b> shot <b>[src]/[ckey]</b> with a <b>[P]</b>"
-		msg_admin_attack("[firingMob] shot [src] ([ckey]) with a [P] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[P.firer.x];Y=[P.firer.y];Z=[P.firer.z]'>JMP</a>)")
-	else
-		attack_log += "\[[time_stamp()]\] <b>SOMETHING??</b> shot <b>[src]/[ckey]</b> with a <b>[P]</b>"
-		msg_admin_attack("SOMETHING?? shot [src] ([ckey]) with a [P])")
+	attack_log += "\[[time_stamp()]\] <b>SOMETHING??</b> shot <b>[src]/[ckey]</b> with a <b>[P]</b>"
+	msg_admin_attack("SOMETHING?? shot [src] ([ckey]) with a [P])")
 
 //Abby -- Just check if they're 1 tile horizontal or vertical, no diagonals
 /proc/get_adj_simple(atom/Loc1,atom/Loc2)

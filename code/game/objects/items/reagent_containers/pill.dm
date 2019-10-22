@@ -84,7 +84,7 @@ var/global/list/randomized_pill_icons
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [M.name] by [M.name] ([M.ckey]) Reagents: [rgt_list_text]</font>")
 		msg_admin_attack("[user.name] ([user.ckey]) fed [M.name] ([M.ckey]) with [src.name] Reagents: [rgt_list_text] (INTENT: [uppertext(user.a_intent)]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
 
-		if(reagents.total_volume)
+		if(reagents && reagents.total_volume)
 			reagents.set_source_mob(user)
 			reagents.trans_to_ingest(M, reagents.total_volume)
 			qdel(src)

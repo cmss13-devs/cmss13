@@ -918,7 +918,7 @@ proc/anim(turf/location,atom/target,a_icon,a_icon_state as text,flick_anim as te
 		if(steps > length) return 0
 		if(current.opacity) return 0
 		for(var/atom/A in current)
-			if(A.opacity) return 0
+			if(A && A.opacity) return 0
 		current = get_step_towards(current, target_turf)
 		steps++
 

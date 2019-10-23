@@ -40,6 +40,7 @@ datum/preferences
 	var/toggles_sound = TOGGLES_SOUND_DEFAULT
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
+	var/View_MC = FALSE
 
 	//Synthetic specific preferences
 	var/synthetic_name = "Undefined"
@@ -300,7 +301,9 @@ datum/preferences
 	dat += "<big><b><u>UI Customization:</u></b></big><br>"
 	dat += "<b>Style:</b> <a href='?_src_=prefs;preference=ui'><b>[UI_style]</b></a><br>"
 	dat += "<b>Color</b>: <a href='?_src_=prefs;preference=UIcolor'><b>[UI_style_color]</b></a> <table style='display:inline;' bgcolor='[UI_style_color]'><tr><td>__</td></tr></table><br>"
-	dat += "<b>Alpha</b>: <a href='?_src_=prefs;preference=UIalpha'><b>[UI_style_alpha]</b></a>"
+	dat += "<b>Alpha</b>: <a href='?_src_=prefs;preference=UIalpha'><b>[UI_style_alpha]</b></a><br>"
+	if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
+		dat += "<b>View Master Controller Tab: <a href='?_src_=prefs;preference=ViewMC'><b>[View_MC ? "TRUE" : "FALSE"]</b></a>"
 
 
 	dat += "<div id='preview'>"
@@ -1160,6 +1163,10 @@ datum/preferences
 					var/UI_style_alpha_new = input(user, "Select a new alpha(transparence) parametr for UI, between 50 and 255") as num
 					if(!UI_style_alpha_new|!(UI_style_alpha_new <= 255 && UI_style_alpha_new >= 50)) return
 					UI_style_alpha = UI_style_alpha_new
+				
+				if("ViewMC")
+					if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
+						View_MC = !View_MC
 
 				if("be_special")
 					var/num = text2num(href_list["num"])

@@ -415,25 +415,26 @@
 	penetration = config.mlow_armor_penetration
 
 /datum/ammo/bullet/revolver/highimpact/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
-	if(isHumanStrict(M))
-		var/mob/living/carbon/human/H = M
-		if(user.zone_selected == "head")
-			user.visible_message(SPAN_DANGER("[user] aims at [M]'s head!"), SPAN_HIGHDANGER("You aim at [M]'s head!"))
-			if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-				if(user.Adjacent(H))
-					H.apply_damage(500, BRUTE, "head", no_limb_loss = TRUE, impact_name = impact_name, impact_limbs = impact_limbs, permanent_kill = TRUE) //not coming back
-					H.visible_message(SPAN_DANGER("[M] WAS EXECUTED!"), \
-						SPAN_HIGHDANGER("You were Executed!"))
-					if(user)
-						user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_source)
-					var/area/A = get_area(H)
-					var/turf/T = get_turf(H)
-					message_mods(FONT_SIZE_HUGE("ALERT: [usr.name] ([usr.key]) battlefield executed [H] ([H.key]) at[A.name]. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)</font>"))
-					log_attack("[usr.name] ([usr.ckey]) battlefield executed [H] ([H.key]) at [A.name].")
-			else
-				return -1
-		else
-			..()
+	if(!user || !isHumanStrict(M) || user.zone_selected != "head")
+		return ..()
+	var/mob/living/carbon/human/H = M
+	user.visible_message(SPAN_DANGER("[user] aims at [M]'s head!"), SPAN_HIGHDANGER("You aim at [M]'s head!"))
+
+	if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || user.Adjacent(H))
+		return -1
+
+	H.apply_damage(500, BRUTE, "head", no_limb_loss = TRUE, impact_name = impact_name, impact_limbs = impact_limbs, permanent_kill = TRUE) //not coming back
+	H.visible_message(SPAN_DANGER("[M] WAS EXECUTED!"), \
+		SPAN_HIGHDANGER("You were Executed!"))
+
+	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_source)
+
+	var/area/A = get_area(H)
+	var/turf/T = get_turf(H)
+
+	message_mods(FONT_SIZE_HUGE("ALERT: [usr.name] ([usr.key]) battlefield executed [H] ([H.key]) at[A.name]. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)</font>"))
+	log_attack("[usr.name] ([usr.ckey]) battlefield executed [H] ([H.key]) at [A.name].")
+
 /*
 //================================================
 					SMG Ammo

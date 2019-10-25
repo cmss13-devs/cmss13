@@ -1,0 +1,8 @@
+
+author: Cakey
+
+delete-after: True
+
+changes: 
+  - tweak: "Reduced the marine pop requirement for Tank Crewmen to 100 (previously 120)."
+  - tweak: "Round-start role pop restrictions will now also take into account un-readied players."

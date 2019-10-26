@@ -120,24 +120,22 @@
 		human_user = loc
 
 	ping_count = 0
-	for(var/mob/M in living_mob_list)
-
-		if(loc == null || M == null) continue
-		if(loc.z != M.z) continue
-		if(get_dist(M, src) > detector_range) continue
+	for(var/mob/M in orange(detector_range, loc))
 		if(M == loc) continue //device user isn't detected
-		if(!isturf(M.loc)) continue
 		if(world.time > M.l_move_time + 20) continue //hasn't moved recently
 		if(isrobot(M)) continue
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(H.get_target_lock(iff_signal))
 				continue
-
 		ping_count++
-
 		if(human_user)
 			show_blip(human_user, M)
+
+	for(var/obj/effect/alien/resin/special/S in orange(detector_range, loc))
+		ping_count++
+		if(human_user)
+			show_blip(human_user, S)
 
 	if(ping_count > 0)
 		playsound(loc, pick('sound/items/detector_ping_1.ogg', 'sound/items/detector_ping_2.ogg', 'sound/items/detector_ping_3.ogg', 'sound/items/detector_ping_4.ogg'), 60, 0, 7, 2)

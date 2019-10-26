@@ -29,6 +29,12 @@
 	build_time = BUILD_TIME_HIVELORD
 	max_build_dist = 1
 
+	structures_allowed = list(
+		XENO_STRUCTURE_POOL = /obj/effect/alien/resin/special/pool,
+		XENO_STRUCTURE_EGGMORPH = /obj/effect/alien/resin/special/eggmorph,
+		XENO_STRUCTURE_EVOPOD = /obj/effect/alien/resin/special/evopod
+	)
+
 /datum/caste_datum/hivelord/mature
 	upgrade_name = "Mature"
 	caste_desc = "A builder of really big hives hives. It looks a little more dangerous."
@@ -82,5 +88,9 @@
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/emit_pheromones,
 		/datum/action/xeno_action/toggle_speed,
+		/datum/action/xeno_action/morph_resin
 		)
 	mutation_type = HIVELORD_NORMAL
+
+/mob/living/carbon/Xenomorph/Hivelord/can_destroy_special()
+	return TRUE

@@ -3,7 +3,7 @@
 	config_tag = "Distress Signal"
 	required_players = 1 //Need at least one player, but really we need 2.
 	xeno_required_num = 1 //Need at least one xeno.
-	monkey_amount = 25
+	monkey_amount = 5
 	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -195,6 +195,9 @@
 			if(flags_round_type & MODE_FOG_ACTIVATED && world.time >= (FOG_DELAY_INTERVAL + round_time_lobby + round_time_fog)) disperse_fog()//Some RNG thrown in.
 			if(round_should_check_for_win) check_win()
 			round_checkwin = 0
+
+		if(ticker.mode.latejoin_larva_drop && world.time >= round_time_burrowed_cutoff)
+			ticker.mode.latejoin_larva_drop = 0
 
 		if(!(resin_allow_finished) && world.time >= round_time_resin)
 			for(var/area/A in all_areas)

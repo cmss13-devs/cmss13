@@ -1374,10 +1374,6 @@ datum/preferences
 		var/status = organ_data[name]
 		var/datum/limb/O = character.get_limb(name)
 		if(O)
-//			if(status == "amputated")
-//				O.amputated = 1
-//				O.status |= LIMB_DESTROYED
-//				O.destspawn = 1
 			if(status == "cyborg")
 				O.status |= LIMB_ROBOT
 		else

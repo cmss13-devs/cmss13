@@ -22,6 +22,7 @@
 	caste_desc = "Gross!"
 	bomb_strength = 1
 	acid_level = 3
+	caste_luminosity = 3
 
 /datum/caste_datum/boiler/mature
 	upgrade_name = "Mature"

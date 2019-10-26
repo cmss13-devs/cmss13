@@ -55,6 +55,7 @@
 				xeno_message(SPAN_XENOANNOUNCE("The slashing of hosts is now permitted."),2)
 				hive.slashing_allowed = 1
 				hive.set_living_xeno_queen(null)
+				hive.clear_spawn_list()
 				//on the off chance there was somehow two queen alive
 				for(var/mob/living/carbon/Xenomorph/Queen/Q in living_mob_list)
 					if(!isnull(Q) && Q != src && Q.stat != DEAD && Q.hivenumber == hivenumber)
@@ -87,10 +88,10 @@
 		dead_hardcore_xeno_list += src
 
 	hive.remove_xeno(src)
-	
+	hive.queue_spawn(src)
 	if(hive.totalXenos.len == 1)
 		xeno_message(SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"),3, hivenumber)
-		
+
 	callHook("death", list(src, gibbed))
 
 /mob/living/carbon/Xenomorph/gib(var/cause = "gibbing")

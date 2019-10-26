@@ -25,6 +25,11 @@
 	acid_level = 1
 	weed_level = 1
 
+	structures_allowed = list(
+		XENO_STRUCTURE_EGGMORPH = /obj/effect/alien/resin/special/eggmorph,
+		XENO_STRUCTURE_EVOPOD = /obj/effect/alien/resin/special/evopod
+	)
+
 /datum/caste_datum/drone/mature
 	upgrade_name = "Mature"
 	caste_desc = "The workhorse of the hive. It looks a little more dangerous."
@@ -72,8 +77,12 @@
 		/datum/action/xeno_action/activable/transfer_plasma,
 		/datum/action/xeno_action/activable/corrosive_acid/drone,
 		/datum/action/xeno_action/emit_pheromones,
+		/datum/action/xeno_action/morph_resin
 		)
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl,
+		/mob/living/carbon/Xenomorph/proc/vent_crawl
 		)
 	mutation_type = DRONE_NORMAL
+
+/mob/living/carbon/Xenomorph/Drone/can_destroy_special()
+	return TRUE

@@ -38,6 +38,13 @@
 	// Also update the amount of T2/T3 slots
 	data["tier_slots"] = assoc_hive.get_tier_slots()
 
+// Updates the hive location using the area name of the defined hive location turf
+/datum/hive_status_ui/proc/update_hive_location()
+	var/hive_location_name
+	if(assoc_hive.hive_location)
+		hive_location_name = strip_improper(get_area(assoc_hive.hive_location))
+	data["hive_location"] = hive_location_name
+
 // Updates the sorted list of all xenos that we use as a key for all other information
 /datum/hive_status_ui/proc/update_xeno_keys()
 	data["xeno_keys"] = assoc_hive.get_xeno_keys()

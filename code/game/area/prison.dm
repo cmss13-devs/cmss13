@@ -1,7 +1,7 @@
 //Areas for prison - Minijar
 
 /area/prison
-	can_nuke_area = TRUE
+	can_build_special = TRUE
 	powernet_name = "ground"
 
 //SECURITY

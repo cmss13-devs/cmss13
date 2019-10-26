@@ -80,6 +80,11 @@
 		{{/props}}
 	{{/for}}
 	<br>
+	{{if data.hive_location}}
+		<h3 class="whiteTitle">The Hive location is:</h3>
+		<h1 class="whiteTitle">{{:data.hive_location}}</h1>
+		<br>
+	{{/if}}
 	<i>Total sisters: {{:data.total_xenos}}</i>
 	<br>
 	<i>Burrowed larvae: {{:data.burrowed_larva}}</i>

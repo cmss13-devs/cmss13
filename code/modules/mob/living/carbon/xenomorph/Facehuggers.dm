@@ -326,11 +326,8 @@
 			embryos++
 
 		if(!embryos)
-
-			var/embryos_to_implant = get_impregnation_amount(target)
-			for(var/i=0, i < embryos_to_implant, i++)
-				var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(target)
-				embryo.hivenumber = hivenumber
+			var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(target)
+			embryo.hivenumber = hivenumber
 
 			icon_state = "[initial(icon_state)]_impregnated"
 
@@ -343,39 +340,13 @@
 	if(round_statistics && ishuman(target))
 		round_statistics.total_huggers_applied++
 
-
-/obj/item/clothing/mask/facehugger/proc/get_impregnation_amount(mob/living/carbon/target)
-
-	var/impregnation_amount
-
-	if(isYautja(target))
-		return 1 //Only one Abomination larva per burst
-	if(!isHumanStrict(target))
-		impregnation_amount = 1
-	else
-		impregnation_amount = pick(
-			prob(50); 1,
-			prob(25); 2,
-			prob(12.5); 3,
-			prob(6.25); 4
-		)
-
-	var/bonus_larva_spawn_chance = hive_datum[hivenumber].bonus_larva_spawn_chance
-	if(bonus_larva_spawn_chance > 0)
-		if(prob(bonus_larva_spawn_chance))
-			impregnation_amount++ //Hive has a chance to get one extra larva per impregnation if they have the correct mutator
-
-	return impregnation_amount
-
-
-
 /obj/item/clothing/mask/facehugger/proc/check_lifecycle()
 	if(lifecycle - 50 <= 0)
 		if(isturf(loc))
 			var/obj/effect/alien/egg/E = locate() in loc
-			if(E && E.status == BURST)
+			if(E && E.status == EGG_BURST)
 				visible_message(SPAN_XENOWARNING("[src] crawls back into [E]!"))
-				E.status = GROWN
+				E.status = EGG_GROWN
 				E.icon_state = "Egg"
 				E.deploy_egg_triggers()
 				qdel(src)

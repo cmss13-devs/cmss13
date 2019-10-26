@@ -102,7 +102,7 @@ var/bomb_set = FALSE
 		return
 
 	var/area/A = get_area(src)
-	if (!A.can_nuke_area)
+	if (!A.can_build_special)
 		to_chat(usr, SPAN_DANGER("You don't want to deploy this here!"))
 		return
 
@@ -146,7 +146,7 @@ var/bomb_set = FALSE
 				to_chat(usr, SPAN_DANGER("The safety is still on."))
 				return
 
-			if (!A.can_nuke_area)
+			if (!A.can_build_special)
 				to_chat(usr, SPAN_DANGER("You cannot deploy [src] here!"))
 				return
 
@@ -179,7 +179,7 @@ var/bomb_set = FALSE
 			if (timing)
 				to_chat(usr, SPAN_DANGER("Disengage first!"))
 				return
-			if (!A.can_nuke_area)
+			if (!A.can_build_special)
 				to_chat(usr, SPAN_DANGER("You cannot deploy [src] here!"))
 				return
 			usr.visible_message(SPAN_WARNING("[usr] begins to [safety ? "disable" : "enable"] the safety on [src]!"), SPAN_WARNING("You begin to [safety ? "disable" : "enable"] the safety on [src]."))
@@ -195,7 +195,7 @@ var/bomb_set = FALSE
 			if (timing)
 				to_chat(usr, SPAN_DANGER("Disengage first!"))
 				return
-			if (!A.can_nuke_area)
+			if (!A.can_build_special)
 				to_chat(usr, SPAN_DANGER("You cannot deploy [src] here!"))
 				return
 			being_used = TRUE

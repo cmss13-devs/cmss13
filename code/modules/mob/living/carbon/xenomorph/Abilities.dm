@@ -198,6 +198,34 @@
 	resin_plasma_cost = 200
 	thick = TRUE
 
+// Morph Resin
+/datum/action/xeno_action/morph_resin
+	name = "Resin Morph (125)"
+	action_icon_state = "morph_resin"
+	plasma_cost = 125
+	macro_path = /datum/action/xeno_action/verb/verb_morph_resin
+	action_type = XENO_ACTION_CLICK
+
+/datum/action/xeno_action/morph_resin/action_activate()
+	var/mob/living/carbon/Xenomorph/X = owner
+	var/choice = input(X, "Choose a pheromone") in X.caste.structures_allowed + "help" + "cancel"
+	if(choice == "help")
+		var/message = "<br>Morphing into resin sacrifices your current body in order to create special structures that can benefit the hive, as follows:<br>"
+		for(var/structure_name in X.caste.structures_allowed)
+			message += "[get_xeno_structure_desc(structure_name)]<br>"
+		to_chat(X, SPAN_NOTICE(message))
+		return
+	if(choice == "cancel" || !X.check_state(1) || !X.check_plasma(plasma_cost))
+		return
+	var/answer = alert(X, "Are you sure you want to morph into [choice]? This will sacrifice your current body.", , "Yes", "No")
+	if(answer != "Yes")
+		return
+	if(!X.hive.can_build_structure(choice))
+		to_chat(X, SPAN_WARNING("You can't build any more [choice]s for the hive."))
+		return
+	X.use_plasma(plasma_cost)
+	X.morph_resin(get_turf(X), X.caste.structures_allowed[choice])
+	..()
 
 // Corrosive Acid
 /datum/action/xeno_action/activable/corrosive_acid
@@ -505,15 +533,11 @@
 	else
 		if(!X.check_plasma(plasma_cost))
 			return
-		var/choice = input(X, "Choose a pheromone") in X.caste.aura_allowed + "help" + "cancel"
+		var/choice = input(X, "Choose a structure") in X.caste.aura_allowed + "help" + "cancel"
 		if(choice == "help")
 			to_chat(X, SPAN_NOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and tackle chance.<br><B>Warding</B> - Increased armor, reduced incoming damage and critical bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br>"))
 			return
-		if(choice == "cancel") return
-		if(!X.check_state(1)) return
-		if(X.current_aura) //If they are stacking windows, disable all input
-			return
-		if(!X.check_plasma(plasma_cost))
+		if(choice == "cancel" || X.current_aura || !X.check_state(1) || !X.check_plasma(plasma_cost)) //If they are stacking windows, disable all input
 			return
 		X.use_plasma(plasma_cost)
 		X.current_aura = choice

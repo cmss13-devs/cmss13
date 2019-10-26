@@ -1,6 +1,6 @@
 //Areas for BigRed - Minijar
 /area/bigred
-	can_nuke_area = TRUE
+	can_build_special = TRUE
 	powernet_name = "ground"
 
 /area/bigred/ground
@@ -278,7 +278,7 @@
 
 //Big Red V2
 /area/bigredv2
-	can_nuke_area = TRUE
+	can_build_special = TRUE
 
 /area/bigredv2/outside
 	name = "\improper Colony Grounds"

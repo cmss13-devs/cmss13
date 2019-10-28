@@ -357,7 +357,7 @@
 		anchored = TRUE
 		visible_message(SPAN_DANGER("[src]'s flame reaches full strength. It's fully active now."), null, 5)
 
-/obj/item/attack_hand(mob/user)
+/obj/item/device/flashlight/flare/signal/attack_hand(mob/user)
 	if (!user) return
 
 	if(anchored)

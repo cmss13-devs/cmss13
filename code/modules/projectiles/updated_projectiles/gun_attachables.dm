@@ -797,7 +797,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/carbine
 	name = "\improper L42 synthetic stock"
-	desc = "A special issue stock made of sturdy, yet lightweight materials. Attaches to the L42-MK1 Pulse Carbine. Not effective as a blunt force weapon."
+	desc = "A special issue stock made of sturdy, yet lightweight materials. Attaches to the L42A Battle Rifle. Not effective as a blunt force weapon."
 	slot = "stock"
 	size_mod = 1
 	icon_state = "l42stock"

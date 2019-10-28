@@ -484,7 +484,7 @@ Update: Censored cursed word ~Cakey
 //-----------------------L42MK1 Carbine Mag Boxes-----------------------
 
 /obj/item/magazine_box/l42mk1
-	name = "magazine box (L42-MK1 x 16)"
+	name = "magazine box (L42A x 16)"
 	icon_state = "mag_box_l42_closed"
 	icon_base_name = "mag_box_l42"
 	num_of_magazines = 16
@@ -494,7 +494,7 @@ Update: Censored cursed word ~Cakey
 	spawn_full = 0
 
 /obj/item/magazine_box/l42mk1/ap
-	name = "magazine box (AP L42-MK1 x 16)"
+	name = "magazine box (AP L42A x 16)"
 	icon_state = "mag_box_l42_ap_closed"
 	icon_base_name = "mag_box_l42_ap"
 	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1/ap
@@ -503,7 +503,7 @@ Update: Censored cursed word ~Cakey
 	spawn_full = 0
 
 /obj/item/magazine_box/l42mk1/le
-	name = "magazine box (LE L42-MK1 x 16)"
+	name = "magazine box (LE L42A x 16)"
 	icon_state = "mag_box_l42_le_closed"
 	icon_base_name = "mag_box_l42_le"
 	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1/le
@@ -512,7 +512,7 @@ Update: Censored cursed word ~Cakey
 	spawn_full = 0
 
 /obj/item/magazine_box/l42mk1/ext
-	name = "magazine box (Ext L42-MK1 x 12)"
+	name = "magazine box (Ext L42A x 12)"
 	icon_state = "mag_box_l42_ext_closed"
 	icon_base_name = "mag_box_l42_ext"
 	num_of_magazines = 12
@@ -522,7 +522,7 @@ Update: Censored cursed word ~Cakey
 	spawn_full = 0
 
 /obj/item/magazine_box/l42mk1/incen
-	name = "magazine box (Incen L42-MK1 x 16)"
+	name = "magazine box (Incen L42A x 16)"
 	icon_state = "mag_box_l42_incen_closed"
 	icon_base_name = "mag_box_l42_incen"
 	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1/incendiary

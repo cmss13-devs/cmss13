@@ -149,23 +149,23 @@ AMMO
 	group = "Ammo"
 
 /datum/supply_packs/ammo_l42_mag_box
-	name = "Magazine box (L42-MK1, 16x mags)"
+	name = "Magazine box (L42A, 16x mags)"
 	contains = list(
 					/obj/item/magazine_box/l42mk1
 					)
 	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper L42-MK1 magazines crate"
+	containername = "\improper L42A magazines crate"
 	group = "Ammo"
 
 /datum/supply_packs/ammo_l42_mag_box_ap
-	name = "Magazine box (L42-MK1, 16x AP mags)"
+	name = "Magazine box (L42A, 16x AP mags)"
 	contains = list(
 					/obj/item/magazine_box/l42mk1/ap
 					)
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper L42-MK1 AP magazines crate"
+	containername = "\improper L42A AP magazines crate"
 	group = "Ammo"
 
 /datum/supply_packs/ammo_shell_box

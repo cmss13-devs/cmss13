@@ -235,7 +235,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		new /obj/item/tool/extinguisher/mini(src)
 
 /obj/item/storage/box/kit/mini_sniper
-	name = "\improper L42-MK1 Sniper Kit"
+	name = "\improper L42A Sniper Kit"
 
 /obj/item/storage/box/kit/mini_sniper/New()
 	..()

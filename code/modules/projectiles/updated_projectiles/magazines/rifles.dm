@@ -128,11 +128,11 @@
 	w_class = SIZE_MEDIUM
 
 //-------------------------------------------------------
-//USCM L42-MK1 Pulse Carbine
+//USCM L42A Battle Rifle
 
 /obj/item/ammo_magazine/rifle/l42mk1
-	name = "\improper L42-MK1 magazine (10x24mm)"
-	desc = "A 10mm pulse carbine magazine."
+	name = "\improper L42A magazine (10x24mm)"
+	desc = "A 10mm battle rifle magazine."
 	caliber = "10x24mm"
 	icon_state = "l42mk1"
 	default_ammo = /datum/ammo/bullet/rifle
@@ -141,8 +141,8 @@
 	w_class = SIZE_MEDIUM
 
 /obj/item/ammo_magazine/rifle/l42mk1/ap
-	name = "\improper L42-MK1 AP magazine (10x24mm)"
-	desc = "A 10mm pulse carbine armor piercing magazine."
+	name = "\improper L42A AP magazine (10x24mm)"
+	desc = "A 10mm battle rifle armor piercing magazine."
 	caliber = "10x24mm"
 	icon_state = "l42mk1_ap"
 	default_ammo = /datum/ammo/bullet/rifle/ap
@@ -151,8 +151,8 @@
 	w_class = SIZE_MEDIUM
 
 /obj/item/ammo_magazine/rifle/l42mk1/le
-	name = "\improper L42-MK1 LE magazine (10x24mm)"
-	desc = "A 10mm pulse carbine armor shredding magazine."
+	name = "\improper L42A LE magazine (10x24mm)"
+	desc = "A 10mm battle rifle armor shredding magazine."
 	caliber = "10x24mm"
 	icon_state = "l42mk1_le"
 	default_ammo = /datum/ammo/bullet/rifle/le
@@ -161,8 +161,8 @@
 	w_class = SIZE_MEDIUM
 
 /obj/item/ammo_magazine/rifle/l42mk1/extended
-	name = "\improper L42-MK1 extended magazine (10x24mm)"
-	desc = "A 10mm pulse carbine extended magazine."
+	name = "\improper L42A extended magazine (10x24mm)"
+	desc = "A 10mm battle rifle extended magazine."
 	caliber = "10x24mm"
 	icon_state = "l42mk1_extended"
 	default_ammo = /datum/ammo/bullet/rifle
@@ -171,8 +171,8 @@
 	w_class = SIZE_MEDIUM
 
 /obj/item/ammo_magazine/rifle/l42mk1/incendiary
-	name = "\improper L42-MK1 incendiary magazine (10x24mm)"
-	desc = "A 10mm pulse carbine incendiary magazine."
+	name = "\improper L42A incendiary magazine (10x24mm)"
+	desc = "A 10mm battle rifle incendiary magazine."
 	caliber = "10x24mm"
 	icon_state = "l42mk1_incendiary"
 	default_ammo = /datum/ammo/bullet/rifle/incendiary

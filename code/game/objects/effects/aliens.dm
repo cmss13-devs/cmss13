@@ -85,23 +85,28 @@
 /obj/effect/xenomorph/spray/Crossed(AM as mob|obj)
 	..()
 	if(ishuman(AM))
-		var/mob/living/carbon/human/H = AM
-		if(!H.lying)
-			to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
-			H.emote("pain")
-			H.KnockDown(2)
-			H.last_damage_mob = source_mob
-			H.last_damage_source = source_name
-			var/datum/limb/affecting = H.get_limb("l_foot")
-			if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(5, 10)))
-				H.UpdateDamageIcon()
-			affecting = H.get_limb("r_foot")
-			if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(5, 10)))
-				H.UpdateDamageIcon()
-			H.updatehealth()
-		else
-			H.adjustFireLoss(acid_strength*rand(2, 5)) //This is ticking damage!
-			to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))
+		apply_spray(AM)
+
+//damages human that comes in contact
+/obj/effect/xenomorph/spray/proc/apply_spray(mob/living/carbon/human/H)
+	if(!istype(H))
+		return
+	if(!H.lying)
+		to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
+		H.emote("pain")
+		H.KnockDown(2)
+		H.last_damage_mob = source_mob
+		H.last_damage_source = source_name
+		var/datum/limb/affecting = H.get_limb("l_foot")
+		if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(5, 10)))
+			H.UpdateDamageIcon()
+		affecting = H.get_limb("r_foot")
+		if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(5, 10)))
+			H.UpdateDamageIcon()
+		H.updatehealth()
+	else
+		H.adjustFireLoss(acid_strength*rand(2, 5)) //This is ticking damage!
+		to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))
 
 /obj/effect/xenomorph/spray/process()
 	var/turf/T = loc
@@ -110,10 +115,8 @@
 		qdel(src)
 		return
 
-	for(var/mob/living/carbon/M in loc)
-		if(isXeno(M))
-			continue
-		Crossed(M)
+	for(var/mob/living/carbon/human/H in loc)
+		apply_spray(H)
 
 /obj/effect/xenomorph/spray/weak //Weaker spitter acid spray.
 	name = "weak splatter"

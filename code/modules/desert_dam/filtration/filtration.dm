@@ -13,7 +13,8 @@ obj/effect/landmark/desertdam/river_blocker
 	anchored = 1
 	density = 1
 	//opacity = 1
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 	New()
 		..()
@@ -71,7 +72,7 @@ var/global/east_riverstart = 0
 	anchored = 1
 	density = 1
 	opacity = 0
-	unacidable = 1
+	unacidable = TRUE
 	layer = ABOVE_FLY_LAYER + 0.1 //to make it visible in the map editor
 	mouse_opacity = 0
 
@@ -86,7 +87,7 @@ var/global/east_riverstart = 0
 	anchored = 1
 	density = 0
 	opacity = 0
-	unacidable = 1
+	unacidable = TRUE
 	layer = ABOVE_FLY_LAYER //to make it visible in the map editor
 	mouse_opacity = 0
 	icon = 'icons/old_stuff/mark.dmi'
@@ -286,7 +287,8 @@ var/global/east_riverstart = 0
 	use_power = 1
 	idle_power_usage = 2
 	active_power_usage = 4
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/machinery/filtration_button/attack_hand(mob/user as mob)
 

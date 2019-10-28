@@ -8,7 +8,8 @@
 	desc = "A tower with a lot of delicate sensors made to track weather conditions. This one has been adjusted to track biosignatures. This one is heavily damaged. Use a blowtorch, wirecutters, then a wrench to repair it."
 	anchored = 1
 	density = 1
-	unacidable = 1	  //NOPE.jpg
+	unslashable = TRUE
+	unacidable = TRUE	  //NOPE.jpg
 	use_power = 1
 	idle_power_usage = 1000
 	var/buildstate = 1 //What state of building it are we on, 0-3, 1 is "broken", the default

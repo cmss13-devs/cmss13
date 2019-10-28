@@ -3,7 +3,8 @@
 	desc = "An old company comms tower used to transmit communications between subspace bodies. Looks like this one has seen better days."
 	icon = 'icons/obj/structures/machinery/comm_tower.dmi'
 	icon_state = "comm_tower_destroyed"
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	density = 1
 	layer = ABOVE_FLY_LAYER
 	bound_height = 96
@@ -25,7 +26,8 @@
 	icon_state = "truck"
 	bound_height = 64
 	bound_width = 64
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/prop/dam/truck/damaged
 	icon_state = "truck_damaged"
@@ -47,7 +49,8 @@
 	icon_state = "van"
 	bound_height = 64
 	bound_width = 64
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/prop/dam/van/damaged
 	icon_state = "van_damaged"
@@ -58,7 +61,8 @@
 	icon_state = "crane"
 	bound_height = 64
 	bound_width = 64
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/prop/dam/crane/damaged
 	icon_state = "crane_damaged"
@@ -173,7 +177,8 @@
 	desc = "A large rock. It's not cooking anything."
 	icon = 'icons/obj/structures/props/dam.dmi'
 	density = 0
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 /obj/structure/prop/dam/boulder/boulder1
 	icon_state = "boulder1"
 /obj/structure/prop/dam/boulder/boulder2
@@ -188,7 +193,8 @@
 	icon = 'icons/obj/structures/props/boulder_large.dmi'
 	bound_height = 64
 	bound_width = 64
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 /obj/structure/prop/dam/large_boulder/boulder1
 	icon_state = "boulder_large1"
 /obj/structure/prop/dam/large_boulder/boulder2

@@ -63,7 +63,8 @@
 	anchored = 1
 	use_power = 0
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_ENGINEERING)
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 	var/area/area
 	var/areastring = null

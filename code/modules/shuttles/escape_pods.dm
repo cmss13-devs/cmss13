@@ -203,7 +203,8 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 //This controller goes on the escape pod itself.
 /obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod
 	name = "escape pod controller"
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	var/datum/computer/file/embedded_program/docking/simple/escape_pod/evacuation_program //Runs the doors and states.
 	//door_tag is the tag for the pod door.
 	//id_tag is the generic connection tag.
@@ -281,7 +282,8 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 
 /obj/structure/machinery/cryopod/evacuation
 	stat = MACHINE_DO_NOT_PROCESS
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	time_till_despawn = 6000000 //near infinite so despawn never occurs.
 	var/being_forced = 0 //Simple variable to prevent sound spam.
 	var/datum/computer/file/embedded_program/docking/simple/escape_pod/evacuation_program
@@ -390,7 +392,8 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 	name = "\improper Evacuation Airlock"
 	icon = 'icons/obj/structures/doors/pod_doors.dmi'
 	heat_proof = 1
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 	New()
 		..()

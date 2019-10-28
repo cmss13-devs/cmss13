@@ -43,7 +43,7 @@
 	eye_protection = 2
 	var/current_goggles = 0 //0: OFF. 1: NVG. 2: Thermals. 3: Mesons
 	vision_impair = 0
-	unacidable = 1
+	unacidable = TRUE
 	anti_hug = 100
 	item_state_slots = list(WEAR_FACE = "pred_mask1")
 
@@ -186,7 +186,7 @@
 			/obj/item/weapon/yautja_scythe,
 			/obj/item/weapon/combistick,
 			/obj/item/weapon/twohanded/glaive)
-	unacidable = 1
+	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "halfarmor1")
 
 /obj/item/clothing/suit/armor/yautja/New(location, armor_number = rand(1,6), elder_restricted = 0)
@@ -282,7 +282,7 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	unacidable = 1
+	unacidable = TRUE
 
 /obj/item/clothing/cape/eldercape/New(location, cape_number)
 	..()
@@ -321,7 +321,7 @@
 	name = "clan greaves"
 	icon_state = "y-boots1"
 	desc = "A pair of armored, perfectly balanced boots. Perfect for running through the jungle."
-	unacidable = 1
+	unacidable = TRUE
 	permeability_coefficient = 0.01
 	flags_inventory = NOSLIPPING
 	flags_armor_protection = FEET|LEGS|LOWER_TORSO
@@ -415,7 +415,7 @@
 	flags_heat_protection = HANDS
 	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
 	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
-	unacidable = 1
+	unacidable = TRUE
 	var/obj/item/weapon/gun/energy/plasma_caster/caster
 	var/charge = 3000
 	var/charge_max = 3000
@@ -1173,7 +1173,7 @@
 	icon_state = "communicator"
 	item_state = "headset"
 	frequency = CIV_GEN_FREQ
-	unacidable = 1
+	unacidable = TRUE
 
 /obj/item/device/radio/headset/yautja/New()
 	..()
@@ -1235,7 +1235,7 @@
 	w_class = SIZE_TINY
 	force = 1
 	throwforce = 1
-	unacidable = 1
+	unacidable = TRUE
 	var/timer = 0
 
 /obj/item/device/yautja_teleporter/Dispose()
@@ -1340,7 +1340,7 @@
 	force = 15
 	throwforce = 38
 	attack_verb = list("jabbed","stabbed","ripped", "skewered")
-	unacidable = 1
+	unacidable = TRUE
 	edge = 1
 	sharp = IS_SHARP_ITEM_BIG
 
@@ -1412,7 +1412,7 @@
 	force = 70
 	throwforce = 12
 	w_class = SIZE_MEDIUM
-	unacidable = 1
+	unacidable = TRUE
 	sharp = 0
 	edge = 0
 	attack_verb = list("whipped", "slashed","sliced","diced","shredded")
@@ -1452,7 +1452,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 9
-	unacidable = 1
+	unacidable = TRUE
 
 /obj/item/weapon/yautja_sword/Dispose()
 	remove_from_missing_pred_gear(src)
@@ -1504,7 +1504,7 @@
 	throwforce = 24
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	unacidable = 1
+	unacidable = TRUE
 
 /obj/item/weapon/yautja_scythe/New()
 	icon_state = pick("predscythe","predscythe_alt")
@@ -1562,7 +1562,7 @@
 	embeddable = FALSE //It shouldn't embed so that the Yautja can actually use the yank combi verb, and so that it's not useless upon throwing it at someone.
 	throwforce = 45
 	throw_speed = 5 //We need the throw speed to be 5 so that it can do the full 70 damage upon hitting someone with a throw.
-	unacidable = 1
+	unacidable = TRUE
 	sharp = IS_SHARP_ITEM_ACCURATE
 	attack_verb = list("speared", "stabbed", "impaled")
 	var/on = 1

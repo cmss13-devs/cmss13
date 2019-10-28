@@ -15,7 +15,7 @@
 /obj/effect/decal/sand_overlay
 	name = "sandy edge"
 	mouse_opacity = 0
-	unacidable = 1
+	unacidable = TRUE
 	icon = 'icons/turf/overlays.dmi'
 	//layer = TURF_LAYER+0.5 //So it appears over other decals
 	layer = TURF_LAYER

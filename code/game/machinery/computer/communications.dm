@@ -26,6 +26,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 	icon_state = "comm"
 	req_access = list(ACCESS_MARINE_BRIDGE)
 	circuit = "/obj/item/circuitboard/computer/communications"
+	unslashable = TRUE
 	unacidable = TRUE
 
 	var/mob/living/carbon/human/current_mapviewer

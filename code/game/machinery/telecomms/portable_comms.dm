@@ -7,7 +7,8 @@
 	required_dismantle_skill = 5
 	density = 1
 	anchored = 0
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/machinery/constructable_frame/porta_comms/update_icon()
 	..()

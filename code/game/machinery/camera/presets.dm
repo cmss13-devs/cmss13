@@ -28,6 +28,7 @@
 	icon_state = ""
 	mouse_opacity = 0
 	network = list("laser targets")
+	unslashable = TRUE
 	unacidable = TRUE
 
 	New(loc, laser_name)

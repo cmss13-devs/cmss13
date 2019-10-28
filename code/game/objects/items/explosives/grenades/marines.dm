@@ -253,5 +253,5 @@
 	underslug_launchable = FALSE
 	explosion_power = 300
 	det_time = 50
-	unacidable = 1
+	unacidable = TRUE
 	arm_sound = 'sound/voice/holy_chorus.ogg'//https://www.youtube.com/watch?v=hNV5sPZFuGg

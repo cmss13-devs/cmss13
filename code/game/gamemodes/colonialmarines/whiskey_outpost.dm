@@ -730,7 +730,8 @@ var/global/spawn_next_wo_wave = 0
 	desc = "Instructions: Place objects you want to destroy on top of it and use the machine. Use with care"
 	density = 0
 	anchored = 1
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	var/working = 0
 
 	attack_hand(mob/user)

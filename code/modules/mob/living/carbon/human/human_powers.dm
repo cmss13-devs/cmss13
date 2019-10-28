@@ -252,3 +252,35 @@
 	set category = "IC"
 
 	issue_order()
+
+// Used for synthetics
+/mob/living/carbon/human/synthetic/verb/toggle_HUD()
+	set category = "Synthetic"
+	set name = "Toggle HUDs"
+	set desc = "Toggles various HUDs."
+	if(!isSynth(usr) || usr.is_mob_incapacitated())
+		return
+
+	var/hud_choice = input("Choose a HUD to toggle", "Toggle HUD", null) as null|anything in list("Medical HUD", "Security HUD")
+	if(usr.is_mob_incapacitated())
+		return
+		
+	var/datum/mob_hud/H
+	var/chosen_HUD = 1
+	switch(hud_choice)
+		if("Medical HUD")
+			H = huds[MOB_HUD_MEDICAL_OBSERVER]
+		if("Security HUD")
+			H = huds[MOB_HUD_SECURITY_ADVANCED]
+			chosen_HUD = 2
+		else
+			return
+
+	if(synthetic_HUD_toggled[chosen_HUD])
+		synthetic_HUD_toggled[chosen_HUD] = FALSE
+		H.remove_hud_from(src)
+		to_chat(src, SPAN_INFO("<B>[hud_choice] Disabled</B>"))
+	else
+		synthetic_HUD_toggled[chosen_HUD] = TRUE
+		H.add_hud_to(src)
+		to_chat(src, SPAN_INFO("<B>[hud_choice] Enabled</B>"))

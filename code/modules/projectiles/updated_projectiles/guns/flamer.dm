@@ -298,7 +298,7 @@
 	desc = "An improved version of the M240A1 incenerator unit, the M240-T model is capable of dispersing a larger variety of fuel types."
 	icon_state = "m240t"
 	item_state = "m240t"
-	unacidable = 1
+	unacidable = TRUE
 	indestructible = 1
 	current_mag = null
 	var/obj/item/marine/fuelpack/fuelpack

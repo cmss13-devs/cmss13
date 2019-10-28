@@ -128,7 +128,7 @@
 	desc = "A boring looking computer disk.  The name label is just a gibberish collection of letters and numbers."
 	var/data_amount = 500
 	var/read_speed = 50
-	unacidable = 1
+	unacidable = TRUE
 	var/datum/cm_objective/retrieve_data/disk/objective
 
 /obj/item/disk/objective/New()
@@ -173,7 +173,8 @@
 	desc = "A computer data terminal with an incomprehensible label."
 	var/uploading = 0
 	icon_state = "medlaptop"
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	var/datum/cm_objective/retrieve_data/terminal/objective
 
 /obj/structure/machinery/computer/objective/New()
@@ -228,7 +229,8 @@
 	desc = "A console able to read any format of disk known to man."
 	var/obj/item/disk/objective/disk
 	icon_state = "medlaptop"
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/machinery/computer/disk_reader/attack_hand(mob/living/user)
 	if(isXeno(user))

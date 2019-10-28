@@ -863,7 +863,8 @@
 	icon = 'icons/effects/warning_stripes.dmi'
 	anchored = 1
 	density = 0
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	layer = 2.1 //It's the floor, man
 	var/squad = "Alpha"
 	var/sending_package = 0

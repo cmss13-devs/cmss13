@@ -401,7 +401,8 @@
 	icon_state = "shuttle"
 
 	shuttle_type = SHUTTLE_DROPSHIP
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	exproof = 1
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
 
@@ -423,7 +424,8 @@
 	icon_state = "shuttle"
 
 	shuttle_type = SHUTTLE_DROPSHIP
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	exproof = 1
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
 
@@ -450,7 +452,8 @@
 	icon_state = "elevator_screen"
 
 	shuttle_type = SHUTTLE_ELEVATOR
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	exproof = 1
 	density = 0
 	req_access = null
@@ -483,7 +486,8 @@
 	icon_state = "elevator_screen"
 
 	shuttle_type = SHUTTLE_ELEVATOR
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	exproof = 1
 	density = 0
 	req_access = null

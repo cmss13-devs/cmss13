@@ -8,7 +8,8 @@
 	var/ispowered = 0
 	var/turned_on = 0 //has to be toggled in engineering
 	use_power = 1
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	var/list/floodlist = list() // This will save our list of floodlights on the map
 
 /obj/structure/machinery/hydro_floodlight_switch/New() //Populate our list of floodlights so we don't need to scan for them ever again
@@ -82,7 +83,8 @@
 	anchored = 1
 	var/damaged = 0 //Can be smashed by xenos
 	var/is_lit = 0
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	var/power_tick = 800 // power each floodlight takes up per process
 	use_power = 0 //It's the switch that uses the actual power, not the lights
 	var/obj/structure/machinery/hydro_floodlight_switch/fswitch = null //Reverse lookup for power grabbing in area

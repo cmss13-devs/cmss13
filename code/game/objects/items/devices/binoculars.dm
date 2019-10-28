@@ -387,4 +387,4 @@
 	opacity = 1
 	anchored = 1
 	mouse_opacity = 0
-	unacidable = 1
+	unacidable = TRUE

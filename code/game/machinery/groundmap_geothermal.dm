@@ -6,7 +6,8 @@
 	anchored = 1
 	density = 1
 	directwired = 0     //Requires a cable directly underneath
-	unacidable = 1      //NOPE.jpg
+	unslashable = TRUE
+	unacidable = TRUE      //NOPE.jpg
 	var/power_gen_percent = 0 //100,000W at full capacity
 	var/power_generation_max = 100000 //Full capacity
 	var/powernet_connection_failed = 0 //Logic checking for powernets
@@ -201,7 +202,8 @@
 	var/ispowered = 0
 	var/turned_on = 0 //has to be toggled in engineering
 	use_power = 1
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	var/list/floodlist = list() // This will save our list of floodlights on the map
 
 /obj/structure/machinery/colony_floodlight_switch/New() //Populate our list of floodlights so we don't need to scan for them ever again
@@ -281,7 +283,8 @@
 	anchored = 1
 	var/damaged = 0 //Can be smashed by xenos
 	var/is_lit = 0 //whether the floodlight is switched to on or off. Does not necessarily mean it emits light.
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	var/power_tick = 50 // power each floodlight takes up per process
 	use_power = 0 //It's the switch that uses the actual power, not the lights
 	var/obj/structure/machinery/colony_floodlight_switch/fswitch = null //Reverse lookup for power grabbing in area

@@ -564,7 +564,7 @@
 	storage_slots = null
 	flags_item = NODROP|DELONDROP
 	flags_inventory = CANTSTRIP
-	unacidable = 1
+	unacidable = TRUE
 	var/internal_mag = new /obj/item/ammo_magazine/internal/souto
 	worn_accessible = TRUE
 	

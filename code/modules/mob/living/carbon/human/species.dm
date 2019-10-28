@@ -3,7 +3,6 @@
 */
 
 /datum/species
-
 	var/name                                             // Species name.
 	var/name_plural
 
@@ -349,84 +348,32 @@
 	stun_reduction = 5
 
 	inherent_verbs = list(
-		/datum/species/synthetic/verb/toggle_synthHUD1,
-		/datum/species/synthetic/verb/toggle_synthHUD2,
+		/mob/living/carbon/human/synthetic/verb/toggle_HUD
 		)
-
-/datum/species/synthetic
-var/toggled_med_HUD = 0
-var/toggled_sec_HUD = 0
-
-/datum/species/synthetic/verb/toggle_synthHUD1()
-	set category = "Synthetic"//future-proofing for later things
-	set name = "Toggle Medical HUD"
-	set desc = "Toggles the advanced medical HUD integrated into your optical systems."
-	var/datum/mob_hud/H = huds[MOB_HUD_MEDICAL_ADVANCED]
-	if(usr.stat)
-		return
-	if(!toggled_med_HUD)
-		toggled_med_HUD = 1
-		H.add_hud_to(src)
-		to_chat(src, SPAN_INFO("<B>Medical HUD Enabled</B>"))
-	else
-		toggled_med_HUD = 0
-		H.remove_hud_from(src)
-		to_chat(src, SPAN_INFO("<B>Medical HUD Disabled</B>"))
-
-/datum/species/synthetic/verb/toggle_synthHUD2()
-	set category = "Synthetic"
-	set name = "Toggle Security HUD"
-	set desc = "Toggles the advanced security HUD integrated into your optical systems."
-	var/datum/mob_hud/H = huds[MOB_HUD_SECURITY_ADVANCED]
-	if(usr.stat)
-		return
-	if(!toggled_sec_HUD)
-		toggled_sec_HUD = 1
-		H.add_hud_to(src)
-		to_chat(src, SPAN_INFO("<B>Security HUD Enabled</B>"))
-	else
-		toggled_sec_HUD = 0
-		H.remove_hud_from(src)
-		to_chat(src, SPAN_INFO("<B>Security HUD Disabled</B>"))
 
 /datum/species/synthetic/second_gen_synthetic
 	name = "Second Generation Synthetic"
 	uses_ethnicity = FALSE //2nd gen uses generic human look
 
-/datum/species/early_synthetic
+/datum/species/synthetic/early_synthetic
 	name = "Early Synthetic"
 	name_plural = "Early Synthetics"
+	uses_ethnicity = FALSE
+	
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
 	deform = 'icons/mob/humans/species/r_synthetic.dmi'
-	unarmed_type = /datum/unarmed_attack/punch/strong
+	
 	rarity_value = 1.5
 	slowdown = 1.3 //Slower than later synths
 	total_health = 200 //But more durable
 	insulated = 1
-	brute_mod = 0.5
-	burn_mod = 1
-
-	cold_level_1 = -1
-	cold_level_2 = -1
-	cold_level_3 = -1
-
-	heat_level_1 = 500
-	heat_level_2 = 1000
-	heat_level_3 = 2000
-
-	body_temperature = 350
-
-	flags = IS_WHITELISTED|NO_BREATHE|NO_SCAN|NO_BLOOD|NO_POISON|NO_PAIN|IS_SYNTHETIC|NO_CHEM_METABOLIZATION
-
-	blood_color = "#EEEEEE"
+	
 	hair_color = "#000000"
-	has_organ = list(
-		"heart" =    /datum/internal_organ/heart/prosthetic,
-		"brain" =    /datum/internal_organ/brain/prosthetic,
-		)
 
 	knock_down_reduction = 2
 	stun_reduction = 2
+
+	inherent_verbs = null
 
 /datum/species/zombie
 	name= "Zombie"

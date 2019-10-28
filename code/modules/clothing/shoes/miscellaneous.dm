@@ -174,4 +174,4 @@
 	armor_internaldamage = CLOTHING_ARMOR_HARDCORE
 	flags_item = NODROP|DELONDROP
 	flags_inventory = CANTSTRIP|NOSLIPPING
-	unacidable = 1
+	unacidable = TRUE

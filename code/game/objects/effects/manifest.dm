@@ -2,7 +2,7 @@
 	name = "manifest"
 	icon = 'icons/mob/hud/screen1.dmi'
 	icon_state = "x"
-	unacidable = 1//Just to be sure.
+	unacidable = TRUE//Just to be sure.
 
 /obj/effect/manifest/New()
 

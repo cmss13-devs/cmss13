@@ -69,12 +69,14 @@
 /area/lv624/lazarus/quartstorage)
 "s" = (
 /obj/structure/largecrate/supply/weapons/sentries{
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "t" = (
 /obj/structure/largecrate/supply/explosives/mines{
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/vault,

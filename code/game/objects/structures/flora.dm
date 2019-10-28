@@ -89,7 +89,8 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	icon_state = "joshua_1"
 	pixel_x = 0
 	density = 0
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/flora/tree/jungle
 	icon = 'icons/obj/structures/props/ground_map64.dmi'
@@ -162,7 +163,8 @@ ICE GRASS
 /obj/structure/flora/grass/tallgrass
 	name = "tallgrass"
 	icon = 'icons/obj/structures/props/tallgrass.dmi'
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	var/overlay_type = "tallgrass_overlay"
 
 /obj/structure/flora/grass/tallgrass/New()

@@ -109,7 +109,7 @@
 		to_chat(usr, "It doesn't work on doors...")
 		return
 	to_chat(usr, "You spray [A] with the Anti-Acid spray making it unacidable...")
-	A.unacidable = 1
+	A.unacidable = TRUE
 	user.temp_drop_inv_item(src)
 	qdel(src)
 	..()

@@ -12,7 +12,8 @@
 	var/unlocked = 0
 	var/open = 0
 	var/brightness_on = 7		//can't remember what the maxed out value is
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 	New()
 		..()
@@ -58,7 +59,8 @@
 		on = 0
 		to_chat(user, SPAN_NOTICE(" You turn off the light."))
 		SetLuminosity(0)
-		unacidable = 1
+		unslashable = TRUE
+		unacidable = TRUE
 	else
 		if(!cell)
 			return
@@ -67,7 +69,7 @@
 		on = 1
 		to_chat(user, SPAN_NOTICE(" You turn on the light."))
 		SetLuminosity(brightness_on)
-		unacidable = 0
+		unacidable = FALSE
 
 	updateicon()
 

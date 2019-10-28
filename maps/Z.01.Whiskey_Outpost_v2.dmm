@@ -3730,6 +3730,7 @@
 	desc = "A podlock that leads to the main Marine base on LV-624. It requires power from the outpost to stay shut. Better not let anything get through this...";
 	id = "tunnel3";
 	name = "\improper Tunnel Entrance";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/gm/dirt,
@@ -3832,6 +3833,7 @@
 	desc = "A podlock that leads to the main Marine base on LV-624. It requires power from the outpost to stay shut. Better not let anything get through this...";
 	id = "tunnel2";
 	name = "\improper Tunnel Entrance";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/gm/dirt,
@@ -4724,6 +4726,7 @@
 	desc = "A podlock that leads to the main Marine base on LV-624. It requires power from the outpost to stay shut. Better not let anything get through this...";
 	id = "tunnel1";
 	name = "\improper Tunnel Entrance";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/gm/dirt,

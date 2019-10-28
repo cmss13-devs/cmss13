@@ -605,7 +605,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	can_wire = FALSE
 	can_change_dmg_state = 1
 	climbable = FALSE
-	unacidable = 1
+	unacidable = TRUE
 	anchored = TRUE
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 

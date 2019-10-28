@@ -88,4 +88,4 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	siemens_coefficient = 0.2
-	unacidable = 1
+	unacidable = TRUE

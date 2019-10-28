@@ -425,7 +425,7 @@
 	var/atom/movable/mstr = null //Used by clones for referral
 	var/proj_x = 0
 	var/proj_y = 0
-	unacidable = 1
+	unacidable = TRUE
 
 	var/list/image/hud_list
 

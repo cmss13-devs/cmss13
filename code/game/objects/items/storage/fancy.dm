@@ -290,7 +290,7 @@
 	return
 
 /obj/item/storage/fancy/vials/random
-	unacidable = 1
+	unacidable = TRUE
 	is_random = 1
 
 /obj/item/storage/fancy/vials/empty

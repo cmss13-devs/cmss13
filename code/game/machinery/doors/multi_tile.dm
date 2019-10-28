@@ -166,7 +166,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear
 	opacity = 1
 	width = 3
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	no_panel = 1
 	not_weldable = 1
 

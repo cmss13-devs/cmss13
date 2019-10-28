@@ -3210,6 +3210,7 @@
 	id = "nexus_blast";
 	name = "Nexus Lockdown";
 	pixel_x = 25;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/power/apc{
@@ -7294,6 +7295,7 @@
 	id = "science_blast";
 	name = "Science Wing Lockdown";
 	pixel_x = 25;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/effect/landmark{
@@ -13641,6 +13643,7 @@
 	id = "corporate_blast";
 	name = "Dome Lockdown";
 	pixel_y = -25;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{
@@ -16549,6 +16552,7 @@
 /obj/structure/machinery/door_control{
 	id = "nexus_blast";
 	name = "Nexus Lockdown";
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/item/document_objective/report,
@@ -17094,6 +17098,7 @@
 	name = "Dome Access";
 	pixel_x = 25;
 	pixel_y = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/greengrid,
@@ -17258,6 +17263,7 @@
 	id = "secure_blast";
 	layer = 3.3;
 	name = "\improper Secure Armory Blast Door";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/greengrid,
@@ -17268,6 +17274,7 @@
 	id = "secure_blast";
 	layer = 3.3;
 	name = "\improper Secure Armory Blast Door";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/plating{

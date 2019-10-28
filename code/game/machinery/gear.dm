@@ -3,7 +3,8 @@
 	icon_state = "gear"
 	anchored = 1
 	density = 0
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	use_power = 0
 	var/id
 
@@ -11,7 +12,8 @@
 	name = "\improper strut"
 	icon = 'icons/turf/elevator_strut.dmi'
 	anchored = 1
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	density = 0
 	use_power = 0
 	opacity = 1

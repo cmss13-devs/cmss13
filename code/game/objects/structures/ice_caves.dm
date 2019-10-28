@@ -3,7 +3,8 @@
 //Ice Thin Wall
 /obj/structure/ice
 	density = 1
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/ice/thin
 	name = "thin ice wall"

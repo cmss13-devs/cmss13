@@ -5,7 +5,8 @@
 	use_power = 0
 	flags_atom = ON_BORDER
 	opacity = 0
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 
 	throwpass = TRUE //You can throw objects over this, despite its density.

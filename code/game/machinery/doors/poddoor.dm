@@ -6,6 +6,7 @@
 	icon_state = "pdoor1"
 	id = 1.0
 	dir = 1
+	unslashable = TRUE
 	health = 0
 	layer = PODDOOR_OPEN_LAYER
 	open_layer = PODDOOR_OPEN_LAYER
@@ -388,27 +389,31 @@
 /obj/structure/machinery/door/poddoor/filler_object
 	name = ""
 	icon_state = ""
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/machinery/door/poddoor/four_tile_hor/secure
 	icon = 'icons/obj/structures/doors/1x4blast_hor_secure.dmi'
 	openspeed = 17
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/machinery/door/poddoor/four_tile_ver/secure
 	icon = 'icons/obj/structures/doors/1x4blast_vert_secure.dmi'
 	openspeed = 17
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/machinery/door/poddoor/two_tile_hor/secure
 	icon = 'icons/obj/structures/doors/1x2blast_hor.dmi'
 	openspeed = 17
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/machinery/door/poddoor/two_tile_ver/secure
 	icon = 'icons/obj/structures/doors/1x2blast_vert.dmi'
 	openspeed = 17
-	unacidable = 1
+	unacidable = TRUE
 
 
 
@@ -426,7 +431,8 @@
 	..()
 
 /obj/structure/machinery/door/poddoor/almayer/locked
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/machinery/door/poddoor/almayer/locked/attackby(obj/item/C as obj, mob/user as mob)
 	if(iscrowbar(C))

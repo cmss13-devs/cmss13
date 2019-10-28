@@ -5,7 +5,8 @@
 	icon = 'icons/obj/vehicles/vehicles.dmi'
 	density = 1
 	anchored = 1
-	unacidable = 1 //To avoid the pilot-deleting shit that came with mechas
+	unslashable = TRUE
+	unacidable = TRUE //To avoid the pilot-deleting shit that came with mechas
 	layer = MOB_LAYER
 	//var/can_move = 1
 	var/mob/living/carbon/occupant = null

@@ -19,11 +19,11 @@
 	anchored = 1
 	layer = 99
 	mouse_opacity = 0
-	unacidable = 1//Just to be sure.
+	unacidable = TRUE//Just to be sure.
 
 /obj/effect/beam
 	name = "beam"
-	unacidable = 1//Just to be sure.
+	unacidable = TRUE//Just to be sure.
 	var/def_zone
 	flags_pass = PASSTABLE
 
@@ -33,7 +33,7 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "begin"
 	anchored = 1.0
-	unacidable = 1
+	unacidable = TRUE
 
 
 
@@ -83,7 +83,7 @@
 	anchored = 1
 	density = 1
 	opacity = 1
-	unacidable = 1
+	unacidable = TRUE
 
 	New()
 		..()

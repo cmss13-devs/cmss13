@@ -46,6 +46,7 @@
 	req_access = null
 	req_one_access = null
 	unacidable = TRUE
+	unslashable = TRUE
 
 	var/gloves_type
 	var/headset_type

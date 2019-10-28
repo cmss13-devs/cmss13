@@ -407,7 +407,7 @@
 	armor_bio = CLOTHING_ARMOR_HIGH
 	armor_rad = CLOTHING_ARMOR_HIGH
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
-	unacidable = 1
+	unacidable = TRUE
 	anti_hug = 6
 	force = 20
 	specialty = "B18"
@@ -425,7 +425,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_HIGH
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
-	unacidable = 1
+	unacidable = TRUE
 	anti_hug = 6
 	specialty = "M3-G4 grenadier"
 
@@ -608,7 +608,7 @@
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ|BLOCKGASEFFECT
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
 	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
-	unacidable = 1
+	unacidable = TRUE
 
 //==========================//DISTRESS\\=================================\\
 //=======================================================================\\
@@ -688,7 +688,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
-	unacidable = 1
+	unacidable = TRUE
 	anti_hug = 3
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'

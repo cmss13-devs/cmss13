@@ -511,7 +511,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	flags_heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	var/injections = 4
-	unacidable = 1
+	unacidable = TRUE
 	specialty = "B18 defensive"
 
 /obj/item/clothing/suit/storage/marine/specialist/verb/inject()
@@ -554,7 +554,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET
 	flags_heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET
 	slowdown = SLOWDOWN_ARMOR_HEAVY
-	unacidable = 1
+	unacidable = TRUE
 	specialty = "M3-G4 grenadier"
 
 /obj/item/clothing/suit/storage/marine/M3G/mob_can_equip(mob/M, slot, disable_warning = 0)
@@ -580,7 +580,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	allowed = list(/obj/item/weapon/gun/launcher/rocket)
-	unacidable = 1
+	unacidable = TRUE
 	specialty = "M3-T light"
 
 /obj/item/clothing/suit/storage/marine/M3S
@@ -597,7 +597,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LIGHT
-	unacidable = 1
+	unacidable = TRUE
 	specialty = "M3-S light"
 
 /obj/item/clothing/suit/storage/marine/M3S/mob_can_equip(mob/M, slot, disable_warning = 0)
@@ -624,7 +624,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET
 	flags_heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET
-	unacidable = 1
+	unacidable = TRUE
 	specialty = "M35 pyrotechnician"
 
 /obj/item/clothing/suit/storage/marine/M35/mob_can_equip(mob/M, slot, disable_warning = 0)
@@ -750,7 +750,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	storage_slots = 2
-	unacidable = 1
+	unacidable = TRUE
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/PMC/commando)
 	item_state_slots = list(WEAR_SUIT = "commando_armor")
 	
@@ -768,7 +768,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	storage_slots = 2
-	unacidable = 1
+	unacidable = TRUE
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/PMC/commando)
 	item_state_slots = list(WEAR_JACKET = "commando_armor")
 

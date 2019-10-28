@@ -3,7 +3,7 @@
 	icon = 'icons/mob/hud/screen1.dmi'
 	icon_state = "x2"
 	anchored = 1.0
-	unacidable = 1
+	unacidable = TRUE
 
 /obj/effect/landmark/New()
 

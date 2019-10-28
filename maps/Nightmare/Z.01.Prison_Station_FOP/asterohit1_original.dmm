@@ -18,6 +18,7 @@
 	dir = 2;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -38,6 +39,7 @@
 	dir = 2;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -53,6 +55,7 @@
 	dir = 2;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -74,6 +77,7 @@
 	dir = 2;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},

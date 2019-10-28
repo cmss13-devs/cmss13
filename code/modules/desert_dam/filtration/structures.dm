@@ -21,7 +21,8 @@
 
 
 /obj/structure/filtration
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 /*
 /obj/structure/filtration
 	icon = 'icons/obj/filtration/96x96.dmi'

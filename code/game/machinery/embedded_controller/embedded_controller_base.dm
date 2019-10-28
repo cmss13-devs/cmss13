@@ -47,7 +47,8 @@
 	var/frequency = 1379
 	var/radio_filter = null
 	var/datum/radio_frequency/radio_connection
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/machinery/embedded_controller/radio/initialize()
 	set_frequency(frequency)

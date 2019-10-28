@@ -12,7 +12,8 @@
 	var/safeties_enabled = 1 	// If 0 modifications can be done without discharging the SMES, at risk of critical failure.
 	var/failing = 0 			// If 1 critical failure has occured and SMES explosion is imminent.
 	should_be_mapped = 1
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/machinery/power/smes/buildable/charged
 	charge = 1e+006

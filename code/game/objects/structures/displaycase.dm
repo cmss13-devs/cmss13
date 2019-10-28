@@ -5,7 +5,7 @@
 	desc = "A display case for prized possessions. It taunts you to kick it."
 	density = 1
 	anchored = 1
-	unacidable = 0
+	unacidable = FALSE
 	health = 30
 	var/occupied = 1
 	var/destroyed = 0
@@ -78,6 +78,7 @@
 //Quick destroyed case.
 /obj/structure/displaycase/destroyed
 	icon_state = "glassboxb0"
+	unslashable = TRUE
 	health = 0
 	occupied = 0
 	destroyed = 1

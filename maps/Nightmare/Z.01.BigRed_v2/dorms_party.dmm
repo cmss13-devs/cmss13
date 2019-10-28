@@ -397,6 +397,7 @@
 	name = "Storm Shutters";
 	pixel_x = 0;
 	pixel_y = -32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/camera/autoname{

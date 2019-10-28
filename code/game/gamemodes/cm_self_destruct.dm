@@ -297,7 +297,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	use_power = 0 //Runs unpowered, may need to change later.
 	density = 0
 	anchored = 1 //So it doesn't go anywhere.
-	unacidable = 1 //Cannot C4 it either.
+	unacidable = TRUE //Cannot C4 it either.
 	mouse_opacity = 0 //No need to click or interact with this initially.
 	var/in_progress = 0 //Cannot interact with while it's doing something, like an animation.
 	var/active_state = SELF_DESTRUCT_MACHINE_INACTIVE //What step of the process it's on.

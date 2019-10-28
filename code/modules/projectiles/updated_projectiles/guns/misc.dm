@@ -86,7 +86,7 @@
 	item_state = "spikelauncher"
 	muzzle_flash = null // TO DO, add a decent one.
 	origin_tech = "combat=7;materials=7"
-	unacidable = 1
+	unacidable = TRUE
 	fire_sound = 'sound/effects/woodhit.ogg' // TODO: Decent THWOK noise.
 	ammo = /datum/ammo/alloy_spike
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK

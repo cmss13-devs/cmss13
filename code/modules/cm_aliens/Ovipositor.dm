@@ -4,7 +4,7 @@
 	name = "Egg Sac"
 	icon = 'icons/mob/xenos/Ovipositor.dmi'
 	icon_state = "ovipositor"
-	unacidable = 1
+	unacidable = TRUE
 	var/begin_decay_time = 0
 	health = 50
 	var/decay_ready = 0

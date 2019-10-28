@@ -1780,6 +1780,7 @@
 "dP" = (
 /obj/structure/machinery/door/poddoor/four_tile_ver{
 	name = "Main Hangar Door";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/plating,

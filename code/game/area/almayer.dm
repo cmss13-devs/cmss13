@@ -32,7 +32,8 @@
 	name = "Elevator Console"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "supply"
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	exproof = 1
 	density = 1
 	req_access = null
@@ -42,7 +43,8 @@
 	name = "Elevator Console"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	exproof = 1
 	density = 1
 	req_access = null

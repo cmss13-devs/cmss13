@@ -511,7 +511,8 @@
 	openspeed = 4 //shorter open animation.
 	no_panel = 1
 	not_weldable = 1
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/machinery/door/airlock/dropship_hatch/ex_act(severity)
 	return
@@ -540,7 +541,8 @@
 	name = "\improper Cockpit"
 	req_access = list(ACCESS_MARINE_DROPSHIP)
 	req_one_access = list()
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	no_panel = 1
 	not_weldable = 1
 

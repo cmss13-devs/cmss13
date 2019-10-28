@@ -9,7 +9,7 @@
 	anchored = 1
 	density = 0
 	layer = WEED_LAYER
-	unacidable = 1
+	unacidable = TRUE
 	health = 1
 	var/weed_strength = 1
 	var/secreting = FALSE

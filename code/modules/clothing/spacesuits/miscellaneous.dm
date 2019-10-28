@@ -135,7 +135,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_HARDCORE
 	flags_item = NODROP|DELONDROP
 	flags_inventory = CANTSTRIP|BLOCKSHARPOBJ
-	unacidable = 1
+	unacidable = TRUE
 	flags_inv_hide = null
 	slowdown = 0
 
@@ -154,5 +154,5 @@
 	armor_internaldamage = CLOTHING_ARMOR_HARDCORE
 	flags_item = NODROP|DELONDROP
 	flags_inventory = CANTSTRIP|COVEREYES|COVERMOUTH|ALLOWINTERNALS|ALLOWREBREATH|BLOCKGASEFFECT|ALLOWCPR|BLOCKSHARPOBJ
-	unacidable = 1
+	unacidable = TRUE
 	flags_inv_hide = null

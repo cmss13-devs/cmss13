@@ -3182,6 +3182,7 @@
 	pixel_x = 0;
 	pixel_y = -20;
 	req_access = list(1);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/wood,
@@ -7153,6 +7154,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/effect/step_trigger/clone_cleaner,
@@ -8014,6 +8016,7 @@
 	pixel_y = 30;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -8150,6 +8153,7 @@
 	name = "ARES Lockdown";
 	pixel_x = -25;
 	req_one_access = list(19);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -8163,6 +8167,7 @@
 	name = "ARES Lockdown";
 	pixel_x = -25;
 	req_one_access = list(19);
+	unslashable = 1;
 	unacidable = 1
 	},
 /mob/living/silicon/decoy/ship_ai,
@@ -8216,6 +8221,7 @@
 "asL" = (
 /obj/structure/machinery/telecomms/relay/preset/telecomms{
 	listening_level = 4;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -8247,6 +8253,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer,
@@ -8259,6 +8266,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/effect/step_trigger/clone_cleaner,
@@ -8667,6 +8675,7 @@
 	dir = 4;
 	id = "sd_lockdown";
 	name = "\improper Self Destruct Lockdown";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -8887,6 +8896,7 @@
 "aui" = (
 /obj/structure/machinery/telecomms/hub/preset{
 	produces_heat = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -9099,6 +9109,7 @@
 	name = "Telecommuncation Power";
 	pixel_x = -25;
 	pixel_y = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -9615,6 +9626,7 @@
 "avQ" = (
 /obj/structure/machinery/telecomms/processor/preset_one{
 	produces_heat = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -9625,6 +9637,7 @@
 "avR" = (
 /obj/structure/machinery/telecomms/relay/preset/telecomms{
 	listening_level = 6;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -9916,6 +9929,7 @@
 	name = "ARES Lockdown";
 	pixel_x = 25;
 	req_one_access = list(19);
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/effect/decal/warning_stripes{
@@ -10264,6 +10278,7 @@
 	name = "Research Armory";
 	pixel_x = -27;
 	req_access = list(14);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -11558,6 +11573,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -11574,6 +11590,7 @@
 	pixel_y = -25;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer,
@@ -11640,6 +11657,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/effect/step_trigger/clone_cleaner,
@@ -11657,6 +11675,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/effect/step_trigger/clone_cleaner,
@@ -12004,6 +12023,7 @@
 	name = "Hangar Lockdown";
 	pixel_x = -7;
 	pixel_y = 2;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/door_control{
@@ -12012,6 +12032,7 @@
 	pixel_x = -7;
 	pixel_y = 9;
 	req_access = list(1);
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/door_control{
@@ -12020,6 +12041,7 @@
 	pixel_x = -7;
 	pixel_y = -5;
 	req_access = list(1);
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/item/device/radio/intercom{
@@ -12148,6 +12170,7 @@
 	pixel_x = 0;
 	pixel_y = -14;
 	req_one_access = list(19);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer,
@@ -13571,6 +13594,7 @@
 	pixel_x = 0;
 	pixel_y = 28;
 	req_one_access = list(19,14);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -14684,6 +14708,7 @@
 	name = "Containment Lockdown";
 	pixel_x = 25;
 	req_one_access = list(19,14);
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/light,
@@ -14699,6 +14724,7 @@
 	name = "Containment Lockdown";
 	pixel_x = -25;
 	req_one_access = list(19,14);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -15957,6 +15983,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -17342,6 +17369,7 @@
 	pixel_x = -25;
 	pixel_y = -5;
 	req_access = list(14);
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/door_control{
@@ -17352,6 +17380,7 @@
 	pixel_x = -25;
 	pixel_y = 5;
 	req_access = list(14);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -17717,6 +17746,7 @@
 	pixel_x = -8;
 	pixel_y = -4;
 	req_access = list(14);
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/door_control{
@@ -17727,6 +17757,7 @@
 	pixel_x = -8;
 	pixel_y = 8;
 	req_access = list(14);
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/item/paper_bin/wy{
@@ -18562,6 +18593,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,7,12,19,22);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -18577,6 +18609,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,7,12,19,22);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -18592,6 +18625,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,7,12,19,22);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -20961,6 +20995,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -20983,6 +21018,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/effect/decal/warning_stripes{
@@ -21345,6 +21381,7 @@
 	pixel_x = 0;
 	pixel_y = 25;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/iv_drip,
@@ -21380,6 +21417,7 @@
 	pixel_x = 0;
 	pixel_y = 25;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/iv_drip,
@@ -22705,6 +22743,7 @@
 	normaldoorcontrol = 1;
 	pixel_x = 23;
 	pixel_y = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -22909,6 +22948,7 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "n_umbilical";
 	name = "\improper Umbillical Airlock";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -23683,6 +23723,7 @@
 	pixel_y = -19;
 	req_one_access = list(3,22);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/shuttle/dropship{
@@ -23820,6 +23861,7 @@
 	req_access = list();
 	req_one_access = list(3,22);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/shuttle/dropship{
@@ -25046,6 +25088,7 @@
 	normaldoorcontrol = 1;
 	pixel_x = -28;
 	pixel_y = -23;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -25129,6 +25172,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,7,12,19,22);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/effect/decal/warning_stripes{
@@ -25415,6 +25459,7 @@
 	name = "Quarters Shutters";
 	pixel_x = 25;
 	req_access = list(200);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer,
@@ -26274,6 +26319,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,7,12,19,22);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/effect/decal/warning_stripes{
@@ -26452,6 +26498,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,7,12,19,22);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/effect/decal/warning_stripes{
@@ -26930,6 +26977,7 @@
 	normaldoorcontrol = 1;
 	pixel_x = -28;
 	pixel_y = 23;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -27510,6 +27558,7 @@
 	name = "Quarters Shutters";
 	pixel_x = -25;
 	req_access = list(200);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -28679,6 +28728,7 @@
 	pixel_x = 0;
 	pixel_y = -20;
 	req_access = list(200);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer,
@@ -28736,6 +28786,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/effect/landmark{
@@ -29668,6 +29719,7 @@
 	normaldoorcontrol = 1;
 	pixel_x = 23;
 	pixel_y = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -29731,6 +29783,7 @@
 	normaldoorcontrol = 1;
 	pixel_x = 23;
 	pixel_y = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -29766,6 +29819,7 @@
 	id = "northcheckpoint";
 	name = "North Checkpoint Shutters";
 	req_one_access = list(2,3,12,19);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -30157,6 +30211,7 @@
 	pixel_x = -28;
 	pixel_y = 0;
 	req_access = list(5);
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/vending/medical,
@@ -30222,6 +30277,7 @@
 "bDF" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -30248,6 +30304,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/effect/decal/warning_stripes{
@@ -31793,6 +31850,7 @@
 	name = "Privacy Shutters";
 	pixel_x = 25;
 	req_access = list(200);
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/door_control{
@@ -31801,6 +31859,7 @@
 	pixel_x = 25;
 	pixel_y = 12;
 	req_access = list(200);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer,
@@ -32260,6 +32319,7 @@
 /obj/structure/machinery/door_control{
 	id = "Hangar Lockdown";
 	name = "Hangar Lockdown";
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/item/device/radio/intercom{
@@ -33584,6 +33644,7 @@
 	pixel_y = 30;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -34635,6 +34696,7 @@
 	pixel_y = -2;
 	pixel_z = 0;
 	req_one_access = list(1,21);
+	unslashable = 1;
 	unacidable = 1;
 	id = "ROlobby1"
 	},
@@ -36527,6 +36589,7 @@
 	pixel_y = 30;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -36760,6 +36823,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -37006,6 +37070,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -38491,6 +38556,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/effect/decal/warning_stripes{
@@ -38916,6 +38982,7 @@
 	pixel_x = 0;
 	pixel_y = -25;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/iv_drip,
@@ -38944,6 +39011,7 @@
 	id = "southcheckpoint";
 	name = "South Checkpoint Shutters";
 	req_one_access = list(2,3,12,19);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -39660,6 +39728,7 @@
 	pixel_y = 30;
 	req_one_access = list(2,3,7,12,19,22,27);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -40694,6 +40763,7 @@
 	pixel_y = 30;
 	req_one_access = list(2,3,7,12,19,22,27);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -41820,6 +41890,7 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "s_umbilical";
 	name = "\improper Umbillical Airlock";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -41831,6 +41902,7 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "s_umbilical";
 	name = "\improper Umbillical Airlock";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -42612,6 +42684,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/effect/decal/warning_stripes{
@@ -43832,6 +43905,7 @@
 	pixel_y = -26;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -44793,6 +44867,7 @@
 	normaldoorcontrol = 1;
 	pixel_x = 23;
 	pixel_y = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -45375,6 +45450,7 @@
 	dir = 4;
 	id = "Containment Cell 2";
 	name = "\improper Containment Cell 2";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer/research/containment/floor2{
@@ -45452,6 +45528,7 @@
 	pixel_x = 0;
 	pixel_y = -20;
 	req_one_access = list(19,14);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -46265,6 +46342,7 @@
 	pixel_x = -27;
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer,
@@ -46869,6 +46947,7 @@
 	name = "Brig Shutters";
 	pixel_y = 25;
 	req_one_access = list(2,3,12,19);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer,
@@ -47174,6 +47253,7 @@
 	pixel_x = -27;
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19);
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -47507,6 +47587,7 @@
 	dir = 4;
 	id = "Containment Cell 4";
 	name = "\improper Containment Cell 4";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer/research/containment/floor2{
@@ -47763,6 +47844,7 @@
 "hvw" = (
 /obj/structure/machinery/r_n_d/server/core{
 	produces_heat = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -48077,6 +48159,7 @@
 	dir = 4;
 	id = "Containment Cell 1";
 	name = "\improper Containment Cell 1";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer/research/containment/floor2{
@@ -48660,6 +48743,7 @@
 	pixel_x = 0;
 	pixel_y = -25;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/iv_drip,
@@ -49672,6 +49756,7 @@
 	pixel_y = 10;
 	pixel_z = 0;
 	req_one_access = list(1,21);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -50727,6 +50812,7 @@
 	pixel_x = 0;
 	pixel_y = -20;
 	req_access = list(5);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -50777,6 +50863,7 @@
 	name = "ARES Lockdown";
 	pixel_x = 25;
 	req_one_access = list(19);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -51280,6 +51367,7 @@
 	id = "CMP Office Shutters";
 	name = "CMP Office Shutters";
 	pixel_y = 2;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/door_control{
@@ -51288,6 +51376,7 @@
 	pixel_x = 0;
 	pixel_y = 9;
 	req_access = list(1);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer,
@@ -52100,6 +52189,7 @@
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -53244,6 +53334,7 @@
 	id = "tcomms";
 	name = "Telecommunications Entrance";
 	pixel_y = 25;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -54690,6 +54781,7 @@
 	name = "Brig Shutters";
 	pixel_y = 25;
 	req_one_access = list(2,3,12,19);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -55237,6 +55329,7 @@
 	name = "Brig Shutters";
 	pixel_y = -25;
 	req_one_access = list(2,3,12,19);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -55813,6 +55906,7 @@
 	name = "Brig Shutters";
 	pixel_y = -25;
 	req_one_access = list(2,3,12,19);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -56309,6 +56403,7 @@
 	id = "medicalemergency";
 	name = "Medbay Lockdown";
 	pixel_y = -23;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -56452,6 +56547,7 @@
 	pixel_x = 25;
 	pixel_y = -5;
 	req_one_access = list(2,3,12,19);
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/atmospherics/unary/vent_scrubber/on{
@@ -57451,6 +57547,7 @@
 	pixel_y = -20;
 	range = 20;
 	req_one_access = list(19,14);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -57494,6 +57591,7 @@
 	dir = 4;
 	id = "cryoslation";
 	name = "\improper Cryoslation Chamber";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -57657,6 +57755,7 @@
 	pixel_x = -27;
 	pixel_y = -7;
 	req_one_access = list(2,3,12,19);
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/door_control{
@@ -57665,6 +57764,7 @@
 	pixel_x = -27;
 	pixel_y = 8;
 	req_one_access = list(2,3,12,19);
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/flasher_button{
@@ -57975,6 +58075,7 @@
 	name = "Research Armory";
 	pixel_x = 27;
 	req_access = list(14);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -58429,6 +58530,7 @@
 	pixel_x = 25;
 	pixel_y = -5;
 	req_one_access = list(2,3,12,19);
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/atmospherics/unary/vent_pump{
@@ -59343,6 +59445,7 @@
 	dir = 4;
 	id = "Containment Cell 3";
 	name = "\improper Containment Cell 3";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer/research/containment/floor2{
@@ -59471,6 +59574,7 @@
 	pixel_y = -26;
 	req_one_access = list(2,3,12,19);
 	throw_range = 15;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer{
@@ -59669,6 +59773,7 @@
 	pixel_x = -27;
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/almayer,
@@ -60692,6 +60797,7 @@
 	pixel_y = -20;
 	range = 20;
 	req_access = list(5);
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/door_control{
@@ -60701,6 +60807,7 @@
 	pixel_y = -20;
 	range = 20;
 	req_access = list(5);
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/item/paper_bin/wy,
@@ -61438,6 +61545,7 @@
 	name = "Hangar Lockdown Override";
 	pixel_x = 0;
 	pixel_y = 27;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/item/folder/red,

@@ -139,7 +139,8 @@
 	var/image/chairbar = null
 	var/chair_state = DROPSHIP_CHAIR_UNFOLDED
 	buildstacktype = 0
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	var/is_animating = 0
 
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair
@@ -294,5 +295,6 @@
 	desc = "A comfortable seat."
 	icon_state = "ob_chair"
 	buildstacktype = null
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	dir = WEST

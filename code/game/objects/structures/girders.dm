@@ -3,7 +3,7 @@
 	anchored = 1
 	density = 1
 	layer = OBJ_LAYER
-	unacidable = 0
+	unacidable = FALSE
 	debris = list(/obj/item/stack/sheet/metal,/obj/item/stack/sheet/metal)
 	var/state = 0
 	var/dismantlectr = 0

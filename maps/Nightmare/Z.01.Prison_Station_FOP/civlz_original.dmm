@@ -151,6 +151,7 @@
 "u" = (
 /obj/structure/machinery/door/poddoor/four_tile_ver{
 	name = "Civilian Residences Hangar Door";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/plating,

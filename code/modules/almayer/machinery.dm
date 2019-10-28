@@ -309,7 +309,8 @@
 	icon_state = "missiletubenorth"
 	bound_width = 32
 	bound_height = 96
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/prop/almayer/ship_memorial
 	name = "slab of victory"
@@ -318,7 +319,8 @@
 	icon_state = "ship_memorial"
 	bound_width = 64
 	bound_height = 32
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/prop/almayer/ship_memorial/centcomm
 	name = "slab of remembrance"
@@ -356,14 +358,16 @@
 	desc = "The Mark 74 Railgun is top of the line for space based weaponry. Capable of firing a round with a diameter of 3/4ths of a meter at 24 kilometers per second. It also is capable of using a variety of round types which can be interchanged at anytime with its newly designed feed system."
 	icon = 'icons/obj/structures/machinery/artillery.dmi'
 	icon_state = "1"
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/prop/almayer/name_stencil
 	desc = "The name of the ship stenciled on the hull."
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	icon_state = "almayer0"
 	density = 0 //dunno who would walk on it, but you know.
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 	New()
 		..()
@@ -391,7 +395,8 @@
 	bound_width = 128
 	bound_height = 64
 	bound_y = 64
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 
 /obj/structure/prop/almayer/anti_air_cannon/ex_act()
@@ -409,7 +414,8 @@
 	density = 0
 	mouse_opacity = 0
 	layer = LADDER_LAYER
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/prop/almayer/cannon_cables/ex_act()
 	return
@@ -424,7 +430,8 @@
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "cannon_cable_connector"
 	density = 1
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/prop/almayer/cannon_cable_connector/ex_act()
 	return

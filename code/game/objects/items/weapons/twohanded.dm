@@ -266,7 +266,7 @@
 	flags_item = NOSHIELD|TWOHANDED|ITEM_PREDATOR
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
-	unacidable = 1
+	unacidable = TRUE
 	attack_speed = 12 //Default is 7.
 
 /obj/item/weapon/twohanded/glaive/Dispose()

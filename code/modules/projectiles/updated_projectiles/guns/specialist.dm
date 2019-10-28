@@ -22,7 +22,7 @@
 	desc = "A heavy sniper rifle manufactured by Armat Systems. It has a scope system and fires armor penetrating rounds out of a 15-round magazine.\n'Peace Through Superior Firepower'"
 	icon_state = "m42a"
 	item_state = "m42a"
-	unacidable = 1
+	unacidable = TRUE
 	indestructible = 1
 	origin_tech = "combat=6;materials=5"
 	fire_sound = 'sound/weapons/gun_sniper.ogg'
@@ -63,7 +63,7 @@
 	desc = "An experimental anti-tank rifle produced by Armat Systems, currently undergoing field testing. Chambered in 10x99mm Caseless."
 	icon_state = "xm42b"
 	item_state = "xm42b"
-	unacidable = 1
+	unacidable = TRUE
 	indestructible = 1
 	origin_tech = "combat=6;materials=5"
 	fire_sound = 'sound/weapons/sniper_heavy.ogg'
@@ -200,7 +200,7 @@
 	desc = "The M4RA battle rifle is a designated marksman rifle in service with the USCM. Only fielded in small numbers, and sporting a bullpup configuration, the M4RA battle rifle is perfect for reconnaissance and fire support teams.\nIt is equipped with rail scope and takes 10x24mm A19 high velocity magazines."
 	icon_state = "m41b"
 	item_state = "m4ra" //PLACEHOLDER
-	unacidable = 1
+	unacidable = TRUE
 	indestructible = 1
 	origin_tech = "combat=5;materials=4"
 	fire_sound = 'sound/weapons/gun_m4ra.ogg'
@@ -783,7 +783,7 @@
 	desc = "A heavy, 6-shot grenade launcher used by the Colonial Marines for area denial and big explosions."
 	icon_state = "m92"
 	item_state = "m92" //NEED TWO HANDED SPRITE
-	unacidable = 1
+	unacidable = TRUE
 	indestructible = 1
 	origin_tech = "combat=5;materials=5"
 	matter = list("metal" = 6000)
@@ -1044,7 +1044,7 @@
 	desc = "The M5 RPG is the primary anti-armor weapon of the USCM. Used to take out light-tanks and enemy structures, the M5 RPG is a dangerous weapon with a variety of combat uses."
 	icon_state = "m5"
 	item_state = "m5"
-	unacidable = 1
+	unacidable = TRUE
 	indestructible = 1
 	origin_tech = "combat=6;materials=5"
 	matter = list("metal" = 10000)

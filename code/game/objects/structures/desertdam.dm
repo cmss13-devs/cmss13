@@ -6,7 +6,8 @@
 	icon = 'icons/turf/floors/desertdam_map.dmi'
 	density = 0
 	anchored = 1
-	unacidable = 1 // can toggle it off anyway
+	unslashable = TRUE
+	unacidable = TRUE // can toggle it off anyway
 	layer = ABOVE_MOB_LAYER
 //loose sand overlay
 /obj/structure/desertdam/decals/loose_sand_overlay

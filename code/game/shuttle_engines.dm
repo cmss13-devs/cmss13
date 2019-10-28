@@ -9,7 +9,8 @@
 	density = 1
 	opacity = 0
 	anchored = 1
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	layer = WINDOW_LAYER
 
 /obj/structure/shuttle/window/ex_act(severity)
@@ -22,7 +23,8 @@
 	name = "engine"
 	density = 1
 	anchored = 1.0
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/shuttle/engine/heater
 	name = "heater"

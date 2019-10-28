@@ -37,7 +37,8 @@
 	layer = WIRE_LAYER
 	color = COLOR_RED
 	var/obj/structure/machinery/power/breakerbox/breaker_box
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	var/id
 
 /obj/structure/cable/yellow

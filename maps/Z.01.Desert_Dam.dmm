@@ -1599,6 +1599,7 @@
 	pixel_x = 0;
 	pixel_y = 0;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/prison{
@@ -5414,6 +5415,7 @@
 /obj/structure/machinery/door/poddoor/shutters{
 	dir = 2;
 	icon_state = "shutter1";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/closed/wall/hangar{
@@ -6841,6 +6843,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	opacity = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/shuttle/dropship{
@@ -8045,6 +8048,7 @@
 /obj/structure/machinery/door/poddoor/shutters{
 	dir = 2;
 	icon_state = "shutter1";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/closed/wall/hangar{
@@ -8097,6 +8101,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	opacity = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/shuttle/dropship{
@@ -9110,6 +9115,7 @@
 	pixel_x = 0;
 	pixel_y = 0;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/prison{
@@ -11540,6 +11546,7 @@
 /obj/structure/machinery/door/poddoor/shutters{
 	dir = 2;
 	icon_state = "shutter1";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/closed/wall/hangar{
@@ -11817,6 +11824,7 @@
 "aEG" = (
 /obj/structure/machinery/door/poddoor/four_tile_hor{
 	name = "\improper Entrance Gate Alpha";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/asphalt,
@@ -15716,6 +15724,7 @@
 /obj/structure/machinery/door/poddoor/shutters{
 	dir = 2;
 	icon_state = "shutter1";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/closed/wall/hangar{
@@ -20322,6 +20331,7 @@
 	pixel_x = 0;
 	pixel_y = 0;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/closed/wall/hangar{
@@ -26617,6 +26627,7 @@
 	pixel_x = 0;
 	pixel_y = 0;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/closed/wall/hangar{
@@ -27855,6 +27866,7 @@
 	pixel_x = 0;
 	pixel_y = 0;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/closed/wall/hangar{
@@ -28912,6 +28924,7 @@
 	pixel_x = 0;
 	pixel_y = 0;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/prison{
@@ -32782,6 +32795,7 @@
 	pixel_x = 0;
 	pixel_y = 0;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/closed/wall/r_wall/bunker,
@@ -34289,6 +34303,7 @@
 	pixel_x = 0;
 	pixel_y = 0;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/closed/wall/r_wall/bunker{
@@ -48988,6 +49003,7 @@
 	pixel_x = 0;
 	pixel_y = 0;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/closed/wall/hangar{
@@ -49534,6 +49550,7 @@
 	pixel_x = 0;
 	pixel_y = 0;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/closed/wall/hangar{
@@ -49791,6 +49808,7 @@
 	pixel_x = 0;
 	pixel_y = 0;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/closed/wall/hangar{
@@ -52879,6 +52897,7 @@
 	pixel_x = 0;
 	pixel_y = 0;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/table/reinforced,
@@ -56827,6 +56846,7 @@
 	pixel_x = 0;
 	pixel_y = 0;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/closed/wall/r_wall/bunker{
@@ -58499,6 +58519,7 @@
 	dir = 2;
 	id = "dam_stormlock_north2";
 	name = "\improper Storm Lock";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/asphalt,
@@ -58532,6 +58553,7 @@
 	dir = 2;
 	id = "dam_stormlock_north2";
 	name = "\improper Storm Lock";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/asphalt,
@@ -58930,6 +58952,7 @@
 	dir = 2;
 	id = "dam_stormlock_north2";
 	name = "\improper Storm Lock";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/asphalt,
@@ -59137,6 +59160,7 @@
 	dir = 2;
 	id = "dam_stormlock_north2";
 	name = "\improper Storm Lock";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/asphalt,
@@ -65309,6 +65333,7 @@
 	pixel_x = 0;
 	pixel_y = 0;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/closed/wall/hangar{
@@ -67601,6 +67626,7 @@
 	pixel_x = 0;
 	pixel_y = 0;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/closed/wall,
@@ -67693,6 +67719,7 @@
 	pixel_x = 0;
 	pixel_y = 0;
 	req_access = list();
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/closed/wall,

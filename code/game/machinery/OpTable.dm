@@ -6,7 +6,8 @@
 	density = 1
 	layer = TABLE_LAYER
 	anchored = 1
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	climbable = TRUE
 	use_power = 1
 	idle_power_usage = 1

@@ -7,6 +7,7 @@
 	icon_state = "consoleright"
 	var/faction = FACTION_MARINE
 	circuit = null
+	unslashable = TRUE
 	unacidable = TRUE
 	exproof = TRUE
 	var/shuttle_tag  // Used to know which shuttle we're linked to.

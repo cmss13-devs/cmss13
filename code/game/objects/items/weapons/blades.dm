@@ -177,7 +177,7 @@
 	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	actions_types = list(/datum/action/item_action)
-	unacidable = 1
+	unacidable = TRUE
 
 /obj/item/weapon/yautja_knife/attack_self(mob/living/carbon/human/user)
 	if(!isYautja(user)) 

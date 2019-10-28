@@ -200,6 +200,7 @@
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "consoleleft"
 	circuit = null
+	unslashable = TRUE
 	unacidable = TRUE
 	exproof = TRUE
 

@@ -5,7 +5,8 @@
 	name = "catwalk"
 	desc = "Cats really don't like these things."
 	var/covered = 1 //1 for theres the cover, 0 if there isn't.
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	layer = CATWALK_LAYER
 
 /obj/structure/catwalk/initialize()

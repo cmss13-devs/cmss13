@@ -7,6 +7,7 @@
 	use_power = 0
 	var/obj/item/card/id/botcard			// the ID card that the bot "holds"
 	var/on = 1
+	unslashable = TRUE
 	health = 0 //do not forget to set health for your bot!
 	var/maxhealth = 0
 	var/fire_dam_coeff = 1.0

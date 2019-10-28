@@ -1,6 +1,6 @@
 /obj/effect/overlay
 	name = "overlay"
-	unacidable = 1
+	unacidable = TRUE
 	var/i_attached //Added for possible image attachments to objects. For hallucinations and the like.
 
 /obj/effect/overlay/beam//Not actually a projectile, just an effect.
@@ -111,7 +111,8 @@
 		signal.target_id = target_id
 		signal.linked_cam = new(loc, name)
 		signal.linked_cam.invisibility = 101
-		signal.linked_cam.unacidable = 1
+		signal.linked_cam.unslashable = TRUE
+		signal.linked_cam.unacidable = TRUE
 		cas_groups[user.faction].add_signal(signal)
 			
 

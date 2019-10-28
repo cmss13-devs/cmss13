@@ -1504,6 +1504,7 @@
 	name = "Kitchen Access";
 	pixel_x = 22;
 	pixel_y = 10;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/prison{

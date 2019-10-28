@@ -4683,6 +4683,7 @@
 	dir = 1;
 	icon_state = "o2_map";
 	tag = "icon-o2_map (WEST)";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/plating{

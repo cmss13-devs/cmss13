@@ -6,6 +6,7 @@
 	var/parts
 	var/list/debris = list()
 	var/flags_barrier = 0
+	var/unslashable = FALSE
 	health = 100
 	anchored = 1
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM

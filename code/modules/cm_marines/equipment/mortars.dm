@@ -7,7 +7,8 @@
 	icon = 'icons/obj/structures/mortar.dmi'
 	icon_state = "mortar_m402"
 	anchored = 1
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	density = 1
 	layer = ABOVE_MOB_LAYER //So you can't hide it under corpses
 	flags_atom = RELAY_CLICK
@@ -205,7 +206,7 @@
 	desc = "A manual, crew-operated mortar system intended to rain down 80mm goodness on anything it's aimed at. Needs to be set down first"
 	icon = 'icons/obj/structures/mortar.dmi'
 	icon_state = "mortar_m402_carry"
-	unacidable = 1
+	unacidable = TRUE
 	w_class = SIZE_HUGE //No dumping this in a backpack. Carry it, fatso
 
 /obj/item/mortar_kit/ex_act(severity)

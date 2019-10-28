@@ -525,7 +525,7 @@
 
 /obj/item/paper/research_notes
 	icon_state = "paper_wy_words"
-	unacidable = 1
+	unacidable = TRUE
 	var/tier
 	var/note_type
 	New()

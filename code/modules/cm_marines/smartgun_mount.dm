@@ -47,7 +47,7 @@
 /obj/item/device/m56d_gun
 	name = "\improper M56D heavy machine gun"
 	desc = "The top half of a M56D heavy machine gun post. However it ain't much use without the tripod."
-	unacidable = 1
+	unacidable = TRUE
 	w_class = SIZE_HUGE
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D_gun_e"
@@ -110,7 +110,7 @@
 /obj/item/device/m56d_post_frame 
 	name = "\improper M56D folded mount frame"
 	desc = "A flimsy frame of plasteel and metal. Still needs to be <b>welded</b> together."
-	unacidable = 1
+	unacidable = TRUE
 	w_class = SIZE_MEDIUM
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "folded_mount_frame"
@@ -130,7 +130,7 @@
 /obj/item/device/m56d_post //Adding this because I was fucken stupid and put a obj/structure/machinery in a box. Realized I couldn't take it out
 	name = "\improper M56D folded mount"
 	desc = "The folded, foldable tripod mount for the M56D.  (Place on ground and drag to you to unfold)."
-	unacidable = 1
+	unacidable = TRUE
 	w_class = SIZE_MEDIUM
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "folded_mount"
@@ -303,7 +303,8 @@
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D"
 	anchored = 1
-	unacidable = 1 //stop the xeno me(l)ta.
+	unslashable = TRUE
+	unacidable = TRUE //stop the xeno me(l)ta.
 	density = 1
 	layer = ABOVE_MOB_LAYER //no hiding the hmg beind corpse
 	use_power = 0

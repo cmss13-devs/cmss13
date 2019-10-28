@@ -5,7 +5,7 @@
 	name = "alien thing"
 	desc = "theres something alien about this"
 	icon = 'icons/mob/xenos/Effects.dmi'
-	unacidable = 1
+	unacidable = TRUE
 	health = 1
 
 /obj/effect/alien/flamer_fire_act()
@@ -21,7 +21,7 @@
 	icon_state = "Resin1"
 	anchored = 1
 	health = 200
-	unacidable = 1
+	unacidable = TRUE
 
 
 /obj/effect/alien/resin/proc/healthcheck()
@@ -442,7 +442,7 @@
 	anchored = 1
 	mouse_opacity = 0
 	invisibility = 101
-	unacidable = 1 //You never know
+	unacidable = TRUE //You never know
 	var/obj/effect/alien/resin/trap/linked_trap
 
 /obj/effect/hole_tripwire/Dispose()
@@ -850,7 +850,8 @@ TUNNEL
 	density = 0
 	opacity = 0
 	anchored = 1
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	layer = RESIN_STRUCTURE_LAYER
 
 	var/tunnel_desc = "" //description added by the hivelord.

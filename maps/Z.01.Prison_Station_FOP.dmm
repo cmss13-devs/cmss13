@@ -207,6 +207,7 @@
 /obj/structure/machinery/door_control{
 	id = "biological_testing_1";
 	name = "Containment Shutter Control";
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/window/reinforced{
@@ -285,6 +286,7 @@
 /obj/structure/machinery/door_control{
 	id = "biological_testing_2";
 	name = "Containment Shutter Control";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/prison{
@@ -6008,6 +6010,7 @@
 "amt" = (
 /obj/structure/machinery/door/poddoor/four_tile_hor{
 	name = "Research Hangar Door";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/plating,
@@ -8271,6 +8274,7 @@
 /obj/structure/machinery/door_control{
 	id = "research_secret";
 	name = "Classified Research Lockdown";
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/table/reinforced,
@@ -14154,6 +14158,7 @@
 	id = "central";
 	layer = 3.19;
 	name = "Timed Emergency Shutters";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -14932,6 +14937,7 @@
 	dir = 2;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -14946,6 +14952,7 @@
 	dir = 2;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -14959,6 +14966,7 @@
 	dir = 2;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -16169,6 +16177,7 @@
 	dir = 2;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -16185,6 +16194,7 @@
 	dir = 2;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -16200,6 +16210,7 @@
 	id = "central";
 	layer = 3.19;
 	name = "Timed Emergency Shutters";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -16226,6 +16237,7 @@
 	dir = 2;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -16241,6 +16253,7 @@
 	dir = 2;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -16420,6 +16433,7 @@
 	id = "central";
 	layer = 3.19;
 	name = "Timed Emergency Shutters";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -17320,6 +17334,7 @@
 	id = "central";
 	layer = 3.19;
 	name = "Timed Emergency Shutters";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -17621,6 +17636,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -17832,6 +17848,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -17993,6 +18010,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -18624,6 +18642,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -18729,6 +18748,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -19344,6 +19364,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -19456,6 +19477,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -20147,6 +20169,7 @@
 	name = "Station Lockdown Shutter Control";
 	pixel_x = 0;
 	pixel_y = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/carpet,
@@ -24952,6 +24975,7 @@
 "bbF" = (
 /obj/structure/machinery/door/poddoor/four_tile_ver{
 	name = "Main Hangar Door";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/plating,
@@ -26735,6 +26759,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -26785,6 +26810,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -27096,6 +27122,7 @@
 "bfW" = (
 /obj/structure/machinery/door/poddoor/four_tile_ver{
 	name = "Civilian Residences Hangar Door";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/plating,
@@ -27670,6 +27697,7 @@
 	name = "Kitchen Access";
 	pixel_x = 22;
 	pixel_y = 10;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/prison{
@@ -28885,6 +28913,7 @@
 	name = "Kitchen Access";
 	pixel_x = -22;
 	pixel_y = 10;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/bed/chair/comfy{
@@ -29052,6 +29081,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -29601,6 +29631,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -30159,6 +30190,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -30740,6 +30772,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -35371,6 +35404,7 @@
 	id = "central";
 	layer = 3.19;
 	name = "Timed Emergency Shutters";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -36615,6 +36649,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -37599,6 +37634,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -38049,6 +38085,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -38454,6 +38491,7 @@
 	id = "central";
 	layer = 3.19;
 	name = "Timed Emergency Shutters";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -38922,6 +38960,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -39546,6 +39585,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -39932,6 +39972,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -40356,6 +40397,7 @@
 	dir = 4;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -42230,6 +42272,7 @@
 	id = "central";
 	layer = 3.19;
 	name = "Timed Emergency Shutters";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -42268,6 +42311,7 @@
 	dir = 2;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -42283,6 +42327,7 @@
 	dir = 2;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -42776,6 +42821,7 @@
 	id = "central";
 	layer = 3.19;
 	name = "Timed Emergency Shutters";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -43153,6 +43199,7 @@
 	dir = 2;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -43169,6 +43216,7 @@
 	dir = 2;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -43482,6 +43530,7 @@
 	dir = 2;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -43495,6 +43544,7 @@
 	dir = 2;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -43508,6 +43558,7 @@
 	dir = 2;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -43521,6 +43572,7 @@
 	dir = 2;
 	id = "central";
 	name = "Timed Emergency Blast Door";
+	unslashable = 1;
 	unacidable = 1;
 	use_power = 0
 	},
@@ -43658,6 +43710,7 @@
 	dir = 8;
 	icon_state = "o2_map";
 	tag = "icon-o2_map (WEST)";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/prison,
@@ -44449,6 +44502,7 @@
 	dir = 8;
 	icon_state = "o2_map";
 	tag = "icon-o2_map (WEST)";
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/window/reinforced,
@@ -45377,6 +45431,7 @@
 /obj/structure/monorail,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	name = "Monorail Passage Door";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/plating,
@@ -47497,6 +47552,7 @@
 /obj/structure/lattice,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	name = "Monorail Passage Door";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/plating,
@@ -50304,6 +50360,7 @@
 	id = "riot_armory";
 	name = "Riot Armory Access";
 	pixel_x = -24;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/prison{
@@ -50325,6 +50382,7 @@
 	id = "lethal_armory";
 	name = "Lethal Armory Access";
 	pixel_x = 24;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/prison{
@@ -54489,6 +54547,7 @@
 	name = "Remote Door Control";
 	pixel_x = 24;
 	pixel_y = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/prison{
@@ -54601,6 +54660,7 @@
 "cpu" = (
 /obj/structure/machinery/conveyor,
 /obj/structure/machinery/door/poddoor{
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/plating,
@@ -54610,6 +54670,7 @@
 	id = "disposals";
 	name = "Disposals Shutter";
 	pixel_x = -24;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/plating,
@@ -55523,6 +55584,7 @@
 	name = "Cargo Door Control";
 	pixel_x = 24;
 	pixel_y = 5;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/shuttle,
@@ -57674,6 +57736,7 @@
 	dir = 1;
 	icon_state = "o2_map";
 	tag = "icon-o2_map (WEST)";
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor/plating{

@@ -12,6 +12,8 @@
 	var/has_used_pamphlet = FALSE //Has this person used a pamphlet?
 	var/list/embedded_items = list() //A list of all the shrapnel currently embedded in the human
 
+	var/list/synthetic_HUD_toggled = list(FALSE,FALSE)
+
 /mob/living/carbon/human/New(var/new_loc, var/new_species = null)
 	blood_type = pick(7;"O-", 38;"O+", 6;"A-", 34;"A+", 2;"B-", 9;"B+", 1;"AB-", 3;"AB+")
 

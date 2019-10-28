@@ -5,7 +5,7 @@
 	desc = "A glass lab container for storing interesting creatures."
 	density = 1
 	anchored = 1
-	unacidable = 0
+	unacidable = FALSE
 	health = 30
 	var/occupied = 1
 	var/destroyed = 0

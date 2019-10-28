@@ -13,7 +13,8 @@
 	autolinkers = list("s_relay")
 
 /obj/structure/machinery/telecomms/relay/preset/station/prison
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/machinery/telecomms/relay/preset/ice_colony
 	icon = 'icons/obj/structures/machinery/comm_tower.dmi'
@@ -21,7 +22,8 @@
 	id = "Station Relay"
 	listening_level = 1
 	autolinkers = list("s_relay")
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 	//We dont want anyone to mess with it
 /obj/structure/machinery/telecomms/relay/preset/ice_colony/attackby()
@@ -38,7 +40,8 @@
 	layer = ABOVE_FLY_LAYER
 	use_power = 0
 	idle_power_usage = 0
-	unacidable = 1
+	unslashable = FALSE
+	unacidable = TRUE
 	health = 450
 
 /obj/structure/machinery/telecomms/relay/preset/tower/get_explosion_resistance()
@@ -343,7 +346,8 @@
 	idle_power_usage = 0
 	machinetype = 6
 	produces_heat = 0
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	var/intercept = 0 // if nonzero, broadcasts all messages to syndicate channel
 
 /obj/structure/machinery/telecomms/allinone/interceptor

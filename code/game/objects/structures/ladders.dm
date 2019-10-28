@@ -8,7 +8,8 @@
 	var/obj/structure/ladder/down = null	//The ladder below this one
 	var/obj/structure/ladder/up = null		//The ladder above this one
 	anchored = 1
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	layer = LADDER_LAYER
 	var/is_watching = 0
 	var/obj/structure/machinery/camera/cam

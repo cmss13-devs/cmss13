@@ -10,6 +10,7 @@
 	icon_state = "doorctrl0"
 	desc = "A remote control-switch for a door."
 	power_channel = ENVIRON
+	unslashable = TRUE
 	unacidable = TRUE
 	var/id = null
 	var/range = 10

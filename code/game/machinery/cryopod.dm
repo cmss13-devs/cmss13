@@ -19,6 +19,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 	icon_state = "cellconsole"
 	circuit = "/obj/item/circuitboard/computer/cryopodcontrol"
 	exproof = TRUE
+	unslashable = TRUE
 	unacidable = TRUE
 	var/cryotype = "REQ"
 	var/mode = null

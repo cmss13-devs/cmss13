@@ -244,7 +244,7 @@
 /obj/item/device/turret_sensor
 	name = "\improper UA 571-C turret sensor"
 	desc = "An AI control and locking sensor for an automated sentry. This must be installed on the final product for it to work."
-	unacidable = 1
+	unacidable = TRUE
 	w_class = SIZE_TINY
 	icon = 'icons/obj/structures/turret.dmi'
 	icon_state = "sentry_sensor"
@@ -252,7 +252,7 @@
 /obj/item/device/turret_top
 	name = "\improper UA 571-C turret"
 	desc = "The turret part of an automated sentry turret. This must be installed on a turret frame and welded together for it to do anything."
-	unacidable = 1
+	unacidable = TRUE
 	w_class = SIZE_HUGE
 	icon = 'icons/obj/structures/turret.dmi'
 	icon_state = "sentry_head"
@@ -267,7 +267,7 @@
 	icon = 'icons/obj/structures/turret.dmi'
 	icon_state = "sentry_off"
 	anchored = 1
-	unacidable = 1
+	unacidable = TRUE
 	density = 1
 	layer = ABOVE_MOB_LAYER //So you can't hide it under corpses
 	use_power = 0
@@ -1015,7 +1015,8 @@
 	w_class = SIZE_LARGE
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "turret_off"
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	var/linked_turret = null
 	var/on = 0
 	var/mob/living/carbon/human/user = null
@@ -1130,7 +1131,8 @@
 	desc = "A box that deploys a sentry turret."
 	density = 0
 	anchored = 1
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "sentry_system_installed"
 	active_power_usage = 5000

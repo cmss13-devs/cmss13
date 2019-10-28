@@ -69,7 +69,7 @@
 	var/reading_time = 10
 	var/skill_required = DOCUMENT_SKILL_NONE
 	var/objective_type = /datum/cm_objective/document
-	unacidable = 1
+	unacidable = TRUE
 	indestructible = 1
 	var/label // label on the document
 

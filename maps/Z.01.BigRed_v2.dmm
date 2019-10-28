@@ -445,6 +445,7 @@
 	id = "Spaceport";
 	name = "Storm Shutters";
 	pixel_x = 32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/item/tool/pen,
@@ -2258,6 +2259,7 @@
 	id = "tcomms";
 	name = "Storm Shutters";
 	pixel_x = -32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{
@@ -2377,6 +2379,7 @@
 	id = "Marshall Offices";
 	name = "Storm Shutters";
 	pixel_x = -32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{
@@ -3178,6 +3181,7 @@
 	id = "Marshall Offices";
 	name = "Storm Shutters";
 	pixel_x = -32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{
@@ -4259,6 +4263,7 @@
 	id = "Marshall Offices";
 	name = "Storm Shutters";
 	pixel_x = -32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -5160,6 +5165,7 @@
 	id = "Office Complex 2";
 	name = "Storm Shutters";
 	pixel_x = -32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{
@@ -5455,6 +5461,7 @@
 	id = "Marshall Offices";
 	name = "Storm Shutters";
 	pixel_x = -32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{
@@ -6449,6 +6456,7 @@
 	name = "Storm Shutters";
 	pixel_x = 0;
 	pixel_y = 32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{
@@ -7523,6 +7531,7 @@
 	id = "safe_blast";
 	name = "Blast Door";
 	pixel_y = -25;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{
@@ -7800,6 +7809,7 @@
 	pixel_y = -5;
 	req_access = list(7);
 	specialfunctions = 4;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/closed/wall/r_wall,
@@ -8154,6 +8164,7 @@
 	id = "sci_br";
 	name = "Observation Shutters";
 	pixel_y = 28;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{
@@ -8194,6 +8205,7 @@
 	id = "sci_br";
 	name = "Observation Shutters";
 	pixel_y = 28;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{
@@ -9204,6 +9216,7 @@
 	name = "Storm Shutters";
 	pixel_x = 0;
 	pixel_y = -32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{
@@ -10383,6 +10396,7 @@
 	name = "Storm Shutters";
 	pixel_x = 0;
 	pixel_y = -32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/camera/autoname{
@@ -10882,6 +10896,7 @@
 	name = "Storm Shutters";
 	pixel_x = 0;
 	pixel_y = -32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/iv_drip,
@@ -11666,6 +11681,7 @@
 	name = "Storm Shutters";
 	pixel_x = 32;
 	pixel_y = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor,
@@ -12053,6 +12069,7 @@
 	name = "Storm Shutters";
 	pixel_x = -32;
 	pixel_y = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor,
@@ -12901,6 +12918,7 @@
 	name = "Storm Shutters";
 	pixel_x = 0;
 	pixel_y = -32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{
@@ -12984,6 +13002,7 @@
 	name = "Storm Shutters";
 	pixel_x = 32;
 	pixel_y = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{
@@ -15087,6 +15106,7 @@
 	name = "Storm Shutters";
 	pixel_x = 32;
 	pixel_y = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
@@ -15853,6 +15873,7 @@
 	pixel_y = 0;
 	req_access = list(7);
 	specialfunctions = 4;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{
@@ -15981,6 +16002,7 @@
 	name = "Storm Shutters";
 	pixel_x = 32;
 	pixel_y = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/camera/autoname{
@@ -17801,6 +17823,7 @@
 	name = "Storm Shutters";
 	pixel_x = 0;
 	pixel_y = -32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{
@@ -17893,6 +17916,7 @@
 	name = "Storm Shutters";
 	pixel_x = 32;
 	pixel_y = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{
@@ -19565,6 +19589,7 @@
 	id = "General Store";
 	name = "Storm Shutters";
 	pixel_x = 32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{
@@ -21380,6 +21405,7 @@
 	name = "Storm Shutters";
 	pixel_x = 0;
 	pixel_y = -32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/effect/landmark{
@@ -22374,6 +22400,7 @@
 	id = "Cargonia";
 	name = "Storm Shutters";
 	pixel_x = 32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor,
@@ -22411,6 +22438,7 @@
 	id = "Cargonia";
 	name = "Storm Shutters";
 	pixel_x = 32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor,
@@ -22825,6 +22853,7 @@
 	id = "Chapel";
 	name = "Storm Shutters";
 	pixel_x = -32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{
@@ -22913,6 +22942,7 @@
 	name = "Storm Shutters";
 	pixel_x = -32;
 	pixel_y = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
@@ -24021,6 +24051,7 @@
 	name = "Storm Shutters";
 	pixel_x = -32;
 	pixel_y = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{
@@ -26053,6 +26084,7 @@
 	name = "Storm Shutters";
 	pixel_x = -32;
 	pixel_y = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor,
@@ -27034,6 +27066,7 @@
 	name = "Storm Shutters";
 	pixel_x = 0;
 	pixel_y = -32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor,
@@ -27585,6 +27618,7 @@
 	pixel_x = 30;
 	pixel_y = 0;
 	req_access = list(7);
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor,
@@ -27683,6 +27717,7 @@
 	name = "Storm Shutters";
 	pixel_x = 0;
 	pixel_y = -32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor,

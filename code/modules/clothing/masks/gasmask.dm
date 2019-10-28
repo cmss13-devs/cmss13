@@ -167,6 +167,6 @@
 	desc = "It is almost perfect."
 	icon_state = "souto_man"
 	vision_impair = 0
-	unacidable = 1
+	unacidable = TRUE
 	flags_item = NODROP|DELONDROP
 	flags_inventory = CANTSTRIP|COVEREYES|COVERMOUTH|ALLOWINTERNALS|ALLOWREBREATH|BLOCKGASEFFECT|ALLOWCPR|BLOCKSHARPOBJ

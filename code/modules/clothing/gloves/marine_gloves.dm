@@ -101,7 +101,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_ULTRAHIGH
 	armor_internaldamage = CLOTHING_ARMOR_ULTRAHIGH
-	unacidable = 1
+	unacidable = TRUE
 
 /obj/item/clothing/gloves/marine/M3G
 	name = "\improper M3-G4 Grenadier gloves"
@@ -116,7 +116,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_VERYHIGH
 	armor_internaldamage = CLOTHING_ARMOR_VERYHIGH
-	unacidable = 1
+	unacidable = TRUE
 
 /obj/item/clothing/gloves/marine/veteran/PMC
 	name = "armored gloves"
@@ -146,7 +146,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	unacidable = 1
+	unacidable = TRUE
 
 /obj/item/clothing/gloves/marine/dress
 	name = "dress gloves"
@@ -169,4 +169,4 @@
 	armor_bio = CLOTHING_ARMOR_HARDCORE
 	armor_rad = CLOTHING_ARMOR_HARDCORE
 	armor_internaldamage = CLOTHING_ARMOR_HARDCORE
-	unacidable = 1
+	unacidable = TRUE

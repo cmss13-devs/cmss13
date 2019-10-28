@@ -80,7 +80,7 @@
 	icon_state = "plasmarifle"
 	item_state = "plasmarifle"
 	origin_tech = "combat=8;materials=7;bluespace=6"
-	unacidable = 1
+	unacidable = TRUE
 	fire_sound = 'sound/weapons/pred_plasma_shot.ogg'
 	ammo = /datum/ammo/energy/yautja/rifle/bolt
 	muzzle_flash = null // TO DO, add a decent one.
@@ -197,7 +197,7 @@
 	icon_state = "plasmapistol"
 	item_state = "plasmapistol"
 	origin_tech = "combat=8;materials=7;bluespace=6"
-	unacidable = 1
+	unacidable = TRUE
 	fire_sound = 'sound/weapons/pulse3.ogg'
 	flags_equip_slot = SLOT_WAIST
 	ammo = /datum/ammo/energy/yautja/pistol

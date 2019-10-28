@@ -1,6 +1,6 @@
 /obj/effect/projector
 	density = 0
-	unacidable = 1
+	unacidable = TRUE
 	anchored = 1
 	invisibility = 101
 	layer = TURF_LAYER

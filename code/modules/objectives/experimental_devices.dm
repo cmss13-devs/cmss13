@@ -22,7 +22,7 @@
 // --------------------------------------------
 /obj/item/device/mass_spectrometer/adv/objective
 	var/datum/cm_objective/retrieve_item/device/objective
-	unacidable = 1
+	unacidable = TRUE
 
 /obj/item/device/mass_spectrometer/adv/objective/New()
 	..()
@@ -31,7 +31,7 @@
 
 /obj/item/device/reagent_scanner/adv/objective
 	var/datum/cm_objective/retrieve_item/device/objective
-	unacidable = 1
+	unacidable = TRUE
 
 /obj/item/device/reagent_scanner/adv/objective/New()
 	..()
@@ -40,7 +40,7 @@
 
 /obj/item/device/healthanalyzer/objective
 	var/datum/cm_objective/retrieve_item/device/objective
-	unacidable = 1
+	unacidable = TRUE
 
 /obj/item/device/healthanalyzer/objective/New()
 	..()
@@ -49,7 +49,7 @@
 
 /obj/item/device/autopsy_scanner/objective
 	var/datum/cm_objective/retrieve_item/device/objective
-	unacidable = 1
+	unacidable = TRUE
 
 /obj/item/device/autopsy_scanner/objective/New()
 	..()

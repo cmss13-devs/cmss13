@@ -135,6 +135,7 @@
 	name = "Storm Shutters";
 	pixel_x = 32;
 	pixel_y = 0;
+	unslashable = 1;
 	unacidable = 1
 	},
 /turf/open/floor{

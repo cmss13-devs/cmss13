@@ -9,7 +9,7 @@
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "bullet"
 	density = 0
-	unacidable = 1
+	unacidable = TRUE
 	anchored = 1 //You will not have me, space wind!
 	flags_atom = NOINTERACT //No real need for this, but whatever. Maybe this flag will do something useful in the future.
 	mouse_opacity = 0

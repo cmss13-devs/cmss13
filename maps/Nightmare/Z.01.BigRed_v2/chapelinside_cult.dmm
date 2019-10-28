@@ -551,6 +551,7 @@
 	id = "Chapel";
 	name = "Storm Shutters";
 	pixel_x = -32;
+	unslashable = 1;
 	unacidable = 1
 	},
 /obj/effect/decal/cleanable/blood,

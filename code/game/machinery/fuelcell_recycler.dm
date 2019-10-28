@@ -11,7 +11,8 @@
 	bound_width = 32
 	var/obj/item/fuelCell/cell_left = null
 	var/obj/item/fuelCell/cell_right = null
-	unacidable = 1
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/machinery/fuelcell_recycler/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/fuelCell))

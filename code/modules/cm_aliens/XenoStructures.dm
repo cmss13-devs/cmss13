@@ -298,7 +298,10 @@
 		if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			new /obj/effect/xenomorph/spray(loc, , source_name, source_mob)
 			for(var/turf/T in range(1,loc))
-				new /obj/effect/xenomorph/spray(T, trap_type-RESIN_TRAP_ACID1+1, source_name, source_mob) //adding extra acid damage for better acid types
+				var/obj/effect/xenomorph/spray/SP = new (T, trap_type-RESIN_TRAP_ACID1+1, source_name, source_mob) //adding extra acid damage for better acid types
+				for(var/mob/living/carbon/human/H in T)
+					SP.apply_spray(H)
+
 			set_state()
 			clear_tripwires()
 

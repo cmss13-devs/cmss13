@@ -145,9 +145,9 @@
 	desc = "Used to dig holes and bash heads in. Folds in to fit in small spaces."
 	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "etool"
+	item_state = "etool"
 	force = 30
 	throwforce = 2
-	item_state = "crowbar"
 	w_class = SIZE_LARGE
 	origin_tech = "engineering=1"
 	dirt_overlay = "etool_overlay"
@@ -156,8 +156,12 @@
 
 
 /obj/item/tool/shovel/etool/update_icon()
-	if(folded) icon_state = "etool_c"
-	else icon_state = "etool"
+	if(folded)
+		icon_state = "etool_c"
+		item_state = "etool_c"
+	else
+		icon_state = "etool"
+		item_state = "etool"
 	..()
 
 

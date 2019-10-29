@@ -2,7 +2,7 @@
 	name = "flash"
 	desc = "Used for blinding and being an asshole."
 	icon_state = "flash"
-	item_state = "flashbang"	//looks exactly like a flash (and nothing like a flashbang)
+	item_state = "flash_device"	//Replace me later
 	throwforce = 5
 	w_class = SIZE_SMALL
 	throw_speed = 4

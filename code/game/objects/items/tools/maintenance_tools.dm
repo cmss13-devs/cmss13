@@ -101,6 +101,7 @@
 	desc = "This cuts wires."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "cutters"
+	item_state = "cutters"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	force = 6.0
@@ -113,11 +114,6 @@
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 1
 
-/obj/item/tool/wirecutters/New()
-	. = ..()
-	if(prob(50))
-		icon_state = "cutters-y"
-		item_state = "cutters_yellow"
 
 /obj/item/tool/wirecutters/attack(mob/living/carbon/C, mob/user)
 	if((C.handcuffed) && (istype(C.handcuffed, /obj/item/handcuffs/cable)))
@@ -444,7 +440,7 @@
 /obj/item/tool/crowbar/red
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "red_crowbar"
-	item_state = "crowbar_red"
+	item_state = "red_crowbar"
 
 
 

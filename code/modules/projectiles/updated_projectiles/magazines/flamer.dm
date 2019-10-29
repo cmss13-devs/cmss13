@@ -6,6 +6,7 @@
 	name = "incinerator tank"
 	desc = "A fuel tank of usually Ultra Thick Napthal Fuel,a sticky combustable liquid chemical, for use in the M240 incinerator unit. Handle with care."
 	icon_state = "flametank"
+	item_state = "flametank"
 	default_ammo = /datum/ammo/flamethrower //doesn't actually need bullets. But we'll get null ammo error messages if we don't
 	max_rounds = 60 //Per turf.
 	current_rounds = 60

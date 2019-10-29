@@ -9,6 +9,7 @@
 	desc = "A 10mm assault rifle magazine."
 	caliber = "10x24mm"
 	icon_state = "m41a"
+	item_state = "generic_mag"
 	w_class = SIZE_MEDIUM
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 40

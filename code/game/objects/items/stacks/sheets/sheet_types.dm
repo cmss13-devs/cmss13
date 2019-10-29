@@ -106,7 +106,7 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 	singular_name = "plasteel sheet"
 	desc = "This sheet is an alloy of iron and phoron."
 	icon_state = "sheet-plasteel"
-	item_state = "sheet-metal"
+	item_state = "sheet-plasteel"
 	matter = list("metal" = 3750)
 	throwforce = 15.0
 	flags_atom = FPRINT|CONDUCT
@@ -146,6 +146,7 @@ var/global/list/datum/stack_recipe/wood_recipes = list ( \
 	desc = "One can only guess that this is a bunch of wood."
 	singular_name = "wood plank"
 	icon_state = "sheet-wood"
+	item_state = "sheet-wood"
 	origin_tech = "materials=1;biotech=1"
 	stack_id = "wood plank"
 

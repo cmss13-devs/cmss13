@@ -152,6 +152,7 @@
 	name = "industrial backpack"
 	desc = "It's a tough backpack lookin' backpack used by engineers and the like."
 	icon_state = "engiepack"
+	item_state = "engiepack"
 
 /obj/item/storage/backpack/toxins
 	name = "laboratory backpack"
@@ -247,6 +248,7 @@
 	name = "\improper lightweight IMP backpack"
 	desc = "The standard-issue pack of the USCM forces. Designed to lug gear into the battlefield."
 	icon_state = "marinepack"
+	item_state = "marinepack"
 	var/has_gamemode_skin = TRUE
 
 	New()
@@ -258,11 +260,13 @@
 	name = "\improper USCM medic backpack"
 	desc = "A standard-issue backpack worn by USCM medics."
 	icon_state = "marinepack_medic"
+	item_state = "marinepack_medic"
 
 /obj/item/storage/backpack/marine/tech
 	name = "\improper USCM technician backpack"
 	desc = "A standard-issue backpack worn by USCM technicians."
 	icon_state = "marinepack_techi"
+	item_state = "marinepack_techi"
 
 /obj/item/storage/backpack/marine/satchel
 	name = "\improper USCM satchel"
@@ -422,6 +426,7 @@
 	name = "\improper USCM technician welderpack"
 	desc = "A specialized backpack worn by USCM technicians. It carries a fueltank for quick welder refueling and use,"
 	icon_state = "welderbackpack"
+	item_state = "welderbackpack"
 	var/max_fuel = 260
 	max_storage_space = 15
 	storage_slots = null

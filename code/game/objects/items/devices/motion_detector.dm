@@ -17,7 +17,7 @@
 	desc = "A device that detects movement, but ignores marines. The screen will show the amount of unidentified movement detected (up to 9). You can switch modes with Alt+Click."
 	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "detector"
-	item_state = "electronic"
+	item_state = "motion_detector"
 	flags_atom = FPRINT| CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	var/list/blip_pool = list()
@@ -187,6 +187,7 @@
 	name = "data detector"
 	desc = "A device that detects objects that may be useful for intel gathering. You can switch modes with Alt+Click."
 	icon_state = "datadetector"
+	item_state = "data_detector"
 	blip_type = "data"
 	var/objects_to_detect = list(/obj/item/document_objective, /obj/item/disk/objective, /obj/item/device/mass_spectrometer/adv/objective, /obj/item/device/reagent_scanner/adv/objective, /obj/item/device/healthanalyzer/objective, /obj/item/device/autopsy_scanner/objective, /obj/item/device/autopsy_scanner/objective, /obj/item/paper/research_notes, /obj/item/reagent_container/glass/beaker/vial/random)
 

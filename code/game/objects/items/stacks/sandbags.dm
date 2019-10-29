@@ -7,6 +7,7 @@
 	singular_name = "sandbag"
 	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "sandbag_stack"
+	item_state = "sandbag_stack"
 	w_class = SIZE_MEDIUM
 	force = 2
 	throwforce = 0
@@ -57,6 +58,7 @@
 	singular_name = "sandbag"
 	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "sandbag_pile"
+	item_state = "sandbag_pile"
 	w_class = SIZE_LARGE
 	force = 9.0
 	throwforce = 15.0

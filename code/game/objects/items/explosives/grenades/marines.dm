@@ -13,7 +13,7 @@
 	desc = "High-Explosive Dual-Purpose. A small, but deceptively strong blast grenade that has been phasing out the M15 HE grenades alongside the M40 HEFA. Capable of being loaded in the M92 Launcher, or thrown by hand."
 	icon_state = "grenade"
 	det_time = 40
-	item_state = "grenade"
+	item_state = "grenade_hedp"
 	dangerous = 1
 	underslug_launchable = TRUE
 	var/explosion_power = 100
@@ -85,7 +85,7 @@
 	name = "\improper M40 HEFA grenade"
 	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand."
 	icon_state = "grenade_frag"
-	item_state = "grenade_frag"
+	item_state = "grenade_hefa"
 	explosion_power = 40
 	shrapnel_count = 48
 
@@ -226,7 +226,7 @@
 	name = "M07 training grenade"
 	desc = "A harmless reusable version of the M40 HEDP, used for training. Capable of being loaded in the M92 Launcher, or thrown by hand."
 	icon_state = "training_grenade"
-	item_state = "grenade"
+	item_state = "grenade_training"
 	dangerous = 0
 	harmful = FALSE
 

@@ -16,6 +16,7 @@
 	nutriment_factor = 0 //So alcohol can fill you up! If they want to.
 	color = "#404030" // rgb: 64, 64, 48
 	var/boozepwr = 5 //higher numbers mean the booze will have an effect faster.
+	var/booze_data = 0
 	var/dizzy_adj = 3
 	var/adj_drowsy = 0
 	var/adj_sleepy = 0
@@ -35,14 +36,13 @@
 	if(adj_drowsy)	M.drowsyness = max(0,M.drowsyness + adj_drowsy)
 	if(adj_sleepy) M.sleeping = max(0,M.sleeping + adj_sleepy)
 
-	if(!src.data || (!isnum(src.data)  && src.data.len)) data = 1   //if it doesn't exist we set it.  if it's a list we're going to set it to 1 as well.  This is to
-	src.data += boozepwr						//avoid a runtime error associated with drinking blood mixed in drinks (demon's blood).
+	booze_data += boozepwr
 
-	var/d = data
+	var/d = booze_data
 
 	// make all the beverages work together
 	for(var/datum/reagent/ethanol/A in holder.reagent_list)
-		if(isnum(A.data)) d += A.data
+		if(A.booze_data) d += A.booze_data
 
 	M.dizziness += dizzy_adj
 	if(d >= slur_start && d < pass_out)
@@ -95,10 +95,11 @@
 	boozepwr = 1
 	nutriment_factor = 1 * FOOD_METABOLISM
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M:jitteriness = max(M:jitteriness-3,0)
+/datum/reagent/ethanol/beer/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.)
+		return
+	M:jitteriness = max(M:jitteriness-3,0)
 
 /datum/reagent/ethanol/kahlua
 	name = "Kahlua"
@@ -110,10 +111,11 @@
 	adj_drowsy = -3
 	adj_sleepy = -2
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.make_jittery(5)
+/datum/reagent/ethanol/kahlua/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.)
+		return
+	M.make_jittery(5)
 
 /datum/reagent/ethanol/whiskey
 	name = "Whiskey"
@@ -148,13 +150,14 @@
 	boozepwr = 2
 	nutriment_factor = 1 * FOOD_METABOLISM
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M:drowsyness = max(0,M:drowsyness-7)
-		if(M.bodytemperature > 310)
-			M.bodytemperature = max(310, M.bodytemperature - (5 * TEMPERATURE_DAMAGE_COEFFICIENT))
-		M.make_jittery(5)
+/datum/reagent/ethanol/thirteenloko/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.)
+		return
+	M:drowsyness = max(0,M:drowsyness-7)
+	if(M.bodytemperature > 310)
+		M.bodytemperature = max(310, M.bodytemperature - (5 * TEMPERATURE_DAMAGE_COEFFICIENT))
+	M.make_jittery(5)
 
 /datum/reagent/ethanol/vodka
 	name = "Vodka"
@@ -178,10 +181,11 @@
 	color = "#666340" // rgb: 102, 99, 64
 	boozepwr = 5
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.druggy = max(M.druggy, 50)
+/datum/reagent/ethanol/threemileisland/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.)
+		return
+	M.druggy = max(M.druggy, 50)
 
 /datum/reagent/ethanol/gin
 	name = "Gin"
@@ -270,52 +274,51 @@
 	slur_start = 1
 	confused_start = 1
 
-	on_mob_life(mob/living/M,alien)
-		M.druggy = max(M.druggy, 50)
-		if(!data) data = 1
-		data++
-		switch(data)
-			if(1 to 25)
-				if(!M.stuttering) M.stuttering = 1
-				M.make_dizzy(1)
-				M.hallucination = max(M.hallucination, 3)
-				if(prob(1)) M.emote(pick("twitch","giggle"))
-			if(25 to 75)
-				if(!M.stuttering) M.stuttering = 1
-				M.hallucination = max(M.hallucination, 10)
-				M.make_jittery(2)
-				M.make_dizzy(2)
-				M.druggy = max(M.druggy, 45)
-				if(prob(5)) M.emote(pick("twitch","giggle"))
-			if(75 to 150)
-				if(!M.stuttering) M.stuttering = 1
-				M.hallucination = max(M.hallucination, 60)
-				M.make_jittery(4)
-				M.make_dizzy(4)
-				M.druggy = max(M.druggy, 60)
-				if(prob(10)) M.emote(pick("twitch","giggle"))
-				if(prob(30)) M.adjustToxLoss(2)
-			if(150 to 300)
-				if(!M.stuttering) M.stuttering = 1
-				M.hallucination = max(M.hallucination, 60)
-				M.make_jittery(4)
-				M.make_dizzy(4)
-				M.druggy = max(M.druggy, 60)
-				if(prob(10)) M.emote(pick("twitch","giggle"))
-				if(prob(30)) M.adjustToxLoss(2)
-				if(prob(5)) if(ishuman(M))
-					var/mob/living/carbon/human/H = M
-					var/datum/internal_organ/heart/L = H.internal_organs_by_name["heart"]
-					if(L && istype(L))
-						L.take_damage(5, 0)
-			if(300 to INFINITY)
-				if(ishuman(M))
-					var/mob/living/carbon/human/H = M
-					var/datum/internal_organ/heart/L = H.internal_organs_by_name["heart"]
-					if(L && istype(L))
-						L.take_damage(100, 0)
-		holder.remove_reagent(src.id, FOOD_METABOLISM)
-		return 1
+/datum/reagent/ethanol/pwine/on_mob_life(mob/living/M,alien)
+	M.druggy = max(M.druggy, 50)
+	booze_data++
+	switch(booze_data)
+		if(1 to 25)
+			if(!M.stuttering) M.stuttering = 1
+			M.make_dizzy(1)
+			M.hallucination = max(M.hallucination, 3)
+			if(prob(1)) M.emote(pick("twitch","giggle"))
+		if(25 to 75)
+			if(!M.stuttering) M.stuttering = 1
+			M.hallucination = max(M.hallucination, 10)
+			M.make_jittery(2)
+			M.make_dizzy(2)
+			M.druggy = max(M.druggy, 45)
+			if(prob(5)) M.emote(pick("twitch","giggle"))
+		if(75 to 150)
+			if(!M.stuttering) M.stuttering = 1
+			M.hallucination = max(M.hallucination, 60)
+			M.make_jittery(4)
+			M.make_dizzy(4)
+			M.druggy = max(M.druggy, 60)
+			if(prob(10)) M.emote(pick("twitch","giggle"))
+			if(prob(30)) M.adjustToxLoss(2)
+		if(150 to 300)
+			if(!M.stuttering) M.stuttering = 1
+			M.hallucination = max(M.hallucination, 60)
+			M.make_jittery(4)
+			M.make_dizzy(4)
+			M.druggy = max(M.druggy, 60)
+			if(prob(10)) M.emote(pick("twitch","giggle"))
+			if(prob(30)) M.adjustToxLoss(2)
+			if(prob(5)) if(ishuman(M))
+				var/mob/living/carbon/human/H = M
+				var/datum/internal_organ/heart/L = H.internal_organs_by_name["heart"]
+				if(L && istype(L))
+					L.take_damage(5, 0)
+		if(300 to INFINITY)
+			if(ishuman(M))
+				var/mob/living/carbon/human/H = M
+				var/datum/internal_organ/heart/L = H.internal_organs_by_name["heart"]
+				if(L && istype(L))
+					L.take_damage(100, 0)
+	holder.remove_reagent(src.id, FOOD_METABOLISM)
+	return 1
 
 /datum/reagent/ethanol/deadrum
 	name = "Deadrum"
@@ -324,10 +327,11 @@
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 1
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.dizziness +=5
+/datum/reagent/ethanol/deadrum/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.)
+		return
+	M.dizziness +=5
 
 
 /datum/reagent/ethanol/sake
@@ -440,11 +444,12 @@
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 5
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(M.bodytemperature < 330)
-			M.bodytemperature = min(330, M.bodytemperature + (15 * TEMPERATURE_DAMAGE_COEFFICIENT)) //310 is the normal bodytemp. 310.055
+/datum/reagent/ethanol/toxins_special/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.)
+		return
+	if(M.bodytemperature < 330)
+		M.bodytemperature = min(330, M.bodytemperature + (15 * TEMPERATURE_DAMAGE_COEFFICIENT)) //310 is the normal bodytemp. 310.055
 
 /datum/reagent/ethanol/irish_cream
 	name = "Irish Cream"
@@ -516,10 +521,11 @@
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 5
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.druggy = max(M.druggy, 30)
+/datum/reagent/ethanol/manhattan_proj/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.)
+		return
+	M.druggy = max(M.druggy, 30)
 
 /datum/reagent/ethanol/whiskeysoda
 	name = "Whiskey Soda"
@@ -535,11 +541,11 @@
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 4
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(M.bodytemperature < 330)
-			M.bodytemperature = min(330, M.bodytemperature + (20 * TEMPERATURE_DAMAGE_COEFFICIENT)) //310 is the normal bodytemp. 310.055
+/datum/reagent/ethanol/antifreeze/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	if(M.bodytemperature < 330)
+		M.bodytemperature = min(330, M.bodytemperature + (20 * TEMPERATURE_DAMAGE_COEFFICIENT)) //310 is the normal bodytemp. 310.055
 
 /datum/reagent/ethanol/barefoot
 	name = "Barefoot"
@@ -623,11 +629,12 @@
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 3
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(M.bodytemperature < 360)
-			M.bodytemperature = min(360, M.bodytemperature + (50 * TEMPERATURE_DAMAGE_COEFFICIENT)) //310 is the normal bodytemp. 310.055
+/datum/reagent/ethanol/sbiten/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.)
+		return
+	if(M.bodytemperature < 360)
+		M.bodytemperature = min(360, M.bodytemperature + (50 * TEMPERATURE_DAMAGE_COEFFICIENT)) //310 is the normal bodytemp. 310.055
 
 /datum/reagent/ethanol/devilskiss
 	name = "Devils Kiss"
@@ -659,11 +666,12 @@
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 1
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(M.bodytemperature > 270)
-			M.bodytemperature = max(270, M.bodytemperature - (20 * TEMPERATURE_DAMAGE_COEFFICIENT)) //310 is the normal bodytemp. 310.055
+/datum/reagent/ethanol/iced_beer/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.)
+		return
+	if(M.bodytemperature > 270)
+		M.bodytemperature = max(270, M.bodytemperature - (20 * TEMPERATURE_DAMAGE_COEFFICIENT)) //310 is the normal bodytemp. 310.055
 
 /datum/reagent/ethanol/grog
 	name = "Grog"
@@ -763,14 +771,14 @@
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 4
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(!data) data = 1
-		data++
-		M.dizziness +=10
-		if(data >= 55 && data <115)
-			if(!M.stuttering) M.stuttering = 1
-			M.stuttering += 10
-		else if(data >= 115 && prob(33))
-			M.confused = max(M.confused+15,15)
+/datum/reagent/ethanol/silencer/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.)
+		return
+	booze_data++
+	M.dizziness +=10
+	if(booze_data >= 55 && booze_data <115)
+		if(!M.stuttering) M.stuttering = 1
+		M.stuttering += 10
+	else if(booze_data >= 115 && prob(33))
+		M.confused = max(M.confused+15,15)

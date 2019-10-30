@@ -182,7 +182,7 @@
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return
-	
+
 	..()
 
 
@@ -271,7 +271,7 @@
 				return
 
 			if(use_points)
-				if((!use_snowflake_points && I.marine_points < cost) && (use_snowflake_points && I.marine_snowflake_points < cost))
+				if((!use_snowflake_points && I.marine_points < cost) || (use_snowflake_points && I.marine_snowflake_points < cost))
 					to_chat(H, SPAN_WARNING("Not enough points."))
 					return
 
@@ -329,9 +329,6 @@
 			else if(type_p == /obj/item/clothing/gloves/marine)
 				type_p = gloves_type
 
-			if((!use_snowflake_points && I.marine_points < cost) && (use_snowflake_points && I.marine_snowflake_points < cost))
-				return
-				
 			var/obj/item/IT = new type_p(loc)
 			IT.add_fingerprint(usr)
 
@@ -416,8 +413,8 @@
 		return
 
 	var/possessive = include_name ? "[src]'s" : "Its"
-	var/nominative = include_name ? "[src]" : "It" 
-	
+	var/nominative = include_name ? "[src]" : "It"
+
 	if(stat & BROKEN)
 		return "[possessive] broken panel still needs to be <b>unscrewed</b> and removed."
 	else if(stat & REPAIR_STEP_ONE)
@@ -1612,6 +1609,10 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		ui.set_auto_update(1)
 
 
+//get which turf the vendor will dispense its products on.
+/obj/structure/machinery/cm_vending/sorted/proc/get_appropriate_vend_turf(mob/living/carbon/human/H)
+	return loc
+
 /obj/structure/machinery/cm_vending/sorted/Topic(href, href_list)
 	if(stat & (BROKEN|NOPOWER))
 		return
@@ -1644,14 +1645,18 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 				to_chat(H, SPAN_WARNING("This machine isn't for you."))
 				return
 
-			var/turf/T = loc
+			var/turf/T = get_appropriate_vend_turf(H)
+
 			if(T.contents.len > 25)
 				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
 				return
 
+			if(L[2] <= 0)	//to avoid dropping more than one product when there's
+				return		// one left and the player spam click during a lagspike.
+
 			var/type_p = L[3]
 
-			var/obj/item/IT = new type_p(loc)
+			var/obj/item/IT = new type_p(T)
 			L[2]--								//taking 1 from amount of products in vendor
 			IT.add_fingerprint(usr)
 
@@ -2011,60 +2016,18 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Submachinegun Stock", round(scale * 4.5), /obj/item/attachable/stock/smg, "black"),
 		)
 
-/obj/structure/machinery/cm_vending/sorted/attachments/Topic(href, href_list)
-	if(stat & (BROKEN|NOPOWER))
-		return
-	if(usr.is_mob_incapacitated())
-		return
+/obj/structure/machinery/cm_vending/sorted/attachments/get_appropriate_vend_turf(mob/living/carbon/human/H)
+	var/turf/T = get_turf(get_step(src, NORTHEAST))
+	if(H.loc == T)
+		T = get_turf(get_step(src, NORTH))
+	else
+		T = get_turf(get_step(src, SOUTHEAST))
+		if(H.loc == T)
+			T = get_turf(get_step(src, SOUTH))
+		else
+			T = get_turf(src)
+	return T
 
-	if (in_range(src, usr) && isturf(loc) && ishuman(usr))
-		usr.set_interaction(src)
-		if (href_list["vend"])
-
-			if(!allowed(usr))
-				to_chat(usr, SPAN_WARNING("Access denied."))
-				return
-
-			var/idx=text2num(href_list["vend"])
-
-			var/list/L = listed_products[idx]
-			var/mob/living/carbon/human/H = usr
-
-			var/obj/item/card/id/I = H.wear_id
-			if(!istype(I)) //not wearing an ID
-				to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
-				return
-
-			if(I.registered_name != H.real_name)
-				to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
-				return
-
-			if(vendor_role && I.rank != vendor_role)
-				to_chat(H, SPAN_WARNING("This machine isn't for you."))
-				return
-
-			var/turf/T = get_turf(get_step(src, NORTHEAST))
-			if(H.loc == T)
-				T = get_turf(get_step(src, NORTH))
-			else
-				T = get_turf(get_step(src, SOUTHEAST))
-				if(H.loc == T)
-					T = get_turf(get_step(src, SOUTH))
-				else
-					T = get_turf(src)
-
-			if(T.contents.len > 25)
-				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
-				return
-
-			var/type_p = L[3]
-
-			var/obj/item/IT = new type_p(T)
-			L[2]--								//taking 1 from amount of products in vendor
-			IT.add_fingerprint(usr)
-
-		add_fingerprint(usr)
-		ui_interact(usr) //updates the nanoUI window
 
 
 /obj/structure/machinery/cm_vending/sorted/attachments/squad
@@ -2111,52 +2074,9 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Submachinegun Stock", round(scale * 1.5), /obj/item/attachable/stock/smg, "black"),
 		)
 
-/obj/structure/machinery/cm_vending/sorted/attachments/squad/Topic(href, href_list)
-	if(stat & (BROKEN|NOPOWER))
-		return
-	if(usr.is_mob_incapacitated())
-		return
+/obj/structure/machinery/cm_vending/sorted/attachments/squad/get_appropriate_vend_turf(mob/living/carbon/human/H)
+	return get_step(src, NORTH)
 
-	if (in_range(src, usr) && isturf(loc) && ishuman(usr))
-		usr.set_interaction(src)
-		if (href_list["vend"])
-
-			if(!allowed(usr))
-				to_chat(usr, SPAN_WARNING("Access denied."))
-				return
-
-			var/idx=text2num(href_list["vend"])
-
-			var/list/L = listed_products[idx]
-			var/mob/living/carbon/human/H = usr
-
-			var/obj/item/card/id/I = H.wear_id
-			if(!istype(I)) //not wearing an ID
-				to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
-				return
-
-			if(I.registered_name != H.real_name)
-				to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
-				return
-
-			if(vendor_role && I.rank != vendor_role)
-				to_chat(H, SPAN_WARNING("This machine isn't for you."))
-				return
-
-			var/turf/T = get_turf(get_step(src, NORTH))
-
-			if(T.contents.len > 25)
-				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
-				return
-
-			var/type_p = L[3]
-
-			var/obj/item/IT = new type_p(T)
-			L[2]--								//taking 1 from amount of products in vendor
-			IT.add_fingerprint(usr)
-
-		add_fingerprint(usr)
-		ui_interact(usr) //updates the nanoUI window
 
 //UNIFORM VENDOR
 obj/structure/machinery/cm_vending/sorted/uniform_supply
@@ -2260,7 +2180,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 							)
 
 //SQUAD PREP WEAPON RACKS.
-/obj/structure/machinery/cm_vending/sorted/marine_prep 
+/obj/structure/machinery/cm_vending/sorted/marine_prep
 	name = "\improper ColMarTech Automated Weapons Rack"
 	desc = "A automated weapon rack hooked up to a colossal storage of standard-issue weapons."
 	icon_state = "armory"
@@ -2278,7 +2198,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("L42A Battle Rifle", round(scale * 10), /obj/item/weapon/gun/rifle/l42mk1, "black"),
 		list("M39 Submachine Gun", round(scale * 30), /obj/item/weapon/gun/smg/m39, "black"),
 		list("M37A2 Pump Shotgun", round(scale * 15), /obj/item/weapon/gun/shotgun/pump, "black"),
-	
+
 		list("Primary Ammunition", -1, null, null),
 		list("M41A Magazine (10x24mm)", round(scale * 25), /obj/item/ammo_magazine/rifle, "black"),
 		list("L42A Magazine (10x24mm)", round(scale * 15), /obj/item/ammo_magazine/rifle/l42mk1, "black"),
@@ -2286,17 +2206,17 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("Box of shotgun slugs (12g)", round(scale * 10), /obj/item/ammo_magazine/shotgun/slugs, "black"),
 		list("Box of buckshot shells (12g)", round(scale * 10), /obj/item/ammo_magazine/shotgun/buckshot, "black"),
 		list("Box of flechette shells (12g)", round(scale * 4), /obj/item/ammo_magazine/shotgun/flechette, "black"),
-	
+
 		list("Sidearms", -1, null, null),
 		list("88 Mod 4 Combat Pistol", round(scale * 25), /obj/item/weapon/gun/pistol/mod88, "black"),
 		list("M44 Combat Revolver", round(scale * 25), /obj/item/weapon/gun/revolver/m44, "black"),
 		list("M4A3 Service Pistol", round(scale * 25), /obj/item/weapon/gun/pistol/m4a3, "black"),
-		
+
 		list("Sidearm Ammunition", -1, null, null),
 		list("88M4 AP Magazine (9mm)", round(scale * 25), /obj/item/ammo_magazine/pistol/mod88, "black"),
 		list("M44 Speedloader (.44)", round(scale * 20), /obj/item/ammo_magazine/revolver, "black"),
 		list("M4A3 Magazine (9mm)", round(scale * 25), /obj/item/ammo_magazine/pistol, "black"),
-		
+
 		list("Attachments", -1, null, null),
 		list("Bayonet", round(scale * 25), /obj/item/attachable/bayonet, "black"),
 		list("Rail Flashlight", round(scale * 25), /obj/item/attachable/flashlight, "black"),
@@ -2304,7 +2224,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("Underslung Grenade Launcher", round(scale * 25), /obj/item/attachable/attached_gun/grenade, "black"), //They already get these as on-spawns, might as well formalize some spares.
 		list("M39 Folding Stock", round(scale * 10), /obj/item/attachable/stock/smg/collapsible, "black"),
 		list("L42 Synthetic Stock", round(scale * 10), /obj/item/attachable/stock/carbine, "black"),
-		
+
 		list("Utilities", -1, null, null),
 		list("M94 Marking flare pack", round(scale * 10), /obj/item/storage/box/m94, "black"),
 		list("M5 'Night Raider' survival knife", round(scale * 30), /obj/item/weapon/combat_knife, "black"),

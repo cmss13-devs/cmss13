@@ -146,7 +146,7 @@
 	if(istype(Proj.firer,/mob/living/carbon/human))
 		message_admins("[key_name_admin(Proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
 		log_game("[key_name(Proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
-	if(Proj.firer)
+	if(ismob(Proj.firer))
 		source_mob = Proj.firer
 
 	if(Proj.damage > 10 && prob(60))

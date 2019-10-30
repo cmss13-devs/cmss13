@@ -17,7 +17,8 @@
 			level = SEC_LEVEL_RED
 		if("delta")
 			level = SEC_LEVEL_DELTA
-	for(var/obj/structure/closet/secure_closet/guncabinet/G in gun_cabinets)
+	for(var/X in gun_cabinets)
+		var/obj/structure/closet/secure_closet/guncabinet/G = X
 		if(G.z == MAIN_SHIP_Z_LEVEL)
 			G.check_sec_level(level)
 
@@ -26,7 +27,7 @@
 	if(level >= SEC_LEVEL_GREEN && level <= SEC_LEVEL_DELTA && level != security_level)
 		switch(level)
 			if(SEC_LEVEL_GREEN)
-				if(announce) 
+				if(announce)
 					ai_announcement("Attention: Security level lowered to GREEN - all clear.", no_sound ? null : 'sound/AI/code_green.ogg')
 				security_level = SEC_LEVEL_GREEN
 				for(var/obj/structure/machinery/firealarm/FA in machines)
@@ -38,10 +39,10 @@
 						SD.set_picture("default")
 			if(SEC_LEVEL_BLUE)
 				if(security_level < SEC_LEVEL_BLUE)
-					if(announce) 
+					if(announce)
 						ai_announcement("Attention: Security level elevated to BLUE - potentially hostile activity on board.", no_sound ? null : 'sound/AI/code_blue_elevated.ogg')
 				else
-					if(announce) 
+					if(announce)
 						ai_announcement("Attention: Security level lowered to BLUE - potentially hostile activity on board.", no_sound ? null : 'sound/AI/code_blue_lowered.ogg')
 				security_level = SEC_LEVEL_BLUE
 				for(var/obj/structure/machinery/firealarm/FA in machines)
@@ -53,10 +54,10 @@
 						SD.set_picture("default")
 			if(SEC_LEVEL_RED)
 				if(security_level < SEC_LEVEL_RED)
-					if(announce) 
+					if(announce)
 						ai_announcement("Attention: Security level elevated to RED - there is an immediate threat to the ship.", no_sound ? null : 'sound/AI/code_red_elevated.ogg')
 				else
-					if(announce) 
+					if(announce)
 						ai_announcement("Attention: Security level lowered to RED - there is an immediate threat to the ship.", no_sound ? null : 'sound/AI/code_red_lowered.ogg')
 					/*
 					var/area/A

@@ -2308,8 +2308,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("Utilities", -1, null, null),
 		list("M94 Marking flare pack", round(scale * 10), /obj/item/storage/box/m94, "black"),
 		list("M5 'Night Raider' survival knife", round(scale * 30), /obj/item/weapon/combat_knife, "black"),
-		list("M11 throwing knife", round(scale * 10), /obj/item/weapon/throwing_knife, "black"),
-		list("Meal Ready to Eat", round(scale * 5), /obj/item/reagent_container/food/snacks/packaged_meal, "black")
+		list("M11 throwing knife", round(scale * 10), /obj/item/weapon/throwing_knife, "black")
 	)
 
 

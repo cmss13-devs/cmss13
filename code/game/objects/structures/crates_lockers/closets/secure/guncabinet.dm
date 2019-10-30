@@ -1,7 +1,7 @@
 /obj/structure/closet/secure_closet/guncabinet
 	name = "gun cabinet"
 	req_access = null
-	health = 1000 //bullet_act says that if the health is above 999, it won't act, so
+	health = 1000
 	icon = 'icons/obj/structures/props/misc.dmi'
 	icon_state = "base"
 	icon_off ="base"
@@ -43,23 +43,30 @@
 		else
 			overlays += icon(src.icon,"open")
 
+//immune to bullets
+/obj/structure/closet/secure_closet/guncabinet/bullet_act(var/obj/item/projectile/Proj)
+	return 1
+
+/obj/structure/closet/secure_closet/guncabinet/ex_act(severity)
+	if(severity > EXPLOSION_THRESHOLD_MEDIUM)
+		for(var/atom/movable/A in contents)//pulls everything out of the locker and hits it with an explosion
+			A.forceMove(loc)
+			A.ex_act(severity - EXPLOSION_THRESHOLD_LOW)
+		qdel(src)
+
 /obj/structure/closet/secure_closet/guncabinet/proc/check_sec_level(var/alert)
-	var/state_change = 0
-	if(alert != req_level && alert < req_level)
+	if(alert < req_level)
+		if(locked)
+			return
 		for(var/mob/living/L in contents)
-			L.loc = src.loc
+			L.forceMove(loc)
 			to_chat(L, SPAN_WARNING("You are forced out of [src]!"))
 		if(!locked)
-			locked = 1
-			state_change = 1
+			locked = TRUE
 	else
 		if(locked)
-			locked = 0
-			state_change = 1
-	if(state_change)
-		for(var/mob/O in viewers(src, 3))
-			if((O.client && !( O.blinded )))
-				to_chat(O, SPAN_NOTICE("[src] [locked ? "locks" : "unlocks"] itself."))
+			locked = FALSE
+	visible_message(SPAN_NOTICE("[src] [locked ? "locks" : "unlocks"] itself."), null, 3)
 	update_icon()
 
 /obj/structure/closet/secure_closet/guncabinet/mp_armory

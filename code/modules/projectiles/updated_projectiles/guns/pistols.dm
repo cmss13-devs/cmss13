@@ -79,8 +79,9 @@
 	item_state = "m4a3c"
 
 /obj/item/weapon/gun/pistol/m4a3/custom/New()
-		..()
-		select_gamemode_skin(/obj/item/weapon/gun/pistol/m4a3/custom)
+	select_gamemode_skin(/obj/item/weapon/gun/pistol/m4a3/custom)
+	..()
+
 
 /obj/item/weapon/gun/pistol/m4a3/custom/set_gun_config_values()
 	..()
@@ -149,7 +150,7 @@
 
 //Captain's vintage pistol.
 /obj/item/weapon/gun/pistol/heavy
-	name = "\improper vintage Desert Eagle"
+	name = "vintage Desert Eagle"
 	desc = "A bulky 50 caliber pistol with a serious kick, probably taken from some museum somewhere. This one is engraved, 'Peace through superior firepower.'"
 	icon_state = "deagle"
 	item_state = "deagle"
@@ -172,6 +173,7 @@
 		var/skin = pick("","g_","c_")
 		icon_state = skin + icon_state
 		item_state = skin + item_state
+		base_gun_icon = skin + base_gun_icon
 		attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 21,"rail_x" = 9, "rail_y" = 23, "under_x" = 20, "under_y" = 17, "stock_x" = 20, "stock_y" = 17)
 
 

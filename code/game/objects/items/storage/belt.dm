@@ -470,8 +470,6 @@
 	storage_slots = 5
 	max_storage_space = 11
 	max_w_class = SIZE_MEDIUM
-	var/holds_guns_now = 0 //Generic variable to determine if the holster already holds a gun.
-	var/holds_guns_max = 1 //How many guns can it hold? I think this can be any thing from 1 to whatever. Should calculate properly.
 	var/obj/item/weapon/gun/current_gun //The gun it holds, used for referencing later so we can update the icon.
 	var/image/gun_underlay //The underlay we will use.
 	var/sheatheSound = 'sound/weapons/gun_pistol_sheathe.ogg'
@@ -502,7 +500,7 @@
 
 /obj/item/storage/belt/gun/proc/update_gun_icon() //We do not want to use regular update_icon as it's called for every item inserted. Not worth the icon math.
 	var/mob/user = loc
-	if(holds_guns_now) //So it has a gun, let's make an icon.
+	if(current_gun) //So it has a gun, let's make an icon.
 		/*
 		Have to use a workaround here, otherwise images won't display properly at all times.
 		Reason being, transform is not displayed when right clicking/alt+clicking an object,
@@ -511,7 +509,7 @@
 		sure that we don't have to do any extra calculations.
 		*/
 		playsound(src,drawSound, 15, 1)
-		gun_underlay = image(icon, src, current_gun.icon_state)
+		gun_underlay = image(icon, src, current_gun.base_gun_icon)
 		gun_underlay.pixel_x = icon_x
 		gun_underlay.pixel_y = icon_y
 		icon_state += "_g"
@@ -531,28 +529,31 @@
 //There are only two types here that can be inserted, and they are mutually exclusive. We only track the gun.
 /obj/item/storage/belt/gun/can_be_inserted(obj/item/W, stop_messages) //We don't need to stop messages, but it can be left in.
 	if( ..() ) //If the parent did their thing, this should be fine. It pretty much handles all the checks.
-		if(istype(W,/obj/item/weapon/gun)) //Is it a gun?
-			if(holds_guns_now == holds_guns_max) //Are we at our gun capacity?
-				if(!stop_messages) to_chat(usr, SPAN_WARNING("[src] already holds a gun."))
-				return //Nothing else to do.
+		if(istype(W,/obj/item/weapon/gun))
+			if(current_gun)
+				if(!stop_messages)
+					to_chat(usr, SPAN_WARNING("[src] already holds a gun."))
+				return
 		else //Must be ammo.
-		//We have slots open for the gun, so in total we should have storage_slots - guns_max in slots, plus whatever is already in the belt.
-			if(( (storage_slots - holds_guns_max) + holds_guns_now) <= contents.len) // We're over capacity, and the space is reserved for a gun.
-				if(!stop_messages) to_chat(usr, SPAN_WARNING("[src] can't hold any more magazines."))
+			var/ammo_slots = storage_slots - 1 //We have a slot reserved for the gun
+			var/ammo_stored = contents.len
+			if(current_gun)
+				ammo_stored -= 1
+			if(ammo_stored >= ammo_slots)
+				if(!stop_messages)
+					to_chat(usr, SPAN_WARNING("[src] can't hold any more magazines."))
 				return
 		return 1
 
 /obj/item/weapon/gun/on_enter_storage(obj/item/storage/belt/gun/gun_belt)
 	if(istype(gun_belt))
-		gun_belt.holds_guns_now++ //Slide it in.
 		if(!gun_belt.current_gun)
 			gun_belt.current_gun = src //If there's no active gun, we want to make this our icon.
 			gun_belt.update_gun_icon()
 
 /obj/item/weapon/gun/on_exit_storage(obj/item/storage/belt/gun/gun_belt)
 	if(istype(gun_belt))
-		gun_belt.holds_guns_now--
-		fast_pulled = 1 //We fast pulled that gun, for equipped()
+		fast_pulled = TRUE //We fast pulled that gun, for equipped()
 		if(gun_belt.current_gun == src)
 			gun_belt.current_gun = null
 			gun_belt.update_gun_icon()
@@ -731,6 +732,8 @@
 	icon_state = "smartpistol_holster"
 	item_state = "marinebelt"
 	storage_slots = 6
+	icon_x = -6
+	icon_y = -2
 	can_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart
@@ -816,7 +819,7 @@
 	icon_state = "sgbelt"
 	item_state = "sgbelt"
 	icon_x = 6
-	icon_y = 3
+	icon_y = -2
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
 		/obj/item/weapon/gun/revolver/m44,
@@ -824,6 +827,10 @@
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/smartgun
 	)
+
+/obj/item/storage/belt/gun/smartgunner/New()
+	select_gamemode_skin(type)
+	..()
 
 /obj/item/storage/belt/gun/smartgunner/full/New()
 	..()

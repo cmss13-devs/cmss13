@@ -6,7 +6,7 @@
 */
 
 #define GRENADE_FIRE_RESISTANCE_MIN 10
-#define GRENADE_FIRE_RESISTANCE_MAX 60
+#define GRENADE_FIRE_RESISTANCE_MAX 40
 
 /obj/item/explosive/grenade/HE
 	name = "\improper M40 HEDP grenade"
@@ -28,14 +28,14 @@
 	fire_resistance = rand(GRENADE_FIRE_RESISTANCE_MIN, GRENADE_FIRE_RESISTANCE_MAX)
 
 /obj/item/explosive/grenade/HE/prime()
-	spawn(0)
-		if(shrapnel_count)
-			create_shrapnel(loc, shrapnel_count, , ,shrapnel_type, initial(name), source_mob)
-			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
-		apply_explosion_overlay()
-		cell_explosion(loc, explosion_power, explosion_falloff, null, initial(name), source_mob)
-		qdel(src)
-	return
+	set waitfor = 0
+	if(shrapnel_count)
+		create_shrapnel(loc, shrapnel_count, , ,shrapnel_type, initial(name), source_mob)
+		sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
+	apply_explosion_overlay()
+	cell_explosion(loc, explosion_power, explosion_falloff, null, initial(name), source_mob)
+	qdel(src)
+
 
 /obj/item/explosive/grenade/HE/proc/apply_explosion_overlay()
 	var/obj/effect/overlay/O = new /obj/effect/overlay(loc)
@@ -47,10 +47,9 @@
 	return
 
 /obj/item/explosive/grenade/HE/flamer_fire_act()
-	fire_resistance-=1;
+	fire_resistance--
 	if(fire_resistance<=0)
-		spawn(rand(10,50))
-			prime()
+		prime()
 
 /obj/item/explosive/grenade/HE/PMC
 	name = "\improper M12 blast grenade"

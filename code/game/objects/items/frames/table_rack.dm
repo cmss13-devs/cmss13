@@ -47,8 +47,6 @@
 
 /obj/item/frame/table/attack_self(mob/user)
 
-
-
 	if(istype(get_area(loc), /area/shuttle))  //HANGAR/SHUTTLE BUILDING
 		to_chat(user, SPAN_WARNING("No. This area is needed for the dropship."))
 		return
@@ -70,7 +68,7 @@
 	matter = list("metal" = 15000) //A reinforced table. Two sheets of metal and four rods
 	table_type = /obj/structure/table/reinforced
 
-/obj/item/frame/table/reinforced/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/frame/table/reinforced/attackby(obj/item/W, mob/user)
 
 	if(istype(W, /obj/item/tool/wrench))
 		new /obj/item/stack/sheet/metal(get_turf(src))
@@ -85,16 +83,16 @@
 	name = "wooden table parts"
 	desc = "A kit for a table, including a large, flat wooden surface and four legs. Some assembly required."
 	icon_state = "wood_tableparts"
-	flags_atom = null
+	flags_atom = FPRINT
 	table_type = /obj/structure/table/woodentable
 
-/obj/item/frame/table/wood/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/frame/table/wood/attackby(obj/item/W, mob/user)
 
 	if(istype(W, /obj/item/tool/wrench))
 		new /obj/item/stack/sheet/wood(get_turf(src))
 		qdel(src)
 
-	if(istype(W, /obj/item/stack/tile/carpet) && istype(src, /obj/item/frame/table/wood))
+	if(istype(W, /obj/item/stack/tile/carpet) && table_type == /obj/structure/table/woodentable)
 		var/obj/item/stack/tile/carpet/C = W
 		if(C.use(1))
 			to_chat(user, SPAN_NOTICE("You put a layer of carpet on [src]."))
@@ -105,14 +103,12 @@
 	name = "poor wooden table parts"
 	desc = "A kit for a poorly crafted table, including a large, flat wooden surface and four legs. Some assembly required."
 	icon_state = "pwood_tableparts"
-	flags_atom = null
 	table_type = /obj/structure/table/woodentable/poor
 
 /obj/item/frame/table/wood/fancy
 	name = "fancy wooden table parts"
 	desc = "A kit for a finely crafted mahogany table, including a large, flat wooden surface and four legs. Some assembly required."
 	icon_state = "fwood_tableparts"
-	flags_atom = null
 	table_type = /obj/structure/table/woodentable/fancy
 
 /*

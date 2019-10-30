@@ -139,14 +139,12 @@
 /obj/structure/closet/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if(health > 999) return 1
 			if(prob(5))
 				for(var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
 					A.ex_act(severity - EXPLOSION_THRESHOLD_LOW)
 				qdel(src)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if(health > 999) return 1
 			if(prob(50))
 				for (var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
@@ -159,7 +157,6 @@
 			qdel(src)
 
 /obj/structure/closet/bullet_act(var/obj/item/projectile/Proj)
-	if(health > 999) return 1
 	health -= round(Proj.damage*0.3)
 	if(prob(30)) playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
 	if(health <= 0)

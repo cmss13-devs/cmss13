@@ -10,7 +10,6 @@
 	fire_sound = 'sound/weapons/gun_minigun.ogg'
 	cocked_sound = 'sound/weapons/gun_minigun_cocked.ogg'
 	current_mag = /obj/item/ammo_magazine/minigun
-	type_of_casings = "cartridge"
 	w_class = SIZE_HUGE
 	force = 20
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_BURST_ON|GUN_WIELDED_FIRING_ONLY
@@ -45,7 +44,6 @@
 	fire_sound = 'sound/weapons/gun_m60.ogg'
 	cocked_sound = 'sound/weapons/gun_m60_cocked.ogg'
 	current_mag = /obj/item/ammo_magazine/m60
-	type_of_casings = "cartridge"
 	w_class = SIZE_LARGE
 	force = 20
 	flags_gun_features = GUN_BURST_ON|GUN_WIELDED_FIRING_ONLY
@@ -75,7 +73,7 @@
 
 /obj/item/weapon/gun/m60/toggle_burst()
 	to_chat(usr, SPAN_WARNING("This weapon can only fire in bursts!"))
-	
+
 //Spike launcher
 
 /obj/item/weapon/gun/launcher/spike

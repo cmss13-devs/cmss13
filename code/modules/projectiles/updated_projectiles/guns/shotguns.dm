@@ -13,7 +13,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
 	cocked_sound = 'sound/weapons/gun_shotgun_reload.ogg'
 	var/opened_sound = 'sound/weapons/gun_shotgun_open2.ogg'
-	type_of_casings = "shell"
 	accuracy_mult = 1.15
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 	aim_slowdown = SLOWDOWN_ADS_SHOTGUN
@@ -130,10 +129,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	return ready_shotgun_tube()
 
 /obj/item/weapon/gun/shotgun/reload_into_chamber(mob/user)
-	if(active_attachable)
-		make_casing(active_attachable.type_of_casings)
-	else
-		make_casing(type_of_casings)
+	if(!active_attachable)
 		in_chamber = null
 
 		//Time to move the tube position.
@@ -154,7 +150,7 @@ can cause issues with ammo types getting mixed up during the burst.
 				return FALSE
 			else if(!SC.camo_ready && (world.time - SC.camo_cooldown_start_time) < SECONDS_2)
 				return FALSE
-			
+
 
 
 //-------------------------------------------------------
@@ -324,7 +320,6 @@ can cause issues with ammo types getting mixed up during the burst.
 			while(current_mag.current_rounds>0 && i<50)
 				unload_shell(user)
 				i++
-		make_casing(type_of_casings)
 
 	current_mag.chamber_closed = !current_mag.chamber_closed
 	update_icon()
@@ -341,10 +336,6 @@ can cause issues with ammo types getting mixed up during the burst.
 		return in_chamber
 	//We can't make a projectile without a mag or active attachable.
 
-/obj/item/weapon/gun/shotgun/double/make_casing()
-	if(current_mag.used_casings)
-		..()
-		current_mag.used_casings = 0
 
 /obj/item/weapon/gun/shotgun/double/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
@@ -355,7 +346,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	in_chamber = null
 	current_mag.chamber_contents[current_mag.chamber_position] = "empty"
 	current_mag.chamber_position--
-	current_mag.used_casings++
 	return 1
 
 
@@ -504,7 +494,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	Which is what we want, since the gun shouldn't fire unless something was chambered.
 	*/
 
-//More or less chambers the round instead of load_into_chamber(). Also ejects used casings.
+//More or less chambers the round instead of load_into_chamber().
 /obj/item/weapon/gun/shotgun/pump/proc/pump_shotgun(mob/user)	//We can't fire bursts with pumps.
 	if(world.time < (recent_pump + pump_delay) ) return //Don't spam it.
 	if(pumped)
@@ -519,10 +509,6 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	ready_shotgun_tube()
 
-	if(current_mag.used_casings)
-		current_mag.used_casings--
-		make_casing(type_of_casings)
-
 	playsound(user, pump_sound, 25, 1)
 	recent_pump = world.time
 	if (in_chamber)
@@ -530,11 +516,8 @@ can cause issues with ammo types getting mixed up during the burst.
 
 
 /obj/item/weapon/gun/shotgun/pump/reload_into_chamber(mob/user)
-	if(active_attachable)
-		make_casing(active_attachable.type_of_casings)
-	else
+	if(!active_attachable)
 		pumped = FALSE //It was fired, so let's unlock the pump.
-		current_mag.used_casings++ //The shell was fired successfully. Add it to used.
 		in_chamber = null
 		//Time to move the tube position.
 		if(!current_mag.current_rounds && !in_chamber)

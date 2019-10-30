@@ -284,7 +284,6 @@
 	origin_tech = "combat=4;materials=2;syndicate=4"
 	fire_sound = 'sound/weapons/gun_mar40.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/mar40
-	type_of_casings = "cartridge"
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
@@ -418,7 +417,6 @@
 	origin_tech = "combat=4;materials=3"
 	fire_sound = 'sound/weapons/gun_mar40.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/m16
-	type_of_casings = "cartridge"
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
@@ -489,7 +487,6 @@
 	item_state = "m16"
 	fire_sound = 'sound/weapons/gun_mar40.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
-	type_of_casings = "cartridge"
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
@@ -594,7 +591,6 @@
 	fire_sound = 'sound/weapons/gun_type71.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/type71
 	wield_delay = WIELD_DELAY_FAST
-	//type_of_casings = "cartridge"
 
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,

@@ -39,7 +39,6 @@
 	on those unique vars. This is done for quicker pathing. Just keep in mind most mags aren't internal, though some are.
 	This is also the default magazine path loaded into a projectile weapon for reverse lookups on New(). Leave this null to do your own thing.*/
 	var/obj/item/ammo_magazine/internal/current_mag = null
-	var/type_of_casings = null					//Can be "bullet", "shell", or "cartridge". Bullets are generic casings, shells are used by shotguns, cartridges are for rifles.
 
 	//Basic stats.
 	var/accuracy_mult 			= 0				//Multiplier. Increased and decreased through attachments. Multiplies the projectile's accuracy by this number.
@@ -531,31 +530,12 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 				var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
 				new_handful.generate_handful(current_mag.default_ammo, current_mag.caliber, 8, 1, type)
 				new_handful.loc = get_turf(src)
-		else
-			make_casing(type_of_casings)
 		in_chamber = null
 	else
 		user.visible_message(SPAN_NOTICE("[user] cocks [src]."),
 		SPAN_NOTICE("You cock [src]."), null, 4)
 	ready_in_chamber() //This will already check for everything else, loading the next bullet.
 
-//Since reloading and casings are closely related, placing this here ~N
-/obj/item/weapon/gun/proc/make_casing(casing_type) //Handle casings is set to discard them.
-	if(casing_type)
-		var/num_of_casings = (current_mag && current_mag.used_casings) ? current_mag.used_casings : 1
-		var/sound_to_play = casing_type == "shell" ? 'sound/weapons/bulletcasing_shotgun_fall.ogg' : pick('sound/weapons/bulletcasing_fall2.ogg','sound/weapons/bulletcasing_fall.ogg')
-		var/turf/current_turf = get_turf(src)
-		var/new_casing = text2path("/obj/item/ammo_casing/[casing_type]")
-		if (!map_tag == MAP_WHISKEY_OUTPOST)
-			var/obj/item/ammo_casing/casing = locate(new_casing) in current_turf
-			if(!casing) //No casing on the ground?
-				casing = new new_casing(current_turf)
-				num_of_casings--
-				playsound(current_turf, sound_to_play, 25, 1, 5) //Played again if necessary.
-			if(num_of_casings) //Still have some.
-				casing.current_casings += num_of_casings
-				casing.update_icon()
-				playsound(current_turf, sound_to_play, 25, 1, 5)
 
 //----------------------------------------------------------
 			//							    \\
@@ -638,13 +618,8 @@ and you're good to go.
 	This should only apply to the masterkey, since it's the only attachment that shoots through Fire()
 	instead of its own thing through fire_attachment(). If any other bullet attachments are added, they would fire here.
 	*/
-	if(active_attachable)
-		make_casing(active_attachable.type_of_casings) // Attachables can drop their own casings.
-	else
-		make_casing(type_of_casings) // Drop a casing if needed.
-		in_chamber = null //If we didn't fire from attachable, let's set this so the next pass doesn't think it still exists.
-
 	if(!active_attachable) //We don't need to check for the mag if an attachment was used to shoot.
+		in_chamber = null //If we didn't fire from attachable, let's set this so the next pass doesn't think it still exists.
 		if(current_mag) //If there is no mag, we can't reload.
 			ready_in_chamber()
 			if(current_mag.current_rounds <= 0 && flags_gun_features & GUN_AUTO_EJECTOR) // This is where the magazine is auto-ejected.

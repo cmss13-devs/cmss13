@@ -17,7 +17,6 @@
 	var/trick_delay = 6
 	var/recent_trick //So they're not spamming tricks.
 	var/russian_roulette = 0 //God help you if you do this.
-	type_of_casings = "bullet"
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_ONE_HAND_WIELDED
 	wield_delay = WIELD_DELAY_VERY_FAST //If you modify your revolver to be two-handed, it will still be fast to aim
 	gun_skill_category = SKILL_PISTOLS
@@ -128,7 +127,6 @@
 
 	if(current_mag.chamber_closed) //If it's actually closed.
 		to_chat(user, SPAN_NOTICE("You clear the cylinder of [src]."))
-		make_casing(type_of_casings)
 		empty_cylinder()
 		current_mag.create_handful(user)
 		current_mag.chamber_closed = !current_mag.chamber_closed
@@ -139,11 +137,6 @@
 		playsound(src, unload_sound, 25, 1)
 	update_icon()
 	return
-
-/obj/item/weapon/gun/revolver/make_casing()
-	if(current_mag.used_casings)
-		. = ..()
-		current_mag.used_casings = 0 //Always dump out everything.
 
 /obj/item/weapon/gun/revolver/able_to_fire(mob/user)
 	. = ..()
@@ -169,7 +162,6 @@
 
 /obj/item/weapon/gun/revolver/reload_into_chamber(mob/user)
 	current_mag.chamber_contents[current_mag.chamber_position] = "blank" //We shot the bullet.
-	current_mag.used_casings++ //We add this only if we actually fired the bullet.
 	rotate_cylinder()
 	return 1
 
@@ -189,7 +181,7 @@
 	if(double)
 		user.visible_message("[user] deftly flicks and spins [src] and [double]!", SPAN_NOTICE("You flick and spin [src] and [double]!"),  null, 3)
 		animation_wrist_flick(double, 1)
-	else 
+	else
 		user.visible_message("[user] deftly flicks and spins [src]!",SPAN_NOTICE("You flick and spin [src]!"),  null, 3)
 
 	animation_wrist_flick(src, direction)
@@ -260,9 +252,9 @@
 				else
 					revolver_throw_catch(user)
 	else
-		if(prob(10)) 
+		if(prob(10))
 			to_chat(user, SPAN_WARNING("You fumble with [src] like an idiot... Uncool."))
-		else 
+		else
 			user.visible_message(SPAN_INFO("<b>[user]</b> fumbles with [src] like a huge idiot!"), null, null, 3)
 
 	recent_trick = world.time //Turn on the delay for the next trick.

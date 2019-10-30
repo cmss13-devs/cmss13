@@ -5,7 +5,6 @@
 	cocked_sound = 'sound/weapons/gun_cocked2.ogg'
 	origin_tech = "combat=4;materials=3"
 	fire_sound = 'sound/weapons/gun_m39.ogg'
-	type_of_casings = "bullet"
 	force = 8
 	w_class = SIZE_LARGE
 	movement_acc_penalty_mult = 4
@@ -38,7 +37,6 @@
 	icon_state = "m39"
 	item_state = "m39"
 	current_mag = /obj/item/ammo_magazine/smg/m39
-	type_of_casings = null
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/reddot,
@@ -397,7 +395,7 @@
 							)
 	random_spawn_muzzle = list(
 							/obj/item/attachable/compensator,
-							/obj/item/attachable/extended_barrel	
+							/obj/item/attachable/extended_barrel
 								)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK

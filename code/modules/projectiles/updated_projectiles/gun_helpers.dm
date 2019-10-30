@@ -42,11 +42,6 @@ DEFINES in setup.dm, referenced here.
 
 	unload() //Same deal. If it's some unique unload method, you need to put that here. User can be passed as null.
 
-	make_casing() //What the gun does to make a casing. If it just shoots them out (or doesn't make casings), the
-	regular proc is fine. This proc uses .dir and icon_state to change the number of bullets spawned, and is the
-	fastest I could make it. One thing to note about it is that if more casings are desired, they have to be
-	pregenerated, usually by hand.
-
 	able_to_fire() //Unless the gun has some special check to see whether or not it may fire, you don't need this.
 	You can see examples of how this is modified in smartgun/sadar code, along with others. Return ..() on a success.
 
@@ -405,7 +400,7 @@ should be alright.
 		I = image(current_mag.icon,src,current_mag.bonus_overlay)
 		attachable_overlays["mag"] = I
 		overlays += I
-	else 
+	else
 		attachable_overlays["mag"] = null
 	return
 

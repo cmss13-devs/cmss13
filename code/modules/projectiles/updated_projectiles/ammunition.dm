@@ -24,7 +24,6 @@ They're all essentially identical when it comes to getting the job done.
 	var/max_rounds = 7 //How many rounds can it hold?
 	var/gun_type = null //Path of the gun that it fits. Mags will fit any of the parent guns as well, so make sure you want this.
 	var/reload_delay = 1 //Set a timer for reloading mags. Higher is slower.
-	var/used_casings = 0 //Just an easier way to track how many shells to eject later.
 	var/flags_magazine = AMMUNITION_REFILLABLE //flags specifically for magazines.
 	var/base_mag_icon //the default mag icon state.
 
@@ -218,7 +217,6 @@ icon_state while reseting the direction. After 16 casings, it just ignores new
 ones. At that point there are too many anyway. Shells and bullets leave different
 items, so they do not intersect. This is far more efficient than using Bl*nd() or
 Turn() or Shift() as there is virtually no overhead. ~N
-Update: Censored cursed word ~Cakey
 */
 /obj/item/ammo_casing
 	name = "spent casing"

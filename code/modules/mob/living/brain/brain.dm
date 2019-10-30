@@ -44,10 +44,7 @@
 
 
 /mob/living/brain/update_canmove()
-	if(in_contents_of(/obj/mecha))
-		canmove = 1
-		use_me = 1 //If it can move, let it emote
-	else							canmove = 0
+	canmove = FALSE
 	return canmove
 
 

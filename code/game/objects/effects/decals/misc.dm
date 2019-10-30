@@ -11,3 +11,78 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "chempuff"
 	flags_pass = PASSTABLE|PASSGRILLE
+
+
+/obj/effect/decal/mecha_wreckage
+	name = "Exosuit wreckage"
+	desc = "Remains of some unfortunate mecha. Completely unrepairable."
+	icon = 'icons/obj/structures/props/mech.dmi'
+	density = 1
+	anchored = 0
+	opacity = 0
+	unacidable = FALSE
+
+/obj/effect/decal/mecha_wreckage/ex_act(severity)
+	if(severity > EXPLOSION_THRESHOLD_MEDIUM)
+		spawn
+			qdel(src)
+	return
+
+/obj/effect/decal/mecha_wreckage/bullet_act(var/obj/item/projectile/Proj)
+	return 1
+
+/obj/effect/decal/mecha_wreckage/attack_alien(mob/living/carbon/Xenomorph/M)
+    if(M.a_intent != "help")
+        playsound(src, 'sound/effects/metal_crash.ogg', 50, 1)
+        M.visible_message(SPAN_DANGER("[M] slices [src] apart!"),SPAN_DANGER("You slice [src] apart!"))
+        robogibs(src)
+        qdel(src)
+
+/obj/effect/decal/mecha_wreckage/gygax
+	name = "Gygax wreckage"
+	icon_state = "gygax-broken"
+
+/obj/effect/decal/mecha_wreckage/gygax/dark
+	name = "Dark Gygax wreckage"
+	icon_state = "darkgygax-broken"
+
+/obj/effect/decal/mecha_wreckage/marauder
+	name = "Marauder wreckage"
+	icon_state = "marauder-broken"
+
+/obj/effect/decal/mecha_wreckage/mauler
+	name = "Mauler Wreckage"
+	icon_state = "mauler-broken"
+	desc = "The syndicate won't be very happy about this..."
+
+/obj/effect/decal/mecha_wreckage/seraph
+	name = "Seraph wreckage"
+	icon_state = "seraph-broken"
+
+/obj/effect/decal/mecha_wreckage/ripley
+	name = "Ripley wreckage"
+	icon_state = "ripley-broken"
+
+/obj/effect/decal/mecha_wreckage/ripley/firefighter
+	name = "Firefighter wreckage"
+	icon_state = "firefighter-broken"
+
+/obj/effect/decal/mecha_wreckage/ripley/deathripley
+	name = "Death-Ripley wreckage"
+	icon_state = "deathripley-broken"
+
+/obj/effect/decal/mecha_wreckage/durand
+	name = "Durand wreckage"
+	icon_state = "durand-broken"
+
+/obj/effect/decal/mecha_wreckage/phazon
+	name = "Phazon wreckage"
+	icon_state = "phazon-broken"
+
+/obj/effect/decal/mecha_wreckage/odysseus
+	name = "Odysseus wreckage"
+	icon_state = "odysseus-broken"
+
+/obj/effect/decal/mecha_wreckage/hoverpod
+	name = "Hover pod wreckage"
+	icon_state = "engineering_pod-broken"

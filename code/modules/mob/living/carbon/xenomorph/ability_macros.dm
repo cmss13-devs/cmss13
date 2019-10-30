@@ -48,7 +48,7 @@
 	to_chat(X, SPAN_WARNING("Your next click will use [A.name]!"))
 	
 	if(X.client)
-		X.client.mouse_pointer_icon = file("icons/old_shit/mecha/mecha_mouse.dmi")
+		X.client.mouse_pointer_icon = file("icons/mob/hud/mecha_mouse.dmi")
 
 
 /datum/action/xeno_action/verb/verb_plant_weeds()

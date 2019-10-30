@@ -42,13 +42,6 @@
 					T = L
 					break
 
-		else if(istype(A, /obj/mecha)) // Our line of sight stuff was already done in ListTargets().
-			var/obj/mecha/M = A
-			if (M.occupant)
-				stance = HOSTILE_STANCE_ATTACK
-				T = M
-				break
-
 		if(istype(A, /obj/structure/machinery/bot))
 			var/obj/structure/machinery/bot/B = A
 			if (B.health > 0)
@@ -98,10 +91,6 @@
 		src.flick_attack_overlay(L, "slash")
 		playsound(src.loc, "alien_claw_flesh", 25, 1)
 		return L
-	if(istype(target_mob,/obj/mecha))
-		var/obj/mecha/M = target_mob
-		M.attack_animal(src)
-		return M
 	if(istype(target_mob,/obj/structure/machinery/bot))
 		var/obj/structure/machinery/bot/B = target_mob
 		B.attack_animal(src)

@@ -327,23 +327,6 @@
 		X.stop_momentum(X.charge_dir)
 		r_FAL
 
-/obj/mecha/charge_act(mob/living/carbon/Xenomorph/X)
-	if(unacidable)
-		X.stop_momentum(X.charge_dir, TRUE)
-		r_FAL
-	if(X.charge_speed < X.charge_speed_buildup * X.charge_turfs_to_charge)
-		X.stop_momentum(X.charge_dir)
-		r_FAL
-	take_damage(X.charge_speed * 80)
-	X.visible_message(SPAN_DANGER("[X] rams [src]!"),
-	SPAN_XENODANGER("You ram [src]!"))
-	playsound(loc, "punch", 25, 1)
-	if(X.charge_speed > X.charge_speed_max/2) //Halfway to full speed or more
-		X.diagonal_step(src, X.dir, 50) //Occasionally fling it diagonally.
-		step_away(src, X)
-		X.charge_speed -= X.charge_speed_buildup * 3 //Lose three turfs worth of speed
-	r_TRU
-
 /obj/structure/machinery/marine_turret/charge_act(mob/living/carbon/Xenomorph/X)
 	if(unacidable)
 		X.stop_momentum(X.charge_dir, TRUE)

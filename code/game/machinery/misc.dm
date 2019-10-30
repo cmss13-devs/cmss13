@@ -313,3 +313,29 @@ proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/dpt)
 	layer = BELOW_OBJ_LAYER
 	anchored = 1
 	density = 1
+
+
+/obj/structure/machinery/mech_bay_recharge_port
+	name = "Mech Bay Power Port"
+	density = 1
+	anchored = 1
+	icon = 'icons/obj/structures/props/mech.dmi'
+	icon_state = "recharge_port"
+
+/obj/structure/machinery/mecha_part_fabricator
+	icon = 'icons/obj/structures/machinery/robotics.dmi'
+	icon_state = "fab-idle"
+	name = "Exosuit Fabricator"
+	desc = "Nothing is being built."
+	density = 1
+	anchored = 1
+	use_power = 1
+	idle_power_usage = 20
+	active_power_usage = 5000
+
+/obj/structure/machinery/computer/mecha
+	name = "Exosuit Control"
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "mecha"
+	req_access = list(ACCESS_MARINE_ENGINEERING)
+	circuit = "/obj/item/circuitboard/computer/mecha_control"

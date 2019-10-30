@@ -491,22 +491,6 @@
 		damage = 40
 	take_damage(damage)
 
-//Slashing mechas
-/obj/mecha/attack_alien(mob/living/carbon/Xenomorph/M)
-	log_message("Attack by claw. Attacker - [M].", 1)
-
-	if(!prob(deflect_chance))
-		take_damage((rand(M.melee_damage_lower, M.melee_damage_upper)/2))
-		check_for_internal_damage(list(MECHA_INT_CONTROL_LOST))
-		playsound(loc, "alien_claw_metal", 25, 1)
-		M.visible_message(SPAN_DANGER("[M] slashes [src]'s armor!"), \
-		SPAN_DANGER("You slash [src]'s armor!"), null, 5)
-	else
-		src.log_append_to_last("Armor saved.")
-		playsound(loc, "alien_claw_metal", 25, 1)
-		M.visible_message(SPAN_WARNING("[M] slashes [src]'s armor to no effect!"), \
-		SPAN_DANGER("You slash [src]'s armor to no effect!"), null, 5)
-
 //Slashing grilles
 /obj/structure/grille/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)

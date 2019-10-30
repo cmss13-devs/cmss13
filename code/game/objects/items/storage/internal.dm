@@ -31,9 +31,6 @@
 		if(user.lying) //Can't use your inventory when lying
 			return
 
-		if(istype(user.loc, /obj/mecha)) //Stops inventory actions in a mech
-			return 0
-
 		if(over_object == user && Adjacent(user)) //This must come before the screen objects only block
 			open(user)
 			return 0

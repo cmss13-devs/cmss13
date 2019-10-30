@@ -156,10 +156,6 @@
 	name = "Circuit board (Crew monitoring computer)"
 	build_path = /obj/structure/machinery/computer/crew
 	origin_tech = "programming=3;biotech=2;magnets=2"
-/obj/item/circuitboard/computer/mech_bay_power_console
-	name = "Circuit board (Mech Bay Power Control Console)"
-	build_path = /obj/structure/machinery/computer/mech_bay_power_console
-	origin_tech = "programming=2;powerstorage=3"
 /obj/item/circuitboard/computer/ordercomp
 	name = "Circuit board (Supply ordering console)"
 	build_path = /obj/structure/machinery/computer/ordercomp

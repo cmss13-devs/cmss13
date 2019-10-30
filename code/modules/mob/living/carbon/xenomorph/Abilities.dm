@@ -653,7 +653,7 @@
 		SPAN_NOTICE("You dig yourself into place! If you move, you must wait again to fire."), null, 5)
 		X.bomb_turf = get_turf(X)
 		if(X.client)
-			X.client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
+			X.client.mouse_pointer_icon = file("icons/mob/hud/mecha_mouse.dmi")
 	else
 		X.is_bombarding = 0
 		if(X.client)

@@ -517,7 +517,7 @@
 /obj/structure/table/woodentable/fancy,
 /obj/item/ashtray/glass,
 /obj/item/toy/deck,
-/obj/item/mecha_parts/part/gygax_head,
+/obj/structure/prop/mech/mech_parts/part/gygax_head,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "bx" = (

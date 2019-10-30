@@ -332,8 +332,6 @@
 
 	switch(name)
 		if("equip")
-			if (istype(user.loc,/obj/mecha)) // stops inventory actions in a mech
-				return 1
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
 				H.quick_equip()
@@ -412,8 +410,6 @@
 	if (..())
 		return 1
 	if(user.is_mob_incapacitated(TRUE))
-		return 1
-	if (istype(user.loc,/obj/mecha)) // stops inventory actions in a mech
 		return 1
 	switch(name)
 		if("r_hand")

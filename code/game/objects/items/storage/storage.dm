@@ -46,9 +46,6 @@
 		if(usr.lying)
 			return
 
-		if(istype(usr.loc, /obj/mecha)) // stops inventory actions in a mech
-			return
-
 		if(over_object == usr && Adjacent(usr)) // this must come before the screen objects only block
 			open(usr)
 			return
@@ -252,8 +249,6 @@
 
 /obj/screen/storage/clicked(var/mob/user, var/list/mods)
 	if(user.is_mob_incapacitated(TRUE))
-		return 1
-	if (istype(user.loc,/obj/mecha)) // stops inventory actions in a mech
 		return 1
 
 	// Placing something in the storage screen

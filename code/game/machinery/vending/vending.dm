@@ -65,7 +65,7 @@
 
 	var/check_accounts = 0		// 1 = requires PIN and checks accounts.  0 = You slide an ID, it vends, SPACE COMMUNISM!
 	var/obj/item/spacecash/ewallet/ewallet
-	var/tipped_level = 0
+	var/is_tipped_over = FALSE
 	var/hacking_safety = 0 //1 = Will never shoot inventory or allow all access
 	var/wrenchable = TRUE
 	var/vending_dir
@@ -178,7 +178,7 @@
 		return "[nominative] is being affected by some power-related issue."
 
 /obj/structure/machinery/vending/attackby(obj/item/W, mob/user)
-	if(tipped_level)
+	if(is_tipped_over)
 		to_chat(user, "Tip it back upright first!")
 		return FALSE
 
@@ -400,17 +400,15 @@
 			warning("UNKNOWN PRODUCT: PID: [pid], CAT: [category] INSIDE [type]!")
 			return null
 
-/obj/structure/machinery/vending/attack_hand(mob/user as mob)
-	if(tipped_level == 2)
-		tipped_level = 1
+/obj/structure/machinery/vending/attack_hand(mob/user)
+	if(is_tipped_over)
+		if(user.action_busy)
+			return
 		user.visible_message(SPAN_NOTICE("[user] begins to heave the vending machine back into place!"),SPAN_NOTICE("You start heaving the vending machine back into place.."))
 		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 			user.visible_message(SPAN_NOTICE("[user] rights the [src]!"),SPAN_NOTICE("You right the [src]!"))
 			flip_back()
-			return
-		else
-			tipped_level = 2
-			return
+		return
 
 	if(stat & (BROKEN|NOPOWER))
 		return
@@ -710,6 +708,9 @@
 
 //Oh no we're malfunctioning!  Dump out some product and break.
 /obj/structure/machinery/vending/proc/malfunction()
+	if(stat & BROKEN)
+		return
+	var/release_amt = rand(3,4)
 	for(var/datum/data/vending_product/R in src.product_records)
 		if (R.amount <= 0) //Try to use a record that actually has something to dump.
 			continue
@@ -717,14 +718,14 @@
 		if (!dump_path)
 			continue
 
-		while(R.amount > 0)
+		while(R.amount > 0 && release_amt > 0)
 			release_item(R, 0)
 			R.amount--
+			release_amt--
 		break
-	flick("door_spark", src)
 	stat |= BROKEN
 	update_icon()
-	return
+
 
 //Somebody cut an important wire and now we're following a new definition of "pitch."
 /obj/structure/machinery/vending/proc/throw_item()

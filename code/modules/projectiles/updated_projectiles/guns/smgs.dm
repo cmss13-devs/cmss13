@@ -43,6 +43,7 @@
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip,
+						/obj/item/attachable/flashlight/grip,
 						/obj/item/attachable/stock/smg,
 						/obj/item/attachable/stock/smg/collapsible,
 						/obj/item/attachable/compensator,
@@ -98,6 +99,7 @@
 							/obj/item/attachable/reddot,
 							/obj/item/attachable/reflex,
 							/obj/item/attachable/flashlight,
+							/obj/item/attachable/flashlight/grip,
 							/obj/item/attachable/magnetic_harness,
 							)
 	random_spawn_underbarrel = list(

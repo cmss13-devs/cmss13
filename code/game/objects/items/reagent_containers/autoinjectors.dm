@@ -8,6 +8,7 @@
 	desc = "An autoinjector containing Inaprovaline.  Useful for saving lives."
 	icon_state = "empty"
 	item_state = "empty"
+	flags_atom = FPRINT
 	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	var/uses_left = 3
@@ -23,7 +24,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/attack(mob/M as mob, mob/user as mob)
 	if(uses_left <= 0)
 		return
-		
+
 	..()
 	uses_left--
 	update_icon()

@@ -24,6 +24,7 @@
 	caste_name = "Bloody Larva"
 	speak_emote = list("hisses")
 	icon_state = "Bloody Larva"
+	layer = MOB_LAYER
 	amount_grown = 0
 	max_grown = 100
 	see_in_dark = 8

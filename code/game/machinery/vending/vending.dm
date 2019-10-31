@@ -94,8 +94,10 @@
 	overlays.Cut()
 	if(panel_open)
 		overlays += image(src.icon, "[initial(icon_state)]-panel")
-	if(stat & ~MAINT)
+	if(stat & BROKEN)
 		icon_state = "[initial(icon_state)]-broken"
+	else if(stat & NOPOWER)
+		icon_state = "[initial(icon_state)]-off"
 	else
 		icon_state = initial(icon_state)
 
@@ -160,8 +162,8 @@
 		return
 
 	var/possessive = include_name ? "[src]'s" : "Its"
-	var/nominative = include_name ? "[src]" : "It" 
-	
+	var/nominative = include_name ? "[src]" : "It"
+
 	if(stat & BROKEN)
 		return "[possessive] broken panel still needs to be <b>unscrewed</b> and removed."
 	else if(stat & REPAIR_STEP_ONE)
@@ -519,10 +521,10 @@
 					else
 						to_chat(usr, SPAN_DANGER("The ewallet doesn't have enough money to pay for that."))
 						src.currently_vending = R
-		
+
 				else
 					src.currently_vending = R
-	
+
 			return
 
 		else if (href_list["cancel_buying"])

@@ -31,6 +31,7 @@
 	desc = "What the hell is THAT?"
 	icon = 'icons/mob/xenos/1x1_Xenos.dmi'
 	icon_state = "Drone Walking"
+	layer = BIG_XENO_LAYER
 	voice_name = "xenomorph"
 	speak_emote = list("hisses")
 	attacktext = "claws"
@@ -52,7 +53,7 @@
 
 	// Mutatotion types/Strain names
 	var/mutation_type = null
-		
+
 	// Armor
 	var/armor_deflection_buff = 0
 	var/armor_explosive_buff = 0
@@ -212,7 +213,7 @@
 	var/used_crest_defense = 0
 	var/used_fortify = 0
 
-	// Burrowers 
+	// Burrowers
 	var/used_burrow = 0
 	var/used_tunnel = 0
 	var/used_widen = 0
@@ -222,7 +223,7 @@
 
 	//Praetorian vars
 	var/used_acid_spray = 0
-	var/prae_status_flags = 0 // Used to store praetorian status flags so we don't stack screech buffs 
+	var/prae_status_flags = 0 // Used to store praetorian status flags so we don't stack screech buffs
 
 	//Carrier vars
 	var/threw_a_hugger = 0
@@ -244,14 +245,14 @@
 
 	//////////////////////////////////////////////////////////////////
 	//
-	//		Modifiers 
+	//		Modifiers
 	//
 	// 		These are used by strains/mutators to buff/debuff a xeno's
-	//      stats. They can be mutated and are persistent between 
+	//      stats. They can be mutated and are persistent between
 	// 		upgrades, but not evolutions (which are just a new Xeno)
 	// 		Strains that wish to change these should use the defines
-	// 		in xeno_defines.dm, NOT snowflake values 
-	//	
+	// 		in xeno_defines.dm, NOT snowflake values
+	//
 	//////////////////////////////////////////////////////////////////
 	var/damage_modifier = 0
 	var/health_modifier = 0
@@ -265,7 +266,7 @@
 	var/weed_modifier = 0
 	var/evasion_modifier = 0
 
-	// TODO: move this to caste-specific 
+	// TODO: move this to caste-specific
 	var/tacklemin = 2
 	var/tacklemax = 3
 	var/tackle_chance = 35
@@ -279,10 +280,10 @@
 
 	//Pouncing Castes
 	var/pounce_slash = FALSE
- 
+
 	//Strain Variables
 	//Boiler
-	// TODO: move this to caste-specific 
+	// TODO: move this to caste-specific
 	var/bombard_cooldown = 30
 	var/min_bombard_dist = 5
 
@@ -753,7 +754,7 @@
 /mob/living/carbon/Xenomorph/rejuvenate()
 	if(stat == DEAD)
 		living_xeno_list += src
-		
+
 		hive.add_xeno(src)
 		hive.hive_ui.update_all_xeno_data()
 

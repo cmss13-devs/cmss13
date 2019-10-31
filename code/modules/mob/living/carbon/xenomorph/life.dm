@@ -244,44 +244,64 @@
 			switch(round(health * 100 / maxHealth)) //Maxhealth should never be zero or this will generate runtimes.
 				if(100 to INFINITY)
 					hud_used.healths.icon_state = "health_full"
+					change_damage_screen(0)
 				if(94 to 99)
 					hud_used.healths.icon_state = "health_16"
+					change_damage_screen(0)
 				if(88 to 93)
 					hud_used.healths.icon_state = "health_15"
+					change_damage_screen(0)
 				if(82 to 87)
 					hud_used.healths.icon_state = "health_14"
+					change_damage_screen(0)
 				if(76 to 81)
 					hud_used.healths.icon_state = "health_13"
+					change_damage_screen(1)
 				if(70 to 75)
 					hud_used.healths.icon_state = "health_12"
+					change_damage_screen(2)
 				if(64 to 69)
 					hud_used.healths.icon_state = "health_11"
+					change_damage_screen(2)
 				if(58 to 63)
 					hud_used.healths.icon_state = "health_10"
+					change_damage_screen(2)
 				if(52 to 57)
 					hud_used.healths.icon_state = "health_9"
+					change_damage_screen(2)
 				if(46 to 51)
 					hud_used.healths.icon_state = "health_8"
+					change_damage_screen(3)
 				if(40 to 45)
 					hud_used.healths.icon_state = "health_7"
+					change_damage_screen(3)
 				if(34 to 39)
 					hud_used.healths.icon_state = "health_6"
+					change_damage_screen(3)
 				if(28 to 33)
 					hud_used.healths.icon_state = "health_5"
+					change_damage_screen(3)
 				if(22 to 27)
 					hud_used.healths.icon_state = "health_4"
+					change_damage_screen(4)
 				if(16 to 21)
 					hud_used.healths.icon_state = "health_3"
+					change_damage_screen(4)
 				if(10 to 15)
 					hud_used.healths.icon_state = "health_2"
+					change_damage_screen(4)
 				if(4 to 9)
 					hud_used.healths.icon_state = "health_1"
+					change_damage_screen(4)
 				if(0 to 3)
 					hud_used.healths.icon_state = "health_0"
+					change_damage_screen(4)
 				else
 					hud_used.healths.icon_state = "health_critical"
+					change_damage_screen(0)
 		else
 			hud_used.healths.icon_state = "health_dead"
+			change_damage_screen(0)
 
 	if(hud_used && hud_used.alien_plasma_display)
 		if(stat != DEAD)

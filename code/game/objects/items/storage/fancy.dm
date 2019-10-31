@@ -296,6 +296,13 @@
 /obj/item/storage/fancy/vials/empty
 	start_vials = 0
 
+/obj/item/storage/fancy/vials/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/storage/pouch/vials))
+		var/obj/item/storage/pouch/vials/M = W
+		dump_into(M,user)
+	else
+		return ..()
+
 /obj/item/storage/lockbox/vials
 	name = "secure vial storage box"
 	desc = "A locked box for keeping things away from children."

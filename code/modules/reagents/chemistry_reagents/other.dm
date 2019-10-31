@@ -472,7 +472,7 @@
 	intensitymod = 0.25
 	durationmod = 1
 	radiusmod = -0.10
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/thermite/on_mob_life(mob/living/M)
 		. = ..()
@@ -629,7 +629,7 @@
 	color = "#A5F0EE" // rgb: 165, 240, 238
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_UNCOMMON
 
 	reaction_obj(var/obj/O, var/volume)
 		if(istype(O,/obj/effect/decal/cleanable))
@@ -688,7 +688,7 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_UNCOMMON
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -800,7 +800,7 @@
 	description = "Diethylamine is used as a potent fertilizer and as an alternative to ammonia. Also used in the preparation rubber processing chemicals, agricultural chemicals, and pharmaceuticals."
 	reagent_state = LIQUID
 	color = "#604030" // rgb: 96, 64, 48
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_UNCOMMON
 
 
 
@@ -845,7 +845,7 @@
 	intensitymod = 1.25
 	durationmod = -0.75
 	radiusmod = -0.075
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/chlorinetrifluoride/on_mob_life(var/mob/living/M) // Not a good idea, instantly messes you up from the inside out.
 	. = ..()

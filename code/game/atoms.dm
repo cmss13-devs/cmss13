@@ -114,6 +114,9 @@ directive is properly returned.
 /atom/proc/is_open_container()
 	return flags_atom & OPENCONTAINER
 
+/atom/proc/can_be_syringed()
+	return flags_atom & CAN_BE_SYRINGED
+
 /*//Convenience proc to see whether a container can be accessed in a certain way.
 
 	proc/can_subract_container()

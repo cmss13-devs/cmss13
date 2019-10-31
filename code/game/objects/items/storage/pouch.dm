@@ -373,6 +373,34 @@
 	new /obj/item/stack/medical/advanced/ointment(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 
+/obj/item/storage/pouch/vials
+	name = "vial pouch"
+	desc = "A pouch for carrying glass vials."
+	icon_state = "vial"
+	storage_slots = 6
+	can_hold = list(/obj/item/reagent_container/glass/beaker/vial)
+
+/obj/item/storage/pouch/vials/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/storage/fancy/vials))
+		var/obj/item/storage/fancy/vials/M = W
+		dump_into(M,user)
+	else
+		return ..()
+
+/obj/item/storage/pouch/chem
+	name = "chemist pouch"
+	desc = "A pouch for carrying glass beakers."
+	icon_state = "chemist"
+	storage_slots = 2
+	can_hold = list(
+		/obj/item/reagent_container/glass/beaker,
+		/obj/item/reagent_container/glass/bottle
+	)
+
+/obj/item/storage/pouch/chem/New()
+	..()
+	new /obj/item/reagent_container/glass/beaker/large(src)
+	new /obj/item/reagent_container/glass/beaker(src)
 
 /obj/item/storage/pouch/autoinjector
 	name = "auto-injector pouch"

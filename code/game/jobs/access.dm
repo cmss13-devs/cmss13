@@ -117,6 +117,8 @@
 		if(ACCESS_MARINE_CMO) 			return "CMO's Office"
 		if(ACCESS_MARINE_MEDBAY)		return "[MAIN_SHIP_NAME] Medbay"
 		if(ACCESS_MARINE_RESEARCH) 		return "[MAIN_SHIP_NAME] Research"
+		if(ACCESS_MARINE_CHEMISTRY) 	return "[MAIN_SHIP_NAME] Chemistry"
+		if(ACCESS_MARINE_MORGUE) 		return "[MAIN_SHIP_NAME] Morgue"
 		if(ACCESS_MARINE_CE)		 	return "CE's Office"
 		if(ACCESS_MARINE_ENGINEERING) 	return "[MAIN_SHIP_NAME] Engineering"
 		if(ACCESS_MARINE_COMMANDER) 	return "Commander's Quarters"

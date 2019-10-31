@@ -178,6 +178,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "cigoff"
 	w_class = SIZE_TINY
 	flags_armor_protection = 0
+	flags_atom = CAN_BE_SYRINGED
 	attack_verb = list("burnt", "singed")
 	var/icon_on = "cigon"  //Note - these are in masks.dmi not in cigarette.dmi
 	var/icon_off = "cigoff"
@@ -185,7 +186,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/lastHolder = null
 	var/smoketime = 300
 	var/chem_volume = 15
-	flags_armor_protection = 0
 
 /obj/item/clothing/mask/cigarette/New()
 	..()

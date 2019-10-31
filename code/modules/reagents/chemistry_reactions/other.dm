@@ -176,13 +176,6 @@
 	required_reagents = list("mercury" = 1, "oxygen" = 1, "sugar" = 1)
 	result_amount = 2
 
-/datum/chemical_reaction/virus_food
-	name = "Virus Food"
-	id = "virusfood"
-	result = "virusfood"
-	required_reagents = list("water" = 1, "milk" = 1)
-	result_amount = 5
-
 /datum/chemical_reaction/cryptobiolin
 	name = "Cryptobiolin"
 	id = "cryptobiolin"
@@ -425,8 +418,8 @@
 	name = "Virus Food"
 	id = "virusfood"
 	result = "virusfood"
-	required_reagents = list("water" = 5, "milk" = 5, "oxygen" = 5)
-	result_amount = 15
+	required_reagents = list("water" = 1, "milk" = 1, "oxygen" = 1)
+	result_amount = 3
 
 
 ///////////////////////////////////////////////////////////////////////////////////

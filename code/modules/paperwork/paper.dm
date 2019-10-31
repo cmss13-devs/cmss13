@@ -533,10 +533,9 @@
 		if(tier)
 			random_chem = pick(chemical_gen_classes_list[tier])
 		else 
-			random_chem = pick(	prob(45);pick(chemical_gen_classes_list["T1"]),\
-								prob(30);pick(chemical_gen_classes_list["T2"]),\
-								prob(15);pick(chemical_gen_classes_list["T3"]),\
-								prob(10);pick(chemical_gen_classes_list["T4"]))
+			random_chem = pick(	prob(55);pick(chemical_gen_classes_list["T2"]),
+								prob(30);pick(chemical_gen_classes_list["T3"]),
+								prob(15);pick(chemical_gen_classes_list["T4"]))
 		if(!random_chem)
 			random_chem = pick(chemical_gen_classes_list["T1"])
 		var/data = "<center><img src = wylogo.png><HR><I><B>Official Company Document</B><BR>Experiment Notes</I><HR><H2>"

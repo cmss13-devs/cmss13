@@ -13,7 +13,7 @@
 	icon_state = "0"
 	matter = list("glass" = 150)
 	amount_per_transfer_from_this = 5
-	possible_transfer_amounts = null //list(5,10,15)
+	possible_transfer_amounts = list(5, 10, 15)
 	volume = 15
 	w_class = SIZE_TINY
 	flags_item = NOBLUDGEON
@@ -125,7 +125,7 @@
 					to_chat(user, SPAN_DANGER("[target] is empty."))
 					return
 
-				if(!target.is_open_container() && !istype(target,/obj/structure/reagent_dispensers))
+				if(!target.is_open_container() && !target.can_be_syringed())
 					to_chat(user, SPAN_DANGER("You cannot directly remove reagents from this object."))
 					return
 
@@ -143,7 +143,7 @@
 			if(istype(target, /obj/item/implantcase/chem))
 				return
 
-			if(!target.is_open_container() && !ismob(target) && !istype(target, /obj/item/reagent_container/food) && !istype(target, /obj/item/clothing/mask/cigarette) && !istype(target, /obj/item/storage/fancy/cigarettes))
+			if(!target.is_open_container() && !ismob(target) && !target.can_be_syringed())
 				to_chat(user, SPAN_DANGER("You cannot directly fill this object."))
 				return
 			if(target.reagents.total_volume >= target.reagents.maximum_volume)

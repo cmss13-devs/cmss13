@@ -38,6 +38,7 @@
 		/obj/structure/machinery/biogenerator,
 		/obj/structure/machinery/reagent_analyzer,
 		/obj/structure/machinery/centrifuge,
+		/obj/structure/machinery/autodispenser,
 		/obj/structure/machinery/constructable_frame)
 
 	New()

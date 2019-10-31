@@ -226,7 +226,7 @@
 	name = "Dinitroaniline"
 	id = "dinitroaniline"
 	description = "Dinitroanilines are a class of chemical compounds used industrially in the production of pesticides and herbicides."
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/toxin/plantbgone
 	name = "Plant-B-Gone"
@@ -344,7 +344,7 @@
 	color = "#FFFFFF" // rgb: 255,255,255
 	toxpwr = 0
 	overdose = 30
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_UNCOMMON
 
 	on_mob_life(mob/living/carbon/M)
 		. = ..()

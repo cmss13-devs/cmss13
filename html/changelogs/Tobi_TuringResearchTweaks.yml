@@ -1,0 +1,44 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: TobiNerd
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes: 
+  - rscadd: "Added the Turing Dispenser to Almayer Research. This semi-automated chem dispenser can be programmed using vials to repeat simple or advanced chem recipes."
+  - tweak: "Added a chemist pouch for holding beakers and bottles, and a vial pouch that can hold up to 6 vials. Click the vial pouch with a vial box to move all the vials into the pouch or vice versa."
+  - tweak: "Tweaked the Researcher's starting loadout. Their pouches are replaced with the vial and chemist pouch respectively, in addition to a syringe in their labcoat."
+  - tweak: "You can now empty blood packs with the centrifuge."
+  - tweak: "Planetside research notes will no longer be about clearance level 1 chems."
+  - tweak: "You can now change the transfer amount of syringes and also use them on blood bags. (#8015)"
+  - spellcheck: "Corrected some chem description errors."
+  - bugfix: "Fixed smartgunner and morgue access being the same thing."
+  - bugfix: "Fixed the ID computer missing chemistry and morgue access buttons."

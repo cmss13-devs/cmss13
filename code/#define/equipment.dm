@@ -31,7 +31,7 @@
 #define UNIQUE_ITEM_TYPE		1024 	// Used for donor items to exclude them for checks.
 #define NO_SNOW_TYPE			2048	// Used for armors or uniforms that don't have a snow icon state.
 #define INVULNERABLE			4096
-#define TIMELESS				8192	// Immune to time manipulation.
+#define CAN_BE_SYRINGED			8192	// syringes can inject or drain reagents in this even if it isn't an OPENCONTAINER
 //==========================================================================================
 
 #define HANDLE_BARRIER_CHANCE 1

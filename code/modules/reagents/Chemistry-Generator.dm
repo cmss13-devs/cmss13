@@ -5,7 +5,7 @@
 		chemclass 						Determines how often a chemical will show up in the generation process
 			CHEM_CLASS_NONE             0 Default. Chemicals not used in the generator
 			CHEM_CLASS_BASIC            1 Chemicals that can be dispensed directly from the dispenser (iron, oxygen)
-			CHEM_CLASS_COMMON           2 Chemicals which recipe is commonly known and made (bicardine, alkysine, salt)
+			CHEM_CLASS_COMMON           2 Chemicals that can be vended directly or have a very simple recipe (bicardine, ammonia, table salt)
 			CHEM_CLASS_UNCOMMON         3 Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)
 			CHEM_CLASS_RARE             4 Chemicals without a recipe but can be obtained on the Almayer, or requires rare components
 			CHEM_CLASS_SPECIAL          5 Chemicals without a recipe and can't be obtained on the Almayer, or requires special components
@@ -238,15 +238,15 @@
 		for(var/i=0;i<gen_tier+1;i++)
 			if(i == 0) //The first property is random to offset the value balance
 				gen_value = add_property()
-			else if(gen_value == -1 + gen_tier) //If we are balanced, don't add any more
+			else if(gen_value == gen_tier - 1) //If we are balanced, don't add any more
 				break
 			else
-				gen_value += add_property(0,0, -1 + gen_tier - gen_value) //add property based on our offset from the prefered balance
+				gen_value += add_property(0,0, gen_tier - gen_value - 1) //add property based on our offset from the prefered balance
 
 	//OD ratios
 	var/gen_overdose = 5
 	for(var/i=1;i<=rand(1,11);i++) //We add 5 units to the overdose per cycle, min 5u, max 60u
-		if(prob(30))//Deviating from 5 gets exponentially more rare.
+		if(prob(40))//Deviating from 5 gets exponentially more rare.
 			gen_overdose += 5
 	var/gen_overdose_critical = gen_overdose + 5
 	for(var/i=1;i<=rand(1,5);i++) //overdose_critical is min 5u, to max 30u + normal overdose
@@ -308,14 +308,15 @@
 	return negative_properties
 
 /datum/proc/get_neutral_chem_properties(var/admin_properties)
-	var/list/neutral_properties = list( PROPERTY_KETOGENIC = "Activates ketosis causing the liver to rapidly burn fatty acids and alcohols in the body, resulting in weight loss. Can cause ketoacidosis in high concentrations, resulting in a buildup of acids and lowered pH levels in the blood.",\
+	var/list/neutral_properties = list( PROPERTY_NUTRITIOUS = "The compound can be used as, or be broken into, nutrition for cell metabolism.",\
+										PROPERTY_KETOGENIC = "Activates ketosis causing the liver to rapidly burn fatty acids and alcohols in the body, resulting in weight loss. Can cause ketoacidosis in high concentrations, resulting in a buildup of acids and lowered pH levels in the blood.",\
 										PROPERTY_PAINING = "Activates the somatosensory system causing neuropathic pain all over the body. Unlike nociceptive pain, this is not caused to any tissue damage and is solely perceptive.",\
 										PROPERTY_NEUROINHIBITING = "Inhibits neurological processes in the brain such to sight, hearing and speech which can result in various associated disabilities. Restoration will require surgery.",\
 										PROPERTY_ALCOHOLIC = "Binds to glutamate neurotransmitters and gamma aminobutyric acid (GABA), slowing brain functions response to stimuli. This effect is also known as intoxication.",\
 										PROPERTY_HALLUCINOGENIC = "Causes perception-like experiences that occur without an external stimulus, which are vivid and clear, with the full force and impact of normal perceptions, though not under voluntary control.",\
 										PROPERTY_RELAXING = "Has a sedative effect on neuromuscular junctions depressing the force of muscle contractions. High concentrations can cause respiratory failure and cardiac arrest.",\
-										PROPERTY_HYPERTHERMIC = "Causes an endothermic reaction when metabolized in the body, decreasing internal body temperature.",\
-										PROPERTY_HYPOTHERMIC = "Causes an exothermic reaction when metabolized in the body, increasing internal body temperature.",\
+										PROPERTY_HYPERTHERMIC = "Causes an endothermic reaction when metabolized in the body, increasing internal body temperature.",\
+										PROPERTY_HYPOTHERMIC = "Causes an exothermic reaction when metabolized in the body, decreasing internal body temperature.",\
 										PROPERTY_BALDING = "Damages the hair follicles in the skin causing extreme alopecia, also refered to as baldness.",\
 										PROPERTY_FLUFFING = "Accelerates cell division in the hair follicles resulting in random and excessive hairgrowth.",\
 										PROPERTY_ALLERGENIC = "Creates a hyperactive immune response in the body, resulting in irritation.",\
@@ -329,8 +330,7 @@
 	return neutral_properties
 
 /datum/proc/get_positive_chem_properties(var/admin_properties)
-	var/list/positive_properties = list(PROPERTY_NUTRITIOUS = "The compound can be used as, or be broken into, nutrition for cell metabolism.",\
-										PROPERTY_ANTITOXIC = "Absorbs and neutralizes toxic chemicals in the bloodstream and allowing them to be excreted safely.",\
+	var/list/positive_properties = list(PROPERTY_ANTITOXIC = "Absorbs and neutralizes toxic chemicals in the bloodstream and allowing them to be excreted safely.",\
 										PROPERTY_ANTICORROSIVE = "Accelerates cell division around corroded areas in order to replace the lost tissue. Excessive use can trigger apoptosis.",\
 										PROPERTY_NEOGENETIC = "Regenerates ruptured membranes resulting in the repair of damaged organic tissue. High concentrations can corrode the cell membranes.",\
 										PROPERTY_REPAIRING = "Repairs cybernetic organs by <B>REDACTED</B>.",\
@@ -367,13 +367,13 @@
 	else
 		potency = rand(0,100)
 		if(potency<=45)
-			potency = 1
+			potency = 1 //45%
 		else if(potency<=80)
-			potency = 2
+			potency = 2 //35%
 		else if(potency<=95)
-			potency = 3
+			potency = 3 //15%
 		else
-			potency = 4
+			potency = 4 //5%
 		//We limit how potent chems can be. So something that is just level 4 healing doesn't spawn too regularly.
 		potency = min(potency, gen_tier + 1)
 
@@ -433,7 +433,7 @@
 	var/info
 	if(chemical_gen_stats_list["[id]"]["properties"])
 		//The list below defines what properties should override each other.
-		var/list/conflicting_properties = list(PROPERTY_TOXIC = PROPERTY_ANTITOXIC,PROPERTY_CORROSIVE = PROPERTY_ANTICORROSIVE,PROPERTY_BIOCIDIC = PROPERTY_NEOGENETIC,PROPERTY_HYPERTHERMIC = PROPERTY_HYPOTHERMIC,PROPERTY_NUTRITIOUS = PROPERTY_KETOGENIC,PROPERTY_PAINING = PROPERTY_PAINKILLING,PROPERTY_HALLUCINOGENIC = PROPERTY_ANTIHALLUCINOGENIC,PROPERTY_HEPATOTOXIC = PROPERTY_HEPATOPEUTIC,PROPERTY_NEPHROTOXIC = PROPERTY_NEPHROPEUTIC,PROPERTY_PNEUMOTOXIC = PROPERTY_PNEUMOPEUTIC, PROPERTY_OCULOTOXIC = PROPERTY_OCULOPEUTIC, PROPERTY_CARDIOTOXIC = PROPERTY_CARDIOPEUTIC,PROPERTY_NEUROTOXIC = PROPERTY_NEUROPEUTIC, PROPERTY_FLUXING = PROPERTY_REPAIRING, PROPERTY_RELAXING = PROPERTY_MUSCLESTIMULATING,PROPERTY_HEMOGENIC = PROPERTY_HEMOLYTIC,PROPERTY_HEMOGENIC = PROPERTY_HEMORRAGING)
+		var/list/conflicting_properties = list(PROPERTY_NUTRITIOUS = PROPERTY_HEMORRAGING,PROPERTY_NUTRITIOUS = PROPERTY_HEMOLYTIC,PROPERTY_TOXIC = PROPERTY_ANTITOXIC,PROPERTY_CORROSIVE = PROPERTY_ANTICORROSIVE,PROPERTY_BIOCIDIC = PROPERTY_NEOGENETIC,PROPERTY_HYPERTHERMIC = PROPERTY_HYPOTHERMIC,PROPERTY_NUTRITIOUS = PROPERTY_KETOGENIC,PROPERTY_PAINING = PROPERTY_PAINKILLING,PROPERTY_HALLUCINOGENIC = PROPERTY_ANTIHALLUCINOGENIC,PROPERTY_HEPATOTOXIC = PROPERTY_HEPATOPEUTIC,PROPERTY_NEPHROTOXIC = PROPERTY_NEPHROPEUTIC,PROPERTY_PNEUMOTOXIC = PROPERTY_PNEUMOPEUTIC, PROPERTY_OCULOTOXIC = PROPERTY_OCULOPEUTIC, PROPERTY_CARDIOTOXIC = PROPERTY_CARDIOPEUTIC,PROPERTY_NEUROTOXIC = PROPERTY_NEUROPEUTIC, PROPERTY_FLUXING = PROPERTY_REPAIRING, PROPERTY_RELAXING = PROPERTY_MUSCLESTIMULATING,PROPERTY_HEMOGENIC = PROPERTY_HEMOLYTIC,PROPERTY_HEMOGENIC = PROPERTY_HEMORRAGING)
 		var/match
 		for(var/P in chemical_gen_stats_list["[id]"]["properties"])
 			if(P == property)
@@ -980,13 +980,13 @@
 					holder.remove_reagent("space_drugs", 5)
 					M.hallucination = max(0, M.hallucination - 10*potency)
 					M.druggy = max(0, M.druggy - 10*potency)
-/////////Positive Properties///////// 
 			if(PROPERTY_NUTRITIOUS) //only picked if nutriment factor > 0
 				M.nutrition += nutriment_factor * potency
 				if(iscarbon(M))
 					var/mob/living/carbon/C = M
 					if(C.blood_volume < BLOOD_VOLUME_NORMAL)
 						C.blood_volume = max(0.2 * nutriment_factor * potency,BLOOD_VOLUME_NORMAL)
+/////////Positive Properties///////// 
 			if(PROPERTY_ANTITOXIC) //toxin healing
 				if(is_OD)
 					M.drowsyness  = max(M.drowsyness, 30)
@@ -1121,6 +1121,7 @@
 								M.adjustOxyLoss(5*potency)
 						else
 							L.damage = max(L.damage - 0.5*potency, 0)
+							H.adjustOxyLoss(-2*potency)
 			if(PROPERTY_OCULOPEUTIC) //eye healing
 				if(ishuman(M))
 					var/mob/living/carbon/human/H = M

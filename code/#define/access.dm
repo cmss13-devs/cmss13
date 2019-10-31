@@ -16,8 +16,7 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_MARINE_ENGPREP 		11
 #define ACCESS_MARINE_LEADER 		12
 #define ACCESS_MARINE_SPECPREP 		13
-#define ACCESS_MARINE_RESEARCH 		14
-#define ACCESS_MARINE_SMARTPREP		25
+#define ACCESS_MARINE_SMARTPREP		14
 
 #define ACCESS_MARINE_ALPHA 		15
 #define ACCESS_MARINE_BRAVO 		16
@@ -33,6 +32,7 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_MARINE_MORGUE	 	25
 #define ACCESS_MARINE_RO			26
 #define ACCESS_MARINE_TANK          27
+#define ACCESS_MARINE_RESEARCH 		28
 
 //Surface access levels
 #define ACCESS_CIVILIAN_PUBLIC 		100

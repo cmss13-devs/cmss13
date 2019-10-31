@@ -137,7 +137,7 @@
 	custom_metabolism = 0.2 // Lasts 5 minutes for 15 units
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/oxycodone/on_mob_life(mob/living/M)
 	. = ..()
@@ -230,7 +230,7 @@
 	overdose = LOWH_REAGENTS_OVERDOSE 
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/dermaline/on_mob_life(mob/living/M, alien)
 	. = ..()
@@ -283,7 +283,7 @@
 	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/dexalinp/on_mob_life(mob/living/M,alien)
 	. = ..()
@@ -311,7 +311,7 @@
 	scannable = 1
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/tricordrazine/on_mob_life(mob/living/M, alien)
 	. = ..()
@@ -519,7 +519,7 @@
 	custom_metabolism = 0.05
 	overdose = REAGENTS_OVERDOSE/2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/arithrazine/on_mob_life(mob/living/M)
 	. = ..()
@@ -571,7 +571,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/alkysine/on_mob_life(mob/living/M)
 	. = ..()
@@ -594,7 +594,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/imidazoline/on_mob_life(mob/living/M)
 	. = ..()
@@ -666,7 +666,7 @@
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1 //scannable now.  HUZZAH.
 	custom_metabolism = 0.05
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/quickclot/on_overdose(mob/living/M)
 	M.apply_damage(3, BRUTE)
@@ -831,7 +831,7 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	scannable = 1
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/cryoxadone/on_mob_life(mob/living/M)
 	. = ..()
@@ -849,7 +849,7 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	scannable = 1
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/clonexadone/on_mob_life(mob/living/M)
 	. = ..()
@@ -907,7 +907,6 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
-	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/spaceacillin/on_overdose(mob/living/M)
 	M.apply_damage(1, TOX)
@@ -923,7 +922,7 @@
 	color = "#605048" // rgb: 96, 80, 72
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	chemclass = CHEM_CLASS_COMMON
+	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/ethylredoxrazine/on_mob_life(mob/living/M)
 	. = ..()
@@ -947,7 +946,7 @@
 /datum/reagent/antidepressant/methylphenidate
 	name = "Methylphenidate"
 	id = "methylphenidate"
-	description = "A commonly prescribed psychostimulant that increaases activity of the central nervous system. Often used to treat attention deficit hyperactivity disorder (ADHD) and narcolepsy. This drug improves performance primarily in the executive function in the prefrontal cortex (reasoning, inhibiting behaviors, organizing, problem solveing, planning ect.)"
+	description = "A commonly prescribed psychostimulant that increases activity of the central nervous system. Often used to treat attention deficit hyperactivity disorder (ADHD) and narcolepsy. This drug improves performance primarily in the executive function in the prefrontal cortex (reasoning, inhibiting behaviors, organizing, problem solving, planning ect.)"
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	custom_metabolism = 0.01
@@ -1038,6 +1037,7 @@
 	overdose = LOWM_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	data = 0
+	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/suxamorycin/on_mob_life(mob/living/M)
 	. = ..()

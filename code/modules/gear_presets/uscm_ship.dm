@@ -159,9 +159,10 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/combatLifesaver(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/researcher(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/paper/research_notes/bad(H), WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/syringe(H), WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medical(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_advanced(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/chem(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/vials(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H), WEAR_J_STORE)
 
 /*****************************************************************************************************/

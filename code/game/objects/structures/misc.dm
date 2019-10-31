@@ -172,7 +172,7 @@ obj/item/alienjar
 	unslashable = TRUE
 	unacidable = TRUE
 	health = null
-	layer = 2
+	layer = TURF_LAYER
 	density = 0
 	opacity = 0
 

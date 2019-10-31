@@ -2,15 +2,6 @@
 	Xenomorph
 */
 
-/mob/living/carbon/Xenomorph //Makes larger aliens layer 5, so they don't overlap with Trijent's water
-	layer = 5
-/mob/living/carbon/Xenomorph/Burrower //These three are small enough not to overlap
-	layer = 4
-/mob/living/carbon/Xenomorph/Runner
-	layer = 4
-/mob/living/carbon/Xenomorph/Larva
-	layer = 4
-
 /mob/living/carbon/Xenomorph/UnarmedAttack(var/atom/A)
 	if(lying || burrow) //No attacks while laying down
 		return 0
@@ -62,7 +53,7 @@
 				if (caste && istype(caste, /datum/caste_datum/queen))
 					var/mob/living/carbon/Xenomorph/oldXeno = observed_xeno
 					overwatch(X, FALSE, /datum/event_handler/xeno_overwatch_onmovement/queen)
-					
+
 					if (oldXeno)
 						oldXeno.hud_set_queen_overwatch()
 					if (X && !X.disposed)
@@ -70,7 +61,7 @@
 
 				else
 					overwatch(X)
-				
+
 				next_move = world.time + 3 // Some minimal delay so this isn't crazy spammy
 				return 1
 
@@ -81,7 +72,7 @@
 
 	if(next_move >= world.time)
 		return 1
-	
+
 	return ..()
 
 /mob/living/carbon/Xenomorph/Boiler/click(var/atom/A, var/list/mods)

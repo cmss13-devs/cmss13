@@ -81,7 +81,12 @@
 //#define MOB_LAYER 4
 
 #define ABOVE_MOB_LAYER 4.1
-#define ABOVE_XENO_LAYER 5.1
+
+#define BIG_XENO_LAYER 4.11	//above ABOVE_MOB_LAYER because it's used for shallow river overlays
+							//which clips with the top of large xeno sprites.
+
+#define ABOVE_XENO_LAYER 4.12	//for xenos to hide behind bushes and tall grass
+
 
 //#define FLY_LAYER 5
 

@@ -145,3 +145,7 @@
 	icon_state = "painoverlay"
 	layer = FULLSCREEN_PAIN_LAYER
 
+
+/obj/screen/fullscreen/xeno_pain
+	icon_state = "xeno_painoverlay"
+	layer = FULLSCREEN_PAIN_LAYER

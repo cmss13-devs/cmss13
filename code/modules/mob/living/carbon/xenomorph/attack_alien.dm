@@ -875,7 +875,7 @@
 			playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
 
 /obj/structure/machinery/vending/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(tipped_level)
+	if(is_tipped_over)
 		to_chat(M, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
 		return 0
 
@@ -893,9 +893,10 @@
 			playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
 		return 1
 
+	if(M.action_busy)
+		return
 	M.visible_message(SPAN_WARNING("\The [M] begins to lean against \the [src]."), \
 	SPAN_WARNING("You begin to lean against \the [src]."), null, 5)
-	tipped_level = 1
 	var/shove_time = 100
 	if(M.mob_size == MOB_SIZE_BIG)
 		shove_time = 50
@@ -905,8 +906,7 @@
 		M.visible_message(SPAN_DANGER("\The [M] knocks \the [src] down!"), \
 		SPAN_DANGER("You knock \the [src] down!"), null, 5)
 		tip_over()
-	else
-		tipped_level = 0
+
 
 /obj/structure/inflatable/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)
@@ -914,7 +914,7 @@
 
 /obj/structure/machinery/vending/proc/tip_over()
 	var/matrix/A = matrix()
-	tipped_level = 2
+	is_tipped_over = TRUE
 	density = 0
 	A.Turn(90)
 	transform = A
@@ -922,7 +922,7 @@
 
 /obj/structure/machinery/vending/proc/flip_back()
 	icon_state = initial(icon_state)
-	tipped_level = 0
+	is_tipped_over = FALSE
 	density = 1
 	var/matrix/A = matrix()
 	transform = A

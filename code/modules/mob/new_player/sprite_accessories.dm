@@ -703,9 +703,9 @@
 	name = "Hulk Hogan Mustache"
 	icon_state = "facial_hogan" //-Neek
 
-/datum/sprite_accessory/facial_hair/vandyke
-	name = "Van Dyke Mustache"
-	icon_state = "facial_vandyke"
+/datum/sprite_accessory/facial_hair/vandyke //Technically horseshoe, but I don't want to break anyone's saves. Not like FL monday.
+	name = "Horseshoe Mustache"
+	icon_state = "facial_horseshoe"
 
 /datum/sprite_accessory/facial_hair/chaplin
 	name = "Square Mustache"
@@ -790,6 +790,49 @@
 	name = "Soul Patch"
 	icon_state = "facial_soulpatch"
 
+/datum/sprite_accessory/facial_hair/full_english
+	name = "Full English"
+	icon_state = "facial_full_english"
+
+/datum/sprite_accessory/facial_hair/moustachio
+	name = "Moustachio"
+	icon_state = "facial_moustache"
+
+/datum/sprite_accessory/facial_hair/devilish
+	name = "Devilish"
+	icon_state = "facial_devilish"
+
+/datum/sprite_accessory/facial_hair/mutton_stache
+	name = "Muttonstache"
+	icon_state = "facial_mutton_stache"
+
+/datum/sprite_accessory/facial_hair/mutton_stache_7oclock
+	name = "Unshaven Muttonstache"
+	icon_state = "facial_mutton_stache_7oclock"
+
+/datum/sprite_accessory/facial_hair/bulbous
+	name = "Bulbous"
+	icon_state = "facial_bulbous"
+
+/datum/sprite_accessory/facial_hair/walrus
+	name = "Walrus"
+	icon_state = "facial_walrus"
+
+/datum/sprite_accessory/facial_hair/super_selleck
+	name = "Super Selleck"
+	icon_state = "facial_super_selleck"
+
+/datum/sprite_accessory/facial_hair/vdyke
+	name = "Van Dyke"
+	icon_state = "facial_vdkye"
+
+/datum/sprite_accessory/facial_hair/vdyke_e
+	name = "Van Dyke Extended"
+	icon_state = "facial_vdkye_e"
+
+/datum/sprite_accessory/facial_hair/soulful_selleck
+	name = "Soulful Selleck"
+	icon_state = "facial_soulful_selleck"
 
 //skin styles - WIP
 //going to have to re-integrate this with surgery

@@ -220,6 +220,13 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		new /obj/item/ammo_magazine/shotgun/flechette(src)
 		new /obj/item/storage/belt/shotgun(src)
 
+/obj/item/storage/box/kit/update_icon()
+	if(!contents.len)
+		var/turf/T = get_turf(src)
+		if(T)
+			new /obj/item/paper/crumpled(T)
+		qdel(src)
+
 /obj/item/storage/box/kit/mini_pyro
 	name = "\improper M240 Pyrotechnician Support Kit"
 
@@ -287,6 +294,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		new /obj/item/pamphlet/engineer(src)
 		new /obj/item/storage/pouch/construction(src)
 		new /obj/item/clothing/gloves/yellow(src)
+		new /obj/item/tool/crowbar(src)
 		new /obj/item/tool/shovel/etool(src)
 		new /obj/item/clothing/glasses/welding(src)
 		new /obj/item/storage/pouch/tools/pfc(src)

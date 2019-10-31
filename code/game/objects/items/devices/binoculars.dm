@@ -148,7 +148,7 @@
 	if(mode)
 		var/obj/effect/overlay/temp/laser_coordinate/LT = new (TU, laz_name, user)
 		coord = LT
-		to_chat(user, SPAN_NOTICE("SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [obfuscate_x(coord.x)]. LATITUDE [obfuscate_y(coord.y)]."))
+		interact(user)
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)
 		while(coord)
 			if(!do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_GENERIC))
@@ -168,6 +168,15 @@
 					laser = null
 				break
 
+/obj/item/device/binoculars/tactical/interact(mob/user as mob)
+	var/dat = "<html><head><title>[src]</title></head><body><TT>"
+
+	dat += "<h3>SIMPLIFIED COORDINATES OF TARGET:</h3><BR>"
+	dat += "<h4>LONGITUDE [obfuscate_x(coord.x)]. LATITUDE [obfuscate_y(coord.y)].</h4></TT></body></html>"
+
+	user << browse(dat, "window=tacbinos")
+	onclose(user, "tacbinos")
+	return
 
 /obj/item/device/binoculars/tactical/scout
 	name = "scout tactical binoculars"

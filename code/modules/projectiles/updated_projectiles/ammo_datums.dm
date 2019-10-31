@@ -1084,9 +1084,9 @@
 
 /datum/ammo/rocket/ap/New()
 	..()
-	accuracy = config.min_hit_accuracy
-	accuracy_var_low = config.med_proj_variance
-	accurate_range = config.short_shell_range
+	accuracy = config.max_hit_accuracy
+	accuracy_var_low = config.min_proj_variance
+	accurate_range = config.near_shell_range
 	max_range = config.norm_shell_range
 	damage = config.ultra_hit_damage //lmao tons of hit damage but it's never processed due to the below proc redefinitions
 	penetration= config.max_armor_penetration
@@ -1094,8 +1094,8 @@
 /datum/ammo/rocket/ap/on_hit_mob(mob/M, obj/item/projectile/P)
 	var/turf/T = get_turf(M)
 	M.ex_act(150, P.dir, P.weapon_source, P.firer, 100)
-	M.KnockDown(2)
-	M.KnockOut(2)
+	M.KnockDown(4)
+	M.KnockOut(4)
 	cell_explosion(T, 100, 50, null, P.weapon_source, P.firer)
 	smoke.set_up(1, T)
 	smoke.start()
@@ -1111,8 +1111,8 @@
 	var/hit_something = 0
 	for(var/mob/M in T)
 		M.ex_act(150, P.dir, P.weapon_source, P.firer, 100)
-		M.KnockDown(2)
-		M.KnockOut(2)
+		M.KnockDown(4)
+		M.KnockOut(4)
 		hit_something = 1
 		continue
 	if(!hit_something)

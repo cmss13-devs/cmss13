@@ -682,7 +682,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		usr.visible_message(SPAN_NOTICE("[usr] starts collapsing [src]."),
 			SPAN_NOTICE("You begin collapsing [src]."))
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-		if(do_after(usr, SECONDS_8, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+		if(do_after(usr, SECONDS_4, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 			collapse(usr)
 		else
 			to_chat(usr, SPAN_WARNING("You stop collapsing [src]."))

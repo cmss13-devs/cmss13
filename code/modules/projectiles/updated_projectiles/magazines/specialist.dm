@@ -101,7 +101,7 @@
 
 /obj/item/ammo_magazine/smartgun/internal/New(loc, spawn_empty = 1)
 	. = ..()
-	
+
 /obj/item/ammo_magazine/smartgun/dirty
 	icon_state = "m57_dirty"
 	default_ammo = /datum/ammo/bullet/smartgun/dirty
@@ -137,35 +137,66 @@
 	gun_type = /obj/item/weapon/gun/launcher/rocket
 	flags_magazine = NOFLAGS
 
-	attack_self(mob/user)
-		if(current_rounds <= 0)
-			to_chat(user, SPAN_NOTICE("You begin taking apart the empty tube frame..."))
-			if(do_after(user,10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				user.visible_message("[user] deconstructs the rocket tube frame.",SPAN_NOTICE("You take apart the empty frame."))
-				var/obj/item/stack/sheet/metal/M = new(get_turf(user))
-				M.amount = 2
-				user.drop_held_item()
-				qdel(src)
-		else to_chat(user, "Not with a missile inside!")
+/obj/item/ammo_magazine/rocket/attack_self(mob/user)
+	if(current_rounds <= 0)
+		to_chat(user, SPAN_NOTICE("You begin taking apart the empty tube frame..."))
+		if(do_after(user,10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			user.visible_message("[user] deconstructs the rocket tube frame.",SPAN_NOTICE("You take apart the empty frame."))
+			var/obj/item/stack/sheet/metal/M = new(get_turf(user))
+			M.amount = 2
+			user.drop_held_item()
+			qdel(src)
+	else to_chat(user, "Not with a missile inside!")
+
+/obj/item/ammo_magazine/rocket/attack(mob/living/carbon/human/M, mob/living/carbon/human/user, def_zone)
+	if(!istype(M) || !istype(user) || get_dist(user, M) > 1)
+		return
+	var/obj/item/weapon/gun/launcher/in_hand = M.get_active_hand()
+	if(!in_hand || !istype(in_hand))
+		return
+	var/obj/item/weapon/twohanded/offhand/off_hand = M.get_inactive_hand()
+	if(!off_hand || !istype(off_hand))
+		to_chat(user, SPAN_WARNING("\the [M] needs to be wielding \the [in_hand] in order to reload!"))
+		return
+	if(!skillcheck(M, SKILL_FIREARMS, SKILL_FIREARMS_DEFAULT))
+		to_chat(user, SPAN_WARNING("You don't know how to reload \the [in_hand]!"))
+		return
+	if(M.dir != user.dir || M.loc != get_step(user, user.dir))
+		to_chat(user, SPAN_WARNING("You must be standing behind \the [M] in order to reload it!"))
+		return
+	if(in_hand.current_mag.current_rounds > 0)
+		to_chat(user, SPAN_WARNING("\the [in_hand] is already loaded!"))
+		return
+	if(user.action_busy)
+		return
+	to_chat(user, SPAN_NOTICE("You begin reloading \the [M]'s [in_hand]! Hold still..."))
+	if(!do_after(user,(in_hand.current_mag.reload_delay / 2), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
+		return
+	if(off_hand != M.get_inactive_hand())
+		to_chat(user, SPAN_WARNING("\the [M] needs to be wielding \the [in_hand] in order to reload!"))
+		return
+	if(M.dir != user.dir)
+		to_chat(user, SPAN_WARNING("You must be standing behind \the [M] in order to reload it!"))
+		return
+	user.drop_inv_item_on_ground(src)
+	in_hand.replace_ammo(user,src)
+	in_hand.current_mag.current_rounds = in_hand.current_mag.max_rounds
+	current_rounds = 0
+	to_chat(user, SPAN_NOTICE("You load \the [src] into \the [M]'s [in_hand]."))
+	if(in_hand.reload_sound)
+		playsound(M, in_hand.reload_sound, 25, 1)
+	else
+		playsound(M,'sound/machines/click.ogg', 25, 1)
 
 	update_icon()
-		overlays.Cut()
-		if(default_ammo == /datum/ammo/rocket/)
-			name = "\improper 84mm high explosive rocket"
-			desc = "A rocket tube for an M5 RPG rocket. When empty, use this frame to deconstruct it"
-			icon_state = "rocket"
-		if(default_ammo == /datum/ammo/rocket/ap)
-			name = "\improper 84mm anti-armor rocket"
-			icon_state = "ap_rocket"
-			desc = "A tube for an AP rocket, the warhead of which is extremely dense and turns molten on impact. When empty, use this frame to deconstruct it."
-		if(default_ammo == /datum/ammo/rocket/wp)
-			name = "\improper 84mm white phosphorous rocket"
-			icon_state = "wp_rocket"
-			desc = "A highly destructive warhead that bursts into deadly flames on impact. When empty, use this frame to deconstruct it"
-		if(current_rounds <= 0)
-			name = "empty rocket frame"
-			desc = "A spent rocket rube. Activate it to deconstruct it and receive some materials."
-			icon_state = type == /obj/item/ammo_magazine/rocket/m57a4? "quad_rocket_e" : "rocket_e"
+	return 1
+
+/obj/item/ammo_magazine/rocket/update_icon()
+	if(current_rounds <= 0)
+		icon_state = "rocket_e"
+	else
+		icon_state = initial(icon_state)
 
 /obj/item/ammo_magazine/rocket/ap
 	name = "\improper 84mm anti-armor rocket"
@@ -201,6 +232,11 @@
 	default_ammo = /datum/ammo/rocket/wp/quad
 	gun_type = /obj/item/weapon/gun/launcher/rocket/m57a4
 	reload_delay = 200
+
+/obj/item/ammo_magazine/rocket/m57a4/update_icon()
+	..()
+	if(current_rounds <= 0)
+		icon_state = "quad_rocket_e"
 
 /obj/item/ammo_magazine/internal/launcher/rocket/m57a4
 	desc = "The internal tube of an M83AM Thermobaric Launcher."

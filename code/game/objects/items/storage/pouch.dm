@@ -524,6 +524,7 @@
 		/obj/item/stack/sheet,
 		/obj/item/stack/rods,
 		/obj/item/stack/cable_coil,
+		/obj/item/stack/tile,
 		/obj/item/tool/shovel/etool,
 		/obj/item/stack/sandbags_empty,
 		/obj/item/device/lightreplacer,

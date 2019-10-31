@@ -496,6 +496,7 @@
 		list("Quickfire adapter", 15, /obj/item/attachable/quickfire, null, "black"),
 		list("Recoil compensator", 15, /obj/item/attachable/compensator, null, "black"),
 		list("Red-dot sight", 15, /obj/item/attachable/reddot, null, "black"),
+		list("Reflex sight", 15, /obj/item/attachable/reflex, null, "black"),
 		list("Submachinegun stock", 15, /obj/item/attachable/stock/smg, null, "black"),
 		list("Suppressor", 15, /obj/item/attachable/suppressor, null, "black"),
 		list("Vertical grip", 15, /obj/item/attachable/verticalgrip, null, "black"),
@@ -1140,6 +1141,7 @@
 		list("Quickfire adapter", 6, /obj/item/attachable/quickfire, null, "black"),
 		list("Recoil compensator", 6, /obj/item/attachable/compensator, null, "black"),
 		list("Red-dot sight", 6, /obj/item/attachable/reddot, null, "black"),
+		list("Reflex sight", 6, /obj/item/attachable/reflex, null, "black"),
 		list("Submachinegun stock", 6, /obj/item/attachable/stock/smg, null, "black"),
 		list("Suppressor", 6, /obj/item/attachable/suppressor, null, "black"),
 		list("Vertical grip", 6, /obj/item/attachable/verticalgrip, null, "black"),
@@ -1160,11 +1162,12 @@
 
 		list("SPECIAL AMMUNITION", 0, null, null, null),
 		list("M56 powerpack", 15, /obj/item/smartgun_powerpack, null, "black"),
-		list("M56 ammo", 15, /obj/item/ammo_magazine/smartgun, null, "black"),
+		list("M56 ammunition drum", 15, /obj/item/ammo_magazine/smartgun, null, "black"),
 
 		list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
 		list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Reflex sight", 0, /obj/item/attachable/reflex, null, "black"),
 		list("Burst Fire Assembly", 0, /obj/item/attachable/burstfire_assembly, MARINE_CAN_BUY_ATTACHMENT, "black"),
 
 		list("MISCELLANEOUS AND SPECIAL", 0, null, null, null),
@@ -1240,6 +1243,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Quickfire adapter", 6, /obj/item/attachable/quickfire, null, "black"),
 		list("Recoil compensator", 6, /obj/item/attachable/compensator, null, "black"),
 		list("Red-dot sight", 6, /obj/item/attachable/reddot, null, "black"),
+		list("Reflex sight", 6, /obj/item/attachable/reflex, null, "black"),
 		list("S4 telescoping sight", 6, /obj/item/attachable/scope/mini, null, "black"),
 		list("M37 wooden stock", 6, /obj/item/attachable/stock/shotgun, null, "black"),
 		list("Suppressor", 6, /obj/item/attachable/suppressor, null, "black"),
@@ -1288,6 +1292,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Quickfire adapter", 6, /obj/item/attachable/quickfire, null, "black"),
 		list("Recoil compensator", 6, /obj/item/attachable/compensator, null, "black"),
 		list("Red-dot sight", 6, /obj/item/attachable/reddot, null, "black"),
+		list("Reflex sight", 6, /obj/item/attachable/reflex, null, "black"),
 		list("Submachinegun stock", 6, /obj/item/attachable/stock/smg, null, "black"),
 		list("Suppressor", 6, /obj/item/attachable/suppressor, null, "black"),
 		list("Vertical grip", 6, /obj/item/attachable/verticalgrip, null, "black"),
@@ -1656,7 +1661,12 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 
 			var/type_p = L[3]
 
-			var/obj/item/IT = new type_p(T)
+			var/obj/item/IT
+			if(ispath(type_p,/obj/item/weapon/gun))
+				IT = new type_p(T, TRUE)
+			else
+				IT = new type_p(T)
+
 			L[2]--								//taking 1 from amount of products in vendor
 			IT.add_fingerprint(usr)
 

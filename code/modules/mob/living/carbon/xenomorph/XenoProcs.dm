@@ -116,7 +116,7 @@
 		if(is_mob_incapacitated() || buckled)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 			return 0
-		
+
 	return 1
 
 //Checks your plasma levels and gives a handy message.
@@ -124,7 +124,7 @@
 	if(stat)
 		to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 		return 0
-	
+
 	if(dazed)
 		to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 		return 0
@@ -539,7 +539,8 @@
 		stop_momentum(charge_dir)
 		r_FAL
 
-	if(dir != charge_dir || m_intent == MOVE_INTENT_WALK || istype(loc, /turf/open/gm/river))
+	var/turf/T = loc
+	if(dir != charge_dir || m_intent == MOVE_INTENT_WALK || T.stop_crusher_charge())
 		stop_momentum(charge_dir)
 		r_FAL
 
@@ -630,9 +631,9 @@
 
 	if (queued_action.can_use_action() && queued_action.action_cooldown_check())
 		queued_action.use_ability(A)
-		
+
 	queued_action = null
-		
+
 	if(client)
 		client.mouse_pointer_icon = initial(client.mouse_pointer_icon) // Reset our mouse pointer when we no longer have an action queued.
 

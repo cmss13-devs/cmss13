@@ -23,10 +23,11 @@
 		icon_state = initial(icon_state)
 
 /obj/item/device/flashlight/Dispose()
-	if(ismob(src.loc))
-		src.loc.SetLuminosity(-brightness_on)
-	else
-		SetLuminosity(0)
+	if(on)
+		if(ismob(src.loc))
+			src.loc.SetLuminosity(-brightness_on)
+		else
+			SetLuminosity(0)
 	. = ..()
 
 

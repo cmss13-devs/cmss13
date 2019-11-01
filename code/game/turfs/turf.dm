@@ -440,3 +440,7 @@ spookydonut august 2018
 
 	if(istype(mover)) // turf/Enter(...) will perform more advanced checks
 		return !density
+
+//whether the turf cancels a crusher charge
+/turf/proc/stop_crusher_charge()
+	return FALSE

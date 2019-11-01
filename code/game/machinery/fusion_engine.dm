@@ -72,17 +72,7 @@
 		add_avail(FUSION_ENGINE_MAX_POWER_GEN * (power_gen_percent / 100) ) //Nope, all good, just add the power
 		fusion_cell.fuel_amount-=fuel_rate //Consumes fuel
 
-		switch(fusion_cell.fuel_amount)
-			if(0 to 10)
-				icon_state = "on-10"
-			if(11 to 25)
-				icon_state = "on-25"
-			if(26 to 50)
-				icon_state = "on-50"
-			if(51 to 75)
-				icon_state = "on-75"
-			if(76 to INFINITY)
-				icon_state = "on-100"
+		update_icon()
 
 
 /obj/structure/machinery/power/fusion_engine/attack_hand(mob/user)
@@ -255,16 +245,16 @@
 		if(fusion_cell)
 			to_chat(user, SPAN_INFO("You can see a fuel cell in the receptacle."))
 			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MT))
-				switch(fusion_cell.fuel_amount)
+				switch(fusion_cell.get_fuel_percent())
 					if(0 to 10)
 						to_chat(user, SPAN_DANGER("The fuel cell is critically low."))
-					if(11 to 25)
+					if(10 to 25)
 						to_chat(user, SPAN_WARNING("The fuel cell is running low."))
-					if(26 to 50)
+					if(25 to 50)
 						to_chat(user, SPAN_INFO("The fuel cell is a little under halfway."))
-					if(51 to 75)
+					if(50 to 75)
 						to_chat(user, SPAN_INFO("The fuel cell is a little above halfway."))
-					if(76 to INFINITY)
+					if(75 to INFINITY)
 						to_chat(user, SPAN_INFO("The fuel cell is nearly full."))
 		else
 			to_chat(user, SPAN_INFO("There is no fuel cell in the receptacle."))
@@ -274,16 +264,16 @@
 		if(0)
 			if(fusion_cell)
 				var/pstatus = is_on ? "on" : "off"
-				switch(fusion_cell.fuel_amount)
+				switch(fusion_cell.get_fuel_percent())
 					if(0 to 10)
 						icon_state = "[pstatus]-10"
-					if(11 to 25)
+					if(10 to 25)
 						icon_state = "[pstatus]-25"
-					if(26 to 50)
+					if(25 to 50)
 						icon_state = "[pstatus]-50"
-					if(51 to 75)
+					if(50 to 75)
 						icon_state = "[pstatus]-75"
-					if(76 to INFINITY)
+					if(75 to INFINITY)
 						icon_state = "[pstatus]-100"
 			else
 				icon_state = "off"

@@ -316,6 +316,10 @@
 	M.clean_blood()
 
 
+/turf/open/gm/river/stop_crusher_charge()
+	return !covered
+
+
 /turf/open/gm/river/poison/New()
 	..()
 	overlays += image("icon"='icons/effects/effects.dmi',"icon_state"="greenglow","layer"=MOB_LAYER+0.1)

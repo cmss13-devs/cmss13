@@ -207,7 +207,7 @@ proc/tg_list2text(list/list, glue=",")
 /proc/angle2text(var/degree)
 	return dir2text(angle2dir(degree))
 
-//Converts a blend_mode constant to one acceptable to icon.Blend()
+//Converts a blend_mode constant to one acceptable to icon.debugBlend()
 /proc/blendMode2iconMode(blend_mode)
 	switch(blend_mode)
 		if(BLEND_MULTIPLY) return ICON_MULTIPLY

@@ -292,7 +292,7 @@
 	var/py = view_size_y * world.icon_size
 	var/sx = min(33 * 32, px)
 	var/sy = min(33 * 32, py)
-	newicon.Scale(sx, sy)
+	newicon.debugScale(sx, sy)
 	icon = newicon
 	screen_loc = "CENTER-[(ox-1)*0.5],CENTER-[(oy-1)*0.5]"
 	var/matrix/M = new

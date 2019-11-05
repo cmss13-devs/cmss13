@@ -17,7 +17,7 @@
 		S.desc = desc
 		S.icon_state = icon_state
 		//var/icon/I = icon('icons/obj/structures/props/decals.dmi', icon_state)
-		//S.icon = I.Scale(24, 24)
+		//S.icon = I.debugScale(24, 24)
 		S.sign_state = icon_state
 		qdel(src)
 	else ..()

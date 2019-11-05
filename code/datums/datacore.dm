@@ -340,45 +340,45 @@ proc/get_id_photo(var/mob/living/carbon/human/H)
 
 	preview_icon = new /icon(icobase, get_limb_icon_name(H.species, b_icon, H.gender, "torso", e_icon))
 	temp = new /icon(icobase, get_limb_icon_name(H.species, b_icon, H.gender, "groin", e_icon))
-	preview_icon.Blend(temp, ICON_OVERLAY)
+	preview_icon.debugBlend(temp, ICON_OVERLAY)
 	temp = new /icon(icobase, get_limb_icon_name(H.species, b_icon, H.gender, "head", e_icon))
-	preview_icon.Blend(temp, ICON_OVERLAY)
+	preview_icon.debugBlend(temp, ICON_OVERLAY)
 
 	for(var/datum/limb/E in H.limbs)
 		if(E.status & LIMB_DESTROYED) continue
 		temp = new /icon(icobase, get_limb_icon_name(H.species, b_icon, H.gender, E.name, e_icon))
 		if(E.status & LIMB_ROBOT)
 			temp.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
-		preview_icon.Blend(temp, ICON_OVERLAY)
+		preview_icon.debugBlend(temp, ICON_OVERLAY)
 
 	//Tail
 	if(H.species.tail)
 		temp = new/icon("icon" = 'icons/effects/species.dmi', "icon_state" = "[H.species.tail]_s")
-		preview_icon.Blend(temp, ICON_OVERLAY)
+		preview_icon.debugBlend(temp, ICON_OVERLAY)
 
 
 	var/icon/eyes_s = new/icon("icon" = 'icons/mob/humans/onmob/human_face.dmi', "icon_state" = H.species ? H.species.eyes : "eyes_s")
 
-	eyes_s.Blend(rgb(H.r_eyes, H.g_eyes, H.b_eyes), ICON_ADD)
+	eyes_s.debugBlend(rgb(H.r_eyes, H.g_eyes, H.b_eyes), ICON_ADD)
 
 	var/datum/sprite_accessory/hair_style = hair_styles_list[H.h_style]
 	if(hair_style)
 		var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
-		hair_s.Blend(rgb(H.r_hair, H.g_hair, H.b_hair), ICON_ADD)
-		eyes_s.Blend(hair_s, ICON_OVERLAY)
+		hair_s.debugBlend(rgb(H.r_hair, H.g_hair, H.b_hair), ICON_ADD)
+		eyes_s.debugBlend(hair_s, ICON_OVERLAY)
 
 	var/datum/sprite_accessory/facial_hair_style = facial_hair_styles_list[H.f_style]
 	if(facial_hair_style)
 		var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
-		facial_s.Blend(rgb(H.r_facial, H.g_facial, H.b_facial), ICON_ADD)
-		eyes_s.Blend(facial_s, ICON_OVERLAY)
+		facial_s.debugBlend(rgb(H.r_facial, H.g_facial, H.b_facial), ICON_ADD)
+		eyes_s.debugBlend(facial_s, ICON_OVERLAY)
 
 	var/icon/clothes_s = null
 	clothes_s = new /icon('icons/mob/humans/onmob/uniform_0.dmi', "marine_underpants_s")
-	clothes_s.Blend(new /icon('icons/mob/humans/onmob/feet.dmi', "black"), ICON_UNDERLAY)
-	preview_icon.Blend(eyes_s, ICON_OVERLAY)
+	clothes_s.debugBlend(new /icon('icons/mob/humans/onmob/feet.dmi', "black"), ICON_UNDERLAY)
+	preview_icon.debugBlend(eyes_s, ICON_OVERLAY)
 	if(clothes_s)
-		preview_icon.Blend(clothes_s, ICON_OVERLAY)
+		preview_icon.debugBlend(clothes_s, ICON_OVERLAY)
 	qdel(eyes_s)
 	qdel(clothes_s)
 

@@ -170,7 +170,7 @@ datum/chemical_reaction/adrenaline
 	name = "Arithrazine"
 	id = "arithrazine"
 	result = "arithrazine"
-	required_reagents = list("dylovene" = 1, "phosphorus" = 1)
+	required_reagents = list("anti_toxin" = 1, "phosphorus" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/kelotane

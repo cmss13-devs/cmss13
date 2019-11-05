@@ -268,7 +268,7 @@
 		return
 
 	// Make sure it's being closed by staff or the mentor handling the thread
-	if(mentor && closer && closer != mentor && !(closer.admin_holder && closer.admin_holder.rights & R_MOD))
+	if(mentor && closer && closer != mentor && !AHOLD_IS_MOD(closer.admin_holder))
 		to_chat(closer, SPAN_NOTICE("<b>NOTICE:</b> Another mentor is handling this thread!"))
 		return
 
@@ -298,8 +298,7 @@
 			unmark(topic_user)
 		if("close")
 			// Via href, the only ones who can close the thread is the author, mentor or staff
-			var/is_staff = topic_user.admin_holder && (topic_user.admin_holder.rights & R_MOD)
-			if(topic_user != author && topic_user != mentor && !is_staff)
+			if(topic_user != author && topic_user != mentor && !AHOLD_IS_MOD(topic_user.admin_holder))
 				return
 			close(topic_user)
 

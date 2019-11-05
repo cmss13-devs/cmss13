@@ -266,7 +266,7 @@ should be alright.
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.get_skill_level(SKILL_FIREARMS) == 0)
 			to_chat(user, SPAN_WARNING("You don't know how to do tactical reloads."))
 			return
-		if(istype(src, AM.gun_type))
+		if(istype(src, AM.gun_type) || (AM.type in src.accepted_ammo))
 			if(current_mag)
 				unload(user,0,1)
 			to_chat(user, SPAN_NOTICE("You start a tactical reload."))

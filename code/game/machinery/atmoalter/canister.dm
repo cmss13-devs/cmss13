@@ -90,11 +90,6 @@ update_flag
 		density = 0
 		update_icon()
 
-/obj/structure/machinery/portable_atmospherics/canister/process()
-	if (destroyed)
-		return
-	..()
-
 /obj/structure/machinery/portable_atmospherics/canister/bullet_act(var/obj/item/projectile/Proj)
 	if(Proj.ammo.damage)
 		update_health(round(Proj.ammo.damage / 2))
@@ -102,7 +97,7 @@ update_flag
 	return 1
 
 /obj/structure/machinery/portable_atmospherics/canister/attackby(var/obj/item/W as obj, var/mob/user as mob)
-	if(!istype(W, /obj/item/tool/wrench) && !istype(W, /obj/item/tank) && !istype(W, /obj/item/device/analyzer) && !istype(W, /obj/item/device/pda))
+	if(!istype(W, /obj/item/tool/wrench) && !istype(W, /obj/item/tank) && !istype(W, /obj/item/device/analyzer))
 		visible_message(SPAN_DANGER("[user] hits the [src] with a [W]!"))
 		update_health(W.force)
 		src.add_fingerprint(user)

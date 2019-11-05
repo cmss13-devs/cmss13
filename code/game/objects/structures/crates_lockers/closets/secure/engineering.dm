@@ -16,7 +16,6 @@
 	new /obj/item/clothing/head/hardhat/white(src)
 	new /obj/item/clothing/head/welding(src)
 	new /obj/item/clothing/gloves/yellow(src)
-	new /obj/item/cartridge/ce(src)
 	if(z && (z == 3 || z == 4))
 		new /obj/item/device/radio/headset/almayer/ce(src)
 	new /obj/item/storage/toolbox/mechanical(src)
@@ -138,4 +137,3 @@
 		new /obj/item/clothing/accessory/storage/brown_vest(src)
 	new /obj/item/clothing/suit/storage/hazardvest(src)
 	new /obj/item/clothing/mask/gas(src)
-	new /obj/item/cartridge/atmos(src)

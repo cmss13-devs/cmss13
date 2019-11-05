@@ -64,7 +64,6 @@
 			if(istype(A) && !(A in areas_added))
 				A.all_doors.Add(src)
 				areas_added += A
-		start_processing()
 
 	Dispose()
 		for(var/area/A in areas_added)
@@ -239,14 +238,6 @@
 
 /obj/structure/machinery/door/firedoor/try_to_activate_door(mob/user)
 	return
-
-// CHECK PRESSURE
-/obj/structure/machinery/door/firedoor/process()
-	..()
-
-	if(density && next_process_time <= world.time)
-		next_process_time = world.time + 100		// 10 second delays between process updates
-
 
 /obj/structure/machinery/door/firedoor/proc/latetoggle()
 	if(operating || !nextstate)

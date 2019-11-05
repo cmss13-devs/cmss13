@@ -462,9 +462,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		var/mob/living/carbon/human/H = M
 		if (H.wear_id)
 			var/obj/item/card/id/id = H.wear_id
-			if(istype(H.wear_id, /obj/item/device/pda))
-				var/obj/item/device/pda/pda = H.wear_id
-				id = pda.id
 			id.icon_state = "gold"
 			id:access = get_all_accesses()+get_all_centcom_access()+get_all_syndicate_access()
 		else

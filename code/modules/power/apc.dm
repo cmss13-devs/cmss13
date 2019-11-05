@@ -446,7 +446,7 @@
 			SPAN_NOTICE("You [wiresexposed ? "expose" : "unexpose"] [src]'s wiring."))
 			update_icon()
 
-	else if(istype(W, /obj/item/card/id) || istype(W, /obj/item/device/pda)) //Trying to unlock the interface with an ID card
+	else if(istype(W, /obj/item/card/id)) //Trying to unlock the interface with an ID card
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You're not sure where to swipe [W] on [src]."))
 			return

@@ -121,26 +121,6 @@ FIRE ALARM
 	..()
 	return
 
-/obj/structure/machinery/firealarm/process()//Note: this processing was mostly phased out due to other code, and only runs when needed
-	if(stat & (NOPOWER|BROKEN))
-		return
-
-	if(src.timing)
-		if(src.time > 0)
-			src.time = src.time - ((world.timeofday - last_process)/10)
-		else
-			src.alarm()
-			src.time = 0
-			src.timing = 0
-			//processing_objects.Remove(src) // uh what
-		src.updateDialog()
-	last_process = world.timeofday
-/*
-	if(locate(/obj/fire) in loc)
-		alarm()
-*/
-	return
-
 /obj/structure/machinery/firealarm/power_change()
 	..()
 	spawn(rand(0,15))
@@ -266,4 +246,3 @@ FIRE ALARM
 			src.overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_green")
 
 	update_icon()
-	start_processing()

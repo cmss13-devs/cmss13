@@ -104,7 +104,6 @@
 		new /obj/item/device/radio/headset/almayer/cmo(src)
 		new /obj/item/reagent_container/hypospray/tricordrazine(src)
 		new /obj/item/device/flash(src)
-		new /obj/item/cartridge/cmo(src)
 		new /obj/item/storage/pouch/medical(src)
 		new /obj/item/storage/pouch/syringe(src)
 		new /obj/item/storage/pouch/medkit(src)

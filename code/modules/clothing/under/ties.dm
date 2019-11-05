@@ -583,15 +583,12 @@
 		user.visible_message(SPAN_DANGER("[user] displays their W-Y Internal Security Legal Authorization Badge.\nIt reads: [stored_name], W-Y Security."),SPAN_DANGER("You display your W-Y Internal Security Legal Authorization Badge.\nIt reads: [stored_name], W-Y Security."))
 
 /obj/item/clothing/accessory/holobadge/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(istype(O, /obj/item/card/id) || istype(O, /obj/item/device/pda))
+	if(istype(O, /obj/item/card/id))
 
 		var/obj/item/card/id/id_card = null
 
 		if(istype(O, /obj/item/card/id))
 			id_card = O
-		else
-			var/obj/item/device/pda/pda = O
-			id_card = pda.id
 
 		if(ACCESS_MARINE_BRIG in id_card.access)
 			to_chat(user, "You imprint your ID details onto the badge.")

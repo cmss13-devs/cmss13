@@ -32,17 +32,6 @@
 		if(targets.len == 0)
 			stat |= BROKEN
 		update_icon()
-	start_processing()
-	return
-
-// Display process loop.
-/obj/structure/machinery/door_display/process()
-
-	if(stat & (NOPOWER|BROKEN))	return
-
-	updateUsrDialog()
-	update_icon()
-
 	return
 
 

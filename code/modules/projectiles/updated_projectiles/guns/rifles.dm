@@ -225,26 +225,6 @@
 								)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 
-	toggle_burst()
-		var/obj/item/weapon/gun/G = get_active_firearm(usr)
-		if(!G) return
-		src = G
-		if(flags_gun_features & GUN_BURST_FIRING)//can't toggle mid burst
-			return
-		if(burst_amount == config.med_burst_value && (flags_gun_features & GUN_BURST_ON))
-			playsound(usr, 'sound/machines/click.ogg', 15, 1)
-			to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to full auto mode."))
-			burst_amount = config.mhigh_burst_value
-			burst_scatter_mult = config.high_scatter_value
-			return
-		if(burst_amount == config.mhigh_burst_value && !(flags_gun_features & GUN_BURST_ON))
-			flags_gun_features |= GUN_BURST_ON
-			playsound(usr, 'sound/machines/click.ogg', 15, 1)
-			to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to semi auto mode."))
-			burst_amount = config.med_burst_value
-			burst_scatter_mult = config.low_scatter_value
-			return
-		. = ..()
 
 /obj/item/weapon/gun/rifle/m46c/New()
 	..()
@@ -254,10 +234,6 @@
 	S.hidden = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
-
-/obj/item/weapon/gun/rifle/m46c/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/rifle/m46c/I)
-	I.desc = "A prototype M46C, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines. Property of [H.real_name]"
-	return
 
 /obj/item/weapon/gun/rifle/m46c/set_gun_config_values()
 	..()
@@ -271,6 +247,12 @@
 	scatter_unwielded = config.max_scatter_value
 	damage_mult = config.base_hit_damage_mult + config.min_hit_damage_mult
 	recoil_unwielded = config.high_recoil_value
+
+
+/obj/item/weapon/gun/rifle/m46c/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/rifle/m46c/I)
+	I.desc = "A prototype M46C, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines. Property of [H.real_name]"
+
+
 
 //-------------------------------------------------------
 //MAR-40 AK CLONE //AK47 and FN FAL together as one.

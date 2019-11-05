@@ -1,0 +1,8 @@
+ 
+author: phil235
+
+delete-after: True
+
+changes: 
+  - tweak: "Removed the M46C pulse rifle's full auto mode."
+

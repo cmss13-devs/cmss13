@@ -689,7 +689,7 @@ and you're good to go.
 	if(!check_for_attachment_fire && (flags_gun_features & GUN_BURST_ON) && burst_amount > 1)
 		bullets_to_fire = burst_amount
 		if(flags_gun_features & GUN_FULL_AUTO_ON)
-			bullets_to_fire = 50
+			bullets_to_fire = 30
 		flags_gun_features |= GUN_BURST_FIRING
 
 	var/bullets_fired
@@ -1056,7 +1056,12 @@ and you're good to go.
 	total_scatter_angle += projectile_to_fire.scatter
 
 	if(flags_gun_features & GUN_BURST_ON && bullets_fired > 1)//Much higher scatter on a burst. Each additional bullet adds scatter
-		total_scatter_angle += max(0, (flags_item & WIELDED) ? (bullets_fired-1) * (burst_scatter_mult + burst_scatter_mod) : 2 * (bullets_fired-1) * (burst_scatter_mult + burst_scatter_mod)  )
+		var/bullet_amt_scat = min(bullets_fired-1, 5)//capped so we don't penalize large bursts too much.
+		if(flags_item & WIELDED)
+			total_scatter_angle += max(0, bullet_amt_scat * (burst_scatter_mult + burst_scatter_mod))
+		else
+			total_scatter_angle += max(0, 2 * bullet_amt_scat * (burst_scatter_mult + burst_scatter_mod))
+
 
 	if(user && user.mind && user.mind.cm_skills)
 		if(user.mind.cm_skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms

@@ -135,7 +135,6 @@
 			if(WEST) pixel_x = -25
 
 	first_run()
-	start_processing()
 
 
 /obj/structure/machinery/alarm/proc/first_run()
@@ -159,44 +158,6 @@
 	set_frequency(frequency)
 	if (!master_is_operating())
 		elect_master()
-
-/obj/structure/machinery/alarm/process()
-	if((stat & (NOPOWER|BROKEN)) || shorted || buildstage != 2)
-		return
-
-	var/turf/location = loc
-	if(!istype(location))	return//returns if loc is not simulated
-
-	var/old_level = danger_level
-	var/old_pressurelevel = pressure_dangerlevel
-	danger_level = overall_danger_level(location)
-
-	if (old_level != danger_level)
-		apply_danger_level(danger_level)
-
-	if (old_pressurelevel != pressure_dangerlevel)
-		if (breach_detected())
-		//	mode = AALARM_MODE_OFF
-			apply_mode()
-
-	if (mode==AALARM_MODE_CYCLE && location.return_pressure()<ONE_ATMOSPHERE*0.05)
-		mode=AALARM_MODE_FILL
-		apply_mode()
-
-	//atmos computer remote controll stuff
-	switch(rcon_setting)
-		if(RCON_NO)
-			remote_control = 0
-		if(RCON_AUTO)
-			if(danger_level == 2)
-				remote_control = 1
-			else
-				remote_control = 0
-		if(RCON_YES)
-			remote_control = 1
-
-	updateDialog()
-	return
 
 /obj/structure/machinery/alarm/proc/handle_heating_cooling()
 	return
@@ -1002,7 +963,7 @@ table tr:first-child th:first-child { border: none;}
 			if(wiresexposed && ((istype(W, /obj/item/device/multitool) || istype(W, /obj/item/tool/wirecutters))))
 				return attack_hand(user)
 
-			if(istype(W, /obj/item/card/id) || istype(W, /obj/item/device/pda))// trying to unlock the interface with an ID card
+			if(istype(W, /obj/item/card/id))// trying to unlock the interface with an ID card
 				if(stat & (NOPOWER|BROKEN))
 					to_chat(user, "It does nothing")
 					return

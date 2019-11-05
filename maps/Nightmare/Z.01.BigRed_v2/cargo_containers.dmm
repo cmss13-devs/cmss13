@@ -738,7 +738,6 @@
 /area/bigredv2/outside/cargo)
 "ch" = (
 /obj/structure/table,
-/obj/item/device/pda/cargo,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ci" = (

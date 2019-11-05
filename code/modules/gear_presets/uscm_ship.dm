@@ -598,12 +598,6 @@
 	H.equip_if_possible(new /obj/item/clothing/head/beret/centcom/officer(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_EAR)
 
-	var/obj/item/device/pda/heads/pda = new(H)
-	pda.owner = H.real_name
-	pda.ownjob = "USCM Officer"
-	pda.name = "PDA-[H.real_name] ([pda.ownjob])"
-
-	H.equip_if_possible(pda, WEAR_R_STORE)
 	H.equip_if_possible(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
 	H.equip_if_possible(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 
@@ -652,12 +646,6 @@
 	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_BACK)
 
-	var/obj/item/device/pda/heads/pda = new(H)
-	pda.owner = H.real_name
-	pda.ownjob = "USCM Admiral"
-	pda.name = "PDA-[H.real_name] ([pda.ownjob])"
-
-	H.equip_if_possible(pda, WEAR_R_STORE)
 	H.equip_if_possible(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
 
 /*****************************************************************************************************/

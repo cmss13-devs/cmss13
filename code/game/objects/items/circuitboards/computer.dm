@@ -10,11 +10,6 @@
 	name = "Circuit board ([M.name])"
 	build_path = M.type
 
-/obj/item/circuitboard/computer/message_monitor
-	name = "Circuit board (Message Monitor)"
-	build_path = /obj/structure/machinery/computer/message_monitor
-	origin_tech = "programming=3"
-
 //TODO: Move these into computer/camera.dm
 /obj/item/circuitboard/computer/security
 	name = "Circuit board (Security Camera Monitor)"

@@ -279,14 +279,8 @@
 //gets assignment from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
 /mob/living/carbon/human/proc/get_assignment(var/if_no_id = "No id", var/if_no_job = "No job")
-	var/obj/item/device/pda/pda = wear_id
 	var/obj/item/card/id/id = wear_id
-	if (istype(pda))
-		if (pda.id && istype(pda.id, /obj/item/card/id))
-			. = pda.id.assignment
-		else
-			. = pda.ownjob
-	else if (istype(id))
+	if(istype(id))
 		. = id.assignment
 	else
 		return if_no_id
@@ -297,14 +291,8 @@
 //gets name from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
 /mob/living/carbon/human/proc/get_authentification_name(var/if_no_id = "Unknown")
-	var/obj/item/device/pda/pda = wear_id
 	var/obj/item/card/id/id = wear_id
-	if (istype(pda))
-		if (pda.id)
-			. = pda.id.registered_name
-		else
-			. = pda.owner
-	else if (istype(id))
+	if(istype(id))
 		. = id.registered_name
 	else
 		return if_no_id
@@ -343,9 +331,6 @@
 //Useful when player is being seen by other mobs
 /mob/living/carbon/human/proc/get_id_name(var/if_no_id = "Unknown")
 	. = if_no_id
-	if(istype(wear_id,/obj/item/device/pda))
-		var/obj/item/device/pda/P = wear_id
-		return P.owner
 	if(wear_id)
 		var/obj/item/card/id/I = wear_id.GetID()
 		if(I)
@@ -584,9 +569,6 @@
 			if(wear_id)
 				if(istype(wear_id,/obj/item/card/id))
 					perpname = wear_id:registered_name
-				else if(istype(wear_id,/obj/item/device/pda))
-					var/obj/item/device/pda/tempPda = wear_id
-					perpname = tempPda.owner
 			else
 				perpname = src.name
 			for (var/datum/data/record/E in data_core.general)
@@ -614,9 +596,6 @@
 			if(wear_id)
 				if(istype(wear_id,/obj/item/card/id))
 					perpname = wear_id:registered_name
-				else if(istype(wear_id,/obj/item/device/pda))
-					var/obj/item/device/pda/tempPda = wear_id
-					perpname = tempPda.owner
 			else
 				perpname = src.name
 			for (var/datum/data/record/E in data_core.general)
@@ -642,9 +621,6 @@
 			if(wear_id)
 				if(istype(wear_id,/obj/item/card/id))
 					perpname = wear_id:registered_name
-				else if(istype(wear_id,/obj/item/device/pda))
-					var/obj/item/device/pda/tempPda = wear_id
-					perpname = tempPda.owner
 			else
 				perpname = src.name
 			for (var/datum/data/record/E in data_core.general)
@@ -673,9 +649,6 @@
 			if(wear_id)
 				if(istype(wear_id,/obj/item/card/id))
 					perpname = wear_id:registered_name
-				else if(istype(wear_id,/obj/item/device/pda))
-					var/obj/item/device/pda/tempPda = wear_id
-					perpname = tempPda.owner
 			else
 				perpname = src.name
 
@@ -712,9 +685,6 @@
 			if(wear_id)
 				if(istype(wear_id,/obj/item/card/id))
 					perpname = wear_id:registered_name
-				else if(istype(wear_id,/obj/item/device/pda))
-					var/obj/item/device/pda/tempPda = wear_id
-					perpname = tempPda.owner
 			else
 				perpname = src.name
 			for (var/datum/data/record/E in data_core.general)
@@ -743,9 +713,6 @@
 			if(wear_id)
 				if(istype(wear_id,/obj/item/card/id))
 					perpname = wear_id:registered_name
-				else if(istype(wear_id,/obj/item/device/pda))
-					var/obj/item/device/pda/tempPda = wear_id
-					perpname = tempPda.owner
 			else
 				perpname = src.name
 			for (var/datum/data/record/E in data_core.general)
@@ -771,9 +738,6 @@
 			if(wear_id)
 				if(istype(wear_id,/obj/item/card/id))
 					perpname = wear_id:registered_name
-				else if(istype(wear_id,/obj/item/device/pda))
-					var/obj/item/device/pda/tempPda = wear_id
-					perpname = tempPda.owner
 			else
 				perpname = src.name
 			for (var/datum/data/record/E in data_core.general)

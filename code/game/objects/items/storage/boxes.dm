@@ -345,22 +345,6 @@
 		new /obj/item/card/id(src)
 
 
-/obj/item/storage/box/seccarts
-	name = "box of spare R.O.B.U.S.T. Cartridges"
-	desc = "A box full of R.O.B.U.S.T. Cartridges, used by Security."
-	icon_state = "pda"
-
-	New()
-		..()
-		new /obj/item/cartridge/security(src)
-		new /obj/item/cartridge/security(src)
-		new /obj/item/cartridge/security(src)
-		new /obj/item/cartridge/security(src)
-		new /obj/item/cartridge/security(src)
-		new /obj/item/cartridge/security(src)
-		new /obj/item/cartridge/security(src)
-
-
 /obj/item/storage/box/handcuffs
 	name = "box of handcuffs"
 	desc = "A box full of handcuffs."

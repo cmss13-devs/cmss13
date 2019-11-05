@@ -227,6 +227,7 @@
 		organ.implants -= S
 		embedded_human.embedded_items -= S
 		organ = null
+		QDEL_IN(S, 300)
 		H_user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
 
 	to_chat(H_user, SPAN_NOTICE("You dig out all the shrapnel you can find from your body."))

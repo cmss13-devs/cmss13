@@ -25475,7 +25475,6 @@
 /area/bigredv2/outside/cargo)
 "ble" = (
 /obj/structure/table,
-/obj/item/device/pda/cargo,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "blf" = (
@@ -28277,7 +28276,6 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "buW" = (
-/obj/item/device/pda/engineering,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "buX" = (

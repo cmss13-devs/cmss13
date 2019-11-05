@@ -40,28 +40,6 @@ log transactions
 	spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
-	start_processing()
-
-/obj/structure/machinery/atm/process()
-	if(stat & NOPOWER)
-		return
-
-	if(ticks_left_timeout > 0)
-		ticks_left_timeout--
-		if(ticks_left_timeout <= 0)
-			authenticated_account = null
-	if(ticks_left_locked_down > 0)
-		ticks_left_locked_down--
-		if(ticks_left_locked_down <= 0)
-			number_incorrect_tries = 0
-
-	for(var/obj/item/spacecash/S in src)
-		S.loc = src.loc
-		if(prob(50))
-			playsound(loc, 'sound/items/polaroid1.ogg', 15, 1)
-		else
-			playsound(loc, 'sound/items/polaroid2.ogg', 15, 1)
-		break
 
 /obj/structure/machinery/atm/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/card))
@@ -420,11 +398,8 @@ log transactions
 	if(!authenticated_account)
 		if(human_user.wear_id)
 			var/obj/item/card/id/I
-			if(istype(human_user.wear_id, /obj/item/card/id) )
+			if(istype(human_user.wear_id, /obj/item/card/id))
 				I = human_user.wear_id
-			else if(istype(human_user.wear_id, /obj/item/device/pda) )
-				var/obj/item/device/pda/P = human_user.wear_id
-				I = P.id
 			if(I)
 				authenticated_account = attempt_account_access(I.associated_account_number)
 				if(authenticated_account)

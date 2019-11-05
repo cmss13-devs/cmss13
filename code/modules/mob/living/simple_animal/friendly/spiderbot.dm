@@ -94,7 +94,7 @@
 		else
 			to_chat(user, "Need more welding fuel!")
 			return
-	else if(istype(O, /obj/item/card/id)||istype(O, /obj/item/device/pda))
+	else if(istype(O, /obj/item/card/id))
 		if (!mmi)
 			to_chat(user, SPAN_DANGER("There's no reason to swipe your ID - the spiderbot has no brain to remove."))
 			return 0
@@ -103,9 +103,6 @@
 
 		if(istype(O, /obj/item/card/id))
 			id_card = O
-		else
-			var/obj/item/device/pda/pda = O
-			id_card = pda.id
 
 		if(ACCESS_MARINE_RESEARCH in id_card.access)
 			to_chat(user, SPAN_NOTICE(" You swipe your access card and pop the brain out of [src]."))

@@ -590,17 +590,6 @@ var/list/robot_verbs_default = list(
 		else
 			to_chat(user, "Unable to locate a radio.")
 
-	else if (istype(W, /obj/item/card/id)||istype(W, /obj/item/device/pda))			// trying to unlock the interface with an ID card
-		if(opened)
-			to_chat(user, "You must close the cover to swipe an ID card.")
-		else
-			if(allowed(usr))
-				locked = !locked
-				to_chat(user, "You [ locked ? "lock" : "unlock"] [src]'s interface.")
-				update_icons()
-			else
-				to_chat(user, SPAN_DANGER("Access denied."))
-
 	else if(istype(W, /obj/item/robot/upgrade/))
 		var/obj/item/robot/upgrade/U = W
 		if(!opened)

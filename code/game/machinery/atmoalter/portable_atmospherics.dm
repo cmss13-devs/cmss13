@@ -14,10 +14,6 @@
 			connect(port)
 			update_icon()
 
-/obj/structure/machinery/portable_atmospherics/process()
-	if(connected_port)
-		update_icon()
-
 /obj/structure/machinery/portable_atmospherics/update_icon()
 	return null
 

@@ -64,9 +64,9 @@
 			var/atom/Turf = locate(WorldX, WorldY, currentZ)
 
 			var/icon/TurfIcon = new(Turf.icon, Turf.icon_state)
-			TurfIcon.Scale(NANOMAP_ICON_SIZE, NANOMAP_ICON_SIZE)
+			TurfIcon.debugScale(NANOMAP_ICON_SIZE, NANOMAP_ICON_SIZE)
 
-			Tile.Blend(TurfIcon, ICON_OVERLAY, ((WorldX - 1) * NANOMAP_ICON_SIZE), ((WorldY - 1) * NANOMAP_ICON_SIZE))
+			Tile.debugBlend(TurfIcon, ICON_OVERLAY, ((WorldX - 1) * NANOMAP_ICON_SIZE), ((WorldY - 1) * NANOMAP_ICON_SIZE))
 
 			count++
 

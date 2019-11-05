@@ -200,7 +200,7 @@ its easier to just keep the beam vertical.
 				qdel(O)							//pieces to a new orientation.
 		var/Angle=round(Get_Angle(src,BeamTarget))
 		var/icon/I=new(icon,icon_state)
-		I.Turn(Angle)
+		I.debugTurn(Angle)
 		var/DX=(32*BeamTarget.x+BeamTarget.pixel_x)-(32*x+pixel_x)
 		var/DY=(32*BeamTarget.y+BeamTarget.pixel_y)-(32*y+pixel_y)
 		var/N=0
@@ -211,7 +211,7 @@ its easier to just keep the beam vertical.
 			if(N+32>length)
 				var/icon/II=new(icon,icon_state)
 				II.DrawBox(null,1,(length-N),32,32)
-				II.Turn(Angle)
+				II.debugTurn(Angle)
 				X.icon=II
 			else X.icon=I
 			var/Pixel_x=round(sin(Angle)+32*sin(Angle)*(N+16)/32)

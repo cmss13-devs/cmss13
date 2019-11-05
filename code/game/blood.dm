@@ -83,8 +83,8 @@
 		blood_overlay = blood_overlay_cache["[icon]" + icon_state]
 		return
 	var/icon/I = new /icon(icon, icon_state)
-	I.Blend(new /icon('icons/effects/blood.dmi', rgb(255,255,255)), ICON_ADD) //fills the icon_state with white (except where it's transparent)
-	I.Blend(new /icon('icons/effects/blood.dmi', "itemblood"), ICON_MULTIPLY) //adds blood and the remaining white areas become transparant
+	I.debugBlend(new /icon('icons/effects/blood.dmi', rgb(255,255,255)), ICON_ADD) //fills the icon_state with white (except where it's transparent)
+	I.debugBlend(new /icon('icons/effects/blood.dmi', "itemblood"), ICON_MULTIPLY) //adds blood and the remaining white areas become transparant
 	blood_overlay = image(I)
 	blood_overlay.appearance_flags |= NO_CLIENT_COLOR
 	blood_overlay_cache["[icon]" + icon_state] = blood_overlay

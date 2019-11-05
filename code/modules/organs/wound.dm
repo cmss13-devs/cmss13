@@ -103,7 +103,7 @@
 		src.amount += other.amount
 		src.created = max(src.created, other.created)	//take the newer created time
 		if(other.impact_icon)
-			impact_icon.Blend(other.impact_icon, ICON_OVERLAY)
+			impact_icon.debugBlend(other.impact_icon, ICON_OVERLAY)
 
 	// heal the given amount of damage, and if the given amount of damage was more
 	// than what needed to be healed, return how much heal was left
@@ -198,7 +198,7 @@
 		impact_icon = new /icon(icon = 'icons/mob/humans/dam_human.dmi', icon_state = "[impact_name]_[limb_name]")
 	else
 		var/icon/temp_impact_icon = new /icon(icon = 'icons/mob/humans/dam_human.dmi', icon_state = "[impact_name]_[limb_name]")
-		impact_icon.Blend(temp_impact_icon, ICON_OVERLAY)
+		impact_icon.debugBlend(temp_impact_icon, ICON_OVERLAY)
 
 /** CUTS **/
 /datum/wound/cut/small

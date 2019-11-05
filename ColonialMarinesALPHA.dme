@@ -277,6 +277,7 @@
 #include "code\datums\supply_packs\misc.dm"
 #include "code\datums\supply_packs\operations.dm"
 #include "code\datums\supply_packs\weapons.dm"
+#include "code\debug\iconprocwrappers.dm"
 #include "code\defines\procs\admin.dm"
 #include "code\defines\procs\announcement.dm"
 #include "code\defines\procs\AStar.dm"

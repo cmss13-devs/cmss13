@@ -128,8 +128,8 @@
 						/obj/item/tool/pen/blue = "hat_pen_blue",
 						/obj/item/tool/pen/red = "hat_pen_red",
 						/obj/item/clothing/glasses/welding = "welding-c",
-						/obj/item/clothing/glasses/mgoggles = "goggles",
-						/obj/item/clothing/glasses/mgoggles/prescription = "goggles")
+						/obj/item/clothing/glasses/mgoggles = "goggles-c",
+						/obj/item/clothing/glasses/mgoggles/prescription = "goggles-c")
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)

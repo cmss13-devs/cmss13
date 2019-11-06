@@ -57028,7 +57028,7 @@
 /area/almayer/shipboard/chief_mp_office)
 "vHO" = (
 /obj/structure/machinery/vending/hydroseeds{
-	req_access = list(14)
+	req_access = list(28)
 	},
 /turf/open/floor/almayer{
 	dir = 1;

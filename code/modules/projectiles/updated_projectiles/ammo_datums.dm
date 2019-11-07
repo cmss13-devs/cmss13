@@ -735,7 +735,7 @@
 	damage_var_low = config.low_proj_variance
 	damage_var_high = config.low_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff
-	penetration	= 0
+	penetration	= config.vlow_armor_penetration
 	bonus_projectiles_amount = config.low_proj_extra
 	shell_speed = config.reg_shell_speed
 	damage_armor_punch = 0
@@ -765,9 +765,9 @@
 	damage_var_low = config.low_proj_variance
 	damage_var_high = config.low_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff
-	penetration = 0
+	penetration = config.vlow_armor_penetration
 	shell_speed = config.reg_shell_speed
-	scatter = config.ultra_scatter_value
+	scatter = config.super_scatter_value
 	damage_armor_punch = 0
 
 /datum/ammo/bullet/shotgun/spread/masterkey/New()

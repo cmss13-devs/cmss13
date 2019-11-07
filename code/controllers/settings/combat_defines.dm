@@ -231,6 +231,7 @@ We don't really use the higher values, but they're there.
 	var/ultra_shell_speed = 6
 
 	var/min_armor_penetration = 5 //See Neth's armor comments for how this works. Higher is better.
+	var/vlow_armor_penetration = 8 
 	var/mlow_armor_penetration = 12
 	var/low_armor_penetration = 23
 	var/hlow_armor_penetration = 26

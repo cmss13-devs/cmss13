@@ -35,6 +35,12 @@
 		if (do_surgery(M,user,src))
 			return FALSE
 
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(!C.species.melee_allowed)
+			to_chat(C, SPAN_DANGER("You are currently unable to attack."))
+			return FALSE
+
 	var/showname = "."
 	if(user)
 		if(M == user)

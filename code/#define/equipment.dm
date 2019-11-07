@@ -316,3 +316,7 @@ var/global/list/uniform_categories = list(
 	"DRESS EXTRAS" = list(UNIFORM_VEND_DRESS_EXTRA)
 )
 //=================================================
+
+
+// SMARTPACK RELATED
+#define SMARTPACK_MAX_POWER_STORED		200

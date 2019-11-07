@@ -467,6 +467,10 @@
 					/obj/item/device/cassette_tape/pop4 = 9,
 					/obj/item/device/cassette_tape/heavymetal = 9,
 					/obj/item/device/cassette_tape/hairmetal = 9,
+					/obj/item/device/cassette_tape/indie = 9,
+					/obj/item/device/cassette_tape/hiphop = 9,
+					/obj/item/device/cassette_tape/nam = 9,
+					/obj/item/device/cassette_tape/ocean = 9,
 					/obj/item/toy/deck = 3,
 					/obj/item/toy/deck/uno = 3,
 					)

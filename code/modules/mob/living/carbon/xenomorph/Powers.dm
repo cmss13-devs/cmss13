@@ -926,6 +926,10 @@
 		to_chat(src, SPAN_XENOWARNING("You can't escape this cell!"))
 		return
 
+	if(clone) //Prevents burrowing on stairs
+		to_chat(src, SPAN_XENOWARNING("You can't burrow here!"))
+		return
+
 	used_burrow = 1
 
 	if (!burrow)
@@ -995,8 +999,12 @@
 		to_chat(src, SPAN_NOTICE("You can't tunnel there!"))
 		return
 
-	if(T.density)
+	if (T.density)
 		to_chat(src, SPAN_XENOWARNING("You can't tunnel into a solid wall!"))
+		return
+
+	if (clone) //Prevents tunnels in Z transition areas
+		to_chat(src, SPAN_XENOWARNING("You make tunnels, not wormholes!"))
 		return
 
 	var/area/A = get_area(T)

@@ -249,9 +249,9 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/heavy_barrel/New()
 	..()
-	accuracy_mod = -config.hmed_hit_accuracy_mult
+	accuracy_mod = -config.low_hit_accuracy_mult
 	damage_mod = config.hmed_hit_damage_mult
-	delay_mod = config.low_fire_delay
+	delay_mod = config.mlow_fire_delay
 
 	accuracy_unwielded_mod = -config.high_hit_accuracy_mult
 

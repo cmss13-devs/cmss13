@@ -19,6 +19,7 @@ var/global/datum/controller/gameticker/ticker = new()
 	var/random_players = 0 	// if set to nonzero, ALL players who latejoin or declare-ready join will have random appearances/genders
 
 	var/pregame_timeleft = 0
+	var/game_start_time = 0 // Global world start time.
 	var/toweractive = FALSE
 	var/delay_end = FALSE	//if set to nonzero, the round will not restart on it's own
 
@@ -172,6 +173,8 @@ var/global/datum/controller/gameticker/ticker = new()
 			C.select_gamemode_equipment(mode.type)
 		for(var/obj/structure/machinery/vending/V in machines)
 			V.select_gamemode_equipment(mode.type)
+
+	game_start_time = world.time
 	return 1
 
 /datum/controller/gameticker/proc/create_characters()

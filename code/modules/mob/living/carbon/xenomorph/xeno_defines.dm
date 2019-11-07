@@ -923,7 +923,7 @@
 		return slots
 
 	// Tier 3 slots are always 25% of the total xenos in the hive
-	slots[2] = max(0, Ceiling(effective_total * 0.25 * tier_slot_multiplier) - tier_3_xenos.len)
+	slots[2] = max(0, Ceiling(0.25 * tier_slot_multiplier) - tier_3_xenos.len)
 
 	// Tier 2 slots are between 25% and 50% of the hive, depending
 	// on how many T3s there are.

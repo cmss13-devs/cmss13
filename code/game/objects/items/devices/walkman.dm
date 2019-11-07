@@ -389,3 +389,53 @@
 				 "side2" = list('sound/music/walkman/hairmetal/6-2-1PourSomeSugarOnMe.ogg' = "Def Leppard - Pour Some Sugar on Me",\
 								'sound/music/walkman/hairmetal/6-2-2YouGotAnotherThingComin.ogg' = "Judas Priest - You've Got Another Thing Comin'",\
 								'sound/music/walkman/hairmetal/6-2-3KissMeDeadly.ogg' = "Lita Ford - Kiss Me Deadly"))
+
+/obj/item/device/cassette_tape/indie
+	name = "rising sun cassette"
+	desc = "A plastic cassette tape with the Japanese Rising Sun. It has marker scrawled on the front. It reads:\nSide 1\nSTEREOMA - This City is Death\nThe Orion Experience - Cult of Dionysus\nKites With Lights - Cosmonauts\nSide 2\nI Don't Know How But They Found Me - Modern Day Cain\nSaint Motel - My Type\nLIP - Help"
+	icon_state = "cassette_rising_sun"
+	side1_icon = "cassette_rising_sun"
+	songs = list("side1" = list('sound/music/walkman/indie/07-1-1ThisCityIsDeath.ogg' = "STEREOMA - This City is Death",\
+								'sound/music/walkman/indie/07-1-2CultOfDionysus.ogg' = "The Orion Experience - Cult of Dionysus",\
+								'sound/music/walkman/indie/07-1-3Cosmonauts.ogg' = "Kites With Lights - Cosmonauts"),\
+				 "side2" = list('sound/music/walkman/indie/07-2-1ModernDayCain.ogg' = "I Don't Know How But They Found Me - Modern Day Cain",\
+								'sound/music/walkman/indie/07-2-2MyType.ogg' = "Saint Motel - My Type",\
+								'sound/music/walkman/indie/07-2-3Help.ogg' = "LIP - Help"))
+
+/obj/item/device/cassette_tape/hiphop
+	name = "blue stripe cassette"
+	desc = "An orange plastic cassette tape with a blue stripe. It has marker scrawled on the front. It reads:\nSide 1\nBeastie Boys - Intergalactic\nRun-D.M.C. - It's Tricky\nGrandmaster Flash and the Furious Five - The Message\nSide 2\nEric B - I Ain't No Joke\nLL Cool J - Rock The Bells\nSugarhill Gang - Apache"
+	icon_state = "cassette_orange_blue"
+	side1_icon = "cassette_orange_blue"
+	songs = list("side1" = list('sound/music/walkman/hiphop/08-1-1Intergalactic.ogg' = "Beastie Boys - Intergalactic",\
+								'sound/music/walkman/hiphop/08-1-2ItsTricky.ogg' = "Run-D.M.C. - It's Tricky",\
+								'sound/music/walkman/hiphop/08-1-3TheMessage.ogg' = "Grandmaster Flash and the Furious Five - The Message"),\
+				 "side2" = list('sound/music/walkman/hiphop/08-2-1IAintNoJoke.ogg' = "Eric B - I Ain't No Joke",\
+								'sound/music/walkman/hiphop/08-2-2RockTheBells.ogg' = "LL Cool J - Rock The Bells",\
+								'sound/music/walkman/hiphop/08-2-3Apache.ogg' = "Sugarhill Gang - Apache"))
+
+/obj/item/device/cassette_tape/nam
+	name = "green cassette"
+	desc = "A green plastic cassette tape. It has marker scrawled on the front. It reads:\nSide 1\nBlack Sabbath - Paranoid\nCreedence Clearwater Revival - Fortunate Son\nBuffalo Springfield - Stop Children What's That Sound\nSide 2\nTen Years After - I'd Love to Change the World\nJudas Priest - The Temptations - Ball of Confusion\nThe Outlaws - Green Grass and High Tides"
+	icon_state = "cassette_green"
+	side1_icon = "cassette_green"
+	songs = list("side1" = list('sound/music/walkman/nam/09-1-1Paranoid.ogg' = "Black Sabbath - Paranoid",\
+								'sound/music/walkman/nam/09-1-2FortunateSon.ogg' = "Creedence Clearwater Revival - Fortunate Son",\
+								'sound/music/walkman/nam/09-1-3StopChildrenWhatsThatSound.ogg' = "Buffalo Springfield - Stop Children What's That Sound"),\
+				 "side2" = list('sound/music/walkman/nam/09-2-1IdLoveToChangeTheWorld.ogg' = "Ten Years After - I'd Love to Change the World",\
+								'sound/music/walkman/nam/09-2-2BallOfConfusion.ogg' = "The Temptations - Ball of Confusion",\
+								'sound/music/walkman/nam/09-2-3GreenGrassAndHighTides.ogg' = "The Outlaws - Green Grass and High Tides"))
+
+/obj/item/device/cassette_tape/ocean
+	name = "ocean cassette"
+	desc = "A blue and white plastic cassette tape. It has marker scrawled on the front. It reads:\nSide 1\nBeach Boys - Surfin' Safari\nBeach Boys - I Get Around\nSurfaris - Wipe Out\nJan & Dean - Surf City\nSide 2\nBeach Boys - Kokomo\nBeach Boys - Wouldn't it Be Nice\nThe Belairs - Mr. Moto\nThe Trashmen - Surfin Bird"
+	icon_state = "cassette_ocean"
+	side1_icon = "cassette_ocean"
+	songs = list("side1" = list('sound/music/walkman/surf/10-1-1SurfinSafari.ogg' = "Beach Boys - Surfin' Safari",\
+								'sound/music/walkman/surf/10-1-2IGetAround.ogg' = "Beach Boys - I Get Around",\
+								'sound/music/walkman/surf/10-1-3WipeOut.ogg' = "Surfaris - Wipe Out",\
+								'sound/music/walkman/surf/10-1-4SurfCity.ogg' = "Jan & Dean - Surf City"),\
+				 "side2" = list('sound/music/walkman/surf/10-2-1Kokomo.ogg' = "Beach Boys - Kokomo",\
+								'sound/music/walkman/surf/10-2-2WouldntItBeNice.ogg' = "Beach Boys - Wouldn't it Be Nice",\
+								'sound/music/walkman/surf/10-2-3MrMOTO.ogg' = "The Belairs - Mr. Moto",\
+								'sound/music/walkman/surf/10-2-4TheSurfinBird.ogg' = "The Trashmen - Surfin Bird"))

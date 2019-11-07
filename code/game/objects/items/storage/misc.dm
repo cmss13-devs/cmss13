@@ -71,3 +71,33 @@
 	new /obj/item/attachable/mateba/short(src)
 	new /obj/item/attachable/mateba/long(src)
 	new /obj/item/weapon/mateba_key(src)
+
+
+
+//6 pack
+
+/obj/item/storage/beer_pack
+	name = "beer pack"
+	desc = "A pack of Aspen beer cans."
+	icon = 'icons/obj/items/drinks.dmi'
+	icon_state = "6_pack_6"
+	item_state = "souto_classic"
+	storage_slots = 6
+	can_hold = list(/obj/item/reagent_container/food/drinks/cans/aspen)
+
+/obj/item/storage/beer_pack/Initialize()
+	..()
+	for(var/i in 1 to 6)
+		new /obj/item/reagent_container/food/drinks/cans/aspen(src)
+
+/obj/item/storage/beer_pack/update_icon()
+	if(contents.len == 1)
+		var/turf/T = get_turf(src)
+		var/obj/item/reagent_container/food/drinks/cans/aspen/B = new(T)
+		if(ishuman(loc))
+			var/mob/living/carbon/human/H = loc
+			H.temp_drop_inv_item(src)
+			H.put_in_inactive_hand(B)
+		qdel(src)
+	else
+		icon_state = "6_pack_[contents.len]"

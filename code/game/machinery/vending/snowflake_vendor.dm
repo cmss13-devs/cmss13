@@ -88,5 +88,13 @@
 		list("Hazard vest", 12, /obj/item/clothing/suit/storage/hazardvest, null, "black"),
 		list("Jacket, Colonial Marshal", 12, /obj/item/clothing/suit/storage/CMB, null, "black"),
 		list("Overalls", 12, /obj/item/clothing/suit/apron/overalls, null, "black"),
-		list("Snow suit", 12, /obj/item/clothing/suit/storage/snow_suit, null, "black")
+		list("Snow suit", 12, /obj/item/clothing/suit/storage/snow_suit, null, "black"),
+
+		list("BACKPACK", 0, null, null, null),
+		list("Satchel, standard", 12, /obj/item/storage/backpack/marine/satchel, null, "black"),
+		list("Backpack, industrial", 12, /obj/item/storage/backpack/industrial, null, "black"),
+		list("Backpack, medic", 12, /obj/item/storage/backpack/marine/medic, null, "black"),
+		list("Backpack, standard", 12, /obj/item/storage/backpack/marine, null, "black"),
+		list("Backpack, tech", 12, /obj/item/storage/backpack/marine/tech, null, "black"),
+		list("Welderpack", 12, /obj/item/storage/backpack/marine/engineerpack, null, "black")
 	)

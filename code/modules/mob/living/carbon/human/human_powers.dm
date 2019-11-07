@@ -219,6 +219,9 @@
 	command_aura_available = FALSE
 	command_aura = order
 
+	for(var/datum/action/A in actions)
+		A.update_button_icon()
+
 	// order lasts 20 seconds
 	add_timer(CALLBACK(src, .proc/end_aura), command_aura_duration)
 	// 1min cooldown on orders
@@ -243,6 +246,8 @@
 /mob/living/carbon/human/proc/make_aura_available()
 	to_chat(src, SPAN_NOTICE("You can issue an order again."))
 	command_aura_available = TRUE
+	for(var/datum/action/A in actions)
+		A.update_button_icon()
 
 
 /mob/living/carbon/human/verb/issue_order_verb()

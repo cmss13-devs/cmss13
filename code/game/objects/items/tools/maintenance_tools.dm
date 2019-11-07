@@ -409,8 +409,6 @@
 	origin_tech = "engineering=4;phorontech=3"
 	var/last_gen = 0
 
-
-
 /obj/item/tool/weldingtool/experimental/proc/fuel_gen()//Proc to make the experimental welder generate fuel, optimized as fuck -Sieve
 	var/gen_amount = ((world.time-last_gen)/25)
 	reagents += (gen_amount)

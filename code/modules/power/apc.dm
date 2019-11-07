@@ -598,6 +598,14 @@
 		var/mob/living/carbon/human/H = user
 
 		if(H.species.flags & IS_SYNTHETIC && H.a_intent == GRAB_INTENT)
+			if(H.action_busy)
+				return
+			
+			if(!do_after(H, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+				return
+
+			playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
+
 			if(stat & BROKEN)
 				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 				s.set_up(3, 1, src)
@@ -605,21 +613,17 @@
 				to_chat(H, SPAN_DANGER("The APC's power currents surge eratically, damaging your chassis!"))
 				H.adjustFireLoss(10,0)
 			else if(cell && cell.charge > 0)
-				if(H.nutrition < 450)
-					if(cell.charge >= 500)
-						H.nutrition += 50
-						cell.charge -= 500
-					else
-						H.nutrition += cell.charge/10
-						cell.charge = 0
-
-					to_chat(user, SPAN_NOTICE("You slot your fingers into the APC interface and siphon off some of the stored charge for your own use."))
-					if(cell.charge < 0) cell.charge = 0
-					if(H.nutrition > 500) H.nutrition = 500
+				if(!istype(H.back, /obj/item/storage/backpack/marine/smartpack))
+					return
+				
+				var/obj/item/storage/backpack/marine/smartpack/S = H.back
+				if(S.battery_charge < SMARTPACK_MAX_POWER_STORED)
+					cell.charge -= SMARTPACK_MAX_POWER_STORED
+					S.battery_charge = SMARTPACK_MAX_POWER_STORED
+					to_chat(user, SPAN_NOTICE("You slot your fingers into the APC interface and siphon off some of the stored charge. [S.name] now has [S.battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
 					charging = 1
-
 				else
-					to_chat(user, SPAN_WARNING("You are already fully charged."))
+					to_chat(user, SPAN_WARNING("[S.name] is already fully charged."))
 			else
 				to_chat(user, SPAN_WARNING("There is no charge to draw from that APC."))
 			return

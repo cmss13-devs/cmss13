@@ -97,6 +97,8 @@
 
 	var/blood_mask = 'icons/effects/blood.dmi'
 
+	var/melee_allowed = TRUE
+
 /datum/species/New()
 	if(hud_type)
 		hud = new hud_type()
@@ -817,18 +819,22 @@
 
 /datum/unarmed_attack/proc/is_usable(var/mob/living/carbon/human/user)
 	if(user.is_mob_restrained())
-		return 0
+		return FALSE
+
+	if(!user.species.melee_allowed)
+		to_chat(user, SPAN_DANGER("You are currently unable to attack."))
+		return FALSE 
 
 	// Check if they have a functioning hand.
 	var/datum/limb/E = user.get_limb("l_hand")
 	if(E && !(E.status & LIMB_DESTROYED))
-		return 1
+		return TRUE
 
 	E = user.get_limb("r_hand")
 	if(E && !(E.status & LIMB_DESTROYED))
-		return 1
+		return TRUE
 
-	return 0
+	return FALSE
 
 /datum/unarmed_attack/bite
 	attack_verb = list("bite") // 'x has biteed y', needs work.
@@ -839,6 +845,9 @@
 	edge = 1
 
 /datum/unarmed_attack/bite/is_usable(var/mob/living/carbon/human/user)
+	if(!user.species.melee_allowed)
+		return FALSE
+
 	if (user.wear_mask && istype(user.wear_mask, /obj/item/clothing/mask/muzzle))
 		return 0
 	return 1

@@ -950,12 +950,9 @@
 		list("Latex gloves", 0, /obj/item/clothing/gloves/latex, MARINE_CAN_BUY_GLOVES, "black"),
 
 		list("BACKPACK (choose 1)", 0, null, null, null),
-		list("Satchel, standard", 0, /obj/item/storage/backpack/marine/satchel, MARINE_CAN_BUY_BACKPACK, "orange"),
-		list("Backpack, industrial", 0, /obj/item/storage/backpack/industrial, MARINE_CAN_BUY_BACKPACK, "black"),
-		list("Backpack, medic", 0, /obj/item/storage/backpack/marine/medic, MARINE_CAN_BUY_BACKPACK, "black"),
-		list("Backpack, standard", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, "black"),
-		list("Backpack, tech", 0, /obj/item/storage/backpack/marine/tech, MARINE_CAN_BUY_BACKPACK, "black"),
-		list("Welderpack", 0, /obj/item/storage/backpack/marine/engineerpack, MARINE_CAN_BUY_BACKPACK, "black"),
+		list("Smartpack, blue", 0, /obj/item/storage/backpack/marine/smartpack, MARINE_CAN_BUY_BACKPACK, "black"),
+		list("Smartpack, green", 0, /obj/item/storage/backpack/marine/smartpack/green, MARINE_CAN_BUY_BACKPACK, "black"),
+		list("Smartpack, tan", 0, /obj/item/storage/backpack/marine/smartpack/tan, MARINE_CAN_BUY_BACKPACK, "black"),
 
 		list("BELT (choose 1)", 0, null, null, null),
 		list("Tool belt", 0, /obj/item/storage/belt/utility/full, MARINE_CAN_BUY_BELT, "orange"),

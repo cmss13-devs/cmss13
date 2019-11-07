@@ -95,13 +95,10 @@
 	button.overlays += I
 	I.layer = old
 
-
 /datum/action/item_action/toggle/New(Target)
 	..()
 	name = "Toggle [target]"
 	button.name = name
-
-
 
 
 
@@ -159,7 +156,6 @@
 		X.selected_ability.on_activation()
 	if(plasma_cost)
 		X.use_plasma(plasma_cost) //after on_activation so the button's appearance is updated correctly.
-
 
 /datum/action/xeno_action/activable/remove_action(mob/living/carbon/Xenomorph/X)
 	..()

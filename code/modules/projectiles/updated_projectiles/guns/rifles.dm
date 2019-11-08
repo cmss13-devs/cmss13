@@ -518,7 +518,7 @@
 	origin_tech = "combat=5;materials=4"
 	reload_sound = 'sound/weapons/handling/hpr_reload.ogg'
 	unload_sound = 'sound/weapons/handling/hpr_unload.ogg'
-	fire_sound = 'sound/weapons/gun_m41ae2.ogg'
+	fire_sound = 'sound/weapons/gun_hpr.ogg'
 	aim_slowdown = SLOWDOWN_ADS_LMG
 	current_mag = /obj/item/ammo_magazine/rifle/lmg
 	attachable_allowed = list(

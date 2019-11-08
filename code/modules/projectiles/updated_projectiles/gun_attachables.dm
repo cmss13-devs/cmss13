@@ -23,7 +23,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable
 	name = "attachable item"
-	desc = "It's an attachment. You should never see this."
+	desc = "It's the very theoretical concept of an attachment. You should never see this."
 	icon = 'icons/obj/items/weapons/guns/attachments.dmi'
 	icon_state = null
 	item_state = null
@@ -65,6 +65,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/movement_acc_penalty_mod = 0 //Modifies accuracy/scatter penalty when firing onehanded while moving.
 
 	var/activation_sound = 'sound/machines/click.ogg'
+	var/deactivation_sound = 'sound/machines/click.ogg'
 
 	var/flags_attach_features = ATTACH_REMOVABLE
 
@@ -429,6 +430,8 @@ Defined in conflicts.dm of the #defines folder.
 	matter = list("metal" = 50,"glass" = 20)
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
+	activation_sound = 'sound/handling/light_on_1.ogg'
+	deactivation_sound = 'sound/handling/click_2.ogg'
 	var/original_state = "flashlight"
 	var/original_attach = "flashlight_a"
 
@@ -443,10 +446,11 @@ Defined in conflicts.dm of the #defines folder.
 	if(G.flags_gun_features & GUN_FLASHLIGHT_ON)
 		icon_state += "-on"
 		attach_icon += "-on"
+		playsound(user, deactivation_sound, 15, 1)
 	else
 		icon_state = original_state
 		attach_icon = original_attach
-	playsound(user, activation_sound, 15, 1)
+		playsound(user, activation_sound, 15, 1)
 	G.update_attachable(slot)
 
 	for(var/X in G.actions)
@@ -1070,6 +1074,8 @@ Defined in conflicts.dm of the #defines folder.
 	var/attachment_firing_delay = 0 //the delay between shots, for attachments that fires stuff
 	var/fire_sound = null //Sound to play when firing it alternately
 	var/gun_original_damage_mult = 1 //so you don't buff the underbarrell gun with charger for the wrong weapon
+	var/gun_deactivate_sound = 'sound/weapons/handling/gun_underbarrel_deactivate.ogg'//allows us to give the attached gun unique activate and de-activate sounds. Not used yet.
+	var/gun_activate_sound  = 'sound/weapons/handling/gun_underbarrel_activate.ogg'
 
 /obj/item/attachable/attached_gun/New() //Let's make sure if something needs an ammo type, it spawns with one.
 	..()
@@ -1087,6 +1093,7 @@ Defined in conflicts.dm of the #defines folder.
 	if(G.active_attachable == src)
 		if(user)
 			to_chat(user, SPAN_NOTICE("You are no longer using [src]."))
+			playsound(user, gun_deactivate_sound, 30, 1)
 		G.active_attachable = null
 		var/diff = G.damage_mult - 1 //so that if we buffed gun in process, it still does stuff
 		//yeah you can cheat by placing BC after switching to underbarrell, but that is one time and we can skip it for sake of optimization
@@ -1095,6 +1102,7 @@ Defined in conflicts.dm of the #defines folder.
 	else if(!turn_off)
 		if(user)
 			to_chat(user, SPAN_NOTICE("You are now using [src]."))
+			playsound(user, gun_activate_sound, 45, 1)
 		G.active_attachable = src
 		gun_original_damage_mult = G.damage_mult
 		G.damage_mult = 1
@@ -1121,11 +1129,6 @@ Defined in conflicts.dm of the #defines folder.
 	fire_sound = 'sound/weapons/gun_m92_attachable.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
 	var/list/loaded_grenades //list of grenade types loaded in the UGL
-
-
-/obj/item/attachable/attached_gun/grenade/activate_attachment(atom/target, mob/user)
-	playsound(user, activation_sound, 15, 1)
-	..()
 
 /obj/item/attachable/attached_gun/grenade/New()
 	..()
@@ -1194,10 +1197,6 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "under"
 	fire_sound = 'sound/weapons/gun_flamethrower3.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
-
-/obj/item/attachable/attached_gun/flamer/activate_attachment(atom/target, mob/user)
-	playsound(user, activation_sound, 15, 1)
-	..()
 
 /obj/item/attachable/attached_gun/flamer/New()
 	..()
@@ -1270,12 +1269,8 @@ Defined in conflicts.dm of the #defines folder.
 	current_rounds = 3
 	ammo = /datum/ammo/bullet/shotgun/buckshot/masterkey
 	slot = "under"
-	fire_sound = 'sound/weapons/gun_shotgun.ogg'
+	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
-
-/obj/item/attachable/attached_gun/shotgun/activate_attachment(atom/target, mob/user)
-	playsound(user, activation_sound, 15, 1)
-	..()
 
 /obj/item/attachable/attached_gun/shotgun/New()
 	..()

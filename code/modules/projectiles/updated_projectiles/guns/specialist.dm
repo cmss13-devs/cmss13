@@ -259,6 +259,8 @@
 	item_state = "m56"
 	origin_tech = "combat=6;materials=5"
 	fire_sound = "gun_smartgun"
+	reload_sound = 'sound/weapons/handling/gun_sg_reload.ogg'
+	unload_sound = 'sound/weapons/handling/gun_sg_unload.ogg'
 	current_mag = null
 	flags_equip_slot = NOFLAGS
 	w_class = SIZE_HUGE

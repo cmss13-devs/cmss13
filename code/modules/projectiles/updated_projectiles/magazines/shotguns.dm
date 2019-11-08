@@ -11,6 +11,7 @@ one type of shotgun ammo, but I think it helps in referencing it. ~N
 	name = "box of shotgun slugs"
 	desc = "A box filled with heavy shotgun shells. A timeless classic. 12 Gauge."
 	icon_state = "slugs"
+	item_state = "slugs"
 	default_ammo = /datum/ammo/bullet/shotgun/slug
 	caliber = "12g" //All shotgun rounds are 12g right now.
 	gun_type = /obj/item/weapon/gun/shotgun
@@ -23,24 +24,28 @@ one type of shotgun ammo, but I think it helps in referencing it. ~N
 	name = "box of incendiary slugs"
 	desc = "A box filled with self-detonating incendiary shotgun rounds. 12 Gauge."
 	icon_state = "incendiary"
+	item_state = "incendiary"
 	default_ammo = /datum/ammo/bullet/shotgun/incendiary
 
 /obj/item/ammo_magazine/shotgun/buckshot
 	name = "box of buckshot shells"
 	desc = "A box filled with buckshot spread shotgun shells. 12 Gauge."
 	icon_state = "buckshot"
+	item_state = "buckshot"
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 
 /obj/item/ammo_magazine/shotgun/flechette
 	name = "box of flechette shells"
 	desc = "A box filled with flechette shotgun shells. 12 Gauge."
 	icon_state = "flechette"
+	item_state = "flechette"
 	default_ammo = /datum/ammo/bullet/shotgun/flechette
 
 /obj/item/ammo_magazine/shotgun/beanbag
 	name = "box of beanbag slugs"
 	desc = "A box filled with beanbag shotgun shells used for non-lethal crowd control. 12 Gauge."
 	icon_state = "beanbag"
+	item_state = "beanbag"
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag
 
 //-------------------------------------------------------
@@ -72,7 +77,6 @@ also doesn't really matter. You can only reload them with handfuls.
 
 /obj/item/ammo_magazine/internal/shotgun/double/mou53
 	max_rounds = 3
-	default_ammo = /datum/ammo/bullet/shotgun/slug
 
 /obj/item/ammo_magazine/internal/shotgun/combat
 

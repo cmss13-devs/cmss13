@@ -682,7 +682,7 @@ should be alright.
 	if(flags_gun_features & GUN_BURST_FIRING)//can't toggle mid burst
 		return
 
-	playsound(usr, 'sound/machines/click.ogg', 15, 1)
+	playsound(usr, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 	if(flags_gun_features & GUN_HAS_FULL_AUTO)
 		if(flags_gun_features & GUN_BURST_ON)
 			if(flags_gun_features & GUN_FULL_AUTO_ON)

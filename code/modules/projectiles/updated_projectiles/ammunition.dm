@@ -26,18 +26,26 @@ They're all essentially identical when it comes to getting the job done.
 	var/reload_delay = 1 //Set a timer for reloading mags. Higher is slower.
 	var/flags_magazine = AMMUNITION_REFILLABLE //flags specifically for magazines.
 	var/base_mag_icon //the default mag icon state.
+	var/base_mag_item //the default mag item (inhand) state.
 
 /obj/item/ammo_magazine/New(loc, spawn_empty)
 	..()
 	base_mag_icon = icon_state
+	base_mag_item = item_state
 	if(spawn_empty) current_rounds = 0
 	switch(current_rounds)
 		if(-1) current_rounds = max_rounds //Fill it up. Anything other than -1 and 0 will just remain so.
-		if(0) icon_state += "_e" //In case it spawns empty instead.
+		if(0)
+			icon_state += "_e" //In case it spawns empty instead.
+			item_state += "_e"
 
-/obj/item/ammo_magazine/update_icon(var/round_diff = 0)
-	if(current_rounds <= 0) 					icon_state = base_mag_icon + "_e"
-	else if(current_rounds - round_diff <= 0) 	icon_state = base_mag_icon
+/obj/item/ammo_magazine/update_icon(var/round_diff = 0) //inhand sprites only get their icon update called when picked back up or removed from storage, known issue.
+	if(current_rounds <= 0) 
+		icon_state = base_mag_icon + "_e"
+		item_state = base_mag_item + "_e"
+	else if(current_rounds - round_diff <= 0)
+		icon_state = base_mag_icon
+		item_state = base_mag_item //to-do, unique magazine inhands for majority firearms.
 
 /obj/item/ammo_magazine/examine(mob/user)
 	..()
@@ -197,6 +205,7 @@ If it is the same and the other stack isn't full, transfer an amount (default 1)
 
 	name = "handful of [ammo_name + (ammo_name == "shotgun buckshot"? " ":"s ") + "([new_caliber])"]"
 	icon_state = new_caliber == "12g" ? ammo_name : "bullet"
+	item_state = new_caliber == "12g" ? ammo_name : "bullet"
 	default_ammo = new_ammo
 	caliber = new_caliber
 	max_rounds = maximum_rounds

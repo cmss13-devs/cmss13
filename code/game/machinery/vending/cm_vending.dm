@@ -926,9 +926,9 @@
 		list("Working Joe uniform", 0, /obj/item/clothing/under/rank/synthetic/joe, MARINE_CAN_BUY_UNIFORM, "black"),
 
 		list("WEBBING (choose 1)", 0, null, null, null),
-		list("Black webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest, null, "black"),
-		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/brown_vest, MARINE_CAN_BUY_ATTACHMENT, "black"),
-		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Black webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
 
 		list("SHOES (choose 1)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine, MARINE_CAN_BUY_SHOES, "black"),
@@ -1164,12 +1164,12 @@
 		list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
 		list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
-		list("Reflex sight", 0, /obj/item/attachable/reflex, null, "black"),
+		list("Reflex sight", 0, /obj/item/attachable/reflex, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Burst Fire Assembly", 0, /obj/item/attachable/burstfire_assembly, MARINE_CAN_BUY_ATTACHMENT, "black"),
 
 		list("MISCELLANEOUS AND SPECIAL", 0, null, null, null),
 		list("Motion Detector", 15, /obj/item/device/motiondetector, null, "black"),
-		list("Barrel Charger", 45, /obj/item/attachable/heavy_barrel, MARINE_CAN_BUY_ATTACHMENT, "black")
+		list("Barrel Charger", 45, /obj/item/attachable/heavy_barrel, null, "black")
 	)
 
 

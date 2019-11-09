@@ -27,6 +27,36 @@
 
 	var/stored_metal = 500 // starts with 500 metal loaded
 
+
+/obj/structure/machinery/autodoc/Initialize()
+	..()
+	connect_autodoc_console()
+
+/obj/structure/machinery/autodoc/proc/connect_autodoc_console()
+	if(connected)
+		return
+	if(dir == EAST || dir == SOUTH)
+		connected = locate(/obj/structure/machinery/autodoc_console,get_step(src, EAST))
+	if(dir == WEST || dir == NORTH)
+		connected = locate(/obj/structure/machinery/autodoc_console,get_step(src, WEST))
+	if(connected)
+		connected.connected = src
+
+/obj/structure/machinery/autodoc/Dispose()
+	if(occupant)
+		occupant.forceMove(loc)
+		occupant = null
+		stop_processing()
+		if(connected)
+			connected.stop_processing()
+	if(connected)
+		connected.connected = null
+		qdel(connected)
+		connected = null
+	. = ..()
+
+
+
 /obj/structure/machinery/autodoc/power_change(var/area/master_area = null)
 	..()
 	if(stat & NOPOWER)
@@ -570,24 +600,22 @@
 		if(occupant)
 			to_chat(usr, SPAN_NOTICE("\The [src] is already occupied!"))
 			return
-		usr.stop_pulling()
-		if(usr.pulledby)
-			usr.pulledby.stop_pulling()
-		usr.client.perspective = EYE_PERSPECTIVE
-		usr.client.eye = src
-		usr.loc = src
-		update_use_power(2)
-		occupant = usr
-		icon_state = "autodoc_closed"
-		start_processing()
-		if(connected)
-			connected.start_processing()
-		else
-			to_chat(usr, "Autodoc not properly connected")
-
-		for(var/obj/O in src)
-			qdel(O)
+		go_in_autodoc(usr)
 		add_fingerprint(usr)
+
+/obj/structure/machinery/autodoc/proc/go_in_autodoc(mob/M)
+	M.forceMove(src)
+	update_use_power(2)
+	occupant = M
+	icon_state = "autodoc_closed"
+	start_processing()
+	if(connected)
+		connected.start_processing()
+	//prevents occupant's belonging from landing inside the machine
+	for(var/obj/O in src)
+		O.loc = loc
+
+
 
 /obj/structure/machinery/autodoc/proc/go_out()
 	if(!occupant) return
@@ -601,8 +629,7 @@
 	if(connected)
 		connected.stop_processing()
 		connected.process() // one last update
-	else
-		to_chat(usr, "Autodoc not properly connected")
+
 
 /obj/structure/machinery/autodoc/attackby(obj/item/W, mob/living/user)
 	if(!ishuman(user))
@@ -631,22 +658,14 @@
 			to_chat(user, SPAN_WARNING("You have no idea how to put someone into \the [src]!"))
 			return
 
-		visible_message("[user] starts putting [M] into [src].", null, null, 3)
+		visible_message(SPAN_NOTICE("[user] starts putting [M] into [src]."), null, null, 3)
 
 		if(do_after(user, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			if(src.occupant)
 				to_chat(user, SPAN_NOTICE("\The [src] is already occupied!"))
 				return
 			if(!G || !G.grabbed_thing) return
-			M.forceMove(src)
-			update_use_power(2)
-			occupant = M
-			icon_state = "autodoc_closed"
-			start_processing()
-			if(connected)
-				connected.start_processing()
-			else
-				to_chat(usr, "Autodoc not properly connected")
+			go_in_autodoc(M)
 
 			add_fingerprint(user)
 
@@ -665,17 +684,31 @@
 	use_power = 1
 	idle_power_usage = 40
 
-/obj/structure/machinery/autodoc_console/New()
+/obj/structure/machinery/autodoc_console/Initialize()
 	..()
-	spawn(7)
-		if(dir == EAST || dir == SOUTH)
-			connected = locate(/obj/structure/machinery/autodoc,get_step(src, WEST))
-		if(dir == WEST || dir == NORTH)
-			connected = locate(/obj/structure/machinery/autodoc,get_step(src, EAST))
-		if(!connected)
-			qdel(src)
-		else
-			connected.connected = src
+	connect_autodoc()
+
+/obj/structure/machinery/autodoc_console/proc/connect_autodoc()
+	if(connected)
+		return
+	if(dir == EAST || dir == SOUTH)
+		connected = locate(/obj/structure/machinery/autodoc,get_step(src, WEST))
+	if(dir == WEST || dir == NORTH)
+		connected = locate(/obj/structure/machinery/autodoc,get_step(src, EAST))
+	if(connected)
+		connected.connected = src
+
+
+/obj/structure/machinery/autodoc_console/Dispose()
+	if(connected)
+		if(connected.occupant)
+			connected.go_out()
+
+		connected.connected = null
+		qdel(connected)
+		connected = null
+	. = ..()
+
 
 /obj/structure/machinery/autodoc_console/power_change(var/area/master_area = null)
 	..()

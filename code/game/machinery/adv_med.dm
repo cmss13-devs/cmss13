@@ -2,8 +2,6 @@
 
 
 /obj/structure/machinery/bodyscanner
-	var/mob/living/carbon/occupant
-	var/locked
 	name = "Body Scanner"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "body_scanner_0"
@@ -13,12 +11,38 @@
 	use_power = 1
 	idle_power_usage = 60
 	active_power_usage = 10000	//10 kW. It's a big all-body scanner.
+	var/mob/living/carbon/occupant
+	var/locked
+	var/obj/structure/machinery/body_scanconsole/connected
 
-/*/obj/structure/machinery/bodyscanner/allow_drop()
-	return 0*/
+
+/obj/structure/machinery/bodyscanner/Initialize()
+	..()
+	connect_body_scanconsole()
+
+
+/obj/structure/machinery/bodyscanner/proc/connect_body_scanconsole()
+	if(connected)
+		return
+	if(dir == EAST || dir == SOUTH)
+		connected = locate(/obj/structure/machinery/body_scanconsole,get_step(src, EAST))
+	if(dir == WEST || dir == NORTH)
+		connected = locate(/obj/structure/machinery/body_scanconsole,get_step(src, WEST))
+	if(connected)
+		connected.connected = src
+
+/obj/structure/machinery/bodyscanner/Dispose()
+	if(occupant)
+		go_out()
+	if(connected)
+		connected.connected = null
+		qdel(connected)
+		connected = null
+	. = ..()
 
 /obj/structure/machinery/bodyscanner/relaymove(mob/user)
-	if(user.is_mob_incapacitated(TRUE)) return
+	if(user.is_mob_incapacitated(TRUE))
+		return
 	go_out()
 
 
@@ -46,16 +70,19 @@
 	if (usr.abiotic())
 		to_chat(usr, SPAN_NOTICE(" <B>Subject cannot have abiotic items on.</B>"))
 		return
-	usr.forceMove(src)
-	src.occupant = usr
+	go_in_bodyscanner(usr)
+	add_fingerprint(usr)
+
+
+/obj/structure/machinery/bodyscanner/proc/go_in_bodyscanner(mob/M)
+	M.forceMove(src)
+	occupant = M
 	update_use_power(2)
-	src.icon_state = "body_scanner_1"
+	icon_state = "body_scanner_1"
+	//prevents occupant's belonging from landing inside the machine
 	for(var/obj/O in src)
-		//O = null
-		qdel(O)
-		//Foreach goto(124)
-	src.add_fingerprint(usr)
-	return
+		O.loc = loc
+
 
 /obj/structure/machinery/bodyscanner/proc/go_out()
 	if ((!( src.occupant ) || src.locked))
@@ -63,11 +90,11 @@
 	for(var/obj/O in src)
 		O.loc = src.loc
 		//Foreach goto(30)
-	src.occupant.forceMove(loc)
-	src.occupant = null
+	occupant.forceMove(loc)
+	occupant = null
 	update_use_power(1)
-	src.icon_state = "body_scanner_0"
-	return
+	icon_state = "body_scanner_0"
+
 
 /obj/structure/machinery/bodyscanner/attack_hand(mob/living/user)
 	go_out()
@@ -96,13 +123,9 @@
 	if (M.abiotic())
 		to_chat(user, SPAN_WARNING("Subject cannot have abiotic items on."))
 		return
-	M.forceMove(src)
-	occupant = M
-	update_use_power(2)
-	icon_state = "body_scanner_1"
-	for(var/obj/O in src)
-		O.loc = loc
-		//Foreach goto(154)
+
+	go_in_bodyscanner(M)
+
 	add_fingerprint(user)
 	//G = null
 
@@ -126,8 +149,48 @@
 		else
 	return
 
-/obj/structure/machinery/body_scanconsole/ex_act(severity)
 
+
+/obj/structure/machinery/body_scanconsole
+	name = "Body Scanner Console"
+	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
+	icon_state = "body_scannerconsole"
+	density = 0
+	anchored = TRUE
+	dir = SOUTH
+	var/obj/structure/machinery/bodyscanner/connected
+	var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/neurostim)
+	var/delete
+	var/temphtml
+
+/obj/structure/machinery/body_scanconsole/Initialize()
+	..()
+	connect_bodyscanner()
+
+
+/obj/structure/machinery/body_scanconsole/proc/connect_bodyscanner()
+	if(connected)
+		return
+	if(dir == EAST || dir == SOUTH)
+		connected = locate(/obj/structure/machinery/bodyscanner,get_step(src, WEST))
+	if(dir == WEST || dir == NORTH)
+		connected = locate(/obj/structure/machinery/bodyscanner,get_step(src, EAST))
+	if(connected)
+		connected.connected = src
+
+
+/obj/structure/machinery/body_scanconsole/Dispose()
+	if(connected)
+		if(connected.occupant)
+			connected.go_out()
+
+		connected.connected = null
+		qdel(connected)
+		connected = null
+	. = ..()
+
+
+/obj/structure/machinery/body_scanconsole/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
@@ -150,50 +213,7 @@
 		else
 			icon_state = initial(icon_state)
 
-/obj/structure/machinery/body_scanconsole
-	var/obj/structure/machinery/bodyscanner/connected
-	var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/neurostim)
-	var/delete
-	var/temphtml
-	name = "Body Scanner Console"
-	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
-	icon_state = "body_scannerconsole"
-	density = 0
-	anchored = 1
-	dir = 2
 
-/obj/structure/machinery/body_scanconsole/New()
-	..()
-	spawn(7)
-		if(dir == EAST || dir == SOUTH)
-			connected = locate(/obj/structure/machinery/bodyscanner,get_step(src, WEST))
-		if(dir == WEST || dir == NORTH)
-			connected = locate(/obj/structure/machinery/bodyscanner,get_step(src, EAST))
-		if(!connected)
-			qdel(src)
-
-/*
-
-/obj/structure/machinery/body_scanconsole/process() //not really used right now
-	if(stat & (NOPOWER|BROKEN))
-		return
-	//use_power(250) // power stuff
-
-//	var/mob/M //occupant
-//	if (!( src.status )) //remove this
-//		return
-//	if ((src.connected && src.connected.occupant)) //connected & occupant ok
-//		M = src.connected.occupant
-//	else
-//		if (istype(M, /mob))
-//		//do stuff
-//		else
-///			src.temphtml = "Process terminated due to lack of occupant in scanning chamber."
-//			src.status = null
-//	src.updateDialog()
-//	return
-
-*/
 
 /obj/structure/machinery/body_scanconsole/attack_ai(user as mob)
 	return src.attack_hand(user)
@@ -202,10 +222,16 @@
 	if(..())
 		return
 	if(stat & (NOPOWER|BROKEN))
+		to_chat(user, SPAN_WARNING("This console is not functional."))
 		return
 	if(!connected || (connected.stat & (NOPOWER|BROKEN)))
 		to_chat(user, SPAN_WARNING("This console is not connected to a functioning body scanner."))
 		return
+
+	if(!connected.occupant)
+		to_chat(user, SPAN_WARNING("No lifeform detected."))
+		return
+
 	if(!ishuman(connected.occupant))
 		to_chat(user, SPAN_WARNING("This device can only scan compatible lifeforms."))
 		return
@@ -414,3 +440,4 @@
 	if(occ["sdisabilities"] & NEARSIGHTED)
 		dat += text("<font color='red'>Retinal misalignment detected.</font><BR>")
 	return dat
+

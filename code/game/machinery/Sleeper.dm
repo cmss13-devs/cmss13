@@ -9,40 +9,50 @@
 	var/obj/structure/machinery/sleeper/connected = null
 	anchored = 1 //About time someone fixed this.
 	density = 0
-	var/orient = "LEFT" // "RIGHT" changes the dir suffix to "-r"
-
 	use_power = 1
 	idle_power_usage = 40
+
+/obj/structure/machinery/sleep_console/Initialize()
+	..()
+	connect_sleeper()
+
+/obj/structure/machinery/sleep_console/proc/connect_sleeper()
+	if(connected)
+		return
+	if(dir == EAST || dir == SOUTH)
+		connected = locate(/obj/structure/machinery/sleeper,get_step(src, WEST))
+	if(dir == WEST || dir == NORTH)
+		connected = locate(/obj/structure/machinery/sleeper,get_step(src, EAST))
+	if(connected)
+		connected.connected = src
+
+
+/obj/structure/machinery/sleep_console/Dispose()
+	if(connected)
+		if(connected.occupant)
+			connected.go_out()
+
+		connected.connected = null
+		qdel(connected)
+		connected = null
+	. = ..()
+
 
 /obj/structure/machinery/sleep_console/process()
 	if(stat & (NOPOWER|BROKEN))
 		return
 	updateUsrDialog()
-	return
+
 
 /obj/structure/machinery/sleep_console/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
 				qdel(src)
-				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
-			return
-		else
-	return
 
-/obj/structure/machinery/sleep_console/New()
-	..()
-	spawn(7)
-		if(dir == EAST || dir == SOUTH)
-			connected = locate(/obj/structure/machinery/sleeper,get_step(src, WEST))
-		if(dir == WEST || dir == NORTH)
-			connected = locate(/obj/structure/machinery/sleeper,get_step(src, EAST))
-		if(!connected)
-			qdel(src)
-		else
-			connected.connected = src
+
 
 /obj/structure/machinery/sleep_console/attack_ai(mob/living/user)
 	return attack_hand(user)
@@ -163,7 +173,6 @@
 	icon_state = "sleeper_0"
 	density = 1
 	anchored = 1
-	var/orient = "LEFT" // "RIGHT" changes the dir suffix to "-r"
 	var/mob/living/carbon/human/occupant = null
 	var/available_chemicals = list("inaprovaline" = "Inaprovaline", "stoxin" = "Soporific", "paracetamol" = "Paracetamol", "anti_toxin" = "Dylovene", "dexalin" = "Dexalin", "tricordrazine" = "Tricordrazine")
 	var/amounts = list(5, 10)
@@ -176,15 +185,38 @@
 	active_power_usage = 200 //builtin health analyzer, dialysis machine, injectors.
 
 
-/obj/structure/machinery/sleeper/New()
+/obj/structure/machinery/sleeper/Initialize()
 	..()
 	beaker = new /obj/item/reagent_container/glass/beaker/large()
-	spawn( 5 )
-		if(orient == "RIGHT")
-			icon_state = "sleeper_0-r"
-		return
-	return
+	connect_sleeper_console()
 
+/obj/structure/machinery/sleeper/proc/connect_sleeper_console()
+	if(connected)
+		return
+	if(dir == EAST || dir == SOUTH)
+		connected = locate(/obj/structure/machinery/sleep_console,get_step(src, EAST))
+	if(dir == WEST || dir == NORTH)
+		connected = locate(/obj/structure/machinery/sleep_console,get_step(src, WEST))
+	if(connected)
+		connected.connected = src
+
+
+/obj/structure/machinery/sleeper/Dispose()
+	if(occupant)
+		go_out()
+	if(connected)
+		connected.connected = null
+		qdel(connected)
+		connected = null
+	. = ..()
+
+
+
+/obj/structure/machinery/sleeper/update_icon()
+	if(occupant)
+		icon_state = "sleeper_1"
+	else
+		icon_state = "sleeper_0"
 
 /obj/structure/machinery/sleeper/allow_drop()
 	return 0
@@ -230,7 +262,7 @@
 			to_chat(user, SPAN_NOTICE("The sleeper is already occupied!"))
 			return
 
-		visible_message("[user] starts putting [G.grabbed_thing] into the sleeper.", null, null, 3)
+		visible_message(SPAN_NOTICE("[user] starts putting [G.grabbed_thing] into the sleeper."), null, null, 3)
 
 		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			if(occupant)
@@ -238,15 +270,7 @@
 				return
 			if(!G || !G.grabbed_thing) return
 			var/mob/M = G.grabbed_thing
-			M.forceMove(src)
-			update_use_power(2)
-			occupant = M
-			start_processing()
-			connected.start_processing()
-			icon_state = "sleeper_1"
-			if(orient == "RIGHT")
-				icon_state = "sleeper_1-r"
-
+			go_in_sleeper(M)
 			add_fingerprint(user)
 
 
@@ -284,6 +308,19 @@
 	else
 		filtering = 1
 
+/obj/structure/machinery/sleeper/proc/go_in_sleeper(mob/M)
+	M.forceMove(src)
+	update_use_power(2)
+	occupant = M
+	start_processing()
+	connected.start_processing()
+	update_icon()
+	//prevents occupant's belonging from landing inside the machine
+	for(var/obj/O in src)
+		if(O != beaker)
+			O.loc = loc
+
+
 /obj/structure/machinery/sleeper/proc/go_out()
 	if(filtering)
 		toggle_filter()
@@ -294,9 +331,8 @@
 	stop_processing()
 	connected.stop_processing()
 	update_use_power(1)
-	if(orient == "RIGHT")
-		icon_state = "sleeper_0-r"
-	return
+	update_icon()
+
 
 
 /obj/structure/machinery/sleeper/proc/inject_chemical(mob/living/user as mob, chemical, amount)
@@ -343,11 +379,8 @@
 	set name = "Eject Sleeper"
 	set category = "Object"
 	set src in oview(1)
-	if(usr.stat != 0)
+	if(usr.is_mob_incapacitated())
 		return
-	if(orient == "RIGHT")
-		icon_state = "sleeper_0-r"
-	icon_state = "sleeper_0"
 	go_out()
 	add_fingerprint(usr)
 
@@ -356,7 +389,7 @@
 	set name = "Remove Beaker"
 	set category = "Object"
 	set src in oview(1)
-	if(usr.stat != 0)
+	if(usr.is_mob_incapacitated())
 		return
 	if(beaker)
 		filtering = 0
@@ -380,28 +413,10 @@
 		return
 
 	visible_message("[user] starts climbing into the sleeper.", null, null, 3)
-	if(user.pulledby)
-		if(isliving(user.pulledby))
-			var/mob/living/grabmob = user.pulledby
-			grabmob.stop_pulling()
+
 	if(do_after(user, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		if(occupant)
 			to_chat(user, SPAN_NOTICE("The sleeper is already occupied!"))
 			return
-		user.stop_pulling()
-		if(user.pulledby)
-			if(isliving(user.pulledby))
-				var/mob/living/grabmob = user.pulledby
-				grabmob.stop_pulling()
-		user.forceMove(src)
-		update_use_power(2)
-		occupant = user
-		start_processing()
-		connected.start_processing()
-		icon_state = "sleeper_1"
-		if(orient == "RIGHT")
-			icon_state = "sleeper_1-r"
-
-		for(var/obj/O in src)
-			qdel(O)
+		go_in_sleeper(user)
 		add_fingerprint(user)

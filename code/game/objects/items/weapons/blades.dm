@@ -73,8 +73,8 @@
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = SLOT_FACE
 
-/obj/item/weapon/combat_knife/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
-	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC) && ishuman(user) && user.a_intent == "help") //Squad medics and above
+/obj/item/weapon/combat_knife/attack(mob/living/target, mob/living/carbon/human/user)
+	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC) && ishuman(user) && ishuman(target) && user.a_intent == "help") //Squad medics and above
 		dig_out_shrapnel(target, user)
 	else
 		..()
@@ -101,9 +101,9 @@
 		..()
 
 /obj/item/weapon/combat_knife/attack_self(mob/living/carbon/human/user)
-	if(!ishuman(user)) 
+	if(!ishuman(user))
 		return
-	if(!hasorgans(user)) 
+	if(!hasorgans(user))
 		return
 
 	dig_out_shrapnel(user)
@@ -180,9 +180,9 @@
 	unacidable = TRUE
 
 /obj/item/weapon/yautja_knife/attack_self(mob/living/carbon/human/user)
-	if(!isYautja(user)) 
+	if(!isYautja(user))
 		return
-	if(!hasorgans(user)) 
+	if(!hasorgans(user))
 		return
 
 	dig_out_shrapnel(user)
@@ -202,7 +202,7 @@
 	if(user)
 		H_user = user
 
-	if(H_user.action_busy) 
+	if(H_user.action_busy)
 		return
 
 	if(user)

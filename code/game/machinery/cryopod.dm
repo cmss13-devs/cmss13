@@ -157,6 +157,14 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 		icon_state = "cryo_rear"
 	..()
 
+
+
+
+
+
+
+
+
 //Cryopods themselves.
 /obj/structure/machinery/cryopod
 	name = "hypersleep chamber"
@@ -173,18 +181,12 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 	var/obj/item/device/radio/intercom/announce //Intercom for cryo announcements
 
 /obj/structure/machinery/cryopod/right
-	orient_right = 1
-	icon_state = "body_scanner_0-r"
+	dir = WEST
 
-/obj/structure/machinery/cryopod/New()
-
+/obj/structure/machinery/cryopod/Initialize()
+	..()
 	announce = new /obj/item/device/radio/intercom(src)
 
-	if(orient_right)
-		icon_state = "body_scanner_0-r"
-	else
-		icon_state = "body_scanner_0"
-	..()
 
 //Lifted from Unity stasis.dm and refactored. ~Zuhayr
 /obj/structure/machinery/cryopod/process()
@@ -386,10 +388,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 					data_core.general -= G
 					qdel(G)
 
-			if(orient_right)
-				icon_state = "body_scanner_0-r"
-			else
-				icon_state = "body_scanner_0"
+			icon_state = "body_scanner_0"
 
 			occupant.track_death_calculations()
 
@@ -449,17 +448,8 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 			if(occupant)
 				to_chat(user, SPAN_WARNING("[src] is occupied."))
 				return
-			M.forceMove(src)
-			if(orient_right)
-				icon_state = "body_scanner_1-r"
-			else
-				icon_state = "body_scanner_1"
 
-			to_chat(M, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
-			to_chat(M, "<span class='boldnotice'>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</span>")
-			occupant = M
-			start_processing()
-			time_entered = world.time
+			go_in_cryopod(M)
 
 			//Book keeping!
 			var/turf/location = get_turf(src)
@@ -467,7 +457,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 			message_admins(SPAN_NOTICE("[key_name_admin(M)] has entered a stasis pod."))
 
 			//Despawning occurs when process() is called with an occupant without a client.
-			add_fingerprint(M)
+			add_fingerprint(user)
 
 /obj/structure/machinery/cryopod/verb/eject()
 
@@ -481,10 +471,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 		to_chat(usr, SPAN_WARNING("You can't drag people out of hypersleep!"))
 		return
 
-	if(orient_right)
-		icon_state = "body_scanner_0-r"
-	else
-		icon_state = "body_scanner_0"
+	icon_state = "body_scanner_0"
 
 	//Eject any items that aren't meant to be in the pod.
 	var/list/items = src.contents
@@ -496,14 +483,14 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 
 	go_out()
 	add_fingerprint(usr)
-	return
+
 
 /obj/structure/machinery/cryopod/verb/move_inside()
 	set name = "Enter Pod"
 	set category = "Object"
 	set src in oview(1)
 
-	if(usr.stat != 0 || !(ishuman(usr)))
+	if(usr.is_mob_incapacitated() || !(ishuman(usr)))
 		return
 
 	if(occupant)
@@ -526,33 +513,29 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 			to_chat(usr, SPAN_WARNING("[src] is occupied."))
 			return
 
-		usr.forceMove(src)
-		occupant = usr
-
-		if(orient_right)
-			icon_state = "body_scanner_1-r"
-		else
-			icon_state = "body_scanner_1"
-
-		to_chat(usr, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
-		to_chat(usr, "<span class='boldnotice'>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</span>")
-		time_entered = world.time
-		start_processing()
-
+		go_in_cryopod(usr)
 		add_fingerprint(usr)
 
-	return
+
+/obj/structure/machinery/cryopod/proc/go_in_cryopod(mob/M)
+	if(occupant)
+		return
+	M.forceMove(src)
+	occupant = M
+	icon_state = "body_scanner_1"
+	to_chat(M, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
+	to_chat(M, SPAN_BOLDNOTICE("If you ghost, log out or close your client now, your character will shortly be permanently removed from the round."))
+	time_entered = world.time
+	start_processing()
+	var/turf/location = get_turf(src)
+	log_admin("[key_name_admin(M)] has entered a stasis pod. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
+	message_admins(SPAN_NOTICE("[key_name_admin(M)] has entered a stasis pod."))
+
 
 /obj/structure/machinery/cryopod/proc/go_out()
-
 	if(!occupant)
 		return
-
 	occupant.forceMove(get_turf(src))
 	occupant = null
 	stop_processing()
-
-	if(orient_right)
-		icon_state = "body_scanner_0-r"
-	else
-		icon_state = "body_scanner_0"
+	icon_state = "body_scanner_0"

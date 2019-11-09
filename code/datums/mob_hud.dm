@@ -68,14 +68,20 @@ var/datum/mob_hud/huds = list(
 /datum/mob_hud/medical/basic
 
 /datum/mob_hud/medical/basic/proc/check_sensors(mob/living/carbon/human/H)
-	if(!istype(H)) return 0
+	if(!istype(H)) 
+		return FALSE
+
 	var/obj/item/clothing/under/U = H.w_uniform
-	if(!istype(U)) return 0
-	if(U.sensor_mode <= 2) return 0
-	return 1
+	if(!istype(U))
+		return FALSE
+	
+	if(U.sensor_mode <= 2 || U.has_sensor == 0)
+		return FALSE
+
+	return TRUE
 
 /datum/mob_hud/medical/basic/add_to_single_hud(mob/user, mob/target)
-	if(check_sensors(user))
+	if(check_sensors(target))
 		..()
 
 /datum/mob_hud/medical/basic/proc/update_suit_sensors(mob/living/carbon/human/H)

@@ -143,7 +143,7 @@
 
 	if(isobserver(M))
 		var/mob/dead/observer/ghost = M
-		if(!ghost.adminlarva)
+		if(C.admin_holder && (C.admin_holder.rights & R_MOD)) && ghost.adminlarva == 0)
 			linked_hive.spawn_list.Remove(picked_mind)
 			linked_hive.spawn_list.Add(picked_mind)
 			return

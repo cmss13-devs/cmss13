@@ -858,7 +858,7 @@
 			SPAN_DANGER("You smash \the [src]!"), null, 5)
 
 /obj/structure/girder/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.caste.tier < 2 || unacidable)
+	if((M.caste.tier < 2 && !isXenoQueen(M)) || unacidable)
 		to_chat(M, SPAN_WARNING("Your claws aren't sharp enough to damage \the [src]."))
 		return 0
 	else

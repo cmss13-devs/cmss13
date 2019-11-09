@@ -264,8 +264,8 @@
 		to_chat(src, SPAN_XENOWARNING("You can't deevolve here."))
 		return
 
-	if(health <= 0)
-		to_chat(src, SPAN_XENOWARNING("You are too weak to deevolve."))
+	if(health < maxHealth)
+		to_chat(src, SPAN_XENOWARNING("You are too weak to deevolve, regain your health first."))
 		return
 
 	if(!caste.deevolves_to)

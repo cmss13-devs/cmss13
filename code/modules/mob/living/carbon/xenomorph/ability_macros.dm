@@ -90,9 +90,9 @@
 	set category = "Alien"
 	set name = "Secrete Resin"
 	set hidden = 1
-	var/action_name = "Secrete Resin (75)"
+	var/action_name = "Secrete Resin (150)"
 	if(isXenoHivelord(src)) // >:( special snowflake caste
-		action_name = "Secrete Resin (100)"
+		action_name = "Secrete Resin (200)"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_morph_resin()

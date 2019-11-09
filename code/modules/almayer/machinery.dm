@@ -471,7 +471,7 @@
 			user.temp_drop_inv_item(W)
 			qdel(W)
 			user.put_in_hands(R)
-			r_TRU
+			return TRUE
 	..()
 
 /obj/structure/closet/basketball

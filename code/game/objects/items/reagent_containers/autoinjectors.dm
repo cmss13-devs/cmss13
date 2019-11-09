@@ -166,8 +166,8 @@
 	chemname = "tricordrazine"
 	desc = "An autoinjector loaded with a small dose of medicine for marines to treat themselves with."
 	icon_state = "tricord"
-	amount_per_transfer_from_this = 10
-	volume = 10
+	amount_per_transfer_from_this = 15
+	volume = 15
 	skilllock = 0
 	uses_left = 1
 

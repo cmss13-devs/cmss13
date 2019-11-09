@@ -48,7 +48,8 @@ var/global/list/deployed_fultons = list()
 		icon_state = "fulton"
 
 /obj/item/stack/fulton/afterattack(atom/target, mob/user, flag)
-	if(!flag) return FALSE
+	if(!flag) 
+		return FALSE
 	if(isobj(target) || isliving(target))
 		attach(target, user)
 		return

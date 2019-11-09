@@ -137,7 +137,7 @@
 		T.id = "hole[i]"
 
 	..()
-	r_TRU
+	return TRUE
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -174,7 +174,8 @@
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/colonialmarines/process()
 	. = ..()
-	if(--round_started > 0) r_FAL //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
+	if(--round_started > 0) 
+		return FALSE //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 
 	if(!round_finished)
 		for(var/datum/hive_status/hive in hive_datum)

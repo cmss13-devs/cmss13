@@ -243,12 +243,14 @@
 
 	if(!caste.charge_type || stat || (!throwing && used_pounce)) //No charge type, unconscious or dead, or not throwing but used pounce.
 		..() //Do the parent instead.
-		r_FAL
+		return FALSE
 
 	if(isobj(hit_atom)) //Deal with smacking into dense objects. This overwrites normal throw code.
 		var/obj/O = hit_atom
-		if(!O.density) r_FAL//Not a dense object? Doesn't matter then, pass over it.
-		if(!O.anchored) step(O, dir) //Not anchored? Knock the object back a bit. Ie. canisters.
+		if(!O.density)
+			return FALSE//Not a dense object? Doesn't matter then, pass over it.
+		if(!O.anchored) 
+			step(O, dir) //Not anchored? Knock the object back a bit. Ie. canisters.
 
 		switch(caste.charge_type) //Determine how to handle it depending on charge type.
 			if(1 to 2)
@@ -259,8 +261,9 @@
 					var/obj/structure/S = O
 					visible_message(SPAN_DANGER("[src] plows straight through [S]!"), null, null, 5)
 					S.destroy() //We want to continue moving, so we do not reset throwing.
-				else O.hitby(src, speed) //This resets throwing.
-		r_TRU
+				else 
+					O.hitby(src, speed) //This resets throwing.
+		return TRUE
 
 	if(ismob(hit_atom)) //Hit a mob! This overwrites normal throw code.
 		var/mob/living/carbon/M = hit_atom
@@ -272,7 +275,7 @@
 						if(H.check_shields(15, "the pounce")) //Human shield block.
 							KnockDown(3)
 							throwing = FALSE //Reset throwing manually.
-							r_FAL
+							return FALSE
 
 						if(isYautja(H))
 							if(H.check_shields(0, "the pounce", 1))
@@ -280,13 +283,13 @@
 												SPAN_XENODANGER("[H] blocks your pouncing form with the combistick!"), null, 5)
 								KnockDown(5)
 								throwing = FALSE
-								r_FAL
+								return FALSE
 							else if(prob(75)) //Body slam the fuck out of xenos jumping at your front.
 								visible_message(SPAN_DANGER("[H] body slams [src]!"),
 												SPAN_XENODANGER("[H] body slams you!"), null, 5)
 								KnockDown(4)
 								throwing = FALSE
-								r_FAL
+								return FALSE
 
 					visible_message(SPAN_DANGER("[src] pounces on [M]!"),
 									SPAN_XENODANGER("You pounce on [M]!"), null, 5)
@@ -313,7 +316,7 @@
 					M.attack_alien(src) //Free hit/grab/tackle. Does not weaken, and it's just a regular slash if they choose to do that.
 
 		throwing = FALSE //Resert throwing since something was hit.
-		r_TRU
+		return TRUE
 
 	..() //Do the parent otherwise, for turfs.
 
@@ -505,7 +508,8 @@
 
 //This is depricated. Use handle_collision() for all future speed changes. ~Bmc777
 /mob/living/carbon/Xenomorph/proc/stop_momentum(direction)
-	if(!lastturf) r_FAL //Not charging.
+	if(!lastturf) 
+		return FALSE //Not charging.
 	if(charge_speed > charge_speed_buildup * charge_turfs_to_charge) //Message now happens without a stun condition
 		visible_message(SPAN_DANGER("[src] skids to a halt!"),
 		SPAN_XENOWARNING("You skid to a halt."), null, 5)
@@ -518,41 +522,44 @@
 
 //Why the elerloving fuck was this a Crusher only proc ? AND WHY IS IT NOT CAST ON THE RECEIVING ATOM ? AAAAAAA
 /mob/living/carbon/Xenomorph/proc/diagonal_step(atom/movable/A, direction)
-	if(!A) r_FAL
+	if(!A) 
+		return FALSE
 	switch(direction)
-		if(EAST, WEST) step(A, pick(NORTH,SOUTH))
-		if(NORTH,SOUTH) step(A, pick(EAST,WEST))
+		if(EAST, WEST) 
+			step(A, pick(NORTH,SOUTH))
+		if(NORTH,SOUTH) 
+			step(A, pick(EAST,WEST))
 
 /mob/living/carbon/Xenomorph/proc/handle_momentum()
 	if(throwing)
-		r_FAL
+		return FALSE
 
 	if(last_charge_move && last_charge_move < world.time - 5) //If we haven't moved in the last 500 ms, break charge on next move
 		stop_momentum(charge_dir)
 
 	if(stat || pulledby || !loc || !isturf(loc))
 		stop_momentum(charge_dir)
-		r_FAL
+		return FALSE
 
 	if(!is_charging)
 		stop_momentum(charge_dir)
-		r_FAL
+		return FALSE
 
 	if(lastturf && (loc == lastturf || loc.z != lastturf.z)) //Check if the Crusher didn't move from his last turf, aka stopped
 		stop_momentum(charge_dir)
-		r_FAL
+		return FALSE
 
 	var/turf/T = loc
 	if(dir != charge_dir || m_intent == MOVE_INTENT_WALK || T.stop_crusher_charge())
 		stop_momentum(charge_dir)
-		r_FAL
+		return FALSE
 
 	if(pulling && charge_speed > charge_speed_buildup) stop_pulling()
 
 	if(plasma_stored > 5) plasma_stored -= round(charge_speed) //Eats up plasma the faster you go, up to 0.5 per tile at max speed
 	else
 		stop_momentum(charge_dir)
-		r_FAL
+		return FALSE
 
 	last_charge_move = world.time //Index the world time to the last charge move
 

@@ -235,7 +235,7 @@ var/bomb_set = FALSE
 	if(safety)
 		timing = FALSE
 		stop_processing()
-		r_FAL
+		return FALSE
 	timing = -1
 	safety = TRUE
 	icon_state = "nuclearbomb3"
@@ -245,7 +245,7 @@ var/bomb_set = FALSE
 	sleep(100)
 	cell_explosion(loc, 500, 150, null, initial(name))
 	qdel(src)
-	r_TRU
+	return TRUE
 
 /obj/item/disk/nuclear/Dispose()
 	if(blobstart.len > 0)

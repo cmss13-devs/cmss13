@@ -38,7 +38,7 @@
 	if(!affected_mob) //The mob we were gestating in is straight up gone, we shouldn't be here
 		processing_objects.Remove(src)
 		qdel(src)
-		r_FAL
+		return FALSE
 
 	if(loc != affected_mob) //Our location is not the host
 		affected_mob.status_flags &= ~(XENO_HOST)
@@ -47,7 +47,7 @@
 			var/mob/living/carbon/C = affected_mob
 			C.med_hud_set_status()
 		affected_mob = null
-		r_FAL
+		return FALSE
 
 	if(affected_mob.stat == DEAD)
 		if(ishuman(affected_mob))
@@ -57,15 +57,16 @@
 				if(L)
 					L.chest_burst(affected_mob)
 				Dispose()
-				r_FAL
+				return FALSE
 		else
 			var/mob/living/carbon/Xenomorph/Larva/L = locate() in affected_mob
 			if(L)
 				L.chest_burst(affected_mob)
 			processing_objects.Remove(src)
-			r_FAL
+			return FALSE
 
-	if(affected_mob.in_stasis == STASIS_IN_CRYO_CELL) r_FAL //If they are in cryo, the embryo won't grow.
+	if(affected_mob.in_stasis == STASIS_IN_CRYO_CELL) 
+		return FALSE //If they are in cryo, the embryo won't grow.
 
 	process_growth()
 

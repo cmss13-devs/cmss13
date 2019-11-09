@@ -43,7 +43,8 @@
 				to_chat(M, SPAN_WARNING("The solution violently explodes."))
 
 			explosion(location, -1, -1, light, flash)
-			if(light > 0) r_TRU
+			if(light > 0) 
+				return TRUE
 
 	proc/holder_damage(var/atom/holder)
 		if(holder)

@@ -115,13 +115,14 @@
 				user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s internal damage."),
 				SPAN_NOTICE("You start welding [src]'s internal damage."))
 				if(do_after(user, 200, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(buildstate != 1 || is_on || !WT.isOn()) r_FAL
+					if(buildstate != 1 || is_on || !WT.isOn()) 
+						return FALSE
 					playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 					buildstate = 2
 					user.visible_message(SPAN_NOTICE("[user] welds [src]'s internal damage."),
 					SPAN_NOTICE("You weld [src]'s internal damage."))
 					update_icon()
-					r_TRU
+					return TRUE
 			else
 				to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 				return
@@ -134,13 +135,14 @@
 			user.visible_message(SPAN_NOTICE("[user] starts securing [src]'s wiring."),
 			SPAN_NOTICE("You start securing [src]'s wiring."))
 			if(do_after(user, 120, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 12))
-				if(buildstate != 2 || is_on) r_FAL
+				if(buildstate != 2 || is_on) 
+					return FALSE
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				buildstate = 3
 				user.visible_message(SPAN_NOTICE("[user] secures [src]'s wiring."),
 				SPAN_NOTICE("You secure [src]'s wiring."))
 				update_icon()
-				r_TRU
+				return TRUE
 	else if(iswrench(O))
 		if(buildstate == 3 && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
@@ -150,13 +152,14 @@
 			user.visible_message(SPAN_NOTICE("[user] starts repairing [src]'s tubing and plating."),
 			SPAN_NOTICE("You start repairing [src]'s tubing and plating."))
 			if(do_after(user, 150, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				if(buildstate != 3 || is_on) r_FAL
+				if(buildstate != 3 || is_on) 
+					return FALSE
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				buildstate = 0
 				user.visible_message(SPAN_NOTICE("[user] repairs [src]'s tubing and plating."),
 				SPAN_NOTICE("You repair [src]'s tubing and plating."))
 				update_icon()
-				r_TRU
+				return TRUE
 	else
 		return ..() //Deal with everything else, like hitting with stuff
 

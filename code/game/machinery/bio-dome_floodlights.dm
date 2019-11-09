@@ -142,7 +142,7 @@
 				return //Larvae can't do shit
 			if(user.get_active_hand())
 				to_chat(user, SPAN_WARNING("You need your claws empty for this!"))
-				r_FAL
+				return FALSE
 			user.visible_message(SPAN_DANGER("[user] starts to slash and claw away at [src]!"),
 			SPAN_DANGER("You start slashing and clawing at [src]!"))
 			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !damaged) //Not when it's already damaged.

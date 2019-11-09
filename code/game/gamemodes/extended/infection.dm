@@ -47,7 +47,8 @@
 
 /datum/game_mode/infection/process()
 	. = ..()
-	if(--round_started > 0) r_FAL //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
+	if(--round_started > 0) 
+		return FALSE //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 
 	if(!round_finished)
 		if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.

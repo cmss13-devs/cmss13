@@ -633,6 +633,8 @@ This function completely restores a damaged organ to perfect condition.
 				owner.embedded_items -= i
 			qdel(i)
 
+		remove_all_bleeding(TRUE, TRUE)
+
 		if(hidden)
 			hidden.forceMove(owner.loc)
 			hidden = null
@@ -815,7 +817,7 @@ This function completely restores a damaged organ to perfect condition.
 	owner.visible_message(\
 		SPAN_WARNING("You hear a loud cracking sound coming from [owner]!"),
 		SPAN_HIGHDANGER("Something feels like it shattered in your [display_name]!"),
-		"<span class='warning'>You hear a sickening crack!<span>")
+		SPAN_HIGHDANGER("You hear a sickening crack!"))
 	var/F = pick('sound/effects/bone_break1.ogg','sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg','sound/effects/bone_break4.ogg','sound/effects/bone_break5.ogg','sound/effects/bone_break6.ogg','sound/effects/bone_break7.ogg')
 	playsound(owner,F, 45, 1)
 	if(owner.species && !(owner.species.flags & NO_PAIN))

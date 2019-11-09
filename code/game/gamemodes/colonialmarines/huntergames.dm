@@ -113,7 +113,7 @@ var/waiting_for_drop_votes = 0
 	if(istype(H)) H.gib() //No mercy.
 
 /datum/game_mode/huntergames/announce()
-	r_TRU
+	return TRUE
 
 /datum/game_mode/huntergames/pre_setup()
 	primary_spawns = list()
@@ -157,7 +157,7 @@ var/waiting_for_drop_votes = 0
 				if(player.client)
 					player.mind = new(player.key)
 					player.mind_initialize()
-	r_TRU
+	return TRUE
 
 /datum/game_mode/huntergames/post_setup()
 	contestants = list()
@@ -407,7 +407,8 @@ var/waiting_for_drop_votes = 0
 	return
 
 /datum/game_mode/huntergames/proc/place_drop(turf/T, OT = "crap", in_crate)
-	if(!istype(T)) r_FAL
+	if(!istype(T)) 
+		return FALSE
 
 	if(OT == "good" && !in_crate && prob(15)) in_crate = 1 //Place some good drops in crates.
 

@@ -1748,32 +1748,30 @@
 		to_chat(src, SPAN_NOTICE("Attacks will now use directional assist."))
 
 /mob/living/carbon/Xenomorph/proc/morph_resin(var/turf/current_turf, var/structure_type)
-	if (!structure_type)
-		return
-	if (!check_state())
-		return
+	if (!structure_type || !check_state() || action_busy)
+		return FALSE
 
 	var/area/current_area = get_area(current_turf)
 
 	if(isnull(current_turf))
 		to_chat(src, SPAN_WARNING("You can't do that here."))
-		return
+		return FALSE
 
 	if(!hive.living_xeno_queen)
 		to_chat(src, SPAN_WARNING("There is no queen!"))
-		return
+		return FALSE
 
 	if(!hive.hive_location)
 		to_chat(src, SPAN_WARNING("There is no hive!"))
-		return
+		return FALSE
 
 	if(get_dist(src, hive.hive_location) > XENO_HIVE_AREA_SIZE)
 		to_chat(src, SPAN_WARNING("You are too far from the hive!"))
-		return
+		return FALSE
 
 	if (!current_area.can_build_special)
 		to_chat(src, SPAN_WARNING("You cannot build here!"))
-		return		
+		return FALSE		
 
 	for(var/turf/T in (range(current_turf, 1)))
 		var/failed = FALSE
@@ -1787,15 +1785,15 @@
 		var/obj/effect/alien/weeds/alien_weeds = locate() in T
 		if(!alien_weeds)
 			to_chat(src, SPAN_WARNING("You can only shape on weeds. Find some resin before you start building!"))
-			return
+			return FALSE
 
 	if(!do_after(src, XENO_STRUCTURE_BUILD_TIME, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		return
+		return FALSE
 
 	KnockDown(80)
 
 	if(!do_after(src, XENO_STRUCTURE_BUILD_TIME, INTERRUPT_DIFF_TURF|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		return
+		return FALSE
 
 	var/obj/effect/alien/resin/special/new_structure = new structure_type(loc, hive)
 

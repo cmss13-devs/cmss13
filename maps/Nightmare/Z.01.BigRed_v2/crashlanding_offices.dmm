@@ -1171,22 +1171,18 @@
 	},
 /area/bigredv2/outside/se)
 "dw" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/mars_cave{
-	tag = "icon-mars_dirt_4";
-	icon_state = "mars_dirt_4"
+/turf/open/floor{
+	tag = "icon-asteroidwarning (SOUTHWEST)";
+	icon_state = "asteroidwarning";
+	dir = 10
 	},
 /area/bigredv2/outside/se)
 "dx" = (
-/turf/open/mars_cave{
-	tag = "icon-mars_dirt_4";
-	icon_state = "mars_dirt_4"
-	},
-/area/bigredv2/outside/se)
-"dy" = (
-/turf/open/mars{
-	tag = "icon-mars_dirt_3";
-	icon_state = "mars_dirt_3"
+/obj/item/tool/warning_cone,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (SOUTHEAST)";
+	icon_state = "asteroidwarning";
+	dir = 6
 	},
 /area/bigredv2/outside/se)
 "dz" = (
@@ -1533,6 +1529,21 @@
 	icon_state = "rasputin15"
 	},
 /area/bigredv2/outside/office_complex)
+"Ha" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/se)
+"PR" = (
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/se)
 "Qc" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
@@ -2028,7 +2039,7 @@ bp
 bp
 cF
 do
-dw
+dq
 "}
 (19,1,1) = {"
 ai
@@ -2054,8 +2065,8 @@ cN
 cN
 cN
 di
-dp
-dw
+Ha
+dq
 "}
 (20,1,1) = {"
 aj
@@ -2081,8 +2092,8 @@ cO
 cU
 dd
 dj
-dp
-dx
+Ha
+PR
 "}
 (21,1,1) = {"
 ak
@@ -2108,8 +2119,8 @@ dK
 bd
 aS
 dj
-dp
-dx
+Ha
+PR
 "}
 (22,1,1) = {"
 al
@@ -2135,8 +2146,8 @@ bE
 dU
 aS
 by
-dp
-dy
+Ha
+PR
 "}
 (23,1,1) = {"
 am
@@ -2162,8 +2173,8 @@ cP
 bE
 bd
 dk
-dp
-dx
+Ha
+dq
 "}
 (24,1,1) = {"
 ai
@@ -2189,8 +2200,8 @@ el
 em
 cA
 be
-dp
-dx
+Ha
+dq
 "}
 (25,1,1) = {"
 ai
@@ -2216,6 +2227,6 @@ cA
 cW
 de
 ap
-dq
+PR
 dx
 "}

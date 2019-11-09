@@ -161,6 +161,9 @@
 			)
 	mutation_type = QUEEN_NORMAL
 
+/mob/living/carbon/Xenomorph/Queen/can_destroy_special()
+	return TRUE
+
 /mob/living/carbon/Xenomorph/Queen/Corrupted
 	hivenumber = XENO_HIVE_CORRUPTED
 
@@ -513,6 +516,10 @@
 	resting = FALSE
 	update_canmove()
 	update_icons()
+	
+	if(hive)
+		var/turf/T = get_turf(src)
+		hive.set_hive_location(T)
 
 	for(var/mob/living/carbon/Xenomorph/L in hive.xeno_leader_list)
 		L.handle_xeno_leader_pheromones()

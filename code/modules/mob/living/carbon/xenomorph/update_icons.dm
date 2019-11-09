@@ -124,7 +124,6 @@
 	apply_overlay(X_SUIT_LAYER)
 	add_timer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 20)
 
-
 /mob/living/carbon/Xenomorph/update_fire()
 	remove_overlay(X_FIRE_LAYER)
 	if(on_fire)
@@ -139,7 +138,6 @@
 
 		overlays_standing[X_FIRE_LAYER] = I
 		apply_overlay(X_FIRE_LAYER)
-
 
 //Xeno Overlays Indexes//////////
 #undef X_HEAD_LAYER

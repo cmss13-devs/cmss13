@@ -131,7 +131,7 @@ Works together with spawning an observer, noted above.
 	if(key)
 		var/mob/dead/observer/ghost = new(src)	//Transfer safety to observer spawning proc.
 		ghost.can_reenter_corpse = can_reenter_corpse
-		ghost.timeofdeath = src.timeofdeath //BS12 EDIT
+		ghost.timeofdeath = timeofdeath //BS12 EDIT
 		ghost.key = key
 		if(!can_reenter_corpse)
 			away_timer = 300 //they'll never come back, so we can max out the timer right away.
@@ -139,8 +139,6 @@ Works together with spawning an observer, noted above.
 			ghost.client.change_view(world.view) //reset view range to default
 			ghost.client.pixel_x = 0 //recenters our view
 			ghost.client.pixel_y = 0
-//		if(!ghost.client.admin_holder && !config.antag_hud_allowed)		// For new ghosts we remove the verb from even showing up if it's not allowed.
-//			ghost.verbs -= /mob/dead/observer/verb/toggle_antagHUD	// Poor guys, don't know what they are missing!
 		return ghost
 
 /*
@@ -168,7 +166,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		log_game("[key_name_admin(usr)] has ghosted.")
 		var/mob/dead/observer/ghost = ghostize(0)						//0 parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		if(ghost) //Could be null if no key
-			ghost.timeofdeath = world.time // Because the living mob won't have a time of death and we want the respawn timer to work properly.
+			ghost.timeofdeath = timeofdeath
 	return
 
 
@@ -224,7 +222,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, "<span style='color: red;'>Another consciousness is in your body...It is resisting you.</span>")
 		return
 	mind.current.key = key
-	if(mind.current.client) mind.current.client.change_view(world.view)
+	if(mind.current.client)
+		mind.current.client.change_view(world.view)
 	return 1
 
 /mob/dead/observer/verb/toggle_HUDs()

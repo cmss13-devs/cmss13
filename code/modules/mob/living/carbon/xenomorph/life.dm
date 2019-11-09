@@ -31,6 +31,7 @@
 		handle_overwatch() // For new Xeno hivewide overwatch - Fourk, 6/24/19
 		update_canmove()
 		update_icons()
+		handle_luminosity()
 		if(loc)
 			handle_environment()
 		if(client)
@@ -66,7 +67,6 @@
 
 /mob/living/carbon/Xenomorph/proc/handle_xeno_fire()
 	if(on_fire)
-		SetLuminosity(min(fire_stacks,5)) // light up xenos
 		var/obj/item/clothing/mask/facehugger/F = get_active_hand()
 		var/obj/item/clothing/mask/facehugger/G = get_inactive_hand()
 		if(istype(F))
@@ -78,12 +78,6 @@
 		if(!caste.fire_immune)
 			var/dmg = armor_damage_reduction(config.xeno_fire, fire_stacks * 2 + 4.5)
 			adjustFireLoss(dmg)
-
-	else
-		if(isXenoBoiler(src))
-			SetLuminosity(3) // needs a less hacky way of doing this, like a default luminosity var
-		else
-			SetLuminosity(0)
 
 /mob/living/carbon/Xenomorph/proc/handle_pheromones()
 	//Rollercoaster of fucking stupid because Xeno life ticks aren't synchronised properly and values reset just after being applied
@@ -497,8 +491,6 @@ updatehealth()
 
 	hud_set_plasma() //update plasma amount on the plasma mob_hud
 
-
-
 /mob/living/carbon/Xenomorph/proc/queen_locator()
 	if(!hud_used || !hud_used.locate_leader) return
 
@@ -517,8 +509,6 @@ updatehealth()
 		else
 			hud_used.locate_leader.icon_state = "trackondirect"
 
-
-
 /mob/living/carbon/Xenomorph/updatehealth()
 	if(status_flags & GODMODE)
 		health = 100
@@ -532,8 +522,13 @@ updatehealth()
 	med_hud_set_health()
 	med_hud_set_armor()
 
-
-
+/mob/living/carbon/Xenomorph/proc/handle_luminosity()
+	var/new_luminosity = 0
+	if(caste)
+		new_luminosity += caste.caste_luminosity
+	if(on_fire)
+		new_luminosity += min(fire_stacks, 5)
+	SetLuminosity(new_luminosity) // light up xenos
 
 /mob/living/carbon/Xenomorph/handle_stunned()
 	if(stunned)

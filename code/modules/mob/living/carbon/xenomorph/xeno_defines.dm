@@ -1,293 +1,3 @@
-// Holds defines for /datum/caste_datum, which is the primary datum for the caste system,
-// /datum/hive_status (self explanatory)
-// and some of the var defines for the Xenomorph base type.
-
-// Holds defines relevant to overall xeno balance
-
-// Stopgap usage only. Use to unilaterally buff every Xenomorph.
-// WARNING: These can fuck the entire game
-#define XENO_UNIVERSAL_HPMULT 1.0		// Use to unilaterally buff every caste's total HP.
-#define XENO_UNIVERSAL_PLASMAMULT 1.0	// Use to unilaterally buff every caste's total PLASMA.
-#define XENO_UNIVERSAL_DAMAGEMULT 1.0	// Use to unilaterally buff every caste's DAMAGE.
-
-/////////////////////////////////////////////////////////////////////////////////////
-//
-//	Stat Baselines
-//
-// These provide the values for caste that everything is built on/scaled off of.
-//
-/////////////////////////////////////////////////////////////////////////////////////
-
-// Armor levels
-#define XENO_NO_ARMOR 0
-#define XENO_LOW_ARMOR 20
-#define XENO_LOWMED_ARMOR 25
-#define XENO_MEDIUM_ARMOR 30
-#define XENO_HEAVY_ARMOR 40
-#define XENO_ULTRA_ARMOR 50
-
-// Explosive armor (think explosion resistance)
-#define XENO_NO_EXPLOSIVE_ARMOR 0
-#define XENO_LOW_EXPLOSIVE_ARMOR 10
-#define XENO_MEDIUM_EXPLOSIVE_ARMOR 20
-#define XENO_HEAVY_EXPLOSIVE_ARMOR 40
-#define XENO_LOWULTRA_EXPLOSIVE_ARMOR 50
-#define XENO_ULTRA_EXPLOSIVE_ARMOR 60
-#define XENO_GIGA_EXPLOSIVE_ARMOR 100
-
-// Health bands
-#define XENO_HEALTH_LARVA 35 * XENO_UNIVERSAL_HPMULT
-#define XENO_HEALTH_VERYLOW 200 * XENO_UNIVERSAL_HPMULT
-#define XENO_HEALTH_LOW 225 * XENO_UNIVERSAL_HPMULT
-#define XENO_HEALTH_LOWMEDIUM 250 * XENO_UNIVERSAL_HPMULT
-#define XENO_HEALTH_MEDIUM 275 * XENO_UNIVERSAL_HPMULT
-#define XENO_HEALTH_HIGHMEDIUM 325 * XENO_UNIVERSAL_HPMULT
-#define XENO_HEALTH_LOWHIGH 400 * XENO_UNIVERSAL_HPMULT
-#define XENO_HEALTH_HIGH 450 * XENO_UNIVERSAL_HPMULT
-#define XENO_HEALTH_VERYHIGH 525 * XENO_UNIVERSAL_HPMULT
-#define XENO_HEALTH_ULTRAHIGH 750 * XENO_UNIVERSAL_HPMULT
-#define XENO_HEALTH_IMMORTAL 1200 * XENO_UNIVERSAL_HPMULT
-
-// Plasma bands
-#define XENO_PLASMA_LOW 100 * XENO_UNIVERSAL_PLASMAMULT
-#define XENO_PLASMA_LOWMEDIUM 150 * XENO_UNIVERSAL_PLASMAMULT
-#define XENO_PLASMA_MEDIUM 200 * XENO_UNIVERSAL_PLASMAMULT
-#define XENO_PLASMA_HIGHMEDIUM 300 * XENO_UNIVERSAL_PLASMAMULT
-#define XENO_PLASMA_HIGH 500 * XENO_UNIVERSAL_PLASMAMULT
-#define XENO_PLASMA_VERYHIGH 800 * XENO_UNIVERSAL_PLASMAMULT
-#define XENO_PLASMA_ULTRAHIGH 1000 * XENO_UNIVERSAL_PLASMAMULT
-
-// Plasma gain bands
-#define XENO_PLASMA_GAIN_LOW 1
-#define XENO_PLASMA_GAIN_LOWMED 2
-#define XENO_PLASMA_GAIN_MED 2.5
-#define XENO_PLASMA_GAIN_HIGHMED 3
-#define XENO_PLASMA_GAIN_HIGH 3.5
-#define XENO_PLASMA_GAIN_VERYHIGH 4
-#define XENO_PLASMA_GAIN_ULTRAHIGH 5
-
-// Armor factor
-#define XENO_ARMOR_FACTOR_LOW 25
-#define XENO_ARMOR_FACTOR_MEDIUM 30
-#define XENO_ARMOR_FACTOR_HIGH 35
-#define XENO_ARMOR_FACTOR_VERYHIGH 40
-
-// Evasion
-#define XENO_EVASION_NONE 0
-#define XENO_EVASION_LOW 10
-#define XENO_EVASION_MEDIUM 15
-#define XENO_EVASION_HIGH 20
-
-// Speeds
-#define XENO_SPEED_SLOW 0.7
-#define XENO_SPEED_MEDIUM 0.3
-#define XENO_SPEED_MEDHIGH -0.2
-#define XENO_SPEED_LOWHIGH -0.4
-#define XENO_SPEED_HIGH -0.5
-#define XENO_SPEED_HIGHFAST -0.8
-#define XENO_SPEED_FAST -1.6
-#define XENO_SPEED_SANICFAST -1.9
-
-// Xeno damage categories
-#define XENO_DAMAGE_WEAK 10 * XENO_UNIVERSAL_DAMAGEMULT
-#define XENO_DAMAGE_LOW 20 * XENO_UNIVERSAL_DAMAGEMULT
-#define XENO_DAMAGE_LOWPLUS 25 * XENO_UNIVERSAL_DAMAGEMULT
-#define XENO_DAMAGE_MEDIUMLOW 30 * XENO_UNIVERSAL_DAMAGEMULT
-#define XENO_DAMAGE_MEDIUM 35 * XENO_UNIVERSAL_DAMAGEMULT
-#define XENO_DAMAGE_MEDIUMHIGH 40 * XENO_UNIVERSAL_DAMAGEMULT
-#define XENO_DAMAGE_HIGH 50 * XENO_UNIVERSAL_DAMAGEMULT
-#define XENO_DAMAGE_VERYHIGH 75 * XENO_UNIVERSAL_DAMAGEMULT
-#define XENO_DAMAGE_ULTRAHIGH 100 * XENO_UNIVERSAL_DAMAGEMULT
-
-
-/////////////////////////////////////////////////////////////////////////////////////
-//
-//	Modifiers
-//
-// These below are used in the Xeno strain system to increase and decrease certain stats by strain
-// USE THESE WITH SIGNS - postive will be ADDED, negative will be SUBTRACTED from the Xeno's
-// previous stat. Bear in mind that the signs mean different things for different values.
-//
-/////////////////////////////////////////////////////////////////////////////////////
-
-// Damage - this is applied as a flat nerf/buff to the xeno's average damage
-#define XENO_DAMAGE_MOD_VERYSMALL  5
-#define XENO_DAMAGE_MOD_SMALL      10
-#define XENO_DAMAGE_MOD_MED        15
-#define XENO_DAMAGE_MOD_LARGE      20
-#define XENO_DAMAGE_MOD_VERYLARGE  25
-
-// Overall health pool
-#define XENO_HEALTH_MOD_VERYSMALL  20
-#define XENO_HEALTH_MOD_SMALL      40
-#define XENO_HEALTH_MOD_MED        60
-#define XENO_HEALTH_MOD_LARGE      80
-#define XENO_HEALTH_MOD_VERYLARGE  100
-
-// Armor mods. Use the above defines for some guidance
-// In general, +20 armor should be a little more than +20% effective HP, however,
-// the higher the Xeno's base armor, the greater the effect.
-#define XENO_ARMOR_MOD_VERYSMALL  5
-#define XENO_ARMOR_MOD_SMALL      10
-#define XENO_ARMOR_MOD_MED        15
-#define XENO_ARMOR_MOD_LARGE      20
-#define XENO_ARMOR_MOD_VERYLARGE  25
-
-#define XENO_EXPOSIVEARMOR_MOD_VERYSMALL  10
-#define XENO_EXPOSIVEARMOR_MOD_SMALL      20
-#define XENO_EXPOSIVEARMOR_MOD_MED        30
-#define XENO_EXPOSIVEARMOR_MOD_LARGE      40
-#define XENO_EXPOSIVEARMOR_MOD_VERYLARGE  50
-
-// Plasma
-#define XENO_PLASMAPOOL_MOD_VERYSMALL  20
-#define XENO_PLASMAPOOL_MOD_SMALL      40
-#define XENO_PLASMAPOOL_MOD_MED        60
-#define XENO_PLASMAPOOL_MOD_LARGE      80
-#define XENO_PLASMAPOOL_MOD_VERYLARGE  100
-
-// Plasma regen
-#define XENO_PLASMAGAIN_MOD_SMALL 0.1
-#define XENO_PLASMAGAIN_MOD_MED   0.2
-#define XENO_PLASMAGAIN_MOD_LARGE 0.3
-
-// Speed mods (these will be rolled into the xeno's total speed)
-#define XENO_SPEED_MOD_SMALL      0.05
-#define XENO_SPEED_MOD_MED        0.09
-#define XENO_SPEED_MOD_LARGE      0.1
-#define XENO_SPEED_MOD_VERYLARGE  0.25
-#define XENO_SPEED_MOD_LOWULTRA	  0.375
-#define XENO_SPEED_MOD_ULTRA	  0.5
-
-// Pheremone strength modifiers
-#define XENO_PHERO_MOD_VERYSMALL  0.25
-#define XENO_PHERO_MOD_SMALL      0.5
-#define XENO_PHERO_MOD_MED        0.75
-#define XENO_PHERO_MOD_LARGE      1.0
-#define XENO_PHERO_MOD_VERYLARGE  1.25
-
-// Evasion modifiers
-#define XENO_EVASION_MOD_VERYSMALL 	3
-#define XENO_EVASION_MOD_SMALL	   	6
-#define XENO_EVASION_MOD_MED  	   	9
-#define XENO_EVASION_MOD_LARGE   	12
-#define XENO_EVASION_MOD_VERYLARGE	15
-#define XENO_EVASION_MOD_ULTRA		25
-
-// Armor factor modifiers
-#define XENO_ARMORFACTOR_MOD_VERYSMALL	5
-#define XENO_ARMORFACTOR_MOD_SMALL		10
-#define XENO_ARMORFACTOR_MOD_MED		15
-#define XENO_ARMORFACTOR_MOD_LARGE		20
-#define XENO_ARMORFACTOR_MOD_VERYLARGE 	25
-
-// Acid boost (I guess, this is used literally nowhere)
-// Feel free to add more defines here if it ever becomes relevant
-#define XENO_ACID_MOD_BOOST	1
-
-// Weed boost (same as above)
-#define XENO_WEED_BOOST 1
-
-/////////////////////////////////////////////////////////////////////////////////////
-//
-//	Default scaling values
-//
-// In the abscence of a scalar (documented below) these values are what are used
-// to scale xeno stats by age.
-//
-/////////////////////////////////////////////////////////////////////////////////////
-
-#define XENO_MULTIPLIER_HEALTH_YOUNG 1.0
-#define XENO_MULTIPLIER_HEALTH_MATURE 1.25
-#define XENO_MULTIPLIER_HEALTH_ELDER 1.4
-#define XENO_MULTIPLIER_HEALTH_ANCIENT 1.5
-#define XENO_MULTIPLIER_HEALTH_PRIMORDIAL 1.75
-
-#define XENO_MULTIPLIER_DAMAGE_YOUNG 1.0
-#define XENO_MULTIPLIER_DAMAGE_MATURE 1.2
-#define XENO_MULTIPLIER_DAMAGE_ELDER 1.3
-#define XENO_MULTIPLIER_DAMAGE_ANCIENT 1.35
-#define XENO_MULTIPLIER_DAMAGE_PRIMORDIAL 1.45
-
-#define XENO_MULTIPLIER_PLASMA_YOUNG 1.0
-#define XENO_MULTIPLIER_PLASMA_MATURE 1.25
-#define XENO_MULTIPLIER_PLASMA_ELDER 1.5
-#define XENO_MULTIPLIER_PLASMA_ANCIENT 2.0
-#define XENO_MULTIPLIER_PLASMA_PRIMORDIAL 2.25
-
-#define XENO_MULTIPLIER_PLASMA_GAIN_YOUNG 1.0
-#define XENO_MULTIPLIER_PLASMA_GAIN_MATURE 1.2
-#define XENO_MULTIPLIER_PLASMA_GAIN_ELDER 1.4
-#define XENO_MULTIPLIER_PLASMA_GAIN_ANCIENT 1.6
-#define XENO_MULTIPLIER_PLASMA_GAIN_PRIMORDIAL 1.8
-
-#define XENO_MULTIPLIER_ARMOR_FACTOR_YOUNG 1.0
-#define XENO_MULTIPLIER_ARMOR_FACTOR_MATURE 1.1
-#define XENO_MULTIPLIER_ARMOR_FACTOR_ELDER 1.15
-#define XENO_MULTIPLIER_ARMOR_FACTOR_ANCIENT 1.20
-#define XENO_MULTIPLIER_ARMOR_FACTOR_PRIMORDIAL 1.30
-
-#define XENO_MULTIPLIER_EVASION_YOUNG 1.0
-#define XENO_MULTIPLIER_EVASION_MATURE 1.10
-#define XENO_MULTIPLIER_EVASION_ELDER 1.15
-#define XENO_MULTIPLIER_EVASION_ANCIENT 1.20
-#define XENO_MULTIPLIER_EVASION_PRIMORDIAL 1.3
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-//
-//	Scalars
-//
-// These are used to adjust caste scaling. Define in them in the caste datum definitions
-// for each age to override the default. Bear in mind that these scale from the base caste
-// values; they are NOT multiplicative. The actual variables for doing that are down below.
-//
-/////////////////////////////////////////////////////////////////////////////////////////////
-
-#define XENO_SCALAR_HEALTH_NONE				1.0
-#define XENO_SCALAR_HEALTH_LOW  			1.1
-#define XENO_SCALAR_HEALTH_LOWMED			1.15
-#define XENO_SCALAR_HEALTH_MED				1.2
-#define XENO_SCALAR_HEALTH_MEDHIGH			1.25
-#define XENO_SCALAR_HEALTH_HIGH				1.3
-#define XENO_SCALAR_HEALTH_VERYHIGH			1.35
-#define XENO_SCALAR_HEALTH_ULTRAHIGH		1.4
-#define XENO_SCALAR_HEALTH_IMMORTAL			1.5
-#define XENO_SCALAR_HEALTH_OHLAWD			1.7
-
-#define XENO_SCALAR_DAMAGE_NONE				1.0
-#define XENO_SCALAR_DAMAGE_LOW  			1.1
-#define XENO_SCALAR_DAMAGE_MED				1.2
-#define XENO_SCALAR_DAMAGE_HIGH				1.3
-#define XENO_SCALAR_DAMAGE_VERYHIGH			1.4
-#define XENO_SCALAR_DAMAGE_ULTRAHIGH		1.5
-
-#define XENO_SCALAR_PLASMA_NONE				1.0
-#define XENO_SCALAR_PLASMA_LOW  			1.25
-#define XENO_SCALAR_PLASMA_MED				1.5
-#define XENO_SCALAR_PLASMA_HIGH				1.75
-#define XENO_SCALAR_PLASMA_VERYHIGH			2.0
-#define XENO_SCALAR_PLASMA_ULTRAHIGH		2.25
-
-#define XENO_SCALAR_PLASMA_GAIN_NONE		1.0
-#define XENO_SCALAR_PLASMA_GAIN_LOW  		1.15
-#define XENO_SCALAR_PLASMA_GAIN_MED			1.3
-#define XENO_SCALAR_PLASMA_GAIN_HIGH		1.45
-#define XENO_SCALAR_PLASMA_GAIN_VERYHIGH	1.6
-#define XENO_SCALAR_PLASMA_GAIN_ULTRAHIGH	1.75
-
-#define XENO_SCALAR_ARMORFACTOR_NONE		1.0
-#define XENO_SCALAR_ARMORFACTOR_LOW  		1.05
-#define XENO_SCALAR_ARMORFACTOR_MED			1.1
-#define XENO_SCALAR_ARMORFACTOR_HIGH		1.15
-#define XENO_SCALAR_ARMORFACTOR_VERYHIGH	1.20
-#define XENO_SCALAR_ARMORFACTOR_ULTRAHIGH	1.25
-
-#define XENO_SCALAR_EVASION_NONE			1.0
-#define XENO_SCALAR_EVASION_LOW  			1.05
-#define XENO_SCALAR_EVASION_MED				1.1
-#define XENO_SCALAR_EVASION_HIGH			1.15
-#define XENO_SCALAR_EVASION_VERYHIGH		1.20
-#define XENO_SCALAR_EVASION_ULTRAHIGH		1.25
 
 // Actual caste datum basedef
 /datum/caste_datum
@@ -379,6 +89,8 @@
 
 	var/can_vent_crawl = 1
 	var/can_denest_hosts = 0
+	
+	var/caste_luminosity = 0
 
 	var/burrow_cooldown = 50
 	var/tunnel_cooldown = 100
@@ -405,6 +117,9 @@
 	var/charge_speed_max = 1.5 //Can only gain this much speed before capping
 	var/charge_speed_buildup = 0.15 //POSITIVE amount of speed built up during a charge each step
 	var/charge_turfs_to_charge = 5 //Amount of turfs to build up before a charge begins
+
+	//Types of special structures this caste can build
+	var/list/structures_allowed = list()
 
 	/////////////////////////////////////////////////////////////////////////
 	//
@@ -606,11 +321,21 @@
 	var/list/tier_3_xenos = list()//list of living tier3 xenos
 	var/list/totalXenos	= list()  //list of living xenos
 	var/isSlotOpen = TRUE //Set true for starting alerts only after the hive has reached its full potential
+	var/turf/hive_location = null //Set to a turf ref every time the queen ovis, for defining the hive location.
 
 	var/datum/mutator_set/hive_mutators/mutators = new
 	var/tier_slot_multiplier = 1.0
 	var/larva_gestation_multiplier = 1.0
 	var/bonus_larva_spawn_chance = 1.0
+
+	//List of how many maximum of each special structure you can have
+	var/list/hive_structures_limit = list(
+		XENO_STRUCTURE_POOL = 1,
+		XENO_STRUCTURE_EGGMORPH = 2,
+		XENO_STRUCTURE_EVOPOD = 5
+	)
+	var/list/hive_structures = list() //Stringref list of structures that have been built
+	var/list/datum/mind/spawn_list = list() //List of minds that are waiting to be respawned
 
 	var/datum/hive_status_ui/hive_ui = new
 
@@ -885,6 +610,18 @@
 
 	return xenos
 
+/datum/hive_status/proc/set_hive_location(var/turf/T)
+	if(!T || T == hive_location)
+		return
+	var/area/A = get_area(T)
+	xeno_message(SPAN_XENOANNOUNCE("The Queen has set the hive location as \the [A]."), 3, hivenumber)
+	for(var/iterator in hive_structures)
+		for(var/obj/effect/alien/resin/special/S in hive_structures[iterator])
+			if(get_dist(S, hive_location) > XENO_HIVE_AREA_SIZE)
+				qdel(S)
+	hive_location = T
+	hive_ui.update_hive_location()
+
 // Returns a list of xeno healths and locations
 /datum/hive_status/proc/get_xeno_vitals()
 	var/list/xenos = list()
@@ -930,6 +667,71 @@
 	slots[1] = max(0, Ceiling(effective_total * (0.5 - tier_3_xenos.len / effective_total) * tier_slot_multiplier) - tier_2_xenos.len)
 
 	return slots
+
+/datum/hive_status/proc/can_build_structure(var/structure_name)
+	if(!structure_name || !hive_structures_limit[structure_name] || (hive_structures[structure_name] && hive_structures[structure_name].len >= hive_structures_limit[structure_name]))
+		return FALSE
+	return TRUE
+
+/datum/hive_status/proc/add_special_structure(var/obj/effect/alien/resin/special/S)
+	if(!S)
+		return FALSE
+	var/name_ref = initial(S.name)
+	if(!hive_structures[name_ref])
+		hive_structures[name_ref] = list()
+	if(hive_structures[name_ref].len >= hive_structures_limit[name_ref])
+		return FALSE
+	hive_structures[name_ref] += src
+	return TRUE
+
+/datum/hive_status/proc/remove_special_structure(var/obj/effect/alien/resin/special/S)
+	if(!S)
+		return FALSE
+	var/name_ref = initial(S.name)
+	hive_structures[name_ref] -= src
+	return TRUE
+
+/datum/hive_status/proc/remove_all_special_structures()
+	clear_spawn_list()
+	for(var/name_ref in hive_structures)
+		for(var/obj/effect/alien/resin/special/S in hive_structures[name_ref])
+			hive_structures[name_ref] -= S
+			qdel(S)
+
+/datum/hive_status/proc/has_special_structure(var/name_ref)
+	if(!name_ref || !hive_structures[name_ref] || !hive_structures[name_ref].len)
+		return FALSE
+	return TRUE
+
+/datum/hive_status/proc/queue_spawn(var/mob/M)
+	if(!M || !M.mind)
+		return
+	if(!living_xeno_queen)
+		to_chat(M, SPAN_WARNING("The hivemind is disrupted! Your conciousness was lost to the void..."))
+		return
+	if(!has_special_structure(XENO_STRUCTURE_POOL))
+		to_chat(M, SPAN_WARNING("There is no [XENO_STRUCTURE_POOL]! Your conciousness was lost to the void..."))
+		return
+	to_chat(M, SPAN_XENONOTICE("Your conciousness is recovered as you depart your body! You will be reborn soon..."))
+	spawn_list.Add(M.mind)
+
+/datum/hive_status/proc/clear_spawn_list()
+	if(!spawn_list.len)
+		return
+	for(var/datum/mind/picked_mind in spawn_list)
+		var/mind_ckey = picked_mind.ckey
+		if(!directory[mind_ckey])
+			return
+		var/client/C = directory[mind_ckey]
+		var/mob/M = C.mob
+		to_chat(M, SPAN_WARNING("The hivemind has been disrupted! Your conciousness was lost to the void..."))
+	spawn_list = list()
+
+/datum/hive_status/proc/pick_from_spawn_list()
+	if(!spawn_list.len)
+		return null
+	var/datum/mind/M = pick(spawn_list)
+	return M
 
 /datum/hive_status/corrupted
 	hivenumber = XENO_HIVE_CORRUPTED

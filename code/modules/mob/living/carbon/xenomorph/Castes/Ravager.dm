@@ -50,8 +50,6 @@
 	tacklemax = 5
 	tackle_chance = 45
 
-	max_health_scalar = XENO_SCALAR_HEALTH_MED
-
 /datum/caste_datum/ravager/elder
 	upgrade_name = "Elder"
 	caste_desc = "A brutal, devastating front-line attacker. It looks pretty strong."
@@ -61,8 +59,6 @@
 	tacklemax = 6
 	tackle_chance = 58
 
-	max_health_scalar = XENO_SCALAR_HEALTH_HIGH
-
 /datum/caste_datum/ravager/ancient
 	upgrade_name = "Ancient"
 	caste_desc = "As I walk through the valley of the shadow of death"
@@ -71,7 +67,6 @@
 	tacklemin = 6
 	tacklemax = 7
 	tackle_chance = 60
-	max_health_scalar = XENO_SCALAR_HEALTH_ULTRAHIGH
 
 /datum/caste_datum/ravager/primordial
 	upgrade_name = "Primordial"

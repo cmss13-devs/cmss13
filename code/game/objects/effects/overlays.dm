@@ -215,3 +215,11 @@
 	pixel_y = source_mob.pixel_y
 	icon_state = gib_icon
 	..()
+
+//acid pool splash animation
+
+/obj/effect/overlay/temp/acid_pool_splash
+	name = "acid splash"
+	icon = 'icons/mob/xenos/Effects.dmi'
+	icon_state = "acidpoolsplash"
+	effect_duration = SECONDS_10

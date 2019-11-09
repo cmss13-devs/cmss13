@@ -1501,7 +1501,7 @@
 			to_chat(src, SPAN_WARNING("Resin doors need a wall or resin door next to them to stand up."))
 			return FALSE
 
-	var/wait_time = src.caste.build_time
+	var/wait_time = caste.build_time
 
 	alien_weeds.secreting = 1
 	alien_weeds.update_icon()
@@ -1746,3 +1746,64 @@
 		to_chat(src, SPAN_NOTICE("Attacks will no longer use directional assist."))
 	else
 		to_chat(src, SPAN_NOTICE("Attacks will now use directional assist."))
+
+/mob/living/carbon/Xenomorph/proc/morph_resin(var/turf/current_turf, var/structure_type)
+	if (!structure_type || !check_state() || action_busy)
+		return FALSE
+
+	var/area/current_area = get_area(current_turf)
+
+	if(isnull(current_turf))
+		to_chat(src, SPAN_WARNING("You can't do that here."))
+		return FALSE
+
+	if(!hive.living_xeno_queen)
+		to_chat(src, SPAN_WARNING("There is no queen!"))
+		return FALSE
+
+	if(!hive.hive_location)
+		to_chat(src, SPAN_WARNING("There is no hive!"))
+		return FALSE
+
+	if(get_dist(src, hive.hive_location) > XENO_HIVE_AREA_SIZE)
+		to_chat(src, SPAN_WARNING("You are too far from the hive!"))
+		return FALSE
+
+	if (!current_area.can_build_special)
+		to_chat(src, SPAN_WARNING("You cannot build here!"))
+		return FALSE		
+
+	for(var/turf/T in (range(current_turf, 1)))
+		var/failed = FALSE
+		if(T.density)
+			failed = TRUE
+		if(!check_alien_construction(current_turf))
+			failed = TRUE
+		if(failed)
+			to_chat(src, SPAN_WARNING("You need more open space to build here."))
+			return
+		var/obj/effect/alien/weeds/alien_weeds = locate() in T
+		if(!alien_weeds)
+			to_chat(src, SPAN_WARNING("You can only shape on weeds. Find some resin before you start building!"))
+			return FALSE
+
+	if(!do_after(src, XENO_STRUCTURE_BUILD_TIME, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		return FALSE
+
+	KnockDown(80)
+
+	if(!do_after(src, XENO_STRUCTURE_BUILD_TIME, INTERRUPT_DIFF_TURF|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		return FALSE
+
+	var/obj/effect/alien/resin/special/new_structure = new structure_type(loc, hive)
+
+	visible_message(SPAN_XENONOTICE("\The [src] regurgitates a thick substance and morphs itself into \a [new_structure]!"), \
+		SPAN_XENONOTICE("You regurgitate some resin and morph yourself into \a [new_structure]."), null, 5)
+	playsound(loc, "alien_resin_build", 25)
+
+	if(hive.living_xeno_queen)
+		xeno_message("Hive: \The [src] has <b>morphed</b> into \a [new_structure] at [sanitize(current_area)]!", 3, hivenumber)
+
+	hive.queue_spawn(src)
+	track_death_calculations()
+	qdel(src)

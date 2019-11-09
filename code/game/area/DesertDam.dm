@@ -2,7 +2,7 @@
 /area/desert_dam
 	name = "Desert Dam"
 	icon_state = "cliff_blocked"
-	can_nuke_area = TRUE
+	can_build_special = TRUE
 	powernet_name = "ground"
 
 //INTERIOR

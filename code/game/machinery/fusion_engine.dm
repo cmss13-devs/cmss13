@@ -52,7 +52,7 @@
 		fail_rate+=2 //Each time the engine is allowed to seize up it's fail rate for the future increases because reasons.
 		update_icon()
 		stop_processing_power()
-		r_FAL
+		return FALSE
 
 	if(!check_failure())
 
@@ -78,18 +78,18 @@
 /obj/structure/machinery/power/fusion_engine/attack_hand(mob/user)
 	if(!ishuman(user))
 		to_chat(user, SPAN_WARNING("You have no idea how to use that.")) //No ayylamos
-		r_FAL
+		return FALSE
 	add_fingerprint(user)
 	switch(buildstate)
 		if(1)
 			to_chat(user, SPAN_INFO("Use a blowtorch, then wirecutters, then wrench to repair it."))
-			r_FAL
+			return FALSE
 		if(2)
 			to_chat(user, SPAN_NOTICE("Use a wirecutters, then wrench to repair it."))
-			r_FAL
+			return FALSE
 		if(3)
 			to_chat(user, SPAN_NOTICE("Use a wrench to repair it."))
-			r_FAL
+			return FALSE
 	if(is_on)
 		visible_message("[htmlicon(src, viewers(src))] <span class='warning'><b>[src]</b> beeps softly and the humming stops as [usr] shuts off the generator.</span>")
 		is_on = 0
@@ -97,16 +97,16 @@
 		cur_tick = 0
 		update_icon()
 		stop_processing_power()
-		r_TRU
+		return TRUE
 
 	if(!fusion_cell)
 		to_chat(user, SPAN_NOTICE("The reactor requires a fuel cell before you can turn it on."))
-		r_FAL
+		return FALSE
 
 	if(!powernet)
 		if(!connect_to_network())
 			to_chat(user, SPAN_WARNING("Power network not found, make sure the engine is connected to a cable."))
-			r_FAL
+			return FALSE
 
 	if(fusion_cell.fuel_amount <= 10)
 		to_chat(user, "[htmlicon(src, user)] <span class='warning'><b>[src]</b>: Fuel levels critically low.</span>")
@@ -116,24 +116,24 @@
 	cur_tick = 0
 	update_icon()
 	start_processing_power()
-	r_TRU
+	return TRUE
 
 
 /obj/structure/machinery/power/fusion_engine/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/fuelCell))
 		if(is_on)
 			to_chat(user, SPAN_WARNING("The [src] needs to be turned off first."))
-			r_TRU
+			return TRUE
 		if(!fusion_cell)
 			if(user.drop_inv_item_to_loc(O, src))
 				fusion_cell = O
 				update_icon()
 				to_chat(user, SPAN_NOTICE("You load the [src] with the [O]."))
-			r_TRU
+			return TRUE
 		else
 			to_chat(user, SPAN_WARNING("You need to remove the fuel cell from [src] first."))
-			r_TRU
-		r_TRU
+			return TRUE
+		return TRUE
 	else if(iswelder(O))
 		if(buildstate == 1)
 			var/obj/item/tool/weldingtool/WT = O
@@ -147,16 +147,17 @@
 				user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s internal damage."),
 				SPAN_NOTICE("You start welding [src]'s internal damage."))
 				if(do_after(user, 200, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(buildstate != 1 || is_on || !WT.isOn()) r_FAL
+					if(buildstate != 1 || is_on || !WT.isOn()) 
+						return FALSE
 					playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 					buildstate = 2
 					user.visible_message(SPAN_NOTICE("[user] welds [src]'s internal damage."),
 					SPAN_NOTICE("You weld [src]'s internal damage."))
 					update_icon()
-					r_TRU
+					return TRUE
 			else
 				to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
-				r_FAL
+				return FALSE
 	else if(istype(O,/obj/item/tool/wirecutters))
 		if(buildstate == 2 && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
@@ -168,13 +169,14 @@
 			user.visible_message(SPAN_NOTICE("[user] starts securing [src]'s wiring."),
 			SPAN_NOTICE("You start securing [src]'s wiring."))
 			if(do_after(user, 120, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 12))
-				if(buildstate != 2 || is_on) r_FAL
+				if(buildstate != 2 || is_on) 
+					return FALSE
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				buildstate = 3
 				user.visible_message(SPAN_NOTICE("[user] secures [src]'s wiring."),
 				SPAN_NOTICE("You secure [src]'s wiring."))
 				update_icon()
-				r_TRU
+				return TRUE
 	else if(iswrench(O))
 		if(buildstate == 3 && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
@@ -186,14 +188,15 @@
 			user.visible_message(SPAN_NOTICE("[user] starts repairing [src]'s tubing and plating."),
 			SPAN_NOTICE("You start repairing [src]'s tubing and plating."))
 			if(do_after(user, 150, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				if(buildstate != 3 || is_on) r_FAL
+				if(buildstate != 3 || is_on) 
+					return FALSE
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				buildstate = 0
 				user.count_niche_stat(STATISTICS_NICHE_REPAIR_GENERATOR)
 				user.visible_message(SPAN_NOTICE("[user] repairs [src]'s tubing and plating."),
 				SPAN_NOTICE("You repair [src]'s tubing and plating."))
 				update_icon()
-				r_TRU
+				return TRUE
 	else if(iscrowbar(O))
 		if(buildstate)
 			to_chat(user, SPAN_WARNING("You must repair the generator before working with its fuel cell."))
@@ -213,14 +216,15 @@
 			user.visible_message(SPAN_NOTICE("[user] starts prying [src]'s fuel receptacle open."),
 			SPAN_NOTICE("You start prying [src]'s fuel receptacle open."))
 			if(do_after(user, 100, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				if(buildstate != 0 || is_on || !fusion_cell) r_FAL
+				if(buildstate != 0 || is_on || !fusion_cell) 
+					return FALSE
 				user.visible_message(SPAN_NOTICE("[user] pries [src]'s fuel receptacle open and removes the cell."),
 				SPAN_NOTICE("You pry [src]'s fuel receptacle open and remove the cell.."))
 				fusion_cell.update_icon()
 				user.put_in_hands(fusion_cell)
 				fusion_cell = null
 				update_icon()
-				r_TRU
+				return TRUE
 	else
 		return ..()
 
@@ -236,7 +240,7 @@
 					to_chat(user, SPAN_INFO("Use a wirecutters, then wrench to repair it."))
 				if(3)
 					to_chat(user, SPAN_INFO("Use a wrench to repair it."))
-			r_FAL
+			return FALSE
 
 		if(!is_on)
 			to_chat(user, SPAN_INFO("It looks offline."))

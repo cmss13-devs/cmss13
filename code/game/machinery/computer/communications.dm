@@ -69,7 +69,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 	current_mapviewer << browse("<img src=marine_minimap.png>","window=marineminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
 
 /obj/structure/machinery/computer/communications/Topic(href, href_list)
-	if(..()) r_FAL
+	if(..()) return FALSE
 
 	usr.set_interaction(src)
 
@@ -136,9 +136,10 @@ var/global/cooldown_message = 0 //Based on world.time.
 			if(authenticated == 2)
 				if(world.time < cooldown_message + COOLDOWN_COMM_MESSAGE)
 					to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
-					r_FAL
+					return FALSE
 				var/input = input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "") as message|null
-				if(!input || !(usr in view(1,src)) || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE) r_FAL
+				if(!input || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE || !(usr in view(1,src))) 
+					return FALSE
 
 				marine_announcement(input)
 				log_announcement("[usr.name] ([usr.ckey]) has announced the following: [input]")
@@ -156,28 +157,28 @@ var/global/cooldown_message = 0 //Based on world.time.
 
 				if(world.time < EVACUATION_TIME_LOCK || !ticker || !ticker.mode || !ticker.mode.force_end_at) //Cannot call it early in the round.
 					to_chat(usr, SPAN_WARNING("USCM protocol does not allow immediate evacuation. Please wait another [round((EVACUATION_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again."))
-					r_FAL
+					return FALSE
 
 				//if(!ticker || !ticker.mode || !ticker.mode.has_called_emergency)
 					//to_chat(usr, SPAN_WARNING("The [MAIN_SHIP_NAME]'s distress beacon must be activated prior to evacuation taking place."))
-					//r_FAL
+					//return FALSE
 
 				if(security_level < SEC_LEVEL_RED)
 					to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
-					r_FAL
+					return FALSE
 
 				if(EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY)
 					to_chat(usr, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
-					r_FAL
+					return FALSE
 
 				if(!EvacuationAuthority.initiate_evacuation())
 					to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
-					r_FAL
+					return FALSE
 
 				log_game("[key_name(usr)] has called for an emergency evacuation.")
 				message_admins("[key_name_admin(usr)] has called for an emergency evacuation.", 1)
 				post_status("shuttle")
-				r_TRU
+				return TRUE
 
 			state = STATE_EVACUATION
 
@@ -185,7 +186,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 			if(state == STATE_EVACUATION_CANCEL)
 				if(!EvacuationAuthority.cancel_evacuation())
 					to_chat(usr, SPAN_WARNING("You are unable to cancel the evacuation right now!"))
-					r_FAL
+					return FALSE
 
 				spawn(35)//some time between AI announcements for evac cancel and SD cancel.
 					if(EvacuationAuthority.evac_status == EVACUATION_STATUS_STANDING_BY)//nothing changed during the wait
@@ -196,7 +197,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 
 				log_game("[key_name(usr)] has canceled the emergency evacuation.")
 				message_admins("[key_name_admin(usr)] has canceled the emergency evacuation.", 1)
-				r_TRU
+				return TRUE
 
 			state = STATE_EVACUATION_CANCEL
 
@@ -206,9 +207,10 @@ var/global/cooldown_message = 0 //Based on world.time.
 				//Comment to test
 				if(world.time < DISTRESS_TIME_LOCK)
 					to_chat(usr, SPAN_WARNING("The distress beacon cannot be launched this early in the operation. Please wait another [round((DISTRESS_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again."))
-					r_FAL
+					return FALSE
 
-				if(!ticker || !ticker.mode) r_FAL //Not a game mode?
+				if(!ticker || !ticker.mode) 
+					return FALSE //Not a game mode?
 
 				if(ticker.mode.force_end_at == 0)
 					to_chat(usr, SPAN_WARNING("ARES has denied your request for operational security reasons."))
@@ -216,20 +218,20 @@ var/global/cooldown_message = 0 //Based on world.time.
 
 				if(ticker.mode.has_called_emergency)
 					to_chat(usr, SPAN_WARNING("The [MAIN_SHIP_NAME]'s distress beacon is already broadcasting."))
-					r_FAL
+					return FALSE
 
 				if(ticker.mode.distress_cooldown)
 					to_chat(usr, SPAN_WARNING("The distress beacon is currently recalibrating."))
-					r_FAL
+					return FALSE
 
 				 //Comment block to test
 				if(world.time < cooldown_request + COOLDOWN_COMM_REQUEST)
 					to_chat(usr, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
-					r_FAL
+					return FALSE
 
 				if(security_level == SEC_LEVEL_DELTA)
 					to_chat(usr, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
-					r_FAL
+					return FALSE
 
 				for(var/client/C in admins)
 					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
@@ -238,7 +240,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 				to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
 
 				cooldown_request = world.time
-				r_TRU
+				return TRUE
 
 			state = STATE_DISTRESS
 
@@ -248,9 +250,10 @@ var/global/cooldown_message = 0 //Based on world.time.
 				//Comment to test
 				if(world.time < DISTRESS_TIME_LOCK)
 					to_chat(usr, SPAN_WARNING("The self destruct cannot be activated this early in the operation. Please wait another [round((DISTRESS_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again."))
-					r_FAL
+					return FALSE
 
-				if(!ticker || !ticker.mode) r_FAL //Not a game mode?
+				if(!ticker || !ticker.mode) 
+					return FALSE //Not a game mode?
 
 				if(ticker.mode.force_end_at == 0)
 					to_chat(usr, SPAN_WARNING("ARES has denied your request for operational security reasons."))
@@ -258,11 +261,11 @@ var/global/cooldown_message = 0 //Based on world.time.
 
 				if(get_security_level() == "delta")
 					to_chat(usr, SPAN_WARNING("The [MAIN_SHIP_NAME]'s self destruct is already activated."))
-					r_FAL
+					return FALSE
 
 				if(ticker.mode.has_called_emergency)
 					to_chat(usr, SPAN_WARNING("The [MAIN_SHIP_NAME]'s distress beacon is active!"))
-					r_FAL
+					return FALSE
 
 				for(var/client/C in admins)
 					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
@@ -270,7 +273,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 				message_staff("[key_name(usr)] has requested Self Destruct! (<A HREF='?_src_=admin_holder;ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;destroyship=\ref[usr]'>GRANT</A>) (<A HREF='?_src_=admin_holder;sddeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;CentcommReply=\ref[usr]'>RPLY</A>)")
 				to_chat(usr, SPAN_NOTICE("A self destruct request has been sent to USCM Central Command."))
 				cooldown_destruct = world.time
-				r_TRU
+				return TRUE
 
 			state = STATE_DESTROY
 
@@ -325,9 +328,9 @@ var/global/cooldown_message = 0 //Based on world.time.
 			if(authenticated == 2)
 				if(world.time < cooldown_central + COOLDOWN_COMM_CENTRAL)
 					to_chat(usr, SPAN_WARNING("Arrays recycling.  Please stand by."))
-					r_FAL
+					return FALSE
 				var/input = stripped_input(usr, "Please choose a message to transmit to USCM.  Please be aware that this process is very expensive, and abuse will lead to termination.  Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
-				if(!input || !(usr in view(1,src)) || authenticated != 2 || world.time < cooldown_central + COOLDOWN_COMM_CENTRAL) r_FAL
+				if(!input || !(usr in view(1,src)) || authenticated != 2 || world.time < cooldown_central + COOLDOWN_COMM_CENTRAL) return FALSE
 
 				Centcomm_announce(input, usr)
 				to_chat(usr, SPAN_NOTICE("Message transmitted."))
@@ -352,7 +355,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 				if(new_lz)
 					ticker.mode.select_lz(new_lz)
 
-		else r_FAL
+		else return FALSE
 
 	updateUsrDialog()
 
@@ -360,12 +363,12 @@ var/global/cooldown_message = 0 //Based on world.time.
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/communications/attack_hand(var/mob/user as mob)
-	if(..()) r_FAL
+	if(..()) return FALSE
 
 	//Should be refactored later, if there's another ship that can appear during a mode with a comm console.
 	if(!istype(loc.loc, /area/almayer/command/cic)) //Has to be in the CIC. Can also be a generic CIC area to communicate, if wanted.
 		to_chat(usr, SPAN_WARNING("Unable to establish a connection."))
-		r_FAL
+		return FALSE
 
 	user.set_interaction(src)
 	var/dat = "<head><title>Communications Console</title></head><body>"
@@ -379,7 +382,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 			dat +=  dat2
 			user << browse(dat, "window=communications;size=400x500")
 			onclose(user, "communications")
-		r_FAL
+		return FALSE
 */
 	switch(state)
 		if(STATE_DEFAULT)
@@ -442,7 +445,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 			else
 				state = STATE_MESSAGELIST
 				attack_hand(user)
-				r_FAL
+				return FALSE
 
 		if(STATE_DELMESSAGE)
 			if (currmsg)
@@ -450,7 +453,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 			else
 				state = STATE_MESSAGELIST
 				attack_hand(user)
-				r_FAL
+				return FALSE
 
 		if(STATE_STATUSDISPLAY)
 			dat += "Set Status Displays<BR>"
@@ -519,14 +522,14 @@ var/global/cooldown_message = 0 //Based on world.time.
 			else
 				aistate = STATE_MESSAGELIST
 				attack_hand(user)
-				r_FAL
+				return FALSE
 		if(STATE_DELMESSAGE)
 			if(aicurrmsg)
 				dat += "Are you sure you want to delete this message? \[ <A HREF='?src=\ref[src];operation=ai-delmessage2'>OK</A>|<A HREF='?src=\ref[src];operation=ai-viewmessage'>Cancel</A> \]"
 			else
 				aistate = STATE_MESSAGELIST
 				attack_hand(user)
-				r_FAL
+				return FALSE
 
 		if(STATE_STATUSDISPLAY)
 			dat += "Set Status Displays<BR>"
@@ -549,7 +552,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 
 	/*var/datum/radio_frequency/frequency = radio_controller.return_frequency(1435)
 
-	if(!frequency) r_FAL
+	if(!frequency) return FALSE
 
 	var/datum/signal/status_signal = new
 	status_signal.source = src
@@ -603,7 +606,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 			else
 				state = STATE_MESSAGELIST
 				attack_hand(user)
-				r_FAL
+				return FALSE
 
 		if(STATE_DELMESSAGE)
 			if (currmsg)
@@ -611,7 +614,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 			else
 				state = STATE_MESSAGELIST
 				attack_hand(user)
-				r_FAL
+				return FALSE
 
 	dat += "<BR>\[ [(state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A>|" : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
 	user << browse(dat, "window=communications;size=400x500")

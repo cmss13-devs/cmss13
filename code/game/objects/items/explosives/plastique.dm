@@ -28,24 +28,26 @@
 	to_chat(user, "Timer set for [timer] seconds.")
 
 /obj/item/explosive/plastique/afterattack(atom/target, mob/user, flag)
-	if(!flag) r_FAL
+	if(!flag) 
+		return FALSE
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open))
-		r_FAL
+		return FALSE
 	if(istype(target, /obj/effect) || istype(target, /obj/structure/machinery))
 		var/obj/O = target
-		if(O.unacidable) r_FAL
+		if(O.unacidable) 
+			return FALSE
 	if(istype(target, /turf/closed/wall))
 		var/turf/closed/wall/W = target
 		if(W.hull)
-			r_FAL
+			return FALSE
 	if(istype(target, /obj/structure/window))
 		var/obj/structure/window/W = target
 		if(W.not_damageable)
 			to_chat(user, "<span class='warning'>[W] is much too tough for you to do anything to it with [src]</span>.") //On purpose to mimic wall message
-			r_FAL
+			return FALSE
 
 	user.visible_message(SPAN_WARNING("[user] is trying to plant [name] on [target]!"),
 	SPAN_WARNING("You are trying to plant [name] on [target]!"))

@@ -34,7 +34,8 @@
 			if(T && T.z == turf_source.z) M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, is_global)
 
 /mob/proc/playsound_local(turf/turf_source, soundin, vol, vary, frequency, var/falloff, is_global)
-	if(!client || ear_deaf > 0)	r_FAL
+	if(!client || ear_deaf > 0)	
+		return FALSE
 	soundin = get_sfx(soundin)
 
 	var/sound/S = sound(soundin)
@@ -78,7 +79,8 @@
 		if(distance <= 1) pressure_factor = max(pressure_factor, 0.15)	//hearing through contact
 		S.volume *= round(pressure_factor, 0.1)
 
-		if(S.volume <= distance/2) r_FAL //no volume or too far away to hear such a volume level.
+		if(S.volume <= distance/2) 
+			return FALSE //no volume or too far away to hear such a volume level.
 
 		if(distance > 8 && S.frequency)
 			S.frequency -= (distance/S.frequency)*S.frequency*100 //distant sounds have a decayed pitch
@@ -105,7 +107,8 @@
 	sound_to(src, S)
 
 /client/proc/playtitlemusic()
-	if(!ticker || !ticker.login_music)	r_FAL
+	if(!ticker || !ticker.login_music)	
+		return FALSE
 	if(prefs && prefs.toggles_sound & SOUND_LOBBY)
 		src << sound(ticker.login_music, repeat = 0, wait = 0, volume = 85, channel = 1) // MAD JAMS
 

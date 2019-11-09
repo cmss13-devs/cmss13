@@ -20,8 +20,10 @@
 	var/sound/ai_sound //The lines that it plays when speaking.
 
 /mob/living/silicon/decoy/Life()
-	if(stat == DEAD) r_FAL
-	if(health <= config.health_threshold_dead && stat != DEAD) death()
+	if(stat == DEAD) 
+		return FALSE
+	if(health <= config.health_threshold_dead && stat != DEAD) 
+		death()
 
 /mob/living/silicon/decoy/updatehealth()
 	if(status_flags & GODMODE)
@@ -32,14 +34,16 @@
 
 /mob/living/silicon/decoy/death(cause, gibbed, deathmessage = "sparks up and falls silent...")
 	set waitfor = 0
-	if(stat == DEAD) r_FAL
+	if(stat == DEAD) 
+		return FALSE
 	icon_state = "hydra-off"
 	sleep(20)
 	explosion(loc, -1, 0, 8, 12)
 	return ..()
 
 /mob/living/silicon/decoy/say(message, new_sound) //General communication across the ship.
-	if(stat || !message) r_FAL
+	if(stat || !message) 
+		return FALSE
 
 	ai_sound = new_sound ? new_sound : 'sound/misc/interference.ogg' //Remember the sound we need to play.
 
@@ -53,7 +57,7 @@
 		else message = copytext(message, 3)
 
 	ai_headset.talk_into(src, message, message_mode, "states", languages[1])
-	r_TRU
+	return TRUE
 
 /mob/living/silicon/decoy/parse_message_mode(message)
 	. = "broadcast"

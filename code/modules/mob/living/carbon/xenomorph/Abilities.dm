@@ -788,7 +788,8 @@
 
 /datum/action/xeno_action/ready_charge/action_activate()
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X.check_state(1)) r_FAL
+	if(!X.check_state(1)) 
+		return FALSE
 	if(X.legcuffed)
 		to_chat(src, SPAN_XENODANGER("You can't charge with that thing on your leg!"))
 		X.is_charging = 0

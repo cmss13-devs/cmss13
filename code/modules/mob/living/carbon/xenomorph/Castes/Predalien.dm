@@ -92,7 +92,8 @@
 /mob/living/carbon/Xenomorph/Predalien/proc/announce_spawn()
 	set waitfor = 0
 	sleep(30)
-	if(!loc) r_FAL
+	if(!loc) 
+		return FALSE
 	if(ticker && ticker.mode && ticker.mode.predators.len)
 		var/datum/mind/M
 		for(var/i in ticker.mode.predators)
@@ -134,7 +135,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 
 	if(is_mob_incapacitated()|| lying || buckled)
 		to_chat(src, SPAN_XENOWARNING("You're not able to do that right now."))
-		r_FAL
+		return FALSE
 
 	var/choices[] = new
 	for(var/mob/M in view(1, src)) //We are only interested in humans and predators.
@@ -142,23 +143,24 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 
 	var/mob/living/carbon/human/H = input(src, "From which corpse will you claim your trophy?") as null|anything in choices
 
-	if(!H || !H.loc) r_FAL
+	if(!H || !H.loc) 
+		return FALSE
 
 	if(is_mob_incapacitated() || lying || buckled)
 		to_chat(src, "<span class='xenowarning'>You're not able to do that right now.<span>")
-		r_FAL
+		return FALSE
 
 	if(!H.stat)
 		to_chat(src, SPAN_XENOWARNING("Your prey must be dead."))
-		r_FAL
+		return FALSE
 
 	if(!Adjacent(H))
 		to_chat(src, SPAN_XENOWARNING("You have to be next to your target."))
-		r_FAL
+		return FALSE
 
 	if(world.time <= butchered_last + PREDALIEN_BUTCHER_COOLDOWN)
 		to_chat(src, SPAN_XENOWARNING("You have recently attempted to butcher a carcass. Wait."))
-		r_FAL
+		return FALSE
 
 	butchered_last = world.time
 

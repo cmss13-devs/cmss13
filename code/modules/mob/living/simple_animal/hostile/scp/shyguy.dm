@@ -342,10 +342,13 @@
 	check_murder()
 
 /mob/living/simple_animal/scp/shyguy/proc/diagonal_step(atom/movable/A, direction)
-	if(!A) r_FAL
+	if(!A) 
+		return FALSE
 	switch(direction)
-		if(EAST, WEST) step(A, pick(NORTH,SOUTH))
-		if(NORTH,SOUTH) step(A, pick(EAST,WEST))
+		if(EAST, WEST) 
+			step(A, pick(NORTH,SOUTH))
+		if(NORTH,SOUTH) 
+			step(A, pick(EAST,WEST))
 
 /mob/living/simple_animal/scp/shyguy/proc/murder(var/mob/living/T)
 

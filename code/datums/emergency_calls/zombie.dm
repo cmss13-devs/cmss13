@@ -11,7 +11,8 @@
 	set waitfor = 0
 	var/turf/T = get_spawn_point()
 
-	if(!istype(T)) r_FAL
+	if(!istype(T)) 
+		return FALSE
 
 	var/mob/living/carbon/human/H = new(T)
 	H.key = M.key

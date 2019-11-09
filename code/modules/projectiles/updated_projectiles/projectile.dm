@@ -83,7 +83,7 @@
 
 
 /obj/item/projectile/ex_act()
-	r_FAL //We do not want anything to delete these, simply to make sure that all the bullet references are not runtiming. Otherwise, constantly need to check if the bullet exists.
+	return FALSE //We do not want anything to delete these, simply to make sure that all the bullet references are not runtiming. Otherwise, constantly need to check if the bullet exists.
 
 /obj/item/projectile/proc/generate_bullet(ammo_datum, bonus_damage = 0, special_flags = 0)
 	ammo 		= ammo_datum

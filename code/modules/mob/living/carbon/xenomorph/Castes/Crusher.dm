@@ -90,7 +90,7 @@
 
 	if(world.time < has_screeched + CRUSHER_STOMP_COOLDOWN) //Sure, let's use this.
 		to_chat(src, SPAN_XENOWARNING("You are not ready to stomp again."))
-		r_FAL
+		return FALSE
 
 	if(legcuffed)
 		to_chat(src, SPAN_XENODANGER("You can't rear up to stomp with that thing on your leg!"))
@@ -130,7 +130,7 @@
 
 	if(world.time < has_screeched + CRUSHER_EARTHQUAKE_COOLDOWN) //Sure, let's use this.
 		to_chat(src, SPAN_XENOWARNING("You are not ready to cause an earthquake yet."))
-		r_FAL
+		return FALSE
 
 	if(legcuffed)
 		to_chat(src, SPAN_XENODANGER("You can't rear up to stomp the ground with that thing on your leg!"))
@@ -177,7 +177,7 @@
 //Xeno who don't need no atom. ~Bmc777
 /mob/living/carbon/Xenomorph/proc/handle_collision(atom/target)
 	if(!target)
-		r_FAL
+		return FALSE
 
 	//Barricade collision
 	if(istype(target, /obj/structure/barricade))
@@ -189,10 +189,10 @@
 			update_icons()
 			B.Bumped(src)
 			stop_momentum(charge_dir)
-			r_TRU
+			return TRUE
 		else
 			stop_momentum(charge_dir)
-			r_FAL
+			return FALSE
 
 	else if(istype(target, /obj/vehicle/multitile/hitbox))
 		var/obj/vehicle/multitile/hitbox/H = target
@@ -203,10 +203,10 @@
 			update_icons()
 			H.root.Bumped(src)
 			stop_momentum(charge_dir)
-			r_TRU
+			return TRUE
 		else
 			stop_momentum(charge_dir)
-			r_FAL
+			return FALSE
 
 	else if(istype(target, /obj/structure/machinery/m56d_hmg))
 		var/obj/structure/machinery/m56d_hmg/HMG = target
@@ -217,13 +217,13 @@
 			update_icons()
 			HMG.Bumped()
 			stop_momentum(charge_dir)
-			r_TRU
+			return TRUE
 		else
 			stop_momentum(charge_dir)
-			r_FAL
+			return FALSE
 
 /atom/proc/charge_act(mob/living/carbon/Xenomorph/X)
-	r_TRU
+	return TRUE
 
 //Catch-all, basically. Bump() isn't going to catch anything non-dense, so this is fine.
 /obj/charge_act(mob/living/carbon/Xenomorph/X)
@@ -231,12 +231,12 @@
 	if(.)
 		if(unacidable)
 			X.stop_momentum(X.charge_dir)
-			r_FAL
+			return FALSE
 
 		if(anchored)
 			if(X.charge_speed < X.charge_speed_buildup * X.charge_turfs_to_charge)
 				X.stop_momentum(X.charge_dir)
-				r_FAL
+				return FALSE
 			else
 				X.visible_message(SPAN_DANGER("[X] crushes [src]!"),
 				SPAN_XENODANGER("You crush [src]!"))
@@ -257,7 +257,7 @@
 				X.charge_speed -= X.charge_speed_buildup * 2 //Lose two turfs worth of speed
 			else
 				X.stop_momentum(X.charge_dir)
-				r_FAL
+				return FALSE
 
 //Beginning special object overrides.
 
@@ -272,48 +272,48 @@
 /obj/structure/window/charge_act(mob/living/carbon/Xenomorph/X)
 	if(unacidable)
 		X.stop_momentum(X.charge_dir)
-		r_FAL
+		return FALSE
 	if(X.charge_speed < X.charge_speed_buildup * X.charge_turfs_to_charge)
 		X.stop_momentum(X.charge_dir)
-		r_FAL
+		return FALSE
 	health -= X.charge_speed * 80 //Should generally smash it unless not moving very fast.
 	healthcheck(user = X)
 
 	X.charge_speed -= X.charge_speed_buildup * 2 //Lose two turfs worth of speed
 
-	r_TRU
+	return TRUE
 
 /obj/structure/machinery/door/airlock/charge_act(mob/living/carbon/Xenomorph/X)
 	if(unacidable)
 		X.stop_momentum(X.charge_dir)
-		r_FAL
+		return FALSE
 	if(X.charge_speed < X.charge_speed_buildup * X.charge_turfs_to_charge)
 		X.stop_momentum(X.charge_dir)
-		r_FAL
+		return FALSE
 
 	destroy_airlock()
 	X.charge_speed -= X.charge_speed_buildup * 2 //Lose two turfs worth of speed
-	r_TRU
+	return TRUE
 
 /obj/structure/grille/charge_act(mob/living/carbon/Xenomorph/X)
 	if(unacidable)
 		X.stop_momentum(X.charge_dir)
-		r_FAL
+		return FALSE
 	if(X.charge_speed < X.charge_speed_buildup * X.charge_turfs_to_charge)
 		X.stop_momentum(X.charge_dir)
-		r_FAL
+		return FALSE
 	health -= X.charge_speed * 40 //Usually knocks it down.
 	healthcheck()
 
 	X.charge_speed -= X.charge_speed_buildup //Lose one turf worth of speed
 
-	r_TRU
+	return TRUE
 
 /obj/structure/machinery/vending/charge_act(mob/living/carbon/Xenomorph/X)
 	if(X.charge_speed > X.charge_speed_max/2) //Halfway to full speed or more
 		if(unacidable)
 			X.stop_momentum(X.charge_dir, TRUE)
-			r_FAL
+			return FALSE
 		X.visible_message(SPAN_DANGER("[X] smashes straight into [src]!"),
 		SPAN_XENODANGER("You smash straight into [src]!"))
 		playsound(loc, "punch", 25, 1)
@@ -322,18 +322,18 @@
 		step_away(src, X)
 		step_away(src, X)
 		X.charge_speed -= X.charge_speed_buildup * 2 //Lose two turfs worth of speed
-		r_TRU
+		return TRUE
 	else
 		X.stop_momentum(X.charge_dir)
-		r_FAL
+		return FALSE
 
 /obj/structure/machinery/marine_turret/charge_act(mob/living/carbon/Xenomorph/X)
 	if(unacidable)
 		X.stop_momentum(X.charge_dir, TRUE)
-		r_FAL
+		return FALSE
 	if(X.charge_speed < X.charge_speed_buildup * X.charge_turfs_to_charge)
 		X.stop_momentum(X.charge_dir)
-		r_FAL
+		return FALSE
 	X.visible_message(SPAN_DANGER("[X] rams [src]!"),
 	SPAN_XENODANGER("You ram [src]!"))
 	playsound(loc, "punch", 25, 1)
@@ -342,21 +342,21 @@
 	update_icon()
 	update_health(X.charge_speed * 20)
 	X.charge_speed -= X.charge_speed_buildup * 3 //Lose three turfs worth of speed
-	r_TRU
+	return TRUE
 
 /obj/structure/mineral_door/resin/charge_act(mob/living/carbon/Xenomorph/X)
 	TryToSwitchState(X)
 
 	if(X.charge_speed < X.charge_speed_buildup * X.charge_turfs_to_charge)
 		X.stop_momentum(X.charge_dir)
-		r_FAL
+		return FALSE
 	else
 		X.charge_speed -= X.charge_speed_buildup * 2 //Lose two turfs worth of speed
-		r_TRU
+		return TRUE
 
 /obj/structure/table/charge_act(mob/living/carbon/Xenomorph/X)
 	Crossed(X)
-	r_TRU
+	return TRUE
 
 /mob/living/carbon/charge_act(mob/living/carbon/Xenomorph/X)
 	. = ..()
@@ -382,7 +382,7 @@
 		X.diagonal_step(src, X.dir) //Occasionally fling it diagonally.
 		step_away(src, X, round(X.charge_speed))
 		X.charge_speed -= X.charge_speed_buildup //Lose one turf worth of speed
-		r_TRU
+		return TRUE
 
 //Special override case.
 /mob/living/carbon/Xenomorph/charge_act(mob/living/carbon/Xenomorph/X)
@@ -395,25 +395,25 @@
 			apply_damage(X.charge_speed * 20, BRUTE) // half damage to avoid sillyness
 		if(anchored) //Ovipositor queen can't be pushed
 			X.stop_momentum(X.charge_dir, TRUE)
-			r_TRU
+			return TRUE
 		diagonal_step(src, X.dir, 100)
 		step_away(src, X)
 		X.charge_speed -= X.charge_speed_buildup * 2 //Lose two turfs worth of speed
-		r_TRU
+		return TRUE
 	else
 		X.stop_momentum(X.charge_dir)
-		r_FAL
+		return FALSE
 
 /turf/charge_act(mob/living/carbon/Xenomorph/X)
 	. = ..()
 	if(. && density) //We don't care if it's non dense.
 		if(X.charge_speed < X.charge_speed_max)
 			X.stop_momentum(X.charge_dir)
-			r_FAL
+			return FALSE
 		else
 			ex_act(EXPLOSION_THRESHOLD_MEDIUM) //Should dismantle, or at least heavily damage it.
 			X.stop_momentum(X.charge_dir)
-			r_TRU
+			return TRUE
 
 //Custom bump for crushers. This overwrites normal bumpcode from carbon.dm
 /mob/living/carbon/Xenomorph/Crusher/Bump(atom/A, yes)
@@ -421,9 +421,11 @@
 
 	if(charge_speed < charge_speed_buildup * charge_turfs_to_charge || !is_charging) return ..()
 
-	if(stat || !A || !istype(A) || A == src || !yes) r_FAL
+	if(stat || !istype(A) || A == src || !yes) 
+		return FALSE
 
-	if(now_pushing) r_FAL //Just a plain ol turf, let's return.
+	if(now_pushing) 
+		return FALSE //Just a plain ol turf, let's return.
 
 	if(dir != charge_dir) //We aren't facing the way we're charging.
 		stop_momentum()
@@ -438,7 +440,7 @@
 		return ..()
 
 	lastturf = null //Reset this so we can properly continue with momentum.
-	r_TRU
+	return TRUE
 
 /mob/living/carbon/Xenomorph/Crusher/update_icons()
 	if(stat == DEAD)

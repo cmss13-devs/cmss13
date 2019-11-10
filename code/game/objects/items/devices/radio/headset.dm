@@ -286,7 +286,7 @@
 
 /obj/item/device/radio/headset/almayer/mt
 	name = "engineering radio headset"
-	desc = "Useful for coorinating maintenance bars and orbital bombardments. Of robust and sturdy construction. To access the engineering channel, use :e."
+	desc = "Useful for coordinating maintenance bars and orbital bombardments. Of robust and sturdy construction. To access the engineering channel, use :e."
 	icon_state = "eng_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/engi
 

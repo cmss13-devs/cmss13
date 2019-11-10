@@ -228,7 +228,7 @@
 	update_icon(user)
 
 	H.visible_message(SPAN_WARNING("[name] beeps, \"Engaging the repairing process.\""), \
-		SPAN_WARNING("[name] beeps, \"Beginning to carefully examining your sustained damage.\""))
+		SPAN_WARNING("[name] beeps, \"Beginning to carefully examine your sustained damage.\""))
 	playsound(src.loc, 'sound/mecha/mechmove04.ogg', 25, 1)
 	if(!do_after(H, 100, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		to_chat(user, SPAN_DANGER("[name] beeps, \"Repair process was cancelled.\""))

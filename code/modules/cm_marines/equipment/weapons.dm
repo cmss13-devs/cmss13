@@ -21,7 +21,7 @@
 /obj/item/smartgun_powerpack
 	name = "\improper M56 powerpack"
 	desc = "A heavy reinforced backpack with support equipment and power cells for the M56 Smartgun System."
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/clothing/backpacks.dmi'
 	icon_state = "powerpack"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_BACK

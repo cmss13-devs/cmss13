@@ -30,8 +30,8 @@
 				do_click(TU, location, params)
 		return
 
-	if (A == src && client.prefs.ignore_self && src.a_intent != "help")
-		if(world.time % 3)
+	if (A == src && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != "help")
+		if (world.time % 3)
 			to_chat(src, SPAN_NOTICE("You have the discipline not to hurt yourself."))
 		return
 

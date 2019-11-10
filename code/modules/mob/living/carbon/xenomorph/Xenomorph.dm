@@ -125,8 +125,6 @@
 	var/has_spat = 0
 	var/armor_bonus = 0 //Extra chance of deflecting projectiles due to temporary effects
 	var/has_screeched = 0
-	var/middle_mouse_toggle = TRUE //This toggles whether selected ability uses middle mouse clicking or shift clicking
-	var/directional_attack_toggle = TRUE //This toggles whether attacks use directional attacks
 
 	var/devour_timer = 0
 
@@ -369,7 +367,6 @@
 			H.add_hud_to(src) //keep our mobhud choice
 			xeno_mobhud = TRUE
 
-		middle_mouse_toggle = oldXeno.middle_mouse_toggle //Keep our toggle state
 		a_intent_change(oldXeno.a_intent)//Keep intent
 		if(oldXeno.m_intent != MOVE_INTENT_RUN)
 			toggle_mov_intent()//Keep move intent

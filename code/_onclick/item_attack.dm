@@ -6,6 +6,7 @@
 // No comment
 /atom/proc/attackby(obj/item/W, mob/living/user)
 	return
+
 /atom/movable/attackby(obj/item/W, mob/living/user)
 	if(W)
 		if(!(W.flags_item & NOBLUDGEON))
@@ -15,7 +16,7 @@
 
 /mob/living/attackby(obj/item/I, mob/user)
 	if(istype(I) && ismob(user))
-		I.attack(src, user)
+		return I.attack(src, user)
 
 
 // Proximity_flag is 1 if this afterattack was called on something adjacent, in your square, or on your person.
@@ -50,7 +51,7 @@
 	if(!(user in viewers(M, null)))
 		showname = "."
 
-	if (user?.client?.prefs.help_intent_safety && user.a_intent == HELP_INTENT)
+	if (user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && user.a_intent == HELP_INTENT)
 		playsound(loc, 'sound/effects/pop.ogg', 25, 1)
 		user.visible_message(SPAN_NOTICE("[M] has been poked with [src][showname]"),\
 			SPAN_NOTICE("You poke [M == user ? "yourself":M] with [src]."), null, 4)

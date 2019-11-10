@@ -22,7 +22,7 @@
 
 /mob/living/carbon/Xenomorph/RangedAttack(var/atom/A)
 	..()
-	if(directional_attack_toggle)
+	if(client && client.prefs && client.prefs.toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK)
 		for(var/mob/M in get_turf(get_step(src, get_dir(src, A))))
 			if (M.Adjacent(src))
 				UnarmedAttack(M)
@@ -41,7 +41,7 @@
 		return 1
 
 	if(mods["middle"] && !mods["shift"])
-		if(selected_ability && middle_mouse_toggle)
+		if(selected_ability && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
 			selected_ability.use_ability(A)
 		return 1
 
@@ -66,7 +66,7 @@
 				return 1
 
 	if(mods["shift"] && !mods["middle"])
-		if(selected_ability && !middle_mouse_toggle)
+		if(selected_ability && client && client.prefs && !client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
 			selected_ability.use_ability(A)
 		return 1
 
@@ -95,12 +95,12 @@
 		return 1
 
 	if(mods["middle"] && !mods["shift"])
-		if (selected_ability && middle_mouse_toggle)
+		if (selected_ability && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
 			selected_ability.use_ability(A)
 			return 1
 
 	if(mods["shift"])
-		if (selected_ability && !middle_mouse_toggle)
+		if (selected_ability && client && client.prefs && !client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
 			selected_ability.use_ability(A)
 			return 1
 
@@ -116,12 +116,12 @@
 		return 1
 
 	if(mods["middle"] && !mods["shift"])
-		if(selected_ability && middle_mouse_toggle)
+		if(selected_ability && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
 			selected_ability.use_ability(A)
 			return 1
 
 	if(mods["shift"])
-		if(selected_ability && !middle_mouse_toggle)
+		if(selected_ability && client && client.prefs && !client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
 			selected_ability.use_ability(A)
 			return 1
 

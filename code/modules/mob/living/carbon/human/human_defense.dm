@@ -122,7 +122,8 @@ Contains most of the procs that are called when a mob is attacked by something
 
 //Returns 1 if the attack hit, 0 if it missed.
 /mob/living/carbon/human/proc/attacked_by(var/obj/item/I, var/mob/living/user, var/def_zone)
-	if(!I || !user)	return 0
+	if(!I || !user)	
+		return 0
 
 	var/target_zone = def_zone? check_zone(def_zone) : get_zone_with_miss_chance(user.zone_selected, src)
 
@@ -158,7 +159,8 @@ Contains most of the procs that are called when a mob is attacked by something
 		weapon_sharp = 0
 		weapon_edge = 0
 
-	if(!I.force)	return 0
+	if(!I.force)	
+		return 0
 	if(weapon_sharp)
 		user.flick_attack_overlay(src, "punch")
 	else

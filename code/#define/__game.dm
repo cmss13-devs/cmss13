@@ -294,3 +294,6 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 // Defines for shuttles (primarily to separate dropships and elevators)
 #define SHUTTLE_DROPSHIP 1
 #define SHUTTLE_ELEVATOR 2
+
+// Misc game defines
+#define EXTINGUISHER_WATER_USE_AMT	5 // Amount of water consumed by extinguisher per use

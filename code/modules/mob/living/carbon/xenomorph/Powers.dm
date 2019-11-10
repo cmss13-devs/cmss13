@@ -1725,27 +1725,36 @@
 		H.remove_hud_from(usr)
 
 
-/mob/living/carbon/Xenomorph/verb/middle_mousetoggle()
+/mob/living/carbon/Xenomorph/verb/middle_mouse_toggle()
 	set name = "Toggle Middle/Shift Clicking"
 	set desc = "Toggles between using middle mouse click and shift click for selected abilitiy use."
 	set category = "Alien"
 
-	middle_mouse_toggle = !middle_mouse_toggle
-	if(!middle_mouse_toggle)
-		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with shift clicking."))
-	else
-		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with middle mouse clicking."))
+	if (!client || !client.prefs)
+		return
 
-/mob/living/carbon/Xenomorph/verb/directional_attacktoggle()
+	client.prefs.toggle_prefs ^= TOGGLE_MIDDLE_MOUSE_CLICK
+	client.prefs.save_preferences()
+	if (client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
+		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with middle mouse clicking."))		
+	else
+		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with shift clicking."))
+
+
+/mob/living/carbon/Xenomorph/verb/directional_attack_toggle()
 	set name = "Toggle Directional Attacks"
 	set desc = "Toggles the use of directional assist attacks."
 	set category = "Alien"
 
-	directional_attack_toggle = !directional_attack_toggle
-	if(!directional_attack_toggle)
-		to_chat(src, SPAN_NOTICE("Attacks will no longer use directional assist."))
-	else
+	if (!client || !client.prefs)
+		return
+	
+	client.prefs.toggle_prefs ^= TOGGLE_DIRECTIONAL_ATTACK
+	client.prefs.save_preferences()
+	if(client.prefs.toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK)
 		to_chat(src, SPAN_NOTICE("Attacks will now use directional assist."))
+	else
+		to_chat(src, SPAN_NOTICE("Attacks will no longer use directional assist."))
 
 /mob/living/carbon/Xenomorph/proc/morph_resin(var/turf/current_turf, var/structure_type)
 	if (!structure_type || !check_state() || action_busy)

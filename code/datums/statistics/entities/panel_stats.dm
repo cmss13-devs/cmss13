@@ -11,7 +11,7 @@
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if(!ui)
-		ui = new(user, src, ui_key, "cm_stat_panel.tmpl", "Statistics", 800, 900, null, -1)
+		ui = new(user, src, ui_key, "cm_stat_panel.tmpl", "Statistics", 450, 700, null, -1)
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(0)

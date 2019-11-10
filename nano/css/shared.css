@@ -28,6 +28,8 @@ body {
 hr {
     background-color: #40628a;
     height: 1px;
+	clear: both;
+	float: none;
 }
 
 .link, .linkOn, .linkOff, .selected, .disabled, .yellowButton, .redButton {
@@ -248,6 +250,20 @@ div.notice {
     color: #e9c183;
 }
 
+.itemLabelClear {
+    float: left;
+    width: 43%;
+    color: #e9c183;
+    clear: both;
+}
+
+.itemLabelClearBoth {
+    float: none;
+    width: 100%;
+    color: #e9c183;
+    clear: left;
+}
+
 .itemContent {
     float: left;
     width: 69%;
@@ -277,6 +293,11 @@ div.notice {
 
 .itemContentSmall {
     float: left;
+    width: 33%;
+}
+
+.itemContentSmallRight {
+    float: right;
     width: 33%;
 }
 
@@ -558,5 +579,11 @@ th.misc {
 
 .fieldContainer {
     background-color: #202020;
-    padding: 1px 4px 1px 4px;
+    padding: 1px 4px;
+}
+
+.fieldContainerSpaced {
+    background-color: #202020;
+    padding: 5px;
+    margin: 10px 1px;
 }

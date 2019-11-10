@@ -269,7 +269,7 @@
 		return TRUE
 
 	if(hud_used.healths)
-		var/health_stacks = Ceiling((health / maxHealth) * HUD_PAIN_STATES_XENO)
+		var/health_stacks = Ceiling((health / maxHealth) * HUD_HEALTH_STATES_XENO)
 		hud_used.healths.icon_state = "health_[health_stacks]"
 		if(health_stacks >= HUD_HEALTH_STATES_XENO)
 			hud_used.healths.icon_state = "health_full"
@@ -286,7 +286,7 @@
 
 	if(hud_used.alien_armor_display)
 		var/armor_stacks = min((get_armor_integrity_percentage() * 0.01) * HUD_ARMOR_STATES_XENO, HUD_ARMOR_STATES_XENO)
-		hud_used.alien_armor_display.icon_state = "power_display_[Floor(armor_stacks)]0"
+		hud_used.alien_armor_display.icon_state = "armor_[Floor(armor_stacks)]0"
 
 	return TRUE
 

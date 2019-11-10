@@ -1,7 +1,7 @@
 /obj/item/marine/fuelpack
 	name = "\improper Broiler-T flexible refueling system"
 	desc = "A specialized back harness that carries the Broiler-T flexible refueling system. Designed by and for USCM Pyrotechnicians."
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/clothing/backpacks.dmi'
 	icon_state = "flamethrower_broiler"
 	item_state = "flamethrower_broiler"
 	flags_atom = FPRINT|CONDUCT
@@ -28,7 +28,7 @@
 		overlays.Cut()
 
 	if(flamer)
-		overlays += overlay_image('icons/obj/items/storage.dmi', "+m240t")
+		overlays += overlay_image('icons/obj/items/clothing/backpacks.dmi', "+m240t")
 
 	// Handles toggling of fuel. Snowflake way of changing action icon. Change icon, update action icon, change icon back
 	if(toggling)

@@ -5,7 +5,6 @@
 	desc = "A high tech, USCM designed, dark red space suit helmet. Used for maintenance in space."
 	icon_state = "void"
 	item_state = "void"
-	anti_hug = 3
 
 /obj/item/clothing/suit/space/uscm
 	name = "\improper USCM Compression Suit"

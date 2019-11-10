@@ -206,42 +206,40 @@
 		return
 
 	if(!order)
-		order = input(src, "Choose an order") in command_aura_allowed + "help" + "cancel"
+		order = input(src, "Choose an order") in list(COMMAND_ORDER_MOVE, COMMAND_ORDER_HOLD, COMMAND_ORDER_FOCUS, "help", "cancel")
 		if(order == "help")
 			to_chat(src, SPAN_NOTICE("<br>Orders give a buff to nearby soldiers for a short period of time, followed by a cooldown, as follows:<br><B>Move</B> - Increased mobility and chance to dodge projectiles.<br><B>Hold</B> - Increased resistance to pain and combat wounds.<br><B>Focus</B> - Increased gun accuracy and effective range.<br>"))
 			return
-		if(order == "cancel") return
+		if(order == "cancel") 
+			return
 
 		if(!command_aura_available)
 			to_chat(src, SPAN_WARNING("You have recently given an order. Calm down."))
 			return
 
 	command_aura_available = FALSE
-	command_aura = order
+	var/command_aura_strength = mind.cm_skills.get_skill_level(SKILL_LEADERSHIP) - SKILL_LEAD_BEGINNER
+	var/command_aura_duration = mind.cm_skills.get_skill_level(SKILL_LEADERSHIP) * 100
+
+	for(var/mob/living/carbon/human/H in range(COMMAND_ORDER_RANGE, src))
+		H.activate_order_buff(order, command_aura_strength, command_aura_duration)
 
 	for(var/datum/action/A in actions)
 		A.update_button_icon()
 
-	// order lasts 20 seconds
-	add_timer(CALLBACK(src, .proc/end_aura), command_aura_duration)
 	// 1min cooldown on orders
-	add_timer(CALLBACK(src, .proc/make_aura_available), command_aura_cooldown)
+	add_timer(CALLBACK(src, .proc/make_aura_available), COMMAND_ORDER_COOLDOWN)
 
 	var/message = ""
-	switch(command_aura)
-		if("move")
+	switch(order)
+		if(COMMAND_ORDER_MOVE)
 			message = pick(";GET MOVING!", ";GO, GO, GO!", ";WE ARE ON THE MOVE!", ";MOVE IT!", ";DOUBLE TIME!")
-			say(message)
-		if("hold")
+		if(COMMAND_ORDER_HOLD)
 			message = pick(";DUCK AND COVER!", ";HOLD THE LINE!", ";HOLD POSITION!", ";STAND YOUR GROUND!", ";STAND AND FIGHT!")
-			say(message)
-		if("focus")
+		if(COMMAND_ORDER_FOCUS)
 			message = pick(";FOCUS FIRE!", ";PICK YOUR TARGETS!", ";CENTER MASS!", ";CONTROLLED BURSTS!", ";AIM YOUR SHOTS!")
-			say(message)
+	say(message)
 
-/mob/living/carbon/human/proc/end_aura()
-	to_chat(src, SPAN_NOTICE("The effects of your order wears off."))
-	command_aura = null
 
 /mob/living/carbon/human/proc/make_aura_available()
 	to_chat(src, SPAN_NOTICE("You can issue an order again."))
@@ -251,12 +249,56 @@
 
 
 /mob/living/carbon/human/verb/issue_order_verb()
-
 	set name = "Issue Order"
 	set desc = "Issue an order to nearby humans, using your authority to strengthen their resolve."
 	set category = "IC"
 
 	issue_order()
+
+
+/mob/living/carbon/human/proc/activate_order_buff(var/order, var/strength, var/duration)
+	if(!order || !strength)
+		return
+
+	switch(order)
+		if(COMMAND_ORDER_MOVE)
+			mobility_aura_count++
+			mobility_aura = max(mobility_aura, strength)
+		if(COMMAND_ORDER_HOLD)
+			protection_aura_count++
+			protection_aura = max(protection_aura, strength)
+		if(COMMAND_ORDER_FOCUS)
+			marksman_aura_count++
+			marksman_aura = max(marksman_aura, strength)
+
+	hud_set_order()
+
+	if(duration)
+		add_timer(CALLBACK(src, .proc/deactivate_order_buff, order), duration)
+
+
+/mob/living/carbon/human/proc/deactivate_order_buff(var/order)
+	switch(order)
+		if(COMMAND_ORDER_MOVE)
+			if(mobility_aura_count > 1)
+				mobility_aura_count--
+			else 
+				mobility_aura_count = 0
+				mobility_aura = 0
+		if(COMMAND_ORDER_HOLD)
+			if(protection_aura_count > 1)
+				protection_aura_count--
+			else
+				protection_aura_count = 0
+				protection_aura = 0
+		if(COMMAND_ORDER_FOCUS)
+			if(marksman_aura_count > 1)
+				marksman_aura_count--
+			else
+				marksman_aura_count = 0
+				marksman_aura = 0
+
+	hud_set_order()
 
 // Used for synthetics
 /mob/living/carbon/human/synthetic/verb/toggle_HUD()
@@ -274,7 +316,7 @@
 	var/chosen_HUD = 1
 	switch(hud_choice)
 		if("Medical HUD")
-			H = huds[MOB_HUD_MEDICAL_OBSERVER]
+			H = huds[MOB_HUD_MEDICAL_ADVANCED]
 		if("Security HUD")
 			H = huds[MOB_HUD_SECURITY_ADVANCED]
 			chosen_HUD = 2

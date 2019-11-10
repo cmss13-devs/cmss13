@@ -392,7 +392,6 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 	siemens_coefficient = 2.0
-	//anti_hug = 2
 	flags_armor_protection = HEAD
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH

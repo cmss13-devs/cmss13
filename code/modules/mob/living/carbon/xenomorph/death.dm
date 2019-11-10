@@ -73,7 +73,6 @@
 
 	if (IS_XENO_LEADER(hive_pos))	//Strip them from the Xeno leader list, if they are indexed in here
 		hive.remove_hive_leader(src)
-		hive_pos = NORMAL_XENO
 		if(hive.living_xeno_queen)
 			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE("A leader has fallen!")) //alert queens so they can choose another leader
 

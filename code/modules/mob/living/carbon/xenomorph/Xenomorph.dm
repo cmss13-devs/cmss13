@@ -502,6 +502,9 @@
 	living_xeno_list -= src
 	xeno_mob_list -= src
 
+	if(IS_XENO_LEADER(hive_pos)) //Strip them from the Xeno leader list, if they are indexed in here
+		hive.remove_hive_leader(src)
+
 	SStracking.stop_tracking("hive_[hivenumber]", src)
 
 	if(hive)

@@ -32,7 +32,6 @@
 	actions_types = list(/datum/action/item_action/toggle)
 	siemens_coefficient = 0.9
 	w_class = SIZE_MEDIUM
-	anti_hug = 2
 	eye_protection = 2
 	var/hug_memory = 0 //Variable to hold the "memory" of how many anti-hugs remain.  Because people were abusing the fuck out of it.
 

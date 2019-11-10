@@ -76,6 +76,7 @@ also doesn't really matter. You can only reload them with handfuls.
 	chamber_closed = 1 //Starts out with a closed tube.
 
 /obj/item/ammo_magazine/internal/shotgun/double/mou53
+	default_ammo = /datum/ammo/bullet/shotgun/flechette
 	max_rounds = 3
 
 /obj/item/ammo_magazine/internal/shotgun/combat

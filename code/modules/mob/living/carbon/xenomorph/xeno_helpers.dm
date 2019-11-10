@@ -49,8 +49,3 @@
 			return "sticky resin"
 		if (RESIN_FAST)
 			return "fast resin"
-
-/mob/living/carbon/Xenomorph/proc/change_damage_screen(mode)
-	clear_fullscreen("xeno_pain")
-	if(mode)
-		overlay_fullscreen("xeno_pain", /obj/screen/fullscreen/xeno_pain, mode)

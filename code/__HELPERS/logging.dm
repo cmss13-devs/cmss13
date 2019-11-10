@@ -39,9 +39,13 @@
 	STUI.processing |= 3
 
 
-/proc/log_debug(text)
+/proc/log_debug(text, diary_only=FALSE)
 	if (config.log_debug)
 		diary << "\[[time_stamp()]]DEBUG: [text][log_end]"
+
+	if(diary_only)
+		return
+
 	STUI.debug.Add("\[[time_stamp()]]DEBUG: [text]<br>")
 	STUI.processing |= 6
 	for(var/client/C in admins)

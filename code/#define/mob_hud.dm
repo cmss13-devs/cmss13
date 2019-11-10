@@ -18,6 +18,7 @@
 #define PHEROMONE_HUD		"14" //indicates which pheromone is active on a xeno.
 #define QUEEN_OVERWATCH_HUD	"15" //indicates which xeno the queen is overwatching.
 #define ARMOR_HUD_XENO		"16" //health HUD for xenos
+#define ORDER_HUD			"17" //If humans are affected by orders or not
 
 
 //data HUD (medhud, sechud) defines

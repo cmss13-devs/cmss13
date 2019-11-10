@@ -129,7 +129,7 @@ var/datum/mob_hud/huds = list(
 
 
 /datum/mob_hud/squad
-	hud_icons = list(SQUAD_HUD)
+	hud_icons = list(SQUAD_HUD, ORDER_HUD)
 
 
 
@@ -573,3 +573,20 @@ var/datum/mob_hud/huds = list(
 			if(border_rk)
 				holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudmarineborder[border_rk]")
 	hud_list[SQUAD_HUD] = holder
+
+
+/mob/proc/hud_set_order()
+	return
+
+// ORDER HUD
+/mob/living/carbon/human/hud_set_order()
+	var/image/holder = hud_list[ORDER_HUD]
+	holder.icon_state = "hudblank"
+	holder.overlays.Cut()
+	if(mobility_aura)
+		holder.overlays += image('icons/mob/hud/hud.dmi', src, "hudmove")
+	if(protection_aura)
+		holder.overlays += image('icons/mob/hud/hud.dmi', src, "hudhold")
+	if(marksman_aura)
+		holder.overlays += image('icons/mob/hud/hud.dmi', src, "hudfocus")
+	hud_list[ORDER_HUD] = holder

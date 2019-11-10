@@ -17,8 +17,7 @@
 	..()
 	if(!ishuman(L))
 		return
-	var/mob/living/carbon/human/H = L
-	cooldown = H.command_aura_cooldown
+	cooldown = COMMAND_ORDER_COOLDOWN
 
 /datum/action/human_action/issue_order/action_activate()
 	if(!ishuman(owner))
@@ -35,17 +34,17 @@
 /datum/action/human_action/issue_order/move
 	name = "Issue Order - Move"
 	action_icon_state = "order_move"
-	order_type = "move"
+	order_type = COMMAND_ORDER_MOVE
 
 /datum/action/human_action/issue_order/hold
 	name = "Issue Order - Hold"
 	action_icon_state = "order_hold"
-	order_type = "hold"
+	order_type = COMMAND_ORDER_HOLD
 
 /datum/action/human_action/issue_order/focus
 	name = "Issue Order - Focus"
 	action_icon_state = "order_focus"
-	order_type = "focus"
+	order_type = COMMAND_ORDER_FOCUS
 
 
 /datum/action/human_action/smartpack/action_cooldown_check()

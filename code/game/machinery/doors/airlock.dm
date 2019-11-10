@@ -561,11 +561,6 @@
 							to_chat(user, SPAN_NOTICE("You start forcing the airlock shut with [G.attachments[slot]]."))
 							if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 								close(1)
-						if(rand(0,9) < 1)
-							G.attachments[slot] = null
-							G.update_attachable(slot)
-							playsound(loc, 'sound/effects/snap.ogg', 25, 1)
-							to_chat(user, SPAN_DANGER("Your [G.attachments[slot]] breaks!"))
 
 	else if(C.pry_capable)
 		if(C.pry_capable == IS_PRY_CAPABLE_CROWBAR && panel_open && (operating == -1 || (density && welded && operating != 1 && !arePowerSystemsOn() && !locked)) )

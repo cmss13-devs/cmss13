@@ -199,10 +199,14 @@ Defined in conflicts.dm of the #defines folder.
 	force = 20
 	throwforce = 10
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	melee_mod = 26 //35 for a rifle, comparable to 37 before. 40 with the stock, comparable to 42.
+	melee_mod = 35
 	slot = "muzzle"
 	pixel_shift_x = 14 //Below the muzzle.
 	pixel_shift_y = 18
+
+/obj/item/attachable/bayonet/New()
+	..()
+	accuracy_unwielded_mod = -config.min_hit_accuracy_mult
 
 /obj/item/attachable/bayonet/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/tool/screwdriver))
@@ -219,12 +223,6 @@ Defined in conflicts.dm of the #defines folder.
 		qdel(src) //Delete da old bayonet
 	else
 		. = ..()
-
-/obj/item/attachable/bayonet/New()
-	..()
-	accuracy_mod = -config.min_hit_accuracy_mult
-
-	accuracy_unwielded_mod = -config.min_hit_accuracy_mult
 
 /obj/item/attachable/extended_barrel
 	name = "extended barrel"

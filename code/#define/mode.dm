@@ -45,6 +45,11 @@
 #define BE_SYNTH_SURVIVOR		16
 #define BE_PREDATOR				32
 
+#define TOGGLE_IGNORE_SELF			1 // Determines whether you will not hurt yourself when clicking yourself
+#define TOGGLE_HELP_INTENT_SAFETY	2 // Determines whether help intent will be completely harmless
+#define TOGGLE_MIDDLE_MOUSE_CLICK	4 // This toggles whether selected ability for xeno uses middle mouse clicking or shift clicking
+#define TOGGLE_DIRECTIONAL_ATTACK	8 // This toggles whether attacks for xeno use directional attacks
+
 //=================================================
 
 var/list/be_special_flags = list(

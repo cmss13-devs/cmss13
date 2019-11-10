@@ -58,13 +58,13 @@
 	S["default_slot"]		>> default_slot
 	S["toggles_chat"]		>> toggles_chat
 	S["toggles_sound"]		>> toggles_sound
+	S["toggle_prefs"]		>> toggle_prefs
 	S["UI_style_color"]		>> UI_style_color
 	S["UI_style_alpha"]		>> UI_style_alpha
 	S["fps"]				>> fps
 
 	S["xeno_prefix"]		>> xeno_prefix
 	S["xeno_postfix"]		>> xeno_postfix
-
 	S["view_controller"]	>> View_MC
 
 	S["synth_name"]			>> synthetic_name
@@ -84,6 +84,7 @@
 	default_slot	= sanitize_integer(default_slot, 1, MAX_SAVE_SLOTS, initial(default_slot))
 	toggles_chat	= sanitize_integer(toggles_chat, 0, 65535, initial(toggles_chat))
 	toggles_sound	= sanitize_integer(toggles_sound, 0, 65535, initial(toggles_sound))
+	toggle_prefs	= sanitize_integer(toggle_prefs, 0, 65535, initial(toggle_prefs))
 	UI_style_color	= sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha	= sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 
@@ -115,6 +116,7 @@
 	S["default_slot"]		<< default_slot
 	S["toggles_chat"]		<< toggles_chat
 	S["toggles_sound"]		<< toggles_sound
+	S["toggle_prefs"]		<< toggle_prefs
 	S["fps"]				<< fps
 
 	S["xeno_prefix"]		<< xeno_prefix

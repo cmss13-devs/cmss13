@@ -32,9 +32,8 @@ datum/preferences
 	//game-preferences
 	var/lastchangelog = ""				// Saved changlog filesize to detect if there was a change
 	var/ooccolor = "#b82e00"
-	var/be_special = FALSE				// Special role selection
-	var/ignore_self = FALSE				// Determines whether you will not hurt yourself when clicking yourself
-	var/help_intent_safety = FALSE		// Determines whether help intent will be completely harmless
+	var/be_special = 0				// Special role selection
+	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK // flags in #define/mode.dm
 	var/UI_style = "Midnight"
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
 	var/toggles_sound = TOGGLES_SOUND_DEFAULT
@@ -133,11 +132,11 @@ datum/preferences
 
 	var/uplinklocation = "PDA"
 
-		// OOC Metadata:
+	// OOC Metadata:
 	var/metadata = ""
 	var/slot_name = ""
 
-	//XENO NAMES
+	// XENO NAMES
 	var/xeno_prefix = "XX"
 	var/xeno_postfix = ""
 
@@ -219,10 +218,10 @@ datum/preferences
 
 	var/n = 0
 
-	for (var/i in special_roles)
+	for (var/role_name in special_roles)
 		var/ban_check_name
 
-		switch (special_roles[i])
+		switch (role_name)
 			if ("Xenomorph")
 				ban_check_name = "Alien"
 
@@ -242,10 +241,10 @@ datum/preferences
 				ban_check_name = "Synth Survivor"
 
 		if(jobban_isbanned(user, ban_check_name))
-			dat += "<b>Be [i]:</b> <font color=red><b> \[BANNED]</b></font><br>"
+			dat += "<b>Be [role_name]:</b> <font color=red><b> \[BANNED]</b></font><br>"
 		else
-			dat += "<b>Be [i]:</b> <a href='?_src_=prefs;preference=be_special;num=[n]'><b>[src.be_special&(1<<n) ? "Yes" : "No"]</b></a><br>"
-			if(i == "Xenomorph")
+			dat += "<b>Be [role_name]:</b> <a href='?_src_=prefs;preference=be_special;num=[n]'><b>[be_special & (1<<n) ? "Yes" : "No"]</b></a><br>"
+			if(role_name == "Xenomorph")
 				var/display_prefix = xeno_prefix ? xeno_prefix : "------"
 				var/display_postfix = xeno_postfix ? xeno_postfix : "------"
 
@@ -342,8 +341,14 @@ datum/preferences
 	dat += "<b>Ghost Sight:</b> <a href='?_src_=prefs;preference=ghost_sight'><b>[(toggles_chat & CHAT_GHOSTSIGHT) ? "All Emotes" : "Nearest Creatures"]</b></a><br>"
 	dat += "<b>Ghost Radio:</b> <a href='?_src_=prefs;preference=ghost_radio'><b>[(toggles_chat & CHAT_GHOSTRADIO) ? "All Chatter" : "Nearest Speakers"]</b></a><br>"
 	dat += "<b>Ghost Hivemind:</b> <a href='?_src_=prefs;preference=ghost_hivemind'><b>[(toggles_chat & CHAT_GHOSTHIVEMIND) ? "Show Hivemind" : "Hide Hivemind"]</b></a><br>"
-	dat += "<b>Toggle Being Able to Hurt Yourself:</b> <a href='?_src_=prefs;preference=ignore_self'><b>[ignore_self ? "On" : "Off"]</b></a><br>"
-	dat += "<b>Toggle Help Intent Safety:</b> <a href='?_src_=prefs;preference=help_intent_safety'><b>[help_intent_safety ? "On" : "Off"]</b></a><br>"
+	dat += "<b>Toggle Being Able to Hurt Yourself: \
+			</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_IGNORE_SELF]'><b>[toggle_prefs & TOGGLE_IGNORE_SELF ? "On" : "Off"]</b></a><br>"
+	dat += "<b>Toggle Help Intent Safety: \
+			</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_HELP_INTENT_SAFETY]'><b>[toggle_prefs & TOGGLE_HELP_INTENT_SAFETY ? "On" : "Off"]</b></a><br>"
+	dat += "<b>Toggle Middle Mouse Ability Activation: \
+			</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_MIDDLE_MOUSE_CLICK]'><b>[toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "On" : "Off"]</b></a><br>"
+	dat += "<b>Toggle Directional Assist: \
+			</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_DIRECTIONAL_ATTACK]'><b>[toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK ? "On" : "Off"]</b></a><br>"
 
 	if(config.allow_Metadata)
 		dat += "<b>OOC Notes:</b> <a href='?_src_=prefs;preference=metadata;task=input'> Edit </a><br>"
@@ -1200,11 +1205,9 @@ datum/preferences
 				if("ghost_hivemind")
 					toggles_chat ^= CHAT_GHOSTHIVEMIND
 
-				if("ignore_self")
-					ignore_self = !ignore_self
-
-				if("help_intent_safety")
-					help_intent_safety = !help_intent_safety
+				if("toggle_prefs")
+					var/flag = text2num(href_list["flag"])
+					toggle_prefs ^= flag
 
 				if("save")
 					var/mob/new_player/np = user

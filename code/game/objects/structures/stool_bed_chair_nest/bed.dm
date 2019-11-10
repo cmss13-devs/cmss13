@@ -207,8 +207,9 @@ obj/structure/bed/Dispose()
 /obj/item/roller/attack_self(mob/user)
 	deploy_roller(user, user.loc)
 
-/obj/item/roller/afterattack(obj/target, mob/user , proximity)
-	if(!proximity) return
+/obj/item/roller/afterattack(obj/target, mob/user, proximity)
+	if(!proximity) 
+		return
 	if(isturf(target))
 		var/turf/T = target
 		if(!T.density)

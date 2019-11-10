@@ -40,7 +40,7 @@
 
 	if(!ticker || !ticker.mode || ticker.current_state <= GAME_STATE_PREGAME)
 		output += "<p>\[ [ready? "<b>Ready</b>":"<a href='byond://?src=\ref[src];lobby_choice=ready'>Ready</a>"] | [ready? "<a href='byond://?src=\ref[src];lobby_choice=ready'>Not Ready</a>":"<b>Not Ready</b>"] \]</p>"
-		output += "<b>Be Xenomorph:</b> [client.prefs.be_special&(1<<0) ? "Yes" : "No"]"
+		output += "<b>Be Xenomorph:</b> [client.prefs.be_special & BE_ALIEN ? "Yes" : "No"]"
 
 	else
 		output += "<a href='byond://?src=\ref[src];lobby_choice=manifest'>View the Crew Manifest</A><br><br>"

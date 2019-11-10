@@ -155,6 +155,7 @@
 	set category = "Preferences"
 	set desc = "Toggles which special roles you would like to be a candidate for, during events."
 	var/role_flag = be_special_flags[role]
+	
 	if(!role_flag)	return
 	prefs.be_special ^= role_flag
 	prefs.save_preferences()
@@ -165,9 +166,10 @@
 	set name = "Toggle the Ability to Hurt Yourself"
 	set category = "Preferences"
 	set desc = "Toggles whether clicking on yourself in non-help intent will do anything"
-	prefs.ignore_self = !prefs.ignore_self
+	
+	prefs.toggle_prefs ^= TOGGLE_IGNORE_SELF
 	prefs.save_preferences()
-	if(prefs.ignore_self)
+	if(prefs.toggle_prefs & TOGGLE_IGNORE_SELF)
 		to_chat(src, "Clicking on yourself in non-help intent will no longer do anything.")
 	else
 		to_chat(src, "Clicking on yourself in non-help intent can harm you again.")
@@ -176,9 +178,10 @@
 	set name = "Toggle Help Intent Safety"
 	set category = "Preferences"
 	set desc = "Toggles whether help intent will be harmless"
-	prefs.help_intent_safety = !prefs.help_intent_safety
+
+	prefs.toggle_prefs ^= TOGGLE_HELP_INTENT_SAFETY
 	prefs.save_preferences()
-	if(prefs.help_intent_safety)
+	if(prefs.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY)
 		to_chat(src, "Help intent will now be completely harmless.")
 	else
 		to_chat(src, "Help intent can perform harmful actions again.")

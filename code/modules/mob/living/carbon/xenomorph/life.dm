@@ -229,165 +229,66 @@
 				stomach_contents.Remove(M)
 				qdel(M)
 
-
 /mob/living/carbon/Xenomorph/proc/handle_regular_hud_updates()
-	if(!mind) return
+	if(!mind)
+		return TRUE
 
-	if(hud_used && hud_used.healths)
-		if(stat != DEAD)
-			switch(round(health * 100 / maxHealth)) //Maxhealth should never be zero or this will generate runtimes.
-				if(100 to INFINITY)
-					hud_used.healths.icon_state = "health_full"
-					change_damage_screen(0)
-				if(94 to 99)
-					hud_used.healths.icon_state = "health_16"
-					change_damage_screen(0)
-				if(88 to 93)
-					hud_used.healths.icon_state = "health_15"
-					change_damage_screen(0)
-				if(82 to 87)
-					hud_used.healths.icon_state = "health_14"
-					change_damage_screen(0)
-				if(76 to 81)
-					hud_used.healths.icon_state = "health_13"
-					change_damage_screen(1)
-				if(70 to 75)
-					hud_used.healths.icon_state = "health_12"
-					change_damage_screen(2)
-				if(64 to 69)
-					hud_used.healths.icon_state = "health_11"
-					change_damage_screen(2)
-				if(58 to 63)
-					hud_used.healths.icon_state = "health_10"
-					change_damage_screen(2)
-				if(52 to 57)
-					hud_used.healths.icon_state = "health_9"
-					change_damage_screen(2)
-				if(46 to 51)
-					hud_used.healths.icon_state = "health_8"
-					change_damage_screen(3)
-				if(40 to 45)
-					hud_used.healths.icon_state = "health_7"
-					change_damage_screen(3)
-				if(34 to 39)
-					hud_used.healths.icon_state = "health_6"
-					change_damage_screen(3)
-				if(28 to 33)
-					hud_used.healths.icon_state = "health_5"
-					change_damage_screen(3)
-				if(22 to 27)
-					hud_used.healths.icon_state = "health_4"
-					change_damage_screen(4)
-				if(16 to 21)
-					hud_used.healths.icon_state = "health_3"
-					change_damage_screen(4)
-				if(10 to 15)
-					hud_used.healths.icon_state = "health_2"
-					change_damage_screen(4)
-				if(4 to 9)
-					hud_used.healths.icon_state = "health_1"
-					change_damage_screen(4)
-				if(0 to 3)
-					hud_used.healths.icon_state = "health_0"
-					change_damage_screen(4)
-				else
-					hud_used.healths.icon_state = "health_critical"
-					change_damage_screen(0)
-		else
-			hud_used.healths.icon_state = "health_dead"
-			change_damage_screen(0)
+	if(stat == DEAD)
+		clear_fullscreen("xeno_pain")
+		if(hud_used)
+			if(hud_used.healths)
+				hud_used.healths.icon_state = "health_dead"
+			if(hud_used.alien_plasma_display)
+				hud_used.alien_plasma_display.icon_state = "power_display_empty"
+			if(hud_used.alien_armor_display)
+				hud_used.alien_armor_display.icon_state = "armor_00"
+		return TRUE
 
-	if(hud_used && hud_used.alien_plasma_display)
-		if(stat != DEAD)
-			switch(get_plasma_percentage())
-				if(100 to INFINITY)
-					hud_used.alien_plasma_display.icon_state = "power_display_full"
-				if(94 to 99)
-					hud_used.alien_plasma_display.icon_state = "power_display_16"
-				if(88 to 93)
-					hud_used.alien_plasma_display.icon_state = "power_display_15"
-				if(82 to 87)
-					hud_used.alien_plasma_display.icon_state = "power_display_14"
-				if(76 to 81)
-					hud_used.alien_plasma_display.icon_state = "power_display_13"
-				if(70 to 75)
-					hud_used.alien_plasma_display.icon_state = "power_display_12"
-				if(64 to 69)
-					hud_used.alien_plasma_display.icon_state = "power_display_11"
-				if(58 to 63)
-					hud_used.alien_plasma_display.icon_state = "power_display_10"
-				if(52 to 57)
-					hud_used.alien_plasma_display.icon_state = "power_display_9"
-				if(46 to 51)
-					hud_used.alien_plasma_display.icon_state = "power_display_8"
-				if(40 to 45)
-					hud_used.alien_plasma_display.icon_state = "power_display_7"
-				if(34 to 39)
-					hud_used.alien_plasma_display.icon_state = "power_display_6"
-				if(28 to 33)
-					hud_used.alien_plasma_display.icon_state = "power_display_5"
-				if(22 to 27)
-					hud_used.alien_plasma_display.icon_state = "power_display_4"
-				if(16 to 21)
-					hud_used.alien_plasma_display.icon_state = "power_display_3"
-				if(10 to 15)
-					hud_used.alien_plasma_display.icon_state = "power_display_2"
-				if(4 to 9)
-					hud_used.alien_plasma_display.icon_state = "power_display_1"
-				if(0 to 3)
-					hud_used.alien_plasma_display.icon_state = "power_display_0"
-				else
-					hud_used.alien_plasma_display.icon_state = "power_display_empty"
-		else
+	var/severity = HUD_PAIN_STATES_XENO - Ceiling(((max(health, 0) / maxHealth) * HUD_PAIN_STATES_XENO))
+	if(severity)
+		overlay_fullscreen("xeno_pain", /obj/screen/fullscreen/xeno_pain, severity)
+	else
+		clear_fullscreen("xeno_pain")
+
+	if(blinded)
+		overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+	else
+		clear_fullscreen("blind")
+
+	if(interactee)
+		interactee.check_eye(src)
+	else if(client && !client.adminobs)
+		reset_view(null)
+
+	if(dazed)
+		overlay_fullscreen("dazed", /obj/screen/fullscreen/blurry)
+	else
+		clear_fullscreen("dazed")
+
+	if(!hud_used)
+		return TRUE
+
+	if(hud_used.healths)
+		var/health_stacks = Ceiling((health / maxHealth) * HUD_PAIN_STATES_XENO)
+		hud_used.healths.icon_state = "health_[health_stacks]"
+		if(health_stacks >= HUD_HEALTH_STATES_XENO)
+			hud_used.healths.icon_state = "health_full"
+		else if(health_stacks <= 0)
+			hud_used.healths.icon_state = "health_critical"
+
+	if(hud_used.alien_plasma_display)
+		var/plasma_stacks = (get_plasma_percentage() * 0.01) * HUD_PLASMA_STATES_XENO
+		hud_used.alien_plasma_display.icon_state = "power_display_[Ceiling(plasma_stacks)]"
+		if(plasma_stacks >= HUD_PLASMA_STATES_XENO)
+			hud_used.alien_plasma_display.icon_state = "power_display_full"
+		else if(plasma_stacks <= 0)
 			hud_used.alien_plasma_display.icon_state = "power_display_empty"
 
-	if(hud_used && hud_used.alien_armor_display)
-		if(stat != DEAD)
-			switch(get_armor_integrity_percentage())
-				if(100 to INFINITY)
-					hud_used.alien_armor_display.icon_state = "armor_100"
-				if(90 to 99)
-					hud_used.alien_armor_display.icon_state = "armor_90"
-				if(80 to 89)
-					hud_used.alien_armor_display.icon_state = "armor_80"
-				if(70 to 79)
-					hud_used.alien_armor_display.icon_state = "armor_70"
-				if(60 to 69)
-					hud_used.alien_armor_display.icon_state = "armor_60"
-				if(50 to 59)
-					hud_used.alien_armor_display.icon_state = "armor_50"
-				if(40 to 49)
-					hud_used.alien_armor_display.icon_state = "armor_40"
-				if(30 to 39)
-					hud_used.alien_armor_display.icon_state = "armor_30"
-				if(20 to 29)
-					hud_used.alien_armor_display.icon_state = "armor_20"
-				if(10 to 19)
-					hud_used.alien_armor_display.icon_state = "armor_10"
-				else
-					hud_used.alien_armor_display.icon_state = "armor_00"
-		else
-			hud_used.alien_armor_display.icon_state = "armor_00"
+	if(hud_used.alien_armor_display)
+		var/armor_stacks = min((get_armor_integrity_percentage() * 0.01) * HUD_ARMOR_STATES_XENO, HUD_ARMOR_STATES_XENO)
+		hud_used.alien_armor_display.icon_state = "power_display_[Floor(armor_stacks)]0"
 
-
-	if(stat != DEAD)
-		if(blinded)
-			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
-		else
-			clear_fullscreen("blind")
-
-	if(stat != DEAD) //Ladders have cameras now.
-		if(interactee)
-			interactee.check_eye(src)
-		else
-			if(client && !client.adminobs)
-				reset_view(null)
-		if(dazed)
-			overlay_fullscreen("dazed", /obj/screen/fullscreen/blurry)
-		else
-			clear_fullscreen("dazed")
-
-	return 1
+	return TRUE
 
 /*Heal 1/70th of your max health in brute per tick. 1 as a bonus, to help smaller pools.
 Additionally, recovery pheromones mutiply this base healing, up to 2.5 times faster at level 5

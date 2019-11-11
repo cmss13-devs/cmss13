@@ -12,10 +12,10 @@
 	open_layer = PODDOOR_OPEN_LAYER
 	closed_layer = PODDOOR_CLOSED_LAYER
 
-/obj/structure/machinery/door/poddoor/New()
+/obj/structure/machinery/door/poddoor/Initialize()
 	..()
 	if(density)
-		layer = PODDOOR_CLOSED_LAYER //to override door.New() proc
+		layer = PODDOOR_CLOSED_LAYER //to override door.Initialize() proc
 	else
 		layer = PODDOOR_OPEN_LAYER
 	return
@@ -79,21 +79,31 @@
 	operating = 0
 	return
 
-
-/obj/structure/machinery/door/poddoor/two_tile_hor/open()
+/obj/structure/machinery/door/poddoor/two_tile/open()
 	if(operating == 1) //doors can still open when emag-disabled
 		return
 	if(!ticker)
 		return 0
 	if(!operating) //in case of emag
 		operating = 1
+	start_opening()
+	sleep(10)
+	open_fully()
+	return 1
+
+/obj/structure/machinery/door/poddoor/two_tile/proc/start_opening()
 	flick("pdoorc0", src)
 	icon_state = "pdoor0"
 	SetOpacity(0)
 	f1.SetOpacity(0)
 	f2.SetOpacity(0)
 
-	sleep(10)
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/start_opening()
+	f3.SetOpacity(0)
+	f4.SetOpacity(0)
+	..()
+
+/obj/structure/machinery/door/poddoor/two_tile/proc/open_fully()
 	density = 0
 	f1.density = 0
 	f2.density = 0
@@ -102,12 +112,22 @@
 		operating = 0
 	if(autoclose)
 		spawn(150)
-			autoclose()
-	return 1
+			autoclose()	
 
-/obj/structure/machinery/door/poddoor/two_tile_hor/close()
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/open_fully()
+	f3.density = 0
+	f4.density = 0
+	..()
+
+/obj/structure/machinery/door/poddoor/two_tile/close()
 	if(operating)
 		return
+	start_closing()
+	sleep(10)
+	close_fully()
+	return
+
+/obj/structure/machinery/door/poddoor/two_tile/proc/start_closing()
 	operating = 1
 	flick("pdoorc1", src)
 	icon_state = "pdoor1"
@@ -116,177 +136,32 @@
 	f1.density = 1
 	f2.density = 1
 
-	sleep(10)
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/start_closing()
+	f3.density = 1
+	f4.density = 1
+	..()
+
+/obj/structure/machinery/door/poddoor/two_tile/proc/close_fully()
 	SetOpacity(initial(opacity))
 	f1.SetOpacity(initial(opacity))
 	f2.SetOpacity(initial(opacity))
-
 	operating = 0
-	return
 
-/obj/structure/machinery/door/poddoor/four_tile_hor/open()
-	if(operating == 1) //doors can still open when emag-disabled
-		return
-	if(!ticker)
-		return 0
-	if(!operating) //in case of emag
-		operating = 1
-	flick("pdoorc0", src)
-	icon_state = "pdoor0"
-	sleep(10)
-	density = 0
-	SetOpacity(0)
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/close_fully()
+	f3.SetOpacity(initial(opacity))
+	f4.SetOpacity(initial(opacity))
+	..()
 
-	f1.density = 0
-	f1.SetOpacity(0)
-	f2.density = 0
-	f2.SetOpacity(0)
-	f3.density = 0
-	f3.SetOpacity(0)
-	f4.density = 0
-	f4.SetOpacity(0)
-
-	if(operating == 1) //emag again
-		operating = 0
-	if(autoclose)
-		spawn(150)
-			autoclose()
-	return 1
-
-/obj/structure/machinery/door/poddoor/four_tile_hor/close()
-	if(operating)
-		return
-	operating = 1
-	flick("pdoorc1", src)
-	icon_state = "pdoor1"
-	density = 1
-
-	f1.density = 1
-	f1.SetOpacity(1)
-	f2.density = 1
-	f2.SetOpacity(1)
-	f3.density = 1
-	f3.SetOpacity(1)
-	f4.density = 1
-	f4.SetOpacity(1)
-
-	if(visible)
-		SetOpacity(1)
-
-	sleep(10)
-	operating = 0
-	return
-
-/obj/structure/machinery/door/poddoor/two_tile_ver/open()
-	if(operating == 1) //doors can still open when emag-disabled
-		return
-	if(!ticker)
-		return 0
-	if(!operating) //in case of emag
-		operating = 1
-	flick("pdoorc0", src)
-	icon_state = "pdoor0"
-	sleep(10)
-	density = 0
-	SetOpacity(0)
-
-	f1.density = 0
-	f1.SetOpacity(0)
-	f2.density = 0
-	f2.SetOpacity(0)
-
-	if(operating == 1) //emag again
-		operating = 0
-	if(autoclose)
-		spawn(150)
-			autoclose()
-	return 1
-
-/obj/structure/machinery/door/poddoor/two_tile_ver/close()
-	if(operating)
-		return
-	operating = 1
-	flick("pdoorc1", src)
-	icon_state = "pdoor1"
-	density = 1
-
-	f1.density = 1
-	f1.SetOpacity(1)
-	f2.density = 1
-	f2.SetOpacity(1)
-
-	if(visible)
-		SetOpacity(1)
-
-	sleep(10)
-	operating = 0
-	return
-
-/obj/structure/machinery/door/poddoor/four_tile_ver/open()
-	if(operating == 1) //doors can still open when emag-disabled
-		return
-	if(!ticker)
-		return 0
-	if(!operating) //in case of emag
-		operating = 1
-	flick("pdoorc0", src)
-	icon_state = "pdoor0"
-	sleep(10)
-	density = 0
-	SetOpacity(0)
-
-	f1.density = 0
-	f1.SetOpacity(0)
-	f2.density = 0
-	f2.SetOpacity(0)
-	f3.density = 0
-	f3.SetOpacity(0)
-	f4.density = 0
-	f4.SetOpacity(0)
-
-	if(operating == 1) //emag again
-		operating = 0
-	if(autoclose)
-		spawn(150)
-			autoclose()
-	return 1
-
-/obj/structure/machinery/door/poddoor/four_tile_ver/close()
-	if(operating)
-		return
-	operating = 1
-	flick("pdoorc1", src)
-	icon_state = "pdoor1"
-	density = 1
-
-	f1.density = 1
-	f1.SetOpacity(1)
-	f2.density = 1
-	f2.SetOpacity(1)
-	f3.density = 1
-	f3.SetOpacity(1)
-	f4.density = 1
-	f4.SetOpacity(1)
-
-	if(visible)
-		SetOpacity(1)
-
-	sleep(10)
-	operating = 0
-	return
-
-
-
-
-/obj/structure/machinery/door/poddoor/two_tile_hor
+/obj/structure/machinery/door/poddoor/two_tile
+	dir = EAST
+	icon = 'icons/obj/structures/doors/1x2blast_hor.dmi'
 	var/obj/structure/machinery/door/poddoor/filler_object/f1
 	var/obj/structure/machinery/door/poddoor/filler_object/f2
-	icon = 'icons/obj/structures/doors/1x2blast_hor.dmi'
 
-	New()
+	Initialize()
 		..()
 		f1 = new/obj/structure/machinery/door/poddoor/filler_object (loc)
-		f2 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(src,EAST))
+		f2 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(src,dir))
 		f1.density = density
 		f2.density = density
 		f1.SetOpacity(opacity)
@@ -299,92 +174,34 @@
 		f2 = null
 		. = ..()
 
-/obj/structure/machinery/door/poddoor/two_tile_ver
-	var/obj/structure/machinery/door/poddoor/filler_object/f1
-	var/obj/structure/machinery/door/poddoor/filler_object/f2
+/obj/structure/machinery/door/poddoor/two_tile/vertical
+	dir = NORTH
 	icon = 'icons/obj/structures/doors/1x2blast_vert.dmi'
 
-	New()
-		..()
-		f1 = new/obj/structure/machinery/door/poddoor/filler_object (loc)
-		f2 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(src,NORTH))
-		f1.density = density
-		f2.density = density
-		f1.SetOpacity(opacity)
-		f2.SetOpacity(opacity)
-
-	Dispose()
-		qdel(f1)
-		f1 = null
-		qdel(f2)
-		f2 = null
-		. = ..()
-
-/obj/structure/machinery/door/poddoor/four_tile_hor
-	var/obj/structure/machinery/door/poddoor/filler_object/f1
-	var/obj/structure/machinery/door/poddoor/filler_object/f2
-	var/obj/structure/machinery/door/poddoor/filler_object/f3
-	var/obj/structure/machinery/door/poddoor/filler_object/f4
+/obj/structure/machinery/door/poddoor/two_tile/four_tile
 	icon = 'icons/obj/structures/doors/1x4blast_hor.dmi'
-
-	New()
-		..()
-		f1 = new/obj/structure/machinery/door/poddoor/filler_object (loc)
-		f2 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(f1,EAST))
-		f3 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(f2,EAST))
-		f4 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(f3,EAST))
-		f1.density = density
-		f2.density = density
-		f3.density = density
-		f4.density = density
-		f1.SetOpacity(opacity)
-		f2.SetOpacity(opacity)
-		f4.SetOpacity(opacity)
-		f3.SetOpacity(opacity)
-
-	Dispose()
-		qdel(f1)
-		f1 = null
-		qdel(f2)
-		f2 = null
-		qdel(f3)
-		f3 = null
-		qdel(f4)
-		f4 = null
-		. = ..()
-
-/obj/structure/machinery/door/poddoor/four_tile_ver
-	var/obj/structure/machinery/door/poddoor/filler_object/f1
-	var/obj/structure/machinery/door/poddoor/filler_object/f2
 	var/obj/structure/machinery/door/poddoor/filler_object/f3
 	var/obj/structure/machinery/door/poddoor/filler_object/f4
-	icon = 'icons/obj/structures/doors/1x4blast_vert.dmi'
 
-	New()
+	Initialize()
 		..()
-		f1 = new/obj/structure/machinery/door/poddoor/filler_object (loc)
-		f2 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(f1,NORTH))
-		f3 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(f2,NORTH))
-		f4 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(f3,NORTH))
-		f1.density = density
-		f2.density = density
+		f3 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(f2,dir))
+		f4 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(f3,dir))
 		f3.density = density
 		f4.density = density
-		f1.SetOpacity(opacity)
-		f2.SetOpacity(opacity)
-		f4.SetOpacity(opacity)
 		f3.SetOpacity(opacity)
+		f4.SetOpacity(opacity)
 
 	Dispose()
-		qdel(f1)
-		f1 = null
-		qdel(f2)
-		f2 = null
 		qdel(f3)
 		f3 = null
 		qdel(f4)
 		f4 = null
-		. = ..()
+		..()
+
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical
+	dir = NORTH
+	icon = 'icons/obj/structures/doors/1x4blast_vert.dmi'
 
 /obj/structure/machinery/door/poddoor/filler_object
 	name = ""
@@ -392,31 +209,28 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-/obj/structure/machinery/door/poddoor/four_tile_hor/secure
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/secure
 	icon = 'icons/obj/structures/doors/1x4blast_hor_secure.dmi'
 	openspeed = 17
 	unslashable = TRUE
 	unacidable = TRUE
 
-/obj/structure/machinery/door/poddoor/four_tile_ver/secure
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure
 	icon = 'icons/obj/structures/doors/1x4blast_vert_secure.dmi'
 	openspeed = 17
 	unslashable = TRUE
 	unacidable = TRUE
 
-/obj/structure/machinery/door/poddoor/two_tile_hor/secure
+/obj/structure/machinery/door/poddoor/two_tile/secure
 	icon = 'icons/obj/structures/doors/1x2blast_hor.dmi'
 	openspeed = 17
 	unslashable = TRUE
 	unacidable = TRUE
 
-/obj/structure/machinery/door/poddoor/two_tile_ver/secure
+/obj/structure/machinery/door/poddoor/two_tile/vertical/secure
 	icon = 'icons/obj/structures/doors/1x2blast_vert.dmi'
 	openspeed = 17
 	unacidable = TRUE
-
-
-
 
 /obj/structure/machinery/door/poddoor/almayer
 	icon = 'icons/obj/structures/doors/blastdoors_shutters.dmi'
@@ -425,7 +239,7 @@
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock)
 
-/obj/structure/machinery/door/poddoor/almayer/New()
+/obj/structure/machinery/door/poddoor/almayer/Initialize()
 	spawn(10) // No fucken idea but this somehow makes it work. What the actual fuck.
 		relativewall_neighbours()
 	..()

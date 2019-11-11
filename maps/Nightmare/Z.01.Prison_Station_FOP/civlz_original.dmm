@@ -149,7 +149,7 @@
 /turf/open/floor/prison,
 /area/prison/residential/central)
 "u" = (
-/obj/structure/machinery/door/poddoor/four_tile_ver{
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical{
 	name = "Civilian Residences Hangar Door";
 	unslashable = 1;
 	unacidable = 1

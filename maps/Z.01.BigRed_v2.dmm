@@ -13879,7 +13879,7 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/structure/machinery/door/poddoor/two_tile_ver{
+/obj/structure/machinery/door/poddoor/two_tile/vertical{
 	name = "\improper Virology Lockdown"
 	},
 /turf/open/floor{
@@ -13893,7 +13893,7 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/structure/machinery/door/poddoor/two_tile_ver{
+/obj/structure/machinery/door/poddoor/two_tile/vertical{
 	name = "\improper Virology Lockdown"
 	},
 /turf/open/floor{
@@ -19243,7 +19243,7 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/structure/machinery/door/poddoor/two_tile_ver{
+/obj/structure/machinery/door/poddoor/two_tile/vertical{
 	name = "\improper Lambda Lab Lockdown"
 	},
 /turf/open/floor{
@@ -19270,7 +19270,7 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/structure/machinery/door/poddoor/two_tile_ver{
+/obj/structure/machinery/door/poddoor/two_tile/vertical{
 	name = "\improper Lambda Lab Lockdown"
 	},
 /turf/open/floor{
@@ -28055,7 +28055,7 @@
 	},
 /area/bigredv2/outside/s)
 "buK" = (
-/obj/structure/machinery/door/poddoor/two_tile_ver{
+/obj/structure/machinery/door/poddoor/two_tile/vertical{
 	name = "\improper Filtration Lockdown"
 	},
 /turf/open/floor{
@@ -28198,7 +28198,7 @@
 /area/bigredv2/outside/engineering)
 "bvz" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/machinery/door/poddoor/two_tile_hor{
+/obj/structure/machinery/door/poddoor/two_tile{
 	name = "\improper Eta Lab Lockdown"
 	},
 /turf/open/floor{
@@ -28208,7 +28208,7 @@
 	},
 /area/bigredv2/outside/eta)
 "bvB" = (
-/obj/structure/machinery/door/poddoor/two_tile_hor{
+/obj/structure/machinery/door/poddoor/two_tile{
 	name = "\improper Eta Lab Lockdown"
 	},
 /turf/open/floor{
@@ -33097,7 +33097,7 @@
 /area/bigredv2/caves_se)
 "jGT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/poddoor/two_tile_ver{
+/obj/structure/machinery/door/poddoor/two_tile/vertical{
 	name = "\improper Filtration Lockdown"
 	},
 /turf/open/floor{

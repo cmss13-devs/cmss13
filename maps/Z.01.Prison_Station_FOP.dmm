@@ -6008,7 +6008,7 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/prison/hanger/research)
 "amt" = (
-/obj/structure/machinery/door/poddoor/four_tile_hor{
+/obj/structure/machinery/door/poddoor/two_tile/four_tile{
 	name = "Research Hangar Door";
 	unslashable = 1;
 	unacidable = 1
@@ -24973,7 +24973,7 @@
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "bbF" = (
-/obj/structure/machinery/door/poddoor/four_tile_ver{
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical{
 	name = "Main Hangar Door";
 	unslashable = 1;
 	unacidable = 1
@@ -27120,7 +27120,7 @@
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "bfW" = (
-/obj/structure/machinery/door/poddoor/four_tile_ver{
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical{
 	name = "Civilian Residences Hangar Door";
 	unslashable = 1;
 	unacidable = 1
@@ -45422,7 +45422,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "bTO" = (
-/obj/structure/machinery/door/poddoor/two_tile_hor/secure{
+/obj/structure/machinery/door/poddoor/two_tile/secure{
 	name = "Monorail Passage Door"
 	},
 /turf/open/floor/plating,
@@ -49909,7 +49909,7 @@
 	},
 /area/prison/hallway/engineering)
 "cdR" = (
-/obj/structure/machinery/door/poddoor/two_tile_hor{
+/obj/structure/machinery/door/poddoor/two_tile{
 	density = 0;
 	icon_state = "pdoor0";
 	id = "execution";
@@ -51284,7 +51284,7 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "cho" = (
-/obj/structure/machinery/door/poddoor/two_tile_ver{
+/obj/structure/machinery/door/poddoor/two_tile/vertical{
 	density = 0;
 	icon_state = "pdoor0";
 	id = "riot_armory";
@@ -51298,7 +51298,7 @@
 	},
 /area/prison/security/armory/riot)
 "chp" = (
-/obj/structure/machinery/door/poddoor/two_tile_ver{
+/obj/structure/machinery/door/poddoor/two_tile/vertical{
 	density = 0;
 	icon_state = "pdoor0";
 	id = "lethal_armory";
@@ -51713,7 +51713,7 @@
 /turf/closed/wall/almayer,
 /area/prison/pirate)
 "cip" = (
-/obj/structure/machinery/door/poddoor/two_tile_hor{
+/obj/structure/machinery/door/poddoor/two_tile{
 	density = 0;
 	icon_state = "pdoor0";
 	id = "pirate_cargo";
@@ -51733,7 +51733,7 @@
 	},
 /area/prison/pirate)
 "cir" = (
-/obj/structure/machinery/door/poddoor/two_tile_hor{
+/obj/structure/machinery/door/poddoor/two_tile{
 	density = 0;
 	icon_state = "pdoor0";
 	id = "pirate_cargo";

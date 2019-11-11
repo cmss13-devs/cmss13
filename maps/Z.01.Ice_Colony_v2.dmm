@@ -18614,7 +18614,7 @@
 	tag = "icon-S-corner";
 	icon_state = "S-corner"
 	},
-/obj/structure/machinery/door/poddoor/four_tile_ver/secure{
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure{
 	id = "researchoutside";
 	name = "Omicron Research Dome"
 	},
@@ -23288,7 +23288,7 @@
 	},
 /area/ice_colony/underground/hangar)
 "bgl" = (
-/obj/structure/machinery/door/poddoor/four_tile_ver/secure{
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure{
 	id = "undergroundhangarwest";
 	name = "Underground Hangar"
 	},
@@ -24579,7 +24579,7 @@
 	},
 /area/ice_colony/underground/requesition/lobby)
 "bjU" = (
-/obj/structure/machinery/door/poddoor/four_tile_hor/secure{
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/secure{
 	id = "undergroundhangarsouth";
 	name = "Underground Hangar"
 	},
@@ -37804,7 +37804,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/security)
 "bRm" = (
-/obj/structure/machinery/door/poddoor/two_tile_hor/secure{
+/obj/structure/machinery/door/poddoor/two_tile/secure{
 	id = "colony_sec_armory";
 	name = "Secure Armory"
 	},

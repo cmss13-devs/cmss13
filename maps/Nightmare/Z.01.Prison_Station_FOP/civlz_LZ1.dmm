@@ -36,7 +36,7 @@
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "ah" = (
-/obj/structure/machinery/door/poddoor/four_tile_ver{
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical{
 	name = "Civilian Residences Hangar Door";
 	unslashable = 1;
 	unacidable = 1

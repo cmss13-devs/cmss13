@@ -25,7 +25,10 @@
 
 
 /client/Southwest()
-	..()
+	if(iscarbon(usr))
+		var/mob/living/carbon/C = usr
+		C.toggle_throw_mode(THROW_MODE_NORMAL)
+	return
 
 
 /client/Northwest()

@@ -111,7 +111,7 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 
 		for(var/obj/structure/tunnel/T in global_tunnel_list)
 			if(T.tunnel_desc != pick)
-				return FALSE
+				continue
 			if(T.contents.len > 2)// max 3 xenos in a tunnel
 				to_chat(X, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
 				return FALSE

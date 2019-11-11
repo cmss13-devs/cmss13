@@ -354,7 +354,7 @@
 			break
 		T = temp
 
-	H.launch_towards(T, fling_distance, SPEED_FAST, src, TRUE)
+	H.launch_towards(T, fling_distance, caste.pounce_speed, src, TRUE)
 
 	spawn(caste.fling_cooldown)
 		used_fling = 0

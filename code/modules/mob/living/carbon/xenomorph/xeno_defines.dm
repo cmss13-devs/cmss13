@@ -110,6 +110,8 @@
 	var/acid_level = 0
 	var/weed_level = 0
 
+	var/pounce_speed = SPEED_VERY_FAST
+
 	var/charge_speed = 0.5
 	var/charge_distance = 6
 

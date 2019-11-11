@@ -73,7 +73,7 @@
 				return 1
 
 	if(mods["shift"] && !mods["middle"])
-		if(selected_ability && client && client.prefs && !client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
+		if(selected_ability && client && client.prefs && !(client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
 			selected_ability.use_ability(A)
 			return TRUE
 

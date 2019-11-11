@@ -7,7 +7,7 @@
 	w_class = SIZE_MEDIUM
 	force = 9.0
 	throwforce = 15.0
-	throw_speed = 5
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	matter = list("metal" = 1875)
 	max_amount = 60
@@ -80,7 +80,7 @@
 	w_class = SIZE_MEDIUM
 	force = 9.0
 	throwforce = 15.0
-	throw_speed = 5
+	throw_speed = 0
 	throw_range = 20
 	matter = list("plasteel" = 3750)
 	max_amount = 60

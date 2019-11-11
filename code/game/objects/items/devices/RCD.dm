@@ -15,7 +15,7 @@ RCD
 	flags_atom = FPRINT|CONDUCT
 	force = 10.0
 	throwforce = 10.0
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_MEDIUM
 	matter = list("metal" = 50000)

@@ -49,7 +49,7 @@
 	var/xeno_tunnels[] = new
 	var/monkey_spawns[] = new
 	var/map_items[] = new
-	var/obj/effect/blocker/fog/F
+	var/obj/structure/blocker/fog/F
 	var/fog_timer = 0
 	for(var/obj/effect/landmark/L in landmarks_list)
 		switch(L.name)
@@ -193,8 +193,10 @@
 			bioscan_current_interval += bioscan_ongoing_interval //Add to the interval based on our set interval time.
 
 		if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.
-			if(flags_round_type & MODE_FOG_ACTIVATED && world.time >= (FOG_DELAY_INTERVAL + round_time_lobby + round_time_fog)) disperse_fog()//Some RNG thrown in.
-			if(round_should_check_for_win) check_win()
+			if(flags_round_type & MODE_FOG_ACTIVATED && world.time >= (FOG_DELAY_INTERVAL + round_time_lobby + round_time_fog))
+				disperse_fog() //Some RNG thrown in.
+			if(round_should_check_for_win)
+				check_win()
 			round_checkwin = 0
 
 		if(ticker.mode.latejoin_larva_drop && world.time >= round_time_burrowed_cutoff)

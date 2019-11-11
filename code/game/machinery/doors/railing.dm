@@ -3,6 +3,7 @@
 	icon = 'icons/obj/structures/doors/railing.dmi'
 	icon_state = "railing1"
 	use_power = 0
+	flags_can_pass_all = PASS_OVER & ~(PASS_OVER_FIRE)
 	flags_atom = ON_BORDER
 	opacity = 0
 	unslashable = TRUE
@@ -20,29 +21,17 @@
 		if(SOUTH) layer = closed_layer_south
 		else layer = closed_layer
 
-/obj/structure/machinery/door/poddoor/railing/CheckExit(atom/movable/O, turf/target)
-	if(!density)
-		return 1
-
-	if(O && O.throwing)
-		return 1
-
-	if(get_dir(loc, target) == dir)
-		return 0
-	else
-		return 1
-
-/obj/structure/machinery/door/poddoor/railing/CanPass(atom/movable/mover, turf/target)
-	if(!density)
-		return 1
-
+/obj/structure/machinery/door/poddoor/railing/BlockedExitDirs(atom/movable/mover, target_dir)
 	if(mover && mover.throwing)
-		return 1
+		return NO_BLOCKED_MOVEMENT
 
-	if(get_dir(loc, target) == dir)
-		return 0
-	else
-		return 1
+	return ..()
+
+/obj/structure/machinery/door/poddoor/railing/BlockedPassDirs(atom/movable/mover, target_dir)
+	if(mover && mover.throwing)
+		return NO_BLOCKED_MOVEMENT
+
+	return ..()
 
 /obj/structure/machinery/door/poddoor/railing/open()
 	if (src.operating == 1) //doors can still open when emag-disabled

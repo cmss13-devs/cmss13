@@ -9,7 +9,7 @@
 	w_class = SIZE_SMALL
 	throwforce = 5.0
 	throw_range = 15
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 
 	//matter = list("metal" = 50,"glass" = 50)
 
@@ -204,7 +204,7 @@
 	w_class = SIZE_SMALL
 	throwforce = 5.0
 	throw_range = 15
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	var/atom/target = null // required for lazing at things.
 	var/laz_r = 0 //Red Laser, Used to Replace the IR. 0 is not active, 1 is cool down, 2 is actively Lazing the target
 	var/laz_b = 0 //Blue laser, Used to rangefind the coordinates for a mortar strike. 0 is not active, 1 is cool down, 2 is active laz.

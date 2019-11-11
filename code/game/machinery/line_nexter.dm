@@ -6,6 +6,8 @@
 	density = 1
 	icon_state = "turnstile"
 	anchored = 1
+	flags_can_pass_all = PASS_OVER|PASS_THROUGH|PASS_UNDER
+	flags_atom = ON_BORDER
 	dir = 8
 	var/last_use
 	var/id
@@ -17,19 +19,13 @@
 /obj/structure/machinery/line_nexter/ex_act(severity)
 	return
 
-/obj/structure/machinery/line_nexter/CheckExit(atom/movable/O, turf/target)
+/obj/structure/machinery/line_nexter/BlockedExitDirs(atom/movable/O, target_dir)
 	if(iscarbon(O))
 		var/mob/living/carbon/C = O
 		if(C.pulledby)
-			if(!C.is_mob_incapacitated() && target == locate(x-1,y,z))
-				return 0
-	return 1
-
-/obj/structure/machinery/line_nexter/CanPass(atom/movable/mover, turf/target)
-	if(get_dir(loc, target) == dir)
-		return 0
-	else
-		return 1
+			if(!C.is_mob_incapacitated())
+				return BLOCKED_MOVEMENT
+	return NO_BLOCKED_MOVEMENT
 
 /obj/structure/machinery/line_nexter/proc/next()
 	//if((last_use + 20) > world.time) // 20 seconds

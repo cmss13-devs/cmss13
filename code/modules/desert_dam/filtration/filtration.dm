@@ -64,25 +64,6 @@ var/global/east_riverstart = 0
 
 */
 
-/obj/effect/blocker/invisible_wall
-	name = "invisible wall"
-	desc = "You cannot go this way."
-	icon = 'icons/old_stuff/mark.dmi'
-	icon_state = "x4"
-	anchored = 1
-	density = 1
-	opacity = 0
-	unacidable = TRUE
-	layer = ABOVE_FLY_LAYER + 0.1 //to make it visible in the map editor
-	mouse_opacity = 0
-
-/obj/effect/blocker/invisible_wall/Bumped(AM as mob|obj)
-	to_chat(AM, SPAN_WARNING("You cannot go this way."))
-
-/obj/effect/blocker/invisible_wall/New()
-	..()
-	icon_state = null
-
 /obj/effect/blocker/toxic_water
 	anchored = 1
 	density = 0

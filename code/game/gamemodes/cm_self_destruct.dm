@@ -57,7 +57,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	var/dest_status = NUKE_EXPLOSION_INACTIVE
 	var/dest_started_at = 0
 
-	var/flags_scuttle = NOFLAGS
+	var/flags_scuttle = NO_FLAGS
 
 	New()
 		..()

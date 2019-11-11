@@ -11,6 +11,8 @@
 	else //ALIVE. LIGHTS ARE ON
 		//updatehealth() // moved to Life()
 
+		recalculate_move_delay = TRUE
+
 		if(health <= config.health_threshold_dead || (species.has_organ["brain"] && !has_brain()))
 			death(last_damage_source)
 			blinded = 1

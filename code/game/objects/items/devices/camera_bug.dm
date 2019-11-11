@@ -3,7 +3,7 @@
 	icon_state = "flash"
 	w_class = SIZE_TINY
 	item_state = "electronic"
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 
 /obj/item/device/camera_bug/attack_self(mob/usr as mob)

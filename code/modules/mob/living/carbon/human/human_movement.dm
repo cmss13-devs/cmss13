@@ -1,6 +1,8 @@
 /mob/living/carbon/human/movement_delay()
 	. = ..()
 
+	recalculate_move_delay = FALSE
+
 	if(interactee)// moving stops any kind of interaction
 		unset_interaction()
 

@@ -9,7 +9,7 @@
 	flags_equip_slot = SLOT_WAIST
 	item_state = "electronic"
 	throwforce = 5.0
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
 	origin_tech = "syndicate=4;magnets=4"
@@ -71,7 +71,7 @@
 	flags_atom = FPRINT|CONDUCT
 	item_state = "electronic"
 	throwforce = 10.0
-	throw_speed = 2
+	throw_speed = SPEED_FAST
 	throw_range = 10
 	w_class = SIZE_SMALL
 	origin_tech = "magnets=3;syndicate=4"

@@ -1,12 +1,3 @@
-/mob/CanPass(atom/movable/mover, turf/target)
-	if(mover.checkpass(PASSMOB)) return 1
-	if(ismob(mover))
-		if(checkpass(PASSMOB))
-			return 1
-	return (!mover.density || !density || lying)
-
-
-
 /client/North()
 	..()
 
@@ -34,12 +25,7 @@
 
 
 /client/Southwest()
-	if(iscarbon(usr))
-		var/mob/living/carbon/C = usr
-		C.toggle_throw_mode()
-	else
-		to_chat(usr, SPAN_DANGER("This mob type cannot throw items."))
-	return
+	..()
 
 
 /client/Northwest()
@@ -58,7 +44,7 @@
 	set hidden = 1
 
 	if(!usr.pulling)
-		to_chat(usr, SPAN_NOTICE(" You are not pulling anything."))
+		to_chat(usr, SPAN_NOTICE("You are not pulling anything."))
 		return
 	usr.stop_pulling()
 
@@ -78,17 +64,6 @@
 	if(mob)
 		mob.mode()
 	return
-
-
-/client/verb/toggle_throw_mode()
-	set hidden = 1
-	if(!istype(mob, /mob/living/carbon))
-		return
-	if (!mob.stat && isturf(mob.loc) && !mob.is_mob_restrained())
-		mob:toggle_throw_mode()
-	else
-		return
-
 
 /client/verb/drop_item()
 	set hidden = 1
@@ -169,12 +144,14 @@
 
 	if(isturf(mob.loc))
 		mob.last_move_intent = world.time + 10
-		move_delay = mob.movement_delay()
+		if(mob.recalculate_move_delay)
+			move_delay = mob.movement_delay()
+		mob.cur_speed = Clamp(10/(move_delay + 0.5), MIN_SPEED, MAX_SPEED)
 		//We are now going to move
 		moving = 1
 
 		if(mob.confused)
-			step(mob, pick(cardinal))
+			mob.Move(get_step(mob, pick(cardinal)))
 		else
 			. = ..()
 
@@ -185,8 +162,6 @@
 			mob.life_steps_total += 1
 		moving = 0
 		next_movement = start_move_time + move_delay
-		return .
-
 	return
 
 ///Process_Spacemove

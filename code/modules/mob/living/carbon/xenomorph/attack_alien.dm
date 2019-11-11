@@ -343,6 +343,22 @@
 	M.visible_message(SPAN_DANGER("[M] nudges its head against [src]."), \
 	SPAN_DANGER("You nudge your head against [src]."), null, 5)
 
+/mob/living/proc/is_xeno_grabbable()
+	return TRUE
+
+/mob/living/carbon/human/is_xeno_grabbable()
+	if (stat != DEAD || chestburst)
+		return TRUE
+
+	if (status_flags & XENO_HOST)
+		for (var/obj/item/alien_embryo/AE in contents)
+			if (AE.stage <= 1)
+				return FALSE
+		if (world.time > timeofdeath + revive_grace_period)
+			return FALSE // they ain't gonna burst now
+	else
+		return FALSE // leave the dead alone
+
 //This proc is here to prevent Xenomorphs from picking up objects (default attack_hand behaviour)
 //Note that this is overriden by every proc concerning a child of obj unless inherited
 /obj/item/attack_alien(mob/living/carbon/Xenomorph/M)
@@ -593,8 +609,9 @@
 				SPAN_DANGER("You pry \the [src] open."), null, 5)
 
 /obj/structure/machinery/door/airlock/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
+	var/move_dir = get_dir(M, M.loc)
 	for(var/atom/movable/AM in get_turf(src))
-		if(AM != src && AM.density && !AM.CanPass(M, M.loc))
+		if(AM != src && AM.density && AM.BlockedPassDirs(M, move_dir))
 			to_chat(M, SPAN_WARNING("\The [AM] prevents you from squeezing under \the [src]!"))
 			return
 	if(locked || welded) //Can't pass through airlocks that have been bolted down or welded

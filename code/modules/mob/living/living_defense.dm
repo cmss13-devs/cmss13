@@ -61,63 +61,60 @@
 	..()
 
 //this proc handles being hit by a thrown atom
-/mob/living/hitby(atom/movable/AM as mob|obj,var/speed = 5)//Standardization and logging -Sieve
-	if(istype(AM,/obj/))
-		var/obj/O = AM
-		var/dtype = BRUTE
-		if(istype(O,/obj/item/weapon))
-			var/obj/item/weapon/W = O
-			dtype = W.damtype
-		var/throw_damage = O.throwforce*(speed/5)
+/mob/living/hitby(atom/movable/AM)
+	if(!isobj(AM))
+		return
 
-		var/miss_chance = 15
-		if (O.throw_source)
-			var/distance = get_dist(O.throw_source, loc)
-			miss_chance = min(15*(distance-2), 0)
+	var/obj/O = AM
+	var/dtype = BRUTE
+	if(istype(O,/obj/item/weapon))
+		var/obj/item/weapon/W = O
+		dtype = W.damtype
+	var/impact_damage = (1 + O.throwforce*THROWFORCE_COEFF)*O.throwforce*THROW_SPEED_IMPACT_COEFF*O.cur_speed
 
-		if (prob(miss_chance))
-			visible_message(SPAN_NOTICE("\The [O] misses [src] narrowly!"), null, null, 5)
-			return
+	var/miss_chance = 15
+	if (O.throw_source)
+		var/distance = get_dist(O.throw_source, loc)
+		miss_chance = min(15*(distance-2), 0)
 
-		src.visible_message(SPAN_DANGER("[src] has been hit by [O]."), null, null, 5)
-		var/armor = run_armor_check(null, ARMOR_MELEE)
+	if (prob(miss_chance))
+		visible_message(SPAN_NOTICE("\The [O] misses [src] narrowly!"), null, null, 5)
+		return
 
-		if(armor < 2)
-			apply_damage(throw_damage, dtype, null, armor, is_sharp(O), has_edge(O), O)
+	src.visible_message(SPAN_DANGER("[src] has been hit by [O]."), null, null, 5)
+	var/armor = run_armor_check(null, ARMOR_MELEE)
 
-		O.throwing = 0		//it hit, so stop moving
+	if(armor < 2)
+		apply_damage(impact_damage, dtype, null, armor, is_sharp(O), has_edge(O), O)
 
-		if(ismob(O.thrower))
-			var/mob/M = O.thrower
-			var/client/assailant = M.client
-			if(assailant)
-				last_damage_source = initial(AM.name)
-				last_damage_mob = M
-				src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with a [O], thrown by [M.name] ([assailant.ckey])</font>")
-				M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [src.name] ([src.ckey]) with a thrown [O]</font>")
-				if(!istype(src,/mob/living/simple_animal/mouse))
-					msg_admin_attack("[src.name] ([src.ckey]) was hit by a [O], thrown by [M.name] ([assailant.ckey]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)")
+	O.throwing = 0		//it hit, so stop moving
 
-		// Begin BS12 momentum-transfer code.
-		if(O.throw_source && speed >= 15)
-			var/obj/item/W = O
-			var/momentum = speed/2
-			var/dir = get_dir(O.throw_source, src)
+	if(ismob(O.thrower))
+		var/mob/M = O.thrower
+		var/client/assailant = M.client
+		if(assailant)
+			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with a [O], thrown by [M.name] ([assailant.ckey])</font>")
+			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [src.name] ([src.ckey]) with a thrown [O]</font>")
+			if(!istype(src,/mob/living/simple_animal/mouse))
+				msg_admin_attack("[src.name] ([src.ckey]) was hit by a [O], thrown by [M.name] ([assailant.ckey]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)")
 
-			visible_message(SPAN_DANGER("[src] staggers under the impact!"),SPAN_DANGER("You stagger under the impact!"), null, 5)
-			src.throw_at(get_edge_target_turf(src,dir),1,momentum)
+/mob/living/mob_launch_collision(var/mob/living/L)
+	L.Move(get_step_away(L, src))
 
-			if(!W || !src) return
-
-			if(W.sharp) //Projectile is suitable for pinning.
-				//Handles embedding for non-humans and simple_animals.
-				O.loc = src
-				embedded += O
-				verbs += /mob/proc/yank_out_object
+/mob/living/obj_launch_collision(var/obj/O)
+	if ((!thrower || thrower != src) && \
+		!rebounding
+	)
+		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed
+		apply_damage(impact_damage)
+	..()
 
 //This is called when the mob is thrown into a dense turf
-/mob/living/proc/turf_collision(var/turf/T, var/speed)
-	src.take_limb_damage(speed*5)
+/mob/living/turf_launch_collision(var/turf/T)
+	if (!rebounding)
+		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed
+		apply_damage(impact_damage)
+	..()
 
 /mob/living/proc/near_wall(var/direction,var/distance=1)
 	var/turf/T = get_step(get_turf(src),direction)

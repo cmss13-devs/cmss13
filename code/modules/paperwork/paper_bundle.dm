@@ -7,7 +7,7 @@
 	throwforce = 0
 	w_class = SIZE_TINY
 	throw_range = 2
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	layer = MOB_LAYER
 	attack_verb = list("bapped")
 	var/amount = 0 //Amount of items clipped to the paper

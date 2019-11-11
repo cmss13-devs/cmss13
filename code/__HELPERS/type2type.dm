@@ -241,3 +241,16 @@ proc/tg_list2text(list/list, glue=",")
 		if("Orange")	return 'icons/mob/hud/screen1_Orange.dmi'
 		if("Midnight")	return 'icons/mob/hud/screen1_Midnight.dmi'
 		else			return 'icons/mob/hud/screen1_White.dmi'
+
+//Shows all the direction represented by direction
+/proc/alldir2text_short(direction)
+	var/dirs = ""
+	if(direction & NORTH)
+		dirs += "N"
+	if(direction & SOUTH)
+		dirs += "S"
+	if(direction & EAST)
+		dirs += "E"
+	if(direction & WEST)
+		dirs += "W"
+	return dirs

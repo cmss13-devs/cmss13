@@ -797,6 +797,7 @@
 		X.is_charging = !X.is_charging
 		var/will_charge = "[X.is_charging ? "now" : "no longer"]"
 		to_chat(X, SPAN_XENONOTICE("You will [will_charge] charge when moving."))
+		X.recalculate_move_delay = TRUE
 
 /datum/action/xeno_action/activable/earthquake
 	name = "Earthquake (100)"
@@ -833,6 +834,8 @@
 	var/mob/living/carbon/Xenomorph/Hivelord/X = owner
 	if(!X.check_state())
 		return
+
+	X.recalculate_move_delay = TRUE
 
 	if(X.weedwalking_activated)
 		to_chat(X, SPAN_WARNING("You feel less in tune with the resin."))

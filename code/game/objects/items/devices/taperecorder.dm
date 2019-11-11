@@ -16,7 +16,7 @@
 	var/canprint = 1
 	flags_atom = FPRINT|CONDUCT
 	throwforce = 2
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 
 /obj/item/device/taperecorder/hear_talk(mob/living/M as mob, msg, var/verb="says", var/speaking, var/italics = 0)

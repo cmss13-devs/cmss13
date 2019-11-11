@@ -5,7 +5,7 @@
 	icon_state = "mop"
 	force = 3.0
 	throwforce = 10.0
-	throw_speed = 5
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	w_class = SIZE_MEDIUM
 	attack_verb = list("mopped", "bashed", "bludgeoned", "whacked")
@@ -62,7 +62,7 @@
 	icon = 'icons/obj/janitor.dmi'
 	force = 1
 	throwforce = 3
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
 	attack_verb = list("warned", "cautioned", "smashed")
@@ -74,7 +74,7 @@
 	icon = 'icons/obj/janitor.dmi'
 	force = 1
 	throwforce = 3
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
 	attack_verb = list("warned", "cautioned", "smashed")
@@ -91,7 +91,7 @@
 	icon_state = "soap"
 	w_class = SIZE_TINY
 	throwforce = 0
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 
 /obj/item/tool/soap/Crossed(atom/movable/AM)

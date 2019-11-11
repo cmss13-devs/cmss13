@@ -12,7 +12,7 @@
 	//layer = MOB_LAYER - 0.1 //You can't just randomly hide claymores under boxes. Booby-trapping bodies is fine though
 	throwforce = 5.0
 	throw_range = 6
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	unacidable = TRUE
 	flags_atom = FPRINT|CONDUCT
 
@@ -123,7 +123,7 @@
 			try_to_trigger(A)
 
 
-/obj/item/explosive/mine/Bumped(atom/movable/AM)
+/obj/item/explosive/mine/Collided(atom/movable/AM)
 	try_to_trigger(AM)
 
 

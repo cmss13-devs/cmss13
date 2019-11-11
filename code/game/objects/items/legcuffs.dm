@@ -13,7 +13,7 @@
 
 /obj/item/legcuffs/beartrap
 	name = "bear trap"
-	throw_speed = 2
+	throw_speed = SPEED_FAST
 	throw_range = 1
 	icon_state = "beartrap0"
 	desc = "A trap used to catch bears and other legged creatures."
@@ -62,7 +62,7 @@
 
 /obj/item/legcuffs/yautja
 	name = "hunting trap"
-	throw_speed = 2
+	throw_speed = SPEED_FAST
 	throw_range = 2
 	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "yauttrap0"

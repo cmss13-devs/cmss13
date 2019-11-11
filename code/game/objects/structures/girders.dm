@@ -5,6 +5,7 @@
 	layer = OBJ_LAYER
 	unacidable = FALSE
 	debris = list(/obj/item/stack/sheet/metal,/obj/item/stack/sheet/metal)
+	flags_can_pass_all = PASS_THROUGH|PASS_HIGH_OVER_ONLY
 	var/state = 0
 	var/dismantlectr = 0
 	var/buildctr = 0
@@ -22,7 +23,7 @@
 	var/dmg = 0
 	if(Proj.ammo.damage_type == BURN)
 		dmg = Proj.damage
-	else 
+	else
 		dmg = round(Proj.ammo.damage / 2)
 	if(dmg)
 		health -= dmg

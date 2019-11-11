@@ -46,11 +46,6 @@
 	health = 50.0
 	var/deflated = FALSE
 
-
-
-/obj/structure/inflatable/CanPass(atom/movable/mover, turf/target, height = 0, air_group = 0)
-	return 0
-
 /obj/structure/inflatable/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.damage
 	..()
@@ -148,9 +143,6 @@
 		to_chat(usr, "[src] is already deflated.")
 
 
-
-
-
 /obj/structure/inflatable/popped
 	name = "popped inflatable wall"
 	desc = "It used to be an inflatable wall, now it's just a mess of plastic."
@@ -162,18 +154,12 @@
 	icon_state = "wall_popped"
 
 
-/obj/structure/inflatable/popped/CanPass(atom/movable/mover, turf/target, height = 0, air_group = 0)
-	return 1
-
-
 /obj/structure/inflatable/popped/door
 	name = "popped inflatable door"
 	desc = "This used to be an inflatable door, now it's just a mess of plastic."
 
 	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "door_popped"
-
-
 
 
 /obj/structure/inflatable/door //Based on mineral door code
@@ -188,8 +174,6 @@
 	var/state = 0 //closed, 1 == open
 	var/isSwitchingStates = 0
 
-
-
 /obj/structure/inflatable/door/attack_ai(mob/user as mob) //those aren't machinery, they're just big fucking slabs of a mineral
 	if(isAI(user)) //so the AI can't open it
 		return
@@ -197,12 +181,8 @@
 		if(get_dist(user,src) <= 1) //not remotely though
 			return TryToSwitchState(user)
 
-/obj/structure/inflatable/door/CanPass(atom/movable/mover, turf/target, height = 0, air_group = 0)
-	if(air_group)
-		return state
-	if(istype(mover, /obj/effect/beam))
-		return !opacity
-	return !density
+/obj/structure/inflatable/door/attack_hand(mob/user as mob)
+	return TryToSwitchState(user)
 
 /obj/structure/inflatable/door/proc/TryToSwitchState(atom/user)
 	if(isSwitchingStates) return

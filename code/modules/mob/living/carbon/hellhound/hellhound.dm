@@ -249,6 +249,3 @@
 /mob/living/carbon/hellhound/rejuvenate()
 	..()
 	living_misc_mobs += src
-
-/mob/living/carbon/hellhound/movement_delay()
-	. = ..()

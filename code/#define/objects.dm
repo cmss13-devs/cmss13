@@ -111,9 +111,9 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 #define STASIS_IN_CRYO_CELL 2
 
 
-// Diagonal movement for movable atoms
-#define FIRST_DIAG_STEP 	1
-#define SECOND_DIAG_STEP 	2
+// How diagonal movement is checked
+#define DIAG_MOVE_DEFAULT	0 // Diagonal movement checks obstacles on the sides
+#define DIAG_MOVE_OLD		1 // Diagonal movement just check start turf and destination turf
 
 // Shuttle defines
 

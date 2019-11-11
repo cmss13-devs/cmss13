@@ -155,6 +155,7 @@
 	var/burnlevel
 	var/burntime
 	var/fire_color = "red"
+
 	switch(current_mag.caliber)
 		if("UT-Napthal Fuel") //This isn't actually Napalm actually
 			burnlevel = config.med_burnlevel
@@ -193,27 +194,39 @@
 	var/list/turf/turfs = getline2(user,target)
 	playsound(user, src.get_fire_sound(), 50, 1)
 	var/distance = 1
-	var/turf/prev_T
+	var/turf/prev_T = user.loc
+	var/stop_at_turf = FALSE
 
 	for(var/turf/T in turfs)
 		if(T == user.loc)
 			prev_T = T
 			continue
-		if(T.density)
-			break
 		if(loc != user)
 			break
 		if(!current_mag || !current_mag.current_rounds)
 			break
 		if(distance > max_range)
 			break
-		if(prev_T && LinkBlocked(prev_T, T))
-			break
+
+		current_mag.current_rounds--
+		if(T.density)
+			T.flamer_fire_act(rand(burnlevel*2, burnlevel*3))
+			stop_at_turf = TRUE
+		else if(prev_T)
+			var/atom/movable/temp = new/obj/flamer_fire()
+			var/atom/movable/AM = LinkBlocked(temp, prev_T, T)
+			qdel(temp)
+			if(AM)
+				AM.flamer_fire_act(rand(burnlevel*2, burnlevel*3))
+				if (AM.flags_atom & ON_BORDER)
+					break
+				stop_at_turf = TRUE
 		var/obj/flamer_fire/foundflame = locate() in T
 		if(foundflame)
 			qdel(foundflame) //No stacking
-		current_mag.current_rounds--
-		flame_turf(T,user, burntime, burnlevel, fire_color)
+		flame_turf(T, user, burntime, burnlevel, fire_color)
+		if (stop_at_turf)
+			break
 		distance++
 		prev_T = T
 		sleep(1)
@@ -233,23 +246,34 @@
 	var/list/turf/turfs = getline2(user,target)
 	playsound(user, src.get_fire_sound(), 50, 1)
 	var/distance = 1
-	var/turf/prev_T
+	var/turf/prev_T = user.loc
+	var/hit_dense_atom_mid = FALSE
+	var/burn_dam = rand(burnlevel*2, burnlevel*3)
 
 	for(var/turf/T in turfs)
 		if(T == user.loc)
 			prev_T = T
 			continue
-		if(T.density)
-			break
 		if(loc != user)
 			break
 		if(!current_mag || !current_mag.current_rounds)
 			break
 		if(distance > max_range)
 			break
-		if(prev_T && LinkBlocked(prev_T, T))
-			break
+
 		current_mag.current_rounds--
+		if(T.density)
+			T.flamer_fire_act()
+			hit_dense_atom_mid = TRUE
+		else if(prev_T)
+			var/atom/movable/temp = new/obj/flamer_fire()
+			var/atom/movable/AM = LinkBlocked(temp, prev_T, T)
+			qdel(temp)
+			if(AM)
+				AM.flamer_fire_act(burn_dam)
+				if (AM.flags_atom & ON_BORDER)
+					break
+				hit_dense_atom_mid = TRUE
 		flame_turf(T,user, burntime, burnlevel, "green")
 		prev_T = T
 		sleep(1)
@@ -265,28 +289,49 @@
 			right += right_turf
 			left_turf = get_step(left_turf, left_dir)
 			left += left_turf
+		
+		var/hit_dense_atom_side = FALSE
 
 		var/turf/prev_R = T
 		for (var/turf/R in right)
-
-			if (R.density)
-				break
-			if(prev_R && LinkBlocked(prev_R, R))
-				break
-
+			if(prev_R)
+				var/atom/movable/temp = new/obj/flamer_fire()
+				var/atom/movable/AM = LinkBlocked(temp, prev_R, R)
+				qdel(temp)
+				if(AM)
+					AM.flamer_fire_act(burn_dam)
+					if (AM.flags_atom & ON_BORDER)
+						break
+					hit_dense_atom_side = TRUE
+				else if (hit_dense_atom_mid)
+					break
 			flame_turf(R, user, burntime, burnlevel, "green")
+			if (!hit_dense_atom_mid && hit_dense_atom_side)
+				break
 			prev_R = R
 			sleep(1)
 
 		var/turf/prev_L = T
 		for (var/turf/L in left)
-			if (L.density)
-				break
-			if(prev_L && LinkBlocked(prev_L, L))  break
-
+			if(prev_L)
+				var/atom/movable/temp = new/obj/flamer_fire()
+				var/atom/movable/AM = LinkBlocked(temp, prev_L, L)
+				qdel(temp)
+				if(AM)
+					AM.flamer_fire_act(burn_dam)
+					if (AM.flags_atom & ON_BORDER)
+						break
+					hit_dense_atom_side = TRUE
+				else if (hit_dense_atom_mid)
+					break
 			flame_turf(L, user, burntime, burnlevel, "green")
+			if (!hit_dense_atom_mid && hit_dense_atom_side)
+				break
 			prev_L = L
 			sleep(1)
+
+		if (hit_dense_atom_mid)
+			break
 
 		distance++
 	to_chat(user, SPAN_WARNING("The gauge reads: <b>[round(current_mag.get_ammo_percent())]</b>% fuel remains!"))
@@ -363,6 +408,7 @@
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "red_2"
 	layer = BELOW_OBJ_LAYER
+	flags_pass = PASS_FLAGS_FLAME
 	var/firelevel = 12 //Tracks how much "fire" there is. Basically the timer of how long the fire burns
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
 	var/flame_color = "red"
@@ -385,9 +431,13 @@
 	weapon_source_mob = source_mob
 
 	icon_state = "[flame_color]_2"
-	if(fire_lvl) firelevel = fire_lvl
-	if(burn_lvl) burnlevel = burn_lvl
+	if(fire_lvl) 
+		firelevel = fire_lvl
+	if(burn_lvl) 
+		burnlevel = burn_lvl
 	processing_objects.Add(src)
+
+	var/burn_dam = rand(burnlevel*2, burnlevel*3)
 
 	if(fire_spread_amount > 0)
 		if(flameshape == FLAMESHAPE_DEFAULT || flameshape == FLAMESHAPE_IRREGULAR) // Irregular 'stutters' in shape
@@ -395,19 +445,27 @@
 			var/turf/source_turf = get_turf(loc)
 			for(var/dirn in cardinal)
 				T = get_step(source_turf, dirn)
-				if(istype(T,/turf/open/space)) continue
+				if(istype(T, /turf/open/space)) 
+					continue
 				var/obj/flamer_fire/foundflame = locate() in T
 				if(foundflame)
 					foundflame.flame_color = f_color
 					foundflame.burnlevel = burn_lvl
 					foundflame.firelevel = fire_lvl
 					continue
-				var/new_spread_amt = T?.density ? 0 : fire_spread_amount - 1 //walls stop the spread
-				if(new_spread_amt)
-					for(var/obj/O in T)
-						if(!O.CanPass(src, source_turf))
-							new_spread_amt = 0
+				var/new_spread_amt = fire_spread_amount - 1
+				if(T.density)
+					T.flamer_fire_act(burn_dam)
+					new_spread_amt = 0
+				else
+					var/atom/A = LinkBlocked(src, source_turf, T)
+
+					if(A)
+						A.flamer_fire_act(burn_dam)
+						if (A.flags_atom & ON_BORDER)
 							break
+						new_spread_amt = 0
+
 				if(flameshape == FLAMESHAPE_IRREGULAR && prob(33))
 					continue
 				spawn(0)
@@ -437,13 +495,21 @@
 						foundflame.burnlevel = burn_lvl
 						foundflame.firelevel = fire_lvl
 						continue
-					if(T.density && !T.throwpass) // unpassable turfs stop the spread
-						break
-					for(var/obj/O in T) // certain object block the spread
-						if(!O.CanPass(src, source_turf))
-							break
+
 					if(prob(15) && flameshape != FLAMESHAPE_MINORSTAR) // chance to branch a little
 						new_spread_amt = 1.5
+					
+					if(T.density && !T.throwpass) // unpassable turfs stop the spread
+						T.flamer_fire_act(burn_dam)
+						new_spread_amt = 0
+
+					var/atom/A = LinkBlocked(src, source_turf, T)
+					if(A)
+						A.flamer_fire_act()
+						if (A.flags_atom & ON_BORDER)
+							break
+						new_spread_amt = 0
+					
 					spawn(0)
 						new /obj/flamer_fire(T, weapon_source, weapon_source_mob, fire_lvl, burn_lvl, f_color, new_spread_amt, FLAMESHAPE_MINORSTAR)
 					new_spread_amt = 0

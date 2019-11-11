@@ -161,7 +161,7 @@
 		if(istype(loc, /mob/living/carbon))		//drop dat grenade if it goes off in your hand
 			var/mob/living/carbon/C = loc
 			C.drop_inv_item_on_ground(src)
-			C.throw_mode_off()
+			C.toggle_throw_mode(THROW_MODE_OFF)
 
 		invisibility = INVISIBILITY_MAXIMUM //Why am i doing this?
 		spawn(50)		   //To make sure all reagents can work

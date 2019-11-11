@@ -15,12 +15,12 @@
 	var/list/alt_titles 	//List of alternate titles, if any.
 	//If you have use_age_restriction_for_jobs config option enabled and the database set up, this option will add a requirement for players to be at least minimal_player_age days old. (meaning they first signed in at least that many days before.)
 	var/minimal_player_age 	= 0
-	//var/flags_role				= NOFLAGS
-	var/flag = NOFLAGS //TODO robust this later.
-	//var/flags_department 			= NOFLAGS
-	var/department_flag = NOFLAGS //TODO robust this later.
-	var/flags_startup_parameters 	= NOFLAGS //These flags are used to determine how to load the role, and some other parameters.
-	var/flags_whitelist 			= NOFLAGS //Only used by whitelisted roles. Can be a single whitelist flag, or a combination of them.
+	//var/flags_role				= NO_FLAGS
+	var/flag = NO_FLAGS //TODO robust this later.
+	//var/flags_department 			= NO_FLAGS
+	var/department_flag = NO_FLAGS //TODO robust this later.
+	var/flags_startup_parameters 	= NO_FLAGS //These flags are used to determine how to load the role, and some other parameters.
+	var/flags_whitelist 			= NO_FLAGS //Only used by whitelisted roles. Can be a single whitelist flag, or a combination of them.
 
 	var/gear_preset //Gear preset name used for this job
 	var/gear_preset_council //Gear preset name used for council snowflakes ;)

@@ -125,6 +125,7 @@
 	// shut down ongoing problems
 	nutrition = 400
 	bodytemperature = T20C
+	recalculate_move_delay = TRUE
 	sdisabilities = 0
 	disabilities = 0
 	drowsyness = 0

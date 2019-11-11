@@ -925,7 +925,7 @@ obj/item/hardpoint/armor/ballistic/remove_buff()
 	var/turf/targ = get_step(M, owner.dir)
 	targ = get_step(M, owner.dir)
 	targ = get_step(M, owner.dir)
-	M.throw_at(targ, 4, 2, src, 1)
+	M.launch_towards(targ, 4, SPEED_FAST, src, 1)
 	M.apply_damage(7 + rand(0, 3), BRUTE)
 
 /////////////////

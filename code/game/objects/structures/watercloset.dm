@@ -324,10 +324,12 @@
 
 		if(watertemp == "freezing")
 			C.bodytemperature = max(80, C.bodytemperature - 80)
+			C.recalculate_move_delay = TRUE
 			to_chat(C, SPAN_WARNING("The water is freezing!"))
 			return
 		if(watertemp == "boiling")
 			C.bodytemperature = min(500, C.bodytemperature + 35)
+			C.recalculate_move_delay = TRUE
 			C.adjustFireLoss(5)
 			to_chat(C, SPAN_DANGER("The water is searing!"))
 			return

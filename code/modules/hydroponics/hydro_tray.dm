@@ -9,6 +9,7 @@
 	unslashable = TRUE
 	health = 0
 	flags_atom = OPENCONTAINER
+	flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_TYPE_CRAWLER
 	throwpass = 1
 	layer = BELOW_OBJ_LAYER
 
@@ -151,13 +152,6 @@
 		return 0
 
 	..()
-
-/obj/structure/machinery/portable_atmospherics/hydroponics/CanPass(atom/movable/mover, turf/target)
-	if(!density) return 1
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return 1
-	else
-		return 0
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/process()
 

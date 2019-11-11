@@ -113,8 +113,8 @@
 				A.JumpToCoord(x, y, z)
 
 
-/mob/dead/CanPass(atom/movable/mover, turf/target)
-	return 1
+/mob/dead/BlockedPassDirs(atom/movable/mover, target_dir)
+	return NO_BLOCKED_MOVEMENT
 /*
 Transfer_mind is there to check if mob is being deleted/not going to have a body.
 Works together with spawning an observer, noted above.

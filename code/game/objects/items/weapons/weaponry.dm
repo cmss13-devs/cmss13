@@ -8,7 +8,7 @@
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 0
 	w_class = SIZE_SMALL
-	throw_speed = 7
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 15
 	attack_verb = list("banned")
 
@@ -19,7 +19,7 @@
 	item_state = "nullrod"
 	flags_equip_slot = SLOT_WAIST
 	force = 15
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 4
 	throwforce = 10
 	w_class = SIZE_SMALL
@@ -45,7 +45,7 @@
 	edge = 0
 	w_class = SIZE_MEDIUM
 	force = 20
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 7
 	throwforce = 7
 	attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
@@ -71,7 +71,7 @@
 	force = 8
 	sharp = 0
 	edge = 0
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 4
 	throwforce = 7
 	attack_verb = list("patted", "tapped")

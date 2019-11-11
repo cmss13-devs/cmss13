@@ -5,7 +5,7 @@
 	item_state = "sheet-metal"
 	throwforce = 1
 	w_class = SIZE_MEDIUM
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 7
 	layer = LOWER_ITEM_LAYER
 	var/amount = 30					//How much paper is in the bin.

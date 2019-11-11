@@ -89,7 +89,7 @@
 	anchored = 0
 	drag_delay = 1 //Pulling something on wheels is easy
 
-/obj/structure/bed/chair/office/Bump(atom/A)
+/obj/structure/bed/chair/office/Collide(atom/A)
 	..()
 	if(!buckled_mob) return
 
@@ -99,7 +99,7 @@
 
 		var/def_zone = ran_zone()
 		var/blocked = occupant.run_armor_check(def_zone, ARMOR_MELEE)
-		occupant.throw_at(A, 3, propelled)
+		occupant.launch_towards(A, 3, propelled)
 		occupant.apply_effect(6, STUN, blocked)
 		occupant.apply_effect(6, WEAKEN, blocked)
 		occupant.apply_effect(6, STUTTER, blocked)
@@ -146,12 +146,12 @@
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair
 	icon_state = "hotseat"
 
-/obj/structure/bed/chair/dropship/passenger/CanPass(var/atom/movable/mover, var/turf/target, var/height = 0, var/air_group = 0)
+/obj/structure/bed/chair/dropship/passenger/BlockedPassDirs(atom/movable/mover, target_dir, height = 0, air_group = 0)
 	if(chair_state == DROPSHIP_CHAIR_UNFOLDED && istype(mover, /obj/vehicle/multitile) && !is_animating)
 		visible_message(SPAN_DANGER("[mover] slams into [src] and breaks it!"))
 		spawn(0)
 			fold_down(1)
-		return 0
+		return BLOCKED_MOVEMENT
 	return ..()
 
 /obj/structure/bed/chair/dropship/passenger/ex_act(severity)

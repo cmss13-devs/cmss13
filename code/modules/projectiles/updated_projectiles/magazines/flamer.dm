@@ -13,30 +13,32 @@
 	w_class = SIZE_MEDIUM //making sure you can't sneak this onto your belt.
 	gun_type = /obj/item/weapon/gun/flamer
 	caliber = "UT-Napthal Fuel" //Ultra Thick Napthal Fuel, from the lore book.
-	flags_magazine = NOFLAGS
+	flags_magazine = NO_FLAGS
 
 
 /obj/item/ammo_magazine/flamer_tank/afterattack(obj/target, mob/user , flag) //refuel at fueltanks when we run out of ammo.
-	if(istype(target, /obj/structure/reagent_dispensers/fueltank) || istype(target, /obj/item/tool/weldpack) && get_dist(user,target) <= 1)
-		var/obj/O = target
-		if(!O.reagents)
-			to_chat(user, SPAN_WARNING("[O] is empty!"))
-		if(current_rounds)
-			to_chat(user, SPAN_WARNING("You can't mix fuel mixtures!"))
-			return
-		var/fuel_available = O.reagents.get_reagent_amount("fuel") < max_rounds ? O.reagents.get_reagent_amount("fuel") : max_rounds
-		if(!fuel_available)
-			to_chat(user, SPAN_WARNING("[O] is empty!"))
-			return
+	if(!istype(target, /obj/structure/reagent_dispensers/fueltank) && !istype(target, /obj/item/tool/weldpack) && !istype(target, /obj/item/storage/backpack/marine/engineerpack))
+		return ..()
+	if(get_dist(user,target) > 1)
+		return ..()
 
-		O.reagents.remove_reagent("fuel", fuel_available)
-		current_rounds = fuel_available
-		playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
-		caliber = "Fuel"
-		to_chat(user, SPAN_NOTICE("You refill [src] with [lowertext(caliber)]."))
-		update_icon()
-	else
-		..()
+	var/obj/O = target
+	if(!O.reagents)
+		to_chat(user, SPAN_WARNING("[O] is empty!"))
+	if(current_rounds && caliber != "Fuel")
+		to_chat(user, SPAN_WARNING("You can't mix fuel mixtures!"))
+		return
+	var/fuel_amt_to_remove = Clamp(O.reagents.get_reagent_amount("fuel"), 0, max_rounds - current_rounds)
+	if(!fuel_amt_to_remove)
+		to_chat(user, SPAN_WARNING("[O] is empty!"))
+		return
+
+	O.reagents.remove_reagent("fuel", fuel_amt_to_remove)
+	current_rounds += fuel_amt_to_remove
+	playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
+	caliber = "Fuel"
+	to_chat(user, SPAN_NOTICE("You refill [src] with [lowertext(caliber)]."))
+	update_icon()
 
 /obj/item/ammo_magazine/flamer_tank/update_icon()
 	return

@@ -11,7 +11,7 @@
 	w_class = SIZE_MEDIUM
 	force = 2
 	throwforce = 0
-	throw_speed = 5
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	max_amount = 50
 	attack_verb = list("hit", "bludgeoned", "whacked")
@@ -62,7 +62,7 @@
 	w_class = SIZE_LARGE
 	force = 9.0
 	throwforce = 15.0
-	throw_speed = 5
+	throw_speed = 0
 	throw_range = 20
 	max_amount = 25
 	attack_verb = list("hit", "bludgeoned", "whacked")

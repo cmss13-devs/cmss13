@@ -1168,7 +1168,7 @@
 	icon = 'icons/obj/structures/machinery/chemical_machines.dmi'
 	icon_state = "reagent_analyzer"
 	active_power_usage = 5000 //This is how many watts the big XRF machines usually take
-	
+
 	var/mob/last_used
 	var/obj/item/reagent_container/sample = null //Object containing our sample
 	var/clearance_level = 0
@@ -1185,7 +1185,7 @@
 		if(ACCESS_WY_CORPORATE in card.access)
 			var/setting = alert(usr,"How do you want to change the clearance settings?","[src]","Increase","Set to maximum","Set to minimum")
 			if(!setting) return
-			
+
 			var/clearance_allowance = 6 - defcon_controller.current_defcon_level
 
 			switch(setting)
@@ -1196,7 +1196,7 @@
 					clearance_level = clearance_allowance
 				if("Set to minimum")
 					clearance_level = 0
-			
+
 			visible_message(SPAN_NOTICE("[user] swipes their ID card on the [src], updating the clearance to level [clearance_level]."))
 		else
 			visible_message(SPAN_NOTICE("[user] swipes their ID card on the [src], but it refused."))
@@ -1208,7 +1208,7 @@
 		if(sample || status)
 			to_chat(user, SPAN_WARNING("Something is already loaded into the [src]."))
 			return
-		
+
 		if(user.drop_inv_item_to_loc(B, src))
 			sample = B
 			icon_state = "reagent_analyzer_sample"
@@ -1327,7 +1327,7 @@
 		report.info += "<B>Result:</B><BR>Analysis failed for sample #[sample_number].<BR><BR>\n"
 		report.info += "<B>Reason for error:</B><BR><I>[reason]</I><BR>\n"
 	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the Advanced X-Ray Fluorescence Scanner.<BR>The USS Almayer,  [time2text(world.timeofday, "MM/DD")]/[game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
-	
+
 /obj/structure/machinery/centrifuge
 	name = "Chemical Centrifuge"
 	desc = "A machine that uses centrifugal forces to separate fluids of different densities. Needs a reagent container for input and a vialbox for output."
@@ -1417,12 +1417,12 @@
 
 /obj/structure/machinery/centrifuge/proc/centrifuge()
 	if(!output_container.contents.len) return //Is output empty?
-	
+
 	var/initial_reagents = input_container.reagents.reagent_list.len
 	var/list/vials = list()
 	for(var/obj/item/reagent_container/glass/beaker/vial/V in output_container.contents)
 		vials += V
-	
+
 	//Split reagent types best possible, if we have move volume that types available, split volume best possible
 	if(initial_reagents)
 		for(var/datum/reagent/R in input_container.reagents.reagent_list)
@@ -1435,28 +1435,28 @@
 						filter = 1
 						break
 			if(filter) continue
-			
+
 			for(var/obj/item/reagent_container/glass/beaker/vial/V in vials)
 				//Check the vial
 				if(V.reagents.reagent_list.len > 1) //We don't work with impure vials
-					continue 
+					continue
 				if(V.reagents.get_reagents() && !V.reagents.has_reagent(R.id)) //We only add to vials with the same reagent
-					continue 
+					continue
 				if(V.reagents.total_volume == V.reagents.maximum_volume) //The vial is full
-					continue 
+					continue
 
 				//Calculate how much we are transfering
 				var/amount_to_transfer = V.reagents.maximum_volume - V.reagents.total_volume
 				if(R.volume < amount_to_transfer)
 					amount_to_transfer = R.volume
-				
+
 				//Transfer to the vial
 				V.reagents.add_reagent(R.id,amount_to_transfer,R.data)
 				input_container.reagents.remove_reagent(R.id,amount_to_transfer)
 				V.update_icon()
 
 				break //Continue to next reagent
-	
+
 	//Label the vials
 	for(var/obj/item/reagent_container/glass/beaker/vial/V in vials)
 		if(!(V.reagents.reagent_list.len) || (V.reagents.reagent_list.len > 1))
@@ -1626,7 +1626,7 @@
 		automode = !automode
 	else if(href_list["togglesmart"])
 		smartlink = !smartlink
-	
+
 	nanomanager.update_uis(src) // update all UIs attached to src
 	add_fingerprint(user)
 	attack_hand(usr)
@@ -1642,17 +1642,17 @@
 		else
 			recharge_delay--
 		nanomanager.update_uis(src)
-	
+
 	if(status == 0 || status == 1) //Nothing to do
 		return
-	
+
 	var/space = output_container.reagents.maximum_volume - output_container.reagents.total_volume
 	if(!space || cycle >= cycle_limit) //We done boys
 		stop_program(1)
 		icon_state = "autodispenser_full"
 		nanomanager.update_uis(src)
 		return
-	
+
 	for(var/i=stage,i<=programs[1].len + programs[2].len && i != 0,i++)
 		if(status < 0) //We're waiting for new chems to be stored
 			status++
@@ -1662,14 +1662,14 @@
 				nanomanager.update_uis(src)
 			else
 				break
-		
+
 		var/datum/reagent/R = programs[program][stage]
 		var/amount
 		if(stage_missing)
 			amount = stage_missing
 		else
 			amount = min(program_amount[program]["[R.name]"] * multiplier, space)
-		
+
 		//Check and use stored chemicals first. This doesn't consume energy.
 		if(smartlink && linked_storage)
 			var/skip
@@ -1688,7 +1688,7 @@
 					if(C.reagents.total_volume <= 0 && istypestrict(C,/obj/item/reagent_container/glass/bottle))
 						linked_storage.item_quants[C.name]--
 						qdel(C) //Might want to connect it to a disposal system later instead
-					
+
 					if(!stage_missing)
 						next_stage()
 						skip = TRUE
@@ -1715,7 +1715,7 @@
 		if(!V.reagents.get_reagents()) //Ignore empty vials
 			continue
 		if(V.reagents.reagent_list.len > 1) //We don't work with impure vials
-			continue 
+			continue
 		var/datum/reagent/R = V.reagents.reagent_list[1]
 		if(program_amount[save_to]["[R.name]"])
 			program_amount[save_to]["[R.name]"] += V.reagents.total_volume
@@ -1724,7 +1724,7 @@
 			var/list/L[0]
 			L["[R.name]"] = V.reagents.total_volume
 			program_amount[save_to] += L
-				
+
 /obj/structure/machinery/autodispenser/proc/recharge()
 	energy = min(energy + 10, max_energy)
 	recharge_delay = 10 //a 3rd faster than the manual dispenser

@@ -3,7 +3,7 @@
 	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "map"
 	item_state = "map"
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_TINY
 	// color = ... (Colors can be names - "red, green, grey, cyan" or a HEX color code "#FF0000")

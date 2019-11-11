@@ -129,6 +129,7 @@
 		frenzy_aura = frenzy_new
 		warding_aura = warding_new
 		recovery_aura = recovery_new
+		recalculate_move_delay = TRUE
 		hud_set_pheromone()
 
 	frenzy_new = 0
@@ -374,6 +375,7 @@ updatehealth()
 				if(plasma_stored < 0)
 					H.weedwalking_activated = 0
 					to_chat(src, SPAN_WARNING("You feel dizzy as the world slows down."))
+					recalculate_move_delay = TRUE
 
 		if(current_aura)
 			plasma_stored -= 5
@@ -419,6 +421,8 @@ updatehealth()
 		health = maxHealth - getFireLoss() - getBruteLoss()
 	else
 		health = maxHealth - getFireLoss() - getBruteLoss() //Xenos can only take brute and fire damage.
+
+	recalculate_move_delay = TRUE
 
 	med_hud_set_health()
 	med_hud_set_armor()

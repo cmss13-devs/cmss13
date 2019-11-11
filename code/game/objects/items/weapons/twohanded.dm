@@ -56,6 +56,7 @@
 
 /obj/item/proc/place_offhand(var/mob/user,item_name)
 	to_chat(user, SPAN_NOTICE("You grab [item_name] with both hands."))
+	user.recalculate_move_delay = TRUE
 	var/obj/item/weapon/twohanded/offhand/offhand = new /obj/item/weapon/twohanded/offhand(user)
 	offhand.name = "[item_name] - offhand"
 	offhand.desc = "Your second grip on the [item_name]."
@@ -66,6 +67,7 @@
 
 /obj/item/proc/remove_offhand(var/mob/user)
 	to_chat(user, SPAN_NOTICE("You are now carrying [name] with one hand."))
+	user.recalculate_move_delay = TRUE
 	var/obj/item/weapon/twohanded/offhand/offhand = user.get_inactive_hand()
 	if(istype(offhand)) offhand.unwield(user)
 	user.update_inv_l_hand(0)
@@ -74,12 +76,14 @@
 /obj/item/weapon/twohanded/wield(mob/user)
 	. = ..()
 	if(!.) return
+	user.recalculate_move_delay = TRUE
 	if(wieldsound) playsound(user, wieldsound, 15, 1)
 	force 		= force_wielded
 
 /obj/item/weapon/twohanded/unwield(mob/user)
 	. = ..()
 	if(!.) return
+	user.recalculate_move_delay = TRUE
 	if(unwieldsound) playsound(user, unwieldsound, 15, 1)
 	force 	 	= initial(force)
 
@@ -191,7 +195,7 @@
 	item_state = "dualsaber"
 	force = 3
 	throwforce = 5.0
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
 	force_wielded = 70
@@ -239,7 +243,7 @@
 	flags_equip_slot = SLOT_BACK
 	force_wielded = 24
 	throwforce = 30
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	edge = 1
 	sharp = IS_SHARP_ITEM_SIMPLE
 	flags_item = NOSHIELD|TWOHANDED
@@ -259,7 +263,7 @@
 	flags_equip_slot = SLOT_BACK
 	force_wielded = 60
 	throwforce = 50
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	edge = 1
 	sharp = IS_SHARP_ITEM_BIG
 	flags_atom = FPRINT|CONDUCT

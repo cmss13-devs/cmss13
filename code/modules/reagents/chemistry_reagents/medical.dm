@@ -186,8 +186,10 @@
 	if(!.) return
 	if(M.bodytemperature > 310)
 		M.bodytemperature = max(310, M.bodytemperature - (40 * TEMPERATURE_DAMAGE_COEFFICIENT))
+		M.recalculate_move_delay = TRUE
 	else if(M.bodytemperature < 311)
 		M.bodytemperature = min(310, M.bodytemperature + (40 * TEMPERATURE_DAMAGE_COEFFICIENT))
+		M.recalculate_move_delay = TRUE
 
 /datum/reagent/leporazine/on_overdose(mob/living/M, alien)
 	if(alien == IS_YAUTJA) return
@@ -693,6 +695,7 @@
 
 	M.reagent_move_delay_modifier -= 0.2
 	M.reagent_shock_modifier += PAIN_REDUCTION_MEDIUM // half of tramadol
+	M.recalculate_move_delay = TRUE
 
 /datum/reagent/adrenaline/on_overdose(mob/living/M)
 	if(ishuman(M))
@@ -724,6 +727,7 @@
 	if(!.) return
 
 	M.reagent_move_delay_modifier -= 0.5
+	M.recalculate_move_delay = TRUE
 
 	if(prob(1))
 		M.emote(pick("twitch","blink_r","shiver"))
@@ -767,6 +771,7 @@
 	if(!.) return
 
 	M.reagent_move_delay_modifier -= 10
+	M.recalculate_move_delay = TRUE
 
 	var/has_addiction = 0
 

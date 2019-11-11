@@ -267,4 +267,4 @@
 					holder.throw_atom = object
 			if(mods["right"])
 				if(holder.throw_atom)
-					holder.throw_atom.throw_at(object, 10, 1)
+					holder.throw_atom.launch_towards(object, 10, SPEED_FAST)

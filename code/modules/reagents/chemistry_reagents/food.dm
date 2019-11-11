@@ -198,6 +198,7 @@
 		if(!M)
 			M = holder.my_atom
 		M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 0)
+		M.recalculate_move_delay = TRUE
 		if(prob(1))
 			M.emote("shiver")
 		holder.remove_reagent("capsaicin", 5)
@@ -261,6 +262,7 @@
 		if(M.bodytemperature < 310)//310 is the normal bodytemp. 310.055
 			M.bodytemperature = min(310, M.bodytemperature + (5 * TEMPERATURE_DAMAGE_COEFFICIENT))
 		M.nutrition += nutriment_factor
+		M.recalculate_move_delay = TRUE
 
 /datum/reagent/psilocybin
 	name = "Psilocybin"
@@ -380,6 +382,7 @@
 		M.nutrition += nutriment_factor
 		if(M.bodytemperature < 310)//310 is the normal bodytemp. 310.055
 			M.bodytemperature = min(310, M.bodytemperature + (10 * TEMPERATURE_DAMAGE_COEFFICIENT))
+			M.recalculate_move_delay = TRUE
 
 /datum/reagent/hell_ramen
 	name = "Hell Ramen"
@@ -394,6 +397,7 @@
 		if(!.) return
 		M.nutrition += nutriment_factor
 		M.bodytemperature += 10 * TEMPERATURE_DAMAGE_COEFFICIENT
+		M.recalculate_move_delay = TRUE
 
 /datum/reagent/rice
 	name = "Rice"

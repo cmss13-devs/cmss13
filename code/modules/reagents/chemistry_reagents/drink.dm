@@ -30,6 +30,7 @@
 		if(adj_temp)
 			if(M.bodytemperature < 310)//310 is the normal bodytemp. 310.055
 				M.bodytemperature = min(310, M.bodytemperature + (25 * TEMPERATURE_DAMAGE_COEFFICIENT))
+				M.recalculate_move_delay = TRUE
 /datum/reagent/drink/cold
 	name = "Cold drink"
 	adj_temp = -5
@@ -187,6 +188,7 @@
 		if(prob(1))
 			M.emote("shiver")
 		M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 0)
+		M.recalculate_move_delay = TRUE
 		holder.remove_reagent("capsaicin", 5)
 		holder.remove_reagent(src.id, FOOD_METABOLISM)
 

@@ -469,7 +469,7 @@ ICE GRASS
 	src.transform = M
 
 
-/obj/structure/flora/jungle/thickbush/Bumped(M as mob)
+/obj/structure/flora/jungle/thickbush/Collided(M as mob)
 	if (istype(M, /mob/living/simple_animal))
 		var/mob/living/simple_animal/A = M
 		A.loc = get_turf(src)
@@ -542,8 +542,8 @@ ICE GRASS
 		else
 			qdel(src)
 
-/obj/structure/flora/jungle/thickbush/flamer_fire_act(heat)
-	health -= 30
+/obj/structure/flora/jungle/thickbush/flamer_fire_act(var/dam = config.min_burnlevel)
+	health -= dam
 	healthcheck(src)
 
 

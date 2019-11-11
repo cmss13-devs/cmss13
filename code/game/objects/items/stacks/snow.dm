@@ -10,7 +10,7 @@
 	w_class = SIZE_HUGE
 	force = 2
 	throwforce = 0
-	throw_speed = 5
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 1
 	max_amount = 25
 	stack_id = "snow pile"

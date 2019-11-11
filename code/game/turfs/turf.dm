@@ -66,24 +66,6 @@
 /turf/proc/update_icon() //Base parent. - Abby
 	return
 
-/*
-The purpose of turf processing is for turf types to override process() to do
-something to the mobs/items in that tile.
-This should be activated in the turf type's Entered() and deactivated in
-Exited()
-For example,
-/turf/toxicriver/Entered(atom/movable/AM)
-	if(ishuman(AM))
-		start_processing()
-/turf/toxicriver/Exited(atom/movable/AM)
-	if(!(locate(/mob/living/carbon/human) in contents))
-		stop_processing()
-/turf/toxicriver/process()
-	for(var/mob/living/carbon/human/H in contents)
-		H.take_damage(50)
-
-spookydonut august 2018
-*/
 /turf/proc/process()
 	return
 
@@ -99,51 +81,107 @@ spookydonut august 2018
 		return 1
 	return 0
 
-/turf/Enter(atom/movable/mover as mob|obj, atom/forget as mob|obj|turf|area)
-	if(movement_disabled && usr.ckey != movement_disabled_exception)
+/turf/Enter(atom/movable/mover, atom/forget)
+	if (movement_disabled && usr.ckey != movement_disabled_exception)
 		to_chat(usr, SPAN_DANGER("Movement is admin-disabled.")) //This is to identify lag problems
-		return
+		return FALSE
 	if (!mover || !isturf(mover.loc))
-		return 1
+		return FALSE
 
+	var/fdir = get_dir(mover, src)
+	if (!fdir)
+		return TRUE
 
-	//First, check objects to block exit that are not on the border
-	for(var/obj/obstacle in mover.loc)
-		if(!(obstacle.flags_atom & ON_BORDER) && (mover != obstacle) && (forget != obstacle))
-			if(!obstacle.CheckExit(mover, src))
-				mover.Bump(obstacle, 1)
-				return 0
+	var/fd1 = fdir&(fdir-1)
+	var/fd2 = fdir - fd1
 
-	//Now, check objects to block exit that are on the border
-	for(var/obj/border_obstacle in mover.loc)
-		if((border_obstacle.flags_atom & ON_BORDER) && (mover != border_obstacle) && (forget != border_obstacle))
-			if(!border_obstacle.CheckExit(mover, src))
-				mover.Bump(border_obstacle, 1)
-				return 0
+	var/blocking_dir = 0 // The direction that mover's path is being blocked by
 
-	//Next, check objects to block entry that are on the border
-	for(var/obj/border_obstacle in src)
-		if(border_obstacle.flags_atom & ON_BORDER)
-			if(!border_obstacle.CanPass(mover, mover.loc) && (forget != border_obstacle))
-				mover.Bump(border_obstacle, 1)
-				return 0
+	var/obstacle
+	var/turf/T
+	var/atom/A
 
-	//Then, check the turf itself
-	if (!CanPass(mover, src))
-		mover.Bump(src, 1)
-		return 0
+	T = mover.loc
+	blocking_dir |= T.BlockedExitDirs(mover, fdir)
+	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+		mover.Collide(T)
+		return FALSE
+	for (obstacle in T) //First, check objects to block exit
+		if (mover == obstacle || forget == obstacle)
+			continue
+		if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
+			continue
+		A = obstacle
+		blocking_dir |= A.BlockedExitDirs(mover, fdir)
+		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+			mover.Collide(A)
+			return FALSE
 
-	//Finally, check objects/mobs to block entry that are not on the border
-	for(var/atom/movable/obstacle in src)
-		if(!(obstacle.flags_atom & ON_BORDER))
-			if(!obstacle.CanPass(mover, mover.loc) && (forget != obstacle))
-				mover.Bump(obstacle, 1)
-				return 0
-	return 1 //Nothing found to block so return success!
+	// Check objects in adjacent turf EAST/WEST
+	if(mover.diagonal_movement == DIAG_MOVE_DEFAULT && \
+		fd1 && fd1 != fdir
+	)
+		T = get_step(mover, fd1)
+		if (T.BlockedExitDirs(mover, fd2) || T.BlockedPassDirs(mover, fd1))
+			blocking_dir |= fd1
+			if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+				mover.Collide(T)
+				return FALSE
+		for(obstacle in T)
+			if(forget == obstacle)
+				continue
+			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
+				continue
+			A = obstacle
+			if (A.BlockedExitDirs(mover, fd2) || A.BlockedPassDirs(mover, fd1))
+				blocking_dir |= fd1
+				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+					mover.Collide(A)
+					return FALSE
+
+	// Check for borders in adjacent turf NORTH/SOUTH
+	if(mover.diagonal_movement == DIAG_MOVE_DEFAULT && \
+		fd2 && fd2 != fdir
+	)
+		T = get_step(mover, fd2)
+		if (T.BlockedExitDirs(mover, fd1) || T.BlockedPassDirs(mover, fd2))
+			blocking_dir |= fd2
+			if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+				mover.Collide(T)
+				return FALSE
+		for(obstacle in T)
+			if(forget == obstacle)
+				continue
+			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
+				continue
+			A = obstacle
+			if (A.BlockedExitDirs(mover, fd1) || A.BlockedPassDirs(mover, fd2))
+				blocking_dir |= fd2
+				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+					mover.Collide(A)
+					return FALSE
+				break
+
+	//Next, check the turf itself
+	blocking_dir |= BlockedPassDirs(mover, fdir)
+	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+		mover.Collide(src)
+		return FALSE
+	for(obstacle in src) //Then, check atoms in the target turf
+		if(forget == obstacle)
+			continue
+		if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
+			continue
+		A = obstacle
+		blocking_dir |= A.BlockedPassDirs(mover, fdir)
+		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+			mover.Collide(A)
+			return FALSE
+
+	return TRUE //Nothing found to block so return success!
 
 
 /turf/Entered(atom/movable/A)
-
 	if(!istype(A))
 		return
 
@@ -165,7 +203,6 @@ spookydonut august 2018
 
 /turf/proc/is_plating()
 	return 0
-
 /turf/proc/is_asteroid_floor()
 	return 0
 /turf/proc/is_plasteel_floor()
@@ -435,11 +472,10 @@ spookydonut august 2018
 /turf/open/desert/dirt/get_dirt_type()
 	return DIRT_TYPE_MARS
 
-/turf/CanPass(atom/movable/mover, turf/target)
-	if(!target) return 0
-
-	if(istype(mover)) // turf/Enter(...) will perform more advanced checks
-		return !density
+/turf/BlockedPassDirs(atom/movable/mover, target_dir)
+	if(density)
+		return BLOCKED_MOVEMENT
+	return NO_BLOCKED_MOVEMENT
 
 //whether the turf cancels a crusher charge
 /turf/proc/stop_crusher_charge()

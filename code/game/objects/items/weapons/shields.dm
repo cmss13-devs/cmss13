@@ -9,7 +9,7 @@
 	flags_equip_slot = SLOT_BACK
 	force = 5.0
 	throwforce = 5.0
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 4
 	w_class = SIZE_LARGE
 	matter = list("glass" = 7500, "metal" = 1000)
@@ -37,7 +37,7 @@
 	flags_atom = FPRINT|CONDUCT|NOBLOODY
 	force = 3.0
 	throwforce = 5.0
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 4
 	w_class = SIZE_SMALL
 	origin_tech = "materials=4;magnets=3;syndicate=4"

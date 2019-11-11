@@ -140,7 +140,7 @@ proc/pick_element_by_weight_byindex(list/L)
     if(totalweight < 0)
       return i
   return 0
-  
+
 //Pick a random element from the list and remove it from the list.
 /proc/pick_n_take(list/listfrom)
 	if (listfrom.len > 0)
@@ -234,7 +234,7 @@ proc/pick_element_by_weight_byindex(list/L)
 		if(istype(mob))
 			M.Add(mob)
 	var/endIndex = M.len - 1
-	var/top = 0 
+	var/top = 0
 	var/list/stack[endIndex*2]
 	stack[++top] = startIndex
 	stack[++top] = endIndex
@@ -242,7 +242,7 @@ proc/pick_element_by_weight_byindex(list/L)
 	while(top >= 1)
 		endIndex = stack[top--]
 		startIndex = stack[top--]
-		
+
 		// BEGIN PARTITION CODE
 		var/i = startIndex-1
 
@@ -700,3 +700,11 @@ datum/proc/dd_SortValue()
 		if(A.contents.len)
 			found += A.contents_recursive()
 	return found
+
+proc/print_list(list/L)
+   var/list_str = ""
+   for(var/element in L)
+      list_str += "[element],"
+   list_str = copytext(list_str, 1, length(list_str))
+   to_world(list_str)
+   return list_str

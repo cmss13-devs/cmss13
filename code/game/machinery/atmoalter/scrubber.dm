@@ -4,21 +4,24 @@
 	icon = 'icons/obj/structures/machinery/atmos.dmi'
 	icon_state = "pscrubber:0"
 	density = 1
+	flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
+
 	var/on = 0
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/New()
 	..()
 	cell = new/obj/item/cell(src)
 
+/obj/structure/machinery/portable_atmospherics/powered/scrubber/emp_act(severity)
+	if(stat & (BROKEN|NOPOWER))
+		..(severity)
+		return
 
-/obj/structure/machinery/portable_atmospherics/powered/scrubber/CanPass(atom/movable/mover, turf/target)
+	if(prob(50/severity))
+		on = !on
+		update_icon()
 
-	if(density == 0) //Because broken racks -Agouri |TODO: SPRITE!|
-		return 1
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return 1
-	else
-		return 0
+	..(severity)
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/update_icon()
 	src.overlays = 0

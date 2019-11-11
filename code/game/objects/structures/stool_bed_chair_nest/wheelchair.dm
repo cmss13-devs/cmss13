@@ -69,7 +69,7 @@
 	if(. && bloodiness)
 		create_track()
 
-/obj/structure/bed/chair/wheelchair/Bump(atom/A)
+/obj/structure/bed/chair/wheelchair/Collide(atom/A)
 	..()
 	if(!buckled_mob)	return
 
@@ -77,18 +77,15 @@
 		var/mob/living/occupant = buckled_mob
 		unbuckle()
 
-		if (propelled)
-			occupant.throw_at(A, 3, propelled)
-
 		var/def_zone = ran_zone()
 		var/blocked = occupant.run_armor_check(def_zone, ARMOR_MELEE)
-		occupant.throw_at(A, 3, propelled)
+		occupant.launch_towards(A, 3, propelled)
 		occupant.apply_effect(6, STUN, blocked)
 		occupant.apply_effect(6, WEAKEN, blocked)
 		occupant.apply_effect(6, STUTTER, blocked)
 		occupant.apply_damage(10, BRUTE, def_zone)
 		playsound(src.loc, 'sound/weapons/punch1.ogg', 25, 1)
-		if(istype(A, /mob/living))
+		if(isliving(A))
 			var/mob/living/victim = A
 			def_zone = ran_zone()
 			blocked = victim.run_armor_check(def_zone, ARMOR_MELEE)

@@ -94,7 +94,6 @@
 	buckle_mob(M, usr)
 
 /obj/vehicle/powerloader/handle_rotation()
-
 	if(buckled_mob)
 		buckled_mob.dir = dir
 		switch(dir)

@@ -109,6 +109,7 @@
 	density = 1
 	layer = WINDOW_LAYER
 	anchored = 1.0
+	flags_can_pass_all = PASS_GLASS
 	flags_atom = ON_BORDER
 
 
@@ -159,11 +160,11 @@
 		visible_message(SPAN_NOTICE("[user] dunks [W] into the [src]!"))
 		return
 
-/obj/structure/holohoop/CanPass(atom/movable/mover, turf/target)
+/obj/structure/holohoop/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(istype(mover,/obj/item) && mover.throwing)
 		var/obj/item/I = mover
 		if(istype(I, /obj/item/projectile))
-			return
+			return BLOCKED_MOVEMENT
 		if(prob(50))
 			I.loc = src.loc
 			for(var/obj/structure/machinery/scoreboard/X in machines)
@@ -172,10 +173,10 @@
 					// no break, to update multiple scoreboards
 			visible_message(SPAN_NOTICE("Swish! \the [I] lands in \the [src]."), 3)
 		else
-			visible_message(SPAN_DANGER("\the [I] bounces off of \the [src]'s rim!"), 3)
-		return 0
-	else
-		return ..()
+			visible_message("<span class='danger'>\the [I] bounces off of \the [src]'s rim!</span>", 3)
+		return NO_BLOCKED_MOVEMENT
+	
+	return ..()
 
 
 /obj/structure/machinery/readybutton

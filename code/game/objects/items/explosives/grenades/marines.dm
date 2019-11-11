@@ -69,7 +69,7 @@
 	force = 10
 	w_class = SIZE_SMALL
 	throwforce = 15
-	throw_speed = 2
+	throw_speed = SPEED_FAST
 	throw_range = 7
 	underslug_launchable = FALSE
 	explosion_power = 100
@@ -95,7 +95,7 @@
 	desc = "An outdated USCM Fragmentation Grenade. With decades of service in the USCM, the old M15 Fragmentation Grenade is slowly being replaced by the slightly safer M40-series grenades. It is set to detonate in 4 seconds."
 	icon_state = "grenade_ex"
 	item_state = "grenade_ex"
-	throw_speed = 2
+	throw_speed = SPEED_FAST
 	throw_range = 6
 	underslug_launchable = FALSE
 	explosion_power = 120
@@ -108,7 +108,7 @@
 	desc = "A fragmentation grenade found within the ranks of the UPP. Designed to explode into shrapnel and rupture the bodies of opponents. It explodes 3 seconds after the pin has been pulled."
 	icon_state = "grenade_upp"
 	item_state = "grenade_upp"
-	throw_speed = 2
+	throw_speed = SPEED_FAST
 	throw_range = 6
 	underslug_launchable = FALSE
 	explosion_power = 60
@@ -247,7 +247,7 @@
 	desc = "And Saint Attila raised the hand grenade up on high, saying, \"O LORD, bless this Thy hand grenade that with it Thou mayest blow Thine enemies to tiny bits, in Thy mercy.\" And the LORD did grin and the people did feast upon the lambs and sloths and carp and anchovies... And the LORD spake, saying, \"First shalt thou take out the Holy Pin, then shalt thou count to three, no more, no less. Three shall be the number thou shalt count, and the number of the counting shall be three. Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. Five is right out. Once the number three, being the third number, be reached, then lobbest thou thy Holy Hand Grenade of Antioch towards thy foe, who, being naughty in My sight, shall snuff it.\""
 	icon_state = "banana"
 	item_state = "banana"
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	underslug_launchable = FALSE
 	explosion_power = 300

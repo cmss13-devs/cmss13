@@ -12,8 +12,8 @@
 	
 /area/shuttle/drop1/Enter(atom/movable/O, atom/oldloc)
 	if(istype(O, /obj/structure/barricade))
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /area/shuttle/drop1/sulaco
 	name = "\improper Dropship Alamo"
@@ -53,8 +53,8 @@
 
 /area/shuttle/drop2/Enter(atom/movable/O, atom/oldloc)
 	if(istype(O, /obj/structure/barricade))
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /area/shuttle/drop2
 	is_resin_allowed = FALSE

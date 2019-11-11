@@ -219,3 +219,6 @@ proc/animation_destruction_long_fade(atom/A, speed = 4, x_n = 4, y_n = 4)
 	animate(src, transform = matrix_list[1], time = speed, loop_amount)
 	for(var/i in 2 to sections)
 		animate(transform = matrix_list[i], time = speed)
+
+/atom/proc/animation_cancel()
+	animate(src)

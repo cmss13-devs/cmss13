@@ -81,7 +81,7 @@
 	flags_equip_slot = SLOT_WAIST|SLOT_EAR
 	throwforce = 0
 	w_class = SIZE_TINY
-	throw_speed = 7
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 15
 	matter = list("metal" = 10)
 	var/colour = "black"	//what colour the ink is!
@@ -180,7 +180,7 @@
 	item_state = "stamp"
 	throwforce = 0
 	w_class = SIZE_TINY
-	throw_speed = 7
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 15
 	matter = list("metal" = 60)
 	attack_verb = list("stamped")

@@ -320,7 +320,7 @@ explosion resistance exactly as much as their health
 
 	if(!direction)
 		direction = pick(alldirs)
-	var/range = min( round(   severity/src.w_class * 0.2   ,1) ,14)
+	var/range = min(round(severity/src.w_class * 0.2, 1), 14)
 	if(!direction)
 		range = round( range/2 ,1)
 
@@ -328,7 +328,7 @@ explosion resistance exactly as much as their health
 		return
 
 
-	var/speed = min( round(   range/5  ,1) ,5)
+	var/speed = max(range, MIN_SPEED)
 	var/atom/target = get_ranged_target_turf(src, direction, range)
 
 	if(range >= 2)
@@ -338,7 +338,7 @@ explosion resistance exactly as much as their health
 		target = locate(target.x + round( scatter_x , 1),target.y + round( scatter_y , 1),target.z) //Locate an adjacent turf.
 
 	spawn(1) //time for the explosion to destroy windows, walls, etc which might be in the way
-		throw_at(target, range, speed, , 1)
+		launch_towards(target, range, speed, , 1)
 
 	return
 
@@ -368,7 +368,7 @@ explosion resistance exactly as much as their health
 	if(range <= 0)
 		return
 
-	var/speed = min( round(   range/5  ,1) ,5)
+	var/speed = min(range/5, SPEED_AVERAGE)
 	var/atom/target = get_ranged_target_turf(src, direction, range)
 
 	var/spin = 0
@@ -384,6 +384,6 @@ explosion resistance exactly as much as their health
 
 	spawn(1) //time for the explosion to destroy windows, walls, etc which might be in the way
 		if(!buckled)
-			throw_at(target, range, speed, , spin)
+			launch_towards(target, range, speed, , spin)
 
 	return

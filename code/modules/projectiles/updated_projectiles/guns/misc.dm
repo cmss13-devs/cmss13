@@ -180,7 +180,7 @@
 	icon_state = "syringegun"
 	item_state = "syringegun"
 	w_class = SIZE_MEDIUM
-	throw_speed = 2
+	throw_speed = SPEED_SLOW
 	throw_range = 10
 	force = 4.0
 	var/list/syringes = new/list()

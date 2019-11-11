@@ -4,6 +4,7 @@
 	icon = 'icons/obj/structures/machinery/atmos.dmi'
 	icon_state = "psiphon:0"
 	density = 1
+	flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 
 	var/on = 0
 
@@ -23,11 +24,3 @@
 		overlays += "siphon-connector"
 
 	return
-
-/obj/structure/machinery/portable_atmospherics/powered/pump/CanPass(atom/movable/mover, turf/target)
-	if(density == 0) //Because broken racks -Agouri |TODO: SPRITE!|
-		return 1
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return 1
-	else
-		return 0

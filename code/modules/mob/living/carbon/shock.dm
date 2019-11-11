@@ -7,6 +7,8 @@
 		traumatic_shock = 0
 		return
 
+	recalculate_move_delay = TRUE
+
 	// Each damagetype has a unique multiplier that gets rolled into traumatic_shock
 	// TODO: Purge shock_stage altogether, JUST use traumatic_shock 
 	// or do a more comprehensive code rework that includes effects rather than just scaling changes

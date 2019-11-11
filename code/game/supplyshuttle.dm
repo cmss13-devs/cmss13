@@ -46,23 +46,22 @@ var/list/mechtoys = list(
 	density = 0
 	anchored = 1
 	layer = MOB_LAYER
+	flags_can_pass_all = PASS_UNDER|PASS_THROUGH
 
-/obj/structure/plasticflaps/CanPass(atom/A, turf/T)
-	if(istype(A) && A.checkpass(PASSGLASS))
-		return prob(60)
+/obj/structure/plasticflaps/BlockedPassDirs(atom/movable/mover, target_dir)
+	if(mover.flags_pass & flags_can_pass_all || !iscarbon(mover))
+		return NO_BLOCKED_MOVEMENT
 
-	var/obj/structure/bed/B = A
-	if (istype(A, /obj/structure/bed) && B.buckled_mob)//if it's a bed/chair and someone is buckled, it will not pass
-		return 0
+	return BLOCKED_MOVEMENT
 
-	if(istype(A, /obj/vehicle))	//no vehicles
-		return 0
-
-	if(istype(A, /mob/living)) // You Shall Not Pass!
-		var/mob/living/M = A
-		if(!M.lying && !istype(M, /mob/living/simple_animal/mouse) && !istype(M, /mob/living/silicon/robot/drone))  //If your not laying down, or a small creature, no pass.
-			return 0
-	return ..()
+/obj/structure/plasticflaps/Collided(atom/movable/AM)
+	var/mob/living/carbon/C = AM
+	if (!istype(C))
+		return
+	C.visible_message(SPAN_NOTICE("[C] tries to go through \the [src]."), \
+		SPAN_NOTICE("You try to go through \the [src]."))
+	if(do_after(C, SECONDS_2, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		C.forceMove(get_turf(src))
 
 /obj/structure/plasticflaps/ex_act(severity)
 	switch(severity)

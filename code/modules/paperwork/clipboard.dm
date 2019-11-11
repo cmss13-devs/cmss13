@@ -5,7 +5,7 @@
 	item_state = "clipboard"
 	throwforce = 0
 	w_class = SIZE_SMALL
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	var/obj/item/tool/pen/haspen		//The stored pen.
 	var/obj/item/toppaper	//The topmost piece of paper.

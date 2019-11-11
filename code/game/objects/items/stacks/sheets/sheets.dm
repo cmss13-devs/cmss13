@@ -5,7 +5,7 @@
 	force = 5
 	throwforce = 5
 	max_amount = 50
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 3
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "smashed")
 	var/perunit = 3750

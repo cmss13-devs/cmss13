@@ -40,14 +40,8 @@
 	visible_message(SPAN_XENOWARNING("\The [src] [pounce_type]es at [T]!"), \
 	SPAN_XENOWARNING("You [pounce_type]e at [T]!"))
 	used_pounce = 1
-	flags_pass = PASSTABLE
 	use_plasma(10)
-	throw_at(T, caste.charge_distance + mutators.pounce_boost, caste.charge_speed, src) //Victim, distance, speed
-	spawn(6)
-		if(!hardcore)
-			flags_pass = initial(flags_pass) //Reset the passtable.
-		else
-			flags_pass = 0 //Reset the passtable.
+	launch_towards(T, caste.charge_distance + mutators.pounce_boost, caste.charge_speed, src) //Victim, distance, speed
 
 	spawn(caste.pounce_delay)
 		used_pounce = 0
@@ -114,31 +108,15 @@
 	dir = facing
 
 	T = loc
-	for (var/i in 0 to caste.acid_spray_range-1)
-
-		var/turf/next_T = get_step(T, facing)
-
-		for (var/obj/O in T)
-			if(!O.CheckExit(src, next_T))
-				if(istype(O, /obj/structure/barricade))
-					var/obj/structure/barricade/B = O
-					B.health -= rand(20, 30)
-					B.update_health(1)
-				return
-
-		T = next_T
-
-		if (T.density)
-			return
-
-		for (var/obj/O in T)
-			if(!O.CanPass(src, loc))
-				if(istype(O, /obj/structure/barricade))
-					var/obj/structure/barricade/B = O
-					B.health -= rand(20, 30)
-					B.update_health(1)
-				return
-
+	for (var/i in 0 to caste.acid_spray_range - 1)
+		var/turf/next_turf = get_step(T, facing)
+		var/atom/movable/temp = new/obj/effect/xenomorph/spray()
+		var/atom/movable/AM = LinkBlocked(temp, T, next_turf)
+		qdel(temp)
+		if(AM)
+			AM.acid_spray_act(src)
+			return	
+		T = next_turf		
 		var/obj/effect/xenomorph/spray/S = acid_splat_turf(T)
 		do_acid_spray_cone_normal(T, i, facing, S)
 		sleep(3)
@@ -149,7 +127,7 @@
 		return
 
 	if(!isturf(loc) || istype(loc, /turf/open/space))
-		to_chat(src, SPAN_WARNING("You can't do that from there.</span>"))
+		to_chat(src, SPAN_WARNING("You can't do that from there."))
 		return
 
 	if(!check_plasma(10) || used_acid_spray)
@@ -176,12 +154,11 @@
 		return
 
 	used_acid_spray = 1
-
 	use_plasma(10)
 	playsound(src.loc, 'sound/effects/refill.ogg', 25, 1)
 	visible_message(SPAN_XENOWARNING("\The [src] spews forth a virulent spray of acid!"), \
-	SPAN_XENOWARNING("You spew forth a spray of acid!"), null, 5)
-	var/turflist = getline(src, target)
+		SPAN_XENOWARNING("You spew forth a spray of acid!"), null, 5)
+	var/turflist = getline2(src, target, include_from_atom = FALSE)
 	spray_turfs(turflist)
 	spawn(caste.acid_spray_cooldown) //12 second cooldown.
 		used_acid_spray = 0
@@ -196,7 +173,7 @@
 
 	if(isnull(turflist))
 		return
-	var/turf/prev_turf
+	var/turf/prev_turf = loc
 	var/distance = 0
 	var/distance_max = 5
 
@@ -205,45 +182,41 @@
 	else if (isXenoPraetorian(src))
 		distance_max = 6
 
-	turf_loop:
-		for(var/turf/T in turflist)
-			distance++
+	for(var/turf/T in turflist)
+		distance++
 
-			if(!prev_turf && turflist.len > 1)
-				prev_turf = get_turf(src)
-				continue //So we don't burn the tile we be standin on
+		if(!prev_turf && turflist.len > 1)
+			prev_turf = get_turf(src)
+			continue //So we don't burn the tile we be standin on
 
-			if(T.density || istype(T, /turf/open/space))
-				break
-			if(distance > distance_max)
-				break
+		if(T.density || istype(T, /turf/open/space))
+			break
+		if(distance > distance_max)
+			break
 
-			if(locate(/obj/structure/girder, T))
-				break //Nope.avi
+		// TODO: make acid spray type a var instead of this retarded if-statement - TheDonkified
+		var/spray_path
+		if(isXenoBoiler(src)) 
+			spray_path = /obj/effect/xenomorph/spray
+		else
+			spray_path = /obj/effect/xenomorph/spray/weak
 
-			var/obj/structure/machinery/M = locate() in T
-			if(M)
-				if(M.density)
-					break
+		var/atom/movable/temp = new spray_path()
+		var/atom/movable/AM = LinkBlocked(temp, prev_turf, T)
+		qdel(temp)
+		if(AM)
+			AM.acid_spray_act(src)
+			break
 
-			if(prev_turf && LinkBlocked(prev_turf, T))
-				break
+		if(!check_plasma(10))
+			break
+		
+		plasma_stored -= 10
+		prev_turf = T
+		splat_turf(T)
+		sleep(2)
 
-			for(var/obj/structure/barricade/B in T)
-				B.health -= rand(20, 30)
-				B.update_health(TRUE)
-				if(prev_turf)
-					if(get_dir(B, prev_turf) & B.dir)
-						break turf_loop
-
-			if(!check_plasma(10))
-				break
-			plasma_stored -= 10
-			prev_turf = T
-			splat_turf(T)
-			sleep(2)
-
-/mob/living/carbon/Xenomorph/proc/splat_turf(var/turf/target)
+/mob/living/carbon/Xenomorph/proc/splat_turf(turf/target)
 	if(!istype(target) || istype(target,/turf/open/space))
 		return
 
@@ -283,70 +256,31 @@
 	var/normal_density_flag = 0
 	var/inverse_normal_density_flag = 0
 
-	for (var/i in 0 to distance-1)
-		if (normal_density_flag && inverse_normal_density_flag)
+	for (var/i in 1 to distance)
+		if(normal_density_flag && inverse_normal_density_flag)
 			return
 
-		if (!normal_density_flag)
+		if(!normal_density_flag)
 			var/next_normal_turf = get_step(normal_turf, normal_dir)
-
-			for (var/obj/O in normal_turf)
-				if(!O.CheckExit(left_S, next_normal_turf))
-					if(istype(O, /obj/structure/barricade))
-						var/obj/structure/barricade/B = O
-						B.health -= rand(20, 30)
-						B.update_health(1)
-					normal_density_flag = 1
-					break
-
-			normal_turf = next_normal_turf
-
-			if(!normal_density_flag)
-				normal_density_flag = normal_turf.density
-
-			if(!normal_density_flag)
-				for (var/obj/O in normal_turf)
-					if(!O.CanPass(left_S, left_S.loc))
-						if(istype(O, /obj/structure/barricade))
-							var/obj/structure/barricade/B = O
-							B.health -= rand(20, 30)
-							B.update_health(1)
-						normal_density_flag = 1
-						break
-
-			if (!normal_density_flag)
+			var/atom/A = LinkBlocked(left_S, normal_turf, next_normal_turf)
+			
+			if(A)
+				A.acid_spray_act()
+				normal_density_flag = 1
+			else
+				normal_turf = next_normal_turf
 				left_S = acid_splat_turf(normal_turf)
 
 
-		if (!inverse_normal_density_flag)
-
+		if(!inverse_normal_density_flag)
 			var/next_inverse_normal_turf = get_step(inverse_normal_turf, inverse_normal_dir)
+			var/atom/A = LinkBlocked(right_S, inverse_normal_turf, next_inverse_normal_turf)
 
-			for (var/obj/O in inverse_normal_turf)
-				if(!O.CheckExit(right_S, next_inverse_normal_turf))
-					if(istype(O, /obj/structure/barricade))
-						var/obj/structure/barricade/B = O
-						B.health -= rand(20, 30)
-						B.update_health(1)
-					inverse_normal_density_flag = 1
-					break
-
-			inverse_normal_turf = next_inverse_normal_turf
-
-			if(!inverse_normal_density_flag)
-				inverse_normal_density_flag = inverse_normal_turf.density
-
-			if(!inverse_normal_density_flag)
-				for (var/obj/O in inverse_normal_turf)
-					if(!O.CanPass(right_S, right_S.loc))
-						if(istype(O, /obj/structure/barricade))
-							var/obj/structure/barricade/B = O
-							B.health -= rand(20, 30)
-							B.update_health(1)
-						inverse_normal_density_flag = 1
-						break
-
-			if (!inverse_normal_density_flag)
+			if(A)
+				A.acid_spray_act()
+				inverse_normal_density_flag = 1
+			else
+				inverse_normal_turf = next_inverse_normal_turf
 				right_S = acid_splat_turf(inverse_normal_turf)
 
 
@@ -358,8 +292,7 @@
 
 		// This should probably be moved into obj/effect/xenomorph/spray or something
 		for (var/obj/structure/barricade/B in T)
-			B.health -= rand(20, 30)
-			B.update_health(1)
+			B.acid_spray_act()
 
 		for (var/mob/living/carbon/C in T)
 			if (!ishuman(C) && !ismonkey(C))
@@ -421,7 +354,7 @@
 			break
 		T = temp
 
-	H.throw_at(T, fling_distance, 1, src, 1)
+	H.launch_towards(T, fling_distance, SPEED_FAST, src, TRUE)
 
 	spawn(caste.fling_cooldown)
 		used_fling = 0
@@ -554,7 +487,7 @@
 
 	used_lunge = 1 // triggered by start_pulling
 	use_plasma(10)
-	throw_at(get_step_towards(A, src), 6, 2, src)
+	launch_towards(get_step_towards(A, src), 6, SPEED_FAST, src)
 
 	if (Adjacent(H))
 		start_pulling(H,1)
@@ -652,7 +585,6 @@
 		return
 
 	agility = !agility
-
 	if (agility)
 		to_chat(src, SPAN_XENOWARNING("You lower yourself to all fours."))
 	else
@@ -705,7 +637,7 @@
 		return
 
 	if (distance > 1)
-		step_towards(src, H, max_distance)
+		launch_towards(get_step_towards(H, src), 3, SPEED_SLOW, src)
 
 	if (!Adjacent(H))
 		return
@@ -734,7 +666,7 @@
 			break
 		T = temp
 
-	H.throw_at(T, headbutt_distance, 1, src)
+	H.launch_towards(T, headbutt_distance, SPEED_SLOW, src)
 	playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	spawn(caste.headbutt_cooldown)
 		used_headbutt = 0

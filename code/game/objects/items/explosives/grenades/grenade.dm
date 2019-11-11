@@ -5,7 +5,7 @@
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "grenade"
 	item_state = "grenade"
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 7
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -52,9 +52,10 @@
 
 				for(var/mob/living/carbon/human/H in hearers(6,user))
 					H.playsound_local(user, nade_sound, 35)
-			if(iscarbon(user))
-				var/mob/living/carbon/C = user
-				C.throw_mode_on()
+			
+			var/mob/living/carbon/C = user
+			if(istype(C) && !C.throw_mode)
+				C.toggle_throw_mode(THROW_MODE_NORMAL)
 
 
 /obj/item/explosive/grenade/proc/activate(mob/user = null)
@@ -78,7 +79,7 @@
 /obj/item/explosive/grenade/proc/prime()
 //	playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 
-/obj/item/explosive/grenade/throw_at(atom/target, range, speed, thrower)
+/obj/item/explosive/grenade/launch_towards(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
 	if(active && ismob(thrower))
 		var/mob/M = thrower
 		M.count_niche_stat(STATISTICS_NICHE_GRENADES)

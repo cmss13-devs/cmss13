@@ -5,7 +5,7 @@
 	icon_state = null
 	throwforce = 3
 	w_class = SIZE_SMALL
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 5
 	var/amount_per_transfer_from_this = 5
 	var/possible_transfer_amounts = list(5,10,15,25,30)

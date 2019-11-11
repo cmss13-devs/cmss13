@@ -16,6 +16,7 @@
 	buckle_lying = TRUE
 	throwpass = TRUE
 	debris = list(/obj/item/stack/sheet/metal)
+	flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 	var/buildstacktype = /obj/item/stack/sheet/metal
 	var/buildstackamount = 1
 	var/foldabletype //To fold into an item (e.g. roller bed item)
@@ -108,10 +109,10 @@ obj/structure/bed/Dispose()
 			return 0
 	return 1
 
-/obj/structure/bed/roller/CanPass(atom/movable/mover, turf/target)
+/obj/structure/bed/roller/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(mover == buckled_bodybag)
-		return TRUE
-	. = ..()
+		return NO_BLOCKED_MOVEMENT
+	return ..()
 
 /obj/structure/bed/MouseDrop_T(atom/dropping, mob/user)
 	if(accepts_bodybag && !buckled_bodybag && !buckled_mob && istype(dropping,/obj/structure/closet/bodybag) && ishuman(user))
@@ -152,11 +153,6 @@ obj/structure/bed/Dispose()
 
 	else
 		. = ..()
-
-/obj/structure/bed/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return TRUE
-	. = ..()
 
 /obj/structure/bed/alien
 	icon_state = "abed"

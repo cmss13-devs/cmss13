@@ -3,7 +3,7 @@
 	response_help  = "touches the"
 	response_disarm = "pushes the"
 	response_harm   = "hits the"
-	flags_pass = PASSTABLE
+	flags_pass = PASS_FLAGS_CRAWLER
 	var/hibernate = 0 //Disables SCP until toggled back to 0
 	var/scare_played = 0 //Did we rape everyone's ears yet ?
 	var/obj/structure/machinery/atmospherics/unary/vent_pump/entry_vent //Graciously stolen from spider code

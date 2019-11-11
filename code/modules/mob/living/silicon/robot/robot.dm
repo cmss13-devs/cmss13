@@ -414,10 +414,10 @@ var/list/robot_verbs_default = list(
 	if(prob(75) && Proj.damage > 0) spark_system.start()
 	return 2
 
-/mob/living/silicon/robot/Bump(atom/movable/AM as mob|obj, yes)
+/mob/living/silicon/robot/Collide(atom/A)
 	..()
-	if (istype(AM, /obj/structure/machinery/recharge_station))
-		var/obj/structure/machinery/recharge_station/F = AM
+	if (istype(A, /obj/structure/machinery/recharge_station))
+		var/obj/structure/machinery/recharge_station/F = A
 		F.move_inside()
 		return
 

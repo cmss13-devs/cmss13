@@ -8,7 +8,7 @@
 	universal_speak = 0
 	universal_understand = 1
 	gender = NEUTER
-	flags_pass = PASSTABLE | PASSMOB
+	flags_pass = PASS_MOB|PASS_FLAGS_CRAWLER
 	braintype = "Robot"
 	lawupdate = 0
 	density = 1
@@ -185,21 +185,20 @@
 	to_chat(src, "<b>Don't invade their worksites and don't steal their resources.</b>")
 	to_chat(src, "<b>If a crewmember has noticed you, <i>you are probably breaking your third law</i></b>.")
 
-/mob/living/silicon/robot/drone/Bump(atom/movable/AM as mob|obj, yes)
-	if (!yes || ( \
-	 !istype(AM,/obj/structure/machinery/door) && \
-	 !istype(AM,/obj/structure/machinery/recharge_station) && \
-	 !istype(AM,/obj/structure/machinery/disposal/deliveryChute) && \
-	 !istype(AM,/obj/structure/machinery/teleport/hub) && \
-	 !istype(AM,/obj/effect/portal)
-	)) return
+/mob/living/silicon/robot/drone/Collide(atom/A)
+	if (!istype(A,/obj/structure/machinery/door) && \
+	 !istype(A,/obj/structure/machinery/recharge_station) && \
+	 !istype(A,/obj/structure/machinery/disposal/deliveryChute) && \
+	 !istype(A,/obj/structure/machinery/teleport/hub) && \
+	 !istype(A,/obj/effect/portal)
+	) return
 	..()
 	return
 
-/mob/living/silicon/robot/drone/Bumped(AM as mob|obj)
+/mob/living/silicon/robot/drone/Collided(atom/movable/AM)
 	return
 
-/mob/living/silicon/robot/drone/start_pulling(var/atom/movable/AM)
+/mob/living/silicon/robot/drone/start_pulling(atom/movable/AM)
 
 	if(istype(AM,/obj/item/pipe) || istype(AM,/obj/structure/disposalconstruct))
 		..()

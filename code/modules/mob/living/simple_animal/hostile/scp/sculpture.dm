@@ -65,11 +65,13 @@
 	//Rampage along a path to get to them, in the blink of an eye
 	var/turf/next_turf = get_step_towards(src, target)
 	var/num_turfs = get_dist(src,target)
+	var/move_dir = 0
 	spawn()
 		while(get_turf(src) != target_turf && num_turfs > 0)
+			move_dir = get_dir(src, next_turf)
 			if(!forced && check_los()) //Something is looking at us now
 				break
-			if(!next_turf.CanPass(src, next_turf)) //We can't pass through our planned path
+			if(next_turf.BlockedPassDirs(src, move_dir)) //We can't pass through our planned path
 				break
 			for(var/obj/structure/window/W in next_turf)
 				W.health -= 1000
@@ -92,7 +94,7 @@
 			for(var/obj/structure/machinery/door/D in next_turf)
 				D.open()
 				sleep(5)
-			if(!next_turf.CanPass(src, next_turf)) //Once we cleared everything we could, check one last time if we can pass
+			if(next_turf.BlockedPassDirs(src, move_dir)) //Once we cleared everything we could, check one last time if we can pass
 				break
 			forceMove(next_turf, FALSE, forced)
 			dir = get_dir(src, target)
@@ -116,11 +118,13 @@
 		//Move to our new resting point with celerity
 		var/turf/next_turf = get_step_towards(src, target_turf)
 		var/num_turfs = get_dist(src, target_turf)
+		var/move_dir = 0
 		spawn()
 			while(get_turf(src) != target_turf && num_turfs > 0)
+				move_dir = get_dir(src, next_turf)
 				if(check_los()) //Something is looking at us now
 					break
-				if(!next_turf.CanPass(src, next_turf)) //We can't pass through our planned path
+				if(next_turf.BlockedPassDirs(src, move_dir)) //We can't pass through our planned path
 					break
 				for(var/obj/structure/window/W in next_turf)
 					W.health -= 1000
@@ -143,7 +147,7 @@
 				for(var/obj/structure/machinery/door/D in next_turf)
 					D.open()
 					sleep(5)
-				if(!next_turf.CanPass(src, next_turf)) //Once we cleared everything we could, check one last time if we can pass
+				if(next_turf.BlockedPassDirs(src, move_dir)) //Once we cleared everything we could, check one last time if we can pass
 					break
 				forceMove(next_turf)
 				dir = get_dir(src, target_turf)
@@ -236,12 +240,12 @@
 /mob/living/simple_animal/scp/sculpture/Topic(href, href_list)
 	..()
 
-/mob/living/simple_animal/scp/sculpture/Bump(atom/movable/AM as mob)
+/mob/living/simple_animal/scp/sculpture/Collide(atom/A)
 	if(check_los())
-		snap_neck(AM)
+		snap_neck(A)
 	..()
 
-/mob/living/simple_animal/scp/sculpture/Bumped(atom/movable/AM as mob, yes)
+/mob/living/simple_animal/scp/sculpture/Collided(atom/movable/AM)
 	if(check_los())
 		snap_neck(AM)
 

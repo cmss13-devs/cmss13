@@ -6,6 +6,8 @@
 	else
 		health = maxHealth - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - halloss
 
+	recalculate_move_delay = TRUE
+
 
 
 /mob/living/New()
@@ -174,7 +176,7 @@
 				if(istype(pmob))
 					pmob.on_movement()
 
-	if(pulledby && moving_diagonally != FIRST_DIAG_STEP && get_dist(src, pulledby) > 1)//separated from our puller and not in the middle of a diagonal move.
+	if(pulledby && get_dist(src, pulledby) > 1)//separated from our puller and not in the middle of a diagonal move.
 		pulledby.stop_pulling()
 
 
@@ -242,125 +244,121 @@
 	if(.)
 		reset_view(destination)
 
-// TODO: look into this mess and probably refactor it. - TheDonkified
-/mob/living/Bump(atom/movable/AM, yes)
-	if(buckled || !yes || now_pushing)
+/mob/living/Collide(atom/movable/AM)
+	if(buckled || now_pushing)
 		return
-	now_pushing = 1
-	if(isliving(AM))
-		var/mob/living/L = AM
 
-		// For now a kind of hacky check for if you are performing an action that stops you from being pushed by teammates
-		if(L.status_flags & IMMOBILE_ACTION && areSameSpecies(src, L) && src.mob_size <= L.mob_size)
-			now_pushing = 0
+	if(throwing)
+		launch_impact(AM)
+		return
+
+	if(!isliving(AM))
+		..()
+		return
+	
+	now_pushing = TRUE
+	var/mob/living/L = AM
+
+	// For now a kind of hacky check for if you are performing an action that stops you from being pushed by teammates
+	if(L.status_flags & IMMOBILE_ACTION && areSameSpecies(src, L) && src.mob_size <= L.mob_size)
+		now_pushing = FALSE
+		return
+
+	//Leaping mobs just land on the tile, no pushing, no anything.
+	if(status_flags & LEAPING)
+		loc = L.loc
+		status_flags &= ~LEAPING
+		now_pushing = FALSE
+		return
+
+	if(L.pulledby && L.pulledby != src && L.is_mob_restrained())
+		if(!(world.time % 5))
+			to_chat(src, SPAN_WARNING("[L] is restrained, you cannot push past."))
+		now_pushing = FALSE
+		return
+
+	if(isXeno(L) && !isXenoLarva(L)) //Handling pushing Xenos in general, but big Xenos and Preds can still push small Xenos
+		var/mob/living/carbon/Xenomorph/X = L
+		if((has_species(src, "Human") && X.mob_size == MOB_SIZE_BIG) || (isXeno(src) && X.mob_size == MOB_SIZE_BIG))
+			now_pushing = FALSE
 			return
 
-
-		//Leaping mobs just land on the tile, no pushing, no anything.
-		if(status_flags & LEAPING)
-			loc = L.loc
-			status_flags &= ~LEAPING
-			now_pushing = 0
-			return
-
-		if(L.pulledby && L.pulledby != src && L.is_mob_restrained())
-			if(!(world.time % 5))
-				to_chat(src, SPAN_WARNING("[L] is restrained, you cannot push past."))
-			now_pushing = 0
-			return
-
-		if(isXeno(L) && !isXenoLarva(L)) //Handling pushing Xenos in general, but big Xenos and Preds can still push small Xenos
-			var/mob/living/carbon/Xenomorph/X = L
-			if((has_species(src, "Human") && X.mob_size == MOB_SIZE_BIG) || (isXeno(src) && X.mob_size == MOB_SIZE_BIG))
-				now_pushing = 0
+	if(L.pulling)
+		if(ismob(L.pulling))
+			var/mob/P = L.pulling
+			if(P.is_mob_restrained())
+				if(!(world.time % 5))
+					to_chat(src, SPAN_WARNING("[L] is restraining [P], you cannot push past."))
+				now_pushing = FALSE
 				return
 
- 		if(L.pulling)
- 			if(ismob(L.pulling))
- 				var/mob/P = L.pulling
- 				if(P.is_mob_restrained())
- 					if(!(world.time % 5))
- 						to_chat(src, SPAN_WARNING("[L] is restraining [P], you cannot push past."))
-					now_pushing = 0
-					return
-
-		if(ishuman(L))
-
-			if(HULK in L.mutations)
-				if(prob(70))
-					to_chat(usr, SPAN_DANGER("<B>You fail to push [L]'s fat ass out of the way.</B>"))
-					now_pushing = 0
-					return
-			if(!(L.status_flags & CANPUSH))
-				now_pushing = 0
+	if(ishuman(L))
+		if(HULK in L.mutations)
+			if(prob(70))
+				to_chat(usr, SPAN_DANGER("<B>You fail to push [L]'s fat ass out of the way.</B>"))
+				now_pushing = FALSE
 				return
-
-		if(moving_diagonally)//no mob swap during diagonal moves.
-			now_pushing = 0
-			return
-
-		if(!L.buckled && !L.anchored)
-			var/mob_swap
-			//the puller can always swap with its victim if on grab intent
-			if(L.pulledby == src && a_intent == GRAB_INTENT)
-				mob_swap = 1
-			//restrained people act if they were on 'help' intent to prevent a person being pulled from being seperated from their puller
-			else if((L.is_mob_restrained() || L.a_intent == HELP_INTENT) && (is_mob_restrained() || a_intent == HELP_INTENT))
-				mob_swap = 1
-			if(mob_swap)
-				//switch our position with L
-				if(loc && !loc.Adjacent(L.loc))
-					now_pushing = 0
-					return
-				var/oldloc = loc
-				var/oldLloc = L.loc
-
-
-				var/L_passmob = (L.flags_pass & PASSMOB) // we give PASSMOB to both mobs to avoid bumping other mobs during swap.
-				var/src_passmob = (flags_pass & PASSMOB)
-				L.flags_pass |= PASSMOB
-				flags_pass |= PASSMOB
-
-				L.Move(oldloc)
-				Move(oldLloc)
-
-				if(!src_passmob)
-					flags_pass &= ~PASSMOB
-				if(!L_passmob)
-					L.flags_pass &= ~PASSMOB
-
-				now_pushing = 0
-				return
-
 		if(!(L.status_flags & CANPUSH))
-			now_pushing = 0
+			now_pushing = FALSE
 			return
 
-	now_pushing = 0
-	..()
-	if (!( istype(AM, /atom/movable) ))
+	if(!L.buckled && !L.anchored)
+		var/mob_swap
+		//the puller can always swap with its victim if on grab intent
+		if(L.pulledby == src && a_intent == GRAB_INTENT)
+			mob_swap = 1
+		//restrained people act if they were on 'help' intent to prevent a person being pulled from being seperated from their puller
+		else if((L.is_mob_restrained() || L.a_intent == HELP_INTENT) && (is_mob_restrained() || a_intent == HELP_INTENT))
+			mob_swap = 1
+		if(mob_swap)
+			//switch our position with L
+			if(loc && !loc.Adjacent(L.loc))
+				now_pushing = FALSE
+				return
+			var/oldloc = loc
+			var/oldLloc = L.loc
+
+
+			var/L_PASS_MOB = (L.flags_pass & PASS_MOB) // we give PASS_MOB to both mobs to avoid bumping other mobs during swap.
+			var/src_PASS_MOB = (flags_pass & PASS_MOB)
+			L.flags_pass_temp |= PASS_MOB
+			flags_pass_temp |= PASS_MOB
+
+			L.Move(oldloc)
+			Move(oldLloc)
+
+			if(!src_PASS_MOB)
+				flags_pass_temp &= ~PASS_MOB
+			if(!L_PASS_MOB)
+				L.flags_pass_temp &= ~PASS_MOB
+
+			now_pushing = FALSE
+			return
+
+	now_pushing = FALSE
+
+	if(!(L.status_flags & CANPUSH))
 		return
-	if (!( now_pushing ))
-		now_pushing = 1
-		if (!( AM.anchored ))
-			var/t = get_dir(src, AM)
-			if (istype(AM, /obj/structure/window))
-				var/obj/structure/window/W = AM
-				if(W.is_full_window())
-					for(var/obj/structure/window/win in get_step(AM,t))
-						now_pushing = 0
-						return
-			step(AM, t)
-		now_pushing = 0
+	
+	..()
 
 
+/mob/living/Collided(atom/movable/AM)
+	if(isliving(AM))
+		var/target_dir = get_dir(AM, src)
+		var/turf/target_turf = get_step(loc, target_dir)
+		Move(target_turf)
 
-/mob/living/throw_at(atom/target, range, speed, thrower)
-	if(!target || !src)
+
+/mob/living/launch_towards(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
+	if(!target || !src)	
 		return 0
-	if(pulling) stop_pulling() //being thrown breaks pulls.
-	if(pulledby) pulledby.stop_pulling()
+	if(pulling)
+		stop_pulling() //being thrown breaks pulls.
+	if(pulledby)
+		pulledby.stop_pulling()
 	. = ..()
+	
 //to make an attack sprite appear on top of the target atom.
 /mob/living/proc/flick_attack_overlay(atom/target, attack_icon_state)
 	set waitfor = 0

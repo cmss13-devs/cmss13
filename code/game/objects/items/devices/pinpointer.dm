@@ -2,11 +2,10 @@
 	name = "pinpointer"
 	icon_state = "pinoff"
 	flags_atom = FPRINT | CONDUCT
-	flags_pass = PASSTABLE
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_TINY
 	item_state = "electronic"
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	matter = list("metal" = 500)
 	var/obj/item/disk/nuclear/the_disk = null

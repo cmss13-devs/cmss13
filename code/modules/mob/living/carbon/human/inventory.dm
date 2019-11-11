@@ -378,7 +378,7 @@
 		else
 			to_chat(src, SPAN_DANGER("You are trying to eqip this item to an unsupported inventory slot. How the heck did you manage that? Stop it..."))
 			return
-
+	recalculate_move_delay = TRUE
 	return 1
 
 

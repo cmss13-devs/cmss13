@@ -26,7 +26,7 @@
 	icon_state = "separator-AO[(stat & (BROKEN|NOPOWER)) ? "0":"1"]"
 
 
-/obj/structure/machinery/recycler/Bumped(atom/movable/AM)
+/obj/structure/machinery/recycler/Collided(atom/movable/AM)
 	if(stat & (BROKEN|NOPOWER))
 		return
 	var/move_dir = get_dir(loc, AM.loc)

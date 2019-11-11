@@ -174,10 +174,10 @@
 	underlays.Cut()
 	underlays += image('icons/obj/structures/props/stationobjs.dmi', icon_state = "tele-wires")
 
-/obj/structure/machinery/teleport/hub/Bumped(M as mob|obj)
+/obj/structure/machinery/teleport/hub/Collided(atom/movable/AM)
 	spawn()
 		if (src.icon_state == "tele1")
-			teleport(M)
+			teleport(AM)
 			use_power(5000)
 	return
 
@@ -390,7 +390,7 @@
 	var/range = 10.0
 
 
-/obj/effect/laser/Bump()
+/obj/effect/laser/Collide(atom/A)
 	src.range--
 	return
 

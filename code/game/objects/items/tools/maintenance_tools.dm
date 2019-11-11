@@ -42,7 +42,7 @@
 	force = 5.0
 	w_class = SIZE_TINY
 	throwforce = 5.0
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	matter = list("metal" = 75)
 	attack_verb = list("stabbed")
@@ -105,7 +105,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	force = 6.0
-	throw_speed = 2
+	throw_speed = SPEED_FAST
 	throw_range = 9
 	w_class = SIZE_SMALL
 	matter = list("metal" = 80)
@@ -139,7 +139,7 @@
 	//Amount of OUCH when it's thrown
 	force = 3.0
 	throwforce = 5.0
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
 

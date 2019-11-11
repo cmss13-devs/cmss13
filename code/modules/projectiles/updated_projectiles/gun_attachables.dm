@@ -288,7 +288,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	pixel_shift_x = 20
 	pixel_shift_y = 16
-	flags_attach_features = NOFLAGS
+	flags_attach_features = NO_FLAGS
 
 /obj/item/attachable/slavicbarrel/New()
 	..()
@@ -300,7 +300,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "sniperbarrel"
 	desc = "A heavy barrel. CANNOT BE REMOVED."
 	slot = "muzzle"
-	flags_attach_features = NOFLAGS
+	flags_attach_features = NO_FLAGS
 
 /obj/item/attachable/sniperbarrel/New()
 	..()
@@ -312,7 +312,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "m60barrel"
 	desc = "A heavy barrel. CANNOT BE REMOVED."
 	slot = "muzzle"
-	flags_attach_features = NOFLAGS
+	flags_attach_features = NO_FLAGS
 
 /obj/item/attachable/m60barrel/New()
 	..()
@@ -324,7 +324,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "smartbarrel"
 	desc = "A heavy rotating barrel. CANNOT BE REMOVED."
 	slot = "muzzle"
-	flags_attach_features = NOFLAGS
+	flags_attach_features = NO_FLAGS
 
 // Mateba barrels
 
@@ -333,7 +333,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "mateba_medium"
 	desc = "A standard mateba barrel. Offers a balance between accuracy and firerate."
 	slot = "special"
-	flags_attach_features = NOFLAGS
+	flags_attach_features = NO_FLAGS
 
 /obj/item/attachable/mateba/New()
 	..()
@@ -354,7 +354,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "marksman mateba barrel"
 	icon_state = "mateba_long"
 	desc = "A marksman mateba barrel. Offers a greater accuracy at the cost of firerate."
-	flags_attach_features = NOFLAGS
+	flags_attach_features = NO_FLAGS
 
 /obj/item/attachable/mateba/long/New()
 	..()
@@ -757,7 +757,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "slavicstock"
 	pixel_shift_x = 32
 	pixel_shift_y = 13
-	flags_attach_features = NOFLAGS
+	flags_attach_features = NO_FLAGS
 
 /obj/item/attachable/stock/slavic/New()
 	..()
@@ -825,7 +825,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper M41A marksman stock"
 	icon_state = "m4markstock"
 	attach_icon = "m4markstock"
-	flags_attach_features = NOFLAGS
+	flags_attach_features = NO_FLAGS
 
 
 /obj/item/attachable/stock/smg
@@ -1177,7 +1177,7 @@ Defined in conflicts.dm of the #defines folder.
 	G.det_time = 15
 	G.throw_range = max_range
 	G.activate(user)
-	G.throw_at(target, max_range, 2, user)
+	G.launch_towards(target, max_range, SPEED_VERY_FAST, user)
 	current_rounds--
 	loaded_grenades.Cut(1,2)
 
@@ -1232,19 +1232,33 @@ Defined in conflicts.dm of the #defines folder.
 	var/list/turf/turfs = getline2(user,target)
 	var/distance = 0
 	var/turf/prev_T
+	var/stop_at_turf = FALSE
 	playsound(user, 'sound/weapons/gun_flamethrower2.ogg', 50, 1)
 	for(var/turf/T in turfs)
 		if(T == user.loc)
 			prev_T = T
 			continue
-		if(!current_rounds) 		break
-		if(distance >= max_range) 	break
-		if(prev_T && LinkBlocked(prev_T, T))
+		if(!current_rounds) 		
 			break
-		if(T.density && !T.throwpass)
+		if(distance >= max_range) 	
 			break
+
 		current_rounds--
-		flame_turf(T,user)
+		if(T.density)
+			T.flamer_fire_act()
+			stop_at_turf = TRUE
+		else if(prev_T)
+			var/atom/movable/temp = new/obj/flamer_fire()
+			var/atom/movable/AM = LinkBlocked(temp, prev_T, T)
+			qdel(temp)
+			if(AM)
+				AM.flamer_fire_act()
+				if (AM.flags_atom & ON_BORDER)
+					break
+				stop_at_turf = TRUE
+		flame_turf(T)
+		if (stop_at_turf)
+			break
 		distance++
 		prev_T = T
 		sleep(1)

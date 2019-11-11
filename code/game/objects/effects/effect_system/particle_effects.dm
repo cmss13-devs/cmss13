@@ -6,8 +6,8 @@
 	name = "effect"
 	icon = 'icons/effects/effects.dmi'
 	mouse_opacity = 0
-	unacidable = TRUE//So effect are not targeted by alien acid.
-	flags_pass = PASSTABLE|PASSGRILLE|PASSMOB
+	unacidable = TRUE // So effect are not targeted by alien acid.
+	flags_pass = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH|PASS_MOB
 
 	//Fire
 /obj/effect/particle_effect/fire  //Fire that ignites mobs and deletes itself after some time, but doesn't mess with atmos. Good fire flamethrowers and incendiary stuff.
@@ -65,7 +65,7 @@
 		return 0
 	.=..()
 
-/obj/effect/particle_effect/water/Bump(atom/A)
+/obj/effect/particle_effect/water/Collide(atom/A)
 	if(reagents)
 		reagents.reaction(A)
 	return ..()

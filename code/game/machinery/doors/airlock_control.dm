@@ -7,6 +7,7 @@ obj/structure/machinery/door/airlock
 	var/shockedby = list()
 	var/datum/radio_frequency/radio_connection
 	var/cur_command = null	//the command the door is currently attempting to complete
+	flags_can_pass_all = NO_FLAGS
 
 obj/structure/machinery/door/airlock/proc/can_radio()
 	if(!arePowerSystemsOn())

@@ -95,7 +95,7 @@ Make sure that the doctors and nurses are doing their jobs and keeping the marin
 
 
 /datum/job/civilian/liaison/nightmare
-	flags_startup_parameters = NOFLAGS
+	flags_startup_parameters = NO_FLAGS
 	gear_preset = "Nightmare USCM Corporate Liaison"
 
 /datum/job/civilian/liaison/nightmare/generate_entry_message(mob/living/carbon/human/H)

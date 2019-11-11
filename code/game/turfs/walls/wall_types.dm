@@ -258,7 +258,7 @@
 	radiate()
 	..()
 
-/turf/closed/wall/mineral/uranium/Bumped(AM as mob|obj)
+/turf/closed/wall/mineral/uranium/Collided(atom/movable/AM)
 	radiate()
 	..()
 
@@ -370,8 +370,8 @@
 	if(!locate(/obj/effect/alien/weeds) in loc)
 		new /obj/effect/alien/weeds(loc)
 
-/turf/closed/wall/resin/flamer_fire_act()
-	take_damage(50)
+/turf/closed/wall/resin/flamer_fire_act(var/dam = config.min_burnlevel)
+	take_damage(dam)
 
 //this one is only for map use
 /turf/closed/wall/resin/ondirt
@@ -392,6 +392,7 @@
 	damage_cap = HEALTH_WALL_XENO_MEMBRANE
 	opacity = 0
 	alpha = 180
+	flags_can_pass_all = PASS_GLASS
 
 //this one is only for map use
 /turf/closed/wall/resin/membrane/ondirt
@@ -406,9 +407,9 @@
 	alpha = 210
 
 
-/turf/closed/wall/resin/hitby(AM as mob|obj)
+/turf/closed/wall/resin/hitby(atom/movable/AM)
 	..()
-	if(istype(AM,/mob/living/carbon/Xenomorph))
+	if(isXeno(AM))
 		return
 	visible_message(SPAN_DANGER("\The [src] was hit by \the [AM]."), \
 	SPAN_DANGER("You hit \the [src]."))
@@ -453,15 +454,8 @@
 	else
 		return attack_hand(user)
 
-/turf/closed/wall/resin/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
-		return !opacity
-	return !density
-
 /turf/closed/wall/resin/dismantle_wall(devastated = 0, explode = 0)
 	qdel(src) //ChangeTurf is called by Dispose()
-
-
 
 /turf/closed/wall/resin/ChangeTurf(newtype)
 	. = ..()

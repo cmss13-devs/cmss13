@@ -110,7 +110,7 @@
 	var/acid_level = 0
 	var/weed_level = 0
 
-	var/charge_speed = 2
+	var/charge_speed = 0.5
 	var/charge_distance = 6
 
 	//New variables for how charges work, max speed, speed buildup, all that jazz

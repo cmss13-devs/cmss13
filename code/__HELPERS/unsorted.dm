@@ -247,22 +247,98 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	return destination
 
 
-//among other things, used by flamethrower and boiler spray to calculate if flame/spray can pass through.
-/proc/LinkBlocked(turf/A, turf/B)
-	if(A == null || B == null) return 1
-	var/adir = get_dir(A,B)
-	var/rdir = get_dir(B,A)
-	if(adir & (adir-1))//is diagonal direction
-		var/turf/iStep = get_step(A,adir&(NORTH|SOUTH))
-		if(!iStep.density && !LinkBlocked(A,iStep) && !LinkBlocked(iStep,B)) return 0
+// Among other things, used by flamethrower and boiler spray to calculate if flame/spray can pass through.
+// Returns an atom for specific effects (primarily flames and acid spray) that damage things upon contact
+//
+// This is a copy-and-paste of the Enter() proc for turfs with tweaks related to the applications
+// of LinkBlocked
+/proc/LinkBlocked(atom/movable/mover, turf/start_turf, turf/target_turf, atom/forget)
+	if (!mover)
+		return null
 
-		var/turf/pStep = get_step(A,adir&(EAST|WEST))
-		if(!pStep.density && !LinkBlocked(A,pStep) && !LinkBlocked(pStep,B)) return 0
-		return 1
+	var/fdir = get_dir(start_turf, target_turf)
+	if (!fdir)
+		return null
 
-	if(DirBlocked(A,adir)) return 1
-	if(DirBlocked(B,rdir)) return 1
-	return 0
+
+	var/fd1 = fdir&(fdir-1)
+	var/fd2 = fdir - fd1
+
+
+	var/blocking_dir = 0 // The direction that mover's path is being blocked by
+
+	var/obstacle
+	var/turf/T
+	var/atom/A
+
+	blocking_dir |= start_turf.BlockedExitDirs(mover, fdir)
+	for (obstacle in start_turf) //First, check objects to block exit
+		if (mover == obstacle || forget == obstacle)
+			continue
+		if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
+			continue
+		A = obstacle
+		blocking_dir |= A.BlockedExitDirs(mover, fdir)
+		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+			return A
+
+	// Check for atoms in adjacent turf EAST/WEST
+	if (mover.diagonal_movement == DIAG_MOVE_DEFAULT && \
+		fd1 && fd1 != fdir
+	)
+		T = get_step(start_turf, fd1)
+		if (T.BlockedExitDirs(mover, fd2) || T.BlockedPassDirs(mover, fd1))
+			blocking_dir |= fd1
+			if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+				return T
+		for (obstacle in T)
+			if(forget == obstacle)
+				continue
+			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
+				continue
+			A = obstacle
+			if (A.BlockedExitDirs(mover, fd2) || A.BlockedPassDirs(mover, fd1))
+				blocking_dir |= fd1
+				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+					return A
+				break
+
+	// Check for atoms in adjacent turf NORTH/SOUTH
+	if (mover.diagonal_movement == DIAG_MOVE_DEFAULT && \
+		fd2 && fd2 != fdir
+	)
+		T = get_step(start_turf, fd2)
+		if (T.BlockedExitDirs(mover, fd1) || T.BlockedPassDirs(mover, fd2))
+			blocking_dir |= fd2
+			if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+				return T
+		for (obstacle in T)
+			if(forget == obstacle)
+				continue
+			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
+				continue
+			A = obstacle
+			if (A.BlockedExitDirs(mover, fd1) || A.BlockedPassDirs(mover, fd2))
+				blocking_dir |= fd2
+				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+					return A
+				break
+
+	// Check the turf itself
+	blocking_dir |= target_turf.BlockedPassDirs(mover, fdir)
+	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+		return target_turf
+	for (obstacle in target_turf) // Finally, check atoms in the target turf
+		if(forget == obstacle)
+			continue
+		if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
+			continue
+		A = obstacle
+		blocking_dir |= A.BlockedPassDirs(mover, fdir)
+		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+			return A
+
+	return null // Nothing found to block the link of mover from start_turf to target_turf
 
 /proc/DirBlocked(turf/loc,var/direction)
 	for(var/obj/structure/window/D in loc)
@@ -1646,7 +1722,7 @@ var/list/WALLITEMS = list(
 		arglist = list2params(arglist)
 	return "<a href='?src=\ref[D];[arglist]'>[content]</a>"
 
-/proc/getline(atom/M,atom/N)//Ultra-Fast Bresenham Line-Drawing Algorithm
+/proc/getline(atom/M, atom/N, include_from_atom = TRUE)//Ultra-Fast Bresenham Line-Drawing Algorithm
 	var/px=M.x		//starting x
 	var/py=M.y
 	var/line[] = list(locate(px,py,M.z))
@@ -1666,7 +1742,8 @@ var/list/WALLITEMS = list(
 				y-=dxabs
 				py+=sdy
 			px+=sdx		//Step on in x direction
-			line+=locate(px,py,M.z)//Add the turf to the list
+			if(j > 0 || include_from_atom)
+				line+=locate(px,py,M.z)//Add the turf to the list
 	else
 		for(j=0;j<dyabs;j++)
 			x+=dxabs
@@ -1674,12 +1751,13 @@ var/list/WALLITEMS = list(
 				x-=dyabs
 				px+=sdx
 			py+=sdy
-			line+=locate(px,py,M.z)
+			if(j > 0 || include_from_atom)
+				line+=locate(px,py,M.z)
 	return line
 
 //Bresenham's algorithm. This one deals efficiently with all 8 octants.
 //Just don't ask me how it works.
-/proc/getline2(atom/from_atom,atom/to_atom)
+/proc/getline2(atom/from_atom,atom/to_atom, include_from_atom = TRUE)
 	if(!from_atom || !to_atom) return 0
 	var/list/turf/turfs = list()
 
@@ -1709,10 +1787,11 @@ var/list/WALLITEMS = list(
 		else if (h > 0) dy2 = 1
 		dx2 = 0
 
-	var/numerator = longest>>1
+	var/numerator = longest >> 1
 	var/i
 	for(i = 0; i <= longest; i++)
-		turfs += locate(cur_x,cur_y,from_atom.z)
+		if(i > 0 || include_from_atom)
+			turfs += locate(cur_x,cur_y,from_atom.z)
 		numerator += shortest
 		if(!(numerator < longest))
 			numerator -= longest

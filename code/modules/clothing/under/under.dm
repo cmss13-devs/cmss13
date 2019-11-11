@@ -5,7 +5,6 @@
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	flags_heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	permeability_coefficient = 0.90
-	flags_pass = PASSTABLE
 	flags_equip_slot = SLOT_ICLOTHING
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE

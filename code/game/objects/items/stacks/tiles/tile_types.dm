@@ -16,7 +16,7 @@
 	w_class = SIZE_MEDIUM
 	force = 1.0
 	throwforce = 1.0
-	throw_speed = 5
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	max_amount = 60
 	origin_tech = "biotech=1"
@@ -32,7 +32,7 @@
 	w_class = SIZE_MEDIUM
 	force = 1.0
 	throwforce = 1.0
-	throw_speed = 5
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	max_amount = 60
 
@@ -47,6 +47,6 @@
 	w_class = SIZE_MEDIUM
 	force = 1.0
 	throwforce = 1.0
-	throw_speed = 5
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	max_amount = 60

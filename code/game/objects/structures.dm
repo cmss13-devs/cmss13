@@ -5,7 +5,6 @@
 	var/breakable
 	var/parts
 	var/list/debris = list()
-	var/flags_barrier = 0
 	var/unslashable = FALSE
 	health = 100
 	anchored = 1
@@ -15,23 +14,24 @@
 	..()
 	structure_list += src
 
+	if(climbable)
+		verbs += /obj/structure/proc/climb_on
+
 /obj/structure/Dispose()
-	. = ..()
 	for(var/atom/movable/A in contents_recursive())
-		if(isobj(A))
-			var/obj/O = A
-			if(O.unacidable)
-				O.forceMove(get_turf(loc))
+		var/obj/O = A
+		if(!istype(O))
+			continue
+		if(O.unacidable)
+			O.forceMove(get_turf(loc))
 	structure_list -= src
+	. = ..()
 
 /obj/structure/proc/destroy(deconstruct)
 	if(parts)
 		new parts(loc)
 	density = 0
 	qdel(src)
-
-/obj/structure/proc/handle_barrier_chance(mob/living/M)
-	return 0
 
 /obj/structure/attack_hand(mob/user)
 	..()
@@ -65,11 +65,6 @@
 			for(var/thing in debris)
 				var/obj/item/I = new thing(loc)
 				I.explosion_throw(severity, direction)
-
-/obj/structure/New()
-	..()
-	if(climbable)
-		verbs += /obj/structure/proc/climb_on
 
 /obj/structure/proc/climb_on()
 

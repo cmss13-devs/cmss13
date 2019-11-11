@@ -1,7 +1,6 @@
 //Refer to life.dm for caller
 
 /mob/living/carbon/human/handle_shock()
-
 	// Post-hoc documentation by Fourkhan
 	// This gets called on every human on every life() proc
 	// Determines how human pain works 
@@ -25,6 +24,8 @@
 
 	
 	..() // This is where traumatic_shock gets updated 
+
+	recalculate_move_delay = TRUE
 
 	if(status_flags & GODMODE || analgesic || (species && species.flags & NO_PAIN)) return //Godmode or some other pain reducers. //Analgesic avoids all traumatic shock temporarily
 

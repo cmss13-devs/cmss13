@@ -9,7 +9,7 @@
 	anchored = 0.0
 	force = 1.0
 	throwforce = 1.0
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 2
 	w_class = SIZE_TINY
 	var/access = list()

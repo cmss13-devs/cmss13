@@ -7,7 +7,7 @@
 	force = 6.0
 	matter = list("metal" = 937.5)
 	throwforce = 8.0
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
 	flags_atom = FPRINT|CONDUCT
 	max_amount = 60

@@ -152,6 +152,7 @@
 
 		if( abs(env_temp - bodytemperature) > 40 )
 			bodytemperature += ((env_temp - bodytemperature) / 5)
+			recalculate_move_delay = TRUE
 
 		if(min_oxy)
 			if(env_gas != GAS_TYPE_AIR && env_gas != GAS_TYPE_OXYGEN)
@@ -188,7 +189,7 @@
 		adjustBruteLoss(unsuitable_atoms_damage)
 	return 1
 
-/mob/living/simple_animal/Bumped(AM as mob|obj)
+/mob/living/simple_animal/Collided(atom/movable/AM)
 	if(!AM) return
 
 	if(resting || buckled)

@@ -242,11 +242,11 @@
 		return
 	return
 
-/obj/effect/beam/i_beam/Bump()
+/obj/effect/beam/i_beam/Collide()
 	qdel(src)
 	return
 
-/obj/effect/beam/i_beam/Bumped()
+/obj/effect/beam/i_beam/Collided(atom/movable/AM)
 	hit()
 	return
 

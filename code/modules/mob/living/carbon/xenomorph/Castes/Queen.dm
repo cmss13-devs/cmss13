@@ -263,12 +263,12 @@
 	return 1
 
 //Custom bump for crushers. This overwrites normal bumpcode from carbon.dm
-/mob/living/carbon/Xenomorph/Queen/Bump(atom/A, yes)
+/mob/living/carbon/Xenomorph/Queen/Collide(atom/A)
 	set waitfor = 0
 
 	//if(charge_speed < charge_speed_buildup * charge_turfs_to_charge || !is_charging) return ..()
 
-	if(stat || !istype(A) || A == src || !yes) 
+	if(stat || !istype(A) || A == src) 
 		return FALSE
 
 	if(now_pushing) 

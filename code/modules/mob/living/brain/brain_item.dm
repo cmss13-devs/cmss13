@@ -3,11 +3,11 @@
 	health = 400 //They need to live awhile longer than other organs.
 	desc = "A piece of juicy meat found in a person's head."
 	icon_state = "brain2"
-	flags_atom = NOFLAGS
+	flags_atom = NO_FLAGS
 	force = 1.0
 	w_class = SIZE_SMALL
 	throwforce = 1.0
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	origin_tech = "biotech=3"
 	attack_verb = list("attacked", "slapped", "whacked")

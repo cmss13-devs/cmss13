@@ -32,7 +32,7 @@
 	icon_state = "parrot_fly"
 	icon_living = "parrot_fly"
 	icon_dead = "parrot_dead"
-	flags_pass = PASSTABLE
+	flags_pass = PASS_OVER|PASS_FLAGS_CRAWLER
 	mob_size = MOB_SIZE_SMALL
 
 	speak = list("Hi","Hello!","Cracker?","BAWWWWK george mellons griffing me")

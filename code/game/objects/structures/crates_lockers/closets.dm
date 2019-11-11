@@ -15,6 +15,7 @@
 							  //then open it in a populated area to crash clients.
 	var/open_sound = 'sound/machines/click.ogg'
 	var/close_sound = 'sound/machines/click.ogg'
+	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
 
 	var/store_items = TRUE
 	var/store_mobs = TRUE
@@ -34,11 +35,11 @@
 /obj/structure/closet/alter_health()
 	return get_turf(src)
 
-/obj/structure/closet/CanPass(atom/movable/mover, turf/target)
+/obj/structure/closet/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(wall_mounted)
-		return 1
-	else
-		return !density
+		return NO_BLOCKED_MOVEMENT
+	
+	return ..()
 
 /obj/structure/closet/proc/select_gamemode_equipment(gamemode)
 	return

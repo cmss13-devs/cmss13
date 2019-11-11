@@ -209,6 +209,7 @@
 			return
 		occupant.bodytemperature += 2*(temperature - occupant.bodytemperature)
 		occupant.bodytemperature = max(occupant.bodytemperature, temperature) // this is so ugly i'm sorry for doing it i'll fix it later i promise
+		occupant.recalculate_move_delay = TRUE
 		occupant.stat = 1
 		if(occupant.bodytemperature < T0C)
 			occupant.Sleeping(10)
@@ -251,6 +252,7 @@
 			occupant.loc = get_step(loc, SOUTH)
 	if (occupant.bodytemperature < 261 && occupant.bodytemperature >= 70)
 		occupant.bodytemperature = 261
+		occupant.recalculate_move_delay = TRUE
 	occupant = null
 	update_use_power(1)
 	update_icon()

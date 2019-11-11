@@ -7,7 +7,7 @@
 	origin_tech = "powerstorage=1"
 	force = 5.0
 	throwforce = 5.0
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
 	var/charge = 0	// note %age conveted to actual charge in New

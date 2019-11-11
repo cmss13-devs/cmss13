@@ -8,7 +8,7 @@
 	flags_atom = FPRINT|CONDUCT
 	throwforce = 10
 	w_class = SIZE_MEDIUM
-	throw_speed = 2
+	throw_speed = SPEED_SLOW
 	throw_range = 10
 	force = 10.0
 	flags_equip_slot = SLOT_WAIST

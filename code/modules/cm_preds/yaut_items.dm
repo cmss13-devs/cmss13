@@ -1065,7 +1065,7 @@
 		qdel(S)
 
 	for(var/obj/item/explosive/grenade/spawnergrenade/smartdisc/D in range(10))
-		D.throw_at(usr,10,1,usr)
+		D.launch_towards(usr, 10, SPEED_FAST, usr)
 	return 1
 
 /obj/item/clothing/gloves/yautja/verb/call_combi()
@@ -1355,7 +1355,7 @@
 	edge = 1
 	sharp = 2
 	flags_item = NOSHIELD|NODROP|ITEM_PREDATOR
-	flags_equip_slot = NOFLAGS
+	flags_equip_slot = NO_FLAGS
 	hitsound = 'sound/weapons/wristblades_hit.ogg'
 	attack_speed = 6
 	pry_capable = IS_PRY_CAPABLE_FORCE
@@ -1561,7 +1561,7 @@
 	force = 35
 	embeddable = FALSE //It shouldn't embed so that the Yautja can actually use the yank combi verb, and so that it's not useless upon throwing it at someone.
 	throwforce = 45
-	throw_speed = 5 //We need the throw speed to be 5 so that it can do the full 70 damage upon hitting someone with a throw.
+	throw_speed = SPEED_VERY_FAST
 	unacidable = TRUE
 	sharp = IS_SHARP_ITEM_ACCURATE
 	attack_verb = list("speared", "stabbed", "impaled")
@@ -1675,11 +1675,12 @@
 			..()
 	else ..()
 
-/obj/item/weapon/combistick/throw_impact(atom/hit_atom)
+/obj/item/weapon/combistick/launch_impact(atom/hit_atom)
 	if(isYautja(hit_atom) && ishuman(hit_atom))
 		var/mob/living/carbon/human/H = hit_atom
 		if(H.put_in_hands(src))
-			hit_atom.visible_message(SPAN_NOTICE(" [hit_atom] expertly catches [src] out of the air. "),SPAN_NOTICE(" You easily catch [src]. "))
+			hit_atom.visible_message(SPAN_NOTICE(" [hit_atom] expertly catches [src] out of the air. "), \
+				SPAN_NOTICE(" You easily catch [src]. "))
 			return
 	..()
 
@@ -1721,7 +1722,7 @@
 			add_fingerprint(user)
 			if(iscarbon(user))
 				var/mob/living/carbon/C = user
-				C.throw_mode_on()
+				C.toggle_throw_mode(THROW_MODE_NORMAL)
 		else
 			if(!isYautja(user)) return
 			activated_turf = get_turf(user)

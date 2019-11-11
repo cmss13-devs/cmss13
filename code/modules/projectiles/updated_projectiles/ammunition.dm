@@ -16,7 +16,7 @@ They're all essentially identical when it comes to getting the job done.
 	origin_tech = "combat=2'materials=2" //Low.
 	throwforce = 2
 	w_class = SIZE_TINY
-	throw_speed = 2
+	throw_speed = SPEED_SLOW
 	throw_range = 6
 	var/default_ammo = /datum/ammo/bullet
 	var/caliber = null // This is used for matching handfuls to each other or whatever the mag is. Examples are" "12g" ".44" ".357" etc.

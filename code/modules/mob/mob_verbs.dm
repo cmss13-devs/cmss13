@@ -19,6 +19,24 @@
 		next_move = world.time + 2
 	return
 
+/mob/verb/toggle_normal_throw()
+	set name = "Toggle Normal Throw"
+	set category = "IC"
+	set hidden = TRUE
+	set src = usr
+
+	to_chat(usr, SPAN_DANGER("This mob type cannot throw items."))
+	return
+
+/mob/verb/toggle_high_toss()
+	set name = "Toggle High Toss"
+	set category = "IC"
+	set hidden = TRUE
+	set src = usr
+
+	to_chat(usr, SPAN_DANGER("This mob type cannot throw items."))
+	return
+
 /mob/proc/point_to(atom/A in view())
 	//set name = "Point To"
 	//set category = "Object"
@@ -277,6 +295,8 @@
 
 	set name = "Stop Pulling"
 	set category = "IC"
+
+	recalculate_move_delay = TRUE
 
 	if(pulling)
 		var/mob/M = pulling

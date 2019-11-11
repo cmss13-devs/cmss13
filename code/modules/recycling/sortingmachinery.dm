@@ -364,7 +364,7 @@
 	update()
 		return
 
-	Bumped(var/atom/movable/AM) //Go straight into the chute
+	Collided(var/atom/movable/AM) //Go straight into the chute
 		if(istype(AM, /obj/item/projectile) || istype(AM, /obj/effect))	return
 		switch(dir)
 			if(NORTH)

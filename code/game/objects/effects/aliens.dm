@@ -47,7 +47,7 @@
 	anchored = 1
 	layer = ABOVE_OBJ_LAYER
 	mouse_opacity = 0
-	flags_pass = PASSTABLE|PASSMOB|PASSGRILLE
+	flags_pass = PASS_FLAGS_ACID_SPRAY
 	var/acid_strength = 1
 	var/source_mob
 	var/source_name
@@ -127,7 +127,6 @@
 	anchored = 1
 	layer = ABOVE_OBJ_LAYER
 	mouse_opacity = 0
-	flags_pass = PASSTABLE|PASSMOB|PASSGRILLE
 
 /obj/effect/xenomorph/spray/weak/New(loc, var/acid_level = 1, var/new_source_name, var/new_source_mob) //Self-deletes
 	..(loc)

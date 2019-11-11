@@ -5,7 +5,7 @@
 	item_state = "flash_device"	//Replace me later
 	throwforce = 5
 	w_class = SIZE_SMALL
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	flags_atom = FPRINT|CONDUCT
 	origin_tech = "magnets=2;combat=1"

@@ -18,7 +18,7 @@
 /obj/item/toy
 	icon = 'icons/obj/items/toy.dmi'
 	throwforce = 0
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	force = 0
 
@@ -66,7 +66,7 @@
 	src.update_icon()
 	return
 
-/obj/item/toy/balloon/throw_impact(atom/hit_atom)
+/obj/item/toy/balloon/launch_impact(atom/hit_atom)
 	if(src.reagents.total_volume >= 1)
 		src.visible_message(SPAN_DANGER("The [src] bursts!"),"You hear a pop and a splash.")
 		src.reagents.reaction(get_turf(hit_atom))
@@ -90,7 +90,7 @@
 	name = "syndicate balloon"
 	desc = "There is a tag on the back that reads \"FUK NT!11!\"."
 	throwforce = 0
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	force = 0
 	icon = 'icons/obj/items/weapons/weapons.dmi'
@@ -145,7 +145,7 @@
 	icon_state = "snappop"
 	w_class = SIZE_TINY
 
-	throw_impact(atom/hit_atom)
+	launch_impact(atom/hit_atom)
 		..()
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
@@ -385,12 +385,12 @@
 	w_class = SIZE_SMALL
 	force = 0.0
 	throwforce = 0.0
-	throw_speed = 1
+	throw_speed = SPEED_SLOW
 	throw_range = 20
 
-	afterattack(atom/target as mob|obj|turf|area, mob/user as mob)
-		user.drop_held_item()
-		throw_at(target, throw_range, throw_speed, user)
+/obj/item/toy/beach_ball/afterattack(atom/target as mob|obj|turf|area, mob/user as mob)
+	user.drop_held_item()
+	launch_towards(target, throw_range, throw_speed, user)
 
 
 /obj/item/toy/dice
@@ -435,7 +435,7 @@
 	item_state = "bike_horn"
 	throwforce = 3
 	w_class = SIZE_TINY
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 15
 	attack_verb = list("HONKED")
 	var/spam_flag = 0

@@ -106,7 +106,7 @@
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
 
 /mob/living/carbon/Xenomorph/Warrior/throw_item(atom/target)
-	throw_mode_off()
+	toggle_throw_mode(THROW_MODE_OFF)
 
 
 /mob/living/carbon/Xenomorph/Warrior/stop_pulling()
@@ -159,7 +159,7 @@
 				var/datum/action/act = X
 				act.update_button_icon()
 
-/mob/living/carbon/Xenomorph/Warrior/hitby(atom/movable/AM as mob|obj,var/speed = 5)
+/mob/living/carbon/Xenomorph/Warrior/hitby(atom/movable/AM)
 	if(ishuman(AM))
 		return
 	..()

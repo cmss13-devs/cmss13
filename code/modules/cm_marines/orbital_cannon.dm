@@ -437,6 +437,7 @@ var/list/ob_type_fuel_requirements
 	desc = "The console controlling the orbital cannon loading systems."
 	icon_state = "ob_console"
 	dir = WEST
+	flags_can_pass_all = PASS_ALL
 	flags_atom = ON_BORDER|CONDUCT|FPRINT
 	var/orbital_window_page = 0
 

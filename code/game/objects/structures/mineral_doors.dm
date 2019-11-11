@@ -23,7 +23,7 @@
 	name = "[mineralType] door"
 
 
-/obj/structure/mineral_door/Bumped(atom/user)
+/obj/structure/mineral_door/Collided(atom/user)
 	..()
 	if(!state)
 		return TryToSwitchState(user)
@@ -39,10 +39,14 @@
 /obj/structure/mineral_door/attack_hand(mob/user as mob)
 	return TryToSwitchState(user)
 
-/obj/structure/mineral_door/CanPass(atom/movable/mover, turf/target)
+/obj/structure/mineral_door/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(istype(mover, /obj/effect/beam))
-		return !opacity
-	return !density
+		if(!opacity)
+			return NO_BLOCKED_MOVEMENT
+		else
+			return BLOCKED_MOVEMENT
+	
+	return ..()
 
 /obj/structure/mineral_door/proc/TryToSwitchState(atom/user)
 	if(isSwitchingStates) return

@@ -23,10 +23,10 @@
 /mob/proc/do_click(atom/A, location, params)
 	// No clicking on atoms with the NOINTERACT flag
 	if ((A.flags_atom & NOINTERACT))
-		if(istype(A, /obj/screen/click_catcher))
+		if (istype(A, /obj/screen/click_catcher))
 			var/list/mods = params2list(params)
 			var/turf/TU = params2turf(mods["screen-loc"], get_turf(usr.client ? usr.client.eye : usr), usr.client)
-			if(TU)
+			if (TU)
 				do_click(TU, location, params)
 		return
 
@@ -41,7 +41,7 @@
 	next_click = world.time + 1
 	var/list/mods = params2list(params)
 
-	if(!clicked_something)
+	if (!clicked_something)
 		clicked_something = list("" = null)
 
 	for (var/mod in mods)
@@ -51,7 +51,7 @@
 	if (mods["drag"])
 		return
 
-	if(client.buildmode)
+	if (client.buildmode)
 		if (istype(A, /obj/effect/bmode))
 			A.clicked(src, mods)
 			return
@@ -59,12 +59,8 @@
 		build_click(src, client.buildmode, mods, A)
 		return
 
-	var/click_handled = 0
 	// Click handled elsewhere. (These clicks are not affected by the next_move cooldown)
-	click_handled = click(A, mods)
-	click_handled |= A.clicked(src, mods, location, params)
-
-	if (click_handled)
+	if (click(A, mods) | A.clicked(src, mods, location, params))
 		return
 
 	// Default click functions from here on.
@@ -80,7 +76,7 @@
 		return
 
 	// Throwing stuff.
-	if (in_throw_mode)
+	if (throw_mode)
 		throw_item(A)
 		return
 
@@ -91,7 +87,7 @@
 	var/obj/item/W = get_active_hand()
 
 	// Special gun mode stuff.
-	if(W == A)
+	if (W == A)
 		mode()
 		return
 
@@ -140,17 +136,16 @@
 */
 
 /mob/proc/click(var/atom/A, var/list/mods)
-	return 0
+	return FALSE
 
 /atom/proc/clicked(var/mob/user, var/list/mods)
-
 	if (mods["shift"] && !mods["middle"])
 		if(user.client && user.client.eye == user)
 			examine(user)
 			user.face_atom(src)
 		if(isAI(user))
 			examine(user)
-		return 1
+		return TRUE
 
 	if (mods["alt"])
 		var/turf/T = get_turf(src)
@@ -164,18 +159,18 @@
 
 			if (user.tile_contents.len)
 				user.tile_contents_change = 1
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /atom/movable/clicked(var/mob/user, var/list/mods)
 	if (..())
-		return 1
+		return TRUE
 
 	if (mods["ctrl"])
 		if (Adjacent(user))
 			user.start_pulling(src)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /*
 	Translates into attack_hand, etc.

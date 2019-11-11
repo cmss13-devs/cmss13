@@ -57,7 +57,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	force = 5.0
 	throwforce = 5
 	w_class = SIZE_MEDIUM
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 3
 
 /obj/item/stack/sheet/mineral/New()
@@ -85,7 +85,7 @@ obj/item/stack/sheet/mineral/iron/New()
 	desc = "Sandstone is a combination of sand and stone. A common building material for primitive civilisations, can still make a good enough wall"
 	singular_name = "sandstone brick"
 	icon_state = "sheet-sandstone"
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	origin_tech = "materials=1"
 	sheettype = "sandstone"

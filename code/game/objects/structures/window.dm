@@ -6,6 +6,7 @@
 	density = 1
 	anchored = 1
 	layer = WINDOW_LAYER
+	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_GLASS
 	flags_atom = ON_BORDER|FPRINT
 	health = 15
 	var/state = 2
@@ -94,31 +95,7 @@
 
 	return health/EXPLOSION_DAMAGE_MULTIPLIER_WINDOW
 
-//TODO: Make full windows a separate type of window.
-//Once a full window, it will always be a full window, so there's no point
-//having the same type for both.
-/obj/structure/window/proc/is_full_window()
-	if(!(flags_atom & ON_BORDER))
-		return TRUE
-
-/obj/structure/window/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
-		return 1
-	if(is_full_window())
-		return 0 //Full tile window, you can't move into it!
-	if(get_dir(loc, target) == dir)
-		return !density
-	else
-		return 1
-
-/obj/structure/window/CheckExit(atom/movable/O, turf/target)
-	if(istype(O) && O.checkpass(PASSGLASS))
-		return 1
-	if(get_dir(O.loc, target) == dir)
-		return 0
-	return 1
-
-/obj/structure/window/hitby(AM as mob|obj)
+/obj/structure/window/hitby(atom/movable/AM)
 	..()
 	visible_message(SPAN_DANGER("[src] was hit by [AM]."))
 	var/tforce = 0
@@ -246,6 +223,8 @@
 		..()
 	return
 
+/obj/structure/window/proc/is_full_window()
+	return !(flags_atom & ON_BORDER)
 
 /obj/structure/window/proc/disassemble_window()
 	if(reinf)
@@ -418,6 +397,7 @@
 	name = "theoretical window"
 	layer = TABLE_LAYER
 	static_frame = 1
+	flags_can_pass_all = PASS_GLASS
 	flags_atom = FPRINT
 	var/window_frame //For perspective windows,so the window frame doesn't magically dissapear
 	var/list/tiles_special = list(/obj/structure/machinery/door/airlock,
@@ -436,10 +416,6 @@
 	for(var/obj/effect/alien/weeds/weedwall/window/WW in loc)
 		qdel(WW)
 	. = ..()
-
-
-/obj/structure/window/framed/is_full_window()
-	return TRUE
 
 /obj/structure/window/framed/update_nearby_icons()
 	relativewall_neighbours()

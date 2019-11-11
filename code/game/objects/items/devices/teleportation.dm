@@ -18,7 +18,7 @@
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_SMALL
 	item_state = "electronic"
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	matter = list("metal" = 400)
 	origin_tech = "magnets=1"
@@ -128,7 +128,7 @@ Frequency:
 	item_state = "electronic"
 	throwforce = 5
 	w_class = SIZE_SMALL
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	matter = list("metal" = 10000)
 	origin_tech = "magnets=1;bluespace=3"

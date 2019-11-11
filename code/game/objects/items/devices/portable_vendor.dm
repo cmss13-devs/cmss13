@@ -10,7 +10,7 @@
 	flags_atom = FPRINT|CONDUCT
 	force = 8.0
 	hitsound = "swing_hit"
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 4
 	w_class = SIZE_LARGE
 

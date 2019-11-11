@@ -8,7 +8,7 @@
 	origin_tech = "combat=1"					//Guns generally have their own unique levels.
 	w_class 	= SIZE_MEDIUM
 	throwforce 	= 5
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	force 		= 5
 	attack_verb = null

@@ -3,7 +3,7 @@
 	name = "packet of seeds"
 	icon = 'icons/obj/items/seeds.dmi'
 	icon_state = "seed"
-	flags_atom = NOFLAGS
+	flags_atom = NO_FLAGS
 	w_class = SIZE_TINY
 
 	var/seed_type

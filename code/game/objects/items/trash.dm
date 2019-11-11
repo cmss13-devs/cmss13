@@ -96,7 +96,7 @@
 	icon_state = "c_tube"
 	throwforce = 1
 	w_class = SIZE_SMALL
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 
 

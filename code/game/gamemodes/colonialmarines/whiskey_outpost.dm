@@ -194,7 +194,7 @@ var/global/spawn_next_wo_wave = 0
 		xeno_type = pick(wave_data.wave_castes)
 		new_xeno = new xeno_type(picked)
 		new_xeno.away_timer = 300 //So ghosts can join instantly
-		new_xeno.flags_pass = 0
+		new_xeno.flags_pass = NO_FLAGS
 		new_xeno.nocrit(wave_data.wave_number)
 
 /datum/whiskey_outpost_wave

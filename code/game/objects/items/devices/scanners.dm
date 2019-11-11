@@ -73,7 +73,7 @@ REAGENT SCANNER
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 3
 	w_class = SIZE_SMALL
-	throw_speed = 5
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	matter = list("metal" = 200)
 	origin_tech = "magnets=1;biotech=1"
@@ -114,7 +114,7 @@ REAGENT SCANNER
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 5
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 
 	matter = list("metal" = 30,"glass" = 20)
@@ -158,7 +158,7 @@ REAGENT SCANNER
 	flags_atom = FPRINT|CONDUCT|OPENCONTAINER
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 5
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 
 	matter = list("metal" = 30,"glass" = 20)
@@ -233,7 +233,7 @@ REAGENT SCANNER
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 5
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	matter = list("metal" = 30,"glass" = 20)
 

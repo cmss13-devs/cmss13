@@ -214,7 +214,7 @@
 
 			// Warrior grab but with less stun
 			if (!Adjacent(T))
-				T.throw_at(get_step_towards(T, src), 6, 2, src)
+				T.launch_towards(get_step_towards(T, src), 6, SPEED_SLOW, src)
 
 			// Just making sure..
 			if (Adjacent(T) && start_pulling(T, 0, TRUE))
@@ -232,8 +232,8 @@
 				if (T.pulledby)
 					T.pulledby.stop_pulling()
 			else
-				throw_at(target_turf, leap_range, 2, src)
-				T.throw_at(target_turf, leap_range, 2, src)
+				launch_towards(target_turf, leap_range, SPEED_SLOW, src)
+				T.launch_towards(target_turf, leap_range, SPEED_SLOW, src)
 				T.Stun(2)
 				visible_message(SPAN_WARNING("\The [src] leaps backwards with [T]!"), \
 				SPAN_XENOWARNING("You leap backwards with [T]!"))

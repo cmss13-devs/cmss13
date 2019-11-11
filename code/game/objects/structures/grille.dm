@@ -54,7 +54,7 @@
 	handle_debris(severity, direction)
 	qdel(src)
 
-/obj/structure/grille/Bumped(atom/user)
+/obj/structure/grille/Collided(atom/user)
 	if(ismob(user)) shock(user, 70)
 
 /obj/structure/grille/attack_hand(mob/user as mob)
@@ -100,14 +100,11 @@
 	return
 
 
-/obj/structure/grille/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSGRILLE))
-		return 1
-	else
-		if(istype(mover, /obj/item/projectile))
-			return prob(90)
-		else
-			return !density
+/obj/structure/grille/BlockedPassDirs(atom/movable/mover, target_dir)
+	if(istype(mover, /obj/item/projectile) && prob(90))
+		return NO_BLOCKED_MOVEMENT
+	
+	return ..()
 
 /obj/structure/grille/bullet_act(var/obj/item/projectile/Proj)
 

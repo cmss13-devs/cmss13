@@ -24,7 +24,7 @@
 //			"Example" = FREQ_LISTENING|FREQ_BROADCASTING
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	throw_speed = 2
+	throw_speed = SPEED_FAST
 	throw_range = 9
 	w_class = SIZE_SMALL
 

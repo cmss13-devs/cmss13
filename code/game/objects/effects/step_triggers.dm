@@ -110,6 +110,7 @@
 		var/lx = A.x
 		var/ly = A.y
 		var/target = locate(A.x + vector_x, A.y + vector_y, A.z)
+		var/target_dir = get_dir(A, target)
 
 		if(A.clone) //Clones have to be hard-synced both before and after the transition
 			A.update_clone() //Update No. 1
@@ -122,7 +123,7 @@
 			return
 
 		for(var/mob/M in target) //If the target location is obstructed, abort
-			if(!M.CanPass(A, target))
+			if(M.BlockedPassDirs(A, target_dir))
 				return
 
 		A.x += vector_x

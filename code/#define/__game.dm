@@ -1,6 +1,7 @@
 //Admin perms are in global.dm.
 
 #define DEBUG 0
+#define NO_FLAGS 0 // To make it even more clear that something is a bitfield
 
 #define DM_VERSION 512
 

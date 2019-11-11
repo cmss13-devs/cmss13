@@ -96,7 +96,7 @@
 			var/obj/O = A
 			if(O.unacidable)
 				O.forceMove(get_turf(loc))
-				O.throw_at(pick(range(get_turf(loc), 1)), 1, 1)
+				O.launch_towards(pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
 
 	. = ..(cause)
 
@@ -234,34 +234,43 @@
 
 //Throwing stuff
 
-/mob/living/carbon/proc/toggle_throw_mode()
-	if (src.in_throw_mode)
-		throw_mode_off()
+/mob/living/carbon/toggle_normal_throw()
+	if (!stat && isturf(loc) && !is_mob_restrained())
+		toggle_throw_mode(THROW_MODE_NORMAL)
+
+/mob/living/carbon/toggle_high_toss()
+	if (!stat && isturf(loc) && !is_mob_restrained())
+		toggle_throw_mode(THROW_MODE_HIGH)
+
+/mob/living/carbon/proc/toggle_throw_mode(type)
+	if (type == THROW_MODE_OFF || throw_mode == type)
+		throw_mode = THROW_MODE_OFF
+		if (hud_used && hud_used.throw_icon)
+			hud_used.throw_icon.icon_state = "act_throw_off"
+		return
+	
+	throw_mode = type
+	if (!hud_used || !hud_used.throw_icon)
+		return
+
+	if (type == THROW_MODE_NORMAL)
+		hud_used.throw_icon.icon_state = "act_throw_normal"
 	else
-		throw_mode_on()
-
-/mob/living/carbon/proc/throw_mode_off()
-	src.in_throw_mode = 0
-	if(hud_used && hud_used.throw_icon) //in case we don't have the HUD and we use the hotkey
-		hud_used.throw_icon.icon_state = "act_throw_off"
-
-/mob/living/carbon/proc/throw_mode_on()
-	src.in_throw_mode = 1
-	if(hud_used && hud_used.throw_icon)
-		hud_used.throw_icon.icon_state = "act_throw_on"
+		hud_used.throw_icon.icon_state = "act_throw_high"
 
 /mob/proc/throw_item(atom/target)
 	return
 
 /mob/living/carbon/throw_item(atom/target)
-	src.throw_mode_off() // This MUST be at the beginning, or else players will not recognize that throw is not toggled on (especially xenos)
+	var/throw_type = throw_mode
+	toggle_throw_mode(THROW_MODE_OFF) // This MUST be at the beginning, or else players will not recognize that throw is not toggled on (especially xenos)
 
 	if(is_ventcrawling) //NOPE
 		return
-	if(src.stat || !target)
+	if(stat || !target)
 		return
-	if(!istype(src.loc, /turf)) // In some mob/object (i.e. devoured or tank)
-		to_chat(src, SPAN_WARNING("You cannot throw anything while inside of \the [src.loc.name]."))
+	if(!istype(loc, /turf)) // In some mob/object (i.e. devoured or tank)
+		to_chat(src, SPAN_WARNING("You cannot throw anything while inside of \the [loc.name]."))
 		return
 	if(target.type == /obj/screen)
 		return
@@ -295,23 +304,32 @@
 
 	else //real item in hand, not a grab
 		thrown_thing = I
-		drop_inv_item_on_ground(I, TRUE)
 
 	//actually throw it!
 	if (thrown_thing)
 		visible_message(SPAN_WARNING("[src] has thrown [thrown_thing]."), null, null, 5)
 
-		if(!lastarea)
+		if (!lastarea)
 			lastarea = get_area(src.loc)
-		if((istype(loc, /turf/open/space)) || !lastarea.has_gravity)
+		if ((istype(loc, /turf/open/space)) || !lastarea.has_gravity)
 			inertia_dir = get_dir(target, src)
 			step(src, inertia_dir)
 
-		thrown_thing.throw_at(target, thrown_thing.throw_range, thrown_thing.throw_speed, src, spin_throw)
+		if (throw_type == THROW_MODE_HIGH)
+			to_chat(src, SPAN_NOTICE("You prepare to perform a high toss."))
+			if (!do_after(src, SECONDS_1, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+				to_chat(src, SPAN_WARNING("You need to set up the high toss!"))
+				return
+			drop_inv_item_on_ground(I, TRUE)
+			thrown_thing.launch_towards(target, min(4, thrown_thing.throw_range), SPEED_SLOW, src, spin_throw, HIGH_LAUNCH)
+		else
+			drop_inv_item_on_ground(I, TRUE)
+			thrown_thing.launch_towards(target, thrown_thing.throw_range, thrown_thing.throw_speed, src, spin_throw)
 
 /mob/living/carbon/fire_act(exposed_temperature, exposed_volume)
 	..()
 	bodytemperature = max(bodytemperature, BODYTEMP_HEAT_DAMAGE_LIMIT+10)
+	recalculate_move_delay = TRUE
 
 
 /mob/living/carbon/show_inv(mob/living/carbon/user as mob)
@@ -365,8 +383,8 @@
 		usr.sleeping = 20 //Short nap
 
 
-/mob/living/carbon/Bump(atom/movable/AM, yes)
-	if(!yes || now_pushing)
+/mob/living/carbon/Collide(atom/movable/AM)
+	if(now_pushing)
 		return
 	. = ..()
 

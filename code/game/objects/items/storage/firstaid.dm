@@ -11,7 +11,7 @@
 	name = "first-aid kit"
 	desc = "It's an emergency medical kit for those serious boo-boos."
 	icon_state = "firstaid"
-	throw_speed = 2
+	throw_speed = SPEED_FAST
 	throw_range = 8
 	cant_hold = list(
 		/obj/item/ammo_magazine,
@@ -149,7 +149,7 @@
 	name = "syringe case"
 	desc = "It's an medical case for storing syringes and bottles."
 	icon_state = "syringe_case"
-	throw_speed = 2
+	throw_speed = SPEED_FAST
 	throw_range = 8
 	storage_slots = 3
 	w_class = SIZE_SMALL

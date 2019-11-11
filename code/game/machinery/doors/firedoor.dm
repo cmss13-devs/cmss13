@@ -113,7 +113,7 @@
 				users_to_open_string += ", [users_to_open[i]]"
 		to_chat(user, "These people have opened \the [src] during an alert: [users_to_open_string].")
 
-/obj/structure/machinery/door/firedoor/Bumped(atom/AM)
+/obj/structure/machinery/door/firedoor/Collided(atom/movable/AM)
 	if(panel_open || operating)
 		return
 	if(!density)

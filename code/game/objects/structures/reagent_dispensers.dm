@@ -8,6 +8,7 @@
 	density = 1
 	anchored = 0
 	flags_atom = CAN_BE_SYRINGED
+	flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 
 	var/amount_per_transfer_from_this = 10
 	var/possible_transfer_amounts = list(10,25,50,100)
@@ -58,14 +59,6 @@
 			return
 		else
 	return
-
-/obj/structure/reagent_dispensers/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return 1
-	else
-		return !density
-
-
 
 //Dispensers
 /obj/structure/reagent_dispensers/watertank

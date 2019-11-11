@@ -31,5 +31,6 @@ Bonus
 		to_chat(M, SPAN_NOTICE("[pick("You feel cold.", "You start shaking from the cold.")]"))
 		if(M.bodytemperature < BODYTEMP_COLD_DAMAGE_LIMIT)
 			M.bodytemperature = min(M.bodytemperature - (20 * A.stage), BODYTEMP_COLD_DAMAGE_LIMIT + 1)
+			M.recalculate_move_delay = TRUE
 
 	return

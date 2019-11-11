@@ -14,7 +14,7 @@
 	..()
 	new /obj/structure/machinery/conveyor(loc, WEST, 1)
 
-/obj/structure/machinery/transformer/Bumped(var/atom/movable/AM)
+/obj/structure/machinery/transformer/Collided(atom/movable/AM)
 	// HasEntered didn't like people lying down.
 	if(ishuman(AM))
 		// Only humans can enter from the west side, while lying down.

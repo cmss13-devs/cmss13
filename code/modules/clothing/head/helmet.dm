@@ -82,24 +82,24 @@
 	name = "warden's hat"
 	desc = "It's a special helmet issued to the Warden of a securiy force. Protects the head from impacts."
 	icon_state = "policehelm"
-	flags_inventory = NOFLAGS
-	flags_inv_hide = NOFLAGS
+	flags_inventory = NO_FLAGS
+	flags_inv_hide = NO_FLAGS
 	flags_armor_protection = 0
 
 /obj/item/clothing/head/helmet/hop
 	name = "crew resource's hat"
 	desc = "A stylish hat that both protects you from enraged former-crewmembers and gives you a false sense of authority."
 	icon_state = "hopcap"
-	flags_inventory = NOFLAGS
-	flags_inv_hide = NOFLAGS
+	flags_inventory = NO_FLAGS
+	flags_inv_hide = NO_FLAGS
 	flags_armor_protection = 0
 
 /obj/item/clothing/head/helmet/formalcaptain
 	name = "parade hat"
 	desc = "No one in a commanding position should be without a perfect, white hat of ultimate authority."
 	icon_state = "officercap"
-	flags_inventory = NOFLAGS
-	flags_inv_hide = NOFLAGS
+	flags_inventory = NO_FLAGS
+	flags_inv_hide = NO_FLAGS
 	flags_armor_protection = 0
 
 /obj/item/clothing/head/helmet/swat
@@ -475,7 +475,7 @@
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
-	flags_marine_helmet = NOFLAGS
+	flags_marine_helmet = NO_FLAGS
 	specialty = "M30 tactical"
 
 /obj/item/clothing/head/helmet/marine/tanker
@@ -493,7 +493,7 @@
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
-	flags_marine_helmet = NOFLAGS
+	flags_marine_helmet = NO_FLAGS
 	specialty = "M50 tanker"
 
 /obj/item/clothing/head/helmet/marine/ghillie
@@ -510,7 +510,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
-	flags_marine_helmet = NOFLAGS
+	flags_marine_helmet = NO_FLAGS
 
 /obj/item/clothing/head/helmet/marine/CO
 	name = "\improper M10 pattern captain helmet"
@@ -549,8 +549,8 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = NOFLAGS
-	flags_marine_helmet = NOFLAGS
+	flags_inv_hide = NO_FLAGS
+	flags_marine_helmet = NO_FLAGS
 
 /obj/item/clothing/head/helmet/marine/veteran/PMC/leader
 	name = "\improper PMC beret"
@@ -632,16 +632,16 @@
 	desc = "A protective cap worn by some seriously experienced mercs."
 	icon_state = "dutch_cap"
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = NOFLAGS
-	flags_marine_helmet = NOFLAGS
+	flags_inv_hide = NO_FLAGS
+	flags_marine_helmet = NO_FLAGS
 
 /obj/item/clothing/head/helmet/marine/veteran/dutch/band
 	name = "\improper Dutch's Dozen band"
 	desc = "A protective band worn by some seriously experienced mercs."
 	icon_state = "dutch_band"
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = NOFLAGS
-	flags_marine_helmet = NOFLAGS
+	flags_inv_hide = NO_FLAGS
+	flags_marine_helmet = NO_FLAGS
 
 /obj/item/clothing/head/helmet/marine/veteran/bear
 	name = "\improper Iron Bear helmet"
@@ -815,7 +815,7 @@
 	item_state = "hefa_helmet"
 	armor_bomb = CLOTHING_ARMOR_HARDCORE // the hefa knight stands
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR|HIDEEYES
-	flags_marine_helmet = NOFLAGS
+	flags_marine_helmet = NO_FLAGS
 	flags_atom = UNIQUE_ITEM_TYPE
 
 	var/mob/activator = null

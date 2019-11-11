@@ -9,7 +9,7 @@
 	flags_atom = FPRINT|CONDUCT
 	force = 5.0
 	throwforce = 10.0
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 4
 
 	origin_tech = "magnets=2;materials=2"
@@ -51,6 +51,7 @@
 	var/charge_usage = (temp_adj/max_cooling)*charge_consumption
 
 	H.bodytemperature -= temp_adj*efficiency
+	H.recalculate_move_delay = TRUE
 
 	cell.use(charge_usage)
 

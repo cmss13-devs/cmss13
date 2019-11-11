@@ -18,7 +18,7 @@
 	icon_state = "broken_bottle"
 	force = 9.0
 	throwforce = 5.0
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	item_state = "broken_beer"
 	hitsound = 'sound/weapons/bladeslice.ogg'

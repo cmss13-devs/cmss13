@@ -747,7 +747,7 @@
 	if (!throw_item)
 		return 0
 	spawn(0)
-		throw_item.throw_at(target, 16, 3, src)
+		throw_item.launch_towards(target, 16, SPEED_AVERAGE, src)
 	src.visible_message(SPAN_WARNING("[src] launches [throw_item.name] at [target]!"))
 	return 1
 

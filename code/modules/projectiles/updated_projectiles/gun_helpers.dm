@@ -126,8 +126,9 @@ DEFINES in setup.dm, referenced here.
 		unload(user)//It has to be held if it's a two hander.
 	else ..()
 
-/obj/item/weapon/gun/throw_at(atom/target, range, speed, thrower)
-	if( harness_check(thrower) ) to_chat(usr, SPAN_WARNING("\The [src] clanks on the ground."))
+/obj/item/weapon/gun/launch_towards(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
+	if(harness_check(thrower)) 
+		to_chat(thrower, SPAN_WARNING("\The [src] clanks on the ground."))
 	else ..()
 
 /*

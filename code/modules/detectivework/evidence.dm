@@ -119,7 +119,7 @@
 	item_state = "paper"
 	throwforce = 1
 	w_class = SIZE_TINY
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 
 

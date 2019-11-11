@@ -414,10 +414,10 @@
 			if(!istype(AM, /mob/living/silicon/robot/drone)) //Poor drones kept smashing windows and taking system damage being fired out of disposals. ~Z
 				spawn(1)
 					if(AM)
-						AM.throw_at(target, 5, 1)
+						AM.launch_towards(target, 5, SPEED_FAST)
 		qdel(H)
 
-/obj/structure/machinery/disposal/CanPass(atom/movable/mover, turf/target)
+/obj/structure/machinery/disposal/BlockedPassDirs(atom/movable/mover, target_turf)
 	if(istype(mover, /obj/item) && mover.throwing)
 		var/obj/item/I = mover
 		if(istype(I, /obj/item/projectile))
@@ -700,7 +700,7 @@
 				AM.pipe_eject(direction)
 				spawn(1)
 					if(AM)
-						AM.throw_at(target, 100, 1)
+						AM.launch_towards(target, 100, SPEED_FAST)
 			qdel(H)
 
 	else //No specified direction, so throw in random direction
@@ -714,7 +714,7 @@
 				AM.pipe_eject(0)
 				spawn(1)
 					if(AM)
-						AM.throw_at(target, 5, 1)
+						AM.launch_towards(target, 5, SPEED_FAST)
 
 			qdel(H)
 
@@ -1335,7 +1335,7 @@
 			AM.pipe_eject(dir)
 			if(!istype(AM, /mob/living/silicon/robot/drone)) //Drones keep smashing windows from being fired out of chutes. Bad for the station. ~Z
 				spawn(5)
-					AM.throw_at(target, 3, 1)
+					AM.launch_towards(target, 3, SPEED_FAST)
 		qdel(H)
 
 /obj/structure/disposaloutlet/attackby(var/obj/item/I, var/mob/user)

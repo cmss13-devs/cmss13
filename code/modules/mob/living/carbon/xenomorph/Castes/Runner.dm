@@ -52,7 +52,7 @@
 	icon_state = "Runner Walking"
 	layer = MOB_LAYER
 	plasma_types = list(PLASMA_CATECHOLAMINE)
-	flags_pass = PASSTABLE
+	flags_pass = PASS_FLAGS_CRAWLER
 	tier = 1
 	pixel_x = -16  //Needed for 2x2
 	old_x = -16

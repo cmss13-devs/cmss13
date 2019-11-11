@@ -584,7 +584,7 @@
 				//Without spawn(), it closes each door one at a time.
 				//"Well then why not change the proc itself?"
 				//Excellent question!
-				//Because when you open doors by Bumped() it would have you fly through before the animation is complete
+				//Because when you open doors by Collided() it would have you fly through before the animation is complete
 				INVOKE_ASYNC(ST, /obj/structure/machinery/door.proc/close)
 				break
 

@@ -126,7 +126,7 @@
 	item_state = "sec-case"
 	desc = "A large briefcase with a digital locking system."
 	force = 8.0
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 4
 	w_class = SIZE_LARGE
 

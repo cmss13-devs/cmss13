@@ -5,7 +5,7 @@
 	name = "\improper M44 speed loader (.44)"
 	desc = "A revolver speed loader."
 	default_ammo = /datum/ammo/bullet/revolver
-	flags_equip_slot = NOFLAGS
+	flags_equip_slot = NO_FLAGS
 	caliber = ".44"
 	icon_state = "m44"
 	item_state = "generic_speedloader"

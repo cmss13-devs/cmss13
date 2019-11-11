@@ -62,7 +62,7 @@
 		damage_falloff 		= config.reg_damage_falloff 	// How much damage the bullet loses per turf traveled.
 		shell_speed 		= config.slow_shell_speed 	// How fast the projectile moves.
 
-	var/flags_ammo_behavior = NOFLAGS
+	var/flags_ammo_behavior = NO_FLAGS
 
 /datum/ammo/proc/do_at_half_range(obj/item/projectile/P)
 	return
@@ -2027,7 +2027,7 @@
 
 /datum/ammo/souto/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(!M || M == P.firer) return
-	if(M.in_throw_mode && !M.get_active_hand())	//empty active hand and we're in throw mode. If so we catch the can.
+	if(M.throw_mode && !M.get_active_hand())	//empty active hand and we're in throw mode. If so we catch the can.
 		if(!M.is_mob_incapacitated()) // People who are not able to catch cannot catch.
 			if(P.contents.len == 1)
 				for(var/obj/item/reagent_container/food/drinks/cans/souto/S in P.contents)

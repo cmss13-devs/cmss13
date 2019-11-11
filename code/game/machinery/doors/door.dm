@@ -9,6 +9,7 @@
 	density = 1
 	throwpass = 0
 	layer = DOOR_OPEN_LAYER
+	flags_can_pass_all = NO_FLAGS
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER
 	var/id = ""
@@ -63,7 +64,7 @@
 //process()
 	//return
 
-/obj/structure/machinery/door/Bumped(atom/AM)
+/obj/structure/machinery/door/Collided(atom/movable/AM)
 	if(panel_open || operating) return
 	if(ismob(AM))
 		var/mob/M = AM
@@ -76,7 +77,7 @@
 	if(istype(AM, /obj))
 		var/obj/O = AM
 		if(O.buckled_mob)
-			Bumped(O.buckled_mob)
+			Collided(O.buckled_mob)
 
 	if(istype(AM, /obj/structure/machinery/bot))
 		var/obj/structure/machinery/bot/bot = AM
@@ -85,11 +86,6 @@
 				open()
 		return
 
-
-/obj/structure/machinery/door/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
-		return !opacity
-	return !density
 
 /obj/structure/machinery/door/proc/bumpopen(mob/user as mob)
 	if(operating)	return

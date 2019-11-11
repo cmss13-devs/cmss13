@@ -32,5 +32,6 @@ Bonus
 		to_chat(M, SPAN_NOTICE(message))
 		if(M.bodytemperature < BODYTEMP_HEAT_DAMAGE_LIMIT)
 			M.bodytemperature = min(M.bodytemperature + (20 * A.stage), BODYTEMP_HEAT_DAMAGE_LIMIT - 1)
+			M.recalculate_move_delay = TRUE
 
 	return

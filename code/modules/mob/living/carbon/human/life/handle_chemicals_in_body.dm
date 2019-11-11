@@ -6,6 +6,8 @@
 	reagent_shock_modifier = 0
 	reagent_pain_modifier = 0
 
+	recalculate_move_delay = TRUE
+
 	if(reagents && !(species.flags & NO_CHEM_METABOLIZATION))
 		var/alien = 0
 		if(species && species.reagent_tag)

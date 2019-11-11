@@ -8,7 +8,7 @@
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 5
 	w_class = SIZE_SMALL
-	throw_speed = 2
+	throw_speed = SPEED_SLOW
 	throw_range = 5
 	matter = list("metal" = 500)
 	origin_tech = "materials=1"
@@ -165,7 +165,7 @@
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 5
 	w_class = SIZE_SMALL
-	throw_speed = 2
+	throw_speed = SPEED_SLOW
 	throw_range = 5
 	matter = list("metal" = 500)
 	origin_tech = "materials=1"

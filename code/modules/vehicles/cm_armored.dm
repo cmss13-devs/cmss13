@@ -419,7 +419,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 
 	if(.)
 		for(var/mob/living/M in get_turf(A))
-			//I don't call Bump() otherwise that would encourage trampling for infinite unpunishable damage
+			//I don't call Collide() otherwise that would encourage trampling for infinite unpunishable damage
 			M.sleeping = 1e7 //Maintain their lying-down-ness
 
 /obj/vehicle/multitile/hitbox/cm_armored/Uncrossed(var/atom/movable/A)
@@ -557,12 +557,12 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	return ..()
 
 //Need to take damage from crushers, probably too little atm
-/obj/vehicle/multitile/root/cm_armored/Bumped(var/atom/A)
+/obj/vehicle/multitile/root/cm_armored/Collided(var/atom/movable/AM)
 	..()
 
-	if(istype(A, /mob/living/carbon/Xenomorph/Crusher))
+	if(istype(AM, /mob/living/carbon/Xenomorph/Crusher))
 
-		var/mob/living/carbon/Xenomorph/Crusher/C = A
+		var/mob/living/carbon/Xenomorph/Crusher/C = AM
 
 		if(C.charge_speed < C.charge_speed_max/(1.1)) //Arbitrary ratio here, might want to apply a linear transformation instead
 			return

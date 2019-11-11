@@ -16,7 +16,7 @@
 
 	force = 5.0
 	throwforce = 10.0
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 4
 
 	var/distribute_pressure = ONE_ATMOSPHERE

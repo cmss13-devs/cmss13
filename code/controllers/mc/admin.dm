@@ -52,9 +52,9 @@
 
 /proc/get_world_controllers()
 	var/list/controllers = new
-	for(var/global/datum/controller/gc in world)
+	for(var/global/datum/controller/gc in world.vars)
 		controllers += gc
-	for(var/datum/controller/c in world)
+	for(var/datum/controller/c in world.vars)
 		controllers += c
 	for(var/datum/subsystem/ss in Master.subsystems)
 		controllers += ss

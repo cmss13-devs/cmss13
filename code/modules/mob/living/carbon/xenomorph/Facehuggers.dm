@@ -17,7 +17,7 @@
 	w_class = SIZE_TINY //Note: can be picked up by aliens unlike most other items of w_class below 4
 	flags_inventory = COVEREYES|ALLOWINTERNALS|COVERMOUTH|ALLOWREBREATH|CANTSTRIP
 	flags_armor_protection = FACE|EYES
-	flags_atom = NOFLAGS
+	flags_atom = NO_FLAGS
 	flags_item = NOBLUDGEON
 	throw_range = 1
 	layer = MOB_LAYER
@@ -133,7 +133,7 @@
 	if(CanHug(AM))
 		Attach(AM)
 
-/obj/item/clothing/mask/facehugger/throw_at(atom/target, range, speed)
+/obj/item/clothing/mask/facehugger/launch_towards(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
 	..()
 	if(stat == CONSCIOUS)
 		icon_state = "[initial(icon_state)]_thrown"
@@ -149,7 +149,7 @@
 		icon_state = "[initial(icon_state)]"
 	leaping = 0
 
-/obj/item/clothing/mask/facehugger/throw_impact(atom/hit_atom, speed)
+/obj/item/clothing/mask/facehugger/launch_impact(atom/hit_atom)
 	set waitfor = 0
 	if(stat == CONSCIOUS)
 		icon_state = "[initial(icon_state)]"
@@ -188,7 +188,7 @@
 				M.visible_message(SPAN_WARNING("\The scuttling [src] leaps at [M]!"), \
 				SPAN_WARNING("The scuttling [src] leaps at [M]!"))
 				leaping = 1
-				throw_at(M, 4, 1)
+				launch_towards(M, 4, SPEED_FAST)
 				break
 			i--
 		if(!attached) //Didn't hit anything?

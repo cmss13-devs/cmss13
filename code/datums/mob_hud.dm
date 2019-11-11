@@ -15,7 +15,7 @@ var/datum/mob_hud/huds = list(
 /datum/mob_hud
 	var/list/mob/hudmobs = list() //list of all mobs which display this hud
 	var/list/mob/hudusers = list() //list with all mobs who can see the hud
-	var/list/hud_icons = list() //these will be the indexes for the atom's hud_list
+	var/list/hud_icons = list() //these will be the indices for the atom's hud_list
 
 /datum/mob_hud/proc/remove_hud_from(mob/user)
 	for(var/mob/target in hudmobs)

@@ -5,7 +5,7 @@
 	icon_state = "red_phone"
 	force = 3.0
 	throwforce = 2.0
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 4
 	w_class = SIZE_SMALL
 	attack_verb = list("called", "rang")
@@ -19,7 +19,7 @@
 	item_state = "banana_peel"
 	w_class = SIZE_TINY
 	throwforce = 0
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 
 /obj/item/bananapeel/Crossed(AM as mob|obj)
@@ -75,7 +75,7 @@
 	icon_state = "staff"
 	force = 3.0
 	throwforce = 5.0
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
 	flags_item = NOSHIELD
@@ -102,7 +102,7 @@
 	item_state = "stick"
 	force = 3.0
 	throwforce = 5.0
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
 	flags_item = NOSHIELD

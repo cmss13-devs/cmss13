@@ -6,7 +6,7 @@
 	var/uses = 4.0
 	w_class = SIZE_TINY
 	item_state = "paper"
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	origin_tech = "bluespace=4"
 

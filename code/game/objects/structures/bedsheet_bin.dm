@@ -12,7 +12,7 @@ LINEN BINS
 	item_state = "bedsheet"
 	layer = MOB_LAYER
 	throwforce = 1
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 2
 	w_class = SIZE_SMALL
 

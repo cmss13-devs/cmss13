@@ -15,6 +15,7 @@
 	var/reinforced = FALSE
 	var/buildstacktype = /obj/item/stack/sheet/metal
 	var/buildstackamount = 2
+	flags_can_pass_all = PASS_OVER|PASS_TYPE_CRAWLER
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 
 	tiles_with = list(/turf/closed/wall)
@@ -23,18 +24,15 @@
 		/obj/structure/girder,
 		/obj/structure/window_frame)
 
-/obj/structure/window_frame/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return 1
+/obj/structure/window_frame/BlockedPassDirs(atom/movable/mover, target_dir)
 	for(var/obj/structure/S in get_turf(mover))
 		if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable non-border objects allow you to universally climb over others
-			return 1
-	return 0
+			return NO_BLOCKED_MOVEMENT
 
-/obj/structure/window_frame/CheckExit(atom/movable/O as mob|obj, target as turf)
-	if(istype(O) && O.checkpass(PASSTABLE))
-		return 1
-	return 1
+	if(mover?.throwing) // Thrown objects can go through. If leaping, can go through if not barbed.
+		return NO_BLOCKED_MOVEMENT
+	
+	return ..()
 
 /obj/structure/window_frame/New(loc, from_window_shatter)
 	..()

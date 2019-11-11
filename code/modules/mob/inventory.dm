@@ -51,7 +51,8 @@
 //If both fail it drops it on the floor and returns 0.
 //This is probably the main one you need to know :)
 /mob/proc/put_in_hands(var/obj/item/W)
-	if(!W)		return 0
+	if(!W)		
+		return 0
 	if(put_in_active_hand(W))
 		update_inv_l_hand(0)
 		update_inv_r_hand()
@@ -311,6 +312,7 @@
 
 
 	if(equipped)
+		recalculate_move_delay = TRUE
 		W.layer = ABOVE_HUD_LAYER
 		if(src.back && W.loc != src.back)
 			W.loc = src

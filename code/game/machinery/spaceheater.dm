@@ -26,14 +26,6 @@
 	if(open)
 		overlays  += "sheater-open"
 
-/obj/structure/machinery/space_heater/CanPass(atom/movable/mover, turf/target)
-	if(!density) //Because broken racks -Agouri |TODO: SPRITE!|
-		return 1
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return 1
-	else
-		return 0
-
 /obj/structure/machinery/space_heater/examine(mob/user)
 	..()
 	to_chat(user, "The heater is [on ? "on" : "off"] and the hatch is [open ? "open" : "closed"].")
@@ -166,6 +158,7 @@
 			for(var/mob/living/carbon/human/H in range(2, src))
 				if(H.bodytemperature < T20C)
 					H.bodytemperature += min(round(T20C - H.bodytemperature)*0.7, 25)
+					H.recalculate_move_delay = TRUE
 
 
 			cell.use(50*CELLRATE)

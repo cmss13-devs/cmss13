@@ -7,7 +7,7 @@
 	w_class = SIZE_SMALL
 	matter = list("metal" = 100)
 	throwforce = 2
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	origin_tech = "magnets=1"
 

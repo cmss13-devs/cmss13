@@ -18,6 +18,8 @@
 
 	health = null
 
+	rebounds = TRUE
+
 	var/sharp = 0		// whether this item cuts
 	var/edge = 0		// whether this item is more likely to dismember
 	var/pry_capable = 0 //whether this item can be used to pry things open.
@@ -27,19 +29,19 @@
 	var/w_class = SIZE_MEDIUM
 	var/storage_cost = null
 	flags_atom = FPRINT
-	var/flags_item = NOFLAGS	//flags for item stuff that isn't clothing/equipping specific.
-	var/flags_equip_slot = NOFLAGS		//This is used to determine on which slots an item can fit.
+	var/flags_item = NO_FLAGS	//flags for item stuff that isn't clothing/equipping specific.
+	var/flags_equip_slot = NO_FLAGS		//This is used to determine on which slots an item can fit.
 
 	//Since any item can now be a piece of clothing, this has to be put here so all items share it.
-	var/flags_inventory = NOFLAGS //This flag is used for various clothing/equipment item stuff
-	var/flags_inv_hide = NOFLAGS //This flag is used to determine when items in someone's inventory cover others. IE helmets making it so you can't see glasses, etc.
-	flags_pass = PASSTABLE
+	var/flags_inventory = NO_FLAGS //This flag is used for various clothing/equipment item stuff
+	var/flags_inv_hide = NO_FLAGS //This flag is used to determine when items in someone's inventory cover others. IE helmets making it so you can't see glasses, etc.
+	flags_pass = PASS_UNDER
 
 	var/obj/item/master = null
 
-	var/flags_armor_protection = NOFLAGS //see setup.dm for appropriate bit flags
-	var/flags_heat_protection = NOFLAGS //flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
-	var/flags_cold_protection = NOFLAGS //flags which determine which body parts are protected from cold. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
+	var/flags_armor_protection = NO_FLAGS //see setup.dm for appropriate bit flags
+	var/flags_heat_protection = NO_FLAGS //flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
+	var/flags_cold_protection = NO_FLAGS //flags which determine which body parts are protected from cold. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
 
 	var/indestructible = 0 //determines whether or not the item can be destroyed by explosions
 
@@ -139,7 +141,9 @@
 			if(!indestructible)
 				qdel(src)
 
-
+/obj/item/mob_launch_collision(var/mob/living/L)
+	forceMove(L.loc)
+	..()
 
 //user: The mob that is suiciding
 //damagetype: The type of damage the item will inflict on the user

@@ -925,7 +925,7 @@ body
 			to_chat(usr, "Mob already has that organ.")
 			return
 
-		EO.status = NOFLAGS
+		EO.status = NO_FLAGS
 		EO.perma_injury = 0
 		EO.reset_limb_surgeries()
 		M.update_body(0)

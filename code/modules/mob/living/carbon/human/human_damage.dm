@@ -22,6 +22,8 @@
 
 	if(isSynth(src) && pulledby && health <= 0 && isXeno(pulledby))	// Xenos lose grab on critted synths
 		pulledby.stop_pulling()
+	
+	recalculate_move_delay = TRUE
 
 	med_hud_set_health()
 	med_hud_set_armor()

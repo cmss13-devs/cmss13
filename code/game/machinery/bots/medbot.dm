@@ -454,25 +454,16 @@
 	qdel(src)
 	return
 
-/obj/structure/machinery/bot/medbot/Bump(M as mob|obj) //Leave no door unopened!
-	if ((istype(M, /obj/structure/machinery/door)) && (!isnull(src.botcard)))
-		var/obj/structure/machinery/door/D = M
+/obj/structure/machinery/bot/medbot/Collide(atom/A) //Leave no door unopened!
+	if ((istype(A, /obj/structure/machinery/door)) && (!isnull(src.botcard)))
+		var/obj/structure/machinery/door/D = A
 		if (!istype(D, /obj/structure/machinery/door/firedoor) && D.check_access(src.botcard) && !istype(D,/obj/structure/machinery/door/poddoor))
 			D.open()
 			src.frustration = 0
-	else if ((istype(M, /mob/living/)) && (!src.anchored))
-		src.loc = M:loc
+	else if ((istype(A, /mob/living/)) && (!src.anchored))
+		src.loc = A.loc
 		src.frustration = 0
 	return
-
-/* terrible
-/obj/structure/machinery/bot/medbot/Bumped(atom/movable/M as mob|obj)
-	spawn(0)
-		if (M)
-			var/turf/T = get_turf(src)
-			M:loc = T
-*/
-
 
 
 /*

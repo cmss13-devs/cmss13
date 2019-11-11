@@ -293,7 +293,7 @@
 				to_chat(M, SPAN_NOTICE("That seat is already taken."))
 				return
 
-			if(!do_after(M, 100, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+			if(!do_after(M, 10 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 				to_chat(M, SPAN_NOTICE("Something interrupted you while getting in."))
 				return
 
@@ -356,22 +356,25 @@
 //TODO: Sometimes when the entrance marker is on the wall or somewhere you can't move to, it still deposits you there
 //Fix that bug at somepoint ^^
 /obj/vehicle/multitile/root/cm_armored/tank/handle_player_exit(var/mob/M)
-
-	if(M != gunner && M != driver) return
+	if(M != gunner && M != driver) 
+		return
 
 	if(occupant_exiting)
 		to_chat(M, SPAN_NOTICE("Someone is already getting out of the vehicle."))
 		return
+	if(LinkBlocked(M, get_turf(M), entrance.loc, M.loc))
+		to_chat(M, SPAN_NOTICE("Something is blocking you from exiting."))
 
 	to_chat(M, SPAN_NOTICE("You start climbing out of [src]."))
 
 	occupant_exiting = 1
-	sleep(50)
+	sleep(5 SECONDS)
 	occupant_exiting = 0
 
-	if(!M.Move(entrance.loc))
+	if(LinkBlocked(M, get_turf(M), entrance.loc, M.loc))
 		to_chat(M, SPAN_NOTICE("Something is blocking you from exiting."))
 	else
+		M.forceMove(entrance.loc)
 		if(M == gunner)
 			deactivate_all_hardpoints()
 			gunner = null
@@ -420,7 +423,7 @@
 		C.pixel_y = old_x*sin(deg) + old_y*cos(deg)
 
 
-/obj/vehicle/multitile/hitbox/cm_armored/tank/Bump(var/atom/A)
+/obj/vehicle/multitile/hitbox/cm_armored/tank/Collide(atom/A)
 	. = ..()
 	if(isliving(A))
 		var/mob/living/M = A

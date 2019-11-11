@@ -5,7 +5,7 @@
 	item_state = "briefcase"
 	flags_atom = FPRINT|CONDUCT
 	force = 8.0
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 4
 	w_class = SIZE_LARGE
 	max_w_class = SIZE_MEDIUM

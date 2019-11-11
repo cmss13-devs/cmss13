@@ -74,7 +74,7 @@ Data storage vars:
 				stop()
 				return 0
 			result = process(arglist(arg_list))
-			for(var/sleep_time=delay;sleep_time>0;sleep_time--) //uhh, this is ugly. But I see no other way to terminate sleeping proc. Such disgrace.
+			for(var/sleep_time=delay to 1 step -1)
 				if(!control_switch)
 					return 0
 				sleep(1)

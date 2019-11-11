@@ -185,9 +185,9 @@
 		if(charge_speed > charge_speed_buildup * charge_turfs_to_charge)
 			visible_message(SPAN_DANGER("[src] rams into [B] and skids to a halt!"),
 			SPAN_XENOWARNING("You ram into [B] and skid to a halt!"))
-			flags_pass = 0
+			flags_pass = NO_FLAGS
 			update_icons()
-			B.Bumped(src)
+			B.Collided(src)
 			stop_momentum(charge_dir)
 			return TRUE
 		else
@@ -199,9 +199,9 @@
 		if(charge_speed > charge_speed_buildup * charge_turfs_to_charge)
 			visible_message(SPAN_DANGER("[src] rams into [H.root] and skids to a halt!"),
 			SPAN_XENOWARNING("You ram into [H.root] and skid to a halt!"))
-			flags_pass = 0
+			flags_pass = NO_FLAGS
 			update_icons()
-			H.root.Bumped(src)
+			H.root.Collided(src)
 			stop_momentum(charge_dir)
 			return TRUE
 		else
@@ -215,7 +215,7 @@
 				SPAN_XENODANGER("You ram [HMG]!"))
 			playsound(loc, "punch", 25, 1)
 			update_icons()
-			HMG.Bumped()
+			HMG.Collided()
 			stop_momentum(charge_dir)
 			return TRUE
 		else
@@ -225,7 +225,7 @@
 /atom/proc/charge_act(mob/living/carbon/Xenomorph/X)
 	return TRUE
 
-//Catch-all, basically. Bump() isn't going to catch anything non-dense, so this is fine.
+//Catch-all, basically. Collide() isn't going to catch anything non-dense, so this is fine.
 /obj/charge_act(mob/living/carbon/Xenomorph/X)
 	. = ..()
 	if(.)
@@ -252,8 +252,11 @@
 				X.visible_message("<span class='warning'>[X] knocks [src] aside.</span>!",
 				SPAN_XENOWARNING("You knock [src] aside.")) //Canisters, crates etc. go flying.
 				playsound(loc, "punch", 25, 1)
-				X.diagonal_step(src, X.dir) //Occasionally fling it diagonally.
-				step_away(src, X, min(round(X.charge_speed) + 1, 3))
+				var/impact_range = min(round(X.charge_speed) + 1, 3)
+				var/turf/TA = X.get_diagonal_step(src, X.dir)
+				TA = get_step_away(TA, X)
+				var/launch_speed = 1/(X.charge_speed*5)
+				launch_towards(TA, impact_range, launch_speed)
 				X.charge_speed -= X.charge_speed_buildup * 2 //Lose two turfs worth of speed
 			else
 				X.stop_momentum(X.charge_dir)
@@ -267,7 +270,7 @@
 //We do not want to add Crusher specific procs to objects, all Crusher
 //related code should be handled by Crusher code. The object collided with
 //should handle it's own damage (and deletion if needed) through it's
-//Bumped() proc. ~Bmc777
+//Collided() proc. ~Bmc777
 
 /obj/structure/window/charge_act(mob/living/carbon/Xenomorph/X)
 	if(unacidable)
@@ -318,9 +321,11 @@
 		SPAN_XENODANGER("You smash straight into [src]!"))
 		playsound(loc, "punch", 25, 1)
 		tip_over()
-		X.diagonal_step(src, X.dir, 50) //Occasionally fling it diagonally.
-		step_away(src, X)
-		step_away(src, X)
+		var/impact_range = 1
+		var/turf/TA = X.get_diagonal_step(src, X.dir)
+		TA = get_step_away(TA, X)
+		var/launch_speed = 1/(X.charge_speed*5)
+		launch_towards(TA, impact_range, launch_speed)
 		X.charge_speed -= X.charge_speed_buildup * 2 //Lose two turfs worth of speed
 		return TRUE
 	else
@@ -379,8 +384,11 @@
 			SPAN_XENODANGER("You ram [src]!"))
 		KnockDown(X.charge_speed * 4)
 		animation_flash_color(src)
-		X.diagonal_step(src, X.dir) //Occasionally fling it diagonally.
-		step_away(src, X, round(X.charge_speed))
+		var/impact_range = min(round(X.charge_speed) + 1, 2)
+		var/turf/TA = X.get_diagonal_step(src, X.dir)
+		TA = get_step_away(TA, X)
+		var/launch_speed = 1/(X.charge_speed*5)
+		launch_towards(TA, impact_range, launch_speed) // Distance and speed of being thrown to the side are dependent on speed of crusher
 		X.charge_speed -= X.charge_speed_buildup //Lose one turf worth of speed
 		return TRUE
 
@@ -396,8 +404,9 @@
 		if(anchored) //Ovipositor queen can't be pushed
 			X.stop_momentum(X.charge_dir, TRUE)
 			return TRUE
-		diagonal_step(src, X.dir, 100)
-		step_away(src, X)
+		var/impact_range = 1
+		var/turf/TA = X.get_diagonal_step(src, X.dir)
+		launch_towards(TA, impact_range, SPEED_INSTANT)
 		X.charge_speed -= X.charge_speed_buildup * 2 //Lose two turfs worth of speed
 		return TRUE
 	else
@@ -416,16 +425,17 @@
 			return TRUE
 
 //Custom bump for crushers. This overwrites normal bumpcode from carbon.dm
-/mob/living/carbon/Xenomorph/Crusher/Bump(atom/A, yes)
+/mob/living/carbon/Xenomorph/Crusher/Collide(atom/A)
 	set waitfor = 0
 
-	if(charge_speed < charge_speed_buildup * charge_turfs_to_charge || !is_charging) return ..()
+	if(charge_speed < charge_speed_buildup * charge_turfs_to_charge || !is_charging)
+		return ..()
 
-	if(stat || !istype(A) || A == src || !yes) 
+	if(stat || !istype(A) || A == src)
 		return FALSE
 
-	if(now_pushing) 
-		return FALSE //Just a plain ol turf, let's return.
+	if(now_pushing)
+		return FALSE // Just a plain ol turf, let's return.
 
 	if(dir != charge_dir) //We aren't facing the way we're charging.
 		stop_momentum()

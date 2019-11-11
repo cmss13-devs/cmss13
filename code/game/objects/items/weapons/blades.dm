@@ -66,7 +66,7 @@
 	force = 25
 	w_class = SIZE_SMALL
 	throwforce = 20
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
 	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -116,7 +116,7 @@
 	desc = "The standard issue survival knife of the UPP forces, the Type 30 is effective, but humble. It is small enough to be non-cumbersome, but lethal none-the-less."
 	force = 20
 	throwforce = 10
-	throw_speed = 2
+	throw_speed = SPEED_FAST
 	throw_range = 8
 
 
@@ -131,7 +131,7 @@
 	force = 10
 	w_class = SIZE_TINY
 	throwforce = 35
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 7
 	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -172,7 +172,7 @@
 	force = 24
 	w_class = SIZE_TINY
 	throwforce = 28
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
 	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")

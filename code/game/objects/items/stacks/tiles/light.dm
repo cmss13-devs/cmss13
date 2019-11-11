@@ -6,7 +6,7 @@
 	w_class = SIZE_MEDIUM
 	force = 3.0
 	throwforce = 5.0
-	throw_speed = 5
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	max_amount = 60
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "smashed")

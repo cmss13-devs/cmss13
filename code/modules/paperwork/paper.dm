@@ -12,7 +12,7 @@
 	throwforce = 0
 	w_class = SIZE_TINY
 	throw_range = 1
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	flags_equip_slot = SLOT_HEAD
 	flags_armor_protection = HEAD
 	attack_verb = list("bapped")

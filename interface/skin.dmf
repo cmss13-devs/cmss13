@@ -258,10 +258,10 @@ macro "hotkeymode"
 		command = ".northwest"
 	elem 
 		name = "R"
-		command = ".southwest"
+		command = "Toggle-Normal-Throw"
 	elem 
 		name = "CTRL+R"
-		command = ".southwest"
+		command = "Toggle-High-Toss"
 	elem 
 		name = "ALT+S"
 		command = "southfaceperm"

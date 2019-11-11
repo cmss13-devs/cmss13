@@ -82,7 +82,7 @@
 	..()
 
 
-/obj/item/device/assembly/mousetrap/Crossed(AM as mob|obj)
+/obj/item/device/assembly/mousetrap/Crossed(atom/movable/AM)
 	if(armed)
 		if(ishuman(AM))
 			var/mob/living/carbon/H = AM
@@ -102,10 +102,10 @@
 	return 0
 
 
-/obj/item/device/assembly/mousetrap/hitby(A as mob|obj)
+/obj/item/device/assembly/mousetrap/hitby(atom/movable/AM)
 	if(!armed)
 		return ..()
-	visible_message(SPAN_WARNING("[src] is triggered by [A]."))
+	visible_message(SPAN_WARNING("[src] is triggered by [AM]."))
 	triggered(null)
 
 

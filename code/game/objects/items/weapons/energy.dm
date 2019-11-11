@@ -10,7 +10,7 @@
 	icon_state = "axe0"
 	force = 40.0
 	throwforce = 25.0
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_MEDIUM
 	flags_atom = FPRINT|CONDUCT|NOBLOODY
@@ -44,7 +44,7 @@
 	icon_state = "sword0"
 	force = 3.0
 	throwforce = 5.0
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT|NOBLOODY

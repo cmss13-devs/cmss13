@@ -7,6 +7,8 @@
 	item_state = "neuro_nade"
 	var/datum/effect_system/smoke_spread/xeno_extinguish_fire/smoke
 
+	rebounds = FALSE
+
 /obj/item/explosive/grenade/xeno_neuro_grenade/New()
 		..()
 		smoke = new /datum/effect_system/smoke_spread/xeno_extinguish_fire

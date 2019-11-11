@@ -112,7 +112,7 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 		if(!P.len) continue
 		ckey = ckey(P[1]) //Converting their key to canonical form. ckey() does this by stripping all spaces, underscores and converting to lower case.
 
-		role = NOFLAGS
+		role = NO_FLAGS
 		r = 1
 		while(++r <= P.len)
 			switch(ckey(P[r]))

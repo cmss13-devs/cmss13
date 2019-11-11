@@ -49,7 +49,7 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src) //Nope
 
-/obj/structure/fence/hitby(AM as mob|obj)
+/obj/structure/fence/hitby(atom/movable/AM)
 	..()
 	visible_message(SPAN_DANGER("[src] was hit by [AM]."))
 	var/tforce = 0

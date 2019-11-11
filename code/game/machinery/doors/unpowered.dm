@@ -2,7 +2,7 @@
 	autoclose = 0
 	var/locked = 0
 
-/obj/structure/machinery/door/unpowered/Bumped(atom/AM)
+/obj/structure/machinery/door/unpowered/Collided(atom/movable/AM)
 	if(src.locked)
 		return
 	..()

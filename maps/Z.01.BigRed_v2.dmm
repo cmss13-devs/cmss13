@@ -27195,7 +27195,7 @@
 "brl" = (
 /obj/structure/machinery/bot/mulebot{
 	health = 10;
-	move_speed = 100;
+	// move_speed = 100;
 	on = 0
 	},
 /obj/structure/table,

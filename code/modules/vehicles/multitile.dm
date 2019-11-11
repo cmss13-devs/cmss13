@@ -291,13 +291,15 @@ Vehicles are placed on the map by a spawner or admin verb
 			//Fun fact, there's actually a bug in this part of the algorithm
 			//Not all hitboxes want to switch locations, so sometimes a hitbox can end up in vastly the wrong location
 			//BUT, then the hitbox that ends of up in the wrong place tries to move later on
-			//The only instance where this can cause problems is if you have two hitboxes tryign to move to the same tile
+			//The only instance where this can cause problems is if you have two hitboxes trying to move to the same tile
 			//If you do, you're probably doing something wrong
 			var/obj/vehicle/multitile/M
+			A.diagonal_movement = DIAG_MOVE_OLD // Necessary because old diagonal movement was a necessary component of tank rotation
 			for(var/i in T) //Get the one to swap with
 				if(istype(i, /obj/vehicle/multitile))
 					M = i
 					break
+
 			if(istype(M))
 				var/turf/interim = M.loc
 				A.forceMove(M.loc) //Swap that shit
@@ -308,9 +310,10 @@ Vehicles are placed on the map by a spawner or admin verb
 					var/obj/O = A
 					if(O.buckled_mob)
 						O.buckled_mob.loc = O.loc
-
 			else if(!A.Move(T))
 				blocked[C] = A //We couldn't move, so remember that and try again next time
+
+			A.diagonal_movement = DIAG_MOVE_DEFAULT
 		else
 			if(!step(A, direction))
 				blocked[C] = A //We couldn't move, so remember that and try again next time

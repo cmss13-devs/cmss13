@@ -225,10 +225,11 @@
 			return 0
 	return 1
 
-/obj/CanPass(atom/movable/mover, turf/target)
+/obj/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(mover == buckled_mob) //can't collide with the thing you're buckled to
-		return TRUE
-	. = ..()
+		return NO_BLOCKED_MOVEMENT
+	
+	return ..()
 
 /obj/proc/wall_check() //used at roundstart to automatically detect and remove walls that overlap. Called by windows and airlocks
 	spawn(10)

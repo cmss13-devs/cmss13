@@ -1,7 +1,9 @@
 /mob
 	density = 1
 	layer = MOB_LAYER
+	flags_can_pass_all = PASS_MOB|PASS_AROUND|PASS_HIGH_OVER_ONLY
 	animate_movement = 2
+	rebounds = TRUE
 //	flags = NOREACT
 	var/datum/mind/mind
 
@@ -36,6 +38,7 @@
 	var/next_move = null
 	var/next_move_slowdown = 0	// Amount added during the next movement_delay(), then is reset.
 	var/speed = 0 //Speed that modifies the movement delay of a given mob
+	var/recalculate_move_delay = TRUE // Whether move delay needs to be recalculated, on by default so that new mobs actually get movement delay calculated upon creation
 	var/monkeyizing = null	//Carbon
 	var/hand = null
 	var/eye_blind = null	//Carbon
@@ -118,7 +121,7 @@
 
 	var/list/mapobjs = list()
 
-	var/in_throw_mode = 0
+	var/throw_mode = THROW_MODE_OFF
 
 	var/coughedtime = null
 

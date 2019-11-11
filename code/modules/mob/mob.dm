@@ -391,6 +391,8 @@
 	if(throwing || is_mob_incapacitated())
 		return
 
+	recalculate_move_delay = TRUE
+
 	if(pulling)
 		var/pulling_old = pulling
 		stop_pulling()
@@ -588,9 +590,11 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	if(lying)
 		density = 0
+		flags_pass_temp |= PASS_MOB
 		drop_l_hand()
 		drop_r_hand()
 	else
+		flags_pass_temp &= ~PASS_MOB
 		density = 1
 
 	if(lying_prev != lying)
@@ -659,6 +663,8 @@ mob/proc/yank_out_object()
 	if(!isliving(usr) || usr.next_move > world.time)
 		return
 	usr.next_move = world.time + 20
+
+	recalculate_move_delay = TRUE
 
 	if(usr.stat)
 		to_chat(usr, "You are unconcious and cannot do that!")
@@ -797,8 +803,6 @@ mob/proc/yank_out_object()
 		AdjustKnockedout(-1)
 	return knocked_out
 
-
-
 /mob/proc/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)
 	return FALSE
 
@@ -808,3 +812,9 @@ mob/proc/yank_out_object()
 /mob/on_stored_atom_del(atom/movable/AM)
 	if(istype(AM, /obj/item))
 		temp_drop_inv_item(AM, TRUE) //unequip before deletion to clear possible item references on the mob.
+
+/mob/BlockedPassDirs(atom/movable/mover, target_dir)
+	if(lying)
+		return NO_BLOCKED_MOVEMENT
+
+	return ..()

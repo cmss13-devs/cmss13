@@ -6,7 +6,7 @@
 	flags_atom = FPRINT|CONDUCT
 	throwforce = 5
 	w_class = SIZE_SMALL
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 
 	var/secured = 0

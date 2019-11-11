@@ -15,6 +15,7 @@
 	var/spread_speed = 1 //time in decisecond for a smoke to spread one tile.
 	var/time_to_live = 4
 	var/smokeranking = SMOKE_RANK_HARMLESS //Override priority. A higher ranked smoke cloud will displace lower and equal ones on spreading.
+	flags_pass = PASS_FLAGS_SMOKE
 
 	//Remove this bit to use the old smoke
 	icon = 'icons/effects/96x96.dmi'
@@ -73,7 +74,7 @@
 		if(check_airblock(U,T)) //smoke can't spread that way
 			continue
 		var/obj/effect/particle_effect/smoke/foundsmoke = locate() in T // Check for existing smoke and act accordingly
-		if(foundsmoke) 
+		if(foundsmoke)
 			if(foundsmoke.smokeranking <= src.smokeranking)
 				qdel(foundsmoke)
 			else
@@ -91,8 +92,10 @@
 		return FALSE
 	if(T.density)
 		return TRUE
-	for(var/atom/movable/M in T)
-		if(!M.CanPass(src, T))
+	var/move_dir = 0
+	for(var/obj/structure/obstacle in T)
+		move_dir = get_dir(src, T)
+		if(obstacle.BlockedPassDirs(src, move_dir))
 			return TRUE
 
 
@@ -338,6 +341,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.temporary_slowdown = max(H.temporary_slowdown, round(effect_amt*1.5)) //One tick every two second
+		H.recalculate_move_delay = TRUE
 
 /obj/effect/particle_effect/smoke/xeno_weak_fire
 	time_to_live = 8

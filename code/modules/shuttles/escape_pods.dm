@@ -411,7 +411,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 		lock()
 
 	//Can't interact with them, mostly to prevent grief and meta.
-/obj/structure/machinery/door/airlock/evacuation/Bumped() 
+/obj/structure/machinery/door/airlock/evacuation/Collided() 
 	return FALSE
 
 /obj/structure/machinery/door/airlock/evacuation/attackby() 

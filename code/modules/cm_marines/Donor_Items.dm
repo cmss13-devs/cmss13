@@ -13,7 +13,7 @@
 	icon = 'icons/obj/items/clothing/suits.dmi'
 	icon_override = 'icons/mob/humans/onmob/suit_0.dmi'  //Don't fuck with this in the future please.
 	flags_inventory = BLOCKSHARPOBJ
-	flags_marine_armor = NOFLAGS
+	flags_marine_armor = NO_FLAGS
 
 /obj/item/clothing/suit/storage/marine/fluff/verb/toggle_squad_markings()
 	if(!ishuman(usr)) return

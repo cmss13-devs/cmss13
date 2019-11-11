@@ -20,7 +20,7 @@
 		layer = PODDOOR_OPEN_LAYER
 	return
 
-/obj/structure/machinery/door/poddoor/Bumped(atom/AM)
+/obj/structure/machinery/door/poddoor/Collided(atom/movable/AM)
 	if(!density)
 		return ..()
 	else

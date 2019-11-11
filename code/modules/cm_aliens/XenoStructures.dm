@@ -154,6 +154,10 @@
 			W.update_icon()
 	..()
 
+/obj/structure/mineral_door/resin/flamer_fire_act(var/dam = config.min_burnlevel)
+	health -= dam
+	healthcheck()
+
 /obj/structure/mineral_door/resin/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.damage
 	..()

@@ -59,16 +59,17 @@
 		if(prob(50))
 			icon_state = "stickyweb2"
 
-/obj/effect/spider/stickyweb/CanPass(atom/movable/mover, turf/target)
+/obj/effect/spider/stickyweb/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(istype(mover, /mob/living/simple_animal/hostile/giant_spider))
-		return 1
-	else if(istype(mover, /mob/living))
+		return NO_BLOCKED_MOVEMENT
+	else if(isliving(mover))
 		if(prob(50))
 			to_chat(mover, SPAN_WARNING("You get stuck in [src] for a moment."))
-			return 0
+			return BLOCKED_MOVEMENT
 	else if(istype(mover, /obj/item/projectile))
-		return prob(30)
-	return 1
+		if(prob(30))
+			return BLOCKED_MOVEMENT
+	return NO_BLOCKED_MOVEMENT
 
 /obj/effect/spider/eggcluster
 	name = "egg cluster"
@@ -106,9 +107,9 @@
 		if(prob(50))
 			amount_grown = 1
 
-/obj/effect/spider/spiderling/Bump(atom/user)
-	if(istype(user, /obj/structure/table))
-		src.loc = user.loc
+/obj/effect/spider/spiderling/Collide(atom/A)
+	if(istype(A, /obj/structure/table))
+		src.loc = A.loc
 	else
 		..()
 

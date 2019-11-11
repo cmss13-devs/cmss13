@@ -195,7 +195,7 @@
 	var/list/display_list = list()
 
 	var/m_points = 0
-	var/buy_flags = NOFLAGS
+	var/buy_flags = NO_FLAGS
 	var/obj/item/card/id/I = H.wear_id
 	if(istype(I)) //wearing an ID
 		if(use_snowflake_points)

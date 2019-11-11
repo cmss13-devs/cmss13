@@ -174,7 +174,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "cigarette"
 	desc = "A roll of tobacco and nicotine."
 	icon_state = "cigoff"
-	throw_speed = 0.5
+	throw_speed = SPEED_AVERAGE
 	item_state = "cigoff"
 	w_class = SIZE_TINY
 	flags_armor_protection = 0
@@ -400,7 +400,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_on = "cigar2on"
 	icon_off = "cigar2off"
 	type_butt = /obj/item/trash/cigbutt/cigarbutt
-	throw_speed = 0.5
+	throw_speed = SPEED_VERY_FAST
 	item_state = "cigar2off"
 	smoketime = 1500
 	chem_volume = 20

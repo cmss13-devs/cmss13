@@ -34,6 +34,8 @@
 	reagent_shock_modifier = 0
 	reagent_pain_modifier = 0
 
+	recalculate_move_delay = TRUE
+
 	if(reagents && reagents.reagent_list.len)
 		reagents.metabolize(src)
 

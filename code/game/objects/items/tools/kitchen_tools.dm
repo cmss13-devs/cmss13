@@ -20,7 +20,7 @@
 	force = 5
 	w_class = SIZE_TINY
 	throwforce = 5
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	flags_atom = FPRINT|CONDUCT
 	origin_tech = "materials=1"
@@ -132,7 +132,7 @@
 	force = 10.0
 	w_class = SIZE_MEDIUM
 	throwforce = 6.0
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
 	matter = list("metal" = 12000)
 	origin_tech = "materials=1"
@@ -155,7 +155,7 @@
 	force = 15.0
 	w_class = SIZE_SMALL
 	throwforce = 8.0
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
 	matter = list("metal" = 12000)
 	origin_tech = "materials=1"
@@ -178,7 +178,7 @@
 	icon_state = "rolling_pin"
 	force = 8.0
 	throwforce = 10.0
-	throw_speed = 2
+	throw_speed = SPEED_FAST
 	throw_range = 7
 	w_class = SIZE_MEDIUM
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked") //I think the rollingpin attackby will end up ignoring this anyway.
@@ -229,7 +229,7 @@
 	desc = "A metal tray to lay food on."
 	throwforce = 12.0
 	throwforce = 10.0
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_MEDIUM
 	flags_atom = FPRINT|CONDUCT

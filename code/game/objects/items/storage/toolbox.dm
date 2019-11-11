@@ -6,7 +6,7 @@
 	flags_atom = FPRINT|CONDUCT
 	force = 5.0
 	throwforce = 10.0
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 7
 	w_class = SIZE_LARGE
 	origin_tech = "combat=1"

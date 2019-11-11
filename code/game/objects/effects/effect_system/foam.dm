@@ -162,49 +162,43 @@
 	desc = "A lightweight foamed metal wall."
 	var/metal = 1		// 1=aluminum, 2=iron
 
-	Dispose()
-		density = 0
-		. = ..()
+/obj/structure/foamedmetal/Dispose()
+	density = 0
+	. = ..()
 
-	proc/updateicon()
-		if(metal == 1)
-			icon_state = "metalfoam"
-		else
-			icon_state = "ironfoam"
+/obj/structure/foamedmetal/proc/updateicon()
+	if(metal == 1)
+		icon_state = "metalfoam"
+	else
+		icon_state = "ironfoam"
 
+/obj/structure/foamedmetal/ex_act(severity)
+	qdel(src)
 
-	ex_act(severity)
+/obj/structure/foamedmetal/bullet_act()
+	if(metal==1 || prob(50))
 		qdel(src)
+	return 1
 
-	bullet_act()
-		if(metal==1 || prob(50))
-			qdel(src)
-		return 1
+/obj/structure/foamedmetal/attack_hand(var/mob/user)
+	if ((HULK in user.mutations) || (prob(75 - metal*25)))
+		to_chat(user, SPAN_NOTICE(" You smash through the metal foam wall."))
+		for(var/mob/O in oviewers(user))
+			if ((O.client && !( O.blinded )))
+				to_chat(O, "<span class='danger'>[user] smashes through the foamed metal.</span>")
 
-	attack_hand(var/mob/user)
-		if ((HULK in user.mutations) || (prob(75 - metal*25)))
-			to_chat(user, SPAN_NOTICE(" You smash through the metal foam wall."))
-			for(var/mob/O in oviewers(user))
-				if ((O.client && !( O.blinded )))
-					to_chat(O, SPAN_DANGER("[user] smashes through the foamed metal."))
+		qdel(src)
+	else
+		to_chat(user, SPAN_NOTICE(" You hit the metal foam but bounce off it."))
+	return
 
-			qdel(src)
-		else
-			to_chat(user, SPAN_NOTICE(" You hit the metal foam but bounce off it."))
-		return
+/obj/structure/foamedmetal/attackby(var/obj/item/I, var/mob/user)
 
-
-	attackby(var/obj/item/I, var/mob/user)
-
-		if(prob(I.force*20 - metal*25))
-			to_chat(user, SPAN_NOTICE(" You smash through the foamed metal with \the [I]."))
-			for(var/mob/O in oviewers(user))
-				if ((O.client && !( O.blinded )))
-					to_chat(O, SPAN_DANGER("[user] smashes through the foamed metal."))
-			qdel(src)
-		else
-			to_chat(user, SPAN_NOTICE(" You hit the metal foam to no effect."))
-
-	CanPass(atom/movable/mover, turf/target, height = 1.5, air_group = 0)
-		if(air_group) return 0
-		return !density
+	if(prob(I.force*20 - metal*25))
+		to_chat(user, SPAN_NOTICE(" You smash through the foamed metal with \the [I]."))
+		for(var/mob/O in oviewers(user))
+			if ((O.client && !( O.blinded )))
+				to_chat(O, "<span class='danger'>[user] smashes through the foamed metal.</span>")
+		qdel(src)
+	else
+		to_chat(user, SPAN_NOTICE(" You hit the metal foam to no effect."))

@@ -71,7 +71,7 @@
 	edge = 1
 	w_class = SIZE_TINY
 	throwforce = 5.0
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	matter = list("metal" = 10000, "glass" = 5000)
 	origin_tech = "materials=1;biotech=1"
@@ -118,7 +118,7 @@
 	force = 0
 	w_class = SIZE_SMALL
 	throwforce = 9.0
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	matter = list("metal" = 20000,"glass" = 10000)
 	origin_tech = "materials=1;biotech=1"
@@ -148,7 +148,7 @@
 	icon_state = "bone setter"
 	force = 0
 	throwforce = 9.0
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
 	attack_verb = list("attacked", "hit", "bludgeoned")

@@ -489,7 +489,7 @@
 	..()
 	reagents.add_reagent("nutriment", 1)
 
-/obj/item/reagent_container/food/snacks/egg/throw_impact(atom/hit_atom)
+/obj/item/reagent_container/food/snacks/egg/launch_impact(atom/hit_atom)
 	..()
 	new/obj/effect/decal/cleanable/egg_smudge(loc)
 	if(reagents)
@@ -915,7 +915,7 @@
 	reagents.add_reagent("banana",5)
 	bitesize = 3
 
-/obj/item/reagent_container/food/snacks/pie/throw_impact(atom/hit_atom)
+/obj/item/reagent_container/food/snacks/pie/launch_impact(atom/hit_atom)
 	..()
 	new/obj/effect/decal/cleanable/pie_smudge(src.loc)
 	src.visible_message(SPAN_DANGER("[src.name] splats."),SPAN_DANGER("You hear a splat."))
@@ -1539,6 +1539,7 @@
 			var/mob/living/carbon/human/H = M
 			var/datum/limb/E = H.get_limb("chest")
 			E.fracture()
+			H.recalculate_move_delay = TRUE
 			for (var/datum/internal_organ/I in E.internal_organs)
 				I.take_damage(rand(I.min_bruised_damage, I.min_broken_damage+1))
 

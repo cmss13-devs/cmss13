@@ -52,7 +52,7 @@
 			die()
 	return
 
-/obj/item/ashtray/throw_impact(atom/hit_atom)
+/obj/item/ashtray/launch_impact(atom/hit_atom)
 	if (health > 0)
 		health = max(0,health - 3)
 		if (health < 1)

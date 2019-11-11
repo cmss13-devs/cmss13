@@ -12,6 +12,7 @@
 	anchored = 0
 	throwpass = 1 //prevents moving crates by hurling things at them
 	store_mobs = FALSE
+	flags_can_pass_all = PASS_OVER|PASS_AROUND
 	var/rigged = 0
 
 /obj/structure/closet/crate/can_open()
@@ -22,16 +23,14 @@
 		return 0
 	return 1
 
-/obj/structure/closet/crate/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return 1
-	var/obj/structure/S = locate(/obj/structure) in get_turf(mover)
-	if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable non-border objects allow you to universally climb over others
-		return 1
+/obj/structure/closet/crate/BlockedPassDirs(atom/movable/mover, target_dir)
+	for(var/obj/structure/S in get_turf(mover))
+		if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable non-border objects allow you to universally climb over others
+			return NO_BLOCKED_MOVEMENT
 	if(opened) //Open crate, you can cross over it
-		return 1
-	else
-		return 0
+		return NO_BLOCKED_MOVEMENT
+	
+	return ..()
 
 /obj/structure/closet/crate/open()
 	if(opened)

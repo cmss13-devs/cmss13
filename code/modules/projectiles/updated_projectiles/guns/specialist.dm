@@ -262,7 +262,7 @@
 	reload_sound = 'sound/weapons/handling/gun_sg_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_sg_unload.ogg'
 	current_mag = null
-	flags_equip_slot = NOFLAGS
+	flags_equip_slot = NO_FLAGS
 	w_class = SIZE_HUGE
 	force = 20
 	wield_delay = WIELD_DELAY_FAST
@@ -789,7 +789,7 @@
 	origin_tech = "combat=5;materials=5"
 	matter = list("metal" = 6000)
 	w_class = SIZE_LARGE
-	throw_speed = 2
+	throw_speed = SPEED_SLOW
 	throw_range = 10
 	force = 5.0
 	wield_delay = WIELD_DELAY_SLOW
@@ -893,7 +893,12 @@
 	grenades -= F
 	F.loc = user.loc
 	F.throw_range = 20
-	F.throw_at(target, 20, 2, user, null, !is_lobbing)
+
+	var/pass_flags = NO_FLAGS
+	if(is_lobbing)
+		pass_flags |= PASS_MOB
+	
+	F.launch_towards(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 	if(F && F.loc) //Apparently it can get deleted before the next thing takes place, so it runtimes.
 		message_admins("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
 		log_game("[key_name_admin(user)] used a grenade ([name]).")
@@ -912,7 +917,7 @@
 	origin_tech = "combat=5;materials=5"
 	matter = list("metal" = 7000)
 	w_class = SIZE_LARGE
-	throw_speed = 2
+	throw_speed = SPEED_SLOW
 	throw_range = 10
 	force = 5.0
 	wield_delay = WIELD_DELAY_SLOW
@@ -1016,7 +1021,7 @@
 	grenade = null
 	F.loc = user.loc
 	F.throw_range = 20
-	F.throw_at(target, 20, 2, user)
+	F.launch_towards(target, 20, SPEED_VERY_FAST, user)
 	if(F && F.loc) //Apparently it can get deleted before the next thing takes place, so it runtimes.
 		message_admins("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
 		log_game("[key_name_admin(user)] used a grenade ([name]).")
@@ -1050,7 +1055,7 @@
 	origin_tech = "combat=6;materials=5"
 	matter = list("metal" = 10000)
 	current_mag = /obj/item/ammo_magazine/internal/launcher/rocket
-	flags_equip_slot = NOFLAGS
+	flags_equip_slot = NO_FLAGS
 	w_class = SIZE_HUGE
 	force = 15
 	wield_delay = WIELD_DELAY_HORRIBLE

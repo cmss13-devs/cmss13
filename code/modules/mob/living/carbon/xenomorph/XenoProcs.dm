@@ -238,7 +238,7 @@
 
 //This deals with "throwing" xenos -- ravagers, hunters, and runners in particular. Everyone else defaults to normal
 //Pounce, charge both use throw_at, so we need extra code to do stuff rather than just push people aside.
-/mob/living/carbon/Xenomorph/throw_impact(atom/hit_atom, speed)
+/mob/living/carbon/Xenomorph/launch_impact(atom/hit_atom)
 	set waitfor = 0
 
 	if(!caste.charge_type || stat || (!throwing && used_pounce)) //No charge type, unconscious or dead, or not throwing but used pounce.
@@ -255,14 +255,13 @@
 		switch(caste.charge_type) //Determine how to handle it depending on charge type.
 			if(1 to 2)
 				if(!istype(O, /obj/structure/table) && !istype(O, /obj/structure/rack))
-					O.hitby(src, speed) //This resets throwing.
+					O.hitby(src) //This resets throwing.
 			if(3 to 4)
 				if(istype(O, /obj/structure/table) || istype(O, /obj/structure/rack))
 					var/obj/structure/S = O
 					visible_message(SPAN_DANGER("[src] plows straight through [S]!"), null, null, 5)
 					S.destroy() //We want to continue moving, so we do not reset throwing.
-				else 
-					O.hitby(src, speed) //This resets throwing.
+				else O.hitby(src) //This resets throwing.
 		return TRUE
 
 	if(ismob(hit_atom)) //Hit a mob! This overwrites normal throw code.
@@ -517,18 +516,17 @@
 	charge_speed = 0
 	charge_roar = 0
 	lastturf = null
-	flags_pass = 0
+	flags_pass = NO_FLAGS
 	update_icons()
 
-//Why the elerloving fuck was this a Crusher only proc ? AND WHY IS IT NOT CAST ON THE RECEIVING ATOM ? AAAAAAA
-/mob/living/carbon/Xenomorph/proc/diagonal_step(atom/movable/A, direction)
+/mob/living/carbon/Xenomorph/proc/get_diagonal_step(atom/movable/A, direction)
 	if(!A) 
 		return FALSE
 	switch(direction)
 		if(EAST, WEST) 
-			step(A, pick(NORTH,SOUTH))
+			return get_step(A, pick(NORTH,SOUTH))
 		if(NORTH,SOUTH) 
-			step(A, pick(EAST,WEST))
+			return get_step(A, pick(EAST,WEST))
 
 /mob/living/carbon/Xenomorph/proc/handle_momentum()
 	if(throwing)

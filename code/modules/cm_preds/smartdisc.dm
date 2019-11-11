@@ -39,9 +39,9 @@
 		to_chat(user, SPAN_WARNING("You activate the smart-disc and it whirrs to life!"))
 		activate(user)
 		add_fingerprint(user)
-		if(iscarbon(user))
-			var/mob/living/carbon/C = user
-			C.throw_mode_on()
+		var/mob/living/carbon/C = user
+		if(istype(C) && !C.throw_mode)
+			C.toggle_throw_mode(THROW_MODE_NORMAL)
 	return
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/activate(mob/user as mob)
@@ -70,17 +70,12 @@
 	qdel(src)
 	return
 
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/throw_impact(atom/hit_atom)
-	if(isYautja(hit_atom) && istype(hit_atom,/mob/living/carbon/human))
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_impact(atom/hit_atom)
+	if(isYautja(hit_atom))
 		var/mob/living/carbon/human/H = hit_atom
 		if(H.put_in_hands(src))
 			hit_atom.visible_message("[hit_atom] expertly catches [src] out of the air.","You catch [src] easily.")
-			return
-		//if(isnull(H.get_active_hand()))
-		//
-		//	H.put_in_active_hand(src)
-		//	return
-
+		return
 	..()
 
 /mob/living/simple_animal/hostile/smartdisc
@@ -130,7 +125,7 @@
 /mob/living/simple_animal/hostile/smartdisc/Process_Spacemove(var/check_drift = 0)
 	return 1
 
-/mob/living/simple_animal/hostile/smartdisc/Bumped()
+/mob/living/simple_animal/hostile/smartdisc/Collided(atom/movable/AM)
 	return
 
 /mob/living/simple_animal/hostile/smartdisc/bullet_act(var/obj/item/projectile/Proj)

@@ -5,7 +5,7 @@
 	amount = 10
 	max_amount = 10
 	w_class = SIZE_SMALL
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	var/heal_brute = 0
 	var/heal_burn = 0

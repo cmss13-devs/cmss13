@@ -88,7 +88,7 @@ Additional game mode variables.
 	var/round_time_burrowed_cutoff = MINUTES_25	//Time for when free burrowed larvae stop spawning
 	var/resin_allow_finished
 
-	var/flags_round_type = NOFLAGS
+	var/flags_round_type = NO_FLAGS
 
 //===================================================\\
 

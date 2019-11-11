@@ -10,7 +10,7 @@
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 4
 	w_class = SIZE_SMALL
-	throw_speed = 2
+	throw_speed = SPEED_SLOW
 	throw_range = 10
 	var/toxicity = 4
 	var/pest_kill_str = 0
@@ -109,7 +109,7 @@
 	force = 25.0
 	w_class = SIZE_SMALL
 	throwforce = 20.0
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 4
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
@@ -126,7 +126,7 @@
 	icon_state = "scythe"
 	force = 13.0
 	throwforce = 5.0
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 3
 	w_class = SIZE_LARGE
 	flags_atom = FPRINT|CONDUCT

@@ -15,6 +15,7 @@
 	switch(stage)
 		if(2)
 			affected_mob.bodytemperature -= 10
+			affected_mob.recalculate_move_delay = TRUE
 			if(prob(1) && prob(10))
 				to_chat(affected_mob, SPAN_NOTICE(" You feel better."))
 				cure()
@@ -29,6 +30,7 @@
 				to_chat(affected_mob, SPAN_DANGER("You feel stiff."))
 		if(3)
 			affected_mob.bodytemperature -= 20
+			affected_mob.recalculate_move_delay = TRUE
 			if(prob(1))
 				affected_mob.emote("sneeze")
 			if(prob(1))

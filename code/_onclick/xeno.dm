@@ -4,46 +4,53 @@
 
 /mob/living/carbon/Xenomorph/UnarmedAttack(var/atom/A)
 	if(lying || burrow) //No attacks while laying down
-		return 0
-	var/atom/S = A.handle_barriers(src)
-	var/mobfound = FALSE
-	if(isturf(A))
-		var/turf/T = A
-		for(var/mob/M in T)
-			M.attack_alien(src)
-			mobfound = TRUE
-			track_slashes(caste_name)
+		return FALSE
+	var/atom/target = A
+	var/mob/alt
+	if(isturf(target))
+		var/turf/T = target
+		for(var/mob/living/L in T)
+			if (!iscarbon(L))
+				if (!alt)
+					alt = L // last option is a simple mob
+				continue
+
+			if (!L.is_xeno_grabbable())
+				continue
+			if (L.lying)
+				alt = L
+				continue
+			target = L
 			break
-	if(!mobfound)
-		S.attack_alien(src)
-		track_slashes(caste_name)
+		if (target == T && alt)
+			target = alt
+	target = target.handle_barriers(src) // Checks if target will be attacked by the current alien OR if the blocker will be attacked
+	target.attack_alien(src)
+	track_slashes(caste_name)
 	next_move = world.time + (10 + caste.attack_delay) //Adds some lag to the 'attack'
-	return 1
+	return TRUE
 
 /mob/living/carbon/Xenomorph/RangedAttack(var/atom/A)
-	..()
-	if(client && client.prefs && client.prefs.toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK)
-		for(var/mob/M in get_turf(get_step(src, get_dir(src, A))))
-			if (M.Adjacent(src))
-				UnarmedAttack(M)
-				return
-	next_move = world.time + (10 + caste.attack_delay) //Adds some lag to the 'attack'
-	return 1
+	. = ..()
+	if (.)
+		return
+	if (client && client.prefs && client.prefs.toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK)
+		return UnarmedAttack(get_turf(get_step(src, get_dir(src, A))))
+	return FALSE
 
 //The parent proc, will default to UnarmedAttack behaviour unless overriden
 /atom/proc/attack_alien(mob/user as mob)
 	return
 
 /mob/living/carbon/Xenomorph/click(var/atom/A, var/list/mods)
-
 	if (queued_action)
 		handle_queued_action(A)
-		return 1
+		return TRUE
 
 	if(mods["middle"] && !mods["shift"])
 		if(selected_ability && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
 			selected_ability.use_ability(A)
-		return 1
+			return TRUE
 
 	if (mods["alt"] && mods["shift"])
 		if (istype(A, /mob/living/carbon/Xenomorph))
@@ -68,7 +75,7 @@
 	if(mods["shift"] && !mods["middle"])
 		if(selected_ability && client && client.prefs && !client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
 			selected_ability.use_ability(A)
-		return 1
+			return TRUE
 
 	if(next_move >= world.time)
 		return 1

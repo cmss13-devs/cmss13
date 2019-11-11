@@ -482,6 +482,8 @@ This function completely restores a damaged organ to perfect condition.
 	if((status & LIMB_ROBOT)) //Robotic limbs don't heal or get worse.
 		return
 
+	owner.recalculate_move_delay = TRUE
+
 	var/wound_disappeared = FALSE
 	for(var/datum/wound/W in wounds)
 		// we don't care about wounds after we heal them. We are not an antag simulator
@@ -814,6 +816,7 @@ This function completely restores a damaged organ to perfect condition.
 			to_chat(owner, SPAN_WARNING("You feel your [src] stop knitting together as it absorbs damage!"))
 		return
 
+	owner.recalculate_move_delay = TRUE
 	owner.visible_message(\
 		SPAN_WARNING("You hear a loud cracking sound coming from [owner]!"),
 		SPAN_HIGHDANGER("Something feels like it shattered in your [display_name]!"),

@@ -78,6 +78,12 @@
 
 #define FLAGS_EQUALS(flag, flags) ((flag & (flags)) == (flags))
 
+#define IS_DIAGONAL_DIR(dir) (dir & ~(NORTH|SOUTH))
+
+#define REVERSE_DIR(dir) ((dir & (NORTH|SOUTH) ? ~dir & (NORTH|SOUTH) : 0) | (dir & (EAST|WEST) ? ~dir & (EAST|WEST) : 0))
+
+#define GENERATE_DEBUG_ID "[rand(0, 9)][rand(0, 9)][rand(0, 9)][rand(0, 9)][pick(alphabet_lowercase)][pick(alphabet_lowercase)][pick(alphabet_lowercase)][pick(alphabet_lowercase)]"
+
 // Style class macros
 
 #define FONT_SIZE_HUGE(X) "<span class='huge'>[X]</span>"

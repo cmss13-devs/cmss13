@@ -56,7 +56,7 @@
 	desc = "Contains dangerous phoron. Do not inhale. Warning: extremely flammable."
 	icon_state = "phoron"
 	flags_atom = FPRINT|CONDUCT
-	flags_equip_slot = NOFLAGS	//they have no straps!
+	flags_equip_slot = NO_FLAGS	//they have no straps!
 
 
 

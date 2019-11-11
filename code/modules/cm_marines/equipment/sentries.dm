@@ -6,7 +6,7 @@
 	desc = "An ammo drum of 500 10x28mm caseless rounds for the UA 571-C Sentry Gun. Just feed it into the sentry gun's ammo port when its ammo is depleted."
 	w_class = SIZE_MEDIUM
 	icon_state = "ua571c"
-	flags_magazine = NOFLAGS //can't be refilled or emptied by hand
+	flags_magazine = NO_FLAGS //can't be refilled or emptied by hand
 	caliber = "10x28mm"
 	max_rounds = 500
 	default_ammo = /datum/ammo/bullet/turret
@@ -939,11 +939,7 @@
 					blocked = TRUE
 					break
 				for(var/obj/structure/S in T)
-					if(S.opacity)
-						blocked = TRUE
-						break
-				for(var/obj/structure/machinery/MA in T)
-					if(MA.opacity)
+					if(S.density || S.opacity)
 						blocked = TRUE
 						break
 				if(blocked)

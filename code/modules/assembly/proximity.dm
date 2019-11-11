@@ -34,9 +34,11 @@
 	return secured
 
 
-/obj/item/device/assembly/prox_sensor/HasProximity(atom/movable/AM as mob|obj)
-	if (istype(AM, /obj/effect/beam))	return
-	if (AM.move_speed < 12)	sense()
+/obj/item/device/assembly/prox_sensor/HasProximity(atom/movable/AM)
+	if (istype(AM, /obj/effect/beam))	
+		return
+	if (AM.cur_speed <= SPEED_VERY_FAST)
+		sense()
 	return
 
 
@@ -44,7 +46,8 @@
 	var/turf/mainloc = get_turf(src)
 //		if(scanning && cooldown <= 0)
 //			mainloc.visible_message("[htmlicon(src, viewers(src))] *boop* *boop*", "*boop* *boop*")
-	if((!holder && !secured)||(!scanning)||(cooldown > 0))	return 0
+	if((!holder && !secured)||(!scanning)||(cooldown > 0))	
+		return 0
 	pulse(0)
 	if(!holder)
 		mainloc.visible_message("[htmlicon(src, hearers(src))] *beep* *beep*", "*beep* *beep*")
@@ -58,7 +61,7 @@
 	if(scanning)
 		var/turf/mainloc = get_turf(src)
 		for(var/mob/living/A in range(range,mainloc))
-			if (A.move_speed < 12)
+			if (A.speed < 12)
 				sense()
 
 	if(timing && (time >= 0))

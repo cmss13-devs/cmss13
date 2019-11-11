@@ -5,7 +5,7 @@
 	icon_state = "pamphlet_written"
 	item_state = "pamphlet_written"
 	w_class = SIZE_TINY
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 20
 	var/skill_increment = 1 //The skill level we want to go to.
 	var/skill_to_increment = SKILL_CQC //The skill we want to increase.

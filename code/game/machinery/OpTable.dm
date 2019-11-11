@@ -12,6 +12,7 @@
 	use_power = 1
 	idle_power_usage = 1
 	active_power_usage = 5
+	flags_can_pass_all = PASS_OVER|PASS_AROUND
 	var/mob/living/carbon/human/victim = null
 	var/strapped = 0.0
 	can_buckle = TRUE
@@ -114,15 +115,6 @@
 		qdel(M)
 		H.visible_message(SPAN_NOTICE("[user] turns off the anesthetic and removes the mask from [H]."))
 		..()
-
-
-
-/obj/structure/machinery/optable/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return 1
-	else
-		return 0
-
 
 /obj/structure/machinery/optable/MouseDrop_T(atom/A, mob/user)
 

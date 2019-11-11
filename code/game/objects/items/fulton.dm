@@ -11,7 +11,7 @@ var/global/list/deployed_fultons = list()
 	desc = "A system used by the USCM for retrieving objects of interest on the ground from a AUD-25 dropship. Can be used to extract unrevivable corpses, or crates, typically lasting around 3 minutes in the air."
 	throwforce = 10
 	w_class = SIZE_SMALL
-	throw_speed = 2
+	throw_speed = SPEED_SLOW
 	throw_range = 5
 	matter = list("metal" = 50)
 	flags_equip_slot = SLOT_WAIST

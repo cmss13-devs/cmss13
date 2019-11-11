@@ -143,46 +143,129 @@ Quick adjacency (to turf):
 	Since I don't want to complicate the click code rework by messing with unrelated systems it won't be changed here.
 */
 
+
+/*
+ *	handle_barriers checks if src is going to be attacked by M, or if M will instead attack a barrier. For now only considers
+ *	a single barrier on each direction.
+ *
+ *	I am considering making it so that handle_barriers will loop through ALL blocking objects, though this requires testing
+ *	for performance impact.
+ */
 /atom/proc/handle_barriers(mob/living/M)
 	var/rdir = get_dir(src,M)
 	var/fdir = get_dir(M,src)
 
-	var/d1 = fdir&(fdir-1)		// eg west		(1+8)&(8) = 8
-	var/d2 = fdir - d1		// eg north		(1+8) - 8 = 1
+	var/list/blockers = list(
+		"fd1" = list(),
+		"fd2" = list()
+	)
+	var/list/dense_blockers
 
-	for(var/obj/structure/S in M.loc)
-		if(S.flags_atom & ON_BORDER && S.dir & fdir || S.dir&(S.dir-1))
-			if(S.flags_barrier & HANDLE_BARRIER_CHANCE)
-				if(S.handle_barrier_chance(M))
-					return S // blocked
-	
-	if(d1 && d1 != fdir)
-		var/d1loc = get_step(M, d1)
-		var/d1dir_a = get_dir(d1loc, M) // inverse direction for attacker
-		var/d1dir_d = get_dir(d1loc, src) // inverse direction for attacker
-		for(var/obj/structure/S in d1loc)
-			if(S.flags_atom & ON_BORDER && S.dir & d1dir_a || S.dir & d1dir_d || S.dir&(S.dir-1))
-				if(S.flags_barrier & HANDLE_BARRIER_CHANCE)
-					if(S.handle_barrier_chance(M))
-						return S // blocked
+	var/rd1 = rdir&(rdir-1)		// eg west		(1+8)&(8) = 8
+	var/rd2 = rdir - rd1		// eg north		(1+8) - 8 = 1
+	var/fd1 = fdir&(fdir-1)
+	var/fd2 = fdir - fd1
 
-	if(d2 && d2 != fdir)
-		var/d2loc = get_step(M, d2)
-		var/d2dir_a = get_dir(d2loc, M) // inverse direction for attacker
-		var/d2dir_d = get_dir(d2loc, src) // inverse direction for attacker
-		for(var/obj/structure/S in d2loc)
-			if(S.flags_atom & ON_BORDER &&  S.dir & d2dir_a || S.dir & d2dir_d || S.dir&(S.dir-1))
-				if(S.flags_barrier & HANDLE_BARRIER_CHANCE)
-					if(S.handle_barrier_chance(M))
-						return S // blocked
+	for (var/potential_blocker in M.loc) // Check if there are any barricades blocking attacker from their current loc
+		if (!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))
+			continue
+		var/atom/A = potential_blocker
+		if (!(A.flags_atom & ON_BORDER) || !A.density)
+			continue
+		if (A.dir & fd1)
+			blockers["fd1"] += A
+		if (A.dir & fd2)
+			blockers["fd2"] += A
 
-	for(var/obj/structure/S in loc)
-		if(S.flags_atom & ON_BORDER && S.dir & rdir || S.dir&(S.dir-1))
-			if(S.flags_barrier & HANDLE_BARRIER_CHANCE)
-				if(S.handle_barrier_chance(M))
-					return S // blocked
-	
-	return src
+	dense_blockers = list()
+	if (fd1 && fd1 != fdir) // Check any obstacles blocking from the turf to the EAST/WEST of attacker
+		var/turf/fd1loc = get_step(M, fd1)
+		var/fd1dir_a = get_dir(fd1loc, M) // inverse direction for attacker
+		var/fd1dir_d = get_dir(fd1loc, src) // inverse direction for attackee
+		if (fd1loc.density)
+			dense_blockers += fd1loc
+		for (var/potential_blocker in fd1loc)
+			if (!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))
+				continue
+			var/atom/A = potential_blocker
+			if (!(A.flags_atom & ON_BORDER))
+				if(A.density) // If there is a solid object (e.g. a vendor) blocking
+					dense_blockers += A
+				continue
+			if (A.dir & fd1dir_a)
+				blockers["fd1"] += A
+			if (A.dir & fd1dir_d)
+				blockers["fd1"] += A
+		blockers["fd1"] += dense_blockers
+
+	dense_blockers.Cut()
+
+	if (fd2 && fd2 != fdir) // Check any obstacles blocking from the turf to the NORTH/SOUTH of attacker
+		var/turf/fd2loc = get_step(M, fd2)
+		var/fd2dir_a = get_dir(fd2loc, M) // inverse direction for attacker
+		var/fd2dir_d = get_dir(fd2loc, src) // inverse direction for attackee
+		if (fd2loc.density)
+			dense_blockers += fd2loc
+		for (var/potential_blocker in fd2loc)
+			if (!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))
+				continue
+			var/atom/A = potential_blocker
+			if (!(A.flags_atom & ON_BORDER))
+				if (A.density) // If there is a solid object (e.g. a vendor) blocking
+					dense_blockers += A
+				continue
+			if (A.dir & fd2dir_a)
+				blockers["fd2"] += A
+			if (A.dir & fd2dir_d)
+				blockers["fd2"] += A
+		blockers["fd2"] += dense_blockers
+
+	dense_blockers = null
+
+	for (var/potential_blocker in loc) // Check if there are any barricades blocking attacker from the attackee's current loc
+		if (!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))
+			continue
+		var/atom/A = potential_blocker
+		if (!(A.flags_atom & ON_BORDER) || !A.density)
+			continue
+		if (A.dir & rd1)
+			if (fd1 && fd2)
+				blockers["fd2"] += A
+			else
+				blockers["fd1"] += A
+		if (A.dir & rd2)
+			if (fd1 && fd2)
+				blockers["fd1"] += A
+			else
+				blockers["fd2"] += A
+
+	if (!(!blockers["fd1"].len)^!(!fd1) || !(!blockers["fd2"].len)^!(!fd2)) // This means that for a given direction it did not have a blocker
+		return src
+
+	if (blockers["fd1"].len || blockers["fd2"].len)
+		var/guaranteed_hit = 0 // indicates whether there is a guaranteed hit (aka there is not chance to bypass blocker). 0 = nothing
+		var/list/cur_dense_blockers = list()
+		for (var/atom/blocker in blockers["fd1"])
+			if (blocker.flags_barrier & HANDLE_BARRIER_CHANCE)
+				if(blocker.handle_barrier_chance(M))
+					return blocker
+			else
+				guaranteed_hit = 1
+				cur_dense_blockers += blocker
+				break
+
+		for (var/atom/blocker in blockers["fd2"])
+			if(blocker.flags_barrier & HANDLE_BARRIER_CHANCE)
+				if(blocker.handle_barrier_chance(M))
+					return blocker
+			else
+				guaranteed_hit += 1
+				cur_dense_blockers += blocker
+				break
+		if (guaranteed_hit == 2)
+			return pick(cur_dense_blockers) // Picks a random dense object from the list of dense objects
+
+	return src // This should happen if the two barricades checked do not block the slash
 
 /turf/handle_barriers(mob/living/M)
 	return src

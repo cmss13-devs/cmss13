@@ -46,7 +46,7 @@
 		if(istype(master, /obj/item/storage))
 			var/obj/item/storage/S = master
 			S.close(user)
-	return 1
+	return TRUE
 
 
 /obj/screen/action_button
@@ -57,14 +57,14 @@
 
 /obj/screen/action_button/clicked(var/mob/user)
 	if(!user || !source_action)
-		return 1
+		return TRUE
 	if(user.next_move >= world.time)
-		return 1
+		return TRUE
 	user.next_move = world.time + click_delay
 
 	if(source_action.can_use_action())
 		source_action.action_activate()
-	return 1
+	return TRUE
 
 /obj/screen/action_button/Dispose()
 	source_action = null
@@ -448,11 +448,17 @@
 	icon_state = "act_throw_off"
 	screen_loc = ui_drop_throw
 
-/obj/screen/throw_catch/clicked(var/mob/user)
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		C.toggle_throw_mode()
-		return 1
+/obj/screen/throw_catch/clicked(var/mob/user, var/list/mods)
+	var/mob/living/carbon/C = user
+
+	if (!istype(C))
+		return
+
+	if (mods["ctrl"])
+		C.toggle_throw_mode(THROW_MODE_HIGH)
+	else
+		C.toggle_throw_mode(THROW_MODE_NORMAL)
+	return 1
 
 /obj/screen/drop
 	name = "drop"
@@ -510,6 +516,7 @@
 			m_intent = MOVE_INTENT_RUN
 			if(hud_used && hud_used.move_intent)
 				hud_used.move_intent.icon_state = "running"
+	recalculate_move_delay = TRUE
 	return 1
 
 /mob/living/carbon/toggle_mov_intent()

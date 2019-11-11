@@ -1057,7 +1057,7 @@
 		if(O.status & LIMB_ROBOT)
 			O.status = LIMB_ROBOT
 		else
-			O.status = NOFLAGS
+			O.status = NO_FLAGS
 		O.perma_injury = 0
 		O.wounds.Cut()
 		O.heal_damage(1000,1000,1,1)

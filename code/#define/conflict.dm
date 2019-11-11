@@ -156,3 +156,12 @@
 
 #define HEALTH_DOOR 		2000
 #define HEALTH_DOOR_XENO 	600
+
+#define THROWFORCE_COEFF            0.02 // Coefficient of throwforce when calculating damage from an atom colliding with a mob
+#define MOB_SIZE_COEFF              20 // Coefficient of mobsize when calculating damage from a mob colliding with a dense atom
+#define THROW_SPEED_DENSE_COEFF     0.2 // Coefficient of throwspeed when calculating damage from a mob colliding with a dense atom
+#define THROW_SPEED_IMPACT_COEFF    0.0125 // Coefficient of throwspeed when calculating damage from an atom colliding with a mob
+
+#define THROW_MODE_OFF      0
+#define THROW_MODE_NORMAL   1
+#define THROW_MODE_HIGH     2

@@ -20,6 +20,7 @@
 	throwpass = 1	//You can throw objects over this, despite it's density.")
 	climbable = 1
 	breakable = 1
+	flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_TYPE_CRAWLER
 	parts = /obj/item/frame/table
 	debris = list(/obj/item/frame/table)
 
@@ -231,28 +232,12 @@
 	else
 		dir = SOUTH
 
-/obj/structure/table/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return 1
+/obj/structure/table/BlockedPassDirs(atom/movable/mover, target_dir)
 	for(var/obj/structure/S in get_turf(mover))
 		if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable non-border objects allow you to universally climb over others
-			return 1
-	if(flipped)
-		if(get_dir(loc, target) & dir)
-			return !density
-		else
-			return 1
-	return 0
-
-/obj/structure/table/CheckExit(atom/movable/O as mob|obj, target as turf)
-	if(istype(O) && O.checkpass(PASSTABLE))
-		return 1
-	if(flipped)
-		if(get_dir(loc, target) & dir)
-			return !density
-		else
-			return 1
-	return 1
+			return NO_BLOCKED_MOVEMENT
+	
+	return ..()
 
 //Flipping tables, nothing more, nothing less
 /obj/structure/table/MouseDrop(over_object, src_location, over_location)
@@ -441,7 +426,7 @@
 	for(var/atom/movable/A in get_turf(src))
 		if(!A.anchored)
 			spawn(0)
-				A.throw_at(pick(targets), 1, 1)
+				A.launch_towards(pick(targets), 1, SPEED_FAST)
 
 	projectile_coverage = flipped_projectile_coverage
 
@@ -449,6 +434,7 @@
 	if(dir != NORTH)
 		layer = FLY_LAYER
 	flipped = 1
+	flags_can_pass_all &= ~PASS_UNDER
 	flags_atom |= ON_BORDER
 	for(var/D in list(turn(direction, 90), turn(direction, -90)))
 		var/obj/structure/table/T = locate() in get_step(src,D)
@@ -468,6 +454,7 @@
 	layer = initial(layer)
 	flipped = 0
 	climbable = initial(climbable)
+	flags_can_pass_all |= PASS_UNDER
 	flags_atom &= ~ON_BORDER
 	for(var/D in list(turn(dir, 90), turn(dir, -90)))
 		var/obj/structure/table/T = locate() in get_step(src.loc,D)
@@ -587,19 +574,16 @@
 	throwpass = 1	//You can throw objects over this, despite it's density.
 	breakable = 1
 	climbable = 1
+	flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH
 	parts = /obj/item/frame/rack
 	debris = list(/obj/item/frame/rack)
 
-/obj/structure/rack/CanPass(atom/movable/mover, turf/target)
-	if(!density) //Because broken racks
-		return 1
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return 1
-	var/obj/structure/S = locate(/obj/structure) in get_turf(mover)
-	if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable non-border  objects allow you to universally climb over others
-		return 1
-	else
-		return 0
+/obj/structure/rack/BlockedPassDirs(atom/movable/mover, target_dir)
+	for(var/obj/structure/S in get_turf(mover))
+		if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable non-border objects allow you to universally climb over others
+			return NO_BLOCKED_MOVEMENT		
+	
+	return ..()
 
 /obj/structure/rack/MouseDrop_T(obj/item/I, mob/user)
 	if (!istype(I) || user.get_active_hand() != I)

@@ -85,7 +85,7 @@
 	
 	var/obj/item/explosive/grenade/xeno_neuro_grenade/grenade = new /obj/item/explosive/grenade/xeno_neuro_grenade
 	grenade.loc = loc
-	grenade.throw_at(T, 5, 3, src, TRUE)
+	grenade.launch_towards(T, 5, SPEED_VERY_SLOW, src, TRUE)
 
 	spawn (pCaste.oppressor_grenade_fuse)
 		grenade.prime()
@@ -187,7 +187,7 @@
 			break
 		T = temp
 
-	H.throw_at(T, fling_distance, 1, src, 1)
+	H.launch_towards(T, fling_distance, SPEED_FAST, src, 1)
 
 	add_timer(CALLBACK(src, .proc/prae_punch_cooldown), pCaste.oppressor_punch_cooldown)
 

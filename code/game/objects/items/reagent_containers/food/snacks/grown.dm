@@ -368,7 +368,7 @@
 	potency = 10
 	plantname = "tomato"
 
-/obj/item/reagent_container/food/snacks/grown/tomato/throw_impact(atom/hit_atom)
+/obj/item/reagent_container/food/snacks/grown/tomato/launch_impact(atom/hit_atom)
 	..()
 	new/obj/effect/decal/cleanable/tomato_smudge(src.loc)
 	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),"<span class='moderate'>You hear a smack.</span>")
@@ -400,7 +400,7 @@
 	filling_color = "#FF0000"
 	plantname = "bloodtomato"
 
-/obj/item/reagent_container/food/snacks/grown/bloodtomato/throw_impact(atom/hit_atom)
+/obj/item/reagent_container/food/snacks/grown/bloodtomato/launch_impact(atom/hit_atom)
 	..()
 	new/obj/effect/decal/cleanable/blood/splatter(src.loc)
 	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),"<span class='moderate'>You hear a smack.</span>")
@@ -418,7 +418,7 @@
 	filling_color = "#586CFC"
 	plantname = "bluetomato"
 
-/obj/item/reagent_container/food/snacks/grown/bluetomato/throw_impact(atom/hit_atom)
+/obj/item/reagent_container/food/snacks/grown/bluetomato/launch_impact(atom/hit_atom)
 	..()
 	new/obj/effect/decal/cleanable/blood/oil(src.loc)
 	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),"<span class='moderate'>You hear a smack.</span>")
@@ -566,7 +566,7 @@
 	filling_color = "#91F8FF"
 	plantname = "bluespacetomato"
 
-/obj/item/reagent_container/food/snacks/grown/bluespacetomato/throw_impact(atom/hit_atom)
+/obj/item/reagent_container/food/snacks/grown/bluespacetomato/launch_impact(atom/hit_atom)
 	..()
 	var/mob/M = usr
 	var/outer_teleport_radius = potency/10 //Plant potency determines radius of teleport.

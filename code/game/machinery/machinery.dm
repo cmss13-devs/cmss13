@@ -115,6 +115,7 @@ Class Procs:
 	var/machine_processing = 0 // whether the machine is busy and requires process() calls in scheduler.
 	throwpass = 1
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
+	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
 
 /obj/structure/machinery/New()
 	..()

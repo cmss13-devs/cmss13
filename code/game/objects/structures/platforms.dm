@@ -13,6 +13,7 @@
 	layer = OBJ_LAYER
 	climb_delay = 20 //Leaping a barricade is universally much faster than clumsily climbing on a table or rack
 	breakable = FALSE
+	flags_can_pass_all = PASS_OVER
 	flags_atom = ON_BORDER
 	unacidable = TRUE
 
@@ -33,27 +34,22 @@
 	overlays += I
 	..()
 
-/obj/structure/platform/CheckExit(atom/movable/O, turf/target)
-	if(O && O.throwing)
-		return 1
-
-	if(((flags_atom & ON_BORDER) && get_dir(loc, target) == dir))
-		return 0
-	else
-		return 1
-
-/obj/structure/platform/CanPass(atom/movable/mover, turf/target)
+/obj/structure/platform/BlockedExitDirs(atom/movable/mover, target_dir)
 	if(mover && mover.throwing)
-		return 1
+		return NO_BLOCKED_MOVEMENT
+
+	return ..()
+
+/obj/structure/platform/BlockedPassDirs(atom/movable/mover, target_dir)
+	if(mover && mover.throwing)
+		return NO_BLOCKED_MOVEMENT
 
 	var/obj/structure/S = locate(/obj/structure) in get_turf(mover)
 	if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable objects allow you to universally climb over others
 		return 1
 
-	if(!(flags_atom & ON_BORDER) || get_dir(loc, target) == dir)
-		return 0
-	else
-		return 1
+	return ..()
+
 /obj/structure/platform/ex_act()
 	return
 
@@ -67,6 +63,7 @@ obj/structure/platform_decoration
 	throwpass = TRUE
 	layer = 3.5
 	breakable = FALSE
+	flags_can_pass_all = PASS_OVER
 	flags_atom = ON_BORDER
 	unacidable = TRUE
 

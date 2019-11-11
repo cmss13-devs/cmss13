@@ -8,7 +8,7 @@
 	w_class = SIZE_SMALL
 	force = 0
 	throwforce = 5
-	throw_speed = 5
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	attack_verb = list("hit", "whacked", "sliced")
 	max_amount = 20

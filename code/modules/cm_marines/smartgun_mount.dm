@@ -13,7 +13,7 @@
 	desc = "A box of 700, 10x28mm caseless tungsten rounds for the M56D heavy machine gun system. Just click the M56D with this to reload it."
 	w_class = SIZE_MEDIUM
 	icon_state = "ammo_drum"
-	flags_magazine = NOFLAGS //can't be refilled or emptied by hand
+	flags_magazine = NO_FLAGS //can't be refilled or emptied by hand
 	caliber = "10x28mm"
 	max_rounds = 700
 	default_ammo = /datum/ammo/bullet/smartgun
@@ -703,11 +703,11 @@
 		return 1
 	return ..()
 
-/obj/structure/machinery/m56d_hmg/Bumped(atom/A)
+/obj/structure/machinery/m56d_hmg/Collided(atom/movable/AM)
 	..()
 
-	if(istype(A, /mob/living/carbon/Xenomorph/Crusher))
-		var/mob/living/carbon/Xenomorph/Crusher/C = A
+	if(istype(AM, /mob/living/carbon/Xenomorph/Crusher))
+		var/mob/living/carbon/Xenomorph/Crusher/C = AM
 
 		update_health(C.charge_speed * 400)
 

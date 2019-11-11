@@ -7,6 +7,9 @@
 	density = 1
 	throwpass = TRUE //You can throw objects over this, despite its density.
 	layer = BELOW_OBJ_LAYER
+	flags_can_pass_all = NO_FLAGS
+	flags_can_pass_front = PASS_OVER & ~(PASS_OVER_FIRE|PASS_OVER_ACID_SPRAY)
+	flags_can_pass_behind = PASS_OVER & ~(PASS_OVER_ACID_SPRAY)
 	flags_atom = ON_BORDER
 	climb_delay = 20 //Leaping a barricade is universally much faster than clumsily climbing on a table or rack
 	var/stack_type //The type of stack the barricade dropped when disassembled if any.
@@ -34,7 +37,12 @@
 	add_timer(CALLBACK(src, .proc/update_icon), 0)
 
 /obj/structure/barricade/handle_barrier_chance(mob/living/M)
+	if(!anchored)
+		return FALSE
 	return prob(max(30,(100.0*health)/maxhealth))
+
+/obj/structure/barricade/flamer_fire_act(var/dam = config.min_burnlevel)
+	take_damage(dam)
 
 /obj/structure/barricade/examine(mob/user)
 	..()
@@ -57,12 +65,13 @@
 			C.KnockDown(2) //Leaping into barbed wire is VERY bad
 	..()
 
-/obj/structure/barricade/Bumped(atom/A)
+
+/obj/structure/barricade/Collided(atom/movable/AM)
 	..()
 
-	if(istype(A, /mob/living/carbon/Xenomorph/Crusher))
+	if(istype(AM, /mob/living/carbon/Xenomorph/Crusher))
 
-		var/mob/living/carbon/Xenomorph/Crusher/C = A
+		var/mob/living/carbon/Xenomorph/Crusher/C = AM
 
 		if(C.charge_speed < C.charge_speed_max/2)
 			return
@@ -74,39 +83,39 @@
 			visible_message(SPAN_DANGER("[C] smashes through [src]!"))
 			destroy()
 
-/obj/structure/barricade/CheckExit(atom/movable/O, turf/target)
+
+/*
+ *	Checks whether an atom can leave its current turf through the barricade.
+ *	Returns the blocking direction.
+ *		If the atom's movement is not blocked, returns 0.
+ *		If the object is completely solid, returns ALL
+ */
+/obj/structure/barricade/BlockedExitDirs(atom/movable/mover, target_dir)
 	if(closed)
-		return 1
+		return NO_BLOCKED_MOVEMENT
 
-	if(O.throwing)
-		if(is_wired && iscarbon(O)) //Leaping mob against barbed wire fails
-			if(get_dir(loc, target) & dir)
-				return 0
-		return 1
+	return ..()
 
-	if(get_dir(loc, target) & dir)
-		return 0
-	else
-		return 1
 
-/obj/structure/barricade/CanPass(atom/movable/mover, turf/target)
+/*
+ *	Checks whether an atom can pass through the barricade into its target turf.
+ *	Returns the blocking direction.
+ *		If the atom's movement is not blocked, returns 0.
+ *		If the object is completely solid, returns ALL
+ *
+ *	Would be worth checking whether it is really necessary to have this CanPass
+ *	proc be specific to barricades. Instead, have flags for blocking specific
+ *  mobs.
+ */
+/obj/structure/barricade/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(closed)
-		return 1
-
-	if(mover && mover.throwing)
-		if(is_wired && iscarbon(mover)) //Leaping mob against barbed wire fails
-			if(get_dir(loc, target) & dir)
-				return 0
-		return 1
+		return NO_BLOCKED_MOVEMENT
 
 	var/obj/structure/S = locate(/obj/structure) in get_turf(mover)
 	if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable objects allow you to universally climb over others
-		return 1
+		return NO_BLOCKED_MOVEMENT
 
-	if(get_dir(loc, target) & dir)
-		return 0
-	else
-		return 1
+	return ..()
 
 /obj/structure/barricade/attack_robot(mob/user as mob)
 	return attack_hand(user)
@@ -146,6 +155,8 @@
 				update_health(-50)
 				can_wire = FALSE
 				is_wired = TRUE
+				flags_can_pass_front &= ~(PASS_OVER_THROW_MOB)
+				flags_can_pass_behind &= ~(PASS_OVER_THROW_MOB)
 				climbable = FALSE
 				update_icon()
 		return
@@ -165,6 +176,8 @@
 				update_health(50)
 				can_wire = TRUE
 				is_wired = FALSE
+				flags_can_pass_front |= PASS_OVER_THROW_MOB
+				flags_can_pass_behind |= PASS_OVER_THROW_MOB
 				climbable = TRUE
 				update_icon()
 				new/obj/item/stack/barbed_wire( src.loc )
@@ -258,14 +271,15 @@
 // This proc is called whenever the cade is moved, so I thought it was appropriate,
 // especially since the barricade's direction needs to be handled when moving
 // diagonally.
-// However, will look into fixing bugs w/diagonal movement different if this is
-// to hacky.
 /obj/structure/barricade/handle_rotation()
 	if (dir & EAST)
 		dir = EAST
 	else if(dir & WEST)
 		dir = WEST
 	update_icon()
+
+obj/structure/barricade/acid_spray_act()
+	take_damage(rand(20, 30))
 
 /obj/structure/barricade/proc/hit_barricade(obj/item/I)
 	if(istype(I, /obj/item/weapon/zombie_claws))
@@ -776,7 +790,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	if(!closed) // Closed = gate down for plasteel for some reason
 		return ..()
 	else
-		return 0
+		return FALSE
 
 /obj/structure/barricade/plasteel/examine(mob/user)
 	..()
@@ -1240,6 +1254,8 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	update_health(-50)
 	can_wire = FALSE
 	is_wired = TRUE
+	flags_can_pass_front &= ~(PASS_OVER_THROW_MOB)
+	flags_can_pass_behind &= ~(PASS_OVER_THROW_MOB)
 	update_icon()
 	climbable = FALSE
 	. = ..()
@@ -1250,6 +1266,8 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	update_health(-50)
 	can_wire = FALSE
 	is_wired = TRUE
+	flags_can_pass_front &= ~(PASS_OVER_THROW_MOB)
+	flags_can_pass_behind &= ~(PASS_OVER_THROW_MOB)
 	climbable = FALSE
 	update_icon()
 	. = ..()
@@ -1258,6 +1276,8 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	update_health(-50)
 	can_wire = FALSE
 	is_wired = TRUE
+	flags_can_pass_front &= ~(PASS_OVER_THROW_MOB)
+	flags_can_pass_behind &= ~(PASS_OVER_THROW_MOB)
 	climbable = FALSE
 	update_icon()
 	. = ..()

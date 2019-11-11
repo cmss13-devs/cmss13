@@ -10,7 +10,7 @@
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 3
 	w_class = SIZE_SMALL
-	throw_speed = 5
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	matter = list("metal" = 200)
 	origin_tech = "magnets=1;biotech=1"

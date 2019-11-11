@@ -10,8 +10,7 @@
 	name = "chemicals"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "chempuff"
-	flags_pass = PASSTABLE|PASSGRILLE
-
+	flags_pass = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH
 
 /obj/effect/decal/mecha_wreckage
 	name = "Exosuit wreckage"
@@ -21,11 +20,11 @@
 	anchored = 0
 	opacity = 0
 	unacidable = FALSE
+	flags_pass = PASS_HIGH_OVER_ONLY|PASS_AROUND
 
 /obj/effect/decal/mecha_wreckage/ex_act(severity)
 	if(severity > EXPLOSION_THRESHOLD_MEDIUM)
-		spawn
-			qdel(src)
+		qdel(src)
 	return
 
 /obj/effect/decal/mecha_wreckage/bullet_act(var/obj/item/projectile/Proj)
@@ -34,7 +33,7 @@
 /obj/effect/decal/mecha_wreckage/attack_alien(mob/living/carbon/Xenomorph/M)
     if(M.a_intent != "help")
         playsound(src, 'sound/effects/metal_crash.ogg', 50, 1)
-        M.visible_message(SPAN_DANGER("[M] slices [src] apart!"),SPAN_DANGER("You slice [src] apart!"))
+        M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), SPAN_DANGER("You slice [src] apart!"))
         robogibs(src)
         qdel(src)
 

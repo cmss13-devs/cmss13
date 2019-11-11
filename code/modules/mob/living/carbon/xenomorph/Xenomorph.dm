@@ -47,6 +47,7 @@
 	see_invisible = SEE_INVISIBLE_MINIMUM
 	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO)
 	unacidable = TRUE
+	rebounds = TRUE
 	faction = FACTION_XENOMORPH
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/datum/mutator_set/individual_mutators/mutators = new
@@ -527,16 +528,8 @@
 		return FALSE
 	if(L.buckled)
 		return FALSE //to stop xeno from pulling marines on roller beds.
-	if(ishuman(L) && L.stat == DEAD && !L.chestburst)
-		var/mob/living/carbon/human/H = L
-		if(H.status_flags & XENO_HOST)
-			for(var/obj/item/alien_embryo/AE in H.contents)
-				if(AE.stage <= 1)
-					return FALSE
-			if(world.time > H.timeofdeath + H.revive_grace_period)
-				return FALSE // they ain't gonna burst now
-		else
-			return FALSE // leave the dead alone
+	if(!L.is_xeno_grabbable())
+		return FALSE
 	var/atom/A = AM.handle_barriers(src)
 	if(A != AM)
 		A.attack_alien(src)
@@ -684,6 +677,7 @@
 		plasma_stored = plasma_max
 
 /mob/living/carbon/Xenomorph/proc/recalculate_speed()
+	recalculate_move_delay = TRUE
 	speed = caste.speed + speed_modifier
 
 /mob/living/carbon/Xenomorph/proc/recalculate_armor()

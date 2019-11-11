@@ -83,8 +83,8 @@
 			return
 
 	for(var/obj/O in T)
-		if(!O.CanPass(user, user.loc))
-			to_chat(user, SPAN_WARNING("The hole's exit is blocked by something!"))
+		if(O.BlockedPassDirs(user, crawl_dir))
+			to_chat(user, "<span class='warning'>The hole's exit is blocked by something!</span>")
 			return
 
 	if(user.action_busy)
@@ -97,7 +97,7 @@
 			if (T.density)
 				return
 			for(var/obj/O in T)
-				if(!O.CanPass(user, user.loc))
+				if(O.BlockedPassDirs(user, crawl_dir))
 					return
 			if(user.pulling)
 				user.stop_pulling()

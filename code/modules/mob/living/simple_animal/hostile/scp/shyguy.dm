@@ -126,7 +126,7 @@
 			reduce_examine_urge(H)
 
 /mob/living/simple_animal/scp/shyguy/proc/reduce_examine_urge(var/mob/living/carbon/H)
-	if(!H || !istype(H))
+	if(!istype(H))
 		return
 	var/index
 	var/examine_urge
@@ -220,6 +220,7 @@
 	//Rampage along a path to get to them,
 	var/turf/next_turf = get_step_towards(src, target)
 	var/limit = 100
+	var/move_dir = 0
 	spawn()
 		chasing = 1
 		while(target && target.stat != DEAD && get_turf(src) != target_turf && limit > 0)
@@ -253,7 +254,8 @@
 					if(next_turf && istype(next_turf, /turf/closed))
 						next_turf.ex_act(1000000)
 
-				if(!next_turf.CanPass(src, next_turf)) //Once we cleared everything we could, check one last time if we can pass
+				move_dir = get_dir(src, next_turf)
+				if(next_turf.BlockedPassDirs(src, move_dir)) //Once we cleared everything we could, check one last time if we can pass
 					sleep(10)
 
 				if(doom_message_played == 0 && get_dist(src,target) < 7)
@@ -496,10 +498,10 @@
 
 
 
-/mob/living/simple_animal/scp/shyguy/Bump(atom/movable/AM as mob)
+/mob/living/simple_animal/scp/shyguy/Collide(atom/A)
 	..()
 
-/mob/living/simple_animal/scp/shyguy/Bumped(atom/movable/AM as mob, yes)
+/mob/living/simple_animal/scp/shyguy/Collided(atom/movable/AM)
 	..()
 
 /mob/living/simple_animal/scp/shyguy/ex_act(var/severity)

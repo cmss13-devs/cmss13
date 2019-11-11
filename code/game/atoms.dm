@@ -12,7 +12,20 @@ var/global/list/ghdel_profiling = list()
 	var/blood_color
 	var/unacidable = FALSE
 	var/last_bumped = 0
-	var/flags_pass = 0
+
+	// Flags for what an atom can pass through
+	var/flags_pass = NO_FLAGS
+	var/flags_pass_temp = NO_FLAGS
+
+	// Flags for what can pass through an atom
+	var/flags_can_pass_all = NO_FLAGS // Use for objects that are not ON_BORDER or for general pass characteristics of an atom
+	var/flags_can_pass_front = NO_FLAGS // Relevant mainly for ON_BORDER atoms with the BlockedPassDirs() proc
+	var/flags_can_pass_behind = NO_FLAGS // Relevant mainly for ON_BORDER atoms with the BlockedExitDirs() proc
+	var/flags_can_pass_all_temp = NO_FLAGS
+	var/flags_can_pass_front_temp = NO_FLAGS
+	var/flags_can_pass_behind_temp = NO_FLAGS
+
+	var/flags_barrier = NO_FLAGS
 	var/throwpass = 0
 
 	//Effects
@@ -84,29 +97,51 @@ directive is properly returned.
 /atom/proc/on_reagent_change()
 	return
 
-/atom/proc/Bumped(AM as mob|obj)
+/atom/proc/Collided(atom/movable/AM)
 	return
 
-/atom/proc/CanPass(atom/movable/mover, turf/target)
-	//Purpose: Determines if the object can pass this atom.
-	//Called by: Movement.
-	//Inputs: The moving atom (optional), target turf
-	//Outputs: Boolean if can pass.
-	if(density)
-		if( (flags_atom & ON_BORDER) && !(get_dir(loc, target) & dir) )
-			return 1
-		else
-			return 0
+/atom/Cross(atom/movable/AM)
+	return TRUE
+
+/atom/Exit(atom/movable/AM)
+	return TRUE
+
+/*
+ *	Checks whether an atom can pass through the calling atom into its target turf.
+ *	Returns the blocking direction. 
+ *		If the atom's movement is not blocked, returns 0.
+ *		If the object is completely solid, returns ALL
+ */
+/atom/proc/BlockedPassDirs(atom/movable/mover, target_dir)
+	var/reverse_dir = REVERSE_DIR(dir)
+	var/flags_can_pass = flags_can_pass_all|flags_can_pass_all_temp|flags_can_pass_front|flags_can_pass_front_temp
+	var/mover_flags_pass = mover.flags_pass|mover.flags_pass_temp
+
+	if (!density || flags_can_pass & mover_flags_pass)
+		return NO_BLOCKED_MOVEMENT
+	
+	if (flags_atom & ON_BORDER)
+		// This is to properly handle diagonal movement (a cade to your NE facing west when you are trying to move NE should block for north instead of east)
+		if (target_dir & (NORTH|SOUTH) && target_dir & (EAST|WEST))
+			return target_dir - (target_dir & reverse_dir)
+		return target_dir & reverse_dir
 	else
-		return 1
+		return BLOCKED_MOVEMENT
 
+/*
+ *	Checks whether an atom can leave its current turf through the calling atom.
+ *	Returns the blocking direction. 
+ *		If the atom's movement is not blocked, returns 0 (no directions)
+ *		If the object is completely solid, returns all directions
+ */
+/atom/proc/BlockedExitDirs(atom/movable/mover, target_dir)
+	var/flags_can_pass = flags_can_pass_all|flags_can_pass_all_temp|flags_can_pass_behind|flags_can_pass_behind_temp
+	var/mover_flags_pass = mover.flags_pass|mover.flags_pass_temp
 
-/atom/proc/CheckExit(atom/movable/mover, turf/target)
-	if(!density || !(flags_atom & ON_BORDER) || !(get_dir(mover.loc, target) & dir))
-		return 1
-	else
-		return 0
-
+	if(flags_atom & ON_BORDER && density && !(flags_can_pass & mover_flags_pass))
+		return target_dir & dir
+	
+	return NO_BLOCKED_MOVEMENT
 
 // Convenience proc to see if a container is open for chemistry handling
 // returns true if open
@@ -266,9 +301,7 @@ its easier to just keep the beam vertical.
 /atom/proc/fire_act()
 	return
 
-/atom/proc/hitby(atom/movable/AM as mob|obj)
-	if (density)
-		AM.throwing = 0
+/atom/proc/hitby(atom/movable/AM)
 	return
 
 /atom/proc/add_hiddenprint(mob/living/M as mob)
@@ -442,17 +475,20 @@ its easier to just keep the beam vertical.
 	else
 		return 0
 
-/atom/proc/checkpass(passflag)
-	return flags_pass&passflag
-
 //Generalized Fire Proc.
-/atom/proc/flamer_fire_act()
+/atom/proc/flamer_fire_act(var/dam = config.min_burnlevel)
+	return
+
+/atom/proc/acid_spray_act()
 	return
 
 
 //things that object need to do when a movable atom inside it is deleted
 /atom/proc/on_stored_atom_del(atom/movable/AM)
 	return
+
+/atom/proc/handle_barrier_chance(mob/living/M)
+	return FALSE
 
 /atom/proc/initialize()
 	return

@@ -457,11 +457,13 @@
 		return
 	if(!isturf(C.loc)) //To prevent the loading from stuff from someone's inventory, which wouldn't get handled properly.
 		return
-
 	if(get_dist(C, src) > 1 || load || !on)
 		return
+
+	var/move_dir = 0
 	for(var/obj/structure/plasticflaps/P in src.loc)//Takes flaps into account
-		if(!CanPass(C,P))
+		move_dir = get_dir(C, P)
+		if(BlockedPassDirs(C,move_dir))
 			return
 	mode = 1
 
@@ -512,9 +514,7 @@
 
 
 	if(dirn)
-		var/turf/T = src.loc
-		T = get_step(T,dirn)
-		if(CanPass(load,T))//Can't get off onto anything that wouldn't let you pass normally
+		if(!BlockedPassDirs(load, dirn))//Can't get off onto anything that wouldn't let you pass normally
 			step(load, dirn)
 		else
 			load.loc = src.loc//Drops you right there, so you shouldn't be able to get yourself stuck
@@ -748,9 +748,9 @@
 	return
 
 // called when bot bumps into anything
-/obj/structure/machinery/bot/mulebot/Bump(var/atom/obs)
+/obj/structure/machinery/bot/mulebot/Collide(atom/A)
 	if(!(wires & wire_mobavoid))		//usually just bumps, but if avoidance disabled knock over mobs
-		var/mob/M = obs
+		var/mob/M = A
 		if(ismob(M))
 			if(isborg(M))
 				src.visible_message(SPAN_DANGER("[src] bumps into [M]!"))

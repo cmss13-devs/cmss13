@@ -73,11 +73,11 @@
 	path = null
 	return GC_HINT_RECYCLE
 
-/obj/item/projectile/Bumped(atom/A as mob|obj|turf|area)
-	if(A && !A in permutated)
-		scan_a_turf(A.loc)
+/obj/item/projectile/Collided(atom/movable/AM)
+	if(AM && !AM in permutated)
+		scan_a_turf(AM.loc)
 
-/obj/item/projectile/Crossed(AM as mob|obj)
+/obj/item/projectile/Crossed(atom/movable/AM)
 	if(AM && !AM in permutated)
 		scan_a_turf(get_turf(AM))
 
@@ -581,7 +581,7 @@
 	if(!density)
 		return FALSE
 
-	if(!anchored && !health) //unanchored objects offer no protection. 
+	if(!anchored && !health) //unanchored objects offer no protection.
 		return FALSE
 
 	return TRUE
@@ -799,7 +799,7 @@
 	if(damage > 0 && !(ammo_flags & AMMO_IGNORE_ARMOR))
 		var/armor = armor_deflection + armor_deflection_buff
 		if(isXenoQueen(src) || isXenoCrusher(src)) //Charging and crest resistances. Charging Xenos get a lot of extra armor, currently Crushers and Queens
-			var/mob/living/carbon/Xenomorph/charger = src			
+			var/mob/living/carbon/Xenomorph/charger = src
 			if(P.dir == reverse_direction(charger.dir)) armor += round(armor_deflection * (charger.charge_speed/charger.charge_speed_max) / 2) //Some armor deflection when charging.
 			//Otherwise use the standard armor deflection for crushers.
 
@@ -872,7 +872,7 @@
 				damage = round(damage * 7)
 			else if(ammo_flags & AMMO_ANTISTRUCT) // Railgun does extra damage to turfs
 				damage = round(damage * ANTISTRUCT_DMG_MULT_WALL)
-		else 
+		else
 			return
 	if(ammo_flags & AMMO_BALLISTIC)
 		current_bulletholes++

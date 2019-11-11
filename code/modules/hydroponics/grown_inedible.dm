@@ -40,10 +40,10 @@
 	icon = 'icons/obj/items/harvest.dmi'
 	icon_state = "logs"
 	force = 5
-	flags_atom = NOFLAGS
+	flags_atom = NO_FLAGS
 	throwforce = 5
 	w_class = SIZE_MEDIUM
-	throw_speed = 3
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 3
 	origin_tech = "materials=1"
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
@@ -71,10 +71,10 @@
 	icon_state = "sunflower"
 	damtype = "fire"
 	force = 0
-	flags_atom = NOFLAGS
+	flags_atom = NO_FLAGS
 	throwforce = 1
 	w_class = SIZE_TINY
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 3
 
 /obj/item/grown/sunflower/attack(mob/M as mob, mob/user as mob)
@@ -89,10 +89,10 @@
 	icon_state = "nettle"
 	damtype = "fire"
 	force = 15
-	flags_atom = NOFLAGS
+	flags_atom = NO_FLAGS
 	throwforce = 1
 	w_class = SIZE_SMALL
-	throw_speed = 1
+	throw_speed = SPEED_FAST
 	throw_range = 3
 	origin_tech = "combat=1"
 	attack_verb = list("stung")
@@ -176,7 +176,7 @@
 	item_state = "corncob"
 	w_class = SIZE_SMALL
 	throwforce = 0
-	throw_speed = 4
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 
 /obj/item/corncob/attackby(obj/item/W as obj, mob/user as mob)

@@ -9,6 +9,7 @@
 	visible = 0.0
 	use_power = 0
 	flags_atom = ON_BORDER
+	flags_can_pass_all = PASS_GLASS
 	opacity = 0
 	var/obj/item/circuitboard/airlock/electronics = null
 	air_properties_vary_with_direction = 1
@@ -34,7 +35,7 @@
 		if(SOUTH) layer = ABOVE_MOB_LAYER
 		else layer = initial(layer)
 
-/obj/structure/machinery/door/window/Bumped(atom/movable/AM as mob|obj)
+/obj/structure/machinery/door/window/Collided(atom/movable/AM)
 	if (!( ismob(AM) ))
 		var/obj/structure/machinery/bot/bot = AM
 		if(istype(bot))
@@ -56,22 +57,6 @@
 			sleep(20)
 		close()
 	return
-
-/obj/structure/machinery/door/window/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
-		return 1
-	if(get_dir(loc, target) == dir) //Make sure looking at appropriate border
-		return !density
-	else
-		return 1
-
-/obj/structure/machinery/door/window/CheckExit(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
-		return 1
-	if(get_dir(loc, target) == dir)
-		return !density
-	else
-		return 1
 
 /obj/structure/machinery/door/window/open()
 	if (src.operating == 1) //doors can still open when emag-disabled
@@ -142,7 +127,7 @@
 	return 1
 
 //When an object is thrown at the window
-/obj/structure/machinery/door/window/hitby(AM as mob|obj)
+/obj/structure/machinery/door/window/hitby(atom/movable/AM)
 
 	..()
 	visible_message(SPAN_DANGER("<B>The glass door was hit by [AM].</B>"), null, null, 1)

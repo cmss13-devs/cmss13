@@ -4,15 +4,36 @@
 //turf-only flags
 #define NOJAUNT		1
 
-//PASS FLAGS
-#define PASSTABLE	1
-#define PASSGLASS	2
-#define PASSGRILLE	4
-#define PASSBLOB	8
-#define PASSMOB		16
+// PASS FLAGS
+// Flags have been slightly revamped to reflect ways things pass rather than having arbitrarily named vars
 
-//FLAGS
-#define NOFLAGS					0		//Nothing.
+// Specific pass flags
+// Note:	these are pretty abstract, when trying to apply one of these flags to an atom's flags_pass/flags_can_pass vars,
+//			consider what you intend to allow a given atom to pass/let through and how the "pass-bys" might happen logically
+#define PASS_THROUGH				1		// For atoms that are porous or have holes that an atom cannot normally pass through
+#define PASS_AROUND					2		// For atoms that do not necessarily "fill" the turf that they're on and give some space to go around
+#define PASS_OVER_THROW_ITEM		4		// For atoms that allow thrown items to go over them
+#define PASS_OVER_THROW_MOB			8		// For atoms that allow thrown mobs to go over them
+#define PASS_OVER_FIRE				16		// For atoms that allow fire to go over them
+#define PASS_OVER_ACID_SPRAY		32		// For atoms that allow xeno acid spray to go over them
+#define PASS_UNDER					64		// For atoms that have some space underneath for things to pass through
+#define PASS_GLASS					128		// For atoms that are made of glass or have hollow sections filled with glass
+#define PASS_MOB					256		// For mobs (i.e. atoms that explicitly ignore mobs in movement)
+#define PASS_TYPE_CRAWLER			512		// For mobs that crawl/climb over stuff (runners/larva), more for "whitelisting" crawlers to pass
+#define PASS_HIGH_OVER_ONLY			1024 	// For high toss actions
+#define PASS_BUILDING_ONLY			2048 	// For throwing stuff over walls (that lead to open ceilings)
+
+// Pass flag groups
+#define PASS_OVER					(PASS_OVER_THROW_ITEM|PASS_OVER_THROW_MOB|PASS_OVER_FIRE|PASS_OVER_ACID_SPRAY)
+#define PASS_HIGH_OVER				(PASS_HIGH_OVER_ONLY|PASS_OVER)
+#define PASS_BUILDING				(PASS_HIGH_OVER|PASS_BUILDING_ONLY)
+#define PASS_ALL					(PASS_THROUGH|PASS_AROUND|PASS_OVER|PASS_UNDER|PASS_GLASS|PASS_MOB|PASS_HIGH_OVER_ONLY|PASS_BUILDING_ONLY|PASS_TYPE_CRAWLER)
+
+// Short-hand pass flags for very specific things
+#define PASS_FLAGS_ACID_SPRAY		(PASS_UNDER|PASS_MOB|PASS_OVER_ACID_SPRAY)
+#define PASS_FLAGS_FLAME			(PASS_AROUND|PASS_UNDER|PASS_MOB|PASS_THROUGH|PASS_OVER_FIRE)
+#define PASS_FLAGS_SMOKE			(PASS_HIGH_OVER|PASS_AROUND|PASS_UNDER|PASS_MOB|PASS_THROUGH)
+#define PASS_FLAGS_CRAWLER			(PASS_TYPE_CRAWLER|PASS_UNDER)
 
 //==========================================================================================
 

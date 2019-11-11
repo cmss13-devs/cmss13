@@ -84,7 +84,8 @@
 	status_flags |= LEAPING
 
 	src.visible_message(SPAN_WARNING("<b>\The [src]</b> leaps at [T]!"))
-	src.throw_at(get_step(get_turf(T),get_turf(src)), 5, 1, src)
+	var/target = get_step(get_turf(T), get_turf(src))
+	src.launch_towards(target, 5, SPEED_VERY_FAST, src)
 	playsound(src.loc, 'sound/voice/shriek1.ogg', 25, 1)
 
 	sleep(5)

@@ -10,7 +10,7 @@
 #define TANK_DAMAGE_REDUCTION_ARMOR_MULT 12		// How much we divide our armor by to get the percentage reduction
 
 //Tramplin' time, but other than that identical
-/obj/vehicle/multitile/hitbox/cm_armored/Bump(var/atom/A)
+/obj/vehicle/multitile/hitbox/cm_armored/Collide(atom/A)
 	. = ..()
 
 	var/obj/vehicle/multitile/root/cm_armored/CA = root

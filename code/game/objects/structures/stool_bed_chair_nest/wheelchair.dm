@@ -56,7 +56,7 @@
 
 		if(driver.next_move_slowdown)
 			move_delay += driver.next_move_slowdown
-			driver.next_move_slowdown = 0
+			driver.set_next_move_slowdown(0)
 
 		if(driver.temporary_slowdown)
 			move_delay += 2 //Temporary slowdown slows hard

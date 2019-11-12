@@ -44,10 +44,17 @@
 		T.ceiling_desc(user)
 
 /obj/effect/alien/weeds/Crossed(atom/movable/AM)
-	if(ishuman(AM))
+	if (ishuman(AM))
 		var/mob/living/carbon/human/H = AM
-		if(!has_species(H,"Yautja")) //predators are immune to weed slowdown effect
-			H.next_move_slowdown += 1
+		if (!has_species(H,"Yautja")) // predators are immune to weed slowdown effect
+			var/new_slowdown = H.next_move_slowdown + 1
+			H.set_next_move_slowdown(new_slowdown)
+
+/obj/effect/alien/weeds/Uncrossed(atom/movable/AM)
+	if (ishuman(AM))
+		var/mob/living/carbon/human/H = AM
+		if (!has_species(H,"Yautja")) // predators do not get slowed down by weeds
+			H.recalculate_move_delay = TRUE
 
 // Uh oh, we might be dying!
 // I know this is bad proc naming but it was too good to pass on and it's only used in this file anyways

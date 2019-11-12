@@ -109,6 +109,7 @@
 	if (legcuffed && !initial(legcuffed))
 		drop_inv_item_on_ground(legcuffed)
 	legcuffed = initial(legcuffed)
+	recalculate_move_delay = TRUE
 	..()
 
 

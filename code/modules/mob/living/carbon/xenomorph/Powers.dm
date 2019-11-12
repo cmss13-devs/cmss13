@@ -41,7 +41,7 @@
 	SPAN_XENOWARNING("You [pounce_type]e at [T]!"))
 	used_pounce = 1
 	use_plasma(10)
-	launch_towards(T, caste.charge_distance + mutators.pounce_boost, caste.charge_speed, src) //Victim, distance, speed
+	launch_towards(T, caste.charge_distance + mutators.pounce_boost, caste.pounce_speed, src) //Victim, distance, speed
 
 	spawn(caste.pounce_delay)
 		used_pounce = 0

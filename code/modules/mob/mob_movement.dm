@@ -250,3 +250,7 @@
 
 	prob_slip = round(prob_slip)
 	return(prob_slip)
+
+/mob/proc/set_next_move_slowdown(var/val)
+	next_move_slowdown = val
+	recalculate_move_delay = TRUE

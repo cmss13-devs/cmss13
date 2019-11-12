@@ -39,7 +39,6 @@
 
 	//symptoms
 	switch(stage)
-
 		if(1)
 			if(addiction_progression)
 				if(prob(20))
@@ -48,7 +47,7 @@
 						var/message = SPAN_DANGER( pick("You could use another hit.", "More of that would be nice.", "Another dose would help.", "One more dose wouldn't hurt", "Why not take one more?") )
 						to_chat(affected_mob, message)
 
-				affected_mob.next_move_slowdown = max(affected_mob.next_move_slowdown, 5)
+				affected_mob.set_next_move_slowdown(max(affected_mob.next_move_slowdown, 5))
 
 			else
 				if(prob(20))
@@ -63,7 +62,7 @@
 				if(prob(25))
 					affected_mob.emote("me",1, pick("winces slightly.", "grimaces.") )
 
-			affected_mob.next_move_slowdown = max(affected_mob.next_move_slowdown, 7)
+			affected_mob.set_next_move_slowdown(max(affected_mob.next_move_slowdown, 7))
 
 		if(3)
 			if(prob(3))
@@ -77,7 +76,7 @@
 				if(prob(25))
 					affected_mob.emote("me",1, pick("winces.", "grimaces.", "groans!") )
 
-			affected_mob.next_move_slowdown = max(affected_mob.next_move_slowdown, 10)
+			affected_mob.set_next_move_slowdown(max(affected_mob.next_move_slowdown, 10))
 
 		if(4)
 			if(prob(5))
@@ -90,5 +89,4 @@
 					to_chat(affected_mob, message)
 				if(prob(25))
 					affected_mob.emote("me",1, pick("groans painfully!", "contorts with pain!"))
-
-			affected_mob.next_move_slowdown = max(affected_mob.next_move_slowdown, 10)
+			affected_mob.set_next_move_slowdown(max(affected_mob.next_move_slowdown, 10))

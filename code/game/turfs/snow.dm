@@ -50,12 +50,13 @@
 			if(istype(C, /mob/living/carbon/Xenomorph)||isYautja(C))
 				slow_amount = 0.25
 				can_stuck = 0
-			C.next_move_slowdown += slow_amount * slayer
+			var/new_slowdown = C.next_move_slowdown + (slow_amount * slayer)
 			if(prob(2))
 				to_chat(C, SPAN_WARNING("Moving through [src] slows you down.")) //Warning only
 			else if(can_stuck && slayer == 3 && prob(2))
 				to_chat(C, SPAN_WARNING("You get stuck in [src] for a moment!"))
-				C.next_move_slowdown += 10
+				new_slowdown += 10
+			C.set_next_move_slowdown(new_slowdown)
 	..()
 
 

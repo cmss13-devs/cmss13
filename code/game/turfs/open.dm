@@ -293,7 +293,8 @@
 		if(C.on_fire)
 			C.ExtinguishMob()
 
-		C.next_move_slowdown += river_slowdown
+		var/new_slowdown = C.next_move_slowdown + river_slowdown
+		C.set_next_move_slowdown(new_slowdown)
 
 /turf/open/gm/river/proc/cleanup(var/mob/living/carbon/human/M)
 	if(!M || !istype(M)) return

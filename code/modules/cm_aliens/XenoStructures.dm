@@ -112,7 +112,14 @@
 	. = ..()
 	var/mob/living/carbon/human/H = AM
 	if(istype(H) && !H.lying)
-		H.next_move_slowdown += slow_amt
+		var/new_slowdown = H.next_move_slowdown + slow_amt
+		H.set_next_move_slowdown(new_slowdown)
+
+/obj/effect/alien/resin/sticky/Uncrossed(atom/movable/AM)
+	. = ..()
+	var/mob/living/carbon/human/H = AM
+	if(istype(H) && !H.lying)
+		H.recalculate_move_delay = TRUE
 
 // Praetorian Sticky Resin spit uses this.
 /obj/effect/alien/resin/sticky/thin

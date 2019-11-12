@@ -17,6 +17,7 @@
 			m_intent = MOVE_INTENT_RUN
 			if(hud_used && hud_used.move_intent)
 				hud_used.move_intent.icon_state = "running"
+	recalculate_move_delay = TRUE
 	update_inv_legcuffed()
 
 

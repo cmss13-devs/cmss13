@@ -111,6 +111,7 @@
 		anchored = 0
 		icon_state = "yauttrap0"
 		H.legcuffed = src
+		H.recalculate_move_delay = TRUE
 		src.loc = H
 		H.legcuff_update()
 		playsound(H,'sound/weapons/tablehit1.ogg', 25, 1)

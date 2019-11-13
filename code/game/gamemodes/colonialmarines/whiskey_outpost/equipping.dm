@@ -311,12 +311,12 @@ You just gotta get out of this jungle to tell the tale!"}
 					frequency = DELTA_FREQ
 			switch(H.mind.assigned_role)
 				if("Squad Leader")
-					name = "squad leader" + name
+					name = "squad leader " + name
 					keyslot2 = new /obj/item/device/encryptionkey/squadlead(src)
 				if("Squad Medic")
-					name = "squad medic" + name
+					name = "squad medic " + name
 					keyslot2 = new /obj/item/device/encryptionkey/med(src)
 				if("Squad Engineer")
-					name = "squad engineer" + name
+					name = "squad engineer " + name
 					keyslot2 = new /obj/item/device/encryptionkey/engi(src)
 	..()

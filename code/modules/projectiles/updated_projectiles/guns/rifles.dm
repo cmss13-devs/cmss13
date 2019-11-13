@@ -430,8 +430,7 @@
 							/obj/item/attachable/gyro,
 							/obj/item/attachable/burstfire_assembly,
 							/obj/item/attachable/bipod,
-							/obj/item/attachable/attached_gun/shotgun,
-							/obj/item/attachable/flashlight/grip
+							/obj/item/attachable/attached_gun/shotgun
 									)
 	random_spawn_muzzle = list(
 							/obj/item/attachable/suppressor,

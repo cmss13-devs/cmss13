@@ -1,0 +1,9 @@
+
+author: Phil235
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed lighting issues with flashlight grip."
+  - tweak: "Flashlight grip is now as bright as rail flashlight."
+  - tweak: "You can no longer attach two light source attachments on a gun."

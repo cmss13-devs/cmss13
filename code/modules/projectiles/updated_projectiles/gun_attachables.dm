@@ -478,10 +478,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "Holy smokes RO man, they put a grip on a flashlight! \nReduces recoil and scatter by a tiny amount. Boosts accuracy by a tiny amount. Works as a light source."
 	icon_state = "flashgrip"
 	attach_icon = "flashgrip_a"
-	light_mod = 6
 	slot = "under"
-	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
-	attachment_action_type = /datum/action/item_action/toggle
 	original_state = "flashgrip"
 	original_attach = "flashgrip_a"
 
@@ -1238,9 +1235,9 @@ Defined in conflicts.dm of the #defines folder.
 		if(T == user.loc)
 			prev_T = T
 			continue
-		if(!current_rounds) 		
+		if(!current_rounds)
 			break
-		if(distance >= max_range) 	
+		if(distance >= max_range)
 			break
 
 		current_rounds--

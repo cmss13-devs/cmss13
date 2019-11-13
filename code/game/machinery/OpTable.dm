@@ -71,7 +71,7 @@
 
 
 /obj/structure/machinery/optable/buckle_mob(mob/living/carbon/human/H, mob/living/user)
-	if(!istype(H) || H == user || H.buckled || user.action_busy || user.stat) 
+	if(!istype(H) || H == user || H.buckled || user.action_busy || user.stat)
 		return
 	if(H != victim)
 		to_chat(user, SPAN_WARNING("Lay the patient on the table first!"))
@@ -179,7 +179,7 @@
 			anes_tank = W
 			to_chat(user, SPAN_NOTICE("You connect \the [anes_tank] to \the [src]."))
 			return
-	if (istype(W, /obj/item/grab))
+	if (istype(W, /obj/item/grab) && ishuman(user))
 		var/obj/item/grab/G = W
 		if(victim && victim != G.grabbed_thing)
 			to_chat(user, SPAN_WARNING("The table is already occupied!"))

@@ -839,11 +839,8 @@
 
 	bullet_ping(P)
 
-	var/turf/target_turf = P.loc
-	if(!istype(target_turf)) return //The bullet's not on a turf somehow.
-
 	var/list/mobs_list = list() //Let's built a list of mobs on the bullet turf and grab one.
-	for(var/mob/living/L in target_turf)
+	for(var/mob/living/L in src)
 		if(L in P.permutated) continue
 		mobs_list += L
 

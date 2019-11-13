@@ -127,7 +127,7 @@ DEFINES in setup.dm, referenced here.
 	else ..()
 
 /obj/item/weapon/gun/launch_towards(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
-	if(harness_check(thrower)) 
+	if(harness_check(thrower))
 		to_chat(thrower, SPAN_WARNING("\The [src] clanks on the ground."))
 	else ..()
 
@@ -154,6 +154,11 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			bearer.SetLuminosity(-A.light_mod)
 			SetLuminosity(A.light_mod)
 			return 1
+		else if(attachments["under"])
+			var/obj/item/attachable/A = attachments["under"]
+			bearer.SetLuminosity(-A.light_mod)
+			SetLuminosity(A.light_mod)
+			return 1
 	return 0
 
 /obj/item/weapon/gun/pickup(mob/user)
@@ -162,6 +167,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(flags_gun_features & GUN_FLASHLIGHT_ON)
 		if(attachments["rail"])
 			var/obj/item/attachable/A = attachments["rail"]
+			user.SetLuminosity(A.light_mod)
+			SetLuminosity(0)
+		else if(attachments["under"])
+			var/obj/item/attachable/A = attachments["under"]
 			user.SetLuminosity(A.light_mod)
 			SetLuminosity(0)
 
@@ -340,14 +349,20 @@ should be alright.
 		return 0
 
 	//Checks if they can attach the thing in the first place, like with fixed attachments.
-	var/can_attach = 1
 	if(attachments[attachment.slot])
 		var/obj/item/attachable/R = attachments[attachment.slot]
-		if(R && !(R.flags_attach_features & ATTACH_REMOVABLE)) can_attach = 0
-
-	if(!can_attach)
-		to_chat(user, SPAN_WARNING("The attachment on [src]'s [attachment.slot] cannot be removed!"))
-		return 0
+		if(R && !(R.flags_attach_features & ATTACH_REMOVABLE))
+			to_chat(user, SPAN_WARNING("The attachment on [src]'s [attachment.slot] cannot be removed!"))
+			return 0
+	//to prevent headaches with lighting stuff
+	if(attachment.light_mod)
+		for(var/slot in attachments)
+			var/obj/item/attachable/R = attachments[slot]
+			if(!R)
+				continue
+			if(R.light_mod)
+				to_chat(user, SPAN_WARNING("You already have a light source attachment on [src]."))
+				return 0
 	return 1
 
 /obj/item/weapon/gun/proc/attach_to_gun(mob/user, obj/item/attachable/attachment)

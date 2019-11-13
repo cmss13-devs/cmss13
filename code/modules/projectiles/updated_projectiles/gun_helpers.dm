@@ -148,31 +148,28 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	harness_check(user)
 
 /obj/item/weapon/gun/proc/turn_off_light(mob/bearer)
-	if(flags_gun_features & GUN_FLASHLIGHT_ON)
-		if(attachments["rail"])
-			var/obj/item/attachable/A = attachments["rail"]
-			bearer.SetLuminosity(-A.light_mod)
-			SetLuminosity(A.light_mod)
-			return 1
-		else if(attachments["under"])
-			var/obj/item/attachable/A = attachments["under"]
-			bearer.SetLuminosity(-A.light_mod)
-			SetLuminosity(A.light_mod)
-			return 1
-	return 0
+	if (!(flags_gun_features & GUN_FLASHLIGHT_ON))
+		return FALSE
+	for (var/slot in attachments)
+		var/obj/item/attachable/A = attachments[slot]
+		if (!A || !A.light_mod)
+			continue
+		bearer.SetLuminosity(-A.light_mod)
+		SetLuminosity(A.light_mod)
+		return TRUE
+	return FALSE
 
 /obj/item/weapon/gun/pickup(mob/user)
 	..()
 
-	if(flags_gun_features & GUN_FLASHLIGHT_ON)
-		if(attachments["rail"])
-			var/obj/item/attachable/A = attachments["rail"]
+	if (flags_gun_features & GUN_FLASHLIGHT_ON)
+		for (var/slot in attachments)
+			var/obj/item/attachable/A = attachments[slot]
+			if (!A || !A.light_mod)
+				continue
 			user.SetLuminosity(A.light_mod)
 			SetLuminosity(0)
-		else if(attachments["under"])
-			var/obj/item/attachable/A = attachments["under"]
-			user.SetLuminosity(A.light_mod)
-			SetLuminosity(0)
+			break
 
 	unwield(user)
 

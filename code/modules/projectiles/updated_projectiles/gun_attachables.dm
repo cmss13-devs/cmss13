@@ -860,7 +860,7 @@ Defined in conflicts.dm of the #defines folder.
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
 	var/activated = TRUE
-	var/collapsed_stock_scatter = 0
+
 
 /obj/item/attachable/stock/smg/collapsible/New()
 	..()
@@ -878,36 +878,30 @@ Defined in conflicts.dm of the #defines folder.
 	//but at the same time you are slow when 2 handed
 	aim_speed_mod = config.slowdown_med
 
-	collapsed_stock_scatter = config.mlow_scatter_value
 
-/obj/item/attachable/stock/smg/collapsible/Detach(obj/item/weapon/gun/G)
-	if(!activated)
-		apply_on_weapon(G, TRUE)
-		G.w_class = 5 // Another sad hardcode
-	..()
+/obj/item/attachable/stock/smg/collapsible/proc/apply_on_weapon(obj/item/weapon/gun/G)
+	if(activated)
+		scatter_unwielded_mod = config.low_scatter_value
+		size_mod = 1
+	else
+		scatter_unwielded_mod = -config.low_scatter_value + config.mlow_scatter_value
+		size_mod = 0
 
-/obj/item/attachable/stock/smg/collapsible/proc/apply_on_weapon(obj/item/weapon/gun/G, new_active)
-	var/multiplier = -1
-	var/add_scatter = collapsed_stock_scatter
-	if(new_active)
-		multiplier = 1
-		add_scatter = -collapsed_stock_scatter
-	accuracy_mod *= multiplier
-	recoil_mod *= multiplier
-	scatter_mod *= multiplier
-	wield_delay_mod *= multiplier
-	movement_acc_penalty_mod *= multiplier
+	accuracy_mod *= -1
+	recoil_mod *= -1
+	scatter_mod *= -1
+	wield_delay_mod *= -1
+	movement_acc_penalty_mod *= -1
 	//it makes stuff much worse when one handed
-	accuracy_unwielded_mod *= multiplier
-	recoil_unwielded_mod *= multiplier
-	scatter_unwielded_mod = (scatter_unwielded_mod * multiplier) + add_scatter
+	accuracy_unwielded_mod *= -1
+	recoil_unwielded_mod *= -1
 	//but at the same time you are slow when 2 handed
-	aim_speed_mod *= multiplier
+	aim_speed_mod *= -1
 
 	G.recalculate_attachment_bonuses()
 
 	//additionally increases scatter when collapsed
-	if(new_active)
+	if(activated)
 		icon_state = "smgstockc"
 		attach_icon = "smgstockc_a"
 	else
@@ -917,6 +911,12 @@ Defined in conflicts.dm of the #defines folder.
 	G.update_overlays(src, "stock")
 
 /obj/item/attachable/stock/smg/collapsible/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
+	if(turn_off)
+		if(activated)
+			activated = FALSE
+			apply_on_weapon(G)
+		return 1
+
 	if(G.flags_item & WIELDED)
 		if(activated)
 			to_chat(user, SPAN_NOTICE("You need a free hand to collapse [src]."))
@@ -924,18 +924,16 @@ Defined in conflicts.dm of the #defines folder.
 			to_chat(user, SPAN_NOTICE("You need a free hand to extend [src]."))
 		return 0
 	activated = !activated
-	apply_on_weapon(G, activated)
-	playsound(user, activation_sound, 15, 1)
+	apply_on_weapon(G)
+
 	if(!user)
 		return 1
 
+	playsound(user, activation_sound, 15, 1)
+
 	if(activated)
-		size_mod = 1
-		G.recalculate_attachment_bonuses()
 		to_chat(user, SPAN_NOTICE("You extend [src]."))
 	else
-		size_mod = 0
-		G.recalculate_attachment_bonuses()
 		to_chat(user, SPAN_NOTICE("You collapse [src]."))
 
 /obj/item/attachable/stock/smg/brace

@@ -62,7 +62,7 @@
 	var/tailattack_abduct_usetime_short = 15
 	var/tailattack_abduct_usetime_long = 20
 	var/tailattack_abduct_range_buff = 2 // Tiledistance buff for empowering abduct 
-	var/tailattack_damagebuff = 8 //Bonus damage for impale attacks (2x coming out of a dance)
+	var/tailattack_damagebuff = 4 //Bonus damage for impale attacks (2x coming out of a dance)
 	var/dance_speed_buff = XENO_SPEED_MOD_VERYLARGE
 	var/dance_evasion_buff = XENO_EVASION_MOD_ULTRA + XENO_EVASION_MOD_MED // evasion base: 40. evasion w/ dance: 74
 	

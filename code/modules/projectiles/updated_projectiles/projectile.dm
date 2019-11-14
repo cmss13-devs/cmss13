@@ -71,6 +71,9 @@
 	starting = null
 	permutated = null
 	path = null
+	firer = null
+	weapon_source = null
+	weapon_source_mob = null
 	return GC_HINT_RECYCLE
 
 /obj/item/projectile/Collided(atom/movable/AM)

@@ -48,21 +48,21 @@
 	var/bonus_projectiles_type 					// Type path of the extra projectiles
 	var/bonus_projectiles_amount 	= 0 		// How many extra projectiles it shoots out. Works kind of like firing on burst, but all of the projectiles travel together
 	var/debilitate[]				= null 		// Stun,knockdown,knockout,irradiate,stutter,eyeblur,drowsy,agony
-	var/pen_armor_punch				= 0.5			// how much armor breaking will be done per point of penetration. This is for weapons that penetrate with their shape (like needle bullets)
+	var/pen_armor_punch				= 0.5		// how much armor breaking will be done per point of penetration. This is for weapons that penetrate with their shape (like needle bullets)
 	var/damage_armor_punch			= 0.5		// how much armor breaking is done by sheer weapon force. This is for big blunt weapons
+	var/sound_override				= null		// if we should play a special sound when firing.
+	var/flags_ammo_behavior 		= NO_FLAGS
 
-	New()
-		accuracy 			= config.min_hit_accuracy 	// This is added to the bullet's base accuracy.
-		accuracy_var_low	= config.min_proj_variance 	// How much the accuracy varies when fired.
-		accuracy_var_high	= config.min_proj_variance
-		accurate_range 		= config.close_shell_range 	// For most guns, this is where the bullet dramatically looses accuracy. Not for snipers though.
-		max_range 			= config.norm_shell_range 	// This will de-increment a counter on the bullet.
-		damage_var_low		= config.min_proj_variance 	// Same as with accuracy variance.
-		damage_var_high		= config.min_proj_variance
-		damage_falloff 		= config.reg_damage_falloff 	// How much damage the bullet loses per turf traveled.
-		shell_speed 		= config.slow_shell_speed 	// How fast the projectile moves.
-
-	var/flags_ammo_behavior = NO_FLAGS
+/datum/ammo/New()
+	accuracy 			= config.min_hit_accuracy 	// This is added to the bullet's base accuracy.
+	accuracy_var_low	= config.min_proj_variance 	// How much the accuracy varies when fired.
+	accuracy_var_high	= config.min_proj_variance
+	accurate_range 		= config.close_shell_range 	// For most guns, this is where the bullet dramatically looses accuracy. Not for snipers though.
+	max_range 			= config.norm_shell_range 	// This will de-increment a counter on the bullet.
+	damage_var_low		= config.min_proj_variance 	// Same as with accuracy variance.
+	damage_var_high		= config.min_proj_variance
+	damage_falloff 		= config.reg_damage_falloff 	// How much damage the bullet loses per turf traveled.
+	shell_speed 		= config.slow_shell_speed 	// How fast the projectile moves.
 
 /datum/ammo/proc/do_at_half_range(obj/item/projectile/P)
 	return
@@ -643,6 +643,7 @@
 	name = "beanbag slug"
 	icon_state = "beanbag"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
+	sound_override = 'sound/weapons/gun_shotgun_small.ogg'
 
 /datum/ammo/bullet/shotgun/beanbag/New()
 	..()

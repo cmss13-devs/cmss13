@@ -954,6 +954,8 @@ and you're good to go.
 //This proc applies some bonus effects to the shot/makes the message when a bullet is actually fired.
 /obj/item/weapon/gun/proc/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, bullets_fired = 1, reflex = 0, dual_wield = 0)
 	var/actual_sound = fire_sound
+	if(projectile_to_fire.ammo && projectile_to_fire.ammo.sound_override)
+		actual_sound = projectile_to_fire.ammo.sound_override
 
 	var/gun_accuracy_mult = accuracy_mult_unwielded
 	var/gun_scatter = scatter_unwielded

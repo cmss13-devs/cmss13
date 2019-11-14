@@ -20,7 +20,7 @@
 #define PASS_GLASS					128		// For atoms that are made of glass or have hollow sections filled with glass
 #define PASS_MOB					256		// For mobs (i.e. atoms that explicitly ignore mobs in movement)
 #define PASS_TYPE_CRAWLER			512		// For mobs that crawl/climb over stuff (runners/larva), more for "whitelisting" crawlers to pass
-#define PASS_HIGH_OVER_ONLY			1024 	// For high toss actions
+#define PASS_HIGH_OVER_ONLY			1024 	// For atoms that require a high toss to go over it, should only really be using this for flags_can_pass_x vars
 #define PASS_BUILDING_ONLY			2048 	// For throwing stuff over walls (that lead to open ceilings)
 
 // Pass flag groups

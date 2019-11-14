@@ -31,11 +31,6 @@
 	weed_level = 1
 	egg_cooldown = 300
 
-	structures_allowed = list(
-		XENO_STRUCTURE_EGGMORPH = /obj/effect/alien/resin/special/eggmorph,
-		XENO_STRUCTURE_EVOPOD = /obj/effect/alien/resin/special/evopod
-	)
-
 /datum/caste_datum/carrier/mature
 	upgrade_name = "Mature"
 	caste_desc = "A portable Love transport. It looks a little more dangerous."
@@ -97,8 +92,7 @@
 		/datum/action/xeno_action/emit_pheromones,
 		/datum/action/xeno_action/activable/throw_hugger,
 		/datum/action/xeno_action/activable/retrieve_egg,
-		/datum/action/xeno_action/place_trap,
-		/datum/action/xeno_action/morph_resin
+		/datum/action/xeno_action/place_trap
 		)
 	mutation_type = CARRIER_NORMAL
 

@@ -1688,6 +1688,7 @@
 	else
 		to_chat(src, SPAN_NOTICE("Attacks will no longer use directional assist."))
 
+/* Resolve this line once structures are resolved.
 /mob/living/carbon/Xenomorph/proc/morph_resin(var/turf/current_turf, var/structure_type)
 	if (!structure_type || !check_state() || action_busy)
 		return FALSE
@@ -1753,3 +1754,4 @@
 	hive.queue_spawn(src)
 	track_death_calculations()
 	qdel(src)
+*/

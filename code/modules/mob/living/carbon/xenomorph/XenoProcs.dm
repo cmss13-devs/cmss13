@@ -466,9 +466,11 @@
 		if(istype(O, /obj/effect/alien/egg))
 			to_chat(src, SPAN_WARNING("There's already an egg."))
 			return
+		/* Resolve this line once structures are resolved.
 		if(locate(/obj/effect/alien/resin/special) in range(1, src))
 			to_chat(src, SPAN_WARNING("There is an important structure too close to you."))
 			return
+		*/
 		if(istype(O, /obj/structure/mineral_door) || istype(O, /obj/effect/alien/resin))
 			has_obstacle = TRUE
 			break

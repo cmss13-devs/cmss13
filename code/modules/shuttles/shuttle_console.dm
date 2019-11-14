@@ -209,8 +209,10 @@
 					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"),3,Q.hivenumber)
 					playsound(src, 'sound/misc/queen_alarm.ogg')
 					M.count_niche_stat(STATISTICS_NICHE_FLIGHT)
+					/* Resolve this line once structures are resolved.
 					if(Q.hive)
 						Q.hive.remove_all_special_structures()
+					*/
 					if(bomb_set)
 						for(var/obj/structure/machinery/nuclearbomb/bomb in world)
 							bomb.end_round = FALSE

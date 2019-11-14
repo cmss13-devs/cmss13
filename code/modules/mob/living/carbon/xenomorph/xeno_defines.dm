@@ -120,8 +120,10 @@
 	var/charge_speed_buildup = 0.15 //POSITIVE amount of speed built up during a charge each step
 	var/charge_turfs_to_charge = 5 //Amount of turfs to build up before a charge begins
 
+	/* Resolve this line once structures are resolved.
 	//Types of special structures this caste can build
 	var/list/structures_allowed = list()
+	*/
 
 	/////////////////////////////////////////////////////////////////////////
 	//
@@ -330,6 +332,7 @@
 	var/larva_gestation_multiplier = 1.0
 	var/bonus_larva_spawn_chance = 1.0
 
+	/* Resolve this line once structures are resolved.
 	//List of how many maximum of each special structure you can have
 	var/list/hive_structures_limit = list(
 		XENO_STRUCTURE_POOL = 1,
@@ -338,6 +341,7 @@
 	)
 	var/list/hive_structures = list() //Stringref list of structures that have been built
 	var/list/datum/mind/spawn_list = list() //List of minds that are waiting to be respawned
+	*/
 
 	var/datum/hive_status_ui/hive_ui = new
 
@@ -617,10 +621,12 @@
 		return
 	var/area/A = get_area(T)
 	xeno_message(SPAN_XENOANNOUNCE("The Queen has set the hive location as \the [A]."), 3, hivenumber)
+	/* Resolve this line once structures are resolved.
 	for(var/iterator in hive_structures)
 		for(var/obj/effect/alien/resin/special/S in hive_structures[iterator])
 			if(get_dist(S, hive_location) > XENO_HIVE_AREA_SIZE)
 				qdel(S)
+	*/
 	hive_location = T
 	hive_ui.update_hive_location()
 
@@ -670,6 +676,7 @@
 
 	return slots
 
+/* Resolve this line once structures are resolved.
 /datum/hive_status/proc/can_build_structure(var/structure_name)
 	if(!structure_name || !hive_structures_limit[structure_name] || (hive_structures[structure_name] && hive_structures[structure_name].len >= hive_structures_limit[structure_name]))
 		return FALSE
@@ -734,6 +741,7 @@
 		return null
 	var/datum/mind/M = pick(spawn_list)
 	return M
+*/
 
 /datum/hive_status/corrupted
 	hivenumber = XENO_HIVE_CORRUPTED

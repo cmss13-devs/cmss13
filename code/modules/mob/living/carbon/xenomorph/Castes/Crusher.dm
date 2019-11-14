@@ -255,7 +255,7 @@
 				var/impact_range = min(round(X.charge_speed) + 1, 3)
 				var/turf/TA = X.get_diagonal_step(src, X.dir)
 				TA = get_step_away(TA, X)
-				var/launch_speed = 1/(X.charge_speed*5)
+				var/launch_speed = X.charge_speed
 				launch_towards(TA, impact_range, launch_speed)
 				X.charge_speed -= X.charge_speed_buildup * 2 //Lose two turfs worth of speed
 			else
@@ -324,7 +324,7 @@
 		var/impact_range = 1
 		var/turf/TA = X.get_diagonal_step(src, X.dir)
 		TA = get_step_away(TA, X)
-		var/launch_speed = 1/(X.charge_speed*5)
+		var/launch_speed = X.charge_speed
 		launch_towards(TA, impact_range, launch_speed)
 		X.charge_speed -= X.charge_speed_buildup * 2 //Lose two turfs worth of speed
 		return TRUE
@@ -387,7 +387,7 @@
 		var/impact_range = min(round(X.charge_speed) + 1, 2)
 		var/turf/TA = X.get_diagonal_step(src, X.dir)
 		TA = get_step_away(TA, X)
-		var/launch_speed = 1/(X.charge_speed*5)
+		var/launch_speed = X.charge_speed
 		launch_towards(TA, impact_range, launch_speed) // Distance and speed of being thrown to the side are dependent on speed of crusher
 		X.charge_speed -= X.charge_speed_buildup //Lose one turf worth of speed
 		return TRUE

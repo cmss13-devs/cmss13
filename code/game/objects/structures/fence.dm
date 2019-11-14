@@ -7,6 +7,7 @@
 	anchored = 1
 	layer = WINDOW_LAYER
 	flags_atom = FPRINT
+	flags_can_pass_all = PASS_THROUGH|PASS_HIGH_OVER_ONLY
 	health = 50
 	var/health_max = 50
 	var/cut = 0 //Cut fences can be passed through

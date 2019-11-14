@@ -161,8 +161,10 @@
 			)
 	mutation_type = QUEEN_NORMAL
 
+/* Resolve this line once structures are resolved.
 /mob/living/carbon/Xenomorph/Queen/can_destroy_special()
 	return TRUE
+*/
 
 /mob/living/carbon/Xenomorph/Queen/Corrupted
 	hivenumber = XENO_HIVE_CORRUPTED

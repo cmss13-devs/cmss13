@@ -85,7 +85,7 @@ Additional game mode variables.
 
 	var/lz_selection_timer = MINUTES_25 //25 minutes in
 	var/round_time_resin = MINUTES_40	//Time for when resin placing is allowed close to LZs
-	var/round_time_burrowed_cutoff = MINUTES_25	//Time for when free burrowed larvae stop spawning
+	var/round_time_burrowed_cutoff = MINUTES_25	//Time for when free burrowed larvae stop spawning. Resolve this line once structures are resolved.
 	var/resin_allow_finished
 
 	var/flags_round_type = NO_FLAGS
@@ -519,6 +519,7 @@ Additional game mode variables.
 					synth_survivor = new_survivor
 					new_survivor.assigned_role = "MODE"
 					new_survivor.special_role = "Survivor"
+					monkey_amount += 5 //Extra smallhosts will be spawned to compensate the xenos for this survivor. Resolve this line once structures are resolved.
 				else if(new_survivor in possible_human_survivors) //so we don't draft people that want to be synth survivors but not normal survivors
 					new_survivor.assigned_role = "MODE"
 					new_survivor.special_role = "Survivor"

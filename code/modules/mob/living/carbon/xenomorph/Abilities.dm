@@ -198,6 +198,7 @@
 	resin_plasma_cost = 200
 	thick = TRUE
 
+/* Resolve this line once structures are resolved.
 // Morph Resin
 /datum/action/xeno_action/morph_resin
 	name = "Resin Morph (125)"
@@ -226,6 +227,7 @@
 	X.use_plasma(plasma_cost)
 	X.morph_resin(get_turf(X), X.caste.structures_allowed[choice])
 	..()
+*/
 
 // Corrosive Acid
 /datum/action/xeno_action/activable/corrosive_acid
@@ -533,7 +535,7 @@
 	else
 		if(!X.check_plasma(plasma_cost))
 			return
-		var/choice = input(X, "Choose a structure") in X.caste.aura_allowed + "help" + "cancel"
+		var/choice = input(X, "Choose a pheromone") in X.caste.aura_allowed + "help" + "cancel"
 		if(choice == "help")
 			to_chat(X, SPAN_NOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and tackle chance.<br><B>Warding</B> - Increased armor, reduced incoming damage and critical bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br>"))
 			return

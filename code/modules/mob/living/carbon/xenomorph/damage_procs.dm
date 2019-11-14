@@ -146,7 +146,6 @@
 	armor_break_to_apply = 0
 	updatehealth()
 
-
 /mob/living/carbon/Xenomorph/proc/check_blood_splash(damage = 0, damtype = BRUTE, chancemod = 0, radius = 1)
 	if(!damage)
 		return 0
@@ -188,7 +187,7 @@
 				SPAN_DANGER("You are splattered with sizzling blood! IT BURNS!"))
 				if(prob(60) && !victim.stat && !(victim.species.flags & NO_PAIN))
 					victim.emote("scream") //Topkek
-				victim.take_limb_damage(0, rand(3, 5)) //Sizzledam! This automagically burns a random existing body part.
+				victim.take_limb_damage(0, rand(8, 12)) //Sizzledam! This automagically burns a random existing body part.
 
 /mob/living/carbon/Xenomorph/proc/apply_overheal_damage(var/damage)
 	overheal -= damage

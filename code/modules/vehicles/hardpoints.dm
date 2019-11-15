@@ -87,7 +87,7 @@ Currently only has the tank hardpoints
 		to_chat(user, SPAN_WARNING("Something interrupted you while reloading [owner]."))
 		return 0
 
-	user.temp_drop_inv_item(A, 0)
+	user.drop_inv_item_to_loc(A, src)
 	to_chat(user, SPAN_NOTICE("You install \the [A] in \the [owner]."))
 	backup_clips += A
 	return 1

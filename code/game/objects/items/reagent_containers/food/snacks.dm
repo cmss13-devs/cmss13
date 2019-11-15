@@ -174,14 +174,6 @@
 	if(W.sharp == IS_SHARP_ITEM_ACCURATE)
 	else if(W.sharp == IS_SHARP_ITEM_BIG)
 		inaccurate = 1
-	else if(W.w_class <= SIZE_SMALL && istype(src,/obj/item/reagent_container/food/snacks/sliceable))
-		if(!iscarbon(user))
-			return 1
-
-		if(user.drop_inv_item_to_loc(W, src))
-			to_chat(user, SPAN_DANGER("You slip [W] inside [src]."))
-			add_fingerprint(user)
-		return
 	else
 		return 1
 	if ( \

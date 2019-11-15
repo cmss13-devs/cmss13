@@ -708,7 +708,7 @@ mob/proc/yank_out_object()
 		visible_message(SPAN_WARNING("<b>[src] rips [selection] out of their body.</b>"),SPAN_WARNING("<b>You rip [selection] out of your body.</b>"), null, 5)
 	else
 		visible_message(SPAN_WARNING("<b>[usr] rips [selection] out of [src]'s body.</b>"),SPAN_WARNING("<b>[usr] rips [selection] out of your body.</b>"), null, 5)
-	
+
 	if(valid_objects.len == 1) //Yanking out last object - removing verb.
 		src.verbs -= /mob/proc/yank_out_object
 
@@ -727,12 +727,12 @@ mob/proc/yank_out_object()
 
 		affected.implants -= selection
 		H.embedded_items -= selection
-		
+
 		if(!isYautja(H) && !isSynth(H))
 			H.shock_stage+=20
 		affected.take_damage((selection.w_class * 3), 0, 0, 1, "Embedded object extraction")
 
-		if(prob(selection.w_class * 5)) //I'M SO ANEMIC I COULD JUST -DIE-.
+		if(prob(selection.w_class * 5) && !(affected.status & LIMB_ROBOT))
 			var/datum/wound/internal_bleeding/I = new (0)
 			affected.add_bleeding(I, TRUE)
 			affected.wounds += I

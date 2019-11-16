@@ -47,15 +47,18 @@
 	w_class = SIZE_LARGE
 	force = 20
 	flags_gun_features = GUN_BURST_ON|GUN_WIELDED_FIRING_ONLY
+	attachable_allowed = list(/obj/item/attachable/m60barrel)
+	starting_attachment_types = list(/obj/item/attachable/m60barrel)
+
 
 /obj/item/weapon/gun/m60/New(loc, spawn_empty)
 	..()
-	attachable_allowed = list(/obj/item/attachable/m60barrel)
-	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 16)
-	if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
-	var/obj/item/attachable/m60barrel/Q = new(src)
-	Q.Attach(src)
-	update_icon()
+	if(current_mag && current_mag.current_rounds > 0)
+		load_into_chamber()
+
+/obj/item/weapon/gun/m60/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 16,"rail_x" = 0, "rail_y" = 0, "under_x" = 0, "under_y" = 0, "stock_x" = 0, "stock_y" = 0)
+
 
 /obj/item/weapon/gun/m60/set_gun_config_values()
 	..()

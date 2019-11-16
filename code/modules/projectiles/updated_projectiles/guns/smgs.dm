@@ -20,12 +20,13 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	gun_skill_category = SKILL_SMGS
 
-	New()
-		..()
-		if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
+/obj/item/weapon/gun/smg/New()
+	..()
+	if(current_mag && current_mag.current_rounds > 0)
+		load_into_chamber()
 
-	unique_action(mob/user)
-		cock(user)
+/obj/item/weapon/gun/smg/unique_action(mob/user)
+	cock(user)
 
 
 //-------------------------------------------------------
@@ -64,7 +65,11 @@
 /obj/item/weapon/gun/smg/m39/New()
 	select_gamemode_skin(/obj/item/weapon/gun/smg/m39)
 	..()
+
+
+/obj/item/weapon/gun/smg/m39/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 14, "rail_y" = 22, "under_x" = 24, "under_y" = 16, "stock_x" = 24, "stock_y" = 16)
+
 
 /obj/item/weapon/gun/smg/m39/set_gun_config_values()
 	..()
@@ -173,10 +178,10 @@
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
-	New()
-		..()
-		attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 21, "under_x" = 28, "under_y" = 17, "stock_x" = 28, "stock_y" = 17)
 
+
+/obj/item/weapon/gun/smg/mp5/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 21, "under_x" = 28, "under_y" = 17, "stock_x" = 28, "stock_y" = 17)
 
 /obj/item/weapon/gun/smg/mp5/set_gun_config_values()
 	..()
@@ -225,10 +230,9 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
-	New()
-		..()
-		attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 20, "under_x" = 23, "under_y" = 16, "stock_x" = 28, "stock_y" = 17)
 
+/obj/item/weapon/gun/smg/mp7/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 20, "under_x" = 23, "under_y" = 16, "stock_x" = 28, "stock_y" = 17)
 
 /obj/item/weapon/gun/smg/mp7/set_gun_config_values()
 	..()
@@ -270,9 +274,11 @@
 							/obj/item/attachable/lasersight
 							)
 
-/obj/item/weapon/gun/smg/skorpion/New()
-	..()
+
+/obj/item/weapon/gun/smg/skorpion/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 18,"rail_x" = 16, "rail_y" = 21, "under_x" = 23, "under_y" = 15, "stock_x" = 23, "stock_y" = 15)
+
+
 
 /obj/item/weapon/gun/smg/skorpion/set_gun_config_values()
 	..()
@@ -306,10 +312,9 @@
 	current_mag = /obj/item/ammo_magazine/smg/ppsh
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
-	New()
-		..()
-		attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 17,"rail_x" = 15, "rail_y" = 19, "under_x" = 26, "under_y" = 15, "stock_x" = 26, "stock_y" = 15)
 
+/obj/item/weapon/gun/smg/ppsh/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 17,"rail_x" = 15, "rail_y" = 19, "under_x" = 26, "under_y" = 15, "stock_x" = 26, "stock_y" = 15)
 
 /obj/item/weapon/gun/smg/ppsh/set_gun_config_values()
 	..()
@@ -353,8 +358,8 @@
 							/obj/item/attachable/lasersight
 							)
 
-/obj/item/weapon/gun/smg/uzi/New()
-	..()
+
+/obj/item/weapon/gun/smg/uzi/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 20,"rail_x" = 16, "rail_y" = 22, "under_x" = 22, "under_y" = 16, "stock_x" = 22, "stock_y" = 16)
 
 
@@ -402,15 +407,18 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
-/obj/item/weapon/gun/smg/fp9000/New()
+/obj/item/weapon/gun/smg/fp9000/handle_starting_attachment()
 	..()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 20, "rail_y" = 21, "under_x" = 26, "under_y" = 16, "stock_x" = 22, "stock_y" = 16)
 	var/obj/item/attachable/scope/mini/S = new(src)
 	S.icon_state = "miniscope_fp9000"
 	S.attach_icon = "miniscope_fp9000_a" // Custom
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
-	update_icon()
+	update_attachable(S.slot)
+
+
+/obj/item/weapon/gun/smg/fp9000/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 20, "rail_y" = 21, "under_x" = 26, "under_y" = 16, "stock_x" = 22, "stock_y" = 16)
 
 /obj/item/weapon/gun/smg/fp9000/set_gun_config_values()
 	..()

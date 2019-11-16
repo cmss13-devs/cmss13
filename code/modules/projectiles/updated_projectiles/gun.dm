@@ -121,10 +121,16 @@
 			current_mag = new current_mag(src, spawn_empty? 1:0)
 			ammo = current_mag.default_ammo ? ammo_list[current_mag.default_ammo] : ammo_list[/datum/ammo/bullet] //Latter should never happen, adding as a precaution.
 	else ammo = ammo_list[ammo] //If they don't have a mag, they fire off their own thing.
+
+	set_gun_attachment_offsets()
 	set_gun_config_values()
-	update_force_list() //This gives the gun some unique verbs for attacking.
-	handle_random_attachments(random_spawn_chance)
+	update_force_list() //This gives the gun some unique attack verbs for attacking.
 	handle_starting_attachment()
+	handle_random_attachments(random_spawn_chance)
+
+
+/obj/item/weapon/gun/proc/set_gun_attachment_offsets()
+	attachable_offset = null
 
 
 //Called by the gun's New(), set the gun variables' values.
@@ -190,54 +196,41 @@
 
 /obj/item/weapon/gun/proc/handle_random_attachments(var/randchance)
 	var/attachmentchoice
-	var/success = FALSE
 
-	if(prob(randchance)) // Rail
+	if(prob(randchance) && !attachments["rail"]) // Rail
 		attachmentchoice = safepick(random_spawn_rail)
 		if(attachmentchoice)
 			var/obj/item/attachable/R = new attachmentchoice(src)
 			R.Attach(src)
 			update_attachable(R.slot)
 			attachmentchoice = FALSE
-			success = TRUE
 
-	if(prob(randchance)) // Muzzle
+	if(prob(randchance) && !attachments["muzzle"]) // Muzzle
 		attachmentchoice = safepick(random_spawn_muzzle)
 		if(attachmentchoice)
 			var/obj/item/attachable/M = new attachmentchoice(src)
 			M.Attach(src)
 			update_attachable(M.slot)
 			attachmentchoice = FALSE
-			success = TRUE
 
-	if(prob(randchance)) // Underbarrel
+	if(prob(randchance) && !attachments["under"]) // Underbarrel
 		attachmentchoice = safepick(random_spawn_underbarrel)
 		if(attachmentchoice)
 			var/obj/item/attachable/U = new attachmentchoice(src)
 			U.Attach(src)
 			update_attachable(U.slot)
 			attachmentchoice = FALSE
-			success = TRUE
 
-	if(prob(randchance)) // Stock
+	if(prob(randchance) && !attachments["stock"]) // Stock
 		attachmentchoice = safepick(random_spawn_stock)
 		if(attachmentchoice)
 			var/obj/item/attachable/S = new attachmentchoice(src)
 			S.Attach(src)
 			update_attachable(S.slot)
 			attachmentchoice = FALSE
-			success = TRUE
-
-	if(success)
-		add_timer(CALLBACK(src, .proc/update_icon), 5)
 
 
-//Hotfix for attachment offsets being set AFTER the core New() proc. Causes a small graphical artifact when spawning, hopefully works even with lag
 /obj/item/weapon/gun/proc/handle_starting_attachment()
-
-	set waitfor = 0
-
-	sleep(1) //Give a moment to the rest of the proc to work out
 	if(starting_attachment_types && starting_attachment_types.len)
 		for(var/path in starting_attachment_types)
 			var/obj/item/attachable/A = new path(src)

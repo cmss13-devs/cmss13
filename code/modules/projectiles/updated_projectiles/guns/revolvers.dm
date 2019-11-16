@@ -286,8 +286,7 @@
 						/obj/item/attachable/scope/mini_iff)
 	var/folded = FALSE // Used for the stock attachment, to check if we can shoot or not
 
-/obj/item/weapon/gun/revolver/m44/New()
-	..()
+/obj/item/weapon/gun/revolver/m44/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 21,"rail_x" = 12, "rail_y" = 23, "under_x" = 21, "under_y" = 18, "stock_x" = 16, "stock_y" = 20)
 
 /obj/item/weapon/gun/revolver/m44/set_gun_config_values()
@@ -323,8 +322,7 @@
 	force = 8
 	attachable_allowed = list(/obj/item/attachable/compensator)
 
-/obj/item/weapon/gun/revolver/upp/New()
-	..()
+/obj/item/weapon/gun/revolver/upp/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 21,"rail_x" = 14, "rail_y" = 23, "under_x" = 24, "under_y" = 19, "stock_x" = 24, "stock_y" = 19)
 
 /obj/item/weapon/gun/revolver/upp/set_gun_config_values()
@@ -351,8 +349,7 @@
 	current_mag = /obj/item/ammo_magazine/internal/revolver/small
 	force = 6
 
-/obj/item/weapon/gun/revolver/small/New()
-	..()
+/obj/item/weapon/gun/revolver/small/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 21, "under_x" = 20, "under_y" = 15, "stock_x" = 20, "stock_y" = 15)
 
 /obj/item/weapon/gun/revolver/small/set_gun_config_values()
@@ -404,7 +401,7 @@
 						/obj/item/attachable/mateba,
 						/obj/item/attachable/mateba/long,
 						/obj/item/attachable/mateba/short)
-	var/default_barrel = /obj/item/attachable/mateba
+	starting_attachment_types = list(/obj/item/attachable/mateba)
 
 /obj/item/weapon/gun/revolver/mateba/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/weapon/mateba_key))
@@ -434,12 +431,9 @@
 			return
 	. = ..()
 
-/obj/item/weapon/gun/revolver/mateba/New()
-	..()
+
+/obj/item/weapon/gun/revolver/mateba/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 20,"rail_x" = 11, "rail_y" = 24, "under_x" = 19, "under_y" = 17, "stock_x" = 19, "stock_y" = 17, "special_x" = 23, "special_y" = 22)
-	var/obj/item/attachable/mateba/Q = new default_barrel(src)
-	Q.Attach(src)
-	update_icon()
 
 /obj/item/weapon/gun/revolver/mateba/set_gun_config_values()
 	..()
@@ -472,7 +466,7 @@
 					/obj/item/attachable/mateba/dark,
 					/obj/item/attachable/mateba/long/dark,
 					/obj/item/attachable/mateba/short/dark)
-	default_barrel = /obj/item/attachable/mateba/dark
+	starting_attachment_types = list(/obj/item/attachable/mateba/dark)
 
 /obj/item/weapon/gun/revolver/mateba/engraved
 	name = "\improper Mateba autorevolver engraved"
@@ -510,8 +504,7 @@
 						/obj/item/attachable/quickfire,
 						/obj/item/attachable/compensator)
 
-/obj/item/weapon/gun/revolver/cmb/New()
-	..()
+/obj/item/weapon/gun/revolver/cmb/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 22,"rail_x" = 11, "rail_y" = 25, "under_x" = 20, "under_y" = 18, "stock_x" = 20, "stock_y" = 18)
 
 /obj/item/weapon/gun/revolver/cmb/set_gun_config_values()

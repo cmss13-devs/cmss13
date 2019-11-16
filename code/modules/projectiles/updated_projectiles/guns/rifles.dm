@@ -75,7 +75,11 @@
 /obj/item/weapon/gun/rifle/m41a/New()
 	select_gamemode_skin(/obj/item/weapon/gun/rifle/m41a)
 	..()
+
+
+/obj/item/weapon/gun/rifle/m41a/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+
 
 /obj/item/weapon/gun/rifle/m41a/set_gun_config_values()
 	..()
@@ -149,9 +153,9 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 
-/obj/item/weapon/gun/rifle/m41aMK1/New()
-	..()
+/obj/item/weapon/gun/rifle/m41aMK1/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+
 
 /obj/item/weapon/gun/rifle/m41aMK1/set_gun_config_values()
 	..()
@@ -226,14 +230,18 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 
 
-/obj/item/weapon/gun/rifle/m46c/New()
+/obj/item/weapon/gun/rifle/m46c/handle_starting_attachment()
 	..()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17, "rail_x" = 12, "rail_y" = 18, "under_x" = 24, "under_y" = 12, "stock_x" = 24, "stock_y" = 13)
 	var/obj/item/attachable/stock/rifle/S = new(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.hidden = TRUE
 	S.Attach(src)
 	update_attachable(S.slot)
+
+
+/obj/item/weapon/gun/rifle/m46c/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17, "rail_x" = 12, "rail_y" = 18, "under_x" = 24, "under_y" = 12, "stock_x" = 24, "stock_y" = 13)
+
 
 /obj/item/weapon/gun/rifle/m46c/set_gun_config_values()
 	..()
@@ -313,9 +321,11 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
-/obj/item/weapon/gun/rifle/mar40/New()
-	..()
+
+
+/obj/item/weapon/gun/rifle/mar40/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 13, "rail_y" = 19, "under_x" = 24, "under_y" = 15, "stock_x" = 24, "stock_y" = 13)
+
 
 /obj/item/weapon/gun/rifle/mar40/set_gun_config_values()
 	..()
@@ -441,9 +451,9 @@
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
-/obj/item/weapon/gun/rifle/m16/New()
-	..()
+/obj/item/weapon/gun/rifle/m16/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 22, "under_x" = 24, "under_y" = 14, "stock_x" = 27, "stock_y" = 12)
+
 
 /obj/item/weapon/gun/rifle/m16/set_gun_config_values()
 	..()
@@ -489,8 +499,7 @@
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
-/obj/item/weapon/gun/rifle/m16/dutch/New()
-	..()
+/obj/item/weapon/gun/rifle/m16/dutch/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 22, "under_x" = 24, "under_y" = 14, "stock_x" = 24, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/m16/set_gun_config_values()
@@ -538,9 +547,9 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WIELDED_FIRING_ONLY
 	gun_skill_category = SKILL_HEAVY_WEAPONS
 
-	New()
-		..()
-		attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 23, "under_x" = 23, "under_y" = 16, "stock_x" = 24, "stock_y" = 12)
+/obj/item/weapon/gun/rifle/lmg/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 23, "under_x" = 23, "under_y" = 16, "stock_x" = 24, "stock_y" = 12)
+
 
 /obj/item/weapon/gun/rifle/lmg/set_gun_config_values()
 	..()
@@ -597,9 +606,9 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_BURST_ON
 
-/obj/item/weapon/gun/rifle/type71/New()
-	..()
+/obj/item/weapon/gun/rifle/type71/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 18, "rail_y" = 23, "under_x" = 20, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+
 
 /obj/item/weapon/gun/rifle/type71/set_gun_config_values()
 	..()
@@ -629,13 +638,16 @@
 						/obj/item/attachable/extended_barrel,
 						)
 
-	New()
-		..()
-		var/obj/item/attachable/attached_gun/flamer/S = new(src)
-		attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 20, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
-		S.flags_attach_features &= ~ATTACH_REMOVABLE
-		S.Attach(src)
-		update_attachable(S.slot)
+/obj/item/weapon/gun/rifle/type71/flamer/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/attached_gun/flamer/S = new(src)
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachable(S.slot)
+
+
+/obj/item/weapon/gun/rifle/type71/flamer/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 20, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 
 
 
@@ -646,9 +658,9 @@
 	wield_delay = WIELD_DELAY_VERY_FAST //Carbine is more lightweight
 
 
-/obj/item/weapon/gun/rifle/type71/carbine/New()
-	..()
+/obj/item/weapon/gun/rifle/type71/carbine/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 18,"rail_x" = 19, "rail_y" = 22, "under_x" = 21, "under_y" = 14, "stock_x" = 24, "stock_y" = 13)
+
 
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando
@@ -662,27 +674,31 @@
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip,
 						)
+	random_spawn_chance = 0
+	random_spawn_rail = list()
+	random_spawn_muzzle = list()
 
-/obj/item/weapon/gun/rifle/type71/carbine/commando/New()//Making the gun have an invisible silencer since it's supposed to have one.
+
+/obj/item/weapon/gun/rifle/type71/carbine/commando/handle_starting_attachment()//Making the gun have an invisible silencer since it's supposed to have one.
 	..()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 21, "stock_y" = 18)
 	//supressor
 	var/obj/item/attachable/suppressor/S = new(src)
-	S.attach_icon = ""
-	S.icon_state = ""
+	S.hidden = TRUE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachable(S.slot)
-	S.icon_state = initial(S.icon_state)
 	//scope
 	var/obj/item/attachable/scope/F = new(src)
-	F.attach_icon = ""
-	F.icon_state = ""
+	F.hidden = TRUE
 	F.flags_attach_features &= ~ATTACH_REMOVABLE
 	F.Attach(src)
 	update_attachable(F.slot)
-	F.icon_state = initial(F.icon_state)
 
+
+
+
+/obj/item/weapon/gun/rifle/type71/carbine/commando/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 21, "stock_y" = 18)
 
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/set_gun_config_values()
@@ -734,7 +750,10 @@
 /obj/item/weapon/gun/rifle/l42mk1/New()
 	select_gamemode_skin(/obj/item/weapon/gun/rifle/l42mk1)
 	..()
+
+/obj/item/weapon/gun/rifle/l42mk1/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 7, "rail_y" = 19, "under_x" = 16, "under_y" = 14, "stock_x" = 22, "stock_y" = 10)
+
 
 /obj/item/weapon/gun/rifle/l42mk1/set_gun_config_values()
 	..()

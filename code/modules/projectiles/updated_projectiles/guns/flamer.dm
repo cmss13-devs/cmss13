@@ -28,8 +28,11 @@
 
 /obj/item/weapon/gun/flamer/New()
 	..()
-	attachable_offset = list("rail_x" = 9, "rail_y" = 21)
 	update_icon()
+
+
+/obj/item/weapon/gun/flamer/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0,"rail_x" = 9, "rail_y" = 21, "under_x" = 0, "under_y" = 0, "stock_x" = 0, "stock_y" = 0)
 
 /obj/item/weapon/gun/flamer/set_gun_config_values()
 	..()
@@ -230,7 +233,7 @@
 		distance++
 		prev_T = T
 		sleep(1)
-	
+
 	to_chat(user, SPAN_WARNING("The gauge reads: <b>[round(current_mag.get_ammo_percent())]</b>% fuel remains."))
 
 /obj/item/weapon/gun/flamer/proc/flame_turf(turf/T, mob/living/user, heat, burn, f_color = "red")
@@ -289,7 +292,7 @@
 			right += right_turf
 			left_turf = get_step(left_turf, left_dir)
 			left += left_turf
-		
+
 		var/hit_dense_atom_side = FALSE
 
 		var/turf/prev_R = T
@@ -388,7 +391,7 @@
 			return FALSE
 
 /obj/item/weapon/gun/flamer/M240T/proc/link_fuelpack(var/mob/user)
-	if(user.back)	
+	if(user.back)
 		if(istype(user.back, /obj/item/marine/fuelpack))
 			fuelpack = user.back
 			return TRUE
@@ -431,9 +434,9 @@
 	weapon_source_mob = source_mob
 
 	icon_state = "[flame_color]_2"
-	if(fire_lvl) 
+	if(fire_lvl)
 		firelevel = fire_lvl
-	if(burn_lvl) 
+	if(burn_lvl)
 		burnlevel = burn_lvl
 	processing_objects.Add(src)
 
@@ -445,7 +448,7 @@
 			var/turf/source_turf = get_turf(loc)
 			for(var/dirn in cardinal)
 				T = get_step(source_turf, dirn)
-				if(istype(T, /turf/open/space)) 
+				if(istype(T, /turf/open/space))
 					continue
 				var/obj/flamer_fire/foundflame = locate() in T
 				if(foundflame)
@@ -498,7 +501,7 @@
 
 					if(prob(15) && flameshape != FLAMESHAPE_MINORSTAR) // chance to branch a little
 						new_spread_amt = 1.5
-					
+
 					if(T.density && !T.throwpass) // unpassable turfs stop the spread
 						T.flamer_fire_act(burn_dam)
 						new_spread_amt = 0
@@ -509,7 +512,7 @@
 						if (A.flags_atom & ON_BORDER)
 							break
 						new_spread_amt = 0
-					
+
 					spawn(0)
 						new /obj/flamer_fire(T, weapon_source, weapon_source_mob, fire_lvl, burn_lvl, f_color, new_spread_amt, FLAMESHAPE_MINORSTAR)
 					new_spread_amt = 0
@@ -554,7 +557,7 @@
 			if(istype(H.wear_suit, /obj/item/clothing/suit/fire)) continue
 		if(weapon_source)
 			M.last_damage_source = weapon_source
-		else	
+		else
 			M.last_damage_source = initial(name)
 		M.last_damage_mob = weapon_source_mob
 		M.adjust_fire_stacks(rand(5,burn_lvl*2))
@@ -597,7 +600,7 @@
 
 		if(weapon_source)
 			M.last_damage_source = weapon_source
-		else	
+		else
 			M.last_damage_source = initial(name)
 		M.last_damage_mob = weapon_source_mob
 		M.adjustFireLoss(round(burnlevel*0.5)) //This makes fire stronk.

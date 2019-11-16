@@ -171,8 +171,13 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/merc/New()
 	..()
+	if(current_mag && current_mag.current_rounds > 0)
+		load_into_chamber()
+
+
+/obj/item/weapon/gun/shotgun/merc/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 21, "under_x" = 17, "under_y" = 14, "stock_x" = 17, "stock_y" = 14)
-	if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
+
 
 /obj/item/weapon/gun/shotgun/merc/set_gun_config_values()
 	..()
@@ -216,14 +221,21 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/combat/New()
 	..()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 21, "under_x" = 14, "under_y" = 16, "stock_x" = 14, "stock_y" = 16)
+	if(current_mag && current_mag.current_rounds > 0)
+		load_into_chamber()
+
+/obj/item/weapon/gun/shotgun/combat/handle_starting_attachment()
+	..()
 	var/obj/item/attachable/attached_gun/grenade/G = new(src)
 	G.flags_attach_features &= ~ATTACH_REMOVABLE
 	G.hidden = TRUE
 	G.Attach(src)
 	update_attachable(G.slot)
-	G.icon_state = initial(G.icon_state)
-	if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
+
+/obj/item/weapon/gun/shotgun/combat/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 21, "under_x" = 14, "under_y" = 16, "stock_x" = 14, "stock_y" = 16)
+
+
 
 /obj/item/weapon/gun/shotgun/combat/set_gun_config_values()
 	..()
@@ -270,8 +282,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	burst_delay = 0 //So doubleshotty can doubleshot
 	has_open_icon = TRUE
 
-/obj/item/weapon/gun/shotgun/double/New()
-	..()
+/obj/item/weapon/gun/shotgun/double/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 21,"rail_x" = 15, "rail_y" = 22, "under_x" = 21, "under_y" = 16, "stock_x" = 21, "stock_y" = 16)
 
 /obj/item/weapon/gun/shotgun/double/set_gun_config_values()
@@ -357,8 +368,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	flags_equip_slot = SLOT_WAIST
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 
-/obj/item/weapon/gun/shotgun/double/sawn/New()
-	..()
+/obj/item/weapon/gun/shotgun/double/sawn/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 11, "rail_y" = 22, "under_x" = 18, "under_y" = 16, "stock_x" = 18, "stock_y" = 16)
 
 /obj/item/weapon/gun/shotgun/double/sawn/set_gun_config_values()
@@ -403,7 +413,10 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/double/mou53/New()
 	select_gamemode_skin(/obj/item/weapon/gun/shotgun/double/mou53)
 	..()
+
+/obj/item/weapon/gun/shotgun/double/mou53/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 11, "rail_y" = 22, "under_x" = 17, "under_y" = 15, "stock_x" = 10, "stock_y" = 9) //Weird stock values, make sure any new stock matches the old sprite placement in the .dmi
+
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_config_values()
 	..()
@@ -461,7 +474,11 @@ can cause issues with ammo types getting mixed up during the burst.
 	select_gamemode_skin(/obj/item/weapon/gun/shotgun/pump)
 	..()
 	pump_delay = config.max_fire_delay*2
+
+
+/obj/item/weapon/gun/shotgun/pump/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 10, "rail_y" = 21, "under_x" = 20, "under_y" = 14, "stock_x" = 20, "stock_y" = 14)
+
 
 /obj/item/weapon/gun/shotgun/pump/set_gun_config_values()
 	..()
@@ -555,7 +572,11 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/pump/cmb/New()
 	..()
 	pump_delay = config.mhigh_fire_delay*2
+
+
+/obj/item/weapon/gun/shotgun/pump/cmb/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 23, "under_x" = 19, "under_y" = 17, "stock_x" = 19, "stock_y" = 17)
+
 
 /obj/item/weapon/gun/shotgun/pump/cmb/set_gun_config_values()
 	..()

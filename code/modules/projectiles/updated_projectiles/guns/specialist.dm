@@ -31,22 +31,24 @@
 	wield_delay = WIELD_DELAY_HORRIBLE //Ends up being 1.6 seconds due to scope
 	zoomdevicename = "scope"
 	attachable_allowed = list(/obj/item/attachable/bipod)
-
+	starting_attachment_types = list(/obj/item/attachable/sniperbarrel)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 
 /obj/item/weapon/gun/rifle/sniper/M42A/New()
 	..()
 	select_gamemode_skin(/obj/item/weapon/gun/rifle/sniper/M42A) //use j_ for legacy variant via VV
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 20, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
+
+/obj/item/weapon/gun/rifle/sniper/M42A/handle_starting_attachment()
+	..()
 	var/obj/item/attachable/scope/S = new(src)
-	S.attach_icon = "" //Let's make it invisible. The sprite already has one.
-	S.icon_state = ""
+	S.hidden = TRUE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
-	var/obj/item/attachable/sniperbarrel/Q = new(src)
-	Q.Attach(src)
-	update_attachables()
-	S.icon_state = initial(S.icon_state)
+	update_attachable(S.slot)
+
+
+/obj/item/weapon/gun/rifle/sniper/M42A/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 20, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 
 
 /obj/item/weapon/gun/rifle/sniper/M42A/set_gun_config_values()
@@ -73,18 +75,21 @@
 	zoomdevicename = "scope"
 	attachable_allowed = list(/obj/item/attachable/bipod)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
+	starting_attachment_types = list(/obj/item/attachable/sniperbarrel)
 
-/obj/item/weapon/gun/rifle/sniper/M42B/New()
+/obj/item/weapon/gun/rifle/sniper/M42B/handle_starting_attachment()
 	..()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 15, "rail_y" = 19, "under_x" = 20, "under_y" = 15, "stock_x" = 20, "stock_y" = 15)
 	var/obj/item/attachable/scope/S = new(src)
 	S.icon_state = "pmcscope"
 	S.attach_icon = "pmcscope"
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
-	var/obj/item/attachable/sniperbarrel/Q = new(src)
-	Q.Attach(src)
-	update_icon()
+	update_attachable(S.slot)
+
+
+/obj/item/weapon/gun/rifle/sniper/M42B/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 15, "rail_y" = 19, "under_x" = 20, "under_y" = 15, "stock_x" = 20, "stock_y" = 15)
+
 
 /obj/item/weapon/gun/rifle/sniper/M42B/set_gun_config_values()
 	..()
@@ -114,18 +119,21 @@
 	force = 17
 	zoomdevicename = "scope"
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
+	starting_attachment_types = list(/obj/item/attachable/sniperbarrel)
 
-/obj/item/weapon/gun/rifle/sniper/elite/New()
+/obj/item/weapon/gun/rifle/sniper/elite/handle_starting_attachment()
 	..()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 15, "rail_y" = 19, "under_x" = 20, "under_y" = 15, "stock_x" = 20, "stock_y" = 15)
 	var/obj/item/attachable/scope/S = new(src)
 	S.icon_state = "pmcscope"
 	S.attach_icon = "pmcscope"
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
-	var/obj/item/attachable/sniperbarrel/Q = new(src)
-	Q.Attach(src)
-	update_icon()
+	update_attachable(S.slot)
+
+
+/obj/item/weapon/gun/rifle/sniper/elite/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 15, "rail_y" = 19, "under_x" = 20, "under_y" = 15, "stock_x" = 20, "stock_y" = 15)
+
 
 /obj/item/weapon/gun/rifle/sniper/elite/set_gun_config_values()
 	..()
@@ -167,19 +175,26 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
-/obj/item/weapon/gun/rifle/sniper/svd/New()
+
+/obj/item/weapon/gun/rifle/sniper/svd/handle_starting_attachment()
 	..()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 13, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 	var/obj/item/attachable/S = new /obj/item/attachable/scope/slavic(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
+	update_attachable(S.slot)
 	S = new /obj/item/attachable/slavicbarrel(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
+	update_attachable(S.slot)
 	S = new /obj/item/attachable/stock/slavic(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
-	update_icon()
+	update_attachable(S.slot)
+
+
+/obj/item/weapon/gun/rifle/sniper/svd/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 13, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+
 
 /obj/item/weapon/gun/rifle/sniper/svd/set_gun_config_values()
 	..()
@@ -214,19 +229,19 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	gun_skill_category = SKILL_SPEC_WEAPONS
+	starting_attachment_types = list(/obj/item/attachable/stock/rifle/marksman)
 
-/obj/item/weapon/gun/rifle/m4ra/New()
+/obj/item/weapon/gun/rifle/m4ra/handle_starting_attachment()
 	..()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 23, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 	var/obj/item/attachable/scope/S = new(src)
-	S.icon_state = null // the gun's sprite already shows a scope
-	S.attach_icon = null
+	S.hidden = TRUE // the gun's sprite already shows a scope
 	S.flags_attach_features &= ~ATTACH_REMOVABLE //Don't want it coming off.
 	S.Attach(src)
-	var/obj/item/attachable/stock/rifle/marksman/Q = new(src) //Already cannot be removed.
-	Q.Attach(src)
-	update_icon()
+	update_attachable(S.slot)
 
+
+/obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 23, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
 	..()
@@ -309,8 +324,11 @@
 	..()
 	ammo_primary = ammo_list[ammo_primary]
 	ammo_secondary = ammo_list[ammo_secondary]
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
 
+
+
+/obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
 
 /obj/item/weapon/gun/smartgun/set_gun_config_values()
 	..()
@@ -805,17 +823,19 @@
 	gun_skill_category = SKILL_SPEC_WEAPONS
 
 /obj/item/weapon/gun/launcher/m92/New()
-	set waitfor = 0
 	..()
 	select_gamemode_skin(/obj/item/weapon/gun/launcher/m92)
+	grenades += new /obj/item/explosive/grenade/HE(src)
+	grenades += new /obj/item/explosive/grenade/HE(src)
+	grenades += new /obj/item/explosive/grenade/HE(src)
+	grenades += new /obj/item/explosive/grenade/HE(src)
+	grenades += new /obj/item/explosive/grenade/HE(src)
+	grenades += new /obj/item/explosive/grenade/HE(src)
+
+
+/obj/item/weapon/gun/launcher/m92/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 22, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
-	sleep(1)
-	grenades += new /obj/item/explosive/grenade/HE(src)
-	grenades += new /obj/item/explosive/grenade/HE(src)
-	grenades += new /obj/item/explosive/grenade/HE(src)
-	grenades += new /obj/item/explosive/grenade/HE(src)
-	grenades += new /obj/item/explosive/grenade/HE(src)
-	grenades += new /obj/item/explosive/grenade/HE(src)
+
 
 /obj/item/weapon/gun/launcher/m92/set_gun_config_values()
 	..()
@@ -897,7 +917,7 @@
 	var/pass_flags = NO_FLAGS
 	if(is_lobbing)
 		pass_flags |= PASS_MOB
-	
+
 	F.launch_towards(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 	if(F && F.loc) //Apparently it can get deleted before the next thing takes place, so it runtimes.
 		message_admins("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
@@ -931,14 +951,16 @@
 	var/riot_version
 
 /obj/item/weapon/gun/launcher/m81/New(loc, spawn_empty)
-	set waitfor = 0
 	..()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 22, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 	if(!spawn_empty)
 		if(riot_version)
 			grenade = new /obj/item/explosive/grenade/chem_grenade/teargas(src)
 		else
 			grenade = new /obj/item/explosive/grenade/HE(src)
+
+
+/obj/item/weapon/gun/launcher/m81/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 22, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 
 /obj/item/weapon/gun/launcher/m81/set_gun_config_values()
 	..()
@@ -1071,9 +1093,13 @@
 
 /obj/item/weapon/gun/launcher/rocket/New()
 	..()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 6, "rail_y" = 19, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 	smoke = new()
 	smoke.attach(src)
+
+
+/obj/item/weapon/gun/launcher/rocket/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 6, "rail_y" = 19, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
+
 
 /obj/item/weapon/gun/launcher/rocket/set_gun_config_values()
 	..()
@@ -1228,6 +1254,19 @@
 	attachable_allowed = list(/obj/item/attachable/scope/mini)
 	var/popped_state = "m82f_e" //Icon state that represents an unloaded flare gun. The tube's just popped out.
 
+
+/obj/item/weapon/gun/flare/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/scope/mini/S = new(src)
+	S.hidden = TRUE
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachables()
+
+
+/obj/item/weapon/gun/flare/rocket/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 20, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
+
 /obj/item/weapon/gun/flare/set_gun_config_values()
 	..()
 	fire_delay = config.min_fire_delay
@@ -1237,15 +1276,6 @@
 	recoil_unwielded = config.low_recoil_value
 	recoil = config.min_recoil_value
 
-/obj/item/weapon/gun/flare/New()
-	..()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 20, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
-	var/obj/item/attachable/scope/mini/S = new(src)
-	S.hidden = TRUE
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachables()
-	S.icon_state = initial(S.icon_state)
 
 /obj/item/weapon/gun/flare/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, bullets_fired, reflex, dual_wield)
 	. = ..()

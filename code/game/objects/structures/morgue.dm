@@ -75,6 +75,7 @@
 
 	else
 		name = "morgue"
+		connected.loc = loc
 		if(step(connected, dir))
 			connected.dir = dir
 			for(var/atom/movable/A in src)

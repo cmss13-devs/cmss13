@@ -14,18 +14,14 @@ var/global/normal_ooc_colour = "#002eb8"
 	if((usr.talked == 1) && (usr.chatWarn >= 5))
 		usr.talked = 2
 		to_chat(usr, SPAN_DANGER("You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"))
-		if(usr.chatWarn >10)
-			message_admins("[key_name(usr, usr.client)] is spamming like a dirty bitch, their current chatwarn is [usr.chatWarn]. ")
-		spawn(usr.chatWarn*10)
-			usr.talked = 0
-			to_chat(usr, SPAN_NOTICE(" You may now speak again."))
-			usr.chatWarn++
+		if(usr.chatWarn > 10)
+			message_admins("[key_name(usr, usr.client)] is spamming like crazy, their current chatwarn is [usr.chatWarn]. ")
+		add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked, TRUE, TRUE), usr.chatWarn * CHAT_OOC_DELAY_SPAM)
 		return
 	else if(usr.talked == 1)
-		to_chat(usr, SPAN_NOTICE(" You just said something, take a breath."))
+		to_chat(usr, SPAN_NOTICE("You just said something, take a breath."))
 		usr.chatWarn++
 		return
-
 
 	if(!mob)	return
 	if(IsGuestKey(key))
@@ -102,10 +98,7 @@ var/global/normal_ooc_colour = "#002eb8"
 				to_chat(C, "<font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[src.key]:</EM> <span class='message'>[msg]</span></span></font>")
 			*/
 	usr.talked = 1
-	spawn (5)
-		if(!usr) return
-		if (usr.talked ==2) return
-		usr.talked = 0
+	add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked), CHAT_OOC_DELAY)
 
 /client/proc/set_ooc_color_global(newColor as color)
 	set name = "OOC Text Color - Global"
@@ -129,14 +122,11 @@ var/global/normal_ooc_colour = "#002eb8"
 		usr.talked = 2
 		to_chat(usr, SPAN_DANGER("You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"))
 		if(usr.chatWarn >10)
-			message_admins("[key_name(usr, usr.client)] is spamming like a dirty bitch, their current chatwarn is [usr.chatWarn]. ")
-		spawn(usr.chatWarn*10)
-			usr.talked = 0
-			to_chat(usr, SPAN_NOTICE(" You may now speak again."))
-			usr.chatWarn++
+			message_admins("[key_name(usr, usr.client)] is spamming like crazy, their current chatwarn is [usr.chatWarn]. ")
+		add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked, TRUE, TRUE), usr.chatWarn * CHAT_OOC_DELAY_SPAM)
 		return
 	else if(usr.talked == 1)
-		to_chat(usr, SPAN_NOTICE(" You just said something, take a breath."))
+		to_chat(usr, SPAN_NOTICE("You just said something, take a breath."))
 		usr.chatWarn++
 		return
 
@@ -213,10 +203,7 @@ var/global/normal_ooc_colour = "#002eb8"
 				prefix = "LOOC"
 			to_chat(C, "<font color='#6699CC'><span class='ooc'><span class='prefix'>[prefix]:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
 	usr.talked = 1
-	spawn (5)
-		if (usr.talked ==2)
-			return
-		usr.talked = 0
+	add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked), CHAT_OOC_DELAY)
 
 /client/verb/round_info()
 	set name = "round_info" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite

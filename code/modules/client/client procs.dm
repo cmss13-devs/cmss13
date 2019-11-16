@@ -360,3 +360,12 @@
 	for(var/key_ref in player_entities)
 		var/datum/entity/player_entity/P = player_entities["[key_ref]"]
 		P.save_statistics()
+
+/client/proc/clear_chat_spam_mute(var/warn_level = 1, var/message = FALSE, var/increase_warn = FALSE)
+	if(talked > warn_level)
+		return
+	talked = 0
+	if(message)
+		to_chat(src, SPAN_NOTICE("You may now speak again."))
+	if(increase_warn)
+		chatWarn++

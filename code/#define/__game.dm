@@ -298,3 +298,9 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 
 // Misc game defines
 #define EXTINGUISHER_WATER_USE_AMT	5 // Amount of water consumed by extinguisher per use
+
+// Chat delay amounts
+#define CHAT_SAY_DELAY      2
+#define CHAT_SAY_DELAY_SPAM 10
+#define CHAT_OOC_DELAY      5
+#define CHAT_OOC_DELAY_SPAM 10

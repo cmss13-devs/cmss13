@@ -64,6 +64,72 @@
 		</td>
 	</tr>
 </table>
+			<h2 class="date">16 November 2019</h2>
+			<h3 class="author">Atebite updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed all pipes that weren't properly connected on all maps.</li>
+				<li class="tweak">The cooldown on Resin Whisperer's build ability is now only applied if the building succeeds.</li>
+				<li class="tweak">Smartguns are now unacidable and indestructible</li>
+			</ul>
+			<h3 class="author">Cakey updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Reduced the chat timer cooldown.</li>
+				<li class="rscadd">Beanbag shells will now use a separate sound when firing.</li>
+			</ul>
+			<h3 class="author">Fourkhan updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Nerfed Dancer's tail attack damage in preparation for a more comprehensive rework.</li>
+			</ul>
+			<h3 class="author">Neth updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">you can now dedicate a discard pile so if someone is right near one, they will discard to it instead of right in front of them</li>
+				<li class="rscadd">you can now draw more than 1 card from the deck by using separate verb</li>
+				<li class="rscadd">hands and piles of cards no longer freak out at 20 cards and stop rendering the entire pile. the limit is now 80 cards</li>
+				<li class="rscadd">you can now sort your hand of cards</li>
+			</ul>
+			<h3 class="author">Phil235 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed lighting issues with flashlight grip.</li>
+				<li class="tweak">Flashlight grip is now as bright as rail flashlight.</li>
+				<li class="tweak">You can no longer attach two light source attachments on a gun.</li>
+			</ul>
+			<h3 class="author">TheDonkified updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Corner pouncing and corner throwing/grenade firing/etc have been added.</li>
+				<li class="rscadd">When thrown by another mob or propelled by another mob and you hit something dense (NOT A MOB), you will get damage. For example, you're fellow marines blows you up and you are thrown against a wall.</li>
+				<li class="rscadd">You can throw items over machines (such as vendors or consoles) as well as mobs. When trying to perform a high toss, there is a ~1 second timer before you perform the throw. It also has a maximum range of 4 tiles. If there are items that you think should not block high toss, feel free to make a suggestion in Gitlab.</li>
+				<li class="rscadd">To activate high toss, press CTRL+R or CTRL+click the throw HUD button. Note: if to untoggle throw, you need to follow the same procedure you used to toggle a throw type in the first place (e.g. you are in high toss throw mode, you need to press CTRL+R, CTRL+click the throw HUD button, or use your high toss macro to untoggle throwing). You can macro throwing, the commands are Toggle-Normal-Throw and Toggle-High-Toss.</li>
+				<li class="rscadd">You can walk through plastic flaps, there is a 2 second delay.</li>
+				<li class="rscadd">Smoke goes through girders now.</li>
+				<li class="rscadd">Flamethrowers deal damage to barricades (only when hitting them at the front) and resin structures.</li>
+				<li class="tweak">Fire cannot go through the front of barricades. Acid spray cannot go through barricades at all.</li>
+				<li class="tweak">Reworked how movement and slashing was handled with barricades and adjacent structures.</li>
+				<li class="bugfix">Diagonal movement exploits and bugs have been resolved.</li>
+				<li class="bugfix">You can slash people who are not fully protected by cover (behind an open plasteel barricade, not protected by both sides if you are attack from a corner, etc)</li>
+				<li class="experiment">Throwing has been changed as well as how throw damage is calculated. Report any issues where something is too weak or too strong.</li>
+				<li class="bugfix">You can slash portable TComms again.</li>
+			</ul>
+			<h3 class="author">TobiNerd updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed a bunch of symmetrical inconsistencies for lights on the Almayer.</li>
+			</ul>
+			<h3 class="author">Vampmare updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added the S-V42 Prototype Smartpack. A backpack with inbuilt flashlight that unlocks special abilities if equipped by a Synthethic. First ability is Protective Form, the Synthetic gains insane protection but is unable to attack for a short duration. Second ability is Immobile Form, the Synthetic becomes unable to move, but also unable to be moved by others. Last ability is Repair Form, which just heals the Synthetic for a good bit damage after standing still for some time. All abilities have a cost, the backpack has  a battery with charge and the only way to recharge the battery is by using GRAB intent on APCs, sucking out their power.</li>
+				<li class="tweak">Added three colours of S-V42 Prototype Smartpack to Synthetic Vendors.</li>
+				<li class="tweak">Human abilities, like the orders, now properly show when they're on CD and not.</li>
+				<li class="bugfix">IB now shows up properly on the Health Analyzer.</li>
+				<li class="tweak">Embedded objects will now show up on the Health Analyzer.</li>
+				<li class="bugfix">Increased shrapnel text so its noticeable now.</li>
+				<li class="tweak">Added kelotane, bicaridine and tramadol autoinjectors to WeylandMed Plus vendors, planetside ones.</li>
+				<li class="tweak">Xenos can no longer drag DEAD and INFECTED bodies that won't have time to burst. So anyone infected just before they die become undraggable.</li>
+				<li class="bugfix">Dexalin Plus autoinjectors are now actually dexalin plus and not discount version.</li>
+				<li class="tweak">Bleeding has been tweaked to be more sane.</li>
+				<li class="tweak">Renamed the L42 to L42A battle rifle and changed its description.</li>
+				<li class="tweak">Changed the gel fuel description to be more clear about what it does.</li>
+				<li class="tweak">Increased nade falloff, effective range reduced as a result.</li>
+			</ul>
+
 			<h2 class="date">10 November 2019</h2>
 			<h3 class="author">Cakey updated:</h3>
 			<ul class="changes bgimages16">
@@ -446,165 +512,6 @@
 				<li class="tweak">Reduced wielded SMG slowdown a bit.</li>
 				<li class="tweak">Spitters' acid spit has been changed. It will now apply a burn DoT to mobs hit or barricades hit. It stacks.  This DoT can be REMOVED by using an extinguisher on the mob or barricade. Very much like extinguishing fire.</li>
 				<li class="tweak">Neuro has been changed to follow superslow->dazed->knockdown. So 3 shots are now required to knockdown a marine instead of 4.</li>
-			</ul>
-
-			<h2 class="date">14 September 2019</h2>
-			<h3 class="author">Fourkhan updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Burrowed larva now count for tier 2 and tier 3 slots, but less than other Xenos.</li>
-				<li class="tweak">The more burrowed larva there are, the less each additional burrowed larva counts.</li>
-				<li class="tweak">Increased lurker hitpoint total.</li>
-				<li class="tweak">Reverted some of the Xeno structures HP buff.</li>
-				<li class="tweak">Resin doors are now DRAMATICALLY weaker than resin walls. (Walls are 3x tougher than doors)</li>
-				<li class="bugfix">Tank Crewman scaling now works correctly as noted in prior changelogs.</li>
-			</ul>
-			<h3 class="author">Vampmare updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Reduced HPR damage slightly. Reduced burst fire delay, this is a buff</li>
-				<li class="tweak">Reduced M39 damage slightly. Increased M39 scatter slightly</li>
-				<li class="tweak">Reduced M41A damage slightly. Reduced smartgun damage slightly</li>
-				<li class="tweak">Increased movement speed slowdown for wielded HPR, general rifles and scoped in. SMG will also feel this when lighter armour is worn.</li>
-				<li class="tweak">Heavily reduced acid splash damage</li>
-				<li class="tweak">Upped L42MK1 magazine size to 25 rounds. Increased L42MK1 damage</li>
-				<li class="rscadd">Added two new OOC verbs. Reload Goonchat will try to fix any goonchat issues. Old Chat will switch you back to the old chat.</li>
-				<li class="imageadd">Slightly changed the M44 Revolver sprite.</li>
-				<li class="imageadd">New sprites for Telebaton and switchblade.</li>
-			</ul>
-
-			<h2 class="date">12 September 2019</h2>
-			<h3 class="author">Aceluke / Foolosopher / Cakey updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="wip">Reworked the southern side of LV almost in its entirely, information on what was done is down below. It is highly suggested to take a machete or knife down to the colony now as you have a lot more natural flora to deal with on the colony in exchange for the new FoB changes which were made. To summarize, both LZ1 and LZ2 are highly defensible now but outside their safety is a highly untamed jungle which can be cut or burned down. More updates will come for LV, but for now the main change has been added.</li>
-				<li class="maptweak">Walled off both LZs on LV, allowing for more secure FoBs and a more set defense for marines with one major entry way and 2 side entrances.</li>
-				<li class="rscadd">Added doorways and walls to the side entrances of the LZs so marines have some starting defences against xenos upon deployment.</li>
-				<li class="rscadd">New mechanics for cutting down flora has been added. There are two types of blades which can be used. Small bladed weapons and large bladed weapons. Small bladed weapons, like the combat knife, can cut down small vegetation with one hit, while taking multiple hits to take down large vegetation in multiple hits. Large bladed weapons, like the machete, can still cut down all flora in one hit.</li>
-				<li class="rscadd">Added bushes and grass-like flora all across LV, these can be cut down with a combat knife or higher bladed weapon in one hit.</li>
-				<li class="rscadd">Added tallgrass all across LV, this can be cut down just like vines with a machete level bladed weapon in one hit, while taking 3 hits with a smaller bladed weapon.</li>
-				<li class="tweak">Changed Vines to be able to be cut down by small bladed weapons.</li>
-				<li class="rscadd">Fire can now burn down all types of flora. Bushes, vines, and tallgrass. Fire still spreads on tallgrass as it used to do.</li>
-				<li class="tweak">Fire does not spread on tallgrass anymore, this was changed so vines could be burned down and not spread which would have resulted in a forest fire.</li>
-				<li class="tweak">Changed predator/Yautja wristblades to be considered small blades, enabling them to cut down all types of flora added. Tallgrass, vines, and bushes.</li>
-				<li class="tweak">Changed the pathing for several flora objects, allowing them to be able cut down if desired by staff.</li>
-				<li class="maptweak">Cargo north of LZ1 has been moved and its outsides redesigned.</li>
-				<li class="maptweak">Remodeled the engineering dome on LV, allowing for more open space for an easier time setting up power and more space to move around in.</li>
-				<li class="tweak">Reduced the power requirement for colony floodlights. Expect them to last a lot longer if power is setup on both LV and Ice colony.</li>
-				<li class="tweak">Very slightly increased the amount of damage a floodlight can take, it isn't much, but they should be able to take one more slash before breaking.</li>
-				<li class="maptweak">More floodlights have been added to LV, allowing for almost all colony pathways to be lit up if turned on.</li>
-				<li class="maptweak">Remapped a few of the nightmare creations to fit with the reworked map, expect some new variations for LV's nightmare modes soon.</li>
-				<li class="maptweak">Removed the cargo containers entirely from LV's LZ1.</li>
-				<li class="bugfix">The Lazarus Landing signs now at both LZs can be walked/shot through now.</li>
-			</ul>
-			<h3 class="author">Atebite updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Squad prep closet vendors now vend boots with knives already in them</li>
-				<li class="rscadd">A new Hivelord strain has been added - Resin Whisperer. This strain makes you give up the ability to make thick resin and decreases your plasma pool by 20%, but gives you a long range sight and the ability to place normal resin structures up to 13 tiles away</li>
-				<li class="rscadd">A visual effect has been added to weeds when resin structures are being built on them</li>
-				<li class="bugfix">The smartgun's motion detector should now work properly</li>
-			</ul>
-			<h3 class="author">Fourkhan updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Increased the explosive armor of the Oppressor Praetorian.</li>
-				<li class="tweak">Decreased the windup and activation time of the Oppressor Praetorian grenade.</li>
-				<li class="tweak">Oppressor Praetorian smoke grenades now extinguish fire on living creatures and the ground in their radius.</li>
-				<li class="tweak">Oppressor Praetorian smoke grenades now deal more damage and stun more consistently.</li>
-				<li class="tweak">Decreased the damage of sniper specialist flak ammunition.</li>
-				<li class="tweak">Sniper flak ammunition no longer deals explosive damage.</li>
-				<li class="tweak">Reduced the fire rate of the sniper specialist with bipod deployed.</li>
-				<li class="bugfix">The incendiary OB now works again (isn't just a 3x3 square of blue fire).</li>
-				<li class="tweak">Buffed the duration of the incendiary OB.</li>
-				<li class="tweak">Increased the damage of the incendiary OB.</li>
-				<li class="tweak">Dramatically increased the power of the HE OB.</li>
-				<li class="tweak">Increased the duration of the cluster OB.</li>
-				<li class="tweak">Increased the power of the individual explosions in the cluster OB.</li>
-				<li class="tweak">Removing shrapnel with your bootknife now removes ALL shrapnel in your body in one go.</li>
-				<li class="tweak">Decreased the explosive armor of Ravagers.</li>
-				<li class="tweak">Reduced the stun associated with shocked doors.</li>
-				<li class="tweak">Nerfed Praetorain pheromones slightly.</li>
-				<li class="tweak">Nerfed Ravager hitpoint total slightly.</li>
-				<li class="tweak">Nerfed the pheromone increase from Royal Guard Praetorian .</li>
-				<li class="tweak">Nerfed Praetorian speed slightly.</li>
-				<li class="tweak">Buffed the fire delay, accuracy, and ammo of the M41AMK2.</li>
-				<li class="tweak">Dramatically buffed the burst performance of the M41AMK2.</li>
-			</ul>
-			<h3 class="author">Frans_Feiffer updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="imageadd">Major Ike strikes again. Mateba has been completely resprited.</li>
-			</ul>
-			<h3 class="author">Vampmare updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">M4RA and Type 71 now have firing sounds again</li>
-			</ul>
-
-			<h2 class="date">10 September 2019</h2>
-			<h3 class="author">Aceluke updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed a badly located dropship location.</li>
-			</ul>
-			<h3 class="author">Atebite updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Specialist weapons will no longer get destroyed by explosions</li>
-				<li class="bugfix">HSDP (smoke) grenades now detonate properly again</li>
-				<li class="bugfix">You will no longer see heal messages when unconscious or dead</li>
-				<li class="bugfix">Gun sprites should now appear correctly on your back/suit, even when empty</li>
-				<li class="bugfix">... and some other stuff</li>
-				<li class="tweak">The hive status panel has been updated to use NanoUI</li>
-				<li class="tweak">The hive status panel now shows the strain of each xeno</li>
-				<li class="tweak">The hive status panel now shows the health of each xenos</li>
-				<li class="rscadd">Added Comic Sans as a chat font</li>
-				<li class="tweak">Weeds will now die when there is no node nearby that can sustain the weeds</li>
-				<li class="tweak">To compensate for the fact that weed removal is now easier, the health regenerating effect of weeds have been slightly increased</li>
-			</ul>
-			<h3 class="author">Cakey updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed gun firerates resetting when attaching attachies.</li>
-				<li class="bugfix">Fixed gun wield slowdowns not being set properly.</li>
-				<li class="bugfix">Fixed stock attachments from showing when they should not.</li>
-				<li class="tweak">The Mod88 pistol has been changed to default to LE armor-shredding rounds, to better fit its purpose as an armor-focus sidearm.</li>
-				<li class="tweak">Increased the M41A's effective range before damage falloff is applied.</li>
-				<li class="tweak">The M41A can now use quick-fire adapters once again.</li>
-				<li class="tweak">Added LE variants to L42 and M41 ammunition in vendors.</li>
-				<li class="tweak">Added LE variants to L42 and M41 ammunition boxes in vendors.</li>
-				<li class="bugfix">Fixed several statistics issues, such as xeno kill saving/loading, tracking, top caste statistics, null value displaying, and runtime fixes.</li>
-				<li class="rscadd">Added the niche stats system, built to allow us to add new single-number statistics for individual roles and values in order to add additional tracking to the game. Along with this, the following stats have been added as niche stats; Executions Made, Times Shocked, Grenades Thrown, Flights Piloted, Handcuffs Applied, Pills Fed, Accidental Discharges, Fultons Deployed, Disks Decrypted, Data Uploaded, Chemicals Discovered, Supplies Airdropped, Bombardments Fired, Barricades Built, Barricades Repaired, Generators Repaired, APCs Repaired, Bones Mended, Internal Bleedings Stopped, Necrosis Stopped, Brains Mended, Eyes Mended, Larvae Removed, Shrapnel Removed, Limbs Amputated, Organs Repaired, Organs Implanted, Organs Harvested.</li>
-				<li class="experimental">If you have any other niche statistics to suggest, please contact Cakey on discord. He'd love to hear them.</li>
-				<li class="tweak">Specialist and Smartgunner slots will now scale at 1 slot per 20 marines in the round, with a minimum of 2.</li>
-				<li class="tweak">Tank crewmen will no longer be playable under 80 marines in the round.</li>
-				<li class="imageadd">Uniforms have been standardized throughout the marines. Commissioned officers will now wear variants of uniform, coat, and accessories to match.</li>
-				<li class="rscadd">Added the personal uniform vendor, mapped throughout the ship, which can be used to dispense personal utility, service, and dress uniforms. The CO must authorise their use via a button within their quarters.</li>
-			</ul>
-			<h3 class="author">Foolosopher & monkeysfist101 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added walkman players. They can be found in the conference rooms of the Almayer</li>
-			</ul>
-			<h3 class="author">Frans_Feiffer updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="imageadd">Adjusted the belt side and suit storage sprites for the G8 pouch.</li>
-			</ul>
-			<h3 class="author">RavingManiac updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Resin walls and membranes are now stronger. Resin doors are also buffed, but still weaker than walls. Build times and plasma costs for resin increased across the board. Overall, the hive's resin structure will present more of an obstacle to the marines.</li>
-				<li class="tweak">Walls and airlocks now take more damage from bullets before collapsing.</li>
-			</ul>
-			<h3 class="author">TheDonkified updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Xenos are given burrowed larva instead of empty larva to compensate for roundstart population gap between xenos and marines.</li>
-			</ul>
-			<h3 class="author">TobiNerd updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed incorrectly placed pipe and door in the Officer Cafeteria.</li>
-				<li class="bugfix">Fixed paper dispensers in research using uscm papers instead of company ones.</li>
-				<li class="rscdel">Removed the analyze function from the Chemmaster 3000.</li>
-			</ul>
-			<h3 class="author">Vampmare updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Base Ravager has gained a new ability Empower. Empower gives you temporary health based on the amount of enemies in a 2 tile range around you. The temporary health is permanent, but it resets and starts from 0 upon next use. So, use it with 5 enemies around, get 5 stacked health. Re-use it with only 3 enemies around, temporary health gets reset down to 3 stacked health.</li>
-				<li class="tweak">Survivors should now spawn with boot knives or boots with boot knives in them.</li>
-				<li class="tweak">Scout Cloak and Pyrotechnician Fuel Toggle now both use the verb specialist-activation to activate.</li>
-				<li class="tweak">Auto-equip now works with the Pyrotechnician fuelpack and the special flamer.</li>
-				<li class="tweak">Fuel type B has been modified. It is now a quick burn, low damage and large AOE type of fuel. It will functions as a better version of Gel for the Pyrotechnician</li>
-				<li class="tweak">Recoloured Gel fuel to be green.</li>
-				<li class="spellcheck">Renamed the Veteran Enlist Kit to Veteran Enlisted Kit.</li>
-				<li class="rscadd">Ported goonchat over to CM. Credits to whoever made it in the first place in goon.</li>
 			</ul>
 </div>
 </body>

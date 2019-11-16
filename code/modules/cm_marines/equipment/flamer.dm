@@ -47,7 +47,7 @@
 			var/datum/action/A = X
 			A.update_button_icon()
 
-		icon = 'icons/obj/items/storage.dmi'
+		icon = 'icons/obj/items/clothing/backpacks.dmi'
 		icon_state = "flamethrower_broiler"
 
 	// Update onmob

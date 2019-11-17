@@ -1,3 +1,13 @@
+// Get the length of a string depending on BYOND version
+#if DM_VERSION > 513
+#warn 513 is definitely stable now, remove this
+#endif
+#if DM_VERSION >= 513
+#define text_length(t) (length(t))
+#else
+#define text_length(t) (lentext(t))
+#endif
+
 /*
  * Holds procs designed to help with filtering text
  * Contains groups:
@@ -8,7 +18,6 @@
  *			Misc
  */
 
-
 /*
  * SQL sanitization
  */
@@ -16,7 +25,7 @@
 // Run all strings to be used in an SQL query through this proc first to properly escape out injection attempts.
 /proc/sanitizeSQL(var/t as text)
 	var/sqltext = dbcon.Quote(t);
-	return copytext(sqltext, 2, lentext(sqltext));//Quote() adds quotes around input, we already do that
+	return copytext(sqltext, 2, text_length(sqltext));//Quote() adds quotes around input, we already do that
 
 /*
  * Text sanitization
@@ -276,9 +285,9 @@ proc/checkhtml(var/t)
 //is in the other string at the same spot (assuming it is not a replace char).
 //This is used for fingerprints
 	var/newtext = text
-	if(lentext(text) != lentext(compare))
+	if(text_length(text) != text_length(compare))
 		return 0
-	for(var/i = 1, i < lentext(text), i++)
+	for(var/i = 1, i < text_length(text), i++)
 		var/a = copytext(text,i,i+1)
 		var/b = copytext(compare,i,i+1)
 //if it isn't both the same letter, or if they are both the replacement character
@@ -298,7 +307,7 @@ proc/checkhtml(var/t)
 	if(!text || !character)
 		return 0
 	var/count = 0
-	for(var/i = 1, i <= lentext(text), i++)
+	for(var/i = 1, i <= text_length(text), i++)
 		var/a = copytext(text,i,i+1)
 		if(a == character)
 			count++
@@ -313,8 +322,8 @@ proc/checkhtml(var/t)
 //Used in preferences' SetFlavorText and human's set_flavor verb
 //Previews a string of len or less length
 proc/TextPreview(var/string,var/len=40)
-	if(lentext(string) <= len)
-		if(!lentext(string))
+	if(text_length(string) <= len)
+		if(!text_length(string))
 			return "\[...\]"
 		else
 			return string
@@ -327,3 +336,4 @@ proc/strip_improper(input_text)
 // Used to remove the string shortcuts for a clean transfer
 /proc/sanitize_filename(t)
 	return sanitize_simple(t, list("\n"="", "\t"="", "/"="", "\\"="", "?"="", "%"="", "*"="", ":"="", "|"="", "\""="", "<"="", ">"=""))
+

@@ -172,7 +172,7 @@
 //Stolen from status_display
 /obj/structure/machinery/door_display/proc/texticon(var/tn, var/px = 0, var/py = 0)
 	var/image/I = image('icons/obj/structures/machinery/status_display.dmi', "blank")
-	var/len = lentext(tn)
+	var/len = text_length(tn)
 
 	for(var/d = 1 to len)
 		var/char = copytext(tn, len-d+1, len-d+2)

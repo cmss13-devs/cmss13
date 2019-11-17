@@ -310,7 +310,7 @@
 /mob/proc/print_flavor_text()
 	if (flavor_text && flavor_text != "")
 		var/msg = replacetext(flavor_text, "\n", " ")
-		if(lentext(msg) <= 40)
+		if(text_length(msg) <= 40)
 			return SPAN_NOTICE("[msg]")
 		else
 			return SPAN_NOTICE("[copytext(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</a>")

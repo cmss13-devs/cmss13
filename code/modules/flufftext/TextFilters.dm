@@ -2,8 +2,8 @@
 
 proc/Intoxicated(phrase)
 	phrase = html_decode(phrase)
-	var/leng=lentext(phrase)
-	var/counter=lentext(phrase)
+	var/leng=text_length(phrase)
+	var/counter=text_length(phrase)
 	var/newphrase=""
 	var/newletter=""
 	while(counter>=1)
@@ -63,7 +63,7 @@ proc/DazedText(phrase)
 	phrase = html_decode(phrase)
 	var/result = ""	
 	var/i = rand(5,10)
-	if(lentext(phrase)<2)
+	if(text_length(phrase)<2)
 		for(,i > 0,i--)
 			result += pick("E","A","O","U")
 			if(i > 1)

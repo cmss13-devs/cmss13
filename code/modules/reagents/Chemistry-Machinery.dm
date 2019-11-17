@@ -1743,7 +1743,7 @@
 /obj/structure/machinery/autodispenser/proc/next_stage()
 	stage++
 	if(stage > programs[program].len) //End of program
-		if(programs[PROGRAM_MEMORY].len)
+		if(programs[PROGRAM_MEMORY].len && programs[PROGRAM_BOX].len)
 			if(program == PROGRAM_BOX)
 				cycle++
 				program--

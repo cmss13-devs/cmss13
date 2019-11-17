@@ -92,9 +92,9 @@
 	playsound(src.loc, 'sound/weapons/gun_empty.ogg', 15, 1)
 	add_fingerprint(user)
 
-	if(blood_overlay && blood_DNA && (blood_DNA.len >= 1))
+	if(blood_overlay && blood_color)
 		overlays.Cut()
-		add_blood(blood_DNA)
+		add_blood(blood_color)
 	return
 
 /obj/item/weapon/telebaton/attack(mob/target as mob, mob/living/user as mob)

@@ -48,22 +48,6 @@
 	return
 
 /obj/structure/machinery/door_control/attackby(obj/item/W, mob/user as mob)
-	/* For later implementation
-	if (istype(W, /obj/item/tool/screwdriver))
-	{
-		if(wiresexposed)
-			icon_state = "doorctrl0"
-			wiresexposed = 0
-
-		else
-			icon_state = "doorctrl-open"
-			wiresexposed = 1
-
-		return
-	}
-	*/
-	if(istype(W, /obj/item/device/detective_scanner))
-		return
 	return src.attack_hand(user)
 
 /obj/structure/machinery/door_control/proc/handle_dropship(var/ship_id)
@@ -156,7 +140,7 @@
 			for(var/i = 1 to 2)
 				if(istype(A, text2path("/area/shuttle/drop[i]")))
 					S = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Dropship [i]"]
-					if(S.moving_status == SHUTTLE_INTRANSIT) 
+					if(S.moving_status == SHUTTLE_INTRANSIT)
 						return FALSE
 			if(M.density)
 				spawn()
@@ -213,9 +197,6 @@
 	return src.attack_hand(user)
 
 /obj/structure/machinery/driver_button/attackby(obj/item/W, mob/user as mob)
-
-	if(istype(W, /obj/item/device/detective_scanner))
-		return
 	return src.attack_hand(user)
 
 /obj/structure/machinery/driver_button/attack_hand(mob/user as mob)

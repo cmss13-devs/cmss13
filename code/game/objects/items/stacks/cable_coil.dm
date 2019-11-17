@@ -107,7 +107,7 @@
 /obj/item/stack/cable_coil/attack_hand(mob/user as mob)
 	if (user.get_inactive_hand() == src)
 		var/obj/item/stack/cable_coil/F = new /obj/item/stack/cable_coil(user, 1, color)
-		F.copy_evidences(src)
+		transfer_fingerprints_to(F)
 		user.put_in_hands(F)
 		src.add_fingerprint(user)
 		F.add_fingerprint(user)

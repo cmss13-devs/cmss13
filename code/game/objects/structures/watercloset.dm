@@ -295,7 +295,7 @@
 
 	if(isturf(loc))
 		var/turf/tile = loc
-		loc.clean_blood()
+		tile.clean_blood()
 		for(var/obj/effect/E in tile)
 			if(istype(E,/obj/effect/decal/cleanable) || istype(E,/obj/effect/overlay))
 				qdel(E)

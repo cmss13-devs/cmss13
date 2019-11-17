@@ -126,7 +126,7 @@
 	var/mob/living/carbon/human/H = get_suspect()
 	if(!H) return
 
-	var/fingerprints = H.fingerprint
+	var/fingerprints = "XXXXXX"
 	var/traitor_name = H.real_name
 	var/prob_right_dude = rand(1, 100)
 

@@ -34365,7 +34365,6 @@
 /area/ice_colony/underground/security/interrogation)
 "bJa" = (
 /obj/structure/table/reinforced,
-/obj/item/device/detective_scanner,
 /turf/open/floor{
 	tag = "icon-darkred2 (SOUTHEAST)";
 	icon_state = "darkred2";
@@ -36126,7 +36125,7 @@
 /area/ice_colony/underground/security)
 "bMY" = (
 /obj/structure/table/reinforced,
-/obj/item/device/detective_scanner,
+
 /turf/open/floor{
 	tag = "icon-darkred2 (NORTHEAST)";
 	icon_state = "darkred2";

@@ -6,7 +6,7 @@
 	description = "Blood is classified as a connective tissue and consists of two main components: Plasma, which is a clear extracellular fluid. Formed elements, which are made up of the blood cells and platelets."
 	reagent_state = LIQUID
 	color = "#A10808"
-	data = new/list("blood_DNA"=null,"blood_type"=null,"blood_colour"= "#A10808","viruses"=null,"resistances"=null, "trace_chem"=null)
+	data = new/list("blood_type"=null,"blood_colour"= "#A10808","viruses"=null,"resistances"=null)
 	chemclass = CHEM_CLASS_RARE
 
 
@@ -31,11 +31,7 @@
 	src = null
 	if(!(volume >= 3)) return
 
-	var/list/L = list()
-	if(self.data["blood_DNA"])
-		L = list(self.data["blood_DNA"] = self.data["blood_type"])
-
-	T.add_blood(L , self.color)
+	T.add_blood(self.color)
 
 
 
@@ -485,7 +481,7 @@
 		var/turf/closed/wall/W = T
 		W.thermite += volume
 		W.overlays += image('icons/effects/effects.dmi',icon_state = "#673910")
-	
+
 
 /datum/reagent/virus_food
 	name = "Virus Food"
@@ -640,7 +636,6 @@
 
 	reaction_turf(var/turf/T, var/volume)
 		if(volume >= 1)
-			T.clean_blood()
 			for(var/obj/effect/decal/cleanable/C in T.contents)
 				src.reaction_obj(C, volume)
 				qdel(C)
@@ -936,7 +931,7 @@
 	if(!.) return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if((locate(/obj/item/alien_embryo) in H.contents) || (H.species.flags & IS_SYNTHETIC)) 
+		if((locate(/obj/item/alien_embryo) in H.contents) || (H.species.flags & IS_SYNTHETIC))
 			volume = 0
 			return
 		var/mob/living/carbon/C = M
@@ -949,7 +944,7 @@
 		if(H.species.flags & IS_SYNTHETIC)
 			return
 		H.blood_volume = max(H.blood_volume-20,0)
-		volume += 2 
+		volume += 2
 
 /datum/reagent/plasma/egg/on_overdose_critical(mob/living/M) // it turns into an actual embryo at this point
 	if(ishuman(M))
@@ -972,7 +967,7 @@
 /datum/reagent/plasma/neurotoxin/on_mob_life(var/mob/living/M)
 	. = ..()
 	if(!.) return
-	
+
 	M.adjustBrainLoss(0.5)
 	M.adjustToxLoss(1)
 	if(prob(20))
@@ -989,7 +984,7 @@
 /datum/reagent/plasma/antineurotoxin/on_mob_life(var/mob/living/M)
 	. = ..()
 	if(!.) return
-	
+
 	M.adjustBrainLoss(0.5)
 	if(prob(20))
 		apply_neuro(M, -2, FALSE)

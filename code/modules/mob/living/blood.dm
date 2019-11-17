@@ -148,12 +148,6 @@
 
 	var/list/data = get_blood_data()
 
-	var/list/temp_chem = list()
-	for(var/datum/reagent/R in reagents.reagent_list)
-		temp_chem += R.id
-		temp_chem[R.id] = R.volume
-	data["trace_chem"] = list2params(temp_chem)
-
 	O.reagents.add_reagent(b_id, amount, data)
 
 	blood_volume = max(0, blood_volume - amount) // Removes blood if human
@@ -169,18 +163,18 @@
 /mob/living/carbon/Xenomorph/take_blood(obj/O, var/amount)
 	if(!O.reagents)
 		return
-	
+
 	var/b_id = get_blood_id()
 	if(!b_id)
 		return
-	
+
 	var/list/plasmas = list(b_id)
 	for(var/plasma in plasma_types)
 		plasmas += plasma
-	
+
 	for(var/plasma in plasmas)
 		O.reagents.add_reagent(plasma,amount / plasmas.len) //An even amount of each plasma and blood type
-	
+
 	return 1
 
 
@@ -192,10 +186,7 @@
 
 	var/list/blood_data = list()
 
-	var/list/b_dna = get_blood_dna_list()
-	for(var/i in b_dna)
-		blood_data["blood_DNA"] = i
-		blood_data["blood_type"] = b_dna[i]
+	blood_data["blood_type"] = get_blood_type()
 
 	blood_data["blood_colour"] = get_blood_color()
 	blood_data["viruses"] = list()
@@ -217,28 +208,28 @@
 	return blood_data
 
 
-//returns the mob's dna info as a list, to be inserted in an object's blood_DNA list
-/mob/living/proc/get_blood_dna_list()
+//returns the mob's blood type.
+/mob/living/proc/get_blood_type()
 	if(!get_blood_id())
 		return
-	return list("ANIMAL DNA" = "C-")
+	return "C-"
 
-/mob/living/carbon/get_blood_dna_list()
+/mob/living/carbon/get_blood_type()
 	var/b_id = get_blood_id()
 	if(!b_id)
 		return
 
 	switch(b_id)
 		if("blood")
-			return list("[dna_sequence]" = blood_type)
+			return blood_type
 		if("whiteblood")
-			return list("SYNTHETIC BLOOD" = "S*")
+			return "S*"
 		if("greyblood")
-			return list("[dna_sequence]" = "Z*")
+			return "Z*"
 		if("greenblood")
-			return list("UNKNOWN DNA" = "Y*")
+			return "Y*"
 		if("xenoblood")
-			return list("UNKNOWN DNA" = "X*")
+			return "X*"
 
 
 //returns the color of the mob's blood
@@ -330,8 +321,6 @@
 	if(!T.can_bloody)
 		return
 
-	var/list/temp_blood_DNA
-
 	if(small_drip)
 		// Only a certain number of drips (or one large splatter) can be on a given turf.
 		var/obj/effect/decal/cleanable/blood/drip/drop = locate() in T
@@ -339,30 +328,20 @@
 			if(drop.drips < 1)
 				drop.drips++
 				drop.overlays |= pick(drop.random_icon_states)
-				drop.transfer_mob_blood_dna(src)
 				return
 			else
-				temp_blood_DNA = list()
-				temp_blood_DNA |= drop.blood_DNA.Copy() //we transfer the dna from the drip to the splatter
 				qdel(drop)//the drip is replaced by a bigger splatter
 		else
-			drop = new(T)
-			drop.transfer_mob_blood_dna(src)
-			if(b_color)
-				drop.basecolor = b_color
-				drop.color = b_color
+			drop = new(T, b_color)
 			return
 
 	// Find a blood decal or create a new one.
 	var/obj/effect/decal/cleanable/blood/B = locate() in T
 	if(!B)
-		B = new /obj/effect/decal/cleanable/blood/splatter(T)
-		if(b_color)
-			B.basecolor = b_color
-			B.color = b_color
-	B.transfer_mob_blood_dna(src) //give blood info to the blood decal.
-	if(temp_blood_DNA)
-		B.blood_DNA |= temp_blood_DNA
+		B = new /obj/effect/decal/cleanable/blood/splatter(T, b_color)
+
+
+
 
 
 /mob/living/carbon/human/add_splatter_floor(turf/T, small_drip, b_color)
@@ -383,7 +362,7 @@
 	var/obj/effect/decal/cleanable/blood/xeno/XB = locate() in T.contents
 	if(!XB)
 		XB = new(T)
-	XB.blood_DNA["UNKNOWN DNA"] = "X*"
+
 
 
 /mob/living/silicon/robot/add_splatter_floor(turf/T, small_drip, b_color)

@@ -15,27 +15,23 @@
 				var/mob/living/carbon/human/H = C
 
 				// Tracking blood
-				var/list/bloodDNA = null
 				var/bloodcolor=""
 				if(H.shoes)
 					var/obj/item/clothing/shoes/S = H.shoes
-					if(S.track_blood && S.blood_DNA)
-						bloodDNA = S.blood_DNA
-						bloodcolor=S.blood_color
-						S.track_blood--
+					if(S.shoes_blood_amt && S.blood_color)
+						bloodcolor = S.blood_color
+						S.shoes_blood_amt--
 				else
-					if(H.track_blood && H.feet_blood_DNA)
-						bloodDNA = H.feet_blood_DNA
-						bloodcolor=H.feet_blood_color
-						H.track_blood--
+					if(H.feet_blood_amt && H.feet_blood_color)
+						bloodcolor = H.feet_blood_color
+						H.feet_blood_amt--
 
-				if (bloodDNA)
-					src.AddTracks(/obj/effect/decal/cleanable/blood/tracks/footprints,bloodDNA,H.dir,0,bloodcolor) // Coming
+				if (bloodcolor)
+					src.AddTracks(/obj/effect/decal/cleanable/blood/tracks/footprints,H.dir,0,bloodcolor) // Coming
 					var/turf/from = get_step(H,reverse_direction(H.dir))
 					if(istype(from) && from)
-						from.AddTracks(/obj/effect/decal/cleanable/blood/tracks/footprints,bloodDNA,0,H.dir,bloodcolor) // Going
+						from.AddTracks(/obj/effect/decal/cleanable/blood/tracks/footprints,0,H.dir,bloodcolor) // Going
 
-					bloodDNA = null
 
 
 			switch (wet)

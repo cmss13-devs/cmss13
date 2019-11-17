@@ -1,37 +1,32 @@
 
-//to add a mob's dna info into an object's blood_DNA list.
-/atom/proc/transfer_mob_blood_dna(mob/living/L)
-	// Returns 0 if we have that blood already
-	var/new_blood_dna = L.get_blood_dna_list()
-	if(!new_blood_dna)
-		return 0
-	if(!blood_DNA)	//if our list of DNA doesn't exist yet, initialise it.
-		blood_DNA = list()
-	var/old_length = blood_DNA.len
-	blood_DNA |= new_blood_dna
-	if(blood_DNA.len == old_length)
-		return 0
-	return 1
 
-//to add blood dna info to the object's blood_DNA list
-/atom/proc/transfer_blood_dna(list/blood_dna)
-	if(!blood_DNA)
-		blood_DNA = list()
+/obj/item
+	var/blood_color = "" //color of the blood on us if there's any.
 
-	var/old_length = blood_DNA.len
-	blood_DNA |= blood_dna
-	if(blood_DNA.len > old_length)
-		return 1//some new blood DNA was added
+
+
+/mob/living/carbon/human
+	var/hands_blood_color = "" //color of the blood on our hands if there's any.
+	var/hands_blood_amt = 0
+	var/feet_blood_color = "" //color of the blood on our feet if there's any
+	var/feet_blood_amt = 0
+
+/obj/item/clothing/gloves
+	var/gloves_blood_amt = 0
+
+/obj/item/clothing/shoes
+	var/shoes_blood_amt = 0
+
+
 
 
 //to add blood from a mob onto something, and transfer their dna info and blood color
 /atom/proc/add_mob_blood(mob/living/M)
-	var/list/blood_dna = M.get_blood_dna_list()
-	if(!blood_dna)
-		return 0
 	var/b_color = M.get_blood_color()
+	if(!b_color)
+		return 0
 
-	return add_blood(blood_dna, b_color)
+	return add_blood(b_color)
 
 
 
@@ -42,33 +37,25 @@
 	var/global/list/blood_overlay_cache = list()
 
 //to add blood onto something, with blood dna info to include.
-/atom/proc/add_blood(list/blood_dna, b_color)
+/atom/proc/add_blood(b_color = "#830303")
 	return 0
 
-/turf/add_blood(list/blood_dna, b_color)
+/turf/add_blood(b_color = "#830303")
 	var/obj/effect/decal/cleanable/blood/splatter/B = locate() in src
 	if(!B)
-		B = new /obj/effect/decal/cleanable/blood/splatter(src)
-		if(b_color)
-			B.basecolor = b_color
-			B.color = b_color
-	B.transfer_blood_dna(blood_dna) //give blood info to the blood decal.
+		B = new /obj/effect/decal/cleanable/blood/splatter(src, b_color)
 	return 1 //we bloodied the floor
 
-/obj/add_blood(list/blood_dna, b_color)
-	if(flags_atom & NOBLOODY)
-		return 0
-	. = transfer_blood_dna(blood_dna)
-	if(b_color)
-		blood_color = b_color
 
-/obj/item/add_blood(list/blood_dna, b_color)
+/obj/item/add_blood(b_color = "#830303")
 	if(flags_atom & NOBLOODY)
 		return 0
-	var/blood_count = blood_DNA && blood_DNA.len
-	..()
-	if(!blood_count && !blood_overlay)//apply the blood-splatter overlay if it isn't already in there
-		generate_blood_overlay()
+	var/cur_blood_col = blood_color
+	blood_color = b_color
+
+	if(!cur_blood_col && !blood_overlay)//apply the blood-splatter overlay if it isn't already in there
+		generate_blood_overlay(b_color)
+		overlays += blood_overlay
 
 	else if(blood_overlay && b_color && blood_overlay.color != b_color)
 		overlays -= blood_overlay
@@ -76,8 +63,8 @@
 		overlays += blood_overlay
 	return 1 //we applied blood to the item
 
-/obj/item/proc/generate_blood_overlay(force = FALSE)
-	if(blood_overlay && !force)
+/obj/item/proc/generate_blood_overlay(b_color)
+	if(blood_overlay)
 		return
 	if(blood_overlay_cache["[icon]" + icon_state])
 		blood_overlay = blood_overlay_cache["[icon]" + icon_state]
@@ -86,59 +73,65 @@
 	I.debugBlend(new /icon('icons/effects/blood.dmi', rgb(255,255,255)), ICON_ADD) //fills the icon_state with white (except where it's transparent)
 	I.debugBlend(new /icon('icons/effects/blood.dmi', "itemblood"), ICON_MULTIPLY) //adds blood and the remaining white areas become transparant
 	blood_overlay = image(I)
+	blood_overlay.color = b_color
 	blood_overlay.appearance_flags |= NO_CLIENT_COLOR
 	blood_overlay_cache["[icon]" + icon_state] = blood_overlay
 
-/mob/living/carbon/human/add_blood(list/blood_dna, b_color)
+/mob/living/carbon/human/add_blood(b_color = "#830303")
 	if(wear_suit)
-		wear_suit.add_blood(blood_dna, b_color)
+		wear_suit.add_blood(b_color)
 		update_inv_wear_suit()
 	else if(w_uniform)
-		w_uniform.add_blood(blood_dna, b_color)
+		w_uniform.add_blood(b_color)
 		update_inv_w_uniform()
 	if(gloves)
 		var/obj/item/clothing/gloves/G = gloves
-		G.add_blood(blood_dna, b_color)
+		G.add_blood(b_color)
 	else
-		transfer_blood_dna(blood_dna)
-		if(b_color)
-			blood_color = b_color
-	bloody_hands = rand(2, 4)
+		hands_blood_color = b_color
+	hands_blood_amt = rand(2, 4)
 
 	update_inv_gloves()	//handles bloody hands overlays and updating
 	return 1
 
+
 /atom/proc/clean_blood()
-	if(istype(blood_DNA, /list))
-		qdel(blood_DNA)
-		blood_DNA = null
-		blood_color = null
-		return 1
+	return 0
+
+/turf/clean_blood()
+	for(var/obj/effect/decal/cleanable/blood/B in src)
+		qdel(B)
+		. = 1
 
 /obj/item/clean_blood()
-	. = ..()
+	if(!blood_color)
+		return 0
+	blood_color = null
 	if(blood_overlay)
 		overlays.Remove(blood_overlay)
+	return 1
 
 /obj/item/clothing/gloves/clean_blood()
 	. = ..()
-	transfer_blood = 0
+	gloves_blood_amt = 0
+
+/obj/item/clothing/shoes/clean_blood()
+	. = ..()
+	shoes_blood_amt = 0
 
 /mob/living/carbon/human/clean_blood(clean_feet)
 	if(gloves)
 		if(gloves.clean_blood())
 			update_inv_gloves()
-	else
-		if(istype(blood_DNA, /list))
-			qdel(blood_DNA)
-			blood_DNA = null
-		blood_color = null
-		bloody_hands = 0
-		update_inv_gloves()
+			. = 1
 
-	if(clean_feet && !shoes && istype(feet_blood_DNA, /list))
+	else if(hands_blood_color)
+		hands_blood_color = null
+		hands_blood_amt = 0
+		update_inv_gloves()
+		. = 1
+
+	if(clean_feet && !shoes && feet_blood_color)
 		feet_blood_color = null
-		qdel(feet_blood_DNA)
-		feet_blood_DNA = null
 		update_inv_shoes()
 		return 1

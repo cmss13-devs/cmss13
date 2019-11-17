@@ -39,8 +39,6 @@
 						I.access = C.access
 						I.assignment = C.assignment
 						I.blood_type = C.blood_type
-						I.dna_hash = C.dna_hash
-						I.fingerprint_hash = C.fingerprint_hash
 						//replace old ID
 						qdel(C)
 						ok = M.equip_if_possible(I, WEAR_ID, 0)	//if 1, last argument deletes on fail

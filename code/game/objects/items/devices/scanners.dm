@@ -7,6 +7,7 @@ GAS ANALYZER
 PLANT ANALYZER
 MASS SPECTROMETER
 REAGENT SCANNER
+FORENSIC SCANNER
 */
 /obj/item/device/t_scanner
 	name = "\improper T-ray scanner"
@@ -188,33 +189,6 @@ REAGENT SCANNER
 	if (!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
-	if(reagents.total_volume)
-		var/list/blood_traces = list()
-		for(var/datum/reagent/R in reagents.reagent_list)
-			if(R.id != "blood")
-				reagents.clear_reagents()
-				to_chat(user, SPAN_DANGER("The sample was contaminated! Please insert another sample"))
-				return
-			else
-				blood_traces = params2list(R.data["trace_chem"])
-				break
-		var/dat = "Trace Chemicals Found: "
-		for(var/R in blood_traces)
-			if(prob(reliability))
-				if(details)
-					dat += "[R] ([blood_traces[R]] units) "
-				else
-					dat += "[R] "
-				recent_fail = 0
-			else
-				if(recent_fail)
-					crit_fail = 1
-					reagents.clear_reagents()
-					return
-				else
-					recent_fail = 1
-		to_chat(user, "[dat]")
-		reagents.clear_reagents()
 	return
 
 
@@ -283,3 +257,17 @@ REAGENT SCANNER
 	icon_state = "adv_spectrometer"
 	details = 1
 	origin_tech = "magnets=4;biotech=2"
+
+
+
+
+
+/obj/item/device/forensic_scanner
+	name = "forensic scanner"
+	desc = "Used to scan objects for DNA and fingerprints."
+	icon_state = "forensic1"
+	w_class = SIZE_MEDIUM
+	item_state = "electronic"
+	flags_atom = FPRINT|CONDUCT
+	flags_item = NOBLUDGEON
+	flags_equip_slot = SLOT_WAIST

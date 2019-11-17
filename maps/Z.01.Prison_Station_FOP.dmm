@@ -45309,7 +45309,7 @@
 	},
 /area/prison/security)
 "bTv" = (
-/obj/structure/machinery/computer/forensic_scanning,
+
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
 	icon_state = "darkredfull2";

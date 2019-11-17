@@ -836,7 +836,6 @@ var/list/robot_verbs_default = list(
 		if(module.type == /obj/item/circuitboard/robot_module/janitor)
 			var/turf/tile = loc
 			if(isturf(tile))
-				tile.clean_blood()
 				for(var/A in tile)
 					if(istype(A, /obj/effect))
 						if(istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay))

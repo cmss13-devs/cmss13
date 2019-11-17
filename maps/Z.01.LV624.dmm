@@ -14740,9 +14740,7 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/comms)
 "aPu" = (
-/obj/structure/table/reinforced,
-/obj/structure/machinery/computer/forensic_scanning,
-/turf/open/floor{
+/obj/structure/table/reinforced,/turf/open/floor{
 	icon_state = "red";
 	dir = 1
 	},

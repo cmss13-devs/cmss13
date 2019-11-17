@@ -333,3 +333,45 @@
 	else
 		icon_state = "janibucket"
 
+
+
+
+
+/obj/item/reagent_container/glass/rag
+	name = "damp rag"
+	desc = "For cleaning up messes, you suppose."
+	w_class = SIZE_TINY
+	icon = 'icons/obj/items/items.dmi'
+	icon_state = "rag"
+	amount_per_transfer_from_this = 5
+	possible_transfer_amounts = list(5)
+	volume = 5
+	can_be_placed_into = null
+	flags_atom = FPRINT|OPENCONTAINER
+	flags_item = NOBLUDGEON
+
+/obj/item/reagent_container/glass/rag/attack_self(mob/user as mob)
+	return
+
+/obj/item/reagent_container/glass/rag/attack(atom/target as obj|turf|area, mob/user as mob , flag)
+	if(ismob(target) && target.reagents && reagents.total_volume)
+		user.visible_message(SPAN_DANGER("\The [target] has been smothered with \the [src] by \the [user]!"), SPAN_DANGER("You smother \the [target] with \the [src]!"), "You hear some struggling and muffled cries of surprise")
+		src.reagents.reaction(target, TOUCH)
+		spawn(5) src.reagents.clear_reagents()
+		return
+	else
+		..()
+
+/obj/item/reagent_container/glass/rag/afterattack(atom/movable/AM, mob/user, proximity)
+	if(!proximity)
+		return
+	if(istype(AM) && src in user)
+		user.visible_message("[user] starts to wipe down [AM] with [src]!")
+		if(do_after(user,30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			user.visible_message("[user] finishes wiping off the [AM]!")
+			AM.clean_blood()
+
+
+/obj/item/reagent_container/glass/rag/examine(mob/user)
+	to_chat(user, "That's \a [src].")
+	to_chat(usr, desc)

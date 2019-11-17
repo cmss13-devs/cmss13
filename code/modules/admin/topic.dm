@@ -1025,7 +1025,7 @@
 								chemical_gen_stats_list.Remove("[target]")
 								chemical_gen_reactions_list.Remove("[target]")
 							return
-						
+
 						else
 							break
 				return
@@ -1066,13 +1066,13 @@
 					R.generate_name()
 				else
 					chemical_gen_stats_list["[target]"]["name"] = capitalize(response)
-				
+
 				response = alert(usr,"What do you want customized?","Custom reagent [target]","Add property","Randomize non property vars","Finish")
 				while(response != "Finish")
 					switch(response)
 						if("Add property")
 							response = alert(usr,"A specific property or a specific number of random properties?","Custom reagent [target]","Specific property","Specific number","No more properties")
-						if("Specific property")	
+						if("Specific property")
 							var/property_type = alert(usr,"What kind?","Custom reagent [target]","Negative","Neutral","Positive")
 							var/list/pool
 							switch(property_type)
@@ -1677,7 +1677,7 @@
 			return
 
 		var/mob/living/carbon/Xenomorph/X = locate(href_list["xenoupgrade"])
-		
+
 		if(X.upgrade == -1)
 			to_chat(usr, "You cannot upgrade this caste.")
 
@@ -2460,17 +2460,9 @@
 				dat += "<table cellspacing=5><tr><th>Name</th><th>DNA</th><th>Blood Type</th></tr>"
 				for(var/mob/living/carbon/human/H in mob_list)
 					if(H.ckey)
-						dat += "<tr><td>[H]</td><td>[H.dna_sequence]</td><td>[H.b_type]</td></tr>"
+						dat += "<tr><td>[H]</td><td>XXXXX</td><td>[H.b_type]</td></tr>"
 				dat += "</table>"
 				usr << browse(dat, "window=DNA;size=440x410")
-			if("fingerprints")
-				var/dat = "<B>Showing Fingerprints.</B><HR>"
-				dat += "<table cellspacing=5><tr><th>Name</th><th>Fingerprints</th></tr>"
-				for(var/mob/living/carbon/human/H in mob_list)
-					if(H.ckey)
-						dat += "<tr><td>[H]</td><td>[H.fingerprint]</td></tr>"
-				dat += "</table>"
-				usr << browse(dat, "window=fingerprints;size=440x410")
 			if("launchshuttle")
 				if(!shuttle_controller) return // Something is very wrong, the shuttle controller has not been created.
 

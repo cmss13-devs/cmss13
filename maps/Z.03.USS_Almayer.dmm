@@ -10006,9 +10006,6 @@
 /area/almayer/hallways/repair_bay)
 "axK" = (
 /obj/structure/table/almayer,
-/obj/structure/machinery/computer/forensic_scanning{
-	icon_state = "security"
-	},
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -44581,8 +44578,6 @@
 /area/almayer/medical/testlab)
 "gtT" = (
 /obj/structure/table/almayer,
-/obj/item/device/detective_scanner,
-/obj/item/device/detective_scanner,
 /obj/item/device/camera,
 /obj/item/device/camera_film,
 /obj/structure/machinery/power/apc/almayer{
@@ -45867,9 +45862,6 @@
 	},
 /area/almayer/medical/surgery_hallway)
 "ihw" = (
-/obj/structure/machinery/computer/forensic_scanning{
-	icon_state = "security"
-	},
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
 	},

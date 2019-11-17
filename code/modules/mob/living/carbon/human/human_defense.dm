@@ -122,7 +122,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 //Returns 1 if the attack hit, 0 if it missed.
 /mob/living/carbon/human/proc/attacked_by(var/obj/item/I, var/mob/living/user, var/def_zone)
-	if(!I || !user)	
+	if(!I || !user)
 		return 0
 
 	var/target_zone = def_zone? check_zone(def_zone) : get_zone_with_miss_chance(user.zone_selected, src)
@@ -159,7 +159,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		weapon_sharp = 0
 		weapon_edge = 0
 
-	if(!I.force)	
+	if(!I.force)
 		return 0
 	if(weapon_sharp)
 		user.flick_attack_overlay(src, "punch")
@@ -219,14 +219,14 @@ Contains most of the procs that are called when a mob is attacked by something
 /mob/living/carbon/human/hitby(atom/movable/AM)
 	if (!isobj(AM))
 		return
-	
+
 	var/obj/O = AM
 
 	//empty active hand and we're in throw mode
 	if (throw_mode && !get_active_hand() && cur_speed <= SPEED_VERY_FAST && \
 		!is_mob_incapacitated() && isturf(O.loc) && put_in_active_hand(O)
 	)
-		if ((O.flags_atom & ITEM_UNCATCHABLE) && !isYautja(src)) 
+		if ((O.flags_atom & ITEM_UNCATCHABLE) && !isYautja(src))
 			return
 		visible_message(SPAN_WARNING("[src] catches [O]!"), null, null, 5)
 		toggle_throw_mode(THROW_MODE_OFF)
@@ -305,19 +305,15 @@ Contains most of the procs that are called when a mob is attacked by something
 				affecting.embed(I)
 
 /mob/living/carbon/human/proc/bloody_hands(var/mob/living/source, var/amount = 2)
+	var/b_color = source.get_blood_color()
+	if(!b_color)
+		return
 	if (gloves)
 		gloves.add_mob_blood(source)
-		gloves:transfer_blood = amount
+		gloves.gloves_blood_amt = amount
 	else
-		var/list/blood_dna = source.get_blood_dna_list()
-		if(!blood_dna)
-			return
-		var/b_color = source.get_blood_color()
-
-		transfer_blood_dna(blood_dna)
-		if(b_color)
-			blood_color = b_color
-		bloody_hands = amount
+		hands_blood_color = b_color
+		hands_blood_amt = max(amount, hands_blood_amt)
 
 	update_inv_gloves()		//updates on-mob overlays for bloody hands and/or bloody gloves
 

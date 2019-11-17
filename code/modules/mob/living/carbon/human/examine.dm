@@ -114,8 +114,8 @@
 	//gloves
 	if(gloves && !skipgloves)
 		msg += "[t_He] [t_has] [gloves.get_examine_line()] on [t_his] hands.\n"
-	else if(blood_DNA)
-		msg += "<span class='warning'>[t_He] [t_has] [(blood_color != "#030303") ? "blood" : "oil"]-stained hands!</span>\n"
+	else if(hands_blood_color)
+		msg += SPAN_WARNING("[t_He] [t_has] [(hands_blood_color != "#030303") ? "blood" : "oil"]-stained hands!\n")
 
 	//belt
 	if(belt)
@@ -124,7 +124,7 @@
 	//shoes
 	if(shoes && !skipshoes)
 		msg += "[t_He] [t_is] wearing [shoes.get_examine_line()] on [t_his] feet.\n"
-	else if(feet_blood_DNA)
+	else if(feet_blood_color)
 		msg += "<span class='warning'>[t_He] [t_has] [(feet_blood_color != "#030303") ? "blood" : "oil"]-stained feet!</span>\n"
 
 	//mask
@@ -441,7 +441,7 @@
 				msg += "<a href='?src=\ref[src];squadfireteam=1'>\[Manage Fireteams.\]</a>\n"
 
 
-	if(print_flavor_text()) 
+	if(print_flavor_text())
 		msg += "[print_flavor_text()]\n"
 
 	msg += "*---------*</span>"

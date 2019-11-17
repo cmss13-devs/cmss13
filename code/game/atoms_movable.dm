@@ -20,6 +20,8 @@
 
 	var/hard_deleted = 0
 
+
+
 //===========================================================================
 /atom/movable/Dispose()
 	for(var/atom/movable/I in contents) qdel(I)
@@ -134,10 +136,10 @@
 		var/oldloc = loc
 		var/launched_speed = cur_speed
 		add_timer(CALLBACK(src, .proc/rebound, oldloc, launched_speed), 0.5)
-	
+
 	if (!rebounding)
 		O.hitby(src)
-	
+
 	return
 
 /atom/movable/proc/turf_launch_collision(var/turf/T)

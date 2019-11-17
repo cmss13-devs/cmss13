@@ -66,8 +66,6 @@
 	flags_equip_slot = SLOT_ID
 
 	var/blood_type = "\[UNSET\]"
-	var/dna_hash = "\[UNSET\]"
-	var/fingerprint_hash = "\[UNSET\]"
 
 	//alt titles are handled a bit weirdly in order to unobtrusively integrate into existing ID system
 	var/assignment = null	//can be alt title or the actual job
@@ -86,8 +84,7 @@
 		var/mob/living/carbon/human/H = loc
 		if(istype(H))
 			blood_type = H.blood_type
-			dna_hash = H.dna_sequence
-			fingerprint_hash = H.fingerprint
+
 
 /obj/item/card/id/attack_self(mob/user as mob)
 	user.visible_message("[user] shows you: [htmlicon(src, viewers(user))] [name]: assignment: [assignment]")
@@ -109,9 +106,7 @@
 
 	to_chat(usr, "[htmlicon(src, usr)] [name]: The current assignment on the card is [assignment]")
 	to_chat(usr, "The blood type on the card is [blood_type].")
-	to_chat(usr, "The DNA hash on the card is [dna_hash].")
-	to_chat(usr, "The fingerprint hash on the card is [fingerprint_hash].")
-	return
+
 
 /obj/item/card/id/data
 	name = "identification holo-badge"
@@ -141,7 +136,7 @@
 	desc = "It reads: 'The one and only!'"
 	icon_state = "gold"
 	item_state = "gold_id"
-	
+
 /obj/item/card/id/gold
 	name = "identification holo-badge"
 	desc = "A gold plated holo-badge which shows power and might."

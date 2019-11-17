@@ -50,10 +50,7 @@
 		var/datum/reagent/blood/B = locate(/datum/reagent/blood) in reagents.reagent_list
 		if(B)
 			var/turf/TU = get_turf(src)
-			var/list/L = list()
-			if(B.data["blood_DNA"])
-				L = list(B.data["blood_DNA"] = B.data["blood_type"])
-			TU.add_blood(L, B.color)
+			TU.add_blood(B.color)
 		//blood_splatter(src,B,1)
 
 	health -= rand(0,1)
@@ -198,10 +195,7 @@
 	var/datum/reagent/blood/B = locate(/datum/reagent/blood) in reagents.reagent_list
 	if(B)
 		var/turf/TU = get_turf(src)
-		var/list/L = list()
-		if(B.data["blood_DNA"])
-			L = list(B.data["blood_DNA"] = B.data["blood_type"])
-		TU.add_blood(L, B.color)
+		TU.add_blood(B.color)
 
 
 	user.temp_drop_inv_item(src)
@@ -212,7 +206,6 @@
 	// Pass over the blood.
 	reagents.trans_to(O, reagents.total_volume)
 
-	if(fingerprints) O.fingerprints = fingerprints.Copy()
 	if(fingerprintshidden) O.fingerprintshidden = fingerprintshidden.Copy()
 	if(fingerprintslast) O.fingerprintslast = fingerprintslast
 

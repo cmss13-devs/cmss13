@@ -1,0 +1,8 @@
+ 
+author: Phil235
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixes blood overlay bug on humans."
+  - rscdel: "Removes forensic scanner and console."

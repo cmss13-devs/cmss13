@@ -103,7 +103,7 @@ var/global/floorIsLava = 0
 	body += {"<br>\[ Misc:
 		<A href='?_src_=admin_holder;sendbacktolobby=\ref[M]'>Back to Lobby</A> | <A href='?src=\ref[src];getmob=\ref[M]'>Get</A> | <A href='?src=\ref[src];narrateto=\ref[M]'>Narrate</A> | <A href='?src=\ref[src];sendmob=\ref[M]'>Send</A> ]
 	"}
-	
+
 	if (M.client)
 		if(!istype(M, /mob/new_player))
 			body += {"<br><br>
@@ -145,7 +145,7 @@ var/global/floorIsLava = 0
 	if(ishuman(M))
 		body += {"<br>\[ Infection: <A href='?src=\ref[src];larvainfect=\ref[M]'>Xeno Larva</A> | <A href='?src=\ref[src];zombieinfect=\ref[M]'>Zombie Virus</A> ]
 	"}
-	
+
 	if(isXeno(M))
 		body += "<br>\[ Upgrade: <A href='?src=\ref[src];xenoupgrade=\ref[M]'>Upgrade Xeno</A> ]"
 
@@ -315,15 +315,15 @@ var/global/floorIsLava = 0
 
 /datum/admins/proc/Chem()
 	if(!check_rights(R_MOD)) return
-		
+
 	var/dat = {"<center><B>Chem Panel</B></center><hr>\n"}
-	if(check_rights(R_MOD,0))	
+	if(check_rights(R_MOD,0))
 		dat += {"<A href='?src=\ref[src];chem_panel=view_reagent'>View Reagent</A><br>
 				"}
 	if(check_rights(R_VAREDIT,0))
 		dat += {"<A href='?src=\ref[src];chem_panel=view_reaction'>View Reaction</A><br>
 				<br>"}
-	if(check_rights(R_SPAWN,0))	
+	if(check_rights(R_SPAWN,0))
 		dat += {"<A href='?src=\ref[src];chem_panel=spawn_reagent'>Spawn Reagent in Container</A><br>
 				<br>"}
 	if(check_rights(R_FUN,0))
@@ -332,7 +332,7 @@ var/global/floorIsLava = 0
 				<A href='?src=\ref[src];chem_panel=create_custom_reagent'>Create Custom Reagent</A><br>
 				<A href='?src=\ref[src];chem_panel=create_custom_reaction'>Create Custom Reaction</A><br>
 				"}
-	
+
 	usr << browse(dat, "window=chempanel;size=210x300")
 	return
 
@@ -373,7 +373,6 @@ var/global/floorIsLava = 0
 			<A href='?src=\ref[src];secretsadmin=showgm'>Show Game Mode</A><BR>
 			<A href='?src=\ref[src];secretsadmin=manifest'>Show Crew Manifest</A><BR>
 			<A href='?src=\ref[src];secretsadmin=DNA'>List DNA (Blood)</A><BR>
-			<A href='?src=\ref[src];secretsadmin=fingerprints'>List Fingerprints</A><BR>
 			<A href='?src=\ref[src];secretsfun=launchshuttle'>Launch a shuttle normally</A> (inop)<BR>
 			<A href='?src=\ref[src];secretsfun=moveshuttle'>Move a shuttle instantly</A> (inop)<BR>
 			<BR>

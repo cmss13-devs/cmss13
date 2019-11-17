@@ -376,9 +376,7 @@
 					newlight.icon_state = "bulb-construct-stage2"
 			newlight.dir = src.dir
 			newlight.stage = 2
-			newlight.fingerprints = src.fingerprints
-			newlight.fingerprintshidden = src.fingerprintshidden
-			newlight.fingerprintslast = src.fingerprintslast
+			transfer_fingerprints_to(newlight)
 			qdel(src)
 			return
 

@@ -3466,7 +3466,6 @@
 /area/bigredv2/outside/marshall_office)
 "aiN" = (
 /obj/structure/table,
-/obj/item/device/detective_scanner,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "aiO" = (
@@ -3543,7 +3542,7 @@
 	},
 /area/bigredv2/outside/telecomm)
 "aiX" = (
-/obj/structure/machinery/computer/forensic_scanning,
+
 /turf/open/floor{
 	tag = "icon-bcircuit";
 	icon_state = "bcircuit";
@@ -4053,7 +4052,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "ako" = (
-/obj/item/device/detective_scanner,
+
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "akp" = (

@@ -174,7 +174,7 @@
 			src = null //dont kill proc after qdel()
 			usr.drop_inv_item_on_ground(oldsrc)
 			qdel(oldsrc)
-		
+
 		if(istype(O, /obj/item) && ishuman(usr) && !usr.put_in_inactive_hand(O))
 			var/obj/item/stack/IH = usr.get_inactive_hand()
 			var/obj/item/stack/S = O
@@ -189,7 +189,7 @@
 					usr.put_in_active_hand(S)
 			else
 				usr.put_in_active_hand(O)
-		
+
 		O?.add_fingerprint(usr)
 
 		//BubbleWrap - so newly formed boxes are empty
@@ -241,7 +241,7 @@
 /obj/item/stack/attack_hand(mob/user as mob)
 	if (user.get_inactive_hand() == src)
 		var/obj/item/stack/F = new src.type(user, 1)
-		F.copy_evidences(src)
+		transfer_fingerprints_to(F)
 		user.put_in_hands(F)
 		src.add_fingerprint(user)
 		F.add_fingerprint(user)
@@ -281,12 +281,7 @@
 
 	return ..()
 
-/obj/item/stack/proc/copy_evidences(obj/item/stack/from as obj)
-	src.blood_DNA = from.blood_DNA
-	src.fingerprints  = from.fingerprints
-	src.fingerprintshidden  = from.fingerprintshidden
-	src.fingerprintslast  = from.fingerprintslast
-	//TODO bloody overlay
+
 
 /*
  * Recipe datum

@@ -191,9 +191,8 @@
 		user.visible_message(SPAN_NOTICE("[user] takes something out of incision on [target]'s [affected.display_name] with \the [tool]."), \
 		SPAN_NOTICE("You take something out of incision on [target]'s [affected.display_name]s with \the [tool].</span>"))
 		affected.hidden.loc = get_turf(target)
-		if(!affected.hidden.blood_DNA)
-			affected.hidden.blood_DNA = list()
-		affected.hidden.blood_DNA[target.dna_sequence] = target.blood_type
+
+		affected.hidden.blood_color = target.get_blood_color()
 		affected.hidden.update_icon()
 		affected.hidden = null
 

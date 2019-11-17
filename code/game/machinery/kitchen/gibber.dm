@@ -218,7 +218,7 @@
 			meatslab.loc = src.loc
 			meatslab.launch_towards(Tx, i, SPEED_FAST, src)
 			if (!Tx.density)
-				new /obj/effect/decal/cleanable/blood/gibs(Tx,i)
+				new /obj/effect/decal/cleanable/blood/gibs(Tx)
 		src.operating = 0
 		update_icon()
 

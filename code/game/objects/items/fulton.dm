@@ -48,7 +48,7 @@ var/global/list/deployed_fultons = list()
 		icon_state = "fulton"
 
 /obj/item/stack/fulton/afterattack(atom/target, mob/user, flag)
-	if(!flag) 
+	if(!flag)
 		return FALSE
 	if(isobj(target) || isliving(target))
 		attach(target, user)
@@ -119,7 +119,7 @@ var/global/list/deployed_fultons = list()
 			for(var/obj/item/stack/fulton/F in get_turf(target_atom))
 				return
 			var/obj/item/stack/fulton/F = new /obj/item/stack/fulton(get_turf(target_atom), 1, target_atom)
-			F.copy_evidences(src)
+			transfer_fingerprints_to(F)
 			src.add_fingerprint(user)
 			F.add_fingerprint(user)
 			user.count_niche_stat(STATISTICS_NICHE_FULTON)

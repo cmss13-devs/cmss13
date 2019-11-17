@@ -5,11 +5,10 @@ var/global/list/ghdel_profiling = list()
 	layer = TURF_LAYER
 	var/level = 2
 	var/flags_atom = FPRINT
-	var/list/fingerprints
+
 	var/list/fingerprintshidden
 	var/fingerprintslast = null
-	var/list/blood_DNA
-	var/blood_color
+
 	var/unacidable = FALSE
 	var/last_bumped = 0
 
@@ -108,7 +107,7 @@ directive is properly returned.
 
 /*
  *	Checks whether an atom can pass through the calling atom into its target turf.
- *	Returns the blocking direction. 
+ *	Returns the blocking direction.
  *		If the atom's movement is not blocked, returns 0.
  *		If the object is completely solid, returns ALL
  */
@@ -119,7 +118,7 @@ directive is properly returned.
 
 	if (!density || flags_can_pass & mover_flags_pass)
 		return NO_BLOCKED_MOVEMENT
-	
+
 	if (flags_atom & ON_BORDER)
 		// This is to properly handle diagonal movement (a cade to your NE facing west when you are trying to move NE should block for north instead of east)
 		if (target_dir & (NORTH|SOUTH) && target_dir & (EAST|WEST))
@@ -130,7 +129,7 @@ directive is properly returned.
 
 /*
  *	Checks whether an atom can leave its current turf through the calling atom.
- *	Returns the blocking direction. 
+ *	Returns the blocking direction.
  *		If the atom's movement is not blocked, returns 0 (no directions)
  *		If the object is completely solid, returns all directions
  */
@@ -140,7 +139,7 @@ directive is properly returned.
 
 	if(flags_atom & ON_BORDER && density && !(flags_can_pass & mover_flags_pass))
 		return target_dir & dir
-	
+
 	return NO_BLOCKED_MOVEMENT
 
 // Convenience proc to see if a container is open for chemistry handling
@@ -304,134 +303,63 @@ its easier to just keep the beam vertical.
 /atom/proc/hitby(atom/movable/AM)
 	return
 
-/atom/proc/add_hiddenprint(mob/living/M as mob)
-	if(isnull(M)) return
-	if(isnull(M.key)) return
-	if (!(flags_atom  & FPRINT))
+/atom/proc/add_hiddenprint(mob/living/M)
+	if(!M || M.disposed || !M.key || !(flags_atom  & FPRINT) || fingerprintslast == M.key)
 		return
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if (H.gloves)
-			if(src.fingerprintslast != H.key)
-				src.fingerprintshidden += text("\[[time_stamp()]\] (Wearing gloves). Real name: [], Key: []",H.real_name, H.key)
-				src.fingerprintslast = H.key
-			return 0
-		if (!( src.fingerprints ))
-			if(src.fingerprintslast != H.key)
-				src.fingerprintshidden += text("\[[time_stamp()]\] Real name: [], Key: []",H.real_name, H.key)
-				src.fingerprintslast = H.key
-			return 1
+			fingerprintshidden += "\[[time_stamp()]\] (Wearing gloves). Real name: [H.real_name], Key: [H.key]"
+		else
+			fingerprintshidden += "\[[time_stamp()]\] Real name: [H.real_name], Key: [H.key]"
 	else
-		if(src.fingerprintslast != M.key)
-			src.fingerprintshidden += text("\[[time_stamp()]\] Real name: [], Key: []",M.real_name, M.key)
-			src.fingerprintslast = M.key
-	return
+		fingerprintshidden += "\[[time_stamp()]\] Real name: [M.real_name], Key: [M.key]"
+	fingerprintslast = M.key
 
-/atom/proc/add_fingerprint(mob/living/M as mob)
-	if(isnull(M)) return
-	if(isAI(M)) return
-	if(isnull(M.key)) return
-	if (!(flags_atom & FPRINT))
+
+/atom/proc/add_fingerprint(mob/living/M)
+	if(!M || M.disposed || !M.key || !(flags_atom & FPRINT) || fingerprintslast == M.key)
 		return
+	if(!fingerprintshidden)
+		fingerprintshidden = list()
+	fingerprintslast = M.key
+
 	if (ishuman(M))
-		//Add the list if it does not exist.
-		if(!fingerprintshidden)
-			fingerprintshidden = list()
+		var/mob/living/carbon/human/H = M
 
 		//Fibers~
-		add_fibers(M)
+		blood_touch(H)
+
+		fingerprintslast = M.key
 
 		//He has no prints!
-		if (mFingerprints in M.mutations)
-			if(fingerprintslast != M.key)
-				fingerprintshidden += "(Has no fingerprints) Real name: [M.real_name], Key: [M.key]"
-				fingerprintslast = M.key
-			return 0		//Now, lets get to the dirty work.
+		if (mFingerprints in H.mutations)
+			fingerprintshidden += "(Has no fingerprints) Real name: [M.real_name], Key: [M.key]"
+			return
 
-		var/mob/living/carbon/human/H = M
 		//Now, deal with gloves.
 		if (H.gloves && H.gloves != src)
-			if(fingerprintslast != H.key)
-				fingerprintshidden += text("\[[]\](Wearing gloves). Real name: [], Key: []",time_stamp(), H.real_name, H.key)
-				fingerprintslast = H.key
-			H.gloves.add_fingerprint(M)
-
-		//Deal with gloves the pass finger/palm prints.
-		if(H.gloves != src)
-			if(prob(75) && istype(H.gloves, /obj/item/clothing/gloves/latex))
-				return 0
-			else if(H.gloves && !istype(H.gloves, /obj/item/clothing/gloves/latex))
-				return 0
-
-		//More adminstuffz
-		if(fingerprintslast != H.key)
-			fingerprintshidden += text("\[[]\]Real name: [], Key: []",time_stamp(), H.real_name, H.key)
-			fingerprintslast = H.key
-
-		//Make the list if it does not exist.
-		if(!fingerprints)
-			fingerprints = list()
-
-		//Hash this shit.
-		var/full_print = H.fingerprint
-
-		// Add the fingerprints
-		//
-		if(fingerprints[full_print])
-			switch(stringpercent(fingerprints[full_print]))		//tells us how many stars are in the current prints.
-
-				if(28 to 32)
-					if(prob(1))
-						fingerprints[full_print] = full_print 		// You rolled a one buddy.
-					else
-						fingerprints[full_print] = stars(full_print, rand(0,40)) // 24 to 32
-
-				if(24 to 27)
-					if(prob(3))
-						fingerprints[full_print] = full_print     	//Sucks to be you.
-					else
-						fingerprints[full_print] = stars(full_print, rand(15, 55)) // 20 to 29
-
-				if(20 to 23)
-					if(prob(5))
-						fingerprints[full_print] = full_print		//Had a good run didn't ya.
-					else
-						fingerprints[full_print] = stars(full_print, rand(30, 70)) // 15 to 25
-
-				if(16 to 19)
-					if(prob(5))
-						fingerprints[full_print] = full_print		//Welp.
-					else
-						fingerprints[full_print]  = stars(full_print, rand(40, 100))  // 0 to 21
-
-				if(0 to 15)
-					if(prob(5))
-						fingerprints[full_print] = stars(full_print, rand(0,50)) 	// small chance you can smudge.
-					else
-						fingerprints[full_print] = full_print
-
+			fingerprintshidden += "\[[time_stamp()]\](Wearing gloves). Real name: [H.real_name], Key: [H.key]"
 		else
-			fingerprints[full_print] = stars(full_print, rand(0, 20))	//Initial touch, not leaving much evidence the first time.
-
-
-		return 1
+			fingerprintshidden += "\[[time_stamp()]\]Real name: [H.real_name], Key: [H.key]"
 	else
-		//Smudge up dem prints some
-		if(fingerprintslast != M.key)
-			fingerprintshidden += text("\[[]\]Real name: [], Key: []",time_stamp(), M.real_name, M.key)
-			fingerprintslast = M.key
+		fingerprintshidden +=  "\[[time_stamp()]\]Real name: [M.real_name], Key: [M.key]"
 
-	//Cleaning up shit.
-	if(fingerprints && !fingerprints.len)
-		qdel(fingerprints)
-		fingerprints = null
-	return
+
+
+//put blood on stuff we touched
+/atom/proc/blood_touch(mob/living/carbon/human/M)
+	if(M.gloves)
+		var/obj/item/clothing/gloves/G = M.gloves
+		if(G.gloves_blood_amt && add_blood(G.blood_color)) //only reduces the bloodiness of our gloves if the item wasn't already bloody
+			G.gloves_blood_amt--
+	else if(M.hands_blood_amt && add_blood(M.hands_blood_color))
+		M.hands_blood_amt--
+
+
 
 
 /atom/proc/transfer_fingerprints_to(var/atom/A)
-
-	if(!istype(A.fingerprints,/list))
-		A.fingerprints = list()
 
 	if(!istype(A.fingerprintshidden,/list))
 		A.fingerprintshidden = list()
@@ -439,13 +367,9 @@ its easier to just keep the beam vertical.
 	if(!istype(fingerprintshidden, /list))
 		fingerprintshidden = list()
 
-	//skytodo
-	//A.fingerprints |= fingerprints            //detective
-	//A.fingerprintshidden |= fingerprintshidden    //admin
-	if(A.fingerprints && fingerprints)
-		A.fingerprints |= fingerprints.Copy()            //detective
 	if(A.fingerprintshidden && fingerprintshidden)
-		A.fingerprintshidden |= fingerprintshidden.Copy()    //admin	A.fingerprintslast = fingerprintslast
+		A.fingerprintshidden |= fingerprintshidden.Copy()
+
 
 
 

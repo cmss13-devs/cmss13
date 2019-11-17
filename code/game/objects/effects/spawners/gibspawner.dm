@@ -66,13 +66,6 @@
 							gib.viruses += viruus
 							viruus.holder = gib
 
-				gib.blood_DNA = list()
-				if(ml)
-					gib.blood_DNA[ml.dna_sequence] = ml.blood_type
-				else if(istype(src, /obj/effect/spawner/gibspawner/xeno))
-					gib.blood_DNA["UNKNOWN DNA"] = "X*"
-				else if(istype(src, /obj/effect/spawner/gibspawner/human)) // Probably a monkey
-					gib.blood_DNA["Non-human DNA"] = "A+"
 				var/list/directions = gibdirections[i]
 				if(directions.len)
 					gib.streak(directions)

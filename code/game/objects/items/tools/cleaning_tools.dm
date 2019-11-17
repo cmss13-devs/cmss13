@@ -19,7 +19,6 @@
 
 /turf/proc/clean(atom/source)
 	if(source.reagents.has_reagent("water", 1))
-		clean_blood()
 		for(var/obj/effect/O in src)
 			if(istype(O,/obj/effect/decal/cleanable) || istype(O,/obj/effect/overlay))
 				qdel(O)
@@ -111,7 +110,7 @@
 	else
 		to_chat(user, SPAN_NOTICE("You clean \the [target.name]."))
 		target.clean_blood()
-	return
+
 
 /obj/item/tool/soap/attack(mob/target, mob/user)
 	if(target && user && ishuman(target) && ishuman(user) && !target.stat && !user.stat && user.zone_selected == "mouth" )

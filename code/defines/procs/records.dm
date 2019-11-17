@@ -11,7 +11,6 @@
 	G.fields["sex"] = "Male"
 	G.fields["age"] = "Unknown"
 	G.fields["ethnicity"] = "Unknown"
-	G.fields["fingerprint"] = "Unknown"
 	G.fields["p_stat"] = "Active"
 	G.fields["m_stat"] = "Stable"
 	G.fields["species"] = "Human"
@@ -45,7 +44,6 @@
 	M.fields["id"]			= null
 	M.fields["name"]		= H.real_name
 	M.fields["b_type"]		= H.b_type
-	M.fields["b_dna"]		= H.dna_sequence
 	M.fields["mi_dis"]		= "None"
 	M.fields["mi_dis_d"]	= "No minor disabilities have been declared."
 	M.fields["ma_dis"]		= "None"

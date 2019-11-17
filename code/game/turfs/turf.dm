@@ -296,13 +296,13 @@
 		return get_dist(src,t)
 
 //Blood stuff------------
-/turf/proc/AddTracks(var/typepath,var/bloodDNA,var/comingdir,var/goingdir,var/bloodcolor="#A10808")
+/turf/proc/AddTracks(var/typepath, var/comingdir, var/goingdir, var/bloodcolor="#A10808")
 	if(!can_bloody)
 		return
 	var/obj/effect/decal/cleanable/blood/tracks/tracks = locate(typepath) in src
 	if(!tracks)
 		tracks = new typepath(src)
-	tracks.AddTracks(bloodDNA,comingdir,goingdir,bloodcolor)
+	tracks.AddTracks(comingdir,goingdir,bloodcolor)
 
 //for xeno corrosive acid, 0 for unmeltable, 1 for regular, 2 for strong walls that require strong acid and more time.
 /turf/proc/can_be_dissolved()

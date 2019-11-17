@@ -17,8 +17,8 @@
 	event_movement = new /datum/event()
 
 	attack_icon = image("icon" = 'icons/effects/attacks.dmi',"icon_state" = "", "layer" = 0)
-	dna_sequence = md5("[rand(100000)]")
-	fingerprint = md5(dna_sequence)
+
+
 
 /mob/living/Dispose()
 	if(attack_icon)
@@ -255,7 +255,7 @@
 	if(!isliving(AM))
 		..()
 		return
-	
+
 	now_pushing = TRUE
 	var/mob/living/L = AM
 
@@ -339,7 +339,7 @@
 
 	if(!(L.status_flags & CANPUSH))
 		return
-	
+
 	..()
 
 
@@ -351,14 +351,14 @@
 
 
 /mob/living/launch_towards(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
-	if(!target || !src)	
+	if(!target || !src)
 		return 0
 	if(pulling)
 		stop_pulling() //being thrown breaks pulls.
 	if(pulledby)
 		pulledby.stop_pulling()
 	. = ..()
-	
+
 //to make an attack sprite appear on top of the target atom.
 /mob/living/proc/flick_attack_overlay(atom/target, attack_icon_state)
 	set waitfor = 0

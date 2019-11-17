@@ -690,7 +690,6 @@
 			dat += "No blood data found in beaker."
 		else
 			dat += "<h3>Blood sample data:</h3>"
-			dat += "<b>Blood DNA:</b> [(Blood.data["blood_DNA"]||"none")]<BR>"
 			dat += "<b>Blood Type:</b> [(Blood.data["blood_type"]||"none")]<BR>"
 
 

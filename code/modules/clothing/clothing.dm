@@ -14,6 +14,7 @@
 	var/list/valid_accessory_slots = list()
 	var/list/restricted_accessory_slots = list()
 	var/drag_unequip = FALSE
+	var/blood_overlay_type = "" //which type of blood overlay to use on the mob when bloodied
 
 /obj/item/clothing/get_examine_line()
 	. = ..()
@@ -82,8 +83,8 @@
 	if(slot == WEAR_L_HAND || slot == WEAR_R_HAND)
 		return ret
 
-	if(blood_DNA)
-		var/image/bloodsies = overlay_image('icons/effects/blood.dmi', "uniformblood", blood_color, RESET_COLOR)
+	if(blood_color && blood_overlay_type)
+		var/image/bloodsies = overlay_image('icons/effects/blood.dmi', "[blood_overlay_type]_blood", blood_color, RESET_COLOR)
 		bloodsies.appearance_flags |= NO_CLIENT_COLOR
 		ret.overlays += bloodsies
 
@@ -91,6 +92,8 @@
 		for(var/obj/item/clothing/accessory/A in accessories)
 			ret.overlays |= A.get_mob_overlay(user_mob, slot)
 	return ret
+
+
 
 //BS12: Species-restricted clothing check.
 //CM Update : Restricting armor to specific uniform
@@ -148,7 +151,7 @@
 	armor_bio = 0
 	armor_rad = 0
 	flags_equip_slot = SLOT_OCLOTHING
-	var/blood_overlay_type = "suit"
+	blood_overlay_type = "suit"
 	siemens_coefficient = 0.9
 	w_class = SIZE_MEDIUM
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_0.dmi')
@@ -157,6 +160,7 @@
 	if (ismob(src.loc))
 		var/mob/M = src.loc
 		M.update_inv_wear_suit()
+
 
 /obj/item/clothing/suit/mob_can_equip(mob/M, slot, disable_warning = 0)
 	//if we can't equip the item anyway, don't bother with other checks.
@@ -193,6 +197,7 @@
 	flags_equip_slot = SLOT_HANDS
 	attack_verb = list("challenged")
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/hands_monkey.dmi')
+	blood_overlay_type = "hands"
 
 
 /obj/item/clothing/gloves/update_clothing_icon()
@@ -223,6 +228,7 @@
 	flags_armor_protection = HEAD
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = FACE|EYES
+	blood_overlay_type = "mask"
 	var/anti_hug = 0
 
 /obj/item/clothing/mask/update_clothing_icon()
@@ -252,6 +258,7 @@
 	flags_equip_slot = SLOT_FEET
 	permeability_coefficient = 0.50
 	slowdown = SHOES_SLOWDOWN
+	blood_overlay_type = "feet"
 	var/obj/item/stored_item
 	var/list/items_allowed
 
@@ -259,6 +266,7 @@
 	if (ismob(src.loc))
 		var/mob/M = src.loc
 		M.update_inv_shoes()
+
 /obj/item/clothing/shoes/Dispose()
 	if(stored_item)
 		qdel(stored_item)

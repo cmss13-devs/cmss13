@@ -36,13 +36,13 @@ var/const/INGEST = 2
 
 		var/paths = typesof(/datum/chemical_reaction) - /datum/chemical_reaction - /datum/chemical_reaction/generated
 		chemical_reactions_filtered_list = list()
-		
+
 		for(var/i=0;i<=1;i++)
 			for(var/path in paths)
 
 				var/datum/chemical_reaction/D = new path()
 				var/list/reaction_ids = list()
-			
+
 				if(D.required_reagents && D.required_reagents.len)
 					for(var/reaction in D.required_reagents)
 						reaction_ids += reaction
@@ -55,14 +55,14 @@ var/const/INGEST = 2
 					break // Don't bother adding ourselves to other reagent ids, it is redundant.
 			if(i==0)
 				paths = typesof(/datum/chemical_reaction/generated) - /datum/chemical_reaction/generated //Generated chemicals should be initialized last
-	
+
 	if(!chemical_reactions_list)
 		var/paths = typesof(/datum/chemical_reaction) - /datum/chemical_reaction - /datum/chemical_reaction/generated
 		chemical_reactions_list = list()
 		for(var/path in paths)
 			var/datum/reagent/D = new path()
 			chemical_reactions_list[D.id] = D
-		
+
 
 
 /datum/reagents/Dispose()

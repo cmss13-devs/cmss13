@@ -306,9 +306,9 @@
 				//Stop the organ from continuing to reject.
 				O.organ_data.rejecting = null
 
-				//Transfer over some blood data, if the organ doesn't have data.
+				//Transfer over some blood
 				var/datum/reagent/blood/organ_blood = locate(/datum/reagent/blood) in O.reagents.reagent_list
-				if(!organ_blood || !organ_blood.data["blood_DNA"])
+				if(!organ_blood)
 					target.take_blood(O, 5)
 
 				//Kinda redundant, but I'm getting some buggy behavior.
@@ -395,12 +395,10 @@
 			O.organ_data.transplant_data = list()
 			O.organ_data.transplant_data["species"]    = target.species.name
 			O.organ_data.transplant_data["blood_type"] = target.blood_type
-			O.organ_data.transplant_data["blood_DNA"]  = target.dna_sequence
 		else
 			O.organ_data.transplant_data = list()
 			O.organ_data.transplant_data["species"]    = transplant_blood.data["species"]
 			O.organ_data.transplant_data["blood_type"] = transplant_blood.data["blood_type"]
-			O.organ_data.transplant_data["blood_DNA"]  = transplant_blood.data["blood_DNA"]
 
 		O.organ_data.organ_holder = null
 		O.organ_data.owner = target

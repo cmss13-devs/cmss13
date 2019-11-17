@@ -91,8 +91,6 @@
 			brainmob.name = H.real_name
 			brainmob.real_name = H.real_name
 			brainmob.blood_type = H.blood_type
-			brainmob.dna_sequence = H.dna_sequence
-			brainmob.fingerprint = H.fingerprint
 			brainmob.container = src
 
 			name = "Man-Machine Interface: [brainmob.real_name]"

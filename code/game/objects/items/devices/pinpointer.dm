@@ -144,25 +144,15 @@
 
 		if("Other Signature")
 			mode = 2
-			switch(alert("Search for item signature or DNA fragment?" , "Signature Mode Select" , "" , "Item" , "DNA"))
-				if("Item")
-					var/datum/objective/steal/itemlist
-					itemlist = itemlist // To supress a 'variable defined but not used' error.
-					var/targetitem = input("Select item to search for.", "Item Mode Select","") as null|anything in itemlist.possible_items
-					if(!targetitem)
-						return
-					target=locate(itemlist.possible_items[targetitem])
-					if(!target)
-						to_chat(usr, "Failed to locate [targetitem]!")
-						return
-					to_chat(usr, "You set the pinpointer to locate [targetitem]")
-				if("DNA")
-					var/DNAstring = input("Input DNA string to search for." , "Please Enter String." , "")
-					if(!DNAstring)
-						return
-					for(var/mob/living/carbon/M in mob_list)
-						if(M.dna_sequence == DNAstring)
-							target = M
-							break
+			var/datum/objective/steal/itemlist
+			itemlist = itemlist // To supress a 'variable defined but not used' error.
+			var/targetitem = input("Select item to search for.", "Item Mode Select","") as null|anything in itemlist.possible_items
+			if(!targetitem)
+				return
+			target=locate(itemlist.possible_items[targetitem])
+			if(!target)
+				to_chat(usr, "Failed to locate [targetitem]!")
+				return
+			to_chat(usr, "You set the pinpointer to locate [targetitem]")
 
 			return attack_self()

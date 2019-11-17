@@ -246,7 +246,6 @@
 	new /obj/item/clothing/head/det_hat/black(src)
 	new /obj/item/clothing/shoes/brown(src)
 	new /obj/item/storage/box/evidence(src)
-	new /obj/item/device/detective_scanner(src)
 	new /obj/item/clothing/suit/armor/det_suit(src)
 	new /obj/item/clothing/accessory/holster/armpit(src)
 

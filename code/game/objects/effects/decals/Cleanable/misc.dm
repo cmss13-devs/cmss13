@@ -150,3 +150,19 @@
 	if(H.species.name == "Human")
 		if(!H.shoes || prob(25))
 			H.contract_disease(new /datum/disease/black_goo)
+
+
+
+
+/obj/effect/decal/cleanable/mucus
+	name = "mucus"
+	desc = "Disgusting mucus."
+	gender = PLURAL
+	density = 0
+	anchored = 1
+	layer = TURF_LAYER
+	icon = 'icons/effects/blood.dmi'
+	icon_state = "mucus"
+	random_icon_states = list("mucus")
+
+

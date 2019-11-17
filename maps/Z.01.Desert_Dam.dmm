@@ -18814,7 +18814,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/administration/office)
 "aXM" = (
-/obj/structure/machinery/computer/forensic_scanning,
+
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/detective)
 "aXN" = (
@@ -20960,7 +20960,6 @@
 	},
 /area/desert_dam/building/water_treatment_two/hallway)
 "bdT" = (
-/obj/item/device/detective_scanner,
 /obj/structure/table/woodentable/fancy,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/detective)
@@ -25020,7 +25019,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "bpN" = (
-/obj/structure/machinery/computer/forensic_scanning,
+
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	dir = 2
@@ -29601,7 +29600,7 @@
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "bDE" = (
 /obj/structure/table/reinforced,
-/obj/item/device/detective_scanner,
+
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	dir = 2

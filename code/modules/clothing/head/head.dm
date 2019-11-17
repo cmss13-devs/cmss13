@@ -4,6 +4,7 @@
 	flags_armor_protection = HEAD
 	flags_equip_slot = SLOT_HEAD
 	w_class = SIZE_SMALL
+	blood_overlay_type = "helmet"
 	var/anti_hug = 0
 
 /obj/item/clothing/head/update_clothing_icon()
@@ -202,7 +203,7 @@
 	name = "\improper USCM captain cap"
 	icon_state = "cocap"
 	desc = "A hat usually worn by senior officers in the USCM. While it has limited combat functionality, some prefer to wear it instead of the standard issue helmet."
-	
+
 
 /obj/item/clothing/head/cmcap/ro
 	name = "\improper USCM officer cap"
@@ -292,7 +293,7 @@
 /obj/item/clothing/head/marine/peaked/captain
 	name = "marine captain peaked cap"
 	desc = "A peaked cap with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
-	
+
 /obj/item/clothing/head/beret/marine/chiefofficer
 	name = "chief officer beret"
 	desc = "A beret with the lieutenant-commander insignia emblazoned on it. It emits a dark aura and may corrupt the soul."

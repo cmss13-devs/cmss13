@@ -1634,9 +1634,9 @@
 		spawn(10)
 			timer = 0
 
-		if(blood_overlay && blood_DNA && (blood_DNA.len >= 1))
+		if(blood_overlay && blood_color)
 			overlays.Cut()
-			add_blood(blood_DNA)
+			add_blood(blood_color)
 	else
 		unwield(user)
 		to_chat(user, SPAN_NOTICE("You collapse [src] for storage."))

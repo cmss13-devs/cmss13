@@ -180,6 +180,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	flags_armor_protection = 0
 	flags_atom = CAN_BE_SYRINGED
 	attack_verb = list("burnt", "singed")
+	blood_overlay_type = ""
 	var/icon_on = "cigon"  //Note - these are in masks.dmi not in cigarette.dmi
 	var/icon_off = "cigoff"
 	var/type_butt = /obj/item/trash/cigbutt

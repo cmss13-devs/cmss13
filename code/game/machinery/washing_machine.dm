@@ -40,7 +40,7 @@
 		state = 5
 	update_icon()
 	sleep(200)
-	for(var/atom/A in contents)
+	for(var/atom/movable/A in contents)
 		A.clean_blood()
 
 	//Tanning!

@@ -539,8 +539,8 @@ var/global/list/damage_icon_parts = list()
 	if(gloves && !(wear_suit && wear_suit.flags_inv_hide & HIDEGLOVES))
 		overlays_standing[GLOVES_LAYER]	= gloves.get_mob_overlay(src, WEAR_HANDS)
 	else
-		if(blood_DNA && species.blood_mask)
-			var/image/bloodsies	= overlay_image(species.blood_mask, "bloodyhands", blood_color, RESET_COLOR)
+		if(hands_blood_color && species.blood_mask)
+			var/image/bloodsies	= overlay_image(species.blood_mask, "hands_blood", hands_blood_color, RESET_COLOR)
 			overlays_standing[GLOVES_LAYER]	= bloodsies
 		else
 			overlays_standing[GLOVES_LAYER]	= null
@@ -573,8 +573,8 @@ var/global/list/damage_icon_parts = list()
 	if(shoes && !((wear_suit && wear_suit.flags_inv_hide & HIDESHOES) || (w_uniform && w_uniform.flags_inv_hide & HIDESHOES)))
 		overlays_standing[SHOES_LAYER] = shoes.get_mob_overlay(src, WEAR_FEET)
 	else
-		if(feet_blood_DNA && species.blood_mask)
-			var/image/bloodsies = overlay_image(species.blood_mask, "shoeblood", feet_blood_color, RESET_COLOR)
+		if(feet_blood_color && species.blood_mask)
+			var/image/bloodsies = overlay_image(species.blood_mask, "feet_blood", feet_blood_color, RESET_COLOR)
 			overlays_standing[SHOES_LAYER] = bloodsies
 		else
 			overlays_standing[SHOES_LAYER] = null

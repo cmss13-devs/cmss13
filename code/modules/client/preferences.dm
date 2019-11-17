@@ -855,9 +855,9 @@ datum/preferences
 				if("xeno_prefix")
 					var/new_xeno_prefix = input(user, "Choose your xenomorph prefix. One or two letters capitalized. Put empty text if you want to default it to 'XX'", "Xenomorph Prefix") as text|null
 					new_xeno_prefix = uppertext(new_xeno_prefix)
-					if(lentext(new_xeno_prefix) > XENO_PREFIX_LIMIT)
+					if(text_length(new_xeno_prefix) > XENO_PREFIX_LIMIT)
 						to_chat(user, "<font color='red'>Invalid Xeno Prefix. Your Prefix can only be up to [XENO_PREFIX_LIMIT] letters long.</font>")
-					else if(lentext(new_xeno_prefix)==0)
+					else if(text_length(new_xeno_prefix)==0)
 						xeno_prefix = "XX"
 					else
 						var/all_ok = TRUE
@@ -876,9 +876,9 @@ datum/preferences
 				if("xeno_postfix")
 					var/new_xeno_postfix = input(user, "Choose your xenomorph postfix. One capital letter with or without a digit at the end. Put empty text if you want to remove postfix", "Xenomorph Postfix") as text|null
 					new_xeno_postfix = uppertext(new_xeno_postfix)
-					if(lentext(new_xeno_postfix)>XENO_POSTFIX_LIMIT)
+					if(text_length(new_xeno_postfix)>XENO_POSTFIX_LIMIT)
 						to_chat(user, "<font color='red'>Invalid Xeno Postfix. Your Postfix can only be up to [XENO_POSTFIX_LIMIT] letters long.</font>")
-					else if(lentext(new_xeno_postfix)==0)
+					else if(text_length(new_xeno_postfix)==0)
 						xeno_postfix = ""
 					else
 						var/all_ok = TRUE

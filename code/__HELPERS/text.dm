@@ -43,7 +43,7 @@
 	return t
 
 //Removes a few problematic characters
-/proc/sanitize_simple(var/t,var/list/repl_chars = list("\n"=" ","\t"=" ","�"="�"))
+/proc/sanitize_simple(var/t, var/list/repl_chars = list("\n"=" ","\t"=" ","�"="�"))
 	for(var/char in repl_chars)
 		var/index = findtext(t, char)
 		while(index)
@@ -61,8 +61,8 @@
 	return t
 
 //Runs byond's sanitization proc along-side sanitize_simple
-/proc/sanitize(var/t,var/list/repl_chars = null)
-	var/msg = html_encode(sanitize_simple(t,repl_chars))
+/proc/sanitize(var/t,var/list/repl_chars = list("\n"=" ","\t"=" ","�"="�"))
+	var/msg = html_encode(sanitize_simple(t, repl_chars))
 	return readd_quotes(msg)
 
 //Runs sanitize and strip_html_simple

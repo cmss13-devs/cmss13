@@ -1300,5 +1300,5 @@
 			current_mag.current_rounds++
 			qdel(I)
 			icon_state = "m82f"
-		else to_chat(user, SPAN_WARNING("<span class='warning'>\The [src] is already loaded!"))
+		else to_chat(user, SPAN_WARNING("\The [src] is already loaded!"))
 	else to_chat(user, SPAN_WARNING("That's not a flare!"))

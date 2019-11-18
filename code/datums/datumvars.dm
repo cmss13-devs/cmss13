@@ -304,18 +304,7 @@ body
 		#else
 		html += "[name] = /icon (<span class='value'>[value]</span>)"
 		#endif
-
-/*		else if (istype(value, /image))
-		#ifdef VARSICON
-		var/rnd = rand(1, 10000)
-		var/image/I = value
-
-		src << browse_rsc(I.icon, "tmp\ref[value][rnd].png")
-		html += "[name] = <img src=\"tmp\ref[value][rnd].png\">"
-		#else
-		html += "[name] = /image (<span class='value'>[value]</span>)"
-		#endif
-*/
+	
 	else if (isfile(value))
 		html += "[name] = <span class='value'>'[value]'</span>"
 

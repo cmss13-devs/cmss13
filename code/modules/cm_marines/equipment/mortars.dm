@@ -181,11 +181,11 @@
 			to_chat(user, SPAN_WARNING("[src]'s barrel is still steaming hot. Wait a few seconds and stop firing it."))
 			return
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-		user.visible_message("<span class='notice'>[user] starts undeploying [src].",
-		"<span class='notice'>You start undeploying [src].")
+		user.visible_message(SPAN_NOTICE("[user] starts undeploying [src]."), \
+				SPAN_NOTICE("You start undeploying [src]."))
 		if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			user.visible_message("<span class='notice'>[user] undeploys [src].",
-			"<span class='notice'>You undeploy [src].")
+			user.visible_message(SPAN_NOTICE("[user] undeploys [src]."), \
+				SPAN_NOTICE("You undeploy [src]."))
 			playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 			new /obj/item/mortar_kit(loc)
 			qdel(src)
@@ -227,12 +227,12 @@
 	if(A.ceiling >= CEILING_METAL)
 		to_chat(user, SPAN_WARNING("You probably shouldn't deploy [src] indoors."))
 		return
-	user.visible_message("<span class='notice'>[user] starts deploying [src].",
-	"<span class='notice'>You start deploying [src].")
+	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."), \
+		SPAN_NOTICE("You start deploying [src]."))
 	playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 	if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		user.visible_message("<span class='notice'>[user] deploys [src].",
-		"<span class='notice'>You deploy [src].")
+		user.visible_message(SPAN_NOTICE("[user] deploys [src]."), \
+			SPAN_NOTICE("You deploy [src]."))
 		playsound(loc, 'sound/weapons/gun_mortar_unpack.ogg', 25, 1)
 		var/obj/structure/mortar/M = new /obj/structure/mortar(get_turf(user))
 		M.dir = user.dir

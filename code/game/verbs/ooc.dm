@@ -81,22 +81,7 @@ var/global/normal_ooc_colour = "#002eb8"
 					else
 						display_name = admin_holder.fakekey
 			to_chat(C, "<font color='[display_colour]'><span class='ooc'>[src.donator ? "\[D\] " : ""]<span class='prefix'>OOC: [display_name]</span>: <span class='message'>[msg]</span></span></font>")
-
-			/*
-			if(admin_holder)
-				if(!admin_holder.fakekey || C.admin_holder)
-					if(admin_holder.rights & R_ADMIN)
-						to_chat(C, "<font color=[config.allow_admin_ooccolor ? src.prefs.ooccolor :")#b82e00" ]><b><span class='prefix'>OOC:</span> <EM>[key][admin_holder.fakekey ? "/([admin_holder.fakekey])" : ""]:</EM> <span class='message'>[msg]</span></b></font>"
-					else if(admin_holder.rights & R_MOD)
-						to_chat(C, "<font color=#184880><b><span class='prefix'>OOC:</span> <EM>[src.key][admin_holder.fakekey ? ")/([admin_holder.fakekey])" : ""]:</EM> <span class='message'>[msg]</span></b></font>"
-					else
-						to_chat(C, "<font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[src.key]:</EM> <span class='message'>[msg]</span></span></font>")
-
-				else
-					to_chat(C, "<font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[admin_holder.fakekey ? admin_holder.fakekey : src.key]:</EM> <span class='message'>[msg]</span></span></font>")
-			else
-				to_chat(C, "<font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[src.key]:</EM> <span class='message'>[msg]</span></span></font>")
-			*/
+	
 	usr.talked = 1
 	add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked), CHAT_OOC_DELAY)
 

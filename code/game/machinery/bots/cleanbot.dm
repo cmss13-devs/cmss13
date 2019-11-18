@@ -120,7 +120,7 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 			src.updateUsrDialog()
 		if("screw")
 			src.screwloose = !src.screwloose
-			to_chat(usr, "<span class='notice>You twiddle the screw.</span>")
+			to_chat(usr, SPAN_NOTICE("You twiddle the screw."))
 			src.updateUsrDialog()
 		if("oddbutton")
 			src.oddbutton = !src.oddbutton

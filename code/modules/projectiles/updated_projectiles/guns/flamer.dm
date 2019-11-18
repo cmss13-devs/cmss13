@@ -566,7 +566,11 @@
 		if(weapon_source_mob)
 			var/mob/SM = weapon_source_mob
 			SM.track_shot_hit(weapon_source)
-		to_chat(M, "[isXeno(M)?"<span class='xenodanger'>":"<span class='highdanger'>"]Augh! You are roasted by the flames!")
+		var/msg = "Augh! You are roasted by the flames!"
+		if (isXeno(M))
+			to_chat(M, SPAN_XENODANGER(msg))
+		else
+			to_chat(M, SPAN_HIGHDANGER(msg))
 
 
 /obj/flamer_fire/Dispose()

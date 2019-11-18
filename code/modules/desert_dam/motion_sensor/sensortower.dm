@@ -54,10 +54,10 @@
 		return 0
 	if(rand(1,100) < fail_rate) //Oh snap, we failed! Shut it down!
 		if(rand(0,3) == 0)
-			visible_message("[htmlicon(src, viewers(src))] <span class='notice'><b>[src]</b> beeps wildly and a fuse blows! Use wirecutters, then a wrench to repair it.")
+			visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> beeps wildly and a fuse blows! Use wirecutters, then a wrench to repair it.")]")
 			buildstate = 2
 		else
-			visible_message("[htmlicon(src, viewers(src))] <span class='notice'><b>[src]</b> beeps wildly and sprays random pieces everywhere! Use a wrench to repair it.")
+			visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> beeps wildly and sprays random pieces everywhere! Use a wrench to repair it.")]")
 			buildstate = 3
 		is_on = 0
 		update_icon()
@@ -80,22 +80,22 @@
 		return 0
 
 	if(buildstate == 1)
-		to_chat(usr, "<span class='info'>Use a blowtorch, then wirecutters, then wrench to repair it.")
+		to_chat(usr, SPAN_INFO("Use a blowtorch, then wirecutters, then wrench to repair it."))
 		return 0
 	else if (buildstate == 2)
-		to_chat(usr, "<span class='info'>Use a wirecutters, then wrench to repair it.")
+		to_chat(usr, SPAN_INFO("Use a wirecutters, then wrench to repair it."))
 		return 0
 	else if (buildstate == 3)
-		to_chat(usr, "<span class='info'>Use a wrench to repair it.")
+		to_chat(usr, SPAN_INFO("Use a wrench to repair it."))
 		return 0
 	if(is_on)
-		visible_message("[htmlicon(src, viewers(src))] <span class='warning'><b>[src]</b> goes dark as [usr] shuts the power off.")
+		visible_message("[htmlicon(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> goes dark as [usr] shuts the power off.")]")
 		is_on = 0
 		cur_tick = 0
 		update_icon()
 		stop_processing()
 		return 1
-	visible_message("[htmlicon(src, viewers(src))] <span class='warning'><b>[src]</b> lights up as [usr] turns the power on.")
+	visible_message("[htmlicon(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> lights up as [usr] turns the power on.")]")
 	is_on = 1
 	cur_tick = 0
 	update_icon()

@@ -95,7 +95,7 @@
 	if(modded)
 		to_chat(user, SPAN_DANGER("Fuel faucet is wrenched open, leaking the fuel!"))
 	if(rig)
-		to_chat(user, "<span class='notice'>There is some kind of device rigged to the tank.")
+		to_chat(user, SPAN_NOTICE("There is some kind of device rigged to the tank."))
 
 /obj/structure/reagent_dispensers/fueltank/attack_hand()
 	if (rig)

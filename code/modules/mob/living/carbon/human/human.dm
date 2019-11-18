@@ -885,14 +885,14 @@
 
 	if(!lastpuke)
 		lastpuke = 1
-		to_chat(src, "<spawn class='warning'>You feel nauseous...")
+		to_chat(src, SPAN_WARNING("You feel nauseous..."))
 		spawn(150)	//15 seconds until second warning
-			to_chat(src, "<spawn class='warning'>You feel like you are about to throw up!")
+			to_chat(src, SPAN_WARNING("You feel like you are about to throw up!"))
 			spawn(100)	//and you have 10 more for mad dash to the bucket
 				Stun(5)
 				if(stat == 2) //One last corpse check
 					return
-				src.visible_message("<spawn class='warning'>[src] throws up!","<spawn class='warning'>You throw up!", null, 5)
+				src.visible_message(SPAN_WARNING("[src] throws up!"), SPAN_WARNING("You throw up!"), null, 5)
 				playsound(loc, 'sound/effects/splat.ogg', 25, 1, 7)
 
 				var/turf/location = loc

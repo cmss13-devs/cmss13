@@ -271,7 +271,7 @@ You just gotta get out of this jungle to tell the tale!"}
 	//Give them some information
 	sleep(40)
 	to_chat(H, "________________________")
-	to_chat(H, "<span class='boldnotice'>You are the [H.mind.assigned_role]!</span>")
+	to_chat(H, SPAN_BOLDNOTICE("You are the [H.mind.assigned_role]!"))
 	to_chat(H, "Gear up, prepare defenses, work as a team. Protect your doctors and commander!")
 	to_chat(H, "Motion trackers have detected movement from local creatures, and they are heading towards the outpost!")
 	to_chat(H, "Hold the outpost for one hour until the signal can be established!")

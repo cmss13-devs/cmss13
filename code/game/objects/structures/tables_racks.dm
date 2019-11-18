@@ -296,8 +296,8 @@
 	if(istype(W, /obj/item/weapon/wristblades))
 		if(rand(0, 2) == 0)
 			playsound(src.loc, 'sound/weapons/wristblades_hit.ogg', 25, 1)
-			user.visible_message("<span class='danger'>[user] slices [src] apart!",
-			"<span class='danger'>You slice [src] apart!")
+			user.visible_message(SPAN_DANGER("[user] slices [src] apart!"),
+				SPAN_DANGER("You slice [src] apart!"))
 			destroy()
 		else
 			to_chat(user, SPAN_WARNING("You slice at the table, but only claw it up a little."))

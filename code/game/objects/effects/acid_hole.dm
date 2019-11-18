@@ -84,7 +84,7 @@
 
 	for(var/obj/O in T)
 		if(O.BlockedPassDirs(user, crawl_dir))
-			to_chat(user, "<span class='warning'>The hole's exit is blocked by something!</span>")
+			to_chat(user, SPAN_WARNING("The hole's exit is blocked by something!"))
 			return
 
 	if(user.action_busy)

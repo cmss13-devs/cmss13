@@ -97,8 +97,8 @@
 			user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
 			SPAN_NOTICE("You start disarming [src]."))
 			if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-				user.visible_message("<span class='warning'>[user] stops disarming [src].", \
-				"<span class='warning'>You stop disarming [src].")
+				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
+					SPAN_WARNING("You stop disarming [src]."))
 				return
 			if(!armed)//someone beat us to it
 				return

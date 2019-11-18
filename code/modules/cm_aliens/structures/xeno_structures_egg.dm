@@ -31,7 +31,8 @@
 
 	if(M.hivenumber != hivenumber)
 		M.animation_attack_on(src)
-		M.visible_message("<span class='xenowarning'>[M] crushes \the [src]","<span class='xenowarning'>You crush \the [src]")
+		M.visible_message(SPAN_XENOWARNING("[M] crushes \the [src]"),
+			SPAN_XENOWARNING("You crush \the [src]"))
 		Burst(1)
 		return
 

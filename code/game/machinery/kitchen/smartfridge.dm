@@ -191,7 +191,7 @@
 
 	if (href_list["vend"])
 		if(!ispowered)
-			to_chat(usr, "<span class='warning'>[src] has no power.</span>.")
+			to_chat(usr, SPAN_WARNING("[src] has no power."))
 			return 0
 		if (!in_range(src, usr))
 			return 0

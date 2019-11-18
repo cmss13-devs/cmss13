@@ -450,7 +450,7 @@ var/global/floorIsLava = 0
 	if(confirm == "Cancel")
 		return
 	if(confirm == "Yes")
-		to_world(SPAN_DANGER("<b>Restarting world!</b></span> <span class='notice'>Initiated by [usr.client.admin_holder.fakekey ? "Admin" : usr.key]!"))
+		to_world(SPAN_DANGER("<b>Restarting world!</b></span> <span class='notice'>Initiated by [usr.client.admin_holder.fakekey ? "Admin" : usr.key]!</span>"))
 		log_admin("[key_name(usr)] initiated a reboot.")
 
 		feedback_set_details("end_error","admin reboot - by [usr.key] [usr.client.admin_holder.fakekey ? "(stealth)" : ""]")
@@ -635,7 +635,7 @@ var/global/floorIsLava = 0
 	if (!ticker || ticker.current_state != GAME_STATE_PREGAME)
 		ticker.delay_end = !ticker.delay_end
 		log_admin("[key_name(usr)] [ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
-		message_admins("<span class='notice'>[key_name(usr)] [ticker.delay_end ? "delayed the round end" : "has made the round end normally"].</span>i	", 1)
+		message_admins("[SPAN_NOTICE("[key_name(usr)] [ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")]", 1)
 		for(var/client/C in admins)
 			to_chat(C, {"<hr>
 			[SPAN_CENTERBOLD("Staff-Only Alert: <EM>[usr.key]</EM> [ticker.delay_end ? "delayed the round end" : "has made the round end normally"]")]

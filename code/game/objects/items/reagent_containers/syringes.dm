@@ -117,8 +117,8 @@
 
 					on_reagent_change()
 					reagents.handle_reactions()
-					user.visible_message("<span clas='warning'>[user] takes a blood sample from [target].</span>",
-										SPAN_NOTICE("You take a blood sample from [target]."), null, 4)
+					user.visible_message(SPAN_WARNING("[user] takes a blood sample from [target]."),
+						SPAN_NOTICE("You take a blood sample from [target]."), null, 4)
 
 			else //if not mob
 				if(!target.reagents.total_volume)

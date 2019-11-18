@@ -351,7 +351,7 @@
 				faltext += "[fallen_list[i]], "
 			else
 				faltext += fallen_list[i]
-		to_chat(user, SPAN_NOTICE("To our fallen soldiers:</span> <b>[faltext]</b>."))
+		to_chat(user, SPAN_NOTICE("To our fallen soldiers: <b>[faltext]</b>."))
 
 /obj/structure/prop/almayer/particle_cannon
 	name = "\improper 75cm/140 Mark 74 General Atomics railgun"

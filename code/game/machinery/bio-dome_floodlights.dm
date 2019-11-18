@@ -108,14 +108,14 @@
 		if(!damaged) return
 		if(WT.remove_fuel(0, user))
 			playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
-			user.visible_message("[user] starts welding [src]'s damage.</span>",
-			"You start welding [src]'s damage.</span>")
+			user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s damage."), \
+				SPAN_NOTICE("You start welding [src]'s damage."))
 			if(do_after(user, 200, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				playsound(get_turf(src), 'sound/items/Welder2.ogg', 25, 1)
 				if(!src || !WT.isOn()) return
 				damaged = 0
-				user.visible_message("[user] finishes welding [src]'s damage.</span>",
-				"You finish welding [src]'s damage.</span>")
+				user.visible_message(SPAN_NOTICE("[user] finishes welding [src]'s damage."), \
+					SPAN_NOTICE("You finish welding [src]'s damage."))
 				if(is_lit)
 					SetLuminosity(lum_value)
 				update_icon()

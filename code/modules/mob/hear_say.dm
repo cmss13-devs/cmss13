@@ -166,15 +166,15 @@
 			to_chat(src, SPAN_WARNING("You feel your headset vibrate but can hear nothing from it!"))
 	else if(track)
 		if(!command)
-			to_chat(src, "[part_a][comm_paygrade][track][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span>")
+			to_chat(src, "[part_a][comm_paygrade][track][part_b][verb], <span class=\"[style]\">\"[message]\"</span>")
 		else
-			to_chat(src, "<span class=\"[fontsize_style]\">[part_a][comm_paygrade][track][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span></span>")
+			to_chat(src, "<span class=\"[fontsize_style]\">[part_a][comm_paygrade][track][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span>")
 		if(sound_to_play) src << sound(sound_to_play, volume = 65)
 	else
 		if(!command)
-			to_chat(src, "[part_a][comm_paygrade][speaker_name][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span>")
+			to_chat(src, "[part_a][comm_paygrade][speaker_name][part_b][verb], <span class=\"[style]\">\"[message]\"</span>")
 		else
-			to_chat(src, "<span class=\"[fontsize_style]\">[part_a][comm_paygrade][speaker_name][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span></span>")
+			to_chat(src, "<span class=\"[fontsize_style]\">[part_a][comm_paygrade][speaker_name][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span>")
 		if(sound_to_play) src << sound(sound_to_play, volume = 65)
 
 /mob/proc/hear_signlang(var/message, var/verb = "gestures", var/datum/language/language, var/mob/speaker = null)

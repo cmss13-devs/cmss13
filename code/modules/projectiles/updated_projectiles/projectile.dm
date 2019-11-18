@@ -369,7 +369,8 @@
 		else if (!L.lying)
 			animatation_displace_reset(L)
 			if(ammo.sound_miss) L.playsound_local(get_turf(L), ammo.sound_miss, 75, 1)
-			L.visible_message("<span class='avoidharm'>[src] misses [L]!</span>","<span class='avoidharm'>[src] narrowly misses you!</span>", null, 4)
+			L.visible_message(SPAN_AVOIDHARM("[src] misses [L]!"),
+				SPAN_AVOIDHARM("[src] narrowly misses you!"), null, 4)
 
 
 

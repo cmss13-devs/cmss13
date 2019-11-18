@@ -411,8 +411,8 @@
 				return
 			if(user.drop_inv_item_to_loc(W, src))
 				cell = W
-				user.visible_message("<span class='notice'>[user] inserts [W] into [src]!",
-				"<span class='notice'>You insert [W] into [src]!")
+				user.visible_message(SPAN_NOTICE("[user] inserts [W] into [src]!"), \
+					SPAN_NOTICE("You insert [W] into [src]!"))
 				chargecount = 0
 				update_icon()
 	else if(isscrewdriver(W)) //Haxing
@@ -947,7 +947,7 @@
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(1, 1, src)
 			s.start()
-			visible_message("<span class='warning'>[src] suddenly lets out a blast of smoke and some sparks!")
+			visible_message(SPAN_WARNING("[src] suddenly lets out a blast of smoke and some sparks!"))
 
 /obj/structure/machinery/power/apc/surplus()
 	if(terminal)

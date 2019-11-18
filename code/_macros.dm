@@ -140,10 +140,12 @@
 
 #define SPAN_ROLE_BODY(X) "<span class='role_body'>[X]</span>"
 
-#define SPAN_ANNOUNCEMENT_HEADER(X) "<spawn class='announce_header'>[X]</span>"
+#define SPAN_ANNOUNCEMENT_HEADER(X) "<span class='announce_header'>[X]</span>"
 
-#define SPAN_ANNOUNCEMENT_HEADER_BLUE(X) "<spawn class='announce_header_blue'>[X]</span>"
+#define SPAN_ANNOUNCEMENT_HEADER_BLUE(X) "<span class='announce_header_blue'>[X]</span>"
 
-#define SPAN_ANNOUNCEMENT_BODY(X) "<spawn class='announce_body'>[X]</span>"
+#define SPAN_ANNOUNCEMENT_BODY(X) "<span class='announce_body'>[X]</span>"
 
 #define SPAN_SCANNER(X) "<span class='scanner'>[X]</span>"
+
+#define SPAN_AVOIDHARM(X) "<span class='avoidharm'>[X]</span>"

@@ -1,3 +1,12 @@
+# LICENSE
+
+The code for CM-SS13 is licensed under the [GNU General Public License v3](http://www.gnu.org/licenses/gpl.html), which can be found in full in [/LICENSE-GPL3](/LICENSE-GPL3).
+
+Assets including icons and sound are under the [Creative Commons 3.0 BY-NC-ND license](https://creativecommons.org/licenses/by-nc-nd/3.0/) unless otherwise indicated. Authorship for assets including art and sound under the CC BY-NC-ND license is defined as the active development team of CM-SS13. By committing icons to our repository you automatically release rights for them to the Active Development Team of CM-SS13.
+
+All assets including icons and sound with a git authorship date prior to `c9f175f0 +0000` (2019/01/31 00:00 GMT) are under the [Creative Commons 3.0 BY-SA license](http://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated.
+
+
 # CONTRIBUTING TO CM-SS13
 
 ## Getting Started

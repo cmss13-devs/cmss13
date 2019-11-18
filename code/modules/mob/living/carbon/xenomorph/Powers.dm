@@ -115,15 +115,15 @@
 		qdel(temp)
 		if(AM)
 			AM.acid_spray_act(src)
-			return	
-		T = next_turf		
+			return
+		T = next_turf
 		var/obj/effect/xenomorph/spray/S = acid_splat_turf(T)
 		do_acid_spray_cone_normal(T, i, facing, S)
 		sleep(3)
 
 //Acid Spray
 /mob/living/carbon/Xenomorph/proc/acid_spray(atom/T)
-	if(!T || !check_state() || used_acid_spray) 
+	if(!T || !check_state() || used_acid_spray)
 		return
 
 	if(!isturf(loc) || istype(loc, /turf/open/space))
@@ -196,7 +196,7 @@
 
 		// TODO: make acid spray type a var instead of this retarded if-statement - TheDonkified
 		var/spray_path
-		if(isXenoBoiler(src)) 
+		if(isXenoBoiler(src))
 			spray_path = /obj/effect/xenomorph/spray
 		else
 			spray_path = /obj/effect/xenomorph/spray/weak
@@ -210,7 +210,7 @@
 
 		if(!check_plasma(10))
 			break
-		
+
 		plasma_stored -= 10
 		prev_turf = T
 		splat_turf(T)
@@ -263,7 +263,7 @@
 		if(!normal_density_flag)
 			var/next_normal_turf = get_step(normal_turf, normal_dir)
 			var/atom/A = LinkBlocked(left_S, normal_turf, next_normal_turf)
-			
+
 			if(A)
 				A.acid_spray_act()
 				normal_density_flag = 1
@@ -725,7 +725,7 @@
 		playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	used_tail_sweep = 1
 	use_plasma(10)
-	
+
 	spawn(caste.tail_sweep_cooldown)
 		used_tail_sweep = 0
 		to_chat(src, SPAN_NOTICE("You gather enough strength to tail sweep again."))
@@ -1538,9 +1538,10 @@
 
 	var/wait_time = 10
 
+	var/obj/I
 	//OBJ CHECK
 	if(isobj(O))
-		var/obj/I = O
+		I = O
 
 		if(I.unacidable || istype(I, /obj/structure/machinery/computer) || istype(I, /obj/effect)) //So the aliens don't destroy energy fields/singularies/other aliens/etc with their acid.
 			to_chat(src, SPAN_WARNING("You cannot dissolve \the [I].")) // ^^ Note for obj/effect.. this might check for unwanted stuff. Oh well
@@ -1589,13 +1590,13 @@
 	if(!check_state())
 		return
 
-	if(!O || !get_turf(O)) //Some logic.
+	if(!O || O.disposed || !get_turf(O)) //Some logic.
 		return
 
 	if(!check_plasma(plasma_cost))
 		return
 
-	if(!O.Adjacent(src))
+	if(!O.Adjacent(src) || (I && !isturf(I.loc)))//not adjacent or inside something
 		return
 
 	use_plasma(plasma_cost)
@@ -1608,8 +1609,7 @@
 		visible_message(SPAN_XENOWARNING("\The [src] vomits globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!"), \
 			SPAN_XENOWARNING("You vomit globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!"), null, 5)
 		playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
-		sleep(20)
-		qdel(A)
+		QDEL_IN(src, 20)
 		return
 
 	if(isturf(O))
@@ -1668,7 +1668,7 @@
 	client.prefs.toggle_prefs ^= TOGGLE_MIDDLE_MOUSE_CLICK
 	client.prefs.save_preferences()
 	if (client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
-		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with middle mouse clicking."))		
+		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with middle mouse clicking."))
 	else
 		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with shift clicking."))
 
@@ -1680,7 +1680,7 @@
 
 	if (!client || !client.prefs)
 		return
-	
+
 	client.prefs.toggle_prefs ^= TOGGLE_DIRECTIONAL_ATTACK
 	client.prefs.save_preferences()
 	if(client.prefs.toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK)
@@ -1713,7 +1713,7 @@
 
 	if (!current_area.can_build_special)
 		to_chat(src, SPAN_WARNING("You cannot build here!"))
-		return FALSE		
+		return FALSE
 
 	for(var/turf/T in (range(current_turf, 1)))
 		var/failed = FALSE

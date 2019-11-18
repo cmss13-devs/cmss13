@@ -1339,6 +1339,7 @@
 	item_state = "harpoon"
 	force = 15
 	throwforce = 38
+	embeddable = FALSE
 	attack_verb = list("jabbed","stabbed","ripped", "skewered")
 	unacidable = TRUE
 	edge = 1
@@ -1411,6 +1412,7 @@
 	flags_equip_slot = SLOT_WAIST
 	force = 70
 	throwforce = 12
+	embeddable = FALSE
 	w_class = SIZE_MEDIUM
 	unacidable = TRUE
 	sharp = 0
@@ -1447,6 +1449,7 @@
 	sharp = 1
 	edge = 1
 	force = 45 //More damage than other weapons like it. Considering how "strong" this sword is supposed to be, 38 damage was laughable.
+	embeddable = FALSE
 	w_class = SIZE_LARGE
 	throwforce = 18
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -1500,6 +1503,7 @@
 	flags_equip_slot = SLOT_WAIST
 	sharp = 1
 	force = 50
+	embeddable = FALSE
 	w_class = SIZE_LARGE
 	throwforce = 24
 	hitsound = 'sound/weapons/bladeslice.ogg'

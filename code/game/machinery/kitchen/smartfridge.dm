@@ -119,7 +119,7 @@
 
 		nanomanager.update_uis(src)
 
-	else
+	else if(!(O.flags_item & NOBLUDGEON)) //so we can spray, scan, c4 the machine.
 		to_chat(user, SPAN_NOTICE("\The [src] smartly refuses [O]."))
 		return 1
 

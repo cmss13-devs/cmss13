@@ -122,16 +122,10 @@
 		to_chat(src, SPAN_WARNING("[T] is too far away!"))
 		return 
 
-	if (dist > 1)
-		var/turf/targetTurf = get_step(src, get_dir(src, T))
-		if (targetTurf.density)
-			to_chat(src, SPAN_WARNING("You can't attack through [targetTurf]!"))
-			return
-		else
-			for (var/atom/I in targetTurf)
-				if (I.density && !I.throwpass && !istype(I, /obj/structure/barricade) && !istype(I, /mob/living))
-					to_chat(src, SPAN_WARNING("You can't attack through [I]!"))
-					return
+	var/atom/result = T.clear_path(src)
+	if (result != T)
+		to_chat(src, SPAN_WARNING("You can't attack through [result]!"))
+		return 
 
 	used_punch = TRUE
 	use_plasma(150)

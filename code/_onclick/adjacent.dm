@@ -11,7 +11,7 @@
 	to check that the mob is not inside of something
 */
 /atom/proc/Adjacent(var/atom/neighbor) // basic inheritance, unused
-	return 0
+	return FALSE
 
 // Not a sane use of the function and (for now) indicative of an error elsewhere
 /area/Adjacent(var/atom/neighbor)
@@ -28,9 +28,9 @@
 /turf/Adjacent(var/atom/neighbor, var/atom/target = null)
 	var/turf/T0 = get_turf(neighbor)
 	if(T0 == src)
-		return 1
+		return TRUE
 	if(get_dist(src,T0) > 1)
-		return 0
+		return FALSE
 
 	if(T0.x == x || T0.y == y)
 		// Check for border blockages
@@ -52,8 +52,8 @@
 		if(!src.ClickCross(get_dir(src,T1), border_only = 1, target_atom = target))
 			continue // could not enter src
 
-		return 1 // we don't care about our own density
-	return 0
+		return TRUE // we don't care about our own density
+	return FALSE
 
 /*
 Quick adjacency (to turf):
@@ -63,12 +63,12 @@ Quick adjacency (to turf):
 /turf/proc/AdjacentQuick(var/atom/neighbor, var/atom/target = null)
 	var/turf/T0 = get_turf(neighbor)
 	if(T0 == src)
-		return 1
+		return TRUE
 
 	if(get_dist(src,T0) > 1)
-		return 0
+		return FALSE
 
-	return 1
+	return TRUE
 
 /*
 	Adjacency (to anything else):
@@ -79,12 +79,16 @@ Quick adjacency (to turf):
 	This is not used in stock /tg/station currently.
 */
 /atom/movable/Adjacent(var/atom/neighbor)
-	if(neighbor == loc) return 1
-	if(!isturf(loc)) return 0
+	if(neighbor == loc) 
+		return TRUE
+	if(!isturf(loc)) 
+		return FALSE
 	for(var/turf/T in locs)
-		if(isnull(T)) continue
-		if(T.Adjacent(neighbor,src)) return 1
-	return 0
+		if(isnull(T)) 
+			continue
+		if(T.Adjacent(neighbor,src)) 
+			return TRUE
+	return FALSE
 
 // This is necessary for storage items not on your person.
 /obj/item/Adjacent(var/atom/neighbor, var/recurse = 1)
@@ -92,7 +96,7 @@ Quick adjacency (to turf):
 	if(istype(loc,/obj/item))
 		if(recurse > 0)
 			return loc.Adjacent(neighbor,recurse - 1)
-		return 0
+		return FALSE
 	return ..()
 /*
 	Special case: This allows you to reach a door when it is visally on top of,
@@ -111,7 +115,6 @@ Quick adjacency (to turf):
 		return .
 	return ..()
 
-
 /*
 	This checks if you there is uninterrupted airspace between that turf and this one.
 	This is defined as any dense ON_BORDER object, or any dense object without throwpass.
@@ -119,30 +122,20 @@ Quick adjacency (to turf):
 */
 /turf/proc/ClickCross(var/target_dir, var/border_only, var/target_atom = null)
 	for(var/obj/O in src)
-		if( !O.density || O == target_atom || O.throwpass) continue // throwpass is used for anything you can click through
+		if(!O.density || O == target_atom || O.throwpass) 
+			continue // throwpass is used for anything you can click through
 
-		if( O.flags_atom & ON_BORDER) // windows have throwpass but are on border, check them first
-			if( O.dir & target_dir || O.dir&(O.dir-1) ) // full tile windows are just diagonals mechanically
+		if(O.flags_atom & ON_BORDER) // windows have throwpass but are on border, check them first
+			if(O.dir & target_dir || O.dir&(O.dir-1)) // full tile windows are just diagonals mechanically
 				var/obj/structure/window/W = target_atom
-				if(istype(W))
-					if(!W.is_full_window())	//exception for breaking full tile windows on top of single pane windows
-						return 0
-				else
-					return 0
+				if (!istype(W))
+					return FALSE
+				else if (!W.is_full_window())	//exception for breaking full tile windows on top of single pane windows
+					return FALSE
 
 		else if( !border_only ) // dense, not on border, cannot pass over
-			return 0
-	return 1
-/*
-	Aside: throwpass does not do what I thought it did originally, and is only used for checking whether or not
-	a thrown object should stop after already successfully entering a square.  Currently the throw code involved
-	only seems to affect hitting mobs, because the checks performed against objects are already performed when
-	entering or leaving the square.  Since throwpass isn't used on mobs, but only on objects, it is effectively
-	useless.  Throwpass may later need to be removed and replaced with a passcheck (bitfield on movable atom passflags).
-
-	Since I don't want to complicate the click code rework by messing with unrelated systems it won't be changed here.
-*/
-
+			return FALSE
+	return TRUE
 
 /*
  *	handle_barriers checks if src is going to be attacked by M, or if M will instead attack a barrier. For now only considers
@@ -150,10 +143,11 @@ Quick adjacency (to turf):
  *
  *	I am considering making it so that handle_barriers will loop through ALL blocking objects, though this requires testing
  *	for performance impact.
+ *	Assumes dist <= 1
  */
-/atom/proc/handle_barriers(mob/living/M)
-	var/rdir = get_dir(src,M)
-	var/fdir = get_dir(M,src)
+/atom/proc/handle_barriers(var/atom/A, var/list/atom/ignore = list())
+	var/rdir = get_dir(src, A)
+	var/fdir = get_dir(A, src)
 
 	var/list/blockers = list(
 		"fd1" = list(),
@@ -166,80 +160,89 @@ Quick adjacency (to turf):
 	var/fd1 = fdir&(fdir-1)
 	var/fd2 = fdir - fd1
 
-	for (var/potential_blocker in M.loc) // Check if there are any barricades blocking attacker from their current loc
-		if (!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))
-			continue
-		var/atom/A = potential_blocker
-		if (!(A.flags_atom & ON_BORDER) || !A.density)
-			continue
-		if (A.dir & fd1)
-			blockers["fd1"] += A
-		if (A.dir & fd2)
-			blockers["fd2"] += A
+	if (!isturf(A))
+		for (var/potential_blocker in A.loc) // Check if there are any barricades blocking attacker from their current loc
+			if (potential_blocker in ignore)
+				continue
+			if (!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))
+				continue
+			var/atom/PB = potential_blocker
+			if (!(PB.flags_atom & ON_BORDER) || !PB.density)
+				continue
+			if (PB.dir & fd1)
+				blockers["fd1"] += PB
+			if (PB.dir & fd2)
+				blockers["fd2"] += PB
 
 	dense_blockers = list()
 	if (fd1 && fd1 != fdir) // Check any obstacles blocking from the turf to the EAST/WEST of attacker
-		var/turf/fd1loc = get_step(M, fd1)
-		var/fd1dir_a = get_dir(fd1loc, M) // inverse direction for attacker
+		var/turf/fd1loc = get_step(A, fd1)
+		var/fd1dir_a = get_dir(fd1loc, A) // inverse direction for attacker
 		var/fd1dir_d = get_dir(fd1loc, src) // inverse direction for attackee
 		if (fd1loc.density)
 			dense_blockers += fd1loc
 		for (var/potential_blocker in fd1loc)
+			if (potential_blocker in ignore)
+				continue
 			if (!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))
 				continue
-			var/atom/A = potential_blocker
-			if (!(A.flags_atom & ON_BORDER))
-				if(A.density) // If there is a solid object (e.g. a vendor) blocking
-					dense_blockers += A
+			var/atom/PB = potential_blocker
+			if (!(PB.flags_atom & ON_BORDER))
+				if(PB.density) // If there is a solid object (e.g. a vendor) blocking
+					dense_blockers += PB
 				continue
-			if (A.dir & fd1dir_a)
-				blockers["fd1"] += A
-			if (A.dir & fd1dir_d)
-				blockers["fd1"] += A
+			if (PB.dir & fd1dir_a)
+				blockers["fd1"] += PB
+			if (PB.dir & fd1dir_d)
+				blockers["fd1"] += PB
 		blockers["fd1"] += dense_blockers
 
 	dense_blockers.Cut()
 
 	if (fd2 && fd2 != fdir) // Check any obstacles blocking from the turf to the NORTH/SOUTH of attacker
-		var/turf/fd2loc = get_step(M, fd2)
-		var/fd2dir_a = get_dir(fd2loc, M) // inverse direction for attacker
+		var/turf/fd2loc = get_step(A, fd2)
+		var/fd2dir_a = get_dir(fd2loc, A) // inverse direction for attacker
 		var/fd2dir_d = get_dir(fd2loc, src) // inverse direction for attackee
 		if (fd2loc.density)
 			dense_blockers += fd2loc
 		for (var/potential_blocker in fd2loc)
+			if (potential_blocker in ignore)
+				continue
 			if (!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))
 				continue
-			var/atom/A = potential_blocker
-			if (!(A.flags_atom & ON_BORDER))
-				if (A.density) // If there is a solid object (e.g. a vendor) blocking
-					dense_blockers += A
+			var/atom/PB = potential_blocker
+			if (!(PB.flags_atom & ON_BORDER))
+				if (PB.density) // If there is a solid object (e.g. a vendor) blocking
+					dense_blockers += PB
 				continue
-			if (A.dir & fd2dir_a)
-				blockers["fd2"] += A
-			if (A.dir & fd2dir_d)
-				blockers["fd2"] += A
+			if (PB.dir & fd2dir_a)
+				blockers["fd2"] += PB
+			if (PB.dir & fd2dir_d)
+				blockers["fd2"] += PB
 		blockers["fd2"] += dense_blockers
 
 	dense_blockers = null
 
 	for (var/potential_blocker in loc) // Check if there are any barricades blocking attacker from the attackee's current loc
+		if (potential_blocker in ignore)
+			continue
 		if (!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))
 			continue
-		var/atom/A = potential_blocker
-		if (!(A.flags_atom & ON_BORDER) || !A.density)
+		var/atom/PB = potential_blocker
+		if (!(PB.flags_atom & ON_BORDER) || !PB.density)
 			continue
-		if (A.dir & rd1)
+		if (PB.dir & rd1)
 			if (fd1 && fd2)
-				blockers["fd2"] += A
+				blockers["fd2"] += PB
 			else
-				blockers["fd1"] += A
-		if (A.dir & rd2)
+				blockers["fd1"] += PB
+		if (PB.dir & rd2)
 			if (fd1 && fd2)
-				blockers["fd1"] += A
+				blockers["fd1"] += PB
 			else
-				blockers["fd2"] += A
+				blockers["fd2"] += PB
 
-	if (!(!blockers["fd1"].len)^!(!fd1) || !(!blockers["fd2"].len)^!(!fd2)) // This means that for a given direction it did not have a blocker
+	if (!!blockers["fd1"].len^!!fd1 || !!blockers["fd2"].len^!!fd2) // This means that for a given direction it did not have a blocker
 		return src
 
 	if (blockers["fd1"].len || blockers["fd2"].len)
@@ -247,7 +250,7 @@ Quick adjacency (to turf):
 		var/list/cur_dense_blockers = list()
 		for (var/atom/blocker in blockers["fd1"])
 			if (blocker.flags_barrier & HANDLE_BARRIER_CHANCE)
-				if(blocker.handle_barrier_chance(M))
+				if(blocker.handle_barrier_chance())
 					return blocker
 			else
 				guaranteed_hit = 1
@@ -256,7 +259,7 @@ Quick adjacency (to turf):
 
 		for (var/atom/blocker in blockers["fd2"])
 			if(blocker.flags_barrier & HANDLE_BARRIER_CHANCE)
-				if(blocker.handle_barrier_chance(M))
+				if(blocker.handle_barrier_chance())
 					return blocker
 			else
 				guaranteed_hit += 1
@@ -267,5 +270,19 @@ Quick adjacency (to turf):
 
 	return src // This should happen if the two barricades checked do not block the slash
 
-/turf/handle_barriers(mob/living/M)
+
+/atom/proc/clear_path(var/atom/A, var/list/atom/ignore = list())
+	if (get_dist(src, A) <= 1)
+		return handle_barriers(A, ignore)
+	
+	var/turf/curT = get_turf(A)
+	var/is_turf = isturf(A)
+	for (var/turf/T in getline2(A, src))
+		if (curT == T)
+			continue
+		var/atom/result = T.handle_barriers(curT, list(A) + ignore)
+		if (result != T)
+			return result
+		else if (is_turf && T == A || T == A.loc)
+			break
 	return src

@@ -1757,7 +1757,7 @@ var/list/WALLITEMS = list(
 
 //Bresenham's algorithm. This one deals efficiently with all 8 octants.
 //Just don't ask me how it works.
-/proc/getline2(atom/from_atom,atom/to_atom, include_from_atom = TRUE)
+/proc/getline2(atom/from_atom, atom/to_atom, include_from_atom = TRUE)
 	if(!from_atom || !to_atom) return 0
 	var/list/turf/turfs = list()
 

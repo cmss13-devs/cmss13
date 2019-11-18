@@ -5,6 +5,9 @@
 	set category = "Object"
 	set src = usr
 
+	if (usr.is_mob_incapacitated())
+		return
+
 	if(hand)
 		var/obj/item/W = l_hand
 		if (W)

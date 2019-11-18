@@ -263,6 +263,7 @@
 	flags_equip_slot = SLOT_BACK
 	force_wielded = 60
 	throwforce = 50
+	embeddable = FALSE //so predators don't lose their glaive when thrown.
 	throw_speed = SPEED_VERY_FAST
 	edge = 1
 	sharp = IS_SHARP_ITEM_BIG

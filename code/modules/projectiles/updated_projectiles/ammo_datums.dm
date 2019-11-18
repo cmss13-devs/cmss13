@@ -1370,22 +1370,6 @@
 		M.adjustFireLoss(rand(20, 30))
 
 
-/datum/ammo/energy/yautja/rifle/New()
-	..()
-	damage = config.lmed_hit_damage
-
-/datum/ammo/energy/yautja/rifle/on_hit_mob(mob/M,obj/item/projectile/P)
-	if(P.damage > 25)
-		knockback(M,P)
-		playsound(M.loc, 'sound/weapons/pulse.ogg', 25, 1)
-
-/datum/ammo/energy/yautja/rifle/on_hit_turf(turf/T,obj/item/projectile/P)
-	if(P.damage > 25)
-		explosion(T, -1, -1, 2, -1, P.weapon_source, P.firer)
-
-/datum/ammo/energy/yautja/rifle/on_hit_obj(obj/O,obj/item/projectile/P)
-	if(P.damage > 25)
-		explosion(get_turf(P), -1, -1, 2, -1, P.weapon_source, P.firer)
 
 /datum/ammo/energy/yautja/rifle/bolt
 	name = "plasma rifle bolt"
@@ -1394,6 +1378,7 @@
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
 
 /datum/ammo/energy/yautja/rifle/bolt/New()
+	..()
 	damage = config.med_hit_damage
 
 /datum/ammo/energy/yautja/rifle/blast
@@ -1404,6 +1389,17 @@
 	..()
 	shell_speed = config.super_shell_speed
 	damage = config.hmed_hit_damage
+
+/datum/ammo/energy/yautja/rifle/blast/on_hit_mob(mob/M,obj/item/projectile/P)
+	knockback(M,P)
+	playsound(M.loc, 'sound/weapons/pulse.ogg', 25, 1)
+
+/datum/ammo/energy/yautja/rifle/blast/on_hit_turf(turf/T,obj/item/projectile/P)
+	explosion(T, -1, -1, 2, -1, P.weapon_source, P.firer)
+
+/datum/ammo/energy/yautja/rifle/blast/on_hit_obj(obj/O,obj/item/projectile/P)
+	explosion(get_turf(P), -1, -1, 2, -1, P.weapon_source, P.firer)
+
 
 /*
 //================================================
@@ -1966,7 +1962,7 @@
 /datum/ammo/flamethrower/tank_flamer/drop_flame(var/turf/T, var/source, var/source_mob)
 	if(!istype(T)) return
 	if(locate(/obj/flamer_fire) in T) return
-	
+
 	// Very hot but burns out quickly
 	new /obj/flamer_fire(T, source, source_mob, 20, 35, "blue", fire_spread_amount = 2)
 
@@ -2038,7 +2034,7 @@
 					M.put_in_active_hand(S)
 					for(var/mob/O in viewers(world.view, P)) //find all people in view.
 						O.show_message(SPAN_DANGER("[M] catches the [can_type]!"), 1) //Tell them the can was caught.
-					return //Can was caught.	
+					return //Can was caught.
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == "Human") //no effect on synths or preds.
@@ -2052,7 +2048,7 @@
 		shake_camera(H, 2, 1)
 		if(P.contents.len)
 			drop_can(P.loc, P) //We make a can at the location.
-		
+
 /datum/ammo/souto/on_hit_obj(obj/O,obj/item/projectile/P)
 	drop_can(P.loc, P) //We make a can at the location.
 
@@ -2064,7 +2060,7 @@
 
 /datum/ammo/souto/on_shield_block(mob/M, obj/item/projectile/P)
 	drop_can(P.loc, P) //We make a can at the location.
-	
+
 /datum/ammo/souto/proc/drop_can(var/loc, obj/item/projectile/P)
 	if(P.contents.len)
 		for(var/obj/item/I in P.contents)

@@ -454,11 +454,14 @@
 	if (!istype(C))
 		return
 
+	if(user.is_mob_incapacitated())
+		return TRUE
+
 	if (mods["ctrl"])
 		C.toggle_throw_mode(THROW_MODE_HIGH)
 	else
 		C.toggle_throw_mode(THROW_MODE_NORMAL)
-	return 1
+	return TRUE
 
 /obj/screen/drop
 	name = "drop"

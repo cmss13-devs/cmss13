@@ -106,6 +106,7 @@
 
 	if(immobile_form)
 		immobile_form = FALSE
+		M.status_flags |= CANPUSH
 		M.anchored = FALSE
 		M.frozen = FALSE
 	..()
@@ -189,11 +190,13 @@
 		return
 
 	if(immobile_form)
+		user.status_flags |= CANPUSH
 		user.anchored = FALSE
 		user.frozen = FALSE
 		to_chat(user, SPAN_DANGER("[name] beeps, \"You can now move again.\""))
 	else
 		battery_charge -= IMMOBILE_COST
+		user.status_flags &= ~CANPUSH
 		user.anchored = TRUE
 		user.frozen = TRUE
 		to_chat(user, SPAN_DANGER("[name] beeps, \"You are anchored in place and cannot be moved.\""))
@@ -231,6 +234,8 @@
 		SPAN_WARNING("[name] beeps, \"Beginning to carefully examine your sustained damage.\""))
 	playsound(src.loc, 'sound/mecha/mechmove04.ogg', 25, 1)
 	if(!do_after(H, 100, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+		repairing = FALSE
+		update_icon(user)
 		to_chat(user, SPAN_DANGER("[name] beeps, \"Repair process was cancelled.\""))
 		return
 

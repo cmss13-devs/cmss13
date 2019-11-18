@@ -366,6 +366,9 @@
 /mob/living/carbon/charge_act(mob/living/carbon/Xenomorph/X)
 	. = ..()
 	if(. && X.charge_speed > X.charge_speed_buildup * X.charge_turfs_to_charge)
+		if(anchored)
+			X.stop_momentum(X.charge_dir)
+			return FALSE
 		playsound(loc, "punch", 25, 1)
 		if(stat == DEAD)
 			var/count = 0

@@ -185,11 +185,11 @@
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
 
 /mob/living/carbon/Xenomorph/Queen/Dispose()
-	. = ..()
 	if(observed_xeno)
 		set_queen_overwatch(observed_xeno, TRUE)
 	if(hive.living_xeno_queen == src)
 		hive.set_living_xeno_queen(null)
+	return ..()
 
 /mob/living/carbon/Xenomorph/Queen/proc/can_spawn_larva()
 	return loc.z == 1 && hive_datum[hivenumber].stored_larva
@@ -541,35 +541,37 @@
 		flick("ovipositor_dismount_destroyed", src)
 		sleep(5)
 
-	if(ovipositor)
-		ovipositor = FALSE
-		map_view = 0
-		src << browse(null, "window=queenminimap")
-		update_icons()
-		new /obj/ovipositor(loc)
+	if(!ovipositor)
+		return
+	
+	ovipositor = FALSE
+	map_view = 0
+	src << browse(null, "window=queenminimap")
+	update_icons()
+	new /obj/ovipositor(loc)
 
-		if(observed_xeno)
-			set_queen_overwatch(observed_xeno, TRUE)
-		zoom_out()
+	if(observed_xeno)
+		set_queen_overwatch(observed_xeno, TRUE)
+	zoom_out()
 
-		for(var/datum/action/A in actions)
-			qdel(A)
+	for(var/datum/action/A in actions)
+		qdel(A)
 
-		for(var/path in mobile_abilities)
-			var/datum/action/xeno_action/A = new path()
-			A.give_action(src)
-		recalculate_actions()
+	for(var/path in mobile_abilities)
+		var/datum/action/xeno_action/A = new path()
+		A.give_action(src)
+	recalculate_actions()
 
-		egg_amount = 0
-		ovipositor_cooldown = world.time + MINUTES_5 //5 minutes
-		anchored = FALSE
-		update_canmove()
+	egg_amount = 0
+	ovipositor_cooldown = world.time + MINUTES_5 //5 minutes
+	anchored = FALSE
+	update_canmove()
 
-		for(var/mob/living/carbon/Xenomorph/L in hive.xeno_leader_list)
-			L.handle_xeno_leader_pheromones()
+	for(var/mob/living/carbon/Xenomorph/L in hive.xeno_leader_list)
+		L.handle_xeno_leader_pheromones()
 
-		if(!instant_dismount)
-			xeno_message(SPAN_XENOANNOUNCE("The Queen has shed her ovipositor, evolution progress paused."), 3, hivenumber)
+	if(!instant_dismount)
+		xeno_message(SPAN_XENOANNOUNCE("The Queen has shed her ovipositor, evolution progress paused."), 3, hivenumber)
 
 /mob/living/carbon/Xenomorph/Queen/update_canmove()
 	. = ..()

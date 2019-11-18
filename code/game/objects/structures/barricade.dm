@@ -36,7 +36,7 @@
 		user.count_niche_stat(STATISTICS_NICHE_CADES)
 	add_timer(CALLBACK(src, .proc/update_icon), 0)
 
-/obj/structure/barricade/handle_barrier_chance(mob/living/M)
+/obj/structure/barricade/handle_barrier_chance()
 	if(!anchored)
 		return FALSE
 	return prob(max(30,(100.0*health)/maxhealth))
@@ -786,7 +786,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 					continue
 
 
-/obj/structure/barricade/plasteel/handle_barrier_chance(mob/living/M)
+/obj/structure/barricade/plasteel/handle_barrier_chance()
 	if(!closed) // Closed = gate down for plasteel for some reason
 		return ..()
 	else

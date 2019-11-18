@@ -411,7 +411,7 @@ its easier to just keep the beam vertical.
 /atom/proc/on_stored_atom_del(atom/movable/AM)
 	return
 
-/atom/proc/handle_barrier_chance(mob/living/M)
+/atom/proc/handle_barrier_chance()
 	return FALSE
 
 /atom/proc/initialize()

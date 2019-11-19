@@ -930,7 +930,7 @@
 			if((angledegree*2) > angle_list[angle])
 				continue
 
-		path = getline2(src, M)
+		path = getline2(src, M, include_from_atom = FALSE)
 
 		if(path.len)
 			var/blocked = FALSE

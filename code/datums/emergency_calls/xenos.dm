@@ -32,7 +32,8 @@
 		new_xeno = new /mob/living/carbon/Xenomorph/Spitter/mature(spawn_loc)
 	else
 		new_xeno = new /mob/living/carbon/Xenomorph/Lurker/mature(spawn_loc)
-	new_xeno.key  = M.key
+
+	M.transfer_to(new_xeno)
 
 
 /datum/emergency_call/xenos/platoon

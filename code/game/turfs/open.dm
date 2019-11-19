@@ -267,7 +267,7 @@
 
 /turf/open/gm/river/Entered(atom/movable/AM)
 	..()
-	if(!covered && iscarbon(AM))
+	if(!covered && iscarbon(AM) && !AM.throwing)
 		var/mob/living/carbon/C = AM
 		var/river_slowdown = 1.75
 

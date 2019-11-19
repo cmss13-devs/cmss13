@@ -232,13 +232,15 @@
 
 		sleep(20)
 		if(!istype(src, /turf/closed/wall)) // Extra check, needed against runtimes
-			break
+			if(O && !O.disposed)
+				qdel(O)
+			return
 	melting = FALSE
 	if(destroyed)
 		dismantle_wall(1)
-	if(O)
+	if(O && !O.disposed)
 		qdel(O)
-	return
+
 
 
 //Interactions

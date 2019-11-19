@@ -187,7 +187,7 @@
 /mob/living/carbon/Xenomorph/Queen/Dispose()
 	if(observed_xeno)
 		set_queen_overwatch(observed_xeno, TRUE)
-	if(hive.living_xeno_queen == src)
+	if(hive && hive.living_xeno_queen == src)
 		hive.set_living_xeno_queen(null)
 	return ..()
 
@@ -270,10 +270,10 @@
 
 	//if(charge_speed < charge_speed_buildup * charge_turfs_to_charge || !is_charging) return ..()
 
-	if(stat || !istype(A) || A == src) 
+	if(stat || !istype(A) || A == src)
 		return FALSE
 
-	if(now_pushing) 
+	if(now_pushing)
 		return FALSE//Just a plain ol turf, let's return.
 
 	/*if(dir != charge_dir) //We aren't facing the way we're charging.
@@ -520,7 +520,7 @@
 	resting = FALSE
 	update_canmove()
 	update_icons()
-	
+
 	if(hive)
 		var/turf/T = get_turf(src)
 		hive.set_hive_location(T)

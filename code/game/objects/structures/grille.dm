@@ -103,7 +103,7 @@
 /obj/structure/grille/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(istype(mover, /obj/item/projectile) && prob(90))
 		return NO_BLOCKED_MOVEMENT
-	
+
 	return ..()
 
 /obj/structure/grille/bullet_act(var/obj/item/projectile/Proj)
@@ -164,9 +164,9 @@
 
 			var/wtype = ST.created_window
 			if (ST.use(1))
-				var/obj/structure/window/WD = new wtype(loc, dir_to_set, 1)
+				var/obj/structure/window/WD = new wtype(loc)
+				WD.set_constructed_window(dir_to_set)
 				to_chat(user, SPAN_NOTICE("You place the [WD] on [src]."))
-				WD.update_icon()
 		return
 //window placing end
 

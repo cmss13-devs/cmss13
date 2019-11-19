@@ -19,6 +19,7 @@
 	origin_tech = "materials=1"
 	stack_id = "glass sheet"
 	var/created_window = /obj/structure/window
+	var/created_full_window = /obj/structure/window/full
 	var/is_reinforced = 0
 	var/list/construction_options = list("One Direction", "Full Window")
 
@@ -96,7 +97,8 @@
 				if(!found)
 					dir_to_set = direction
 					break
-			new created_window( user.loc, dir_to_set, 1 )
+			var/obj/structure/window/WD = new created_window(user.loc)
+			WD.set_constructed_window(dir_to_set)
 			src.use(1)
 		if("Full Window")
 			if(!src)	return 1
@@ -107,7 +109,8 @@
 			if(locate(/obj/structure/window) in user.loc)
 				to_chat(user, SPAN_DANGER("There is a window in the way."))
 				return 1
-			new created_window( user.loc, SOUTHWEST, 1 )
+			var/obj/structure/window/WD = new created_full_window(user.loc)
+			WD.set_constructed_window()
 			src.use(4)
 		if("Windoor")
 			if(!is_reinforced) return 1
@@ -146,6 +149,7 @@
 	origin_tech = "materials=2"
 
 	created_window = /obj/structure/window/reinforced
+	created_full_window = /obj/structure/window/reinforced/full
 	is_reinforced = 1
 	construction_options = list("One Direction", "Full Window", "Windoor")
 
@@ -163,6 +167,7 @@
 	matter = list("glass" = 7500)
 	origin_tech = "materials=3;phorontech=2"
 	created_window = /obj/structure/window/phoronbasic
+	created_full_window = /obj/structure/window/phoronbasic/full
 
 /obj/item/stack/sheet/glass/phoronglass/attackby(obj/item/W, mob/user)
 	..()
@@ -193,4 +198,5 @@
 
 	origin_tech = "materials=4;phorontech=2"
 	created_window = /obj/structure/window/phoronreinforced
+	created_full_window = /obj/structure/window/phoronreinforced/full
 	is_reinforced = 1

@@ -18,22 +18,77 @@
 	var/junction = 0 //Because everything is terrible, I'm making this a window-level var
 	var/not_damageable = 0
 	var/not_deconstructable = 0
+	var/legacy_full = FALSE //for old fulltile windows
 
 ///fixes up layering on northern and southern windows, breaks fulltile windows, those shouldn't be used in the first place regardless.
-	New()
-		..()
-		spawn(0)
-			wall_check()
-			update_icon()
+/obj/structure/window/Initialize()
+	..()
+	spawn(0)
+		update_icon()
+
+	if(shardtype)
+		debris += shardtype
+
+	if(reinf)
+		debris += /obj/item/stack/rods
+
+	if(is_full_window())
+		debris += shardtype
+		update_nearby_icons()
+
+
+
+/obj/structure/window/Dispose()
+	density = 0
+	if(is_full_window())
+		update_nearby_icons()
+	. = ..()
+
+
+/obj/structure/window/proc/set_constructed_window(start_dir)
+	state = 0
+	anchored = 0
+
+	if(start_dir)
+		dir = start_dir
+
+	if(is_full_window())
+		update_nearby_icons()
+
+	update_icon()
+
 
 /obj/structure/window/update_icon(loc, direction)
-	if(direction)
-		dir = direction
-	switch(dir)
-		if(NORTH) layer = BELOW_TABLE_LAYER
-		if(SOUTH) layer = ABOVE_MOB_LAYER
-		else layer = initial(layer)
+	if(disposed)
+		return
+	if(flags_atom & ON_BORDER)
+		if(direction)
+			dir = direction
+		switch(dir)
+			if(NORTH)
+				layer = BELOW_TABLE_LAYER
+			if(SOUTH)
+				layer = ABOVE_MOB_LAYER
+			else
+				layer = initial(layer)
+	else if(legacy_full)
+		junction = 0
+		if(anchored)
+			var/turf/TU
+			for(var/dirn in cardinal)
+				TU = get_step(src, dirn)
+				var/obj/structure/window/W = locate() in TU
+				if(W && W.anchored && W.density && W.legacy_full) //Only counts anchored, non-destroyed, legacy full-tile windows.
+					junction |= dirn
+		icon_state = "[basestate][junction]"
 	..()
+
+/obj/structure/window/Move()
+	var/ini_dir = dir
+	. = ..()
+	dir = ini_dir
+
+
 //create_debris creates debris like shards and rods. This also includes the window frame for explosions
 //If an user is passed, it will create a "user smashes through the window" message. AM is the item that hits
 //Please only fire this after a hit
@@ -245,10 +300,9 @@
 	set category = "Object"
 	set src in oview(1)
 
-	if(static_frame)
+	if(static_frame || not_deconstructable || !(flags_atom & ON_BORDER))
 		return 0
-	if(not_deconstructable)
-		return 0
+
 	if(anchored)
 		to_chat(usr, SPAN_WARNING("It is fastened to the floor, you can't rotate it!"))
 		return 0
@@ -262,9 +316,7 @@
 	set category = "Object"
 	set src in oview(1)
 
-	if(static_frame)
-		return 0
-	if(not_deconstructable)
+	if(static_frame || not_deconstructable || !(flags_atom & ON_BORDER))
 		return 0
 	if(anchored)
 		to_chat(usr, SPAN_WARNING("It is fastened to the floor, you can't rotate it!"))
@@ -273,33 +325,6 @@
 	dir = turn(dir, 270)
 
 
-/obj/structure/window/New(Loc, start_dir = null, constructed = 0)
-	..()
-
-	//player-constructed windows
-	if(constructed)
-		anchored = 0
-
-	if(start_dir)
-		dir = start_dir
-
-	debris += shardtype
-	if(is_full_window())
-		debris += shardtype
-	if(reinf)
-		debris += /obj/item/stack/rods
-
-	update_nearby_icons()
-
-/obj/structure/window/Dispose()
-	density = 0
-	update_nearby_icons()
-	. = ..()
-
-/obj/structure/window/Move()
-	var/ini_dir = dir
-	..()
-	dir = ini_dir
 
 //This proc is used to update the icons of nearby windows.
 /obj/structure/window/proc/update_nearby_icons()
@@ -318,8 +343,7 @@
 /obj/structure/window/phoronbasic
 	name = "phoron window"
 	desc = "A phoron-glass alloy window. It looks insanely tough to break. It appears it's also insanely tough to burn through."
-	basestate = "phoronwindow"
-	icon_state = "phoronwindow"
+	icon_state = "phoronwindow0"
 	shardtype = /obj/item/shard/phoron
 	health = 120
 
@@ -329,17 +353,30 @@
 		healthcheck(0) //Don't make hit sounds, it's dumb with fire/heat
 	..()
 
+/obj/structure/window/phoronbasic/full
+	flags_atom = FPRINT
+	icon_state = "phoronwindow0"
+	basestate = "phoronwindow"
+	legacy_full = TRUE
+
+
 /obj/structure/window/phoronreinforced
 	name = "reinforced phoron window"
 	desc = "A phoron-glass alloy window with a rod matrice. It looks hopelessly tough to break. It also looks completely fireproof, considering how basic phoron windows are insanely fireproof."
-	basestate = "phoronrwindow"
-	icon_state = "phoronrwindow"
+	icon_state = "phoronrwindow0"
 	shardtype = /obj/item/shard/phoron
 	reinf = 1
 	health = 160
 
 /obj/structure/window/phoronreinforced/fire_act(exposed_temperature, exposed_volume)
 	return
+
+/obj/structure/window/phoronreinforced/full
+	flags_atom = FPRINT
+	icon_state = "phoronrwindow0"
+	basestate = "phoronrwindow"
+	legacy_full = TRUE
+
 
 /obj/structure/window/reinforced
 	name = "reinforced window"
@@ -357,12 +394,7 @@
 	health = 300
 	reinf = 1
 
-/obj/structure/window/New(Loc, constructed = 0)
-	..()
 
-	//player-constructed windows
-	if(constructed)
-		state = 0
 
 /obj/structure/window/reinforced/tinted
 	name = "tinted window"
@@ -378,6 +410,12 @@
 	basestate = "fwindow"
 	health = 30
 
+/obj/structure/window/reinforced/full
+	flags_atom = FPRINT
+	icon_state = "rwindow0"
+	basestate = "rwindow"
+	legacy_full = TRUE
+
 /obj/structure/window/shuttle
 	name = "shuttle window"
 	desc = "A shuttle glass window with a rod matrice specialised for heat resistance. It looks rather strong. Might take a few good hits to shatter it."
@@ -390,6 +428,14 @@
 
 /obj/structure/window/shuttle/update_icon() //icon_state has to be set manually
 	return
+
+/obj/structure/window/full
+	flags_atom = FPRINT
+	icon_state = "window0"
+	basestate = "window"
+	legacy_full = TRUE
+
+
 
 //Framed windows
 

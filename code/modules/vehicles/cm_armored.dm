@@ -246,6 +246,8 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	var/slot = input("Select a slot.") in slots
 
 	var/obj/item/hardpoint/HP = hardpoints[slot]
+	if(!HP)
+		return
 	if(!HP.backup_clips.len)
 		to_chat(usr, SPAN_WARNING("That module has no remaining backup clips."))
 		return
@@ -257,10 +259,16 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 
 	to_chat(usr, SPAN_NOTICE("You begin reloading the [slot] module."))
 
+	var/old_ammo = HP.ammo
+
 	sleep(20)
 
-	HP.ammo.Move(entrance.loc)
-	HP.ammo.update_icon()
+	if(!HP || HP != hardpoints[slot] || !HP.backup_clips.len || HP.ammo != old_ammo)
+		return
+
+	if(HP.ammo)
+		HP.ammo.forceMove(entrance.loc)
+		HP.ammo.update_icon()
 	HP.ammo = A
 	HP.backup_clips.Remove(A)
 

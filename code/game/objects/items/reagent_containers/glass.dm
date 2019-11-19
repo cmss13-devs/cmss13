@@ -91,7 +91,8 @@
 
 		visible_message(SPAN_WARNING("[target] has been splashed with something by [user]!"))
 		reagents.reaction(target, TOUCH)
-		spawn(5) reagents.clear_reagents()
+		if(!disposed)
+			reagents.clear_reagents()
 		return
 	else if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
 		target.add_fingerprint(user)
@@ -127,7 +128,8 @@
 		to_chat(user, SPAN_NOTICE("You splash the solution onto [target]."))
 		playsound(target, 'sound/effects/slosh.ogg', 25, 1)
 		reagents.reaction(target, TOUCH)
-		spawn(5) src.reagents.clear_reagents()
+		if(!disposed)
+			reagents.clear_reagents()
 		return
 
 /obj/item/reagent_container/glass/attackby(obj/item/W as obj, mob/user as mob)

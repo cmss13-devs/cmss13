@@ -11,6 +11,7 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 	icon = 'icons/turf/area_strata.dmi'
 	//ambience = list('figuresomethingout.ogg')
 	icon_state = "strata"
+	can_build_special = TRUE //T-Comms structure
 	temperature = SOROKYNE_TEMPERATURE //If not in a building, it'll be cold. All interior areas are set to T20C
 
 /area/shuttle/drop1/strata //Not in Sulaco.DM because holy shit we need to sort things.

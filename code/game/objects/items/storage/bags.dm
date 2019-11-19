@@ -16,10 +16,7 @@
 
 //  Generic non-item
 /obj/item/storage/bag
-	allow_quick_gather = 1
-	allow_quick_empty = 1
-	display_contents_with_number = 0 // UNStABLE AS FuCK, turn on when it stops crashing clients
-	use_to_pickup = 1
+	storage_flags = STORAGE_FLAGS_BAG
 	flags_equip_slot = SLOT_WAIST
 
 // -----------------------------
@@ -116,7 +113,7 @@
 	var/capacity = 300; //the number of sheets it can carry.
 	w_class = SIZE_MEDIUM
 
-	allow_quick_empty = 1 // this function is superceded
+	storage_flags = STORAGE_FLAGS_BAG|STORAGE_QUICK_EMPTY
 
 /obj/item/storage/bag/sheetsnatcher/New()
 	..()
@@ -183,10 +180,10 @@
 
 	//Numbered contents display
 	var/list/datum/numbered_display/numbered_contents
-	if(display_contents_with_number)
+	if (storage_flags & STORAGE_CONTENT_NUM_DISPLAY)
 		numbered_contents = list()
 		adjusted_contents = 0
-		for(var/obj/item/stack/sheet/I in contents)
+		for (var/obj/item/stack/sheet/I in contents)
 			adjusted_contents++
 			var/datum/numbered_display/D = new/datum/numbered_display(I)
 			D.number = I.amount
@@ -201,7 +198,7 @@
 
 
 // Modified quick_empty verb drops appropriate sized stacks
-/obj/item/storage/bag/sheetsnatcher/quick_empty()
+/obj/item/storage/bag/sheetsnatcher/empty(var/mob/user)
 	var/location = get_turf(src)
 	for(var/obj/item/stack/sheet/S in contents)
 		while(S.amount)
@@ -211,9 +208,9 @@
 			S.amount -= stacksize
 		if(!S.amount)
 			qdel(S) // todo: there's probably something missing here
-	orient2hud(usr)
-	if(usr.s_active)
-		usr.s_active.show_to(usr)
+	orient2hud(user)
+	if(user.s_active)
+		user.s_active.show_to(user)
 	update_icon()
 
 // Instead of removing

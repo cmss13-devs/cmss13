@@ -7,7 +7,7 @@
 	flags_equip_slot = SLOT_WAIST
 	attack_verb = list("whipped", "lashed", "disciplined")
 	w_class = SIZE_LARGE
-	allow_drawing_method = TRUE
+	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_ALLOW_DRAWING_METHOD_TOGGLE
 
 /obj/item/storage/belt/equipped(mob/user, slot)
 	if(slot == WEAR_WAIST)
@@ -849,8 +849,7 @@
 	name = "\improper Souto belt"
 	desc = "A belt with break away souto cans. They cannot be put back."
 	flags_equip_slot = SLOT_WAIST
-	allow_drawing_method = FALSE
-	draw_mode = 1
+	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD
 	storage_slots = 8
 	flags_item = NODROP|DELONDROP
 	flags_inventory = CANTSTRIP

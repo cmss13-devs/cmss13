@@ -210,8 +210,7 @@
 		/obj/item/toy/dice,
 		/obj/item/paper
 	)
-	allow_quick_gather = 1
-	use_to_pickup = 1
+	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_CLICK_GATHER|STORAGE_QUICK_GATHER
 	storage_slots = null
 	use_sound = null
 	max_storage_space = 16

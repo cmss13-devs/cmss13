@@ -9,7 +9,7 @@
 	max_w_class = SIZE_LARGE
 	storage_slots = 1
 	max_storage_space = 4
-	draw_mode = 1
+	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD
 	var/base_icon = "m37_holster"
 	var/drawSound = 'sound/weapons/gun_rifle_draw.ogg'
 

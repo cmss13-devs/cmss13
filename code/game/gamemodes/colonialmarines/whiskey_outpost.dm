@@ -953,7 +953,7 @@ var/global/spawn_next_wo_wave = 0
 	can_hold = list()
 	storage_slots = 3
 	max_w_class = 0
-	foldable = 0
+	foldable = null
 	var/list/common = list(/obj/item/attachable/suppressor, /obj/item/attachable/bayonet, /obj/item/attachable/flashlight)
 	var/list/attachment_1 = list(/obj/item/attachable/reddot, /obj/item/attachable/burstfire_assembly, /obj/item/attachable/lasersight,
 								/obj/item/attachable/extended_barrel,/obj/item/attachable/verticalgrip, /obj/item/attachable/angledgrip,

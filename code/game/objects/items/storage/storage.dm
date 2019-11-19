@@ -1,5 +1,5 @@
 // To clarify:
-// For use_to_pickup and allow_quick_gather functionality,
+// For STORAGE_CLICK_GATHER and STORAGE_QUICK_GATHER functionality,
 // see item/attackby() (/game/obj/items.dm)
 // Do not remove this functionality without good reason, cough reagent_containers cough.
 // -Sayu
@@ -25,18 +25,11 @@
 	var/obj/screen/storage/stored_continue = null
 	var/obj/screen/storage/stored_end = null
 	var/obj/screen/close/closer = null
-	var/show_storage_fullness = TRUE //whether our storage box on hud changes color when full.
-	var/use_to_pickup	//Set this to make it possible to use this item in an inverse way, so you can have the item in your hand and click items on the floor to pick them up.
-	var/display_contents_with_number	//Set this to make the storage item group contents of the same type and display them as a number.
-	var/allow_quick_empty	//Set this variable to allow the object to have the 'empty' verb, which dumps all the contents on the floor.
-	var/allow_quick_gather	//Set this variable to allow the object to have the 'toggle mode' verb, which quickly collects all items from a tile.
-	var/allow_drawing_method //whether this object can change its drawing method (pouches)
-	var/draw_mode = 0
-	var/collection_mode = 1;  //0 = pick one at a time, 1 = pick all on tile
-	var/foldable = null	// BubbleWrap - if set, can be folded (when empty) into a sheet of cardboard
+	var/foldable = null
 	var/use_sound = "rustle"	//sound played when used. null for no sound.
-	var/opened = 0 //Has it been opened before?
+	var/opened = FALSE //Has it been opened before?
 	var/list/content_watchers = list() //list of mobs currently seeing the storage's contents
+	var/storage_flags = STORAGE_FLAGS_DEFAULT
 
 
 
@@ -110,7 +103,6 @@
 	return
 
 /obj/item/storage/proc/hide_from(mob/user as mob)
-
 	if(!user.client)
 		return
 	user.client.screen -= src.boxes
@@ -156,7 +148,7 @@
 	var/cx = tx
 	var/cy = ty
 	boxes.screen_loc = "[tx]:,[ty] to [mx],[my]"
-	for(var/obj/O in src.contents)
+	for (var/obj/O in contents)
 		O.screen_loc = "[cx],[cy]"
 		O.layer = ABOVE_HUD_LAYER
 		cx++
@@ -164,7 +156,7 @@
 			cx = tx
 			cy--
 	closer.screen_loc = "[mx+1],[my]"
-	if(show_storage_fullness)
+	if (storage_flags & STORAGE_SHOW_FULLNESS)
 		boxes.update_fullness(src)
 
 //This proc draws out the inventory and places the items on it. It uses the standard position.
@@ -173,8 +165,8 @@
 	var/cy = 2+rows
 	boxes.screen_loc = "4:16,2:16 to [4+cols]:16,[2+rows]:16"
 
-	if(display_contents_with_number)
-		for(var/datum/numbered_display/ND in display_contents)
+	if (storage_flags & STORAGE_CONTENT_NUM_DISPLAY)
+		for (var/datum/numbered_display/ND in display_contents)
 			ND.sample_object.mouse_opacity = 2
 			ND.sample_object.screen_loc = "[cx]:16,[cy]:16"
 			ND.sample_object.maptext = "<font color='white'>[(ND.number > 1)? "[ND.number]" : ""]</font>"
@@ -184,7 +176,7 @@
 				cx = 4
 				cy--
 	else
-		for(var/obj/O in contents)
+		for (var/obj/O in contents)
 			O.mouse_opacity = 2 //So storage items that start with contents get the opacity trick.
 			O.screen_loc = "[cx]:16,[cy]:16"
 			O.maptext = ""
@@ -194,7 +186,7 @@
 				cx = 4
 				cy--
 	closer.screen_loc = "[4+cols+1]:16,2:16"
-	if(show_storage_fullness)
+	if (storage_flags & STORAGE_SHOW_FULLNESS)
 		boxes.update_fullness(src)
 
 /obj/item/storage/proc/space_orient_objs(var/list/obj/item/display_contents)
@@ -298,21 +290,21 @@
 
 	//Numbered contents display
 	var/list/datum/numbered_display/numbered_contents
-	if(display_contents_with_number)
+	if (storage_flags & STORAGE_CONTENT_NUM_DISPLAY)
 		numbered_contents = list()
 		adjusted_contents = 0
-		for(var/obj/item/I in contents)
+		for (var/obj/item/I in contents)
 			var/found = 0
-			for(var/datum/numbered_display/ND in numbered_contents)
-				if(ND.sample_object.type == I.type)
+			for (var/datum/numbered_display/ND in numbered_contents)
+				if (ND.sample_object.type == I.type)
 					ND.number++
 					found = 1
 					break
-			if(!found)
+			if (!found)
 				adjusted_contents++
 				numbered_contents.Add( new/datum/numbered_display(I) )
 
-	if(storage_slots == null)
+	if (storage_slots == null)
 		src.space_orient_objs(numbered_contents)
 	else
 		var/row_num = 0
@@ -462,10 +454,9 @@
 	W.add_fingerprint(user)
 	return handle_item_insertion(W, FALSE, user)
 
-
 /obj/item/storage/attack_hand(mob/user)
 	if (loc == user)
-		if(draw_mode && ishuman(user) && contents.len)
+		if(storage_flags & STORAGE_USING_DRAWING_METHOD && ishuman(user) && contents.len)
 			var/obj/item/I = contents[contents.len]
 			I.attack_hand(user)
 		else
@@ -476,38 +467,68 @@
 			close(M)
 	add_fingerprint(user)
 
-
 /obj/item/storage/verb/toggle_gathering_mode()
 	set name = "Switch Gathering Method"
 	set category = "Object"
 
-	collection_mode = !collection_mode
-	switch (collection_mode)
-		if(1)
-			to_chat(usr, "[src] now picks up all items in a tile at once.")
-		if(0)
-			to_chat(usr, "[src] now picks up one item at a time.")
-
-
+	storage_flags ^= STORAGE_GATHER_SIMULTAENOUSLY
+	if (storage_flags & STORAGE_GATHER_SIMULTAENOUSLY)
+		to_chat(usr, "[src] now picks up all items in a tile at once.")
+	else
+		to_chat(usr, "[src] now picks up one item at a time.")
 
 /obj/item/storage/verb/toggle_draw_mode()
 	set name = "Switch Storage Drawing Method"
 	set category = "Object"
-	draw_mode = !draw_mode
-	if(draw_mode)
+
+	storage_flags ^= STORAGE_USING_DRAWING_METHOD
+	if (storage_flags & STORAGE_USING_DRAWING_METHOD)
 		to_chat(usr, "Clicking [src] with an empty hand now puts the last stored item in your hand.")
 	else
 		to_chat(usr, "Clicking [src] with an empty hand now opens the pouch storage menu.")
 
-/obj/item/storage/proc/quick_empty()
+/obj/item/storage/verb/toggle_click_empty()
+	set name = "Toggle Tile Dumping"
+	set category = "Object"
 
-	if((!ishuman(usr) && loc != usr) || usr.is_mob_restrained())
+	storage_flags ^= STORAGE_CLICK_EMPTY
+	if (storage_flags & STORAGE_CLICK_EMPTY)
+		to_chat(usr, "Clicking on a tile with [src] in your hand now empties its contents on that tile.")
+	else
+		to_chat(usr, "Clicking on a tile with [src] in your hand will no longer do anything.")
+
+/obj/item/storage/verb/empty_verb()
+	set name = "Empty"
+	set category = "Object"
+
+	var/mob/living/carbon/human/H = usr
+	if (!ishuman(H) || loc != H || H.is_mob_restrained())
 		return
+	
+	empty(H, get_turf(H))
 
-	var/turf/T = get_turf(src)
-	hide_from(usr)
-	for(var/obj/item/I in contents)
+/obj/item/storage/proc/empty(var/mob/user, var/turf/T)
+	if (!ishuman(user) || loc != user || user.is_mob_restrained())
+		return
+	if (!(storage_flags & STORAGE_ALLOW_EMPTY))
+		return
+	
+	if (!isturf(T) || get_dist(src, T) > 1)
+		T = get_turf(src)
+
+		
+	if (!(storage_flags & STORAGE_QUICK_EMPTY))
+		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [src]..."),
+			SPAN_NOTICE("You start to empty \the [src]..."))
+		if (!do_after(user, SECONDS_2, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			return
+	
+	hide_from(user)
+	for (var/obj/item/I in contents)
 		remove_from_storage(I, T)
+	user.visible_message(SPAN_NOTICE("[user] empties \the [src]."),
+		SPAN_NOTICE("You empty \the [src]."))
+	
 
 /obj/item/storage/proc/dump_into(obj/item/storage/M, mob/user)
 	if(istype(M,/obj/item/ammo_magazine/shotgun)) //for inserting handfuls of shotgun shells
@@ -558,11 +579,14 @@
 
 /obj/item/storage/New()
 	..()
-	if(!allow_quick_gather)
+	if (!(storage_flags & STORAGE_QUICK_GATHER))
 		verbs -= /obj/item/storage/verb/toggle_gathering_mode
 
-	if(!allow_drawing_method)
+	if (!(storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE))
 		verbs -= /obj/item/storage/verb/toggle_draw_mode
+
+	if (!(storage_flags & STORAGE_ALLOW_EMPTY))
+		verbs -= /obj/item/storage/verb/empty_verb
 
 	boxes = new
 	boxes.name = "storage"
@@ -640,13 +664,10 @@
 			O.emp_act(severity)
 	..()
 
-// BubbleWrap - A box can be folded up to make card
 /obj/item/storage/attack_self(mob/user)
-
 	//Clicking on itself will empty it, if it has the verb to do that.
-
-	if(allow_quick_empty)
-		quick_empty()
+	if (storage_flags & STORAGE_ALLOW_EMPTY)
+		empty(user)
 		return
 
 	//Otherwise we'll try to fold it.
@@ -657,14 +678,20 @@
 		return
 
 	// Close any open UI windows first
-	for(var/mob/M in content_watchers)
+	for (var/mob/M in content_watchers)
 		close(M)
 
 	// Now make the cardboard
 	to_chat(user, SPAN_NOTICE("You fold [src] flat."))
 	new foldable(get_turf(src))
 	qdel(src)
-//BubbleWrap END
+
+/obj/item/storage/afterattack(atom/target, mob/user, proximity)
+	if(!proximity) 
+		return
+
+	if(isturf(target) && get_dist(src, target) <= 1 && storage_flags & STORAGE_CLICK_EMPTY)
+		empty(user, target)
 
 /obj/item/storage/hear_talk(mob/M as mob, text)
 	for (var/atom/A in src)
@@ -677,20 +704,6 @@
 		return storage_cost
 	else
 		return w_class
-/*
-		if(w_class == 1)
-			return 1
-		if(w_class == 2)
-			return 2
-		if(w_class == 3)
-			return 4
-		if(w_class == 4)
-			return 8
-		if(w_class == 5)
-			return 16
-		else
-			return 1000
-*/
 
 //Returns the storage depth of an atom. This is the number of storage items the atom is contained in before reaching toplevel (the area).
 //Returns -1 if the atom was not found on container.
@@ -727,7 +740,6 @@
 		return -1	//inside something with a null loc.
 
 	return depth
-
 
 /obj/item/storage/on_stored_atom_del(atom/movable/AM)
 	if(istype(AM, /obj/item))

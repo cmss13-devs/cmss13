@@ -255,8 +255,8 @@ cases. Override_icon_state should be a list.*/
 /obj/item/attackby(obj/item/W, mob/user)
 	if(istype(W,/obj/item/storage))
 		var/obj/item/storage/S = W
-		if(S.use_to_pickup && isturf(loc))
-			if(S.collection_mode) //Mode is set to collect all items on a tile and we clicked on a valid one.
+		if(S.storage_flags & STORAGE_CLICK_GATHER && isturf(loc))
+			if(S.storage_flags & STORAGE_GATHER_SIMULTAENOUSLY) //Mode is set to collect all items on a tile and we clicked on a valid one.
 				var/list/rejections = list()
 				var/success = 0
 				var/failure = 0

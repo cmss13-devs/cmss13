@@ -165,6 +165,8 @@ var/list/weather_notify_objects = list()
 
 	update_mobs()
 	controller_state_lock = FALSE
+	is_weather_event = FALSE
+	last_event_end_time = world.time
 
 
 // Enqueue areas

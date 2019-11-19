@@ -19,6 +19,6 @@
     name = "Blizzard"
     display_name = "Blizzard"
     length = MINUTES_4
-    fullscreen_type = /obj/screen/fullscreen/weather/snow
-    turf_overlay_icon_state = "strata_snowing"
+    fullscreen_type = /obj/screen/fullscreen/weather/blizzard
+    turf_overlay_icon_state = "strata_blizzard"
     effect_type = /datum/effects/weather/snow

@@ -344,7 +344,7 @@
 					var/obj/item/clothing/accessory/storage/webbing/W = new()
 					U.attach_accessory(usr, W)
 				//if(istype(ticker.mode, /datum/game_mode/ice_colony))//drop a coif with the uniform on ice colony
-				if(map_tag == MAP_ICE_COLONY)
+				if(map_tag in MAPS_COLD_TEMP)
 					new /obj/item/clothing/mask/rebreather/scarf(loc)
 
 
@@ -1399,7 +1399,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 
 /obj/structure/machinery/cm_vending/tank/New()
 	..()
-	if(map_tag == MAP_ICE_COLONY)
+	if(map_tag in MAPS_COLD_TEMP)
 		armor_list += "Snowplow"
 
 /obj/effect/essentials_set

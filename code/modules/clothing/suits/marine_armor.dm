@@ -120,8 +120,10 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 /obj/item/clothing/suit/storage/marine/New(loc)
 	if(!(flags_atom & UNIQUE_ITEM_TYPE))
 		name = "[specialty]"
-		if(map_tag == MAP_ICE_COLONY) name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: admirals).
-		else name += " armor"
+		if(map_tag in MAPS_COLD_TEMP) 
+			name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: admirals).
+		else 
+			name += " armor"
 	if(type == /obj/item/clothing/suit/storage/marine)
 		var/armor_variation = rand(1,6)
 		icon_state = "[armor_variation]"
@@ -397,8 +399,10 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 
 /obj/item/clothing/suit/storage/marine/smartgunner/New(loc)
 	. = ..()
-	if(map_tag == MAP_ICE_COLONY) name = "M56 snow combat harness"
-	else name = "M56 combat harness"
+	if(map_tag in MAPS_COLD_TEMP)
+		name = "M56 snow combat harness"
+	else
+		name = "M56 combat harness"
 	//select_gamemode_skin(type)
 
 
@@ -437,8 +441,10 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 /obj/item/clothing/suit/storage/marine/class/New()
 	if(!(flags_atom & UNIQUE_ITEM_TYPE))
 		name = "[specialty]"
-		if(map_tag == MAP_ICE_COLONY) name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: admirals).
-		else name += " armor"
+		if(map_tag in MAPS_COLD_TEMP)
+			name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: admirals).
+		else
+			name += " armor"
 	if(istype(src, /obj/item/clothing/suit/storage/marine/class))
 		var/armor_variation = rand(1,6)
 		icon_state = "[class]" + "[armor_variation]"

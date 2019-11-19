@@ -596,6 +596,13 @@ Additional game mode variables.
 					"Survivor - Salesman",
 					"Survivor - Security",
 				)
+			if (MAP_SOROKYNE_STRATA)
+				survivor_types = list(
+					"Survivor - Scientist",
+					"Survivor - Doctor",
+					"Survivor - Salesman",
+					"Survivor - Security",
+				)
 			else
 				survivor_types = list(
 					"Survivor - Assistant",
@@ -791,7 +798,7 @@ Additional game mode variables.
 
 		var/products2[]
 		//if(istype(src, /datum/game_mode/ice_colony)) //Literally, we are in gamemode code
-		if(map_tag == MAP_ICE_COLONY)
+		if(map_tag in MAPS_COLD_TEMP)
 			products2 = list(
 				/obj/item/clothing/mask/rebreather/scarf = round(scale * 30),
 			)

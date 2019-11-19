@@ -606,6 +606,26 @@
 	basestate = "wood_rwindow"
 	window_frame = /obj/structure/window_frame/wood
 
+//Strata windows
+
+/obj/structure/window/framed/strata
+	name = "window"
+	icon = 'icons/turf/walls/strata_windows.dmi'
+	icon_state = "strata_window0"
+	basestate = "strata_window"
+	desc = "A glass window inside a wall frame."
+	health = 40
+	window_frame = /obj/structure/window_frame/strata
+
+/obj/structure/window/framed/strata/reinforced
+	name = "reinforced window"
+	icon_state = "strata_window0"
+	basestate = "strata_window"
+	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	health = 100
+	reinf = 1
+	window_frame = /obj/structure/window_frame/strata/reinforced
+
 //Prison windows
 
 

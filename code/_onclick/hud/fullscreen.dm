@@ -145,6 +145,19 @@
 	icon_state = "painoverlay"
 	layer = FULLSCREEN_PAIN_LAYER
 
+/obj/screen/fullscreen/weather
+	icon_state = "initialize this"
+	layer = FULLSCREEN_WEATHER_LAYER
+
+
+/obj/screen/fullscreen/weather/snow
+	icon_state = "test state"
+
+/obj/screen/fullscreen/weather/snowstorm
+	icon_state = "impairedoverlay1" // Populate this
+
+/obj/screen/fullscreen/weather/blizzard
+	icon_state = "impairedoverlay2" // Populate this
 
 /obj/screen/fullscreen/xeno_pain
 	icon_state = "xeno_painoverlay"

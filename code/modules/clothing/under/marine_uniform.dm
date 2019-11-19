@@ -26,8 +26,10 @@
 	..()
 	if(!(flags_atom & UNIQUE_ITEM_TYPE))
 		name = "[specialty]"
-		if(map_tag == MAP_ICE_COLONY) name += " snow uniform"
-		else name += " uniform"
+		if(map_tag in MAPS_COLD_TEMP) 
+			name += " snow uniform"
+		else 
+			name += " uniform"
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type, override_icon_state, new_protection)
 

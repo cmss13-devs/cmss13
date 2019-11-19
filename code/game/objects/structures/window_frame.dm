@@ -189,3 +189,15 @@
 	icon_state = "bnkr_rwindow0"
 	basestate = "bnkr_rwindow"
 	reinforced = TRUE
+
+//strata frames
+
+/obj/structure/window_frame/strata
+	icon = 'icons/turf/walls/strata_windows.dmi'
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+
+/obj/structure/window_frame/strata/reinforced
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+	reinforced = TRUE

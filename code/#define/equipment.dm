@@ -270,17 +270,17 @@
 #define SPACE_SUIT_max_heat_protection_temperature 		5000	//These need better heat protect, but not as good heat protect as firesuits.
 #define FIRESUIT_max_heat_protection_temperature 		30000 //what max_heat_protection_temperature is set to for firesuit quality headwear. MUST NOT BE 0.
 #define FIRE_HELMET_max_heat_protection_temperature 	30000 //for fire helmet quality items (red and white hardhats)
-#define HELMET_min_cold_protection_temperature 			200	//For normal helmets
+#define HELMET_min_cold_protection_temperature 			175	//For normal helmets
 #define HELMET_max_heat_protection_temperature 			600	//For normal helmets
 #define ARMOR_min_cold_protection_temperature 			200	//For armor
 #define ARMOR_max_heat_protection_temperature 			600	//For armor
 
-#define GLOVES_min_cold_protection_temperature 			200	//For some gloves (black and)
+#define GLOVES_min_cold_protection_temperature 			175	//For some gloves (black and)
 #define GLOVES_max_heat_protection_temperature 			650	//For some gloves
-#define SHOE_min_cold_protection_temperature 			200	//For gloves
+#define SHOE_min_cold_protection_temperature 			175	//For gloves
 #define SHOE_max_heat_protection_temperature 			650	//For gloves
 
-#define ICE_PLANET_min_cold_protection_temperature 		200 //For the ice planet map protection from the elements.
+#define ICE_PLANET_min_cold_protection_temperature 		175 //For the ice planet map protection from the elements.
 //=================================================
 
 //=================================================

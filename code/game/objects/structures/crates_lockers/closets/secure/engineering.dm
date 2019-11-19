@@ -108,10 +108,9 @@
 	new /obj/item/storage/backpack/industrial(src)
 
 /obj/structure/closet/secure_closet/engineering_personal/select_gamemode_equipment(gamemode)
-	switch(map_tag)
-		if(MAP_ICE_COLONY)
-			new /obj/item/clothing/suit/storage/snow_suit(src)
-			new /obj/item/clothing/mask/rebreather/scarf(src)
+	if (map_tag in MAPS_COLD_TEMP)
+		new /obj/item/clothing/suit/storage/snow_suit(src)
+		new /obj/item/clothing/mask/rebreather/scarf(src)
 
 /obj/structure/closet/secure_closet/atmos_personal
 	name = "technician's locker"

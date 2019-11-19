@@ -146,6 +146,8 @@
 
 #define SPAN_ANNOUNCEMENT_BODY(X) "<span class='announce_body'>[X]</span>"
 
+#define SPAN_AVOIDHARM(X) "<span class='avoidharm'>[X]</span>"
+
 #define SPAN_SCANNER(X) "<span class='scanner'>[X]</span>"
 
-#define SPAN_AVOIDHARM(X) "<span class='avoidharm'>[X]</span>"
+#define FONT_MESSAGE_ADMINS(X) "<font color='blue'>[X]</font>"

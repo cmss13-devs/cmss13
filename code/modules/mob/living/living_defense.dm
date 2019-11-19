@@ -175,3 +175,43 @@
 	IgniteMob()
 
 //Mobs on Fire end
+
+/mob/living/proc/update_weather()
+	// Only player mobs are affected by weather.
+	if (!src.client)
+		return
+
+	// Do this always
+	clear_fullscreen("weather")
+	remove_weather_effects()
+	
+	var/datum/subsystem/weather/weatherSS = null
+
+	for (var/datum/subsystem/weather/wss in Master.subsystems)
+		weatherSS = wss
+	
+	if (!weatherSS)
+		log_debug("Human mob [src] can't locate the weather controller.")
+		return
+
+
+	// Check if we're supposed to be something affected by weather
+	if (weatherSS.is_weather_event && weatherSS.weather_affects_check(src))
+
+		// Ok, we're affected by weather.
+
+		// Fullscreens
+		if (weatherSS.weather_event_instance.fullscreen_type)
+			overlay_fullscreen("weather", weatherSS.weather_event_instance.fullscreen_type)
+		else
+			clear_fullscreen("weather")
+
+		// Effects
+		if (weatherSS.weather_event_instance.effect_type)
+			new weatherSS.weather_event_instance.effect_type(src)
+	
+	// Clear our fullscreens and effect datums
+	else
+		clear_fullscreen("weather")
+		remove_weather_effects()
+		

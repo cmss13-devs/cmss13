@@ -85,6 +85,11 @@
 	html_link = "images/9/92/Trijent_Dam.png"
 	color = "#ad8d0e"
 
+/obj/item/map/sorokyne_map
+	name = "\improper Sorokyne Outpost Map"
+	desc = "A labelled schematic of the Sorokyne Outpost and the surrounding caves."
+	html_link = "placeholder" // TRIIODINE PUT URL HERE
+	color = "cyan"
 
 //used by marine equipment machines to spawn the correct map.
 /obj/item/map/current_map

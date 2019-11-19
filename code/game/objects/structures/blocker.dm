@@ -1,17 +1,21 @@
+// Impenetrable and invincible barriers
 /obj/structure/blocker
-    name = "blocker"
-    flags_can_pass_all = NO_FLAGS
+	name = "blocker"
+	flags_can_pass_all = NO_FLAGS
+	density = TRUE
+	anchored = TRUE
+	unacidable = TRUE
+	unslashable = TRUE
 
+/obj/structure/blocker/ex_act(severity)
+	return
 
 /obj/structure/blocker/invisible_wall
 	name = "invisible wall"
 	desc = "You cannot go this way."
 	icon = 'icons/old_stuff/mark.dmi'
 	icon_state = "x4"
-	anchored = TRUE
-	density = 1
 	opacity = 0
-	unacidable = TRUE
 	layer = ABOVE_FLY_LAYER + 0.1 //to make it visible in the map editor
 	mouse_opacity = 0
 
@@ -28,10 +32,7 @@
 	desc = "It looks way too dangerous to traverse. Best wait until it has cleared up."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
-	anchored = TRUE
-	density = 1
 	opacity = 1
-	unacidable = TRUE
 
 /obj/structure/blocker/fog/New()
     ..()

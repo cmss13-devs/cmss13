@@ -332,25 +332,25 @@
 
 /obj/item/device/cassette_tape/pop2
 	name = "rainbow cassette"
-	desc = "A plastic cassette tape with a rainbow colored sticker. It has marker scrawled on the front. It reads:\nSide 1\nDuran Duran - Rio\nMen Without Hats - Safety Dance\nDead or Alive - You Spin Me Right Round\nSide 2\nSoft Cell - Tainted Love\nA-HA - Take on Me\nEurythmics - Sweet Dreams"
+	desc = "A plastic cassette tape with a rainbow colored sticker. It has marker scrawled on the front. It reads:\nSide 1\nDuran Duran - Rio\nMen Without Hats - Safety Dance\nDead or Alive - You Spin Me Round (Like a Record)\nSide 2\nSoft Cell - Tainted Love\nA-HA - Take on Me\nEurythmics - Sweet Dreams"
 	icon_state = "cassette_rainbow"
 	side1_icon = "cassette_rainbow"
 	songs = list("side1" = list('sound/music/walkman/pop2/2-1-1Rio.ogg' = "Duran Duran - Rio",\
 								'sound/music/walkman/pop2/2-1-2SafetyDance.ogg' = "Men Without Hats - Safety Dance",\
-								'sound/music/walkman/pop2/2-1-3YouSpinMeRightRound.ogg' = "Dead or Alive - You Spin Me Right Round"),\
+								'sound/music/walkman/pop2/2-1-3YouSpinMeRightRound.ogg' = "Dead or Alive - You Spin Me Round (Like a Record"),\
 				 "side2" = list('sound/music/walkman/pop2/2-2-1TaintedLove.ogg' = "Soft Cell - Tainted Love",\
 								'sound/music/walkman/pop2/2-2-2TakeOnMe.ogg' = "A-HA - Take on Me",\
 								'sound/music/walkman/pop2/2-2-3SweetDreams.ogg' = "Eurythmics - Sweet Dreams"))
 
 /obj/item/device/cassette_tape/pop3
 	name = "orange cassette"
-	desc = "A plastic cassette tape with an orange sticker. It has marker scrawled on the front. It reads:\nSide 1\nREM - It's the End of the World as We Know It\nFlashdance - Maniac\nCorey Hart - Sunglasses at Night\nSide 2\nThe Go Go's - We Got the Beat\nWhitney Houston - I Wanna Dance with Somebody\nHuey Lewis - The Power Of Love "
+	desc = "A plastic cassette tape with an orange sticker. It has marker scrawled on the front. It reads:\nSide 1\nREM - It's the End of the World as We Know It\nFlashdance - Maniac\nCorey Hart - Sunglasses at Night\nSide 2\nThe Go-Go's - We Got the Beat\nWhitney Houston - I Wanna Dance with Somebody\nHuey Lewis - The Power Of Love "
 	icon_state = "cassette_orange"
 	side1_icon = "cassette_orange"
 	songs = list("side1" = list('sound/music/walkman/pop3/3-1-1EndOfTheWorldAsWeKnowIt.ogg' = "REM - It's the End of the World as We Know It",\
 								'sound/music/walkman/pop3/3-1-2Maniac.ogg' = "Flashdance - Maniac",\
 								'sound/music/walkman/pop3/3-1-3SunglassesAtNight.ogg' = "Corey Hart - Sunglasses at Night"),\
-				 "side2" = list('sound/music/walkman/pop3/3-2-1WeGotTheBeat.ogg' = "The Go Go's - We Got the Beat",\
+				 "side2" = list('sound/music/walkman/pop3/3-2-1WeGotTheBeat.ogg' = "The Go-Go's - We Got the Beat",\
 								'sound/music/walkman/pop3/3-2-2IWannaDanceWithSomebody.ogg' = "Whitney Houston - I Wanna Dance with Somebody",\
 								'sound/music/walkman/pop3/3-2-3ThePowerOfLove.ogg' = "Huey Lewis - The Power Of Love"))
 
@@ -416,12 +416,12 @@
 
 /obj/item/device/cassette_tape/nam
 	name = "green cassette"
-	desc = "A green plastic cassette tape. It has marker scrawled on the front. It reads:\nSide 1\nBlack Sabbath - Paranoid\nCreedence Clearwater Revival - Fortunate Son\nBuffalo Springfield - Stop Children What's That Sound\nSide 2\nTen Years After - I'd Love to Change the World\nJudas Priest - The Temptations - Ball of Confusion\nThe Outlaws - Green Grass and High Tides"
+	desc = "A green plastic cassette tape. It has marker scrawled on the front. It reads:\nSide 1\nBlack Sabbath - Paranoid\nCreedence Clearwater Revival - Fortunate Son\nBuffalo Springfield - For What it's Worth\nSide 2\nTen Years After - I'd Love to Change the World\nJudas Priest - The Temptations - Ball of Confusion\nThe Outlaws - Green Grass and High Tides"
 	icon_state = "cassette_green"
 	side1_icon = "cassette_green"
 	songs = list("side1" = list('sound/music/walkman/nam/09-1-1Paranoid.ogg' = "Black Sabbath - Paranoid",\
 								'sound/music/walkman/nam/09-1-2FortunateSon.ogg' = "Creedence Clearwater Revival - Fortunate Son",\
-								'sound/music/walkman/nam/09-1-3StopChildrenWhatsThatSound.ogg' = "Buffalo Springfield - Stop Children What's That Sound"),\
+								'sound/music/walkman/nam/09-1-3StopChildrenWhatsThatSound.ogg' = "Buffalo Springfield - For What it's Worth"),\
 				 "side2" = list('sound/music/walkman/nam/09-2-1IdLoveToChangeTheWorld.ogg' = "Ten Years After - I'd Love to Change the World",\
 								'sound/music/walkman/nam/09-2-2BallOfConfusion.ogg' = "The Temptations - Ball of Confusion",\
 								'sound/music/walkman/nam/09-2-3GreenGrassAndHighTides.ogg' = "The Outlaws - Green Grass and High Tides"))

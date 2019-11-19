@@ -3,7 +3,6 @@
 
 	handle_fire() //Check if we're on fire
 
-
 /mob/living/carbon/Dispose()
 	for(var/datum/disease/virus in viruses)
 		virus.cure()

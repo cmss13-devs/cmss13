@@ -62,11 +62,10 @@
 
 /obj/structure/machinery/vending/marine/select_gamemode_equipment(gamemode)
 	var/products2[]
-	switch(map_tag)
-		if(MAP_ICE_COLONY)
-			products2 = list(
-						/obj/item/clothing/mask/rebreather/scarf = 10,
-							)
+	if (map_tag in MAPS_COLD_TEMP)
+		products2 = list(
+					/obj/item/clothing/mask/rebreather/scarf = 10,
+						)
 	build_inventory(products2)
 
 /obj/structure/machinery/vending/marine/New()
@@ -639,6 +638,8 @@
 			products2 = list(/obj/item/map/lazarus_landing_map = 3)
 		if(MAP_DESERT_DAM)
 			products2 = list(/obj/item/map/desert_dam = 3)
+		if (MAP_SOROKYNE_STRATA)
+			products2 = list(/obj/item/map/sorokyne_map = 3)
 	build_inventory(products2)
 
 

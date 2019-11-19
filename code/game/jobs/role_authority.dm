@@ -410,9 +410,9 @@ roles willy nilly.
 		var/obj/effect/landmark/L //To iterate.
 		var/obj/effect/landmark/S //Starting mark.
 		for(i in landmarks_list)
-			L = i
-			if(L.name == J.title && !locate(/mob/living) in L.loc)
-				S = L
+		L = i
+		if(L && L.name == J.title && !locate(/mob/living) in L.loc)
+			S = L
 				break
 		if(!S) S = locate("start*[J.title]") //Old type spawn.
 		if(istype(S) && istype(S.loc, /turf)) M.loc = S.loc

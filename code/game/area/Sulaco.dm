@@ -51,6 +51,7 @@
 	name = "\improper Alamo Landing Zone"
 	icon_state = "away1"
 
+
 /area/shuttle/drop2/Enter(atom/movable/O, atom/oldloc)
 	if(istype(O, /obj/structure/barricade))
 		return FALSE
@@ -95,6 +96,8 @@
 /area/shuttle/drop2/lz2
 	name = "\improper Normandy Landing Zone"
 	icon_state = "away2"
+
+
 
 
 

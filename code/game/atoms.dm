@@ -440,3 +440,7 @@ its easier to just keep the beam vertical.
 /atom/proc/extinguish_acid()
 	for(var/datum/effects/acid/A in effects_list)
 		qdel(A)
+
+/atom/proc/remove_weather_effects()
+	for(var/datum/effects/weather/W in effects_list)
+		qdel(W)

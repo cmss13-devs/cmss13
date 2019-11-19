@@ -1244,6 +1244,9 @@ obj/structure/barricade/proc/take_damage(var/damage)
 /obj/structure/barricade/handrail/type_b
 	icon_state = "handrail_b_0"
 
+/obj/structure/barricade/handrail/strata
+	icon_state = "handrail_strata"
+
 
 /*----------------------*/
 // WIRED STATES

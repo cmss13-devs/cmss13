@@ -120,6 +120,9 @@
 //TODO: Make this code better and less repetetive
 //Spawns a tank that has a bunch of broken hardpoints
 /obj/effect/multitile_spawner/cm_armored/tank/decrepit/New()
+	if (map_tag == MAP_SOROKYNE_STRATA)
+		del(src)
+		return
 
 	var/obj/vehicle/multitile/root/cm_armored/tank/R = new(src.loc)
 	R.dir = EAST

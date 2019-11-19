@@ -277,8 +277,10 @@
 	new_protection[]	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
 	if(!(flags_atom & UNIQUE_ITEM_TYPE))
 		name = "[specialty]"
-		if(map_tag == MAP_ICE_COLONY) name += " snow helmet"
-		else name += " helmet"
+		if(map_tag in MAPS_COLD_TEMP)
+			name += " snow helmet"
+		else
+			name += " helmet"
 
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type,null,new_protection)

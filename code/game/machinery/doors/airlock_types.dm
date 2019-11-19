@@ -205,8 +205,32 @@
 	assembly_type = /obj/structure/door_assembly/door_assembly_highsecurity
 
 
+//STRATA AIRLOCKS // Add me later y'know?
+/obj/structure/machinery/door/airlock/strata
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/strata/strata_doors.dmi' //Whoever made it so each door is it's own sheet and doesn't dynamically use overlays ought to be drawn and quartered.
+	openspeed = 5
+	req_access = null // Colony side airlocks should not have any sort of access.
+	req_one_access = null
+	tiles_with = list(
+		/obj/structure/window/framed/strata,
+		/obj/structure/machinery/door/airlock)
 
+/obj/structure/machinery/door/airlock/strata/New()
+	add_timer(CALLBACK(src, /atom/proc/relativewall_neighbours), 10)
+	..()
 
+/obj/structure/machinery/door/airlock/strata/maintenance
+	name = "\improper Maintenance Airlock"
+	icon = 'icons/obj/structures/doors/strata/strata_maint.dmi'
+
+/obj/structure/machinery/door/airlock/strata/security
+	name = "\improper Security Airlock"
+	icon = 'icons/obj/structures/doors/strata/strata_sec.dmi'
+
+/obj/structure/machinery/door/airlock/strata/mining
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/strata/strata_mining.dmi'
 
 //ALMAYER AIRLOCKS
 

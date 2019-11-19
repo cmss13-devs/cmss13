@@ -81,3 +81,27 @@ obj/structure/platform_decoration
 
 /obj/structure/platform/ex_act()
 	return
+
+//Map variants//
+
+//Strata purple ice//
+/obj/structure/platform_decoration/strata
+	name = "ice rock corner"
+	desc = "A solid chunk of desolate rocks and ice."
+	icon_state = "strata_platform_deco"
+
+/obj/structure/platform/strata
+	name = "ice rock edge"
+	desc = "A solid chunk of desolate rocks and ice. Looks like you could climb it with some difficulty."
+	icon_state = "strata_platform"
+	climb_delay = 10 //Lowered climb speed for both sides since people complained. Half of the base climb delay since these are in combat zones. To-Do, specific climb speeds for up and down, xenos, climb verb, macro, auto-climb client pref.
+//Strata wall metal platforms
+/obj/structure/platform_decoration/strata/metal
+	name = "raised metal corner"
+	desc = "A raised level of metal, often used to elevate areas above others. This is the corner."
+	icon_state = "strata_metalplatform_deco"
+
+/obj/structure/platform/strata/metal
+	name = "raised metal edge"
+	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	icon_state = "strata_metalplatform"

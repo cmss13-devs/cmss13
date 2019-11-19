@@ -104,6 +104,7 @@
 			if(MAP_BIG_RED) monkey_types = list(/mob/living/carbon/human/neaera)
 			if(MAP_PRISON_STATION) monkey_types = list(/mob/living/carbon/human/monkey)
 			if(MAP_DESERT_DAM) monkey_types = list(/mob/living/carbon/human/stok)
+			if(MAP_SOROKYNE_STRATA) monkey_types = list(/mob/living/carbon/human/yiren)
 			else monkey_types = list(/mob/living/carbon/human/monkey) //make sure we always have a monkey type
 		if(monkey_types.len)
 			for(var/i = min(monkey_amount,monkey_spawns.len), i > 0, i--)
@@ -166,6 +167,8 @@
 				marine_announcement("An automated distress signal has been received from maximum-security prison \"Fiorina Orbital Penitentiary\". A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
 			if(MAP_DESERT_DAM)
 				marine_announcement("We've lost contact with Weyland-Yutani's extra-solar colony, \"[map_tag]\", on the planet \"Navarone.\" The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
+			if (MAP_SOROKYNE_STRATA)
+				marine_announcement("An automated distress signal has been recieved from a mining colony on border world LV-976, \"Sorokyne Outpost\". A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
 	..()
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////

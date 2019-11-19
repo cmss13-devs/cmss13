@@ -15,7 +15,9 @@
 	var/can_build_special = FALSE
 	var/is_resin_allowed = TRUE	// can xenos weed, place resin holes or dig tunnels at said areas
 	var/powernet_name = "default" //Default powernet name. Change to something else to make completely separate powernets
-
+	
+	// Weather
+	var/weather_enabled = TRUE	// Manual override for weather if set to false
 
 /area/New()
 	..()
@@ -303,14 +305,18 @@
 		return
 
 	if(!istype(A,/mob/living))	return
-
 	var/mob/living/L = A
+	
+	// Update all our weather vars and trackers
+	L.update_weather()
+
 	if(!L.ckey)	return
 
 	if(!L.lastarea)
 		L.lastarea = get_area(L.loc)
 	var/area/newarea = get_area(L.loc)
 	var/area/oldarea = L.lastarea
+
 	if((oldarea.has_gravity == 0) && (newarea.has_gravity == 1) && (L.m_intent == MOVE_INTENT_RUN)) // Being ready when you change areas gives you a chance to avoid falling all together.
 		thunk(L)
 		L.make_floating(0)

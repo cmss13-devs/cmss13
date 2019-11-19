@@ -523,3 +523,9 @@
 			return "cult"
 		if (WALL_STONE)
 			return "stone"
+		if (WALL_STRATA_ICE)
+			return "strata_ice"
+		if (WALL_STRATA_OUTPOST_RIBBED)
+			return "strata_ribbed_outpost_"
+		if (WALL_STRATA_OUTPOST_BARE)
+			return "strata_bare_outpost_"

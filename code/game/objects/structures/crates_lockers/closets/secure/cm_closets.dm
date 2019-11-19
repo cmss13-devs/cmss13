@@ -25,9 +25,8 @@
 		icon_off = "squad_[closet_squad]_off"
 
 /obj/structure/closet/secure_closet/marine/select_gamemode_equipment(gamemode)
-	switch(map_tag)
-		if(MAP_ICE_COLONY)
-			new /obj/item/clothing/mask/rebreather/scarf(src)
+	if(map_tag in MAPS_COLD_TEMP)
+		new /obj/item/clothing/mask/rebreather/scarf(src)
 
 
 // STANDARD MARINE
@@ -361,9 +360,8 @@
 	new /obj/item/stack/fulton(src)
 
 /obj/structure/closet/secure_closet/staff_officer/intel/select_gamemode_equipment(gamemode)
-	switch(map_tag)
-		if(MAP_ICE_COLONY)
-			new /obj/item/clothing/mask/rebreather/scarf(src)
+	if (map_tag in MAPS_COLD_TEMP)
+		new /obj/item/clothing/mask/rebreather/scarf(src)
 
 /obj/structure/closet/secure_closet/pilot_officer
 	name = "pilot officer's locker"
@@ -388,10 +386,9 @@
 	new /obj/item/clothing/glasses/sunglasses(src)
 
 /obj/structure/closet/secure_closet/pilot_officer/select_gamemode_equipment(gamemode)
-	switch(map_tag)
-		if(MAP_ICE_COLONY)
-			new /obj/item/clothing/mask/rebreather/scarf(src)
-			new /obj/item/clothing/mask/rebreather/scarf(src)
+	if (map_tag in MAPS_COLD_TEMP)
+		new /obj/item/clothing/mask/rebreather/scarf(src)
+		new /obj/item/clothing/mask/rebreather/scarf(src)
 
 /**********************Military Police Gear**************************/
 /obj/structure/closet/secure_closet/military_police
@@ -505,10 +502,9 @@
 	new /obj/item/clothing/glasses/hud/health(src)
 
 /obj/structure/closet/secure_closet/medical_doctor/select_gamemode_equipment(gamemode)
-	switch(map_tag)
-		if(MAP_ICE_COLONY)
-			new /obj/item/clothing/suit/storage/snow_suit/doctor(src)
-			new /obj/item/clothing/mask/rebreather/scarf(src)
+	if (map_tag in MAPS_COLD_TEMP)
+		new /obj/item/clothing/suit/storage/snow_suit/doctor(src)
+		new /obj/item/clothing/mask/rebreather/scarf(src)
 
 /obj/structure/closet/secure_closet/hydroresearch
 	name = "Hydroponics Research Locker"

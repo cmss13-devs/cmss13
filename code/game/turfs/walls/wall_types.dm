@@ -325,6 +325,7 @@
 		if(r1 >= 9)
 			overlays += image(icon, icon_state = "wood_variant")
 
+//Colorable rocks. Looks like moonsand.
 
 /turf/closed/wall/rock
 	name = "rock wall"
@@ -351,6 +352,33 @@
 
 /turf/closed/wall/rock/ice/thin
 	alpha = 166
+
+//Strata New Blendy Ice
+
+/turf/closed/wall/strata_ice
+	name = "ice columns"
+	icon = 'icons/turf/walls/strata_ice.dmi'
+	icon_state = "strata_ice"
+	desc = "An absolutely massive collection of columns made of ice. The longer you stare, the deeper the ice seems to go."
+	walltype = WALL_STRATA_ICE //Not a metal wall
+	hull = 1 //Can't break this ice.
+
+/turf/closed/wall/strata_outpost_ribbed //this guy is our reinforced replacement
+	name = "ribbed outpost walls"
+	icon = 'icons/turf/walls/strata_outpost.dmi'
+	icon_state = "strata_ribbed_outpost_"
+	desc = "A thick and chunky metal wall covered in jagged ribs."
+	walltype = WALL_STRATA_OUTPOST_RIBBED
+	damage_cap = 1000 
+	max_temperature = 28000 
+
+/turf/closed/wall/strata_outpost_bare
+	name = "bare outpost walls"
+	icon = 'icons/turf/walls/strata_outpost.dmi'
+	icon_state = "strata_bare_outpost_"
+	desc = "A thick and chunky metal wall. The surface is barren and imposing."
+	walltype = WALL_STRATA_OUTPOST_BARE
+
 
 //Xenomorph's Resin Walls
 

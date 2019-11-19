@@ -1,3 +1,7 @@
+#define AUTOLATHE_WIRE_HACK 	1
+#define AUTOLATHE_WIRE_SHOCK	2
+#define AUTOLATHE_WIRES_UNCUT	(AUTOLATHE_WIRE_HACK|AUTOLATHE_WIRE_SHOCK) // when none of the wires are cut
+
 /obj/structure/machinery/autolathe
 	name = "\improper autolathe"
 	desc = "It produces items using metal and glass."
@@ -9,115 +13,36 @@
 	active_power_usage = 100
 
 	var/list/stored_material =  list("metal" = 32500, "glass" = 20000)
+	var/list/projected_stored_material // will be <= stored_material values
 	var/list/storage_capacity = list("metal" = 0, "glass" = 0)
 	var/show_category = "All"
+	var/list/printable = list() // data list of each printable item (for NanoUI)
 
-	var/opened = 0
-	var/hacked = 0
-	var/disabled = 0
-	var/shocked = 0
-	var/busy = 0
+	var/panel_open = FALSE
+	var/hacked = FALSE
+	var/seconds_electrified = 0
+	var/busy = FALSE
 
-	var/list/wires = list()
-	var/hack_wire
-	var/disable_wire
-	var/shock_wire
+	var/wires = AUTOLATHE_WIRES_UNCUT
 
-/obj/structure/machinery/autolathe/interact(mob/user as mob)
+	var/list/queue = list()
+	var/queue_max = AUTOLATHE_MAX_QUEUE
 
-	if(..() || disabled)
-		return
-
-	if (shocked)
-		shock(user,50)
-
-	var/dat = "<center><h1>Autolathe Control Panel</h1><hr/>"
-
-	dat += "<table width = '100%'>"
-	var/material_top = "<tr>"
-	var/material_bottom = "<tr>"
-
-	for(var/material in stored_material)
-		material_top += "<td width = '25%' align = center><b>[material]</b></td>"
-		material_bottom += "<td width = '25%' align = center>[stored_material[material]]<b>/[storage_capacity[material]]</b></td>"
-
-	dat += "[material_top]</tr>[material_bottom]</tr></table><hr>"
-	dat += "<h2>Printable Designs</h2><h3>Showing: <a href='?src=\ref[src];change_category=1'>[show_category]</a>.</h3></center><table width = '100%'>"
-
-	var/index = 0
-	for(var/datum/autolathe/recipe/R in autolathe_recipes)
-		index++
-		if(R.hidden && !hacked || (show_category != "All" && show_category != R.category))
-			continue
-
-		var/can_make = 1
-		var/material_string = ""
-		var/multiplier_string = ""
-		var/max_sheets
-
-		var/comma
-		if(!R.resources || !R.resources.len)
-			material_string = "No resources required.</td>"
-		else
-
-			//Make sure it's buildable and list requires resources.
-			for(var/material in R.resources)
-				var/sheets = round(stored_material[material]/R.resources[material])
-				if(isnull(max_sheets) || max_sheets > sheets)
-					max_sheets = sheets
-
-				if(!isnull(stored_material[material]) && stored_material[material] < R.resources[material])
-					can_make = 0
-				if(!comma)
-					comma = 1
-				else
-					material_string += ", "
-				material_string += "[R.resources[material]] [material]"
-			material_string += ".<br></td>"
-
-			//Build list of multipliers for sheets.
-			if(R.is_stack)
-				if(max_sheets && max_sheets > 0)
-					multiplier_string  += "<br>"
-					for(var/i = 5;i<max_sheets;i*=2) //5,10,20,40...
-						multiplier_string  += "<a href='?src=\ref[src];make=[index];multiplier=[i]'>\[x[i]\]</a>"
-					multiplier_string += "<a href='?src=\ref[src];make=[index];multiplier=[max_sheets]'>\[x[max_sheets]\]</a>"
-
-		dat += "<tr><td width = 180>[R.hidden ? "<font color = 'red'>*</font>" : ""]<b>[can_make ? "<a href='?src=\ref[src];make=[index];multiplier=1'>" : ""][R.name][can_make ? "</a>" : ""]</b>[R.hidden ? "<font color = 'red'>*</font>" : ""][multiplier_string]</td><td align = right>[material_string]</tr>"
-
-	dat += "</table><hr>"
-
-	//Hacking.
-	if(opened)
-		dat += "<h2>Maintenance Panel</h2>"
-		for(var/wire in wires)
-			dat += "[wire] Wire: <A href='?src=\ref[src];wire=[wire];act=wire'>[wires[wire] ? "Mend" : "Cut"]</A> <A href='?src=\ref[src];wire=[wire];act=pulse'>Pulse</A><BR>"
-		dat += "<br>"
-		dat += "The red light is [disabled ? "off" : "on"].<br>"
-		dat += "The green light is [shocked ? "off" : "on"].<br>"
-		dat += "The blue light is [hacked ? "off" : "on"].<br>"
-
-		dat += "<hr>"
-
-	user << browse(dat, "window=autolathe")
-	onclose(user, "autolathe")
+/obj/structure/machinery/autolathe/Initialize()
+	..()
+	projected_stored_material = stored_material.Copy()
 
 /obj/structure/machinery/autolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if (busy)
-		to_chat(user, SPAN_DANGER("\The [src] is busy. Please wait for completion of previous operation."))
-		return
-
-	if(istype(O, /obj/item/tool/screwdriver))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if (istype(O, /obj/item/tool/screwdriver))
+		if (!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 			return
-		opened = !opened
-		icon_state = (opened ? "autolathe_t": "autolathe")
-		to_chat(user, "You [opened ? "open" : "close"] the maintenance hatch of [src].")
-		updateUsrDialog()
+		panel_open = !panel_open
+		icon_state = (panel_open ? "autolathe_t": "autolathe")
+		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance hatch of [src].")
 		return
 
-	if (opened)
+	if (panel_open)
 		//Don't eat multitools or wirecutters used on an open lathe.
 		if(istype(O, /obj/item/device/multitool) || istype(O, /obj/item/tool/wirecutters))
 			attack_hand(user)
@@ -133,7 +58,7 @@
 
 	//Resources are being loaded.
 	var/obj/item/eating = O
-	if(!eating.matter)
+	if (!eating.matter)
 		to_chat(user, "\The [eating] does not contain significant amounts of useful materials and cannot be accepted.")
 		return
 
@@ -163,6 +88,7 @@
 			filltype = 2
 
 		stored_material[material] += total_material
+		projected_stored_material[material] += total_material
 		total_used += total_material
 		mass_per_sheet += eating.matter[material]
 
@@ -176,150 +102,137 @@
 
 	flick("autolathe_o",src) // Plays metal insertion animation. Work out a good way to work out a fitting animation. ~Z
 
-	if(istype(eating,/obj/item/stack))
+	if (istype(eating,/obj/item/stack))
 		var/obj/item/stack/stack = eating
 		stack.use(max(1,round(total_used/mass_per_sheet))) // Always use at least 1 to prevent infinite materials.
-	else
-		if(user.temp_drop_inv_item(O))
-			qdel(O)
+	else if (user.temp_drop_inv_item(O))
+		qdel(O)
 
 	updateUsrDialog()
 	return TRUE //so the item's afterattack isn't called
 
-/obj/structure/machinery/autolathe/attack_hand(mob/user as mob)
+/obj/structure/machinery/autolathe/process()
+	if (seconds_electrified > 0)
+		seconds_electrified--
+	
+	if (seconds_electrified <= 0)
+		stop_processing()
+
+/obj/structure/machinery/autolathe/attack_hand(var/mob/user)
 	if (stat)
 		return
 
+	if (seconds_electrified != 0)
+		shock(user, 50)
+
 	user.set_interaction(src)
-	interact(user)
+	ui_interact(user)
 
 /obj/structure/machinery/autolathe/Topic(href, href_list)
-
 	if(..())
 		return
 
 	usr.set_interaction(src)
 	add_fingerprint(usr)
 
-	if(busy)
-		to_chat(usr, SPAN_DANGER("The autolathe is busy. Please wait for completion of previous operation."))
+	if (href_list["change_category"])
+		var/choice = input("Which category do you wish to display?") as null|anything in autolathe_categories+"All"
+		if(!choice) 
+			return
+		show_category = choice
+		update_printable()
 		return
 
-	if(href_list["change_category"])
+	else if (href_list["cancel"])
+		var/index = text2num(href_list["index"])
+		if (index < 1 || index > queue.len)
+			return
+		
+		var/list/to_del = queue[index]
+		var/datum/autolathe/recipe/making = to_del[1]
+		var/multiplier = to_del[2]
 
-		var/choice = input("Which category do you wish to display?") as null|anything in autolathe_categories+"All"
-		if(!choice) return
-		show_category = choice
+		if (making.name != href_list["name"])
+			return
+		else if (multiplier != text2num(href_list["multiplier"]))
+			return
+		
+		for (var/material in making.resources)
+			projected_stored_material[material] = min(projected_stored_material[material]+(making.resources[material]*multiplier), storage_capacity[material])
 
-	if(href_list["make"] && autolathe_recipes)
+		to_chat(usr, SPAN_NOTICE("Removed the item \the [making.name] from the queue."))
+		queue -= list(to_del)
+		update_printable()
+		return
 
+	else if (href_list["make"] && autolathe_recipes)
 		var/index = text2num(href_list["make"])
 		var/multiplier = text2num(href_list["multiplier"])
 		var/datum/autolathe/recipe/making
-		var/make_loc = get_step(loc, get_dir(src,usr))
+		var/turf/make_loc = get_step(loc, get_dir(src,usr))
 
-		if(index > 0 && index <= autolathe_recipes.len)
+		if (!ishuman(usr))
+			return
+
+		if (index > 0 && index <= autolathe_recipes.len)
 			making = autolathe_recipes[index]
 
 		//Exploit detection, not sure if necessary after rewrite.
-		if(!making || multiplier < 0 || multiplier > 100)
+		if (!making || multiplier < 0 || multiplier > 100)
 			var/turf/exploit_loc = get_turf(usr)
 			message_admins("[key_name_admin(usr)] tried to exploit an autolathe to duplicate an item! ([exploit_loc ? "<a href='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[exploit_loc.x];Y=[exploit_loc.y];Z=[exploit_loc.z]'>JMP</a>" : "null"])", 0)
 			log_admin("EXPLOIT : [key_name(usr)] tried to exploit an autolathe to duplicate an item!")
 			return
 
-		//This needs some work.
-		use_power(max(2000, (making.power_use*multiplier)))
-
-		//Check if we still have the materials.
-		for(var/material in making.resources)
-			if(!isnull(stored_material[material]))
-				if(stored_material[material] < (making.resources[material]*multiplier))
+		if (making.is_stack)
+			if (try_queue(usr, making, make_loc, multiplier) == AUTOLATHE_START_PRINTING)
+				start_printing()
+			return
+		
+		for (var/i in 1 to multiplier)
+			var/result = try_queue(usr, making, make_loc)
+			switch (result)
+				if (AUTOLATHE_FAILED)
 					return
+				if (AUTOLATHE_START_PRINTING)
+					start_printing()			
+		
+		return
 
-		busy = 1
+	else if ((href_list["cutwire"]) && (panel_open))
+		var/wire = text2num(href_list["cutwire"])
 
-		//Consume materials.
-		for(var/material in making.resources)
-			if(!isnull(stored_material[material]))
-				stored_material[material] = max(0,stored_material[material]-(making.resources[material]*multiplier))
+		if (!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+			return
 
-		//Fancy autolathe animation.
-		flick("autolathe_n",src)
+		if (!iswirecutter(usr.get_active_hand()))
+			to_chat(usr, "You need wirecutters!")
+			return
 
-		//immediately update the autolathe window
-		updateUsrDialog()
+		if (isWireCut(wire))
+			mend(wire, usr)
+		else
+			cut(wire, usr)
 
-		sleep(50)
+	else if ((href_list["pulsewire"]) && (panel_open))
+		var/wire = text2num(href_list["pulsewire"])
 
-		busy = 0
+		if (!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+			return 0
 
-		//Sanity check.
-		if(!making || !src) return
+		if (!ismultitool(usr.get_active_hand()))
+			to_chat(usr, "You need a multitool!")
+			return
 
-		//Create the desired item.
-		var/obj/item/I = new making.path(make_loc)
-		if(multiplier>1 && istype(I,/obj/item/stack))
-			var/obj/item/stack/S = I
-			S.amount = multiplier
-
-	if(href_list["act"])
-
-		var/temp_wire = href_list["wire"]
-		if(href_list["act"] == "pulse")
-
-			if (!istype(usr.get_active_hand(), /obj/item/device/multitool))
-				to_chat(usr, "You need a multitool!")
-				return
-
-			if(wires[temp_wire])
-				to_chat(usr, "You can't pulse a cut wire.")
-				return
-
-			if(hack_wire == temp_wire)
-				hacked = !hacked
-
-				spawn(100)
-					hacked = !hacked
-
-			if(disable_wire == temp_wire)
-				disabled = !disabled
-				shock(usr,50)
-
-				spawn(100)
-					disabled = !disabled
-
-			if(shock_wire == temp_wire)
-				shocked = !shocked
-				shock(usr,50)
-
-				spawn(100)
-					shocked = !shocked
-
-		else if(href_list["act"] == "wire")
-
-			if (!istype(usr.get_active_hand(), /obj/item/tool/wirecutters))
-				to_chat(usr, "You need wirecutters!")
-				return
-
-			wires[temp_wire] = !wires[temp_wire]
-
-			if(hack_wire == temp_wire)
-				hacked = !hacked
-
-			if(disable_wire == temp_wire)
-				disabled = !disabled
-				shock(usr,50)
-
-			if(shock_wire == temp_wire)
-				shocked = !shocked
-				shock(usr,50)
-
-	updateUsrDialog()
-
+		if (isWireCut(wire))
+			to_chat(usr, "You can't pulse a cut wire.")
+			return
+		else
+			pulse(wire, usr)
 
 /obj/structure/machinery/autolathe/New()
-
 	..()
 
 	//Create global autolathe recipe list if it hasn't been made already.
@@ -352,28 +265,7 @@
 	component_parts += new /obj/item/stock_parts/console_screen(src)
 	RefreshParts()
 
-	//Init wires.
-	wires = list(
-		"Light Red" = 0,
-		"Dark Red" = 0,
-		"Blue" = 0,
-		"Green" = 0,
-		"Yellow" = 0,
-		"Black" = 0,
-		"White" = 0,
-		"Gray" = 0,
-		"Orange" = 0,
-		"Pink" = 0
-		)
-
-	//Randomize wires.
-	var/list/w = list("Light Red","Dark Red","Blue","Green","Yellow","Black","White","Gray","Orange","Pink")
-	hack_wire = pick(w)
-	w -= hack_wire
-	shock_wire = pick(w)
-	w -= shock_wire
-	disable_wire = pick(w)
-	w -= disable_wire
+	update_printable()
 
 //Updates overall lathe storage size.
 /obj/structure/machinery/autolathe/RefreshParts()
@@ -395,6 +287,228 @@
 			S.amount = round(stored_material[mat] / S.perunit)
 			S.loc = loc
 	..()
+
+/obj/structure/machinery/autolathe/proc/try_queue(var/mob/living/carbon/human/user, var/datum/autolathe/recipe/making, var/turf/make_loc, var/multiplier = 1)
+	if (queue.len >= queue_max)
+		to_chat(usr, SPAN_DANGER("The autolathe has queued the maximum number of operations. Please wait for completion of current operation."))
+		return AUTOLATHE_FAILED
+
+	//This needs some work.
+	use_power(max(2000, (making.power_use*multiplier)))
+
+	//Check if we still have the materials.
+	for(var/material in making.resources)
+		if(projected_stored_material[material] && projected_stored_material[material] >= (making.resources[material]*multiplier))
+			continue
+		to_chat(user, SPAN_DANGER("The autolathe does not have the materials to create \the [making.name]."))
+		return AUTOLATHE_FAILED
+
+	for (var/material in making.resources)
+		projected_stored_material[material] = max(0, projected_stored_material[material]-(making.resources[material]*multiplier))
+
+	var/list/print_params = list(making, multiplier, make_loc)
+	queue += list(print_params) // This notation is necessary because of how adding to lists works
+
+	if (busy)
+		to_chat(usr, SPAN_NOTICE("Added the item \"[making.name]\" to the queue."))
+		update_printable()
+		return AUTOLATHE_QUEUED
+
+	return AUTOLATHE_START_PRINTING
+
+/obj/structure/machinery/autolathe/proc/start_printing()
+	set waitfor = FALSE
+
+	var/list/print_params
+
+	busy = TRUE
+
+	while (queue.len)
+		print_params = queue[1]
+		queue -= list(print_params)
+		print_item(arglist(print_params))
+
+	busy = FALSE
+
+/obj/structure/machinery/autolathe/proc/print_item(var/datum/autolathe/recipe/making, var/multiplier, var/turf/make_loc)
+	// Make sure autolathe can print the item
+	for(var/material in making.resources)
+		if(isnull(stored_material[material]) || stored_material[material] < (making.resources[material]*multiplier))
+			visible_message("The autolathe beeps rapidly, unable to print the current item \"[making.name]\".")
+			return
+
+	//Consume materials.
+	for(var/material in making.resources)
+		if(stored_material[material])
+			stored_material[material] = max(0,stored_material[material]-(making.resources[material]*multiplier))
+
+	update_printable()
+
+	//Fancy autolathe animation.
+	flick("autolathe_n",src)
+
+	playsound(src, 'sound/machines/print.ogg', 25)
+	sleep(SECONDS_5)
+	playsound(src, 'sound/machines/print_off.ogg', 25)
+
+	//Sanity check.
+	if(!making || !src) 
+		return
+
+	//Create the desired item.
+	var/obj/item/I = new making.path(make_loc)
+	if(multiplier > 1 && istype(I,/obj/item/stack))
+		var/obj/item/stack/S = I
+		S.amount = multiplier
+
+/obj/structure/machinery/autolathe/proc/get_wire_descriptions()
+	return list(
+		AUTOLATHE_WIRE_HACK    	= "Item template controller",
+		AUTOLATHE_WIRE_SHOCK	= "Ground safety"
+	)
+
+/obj/structure/machinery/autolathe/proc/isWireCut(var/wire)
+	return !(wires & getWireFlag(wire))
+
+/obj/structure/machinery/autolathe/proc/cut(var/wire, var/mob/user)
+	wires ^= getWireFlag(wire)
+
+	switch (wire)
+		if (AUTOLATHE_WIRE_HACK)
+			hacked = TRUE
+			visible_message(SPAN_NOTICE("A blue light turns on in the panel of \the [src]."))
+			update_printable()
+		if (AUTOLATHE_WIRE_SHOCK)
+			shock(user, 50)
+			seconds_electrified = -1
+			visible_message(SPAN_DANGER("A green light turns on in the panel of \the [src] \
+				as electric arcs continuously shoot off from it!"))
+
+/obj/structure/machinery/autolathe/proc/mend(var/wire, var/mob/user)
+	wires |= getWireFlag(wire)
+
+	switch (wire)
+		if (AUTOLATHE_WIRE_HACK)
+			hacked = FALSE
+			visible_message(SPAN_NOTICE("A blue light turns off in the panel of \the [src]."))
+			update_printable()
+		if (AUTOLATHE_WIRE_SHOCK)
+			shock(user, 50)
+			seconds_electrified = 0
+			visible_message(SPAN_DANGER("A green light turns off in the panel of \the [src]."))
+
+/obj/structure/machinery/autolathe/proc/pulse(var/wire, var/mob/user)
+	switch (wire)
+		if (AUTOLATHE_WIRE_HACK)
+			hacked = !hacked
+			visible_message(SPAN_NOTICE("A blue light flickers [hacked ? "on" : "off"] in the panel of \the [src]."))
+			update_printable()
+			add_timer(CALLBACK(src, .proc/flip_hacked), SECONDS_10)
+		if (AUTOLATHE_WIRE_SHOCK)
+			shock(user, 50)
+			seconds_electrified = 10
+			if (!machine_processing)
+				start_processing()
+			visible_message(SPAN_DANGER("A green light flashes in the panel of \the [src] \
+				as electric arcs shoot off from it!"))
+
+/obj/structure/machinery/autolathe/proc/flip_hacked()
+	hacked = !hacked
+	update_printable()
+
+/obj/structure/machinery/autolathe/proc/update_printable()
+	var/index = 0
+	var/max_print_amt
+	var/print_amt
+
+	printable = list()
+
+	for(var/datum/autolathe/recipe/R in autolathe_recipes)
+		index++
+
+		if (R.hidden && !hacked || (show_category != "All" && show_category != R.category))
+			continue
+		
+		var/list/print_data = list()
+
+		print_data["name"] = R.name
+		print_data["index"] = index
+		print_data["can_make"] = TRUE
+		print_data["materials"] = list()
+		print_data["multipliers"] = null
+		print_data["has_multipliers"] = FALSE
+		print_data["hidden"] = R.hidden
+		
+		max_print_amt = -1
+
+		if (!R.resources || !R.resources.len)
+			print_data["materials"] = "No resources required"
+		else
+			//Make sure it's buildable and list requires resources.
+			for (var/material in R.resources)
+				if (isnull(projected_stored_material[material]) || projected_stored_material[material] < R.resources[material])
+					print_data["can_make"] = FALSE
+					max_print_amt = 0
+				else
+					print_amt = round(projected_stored_material[material]/R.resources[material])
+				
+				if (print_data["can_make"] && max_print_amt < 0 || max_print_amt > print_amt)
+					max_print_amt = print_amt
+				
+				print_data["materials"][material] = "[R.resources[material]] [material]"
+
+			if (print_data["can_make"] && max_print_amt > 1)
+				print_data["has_multipliers"] = TRUE
+				print_data["multipliers"] = list()
+
+				var/max = max_print_amt
+
+				if (R.is_stack)
+					for (var/i = 5; i < max_print_amt; i += i) //5,10,20,40...
+						print_data["multipliers"]["[i]"] =  i
+				else
+					max = min(max_print_amt, queue_max)
+					for (var/i in 2 to (max - 1))
+						print_data["multipliers"]["[i]"] =  i
+				print_data["multipliers"]["[max]"] = max
+
+		printable += list(print_data)
+
+/obj/structure/machinery/autolathe/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+	if (!ishuman(user)) 
+		return
+
+	var/list/queue_list = list()
+	var/i = 1
+	for (var/params in queue)
+		var/datum/autolathe/recipe/making = params[1]
+		var/multiplier = params[2]
+		queue_list += list(list("name" = making.name, "index" = i++, "multiplier" = multiplier))
+
+	var/list/data = list(
+		"materials" = stored_material,
+		"capacity" = storage_capacity,
+		"queued" = queue_list,
+		"printable" = printable,
+		"category" = show_category,
+		"panel_open" = panel_open
+	)
+
+	var/list/wire_descriptions = get_wire_descriptions()
+	var/list/panel_wires = list()
+	for(var/wire = 1 to wire_descriptions.len)
+		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire)))
+
+	if(panel_wires.len)
+		data["wires"] = panel_wires
+
+	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+
+	if (!ui)
+		ui = new(user, src, ui_key, "autolathe.tmpl", "Autolathe Control Panel" , 600, 700)
+		ui.set_initial_data(data)
+		ui.open()
+		ui.set_auto_update(1)
 
 /obj/structure/machinery/autolathe/yautja
 	name = "\improper yautja autolathe"

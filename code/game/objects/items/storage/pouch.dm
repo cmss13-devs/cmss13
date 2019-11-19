@@ -7,8 +7,7 @@
 	max_w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_STORE
 	storage_slots = 1
-	draw_mode = 0
-	allow_drawing_method = TRUE
+	storage_flags = STORAGE_FLAGS_POUCH
 
 
 
@@ -33,7 +32,7 @@
 	name = "light general pouch"
 	desc = "A general purpose pouch used to carry small items and ammo magazines."
 	icon_state = "small_drop"
-	draw_mode = 1
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 	bypass_w_limit = list(
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/smg,
@@ -59,20 +58,20 @@
 	name = "medium general pouch"
 	storage_slots = 2
 	icon_state = "medium_drop"
-	draw_mode = 0
+	storage_flags = STORAGE_FLAGS_POUCH
 
 /obj/item/storage/pouch/general/large
 	name = "large general pouch"
 	storage_slots = 3
 	icon_state = "large_drop"
-	draw_mode = 0
+	storage_flags = STORAGE_FLAGS_POUCH
 
 /obj/item/storage/pouch/flamertank
 	name = "fuel tank strap pouch"
 	desc = "Two rings straps that loop around M240 variety napalm tanks. Handle with care."
 	storage_slots = 2
 	icon_state = "fueltank_pouch"
-	draw_mode = 0
+	storage_flags = STORAGE_FLAGS_POUCH
 	can_hold = list(
 					/obj/item/ammo_magazine/flamer_tank,
 					)
@@ -96,7 +95,7 @@
 	)
 	icon_state = "bayonet"
 	storage_slots = 3
-	draw_mode = 1
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 
 /obj/item/storage/pouch/bayonet/full/New()
 	..()
@@ -160,7 +159,7 @@
 	icon_state = "pistol"
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(/obj/item/weapon/gun/pistol, /obj/item/weapon/gun/revolver/m44)
-	draw_mode = 1
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 
 
 
@@ -172,7 +171,6 @@
 	icon_state = "medium_ammo_mag"
 	max_w_class = SIZE_MEDIUM
 	storage_slots = 2
-	draw_mode = 0
 	bypass_w_limit = list(
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/smg/m39
@@ -430,7 +428,7 @@
 /obj/item/storage/pouch/medkit
 	name = "medkit pouch"
 	max_w_class = SIZE_MEDIUM
-	draw_mode = 1
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 	icon_state = "medkit"
 	desc = "It's specifically made to hold a medkit."
 	can_hold = list(/obj/item/storage/firstaid)
@@ -470,7 +468,7 @@
 	max_w_class = SIZE_SMALL
 	storage_slots = 8
 	max_storage_space = 8
-	draw_mode = 1
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 	icon_state = "flare"
 	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
 
@@ -492,7 +490,7 @@
 	name = "radio pouch"
 	storage_slots = 2
 	icon_state = "radio"
-	draw_mode = 1
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 	desc = "It can contain two handheld radios."
 	can_hold = list(/obj/item/device/radio)
 

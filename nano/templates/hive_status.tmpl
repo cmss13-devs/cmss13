@@ -99,20 +99,22 @@
 			<span><i>{{:data.tier_slots[1-index]}} remaining slot{{if data.tier_slots[1-index] != 1}}s{{/if}}</i></span>
 		{{/if}}
 	</center>
-	<table class="xenoCountTable">
-		<tr>
-			{{props data.xeno_counts[3-index] :count:caste}}
-				<th class="underlineCell">{{if caste == 'Bloody Larva'}}Larva{{else}}{{:caste}}{{/if}}</th>
-			{{/props}}
-		</tr>
+	<center>
+		<table class="xenoCountTable">
+			<tr>
+				{{props data.xeno_counts[3-index] :count:caste}}
+					<th class="underlineCell">{{if caste == 'Bloody Larva'}}Larva{{else}}{{:caste}}{{/if}}</th>
+				{{/props}}
+			</tr>
 
-		<tr style="background-color: #52375C;">
-		{{props data.xeno_counts[3-index] :count:caste}}
-			<td class="underlineCell">{{:count}}</td>
-		{{/props}}
-		</tr>
-	</table>
-	<br>
+			<tr style="background-color: #52375C;">
+			{{props data.xeno_counts[3-index] :count:caste}}
+				<td class="underlineCell">{{:count}}</td>
+			{{/props}}
+			</tr>
+		</table>
+		<br>
+	</center>
 {{/for}}
 
 <hr>

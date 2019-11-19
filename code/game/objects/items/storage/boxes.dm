@@ -28,11 +28,11 @@
 	desc = "It's just an ordinary box."
 	icon_state = "box"
 	item_state = "syringe_kit"
-//	foldable = /obj/item/stack/sheet/cardboard	//Changed because of in-game abuse
 	foldable = /obj/item/paper/crumpled
 	storage_slots = null
 	max_w_class = SIZE_SMALL //Changed because of in-game abuse
 	w_class = SIZE_LARGE //Changed becuase of in-game abuse
+	storage_flags = STORAGE_FLAGS_BOX
 
 /obj/item/storage/box/survival/
 	New()
@@ -465,7 +465,7 @@
 		/obj/item/light_bulb/bulb
 	)
 	max_storage_space = 42	//holds 21 items of w_class 2
-	use_to_pickup = 1 // for picking up broken bulbs, not that most people will try
+	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER
 
 /obj/item/storage/box/lights/bulbs/New()
 	..()
@@ -667,7 +667,7 @@
 	can_hold = list()
 	storage_slots = 4
 	max_w_class = 0
-	foldable = 0
+	foldable = null
 	var/isopened = 0
 
 /obj/item/storage/box/MRE/New()

@@ -70,7 +70,7 @@
 	add_fingerprint(usr)
 
 	if(busy)
-		to_chat(usr, SPAN_WARNING("The autolathe is busy. Please wait for completion of previous operation."))
+		to_chat(usr, SPAN_WARNING("The [name] is busy. Please wait for completion of previous operation."))
 		return
 
 	if(href_list["produce"]&&href_list["cost"])

@@ -61,7 +61,6 @@
 
 
 /obj/structure/machinery/cm_vending/attack_hand(mob/user)
-
 	if(stat & (BROKEN|NOPOWER))
 		return
 

@@ -270,6 +270,9 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 	to_chat(world, message)
 
 /proc/to_chat(var/target, var/message)
+	if (!target || !message)
+		return
+	
 	if(!SSchat?.initialized)
 		to_chat_forced(target, message)
 		return

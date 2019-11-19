@@ -45,6 +45,9 @@
 		if(!det.secured)
 			to_chat(user, SPAN_DANGER("Assembly must be secured with screwdriver."))
 			return
+		if(detonator)
+			to_chat(user, SPAN_DANGER("This casing already has a detonator."))
+			return
 		path = 1
 		to_chat(user, SPAN_NOTICE("You add [W] to the metal casing."))
 		playsound(src.loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)

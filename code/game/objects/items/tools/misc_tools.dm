@@ -14,6 +14,7 @@
 	var/label = null
 	var/labels_left = 50
 	var/mode = 0	//off or on.
+	matter = list("metal" = 125)
 
 /obj/item/tool/hand_labeler/afterattack(atom/A, mob/user as mob, proximity)
 	if(!proximity) return

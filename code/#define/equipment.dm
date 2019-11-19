@@ -341,3 +341,30 @@ var/global/list/uniform_categories = list(
 
 // SMARTPACK RELATED
 #define SMARTPACK_MAX_POWER_STORED		200
+
+// Autolathe defines
+
+#define AUTOLATHE_MAX_QUEUE			5
+#define AUTOLATHE_FAILED			0
+#define AUTOLATHE_START_PRINTING	1
+#define AUTOLATHE_QUEUED			2
+
+
+// Storage flags
+
+#define STORAGE_ALLOW_EMPTY					1	// Whether the storage object has the 'empty' verb, which dumps all the contents on the floor
+#define STORAGE_QUICK_EMPTY					2	// Whether the storage object can quickly be emptied (no delay)
+#define STORAGE_QUICK_GATHER				4	// Whether the storage object can quickly collect all items from a tile via the 'toggle mode' verb
+#define STORAGE_ALLOW_DRAWING_METHOD_TOGGLE	8	// Whether this storage object can have its items drawn (pouches)
+#define STORAGE_USING_DRAWING_METHOD		16	// Whether this storage object has its items drawn (versus just opening it)
+#define STORAGE_CLICK_EMPTY					32 	// Whether you can click to empty an item
+#define STORAGE_CLICK_GATHER				64 	// Whether it is possible to use this storage object in an inverse way, 
+										   		// so you can have the item in your hand and click items on the floor to pick them up
+#define STORAGE_SHOW_FULLNESS				128	// Whether our storage object on hud changes color when full
+#define STORAGE_CONTENT_NUM_DISPLAY			256	// Whether the storage object groups contents of the same type and displays them as a number
+#define STORAGE_GATHER_SIMULTAENOUSLY		512	// Whether the storage object can pick up all the items in a tile
+
+#define STORAGE_FLAGS_DEFAULT				(STORAGE_SHOW_FULLNESS|STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_ALLOW_EMPTY)
+#define STORAGE_FLAGS_BOX					(STORAGE_FLAGS_DEFAULT^STORAGE_ALLOW_EMPTY)
+#define STORAGE_FLAGS_BAG					(STORAGE_QUICK_GATHER|STORAGE_QUICK_EMPTY|STORAGE_CLICK_GATHER|STORAGE_FLAGS_DEFAULT)
+#define STORAGE_FLAGS_POUCH					(STORAGE_FLAGS_DEFAULT|STORAGE_ALLOW_DRAWING_METHOD_TOGGLE)

@@ -14,6 +14,7 @@
 /obj/item/reagent_container/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"
 	set category = "Object"
+
 	if(!ishuman(usr))
 		return
 	var/mob/living/carbon/human/user = usr

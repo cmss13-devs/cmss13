@@ -51,7 +51,7 @@ Used In File(s): \code\modules\reagents\Chemistry-Machinery.dm
 		{{/if}} Contents
 	</div>
 	<div class="itemContent">
-		{{:helper.link(data.glass ? 'Eject Glass' : 'Eject Beaker', 'eject', {'ejectBeaker' : 1}, data.isBeakerLoaded ? null : 'disabled', 'floatRight')}}
+		{{:helper.link(data.glass ? 'Eject Glass' : 'Eject Beaker', 'eject', {'ejectBeaker' : 1, 'user' : data.user}, data.isBeakerLoaded ? null : 'disabled', 'floatRight')}}
 	</div>
 </div>
 <div class="statusDisplay" style="min-height: 180px;">

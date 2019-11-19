@@ -5,9 +5,9 @@
 	item_state = "lightbrowngloves"
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
-	flags_cold_protection = HANDS
+	flags_cold_protection = BODY_FLAG_HANDS
 	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
-	flags_heat_protection = HANDS
+	flags_heat_protection = BODY_FLAG_HANDS
 	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
 
 /obj/item/clothing/gloves/fyellow                             //Cheap Chinese Crap
@@ -27,9 +27,9 @@
 	name = "black gloves"
 	icon_state = "black"
 	item_state = "bgloves"
-	flags_cold_protection = HANDS
+	flags_cold_protection = BODY_FLAG_HANDS
 	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
-	flags_heat_protection = HANDS
+	flags_heat_protection = BODY_FLAG_HANDS
 	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
 
 

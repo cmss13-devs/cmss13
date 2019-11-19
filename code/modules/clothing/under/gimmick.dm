@@ -34,16 +34,16 @@
 	name = "combat pants"
 	desc = "The only thing a man needs when he's up agains the world."
 	icon_state = "rambo_suit"
-	flags_armor_protection = LEGS|LOWER_TORSO
-	flags_cold_protection = LEGS|LOWER_TORSO
-	flags_heat_protection = LEGS|LOWER_TORSO
+	flags_armor_protection = BODY_FLAG_LEGS|BODY_FLAG_GROIN
+	flags_cold_protection = BODY_FLAG_LEGS|BODY_FLAG_GROIN
+	flags_heat_protection = BODY_FLAG_LEGS|BODY_FLAG_GROIN
 
 /obj/item/clothing/suit/gimmick/rambo
 	name = "pendant"
 	desc = "It's a precious stone and something of a talisman of protection."
-	flags_armor_protection = UPPER_TORSO
-	flags_cold_protection = UPPER_TORSO
-	flags_heat_protection = UPPER_TORSO
+	flags_armor_protection = BODY_FLAG_CHEST
+	flags_cold_protection = BODY_FLAG_CHEST
+	flags_heat_protection = BODY_FLAG_CHEST
 	icon_state = "rambo_pendant"
 
 //MCCLANE
@@ -51,26 +51,26 @@
 	name = "holiday attire"
 	desc = "The perfect outfit for a Christmas holiday with family. Shoes not included."
 	icon_state = "mcclane_suit"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS
-	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS
-	flags_heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
 
 //DUTCH
 /obj/item/clothing/under/gimmick/dutch
 	name = "combat fatigues"
 	desc = "Just another pair of military fatigues for a grueling tour in a jungle."
 	icon_state = "dutch_suit"
-	flags_armor_protection = LEGS|LOWER_TORSO
-	flags_cold_protection = LEGS|LOWER_TORSO
-	flags_heat_protection = LEGS|LOWER_TORSO
+	flags_armor_protection = BODY_FLAG_LEGS|BODY_FLAG_GROIN
+	flags_cold_protection = BODY_FLAG_LEGS|BODY_FLAG_GROIN
+	flags_heat_protection = BODY_FLAG_LEGS|BODY_FLAG_GROIN
 
 /obj/item/clothing/suit/armor/gimmick/dutch
 	name = "armored jacket"
 	desc = "It's hot in the jungle. Sometimes it's hot and heavy, and sometimes it's hell on earth."
 	icon_state = "dutch_armor"
-	flags_armor_protection = UPPER_TORSO
-	flags_cold_protection = UPPER_TORSO
-	flags_heat_protection = UPPER_TORSO
+	flags_armor_protection = BODY_FLAG_CHEST
+	flags_cold_protection = BODY_FLAG_CHEST
+	flags_heat_protection = BODY_FLAG_CHEST
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -151,9 +151,9 @@
 	slowdown = 1
 	flags_atom = FPRINT|CONDUCT
 	flags_inventory = BLOCKSHARPOBJ
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	flags_heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	allowed = list(/obj/item/weapon/gun/pistol/auto9)
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_VERYHIGH

@@ -42,7 +42,7 @@
 	desc = "It makes you look HONKable!"
 	icon_state = "sexyclown"
 	item_state = "sexyclown"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 
 /obj/item/clothing/under/rank/vice
 	name = "vice officer's jumpsuit"
@@ -79,8 +79,8 @@
 	w_class = SIZE_LARGE//bulky item
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS //Needs gloves and shoes with cold protection to be fully protected.
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS //Needs gloves and shoes with cold protection to be fully protected.
 	min_cold_protection_temperature = SPACE_SUIT_min_cold_protection_temperature
 
 /obj/item/clothing/under/owl
@@ -107,7 +107,7 @@
 	name = "dark undersuit"
 	desc = "A thick, layered grey undersuit lined with power cables. Feels a little like wearing an electrical storm."
 	icon_state = "psysuit"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 
 /obj/item/clothing/under/gentlesuit
 	name = "Gentlemans Suit"
@@ -141,13 +141,13 @@
 	name = "black skirt"
 	desc = "A black skirt, very fancy!"
 	icon_state = "blackskirt"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
 /obj/item/clothing/under/schoolgirl
 	name = "schoolgirl uniform"
 	desc = "It's just like one of my Japanese animes!"
 	icon_state = "schoolgirl"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 
 /obj/item/clothing/under/overalls
 	name = "laborer's overalls"
@@ -159,7 +159,7 @@
 	name = "pirate outfit"
 	desc = "Yarr."
 	icon_state = "pirate"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
 
 /obj/item/clothing/under/soviet
 	name = "soviet uniform"
@@ -175,23 +175,23 @@
 	name = "kilt"
 	desc = "Includes shoes and plaid"
 	icon_state = "kilt"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|FEET
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_FEET
 
 /obj/item/clothing/under/sexymime
 	name = "sexy mime outfit"
 	desc = "The only time when you DON'T enjoy looking at someone's rack."
 	icon_state = "sexymime"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 
 /obj/item/clothing/under/gladiator
 	name = "gladiator uniform"
 	desc = "Are you not entertained? Is that not why you are here?"
 	icon_state = "gladiator"
-	flags_armor_protection = LOWER_TORSO
+	flags_armor_protection = BODY_FLAG_CHEST
 
 //dress
 /obj/item/clothing/under/dress/
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 
 /obj/item/clothing/under/dress/dress_fire
 	name = "flame dress"
@@ -228,19 +228,19 @@
 	name = "captain's dress uniform"
 	desc = "Feminine fashion for the style concious captain."
 	icon_state = "dress_cap"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
 /obj/item/clothing/under/dress/dress_hop
 	name = "head of personnel dress uniform"
 	desc = "Feminine fashion for the style concious HoP."
 	icon_state = "dress_hop"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
 /obj/item/clothing/under/dress/dress_hr
 	name = "human resources director uniform"
 	desc = "Superior class for the nosy H.R. Director."
 	icon_state = "huresource"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
 /obj/item/clothing/under/dress/plaid_blue
 	name = "blue plaid skirt"
@@ -259,7 +259,7 @@
 
 //wedding stuff
 /obj/item/clothing/under/wedding/
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
 
 /obj/item/clothing/under/wedding/bride_orange
 	name = "orange wedding dress"
@@ -290,13 +290,13 @@
 	desc = "A white wedding gown made from the finest silk."
 	icon_state = "bride_white"
 	flags_inv_hide = HIDESHOES
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 
 /obj/item/clothing/under/sundress
 	name = "sundress"
 	desc = "Makes you want to frolic in a field of daisies."
 	icon_state = "sundress"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 
 /obj/item/clothing/under/captainformal
 	name = "captain's formal uniform"

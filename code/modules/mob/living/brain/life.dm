@@ -30,11 +30,11 @@
 	var/env_temperature = loc.return_temperature()
 
 	if((env_temperature > (T0C + 50)) || (env_temperature < (T0C + 10)))
-		handle_temperature_damage(HEAD, env_temperature)
+		handle_temperature_damage(env_temperature)
 
 
 
-/mob/living/brain/proc/handle_temperature_damage(body_part, exposed_temperature)
+/mob/living/brain/proc/handle_temperature_damage(exposed_temperature)
 	if(status_flags & GODMODE) return
 
 	if(exposed_temperature > bodytemperature)

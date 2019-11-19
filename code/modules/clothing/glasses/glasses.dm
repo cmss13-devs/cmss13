@@ -10,7 +10,7 @@
 	var/active = 1
 	flags_inventory = COVEREYES
 	flags_equip_slot = SLOT_EYES
-	flags_armor_protection = EYES
+	flags_armor_protection = BODY_FLAG_EYES
 	var/deactive_state = "degoggles"
 	var/has_tint = FALSE //whether it blocks vision like a welding helmet
 	var/fullscreen_vision
@@ -181,7 +181,7 @@
 			active = 0
 			flags_inventory &= ~COVEREYES
 			flags_inv_hide &= ~HIDEEYES
-			flags_armor_protection &= ~EYES
+			flags_armor_protection &= ~BODY_FLAG_EYES
 			icon_state = "[initial(icon_state)]up"
 			eye_protection = 0
 			to_chat(usr, "You push [src] up out of your face.")
@@ -189,7 +189,7 @@
 			active = 1
 			flags_inventory |= COVEREYES
 			flags_inv_hide |= HIDEEYES
-			flags_armor_protection |= EYES
+			flags_armor_protection |= BODY_FLAG_EYES
 			icon_state = initial(icon_state)
 			eye_protection = initial(eye_protection)
 			to_chat(usr, "You flip [src] down to protect your eyes.")

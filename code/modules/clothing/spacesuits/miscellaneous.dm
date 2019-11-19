@@ -39,7 +39,7 @@
 	icon_state = "santahat"
 	flags_inventory = NOPRESSUREDMAGE|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEYES
-	flags_armor_protection = HEAD
+	flags_armor_protection = BODY_FLAG_HEAD
 
 /obj/item/clothing/suit/space/santa
 	name = "Santa's suit"
@@ -85,7 +85,7 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	siemens_coefficient = 0.9
-	flags_armor_protection = UPPER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 
 
 

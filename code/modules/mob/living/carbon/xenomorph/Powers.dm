@@ -414,11 +414,11 @@
 		else
 			var/fracture_chance = 100
 			switch(L.body_part)
-				if(HEAD)
+				if(BODY_FLAG_HEAD)
 					fracture_chance = 20
-				if(UPPER_TORSO)
+				if(BODY_FLAG_CHEST)
 					fracture_chance = 30
-				if(LOWER_TORSO)
+				if(BODY_FLAG_GROIN)
 					fracture_chance = 40
 
 			L.take_damage(rand(15,25), 0, 0)
@@ -435,7 +435,7 @@
 			L.take_damage(rand(40, 50), 0, 0) // just do more damage
 		else
 			L.take_damage(rand(25, 30), 0, 0)
-			if(L.body_part == HEAD)
+			if(L.body_part == BODY_FLAG_HEAD)
 				var/knockdown_chance = 14
 				if(prob(knockdown_chance))
 					H.KnockDown(1)
@@ -525,12 +525,12 @@
 	var/mob/living/carbon/human/H = M
 	var/datum/limb/L = H.get_limb(check_zone(zone_selected))
 
-	if (!L || L.body_part == UPPER_TORSO || L.body_part == LOWER_TORSO || (L.status & LIMB_DESTROYED)) //Only limbs and head.
+	if (!L || L.body_part == BODY_FLAG_CHEST || L.body_part == BODY_FLAG_GROIN || (L.status & LIMB_DESTROYED)) //Only limbs and head.
 		to_chat(src, SPAN_XENOWARNING("You can't rip off that limb."))
 		return 0
 	var/limb_time = rand(40,60)
 
-	if (L.body_part == HEAD)
+	if (L.body_part == BODY_FLAG_HEAD)
 		limb_time = rand(90,110)
 
 	visible_message(SPAN_XENOWARNING("\The [src] begins pulling on [M]'s [L.display_name] with incredible strength!"), \

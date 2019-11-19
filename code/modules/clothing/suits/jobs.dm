@@ -17,7 +17,7 @@
 	desc = "Worn by a Captain to show their class."
 	icon_state = "captunic"
 	item_state = "bio_suit"
-	flags_armor_protection = UPPER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_inv_hide = HIDEJUMPSUIT
 
 /obj/item/clothing/suit/captunic/capjacket
@@ -25,7 +25,7 @@
 	desc = "A less formal jacket for everyday captain use."
 	icon_state = "capjacket"
 	item_state = "bio_suit"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_inv_hide = HIDEJUMPSUIT
 
 //Chaplain
@@ -34,7 +34,7 @@
 	desc = "This suit says to you 'hush'!"
 	icon_state = "chaplain_hoodie"
 	item_state = "chaplain_hoodie"
-	flags_armor_protection = UPPER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 
 //Chaplain
 /obj/item/clothing/suit/nun
@@ -42,7 +42,7 @@
 	desc = "Maximum piety in this star system."
 	icon_state = "nun"
 	item_state = "nun"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_inv_hide = HIDESHOES|HIDEJUMPSUIT
 
 //Chef
@@ -53,7 +53,7 @@
 	item_state = "chef"
 	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.50
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	allowed = list (/obj/item/tool/kitchen/knife,/obj/item/tool/kitchen/knife/butcher)
 
 //Chef
@@ -71,21 +71,21 @@
 	desc = "This jacket is for those special occasions when a security officer actually feels safe."
 	icon_state = "officerbluejacket"
 	item_state = "officerbluejacket"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
 /obj/item/clothing/suit/security/navywarden
 	name = "warden's jacket"
 	desc = "Perfectly suited for the warden that wants to leave an impression of style on those who visit the brig."
 	icon_state = "wardenbluejacket"
 	item_state = "wardenbluejacket"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
 /obj/item/clothing/suit/security/navyhos
 	name = "head of security's jacket"
 	desc = "This piece of clothing was specifically designed for asserting superior authority."
 	icon_state = "hosbluejacket"
 	item_state = "hosbluejacket"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
 //Detective
 /obj/item/clothing/suit/storage/det_suit
@@ -94,7 +94,7 @@
 	icon_state = "detective"
 	item_state = "det_suit"
 	blood_overlay_type = "coat"
-	flags_armor_protection = UPPER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	allowed = list(/obj/item/tank/emergency_oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/tool/lighter,/obj/item/device/taperecorder)
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
@@ -113,7 +113,7 @@
 	name = "jacket"
 	desc = "A forensics technician jacket."
 	item_state = "det_suit"
-	flags_armor_protection = UPPER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	allowed = list(/obj/item/tank/emergency_oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/baton,/obj/item/handcuffs,/obj/item/device/taperecorder)
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
@@ -156,7 +156,7 @@
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/clothing/mask/gas,
 	)
-	flags_armor_protection = UPPER_TORSO
+	flags_armor_protection = BODY_FLAG_CHEST
 
 //Lawyer
 /obj/item/clothing/suit/storage/lawyer/bluejacket
@@ -165,7 +165,7 @@
 	icon_state = "suitjacket_blue_open"
 	item_state = "suitjacket_blue_open"
 	blood_overlay_type = "coat"
-	flags_armor_protection = UPPER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 
 /obj/item/clothing/suit/storage/lawyer/purpjacket
 	name = "Purple Suit Jacket"
@@ -173,7 +173,7 @@
 	icon_state = "suitjacket_purp"
 	item_state = "suitjacket_purp"
 	blood_overlay_type = "coat"
-	flags_armor_protection = UPPER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 
 //Internal Affairs
 /obj/item/clothing/suit/storage/internalaffairs
@@ -182,7 +182,7 @@
 	icon_state = "ia_jacket_open"
 	item_state = "ia_jacket"
 	blood_overlay_type = "coat"
-	flags_armor_protection = UPPER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 
 	verb/toggle()
 		set name = "Toggle Coat Buttons"
@@ -213,7 +213,7 @@
 	blood_overlay_type = "armor"
 	allowed = list(/obj/item/stack/medical, /obj/item/reagent_container/dropper, /obj/item/reagent_container/hypospray, /obj/item/reagent_container/syringe, \
 	/obj/item/device/healthanalyzer, /obj/item/device/flashlight, /obj/item/device/radio, /obj/item/tank/emergency_oxygen)
-	flags_armor_protection = UPPER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 
 	verb/toggle()
 		set name = "Toggle Jacket Buttons"

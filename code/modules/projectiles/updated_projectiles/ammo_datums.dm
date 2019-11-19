@@ -18,7 +18,7 @@
 /datum/ammo
 	var/name 		= "generic bullet"
 	var/impact_name	= null // Name of icon when trying to give a mob a projectile impact overlay
-	var/impact_limbs = NO_BODY // The body parts that have an impact icon
+	var/impact_limbs = BODY_FLAG_NO_BODY // The body parts that have an impact icon
 	var/icon 		= 'icons/obj/items/weapons/projectiles.dmi'
 	var/icon_state 	= "bullet"
 	var/ping 		= "ping_b" //The icon that is displayed when the bullet bounces off something.
@@ -407,7 +407,7 @@
 /datum/ammo/bullet/revolver/highimpact
 	name = "high-impact revolver bullet"
 	impact_name = "mateba"
-	impact_limbs = HEAD
+	impact_limbs = BODY_FLAG_HEAD
 	debilitate = list(0,2,0,0,0,1,0,0)
 
 /datum/ammo/bullet/revolver/highimpact/New()
@@ -627,7 +627,7 @@
 /datum/ammo/bullet/shotgun/slug
 	name = "shotgun slug"
 	impact_name = "slug"
-	impact_limbs = HEAD
+	impact_limbs = BODY_FLAG_HEAD
 
 /datum/ammo/bullet/shotgun/slug/New()
 	..()

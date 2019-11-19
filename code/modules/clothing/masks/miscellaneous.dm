@@ -50,7 +50,7 @@
 	flags_inv_hide = HIDEFACE|HIDEALLHAIR|HIDEEYES|HIDEEARS
 	w_class = SIZE_SMALL
 	siemens_coefficient = 0.9
-	flags_armor_protection = HEAD|FACE|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 
 /obj/item/clothing/mask/horsehead
 	name = "horse head mask"
@@ -59,7 +59,7 @@
 	item_state = "horsehead"
 	flags_inventory = COVERMOUTH|COVEREYES
 	flags_inv_hide = HIDEFACE|HIDEALLHAIR|HIDEEYES|HIDEEARS
-	flags_armor_protection = HEAD|FACE|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	w_class = SIZE_SMALL
 	var/voicechange = 0
 	siemens_coefficient = 0.9
@@ -71,7 +71,7 @@
 	icon_state = "balaclava"
 	item_state = "balaclava"
 	flags_inv_hide = HIDEFACE|HIDEALLHAIR
-	flags_armor_protection = FACE
+	flags_armor_protection = BODY_FLAG_FACE
 	w_class = SIZE_SMALL
 
 /obj/item/clothing/mask/balaclava/tactical
@@ -87,7 +87,7 @@
 	icon_state = "luchag"
 	item_state = "luchag"
 	flags_inv_hide = HIDEFACE|HIDEALLHAIR
-	flags_armor_protection = HEAD|FACE
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE
 	w_class = SIZE_SMALL
 	siemens_coefficient = 3.0
 

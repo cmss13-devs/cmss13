@@ -60,7 +60,7 @@
 	item_state = "coif"
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEALLHAIR|HIDEEARS
-	flags_cold_protection = HEAD
+	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask
@@ -70,7 +70,7 @@
 	item_state = "scarf_gray"
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEFACE|HIDELOWHAIR
-	flags_cold_protection = HEAD
+	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	var/pulled = FALSE
 	var/original_state = "scarf_gray"

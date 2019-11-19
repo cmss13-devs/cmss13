@@ -82,7 +82,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		if(!bp)	continue
 		if(bp && istype(bp ,/obj/item/clothing))
 			var/obj/item/clothing/C = bp
-			if(C.flags_armor_protection & HEAD)
+			if(C.flags_armor_protection & BODY_FLAG_HEAD)
 				return 1
 	return 0
 

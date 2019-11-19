@@ -28,7 +28,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE
-	flags_armor_protection = HEAD|FACE|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	actions_types = list(/datum/action/item_action/toggle)
 	siemens_coefficient = 0.9
 	w_class = SIZE_MEDIUM
@@ -85,7 +85,7 @@
 	var/status = 0
 	var/fire_resist = T0C+1300	//this is the max temp it can stand before you start to cook. although it might not burn away, you take damage
 	var/processing = 0 //I dont think this is used anywhere.
-	flags_armor_protection = EYES
+	flags_armor_protection = BODY_FLAG_EYES
 
 /obj/item/clothing/head/cakehat/process()
 	if(!onfire)
@@ -117,7 +117,7 @@
 	item_state = "hardhat0_pumpkin"
 	flags_inventory = COVEREYES|COVERMOUTH
 	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR
-	flags_armor_protection = HEAD|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_EYES
 	var/brightness_on = 2 //luminosity when on
 	var/on = 0
 	w_class = SIZE_MEDIUM

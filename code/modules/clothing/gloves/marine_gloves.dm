@@ -10,11 +10,11 @@
 	item_state = "bgloves"
 	siemens_coefficient = 0.6
 	permeability_coefficient = 0.05
-	flags_cold_protection = HANDS
-	flags_heat_protection = HANDS
+	flags_cold_protection = BODY_FLAG_HANDS
+	flags_heat_protection = BODY_FLAG_HANDS
 	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
 	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
-	flags_armor_protection = HANDS
+	flags_armor_protection = BODY_FLAG_HANDS
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_LOW

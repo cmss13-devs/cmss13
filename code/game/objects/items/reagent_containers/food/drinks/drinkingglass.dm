@@ -18,7 +18,8 @@
 				switch(R.id)*/
 		if (reagents.reagent_list.len > 0)
 			//mrid = R.get_master_reagent_id()
-			switch(reagents.get_master_reagent_id())
+			var/datum/reagent/R = reagents.get_master_reagent()
+			switch(R.id)
 				if("beer")
 					icon_state = "beerglass"
 					name = "Beer glass"
@@ -599,10 +600,20 @@
 					desc = "A black ichor with an oily purple sheer on top. Are you sure you should drink this?"
 					center_of_mass = "x=16;y=5"
 				else
-					icon_state ="glass_brown"
-					name = "Glass of ..what?"
-					desc = "You can't really tell what this is."
-					center_of_mass = "x=16;y=10"
+					//a common drinking reagent that makes more than half of the total volume
+					if(istype(R, /datum/reagent/drink) && R.volume >= 0.5*reagents.total_volume)
+						icon_state ="glass_brown"
+						if(R.volume >= 0.75*reagents.total_volume)
+							name = "Glass of [R.id]"
+						else
+							name = "Glass of ..[R.id]?"
+							desc = "This looks like mostly [R.id] mixed with something."
+						center_of_mass = "x=16;y=10"
+					else
+						icon_state ="glass_brown"
+						name = "Glass of ..what?"
+						desc = "You can't really tell what this is."
+						center_of_mass = "x=16;y=10"
 		else
 			icon_state = "glass_empty"
 			name = "glass"

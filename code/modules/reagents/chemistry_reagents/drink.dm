@@ -29,7 +29,7 @@
 		if(adj_sleepy) M.sleeping = max(0,M.sleeping + adj_sleepy)
 		if(adj_temp)
 			if(M.bodytemperature < 310)//310 is the normal bodytemp. 310.055
-				M.bodytemperature = min(310, M.bodytemperature + (25 * TEMPERATURE_DAMAGE_COEFFICIENT))
+				M.bodytemperature = min(310, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
 				M.recalculate_move_delay = TRUE
 /datum/reagent/drink/cold
 	name = "Cold drink"
@@ -435,14 +435,6 @@
 	id = "nothing"
 	description = "Absolutely nothing."
 
-/datum/reagent/drink/hot_coco
-	name = "Hot Chocolate"
-	id = "hot_coco"
-	description = "Made with love! And cocoa beans."
-	nutriment_factor = 2 * FOOD_METABOLISM
-	color = "#403010" // rgb: 64, 48, 16
-	adj_temp = 5
-
 /datum/reagent/machosauce
 	name = "Macho Sauce"
 	id = "machosauce"
@@ -675,3 +667,16 @@
 	id = "brownstar"
 	color = "#9F3400" // rgb: 159, 052, 000
 	adj_temp = -2
+
+
+/datum/reagent/drink/hot_coco
+	name = "Hot Chocolate"
+	id = "hot_coco"
+	description = "Heated beverage of chocolate."
+	reagent_state = LIQUID
+	nutriment_factor = 2 * FOOD_METABOLISM
+	color = "#403010" // rgb: 64, 48, 16
+	chemclass = CHEM_CLASS_RARE
+	adj_temp = 5
+
+

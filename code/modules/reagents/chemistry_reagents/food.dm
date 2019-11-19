@@ -247,23 +247,6 @@
 		if(!.) return
 		M.nutrition += nutriment_factor
 
-/datum/reagent/hot_coco
-	name = "Hot Chocolate"
-	id = "hot_coco"
-	description = "Heated beverage of chocolate."
-	reagent_state = LIQUID
-	nutriment_factor = 2 * REAGENTS_METABOLISM
-	color = "#403010" // rgb: 64, 48, 16
-	chemclass = CHEM_CLASS_RARE
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(M.bodytemperature < 310)//310 is the normal bodytemp. 310.055
-			M.bodytemperature = min(310, M.bodytemperature + (5 * TEMPERATURE_DAMAGE_COEFFICIENT))
-		M.nutrition += nutriment_factor
-		M.recalculate_move_delay = TRUE
-
 /datum/reagent/psilocybin
 	name = "Psilocybin"
 	id = "psilocybin"

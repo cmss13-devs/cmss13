@@ -98,6 +98,14 @@ var/const/INGEST = 2
 	handle_reactions()
 	return total_transfered
 
+/datum/reagents/proc/get_master_reagent()
+	var/the_volume = 0
+	for(var/datum/reagent/A in reagent_list)
+		if(A.volume > the_volume)
+			the_volume = A.volume
+			. = A
+
+
 /datum/reagents/proc/get_master_reagent_name()
 	var/the_name = null
 	var/the_volume = 0

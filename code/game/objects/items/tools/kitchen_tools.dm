@@ -234,21 +234,7 @@
 	w_class = SIZE_MEDIUM
 	flags_atom = FPRINT|CONDUCT
 	matter = list("metal" = 3000)
-	/* // NOPE
-	var/food_total= 0
-	var/burger_amt = 0
-	var/cheese_amt = 0
-	var/fries_amt = 0
-	var/classyalcdrink_amt = 0
-	var/alcdrink_amt = 0
-	var/bottle_amt = 0
-	var/soda_amt = 0
-	var/carton_amt = 0
-	var/pie_amt = 0
-	var/meatbreadslice_amt = 0
-	var/salad_amt = 0
-	var/miscfood_amt = 0
-	*/
+	var/cooldown = 0	//shield bash cooldown. based on world.time
 	var/list/carrying = list() // List of things on the tray. - Doohl
 	var/max_carry = 10 // w_class = 1 -- takes up 1
 					   // w_class = SIZE_SMALL -- takes up 3
@@ -267,110 +253,16 @@
 					if(I)
 						step(I, pick(NORTH,SOUTH,EAST,WEST))
 						sleep(rand(2,4))
+	update_tray_size()
 
-
-	//if((CLUMSY in user.mutations) && prob(50))              //What if he's a clown?
 	to_chat(user, SPAN_WARNING("You accidentally slam yourself with the [src]!"))
 	user.KnockDown(1)
 	user.take_limb_damage(2)
-	/*if(prob(50))
-		playsound(M, 'sound/items/trayhit1.ogg', 25, 1)
-		return
-	else*/
+
 	playsound(M, 'sound/items/trayhit2.ogg', 25, 1) //sound playin'
 	return //it always returns, but I feel like adding an extra return just for safety's sakes. EDIT; Oh well I won't :3
 
-	/*var/mob/living/carbon/human/H = M      ///////////////////////////////////// /Let's have this ready for later.
 
-
-	if(!(user.zone_selected == ("eyes" || "head"))) //////////////hitting anything else other than the eyes
-		if(prob(33))
-			src.add_mob_blood(H)
-			var/turf/location = H.loc
-			if (istype(location, /turf))
-				location.add_mob_blood(H)     ///Plik plik, the sound of blood
-
-		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been attacked with [src.name] by [user.name] ([user.ckey])</font>")
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to attack [M.name] ([M.ckey])</font>")
-		msg_admin_attack("[user.name] ([user.ckey]) used the [src.name] to attack [M.name] ([M.ckey]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
-
-		if(prob(15))
-			M.KnockDown(3)
-			M.take_limb_damage(3)
-		else
-			M.take_limb_damage(5)
-		if(prob(50))
-			playsound(M, 'sound/items/trayhit1.ogg', 25, 1)
-			for(var/mob/O in viewers(M, null))
-				O.show_message(text(SPAN_DANGER("<B>[] slams [] with the tray!</B>"), user, M), 1)
-			return
-		else
-			playsound(M, 'sound/items/trayhit2.ogg', 25, 1)  //we applied the damage, we played the sound, we showed the appropriate messages. Time to return and stop the proc
-			for(var/mob/O in viewers(M, null))
-				O.show_message(text(SPAN_DANGER("<B>[] slams [] with the tray!</B>"), user, M), 1)
-			return
-
-
-
-
-	if(istype(M, /mob/living/carbon/human) && ((H.head && (H.head.flags_inventory & COVEREYES) ) || (H.wear_mask && (H.wear_mask.flags_inventory & COVEREYES) ) || (H.glasses && (H.glasses.flags_inventory & COVEREYES) )))
-		to_chat(M, SPAN_WARNING("You get slammed in the face with the tray, against your mask!"))
-		if(prob(33))
-			src.add_mob_blood(H)
-			if (H.wear_mask)
-				H.wear_mask.add_mob_blood(H)
-			if (H.head)
-				H.head.add_mob_blood(H)
-			if (H.glasses && prob(33))
-				H.glasses.add_mob_blood(H)
-			var/turf/location = H.loc
-			if (istype(location, /turf))     //Addin' blood! At least on the floor and item :v
-				location.add_mob_blood(H)
-
-		if(prob(50))
-			playsound(M, 'sound/items/trayhit1.ogg', 25, 1)
-			for(var/mob/O in viewers(M, null))
-				O.show_message(text(SPAN_DANGER("<B>[] slams [] with the tray!</B>"), user, M), 1)
-		else
-			playsound(M, 'sound/items/trayhit2.ogg', 25, 1)  //sound playin'
-			for(var/mob/O in viewers(M, null))
-				O.show_message(text(SPAN_DANGER("<B>[] slams [] with the tray!</B>"), user, M), 1)
-		if(prob(10))
-			M.Stun(rand(1,3))
-			M.take_limb_damage(3)
-			return
-		else
-			M.take_limb_damage(5)
-			return
-
-	else //No eye or head protection, tough luck!
-		to_chat(M, SPAN_WARNING("You get slammed in the face with the tray!"))
-		if(prob(33))
-			src.add_mob_blood(M)
-			var/turf/location = H.loc
-			if (istype(location, /turf))
-				location.add_mob_blood(H)
-
-		if(prob(50))
-			playsound(M, 'sound/items/trayhit1.ogg', 25, 1)
-			for(var/mob/O in viewers(M, null))
-				O.show_message(text(SPAN_DANGER("<B>[] slams [] in the face with the tray!</B>"), user, M), 1)
-		else
-			playsound(M, 'sound/items/trayhit2.ogg', 25, 1)  //sound playin' again
-			for(var/mob/O in viewers(M, null))
-				O.show_message(text(SPAN_DANGER("<B>[] slams [] in the face with the tray!</B>"), user, M), 1)
-		if(prob(30))
-			M.Stun(rand(2,4))
-			M.take_limb_damage(4)
-			return
-		else
-			M.take_limb_damage(8)
-			if(prob(30))
-				M.KnockDown(2)
-				return
-			return*/
-
-/obj/item/tool/kitchen/tray/var/cooldown = 0	//shield bash cooldown. based on world.time
 
 /obj/item/tool/kitchen/tray/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/tool/kitchen/rollingpin))
@@ -423,6 +315,8 @@
 			carrying.Add(I)
 			overlays += image("icon" = I.icon, "icon_state" = I.icon_state, "layer" = 30 + I.layer)
 
+	update_tray_size()
+
 /obj/item/tool/kitchen/tray/dropped(mob/user)
 	..()
 	var/mob/living/M
@@ -446,3 +340,11 @@
 					if(I)
 						step(I, pick(NORTH,SOUTH,EAST,WEST))
 						sleep(rand(2,4))
+	update_tray_size()
+
+
+/obj/item/tool/kitchen/tray/proc/update_tray_size()
+	if(carrying && carrying.len)
+		w_class = SIZE_LARGE
+	else
+		w_class = initial(w_class)

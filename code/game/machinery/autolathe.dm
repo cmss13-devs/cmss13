@@ -108,6 +108,7 @@
 	else if (user.temp_drop_inv_item(O))
 		qdel(O)
 
+	update_printable()
 	updateUsrDialog()
 	return TRUE //so the item's afterattack isn't called
 

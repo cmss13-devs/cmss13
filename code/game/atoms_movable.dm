@@ -127,7 +127,6 @@
 /atom/movable/proc/mob_launch_collision(var/mob/living/L)
 	if (!rebounding)
 		L.hitby(src)
-	return
 
 /atom/movable/proc/obj_launch_collision(var/obj/O)
 	if (!O.anchored && !rebounding && !isXeno(src))
@@ -140,20 +139,18 @@
 	if (!rebounding)
 		O.hitby(src)
 
-	return
-
 /atom/movable/proc/turf_launch_collision(var/turf/T)
 	if (!rebounding && rebounds)
 		var/oldloc = loc
 		var/launched_speed = cur_speed
 		add_timer(CALLBACK(src, .proc/rebound, oldloc, launched_speed), 0.5)
-	return
 
 /atom/movable/proc/rebound(var/oldloc, var/launched_speed)
 	if (loc == oldloc)
 		rebounding = TRUE
 		launch_towards(get_step(src, turn(dir, 180)), 1, launched_speed, launch_type = LOW_LAUNCH)
 
+// Proc for throwing or propelling movable atoms towards a target
 /atom/movable/proc/launch_towards(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
 	if (!target || !src)
 		return
@@ -163,7 +160,7 @@
 
 	var/old_speed = cur_speed
 	cur_speed = Clamp(speed, MIN_SPEED, MAX_SPEED) // Sanity check, also ~1 sec delay between each launch move is not very reasonable
-	var/delay = 10/cur_speed - 0.5
+	var/delay = 10/cur_speed - 0.5 // scales delay back to deciseconds for when sleep is called
 
 	throwing = TRUE
 	thrower = thrower

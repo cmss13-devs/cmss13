@@ -120,6 +120,9 @@ directive is properly returned.
 		return NO_BLOCKED_MOVEMENT
 
 	if (flags_atom & ON_BORDER)
+		if (!(target_dir & reverse_dir))
+			return NO_BLOCKED_MOVEMENT
+		
 		// This is to properly handle diagonal movement (a cade to your NE facing west when you are trying to move NE should block for north instead of east)
 		if (target_dir & (NORTH|SOUTH) && target_dir & (EAST|WEST))
 			return target_dir - (target_dir & reverse_dir)

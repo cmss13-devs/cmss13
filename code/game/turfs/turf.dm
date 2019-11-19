@@ -81,6 +81,7 @@
 		return 1
 	return 0
 
+// Handles whether an atom is able to enter the src turf
 /turf/Enter(atom/movable/mover, atom/forget)
 	if (movement_disabled && usr.ckey != movement_disabled_exception)
 		to_chat(usr, SPAN_DANGER("Movement is admin-disabled.")) //This is to identify lag problems
@@ -92,10 +93,10 @@
 	if (!fdir)
 		return TRUE
 
-	var/fd1 = fdir&(fdir-1)
-	var/fd2 = fdir - fd1
+	var/fd1 = fdir&(fdir-1) // X-component if fdir diagonal, 0 otherwise
+	var/fd2 = fdir - fd1 // Y-component if fdir diagonal, fdir otherwise
 
-	var/blocking_dir = 0 // The direction that mover's path is being blocked by
+	var/blocking_dir = 0 // The directions that the mover's path is being blocked by
 
 	var/obstacle
 	var/turf/T
@@ -161,7 +162,7 @@
 					mover.Collide(A)
 					return FALSE
 				break
-
+	
 	//Next, check the turf itself
 	blocking_dir |= BlockedPassDirs(mover, fdir)
 	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))

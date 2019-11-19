@@ -235,89 +235,86 @@
 /mob/living/carbon/Xenomorph/show_inv(mob/user)
 	return
 
-
-//This deals with "throwing" xenos -- ravagers, hunters, and runners in particular. Everyone else defaults to normal
-//Pounce, charge both use throw_at, so we need extra code to do stuff rather than just push people aside.
-/mob/living/carbon/Xenomorph/launch_impact(atom/hit_atom)
-	set waitfor = 0
-
+/mob/living/carbon/Xenomorph/mob_launch_collision(var/mob/living/L)
 	if(!caste.charge_type || stat || (!throwing && used_pounce)) //No charge type, unconscious or dead, or not throwing but used pounce.
-		..() //Do the parent instead.
-		return FALSE
+		..()
+		return
+	
+	var/mob/living/carbon/M = L
+	if(M.stat || isXeno(M))
+		throwing = FALSE
+		return
+	
+	switch(caste.charge_type)
+		if(1 to 2) // Runner and lurker
+			if(ishuman(M) && M.dir in reverse_nearby_direction(dir))
+				var/mob/living/carbon/human/H = M
+				if(H.check_shields(15, "the pounce")) //Human shield block.
+					KnockDown(3)
+					throwing = FALSE //Reset throwing manually.
+					return
 
-	if(isobj(hit_atom)) //Deal with smacking into dense objects. This overwrites normal throw code.
-		var/obj/O = hit_atom
-		if(!O.density)
-			return FALSE//Not a dense object? Doesn't matter then, pass over it.
-		if(!O.anchored) 
-			step(O, dir) //Not anchored? Knock the object back a bit. Ie. canisters.
+				if(isYautja(H))
+					if(H.check_shields(0, "the pounce", 1))
+						visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"),
+							SPAN_XENODANGER("[H] blocks your pouncing form with the combistick!"), null, 5)
+						KnockDown(5)
+						throwing = FALSE
+						return
+					else if(prob(75)) //Body slam the fuck out of xenos jumping at your front.
+						visible_message(SPAN_DANGER("[H] body slams [src]!"),
+							SPAN_XENODANGER("[H] body slams you!"), null, 5)
+						KnockDown(4)
+						throwing = FALSE
+						return
 
-		switch(caste.charge_type) //Determine how to handle it depending on charge type.
-			if(1 to 2)
-				if(!istype(O, /obj/structure/table) && !istype(O, /obj/structure/rack))
-					O.hitby(src) //This resets throwing.
-			if(3 to 4)
-				if(istype(O, /obj/structure/table) || istype(O, /obj/structure/rack))
-					var/obj/structure/S = O
-					visible_message(SPAN_DANGER("[src] plows straight through [S]!"), null, null, 5)
-					S.destroy() //We want to continue moving, so we do not reset throwing.
-				else O.hitby(src) //This resets throwing.
-		return TRUE
+			visible_message(SPAN_DANGER("[src] pounces on [M]!"),
+				SPAN_XENODANGER("You pounce on [M]!"), null, 5)
+			M.KnockDown(caste.charge_type == 1 ? 1 : 3)
+			step_to(src, M)
+			canmove = FALSE
+			frozen = TRUE
+			if(pounce_slash)
+				M.attack_alien(src)
+			if(!caste.is_robotic) playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
+			spawn(caste.charge_type == 1 ? 5 : 15)
+				frozen = FALSE
+				update_canmove()
 
-	if(ismob(hit_atom)) //Hit a mob! This overwrites normal throw code.
-		var/mob/living/carbon/M = hit_atom
-		if(!M.stat && !isXeno(M))
-			switch(caste.charge_type)
-				if(1 to 2)
-					if(ishuman(M) && M.dir in reverse_nearby_direction(dir))
-						var/mob/living/carbon/human/H = M
-						if(H.check_shields(15, "the pounce")) //Human shield block.
-							KnockDown(3)
-							throwing = FALSE //Reset throwing manually.
-							return FALSE
+		if(3) //Ravagers get a free attack if they charge into someone. This will tackle if disarm is set instead.
+			var/primordial_bonus = 0
+			if(upgrade == 4)
+				primordial_bonus = 1
+			var/extra_dam = min(melee_damage_lower, rand(melee_damage_lower, melee_damage_upper) / (4 - upgrade + primordial_bonus)) //About 12.5 to 80 extra damage depending on upgrade level.
+			M.attack_alien(src,  extra_dam) //Ancients deal about twice as much damage on a charge as a regular slash.
+			M.KnockDown(2)
 
-						if(isYautja(H))
-							if(H.check_shields(0, "the pounce", 1))
-								visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"),
-												SPAN_XENODANGER("[H] blocks your pouncing form with the combistick!"), null, 5)
-								KnockDown(5)
-								throwing = FALSE
-								return FALSE
-							else if(prob(75)) //Body slam the fuck out of xenos jumping at your front.
-								visible_message(SPAN_DANGER("[H] body slams [src]!"),
-												SPAN_XENODANGER("[H] body slams you!"), null, 5)
-								KnockDown(4)
-								throwing = FALSE
-								return FALSE
+		if(4) //Predalien.
+			M.attack_alien(src) //Free hit/grab/tackle. Does not weaken, and it's just a regular slash if they choose to do that.
 
-					visible_message(SPAN_DANGER("[src] pounces on [M]!"),
-									SPAN_XENODANGER("You pounce on [M]!"), null, 5)
-					M.KnockDown(caste.charge_type == 1 ? 1 : 3)
-					step_to(src, M)
-					canmove = FALSE
-					frozen = TRUE
-					if(pounce_slash)
-						M.attack_alien(src)
-					if(!caste.is_robotic) playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
-					spawn(caste.charge_type == 1 ? 5 : 15)
-						frozen = FALSE
-						update_canmove()
+	throwing = FALSE //Reset throwing since something was hit.
 
-				if(3) //Ravagers get a free attack if they charge into someone. This will tackle if disarm is set instead.
-					var/primordial_bonus = 0
-					if(upgrade == 4)
-						primordial_bonus = 1
-					var/extra_dam = min(melee_damage_lower, rand(melee_damage_lower, melee_damage_upper) / (4 - upgrade + primordial_bonus)) //About 12.5 to 80 extra damage depending on upgrade level.
-					M.attack_alien(src,  extra_dam) //Ancients deal about twice as much damage on a charge as a regular slash.
-					M.KnockDown(2)
+/mob/living/carbon/Xenomorph/obj_launch_collision(var/obj/O)
+	if(!caste.charge_type || stat || (!throwing && used_pounce)) //No charge type, unconscious or dead, or not throwing but used pounce.
+		..()
+		return
+	
+	if(!O.density)
+		return //Not a dense object? Doesn't matter then, pass over it.
+	if(!O.anchored) 
+		step(O, dir) //Not anchored? Knock the object back a bit. Ie. canisters.
 
-				if(4) //Predalien.
-					M.attack_alien(src) //Free hit/grab/tackle. Does not weaken, and it's just a regular slash if they choose to do that.
-
-		throwing = FALSE //Resert throwing since something was hit.
-		return TRUE
-
-	..() //Do the parent otherwise, for turfs.
+	switch(caste.charge_type) //Determine how to handle it depending on charge type.
+		if(1 to 2) // Runner and lurker
+			if(!istype(O, /obj/structure/table) && !istype(O, /obj/structure/rack))
+				O.hitby(src) //This resets throwing.
+		if(3 to 4) // Rav to predalien
+			if(istype(O, /obj/structure/table) || istype(O, /obj/structure/rack))
+				var/obj/structure/S = O
+				visible_message(SPAN_DANGER("[src] plows straight through [S]!"), null, null, 5)
+				S.destroy() //We want to continue moving, so we do not reset throwing.
+			else 
+				O.hitby(src) //This resets throwing.
 
 //Bleuugh
 /mob/living/carbon/Xenomorph/proc/empty_gut()

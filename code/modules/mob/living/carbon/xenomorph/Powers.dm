@@ -636,10 +636,12 @@
 	if (distance > max_distance)
 		return
 
+	used_headbutt = TRUE
 	if (distance > 1)
 		launch_towards(get_step_towards(H, src), 3, SPEED_SLOW, src)
 
 	if (!Adjacent(H))
+		used_headbutt = FALSE
 		return
 
 	H.last_damage_mob = src
@@ -647,7 +649,6 @@
 	visible_message(SPAN_XENOWARNING("\The [src] rams [H] with its armored crest!"), \
 	SPAN_XENOWARNING("You ram [H] with your armored crest!"))
 
-	used_headbutt = 1
 	use_plasma(10)
 
 	if(H.stat != DEAD && (!(H.status_flags & XENO_HOST) || !istype(H.buckled, /obj/structure/bed/nest)) )
@@ -669,7 +670,7 @@
 	H.launch_towards(T, headbutt_distance, SPEED_SLOW, src)
 	playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	spawn(caste.headbutt_cooldown)
-		used_headbutt = 0
+		used_headbutt = FALSE
 		to_chat(src, SPAN_NOTICE("You gather enough strength to headbutt again."))
 		for(var/X in actions)
 			var/datum/action/act = X

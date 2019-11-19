@@ -16,8 +16,7 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_HIGH
 	speed_mod = XENO_SPEED_MOD_LARGE
-
-	charge_type = 2 //Pounce - Hunter
+	
 	evolves_to = list("Warrior")
 	deevolves_to = "Larva"
 	can_vent_crawl = 0

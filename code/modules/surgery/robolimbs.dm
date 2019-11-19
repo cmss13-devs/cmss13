@@ -16,7 +16,7 @@
 		return 0
 	if(affected.limb_replacement_stage != limb_step)
 		return 0
-	if(affected.body_part == HEAD) //head has its own steps
+	if(affected.body_part == BODY_FLAG_HEAD) //head has its own steps
 		return 0
 	return 1
 

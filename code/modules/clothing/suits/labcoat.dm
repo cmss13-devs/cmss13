@@ -4,7 +4,7 @@
 	icon_state = "labcoat_open"
 	item_state = "labcoat" //Is this even used for anything?
 	blood_overlay_type = "coat"
-	flags_armor_protection = UPPER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	allowed = list(
 		/obj/item/device/analyzer,
 		/obj/item/stack/medical,
@@ -212,8 +212,8 @@
 	desc = "A standard snow suit. It can protect the wearer from extreme cold."
 	icon = 'icons/obj/items/clothing/suits.dmi'
 	icon_state = "snowsuit_alpha"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_laser = CLOTHING_ARMOR_LOW

@@ -55,7 +55,7 @@
 	icon_state = "hasturhood"
 	flags_inventory = COVEREYES
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR
-	flags_armor_protection = HEAD|FACE|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 
 /obj/item/clothing/head/nursehat
 	name = "nurse's hat"
@@ -72,7 +72,7 @@
 	flags_inventory = COVEREYES|COVERMOUTH
 	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR
 	siemens_coefficient = 2.0
-	flags_armor_protection = HEAD|FACE|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	anti_hug = 1
 
 /obj/item/clothing/head/cueball
@@ -83,7 +83,7 @@
 	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR
 	item_state="cueball"
 	flags_inventory = 0
-	flags_armor_protection = HEAD|FACE|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 
 /obj/item/clothing/head/greenbandana
 	name = "green bandana"
@@ -101,7 +101,7 @@
 	item_state = "cardborg_h"
 	flags_inventory = COVERMOUTH|COVEREYES
 	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR
-	flags_armor_protection = HEAD|FACE|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 
 /obj/item/clothing/head/justice
 	name = "justice hat"
@@ -227,7 +227,7 @@
 	flags_inventory = NO_FLAGS
 	flags_inv_hide = HIDEALLHAIR
 	siemens_coefficient = 2.0
-	flags_armor_protection = HEAD|FACE|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 
 /obj/item/clothing/head/xenos
 	name = "xenos helmet"
@@ -237,5 +237,5 @@
 	flags_inventory = COVERMOUTH|COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR
 	siemens_coefficient = 2.0
-	flags_armor_protection = HEAD|FACE|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	anti_hug = 10 //Lel

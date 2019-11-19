@@ -163,11 +163,11 @@
 	else
 		var/fracture_chance = 50
 		switch(L.body_part)
-			if(HEAD)
+			if(BODY_FLAG_HEAD)
 				fracture_chance = 20
-			if(UPPER_TORSO)
+			if(BODY_FLAG_CHEST)
 				fracture_chance = 30
-			if(LOWER_TORSO)
+			if(BODY_FLAG_GROIN)
 				fracture_chance = 40
 
 		L.take_damage(rand(40,50), 0, 0)

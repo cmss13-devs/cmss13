@@ -25,7 +25,7 @@
 	flags_inventory = NO_FLAGS
 	flags_inv_hide = NO_FLAGS
 	flags_armor_protection = 0
-	flags_cold_protection = HEAD
+	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = SPACE_HELMET_min_cold_protection_temperature
 	siemens_coefficient = 0.9
 	flags_armor_protection = 0
@@ -38,7 +38,7 @@
 	flags_inventory = COVEREYES
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR
 	siemens_coefficient = 0.9
-	flags_armor_protection = HEAD|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_EYES
 
 //Chaplain
 /obj/item/clothing/head/nun_hood

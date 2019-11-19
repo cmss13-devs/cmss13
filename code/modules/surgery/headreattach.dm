@@ -11,7 +11,7 @@
 		return 0
 	if(!(affected.status & LIMB_DESTROYED))
 		return 0
-	if(affected.body_part != HEAD)
+	if(affected.body_part != BODY_FLAG_HEAD)
 		return 0
 	if(affected.limb_replacement_stage == reattach_step)
 		return 1

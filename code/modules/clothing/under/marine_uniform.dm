@@ -317,9 +317,9 @@
 /obj/item/clothing/under/marine/veteran/dutch
 	name = "\improper Dutch's Dozen uniform"
 	desc = "A comfortable uniform worn by the Dutch's Dozen mercenaries. It's seen some definite wear and tear, but is still in good condition."
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS
-	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS
-	flags_heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
 	icon_state = "dutch_jumpsuit"
 	worn_state = "dutch_jumpsuit"
 	has_sensor = 0

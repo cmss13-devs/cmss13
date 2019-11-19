@@ -15,8 +15,8 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES
-	flags_cold_protection = HEAD
-	flags_heat_protection = HEAD
+	flags_cold_protection = BODY_FLAG_HEAD
+	flags_heat_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = HELMET_min_cold_protection_temperature
 	max_heat_protection_temperature = HELMET_max_heat_protection_temperature
 	siemens_coefficient = 0.7
@@ -117,7 +117,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES
-	flags_cold_protection = HEAD
+	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = SPACE_HELMET_min_cold_protection_temperature
 	siemens_coefficient = 0.5
 	anti_hug = 1
@@ -137,7 +137,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	flags_cold_protection = HEAD
+	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = SPACE_HELMET_min_cold_protection_temperature
 	siemens_coefficient = 1
 
@@ -563,7 +563,7 @@
 	name = "\improper PMC sniper helmet"
 	desc = "A helmet worn by PMC Marksmen"
 	icon_state = "pmc_sniper_hat"
-	flags_armor_protection = HEAD|FACE|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
@@ -580,7 +580,7 @@
 	name = "\improper PMC gunner helmet"
 	desc = "A modification of the standard Armat Systems M3 armor."
 	icon_state = "heavy_helmet"
-	flags_armor_protection = HEAD|FACE|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
@@ -598,7 +598,7 @@
 	desc = "A fully enclosed, armored helmet made for Weyland Yutani elite commandos."
 	icon_state = "commando_helmet"
 	item_state = "commando_helmet"
-	flags_armor_protection = HEAD|FACE|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
@@ -764,7 +764,7 @@
 	name = "\improper K12 ceramic helmet"
 	desc = "A sturdy helmet worn by an unknown mercenary group."
 	icon_state = "mercenary_heavy_helmet"
-	flags_armor_protection = HEAD|FACE|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
@@ -781,7 +781,7 @@
 	name = "\improper Y8 miner helmet"
 	desc = "A sturdy helmet worn by an unknown mercenary group."
 	icon_state = "mercenary_miner_helmet"
-	flags_armor_protection = HEAD|FACE|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
@@ -796,7 +796,7 @@
 	name = "\improper Z7 engineer helmet"
 	desc = "A sturdy helmet worn by an unknown mercenary group."
 	icon_state = "mercenary_engineer_helmet"
-	flags_armor_protection = HEAD|FACE|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW

@@ -1237,21 +1237,21 @@
 	var/feet_exposed = 1
 
 	for(var/obj/item/clothing/C in equipment)
-		if(C.flags_armor_protection & HEAD)
+		if(C.flags_armor_protection & BODY_FLAG_HEAD)
 			head_exposed = 0
-		if(C.flags_armor_protection & FACE)
+		if(C.flags_armor_protection & BODY_FLAG_FACE)
 			face_exposed = 0
-		if(C.flags_armor_protection & EYES)
+		if(C.flags_armor_protection & BODY_FLAG_EYES)
 			eyes_exposed = 0
-		if(C.flags_armor_protection & UPPER_TORSO)
+		if(C.flags_armor_protection & BODY_FLAG_CHEST)
 			torso_exposed = 0
-		if(C.flags_armor_protection & ARMS)
+		if(C.flags_armor_protection & BODY_FLAG_ARMS)
 			arms_exposed = 0
-		if(C.flags_armor_protection & HANDS)
+		if(C.flags_armor_protection & BODY_FLAG_HANDS)
 			hands_exposed = 0
-		if(C.flags_armor_protection & LEGS)
+		if(C.flags_armor_protection & BODY_FLAG_LEGS)
 			legs_exposed = 0
-		if(C.flags_armor_protection & FEET)
+		if(C.flags_armor_protection & BODY_FLAG_FEET)
 			feet_exposed = 0
 
 	flavor_text = flavor_texts["general"]

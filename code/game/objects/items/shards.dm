@@ -67,7 +67,7 @@
 			if(H.species.flags & IS_SYNTHETIC || H.species.insulated)
 				return
 
-			if(!H.shoes && (!H.wear_suit || !(H.wear_suit.flags_armor_protection & FEET)))
+			if(!H.shoes && (!H.wear_suit || !(H.wear_suit.flags_armor_protection & BODY_FLAG_FEET)))
 				to_chat(M, SPAN_WARNING("<B>You step on \the [src]!</B>"))
 				var/datum/limb/affecting = H.get_limb(pick("l_foot", "r_foot"))
 				if(affecting.status & LIMB_ROBOT)

@@ -108,7 +108,7 @@
 /mob/living/carbon/Xenomorph/Ravager/proc/delimb(var/mob/living/carbon/human/H, var/datum/limb/O)
 	if(!iszombie(H) && prob(isYautja(H)?20:40)) // lets halve this for preds
 		O = H.get_limb(check_zone(zone_selected))
-		if (O.body_part != UPPER_TORSO && O.body_part != LOWER_TORSO && O.body_part != HEAD && O.brute_dam >= 5) //Only limbs.
+		if (O.body_part != BODY_FLAG_CHEST && O.body_part != BODY_FLAG_GROIN && O.body_part != BODY_FLAG_HEAD && O.brute_dam >= 5) //Only limbs.
 			visible_message(SPAN_DANGER("The limb is sliced clean off!"),SPAN_DANGER("You slice off a limb!"))
 			O.droplimb(0, 0, initial(name))
 			return TRUE

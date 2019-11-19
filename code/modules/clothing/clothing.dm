@@ -141,7 +141,7 @@
 	icon = 'icons/obj/items/clothing/suits.dmi'
 	name = "suit"
 	var/fire_resist = T0C+100
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	allowed = list(/obj/item/tank/emergency_oxygen)
 	armor_melee = 0
 	armor_bullet = 0
@@ -193,7 +193,7 @@
 	siemens_coefficient = 0.50
 	var/wired = 0
 	var/obj/item/cell/cell = 0
-	flags_armor_protection = HANDS
+	flags_armor_protection = BODY_FLAG_HANDS
 	flags_equip_slot = SLOT_HANDS
 	attack_verb = list("challenged")
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/hands_monkey.dmi')
@@ -225,9 +225,8 @@
 /obj/item/clothing/mask
 	name = "mask"
 	icon = 'icons/obj/items/clothing/masks.dmi'
-	flags_armor_protection = HEAD
 	flags_equip_slot = SLOT_FACE
-	flags_armor_protection = FACE|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	blood_overlay_type = "mask"
 	var/anti_hug = 0
 
@@ -254,7 +253,7 @@
 	desc = "Comfortable-looking shoes."
 	gender = PLURAL //Carn: for grammarically correct text-parsing
 	siemens_coefficient = 0.9
-	flags_armor_protection = FEET
+	flags_armor_protection = BODY_FLAG_FEET
 	flags_equip_slot = SLOT_FEET
 	permeability_coefficient = 0.50
 	slowdown = SHOES_SLOWDOWN

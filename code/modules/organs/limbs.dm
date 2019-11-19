@@ -250,9 +250,9 @@
 	src.update_damages()
 
 	//If limb took enough damage, try to cut or tear it off
-	if(body_part != UPPER_TORSO && body_part != LOWER_TORSO && !no_limb_loss)
+	if(body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss)
 		var/obj/item/clothing/head/helmet/H = owner.head
-		if(!(body_part == HEAD && istype(H) && !isSynth(owner)) \
+		if(!(body_part == BODY_FLAG_HEAD && istype(H) && !isSynth(owner)) \
 			&& config.limbs_can_break && brute_dam >= max_damage * config.organ_health_multiplier
 		)
 			var/cut_prob = brute/max_damage * 5
@@ -620,7 +620,7 @@ This function completely restores a damaged organ to perfect condition.
 	if(status & LIMB_DESTROYED)
 		return
 	else
-		if(body_part == UPPER_TORSO)
+		if(body_part == BODY_FLAG_CHEST)
 			return
 		stop_processing()
 		if(status & LIMB_ROBOT)
@@ -661,7 +661,7 @@ This function completely restores a damaged organ to perfect condition.
 
 		var/obj/organ	//Dropped limb object
 		switch(body_part)
-			if(HEAD)
+			if(BODY_FLAG_HEAD)
 				if(owner.species.flags & IS_SYNTHETIC) //special head for synth to allow brainmob to talk without an MMI
 					organ= new /obj/item/limb/head/synth(owner.loc, owner)
 				else
@@ -671,7 +671,7 @@ This function completely restores a damaged organ to perfect condition.
 				owner.drop_inv_item_on_ground(owner.wear_ear, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.wear_mask, null, TRUE)
 				owner.update_hair()
-			if(ARM_RIGHT)
+			if(BODY_FLAG_ARM_RIGHT)
 				if(status & LIMB_ROBOT) 	
 					organ = new /obj/item/robot_parts/r_arm(owner.loc)
 				else 						
@@ -680,7 +680,7 @@ This function completely restores a damaged organ to perfect condition.
 					var/obj/item/clothing/under/U = owner.w_uniform
 					U.removed_parts |= body_part
 					owner.update_inv_w_uniform()
-			if(ARM_LEFT)
+			if(BODY_FLAG_ARM_LEFT)
 				if(status & LIMB_ROBOT) 	
 					organ = new /obj/item/robot_parts/l_arm(owner.loc)
 				else 						
@@ -689,7 +689,7 @@ This function completely restores a damaged organ to perfect condition.
 					var/obj/item/clothing/under/U = owner.w_uniform
 					U.removed_parts |= body_part
 					owner.update_inv_w_uniform()
-			if(LEG_RIGHT)
+			if(BODY_FLAG_LEG_RIGHT)
 				if(status & LIMB_ROBOT) 	
 					organ = new /obj/item/robot_parts/r_leg(owner.loc)
 				else 						
@@ -698,7 +698,7 @@ This function completely restores a damaged organ to perfect condition.
 					var/obj/item/clothing/under/U = owner.w_uniform
 					U.removed_parts |= body_part
 					owner.update_inv_w_uniform()
-			if(LEG_LEFT)
+			if(BODY_FLAG_LEG_LEFT)
 				if(status & LIMB_ROBOT) 	
 					organ = new /obj/item/robot_parts/l_leg(owner.loc)
 				else 						
@@ -707,21 +707,21 @@ This function completely restores a damaged organ to perfect condition.
 					var/obj/item/clothing/under/U = owner.w_uniform
 					U.removed_parts |= body_part
 					owner.update_inv_w_uniform()
-			if(HAND_RIGHT)
+			if(BODY_FLAG_HAND_RIGHT)
 				if(!(status & LIMB_ROBOT)) 
 					organ= new /obj/item/limb/hand/r_hand(owner.loc, owner)
 				owner.drop_inv_item_on_ground(owner.gloves, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.r_hand, null, TRUE)
-			if(HAND_LEFT)
+			if(BODY_FLAG_HAND_LEFT)
 				if(!(status & LIMB_ROBOT)) 
 					organ= new /obj/item/limb/hand/l_hand(owner.loc, owner)
 				owner.drop_inv_item_on_ground(owner.gloves, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.l_hand, null, TRUE)
-			if(FOOT_RIGHT)
+			if(BODY_FLAG_FOOT_RIGHT)
 				if(!(status & LIMB_ROBOT)) 
 					organ= new /obj/item/limb/foot/r_foot/(owner.loc, owner)
 				owner.drop_inv_item_on_ground(owner.shoes, null, TRUE)
-			if(FOOT_LEFT)
+			if(BODY_FLAG_FOOT_LEFT)
 				if(!(status & LIMB_ROBOT)) 
 					organ = new /obj/item/limb/foot/l_foot(owner.loc, owner)
 				owner.drop_inv_item_on_ground(owner.shoes, null, TRUE)
@@ -751,14 +751,14 @@ This function completely restores a damaged organ to perfect condition.
 ****************************************************/
 
 /datum/limb/proc/release_restraints()
-	if (owner.handcuffed && body_part in list(ARM_LEFT, ARM_RIGHT, HAND_LEFT, HAND_RIGHT))
+	if (owner.handcuffed && body_part in list(BODY_FLAG_ARM_LEFT, BODY_FLAG_ARM_RIGHT, BODY_FLAG_HAND_LEFT, BODY_FLAG_HAND_RIGHT))
 		owner.visible_message(\
 			"\The [owner.handcuffed.name] falls off of [owner.name].",\
 			"\The [owner.handcuffed.name] falls off you.")
 
 		owner.drop_inv_item_on_ground(owner.handcuffed)
 
-	if (owner.legcuffed && body_part in list(FOOT_LEFT, FOOT_RIGHT, LEG_LEFT, LEG_RIGHT))
+	if (owner.legcuffed && body_part in list(BODY_FLAG_FOOT_LEFT, BODY_FLAG_FOOT_RIGHT, BODY_FLAG_LEG_LEFT, BODY_FLAG_LEG_RIGHT))
 		owner.visible_message(\
 			"\The [owner.legcuffed.name] falls off of [owner.name].",\
 			"\The [owner.legcuffed.name] falls off you.")
@@ -1007,7 +1007,7 @@ This function completely restores a damaged organ to perfect condition.
 	display_name = "chest"
 	max_damage = 200
 	min_broken_damage = 30
-	body_part = UPPER_TORSO
+	body_part = BODY_FLAG_CHEST
 	vital = 1
 	encased = "ribcage"
 	splint_icon_amount = 4
@@ -1019,7 +1019,7 @@ This function completely restores a damaged organ to perfect condition.
 	display_name = "groin"
 	max_damage = 200
 	min_broken_damage = 30
-	body_part = LOWER_TORSO
+	body_part = BODY_FLAG_GROIN
 	vital = 1
 	splint_icon_amount = 1
 	bandage_icon_amount = 2
@@ -1052,7 +1052,7 @@ This function completely restores a damaged organ to perfect condition.
 	name = "l_arm"
 	display_name = "left arm"
 	icon_name = "l_arm"
-	body_part = ARM_LEFT
+	body_part = BODY_FLAG_ARM_LEFT
 	has_stump_icon = TRUE
 
 	process()
@@ -1063,7 +1063,7 @@ This function completely restores a damaged organ to perfect condition.
 	name = "l_leg"
 	display_name = "left leg"
 	icon_name = "l_leg"
-	body_part = LEG_LEFT
+	body_part = BODY_FLAG_LEG_LEFT
 	icon_position = LEFT
 	has_stump_icon = TRUE
 
@@ -1071,7 +1071,7 @@ This function completely restores a damaged organ to perfect condition.
 	name = "r_arm"
 	display_name = "right arm"
 	icon_name = "r_arm"
-	body_part = ARM_RIGHT
+	body_part = BODY_FLAG_ARM_RIGHT
 	has_stump_icon = TRUE
 
 	process()
@@ -1082,7 +1082,7 @@ This function completely restores a damaged organ to perfect condition.
 	name = "r_leg"
 	display_name = "right leg"
 	icon_name = "r_leg"
-	body_part = LEG_RIGHT
+	body_part = BODY_FLAG_LEG_RIGHT
 	icon_position = RIGHT
 	has_stump_icon = TRUE
 
@@ -1090,7 +1090,7 @@ This function completely restores a damaged organ to perfect condition.
 	name = "l_foot"
 	display_name = "left foot"
 	icon_name = "l_foot"
-	body_part = FOOT_LEFT
+	body_part = BODY_FLAG_FOOT_LEFT
 	icon_position = LEFT
 	has_stump_icon = TRUE
 
@@ -1098,7 +1098,7 @@ This function completely restores a damaged organ to perfect condition.
 	name = "r_foot"
 	display_name = "right foot"
 	icon_name = "r_foot"
-	body_part = FOOT_RIGHT
+	body_part = BODY_FLAG_FOOT_RIGHT
 	icon_position = RIGHT
 	has_stump_icon = TRUE
 
@@ -1106,7 +1106,7 @@ This function completely restores a damaged organ to perfect condition.
 	name = "r_hand"
 	display_name = "right hand"
 	icon_name = "r_hand"
-	body_part = HAND_RIGHT
+	body_part = BODY_FLAG_HAND_RIGHT
 	has_stump_icon = TRUE
 
 	process()
@@ -1117,7 +1117,7 @@ This function completely restores a damaged organ to perfect condition.
 	name = "l_hand"
 	display_name = "left hand"
 	icon_name = "l_hand"
-	body_part = HAND_LEFT
+	body_part = BODY_FLAG_HAND_LEFT
 	has_stump_icon = TRUE
 
 	process()
@@ -1130,7 +1130,7 @@ This function completely restores a damaged organ to perfect condition.
 	display_name = "head"
 	max_damage = 60
 	min_broken_damage = 30
-	body_part = HEAD
+	body_part = BODY_FLAG_HEAD
 	vital = 1
 	encased = "skull"
 	has_stump_icon = TRUE

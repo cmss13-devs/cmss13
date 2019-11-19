@@ -1,7 +1,7 @@
 /obj/item/clothing/head
 	name = "head"
 	icon = 'icons/obj/items/clothing/hats.dmi'
-	flags_armor_protection = HEAD
+	flags_armor_protection = BODY_FLAG_HEAD
 	flags_equip_slot = SLOT_HEAD
 	w_class = SIZE_SMALL
 	blood_overlay_type = "helmet"
@@ -325,7 +325,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	flags_cold_protection = HEAD
+	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
@@ -348,7 +348,7 @@
 	icon_state = "bearpelt"
 	siemens_coefficient = 2.0
 	anti_hug = 4
-	flags_armor_protection = HEAD|UPPER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -357,7 +357,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	flags_cold_protection = HEAD|UPPER_TORSO|ARMS
+	flags_cold_protection = BODY_FLAG_HEAD|BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
@@ -369,7 +369,7 @@
 	icon_state = "ivan_beret"
 	item_state = "ivan_beret"
 	siemens_coefficient = 2.0
-	flags_armor_protection = HEAD
+	flags_armor_protection = BODY_FLAG_HEAD
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -378,7 +378,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	flags_cold_protection = HEAD
+	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
@@ -392,7 +392,7 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 	siemens_coefficient = 2.0
-	flags_armor_protection = HEAD
+	flags_armor_protection = BODY_FLAG_HEAD
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -401,7 +401,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	flags_cold_protection = HEAD
+	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
@@ -419,7 +419,7 @@
 	)
 	icon_state = "freelancer_cap"
 	siemens_coefficient = 2.0
-	flags_armor_protection = HEAD
+	flags_armor_protection = BODY_FLAG_HEAD
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -428,7 +428,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	flags_cold_protection = HEAD
+	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
@@ -446,7 +446,7 @@
 	)
 	icon_state = "rebel_hood"
 	siemens_coefficient = 2.0
-	flags_armor_protection = HEAD|UPPER_TORSO
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_CHEST
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -455,7 +455,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	flags_cold_protection = HEAD
+	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
@@ -465,7 +465,7 @@
 	desc = "A sturdy admiral's cap. More protective than it seems. Please don't ditch this for a helmet like a punk."
 	icon_state = "admiral_helmet"
 	siemens_coefficient = 2.0
-	flags_armor_protection = HEAD
+	flags_armor_protection = BODY_FLAG_HEAD
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -474,7 +474,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
-	flags_cold_protection = HEAD
+	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS

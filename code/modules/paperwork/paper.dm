@@ -14,7 +14,7 @@
 	throw_range = 1
 	throw_speed = SPEED_FAST
 	flags_equip_slot = SLOT_HEAD
-	flags_armor_protection = HEAD
+	flags_armor_protection = BODY_FLAG_HEAD
 	attack_verb = list("bapped")
 
 	var/info		//What's actually written on the paper.

@@ -20,7 +20,7 @@
 	name = "collectable xenomorph helmet!"
 	desc = "Hiss hiss hiss!"
 	icon_state = "xenom"
-	flags_armor_protection = HEAD|FACE|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 
 /obj/item/clothing/head/collectable/chef
 	name = "collectable chef's hat"
@@ -65,7 +65,7 @@
 	desc = "A Collectable Welding Helmet. Now with 80% less lead! Not for actual welding. Any welding done while wearing this Helmet is done so at the owner's own risk!"
 	icon_state = "welding"
 	item_state = "welding"
-	flags_armor_protection = HEAD|FACE|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 
 /obj/item/clothing/head/collectable/slime
 	name = "collectable slime hat"

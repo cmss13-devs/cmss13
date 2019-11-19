@@ -43,9 +43,9 @@
 	flags_inventory = NOSLIPPING
 	siemens_coefficient = 0.6
 
-	flags_cold_protection = FEET
+	flags_cold_protection = BODY_FLAG_FEET
 	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
-	flags_heat_protection = FEET
+	flags_heat_protection = BODY_FLAG_FEET
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
 
 /obj/item/clothing/shoes/space_ninja
@@ -64,9 +64,9 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	siemens_coefficient = 0.2
 
-	flags_cold_protection = FEET
+	flags_cold_protection = BODY_FLAG_FEET
 	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
-	flags_heat_protection = FEET
+	flags_heat_protection = BODY_FLAG_FEET
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
 
 /obj/item/clothing/shoes/sandal
@@ -79,7 +79,7 @@
 	desc = "A pair of magic, black shoes."
 	name = "magic shoes"
 	icon_state = "black"
-	flags_armor_protection = FEET
+	flags_armor_protection = BODY_FLAG_FEET
 
 /obj/item/clothing/shoes/galoshes
 	desc = "Rubber boots"
@@ -111,9 +111,9 @@
 	item_state = "cult"
 	siemens_coefficient = 0.7
 
-	flags_cold_protection = FEET
+	flags_cold_protection = BODY_FLAG_FEET
 	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
-	flags_heat_protection = FEET
+	flags_heat_protection = BODY_FLAG_FEET
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
 
 /obj/item/clothing/shoes/cyborg
@@ -153,8 +153,8 @@
 	desc = "When you feet are as cold as your heart"
 	icon_state = "swat"
 	siemens_coefficient = 0.6
-	flags_cold_protection = FEET
-	flags_heat_protection = FEET
+	flags_cold_protection = BODY_FLAG_FEET
+	flags_heat_protection = BODY_FLAG_FEET
 	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
 

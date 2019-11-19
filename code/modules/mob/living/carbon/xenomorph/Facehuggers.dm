@@ -16,7 +16,7 @@
 	item_state = "facehugger"
 	w_class = SIZE_TINY //Note: can be picked up by aliens unlike most other items of w_class below 4
 	flags_inventory = COVEREYES|ALLOWINTERNALS|COVERMOUTH|ALLOWREBREATH|CANTSTRIP
-	flags_armor_protection = FACE|EYES
+	flags_armor_protection = BODY_FLAG_FACE|BODY_FLAG_EYES
 	flags_atom = NO_FLAGS
 	flags_item = NOBLUDGEON
 	throw_range = 1

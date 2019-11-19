@@ -3,9 +3,9 @@
 	name = "captain's gloves"
 	icon_state = "captain"
 	item_state = "egloves"
-	flags_cold_protection = HANDS
+	flags_cold_protection = BODY_FLAG_HANDS
 	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
-	flags_heat_protection = HANDS
+	flags_heat_protection = BODY_FLAG_HANDS
 	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
 
 /obj/item/clothing/gloves/cyborg
@@ -23,9 +23,9 @@
 	siemens_coefficient = 0.6
 	permeability_coefficient = 0.05
 
-	flags_cold_protection = HANDS
+	flags_cold_protection = BODY_FLAG_HANDS
 	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
-	flags_heat_protection = HANDS
+	flags_heat_protection = BODY_FLAG_HANDS
 	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
 
 /obj/item/clothing/gloves/combat //Combined effect of SWAT gloves and insulated gloves
@@ -35,9 +35,9 @@
 	item_state = "swat_gl"
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
-	flags_cold_protection = HANDS
+	flags_cold_protection = BODY_FLAG_HANDS
 	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
-	flags_heat_protection = HANDS
+	flags_heat_protection = BODY_FLAG_HANDS
 	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
 
 /obj/item/clothing/gloves/latex

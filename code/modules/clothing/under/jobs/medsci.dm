@@ -40,7 +40,7 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
 /obj/item/clothing/under/rank/scientist
 	desc = "It's made of a special fiber that provides minor protection against biohazards. It has markings that denote the wearer as a scientist."
@@ -133,7 +133,7 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 
 /obj/item/clothing/under/rank/nurse
 	desc = "A dress commonly worn by the nursing staff in the medical department."
@@ -148,7 +148,7 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	rollable_sleeves = FALSE
 
 /obj/item/clothing/under/rank/orderly

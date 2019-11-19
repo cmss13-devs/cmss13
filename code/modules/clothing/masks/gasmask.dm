@@ -5,7 +5,7 @@
 	icon_state = "gas_alt"
 	flags_inventory = COVERMOUTH | COVEREYES | ALLOWINTERNALS | BLOCKGASEFFECT | ALLOWREBREATH
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDELOWHAIR
-	flags_cold_protection = HEAD
+	flags_cold_protection = BODY_FLAG_HEAD
 	flags_equip_slot = SLOT_FACE|SLOT_WAIST
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	w_class = SIZE_SMALL
@@ -76,14 +76,14 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_NONE
-	flags_armor_protection = HEAD|FACE
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE
 
 /obj/item/clothing/mask/gas/swat
 	name = "\improper SWAT mask"
 	desc = "A close-fitting tactical mask that can be connected to an air supply."
 	icon_state = "swat"
 	siemens_coefficient = 0.7
-	flags_armor_protection = FACE|EYES
+	flags_armor_protection = BODY_FLAG_FACE|BODY_FLAG_EYES
 
 /obj/item/clothing/mask/gas/syndicate
 	name = "syndicate mask"
@@ -134,7 +134,7 @@
 	desc = "A mask used when acting as a monkey."
 	icon_state = "monkeymask"
 	item_state = "monkeymask"
-	flags_armor_protection = HEAD|FACE|EYES
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	vision_impair = 0
 
 /obj/item/clothing/mask/gas/sexymime

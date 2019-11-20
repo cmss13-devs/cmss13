@@ -52,8 +52,8 @@
 		ASSERT(src.network.len > 0)
 
 	switch(dir)
-		if(1)	pixel_y = 40
-		if(2)	pixel_y = -18
+		if(1)	pixel_y = -18
+		if(2)	pixel_y = 40
 		if(4)	pixel_x = -27
 		if(8)	pixel_x = 27
 

@@ -20,7 +20,7 @@
 		to_chat(usr, SPAN_DANGER("You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"))
 		if(usr.chatWarn >= 5)
 			message_admins("[key_name(usr, usr.client)] is spamming like crazy. Their current chatwarn is [usr.chatWarn]. ")
-		add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked, TRUE, TRUE), usr.chatWarn * CHAT_SAY_DELAY_SPAM)
+		add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked, TRUE, TRUE), usr.chatWarn * CHAT_SAY_DELAY_SPAM, TIMER_UNIQUE)
 		return
 	else if(usr.talked == 1)
 		to_chat(usr, SPAN_NOTICE("You just said something, take a breath."))
@@ -30,7 +30,7 @@
 	set_typing_indicator(0)
 	usr.say(message)
 	usr.talked = 1
-	add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked), CHAT_SAY_DELAY)
+	add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked), CHAT_SAY_DELAY, TIMER_UNIQUE)
 
 /mob/verb/me_verb(message as text)
 	set name = "Me"
@@ -48,7 +48,7 @@
 		to_chat(usr, SPAN_DANGER("You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"))
 		if(usr.chatWarn >= 5)
 			message_admins("[key_name(usr, usr.client)] is spamming like crazy. Their current chatwarn is [usr.chatWarn]. ")
-		add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked, TRUE, TRUE), usr.chatWarn * CHAT_SAY_DELAY_SPAM)
+		add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked, TRUE, TRUE), usr.chatWarn * CHAT_SAY_DELAY_SPAM, TIMER_UNIQUE)
 		return
 	else if(usr.talked == 1)
 		to_chat(usr, SPAN_NOTICE(" You just said something, take a breath."))
@@ -63,7 +63,7 @@
 	else
 		usr.emote(message, 1, null, TRUE)
 	usr.talked = 1
-	add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked), CHAT_SAY_DELAY)
+	add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked), CHAT_SAY_DELAY, TIMER_UNIQUE)
 
 /mob/proc/say_dead(var/message)
 	var/name = src.real_name
@@ -79,7 +79,7 @@
 		to_chat(usr, SPAN_DANGER("You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"))
 		if(usr.chatWarn >10)
 			message_admins("[key_name(usr, usr.client)] is spamming like a dirty bitch, their current chatwarn is [usr.chatWarn]. ")
-		add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked, TRUE, TRUE), usr.chatWarn * CHAT_SAY_DELAY_SPAM)
+		add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked, TRUE, TRUE), usr.chatWarn * CHAT_SAY_DELAY_SPAM, TIMER_UNIQUE)
 		return
 	else if(usr.talked == 1)
 		to_chat(usr, SPAN_NOTICE(" You just said something, take a breath."))
@@ -111,7 +111,7 @@
 			to_chat(M, rendered)	//Admins can hear deadchat, if they choose to, no matter if they're blind/deaf or not.
 
 	usr.talked = 1
-	add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked), CHAT_SAY_DELAY)
+	add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked), CHAT_SAY_DELAY, TIMER_UNIQUE)
 
 /mob/proc/say_understands(var/mob/other,var/datum/language/speaking = null)
 	if (src.stat == 2)		//Dead

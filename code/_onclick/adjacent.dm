@@ -223,7 +223,7 @@ Quick adjacency (to turf):
 
 	dense_blockers = null
 
-	for (var/potential_blocker in loc) // Check if there are any barricades blocking attacker from the attackee's current loc
+	for (var/potential_blocker in get_turf(src)) // Check if there are any barricades blocking attacker from the attackee's current loc (or attackee itself if it's a turf)
 		if (potential_blocker in ignore)
 			continue
 		if (!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))

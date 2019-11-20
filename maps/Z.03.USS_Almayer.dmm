@@ -3693,8 +3693,9 @@
 	tag = "icon-intact-scrubbers (EAST)"
 	},
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/aft_hallway)
@@ -5112,9 +5113,8 @@
 /area/almayer/command/cichallway)
 "amJ" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
 	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
+	tag = ""
 	},
 /obj/structure/bed/chair{
 	dir = 8
@@ -6084,8 +6084,9 @@
 /area/almayer/hallways/stern_hallway)
 "aoC" = (
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
@@ -6194,8 +6195,9 @@
 /area/almayer/medical/testlab)
 "aoP" = (
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/telecomms)
@@ -10588,8 +10590,9 @@
 /area/almayer/hallways/aft_hallway)
 "ayR" = (
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -10731,9 +10734,8 @@
 /area/almayer/engineering/upper_engineering)
 "azi" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
 	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -11846,8 +11848,9 @@
 /area/almayer/engineering/upper_engineering)
 "aBz" = (
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/plating/plating_catwalk,
@@ -13515,8 +13518,9 @@
 /area/almayer/medical/morgue)
 "aGX" = (
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
@@ -15725,9 +15729,8 @@
 /area/almayer/shipboard/starboard_point_defense)
 "aOP" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
 	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -15759,9 +15762,8 @@
 /area/almayer/living/chapel)
 "aOS" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
 	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
+	tag = ""
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -16101,8 +16103,9 @@
 	tag = "icon-E"
 	},
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/firing_range_north)
@@ -16258,9 +16261,8 @@
 /obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
 	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -16334,8 +16336,9 @@
 "aQT" = (
 /obj/structure/machinery/cm_vending/clothing/alpha,
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "red";
@@ -17269,9 +17272,8 @@
 /area/almayer/command/cic)
 "aTv" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
 	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
+	tag = ""
 	},
 /obj/structure/machinery/cm_vending/clothing/bravo,
 /turf/open/floor/almayer{
@@ -19676,9 +19678,8 @@
 "bbn" = (
 /obj/structure/machinery/suit_storage_unit/carbon_unit,
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
 	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
+	tag = ""
 	},
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
@@ -22577,9 +22578,8 @@
 /area/almayer/hallways/hangar)
 "bkg" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
 	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -22688,9 +22688,8 @@
 	dir = 4
 	},
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
 	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -22898,8 +22897,9 @@
 /area/almayer/living/cryo_cells)
 "bkY" = (
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "green";
@@ -24859,9 +24859,8 @@
 /area/almayer/living/cafeteria_starboard)
 "brI" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
 	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -29439,8 +29438,9 @@
 "bFo" = (
 /obj/structure/rack,
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 6;
@@ -30968,9 +30968,8 @@
 /area/almayer/hallways/port_umbilical)
 "bJP" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
 	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -33849,8 +33848,9 @@
 "bRx" = (
 /obj/structure/machinery/light,
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -35159,8 +35159,9 @@
 	tag = "icon-E"
 	},
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/firing_range_south)
@@ -36199,8 +36200,9 @@
 /area/almayer/engineering/engine_core)
 "bYW" = (
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 6;
@@ -36243,8 +36245,9 @@
 /area/almayer/living/pilotbunks)
 "bZc" = (
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/stern_hallway)
@@ -36378,8 +36381,9 @@
 /obj/item/fuelCell,
 /obj/item/fuelCell,
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
@@ -36392,8 +36396,9 @@
 	tag = "icon-map_on (EAST)"
 	},
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "orange";
@@ -36659,9 +36664,8 @@
 "cax" = (
 /obj/structure/machinery/suit_storage_unit/carbon_unit,
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
 	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
+	tag = ""
 	},
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
@@ -37982,8 +37986,9 @@
 "cdP" = (
 /obj/structure/machinery/cm_vending/clothing/charlie,
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "emerald";
@@ -39701,9 +39706,8 @@
 /area/almayer/living/cafeteria_port)
 "cjF" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
 	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
+	tag = ""
 	},
 /obj/structure/machinery/cm_vending/clothing/delta,
 /turf/open/floor/almayer{
@@ -41521,8 +41525,9 @@
 "cyG" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/plating/almayer,
 /area/almayer/hallways/port_hallway)
@@ -41730,8 +41735,9 @@
 /area/almayer/squads/alpha/req)
 "cNc" = (
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -44983,8 +44989,9 @@
 /area/almayer/medical/upper_medical)
 "gXq" = (
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -46225,8 +46232,9 @@
 	dir = 8
 	},
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 6;
@@ -46446,8 +46454,9 @@
 /area/almayer/hallways/starboard_hallway)
 "jcE" = (
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "redcorner";
@@ -47121,8 +47130,9 @@
 /area/almayer/medical/hydroponics)
 "jNj" = (
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -48624,8 +48634,9 @@
 /area/almayer/engineering/engineering_workshop)
 "lJr" = (
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "red";
@@ -49953,8 +49964,9 @@
 	on = 1
 	},
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
@@ -50972,9 +50984,8 @@
 /obj/item/fuelCell,
 /obj/item/fuelCell,
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
 	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
@@ -51019,8 +51030,9 @@
 /area/almayer/shipboard/brig_cells)
 "oAd" = (
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "orange";
@@ -54053,9 +54065,8 @@
 /area/almayer/shipboard/brig_cells)
 "spF" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
 	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
+	tag = ""
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/starboard_hallway)
@@ -54747,8 +54758,9 @@
 	tag = "icon-intact-scrubbers (EAST)"
 	},
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -56073,8 +56085,9 @@
 /area/almayer/shipboard/firing_range_south)
 "uNf" = (
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
@@ -56929,8 +56942,9 @@
 /area/almayer/medical/hydroponics)
 "vIf" = (
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
@@ -57005,8 +57019,9 @@
 /area/almayer/living/offices)
 "vMx" = (
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
 	name = "ship-grade camera";
-	tag = ""
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)

@@ -1099,9 +1099,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "acL" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor{
 	tag = "icon-white";
 	icon_state = "white";
@@ -2059,7 +2057,7 @@
 "afj" = (
 /obj/structure/table,
 /obj/structure/machinery/camera/autoname{
-	dir = 2
+	dir = 1
 	},
 /turf/open/floor{
 	tag = "icon-white";
@@ -2925,10 +2923,10 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "ahp" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 2
-	},
 /obj/structure/machinery/power/apc,
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -3204,9 +3202,8 @@
 /area/bigredv2/outside/marshall_office)
 "aid" = (
 /obj/structure/machinery/camera/autoname{
-	dir = 2
+	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "redcorner"
@@ -3422,9 +3419,7 @@
 /area/bigredv2/outside/marshall_office)
 "aiH" = (
 /obj/structure/table,
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
+/obj/structure/machinery/camera/autoname,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor{
@@ -3542,14 +3537,6 @@
 	},
 /area/bigredv2/outside/telecomm)
 "aiX" = (
-
-/turf/open/floor{
-	tag = "icon-bcircuit";
-	icon_state = "bcircuit";
-	dir = 2
-	},
-/area/bigredv2/outside/marshall_office)
-"aiY" = (
 /turf/open/floor{
 	tag = "icon-bcircuit";
 	icon_state = "bcircuit";
@@ -4050,10 +4037,6 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
-"ako" = (
-
-/turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "akp" = (
 /obj/structure/machinery/light,
@@ -4771,9 +4754,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "amf" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
+/obj/structure/machinery/camera/autoname,
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
@@ -5809,8 +5790,7 @@
 /area/bigredv2/outside/marshall_office)
 "aoZ" = (
 /obj/structure/machinery/camera/autoname{
-	dir = 2;
-	network = list("interrogation")
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -7691,8 +7671,7 @@
 /area/bigredv2/outside/medical)
 "atv" = (
 /obj/structure/machinery/camera/autoname{
-	dir = 2;
-	network = list("interrogation")
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -7970,8 +7949,7 @@
 "auc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
-	dir = 2;
-	network = list("interrogation")
+	dir = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
@@ -8005,10 +7983,10 @@
 	},
 /area/bigredv2/outside/general_offices)
 "aug" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 2
-	},
 /obj/item/stack/sheet/plasteel,
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
 /turf/open/floor{
 	tag = "icon-dark";
 	icon_state = "dark";
@@ -8720,9 +8698,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "avE" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "avF" = (
@@ -10173,8 +10149,7 @@
 /area/bigredv2/outside/medical)
 "azq" = (
 /obj/structure/machinery/camera/autoname{
-	dir = 2;
-	network = list("interrogation")
+	dir = 1
 	},
 /turf/open/floor{
 	tag = "icon-whitegreen";
@@ -10399,8 +10374,7 @@
 	unacidable = 1
 	},
 /obj/structure/machinery/camera/autoname{
-	dir = 2;
-	network = list("interrogation")
+	dir = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
@@ -11325,9 +11299,7 @@
 "aCl" = (
 /obj/structure/table,
 /obj/item/tool/shovel/spade,
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aCm" = (
@@ -12138,9 +12110,7 @@
 	},
 /area/bigredv2/outside/bar)
 "aEa" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
+/obj/structure/machinery/camera/autoname,
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 10
 	},
@@ -12908,10 +12878,6 @@
 	},
 /area/bigredv2/outside/dorms)
 "aFU" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 2;
-	network = list("interrogation")
-	},
 /obj/structure/machinery/door_control{
 	id = "Dormitories";
 	name = "Storm Shutters";
@@ -12919,6 +12885,9 @@
 	pixel_y = -32;
 	unslashable = 1;
 	unacidable = 1
+	},
+/obj/structure/machinery/camera/autoname{
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -13299,14 +13268,6 @@
 	tag = "icon-carpet10-8 (WEST)";
 	icon_state = "carpet10-8";
 	dir = 8
-	},
-/area/bigredv2/outside/library)
-"aGP" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
-/turf/open/floor{
-	icon_state = "wood"
 	},
 /area/bigredv2/outside/library)
 "aGQ" = (
@@ -16212,9 +16173,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aNn" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor{
 	tag = "icon-whitebluefull (NORTHEAST)";
 	icon_state = "whitebluefull";
@@ -17193,7 +17152,7 @@
 "aPE" = (
 /obj/structure/table,
 /obj/structure/machinery/camera/autoname{
-	dir = 2
+	dir = 1
 	},
 /turf/open/floor{
 	tag = "icon-whitebluefull (NORTHEAST)";
@@ -17662,9 +17621,7 @@
 /area/bigredv2/outside/general_store)
 "aQO" = (
 /obj/structure/table,
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
+/obj/structure/machinery/camera/autoname,
 /obj/effect/decal/cleanable/blood,
 /obj/item/alien_embryo,
 /turf/open/floor{
@@ -19460,9 +19417,7 @@
 /obj/item/reagent_container/food/snacks/bun,
 /obj/item/reagent_container/food/snacks/bun,
 /obj/item/reagent_container/food/snacks/cheesewedge,
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor{
 	tag = "icon-whitebluefull (NORTHEAST)";
 	icon_state = "whitebluefull";
@@ -19820,7 +19775,7 @@
 "aVM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
-	dir = 2
+	dir = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/general_store)
@@ -20075,7 +20030,7 @@
 "aWw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
-	dir = 2
+	dir = 1
 	},
 /turf/open/floor{
 	tag = "icon-whitebluefull (NORTHEAST)";
@@ -20274,9 +20229,6 @@
 /area/bigredv2/outside/virology)
 "aWS" = (
 /obj/structure/table,
-/obj/structure/machinery/camera/autoname{
-	dir = 4
-	},
 /obj/item/reagent_container/glass/bottle/toxin,
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -20294,6 +20246,9 @@
 	icon_state = "sink";
 	pixel_x = 11;
 	pixel_y = 0
+	},
+/obj/structure/machinery/camera/autoname{
+	dir = 8
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -20560,7 +20515,7 @@
 /obj/item/toy/prize/ripley,
 /obj/item/toy/prize/mauler,
 /obj/structure/machinery/camera/autoname{
-	dir = 2
+	dir = 1
 	},
 /turf/open/floor{
 	tag = "icon-whitebluefull (NORTHEAST)";
@@ -20886,9 +20841,6 @@
 /area/bigredv2/outside/virology)
 "aYC" = (
 /obj/structure/table,
-/obj/structure/machinery/camera/autoname{
-	dir = 4
-	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -21453,9 +21405,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bae" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -22636,9 +22586,7 @@
 /area/bigredv2/outside/office_complex)
 "bda" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "bdb" = (
@@ -23208,9 +23156,7 @@
 /area/bigredv2/outside/office_complex)
 "beK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor{
 	icon_state = "redcorner";
 	dir = 4
@@ -25464,8 +25410,7 @@
 /area/bigredv2/outside/cargo)
 "blh" = (
 /obj/structure/machinery/camera/autoname{
-	dir = 2;
-	network = list("interrogation")
+	dir = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -25545,8 +25490,7 @@
 "bls" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
-	dir = 2;
-	network = list("interrogation")
+	dir = 1
 	},
 /turf/open/floor{
 	tag = "icon-asteroidwarning (NORTH)";
@@ -26237,8 +26181,7 @@
 	dir = 5
 	},
 /obj/structure/machinery/camera/autoname{
-	dir = 2;
-	network = list("interrogation")
+	dir = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -26513,7 +26456,7 @@
 /obj/structure/table,
 /obj/effect/spawner/random/tool,
 /obj/structure/machinery/camera/autoname{
-	dir = 2
+	dir = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -27214,9 +27157,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bro" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1
-	},
+/obj/structure/machinery/camera/autoname,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "brp" = (
@@ -34022,6 +33963,12 @@
 	icon_state = "mars_cave_19"
 	},
 /area/bigredv2/outside/filtration_plant)
+"voz" = (
+/obj/structure/machinery/camera/autoname,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/library)
 "vqY" = (
 /turf/open/mars_cave{
 	tag = "icon-mars_cave_11";
@@ -49350,7 +49297,7 @@ acp
 aiX
 ajB
 aiX
-aiY
+aiX
 acr
 amd
 ana
@@ -49564,7 +49511,7 @@ agB
 adk
 aic
 acp
-aiY
+aiX
 afS
 afS
 afS
@@ -50001,7 +49948,7 @@ acp
 aja
 ajC
 ake
-aiY
+aiX
 acr
 ame
 ahj
@@ -54340,7 +54287,7 @@ aii
 adS
 adS
 ahm
-ako
+adS
 akR
 agz
 amr
@@ -68041,7 +67988,7 @@ aDf
 aBy
 aBy
 aBy
-aGP
+aEi
 aHO
 aFe
 aFe
@@ -68258,7 +68205,7 @@ aDg
 aEk
 kXO
 aBy
-aEi
+voz
 aEi
 aEi
 aEi

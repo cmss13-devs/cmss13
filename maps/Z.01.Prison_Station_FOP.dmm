@@ -9612,7 +9612,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/camera/autoname{
-	dir = 1;
+	dir = 2;
 	network = list("PRISON")
 	},
 /turf/open/floor/prison{
@@ -19329,7 +19329,7 @@
 /area/prison/cellblock/highsec/north/south)
 "aOM" = (
 /obj/structure/machinery/camera/autoname{
-	dir = 2;
+	dir = 1;
 	network = list("PRISON")
 	},
 /turf/open/floor/prison{
@@ -19430,7 +19430,7 @@
 /area/prison/hallway/central/north)
 "aOY" = (
 /obj/structure/machinery/camera/autoname{
-	dir = 2;
+	dir = 1;
 	network = list("PRISON")
 	},
 /turf/open/floor/prison{
@@ -27567,17 +27567,6 @@
 	dir = 10
 	},
 /area/prison/canteen)
-"bgU" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 1;
-	network = list("PRISON")
-	},
-/turf/open/floor/prison{
-	tag = "icon-bright_clean (SOUTHWEST)";
-	icon_state = "bright_clean";
-	dir = 10
-	},
-/area/prison/yard)
 "bgV" = (
 /obj/structure/sink{
 	dir = 1;
@@ -29013,7 +29002,7 @@
 	name = "monkey_spawn"
 	},
 /obj/structure/machinery/camera/autoname{
-	dir = 1;
+	dir = 2;
 	network = list("PRISON")
 	},
 /turf/open/floor/prison{
@@ -35265,6 +35254,17 @@
 	dir = 2
 	},
 /area/prison/cellblock/highsec/south/north)
+"bxt" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 2;
+	network = list("PRISON")
+	},
+/turf/open/floor/prison{
+	tag = "icon-bright_clean (SOUTHWEST)";
+	icon_state = "bright_clean";
+	dir = 10
+	},
+/area/prison/yard)
 "bxu" = (
 /obj/structure/machinery/atmospherics/unary/vent_scrubber{
 	dir = 4
@@ -38904,7 +38904,7 @@
 /area/prison/cellblock/highsec/south/north)
 "bFi" = (
 /obj/structure/machinery/camera/autoname{
-	dir = 1;
+	dir = 2;
 	network = list("PRISON")
 	},
 /turf/open/floor/prison{
@@ -39025,7 +39025,7 @@
 /area/prison/cellblock/lowsec/sw)
 "bFy" = (
 /obj/structure/machinery/camera/autoname{
-	dir = 1;
+	dir = 2;
 	network = list("PRISON")
 	},
 /turf/open/floor/prison{
@@ -45309,7 +45309,6 @@
 	},
 /area/prison/security)
 "bTv" = (
-
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
 	icon_state = "darkredfull2";
@@ -48916,13 +48915,6 @@
 	},
 /turf/open/floor/plating,
 /area/prison/library)
-"cbD" = (
-/turf/open/floor/prison{
-	tag = "icon-darkredfull2 (SOUTHWEST)";
-	icon_state = "darkredfull2";
-	dir = 10
-	},
-/area/prison/security)
 "cbE" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -51913,7 +51905,7 @@
 /area/prison/cellblock/protective)
 "ciP" = (
 /obj/structure/machinery/camera/autoname{
-	dir = 1;
+	dir = 2;
 	network = list("PRISON")
 	},
 /turf/open/floor/prison{
@@ -92132,7 +92124,7 @@ bck
 aWR
 bdW
 bfw
-aWR
+bxt
 bib
 bgQ
 bku
@@ -92344,7 +92336,7 @@ bck
 aWR
 bdW
 bfx
-bgU
+aWR
 aWR
 aWR
 aWR
@@ -104473,7 +104465,7 @@ bWj
 bZp
 bYo
 bZz
-cbD
+bTv
 bJT
 cdT
 cfD
@@ -106381,7 +106373,7 @@ bMF
 bZp
 bYt
 bZI
-cbD
+bTv
 bLH
 cdX
 cgN
@@ -106805,7 +106797,7 @@ bMG
 bJS
 bYo
 bZM
-cbD
+bTv
 bJT
 cdY
 cgN

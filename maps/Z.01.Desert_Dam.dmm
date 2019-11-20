@@ -18814,7 +18814,6 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/administration/office)
 "aXM" = (
-
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/detective)
 "aXN" = (
@@ -24016,9 +24015,6 @@
 	icon_state = "cement_sunbleached2"
 	},
 /area/desert_dam/exterior/valley/valley_dam)
-"bmM" = (
-/turf/open/floor/interior/wood,
-/area/desert_dam/building/security/detective)
 "bmN" = (
 /obj/effect/blocker/toxic_water,
 /obj/structure/filtration/coagulation{
@@ -25019,7 +25015,6 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "bpN" = (
-
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	dir = 2
@@ -27359,12 +27354,6 @@
 	dir = 2
 	},
 /area/desert_dam/building/security/evidence)
-"bwP" = (
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	dir = 2
-	},
-/area/desert_dam/building/security/evidence)
 "bwQ" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Evidence"
@@ -29600,7 +29589,6 @@
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "bDE" = (
 /obj/structure/table/reinforced,
-
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	dir = 2
@@ -68715,6 +68703,14 @@
 	dir = 2
 	},
 /area/desert_dam/interior/dam_interior/workshop)
+"mnA" = (
+/obj/structure/machinery/floodlight,
+/obj/structure/machinery/camera/autoname/almayer,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/desert_dam/interior/dam_interior/atmos_storage)
 "mpG" = (
 /obj/structure/closet/secure_closet/security,
 /obj/item/disk/objective,
@@ -69908,7 +69904,6 @@
 	amount = 50
 	},
 /obj/item/storage/briefcase/inflatable,
-/obj/structure/machinery/camera/autoname/almayer,
 /obj/item/disk/objective,
 /turf/open/floor/prison{
 	tag = "icon-floor (SOUTHWEST)";
@@ -77501,9 +77496,9 @@ bou
 bsb
 aWK
 bqh
-bwP
-bwP
-bwP
+bpN
+bpN
+bpN
 bKe
 bFk
 bGE
@@ -77736,8 +77731,8 @@ bsb
 aWK
 bqh
 bwO
-bwP
-bwP
+bpN
+bpN
 aWK
 bFk
 bGE
@@ -77969,8 +77964,8 @@ bru
 bsb
 aWK
 bqh
-bwP
-bwP
+bpN
+bpN
 bDE
 aWK
 bFi
@@ -78203,7 +78198,7 @@ bom
 bsm
 aWK
 brm
-bwP
+bpN
 bBb
 bDF
 aWK
@@ -78897,7 +78892,7 @@ aXE
 aZJ
 bdL
 bjI
-bmM
+aXM
 aVB
 boW
 bqy
@@ -79131,7 +79126,7 @@ aXM
 aZK
 bdM
 aZL
-bmM
+aXM
 bov
 bou
 bqx
@@ -79365,7 +79360,7 @@ aXN
 aZL
 bdT
 bjR
-bmM
+aXM
 aVB
 bpe
 bqx
@@ -103886,7 +103881,7 @@ dTs
 fpJ
 dTs
 brh
-bDC
+mnA
 bFa
 bFa
 wTP

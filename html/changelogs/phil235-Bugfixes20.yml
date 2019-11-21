@@ -1,0 +1,9 @@
+ 
+author: Phil235
+
+delete-after: True
+
+changes: 
+  - tweak: "Xenomorphs can no longer place constructions on tiles with a destroyed fence."
+  - tweak: "Xenomorph clicking an occupied nest on harm intent now unnests the occupant."
+  - tweak: "Xenomorph can no longer handle facehuggers while on fire."

@@ -58,13 +58,14 @@
 		if(check_lifecycle())
 			GoIdle()
 
-/obj/item/clothing/mask/facehugger/attack_hand(user as mob)
+/obj/item/clothing/mask/facehugger/attack_hand(var/mob/user)
 
 	if((stat == CONSCIOUS && !sterile))
 		if(CanHug(user))
 			Attach(user) //If we're conscious, don't let them pick us up even if this fails. Just return.
 			return
-	if(!isXeno(user) && stat != DEAD) return
+	if(!isXeno(user) && stat != DEAD)
+		return
 
 	return ..()
 
@@ -73,11 +74,14 @@
 
 	if(user.hivenumber != hivenumber)
 		user.animation_attack_on(src)
-		user.visible_message("<span class='xenowarning'>[user] crushes \the [src]","<span class='xenowarning'>You crush \the [src]")
+		user.visible_message(SPAN_XENOWARNING("[user] crushes \the [src]"), SPAN_XENOWARNING("You crush \the [src]"))
 		Die()
 		return
 
 	if(user.caste.can_hold_facehuggers)
+		if(user.on_fire)
+			to_chat(user, SPAN_WARNING("Touching \the [src] while you're on fire would burn it!"))
+			return
 		attack_hand(user)//Not a carrier, or already full? Just pick it up.
 
 /obj/item/clothing/mask/facehugger/attack(mob/M, mob/user)

@@ -37,6 +37,23 @@ Currently only has the tank hardpoints
 	var/being_repaired = FALSE // to prevent welder click spam
 	var/weapon_source_mob
 
+
+/obj/item/hardpoint/Dispose()
+	if(owner)
+		remove_buff()
+		owner.hardpoints[slot] = null
+		owner.update_icon()
+		owner = null
+	weapon_source_mob = null
+	for(var/obj/O in backup_clips)
+		qdel(O)
+	backup_clips = null
+	if(ammo)
+		qdel(ammo)
+		ammo = null
+	. = ..()
+
+
 //Called on attaching, for weapons sets the actual cooldowns
 /obj/item/hardpoint/proc/apply_buff()
 	return

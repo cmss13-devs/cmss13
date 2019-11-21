@@ -153,6 +153,9 @@
 				to_chat(src, SPAN_WARNING("That facehugger is tainted!"))
 				drop_inv_item_on_ground(F)
 				return
+			if(on_fire)
+				to_chat(src, SPAN_WARNING("Touching \the [F] while you're on fire would burn it!"))
+				return
 			store_hugger(F)
 			return
 
@@ -162,6 +165,11 @@
 		if(huggers_cur <= 0)
 			to_chat(src, SPAN_WARNING("You don't have any facehuggers to use!"))
 			return
+
+		if(on_fire)
+			to_chat(src, SPAN_WARNING("Retrieving a stored facehugger while you're on fire would burn it!"))
+			return
+
 		F = new()
 		F.hivenumber = hivenumber
 		huggers_cur--

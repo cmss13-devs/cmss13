@@ -30,11 +30,6 @@
 				do_click(TU, location, params)
 		return
 
-	if (A == src && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != "help")
-		if (world.time % 3)
-			to_chat(src, SPAN_NOTICE("You have the discipline not to hurt yourself."))
-		return
-
 	if (world.time <= next_click)
 		return
 
@@ -90,6 +85,13 @@
 	if (W == A)
 		mode()
 		return
+
+
+	if (A == src && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != "help" && (!W || !(W.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
+		if (world.time % 3)
+			to_chat(src, SPAN_NOTICE("You have the discipline not to hurt yourself."))
+		return
+
 
 	// Don't allow doing anything else if inside a container of some sort, like a locker.
 	if (!isturf(loc))

@@ -16,20 +16,26 @@
 	var/time_to_live = 4
 	var/smokeranking = SMOKE_RANK_HARMLESS //Override priority. A higher ranked smoke cloud will displace lower and equal ones on spreading.
 	flags_pass = PASS_FLAGS_SMOKE
+	var/source = null
+	var/source_mob = null
 
 	//Remove this bit to use the old smoke
 	icon = 'icons/effects/96x96.dmi'
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/particle_effect/smoke/New(loc, oldamount)
+/obj/effect/particle_effect/smoke/New(loc, oldamount, new_source, new_source_mob)
 	..()
 	if(oldamount)
 		amount = oldamount - 1
+	source = new_source
+	source_mob = new_source_mob
 	time_to_live += rand(-1,1)
 	processing_objects.Add(src)
 
 /obj/effect/particle_effect/smoke/Dispose()
+	source = null
+	source_mob = null
 	if(opacity)
 		SetOpacity(0)
 	processing_objects.Remove(src)
@@ -79,7 +85,7 @@
 				qdel(foundsmoke)
 			else
 				continue
-		var/obj/effect/particle_effect/smoke/S = new type(T, amount)
+		var/obj/effect/particle_effect/smoke/S = new type(T, amount, source, source_mob)
 		S.dir = pick(cardinal)
 		S.time_to_live = time_to_live
 		if(S.amount>0)
@@ -211,8 +217,9 @@
 				M.emote("cough")
 			spawn (20)
 				M.coughedtime = 0
-	//if (M.wear_suit != null && !istype(M.wear_suit, /obj/item/clothing/suit/storage/labcoat) && !istype(M.wear_suit, /obj/item/clothing/suit/straight_jacket) && !istype(M.wear_suit, /obj/item/clothing/suit/straight_jacket && !istype(M.wear_suit, /obj/item/clothing/suit/armor)))
-		//return
+
+	M.last_damage_source = source
+	M.last_damage_mob = source_mob
 	M.burn_skin(5)
 	M.adjust_fire_stacks(5)
 	M.IgniteMob()
@@ -267,6 +274,9 @@
 		return
 	if(istype(M.buckled, /obj/structure/bed/nest) && M.status_flags & XENO_HOST)
 		return
+
+	M.last_damage_source = source
+	M.last_damage_mob = source_mob
 
 	//Gas masks protect from inhalation and face contact effects, even without internals. Breath masks don't for balance reasons
 	if(!istype(M.wear_mask, /obj/item/clothing/mask/gas))
@@ -413,7 +423,7 @@
 				qdel(foundsmoke)
 			else
 				continue
-		var/obj/effect/particle_effect/smoke/S = new type(T, amount)
+		var/obj/effect/particle_effect/smoke/S = new type(T, amount, source, source_mob)
 
 		for (var/atom/A in T)
 			if (istype(A, /mob/living))
@@ -437,6 +447,13 @@
 	var/smoke_type = /obj/effect/particle_effect/smoke
 	var/direction
 	var/lifetime
+	var/source = null
+	var/source_mob = null
+
+/datum/effect_system/smoke_spread/Dispose()
+	source = null
+	source_mob = null
+	. = ..()
 
 /datum/effect_system/smoke_spread/set_up(radius = 2, c = 0, loca, direct, smoke_time)
 	if(isturf(loca))
@@ -453,7 +470,7 @@
 /datum/effect_system/smoke_spread/start()
 	if(holder)
 		location = get_turf(holder)
-	var/obj/effect/particle_effect/smoke/S = new smoke_type(location, amount+1)
+	var/obj/effect/particle_effect/smoke/S = new smoke_type(location, amount+1, source, source_mob)
 	if(lifetime)
 		S.time_to_live = lifetime
 	if(S.amount)
@@ -484,7 +501,7 @@
 /datum/effect_system/smoke_spread/xeno_extinguish_fire/start()
 	if(holder)
 		location = get_turf(holder)
-	var/obj/effect/particle_effect/smoke/S = new smoke_type(location, amount+1)
+	var/obj/effect/particle_effect/smoke/S = new smoke_type(location, amount+1, source, source_mob)
 	
 	for (var/atom/A in location)
 		if (istype(A, /mob/living))
@@ -497,13 +514,3 @@
 		S.time_to_live = lifetime
 	if(S.amount)
 		S.spread_smoke(direction)
-
-
-
-
-
-
-
-
-
-

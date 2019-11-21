@@ -717,7 +717,7 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 	var/mob_state
 	if(item_state_slots && item_state_slots[slot])
 		mob_state = item_state_slots[slot]
-	else if (item_state && (slot == WEAR_R_HAND || slot == WEAR_L_HAND || slot == WEAR_ID))
+	else if (item_state && (slot == WEAR_R_HAND || slot == WEAR_L_HAND || slot == WEAR_ID || slot == WEAR_WAIST))
 		mob_state = item_state
 	else
 		mob_state = icon_state

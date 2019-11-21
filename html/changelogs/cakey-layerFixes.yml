@@ -1,0 +1,7 @@
+author: John Titor
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed appearances of things when worn in the belt slot."
+  - bugfix: "Fixed layering issues with certain human effects appearing above lighting."

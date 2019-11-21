@@ -2732,30 +2732,29 @@
 	// 	ref_person << msgplayer //send a message to the player
 
 	if(href_list["defermhelp"])
-		var/mob/ref_person = locate(href_list["defermhelp"])
-		if(!ref_person)
+		var/ref_client = href_list["defermhelp"]
+		var/client/C = locate(ref_client)
+		if(!C)
 			return
 
 		if(alert("Are you sure you want to turn this ahelp into an mhelp?","Defer","Yes","Cancel") == "Cancel")
 			return
 
-		if(!ref_person.client)
-			return
-		var/client/C = ref_person.client
-
 		if(C.current_mhelp && C.current_mhelp.open)
 			to_chat(usr, SPAN_NOTICE("They already have a mentorhelp thread open!"))
 			return
 
-		to_chat(ref_person, SPAN_NOTICE("<b>NOTICE:</b> <font color=red>[usr.key]</font> has turned your adminhelp into a mentorhelp thread."))
+		to_chat(C.mob, SPAN_NOTICE("<b>NOTICE:</b> <font color=red>[usr.key]</font> has turned your adminhelp into a mentorhelp thread."))
 		for(var/client/X in admins)
 			if((R_ADMIN|R_MOD) & X.admin_holder.rights)
 				to_chat(X, SPAN_NOTICE("<b>NOTICE:</b> <font color=red>[usr.key]</font> has turned <font color=red>[C.key]</font>'s adminhelp into a mentorhelp thread."))
 		log_mhelp("[usr.key] turned [C.key]'s adminhelp into a mentorhelp thread")
 
+		var/msg = ahelp_msgs[ref_client]
+		ahelp_msgs.Remove(ref_client)
 		C.current_mhelp = new(C)
-		if(href_list["ahelpmsg"])
-			C.current_mhelp.send_message(C, href_list["ahelpmsg"])
+		if(msg)
+			C.current_mhelp.send_message(C, msg)
 		else
 			C.current_mhelp.input_message(C)
 

@@ -3,6 +3,10 @@
 //This is a list of words which are ignored by the parser when comparing message contents for names. MUST BE IN LOWER CASE!
 var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","alien","as")
 
+// Associative list with mob ref as key and message they sent as the values
+// Required for storing messages without fucking up the html
+var/global/list/ahelp_msgs = list()
+
 /client/verb/adminhelp()
 	set category = "Admin"
 	set name = "Adminhelp"
@@ -127,8 +131,8 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 			to_chat(X, msg)
 
 	//show it to the person adminhelping too
-	to_chat(src, "<font color='#009900'><b>PM to Staff ([selected_type]):<br>&emsp;<font color='#DA6200'>[original_msg]</b></font><br>")
-
+	to_chat(src, "<font color='#009900'><b>PM to Staff ([selected_type]):</font><br>&emsp;<font color='#DA6200'>[original_msg]</b></font><br>")
+	
 	// Adminhelp cooldown
 	verbs -= /client/verb/adminhelp
 	spawn(2 MINUTES)
@@ -179,6 +183,8 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 		return "<b>(*not a mob*)</b>"
 
 	var/ref_mob = "\ref[M]"
+	var/ref_client = "\ref[C]"
+	ahelp_msgs[ref_client] = msg
 	switch(detail)
 		if(0)
 			return "<b>[key_name(C, link, name, highlight_special)]</b>"
@@ -191,7 +197,7 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 			<A HREF='?_src_=admin_holder;noresponse=[ref_mob]'>NR</A> |  \
 			<A HREF='?_src_=admin_holder;warning=[ref_mob]'>Warn</A> |  \
 			<A HREF='?_src_=admin_holder;autoresponse=[ref_mob]'>AutoResponse</A> |  \
-			<A HREF='?_src_=admin_holder;defermhelp=[ref_mob];ahelpmsg=[sanitize(msg)]'>Defer</A> |  \
+			<A HREF='?_src_=admin_holder;defermhelp=[ref_client]'>Defer</A> |  \
 			<A HREF='?_src_=admin_holder;adminmoreinfo=[ref_mob]'>?</A> |  \
 			<A HREF='?_src_=admin_holder;adminplayeropts=[ref_mob]'>PP</A> |  \
 			<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A> |  \

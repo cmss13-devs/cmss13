@@ -78,7 +78,7 @@ var/datum/subsystem/chat/SSchat
 	message = replacetext(message, "\t", "["&nbsp;&nbsp;&nbsp;&nbsp;"]["&nbsp;&nbsp;&nbsp;&nbsp;"]")
 	message += "<br>"
 
-	var/encoded_message = url_encode(url_encode(message))
+	var/encoded_message = url_encode(url_encode(message), TRUE)
 
 	//Grab us a client if possible
 	if(islist(target))		
@@ -86,7 +86,7 @@ var/datum/subsystem/chat/SSchat
 		for(var/T in target)
 			var/client/C
 
-			if(GCHAT_UNDEFINED_LIST)
+			if(type_of_list == GCHAT_UNDEFINED_LIST)
 				if (istype(T, /client))
 					type_of_list = GCHAT_CLIENT_LIST
 				else if (istype(T, /mob))

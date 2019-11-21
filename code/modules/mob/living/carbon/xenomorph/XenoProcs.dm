@@ -239,12 +239,12 @@
 	if(!caste.charge_type || stat || (!throwing && used_pounce)) //No charge type, unconscious or dead, or not throwing but used pounce.
 		..()
 		return
-	
+
 	var/mob/living/carbon/M = L
 	if(M.stat || isXeno(M))
 		throwing = FALSE
 		return
-	
+
 	switch(caste.charge_type)
 		if(1 to 2) // Runner and lurker
 			if(ishuman(M) && M.dir in reverse_nearby_direction(dir))
@@ -298,10 +298,10 @@
 	if(!caste.charge_type || stat || (!throwing && used_pounce)) //No charge type, unconscious or dead, or not throwing but used pounce.
 		..()
 		return
-	
+
 	if(!O.density)
 		return //Not a dense object? Doesn't matter then, pass over it.
-	if(!O.anchored) 
+	if(!O.anchored)
 		step(O, dir) //Not anchored? Knock the object back a bit. Ie. canisters.
 
 	switch(caste.charge_type) //Determine how to handle it depending on charge type.
@@ -313,7 +313,7 @@
 				var/obj/structure/S = O
 				visible_message(SPAN_DANGER("[src] plows straight through [S]!"), null, null, 5)
 				S.destroy() //We want to continue moving, so we do not reset throwing.
-			else 
+			else
 				O.hitby(src) //This resets throwing.
 
 //Bleuugh
@@ -474,6 +474,9 @@
 		if(istype(O, /obj/structure/ladder))
 			has_obstacle = TRUE
 			break
+		if(istype(O, /obj/structure/fence))
+			has_obstacle = TRUE
+			break
 		if(istype(O, /obj/structure/bed))
 			if(istype(O, /obj/structure/bed/chair/dropship/passenger))
 				var/obj/structure/bed/chair/dropship/passenger/P = O
@@ -506,7 +509,7 @@
 
 //This is depricated. Use handle_collision() for all future speed changes. ~Bmc777
 /mob/living/carbon/Xenomorph/proc/stop_momentum(direction)
-	if(!lastturf) 
+	if(!lastturf)
 		return FALSE //Not charging.
 	if(charge_speed > charge_speed_buildup * charge_turfs_to_charge) //Message now happens without a stun condition
 		visible_message(SPAN_DANGER("[src] skids to a halt!"),
@@ -519,12 +522,12 @@
 	update_icons()
 
 /mob/living/carbon/Xenomorph/proc/get_diagonal_step(atom/movable/A, direction)
-	if(!A) 
+	if(!A)
 		return FALSE
 	switch(direction)
-		if(EAST, WEST) 
+		if(EAST, WEST)
 			return get_step(A, pick(NORTH,SOUTH))
-		if(NORTH,SOUTH) 
+		if(NORTH,SOUTH)
 			return get_step(A, pick(EAST,WEST))
 
 /mob/living/carbon/Xenomorph/proc/handle_momentum()

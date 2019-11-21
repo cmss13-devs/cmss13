@@ -426,7 +426,7 @@
 	var/mob/living/carbon/human/H = M
 	user.visible_message(SPAN_DANGER("[user] aims at [M]'s head!"), SPAN_HIGHDANGER("You aim at [M]'s head!"))
 
-	if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || user.Adjacent(H))
+	if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(H))
 		return -1
 
 	H.apply_damage(500, BRUTE, "head", no_limb_loss = TRUE, impact_name = impact_name, impact_limbs = impact_limbs, permanent_kill = TRUE) //not coming back

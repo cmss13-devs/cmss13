@@ -415,8 +415,9 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 //If fully repaired and moves at least once, the broken hitboxes will respawn according to multitile.dm
 /obj/vehicle/multitile/hitbox/cm_armored/Dispose()
 	var/obj/vehicle/multitile/root/cm_armored/C = root
-	if(C) C.take_damage_type(1000000, "abstract")
-	..()
+	if(C)
+		C.take_damage_type(1000000, "abstract")
+	. = ..()
 
 /obj/vehicle/multitile/hitbox/cm_armored/Move(var/atom/A, var/direction)
 
@@ -477,7 +478,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	for(i in hardpoints)
 		var/obj/item/hardpoint/HP = hardpoints[i]
 		if(!istype(HP)) continue
-		HP.health -= damage * dmg_distribs[i] * get_dmg_multi(type)
+		HP.health = max(HP.health - damage * dmg_distribs[i] * get_dmg_multi(type), 0)
 
 	if(istype(attacker, /mob))
 		var/mob/M = attacker
@@ -803,6 +804,9 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 
 	var/slot = input("Select a slot to try and remove") in hardpoints
 
+	if(!Adjacent(user) || O != user.get_active_hand())
+		return
+
 	var/obj/item/hardpoint/old = hardpoints[slot]
 
 	if(!old)
@@ -823,6 +827,9 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 
 	if(!do_after(user, 30*num_delays, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
 		user.visible_message(SPAN_WARNING("[user] stops removing \the [old] on [src]."), SPAN_WARNING("You stop removing \the [old] on [src]."))
+		return
+
+	if(!old || old.disposed || old != hardpoints[slot])
 		return
 
 	user.visible_message(SPAN_NOTICE("[user] removes \the [old] on [src]."), SPAN_NOTICE("You remove \the [old] on [src]."))
@@ -851,10 +858,12 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	else
 		old.loc = entrance.loc
 	old.remove_buff()
-	if(old.health <= 0)
-		qdel(old)
-
 	hardpoints[old.slot] = null
+	old.owner = null
+	if(old.health <= 0)
+		if(user)
+			to_chat(user, SPAN_WARNING("\The [old] breaks apart as you remove it."))
+		qdel(old)
 	update_icon()
 
 

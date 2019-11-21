@@ -418,10 +418,8 @@
 		qdel(H)
 
 /obj/structure/machinery/disposal/BlockedPassDirs(atom/movable/mover, target_turf)
-	if(istype(mover, /obj/item) && mover.throwing)
+	if(istype(mover, /obj/item) && mover.throwing && !((mover.flags_pass|mover.flags_pass_temp) & PASS_HIGH_OVER))
 		var/obj/item/I = mover
-		if(istype(I, /obj/item/projectile))
-			return
 		if(prob(75))
 			I.loc = src
 			visible_message(SPAN_NOTICE("[I] lands into [src]."))

@@ -51,7 +51,7 @@
 				SPAN_NOTICE("\The [user] pulls you free from \the [src]."),\
 				SPAN_NOTICE("You hear squelching."))
 				playsound(loc, "alien_resin_move", 50)
-				
+
 				if(ishuman(buckled_mob))
 					var/mob/living/carbon/human/H = buckled_mob
 					H.start_nesting_cooldown()
@@ -199,7 +199,7 @@
 /obj/structure/bed/nest/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoLarva(M)) //Larvae can't do shit
 		return
-	if(M.a_intent == "hurt")
+	if(M.a_intent == "hurt" && !buckled_mob) //can't slash nest with an occupant.
 		M.visible_message(SPAN_DANGER("\The [M] claws at \the [src]!"), \
 		SPAN_DANGER("You claw at \the [src]."))
 		playsound(loc, "alien_resin_break", 25)

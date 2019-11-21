@@ -1192,5 +1192,5 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	desc = "A thick piece of armor adorning a HEFA. Usually seen on a HEFA knight."
 	specialty = "HEFA Knight"
 	icon_state = "hefadier"
-	flags_atom = UNIQUE_ITEM_TYPE
+	flags_atom = UNIQUE_ITEM_TYPE|NO_SNOW_TYPE
 	flags_marine_armor = ARMOR_LAMP_OVERLAY

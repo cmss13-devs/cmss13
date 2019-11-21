@@ -818,7 +818,7 @@
 	armor_bomb = CLOTHING_ARMOR_HARDCORE // the hefa knight stands
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR|HIDEEYES
 	flags_marine_helmet = NO_FLAGS
-	flags_atom = UNIQUE_ITEM_TYPE
+	flags_atom = UNIQUE_ITEM_TYPE|NO_SNOW_TYPE
 
 	var/mob/activator = null
 	var/active = FALSE

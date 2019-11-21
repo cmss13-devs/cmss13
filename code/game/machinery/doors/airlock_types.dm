@@ -220,17 +220,29 @@
 	add_timer(CALLBACK(src, /atom/proc/relativewall_neighbours), 10)
 	..()
 
+/obj/structure/machinery/door/airlock/strata/autoname
+	autoname = TRUE
+
 /obj/structure/machinery/door/airlock/strata/maintenance
 	name = "\improper Maintenance Airlock"
 	icon = 'icons/obj/structures/doors/strata/strata_maint.dmi'
+
+/obj/structure/machinery/door/airlock/strata/maintenance/autoname
+	autoname = TRUE
 
 /obj/structure/machinery/door/airlock/strata/security
 	name = "\improper Security Airlock"
 	icon = 'icons/obj/structures/doors/strata/strata_sec.dmi'
 
+/obj/structure/machinery/door/airlock/strata/security/autoname
+	autoname = TRUE
+
 /obj/structure/machinery/door/airlock/strata/mining
 	name = "\improper Airlock"
 	icon = 'icons/obj/structures/doors/strata/strata_mining.dmi'
+
+/obj/structure/machinery/door/airlock/strata/mining/autoname
+	autoname = TRUE
 
 //ALMAYER AIRLOCKS
 
@@ -247,11 +259,16 @@
 		relativewall_neighbours()
 	..()
 
+/obj/structure/machinery/door/airlock/almayer/autoname
+	autoname = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/security
 	name = "\improper Security Airlock"
 	icon = 'icons/obj/structures/doors/secdoor.dmi'
 	req_access = list(ACCESS_MARINE_BRIG)
+
+/obj/structure/machinery/door/airlock/almayer/security/autoname
+	autoname = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/security/glass
 	name = "\improper Security Airlock"
@@ -259,21 +276,33 @@
 	opacity = 0
 	glass = 1
 
+/obj/structure/machinery/door/airlock/almayer/security/glass/autoname
+	autoname = TRUE
+
 /obj/structure/machinery/door/airlock/almayer/command
 	name = "\improper Command Airlock"
 	icon = 'icons/obj/structures/doors/comdoor.dmi'
 	req_access = list(ACCESS_MARINE_BRIDGE)
+
+/obj/structure/machinery/door/airlock/almayer/command/autoname
+	autoname = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/secure
 	name = "\improper Secure Airlock"
 	icon = 'icons/obj/structures/doors/securedoor.dmi'
 	req_access = list(ACCESS_MARINE_BRIDGE)
 
+/obj/structure/machinery/door/airlock/almayer/secure/autoname
+	autoname = TRUE
+
 /obj/structure/machinery/door/airlock/almayer/maint
 	name = "\improper Maintenance Hatch"
 	icon = 'icons/obj/structures/doors/maintdoor.dmi'
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_ENGINEERING)
+
+/obj/structure/machinery/door/airlock/almayer/maint/autoname
+	autoname = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/engineering
 	name = "\improper Engineering Airlock"
@@ -283,11 +312,17 @@
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_ENGINEERING)
 
+/obj/structure/machinery/door/airlock/almayer/engineering/autoname
+	autoname = TRUE
+
 /obj/structure/machinery/door/airlock/almayer/medical
 	name = "\improper Medical Airlock"
 	icon = 'icons/obj/structures/doors/medidoor.dmi'
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_BRIDGE)
+
+/obj/structure/machinery/door/airlock/almayer/medical/autoname
+	autoname = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/medical/glass
 	name = "\improper Medical Airlock"
@@ -297,10 +332,16 @@
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_BRIDGE)
 
+/obj/structure/machinery/door/airlock/almayer/medical/glass/autoname
+	autoname = TRUE
+
 /obj/structure/machinery/door/airlock/almayer/research
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/structures/doors/medidoor.dmi'
 	req_access = list(ACCESS_MARINE_RESEARCH)
+
+/obj/structure/machinery/door/airlock/almayer/research/autoname
+	autoname = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/research/glass
 	name = "\improper Research Airlock"
@@ -309,9 +350,15 @@
 	glass = 1
 	req_access = list(ACCESS_MARINE_RESEARCH)
 
+/obj/structure/machinery/door/airlock/almayer/research/glass/autoname
+	autoname = TRUE
+
 /obj/structure/machinery/door/airlock/almayer/generic
 	name = "\improper Airlock"
 	icon = 'icons/obj/structures/doors/personaldoor.dmi'
+
+/obj/structure/machinery/door/airlock/almayer/generic/autoname
+	autoname = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/generic/corporate
 	name = "Corporate Liaison's Quarters"
@@ -323,6 +370,9 @@
 	icon = 'icons/obj/structures/doors/prepdoor.dmi'
 	opacity = 0
 	glass = 1
+
+/obj/structure/machinery/door/airlock/almayer/marine/autoname
+	autoname = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/marine/requisitions
 	name = "\improper Requisitions Bay"

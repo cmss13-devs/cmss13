@@ -43,6 +43,7 @@
 
 	var/damage = 0
 	var/damage_cap = HEALTH_DOOR // Airlock gets destroyed
+	var/autoname = FALSE
 
 /obj/structure/machinery/door/airlock/bumpopen(mob/living/user as mob) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
 	if(istype(user) && !issilicon(user))
@@ -712,6 +713,10 @@
 	..()
 
 	wall_check()
+
+	if(autoname)
+		var/area/A = get_area(loc)
+		name = A.name
 
 	if(closeOtherId != null)
 		spawn (5)

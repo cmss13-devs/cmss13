@@ -1,0 +1,6 @@
+author: Cakey
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed gas clouds such as boiler and praetorian gas not tracking damage statistics correctly."

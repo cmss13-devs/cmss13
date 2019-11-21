@@ -1729,6 +1729,8 @@
 		var/mob/living/carbon/Xenomorph/Boiler/B = P.firer
 		amount += B.gas_level
 		lifetime_mult = B.gas_life_multiplier
+		smoke_system.source = P.weapon_source
+		smoke_system.source_mob = P.weapon_source_mob
 	smoke_system.set_up(amount, 0, T)
 	smoke_system.lifetime = 6 * lifetime_mult
 	smoke_system.start()

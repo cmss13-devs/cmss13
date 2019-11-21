@@ -103,7 +103,7 @@ There are several things that need to be remembered:
 #define BURST_LAYER				28	//Chestburst overlay
 #define TARGETED_LAYER			29	//for target sprites when held at gun point, and holo cards.
 #define FIRE_LAYER				30	//If you're on fire		//BS12: Layer for the target overlay from weapon targeting system
-#define EFFECTS_LAYER				31  //If you're hit by an acid DoT
+#define EFFECTS_LAYER			31  //If you're hit by an acid DoT
 #define TOTAL_LAYERS			31
 //////////////////////////////////
 

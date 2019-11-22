@@ -208,7 +208,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	item_state = "mk221"
 	origin_tech = "combat=5;materials=4"
 	fire_sound = 'sound/weapons/gun_shotgun_automatic.ogg'
-	current_mag = /obj/item/ammo_magazine/internal/shotgun/combat
+	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/reddot,
@@ -445,7 +445,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	desc = "An Armat Battlefield Systems classic design, the M37A2 combines close-range firepower with long term reliability. Requires a pump, which is a Unique Action."
 	icon_state = "m37"
 	item_state = "m37"
-	current_mag = /obj/item/ammo_magazine/internal/shotgun/pump
+	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	flags_equip_slot = SLOT_BACK
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
 	var/pump_sound = 'sound/weapons/gun_shotgun_pump.ogg'
@@ -557,7 +557,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon_state = "hg3712"
 	item_state = "hg3712"
 	fire_sound = 'sound/weapons/gun_shotgun_small.ogg'
-	current_mag = /obj/item/ammo_magazine/internal/shotgun/pump/CMB
+	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	attachable_allowed = list(
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,

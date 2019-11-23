@@ -414,7 +414,7 @@ roles willy nilly.
 			L = i
 			if(L && L.name == J.title && !locate(/mob/living) in L.loc)
 				S = L
-			break
+				break
 		if(!S) 
 			S = locate("start*[J.title]") //Old type spawn.
 		if(istype(S) && istype(S.loc, /turf)) 

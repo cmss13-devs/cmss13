@@ -318,19 +318,14 @@
 			var/oldloc = loc
 			var/oldLloc = L.loc
 
-
-			var/L_PASS_MOB = (L.flags_pass & PASS_MOB) // we give PASS_MOB to both mobs to avoid bumping other mobs during swap.
-			var/src_PASS_MOB = (flags_pass & PASS_MOB)
 			L.flags_pass_temp |= PASS_MOB
 			flags_pass_temp |= PASS_MOB
 
 			L.Move(oldloc)
 			Move(oldLloc)
 
-			if(!src_PASS_MOB)
-				flags_pass_temp &= ~PASS_MOB
-			if(!L_PASS_MOB)
-				L.flags_pass_temp &= ~PASS_MOB
+			flags_pass_temp &= ~PASS_MOB
+			L.flags_pass_temp &= ~PASS_MOB
 
 			now_pushing = FALSE
 			return

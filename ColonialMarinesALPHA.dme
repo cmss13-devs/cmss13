@@ -288,7 +288,6 @@
 #include "code\datums\weather\weather_map_holder.dm"
 #include "code\datums\weather\weather_events\sorokyne.dm"
 #include "code\datums\weather\weather_map_holders\sorokyne.dm"
-#include "code\debug\iconprocwrappers.dm"
 #include "code\defines\procs\admin.dm"
 #include "code\defines\procs\announcement.dm"
 #include "code\defines\procs\AStar.dm"

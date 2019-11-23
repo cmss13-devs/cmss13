@@ -146,8 +146,8 @@ var/list/global/organ_rel_size = list(
 
 proc/slur(phrase)
 	phrase = html_decode(phrase)
-	var/leng=text_length(phrase)
-	var/counter=text_length(phrase)
+	var/leng=length(phrase)
+	var/counter=length(phrase)
 	var/newphrase=""
 	var/newletter=""
 	while(counter>=1)

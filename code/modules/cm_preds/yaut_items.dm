@@ -52,7 +52,8 @@
 	loc = location
 
 	var/mask_input[] = list(1,2,3,4,5,6,7,8,9,10,11)
-	if(mask_number in mask_input) icon_state = "pred_mask[mask_number]"
+	if(mask_number in mask_input) 
+		icon_state = "pred_mask[mask_number]"
 		item_state_slots = list(WEAR_FACE = "pred_mask[mask_number]")
 	if(elder_restricted) //Not possible for non-elders.
 		switch(mask_number)

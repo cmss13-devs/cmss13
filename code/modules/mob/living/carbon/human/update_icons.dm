@@ -155,15 +155,15 @@ var/global/list/damage_icon_parts = list()
 		var/brutestate = copytext(damage_state, 1, 2)
 		var/burnstate = copytext(damage_state, 2)
 		DI = new /icon('icons/mob/humans/dam_human.dmi', "grayscale_[brutestate]")// the damage icon for whole human in grayscale
-		DI.debugBlend(species.blood_color, ICON_MULTIPLY) //coloring with species' blood color
-		DI.debugBlend(new /icon('icons/mob/humans/dam_human.dmi', "burn_[burnstate]"), ICON_OVERLAY)//adding burns
-		DI.debugBlend(new /icon('icons/mob/humans/body_mask.dmi', L_name), ICON_MULTIPLY)		// mask with this organ's pixels
+		DI.Blend(species.blood_color, ICON_MULTIPLY) //coloring with species' blood color
+		DI.Blend(new /icon('icons/mob/humans/dam_human.dmi', "burn_[burnstate]"), ICON_OVERLAY)//adding burns
+		DI.Blend(new /icon('icons/mob/humans/body_mask.dmi', L_name), ICON_MULTIPLY)		// mask with this organ's pixels
 		damage_icon_parts["[damage_state]_[species.blood_color]_[L_name]"] = DI
 	else
 		DI = damage_icon_parts["[damage_state]_[species.blood_color]_[L_name]"]
 	for(var/datum/wound/W in limb.wounds)
 		if(W.impact_icon)
-			DI.debugBlend(W.impact_icon, ICON_OVERLAY)
+			DI.Blend(W.impact_icon, ICON_OVERLAY)
 
 	return DI
 
@@ -302,7 +302,7 @@ var/global/list/damage_icon_parts = list()
 				if(!(part.icon_position & RIGHT))
 					temp2.Insert(new/icon(temp,dir=WEST),dir=WEST)
 
-				base_icon.debugBlend(temp2, ICON_OVERLAY)
+				base_icon.Blend(temp2, ICON_OVERLAY)
 
 				if(part.icon_position & LEFT)
 					temp2.Insert(new/icon(temp,dir=EAST),dir=EAST)
@@ -310,11 +310,11 @@ var/global/list/damage_icon_parts = list()
 				if(part.icon_position & RIGHT)
 					temp2.Insert(new/icon(temp,dir=WEST),dir=WEST)
 
-				base_icon.debugBlend(temp2, ICON_UNDERLAY)
+				base_icon.Blend(temp2, ICON_UNDERLAY)
 
 			else
 
-				base_icon.debugBlend(temp, ICON_OVERLAY)
+				base_icon.Blend(temp, ICON_OVERLAY)
 
 		if(!skeleton)
 			if(husk)
@@ -328,8 +328,8 @@ var/global/list/damage_icon_parts = list()
 			var/icon/mask = new(base_icon)
 			var/icon/husk_over = new(race_icon,"overlay_husk")
 			mask.MapColors(0,0,0,1, 0,0,0,1, 0,0,0,1, 0,0,0,1, 0,0,0,0)
-			husk_over.debugBlend(mask, ICON_ADD)
-			base_icon.debugBlend(husk_over, ICON_OVERLAY)
+			husk_over.Blend(mask, ICON_ADD)
+			base_icon.Blend(husk_over, ICON_OVERLAY)
 
 
 		human_icon_cache[icon_key] = base_icon
@@ -338,24 +338,24 @@ var/global/list/damage_icon_parts = list()
 
 	//END CACHED ICON GENERATION.
 
-	stand_icon.debugBlend(base_icon,ICON_OVERLAY)
+	stand_icon.Blend(base_icon,ICON_OVERLAY)
 
 	/*
 	//Skin colour. Not in cache because highly variable (and relatively benign).
 	if (species.flags & HAS_SKIN_COLOR)
-		stand_icon.debugBlend(rgb(r_skin, g_skin, b_skin), ICON_ADD)
+		stand_icon.Blend(rgb(r_skin, g_skin, b_skin), ICON_ADD)
 	*/
 
 	if(has_head)
 		//Eyes
 		if(!skeleton)
 			var/icon/eyes = new/icon('icons/mob/humans/onmob/human_face.dmi', species.eyes)
-			eyes.debugBlend(rgb(r_eyes, g_eyes, b_eyes), ICON_ADD)
-			stand_icon.debugBlend(eyes, ICON_OVERLAY)
+			eyes.Blend(rgb(r_eyes, g_eyes, b_eyes), ICON_ADD)
+			stand_icon.Blend(eyes, ICON_OVERLAY)
 
 		//Mouth	(lipstick!)
 		if(lip_style && (species && species.flags & HAS_LIPS))	//skeletons are allowed to wear lipstick no matter what you think, agouri.
-			stand_icon.debugBlend(new/icon('icons/mob/humans/onmob/human_face.dmi', "camo_[lip_style]_s"), ICON_OVERLAY)
+			stand_icon.Blend(new/icon('icons/mob/humans/onmob/human_face.dmi', "camo_[lip_style]_s"), ICON_OVERLAY)
 
 
 	if(species.flags & HAS_UNDERWEAR)
@@ -365,20 +365,20 @@ var/global/list/damage_icon_parts = list()
 			if(!fat && !skeleton)
 				var/icon/underwear_icon = new /icon('icons/mob/humans/human.dmi', "cryo[underwear]_[g]_s")
 				var/icon/BM = new /icon(icon = 'icons/mob/humans/body_mask.dmi', icon_state = "groin")
-				BM.debugBlend(new /icon('icons/mob/humans/body_mask.dmi', "torso"), ICON_OR)
+				BM.Blend(new /icon('icons/mob/humans/body_mask.dmi', "torso"), ICON_OR)
 				for(var/datum/limb/leg/L in limbs)
 					var/uniform_icon = "[L.icon_name]"
 					if(L.status & LIMB_DESTROYED && !(L.status & LIMB_AMPUTATED))
 						uniform_icon += "_removed"
-					BM.debugBlend(new /icon('icons/mob/humans/body_mask.dmi', "[uniform_icon]"), ICON_OR)
-				underwear_icon.debugBlend(BM, ICON_MULTIPLY)
-				stand_icon.debugBlend(underwear_icon, ICON_OVERLAY)
+					BM.Blend(new /icon('icons/mob/humans/body_mask.dmi', "[uniform_icon]"), ICON_OR)
+				underwear_icon.Blend(BM, ICON_MULTIPLY)
+				stand_icon.Blend(underwear_icon, ICON_OVERLAY)
 
 		if(job in ROLES_MARINES) //undoing override
 			if(undershirt>0 && undershirt < 5)
-				stand_icon.debugBlend(new /icon('icons/mob/humans/human.dmi', "cryoshirt[undershirt]_s"), ICON_OVERLAY)
+				stand_icon.Blend(new /icon('icons/mob/humans/human.dmi', "cryoshirt[undershirt]_s"), ICON_OVERLAY)
 		else if(undershirt>0 && undershirt < 5)
-			stand_icon.debugBlend(new /icon('icons/mob/humans/human.dmi', "cryoshirt[undershirt]_s"), ICON_OVERLAY)
+			stand_icon.Blend(new /icon('icons/mob/humans/human.dmi', "cryoshirt[undershirt]_s"), ICON_OVERLAY)
 
 	icon = stand_icon
 
@@ -406,18 +406,18 @@ var/global/list/damage_icon_parts = list()
 		if(facial_hair_style && facial_hair_style.species_allowed && src.species.name in facial_hair_style.species_allowed)
 			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
 			if(facial_hair_style.do_colouration)
-				facial_s.debugBlend(rgb(r_facial, g_facial, b_facial), ICON_ADD)
+				facial_s.Blend(rgb(r_facial, g_facial, b_facial), ICON_ADD)
 
-			face_standing.debugBlend(facial_s, ICON_OVERLAY)
+			face_standing.Blend(facial_s, ICON_OVERLAY)
 
 	if(h_style && !(head && (head.flags_inv_hide & HIDETOPHAIR)))
 		var/datum/sprite_accessory/hair_style = hair_styles_list[h_style]
 		if(hair_style && src.species.name in hair_style.species_allowed)
 			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 			if(hair_style.do_colouration)
-				hair_s.debugBlend(rgb(r_hair, g_hair, b_hair), ICON_ADD)
+				hair_s.Blend(rgb(r_hair, g_hair, b_hair), ICON_ADD)
 
-			face_standing.debugBlend(hair_s, ICON_OVERLAY)
+			face_standing.Blend(hair_s, ICON_OVERLAY)
 
 	overlays_standing[HAIR_LAYER] = image("icon"= face_standing)
 
@@ -780,24 +780,24 @@ var/global/list/damage_icon_parts = list()
 		var/datum/sprite_accessory/facial_hair_style = facial_hair_styles_list[f_style]
 		if(facial_hair_style)
 			var/icon/facial_l = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_l")
-			facial_l.debugBlend(rgb(r_facial, g_facial, b_facial), ICON_ADD)
-			face_lying.debugBlend(facial_l, ICON_OVERLAY)
+			facial_l.Blend(rgb(r_facial, g_facial, b_facial), ICON_ADD)
+			face_lying.Blend(facial_l, ICON_OVERLAY)
 
 	if(h_style)
 		var/datum/sprite_accessory/hair_style = hair_styles_list[h_style]
 		if(hair_style)
 			var/icon/hair_l = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_l")
-			hair_l.debugBlend(rgb(r_hair, g_hair, b_hair), ICON_ADD)
-			face_lying.debugBlend(hair_l, ICON_OVERLAY)
+			hair_l.Blend(rgb(r_hair, g_hair, b_hair), ICON_ADD)
+			face_lying.Blend(hair_l, ICON_OVERLAY)
 
 	//Eyes
 	// Note: These used to be in update_face(), and the fact they're here will make it difficult to create a disembodied head
 	var/icon/eyes_l = new/icon('icons/mob/humans/onmob/human_face.dmi', "eyes_l")
-	eyes_l.debugBlend(rgb(r_eyes, g_eyes, b_eyes), ICON_ADD)
-	face_lying.debugBlend(eyes_l, ICON_OVERLAY)
+	eyes_l.Blend(rgb(r_eyes, g_eyes, b_eyes), ICON_ADD)
+	face_lying.Blend(eyes_l, ICON_OVERLAY)
 
 	if(lip_style)
-		face_lying.debugBlend(new/icon('icons/mob/humans/onmob/human_face.dmi', "lips_[lip_style]_l"), ICON_OVERLAY)
+		face_lying.Blend(new/icon('icons/mob/humans/onmob/human_face.dmi', "lips_[lip_style]_l"), ICON_OVERLAY)
 
 	var/image/face_lying_image = new /image(icon = face_lying)
 	return face_lying_image

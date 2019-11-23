@@ -55,9 +55,9 @@
 		to_chat(user, "<span class='information'>It has an [anes_tank] connected with the gauge showing [round(anes_tank.pressure,0.1)] kPa.</span>")
 
 /obj/structure/machinery/optable/attack_hand(mob/living/user)
-	if (HULK in usr.mutations)
+	if (HULK in user.mutations)
 		to_chat(user, SPAN_NOTICE("You destroy the table."))
-		visible_message(SPAN_DANGER("[usr] destroys the operating table!"))
+		visible_message(SPAN_DANGER("[user] destroys the operating table!"))
 		src.density = 0
 		qdel(src)
 		return

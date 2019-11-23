@@ -144,7 +144,7 @@ mob
 
 		// Testing dynamic icon overlays
 		var/icon/I = icon('old_or_unused.dmi', icon_state="aqua")
-		I.debugShift(NORTH,16,1)
+		I.Shift(NORTH,16,1)
 		overlays+=I
 
 		// Testing dynamic image overlays
@@ -222,9 +222,9 @@ icon
 		return I
 
 	proc/BecomeLying()
-		debugTurn(90)
-		debugShift(SOUTH,6)
-		debugShift(EAST,1)
+		Turn(90)
+		Shift(SOUTH,6)
+		Shift(EAST,1)
 
 	// Multiply all alpha values by this float
 	proc/ChangeOpacity(opacity = 1.0)
@@ -244,19 +244,19 @@ icon
 
 		if(gray)
 			MapColors(255/gray,0,0, 0,255/gray,0, 0,0,255/gray, 0,0,0)
-			debugBlend(tone, ICON_MULTIPLY)
+			Blend(tone, ICON_MULTIPLY)
 		else SetIntensity(0)
 		if(255-gray)
-			upper.debugBlend(rgb(gray,gray,gray), ICON_SUBTRACT)
+			upper.Blend(rgb(gray,gray,gray), ICON_SUBTRACT)
 			upper.MapColors((255-TONE[1])/(255-gray),0,0,0, 0,(255-TONE[2])/(255-gray),0,0, 0,0,(255-TONE[3])/(255-gray),0, 0,0,0,0, 0,0,0,1)
-			debugBlend(upper, ICON_ADD)
+			Blend(upper, ICON_ADD)
 
 	// Take the minimum color of two icons; combine transparency as if blending with ICON_ADD
 	proc/MinColors(icon)
 		var/icon/I = new(src)
 		I.Opaque()
-		I.debugBlend(icon, ICON_SUBTRACT)
-		debugBlend(I, ICON_SUBTRACT)
+		I.Blend(icon, ICON_SUBTRACT)
+		Blend(I, ICON_SUBTRACT)
 
 	// Take the maximum color of two icons; combine opacity as if blending with ICON_OR
 	proc/MaxColors(icon)
@@ -266,13 +266,13 @@ icon
 		else
 			// solid color
 			I = new(src)
-			I.debugBlend("#000000", ICON_OVERLAY)
+			I.Blend("#000000", ICON_OVERLAY)
 			I.SwapColor("#000000", null)
-			I.debugBlend(icon, ICON_OVERLAY)
+			I.Blend(icon, ICON_OVERLAY)
 		var/icon/J = new(src)
 		J.Opaque()
-		I.debugBlend(J, ICON_SUBTRACT)
-		debugBlend(I, ICON_OR)
+		I.Blend(J, ICON_SUBTRACT)
+		Blend(I, ICON_OR)
 
 	// make this icon fully opaque--transparent pixels become black
 	proc/Opaque(background = "#000000")
@@ -291,9 +291,9 @@ icon
 
 	proc/AddAlphaMask(mask)
 		var/icon/M = new(mask)
-		M.debugBlend("#ffffff", ICON_SUBTRACT)
+		M.Blend("#ffffff", ICON_SUBTRACT)
 		// apply mask
-		debugBlend(M, ICON_ADD)
+		Blend(M, ICON_ADD)
 
 /*
 	HSV format is represented as "#hhhssvv" or "#hhhssvvaa"
@@ -770,17 +770,17 @@ proc // Creates a single icon from a given /atom or /image.  Only the first argu
 
 			if(addX1!=flatX1 || addX2!=flatX2 || addY1!=flatY1 || addY2!=flatY2)
 				// Resize the flattened icon so the new icon fits
-				flat.debugCrop(addX1-flatX1+1, addY1-flatY1+1, addX2-flatX1+1, addY2-flatY1+1)
+				flat.Crop(addX1-flatX1+1, addY1-flatY1+1, addX2-flatX1+1, addY2-flatY1+1)
 				flatX1=addX1;flatX2=addX2
 				flatY1=addY1;flatY2=addY2
 
 			// Blend the overlay into the flattened icon
-			flat.debugBlend(add, blendMode2iconMode(curblend), I:pixel_x + 2 - flatX1, I:pixel_y + 2 - flatY1)
+			flat.Blend(add, blendMode2iconMode(curblend), I:pixel_x + 2 - flatX1, I:pixel_y + 2 - flatY1)
 
 		if(A.color)
-			flat.debugBlend(A.color, ICON_MULTIPLY)
+			flat.Blend(A.color, ICON_MULTIPLY)
 		if(A.alpha < 255)
-			flat.debugBlend(rgb(255, 255, 255, A.alpha), ICON_MULTIPLY)
+			flat.Blend(rgb(255, 255, 255, A.alpha), ICON_MULTIPLY)
 
 		return icon(flat, "", SOUTH)
 
@@ -790,7 +790,7 @@ proc // Creates a single icon from a given /atom or /image.  Only the first argu
 			if(I:layer>A.layer)	continue//If layer is greater than what we need, skip it.
 			var/icon/image_overlay = new(I:icon,I:icon_state)//Blend only works with icon objects.
 			//Also, icons cannot directly set icon_state. Slower than changing variables but whatever.
-			alpha_mask.debugBlend(image_overlay,ICON_OR)//OR so they are lumped together in a nice overlay.
+			alpha_mask.Blend(image_overlay,ICON_OR)//OR so they are lumped together in a nice overlay.
 		return alpha_mask//And now return the mask.
 
 /mob/proc/AddCamoOverlay(atom/A)//A is the atom which we are using as the overlay.
@@ -822,7 +822,7 @@ proc // Creates a single icon from a given /atom or /image.  Only the first argu
 	var/icon/composite = icon(A.icon, A.icon_state, A.dir, 1)
 	for(var/O in A.overlays)
 		var/image/I = O
-		composite.debugBlend(icon(I.icon, I.icon_state, I.dir, 1), ICON_OVERLAY)
+		composite.Blend(icon(I.icon, I.icon_state, I.dir, 1), ICON_OVERLAY)
 	return composite
 
 proc/adjust_brightness(var/color, var/value)

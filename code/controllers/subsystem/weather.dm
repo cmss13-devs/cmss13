@@ -163,9 +163,9 @@ var/list/weather_notify_objects = list()
 		qdel(weather_event_instance)
 		weather_event_instance = null
 
+	is_weather_event = FALSE
 	update_mobs()
 	controller_state_lock = FALSE
-	is_weather_event = FALSE
 	last_event_end_time = world.time
 
 

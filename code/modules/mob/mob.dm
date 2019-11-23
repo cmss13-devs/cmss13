@@ -814,7 +814,8 @@ mob/proc/yank_out_object()
 		temp_drop_inv_item(AM, TRUE) //unequip before deletion to clear possible item references on the mob.
 
 /mob/BlockedPassDirs(atom/movable/mover, target_dir)
-	if(lying)
+	//mobs that can pass through mobs let all mobs pass through them.
+	if(ismob(mover) && ((flags_pass_temp & PASS_MOB) || (flags_pass & PASS_MOB)))
 		return NO_BLOCKED_MOVEMENT
 
 	return ..()

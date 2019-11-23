@@ -247,7 +247,7 @@
 		switch(dir)
 			if(SOUTH)
 				layer = ABOVE_MOB_LAYER
-			else if(NORTH)
+			if(NORTH)
 				layer = initial(layer) - 0.01
 			else
 				layer = initial(layer)
@@ -1098,7 +1098,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	switch(dir)
 		if(SOUTH)
 			layer = ABOVE_MOB_LAYER
-		else if(NORTH)
+		if(NORTH)
 			layer = initial(layer) - 0.01
 		else
 			layer = initial(layer)

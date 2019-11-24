@@ -644,7 +644,7 @@
 			if(shooter_human.faction == faction)
 				var/buff_evading = 15
 				if(m_intent == MOVE_INTENT_WALK)
-					buff_evading += 35
+					buff_evading += 60
 				. -= buff_evading
 
 

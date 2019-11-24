@@ -299,7 +299,7 @@
 			to_chat(usr, SPAN_WARNING("Cannot store more than [firemission_envelope.max_mission_len] Fire Missions."))
 			return
 		var/fm_name = stripped_input(usr, "", "Enter Fire Mission Name", "Fire Mission [firemission_envelope.missions.len+1]", 50)
-		if(!fm_name || text_length(fm_name) < 5)
+		if(!fm_name || length(fm_name) < 5)
 			to_chat(usr, SPAN_WARNING("Name too short (at least 5 symbols)."))
 			return
 		var/fm_length = stripped_input(usr, "Enter length of the Fire Mission. Has to be less than [firemission_envelope.fire_length]. Use something that divides [firemission_envelope.fire_length] for optimal performance.", "Fire Mission Length (in tiles)", "[firemission_envelope.fire_length]", 5)

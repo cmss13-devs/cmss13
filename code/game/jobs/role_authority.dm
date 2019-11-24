@@ -401,21 +401,24 @@ roles willy nilly.
 */
 
 /datum/authority/branch/role/proc/equip_role(mob/living/M, datum/job/J, turf/late_join)
-	if(!istype(M) || !istype(J)) return
-
+	if(!istype(M) || !istype(J)) 
+		return
 	//If they didn't join late, we want to move them to the start position for their role.
-	if(late_join) M.loc = late_join //If they late joined, we passed on the location from the parent proc.
+	if(late_join) 
+		M.loc = late_join //If they late joined, we passed on the location from the parent proc.
 	else //If they didn't, we need to find a suitable spawn location for them.
 		var/i
 		var/obj/effect/landmark/L //To iterate.
 		var/obj/effect/landmark/S //Starting mark.
 		for(i in landmarks_list)
-		L = i
-		if(L && L.name == J.title && !locate(/mob/living) in L.loc)
-			S = L
+			L = i
+			if(L && L.name == J.title && !locate(/mob/living) in L.loc)
+				S = L
 				break
-		if(!S) S = locate("start*[J.title]") //Old type spawn.
-		if(istype(S) && istype(S.loc, /turf)) M.loc = S.loc
+		if(!S) 
+			S = locate("start*[J.title]") //Old type spawn.
+		if(istype(S) && istype(S.loc, /turf)) 
+			M.loc = S.loc
 		else
 			to_world("<span class='debug'>Error setting up character. No spawn location could be found.</span>")
 			log_debug("Error setting up character. No spawn location could be found.")

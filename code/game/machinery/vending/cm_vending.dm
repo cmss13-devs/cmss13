@@ -2147,7 +2147,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 	)
 
 	if(req_access.len)
-		switch(req_access.[1])
+		switch(req_access[1])
 			if(ACCESS_MARINE_ALPHA)
 				listed_products += list(list("Alpha Squad Gloves", 10, /obj/item/clothing/gloves/marine/alpha, "black"),
 										list("Marine Alpha Radio Headset", 10, /obj/item/device/radio/headset/almayer/marine/alpha, "black"))

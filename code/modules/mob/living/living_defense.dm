@@ -197,7 +197,6 @@
 
 	// Check if we're supposed to be something affected by weather
 	if (weatherSS.is_weather_event && weatherSS.weather_affects_check(src))
-
 		// Ok, we're affected by weather.
 
 		// Fullscreens

@@ -166,9 +166,9 @@
 	//Bigger icon base to capture those icons that were shifted to the next tile
 	//i.e. pretty much all wall-mounted machinery
 	var/icon/res = icon('icons/effects/96x96.dmi', "")
-	res.debugScale(size*32, size*32)
+	res.Scale(size*32, size*32)
 	// Initialize the photograph to black.
-	res.debugBlend("#000", ICON_OVERLAY)
+	res.Blend("#000", ICON_OVERLAY)
 
 	var/atoms[] = list()
 	for(var/turf/the_turf in turfs)
@@ -202,14 +202,14 @@
 				if (istype(A,/atom/movable))
 					xoff+=A:step_x
 					yoff+=A:step_y
-				res.debugBlend(IM, blendMode2iconMode(A.blend_mode),  A.pixel_x + xoff, A.pixel_y + yoff)
+				res.Blend(IM, blendMode2iconMode(A.blend_mode),  A.pixel_x + xoff, A.pixel_y + yoff)
 
 	// Lastly, render any contained effects on top.
 	for(var/turf/the_turf in turfs)
 		// Calculate where we are relative to the center of the photo
 		var/xoff = (the_turf.x - center.x) * 32 + center_offset
 		var/yoff = (the_turf.y - center.y) * 32 + center_offset
-		res.debugBlend(getFlatIcon(the_turf.loc), blendMode2iconMode(the_turf.blend_mode),xoff,yoff)
+		res.Blend(getFlatIcon(the_turf.loc), blendMode2iconMode(the_turf.blend_mode),xoff,yoff)
 	return res
 
 
@@ -284,10 +284,10 @@
 	var/icon/tiny_img = icon(photoimage)
 	var/icon/ic = icon('icons/obj/items/items.dmi',"photo")
 	var/icon/pc = icon('icons/obj/items/paper.dmi', "photo")
-	small_img.debugScale(8, 8)
-	tiny_img.debugScale(4, 4)
-	ic.debugBlend(small_img,ICON_OVERLAY, 10, 13)
-	pc.debugBlend(tiny_img,ICON_OVERLAY, 12, 19)
+	small_img.Scale(8, 8)
+	tiny_img.Scale(4, 4)
+	ic.Blend(small_img,ICON_OVERLAY, 10, 13)
+	pc.Blend(tiny_img,ICON_OVERLAY, 12, 19)
 
 	var/datum/picture/P = new()
 	P.fields["author"] = user

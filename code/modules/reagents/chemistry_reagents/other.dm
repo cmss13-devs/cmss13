@@ -852,8 +852,9 @@
 
 /datum/reagent/chlorinetrifluoride/reaction_mob(var/mob/M, var/method = TOUCH, var/volume) // Spilled on you? Not good either, but not /as/ bad.
 	var/mob/living/L = M
-	L.adjust_fire_stacks(max(L.fire_stacks, 10))
-	L.IgniteMob()
+	if(istype(L))
+		L.adjust_fire_stacks(max(L.fire_stacks, 10))
+		L.IgniteMob()
 
 /datum/reagent/methane
 	name = "Methane"

@@ -58,8 +58,8 @@
 			newoverlay.DrawBox(rgb(0,204,255),H.x-1,H.y-1,H.x+1,H.y+1)
 		else
 			newoverlay.DrawBox(rgb(51,204,51),H.x-1,H.y-1,H.x+1,H.y+1)
-	newoverlay.debugCrop(1,1,map_sizes[1][1],map_sizes[1][2])
-	newoverlay.debugScale(map_sizes[1][1]*2,map_sizes[1][2]*2)
+	newoverlay.Crop(1,1,map_sizes[1][1],map_sizes[1][2])
+	newoverlay.Scale(map_sizes[1][1]*2,map_sizes[1][2]*2)
 	qdel(xeno_mapview_overlay)
 	xeno_mapview_overlay = newoverlay
 
@@ -125,7 +125,7 @@
 			continue
 		if(locate(/obj/effect/alien/weeds) in T)
 			minimap.DrawBox(rgb(241,230,255),T.x,T.y)
-	minimap.debugCrop(1,1,max_x,max_y)
+	minimap.Crop(1,1,max_x,max_y)
 	map_sizes[1] = list(max_x,max_y,min_x,min_y)
 	qdel(xeno_mapview)
 	xeno_mapview = minimap
@@ -177,7 +177,7 @@
 		if(istype(T,/turf/open/gm/dirt))
 			minimap.DrawBox(rgb(200,200,200),T.x,T.y)
 			continue
-	minimap.debugCrop(1,1,max_x,max_y)
+	minimap.Crop(1,1,max_x,max_y)
 	map_sizes[1] = list(max_x,max_y,min_x,min_y)
 	marine_mapview = minimap
 	return minimap
@@ -270,8 +270,8 @@
 				newoverlay.DrawBox(rgb(255,102,102),T2.loc.x-1,T2.loc.y-1,T2.loc.x+1,T2.loc.y+1)
 			for(var/mob/living/carbon/Xenomorph/T3 in tier_3)
 				newoverlay.DrawBox(rgb(255,77,77),T3.loc.x-1,T3.loc.y-1,T3.loc.x+1,T3.loc.y+1)
-	newoverlay.debugCrop(1,1,map_sizes[1][1],map_sizes[1][2])
-	newoverlay.debugScale(map_sizes[1][1]*2,map_sizes[1][2]*2)
+	newoverlay.Crop(1,1,map_sizes[1][1],map_sizes[1][2])
+	newoverlay.Scale(map_sizes[1][1]*2,map_sizes[1][2]*2)
 	if(selected)
 		switch(selected)
 			if(1)

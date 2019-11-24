@@ -153,7 +153,7 @@
 		src.preload_rsc = pick(config.resource_urls)
 	else src.preload_rsc = 1 // If config.resource_urls is not set, preload like normal.
 
-	to_chat(src, SPAN_WARNING("If the title screen is black, resources are still downloading. Please be patient until the title screen appears."))
+	to_chat_forced(src, SPAN_WARNING("If the title screen is black, resources are still downloading. Please be patient until the title screen appears."))
 
 
 	clients += src

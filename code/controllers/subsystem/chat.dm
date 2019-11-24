@@ -71,14 +71,13 @@ var/datum/subsystem/chat/SSchat
 
 	var/clean_message = message
 	//Some macros remain in the string even after parsing and fuck up the eventual output
-	message = replacetext(message, "`", "")
 	message = replacetext(message, "\improper", "")
 	message = replacetext(message, "\proper", "")
 	message = replacetext(message, "\n", "<br>")
 	message = replacetext(message, "\t", "["&nbsp;&nbsp;&nbsp;&nbsp;"]["&nbsp;&nbsp;&nbsp;&nbsp;"]")
 	message += "<br>"
 
-	var/encoded_message = url_encode(url_encode(message), TRUE)
+	var/encoded_message = url_encode(url_encode(message))
 
 	//Grab us a client if possible
 	if(islist(target))		

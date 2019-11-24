@@ -158,11 +158,14 @@ function output(message, flag) {
 		flag = '';
 	}
 
-	if(flag !== 'internal')
+	if(flag === 'internal') {
+		escaper(message)
+	} else {
 		opts.lastPang = Date.now();
+	}
 	
 	message = message.replace(/\+/g, "%20")
-	message = decoder(message)
+	message = decodeURIComponent(message).trim()
 
 	//Stuff we do along with appending a message
 	var atBottom = false;
@@ -581,6 +584,8 @@ $(function() {
 		if (e.ctrlKey || e.altKey || e.shiftKey) { //Band-aid "fix" for allowing ctrl+c copy paste etc. Needs a proper fix.
 			return;
 		}
+
+		e.preventDefault();
 
 		var k = e.which;
 		var command;

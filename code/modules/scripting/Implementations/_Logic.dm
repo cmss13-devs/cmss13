@@ -155,7 +155,7 @@ proc/n_reverse(var/string)
 	if(istext(string))
 		var/newstring = ""
 		var/i
-		for(i in length(string) to 0 step -1)
+		for(i in length(string) to 1 step -1)
 			if(i>=1000)
 				break
 			newstring = newstring + copytext(string, i, i+1)
@@ -221,7 +221,6 @@ proc/n_inrange(var/num, var/min=-1, var/max=1)
 		var/i = 1
 		var/lenh=length(haystack)
 		var/lena=length(a)
-		//var/lenb=length(b)
 		var/count = 0
 		var/list/dat = list()
 		while (i < lenh)

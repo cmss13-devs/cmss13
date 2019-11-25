@@ -11,6 +11,7 @@
 	paygrade = "C"
 	idtype = /obj/item/card/id/lanyard
 	faction = FACTION_SURVIVOR
+	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(MALE, FEMALE)
@@ -27,6 +28,7 @@
 	assignment = "Scientist"
 	skills = /datum/skills/civilian/survivor/scientist
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH)
 
 /datum/equipment_preset/survivor/scientist/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -58,6 +60,8 @@
 	assignment = "Doctor"
 	skills = /datum/skills/civilian/survivor/doctor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH)
+
 
 /datum/equipment_preset/survivor/doctor/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -89,6 +93,7 @@
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
+	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/corporate/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -117,6 +122,8 @@
 	skills = /datum/skills/civilian/survivor/marshall
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/data
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_RESEARCH)
+
 
 /datum/equipment_preset/survivor/security/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -145,6 +152,7 @@
 	assignment = "Prisoner"
 	skills = /datum/skills/civilian/survivor/prisoner
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/prisoner/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -171,6 +179,7 @@
 	assignment = "Assistant"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/assistant/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -198,6 +207,7 @@
 	assignment = "Civilian"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/civilian/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -225,6 +235,7 @@
 	assignment = "Chef"
 	skills = /datum/skills/civilian/survivor/chef
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/chef/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -253,6 +264,7 @@
 	assignment = "Botanist"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/botanist/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -280,6 +292,7 @@
 	assignment = "Atmos Tech"
 	skills = /datum/skills/civilian/survivor/atmos
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING)
 
 /datum/equipment_preset/survivor/atmos_tech/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -307,6 +320,7 @@
 	assignment = "Chaplain"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/chaplain/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -336,6 +350,7 @@
 	assignment = "Miner"
 	skills = /datum/skills/civilian/survivor/miner
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING)
 
 /datum/equipment_preset/survivor/miner/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -365,6 +380,7 @@
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/data
+	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/salesman/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -395,6 +411,8 @@
 	skills = /datum/skills/civilian/survivor/marshall
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_RESEARCH)
+
 
 /datum/equipment_preset/survivor/colonial_marshall/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels

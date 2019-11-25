@@ -316,6 +316,8 @@
 		var/obj/item/reagent_container/hypospray/autoinjector/new_injector = new A.type(src)
 		qdel(A)
 		user.put_in_hands(new_injector)
+	else
+		. = ..()
 
 /obj/structure/machinery/vending/security
 	name = "SecTech"
@@ -456,7 +458,7 @@
 					/obj/item/tool/screwdriver = 5,/obj/item/tool/crowbar = 5)
 	//everything after the power cell had no amounts, I improvised.  -Sayu
 
-/obj/structure/machinery/vending/walkman  
+/obj/structure/machinery/vending/walkman
 	name = "Rec-Vend"
 	desc = "It vends Weyland-Yutani approved recreational items, like Walkmans and Cards."
 	icon_state = "walkman"
@@ -482,7 +484,7 @@
 			to_chat(user,SPAN_WARNING("Remove the tape first!"))
 			return
 	..()
-	
+
 
 
 

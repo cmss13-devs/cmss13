@@ -269,7 +269,7 @@
 //Come get some.
 /obj/item/weapon/gun/smartgun
 	name = "\improper M56B smartgun"
-	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun.\nReloading is a cumbersome process requiring a powerpack. Click the powerpack icon in the top left to reload.\nYou may toggle firing restrictions by using a special action."
+	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun.\nYou may toggle firing restrictions by using a special action."
 	icon_state = "m56"
 	item_state = "m56"
 	origin_tech = "combat=6;materials=5"
@@ -432,12 +432,6 @@
 		if ( !istype(H.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner) || !istype(H.back,/obj/item/smartgun_powerpack))
 			click_empty(H)
 			return 0
-
-
-
-/obj/item/weapon/gun/smartgun/load_into_chamber(mob/user)
-//	if(active_attachable) active_attachable = null
-	return ready_in_chamber()
 
 
 /obj/item/weapon/gun/smartgun/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)

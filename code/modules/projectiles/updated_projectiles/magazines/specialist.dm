@@ -95,24 +95,11 @@
 	default_ammo = /datum/ammo/bullet/smartgun/marine
 	gun_type = /obj/item/weapon/gun/smartgun
 
-/obj/item/ammo_magazine/smartgun/internal
-	name = "integrated smartgun belt"
-	max_rounds = 50 //Should be 500 in total.
-
-/obj/item/ammo_magazine/smartgun/internal/New(loc, spawn_empty = 1)
-	. = ..()
-
 /obj/item/ammo_magazine/smartgun/dirty
 	icon_state = "m57_dirty"
 	default_ammo = /datum/ammo/bullet/smartgun/dirty
 	gun_type = /obj/item/weapon/gun/smartgun/dirty
 
-/obj/item/ammo_magazine/smartgun/dirty/internal/
-	name = "integrated smartgun belt"
-	max_rounds = 50 //Should be 500 in total.
-
-/obj/item/ammo_magazine/smartgun/dirty/internal/New(loc, spawn_empty = 1)
-	. = ..()
 //-------------------------------------------------------
 //Flare gun. Close enough?
 /obj/item/ammo_magazine/internal/flare

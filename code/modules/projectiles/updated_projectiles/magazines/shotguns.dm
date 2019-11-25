@@ -60,15 +60,8 @@ also doesn't really matter. You can only reload them with handfuls.
 	desc = "An internal magazine. It is not supposed to be seen or removed."
 	default_ammo = /datum/ammo/bullet/shotgun/slug
 	caliber = "12g"
-	max_rounds = 8
+	max_rounds = 9
 	chamber_closed = 0
-
-/obj/item/ammo_magazine/internal/shotgun/pump
-
-
-/obj/item/ammo_magazine/internal/shotgun/pump/CMB //The only cycle method.
-	max_rounds = 8
-
 
 /obj/item/ammo_magazine/internal/shotgun/double //For a double barrel.
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
@@ -78,8 +71,6 @@ also doesn't really matter. You can only reload them with handfuls.
 /obj/item/ammo_magazine/internal/shotgun/double/mou53
 	default_ammo = /datum/ammo/bullet/shotgun/flechette
 	max_rounds = 3
-
-/obj/item/ammo_magazine/internal/shotgun/combat
 
 /obj/item/ammo_magazine/internal/shotgun/combat/riot
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag

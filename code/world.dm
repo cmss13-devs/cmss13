@@ -213,11 +213,14 @@ var/world_topic_spam_protect_time = world.timeofday
 
 				var/text = ""
 				text += "<hr><br>"
-				text += SPAN_CENTERBOLD("<font color='#00CC00'>You have 30 seconds to vote for the next map! Use the \"Map Vote\" verb in the OOC tab or click <a href='?src=\ref[src];vote_for_map=1'>here</a> to select an option.</font>")
+				text += SPAN_CENTERBOLD("<font color='#00CC00'>You have 30 seconds to vote for the next map! Use the \"Map Vote\" verb in the OOC tab or click <a href='?src=\ref[src];vote_for_map=1'>here</a> to select an option, or open voting window again to change your choice.</font>")
 				text += "<hr><br>"
 
 				to_world(text)
 				world << 'sound/voice/start_your_voting.ogg'
+
+				for(var/client/C in clients)
+					C.mapVote()
 
 			ticker.delay_end = TRUE
 			log_admin("World/Topic() call (likely MapDaemon.exe) has delayed the round end.")

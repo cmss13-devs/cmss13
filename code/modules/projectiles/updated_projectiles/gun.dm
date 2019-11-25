@@ -834,41 +834,24 @@ and you're good to go.
 					user.track_shot(initial(name))
 					apply_bullet_effects(projectile_to_fire, user) //We add any damage effects that we need.
 					simulate_recoil(1, user)
-					var/accuracy_debuff = 0
-					var/hitchance = 0
-					var/missed_once = 0
-					var/old_time = max(wield_time, pull_time) - wield_delay
-					var/new_time = world.time
-					if(wield_delay > 0 && (world.time < wield_time || world.time < pull_time) && (delay_style & WEAPON_DELAY_ACCURACY) )
-						var/pct_settled = 1 - (new_time-old_time + 1)/wield_delay
-						accuracy_debuff = 1 + (config.weapon_settle_accuracy_multiplier - 1) * pct_settled
-						hitchance = (1/accuracy_debuff)*100
 
 					if(projectile_to_fire.ammo.bonus_projectiles_amount)
 						var/obj/item/projectile/BP
 						var/i
 						for(i = 0; i<=projectile_to_fire.ammo.bonus_projectiles_amount; i++)
-							if(accuracy_debuff==0 || prob(hitchance))
-								BP = new /obj/item/projectile(initial(name), user, M.loc)
-								BP.generate_bullet(ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, iff_enabled_current?AMMO_SKIPS_HUMANS:0)
-								BP.damage *= damage_buff
-								BP.ammo.on_hit_mob(M, BP)
-								M.bullet_act(BP)
-								qdel(BP)
-							else
-								missed_once=TRUE
+							BP = new /obj/item/projectile(initial(name), user, M.loc)
+							BP.generate_bullet(ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, iff_enabled_current?AMMO_SKIPS_HUMANS:0)
+							BP.damage *= damage_buff
+							BP.ammo.on_hit_mob(M, BP)
+							M.bullet_act(BP)
+							qdel(BP)
 
-					if(accuracy_debuff==0 || prob(hitchance))
-						projectile_to_fire.ammo.on_hit_mob(M, projectile_to_fire)
-						M.bullet_act(projectile_to_fire)
-					else
-						missed_once=TRUE
+					projectile_to_fire.ammo.on_hit_mob(M, projectile_to_fire)
+					M.bullet_act(projectile_to_fire)
 
 					last_fired = world.time
 
 					if(!delete_bullet(projectile_to_fire)) qdel(projectile_to_fire)
-					if(missed_once)
-						user.visible_message(SPAN_NOTICE("Some bullets miss due to [user] firing from the hip."))
 					reload_into_chamber(user) //Reload into the chamber if the gun supports it.
 					return TRUE
 

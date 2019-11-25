@@ -1,7 +1,0 @@
-
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - rscadd: "Map vote window will pop up automatically upon map vote start. Don't let the Ice be selected! Do your part!"

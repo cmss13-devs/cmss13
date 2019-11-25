@@ -481,16 +481,15 @@
 	if(istype(src, /mob/living/carbon/human) && mode == 1)
 		var/mob/living/carbon/human/H = src
 		for(var/datum/limb/org in H.limbs)
-			var/brute_treated = 0
-			var/burn_treated = 0
-			var/open_incision = 1
+			var/brute_treated = TRUE
+			var/burn_treated = TRUE
+			var/open_incision = TRUE
 			if(org.surgery_open_stage == 0)
-				open_incision = 0
-			var/bandaged = org.is_bandaged()
-			if(!bandaged || open_incision)
-				brute_treated = 1
-			if(!org.is_salved() || org.burn_dam == 0)
-				burn_treated = 1
+				open_incision = FALSE
+			if((org.brute_dam > 0 && !org.is_bandaged()) || open_incision)
+				brute_treated = FALSE
+			if(org.burn_dam > 0 && !org.is_salved())
+				burn_treated = FALSE
 
 			if(org.status & LIMB_DESTROYED)
 				dat += "\t\t [capitalize(org.display_name)]: <span class='scannerb'>Missing!</span>\n"
@@ -504,9 +503,9 @@
 
 			var/org_name = "[capitalize(org.display_name)][org.status & LIMB_ROBOT ? " (Cybernetic)" : ""]"
 			var/burn_info = org.burn_dam > 0 ? "<span class='scannerburnb'> [round(org.burn_dam)]</span>" : "<span class='scannerburn'>0</span>"
-			burn_info += "[((burn_treated)?"":"{B}")]"
+			burn_info += "[burn_treated ? "" : "{B}"]"
 			var/brute_info =  org.brute_dam > 0 ? "<span class='scannerb'> [round(org.brute_dam)]</span>" : "<span class='scanner'>0</span>"
-			brute_info += "[(brute_treated && org.brute_dam >= 1?"":"{T}")]"
+			brute_info += "[brute_treated ? "" : "{T}"]"
 			var/fracture_info = ""
 			if(org.status & LIMB_BROKEN)
 				fracture_info = "{F}"

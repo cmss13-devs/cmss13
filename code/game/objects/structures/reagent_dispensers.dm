@@ -158,11 +158,12 @@
 	var/shrapnel = round(reagents.total_volume / 90)
 	var/expower = reagents.total_volume / 8 // full tank is thousand units, ~120 ex power
 	var/flamesize = round(reagents.total_volume / 500) // 2 at full, 1 at half etc
+	var/turf/T = get_turf(src)
 	if(expower > 40)
-		create_shrapnel(src.loc, shrapnel, , ,shrapneltype)
+		create_shrapnel(T, shrapnel, , ,shrapneltype)
 		sleep(2)
-	cell_explosion(src.loc, expower, 24, null, initial(name), source_mob)
-	new /obj/flamer_fire(src.loc, initial(name), source_mob, 12, 10, , flamesize, FALSE, FLAMESHAPE_STAR)
+	cell_explosion(T, expower, 24, null, initial(name), source_mob)
+	new /obj/flamer_fire(T, initial(name), source_mob, 12, 10, , flamesize, FALSE, FLAMESHAPE_STAR)
 	if(src)
 		qdel(src)
 
@@ -172,7 +173,8 @@
 	return ..()
 
 /obj/structure/reagent_dispensers/fueltank/Move()
-	if (..() && modded)
+	. = ..()
+	if (. && modded)
 		leak_fuel(amount_per_transfer_from_this/10.0)
 
 /obj/structure/reagent_dispensers/fueltank/proc/leak_fuel(amount)

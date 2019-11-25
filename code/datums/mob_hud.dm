@@ -113,7 +113,7 @@ var/datum/mob_hud/huds = list(
 
 //Xeno status hud, for xenos
 /datum/mob_hud/xeno
-	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO)
+	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD)
 
 
 
@@ -350,21 +350,30 @@ var/datum/mob_hud/huds = list(
 		if(tempname)
 			holder.icon_state = "hud[tempname]"
 
+		var/has_frenzy_aura = FALSE
+		var/has_recovery_aura = FALSE
+		var/has_warding_aura = FALSE
 		switch(current_aura)
 			if("frenzy")
-				holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurafrenzy")
+				has_frenzy_aura = TRUE
 			if("recovery")
-				holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurarecovery")
+				has_recovery_aura = TRUE
 			if("warding")
-				holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurawarding")
-
+				has_warding_aura = TRUE		
 		switch(leader_current_aura)
 			if("frenzy")
-				holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurafrenzy")
+				has_frenzy_aura = TRUE
 			if("recovery")
-				holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurarecovery")
+				has_recovery_aura = TRUE
 			if("warding")
-				holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurawarding")
+				has_warding_aura = TRUE
+
+		if (has_frenzy_aura)
+			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurafrenzy")
+		if(has_recovery_aura)
+			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurarecovery")
+		if(has_warding_aura)
+			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurawarding")
 
 	hud_list[PHEROMONE_HUD] = holder
 
@@ -373,24 +382,23 @@ var/datum/mob_hud/huds = list(
 	var/image/holder = hud_list[QUEEN_OVERWATCH_HUD]
 	holder.overlays.Cut()
 	holder.icon_state = "hudblank"
-	if(stat != DEAD)
-		if(hivenumber && hivenumber <= hive_datum.len)
-			var/datum/hive_status/hive = hive_datum[hivenumber]
-			if(hive.living_xeno_queen)
-				if(hive.living_xeno_queen.observed_xeno == src)
-					holder.icon_state = "queen_overwatch"
-				if(hive_pos != NORMAL_XENO)
-					var/image/I = image('icons/mob/hud/hud.dmi',src, "hudxenoleader")
-					holder.overlays += I
-		if(upgrade)
-			var/image/J = image('icons/mob/hud/hud.dmi',src, "hudxenoupgrade[upgrade]")
-			holder.overlays += J
+	if (stat != DEAD && hivenumber && hivenumber <= hive_datum.len)
+		var/datum/hive_status/hive = hive_datum[hivenumber]
+		var/mob/living/carbon/Xenomorph/Queen/Q = hive.living_xeno_queen
+		if (Q && Q.observed_xeno == src)
+			holder.icon_state = "queen_overwatch"
 	hud_list[QUEEN_OVERWATCH_HUD] = holder
 
 
 /mob/living/carbon/Xenomorph/proc/hud_update()
-	var/image/holder = hud_list[QUEEN_OVERWATCH_HUD]
-	if(upgrade)
+	var/image/holder = hud_list[XENO_STATUS_HUD]
+	holder.overlays.Cut()
+	if (stat == DEAD)
+		return
+	if (IS_XENO_LEADER(hive_pos))
+		var/image/I = image('icons/mob/hud/hud.dmi',src, "hudxenoleader")
+		holder.overlays += I
+	if (upgrade)
 		var/image/J = image('icons/mob/hud/hud.dmi',src, "hudxenoupgrade[upgrade]")
 		holder.overlays += J
 

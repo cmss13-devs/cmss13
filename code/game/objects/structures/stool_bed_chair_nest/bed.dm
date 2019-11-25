@@ -286,7 +286,7 @@ var/global/list/activated_medevac_stretchers = list()
 		overlays += image("beacon_active_[density ? "up":"down"]")
 
 	if(buckled_mob || buckled_bodybag)
-		overlays += image("icon_state"="stretcher_box","layer"=LYING_MOB_LAYER + 0.1)
+		overlays += image("icon_state"="stretcher_box","layer"=LYING_LIVING_MOB_LAYER + 0.1)
 
 
 /obj/structure/bed/medevac_stretcher/verb/activate_medevac_beacon()

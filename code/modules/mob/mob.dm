@@ -571,7 +571,6 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 //Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
 /mob/proc/update_canmove()
-
 	var/laid_down = (stat || knocked_down || knocked_out || !has_legs() || resting || (status_flags & FAKEDEATH) || (pulledby && pulledby.grab_level >= GRAB_NECK))
 
 	if(laid_down)
@@ -600,12 +599,14 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(lying_prev != lying)
 		update_transform()
 
-	if(lying)
-		if(layer == initial(layer)) //to avoid things like hiding larvas.
-			layer = LYING_MOB_LAYER //so mob lying always appear behind standing mobs
-	else
-		if(layer == LYING_MOB_LAYER)
-			layer = initial(layer)
+	if(lying && (layer == initial(layer) || stat == DEAD)) //to avoid things like hiding larvas.
+		//so mob lying always appear behind standing mobs, but dead ones appear behind living ones
+		if (stat == DEAD)
+			layer = LYING_DEAD_MOB_LAYER // Dead mobs should layer under living ones
+		else
+			layer = LYING_LIVING_MOB_LAYER
+	else if(layer == LYING_DEAD_MOB_LAYER || layer == LYING_LIVING_MOB_LAYER)
+		layer = initial(layer)
 
 	return canmove
 

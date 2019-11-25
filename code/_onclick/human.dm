@@ -90,7 +90,7 @@
 			if(16 to 128)
 				return
 
-/atom/movable/proc/handle_click(mob/living/carbon/human/user, atom/A, params) //Heres our handle click relay proc thing.
+/datum/proc/handle_click(mob/living/carbon/human/user, atom/A, params) //Heres our handle click relay proc thing.
 	return HANDLE_CLICK_PASS_THRU
 
 /atom/proc/attack_hand(mob/user)

@@ -156,7 +156,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	else
 		var/response = alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)","Are you sure you want to ghost?","Ghost","Stay in body")
 		if(response != "Ghost")	return	//didn't want to ghost after-all
-		resting = 1
+		AdjustSleeping(2) // Sleep so you will be properly recognized as ghosted
 		var/turf/location = get_turf(src)
 		track_death_calculations()
 		if(client && client.player_entity)

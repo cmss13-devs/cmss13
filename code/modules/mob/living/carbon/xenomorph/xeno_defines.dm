@@ -456,26 +456,26 @@
 	xeno_leader_list[leader_num] = xeno
 	xeno.hive_pos = XENO_LEADER(leader_num)
 	xeno.handle_xeno_leader_pheromones()
+	xeno.hud_update() // To add leader star
 	open_xeno_leader_positions -= leader_num
 
 	hive_ui.update_xeno_keys()
-
 	return TRUE
 
 /datum/hive_status/proc/remove_hive_leader(var/mob/living/carbon/Xenomorph/xeno)
 	var/leader_num = GET_XENO_LEADER_NUM(xeno.hive_pos)
 	
+	xeno_leader_list[leader_num] = null
 	xeno.hive_pos = NORMAL_XENO
 	xeno.handle_xeno_leader_pheromones()
-
-	xeno_leader_list[leader_num] = null
+	xeno.hud_update() // To remove leader star
 
 	// Need to maintain ascending order of open_xeno_leader_positions
 	for (var/i in 1 to queen_leader_limit)
 		if (i > open_xeno_leader_positions.len || open_xeno_leader_positions[i] > leader_num)
 			open_xeno_leader_positions.Insert(i, leader_num)
 			break
-
+	
 	hive_ui.update_xeno_keys()
 
 /datum/hive_status/proc/handle_xeno_leader_pheromones()

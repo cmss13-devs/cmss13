@@ -8,16 +8,16 @@
 	w_class = SIZE_SMALL
 	var/unfolded_path = /obj/structure/closet/bodybag
 
-	attack_self(mob/user)
-		deploy_bodybag(user, user.loc)
+/obj/item/bodybag/attack_self(mob/user)
+	deploy_bodybag(user, user.loc)
 
-	afterattack(atom/target, mob/user, proximity)
-		if(!proximity)
-			return
-		if(isturf(target))
-			var/turf/T = target
-			if(!T.density)
-				deploy_bodybag(user, T)
+/obj/item/bodybag/afterattack(atom/target, mob/user, proximity)
+	if(!proximity)
+		return
+	if(isturf(target))
+		var/turf/T = target
+		if(!T.density)
+			deploy_bodybag(user, T)
 
 /obj/item/bodybag/proc/deploy_bodybag(mob/user, atom/location)
 	var/obj/structure/closet/bodybag/R = new unfolded_path(location, src)
@@ -35,10 +35,10 @@
 	unfolded_path = /obj/structure/closet/bodybag/cryobag
 	var/used = 0
 
-	New(loc, obj/structure/closet/bodybag/cryobag/CB)
-		..()
-		if(CB)
-			used = CB.used
+/obj/item/bodybag/cryobag/New(loc, obj/structure/closet/bodybag/cryobag/CB)
+	..()
+	if(CB)
+		used = CB.used
 
 
 /obj/item/storage/box/bodybags
@@ -46,15 +46,16 @@
 	desc = "This box contains body bags."
 	icon_state = "bodybags"
 	w_class = SIZE_MEDIUM
-	New()
-		..()
-		new /obj/item/bodybag(src)
-		new /obj/item/bodybag(src)
-		new /obj/item/bodybag(src)
-		new /obj/item/bodybag(src)
-		new /obj/item/bodybag(src)
-		new /obj/item/bodybag(src)
-		new /obj/item/bodybag(src)
+
+/obj/item/storage/box/bodybags/New()
+	..()
+	new /obj/item/bodybag(src)
+	new /obj/item/bodybag(src)
+	new /obj/item/bodybag(src)
+	new /obj/item/bodybag(src)
+	new /obj/item/bodybag(src)
+	new /obj/item/bodybag(src)
+	new /obj/item/bodybag(src)
 
 
 /obj/structure/closet/bodybag

@@ -13,7 +13,6 @@
 	idle_power_usage = 1
 	active_power_usage = 5
 	flags_can_pass_all = PASS_OVER|PASS_AROUND
-	var/mob/living/carbon/human/victim = null
 	var/strapped = 0.0
 	can_buckle = TRUE
 	buckle_lying = TRUE
@@ -28,8 +27,13 @@
 		if (computer)
 			computer.table = src
 			break
-//	spawn(100) //Wont the MC just call this process() before and at the 10 second mark anyway?
-//		process()
+
+/obj/structure/machinery/optable/Dispose()
+	if(anes_tank)
+		qdel(anes_tank)
+		anes_tank = null
+	. = ..()
+
 
 /obj/structure/machinery/optable/ex_act(severity)
 
@@ -71,38 +75,51 @@
 
 
 /obj/structure/machinery/optable/buckle_mob(mob/living/carbon/human/H, mob/living/user)
-	if(!istype(H) || H == user || H.buckled || user.action_busy || user.stat)
+	if(!istype(H) || !ishuman(user) || H == user || H.buckled || user.action_busy || user.is_mob_incapacitated() || buckled_mob)
 		return
-	if(H != victim)
-		to_chat(user, SPAN_WARNING("Lay the patient on the table first!"))
+
+	if(H.loc != loc)
+		to_chat(user, SPAN_WARNING("The patient needs to be on the table first."))
 		return
+
 	if(!anes_tank)
 		to_chat(user, SPAN_WARNING("There is no anesthetic tank connected to the table, load one first."))
 		return
 	H.visible_message(SPAN_NOTICE("[user] begins to connect [H] to the anesthetic system."))
 	if(!do_after(user, 25, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-		if(H.buckled) return
-		if(H != victim)
-			to_chat(user, SPAN_WARNING("The patient must remain on the table!"))
-			return
 		to_chat(user, SPAN_NOTICE("You stop placing the mask on [H]'s face."))
 		return
+
+	if(H.buckled || buckled_mob || H.loc != loc)
+		return
+
 	if(!anes_tank)
 		to_chat(user, SPAN_WARNING("There is no anesthetic tank connected to the table, load one first."))
 		return
 	if(H.wear_mask && !H.drop_inv_item_on_ground(H.wear_mask))
 		to_chat(user, SPAN_DANGER("You can't remove their mask!"))
 		return
+
 	var/obj/item/clothing/mask/breath/medical/B = new()
-	if(!H.equip_if_possible(B, WEAR_FACE))
+	if(!H.equip_if_possible(B, WEAR_FACE, TRUE))
 		to_chat(user, SPAN_DANGER("You can't fit the gas mask over their face!"))
-		qdel(B)
 		return
+	H.update_inv_wear_mask()
+
+	do_buckle(H, user)
+
+/obj/structure/machinery/optable/do_buckle(mob/target, mob/user)
+	. = ..()
+	if(!.)
+		return
+	var/mob/living/carbon/human/H = target
 	H.internal = anes_tank
 	H.visible_message(SPAN_NOTICE("[user] fits the mask over [H]'s face and turns on the anesthetic."))
 	to_chat(H, "<span class='information'>You begin to feel sleepy.</span>")
 	H.dir = SOUTH
-	..()
+	start_processing()
+	update_icon()
+
 
 /obj/structure/machinery/optable/unbuckle(mob/living/user)
 	if(!buckled_mob)
@@ -114,7 +131,9 @@
 		H.drop_inv_item_on_ground(M)
 		qdel(M)
 		H.visible_message(SPAN_NOTICE("[user] turns off the anesthetic and removes the mask from [H]."))
+		stop_processing()
 		..()
+		update_icon()
 
 /obj/structure/machinery/optable/MouseDrop_T(atom/A, mob/user)
 
@@ -126,22 +145,25 @@
 			if (I.loc != loc)
 				step(I, get_dir(I, src))
 	else if(ismob(A))
-		..(A, user)
+		..()
 
-/obj/structure/machinery/optable/proc/check_victim()
-	if(locate(/mob/living/carbon/human, loc))
-		var/mob/living/carbon/human/M = locate(/mob/living/carbon/human, loc)
-		if(M.lying)
-			victim = M
-			icon_state = M.pulse ? "table2-active" : "table2-idle"
-			return 1
-	victim = null
-	stop_processing()
-	icon_state = "table2-idle"
-	return 0
+/obj/structure/machinery/optable/power_change()
+	..()
+	update_icon()
+
+/obj/structure/machinery/optable/update_icon()
+	if(stat & (NOPOWER|BROKEN))
+		icon_state = "table2-idle"
+	else if(!ishuman(buckled_mob))
+		icon_state = "table2-idle"
+	else
+		var/mob/living/carbon/human/H = buckled_mob
+		icon_state = H.pulse ? "table2-active" : "table2-idle"
 
 /obj/structure/machinery/optable/process()
-	check_victim()
+	update_icon()
+	if(!ishuman(buckled_mob))
+		stop_processing()
 
 /obj/structure/machinery/optable/proc/take_victim(mob/living/carbon/C, mob/living/carbon/user)
 	if (C == user)
@@ -153,13 +175,6 @@
 	C.forceMove(loc)
 
 	add_fingerprint(user)
-	if(ishuman(C))
-		var/mob/living/carbon/human/H = C
-		victim = H
-		start_processing()
-		icon_state = H.pulse ? "table2-active" : "table2-idle"
-	else
-		icon_state = "table2-idle"
 
 /obj/structure/machinery/optable/verb/mount_table()
 	set name = "Mount Operating Table"
@@ -181,7 +196,7 @@
 			return
 	if (istype(W, /obj/item/grab) && ishuman(user))
 		var/obj/item/grab/G = W
-		if(victim && victim != G.grabbed_thing)
+		if(buckled_mob)
 			to_chat(user, SPAN_WARNING("The table is already occupied!"))
 			return
 		var/mob/living/carbon/M
@@ -204,7 +219,7 @@
 		take_victim(M,user)
 
 /obj/structure/machinery/optable/proc/check_table(mob/living/carbon/patient)
-	if(victim)
+	if(buckled_mob)
 		to_chat(patient, SPAN_NOTICE(" <B>The table is already occupied!</B>"))
 		return FALSE
 

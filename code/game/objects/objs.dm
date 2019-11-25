@@ -197,6 +197,7 @@
 		src.buckled_mob = target
 		src.add_fingerprint(user)
 		afterbuckle(target)
+		return TRUE
 
 /obj/proc/send_buckling_message(mob/M, mob/user)
 	if (M == user)
@@ -228,7 +229,7 @@
 /obj/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(mover == buckled_mob) //can't collide with the thing you're buckled to
 		return NO_BLOCKED_MOVEMENT
-	
+
 	return ..()
 
 /obj/proc/wall_check() //used at roundstart to automatically detect and remove walls that overlap. Called by windows and airlocks

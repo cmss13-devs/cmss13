@@ -100,18 +100,22 @@
 	damage_falloff = ammo.damage_falloff
 	projectile_override_flags = special_flags
 
-//Target, firer, shot from. Ie the gun
-/obj/item/projectile/proc/fire_at(atom/target,atom/F, atom/S, range = 30,speed = 1)
-	if(!original) original = target
-	if(!loc) loc = get_turf(F)
+// Target, firer, shot from (i.e. the gun), projectile range, projectile speed, original target (who was aimed at, not where projectile is going towards)
+/obj/item/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override)
+	if(!original) 
+		original = istype(original_override) ? original_override : target
+	if(!loc) 
+		loc = get_turf(F)
 	starting = get_turf(src)
-	if(starting != loc) loc = starting //Put us on the turf, if we're not.
+	if(starting != loc) 
+		loc = starting //Put us on the turf, if we're not.
 	target_turf = get_turf(target)
 	if(!target_turf || target_turf == starting) //This shouldn't happen, but it can.
 		qdel(src)
 		return
 	firer = F
-	if(F) permutated += F //Don't hit the shooter (firer)
+	if(F) 
+		permutated += F //Don't hit the shooter (firer)
 	permutated += src //Don't try to hit self.
 	shot_from = S
 	in_flight = 1
@@ -128,7 +132,8 @@
 		M.track_shot(weapon_source)
 
 	//If we have the the right kind of ammo, we can fire several projectiles at once.
-	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type) ammo.fire_bonus_projectiles(src)
+	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type) 
+		ammo.fire_bonus_projectiles(src)
 
 	path = getline2(starting,target_turf)
 
@@ -698,7 +703,6 @@
 			to_chat(src, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
 	return 1
 
-#define DEBUG_HUMAN_DEFENSE 0
 /mob/living/carbon/human/bullet_act(obj/item/projectile/P)
 	if(!P) return
 

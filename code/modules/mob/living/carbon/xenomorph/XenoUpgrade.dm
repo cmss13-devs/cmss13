@@ -66,7 +66,7 @@
 
 	generate_name() //Give them a new name now
 
-	hud_set_queen_overwatch() //update the upgrade level insignia on our xeno hud.
+	hud_update() //update the upgrade level insignia on our xeno hud.
 
 	// Update the hive status
 	hive.hive_ui.update_xeno_info()

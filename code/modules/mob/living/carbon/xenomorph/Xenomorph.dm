@@ -45,7 +45,7 @@
 	see_in_dark = 8
 	see_infrared = 1
 	see_invisible = SEE_INVISIBLE_MINIMUM
-	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO)
+	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD)
 	unacidable = TRUE
 	rebounds = TRUE
 	faction = FACTION_XENOMORPH
@@ -386,7 +386,7 @@
 		if(oldXeno.hive_pos != NORMAL_XENO && caste_name != "Queen") // xeno leader is removed by Dispose()
 			hive_pos = oldXeno.hive_pos
 			hive.xeno_leader_list[GET_XENO_LEADER_NUM(hive_pos)] = src
-			hud_set_queen_overwatch()
+			hud_update()
 			if(hive.living_xeno_queen)
 				handle_xeno_leader_pheromones()
 

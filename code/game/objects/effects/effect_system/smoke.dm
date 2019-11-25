@@ -119,7 +119,7 @@
 	smokeranking = SMOKE_RANK_LOW
 
 /obj/effect/particle_effect/smoke/bad/Move()
-	..()
+	. = ..()
 	for(var/mob/living/carbon/M in get_turf(src))
 		affect(M)
 
@@ -146,7 +146,7 @@
 	smokeranking = SMOKE_RANK_MED
 
 /obj/effect/particle_effect/smoke/sleepy/Move()
-	..()
+	. = ..()
 	for(var/mob/living/carbon/M in get_turf(src))
 		affect(M)
 
@@ -173,7 +173,7 @@
 	smokeranking = SMOKE_RANK_HIGH
 
 /obj/effect/particle_effect/smoke/mustard/Move()
-	..()
+	. = ..()
 	for(var/mob/living/carbon/human/R in get_turf(src))
 		affect(R)
 
@@ -198,7 +198,7 @@
 	smokeranking = SMOKE_RANK_HIGH
 
 /obj/effect/particle_effect/smoke/phosphorus/Move()
-	..()
+	. = ..()
 	for(var/mob/living/carbon/M in get_turf(src))
 		affect(M)
 

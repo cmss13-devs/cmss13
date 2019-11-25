@@ -713,16 +713,16 @@
 	attachment_vendors.Remove(src)
 
 // Req's diagonal vending
-/obj/structure/machinery/vending/attachments/req/release_item(datum/data/vending_product/R, delay_vending = 0, dump_product = 0)
+/obj/structure/machinery/vending/attachments/req/release_item(datum/data/vending_product/R, delay_vending = 0, var/mob/living/carbon/human/user)
 	set waitfor = 0
 	if(delay_vending)
 		use_power(vend_power_usage)
 		if(icon_vend)
 			flick(icon_vend,src)
 		sleep(delay_vending)
-	if(get_dir(src,usr) & NORTHEAST)
+	if(get_dir(src, user) & NORTHEAST)
 		. = new R.product_path(get_turf(get_step(src, NORTH)))
-	else if(get_dir(src,usr) & SOUTHEAST)
+	else if(get_dir(src, user) & SOUTHEAST)
 		. = new R.product_path(get_turf(get_step(src, SOUTH)))
 	else
 		. = new R.product_path(get_turf(src))

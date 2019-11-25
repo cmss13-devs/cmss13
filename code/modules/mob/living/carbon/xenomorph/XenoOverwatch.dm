@@ -28,7 +28,6 @@
 
 	// We are already overwatching something
 	if (X.observed_xeno)
-
 		if (isQueen)
 			var/mob/living/carbon/Xenomorph/oldXeno = X.observed_xeno
 			X.overwatch(X.observed_xeno, TRUE)
@@ -47,15 +46,14 @@
 
 	if (!selected_xeno || selected_xeno.disposed || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z == ADMIN_Z_LEVEL || !X.check_state(1))
 		X.overwatch(X.observed_xeno, TRUE) // Cancel OW
-
 	else if (!isQueen) // Regular Xeno OW vs Queen
 		X.overwatch(selected_xeno)
-
 	else // We are a queen
 		var/mob/living/carbon/Xenomorph/oldXeno = X.observed_xeno
 		X.overwatch(selected_xeno, FALSE, /datum/event_handler/xeno_overwatch_onmovement/queen)
 		if (oldXeno)
 			oldXeno.hud_set_queen_overwatch()
+	
 	if (selected_xeno && !selected_xeno.disposed)
 		selected_xeno.hud_set_queen_overwatch()
 

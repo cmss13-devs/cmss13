@@ -3,12 +3,16 @@
 /mob/living/carbon/Xenomorph/death(var/cause, var/gibbed)
 	var/msg = !caste.is_robotic ? "lets out a waning guttural screech, green blood bubbling from its maw." : "begins to shudder, and the lights go out in its eyes as it lies still."
 	. = ..(cause, gibbed, msg)
-	if(!.) return //If they're already dead, it will return.
+	if(!.) 
+		return //If they're already dead, it will return.
 
 	living_xeno_list -= src
 
 	if(is_zoomed)
 		zoom_out()
+
+	if (map_tag == MAP_WHISKEY_OUTPOST)
+		ghostize()
 
 	SetLuminosity(0)
 
@@ -76,7 +80,7 @@
 		if(hive.living_xeno_queen)
 			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE("A leader has fallen!")) //alert queens so they can choose another leader
 
-	hud_set_queen_overwatch() //updates the overwatch hud to remove the upgrade chevrons, gold star, etc
+	hud_update() //updates the overwatch hud to remove the upgrade chevrons, gold star, etc
 
 	for(var/atom/movable/A in stomach_contents)
 		stomach_contents.Remove(A)
@@ -94,7 +98,6 @@
 	callHook("death", list(src, gibbed))
 
 /mob/living/carbon/Xenomorph/gib(var/cause = "gibbing")
-	
 	var/obj/effect/decal/remains/xeno/remains = new(get_turf(src))
 	remains.icon = icon
 	remains.pixel_x = pixel_x //For 2x2.
@@ -135,12 +138,3 @@
 
 /mob/living/carbon/Xenomorph/dust_animation()
 	new /obj/effect/overlay/temp/dust_animation(loc, src, "dust-a")
-
-/mob/living/carbon/Xenomorph/death(var/cause, var/gibbed)
-	set waitfor = 0
-	if (map_tag == MAP_WHISKEY_OUTPOST)
-		src.ghostize()
-		src.KnockDown(1)
-		sleep(50)
-		qdel(src)
-	. = ..(cause, gibbed)

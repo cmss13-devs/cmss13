@@ -419,15 +419,18 @@
 
 /obj/structure/machinery/disposal/BlockedPassDirs(atom/movable/mover, target_turf)
 	if(istype(mover, /obj/item) && mover.throwing && !((mover.flags_pass|mover.flags_pass_temp) & PASS_HIGH_OVER))
-		var/obj/item/I = mover
-		if(prob(75))
-			I.loc = src
-			visible_message(SPAN_NOTICE("[I] lands into [src]."))
-		else
-			visible_message(SPAN_WARNING("[I] bounces off of [src]'s rim!"))
-		return 0
+		return FALSE
 	else
 		return ..()
+
+/obj/structure/machinery/disposal/hitby(atom/movable/mover)
+	if (!istype(mover, /obj/item))
+		return
+	if (prob(75))
+		mover.forceMove(src)
+		visible_message(SPAN_NOTICE("[mover] lands into [src]."))
+	else
+		visible_message(SPAN_WARNING("[mover] bounces off of [src]'s rim!"))
 
 //Virtual disposal object, travels through pipes in lieu of actual items
 //Contents will be items flushed by the disposal, this allows the gas flushed to be tracked

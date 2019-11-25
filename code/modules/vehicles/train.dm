@@ -28,7 +28,8 @@
 
 /obj/vehicle/train/Move()
 	var/old_loc = get_turf(src)
-	if(..())
+	. = ..()
+	if(.)
 		if(tow)
 			tow.Move(old_loc)
 		return 1

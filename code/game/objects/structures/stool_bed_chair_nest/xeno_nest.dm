@@ -180,7 +180,7 @@
 	if(on_fire)
 		overlays += "alien_fire"
 	if(buckled_mob)
-		overlays += image("icon_state"="nest_overlay","layer"=LYING_MOB_LAYER + 0.1)
+		overlays += image("icon_state"="nest_overlay","layer"=LYING_LIVING_MOB_LAYER + 0.1)
 
 
 /obj/structure/bed/nest/proc/healthcheck()

@@ -85,59 +85,44 @@
 
 /obj/structure/proc/can_climb(var/mob/living/user)
 	if(!climbable || !can_touch(user))
-		return 0
+		return FALSE
 
 	var/turf/T = src.loc
 	var/turf/U = get_turf(user)
-	if(!istype(T) || !istype(U)) return 0
-	if(T.density) return 0 //src is on top of a dense turf.
-	if(!user.Adjacent(src))	return 0 //this catches border objects that don't let you throw things over them, but not barricades
+	if(!istype(T) || !istype(U)) 
+		return FALSE
 
-	for(var/obj/O in T.contents)
-		if(istype(O, /obj/structure))
-			var/obj/structure/S = O
-			if(S.climbable)
+	var/result = handle_barriers(user)
+	if(result != src)
+		to_chat(user, SPAN_WARNING("There's \a [result] in the way."))
+		return FALSE
+
+	if(!(flags_atom & ON_BORDER))
+		return TRUE
+	if(user.loc != loc && user.loc != get_step(T, dir))
+		to_chat(user, SPAN_WARNING("You need to be up against [src] to leap over."))
+		return FALSE
+	if(user.loc == loc)
+		var/turf/target = get_step(T, dir)
+		if(target.density) //Turf is dense, not gonna work
+			to_chat(user, SPAN_WARNING("You cannot leap this way."))
+			return FALSE
+		for(var/atom/movable/A in target)
+			if(!A || !A.density)
 				continue
-
-		//dense obstacles (border or not) on the structure's tile
-		if(O.density && (!(O.flags_atom & ON_BORDER) || O.dir & get_dir(src,user)))
-			to_chat(user, SPAN_WARNING("There's \a [O.name] in the way."))
-			return 0
-
-	for(var/obj/O in U.contents)
-		if(istype(O, /obj/structure))
-			var/obj/structure/S = O
-			if(S.climbable)
-				continue
-		//dense border obstacles on our tile
-		if(O.density && (O.flags_atom & ON_BORDER) && O.dir & get_dir(user, src))
-			to_chat(user, SPAN_WARNING("There's \a [O.name] in the way."))
-			return 0
-
-	if((flags_atom & ON_BORDER))
-		if(user.loc != loc && user.loc != get_step(T, dir))
-			to_chat(user, SPAN_WARNING("You need to be up against [src] to leap over."))
-			return
-		if(user.loc == loc)
-			var/turf/target = get_step(T, dir)
-			if(target.density) //Turf is dense, not gonna work
-				to_chat(user, SPAN_WARNING("You cannot leap this way."))
-				return
-			for(var/atom/movable/A in target)
-				if(A && A.density)
-					if(istype(A, /obj/structure))
-						var/obj/structure/S = A
-						if (S.flags_atom & ON_BORDER)
-							if (!S.climbable && turn(dir, 180) == S.dir)
-								to_chat(user, SPAN_WARNING("You cannot leap this way."))
-								return
-						else if(!S.climbable) //Transfer onto climbable surface
-							to_chat(user, SPAN_WARNING("You cannot leap this way."))
-							return
-					else
+			if(isStructure(A))
+				var/obj/structure/S = A
+				if (S.flags_atom & ON_BORDER)
+					if (!S.climbable && turn(dir, 180) == S.dir)
 						to_chat(user, SPAN_WARNING("You cannot leap this way."))
-						return
-	return 1
+						return FALSE
+				else if(!S.climbable) //Transfer onto climbable surface
+					to_chat(user, SPAN_WARNING("You cannot leap this way."))
+					return FALSE
+			else
+				to_chat(user, SPAN_WARNING("You cannot leap this way."))
+				return FALSE
+	return TRUE
 
 /obj/structure/proc/do_climb(var/mob/living/user)
 	if(!can_climb(user))

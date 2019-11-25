@@ -601,20 +601,21 @@
 			src.last_reply = world.time
 
 
-	release_item(R, vend_delay)
+	release_item(R, vend_delay, user)
 	vend_ready = 1
 
-/obj/structure/machinery/vending/proc/release_item(datum/data/vending_product/R, delay_vending = 0, dump_product = 0)
+/obj/structure/machinery/vending/proc/release_item(var/datum/data/vending_product/R, var/delay_vending = 0, var/mob/living/carbon/human/user)
 	set waitfor = 0
 
-	if(delay_vending)
+	if (delay_vending)
 		use_power(vend_power_usage)	//actuators and stuff
-		if (icon_vend) flick(icon_vend,src) //Show the vending animation if needed
+		if (icon_vend) 
+			flick(icon_vend,src) //Show the vending animation if needed
 		sleep(delay_vending)
-	if(src.vending_dir == VEND_HAND)
-		usr.put_in_hands(new R.product_path)
-	else if(ispath(R.product_path,/obj/item/weapon/gun))
-		. = new R.product_path(get_turf(src),1)
+	if (vending_dir == VEND_HAND && istype(user) && Adjacent(user))
+		user.put_in_hands(new R.product_path)
+	else if (ispath(R.product_path,/obj/item/weapon/gun))
+		. = new R.product_path(get_turf(src), 1)
 	else
 		. = new R.product_path(get_turf(src))
 
@@ -746,8 +747,7 @@
 		break
 	if (!throw_item)
 		return 0
-	spawn(0)
-		throw_item.launch_towards(target, 16, SPEED_AVERAGE, src)
+	INVOKE_ASYNC(throw_item, /atom/movable/proc/launch_towards, target, 16, SPEED_AVERAGE, src)
 	src.visible_message(SPAN_WARNING("[src] launches [throw_item.name] at [target]!"))
 	return 1
 

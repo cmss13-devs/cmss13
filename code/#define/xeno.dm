@@ -30,7 +30,7 @@
 #define BUILD_TIME_XENO		20 //time taken for a xeno to place down a resin structure
 #define BUILD_TIME_HIVELORD	10
 #define NORMAL_XENO             0
-#define XENO_QUEEN                   1
+#define XENO_QUEEN              1
 #define XENO_LEADER(X)          (X + 1)
 #define GET_XENO_LEADER_NUM(X)  (X - 1)
 #define IS_XENO_LEADER(X)       (X > 1)

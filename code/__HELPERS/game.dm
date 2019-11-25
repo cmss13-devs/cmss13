@@ -187,9 +187,17 @@
 				hear += tank.driver
 			if (tank.gunner && ishuman(tank.gunner))
 				hear += tank.gunner
-
-		// if(isobj(A) || ismob(A))
-		// 	hear |= recursive_mob_check(A, hear, 3, 1, 0, 1)
+		else if (istype(A, /obj/structure/closet))
+			var/obj/structure/closet/C = A
+			if (!C.store_mobs)
+				continue
+			for (var/mob/M in C)
+				if (M.client)
+					hear += M
+		else if (istype(A, /obj/structure/morgue))
+			for (var/mob/M in A)
+				if (M.client)
+					hear += M
 
 	return hear
 

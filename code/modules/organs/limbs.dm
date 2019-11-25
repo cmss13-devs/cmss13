@@ -776,13 +776,14 @@ This function completely restores a damaged organ to perfect condition.
 	return rval
 
 /datum/limb/proc/is_bandaged()
-	if(!(surgery_open_stage == 0))
-		return 1
-	var/rval = 0
-	for(var/datum/wound/W in wounds)
-		if(W.internal) continue
-		rval |= !W.bandaged
-	return rval
+	if (surgery_open_stage != 0)
+		return TRUE
+	var/not_bandaged = FALSE
+	for (var/datum/wound/W in wounds)
+		if (W.internal) 
+			continue
+		not_bandaged |= !W.bandaged
+	return !not_bandaged
 
 /datum/limb/proc/clamp_wounds()
 	var/rval = 0
@@ -801,15 +802,14 @@ This function completely restores a damaged organ to perfect condition.
 	return rval
 
 /datum/limb/proc/is_salved()
-	if(!(surgery_open_stage == 0))
-		return 1
-	var/rval = 1
-	for(var/datum/wound/W in wounds)
-		rval |= !W.salved
-	return rval
+	if (surgery_open_stage != 0)
+		return TRUE
+	var/not_salved = FALSE
+	for (var/datum/wound/W in wounds)
+		not_salved |= !W.salved
+	return !not_salved
 
 /datum/limb/proc/fracture()
-
 	if(status & (LIMB_BROKEN|LIMB_DESTROYED|LIMB_ROBOT) )
 		if (knitting_time != -1)
 			knitting_time = -1

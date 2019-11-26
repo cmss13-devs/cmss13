@@ -113,16 +113,21 @@ var/list/weather_notify_objects = list()
 /datum/subsystem/weather/proc/start_weather_event()
 	if (controller_state_lock)
 		return
-	
+
+	// Set up our instance of the weather event
+	weather_event_instance = new weather_event_type()
+
+	if(!weather_event_instance)
+		log_admin("Bad weather event of type [weather_event_type].")
+		message_admins(FONT_MESSAGE_ADMINS("Bad weather event of type [weather_event_type]."))
+		return
+
 	// Maintain the controller state
 	controller_state_lock = TRUE
 	is_weather_event_starting = FALSE
 
 	is_weather_event = TRUE
 	current_event_start_time = world.time
-
-	// Set up our instance of the weather event
-	weather_event_instance = new weather_event_type()
 
 	if (weather_event_instance.display_name)
 		log_admin("Weather Event of type [weather_event_instance.display_name] starting with duration of [weather_event_instance.length] ds.")

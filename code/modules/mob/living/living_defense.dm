@@ -178,39 +178,27 @@
 
 /mob/living/proc/update_weather()
 	// Only player mobs are affected by weather.
-	if (!src.client)
+	if(!src.client)
+		return
+	
+	if(!SSWeather)
 		return
 
 	// Do this always
 	clear_fullscreen("weather")
-	remove_weather_effects()
-	
-	var/datum/subsystem/weather/weatherSS = null
-
-	for (var/datum/subsystem/weather/wss in Master.subsystems)
-		weatherSS = wss
-	
-	if (!weatherSS)
-		log_debug("Human mob [src] can't locate the weather controller.")
-		return
-
+	remove_weather_effects()	
 
 	// Check if we're supposed to be something affected by weather
-	if (weatherSS.is_weather_event && weatherSS.weather_affects_check(src))
+	if(SSWeather.is_weather_event && SSWeather.weather_event_instance && SSWeather.weather_affects_check(src))
 		// Ok, we're affected by weather.
 
 		// Fullscreens
-		if (weatherSS.weather_event_instance.fullscreen_type)
-			overlay_fullscreen("weather", weatherSS.weather_event_instance.fullscreen_type)
+		if(SSWeather.weather_event_instance.fullscreen_type)
+			overlay_fullscreen("weather", SSWeather.weather_event_instance.fullscreen_type)
 		else
 			clear_fullscreen("weather")
 
 		// Effects
-		if (weatherSS.weather_event_instance.effect_type)
-			new weatherSS.weather_event_instance.effect_type(src)
-	
-	// Clear our fullscreens and effect datums
-	else
-		clear_fullscreen("weather")
-		remove_weather_effects()
+		if(SSWeather.weather_event_instance.effect_type)
+			new SSWeather.weather_event_instance.effect_type(src)
 		

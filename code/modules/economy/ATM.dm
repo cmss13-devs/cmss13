@@ -89,7 +89,7 @@ log transactions
 		dat += "Card: <a href='?src=\ref[src];choice=insert_card'>[held_card ? held_card.name : "------"]</a><br><br>"
 
 		if(ticks_left_locked_down > 0)
-			dat += "<span class='alert'>Maximum number of pin attempts exceeded! Access to this ATM has been temporarily disabled.</span>"
+			dat += SPAN_ALERT("Maximum number of pin attempts exceeded! Access to this ATM has been temporarily disabled.")
 		else if(authenticated_account)
 			if(authenticated_account.suspended)
 				dat += SPAN_WARNING("<b>Access to this account has been suspended, and the funds within frozen.</b>")
@@ -196,10 +196,10 @@ log transactions
 							T.amount = "([transfer_amount])"
 							authenticated_account.transaction_log.Add(T)
 						else
-							to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>Funds transfer failed.</span>")
+							to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Funds transfer failed.")]")
 
 					else
-						to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>You don't have enough funds to do that!</span>")
+						to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("You don't have enough funds to do that!")]")
 			if("view_screen")
 				view_screen = text2num(href_list["view_screen"])
 			if("change_security_level")
@@ -285,7 +285,7 @@ log transactions
 						T.time = worldtime2text()
 						authenticated_account.transaction_log.Add(T)
 					else
-						to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>You don't have enough funds to do that!</span>")
+						to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("You don't have enough funds to do that!")]")
 			if("withdrawal")
 				var/amount = max(text2num(href_list["funds_amount"]),0)
 				amount = round(amount, 0.01)
@@ -310,7 +310,7 @@ log transactions
 						T.time = worldtime2text()
 						authenticated_account.transaction_log.Add(T)
 					else
-						to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>You don't have enough funds to do that!</span>")
+						to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("You don't have enough funds to do that!")]")
 			if("balance_statement")
 				if(authenticated_account)
 					var/obj/item/paper/R = new(src.loc)
@@ -403,7 +403,7 @@ log transactions
 			if(I)
 				authenticated_account = attempt_account_access(I.associated_account_number)
 				if(authenticated_account)
-					to_chat(human_user, SPAN_NOTICE(" [htmlicon(src, human_user)] Access granted. Welcome user '[authenticated_account.owner_name].'"))
+					to_chat(human_user, SPAN_NOTICE("[htmlicon(src, human_user)] Access granted. Welcome user '[authenticated_account.owner_name].'"))
 
 					//create a transaction log entry
 					var/datum/transaction/T = new()

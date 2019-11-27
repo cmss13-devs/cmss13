@@ -224,7 +224,7 @@
 					shuttle.launch(src)
 
 			else if(!onboard && isXenoQueen(M) && shuttle.location == 1 && !shuttle.iselevator)
-				to_chat(M, "<span class='alert'>Hrm, that didn't work. Maybe try the one on the ship?</span>")
+				to_chat(M, SPAN_WARNING("Hrm, that didn't work. Maybe try the one on the ship?"))
 				return
 			else
 				if(z == 1) shuttle.transit_gun_mission = 0 //remote launch always do transport flight.

@@ -270,7 +270,7 @@
 				to_transfer = min(src.amount, S.max_amount-S.amount)
 			if(to_transfer <= 0)
 				return
-			to_chat(user, "<span class='information'>You transfer [to_transfer] between the stacks.</span>")
+			to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
 			S.add(to_transfer)
 			if (S && usr.interactee==S)
 				spawn(0) S.interact(usr)

@@ -115,7 +115,7 @@
 			var/obj/item/card/I = O
 			scan_card(I)
 		else
-			to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>Unable to connect to linked account.</span>")
+			to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Unable to connect to linked account.")]")
 	else if (istype(O, /obj/item/spacecash/ewallet))
 		var/obj/item/spacecash/ewallet/E = O
 		if (linked_account)
@@ -140,11 +140,11 @@
 						T.time = worldtime2text()
 						linked_account.transaction_log.Add(T)
 					else
-						to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>The charge card doesn't have that much money!</span>")
+						to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("The charge card doesn't have that much money!")]")
 			else
-				to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>Connected account has been suspended.</span>")
+				to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Connected account has been suspended.")]")
 		else
-			to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>EFTPOS is not connected to an account.</span>")
+			to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("EFTPOS is not connected to an account.")]")
 
 	else
 		..()
@@ -162,14 +162,14 @@
 						alert("That is not a valid code!")
 					print_reference()
 				else
-					to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>Incorrect code entered.</span>")
+					to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Incorrect code entered.")]")
 			if("change_id")
 				var/attempt_code = text2num(input("Re-enter the current EFTPOS access code", "Confirm EFTPOS code"))
 				if(attempt_code == access_code)
 					eftpos_name = input("Enter a new terminal ID for this device", "Enter new EFTPOS ID") + " EFTPOS scanner"
 					print_reference()
 				else
-					to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>Incorrect code entered.</span>")
+					to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Incorrect code entered.")]")
 			if("link_account")
 				var/attempt_account_num = input("Enter account number to pay EFTPOS charges into", "New account number") as num
 				var/attempt_pin = input("Enter pin code", "Account pin") as num
@@ -177,9 +177,9 @@
 				if(linked_account)
 					if(linked_account.suspended)
 						linked_account = null
-						to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>Account has been suspended.</span>")
+						to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Account has been suspended.")]")
 				else
-					to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>Account not found.</span>")
+					to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Account not found.")]")
 			if("trans_purpose")
 				var/choice = input("Enter reason for EFTPOS transaction", "Transaction purpose")
 				if(choice) transaction_purpose = choice
@@ -202,14 +202,14 @@
 				else if(linked_account)
 					transaction_locked = 1
 				else
-					to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>No account connected to send transactions to.</span>")
+					to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("No account connected to send transactions to.")]")
 			if("scan_card")
 				if(linked_account)
 					var/obj/item/I = usr.get_active_hand()
 					if (istype(I, /obj/item/card))
 						scan_card(I)
 				else
-					to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>Unable to link accounts.</span>")
+					to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Unable to link accounts.")]")
 			if("reset")
 				//reset the access code - requires HoP/captain access
 				var/obj/item/I = usr.get_active_hand()
@@ -267,14 +267,14 @@
 								T.time = worldtime2text()
 								linked_account.transaction_log.Add(T)
 							else
-								to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>You don't have that much money!</span>")
+								to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("You don't have that much money!")]")
 						else
-							to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>Your account has been suspended.</span>")
+							to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Your account has been suspended.")]")
 					else
-						to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>Unable to access account. Check security settings and try again.</span>")
+						to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Unable to access account. Check security settings and try again.")]")
 				else
-					to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>Connected account has been suspended.</span>")
+					to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Connected account has been suspended.")]")
 			else
-				to_chat(usr, "[htmlicon(src, usr)]<span class='warning'>EFTPOS is not connected to an account.</span>")
+				to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("EFTPOS is not connected to an account.")]")
 	else
 		..()

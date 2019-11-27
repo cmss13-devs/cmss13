@@ -249,7 +249,7 @@
 			if(X.charge_speed > X.charge_speed_buildup * X.charge_turfs_to_charge)
 				if(buckled_mob)
 					unbuckle()
-				X.visible_message("<span class='warning'>[X] knocks [src] aside.</span>!",
+				X.visible_message(SPAN_WARNING("[X] knocks [src] aside!"),
 				SPAN_XENOWARNING("You knock [src] aside.")) //Canisters, crates etc. go flying.
 				playsound(loc, "punch", 25, 1)
 				var/impact_range = min(round(X.charge_speed) + 1, 3)

@@ -327,10 +327,10 @@
 	if (src != usr)
 		return
 	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
-		to_chat(usr, "<span class='warning'>The round is either not ready, or has already finished!<spawn>")
+		to_chat(usr, SPAN_WARNING("The round is either not ready, or has already finished!"))
 		return
 	if(!enter_allowed)
-		to_chat(usr, "<span class='warning'>There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)<spawn>")
+		to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 		return
 	if(!RoleAuthority.assign_role(src, RoleAuthority.roles_for_mode[rank], 1))
 		to_chat(src, alert("[rank] is not available. Please try another."))

@@ -89,7 +89,7 @@
 	. = ..()
 	if(. == TRUE) //would be false if we add blinking or something
 		if(!(H in shitlist))
-			to_chat(H, "<span class='alert'>You are facing it, and it is facing you...</span>")
+			to_chat(H, SPAN_ALERT("You are facing it, and it is facing you..."))
 			add_examine_urge(H)
 
 
@@ -110,11 +110,11 @@
 
 	switch(examine_urge)
 		if(1)
-			to_chat(H, "<span class='alert'>You feel the urge to examine it...</span>")
+			to_chat(H, SPAN_ALERT("You feel the urge to examine it..."))
 		if(3)
-			to_chat(H, "<span class='alert'>It is becoming difficult to resist the urge to examine it ...</span>")
+			to_chat(H, SPAN_ALERT("It is becoming difficult to resist the urge to examine it ..."))
 		if(5)
-			to_chat(H, "<span class='alert'>Unable to resist the urge, you look closely...</span>")
+			to_chat(H, SPAN_ALERT("Unable to resist the urge, you look closely..."))
 			spawn(10)
 				examine(H)
 
@@ -150,7 +150,7 @@
 			shitlist += userguy
 			spawn(20)
 				if(userguy)
-					to_chat(userguy, "<span class='alert'>Run</span>")
+					to_chat(userguy, SPAN_ALERT("Run"))
 			spawn(30)
 				if(userguy)
 					to_chat(userguy, SPAN_DANGER("RUN"))

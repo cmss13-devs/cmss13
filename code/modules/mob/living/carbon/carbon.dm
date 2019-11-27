@@ -215,8 +215,8 @@
 				if(sleeping == 0)
 					resting = 0
 					update_canmove()
-				M.visible_message("<span class='notice'>[M] shakes [src] trying to wake [t_him] up!", \
-									"<span class='notice'>You shake [src] trying to wake [t_him] up!", null, 4)
+				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"), \
+									SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
 			else
 				var/mob/living/carbon/human/H = M
 				if(istype(H))

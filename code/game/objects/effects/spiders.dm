@@ -114,7 +114,7 @@
 		..()
 
 /obj/effect/spider/spiderling/proc/die()
-	visible_message("<span class='alert'>[src] dies!</span>")
+	visible_message(SPAN_ALERT("[src] dies!"))
 	new /obj/effect/decal/cleanable/spiderling_remains(src.loc)
 	qdel(src)
 

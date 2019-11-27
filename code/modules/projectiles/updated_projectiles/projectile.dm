@@ -392,7 +392,7 @@
 	var/effective_accuracy = P.accuracy //We want a temporary variable so accuracy doesn't change every time the bullet misses.
 
 	#if DEBUG_HIT_CHANCE
-	to_world("<span class='debuginfo'>Base accuracy is <b>[P.accuracy]; scatter:[P.scatter]; distance:[P.distance_travelled]</b></span>")
+	to_world(SPAN_DEBUG("Base accuracy is <b>[P.accuracy]; scatter:[P.scatter]; distance:[P.distance_travelled]</b>"))
 	#endif
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if (P.distance_travelled <= P.ammo.accurate_range + rand(0, 2))
@@ -409,7 +409,7 @@
 
 
 	#if DEBUG_HIT_CHANCE
-	to_world("<span class='debuginfo'>Final accuracy is <b>[.]</b></span>")
+	to_world(SPAN_DEBUG("Final accuracy is <b>[.]</b>"))
 	#endif
 
 	effective_accuracy = max(5, effective_accuracy) //default hit chance is at least 5%.
@@ -453,7 +453,7 @@
 
 	var/hitchance = min(projectile_coverage, (projectile_coverage * distance/distance_limit) + accuracy_factor * (1 - effective_accuracy/100))
 	#if DEBUG_HIT_CHANCE
-	to_world("<span class='debuginfo'>([src.name] as cover) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]")
+	to_world(SPAN_DEBUG("([src.name] as cover) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
 	#endif
 
 	return prob(hitchance)
@@ -465,7 +465,7 @@
 		var/hitchance = get_effective_accuracy(P)
 
 		#if DEBUG_HIT_CHANCE
-		to_world("<span class='debuginfo'>([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]")
+		to_world(SPAN_DEBUG("([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
 		#endif
 
 		if( prob(hitchance) )
@@ -560,7 +560,7 @@
 				hitchance -= 10
 
 		#if DEBUG_HIT_CHANCE
-		to_world("<span class='debuginfo'>([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]")
+		to_world(SPAN_DEBUG("([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
 		#endif
 
 		if( prob(hitchance) )
@@ -581,7 +581,7 @@
 		var/hitchance = get_effective_accuracy(P)
 
 		#if DEBUG_HIT_CHANCE
-		to_world("<span class='debuginfo'>([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]")
+		to_world(SPAN_DEBUG("([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
 		#endif
 
 		if( prob(hitchance) )

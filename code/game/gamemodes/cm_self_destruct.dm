@@ -64,13 +64,13 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		dest_master = locate()
 		if(!dest_master)
 			log_debug("ERROR CODE SD1: could not find master self-destruct console")
-			to_world("<span class='debuginfo'>ERROR CODE SD1: could not find master self-destruct console</span>")
+			to_world(SPAN_DEBUG("ERROR CODE SD1: could not find master self-destruct console"))
 			return FALSE
 		dest_rods = new
 		for(var/obj/structure/machinery/self_destruct/rod/I in dest_master.loc.loc) dest_rods += I
 		if(!dest_rods.len)
 			log_debug("ERROR CODE SD2: could not find any self destruct rods")
-			to_world("<span class='debuginfo'>ERROR CODE SD2: could not find any self destruct rods</span>")
+			to_world(SPAN_DEBUG("ERROR CODE SD2: could not find any self destruct rods"))
 			qdel(dest_master)
 			dest_master = null
 			return FALSE
@@ -273,7 +273,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 				ticker.mode.check_win()
 
 			if(!ticker || !ticker.mode) //Just a safety, just in case a mode isn't running, somehow.
-				to_world("<span class='round_body'>Resetting in 30 seconds!</span>")
+				to_world(SPAN_ROUNDBODY("Resetting in 30 seconds!"))
 				sleep(300)
 				log_game("Rebooting due to nuclear detonation.")
 				world.Reboot()

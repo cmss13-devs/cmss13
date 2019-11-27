@@ -450,7 +450,7 @@ var/global/floorIsLava = 0
 	if(confirm == "Cancel")
 		return
 	if(confirm == "Yes")
-		to_world(SPAN_DANGER("<b>Restarting world!</b></span> <span class='notice'>Initiated by [usr.client.admin_holder.fakekey ? "Admin" : usr.key]!</span>"))
+		to_world(SPAN_DANGER("<b>Restarting world!</b> [SPAN_NOTICE("Initiated by [usr.client.admin_holder.fakekey ? "Admin" : usr.key]!")]"))
 		log_admin("[key_name(usr)] initiated a reboot.")
 
 		feedback_set_details("end_error","admin reboot - by [usr.key] [usr.client.admin_holder.fakekey ? "(stealth)" : ""]")

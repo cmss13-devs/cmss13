@@ -787,7 +787,7 @@
 		for(var/wire = 1; wire < get_wire_descriptions().len; wire++)
 			cut(wire)
 		update_icon()
-		visible_message("<span class='danger'>\The [src]'s wires snap apart in a rain of sparks!", null, null, 5)
+		visible_message(SPAN_DANGER("\The [src]'s wires snap apart in a rain of sparks!"), null, null, 5)
 	else
 		beenhit += 1
 

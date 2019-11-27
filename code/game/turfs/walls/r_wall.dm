@@ -38,7 +38,7 @@
 	if(thermite)
 		if(W.heat_source >= 1000)
 			if(hull)
-				to_chat(user, "<span class='warning'>[src] is much too tough for you to do anything to it with [W]</span>.")
+				to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [W]."))
 			else
 				if(istype(W, /obj/item/tool/weldingtool))
 					var/obj/item/tool/weldingtool/WT = W

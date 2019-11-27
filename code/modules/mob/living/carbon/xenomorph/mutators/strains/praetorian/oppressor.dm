@@ -156,7 +156,7 @@
 	
 	if(L.status & LIMB_SPLINTED) //If they have it splinted, the splint won't hold.
 		L.status &= ~LIMB_SPLINTED
-		to_chat(H, "<span class='danger'>The splint on your [L.display_name] comes apart!</span>")
+		to_chat(H, SPAN_DANGER("The splint on your [L.display_name] comes apart!"))
 
 	if(isYautja(H))
 		L.take_damage(rand(8,12))

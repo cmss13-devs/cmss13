@@ -328,7 +328,7 @@
 		return
 
 	if(hull)
-		to_chat(user, "<span class='warning'>[src] is much too tough for you to do anything to it with [W]</span>.")
+		to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [W]."))
 		return
 
 	if(damage && istype(W, /obj/item/tool/weldingtool))

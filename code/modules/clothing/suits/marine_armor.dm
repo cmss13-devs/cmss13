@@ -11,9 +11,9 @@
 	for(var/X in H.limbs)
 		var/datum/limb/E = X
 		armor = getarmor_organ(E, ARMOR_BULLET)
-		to_chat(src, "<span class='debuginfo'><b>[E.name]</b> is protected with <b>[armor]</b> armor against bullets.</span>")
+		to_chat(src, SPAN_DEBUG("<b>[E.name]</b> is protected with <b>[armor]</b> armor against bullets."))
 		counter += armor
-	to_chat(src, "<span class='debuginfo'>The overall armor score is: <b>[counter]</b>.</span>")
+	to_chat(src, SPAN_DEBUG("The overall armor score is: <b>[counter]</b>."))
 #endif
 
 //=======================================================================\\

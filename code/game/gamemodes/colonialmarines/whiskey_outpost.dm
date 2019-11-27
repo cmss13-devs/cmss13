@@ -99,11 +99,11 @@
 				spawn_player(H)
 	sleep(10)
 	to_world("<span class='round_header'>The current game mode is - WHISKEY OUTPOST!</span>")
-	to_world("<span class='round_body'>It is the year [game_year - 5] on the planet LV-624, five years before the arrival of the USS Almayer and the 7th 'Falling Falcons' Battalion in the sector</span>")
-	to_world("<span class='round_body'>The 3rd 'Dust Raiders' Battalion is charged with establishing a USCM prescence in the Tychon's Rift sector</span>")
-	to_world("<span class='round_body'>[map_tag], one of the Dust Raider bases being established in the sector, has come under attack from unrecognized alien forces</span>")
-	to_world("<span class='round_body'>With casualties mounting and supplies running thin, the Dust Raiders at [map_tag] must survive for an hour to alert the rest of their battalion in the sector</span>")
-	to_world("<span class='round_body'>Hold out for as long as you can.</span>")
+	to_world(SPAN_ROUNDBODY("It is the year [game_year - 5] on the planet LV-624, five years before the arrival of the USS Almayer and the 7th 'Falling Falcons' Battalion in the sector"))
+	to_world(SPAN_ROUNDBODY("The 3rd 'Dust Raiders' Battalion is charged with establishing a USCM prescence in the Tychon's Rift sector"))
+	to_world(SPAN_ROUNDBODY("[map_tag], one of the Dust Raider bases being established in the sector, has come under attack from unrecognized alien forces"))
+	to_world(SPAN_ROUNDBODY("With casualties mounting and supplies running thin, the Dust Raiders at [map_tag] must survive for an hour to alert the rest of their battalion in the sector"))
+	to_world(SPAN_ROUNDBODY("Hold out for as long as you can."))
 	world << sound('sound/effects/siren.ogg')
 
 	sleep(50)
@@ -539,9 +539,9 @@ var/global/spawn_next_wo_wave = 0
 	if(finished == 1)
 		feedback_set_details("round_end_result","Xenos won")
 		to_world("<span class='round_header'>The Xenos have succesfully defended their hive from colonization.</span>")
-		to_world("<span class='round_body'>Well done, you've secured LV-624 for the hive!</span>")
-		to_world("<span class='round_body'>It will be another five years before the USCM returns to the Tychon's Rift sector, with the arrival of the 7th 'Falling Falcons' Battalion and the USS Almayer.</span>")
-		to_world("<span class='round_body'>The xenomorph hive on LV-624 remains unthreatened until then..</span>")
+		to_world(SPAN_ROUNDBODY("Well done, you've secured LV-624 for the hive!"))
+		to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Tychon's Rift sector, with the arrival of the 7th 'Falling Falcons' Battalion and the USS Almayer."))
+		to_world(SPAN_ROUNDBODY("The xenomorph hive on LV-624 remains unthreatened until then.."))
 		world << sound('sound/misc/Game_Over_Man.ogg')
 		if(round_statistics)
 			round_statistics.round_result = MODE_INFESTATION_X_MAJOR
@@ -549,9 +549,9 @@ var/global/spawn_next_wo_wave = 0
 	else if(finished == 2)
 		feedback_set_details("round_end_result","Marines Won")
 		to_world("<span class='round_header'>Against the onslaught, the marines have survived.</span>")
-		to_world("<span class='round_body'>The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in Tychon's Rift begin to converge on LV-624.</span>")
-		to_world("<span class='round_body'>Eventually, the Dust Raiders secure LV-624 and the entire Tychon's Rift sector in 2182, pacifiying it and establishing peace in the sector for decades to come.</span>")
-		to_world("<span class='round_body'>The USS Almayer and the 7th 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186.</span>")
+		to_world(SPAN_ROUNDBODY("The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in Tychon's Rift begin to converge on LV-624."))
+		to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Tychon's Rift sector in 2182, pacifiying it and establishing peace in the sector for decades to come."))
+		to_world(SPAN_ROUNDBODY("The USS Almayer and the 7th 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186."))
 		world << sound('sound/misc/hell_march.ogg')
 		if(round_statistics)
 			round_statistics.round_result = MODE_INFESTATION_M_MAJOR
@@ -559,7 +559,7 @@ var/global/spawn_next_wo_wave = 0
 	else
 		feedback_set_details("round_end_result","no winners")
 		to_world("<span class='round_header'>NOBODY WON!</span>")
-		to_world("<span class='round_body'>How? Don't ask me...</span>")
+		to_world(SPAN_ROUNDBODY("How? Don't ask me..."))
 		world << 'sound/misc/sadtrombone.ogg'
 		if(round_statistics)
 			round_statistics.round_result = MODE_INFESTATION_DRAW_DEATH

@@ -139,7 +139,7 @@
 						chance = !hand ? 40 : 20
 
 					if (prob(chance))
-						visible_message("<span class='danger'>[src]'s [W.name] goes off during the struggle!", null, null, 5)
+						visible_message(SPAN_DANGER("[src]'s [W.name] goes off during the struggle!"), null, null, 5)
 						var/list/turfs = list()
 						for(var/turf/T in view())
 							turfs += T
@@ -258,8 +258,8 @@
 				if(!sleeping)
 					resting = 0
 					update_canmove()
-				M.visible_message("<span class='notice'>[M] shakes [src] trying to wake [t_him] up!", \
-					"<span class='notice'>You shake [src] trying to wake [t_him] up!", null, 4)
+				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"), \
+					SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
 			else
 				var/mob/living/carbon/human/H = M
 				if(istype(H))

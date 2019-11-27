@@ -445,7 +445,7 @@
 	if(isXeno(src))
 		to_chat(user, SPAN_WARNING("[src] can't make sense of this creature."))
 		return
-	to_chat(user, "<span class='notice'>[user] has analyzed [src]'s vitals.")
+	to_chat(user, SPAN_NOTICE("[user] has analyzed [src]'s vitals."))
 	playsound(src.loc, 'sound/items/healthanalyzer.ogg', 50)
 
 	// Doesn't work on non-humans and synthetics
@@ -555,9 +555,9 @@
 
 	if(src.has_brain() && src.stat != DEAD && ishuman(src))
 		if(!src.key)
-			dat += "<span class='warning'>\tNo soul detected.</span>\n" // they ghosted
+			dat += SPAN_WARNING("\tNo soul detected.\n") // they ghosted
 		else if(!src.client)
-			dat += "<span class='warning'>\tSSD detected.</span>\n" // SSD
+			dat += SPAN_WARNING("\tSSD detected.\n") // SSD
 
 	var/internal_bleed_detected = FALSE
 	var/embedded_item_detected = FALSE

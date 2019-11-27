@@ -83,7 +83,7 @@
 				return
 
 			if(hivenumber == 1 && ticker && ticker.mode && hive.xeno_queen_timer>world.time)
-				to_chat(src, "<span class='warning'>You must wait about [round((hive.xeno_queen_timer-world.time) / (60 SECONDS))] minutes for the hive to recover from the previous Queen's death.<span>")
+				to_chat(src, SPAN_WARNING("You must wait about [round((hive.xeno_queen_timer-world.time) / (60 SECONDS))] minutes for the hive to recover from the previous Queen's death."))
 				return
 		else
 			to_chat(src, SPAN_WARNING("Nuh-uhh."))

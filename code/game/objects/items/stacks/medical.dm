@@ -223,7 +223,7 @@
 
 		if(affecting.surgery_open_stage == 0)
 			if(!affecting.salve())
-				to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.display_name] have already been salved.")
+				to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been salved."))
 				return 1
 			else
 				var/possessive = "[user == M ? "your" : "[M]'s"]"
@@ -284,8 +284,8 @@
 				SPAN_NOTICE("[user] starts splinting [possessive_their] [affecting.display_name]."))
 		else
 			if((!user.hand && affecting.name in list("r_arm", "r_hand")) || (user.hand && affecting.name in list("l_arm", "l_hand")))
-				to_chat(user, "<span class='warning'>You can't apply a splint to the \
-					[affecting.name == "r_hand"||affecting.name == "l_hand" ? "hand":"arm"] you're using!</span>")
+				to_chat(user, SPAN_WARNING("You can't apply a splint to the \
+					[affecting.name == "r_hand"||affecting.name == "l_hand" ? "hand":"arm"] you're using!"))
 				return
 			// Self-splinting
 			user.affected_message(M,

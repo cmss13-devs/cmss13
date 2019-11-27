@@ -815,7 +815,7 @@ var/list/admin_verbs_mod = list(
 			var/tpos = J.spawn_positions
 			var/num = input("How many slots role [J.title] should have?","Number:",tpos) as num|null
 			if(num && !RoleAuthority.modify_role(J, num))
-				to_chat(usr, "<span class='boldnotice'>Can't set job slots to be less than amount of log-ins or you are setting amount of slots less than minimal. Free slots first.</span>")
+				to_chat(usr, SPAN_BOLDNOTICE("Can't set job slots to be less than amount of log-ins or you are setting amount of slots less than minimal. Free slots first."))
 
 /client/proc/adjust_predator_round()
 	set name = "Adjust Predator Round"
@@ -839,9 +839,9 @@ var/list/admin_verbs_mod = list(
 
 	prefs.toggles_chat ^= CHAT_ATTACKLOGS
 	if (prefs.toggles_chat & CHAT_ATTACKLOGS)
-		to_chat(usr, "<span class='boldnotice'>You will now get attack log messages.</span>")
+		to_chat(usr, SPAN_BOLDNOTICE("You will now get attack log messages."))
 	else
-		to_chat(usr, "<span class='boldnotice'>You will no longer get attack log messages.</span>")
+		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get attack log messages."))
 
 /client/proc/toggleffattacklogs()
 	set name = "Toggle FF Attack Log Messages"
@@ -849,9 +849,9 @@ var/list/admin_verbs_mod = list(
 
 	prefs.toggles_chat ^= CHAT_FFATTACKLOGS
 	if (prefs.toggles_chat & CHAT_FFATTACKLOGS)
-		to_chat(usr, "<span class='boldnotice'>You will now get friendly fire attack log messages.</span>")
+		to_chat(usr, SPAN_BOLDNOTICE("You will now get friendly fire attack log messages."))
 	else
-		to_chat(usr, "<span class='boldnotice'>You will no longer get friendly fire attack log messages.</span>")
+		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get friendly fire attack log messages."))
 
 
 /client/proc/toggleghostwriters()
@@ -888,9 +888,9 @@ var/list/admin_verbs_mod = list(
 
 	prefs.toggles_chat ^= CHAT_DEBUGLOGS
 	if(prefs.toggles_chat & CHAT_DEBUGLOGS)
-		to_chat(usr, "<span class='boldnotice'>You will now get debug log messages.</span>")
+		to_chat(usr, SPAN_BOLDNOTICE("You will now get debug log messages."))
 	else
-		to_chat(usr, "<span class='boldnotice'>You will no longer get debug log messages.</span>")
+		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get debug log messages."))
 
 /client/proc/togglenichelogs()
 	set name = "Toggle Niche Log Messages"
@@ -898,9 +898,9 @@ var/list/admin_verbs_mod = list(
 
 	prefs.toggles_chat ^= CHAT_NICHELOGS
 	if(prefs.toggles_chat & CHAT_NICHELOGS)
-		to_chat(usr, "<span class='boldnotice'>You will now get niche log messages.</span>")
+		to_chat(usr, SPAN_BOLDNOTICE("You will now get niche log messages."))
 	else
-		to_chat(usr, "<span class='boldnotice'>You will no longer get niche log messages.</span>")
+		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get niche log messages."))
 
 /* Commenting this stupid shit out
 /client/proc/man_up(mob/T as mob in mob_list)
@@ -920,7 +920,7 @@ var/list/admin_verbs_mod = list(
 	set desc = "Tells everyone to man up and deal with it."
 
 	for (var/mob/T as mob in mob_list)
-		to_chat(T, "<br><center><span class='notice'><b><font size=4>Man up.<br> Deal with it.</font></b><br>Move on.</span></center><br>")
+		to_chat(T, "<br><center>[SPAN_NOTICE("<b><font size=4>Man up.<br> Deal with it.</font></b><br>Move on.")]</center><br>")
 		T << 'sound/voice/ManUp1.ogg'
 
 	log_admin("[key_name(usr)] told everyone to man up and deal with it.")
@@ -994,12 +994,12 @@ var/list/admin_verbs_mod = list(
 		var/mob/dead/observer/ghost = mob
 		if(ghost.adminlarva == 0)
 			ghost.adminlarva = 1
-			to_chat(usr, "<span class='boldnotice'>You have disabled your larva protection.</span>")
+			to_chat(usr, SPAN_BOLDNOTICE("You have disabled your larva protection."))
 		else if(ghost.adminlarva == 1)
 			ghost.adminlarva = 0
-			to_chat(usr, "<span class='boldnotice'>You have re-activated your larva protection.</span>")
+			to_chat(usr, SPAN_BOLDNOTICE("You have re-activated your larva protection."))
 		else
-			to_chat(usr, "<span class='boldnotice'>Something went wrong tell a coder</span>")
+			to_chat(usr, SPAN_BOLDNOTICE("Something went wrong tell a coder"))
 	else if(istype(mob,/mob/new_player))
 		to_chat(src, "<font color='red'>Error: Lose larva Protection: Can't lose larva protection whilst in the lobby. Observe first.</font>")
 	else

@@ -111,11 +111,11 @@
 			if(plasma_stored >= plasma_max)
 				to_chat(user, SPAN_WARNING("\The [src] does not need a new cell right now."))
 				return
-			src.visible_message("<span class='notice'>\The [user] carefully inserts \the [C] into \the [src]'s power supply port.")
+			src.visible_message(SPAN_NOTICE("\The [user] carefully inserts \the [C] into \the [src]'s power supply port."))
 			plasma_stored += C.charge
 			if(plasma_stored > plasma_max)
 				plasma_stored = plasma_max
-			to_chat(src, "<span class='notice'>Your power supply suddenly updates. New charge: [plasma_stored]/[plasma_max]")
+			to_chat(src, SPAN_NOTICE("Your power supply suddenly updates. New charge: [plasma_stored]/[plasma_max]"))
 			qdel(O)
 			user.update_inv_l_hand(0) //Update the user sprites after the del, just to be safe.
 			user.update_inv_r_hand()

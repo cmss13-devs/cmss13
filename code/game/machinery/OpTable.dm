@@ -56,7 +56,7 @@
 	if(get_dist(user, src) > 2 && !isobserver(user))
 		return
 	if(anes_tank)
-		to_chat(user, "<span class='information'>It has an [anes_tank] connected with the gauge showing [round(anes_tank.pressure,0.1)] kPa.</span>")
+		to_chat(user, SPAN_INFO("It has an [anes_tank] connected with the gauge showing [round(anes_tank.pressure,0.1)] kPa."))
 
 /obj/structure/machinery/optable/attack_hand(mob/living/user)
 	if (HULK in user.mutations)
@@ -115,7 +115,7 @@
 	var/mob/living/carbon/human/H = target
 	H.internal = anes_tank
 	H.visible_message(SPAN_NOTICE("[user] fits the mask over [H]'s face and turns on the anesthetic."))
-	to_chat(H, "<span class='information'>You begin to feel sleepy.</span>")
+	to_chat(H, SPAN_INFO("You begin to feel sleepy."))
 	H.dir = SOUTH
 	start_processing()
 	update_icon()

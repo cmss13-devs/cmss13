@@ -90,7 +90,7 @@
 	if (!targloc || !curloc) return //Something has gone wrong...
 
 	if(!lit)
-		to_chat(user, "<span class='alert'>The weapon isn't lit</span>")
+		to_chat(user, SPAN_WARNING("The weapon isn't lit"))
 		return
 
 	if(!current_mag) return

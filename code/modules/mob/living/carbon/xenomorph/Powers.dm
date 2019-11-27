@@ -1021,7 +1021,7 @@
 		return
 
 	if (!check_plasma(100))
-		to_chat(src, SPAN_XENOWARNING("You don't have enough plasma! You need [100-src.plasma_stored] more.</span>"))
+		to_chat(src, SPAN_XENOWARNING("You don't have enough plasma! You need [100-src.plasma_stored] more."))
 		return
 
 	visible_message(SPAN_XENOWARNING("[src] gets empowered by the surrounding enemies!"), SPAN_XENOWARNING("You feel a rush of power from the surrounding enemies!"))
@@ -1095,7 +1095,7 @@
 	var/screech_cooldown = 600 // Initialized later on but just making sure we get a solid default
 
 	playsound(loc, P.screech_sound_effect, 45, 0)
-	visible_message("<span class='xenohighdanger'>\The [src] roars loudly!</span>")
+	visible_message(SPAN_XENOHIGHDANGER("\The [src] roars loudly!"))
 
 	for(var/mob/M in view())
 		if(M && M.client)
@@ -1133,7 +1133,7 @@
 					to_chat(src, SPAN_XENOWARNING("You feel the power of your screech wane."))
 
 			else
-				to_chat(src, "<span class='xenohighdanger'>Your screech's effects do NOT stack with those of your sisters!</span>")
+				to_chat(src, SPAN_XENOHIGHDANGER("Your screech's effects do NOT stack with those of your sisters!"))
 
 			var/range = 7
 			for(var/mob/living/carbon/Xenomorph/X in oview(range, src))
@@ -1173,7 +1173,7 @@
 					to_chat(src, SPAN_XENOWARNING("You feel the power of your screech wane!"))
 
 			else
-				to_chat(src, "<span class='xenohighdanger'>Your screech's effects do NOT stack with those of your sisters!</span>")
+				to_chat(src, SPAN_XENOHIGHDANGER("Your screech's effects do NOT stack with those of your sisters!"))
 
 			var/range = 7
 			for(var/mob/living/carbon/Xenomorph/X in oview(range, src))
@@ -1210,7 +1210,7 @@
 					to_chat(src, SPAN_XENOWARNING("You feel the power of your screech wane!"))
 
 			else
-				to_chat(src, "<span class='xenohighdanger'>Your screech's effects do NOT stack with those of your sisters!</span>")
+				to_chat(src, SPAN_XENOHIGHDANGER("Your screech's effects do NOT stack with those of your sisters!"))
 
 			var/range = 7
 			for(var/mob/living/carbon/Xenomorph/X in oview(range, src))
@@ -1226,7 +1226,7 @@
 						to_chat(X, SPAN_XENOWARNING("You feel the power of the screech of [src] wane!"))
 
 				else
-					to_chat(src, "<span class='xenohighdanger'>Your screech's effects do NOT stack with those of your sisters!</span>")
+					to_chat(src, SPAN_XENOHIGHDANGER("Your screech's effects do NOT stack with those of your sisters!"))
 
 			screech_cooldown = pCaste.xenomovement_screech_cooldown
 

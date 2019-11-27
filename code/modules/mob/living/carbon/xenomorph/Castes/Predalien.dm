@@ -105,7 +105,7 @@
 		desc = "Nothing matches this force of destruction. Good luck killing it, mortal."
 		color = "#FE0202"
 		if(z != ADMIN_Z_LEVEL)
-			xeno_message("<span class='xenoannounce'>A Primordial Abomination has risen! Rejoice!")
+			xeno_message(SPAN_XENOANNOUNCE("A Primordial Abomination has risen! Rejoice!"))
 			for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 				if(X && X.stat != DEAD)
 					X.emote("roar")

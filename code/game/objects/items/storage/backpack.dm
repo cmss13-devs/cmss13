@@ -54,7 +54,7 @@
 
 	for (var/type in uniform_restricted)
 		if (!(locate(type) in equipment))
-			to_chat(H, "<span class='warning'>You must be wearing [initial(type:name)] to equip [name]!")
+			to_chat(H, SPAN_WARNING("You must be wearing [initial(type:name)] to equip [name]!"))
 			return 0
 	return 1
 
@@ -342,7 +342,7 @@
 		return
 
 	if (M.back != src)
-		to_chat(M, "<span class='warning'>You must be wearing the cloak to activate it!")
+		to_chat(M, SPAN_WARNING("You must be wearing the cloak to activate it!"))
 		return
 
 	if (camo_active)
@@ -350,7 +350,7 @@
 		return
 
 	if (!camo_ready)
-		to_chat(M, "<span class='warning'>Your thermal dampeners are still recharging!")
+		to_chat(M, SPAN_WARNING("Your thermal dampeners are still recharging!"))
 		return
 
 	camo_ready = 0

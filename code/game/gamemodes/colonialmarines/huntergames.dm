@@ -279,30 +279,30 @@ var/waiting_for_drop_votes = 0
 /datum/game_mode/huntergames/proc/loop_package()
 	while(finished == 0)
 		if(!drops_disabled)
-			to_world("<span class='round_body'>Your Predator capturers have decided it is time to bestow a gift upon the scurrying humans.</span>")
-			to_world("<span class='round_body'>One lucky contestant should prepare for a supply drop in 60 seconds.</span>")
+			to_world(SPAN_ROUNDBODY("Your Predator capturers have decided it is time to bestow a gift upon the scurrying humans."))
+			to_world(SPAN_ROUNDBODY("One lucky contestant should prepare for a supply drop in 60 seconds."))
 			for(var/mob/dead/D in dead_mob_list)
-				to_chat(D, "<span class='round_body'>Now is your chance to vote for a supply drop beneficiary! Go to Ghost tab, Spectator Vote!</span>")
+				to_chat(D, SPAN_ROUNDBODY("Now is your chance to vote for a supply drop beneficiary! Go to Ghost tab, Spectator Vote!"))
 			world << sound('sound/effects/alert.ogg')
 			last_drop = world.time
 			waiting_for_drop_votes = 1
 			sleep(600)
 			if(!supply_votes.len)
-				to_world("<span class='round_body'>Nobody got anything! .. weird.</span>")
+				to_world(SPAN_ROUNDBODY("Nobody got anything! .. weird."))
 				waiting_for_drop_votes = 0
 				supply_votes = list()
 			else
 				var/mob/living/carbon/human/winner = pick(supply_votes) //Way it works is, more votes = more odds of winning. But not guaranteed.
 				if(istype(winner) && !winner.stat)
-					to_world("<span class='round_body'>The spectator and Predator votes have been tallied, and the supply drop recipient is <B>[winner.real_name]</B>! Congrats!</span>")
+					to_world(SPAN_ROUNDBODY("The spectator and Predator votes have been tallied, and the supply drop recipient is <B>[winner.real_name]</B>! Congrats!"))
 					world << sound('sound/effects/alert.ogg')
-					to_world("<span class='round_body'>The package will shortly be dropped off at: [get_area(winner.loc)].</span>")
+					to_world(SPAN_ROUNDBODY("The package will shortly be dropped off at: [get_area(winner.loc)]."))
 					var/turf/drop_zone = locate(winner.x + rand(-2,2),winner.y + rand(-2,2),winner.z)
 					if(istype(drop_zone))
 						playsound(drop_zone,'sound/effects/bamf.ogg', 50, 1)
 						place_drop(drop_zone,"god", 1)
 				else
-					to_world("<span class='round_body'>The spectator and Predator votes have been talled, and the supply drop recipient is dead or dying<B>. Bummer.</b></span>")
+					to_world(SPAN_ROUNDBODY("The spectator and Predator votes have been talled, and the supply drop recipient is dead or dying<B>. Bummer.</b>"))
 					world << sound('sound/misc/sadtrombone.ogg')
 				supply_votes = list()
 				waiting_for_drop_votes = 0
@@ -327,11 +327,11 @@ var/waiting_for_drop_votes = 0
 	var/C = count_humans()
 	if(C < last_tally)
 		if(last_tally - C == 1)
-			to_world("<span class='round_body'>A contestant has died! There are now [C] contestants remaining!</span>")
+			to_world(SPAN_ROUNDBODY("A contestant has died! There are now [C] contestants remaining!"))
 			world << sound('sound/effects/explosionfar.ogg')
 		else
 			var/diff = last_tally - C
-			to_world("<span class='round_body'>Multiple contestants have died! [diff] in fact. [C] are left!</span>")
+			to_world(SPAN_ROUNDBODY("Multiple contestants have died! [diff] in fact. [C] are left!"))
 			spawn(7) world << sound('sound/effects/explosionfar.ogg')
 
 	last_tally = C

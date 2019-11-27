@@ -19,9 +19,9 @@
 		to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished."))
 		return
 	if(mind in ticker.mode.xenomorphs)
-		to_chat(src, "<span class='debuginfo'>[src] mind is in the xenomorph list. Mind key is [mind.key].</span>")
-		to_chat(src, "<span class='debuginfo'>Current mob is: [mind.current]. Original mob is: [mind.original].</span>")
-	else to_chat(src, "<span class='debuginfo'>This xenomorph is not in the xenomorph list.</span>")
+		to_chat(src, SPAN_DEBUG("[src] mind is in the xenomorph list. Mind key is [mind.key]."))
+		to_chat(src, SPAN_DEBUG("Current mob is: [mind.current]. Original mob is: [mind.original]."))
+	else to_chat(src, SPAN_DEBUG("This xenomorph is not in the xenomorph list."))
 #endif
 
 #undef DEBUG_XENO

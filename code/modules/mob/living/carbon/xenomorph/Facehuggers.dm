@@ -241,7 +241,7 @@
 			if(H.get_inactive_hand()) catch_chance  -= 25
 
 			if(!H.stat && H.dir != dir && prob(catch_chance)) //Not facing away
-				H.visible_message("<span class='notice'>[H] snatches [src] out of the air and squashes it!")
+				H.visible_message(SPAN_NOTICE("[H] snatches [src] out of the air and squashes it!"))
 				Die()
 				loc = H.loc
 				return

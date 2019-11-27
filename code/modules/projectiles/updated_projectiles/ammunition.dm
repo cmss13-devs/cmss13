@@ -318,29 +318,29 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	..()
 	if(!handfuls)
 		if(contents.len < (num_of_magazines/3))
-			to_chat(user, "<span class='information'>It feels almost empty.</span>")
+			to_chat(user, SPAN_INFO("It feels almost empty."))
 			return
 		if(contents.len < ((num_of_magazines*2)/3))
-			to_chat(user, "<span class='information'>It feels about half full.</span>")
+			to_chat(user, SPAN_INFO("It feels about half full."))
 			return
-		to_chat(user, "<span class='information'>It feels almost full.</span>")
+		to_chat(user, SPAN_INFO("It feels almost full."))
 	else
 		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
 		if(AM)
 			if(AM.current_rounds < (AM.max_rounds/3))
-				to_chat(user, "<span class='information'>It feels almost empty.</span>")
+				to_chat(user, SPAN_INFO("It feels almost empty."))
 				return
 			if(AM.current_rounds < ((AM.max_rounds*2)/3))
-				to_chat(user, "<span class='information'>It feels about half full.</span>")
+				to_chat(user, SPAN_INFO("It feels about half full."))
 				return
-			to_chat(user, "<span class='information'>It feels almost full.</span>")
+			to_chat(user, SPAN_INFO("It feels almost full."))
 
 /obj/item/magazine_box/attack_self(mob/living/user)
 	deploy_ammo_box(user, user.loc)
 
 /obj/item/magazine_box/proc/deploy_ammo_box(mob/living/user, turf/T)
 	for(var/obj/structure/magazine_box/MB in T.contents)
-		to_chat(user, "<span class='warning'>There is a [MB] deployed here already.</span>")
+		to_chat(user, SPAN_WARNING("There is a [MB] deployed here already."))
 		return
 	var/obj/structure/magazine_box/M = new /obj/structure/magazine_box(T)
 	M.icon_base_name = icon_base_name
@@ -646,9 +646,9 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	if(item_box.handfuls)
 		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
 		if(AM)
-			to_chat(user, "<span class='information'>It has roughly [round(AM.current_rounds/5)] handfuls remaining.</span>")
+			to_chat(user, SPAN_INFO("It has roughly [round(AM.current_rounds/5)] handfuls remaining."))
 	else
-		to_chat(user, "<span class='information'>It has [item_box.contents.len] magazines out of [item_box.num_of_magazines].</span>")
+		to_chat(user, SPAN_INFO("It has [item_box.contents.len] magazines out of [item_box.num_of_magazines]."))
 
 /obj/structure/magazine_box/update_icon()
 	if(!item_box.handfuls)

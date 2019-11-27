@@ -42,7 +42,7 @@
 	else if(istype(I, /obj/item/tool/mop))
 		if(I.reagents.total_volume < I.reagents.maximum_volume && mybucket)	//if it's not completely soaked we assume they want to wet it, otherwise store it
 			if(mybucket.reagents.total_volume < 1)
-				to_chat(user, "[mybucket] is out of water!</span>")
+				to_chat(user, "[mybucket] is out of water!")
 			else
 				mybucket.reagents.trans_to(I, 5)	//
 				to_chat(user, SPAN_NOTICE("You wet [I] in [mybucket]."))

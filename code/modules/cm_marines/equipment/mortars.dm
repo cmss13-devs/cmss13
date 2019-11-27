@@ -141,7 +141,7 @@
 		if(do_after(user, 15, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			user.visible_message(SPAN_NOTICE("[user] loads \a [mortar_shell.name] into [src]."),
 			SPAN_NOTICE("You load \a [mortar_shell.name] into [src]."))
-			visible_message("[htmlicon(src, viewers(src))] <span class='danger'>The [name] fires!</span>")
+			visible_message("[htmlicon(src, viewers(src))] [SPAN_DANGER("The [name] fires!")]")
 			user.drop_inv_item_to_loc(mortar_shell, src)
 			playsound(loc, 'sound/weapons/gun_mortar_fire.ogg', 50, 1)
 			busy = 0

@@ -176,8 +176,8 @@
 	user.stunned = max(user.stunned, 2)  //Action delay when going out of a bin
 	user.update_canmove() //Force the delay to go in action immediately
 	if(!user.lying)
-		user.visible_message("<span class='warning'>[user] suddenly climbs out of [src]!",
-		"<span class='warning'>You climb out of [src] and get your bearings!")
+		user.visible_message(SPAN_WARNING("[user] suddenly climbs out of [src]!"),
+		SPAN_WARNING("You climb out of [src] and get your bearings!"))
 		update()
 
 //AI as human but can't flush
@@ -274,8 +274,8 @@
 			M.stunned = max(M.stunned, 2)  //Action delay when going out of a bin
 			M.update_canmove() //Force the delay to go in action immediately
 			if(!M.lying)
-				M.visible_message("<span class='warning'>[M] is suddenly pushed out of [src]!",
-				"<span class='warning'>You get pushed out of [src] and get your bearings!")
+				M.visible_message(SPAN_WARNING("[M] is suddenly pushed out of [src]!"),
+				SPAN_WARNING("You get pushed out of [src] and get your bearings!"))
 	update()
 
 //Pipe affected by explosion

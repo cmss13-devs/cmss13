@@ -71,7 +71,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 			if(istype(X))
 				M = X.current
 				if(!M || !M.loc) M = X.original
-				if(M && M.loc && istype(M,/mob/living/carbon/Xenomorph/Queen)) dat += "<br>[X.key] was [M] <span class='boldnotice'>([M.stat == DEAD? "DIED":"SURVIVED"])</span>"
+				if(M && M.loc && istype(M,/mob/living/carbon/Xenomorph/Queen)) dat += "<br>[X.key] was [M] [SPAN_BOLDNOTICE("([M.stat == DEAD? "DIED":"SURVIVED"])")]"
 
 		to_world("[dat]")
 
@@ -86,8 +86,8 @@ of predators), but can be added to include variant game modes (like humans vs. h
 			if(istype(P))
 				M = P.current
 				if(!M || !M.loc) M = P.original
-				if(M && M.loc) 	dat += "<br>[P.key] was [M.real_name] <span class='boldnotice'>([M.stat == DEAD? "DIED":"SURVIVED"])</span>"
-				else 			dat += "<br>[P.key]'s body was destroyed... <span class='boldnotice'>(DIED)</span>"
+				if(M && M.loc) 	dat += "<br>[P.key] was [M.real_name] [SPAN_BOLDNOTICE("([M.stat == DEAD? "DIED":"SURVIVED"])")]"
+				else 			dat += "<br>[P.key]'s body was destroyed... [SPAN_BOLDNOTICE("(DIED)")]"
 
 		to_world("[dat]")
 
@@ -240,12 +240,12 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 			//Announce the numbers to Yautja, they have good scanners
 			if (isYautja(M))
 				to_chat(M, "<h2 class='alert'>Bioscan complete</h2>")
-				to_chat(M, "<span class='alert'>[numXenosPlanet] serpents present in the hunting ground[xeno_colony_location], with [larva] larva.\n[numXenosShip] serpents present on the human ship[xeno_ship_location]\n[numHostsPlanet] humans present in the hunting ground[marine_colony_location]\n[numHostsShip] humans present on the human ship[marine_ship_location]</span>")
+				to_chat(M, SPAN_ALERT("[numXenosPlanet] serpents present in the hunting ground[xeno_colony_location], with [larva] larva.\n[numXenosShip] serpents present on the human ship[xeno_ship_location]\n[numHostsPlanet] humans present in the hunting ground[marine_colony_location]\n[numHostsShip] humans present on the human ship[marine_ship_location]"))
 
 			//Let the ghosts know what's up, they also get good numbers
 			if (isobserver(M))
 				to_chat(M, "<h2 class='alert'>Bioscan complete</h2>")
-				to_chat(M, "<span class='alert'>[numXenosPlanet] xenos on planet, with [larva] larva.\n[numXenosShip] xenos on the ship.\n[numHostsPlanet] humans on the planet.\n[numHostsShip] humans on the ship.</span>")
+				to_chat(M, SPAN_ALERT("[numXenosPlanet] xenos on planet, with [larva] larva.\n[numXenosShip] xenos on the ship.\n[numHostsPlanet] humans on the planet.\n[numHostsShip] humans on the ship."))
 
 	//Adjust the randomness there so everyone gets the same thing
 	numHostsShip = max(0, numHostsShip + rand(-delta, delta))

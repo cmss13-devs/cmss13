@@ -46,7 +46,7 @@
 	if(istype(target, /obj/structure/window))
 		var/obj/structure/window/W = target
 		if(W.not_damageable)
-			to_chat(user, "<span class='warning'>[W] is much too tough for you to do anything to it with [src]</span>.") //On purpose to mimic wall message
+			to_chat(user, SPAN_WARNING("[W] is much too tough for you to do anything to it with [src].")) //On purpose to mimic wall message
 			return FALSE
 
 	user.visible_message(SPAN_WARNING("[user] is trying to plant [name] on [target]!"),

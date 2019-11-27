@@ -114,6 +114,7 @@
 
 	if (!msg)
 		return
+		
 	to_world("[msg]")
 	log_admin("GlobalNarrate: [key_name(usr)] : [msg]")
 	message_admins(SPAN_NOTICE("\bold GlobalNarrate: [key_name_admin(usr)] : [msg]<BR>"), 1)
@@ -135,7 +136,7 @@
 
 	var/msg = input("Message:", text("Enter the text you wish to appear to your target:")) as text
 
-	if( !msg )
+	if(!msg)
 		return
 
 	to_chat(M, msg)

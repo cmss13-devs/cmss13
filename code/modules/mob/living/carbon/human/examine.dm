@@ -11,7 +11,7 @@
 		msg += "<EM>[src.name]</EM>!\n"
 
 		if(species.flags & IS_SYNTHETIC)
-			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is not organic.\n"
+			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is not organic.\n</span>"
 
 		if(status_flags & XENO_HOST)
 			msg += "This creature is impregnated.\n"
@@ -24,7 +24,7 @@
 		if(stat == DEAD)
 			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is dead.\n"
 		else if(stat || !client)
-			msg += "<span class='xenowarning'>It doesn't seem responsive.\n"
+			msg += "<span class='xenowarning'>It doesn't seem responsive.\n</span>"
 		msg += "*---------*</span>"
 		to_chat(user, msg)
 		return
@@ -125,7 +125,7 @@
 	if(shoes && !skipshoes)
 		msg += "[t_He] [t_is] wearing [shoes.get_examine_line()] on [t_his] feet.\n"
 	else if(feet_blood_color)
-		msg += "<span class='warning'>[t_He] [t_has] [(feet_blood_color != "#030303") ? "blood" : "oil"]-stained feet!</span>\n"
+		msg += SPAN_WARNING("[t_He] [t_has] [(feet_blood_color != "#030303") ? "blood" : "oil"]-stained feet!\n")
 
 	//mask
 	if(wear_mask && !skipmask)
@@ -181,7 +181,7 @@
 
 	if((!species.has_organ["brain"] || has_brain()) && stat != DEAD && stat != CONSCIOUS)
 		if(!key)
-			msg += "<span class='deadsay'>[t_He] [t_is] fast asleep. It doesn't look like they are waking up anytime soon.\n"
+			msg += "<span class='deadsay'>[t_He] [t_is] fast asleep. It doesn't look like they are waking up anytime soon.\n</span>"
 		else if(!client)
 			msg += "[t_He] [t_has] suddenly fallen asleep.\n"
 

@@ -173,7 +173,7 @@
 					// no break, to update multiple scoreboards
 			visible_message(SPAN_NOTICE("Swish! \the [I] lands in \the [src]."), 3)
 		else
-			visible_message("<span class='danger'>\the [I] bounces off of \the [src]'s rim!</span>", 3)
+			visible_message(SPAN_DANGER("\the [I] bounces off of \the [src]'s rim!"), 3)
 		return NO_BLOCKED_MOVEMENT
 	
 	return ..()

@@ -113,7 +113,7 @@
 			if(!skillcheck(user, SKILL_SPEC_WEAPONS, 1))
 				to_chat(user, SPAN_WARNING("You can't understand this."))
 				return 0
-	to_chat(user, "<span class='notice'>You start reading \the [src].")
+	to_chat(user, SPAN_NOTICE("You start reading \the [src]."))
 	if(!do_after(user, reading_time, INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC)) // Can move while reading intel
 		to_chat(user, SPAN_WARNING("You get distracted and lose your train of thought, you'll have to start over reading this."))
 		return 0
@@ -143,7 +143,7 @@
 	..()
 	for(var/datum/cm_objective/document/D in objective.enables_objectives)
 		to_chat(user, SPAN_NOTICE("You make out something about [D.get_clue()]."))
-	to_chat(user, "<span class='information'>You finish examining \the [src].</span>")
+	to_chat(user, SPAN_INFO("You finish examining \the [src]."))
 
 /obj/item/document_objective/report
 	name = "Progress report"
@@ -156,7 +156,7 @@
 	..()
 	for(var/datum/cm_objective/retrieve_item/device/D in objective.enables_objectives)
 		to_chat(user, SPAN_NOTICE("You make out something about [D.get_clue()]."))
-	to_chat(user, "<span class='information'>You finish examining \the [src].</span>")
+	to_chat(user, SPAN_INFO("You finish examining \the [src]."))
 
 /obj/item/document_objective/folder
 	name = "intel folder"
@@ -179,13 +179,13 @@
 /obj/item/document_objective/folder/examine(mob/living/user)
 	..()
 	if(get_dist(user, src) < 2 && ishuman(user))
-		to_chat(user, "<span class='information'>\The [src] is labelled [label].</span>")
+		to_chat(user, SPAN_INFO("\The [src] is labelled [label]."))
 
 /obj/item/document_objective/folder/display_read_message(mob/living/user)
 	..()
 	for(var/datum/cm_objective/D in objective.enables_objectives)
 		to_chat(user, SPAN_NOTICE("You see a reference to [D.get_clue()]."))
-	to_chat(user, "<span class='information'>You finish sifting through the documents.</span>")
+	to_chat(user, SPAN_INFO("You finish sifting through the documents."))
 
 /obj/item/document_objective/technical_manual
 	name = "Technical Manual"
@@ -199,4 +199,4 @@
 	..()
 	for(var/datum/cm_objective/document/D in objective.enables_objectives)
 		to_chat(user, SPAN_NOTICE("You see a reference to [D.get_clue()]."))
-	to_chat(user, "<span class='information'>You finish reading the technical manual.</span>")
+	to_chat(user, SPAN_INFO("You finish reading the technical manual."))

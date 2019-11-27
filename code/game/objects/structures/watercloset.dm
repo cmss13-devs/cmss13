@@ -405,7 +405,7 @@
 					B.deductcharge(B.hitcost)
 				user.visible_message( \
 					SPAN_DANGER("[user] was stunned by \his wet [O]!"), \
-					"<span class='userdanger'>[user] was stunned by \his wet [O]!</span>")
+					SPAN_USERDANGER("[user] was stunned by \his wet [O]!"))
 				return
 
 	var/turf/location = user.loc

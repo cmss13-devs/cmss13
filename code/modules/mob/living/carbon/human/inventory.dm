@@ -440,7 +440,7 @@
 	attack_log += "\[[time_stamp()]\] <font color='red'>Attempted to remove [M.name]'s ([M.ckey]) [I.name] ([slot_to_process])</font>"
 
 	M.visible_message(SPAN_DANGER("[src] tries to remove [M]'s [I.name]."), \
-					"<span class='userdanger'>[src] tries to remove [M]'s [I.name].</span>", null, 5)
+					SPAN_USERDANGER("[src] tries to remove [M]'s [I.name]."), null, 5)
 	I.add_fingerprint(src)
 	if(do_after(src, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 		if(I && Adjacent(M) && I == M.get_item_by_slot(slot_to_process))

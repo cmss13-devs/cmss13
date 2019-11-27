@@ -52,7 +52,7 @@ var/datum/controller/failsafe/Failsafe
 						if(4,5)
 							--defcon
 						if(3)
-							to_chat(admins, "<span class='adminnotice'>Notice: DEFCON [defcon_pretty()]. The Master Controller has not fired in the last [(5-defcon) * processing_interval] ticks.</span>")
+							to_chat(admins, SPAN_ADMINNOTICE("Notice: DEFCON [defcon_pretty()]. The Master Controller has not fired in the last [(5-defcon) * processing_interval] ticks."))
 							--defcon
 						if(2)
 							to_chat(admins, SPAN_BOLDANNOUNCE("Warning: DEFCON [defcon_pretty()]. The Master Controller has not fired in the last [(5-defcon) * processing_interval] ticks. Automatic restart in [processing_interval] ticks."))
@@ -65,7 +65,7 @@ var/datum/controller/failsafe/Failsafe
 							if(rtn > 0)
 								defcon = 4
 								master_iteration = 0
-								to_chat(admins, "<span class='adminnotice'>MC restarted successfully</span>")
+								to_chat(admins, SPAN_ADMINNOTICE("MC restarted successfully"))
 							else if(rtn < 0)
 								log_game("FailSafe: Could not restart MC, runtime encountered. Entering defcon 0")
 								to_chat(admins, SPAN_BOLDANNOUNCE("ERROR: DEFCON [defcon_pretty()]. Could not restart MC, runtime encountered. I will silently keep retrying."))
@@ -76,7 +76,7 @@ var/datum/controller/failsafe/Failsafe
 							if(rtn > 0)
 								defcon = 4
 								master_iteration = 0
-								to_chat(admins, "<span class='adminnotice'>MC restarted successfully</span>")
+								to_chat(admins, SPAN_ADMINNOTICE("MC restarted successfully"))
 				else
 					defcon = min(defcon + 1,5)
 					master_iteration = Master.iteration

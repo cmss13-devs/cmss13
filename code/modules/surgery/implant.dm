@@ -189,7 +189,7 @@
 
 	else if(affected.hidden)
 		user.visible_message(SPAN_NOTICE("[user] takes something out of incision on [target]'s [affected.display_name] with \the [tool]."), \
-		SPAN_NOTICE("You take something out of incision on [target]'s [affected.display_name]s with \the [tool].</span>"))
+		SPAN_NOTICE("You take something out of incision on [target]'s [affected.display_name]s with \the [tool]."))
 		affected.hidden.loc = get_turf(target)
 
 		affected.hidden.blood_color = target.get_blood_color()

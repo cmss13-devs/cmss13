@@ -239,8 +239,8 @@
 			qdel(L)
 
 		if(!victim.first_xeno)
-			to_chat(L, "<span class='xenohighdanger'>The Queen's will overwhelms your instincts...")
-			to_chat(L, "<span class='xenohighdanger'>\")"+hive.hive_orders+"\"</span>")
+			to_chat(L, SPAN_XENOHIGHDANGER("The Queen's will overwhelms your instincts..."))
+			to_chat(L, SPAN_XENOHIGHDANGER("\"[hive.hive_orders]\""))
 
 	for(var/obj/item/alien_embryo/AE in victim)
 		qdel(AE)

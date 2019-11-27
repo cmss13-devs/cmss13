@@ -20,7 +20,7 @@
 /proc/overlay_xeno_mapview(var/hivenumber = XENO_HIVE_NORMAL)
 	if(queenmapupdated) // Return if updated too recently, anti-lag
 		return
-	
+
 	var/icon/newoverlay = icon(xeno_mapview)
 	var/list/hosts_in_sight = list()
 	var/list/tier_0 = list()
@@ -66,7 +66,7 @@
 	queenmapupdated = TRUE
 	spawn(refreshfrequency)
 		queenmapupdated = FALSE
-		
+
 	return newoverlay
 
 /proc/generate_xeno_mapview()
@@ -309,4 +309,5 @@
 
 
 /mob/living/carbon/human/proc/has_helmet_camera()
-	return istype(head, /obj/item/clothing/head/helmet/marine)
+	if(faction == FACTION_MARINE)
+		return istype(head, /obj/item/clothing/head/helmet/marine)

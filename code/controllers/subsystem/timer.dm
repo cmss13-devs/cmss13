@@ -83,8 +83,6 @@ var/datum/subsystem/timer/SStimer
 			var/datum/callback/callBack = ctime_timer.callBack
 			ctime_timer.spent = TRUE
 			callBack.InvokeAsync()
-			if(callBack.object && callBack.object != GLOBAL_PROC && callBack.object.active_timers)
-				callBack.object.active_timers -= ctime_timer
 			qdel(ctime_timer)
 		else
 			break	//None of the rest are ready to run
@@ -123,8 +121,6 @@ var/datum/subsystem/timer/SStimer
 				spent += timer
 				timer.spent = TRUE
 				callBack.InvokeAsync()
-				if(callBack.object && callBack.object != GLOBAL_PROC && callBack.object.active_timers)
-					callBack.object.active_timers -= timer
 				last_invoke_tick = world.time
 
 			timer = timer.next
@@ -305,7 +301,7 @@ var/datum/subsystem/timer/SStimer
 	next.prev = src
 	prev.next = src
 
-/datum/timed_event/Destroy()
+/datum/timed_event/Dispose()
 	..()
 	if (flags & TIMER_UNIQUE)
 		SStimer.hashes -= hash

@@ -273,7 +273,7 @@
 	use_power = 0
 	flags_atom = RELAY_CLICK
 	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_ENGPREP, ACCESS_MARINE_LEADER)
-	var/iff_signal = ACCESS_IFF_MARINE
+	var/iff_signal = ACCESS_IFF_MARINE // Either a single IFF signal or a list of signals
 	var/rounds = 500
 	var/rounds_max = 500
 	var/burst_size = 6
@@ -1100,6 +1100,10 @@
 	use_power = 1
 	var/obj/structure/machinery/sentry_holder/deployment_system
 
+//the turret inside a static sentry deployment system
+/obj/structure/machinery/marine_turret/premade/deployable/colony
+	iff_signal = list(ACCESS_IFF_MARINE, ACCESS_CIVILIAN_PUBLIC)
+
 /obj/structure/machinery/marine_turret/premade/dropship/Dispose()
 	if(deployment_system)
 		deployment_system.deployed_turret = null
@@ -1137,6 +1141,7 @@
 	use_power = 1
 	machine_processing = 1
 	var/deployment_cooldown
+	var/turret_path = /obj/structure/machinery/marine_turret/premade/deployable // Path of the turret used
 	var/obj/structure/machinery/marine_turret/premade/deployable/deployed_turret
 	var/ox = 0
 	var/oy = 0
@@ -1144,7 +1149,7 @@
 
 /obj/structure/machinery/sentry_holder/initialize()
 	if(!deployed_turret)
-		deployed_turret = new(src)
+		deployed_turret = new turret_path(src)
 		deployed_turret.deployment_system = src
 		ox = pixel_x
 		oy = pixel_y
@@ -1152,7 +1157,7 @@
 
 /obj/structure/machinery/sentry_holder/New()
 	if(!deployed_turret)
-		deployed_turret = new(src)
+		deployed_turret = new turret_path(src)
 		deployed_turret.deployment_system = src
 		ox = pixel_x
 		oy = pixel_y
@@ -1221,3 +1226,7 @@
 		pixel_x = ox
 		pixel_y = oy
 		icon_state = "sentry_system_installed"
+
+/obj/structure/machinery/sentry_holder/colony
+	desc = "A box that deploys a sentry turret that protects the residents of the area."
+	turret_path = /obj/structure/machinery/marine_turret/premade/deployable/colony

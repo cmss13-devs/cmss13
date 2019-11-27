@@ -599,11 +599,11 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(lying_prev != lying)
 		update_transform()
 
-	if(lying && (layer == initial(layer) || stat == DEAD)) //to avoid things like hiding larvas.
+	if(lying)
 		//so mob lying always appear behind standing mobs, but dead ones appear behind living ones
 		if (stat == DEAD)
 			layer = LYING_DEAD_MOB_LAYER // Dead mobs should layer under living ones
-		else
+		else if(layer == initial(layer)) //to avoid things like hiding larvas.
 			layer = LYING_LIVING_MOB_LAYER
 	else if(layer == LYING_DEAD_MOB_LAYER || layer == LYING_LIVING_MOB_LAYER)
 		layer = initial(layer)

@@ -926,7 +926,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_labs)
 "acE" = (
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -936,7 +936,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "acF" = (
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	dir = 4;
 	pixel_x = -24
 	},
@@ -1471,7 +1471,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "aed" = (
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -1483,7 +1483,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "aef" = (
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	dir = 4;
 	pixel_x = -24
 	},
@@ -6419,7 +6419,7 @@
 /turf/closed/wall/r_wall,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "aqR" = (
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -6645,7 +6645,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "aro" = (
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	dir = 4;
 	pixel_x = -24
 	},
@@ -7076,7 +7076,7 @@
 	icon = 'icons/turf/overlays.dmi';
 	icon_state = "sand1_s"
 	},
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	dir = 1;
 	pixel_y = -10
 	},
@@ -7235,7 +7235,7 @@
 	},
 /area/desert_dam/building/substation/northeast)
 "asN" = (
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	dir = 1;
 	pixel_y = -10
 	},
@@ -7390,7 +7390,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
 "ati" = (
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -7562,7 +7562,7 @@
 /area/desert_dam/exterior/valley/valley_mining)
 "atD" = (
 /obj/effect/decal/sand_overlay/sand2/corner2,
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	dir = 4;
 	pixel_x = -24
 	},
@@ -8369,7 +8369,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "avE" = (
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	pixel_y = 26
 	},
 /turf/open/asphalt/cement{
@@ -8475,7 +8475,7 @@
 	icon_state = "sand2_s";
 	dir = 8
 	},
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	pixel_y = 26
 	},
 /turf/open/asphalt/cement{
@@ -10362,7 +10362,7 @@
 	},
 /area/desert_dam/interior/caves/central_caves)
 "aAQ" = (
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	dir = 1;
 	pixel_y = -10
 	},
@@ -10371,7 +10371,7 @@
 	},
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "aAR" = (
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	dir = 1;
 	pixel_y = -10
 	},
@@ -10810,7 +10810,7 @@
 	icon = 'icons/turf/overlays.dmi';
 	icon_state = "sand1_s"
 	},
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	pixel_y = 26
 	},
 /turf/open/asphalt/cement_sunbleached{
@@ -10824,7 +10824,7 @@
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "aCa" = (
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	pixel_y = 26
 	},
 /turf/open/asphalt/cement_sunbleached{
@@ -11493,7 +11493,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDQ" = (
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -11512,7 +11512,7 @@
 	},
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDS" = (
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	dir = 4;
 	pixel_x = -24
 	},
@@ -12169,7 +12169,7 @@
 	icon_state = "sand2_c";
 	dir = 8
 	},
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -12179,7 +12179,7 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aFC" = (
 /obj/effect/decal/sand_overlay/sand1,
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	dir = 4;
 	pixel_x = -24
 	},
@@ -12764,7 +12764,7 @@
 	icon = 'icons/turf/overlays.dmi';
 	icon_state = "sand1_s"
 	},
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	dir = 1;
 	pixel_y = -10
 	},
@@ -12873,7 +12873,7 @@
 	icon = 'icons/turf/overlays.dmi';
 	icon_state = "sand1_s"
 	},
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	dir = 1;
 	pixel_y = -10
 	},
@@ -13073,7 +13073,7 @@
 	icon = 'icons/turf/overlays.dmi';
 	icon_state = "sand1_s"
 	},
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	pixel_y = 26
 	},
 /turf/open/asphalt/cement_sunbleached{
@@ -13107,7 +13107,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_northwest)
 "aIc" = (
-/obj/structure/machinery/sentry_holder{
+/obj/structure/machinery/sentry_holder/colony{
 	pixel_y = 26
 	},
 /turf/open/asphalt{

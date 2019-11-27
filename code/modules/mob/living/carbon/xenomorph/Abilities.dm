@@ -1099,7 +1099,6 @@
 			hive.remove_hive_leader(T)
 			to_chat(X, SPAN_XENONOTICE("You've demoted [T] from Hive Leader."))
 			to_chat(T, SPAN_XENOANNOUNCE("[X] has demoted you from Hive Leader. Your leadership rights and abilities have waned."))
-		T.hud_update()
 	else
 		var/list/possible_xenos = list()
 		for(var/mob/living/carbon/Xenomorph/T in hive.xeno_leader_list)

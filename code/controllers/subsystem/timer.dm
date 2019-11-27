@@ -83,6 +83,8 @@ var/datum/subsystem/timer/SStimer
 			var/datum/callback/callBack = ctime_timer.callBack
 			ctime_timer.spent = TRUE
 			callBack.InvokeAsync()
+			if(callBack.object && callBack.object != GLOBAL_PROC && callBack.object.active_timers)
+				callBack.object.active_timers -= ctime_timer
 			qdel(ctime_timer)
 		else
 			break	//None of the rest are ready to run
@@ -121,6 +123,8 @@ var/datum/subsystem/timer/SStimer
 				spent += timer
 				timer.spent = TRUE
 				callBack.InvokeAsync()
+				if(callBack.object && callBack.object != GLOBAL_PROC && callBack.object.active_timers)
+					callBack.object.active_timers -= timer
 				last_invoke_tick = world.time
 
 			timer = timer.next
@@ -373,21 +377,18 @@ var/datum/subsystem/timer/SStimer
 			hashlist = list(callback.object, "(\ref[callback.object])", callback.delegate, wait, flags & TIMER_CLIENT_TIME)
 		hashlist += callback.arguments
 		hash = hashlist.Join("|||||||")
-
 		var/datum/timed_event/hash_timer = SStimer.hashes[hash]
 		if(hash_timer)
 			if (hash_timer.spent) //it's pending deletion, pretend it doesn't exist.
 				hash_timer.hash = null
 				SStimer.hashes -= hash
 			else
-
 				if (flags & TIMER_OVERRIDE_UNIQUE)
 					qdel(hash_timer)
 				else
 					if (hash_timer.flags & TIMER_STOPPABLE)
 						. = hash_timer.id
 					return
-
 
 	var/time_to_run = world.time + wait
 	if (flags & TIMER_CLIENT_TIME)

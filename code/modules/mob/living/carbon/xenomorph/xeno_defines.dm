@@ -454,7 +454,7 @@
 		return FALSE //Already on the list
 	var/leader_num = open_xeno_leader_positions[1]
 	xeno_leader_list[leader_num] = xeno
-	xeno.hive_pos = XENO_LEADER(leader_num)
+	xeno.hive_pos = XENO_LEADER_HIVE_POS(leader_num)
 	xeno.handle_xeno_leader_pheromones()
 	xeno.hud_update() // To add leader star
 	open_xeno_leader_positions -= leader_num
@@ -463,8 +463,11 @@
 	return TRUE
 
 /datum/hive_status/proc/remove_hive_leader(var/mob/living/carbon/Xenomorph/xeno)
-	var/leader_num = GET_XENO_LEADER_NUM(xeno.hive_pos)
+	if (!IS_XENO_LEADER(xeno))
+		return FALSE
 	
+	var/leader_num = GET_XENO_LEADER_NUM(xeno)
+
 	xeno_leader_list[leader_num] = null
 	xeno.hive_pos = NORMAL_XENO
 	xeno.handle_xeno_leader_pheromones()
@@ -476,6 +479,25 @@
 			open_xeno_leader_positions.Insert(i, leader_num)
 			break
 	
+	hive_ui.update_xeno_keys()
+	return TRUE
+
+/datum/hive_status/proc/replace_hive_leader(var/mob/living/carbon/Xenomorph/original, var/mob/living/carbon/Xenomorph/replacement)
+	if(!replacement || replacement.hive_pos != NORMAL_XENO)
+		return remove_hive_leader(original)
+	
+	var/leader_num = GET_XENO_LEADER_NUM(original)
+	
+	xeno_leader_list[leader_num] = replacement
+
+	original.hive_pos = NORMAL_XENO
+	original.handle_xeno_leader_pheromones()
+	original.hud_update() // To remove leader star
+
+	replacement.hive_pos = XENO_LEADER_HIVE_POS(leader_num)
+	replacement.handle_xeno_leader_pheromones()
+	replacement.hud_update() // To add leader star
+
 	hive_ui.update_xeno_keys()
 
 /datum/hive_status/proc/handle_xeno_leader_pheromones()
@@ -533,7 +555,7 @@
 		xenos[index++] = list(
 			"nicknumber" = X.nicknumber,
 			"tier" = X.tier, // This one is only important for sorting
-			"leader" = (IS_XENO_LEADER(X.hive_pos)),
+			"leader" = (IS_XENO_LEADER(X)),
 			"is_queen" = istype(X.caste, /datum/caste_datum/queen),
 		)
 

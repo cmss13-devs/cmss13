@@ -1210,10 +1210,9 @@ datum/preferences
 					toggle_prefs ^= flag
 
 				if("save")
-					var/mob/new_player/np = user
-					if (!istype(np)) return
 					save_preferences()
 					save_character()
+					var/mob/new_player/np = user
 					if(istype(np))
 						np.new_player_panel_proc()
 
@@ -1229,10 +1228,9 @@ datum/preferences
 					close_load_dialog(user)
 
 				if("changeslot")
-					var/mob/new_player/np = user
-					if (!istype(np)) return
 					load_character(text2num(href_list["num"]))
 					close_load_dialog(user)
+					var/mob/new_player/np = user
 					if(istype(np))
 						np.new_player_panel_proc()
 

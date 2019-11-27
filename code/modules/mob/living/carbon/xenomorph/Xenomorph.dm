@@ -383,12 +383,8 @@
 
 		oldXeno.empty_gut()
 
-		if(oldXeno.hive_pos != NORMAL_XENO && caste_name != "Queen") // xeno leader is removed by Dispose()
-			hive_pos = oldXeno.hive_pos
-			hive.xeno_leader_list[GET_XENO_LEADER_NUM(hive_pos)] = src
-			hud_update()
-			if(hive.living_xeno_queen)
-				handle_xeno_leader_pheromones()
+		if(IS_XENO_LEADER(oldXeno))
+			hive.replace_hive_leader(oldXeno, src)
 
 	// Set the maximum overheal to % of the xeno's max health
 	max_overheal = round(maxHealth*XENO_MAXOVERHEAL_OF_MAXHEALTH)
@@ -503,7 +499,7 @@
 	living_xeno_list -= src
 	xeno_mob_list -= src
 
-	if(IS_XENO_LEADER(hive_pos)) //Strip them from the Xeno leader list, if they are indexed in here
+	if(IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here
 		hive.remove_hive_leader(src)
 
 	SStracking.stop_tracking("hive_[hivenumber]", src)

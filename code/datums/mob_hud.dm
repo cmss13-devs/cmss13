@@ -395,7 +395,7 @@ var/datum/mob_hud/huds = list(
 	holder.overlays.Cut()
 	if (stat == DEAD)
 		return
-	if (IS_XENO_LEADER(hive_pos))
+	if (IS_XENO_LEADER(src))
 		var/image/I = image('icons/mob/hud/hud.dmi',src, "hudxenoleader")
 		holder.overlays += I
 	if (upgrade)

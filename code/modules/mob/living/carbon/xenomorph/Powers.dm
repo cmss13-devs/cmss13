@@ -1747,7 +1747,7 @@
 	if(hive.living_xeno_queen)
 		xeno_message("Hive: \The [src] has <b>morphed</b> into \a [new_structure] at [sanitize(current_area)]!", 3, hivenumber)
 
-	if(IS_XENO_LEADER(hive_pos))	//Strip them from the Xeno leader list, if they are indexed in here
+	if(IS_XENO_LEADER(src))	//Strip them from the Xeno leader list, if they are indexed in here
 		hive.remove_hive_leader(src)
 		if(hive.living_xeno_queen)
 			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE("A leader has resin-morphed!")) //alert queens so they can choose another leader

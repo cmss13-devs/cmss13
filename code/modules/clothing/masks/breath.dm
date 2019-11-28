@@ -82,14 +82,16 @@
 	if(usr.stat == DEAD)
 		return
 
-	if(pulled == FALSE)
-		pulled = TRUE
+	flags_inv_hide ^= HIDEFACE|HIDELOWHAIR
+	pulled = !pulled
+	if(pulled)
 		to_chat(usr, SPAN_NOTICE("You pull \the [src] down."))
 		icon_state += "_down"
 	else
-		pulled = FALSE
 		to_chat(usr, SPAN_NOTICE("You pull \the [src] up."))
 		icon_state = original_state
+
+
 
 	update_clothing_icon(src) //Update the on-mob icon.
 

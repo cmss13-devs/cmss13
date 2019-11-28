@@ -472,24 +472,16 @@ should be alright.
 	var/obj/item/clothing/accessory/holster/T
 	if(istype(U))
 		for(var/obj/item/clothing/accessory/holster/HS in U.accessories)
-			if(HS.holstered)
-				continue
 			T = HS
 			break
 	if(W)
-		if(istype(T) && istype(W) && !T.holstered && T.can_holster(W))
+		if(T && istype(W) && !T.holstered && T.can_holster(W))
 			T.holster(W, src)
 		else
 			quick_equip()
 	else //empty hand, start checking slots and holsters
 		switch(keymod)
-			if("none") //default order: uniform, suit, belt, back, pockets, shoes
-				if(w_uniform)
-					for(var/obj/item/clothing/accessory/holster/HS in U.accessories)
-						if(istype(HS) && HS.holstered)
-							w_uniform.attack_hand(src)
-							return
-
+			if("none") //default order: suit, belt, back, pockets, uniform, shoes
 				if(s_store)
 					if(istype(s_store, /obj/item/storage)) //check storages(?)
 						var/obj/item/storage/S = s_store
@@ -543,6 +535,10 @@ should be alright.
 						r_store.attack_hand(src)
 						return
 
+				if(w_uniform && T && T.holstered)
+					w_uniform.attack_hand(src)
+					return
+
 				if(shoes)
 					if(istype(shoes, /obj/item/clothing/shoes))
 						var/obj/item/clothing/shoes/S = shoes
@@ -550,7 +546,7 @@ should be alright.
 							shoes.attack_hand(src)
 							return
 
-			if("shift") //shift keymod, do common secondary weapon locations first. order: belt, back, pockets, shoes, uniform, suit.
+			if("shift") //shift keymod, do common secondary weapon locations first. order: belt, back, pockets, uniform, shoes, suit.
 				if(belt)
 					if(istype(belt, /obj/item/storage/belt/gun/) || istype(belt, /obj/item/storage/large_holster))
 						var/obj/item/storage/G = belt
@@ -591,17 +587,15 @@ should be alright.
 						r_store.attack_hand(src)
 						return
 
+				if(w_uniform && T && T.holstered)
+					w_uniform.attack_hand(src)
+					return
+
 				if(shoes)
 					if(istype(shoes, /obj/item/clothing/shoes))
 						var/obj/item/clothing/shoes/S = shoes
 						if(S.stored_item && istype(S.stored_item, /obj/item/weapon))
 							shoes.attack_hand(src)
-							return
-
-				if(w_uniform)
-					for(var/obj/item/clothing/accessory/holster/HS in w_uniform.accessories)
-						if(istype(HS) && HS.holstered)
-							w_uniform.attack_hand(src)
 							return
 
 				if(s_store)

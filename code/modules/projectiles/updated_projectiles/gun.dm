@@ -283,11 +283,13 @@
 	return ..()
 
 /obj/item/weapon/gun/update_icon()
-	..()
 	if(overlays)
 		overlays.Cut()
 	else
 		overlays = list()
+	..()
+	if(blood_overlay) //need to reapply bloodstain because of the Cut.
+		overlays += blood_overlay
 
 	var/new_icon_state = base_gun_icon
 

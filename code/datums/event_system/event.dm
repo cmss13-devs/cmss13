@@ -21,9 +21,9 @@
 /datum/event/proc/remove_handler(datum/event_handler/handle)
 	if(!handle || !handle in handlers)
 		return
-	
+
 	handlers -= handle
-	
+
 	handle.events -= src
 	for(var/datum/event/ev in handle.events)
 		ev.handlers -= src
@@ -32,3 +32,7 @@
 /datum/event/proc/clean()
 	for(var/datum/event_handler/hdl in handlers)
 		remove_handler(hdl)
+
+/datum/event/Dispose()
+	clean()
+	. = ..()

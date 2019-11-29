@@ -146,6 +146,15 @@
 	if(!start_charge && z == 1 && prob(10))
 		set_broken()
 
+/obj/structure/machinery/power/apc/Dispose()
+	if(terminal)
+		terminal.master = null
+		terminal = null
+	if(cell)
+		qdel(cell)
+		cell = null
+	. = ..()
+
 // the very fact that i have to override this screams to me that apcs shouldnt be under machinery - spookydonut
 /obj/structure/machinery/power/apc/power_change()
 	return
@@ -600,7 +609,7 @@
 		if(H.species.flags & IS_SYNTHETIC && H.a_intent == GRAB_INTENT)
 			if(H.action_busy)
 				return
-			
+
 			if(!do_after(H, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				return
 
@@ -615,7 +624,7 @@
 			else if(cell && cell.charge > 0)
 				if(!istype(H.back, /obj/item/storage/backpack/marine/smartpack))
 					return
-				
+
 				var/obj/item/storage/backpack/marine/smartpack/S = H.back
 				if(S.battery_charge < SMARTPACK_MAX_POWER_STORED)
 					cell.charge -= SMARTPACK_MAX_POWER_STORED

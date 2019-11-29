@@ -103,8 +103,8 @@ nanoui is used to open and update nano browser uis
 /datum/nanoui/Dispose()
 	user = null
 	src_object = null
-
-	..()
+	ref = null
+	. = ..()
 
  /**
   * Use this proc to add assets which are common to (and required by) all nano uis

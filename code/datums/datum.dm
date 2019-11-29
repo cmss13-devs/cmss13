@@ -1,8 +1,13 @@
 /datum
+	var/disposed
 	var/list/active_timers //Timer subsystem
 
-// For the Timer subsystem.
-/datum/proc/Destroy(force = FALSE)
+/*
+ * Like Del(), but for qdel.
+ * Called BEFORE qdel moves shit.
+ */
+/datum/proc/Dispose()
+	// For the Timer subsystem.
 	var/list/timers = active_timers
 	active_timers = null
 	for(var/selected_timer in timers)
@@ -10,3 +15,7 @@
 		if (timer.spent)
 			continue
 		qdel(timer)
+
+	tag = null
+	disposed = world.time
+	return GC_HINT_QUEUE

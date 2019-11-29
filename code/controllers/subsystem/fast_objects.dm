@@ -24,7 +24,7 @@ var/list/fast_objects = list()
 		var/atom/o = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!o || o.gcDestroyed || o.disposed)
+		if (!o || o.disposed)
 			continue
 
 		// > this fucking proc isn't defined on a global level.

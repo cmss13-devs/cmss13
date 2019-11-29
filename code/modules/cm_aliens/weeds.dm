@@ -33,6 +33,8 @@
 				weed_expand(node)
 
 /obj/effect/alien/weeds/Dispose()
+	if(parent)
+		parent.remove_child(src)
 	var/oldloc = loc
 	. = ..()
 	update_neighbours(oldloc)
@@ -301,7 +303,8 @@
 /obj/effect/alien/weeds/node/Dispose()
 	// When the node is removed, weeds should start dying out
 	// Make all the children look for a new parent node
-	for(var/obj/effect/alien/weeds/W in children)
+	for(var/X in children)
+		var/obj/effect/alien/weeds/W = X
 		remove_child(W)
 		add_timer(CALLBACK(W, .proc/avoid_orphanage), rand(350, 450))
 

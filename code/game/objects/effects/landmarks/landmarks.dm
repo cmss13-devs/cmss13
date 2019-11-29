@@ -11,6 +11,8 @@
 	tag = "landmark*[name]"
 	invisibility = 101
 
+	landmarks_list += src
+
 	switch(name)			//some of these are probably obsolete
 
 		if("start")
@@ -103,7 +105,7 @@
 			qdel(src)
 
 
-	landmarks_list += src
+
 	return 1
 
 /obj/effect/landmark/Dispose()
@@ -118,8 +120,9 @@
 
 /obj/effect/landmark/start/New()
 	..()
-	tag = "start*[name]"
-	invisibility = 101
+	if(!disposed)
+		tag = "start*[name]"
+		invisibility = 101
 
 	return 1
 

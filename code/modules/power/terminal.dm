@@ -21,6 +21,14 @@
 	if(level==1) hide(T.intact_tile)
 	return
 
+/obj/structure/machinery/power/terminal/Dispose()
+	if(master)
+		if(istype(master, /obj/structure/machinery/power/apc))
+			var/obj/structure/machinery/power/apc/A = master
+			A.terminal = null
+		master = null
+	. = ..()
+
 
 /obj/structure/machinery/power/terminal/hide(var/i)
 	if(i)

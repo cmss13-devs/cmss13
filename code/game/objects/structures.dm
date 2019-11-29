@@ -18,6 +18,7 @@
 		verbs += /obj/structure/proc/climb_on
 
 /obj/structure/Dispose()
+	//before ..() because the parent does loc = null
 	for(var/atom/movable/A in contents_recursive())
 		var/obj/O = A
 		if(!istype(O))

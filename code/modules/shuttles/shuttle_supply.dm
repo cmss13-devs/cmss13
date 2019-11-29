@@ -10,8 +10,8 @@
 	var/max_late_time = 300
 	var/railing_id = "supply_elevator_railing"
 	var/gear_id = "supply_elevator_gear"
-	var/obj/effect/elevator/supply/SW //elevator effects
-	var/obj/effect/elevator/supply/SE
+	var/obj/effect/elevator/supply/SW //elevator effects (four so the entire elevator doesn't vanish when
+	var/obj/effect/elevator/supply/SE //there's one opaque obstacle between you and the actual elevator loc).
 	var/obj/effect/elevator/supply/NW
 	var/obj/effect/elevator/supply/NE
 	var/SupplyElevator_x
@@ -82,11 +82,11 @@
 			sleep(70)
 			raise_elevator_effect()
 			sleep(21)
-			move(away_area, destination)
 			SW.loc = null
 			SE.loc = null
 			NW.loc = null
 			NE.loc = null
+			move(away_area, destination)
 
 		moving_status = SHUTTLE_IDLE
 		stop_gears()

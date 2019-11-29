@@ -23,7 +23,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 
 /datum/chatOutput/proc/start()
 	//Check for existing chat
-	if (!owner || !istype(owner) || owner.gcDestroyed) 
+	if (!owner || !istype(owner))
 		return FALSE
 
 	if(!winexists(owner, "browseroutput"))
@@ -90,26 +90,26 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 /datum/chatOutput/proc/doneLoading()
 	if (loaded)
 		return
-	
+
 	loaded = TRUE
 	oldChat = FALSE
 	enableChat()
 
 	for (var/msg in messageQueue)
 		to_chat_forced(owner, msg)
-	
+
 	messageQueue = null
 	sendClientData()
 
 /datum/chatOutput/proc/enableChat()
-	if (!owner || !istype(owner) || owner.gcDestroyed) 
+	if (!owner || !istype(owner))
 		return FALSE
 	winset(owner, "output", "is-visible=false")
 	winset(owner, "browseroutput", "is-disabled=false;is-visible=true")
 
 //Sends client connection details to the chat to handle and save
 /datum/chatOutput/proc/sendClientData()
-	if (!owner || !istype(owner) || owner.gcDestroyed) 
+	if (!owner || !istype(owner))
 		return FALSE
 	//Get dem deets
 	var/list/deets = list("clientData" = list())
@@ -121,7 +121,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 
 //Called by client, sent data to investigate (cookie history so far)
 /datum/chatOutput/proc/analyzeClientData(cookie = "")
-	if (!cookie) 
+	if (!cookie)
 		return
 
 	if (cookie != "none")
@@ -173,17 +173,17 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 		targets = target
 		if(!targets.len)
 			return
-	
+
 	var/key
 	var/icon/I = object
 	if(!isicon(I))
-		if(isfile(object)) 
+		if(isfile(object))
 			var/name = sanitize_filename("[generate_asset_name(object)].png")
 			register_asset(name, object)
 			for(var/mob in targets)
 				send_asset(mob, key, FALSE)
 			return "<img class='icon icon-misc' src=\"[url_encode(name)]\">"
-		
+
 	var/atom/A = object
 	if(!istype(A))
 		return ""
@@ -196,7 +196,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 	for(var/mob in targets)
 		send_asset(mob, key, FALSE)
 
-	return "<img class='icon icon-[A.icon_state]' src=\"[url_encode(key)]\">" 
+	return "<img class='icon icon-[A.icon_state]' src=\"[url_encode(key)]\">"
 
 /proc/to_chat_forced(var/target, var/message)
 	if (istype(message, /image) || istype(message, /sound) || istype(target, /savefile))
@@ -231,7 +231,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 				C = target:client
 			else if (istype(target, /datum/mind) && target:current)
 				C = target:current:client
-			
+
 			if(!C)
 				continue
 
@@ -272,7 +272,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 /proc/to_chat(var/target, var/message)
 	if (!target || !message)
 		return
-	
+
 	if(!SSchat?.initialized)
 		to_chat_forced(target, message)
 		return

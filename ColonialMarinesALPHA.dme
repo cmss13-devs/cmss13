@@ -118,7 +118,6 @@
 #include "code\ATMOSPHERICS\components\unary\vent_scrubber.dm"
 #include "code\controllers\_DynamicAreaLighting_TG.dm"
 #include "code\controllers\communications.dm"
-#include "code\controllers\garbage.dm"
 #include "code\controllers\hooks-defs.dm"
 #include "code\controllers\hooks.dm"
 #include "code\controllers\objectives_controller.dm"

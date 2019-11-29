@@ -21,7 +21,8 @@ var/global/list/image/splatter_cache=list()
 /obj/effect/decal/cleanable/blood/Dispose()
 	for(var/datum/disease/D in viruses)
 		D.cure(0)
-	. = ..()
+	..()
+	return GC_HINT_IWILLGC
 
 /obj/effect/decal/cleanable/blood/New(location, b_color)
 	..()

@@ -31,9 +31,9 @@ var/list/datum/powernet/powernets_by_name = list() //Holds all powernet datums i
 
 	while (currentrunmachines.len)
 		var/obj/structure/machinery/M = currentrunmachines[currentrunmachines.len]
-		currentrunmachines.len--		
+		currentrunmachines.len--
 
-		if (!M || M.gcDestroyed || M.disposed)
+		if (!M || M.disposed)
 			continue
 
 		if(!M.processable)

@@ -350,6 +350,8 @@ var/datum/subsystem/timer/SStimer
 	next = null
 	prev = null
 
+	return GC_HINT_IWILLGC
+
 /datum/timed_event/proc/getcallingtype()
 	. = "ERROR"
 	if (callBack.object == GLOBAL_PROC)
@@ -411,4 +413,4 @@ var/datum/subsystem/timer/SStimer
 
 
 #undef BUCKET_LEN
-#undef BUCKET_POS 
+#undef BUCKET_POS

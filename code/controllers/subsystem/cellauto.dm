@@ -25,7 +25,7 @@ var/list/cellauto_cells = list()
 		var/datum/automata_cell/C = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!C || C.gcDestroyed || C.disposed)
+		if (!C || C.disposed)
 			continue
 
 		C.update_state()

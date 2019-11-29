@@ -612,9 +612,7 @@
 
 /datum/ammo/bullet/rifle/mar40/New()
 	..()
-	accuracy = -config.low_hit_accuracy
-	damage = config.med_hit_damage
-	penetration= -config.mlow_armor_penetration
+	damage = config.high_hit_damage
 
 /*
 //================================================
@@ -1014,8 +1012,6 @@
 	accuracy_var_high = config.low_proj_variance
 	accurate_range = config.short_shell_range
 	damage = config.lhigh_hit_damage
-	penetration= config.hmed_armor_penetration
-	shrapnel_chance = config.med_shrapnel_chance
 
 /datum/ammo/bullet/m60
 	name = "M60 bullet"
@@ -1903,7 +1899,7 @@
 	icon_state = "shrapnel_glass"
 
 /datum/ammo/bullet/shrapnel/light/effect/ // no damage, but looks bright and neat
-	name = "bright shrapnel"
+	name = "sparks"
 
 /datum/ammo/bullet/shrapnel/light/effect/ver1
 	icon_state = "shrapnel_bright1"

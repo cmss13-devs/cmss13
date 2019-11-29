@@ -300,3 +300,51 @@
 	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon. This one is ancient and has suffered serious acid damage, making it near-useless."
 	force = 18
 	force_wielded = 28
+
+
+/obj/item/weapon/twohanded/lungemine
+	name = "lunge mine"
+	icon_state = "lungemine"
+	item_state = "lungemine"
+	desc = "A crude but intimidatingly bulky shaped explosive charge, fixed to the end of a pole. To use it, one must grasp it firmly in both hands, and thrust the prongs of the shaped charge into the target. That the resulting explosion occurs directly in front of the user's face was not an apparent concern of the designer. A true hero's weapon."
+	force = 15
+	force_wielded = 1
+	attack_verb = list("whacked")
+	hitsound = "swing_hit"
+
+	var/wielded_attack_verb = list("charged")
+	var/wielded_hitsound = null
+	var/unwielded_attack_verb = list("whacked")
+	var/unwielded_hitsound = "swing_hit"
+
+/obj/item/weapon/twohanded/lungemine/wield(mob/user)
+	. = ..()
+	if(!.) return
+	attack_verb = wielded_attack_verb
+	hitsound = wielded_hitsound
+
+/obj/item/weapon/twohanded/lungemine/unwield(mob/user)
+	. = ..()
+	if(!.) return
+	attack_verb = unwielded_attack_verb
+	hitsound = unwielded_hitsound
+
+/obj/item/weapon/twohanded/lungemine/afterattack(atom/target, mob/user, proximity_flag)
+	. = ..()
+	if(!(flags_item & WIELDED)) //must be wielded to detonate
+		return
+
+	if(!istype(target) || !proximity_flag)
+		return
+
+	if(!target.density && !istype(target, /mob))
+		return
+
+	playsound(user, 'sound/items/Wirecutter.ogg', 50, 1)
+
+	sleep(3)
+
+	var/turf/epicenter = get_turf(target)
+	target.ex_act(400, null, src, user, 100)
+	cell_explosion(epicenter, 150, 50, null, src, user)
+	qdel(src)

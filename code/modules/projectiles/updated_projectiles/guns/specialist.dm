@@ -200,7 +200,7 @@
 	..()
 	fire_delay = config.mhigh_fire_delay*2
 	burst_amount = config.low_burst_value
-	accuracy_mult = config.base_hit_accuracy_mult
+	accuracy_mult = config.base_hit_accuracy_mult * 3 //you HAVE to be able to hit
 	scatter = config.low_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.min_recoil_value
@@ -276,7 +276,7 @@
 	fire_sound = "gun_smartgun"
 	reload_sound = 'sound/weapons/handling/gun_sg_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_sg_unload.ogg'
-	current_mag = null
+	current_mag = /obj/item/ammo_magazine/smartgun
 	flags_equip_slot = NO_FLAGS
 	w_class = SIZE_HUGE
 	force = 20
@@ -334,7 +334,7 @@
 	..()
 	fire_delay = config.min_fire_delay
 	burst_amount = config.med_burst_value
-	burst_delay = config.low_burst_value
+	burst_delay = config.mlow_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.low_scatter_value
@@ -737,47 +737,28 @@
 			processing_objects.Remove(src)
 
 /obj/item/weapon/gun/smartgun/dirty
-	name = "\improper M56D 'dirty' smartgun"
+	name = "\improper M56D 'Dirty' smartgun"
 	desc = "The actual firearm in the 4-piece M56D Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action."
 	origin_tech = "combat=7;materials=5"
-	current_mag = null
+	current_mag = /obj/item/ammo_magazine/smartgun/dirty
 	ammo = /obj/item/ammo_magazine/smartgun/dirty
-	ammo_primary = /obj/item/ammo_magazine/smartgun/dirty//Toggled ammo type
+	ammo_primary = /datum/ammo/bullet/smartgun/dirty//Toggled ammo type
 	ammo_secondary = /datum/ammo/bullet/smartgun/dirty/armor_piercing///Toggled ammo type
 	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
-/obj/item/weapon/gun/smartgun/dirty/set_gun_config_values()
-	..()
-	fire_delay = config.low_fire_delay
-	burst_amount = config.med_burst_value
-	burst_delay = config.low_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult + config.min_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.low_scatter_value
-	damage_mult = config.base_hit_damage_mult
 
 //TERMINATOR SMARTGUN
 /obj/item/weapon/gun/smartgun/dirty/elite
-	name = "\improper M56D 'genius' smartgun"
-	desc = "The actual firearm in the 4-piece M56D Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action."
-	origin_tech = "combat=7;materials=5"
-	angle = 0
-	current_mag = null
-	ammo = /obj/item/ammo_magazine/smartgun/dirty
-	ammo_primary = /obj/item/ammo_magazine/smartgun/dirty//Toggled ammo type
-	ammo_secondary = /datum/ammo/bullet/smartgun/dirty/armor_piercing//Toggled ammo type
-	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	name = "\improper M56T 'Terminator' smartgun"
+	desc = "The actual firearm in the 4-piece M56T Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action."
 
 
 /obj/item/weapon/gun/smartgun/dirty/elite/set_gun_config_values()
 	..()
-	fire_delay = config.mlow_fire_delay
-	burst_amount = config.high_burst_value
+	burst_amount = config.mhigh_burst_value
 	burst_delay = config.min_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult + config.max_hit_accuracy_mult
-	scatter = config.lmed_scatter_value
-	burst_scatter_mult = config.mlow_scatter_value
-	damage_mult = config.base_hit_damage_mult
+	scatter = config.low_scatter_value
+	burst_scatter_mult = config.min_scatter_value
 
 
 //-------------------------------------------------------

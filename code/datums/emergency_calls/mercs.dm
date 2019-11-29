@@ -41,15 +41,15 @@
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
 		arm_equipment(mob, "Freelancer (Leader)", TRUE, TRUE)
-		to_chat(mob, SPAN_WARNING("<font size='3'>You are the Freelancer leader!</font>"))
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are the Freelancer leader!")))
 
 	else if(medics < max_medics)
 		arm_equipment(mob, "Freelancer (Medic)", TRUE, TRUE)
 		medics++
-		to_chat(mob, SPAN_WARNING("<font size='3'>You are a Freelancer medic!</font>"))
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Freelancer medic!")))
 	else
 		arm_equipment(mob, "Freelancer (Standard)", TRUE, TRUE)
-		to_chat(mob, SPAN_WARNING("<font size='3'> You are a Freelancer mercenary!</font>"))
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Freelancer mercenary!")))
 	print_backstory(mob)
 
 	sleep(10)

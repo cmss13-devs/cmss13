@@ -23,16 +23,21 @@
 
 /obj/item/clothing/shoes/marine/update_icon()
 	if(stored_item && !armor_stage)
-		icon_state = "marine-1"
+		icon_state = "[initial(icon_state)]-1"
 	else
 		if(!armor_stage)
 			icon_state = initial(icon_state)
-
 
 /obj/item/clothing/shoes/marine/knife/New()
 	..()
 	stored_item = new /obj/item/weapon/combat_knife(src)
 	update_icon()
+
+/obj/item/clothing/shoes/marine/upp_knife/New()
+	..()
+	stored_item = new /obj/item/weapon/combat_knife/upp(src)
+	update_icon()
+
 
 /obj/item/clothing/shoes/dress
 	name = "dress shoes"
@@ -72,12 +77,22 @@
 	flags_heat_protection = BODY_FLAG_FEET
 	flags_inventory = FPRINT|NOSLIPPING
 	siemens_coefficient = 0.6
+	items_allowed = list(/obj/item/weapon/combat_knife, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout)
+
+/obj/item/clothing/shoes/veteran/PMC/update_icon()
+	if(stored_item)
+		icon_state = "[initial(icon_state)]-1"
+	else
+		icon_state = initial(icon_state)
+
+/obj/item/clothing/shoes/veteran/PMC/knife/New()
+	..()
+	stored_item = new /obj/item/weapon/combat_knife(src)
+	update_icon()
 
 /obj/item/clothing/shoes/veteran/PMC/commando
 	name = "\improper PMC commando boots"
 	desc = "A pair of heavily armored, acid-resistant boots."
-	icon_state = "commando_boots"
-	item_state = "commando_boots"
 	permeability_coefficient = 0.01
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -89,3 +104,8 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	siemens_coefficient = 0.2
 	unacidable = TRUE
+
+/obj/item/clothing/shoes/veteran/PMC/commando/knife/New()
+	..()
+	stored_item = new /obj/item/weapon/combat_knife(src)
+	update_icon()

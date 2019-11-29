@@ -28,9 +28,9 @@
 	to_chat(M, "<B>In an effort to protect the vunerable MV-35 from the emproaching UA/USCM imperialists, the leadership of your battalion has opted this the best opportunity to strike at the Falling Falcons to catch them off guard. </B>")
 	to_chat(M, "")
 	to_chat(M, "")
-	to_chat(M, SPAN_WARNING("<font size='3'> Glory to Colonel Ganbaatar.</font>"))
-	to_chat(M, SPAN_WARNING("<font size='3'>Glory to the Smoldering Sons.</font>"))
-	to_chat(M, SPAN_WARNING("<font size='3'> Glory to the UPP.</font>"))
+	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to Colonel Ganbaatar.")))
+	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the Smoldering Sons.")))
+	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the UPP.")))
 	to_chat(M, "")
 	to_chat(M, "")
 	to_chat(M, SPAN_NOTICE(" Use say :3 <text> to speak in your native tongue."))
@@ -50,17 +50,16 @@
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
 		arm_equipment(mob, "UPP Commando (Leader)", TRUE, TRUE)
-		to_chat(mob, "<font size='3'>\red You are a commando officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>")
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a commando squad leader of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
 	else if(medics < max_medics)
-		to_chat(mob, "<font size='3'>\red You are a commando medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>")
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a commando medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
 		arm_equipment(mob, "UPP Commando (Medic)", TRUE, TRUE)
 		medics++
 	else
-		to_chat(mob, "<font size='3'>\red You are a commando of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>")
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a commando of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
 		arm_equipment(mob, "UPP Commando (Standard)", TRUE, TRUE)
 	print_backstory(mob)
 
 	sleep(10)
 	to_chat(mob, "<B>Objectives:</b> [objectives]")
-
 

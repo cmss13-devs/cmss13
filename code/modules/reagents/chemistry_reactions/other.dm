@@ -44,7 +44,7 @@
 				shards += round(R.volume)
 			if(R.id == "phoron" && R.volume >= 10)
 				shard_type = /datum/ammo/bullet/shrapnel/incendiary
-		
+
 		// some upper limits
 		if(shards > MAXEXSHARDS)
 			shards = MAXEXSHARDS
@@ -64,7 +64,7 @@
 		spawn(20)
 			sourceturf.chemexploded = FALSE
 		holder.exploded = TRUE // clears reagents after all reactions processed
-		
+
 	return
 
 /datum/chemical_reaction/emp_pulse
@@ -264,7 +264,7 @@
 			duration += R.durationmod * R.volume
 			radius += R.radiusmod * R.volume
 			holder.del_reagent(R.id)
-			
+
 
 	// only integers please
 	radius = round(radius)
@@ -284,7 +284,7 @@
 		duration = MINDURATION
 	if(duration >= MAXDURATION)
 		duration = MAXDURATION
-	
+
 	// color
 	if(supplemented > 0 && intensity > 30)
 		firecolor = "blue"

@@ -40,15 +40,15 @@
 	ticker.mode.traitors += mob.mind
 
 	if(!leader)       //First one spawned is always the leader.
-		to_chat(mob, "<font size='4'>\red You are a leader of the local resistance group, the Colonial Liberation Front.")
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a leader of the local resistance group, the Colonial Liberation Front!")))
 		arm_equipment(mob, "CLF Fighter (Leader)", TRUE, TRUE)
 		leader = mob
 	else if(medics < max_medics)
-		to_chat(mob, "<font size='4'>\red You are a medic of the local resistance group, the Colonial Liberation Front.")
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a medic of the local resistance group, the Colonial Liberation Front!")))
 		arm_equipment(mob, "CLF Fighter (Medic)", TRUE, TRUE)
 		medics++
 	else
-		to_chat(mob, "<font size='4'>\red You are a member of the local resistance group, the Colonial Liberation Front.")
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a member of the local resistance group, the Colonial Liberation Front!")))
 		arm_equipment(mob, "CLF Fighter (Standard)", TRUE, TRUE)
 	print_backstory(mob)
 

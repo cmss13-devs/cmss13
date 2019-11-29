@@ -34,9 +34,9 @@
 	to_chat(M, "<B>In an effort to protect the vunerable MV-35 from the emproaching UA/USCM imperialists, the leadership of your battalion has opted this the best opportunity to strike at the Falling Falcons to catch them off guard. </B>")
 	to_chat(M, "")
 	to_chat(M, "")
-	to_chat(M, SPAN_WARNING("<font size='3'>Glory to Colonel Ganbaatar.</font>"))
-	to_chat(M, SPAN_WARNING("<font size='3'>Glory to the Smoldering Sons.</font>"))
-	to_chat(M, SPAN_WARNING("<font size='3'>Glory to the UPP.</font>"))
+	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to Colonel Ganbaatar.")))
+	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the Smoldering Sons.")))
+	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the UPP.")))
 	to_chat(M, "")
 	to_chat(M, "")
 	to_chat(M, SPAN_NOTICE(" Use say :3 <text> to speak in your native tongue."))
@@ -60,17 +60,17 @@
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
 		arm_equipment(mob, "UPP Soldier (Leader)", TRUE, TRUE)
-		to_chat(mob, "<font size='3'>\red You are an officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>")
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are an officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
 	else if(medics < max_medics)
-		to_chat(mob, "<font size='3'>\red You are a medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>")
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
 		arm_equipment(mob, "UPP Soldier (Medic)", TRUE, TRUE)
 		medics++
 	else if(heavies < max_heavies)
-		to_chat(mob, "<font size='3'>\red You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>")
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
 		arm_equipment(mob, "UPP Soldier (Heavy)", TRUE, TRUE)
 		heavies++
 	else
-		to_chat(mob, "<font size='3'>\red You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>")
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
 		arm_equipment(mob, "UPP Soldier (Standard)", TRUE, TRUE)
 
 	print_backstory(mob)
@@ -87,5 +87,4 @@
 	probability = 0
 	max_medics = 2
 	max_heavies = 2
-
 

@@ -173,6 +173,8 @@
 		select_gamemode_skin(type)
 
 /obj/item/storage/belt/medical/combatLifesaver/upp
+	name = "\improper Type 41 pattern lifesaver bag"
+	desc = "The Type 41 load rig is the standard load-bearing equipment of the UPP military. This configuration mounts a duffel bag filled with a range of injectors and light medical supplies and is common among medics."
 	icon_state = "medicbag_u"
 	item_state = "medicbag_u"
 	has_gamemode_skin = FALSE
@@ -307,7 +309,7 @@
 
 /obj/item/storage/belt/marine/upp
 	name = "\improper Type 41 pattern load rig"
-	desc = "The Type 41 load rig is the standard-issue LBE of the UPP military. The primary function of this belt is to provide easy access to mags for the Type 71 during operations. Despite being designed for the Type 71 weapon system, the pouches are modular enough to fit other types of ammo and equipment."
+	desc = "The Type 41 load rig is the standard-issue load-bearing equipment of the UPP military. The primary function of this belt is to provide easy access to mags for the Type 71 during operations. Despite being designed for the Type 71 weapon system, the pouches are modular enough to fit other types of ammo and equipment."
 	icon_state = "upp_belt"
 	item_state = "upp_belt"
 	has_gamemode_skin = FALSE
@@ -767,6 +769,27 @@
 
 /obj/item/storage/belt/gun/flaregun/full/New()
 	..()
+	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new /obj/item/device/flashlight/flare(src)
+	new_gun.on_enter_storage(src)
+
+/obj/item/storage/belt/gun/flaregun/full_nogun/New()
+	..()
 	new /obj/item/device/flashlight/flare(src)
 	new /obj/item/device/flashlight/flare(src)
 	new /obj/item/device/flashlight/flare(src)
@@ -841,9 +864,11 @@
 
 /obj/item/storage/belt/gun/smartgunner/pmc/full/New()
 	..()
-	new /obj/item/ammo_magazine/pistol/hp(src)
+	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
+	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/souto
 	name = "\improper Souto belt"

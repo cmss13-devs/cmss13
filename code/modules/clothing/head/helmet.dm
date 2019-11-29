@@ -4,7 +4,7 @@
 	desc = "Standard Security gear. Protects the head from impacts."
 	icon_state = "helmet"
 	item_state = "helmet"
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
@@ -594,19 +594,20 @@
 	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
 
 /obj/item/clothing/head/helmet/marine/veteran/PMC/commando
-	name = "\improper PMC commando helmet"
-	desc = "A fully enclosed, armored helmet made for Weyland Yutani elite commandos."
+	name = "\improper M5X helmet"
+	desc = "A fully enclosed, armored helmet made to complete the M5X exoskeleton armor."
 	icon_state = "commando_helmet"
 	item_state = "commando_helmet"
+	unacidable = 1
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
-	armor_melee = CLOTHING_ARMOR_HIGH
-	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_melee = CLOTHING_ARMOR_VERYHIGH
+	armor_bullet = CLOTHING_ARMOR_ULTRAHIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bomb = CLOTHING_ARMOR_HIGH
-	armor_bio = CLOTHING_ARMOR_MEDIUM
-	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_ULTRAHIGH
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_HIGH
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ|BLOCKGASEFFECT
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
 	flags_marine_helmet = HELMET_DAMAGE_OVERLAY

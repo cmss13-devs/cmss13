@@ -349,20 +349,24 @@
 	unacidable = TRUE
 	indestructible = 1
 	current_mag = null
-	var/obj/item/marine/fuelpack/fuelpack
+	var/obj/item/storage/large_holster/fuelpack/fuelpack
+
+/obj/item/weapon/gun/flamer/M240T/Dispose()
+	if(fuelpack)
+		if(fuelpack.linked_flamer == src)
+			fuelpack.linked_flamer = null
+		fuelpack = null
+	. = ..()
 
 /obj/item/weapon/gun/flamer/M240T/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
-	if(!fuelpack)
-		if(!link_fuelpack(user))
-			to_chat(user, "You must equip the specialized Broiler-T back harness to use this incinerator unit!")
-			click_empty(user)
-			unlink_fuelpack()
-			return
-	if(fuelpack)
-		// Check we're actually firing the right fuel tank
-		if(current_mag != fuelpack.active_fuel)
-			current_mag = fuelpack.active_fuel
-		..()
+	if(!link_fuelpack(user))
+		to_chat(user, "You must equip the specialized Broiler-T back harness to use this incinerator unit!")
+		click_empty(user)
+		return
+	// Check we're actually firing the right fuel tank
+	if(current_mag != fuelpack.active_fuel)
+		current_mag = fuelpack.active_fuel
+	..()
 
 
 /obj/item/weapon/gun/flamer/M240T/reload(mob/user, obj/item/ammo_magazine/magazine)
@@ -386,19 +390,20 @@
 		var/mob/living/carbon/human/H = user
 		if(!istype(H))
 			return FALSE
-		if(!istype(H.back, /obj/item/marine/fuelpack))
+		if(!istype(H.back, /obj/item/storage/large_holster/fuelpack))
 			click_empty(H)
 			return FALSE
 
 /obj/item/weapon/gun/flamer/M240T/proc/link_fuelpack(var/mob/user)
-	if(user.back)
-		if(istype(user.back, /obj/item/marine/fuelpack))
-			fuelpack = user.back
-			return TRUE
+	if(istype(user.back, /obj/item/storage/large_holster/fuelpack))
+		var/obj/item/storage/large_holster/fuelpack/FP = user.back
+		if(FP.linked_flamer)
+			FP.linked_flamer.fuelpack = null
+		FP.linked_flamer = src
+		fuelpack = FP
+		return TRUE
 	return FALSE
 
-/obj/item/weapon/gun/flamer/M240T/proc/unlink_fuelpack()
-	fuelpack = null
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //Time to redo part of abby's code.

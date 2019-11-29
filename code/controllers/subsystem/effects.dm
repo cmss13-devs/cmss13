@@ -28,7 +28,7 @@ var/list/active_effects = list()
 		var/datum/effects/E = currentrun[currentrun.len]
 		currentrun.len--
 
-		if(!E || E.gcDestroyed || E.disposed)
+		if(!E || E.disposed)
 			continue
 
 		E.process()

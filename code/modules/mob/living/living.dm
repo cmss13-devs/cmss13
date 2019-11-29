@@ -24,6 +24,12 @@
 	if(attack_icon)
 		qdel(attack_icon)
 		attack_icon = null
+	if(event_zoomout)
+		qdel(event_zoomout)
+		event_zoomout = null
+	if(event_movement)
+		qdel(event_movement)
+		event_movement = null
 	. = ..()
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually

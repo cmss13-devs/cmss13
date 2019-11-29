@@ -197,14 +197,19 @@
 	var/charge_speed_buildup_multiplier = 1.0
 	var/charge_turfs_to_charge_delta = 0
 	var/gas_life_multiplier = 1.0
-	var/datum/action_to_remove = null //The ability that we want to remove from a xeno.
 	//Strains Below
 	//Boiler
 	var/bombard_cooldown = 30
 	var/min_bombard_dist = 5
 	var/datum/new_ammo_type = /datum/ammo/xeno/boiler_gas
 	remaining_points = 6
-	
+
+
+/datum/mutator_set/individual_mutators/Dispose()
+	if(xeno)
+		xeno.mutators = null
+		xeno = null
+	. = ..()
 
 /datum/mutator_set/individual_mutators/list_and_purchase_mutators()
 	. = ..()

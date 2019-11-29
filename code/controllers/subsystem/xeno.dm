@@ -27,7 +27,7 @@ var/datum/subsystem/xeno/SSxeno
 		var/mob/living/carbon/Xenomorph/M = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!M || M.disposed || M.gcDestroyed)
+		if (!M || M.disposed)
 			continue
 
 		M.Life()

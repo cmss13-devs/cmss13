@@ -28,7 +28,7 @@ var/list/alldepartments = list()
 	..()
 	spawn(2)
 		power_change()
-		
+
 	update_icon()
 	start_processing()
 
@@ -73,6 +73,10 @@ var/list/alldepartments = list()
 		alldepartments += "Weyland Yutani"
 	if(!("USCM High Command" in alldepartments))
 		alldepartments += "USCM High Command"
+
+/obj/structure/machinery/faxmachine/Dispose()
+	allfaxes -= src
+	. = ..()
 
 /obj/structure/machinery/faxmachine/process()
 	return 0

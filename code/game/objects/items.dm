@@ -58,7 +58,6 @@
 	var/slowdown = 0 // How much clothing is slowing you down. Negative values speeds you up
 
 	var/list/allowed = null //suit storage stuff.
-	var/obj/item/device/uplink/hidden/hidden_uplink = null // All items can have an uplink hidden inside, just remember to add the triggers.
 	var/zoomdevicename = null //name used for message when binoculars/scope is used
 	var/zoom = 0 //1 if item is actively being used to zoom. For scoped guns and binoculars.
 
@@ -119,6 +118,12 @@
 	for(var/X in actions)
 		actions -= X
 		qdel(X)
+	if(event_unwield)
+		qdel(event_unwield)
+		event_unwield = null
+	if(event_dropped)
+		qdel(event_dropped)
+		event_dropped = null
 	master = null
 	item_list -= src
 	. = ..()
@@ -615,14 +620,19 @@ cases. Override_icon_state should be a list.*/
 	var/mob/living/calee
 	single_fire = 1
 
-	New(obj/item/_zooming_item, mob/living/_calee)
-		zooming_item = _zooming_item
-		calee = _calee
+/datum/event_handler/event_gun_zoom/New(obj/item/_zooming_item, mob/living/_calee)
+	zooming_item = _zooming_item
+	calee = _calee
 
-	handle(sender, datum/event_args/event_args)
-		if(calee && calee.client) //Dropped when disconnected, whoops
-			if(zooming_item && zooming_item.zoom && calee) //sanity check
-				zooming_item.zoom(calee)
+/datum/event_handler/event_gun_zoom/Dispose()
+	zooming_item = null
+	calee = null
+	. = ..()
+
+/datum/event_handler/event_gun_zoom/handle(sender, datum/event_args/event_args)
+	if(calee && calee.client) //Dropped when disconnected, whoops
+		if(zooming_item && zooming_item.zoom && calee) //sanity check
+			zooming_item.zoom(calee)
 
 /*
 For zooming with scope or binoculars. This is called from

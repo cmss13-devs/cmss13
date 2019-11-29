@@ -18,7 +18,6 @@
 
 	var/acid_damage = 0 //Counter for stomach acid damage. At ~60 ticks, dissolved
 
-	var/hard_deleted = 0
 
 
 

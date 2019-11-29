@@ -27,7 +27,7 @@ var/datum/subsystem/mob/SSmob
 		var/mob/living/M = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!M || M.disposed || M.gcDestroyed)
+		if (!M || M.disposed)
 			continue
 
 		M.Life()

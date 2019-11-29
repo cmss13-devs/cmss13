@@ -49,7 +49,7 @@ var/list/power_machines = list()
 	while (currentrun_power_machines.len)
 		var/datum/X = currentrun_power_machines[currentrun_power_machines.len]
 		currentrun_power_machines.len--
-		if (!X || X.gcDestroyed || X.disposed)
+		if (!X || X.disposed)
 			continue
 
 		if (istype(X, /obj/structure/machinery))

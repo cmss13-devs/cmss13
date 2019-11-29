@@ -3,10 +3,8 @@
 	icon = 'icons/effects/warning_stripes.dmi'
 	layer = TURF_LAYER
 	mouse_opacity = 0
-/obj/effect/decal/warning_stripes/New()
-	. = ..()
-
-	loc.overlays += src
+/obj/effect/decal/warning_stripes/initialize()
+	loc.overlays += image(icon, icon_state=icon_state, dir=dir)
 	qdel(src)
 
 /obj/effect/decal/warning_stripes/asteroid
@@ -17,12 +15,9 @@
 	mouse_opacity = 0
 	unacidable = TRUE
 	icon = 'icons/turf/overlays.dmi'
-	//layer = TURF_LAYER+0.5 //So it appears over other decals
 	layer = TURF_LAYER
 
-/obj/effect/decal/sand_overlay/New()
-	. = ..()
-
+/obj/effect/decal/sand_overlay/initialize()
 	loc.overlays += image(icon, icon_state=icon_state, dir=dir)
 	qdel(src)
 

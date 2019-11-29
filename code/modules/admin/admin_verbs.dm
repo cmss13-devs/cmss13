@@ -178,6 +178,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/spawn_wave,
 	/client/proc/run_all_tests,
 	/client/proc/run_test_set,
+	/client/proc/gc_dump_hdl,
 	/client/proc/run_individual_test
 	)
 

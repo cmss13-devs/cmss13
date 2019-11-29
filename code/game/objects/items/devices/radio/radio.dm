@@ -11,7 +11,6 @@
 	var/frequency = PUB_FREQ //common chat
 	var/traitor_frequency = 0 //tune to frequency to unlock traitor supplies
 	var/canhear_range = 3 // the range which mobs can hear this radio from
-	var/obj/item/device/radio/patch_link = null
 	var/wires = WIRE_SIGNAL|WIRE_RECEIVE|WIRE_TRANSMIT
 	var/b_stat = 0
 	var/broadcasting = 0
@@ -50,6 +49,24 @@
 	..()
 	if(radio_controller)
 		initialize()
+
+/obj/item/device/radio/Dispose()
+	if(radio_connection)
+		radio_connection.remove_listener(src)
+		radio_connection = null
+	if(secure_radio_connections)
+		for(var/ch_name in secure_radio_connections)
+			var/datum/radio_frequency/RF = secure_radio_connections[ch_name]
+			RF.remove_listener(src)
+			secure_radio_connections -= RF
+
+	. = ..()
+
+
+/obj/item/device/radio/proc/remove_all_freq()
+	for(var/X in radio_controller.frequencies)
+		var/datum/radio_frequency/F = radio_controller.frequencies[X]
+		F.remove_listener(src)
 
 
 /obj/item/device/radio/initialize()

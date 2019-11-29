@@ -232,7 +232,6 @@
 	item_state = "souto_classic"
 	center_of_mass = "x=16;y=10"
 	embeddable = 1
-	disposed = 0
 
 /obj/item/reagent_container/food/drinks/cans/souto/New()
 		..()

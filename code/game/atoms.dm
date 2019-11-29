@@ -1,6 +1,4 @@
-var/global/list/del_profiling = list()
-var/global/list/gdel_profiling = list()
-var/global/list/ghdel_profiling = list()
+
 /atom
 	layer = TURF_LAYER
 	var/level = 2

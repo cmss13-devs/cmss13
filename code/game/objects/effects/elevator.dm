@@ -7,5 +7,8 @@
 	mouse_opacity = 0
 	layer = ABOVE_TURF_LAYER
 
-	ex_act(severity)
-		return
+/obj/effect/elevator/supply/ex_act(severity)
+	return
+
+/obj/effect/elevator/supply/Dispose()
+	return GC_HINT_IGNORE

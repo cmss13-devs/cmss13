@@ -493,8 +493,10 @@
 	return
 
 /mob/living/carbon/Xenomorph/Dispose()
-	if(mind) mind.name = name //Grabs the name when the xeno is getting deleted, to reference through hive status later.
-	if(is_zoomed) zoom_out()
+	if(mind)
+		mind.name = name //Grabs the name when the xeno is getting deleted, to reference through hive status later.
+	if(is_zoomed)
+		zoom_out()
 
 	living_xeno_list -= src
 	xeno_mob_list -= src
@@ -506,6 +508,10 @@
 
 	if(hive)
 		hive.remove_xeno(src, TRUE)
+
+	if(mutators)
+		qdel(mutators)
+		mutators = null
 
 	. = ..()
 
@@ -699,7 +705,7 @@
 		huggers_max = caste.huggers_max
 		eggs_max = caste.eggs_max
 	need_weeds = mutators.need_weeds
-	actions -= mutators.action_to_remove
+
 
 /mob/living/carbon/Xenomorph/proc/recalculate_acid()
 	if(caste)

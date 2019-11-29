@@ -15,14 +15,6 @@
 	..()
 
 /obj/item/storage/briefcase/attack(mob/living/M as mob, mob/living/user as mob)
-	//..()
-
-	if ((CLUMSY in user.mutations) && prob(50))
-		to_chat(user, SPAN_DANGER("The [src] slips out of your hand and hits your head."))
-		user.take_limb_damage(10)
-		user.KnockOut(2)
-		return
-
 	M.last_damage_source = initial(name)
 	M.last_damage_mob = user
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been attacked with [src.name] by [user.name] ([user.ckey])</font>")

@@ -181,12 +181,8 @@
 	return 1
 
 /obj/structure/foamedmetal/attack_hand(var/mob/user)
-	if ((HULK in user.mutations) || (prob(75 - metal*25)))
-		to_chat(user, SPAN_NOTICE(" You smash through the metal foam wall."))
-		for(var/mob/O in oviewers(user))
-			if ((O.client && !( O.blinded )))
-				to_chat(O, SPAN_DANGER("[user] smashes through the foamed metal."))
-
+	if (prob(75 - metal*25))
+		user.visible_message(SPAN_DANGER("[user] smashes through the foamed metal."), SPAN_NOTICE("You smash through the metal foam wall."))
 		qdel(src)
 	else
 		to_chat(user, SPAN_NOTICE(" You hit the metal foam but bounce off it."))

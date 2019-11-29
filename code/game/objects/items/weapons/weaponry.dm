@@ -208,9 +208,6 @@
 	add_fingerprint(user)
 
 	var/power = force
-	if(HULK in user.mutations)
-		power *= 2
-
 	if(user.mind && user.mind.cm_skills)
 		power = round(power * (1 + 0.3*user.mind.cm_skills.get_skill_level(SKILL_MELEE_WEAPONS))) //30% bonus per melee level
 
@@ -269,7 +266,6 @@
 				if("brute")
 					M.apply_damage(power,BRUTE,def_zone)
 				if("fire")
-					if (!(COLD_RESISTANCE in M.mutations))
-						M.apply_damage(power,BURN,def_zone)
+					M.apply_damage(power,BURN,def_zone)
 
 	return 1

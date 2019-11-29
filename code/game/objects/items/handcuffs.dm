@@ -24,10 +24,6 @@
 	if (!istype(user, /mob/living/carbon/human))
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
-	if ((CLUMSY in usr.mutations) && prob(50))
-		to_chat(user, SPAN_DANGER("Uh ... how do those things work?!"))
-		place_handcuffs(user, user)
-		return
 	if(!C.handcuffed)
 		place_handcuffs(C, user)
 

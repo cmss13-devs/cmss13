@@ -261,23 +261,6 @@
 				take_damage(rand(25, 75))
 				return
 
-/turf/closed/wall/attack_hand(mob/user as mob)
-	if(HULK in user.mutations)
-		if((prob(40)) && !hull)
-			user.visible_message(SPAN_DANGER("[user] smashes through [src]."),
-			SPAN_DANGER("You smash through [src]."))
-			usr.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!"))
-			dismantle_wall(1)
-			return
-		else
-			user.visible_message(SPAN_WARNING("[user] punches [src]."),
-			SPAN_WARNING("You punch [src]."))
-			take_damage(rand(25, 75))
-			return
-
-	add_fingerprint(user)
-
-
 
 /turf/closed/wall/attackby(obj/item/W, mob/user)
 

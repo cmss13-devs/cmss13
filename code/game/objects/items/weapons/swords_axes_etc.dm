@@ -26,29 +26,13 @@
 	force = 10
 
 /obj/item/weapon/classic_baton/attack(mob/M as mob, mob/living/user as mob)
-	if ((CLUMSY in user.mutations) && prob(50))
-		to_chat(user, SPAN_DANGER("You club yourself over the head."))
-		user.KnockDown(3 * force)
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			H.apply_damage(2*force, BRUTE, "head")
-		else
-			user.take_limb_damage(2*force)
+	if(!..()) 
 		return
-/*this is already called in ..()
-	src.add_fingerprint(user)
-	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been attacked with [src.name] by [user.name] ([user.ckey])</font>")
-	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to attack [M.name] ([M.ckey])</font>")
 
-	log_attack("<font color='red'>[user.name] ([user.ckey]) attacked [M.name] ([M.ckey]) with [src.name] (INTENT: [uppertext(user.a_intent)])</font>")
-*/
-
-	if(!..()) return
-	//playsound(src.loc, "swing_hit", 25, 1, -1)
-	if (M.stuttering < 8 && (!(HULK in M.mutations))  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+	if(M.stuttering < 8)
 		M.stuttering = 8
-	for(var/mob/O in viewers(M))
-		if (O.client)	O.show_message(SPAN_DANGER("<B>[M] has been beaten with \the [src] by [user]!</B>"), 1, SPAN_DANGER("You hear someone fall"), 2)
+
+	user.visible_message(SPAN_DANGER("<B>[M] has been beaten with \the [src] by [user]!</B>"), SPAN_DANGER("You hear someone fall"))
 
 //Telescopic baton
 /obj/item/weapon/telebaton
@@ -97,24 +81,6 @@
 		add_blood(blood_color)
 	return
 
-/obj/item/weapon/telebaton/attack(mob/target as mob, mob/living/user as mob)
-	if(on)
-		if ((CLUMSY in user.mutations) && prob(50))
-			to_chat(user, SPAN_DANGER("You club yourself over the head."))
-			user.KnockDown(3 * force)
-			if(ishuman(user))
-				var/mob/living/carbon/human/H = user
-				H.apply_damage(2*force, BRUTE, "head")
-			else
-				user.take_limb_damage(2*force)
-			return
-		if(..())
-			//playsound(src.loc, "swing_hit", 25, 1, 6)
-			return
-	else
-		return ..()
-
-
 
 /*
  * Energy Shield
@@ -126,9 +92,6 @@
 		return 0
 
 /obj/item/weapon/shield/energy/attack_self(mob/living/user as mob)
-	if ((CLUMSY in user.mutations) && prob(50))
-		to_chat(user, SPAN_DANGER("You beat yourself in the head with [src]."))
-		user.take_limb_damage(5)
 	active = !active
 	if (active)
 		force = 10

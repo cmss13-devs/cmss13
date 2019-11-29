@@ -63,13 +63,7 @@
 	healthcheck()
 
 /obj/structure/fence/attack_hand(mob/user as mob)
-	if(HULK in user.mutations)
-		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!"))
-		user.visible_message(SPAN_DANGER("[user] smashes through [src]!"))
-		health -= 100
-		healthcheck(1, 1, user)
-
-	else if(ishuman(user) && user.a_intent == "hurt")
+	if(ishuman(user) && user.a_intent == "hurt")
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
 			attack_generic(H, 25)

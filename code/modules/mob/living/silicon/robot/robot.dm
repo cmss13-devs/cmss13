@@ -972,7 +972,7 @@ var/list/robot_verbs_default = list(
 
 
 /mob/living/silicon/robot/update_sight()
-	if (stat == DEAD || XRAY in mutations || sight_mode & BORGXRAY)
+	if (stat == DEAD || sight_mode & BORGXRAY)
 		sight |= SEE_TURFS
 		sight |= SEE_MOBS
 		sight |= SEE_OBJS

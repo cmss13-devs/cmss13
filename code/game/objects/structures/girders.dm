@@ -254,14 +254,6 @@
 	buildctr = 0
 	repair_state = 0
 
-
-/obj/structure/girder/attack_hand(mob/user as mob)
-	if (HULK in user.mutations)
-		visible_message(SPAN_DANGER("[user] smashes [src] apart!"))
-		dismantle()
-		return
-	return ..()
-
 /obj/structure/girder/attack_animal(mob/living/simple_animal/user)
 	if(user.wall_smash)
 		visible_message(SPAN_DANGER("[user] smashes [src] apart!"))

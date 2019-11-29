@@ -139,7 +139,6 @@
 		processable_human_list += H
 		H.undefibbable = FALSE
 		H.chestburst = 0
-		H.mutations.Remove(HUSK)
 
 	// fix all of our organs
 	restore_all_organs()

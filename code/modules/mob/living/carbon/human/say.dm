@@ -220,10 +220,6 @@
 				verb = pick("whinnies","neighs", "says")
 				handled = 1
 
-	if((HULK in mutations) && health >= 25 && length(message))
-		message = "[uppertext(message)]!!!"
-		verb = pick("yells","roars","hollers")
-		handled = 1
 	if(slurring)
 		message = slur(message)
 		verb = pick("stammers","stutters")

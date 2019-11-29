@@ -98,7 +98,6 @@
 			var/armor = getarmor(affecting, ARMOR_MELEE)
 			var/armor_block = run_armor_check(affecting, ARMOR_MELEE)
 
-			if(HULK in M.mutations) damage += 5
 			playsound(loc, attack.attack_sound, 25, 1)
 
 			visible_message(SPAN_DANGER("[M] [pick(attack.attack_verb)]ed [src]!"), null, null, 5)
@@ -240,8 +239,6 @@
 					status += " <b>(SPLINTED)</b>"
 
 				to_chat(src, "\t My [org.display_name] is [status=="OK"?SPAN_NOTICE(status):SPAN_WARNING(status)]")
-			if((SKELETON in mutations) && !w_uniform && !wear_suit)
-				play_xylophone()
 		else
 			var/t_him = "it"
 			if (gender == MALE)

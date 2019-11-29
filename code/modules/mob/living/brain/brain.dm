@@ -52,7 +52,7 @@
 
 
 /mob/living/brain/update_sight()
-	if (stat == DEAD || (XRAY in src.mutations))
+	if (stat == DEAD)
 		sight |= SEE_TURFS
 		sight |= SEE_MOBS
 		sight |= SEE_OBJS

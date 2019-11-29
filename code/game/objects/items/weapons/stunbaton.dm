@@ -133,11 +133,6 @@
 	if(has_user_lock && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
-	if(status && (CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "span class='danger'>You accidentally hit yourself with the [src]!</span>")
-		user.KnockDown(30)
-		deductcharge(hitcost)
-		return
 
 	if(isrobot(M))
 		..()

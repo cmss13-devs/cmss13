@@ -333,11 +333,6 @@ its easier to just keep the beam vertical.
 
 		fingerprintslast = M.key
 
-		//He has no prints!
-		if (mFingerprints in H.mutations)
-			fingerprintshidden += "(Has no fingerprints) Real name: [M.real_name], Key: [M.key]"
-			return
-
 		//Now, deal with gloves.
 		if (H.gloves && H.gloves != src)
 			fingerprintshidden += "\[[time_stamp()]\](Wearing gloves). Real name: [H.real_name], Key: [H.key]"

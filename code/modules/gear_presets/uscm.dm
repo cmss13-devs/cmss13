@@ -187,6 +187,9 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/document(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_HAND)
 
+/datum/equipment_preset/uscm/intel/load_status()
+	return //No cryo munchies
+
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/spec

@@ -220,7 +220,6 @@ cases. Override_icon_state should be a list.*/
 		if(5.0)
 			size = "huge"
 		else
-	//if ((CLUMSY in usr.mutations) && prob(50)) t = "funny-looking"
 	to_chat(user, "This is a [blood_color ? blood_color != "#030303" ? "bloody " : "oil-stained " : ""][htmlicon(src, user)][src.name]. It is a [size] item.")
 	if(desc)
 		to_chat(user, desc)

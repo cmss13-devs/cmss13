@@ -20,14 +20,6 @@
 		icon_state = "stunbaton"
 
 /obj/item/weapon/stunprod/attack_self(mob/user as mob)
-	if(status && (CLUMSY in user.mutations) && prob(50))
-		to_chat(user, SPAN_DANGER("You grab the [src] on the wrong side."))
-		user.KnockDown(30)
-		charges--
-		if(charges < 1)
-			status = 0
-			update_icon()
-		return
 	if(charges > 0)
 		status = !status
 		to_chat(user, SPAN_NOTICE("\The [src] is now [status ? "on" : "off"]."))
@@ -39,15 +31,6 @@
 	add_fingerprint(user)
 
 /obj/item/weapon/stunprod/attack(mob/M, mob/user)
-	if(status && (CLUMSY in user.mutations) && prob(50))
-		to_chat(user, SPAN_DANGER("You accidentally hit yourself with the [src]!"))
-		user.KnockDown(30)
-		charges--
-		if(charges < 1)
-			status = 0
-			update_icon()
-		return
-
 	if(isrobot(M))
 		..()
 		return

@@ -38,10 +38,6 @@
 		activate(user)
 		if(user)
 			source_mob = user
-		if((CLUMSY in user.mutations) && prob(50))
-			to_chat(user, SPAN_WARNING("Huh? How does this thing work?"))
-			spawn(5) prime()
-
 		else
 			user.visible_message(SPAN_WARNING("[user] primes \a [name]!"), \
 			SPAN_WARNING("You prime \a [name]!"))

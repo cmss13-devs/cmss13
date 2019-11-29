@@ -60,7 +60,6 @@ There are several things that need to be remembered:
 
 
 >	There are also these special cases:
-		update_mutations()	//handles updating your appearance for certain mutations.  e.g TK head-glows
 		UpdateDamageIcon()	//handles damage overlays for brute/burn damage //(will rename this when I geta round to it)
 		update_body()	//Handles updating your mob's icon to reflect their gender/race/complexion etc
 		update_hair()	//Handles updating your hair overlay (used to be update_face, but mouth and
@@ -74,37 +73,36 @@ There are several things that need to be remembered:
 
 //Human Overlays Indexes/////////
 #define MUTANTRACE_LAYER		1
-#define MUTATIONS_LAYER			2
-#define DAMAGE_LAYER			3
-#define UNIFORM_LAYER			4
-#define TAIL_LAYER				5	//bs12 specific. this hack is probably gonna come back to haunt me
-#define ID_LAYER				6
-#define SHOES_LAYER				7
-#define GLOVES_LAYER			8
-#define MEDICAL_LAYER			9	//For splint and gauze overlays
-#define SUIT_LAYER				10
-#define SUIT_GARB_LAYER			11
-#define SUIT_SQUAD_LAYER		12
-#define GLASSES_LAYER			13
-#define BELT_LAYER				14
-#define SUIT_STORE_LAYER		15
-#define BACK_LAYER				16
-#define HAIR_LAYER				17
-#define EARS_LAYER				18
-#define FACEMASK_LAYER			19
-#define HEAD_LAYER				20
-#define HEAD_GARB_LAYER			21
-#define HEAD_SQUAD_LAYER		22
-#define COLLAR_LAYER			23
-#define HANDCUFF_LAYER			24
-#define LEGCUFF_LAYER			25
-#define L_HAND_LAYER			26
-#define R_HAND_LAYER			27
-#define BURST_LAYER				28	//Chestburst overlay
-#define TARGETED_LAYER			29	//for target sprites when held at gun point, and holo cards.
-#define FIRE_LAYER				30	//If you're on fire		//BS12: Layer for the target overlay from weapon targeting system
-#define EFFECTS_LAYER			31  //If you're hit by an acid DoT
-#define TOTAL_LAYERS			31
+#define DAMAGE_LAYER			2
+#define UNIFORM_LAYER			3
+#define TAIL_LAYER				4	//bs12 specific. this hack is probably gonna come back to haunt me
+#define ID_LAYER				5
+#define SHOES_LAYER				6
+#define GLOVES_LAYER			7
+#define MEDICAL_LAYER			8	//For splint and gauze overlays
+#define SUIT_LAYER				9
+#define SUIT_GARB_LAYER			10
+#define SUIT_SQUAD_LAYER		11
+#define GLASSES_LAYER			12
+#define BELT_LAYER				13
+#define SUIT_STORE_LAYER		14
+#define BACK_LAYER				15
+#define HAIR_LAYER				16
+#define EARS_LAYER				17
+#define FACEMASK_LAYER			18
+#define HEAD_LAYER				19
+#define HEAD_GARB_LAYER			20
+#define HEAD_SQUAD_LAYER		21
+#define COLLAR_LAYER			22
+#define HANDCUFF_LAYER			23
+#define LEGCUFF_LAYER			24
+#define L_HAND_LAYER			25
+#define R_HAND_LAYER			26
+#define BURST_LAYER				27	//Chestburst overlay
+#define TARGETED_LAYER			28	//for target sprites when held at gun point, and holo cards.
+#define FIRE_LAYER				29	//If you're on fire		//BS12: Layer for the target overlay from weapon targeting system
+#define EFFECTS_LAYER			30  //If you're hit by an acid DoT
+#define TOTAL_LAYERS			30
 //////////////////////////////////
 
 /mob/living/carbon/human
@@ -216,14 +214,6 @@ var/global/list/damage_icon_parts = list()
 
 //BASE MOB SPRITE
 /mob/living/carbon/human/proc/update_body(var/update_icons = 1, var/force_cache_update = 0)
-	var/husk_color_mod = rgb(96,88,80)
-	var/hulk_color_mod = rgb(48,224,40)
-
-	var/husk = (HUSK in src.mutations)
-	var/fat = (FAT in src.mutations)
-	var/hulk = (HULK in src.mutations)
-	var/skeleton = (SKELETON in src.mutations)
-
 	var/g = get_gender_name(gender)
 	var/has_head = 0
 
@@ -250,7 +240,7 @@ var/global/list/damage_icon_parts = list()
 		else
 			icon_key = "[icon_key]1"
 
-	icon_key = "[icon_key][husk ? 1 : 0][fat ? 1 : 0][hulk ? 1 : 0][skeleton ? 1 : 0][ethnicity]"
+	icon_key = "[icon_key]0000[ethnicity]"
 
 	var/icon/base_icon
 	if(!force_cache_update && human_icon_cache[icon_key])
@@ -264,8 +254,8 @@ var/global/list/damage_icon_parts = list()
 	//BEGIN CACHED ICON GENERATION.
 
 		// Why don't we just make skeletons/shadows/golems a species? ~Z
-		var/race_icon =   (skeleton ? 'icons/mob/humans/species/r_skeleton.dmi' : species.icobase)
-		var/deform_icon = (skeleton ? 'icons/mob/humans/species/r_skeleton.dmi' : species.icobase)
+		var/race_icon =   species.icobase
+		var/deform_icon = species.icobase
 
 		//Robotic limbs are handled in get_icon() so all we worry about are missing or dead limbs.
 		//No icon stored, so we need to start with a basic one.
@@ -316,22 +306,6 @@ var/global/list/damage_icon_parts = list()
 
 				base_icon.Blend(temp, ICON_OVERLAY)
 
-		if(!skeleton)
-			if(husk)
-				base_icon.ColorTone(husk_color_mod)
-			else if(hulk)
-				var/list/tone = ReadRGB(hulk_color_mod)
-				base_icon.MapColors(rgb(tone[1],0,0),rgb(0,tone[2],0),rgb(0,0,tone[3]))
-
-		//Handle husk overlay.
-		if(husk)
-			var/icon/mask = new(base_icon)
-			var/icon/husk_over = new(race_icon,"overlay_husk")
-			mask.MapColors(0,0,0,1, 0,0,0,1, 0,0,0,1, 0,0,0,1, 0,0,0,0)
-			husk_over.Blend(mask, ICON_ADD)
-			base_icon.Blend(husk_over, ICON_OVERLAY)
-
-
 		human_icon_cache[icon_key] = base_icon
 
 		//log_debug("Generated new cached mob icon ([icon_key] \icon[human_icon_cache[icon_key]]) for [src]. [human_icon_cache.len] cached mob icons.")
@@ -348,10 +322,9 @@ var/global/list/damage_icon_parts = list()
 
 	if(has_head)
 		//Eyes
-		if(!skeleton)
-			var/icon/eyes = new/icon('icons/mob/humans/onmob/human_face.dmi', species.eyes)
-			eyes.Blend(rgb(r_eyes, g_eyes, b_eyes), ICON_ADD)
-			stand_icon.Blend(eyes, ICON_OVERLAY)
+		var/icon/eyes = new/icon('icons/mob/humans/onmob/human_face.dmi', species.eyes)
+		eyes.Blend(rgb(r_eyes, g_eyes, b_eyes), ICON_ADD)
+		stand_icon.Blend(eyes, ICON_OVERLAY)
 
 		//Mouth	(lipstick!)
 		if(lip_style && (species && species.flags & HAS_LIPS))	//skeletons are allowed to wear lipstick no matter what you think, agouri.
@@ -362,17 +335,16 @@ var/global/list/damage_icon_parts = list()
 
 		//Underwear
 		if(underwear >0 && underwear < 3)
-			if(!fat && !skeleton)
-				var/icon/underwear_icon = new /icon('icons/mob/humans/human.dmi', "cryo[underwear]_[g]_s")
-				var/icon/BM = new /icon(icon = 'icons/mob/humans/body_mask.dmi', icon_state = "groin")
-				BM.Blend(new /icon('icons/mob/humans/body_mask.dmi', "torso"), ICON_OR)
-				for(var/datum/limb/leg/L in limbs)
-					var/uniform_icon = "[L.icon_name]"
-					if(L.status & LIMB_DESTROYED && !(L.status & LIMB_AMPUTATED))
-						uniform_icon += "_removed"
-					BM.Blend(new /icon('icons/mob/humans/body_mask.dmi', "[uniform_icon]"), ICON_OR)
-				underwear_icon.Blend(BM, ICON_MULTIPLY)
-				stand_icon.Blend(underwear_icon, ICON_OVERLAY)
+			var/icon/underwear_icon = new /icon('icons/mob/humans/human.dmi', "cryo[underwear]_[g]_s")
+			var/icon/BM = new /icon(icon = 'icons/mob/humans/body_mask.dmi', icon_state = "groin")
+			BM.Blend(new /icon('icons/mob/humans/body_mask.dmi', "torso"), ICON_OR)
+			for(var/datum/limb/leg/L in limbs)
+				var/uniform_icon = "[L.icon_name]"
+				if(L.status & LIMB_DESTROYED && !(L.status & LIMB_AMPUTATED))
+					uniform_icon += "_removed"
+				BM.Blend(new /icon('icons/mob/humans/body_mask.dmi', "[uniform_icon]"), ICON_OR)
+			underwear_icon.Blend(BM, ICON_MULTIPLY)
+			stand_icon.Blend(underwear_icon, ICON_OVERLAY)
 
 		if(job in ROLES_MARINES) //undoing override
 			if(undershirt>0 && undershirt < 5)
@@ -484,8 +456,8 @@ var/global/list/damage_icon_parts = list()
 /* --------------------------------------- */
 //For legacy support.
 /mob/living/carbon/human/regenerate_icons()
-	if(monkeyizing)		return
-	update_mutations(0)
+	if(monkeyizing)		
+		return
 	update_inv_w_uniform(0)
 	update_inv_wear_id(0)
 	update_inv_gloves(0)
@@ -840,7 +812,6 @@ var/global/list/damage_icon_parts = list()
 
 //Human Overlays Indexes/////////
 #undef MUTANTRACE_LAYER
-#undef MUTATIONS_LAYER
 #undef DAMAGE_LAYER
 #undef UNIFORM_LAYER
 #undef TAIL_LAYER

@@ -34,14 +34,6 @@
 	density = 0
 	qdel(src)
 
-/obj/structure/attack_hand(mob/user)
-	..()
-	if(breakable)
-		if(HULK in user.mutations)
-			user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
-			visible_message(SPAN_DANGER("[user] smashes the [src] apart!"))
-			destroy()
-
 /obj/structure/attack_animal(mob/living/user)
 	if(breakable)
 		if(user.wall_smash)

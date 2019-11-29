@@ -137,9 +137,8 @@
 
 	on_mob_life(mob/living/M)
 		. = ..()
-		if(!.) return
-		if(FAT in M.mutations)
-			M.gib()
+		if(!.) 
+			return
 
 /datum/reagent/toxin/carpotoxin
 	name = "Carpotoxin"

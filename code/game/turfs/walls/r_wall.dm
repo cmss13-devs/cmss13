@@ -10,19 +10,6 @@
 
 	walltype = WALL_REINFORCED
 
-/turf/closed/wall/r_wall/attack_hand(mob/user)
-	if (HULK in user.mutations)
-		if (prob(10))
-			to_chat(usr, text(SPAN_NOTICE("You smash through the wall.")))
-			usr.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
-			dismantle_wall(1)
-			return
-		else
-			to_chat(user, SPAN_NOTICE(" You punch the wall."))
-			return
-
-	add_fingerprint(user)
-
 /turf/closed/wall/r_wall/attackby(obj/item/W, mob/user)
 	if(hull)
 		return

@@ -169,23 +169,15 @@
 	healthcheck()
 
 /obj/structure/window/attack_hand(mob/user as mob)
-	if(HULK in user.mutations)
-		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!"))
-		if(!not_damageable) //Impossible to destroy
-			user.visible_message(SPAN_DANGER("[user] smashes through [src]!"))
-			health -= 500
-		healthcheck(1, 1, 1, user)
-
-	else if(user.a_intent == "hurt")
-
-		if(istype(user,/mob/living/carbon/human))
-			var/mob/living/carbon/human/H = user
-			if(H.species.can_shred(H))
-				attack_generic(H, 25)
-				return
+	if(user.a_intent == "hurt" && ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.species.can_shred(H))
+			attack_generic(H, 25)
+			return
 
 		if(windowknock_cooldown > world.time)
 			return
+			
 		playsound(loc, 'sound/effects/glassknock.ogg', 25, 1)
 		user.visible_message(SPAN_WARNING("[user] bangs against [src]!"),
 		SPAN_WARNING("You bang against [src]!"),

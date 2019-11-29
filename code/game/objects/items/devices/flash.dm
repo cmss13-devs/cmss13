@@ -14,13 +14,6 @@
 	var/broken = 0     //Is the flash burnt out?
 	var/last_used = 0 //last world.time it was used.
 
-/obj/item/device/flash/proc/clown_check(var/mob/user)
-	if(user && (CLUMSY in user.mutations) && prob(50))
-		if(user.drop_held_item())
-			to_chat(user, SPAN_DANGER("\The [src] slips out of your hand."))
-		return 0
-	return 1
-
 /obj/item/device/flash/proc/flash_recharge()
 	//capacitor recharges over time
 	for(var/i=0, i<3, i++)
@@ -44,7 +37,6 @@
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 
-	if(!clown_check(user))	return
 	if(broken)
 		to_chat(user, SPAN_WARNING("\The [src] is broken."))
 		return
@@ -110,7 +102,8 @@
 
 
 /obj/item/device/flash/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
-	if(!user || !clown_check(user)) 	return
+	if(!user) 	
+		return
 
 	if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_FLASH))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))

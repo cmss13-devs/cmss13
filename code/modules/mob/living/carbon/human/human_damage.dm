@@ -17,9 +17,6 @@
 
 	health = species.total_health - oxy_l - tox_l - clone_l - total_burn - total_brute
 
-	if(((species.total_health - total_burn) < config.health_threshold_dead * 1.5))
-		ChangeToHusk()
-
 	if(isSynth(src) && pulledby && health <= 0 && isXeno(pulledby))	// Xenos lose grab on critted synths
 		pulledby.stop_pulling()
 	

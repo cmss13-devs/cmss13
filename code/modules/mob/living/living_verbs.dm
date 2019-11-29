@@ -202,9 +202,7 @@
 			CM.last_special = world.time + 100
 
 			var/can_break_cuffs
-			if(HULK in usr.mutations)
-				can_break_cuffs = 1
-			else if(iszombie(CM))
+			if(iszombie(CM))
 				CM.visible_message(SPAN_DANGER("[CM] is attempting to break out of [HC]..."), \
 				SPAN_NOTICE("You use your superior zombie strength to start breaking [HC]..."))
 				spawn(0)
@@ -272,9 +270,7 @@
 			CM.last_special = world.time + 100
 
 			var/can_break_cuffs
-			if(HULK in usr.mutations)
-				can_break_cuffs = 1
-			else if(istype(CM,/mob/living/carbon/human))
+			if(istype(CM,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = CM
 				if(H.species.can_shred(H))
 					can_break_cuffs = 1

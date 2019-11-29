@@ -77,11 +77,10 @@
 	return
 
 /obj/item/tool/screwdriver/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	if(!istype(M))	return ..()
+	if(!istype(M))	
+		return ..()
 	if(user.zone_selected != "eyes") // && user.zone_selected != "head")
 		return ..()
-	if((CLUMSY in user.mutations) && prob(50))
-		M = user
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]

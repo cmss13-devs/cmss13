@@ -40,11 +40,7 @@
 
 //sort of a legacy burn method for /electrocute, /shock, and the e_chair
 /mob/living/proc/burn_skin(burn_amount)
-	if(istype(src, /mob/living/carbon/human))
-		if(mShock in src.mutations) //shockproof
-			return 0
-		if (COLD_RESISTANCE in src.mutations) //fireproof
-			return 0
+	if(ishuman(src))
 		var/mob/living/carbon/human/H = src	//make this damage method divide the damage to be done among all the body parts, then burn each body part for that much damage. will have better effect then just randomly picking a body part
 		var/divided_damage = (burn_amount)/(H.limbs.len)
 		var/extradam = 0	//added to when organ is at max dam
@@ -299,11 +295,6 @@
 				return
 
 	if(ishuman(L))
-		if(HULK in L.mutations)
-			if(prob(70))
-				to_chat(usr, SPAN_DANGER("<B>You fail to push [L]'s fat ass out of the way.</B>"))
-				now_pushing = FALSE
-				return
 		if(!(L.status_flags & CANPUSH))
 			now_pushing = FALSE
 			return
@@ -429,7 +420,7 @@
 
 /mob/living/proc/health_scan(mob/living/carbon/human/user, var/ignore_delay = FALSE, var/mode = 1, var/hud_mode = 1)
 	var/dat = ""
-	if(((CLUMSY in user.mutations) || user.getBrainLoss() >= 60) && prob(50))
+	if((user.getBrainLoss() >= 60) && prob(50))
 		to_chat(user, SPAN_WARNING("You try to analyze the floor's vitals!"))
 		for(var/mob/O in viewers(src, null))
 			O.show_message(SPAN_WARNING("[user] has analyzed the floor's vitals!"), 1)
@@ -630,7 +621,7 @@
 				dat += "\tBlood Level normal: [blood_percent]% [blood_volume]cl. Type: [blood_type]\n"
 		// Show pulse
 		dat += "\tPulse: <font color='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? "red" : ""]'>[H.get_pulse(GETPULSE_TOOL)] bpm.</font>\n"
-		if((H.stat == DEAD && !H.client) || HUSK in H.mutations)
+		if((H.stat == DEAD && !H.client))
 			unrevivable = 1
 		if(!unrevivable)
 			var/advice = ""

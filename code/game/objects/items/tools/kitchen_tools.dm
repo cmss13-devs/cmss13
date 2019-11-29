@@ -95,10 +95,6 @@
 	edge = 1
 
 /obj/item/tool/kitchen/utensil/knife/attack(target as mob, mob/living/user as mob)
-	if ((CLUMSY in user.mutations) && prob(50))
-		to_chat(user, SPAN_DANGER("You accidentally cut yourself with the [src]."))
-		user.take_limb_damage(20)
-		return FALSE
 	. = ..()
 	if(.)
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
@@ -111,10 +107,6 @@
 	throwforce = 10.0
 
 /obj/item/tool/kitchen/utensil/knife/attack(target as mob, mob/living/user as mob)
-	if ((CLUMSY in user.mutations) && prob(50))
-		to_chat(user, SPAN_DANGER("You somehow managed to cut yourself with the [src]."))
-		user.take_limb_damage(20)
-		return
 	. = ..()
 	if(.)
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
@@ -184,12 +176,6 @@
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked") //I think the rollingpin attackby will end up ignoring this anyway.
 
 /obj/item/tool/kitchen/rollingpin/attack(mob/living/M as mob, mob/living/user as mob)
-	if ((CLUMSY in user.mutations) && prob(50))
-		to_chat(user, SPAN_DANGER("The [src] slips out of your hand and hits your head."))
-		user.take_limb_damage(10)
-		user.KnockOut(2)
-		return
-
 	M.last_damage_source = initial(name)
 	M.last_damage_mob = user
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been attacked with [src.name] by [user.name] ([user.ckey])</font>")

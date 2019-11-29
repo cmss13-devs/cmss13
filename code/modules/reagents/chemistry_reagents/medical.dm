@@ -54,16 +54,8 @@
 	. = ..()
 	if(!.) return
 
-	var/needs_update = M.mutations.len > 0
-
-	M.mutations = list()
 	M.disabilities = 0
 	M.sdisabilities = 0
-
-	// Might need to update appearance for hulk etc.
-	if(needs_update && ishuman(M))
-		var/mob/living/carbon/human/H = M
-		H.update_mutations()
 
 /datum/reagent/ryetalyn/on_overdose(mob/living/M)
 	M.confused = max(M.confused, 20) //Confusion and some toxins

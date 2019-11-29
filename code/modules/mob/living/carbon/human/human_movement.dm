@@ -92,9 +92,6 @@
 	if(mobility_aura)
 		. -= 0.1 + 0.1 * mobility_aura
 
-	if(mRun in mutations)
-		. = 0
-
 	if(superslowed)
 		. += HUMAN_SUPERSLOWED_AMOUNT
 

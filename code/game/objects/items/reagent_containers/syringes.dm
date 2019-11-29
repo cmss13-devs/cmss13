@@ -65,8 +65,6 @@
 		return
 
 	if (user.a_intent == "hurt" && ismob(target))
-		if((CLUMSY in user.mutations) && prob(50))
-			target = user
 		var/mob/M = target
 		if(M != user && M.stat != DEAD && M.a_intent != "help" && !M.is_mob_incapacitated() && (skillcheck(M, SKILL_CQC, SKILL_CQC_MP) || isYautja(M))) // preds have null skills
 			user.KnockDown(3)

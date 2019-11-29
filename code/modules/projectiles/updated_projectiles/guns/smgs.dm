@@ -92,14 +92,15 @@
 
 /obj/item/weapon/gun/smg/m39/elite
 	name = "\improper M39B/2 submachinegun"
-	desc = "Armat Battlefield Systems M-39 submachinegun, version B2. This reliable weapon fires armor piercing 10x20mm rounds and is used by elite troops."
+	desc = "A modified version M-39 submachinegun, re-engineered for better weight, handling and accuracy. Given only to elite units."
 	icon_state = "m39b2"
 	item_state = "m39b2"
 	origin_tech = "combat=6;materials=5"
 	current_mag = /obj/item/ammo_magazine/smg/m39/ap
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
+	wield_delay =  WIELD_DELAY_VERY_FAST
 
-	random_spawn_chance = 40
+	random_spawn_chance = 100
 	random_spawn_rail = list(
 							/obj/item/attachable/reddot,
 							/obj/item/attachable/reflex,
@@ -109,34 +110,16 @@
 							)
 	random_spawn_underbarrel = list(
 							/obj/item/attachable/lasersight,
-							/obj/item/attachable/angledgrip,
-							/obj/item/attachable/verticalgrip,
-							/obj/item/attachable/gyro,
-							/obj/item/attachable/burstfire_assembly,
-							)
-	random_spawn_muzzle = list(
-							/obj/item/attachable/extended_barrel,
-							/obj/item/attachable/suppressor,
-							/obj/item/attachable/compensator,
-								)
-	random_spawn_stock = list(
-							/obj/item/attachable/stock/smg,
-							/obj/item/attachable/stock/smg/collapsible,
-							/obj/item/attachable/stock/smg/brace
 							)
 
 /obj/item/weapon/gun/smg/m39/elite/set_gun_config_values()
 	..()
-	fire_delay = config.low_fire_delay
-	burst_delay = config.min_fire_delay
-	burst_amount = config.med_burst_value // 3 round burst.
-	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.min_hit_accuracy_mult
-	scatter = config.high_scatter_value
-	burst_scatter_mult = config.low_scatter_value
-	scatter_unwielded = config.high_scatter_value
-	damage_mult = config.base_hit_damage_mult + config.max_hit_damage_mult
-	recoil_unwielded = config.min_recoil_value
+	fire_delay = config.mlow_fire_delay
+	accuracy_mult = config.base_hit_accuracy_mult +  config.high_hit_accuracy_mult
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult
+	scatter = config.mlow_scatter_value
+	burst_scatter_mult = config.min_scatter_value
+	scatter_unwielded = config.med_scatter_value
 
 
 
@@ -186,14 +169,14 @@
 /obj/item/weapon/gun/smg/mp5/set_gun_config_values()
 	..()
 	fire_delay = config.mlow_fire_delay
-	burst_delay = config.mlow_fire_delay
+	burst_delay = config.min_fire_delay
 	burst_amount = config.high_burst_value
 
 	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.high_scatter_value
+	scatter = config.lmed_scatter_value
 	burst_scatter_mult = config.low_scatter_value
-	scatter_unwielded = config.max_scatter_value
+	scatter_unwielded = config.hmed_scatter_value
 	damage_mult = config.base_hit_damage_mult + config.med_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
 
@@ -236,15 +219,15 @@
 
 /obj/item/weapon/gun/smg/mp7/set_gun_config_values()
 	..()
-	fire_delay = config.low_fire_delay
-	burst_delay = config.mlow_fire_delay
+	fire_delay = config.mlow_fire_delay
+	burst_delay = config.min_fire_delay
 	burst_amount = config.high_burst_value
 
 	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.med_scatter_value + config.low_scatter_value
-	burst_scatter_mult = config.low_scatter_value
-	scatter_unwielded = config.med_scatter_value + config.med_scatter_value
+	scatter = config.med_scatter_value
+	burst_scatter_mult = config.mlow_scatter_value
+	scatter_unwielded = config.high_scatter_value
 	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
 
@@ -282,15 +265,15 @@
 
 /obj/item/weapon/gun/smg/skorpion/set_gun_config_values()
 	..()
-	fire_delay = config.mlow_fire_delay
-	burst_delay = config.mlow_fire_delay
+	fire_delay = config.min_fire_delay
+	burst_delay = config.min_fire_delay
 	burst_amount = config.med_burst_value
 
 	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.low_scatter_value
-	scatter_unwielded = config.high_scatter_value
+	scatter_unwielded = config.hmed_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
 
@@ -318,15 +301,15 @@
 
 /obj/item/weapon/gun/smg/ppsh/set_gun_config_values()
 	..()
-	fire_delay = config.low_fire_delay
+	fire_delay = config.mlow_fire_delay
 	burst_delay = config.min_fire_delay
 	burst_amount = config.med_burst_value
 
 	accuracy_mult = config.base_hit_accuracy_mult - config.min_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.min_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.med_scatter_value + config.low_scatter_value
+	scatter = config.hmed_scatter_value
 	burst_scatter_mult = config.low_scatter_value
-	scatter_unwielded = config.high_scatter_value + config.low_scatter_value
+	scatter_unwielded = config.mhigh_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
 
@@ -365,15 +348,15 @@
 
 /obj/item/weapon/gun/smg/uzi/set_gun_config_values()
 	..()
-	fire_delay = config.low_fire_delay
+	fire_delay = config.min_fire_delay
 	burst_delay = config.min_fire_delay
 	burst_amount = config.high_burst_value
 
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.max_scatter_value
+	scatter = config.hmed_scatter_value
 	burst_scatter_mult = config.low_scatter_value
-	scatter_unwielded = config.med_scatter_value + config.high_scatter_value
+	scatter_unwielded = config.high_scatter_value
 	damage_mult = config.base_hit_damage_mult - config.low_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
 
@@ -422,14 +405,14 @@
 
 /obj/item/weapon/gun/smg/fp9000/set_gun_config_values()
 	..()
-	fire_delay = config.min_fire_delay
-	burst_delay = config.mlow_fire_delay
+	fire_delay = config.mlow_fire_delay
+	burst_delay = config.min_fire_delay
 	burst_amount = config.med_burst_value
 
 	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.hmed_scatter_value
-	burst_scatter_mult = config.mlow_scatter_value
+	scatter = config.low_scatter_value
+	burst_scatter_mult = config.min_scatter_value
 	scatter_unwielded = config.high_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
@@ -439,10 +422,20 @@
 	desc = "A variant of the FP9000 SMG that appears to feature some special modifications for elite forces."
 	icon_state = "fp9000_pmc"
 
+	random_spawn_chance = 100
+	random_spawn_rail = list(
+							/obj/item/attachable/reddot,
+							/obj/item/attachable/reflex,
+							/obj/item/attachable/flashlight,
+							/obj/item/attachable/magnetic_harness,
+							)
+	random_spawn_underbarrel = list(
+							/obj/item/attachable/lasersight,
+							)
+
 /obj/item/weapon/gun/smg/fp9000/pmc/set_gun_config_values()
 	..()
-	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
-	scatter = config.med_scatter_value
+	scatter = config.mlow_scatter_value
 	accuracy_mult = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult
 
 //-------------------------------------------------------

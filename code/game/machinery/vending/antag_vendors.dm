@@ -63,7 +63,7 @@
 		/obj/item/clothing/mask/gas/PMC/upp = 40,
 		/obj/item/device/radio/headset/distress/bears = 40,
 		/obj/item/clothing/under/marine/veteran/UPP = 40,
-		/obj/item/clothing/suit/storage/faction/UPP = 40,
+		/obj/item/clothing/suit/storage/marine/faction/UPP = 40,
 		/obj/item/clothing/gloves/marine/veteran/PMC = 40,
 		/obj/item/clothing/shoes/marine = 40,
 		/obj/item/storage/backpack/lightpack = 40,
@@ -95,12 +95,12 @@
 	clf_products = list(
 		/obj/item/weapon/gun/rifle/mar40/carbine = 40,
 		/obj/item/weapon/gun/rifle/mar40 = 40,
+		/obj/item/weapon/gun/rifle/sniper/svd = 40,
 		/obj/item/weapon/gun/shotgun/merc = 40,
 		/obj/item/weapon/gun/shotgun/double = 40,
 		/obj/item/weapon/gun/shotgun/pump/cmb = 40,
 		/obj/item/weapon/gun/shotgun/double/sawn = 40,
 		/obj/item/weapon/gun/smg/skorpion = 40,
-		/obj/item/weapon/gun/smg/skorpion/upp = 40,
 		/obj/item/weapon/gun/smg/uzi = 40,
 		/obj/item/weapon/gun/smg/mp7 = 40,
 		/obj/item/weapon/gun/revolver/cmb = 40,
@@ -114,9 +114,9 @@
 	)
 
 	upp_products = list(
-		/obj/item/weapon/gun/rifle/type71/carbine/commando = 40,
 		/obj/item/weapon/gun/rifle/type71 = 40,
 		/obj/item/weapon/gun/rifle/type71/flamer = 40,
+		/obj/item/weapon/gun/rifle/type71/carbine = 40,
 		/obj/item/weapon/gun/smg/skorpion/upp = 40,
 		/obj/item/weapon/gun/pistol/c99/upp = 40
 	)
@@ -133,6 +133,7 @@
 
 	clf_products = list(
 		/obj/item/ammo_magazine/rifle/mar40 = 40,
+		/obj/item/ammo_magazine/sniper/svd = 40,
 		/obj/item/ammo_magazine/shotgun/buckshot = 40,
 		/obj/item/ammo_magazine/shotgun/incendiary = 40,
 		/obj/item/ammo_magazine/shotgun/slugs = 40,
@@ -150,8 +151,10 @@
 		/obj/item/explosive/grenade/empgrenade = 40,
 		/obj/item/explosive/grenade/incendiary/molotov = 40,
 		/obj/item/explosive/grenade/smokebomb = 40,
-		/obj/item/explosive/grenade/HE/stick = 40,
+		/obj/item/explosive/grenade/chem_grenade/ied = 40,
+		/obj/item/explosive/grenade/chem_grenade/ied_incendiary = 40,
 		/obj/item/weapon/twohanded/fireaxe = 40,
+		/obj/item/weapon/twohanded/lungemine = 40,
 		/obj/item/device/flashlight = 40,
 		/obj/item/reagent_container/spray/pepper = 40,
 		/obj/item/weapon/combat_knife/upp = 40

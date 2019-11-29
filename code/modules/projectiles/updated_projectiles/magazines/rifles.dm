@@ -119,12 +119,22 @@
 //UPP TYPE 71 RIFLE
 
 /obj/item/ammo_magazine/rifle/type71
-	name = "\improper Type 71 magazine (7.62x39mm)"
-	desc = "A 7.62x39mm magazine that fits in the Type 71 rifle."
-	caliber = "7.62x39mm"
+	name = "\improper Type 71 magazine (5.45x39mm)"
+	desc = "A 5.45x39mm high-capacity casket magazine for the Type 71 rifle."
+	caliber = "5.45x39mm"
 	icon_state = "type_71"
-	default_ammo = /datum/ammo/bullet/rifle/mar40
-	max_rounds = 40
+	default_ammo = /datum/ammo/bullet/rifle
+	max_rounds = 60
+	gun_type = /obj/item/weapon/gun/rifle/type71
+	w_class = SIZE_MEDIUM
+
+/obj/item/ammo_magazine/rifle/type71/ap
+	name = "\improper Type 71 AP magazine (5.45x39mm)"
+	desc = "A 5.45x39mm high-capacity casket magazine containing armor piercing rounds for the Type 71 rifle."
+	caliber = "5.45x39mm"
+	icon_state = "type_71"
+	default_ammo = /datum/ammo/bullet/rifle/ap
+	max_rounds = 60
 	gun_type = /obj/item/weapon/gun/rifle/type71
 	w_class = SIZE_MEDIUM
 

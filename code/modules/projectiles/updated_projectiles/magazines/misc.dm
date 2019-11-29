@@ -13,6 +13,7 @@
 	max_rounds = 300
 	reload_delay = 24 //Hard to reload.
 	gun_type = /obj/item/weapon/gun/minigun
+	w_class = SIZE_MEDIUM
 
 //M60
 

@@ -12,7 +12,8 @@
 	current_mag = /obj/item/ammo_magazine/minigun
 	w_class = SIZE_HUGE
 	force = 20
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_BURST_ON|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_BURST_ON|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
+	gun_skill_category = SKILL_HEAVY_WEAPONS
 
 /obj/item/weapon/gun/minigun/New(loc, spawn_empty)
 	..()
@@ -26,13 +27,35 @@
 	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
 	scatter = config.med_scatter_value
-	burst_scatter_mult = config.lmed_scatter_value
-	scatter_unwielded = config.med_scatter_value
+	burst_scatter_mult = config.med_scatter_value
+	scatter_unwielded = config.max_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.med_recoil_value
 
 /obj/item/weapon/gun/minigun/toggle_burst()
 	to_chat(usr, SPAN_WARNING("This weapon can only fire in bursts!"))
+
+/obj/item/weapon/gun/minigun/upp
+	name = "\improper GSh-7.62 rotary machine gun"
+	desc = "A gas-operated rotary machine gun used by UPP heavies. Its enormous volume of fire and ammunition capacity allows the suppression of large concentrations of enemy forces. Heavy weapons training is required control its recoil."
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_BURST_ON|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
+
+/obj/item/weapon/gun/minigun/upp/able_to_fire(mob/living/user)
+	. = ..()
+	if(!. || !istype(user)) //Let's check all that other stuff first.
+		return 0
+	if(!skillcheck(user, SKILL_HEAVY_WEAPONS, SKILL_HEAVY_WEAPONS_TRAINED))
+		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		return 0
+
+/obj/item/weapon/gun/minigun/upp/handle_starting_attachment()
+	..()
+	//invisible mag harness
+	var/obj/item/attachable/magnetic_harness/M = new(src)
+	M.hidden = TRUE
+	M.flags_attach_features &= ~ATTACH_REMOVABLE
+	M.Attach(src)
+	update_attachable(M.slot)
 
 //M60
 /obj/item/weapon/gun/m60
@@ -310,4 +333,3 @@
 	New()
 		create_reagents(15)
 		..()
-

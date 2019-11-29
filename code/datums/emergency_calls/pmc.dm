@@ -6,6 +6,9 @@
 	probability = 25
 	shuttle_id = "Distress_PMC"
 	name_of_spawn = "Distress_PMC"
+	max_medics = 1
+	max_heavies = 2
+
 
 /datum/emergency_call/pmc/New()
 	..()
@@ -24,26 +27,32 @@
 	if(mob.client) mob.client.change_view(world.view)
 
 	ticker.mode.traitors += mob.mind
+	mob.mind.special_role = "MODE"
+
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weyland Yutani squad leader!")))
 		arm_equipment(mob, "Weyland-Yutani PMC (Leader)", TRUE, TRUE)
+	else if(medics < max_medics)
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weyland Yutani medic!")))
+		arm_equipment(mob, "Weyland-Yutani PMC (Medic)", TRUE, TRUE)
+		medics++
+	else if(heavies < max_heavies*ERT_PMC_GUNNER_FRACTION)
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weyland Yutani heavy gunner!")))
+		arm_equipment(mob, "Weyland-Yutani PMC (Gunner)", TRUE, TRUE)
+		heavies++
+	else if(heavies < max_heavies)
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weyland Yutani sniper!")))
+		arm_equipment(mob, "Weyland-Yutani PMC (Sniper)", TRUE, TRUE)
+		heavies++
 	else
-		mob.mind.special_role = "MODE"
-		if(prob(55)) //Randomize the heavy commandos and standard PMCs.
-			arm_equipment(mob, "Weyland-Yutani PMC (Standard)", TRUE, TRUE)
-			to_chat(mob, "<font size='3'>\red You are a Weyland Yutani mercenary!</font>")
-		else
-			if(prob(30))
-				arm_equipment(mob, "Weyland-Yutani PMC (Sniper)", TRUE, TRUE)
-				to_chat(mob, "<font size='3'>\red You are a Weyland Yutani sniper!</font>")
-			else
-				arm_equipment(mob, "Weyland-Yutani PMC (Gunner)", TRUE, TRUE)
-				to_chat(mob, "<font size='3'>\red You are a Weyland Yutani heavy gunner!</font>")
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weyland Yutani mercenary!")))
+		arm_equipment(mob, "Weyland-Yutani PMC (Standard)", TRUE, TRUE)
+
 	print_backstory(mob)
 
 	sleep(10)
 	to_chat(M, "<B>Objectives:</b> [objectives]")
-
 
 
 /datum/emergency_call/pmc/print_backstory(mob/living/carbon/human/M)
@@ -63,65 +72,10 @@
 	to_chat(M, "<B>Deny Weyland-Yutani's involvement and do not trust the UA/USCM forces.</b>")
 
 
-/datum/emergency_call/pmc/spawn_items()
-	var/turf/drop_spawn
-	var/choice
-
-	for(var/i = 0 to 2) //Spawns up to 3 random things.
-		if(prob(20)) continue
-		choice = (rand(1,8) - round(i/2)) //Decreasing values, rarer stuff goes at the end.
-		if(choice < 0) choice = 0
-		drop_spawn = get_spawn_point(1)
-		if(istype(drop_spawn))
-			switch(choice)
-				if(0)
-					new /obj/item/weapon/gun/smg/m39/elite(drop_spawn)
-					new /obj/item/weapon/gun/smg/m39/elite(drop_spawn)
-					new /obj/item/ammo_magazine/smg/m39/ap
-					new /obj/item/ammo_magazine/smg/m39/ap
-					continue
-				if(1)
-					new /obj/item/weapon/gun/smg/m39/elite(drop_spawn)
-					new /obj/item/weapon/gun/smg/m39/elite(drop_spawn)
-					new /obj/item/ammo_magazine/smg/m39/ap
-					new /obj/item/ammo_magazine/smg/m39/ap
-					new /obj/item/ammo_magazine/smg/m39/ap
-					continue
-				if(2)
-					new /obj/item/weapon/gun/flamer(drop_spawn)
-					new /obj/item/weapon/gun/flamer(drop_spawn)
-					new /obj/item/weapon/gun/flamer(drop_spawn)
-					continue
-				if(3)
-					new /obj/item/explosive/plastique(drop_spawn)
-					new /obj/item/explosive/plastique(drop_spawn)
-					new /obj/item/explosive/plastique(drop_spawn)
-					continue
-				if(4)
-					new /obj/item/weapon/gun/rifle/m41a/elite(drop_spawn)
-					new /obj/item/weapon/gun/rifle/m41a/elite(drop_spawn)
-					new /obj/item/ammo_magazine/rifle/incendiary
-					new /obj/item/ammo_magazine/rifle/incendiary
-					continue
-				if(5)
-					new /obj/item/weapon/gun/launcher/m92(drop_spawn)
-					new /obj/item/explosive/grenade/HE/PMC(drop_spawn)
-					new /obj/item/explosive/grenade/HE/PMC(drop_spawn)
-					new /obj/item/explosive/grenade/HE/PMC(drop_spawn)
-					continue
-				if(6)
-					new /obj/item/explosive/grenade/HE/PMC(drop_spawn)
-					new /obj/item/weapon/gun/flamer(drop_spawn)
-					continue
-				if(7)
-					new /obj/item/explosive/grenade/HE/PMC(drop_spawn)
-					new /obj/item/explosive/grenade/HE/PMC(drop_spawn)
-					new /obj/item/explosive/grenade/HE/PMC(drop_spawn)
-					new /obj/item/weapon/gun/flamer(drop_spawn)
-					continue
-
 /datum/emergency_call/pmc/platoon
 	name = "Weyland-Yutani PMC (Platoon)"
 	mob_min = 8
 	mob_max = 25
 	probability = 0
+	max_medics = 2
+	max_heavies = 4

@@ -86,6 +86,7 @@
 	desc = "A drum magazine for the PPSh submachinegun."
 	caliber = "7.62x25mm"
 	icon_state = "ppsh17b"
+	w_class = SIZE_MEDIUM
 	max_rounds = 35
 	gun_type = /obj/item/weapon/gun/smg/ppsh
 
@@ -119,5 +120,6 @@
 	default_ammo = /datum/ammo/bullet/smg/ap
 	caliber = "5.7x28mm"
 	icon_state = "fp9000"
+	w_class = SIZE_MEDIUM
 	max_rounds = 50
 	gun_type = /obj/item/weapon/gun/smg/fp9000

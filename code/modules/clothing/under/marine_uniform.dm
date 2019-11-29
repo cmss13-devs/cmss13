@@ -26,9 +26,9 @@
 	..()
 	if(!(flags_atom & UNIQUE_ITEM_TYPE))
 		name = "[specialty]"
-		if(map_tag in MAPS_COLD_TEMP) 
+		if(map_tag in MAPS_COLD_TEMP)
 			name += " snow uniform"
-		else 
+		else
 			name += " uniform"
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type, override_icon_state, new_protection)
@@ -298,7 +298,7 @@
 	worn_state = "upp_uniform"
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	has_sensor = 0
-	suit_restricted = list(/obj/item/clothing/suit/storage/faction/UPP, /obj/item/clothing/suit/storage/marine/smartgunner/UPP)
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP, /obj/item/clothing/suit/storage/marine/smartgunner/UPP)
 
 /obj/item/clothing/under/marine/veteran/UPP/medic
 	name = "\improper UPP medic fatigues"
@@ -312,7 +312,7 @@
 	worn_state = "freelancer_uniform"
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	has_sensor = 0
-	suit_restricted = list(/obj/item/clothing/suit/storage/faction/freelancer)
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/freelancer)
 
 /obj/item/clothing/under/marine/veteran/dutch
 	name = "\improper Dutch's Dozen uniform"
@@ -385,6 +385,12 @@
 	icon_state = "colonist"
 	worn_state = "colonist"
 	has_sensor = 0
+
+/obj/item/clothing/under/colonist/clf
+	name = "/improper Colonial Liberation Front uniform"
+	desc = "A stylish grey-green jumpsuit - standard issue for colonists. This version appears to have the symbol of the Colonial Liberation Front emblazoned in select areas."
+	icon_state = "clf_uniform"
+	worn_state = "clf_uniform"
 
 /obj/item/clothing/under/CM_uniform
 	name = "colonial marshal uniform"

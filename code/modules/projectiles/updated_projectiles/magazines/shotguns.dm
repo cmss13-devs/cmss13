@@ -78,3 +78,40 @@ also doesn't really matter. You can only reload them with handfuls.
 /obj/item/ammo_magazine/internal/shotgun/merc
 	max_rounds = 5
 
+//-------------------------------------------------------
+
+/*
+Handfuls of shotgun rounds. For spawning directly on mobs in roundstart, ERTs, etc
+*/
+
+/obj/item/ammo_magazine/handful/shotgun
+	name = "handful of shotgun slugs (12g)"
+	icon_state = "shotgun slug"
+	default_ammo = /datum/ammo/bullet/shotgun/slug
+	caliber = "12g"
+	max_rounds = 5
+	current_rounds = 5
+	dir = 6
+	gun_type = /obj/item/weapon/gun/shotgun
+
+/obj/item/ammo_magazine/handful/shotgun/slug
+
+/obj/item/ammo_magazine/handful/shotgun/incendiary
+	name = "handful of incendiary slugs (12g)"
+	icon_state = "incendiary slug"
+	default_ammo = /datum/ammo/bullet/shotgun/incendiary
+
+/obj/item/ammo_magazine/handful/shotgun/buckshot
+	name = "handful of shotgun buckshot shells (12g)"
+	icon_state = "shotgun buckshot shell"
+	default_ammo = /datum/ammo/bullet/shotgun/buckshot
+
+/obj/item/ammo_magazine/handful/shotgun/flechette
+	name = "handful of shotgun flechette shells (12g)"
+	icon_state = "shotgun flechette shell"
+	default_ammo = /datum/ammo/bullet/shotgun/flechette
+
+/obj/item/ammo_magazine/handful/shotgun/beanbag
+	name = "handful of beanbag slugs (12g)"
+	icon_state = "beanbag slug"
+	default_ammo = /datum/ammo/bullet/shotgun/beanbag

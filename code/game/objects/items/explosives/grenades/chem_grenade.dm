@@ -135,7 +135,7 @@
 		icon_state = initial(icon_state) +"_locked"
 		playsound(src.loc, 'sound/items/Screwdriver2.ogg', 25, 1)
 		return
-	
+
 	playsound(src.loc, 'sound/effects/bamf.ogg', 50, 1)
 
 	var/det_area = get_area(src)
@@ -144,7 +144,7 @@
 		if(!O.reagents) continue
 		for(var/reagent in O.reagents.reagent_list)
 			reagent_list_text += " [reagent], "
-	
+
 	msg_admin_attack("[src] detonated with contents[reagent_list_text]in [det_area] at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 
 	for(var/obj/item/reagent_container/glass/G in beakers)
@@ -202,7 +202,7 @@
 
 	beakers += B1
 	beakers += B2
-	icon_state = initial(icon_state) +"_locked"
+	icon_state = initial(icon_state) + "_locked"
 
 
 /obj/item/explosive/grenade/chem_grenade/incendiary
@@ -226,7 +226,7 @@
 
 	beakers += B1
 	beakers += B2
-	icon_state = initial(icon_state) +"_locked"
+	icon_state = initial(icon_state) + "_locked"
 
 
 /obj/item/explosive/grenade/chem_grenade/antiweed
@@ -250,7 +250,7 @@
 
 	beakers += B1
 	beakers += B2
-	icon_state = initial(icon_state) +"_locked"
+	icon_state = initial(icon_state) + "_locked"
 
 
 /obj/item/explosive/grenade/chem_grenade/cleaner
@@ -273,7 +273,7 @@
 
 	beakers += B1
 	beakers += B2
-	icon_state = initial(icon_state) +"_locked"
+	icon_state = initial(icon_state) + "_locked"
 
 
 
@@ -299,7 +299,7 @@
 	beakers += B1
 	beakers += B2
 
-	icon_state = initial(icon_state) +"_locked"
+	icon_state = initial(icon_state) + "_locked"
 
 
 /obj/item/explosive/grenade/chem_grenade/teargas/attack_self(mob/user)
@@ -307,3 +307,50 @@
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 	..()
+
+
+/obj/item/explosive/grenade/chem_grenade/ied
+	name = "improvised explosive device"
+	desc = "An improvised chemical explosive grenade. Designed to kill through fragmentation."
+	stage = 2
+
+/obj/item/explosive/grenade/chem_grenade/ied/New()
+	..()
+	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
+	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
+
+	B1.reagents.add_reagent("potassium", 20)
+	B1.reagents.add_reagent("iron", 40)
+	B2.reagents.add_reagent("water", 20)
+	B2.reagents.add_reagent("iron", 40)
+
+	detonator = new/obj/item/device/assembly_holder/timer_igniter(src, 2) //~4 second timer
+
+	beakers += B1
+	beakers += B2
+
+	icon_state = initial(icon_state) + "_locked"
+
+
+/obj/item/explosive/grenade/chem_grenade/ied_incendiary
+	name = "improvised explosive device (incendiary)"
+	desc = "An improvised chemical explosive grenade. Designed spray incendiary shrapnel across a wide area."
+	stage = 2
+
+/obj/item/explosive/grenade/chem_grenade/ied_incendiary/New()
+	..()
+	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
+	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
+
+	B1.reagents.add_reagent("potassium", 20)
+	B1.reagents.add_reagent("iron", 40)
+	B2.reagents.add_reagent("water", 20)
+	B2.reagents.add_reagent("iron", 30)
+	B2.reagents.add_reagent("phoron", 10)
+
+	detonator = new/obj/item/device/assembly_holder/timer_igniter(src, 2) //~4 second timer
+
+	beakers += B1
+	beakers += B2
+
+	icon_state = initial(icon_state) + "_locked"

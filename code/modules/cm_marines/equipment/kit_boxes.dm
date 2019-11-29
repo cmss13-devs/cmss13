@@ -326,7 +326,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	overlays += image('icons/obj/items/pro_case.dmi', "+jtac")
 	spawn(1)
 		new /obj/item/weapon/gun/flare(src)
-		new /obj/item/storage/belt/gun/flaregun/full(src)
+		new /obj/item/storage/belt/gun/flaregun/full_nogun(src)
 		new /obj/item/storage/box/m94/signal(src)
 		new /obj/item/storage/box/m94/signal(src)
 		new /obj/item/device/binoculars/tactical(src)

@@ -40,23 +40,26 @@
 	skills = /datum/skills/clf
 
 /datum/equipment_preset/clf/fighter/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/militia(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_R_STORE)
 
-	spawn_rebel_gun(H)
-	spawn_rebel_gun(H,1)
+	spawn_rebel_uniform(H)
+	spawn_rebel_suit(H)
+	spawn_rebel_helmet(H)
+	spawn_rebel_shoes(H)
+	spawn_rebel_gloves(H)
+	spawn_rebel_belt(H)
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/chem_grenade/ied, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/chem_grenade/ied, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
+
+	spawn_rebel_weapon(H)
+	spawn_rebel_weapon(H,1)
 
 /*****************************************************************************************************/
 
@@ -67,17 +70,19 @@
 	skills = /datum/skills/civilian/survivor/doctor
 
 /datum/equipment_preset/clf/survivor/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/militia(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+
+	spawn_rebel_uniform(H)
+	spawn_rebel_suit(H)
+	spawn_rebel_helmet(H)
+	spawn_rebel_shoes(H)
+	spawn_rebel_gloves(H)
+	spawn_rebel_belt(H)
+
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full, WEAR_R_STORE)
 
 /*****************************************************************************************************/
 
@@ -89,30 +94,29 @@
 	skills = /datum/skills/clf/combat_medic
 
 /datum/equipment_preset/clf/fighter_medic/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/militia(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick(H.back), WEAR_IN_BACK)
 
-	H.equip_to_slot_or_del(new /obj/item/device/defibrillator(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/fire(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pill_bottle/tramadol/skillless(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medical(H), WEAR_R_STORE)
+	spawn_rebel_uniform(H)
+	spawn_rebel_suit(H)
+	spawn_rebel_helmet(H)
+	spawn_rebel_shoes(H)
+	spawn_rebel_gloves(H)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical, WEAR_WAIST)
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/chem_grenade/ied, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/fire, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pill_bottle/tramadol/skillless, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medical, WEAR_R_STORE)
 
 
-	spawn_rebel_gun(H)
-	//spawn_rebel_gun(H,1)
+	spawn_rebel_weapon(H)
 
 /*****************************************************************************************************/
 
@@ -125,23 +129,26 @@
 	skills = /datum/skills/clf/leader
 
 /datum/equipment_preset/clf/fighter_leader/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/frelancer(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/box/handcuffs(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
 
-	spawn_rebel_gun(H)
-	spawn_rebel_gun(H,1)
+	//No random armor, so that it's more clear that he's the leader
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/clf, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/sec/hos, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black, WEAR_HANDS)
+	spawn_rebel_belt(H)
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/chem_grenade/ied_incendiary, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/chem_grenade/ied_incendiary, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/handcuffs, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars/tactical/range, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
+
+	spawn_rebel_weapon(H)
+	spawn_rebel_weapon(H,1)

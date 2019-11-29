@@ -134,18 +134,19 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
 /obj/item/clothing/gloves/marine/veteran/PMC/commando
-	name = "\improper PMC commando gloves"
-	desc = "A pair of heavily armored, insulated, acid-resistant gloves."
-	icon_state = "brown"
-	item_state = "browngloves"
-	armor_melee = CLOTHING_ARMOR_HIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_laser = CLOTHING_ARMOR_HIGH
-	armor_energy = CLOTHING_ARMOR_HIGH
-	armor_bomb = CLOTHING_ARMOR_MEDIUM
-	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_rad = CLOTHING_ARMOR_MEDIUM
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	name = "\improper M5X gauntlets"
+	desc = "A pair of heavily armored gloves made to complete the M5X exoskeleton armor"
+	icon_state = "gauntlets"
+	item_state = "bgloves"
+	siemens_coefficient = 0
+	armor_melee = CLOTHING_ARMOR_VERYHIGH
+	armor_bullet = CLOTHING_ARMOR_ULTRAHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_ULTRAHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_ULTRAHIGH
+	armor_internaldamage = CLOTHING_ARMOR_ULTRAHIGH
 	unacidable = TRUE
 
 /obj/item/clothing/gloves/marine/dress

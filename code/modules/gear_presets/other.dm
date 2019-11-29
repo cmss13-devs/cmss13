@@ -42,22 +42,22 @@
 	skills = /datum/skills/freelancer
 
 /datum/equipment_preset/other/freelancer/standard/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/faction/freelancer(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/frelancer(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
 
-	spawn_merc_gun(H)
-	spawn_rebel_gun(H,1)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
+	spawn_merc_helmet(H)
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
+
+	spawn_merc_weapon(H)
 
 /*****************************************************************************************************/
 
@@ -69,26 +69,27 @@
 	skills = /datum/skills/freelancer/combat_medic
 
 /datum/equipment_preset/other/freelancer/medic/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/faction/freelancer(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/frelancer(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/defibrillator(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/fire(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pill_bottle/tramadol/skillless(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medical(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 
-	spawn_merc_gun(H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
+	spawn_merc_helmet(H)
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/fire, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pill_bottle/tramadol/skillless, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+
+	spawn_merc_weapon(H)
 
 /*****************************************************************************************************/
 
@@ -101,22 +102,25 @@
 	skills = /datum/skills/freelancer/SL
 
 /datum/equipment_preset/other/freelancer/leader/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/faction/freelancer(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/frelancer/beret(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
 
-	spawn_merc_gun(H)
-	spawn_merc_gun(H,1)
+	//No random helmet, so that it's more clear that he's the leader
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/freelancer/beret, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars/tactical/range, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
+
+	spawn_merc_weapon(H,0,7)
+	spawn_merc_weapon(H,1)
 
 /*****************************************************************************************************/
 
@@ -137,18 +141,18 @@
 
 /datum/equipment_preset/other/mercenary_heavy/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/mercenary(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC(H), WEAR_FACE)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/mercenary, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, WEAR_IN_BACK)
 
-	spawn_merc_gun(H)
-	spawn_merc_gun(H,1)
+	spawn_merc_weapon(H,0,7)
+	spawn_merc_weapon(H,1)
 
 /*****************************************************************************************************/
 
@@ -169,15 +173,15 @@
 
 /datum/equipment_preset/other/mercenary_miner/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary/miner(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/mercenary/miner(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary/miner(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC(H), WEAR_FACE)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary/miner, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/mercenary/miner, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary/miner, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, WEAR_IN_BACK)
 
 /*****************************************************************************************************/
 
@@ -198,16 +202,16 @@
 
 /datum/equipment_preset/other/mercenary_engineer/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary/engineer(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/mercenary/engineer(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary/engineer(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC(H), WEAR_FACE)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary/engineer, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/mercenary/engineer, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary/engineer, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, WEAR_IN_BACK)
 
 /*****************************************************************************************************/
 
@@ -227,12 +231,12 @@
 
 /datum/equipment_preset/other/business_person/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
-	H.equip_if_possible(new /obj/item/clothing/under/lawyer/bluesuit(H), WEAR_BODY)
-	H.equip_if_possible(new /obj/item/clothing/shoes/centcom(H), WEAR_FEET)
-	H.equip_if_possible(new /obj/item/clothing/gloves/white(H), WEAR_HANDS)
+	H.equip_if_possible(new /obj/item/clothing/under/lawyer/bluesuit, WEAR_BODY)
+	H.equip_if_possible(new /obj/item/clothing/shoes/centcom, WEAR_FEET)
+	H.equip_if_possible(new /obj/item/clothing/gloves/white, WEAR_HANDS)
 
-	H.equip_if_possible(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
-	H.equip_if_possible(new /obj/item/clipboard(H), WEAR_WAIST)
+	H.equip_if_possible(new /obj/item/clothing/glasses/sunglasses, WEAR_EYES)
+	H.equip_if_possible(new /obj/item/clipboard, WEAR_WAIST)
 
 /*****************************************************************************************************/
 
@@ -245,17 +249,17 @@
 
 /datum/equipment_preset/other/compression_suit/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/magboots(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/magboots, WEAR_FEET)
 
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/space/compression(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/space/compression(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/space/compression, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/space/compression, WEAR_HEAD)
 	var /obj/item/tank/jetpack/J = new /obj/item/tank/jetpack/oxygen(H)
 	H.equip_to_slot_or_del(J, WEAR_BACK)
 	J.toggle()
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath, WEAR_FACE)
 	J.Topic(null, list("stat" = 1))
-	spawn_merc_gun(H)
+	spawn_merc_weapon(H)
 
 
 /*****************************************************************************************************/
@@ -289,20 +293,20 @@
 
 /datum/equipment_preset/other/pizza/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/pizza(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/soft/red(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/red(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/pizzabox/margherita(H), WEAR_L_HAND)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/dr_gibb(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/pizzabox/vegetable(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/pizzabox/mushroom(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/pizzabox/meat(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/dr_gibb(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/thirteenloko(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/holdout(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/pizza, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/soft/red, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/red, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/pizzabox/margherita, WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/device/radio, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/dr_gibb, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/pizzabox/vegetable, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/pizzabox/mushroom, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/pizzabox/meat, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/dr_gibb, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/thirteenloko, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/holdout, WEAR_IN_BACK)
 
 /datum/equipment_preset/other/souto
 	name = "Souto Man"
@@ -330,18 +334,18 @@
 
 /datum/equipment_preset/other/souto/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/souto(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/space/souto(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/souto(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/souto(H), WEAR_L_HAND)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/fake_mustache(H), WEAR_FACE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/space/souto(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/souto(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/souto(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/souto(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/souto, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/space/souto, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/souto, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/souto, WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/device/radio, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/fake_mustache, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/space/souto, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/souto, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/souto, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses, WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/souto, WEAR_FEET)
 	var/obj/vehicle/souto/V = new
 	V.loc = H.loc
 	V.buckle_mob(H, H)
@@ -387,8 +391,8 @@
 		BG.stage = 5
 
 /datum/equipment_preset/other/zombie/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine, WEAR_FEET)
 
 /*****************************************************************************************************/
 
@@ -413,18 +417,18 @@
 	H.age = rand(21,45)
 
 /datum/equipment_preset/other/gladiator/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot(H), WEAR_R_HAND)
-	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot, WEAR_R_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword, WEAR_L_HAND)
 
 	var/obj/item/lantern = new /obj/item/device/flashlight/lantern(H)
 	lantern.name = "Beacon of Holy Light"
 
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_L_STORE)
 	H.equip_to_slot_or_del(lantern, WEAR_R_STORE)
 
 /*****************************************************************************************************/
@@ -437,19 +441,19 @@
 	rank = "Samnite"
 
 /datum/equipment_preset/other/gladiator/champion/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/ert/security(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot(H), WEAR_R_HAND)
-	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/ert/security, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot, WEAR_R_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword, WEAR_L_HAND)
 
 	var/obj/item/lantern = new /obj/item/device/flashlight/lantern(H)
 	lantern.name = "Beacon of Holy Light"
 
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar/red(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar/red, WEAR_L_STORE)
 	H.equip_to_slot_or_del(lantern, WEAR_R_STORE)
 
 /*****************************************************************************************************/
@@ -462,17 +466,17 @@
 	rank = "Spartacus"
 
 /datum/equipment_preset/other/gladiator/leader/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/swat(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot(H), WEAR_R_HAND)
-	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/swat, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot, WEAR_R_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword, WEAR_L_HAND)
 
 	var/obj/item/lantern = new /obj/item/device/flashlight/lantern(H)
 	lantern.name = "Beacon of Holy Light"
 
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/holy_hand_grenade(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/holy_hand_grenade, WEAR_L_STORE)
 	H.equip_to_slot_or_del(lantern, WEAR_R_STORE)

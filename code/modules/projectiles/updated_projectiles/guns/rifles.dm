@@ -107,27 +107,40 @@
 //M41A PMC VARIANT
 
 /obj/item/weapon/gun/rifle/m41a/elite
-	name = "\improper M41A/2 battle rifle"
-	desc = "A reinforced and remachined version of the tried and tested M41A Pulse Rifle MK2. Given only to elite units."
+	name = "\improper M41A/2 pulse rifle"
+	desc = "A modified version M41A Pulse Rifle MK2, re-engineered for better weight, handling and accuracy. Fires precise two-round bursts. Given only to elite units."
 	icon_state = "m41a2"
 	item_state = "m41a2"
 	origin_tech = "combat=7;materials=5"
 	current_mag = /obj/item/ammo_magazine/rifle/ap
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
+	aim_slowdown = SLOWDOWN_ADS_SMG
+	wield_delay = WIELD_DELAY_FAST
+
+	starting_attachment_types = list()
+
+	random_spawn_chance = 100
+	random_spawn_rail = list(
+							/obj/item/attachable/reddot,
+							/obj/item/attachable/reflex,
+							/obj/item/attachable/flashlight,
+							/obj/item/attachable/magnetic_harness,
+							)
+	random_spawn_underbarrel = list(
+							/obj/item/attachable/lasersight,
+							)
 
 
 /obj/item/weapon/gun/rifle/m41a/elite/set_gun_config_values()
 	..()
-	fire_delay = config.med_fire_delay
-	burst_amount = config.med_burst_value
-	burst_delay = config.mlow_fire_delay
+	fire_delay = config.mlow_fire_delay
+	burst_amount = config.low_burst_value
+	burst_delay = config.min_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult + config.max_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.med_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult + config.max_hit_damage_mult
-	recoil_unwielded = config.high_recoil_value
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
+	scatter = config.min_scatter_value
+	burst_scatter_mult = config.min_scatter_value
+	scatter_unwielded = config.high_scatter_value
 
 
 //-------------------------------------------------------
@@ -329,16 +342,17 @@
 
 /obj/item/weapon/gun/rifle/mar40/set_gun_config_values()
 	..()
-	fire_delay = config.mhigh_fire_delay
+	fire_delay = config.med_fire_delay
 	burst_amount = config.high_burst_value
 	burst_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
+	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
 	scatter = config.med_scatter_value
-	burst_scatter_mult = config.med_scatter_value
+	burst_scatter_mult = config.low_scatter_value
 	scatter_unwielded = config.max_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.high_recoil_value
+	recoil = config.min_recoil_value
 
 
 /obj/item/weapon/gun/rifle/mar40/carbine
@@ -346,7 +360,9 @@
 	desc = "A cheap, reliable carbine chambered in 7.62x39mm. Commonly found in the hands of criminals or mercenaries."
 	icon_state = "mar30"
 	item_state = "mar30"
-	fire_sound = 'sound/weapons/gun_ak47.ogg' //Change
+	fire_sound = 'sound/weapons/gun_mar40.ogg'
+	aim_slowdown = SLOWDOWN_ADS_SMG //Carbine is more lightweight
+	wield_delay = WIELD_DELAY_FAST
 	attachable_allowed = list(
 					/obj/item/attachable/suppressor,
 					/obj/item/attachable/bayonet,
@@ -390,12 +406,10 @@
 /obj/item/weapon/gun/rifle/mar40/carbine/set_gun_config_values()
 	..()
 	fire_delay = config.low_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
-	scatter = config.low_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil_unwielded = config.high_recoil_value
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
+	damage_mult = config.base_hit_damage_mult - config.low_hit_damage_mult
+	scatter_unwielded = config.high_scatter_value
+	recoil_unwielded = config.med_recoil_value
 
 
 //-------------------------------------------------------
@@ -457,13 +471,13 @@
 
 /obj/item/weapon/gun/rifle/m16/set_gun_config_values()
 	..()
-	fire_delay = config.mhigh_fire_delay
+	fire_delay = config.med_fire_delay
 	burst_amount = config.med_burst_value
 	burst_delay = config.mlow_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.med_scatter_value
+	scatter = config.low_scatter_value
+	burst_scatter_mult = config.mlow_scatter_value
 	scatter_unwielded = config.max_scatter_value
 	damage_mult = config.base_hit_damage_mult + config.min_hit_damage_mult
 	recoil_unwielded = config.high_recoil_value
@@ -505,7 +519,7 @@
 /obj/item/weapon/gun/rifle/m16/set_gun_config_values()
 	..()
 	fire_delay = config.mlow_fire_delay
-	burst_amount = config.high_burst_value
+	burst_amount = config.med_burst_value
 	burst_delay = config.mlow_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
@@ -574,7 +588,7 @@
 
 /obj/item/weapon/gun/rifle/type71
 	name = "\improper Type 71 pulse rifle"
-	desc = "The primary service rifle of the UPP forces, the Type 71 is a reliable pulse rifle chambered in 7.62x39mm. Firing in two round bursts to conserve ammunition, the Type 71 was originally designed as an ergonomic, lightweight rifle to be used in outer-space operations. The Type 71 suffers from some reliability issues, and is prone to jamming in terrestrial climates, but makes up for this with a high number of variants and ease of production."
+	desc = "The primary service rifle of the UPP space forces, the Type 71 is an ergonomic, lightweight pulse rifle chambered in 5.45x39mm. In accordance with doctrinal principles of overmatch and suppression, the rifle has a high rate of fire and a high-capacity casket magazine. Despite lackluster precision, an integrated recoil-dampening mechanism makes the rifle surprisingly controllable in bursts."
 	icon_state = "type71"
 	item_state = "type71"
 	origin_tech = "combat=4;materials=2;syndicate=4"
@@ -599,12 +613,10 @@
 							/obj/item/attachable/reflex/,
 							)
 	random_spawn_muzzle = list(
-							/obj/item/attachable/suppressor,
-							/obj/item/attachable/bayonet,
-							/obj/item/attachable/extended_barrel
-								)
+							/obj/item/attachable/bayonet
+							)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_BURST_ON
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 
 /obj/item/weapon/gun/rifle/type71/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 18, "rail_y" = 23, "under_x" = 20, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
@@ -612,25 +624,21 @@
 
 /obj/item/weapon/gun/rifle/type71/set_gun_config_values()
 	..()
-	fire_delay = config.high_fire_delay
-	burst_amount = config.low_burst_value
+	fire_delay = config.low_fire_delay
+	burst_amount = config.high_burst_value
 	burst_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult + config.max_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
+	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
 	scatter = config.med_scatter_value
-	burst_scatter_mult = config.hmed_scatter_value
-	scatter_unwielded = config.max_scatter_value
+	burst_scatter_mult = config.min_scatter_value
+	scatter_unwielded = config.high_scatter_value
 	damage_mult = config.base_hit_damage_mult
-	recoil_unwielded = config.high_recoil_value
-
-
-/obj/item/weapon/gun/rifle/type71/toggle_burst()
-	to_chat(usr, SPAN_WARNING("This weapon can only fire in bursts!"))
+	recoil_unwielded = config.med_recoil_value
 
 
 /obj/item/weapon/gun/rifle/type71/flamer
-	name = "\improper Type 71 pulse rifle"
-	desc = " This appears to be a less common variant of the usual Type 71, with an undermounted flamethrower and improved iron sights."
+	name = "\improper Type 71 flamethrower pulse rifle"
+	desc = " This appears to be a less common variant of the Type 71 with an integrated undermounted flamethrower."
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/reddot,
@@ -653,22 +661,32 @@
 
 /obj/item/weapon/gun/rifle/type71/carbine
 	name = "\improper Type 71 pulse carbine"
+	desc = "A carbine variant of the Type 71, intended for use by frontline support roles. A reduced length makes the gun lighter and easier to handle at the cost of muzzle velocity."
 	icon_state = "type71c"
 	item_state = "type71c"
-	wield_delay = WIELD_DELAY_VERY_FAST //Carbine is more lightweight
+	aim_slowdown = SLOWDOWN_ADS_SMG //Carbine is more lightweight
+	wield_delay = WIELD_DELAY_VERY_FAST
 
+	random_spawn_muzzle = list() //no default bayonet
 
 /obj/item/weapon/gun/rifle/type71/carbine/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 18,"rail_x" = 19, "rail_y" = 22, "under_x" = 21, "under_y" = 14, "stock_x" = 24, "stock_y" = 13)
 
+/obj/item/weapon/gun/rifle/type71/carbine/set_gun_config_values()
+	..()
+	fire_delay = config.mlow_fire_delay
+	damage_mult = config.base_hit_damage_mult - config.low_hit_damage_mult
+	scatter_unwielded = config.hmed_scatter_value
+	recoil_unwielded = config.low_recoil_value
 
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando
 	name = "\improper Type 71 'Commando' pulse carbine"
-	desc = "A much rarer variant of the standard Type 71, this version contains an integrated supressor, a scope, and lots of fine-tuning. Many parts have been replaced, filed down, and improved upon. As a result, this variant is rarely seen issued outside of commando units and officer cadres."
+	desc = "A much rarer variant of the Type 71, this version contains an integrated supressor, integrated scope, and extensive fine-tuning. Many parts have been replaced, filed down, and improved upon. As a result, this variant is rarely seen outside of commando units."
 	icon_state = "type73"
 	item_state = "type73"
 	wield_delay = 0 //Ends up being .5 seconds due to scope
+	current_mag = /obj/item/ammo_magazine/rifle/type71/ap
 	attachable_allowed = list(
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/verticalgrip,
@@ -688,13 +706,11 @@
 	S.Attach(src)
 	update_attachable(S.slot)
 	//scope
-	var/obj/item/attachable/scope/F = new(src)
+	var/obj/item/attachable/scope/mini/F = new(src)
 	F.hidden = TRUE
 	F.flags_attach_features &= ~ATTACH_REMOVABLE
 	F.Attach(src)
 	update_attachable(F.slot)
-
-
 
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/set_gun_attachment_offsets()
@@ -703,16 +719,11 @@
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/set_gun_config_values()
 	..()
-	fire_delay = config.high_fire_delay
-	burst_amount = config.low_burst_value
-	burst_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult + config.max_hit_accuracy_mult + config.max_hit_accuracy_mult
+	accuracy_mult = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.med_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil_unwielded = config.high_recoil_value
+	fire_delay = config.mlow_fire_delay
+	burst_delay = config.min_fire_delay
+	scatter = config.low_scatter_value
 
 //-------------------------------------------------------
 //-------------------------------------------------------
@@ -764,4 +775,3 @@
 	damage_mult = config.base_hit_damage_mult + config.hmed_hit_damage_mult
 	recoil_unwielded = config.low_recoil_value
 	damage_falloff_mult = 0
-

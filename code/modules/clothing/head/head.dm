@@ -15,7 +15,7 @@
 
 
 /obj/item/clothing/head/cmbandana
-	name = "\improper USCM bandana"
+	name = "bandana"
 	desc = "Typically worn by heavy-weapon operators, mercenaries and scouts, the bandana serves as a lightweight and comfortable hat. Comes in two stylish colors."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "band"
@@ -33,7 +33,7 @@
 
 
 /obj/item/clothing/head/beanie
-	name = "\improper USCM beanie"
+	name = "beanie"
 	desc = "A standard military beanie, often worn by non-combat military personnel and support crews, though the occasional one finds its way to the front line. Popular due to being comfortable and snug."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "beanie_cargo"
@@ -70,8 +70,8 @@
 	icon_state = "beretwo"
 
 /obj/item/clothing/head/headband
-	name = "\improper USCM headband"
-	desc = "A rag typically worn by the less-orthodox weapons operators in the USCM. While it offers no protection, it is certainly comfortable to wear compared to the standard helmet. Comes in two stylish colors."
+	name = "headband"
+	desc = "A rag typically worn by the less-orthodox weapons operators. While it offers no protection, it is certainly comfortable to wear compared to the standard helmet. Comes in two stylish colors."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "headband"
 	item_icons = list(
@@ -88,8 +88,11 @@
 /obj/item/clothing/head/headband/tan
 	icon_state = "headbandtan"
 
+/obj/item/clothing/head/headband/rebel
+	desc = "A headband made from a simple strip of cloth. The words \"DOWN WITH TYRANTS\" are emblazoned on the front."
+	icon_state = "rebelband"
+
 /obj/item/clothing/head/headband/rambo
-	name = "headband"
 	desc = "It flutters in the face of the wind, defiant and unrestrained, like the man who wears it."
 	icon = 'icons/obj/items/clothing/hats.dmi'
 	icon_state = "headband_rambo"
@@ -107,7 +110,7 @@
 	)
 
 /obj/item/clothing/head/cmcap
-	name = "\improper USCM cap"
+	name = "patrol cap"
 	desc = "A casual cap occasionally worn by Squad-leaders and Combat-Engineers. While it has limited combat functionality, some prefer to wear it instead of the standard issue helmet."
 	icon_state = "cap"
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
@@ -273,7 +276,7 @@
 	icon_state = "codressberet"
 
 /obj/item/clothing/head/beret/marine/commander/cdre
-	name = "marine commodore bere"
+	name = "marine commodore beret"
 	desc = "A navy beret with the commodore insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders. Often passed onto Captains by Commodores as sign of respect, promise, or any other multitude of reasoning."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "cdreberet"
@@ -410,7 +413,7 @@
 	name = "\improper armored UPP beret"
 	icon_state = "upp_beret"
 
-/obj/item/clothing/head/frelancer
+/obj/item/clothing/head/freelancer
 	name = "\improper armored Freelancer cap"
 	desc = "A sturdy freelancer's cap. More protective than it seems."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
@@ -433,7 +436,7 @@
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 
-/obj/item/clothing/head/frelancer/beret
+/obj/item/clothing/head/freelancer/beret
 	name = "\improper armored Freelancer beret"
 	icon_state = "freelancer_beret"
 
@@ -459,6 +462,11 @@
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
+
+/obj/item/clothing/head/militia/bucket
+	name = "bucket"
+	desc = "This metal bucket appears to have been modified with padding and chin-straps, plus an eye-slit carved into the \"front\". Presumably, it is intended to be worn on the head, possibly for protection."
+	icon_state = "bucket"
 
 /obj/item/clothing/head/admiral
 	name = "\improper armored Admiral cap"

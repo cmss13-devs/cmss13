@@ -306,8 +306,6 @@
 	icon_state = "rocketpack"
 	worn_accessible = TRUE
 
-#define SCOUT_CLOAK_COOLDOWN 100
-#define SCOUT_CLOAK_TIMER 50
 // Scout Cloak
 /obj/item/storage/backpack/marine/satchel/scout_cloak
 	name = "\improper M68 Thermal Cloak"
@@ -320,6 +318,11 @@
 	var/camo_cooldown_timer = 0
 	var/camo_cooldown_start_time = 0
 	var/camo_ready = 1
+
+	var/camo_cooldown = 100
+	var/camo_time_limit = 50
+	var/camo_alpha = 10
+
 	actions_types = list(/datum/action/item_action)
 
 
@@ -361,7 +364,7 @@
 		O.show_message("[M] vanishes into thin air!", 1)
 	playsound(M.loc,'sound/effects/cloak_scout_on.ogg', 15, 1)
 
-	M.alpha = 10
+	M.alpha = camo_alpha
 
 	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.remove_from_hud(M)
@@ -371,7 +374,7 @@
 	spawn(1)
 		anim(M.loc,M,'icons/mob/mob.dmi',,"cloak",,M.dir)
 
-	camo_active_timer = world.time + SCOUT_CLOAK_TIMER
+	camo_active_timer = world.time + camo_time_limit
 	process_active_camo(usr)
 	return 1
 
@@ -395,7 +398,7 @@
 	spawn(1)
 		anim(user.loc,user,'icons/mob/mob.dmi',,"uncloak",,user.dir)
 
-	camo_cooldown_timer = world.time + SCOUT_CLOAK_COOLDOWN
+	camo_cooldown_timer = world.time + camo_cooldown
 	camo_cooldown_start_time = world.time
 	process_camo_cooldown(user)
 
@@ -418,6 +421,17 @@
 			camo_off(user)
 
 		sleep(10)	// Process every second.
+
+
+/obj/item/storage/backpack/marine/satchel/scout_cloak/upp
+	name = "\improper V86 Thermal Cloak"
+	desc = "A thermo-optic camoflage cloak commonly used by UPP commando units. While less concealing than the M68 thermal cloak used by the USCM scouts, the simplified thermal dampener system of the V86 can be run for extended periods."
+	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP/commando) //Need to wear UPP commando armor to equip this.
+
+	max_storage_space = 21
+	camo_cooldown = 50
+	camo_time_limit = 300
+	camo_alpha = 20
 
 
 
@@ -545,8 +559,7 @@
 	name = "commando bag"
 	desc = "A heavy-duty bag carried by Weyland Yutani commandos."
 	icon_state = "commandopack"
-	storage_slots = null
-	max_storage_space = 30
+	worn_accessible = TRUE
 
 /obj/item/storage/backpack/mcommander
 	name = "marine commanding officer backpack"
@@ -573,4 +586,3 @@
 	unacidable = TRUE
 	var/internal_mag = new /obj/item/ammo_magazine/internal/souto
 	worn_accessible = TRUE
-	

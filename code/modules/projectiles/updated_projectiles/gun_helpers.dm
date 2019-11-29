@@ -511,9 +511,6 @@ should be alright.
 					if(istype(back,/obj/item/weapon)) //then check for weapons
 						back.attack_hand(src)
 						return
-					if(istype(back, /obj/item/marine/fuelpack)) //Exception for pyro fuelpack
-						back.attack_hand(src)
-						return
 
 				if(l_store)
 					if(istype(l_store, /obj/item/storage/pouch))  //check pouches

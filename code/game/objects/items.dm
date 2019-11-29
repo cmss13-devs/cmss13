@@ -185,7 +185,7 @@ cases. Override_icon_state should be a list.*/
 				icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
 				item_state = new_item_state ? new_item_state : "s_" + item_state
 				if(new_protection) min_cold_protection_temperature = new_protection
-			if(MAP_SOROKYNE_STRATA) 
+			if(MAP_SOROKYNE_STRATA)
 				icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
 				item_state = new_item_state ? new_item_state : "s_" + item_state
 				if(new_protection) min_cold_protection_temperature = new_protection
@@ -514,11 +514,6 @@ cases. Override_icon_state should be a list.*/
 					var/obj/item/storage/large_holster/B = H.back
 					if(B.can_be_inserted(src, 1))
 						return 1
-				if(H.back && istype(H.back, /obj/item/marine/fuelpack)) // Shitty exception for pyro fuelpack
-					var/obj/item/marine/fuelpack/FP = H.back
-					if(istype(src, /obj/item/weapon/gun/flamer/M240T))
-						FP.attackby(src, H)
-						return TRUE
 				return 0
 			if(WEAR_IN_BELT)
 				if(H.belt && istype(H.belt, /obj/item/storage))

@@ -967,7 +967,6 @@
 #include "code\modules\cm_marines\shuttle_backend.dm"
 #include "code\modules\cm_marines\smartgun_mount.dm"
 #include "code\modules\cm_marines\vehicle_part_fabricator.dm"
-#include "code\modules\cm_marines\equipment\flamer.dm"
 #include "code\modules\cm_marines\equipment\gear.dm"
 #include "code\modules\cm_marines\equipment\kit_boxes.dm"
 #include "code\modules\cm_marines\equipment\maps.dm"

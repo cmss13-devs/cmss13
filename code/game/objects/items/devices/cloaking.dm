@@ -12,7 +12,7 @@
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
-	origin_tech = "syndicate=4;magnets=4"
+	
 	var/chameleon_on = FALSE
 	var/datum/effect_system/spark_spread/spark_system
 	var/chameleon_cooldown
@@ -74,7 +74,7 @@
 	throw_speed = SPEED_FAST
 	throw_range = 10
 	w_class = SIZE_SMALL
-	origin_tech = "magnets=3;syndicate=4"
+	
 
 
 /obj/item/device/cloaking_device/attack_self(mob/user as mob)

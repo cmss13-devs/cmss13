@@ -40,7 +40,6 @@
 /obj/item/circuitboard/computer/cryopodcontrol
 	name = "Circuit board (Cryogenic Oversight Console)"
 	build_path = "/obj/structure/machinery/computer/cryopod"
-	origin_tech = "programming=3"
 
 /obj/item/circuitboard/computer/med_data
 	name = "Circuit board (Medical Records)"
@@ -49,17 +48,14 @@
 /obj/item/circuitboard/computer/pandemic
 	name = "Circuit board (PanD.E.M.I.C. 2200)"
 	build_path = /obj/structure/machinery/computer/pandemic
-	origin_tech = "programming=2;biotech=2"
 
 /obj/item/circuitboard/computer/scan_consolenew
 	name = "Circuit board (DNA Machine)"
 	// build_path = /obj/structure/machinery/computer/scan_consolenew
-	origin_tech = "programming=2;biotech=2"
 
 /obj/item/circuitboard/computer/communications
 	name = "Circuit board (Communications)"
 	build_path = /obj/structure/machinery/computer/communications
-	origin_tech = "programming=2;magnets=2"
 
 /obj/item/circuitboard/computer/card
 	name = "Circuit board (ID Computer)"
@@ -72,7 +68,6 @@
 /obj/item/circuitboard/computer/teleporter
 	name = "Circuit board (Teleporter)"
 	build_path = /obj/structure/machinery/computer/teleporter
-	origin_tech = "programming=2;bluespace=2"
 
 /obj/item/circuitboard/computer/secure_data
 	name = "Circuit board (Security Records)"
@@ -111,15 +106,15 @@
 /obj/item/circuitboard/computer/robotics
 	name = "Circuit board (Robotics Control)"
 	build_path = /obj/structure/machinery/computer/robotics
-	origin_tech = "programming=3"
+	
 /obj/item/circuitboard/computer/drone_control
 	name = "Circuit board (Drone Control)"
 	build_path = /obj/structure/machinery/computer/drone_control
-	origin_tech = "programming=3"
+	
 /obj/item/circuitboard/computer/arcade
 	name = "Circuit board (Arcade)"
 	build_path = /obj/structure/machinery/computer/arcade
-	origin_tech = "programming=1"
+	
 /obj/item/circuitboard/computer/turbine_control
 	name = "Circuit board (Turbine control)"
 	build_path = /obj/structure/machinery/computer/turbine_computer
@@ -150,20 +145,20 @@
 /obj/item/circuitboard/computer/crew
 	name = "Circuit board (Crew monitoring computer)"
 	build_path = /obj/structure/machinery/computer/crew
-	origin_tech = "programming=3;biotech=2;magnets=2"
+	
 /obj/item/circuitboard/computer/ordercomp
 	name = "Circuit board (Supply ordering console)"
 	build_path = /obj/structure/machinery/computer/ordercomp
-	origin_tech = "programming=2"
+	
 /obj/item/circuitboard/computer/supply_drop_console
 	name = "Circuit board (Supply Drop Console)"
 	build_path = /obj/structure/machinery/computer/supply_drop_console
-	origin_tech = "programming=3"
+	
 
 /obj/item/circuitboard/computer/supplycomp
 	name = "Circuit board (Supply shuttle console)"
 	build_path = /obj/structure/machinery/computer/supplycomp
-	origin_tech = "programming=3"
+	
 	var/contraband_enabled = 0
 
 /obj/item/circuitboard/computer/supplycomp/construct(var/obj/structure/machinery/computer/supplycomp/SC)
@@ -177,28 +172,28 @@
 /obj/item/circuitboard/computer/operating
 	name = "Circuit board (Operating Computer)"
 	build_path = /obj/structure/machinery/computer/operating
-	origin_tech = "programming=2;biotech=2"
+	
 /obj/item/circuitboard/computer/comm_monitor
 	name = "Circuit board (Telecommunications Monitor)"
 	build_path = /obj/structure/machinery/computer/telecomms/monitor
-	origin_tech = "programming=3"
+	
 /obj/item/circuitboard/computer/comm_server
 	name = "Circuit board (Telecommunications Server Monitor)"
 	build_path = /obj/structure/machinery/computer/telecomms/server
-	origin_tech = "programming=3"
+	
 /obj/item/circuitboard/computer/comm_traffic
 	name = "Circuitboard (Telecommunications Traffic Control)"
 	build_path = /obj/structure/machinery/computer/telecomms/traffic
-	origin_tech = "programming=3"
+	
 
 /obj/item/circuitboard/computer/aifixer
 	name = "Circuit board (AI Integrity Restorer)"
 	build_path = /obj/structure/machinery/computer/aifixer
-	origin_tech = "programming=3;biotech=2"
+	
 /obj/item/circuitboard/computer/area_atmos
 	name = "Circuit board (Area Air Control)"
 	build_path = /obj/structure/machinery/computer/area_atmos
-	origin_tech = "programming=2"
+	
 
 
 /obj/item/circuitboard/computer/supplycomp/attackby(obj/item/I as obj, mob/user as mob)

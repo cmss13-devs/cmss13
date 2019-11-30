@@ -2,7 +2,7 @@
 	name = "flashbang"
 	icon_state = "flashbang"
 	item_state = "grenade_flashbang"
-	origin_tech = "materials=2;combat=1"
+	
 	var/banglet = 0
 	harmful = FALSE
 

@@ -353,7 +353,6 @@ var/list/admin_verbs_mod = list(
 	verbs += /client/proc/show_verbs
 
 	to_chat(src, "<span class='interface'>Most of your adminverbs have been hidden.</span>")
-	feedback_add_details("admin_verb","HMV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
 /client/proc/hide_verbs()
@@ -364,7 +363,6 @@ var/list/admin_verbs_mod = list(
 	verbs += /client/proc/show_verbs
 
 	to_chat(src, "<span class='interface'>Almost all of your adminverbs have been hidden.</span>")
-	feedback_add_details("admin_verb","TAVVH") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
 /client/proc/show_verbs()
@@ -375,7 +373,6 @@ var/list/admin_verbs_mod = list(
 	add_admin_verbs()
 
 	to_chat(src, "<span class='interface'>All of your adminverbs are now visible.</span>")
-	feedback_add_details("admin_verb","TAVVS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
 
@@ -402,8 +399,6 @@ var/list/admin_verbs_mod = list(
 		ghost.can_reenter_corpse = 1
 		ghost.reenter_corpse()
 
-		feedback_add_details("admin_verb","P") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
 	else if(istype(mob,/mob/new_player))
 		to_chat(src, "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>")
 	else
@@ -417,7 +412,6 @@ var/list/admin_verbs_mod = list(
 		if(body && !body.key)
 			body.key = "@[key]"	//Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
 			if(body.client) body.client.change_view(world.view) //reset view range to default.
-		feedback_add_details("admin_verb","O") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		//re-open STUI
 	if(new_STUI)
 		STUI.ui_interact(mob)
@@ -439,22 +433,11 @@ var/list/admin_verbs_mod = list(
 			mob.remove_from_all_mob_huds()
 
 
-/*
-/client/proc/player_panel()
-	set name = "Player Panel"
-	set category = "Admin"
-	if(admin_holder)
-		admin_holder.player_panel_old()
-	feedback_add_details("admin_verb","PP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	return
-*/
-
 /client/proc/player_panel_new()
 	set name = "Player Panel"
 	set category = "Admin"
 	if(admin_holder)
 		admin_holder.player_panel_new()
-	feedback_add_details("admin_verb","PPN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
 /client/proc/check_antagonists()
@@ -463,7 +446,6 @@ var/list/admin_verbs_mod = list(
 	if(admin_holder)
 		admin_holder.check_antagonists()
 		log_admin("[key_name(usr)] checked antagonists.")	//for tsar~
-	feedback_add_details("admin_verb","CHA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
 /client/proc/jobbans()
@@ -474,7 +456,6 @@ var/list/admin_verbs_mod = list(
 			admin_holder.Jobbans()
 		else
 			admin_holder.DB_ban_panel()
-	feedback_add_details("admin_verb","VJB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
 /client/proc/unban_panel()
@@ -485,7 +466,6 @@ var/list/admin_verbs_mod = list(
 			admin_holder.unbanpanel()
 		else
 			admin_holder.DB_ban_panel()
-	feedback_add_details("admin_verb","UBP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
 /client/proc/chem_panel()
@@ -493,7 +473,6 @@ var/list/admin_verbs_mod = list(
 	set category = "Admin"
 	if(admin_holder)
 		admin_holder.Chem()
-	feedback_add_details("admin_verb","CGP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
 /client/proc/game_panel()
@@ -501,7 +480,6 @@ var/list/admin_verbs_mod = list(
 	set category = "Admin"
 	if(admin_holder)
 		admin_holder.Game()
-	feedback_add_details("admin_verb","GP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
 /client/proc/secrets()
@@ -509,7 +487,6 @@ var/list/admin_verbs_mod = list(
 	set category = "Admin"
 	if (admin_holder)
 		admin_holder.Secrets()
-	feedback_add_details("admin_verb","S") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
 /client/proc/set_ooc_color_self()
@@ -520,7 +497,6 @@ var/list/admin_verbs_mod = list(
 	if(new_ooccolor)
 		prefs.ooccolor = new_ooccolor
 		prefs.save_preferences()
-	feedback_add_details("admin_verb","OC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
 /client/proc/stealth()
@@ -537,7 +513,7 @@ var/list/admin_verbs_mod = list(
 			admin_holder.fakekey = new_key
 		log_admin("[key_name(usr)] has turned stealth mode [admin_holder.fakekey ? "ON" : "OFF"]")
 		message_admins("[key_name_admin(usr)] has turned stealth mode [admin_holder.fakekey ? "ON" : "OFF"]", 1)
-	feedback_add_details("admin_verb","SM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 #define MAX_WARNS 3
 #define AUTOBANTIME 10
@@ -568,18 +544,12 @@ var/list/admin_verbs_mod = list(
 		else
 			message_admins("[key_name_admin(src)] has warned [warned_ckey] resulting in a [AUTOBANTIME] minute ban.")
 		AddBan(warned_ckey, D.last_id, "Autobanning due to too many formal warnings", ckey, 1, AUTOBANTIME)
-		feedback_inc("ban_warn",1)
 	else
 		if(C)
 			to_chat(C, "<font color='red'><BIG><B>You have been formally warned by an administrator.</B></BIG><br>Further warnings will result in an autoban.</font>")
 			message_admins("[key_name_admin(src)] has warned [key_name_admin(C)]. They have [MAX_WARNS-D.warns] strikes remaining.")
 		else
 			message_admins("[key_name_admin(src)] has warned [warned_ckey] (DC). They have [MAX_WARNS-D.warns] strikes remaining.")
-
-	feedback_add_details("admin_verb","WARN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-#undef MAX_WARNS
-#undef AUTOBANTIME
 
 /client/proc/drop_bomb() // Some admin dickery that can probably be done better -- TLE
 	set category = "Fun"
@@ -612,7 +582,9 @@ var/list/admin_verbs_mod = list(
 			var/flash_range = input("Flash range (in tiles):") as num
 			explosion(epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range)
 	message_admins(SPAN_NOTICE("[ckey] used 'Drop Bomb' at [epicenter.loc]."))
-	feedback_add_details("admin_verb","DB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
+#undef MAX_WARNS
+#undef AUTOBANTIME
 
 /client/proc/give_disease(mob/T as mob in mob_list) // -- Giacom
 	set category = "Fun"
@@ -626,7 +598,7 @@ var/list/admin_verbs_mod = list(
 	if(!D) return
 	var/path = text2path("/datum/disease/[D]")
 	T.contract_disease(new path, 1)
-	feedback_add_details("admin_verb","GD") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 	log_admin("[key_name(usr)] gave [key_name(T)] the disease [D].")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] gave [key_name(T)] the disease [D]."), 1)
 
@@ -642,14 +614,14 @@ var/list/admin_verbs_mod = list(
 			V.show_message(message, 2)
 		log_admin("[key_name(usr)] made [O] at [O.x], [O.y], [O.z]. make a sound")
 		message_admins(SPAN_NOTICE("[key_name_admin(usr)] made [O] at [O.x], [O.y], [O.z]. make a sound"), 1)
-		feedback_add_details("admin_verb","MS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+		 
 
 /client/proc/togglebuildmodeself()
 	set name = "Toggle Build Mode Self"
 	set category = "Fun"
 	if(src.mob)
 		togglebuildmode(src.mob)
-	feedback_add_details("admin_verb","TBMS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/object_talk(var/msg as text) // -- TLE
 	set category = "Special Verbs"
@@ -660,7 +632,7 @@ var/list/admin_verbs_mod = list(
 			return
 		for (var/mob/V in hearers(mob.control_object))
 			V.show_message("<b>[mob.control_object.name]</b> says: \"" + msg + "\"", 2)
-	feedback_add_details("admin_verb","OT") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /*
 /client/proc/kill_air() // -- TLE
@@ -673,7 +645,7 @@ var/list/admin_verbs_mod = list(
 	else
 		air_processing_killed = 1
 		to_chat(usr, "<b>Disabled air processing.</b>")
-	feedback_add_details("admin_verb","KA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 	log_admin("[key_name(usr)] used 'kill air'.")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] used 'kill air'."), 1)
 */
@@ -689,7 +661,7 @@ var/list/admin_verbs_mod = list(
 			verbs += /client/proc/readmin_self
 			deadmin()
 			to_chat(src, "<br><br><span class='centerbold'><big>You are now a normal player. You can ascend back to adminhood at any time using the 'Re-admin Self' verb in your Admin panel.</big></span><br>")
-	feedback_add_details("admin_verb", "DAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/readmin_self()
 	set name = "Re-admin Self"
@@ -700,7 +672,7 @@ var/list/admin_verbs_mod = list(
 	to_chat(src, "<br><br><span class='centerbold'><big>You have ascended back to adminhood. All your verbs should be back where you left them.</big></span><br>")
 	log_admin("[src] readmined themselves.")
 	message_admins("[src] readmined themselves.", 1)
-	feedback_add_details("admin_verb", "RAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/toggle_log_hrefs()
 	set name = "Toggle href Logging"
@@ -722,7 +694,7 @@ var/list/admin_verbs_mod = list(
 	set category = "Admin"
 /*	if(admin_holder)
 		admin_holder.mod_panel()*/
-//	feedback_add_details("admin_verb","MP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+//	 
 	return
 
 /client/proc/editappear(mob/living/carbon/human/M as mob in mob_list)

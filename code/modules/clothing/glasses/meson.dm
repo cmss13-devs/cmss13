@@ -7,7 +7,7 @@
 	icon_state = "meson"
 	item_state = "glasses"
 	actions_types = list(/datum/action/item_action/toggle)
-	origin_tech = "magnets=2;engineering=2"
+	
 	toggleable = 1
 	fullscreen_vision = /obj/screen/fullscreen/meson
 

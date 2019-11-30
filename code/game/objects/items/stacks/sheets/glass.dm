@@ -16,7 +16,7 @@
 	singular_name = "glass sheet"
 	icon_state = "sheet-glass"
 	matter = list("glass" = 3750)
-	origin_tech = "materials=1"
+	
 	stack_id = "glass sheet"
 	var/created_window = /obj/structure/window
 	var/created_full_window = /obj/structure/window/full
@@ -146,7 +146,7 @@
 	stack_id = "reinf glass sheet"
 
 	matter = list("metal" = 1875,"glass" = 3750)
-	origin_tech = "materials=2"
+	
 
 	created_window = /obj/structure/window/reinforced
 	created_full_window = /obj/structure/window/reinforced/full
@@ -165,7 +165,7 @@
 	singular_name = "phoron glass sheet"
 	icon_state = "sheet-phoronglass"
 	matter = list("glass" = 7500)
-	origin_tech = "materials=3;phorontech=2"
+	
 	created_window = /obj/structure/window/phoronbasic
 	created_full_window = /obj/structure/window/phoronbasic/full
 
@@ -196,7 +196,7 @@
 	icon_state = "sheet-phoronrglass"
 	matter = list("glass" = 7500,"metal" = 1875)
 
-	origin_tech = "materials=4;phorontech=2"
+	
 	created_window = /obj/structure/window/phoronreinforced
 	created_full_window = /obj/structure/window/phoronreinforced/full
 	is_reinforced = 1

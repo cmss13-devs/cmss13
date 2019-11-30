@@ -17,7 +17,7 @@
 	var/obj/item/cell/dcell = null
 	var/datum/effect_system/spark_spread/sparks = new
 	var/defib_cooldown = 0 //Cooldown for toggling the defib
-	origin_tech = "biotech=3"
+	
 
 
 /mob/living/carbon/human/proc/check_tod()

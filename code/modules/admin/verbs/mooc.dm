@@ -31,4 +31,4 @@
 			continue
 		to_chat(C, SPAN_MOOC("MOOC: [src.key]([src.admin_holder.rank]): [msg]"))
 
-	feedback_add_details("admin_verb","MOOC")
+	 

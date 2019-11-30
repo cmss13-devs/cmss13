@@ -15,7 +15,7 @@
 	w_class = SIZE_MEDIUM
 	flags_atom = FPRINT|CONDUCT|NOBLOODY
 	flags_item = NOSHIELD
-	origin_tech = "combat=3"
+	
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
@@ -49,7 +49,7 @@
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT|NOBLOODY
 	flags_item = NOSHIELD
-	origin_tech = "magnets=3;syndicate=4"
+	
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1

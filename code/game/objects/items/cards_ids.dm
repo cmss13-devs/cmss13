@@ -180,7 +180,6 @@
 /obj/item/card/id/syndicate
 	name = "agent card"
 	access = list(ACCESS_ILLEGAL_PIRATE)
-	origin_tech = "syndicate=3"
 	var/registered_user=null
 
 /obj/item/card/id/syndicate/New(mob/user as mob)

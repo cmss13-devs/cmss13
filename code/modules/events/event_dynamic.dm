@@ -14,14 +14,6 @@ var/list/event_last_fired = list()
 	//Events have to be manually added to this proc to happen
 	var/list/possibleEvents = list()
 
-	//see:
-	//Code/WorkInProgress/Cael_Aislinn/Economy/Economy_Events.dm
-	//Code/WorkInProgress/Cael_Aislinn/Economy/Economy_Events_Mundane.dm
-
-	if(account_hack_attempted)
-		possibleEvents[/datum/event/money_hacker] = max(min(25, player_list.len) * 4, 200)
-
-
 	possibleEvents[/datum/event/carp_migration] = 20 + 10 * active_with_role["Engineer"]
 	possibleEvents[/datum/event/brand_intelligence] = 20 + 25 * active_with_role["Janitor"]
 

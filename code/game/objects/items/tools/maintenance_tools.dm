@@ -25,7 +25,7 @@
 	throwforce = 7.0
 	w_class = SIZE_SMALL
 	matter = list("metal" = 150)
-	origin_tech = "materials=1;engineering=1"
+	
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
 
 
@@ -108,7 +108,7 @@
 	throw_range = 9
 	w_class = SIZE_SMALL
 	matter = list("metal" = 80)
-	origin_tech = "materials=1;engineering=1"
+	
 	attack_verb = list("pinched", "nipped")
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 1
@@ -146,7 +146,7 @@
 	matter = list("metal" = 70, "glass" = 30)
 
 	//R&D tech level
-	origin_tech = "engineering=1"
+	
 
 	//blowtorch specific stuff
 	var/welding = 0 	//Whether or not the blowtorch is off(0), on(1) or currently welding(2)
@@ -391,21 +391,21 @@
 	name = "industrial blowtorch"
 	max_fuel = 40
 	matter = list("metal" = 70, "glass" = 60)
-	origin_tech = "engineering=2"
+	
 
 /obj/item/tool/weldingtool/hugetank
 	name = "high-capacity industrial blowtorch"
 	max_fuel = 80
 	w_class = SIZE_MEDIUM
 	matter = list("metal" = 70, "glass" = 120)
-	origin_tech = "engineering=3"
+	
 
 /obj/item/tool/weldingtool/experimental
 	name = "experimental blowtorch"
 	max_fuel = 40 //?
 	w_class = SIZE_MEDIUM
 	matter = list("metal" = 70, "glass" = 120)
-	origin_tech = "engineering=4;phorontech=3"
+	
 	var/last_gen = 0
 
 /obj/item/tool/weldingtool/experimental/proc/fuel_gen()//Proc to make the experimental welder generate fuel, optimized as fuck -Sieve
@@ -430,7 +430,7 @@
 	item_state = "crowbar"
 	w_class = SIZE_SMALL
 	matter = list("metal" = 50)
-	origin_tech = "engineering=1"
+	
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
 	pry_capable = IS_PRY_CAPABLE_CROWBAR
 

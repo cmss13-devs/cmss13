@@ -23,7 +23,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	flags_atom = FPRINT|CONDUCT
-	origin_tech = "materials=1"
+	
 	attack_verb = list("attacked", "stabbed", "poked")
 	sharp = 0
 	var/loaded      //Descriptive string for currently loaded food object.
@@ -127,7 +127,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
 	matter = list("metal" = 12000)
-	origin_tech = "materials=1"
+	
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /obj/item/tool/kitchen/knife/ritual
@@ -150,7 +150,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
 	matter = list("metal" = 12000)
-	origin_tech = "materials=1"
+	
 	attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = 1

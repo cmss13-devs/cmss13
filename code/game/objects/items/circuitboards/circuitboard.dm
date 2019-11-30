@@ -6,7 +6,6 @@
 	item_state = "electronic"
 	flags_atom = FPRINT|CONDUCT
 	matter = list("metal" = 50, "glass" = 50)
-	origin_tech = "programming=2"
 	var/build_path = null
 
 
@@ -31,7 +30,6 @@
 
 /obj/item/circuitboard/aicore
 	name = "Circuit board (AI Core)"
-	origin_tech = "programming=4;biotech=2"
 
 
 /obj/item/circuitboard/airalarm

@@ -376,12 +376,10 @@ var/waiting_for_drop_votes = 0
 			break
 
 	if(finished == 1 && !isnull(winner) && istype(winner))
-		feedback_set_details("round_end_result","single winner")
 		to_world(SPAN_DANGER("<FONT size = 4><B>We have a winner! >> [winner.real_name] ([winner.key]) << defeated all enemies!</B></FONT>"))
 		to_world("<FONT size = 3><B>Well done, your tale of survival will live on in legend!</B></FONT>")
 
 	else if(finished == 2)
-		feedback_set_details("round_end_result","no winners")
 		to_world(SPAN_DANGER("<FONT size = 4><B>NOBODY WON!?</B></FONT>"))
 		to_world("<FONT size = 3><B>'Somehow you stupid humans managed to even fuck up killing yourselves. Well done.'</B></FONT>")
 		world << 'sound/misc/sadtrombone.ogg'
@@ -389,7 +387,6 @@ var/waiting_for_drop_votes = 0
 		if(round_stats) // Logging to data/logs/round_stats.log
 			round_stats << "Humans remaining: [count_humans()]\nRound time: [duration2text()][log_end]"
 	else
-		feedback_set_details("round_end_result","no winners")
 		to_world(SPAN_DANGER("<FONT size = 4><B>NOBODY WON!</B></FONT>"))
 		to_world("<FONT size = 3><B>There was a winner, but they died before they could receive the prize!! Bummer.</B></FONT>")
 		world << 'sound/misc/sadtrombone.ogg'

@@ -175,12 +175,12 @@
 
 
 /obj/item/device/radio/headset/syndicate
-	origin_tech = "syndicate=3"
+	
 	keyslot1 = new /obj/item/device/encryptionkey/syndicate
 
 
 /obj/item/device/radio/headset/binary
-	origin_tech = "syndicate=3"
+	
 	keyslot1 = new /obj/item/device/encryptionkey/binary
 
 

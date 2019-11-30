@@ -154,7 +154,7 @@ var/global/floorIsLava = 0
 	"}
 
 	usr << browse(body, "window=adminplayeropts;size=550x515")
-	feedback_add_details("admin_verb","SPP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 
 /datum/player_info/var/author // admin who authored the information
@@ -453,12 +453,6 @@ var/global/floorIsLava = 0
 		to_world(SPAN_DANGER("<b>Restarting world!</b> [SPAN_NOTICE("Initiated by [usr.client.admin_holder.fakekey ? "Admin" : usr.key]!")]"))
 		log_admin("[key_name(usr)] initiated a reboot.")
 
-		feedback_set_details("end_error","admin reboot - by [usr.key] [usr.client.admin_holder.fakekey ? "(stealth)" : ""]")
-		feedback_add_details("admin_verb","R") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-		if(blackbox)
-			blackbox.save_all_data_to_sql()
-
 		sleep(50)
 		world.Reboot()
 
@@ -475,7 +469,7 @@ var/global/floorIsLava = 0
 			message = adminscrub(message,500)
 		to_world(SPAN_NOTICE(" <b>[usr.client.admin_holder.fakekey ? "Administrator" : usr.key] Announces:</b>\n \t [message]"))
 		log_admin("Announce: [key_name(usr)] : [message]")
-	feedback_add_details("admin_verb","A") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /datum/admins/proc/toggleooc()
 	set category = "Server"
@@ -488,7 +482,7 @@ var/global/floorIsLava = 0
 		to_world("<B>The OOC channel has been globally disabled!</B>")
 	log_admin("[key_name(usr)] toggled OOC.")
 	message_admins("[key_name_admin(usr)] toggled OOC.", 1)
-	feedback_add_details("admin_verb","TOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /datum/admins/proc/togglelooc()
 	set category = "Server"
@@ -501,7 +495,7 @@ var/global/floorIsLava = 0
 		to_world("<B>The LOOC channel has been globally disabled!</B>")
 	log_admin("[key_name(usr)] toggled LOOC.")
 	message_admins("[key_name_admin(usr)] toggled LOOC.", 1)
-	feedback_add_details("admin_verb","TLOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /datum/admins/proc/toggledsay()
 	set category = "Server"
@@ -514,7 +508,7 @@ var/global/floorIsLava = 0
 		to_world("<B>Deadchat has been globally disabled!</B>")
 	log_admin("[key_name(usr)] toggled deadchat.")
 	message_admins("[key_name_admin(usr)] toggled deadchat.", 1)
-	feedback_add_details("admin_verb","TDSAY") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc
+	 
 
 /datum/admins/proc/toggleoocdead()
 	set category = "Server"
@@ -524,7 +518,7 @@ var/global/floorIsLava = 0
 
 	log_admin("[key_name(usr)] toggled Dead OOC.")
 	message_admins("[key_name_admin(usr)] toggled Dead OOC.", 1)
-	feedback_add_details("admin_verb","TDOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /datum/admins/proc/toggleloocdead()
 	set category = "Server"
@@ -534,7 +528,7 @@ var/global/floorIsLava = 0
 
 	log_admin("[key_name(usr)] toggled Dead LOOC.")
 	message_admins("[key_name_admin(usr)] toggled Dead LOOC.", 1)
-	feedback_add_details("admin_verb","TDLOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /datum/admins/proc/toggletraitorscaling()
 	set category = "Server"
@@ -543,7 +537,7 @@ var/global/floorIsLava = 0
 	traitor_scaling = !traitor_scaling
 	log_admin("[key_name(usr)] toggled Traitor Scaling to [traitor_scaling].")
 	message_admins("[key_name_admin(usr)] toggled Traitor Scaling [traitor_scaling ? "on" : "off"].", 1)
-	feedback_add_details("admin_verb","TTS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /datum/admins/proc/startnow()
 	set category = "Server"
@@ -558,7 +552,7 @@ var/global/floorIsLava = 0
 		ticker.current_state = GAME_STATE_SETTING_UP
 		log_admin("[usr.key] has started the game.")
 		message_admins("<font color='blue'>[usr.key] has started the game.</font>")
-		feedback_add_details("admin_verb","SN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+		 
 		return 1
 	else
 		to_chat(usr, "<font color='red'>Error: Start Now: Game has already started.</font>")
@@ -576,7 +570,7 @@ var/global/floorIsLava = 0
 	log_admin("[key_name(usr)] toggled new player game joining.")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled new player game joining."), 1)
 	world.update_status()
-	feedback_add_details("admin_verb","TE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /datum/admins/proc/toggleAI()
 	set category = "Server"
@@ -589,7 +583,7 @@ var/global/floorIsLava = 0
 		to_world("<B>The AI job is chooseable now.</B>")
 	log_admin("[key_name(usr)] toggled AI allowed.")
 	world.update_status()
-	feedback_add_details("admin_verb","TAI") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /datum/admins/proc/toggleaban()
 	set category = "Server"
@@ -603,7 +597,7 @@ var/global/floorIsLava = 0
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled respawn to [abandon_allowed ? "On" : "Off"]."), 1)
 	log_admin("[key_name(usr)] toggled respawn to [abandon_allowed ? "On" : "Off"].")
 	world.update_status()
-	feedback_add_details("admin_verb","TR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /datum/admins/proc/end_round()
 	set category = "Server"
@@ -653,7 +647,7 @@ var/global/floorIsLava = 0
 		to_world("<span class='centerbold'>The game will start soon!</span>")
 		to_world("<hr>")
 		log_admin("[key_name(usr)] removed the delay.")
-	feedback_add_details("admin_verb","DELAY") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /datum/admins/proc/adjump()
 	set category = "Server"
@@ -661,7 +655,7 @@ var/global/floorIsLava = 0
 	set name="Toggle Jump"
 	config.allow_admin_jump = !(config.allow_admin_jump)
 	message_admins(SPAN_NOTICE("Toggled admin jumping to [config.allow_admin_jump]."))
-	feedback_add_details("admin_verb","TJ") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /datum/admins/proc/adspawn()
 	set category = "Server"
@@ -669,7 +663,7 @@ var/global/floorIsLava = 0
 	set name="Toggle Spawn"
 	config.allow_admin_spawning = !(config.allow_admin_spawning)
 	message_admins(SPAN_NOTICE("Toggled admin item spawning to [config.allow_admin_spawning]."))
-	feedback_add_details("admin_verb","TAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /datum/admins/proc/adrev()
 	set category = "Server"
@@ -677,7 +671,7 @@ var/global/floorIsLava = 0
 	set name="Toggle Revive"
 	config.allow_admin_rev = !(config.allow_admin_rev)
 	message_admins(SPAN_NOTICE("Toggled reviving to [config.allow_admin_rev]."))
-	feedback_add_details("admin_verb","TAR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /datum/admins/proc/immreboot()
 	set category = "Server"
@@ -688,12 +682,6 @@ var/global/floorIsLava = 0
 		return
 	to_world(SPAN_DANGER("<b>Rebooting world!</b> \blue Initiated by [usr.client.admin_holder.fakekey ? "Admin" : usr.key]!"))
 	log_admin("[key_name(usr)] initiated an immediate reboot.")
-
-	feedback_set_details("end_error","immediate admin reboot - by [usr.key] [usr.client.admin_holder.fakekey ? "(stealth)" : ""]")
-	feedback_add_details("admin_verb","IR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-	if(blackbox)
-		blackbox.save_all_data_to_sql()
 
 	world.Reboot()
 
@@ -709,7 +697,7 @@ var/global/floorIsLava = 0
 			alert("Admin jumping disabled")
 	else
 		alert("[M.name] is not prisoned.")
-	feedback_add_details("admin_verb","UP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////ADMIN HELPER PROCS
 
@@ -755,7 +743,7 @@ var/global/floorIsLava = 0
 		new chosen(usr.loc)
 
 	log_admin("[key_name(usr)] spawned [chosen] at ([usr.x],[usr.y],[usr.z])")
-	feedback_add_details("admin_verb","SA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 
 /datum/admins/proc/show_traitor_panel(var/mob/M in mob_list)
@@ -771,7 +759,7 @@ var/global/floorIsLava = 0
 		return
 
 	M.mind.edit_memory()
-	feedback_add_details("admin_verb","STP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 
 /datum/admins/proc/toggletintedweldhelmets()
@@ -785,7 +773,7 @@ var/global/floorIsLava = 0
 		to_world("<B>The tinted_weldhelh has been disabled!</B>")
 	log_admin("[key_name(usr)] toggled tinted_weldhelh.")
 	message_admins("[key_name_admin(usr)] toggled tinted_weldhelh.", 1)
-	feedback_add_details("admin_verb","TTWH") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /datum/admins/proc/toggleguests()
 	set category = "Server"
@@ -798,7 +786,7 @@ var/global/floorIsLava = 0
 		to_world("<B>Guests may now enter the game.</B>")
 	log_admin("[key_name(usr)] toggled guests game entering [guests_allowed?"":"dis"]allowed.")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled guests game entering [guests_allowed ? "":"dis"]allowed."), 1)
-	feedback_add_details("admin_verb","TGU") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/update_mob_sprite(mob/living/carbon/human/H as mob)
 	set category = "Admin"
@@ -935,7 +923,7 @@ var/global/floorIsLava = 0
 
 	ticker.mode.picked_call.activate(is_announcing)
 
-	feedback_add_details("admin_verb","DISTR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 	log_admin("[key_name(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [ticker.mode.picked_call.name]")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [ticker.mode.picked_call.name]"), 1)
 
@@ -988,7 +976,7 @@ var/global/floorIsLava = 0
 
 	shuttle.launch()
 
-	feedback_add_details("admin_verb","LNCHERTSHTL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 	log_admin("[key_name(usr)] force launched a distress shuttle ([tag])")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] force launched a distress shuttle ([tag])"), 1)
 
@@ -1007,6 +995,6 @@ var/global/floorIsLava = 0
 
 	set_security_level(SEC_LEVEL_DELTA)
 
-	feedback_add_details("admin_verb","DESTR")
+	 
 	log_admin("[key_name(usr)] admin-started self destruct stystem.")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] admin-started self destruct stystem."), 1)

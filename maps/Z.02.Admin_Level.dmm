@@ -1959,7 +1959,6 @@
 /area/centcom/control)
 "gg" = (
 /obj/structure/machinery/computer/rdservercontrol{
-	badmin = 1;
 	name = "Master R&amp;D Server Controller"
 	},
 /turf/open/floor/almayer{

@@ -5,7 +5,7 @@
 	icon_state = ""
 	item_state = "gun"
 	matter = null
-	origin_tech = "combat=1"					//Guns generally have their own unique levels.
+						//Guns generally have their own unique levels.
 	w_class 	= SIZE_MEDIUM
 	throwforce 	= 5
 	throw_speed = SPEED_VERY_FAST

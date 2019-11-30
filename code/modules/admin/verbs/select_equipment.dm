@@ -13,7 +13,7 @@
 	if(!H || !H.mind)
 		return
 	var/obj/item/card/id/I = H.wear_id
-	feedback_add_details("admin_verb","SMRK") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 	if(newrank != "Custom")
 		var/datum/job/J = RoleAuthority.roles_by_name[newrank]
 		H.mind.role_comm_title = J.get_comm_title()
@@ -88,7 +88,7 @@
 	if(isnull(dresscode))
 		return
 
-	feedback_add_details("admin_verb","SEQ") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 	for (var/obj/item/I in M)
 		if (istype(I, /obj/item/implant))
 			continue

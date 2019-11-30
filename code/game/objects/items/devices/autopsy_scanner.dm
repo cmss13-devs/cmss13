@@ -8,7 +8,7 @@
 	icon_state = "autopsy_scanner"
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_SMALL
-	origin_tech = "materials=1;biotech=1"
+	
 	var/list/datum/autopsy_data_scanner/wdata = list()
 	var/list/datum/autopsy_data_scanner/chemtraces = list()
 	var/target_name = null

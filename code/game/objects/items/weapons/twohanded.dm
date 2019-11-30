@@ -203,7 +203,7 @@
 	unwieldsound = 'sound/weapons/saberoff.ogg'
 	flags_atom = FPRINT|NOBLOODY
 	flags_item = NOSHIELD|TWOHANDED
-	origin_tech = "magnets=3;syndicate=4"
+	
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1

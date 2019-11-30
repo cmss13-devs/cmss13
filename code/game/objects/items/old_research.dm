@@ -1,32 +1,27 @@
-//Updated 23FEB16
-
-
-
-//////////////ALIUM PARTS////////////////////
 /obj/item/XenoBio
 	name = "An unidentified Alien Organ"
 	desc = "Looking at it makes you want to vomit"
 	icon = 'icons/obj/items/Marine_Research.dmi'
 	icon_state = "biomass"
-	origin_tech = "Bio=10" //For all of them for now, until we have specific organs/more techs
+	 //For all of them for now, until we have specific organs/more techs
 
 /obj/item/XenoBio/Resin
 	name = "Alien Resin"
 	desc = "A piece of alien Resin"
 	icon_state = "biomass"
-	origin_tech = "Bio=10"
+	
 
 /obj/item/XenoBio/Chitin
 	name = "Alien Chitin"
 	desc = "A chunk of alien Chitin"
 	icon_state = "chitin-chunk"
-	origin_tech = "Bio=10"
+	
 
 /obj/item/XenoBio/Blood
 	name = "Alien Blood"
 	desc = "A sample of alien Blood"
 	icon_state = "blood-vial"
-	origin_tech = "Bio=10"
+	
 
 
 
@@ -114,9 +109,3 @@
 	qdel(src)
 	..()
 	return
-
-
-
-
-
-

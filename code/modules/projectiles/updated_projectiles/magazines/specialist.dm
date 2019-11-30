@@ -116,7 +116,7 @@
 	desc = "A rocket tube for an M5 RPG rocket."
 	caliber = "rocket"
 	icon_state = "rocket"
-	origin_tech = "combat=3;materials=3"
+	
 	matter = list("metal" = 10000)
 	w_class = SIZE_MEDIUM
 	max_rounds = 1
@@ -214,7 +214,7 @@
 	desc = "A thermobaric rocket tube for an M83AM quad launcher. Activate in hand to receive some metal when it's used up."
 	caliber = "rocket array"
 	icon_state = "quad_rocket"
-	origin_tech = "combat=4;materials=4"
+	
 	max_rounds = 4
 	default_ammo = /datum/ammo/rocket/wp/quad
 	gun_type = /obj/item/weapon/gun/launcher/rocket/m57a4

@@ -3,7 +3,7 @@
 	desc = "A small electronic device able to ignite combustable substances."
 	icon_state = "igniter"
 	matter = list("metal" = 500, "glass" = 50, "waste" = 10)
-	origin_tech = "magnets=1"
+	
 	heat_source = 1000 //Can ignite Thermite.
 	secured = 1
 	wires = WIRE_RECEIVE

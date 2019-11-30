@@ -56,26 +56,23 @@
 	name = "maintenance drone"
 	desc = "It's a small maintenance robot."
 	icon_state = "drone"
-	origin_tech = "magnets=3;engineering=5"
+	
 
 /obj/item/holder/cat
 	name = "cat"
 	desc = "It's a cat. Meow."
 	icon_state = "cat"
-	origin_tech = null
 
 /obj/item/holder/Jones
 	name = "Jones"
 	desc = "A tough, old stray whose origin no one seems to know."
 	icon_state = "cat2"
-	origin_tech = null
 
 /obj/item/holder/mouse
 	name = "mouse"
 	desc = "It's a small mouse."
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "mouse_white"
-	origin_tech = null
 	w_class = SIZE_TINY;
 	flags_equip_slot = null
 

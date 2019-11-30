@@ -40,4 +40,4 @@
 		else if(M.stat == DEAD && M && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to regular ghosts who have deadchat toggled on
 			M.show_message(rendered, 2)
 
-	feedback_add_details("admin_verb","D") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 

@@ -13,7 +13,7 @@
 		message_admins("[key_name(src)] toggled debugging on.")
 		log_admin("[key_name(src)] toggled debugging on.")
 
-	feedback_add_details("admin_verb","DG2") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 
 
@@ -155,7 +155,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		returnval = call(procname)(arglist(lst)) // Pass the lst as an argument list to the proc
 
 	to_chat(usr, "<font color='blue'>[procname] returned: [returnval ? returnval : "null"]</font>")
-	feedback_add_details("admin_verb","APC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 
 
@@ -233,7 +233,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	message_admins(SPAN_NOTICE("[key_name_admin(src)] called [A]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"]."))
 	returnval = call(A,procname)(arglist(lst)) // Pass the lst as an argument list to the proc
 	to_chat(usr, "<font color='blue'>[procname] returned: [returnval ? returnval : "null"]</font>")
-	feedback_add_details("admin_verb","AAPC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 
 
@@ -256,7 +256,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	t += SPAN_NOTICE("Gas Type: [air_info[1]]\n")
 
 	usr.show_message(t, 1)
-	feedback_add_details("admin_verb","ASL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/cmd_admin_robotize(var/mob/M in mob_list)
 	set category = "Fun"
@@ -304,7 +304,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		log_admin("[key_name(src)] has alienized [M.key].")
 		spawn(10)
 			M:Alienize()
-			feedback_add_details("admin_verb","MKAL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+			 
 		log_admin("[key_name(usr)] made [key_name(M)] into an alien.")
 		message_admins(SPAN_NOTICE("[key_name_admin(usr)] made [key_name(M)] into an alien."), 1)
 	else
@@ -356,7 +356,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		return
 
 	X.set_hive_and_update(newhivenumber, newhivefaction)
-	feedback_add_details("admin_verb","CHHN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 	message_admins(SPAN_NOTICE("[key_name(src)] changed hivenumber of [X] to [X.hivenumber]."), 1)
 
 
@@ -382,14 +382,14 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			H.wear_id.registered_name = "[H.real_name]"
 			if(H.wear_id.assignment)
 				H.wear_id.name += " ([H.wear_id.assignment])"
-	feedback_add_details("admin_verb","CHTN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 	message_admins(SPAN_NOTICE("[key_name(src)] changed name of [old_name] to [newname]."), 1)
 
 /client/proc/cmd_debug_toggle_should_check_for_win()
 	set category = "Debug"
 	set name = "Toggle Round End Checks"
 
-	feedback_add_details("admin_verb","CHCKWIN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 	if(!ticker || !ticker.mode)
 		to_chat(usr, "Mode not found?")
@@ -431,7 +431,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 						message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem] ([del_amt]).", 0)
 		else
 			to_chat(usr, SPAN_WARNING("Not a valid type path."))
-	feedback_add_details("admin_verb","DELA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/cmd_debug_make_powernets()
 	set category = "Debug"
@@ -440,7 +440,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	makepowernets()
 	log_admin("[key_name(src)] has remade the powernet. makepowernets() called.")
 	message_admins("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
-	feedback_add_details("admin_verb","MPWN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/cmd_debug_tog_aliens()
 	set category = "Server"
@@ -449,7 +449,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	aliens_allowed = !aliens_allowed
 	log_admin("[key_name(src)] has turned aliens [aliens_allowed ? "on" : "off"].")
 	message_admins("[key_name_admin(src)] has turned aliens [aliens_allowed ? "on" : "off"].", 0)
-	feedback_add_details("admin_verb","TAL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/cmd_admin_grantfullaccess(var/mob/M in mob_list)
 	set category = "Admin"
@@ -475,7 +475,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			H.update_inv_wear_id()
 	else
 		alert("Invalid mob")
-	feedback_add_details("admin_verb","GFA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 	log_admin("[key_name(src)] has granted [M.key] full access.")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] has granted [M.key] full access."), 1)
 
@@ -490,7 +490,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		M.mind.cm_skills = null // No restrictions
 	else
 		alert("Invalid mob")
-	feedback_add_details("admin_verb","GAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 	log_admin("[key_name(src)] has granted [M.key] all skills.")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] has granted [M.key] all skills."), 1)
 
@@ -515,7 +515,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	if(M.client) M.client.change_view(world.view)
 	if( isobserver(adminmob) )
 		qdel(adminmob)
-	feedback_add_details("admin_verb","ADC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 
 
@@ -529,7 +529,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	var/list/areas_all = list()
 	var/list/areas_with_APC = list()
 	var/list/areas_with_air_alarm = list()
-	var/list/areas_with_RC = list()
 	var/list/areas_with_light = list()
 	var/list/areas_with_LS = list()
 	var/list/areas_with_intercom = list()
@@ -548,11 +547,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		var/area/A = get_area(alarm)
 		if(!(A.type in areas_with_air_alarm))
 			areas_with_air_alarm.Add(A.type)
-
-	for(var/obj/structure/machinery/requests_console/RC in machines)
-		var/area/A = get_area(RC)
-		if(!(A.type in areas_with_RC))
-			areas_with_RC.Add(A.type)
 
 	for(var/obj/structure/machinery/light/L in machines)
 		var/area/A = get_area(L)
@@ -576,7 +570,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 	var/list/areas_without_APC = areas_all - areas_with_APC
 	var/list/areas_without_air_alarm = areas_all - areas_with_air_alarm
-	var/list/areas_without_RC = areas_all - areas_with_RC
 	var/list/areas_without_light = areas_all - areas_with_light
 	var/list/areas_without_LS = areas_all - areas_with_LS
 	var/list/areas_without_intercom = areas_all - areas_with_intercom
@@ -588,10 +581,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 	to_world("<b>AREAS WITHOUT AN AIR ALARM:</b>")
 	for(var/areatype in areas_without_air_alarm)
-		to_world("* [areatype]")
-
-	to_world("<b>AREAS WITHOUT A REQUEST CONSOLE:</b>")
-	for(var/areatype in areas_without_RC)
 		to_world("* [areatype]")
 
 	to_world("<b>AREAS WITHOUT ANY LIGHTS:</b>")

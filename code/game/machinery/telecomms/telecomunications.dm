@@ -29,7 +29,6 @@ var/global/list/obj/structure/machinery/telecomms/telecomms_list = list()
 	var/toggled = 1 	// Is it toggled on
 	var/on = 1
 	var/integrity = 100 // basically HP, loses integrity by heat
-	var/produces_heat = 1	//whether the machine will produce heat when on.
 	var/delay = 10 // how many process() ticks to delay per heat
 	var/long_range_link = 0	// Can you link it across Z levels or on the otherside of the map? (Relay & Hub)
 	var/circuitboard = null // string pointing to a circuitboard type
@@ -217,18 +216,6 @@ var/global/list/obj/structure/machinery/telecomms/telecomms_list = list()
 				stat &= ~EMPED
 	..()
 
-///obj/structure/machinery/telecomms/proc/checkheat()
-
-
-
-
-/*/obj/structure/machinery/telecomms/proc/produce_heat()
-	if (!produces_heat)
-		return
-
-	if (!use_power)
-		return
-*/
 /*
 	The receiver idles and receives messages from subspace-compatible radio equipment;
 	primarily headsets. They then just relay this information to all linked devices,
@@ -247,7 +234,6 @@ var/global/list/obj/structure/machinery/telecomms/telecomms_list = list()
 	use_power = 1
 	idle_power_usage = 600
 	machinetype = 1
-	produces_heat = 0
 	circuitboard = "/obj/item/circuitboard/machine/telecomms/receiver"
 
 /obj/structure/machinery/telecomms/receiver/receive_signal(datum/signal/signal)
@@ -338,7 +324,6 @@ var/global/list/obj/structure/machinery/telecomms/telecomms_list = list()
 	use_power = 1
 	idle_power_usage = 600
 	machinetype = 8
-	produces_heat = 0
 	circuitboard = "/obj/item/circuitboard/machine/telecomms/relay"
 	netspeed = 5
 	long_range_link = 1

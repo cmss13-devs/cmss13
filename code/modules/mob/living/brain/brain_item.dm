@@ -9,7 +9,7 @@
 	throwforce = 1.0
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
-	origin_tech = "biotech=3"
+	
 	attack_verb = list("attacked", "slapped", "whacked")
 	organ_type = /datum/internal_organ/brain
 	organ_tag = "brain"

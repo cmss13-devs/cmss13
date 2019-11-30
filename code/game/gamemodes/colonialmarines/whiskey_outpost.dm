@@ -537,7 +537,7 @@ var/global/spawn_next_wo_wave = 0
 	if(round_statistics)
 		round_statistics.track_round_end()
 	if(finished == 1)
-		feedback_set_details("round_end_result","Xenos won")
+		log_game("Round end result - xenos won")
 		to_world("<span class='round_header'>The Xenos have succesfully defended their hive from colonization.</span>")
 		to_world(SPAN_ROUNDBODY("Well done, you've secured LV-624 for the hive!"))
 		to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Tychon's Rift sector, with the arrival of the 7th 'Falling Falcons' Battalion and the USS Almayer."))
@@ -547,7 +547,7 @@ var/global/spawn_next_wo_wave = 0
 			round_statistics.round_result = MODE_INFESTATION_X_MAJOR
 
 	else if(finished == 2)
-		feedback_set_details("round_end_result","Marines Won")
+		log_game("Round end result - marines won")
 		to_world("<span class='round_header'>Against the onslaught, the marines have survived.</span>")
 		to_world(SPAN_ROUNDBODY("The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in Tychon's Rift begin to converge on LV-624."))
 		to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Tychon's Rift sector in 2182, pacifiying it and establishing peace in the sector for decades to come."))
@@ -557,7 +557,7 @@ var/global/spawn_next_wo_wave = 0
 			round_statistics.round_result = MODE_INFESTATION_M_MAJOR
 
 	else
-		feedback_set_details("round_end_result","no winners")
+		log_game("Round end result - no winners")
 		to_world("<span class='round_header'>NOBODY WON!</span>")
 		to_world(SPAN_ROUNDBODY("How? Don't ask me..."))
 		world << 'sound/misc/sadtrombone.ogg'

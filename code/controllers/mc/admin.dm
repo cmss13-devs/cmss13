@@ -42,10 +42,8 @@
 	switch (controller)
 		if ("Master")
 			new/datum/controller/master()
-			feedback_add_details("admin_verb","RMC")
 		if ("Failsafe")
 			new /datum/controller/failsafe()
-			feedback_add_details("admin_verb","RFailsafe")
 
 	message_admins("Admin [key_name_admin(usr)] has restarted the [controller] controller.")
 

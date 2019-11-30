@@ -25,7 +25,6 @@
 
 /obj/item/explosive/grenade/attack_self(mob/user)
 	if(!active)
-
 		if(!user.IsAdvancedToolUser())
 			to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 			return
@@ -36,22 +35,22 @@
 
 		add_fingerprint(user)
 		activate(user)
-		if(user)
-			source_mob = user
-		else
-			user.visible_message(SPAN_WARNING("[user] primes \a [name]!"), \
-			SPAN_WARNING("You prime \a [name]!"))
-			msg_admin_attack("[user] ([user.ckey]) primed \a grenade ([name]) at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>).")
-			user.attack_log += text("\[[time_stamp()]\] <font color='red'> [user] primed \a grenade ([name]) at ([src.loc.x],[src.loc.y],[src.loc.z]) ([user.ckey])</font>")
-			if(initial(dangerous) && has_species(user, "Human"))
-				var/nade_sound = user.gender == FEMALE ? get_sfx("female_fragout") : get_sfx("male_fragout")
+		
+		source_mob = user
 
-				for(var/mob/living/carbon/human/H in hearers(6,user))
-					H.playsound_local(user, nade_sound, 35)
+		user.visible_message(SPAN_WARNING("[user] primes \a [name]!"), \
+		SPAN_WARNING("You prime \a [name]!"))
+		msg_admin_attack("[user] ([user.ckey]) primed \a grenade ([name]) at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>).")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'> [user] primed \a grenade ([name]) at ([src.loc.x],[src.loc.y],[src.loc.z]) ([user.ckey])</font>")
+		if(initial(dangerous) && has_species(user, "Human"))
+			var/nade_sound = user.gender == FEMALE ? get_sfx("female_fragout") : get_sfx("male_fragout")
+
+			for(var/mob/living/carbon/human/H in hearers(6,user))
+				H.playsound_local(user, nade_sound, 35)
 			
-			var/mob/living/carbon/C = user
-			if(istype(C) && !C.throw_mode)
-				C.toggle_throw_mode(THROW_MODE_NORMAL)
+		var/mob/living/carbon/C = user
+		if(istype(C) && !C.throw_mode)
+			C.toggle_throw_mode(THROW_MODE_NORMAL)
 
 
 /obj/item/explosive/grenade/proc/activate(mob/user = null)

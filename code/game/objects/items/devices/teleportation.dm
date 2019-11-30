@@ -21,7 +21,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	matter = list("metal" = 400)
-	origin_tech = "magnets=1"
+	
 
 /obj/item/device/locator/attack_self(mob/user as mob)
 	user.set_interaction(src)
@@ -131,7 +131,7 @@ Frequency:
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	matter = list("metal" = 10000)
-	origin_tech = "magnets=1;bluespace=3"
+	
 
 /obj/item/device/hand_tele/attack_self(mob/user as mob)
 	var/turf/current_location = get_turf(user)//What turf is the user on?

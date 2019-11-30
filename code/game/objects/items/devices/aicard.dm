@@ -7,7 +7,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	var/flush = null
-	origin_tech = "programming=4;materials=4"
+	
 
 
 /obj/item/device/aicard/attack(mob/living/silicon/ai/M as mob, mob/user as mob)

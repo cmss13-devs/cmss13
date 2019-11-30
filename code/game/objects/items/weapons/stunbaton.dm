@@ -9,7 +9,7 @@
 	edge = 0
 	throwforce = 7
 	w_class = SIZE_MEDIUM
-	origin_tech = "combat=2"
+	
 	attack_verb = list("beaten")
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY, ACCESS_MARINE_COMMANDER, ACCESS_WY_CORPORATE, ACCESS_WY_PMC_GREEN)
 	var/stunforce = 10

@@ -6,7 +6,7 @@
 	desc = "You can totally see in the dark now!"
 	icon_state = "night"
 	item_state = "glasses"
-	origin_tech = "magnets=2"
+	
 	darkness_view = 7
 	fullscreen_vision = /obj/screen/fullscreen/nvg
 

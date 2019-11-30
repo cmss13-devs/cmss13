@@ -60,7 +60,7 @@ var/intercom_range_display_status = 0
 	if(camera_range_display_status)
 		for(var/obj/structure/machinery/camera/C in cameranet.cameras)
 			new/obj/effect/debugging/camera_range(C.loc)
-	feedback_add_details("admin_verb","mCRD") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 
 
@@ -98,7 +98,7 @@ var/intercom_range_display_status = 0
 
 	output += "</ul>"
 	usr << browse(output,"window=airreport;size=1000x500")
-	feedback_add_details("admin_verb","mCRP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/intercom_view()
 	set category = "Mapping"
@@ -118,7 +118,7 @@ var/intercom_range_display_status = 0
 				var/obj/effect/debugging/marker/F = new/obj/effect/debugging/marker(T)
 				if (!(F in view(7,I.loc)))
 					qdel(F)
-	feedback_add_details("admin_verb","mIRD") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 var/list/debug_verbs = list(
         /client/proc/do_not_use_these,
@@ -161,7 +161,7 @@ var/list/debug_verbs = list(
 	verbs += debug_verbs
 	verbs -= /client/proc/enable_debug_verbs
 
-	feedback_add_details("admin_verb","mDV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/hide_debug_verbs()
 	set category = "Debug"
@@ -172,7 +172,7 @@ var/list/debug_verbs = list(
 	verbs -= debug_verbs
 	verbs += /client/proc/enable_debug_verbs
 
-	feedback_add_details("admin_verb","hDV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 
 
@@ -211,7 +211,7 @@ var/list/debug_verbs = list(
 					atom_list += A
 
 	to_world("There are [count] objects of type [type_path] on z-level [num_level]")
-	feedback_add_details("admin_verb","mOBJZ") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/count_objects_all()
 	set category = "Mapping"
@@ -229,7 +229,7 @@ var/list/debug_verbs = list(
 			count++
 
 	to_world("There are [count] objects of type [type_path] in the game world")
-	feedback_add_details("admin_verb","mOBJ") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 
 var/global/prevent_airgroup_regroup = 0

@@ -49,7 +49,7 @@
 
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	origin_tech = "magnets=3;materials=2"
+	
 
 	var/max_uses = 50
 	var/uses = 0

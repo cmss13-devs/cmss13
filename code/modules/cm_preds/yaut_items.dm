@@ -399,7 +399,7 @@
 	desc = "An extremely complex, yet simple-to-operate set of armored bracers worn by the Yautja. It has many functions, activate them to use some."
 	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "bracer"
-	origin_tech = "combat=8;materials=8;magnets=8;programming=8"
+	
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
 	flags_item = 0
@@ -1231,7 +1231,7 @@
 	desc = "A device covered in sacred text. It whirrs and beeps every couple of seconds."
 	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "teleporter"
-	origin_tech = "materials=7;bluespace=7;engineering=7"
+	
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_TINY
 	force = 1

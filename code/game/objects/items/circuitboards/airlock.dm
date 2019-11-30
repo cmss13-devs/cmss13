@@ -107,4 +107,3 @@
 /obj/item/circuitboard/airlock/secure
 	name = "secure airlock electronics"
 	desc = "designed to be somewhat more resistant to hacking than standard electronics."
-	origin_tech = "programming=3"

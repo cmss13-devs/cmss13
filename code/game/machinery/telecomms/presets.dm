@@ -135,7 +135,6 @@
 	id = "Centcom Relay"
 	hide = 1
 	toggled = 1
-	produces_heat = 0
 	use_power = 0
 	autolinkers = list("c_relay")
 
@@ -151,7 +150,6 @@
 /obj/structure/machinery/telecomms/hub/preset_cent
 	id = "CentComm Hub"
 	network = "tcommsat"
-	produces_heat = 0
 	autolinkers = list("hub_cent", "relay", "c_relay", "s_relay", "centcomm", "receiverCent", "broadcasterCent")
 
 //Receivers
@@ -182,7 +180,6 @@
 /obj/structure/machinery/telecomms/receiver/preset_cent
 	id = "CentComm Receiver"
 	network = "tcommsat"
-	produces_heat = 0
 	autolinkers = list("receiverCent")
 	freq_listening = list(ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ)
 
@@ -222,7 +219,6 @@
 	id = "CentComm Bus"
 	network = "tcommsat"
 	freq_listening = list(ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ)
-	produces_heat = 0
 	autolinkers = list("processorCent", "centcomm")
 
 //Processors
@@ -250,7 +246,6 @@
 /obj/structure/machinery/telecomms/processor/preset_cent
 	id = "CentComm Processor"
 	network = "tcommsat"
-	produces_heat = 0
 	autolinkers = list("processorCent")
 
 //Servers
@@ -304,7 +299,6 @@
 /obj/structure/machinery/telecomms/server/presets/centcomm
 	id = "CentComm Server"
 	freq_listening = list(ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ)
-	produces_heat = 0
 	autolinkers = list("centcomm")
 
 
@@ -327,7 +321,6 @@
 /obj/structure/machinery/telecomms/broadcaster/preset_cent
 	id = "CentComm Broadcaster"
 	network = "tcommsat"
-	produces_heat = 0
 	autolinkers = list("broadcasterCent")
 
 /*
@@ -345,7 +338,6 @@
 	use_power = 0
 	idle_power_usage = 0
 	machinetype = 6
-	produces_heat = 0
 	unslashable = TRUE
 	unacidable = TRUE
 	var/intercept = 0 // if nonzero, broadcasts all messages to syndicate channel

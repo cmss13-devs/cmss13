@@ -7,7 +7,7 @@
 	desc = "A huge ammo drum for a huge gun."
 	caliber = "7.62x51mm"
 	icon_state = "painless" //PLACEHOLDER
-	origin_tech = "combat=3;materials=3"
+	
 	matter = list("metal" = 10000)
 	default_ammo = /datum/ammo/bullet/minigun
 	max_rounds = 300
@@ -22,7 +22,7 @@
 	desc = "A blast from the past chambered in 7.62X51mm NATO."
 	caliber = "7.62x51mm"
 	icon_state = "big_ammo_box" //PLACEHOLDER
-	origin_tech = "combat=3;materials=3"
+	
 	matter = list("metal" = 10000)
 	default_ammo = /datum/ammo/bullet/m60
 	max_rounds = 100

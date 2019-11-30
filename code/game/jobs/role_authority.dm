@@ -202,42 +202,6 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 
 	/*===============================================================*/
 
-/*
-	//===============================================================\\
-	Gathering feedback about the roles chosen.
-
-	var/level1 = 0 //high
-	var/level2 = 0 //medium
-	var/level3 = 0 //low
-	var/level4 = 0 //never
-	var/level5 = 0 //banned
-	var/level6 = 0 //account too young
-	var/feedback
-	var/l = 0
-
-	for(i in occupations_by_name)
-		J = occupations_by_name[i]
-		feedback = "|[J.title]|"
-
-		for(m in unassigned_players)
-			M = m
-			if(jobban_isbanned(M, J.title))
-				level5++
-				continue
-			if(!J.player_old_enough(M.client))
-				level6++
-				continue
-			if(player.client.prefs.GetJobDepartment(job, 1) & J.flag) level1++
-			else if(player.client.prefs.GetJobDepartment(job, 2) & J.flag) level2++
-			else if(player.client.prefs.GetJobDepartment(job, 3) & J.flag) level3++
-			else level4++ //not selected
-
-		feedback += "HIGH=[level1]|MEDIUM=[level2]|LOW=[level3]|NEVER=[level4]|BANNED=[level5]|YOUNG=[level6]|-"
-		feedback_add_details("job_preferences",feedback)
-
-
-*/
-
 	//===============================================================\\
 	//PART III: Here we're doing the main body of the loop and assigning everyone.
 

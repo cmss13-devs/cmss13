@@ -15,7 +15,7 @@
 
 	log_admin("[key_name(usr)] made [key_name(M)] drop everything!")
 	message_admins("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!", 1)
-	feedback_add_details("admin_verb","DEVR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/cmd_admin_prison(mob/M as mob in mob_list)
 	set category = "Admin"
@@ -42,7 +42,7 @@
 			to_chat(M, SPAN_WARNING("You have been sent to the prison station!"))
 		log_admin("[key_name(usr)] sent [key_name(M)] to the prison station.")
 		message_admins(SPAN_NOTICE("[key_name_admin(usr)] sent [key_name_admin(M)] to the prison station."), 1)
-		feedback_add_details("admin_verb","PRISON") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+		 
 
 /client/proc/cmd_admin_subtle_message(mob/M as mob in mob_list)
 	set category = null
@@ -64,7 +64,7 @@
 
 	log_admin("SubtlePM: [key_name(usr)] -> [key_name(M)] : [msg]")
 	message_admins(SPAN_NOTICE("\bold SubtleMessage: [key_name_admin(usr)] -> [key_name_admin(M)] : [msg]"), 1)
-	feedback_add_details("admin_verb","SMS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/cmd_mentor_check_new_players()	//Allows mentors / admins to determine who the newer players are.
 	set category = "Admin"
@@ -118,7 +118,7 @@
 	to_world("[msg]")
 	log_admin("GlobalNarrate: [key_name(usr)] : [msg]")
 	message_admins(SPAN_NOTICE("\bold GlobalNarrate: [key_name_admin(usr)] : [msg]<BR>"), 1)
-	feedback_add_details("admin_verb","GLN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/cmd_admin_direct_narrate(var/mob/M)	// Targetted narrate -- TLE
 	set category = null
@@ -142,7 +142,7 @@
 	to_chat(M, msg)
 	log_admin("DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]): [msg]")
 	message_admins(SPAN_NOTICE("\bold DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]): [msg]<BR>"), 1)
-	feedback_add_details("admin_verb","DIRN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/cmd_admin_godmode(mob/M as mob in mob_list)
 	set category = "Special Verbs"
@@ -155,7 +155,7 @@
 
 	log_admin("[key_name(usr)] has toggled [key_name(M)]'s nodamage to [(M.status_flags & GODMODE) ? "On" : "Off"]")
 	message_admins("[key_name_admin(usr)] has toggled [key_name_admin(M)]'s nodamage to [(M.status_flags & GODMODE) ? "On" : "Off"]", 1)
-	feedback_add_details("admin_verb","GOD") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 
 proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
@@ -192,7 +192,7 @@ proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
 		log_admin("SPAM AUTOMUTE: [muteunmute] [key_name(M)] from [mute_string]")
 		message_admins("SPAM AUTOMUTE: [muteunmute] [key_name_admin(M)] from [mute_string].", 1)
 		to_chat(M, "You have been [muteunmute] from [mute_string] by the SPAM AUTOMUTE system. Contact an admin.")
-		feedback_add_details("admin_verb","AUTOMUTE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+		 
 		return
 
 	if(M.client.prefs.muted & mute_type)
@@ -205,7 +205,7 @@ proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
 	log_admin("[key_name(usr)] has [muteunmute] [key_name(M)] from [mute_string]")
 	message_admins("[key_name_admin(usr)] has [muteunmute] [key_name_admin(M)] from [mute_string].", 1)
 	to_chat(M, "You have been [muteunmute] from [mute_string].")
-	feedback_add_details("admin_verb","MUTE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/cmd_admin_add_random_ai_law()
 	set category = "Fun"
@@ -222,7 +222,7 @@ proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
 	if(show_log == "Yes")
 		marine_announcement("Ion storm detected in proximity. Recommendation: Check all AI-controlled equipment for data corruption.", "Anomaly Alert", 'sound/AI/ionstorm.ogg')
 
-	feedback_add_details("admin_verb","ION") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /*
 Allow admins to set players to be able to respawn/bypass 30 min wait, without the admin having to edit variables directly
@@ -450,7 +450,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	to_chat(new_character, "You have been fully respawned. Enjoy the game.")
 
-	feedback_add_details("admin_verb","RSPCH") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 	return new_character
 
 
@@ -473,7 +473,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		to_chat(usr, "The Hunt is already in progress.")
 		return
 
-	feedback_add_details("admin_verb","FPRED")
+	 
 	log_admin("[key_name(usr)] admin-forced a predator round.")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] admin-forced a predator round."), 1)
 	return
@@ -499,7 +499,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	var/show_log = alert(src, "Show ion message?", "Message", "Yes", "No")
 	if(show_log == "Yes")
 		marine_announcement("Ion storm detected in proximity. Recommendation: Check all AI-controlled equipment for data corruption.", "Anomaly Alert", 'sound/AI/ionstorm.ogg')
-	feedback_add_details("admin_verb","IONC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/turn_everyone_into_primitives()
 	set category = "Fun"
@@ -525,7 +525,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	log_admin("Admin [key_name(usr)] has turned everyone into a primitive")
 	message_admins("Admin [key_name(usr)] has turned everyone into a primitive", 1)
 
-	feedback_add_details("admin_verb","PRMT") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/cmd_admin_rejuvenate(mob/living/M as mob in mob_list)
 	set category = null
@@ -545,7 +545,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		message_admins(SPAN_DANGER("Admin [key_name_admin(usr)] healed / revived [key_name_admin(M)]!"), 1)
 	else
 		alert("Admin revive disabled")
-	feedback_add_details("admin_verb","REJU") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 
 /client/proc/cmd_admin_addhud(mob/M as mob in mob_list)
@@ -579,7 +579,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	message_admins(SPAN_INFO("[key_name(usr)] has given a [hud_choice] to [M]."))
 	log_admin("[key_name(usr)] has given a [hud_choice] to [M].")
 
-	feedback_add_details("admin_verb","HUDT") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/cmd_admin_create_centcom_report()
 	set category = "Special Verbs"
@@ -610,7 +610,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	log_admin("[key_name(src)] has created a command report: [input]")
 	message_admins("[key_name_admin(src)] has created a command report", 1)
-	feedback_add_details("admin_verb","CCR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/cmd_admin_create_AI_report()
 	set category = "Special Verbs"
@@ -633,7 +633,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 		log_admin("[key_name(src)] has created an AI report: [input]")
 		message_admins("[key_name_admin(src)] has created an AI report", 1)
-		feedback_add_details("admin_verb","CCR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+		 
 	else
 		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
 
@@ -688,7 +688,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	log_admin("[key_name(src)] has created a Queen Mother report: [input]")
 	message_admins("[key_name_admin(src)] has created a Queen Mother report", 1)
-	feedback_add_details("admin_verb","QMR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/cmd_admin_delete(atom/O as obj|mob|turf in world)
 	set category = "Debug"
@@ -701,7 +701,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if (alert(src, "Are you sure you want to delete:\n[O]\nat ([O.x], [O.y], [O.z])?", "Confirmation", "Yes", "No") == "Yes")
 		log_admin("[key_name(usr)] deleted [O] at ([O.x],[O.y],[O.z]) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[usr]'>JMP</A>)")
 		message_admins("[key_name_admin(usr)] deleted [O] at ([O.x],[O.y],[O.z])", 1)
-		feedback_add_details("admin_verb","DEL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+		 
 		qdel(O)
 
 /client/proc/cmd_admin_list_open_jobs()
@@ -717,7 +717,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		for(i in RoleAuthority.roles_by_name)
 			J = RoleAuthority.roles_by_name[i]
 			if(J.flags_startup_parameters & ROLE_ADD_TO_MODE) to_chat(src, "[J.title]: [J.get_total_positions(1)] / [J.current_positions]")
-	feedback_add_details("admin_verb","LFS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 // Converted this into a proc. Verb will be separate
 /client/proc/change_ckey(mob/M in mob_list, var/a_ckey = null)
@@ -739,7 +739,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		M.ghostize()
 	log_admin("[key_name(usr)] modified [M.name]/([M.ckey])'s ckey to [new_ckey]")
 	message_admins("[key_name_admin(usr)] modified [M.name]/([M.ckey])'s ckey to [new_ckey]", 1)
-	feedback_add_details("admin_verb","CHANGEKEY") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 	M.ckey = new_ckey
 	var/mob/living/carbon/Xenomorph/XNO = M
 	if(istype(XNO))
@@ -793,7 +793,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		explosion(O, devastation, heavy, light, flash)
 		log_admin("[key_name(usr)] created an explosion ([devastation],[heavy],[light],[flash]) at ([O.x],[O.y],[O.z])")
 		message_admins("[key_name_admin(usr)] created an explosion ([devastation],[heavy],[light],[flash]) at ([O.x],[O.y],[O.z])", 1)
-		feedback_add_details("admin_verb","EXPL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+		 
 		return
 	else
 		return
@@ -814,7 +814,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		empulse(O, heavy, light)
 		log_admin("[key_name(usr)] created an EM Pulse ([heavy],[light]) at ([O.x],[O.y],[O.z])")
 		message_admins("[key_name_admin(usr)] created an EM PUlse ([heavy],[light]) at ([O.x],[O.y],[O.z])", 1)
-		feedback_add_details("admin_verb","EMP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+		 
 
 		return
 	else
@@ -839,7 +839,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 
 	M.gib()
-	feedback_add_details("admin_verb","GIB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/cmd_admin_gib_self()
 	set name = "Gib Self"
@@ -854,7 +854,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 		log_admin("[key_name(usr)] used gibself.")
 		message_admins(SPAN_NOTICE("[key_name_admin(usr)] used gibself."), 1)
-		feedback_add_details("admin_verb","GIBS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+		 
 /*
 /client/proc/cmd_manual_ban()
 	set name = "Manual Ban"
@@ -924,7 +924,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	var/list/L = M.get_contents()
 	for(var/t in L)
 		to_chat(usr, "[t]")
-	feedback_add_details("admin_verb","CC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /* This proc is DEFERRED. Does not do anything.
 /client/proc/cmd_admin_remove_phoron()
@@ -933,7 +933,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!admin_holder)
 		to_chat(src, "Only administrators may use this command.")
 		return
-	feedback_add_details("admin_verb","STATM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 // DEFERRED
 	spawn(0)
 		for(var/turf/T in view())
@@ -972,7 +972,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	log_admin("[key_name(usr)] changed their view range to [view].")
 	//message_admins(SPAN_NOTICE("[key_name_admin(usr)] changed their view range to [view]."), 1)	//why? removed by order of XSI
 
-	feedback_add_details("admin_verb","CVRA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/cmd_admin_attack_log(mob/M as mob in mob_list)
 	set category = "Special Verbs"
@@ -981,7 +981,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	to_chat(usr, SPAN_DANGER("<b>Attack Log for [mob]</b>"))
 	for(var/t in M.attack_log)
 		to_chat(usr, t)
-	feedback_add_details("admin_verb","ATTL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 
 /client/proc/everyone_random()
@@ -1015,7 +1015,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	to_chat(usr, "<i>Remember: you can always disable the randomness by using the verb again, assuming the round hasn't started yet</i>.")
 
 	ticker.random_players = 1
-	feedback_add_details("admin_verb","MER") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 
 /client/proc/toggle_random_events()
@@ -1033,7 +1033,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		config.allow_random_events = 0
 		to_chat(usr, "Random events disabled")
 		message_admins("Admin [key_name_admin(usr)] has disabled random events.", 1)
-	feedback_add_details("admin_verb","TRE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 /*
 /client/proc/editzoneair(var/turf/T in turfs)
 	set name = "Edit Zone Air"

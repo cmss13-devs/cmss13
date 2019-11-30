@@ -32,7 +32,7 @@
 		if("Cancel")
 			return
 
-	feedback_add_details("admin_verb","PCS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 	if(isnum(heard_midi))
 		log_admin("[key_name(src)] played sound `[S]` for [heard_midi] player(s). [clients.len - heard_midi] player(s) have disabled admin midis.")
 		message_admins("[key_name_admin(src)] played sound `[S]` for [heard_midi] player(s). [clients.len - heard_midi] player(s) have disabled admin midis.", 1)
@@ -67,4 +67,4 @@
 	if(melody == "--CANCEL--")	return
 
 	play_imported_sound(melody)
-	feedback_add_details("admin_verb","PDS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 

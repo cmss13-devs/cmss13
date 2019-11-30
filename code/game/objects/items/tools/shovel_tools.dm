@@ -16,7 +16,7 @@
 	throwforce = 4
 	w_class = SIZE_MEDIUM
 	matter = list("metal" = 50)
-	origin_tech = "materials=1;engineering=1"
+	
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
 	var/dirt_overlay = "shovel_overlay"
 	var/folded = FALSE
@@ -149,7 +149,7 @@
 	force = 30
 	throwforce = 2
 	w_class = SIZE_LARGE
-	origin_tech = "engineering=1"
+	
 	dirt_overlay = "etool_overlay"
 	dirt_amt_per_dig = 5
 	shovelspeed = 50

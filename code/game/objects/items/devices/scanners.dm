@@ -21,7 +21,7 @@ FORENSIC SCANNER
 
 	matter = list("metal" = 150)
 
-	origin_tech = "magnets=1;engineering=1"
+	
 
 /obj/item/device/t_scanner/attack_self(mob/user)
 
@@ -77,7 +77,7 @@ FORENSIC SCANNER
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	matter = list("metal" = 200)
-	origin_tech = "magnets=1;biotech=1"
+	
 	var/mode = 1
 	var/hud_mode = 1
 
@@ -120,7 +120,7 @@ FORENSIC SCANNER
 
 	matter = list("metal" = 30,"glass" = 20)
 
-	origin_tech = "magnets=1;engineering=1"
+	
 
 /obj/item/device/analyzer/attack_self(mob/user as mob)
 
@@ -164,7 +164,7 @@ FORENSIC SCANNER
 
 	matter = list("metal" = 30,"glass" = 20)
 
-	origin_tech = "magnets=2;biotech=2"
+	
 	var/details = 0
 	var/recent_fail = 0
 
@@ -196,7 +196,7 @@ FORENSIC SCANNER
 	name = "advanced mass-spectrometer"
 	icon_state = "adv_spectrometer"
 	details = 1
-	origin_tech = "magnets=4;biotech=2"
+	
 
 /obj/item/device/reagent_scanner
 	name = "reagent scanner"
@@ -211,7 +211,7 @@ FORENSIC SCANNER
 	throw_range = 20
 	matter = list("metal" = 30,"glass" = 20)
 
-	origin_tech = "magnets=2;biotech=2"
+	
 	var/details = 0
 	var/recent_fail = 0
 
@@ -256,7 +256,7 @@ FORENSIC SCANNER
 	name = "advanced reagent scanner"
 	icon_state = "adv_spectrometer"
 	details = 1
-	origin_tech = "magnets=4;biotech=2"
+	
 
 
 

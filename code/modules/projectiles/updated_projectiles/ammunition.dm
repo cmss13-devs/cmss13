@@ -13,7 +13,7 @@ They're all essentially identical when it comes to getting the job done.
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	matter = list("metal" = 1000)
-	origin_tech = "combat=2'materials=2" //Low.
+	 //Low.
 	throwforce = 2
 	w_class = SIZE_TINY
 	throw_speed = SPEED_SLOW
@@ -162,7 +162,7 @@ bullets/shells. ~N
 	desc = "A handful of rounds to reload on the go."
 	matter = list("metal" = 50) //This changes based on the ammo ammount. 5k is the base of one shell/bullet.
 	flags_equip_slot = null // It only fits into pockets and such.
-	origin_tech = "combat=1'materials=1"
+	
 	w_class = SIZE_SMALL
 	current_rounds = 1 // So it doesn't get autofilled for no reason.
 	max_rounds = 5 // For shotguns, though this will be determined by the handful type when generated.

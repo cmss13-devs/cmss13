@@ -19,7 +19,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	max_amount = 60
-	origin_tech = "biotech=1"
+	
 
 /*
  * Wood

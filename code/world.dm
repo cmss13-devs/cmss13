@@ -468,13 +468,11 @@ proc/establish_old_db_connection()
 
 	sleep(300)
 
-	if(ticker.delay_end) return
+	if(ticker.delay_end) 
+		return
 
 	to_world(SPAN_DANGER("<b>Restarting world!</b> \blue Initiated by MapDaemon.exe!"))
 	log_admin("World/Topic() call (likely MapDaemon.exe) initiated a reboot.")
-
-	if(blackbox)
-		blackbox.save_all_data_to_sql() //wtf does this even do?
 
 	sleep(30)
 	world.Reboot() //Whatever this is the important part

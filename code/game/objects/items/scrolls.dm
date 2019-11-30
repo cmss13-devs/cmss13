@@ -8,7 +8,7 @@
 	item_state = "paper"
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
-	origin_tech = "bluespace=4"
+	
 
 /obj/item/teleportation_scroll/attack_self(mob/user as mob)
 	user.set_interaction(src)

@@ -351,7 +351,6 @@
 		Banlist["minutes"] << minutes
 		Banlist["bannedby"] << usr.ckey
 		Banlist.cd = "/base"
-		feedback_inc("ban_upgrade",1)
 		unbanpanel()
 
 	else if(href_list["unbane"])
@@ -392,7 +391,6 @@
 		Banlist["minutes"] << minutes
 		Banlist["bannedby"] << usr.ckey
 		Banlist.cd = "/base"
-		feedback_inc("ban_edit",1)
 		unbanpanel()
 
 	/////////////////////////////////////new ban stuff
@@ -672,40 +670,6 @@
 
 		//Banning comes first
 		if(notbannedlist.len) //at least 1 unbanned job exists in joblist so we have stuff to ban.
-			// switch(alert("Temporary Ban?",,"Yes","No", "Cancel"))
-			// 	if("Yes")
-			// 		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))  return
-			// 		if(config.ban_legacy_system)
-			// 			to_chat(usr, SPAN_DANGER("Your server is using the legacy banning system, which does not support temporary job bans. Consider upgrading. Aborting ban."))
-			// 			return
-			// 		var/mins = input(usr,"How long (in minutes)?","Ban time",1440) as num|null
-			// 		if(!mins)
-			// 			return
-			// 		var/reason = input(usr,"Reason?","Please State Reason","") as text|null
-			// 		if(!reason)
-			// 			return
-
-			// 		var/msg
-			// 		for(var/job in notbannedlist)
-			// 			ban_unban_log_save("[key_name(usr)] temp-jobbanned [key_name(M)] from [job] for [mins] minutes. reason: [reason]")
-			// 			log_admin("[key_name(usr)] temp-jobbanned [key_name(M)] from [job] for [mins] minutes")
-			// 			feedback_inc("ban_job_tmp",1)
-			// 			DB_ban_record(BANTYPE_JOB_TEMP, M, mins, reason, job)
-			// 			feedback_add_details("ban_job_tmp","- [job]")
-			// 			jobban_fullban(M, job, "[reason]; By [usr.ckey] on [time2text(world.realtime)]") //Legacy banning does not support temporary jobbans.
-			// 			if(!msg)
-			// 				msg = job
-			// 			else
-			// 				msg += ", [job]"
-			// 		notes_add(M.ckey, "Banned  from [msg] - [reason]")
-			// 		message_admins(SPAN_NOTICE("[key_name_admin(usr)] banned [key_name_admin(M)] from [msg] for [mins] minutes"), 1)
-			// 		to_chat(M, SPAN_WARNING("<BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG>"))
-			// 		to_chat(M, SPAN_WARNING("<B>The reason is: [reason]</B>"))
-			// 		to_chat(M, SPAN_WARNING("This jobban will be lifted in [mins] minutes."))
-			// 		jobban_savebanfile()
-			// 		href_list["jobban2"] = 1 // lets it fall through and refresh
-			// 		return 1
-			// 	if("No")
 			if(!check_rights(R_BAN))  return
 			var/reason = input(usr,"Reason?","Please State Reason","") as text|null
 			if(reason)
@@ -713,9 +677,8 @@
 				for(var/job in notbannedlist)
 					ban_unban_log_save("[key_name(usr)] perma-jobbanned [key_name(M)] from [job]. reason: [reason]")
 					log_admin("[key_name(usr)] perma-banned [key_name(M)] from [job]")
-					feedback_inc("ban_job",1)
 					DB_ban_record(BANTYPE_JOB_PERMA, M, -1, reason, job)
-					feedback_add_details("ban_job","- [job]")
+					 
 					jobban_fullban(M, job, "[reason]; By [usr.ckey] on [time2text(world.realtime)]")
 					if(!msg)	msg = job
 					else		msg += ", [job]"
@@ -746,8 +709,7 @@
 						ban_unban_log_save("[key_name(usr)] unjobbanned [key_name(M)] from [job]")
 						log_admin("[key_name(usr)] unbanned [key_name(M)] from [job]")
 						DB_ban_unban(M.ckey, BANTYPE_JOB_PERMA, job)
-						feedback_inc("ban_job_unban",1)
-						feedback_add_details("ban_job_unban","- [job]")
+						 
 						jobban_unban(M, job)
 						if(!msg)	msg = job
 						else		msg += ", [job]"
@@ -773,27 +735,8 @@
 				to_chat_forced(M, SPAN_WARNING("You have been kicked from the server: [reason]"))
 			log_admin("[key_name(usr)] booted [key_name(M)].")
 			message_admins(SPAN_NOTICE("[key_name_admin(usr)] booted [key_name_admin(M)]."), 1)
-			//M.client = null
 			qdel(M.client)
-/*
-	//Player Notes
-	else if(href_list["notes"])
-		var/ckey = href_list["ckey"]
-		if(!ckey)
-			var/mob/M = locate(href_list["mob"])
-			if(ismob(M))
-				ckey = M.ckey
 
-		switch(href_list["notes"])
-			if("show")
-				notes_show(ckey)
-			if("add")
-				notes_add(ckey,href_list["text"])
-				notes_show(ckey)
-			if("remove")
-				notes_remove(ckey,text2num(href_list["from"]),text2num(href_list["to"]))
-				notes_show(ckey)
-*/
 	else if(href_list["removejobban"])
 		if(!check_rights(R_BAN))	return
 
@@ -837,9 +780,7 @@
 			ban_unban_log_save("[usr.client.ckey] has banned [mob_key]|Duration: [mins] minutes|Reason: [sanitize(reason)]")
 			to_chat_forced(M, SPAN_WARNING("<BIG><B>You have been banned by [usr.client.ckey].\nReason: [sanitize(reason)].</B></BIG>"))
 			to_chat_forced(M, SPAN_WARNING("This is a temporary ban, it will be removed in [mins] minutes."))
-			feedback_inc("ban_tmp",1)
 			DB_ban_record(BANTYPE_TEMP, M, mins, reason)
-			feedback_inc("ban_tmp_mins",mins)
 			if(config.banappeals)
 				to_chat_forced(M, SPAN_WARNING("To try to resolve this matter head to [config.banappeals]"))
 			else
@@ -879,9 +820,7 @@
 			to_chat_forced(M, SPAN_NOTICE(" The ban appeal forums are located here: [config.banappeals]"))
 		else
 			to_chat_forced(M, SPAN_NOTICE(" Unfortunately, no ban appeals URL has been set."))
-		feedback_inc("ban_tmp", 1)
 		DB_ban_record(BANTYPE_TEMP, M, mins, reason)
-		feedback_inc("ban_tmp_mins", mins)
 		log_admin("[usr.client.ckey] has banned [M.ckey]|Duration: [mins] minutes|Reason: [reason]")
 		message_admins("\blue[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.")
 		notes_add(M.ckey, "Banned by [usr.client.ckey]|Duration: [mins] minutes|Reason: [reason]", usr)
@@ -1880,7 +1819,6 @@
 			H.update_inv_l_hand()
 		log_admin("[key_name(H)] got their cookie, spawned by [key_name(src.owner)]")
 		message_admins("[key_name(H)] got their cookie, spawned by [key_name(src.owner)]")
-		feedback_inc("admin_cookies_spawned",1)
 		to_chat(H, SPAN_NOTICE(" Your prayers have been answered!! You received the <b>best cookie</b>!"))
 
 	else if(href_list["BlueSpaceArtillery"])
@@ -2307,8 +2245,6 @@
 				gravity_is_on = !gravity_is_on
 				for(var/area/A in all_areas)
 					A.gravitychange(gravity_is_on,A)
-				feedback_inc("admin_secrets_fun_used",1)
-				feedback_add_details("admin_secrets_fun_used","Grav")
 				if(gravity_is_on)
 					log_admin("[key_name(usr)] toggled gravity on.", 1)
 					message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled gravity on."), 1)
@@ -2318,13 +2254,9 @@
 					message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled gravity off."), 1)
 					marine_announcement("Feedback surge detected in mass-distributions systems. Artifical gravity has been disabled whilst the system reinitializes. Further failures may result in a gravitational collapse and formation of blackholes. Have a nice day.")
 			if("spiders")
-				feedback_inc("admin_secrets_fun_used",1)
-				feedback_add_details("admin_secrets_fun_used","SL")
 				new /datum/event/spider_infestation
 				message_admins("[key_name_admin(usr)] has spawned spiders", 1)
 			if("comms_blackout")
-				feedback_inc("admin_secrets_fun_used",1)
-				feedback_add_details("admin_secrets_fun_used","CB")
 				var/answer = alert(usr, "Would you like to alert the crew?", "Alert", "Yes", "No")
 				if(answer == "Yes")
 					communications_blackout(0)
@@ -2332,86 +2264,58 @@
 					communications_blackout(1)
 				message_admins("[key_name_admin(usr)] triggered a communications blackout.", 1)
 			if("lightout")
-				feedback_inc("admin_secrets_fun_used",1)
-				feedback_add_details("admin_secrets_fun_used","LO")
 				message_admins("[key_name_admin(usr)] has broke a lot of lights", 1)
 				lightsout(1,2)
 			if("blackout")
-				feedback_inc("admin_secrets_fun_used",1)
-				feedback_add_details("admin_secrets_fun_used","BO")
 				message_admins("[key_name_admin(usr)] broke all lights", 1)
 				lightsout(0,0)
 			if("whiteout")
-				feedback_inc("admin_secrets_fun_used",1)
-				feedback_add_details("admin_secrets_fun_used","WO")
 				for(var/obj/structure/machinery/light/L in machines)
 					L.fix()
 				message_admins("[key_name_admin(usr)] fixed all lights", 1)
 			if("power")
-				feedback_inc("admin_secrets_fun_used",1)
-				feedback_add_details("admin_secrets_fun_used","P")
 				log_admin("[key_name(usr)] powered all SMESs and APCs", 1)
 				message_admins(SPAN_NOTICE("[key_name_admin(usr)] powered all SMESs and APCs"), 1)
 				power_restore()
 			if("unpower")
-				feedback_inc("admin_secrets_fun_used",1)
-				feedback_add_details("admin_secrets_fun_used","UP")
 				log_admin("[key_name(usr)] unpowered all SMESs and APCs", 1)
 				message_admins(SPAN_NOTICE("[key_name_admin(usr)] unpowered all SMESs and APCs"), 1)
 				power_failure()
 			if("quickpower")
-				feedback_inc("admin_secrets_fun_used",1)
-				feedback_add_details("admin_secrets_fun_used","QP")
 				log_admin("[key_name(usr)] powered all SMESs", 1)
 				message_admins(SPAN_NOTICE("[key_name_admin(usr)] powered all SMESs"), 1)
 				power_restore_quick()
 			if("powereverything")
-				feedback_inc("admin_secrets_fun_used",1)
-				feedback_add_details("admin_secrets_fun_used","PE")
 				log_admin("[key_name(usr)] powered all SMESs and APCs everywhere", 1)
 				message_admins(SPAN_NOTICE("[key_name_admin(usr)] powered all SMESs and APCs everywhere"), 1)
 				power_restore_everything()
 			if("powershipreactors")
-				feedback_inc("admin_secrets_fun_used",1)
-				feedback_add_details("admin_secrets_fun_used","PR")
 				log_admin("[key_name(usr)] powered all ship reactors", 1)
 				message_admins(SPAN_NOTICE("[key_name_admin(usr)] powered all ship reactors"), 1)
 				power_restore_ship_reactors()
 			if("gethumans")
-				feedback_inc("admin_secrets_fun_used",1)
-				feedback_add_details("admin_secrets_fun_used","GH")
 				log_admin("[key_name(usr)] mass-teleported all humans.", 1)
 				message_admins(SPAN_NOTICE("[key_name_admin(usr)] mass-teleported all humans."), 1)
 				get_all_humans()
 			if("getxenos")
-				feedback_inc("admin_secrets_fun_used",1)
-				feedback_add_details("admin_secrets_fun_used","GX")
 				log_admin("[key_name(usr)] mass-teleported all Xenos.", 1)
 				message_admins(SPAN_NOTICE("[key_name_admin(usr)] mass-teleported all Xenos."), 1)
 				get_all_xenos()
 			if("getall")
-				feedback_inc("admin_secrets_fun_used",1)
-				feedback_add_details("admin_secrets_fun_used","GA")
 				log_admin("[key_name(usr)] mass-teleported everyone.", 1)
 				message_admins(SPAN_NOTICE("[key_name_admin(usr)] mass-teleported everyone."), 1)
 				get_all()
 			if("rejuvall")
-				feedback_inc("admin_secrets_fun_used",1)
-				feedback_add_details("admin_secrets_fun_used","RA")
 				log_admin("[key_name(usr)] mass-rejuvenated everyone.", 1)
 				message_admins(SPAN_NOTICE("[key_name_admin(usr)] mass-rejuvenated everyone."), 1)
 				rejuv_all()
 			if("decrease_defcon")
-				feedback_inc("admin_secrets_fun_used",1)
-				feedback_add_details("admin_secrets_fun_used","DD")
 				log_admin("[key_name(usr)] decreased DEFCON level.", 1)
 				message_admins(SPAN_NOTICE("[key_name_admin(usr)] decreased DEFCON level."), 1)
 				defcon_controller.decrease_defcon_level()
 			if("give_defcon_points")
 				var/amount = input(usr, "How many points to add?") as num
 				if(amount != 0) //can add negative numbers too!
-					feedback_inc("admin_secrets_fun_used",1)
-					feedback_add_details("admin_secrets_fun_used","GDP")
 					log_admin("[key_name(usr)] added [amount] DEFCON points.", 1)
 					message_admins(SPAN_NOTICE("[key_name_admin(usr)] added [amount] DEFCON points."), 1)
 					objectives_controller.add_admin_points(amount)
@@ -2464,10 +2368,8 @@
 				dat += "</table>"
 				usr << browse(dat, "window=DNA;size=440x410")
 			if("launchshuttle")
-				if(!shuttle_controller) return // Something is very wrong, the shuttle controller has not been created.
-
-				feedback_inc("admin_secrets_fun_used",1)
-				feedback_add_details("admin_secrets_fun_used","ShL")
+				if(!shuttle_controller) 
+					return // Something is very wrong, the shuttle controller has not been created.
 
 				var/list/valid_shuttles = list()
 				for (var/shuttle_tag in shuttle_controller.shuttles)
@@ -2488,11 +2390,8 @@
 					alert("The [shuttle_tag] shuttle cannot be launched at this time. It's probably busy.")
 
 			if("moveshuttle")
-
-				if(!shuttle_controller) return // Something is very wrong, the shuttle controller has not been created.
-
-				feedback_inc("admin_secrets_fun_used",1)
-				feedback_add_details("admin_secrets_fun_used","ShM")
+				if(!shuttle_controller) 
+					return // Something is very wrong, the shuttle controller has not been created.
 
 				var/confirm = alert("This command directly moves a shuttle from one area to another. DO NOT USE THIS UNLESS YOU ARE DEBUGGING A SHUTTLE AND YOU KNOW WHAT YOU ARE DOING.", "Are you sure?", "Ok", "Cancel")
 				if (confirm == "Cancel")

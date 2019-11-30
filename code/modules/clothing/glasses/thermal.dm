@@ -6,7 +6,7 @@
 	desc = "Thermals in the shape of glasses."
 	icon_state = "thermal"
 	item_state = "glasses"
-	origin_tech = "magnets=3"
+	
 	toggleable = 1
 	vision_flags = SEE_MOBS
 	invisa_view = 2
@@ -32,7 +32,7 @@
 	desc = "Used for seeing walls, floors, and stuff through anything."
 	icon_state = "meson"
 	actions_types = list(/datum/action/item_action/toggle)
-	origin_tech = "magnets=3;syndicate=4"
+	
 
 /obj/item/clothing/glasses/thermal/monocle
 	name = "Thermoncle"

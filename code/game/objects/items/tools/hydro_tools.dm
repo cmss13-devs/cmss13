@@ -114,7 +114,7 @@
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 	matter = list("metal" = 15000)
-	origin_tech = "materials=2;combat=1"
+	
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("chopped", "torn", "cut")
 
@@ -132,7 +132,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_item = NOSHIELD
 	flags_equip_slot = SLOT_BACK
-	origin_tech = "materials=2;combat=2"
+	
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
 
 /obj/item/tool/scythe/afterattack(atom/A, mob/user as mob, proximity)

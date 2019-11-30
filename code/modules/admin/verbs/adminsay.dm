@@ -21,7 +21,7 @@
 			if(R_ADMIN & C.admin_holder.rights)
 				to_chat(C, msg)
 
-	feedback_add_details("admin_verb","M") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/cmd_mod_say(msg as text)
 	set category = "Special Verbs"

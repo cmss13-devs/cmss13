@@ -19,7 +19,7 @@ RCD
 	throw_range = 5
 	w_class = SIZE_MEDIUM
 	matter = list("metal" = 50000)
-	origin_tech = "engineering=4;materials=2"
+	
 	var/datum/effect_system/spark_spread/spark_system
 	var/stored_matter = 0
 	var/working = 0
@@ -198,5 +198,5 @@ RCD
 	opacity = 0
 	density = 0
 	anchored = 0.0
-	origin_tech = "materials=2"
+	
 	matter = list("metal" = 30000,"glass" = 15000)

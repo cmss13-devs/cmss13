@@ -9,7 +9,7 @@
 	throwforce = 2
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
-	origin_tech = "magnets=1"
+	
 
 	var/secured = 1
 	var/list/attached_overlays = null

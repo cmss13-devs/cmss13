@@ -140,7 +140,6 @@
 			src.temp = "[src.enemy_name] has fallen! Rejoice!"
 
 			if(!contents.len)
-				feedback_inc("arcade_win_normal")
 				var/prizeselect = pickweight(prizes)
 				new prizeselect(src.loc)
 
@@ -151,7 +150,6 @@
 					new	/obj/item/clothing/head/syndicatefake(src.loc)
 
 			else
-				feedback_inc("arcade_win_normal")
 				var/atom/movable/prize = pick(contents)
 				prize.loc = src.loc
 
@@ -165,7 +163,6 @@
 			src.gameover = 1
 			sleep(10)
 			src.temp = "You have been drained! GAME OVER"
-			feedback_inc("arcade_loss_mana_normal")
 
 	else if ((src.enemy_hp <= 10) && (src.enemy_mp > 4))
 		src.temp = "[src.enemy_name] heals for 4 health!"
@@ -180,7 +177,6 @@
 	if ((src.player_mp <= 0) || (src.player_hp <= 0))
 		src.gameover = 1
 		src.temp = "GAME OVER"
-		feedback_inc("arcade_loss_hp_normal")
 
 	src.blocked = 0
 	return

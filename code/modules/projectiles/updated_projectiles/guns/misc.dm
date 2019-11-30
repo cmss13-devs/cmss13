@@ -6,7 +6,7 @@
 	desc = "An enormous multi-barreled rotating gatling gun. This thing will no doubt pack a punch."
 	icon_state = "painless"
 	item_state = "painless"
-	origin_tech = "combat=7;materials=5"
+	
 	fire_sound = 'sound/weapons/gun_minigun.ogg'
 	cocked_sound = 'sound/weapons/gun_minigun_cocked.ogg'
 	current_mag = /obj/item/ammo_magazine/minigun
@@ -63,7 +63,7 @@
 	desc = "The M60. The Pig. The Action Hero's wet dream."
 	icon_state = "m60"
 	item_state = "m60"
-	origin_tech = "combat=7;materials=5"
+	
 	fire_sound = 'sound/weapons/gun_m60.ogg'
 	cocked_sound = 'sound/weapons/gun_m60_cocked.ogg'
 	current_mag = /obj/item/ammo_magazine/m60
@@ -109,7 +109,7 @@
 	icon_state = "spikelauncher"
 	item_state = "spikelauncher"
 	muzzle_flash = null // TO DO, add a decent one.
-	origin_tech = "combat=7;materials=7"
+	
 	unacidable = TRUE
 	fire_sound = 'sound/effects/woodhit.ogg' // TODO: Decent THWOK noise.
 	ammo = /datum/ammo/alloy_spike

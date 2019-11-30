@@ -3,7 +3,7 @@
 	reload_sound = 'sound/weapons/handling/smg_reload.ogg'
 	unload_sound = 'sound/weapons/handling/smg_unload.ogg'
 	cocked_sound = 'sound/weapons/gun_cocked2.ogg'
-	origin_tech = "combat=4;materials=3"
+	
 	fire_sound = 'sound/weapons/gun_m39.ogg'
 	force = 8
 	w_class = SIZE_LARGE
@@ -95,7 +95,7 @@
 	desc = "A modified version M-39 submachinegun, re-engineered for better weight, handling and accuracy. Given only to elite units."
 	icon_state = "m39b2"
 	item_state = "m39b2"
-	origin_tech = "combat=6;materials=5"
+	
 	current_mag = /obj/item/ammo_magazine/smg/m39/ap
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
 	wield_delay =  WIELD_DELAY_VERY_FAST
@@ -131,7 +131,7 @@
 	desc = "A German design, this was one of the most widely used submachine guns in the world. It's still possible to find this firearm in the hands of collectors or gun fanatics."
 	icon_state = "mp5"
 	item_state = "mp5"
-	origin_tech = "combat=3;materials=2"
+	
 	fire_sound = 'sound/weapons/smg_light.ogg'
 	current_mag = /obj/item/ammo_magazine/smg/mp5
 	attachable_allowed = list(
@@ -189,7 +189,7 @@
 	desc = "An archaic design going back hundreds of years, the MP27 was common in its day. Today it sees limited use as cheap computer-printed replicas or family heirlooms."
 	icon_state = "mp7"
 	item_state = "mp7"
-	origin_tech = "combat=3;materials=2"
+	
 	fire_sound = 'sound/weapons/smg_light.ogg'
 	current_mag = /obj/item/ammo_magazine/smg/mp7
 	attachable_allowed = list(
@@ -239,7 +239,7 @@
 	desc = "A robust, 20th century firearm that's a combination of pistol and submachinegun. Fires .32ACP caliber rounds from a 20 round magazine."
 	icon_state = "skorpion"
 	item_state = "skorpion"
-	origin_tech = "combat=3;materials=2"
+	
 	fire_sound = 'sound/weapons/gun_skorpion.ogg'
 	current_mag = /obj/item/ammo_magazine/smg/skorpion
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
@@ -290,7 +290,7 @@
 	desc = "An unauthorized copy of a replica of a prototype submachinegun developed in a third world shit hole somewhere."
 	icon_state = "ppsh17b"
 	item_state = "ppsh17b"
-	origin_tech = "combat=3;materials=2;syndicate=4"
+	
 	fire_sound = 'sound/weapons/smg_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/smg/ppsh
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
@@ -323,7 +323,7 @@
 	desc = "A cheap, reliable design and manufacture make this ubiquitous submachinegun useful despite the age. Turn on burst mode for maximum firepower."
 	icon_state = "mac15"
 	item_state = "mac15"
-	origin_tech = "combat=3;materials=2"
+	
 	fire_sound = 'sound/weapons/uzi.ogg'
 	current_mag = /obj/item/ammo_magazine/smg/uzi
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
@@ -369,7 +369,7 @@
 	desc = "An older design, but one that's stood the test of time and still sees common use today. Fires fast armor piercing rounds at a high rate."
 	icon_state = "fp9000"
 	item_state = "fp9000"
-	origin_tech = "combat=5;materials=4"
+	
 	fire_sound = 'sound/weapons/gun_p90.ogg'
 	current_mag = /obj/item/ammo_magazine/smg/fp9000
 

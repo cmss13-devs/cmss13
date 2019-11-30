@@ -9,7 +9,7 @@
 	throw_speed = SPEED_FAST
 	throw_range = 7
 	w_class = SIZE_LARGE
-	origin_tech = "combat=1"
+	
 	attack_verb = list("robusted")
 
 /obj/item/storage/toolbox/emergency
@@ -64,7 +64,7 @@
 	name = "suspicious looking toolbox"
 	icon_state = "syndicate"
 	item_state = "toolbox_syndi"
-	origin_tech = "combat=1;syndicate=1"
+	
 	force = 7.0
 
 	New()

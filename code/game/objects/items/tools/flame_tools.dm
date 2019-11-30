@@ -116,7 +116,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/burnt = 0
 	var/smoketime = 5
 	w_class = SIZE_TINY
-	origin_tech = "materials=1"
+	
 	attack_verb = list("burnt", "singed")
 
 /obj/item/tool/match/process()

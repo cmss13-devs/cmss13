@@ -125,7 +125,7 @@
 	desc = "It's a black ink pen with a sharp point and a carefully engraved \"Waffle Co.\""
 	flags_atom = FPRINT|OPENCONTAINER
 	flags_equip_slot = SLOT_WAIST
-	origin_tech = "materials=2;syndicate=5"
+	
 
 
 /obj/item/tool/pen/sleepypen/New()
@@ -153,7 +153,7 @@
  /obj/item/tool/pen/paralysis
 	flags_atom = FPRINT|OPENCONTAINER
 	flags_equip_slot = SLOT_WAIST
-	origin_tech = "materials=2;syndicate=5"
+	
 
 
 /obj/item/tool/pen/paralysis/attack(mob/living/M as mob, mob/user as mob)

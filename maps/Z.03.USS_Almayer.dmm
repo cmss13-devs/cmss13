@@ -6635,7 +6635,6 @@
 /area/almayer/medical/testlab)
 "apW" = (
 /obj/structure/machinery/telecomms/server/presets/common{
-	produces_heat = 0
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -6644,7 +6643,6 @@
 /area/almayer/command/telecomms)
 "apX" = (
 /obj/structure/machinery/telecomms/server/presets/medical{
-	produces_heat = 0
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -6653,7 +6651,6 @@
 /area/almayer/command/telecomms)
 "apY" = (
 /obj/structure/machinery/telecomms/server/presets/engineering{
-	produces_heat = 0
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -7768,7 +7765,6 @@
 /area/almayer/command/airoom)
 "asH" = (
 /obj/structure/machinery/telecomms/bus/preset_three{
-	produces_heat = 0
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -7777,7 +7773,6 @@
 /area/almayer/command/telecomms)
 "asI" = (
 /obj/structure/machinery/telecomms/bus/preset_two{
-	produces_heat = 0
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -7786,7 +7781,6 @@
 /area/almayer/command/telecomms)
 "asJ" = (
 /obj/structure/machinery/telecomms/bus/preset_four{
-	produces_heat = 0
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -7795,7 +7789,6 @@
 /area/almayer/command/telecomms)
 "asK" = (
 /obj/structure/machinery/telecomms/bus/preset_one{
-	produces_heat = 0
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -8420,7 +8413,6 @@
 /area/almayer/command/airoom)
 "aui" = (
 /obj/structure/machinery/telecomms/hub/preset{
-	produces_heat = 0
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -9094,7 +9086,6 @@
 /area/almayer/command/airoom)
 "avN" = (
 /obj/structure/machinery/telecomms/processor/preset_two{
-	produces_heat = 0
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -9103,7 +9094,6 @@
 /area/almayer/command/telecomms)
 "avO" = (
 /obj/structure/machinery/telecomms/processor/preset_three{
-	produces_heat = 0
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -9112,7 +9102,6 @@
 /area/almayer/command/telecomms)
 "avP" = (
 /obj/structure/machinery/telecomms/processor/preset_four{
-	produces_heat = 0
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -9121,7 +9110,6 @@
 /area/almayer/command/telecomms)
 "avQ" = (
 /obj/structure/machinery/telecomms/processor/preset_one{
-	produces_heat = 0
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -10124,7 +10112,6 @@
 /area/almayer/shipboard/brig)
 "axV" = (
 /obj/structure/machinery/telecomms/server/presets/command{
-	produces_heat = 0
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -10133,7 +10120,6 @@
 /area/almayer/command/telecomms)
 "axW" = (
 /obj/structure/machinery/telecomms/server/presets/security{
-	produces_heat = 0
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -10142,7 +10128,6 @@
 /area/almayer/command/telecomms)
 "axX" = (
 /obj/structure/machinery/telecomms/server/presets/squads{
-	produces_heat = 0
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -45347,7 +45332,6 @@
 /area/almayer/command/cic)
 "hvw" = (
 /obj/structure/machinery/r_n_d/server/core{
-	produces_heat = 0;
 	unacidable = 1;
 	unslashable = 1
 	},

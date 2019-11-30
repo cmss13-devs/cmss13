@@ -11,7 +11,7 @@
 	var/status = 0
 	var/mob/foundmob = "" //Used in throwing proc.
 
-	origin_tech = "combat=2"
+	
 
 /obj/item/weapon/stunprod/update_icon()
 	if(status)

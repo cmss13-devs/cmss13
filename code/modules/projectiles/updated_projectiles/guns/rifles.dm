@@ -3,7 +3,7 @@
 /obj/item/weapon/gun/rifle
 	reload_sound = 'sound/weapons/gun_rifle_reload.ogg'
 	cocked_sound = 'sound/weapons/gun_cocked2.ogg'
-	origin_tech = "combat=4;materials=3"
+	
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
 	force = 15
@@ -111,7 +111,7 @@
 	desc = "A modified version M41A Pulse Rifle MK2, re-engineered for better weight, handling and accuracy. Fires precise two-round bursts. Given only to elite units."
 	icon_state = "m41a2"
 	item_state = "m41a2"
-	origin_tech = "combat=7;materials=5"
+	
 	current_mag = /obj/item/ammo_magazine/rifle/ap
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
 	aim_slowdown = SLOWDOWN_ADS_SMG
@@ -284,7 +284,7 @@
 	desc = "A cheap, reliable assault rifle chambered in 7.62x39mm. Commonly found in the hands of criminals or mercenaries, or in the hands of the UPP or Iron Bears."
 	icon_state = "mar40"
 	item_state = "mar40"
-	origin_tech = "combat=4;materials=2;syndicate=4"
+	
 	fire_sound = 'sound/weapons/gun_mar40.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/mar40
 	attachable_allowed = list(
@@ -420,7 +420,7 @@
 	desc = "An old, reliable design first adopted by the U.S. military in the 1960s. Something like this belongs in a museum of war history. It is chambered in 5.56x45mm."
 	icon_state = "m16"
 	item_state = "m16"
-	origin_tech = "combat=4;materials=3"
+	
 	fire_sound = 'sound/weapons/gun_mar40.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/m16
 	attachable_allowed = list(
@@ -537,7 +537,7 @@
 	desc = "A large squad support weapon capable of laying down sustained supressing fire from a mounted position. While unstable and less accurate, it can be lugged and shot with two hands. Like it's smaller brothers, the M41A MK2 and L42 MK1, the M41AE2 is chambered in 10mm."
 	icon_state = "m41ae2"
 	item_state = "m41ae2"
-	origin_tech = "combat=5;materials=4"
+	
 	reload_sound = 'sound/weapons/handling/hpr_reload.ogg'
 	unload_sound = 'sound/weapons/handling/hpr_unload.ogg'
 	fire_sound = 'sound/weapons/gun_hpr.ogg'
@@ -591,7 +591,7 @@
 	desc = "The primary service rifle of the UPP space forces, the Type 71 is an ergonomic, lightweight pulse rifle chambered in 5.45x39mm. In accordance with doctrinal principles of overmatch and suppression, the rifle has a high rate of fire and a high-capacity casket magazine. Despite lackluster precision, an integrated recoil-dampening mechanism makes the rifle surprisingly controllable in bursts."
 	icon_state = "type71"
 	item_state = "type71"
-	origin_tech = "combat=4;materials=2;syndicate=4"
+	
 	fire_sound = 'sound/weapons/gun_type71.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/type71
 	wield_delay = WIELD_DELAY_FAST

@@ -6,7 +6,7 @@ can cause issues with ammo types getting mixed up during the burst.
 */
 
 /obj/item/weapon/gun/shotgun
-	origin_tech = "combat=4;materials=3"
+	
 	w_class = SIZE_LARGE
 	force = 14.0
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
@@ -161,7 +161,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	desc = "A cobbled-together pile of scrap and alien wood. Point end towards things you want to die. Has a burst fire feature, as if it needed it."
 	icon_state = "cshotgun"
 	item_state = "cshotgun"
-	origin_tech = "combat=4;materials=2"
+	
 	fire_sound = 'sound/weapons/gun_shotgun_automatic.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/merc
 	attachable_allowed = list(
@@ -206,7 +206,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	desc = "The Weyland-Yutani MK221 Shotgun, a semi-automatic shotgun with a quick fire rate."
 	icon_state = "mk221"
 	item_state = "mk221"
-	origin_tech = "combat=5;materials=4"
+	
 	fire_sound = 'sound/weapons/gun_shotgun_automatic.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	attachable_allowed = list(
@@ -266,7 +266,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	desc = "A double barreled shotgun of archaic, but sturdy design. Uses 12 Gauge Special slugs, but can only hold 2 at a time."
 	icon_state = "dshotgun"
 	item_state = "dshotgun"
-	origin_tech = "combat=4;materials=2"
+	
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/double
 	fire_sound = 'sound/weapons/gun_shotgun_heavy.ogg'
 	cocked_sound = null //We don't want this.

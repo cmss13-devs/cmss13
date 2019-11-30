@@ -168,7 +168,6 @@ var/global/datum/controller/gameticker/ticker = new()
 
 	if(config.sql_enabled)
 		spawn(MINUTES_5)
-		statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
 		for(var/obj/structure/closet/C in structure_list) //Set up special equipment for lockers and vendors, depending on gamemode
 			C.select_gamemode_equipment(mode.type)
 		for(var/obj/structure/machinery/vending/V in machines)
@@ -238,16 +237,13 @@ var/global/datum/controller/gameticker/ticker = new()
 			callHook("roundend")
 
 			if (EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED || EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED)
-				feedback_set_details("end_proper","nuke")
+				log_game("Round ended by nuke")
 			else
-				feedback_set_details("end_proper","proper completion")
+				log_game("Round ended by proper completion")
 
 			if(config.autooocmute && !ooc_allowed)
 				to_world(SPAN_DANGER("<B>The OOC channel has been globally enabled due to round end!</B>"))
 				ooc_allowed = 1
-
-			if(blackbox)
-				blackbox.save_all_data_to_sql()
 
 			if(!delay_end)
 				sleep(restart_timeout)

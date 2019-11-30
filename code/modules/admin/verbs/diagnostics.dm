@@ -28,7 +28,7 @@
 	message_admins("[key_name_admin(largest_move_mob)] had the largest move delay with [largest_move_time] frames / [largest_move_time/10] seconds!", 1)
 	message_admins("[key_name_admin(largest_click_mob)] had the largest click delay with [largest_click_time] frames / [largest_click_time/10] seconds!", 1)
 	message_admins("world.time = [world.time]", 1)
-	feedback_add_details("admin_verb","UFE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 	return
 
 /client/proc/radio_report()
@@ -55,7 +55,7 @@
 					output += "&nbsp;&nbsp;&nbsp;&nbsp;[device]<br>"
 
 	usr << browse(output,"window=radioreport")
-	feedback_add_details("admin_verb","RR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/reload_admins()
 	set name = "Reload Admins"
@@ -65,7 +65,7 @@
 
 	message_admins("[usr.ckey] manually reloaded admins.")
 	load_admins()
-	feedback_add_details("admin_verb","RLDA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	 
 
 /client/proc/reload_whitelist()
 	set name = "Reload Whitelist"

@@ -8,7 +8,7 @@
 	force = 10
 	throwforce = 7
 	w_class = SIZE_MEDIUM
-	origin_tech = "combat=4"
+	
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
 
 /obj/item/weapon/broken_bottle

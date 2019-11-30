@@ -75,10 +75,10 @@ var/global/list/datum/entity/player_entity/player_entities = list()
 
 	for(var/mob/new_player/np in player_list)
 		np.new_player_panel_proc()
-	feedback_set_details("round_start","[time2text(world.realtime)]")
+	log_game("Round started at [time2text(world.realtime)]")
 	if(ticker && ticker.mode)
-		feedback_set_details("game_mode","[ticker.mode]")
-	feedback_set_details("server_ip","[world.internet_address]:[world.port]")
+		log_game("Game mode set to [ticker.mode]")
+	log_game("Server IP: [world.internet_address]:[world.port]")
 	return 1
 
 
@@ -98,8 +98,8 @@ var/global/list/datum/entity/player_entity/player_entities = list()
 /datum/game_mode/proc/announce_ending()
 	if(round_statistics)
 		round_statistics.track_round_end()
+	log_game("Round end result: [round_finished]")
 	to_world("<span class='round_header'>|Round Complete|</span>")
-	feedback_set_details("round_end_result",round_finished)
 
 	to_world(SPAN_ROUNDBODY("Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [map_tag]."))
 	to_world(SPAN_ROUNDBODY("The game-mode was: [master_mode]!"))
@@ -127,15 +127,13 @@ var/global/list/datum/entity/player_entity/player_entities = list()
 				ghosts++
 
 	if(clients > 0)
-		feedback_set("round_end_clients",clients)
+		log_game("Round end - clients: [clients]")
 	if(ghosts > 0)
-		feedback_set("round_end_ghosts",ghosts)
+		log_game("Round end - ghosts: [ghosts]")
 	if(surviving_humans > 0)
-		feedback_set("survived_human",surviving_humans)
+		log_game("Round end - humans: [surviving_humans]")
 	if(surviving_total > 0)
-		feedback_set("survived_total",surviving_total)
-
-	//send2mainirc("A round of [src.name] has ended - [surviving_total] survivors, [ghosts] ghosts.")
+		log_game("Round end - total: [surviving_total]")
 
 	return 0
 

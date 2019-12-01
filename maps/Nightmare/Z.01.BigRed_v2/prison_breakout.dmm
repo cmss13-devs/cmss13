@@ -612,7 +612,6 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "by" = (
-/obj/structure/machinery/computer/forensic_scanning,
 /turf/open/floor{
 	tag = "icon-bcircuit";
 	icon_state = "bcircuit";

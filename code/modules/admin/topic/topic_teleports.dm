@@ -21,6 +21,13 @@
 
 			owner.jumptomob(choice)
 
+		if("jump_to_obj")
+			var/obj/choice = input(owner, "Pick an object to jump to:") as null|anything in object_list
+			if(isnull(choice))
+				return
+
+			owner.jump_to_object(choice)
+
 		if("jump_to_coordinate")
 			var/targ_x = input("Pick a x from 0 to [world.maxx].") as num
 			var/targ_y = input("Pick a y from 0 to [world.maxy].") as num

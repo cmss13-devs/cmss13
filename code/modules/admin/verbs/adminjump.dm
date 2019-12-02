@@ -19,6 +19,8 @@
 /client/proc/jump_to_turf(var/turf/T in turfs)
 	set name = "Jump to Turf"
 	set category = "Admin"
+	set hidden = 1
+
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
@@ -29,16 +31,38 @@
 	usr.forceMove(T)
 	return
 
-/client/proc/jumptomob(var/mob/M in mob_list)
+/client/proc/jump_to_object(var/obj/O in object_list)
+	set name = "Jump to Object"
 	set category = "Admin"
+	set hidden = 1
+
+	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
+	log_admin("[key_name(usr)] jumped to [O]")
+	message_admins("[key_name_admin(usr)] jumped to [O] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[O.loc.x];Y=[O.loc.y];Z=[O.loc.z]'>JMP</A>)")
+	
+	if(src.mob)
+		var/mob/A = src.mob
+		var/turf/T = get_turf(O)
+		if(T && isturf(T))
+			A.on_mob_jump()
+			A.forceMove(T)
+		else
+			to_chat(A, "This object is not located in the game world.")
+
+/client/proc/jumptomob(var/mob/M in mob_list)
 	set name = "Jump to Mob"
+	set category = "Admin"
+	set hidden = 1
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
 	log_admin("[key_name(usr)] jumped to [key_name(M)]")
-	message_admins("[key_name_admin(usr)] jumped to [key_name_admin(M)] (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[M]'>JMP</A>)", 1)
+	message_admins("[key_name_admin(usr)] jumped to [key_name_admin(M)] (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[M]'>JMP</A>)")
 	if(src.mob)
 		var/mob/A = src.mob
 		var/turf/T = get_turf(M)
@@ -49,8 +73,9 @@
 			to_chat(A, "This mob is not located in the game world.")
 
 /client/proc/jumptocoord(tx as num, ty as num, tz as num)
-	set category = "Admin"
 	set name = "Jump to Coordinate"
+	set category = "Admin"
+	set hidden = 1
 
 	if (!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -68,8 +93,9 @@
 	message_admins("[key_name_admin(usr)] jumped to coordinates [tx], [ty], [tz] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[tx];Y=[ty];Z=[tz]'>JMP</a>)")
 
 /client/proc/jumptokey()
-	set category = "Admin"
 	set name = "Jump to Key"
+	set category = "Admin"
+	set hidden = 1
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -92,6 +118,7 @@
 	set category = "Admin"
 	set name = "Get Mob"
 	set desc = "Mob to teleport"
+	set hidden = 1
 
 	if(!src.admin_holder)
 		to_chat(src, "Only administrators may use this command.")
@@ -106,6 +133,7 @@
 	set category = "Admin"
 	set name = "Get Key"
 	set desc = "Key to teleport"
+	set hidden = 1
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -130,6 +158,8 @@
 /client/proc/sendmob(var/mob/M in sortmobs())
 	set category = "Admin"
 	set name = "Send Mob"
+	set hidden = 1
+
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return

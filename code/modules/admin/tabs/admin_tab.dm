@@ -268,6 +268,7 @@
 		<A href='?src=\ref[src];teleport=jump_to_area'>Jump to Area</A><BR>
 		<A href='?src=\ref[src];teleport=jump_to_turf'>Jump to Turf</A><BR>
 		<A href='?src=\ref[src];teleport=jump_to_mob'>Jump to Mob</A><BR>
+		<A href='?src=\ref[src];teleport=jump_to_obj'>Jump to Object</A><BR>
 		<A href='?src=\ref[src];teleport=jump_to_coordinate'>Jump to Coordinate</A><BR>
 		<A href='?src=\ref[src];teleport=jump_to_key'>Jump to Ckey</A><BR>
 		<A href='?src=\ref[src];teleport=get_mob'>Teleport Mob to You</A><BR>

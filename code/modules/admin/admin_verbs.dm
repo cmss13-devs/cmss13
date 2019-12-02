@@ -153,7 +153,9 @@ var/list/admin_mob_verbs_hideable = list(
 	/client/proc/cmd_admin_check_contents,
 	/datum/admins/proc/show_player_panel,
 	/client/proc/cmd_admin_delete,
-	/datum/admins/proc/togglesleep
+	/datum/admins/proc/togglesleep,
+	/client/proc/remove_players_from_vic,
+	/client/proc/remove_clamp_from_vic
 )
 
 var/list/admin_verbs_mod = list(
@@ -171,6 +173,7 @@ var/list/admin_verbs_mod = list(
 	/datum/admins/proc/togglesleep,
 	/datum/admins/proc/sleepall,
 	/datum/admins/proc/togglejoin,
+	/client/proc/jump_to_object,
 	/client/proc/toggle_own_ghost_vis,
 	/client/proc/check_antagonists,
 	/client/proc/toggleattacklogs,

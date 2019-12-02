@@ -11713,8 +11713,14 @@
 	icon = 'icons/turf/overlays.dmi';
 	icon_state = "sand1_c"
 	},
-/turf/open/asphalt{
-	icon_state = "tile"
+/obj/effect/decal/warning_stripes{
+	tag = "icon-S";
+	icon_state = "S"
+	},
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (WEST)";
+	icon_state = "sterile_white";
+	dir = 8
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "aEv" = (
@@ -11779,18 +11785,28 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aEC" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 1;
-	icon = 'icons/turf/overlays.dmi';
-	icon_state = "sand1_s"
-	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	pixel_y = 24;
 	start_charge = 0
 	},
-/turf/open/asphalt{
-	icon_state = "tile"
+/obj/effect/decal/warning_stripes{
+	tag = "icon-S";
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E"
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1;
+	icon = 'icons/turf/overlays.dmi';
+	icon_state = "sand1_s"
+	},
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (WEST)";
+	icon_state = "sterile_white";
+	dir = 8
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "aED" = (
@@ -17179,6 +17195,18 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
+"aSy" = (
+/obj/structure/morgue{
+	tag = "icon-morgue1 (WEST)";
+	icon_state = "morgue1";
+	dir = 8
+	},
+/turf/open/floor/prison{
+	tag = "icon-bright_clean2 (SOUTHWEST)";
+	icon_state = "bright_clean2";
+	dir = 10
+	},
+/area)
 "aSC" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Substation"
@@ -108137,7 +108165,7 @@ cjv
 ckg
 ckg
 ckg
-ckg
+aSy
 ckg
 cka
 cpI

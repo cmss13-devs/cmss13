@@ -4198,7 +4198,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "alm" = (
 /obj/structure/table/reinforced,
-/obj/item/paper,
+/obj/item/paper/research_notes,
 /turf/open/floor/prison{
 	icon_state = "darkpurple2";
 	dir = 8
@@ -4280,6 +4280,7 @@
 /area/desert_dam/exterior/valley/valley_mining)
 "aly" = (
 /obj/structure/closet/crate,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor/prison{
 	icon_state = "darkpurple2";
 	dir = 5
@@ -4398,6 +4399,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "alN" = (
 /obj/structure/table/reinforced,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor/prison{
 	icon_state = "darkpurplecorners2";
 	dir = 4
@@ -5325,6 +5327,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "aob" = (
 /obj/structure/table/reinforced,
+/obj/item/paper/research_notes,
 /turf/open/floor/prison{
 	icon_state = "darkpurple2";
 	dir = 2
@@ -9723,7 +9726,7 @@
 /area/desert_dam/building/administration/control_room)
 "azg" = (
 /obj/structure/table,
-/obj/effect/spawner/random/technology_scanner,
+/obj/item/paper/research_notes,
 /turf/open/floor/prison{
 	tag = "icon-floor (SOUTHWEST)";
 	icon_state = "floor";
@@ -18156,6 +18159,7 @@
 /area/desert_dam/building/administration/control_room)
 "aVJ" = (
 /obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
 "aVK" = (
@@ -21570,6 +21574,7 @@
 /area/desert_dam/building/security/courtroom)
 "bfA" = (
 /obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/overseer_office)
 "bfB" = (
@@ -41651,8 +41656,7 @@
 /area/desert_dam/building/medical/chemistry)
 "cmw" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/box/syringes,
-/obj/item/reagent_container/dropper,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -42383,6 +42387,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "coM" = (
 /obj/structure/table/reinforced,
+/obj/item/paper/research_notes,
 /turf/open/floor/prison{
 	icon_state = "whitered";
 	dir = 2
@@ -42656,6 +42661,7 @@
 /area/desert_dam/building/medical/office1)
 "cpy" = (
 /obj/structure/closet,
+/obj/item/paper/research_notes,
 /turf/open/floor/prison{
 	icon_state = "whitered";
 	dir = 5
@@ -42695,6 +42701,7 @@
 /area/desert_dam/building/medical/chemistry)
 "cpD" = (
 /obj/structure/table/reinforced,
+/obj/item/paper/research_notes,
 /turf/open/floor{
 	tag = "icon-whitepurplecorner";
 	icon_state = "whitepurplecorner";
@@ -45151,6 +45158,7 @@
 /obj/structure/machinery/door/window/brigdoor/northleft{
 	dir = 8
 	},
+/obj/item/paper/research_notes,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean2 (SOUTHWEST)";
 	icon_state = "bright_clean2";
@@ -45830,6 +45838,8 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/CMO)
 "cyt" = (
@@ -46192,13 +46202,7 @@
 /area/desert_dam/building/medical/primary_storage)
 "czF" = (
 /obj/structure/table,
-/obj/item/storage/pill_bottle/antitox{
-	pixel_x = -5
-	},
-/obj/item/storage/pill_bottle/antitox,
-/obj/item/storage/pill_bottle/bicaridine{
-	pixel_x = 5
-	},
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor/prison{
 	icon_state = "whitered";
 	dir = 4
@@ -50336,7 +50340,7 @@
 	pixel_x = 6;
 	pixel_y = 10
 	},
-/obj/item/document_objective/report,
+/obj/item/paper/research_notes,
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
 	icon_state = "whitegreenfull";
@@ -50651,6 +50655,7 @@
 /area/desert_dam/building/medical/virology_wing)
 "cLq" = (
 /obj/structure/table,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
 	icon_state = "whitegreenfull";
@@ -51326,6 +51331,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "cNE" = (
 /obj/structure/table,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "whitegreen"
@@ -60020,6 +60026,14 @@
 	dir = 2
 	},
 /area/desert_dam/building/dorms/pool)
+"dCo" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/fancy/vials/random,
+/turf/open/floor/prison{
+	icon_state = "bright_clean2";
+	dir = 2
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_biology)
 "dCt" = (
 /obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_3"
@@ -64514,7 +64528,7 @@
 /area/desert_dam/building/medical/treatment_room)
 "dSE" = (
 /obj/structure/table,
-/obj/item/document_objective/paper,
+/obj/item/paper/research_notes,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (WEST)";
 	icon_state = "sterile_white";
@@ -66776,6 +66790,7 @@
 	icon_state = "tube1";
 	dir = 8
 	},
+/obj/item/paper/research_notes,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -68045,6 +68060,15 @@
 /area/desert_dam/exterior/valley/valley_cargo{
 	is_resin_allowed = 0
 	})
+"eBZ" = (
+/obj/item/storage/fancy/vials/random,
+/obj/structure/table/reinforced,
+/turf/open/floor/prison{
+	tag = "icon-whitegreenfull (SOUTHWEST)";
+	icon_state = "whitegreenfull";
+	dir = 10
+	},
+/area/desert_dam/building/medical/treatment_room)
 "eCk" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
@@ -68232,6 +68256,11 @@
 /area/desert_dam/exterior/valley/valley_cargo{
 	is_resin_allowed = 0
 	})
+"grQ" = (
+/obj/structure/table,
+/obj/item/storage/fancy/vials/random,
+/turf/open/floor/prison,
+/area/desert_dam/building/hydroponics/hydroponics)
 "gsr" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal11"
@@ -68266,6 +68295,14 @@
 	icon_state = "rock3"
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
+"gNq" = (
+/obj/structure/table,
+/obj/item/tool/pen,
+/obj/item/paper/research_notes,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "gQE" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal9"
@@ -68528,6 +68565,11 @@
 	dir = 10
 	},
 /area/desert_dam/interior/dam_interior/hanger)
+"kgh" = (
+/obj/structure/table/woodentable,
+/obj/item/paper/research_notes,
+/turf/open/floor/carpet,
+/area/desert_dam/building/administration/meetingrooom)
 "kiP" = (
 /obj/structure/flora/grass/tallgrass/desert,
 /turf/open/desert/dirt,
@@ -68539,6 +68581,14 @@
 	icon_state = "wood"
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"kDU" = (
+/obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
+/area/desert_dam/building/administration/archives)
 "kKc" = (
 /obj/structure/table,
 /obj/item/document_objective/paper,
@@ -68548,6 +68598,15 @@
 	dir = 10
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
+"kRX" = (
+/obj/structure/table,
+/obj/item/storage/fancy/vials/random,
+/turf/open/floor{
+	tag = "icon-whitegreen (WEST)";
+	icon_state = "whitegreen";
+	dir = 8
+	},
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "kUz" = (
 /obj/structure/table,
 /obj/item/document_objective/technical_manual,
@@ -69140,10 +69199,26 @@
 	dir = 4
 	},
 /area/desert_dam/building/substation/northwest)
+"pFj" = (
+/obj/structure/table,
+/obj/item/storage/fancy/vials/random,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "pGn" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/asphalt,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
+"pIg" = (
+/obj/structure/table,
+/obj/item/paper/research_notes,
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (WEST)";
+	icon_state = "sterile_white";
+	dir = 8
+	},
+/area/desert_dam/building/warehouse/breakroom)
 "pJW" = (
 /obj/structure/flora/grass/tallgrass/desert,
 /turf/open/desert/dirt,
@@ -69247,6 +69322,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
+"qOe" = (
+/obj/item/paper/research_notes,
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (WEST)";
+	icon_state = "sterile_white";
+	dir = 8
+	},
+/area/desert_dam/building/medical/surgery_room_one)
 "qQz" = (
 /obj/structure/flora/grass/tallgrass/desert/corner,
 /turf/open/desert/dirt,
@@ -69939,6 +70022,15 @@
 	dir = 10
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
+"wUj" = (
+/obj/structure/table,
+/obj/item/paper/research_notes,
+/turf/open/floor{
+	tag = "icon-whitegreen (WEST)";
+	icon_state = "whitegreen";
+	dir = 8
+	},
+/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "wUD" = (
 /obj/structure/table,
 /obj/item/disk/objective,
@@ -82969,7 +83061,7 @@ bpY
 bPE
 brL
 brL
-coi
+pIg
 cps
 bpY
 cIp
@@ -86995,8 +87087,8 @@ aGA
 aHk
 aIe
 acf
-acl
-acl
+wUj
+kRX
 acl
 aIe
 aLL
@@ -88879,7 +88971,7 @@ aeM
 akt
 dTs
 aZC
-aZW
+kDU
 aZY
 aZY
 aZY
@@ -89347,7 +89439,7 @@ aeM
 aez
 akv
 aZC
-aZW
+kDU
 aZY
 aZY
 aZY
@@ -90062,7 +90154,7 @@ bcT
 bdn
 bdj
 beg
-bew
+kgh
 bew
 bfe
 bfq
@@ -95587,7 +95679,7 @@ ddT
 dex
 dex
 dfU
-dew
+grQ
 dWj
 daK
 dUg
@@ -106900,7 +106992,7 @@ aqC
 aqC
 avG
 axW
-ayi
+gNq
 aye
 kBA
 avH
@@ -107490,7 +107582,7 @@ cHc
 cEG
 cJF
 cKw
-cKw
+eBZ
 cLV
 cJA
 dTs
@@ -107945,7 +108037,7 @@ cwQ
 cxE
 dDk
 cyZ
-cyZ
+qOe
 cyZ
 dQQ
 cCr
@@ -108071,7 +108163,7 @@ aqC
 avG
 axW
 ayi
-ayf
+pFj
 ayf
 avH
 ayL
@@ -113899,7 +113991,7 @@ aiI
 alI
 alI
 amo
-amo
+dCo
 amV
 amo
 alI

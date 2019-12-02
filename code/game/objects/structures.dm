@@ -80,41 +80,24 @@
 	if(!climbable || !can_touch(user))
 		return FALSE
 
-	var/turf/T = src.loc
+	var/turf/T = get_turf(src)
+	if(flags_atom & ON_BORDER)
+		T = get_step(get_turf(src), dir)
+		if(user.loc == T)
+			T = get_turf(src)
+
 	var/turf/U = get_turf(user)
 	if(!istype(T) || !istype(U)) 
 		return FALSE
 
-	var/result = handle_barriers(user)
-	if(result != src)
-		to_chat(user, SPAN_WARNING("There's \a [result] in the way."))
-		return FALSE
+	user.flags_pass_temp |= PASS_MOB|PASS_OVER_THROW_MOB
+	var/atom/blocker = LinkBlocked(user, U, T, list(src))
+	user.flags_pass_temp ^= PASS_MOB|PASS_OVER_THROW_MOB
 
-	if(!(flags_atom & ON_BORDER))
-		return TRUE
-	if(user.loc != loc && user.loc != get_step(T, dir))
-		to_chat(user, SPAN_WARNING("You need to be up against [src] to leap over."))
+	if(blocker)
+		to_chat(user, SPAN_WARNING("\The [blocker] prevents you from climbing [src]."))
 		return FALSE
-	if(user.loc == loc)
-		var/turf/target = get_step(T, dir)
-		if(target.density) //Turf is dense, not gonna work
-			to_chat(user, SPAN_WARNING("You cannot leap this way."))
-			return FALSE
-		for(var/atom/movable/A in target)
-			if(!A || !A.density)
-				continue
-			if(isStructure(A))
-				var/obj/structure/S = A
-				if (S.flags_atom & ON_BORDER)
-					if (!S.climbable && turn(dir, 180) == S.dir)
-						to_chat(user, SPAN_WARNING("You cannot leap this way."))
-						return FALSE
-				else if(!S.climbable) //Transfer onto climbable surface
-					to_chat(user, SPAN_WARNING("You cannot leap this way."))
-					return FALSE
-			else
-				to_chat(user, SPAN_WARNING("You cannot leap this way."))
-				return FALSE
+	
 	return TRUE
 
 /obj/structure/proc/do_climb(var/mob/living/user)
@@ -129,34 +112,14 @@
 	if(!can_climb(user))
 		return
 
-	if(!(flags_atom & ON_BORDER)) //If not a border structure or we are not on its tile, assume default behavior
-		user.forceMove(get_turf(src))
-
-		if(get_turf(user) == get_turf(src))
-			user.visible_message(SPAN_WARNING("[user] climbs onto \the [src]!"))
-	else //If border structure, assume complex behavior
-		var/turf/target = get_step(get_turf(src), dir)
-		if(user.loc == target)
-			user.forceMove(get_turf(src))
-			user.visible_message(SPAN_WARNING("[user] leaps over \the [src]!"))
-		else
-			if(target.density) //Turf is dense, not gonna work
-				to_chat(user, SPAN_WARNING("You cannot leap this way."))
-				return
-			for(var/atom/movable/A in target)
-				if(A && A.density && !(A.flags_atom & ON_BORDER))
-					if(istype(A, /obj/structure))
-						var/obj/structure/S = A
-						if(!S.climbable) //Transfer onto climbable surface
-							to_chat(user, SPAN_WARNING("You cannot leap this way."))
-							return
-					else
-						to_chat(user, SPAN_WARNING("You cannot leap this way."))
-						return
-			user.forceMove(get_turf(target)) //One more move, we "leap" over the border structure
-
-			if(get_turf(user) == get_turf(target))
-				user.visible_message(SPAN_WARNING("[user] leaps over \the [src]!"))
+	var/turf/TT = get_turf(src)
+	if(flags_atom & ON_BORDER)
+		TT = get_step(get_turf(src), dir)
+		if(user.loc == TT)
+			TT = get_turf(src)
+	
+	user.visible_message(SPAN_WARNING("[user] climbs onto \the [src]!"))
+	user.forceMove(TT)
 
 /obj/structure/proc/structure_shaken()
 

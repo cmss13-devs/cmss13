@@ -1,7 +1,7 @@
 // fun if you want to typecast humans/monkeys/etc without writing long path-filled lines.
 #define ishuman(A) (istype(A, /mob/living/carbon/human) )
 
-//Check if the mob is an actual human (and not Youtja or Synth)
+//Check if the mob is an actual human (and not Yautja or Synth)
 #define isHumanStrict(A) (ishuman(A) && istype(A?:species, /datum/species/human))
 
 //Check if the mob is an actual human or Synth

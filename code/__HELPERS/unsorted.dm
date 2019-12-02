@@ -252,7 +252,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 //
 // This is a copy-and-paste of the Enter() proc for turfs with tweaks related to the applications
 // of LinkBlocked
-/proc/LinkBlocked(atom/movable/mover, turf/start_turf, turf/target_turf, atom/forget)
+/proc/LinkBlocked(var/atom/movable/mover, var/turf/start_turf, var/turf/target_turf, var/list/atom/forget)
 	if (!mover)
 		return null
 
@@ -273,7 +273,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 	blocking_dir |= start_turf.BlockedExitDirs(mover, fdir)
 	for (obstacle in start_turf) //First, check objects to block exit
-		if (mover == obstacle || forget == obstacle)
+		if (mover == obstacle || obstacle in forget)
 			continue
 		if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
 			continue
@@ -292,7 +292,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 			if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 				return T
 		for (obstacle in T)
-			if(forget == obstacle)
+			if(obstacle in forget)
 				continue
 			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
 				continue
@@ -313,7 +313,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 			if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 				return T
 		for (obstacle in T)
-			if(forget == obstacle)
+			if(obstacle in forget)
 				continue
 			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
 				continue
@@ -329,7 +329,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 		return target_turf
 	for (obstacle in target_turf) // Finally, check atoms in the target turf
-		if(forget == obstacle)
+		if(obstacle in forget)
 			continue
 		if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
 			continue

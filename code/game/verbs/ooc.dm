@@ -36,8 +36,8 @@ var/global/normal_ooc_colour = "#002eb8"
 		return
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		if(!ooc_allowed)
-			to_chat(src, SPAN_DANGER("OOC is globally muted"))
+		if(!ooc_allowed) //Send to LOOC instead
+			looc(msg)
 			return
 		if(!dooc_allowed && (mob.stat == DEAD))
 			to_chat(usr, SPAN_DANGER("OOC for dead mobs has been turned off."))

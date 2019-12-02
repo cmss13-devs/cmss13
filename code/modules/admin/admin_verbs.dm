@@ -151,7 +151,9 @@ var/list/admin_mob_verbs_hideable = list(
 	/client/proc/cmd_admin_subtle_message,
 	/client/proc/cmd_admin_pm_context,
 	/client/proc/cmd_admin_check_contents,
-	/datum/admins/proc/show_player_panel
+	/datum/admins/proc/show_player_panel,
+	/client/proc/cmd_admin_delete,
+	/datum/admins/proc/togglesleep
 )
 
 var/list/admin_verbs_mod = list(

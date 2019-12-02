@@ -7,35 +7,9 @@
 		return
 	if( !ismob(M) || !M.client )	return
 	cmd_admin_pm(M.client,null)
-	 
-
-//shows a list of clients we could send PMs to, then forwards our choice to cmd_admin_pm
-/client/proc/cmd_admin_pm_panel()
-	set category = "Admin"
-	set name = "Admin PM"
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "<font color='red'>Error: Admin-PM-Panel: Only administrators may use this command.</font>")
-		return
-	var/list/client/targets[0]
-	for(var/client/T)
-		if(T.mob)
-			if(istype(T.mob, /mob/new_player))
-				targets["(New Player) - [T]"] = T
-			else if(istype(T.mob, /mob/dead/observer))
-				targets["[T.mob.name](Ghost) - [T]"] = T
-			else
-				targets["[T.mob.real_name](as [T.mob.name]) - [T]"] = T
-		else
-			targets["(No Mob) - [T]"] = T
-	var/list/sorted = sortList(targets)
-	var/target = input(src,"To whom shall we send a message?","Admin PM",null) in sorted|null
-	cmd_admin_pm(targets[target],null)
-	 
-
 
 //takes input from cmd_admin_pm_context, cmd_admin_pm_panel or /client/Topic and sends them a PM.
 //Fetching a message if needed. src is the sender and C is the target client
-
 /client/proc/cmd_admin_pm(var/client/C, var/msg = null)
 	if(prefs.muted & MUTE_ADMINHELP)
 		to_chat(src, "<font color='red'>Error: Private-Message: You are unable to use PMs (muted).</font>")

@@ -208,7 +208,6 @@
 
 	if(admin_holder)
 		add_admin_verbs()
-		admin_memo_show()
 
 	log_client_to_db()
 

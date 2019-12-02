@@ -150,7 +150,7 @@
 	if(mob_max > 0)
 		ticker.mode.waiting_for_candidates = TRUE
 	show_join_message() //Show our potential candidates the message to let them join.
-	message_admins("Distress beacon: '[name]' activated. Looking for candidates.", 1)
+	message_admins("Distress beacon: '[name]' activated. Looking for candidates.")
 
 	if(announce)
 		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg')
@@ -160,7 +160,7 @@
 
 	sleep(SECONDS_60) //If after 60 seconds we aren't full, abort
 	if(candidates.len < mob_min)
-		message_admins("Aborting distress beacon, not enough candidates: found [candidates.len].", 1)
+		message_admins("Aborting distress beacon, not enough candidates: found [candidates.len].")
 		ticker.mode.waiting_for_candidates = FALSE
 		ticker.mode.has_called_emergency = FALSE
 		members = list() //Empty the members list.
@@ -199,7 +199,7 @@
 		if(announce)
 			marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg') //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
 
-		message_admins("Distress beacon: [src.name] finalized, setting up candidates.", 1)
+		message_admins("Distress beacon: [src.name] finalized, setting up candidates.")
 		var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_id]
 		if(!shuttle || !istype(shuttle))
 			if(shuttle_id) //Cryo distress doesn't have a shuttle

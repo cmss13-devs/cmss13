@@ -419,17 +419,6 @@ body
 		src.give_disease(M)
 		href_list["datumrefresh"] = href_list["give_disease"]
 
-	else if(href_list["godmode"])
-		if(!check_rights(R_REJUVINATE))	return
-
-		var/mob/M = locate(href_list["godmode"])
-		if(!istype(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-
-		src.cmd_admin_godmode(M)
-		href_list["datumrefresh"] = href_list["godmode"]
-
 	else if(href_list["gib"])
 		if(!check_rights(0))	return
 
@@ -513,7 +502,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /obj, /mob and /turf")
 			return
 
-		src.cmd_admin_explosion(A)
+		cell_explosion(A, 150, 100)
 		href_list["datumrefresh"] = href_list["explode"]
 
 	else if(href_list["emp"])

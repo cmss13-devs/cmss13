@@ -7,7 +7,7 @@
 		to_chat(A, "<br>")
 
 	if(prob(30))	//most of the time, we don't want an announcement, so as to allow AIs to fake blackouts.
-		marine_announcement(alert, 'sound/misc/interference.ogg')
+		marine_announcement(alert, "Problem Detected", 'sound/misc/interference.ogg')
 
 
 /datum/event/communications_blackout/start()

@@ -173,7 +173,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 					return FALSE
 
 				log_game("[key_name(usr)] has called for an emergency evacuation.")
-				message_admins("[key_name_admin(usr)] has called for an emergency evacuation.", 1)
+				message_admins("[key_name_admin(usr)] has called for an emergency evacuation.")
 				post_status("shuttle")
 				return TRUE
 
@@ -193,7 +193,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 							set_security_level(SEC_LEVEL_RED, TRUE) //both SD and evac are inactive, lowering the security level.
 
 				log_game("[key_name(usr)] has canceled the emergency evacuation.")
-				message_admins("[key_name_admin(usr)] has canceled the emergency evacuation.", 1)
+				message_admins("[key_name_admin(usr)] has canceled the emergency evacuation.")
 				return TRUE
 
 			state = STATE_EVACUATION_CANCEL
@@ -372,15 +372,6 @@ var/global/cooldown_message = 0 //Based on world.time.
 	if(EvacuationAuthority.evac_status == EVACUATION_STATUS_INITIATING)
 		dat += "<B>Evacuation in Progress</B>\n<BR>\nETA: [EvacuationAuthority.get_status_panel_eta()]<BR>"
 
-/*
-	if(issilicon(user))
-		var/dat2 = interact_ai(user) // give the AI a different interact proc to limit its access
-		if(dat2)
-			dat +=  dat2
-			user << browse(dat, "window=communications;size=400x500")
-			onclose(user, "communications")
-		return FALSE
-*/
 	switch(state)
 		if(STATE_DEFAULT)
 			if(authenticated)
@@ -497,76 +488,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 	user << browse(dat, "window=communications;size=400x500")
 	onclose(user, "communications")
 
-/*
-/obj/structure/machinery/computer/communications/proc/interact_ai(var/mob/living/silicon/ai/user as mob)
-	var/dat = ""
-	switch(aistate)
-		if(STATE_DEFAULT)
-			if(emergency_shuttle.location() && !emergency_shuttle.online())
-				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-callshuttle'>Call Emergency Shuttle</A> \]"
-			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-messagelist'>Message List</A> \]"
-			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-status'>Set Status Display</A> \]"
-		if(STATE_CALLSHUTTLE)
-			dat += "Are you sure you want to call the shuttle? \[ <A HREF='?src=\ref[src];operation=ai-callshuttle2'>OK</A>|<A HREF='?src=\ref[src];operation=ai-main'>Cancel</A> \]"
-		if(STATE_MESSAGELIST)
-			dat += "Messages:"
-			for(var/i = 1; i<=messagetitle.len; i++)
-				dat += "<BR><A HREF='?src=\ref[src];operation=ai-viewmessage;message-num=[i]'>[messagetitle[i]]</A>"
-		if(STATE_VIEWMESSAGE)
-			if (aicurrmsg)
-				dat += "<B>[messagetitle[aicurrmsg]]</B><BR><BR>[messagetext[aicurrmsg]]"
-				dat += "<BR><BR>\[ <A HREF='?src=\ref[src];operation=ai-delmessage'>Delete</A> \]"
-			else
-				aistate = STATE_MESSAGELIST
-				attack_hand(user)
-				return FALSE
-		if(STATE_DELMESSAGE)
-			if(aicurrmsg)
-				dat += "Are you sure you want to delete this message? \[ <A HREF='?src=\ref[src];operation=ai-delmessage2'>OK</A>|<A HREF='?src=\ref[src];operation=ai-viewmessage'>Cancel</A> \]"
-			else
-				aistate = STATE_MESSAGELIST
-				attack_hand(user)
-				return FALSE
-
-		if(STATE_STATUSDISPLAY)
-			dat += "Set Status Displays<BR>"
-			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=blank'>Clear</A> \]<BR>"
-			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=time'>Station Time</A> \]<BR>"
-			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=shuttle'>Shuttle ETA</A> \]<BR>"
-			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=message'>Message</A> \]"
-			dat += "<ul><li> Line 1: <A HREF='?src=\ref[src];operation=setmsg1'>[ stat_msg1 ? stat_msg1 : "(none)"]</A>"
-			dat += "<li> Line 2: <A HREF='?src=\ref[src];operation=setmsg2'>[ stat_msg2 ? stat_msg2 : "(none)"]</A></ul><br>"
-			dat += "\[ Alert: <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=default'>None</A> |"
-			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=redalert'>Red Alert</A> |"
-			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=lockdown'>Lockdown</A> |"
-			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=biohazard'>Biohazard</A> \]<BR><HR>"
-
-	dat += "<BR>\[ [(aistate != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=ai-main'>Main Menu</A>|" : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
-	return dat
-*/
-
 /obj/structure/machinery/computer/communications/proc/post_status(command, data1, data2)
-
-	/*var/datum/radio_frequency/frequency = radio_controller.return_frequency(1435)
-
-	if(!frequency) return FALSE
-
-	var/datum/signal/status_signal = new
-	status_signal.source = src
-	status_signal.transmission_method = 1
-	status_signal.data["command"] = command
-
-	switch(command)
-		if("message")
-			status_signal.data["msg1"] = data1
-			status_signal.data["msg2"] = data2
-			log_admin("STATUS: [fingerprintslast] set status screen message with [src]: [data1] [data2]")
-			//message_admins("STATUS: [user] set status screen with [PDA]. Message: [data1] [data2]")
-		if("alert")
-			status_signal.data["picture_state"] = data1
-
-	frequency.post_signal(src, status_signal)*/
-
  //A simpler version that doesn't have everything the other one has
  /obj/structure/machinery/computer/communications/simple
  	circuit = null

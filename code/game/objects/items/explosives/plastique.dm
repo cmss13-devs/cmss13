@@ -59,10 +59,10 @@
 
 		if(ismob(target))
 			user.attack_log += "\[[time_stamp()]\] <font color='red'> [user.real_name] successfully planted [name] on [target:real_name] ([target:ckey])</font>"
-			message_admins("[key_name(user, user.client)](<A HREF='?_src_=admin_holder;adminmoreinfo=\ref[user]'>?</A>) planted [src.name] on [key_name(target)](<A HREF='?_src_=admin_holder;adminmoreinfo=\ref[target]'>?</A>) with [timer] second fuse",0,1)
+			message_admins("[key_name(user, user.client)](<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[user]'>?</A>) planted [src.name] on [key_name(target)](<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[target]'>?</A>) with [timer] second fuse")
 			log_game("[key_name(user)] planted [src.name] on [key_name(target)] with [timer] second fuse")
 		else
-			message_admins("[key_name(user, user.client)](<A HREF='?_src_=admin_holder;adminmoreinfo=\ref[user]'>?</A>) planted [src.name] on [target.name] at ([target.x],[target.y],[target.z] - <A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[target.x];Y=[target.y];Z=[target.z]'>JMP</a>) with [timer] second fuse",0,1)
+			message_admins("[key_name(user, user.client)](<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[user]'>?</A>) planted [src.name] on [target.name] at ([target.x],[target.y],[target.z] - <A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[target.x];Y=[target.y];Z=[target.z]'>JMP</a>) with [timer] second fuse")
 			log_game("[key_name(user)] planted [src.name] on [target.name] at ([target.x],[target.y],[target.z]) with [timer] second fuse")
 
 		target.overlays += image('icons/obj/items/assemblies.dmi', "plastic-explosive2")

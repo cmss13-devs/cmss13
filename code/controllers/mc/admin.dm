@@ -60,7 +60,7 @@
 
 /client/proc/debug_controller(controller in get_world_controllers())
 	set category = "Debug"
-	set name = "debug controller"
+	set name = "Debug Controller"
 	set desc = "debug the various periodic loop controllers for the game (be careful!)."
 
 	if (!admin_holder || !(usr.client.admin_holder.rights & R_DEBUG))

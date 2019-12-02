@@ -323,19 +323,3 @@
 			M.attack_log += "\[[time_stamp()]\] <b>[M]/[M.ckey]</b> was blown up with a <b>[explosion_source]</b> in [get_area(M)].</b>"
 		else
 			M.attack_log += "\[[time_stamp()]\] <b>[M]/[M.ckey]</b> was blown up in [get_area(M)]."
-
-/client/proc/drop_custom_cell_bomb()
-	set name = "Drop Custom Cell Bomb"
-	set category = "Fun"
-
-	var/power = input(src, "Power?", "Power?") as num
-	if(!power)
-		return
-
-	var/falloff = input(src, "Falloff?", "Falloff?") as num
-	if(!falloff)
-		return
-
-	log_and_message_admins("[key_name(src, TRUE)] dropped a custom cell bomb with power [power] and falloff [falloff]!")
-
-	cell_explosion(get_turf(mob), power, falloff)

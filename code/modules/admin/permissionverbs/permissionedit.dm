@@ -1,6 +1,6 @@
 /client/proc/edit_admin_permissions()
 	set category = "Admin"
-	set name = "Permissions Panel"
+	set name = "C: Permissions Panel"
 	set desc = "Edit admin permissions"
 	if(!check_rights(R_PERMISSIONS))	return
 	usr.client.admin_holder.edit_admin_permissions()

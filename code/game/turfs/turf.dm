@@ -83,9 +83,6 @@
 
 // Handles whether an atom is able to enter the src turf
 /turf/Enter(atom/movable/mover, atom/forget)
-	if (movement_disabled && usr.ckey != movement_disabled_exception)
-		to_chat(usr, SPAN_DANGER("Movement is admin-disabled.")) //This is to identify lag problems
-		return FALSE
 	if (!mover || !isturf(mover.loc))
 		return FALSE
 

@@ -10550,10 +10550,10 @@
 /obj/structure/table/reinforced/prison,
 /obj/item/clothing/mask/surgical,
 /obj/item/storage/surgical_tray,
-/obj/item/document_objective/paper,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/item/paper/research_notes,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "cyan1"
@@ -17771,7 +17771,7 @@
 "aTU" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /obj/structure/rack,
-/obj/item/storage/box/pillbottles,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -18149,6 +18149,7 @@
 /area/strata/ag/interior/dorms/south)
 "aUN" = (
 /obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -25164,6 +25165,7 @@
 	pixel_x = 8;
 	pixel_y = 6
 	},
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -26959,10 +26961,8 @@
 	},
 /area/strata/ag/interior/outpost/med/reception)
 "brM" = (
-/obj/item/storage/pill_bottle/russianRed,
-/obj/item/storage/pill_bottle/russianRed,
+/obj/item/storage/fancy/vials/random,
 /obj/structure/rack,
-/obj/item/storage/pill_bottle/inaprovaline,
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
@@ -26978,12 +26978,8 @@
 	},
 /area/strata/ag/interior/outpost/maint/med3)
 "brP" = (
-/obj/item/reagent_container/spray/cleaner{
-	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
-	name = "Surgery Cleaner"
-	},
 /obj/structure/table/reinforced/prison,
-/obj/item/document_objective/paper,
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
@@ -27403,6 +27399,10 @@
 /obj/structure/table/reinforced/prison,
 /obj/structure/machinery/light/small{
 	dir = 8
+	},
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
 	},
 /turf/open/floor/strata{
 	icon_state = "floor2"
@@ -27836,6 +27836,7 @@
 	dir = 4;
 	tag = "icon-bulb1 (EAST)"
 	},
+/obj/item/paper/research_notes,
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
@@ -31114,6 +31115,7 @@
 /area/strata/ag/interior/outpost/med/records)
 "bFt" = (
 /obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "cyan1"
@@ -34394,10 +34396,10 @@
 /area/strata/ag/interior/outpost/med/jung_hall)
 "bQK" = (
 /obj/structure/filingcabinet,
-/obj/item/book/manual/surgery,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/item/paper/research_notes,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -35167,6 +35169,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
+/obj/item/paper/research_notes,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -36618,6 +36621,7 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced/prison,
+/obj/item/storage/fancy/vials,
 /turf/open/floor/strata{
 	icon_state = "purp2"
 	},
@@ -37570,6 +37574,7 @@
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "cay" = (
 /obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
 /turf/open/floor/strata{
 	icon_state = "purp1"
 	},
@@ -37675,6 +37680,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
+/obj/item/storage/fancy/vials,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "cyan1"
@@ -37682,6 +37688,7 @@
 /area/strata/ug/interior/outpost/jung/dorms/med2)
 "caQ" = (
 /obj/structure/closet/secure_closet/personal,
+/obj/item/paper/research_notes,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "cyan1"
@@ -45509,6 +45516,13 @@
 	},
 /turf/open/snow/layer2,
 /area/strata/ag/exterior/paths/southresearch)
+"hAW" = (
+/obj/item/paper/research_notes,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "cyan1"
+	},
+/area/strata/ag/interior/outpost/med/morgue)
 "hBa" = (
 /obj/structure/machinery/power/smes/buildable{
 	capacity = 1e+006;
@@ -45729,6 +45743,16 @@
 	icon_state = "cement12"
 	},
 /area/strata/ag/exterior)
+"iDu" = (
+/obj/structure/filingcabinet,
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/item/paper/research_notes,
+/turf/open/floor/strata{
+	icon_state = "blue1"
+	},
+/area/strata/ag/interior/outpost/admin/office_1)
 "iFD" = (
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
@@ -45865,6 +45889,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/item/paper/research_notes,
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
@@ -46314,6 +46339,7 @@
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "lpQ" = (
 /obj/structure/filingcabinet,
+/obj/item/paper/research_notes,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -46678,6 +46704,13 @@
 /obj/item/stack/sheet/wood,
 /turf/open/ice,
 /area/strata/ag/exterior/paths/southresearch)
+"mHv" = (
+/obj/item/paper/research_notes,
+/turf/open/floor/strata{
+	dir = 10;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ug/interior/jungle/deep/structures/engi)
 "mHA" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 10
@@ -47859,6 +47892,18 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/gen/bball/nest)
+"tmC" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8;
+	tag = "icon-twindow (WEST)"
+	},
+/obj/structure/filingcabinet/chestdrawer,
+/obj/item/document_objective/paper,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "cyan1"
+	},
+/area/strata/ag/interior/dorms/north)
 "tqB" = (
 /obj/structure/machinery/weather_siren{
 	dir = 8;
@@ -56559,7 +56604,7 @@ nlf
 awX
 aAc
 bRy
-bRy
+tmC
 bTG
 bTG
 bZU
@@ -79017,7 +79062,7 @@ aQq
 aRH
 aOW
 aUb
-aRH
+iDu
 aOW
 aXW
 aZi
@@ -82144,7 +82189,7 @@ bhJ
 bEc
 bJo
 bKr
-bKr
+hAW
 bMt
 bNI
 bOV
@@ -102807,7 +102852,7 @@ bWT
 bTw
 bWT
 ccB
-bUk
+mHv
 cej
 bTw
 bRP

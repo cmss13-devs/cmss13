@@ -267,22 +267,12 @@
 //Custom bump for crushers. This overwrites normal bumpcode from carbon.dm
 /mob/living/carbon/Xenomorph/Queen/Collide(atom/A)
 	set waitfor = 0
-
-	//if(charge_speed < charge_speed_buildup * charge_turfs_to_charge || !is_charging) return ..()
-
+	
 	if(stat || !istype(A) || A == src)
 		return FALSE
 
 	if(now_pushing)
 		return FALSE//Just a plain ol turf, let's return.
-
-	/*if(dir != charge_dir) //We aren't facing the way we're charging.
-		stop_momentum()
-		return ..()
-
-	if(!handle_collision(A))
-		if(!A.charge_act(src)) //charge_act is depricated and only here to handle cases that have not been refactored as of yet.
-			return ..()*/
 
 	var/turf/T = get_step(src, dir)
 	if(!T || !get_step_to(src, T)) //If it still exists, try to push it.

@@ -271,7 +271,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/weapon_edge = has_edge(O)
 
 	var/damage = armor_damage_reduction(config.marine_melee, impact_damage, armor, (weapon_sharp?30:0) + (weapon_edge?10:0))
-	apply_damage(damage, dtype, affecting, armor, sharp=weapon_sharp, edge=weapon_edge, used_weapon=O)
+	apply_damage(damage, dtype, affecting, 0, sharp=weapon_sharp, edge=weapon_edge, used_weapon=O)
 
 	if (damage > 5)
 		last_damage_source = initial(AM.name)

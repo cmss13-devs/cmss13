@@ -20,6 +20,7 @@
 
 	if(damage == 0)
 		return 0 //why bother. Also saves a lot of checks down the line
+
 	damage = damage * c_config.damage_initial_multiplier
 	penetration = penetration > 0 || armor > 0 ? penetration : 0		
 	armor -= penetration

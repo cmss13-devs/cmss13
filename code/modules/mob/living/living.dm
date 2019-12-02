@@ -279,9 +279,9 @@
 		now_pushing = FALSE
 		return
 
-	if(isXeno(L) && !isXenoLarva(L)) //Handling pushing Xenos in general, but big Xenos and Preds can still push small Xenos
+	if(isXeno(L) && !isXenoLarva(L))
 		var/mob/living/carbon/Xenomorph/X = L
-		if((has_species(src, "Human") && X.mob_size == MOB_SIZE_BIG) || (isXeno(src) && X.mob_size == MOB_SIZE_BIG))
+		if(X.mob_size == MOB_SIZE_BIG || (ishuman(src) && !isYautja(src))) // Small xenos can be pushed by other xenos or preds
 			now_pushing = FALSE
 			return
 
@@ -331,16 +331,8 @@
 
 	if(!(L.status_flags & CANPUSH))
 		return
-
+	
 	..()
-
-
-/mob/living/Collided(atom/movable/AM)
-	if(isliving(AM))
-		var/target_dir = get_dir(AM, src)
-		var/turf/target_turf = get_step(loc, target_dir)
-		Move(target_turf)
-
 
 /mob/living/launch_towards(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
 	if(!target || !src)

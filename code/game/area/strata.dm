@@ -38,6 +38,13 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	name = "Exterior Above Ground Area"
 	icon_state = "ag_e"
 	//always_unpowered = 1 So exterior lights work, this will be commented out unless it causes unforseen issues.
+	is_resin_allowed = FALSE
+
+/area/strata/ag/exterior/paths
+	is_resin_allowed = TRUE
+
+/area/strata/ag/exterior/restricted
+	flags_atom = AREA_NOTUNNEL
 
 /area/strata/ag/interior
 	name = "Interior Above Ground Area"
@@ -46,6 +53,10 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	can_hellhound_enter = 0
 	temperature = T20C //Nice and room temp
 	ceiling = CEILING_METAL
+
+/area/strata/ag/interior/restricted
+	is_resin_allowed = FALSE
+	flags_atom = AREA_NOTUNNEL
 
 /area/strata/ug
 	name = "Under Ground Area"
@@ -90,6 +101,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	name = "Landing Zone 1 - Mining Aerodrome"
 	icon_state = "nearlz1"
 	weather_enabled = FALSE
+	is_resin_allowed = FALSE
 
 /area/strata/ag/exterior/nearlz2
 	name = "Landing Zone 2 - Ice Fields"
@@ -114,6 +126,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 /area/strata/ag/exterior/research_decks
 	name = "Outpost Decks"
 	icon_state = "rdecks"
+	is_resin_allowed = TRUE
 
 /area/strata/ag/exterior/research_decks/north
 	name = "North Outpost Decks"
@@ -150,6 +163,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 /area/strata/ag/exterior/shed_five_caves
 	name = "Terminal Five Topside Caves"
 	icon_state = "lzcaves"
+	is_resin_allowed = TRUE
 
 ////////Telecomms//////////////////
 
@@ -295,6 +309,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 /area/strata/ag/interior/dorms
 	name = "External Mining Dormitories"
 	icon_state = "dorms_0"
+	is_resin_allowed = FALSE
 
 /area/strata/ag/interior/dorms/north
 	name = "North External Mining Dormitories"
@@ -315,10 +330,12 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 /area/strata/ag/interior/dorms/maintenance
 	name = "External Mining Dormitory Maintenance"
 	icon_state = "outpost_maint"
+	is_resin_allowed = TRUE
 
 /area/strata/ag/interior/dorms/hive
 	name = "External Mining Dormitory Thermal Storage"
 	icon_state = "dorms_beno"
+	is_resin_allowed = TRUE
 
 /area/strata/ag/interior/dorms/canteen
 	name = "External Mining Dormitory Canteen"
@@ -385,6 +402,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 /area/strata/ag/exterior/paths/dorms_quad //The area between the deck.
 	name = "Mining Dormitories Quad"
 	icon_state = "path"
+	is_resin_allowed = FALSE
 
 /area/strata/ag/exterior/paths/cabin_area
 	name = "Far North Of The Outpost"

@@ -33021,9 +33021,6 @@
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/interior/engi_shed/five)
-"bMa" = (
-/turf/open/snow/layer0,
-/area/strata/ag/interior/engi_shed/five)
 "bMb" = (
 /obj/structure/platform/strata/metal{
 	dir = 4
@@ -33380,9 +33377,6 @@
 	dir = 4;
 	icon_state = "floor3"
 	},
-/area/strata/ag/interior/engi_shed/five)
-"bNo" = (
-/turf/open/snow/layer1,
 /area/strata/ag/interior/engi_shed/five)
 "bNp" = (
 /obj/structure/machinery/space_heater,
@@ -44304,13 +44298,13 @@
 	dir = 1
 	},
 /turf/open/snow/layer1,
-/area/strata/ag/exterior)
+/area/strata/ag/exterior/restricted)
 "cwM" = (
 /obj/effect/decal/strata_decals/rocks/ice/ice1{
 	dir = 8
 	},
 /turf/open/snow/layer1,
-/area/strata/ag/exterior)
+/area/strata/ag/exterior/restricted)
 "cwN" = (
 /obj/structure/platform/strata{
 	dir = 8
@@ -44377,7 +44371,7 @@
 "cxb" = (
 /obj/structure/machinery/space_heater,
 /turf/open/snow/layer1,
-/area/strata/ag/exterior)
+/area/strata/ag/exterior/restricted)
 "cxc" = (
 /turf/open/asphalt/cement{
 	icon_state = "cement14"
@@ -44413,7 +44407,7 @@
 /area/strata/ug/interior/jungle/deep/tearlake_west)
 "cxm" = (
 /turf/closed/wall/wood,
-/area/strata/ag/interior)
+/area/strata/ag/interior/restricted)
 "cxn" = (
 /obj/item/lightstick/red{
 	anchored = 1;
@@ -44444,7 +44438,7 @@
 	luminosity = 2
 	},
 /turf/open/snow/layer1,
-/area/strata/ag/exterior)
+/area/strata/ag/exterior/restricted)
 "cxt" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -44452,12 +44446,12 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/interior/tatami,
-/area/strata/ag/interior)
+/area/strata/ag/interior/restricted)
 "cxu" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/interior/tatami,
-/area/strata/ag/interior)
+/area/strata/ag/interior/restricted)
 "cxv" = (
 /obj/structure/cargo_container{
 	icon_state = "WY 0,0";
@@ -44500,19 +44494,19 @@
 	dir = 8
 	},
 /turf/open/ice,
-/area/strata/ag/exterior)
+/area/strata/ag/exterior/restricted)
 "cxF" = (
 /obj/structure/barricade/snow{
 	dir = 4
 	},
 /turf/open/snow/layer1,
-/area/strata/ag/exterior)
+/area/strata/ag/exterior/restricted)
 "cxG" = (
 /obj/structure/barricade/snow{
 	dir = 8
 	},
 /turf/open/floor/interior/tatami,
-/area/strata/ag/interior)
+/area/strata/ag/interior/restricted)
 "cxH" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
 /mob/living/simple_animal/hostile/carp{
@@ -44521,11 +44515,11 @@
 	name = "Glubs"
 	},
 /turf/open/floor/interior/tatami,
-/area/strata/ag/interior)
+/area/strata/ag/interior/restricted)
 "cxI" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/interior/tatami,
-/area/strata/ag/interior)
+/area/strata/ag/interior/restricted)
 "cxJ" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass/weedable,
@@ -45209,6 +45203,9 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/tcomms/tcomms_engi)
+"fwr" = (
+/turf/open/ice,
+/area/strata/ag/exterior/restricted)
 "fyH" = (
 /obj/structure/machinery/weather_siren{
 	dir = 8;
@@ -47122,7 +47119,7 @@
 	dir = 6
 	},
 /turf/open/snow/layer1,
-/area/strata/ag/exterior)
+/area/strata/ag/exterior/shed_five_caves)
 "oOJ" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/camera/autoname{
@@ -47335,7 +47332,7 @@
 	dir = 4
 	},
 /turf/open/snow/layer1,
-/area/strata/ag/interior/engi_shed/five)
+/area/strata/ag/exterior/shed_five_caves)
 "qbR" = (
 /obj/structure/machinery/weather_siren{
 	pixel_y = -8
@@ -47689,7 +47686,7 @@
 	dir = 5
 	},
 /turf/open/snow/layer1,
-/area/strata/ag/interior/engi_shed/five)
+/area/strata/ag/exterior/shed_five_caves)
 "ski" = (
 /obj/structure/machinery/weather_siren{
 	dir = 1;
@@ -47788,6 +47785,9 @@
 /obj/structure/machinery/atmospherics/pipe/manifold/hidden/cyan,
 /turf/open/snow/layer0,
 /area/strata/ag/exterior/paths/northadmin)
+"sEg" = (
+/turf/open/snow/layer1,
+/area/strata/ag/exterior/restricted)
 "sGm" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/strata{
@@ -48429,9 +48429,6 @@
 	},
 /turf/open/snow/layer1,
 /area/strata/ag/exterior/north_lz_caves)
-"vUq" = (
-/turf/open/snow/layer3,
-/area/strata/ag/exterior)
 "vVD" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 4
@@ -48758,7 +48755,7 @@
 "xVd" = (
 /obj/structure/inflatable,
 /turf/open/snow/layer1,
-/area/strata/ag/exterior)
+/area/strata/ag/exterior/paths/southresearch)
 "xWN" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/tool/wrench,
@@ -50259,12 +50256,12 @@ aac
 aac
 aac
 aac
-bQw
-bQw
-bQw
-bQw
-bQw
-bQw
+fwr
+fwr
+fwr
+fwr
+fwr
+fwr
 aab
 aaa
 aaa
@@ -50514,9 +50511,9 @@ aac
 aac
 aac
 aac
-bQw
-bQw
-bQw
+fwr
+fwr
+fwr
 acC
 ccP
 ccP
@@ -50771,7 +50768,7 @@ aac
 aac
 aac
 aac
-bQw
+fwr
 acC
 ccP
 ccP
@@ -51026,9 +51023,9 @@ aac
 aac
 aac
 aac
-bQw
-bQw
-bQw
+fwr
+fwr
+fwr
 acC
 acW
 acX
@@ -52580,10 +52577,10 @@ aac
 aac
 aac
 aac
-bDt
-bDt
-bQw
-bQw
+sEg
+sEg
+fwr
+fwr
 aac
 aac
 aac
@@ -52838,11 +52835,11 @@ aac
 aac
 aac
 cwL
-bDt
-bDt
-bDt
-bDt
-bDt
+sEg
+sEg
+sEg
+sEg
+sEg
 aac
 aac
 aab
@@ -53095,9 +53092,9 @@ aac
 aac
 aac
 aac
-bDt
-bDt
-bDt
+sEg
+sEg
+sEg
 cxs
 cxF
 cxs
@@ -53353,8 +53350,8 @@ aac
 aac
 aac
 aac
-bDt
-bDt
+sEg
+sEg
 cxm
 cxm
 cxG
@@ -70083,7 +70080,7 @@ bYf
 bYN
 bZr
 caa
-iCr
+bZZ
 cbn
 cbn
 cbn
@@ -70341,7 +70338,7 @@ bVg
 bTe
 bYd
 caa
-iCr
+bZZ
 tsX
 ccc
 ccX
@@ -70587,7 +70584,7 @@ aac
 bHF
 lhH
 bGo
-bDt
+bGp
 aac
 aac
 bVf
@@ -70599,7 +70596,7 @@ bSh
 bYO
 bWD
 caa
-iCr
+bZZ
 tsX
 ccd
 ccc
@@ -70845,8 +70842,8 @@ aac
 aac
 bGo
 bGp
-bSX
-bDt
+bGo
+bGp
 aac
 aac
 bSZ
@@ -71096,15 +71093,15 @@ bHH
 dBf
 bGs
 bHF
-bMa
-bNo
+bGo
+bGp
 qbP
 oOB
-bSX
+bGo
 bGp
 bGo
 bGp
-bDt
+bGp
 bsM
 aac
 bSZ
@@ -71354,15 +71351,15 @@ bJX
 urM
 bGv
 bGp
-bMa
-bMa
+bGo
+bGo
 sjp
-bSX
-bSX
-bSX
+bGo
+bGo
+bGo
 bGo
 bGp
-bDt
+bGp
 bsM
 aac
 bTe
@@ -71620,7 +71617,7 @@ bGp
 bGp
 bGp
 bIR
-bDt
+bGp
 gqF
 bTe
 djW
@@ -71878,8 +71875,8 @@ bHF
 bHF
 bHF
 bHF
-vUq
-bDt
+bHF
+bTe
 bTe
 bSh
 bTe
@@ -72135,9 +72132,9 @@ aac
 mki
 mki
 bGp
-bDt
-bDt
-bDt
+bGp
+bGp
+bTe
 bTT
 djW
 bTT

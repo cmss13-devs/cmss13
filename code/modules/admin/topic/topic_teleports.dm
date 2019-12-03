@@ -28,13 +28,6 @@
 
 			owner.jump_to_object(choice)
 
-		if("jump_to_coordinate")
-			var/targ_x = input("Pick a x from 0 to [world.maxx].") as num
-			var/targ_y = input("Pick a y from 0 to [world.maxy].") as num
-			var/targ_z = input("Pick a z from 0 to [world.maxz].") as num
-
-			owner.jumptocoord(targ_x, targ_y, targ_z)
-
 		if("jump_to_key")
 			owner.jumptokey()
 

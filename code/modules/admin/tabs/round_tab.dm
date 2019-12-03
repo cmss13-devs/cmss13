@@ -123,8 +123,8 @@
 			<hr>"})
 		return
 
-	going = !( going )
-	if (!( going ))
+	going = !(going)
+	if (!going)
 		to_world("<hr>")
 		to_world("<span class='centerbold'>The game start has been delayed.</span>")
 		to_world("<hr>")

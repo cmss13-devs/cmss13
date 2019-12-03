@@ -23,21 +23,23 @@
 				to_chat(usr,SPAN_WARNING("No reagent with this ID could been found."))
 				return
 			var/volume = input(usr,"How much? An appropriate container will be selected.") as num
-			if(volume)
-				if(volume > 120)
-					if(volume > 300)
-						volume = 300
-					var/obj/item/reagent_container/glass/beaker/bluespace/C = new /obj/item/reagent_container/glass/beaker/bluespace(usr.loc)
-					C.reagents.add_reagent(target,volume)
-				else if (volume > 60)
-					var/obj/item/reagent_container/glass/beaker/large/C = new /obj/item/reagent_container/glass/beaker/large(usr.loc)
-					C.reagents.add_reagent(target,volume)
-				else if (volume > 30)
-					var/obj/item/reagent_container/glass/beaker/C = new /obj/item/reagent_container/glass/beaker(usr.loc)
-					C.reagents.add_reagent(target,volume)
-				else
-					var/obj/item/reagent_container/glass/beaker/vial/C = new /obj/item/reagent_container/glass/beaker/vial(usr.loc)
-					C.reagents.add_reagent(target,volume)
+			if(volume <= 0)
+				return
+				
+			if(volume > 120)
+				if(volume > 300)
+					volume = 300
+				var/obj/item/reagent_container/glass/beaker/bluespace/C = new /obj/item/reagent_container/glass/beaker/bluespace(usr.loc)
+				C.reagents.add_reagent(target,volume)
+			else if (volume > 60)
+				var/obj/item/reagent_container/glass/beaker/large/C = new /obj/item/reagent_container/glass/beaker/large(usr.loc)
+				C.reagents.add_reagent(target,volume)
+			else if (volume > 30)
+				var/obj/item/reagent_container/glass/beaker/C = new /obj/item/reagent_container/glass/beaker(usr.loc)
+				C.reagents.add_reagent(target,volume)
+			else
+				var/obj/item/reagent_container/glass/beaker/vial/C = new /obj/item/reagent_container/glass/beaker/vial(usr.loc)
+				C.reagents.add_reagent(target,volume)
 			return
 		//For quickly generating a new chemical
 		if("create_random_reagent")
@@ -125,26 +127,26 @@
 						return
 					else
 						break
-			return
 			//See what we want to do last
 			response = alert(usr,"Spawn container with reagent?","Custom reagent [target]","Yes","No")
 			if(response == "Yes")
 				var/volume = input(usr,"How much? An appropriate container will be selected.") as num
-				if(volume)
-					if(volume > 120)
-						if(volume > 300)
-							volume = 300
-						var/obj/item/reagent_container/glass/beaker/bluespace/C = new /obj/item/reagent_container/glass/beaker/bluespace(usr.loc)
-						C.reagents.add_reagent(target,volume)
-					else if (volume > 60)
-						var/obj/item/reagent_container/glass/beaker/large/C = new /obj/item/reagent_container/glass/beaker/large(usr.loc)
-						C.reagents.add_reagent(target,volume)
-					else if (volume > 30)
-						var/obj/item/reagent_container/glass/beaker/C = new /obj/item/reagent_container/glass/beaker(usr.loc)
-						C.reagents.add_reagent(target,volume)
-					else
-						var/obj/item/reagent_container/glass/beaker/vial/C = new /obj/item/reagent_container/glass/beaker/vial(usr.loc)
-						C.reagents.add_reagent(target,volume)
+				if(volume <= 0)
+					return
+				if(volume > 120)
+					if(volume > 300)
+						volume = 300
+					var/obj/item/reagent_container/glass/beaker/bluespace/C = new /obj/item/reagent_container/glass/beaker/bluespace(usr.loc)
+					C.reagents.add_reagent(target,volume)
+				else if (volume > 60)
+					var/obj/item/reagent_container/glass/beaker/large/C = new /obj/item/reagent_container/glass/beaker/large(usr.loc)
+					C.reagents.add_reagent(target,volume)
+				else if (volume > 30)
+					var/obj/item/reagent_container/glass/beaker/C = new /obj/item/reagent_container/glass/beaker(usr.loc)
+					C.reagents.add_reagent(target,volume)
+				else
+					var/obj/item/reagent_container/glass/beaker/vial/C = new /obj/item/reagent_container/glass/beaker/vial(usr.loc)
+					C.reagents.add_reagent(target,volume)
 			return
 		//For creating a custom reagent
 		if("create_custom_reagent")
@@ -217,21 +219,22 @@
 			switch(response)
 				if("Yes")
 					var/volume = input(usr,"How much? An appropriate container will be selected.") as num
-					if(volume)
-						if(volume > 120)
-							if(volume > 300)
-								volume = 300
-							var/obj/item/reagent_container/glass/beaker/bluespace/C = new /obj/item/reagent_container/glass/beaker/bluespace(usr.loc)
-							C.reagents.add_reagent(R.id,volume)
-						else if (volume > 60)
-							var/obj/item/reagent_container/glass/beaker/large/C = new /obj/item/reagent_container/glass/beaker/large(usr.loc)
-							C.reagents.add_reagent(R.id,volume)
-						else if (volume > 30)
-							var/obj/item/reagent_container/glass/beaker/C = new /obj/item/reagent_container/glass/beaker(usr.loc)
-							C.reagents.add_reagent(R.id,volume)
-						else
-							var/obj/item/reagent_container/glass/beaker/vial/C = new /obj/item/reagent_container/glass/beaker/vial(usr.loc)
-							C.reagents.add_reagent(R.id,volume)
+					if(volume <= 0)
+						return
+					if(volume > 120)
+						if(volume > 300)
+							volume = 300
+						var/obj/item/reagent_container/glass/beaker/bluespace/C = new /obj/item/reagent_container/glass/beaker/bluespace(usr.loc)
+						C.reagents.add_reagent(R.id,volume)
+					else if (volume > 60)
+						var/obj/item/reagent_container/glass/beaker/large/C = new /obj/item/reagent_container/glass/beaker/large(usr.loc)
+						C.reagents.add_reagent(R.id,volume)
+					else if (volume > 30)
+						var/obj/item/reagent_container/glass/beaker/C = new /obj/item/reagent_container/glass/beaker(usr.loc)
+						C.reagents.add_reagent(R.id,volume)
+					else
+						var/obj/item/reagent_container/glass/beaker/vial/C = new /obj/item/reagent_container/glass/beaker/vial(usr.loc)
+						C.reagents.add_reagent(R.id,volume)
 				if("No, show me the reagent")
 					usr.client.debug_variables(chemical_reagents_list[target])
 			return

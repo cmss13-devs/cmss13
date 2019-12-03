@@ -22,23 +22,25 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	HDPT_ARMOR = "0,0",
 	HDPT_TREADS = "0,0")*/
 
-/client/proc/remove_players_from_vic(var/obj/vehicle/multitile/root/cm_armored/CA)
+/client/proc/remove_players_from_vic()
 	set name = "Remove All From Tank"
 	set category = null
 
-	CA.remove_all_players()
-	log_admin("[src] forcibly removed all players from [CA]")
-	message_admins("[src] forcibly removed all players from [CA]")
+	for(var/obj/vehicle/multitile/root/cm_armored/CA in view())
+		CA.remove_all_players()
+		log_admin("[src] forcibly removed all players from [CA]")
+		message_admins("[src] forcibly removed all players from [CA]")
 
-/client/proc/remove_clamp_from_vic(var/obj/vehicle/multitile/root/cm_armored/CA)
+/client/proc/remove_clamp_from_vic()
 	set name = "Remove Clamp From Vehicle"
 	set category = null
 
-	if(!CA.clamped)
-		return
-	CA.detach_clamp()
-	log_admin("[src] forcibly removed Vehicle Clamp [CA]")
-	message_admins("[src] forcibly removed Vehicle Clamp [CA]")
+	for(var/obj/vehicle/multitile/root/cm_armored/CA in view())
+		if(!CA.clamped)
+			return
+		CA.detach_clamp()
+		log_admin("[src] forcibly removed Vehicle Clamp [CA]")
+		message_admins("[src] forcibly removed Vehicle Clamp [CA]")
 
 //The main object, should be an abstract class
 /obj/vehicle/multitile/root/cm_armored

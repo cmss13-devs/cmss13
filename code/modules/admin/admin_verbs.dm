@@ -140,7 +140,10 @@ var/list/admin_mob_event_verbs_hideable = list(
 	/client/proc/editappear,
 	/client/proc/cmd_admin_addhud,
 	/client/proc/cmd_admin_rejuvenate,
-	/client/proc/cmd_admin_change_their_hivenumber
+	/client/proc/cmd_admin_change_their_hivenumber,
+	/client/proc/cmd_assume_direct_control,
+	/proc/possess,
+	/proc/release
 )
 
 //verbs which can be hidden - needs work
@@ -154,8 +157,11 @@ var/list/admin_mob_verbs_hideable = list(
 	/datum/admins/proc/show_player_panel,
 	/client/proc/cmd_admin_delete,
 	/datum/admins/proc/togglesleep,
-	/client/proc/remove_players_from_vic,
-	/client/proc/remove_clamp_from_vic
+	/client/proc/debug_variables
+)
+
+var/list/admin_verbs_teleport = list(
+	/client/proc/teleport_panel			/*teleport panel, for jumping to things/places and getting things/places */
 )
 
 var/list/admin_verbs_mod = list(
@@ -169,11 +175,12 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_mod_say,
 	/client/proc/dsay,
 	/client/proc/chem_panel,			/*chem panel, allows viewing, editing and creation of reagent and chemical_reaction datums*/
-	/client/proc/teleport_panel,		/*teleport panel, for jumping to things/places and getting things/places */
+	/client/proc/vehicle_panel,
 	/datum/admins/proc/togglesleep,
 	/datum/admins/proc/sleepall,
 	/datum/admins/proc/togglejoin,
 	/client/proc/jump_to_object,
+	/client/proc/jumptomob,
 	/client/proc/toggle_own_ghost_vis,
 	/client/proc/check_antagonists,
 	/client/proc/toggleattacklogs,
@@ -183,10 +190,8 @@ var/list/admin_verbs_mod = list(
 	/datum/admins/proc/view_txt_log,
 	/datum/admins/proc/toggleooc,		/*toggles ooc on/off for everyone*/	/*displays the contents of an instance*/
 	/client/proc/cmd_admin_xeno_report,  //Allows creation of IC reports by the Queen Mother
-	/datum/admins/proc/viewUnheardAhelps, //Why even have it as a client proc anyway?  �\_("/)_/�
+	/datum/admins/proc/viewUnheardAhelps,
 	/client/proc/view_faxes,
-	/client/proc/remove_players_from_vic,
-	/client/proc/remove_clamp_from_vic,
 	/client/proc/cmd_admin_change_their_name,
 	/client/proc/cmd_admin_changekey,
 	/client/proc/cmd_admin_subtle_message,
@@ -206,6 +211,7 @@ var/list/admin_verbs_mod = list(
 			verbs += admin_verbs_admin
 		if(admin_holder.rights & R_BAN)			
 			verbs += admin_verbs_ban
+			verbs += admin_verbs_teleport
 		if(admin_holder.rights & R_FUN)			
 			verbs += admin_verbs_fun
 		if(admin_holder.rights & R_SERVER)		
@@ -337,7 +343,7 @@ var/list/admin_verbs_mod = list(
 	 
 
 /client/proc/toggle_log_hrefs()
-	set name = "Toggle href Logging"
+	set name = "X: Toggle href Logging"
 	set category = "Server"
 	if(!admin_holder)	return
 	if(config)

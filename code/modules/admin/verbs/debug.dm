@@ -17,8 +17,8 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 /client/proc/callproc(var/datum/target_datum=null)
 	set waitfor = 0
 
-	if(!check_rights(R_DEBUG)) return
-	if(config.debugparanoid && !check_rights(R_ADMIN)) return
+	if(!check_rights(R_DEBUG) || (config.debugparanoid && !check_rights(R_ADMIN))) 
+		return
 
 	var/target = target_datum
 	var/targetselected = 1
@@ -55,10 +55,12 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 					return
 
 	var/procname = input("Proc path, eg: /proc/fake_blood","Path:", null) as text|null
-	if(!procname)	return
+	if(!procname)	
+		return
 
 	var/argnum = input("Number of arguments","Number:",0) as num|null
-	if(!argnum && (argnum!=0))	return
+	if(!argnum && (argnum!=0))	
+		return
 
 	lst.len = argnum // Expand to right length
 	//TODO: make a list to store whether each argument was initialised as null.
@@ -145,8 +147,8 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	set name = "Atom ProcCall"
 	set waitfor = 0
 
-	if(!check_rights(R_DEBUG)) return
-	if(config.debugparanoid && !check_rights(R_ADMIN)) return
+	if(!check_rights(R_DEBUG) || (config.debugparanoid && !check_rights(R_ADMIN))) 
+		return
 
 	var/lst[] // List reference
 	lst = new/list() // Make the list
@@ -162,7 +164,8 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		return
 
 	var/argnum = input("Number of arguments","Number:",0) as num|null
-	if(!argnum && (argnum!=0))	return
+	if(!argnum && (argnum!=0))	
+		return
 
 	lst.len = argnum
 

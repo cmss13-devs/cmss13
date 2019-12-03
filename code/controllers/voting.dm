@@ -412,9 +412,8 @@ var/enable_map_vote = 1
 	set category = "Server"
 
 	to_chat(src, "Possible maps irrespective of pop:")
-	var/i
-	for(i in NEXT_MAP_CANDIDATES)
-		src << i
+	for(var/i in NEXT_MAP_CANDIDATES)
+		to_chat(src, SPAN_NOTICE(i))
 
 /client/proc/editVotableMaps()
 	set name = "M: Edit Maps"

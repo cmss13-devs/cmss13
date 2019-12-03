@@ -202,10 +202,13 @@
 			if(isliving(M))
 				var/mob/living/L = M
 				var/status
-				switch (M.stat)
-					if (0) status = "Alive"
-					if (1) status = "<font color='orange'><b>Unconscious</b></font>"
-					if (2) status = "<font color='red'><b>Dead</b></font>"
+				switch(M.stat)
+					if(0) 
+						status = "Alive"
+					if(1) 
+						status = "<font color='orange'><b>Unconscious</b></font>"
+					if(2) 
+						status = "<font color='red'><b>Dead</b></font>"
 				health_description = "Status = [status]"
 				health_description += "<BR>Oxy: [L.getOxyLoss()] - Tox: [L.getToxLoss()] - Fire: [L.getFireLoss()] - Brute: [L.getBruteLoss()] - Clone: [L.getCloneLoss()] - Brain: [L.getBrainLoss()]"
 			else
@@ -213,8 +216,10 @@
 
 			//Gener
 			switch(M.gender)
-				if(MALE,FEMALE)	gender_description = "[M.gender]"
-				else			gender_description = "<font color='red'><b>[M.gender]</b></font>"
+				if(MALE,FEMALE)	
+					gender_description = "[M.gender]"
+				else			
+					gender_description = "<font color='red'><b>[M.gender]</b></font>"
 
 			to_chat(src.owner, "<b>Info about [M.name]:</b> ")
 			to_chat(src.owner, "Mob type = [M.type]; Gender = [gender_description] Damage = [health_description]")

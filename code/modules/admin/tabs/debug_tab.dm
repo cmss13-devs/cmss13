@@ -2,7 +2,8 @@
 	set category = "Debug"
 	set name = "*Debug Verbs - Show*"
 
-	if(!check_rights(R_DEBUG)) return
+	if(!check_rights(R_DEBUG)) 
+		return
 
 	verbs += debug_verbs
 	verbs -= /client/proc/enable_debug_verbs
@@ -11,7 +12,8 @@
 	set category = "Debug"
 	set name = "*Debug Verbs - Hide*"
 
-	if(!check_rights(R_DEBUG)) return
+	if(!check_rights(R_DEBUG)) 
+		return
 
 	verbs -= debug_verbs
 	verbs += /client/proc/enable_debug_verbs
@@ -19,7 +21,8 @@
 /client/proc/check_round_statistics()
 	set category = "Debug"
 	set name = "Round Statistics"
-	if(!check_rights(R_ADMIN|R_DEBUG))	return
+	if(!check_rights(R_ADMIN|R_DEBUG))	
+		return
 
 	debug_variables(round_statistics)
 

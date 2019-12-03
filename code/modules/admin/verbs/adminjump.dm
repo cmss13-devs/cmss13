@@ -93,7 +93,7 @@
 	message_admins("[key_name_admin(usr)] jumped to coordinates [tx], [ty], [tz] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[tx];Y=[ty];Z=[tz]'>JMP</a>)")
 
 /client/proc/jumptokey()
-	set name = "Jump to Key"
+	set name = "Jump to Ckey"
 	set category = "Admin"
 	set hidden = 1
 
@@ -104,11 +104,12 @@
 	var/list/keys = list()
 	for(var/mob/M in player_list)
 		keys += M.client
-	var/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in sortKey(keys)
+	var/client/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in sortKey(keys)
 	if(!selection)
 		to_chat(src, "No keys found.")
 		return
-	var/mob/M = selection:mob
+	var/mob/M = selection.mob
+	src.admin_ghost()
 	log_admin("[key_name(usr)] jumped to [key_name(M)]")
 	message_admins("[key_name_admin(usr)] jumped to [key_name_admin(M)] (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[M]'>JMP</A>)", 1)
 	usr.on_mob_jump()
@@ -131,7 +132,7 @@
 
 /client/proc/Getkey()
 	set category = "Admin"
-	set name = "Get Key"
+	set name = "Get Ckey"
 	set desc = "Key to teleport"
 	set hidden = 1
 

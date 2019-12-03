@@ -110,15 +110,13 @@
 	if(light == null) 
 		return
 
-	if (heavy || light)
-		empulse(O, heavy, light)
-		log_admin("[key_name(usr)] created an EM Pulse ([heavy],[light]) at ([O.x],[O.y],[O.z])")
-		message_admins("[key_name_admin(usr)] created an EM PUlse ([heavy],[light]) at ([O.x],[O.y],[O.z])")
-		 
+	if(!heavy && !light)
+		return
 
-		return
-	else
-		return
+	empulse(O, heavy, light)
+	log_admin("[key_name(usr)] created an EM Pulse ([heavy],[light]) at ([O.x],[O.y],[O.z])")
+	message_admins("[key_name_admin(usr)] created an EM PUlse ([heavy],[light]) at ([O.x],[O.y],[O.z])")
+	return
 
 /datum/admins/proc/admin_force_ERT_shuttle()
 	set name = "E: Force ERT Shuttle"

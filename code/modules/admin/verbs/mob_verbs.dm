@@ -46,8 +46,11 @@
 	set category = null
 
 	var/list/L = M.get_contents()
+	var/dat
 	for(var/t in L)
-		to_chat(usr, "[t]")
+		dat += "[t]<br>"
+
+	usr << browse(dat, "window=content")
 
 /client/proc/cmd_admin_addhud(mob/M as mob in mob_list)
 	set name = "Add HUD To"

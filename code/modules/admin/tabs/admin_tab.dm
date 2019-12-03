@@ -67,8 +67,8 @@
 		return
 
 	var/new_STUI = 0
-	if(usr:open_uis)
-		for(var/datum/nanoui/ui in usr:open_uis)
+	if(usr.open_uis)
+		for(var/datum/nanoui/ui in usr.open_uis)
 			if(ui.title == "STUI")
 				new_STUI = 1
 				ui.close()
@@ -94,7 +94,8 @@
 		body.ghostize(1)
 		if(body && !body.key)
 			body.key = "@[key]"	//Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
-			if(body.client) body.client.change_view(world.view) //reset view range to default.
+			if(body.client) 
+				body.client.change_view(world.view) //reset view range to default.
 		//re-open STUI
 	if(new_STUI)
 		STUI.ui_interact(mob)
@@ -145,7 +146,8 @@
 			if(I.author == usr.key || I.author == "Adminbot" || ishost(usr))
 				dat += "<A href='?src=\ref[src];remove_player_info=[key];remove_index=[i]'>Remove</A>"
 			dat += "<br><br>"
-		if(update_file) info << infos
+		if(update_file) 
+			info << infos
 
 	dat += "<br>"
 	dat += "<A href='?src=\ref[src];add_player_info=[key]'>Add Comment</A><br>"
@@ -161,14 +163,13 @@
 	if(!check_rights(0))	
 		return
 
-	if(alert("This will toggle a sleep/awake status on ALL mobs within your view range (for Administration purposes). Are you sure?",,"Yes","Cancel") == "Yes")
-		for(var/mob/living/M in view())
-			if (M.sleeping > 0)
-				M.sleeping = 0
-			else
-				M.sleeping = 9999999
-	else
+	if(alert("This will toggle a sleep/awake status on ALL mobs within your view range (for Administration purposes). Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
+	for(var/mob/living/M in view())
+		if (M.sleeping > 0)
+			M.sleeping = 0
+		else
+			M.sleeping = 9999999
 
 	log_admin("[key_name(usr)] used Toggle Sleep In View.")
 	message_admins("[key_name(usr)] used Toggle Sleep In View.")
@@ -269,7 +270,6 @@
 		<A href='?src=\ref[src];teleport=jump_to_turf'>Jump to Turf</A><BR>
 		<A href='?src=\ref[src];teleport=jump_to_mob'>Jump to Mob</A><BR>
 		<A href='?src=\ref[src];teleport=jump_to_obj'>Jump to Object</A><BR>
-		<A href='?src=\ref[src];teleport=jump_to_coordinate'>Jump to Coordinate</A><BR>
 		<A href='?src=\ref[src];teleport=jump_to_key'>Jump to Ckey</A><BR>
 		<A href='?src=\ref[src];teleport=get_mob'>Teleport Mob to You</A><BR>
 		<A href='?src=\ref[src];teleport=get_key'>Teleport Ckey to You</A><BR>
@@ -285,4 +285,26 @@
 	set category = "Admin"
 	if (admin_holder)
 		admin_holder.teleport_panel()
+	return
+
+/datum/admins/proc/vehicle_panel()
+	if(!check_rights(R_MOD, 0))	
+		return
+
+	var/dat = {"
+		<B>Vehicle Panel</B><BR>
+		<BR>
+		<A href='?src=\ref[src];vehicle=remove_clamp'>Remove Clamp from Tank</A><BR>
+		<A href='?src=\ref[src];vehicle=remove_players'>Eject Players from Tank</A><BR>
+		<BR>
+		"}
+
+	usr << browse(dat, "window=vehicles")
+	return
+
+/client/proc/vehicle_panel()
+	set name = "C: Vehicle Panel"
+	set category = "Admin"
+	if (admin_holder)
+		admin_holder.vehicle_panel()
 	return

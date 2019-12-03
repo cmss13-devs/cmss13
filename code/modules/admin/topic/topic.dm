@@ -1783,6 +1783,12 @@
 
 		topic_teleports(href_list["teleport"])
 
+	else if(href_list["vehicle"])
+		if(!check_rights(R_MOD))	
+			return
+
+		topic_vehicles(href_list["vehicle"])
+
 	else if(href_list["ahelp"])
 		
 		topic_ahelps(href_list)

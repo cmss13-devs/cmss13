@@ -169,6 +169,7 @@
 	resisting_ready = 0
 	buckled_mob.pixel_y = 0
 	buckled_mob.old_y = 0
+	buckled_mob.Stun(3)
 	..()
 
 /obj/structure/bed/nest/ex_act(var/power)

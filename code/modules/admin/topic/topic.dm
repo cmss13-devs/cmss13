@@ -1292,22 +1292,26 @@
 		player_panel_extended()
 
 	else if(href_list["adminplayerobservejump"])
-		if(!check_rights(R_MOD|R_ADMIN))	return
+		if(!check_rights(R_MOD|R_ADMIN))	
+			return
 
 		var/mob/M = locate(href_list["adminplayerobservejump"])
 
 		var/client/C = usr.client
-		if(!isobserver(usr))	C.admin_ghost()
+		if(!isobserver(usr))	
+			C.admin_ghost()
 		sleep(2)
 		C.jumptomob(M)
 
 	else if(href_list["adminplayerfollow"])
-		if(!check_rights(R_MOD|R_ADMIN))	return
+		if(!check_rights(R_MOD|R_ADMIN))	
+			return
 
 		var/mob/M = locate(href_list["adminplayerfollow"])
 
 		var/client/C = usr.client
-		if(!isobserver(usr))	C.admin_ghost()
+		if(!isobserver(usr))	
+			C.admin_ghost()
 		sleep(2)
 		if(isobserver(usr))
 			var/mob/dead/observer/G = usr
@@ -1317,14 +1321,16 @@
 		check_antagonists()
 
 	else if(href_list["adminplayerobservecoodjump"])
-		if(!check_rights(R_MOD))	return
+		if(!check_rights(R_MOD))	
+			return
 
 		var/x = text2num(href_list["X"])
 		var/y = text2num(href_list["Y"])
 		var/z = text2num(href_list["Z"])
 
 		var/client/C = usr.client
-		if(!isobserver(usr))	C.admin_ghost()
+		if(!isobserver(usr))	
+			C.admin_ghost()
 		sleep(2)
 		C.jumptocoord(x,y,z)
 
@@ -1376,7 +1382,8 @@
 		to_chat(H, SPAN_NOTICE(" Your prayers have been answered!! You received the <b>best cookie</b>!"))
 
 	else if(href_list["BlueSpaceArtillery"])
-		if(!check_rights(R_ADMIN|R_FUN))	return
+		if(!check_rights(R_ADMIN|R_FUN))	
+			return
 
 		var/mob/living/M = locate(href_list["BlueSpaceArtillery"])
 		if(!isliving(M))
@@ -1400,8 +1407,10 @@
 
 		var/turf/open/floor/T = get_turf(M)
 		if(istype(T))
-			if(prob(80))	T.break_tile_to_plating()
-			else			T.break_tile()
+			if(prob(80))	
+				T.break_tile_to_plating()
+			else			
+				T.break_tile()
 
 		if(M.health == 1)
 			M.gib()
@@ -1425,7 +1434,8 @@
 			return
 
 		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from USCM", "")
-		if(!input)	return
+		if(!input)	
+			return
 
 		to_chat(src.owner, "You sent [input] to [H] via a secure channel.")
 		log_admin("[src.owner] replied to [key_name(H)]'s USCM message with the message [input].")
@@ -1444,7 +1454,8 @@
 			return
 
 		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from The Syndicate", "")
-		if(!input)	return
+		if(!input)
+			return
 
 		to_chat(src.owner, "You sent [input] to [H] via a secure channel.")
 		log_admin("[src.owner] replied to [key_name(H)]'s Syndicate message with the message [input].")
@@ -1459,32 +1470,38 @@
 		switch(template_choice)
 			if("Custom")
 				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from USCM", "") as message|null
-				if(!input)	return
+				if(!input)	
+					return
 				fax_message = "[input]"
 			if("USCM High Command", "USCM Provost General")
 				var/subject = input(src.owner, "Enter subject line", "Outgoing message from USCM", "") as message|null
-				if(!subject) return
+				if(!subject) 
+					return
 				var/addressed_to = ""
 				var/address_option = input("Address it to the sender or custom?") in list("Sender", "Custom")
 				if(address_option == "Sender")
 					addressed_to = "[H.real_name]"
 				else if(address_option == "Custom")
 					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from USCM", "") as message|null
-					if(!addressed_to) return
+					if(!addressed_to) 
+						return
 				else
 					return
 				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from Weyland USCM", "") as message|null
-				if(!message_body) return
+				if(!message_body) 
+					return
 				var/sent_by = input(src.owner, "Enter the name and rank you are sending from.", "Outgoing message from USCM", "") as message|null
-				if(!sent_by) return
+				if(!sent_by) 
+					return
 				var/sent_title = "Office of the Provost General"
 				if(template_choice == "USCM High Command")
 					sent_title = "USCM High Command"
 
-				fax_message = generate_templated_fax(0,"USCM CENTRAL COMMAND",subject,addressed_to,message_body,sent_by,sent_title,"United States Colonial Marine Corps")
-		usr << browse(fax_message, "window=uscmfaxpreview;size=600x600")
+				fax_message = generate_templated_fax(0, "USCM CENTRAL COMMAND", subject,addressed_to, message_body,sent_by, sent_title, "United States Colonial Marine Corps")
+		usr << browse(fax_message, "window=uscmfaxpreview;size=500x400")
 		var/send_choice = input("Send this fax?") in list("Send", "Cancel")
-		if(send_choice == "Cancel") return
+		if(send_choice == "Cancel") 
+			return
 		fax_contents += fax_message // save a copy
 
 		USCMFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>")
@@ -1498,7 +1515,7 @@
 
 		for(var/obj/structure/machinery/faxmachine/F in machines)
 			if(F == fax)
-				if(! (F.stat & (BROKEN|NOPOWER) ) )
+				if(!(F.stat & (BROKEN|NOPOWER)))
 
 					// animate! it's alive!
 					flick("faxreceive", F)
@@ -1536,28 +1553,34 @@
 		switch(template_choice)
 			if("Custom")
 				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Weyland Yutani", "") as message|null
-				if(!input)	return
+				if(!input)	
+					return
 				fax_message = "[input]"
 			if("Template")
 				var/subject = input(src.owner, "Enter subject line", "Outgoing message from Weyland Yutani", "") as message|null
-				if(!subject) return
+				if(!subject) 
+					return
 				var/addressed_to = ""
 				var/address_option = input("Address it to the sender or custom?") in list("Sender", "Custom")
 				if(address_option == "Sender")
 					addressed_to = "[H.real_name]"
 				else if(address_option == "Custom")
 					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from Weyland Yutani", "") as message|null
-					if(!addressed_to) return
+					if(!addressed_to) 
+						return
 				else
 					return
 				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from Weyland Yutani", "") as message|null
-				if(!message_body) return
+				if(!message_body) 
+					return
 				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from Weyland Yutani", "") as message|null
-				if(!sent_by) return
-				fax_message = generate_templated_fax(1,"WEYLAND-YUTANI CORPORATE AFFAIRS - USS ALMAYER",subject,addressed_to,message_body,sent_by,"Corporate Affairs Director","Weyland-Yutani")
-		usr << browse(fax_message, "window=clfaxpreview;size=600x600")
+				if(!sent_by) 
+					return
+				fax_message = generate_templated_fax(1, "WEYLAND-YUTANI CORPORATE AFFAIRS - USS ALMAYER", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani")
+		usr << browse(fax_message, "window=clfaxpreview;size=500x400")
 		var/send_choice = input("Send this fax?") in list("Send", "Cancel")
-		if(send_choice == "Cancel") return
+		if(send_choice == "Cancel") 
+			return
 		fax_contents += fax_message // save a copy
 
 		CLFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
@@ -1572,7 +1595,7 @@
 
 		for(var/obj/structure/machinery/faxmachine/F in machines)
 			if(F == fax)
-				if(! (F.stat & (BROKEN|NOPOWER) ) )
+				if(!(F.stat & (BROKEN|NOPOWER)))
 
 					// animate! it's alive!
 					flick("faxreceive", F)
@@ -1604,54 +1627,65 @@
 
 
 	else if(href_list["jumpto"])
-		if(!check_rights(R_ADMIN))	return
+		if(!check_rights(R_ADMIN))	
+			return
 
 		var/mob/M = locate(href_list["jumpto"])
 		usr.client.jumptomob(M)
 
 	else if(href_list["getmob"])
-		if(!check_rights(R_ADMIN))	return
+		if(!check_rights(R_ADMIN))	
+			return
 
-		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")	return
+		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")	
+			return
 		var/mob/M = locate(href_list["getmob"])
 		usr.client.Getmob(M)
 
 	else if(href_list["sendmob"])
-		if(!check_rights(R_ADMIN))	return
+		if(!check_rights(R_ADMIN))	
+			return
 
 		var/mob/M = locate(href_list["sendmob"])
 		usr.client.sendmob(M)
 
 	else if(href_list["narrateto"])
-		if(!check_rights(R_ADMIN))	return
+		if(!check_rights(R_ADMIN))	
+			return
 
 		var/mob/M = locate(href_list["narrateto"])
 		usr.client.cmd_admin_direct_narrate(M)
 
 	else if(href_list["subtlemessage"])
-		if(!check_rights(R_MOD,0) && !check_rights(R_ADMIN))  return
+		if(!check_rights(R_MOD,0) && !check_rights(R_ADMIN))  
+			return
 
 		var/mob/M = locate(href_list["subtlemessage"])
 		usr.client.cmd_admin_subtle_message(M)
 
 	else if(href_list["create_object"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 		return create_object(usr)
 
 	else if(href_list["quick_create_object"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 		return quick_create_object(usr)
 
 	else if(href_list["create_turf"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 		return create_turf(usr)
 
 	else if(href_list["create_mob"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 		return create_mob(usr)
 
 	else if(href_list["object_list"])			//this is the laggiest thing ever
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 
 		var/atom/loc = usr.loc
 
@@ -1694,23 +1728,23 @@
 			obj_dir = 2
 		var/obj_name = sanitize(href_list["object_name"])
 		var/where = href_list["object_where"]
-		if (!( where in list("onfloor","inhand","inmarked") ))
+		if (!(where in list("onfloor","inhand","inmarked")))
 			where = "onfloor"
 
 		if( where == "inhand" )
 			to_chat(usr, "Support for inhand not available yet. Will spawn on floor.")
 			where = "onfloor"
 
-		if ( where == "inhand" )	//Can only give when human or monkey
-			if ( !(ishuman(usr)) )
+		if (where == "inhand")	//Can only give when human or monkey
+			if (!(ishuman(usr)))
 				to_chat(usr, "Can only spawn in hand when you're a human or a monkey.")
 				where = "onfloor"
-			else if ( usr.get_active_hand() )
+			else if (usr.get_active_hand())
 				to_chat(usr, "Your active hand is full. Spawning on floor.")
 				where = "onfloor"
 
-		if ( where == "inmarked" )
-			if ( !marked_datums.len )
+		if (where == "inmarked" )
+			if (!marked_datums.len)
 				to_chat(usr, "You don't have any datum marked. Abandoning spawn.")
 				return
 			else
@@ -1718,19 +1752,19 @@
 				if(!D)
 					return
 
-				if ( !istype(D,/atom) )
+				if (!istype(D,/atom))
 					to_chat(usr, "The datum you have marked cannot be used as a target. Target must be of type /atom. Abandoning spawn.")
 					return
 
 		var/atom/target //Where the object will be spawned
-		switch ( where )
-			if ( "onfloor" )
+		switch (where)
+			if ("onfloor")
 				switch (href_list["offset_type"])
 					if ("absolute")
 						target = locate(0 + X,0 + Y,0 + Z)
 					if ("relative")
 						target = locate(loc.x + X,loc.y + Y,loc.z + Z)
-			if ( "inmarked" )
+			if ("inmarked")
 				var/datum/D = input_marked_datum(marked_datums)
 				if(!D)
 					to_chat(usr, "Invalid marked datum. Abandoning.")
@@ -1802,7 +1836,8 @@
 	if(href_list["add_player_info"])
 		var/key = href_list["add_player_info"]
 		var/add = input("Add Player Info") as null|message
-		if(!add) return
+		if(!add) 
+			return
 
 		notes_add(key,add,usr)
 		player_notes_show(key)
@@ -1866,7 +1901,8 @@
 		distress_cancel = 0
 		message_staff("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;distresscancel=\ref[usr]'>CANCEL</A>)")
 		spawn(100)
-			if(distress_cancel) return
+			if(distress_cancel) 
+				return
 			var/mob/ref_person = locate(href_list["distress"])
 			ticker.mode.activate_distress()
 			log_game("[key_name_admin(usr)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
@@ -1877,7 +1913,8 @@
 		destroy_cancel = 0
 		message_staff("[key_name_admin(usr)] has opted to GRANT the self destruct! Starting in 10 seconds... (<A HREF='?_src_=admin_holder;sdcancel=\ref[usr]'>CANCEL</A>)")
 		spawn(100)
-			if(distress_cancel) return
+			if(distress_cancel) 
+				return
 			var/mob/ref_person = locate(href_list["destroy"])
 			set_security_level(SEC_LEVEL_DELTA)
 			log_game("[key_name_admin(usr)] has granted self destruct, requested by [key_name_admin(ref_person)]")

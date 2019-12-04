@@ -325,7 +325,9 @@
 		'html/panels.css',
 		'html/loading.gif',
 		'html/images/wylogo.png',
-		'html/images/uscmlogo.png'
+		'html/images/uscmlogo.png',
+		'html/images/faxwylogo.png',
+		'html/images/faxbackground.jpg'
 		)
 	add_timer(CALLBACK(GLOBAL_PROC, .proc/get_files_slot, src, SSassets.preload, FALSE), 10)
 

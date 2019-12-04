@@ -5,7 +5,7 @@
 	dat += "body {"
 	dat += "margin:0 auto;"
 	dat += "padding:0;"
-	dat += "background-image: url('https://i.imgur.com/uM2I2gT.jpg');"
+	dat += "background-image: url('faxbackground.jpg');"
 	dat += "font-family: monospace;"
 	dat += "}"
 
@@ -63,7 +63,7 @@
 
 	if(show_wy_logo)
 		dat += "<div id='fax-logo'>"
-		dat += "<img src='https://i.imgur.com/B7uWh5Y.png' />"
+		dat += "<img src='faxwylogo.png' alt='Something fucked!'/>"
 		dat += "</div>"
 
 	dat += "<div class='message-header-text'>"

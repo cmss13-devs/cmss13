@@ -405,7 +405,7 @@
 	message_admins("[key_name_admin(src)] has created a Queen Mother report")
 	 
 /client/proc/cmd_admin_create_AI_report()
-	set name = "A: Create ARES announcement"
+	set name = "A: Create ARES Announcement"
 	set category = "Event"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
@@ -565,7 +565,7 @@
 		<BR>
 		<B>Events</B><BR>
 		<A href='?src=\ref[src];events=blackout'>Break all lights</A><BR>
-		<A href='?src=\ref[src];events=whiteout'>Fix all lights</A><BR>
+		<A href='?src=\ref[src];events=whiteout'>Repair all lights</A><BR>
 		<A href='?src=\ref[src];events=comms_blackout'>Trigger a Communication Blackout</A><BR>
 		<BR>
 		<B>Misc</B><BR>

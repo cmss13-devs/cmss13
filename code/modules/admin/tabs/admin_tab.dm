@@ -21,7 +21,7 @@
 	message_admins("[src] readmined themselves.")
 
 /client/proc/becomelarva()
-	set name = "X: Lose larva Protection"
+	set name = "X: Lose Larva Protection"
 	set desc = "Remove your protection from becoming a larva."
 	set category = "Admin"
 	if(!admin_holder)	return

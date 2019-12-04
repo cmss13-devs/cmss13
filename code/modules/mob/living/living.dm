@@ -218,12 +218,25 @@
 		. += 6
 
 	if(pulling && pulling.drag_delay && get_pull_miltiplier())	//Dragging stuff can slow you down a bit.
-		var/pull_delay = pulling.drag_delay * get_pull_miltiplier()
-		if(ismob(pulling))
-			var/mob/M = pulling
-			if(M.buckled) //if the pulled mob is buckled to an object, we use that object's drag_delay.
-				pull_delay = M.buckled.drag_delay * get_pull_miltiplier()
+		var/pull_delay = pulling.get_pull_drag_delay() * get_pull_miltiplier()
 		. += max(pull_speed + pull_delay + 3*grab_level, 0) //harder grab makes you slower
+
+
+//the inherent slowdown of the object when pulled
+/atom/movable/proc/get_pull_drag_delay()
+	. = drag_delay
+
+/obj/structure/closet/bodybag/get_pull_drag_delay()
+	if(roller_buckled) //if the pulled bodybag is buckled to a roller bed, we use its drag_delay instead.
+		. = roller_buckled.drag_delay
+	else
+		. = drag_delay
+
+/mob/living/get_pull_drag_delay()
+	if(buckled) //if the pulled mob is buckled to an object, we use that object's drag_delay.
+		. = buckled.drag_delay
+	else
+		. = drag_delay
 
 //whether we are slowed when dragging things
 /mob/living/proc/get_pull_miltiplier()
@@ -331,7 +344,7 @@
 
 	if(!(L.status_flags & CANPUSH))
 		return
-	
+
 	..()
 
 /mob/living/launch_towards(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)

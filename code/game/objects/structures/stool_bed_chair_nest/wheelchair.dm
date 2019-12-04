@@ -44,11 +44,7 @@
 		if(!working_hands)
 			return // No hands to drive your chair? Tough luck!
 		if(driver.pulling && driver.pulling.drag_delay && driver.get_pull_miltiplier())	//Dragging stuff can slow you down a bit.
-			var/pull_delay = driver.pulling.drag_delay * driver.get_pull_miltiplier()
-			if(ismob(driver.pulling))
-				var/mob/M = driver.pulling
-				if(M.buckled) //if the pulled mob is buckled to an object, we use that object's drag_delay.
-					pull_delay = M.buckled.drag_delay * driver.get_pull_miltiplier()
+			var/pull_delay = driver.pulling.get_pull_drag_delay() * driver.get_pull_miltiplier()
 			move_delay += max(driver.pull_speed + pull_delay + 3*driver.grab_level, 0) //harder grab makes you slower
 
 		if(istype(driver.get_active_hand(), /obj/item/weapon/gun)) //Wheelchair user has a gun out, so obviously can't move

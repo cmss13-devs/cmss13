@@ -8,7 +8,7 @@
 	icon_state = "Egg Growing"
 	density = 0
 	anchored = 1
-
+	layer = ABOVE_OBJ_LAYER
 	health = 80
 	var/list/egg_triggers = list()
 	var/status = EGG_GROWING //can be EGG_GROWING, EGG_GROWN, EGG_BURST, EGG_BURSTING, or EGG_DESTROYED; all mutually exclusive

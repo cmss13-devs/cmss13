@@ -21,11 +21,12 @@
 	reagents.add_reagent(chemname, volume)
 	update_icon()
 
-/obj/item/reagent_container/hypospray/autoinjector/attack(mob/M as mob, mob/user as mob)
+/obj/item/reagent_container/hypospray/autoinjector/attack(mob/M, mob/user)
 	if(uses_left <= 0)
 		return
-
-	..()
+	. = ..()
+	if(!.)
+		return
 	uses_left--
 	update_icon()
 

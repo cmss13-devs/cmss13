@@ -34597,10 +34597,6 @@
 	icon_state = "red1"
 	},
 /area/strata/ag/interior/dorms/lobby)
-"bRq" = (
-/obj/structure/machinery/sensortower,
-/turf/open/floor/strata,
-/area/strata/ag/interior/tcomms)
 "bRr" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 6
@@ -45735,11 +45731,6 @@
 	icon_state = "fake_wood"
 	},
 /area/strata/ug/interior/jungle/deep/minehead)
-"iCr" = (
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
-/area/strata/ag/exterior)
 "iDu" = (
 /obj/structure/filingcabinet,
 /obj/structure/barricade/handrail/strata{
@@ -65447,7 +65438,7 @@ aac
 aac
 aac
 aac
-bRq
+ciI
 ciM
 ckl
 cld

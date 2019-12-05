@@ -202,34 +202,36 @@
 		swap_hand()
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
-	if (health >= config.health_threshold_crit)
-		if(src != M)
-			var/t_him = "it"
-			if (gender == MALE)
-				t_him = "him"
-			else if (gender == FEMALE)
-				t_him = "her"
-			if(lying || sleeping)
-				if(client)
-					sleeping = max(0,sleeping-5)
-				if(sleeping == 0)
-					resting = 0
-					update_canmove()
-				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"), \
-									SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
-			else
-				var/mob/living/carbon/human/H = M
-				if(istype(H))
-					H.species.hug(H,src)
-				else
-					M.visible_message(SPAN_NOTICE("[M] pats [src] on the back to make [t_him] feel better!"), \
-								SPAN_NOTICE("You pat [src] on the back to make [t_him] feel better!"), null, 4)
+	if(health < config.health_threshold_crit || src == M)
+		return
+	var/t_him = "it"
+	if(gender == MALE)
+		t_him = "him"
+	else if (gender == FEMALE)
+		t_him = "her"
+	if(lying || sleeping)
+		if(client)
+			sleeping = max(0,sleeping-5)
+		if(sleeping == 0)
+			resting = 0
+			update_canmove()
+		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"), \
+			SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
+	else
+		var/mob/living/carbon/human/H = M
+		if(istype(H))
+			H.species.hug(H, src, H.zone_selected)
+		else
+			M.visible_message(SPAN_NOTICE("[M] pats [src] on the back to make [t_him] feel better!"), \
+				SPAN_NOTICE("You pat [src] on the back to make [t_him] feel better!"), null, 4)
+			playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
+		return
 
-			AdjustKnockedout(-3)
-			AdjustStunned(-3)
-			AdjustKnockeddown(-3)
+	AdjustKnockedout(-3)
+	AdjustStunned(-3)
+	AdjustKnockeddown(-3)
 
-			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
+	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 
 
 //Throwing stuff

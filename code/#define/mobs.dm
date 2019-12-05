@@ -195,6 +195,10 @@
 #define BUSY_ICON_FRIENDLY	4
 #define BUSY_ICON_HOSTILE	5
 
+#define EMOTE_ICON_HIGHFIVE  6
+#define EMOTE_ICON_FISTBUMP  7
+#define EMOTE_ICON_HEADBUTT  8
+#define EMOTE_ICON_TAILSWIPE 9
 
 //defins for datum/hud
 
@@ -225,6 +229,11 @@
 #define SCANNER 1
 #define PANDEMIC 2
 
+//emote flags
+#define EMOTING_HIGH_FIVE  1
+#define EMOTING_FIST_BUMP  2
+#define EMOTING_HEADBUTT   3
+#define EMOTING_TAIL_SWIPE 4
 
 //forcesay types
 #define SUDDEN 0

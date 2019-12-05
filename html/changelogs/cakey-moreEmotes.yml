@@ -1,0 +1,9 @@
+ 
+author: Cakey
+
+delete-after: True
+
+changes: 
+  - rscadd: "Help intent emotes are now target-based. You can once again perform a hug by clicking someone with the groin as your target."
+  - rscadd: "Timed help intent emotes have been added. You can initiate a timed emote by clicking on someone with either hands or either arms as your target. Anyone can respond to a timed emote by clicking on you with the same target criteria (hands or arms). Hand target emotes will perform fistbumps while arm target emotes will perform high fives."
+  - rscadd: "Xenomorphs can also perform timed help intent emotes by targeting either the head for a headbutt or the groin for a tail clash."

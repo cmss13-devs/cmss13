@@ -147,9 +147,9 @@
 		for(var/datum/internal_organ/I in H.internal_organs)
 			I.mechanize()
 
-
-/datum/species/proc/hug(var/mob/living/carbon/human/H,var/mob/living/target)
-
+/datum/species/proc/hug(var/mob/living/carbon/human/H, var/mob/living/carbon/target, var/target_zone = "chest")
+	if(H.flags_emote)
+		return
 	var/t_him = "them"
 	switch(target.gender)
 		if(MALE)
@@ -157,8 +157,107 @@
 		if(FEMALE)
 			t_him = "her"
 
-	H.visible_message(SPAN_NOTICE("[H] pats [target] on the back to make [t_him] feel better!"), \
-					SPAN_NOTICE("You pat [target] on the back to make [t_him] feel better!"), null, 4)
+	if(target_zone in list("l_arm", "r_arm"))
+		attempt_high_five(H, target)
+		return
+	else if(target_zone in list("l_hand", "r_hand"))
+		attempt_fist_bump(H, target)
+		return
+	else if(target_zone == "groin")
+		H.visible_message(SPAN_NOTICE("[H] hugs [target] to make [t_him] feel better!"), \
+			SPAN_NOTICE("You hug [target] to make [t_him] feel better!"), null, 4)
+	else
+		H.visible_message(SPAN_NOTICE("[H] pats [target] on the back to make [t_him] feel better!"), \
+			SPAN_NOTICE("You pat [target] on the back to make [t_him] feel better!"), null, 4)
+	playsound(target, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
+
+/datum/species/proc/attempt_high_five(var/mob/living/carbon/human/H, var/mob/living/carbon/human/target)
+	if(!H.get_limb("r_hand") && !H.get_limb("l_hand"))
+		to_chat(H, SPAN_NOTICE("You have no hands!"))
+		return
+
+	if(!target.get_limb("r_hand") && !target.get_limb("l_hand"))
+		to_chat(H, SPAN_NOTICE("They have no hands!"))
+		return
+
+	//Responding to a raised hand
+	if(target.flags_emote & EMOTING_HIGH_FIVE && do_after(H, 5, INTERRUPT_MOVED|INTERRUPT_EMOTE, EMOTE_ICON_HIGHFIVE))
+		if(!(target.flags_emote & EMOTING_HIGH_FIVE)) //Additional check for if the target moved or was already high fived.
+			to_chat(H, SPAN_NOTICE("Too slow!"))
+			return
+		target.flags_emote &= ~EMOTING_HIGH_FIVE
+		var/extra_quip = ""
+		if(prob(10))
+			extra_quip = pick(" Down low!", " Eiffel Tower!")
+		H.visible_message(SPAN_NOTICE("[H] gives [target] a high five![extra_quip]"), \
+			SPAN_NOTICE("You give [target] a high five![extra_quip]"), null, 4)
+		playsound(target, 'sound/effects/snap.ogg', 25, 1)
+		H.animation_attack_on(target)
+		target.animation_attack_on(H)
+		H.start_audio_emote_cooldown()
+		target.start_audio_emote_cooldown()
+		return
+	
+	//Initiate high five
+	if(H.recent_audio_emote)
+		to_chat(H, "You just did an audible emote. Wait a while.")
+		return
+
+	var/h_his = "their"
+	switch(H.gender)
+		if(MALE)
+			h_his = "his"
+		if(FEMALE)
+			h_his = "her"
+
+	H.visible_message(SPAN_NOTICE("[H] raises [h_his] hand out for a high five from [target]."), \
+		SPAN_NOTICE("You raise your hand out for a high five from [target]."), null, 4)
+	H.flags_emote |= EMOTING_HIGH_FIVE
+	if(do_after(H, 50, INTERRUPT_ALL|INTERRUPT_EMOTE, EMOTE_ICON_HIGHFIVE) && H.flags_emote & EMOTING_HIGH_FIVE)
+		to_chat(H, SPAN_NOTICE("You were left hanging!"))
+	H.flags_emote &= ~EMOTING_HIGH_FIVE
+
+/datum/species/proc/attempt_fist_bump(var/mob/living/carbon/human/H, var/mob/living/carbon/human/target)
+	if(!H.get_limb("r_hand") && !H.get_limb("l_hand"))
+		to_chat(H, SPAN_NOTICE("You have no hands!"))
+		return
+
+	if(!target.get_limb("r_hand") && !target.get_limb("l_hand"))
+		to_chat(H, SPAN_NOTICE("They have no hands!"))
+		return
+
+	//Responding to a raised fist
+	if(target.flags_emote & EMOTING_FIST_BUMP && do_after(H, 5, INTERRUPT_MOVED|INTERRUPT_EMOTE, EMOTE_ICON_FISTBUMP))
+		if(!(target.flags_emote & EMOTING_HIGH_FIVE)) //Additional check for if the target moved or was already high fived.
+			to_chat(H, SPAN_NOTICE("Too slow!"))
+			return
+		target.flags_emote &= ~EMOTING_FIST_BUMP
+		H.visible_message(SPAN_NOTICE("[H] gives [target] a fistbump!"), \
+			SPAN_NOTICE("You give [target] a fistbump!"), null, 4)
+		playsound(target, 'sound/effects/thud.ogg', 40, 1)
+		H.animation_attack_on(target)
+		target.animation_attack_on(H)
+		H.start_audio_emote_cooldown()
+		target.start_audio_emote_cooldown()
+		return
+	
+	//Initiate fistbump
+	if(H.recent_audio_emote)
+		to_chat(H, "You just did an audible emote. Wait a while.")
+		return
+	var/h_his = "their"
+	switch(H.gender)
+		if(MALE)
+			h_his = "his"
+		if(FEMALE)
+			h_his = "her"
+
+	H.visible_message(SPAN_NOTICE("[H] raises [h_his] fist out for a fistbump from [target]."), \
+		SPAN_NOTICE("You raise your fist out for a fistbump from [target]."), null, 4)
+	H.flags_emote |= EMOTING_FIST_BUMP
+	if(do_after(H, 50, INTERRUPT_ALL|INTERRUPT_EMOTE, EMOTE_ICON_FISTBUMP) && H.flags_emote & EMOTING_FIST_BUMP)
+		to_chat(H, SPAN_NOTICE("You were left hanging!"))
+	H.flags_emote &= ~EMOTING_FIST_BUMP
 
 //special things to change after we're no longer that species
 /datum/species/proc/post_species_loss(mob/living/carbon/human/H)

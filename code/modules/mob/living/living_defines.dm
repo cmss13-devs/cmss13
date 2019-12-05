@@ -40,6 +40,9 @@
 	var/friendly = "nuzzles"
 	var/wall_smash = 0
 
+	//Emotes
+	var/recent_audio_emote = FALSE
+
 	var/on_fire = 0 //The "Are we on fire?" var
 	var/fire_stacks = 0 //Tracks how many stacks of fire we have on, max is
 
@@ -71,3 +74,5 @@
 	var/datum/event/event_movement = null
 	var/blood_type = "X*"
 
+	//Flags for any active emotes the mob may be performing
+	var/flags_emote

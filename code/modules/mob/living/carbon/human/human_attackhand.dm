@@ -188,85 +188,91 @@
 
 
 /mob/living/carbon/human/help_shake_act(mob/living/carbon/M)
-	if (health >= config.health_threshold_crit)
-		if(src == M)
-			if(holo_card_color) //if we have a triage holocard printed on us, we remove it.
-				holo_card_color = null
-				update_targeted()
-				visible_message(SPAN_NOTICE("[src] removes the holo card on [gender==MALE?"himself":"herself"]."), \
-					SPAN_NOTICE("You remove the holo card on yourself."), null, 3)
-				return
-			visible_message(SPAN_NOTICE("[src] examines [gender==MALE?"himself":"herself"]."), \
-				SPAN_NOTICE("You check yourself for injuries."), null, 3)
+	if(health < config.health_threshold_crit)
+		return
 
-			for(var/datum/limb/org in limbs)
-				var/status = ""
-				var/brutedamage = org.brute_dam
-				var/burndamage = org.burn_dam
-				if(org.status & LIMB_DESTROYED)
-					status = "MISSING!"
-				else
-					if(org.status & LIMB_MUTATED)
-						if(status)
-							status += " and "
-						status += "weirdly shapen"
-					if(halloss > 0)
-						if(status)
-							status += " and "
-						status += "tingling"
-					if(brutedamage > 0)
-						if(status)
-							status += " and "
-						if(brutedamage > 40)
-							status += "mangled"
-						else if(brutedamage > 20)
-							status += "battered"
-						else
-							status += "bruised"
-					if(burndamage > 0)
-						if(status)
-							status += " and "
-						if(burndamage > 40)
-							status += "peeling away"
-						else if(burndamage > 10)
-							status += "blistered"
-						else
-							status += "numb"
+	//Target is us
+	if(src == M)
+		if(holo_card_color) //if we have a triage holocard printed on us, we remove it.
+			holo_card_color = null
+			update_targeted()
+			visible_message(SPAN_NOTICE("[src] removes the holo card on [gender==MALE?"himself":"herself"]."), \
+				SPAN_NOTICE("You remove the holo card on yourself."), null, 3)
+			return
+		visible_message(SPAN_NOTICE("[src] examines [gender==MALE?"himself":"herself"]."), \
+			SPAN_NOTICE("You check yourself for injuries."), null, 3)
 
-				if(!status)
-					status = "OK"
-				if(org.status & LIMB_SPLINTED) 
-					status += " <b>(SPLINTED)</b>"
-
-				to_chat(src, "\t My [org.display_name] is [status=="OK"?SPAN_NOTICE(status):SPAN_WARNING(status)]")
-		else
-			var/t_him = "it"
-			if (gender == MALE)
-				t_him = "him"
-			else if (gender == FEMALE)
-				t_him = "her"
-			if (w_uniform)
-				w_uniform.add_fingerprint(M)
-
-
-			if(lying || sleeping)
-				if(client)
-					sleeping = max(0,src.sleeping-5)
-				if(!sleeping)
-					resting = 0
-					update_canmove()
-				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"), \
-					SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
+		for(var/datum/limb/org in limbs)
+			var/status = ""
+			var/brutedamage = org.brute_dam
+			var/burndamage = org.burn_dam
+			if(org.status & LIMB_DESTROYED)
+				status = "MISSING!"
 			else
-				var/mob/living/carbon/human/H = M
-				if(istype(H))
-					H.species.hug(H,src)
-				else
-					M.visible_message(SPAN_NOTICE("[M] pats [src] on the back to make [t_him] feel better!"), \
-								SPAN_NOTICE("You pat [src] on the back to make [t_him] feel better!"), null, 4)
+				if(org.status & LIMB_MUTATED)
+					if(status)
+						status += " and "
+					status += "weirdly shapen"
+				if(halloss > 0)
+					if(status)
+						status += " and "
+					status += "tingling"
+				if(brutedamage > 0)
+					if(status)
+						status += " and "
+					if(brutedamage > 40)
+						status += "mangled"
+					else if(brutedamage > 20)
+						status += "battered"
+					else
+						status += "bruised"
+				if(burndamage > 0)
+					if(status)
+						status += " and "
+					if(burndamage > 40)
+						status += "peeling away"
+					else if(burndamage > 10)
+						status += "blistered"
+					else
+						status += "numb"
 
-			AdjustKnockedout(-3)
-			AdjustStunned(-3)
-			AdjustKnockeddown(-3)
+			if(!status)
+				status = "OK"
+			if(org.status & LIMB_SPLINTED) 
+				status += " <b>(SPLINTED)</b>"
 
-			playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+			to_chat(src, "\t My [org.display_name] is [status=="OK"?SPAN_NOTICE(status):SPAN_WARNING(status)]")
+		return
+
+	//Target is not us
+	var/t_him = "it"
+	if (gender == MALE)
+		t_him = "him"
+	else if (gender == FEMALE)
+		t_him = "her"
+	if (w_uniform)
+		w_uniform.add_fingerprint(M)
+
+	if(lying || sleeping)
+		if(client)
+			sleeping = max(0,src.sleeping-5)
+		if(!sleeping)
+			resting = 0
+			update_canmove()
+		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"), \
+			SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
+	else
+		var/mob/living/carbon/human/H = M
+		if(istype(H))
+			H.species.hug(H, src, H.zone_selected)
+		else
+			M.visible_message(SPAN_NOTICE("[M] pats [src] on the back to make [t_him] feel better!"), \
+				SPAN_NOTICE("You pat [src] on the back to make [t_him] feel better!"), null, 4)
+			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
+		return
+
+	AdjustKnockedout(-3)
+	AdjustStunned(-3)
+	AdjustKnockeddown(-3)
+
+	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)

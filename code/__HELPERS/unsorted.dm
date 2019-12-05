@@ -1034,6 +1034,10 @@ var/global/image/busy_indicator_medical
 var/global/image/busy_indicator_build
 var/global/image/busy_indicator_friendly
 var/global/image/busy_indicator_hostile
+var/global/image/emote_indicator_highfive
+var/global/image/emote_indicator_fistbump
+var/global/image/emote_indicator_headbutt
+var/global/image/emote_indicator_tailswipe
 
 /proc/get_busy_icon(busy_type)
 	if(busy_type == BUSY_ICON_GENERIC)
@@ -1061,6 +1065,26 @@ var/global/image/busy_indicator_hostile
 			busy_indicator_hostile = image('icons/mob/mob.dmi', null, "busy_hostile", "pixel_y" = 22)
 			busy_indicator_hostile.layer = FLY_LAYER
 		return busy_indicator_hostile
+	else if(busy_type == EMOTE_ICON_HIGHFIVE)
+		if(!emote_indicator_highfive)
+			emote_indicator_highfive = image('icons/mob/mob.dmi', null, "emote_highfive", "pixel_y" = 22)
+			emote_indicator_highfive.layer = FLY_LAYER
+		return emote_indicator_highfive
+	else if(busy_type == EMOTE_ICON_FISTBUMP)
+		if(!emote_indicator_fistbump)
+			emote_indicator_fistbump = image('icons/mob/mob.dmi', null, "emote_fistbump", "pixel_y" = 22)
+			emote_indicator_fistbump.layer = FLY_LAYER
+		return emote_indicator_fistbump
+	else if(busy_type == EMOTE_ICON_HEADBUTT)
+		if(!emote_indicator_headbutt)
+			emote_indicator_headbutt = image('icons/mob/mob.dmi', null, "emote_headbutt", "pixel_y" = 22)
+			emote_indicator_headbutt.layer = FLY_LAYER
+		return emote_indicator_headbutt
+	else if(busy_type == EMOTE_ICON_TAILSWIPE)
+		if(!emote_indicator_tailswipe)
+			emote_indicator_tailswipe = image('icons/mob/mob.dmi', null, "emote_tailswipe", "pixel_y" = 22)
+			emote_indicator_tailswipe.layer = FLY_LAYER
+		return emote_indicator_tailswipe
 
 /*
  *	do_after handles timed actions
@@ -1175,6 +1199,9 @@ var/global/image/busy_indicator_hostile
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_DAZED && L.dazed)
+			. = FALSE
+			break
+		if(user_flags & INTERRUPT_EMOTE && !L.flags_emote)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_NEEDHAND)

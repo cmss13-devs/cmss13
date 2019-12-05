@@ -2,13 +2,17 @@
 	set name = "A: De-admin"
 	set category = "Admin"
 
-	if(admin_holder)
-		if(alert("Confirm deadmin? This procedure can be reverted at any time and will not carry over to next round, but you will lose all your admin powers in the meantime.", , "Yes", "No") == "Yes")
-			log_admin("[src] deadmined themselves.")
-			message_admins("[src] deadmined themselves.")
-			verbs += /client/proc/readmin_self
-			deadmin()
-			to_chat(src, "<br><br><span class='centerbold'><big>You are now a normal player. You can ascend back to adminhood at any time using the 'Re-admin Self' verb in your Admin panel.</big></span><br>")
+	if(!admin_holder)
+		return
+
+	if(alert("Confirm deadmin? This procedure can be reverted at any time and will not carry over to next round, but you will lose all your admin powers in the meantime.", , "Yes", "No") == "No")
+		return
+
+	log_admin("[src] deadmined themselves.")
+	message_admins("[src] deadmined themselves.")
+	verbs += /client/proc/readmin_self
+	deadmin()
+	to_chat(src, "<br><br><span class='centerbold'><big>You are now a normal player. You can ascend back to adminhood at any time using the 'Re-admin Self' verb in your Admin panel.</big></span><br>")
 
 /client/proc/readmin_self()
 	set name = "A: Re-admin"
@@ -24,7 +28,10 @@
 	set name = "X: Lose Larva Protection"
 	set desc = "Remove your protection from becoming a larva."
 	set category = "Admin"
-	if(!admin_holder)	return
+
+	if(!admin_holder)	
+		return
+		
 	if(istype(mob,/mob/dead/observer))
 		var/mob/dead/observer/ghost = mob
 		if(ghost.adminlarva == 0)

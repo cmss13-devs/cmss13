@@ -25,6 +25,9 @@
 		to_chat(usr, SPAN_DANGER("The game hasn't started yet!"))
 		return
 
+	if(alert("Are you sure you want to force a predator round?",, "Yes", "No") == "No") 
+		return
+
 	var/datum/game_mode/predator_round = ticker.mode
 
 	if(!(predator_round.flags_round_type & MODE_PREDATOR))
@@ -52,30 +55,39 @@
 			to_chat(usr, "There are no fully staffed roles.")
 			return
 		var/role = input("Please select role slot to free", "Free role slot")  as null|anything in roles
+		if(!role)
+			return
+
 		RoleAuthority.free_role(RoleAuthority.roles_for_mode[role])
 		message_admins(SPAN_NOTICE("[key_name(usr)] freed the jobslot of [role]."))
 
 /client/proc/modify_slot()
 	set name = "J: Adjust Job Slots"
 	set category = "Round"
-	if(admin_holder)
-		var/roles[] = new
-		var/i
-		var/datum/job/J
-		var/datum/job/K
-		for (i in RoleAuthority.roles_for_mode) //All the roles in the game.
-			K = RoleAuthority.roles_for_mode[i]
-			if(K.allow_additional)
-				roles += i
-		var/role = input("Please select role slot to modify", "Modify amount of slots")  as null|anything in roles
-		if(role)
-			J = RoleAuthority.roles_for_mode[role]
-			var/tpos = J.spawn_positions
-			var/num = input("How many slots role [J.title] should have, currently [J.get_total_positions(1)] / [J.current_positions]?","Number:", tpos) as num|null
-			if(num && !RoleAuthority.modify_role(J, num))
-				to_chat(usr, SPAN_BOLDNOTICE("Can't set job slots to be less than amount of log-ins or you are setting amount of slots less than minimal. Free slots first."))
-			log_admin("[key_name(usr)] adjusted job slots of [J.title] to be [num].")
-			message_admins(SPAN_NOTICE("[key_name(usr)] adjusted job slots of [J.title] to be [num]."))
+
+	if(!admin_holder)
+		return
+
+	var/roles[] = new
+	var/i
+	var/datum/job/J
+	var/datum/job/K
+	for (i in RoleAuthority.roles_for_mode) //All the roles in the game.
+		K = RoleAuthority.roles_for_mode[i]
+		if(K.allow_additional)
+			roles += i
+	var/role = input("Please select role slot to modify", "Modify amount of slots")  as null|anything in roles
+	if(!role)
+		return
+	J = RoleAuthority.roles_for_mode[role]
+	var/tpos = J.spawn_positions
+	var/num = input("How many slots role [J.title] should have, currently [J.get_total_positions(1)] / [J.current_positions]?","Number:", tpos) as num|null
+	if(!num)
+		return
+	if(!RoleAuthority.modify_role(J, num))
+		to_chat(usr, SPAN_BOLDNOTICE("Can't set job slots to be less than amount of log-ins or you are setting amount of slots less than minimal. Free slots first."))
+	log_admin("[key_name(usr)] adjusted job slots of [J.title] to be [num].")
+	message_admins(SPAN_NOTICE("[key_name(usr)] adjusted job slots of [J.title] to be [num]."))
 
 /client/proc/check_antagonists()
 	set name = "S: Round Status"
@@ -90,21 +102,21 @@
 	set desc = "Immediately ends the round, be very careful"
 	set category = "Round"
 
-	if(!check_rights(R_SERVER))	
+	if(!check_rights(R_SERVER) || !ticker)	
 		return
-	if (ticker)
-		if(alert("Are you sure you want to end the round?",,"Yes","No") != "Yes")
-			return
-		ticker.mode.round_finished = MODE_INFESTATION_DRAW_DEATH
-		log_admin("[key_name(usr)] has made the round end early.")
-		message_admins(SPAN_NOTICE("[key_name(usr)] has made the round end early."))
-		for(var/client/C in admins)
-			to_chat(C, {"
-			<hr>
-			[SPAN_CENTERBOLD("Staff-Only Alert: <EM>[usr.key]</EM> has made the round end early")]
-			<hr>
-			"})
+
+	if(alert("Are you sure you want to end the round?",,"Yes","No") != "Yes")
 		return
+	ticker.mode.round_finished = MODE_INFESTATION_DRAW_DEATH
+	log_admin("[key_name(usr)] has made the round end early.")
+	message_admins(SPAN_NOTICE("[key_name(usr)] has made the round end early."))
+	for(var/client/C in admins)
+		to_chat(C, {"
+		<hr>
+		[SPAN_CENTERBOLD("Staff-Only Alert: <EM>[usr.key]</EM> has made the round end early")]
+		<hr>
+		"})
+	return
 
 /datum/admins/proc/delay()
 	set name = "A: Delay Roundstart"

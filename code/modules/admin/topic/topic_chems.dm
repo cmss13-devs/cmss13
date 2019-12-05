@@ -2,6 +2,8 @@
 	switch(href)
 		if("view_reagent")
 			var/target = input(usr,"Enter the ID of the chemical reagent you wish to view:")
+			if(!target)
+				return
 			var/datum/reagent/R = chemical_reagents_list[target]
 			if(R)
 				usr.client.debug_variables(R)
@@ -10,6 +12,8 @@
 			return
 		if("view_reaction")
 			var/target = input(usr,"Enter the ID of the chemical reaction you wish to view:")
+			if(!target)
+				return
 			var/datum/chemical_reaction/R = chemical_reactions_list[target]
 			if(R)
 				usr.client.debug_variables(R)
@@ -19,6 +23,8 @@
 			return
 		if("spawn_reagent")
 			var/target = input(usr,"Enter the ID of the chemical reagent you wish to make:")
+			if(!target)
+				return
 			if(!chemical_reagents_list[target])
 				to_chat(usr,SPAN_WARNING("No reagent with this ID could been found."))
 				return
@@ -44,11 +50,17 @@
 		//For quickly generating a new chemical
 		if("create_random_reagent")
 			var/target = input(usr,"Enter the ID of the chemical reagent you wish to make:")
+			if(!target)
+				return
 			if(chemical_reagents_list[target])
 				to_chat(usr,SPAN_WARNING("This ID is already in use."))
 				return
 			var/tier = input(usr,"Enter the generation tier you wish. This will affect the number of properties (tier + 1), rarity of components and potential for good properties. Ought to be 1-4, max 10.") as num
-			if(tier > 10) tier = 10
+			if(tier <= 0)
+				return
+
+			if(tier > 10) 
+				tier = 10
 			var/datum/reagent/generated/R = new /datum/reagent/generated
 			var/list/stats_holder = list("name","properties","description","overdose","overdose_critical","nutriment_factor","custom_metabolism","color")
 			chemical_gen_stats_list["[target]"] += stats_holder
@@ -128,29 +140,32 @@
 					else
 						break
 			//See what we want to do last
-			response = alert(usr,"Spawn container with reagent?","Custom reagent [target]","Yes","No")
-			if(response == "Yes")
-				var/volume = input(usr,"How much? An appropriate container will be selected.") as num
-				if(volume <= 0)
-					return
-				if(volume > 120)
-					if(volume > 300)
-						volume = 300
-					var/obj/item/reagent_container/glass/beaker/bluespace/C = new /obj/item/reagent_container/glass/beaker/bluespace(usr.loc)
-					C.reagents.add_reagent(target,volume)
-				else if (volume > 60)
-					var/obj/item/reagent_container/glass/beaker/large/C = new /obj/item/reagent_container/glass/beaker/large(usr.loc)
-					C.reagents.add_reagent(target,volume)
-				else if (volume > 30)
-					var/obj/item/reagent_container/glass/beaker/C = new /obj/item/reagent_container/glass/beaker(usr.loc)
-					C.reagents.add_reagent(target,volume)
-				else
-					var/obj/item/reagent_container/glass/beaker/vial/C = new /obj/item/reagent_container/glass/beaker/vial(usr.loc)
-					C.reagents.add_reagent(target,volume)
+			if(alert(usr,"Spawn container with reagent?","Custom reagent [target]","Yes","No") == "No")
+				return
+
+			var/volume = input(usr,"How much? An appropriate container will be selected.") as num
+			if(volume <= 0)
+				return
+			if(volume > 120)
+				if(volume > 300)
+					volume = 300
+				var/obj/item/reagent_container/glass/beaker/bluespace/C = new /obj/item/reagent_container/glass/beaker/bluespace(usr.loc)
+				C.reagents.add_reagent(target,volume)
+			else if (volume > 60)
+				var/obj/item/reagent_container/glass/beaker/large/C = new /obj/item/reagent_container/glass/beaker/large(usr.loc)
+				C.reagents.add_reagent(target,volume)
+			else if (volume > 30)
+				var/obj/item/reagent_container/glass/beaker/C = new /obj/item/reagent_container/glass/beaker(usr.loc)
+				C.reagents.add_reagent(target,volume)
+			else
+				var/obj/item/reagent_container/glass/beaker/vial/C = new /obj/item/reagent_container/glass/beaker/vial(usr.loc)
+				C.reagents.add_reagent(target,volume)
 			return
 		//For creating a custom reagent
 		if("create_custom_reagent")
 			var/target = input(usr,"Enter the ID of the chemical reagent you wish to make:")
+			if(!target)
+				return
 			if(chemical_reagents_list[target])
 				to_chat(usr,SPAN_WARNING("This ID is already in use."))
 				return
@@ -161,6 +176,8 @@
 			R.chemclass = CHEM_CLASS_NONE //So we don't count it towards defcon
 			R.properties = list()
 			var/response = alert(usr,"Use capitalized ID as name?","Custom reagent [target]","[capitalize(target)]","Random name")
+			if(!response)
+				return
 			if(response == "Random name")
 				R.generate_name()
 			else
@@ -241,6 +258,8 @@
 		//For creating a custom reaction
 		if("create_custom_reaction")
 			var/target = input(usr,"Enter the ID of the chemical reaction you wish to make:")
+			if(!target)
+				return
 			if(chemical_reactions_list[target])
 				to_chat(usr,SPAN_WARNING("This ID is already in use."))
 				return

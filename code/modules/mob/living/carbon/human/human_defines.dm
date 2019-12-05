@@ -82,9 +82,6 @@
 	var/list/flavor_texts = list()
 	var/recently_unbuckled = 0
 
-	//Emotes
-	var/recent_audio_emote = 0
-
 	//Life variables
 	var/oxygen_alert = 0
 	var/phoron_alert = 0

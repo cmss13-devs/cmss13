@@ -627,10 +627,3 @@
 	HTML +="<a href='?src=\ref[src];flavor_change=done'>\[Done\]</a>"
 	HTML += "<tt>"
 	src << browse(HTML, "window=flavor_changes;size=430x300")
-
-
-/mob/living/carbon/human/proc/start_audio_emote_cooldown()
-	set waitfor = 0
-	recent_audio_emote = 1
-	sleep(200)
-	recent_audio_emote = 0

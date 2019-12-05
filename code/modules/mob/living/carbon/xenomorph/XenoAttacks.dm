@@ -80,6 +80,10 @@
 			if("help")
 				if(on_fire)
 					extinguish_mob(M)
+				else if(M.zone_selected == "head")
+					M.attempt_headbutt(src)
+				else if(M.zone_selected == "groin")
+					M.attempt_tailswipe(src)
 				else
 					M.visible_message(SPAN_NOTICE("\The [M] caresses \the [src] with its scythe-like arm."), \
 					SPAN_NOTICE("You caress \the [src] with your scythe-like arm."), null, 5)
@@ -144,3 +148,59 @@
 					SPAN_WARNING("You shove \the [src] out of your way!"), null, 5)
 					src.KnockDown(1)
 		return 1
+
+/mob/living/carbon/Xenomorph/proc/attempt_headbutt(var/mob/living/carbon/Xenomorph/target)
+	//Responding to a raised head
+	if(target.flags_emote & EMOTING_HEADBUTT && do_after(src, 5, INTERRUPT_MOVED|INTERRUPT_EMOTE, EMOTE_ICON_HEADBUTT))
+		if(!(target.flags_emote & EMOTING_HEADBUTT)) //Additional check for if the target moved or was already headbutted.
+			to_chat(src, SPAN_NOTICE("Too slow!"))
+			return
+		target.flags_emote &= ~EMOTING_HEADBUTT
+		visible_message(SPAN_NOTICE("[src] slams their head into [target]!"), \
+			SPAN_NOTICE("You slam your head into [target]!"), null, 4)
+		playsound(src, pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg'), 50, 1)
+		animation_attack_on(target)
+		target.animation_attack_on(src)
+		start_audio_emote_cooldown()
+		target.start_audio_emote_cooldown()
+		return
+	
+	//Initiate headbutt
+	if(recent_audio_emote)
+		to_chat(src, "You just did an audible emote. Wait a while.")
+		return
+
+	visible_message(SPAN_NOTICE("[src] raises their head for a headbutt from [target]."), \
+		SPAN_NOTICE("You raise your head for a headbutt from [target]."), null, 4)
+	flags_emote |= EMOTING_HEADBUTT
+	if(do_after(src, 50, INTERRUPT_ALL|INTERRUPT_EMOTE, EMOTE_ICON_HEADBUTT) && flags_emote & EMOTING_HEADBUTT)
+		to_chat(src, SPAN_NOTICE("You were left hanging!"))
+	flags_emote &= ~EMOTING_HEADBUTT
+
+/mob/living/carbon/Xenomorph/proc/attempt_tailswipe(var/mob/living/carbon/Xenomorph/target)
+	//Responding to a raised tail
+	if(target.flags_emote & EMOTING_TAIL_SWIPE && do_after(src, 5, INTERRUPT_MOVED|INTERRUPT_EMOTE, EMOTE_ICON_TAILSWIPE))
+		if(!(target.flags_emote & EMOTING_TAIL_SWIPE)) //Additional check for if the target moved or was already tail swiped.
+			to_chat(src, SPAN_NOTICE("Too slow!"))
+			return
+		target.flags_emote &= ~EMOTING_TAIL_SWIPE
+		visible_message(SPAN_NOTICE("[src] clashes their tail with [target]!"), \
+			SPAN_NOTICE("You clash your tail with [target]!"), null, 4)
+		playsound(src, 'sound/weapons/alien_claw_block.ogg', 50, 1)
+		spin_circle()
+		target.spin_circle()
+		start_audio_emote_cooldown()
+		target.start_audio_emote_cooldown()
+		return
+	
+	//Initiate tail swipe
+	if(recent_audio_emote)
+		to_chat(src, "You just did an audible emote. Wait a while.")
+		return
+
+	visible_message(SPAN_NOTICE("[src] raises their tail out for a swipe from [target]."), \
+		SPAN_NOTICE("You raise your tail out for a tail swipe from [target]."), null, 4)
+	flags_emote |= EMOTING_TAIL_SWIPE
+	if(do_after(src, 50, INTERRUPT_ALL|INTERRUPT_EMOTE, EMOTE_ICON_TAILSWIPE) && flags_emote & EMOTING_TAIL_SWIPE)
+		to_chat(src, SPAN_NOTICE("You were left hanging!"))
+	flags_emote &= ~EMOTING_TAIL_SWIPE

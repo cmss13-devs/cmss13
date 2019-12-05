@@ -44,22 +44,24 @@
 /client/proc/free_slot()
 	set name = "J: Free Job Slots"
 	set category = "Round"
-	if(admin_holder)
-		var/roles[] = new
-		var/i
-		var/datum/job/J
-		for (i in RoleAuthority.roles_for_mode) //All the roles in the game.
-			J = RoleAuthority.roles_for_mode[i]
-			if(J.total_positions != -1 && J.get_total_positions(1) <= J.current_positions) roles += i
-		if (!roles.len)
-			to_chat(usr, "There are no fully staffed roles.")
-			return
-		var/role = input("Please select role slot to free", "Free role slot")  as null|anything in roles
-		if(!role)
-			return
 
-		RoleAuthority.free_role(RoleAuthority.roles_for_mode[role])
-		message_admins(SPAN_NOTICE("[key_name(usr)] freed the jobslot of [role]."))
+	if(!admin_holder)
+		return
+		
+	var/roles[] = new
+	var/i
+	var/datum/job/J
+	for (i in RoleAuthority.roles_for_mode) //All the roles in the game.
+		J = RoleAuthority.roles_for_mode[i]
+		if(J.total_positions != -1 && J.get_total_positions(1) <= J.current_positions) roles += i
+	if (!roles.len)
+		to_chat(usr, "There are no fully staffed roles.")
+		return
+	var/role = input("Please select role slot to free", "Free role slot")  as null|anything in roles
+	if(!role)
+		return
+	RoleAuthority.free_role(RoleAuthority.roles_for_mode[role])
+	message_admins(SPAN_NOTICE("[key_name(usr)] freed the jobslot of [role]."))
 
 /client/proc/modify_slot()
 	set name = "J: Adjust Job Slots"

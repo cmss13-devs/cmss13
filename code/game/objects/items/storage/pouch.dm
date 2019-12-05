@@ -362,6 +362,9 @@
 		/obj/item/storage/pill_bottle,
 		/obj/item/device/healthanalyzer,
 		/obj/item/reagent_container/hypospray,
+		/obj/item/tool/extinguisher/mini,
+		/obj/item/reagent_container/glass/bottle,
+		/obj/item/storage/syringe_case,
 	)
 
 /obj/item/storage/pouch/medical/frt_kit/full/New() 

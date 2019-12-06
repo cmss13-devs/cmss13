@@ -151,7 +151,7 @@
 
 /mob/living/carbon/Xenomorph/proc/attempt_headbutt(var/mob/living/carbon/Xenomorph/target)
 	//Responding to a raised head
-	if(target.flags_emote & EMOTING_HEADBUTT && do_after(src, 5, INTERRUPT_MOVED|INTERRUPT_EMOTE, EMOTE_ICON_HEADBUTT))
+	if(target.flags_emote & EMOTING_HEADBUTT && do_after(src, 5, INTERRUPT_MOVED, EMOTE_ICON_HEADBUTT))
 		if(!(target.flags_emote & EMOTING_HEADBUTT)) //Additional check for if the target moved or was already headbutted.
 			to_chat(src, SPAN_NOTICE("Too slow!"))
 			return
@@ -179,7 +179,7 @@
 
 /mob/living/carbon/Xenomorph/proc/attempt_tailswipe(var/mob/living/carbon/Xenomorph/target)
 	//Responding to a raised tail
-	if(target.flags_emote & EMOTING_TAIL_SWIPE && do_after(src, 5, INTERRUPT_MOVED|INTERRUPT_EMOTE, EMOTE_ICON_TAILSWIPE))
+	if(target.flags_emote & EMOTING_TAIL_SWIPE && do_after(src, 5, INTERRUPT_MOVED, EMOTE_ICON_TAILSWIPE))
 		if(!(target.flags_emote & EMOTING_TAIL_SWIPE)) //Additional check for if the target moved or was already tail swiped.
 			to_chat(src, SPAN_NOTICE("Too slow!"))
 			return

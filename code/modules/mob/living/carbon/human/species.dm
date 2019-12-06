@@ -181,7 +181,7 @@
 		return
 
 	//Responding to a raised hand
-	if(target.flags_emote & EMOTING_HIGH_FIVE && do_after(H, 5, INTERRUPT_MOVED|INTERRUPT_EMOTE, EMOTE_ICON_HIGHFIVE))
+	if(target.flags_emote & EMOTING_HIGH_FIVE && do_after(H, 5, INTERRUPT_MOVED, EMOTE_ICON_HIGHFIVE))
 		if(!(target.flags_emote & EMOTING_HIGH_FIVE)) //Additional check for if the target moved or was already high fived.
 			to_chat(H, SPAN_NOTICE("Too slow!"))
 			return
@@ -227,8 +227,8 @@
 		return
 
 	//Responding to a raised fist
-	if(target.flags_emote & EMOTING_FIST_BUMP && do_after(H, 5, INTERRUPT_MOVED|INTERRUPT_EMOTE, EMOTE_ICON_FISTBUMP))
-		if(!(target.flags_emote & EMOTING_HIGH_FIVE)) //Additional check for if the target moved or was already high fived.
+	if(target.flags_emote & EMOTING_FIST_BUMP && do_after(H, 5, INTERRUPT_MOVED, EMOTE_ICON_FISTBUMP))
+		if(!(target.flags_emote & EMOTING_FIST_BUMP)) //Additional check for if the target moved or was already fistbumped.
 			to_chat(H, SPAN_NOTICE("Too slow!"))
 			return
 		target.flags_emote &= ~EMOTING_FIST_BUMP

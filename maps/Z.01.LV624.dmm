@@ -14740,7 +14740,8 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/comms)
 "aPu" = (
-/obj/structure/table/reinforced,/turf/open/floor{
+/obj/structure/table/reinforced,
+/turf/open/floor{
 	icon_state = "red";
 	dir = 1
 	},
@@ -20113,6 +20114,10 @@
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle5)
+"lJC" = (
+/mob/living/simple_animal/bat,
+/turf/open/gm/grass,
+/area/lv624/ground/caves/central2)
 "lKe" = (
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
@@ -20884,6 +20889,10 @@
 	dir = 4
 	},
 /area/lv624/lazarus/engineering)
+"tgL" = (
+/mob/living/simple_animal/bat,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/west2)
 "tgV" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/river,
@@ -26428,7 +26437,7 @@ aad
 aad
 aal
 aal
-aal
+tgL
 aal
 aal
 aal
@@ -29613,7 +29622,7 @@ aad
 aad
 aad
 aal
-aal
+tgL
 aal
 aad
 aad
@@ -36225,7 +36234,7 @@ aae
 aae
 aaw
 aaw
-aaw
+lJC
 aaw
 aaw
 aaw
@@ -46515,7 +46524,7 @@ aaw
 aaw
 aaw
 aaw
-aaw
+lJC
 aaw
 aaF
 aaF

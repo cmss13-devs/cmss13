@@ -8,12 +8,8 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 var/global/list/ahelp_msgs = list()
 
 /client/verb/adminhelp()
-	set category = "Admin"
+	set category = "OOC"
 	set name = "Adminhelp"
-
-	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, SPAN_DANGER("Speech is currently admin-disabled."))
-		return
 
 	//handle muting and automuting
 	if(prefs.muted & MUTE_ADMINHELP)
@@ -110,7 +106,7 @@ var/global/list/ahelp_msgs = list()
 							mobs_found += found
 							if(!ai_found && isAI(found))
 								ai_found = 1
-							msg += "<b><font color='black'>[original_word] (<A HREF='?_src_=admin_holder;adminmoreinfo=\ref[found]'>?</A>)</font></b> "
+							msg += "<b><font color='black'>[original_word] (<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[found]'>?</A>)</font></b> "
 							continue
 			msg += "[original_word] "
 
@@ -190,20 +186,19 @@ var/global/list/ahelp_msgs = list()
 			return "<b>[key_name(C, link, name, highlight_special)]</b>"
 		if(1)
 			return "<b>[key_name(C, link, name, highlight_special)] \
-			(<A HREF='?_src_=admin_holder;adminmoreinfo=[ref_mob]'>?</A>)</b>"
+			(<A HREF='?_src_=admin_holder;ahelp=adminmoreinfo;extra=[ref_mob]'>?</A>)</b>"
 		if(2)
 			return "<b>[key_name(C, link, name, highlight_special)] \
-			(<A HREF='?_src_=admin_holder;mark=[ref_mob]'>Mark</A> |  \
-			<A HREF='?_src_=admin_holder;noresponse=[ref_mob]'>NR</A> |  \
-			<A HREF='?_src_=admin_holder;warning=[ref_mob]'>Warn</A> |  \
-			<A HREF='?_src_=admin_holder;autoresponse=[ref_mob]'>AutoResponse</A> |  \
-			<A HREF='?_src_=admin_holder;defermhelp=[ref_client]'>Defer</A> |  \
-			<A HREF='?_src_=admin_holder;adminmoreinfo=[ref_mob]'>?</A> |  \
-			<A HREF='?_src_=admin_holder;adminplayeropts=[ref_mob]'>PP</A> |  \
+			(<A HREF='?_src_=admin_holder;ahelp=mark;extra=[ref_mob]'>Mark</A> |  \
+			<A HREF='?_src_=admin_holder;ahelp=noresponse;extra=[ref_mob]'>NR</A> |  \
+			<A HREF='?_src_=admin_holder;ahelp=warning;extra=[ref_mob]'>Warn</A> |  \
+			<A HREF='?_src_=admin_holder;ahelp=autoresponse;extra=[ref_mob]'>AutoResponse</A> |  \
+			<A HREF='?_src_=admin_holder;ahelp=defermhelp;extra=[ref_client]'>Defer</A> |  \
+			<A HREF='?_src_=admin_holder;ahelp=adminmoreinfo;extra=[ref_mob]'>?</A> |  \
+			<A HREF='?_src_=admin_holder;ahelp=adminplayeropts;extra=[ref_mob]'>PP</A> |  \
 			<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A> |  \
 			<A HREF='?_src_=admin_holder;subtlemessage=[ref_mob]'>SM</A> |  \
-			<A HREF='?_src_=admin_holder;adminplayerobservejump=[ref_mob]'>JMP</A> |  \
-			<A HREF='?_src_=admin_holder;check_antagonist=1'>CA</A>)</b>"
+			<A HREF='?_src_=admin_holder;adminplayerobservejump=[ref_mob]'>JMP</A>)</b>"
 		if(3)
 			return "<b>[key_name(C, link, name, highlight_special)] \
 			(<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A> |  \

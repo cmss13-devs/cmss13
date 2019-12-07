@@ -95,7 +95,7 @@
 		ui.set_auto_update(1)
 
 /client/proc/open_STUI()
-	set name = "Open STUI"
+	set name = "S: Open STUI"
 	set category = "Admin"
 
 	STUI.ui_interact(usr, force_start=1)

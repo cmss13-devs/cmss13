@@ -26,9 +26,6 @@
 	var/allow_vote_restart = 0 			// allow votes to restart
 	var/ert_admin_call_only = 0
 	var/allow_vote_mode = 0				// allow votes to change mode
-	var/allow_admin_jump = 1			// allows admin jumping
-	var/allow_admin_spawning = 1		// allows admin item spawning
-	var/allow_admin_rev = 1				// allows admin revives
 	var/vote_delay = 6000				// minimum time between voting sessions (deciseconds, 10 minute default)
 	var/vote_period = 600				// length of voting period (deciseconds, default 1 minute)
 	var/vote_autotransfer_initial = 108000 // Length of time before the first autotransfer vote is called
@@ -252,15 +249,6 @@
 
 		if ("allow_vote_mode")
 			config.allow_vote_mode = 1
-
-		if ("allow_admin_jump")
-			config.allow_admin_jump = 1
-
-		if("allow_admin_rev")
-			config.allow_admin_rev = 1
-
-		if ("allow_admin_spawning")
-			config.allow_admin_spawning = 1
 
 		if ("no_dead_vote")
 			config.vote_no_dead = 1

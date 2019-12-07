@@ -70,7 +70,7 @@
 
 			if(is_special_character(C.mob))
 				entry += " - <b><font color='red'>Antagonist</font></b>"
-			entry += " (<A HREF='?_src_=admin_holder;adminmoreinfo=\ref[C.mob]'>?</A>)"
+			entry += " (<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[C.mob]'>?</A>)"
 			Lines += entry
 	else
 		for(var/client/C in clients)
@@ -95,8 +95,8 @@
 	to_chat(src, msg)
 
 /client/verb/staffwho()
-	set category = "Admin"
 	set name = "Staffwho"
+	set category = "OOC"
 
 	var/msg = ""
 	var/modmsg = ""

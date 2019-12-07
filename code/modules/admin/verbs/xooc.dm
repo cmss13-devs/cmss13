@@ -26,5 +26,3 @@
 			continue
 
 		to_chat(C, SPAN_XOOC("XOOC: [src.key]([src.admin_holder.rank]): [msg]"))
-
-	 

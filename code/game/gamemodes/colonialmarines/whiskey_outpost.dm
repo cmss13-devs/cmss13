@@ -155,7 +155,7 @@ var/global/spawn_next_wo_wave = 0
 	enter_allowed = 0
 	to_world("<B>New players may no longer join the game.</B>")
 	log_admin("wave one disabled new player game joining.")
-	message_admins("wave one disabled new player game joining.", 1)
+	message_admins("wave one disabled new player game joining.")
 	world.update_status()
 
 //SPAWN XENOS

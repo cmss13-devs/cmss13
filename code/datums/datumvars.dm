@@ -9,7 +9,8 @@
 		to_chat(usr, SPAN_DANGER("You need to be a moderator or higher to access this."))
 		return
 
-	if(!D)	return
+	if(!D)	
+		return
 
 	var/title = ""
 	var/body = ""
@@ -346,14 +347,15 @@ body
 
 /client/proc/view_var_Topic(href, href_list, hsrc)
 	//This should all be moved over to datum/admins/Topic() or something ~Carn
-	if( (usr.client != src) || !src.admin_holder || !(admin_holder.rights & R_MOD) )
+	if((usr.client != src) || !src.admin_holder || !(admin_holder.rights & R_MOD))
 		return
 	if(href_list["Vars"])
 		debug_variables(locate(href_list["Vars"]))
 
 	//~CARN: for renaming mobs (updates their name, real_name, mind.name, their ID/PDA and datacore records).
 	else if(href_list["rename"])
-		if(!check_rights(R_VAREDIT))	return
+		if(!check_rights(R_VAREDIT))	
+			return
 
 		var/mob/M = locate(href_list["rename"])
 		if(!istype(M))
@@ -361,14 +363,16 @@ body
 			return
 
 		var/new_name = stripped_input(usr,"What would you like to name this mob?","Input a name",M.real_name,MAX_NAME_LEN)
-		if( !new_name || !M )	return
+		if(!new_name || !M)	
+			return
 
 		message_admins("Admin [key_name_admin(usr)] renamed [key_name_admin(M)] to [new_name].")
 		M.fully_replace_character_name(M.real_name,new_name)
 		href_list["datumrefresh"] = href_list["rename"]
 
 	else if(href_list["varnameedit"] && href_list["datumedit"])
-		if(!check_rights(R_VAREDIT))	return
+		if(!check_rights(R_VAREDIT))	
+			return
 
 		var/D = locate(href_list["datumedit"])
 		if(!istype(D,/datum) && !istype(D,/client))
@@ -378,7 +382,8 @@ body
 		modify_variables(D, href_list["varnameedit"], 1)
 
 	else if(href_list["varnamechange"] && href_list["datumchange"])
-		if(!check_rights(R_VAREDIT))	return
+		if(!check_rights(R_VAREDIT))	
+			return
 
 		var/D = locate(href_list["datumchange"])
 		if(!istype(D,/datum) && !istype(D,/client))
@@ -388,7 +393,8 @@ body
 		modify_variables(D, href_list["varnamechange"], 0)
 
 	else if(href_list["varnamemass"] && href_list["datummass"])
-		if(!check_rights(R_VAREDIT))	return
+		if(!check_rights(R_VAREDIT))	
+			return
 
 		var/atom/A = locate(href_list["datummass"])
 		if(!istype(A))
@@ -398,7 +404,8 @@ body
 		cmd_mass_modify_object_variables(A, href_list["varnamemass"])
 
 	else if(href_list["mob_player_panel"])
-		if(!check_rights(0))	return
+		if(!check_rights(0))	
+			return
 
 		var/mob/M = locate(href_list["mob_player_panel"])
 		if(!istype(M))
@@ -409,7 +416,8 @@ body
 		href_list["datumrefresh"] = href_list["mob_player_panel"]
 
 	else if(href_list["give_disease"])
-		if(!check_rights(R_ADMIN|R_FUN))	return
+		if(!check_rights(R_ADMIN|R_FUN))	
+			return
 
 		var/mob/M = locate(href_list["give_disease"])
 		if(!istype(M))
@@ -419,19 +427,9 @@ body
 		src.give_disease(M)
 		href_list["datumrefresh"] = href_list["give_disease"]
 
-	else if(href_list["godmode"])
-		if(!check_rights(R_REJUVINATE))	return
-
-		var/mob/M = locate(href_list["godmode"])
-		if(!istype(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-
-		src.cmd_admin_godmode(M)
-		href_list["datumrefresh"] = href_list["godmode"]
-
 	else if(href_list["gib"])
-		if(!check_rights(0))	return
+		if(!check_rights(0))	
+			return
 
 		var/mob/M = locate(href_list["gib"])
 		if(!istype(M))
@@ -441,7 +439,8 @@ body
 		src.cmd_admin_gib(M)
 
 	else if(href_list["drop_everything"])
-		if(!check_rights(R_DEBUG|R_ADMIN))	return
+		if(!check_rights(R_DEBUG|R_ADMIN))	
+			return
 
 		var/mob/M = locate(href_list["drop_everything"])
 		if(!istype(M))
@@ -452,7 +451,8 @@ body
 			usr.client.cmd_admin_drop_everything(M)
 
 	else if(href_list["direct_control"])
-		if(!check_rights(0))	return
+		if(!check_rights(0))	
+			return
 
 		var/mob/M = locate(href_list["direct_control"])
 		if(!istype(M))
@@ -463,7 +463,8 @@ body
 			usr.client.cmd_assume_direct_control(M)
 
 	else if(href_list["delall"])
-		if(!check_rights(R_DEBUG|R_SERVER))	return
+		if(!check_rights(R_DEBUG|R_SERVER))	
+			return
 
 		var/obj/O = locate(href_list["delall"])
 		if(!isobj(O))
@@ -506,18 +507,21 @@ body
 				message_admins(SPAN_NOTICE("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) "))
 
 	else if(href_list["explode"])
-		if(!check_rights(R_DEBUG|R_FUN))	return
+		if(!check_rights(R_DEBUG|R_FUN))	
+			return
 
 		var/atom/A = locate(href_list["explode"])
 		if(!isobj(A) && !ismob(A) && !isturf(A))
 			to_chat(usr, "This can only be done to instances of type /obj, /mob and /turf")
 			return
 
-		src.cmd_admin_explosion(A)
+		cell_explosion(A, 150, 100)
+		log_and_message_admins("[key_name(src, TRUE)] has exploded [A]!")
 		href_list["datumrefresh"] = href_list["explode"]
 
 	else if(href_list["emp"])
-		if(!check_rights(R_DEBUG|R_FUN))	return
+		if(!check_rights(R_DEBUG|R_FUN))	
+			return
 
 		var/atom/A = locate(href_list["emp"])
 		if(!isobj(A) && !ismob(A) && !isturf(A))
@@ -528,7 +532,8 @@ body
 		href_list["datumrefresh"] = href_list["emp"]
 
 	else if(href_list["mark_object"])
-		if(!check_rights(0))	return
+		if(!check_rights(0))	
+			return
 
 		var/datum/D = locate(href_list["mark_object"])
 		if(!istype(D))
@@ -542,14 +547,16 @@ body
 		href_list["datumrefresh"] = href_list["mark_object"]
 
 	else if(href_list["adv_proccall"])
-		if(!check_rights(R_DEBUG))	return
+		if(!check_rights(R_DEBUG))	
+			return
 
 		var/datum/D = locate(href_list["adv_proccall"])
 		callproc(D)
 
 
 	else if(href_list["rotatedatum"])
-		if(!check_rights(0))	return
+		if(!check_rights(0))	
+			return
 
 		var/atom/A = locate(href_list["rotatedatum"])
 		if(!istype(A))
@@ -562,7 +569,8 @@ body
 		href_list["datumrefresh"] = href_list["rotatedatum"]
 
 	else if(href_list["makemonkey"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 
 		var/mob/living/carbon/human/H = locate(href_list["makemonkey"])
 		if(!istype(H))
@@ -576,7 +584,8 @@ body
 		admin_holder.Topic(href, list("monkeyone"=href_list["makemonkey"]))
 
 	else if(href_list["makerobot"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 
 		var/mob/living/carbon/human/H = locate(href_list["makerobot"])
 		if(!istype(H))
@@ -590,7 +599,8 @@ body
 		admin_holder.Topic(href, list("makerobot"=href_list["makerobot"]))
 
 	else if(href_list["makealien"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 
 		var/mob/living/carbon/human/H = locate(href_list["makealien"])
 		if(!istype(H))
@@ -604,7 +614,8 @@ body
 		admin_holder.Topic(href, list("makealien"=href_list["makealien"]))
 
 	else if(href_list["changehivenumber"])
-		if(!check_rights(R_DEBUG|R_ADMIN))	return
+		if(!check_rights(R_DEBUG|R_ADMIN))	
+			return
 
 		var/mob/living/carbon/Xenomorph/X = locate(href_list["changehivenumber"])
 		if(!istype(X))
@@ -637,7 +648,8 @@ body
 		admin_holder.Topic(href, list("changehivenumber"=href_list["changehivenumber"],"newhivenumber"=newhivenumber))
 
 	else if(href_list["makeai"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 
 		var/mob/living/carbon/human/H = locate(href_list["makeai"])
 		if(!istype(H))
@@ -651,7 +663,8 @@ body
 		admin_holder.Topic(href, list("makeai"=href_list["makeai"]))
 
 	else if(href_list["setspecies"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 
 		var/mob/living/carbon/human/H = locate(href_list["setspecies"])
 		if(!istype(H))
@@ -672,7 +685,8 @@ body
 			to_chat(usr, "Failed! Something went wrong.")
 
 	else if(href_list["edit_skill"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 
 		var/mob/living/carbon/human/H = locate(href_list["edit_skill"])
 		if(!istype(H))
@@ -715,7 +729,8 @@ body
 
 
 	else if(href_list["addlanguage"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 
 		var/mob/H = locate(href_list["addlanguage"])
 		if(!istype(H))
@@ -737,7 +752,8 @@ body
 			to_chat(usr, "Mob already knows that language.")
 
 	else if(href_list["remlanguage"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 
 		var/mob/H = locate(href_list["remlanguage"])
 		if(!istype(H))
@@ -763,7 +779,8 @@ body
 			to_chat(usr, "Mob doesn't know that language.")
 
 	else if(href_list["addverb"])
-		if(!check_rights(R_DEBUG))      return
+		if(!check_rights(R_DEBUG))      
+			return
 
 		var/mob/living/H = locate(href_list["addverb"])
 
@@ -793,7 +810,8 @@ body
 			H.verbs += verb
 
 	else if(href_list["remverb"])
-		if(!check_rights(R_DEBUG))      return
+		if(!check_rights(R_DEBUG))     
+			return
 
 		var/mob/H = locate(href_list["remverb"])
 
@@ -810,7 +828,8 @@ body
 			H.verbs -= verb
 
 	else if(href_list["addorgan"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 
 		var/mob/living/carbon/M = locate(href_list["addorgan"])
 		if(!istype(M))
@@ -858,7 +877,8 @@ body
 			to_chat(usr, "Added new [new_organ] to [M].")
 
 	else if(href_list["remorgan"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 
 		var/mob/living/carbon/M = locate(href_list["remorgan"])
 		if(!istype(M))
@@ -880,7 +900,8 @@ body
 
 
 	else if(href_list["addlimb"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 
 		var/mob/living/carbon/human/M = locate(href_list["addlimb"])
 		if(!istype(M))
@@ -908,7 +929,8 @@ body
 		M.UpdateDamageIcon()
 
 	else if(href_list["amplimb"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 
 		var/mob/living/carbon/human/M = locate(href_list["amplimb"])
 		if(!istype(M))
@@ -930,7 +952,8 @@ body
 		EO.droplimb(1)
 
 	else if(href_list["remlimb"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 
 		var/mob/living/carbon/human/M = locate(href_list["remlimb"])
 		if(!istype(M))
@@ -952,7 +975,8 @@ body
 		EO.droplimb()
 
 	else if(href_list["fix_nano"])
-		if(!check_rights(R_DEBUG)) return
+		if(!check_rights(R_DEBUG)) 
+			return
 
 		var/mob/H = locate(href_list["fix_nano"])
 
@@ -968,7 +992,8 @@ body
 		log_admin("[key_name(usr)] resent the NanoUI resource files to [key_name(H)] ")
 
 	else if(href_list["regenerateicons"])
-		if(!check_rights(0))	return
+		if(!check_rights(0))	
+			return
 
 		var/mob/M = locate(href_list["regenerateicons"])
 		if(!ismob(M))
@@ -977,10 +1002,12 @@ body
 		M.regenerate_icons()
 
 	else if(href_list["adjustDamage"] && href_list["mobToDamage"])
-		if(!check_rights(R_DEBUG|R_ADMIN|R_FUN))	return
+		if(!check_rights(R_DEBUG|R_ADMIN|R_FUN))	
+			return
 
 		var/mob/living/L = locate(href_list["mobToDamage"])
-		if(!istype(L)) return
+		if(!istype(L)) 
+			return
 
 		var/Text = href_list["adjustDamage"]
 

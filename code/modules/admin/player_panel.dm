@@ -75,7 +75,7 @@
 
 					body += "</td><td align='center'>";
 
-					body += "<a href='?src=\ref[src];adminplayeropts="+ref+"'>PP</a> - "
+					body += "<a href='?src=\ref[src];ahelp=adminplayeropts;extra="+ref+"'>PP</a> - "
 					body += "<a href='?src=\ref[src];playerpanelextended="+ref+"'>PPE</a> - "
 					body += "<a href='?src=\ref[src];notes=show;mob="+ref+"'>N</a> - "
 					body += "<a href='?_src_=vars;Vars="+ref+"'>VV</a> - "
@@ -312,73 +312,6 @@
 
 	usr << browse(dat, "window=players;size=600x480")
 
-/*
-//The old one
-/datum/admins/proc/player_panel_old()
-	if (!usr.client.admin_holder)
-		return
-
-	var/dat = "<html><head><title>Player Menu</title></head>"
-	dat += "<body><table border=1 cellspacing=5><B><tr><th>Name</th><th>Real Name</th><th>Assigned Job</th><th>Key</th><th>Options</th><th>PM</th><th>Traitor?</th></tr></B>"
-	//add <th>IP:</th> to this if wanting to add back in IP checking
-	//add <td>(IP: [M.lastKnownIP])</td> if you want to know their ip to the lists below
-	var/list/mobs = sortmobs()
-
-	for(var/mob/M in mobs)
-		if(!M.ckey) continue
-
-		dat += "<tr><td>[M.name]</td>"
-		if(isAI(M))
-			dat += "<td>AI</td>"
-		else if(isrobot(M))
-			dat += "<td>Cyborg</td>"
-		else if(ishuman(M))
-			dat += "<td>[M.real_name]</td>"
-		else if(istype(M, /mob/new_player))
-			dat += "<td>New Player</td>"
-		else if(isobserver(M))
-			dat += "<td>Ghost</td>"
-		else if(ismonkey(M))
-			dat += "<td>Monkey</td>"
-		else if(isXeno(M))
-			dat += "<td>Alien</td>"
-		else
-			dat += "<td>Unknown</td>"
-
-
-		if(istype(M,/mob/living/carbon/human))
-			var/mob/living/carbon/human/H = M
-			if(H.mind && H.mind.assigned_role)
-				dat += "<td>[H.mind.assigned_role]</td>"
-		else
-			dat += "<td>NA</td>"
-
-
-		dat += {"<td>[(M.client ? "[M.client]" : "No client")]</td>
-		<td align=center><A HREF='?src=\ref[src];adminplayeropts=\ref[M]'>X</A></td>
-		<td align=center><A href='?src=\ref[usr];priv_msg=\ref[M]'>PM</A></td>
-		"}
-
-
-
-		if(usr.client)
-			switch(is_special_character(M))
-				if(0)
-					dat += {"<td align=center><A HREF='?src=\ref[src];traitor=\ref[M]'>Traitor?</A></td>"}
-				if(1)
-					dat += {"<td align=center><A HREF='?src=\ref[src];traitor=\ref[M]'><font color=red>Traitor?</font></A></td>"}
-				if(2)
-					dat += {"<td align=center><A HREF='?src=\ref[src];traitor=\ref[M]'><font color=red><b>Traitor?</b></font></A></td>"}
-		else
-			dat += {"<td align=center> N/A </td>"}
-
-
-
-	dat += "</table></body></html>"
-
-	usr << browse(dat, "window=players;size=640x480")
-*/
-
 //Extended panel with ban related things
 /datum/admins/proc/player_panel_extended()
 	if (!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
@@ -413,7 +346,7 @@
 			dat += "<td>Unknown</td>"
 
 
-		dat += {"<td align=center><a HREF='?src=\ref[src];adminplayeropts=\ref[M]'>X</a></td>
+		dat += {"<td align=center><a HREF='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>X</a></td>
 		<td>[M.computer_id]</td>
 		<td>[M.lastKnownIP]</td>
 		<td><a href='?src=\ref[src];adminplayerobservejump=\ref[M]'>JMP</a></td>
@@ -474,7 +407,7 @@
 					dat += "<tr><td><A href='?src=\ref[usr];priv_msg=\ref[M]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
 					dat += "<td>[location]</td>"
 					dat += "<td><a href='?src=\ref[usr];track=\ref[M]'>F</a></td>"
-					dat += "<td><A href='?src=\ref[src];adminplayeropts=\ref[M]'>PP</A></td></TR>"
+					dat += "<td><A href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>PP</A></td></TR>"
 			dat += "</table>"
 
 		if(ticker.liaison)
@@ -486,7 +419,7 @@
 				dat += "<td>[location]</td>"
 				dat += "<td><a href='?src=\ref[usr];track=\ref[M]'>F</a></td>"
 				dat += "<td><A href='?src=\ref[src];traitor=\ref[M]'>TP</A></td>"
-				dat += "<td><A href='?src=\ref[src];adminplayeropts=\ref[M]'>PP</A></td></TR>"
+				dat += "<td><A href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>PP</A></td></TR>"
 			dat += "</table>"
 
 		if(ticker.mode.survivors.len)
@@ -498,7 +431,7 @@
 					dat += "<tr><td><A href='?src=\ref[usr];priv_msg=\ref[M]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
 					dat += "<td>[location]</td>"
 					dat += "<td><a href='?src=\ref[usr];track=\ref[M]'>F</a></td>"
-					dat += "<td><A href='?src=\ref[src];adminplayeropts=\ref[M]'>PP</A></td></TR>"
+					dat += "<td><A href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>PP</A></td></TR>"
 			dat += "</table>"
 
 		if(ticker.mode.traitors.len)
@@ -523,7 +456,7 @@
 	var/txt = {"
 		<tr>
 			<td>
-				<a href='?src=\ref[admins];adminplayeropts=\ref[M]'>[M.real_name]</a>
+				<a href='?src=\ref[admins];ahelp=adminplayeropts;extra=\ref[M]'>[M.real_name]</a>
 				[M.client ? "" : " <i>(logged out)</i>"]
 				[M.is_dead() ? " <b><font color='red'>(DEAD)</font></b>" : ""]
 			</td>
@@ -541,3 +474,111 @@
 
 	txt += "</tr>"
 	return txt
+
+/datum/admins/proc/show_player_panel(var/mob/M in mob_list)
+	set name = "Show Player Panel"
+	set desc = "Edit player (respawn, ban, heal, etc)"
+	set category = null
+
+	if(!M)
+		to_chat(usr, "You seem to be selecting a mob that doesn't exist anymore.")
+		return
+	if (!istype(src,/datum/admins))
+		src = usr.client.admin_holder
+	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
+		to_chat(usr, "Error: you are not an admin!")
+		return
+
+	var/body = "<html><head><title>Options for [M.key] played by [M.client]</title></head>"
+	body += "<body>Name: <b>[M]</b>"
+	if(M.client)
+		body += " - Ckey: <b>[M.client]</b> "
+		body += "\[<A href='?src=\ref[src];editrights=show'>[M.client.admin_holder ? M.client.admin_holder.rank : "Player"]</A>\]"
+
+	if(istype(M, /mob/new_player))
+		body += "| <B>Hasn't Entered Game</B> "
+	else
+		body += {" \[<A href='?src=\ref[src];revive=\ref[M]'>Heal</A>\]
+		<br><b>Mob type</b> = [M.type]<br>
+		"}
+
+	body += {"
+		\[
+		<a href='?_src_=vars;Vars=\ref[M]'>VV</a> -
+		<a href='?src=\ref[usr];priv_msg=\ref[M]'>PM</a> -
+		<a href='?src=\ref[src];subtlemessage=\ref[M]'>SM</a> -
+		<a href='?src=\ref[src];adminplayerobservejump=\ref[M]'>JMP</a> -
+		<a href='?src=\ref[src];adminplayerfollow=\ref[M]'>FLW</a> ]<br>
+		<br><b>Admin Tools:</b><br>
+		\[ Ban:
+		<A href='?src=\ref[src];newban=\ref[M]'>Ban</A> |
+		<A href='?src=\ref[src];eorgban=\ref[M]'>EORG Ban</A> |
+		<A href='?src=\ref[src];jobban2=\ref[M]'>Jobban</A> |
+		<A href='?src=\ref[src];notes=show;mob=\ref[M]'>Notes</A> ]
+	"}
+
+	if(M.client)
+		body += "\ <br>"
+		var/muted = M.client.prefs.muted
+		body += {"\[ Mute: <A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_IC]'><font color='[(muted & MUTE_IC)?"red":"blue"]'>IC</font></a> |
+			<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_OOC]'><font color='[(muted & MUTE_OOC)?"red":"blue"]'>OOC</font></a> |
+			<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_PRAY]'><font color='[(muted & MUTE_PRAY)?"red":"blue"]'>Pray</font></a> |
+			<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_ADMINHELP]'><font color='[(muted & MUTE_ADMINHELP)?"red":"blue"]'>Ahelp</font></a> |
+			<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_DEADCHAT]'><font color='[(muted & MUTE_DEADCHAT)?"red":"blue"]'>Dchat</font></a> |
+			 <A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_ALL]'><font color='[(muted & MUTE_ALL)?"red":"blue"]'>Toggle All</font></a> ]
+		"}
+
+	body += {"<br>\[ Misc:
+		<A href='?_src_=admin_holder;sendbacktolobby=\ref[M]'>Back to Lobby</A> | <A href='?src=\ref[src];getmob=\ref[M]'>Get</A> | <A href='?src=\ref[src];narrateto=\ref[M]'>Narrate</A> | <A href='?src=\ref[src];sendmob=\ref[M]'>Send</A> ]
+	"}
+
+	if (M.client)
+		if(!istype(M, /mob/new_player))
+			body += {"<br><br>
+				<b>Transformation:</b>
+				<br>\[ Humanoid: <A href='?src=\ref[src];simplemake=human;mob=\ref[M]'>Human</A> | <a href='?src=\ref[src];makeyautja=\ref[M]'>Yautja</a> |
+				<A href='?src=\ref[src];simplemake=farwa;mob=\ref[M]'>Farwa</A> |
+				<A href='?src=\ref[src];simplemake=monkey;mob=\ref[M]'>Monkey</A> |
+				<A href='?src=\ref[src];simplemake=neaera;mob=\ref[M]'>Neaera</A> |
+				<A href='?src=\ref[src];simplemake=yiren;mob=\ref[M]'>Yiren</A> \]
+				<br>\[ Alien Tier 0: <A href='?src=\ref[src];simplemake=larva;mob=\ref[M]'>Larva</A> \]
+				<br>\[ Alien Tier 1: <A href='?src=\ref[src];simplemake=runner;mob=\ref[M]'>Runner</A> |
+				<A href='?src=\ref[src];simplemake=drone;mob=\ref[M]'>Drone</A> |
+				<A href='?src=\ref[src];simplemake=sentinel;mob=\ref[M]'>Sentinel</A> |
+				<A href='?src=\ref[src];simplemake=defender;mob=\ref[M]'>Defender</A> \]
+				<br>\[ Alien Tier 2: <A href='?src=\ref[src];simplemake=lurker;mob=\ref[M]'>Lurker</A> |
+				<A href='?src=\ref[src];simplemake=warrior;mob=\ref[M]'>Warrior</A> |
+				<A href='?src=\ref[src];simplemake=spitter;mob=\ref[M]'>Spitter</A> |
+				<A href='?src=\ref[src];simplemake=burrower;mob=\ref[M]'>Burrower</A> |
+				<A href='?src=\ref[src];simplemake=hivelord;mob=\ref[M]'>Hivelord</A> |
+				<A href='?src=\ref[src];simplemake=carrier;mob=\ref[M]'>Carrier</A> \]
+				<br>\[ Alien Tier 3: <A href='?src=\ref[src];simplemake=ravager;mob=\ref[M]'>Ravager</A> |
+				<A href='?src=\ref[src];simplemake=praetorian;mob=\ref[M]'>Praetorian</A> |
+				<A href='?src=\ref[src];simplemake=boiler;mob=\ref[M]'>Boiler</A> |
+				<A href='?src=\ref[src];simplemake=crusher;mob=\ref[M]'>Crusher</A> \]
+				<br>\[ Alien Tier 4: <A href='?src=\ref[src];simplemake=queen;mob=\ref[M]'>Queen</A> \]
+				<br>\[ Alien Specials: <A href='?src=\ref[src];simplemake=ravenger;mob=\ref[M]'>Ravenger</A> |
+				<A href='?src=\ref[src];simplemake=predalien;mob=\ref[M]'>Predalien</A> \]
+				<br>\[ Misc: <A href='?src=\ref[src];makeai=\ref[M]'>AI</A> | <A href='?src=\ref[src];simplemake=cat;mob=\ref[M]'>Cat</A> |
+				<A href='?src=\ref[src];simplemake=corgi;mob=\ref[M]'>Corgi</A> |
+				<A href='?src=\ref[src];simplemake=crab;mob=\ref[M]'>Crab</A> | <A href='?src=\ref[src];simplemake=observer;mob=\ref[M]'>Observer</A> | <A href='?src=\ref[src];simplemake=robot;mob=\ref[M]'>Robot</A> \]
+			"}
+
+	body += {"<br><br><b>Other actions:</b>
+		<br>
+		\[ Force: <A href='?src=\ref[src];forcespeech=\ref[M]'>Force Say</A> | <A href='?src=\ref[src];forceemote=\ref[M]'>Force Emote</A> ]<br>
+		\[ Thunderdome: <A href='?src=\ref[src];tdome1=\ref[M]'>Thunderdome 1</A> | <A href='?src=\ref[src];tdome2=\ref[M]'>Thunderdome 2</A> ]
+	"}
+
+	if(ishuman(M))
+		body += {"<br>\[ Infection: <A href='?src=\ref[src];larvainfect=\ref[M]'>Xeno Larva</A> | <A href='?src=\ref[src];zombieinfect=\ref[M]'>Zombie Virus</A> ]
+	"}
+
+	if(isXeno(M))
+		body += "<br>\[ Upgrade: <A href='?src=\ref[src];xenoupgrade=\ref[M]'>Upgrade Xeno</A> ]"
+
+	body += {"<br>
+		</body></html>
+	"}
+
+	usr << browse(body, "window=adminplayeropts;size=550x515")

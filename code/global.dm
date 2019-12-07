@@ -118,7 +118,6 @@ var/secret_force_mode = "secret" // if this is anything but "secret", the secret
 
 var/datum/engine_eject/engine_eject_control = null
 var/host = null
-var/aliens_allowed = 1
 var/ooc_allowed = 1
 var/looc_allowed = 1
 var/dsay_allowed = 1
@@ -198,7 +197,6 @@ var/list/OOClog = list()
 var/list/adminlog = list()
 
 var/Debug = 0	// global debug switch
-var/Debug2 = 0
 
 var/datum/debug/debugobj
 

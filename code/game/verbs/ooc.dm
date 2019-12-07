@@ -5,9 +5,6 @@ var/global/normal_ooc_colour = "#002eb8"
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC"
 
-	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, SPAN_DANGER("Speech is currently admin-disabled."))
-		return
 	if(usr.talked == 2)
 		to_chat(usr, SPAN_DANGER("Your spam has been consumed for it's nutritional value."))
 		return
@@ -97,9 +94,6 @@ var/global/normal_ooc_colour = "#002eb8"
 	set desc = "Local OOC, seen only by those in view."
 	set category = "OOC"
 
-	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, SPAN_DANGER("Speech is currently admin-disabled."))
-		return
 	if(usr.talked == 2)
 		to_chat(usr, SPAN_DANGER("Your spam has been consumed for it's nutritional value."))
 		return
@@ -191,10 +185,10 @@ var/global/normal_ooc_colour = "#002eb8"
 	add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked), CHAT_OOC_DELAY, TIMER_UNIQUE)
 
 /client/verb/round_info()
-	set name = "round_info" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
+	set name = "Current Map" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set desc = "Information about the current round"
 	set category = "OOC"
-	to_chat(usr, "The current map is [map_tag]")
+	to_chat(usr, SPAN_NOTICE("The current map is [map_tag]"))
 
 
 /client/verb/old_chat()

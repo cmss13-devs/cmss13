@@ -2,15 +2,6 @@ var/list/forbidden_varedit_object_types = list(
 										/datum/admins,						//Admins editing their own admin-power object? Yup, sounds like a good idea.
 									)
 
-/*
-/client/proc/cmd_modify_object_variables(obj/O as obj|mob|turf|area in world)
-	set category = "Debug"
-	set name = "Edit Variables"
-	set desc="(target) Edit a target item's variables"
-	src.modify_variables(O)
-	 
-*/
-
 /client/proc/cmd_modify_ticker_variables()
 	set category = "Debug"
 	set name = "Edit Ticker Variables"
@@ -22,8 +13,8 @@ var/list/forbidden_varedit_object_types = list(
 		 
 
 /client/proc/mod_list_add_ass() //haha
-
 	var/class = "text"
+	
 	if(admin_holder && admin_holder.marked_datums.len)
 		class = input("What kind of variable?","Variable Type") as null|anything in list("text",
 			"num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default","marked datum")

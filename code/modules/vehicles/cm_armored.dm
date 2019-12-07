@@ -24,7 +24,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 
 /client/proc/remove_players_from_vic()
 	set name = "Remove All From Tank"
-	set category = "Admin"
+	set category = null
 
 	for(var/obj/vehicle/multitile/root/cm_armored/CA in view())
 		CA.remove_all_players()
@@ -33,7 +33,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 
 /client/proc/remove_clamp_from_vic()
 	set name = "Remove Clamp From Vehicle"
-	set category = "Admin"
+	set category = null
 
 	for(var/obj/vehicle/multitile/root/cm_armored/CA in view())
 		if(!CA.clamped)

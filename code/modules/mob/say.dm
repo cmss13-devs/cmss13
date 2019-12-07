@@ -9,9 +9,7 @@
 /mob/verb/say_verb(message as text)
 	set name = "Say"
 	set category = "IC"
-	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, SPAN_DANGER("Speech is currently admin-disabled."))
-		return
+
 	if(usr.talked == 2)
 		to_chat(usr, SPAN_DANGER("Your spam has been consumed for it's nutritional value."))
 		return
@@ -35,10 +33,6 @@
 /mob/verb/me_verb(message as text)
 	set name = "Me"
 	set category = "IC"
-
-	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, SPAN_DANGER("Speech is currently admin-disabled."))
-		return
 
 	if(usr.talked == 2)
 		to_chat(usr, SPAN_DANGER("Your spam has been consumed for it's nutritional value."))
@@ -68,9 +62,6 @@
 /mob/proc/say_dead(var/message)
 	var/name = src.real_name
 
-	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, SPAN_DANGER("Speech is currently admin-disabled."))
-		return
 	if(usr.talked == 2)
 		to_chat(usr, SPAN_DANGER("Your spam has been consumed for it's nutritional value."))
 		return

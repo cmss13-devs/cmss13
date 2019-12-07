@@ -4,172 +4,199 @@
 /mob/dead/observer/on_mob_jump()
 	following = null
 
-/client/proc/Jump(var/area/A in return_sorted_areas())
-	set name = "Jump to Area"
-	set desc = "Area to jump to"
-	set category = "Admin"
+/client/proc/jump_to_area(var/area/A in return_sorted_areas())
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	if(config.allow_admin_jump)
-		usr.on_mob_jump()
-		usr.forceMove(pick(get_area_turfs(A)))
+	if(!src.mob)
+		return
 
-		log_admin("[key_name(usr)] jumped to [A]")
-		message_admins("[key_name_admin(usr)] jumped to [A] (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[usr]'>JMP</A>)", 1)
-		 
-	else
-		alert("Admin jumping disabled")
+	if(!isobserver(mob))
+		src.admin_ghost()
 
-/client/proc/jumptoturf(var/turf/T in turfs)
+	src.mob.on_mob_jump()
+	src.mob.forceMove(pick(get_area_turfs(A)))
+
+	log_admin("[key_name(usr)] jumped to [A]")
+	message_admins("[key_name_admin(usr)] jumped to [A] (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[usr]'>JMP</A>)", 1)
+
+
+/client/proc/jump_to_turf(var/turf/T in turfs)
 	set name = "Jump to Turf"
 	set category = "Admin"
+	set hidden = 1
+
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
-	if(config.allow_admin_jump)
-		log_admin("[key_name(usr)] jumped to [T.x],[T.y],[T.z] in [T.loc]")
-		message_admins("[key_name_admin(usr)] jumped to [T.x],[T.y],[T.z] in [T.loc]", 1)
-		usr.on_mob_jump()
-		usr.forceMove(T)
-		 
-	else
-		alert("Admin jumping disabled")
+
+	if(!src.mob)
+		return
+	
+	if(!isobserver(mob))
+		src.admin_ghost()
+
+	log_admin("[key_name(usr)] jumped to [T.x],[T.y],[T.z] in [T.loc]")
+	message_admins("[key_name_admin(usr)] jumped to [T.x],[T.y],[T.z] in [T.loc]", 1)
+
+	src.mob.on_mob_jump()
+	src.mob.forceMove(T)
 	return
 
-/client/proc/jumptomob(var/mob/M in mob_list)
+/client/proc/jump_to_object(var/obj/O in object_list)
+	set name = "Jump to Object"
 	set category = "Admin"
-	set name = "Jump to Mob"
+	set hidden = 1
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	if(config.allow_admin_jump)
-		log_admin("[key_name(usr)] jumped to [key_name(M)]")
-		message_admins("[key_name_admin(usr)] jumped to [key_name_admin(M)] (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[M]'>JMP</A>)", 1)
-		if(src.mob)
-			var/mob/A = src.mob
-			var/turf/T = get_turf(M)
-			if(T && isturf(T))
-				 
-				A.on_mob_jump()
-				A.forceMove(T)
-			else
-				to_chat(A, "This mob is not located in the game world.")
-	else
-		alert("Admin jumping disabled")
+	var/turf/object_location = get_turf(O)
+	if(!isturf(object_location))
+		to_chat(usr, "This object is not located in the game world.")
+		return
+
+	log_admin("[key_name(usr)] jumped to [O]")
+	message_admins("[key_name_admin(usr)] jumped to [O] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[object_location.x];Y=[object_location.y];Z=[object_location.z]'>JMP</A>)")
+	
+	if(src.mob)
+		if(!isobserver(mob))
+			src.admin_ghost()
+
+		var/mob/A = src.mob
+		A.on_mob_jump()
+		A.forceMove(object_location)
+
+/client/proc/jumptomob(var/mob/M in mob_list)
+	set name = "Jump to Mob"
+	set category = "Admin"
+	set hidden = 1
+
+	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
+	log_admin("[key_name(usr)] jumped to [key_name(M)]")
+	message_admins("[key_name_admin(usr)] jumped to [key_name_admin(M)] (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[M]'>JMP</A>)")
+	if(src.mob)
+		if(!isobserver(mob))
+			src.admin_ghost()
+
+		var/mob/A = src.mob
+		var/turf/T = get_turf(M)
+		if(T && isturf(T))
+			A.on_mob_jump()
+			A.forceMove(T)
+		else
+			to_chat(A, "This mob is not located in the game world.")
 
 /client/proc/jumptocoord(tx as num, ty as num, tz as num)
-	set category = "Admin"
 	set name = "Jump to Coordinate"
+	set category = "Admin"
+	set hidden = 1
 
 	if (!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	if (config.allow_admin_jump)
-		if(src.mob)
-			var/mob/A = src.mob
-			A.on_mob_jump()
-			A.x = tx
-			A.y = ty
-			A.z = tz
+	if(src.mob)
+		if(!isobserver(mob))
+			src.admin_ghost()
 
-			//This is a bit hacky but ensures it works properly
-			A.forceMove(A.loc)
-
+		var/mob/A = src.mob
+		A.on_mob_jump()
+		A.x = tx
+		A.y = ty
+		A.z = tz
+		//This is a bit hacky but ensures it works properly
+		A.forceMove(A.loc)
 			 
-		message_admins("[key_name_admin(usr)] jumped to coordinates [tx], [ty], [tz] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[tx];Y=[ty];Z=[tz]'>JMP</a>)")
-
-	else
-		alert("Admin jumping disabled")
+	message_admins("[key_name_admin(usr)] jumped to coordinates [tx], [ty], [tz] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[tx];Y=[ty];Z=[tz]'>JMP</a>)")
 
 /client/proc/jumptokey()
+	set name = "Jump to Ckey"
 	set category = "Admin"
-	set name = "Jump to Key"
+	set hidden = 1
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	if(config.allow_admin_jump)
-		var/list/keys = list()
-		for(var/mob/M in player_list)
-			keys += M.client
-		var/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in sortKey(keys)
-		if(!selection)
-			to_chat(src, "No keys found.")
-			return
-		var/mob/M = selection:mob
-		log_admin("[key_name(usr)] jumped to [key_name(M)]")
-		message_admins("[key_name_admin(usr)] jumped to [key_name_admin(M)] (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[M]'>JMP</A>)", 1)
-		usr.on_mob_jump()
-		usr.loc = M.loc
-		 
-	else
-		alert("Admin jumping disabled")
+	var/list/keys = list()
+	for(var/mob/M in player_list)
+		keys += M.client
+	var/client/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in sortKey(keys)
+	if(!selection)
+		to_chat(src, "No keys found.")
+		return
+	var/mob/M = selection.mob
+
+	if(!src.mob)
+		return
+	
+	if(!isobserver(mob))
+		src.admin_ghost()
+
+	log_admin("[key_name(usr)] jumped to [key_name(M)]")
+	message_admins("[key_name_admin(usr)] jumped to [key_name_admin(M)] (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[M]'>JMP</A>)", 1)
+	src.mob.on_mob_jump()
+	src.mob.loc = M.loc
 
 /client/proc/Getmob(var/mob/M in mob_list)
 	set category = "Admin"
 	set name = "Get Mob"
 	set desc = "Mob to teleport"
+	set hidden = 1
+
 	if(!src.admin_holder)
 		to_chat(src, "Only administrators may use this command.")
 		return
-	if(config.allow_admin_jump)
-		log_admin("[key_name(usr)] teleported [key_name(M)]")
-		message_admins("[key_name_admin(usr)] teleported [key_name_admin(M)]", 1)
-		M.on_mob_jump()
-		M.loc = get_turf(usr)
-		 
-	else
-		alert("Admin jumping disabled")
+
+	log_admin("[key_name(usr)] teleported [key_name(M)]")
+	message_admins("[key_name_admin(usr)] teleported [key_name_admin(M)]", 1)
+	M.on_mob_jump()
+	M.loc = get_turf(usr)
 
 /client/proc/Getkey()
 	set category = "Admin"
-	set name = "Get Key"
+	set name = "Get Ckey"
 	set desc = "Key to teleport"
+	set hidden = 1
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	if(config.allow_admin_jump)
-		var/list/keys = list()
-		for(var/mob/M in player_list)
-			keys += M.client
-		var/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in sortKey(keys)
-		if(!selection)
-			return
-		var/mob/M = selection:mob
+	var/list/keys = list()
+	for(var/mob/M in player_list)
+		keys += M.client
+	var/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in sortKey(keys)
+	if(!selection)
+		return
+	var/mob/M = selection:mob
+	if(!M)
+		return
 
-		if(!M)
-			return
-		log_admin("[key_name(usr)] teleported [key_name(M)]")
-		message_admins("[key_name_admin(usr)] teleported [key_name(M)]", 1)
-		if(M)
-			M.on_mob_jump()
-			M.loc = get_turf(usr)
-			 
-	else
-		alert("Admin jumping disabled")
+	log_admin("[key_name(usr)] teleported [key_name(M)]")
+	message_admins("[key_name_admin(usr)] teleported [key_name(M)]", 1)
+
+	M.on_mob_jump()
+	M.loc = get_turf(usr)
 
 /client/proc/sendmob(var/mob/M in sortmobs())
 	set category = "Admin"
 	set name = "Send Mob"
+	set hidden = 1
+
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
 	var/area/A = input(usr, "Pick an area.", "Pick an area") as null|anything in return_sorted_areas()
 	if(A)
-		if(config.allow_admin_jump)
-			M.on_mob_jump()
-			M.loc = pick(get_area_turfs(A))
-			 
+		M.on_mob_jump()
+		M.loc = pick(get_area_turfs(A))
 
-			log_admin("[key_name(usr)] teleported [key_name(M)] to [A]")
-			message_admins("[key_name_admin(usr)] teleported [key_name_admin(M)] to [A] <A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[M]'>JMP</A>", 1)
-		else
-			alert("Admin jumping disabled")
+		log_admin("[key_name(usr)] teleported [key_name(M)] to [A]")
+		message_admins("[key_name_admin(usr)] teleported [key_name_admin(M)] to [A] <A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[M]'>JMP</A>", 1)

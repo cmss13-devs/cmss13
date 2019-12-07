@@ -362,7 +362,7 @@ var/force_mapdaemon_vote = 0
 	player_votes[src.ckey] = selection
 
 /client/proc/forceMDMapVote()
-	set name = "Map Vote - Force Initiate"
+	set name = "M: Force Map Vote"
 	set category = "Server"
 
 	force_mapdaemon_vote = !force_mapdaemon_vote
@@ -375,7 +375,7 @@ var/force_mapdaemon_vote = 0
 //Special case for }}} handled in World/Topic()
 //Set up so admins can fight over what the map will be, hurray
 /client/proc/forceNextMap()
-	set name = "Map Vote - Force"
+	set name = "M: Force Map"
 	set category = "Server"
 
 	if(alert("Are you sure you want to force the next map?",, "Yes", "No") == "No") return
@@ -394,7 +394,7 @@ var/force_mapdaemon_vote = 0
 
 var/enable_map_vote = 1
 /client/proc/cancelMapVote()
-	set name = "Map Vote - Toggle"
+	set name = "M: Toggle Map Vote"
 	set category = "Server"
 
 	if(alert("Are you sure you want to turn the map vote [!enable_map_vote ? "on" : "off"]?",, "Yes", "No") == "No") return
@@ -408,16 +408,15 @@ var/enable_map_vote = 1
 	message_admins("[src] just toggled the map vote [enable_map_vote ? "on" : "off"].")
 
 /client/proc/showVotableMaps()
-	set name = "Map Vote - List Maps"
+	set name = "M: List Maps"
 	set category = "Server"
 
 	to_chat(src, "Possible maps irrespective of pop:")
-	var/i
-	for(i in NEXT_MAP_CANDIDATES)
-		src << i
+	for(var/i in NEXT_MAP_CANDIDATES)
+		to_chat(src, SPAN_NOTICE(i))
 
 /client/proc/editVotableMaps()
-	set name = "Map Vote - Edit Maps"
+	set name = "M: Edit Maps"
 	set category = "Server"
 
 	if(alert("Are you sure you want to edit the map voting candidates?",, "Yes", "No") == "No") return
@@ -450,7 +449,7 @@ var/enable_map_vote = 1
 
 var/kill_map_daemon = 0
 /client/proc/killMapDaemon()
-	set name = "Map Vote - Kill MapDaemon"
+	set name = "M: Kill MapDaemon"
 	set category = "Server"
 
 	if(alert("Are you sure you want to kill MapDaemon?",, "Yes", "No") == "No") return
@@ -462,7 +461,7 @@ var/kill_map_daemon = 0
 	log_admin("[src] just killed MapDaemon. It may be restarted with \"Map Vote - Revive MapDaemon\".")
 
 /client/proc/reviveMapDaemon()
-	set name = "Map Vote - Revive MapDaemon"
+	set name = "M: Revive MapDaemon"
 	set category = "Server"
 
 	kill_map_daemon = 0

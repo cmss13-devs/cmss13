@@ -1,29 +1,3 @@
-// verb for admins to set custom event
-/client/proc/cmd_admin_change_custom_event()
-	set category = "Fun"
-	set name = "Change Custom Event"
-
-	if(!admin_holder)
-		to_chat(src, "Only administrators may use this command.")
-		return
-
-	var/input = input(usr, "Enter the description of the custom event. Be descriptive. To cancel the event, make this blank or hit cancel.", "Custom Event", custom_event_msg) as message|null
-	if(!input || input == "")
-		custom_event_msg = null
-		log_admin("[usr.key] has cleared the custom event text.")
-		message_admins("[key_name_admin(usr)] has cleared the custom event text.")
-		return
-
-	log_admin("[usr.key] has changed the custom event text.")
-	message_admins("[key_name_admin(usr)] has changed the custom event text.")
-
-	custom_event_msg = input
-
-	to_world("<h1 class='alert'>Custom Event</h1>")
-	to_world("<h2 class='alert'>A custom event is starting. OOC Info:</h2>")
-	to_world(SPAN_ALERT("[html_encode(custom_event_msg)]"))
-	to_world("<br>")
-
 // normal verb for players to view info
 /client/verb/cmd_view_custom_event()
 	set category = "OOC"

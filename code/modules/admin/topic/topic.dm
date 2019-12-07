@@ -228,9 +228,6 @@
 				log_admin("[key_name(src)] has [EvacuationAuthority.flags_scuttle & FLAGS_SELF_DESTRUCT_DENY ? "forbidden" : "allowed"] the self-destruct system.")
 				message_admins("[key_name_admin(usr)] has [EvacuationAuthority.flags_scuttle & FLAGS_SELF_DESTRUCT_DENY ? "forbidden" : "allowed"] the self-destruct system.")
 
-
-		href_list["secretsadmin"] = "check_antagonist"
-
 //======================================================
 //======================================================
 
@@ -240,7 +237,6 @@
 		ticker.delay_end = !ticker.delay_end
 		log_admin("[key_name(usr)] [ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
 		message_admins(SPAN_NOTICE("[key_name(usr)] [ticker.delay_end ? "delayed the round end" : "has made the round end normally"]."), 1)
-		href_list["secretsadmin"] = "check_antagonist"
 
 	else if(href_list["simplemake"])
 
@@ -827,7 +823,8 @@
 		qdel(M.client)
 
 	else if(href_list["mute"])
-		if(!check_rights(R_MOD,0) && !check_rights(R_ADMIN))  return
+		if(!check_rights(R_MOD,0) && !check_rights(R_ADMIN))  
+			return
 
 		var/mob/M = locate(href_list["mute"])
 		if(!ismob(M))	return
@@ -840,324 +837,8 @@
 		cmd_admin_mute(M, mute_type)
 
 	else if(href_list["chem_panel"])
-		switch(href_list["chem_panel"])
-			if("view_reagent")
-				var/target = input(usr,"Enter the ID of the chemical reagent you wish to view:")
-				var/datum/reagent/R = chemical_reagents_list[target]
-				if(R)
-					usr.client.debug_variables(R)
-				else
-					to_chat(usr,SPAN_WARNING("No reagent with this ID could been found."))
-				return
-			if("view_reaction")
-				var/target = input(usr,"Enter the ID of the chemical reaction you wish to view:")
-				var/datum/chemical_reaction/R = chemical_reactions_list[target]
-				if(R)
-					usr.client.debug_variables(R)
-					log_admin("[key_name(usr)] is viewing the chemical reaction for [R].")
-				else
-					to_chat(usr,SPAN_WARNING("No reaction with this ID could been found."))
-				return
-			if("spawn_reagent")
-				var/target = input(usr,"Enter the ID of the chemical reagent you wish to make:")
-				if(!chemical_reagents_list[target])
-					to_chat(usr,SPAN_WARNING("No reagent with this ID could been found."))
-					return
-				var/volume = input(usr,"How much? An appropriate container will be selected.") as num
-				if(volume)
-					if(volume > 120)
-						if(volume > 300)
-							volume = 300
-						var/obj/item/reagent_container/glass/beaker/bluespace/C = new /obj/item/reagent_container/glass/beaker/bluespace(usr.loc)
-						C.reagents.add_reagent(target,volume)
-					else if (volume > 60)
-						var/obj/item/reagent_container/glass/beaker/large/C = new /obj/item/reagent_container/glass/beaker/large(usr.loc)
-						C.reagents.add_reagent(target,volume)
-					else if (volume > 30)
-						var/obj/item/reagent_container/glass/beaker/C = new /obj/item/reagent_container/glass/beaker(usr.loc)
-						C.reagents.add_reagent(target,volume)
-					else
-						var/obj/item/reagent_container/glass/beaker/vial/C = new /obj/item/reagent_container/glass/beaker/vial(usr.loc)
-						C.reagents.add_reagent(target,volume)
-				return
-			//For quickly generating a new chemical
-			if("create_random_reagent")
-				var/target = input(usr,"Enter the ID of the chemical reagent you wish to make:")
-				if(chemical_reagents_list[target])
-					to_chat(usr,SPAN_WARNING("This ID is already in use."))
-					return
-				var/tier = input(usr,"Enter the generation tier you wish. This will affect the number of properties (tier + 1), rarity of components and potential for good properties. Ought to be 1-4, max 10.") as num
-				if(tier > 10) tier = 10
-				var/datum/reagent/generated/R = new /datum/reagent/generated
-				var/list/stats_holder = list("name","properties","description","overdose","overdose_critical","nutriment_factor","custom_metabolism","color")
-				chemical_gen_stats_list["[target]"] += stats_holder
-				R.id = target
-				R.gen_tier = tier
-				R.chemclass = CHEM_CLASS_NONE //So we don't count it towards defcon
-				R.properties = list()
-				R.generate_name()
-				R.generate_stats()
-				//Save all variables from our holder
-				R.name = chemical_gen_stats_list["[target]"]["name"]
-				R.properties = chemical_gen_stats_list["[target]"]["properties"]
-				R.description = chemical_gen_stats_list["[target]"]["description"]
-				R.overdose = chemical_gen_stats_list["[target]"]["overdose"]
-				R.overdose_critical = chemical_gen_stats_list["[target]"]["overdose_critical"]
-				R.nutriment_factor = chemical_gen_stats_list["[target]"]["nutriment_factor"]
-				R.custom_metabolism = chemical_gen_stats_list["[target]"]["custom_metabolism"]
-				R.color = chemical_gen_stats_list["[target]"]["color"]
-				//Save our reagent
-				chemical_reagents_list[target] = R
-				log_admin("[key_name(usr)] has generated the reagent: [target].")
-				message_admins("[key_name_admin(usr)] has generated the reagent: [target].", 0)
-				var/response = alert(usr,"Do you want to do anything else?",null,"Generate associated reaction","View my reagent","Finish")
-				while(response != "Finish")
-					switch(response)
-						if("Generate associated reaction")
-							if(chemical_reactions_list[target])
-								to_chat(usr,SPAN_WARNING("This ID is already in use."))
-								return
-							var/datum/chemical_reaction/generated/G = new /datum/chemical_reaction/generated
-							var/list/recipe_holder = list("required_reagents","required_catalysts")
-							chemical_gen_reactions_list["[target]"] += recipe_holder
-							G.id = target
-							G.result = target
-							G.name = R.name
-							G.gen_tier = tier
-							G.generate_recipe()
-							//Save all variables from our holder
-							G.required_reagents = chemical_gen_reactions_list["[target]"]["required_reagents"]
-							G.required_catalysts = chemical_gen_reactions_list["[target]"]["required_catalysts"]
-							//Save our reaction
-							chemical_reactions_list[target] = G
-							if(!chemical_reactions_list[target])
-								to_chat(usr,SPAN_WARNING("Something went wrong when saving the reaction."))
-								chemical_gen_stats_list["[target]"] -= stats_holder
-								return
-							var/list/reaction_ids = list()
-							if(G.required_reagents && G.required_reagents.len)
-								for(var/reaction in G.required_reagents)
-									reaction_ids += reaction
-							// Create filters based on each reagent id in the required reagents list
-							for(var/id in reaction_ids)
-								if(!chemical_reactions_filtered_list[id])
-									chemical_reactions_filtered_list[id] = list()
-								chemical_reactions_filtered_list[id] += G
-								break // Don't bother adding ourselves to other reagent ids, it is redundant.
-							response = alert(usr,"Do you want to do anything else?",null,"View my reaction","View my reagent","Finish")
-						if("View my reagent")
-							if(chemical_reagents_list[target])
-								R = chemical_reagents_list[target]
-								usr.client.debug_variables(R)
-								log_admin("[key_name(usr)] is viewing the chemical reaction for [R].")
-							else
-								to_chat(usr,SPAN_WARNING("No reaction with this ID could been found. Wait what? But I just... Contact a debugger."))
-								chemical_gen_stats_list.Remove("[target]")
-								chemical_gen_reactions_list.Remove("[target]")
-							return
-						if("View my reaction")
-							if(chemical_reactions_list[target])
-								var/datum/chemical_reaction/generated/G = chemical_reactions_list[target]
-								usr.client.debug_variables(G)
-							else
-								to_chat(usr,SPAN_WARNING("No reaction with this ID could been found. Wait what? But I just... Contact a debugger."))
-								chemical_gen_stats_list.Remove("[target]")
-								chemical_gen_reactions_list.Remove("[target]")
-							return
+		topic_chems(href_list["chem_panel"])
 
-						else
-							break
-				return
-				//See what we want to do last
-				response = alert(usr,"Spawn container with reagent?","Custom reagent [target]","Yes","No")
-				if(response == "Yes")
-					var/volume = input(usr,"How much? An appropriate container will be selected.") as num
-					if(volume)
-						if(volume > 120)
-							if(volume > 300)
-								volume = 300
-							var/obj/item/reagent_container/glass/beaker/bluespace/C = new /obj/item/reagent_container/glass/beaker/bluespace(usr.loc)
-							C.reagents.add_reagent(target,volume)
-						else if (volume > 60)
-							var/obj/item/reagent_container/glass/beaker/large/C = new /obj/item/reagent_container/glass/beaker/large(usr.loc)
-							C.reagents.add_reagent(target,volume)
-						else if (volume > 30)
-							var/obj/item/reagent_container/glass/beaker/C = new /obj/item/reagent_container/glass/beaker(usr.loc)
-							C.reagents.add_reagent(target,volume)
-						else
-							var/obj/item/reagent_container/glass/beaker/vial/C = new /obj/item/reagent_container/glass/beaker/vial(usr.loc)
-							C.reagents.add_reagent(target,volume)
-				return
-			//For creating a custom reagent
-			if("create_custom_reagent")
-				var/target = input(usr,"Enter the ID of the chemical reagent you wish to make:")
-				if(chemical_reagents_list[target])
-					to_chat(usr,SPAN_WARNING("This ID is already in use."))
-					return
-				var/datum/reagent/generated/R = new /datum/reagent/generated
-				var/list/stats_holder = list("name" = target,"properties" = list(),"description" = "","overdose" = 15,"overdose_critical" = 30,"nutriment_factor" = 0,"custom_metabolism" = 0.2,"color" = text("#[][][]",num2hex(rand(0,255)),num2hex(rand(0,255)),num2hex(rand(0,255))))
-				chemical_gen_stats_list["[target]"] += stats_holder
-				R.id = target
-				R.chemclass = CHEM_CLASS_NONE //So we don't count it towards defcon
-				R.properties = list()
-				var/response = alert(usr,"Use capitalized ID as name?","Custom reagent [target]","[capitalize(target)]","Random name")
-				if(response == "Random name")
-					R.generate_name()
-				else
-					chemical_gen_stats_list["[target]"]["name"] = capitalize(response)
-
-				response = alert(usr,"What do you want customized?","Custom reagent [target]","Add property","Randomize non property vars","Finish")
-				while(response != "Finish")
-					switch(response)
-						if("Add property")
-							response = alert(usr,"A specific property or a specific number of random properties?","Custom reagent [target]","Specific property","Specific number","No more properties")
-						if("Specific property")
-							var/property_type = alert(usr,"What kind?","Custom reagent [target]","Negative","Neutral","Positive")
-							var/list/pool
-							switch(property_type)
-								if("Negative")
-									pool = get_negative_chem_properties(1)
-								if("Neutral")
-									pool = get_neutral_chem_properties(1)
-								if("Positive")
-									pool = get_positive_chem_properties(1)
-								else
-									response = alert(usr,"No? Then..","Custom reagent [target]","Specific property","Specific number","No more properties")
-							pool = sortAssoc(pool)
-							var/property = input(usr,"Which property do you want?") as null|anything in pool
-							var/potency = input(usr,"Choose the potency (this is a strength modifier, ought to be between 1-4)") as num
-							R.add_property(property,potency)
-							response = alert(usr,"Done. Add more?","Custom reagent [target]","Specific property","Specific number","No more properties")
-						if("Specific number")
-							var/number = input(usr,"How many properties?") as num
-							R.gen_tier = input(usr,"Enter the generation tier. This will affect how potent the properties can be. Must be between 1-4.") as num
-							if(number > 10) number = 10
-							for(var/i=1,i<=number,i++)
-								R.add_property()
-							response = alert(usr,"Done. What do you want customized next?","Custom reagent [target]","Add property","Randomize non property vars","Finish")
-						if("No more properties")
-							response = alert(usr,"What do you want customized?","Custom reagent [target]","Add property","Randomize non property vars","Finish")
-						if("Randomize non property vars")
-							R.generate_stats(1)
-							response = alert(usr,"Done. What do you want customized next?","Custom reagent [target]","Add property","Randomize non property vars","Finish")
-						else
-							break
-				//Save all variables from our holder
-				R.name = chemical_gen_stats_list["[target]"]["name"]
-				R.properties = chemical_gen_stats_list["[target]"]["properties"]
-				R.description = chemical_gen_stats_list["[target]"]["description"]
-				R.overdose = chemical_gen_stats_list["[target]"]["overdose"]
-				R.overdose_critical = chemical_gen_stats_list["[target]"]["overdose_critical"]
-				R.nutriment_factor = chemical_gen_stats_list["[target]"]["nutriment_factor"]
-				R.custom_metabolism = chemical_gen_stats_list["[target]"]["custom_metabolism"]
-				R.color = chemical_gen_stats_list["[target]"]["color"]
-				//Save our reagent
-				chemical_reagents_list[target] = R
-				log_admin("[key_name(usr)] has created a custom reagent: [target].")
-				message_admins("[key_name_admin(usr)] has created a custom reagent: [target].", 0)
-				//See what we want to do last
-				response = alert(usr,"Spawn container with reagent?","Custom reagent [target]","Yes","No, show me the reagent","No, I'm all done")
-				switch(response)
-					if("Yes")
-						var/volume = input(usr,"How much? An appropriate container will be selected.") as num
-						if(volume)
-							if(volume > 120)
-								if(volume > 300)
-									volume = 300
-								var/obj/item/reagent_container/glass/beaker/bluespace/C = new /obj/item/reagent_container/glass/beaker/bluespace(usr.loc)
-								C.reagents.add_reagent(R.id,volume)
-							else if (volume > 60)
-								var/obj/item/reagent_container/glass/beaker/large/C = new /obj/item/reagent_container/glass/beaker/large(usr.loc)
-								C.reagents.add_reagent(R.id,volume)
-							else if (volume > 30)
-								var/obj/item/reagent_container/glass/beaker/C = new /obj/item/reagent_container/glass/beaker(usr.loc)
-								C.reagents.add_reagent(R.id,volume)
-							else
-								var/obj/item/reagent_container/glass/beaker/vial/C = new /obj/item/reagent_container/glass/beaker/vial(usr.loc)
-								C.reagents.add_reagent(R.id,volume)
-					if("No, show me the reagent")
-						usr.client.debug_variables(chemical_reagents_list[target])
-				return
-			//For creating a custom reaction
-			if("create_custom_reaction")
-				var/target = input(usr,"Enter the ID of the chemical reaction you wish to make:")
-				if(chemical_reactions_list[target])
-					to_chat(usr,SPAN_WARNING("This ID is already in use."))
-					return
-				var/datum/chemical_reaction/generated/R = new /datum/chemical_reaction/generated
-				var/list/recipe_holder = list("required_reagents","required_catalysts","result")
-				chemical_gen_reactions_list["[target]"] += recipe_holder
-				R.id = target
-				chemical_gen_reactions_list["[target]"]["result"] = input(usr,"Enter the reagent ID the reaction should result in:")
-				R.name = capitalize(target)
-				var/modifier = 1
-				var/component = "water"
-				var/catalyst = FALSE
-				var/response = alert(usr,"What do you want customized?","Custom reaction [target]","Add component","Add catalyst","Finish")
-				while(response != "Finish")
-					switch(response)
-						if("Add component")
-							catalyst = FALSE
-							response = "Select type"
-						if("Add catalyst")
-							catalyst = TRUE
-							response = "Select type"
-						if("Select type")
-							response = alert(usr,"Enter id manually or select from list?","Custom reaction [target]","Select from list","Manual input","Back")
-						if("Select from list")
-							var/list/pool = chemical_reagents_list
-							//for(var/datum/reagent/I in chemical_reagents_list)
-								//pool += I.id
-							pool = sortAssoc(pool)
-							component = input(usr,"Select:") as null|anything in pool
-							if(!component)
-								response = "Select type"
-								continue
-							response = "Add"
-						if("Manual input")
-							component = input(usr,"Enter the ID of the reagent:")
-							if(!component)
-								response = "Select type"
-								continue
-							if(!chemical_reagents_list[component])
-								to_chat(usr,SPAN_WARNING("ID not found. Try again."))
-								continue
-							response = "Add"
-						if("Add")
-							modifier = input("How much is required per reaction?") as num
-							R.add_component(component,modifier,catalyst)
-							response = "Back"
-						if("Back")
-							response = alert(usr,"What do you want customized?","Custom reaction [target]","Add component","Add catalyst","Finish")
-						else
-							return
-				//Save all variables from our holder
-				R.required_reagents = chemical_gen_reactions_list["[target]"]["required_reagents"]
-				R.required_catalysts = chemical_gen_reactions_list["[target]"]["required_catalysts"]
-				R.result = chemical_gen_reactions_list["[target]"]["result"]
-				//Save each reaction ID
-				var/list/reaction_ids = list()
-				if(R.required_reagents && R.required_reagents.len)
-					for(var/reaction in R.required_reagents)
-						reaction_ids += reaction
-				if(reaction_ids && reaction_ids.len < 3)
-					to_chat(usr,SPAN_WARNING("You need to add at least 3 components."))
-					return
-				//Save our reaction
-				chemical_reactions_list[target] = R
-				if(!chemical_reactions_list[target])
-					to_chat(usr,SPAN_WARNING("Something went wrong when saving the reaction."))
-					return
-				// Create filters based on each reagent id in the required reagents list
-				for(var/id in reaction_ids)
-					if(!chemical_reactions_filtered_list[id])
-						chemical_reactions_filtered_list[id] = list()
-					chemical_reactions_filtered_list[id] += R
-					break // Don't bother adding ourselves to other reagent ids, it is redundant.
-				usr.client.debug_variables(chemical_reactions_list[target])
-				log_admin("[key_name(usr)] has created a custom chemical reaction: [target].")
-				message_admins("[key_name_admin(usr)] has created a custom chemical reaction: [target].", 0)
-				return
 	else if(href_list["c_mode"])
 		if(!check_rights(R_ADMIN))	return
 
@@ -1325,46 +1006,6 @@
 		log_admin("[key_name(usr)] forced [key_name(M)] to emote: [speech]")
 		message_admins(SPAN_NOTICE("[key_name_admin(usr)] forced [key_name_admin(M)] to emote: [speech]"))
 
-	else if(href_list["sendtoprison"])
-		if(!check_rights(R_ADMIN))	return
-
-		if(alert(usr, "Send to admin prison for the round?", "Message", "Yes", "No") != "Yes")
-			return
-
-		var/mob/M = locate(href_list["sendtoprison"])
-		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-		if(isAI(M))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
-			return
-
-		var/turf/prison_cell = pick(prisonwarp)
-		if(!prison_cell)	return
-
-		var/obj/structure/closet/secure_closet/brig/locker = new /obj/structure/closet/secure_closet/brig(prison_cell)
-		locker.opened = 0
-		locker.locked = 1
-
-		//strip their stuff and stick it in the crate
-		for(var/obj/item/I in M)
-			M.drop_inv_item_to_loc(I, locker)
-
-		//so they black out before warping
-		M.KnockOut(5)
-		sleep(5)
-		if(!M)	return
-
-		M.loc = prison_cell
-		if(istype(M, /mob/living/carbon/human))
-			var/mob/living/carbon/human/prisoner = M
-			prisoner.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(prisoner), WEAR_BODY)
-			prisoner.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(prisoner), WEAR_FEET)
-
-		to_chat(M, SPAN_WARNING("You have been sent to the prison station!"))
-		log_admin("[key_name(usr)] sent [key_name(M)] to the prison station.")
-		message_admins(SPAN_NOTICE("[key_name_admin(usr)] sent [key_name_admin(M)] to the prison station."), 1)
-
 	else if(href_list["sendbacktolobby"])
 		if(!check_rights(R_MOD))
 			return
@@ -1499,12 +1140,9 @@
 			to_chat(usr, "This can only be used on instances of type /mob/living")
 			return
 
-		if(config.allow_admin_rev)
-			L.revive()
-			message_admins(SPAN_DANGER("Admin [key_name_admin(usr)] healed / revived [key_name_admin(L)]!"), 1)
-			log_admin("[key_name(usr)] healed / revived [key_name(L)]")
-		else
-			to_chat(usr, "Admin Rejuvinates have been disabled")
+		L.revive()
+		message_admins(SPAN_DANGER("Admin [key_name_admin(usr)] healed / revived [key_name_admin(L)]!"), 1)
+		log_admin("[key_name(usr)] healed / revived [key_name(L)]")
 
 	else if(href_list["makealien"])
 		if(!check_rights(R_SPAWN))	return
@@ -1645,66 +1283,35 @@
 
 /***************** BEFORE**************
 
-	if (href_list["l_players"])
-		var/dat = "<B>Name/Real Name/Key/IP:</B><HR>"
-		for(var/mob/M in mob_list)
-			var/foo = ""
-			if (ismob(M) && M.client)
-				if(!M.client.authenticated && !M.client.authenticating)
-					foo += text("\[ <A HREF='?src=\ref[];adminauth=\ref[]'>Authorize</A>|", src, M)
-				else
-					foo += text("\[ <B>Authorized</B>|")
-				if(M.start)
-					if(!istype(M, /mob/living/carbon/human/monkey))
-						foo += text("<A HREF='?src=\ref[];monkeyone=\ref[]'>Monkeyize</A>|", src, M)
-					else
-						foo += text("<B>Monkeyized</B>|")
-					if(isAI(M))
-						foo += text("<B>Is an AI</B>|")
-					else
-						foo += text("<A HREF='?src=\ref[];makeai=\ref[]'>Make AI</A>|", src, M)
-					if(M.z != 2)
-						foo += text("<A HREF='?src=\ref[];sendtoprison=\ref[]'>Prison</A>|", src, M)
-						foo += text("<A HREF='?src=\ref[];sendtomaze=\ref[]'>Maze</A>|", src, M)
-					else
-						foo += text("<B>On Z = 2</B>|")
-				else
-					foo += text("<B>Hasn't Entered Game</B>|")
-				foo += text("<A HREF='?src=\ref[];revive=\ref[]'>Heal/Revive</A>|", src, M)
 
-				foo += text("<A HREF='?src=\ref[];forcespeech=\ref[]'>Say</A> \]", src, M)
-			dat += text("N: [] R: [] (K: []) (IP: []) []<BR>", M.name, M.real_name, (M.client ? M.client : "No client"), M.lastKnownIP, foo)
-
-		usr << browse(dat, "window=players;size=900x480")
 
 *****************AFTER******************/
 
 // Now isn't that much better? IT IS NOW A PROC, i.e. kinda like a big panel like unstable
-
-	else if(href_list["adminplayeropts"])
-		var/mob/M = locate(href_list["adminplayeropts"])
-		show_player_panel(M)
-
 	else if(href_list["playerpanelextended"])
 		player_panel_extended()
 
 	else if(href_list["adminplayerobservejump"])
-		if(!check_rights(R_MOD|R_ADMIN))	return
+		if(!check_rights(R_MOD|R_ADMIN))	
+			return
 
 		var/mob/M = locate(href_list["adminplayerobservejump"])
 
 		var/client/C = usr.client
-		if(!isobserver(usr))	C.admin_ghost()
+		if(!isobserver(usr))	
+			C.admin_ghost()
 		sleep(2)
 		C.jumptomob(M)
 
 	else if(href_list["adminplayerfollow"])
-		if(!check_rights(R_MOD|R_ADMIN))	return
+		if(!check_rights(R_MOD|R_ADMIN))	
+			return
 
 		var/mob/M = locate(href_list["adminplayerfollow"])
 
 		var/client/C = usr.client
-		if(!isobserver(usr))	C.admin_ghost()
+		if(!isobserver(usr))	
+			C.admin_ghost()
 		sleep(2)
 		if(isobserver(usr))
 			var/mob/dead/observer/G = usr
@@ -1714,14 +1321,16 @@
 		check_antagonists()
 
 	else if(href_list["adminplayerobservecoodjump"])
-		if(!check_rights(R_MOD))	return
+		if(!check_rights(R_MOD))	
+			return
 
 		var/x = text2num(href_list["X"])
 		var/y = text2num(href_list["Y"])
 		var/z = text2num(href_list["Z"])
 
 		var/client/C = usr.client
-		if(!isobserver(usr))	C.admin_ghost()
+		if(!isobserver(usr))	
+			C.admin_ghost()
 		sleep(2)
 		C.jumptocoord(x,y,z)
 
@@ -1748,58 +1357,9 @@
 		log_admin("[src.owner] has cancelled the predator self-destruct sequence [victim ? "of [victim] ([victim.key])":""].")
 		message_admins("[src.owner] has cancelled the predator self-destruct sequence [victim ? "of [victim] ([victim.key])":""].")
 
-	else if(href_list["adminmoreinfo"])
-		var/mob/M = locate(href_list["adminmoreinfo"])
-		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-
-		var/location_description = ""
-		var/special_role_description = ""
-		var/health_description = ""
-		var/gender_description = ""
-		var/turf/T = get_turf(M)
-
-		//Location
-		if(isturf(T))
-			if(isarea(T.loc))
-				location_description = "([M.loc == T ? "at coordinates " : "in [M.loc] at coordinates "] [T.x], [T.y], [T.z] in area <b>[T.loc]</b>)"
-			else
-				location_description = "([M.loc == T ? "at coordinates " : "in [M.loc] at coordinates "] [T.x], [T.y], [T.z])"
-
-		//Job + antagonist
-		if(M.mind)
-			special_role_description = "Role: <b>[M.mind.assigned_role]</b>; Antagonist: <font color='red'><b>[M.mind.special_role]</b></font>; Has been rev: [(M.mind.has_been_rev)?"Yes":"No"]"
-		else
-			special_role_description = "Role: <i>Mind datum missing</i> Antagonist: <i>Mind datum missing</i>; Has been rev: <i>Mind datum missing</i>;"
-
-		//Health
-		if(isliving(M))
-			var/mob/living/L = M
-			var/status
-			switch (M.stat)
-				if (0) status = "Alive"
-				if (1) status = "<font color='orange'><b>Unconscious</b></font>"
-				if (2) status = "<font color='red'><b>Dead</b></font>"
-			health_description = "Status = [status]"
-			health_description += "<BR>Oxy: [L.getOxyLoss()] - Tox: [L.getToxLoss()] - Fire: [L.getFireLoss()] - Brute: [L.getBruteLoss()] - Clone: [L.getCloneLoss()] - Brain: [L.getBrainLoss()]"
-		else
-			health_description = "This mob type has no health to speak of."
-
-		//Gener
-		switch(M.gender)
-			if(MALE,FEMALE)	gender_description = "[M.gender]"
-			else			gender_description = "<font color='red'><b>[M.gender]</b></font>"
-
-		to_chat(src.owner, "<b>Info about [M.name]:</b> ")
-		to_chat(src.owner, "Mob type = [M.type]; Gender = [gender_description] Damage = [health_description]")
-		to_chat(src.owner, "Name = <b>[M.name]</b>; Real_name = [M.real_name]; Mind_name = [M.mind?"[M.mind.name]":""]; Key = <b>[M.key]</b>;")
-		to_chat(src.owner, "Location = [location_description];")
-		to_chat(src.owner, "[special_role_description]")
-		to_chat(src.owner, "(<a href='?src=\ref[usr];priv_msg=\ref[M]'>PM</a>) (<A HREF='?src=\ref[src];adminplayeropts=\ref[M]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[M]'>VV</A>) (<A HREF='?src=\ref[src];subtlemessage=\ref[M]'>SM</A>) (<A HREF='?src=\ref[src];adminplayerobservejump=\ref[M]'>JMP</A>) (<A HREF='?src=\ref[src];secretsadmin=check_antagonist'>CA</A>)")
-
 	else if(href_list["adminspawncookie"])
-		if(!check_rights(R_ADMIN|R_FUN))	return
+		if(!check_rights(R_ADMIN|R_FUN))	
+			return
 
 		var/mob/living/carbon/human/H = locate(href_list["adminspawncookie"])
 		if(!ishuman(H))
@@ -1822,7 +1382,8 @@
 		to_chat(H, SPAN_NOTICE(" Your prayers have been answered!! You received the <b>best cookie</b>!"))
 
 	else if(href_list["BlueSpaceArtillery"])
-		if(!check_rights(R_ADMIN|R_FUN))	return
+		if(!check_rights(R_ADMIN|R_FUN))	
+			return
 
 		var/mob/living/M = locate(href_list["BlueSpaceArtillery"])
 		if(!isliving(M))
@@ -1846,8 +1407,10 @@
 
 		var/turf/open/floor/T = get_turf(M)
 		if(istype(T))
-			if(prob(80))	T.break_tile_to_plating()
-			else			T.break_tile()
+			if(prob(80))	
+				T.break_tile_to_plating()
+			else			
+				T.break_tile()
 
 		if(M.health == 1)
 			M.gib()
@@ -1871,7 +1434,8 @@
 			return
 
 		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from USCM", "")
-		if(!input)	return
+		if(!input)	
+			return
 
 		to_chat(src.owner, "You sent [input] to [H] via a secure channel.")
 		log_admin("[src.owner] replied to [key_name(H)]'s USCM message with the message [input].")
@@ -1890,7 +1454,8 @@
 			return
 
 		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from The Syndicate", "")
-		if(!input)	return
+		if(!input)
+			return
 
 		to_chat(src.owner, "You sent [input] to [H] via a secure channel.")
 		log_admin("[src.owner] replied to [key_name(H)]'s Syndicate message with the message [input].")
@@ -1905,32 +1470,38 @@
 		switch(template_choice)
 			if("Custom")
 				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from USCM", "") as message|null
-				if(!input)	return
+				if(!input)	
+					return
 				fax_message = "[input]"
 			if("USCM High Command", "USCM Provost General")
 				var/subject = input(src.owner, "Enter subject line", "Outgoing message from USCM", "") as message|null
-				if(!subject) return
+				if(!subject) 
+					return
 				var/addressed_to = ""
 				var/address_option = input("Address it to the sender or custom?") in list("Sender", "Custom")
 				if(address_option == "Sender")
 					addressed_to = "[H.real_name]"
 				else if(address_option == "Custom")
 					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from USCM", "") as message|null
-					if(!addressed_to) return
+					if(!addressed_to) 
+						return
 				else
 					return
 				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from Weyland USCM", "") as message|null
-				if(!message_body) return
+				if(!message_body) 
+					return
 				var/sent_by = input(src.owner, "Enter the name and rank you are sending from.", "Outgoing message from USCM", "") as message|null
-				if(!sent_by) return
+				if(!sent_by) 
+					return
 				var/sent_title = "Office of the Provost General"
 				if(template_choice == "USCM High Command")
 					sent_title = "USCM High Command"
 
-				fax_message = generate_templated_fax(0,"USCM CENTRAL COMMAND",subject,addressed_to,message_body,sent_by,sent_title,"United States Colonial Marine Corps")
-		usr << browse(fax_message, "window=uscmfaxpreview;size=600x600")
+				fax_message = generate_templated_fax(0, "USCM CENTRAL COMMAND", subject,addressed_to, message_body,sent_by, sent_title, "United States Colonial Marine Corps")
+		usr << browse(fax_message, "window=uscmfaxpreview;size=500x400")
 		var/send_choice = input("Send this fax?") in list("Send", "Cancel")
-		if(send_choice == "Cancel") return
+		if(send_choice == "Cancel") 
+			return
 		fax_contents += fax_message // save a copy
 
 		USCMFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>")
@@ -1944,7 +1515,7 @@
 
 		for(var/obj/structure/machinery/faxmachine/F in machines)
 			if(F == fax)
-				if(! (F.stat & (BROKEN|NOPOWER) ) )
+				if(!(F.stat & (BROKEN|NOPOWER)))
 
 					// animate! it's alive!
 					flick("faxreceive", F)
@@ -1982,28 +1553,34 @@
 		switch(template_choice)
 			if("Custom")
 				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Weyland Yutani", "") as message|null
-				if(!input)	return
+				if(!input)	
+					return
 				fax_message = "[input]"
 			if("Template")
 				var/subject = input(src.owner, "Enter subject line", "Outgoing message from Weyland Yutani", "") as message|null
-				if(!subject) return
+				if(!subject) 
+					return
 				var/addressed_to = ""
 				var/address_option = input("Address it to the sender or custom?") in list("Sender", "Custom")
 				if(address_option == "Sender")
 					addressed_to = "[H.real_name]"
 				else if(address_option == "Custom")
 					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from Weyland Yutani", "") as message|null
-					if(!addressed_to) return
+					if(!addressed_to) 
+						return
 				else
 					return
 				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from Weyland Yutani", "") as message|null
-				if(!message_body) return
+				if(!message_body) 
+					return
 				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from Weyland Yutani", "") as message|null
-				if(!sent_by) return
-				fax_message = generate_templated_fax(1,"WEYLAND-YUTANI CORPORATE AFFAIRS - USS ALMAYER",subject,addressed_to,message_body,sent_by,"Corporate Affairs Director","Weyland-Yutani")
-		usr << browse(fax_message, "window=clfaxpreview;size=600x600")
+				if(!sent_by) 
+					return
+				fax_message = generate_templated_fax(1, "WEYLAND-YUTANI CORPORATE AFFAIRS - USS ALMAYER", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani")
+		usr << browse(fax_message, "window=clfaxpreview;size=500x400")
 		var/send_choice = input("Send this fax?") in list("Send", "Cancel")
-		if(send_choice == "Cancel") return
+		if(send_choice == "Cancel") 
+			return
 		fax_contents += fax_message // save a copy
 
 		CLFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
@@ -2018,7 +1595,7 @@
 
 		for(var/obj/structure/machinery/faxmachine/F in machines)
 			if(F == fax)
-				if(! (F.stat & (BROKEN|NOPOWER) ) )
+				if(!(F.stat & (BROKEN|NOPOWER)))
 
 					// animate! it's alive!
 					flick("faxreceive", F)
@@ -2050,70 +1627,64 @@
 
 
 	else if(href_list["jumpto"])
-		if(!check_rights(R_ADMIN))	return
+		if(!check_rights(R_ADMIN))	
+			return
 
 		var/mob/M = locate(href_list["jumpto"])
 		usr.client.jumptomob(M)
 
 	else if(href_list["getmob"])
-		if(!check_rights(R_ADMIN))	return
+		if(!check_rights(R_ADMIN))	
+			return
 
-		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")	return
+		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")	
+			return
 		var/mob/M = locate(href_list["getmob"])
 		usr.client.Getmob(M)
 
 	else if(href_list["sendmob"])
-		if(!check_rights(R_ADMIN))	return
+		if(!check_rights(R_ADMIN))	
+			return
 
 		var/mob/M = locate(href_list["sendmob"])
 		usr.client.sendmob(M)
 
 	else if(href_list["narrateto"])
-		if(!check_rights(R_ADMIN))	return
+		if(!check_rights(R_ADMIN))	
+			return
 
 		var/mob/M = locate(href_list["narrateto"])
 		usr.client.cmd_admin_direct_narrate(M)
 
 	else if(href_list["subtlemessage"])
-		if(!check_rights(R_MOD,0) && !check_rights(R_ADMIN))  return
+		if(!check_rights(R_MOD,0) && !check_rights(R_ADMIN))  
+			return
 
 		var/mob/M = locate(href_list["subtlemessage"])
 		usr.client.cmd_admin_subtle_message(M)
 
-	else if(href_list["traitor"])
-		if(!check_rights(R_ADMIN|R_MOD))	return
-
-		if(!ticker || !ticker.mode)
-			alert("The game hasn't started yet!")
-			return
-
-		var/mob/M = locate(href_list["traitor"])
-		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob.")
-			return
-		show_traitor_panel(M)
-
 	else if(href_list["create_object"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 		return create_object(usr)
 
 	else if(href_list["quick_create_object"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 		return quick_create_object(usr)
 
 	else if(href_list["create_turf"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 		return create_turf(usr)
 
 	else if(href_list["create_mob"])
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))	
+			return
 		return create_mob(usr)
 
 	else if(href_list["object_list"])			//this is the laggiest thing ever
-		if(!check_rights(R_SPAWN))	return
-
-		if(!config.allow_admin_spawning)
-			to_chat(usr, "Spawning of items is not allowed.")
+		if(!check_rights(R_SPAWN))	
 			return
 
 		var/atom/loc = usr.loc
@@ -2157,23 +1728,23 @@
 			obj_dir = 2
 		var/obj_name = sanitize(href_list["object_name"])
 		var/where = href_list["object_where"]
-		if (!( where in list("onfloor","inhand","inmarked") ))
+		if (!(where in list("onfloor","inhand","inmarked")))
 			where = "onfloor"
 
 		if( where == "inhand" )
 			to_chat(usr, "Support for inhand not available yet. Will spawn on floor.")
 			where = "onfloor"
 
-		if ( where == "inhand" )	//Can only give when human or monkey
-			if ( !(ishuman(usr)) )
+		if (where == "inhand")	//Can only give when human or monkey
+			if (!(ishuman(usr)))
 				to_chat(usr, "Can only spawn in hand when you're a human or a monkey.")
 				where = "onfloor"
-			else if ( usr.get_active_hand() )
+			else if (usr.get_active_hand())
 				to_chat(usr, "Your active hand is full. Spawning on floor.")
 				where = "onfloor"
 
-		if ( where == "inmarked" )
-			if ( !marked_datums.len )
+		if (where == "inmarked" )
+			if (!marked_datums.len)
 				to_chat(usr, "You don't have any datum marked. Abandoning spawn.")
 				return
 			else
@@ -2181,19 +1752,19 @@
 				if(!D)
 					return
 
-				if ( !istype(D,/atom) )
+				if (!istype(D,/atom))
 					to_chat(usr, "The datum you have marked cannot be used as a target. Target must be of type /atom. Abandoning spawn.")
 					return
 
 		var/atom/target //Where the object will be spawned
-		switch ( where )
-			if ( "onfloor" )
+		switch (where)
+			if ("onfloor")
 				switch (href_list["offset_type"])
 					if ("absolute")
 						target = locate(0 + X,0 + Y,0 + Z)
 					if ("relative")
 						target = locate(loc.x + X,loc.y + Y,loc.z + Z)
-			if ( "inmarked" )
+			if ("inmarked")
 				var/datum/D = input_marked_datum(marked_datums)
 				if(!D)
 					to_chat(usr, "Invalid marked datum. Abandoning.")
@@ -2234,198 +1805,27 @@
 					break
 		return
 
-	else if(href_list["secretsfun"])
-		if(!check_rights(R_FUN))	return
+	else if(href_list["events"])
+		if(!check_rights(R_FUN))	
+			return
 
-		switch(href_list["secretsfun"])
-			if("gravity")
-				if(!(ticker && ticker.mode))
-					to_chat(usr, "Please wait until the game starts!  Not sure how it will work otherwise.")
-					return
-				gravity_is_on = !gravity_is_on
-				for(var/area/A in all_areas)
-					A.gravitychange(gravity_is_on,A)
-				if(gravity_is_on)
-					log_admin("[key_name(usr)] toggled gravity on.", 1)
-					message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled gravity on."), 1)
-					marine_announcement("Gravity generators are again functioning within normal parameters. Sorry for any inconvenience.")
-				else
-					log_admin("[key_name(usr)] toggled gravity off.", 1)
-					message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled gravity off."), 1)
-					marine_announcement("Feedback surge detected in mass-distributions systems. Artifical gravity has been disabled whilst the system reinitializes. Further failures may result in a gravitational collapse and formation of blackholes. Have a nice day.")
-			if("spiders")
-				new /datum/event/spider_infestation
-				message_admins("[key_name_admin(usr)] has spawned spiders", 1)
-			if("comms_blackout")
-				var/answer = alert(usr, "Would you like to alert the crew?", "Alert", "Yes", "No")
-				if(answer == "Yes")
-					communications_blackout(0)
-				else
-					communications_blackout(1)
-				message_admins("[key_name_admin(usr)] triggered a communications blackout.", 1)
-			if("lightout")
-				message_admins("[key_name_admin(usr)] has broke a lot of lights", 1)
-				lightsout(1,2)
-			if("blackout")
-				message_admins("[key_name_admin(usr)] broke all lights", 1)
-				lightsout(0,0)
-			if("whiteout")
-				for(var/obj/structure/machinery/light/L in machines)
-					L.fix()
-				message_admins("[key_name_admin(usr)] fixed all lights", 1)
-			if("power")
-				log_admin("[key_name(usr)] powered all SMESs and APCs", 1)
-				message_admins(SPAN_NOTICE("[key_name_admin(usr)] powered all SMESs and APCs"), 1)
-				power_restore()
-			if("unpower")
-				log_admin("[key_name(usr)] unpowered all SMESs and APCs", 1)
-				message_admins(SPAN_NOTICE("[key_name_admin(usr)] unpowered all SMESs and APCs"), 1)
-				power_failure()
-			if("quickpower")
-				log_admin("[key_name(usr)] powered all SMESs", 1)
-				message_admins(SPAN_NOTICE("[key_name_admin(usr)] powered all SMESs"), 1)
-				power_restore_quick()
-			if("powereverything")
-				log_admin("[key_name(usr)] powered all SMESs and APCs everywhere", 1)
-				message_admins(SPAN_NOTICE("[key_name_admin(usr)] powered all SMESs and APCs everywhere"), 1)
-				power_restore_everything()
-			if("powershipreactors")
-				log_admin("[key_name(usr)] powered all ship reactors", 1)
-				message_admins(SPAN_NOTICE("[key_name_admin(usr)] powered all ship reactors"), 1)
-				power_restore_ship_reactors()
-			if("gethumans")
-				log_admin("[key_name(usr)] mass-teleported all humans.", 1)
-				message_admins(SPAN_NOTICE("[key_name_admin(usr)] mass-teleported all humans."), 1)
-				get_all_humans()
-			if("getxenos")
-				log_admin("[key_name(usr)] mass-teleported all Xenos.", 1)
-				message_admins(SPAN_NOTICE("[key_name_admin(usr)] mass-teleported all Xenos."), 1)
-				get_all_xenos()
-			if("getall")
-				log_admin("[key_name(usr)] mass-teleported everyone.", 1)
-				message_admins(SPAN_NOTICE("[key_name_admin(usr)] mass-teleported everyone."), 1)
-				get_all()
-			if("rejuvall")
-				log_admin("[key_name(usr)] mass-rejuvenated everyone.", 1)
-				message_admins(SPAN_NOTICE("[key_name_admin(usr)] mass-rejuvenated everyone."), 1)
-				rejuv_all()
-			if("decrease_defcon")
-				log_admin("[key_name(usr)] decreased DEFCON level.", 1)
-				message_admins(SPAN_NOTICE("[key_name_admin(usr)] decreased DEFCON level."), 1)
-				defcon_controller.decrease_defcon_level()
-			if("give_defcon_points")
-				var/amount = input(usr, "How many points to add?") as num
-				if(amount != 0) //can add negative numbers too!
-					log_admin("[key_name(usr)] added [amount] DEFCON points.", 1)
-					message_admins(SPAN_NOTICE("[key_name_admin(usr)] added [amount] DEFCON points."), 1)
-					objectives_controller.add_admin_points(amount)
-		if(usr)
-			log_admin("[key_name(usr)] used secret [href_list["secretsfun"]]")
+		topic_events(href_list["events"])
 
-	else if(href_list["secretsadmin"])
-		if(!check_rights(R_ADMIN))	return
+	else if(href_list["teleport"])
+		if(!check_rights(R_MOD))	
+			return
 
-		switch(href_list["secretsadmin"])
-			if("clear_bombs")
-				//I do nothing
-			if("list_bombers")
-				var/dat = "<B>Bombing List<HR>"
-				for(var/l in bombers)
-					dat += text("[l]<BR>")
-				usr << browse(dat, "window=bombers")
-			if("list_signalers")
-				var/dat = "<B>Showing last [length(lastsignalers)] signalers.</B><HR>"
-				for(var/sig in lastsignalers)
-					dat += "[sig]<BR>"
-				usr << browse(dat, "window=lastsignalers;size=800x500")
-			if("list_lawchanges")
-				var/dat = "<B>Showing last [length(lawchanges)] law changes.</B><HR>"
-				for(var/sig in lawchanges)
-					dat += "[sig]<BR>"
-				usr << browse(dat, "window=lawchanges;size=800x500")
-			if("showgm")
-				if(!ticker)
-					alert("The game hasn't started yet!")
-				else if (ticker.mode)
-					alert("The game mode is: [ticker.mode.name]")
-				else alert("For some reason there's a ticker, but not a game mode")
-			if("manifest")
-				var/dat = "<B>Showing Crew Manifest.</B><HR>"
-				dat += "<table cellspacing=5><tr><th>Name</th><th>Position</th><th>Paygrade</th></tr>"
-				for(var/mob/living/carbon/human/H in mob_list)
-					if(H.ckey)
-						dat += text("<tr><td>[]</td><td>[]</td><td>[]</td></tr>", H.name, H.get_assignment(), H.get_paygrade(0))
-				dat += "</table>"
-				usr << browse(dat, "window=manifest;size=440x410")
-			if("check_antagonist")
-				check_antagonists()
-			if("DNA")
-				var/dat = "<B>Showing DNA from blood.</B><HR>"
-				dat += "<table cellspacing=5><tr><th>Name</th><th>DNA</th><th>Blood Type</th></tr>"
-				for(var/mob/living/carbon/human/H in mob_list)
-					if(H.ckey)
-						dat += "<tr><td>[H]</td><td>XXXXX</td><td>[H.b_type]</td></tr>"
-				dat += "</table>"
-				usr << browse(dat, "window=DNA;size=440x410")
-			if("launchshuttle")
-				if(!shuttle_controller) 
-					return // Something is very wrong, the shuttle controller has not been created.
+		topic_teleports(href_list["teleport"])
 
-				var/list/valid_shuttles = list()
-				for (var/shuttle_tag in shuttle_controller.shuttles)
-					if (istype(shuttle_controller.shuttles[shuttle_tag], /datum/shuttle/ferry))
-						valid_shuttles += shuttle_tag
+	else if(href_list["vehicle"])
+		if(!check_rights(R_MOD))	
+			return
 
-				var/shuttle_tag = input("Which shuttle do you want to launch?") as null|anything in valid_shuttles
+		topic_vehicles(href_list["vehicle"])
 
-				if (!shuttle_tag)
-					return
-
-				var/datum/shuttle/ferry/S = shuttle_controller.shuttles[shuttle_tag]
-				if (S.can_launch())
-					S.launch(usr)
-					message_admins(SPAN_NOTICE("[key_name_admin(usr)] launched the [shuttle_tag] shuttle"), 1)
-					log_admin("[key_name(usr)] launched the [shuttle_tag] shuttle")
-				else
-					alert("The [shuttle_tag] shuttle cannot be launched at this time. It's probably busy.")
-
-			if("moveshuttle")
-				if(!shuttle_controller) 
-					return // Something is very wrong, the shuttle controller has not been created.
-
-				var/confirm = alert("This command directly moves a shuttle from one area to another. DO NOT USE THIS UNLESS YOU ARE DEBUGGING A SHUTTLE AND YOU KNOW WHAT YOU ARE DOING.", "Are you sure?", "Ok", "Cancel")
-				if (confirm == "Cancel")
-					return
-
-				var/shuttle_tag = input("Which shuttle do you want to jump?") as null|anything in shuttle_controller.shuttles
-				if (!shuttle_tag) return
-
-				var/datum/shuttle/S = shuttle_controller.shuttles[shuttle_tag]
-
-				var/origin_area = input("Which area is the shuttle at now? (MAKE SURE THIS IS CORRECT OR THINGS WILL BREAK)") as null|area in all_areas
-				if (!origin_area) return
-
-				var/destination_area = input("Which area do you want to move the shuttle to? (MAKE SURE THIS IS CORRECT OR THINGS WILL BREAK)") as null|area in all_areas
-				if (!destination_area) return
-
-				S.move(origin_area, destination_area)
-				message_admins(SPAN_NOTICE("[key_name_admin(usr)] moved the [shuttle_tag] shuttle"), 1)
-				log_admin("[key_name(usr)] moved the [shuttle_tag] shuttle")
-
-		if (usr)
-			log_admin("[key_name(usr)] used secret [href_list["secretsadmin"]]")
-
-	else if(href_list["secretscoder"])
-		if(!check_rights(R_DEBUG))	return
-
-		switch(href_list["secretscoder"])
-			if("spawn_objects")
-				var/dat = "<B>Admin Log<HR></B>"
-				for(var/l in admin_log)
-					dat += "<li>[l]</li>"
-				if(!admin_log.len)
-					dat += "No one has done anything this round."
-				usr << browse(dat, "window=admin_log")
+	else if(href_list["ahelp"])
+		
+		topic_ahelps(href_list)
 
 	else if(href_list["populate_inactive_customitems"])
 		if(check_rights(R_ADMIN|R_SERVER))
@@ -2436,7 +1836,8 @@
 	if(href_list["add_player_info"])
 		var/key = href_list["add_player_info"]
 		var/add = input("Add Player Info") as null|message
-		if(!add) return
+		if(!add) 
+			return
 
 		notes_add(key,add,usr)
 		player_notes_show(key)
@@ -2458,204 +1859,12 @@
 		switch(href_list["notes"])
 			if("show")
 				player_notes_show(ckey)
-			if("list")
-				PlayerNotesPage(text2num(href_list["index"]))
 		return
 
 	if(href_list["player_notes_copy"])
 		var/key = href_list["player_notes_copy"]
 		player_notes_copy(key)
 		return
-
-	if(href_list["mark"])
-		var/mob/ref_person = locate(href_list["mark"])
-		if(!istype(ref_person))
-			to_chat(usr, SPAN_NOTICE(" Looks like that person stopped existing!"))
-			return
-		if(ref_person && ref_person.adminhelp_marked)
-			to_chat(usr, "<b>This Adminhelp is already being handled.</b>")
-			usr << sound('sound/effects/adminhelp-error.ogg')
-			return
-
-		message_staff("[usr.key] has used 'Mark' on the Adminhelp from [key_name_admin(ref_person)] and is preparing to respond...", 1)
-		log_admin("[usr.key] has used 'Mark' on the Adminhelp from [key_name_admin(ref_person)].", 1)
-		STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'Mark' on the Adminhelp from [key_name_admin(ref_person)].<br>")
-		STUI.processing |= 3
-		var/msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> has marked your request and is preparing to respond...</b>")
-
-		to_chat(ref_person, msgplayer)
-
-		unansweredAhelps.Remove(ref_person.computer_id) //It has been answered so take it off of the unanswered list
-		src.viewUnheardAhelps() //This SHOULD refresh the page
-
-		ref_person.adminhelp_marked = 1 //Timer to prevent multiple clicks
-		ref_person.adminhelp_marked_admin = usr.key //To prevent others autoresponding
-		spawn(1000) //This should be <= the Adminhelp cooldown in adminhelp.dm
-			if(ref_person)	ref_person.adminhelp_marked = 0
-
-	if(href_list["noresponse"])
-		var/mob/ref_person = locate(href_list["noresponse"])
-		if(!istype(ref_person))
-			to_chat(usr, SPAN_NOTICE(" Looks like that person stopped existing!"))
-			return
-		if(ref_person && ref_person.adminhelp_marked && ref_person.adminhelp_marked_admin != usr.key)
-			to_chat(usr, "<b>This Adminhelp is already being handled.</b>")
-			usr << sound('sound/effects/adminhelp-error.ogg')
-			return
-
-		message_staff("[usr.key] has used 'No Response' on the Adminhelp from [key_name_admin(ref_person)]. The player has been notified that their issue 'is being handled, it's fixed, or it's nonsensical'.", 1)
-		log_admin("[usr.key] has used 'No Response' on the Adminhelp from [key_name_admin(ref_person)].", 1)
-		STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'No Response' on the Adminhelp from [key_name_admin(ref_person)].<br>")
-		STUI.processing |= 3
-		var/msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> has received your Adminhelp and marked it as 'No response necessary'. Either your Adminhelp is being handled, it's fixed, or it's nonsensical.</font></b>")
-
-		to_chat(ref_person, msgplayer) //send a message to the player when the Admin clicks "Mark"
-		ref_person << sound('sound/effects/adminhelp-error.ogg')
-
-		unansweredAhelps.Remove(ref_person.computer_id) //It has been answered so take it off of the unanswered list
-		src.viewUnheardAhelps() //This SHOULD refresh the page
-
-		ref_person.adminhelp_marked = 1 //Timer to prevent multiple clicks
-		spawn(1000) //This should be <= the Adminhelp cooldown in adminhelp.dm
-			if(ref_person)	ref_person.adminhelp_marked = 0
-
-	if(href_list["warning"])
-		var/mob/ref_person = locate(href_list["warning"])
-		if(!istype(ref_person))
-			to_chat(usr, SPAN_NOTICE(" Looks like that person stopped existing!"))
-			return
-		if(ref_person && ref_person.adminhelp_marked && ref_person.adminhelp_marked_admin != usr.key)
-			to_chat(usr, "<b>This Adminhelp is already being handled.</b>")
-			usr << sound('sound/effects/adminhelp-error.ogg')
-			return
-
-		message_staff("[usr.key] has used 'Warn' on the Adminhelp from [key_name_admin(ref_person)]. The player has been warned for abusing the Adminhelp system.", 1)
-		log_admin("[usr.key] has used 'Warn' on the Adminhelp from [key_name_admin(ref_person)].", 1)
-		STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'Warn' on the Adminhelp from [key_name_admin(ref_person)].<br>")
-		STUI.processing |= 3
-		var/msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> has given you a <font color=red>warning</font>. Adminhelps are for serious inquiries only. Please do not abuse this system.</b>")
-
-		to_chat(ref_person, msgplayer) //send a message to the player when the Admin clicks "Mark"
-		ref_person << sound('sound/effects/adminhelp-error.ogg')
-
-		unansweredAhelps.Remove(ref_person.computer_id) //It has been answered so take it off of the unanswered list
-		src.viewUnheardAhelps() //This SHOULD refresh the page
-
-		ref_person.adminhelp_marked = 1 //Timer to prevent multiple clicks
-		spawn(1000) //This should be <= the Adminhelp cooldown in adminhelp.dm
-			if(ref_person)	ref_person.adminhelp_marked = 0
-
-	if(href_list["autoresponse"]) // new verb on the Ahelp.  Will tell the person their message was received, and they probably won't get a response
-		var/mob/ref_person = locate(href_list["autoresponse"])
-		if(!istype(ref_person))
-			to_chat(usr, SPAN_NOTICE(" Looks like that person stopped existing!"))
-			return
-		if(ref_person && ref_person.adminhelp_marked && ref_person.adminhelp_marked_admin != usr.key)
-			to_chat(usr, "<b>This Adminhelp is already being handled by another staff member. You can proceed but it's not recommended.</b>")
-			usr << sound('sound/effects/adminhelp-error.ogg')
-			if(alert(usr, "Are you sure you want to autoreply to this ahelp that is handled by another staff member?", "Confirmation", "Yes", "No") != "Yes")
-				return
-
-		if(ref_person && !ref_person.adminhelp_marked)
-			to_chat(usr, "<b>This Adminhelp is not marked. You should mark ahelp first before autoresponding.</b>")
-			return
-
-		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue", "Being Handled", "Fixed", "Thanks", "Marine Law","Whitelist Player", "L: Xeno Quickstart Guide", "L: Marine quickstart guide", "L: Current Map", "A: No plasma regen", "A: Devour as Xeno", "J: Job bans", "E: Event in progress", "R: Radios", "B: Binoculars", "D: Joining disabled", "M: Macros", "C: Changelog")
-
-		var/msgplayer
-		switch(choice)
-			if("IC Issue")
-				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. This issue has been deemed an IC (In-Character) issue, and will not be handled by staff. In case it's relevant, you may wish to ask your <a href='http://cm-ss13.com/wiki/Rank'>Chain Of Command</a> about your issue if you believe <a href='http://cm-ss13.com/wiki/Marine_Law'>Marine Law</a> has been broken.</b>")
-			if("Being Handled")
-				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already being dealt with.</b>")
-			if("Fixed")
-				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already fixed.</b>")
-			if("Thanks")
-				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>! Have a CM day!</b>")
-			if("Marine Law")
-				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. This is a <a href='http://cm-ss13.com/wiki/Marine_Law'>marine law issue</a>. <a href='https://cm-ss13.com/viewforum.php?f=63'>Unless the MP's are breaking procedure in a significant way</a> we will not influence ic events. You do have the right to appeal your sentence and should try to appeal to the Captain first. </b>")
-			if("L: Xeno Quickstart Guide")
-				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Your answer can be found on the Xeno Quickstart Guide on our wiki. <a href='http://cm-ss13.com/wiki/Xeno_Quickstart_Guide'>Check it out here.</a></b>")
-			if("L: Marine quickstart guide")
-				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Your answer can be found on the Marine Quickstart Guide on our wiki. <a href='http://cm-ss13.com/wiki/Marine_Quickstart_Guide'>Check it out here.</a></b>")
-			if("L: Current Map")
-				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. If you need a map to the current game, you can (usually) find them on the front page of our wiki in the 'Maps' section. <a href='http://cm-ss13.com/wiki/Main_Page'>Check it out here.</a> If the map is not listed, it's a new or rare map and the overview hasn't been finished yet.</b>")
-			if("A: No plasma regen")
-				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. If you have low/no plasma regen, it's most likely because you are off weeds or are currently using a passive ability, such as the Runner's 'Hide' or emitting a pheromone.</b>")
-			if("A: Devour as Xeno")
-				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Devouring is useful to quickly transport incapacitated hosts from one place to another. In order to devour a host as a Xeno, grab the mob (CTRL+Click) and then click on yourself to begin devouring. The host can resist by breaking out of your belly, so make sure your target is incapacitated, or only have them devoured for a short time. To release your target, click 'Regurgitate' on the HUD to throw them back up.</b>")
-			if("J: Job bans")
-				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. All job bans, including xeno bans, are permenant until appealed. you can appeal it over on the forums at http://cm-ss13.com/viewforum.php?f=76</b>")
-			if("E: Event in progress")
-				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. There is currently a special event running and many things may be changed or different, however normal rules still apply unless you have been specifically instructed otherwise by a staff member.</b>")
-			if("R: Radios")
-				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Radios have been changed, the prefix for all squad marines is now ; to access your squad radio. Squad Medics have access to the medical channel using :m, Engineers have :e and the (acting) Squad Leader has :v for command.  Examine your radio headset to get a listing of the channels you have access to.</b>")
-			if("B: Binoculars")
-				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. To use your binoculars, take them into your hand and activate them by using Z (Hotkey Mode). Ctrl + Click on any open tile to set a laser. To switch between the lasers, Right Click the Binoculars in hand and press toggle mode or Alt + Click them. The Red laser is a CAS marker for pilots to fire upon, it must be held for the Pilot to drop ordinance on it. The green laser is a coordinate marker that will give you a longitude and a latitude to give to your Staff Officer and Requisitions Staff. They will give you access to a devastating Orbital Bombardment or to drop supplies for you and your squad. Your squad engineers can also use the coordinates to drop mortar shells on top of your enemies.</b>")
-			if("D: Joining disabled")
-				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. A staff member has disabled joining for new players as the current round is coming to an end, you can observe while it ends and wait for a new round to start.</b>")
-			if("M: Macros")
-				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. To set a macro right click the title bar, select Client->Macros. Binding unique-action to a key is useful for pumping shotguns etc; Binding load-from-attachment will activate any scopes etc; Binding resist and give to seperate keys is also handy. For more information on macros, head over to our guide, at: http://cm-ss13.com/wiki/Macros</b>")
-			if("C: Changelog")
-				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The answer to your question can be found in the changelog. Click the changelog button at the top-right of the screen to view it in-game, or visit https://cm-ss13.com/changelog/ to open it in your browser instead.</b>")
-			else return
-		msgplayer += " <b><i>You may click on the staff member's name to ask more about this response.</i></b>"
-		message_staff("[usr.key] is autoresponding to [ref_person] with <font color='#009900'>'[choice]'</font>. They have been shown the following:\n[msgplayer]", 1)
-		log_admin("[usr.key] is autoresponding to [ref_person] with <font color='#009900'>'[choice]'</font>.", 1) //No need to log the text we send them.
-		STUI.staff.Add("\[[time_stamp()]][usr.key] is autoresponding to [ref_person] with [choice].<br>")
-		STUI.processing |= 3
-		to_chat(ref_person, msgplayer) //send a message to the player when the Admin clicks "Mark"
-		ref_person << sound('sound/effects/adminhelp-reply.ogg')
-
-		unansweredAhelps.Remove(ref_person.computer_id) //It has been answered so take it off of the unanswered list
-		src.viewUnheardAhelps() //This SHOULD refresh the page
-
-		ref_person.adminhelp_marked = 1 //Timer to prevent multiple clicks
-		spawn(1000) //This should be <= the Adminhelp cooldown in adminhelp.dm
-			if(ref_person)	ref_person.adminhelp_marked = 0
-
-	// Saving this for future lels -Rahl
-	// if(href_list["retarded"]) // Their message is fucking stupid
-	// 	var/mob/ref_person = locate(href_list["retarded"])
-	// 	if(!istype(ref_person))
-	// 		to_chat(usr, SPAN_NOTICE(" Looks like that person stopped existing!"))
-	// 		return
-	// 	var/msg = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> has marked the Adminhelp from <font color=red>[ref_person.ckey]/([ref_person])</font> as 'Completely fucking retarded' - this Ahelp was written by someone whom, if they were any less intelligent, would need to be watered twice a day. The player has been nicely notified of this as 'No response necessary'.</b>")
-	// 	var/msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> has received your Adminhelp and marked it as 'No response necessary'. Either your issue is being handled or it's fixed.</font></b>")
-	//
-	// 	//send this msg to all admins
-	// 	for(var/client/X in admins)
-	// 		if((R_ADMIN|R_MOD|R_MENTOR) & X.admin_holder.rights)
-	// 			X << msg
-	//
-	// 	ref_person << msgplayer //send a message to the player
-
-	if(href_list["defermhelp"])
-		var/ref_client = href_list["defermhelp"]
-		var/client/C = locate(ref_client)
-		if(!C)
-			return
-
-		if(alert("Are you sure you want to turn this ahelp into an mhelp?","Defer","Yes","Cancel") == "Cancel")
-			return
-
-		if(C.current_mhelp && C.current_mhelp.open)
-			to_chat(usr, SPAN_NOTICE("They already have a mentorhelp thread open!"))
-			return
-
-		to_chat(C.mob, SPAN_NOTICE("<b>NOTICE:</b> <font color=red>[usr.key]</font> has turned your adminhelp into a mentorhelp thread."))
-		for(var/client/X in admins)
-			if((R_ADMIN|R_MOD) & X.admin_holder.rights)
-				to_chat(X, SPAN_NOTICE("<b>NOTICE:</b> <font color=red>[usr.key]</font> has turned <font color=red>[C.key]</font>'s adminhelp into a mentorhelp thread."))
-		log_mhelp("[usr.key] turned [C.key]'s adminhelp into a mentorhelp thread")
-
-		var/msg = ahelp_msgs[ref_client]
-		ahelp_msgs.Remove(ref_client)
-		C.current_mhelp = new(C)
-		if(msg)
-			C.current_mhelp.send_message(C, msg)
-		else
-			C.current_mhelp.input_message(C)
 
 	if(href_list["ccmark"]) // CentComm-mark. We want to let all Admins know that something is "Marked", but not let the player know because it's not very RP-friendly.
 		var/mob/ref_person = locate(href_list["ccmark"])
@@ -2692,7 +1901,8 @@
 		distress_cancel = 0
 		message_staff("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;distresscancel=\ref[usr]'>CANCEL</A>)")
 		spawn(100)
-			if(distress_cancel) return
+			if(distress_cancel) 
+				return
 			var/mob/ref_person = locate(href_list["distress"])
 			ticker.mode.activate_distress()
 			log_game("[key_name_admin(usr)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
@@ -2703,7 +1913,8 @@
 		destroy_cancel = 0
 		message_staff("[key_name_admin(usr)] has opted to GRANT the self destruct! Starting in 10 seconds... (<A HREF='?_src_=admin_holder;sdcancel=\ref[usr]'>CANCEL</A>)")
 		spawn(100)
-			if(distress_cancel) return
+			if(distress_cancel) 
+				return
 			var/mob/ref_person = locate(href_list["destroy"])
 			set_security_level(SEC_LEVEL_DELTA)
 			log_game("[key_name_admin(usr)] has granted self destruct, requested by [key_name_admin(ref_person)]")

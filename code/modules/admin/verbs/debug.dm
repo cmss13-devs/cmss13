@@ -1,22 +1,3 @@
-/client/proc/Debug2()
-	set category = "Debug"
-	set name = "Debugging Mode"
-	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
-	if(!check_rights(R_DEBUG))	return
-
-	if(Debug2)
-		Debug2 = 0
-		message_admins("[key_name(src)] toggled debugging off.")
-		log_admin("[key_name(src)] toggled debugging off.")
-	else
-		Debug2 = 1
-		message_admins("[key_name(src)] toggled debugging on.")
-		log_admin("[key_name(src)] toggled debugging on.")
-
-	 
-
-
-
 /* 21st Sept 2010
 Updated by Skie -- Still not perfect but better!
 Stuff you can't do:
@@ -36,8 +17,8 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 /client/proc/callproc(var/datum/target_datum=null)
 	set waitfor = 0
 
-	if(!check_rights(R_DEBUG)) return
-	if(config.debugparanoid && !check_rights(R_ADMIN)) return
+	if(!check_rights(R_DEBUG) || (config.debugparanoid && !check_rights(R_ADMIN))) 
+		return
 
 	var/target = target_datum
 	var/targetselected = 1
@@ -74,10 +55,12 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 					return
 
 	var/procname = input("Proc path, eg: /proc/fake_blood","Path:", null) as text|null
-	if(!procname)	return
+	if(!procname)	
+		return
 
 	var/argnum = input("Number of arguments","Number:",0) as num|null
-	if(!argnum && (argnum!=0))	return
+	if(!argnum && (argnum!=0))	
+		return
 
 	lst.len = argnum // Expand to right length
 	//TODO: make a list to store whether each argument was initialised as null.
@@ -164,8 +147,8 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	set name = "Atom ProcCall"
 	set waitfor = 0
 
-	if(!check_rights(R_DEBUG)) return
-	if(config.debugparanoid && !check_rights(R_ADMIN)) return
+	if(!check_rights(R_DEBUG) || (config.debugparanoid && !check_rights(R_ADMIN))) 
+		return
 
 	var/lst[] // List reference
 	lst = new/list() // Make the list
@@ -181,7 +164,8 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		return
 
 	var/argnum = input("Number of arguments","Number:",0) as num|null
-	if(!argnum && (argnum!=0))	return
+	if(!argnum && (argnum!=0))	
+		return
 
 	lst.len = argnum
 
@@ -259,7 +243,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	 
 
 /client/proc/cmd_admin_robotize(var/mob/M in mob_list)
-	set category = "Fun"
+	set category = null
 	set name = "Make Robot"
 
 	if(!ticker)
@@ -274,7 +258,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		alert("Invalid mob")
 
 /client/proc/cmd_admin_animalize(var/mob/M in mob_list)
-	set category = "Fun"
+	set category = null
 	set name = "Make Simple Animal"
 
 	if(!ticker)
@@ -294,7 +278,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		M.Animalize()
 
 /client/proc/cmd_admin_alienize(var/mob/M in mob_list)
-	set category = "Fun"
+	set category = null
 	set name = "Make Alien"
 
 	if(!ticker)
@@ -321,75 +305,9 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 	cmd_admin_change_their_hivenumber(X)
 
-/client/proc/cmd_admin_change_their_hivenumber(var/mob/living/carbon/Xenomorph/X)
-	set category = "Admin"
-	set name = "Change Their Hivenumber"
-
-	var/hivenumber_status = X.hivenumber
-	var/list/namelist = list("Normal","Corrupted","Alpha","Beta","Zeta")
-
-	var/newhive = input(src,"Select a hive.", null, null) in namelist
-
-	if(!X)
-		to_chat(usr, "This xeno no longer exists")
-		return
-	var/newhivenumber
-	var/newhivefaction
-	switch(newhive)
-		if("Normal")
-			newhivenumber = XENO_HIVE_NORMAL
-			newhivefaction = FACTION_XENOMORPH
-		if("Corrupted")
-			newhivenumber = XENO_HIVE_CORRUPTED
-			newhivefaction = FACTION_XENOMORPH_CORRPUTED
-		if("Alpha")
-			newhivenumber = XENO_HIVE_ALPHA
-			newhivefaction = FACTION_XENOMORPH_ALPHA
-		if("Beta")
-			newhivenumber = XENO_HIVE_BETA
-			newhivefaction = FACTION_XENOMORPH_BETA
-		if("Zeta")
-			newhivenumber = XENO_HIVE_ZETA
-			newhivefaction = FACTION_XENOMORPH_ZETA
-	if(X.hivenumber != hivenumber_status)
-		to_chat(usr, "Someone else changed this xeno while you were deciding")
-		return
-
-	X.set_hive_and_update(newhivenumber, newhivefaction)
-	 
-	message_admins(SPAN_NOTICE("[key_name(src)] changed hivenumber of [X] to [X.hivenumber]."), 1)
-
-
-/client/proc/cmd_admin_change_their_name(var/mob/living/carbon/X)
-	set category = "Admin"
-	set name = "Change Their Name"
-
-	var/newname = input(usr, "What do you want to name them?", "Name:") as null|text
-	if(!newname)
-		return
-
-	if(!X)
-		to_chat(usr, "This mob no longer exists")
-		return
-
-	var/old_name = X.name
-	X.name = newname
-	X.real_name = newname
-	if(istype(X, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = X
-		if(H.wear_id)
-			H.wear_id.name = "[H.real_name]'s ID Card"
-			H.wear_id.registered_name = "[H.real_name]"
-			if(H.wear_id.assignment)
-				H.wear_id.name += " ([H.wear_id.assignment])"
-	 
-	message_admins(SPAN_NOTICE("[key_name(src)] changed name of [old_name] to [newname]."), 1)
-
 /client/proc/cmd_debug_toggle_should_check_for_win()
 	set category = "Debug"
 	set name = "Toggle Round End Checks"
-
-	 
 
 	if(!ticker || !ticker.mode)
 		to_chat(usr, "Mode not found?")
@@ -442,17 +360,8 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	message_admins("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
 	 
 
-/client/proc/cmd_debug_tog_aliens()
-	set category = "Server"
-	set name = "Toggle Aliens"
-
-	aliens_allowed = !aliens_allowed
-	log_admin("[key_name(src)] has turned aliens [aliens_allowed ? "on" : "off"].")
-	message_admins("[key_name_admin(src)] has turned aliens [aliens_allowed ? "on" : "off"].", 0)
-	 
-
 /client/proc/cmd_admin_grantfullaccess(var/mob/M in mob_list)
-	set category = "Admin"
+	set category = null
 	set name = "Grant Full Access"
 
 	if (!ticker)
@@ -480,7 +389,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] has granted [M.key] full access."), 1)
 
 /client/proc/cmd_admin_grantallskills(var/mob/M in mob_list)
-	set category = "Admin"
+	set category = null
 	set name = "Grant All Skills"
 
 	if (!ticker)
@@ -495,12 +404,14 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] has granted [M.key] all skills."), 1)
 
 /client/proc/cmd_assume_direct_control(var/mob/M in mob_list)
-	set category = "Admin"
-	set name = "Assume direct control"
-	set desc = "Direct intervention"
+	set name = "Control Mob"
+	set desc = "Assume control of the mob"
+	set category = null
 
-	if(!check_rights(R_DEBUG|R_ADMIN))	return
-	if(M.disposed) return //mob is garbage collected
+	if(!check_rights(R_DEBUG|R_ADMIN))	
+		return
+	if(M.disposed) 
+		return //mob is garbage collected
 	if(M.ckey)
 		if(alert("This mob is being controlled by [M.ckey]. Are you sure you wish to assume control of it? [M.ckey] will be made a ghost.",,"Yes","No") != "Yes")
 			return
@@ -515,109 +426,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	if(M.client) M.client.change_view(world.view)
 	if( isobserver(adminmob) )
 		qdel(adminmob)
-	 
-
-
-
-
-
-
-/client/proc/cmd_admin_areatest()
-	set category = "Mapping"
-	set name = "Test areas"
-	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
-	var/list/areas_all = list()
-	var/list/areas_with_APC = list()
-	var/list/areas_with_air_alarm = list()
-	var/list/areas_with_light = list()
-	var/list/areas_with_LS = list()
-	var/list/areas_with_intercom = list()
-	var/list/areas_with_camera = list()
-
-	for(var/area/A in all_areas)
-		if(!(A.type in areas_all))
-			areas_all.Add(A.type)
-
-	for(var/obj/structure/machinery/power/apc/APC in machines)
-		var/area/A = get_area(APC)
-		if(!(A.type in areas_with_APC))
-			areas_with_APC.Add(A.type)
-
-	for(var/obj/structure/machinery/alarm/alarm in machines)
-		var/area/A = get_area(alarm)
-		if(!(A.type in areas_with_air_alarm))
-			areas_with_air_alarm.Add(A.type)
-
-	for(var/obj/structure/machinery/light/L in machines)
-		var/area/A = get_area(L)
-		if(!(A.type in areas_with_light))
-			areas_with_light.Add(A.type)
-
-	for(var/obj/structure/machinery/light_switch/LS in machines)
-		var/area/A = get_area(LS)
-		if(!(A.type in areas_with_LS))
-			areas_with_LS.Add(A.type)
-
-	for(var/obj/item/device/radio/intercom/I in item_list)
-		var/area/A = get_area(I)
-		if(!(A.type in areas_with_intercom))
-			areas_with_intercom.Add(A.type)
-
-	for(var/obj/structure/machinery/camera/C in machines)
-		var/area/A = get_area(C)
-		if(!(A.type in areas_with_camera))
-			areas_with_camera.Add(A.type)
-
-	var/list/areas_without_APC = areas_all - areas_with_APC
-	var/list/areas_without_air_alarm = areas_all - areas_with_air_alarm
-	var/list/areas_without_light = areas_all - areas_with_light
-	var/list/areas_without_LS = areas_all - areas_with_LS
-	var/list/areas_without_intercom = areas_all - areas_with_intercom
-	var/list/areas_without_camera = areas_all - areas_with_camera
-
-	to_world("<b>AREAS WITHOUT AN APC:</b>")
-	for(var/areatype in areas_without_APC)
-		to_world("* [areatype]")
-
-	to_world("<b>AREAS WITHOUT AN AIR ALARM:</b>")
-	for(var/areatype in areas_without_air_alarm)
-		to_world("* [areatype]")
-
-	to_world("<b>AREAS WITHOUT ANY LIGHTS:</b>")
-	for(var/areatype in areas_without_light)
-		to_world("* [areatype]")
-
-	to_world("<b>AREAS WITHOUT A LIGHT SWITCH:</b>")
-	for(var/areatype in areas_without_LS)
-		to_world("* [areatype]")
-
-	to_world("<b>AREAS WITHOUT ANY INTERCOMS:</b>")
-	for(var/areatype in areas_without_intercom)
-		to_world("* [areatype]")
-
-	to_world("<b>AREAS WITHOUT ANY CAMERAS:</b>")
-	for(var/areatype in areas_without_camera)
-		to_world("* [areatype]")
-
-/client/proc/test_ceilings()
-	set category = "Mapping"
-	set name = "Test Ceilings"
-	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
-	var/list/areas_all = list()
-	for(var/area/A in all_areas)
-		if(!(A in areas_all))
-			areas_all.Add(A)
-	for(var/area/C in areas_all)
-		switch(C.ceiling)
-			if(CEILING_NONE)
-				for(var/turf/T in C)
-					T.color = "#00ff00"
-			if(CEILING_GLASS)
-				for(var/turf/T in C)
-					T.color = "#eeff00"
-			else
-				for(var/turf/T in C)
-					T.color = "#ff0000"
 
 /client/proc/cmd_debug_mob_lists()
 	set category = "Debug"

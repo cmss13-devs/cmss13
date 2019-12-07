@@ -26,16 +26,6 @@ For explosion resistance, an explosion should never go through a wall or window 
 explosion resistance exactly as much as their health
 */
 
-/client/proc/drop_custom_dorec_bomb()
-	set category = "Fun"
-	set name = "Drop Custom DOREC Bomb"
-
-	if(alert("Are you sure? This drops a recursive explosion with a given power and falloff. The power of the explosion is the strength at the center, and the falloff is the amount by which the strength decreases with each tile of distance.\n200 power and above will gib.",, "Yes", "No") == "No") return
-	var/power = input(src, "Power?", "Power?") as num
-	var/falloff = input(src, "Falloff?", "Falloff?") as num
-	var/turf/T = get_turf(src.mob)
-	explosion_rec(T, power, falloff)
-
 /proc/explosion_rec(var/turf/epicenter, var/power, var/falloff = 20, var/explosion_source, var/explosion_source_mob)
 	var/obj/effect/explosion/Controller = new /obj/effect/explosion(epicenter)
 	Controller.initiate_explosion(epicenter, power, falloff, explosion_source, explosion_source_mob)

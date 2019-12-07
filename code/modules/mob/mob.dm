@@ -777,6 +777,7 @@ mob/proc/yank_out_object()
 /mob/living/proc/handle_knocked_down()
 	if(knocked_down && client)
 		knocked_down = max(knocked_down-1,0)	//before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
+		knocked_down_callback_check()
 	return knocked_down
 
 /mob/living/proc/handle_stuttering()

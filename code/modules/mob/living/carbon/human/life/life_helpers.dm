@@ -247,9 +247,32 @@
 		if(mind && mind.cm_skills)
 			skill += (mind.cm_skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1
 		knocked_down = max(knocked_down - skill, 0)
+		knocked_down_callback_check()
 	return knocked_down
 
 /mob/living/carbon/human/handle_stuttering()
 	if(..())
 		speech_problem_flag = 1
 	return stuttering
+
+#define HUMAN_TIMER_TO_EFFECT_CONVERSION (1/20) //once per 2 seconds, with effect equal to endurance, which is used later
+
+// This is here because sometimes our stun comes too early and tick is about to start, so we need to compensate
+// this is the best place to do it, tho name might be a bit misleading I guess
+/mob/living/carbon/human/stun_clock_adjustment()
+	var/skill = species.knock_down_reduction
+	if(mind && mind.cm_skills)
+		skill += (mind.cm_skills.get_skill_level(SKILL_ENDURANCE)-1) * 0.1
+
+	var/shift_left = (SShuman.next_fire - world.time) * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill
+	if(stunned > shift_left)
+		stunned += SShuman.wait * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill - shift_left
+
+/mob/living/carbon/human/knockdown_clock_adjustment()
+	var/skill = species.knock_down_reduction
+	if(mind && mind.cm_skills)
+		skill += (mind.cm_skills.get_skill_level(SKILL_ENDURANCE)-1) * 0.1
+
+	var/shift_left = (SShuman.next_fire - world.time) * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill
+	if(knocked_down > shift_left)
+		knocked_down += SShuman.wait * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill - shift_left

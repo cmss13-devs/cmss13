@@ -136,7 +136,7 @@
 		var/mob/living/carbon/human/H = src
 		H.restore_blood()
 		H.reagents.clear_reagents() //and clear all reagents in them
-		processable_human_list += H
+		processable_human_list |= H
 		H.undefibbable = FALSE
 		H.chestburst = 0
 

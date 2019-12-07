@@ -141,9 +141,9 @@
 	// if(warding_aura > 0)
 	// 	armor_bonus = warding_aura * 3 //Bonus armor from pheromones, no matter what the armor was previously. Was 5
 
-/mob/living/carbon/Xenomorph/proc/handle_regular_status_updates()
+/mob/living/carbon/Xenomorph/handle_regular_status_updates(regular_update = TRUE)
 
-	if(health <= 0) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
+	if(regular_update && health <= 0) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
 		var/turf/T = loc
 		if(istype(T))
 			if(!check_weeds_for_healing()) //In crit, damage is maximal if you're caught off weeds
@@ -185,15 +185,16 @@
 		eye_blurry = 0
 
 		if(knocked_out) //If they're down, make sure they are actually down.
-			AdjustKnockedout(-3)
+			if(regular_update)
+				AdjustKnockedout(-3)
 			blinded = 1
 			stat = UNCONSCIOUS
-			if(halloss > 0)
+			if(regular_update && halloss > 0)
 				adjustHalLoss(-3)
 		else if(sleeping)
-			if(halloss > 0)
+			if(regular_update && halloss > 0)
 				adjustHalLoss(-3)
-			if(mind)
+			if(regular_update && mind)
 				if((mind.active && client != null) || immune_to_ssd)
 					sleeping = max(sleeping - 1, 0)
 			blinded = 1
@@ -201,14 +202,15 @@
 		else
 			blinded = 0
 			stat = CONSCIOUS
-			if(halloss > 0)
+			if(regular_update && halloss > 0)
 				if(resting)
 					adjustHalLoss(-3)
 				else
 					adjustHalLoss(-1)
 
-		handle_statuses()//natural decrease of stunned, knocked_down, etc...
-		handle_interference()
+		if(regular_update)
+			handle_statuses()//natural decrease of stunned, knocked_down, etc...
+			handle_interference()
 
 	return 1
 
@@ -438,6 +440,7 @@ updatehealth()
 /mob/living/carbon/Xenomorph/handle_stunned()
 	if(stunned)
 		stunned = max(stunned-1.5,0)
+		stun_callback_check()
 
 	return stunned
 
@@ -468,6 +471,7 @@ updatehealth()
 /mob/living/carbon/Xenomorph/handle_knocked_down()
 	if(knocked_down)
 		knocked_down = max(knocked_down-1.5,0)
+		knocked_down_callback_check()
 	return knocked_down
 
 //Returns TRUE if xeno is on weeds
@@ -481,3 +485,18 @@ updatehealth()
 	if(hive && hive.living_xeno_queen && hive.living_xeno_queen.loc.z != MAIN_SHIP_Z_LEVEL && loc.z == MAIN_SHIP_Z_LEVEL)
 		return FALSE //We are on the ship, but the Queen isn't
 	return TRUE //we have off-weed healing, and either we're on Almayer with the Queen, or we're on non-Almayer, or the Queen is dead, good enough!
+
+
+#define XENO_TIMER_TO_EFFECT_CONVERSION 1.5/20 //once per 2 seconds, with 1.5 effect per that once
+
+// This is here because sometimes our stun comes too early and tick is about to start, so we need to compensate
+// this is the best place to do it, tho name might be a bit misleading I guess
+/mob/living/carbon/Xenomorph/stun_clock_adjustment()
+	var/shift_left = (SSxeno.next_fire - world.time) * XENO_TIMER_TO_EFFECT_CONVERSION
+	if(stunned > shift_left)
+		stunned += SSxeno.wait * XENO_TIMER_TO_EFFECT_CONVERSION - shift_left
+
+/mob/living/carbon/Xenomorph/knockdown_clock_adjustment()
+	var/shift_left = (SSxeno.next_fire - world.time) * XENO_TIMER_TO_EFFECT_CONVERSION
+	if(knocked_down > shift_left)
+		knocked_down += SSxeno.wait * XENO_TIMER_TO_EFFECT_CONVERSION - shift_left

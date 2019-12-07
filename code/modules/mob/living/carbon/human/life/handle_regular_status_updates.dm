@@ -1,6 +1,6 @@
 //Refer to life.dm for caller
 
-/mob/living/carbon/human/proc/handle_regular_status_updates()
+/mob/living/carbon/human/handle_regular_status_updates(regular_update = TRUE)
 
 	if(status_flags & GODMODE)
 		return 0
@@ -20,59 +20,62 @@
 			return 1
 
 		//The analgesic effect wears off slowly
-		analgesic = max(0, analgesic - 1)
+		if(regular_update)
+			analgesic = max(0, analgesic - 1)
+			if(hallucination)
+				if(hallucination >= 20)
+					if(prob(3))
+						fake_attack(src)
+					if(!handling_hal)
+						INVOKE_ASYNC(src, /mob/living/carbon.proc/handle_hallucinations)
+
+				if(hallucination <= 2)
+					hallucination = 0
+					halloss = 0
+				else
+					hallucination -= 2
+
+			else
+				for(var/atom/a in hallucinations)
+					hallucinations -= a
+					qdel(a)
+
+				if(halloss > 100)
+					visible_message(SPAN_WARNING("\The [src] slumps to the ground, too weak to continue fighting."), \
+					SPAN_WARNING("You slump to the ground, you're in too much pain to keep going."))
+					KnockOut(10)
+					setHalLoss(99)
 
 		//UNCONSCIOUS. NO-ONE IS HOME
-		if((getOxyLoss() > 50) || (config.health_threshold_crit > health))
-			KnockOut(3)
-
-		if(hallucination)
-			if(hallucination >= 20)
-				if(prob(3))
-					fake_attack(src)
-				if(!handling_hal)
-					spawn handle_hallucinations() //The not boring kind!
-
-			if(hallucination <= 2)
-				hallucination = 0
-				halloss = 0
-			else
-				hallucination -= 2
-
-		else
-			for(var/atom/a in hallucinations)
-				hallucinations -= a
-				qdel(a)
-
-			if(halloss > 100)
-				visible_message(SPAN_WARNING("\The [src] slumps to the ground, too weak to continue fighting."), \
-				SPAN_WARNING("You slump to the ground, you're in too much pain to keep going."))
-				KnockOut(10)
-				setHalLoss(99)
+		if(regular_update && ((getOxyLoss() > 50) || (config.health_threshold_crit > health)))
+			KnockOut(3)		
 
 		if(knocked_out)
-			AdjustKnockedout(-species.knock_out_reduction)
+			if(regular_update)
+				AdjustKnockedout(-species.knock_out_reduction)
 			blinded = 1
 			stat = UNCONSCIOUS
-			if(halloss > 0)
+			if(regular_update && halloss > 0)
 				adjustHalLoss(-3)
 		else if(sleeping)
 			speech_problem_flag = 1
-			handle_dreams()
-			adjustHalLoss(-3)
-			if(mind)
-				if((mind.active && client != null) || immune_to_ssd) //This also checks whether a client is connected, if not, sleep is not reduced.
-					sleeping = max(sleeping - 1, 0)
+			if(regular_update)
+				handle_dreams()
+				adjustHalLoss(-3)
+				if(mind)
+					if((mind.active && client != null) || immune_to_ssd) //This also checks whether a client is connected, if not, sleep is not reduced.
+						sleeping = max(sleeping - 1, 0)
+				if(prob(2) && health && !hal_crit)
+					add_timer(CALLBACK(src, /mob/proc/emote, "snore"))
 			blinded = 1
-			stat = UNCONSCIOUS
-			if(prob(2) && health && !hal_crit)
-				spawn()
-					emote("snore")
+			stat = UNCONSCIOUS			
 		else
 			stat = CONSCIOUS
 
 		if(in_stasis == STASIS_IN_CRYO_CELL) blinded = TRUE //Always blinded while in stasisTUBES
 
+		if(!regular_update)
+			return
 		//Eyes
 		if(!species.has_organ["eyes"]) //Presumably if a species has no eyes, they see via something else.
 			eye_blind = 0

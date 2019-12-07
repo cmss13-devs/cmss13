@@ -49,21 +49,23 @@
 
 
 
-/mob/living/carbon/hellhound/proc/handle_regular_status_updates()
+/mob/living/carbon/hellhound/handle_regular_status_updates(regular_update = TRUE)
 	if(stat == DEAD)	//DEAD
 		blinded = 1
 		silent = 0
-	else				//ALIVE. LIGHTS ARE ON
-		updatehealth()
-		if(health < -100 || !has_brain())
-			death(last_damage_source)
-			blinded = 1
-			stat = DEAD
-			silent = 0
-			return 1
+		return
 
-		//They heal quickly.
-		see_in_dark = 8
+	updatehealth()
+	if(health < -100 || !has_brain())
+		death(last_damage_source)
+		blinded = 1
+		stat = DEAD
+		silent = 0
+		return 1
+
+	//They heal quickly.
+	see_in_dark = 8
+	if(regular_update)
 		adjustBruteLoss(-5)
 		adjustFireLoss(-5)
 		adjustOxyLoss(-10)
@@ -75,26 +77,25 @@
 
 		//UNCONSCIOUS. NO-ONE IS HOME
 		if(health < 0)
-			if( health <= 10 && prob(1) )
-				spawn(0)
-					emote("gasp")
+			if(health <= 10 && prob(1))
+				INVOKE_ASYNC(src, /mob.proc/emote, "gasp")
 			if(!reagents.has_reagent("inaprovaline"))
 				adjustOxyLoss(11)
 			KnockOut(3)
 
-		if(knocked_out)
-			AdjustKnockedout(-1)
-			blinded = 1
-			stat = UNCONSCIOUS
-		else if(sleeping)
+	if(knocked_out)
+		AdjustKnockedout(-1)
+		blinded = 1
+		stat = UNCONSCIOUS
+	else if(sleeping)
+		if(regular_update)
 			sleeping = max(sleeping-1, 0)
-			blinded = 1
-			stat = UNCONSCIOUS
-			if( prob(10) && health && !hal_crit )
-				spawn(0)
-					emote("snore")
-		else
-			stat = CONSCIOUS
+		blinded = 1
+		stat = UNCONSCIOUS		
+		if(regular_update && prob(10) && health && !hal_crit)
+			INVOKE_ASYNC(src, /mob.proc/emote, "snore")
+	else
+		stat = CONSCIOUS
 
 /mob/living/carbon/hellhound/proc/handle_regular_hud_updates()
 	if (hud_used && hud_used.healths)

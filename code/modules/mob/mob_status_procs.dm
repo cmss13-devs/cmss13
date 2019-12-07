@@ -1,19 +1,44 @@
+/mob/var/stun_timer
+
+/mob/proc/stun_callback()
+	stunned = 0
+	handle_regular_status_updates(FALSE)
+	update_canmove()
+	qdel(stun_timer)
+	stun_timer = null
+
+/mob/proc/stun_callback_check()
+	if(stunned && stunned < recovery_constant)
+		stun_timer = add_timer(CALLBACK(src, /mob/proc/stun_callback), (stunned/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE_UNIQUE)
+		return
+
+	qdel(stun_timer)
+	stun_timer = null
+
+// adjust stun if needed, do not call it in adjust stunned
+/mob/proc/stun_clock_adjustment()
+	return
 
 /mob/proc/Stun(amount)
 	if(status_flags & CANSTUN)
 		stunned = max(max(stunned,amount),0) //can't go below 0, getting a low amount of stun doesn't lower your current stun
+		stun_clock_adjustment()
+		stun_callback_check()
 		update_canmove()
 	return
 
 /mob/proc/SetStunned(amount) //if you REALLY need to set stun to a set amount without the whole "can't go below current stunned"
 	if(status_flags & CANSTUN)
 		stunned = max(amount,0)
+		stun_clock_adjustment()
+		stun_callback_check()
 		update_canmove()
 	return
 
 /mob/proc/AdjustStunned(amount)
 	if(status_flags & CANSTUN)
-		stunned = max(stunned + amount,0)
+		stunned = max(stunned + amount,0)		
+		stun_callback_check()
 		update_canmove()
 	return
 
@@ -62,21 +87,47 @@
 		superslowed = max(superslowed + amount,0)
 	return
 
+/mob/var/knocked_down_timer
+
+/mob/proc/knocked_down_callback()
+	knocked_down = 0
+	handle_regular_status_updates(FALSE)
+	update_canmove()
+	qdel(knocked_down_timer)
+	knocked_down_timer = null
+
+/mob/proc/knocked_down_callback_check()
+	if(knocked_down && knocked_down < recovery_constant)
+		knocked_down_timer = add_timer(CALLBACK(src, /mob/proc/knocked_down_callback), (knocked_down/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE_UNIQUE) // times whatever amount we have per tick
+		return
+
+	qdel(knocked_down_timer)
+	knocked_down_timer = null
+
+// adjust knockdown if needed, do not call it in adjust knockdown
+/mob/proc/knockdown_clock_adjustment()
+	return
+
 /mob/proc/KnockDown(amount, force)
 	if((status_flags & CANKNOCKDOWN) || force)
 		knocked_down = max(max(knocked_down,amount),0)
+		knockdown_clock_adjustment()
+		knocked_down_callback_check()
 		update_canmove()	//updates lying, canmove and icons
 	return
 
 /mob/proc/SetKnockeddown(amount)
 	if(status_flags & CANKNOCKDOWN)
 		knocked_down = max(amount,0)
+		knockdown_clock_adjustment()
+		knocked_down_callback_check()
 		update_canmove()	//updates lying, canmove and icons
 	return
 
 /mob/proc/AdjustKnockeddown(amount)
 	if(status_flags & CANKNOCKDOWN)
 		knocked_down = max(knocked_down + amount,0)
+		knocked_down_callback_check()
 		update_canmove()	//updates lying, canmove and icons
 	return
 
@@ -138,4 +189,8 @@
 	return
 
 /mob/proc/getHalLoss()
+	return
+
+//Regular update means we do it during the life run
+/mob/proc/handle_regular_status_updates(regular_update = TRUE)
 	return

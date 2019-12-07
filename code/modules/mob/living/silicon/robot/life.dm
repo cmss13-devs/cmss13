@@ -58,7 +58,7 @@
 			lights_on = 0
 			SetLuminosity(0)
 
-/mob/living/silicon/robot/proc/handle_regular_status_updates()
+/mob/living/silicon/robot/handle_regular_status_updates(regular_update = TRUE)
 
 	if(src.camera && !scrambledcodes)
 		if(src.stat == 2 || isWireCut(5))
@@ -68,11 +68,11 @@
 
 	updatehealth()
 
-	if(src.sleeping)
+	if(regular_update && src.sleeping)
 		KnockOut(3)
 		src.sleeping--
 
-	if(src.resting)
+	if(regular_update && src.resting)
 		KnockDown(5)
 
 	if(health < config.health_threshold_dead && src.stat != 2) //die only once
@@ -81,15 +81,16 @@
 	if (stat != DEAD) //Alive.
 		if (knocked_out || stunned || knocked_down || !has_power) //Stunned etc.
 			stat = UNCONSCIOUS
-			if (src.stunned > 0)
-				AdjustStunned(-1)
-			if (src.knocked_down > 0)
-				AdjustKnockeddown(-1)
-			if (src.knocked_out > 0)
-				AdjustKnockedout(-1)
-				src.blinded = 1
-			else
-				src.blinded = 0
+			if(regular_update)
+				if (src.stunned > 0)
+					AdjustStunned(-1)
+				if (src.knocked_down > 0)
+					AdjustKnockeddown(-1)
+				if (src.knocked_out > 0)
+					AdjustKnockedout(-1)
+					src.blinded = 1
+				else
+					src.blinded = 0
 
 		else	//Not stunned.
 			src.stat = 0
@@ -97,6 +98,9 @@
 	else //Dead.
 		src.blinded = 1
 		src.stat = 2
+
+	if(!regular_update)
+		return
 
 	if (src.stuttering) src.stuttering--
 

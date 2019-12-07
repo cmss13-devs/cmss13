@@ -103,7 +103,7 @@
 				if(target.mob_size == MOB_SIZE_BIG)
 					target.apply_effect(2, SLOW)
 					return //Big xenos are not affected.
-				target.apply_effect(0.1, WEAKEN)
+				target.apply_effect(0.7, WEAKEN) // 0.9 seconds of stun, per agreement from Balance Team when switched from MC stuns to exact stuns
 				target.apply_effect(1, SUPERSLOW)
 				target.apply_effect(2, SLOW)
 				to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
@@ -129,7 +129,7 @@
 				target.apply_effect(0.3, DAZE)
 				target.apply_effect(2, SLOW)
 				return
-			target.apply_effect(1, WEAKEN)
+			target.apply_effect(0.9, WEAKEN) // 1.1 seconds of stun, per agreement from Balance Team when switched from MC stuns to exact stuns
 			target.apply_effect(4, DAZE)
 			target.apply_effect(2, SUPERSLOW)
 			target.apply_effect(5, SLOW)

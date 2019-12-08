@@ -160,24 +160,19 @@
 	deactivate_all_hardpoints()
 
 	if(driver)
-		to_chat(driver, SPAN_DANGER("You dismount to as the smoke and flames start to choke you!"))
-		driver.Move(entrance.loc)
+		to_chat(driver, SPAN_DANGER("You dismount the [name] as the smoke and flames start to choke you!"))
+		if(!entrance)
+			driver.loc = src.loc
+		else
+			driver.forceMove(entrance.loc)
 		driver.unset_interaction()
-		set_driver(null)
-	else if(gunner)
-		to_chat(gunner, SPAN_DANGER("You dismount to as the smoke and flames start to choke you!"))
-		gunner.Move(entrance.loc)
+	if(gunner)
+		to_chat(gunner, SPAN_DANGER("You dismount the [name] as the smoke and flames start to choke you!"))
+		if(!entrance)
+			gunner.loc = src.loc
+		else
+			gunner.forceMove(entrance.loc)
 		gunner.unset_interaction()
-		gunner = null
-
-/obj/vehicle/multitile/root/cm_armored/tank/remove_all_players()
-	deactivate_all_hardpoints()
-	if(!entrance) //Something broke, uh oh
-		if(gunner) gunner.loc = src.loc
-		if(driver) driver.loc = src.loc
-	else
-		if(gunner) gunner.forceMove(entrance.loc)
-		if(driver) driver.forceMove(entrance.loc)
 
 	gunner = null
 	set_driver(null)

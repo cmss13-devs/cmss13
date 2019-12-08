@@ -27,7 +27,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	set category = null
 
 	for(var/obj/vehicle/multitile/root/cm_armored/CA in view())
-		CA.remove_all_players()
+		CA.handle_all_modules_broken()
 		log_admin("[src] forcibly removed all players from [CA]")
 		message_admins("[src] forcibly removed all players from [CA]")
 
@@ -127,9 +127,6 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		var/obj/item/hardpoint/HP = hardpoints[slot]
 		if(!HP) continue
 		HP.deactivate()
-
-/obj/vehicle/multitile/root/cm_armored/proc/remove_all_players()
-	return
 
 //The basic vehicle code that moves the tank, with movement delay implemented
 /obj/vehicle/multitile/root/cm_armored/relaymove(var/mob/user, var/direction)

@@ -84,14 +84,5 @@ var/rollovercheck_last_timeofday = 0
 	return"[ph][hh]:[pm][mm]:[ps][ss]"
 */
 
-/* Returns 1 if it is the selected month and day */
-/proc/isDay(var/month, var/day)
-	if(isnum(month) && isnum(day))
-		var/MM = text2num(time2text(world.timeofday, "MM")) // get the current month
-		var/DD = text2num(time2text(world.timeofday, "DD")) // get the current day
-		if(month == MM && day == DD)
-			return 1
-
-		// Uncomment this out when debugging!
-		//else
-			//return 1
+#define is_day(day) day == text2num(time2text(world.timeofday, "DD"))
+#define is_month(month) month == text2num(time2text(world.timeofday, "MM"))

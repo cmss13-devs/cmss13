@@ -14,6 +14,7 @@
 #define SS_INIT_COMPONENT          19.5
 #define SS_INIT_POWER              19
 #define SS_INIT_OBJECT             18
+#define SS_INIT_DECORATOR          17.9
 #define SS_INIT_PIPENET            17.5
 #define SS_INIT_XENOARCH           17
 #define SS_INIT_MORE_INIT          16
@@ -46,6 +47,7 @@
 #define SS_PRIORITY_VOTE           110
 #define SS_PRIORITY_FAST_OBJECTS   105
 #define SS_PRIORITY_OBJECTS        100
+#define SS_PRIORITY_DECORATOR	   99
 #define SS_PRIORITY_POWER          95
 #define SS_PRIORITY_MACHINERY      90
 #define SS_PRIORITY_FZ_TRANSITIONS 88
@@ -82,6 +84,7 @@
 #define SS_DISPLAY_XENO           -70
 #define SS_DISPLAY_COMPONENT      -69
 #define SS_DISPLAY_FAST_OBJECTS   -65
+#define SS_DISPLAY_DECORATOR	  -63
 #define SS_DISPLAY_OBJECTS        -60
 #define SS_DISPLAY_TIMER          -55
 #define SS_DISPLAY_MACHINERY      -50

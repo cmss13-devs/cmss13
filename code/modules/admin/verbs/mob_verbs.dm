@@ -138,7 +138,7 @@
 	if(usr)
 		if (usr.client)
 			if(usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))
-				to_chat(M, "\bold You hear a voice in your head... \italic [msg]")
+				to_chat(M, SPAN_ANNOUNCEMENT_HEADER_BLUE("You hear a voice in your head... [msg]"))
 
 	log_admin("SubtlePM: [key_name(usr)] -> [key_name(M)] : [msg]")
 	message_admins(SPAN_NOTICE("\bold SubtleMessage: [key_name_admin(usr)] -> [key_name_admin(M)] : [msg]"), 1)

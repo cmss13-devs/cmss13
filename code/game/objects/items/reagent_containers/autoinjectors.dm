@@ -177,7 +177,6 @@
 	if(.)
 		if(!uses_left) //Prevents autoinjectors to be refilled.
 			flags_atom &= ~OPENCONTAINER
-			update_icon()
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless/attackby()
 	return

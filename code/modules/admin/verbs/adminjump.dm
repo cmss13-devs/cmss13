@@ -5,6 +5,9 @@
 	following = null
 
 /client/proc/jump_to_area(var/area/A in return_sorted_areas())
+	set name = "Jump to Area"
+	set category = null
+
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
@@ -24,8 +27,7 @@
 
 /client/proc/jump_to_turf(var/turf/T in turfs)
 	set name = "Jump to Turf"
-	set category = "Admin"
-	set hidden = 1
+	set category = null
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -46,8 +48,7 @@
 
 /client/proc/jump_to_object(var/obj/O in object_list)
 	set name = "Jump to Object"
-	set category = "Admin"
-	set hidden = 1
+	set category = null
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -71,8 +72,7 @@
 
 /client/proc/jumptomob(var/mob/M in mob_list)
 	set name = "Jump to Mob"
-	set category = "Admin"
-	set hidden = 1
+	set category = null
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -94,8 +94,7 @@
 
 /client/proc/jumptocoord(tx as num, ty as num, tz as num)
 	set name = "Jump to Coordinate"
-	set category = "Admin"
-	set hidden = 1
+	set category = null
 
 	if (!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -117,8 +116,7 @@
 
 /client/proc/jumptokey()
 	set name = "Jump to Ckey"
-	set category = "Admin"
-	set hidden = 1
+	set category = null
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -145,10 +143,9 @@
 	src.mob.loc = M.loc
 
 /client/proc/Getmob(var/mob/M in mob_list)
-	set category = "Admin"
 	set name = "Get Mob"
+	set category = null
 	set desc = "Mob to teleport"
-	set hidden = 1
 
 	if(!src.admin_holder)
 		to_chat(src, "Only administrators may use this command.")
@@ -160,10 +157,9 @@
 	M.loc = get_turf(usr)
 
 /client/proc/Getkey()
-	set category = "Admin"
 	set name = "Get Ckey"
+	set category = null
 	set desc = "Key to teleport"
-	set hidden = 1
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")

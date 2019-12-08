@@ -43,8 +43,6 @@ var/list/processing_objects = list()
 		if (!o || o.disposed)
 			continue
 
-		// > this fucking proc isn't defined on a global level.
-		// > Which means I can't fucking set waitfor on all of them.
-		o:process()
+		o.process()
 		if (MC_TICK_CHECK)
 			return

@@ -309,3 +309,10 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 #define CHAT_SAY_DELAY_SPAM 10
 #define CHAT_OOC_DELAY      5
 #define CHAT_OOC_DELAY_SPAM 10
+
+// Decorator Priorities
+#define DECORATOR_USUAL 0
+#define DECORATOR_MAP_SPECIFIC 5
+#define DECORATOR_MONTH_SPECIFIC 10
+#define DECORATOR_DAY_SPECIFIC 20
+#define DECORATOR_HIGHEST_PRIORITY 50

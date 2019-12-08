@@ -262,9 +262,9 @@
 
 	if(is_wired)
 		if(!closed)
-			overlays += image('icons/obj/structures/barricades.dmi', icon_state = "[src.barricade_type]_wire")
+			overlays += image(icon, icon_state = "[src.barricade_type]_wire")
 		else
-			overlays += image('icons/obj/structures/barricades.dmi', icon_state = "[src.barricade_type]_closed_wire")
+			overlays += image(icon, icon_state = "[src.barricade_type]_closed_wire")
 
 	..()
 
@@ -780,9 +780,9 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			for(var/obj/structure/barricade/plasteel/cade in get_step(src, direction))
 				if(((dir & (NORTH|SOUTH) && get_dir(src, cade) & (EAST|WEST)) || (dir & (EAST|WEST) && get_dir(src, cade) & (NORTH|SOUTH))) && dir == cade.dir && cade.linked && cade.closed == src.closed)
 					if(closed)
-						overlays += image('icons/obj/structures/barricades.dmi', icon_state = "[src.barricade_type]_closed_connection_[get_dir(src, cade)]")
+						overlays += image(icon, icon_state = "[src.barricade_type]_closed_connection_[get_dir(src, cade)]")
 					else
-						overlays += image('icons/obj/structures/barricades.dmi', icon_state = "[src.barricade_type]_connection_[get_dir(src, cade)]")
+						overlays += image(icon, icon_state = "[src.barricade_type]_connection_[get_dir(src, cade)]")
 					continue
 
 
@@ -1106,9 +1106,9 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		layer = initial(layer)
 	if(build_state == BARRICADE_BSTATE_FORTIFIED)
 		if(reinforced)
-			overlays += image('icons/obj/structures/handrail.dmi', icon_state = "[barricade_type]_reinforced_[damage_state]")
+			overlays += image(icon, icon_state = "[barricade_type]_reinforced_[damage_state]")
 		else
-			overlays += image('icons/obj/structures/handrail.dmi', icon_state = "[barricade_type]_welder_step")
+			overlays += image(icon, icon_state = "[barricade_type]_welder_step")
 
 	for(var/datum/effects/E in effects_list)
 		if(E.icon_path && E.obj_icon_state_path)

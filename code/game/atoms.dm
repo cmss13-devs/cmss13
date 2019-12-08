@@ -41,10 +41,15 @@
 	// See #define/tests.dm
 	var/test_exemptions = 0
 
+	// Bitflag to test if this type can be ever decorated with anything
+	// This is here to optimze things we never want to decorate
+	var/decoratable = FALSE
+
 // Temporary call in place for preparation of implementing SSatoms.
 /atom/New()
 	. = ..()
 	Initialize()
+	Decorate()
 
 /*
 We actually care what this returns, since it can return different directives.
@@ -414,6 +419,12 @@ its easier to just keep the beam vertical.
 	return
 
 /atom/proc/Initialize()
+	return
+
+/atom/proc/process()
+	return
+
+/atom/proc/Decorate()
 	return
 
 ///---CLONE---///

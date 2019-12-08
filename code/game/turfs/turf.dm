@@ -66,7 +66,7 @@
 /turf/proc/update_icon() //Base parent. - Abby
 	return
 
-/turf/proc/process()
+/turf/process()
 	return
 
 /turf/proc/start_processing()

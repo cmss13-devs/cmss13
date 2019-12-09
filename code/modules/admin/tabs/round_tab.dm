@@ -121,7 +121,7 @@
 	return
 
 /datum/admins/proc/delay()
-	set name = "A: Delay Roundstart"
+	set name = "A: Delay Round Start/End"
 	set desc = "Delay the game start/end"
 	set category = "Round"
 

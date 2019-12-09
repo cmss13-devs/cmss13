@@ -183,25 +183,36 @@ cases. Override_icon_state should be a list.*/
 		var/new_icon_state
 		var/new_protection
 		var/new_item_state
-		if(override_icon_state && override_icon_state.len) new_icon_state = override_icon_state[map_tag]
-		if(override_protection && override_protection.len) new_protection = override_protection[map_tag]
+		if(override_icon_state && override_icon_state.len) 
+			new_icon_state = override_icon_state[map_tag]
+		if(override_protection && override_protection.len) 
+			new_protection = override_protection[map_tag]
 		switch(map_tag)
 			if(MAP_ICE_COLONY) //Can easily add other states if needed.
 				icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
 				item_state = new_item_state ? new_item_state : "s_" + item_state
-				if(new_protection) min_cold_protection_temperature = new_protection
+				if(new_protection) 
+					min_cold_protection_temperature = new_protection
 			if(MAP_SOROKYNE_STRATA)
 				icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
 				item_state = new_item_state ? new_item_state : "s_" + item_state
-				if(new_protection) min_cold_protection_temperature = new_protection
+				if(new_protection) 
+					min_cold_protection_temperature = new_protection
 			if(MAP_WHISKEY_OUTPOST) //Can easily add other states if needed.
 				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
 				item_state = new_item_state ? new_item_state : "d_" + item_state
-				if(new_protection) min_cold_protection_temperature = new_protection
+				if(new_protection) 
+					min_cold_protection_temperature = new_protection
 			if(MAP_DESERT_DAM)
 				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
 				item_state = new_item_state ? new_item_state : "d_" + item_state
-				if(new_protection) min_cold_protection_temperature = new_protection
+				if(new_protection) 
+					min_cold_protection_temperature = new_protection
+			if(MAP_BIG_RED)
+				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
+				item_state = new_item_state ? new_item_state : "d_" + item_state
+				if(new_protection) 
+					min_cold_protection_temperature = new_protection
 		//item_state = icon_state
 	else return
 

@@ -15,7 +15,7 @@ var/const/MAX_SAVE_SLOTS = 10
 #define XENO_PREFIX_LIMIT 2
 #define XENO_POSTFIX_LIMIT 2
 
-datum/preferences
+/datum/preferences
 	//doohickeys for savefiles
 	var/path
 	var/default_slot = 1				//Holder so it doesn't default to slot 1, rather the last one used
@@ -218,30 +218,37 @@ datum/preferences
 
 	var/n = 0
 
-	for (var/role_name in special_roles)
+	for(var/role_name in special_roles)
 		var/ban_check_name
+		var/list/missing_requirements = list()
 
-		switch (role_name)
-			if ("Xenomorph")
+		switch(role_name)
+			if("Xenomorph")
 				ban_check_name = "Alien"
 
-			if ("Xenomorph after<br>unrevivably dead")
+			if("Xenomorph after<br>unrevivably dead")
 				ban_check_name = "Alien"
 
-			if ("Xenomorph Queen")
+			if("Xenomorph Queen")
 				ban_check_name = "Queen"
+				var/datum/caste_datum/C = RoleAuthority.castes_by_name[CASTE_QUEEN]
+				missing_requirements = C.get_caste_requirements(user.client)
 
-			if ("Survivor")
+			if("Survivor")
 				ban_check_name = "Survivor"
 
-			if ("Predator")
+			if("Predator")
 				ban_check_name = "Predator"
 
-			if ("Synth Survivor")
+			if("Synth Survivor")
 				ban_check_name = "Synth Survivor"
 
 		if(jobban_isbanned(user, ban_check_name))
 			dat += "<b>Be [role_name]:</b> <font color=red><b> \[BANNED]</b></font><br>"
+		else if(!can_play_special_job(user.client, ban_check_name))
+			dat += "<b>Be [role_name]:</b> <font color=red><b> \[TIMELOCKED]</b></font><br>"
+			for(var/requirement in missing_requirements)
+				dat += "[requirement] - [duration2text(missing_requirements[requirement])] Hours<br>"
 		else
 			dat += "<b>Be [role_name]:</b> <a href='?_src_=prefs;preference=be_special;num=[n]'><b>[be_special & (1<<n) ? "Yes" : "No"]</b></a><br>"
 			if(role_name == "Xenomorph")
@@ -367,10 +374,10 @@ datum/preferences
 	dat += "</div></body></html>"
 	user << browse(dat, "window=preferences;size=670x830")
 
-/datum/preferences/proc/SetChoices(mob/user, limit = 23, list/splitJobs = list(), width = 450, height = 650)
+/datum/preferences/proc/SetChoices(mob/user, limit = 13, list/splitJobs = list(), width = 600, height = 650)
 	if(!RoleAuthority) return
 
-	//limit 	 - The amount of jobs allowed per column. Defaults to 17 to make it look nice.
+	//limit 	 - The amount of jobs allowed per column. Defaults to 13 to make it look nice.
 	//splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
 	//width	 - Screen' width. Defaults to 550 to make it look nice.
 	//height 	 - Screen's height. Defaults to 500 to make it look nice.
@@ -380,15 +387,14 @@ datum/preferences
 	HTML += "<tt><center>"
 	HTML += "<b>Choose occupation chances</b><br>Unavailable occupations are crossed out.<br><br>"
 	HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>\[Done\]</a></center><br>" // Easier to press up here.
-	HTML += "<table width='100%' cellpadding='1' cellspacing='0'><tr><td width='20%'>" // Table within a table for alignment, also allows you to easily add more colomns.
+	HTML += "<table width='100%' cellpadding='1' cellspacing='0'><tr><td valign='top' width='20%'>" // Table within a table for alignment, also allows you to easily add more colomns.
 	HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
 	var/index = -1
 
 	//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
 	var/datum/job/lastJob
 	var/datum/job/job
-	var/i
-	for(i in RoleAuthority.roles_for_mode)
+	for(var/i in RoleAuthority.roles_for_mode)
 		job = RoleAuthority.roles_for_mode[i]
 		index += 1
 		if((index >= limit) || (job.title in splitJobs))
@@ -397,41 +403,42 @@ datum/preferences
 				//the last job's selection color. Creating a rather nice effect.
 				for(var/j = 0, j < (limit - index), j += 1)
 					HTML += "<tr bgcolor='[lastJob.selection_color]'><td width='60%' align='right'><a>&nbsp</a></td><td><a>&nbsp</a></td></tr>"
-			HTML += "</table></td><td width='20%'><table width='100%' cellpadding='1' cellspacing='0'>"
+			HTML += "</table></td><td valign='top' width='20%'><table width='100%' cellpadding='1' cellspacing='0'>"
 			index = 0
 
 		HTML += "<tr bgcolor='[job.selection_color]'><td width='60%' align='right'>"
 		lastJob = job
 		if(jobban_isbanned(user, job.title))
-			HTML += "<del>[job.disp_title]</del></td><td><b> \[BANNED]</b></td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td><b> \[BANNED]</b></td></tr>"
 			continue
-		else if(!job.player_old_enough(user.client))
-			var/available_in_days = job.available_in_days(user.client)
-			HTML += "<del>[job.disp_title]</del></td><td> \[IN [(available_in_days)] DAYS]</td></tr>"
-			continue
-//		if((job_civilian_low & ASSISTANT) && (rank != "Assistant"))
-//			HTML += "<font color=orange>[rank]</font></td><td></td></tr>"
-//			continue
 		else if(job.flags_startup_parameters & ROLE_WHITELISTED && !(RoleAuthority.roles_whitelist[user.ckey] & job.flags_whitelist))
-			HTML += "<del>[job.disp_title]</del></td><td> \[WHITELISTED]</td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td> \[WHITELISTED]</td></tr>"
 			continue
-		else HTML += (job.title in ROLES_COMMAND) || job.title == "AI" ? "<b>[job.disp_title]</b>" : "[job.disp_title]"
+		else if(!job.can_play_role(user.client))
+			var/list/missing_requirements = job.get_role_requirements(user.client.player_entity)
+			HTML += "<b><del>[job.disp_title]</del></b></td><td> \[TIMELOCKED]</td></tr>"
+			for(var/requirement in missing_requirements)
+				HTML += "<tr bgcolor='[job.selection_color]'><td width='60%' align='right'>[requirement]</td><td> [duration2text(missing_requirements[requirement])] Hours</td></tr>"
+			HTML += "<tr bgcolor='[job.selection_color]'><td align='center' colspan='2'>---</td></tr>"
+			continue
+		else 
+			HTML += "<b>[job.disp_title]</b>"
 
-		HTML += "</td><td width='40%'>"
+			HTML += "</td><td width='40%'>"
 
-		HTML += "<a href='?_src_=prefs;preference=job;task=input;text=[job.title]'>"
+			HTML += "<a href='?_src_=prefs;preference=job;task=input;text=[job.title]'>"
 
-		if(GetJobDepartment(job, 1) & job.flag)
-			HTML += " <font color=blue>\[High]</font>"
-		else if(GetJobDepartment(job, 2) & job.flag)
-			HTML += " <font color=green>\[Medium]</font>"
-		else if(GetJobDepartment(job, 3) & job.flag)
-			HTML += " <font color=orange>\[Low]</font>"
-		else
-			HTML += " <font color=red>\[NEVER]</font>"
-		if(job.alt_titles)
-			HTML += "</a></td></tr><tr bgcolor='[lastJob.selection_color]'><td width='60%' align='center'><a>&nbsp</a></td><td><a href=\"byond://?src=\ref[user];preference=job;task=alt_title;job=\ref[job]\">\[[GetPlayerAltTitle(job)]\]</a></td></tr>"
-		HTML += "</a></td></tr>"
+			if(GetJobDepartment(job, 1) & job.flag)
+				HTML += " <font color=blue>\[High]</font>"
+			else if(GetJobDepartment(job, 2) & job.flag)
+				HTML += " <font color=green>\[Medium]</font>"
+			else if(GetJobDepartment(job, 3) & job.flag)
+				HTML += " <font color=orange>\[Low]</font>"
+			else
+				HTML += " <font color=red>\[NEVER]</font>"
+			if(job.alt_titles)
+				HTML += "</a></td></tr><tr bgcolor='[lastJob.selection_color]'><td width='60%' align='center'><a>&nbsp</a></td><td><a href=\"byond://?src=\ref[user];preference=job;task=alt_title;job=\ref[job]\">\[[GetPlayerAltTitle(job)]\]</a></td></tr>"
+			HTML += "</a></td></tr>"
 
 	HTML += "</td'></tr></table>"
 	HTML += "</center></table>"

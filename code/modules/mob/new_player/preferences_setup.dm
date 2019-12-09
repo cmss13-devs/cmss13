@@ -507,6 +507,19 @@ datum/preferences/proc/update_preview_icon()		//seriously. This is horrendous.
 					clothes_s.Blend(new /icon('icons/mob/humans/onmob/suit_1.dmi', "officer"), ICON_OVERLAY)
 					preference_overlay_cache["ROLE_INTEL_OFFICER"] = clothes_s
 
+			if(ROLE_SEA)
+				if(preference_overlay_cache["ROLE_SEA"])
+					clothes_s = preference_overlay_cache["ROLE_SEA"]
+				else
+					clothes_s = new /icon('icons/mob/humans/onmob/uniform_0.dmi', "BO_jumpsuit")
+					clothes_s.Blend(new /icon('icons/mob/humans/onmob/feet.dmi', "jackboots"), ICON_UNDERLAY)
+					clothes_s.Blend(new /icon('icons/mob/humans/onmob/ears.dmi', "headset"), ICON_OVERLAY)
+					clothes_s.Blend(new /icon('icons/mob/humans/onmob/head_1.dmi', "drillhat"), ICON_OVERLAY)
+					clothes_s.Blend(new /icon('icons/mob/humans/onmob/back.dmi', "marinesatch"), ICON_OVERLAY)
+					clothes_s.Blend(new /icon('icons/mob/humans/onmob/belt.dmi', "m4a3_holster_g"), ICON_OVERLAY)
+					clothes_s.Blend(new /icon('icons/mob/mob.dmi', "card-id"), ICON_OVERLAY)
+					preference_overlay_cache["ROLE_SEA"] = clothes_s
+
 	else if(job_engi_high)
 		switch(job_engi_high)
 			if(ROLE_CHIEF_ENGINEER)

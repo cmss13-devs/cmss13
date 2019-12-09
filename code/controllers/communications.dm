@@ -153,10 +153,11 @@ var/list/radiochannels = list(
 	"JTAC"			= JTAC_FREQ,
 	"Intel" 		= INTEL_FREQ,
 
-	"Alpha"			= ALPHA_FREQ,
-	"Bravo"			= BRAVO_FREQ,
-	"Charlie"		= CHARLIE_FREQ,
-	"Delta"			= DELTA_FREQ,
+	SQUAD_NAME_1	= ALPHA_FREQ,
+	SQUAD_NAME_2	= BRAVO_FREQ,
+	SQUAD_NAME_3	= CHARLIE_FREQ,
+	SQUAD_NAME_4	= DELTA_FREQ,
+	SQUAD_NAME_5	= ECHO_FREQ,
 	"Alamo"			= DS1_FREQ,
 	"Normandy"		= DS2_FREQ,
 

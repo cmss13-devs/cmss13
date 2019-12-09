@@ -11,6 +11,7 @@
 	var/rank
 	var/paygrade
 	var/role_comm_title
+	var/minimum_age
 	var/special_role
 	var/faction = FACTION_NEUTRAL
 
@@ -65,6 +66,7 @@
 
 	//load_appearance()
 /datum/equipment_preset/proc/load_race(mob/living/carbon/human/H)
+	return
 
 /datum/equipment_preset/proc/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(60;MALE,40;FEMALE)
@@ -74,9 +76,18 @@
 	H.name = H.real_name
 	H.age = rand(21,45)
 
+/datum/equipment_preset/proc/load_age(mob/living/carbon/human/H)
+	if(minimum_age && H.age < minimum_age)
+		H.age = minimum_age
+
+/datum/equipment_preset/proc/load_rank(mob/living/carbon/human/H)
+	return paygrade
+
 /datum/equipment_preset/proc/load_gear(mob/living/carbon/human/H)
+	return
 
 /datum/equipment_preset/proc/load_status(mob/living/carbon/human/H)
+	return
 
 /datum/equipment_preset/proc/load_skills(mob/living/carbon/human/H)
 	if(H.mind)
@@ -94,7 +105,7 @@
 	W.assignment = assignment
 	W.rank = rank
 	W.registered_name = H.real_name
-	W.paygrade = paygrade
+	W.paygrade = load_rank(H)
 	W.uniform_sets = uniform_sets
 	H.equip_to_slot_or_del(W, WEAR_ID)
 	H.faction = faction
@@ -116,6 +127,7 @@
 		load_name(H, randomise)
 	load_skills(H) //skills are set before equipment because of skill restrictions on certain clothes.
 	load_languages(H)
+	load_age(H)
 	load_gear(H)
 	load_id(H)
 	load_status(H)
@@ -135,14 +147,20 @@
 				H.equip_to_slot_or_del(new G.path, WEAR_IN_BACK)
 
     //Gives ranks to the ranked
-	if(H.w_uniform && paygrade)
-		var/rankpath = get_rank_pins(paygrade)
+	var/current_rank = paygrade
+	var/obj/item/card/id/I = H.get_idcard()
+	if(I)
+		current_rank = I.paygrade	
+	if(H.w_uniform && current_rank)
+		var/rankpath = get_rank_pins(current_rank)
 		if(rankpath)
 			var/obj/item/clothing/accessory/ranks/R = new rankpath()
 			if(H.wear_suit && H.wear_suit.can_attach_accessory(R))
 				H.wear_suit.attach_accessory(H, R)
 			else if(H.w_uniform && H.w_uniform.can_attach_accessory(R))
 				H.w_uniform.attach_accessory(H, R)
+			else
+				qdel(R)
 
 	//Gives glasses to the vision impaired
 	if(H.disabilities & NEARSIGHTED)

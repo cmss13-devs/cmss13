@@ -513,8 +513,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
-	assignment = "Squad Leader"
-	rank = "Squad Leader"
+	assignment = JOB_SQUAD_LEADER
+	rank = JOB_SQUAD_LEADER
 	paygrade = "E6"
 	role_comm_title = "SL"
 	skills = /datum/skills/SL
@@ -548,8 +548,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
-	assignment = "Squad Specialist"
-	rank = "Squad Specialist"
+	assignment = JOB_SQUAD_SPECIALIST
+	rank = JOB_SQUAD_SPECIALIST
 	paygrade = "E5"
 	role_comm_title = "Spc"
 
@@ -586,8 +586,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
-	assignment = "Squad Smartgunner"
-	rank = "Squad Smartgunner"
+	assignment = JOB_SQUAD_SMARTGUN
+	rank = JOB_SQUAD_SMARTGUN
 	paygrade = "E4"
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
@@ -619,8 +619,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
-	assignment = "Squad Engineer"
-	rank = "Squad Engineer"
+	assignment = JOB_SQUAD_ENGI
+	rank = JOB_SQUAD_ENGI
 	paygrade = "E3"
 	role_comm_title = "Eng"
 	skills = /datum/skills/combat_engineer
@@ -654,8 +654,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
-	assignment = "Squad Medic"
-	rank = "Squad Medic"
+	assignment = JOB_SQUAD_MEDIC
+	rank = JOB_SQUAD_MEDIC
 	paygrade = "E3"
 	role_comm_title = "Med"
 	skills = /datum/skills/combat_medic
@@ -688,8 +688,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
-	assignment = "Squad Marine"
-	rank = "Squad Marine"
+	assignment = JOB_SQUAD_MARINE
+	rank = JOB_SQUAD_MARINE
 	paygrade = "E2"
 	role_comm_title = "PFC"
 	skills = /datum/skills/pfc

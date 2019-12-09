@@ -39,7 +39,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "Weyland-Yutani PMC (Standard)"
-	rank = "PMC Standard"
+	rank = JOB_PMC
 	paygrade = "PMC1"
 	skills = /datum/skills/pmc
 
@@ -65,7 +65,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "Weyland-Yutani PMC (Standard)"
-	rank = "PMC Standard"
+	rank = JOB_PMC
 	paygrade = "PMC1"
 	skills = /datum/skills/pmc
 
@@ -159,8 +159,8 @@
 	name = "Weyland-Yutani PMC (Leader)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = "PMC Officer"
-	rank = "PMC Leader"
+	assignment = JOB_PMC_LEADER
+	rank = JOB_PMC_LEADER
 	paygrade = "PMC4"
 	role_comm_title = "SL"
 	skills = /datum/skills/pmc/SL
@@ -192,8 +192,8 @@
 	name = "Weyland-Yutani PMC (Gunner)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = "PMC Specialist"
-	rank = "PMC Gunner"
+	assignment = JOB_PMC_GUNNER
+	rank = JOB_PMC_GUNNER
 	paygrade = "PMC3"
 	role_comm_title = "Spc"
 	skills = /datum/skills/pmc/smartgunner
@@ -220,8 +220,8 @@
 	name = "Weyland-Yutani PMC (Sniper)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = "PMC Sniper"
-	rank = "PMC Sharpshooter"
+	assignment = JOB_PMC_SNIPER
+	rank = JOB_PMC_SNIPER
 	paygrade = "PMC3"
 	role_comm_title = "Spc"
 	skills = /datum/skills/pmc/specialist
@@ -251,7 +251,7 @@
 	uses_special_name = TRUE //We always use a codename!
 
 	assignment = "Deathsquad"
-	rank = "PMC Commando"
+	rank = JOB_PMC_COMMANDO
 	special_role = "DEATH SQUAD"
 	skills = /datum/skills/commando/deathsquad
 	idtype = /obj/item/card/id/pmc/ds
@@ -342,7 +342,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "Deathsquad Terminator"
-	rank = "PMC Commando"
+	rank = JOB_PMC_COMMANDO
 	special_role = "DEATH SQUAD"
 
 /datum/equipment_preset/wy/deathsquad/terminator/load_gear(mob/living/carbon/human/H)
@@ -367,6 +367,8 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "Deathsquad Leader"
+	rank = JOB_PMC_COMMANDO
+	special_role = "DEATH SQUAD"
 
 /*****************************************************************************************************/
 /******************************************SCP FLUFF**************************************************/

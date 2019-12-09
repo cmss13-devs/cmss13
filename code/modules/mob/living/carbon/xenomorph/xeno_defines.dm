@@ -9,6 +9,8 @@
 	var/dead_icon = "Drone Dead"
 	var/language = "Xenomorph"
 
+	var/list/minimum_playtimes = list()
+
 	var/melee_damage_lower = 10
 	var/melee_damage_upper = 20
 	var/evasion = XENO_EVASION_NONE
@@ -192,6 +194,25 @@
 				upgrade_threshold = 1600
 			if(2)
 				upgrade_threshold = 3200
+
+/datum/caste_datum/proc/can_play_caste(var/client/client)
+	if(!config.use_timelocks)
+		return TRUE
+	var/datum/entity/player_entity/selected_entity = client.player_entity
+	if(!minimum_playtimes.len || (client.admin_holder && (client.admin_holder.rights & R_ADMIN)) || selected_entity.get_playtime(STATISTIC_XENO, caste_name) > 0)
+		return TRUE
+	for(var/prereq in minimum_playtimes)
+		if(selected_entity.get_playtime(STATISTIC_XENO, prereq) < minimum_playtimes[prereq])
+			return FALSE
+	return TRUE
+
+/datum/caste_datum/proc/get_caste_requirements(var/client/client)
+	var/datum/entity/player_entity/selected_entity = client.player_entity
+	var/list/return_requirements = list()
+	for(var/prereq in minimum_playtimes)
+		if(selected_entity.get_playtime(STATISTIC_XENO, prereq) < minimum_playtimes[prereq])
+			return_requirements["[prereq]"] = minimum_playtimes[prereq] - selected_entity.get_playtime(STATISTIC_XENO, prereq)
+	return return_requirements
 
 // Populates all the default scaling values on a caste datum
 // if they aren't already set.

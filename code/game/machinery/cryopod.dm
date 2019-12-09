@@ -8,7 +8,7 @@
 
 //Used for logging people entering cryosleep and important items they are carrying.
 var/global/list/frozen_crew = list()
-var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list(),"Delta"=list(),"MP"=list(),"REQ"=list(),"Eng"=list(),"Med"=list())
+var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list(), SQUAD_NAME_3 = list(), SQUAD_NAME_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list())
 
 //Main cryopod console.
 
@@ -34,16 +34,16 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 	cryotype = "Eng"
 
 /obj/structure/machinery/computer/cryopod/alpha
-	cryotype = "Alpha"
+	cryotype = SQUAD_NAME_1
 
 /obj/structure/machinery/computer/cryopod/bravo
-	cryotype = "Bravo"
+	cryotype = SQUAD_NAME_2
 
 /obj/structure/machinery/computer/cryopod/charlie
-	cryotype = "Charlie"
+	cryotype = SQUAD_NAME_3
 
 /obj/structure/machinery/computer/cryopod/delta
-	cryotype = "Delta"
+	cryotype = SQUAD_NAME_4
 
 /obj/structure/machinery/computer/cryopod/attack_ai()
 	src.attack_hand()
@@ -332,11 +332,11 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 				if(H.mind && H.assigned_squad)
 					var/datum/squad/S = H.assigned_squad
 					switch(H.mind.assigned_role)
-						if("Squad Engineer")
+						if(JOB_SQUAD_ENGI)
 							S.num_engineers--
-						if("Squad Medic")
+						if(JOB_SQUAD_MEDIC)
 							S.num_medics--
-						if("Squad Specialist")
+						if(JOB_SQUAD_SPECIALIST)
 							S.num_specialists--
 							//we make the set this specialist took if any available again
 							if(H.mind.cm_skills)
@@ -355,9 +355,9 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 
 								if(set_name && !available_specialist_sets.Find(set_name))
 									available_specialist_sets += set_name
-						if("Squad Smartgunner")
+						if(JOB_SQUAD_SMARTGUN)
 							S.num_smartgun--
-						if("Squad Leader")
+						if(JOB_SQUAD_LEADER)
 							S.num_leaders--
 					S.count--
 

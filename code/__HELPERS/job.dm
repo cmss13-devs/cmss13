@@ -17,7 +17,6 @@
 
 /proc/get_all_centcom_jobs() return list()
 
-
 //gets the actual job rank (ignoring alt titles)
 //this is used solely for sechuds
 /obj/proc/GetJobRealName()
@@ -59,29 +58,31 @@
 	return job_name
 
 /proc/get_marine_jobs()
-		return list(
-				"Commanding Officer",
-				"Executive Officer",
-				"Staff Officer",
-				"Pilot Officer",
-				"Tank Crewman",
-				"Corporate Liaison",
-				"Chief Engineer",
-				"Maintenance Tech",
-				"Requisitions Officer",
-				"Cargo Technician",
-				"Squad Leader",
-				"Squad Engineer",
-				"Squad Medic",
-				"Squad Specialist",
-				"Squad Smartgunner",
-				"Squad Marine",
-				"Chief Medical Officer",
-				"Doctor",
-				"Researcher",
-				"Military Police",
-				"Chief MP"
-				)
+	return list(
+			JOB_CO,
+			JOB_XO,
+			JOB_SO,
+			JOB_PILOT,
+			JOB_TANKER,
+			JOB_INTEL,
+			JOB_CORPORATE_LIAISON,
+			JOB_CHIEF_ENGINEER,
+			JOB_ENGINEER,
+			JOB_CHIEF_REQUISITION,
+			JOB_REQUISITION,
+			JOB_SQUAD_LEADER,
+			JOB_SQUAD_ENGI,
+			JOB_SQUAD_MEDIC,
+			JOB_SQUAD_SPECIALIST,
+			JOB_SQUAD_SMARTGUN,
+			JOB_SQUAD_MARINE,
+			JOB_CMO,
+			JOB_DOCTOR,
+			JOB_RESEARCHER,
+			JOB_POLICE,
+			JOB_CHIEF_POLICE,
+			JOB_SEA
+			)
 
 /proc/get_paygrades(paygrade, size, gender)
 	if(!paygrade) return

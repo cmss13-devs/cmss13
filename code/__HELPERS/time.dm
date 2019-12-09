@@ -37,6 +37,10 @@
 #define MINUTES_40 		24000
 #define MINUTES_45 		27000
 #define HOURS_1 		36000
+#define HOURS_2 		72000
+#define HOURS_3 		108000
+#define HOURS_6 		216000
+#define HOURS_9 		324000
 
 // Real time that is still reliable even when the round crosses over midnight time reset.
 #define REALTIMEOFDAY (world.timeofday + (864000 * MIDNIGHT_ROLLOVER_CHECK))

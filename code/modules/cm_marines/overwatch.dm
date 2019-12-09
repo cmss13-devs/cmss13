@@ -146,7 +146,7 @@
 							if(current_squad.squad_leader)
 								if(H == current_squad.squad_leader)
 									dist = "<b>N/A</b>"
-									if(H.mind && H.mind.assigned_role != "Squad Leader")
+									if(H.mind && H.mind.assigned_role != JOB_SQUAD_LEADER)
 										act_sl = " (acting SL)"
 								else if(M_turf && (M_turf.z == SL_z))
 									dist = "[get_dist(H, current_squad.squad_leader)] ([dir2text_short(get_dir(current_squad.squad_leader, H))])"
@@ -193,22 +193,22 @@
 
 						var/marine_infos = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl][fteam]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td></tr>"
 						switch(role)
-							if("Squad Leader")
+							if(JOB_SQUAD_LEADER)
 								leader_text += marine_infos
 								leader_count++
-							if("Squad Specialist")
+							if(JOB_SQUAD_SPECIALIST)
 								spec_text += marine_infos
 								spec_count++
-							if("Squad Medic")
+							if(JOB_SQUAD_MEDIC)
 								medic_text += marine_infos
 								medic_count++
-							if("Squad Engineer")
+							if(JOB_SQUAD_ENGI)
 								engi_text += marine_infos
 								engi_count++
-							if("Squad Smartgunner")
+							if(JOB_SQUAD_SMARTGUN)
 								smart_text += marine_infos
 								smart_count++
-							if("Squad Marine")
+							if(JOB_SQUAD_MARINE)
 								marine_text += marine_infos
 								marine_count++
 							else
@@ -565,7 +565,7 @@
 		return
 	var/sl_candidates = list()
 	for(var/mob/living/carbon/human/H in current_squad.marines_list)
-		if(istype(H) && H.stat != DEAD && H.mind && !jobban_isbanned(H, "Squad Leader"))
+		if(istype(H) && H.stat != DEAD && H.mind && !jobban_isbanned(H, JOB_SQUAD_LEADER))
 			sl_candidates += H
 	var/new_lead = input(usr, "Choose a new Squad Leader") as null|anything in sl_candidates
 	if(!new_lead || new_lead == "Cancel") return
@@ -576,7 +576,7 @@
 	if(H == current_squad.squad_leader)
 		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("[H] is already the Squad Leader!")]")
 		return
-	if(jobban_isbanned(H, "Squad Leader"))
+	if(jobban_isbanned(H, JOB_SQUAD_LEADER))
 		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("[H] is unfit to lead!")]")
 		return
 	if(current_squad.squad_leader)
@@ -589,7 +589,7 @@
 		send_to_squad("Attention: A new Squad Leader has been set: [H.real_name].")
 		visible_message("[htmlicon(src, viewers(src))] [SPAN_BOLDNOTICE("[H.real_name] is the new Squad Leader of squad '[current_squad]'! Logging to enlistment file.")]")
 
-	to_chat(H, "[htmlicon(src, H)] <font size='3' color='blue'><B>\[Overwatch\]: You've been promoted to \'[H.mind.assigned_role == "Squad Leader" ? "SQUAD LEADER" : "ACTING SQUAD LEADER"]\' for [current_squad.name]. Your headset has access to the command channel (:v).</B></font>")
+	to_chat(H, "[htmlicon(src, H)] <font size='3' color='blue'><B>\[Overwatch\]: You've been promoted to \'[H.mind.assigned_role == JOB_SQUAD_LEADER ? JOB_SQUAD_LEADER : "ACTING SQUAD LEADER"]\' for [current_squad.name]. Your headset has access to the command channel (:v).</B></font>")
 	to_chat(usr, "[htmlicon(src, usr)] [H.real_name] is [current_squad]'s new leader!")
 
 	if(H.assigned_fireteam)
@@ -602,7 +602,7 @@
 	SStracking.set_leader(current_squad.tracking_id, H)
 	SStracking.start_tracking("marine_sl", H)
 
-	if(H.mind.assigned_role == "Squad Leader")//a real SL
+	if(H.mind.assigned_role == JOB_SQUAD_LEADER)//a real SL
 		H.mind.role_comm_title = "SL"
 	else //an acting SL
 		H.mind.role_comm_title = "aSL"
@@ -696,19 +696,19 @@
 
 	var/no_place = FALSE
 	switch(transfer_marine.mind.assigned_role)
-		if("Squad Leader")
+		if(JOB_SQUAD_LEADER)
 			if(new_squad.num_leaders == new_squad.max_leaders)
 				no_place = TRUE
-		if("Squad Specialist")
+		if(JOB_SQUAD_SPECIALIST)
 			if(new_squad.num_specialists == new_squad.max_specialists)
 				no_place = TRUE
-		if("Squad Engineer")
+		if(JOB_SQUAD_ENGI)
 			if(new_squad.num_engineers >= new_squad.max_engineers)
 				no_place = TRUE
-		if("Squad Medic")
+		if(JOB_SQUAD_MEDIC)
 			if(new_squad.num_medics >= new_squad.max_medics)
 				no_place = TRUE
-		if("Squad Smartgunner")
+		if(JOB_SQUAD_SMARTGUN)
 			if(new_squad.num_smartgun == new_squad.max_smartgun)
 				no_place = TRUE
 

@@ -5,7 +5,6 @@
 //Note: some important procs are held by the job controller, in job_controller.dm.
 //In particular, get_lowest_squad() and randomize_squad()
 
-
 /datum/squad
 	var/name = "Empty Squad"  //Name of the squad
 	var/tracking_id = null	//Used for the tracking subsystem
@@ -49,35 +48,35 @@
 	var/obj/structure/supply_drop/drop_pad = null
 
 /datum/squad/alpha
-	name = "Alpha"
+	name = SQUAD_NAME_1
 	color = 1
 	access = list(ACCESS_MARINE_ALPHA)
 	usable = 1
 	radio_freq = ALPHA_FREQ
 
 /datum/squad/bravo
-	name = "Bravo"
+	name = SQUAD_NAME_2
 	color = 2
 	access = list(ACCESS_MARINE_BRAVO)
 	usable = 1
 	radio_freq = BRAVO_FREQ
 
 /datum/squad/charlie
-	name = "Charlie"
+	name = SQUAD_NAME_3
 	color = 3
 	access = list(ACCESS_MARINE_CHARLIE)
 	usable = 1
 	radio_freq = CHARLIE_FREQ
 
 /datum/squad/delta
-	name = "Delta"
+	name = SQUAD_NAME_4
 	color = 4
 	access = list(ACCESS_MARINE_DELTA)
 	usable = 1
 	radio_freq = DELTA_FREQ
 
 /datum/squad/echo
-	name = "Echo"
+	name = SQUAD_NAME_5
 	color = 5
 	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
 	usable = 0//Normally not usable
@@ -110,37 +109,37 @@
 	if(!istype(C))
 		return 0 // No ID found
 
-	var/assignment = "Squad Marine"
+	var/assignment = JOB_SQUAD_MARINE
 
 	switch(M.mind.assigned_role)
-		if("Squad Engineer")
-			assignment = "Squad Engineer"
+		if(JOB_SQUAD_ENGI)
+			assignment = JOB_SQUAD_ENGI
 			num_engineers++
 			C.claimedgear = 0
-		if("Squad Medic")
-			assignment = "Squad Medic"
+		if(JOB_SQUAD_MEDIC)
+			assignment = JOB_SQUAD_MEDIC
 			num_medics++
 			C.claimedgear = 0
-		if("Squad Specialist")
-			assignment = "Squad Specialist"
+		if(JOB_SQUAD_SPECIALIST)
+			assignment = JOB_SQUAD_SPECIALIST
 			num_specialists++
-		if("Squad Smartgunner")
-			assignment = "Squad Smartgunner"
+		if(JOB_SQUAD_SMARTGUN)
+			assignment = JOB_SQUAD_SMARTGUN
 			num_smartgun++
-		if("Squad Leader")
-			if(squad_leader && (!squad_leader.mind || squad_leader.mind.assigned_role != "Squad Leader")) //field promoted SL
+		if(JOB_SQUAD_LEADER)
+			if(squad_leader && (!squad_leader.mind || squad_leader.mind.assigned_role != JOB_SQUAD_LEADER)) //field promoted SL
 				var/old_lead = squad_leader
 				demote_squad_leader() //replaced by the real one
 				SStracking.start_tracking(tracking_id, old_lead)
-			assignment = "Squad Leader"
+			assignment = JOB_SQUAD_LEADER
 			squad_leader = M
 			SStracking.set_leader(tracking_id, M)
 			SStracking.start_tracking("marine_sl", M)
 
-			if(M.mind.assigned_role == "Squad Leader") //field promoted SL don't count as real ones
+			if(M.mind.assigned_role == JOB_SQUAD_LEADER) //field promoted SL don't count as real ones
 				num_leaders++
 
-	if(assignment != "Squad Leader")
+	if(assignment != JOB_SQUAD_LEADER)
 		SStracking.start_tracking(tracking_id, M)
 
 	src.count++ //Add up the tally. This is important in even squad distribution.
@@ -155,7 +154,6 @@
 	C.assignment = "[name] [assignment]"
 	C.name = "[C.registered_name]'s ID Card ([C.assignment])"
 	return 1
-
 
 //proc used by the overwatch console to transfer marine to another squad
 /datum/squad/proc/remove_marine_from_squad(mob/living/carbon/human/M)
@@ -173,7 +171,7 @@
 	marines_list -= M
 
 	if(M.assigned_squad.squad_leader == M)
-		if(M.mind.assigned_role != "Squad Leader") //a field promoted SL, not a real one
+		if(M.mind.assigned_role != JOB_SQUAD_LEADER) //a field promoted SL, not a real one
 			demote_squad_leader()
 		else
 			M.assigned_squad.squad_leader = null
@@ -183,15 +181,11 @@
 	M.assigned_squad = null
 
 	switch(M.mind.assigned_role)
-		if("Squad Engineer") num_engineers--
-		if("Squad Medic") num_medics--
-		if("Squad Specialist") num_specialists--
-		if("Squad Smartgunner") num_smartgun--
-		if("Squad Leader") num_leaders--
-
-
-
-
+		if(JOB_SQUAD_ENGI) num_engineers--
+		if(JOB_SQUAD_MEDIC) num_medics--
+		if(JOB_SQUAD_SPECIALIST) num_specialists--
+		if(JOB_SQUAD_SMARTGUN) num_smartgun--
+		if(JOB_SQUAD_LEADER) num_leaders--
 
 /datum/squad/proc/demote_squad_leader(leader_killed)
 	var/mob/living/carbon/human/old_lead = squad_leader
@@ -202,23 +196,23 @@
 	squad_leader = null
 	if(old_lead.mind)
 		switch(old_lead.mind.assigned_role)
-			if("Squad Specialist")
+			if(JOB_SQUAD_SPECIALIST)
 				old_lead.mind.role_comm_title = "Sgt"
 				if(old_lead.mind.cm_skills)
 					old_lead.mind.cm_skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
-			if("Squad Engineer")
+			if(JOB_SQUAD_ENGI)
 				old_lead.mind.role_comm_title = "Cpl"
 				if(old_lead.mind.cm_skills)
 					old_lead.mind.cm_skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
-			if("Squad Medic")
+			if(JOB_SQUAD_MEDIC)
 				old_lead.mind.role_comm_title = "Cpl"
 				if(old_lead.mind.cm_skills)
 					old_lead.mind.cm_skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
-			if("Squad Smartgunner")
+			if(JOB_SQUAD_SMARTGUN)
 				if(old_lead.mind.cm_skills)
 					old_lead.mind.cm_skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
 				old_lead.mind.role_comm_title = "LCpl"
-			if("Squad Leader")
+			if(JOB_SQUAD_LEADER)
 				if(!leader_killed)
 					if(old_lead.mind.cm_skills)
 						old_lead.mind.cm_skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_NOVICE)
@@ -228,7 +222,7 @@
 				if(old_lead.mind.cm_skills)
 					old_lead.mind.cm_skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_NOVICE)
 
-	if(!old_lead.mind || old_lead.mind.assigned_role != "Squad Leader" || !leader_killed)
+	if(!old_lead.mind || old_lead.mind.assigned_role != JOB_SQUAD_LEADER || !leader_killed)
 		if(istype(old_lead.wear_ear, /obj/item/device/radio/headset/almayer/marine))
 			var/obj/item/device/radio/headset/almayer/marine/R = old_lead.wear_ear
 			if(istype(R.keyslot1, /obj/item/device/encryptionkey/squadlead))
@@ -262,7 +256,6 @@
 			return S
 
 	return null
-
 
 //used for assigning fireteams
 /datum/squad/proc/assign_fireteam(fireteam, mob/living/carbon/human/H)

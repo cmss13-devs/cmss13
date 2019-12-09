@@ -267,7 +267,6 @@ Additional game mode variables.
 //If we are selecting xenomorphs, we NEED them to play the round. This is the expected behavior.
 //If this is an optional behavior, just override this proc or make an override here.
 /datum/game_mode/proc/initialize_starting_xenomorph_list()
-
 	var/list/datum/mind/possible_xenomorphs = get_players_for_role(BE_ALIEN)
 	var/list/datum/mind/possible_queens = get_players_for_role(BE_QUEEN)
 	if(possible_xenomorphs.len < xeno_required_num) //We don't have enough aliens, we don't consider people rolling for only Queen.
@@ -277,7 +276,8 @@ Additional game mode variables.
 	//Minds are not transferred at this point, so we have to clean out those who may be already picked to play.
 	for(var/datum/mind/A in possible_queens)
 		var/mob/living/original = A.current
-		if(A.assigned_role == "MODE" || jobban_isbanned(original, "Queen"))
+		var/client/client = directory[A.ckey]
+		if(A.assigned_role == "MODE" || jobban_isbanned(original, CASTE_QUEEN) || !can_play_special_job(client, CASTE_QUEEN))
 			possible_queens -= A
 
 	var/datum/mind/new_queen

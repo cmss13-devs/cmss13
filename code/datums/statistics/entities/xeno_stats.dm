@@ -3,6 +3,14 @@
 	var/datum/entity/player_stats/caste/top_caste = null // reference to /datum/entity/player_stats/caste (i.e. ravager)
 	var/list/caste_stats_list = list() // list of types /datum/entity/player_stats/caste
 
+/datum/entity/player_stats/xeno/get_playtime(var/type)
+	if(!type || type == FACTION_XENOMORPH)
+		return ..()
+	if(!caste_stats_list["[type]"])
+		return 0
+	var/datum/entity/player_stats/caste/S = caste_stats_list["[type]"]
+	return S.get_playtime()
+
 //******************
 //Stat Procs - setup
 //******************

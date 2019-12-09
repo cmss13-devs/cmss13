@@ -9,6 +9,26 @@
 	var/list/weapon_stats_list = list() // list of types /datum/entity/weapon_stats
 	var/list/job_stats_list = list() // list of types /datum/entity/job_stats
 
+/datum/entity/player_stats/human/get_playtime(var/type)
+	if(!type)
+		return ..()
+	if(!job_stats_list["[type]"])
+		return 0
+	if(type == JOB_SQUAD_ROLES)
+		var/total_squad_time = 0
+		for(var/squad_type in JOB_SQUAD_ROLES_LIST)
+			var/datum/entity/player_stats/job/squad_stat = job_stats_list["[squad_type]"]
+			total_squad_time += squad_stat.get_playtime()
+		return total_squad_time
+	else if(type == JOB_COMMAND_ROLES)
+		var/total_command_time = 0
+		for(var/command_type in JOB_COMMAND_ROLES_LIST)
+			var/datum/entity/player_stats/job/command_stat = job_stats_list["[command_type]"]
+			total_command_time += command_stat.get_playtime()
+		return total_command_time
+	var/datum/entity/player_stats/job/S = job_stats_list["[type]"]
+	return S.get_playtime()
+
 //******************
 //Stat Procs - setup
 //******************

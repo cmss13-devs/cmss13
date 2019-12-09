@@ -503,3 +503,16 @@
 /obj/item/clothing/head/booniehat/New()
 	select_gamemode_skin(/obj/item/clothing/head/booniehat)
 	..()
+
+/obj/item/clothing/head/drillhat
+	name = "\improper USCM drill hat"
+	desc = "A formal hat worn by drill sergeants. Police that moustache."
+	icon_state = "drillhat"
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+
+/obj/item/clothing/head/drillhat/New()
+	select_gamemode_skin(/obj/item/clothing/head/drillhat)
+	..()

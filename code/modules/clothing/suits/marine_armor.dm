@@ -655,6 +655,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	specialty = "M45 pattern ghillie"
+	flags_marine_armor = ARMOR_LAMP_OVERLAY
 
 /obj/item/clothing/suit/storage/marine/ghillie/mob_can_equip(mob/M, slot, disable_warning = 0)
 	. = ..()

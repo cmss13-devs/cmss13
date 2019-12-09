@@ -150,9 +150,8 @@
 			current_mag.current_rounds-- //Subtract the round from the mag.
 			in_chamber = create_bullet(ammo, initial(name))
 			return in_chamber
-	else
-		if(current_mag.chamber_closed)
-			unload(null)
+	else if(current_mag.chamber_closed)
+		unload(null)
 
 /obj/item/weapon/gun/revolver/load_into_chamber(mob/user)
 //		if(active_attachable) active_attachable = null

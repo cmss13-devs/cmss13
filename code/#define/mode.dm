@@ -45,10 +45,16 @@
 #define BE_SYNTH_SURVIVOR		16
 #define BE_PREDATOR				32
 
-#define TOGGLE_IGNORE_SELF			1 // Determines whether you will not hurt yourself when clicking yourself
-#define TOGGLE_HELP_INTENT_SAFETY	2 // Determines whether help intent will be completely harmless
-#define TOGGLE_MIDDLE_MOUSE_CLICK	4 // This toggles whether selected ability for xeno uses middle mouse clicking or shift clicking
-#define TOGGLE_DIRECTIONAL_ATTACK	8 // This toggles whether attacks for xeno use directional attacks
+#define TOGGLE_IGNORE_SELF					1 	// Determines whether you will not hurt yourself when clicking yourself
+#define TOGGLE_HELP_INTENT_SAFETY			2 	// Determines whether help intent will be completely harmless
+#define TOGGLE_MIDDLE_MOUSE_CLICK			4 	// This toggles whether selected ability for xeno uses middle mouse clicking or shift clicking
+#define TOGGLE_DIRECTIONAL_ATTACK			8 	// This toggles whether attacks for xeno use directional attacks
+#define TOGGLE_AUTO_EJECT_MAGAZINE_OFF		16 	// This toggles whether guns with auto ejectors will not auto eject their magazines
+												// MUTUALLY EXCLUSIVE TO TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND
+#define TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND	32	// This toggles whether guns with auto ejectors will cause you to unwield your gun and put the empty magazine in your hand
+												// MUTUALLY EXCLUSIVE TO TOGGLE_AUTO_EJECT_MAGAZINE
+#define TOGGLE_EJECT_MAGAZINE_TO_HAND		64	// This toggles whether manuallyejecting magazines from guns will cause you to unwield your gun 
+												// and put the empty magazine in your hand
 
 //=================================================
 

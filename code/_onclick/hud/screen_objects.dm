@@ -425,10 +425,10 @@
 				user.next_move = world.time+2
 			return 1
 		if("swap")
-			user:swap_hand()
+			user.swap_hand()
 			return 1
 		if("hand")
-			user:swap_hand()
+			user.swap_hand()
 			return 1
 		else
 			if(user.attack_ui(slot_id))

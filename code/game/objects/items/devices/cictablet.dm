@@ -28,6 +28,7 @@
     var/aicurrmsg = 0
     var/state = STATE_DEFAULT
     var/aistate = STATE_DEFAULT
+    var/cooldown_message = 0
     var/cooldown_request = 0
     var/cooldown_destruct = 0
     var/cooldown_central = 0
@@ -255,11 +256,13 @@
         if("announce")
             if(authenticated == 2)
                 if(world.time < cooldown_message + COOLDOWN_COMM_MESSAGE)
-                    to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
+                    to_chat(usr, SPAN_WARNING("Please wait [(COOLDOWN_COMM_MESSAGE + cooldown_message - world.time)*0.1] second\s before making your next announcement."))
                     return FALSE
                 var/input = input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "") as message|null
-                if(!input || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE || !(usr in view(1,src)))
+                if(!input || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE || !(usr in view(1, src)))
                     return FALSE
+
+                input += "<br><br><i>- Sent from a USCM Command Tablet</i>"
 
                 marine_announcement(input)
                 log_announcement("[usr.name] ([usr.ckey]) has announced the following: [input]")

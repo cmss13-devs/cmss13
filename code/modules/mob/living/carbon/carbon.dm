@@ -164,17 +164,18 @@
 	return shock_damage
 
 
-/mob/living/carbon/proc/swap_hand()
+/mob/living/carbon/swap_hand()
 	var/obj/item/wielded_item = get_active_hand()
 	if(wielded_item && (wielded_item.flags_item & WIELDED)) //this segment checks if the item in your hand is twohanded.
 		var/obj/item/weapon/twohanded/offhand/offhand = get_inactive_hand()
 		if(offhand && (offhand.flags_item & WIELDED))
 			to_chat(src, SPAN_WARNING("Your other hand is too busy holding \the [offhand.name]")) //So it's an offhand.
 			return
-		else wielded_item.unwield(src) //Get rid of it.
+		else 
+			wielded_item.unwield(src) //Get rid of it.
 	if(wielded_item && wielded_item.zoom) //Adding this here while we're at it
 		wielded_item.zoom(src)
-	hand = !hand
+	..()
 	if(hud_used.l_hand_hud_object && hud_used.r_hand_hud_object)
 		if(hand)	//This being 1 means the left hand is in use
 			hud_used.l_hand_hud_object.icon_state = "hand_active"
@@ -182,10 +183,6 @@
 		else
 			hud_used.l_hand_hud_object.icon_state = "hand_inactive"
 			hud_used.r_hand_hud_object.icon_state = "hand_active"
-	/*if (!( src.hand ))
-		src.hands.dir = NORTH
-	else
-		src.hands.dir = SOUTH*/
 	return
 
 /mob/living/carbon/proc/activate_hand(var/selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.

@@ -301,7 +301,6 @@ explosion resistance exactly as much as their health
 	return 0
 
 /obj/item/proc/explosion_throw(severity, direction, var/scatter_multiplier = 1)
-
 	if(anchored)
 		return
 
@@ -318,7 +317,7 @@ explosion resistance exactly as much as their health
 		return
 
 
-	var/speed = max(range, MIN_SPEED)
+	var/speed = max(range*2.5, SPEED_SLOW)
 	var/atom/target = get_ranged_target_turf(src, direction, range)
 
 	if(range >= 2)
@@ -326,14 +325,13 @@ explosion resistance exactly as much as their health
 		var/scatter_x = rand(-scatter,scatter)
 		var/scatter_y = rand(-scatter,scatter)
 		target = locate(target.x + round( scatter_x , 1),target.y + round( scatter_y , 1),target.z) //Locate an adjacent turf.
-
-	spawn(1) //time for the explosion to destroy windows, walls, etc which might be in the way
-		launch_towards(target, range, speed, , 1)
+	
+	//time for the explosion to destroy windows, walls, etc which might be in the way
+	add_timer(CALLBACK(src, /atom/movable/proc/launch_towards, target, range, speed, null, TRUE), 1)
 
 	return
 
 /mob/proc/explosion_throw(severity, direction)
-
 	if(anchored)
 		return
 
@@ -358,7 +356,7 @@ explosion resistance exactly as much as their health
 	if(range <= 0)
 		return
 
-	var/speed = min(range/5, SPEED_AVERAGE)
+	var/speed = max(range*1.5, SPEED_SLOW)
 	var/atom/target = get_ranged_target_turf(src, direction, range)
 
 	var/spin = 0
@@ -372,8 +370,7 @@ explosion resistance exactly as much as their health
 		var/scatter_y = rand(-scatter,scatter)
 		target = locate(target.x + round( scatter_x , 1),target.y + round( scatter_y , 1),target.z) //Locate an adjacent turf.
 
-	spawn(1) //time for the explosion to destroy windows, walls, etc which might be in the way
-		if(!buckled)
-			launch_towards(target, range, speed, , spin)
+	//time for the explosion to destroy windows, walls, etc which might be in the way
+	add_timer(CALLBACK(src, /atom/movable/proc/launch_towards, target, range, speed, null, spin), 1)
 
 	return

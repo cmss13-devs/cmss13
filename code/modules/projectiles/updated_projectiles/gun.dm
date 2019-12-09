@@ -293,7 +293,7 @@
 
 	var/new_icon_state = base_gun_icon
 
-	if(has_empty_icon && (!current_mag || current_mag.current_rounds <= 0))
+	if(has_empty_icon && !in_chamber && (!current_mag || current_mag.current_rounds <= 0))
 		new_icon_state += "_e"
 
 	if(has_open_icon && (!current_mag || !current_mag.chamber_closed))
@@ -427,7 +427,8 @@ This sets all the initial datum's stuff. The bullet does the rest.
 User can be passed as null, (a gun reloading itself for instance), so we need to watch for that constantly.
 */
 /obj/item/weapon/gun/proc/reload(mob/user, obj/item/ammo_magazine/magazine) //override for guns who use more special mags.
-	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG)) return
+	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG)) 
+		return
 
 	if(!magazine || !istype(magazine))
 		to_chat(user, SPAN_WARNING("That's not a magazine!"))
@@ -483,7 +484,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 //Drop out the magazine. Keep the ammo type for next time so we don't need to replace it every time.
 //This can be passed with a null user, so we need to check for that as well.
 /obj/item/weapon/gun/proc/unload(mob/user, reload_override = 0, drop_override = 0, loc_override = 0) //Override for reloading mags after shooting, so it doesn't interrupt burst. Drop is for dropping the magazine on the ground.
-	if(!reload_override && (flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG))) return
+	if(!reload_override && (flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG))) 
+		return
 
 	if(!current_mag || isnull(current_mag) || (current_mag.loc != src && !loc_override))
 		cock(user)
@@ -491,22 +493,24 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 
 	if(drop_override || !user) //If we want to drop it on the ground or there's no user.
 		current_mag.loc = get_turf(src) //Drop it on the ground.
-	else user.put_in_hands(current_mag)
+	else 
+		user.put_in_hands(current_mag)
 
 	playsound(user, unload_sound, 25, 1, 5)
 	user.visible_message(SPAN_NOTICE("[user] unloads [current_mag] from [src]."),
 	SPAN_NOTICE("You unload [current_mag] from [src]."), null, 4)
 	current_mag.update_icon()
 	current_mag = null
-
+	
 	update_icon()
 
 //Manually cock the gun
 //This only works on weapons NOT marked with UNUSUAL_DESIGN or INTERNAL_MAG
 /obj/item/weapon/gun/proc/cock(mob/user)
-
-	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG)) return
-	if(cock_cooldown > world.time) return
+	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG)) 
+		return
+	if(cock_cooldown > world.time) 
+		return
 
 	cock_cooldown = world.time + cock_delay
 	cock_gun(user)
@@ -617,9 +621,21 @@ and you're good to go.
 		in_chamber = null //If we didn't fire from attachable, let's set this so the next pass doesn't think it still exists.
 		if(current_mag) //If there is no mag, we can't reload.
 			ready_in_chamber()
-			if(current_mag.current_rounds <= 0 && flags_gun_features & GUN_AUTO_EJECTOR) // This is where the magazine is auto-ejected.
-				unload(user,1,1) // We want to quickly autoeject the magazine. This proc does the rest based on magazine type. User can be passed as null.
-				playsound(src, empty_sound, 25, 1)
+
+			// This is where the magazine is auto-ejected
+			if(current_mag.current_rounds <= 0 && flags_gun_features & GUN_AUTO_EJECTOR)
+				if (user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF)
+					update_icon()
+				else if (!(flags_gun_features & GUN_BURST_FIRING) || !in_chamber) // Magazine will only unload once burstfire is over 
+					var/drop_to_ground = TRUE
+					if (user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
+						drop_to_ground = FALSE
+						unwield(user)
+						user.swap_hand()
+					unload(user, TRUE, drop_to_ground) // We want to quickly autoeject the magazine. This proc does the rest based on magazine type. User can be passed as null.
+					playsound(src, empty_sound, 25, 1)
+		else // Just fired a chambered bullet with no magazine in the gun
+			update_icon()
 
 	return in_chamber //Returns the projectile if it's actually successful.
 
@@ -689,9 +705,10 @@ and you're good to go.
 
 	var/bullets_fired
 	for(bullets_fired = 1 to bullets_to_fire)
-		if(loc != user) break //If you drop it while bursting, for example.
+		if(loc != user) 
+			break //If you drop it while bursting, for example.
 
-		if(bullets_fired > 1 && !(flags_gun_features & GUN_BURST_FIRING))//no longer burst firing somehow
+		if (bullets_fired > 1 && !(flags_gun_features & GUN_BURST_FIRING)) // No longer burst firing somehow
 			break
 
 		//The gun should return the bullet that it already loaded from the end cycle of the last Fire().
@@ -754,6 +771,9 @@ and you're good to go.
 			var/angle = round(Get_Angle(user,target))
 			muzzle_flash(angle,user)
 
+		if (bullets_fired == bullets_to_fire)
+			flags_gun_features &= ~GUN_BURST_FIRING // We are done burstfiring
+
 		//This is where we load the next bullet in the chamber. We check for attachments too, since we don't want to load anything if an attachment is active.
 		if(!reload_into_chamber(user)) // It has to return a bullet, otherwise it's empty.
 			click_empty(user)
@@ -763,101 +783,115 @@ and you're good to go.
 			extra_delay = fire_delay * 0.5
 			sleep(burst_delay)
 
-	flags_gun_features &= ~GUN_BURST_FIRING // We always want to turn off bursting when we're done.
+	flags_gun_features &= ~GUN_BURST_FIRING // We always want to turn off bursting when we're done, mainly for when we break early mid-burstfire.
 
 /obj/item/weapon/gun/attack(mob/living/M, mob/living/user, def_zone)
-	if(flags_gun_features & GUN_CAN_POINTBLANK) // If it can't point blank, you can't suicide and such.
-		if(M == user && user.zone_selected == "mouth")
-			if(able_to_fire(user))
-				flags_gun_features ^= GUN_CAN_POINTBLANK //If they try to click again, they're going to hit themselves.
-				M.visible_message(SPAN_WARNING("[user] sticks their gun in their mouth, ready to pull the trigger."))
-				if(do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-					if(active_attachable && !(active_attachable.flags_attach_features & ATTACH_PROJECTILE))
-						active_attachable.activate_attachment(src, null, TRUE)//We're not firing off a nade into our mouth.
-					var/obj/item/projectile/projectile_to_fire = load_into_chamber(user)
-					if(projectile_to_fire) //We actually have a projectile, let's move on.
-						user.visible_message(SPAN_WARNING("[user] pulls the trigger!"))
-						var/actual_sound = (active_attachable && active_attachable.fire_sound) ? active_attachable.fire_sound : fire_sound
-						var/sound_volume = (flags_gun_features & GUN_SILENCED && !active_attachable) ? 25 : 60
-						playsound(user, actual_sound, sound_volume, 1)
-						simulate_recoil(2, user)
-						var/obj/item/weapon/gun/revolver/current_revolver = src
-						var/t = "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> committed suicide with <b>[src]</b>" //Log it.
-						if(istype(current_revolver) && current_revolver.russian_roulette) //If it's a revolver set to Russian Roulette.
-							t += " after playing Russian Roulette"
-							user.apply_damage(projectile_to_fire.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = "An unlucky pull of the trigger during Russian Roulette!", sharp = 1)
-							user.apply_damage(200, OXY) //In case someone tried to defib them. Won't work.
-							user.death("russian roulette with \a [name]")
-							to_chat(user, SPAN_HIGHDANGER("Your life flashes before you as your spirit is torn from your body!"))
-							user.ghostize(0) //No return.
-						else
-							if(projectile_to_fire.ammo.damage_type == HALLOSS)
-								to_chat(user, SPAN_NOTICE("Ow..."))
-								user.apply_effect(110, AGONY, 0)
-							else
-								user.apply_damage(projectile_to_fire.damage * 2.5, projectile_to_fire.ammo.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [projectile_to_fire]", sharp = 1)
-								user.apply_damage(100, OXY)
-								if(ishuman(user) && user == M)
-									var/mob/living/carbon/human/HM = user
-									HM.undefibbable = TRUE //can't be defibbed back from self inflicted gunshot to head
-								user.death("suicide by [initial(name)]")
-						M.last_damage_source = initial(name)
-						M.last_damage_mob = null
-						user.attack_log += t //Apply the attack log.
-						last_fired = world.time
-
-						projectile_to_fire.play_damage_effect(user)
-						if(!delete_bullet(projectile_to_fire)) qdel(projectile_to_fire) //If this proc DIDN'T delete the bullet, we're going to do so here.
-
-						reload_into_chamber(user) //Reload the sucker.
-
-					else click_empty(user)//If there's no projectile, we can't do much.
-				else M.visible_message(SPAN_NOTICE("[user] decided life was worth living."))
-				flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
+	if(!(flags_gun_features & GUN_CAN_POINTBLANK)) // If it can't point blank, you can't suicide and such.
+		return ..()
+	
+	if(M == user && user.zone_selected == "mouth")
+		if(!able_to_fire(user))
 			return
+		
+		flags_gun_features ^= GUN_CAN_POINTBLANK //If they try to click again, they're going to hit themselves.
+		M.visible_message(SPAN_WARNING("[user] sticks their gun in their mouth, ready to pull the trigger."))
 
-		else if(user.a_intent == "hurt") //Point blanking doesn't actually fire the projectile. No reason to.
-			flags_gun_features &= ~GUN_BURST_FIRING
-			//Point blanking simulates firing the bullet proper but without actually firing it.
-			if(able_to_fire(user)) //If you can't fire the gun in the first place, we're just going to hit them with it.
-				if(active_attachable && !(active_attachable.flags_attach_features & ATTACH_PROJECTILE))
-					active_attachable.activate_attachment(src, null, TRUE)//No way.
-				var/obj/item/projectile/projectile_to_fire = load_into_chamber(user)
-				if(projectile_to_fire) //We actually have a projectile, let's move on. We're going to simulate the fire cycle.
-					if(projectile_to_fire.ammo.on_pointblank(M, projectile_to_fire, user)==-1)
-						return FALSE
-					var/damage_buff = config.base_hit_damage_mult
-					//if target is lying or unconscious - add damage bonus
-					if(M.lying == 1 || M.stat == UNCONSCIOUS)
-						damage_buff += config.med_hit_damage_mult
-					damage_buff *= damage_mult
-					projectile_to_fire.damage *= damage_buff //Multiply the damage for point blank.
-					user.visible_message(SPAN_DANGER("[user] fires [src] point blank at [M]!"))
-					user.track_shot(initial(name))
-					apply_bullet_effects(projectile_to_fire, user) //We add any damage effects that we need.
-					simulate_recoil(1, user)
+		if(!do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			M.visible_message(SPAN_NOTICE("[user] decided life was worth living."))
+			flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
+			return
+		
+		if(active_attachable && !(active_attachable.flags_attach_features & ATTACH_PROJECTILE))
+			active_attachable.activate_attachment(src, null, TRUE)//We're not firing off a nade into our mouth.
+		var/obj/item/projectile/projectile_to_fire = load_into_chamber(user)
+		if(projectile_to_fire) //We actually have a projectile, let's move on.
+			user.visible_message(SPAN_WARNING("[user] pulls the trigger!"))
+			var/actual_sound = (active_attachable && active_attachable.fire_sound) ? active_attachable.fire_sound : fire_sound
+			var/sound_volume = (flags_gun_features & GUN_SILENCED && !active_attachable) ? 25 : 60
+			playsound(user, actual_sound, sound_volume, 1)
+			simulate_recoil(2, user)
+			var/obj/item/weapon/gun/revolver/current_revolver = src
+			var/t = "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> committed suicide with <b>[src]</b>" //Log it.
+			if(istype(current_revolver) && current_revolver.russian_roulette) //If it's a revolver set to Russian Roulette.
+				t += " after playing Russian Roulette"
+				user.apply_damage(projectile_to_fire.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = "An unlucky pull of the trigger during Russian Roulette!", sharp = 1)
+				user.apply_damage(200, OXY) //In case someone tried to defib them. Won't work.
+				user.death("russian roulette with \a [name]")
+				to_chat(user, SPAN_HIGHDANGER("Your life flashes before you as your spirit is torn from your body!"))
+				user.ghostize(0) //No return.
+			else
+				if(projectile_to_fire.ammo.damage_type == HALLOSS)
+					to_chat(user, SPAN_NOTICE("Ow..."))
+					user.apply_effect(110, AGONY, 0)
+				else
+					user.apply_damage(projectile_to_fire.damage * 2.5, projectile_to_fire.ammo.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [projectile_to_fire]", sharp = 1)
+					user.apply_damage(100, OXY)
+					if(ishuman(user) && user == M)
+						var/mob/living/carbon/human/HM = user
+						HM.undefibbable = TRUE //can't be defibbed back from self inflicted gunshot to head
+					user.death("suicide by [initial(name)]")
+			M.last_damage_source = initial(name)
+			M.last_damage_mob = null
+			user.attack_log += t //Apply the attack log.
+			last_fired = world.time
 
-					if(projectile_to_fire.ammo.bonus_projectiles_amount)
-						var/obj/item/projectile/BP
-						var/i
-						for(i = 0; i<=projectile_to_fire.ammo.bonus_projectiles_amount; i++)
-							BP = new /obj/item/projectile(initial(name), user, M.loc)
-							BP.generate_bullet(ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, iff_enabled_current?AMMO_SKIPS_HUMANS:0)
-							BP.damage *= damage_buff
-							BP.ammo.on_hit_mob(M, BP)
-							M.bullet_act(BP)
-							qdel(BP)
+			projectile_to_fire.play_damage_effect(user)
+			if(!delete_bullet(projectile_to_fire)) 
+				qdel(projectile_to_fire) //If this proc DIDN'T delete the bullet, we're going to do so here.
 
-					projectile_to_fire.ammo.on_hit_mob(M, projectile_to_fire)
-					M.bullet_act(projectile_to_fire)
+			reload_into_chamber(user) //Reload the sucker.
+		else 
+			click_empty(user)//If there's no projectile, we can't do much.
+		
+		flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
+		return	
+	else if(user.a_intent != "hurt") // Not in harm intent, so won't point blank. Will whack them instead.
+		return ..()
 
-					last_fired = world.time
+	//Point blanking doesn't actually fire the projectile. Instead, it simulates firing the bullet proper.
+	flags_gun_features &= ~GUN_BURST_FIRING
+	if(!able_to_fire(user)) //If you can't fire the gun in the first place, we're just going to hit them with it.
+		return ..()
 
-					if(!delete_bullet(projectile_to_fire)) qdel(projectile_to_fire)
-					reload_into_chamber(user) //Reload into the chamber if the gun supports it.
-					return TRUE
+	if(active_attachable && !(active_attachable.flags_attach_features & ATTACH_PROJECTILE))
+		active_attachable.activate_attachment(src, null, TRUE)//No way.
+	var/obj/item/projectile/projectile_to_fire = load_into_chamber(user)
 
-	return ..() //Pistolwhippin'
+	if(!projectile_to_fire)
+		return ..()
+
+	//We actually have a projectile, let's move on. We're going to simulate the fire cycle.
+	if(projectile_to_fire.ammo.on_pointblank(M, projectile_to_fire, user)==-1)
+		return FALSE
+	var/damage_buff = config.base_hit_damage_mult
+	//if target is lying or unconscious - add damage bonus
+	if(M.lying == 1 || M.stat == UNCONSCIOUS)
+		damage_buff += config.med_hit_damage_mult
+	damage_buff *= damage_mult
+	projectile_to_fire.damage *= damage_buff //Multiply the damage for point blank.
+	user.visible_message(SPAN_DANGER("[user] fires [src] point blank at [M]!"))
+	user.track_shot(initial(name))
+	apply_bullet_effects(projectile_to_fire, user) //We add any damage effects that we need.
+	simulate_recoil(1, user)
+
+	if(projectile_to_fire.ammo.bonus_projectiles_amount)
+		var/obj/item/projectile/BP
+		for(var/i in 0 to projectile_to_fire.ammo.bonus_projectiles_amount)
+			BP = new /obj/item/projectile(initial(name), user, M.loc)
+			BP.generate_bullet(ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, iff_enabled_current?AMMO_SKIPS_HUMANS:0)
+			BP.damage *= damage_buff
+			BP.ammo.on_hit_mob(M, BP)
+			M.bullet_act(BP)
+			qdel(BP)
+
+	projectile_to_fire.ammo.on_hit_mob(M, projectile_to_fire)
+	M.bullet_act(projectile_to_fire)
+
+	last_fired = world.time
+
+	if(!delete_bullet(projectile_to_fire)) qdel(projectile_to_fire)
+	reload_into_chamber(user) //Reload into the chamber if the gun supports it.
+	return TRUE
 
 //----------------------------------------------------------
 				//							\\
@@ -1017,13 +1051,14 @@ and you're good to go.
 						offset_or_not = 0
 					user.visible_message(
 					SPAN_DANGER("[user] fires [src][reflex ? " by reflex":""]!"), \
-					SPAN_WARNING("You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag ? "<B>[current_mag.current_rounds+offset_or_not]</b>/[current_mag.max_rounds]" : ""]"), \
+					SPAN_WARNING("You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag && current_mag.current_rounds ? "<B>[current_mag.current_rounds+offset_or_not]</b>/[current_mag.max_rounds]" : ""]"), \
 					SPAN_WARNING("You hear a [istype(projectile_to_fire.ammo, /datum/ammo/bullet) ? "gunshot" : "blast"]!"), 4
 					)
 			else
 				playsound(user, actual_sound, 25)
 				if(bullets_fired == 1)
-					to_chat(user, SPAN_WARNING("You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag ? "<B>[current_mag.current_rounds-1]</b>/[current_mag.max_rounds]" : ""]"))
+					to_chat(user, SPAN_WARNING("You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag && current_mag.current_rounds ? "<B>[current_mag.current_rounds-1]</b>/[current_mag.max_rounds]" : ""]"))
+
 	return 1
 
 /obj/item/weapon/gun/proc/simulate_scatter(obj/item/projectile/projectile_to_fire, atom/target, turf/targloc, total_scatter_angle = 0, mob/user, burst_scatter_mod = 0, bullets_fired = 1)

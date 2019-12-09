@@ -88,22 +88,27 @@
 				C = usr.buckled
 			var/obj/B = usr.buckled
 			var/movementdirection = turn(direction,180)
-			if(C)	C.propelled = 4
+			if(C)
+				C.propelled = 4
 			B.Move(get_step(usr,movementdirection), movementdirection)
 			sleep(1)
 			B.Move(get_step(usr,movementdirection), movementdirection)
-			if(C)	C.propelled = 3
+			if(C)
+				C.propelled = 3
 			sleep(1)
 			B.Move(get_step(usr,movementdirection), movementdirection)
 			sleep(1)
 			B.Move(get_step(usr,movementdirection), movementdirection)
-			if(C)	C.propelled = 2
+			if(C)
+				C.propelled = 2
 			sleep(2)
 			B.Move(get_step(usr,movementdirection), movementdirection)
-			if(C)	C.propelled = 1
+			if(C)
+				C.propelled = 1
 			sleep(2)
 			B.Move(get_step(usr,movementdirection), movementdirection)
-			if(C)	C.propelled = 0
+			if(C)
+				C.propelled = 0
 			sleep(3)
 			B.Move(get_step(usr,movementdirection), movementdirection)
 			sleep(3)
@@ -115,53 +120,59 @@
 	var/turf/T1 = get_step(T,turn(direction, 90))
 	var/turf/T2 = get_step(T,turn(direction, -90))
 
-	var/list/the_targets = list(T,T1,T2)
+	var/list/targets = list(T, T1, T2)
+	var/list/unpicked_targets = list()
 
 	for(var/a in 0 to (EXTINGUISHER_WATER_USE_AMT-1))
-		spawn(0)
-			var/obj/effect/particle_effect/water/W = new /obj/effect/particle_effect/water( get_turf(src) )
-			var/turf/my_target = pick(the_targets)
-			var/datum/reagents/R = new/datum/reagents(5)
-			if(!W) 
-				return
-			W.reagents = R
-			R.my_atom = W
-			if(!W || !src) 
-				return
-			src.reagents.trans_to(W,1)
-			for(var/b in 0 to (5-1))
-				step_towards(W, my_target)
-				if(!W || !W.reagents) 
-					return
-				W.reagents.reaction(get_turf(W))
-				for(var/atom/atm in get_turf(W))
-					if(!W)
-						return
-					if(!W.reagents)
-						break
-					W.reagents.reaction(atm)
-					if(istype(atm, /obj/flamer_fire))
-						var/obj/flamer_fire/FF = atm
-						if(FF.firelevel > 7)
-							FF.firelevel -= 7
-							FF.updateicon()
-						else
-							qdel(atm)
-						continue
-					if(isliving(atm)) //For extinguishing mobs on fire
-						var/mob/living/M = atm
-						M.ExtinguishMob()
-						for(var/obj/item/clothing/mask/cigarette/C in M.contents)
-							if(C.item_state == C.icon_on)
-								C.die()
-					if(iscarbon(atm) || istype(atm, /obj/structure/barricade))
-						atm.extinguish_acid()
-				if(W.loc == my_target) 
-					break
-				sleep(2)
-			qdel(W)
+		if (!unpicked_targets.len)
+			unpicked_targets += targets
+		var/turf/TT = pick(unpicked_targets)
+		unpicked_targets -= TT
+		INVOKE_ASYNC(src, .proc/release_liquid, TT)
 
-	if((istype(usr.loc, /turf/open/space)) || (usr.lastarea.has_gravity == 0))
+	if(istype(usr.loc, /turf/open/space) || usr.lastarea.has_gravity == 0)
 		user.inertia_dir = get_dir(target, user)
 		step(user, user.inertia_dir)
 	return
+
+/obj/item/tool/extinguisher/proc/release_liquid(var/turf/target)
+	var/turf/T = get_turf(src)
+	var/obj/effect/particle_effect/water/W = new /obj/effect/particle_effect/water(T)
+	var/datum/reagents/R = new/datum/reagents(5)
+	W.reagents = R
+	R.my_atom = W
+	reagents.trans_to(W, 1)
+	for(var/b in 0 to (5-1))
+		step_towards(W, target)
+		if (!W || W.disposed) 
+			return
+		else if (!W.reagents || get_turf(W) == T)
+			break
+		W.reagents.reaction(get_turf(W))
+		for(var/atom/atm in get_turf(W))
+			if(!W)
+				return
+			if(!W.reagents)
+				break
+			W.reagents.reaction(atm)
+			if(istype(atm, /obj/flamer_fire))
+				var/obj/flamer_fire/FF = atm
+				if(FF.firelevel > 7)
+					FF.firelevel -= 7
+					FF.updateicon()
+				else
+					qdel(atm)
+				continue
+			if(isliving(atm)) //For extinguishing mobs on fire
+				var/mob/living/M = atm
+				M.ExtinguishMob()
+				for(var/obj/item/clothing/mask/cigarette/C in M.contents)
+					if(C.item_state == C.icon_on)
+						C.die()
+			if(iscarbon(atm) || istype(atm, /obj/structure/barricade))
+				atm.extinguish_acid()
+		T = get_turf(W)
+		if(W.loc == target) 
+			break
+		sleep(2)
+	qdel(W)

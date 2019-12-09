@@ -103,7 +103,7 @@
 
 	var/admin_legacy_system = 0	//Defines whether the server uses the legacy admin system with admins.txt or the SQL system. Config option in config.txt
 	var/ban_legacy_system = 0	//Defines whether the server uses the legacy banning system with the files in /data or the SQL system. Config option in config.txt
-	var/use_age_restriction_for_jobs = 0 //Do jobs use account age restrictions? --requires database
+	var/use_timelocks = 0 //Do jobs use pre-requisite role playtime requirements?
 
 	var/simultaneous_pm_warning_timeout = 100
 
@@ -175,8 +175,8 @@
 		if ("ban_legacy_system")
 			config.ban_legacy_system = 1
 
-		if ("use_age_restriction_for_jobs")
-			config.use_age_restriction_for_jobs = 1
+		if ("use_timelocks")
+			config.use_timelocks = 1
 
 		if ("jobs_have_minimal_access")
 			config.jobs_have_minimal_access = 1

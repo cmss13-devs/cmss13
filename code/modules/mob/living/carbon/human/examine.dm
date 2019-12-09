@@ -1,14 +1,14 @@
 /mob/living/carbon/human/examine(mob/user)
-	if( user.sdisabilities & BLIND || user.blinded || user.stat==UNCONSCIOUS )
+	if(user.sdisabilities & BLIND || user.blinded || user.stat==UNCONSCIOUS)
 		to_chat(user, SPAN_NOTICE("Something is there but you can't see it."))
 		return
 
-	if (isXeno(user))
+	if(isXeno(user))
 		var/msg = "<span class='info'>*---------*\nThis is "
 
 		if(icon)
 			msg += "[htmlicon(icon, user)] "
-		msg += "<EM>[src.name]</EM>!\n"
+		msg += "<EM>[src]</EM>!\n"
 
 		if(species.flags & IS_SYNTHETIC)
 			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is not organic.\n</span>"
@@ -61,9 +61,14 @@
 	var/t_has = "has"
 	var/t_is = "is"
 
+	var/id_paygrade
+	var/obj/item/card/id/I = get_idcard()
+	if(I)
+		id_paygrade = I.paygrade
+	var/rank_display = get_paygrades(id_paygrade, FALSE, gender)
 	var/msg = "<span class='info'>*---------*\nThis is "
 
-	if( skipjumpsuit && skipface ) //big suits/masks/helmets make it hard to tell their gender
+	if(skipjumpsuit && skipface) //big suits/masks/helmets make it hard to tell their gender
 		t_He = "They"
 		t_his = "their"
 		t_him = "them"
@@ -82,7 +87,9 @@
 				t_his = "her"
 				t_him = "her"
 
-	msg += "<EM>[src.name]</EM>!\n"
+	if(id_paygrade)
+		msg += "<EM>[rank_display] </EM>"
+	msg += "<EM>[src]</EM>!\n"
 
 	//uniform
 	if(w_uniform && !skipjumpsuit)
@@ -166,16 +173,16 @@
 		distance = 1
 	if (stat)
 		msg += SPAN_WARNING("[t_He] [t_is]n't responding to anything around [t_him] and seems to be asleep.\n")
-		if((stat == 2 || src.health < config.health_threshold_crit) && distance <= 3)
+		if((stat == 2 || health < config.health_threshold_crit) && distance <= 3)
 			msg += SPAN_WARNING("[t_He] does not appear to be breathing.\n")
-		if(src.paralyzed > 1 && distance <= 3)
+		if(paralyzed > 1 && distance <= 3)
 			msg += SPAN_WARNING("[t_He] seems to be completely still.\n")
 		if(ishuman(user) && !user.stat && Adjacent(user))
 			user.visible_message("<b>[user]</b> checks [src]'s pulse.", "You check [src]'s pulse.", null, 4)
 		spawn(15)
 			if(user && src && distance <= 1 && user.stat != 1)
 				if(pulse == PULSE_NONE)
-					to_chat(user, "<span class='deadsay'>[t_He] has no pulse[src.client ? "" : " and [t_his] soul has departed"]...</span>")
+					to_chat(user, "<span class='deadsay'>[t_He] has no pulse[client ? "" : " and [t_his] soul has departed"]...</span>")
 				else
 					to_chat(user, "<span class='deadsay'>[t_He] has a pulse!</span>")
 
@@ -398,7 +405,6 @@
 		var/criminal = "None"
 
 		if(wear_id)
-			var/obj/item/card/id/I = wear_id.GetID()
 			if(I)
 				perpname = I.registered_name
 			else

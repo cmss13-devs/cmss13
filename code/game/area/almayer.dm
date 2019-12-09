@@ -179,6 +179,11 @@
 	icon_state = "chiefmpoffice"
 	fake_zlevel = 1
 
+/area/almayer/shipboard/sea_office
+	name = "\improper Senior Enlisted Advisor Office"
+	icon_state = "chiefmpoffice"
+	fake_zlevel = 2 // lowerdeck
+
 /area/almayer/shipboard/firing_range_north
 	name = "\improper Starboard Firing Range"
 	icon_state = "firingrange"

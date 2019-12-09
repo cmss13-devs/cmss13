@@ -1,6 +1,7 @@
 /datum/equipment_preset/uscm_ship
 	name = "USCM (ship roles)"
 	faction = FACTION_MARINE
+	minimum_age = 20
 	languages = list("English")
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/command)
@@ -28,8 +29,8 @@
 
 	idtype = /obj/item/card/id/silver
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_CMO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
-	assignment = "Chief Medical Officer"
-	rank = "Chief Medical Officer"
+	assignment = JOB_CMO
+	rank = JOB_CMO
 	paygrade = "CCMO"
 	role_comm_title = "CMO"
 	skills = /datum/skills/CMO
@@ -76,8 +77,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
-	assignment = "Doctor"
-	rank = "Doctor"
+	assignment = JOB_DOCTOR
+	rank = JOB_DOCTOR
 	paygrade = "CD"
 	role_comm_title = "Doc"
 	skills = /datum/skills/doctor
@@ -123,8 +124,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
-	assignment = "Medical Researcher"
-	rank = "Researcher"
+	assignment = JOB_RESEARCHER
+	rank = JOB_RESEARCHER
 	paygrade = "CD"
 	role_comm_title = "Rsr"
 	skills = /datum/skills/researcher
@@ -176,8 +177,8 @@
 		ACCESS_IFF_MARINE, ACCESS_WY_CORPORATE, ACCESS_ILLEGAL_PIRATE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP,
 		ACCESS_MARINE_RESEARCH, ACCESS_MARINE_MEDBAY, ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
-	assignment = "Corporate Liaison"
-	rank = "Corporate Liaison"
+	assignment = JOB_CORPORATE_LIAISON
+	rank = JOB_CORPORATE_LIAISON
 	paygrade = "WY1"
 	role_comm_title = "CL"
 	skills = /datum/skills/civilian
@@ -226,10 +227,11 @@
 
 	idtype = /obj/item/card/id/silver
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_BRIDGE, ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_COMMANDER, ACCESS_MARINE_LOGISTICS)
-	assignment = "Chief Engineer"
-	rank = "Chief Engineer"
+	assignment = JOB_CHIEF_ENGINEER
+	rank = JOB_CHIEF_ENGINEER
 	paygrade = "O3"
 	role_comm_title = "CE"
+	minimum_age = 27
 	skills = /datum/skills/CE
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/ce)
@@ -254,8 +256,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_TANK)
-	assignment = "Maintenance Tech"
-	rank = "Maintenance Tech"
+	assignment = JOB_ENGINEER
+	rank = JOB_ENGINEER
 	paygrade = "E5"
 	role_comm_title = "MT"
 	skills = /datum/skills/MT
@@ -284,10 +286,11 @@
 
 	idtype = /obj/item/card/id/silver
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_CARGO, ACCESS_MARINE_RO, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_TANK, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_COMMANDER, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
-	assignment = "Requisitions Officer"
-	rank = "Requisitions Officer"
+	assignment = JOB_CHIEF_REQUISITION
+	rank = JOB_CHIEF_REQUISITION
 	paygrade = "O3"
 	role_comm_title = "RO"
+	minimum_age = 27
 	skills = /datum/skills/RO
 
 	utility_under = list(/obj/item/clothing/under/rank/ro_suit)
@@ -313,8 +316,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_CARGO, ACCESS_MARINE_PREP, ACCESS_MARINE_TANK)
-	assignment = "Cargo Technician"
-	rank = "Cargo Technician"
+	assignment = JOB_REQUISITION
+	rank = JOB_REQUISITION
 	paygrade = "E5"
 	role_comm_title = "CT"
 	skills = /datum/skills/CT
@@ -342,10 +345,11 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	idtype = /obj/item/card/id/gold
-	assignment = "Commanding Officer"
-	rank = "Commanding Officer"
+	assignment = JOB_CO
+	rank = JOB_CO
 	paygrade = "O5"
 	role_comm_title = "CO"
+	minimum_age = 40
 	skills = /datum/skills/commander
 
 	utility_hat = list(/obj/item/clothing/head/beret/cm)
@@ -387,9 +391,10 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	idtype = /obj/item/card/id/gold/commodore
-	rank = "Commanding Officer"
+	rank = JOB_CO
 	paygrade = "O5E"
 	role_comm_title = "CDRE"
+	minimum_age = 45
 
 /datum/equipment_preset/uscm_ship/commander/commodore/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/cdre(H), WEAR_HEAD)
@@ -403,10 +408,11 @@
 
 	idtype = /obj/item/card/id/silver
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY, ACCESS_MARINE_WO, ACCESS_MARINE_CMO, ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_ENGPREP,ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CARGO, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_MORGUE)
-	assignment = "Executive Officer"
-	rank = "Executive Officer"
+	assignment = JOB_XO
+	rank = JOB_XO
 	paygrade = "O4"
 	role_comm_title = "XO"
+	minimum_age = 35
 	skills = /datum/skills/XO
 
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
@@ -439,10 +445,11 @@
 
 	idtype = /obj/item/card/id/silver
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_TANK)
-	assignment = "Staff Officer"
-	rank = "Staff Officer"
+	assignment = JOB_SO
+	rank = JOB_SO
 	paygrade = "O2"
 	role_comm_title = "SO"
+	minimum_age = 25
 	skills = /datum/skills/SO
 
 /datum/equipment_preset/uscm_ship/so/load_gear(mob/living/carbon/human/H)
@@ -463,14 +470,49 @@
 
 /*****************************************************************************************************/
 
+/datum/equipment_preset/uscm_ship/sea
+	name = "USCM Senior Enlisted Advisor (SEA)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+	idtype = /obj/item/card/id/silver
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_TANK, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_SEA)
+	assignment = JOB_SEA
+	rank = JOB_SEA
+	paygrade = "E8"
+	role_comm_title = "SEA"
+	minimum_age = 40
+	skills = /datum/skills/SEA
+
+	service_hat = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/drillhat)
+
+/datum/equipment_preset/uscm_ship/sea/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m44/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/drillhat(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/flash(H), WEAR_L_STORE)
+
+	H.hud_set_squad()
+
+/datum/equipment_preset/uscm_ship/sea/load_rank(mob/living/carbon/human/H)
+	if(H.mind && H.mind.player_entity)
+		var/datum/entity/player_entity/player = H.mind.player_entity
+		if(player.get_playtime("human", rank) >= HOURS_9)
+			return "E9"
+	return paygrade
+
+/*****************************************************************************************************/
+
 /datum/equipment_preset/uscm_ship/po
 	name = "USCM Pilot Officer (PO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	idtype = /obj/item/card/id/silver
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PILOT)
-	assignment = "Pilot Officer"
-	rank = "Pilot Officer"
+	assignment = JOB_PILOT
+	rank = JOB_PILOT
 	paygrade = "O1" //Technically Second Lieutenant equivalent, but 2ndLT doesn't exist in Marine pay grade, so Ensign
 	role_comm_title = "PO"
 	skills = /datum/skills/pilot
@@ -502,10 +544,11 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_TANK, ACCESS_MARINE_MORGUE, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA, ACCESS_MARINE_ENGINEERING)
-	assignment = "Military Police"
-	rank = "Military Police"
+	assignment = JOB_POLICE
+	rank = JOB_POLICE
 	paygrade = "E6"
 	role_comm_title = "MP"
+	minimum_age = 27
 	skills = /datum/skills/MP
 
 	utility_under = list(/obj/item/clothing/under/marine/mp)
@@ -535,10 +578,11 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_WO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_TANK, ACCESS_MARINE_COMMANDER, ACCESS_MARINE_MORGUE, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA, ACCESS_MARINE_ENGINEERING)
-	assignment = "Chief MP"
-	rank = "Chief MP"
+	assignment = JOB_CHIEF_POLICE
+	rank = JOB_CHIEF_POLICE
 	paygrade = "O3"
 	role_comm_title = "CMP"
+	minimum_age = 27
 	skills = /datum/skills/CMP
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
@@ -573,6 +617,7 @@
 	rank = "USCM Officer"
 	paygrade = "O5"
 	role_comm_title = "Cpt"
+	minimum_age = 40
 	skills = /datum/skills/commander
 
 	utility_hat = list(/obj/item/clothing/head/beret/cm)
@@ -613,6 +658,7 @@
 	rank = "USCM Admiral"
 	paygrade = "O7"
 	role_comm_title = "ADM"
+	minimum_age = 50
 	skills = /datum/skills/admiral
 
 	service_under = list(/obj/item/clothing/under/marine/officer/admiral)
@@ -655,8 +701,8 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
-	assignment = "Maintenance Tech"
-	rank = "Maintenance Tech"
+	assignment = JOB_ENGINEER
+	rank = JOB_ENGINEER
 	paygrade = "E6"
 	role_comm_title = "MT"
 	special_role = "UPP"
@@ -697,6 +743,7 @@
 	rank = "Fleet Admiral"
 	paygrade = "O8"
 	role_comm_title = "FADM"
+	minimum_age = 55
 	skills = /datum/skills/admiral
 
 	service_under = list(/obj/item/clothing/under/soviet)

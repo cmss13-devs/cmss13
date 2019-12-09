@@ -32,6 +32,10 @@
 	acid_level = 2
 	weed_level = 3
 
+	minimum_playtimes = list(
+		FACTION_XENOMORPH = HOURS_9
+	)
+
 /datum/caste_datum/queen/mature
 	upgrade_name = "Mature"
 	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs."

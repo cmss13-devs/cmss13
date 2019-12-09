@@ -574,3 +574,23 @@
 	new /obj/item/device/flashlight(src)
 	new /obj/item/storage/backpack/marine/satchel(src)
 	return
+
+/obj/structure/closet/secure_closet/sea
+	name = "\improper SEA's Locker"
+	req_access = list(ACCESS_MARINE_SEA)
+	icon_state = "secure_locked_commander"
+	icon_closed = "secure_unlocked_commander"
+	icon_locked = "secure_locked_commander"
+	icon_opened = "secure_open_commander"
+	icon_broken = "secure_locked_commander"
+	icon_off = "secure_closed_commander"
+
+/obj/structure/closet/secure_closet/sea/New()
+	..()
+	new /obj/item/device/whistle(src)
+	new /obj/item/device/binoculars/tactical/range(src)
+	new /obj/item/clothing/suit/armor/bulletproof/badge(src)
+	new /obj/item/device/radio/headset/almayer/mcom(src)
+	new /obj/item/clothing/under/marine/officer/bridge(src)
+	new /obj/item/clothing/shoes/dress(src)
+	new /obj/item/storage/backpack/marine/satchel(src)

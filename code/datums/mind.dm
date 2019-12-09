@@ -441,7 +441,7 @@
 						break
 	//if not, we give the mind default job_knowledge and assigned_role
 	if(!mind.assigned_role)
-		mind.assigned_role = "Squad Marine"	//default
+		mind.assigned_role = JOB_SQUAD_MARINE //default
 		if(mind.cm_skills)
 			qdel(mind.cm_skills)
 		mind.cm_skills = null //no restriction on what we can do.

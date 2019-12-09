@@ -17,6 +17,13 @@
 	var/path
 	var/savefile_version
 
+/datum/entity/player_entity/proc/get_playtime(var/branch, var/type)
+	var/playtime = 0
+	if(player_stats["[branch]"])
+		var/datum/entity/player_stats/branch_stat = player_stats["[branch]"]
+		playtime += branch_stat.get_playtime(type)
+	return playtime
+
 /datum/entity/player_entity/proc/setup_human_stats()
 	if(player_stats["human"])
 		return player_stats["human"]

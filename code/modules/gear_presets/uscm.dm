@@ -31,8 +31,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
-	assignment = "Squad Marine"
-	rank = "Squad Marine"
+	assignment = JOB_SQUAD_MARINE
+	rank = JOB_SQUAD_MARINE
 	paygrade = "E2"
 	role_comm_title = "Mar"
 	skills = /datum/skills/pfc
@@ -44,6 +44,12 @@
 
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
+/datum/equipment_preset/uscm/pfc/load_rank(mob/living/carbon/human/H)
+	if(H.mind && H.mind.player_entity)
+		var/datum/entity/player_entity/player = H.mind.player_entity
+		if(player.get_playtime("human", rank) < HOURS_9)
+			return "E1"
+	return paygrade
 
 /*****************************************************************************************************/
 
@@ -81,8 +87,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
-	assignment = "Squad Smartgunner"
-	rank = "Squad Smartgunner"
+	assignment = JOB_SQUAD_SMARTGUN
+	rank = JOB_SQUAD_SMARTGUN
 	paygrade = "E4"
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
@@ -122,10 +128,11 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_TANK)
-	assignment = "Tank Crewman"
-	rank = "Tank Crewman"
+	assignment = JOB_TANKER
+	rank = JOB_TANKER
 	paygrade = "E7"
 	role_comm_title = "TC"
+	minimum_age = 30
 	skills = /datum/skills/tank_crew
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/tanker)
@@ -158,8 +165,8 @@
 
 	idtype = /obj/item/card/id/silver
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP)
-	assignment = "Intelligence Officer"
-	rank = "Intelligence Officer"
+	assignment = JOB_INTEL
+	rank = JOB_INTEL
 	paygrade = "O1"
 	role_comm_title = "IO"
 	skills = /datum/skills/intel
@@ -197,8 +204,8 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
-	assignment = "Squad Specialist"
-	rank = "Squad Specialist"
+	assignment = JOB_SQUAD_SPECIALIST
+	rank = JOB_SQUAD_SPECIALIST
 	paygrade = "E5"
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
@@ -244,8 +251,8 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
-	assignment = "Squad Medic"
-	rank = "Squad Medic"
+	assignment = JOB_SQUAD_MEDIC
+	rank = JOB_SQUAD_MEDIC
 	paygrade = "E3"
 	role_comm_title = "Med"
 	skills = /datum/skills/combat_medic
@@ -266,8 +273,8 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
-	assignment = "Squad Engineer"
-	rank = "Squad Engineer"
+	assignment = JOB_SQUAD_ENGI
+	rank = JOB_SQUAD_ENGI
 	paygrade = "E3"
 	role_comm_title = "Eng"
 	skills = /datum/skills/combat_engineer
@@ -288,10 +295,11 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
-	assignment = "Squad Leader"
-	rank = "Squad Leader"
+	assignment = JOB_SQUAD_LEADER
+	rank = JOB_SQUAD_LEADER
 	paygrade = "E6"
 	role_comm_title = "SL"
+	minimum_age = 27
 	skills = /datum/skills/SL
 
 /datum/equipment_preset/uscm/leader/load_gear(mob/living/carbon/human/H)
@@ -311,11 +319,18 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
-	assignment = "Squad Marine"
-	rank = "Squad Marine"
+	assignment = JOB_SQUAD_MARINE
+	rank = JOB_SQUAD_MARINE
 	paygrade = "E2"
 	role_comm_title = "Pfc"
 	skills = /datum/skills/pfc/crafty
+
+/datum/equipment_preset/uscm/private_equipped/load_rank(mob/living/carbon/human/H)
+	if(H.mind && H.mind.player_entity)
+		var/datum/entity/player_entity/player = H.mind.player_entity
+		if(player.get_playtime("human", rank) < HOURS_9)
+			return "E1"
+	return paygrade
 
 /datum/equipment_preset/uscm/private_equipped/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
@@ -343,10 +358,11 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
-	assignment = "Squad Leader"
-	rank = "Squad Leader"
+	assignment = JOB_SQUAD_LEADER
+	rank = JOB_SQUAD_LEADER
 	paygrade = "E6"
 	role_comm_title = "SL"
+	minimum_age = 27
 	skills = /datum/skills/SL
 
 /datum/equipment_preset/uscm/leader_equipped/load_gear(mob/living/carbon/human/H)
@@ -374,8 +390,8 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
-	assignment = "Squad Smartgunner"
-	rank = "Squad Smartgunner"
+	assignment = JOB_SQUAD_SMARTGUN
+	rank = JOB_SQUAD_SMARTGUN
 	paygrade = "E4"
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
@@ -405,8 +421,8 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
-	assignment = "Squad Engineer"
-	rank = "Squad Engineer"
+	assignment = JOB_SQUAD_ENGI
+	rank = JOB_SQUAD_ENGI
 	paygrade = "E3"
 	role_comm_title = "Eng"
 	skills = /datum/skills/combat_engineer
@@ -445,8 +461,8 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
-	assignment = "Squad Medic"
-	rank = "Squad Medic"
+	assignment = JOB_SQUAD_MEDIC
+	rank = JOB_SQUAD_MEDIC
 	paygrade = "E3"
 	role_comm_title = "Med"
 	skills = /datum/skills/combat_medic
@@ -484,8 +500,8 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
-	assignment = "Squad Specialist"
-	rank = "Squad Specialist"
+	assignment = JOB_SQUAD_SPECIALIST
+	rank = JOB_SQUAD_SPECIALIST
 	paygrade = "E5"
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist

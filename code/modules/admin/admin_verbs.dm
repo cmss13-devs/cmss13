@@ -241,6 +241,10 @@ var/list/admin_verbs_mod = list(
 		if(admin_holder.rights & R_MOD)			
 			verbs += admin_verbs_mod
 
+/client/proc/add_admin_whitelists()
+	if(is_mentor(src) || (admin_holder && (admin_holder.rights & R_ADMIN)))
+		RoleAuthority.roles_whitelist[ckey] |= WHITELIST_MENTOR
+
 /client/proc/remove_admin_verbs()
 	verbs.Remove(
 		admin_verbs_default,

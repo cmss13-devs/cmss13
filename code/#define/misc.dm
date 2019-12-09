@@ -96,6 +96,9 @@
 #define SIZE_MASSIVE    6       
 
 // Statistics defines
+#define STATISTIC_XENO "xeno"
+#define STATISTIC_HUMAN "human"
+
 #define STATISTICS_DEATH_LIST_LEN 10
 
 #define STATISTICS_NICHE_EXECUTION                  "Executions Made"

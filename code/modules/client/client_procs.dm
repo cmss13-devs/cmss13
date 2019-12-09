@@ -211,7 +211,7 @@
 
 	if(admin_holder)
 		add_admin_verbs()
-
+		add_admin_whitelists()
 	log_client_to_db()
 
 	send_assets()

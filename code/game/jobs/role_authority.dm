@@ -30,68 +30,88 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 	var/roles_by_name[] //Master list generated when role authority is created, listing every default role by name, including those that may not be regularly selected.
 	var/roles_for_mode[] //Derived list of roles only for the game mode, generated when the round starts.
 	var/roles_whitelist[] //Associated list of lists, by ckey. Checks to see if a person is whitelisted for a specific role.
+	var/castes_by_path[] //Master list generated when role aithority is created, listing every caste by path.
+	var/castes_by_name[] //Master list generated when role authority is created, listing every default caste by name.
 
 	var/unassigned_players[]
 	var/squads[]
 
- //#define FACTION_TO_JOIN "Marines"
-	//Whenever the controller is created, we want to set up the basic role lists.
-	New()
-		var/roles_all[] = typesof(/datum/job) - list( //We want to prune all the parent types that are only variable holders.
-												/datum/job,
-												/datum/job/command,
-												/datum/job/civilian,
-												/datum/job/logistics,
-												/datum/job/logistics/tech,
-												/datum/job/marine)
-		var/squads_all[] = typesof(/datum/squad) - /datum/squad
+//Whenever the controller is created, we want to set up the basic role lists.
+/datum/authority/branch/role/New()
+	var/roles_all[] = typesof(/datum/job) - list( //We want to prune all the parent types that are only variable holders.
+											/datum/job,
+											/datum/job/command,
+											/datum/job/civilian,
+											/datum/job/logistics,
+											/datum/job/logistics/tech,
+											/datum/job/marine)
+	var/squads_all[] = typesof(/datum/squad) - /datum/squad
+	var/castes_all[] = subtypesof(/datum/caste_datum)
 
-		if(!roles_all.len)
-			to_world(SPAN_DEBUG("Error setting up jobs, no job datums found."))
-			log_debug("Error setting up jobs, no job datums found.")
-			return //No real reason this should be length zero, so we'll just return instead.
+	if(!roles_all.len)
+		to_world(SPAN_DEBUG("Error setting up jobs, no job datums found."))
+		log_debug("Error setting up jobs, no job datums found.")
+		return //No real reason this should be length zero, so we'll just return instead.
 
-		if(!squads_all.len)
-			to_world(SPAN_DEBUG("Error setting up squads, no squad datums found."))
-			log_debug("Error setting up squads, no squad datums found.")
-			return
+	if(!squads_all.len)
+		to_world(SPAN_DEBUG("Error setting up squads, no squad datums found."))
+		log_debug("Error setting up squads, no squad datums found.")
+		return
 
-		roles_by_path 	= new
-		roles_by_name 	= new
-		roles_for_mode  = new
-		roles_whitelist = new
-		squads 			= new
+	if(!castes_all.len)
+		to_world(SPAN_DEBUG("Error setting up castes, no caste datums found."))
+		log_debug("Error setting up castes, no caste datums found.")
+		return
 
-		var/L[] = new
-		var/datum/job/J
-		var/datum/squad/S
-		var/i
+	roles_by_path 	= new
+	roles_by_name 	= new
+	roles_for_mode  = new
+	roles_whitelist = new
+	squads 			= new
 
-		for(i in roles_all) //Setting up our roles.
-			J = new i
+	castes_by_path 	= new
+	castes_by_name 	= new
 
-			if(!J.title) //In case you forget to subtract one of those variable holder jobs.
-				to_world(SPAN_DEBUG("Error setting up jobs, blank title job: [J.type]."))
-				log_debug("Error setting up jobs, blank title job: [J.type].")
-				continue
+	var/L[] = new
+	var/datum/caste_datum/C
+	var/datum/job/J
+	var/datum/squad/S
+	var/i
 
-			roles_by_path[J.type] = J
-			if(J.flags_startup_parameters & ROLE_ADD_TO_DEFAULT) roles_by_name[J.title] = J
-			if(J.flags_startup_parameters & ROLE_ADD_TO_MODE) roles_for_mode[J.title] = J
+	for(i in castes_all) //Setting up our castes.
+		C = new i
 
-		//	if(J.faction == FACTION_TO_JOIN)  //TODO Initialize non-faction jobs? //TODO Do we really need this?
+		if(!C.caste_name) //In case you forget to subtract one of those variable holder jobs.
+			to_world(SPAN_DEBUG("Error setting up castes, blank caste name: [C.type].</span>"))
+			log_debug("Error setting up castes, blank caste name: [C.type].")
+			continue
 
-		//TODO Come up with some dynamic method of doing this.
-		for(i in ROLES_REGULAR_ALL) //We're going to re-arrange the list for mode to look better, starting with the officers.
-			J = roles_for_mode[i]
-			if(J) L[J.title] = J
-		roles_for_mode = L
+		castes_by_path[C.type] = C
+		castes_by_name[C.caste_name] = C
 
-		for(i in squads_all) //Setting up our squads.
-			S = new i()
-			squads += S
+	for(i in roles_all) //Setting up our roles.
+		J = new i
 
-		load_whitelist()
+		if(!J.title) //In case you forget to subtract one of those variable holder jobs.
+			to_world(SPAN_DEBUG("Error setting up jobs, blank title job: [J.type]."))
+			log_debug("Error setting up jobs, blank title job: [J.type].")
+			continue
+
+		roles_by_path[J.type] = J
+		if(J.flags_startup_parameters & ROLE_ADD_TO_DEFAULT) roles_by_name[J.title] = J
+		if(J.flags_startup_parameters & ROLE_ADD_TO_MODE) roles_for_mode[J.title] = J
+
+	//TODO Come up with some dynamic method of doing this.
+	for(i in ROLES_REGULAR_ALL) //We're going to re-arrange the list for mode to look better, starting with the officers.
+		J = roles_for_mode[i]
+		if(J) L[J.title] = J
+	roles_for_mode = L
+
+	for(i in squads_all) //Setting up our squads.
+		S = new i()
+		squads += S
+
+	load_whitelist()
 
 /datum/authority/branch/role/proc/load_whitelist(filename = "config/role_whitelist.txt")
 	var/L[] = file2list(filename)
@@ -215,7 +235,7 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 		M = i
 		switch(M.client.prefs.alternate_option)
 			if(GET_RANDOM_JOB) 	roles_regular = assign_random_role(M, roles_regular) //We want to keep the list between assignments.
-			if(BE_ASSISTANT)	assign_role(M, roles_for_mode["Squad Marine"]) //Should always be available, in all game modes, as a candidate. Even if it may not be a marine.
+			if(BE_ASSISTANT)	assign_role(M, roles_for_mode[JOB_SQUAD_MARINE]) //Should always be available, in all game modes, as a candidate. Even if it may not be a marine.
 			if(RETURN_TO_LOBBY) M.ready = 0
 		unassigned_players -= M
 	if(unassigned_players.len)
@@ -286,7 +306,7 @@ roles willy nilly.
 				return roles_to_iterate
 
 	//If they fail the two passes, or no regular roles are available, they become a marine regardless.
-	assign_role(M,roles_for_mode["Squad Marine"])
+	assign_role(M,roles_for_mode[JOB_SQUAD_MARINE])
 
 /datum/authority/branch/role/proc/assign_role(mob/new_player/M, datum/job/J, latejoin=0)
 	if(ismob(M) && M.mind && istype(J))
@@ -300,7 +320,7 @@ roles willy nilly.
 
 /datum/authority/branch/role/proc/check_role_entry(mob/new_player/M, datum/job/J, latejoin=0)
 	if(jobban_isbanned(M, J.title)) return //TODO standardize this
-	if(!J.player_old_enough(M.client)) return
+	if(!J.can_play_role(M.client)) return
 	if(J.flags_startup_parameters & ROLE_WHITELISTED && !(roles_whitelist[M.ckey] & J.flags_whitelist)) return
 	if(J.total_positions != -1 && J.get_total_positions(latejoin) <= J.current_positions) return
 	return 1
@@ -501,7 +521,7 @@ roles willy nilly.
 	//Non-standards are distributed regardless of squad population.
 	//If the number of available positions for the job are more than max_whatever, it will break.
 	//Ie. 8 squad medic jobs should be available, and total medics in squads should be 8.
-	if(H.mind.assigned_role != "Squad Marine" && H.mind.assigned_role != "Reinforcements")
+	if(H.mind.assigned_role != JOB_SQUAD_MARINE && H.mind.assigned_role != "Reinforcements")
 		var/pref_squad_name
 		if(H && H.client && H.client.prefs.preferred_squad && H.client.prefs.preferred_squad != "None")
 			pref_squad_name = H.client.prefs.preferred_squad

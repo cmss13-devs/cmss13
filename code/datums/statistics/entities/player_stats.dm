@@ -13,6 +13,9 @@
 	var/list/death_list = list() // list of type /datum/entity/death_stats
 	var/display_stat = TRUE
 
+/datum/entity/player_stats/proc/get_playtime()
+	return total_playtime
+
 /datum/entity/player_stats/proc/count_personal_human_kill(var/job_name, var/cause, var/job)
 	return
 

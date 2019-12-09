@@ -13,21 +13,46 @@
 	var/supervisors 		= "" //Supervisors, who this person answers to directly. Should be a string, shown to the player when they enter the game.
 	var/selection_color 	= "#ffffff" //Sellection screen color.
 	var/list/alt_titles 	//List of alternate titles, if any.
-	//If you have use_age_restriction_for_jobs config option enabled and the database set up, this option will add a requirement for players to be at least minimal_player_age days old. (meaning they first signed in at least that many days before.)
-	var/minimal_player_age 	= 0
-	//var/flags_role				= NO_FLAGS
-	var/flag = NO_FLAGS //TODO robust this later.
-	//var/flags_department 			= NO_FLAGS
-	var/department_flag = NO_FLAGS //TODO robust this later.
-	var/flags_startup_parameters 	= NO_FLAGS //These flags are used to determine how to load the role, and some other parameters.
-	var/flags_whitelist 			= NO_FLAGS //Only used by whitelisted roles. Can be a single whitelist flag, or a combination of them.
+
+	var/flag = NO_FLAGS 					//TODO robust this later.
+	var/department_flag = NO_FLAGS 			//TODO robust this later.
+	var/flags_startup_parameters = NO_FLAGS //These flags are used to determine how to load the role, and some other parameters.
+	var/flags_whitelist = NO_FLAGS 			//Only used by whitelisted roles. Can be a single whitelist flag, or a combination of them.
+
+	//If you have use_timelocks config option enabled, this option will add a requirement for players to have the prerequisite roles have at least x minimum playtime before unlocking.
+	var/list/minimum_playtimes = list(
+		JOB_SQUAD_MARINE = HOURS_3
+	)
 
 	var/gear_preset //Gear preset name used for this job
 	var/gear_preset_council //Gear preset name used for council snowflakes ;)
 
+	//For generating entry messages
+	var/entry_message_intro
+	var/entry_message_body
+	var/entry_message_end
+
 /datum/job/New()
 	..()
 	if(!disp_title) disp_title = title
+
+/datum/job/proc/can_play_role(var/client/client)
+	if(!config.use_timelocks)
+		return TRUE
+	var/datum/entity/player_entity/selected_entity = client.player_entity
+	if(!minimum_playtimes.len || (client.admin_holder && (client.admin_holder.rights & R_ADMIN)) || selected_entity.get_playtime(STATISTIC_HUMAN, title) > 0)
+		return TRUE
+	for(var/prereq in minimum_playtimes)
+		if(selected_entity.get_playtime(STATISTIC_HUMAN, prereq) < minimum_playtimes[prereq])
+			return FALSE
+	return TRUE
+
+/datum/job/proc/get_role_requirements(var/datum/entity/player_entity/selected_entity)
+	var/list/return_requirements = list()
+	for(var/prereq in minimum_playtimes)
+		if(selected_entity.get_playtime(STATISTIC_HUMAN, prereq) < minimum_playtimes[prereq])
+			return_requirements[prereq] = minimum_playtimes[prereq] - selected_entity.get_playtime(STATISTIC_HUMAN, prereq)
+	return return_requirements
 
 /datum/job/proc/get_access()
 	if(!gear_preset)
@@ -62,9 +87,15 @@
 		. = M.client.prefs.GetPlayerAltTitle(src)
 		if(. && lowercase) . = lowertext(.)
 
-/datum/job/proc/set_spawn_positions(var/count) return spawn_positions
+/datum/job/proc/set_spawn_positions(var/count)
+	return spawn_positions
 
-/datum/job/proc/generate_entry_message() return //The job description that characters get, along with anything else that may be appropriate.
+/datum/job/proc/generate_entry_message()
+	if(!entry_message_intro)
+		entry_message_intro = "You are the [title]!."
+	if(!entry_message_end)
+		entry_message_end = "As the [title] you answer to [supervisors]. Special circumstances may change this!"
+	return "[entry_message_intro]<br>[entry_message_body]<br>[entry_message_end]"
 
 /datum/job/proc/announce_entry_message(mob/living/carbon/human/H, datum/money_account/M) //The actual message that is displayed to the mob when they enter the game as a new player.
 	set waitfor = 0
@@ -85,16 +116,8 @@ As the [title_given] you answer to [supervisors]. Special circumstances may chan
 		"}
 		to_chat(H, t)
 
-/datum/job/proc/generate_entry_conditions(mob/living/M) return //Anything special that should happen to the mob upon entering the world.
-
-//If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
-/datum/job/proc/player_old_enough(client/C)
-	if(available_in_days(C) == 0) return 1	//If available in 0 days, the player is old enough to play. Can be compared to null, but I think this is clearer.
-
-/datum/job/proc/available_in_days(client/C)
-	//Checking the player's age is only possible through a db connection, so if there isn't one, player age will be a text string instead.
-	if(!istype(C) || !config.use_age_restriction_for_jobs || !isnum(C.player_age) || !isnum(minimal_player_age)) return 0 //One of the few times when returning 0 is the proper behavior.
-	return max(0, minimal_player_age - C.player_age)
+/datum/job/proc/generate_entry_conditions(mob/living/M)
+	return //Anything special that should happen to the mob upon entering the world.
 
 //This lets you scale max jobs at runtime
 //All you have to do is rewrite the inheritance

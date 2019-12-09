@@ -350,3 +350,26 @@
 #define RESIN_TRAP_ACID1 3
 #define RESIN_TRAP_ACID2 4
 #define RESIN_TRAP_ACID3 5
+
+// Caste name defines
+#define CASTE_LARVA "Larva"
+
+#define CASTE_RUNNER "Runner"
+#define CASTE_LURKER "Lurker"
+#define CASTE_RAVAGER "Ravager"
+
+#define CASTE_SENTINEL "Sentinel"
+#define CASTE_SPITTER "Spitter"
+#define CASTE_BOILER "Boiler"
+
+#define CASTE_DEFENDER "Defender"
+#define CASTE_WARRIOR "Warrior"
+#define CASTE_CRUSHER "Crusher"
+#define CASTE_PRAETORIAN "Praetorian"
+
+#define CASTE_DRONE "Drone"
+#define CASTE_HIVELORD "Hivelord"
+#define CASTE_CARRIER "Carrier"
+#define CASTE_BURROWER "Burrower"
+
+#define CASTE_QUEEN "Queen"

@@ -8354,6 +8354,16 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/command/self_destruct)
+"atZ" = (
+/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8;
+	tag = "icon-map-supply (WEST)"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull)
 "aub" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -22860,6 +22870,9 @@
 	icon_state = "W";
 	tag = "icon-W"
 	},
+/obj/effect/landmark/start{
+	name = "Squad Medic"
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orange";
@@ -24049,13 +24062,6 @@
 	},
 /area/almayer/hallways/hangar)
 "boG" = (
-/obj/effect/landmark/start{
-	name = "Squad Medic"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	tag = "icon-SW-out"
-	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orange";
@@ -24382,12 +24388,8 @@
 	},
 /area/almayer/hallways/starboard_umbilical)
 "bpV" = (
-/obj/effect/landmark/start{
-	name = "Squad Leader"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+/obj/effect/landmark{
+	name = "JoinLate"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -25606,6 +25608,16 @@
 	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/almayer/medical/cryo_tubes)
+"buf" = (
+/obj/structure/machinery/door/airlock/almayer/command{
+	name = "\improper Senior Enlisted Advisor's Office";
+	req_access = list(29)
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/shipboard/sea_office)
 "bui" = (
 /obj/structure/sink{
 	pixel_y = 32
@@ -26001,12 +26013,8 @@
 /turf/open/floor/almayer,
 /area/almayer/living/cafeteria_starboard)
 "bvE" = (
-/obj/effect/landmark/start{
-	name = "Squad Medic"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+/obj/effect/landmark{
+	name = "JoinLate"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -26480,13 +26488,6 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/starboard_hallway)
 "bxm" = (
-/obj/effect/landmark/start{
-	name = "Squad Medic"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	tag = "icon-NW-out"
-	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "emerald";
@@ -26931,6 +26932,9 @@
 	icon_state = "SW-out";
 	tag = "icon-SW-out"
 	},
+/obj/effect/landmark/start{
+	name = "Squad Medic"
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "emerald";
@@ -27329,8 +27333,8 @@
 	name = "ship-grade camera";
 	tag = "icon-camera (WEST)"
 	},
-/obj/effect/landmark{
-	name = "JoinLate"
+/obj/effect/landmark/start{
+	name = "Squad Engineer"
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
@@ -27777,6 +27781,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	tag = "icon-NW-out"
+	},
+/obj/effect/landmark/start{
+	name = "Squad Medic"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -30748,8 +30755,8 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
 "bJd" = (
-/obj/effect/landmark{
-	name = "JoinLate"
+/obj/effect/landmark/start{
+	name = "Squad Engineer"
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
@@ -31345,11 +31352,12 @@
 	},
 /area/almayer/living/briefing)
 "bKQ" = (
-/obj/effect/landmark/start{
-	name = "JoinLate"
+/obj/structure/bed/chair{
+	dir = 8;
+	tag = "icon-chair (WEST)"
 	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/cryo_cells)
+/turf/open/floor/wood,
+/area/almayer/shipboard/sea_office)
 "bKR" = (
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/firing_range_south)
@@ -32889,26 +32897,38 @@
 	},
 /area/almayer/squads/req)
 "bOT" = (
-/obj/structure/machinery/cryopod,
-/obj/structure/machinery/light{
+/obj/structure/machinery/firealarm{
 	dir = 8;
-	tag = "icon-tube1 (WEST)"
+	pixel_x = -24
 	},
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/almayer/living/cryo_cells)
-"bOU" = (
-/obj/structure/machinery/cryopod,
+/obj/structure/table/almayer,
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 1
+	},
+/obj/structure/machinery/alarm/almayer{
+	dir = 1
+	},
+/obj/item/book/manual/marine_law{
+	pixel_x = 9;
+	pixel_y = 10
+	},
+/obj/item/book/manual/marine_law{
+	pixel_x = 1;
+	pixel_y = 2
 	},
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
 	},
-/area/almayer/living/cryo_cells)
+/area/almayer/shipboard/sea_office)
+"bOU" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
+	},
+/turf/open/floor/wood,
+/area/almayer/shipboard/sea_office)
 "bOV" = (
 /obj/structure/machinery/cryopod/right,
 /obj/structure/machinery/light{
@@ -33240,12 +33260,8 @@
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
 "bPM" = (
-/obj/effect/landmark/start{
-	name = "Squad Leader"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	tag = "icon-NW-out"
+/obj/effect/landmark{
+	name = "JoinLate"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -33679,12 +33695,12 @@
 	},
 /area/almayer/squads/req)
 "bQX" = (
+/obj/structure/table/almayer,
+/obj/item/paper_bin/uscm,
+/obj/item/tool/pen,
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/living/cryo_cells)
+/turf/open/floor/wood,
+/area/almayer/shipboard/sea_office)
 "bQZ" = (
 /obj/structure/machinery/light,
 /obj/structure/machinery/cm_vending/sorted/marine_prep,
@@ -33727,14 +33743,12 @@
 	},
 /area/almayer/living/cryo_cells)
 "bRe" = (
-/obj/effect/landmark{
-	name = "Distress_Cryo"
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10;
+	tag = "icon-intact-supply (SOUTHWEST)"
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/living/cryo_cells)
+/turf/open/floor/wood,
+/area/almayer/shipboard/sea_office)
 "bRf" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -33986,12 +34000,8 @@
 	},
 /area/almayer/hallways/vehiclehangar)
 "bRV" = (
-/obj/effect/landmark/start{
-	name = "Squad Leader"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	tag = "icon-SW-out"
+/obj/effect/landmark{
+	name = "JoinLate"
 	},
 /turf/open/floor/almayer{
 	icon_state = "emeraldcorner";
@@ -42450,6 +42460,15 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig_cells)
+"dAy" = (
+/obj/effect/landmark{
+	name = "JoinLate"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/living/cryo_cells)
 "dBf" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10";
@@ -44130,6 +44149,15 @@
 	tag = "icon-redfull"
 	},
 /area/almayer/shipboard/firing_range_north)
+"fJY" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "SEA Office Shutters";
+	name = "\improper Privacy Shutters"
+	},
+/turf/open/floor/plating,
+/area/almayer/living/cryo_cells)
 "fKR" = (
 /turf/open/floor/almayer{
 	dir = 6;
@@ -44781,6 +44809,14 @@
 	tag = "icon-redcorner (WEST)"
 	},
 /area/almayer/shipboard/brig_cells)
+"gGw" = (
+/obj/structure/target,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/almayer/shipboard/sea_office)
 "gGx" = (
 /turf/open/floor/almayer{
 	dir = 5;
@@ -45150,6 +45186,15 @@
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/wood,
 /area/almayer/living/offices)
+"hho" = (
+/obj/structure/rack,
+/obj/item/explosive/grenade/HE/training,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/almayer/shipboard/sea_office)
 "hji" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -47396,6 +47441,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
+"kgZ" = (
+/turf/open/floor/almayer{
+	icon_state = "plating_striped";
+	tag = "icon-emerald (NORTH)"
+	},
+/area/almayer/shipboard/sea_office)
 "khd" = (
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
@@ -52091,6 +52142,19 @@
 /obj/structure/foamedmetal,
 /turf/open/floor/plating,
 /area/almayer/command/self_destruct)
+"qdf" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/obj/effect/landmark/start{
+	name = "Senior Enlisted Advisor"
+	},
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/machinery/power/apc/almayer{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/almayer/shipboard/sea_office)
 "qdz" = (
 /obj/structure/disposalpipe/junction{
 	dir = 2;
@@ -53202,6 +53266,13 @@
 /obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/navigation)
+"ryq" = (
+/obj/structure/machinery/atmospherics/unary/vent_pump{
+	dir = 8;
+	on = 1
+	},
+/turf/open/floor/wood,
+/area/almayer/shipboard/sea_office)
 "ryt" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "brigentry";
@@ -53527,6 +53598,20 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical)
+"rKk" = (
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4;
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 4;
+	req_access = list(29)
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/shipboard/sea_office)
 "rKA" = (
 /obj/structure/machinery/firealarm{
 	dir = 1;
@@ -54181,9 +54266,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/weapon_room)
-"szj" = (
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/cryo_cells)
 "szm" = (
 /obj/structure/machinery/power/fusion_engine{
 	name = "\improper S-52 fusion reactor 10"
@@ -54908,6 +54990,16 @@
 	icon_state = "kitchen"
 	},
 /area/almayer/living/grunt_rnr)
+"tqS" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "SEA Office Shutters";
+	name = "\improper Privacy Shutters"
+	},
+/turf/open/floor/plating,
+/area/almayer/shipboard/sea_office)
 "trF" = (
 /obj/structure/machinery/shower{
 	dir = 1
@@ -55659,6 +55751,16 @@
 	tag = "icon-plating_striped (EAST)"
 	},
 /area/almayer/squads/req)
+"ulV" = (
+/obj/structure/table/almayer,
+/obj/structure/machinery/door_control{
+	id = "SEA Office Shutters";
+	name = "SEA Office Shutters";
+	pixel_y = 12
+	},
+/obj/item/ashtray/plastic,
+/turf/open/floor/wood,
+/area/almayer/shipboard/sea_office)
 "umC" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/wood,
@@ -55720,6 +55822,16 @@
 	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/engineering/engine_core)
+"upo" = (
+/obj/structure/table/almayer,
+/obj/item/storage/fancy/cigar,
+/obj/item/device/megaphone,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4;
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/wood,
+/area/almayer/shipboard/sea_office)
 "ups" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -56122,6 +56234,9 @@
 	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/almayer/medical/testlab)
+"uQX" = (
+/turf/open/floor/wood,
+/area/almayer/shipboard/sea_office)
 "uRo" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4;
@@ -56438,6 +56553,12 @@
 	tag = "icon-red (WEST)"
 	},
 /area/almayer/shipboard/brig_cells)
+"veB" = (
+/obj/effect/landmark/start{
+	name = "Squad Leader"
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/cryo_cells)
 "veS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -57462,6 +57583,16 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/hallways/vehiclehangar)
+"wnZ" = (
+/obj/structure/closet/secure_closet/sea,
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5;
+	tag = "icon-intact-supply (NORTHEAST)"
+	},
+/obj/structure/machinery/light,
+/obj/item/reagent_container/spray/cleaner,
+/turf/open/floor/wood,
+/area/almayer/shipboard/sea_office)
 "woh" = (
 /obj/structure/bed/chair,
 /obj/structure/machinery/firealarm{
@@ -57703,6 +57834,9 @@
 "wFR" = (
 /turf/open/floor/almayer,
 /area/almayer/living/gym)
+"wGl" = (
+/turf/closed/wall/almayer,
+/area/almayer/shipboard/sea_office)
 "wIo" = (
 /obj/structure/table/almayer,
 /obj/item/tool/pen,
@@ -58537,6 +58671,15 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig)
+"xDL" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "SEA Office Shutters";
+	name = "\improper Privacy Shutters"
+	},
+/turf/open/floor/plating,
+/area/almayer/shipboard/sea_office)
 "xEz" = (
 /obj/structure/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -103848,11 +103991,11 @@ bCH
 bCH
 bLS
 bHm
-bCH
-bCH
-bCH
-bCH
-bCH
+bHm
+bHm
+atZ
+bHm
+bHm
 bHm
 bLS
 bCH
@@ -104051,12 +104194,12 @@ aLd
 aLd
 aLd
 aLd
-aLd
-aLd
-bvS
-aLd
-aLd
-aLd
+wGl
+wGl
+rKk
+wGl
+wGl
+wGl
 aLd
 aLd
 aLd
@@ -104253,13 +104396,13 @@ bHo
 bGD
 bCM
 bzJ
-bCG
+bbs
 bOT
-bDL
+kgZ
 bRe
-bDL
-bOT
-bCG
+qdf
+wnZ
+wGl
 bPL
 bCM
 bGD
@@ -104456,13 +104599,13 @@ bHo
 bHr
 bCN
 bJd
-bDL
-bCN
-bDL
+fJY
+hho
+kgZ
 bQX
-bDL
-bCN
-bCG
+ulV
+upo
+xDL
 bGm
 bCN
 bHr
@@ -104658,14 +104801,14 @@ bDK
 bHo
 bDK
 bCO
-bGn
+bJd
+fJY
+gGw
+kgZ
+uQX
 bKQ
-bbs
-bCT
-bRe
-bKQ
-bbs
-bDK
+ryq
+xDL
 bGm
 bCO
 bDK
@@ -104862,13 +105005,13 @@ bHo
 bHr
 bCM
 bJd
-bDL
+fJY
+gGw
+kgZ
+uQX
+uQX
 bOU
-bHr
-bRe
-bHr
-bOU
-bDL
+xDL
 bGm
 bCM
 bHr
@@ -105064,14 +105207,14 @@ bDL
 bHo
 bHr
 bCN
-bJd
-bDL
-bCN
-bHr
-bRe
-bHr
-bCN
-bDL
+veB
+bbs
+tqS
+tqS
+buf
+tqS
+tqS
+wGl
 bGm
 bCN
 bHr
@@ -105271,7 +105414,7 @@ bmK
 boG
 bpV
 bPM
-bRe
+dAy
 bRV
 bvE
 bxm
@@ -107097,9 +107240,9 @@ bKD
 bGm
 bCG
 bCN
-szj
+bDL
 dyt
-szj
+bCG
 bCN
 bCG
 bGm

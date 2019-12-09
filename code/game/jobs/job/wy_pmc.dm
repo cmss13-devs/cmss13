@@ -50,7 +50,7 @@
 
 //PMC standard.
 /datum/job/pmc/security_expert
-	title = "PMC Standard"
+	title = JOB_PMC
 	paygrade = "PMC1"
 	total_positions = -1
 	spawn_positions = -1
@@ -84,7 +84,7 @@
 
 //PMC support engineer.
 /datum/job/pmc/support_specialist_mechanic
-	title = "PMC Mechanic"
+	title = JOB_PMC_ENGINEER
 	paygrade = "PMC2S"
 	total_positions = 3
 	spawn_positions = 3
@@ -123,7 +123,7 @@
 
 //PMC support medic.
 /datum/job/pmc/support_specialist_triage
-	title = "PMC Triage"
+	title = JOB_PMC_DOCTOR
 	paygrade = "PMC2M"
 	total_positions = 3
 	spawn_positions = 3
@@ -163,7 +163,7 @@
 
 //PMC elite/weapon specialist.
 /datum/job/pmc/elite_responder
-	title = "PMC Elite"
+	title = JOB_PMC_ELITE
 	paygrade = "PMC3"
 	total_positions = 2
 	spawn_positions = 2
@@ -171,7 +171,7 @@
 	access = list(ACCESS_IFF_PMC, ACCESS_WY_PMC_GREEN, ACCESS_WY_PMC_ORANGE, ACCESS_WY_PMC_RED, ACCESS_WY_PMC_BLACK, ACCESS_WY_CORPORATE)
 
 /datum/job/pmc/elite_responder/gunner
-	title = "PMC Gunner"
+	title = JOB_PMC_GUNNER
 	skills_type = /datum/skills/smartgunner/pmc
 
 /datum/job/pmc/elite_responder/gunner/generate_wearable_equipment()
@@ -203,7 +203,7 @@
 			)
 
 /datum/job/pmc/elite_responder/sharpshooter
-	title = "PMC Sharpshooter"
+	title = JOB_PMC_SNIPER
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	skills_type = /datum/skills/specialist/pmc
 
@@ -234,7 +234,7 @@
 			)
 
 /datum/job/pmc/elite_responder/ninja
-	title = "PMC Ninja"
+	title = JOB_PMC_NINJA
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	skills_type = /datum/skills/ninja
 
@@ -264,7 +264,7 @@
 			)
 
 /datum/job/pmc/elite_responder/commando
-	title = "PMC Commando"
+	title = PMC_COMMANDO
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	skills_type = /datum/skills/commando
 
@@ -296,7 +296,7 @@
 
 //PMC team leader, the one in charge.
 /datum/job/pmc/team_leader
-	title = "PMC Leader"
+	title = PMC_LEADER
 	paygrade = "PMC4"
 	supervisors = "the W-Y corporate office"
 	total_positions = 2

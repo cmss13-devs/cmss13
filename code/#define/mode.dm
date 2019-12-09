@@ -89,6 +89,7 @@ var/list/be_special_flags = list(
 #define ROLE_SYNTHETIC					256
 #define ROLE_TANK_OFFICER				512
 #define ROLE_INTEL_OFFICER				1024
+#define ROLE_SEA						2048
 //=================================================
 
 #define ROLEGROUP_MARINE_ENGINEERING 	2
@@ -123,15 +124,15 @@ var/list/be_special_flags = list(
 //=================================================
 
 //Role defines, specifically lists of roles for job bans and the like.
-#define ROLES_COMMAND 		list("Commanding Officer","Executive Officer","Staff Officer", "Intelligence Officer","Pilot Officer","Tank Crewman","Military Police","Corporate Liaison","Requisitions Officer","Chief Engineer","Chief Medical Officer","Chief MP")
-#define ROLES_OFFICERS		list("Commanding Officer","Executive Officer","Staff Officer", "Intelligence Officer","Pilot Officer","Tank Crewman","Chief MP","Military Police","Corporate Liaison", "Synthetic")
-#define ROLES_ENGINEERING 	list("Chief Engineer","Maintenance Tech")
-#define ROLES_REQUISITION 	list("Requisitions Officer","Cargo Technician")
-#define ROLES_MEDICAL 		list("Chief Medical Officer","Doctor","Researcher")
-#define ROLES_MARINES		list("Squad Leader","Squad Specialist","Squad Smartgunner","Squad Medic","Squad Engineer","Squad Marine")
-#define ROLES_SQUAD_ALL		list("Alpha","Bravo","Charlie","Delta")
+#define ROLES_COMMAND 		list(JOB_CO, JOB_XO, JOB_SO, JOB_INTEL, JOB_PILOT, JOB_TANKER, JOB_POLICE, JOB_CORPORATE_LIAISON, JOB_CHIEF_REQUISITION, JOB_CHIEF_ENGINEER, JOB_CMO, JOB_CHIEF_POLICE, JOB_SEA)
+#define ROLES_OFFICERS		list(JOB_CO, JOB_XO, JOB_SO, JOB_INTEL, JOB_PILOT, JOB_TANKER, JOB_SEA, JOB_SYNTH, JOB_CHIEF_POLICE, JOB_POLICE, JOB_CORPORATE_LIAISON)
+#define ROLES_ENGINEERING 	list(JOB_CHIEF_ENGINEER, JOB_ENGINEER)
+#define ROLES_REQUISITION 	list(JOB_CHIEF_REQUISITION, JOB_REQUISITION)
+#define ROLES_MEDICAL 		list(JOB_CMO, JOB_DOCTOR, JOB_RESEARCHER)
+#define ROLES_MARINES		list(JOB_SQUAD_LEADER, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_MEDIC, JOB_SQUAD_ENGI, JOB_SQUAD_MARINE)
+#define ROLES_SQUAD_ALL		list(SQUAD_NAME_1, SQUAD_NAME_2, SQUAD_NAME_3, SQUAD_NAME_4)
 #define ROLES_REGULAR_ALL	ROLES_OFFICERS + ROLES_ENGINEERING + ROLES_REQUISITION + ROLES_MEDICAL + ROLES_MARINES
-#define ROLES_UNASSIGNED	list("Squad Marine")
+#define ROLES_UNASSIGNED	list(JOB_SQUAD_MARINE)
 //=================================================
 
 //=================================================
@@ -146,7 +147,8 @@ var/list/be_special_flags = list(
 #define WHITELIST_SYNTHETIC			128
 #define WHITELIST_SYNTHETIC_COUNCIL	256
 #define WHITELIST_ARCTURIAN			512
-#define WHITELIST_ALL				(WHITELIST_YAUTJA_UNBLOODED|WHITELIST_YAUTJA_BLOODED|WHITELIST_YAUTJA_ELITE|WHITELIST_YAUTJA_ELDER|WHITELIST_COMMANDER|WHITELIST_SYNTHETIC|WHITELIST_ARCTURIAN)
+#define WHITELIST_MENTOR			1024
+#define WHITELIST_ALL				(WHITELIST_YAUTJA_UNBLOODED|WHITELIST_YAUTJA_BLOODED|WHITELIST_YAUTJA_ELITE|WHITELIST_YAUTJA_ELDER|WHITELIST_COMMANDER|WHITELIST_SYNTHETIC|WHITELIST_ARCTURIAN|WHITELIST_MENTOR)
 //=================================================
 
 // Objective priorities

@@ -16,6 +16,14 @@ var/list/whitelist = list()
 		return 0
 	return ("[M.ckey]" in whitelist)
 
+/proc/can_play_special_job(var/client/client, var/job)
+	if(client.admin_holder && (client.admin_holder.rights & R_ADMIN))
+		return TRUE
+	if(job == "Queen")
+		var/datum/caste_datum/C = RoleAuthority.castes_by_name[CASTE_QUEEN]
+		return C.can_play_caste(client, CASTE_QUEEN)
+	return TRUE
+
 /var/list/alien_whitelist = list()
 
 /hook/startup/proc/loadAlienWhitelist()

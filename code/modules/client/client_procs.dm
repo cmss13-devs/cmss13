@@ -102,6 +102,9 @@
 	switch(href_list["action"])
 		if ("openLink")
 			src << link(href_list["link"])
+		if ("proccall")
+			var/proc_to_call = text2path(href_list["procpath"])
+			call(src, proc_to_call)()
 
 	return ..()	//redirect to hsrc.Topic()
 

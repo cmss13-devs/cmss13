@@ -160,28 +160,67 @@
 	prefs.be_special ^= role_flag
 	prefs.save_preferences()
 	to_chat(src, "You will [(prefs.be_special & role_flag) ? "now" : "no longer"] be considered for [role] events (where possible).")
-	 
 
-/client/verb/toggle_ignore_self() // Toggle whether anything will happen when you click yourself in non-help intent
-	set name = "Toggle the Ability to Hurt Yourself"
+
+/client/verb/toggle_prefs() // Toggle whether anything will happen when you click yourself in non-help intent
+	set name = "Toggle Preferences"
 	set category = "Preferences"
-	set desc = "Toggles whether clicking on yourself in non-help intent will do anything"
+	set desc = "Toggles a specific toggleable preference"
 	
+	var/dat = {"
+		<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ignore_self'>Toggle the Ability to Hurt Yourself</a><br>
+		<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_help_intent_safety'>Toggle Help Intent Safety</a><br>
+		<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject'>Toggle Guns Auto-Ejecting Magazines</a><br>
+		<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject_to_hand'>Toggle Guns Auto-Ejecting Magazines to Your Hands</a><br>
+		<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle 'Unload Weapon' Ejecting Magazines to Your Hands</a><br>
+	"}
+
+	src << browse(dat, "window=togglepreferences;size=475x110")
+
+/client/proc/toggle_ignore_self() // Toggle whether anything will happen when you click yourself in non-help intent
 	prefs.toggle_prefs ^= TOGGLE_IGNORE_SELF
-	prefs.save_preferences()
 	if(prefs.toggle_prefs & TOGGLE_IGNORE_SELF)
 		to_chat(src, "Clicking on yourself in non-help intent will no longer do anything.")
 	else
 		to_chat(src, "Clicking on yourself in non-help intent can harm you again.")
-
-/client/verb/toggle_help_intent_safety() // Toggle whether anything will happen when you click yourself in non-help intent
-	set name = "Toggle Help Intent Safety"
-	set category = "Preferences"
-	set desc = "Toggles whether help intent will be harmless"
-
-	prefs.toggle_prefs ^= TOGGLE_HELP_INTENT_SAFETY
 	prefs.save_preferences()
+
+/client/proc/toggle_help_intent_safety() // Toggle whether anything will happen when you click on someone with help intent
+	prefs.toggle_prefs ^= TOGGLE_HELP_INTENT_SAFETY
 	if(prefs.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY)
 		to_chat(src, "Help intent will now be completely harmless.")
 	else
 		to_chat(src, "Help intent can perform harmful actions again.")
+	prefs.save_preferences()
+
+/client/proc/toggle_auto_eject() // Toggle whether guns with auto-ejectors will automatically eject magazines
+	prefs.toggle_prefs ^= TOGGLE_AUTO_EJECT_MAGAZINE_OFF
+	if(prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF)
+		var/msg = "Guns with auto-ejectors will no longer automatically eject their magazines."
+		if (prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
+			prefs.toggle_prefs ^= TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND
+			msg += " The preference for auto-ejecting magazines to your hand has been toggled off."
+		to_chat(src, msg)
+	else
+		to_chat(src, "Guns with auto-ejectors will automatically eject their magazines.")
+	prefs.save_preferences()
+
+/client/proc/toggle_auto_eject_to_hand() // Toggle whether guns with auto-ejectors will eject their magazines to your offhand
+	prefs.toggle_prefs ^= TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND
+	if(prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
+		var/msg = "Guns with auto-ejectors will eject their magazines to your offhand."
+		if (prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF)
+			prefs.toggle_prefs ^= TOGGLE_AUTO_EJECT_MAGAZINE_OFF
+			msg += " The preference for removing magazine auto-ejecting has been toggled off."
+		to_chat(src, msg)
+	else
+		to_chat(src, "Guns with auto-ejectors will no longer eject their magazines to your offhand.")
+	prefs.save_preferences()
+
+/client/proc/toggle_eject_to_hand() // Toggle whether unloading a magazine with the 'Unload Weapon' verb will put the magazine in your offhand
+	prefs.toggle_prefs ^= TOGGLE_EJECT_MAGAZINE_TO_HAND
+	if(prefs.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND)
+		to_chat(src, "The 'Unload Weapon' verb will put magazines in your offhand.")
+	else
+		to_chat(src, "The 'Unload Weapon' verb will no longer put magazines in your offhand.")
+	prefs.save_preferences()

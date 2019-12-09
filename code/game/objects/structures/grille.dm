@@ -7,6 +7,7 @@
 	anchored = 1
 	debris = list(/obj/item/stack/rods)
 	flags_atom = FPRINT|CONDUCT
+	flags_can_pass_all = PASS_THROUGH|PASS_BUILDING_ONLY
 	layer = OBJ_LAYER
 	health = 10
 	var/destroyed = 0

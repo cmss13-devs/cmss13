@@ -349,6 +349,12 @@ datum/preferences
 			</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_MIDDLE_MOUSE_CLICK]'><b>[toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "On" : "Off"]</b></a><br>"
 	dat += "<b>Toggle Directional Assist: \
 			</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_DIRECTIONAL_ATTACK]'><b>[toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK ? "On" : "Off"]</b></a><br>"
+	dat += "<b>Toggle Magazine Auto-Ejection: \
+			</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_AUTO_EJECT_MAGAZINE_OFF];flag_undo=[TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND]'><b>[!(toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF) ? "On" : "Off"]</b></a><br>"
+	dat += "<b>Toggle Magazine Auto-Ejection to Offhand: \
+			</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND];flag_undo=[TOGGLE_AUTO_EJECT_MAGAZINE_OFF]'><b>[toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND ? "On" : "Off"]</b></a><br>"
+	dat += "<b>Toggle Magazine Manual Ejection to Offhand: \
+			</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_EJECT_MAGAZINE_TO_HAND]'><b>[toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND ? "On" : "Off"]</b></a><br>"
 
 	if(config.allow_Metadata)
 		dat += "<b>OOC Notes:</b> <a href='?_src_=prefs;preference=metadata;task=input'> Edit </a><br>"
@@ -912,13 +918,6 @@ datum/preferences
 					if(new_metadata)
 						metadata = sanitize(copytext(new_metadata,1,MAX_MESSAGE_LEN))
 
-				/*
-				if("b_type")
-					var/new_b_type = input(user, "Choose your character's blood-type:", "Character Preference") as null|anything in list( "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" )
-					if(new_b_type)
-						b_type = new_b_type
-				*/
-
 				if("hair")
 					if(species == "Human")
 						var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference") as color|null
@@ -1072,10 +1071,6 @@ datum/preferences
 							organ_data[limb] = null
 							if(third_limb)
 								organ_data[third_limb] = null
-//						if("Amputated")
-//							organ_data[limb] = "amputated"
-//							if(second_limb)
-//								organ_data[second_limb] = "amputated"
 						if("Prothesis")
 							organ_data[limb] = "cyborg"
 							if(second_limb)
@@ -1207,7 +1202,10 @@ datum/preferences
 
 				if("toggle_prefs")
 					var/flag = text2num(href_list["flag"])
+					var/flag_undo = text2num(href_list["flag_undo"])
 					toggle_prefs ^= flag
+					if (toggle_prefs & flag && toggle_prefs & flag_undo)
+						toggle_prefs ^= flag_undo
 
 				if("save")
 					save_preferences()

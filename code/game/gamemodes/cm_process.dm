@@ -188,27 +188,25 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 		if (where == 0 && M.loc)
 			where = M.loc
 		switch(where.z)
-			if(3)//On the ship
+			if(MAIN_SHIP_Z_LEVEL)//On the ship
 				numXenosShip++
 				numXenosShipAres++
 				xenosShipLocations+=where
-			if(1)//planet
+			if(SURFACE_Z_LEVEL, LOW_ORBIT_Z_LEVEL) // Planet or transit
 				numXenosPlanet++
 				xenosPlanetLocations+=where
-			else numXenosPlanet++ //Elsewhere, nullspace, transit
 
 	for (var/mob/M in living_human_list)
 		var/atom/where = M
 		if (where == 0 && M.loc)
 			where = M.loc
 		switch(where.z)
-			if(3) //On the ship.
+			if(MAIN_SHIP_Z_LEVEL) //On the ship.
 				numHostsShip++
-				hostsShipLocations+=where
-			if(1)//planet
+				hostsShipLocations += where
+			if(SURFACE_Z_LEVEL, LOW_ORBIT_Z_LEVEL) // Planet or transit
 				numHostsPlanet++
-				hostsPlanetLocations+=where
-			else numHostsPlanet++ //Elsewhere, nullspace, transit
+				hostsPlanetLocations += where
 
 	if (world.time > nextAdminBioscan)
 		nextAdminBioscan += MINUTES_30//every 30 minutes, straight
@@ -219,16 +217,16 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 	//Pick one random location to disclose
 	var/RandomHostsPlanetLocation = ""
 	if (hostsPlanetLocations.len>0)
-		RandomHostsPlanetLocation = get_area(hostsPlanetLocations[rand(1, hostsPlanetLocations.len)]).name
+		RandomHostsPlanetLocation = get_area(pick(hostsPlanetLocations)).name
 	var/RandomHostsShipLocation = ""
 	if (hostsShipLocations.len>0)
-		RandomHostsShipLocation = get_area(hostsShipLocations[rand(1, hostsShipLocations.len)]).name
+		RandomHostsShipLocation = get_area(pick(hostsShipLocations)).name
 	var/RandomXenosPlanetLocation = ""
 	if (xenosPlanetLocations.len>0)
-		RandomXenosPlanetLocation = get_area(xenosPlanetLocations[rand(1, xenosPlanetLocations.len)]).name
+		RandomXenosPlanetLocation = get_area(pick(xenosPlanetLocations)).name
 	var/RandomXenosShipLocation = ""
 	if (xenosShipLocations.len>0)
-		RandomXenosShipLocation = get_area(xenosShipLocations[rand(1, xenosShipLocations.len)]).name
+		RandomXenosShipLocation = get_area(pick(xenosShipLocations)).name
 
 	if(world.time > nextPredatorBioscan)
 		nextPredatorBioscan += MINUTES_5//5 minutes, straight

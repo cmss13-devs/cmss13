@@ -54,7 +54,7 @@
 /client/verb/swap_hand()
 	set hidden = 1
 	if(istype(mob, /mob/living/carbon))
-		mob:swap_hand()
+		mob.swap_hand()
 	if(istype(mob,/mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = mob
 		R.cycle_modules()

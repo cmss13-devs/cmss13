@@ -19,7 +19,6 @@
 //Note: Commented out procs are things I left alone and did not revise. Usually AI-related interactions.
 
 // The communications computer
-var/global/cooldown_message = 0 //Based on world.time.
 /obj/structure/machinery/computer/communications
 	name = "communications console"
 	desc = "This can be used for various important functions."
@@ -38,6 +37,8 @@ var/global/cooldown_message = 0 //Based on world.time.
 	var/aicurrmsg = 0
 	var/state = STATE_DEFAULT
 	var/aistate = STATE_DEFAULT
+
+	var/cooldown_message = 0 //Based on world.time.
 
 	var/cooldown_request = 0
 	var/cooldown_destruct = 0

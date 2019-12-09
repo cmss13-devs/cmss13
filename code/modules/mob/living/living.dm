@@ -348,8 +348,8 @@
 	..()
 
 /mob/living/launch_towards(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
-	if(!target || !src)
-		return 0
+	if(!target || !src || buckled)
+		return
 	if(pulling)
 		stop_pulling() //being thrown breaks pulls.
 	if(pulledby)

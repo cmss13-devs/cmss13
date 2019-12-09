@@ -343,8 +343,10 @@ cases. Override_icon_state should be a list.*/
 // Set disable_warning to 1 if you wish it to not give you outputs.
 // warning_text is used in the case that you want to provide a specific warning for why the item cannot be equipped.
 /obj/item/proc/mob_can_equip(M as mob, slot, disable_warning = 0)
-	if(!slot) return 0
-	if(!M) return 0
+	if(!slot)
+		return 0
+	if(!M)
+		return 0
 
 	if(ishuman(M))
 		//START HUMAN

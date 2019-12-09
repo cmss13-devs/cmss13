@@ -52,6 +52,7 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "extinguish"
 	var/life = 15.0
+	flags_pass = PASS_THROUGH|PASS_OVER|PASS_MOB|PASS_UNDER
 	mouse_opacity = 0
 
 /obj/effect/particle_effect/water/Move(turf/newloc)

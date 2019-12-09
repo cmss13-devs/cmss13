@@ -187,38 +187,48 @@
 //set disable_warning to disable the 'you are unable to equip that' warning.
 //unset redraw_mob to prevent the mob from being redrawn at the end.
 /mob/proc/equip_to_slot_if_possible(obj/item/W, slot, ignore_delay = 1, del_on_fail = 0, disable_warning = 0, redraw_mob = 1, permanent = 0)
-	if(!istype(W)) return
+	if(!istype(W))
+		return FALSE
 
 	if(!W.mob_can_equip(src, slot, disable_warning))
-		if(del_on_fail) qdel(W)
-		else
-			if(!disable_warning) to_chat(src, SPAN_WARNING("You are unable to equip that.")) //Only print if del_on_fail is false
-		return
+		if(del_on_fail)
+			qdel(W)
+		else if(!disable_warning)
+			to_chat(src, SPAN_WARNING("You are unable to equip that.")) //Only print if del_on_fail is false
+		return FALSE
+	
 	var/start_loc = W.loc
+
 	if(W.time_to_equip && !ignore_delay)
-		spawn(0)
-			if(!do_after(src, W.time_to_equip, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-				to_chat(src, "You stop putting on \the [W]")
-			else
-				equip_to_slot(W, slot, redraw_mob) //This proc should not ever fail.
-				if(permanent)
-					W.flags_inventory |= CANTSTRIP
-					W.flags_item |= NODROP
-				if(W.loc == start_loc && get_active_hand() != W)
-					//They moved it from hands to an inv slot or vice versa. This will unzoom and unwield items -without- triggering lights.
-					if(W.zoom) W.zoom(src)
-					if(W.flags_item & TWOHANDED) W.unwield(src)
-		return 1
-	else
-		equip_to_slot(W, slot, redraw_mob) //This proc should not ever fail.
-		if(permanent)
-			W.flags_inventory |= CANTSTRIP
-			W.flags_item |= NODROP
-		if(W.loc == start_loc && get_active_hand() != W)
-			//They moved it from hands to an inv slot or vice versa. This will unzoom and unwield items -without- triggering lights.
-			if(W.zoom) W.zoom(src)
-			if(W.flags_item & TWOHANDED) W.unwield(src)
-		return 1
+		INVOKE_ASYNC(src, .proc/equip_to_slot_timed, W, slot, redraw_mob, permanent, start_loc)
+		return TRUE
+	
+	equip_to_slot(W, slot, redraw_mob) //This proc should not ever fail.
+	if(permanent)
+		W.flags_inventory |= CANTSTRIP
+		W.flags_item |= NODROP
+	if(W.loc == start_loc && get_active_hand() != W)
+		//They moved it from hands to an inv slot or vice versa. This will unzoom and unwield items -without- triggering lights.
+		if(W.zoom) 
+			W.zoom(src)
+		if(W.flags_item & TWOHANDED) 
+			W.unwield(src)
+	return TRUE
+
+//This is an UNSAFE proc. It handles situations of timed equips.
+/mob/proc/equip_to_slot_timed(obj/item/W, slot, redraw_mob = 1, permanent = 0, start_loc)
+	if(!do_after(src, W.time_to_equip, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		to_chat(src, "You stop putting on \the [W]")
+	equip_to_slot(W, slot, redraw_mob) //This proc should not ever fail.
+	if(permanent)
+		W.flags_inventory |= CANTSTRIP
+		W.flags_item |= NODROP
+	if(W.loc == start_loc && get_active_hand() != W)
+		//They moved it from hands to an inv slot or vice versa. This will unzoom and unwield items -without- triggering lights.
+		if(W.zoom)
+			W.zoom(src)
+		if(W.flags_item & TWOHANDED)
+			W.unwield(src)
 
 //This is an UNSAFE proc. It merely handles the actual job of equipping. All the checks on whether you can or can't eqip need to be done before! Use mob_can_equip() for that task.
 //In most cases you will want to use equip_to_slot_if_possible()
@@ -373,6 +383,8 @@
 		return
 	show_inv(M)
 
+/mob/proc/swap_hand()
+	hand = !hand
 
 //attempt to pull/grab something. Returns true upon success.
 /mob/proc/start_pulling(atom/movable/AM, lunge, no_msg)

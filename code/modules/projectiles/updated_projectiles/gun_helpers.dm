@@ -124,12 +124,14 @@ DEFINES in setup.dm, referenced here.
 
 	if(in_hand == src && (flags_item & TWOHANDED))
 		unload(user)//It has to be held if it's a two hander.
-	else ..()
+	else 
+		..()
 
 /obj/item/weapon/gun/launch_towards(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
 	if(harness_check(thrower))
 		to_chat(thrower, SPAN_WARNING("\The [src] clanks on the ground."))
-	else ..()
+	else 
+		..()
 
 /*
 Note: pickup and dropped on weapons must have both the ..() to update zoom AND twohanded,
@@ -200,24 +202,34 @@ they're not supposed to be thrown. Either way, this fix
 should be alright.
 */
 /obj/item/weapon/gun/proc/harness_check(mob/user)
-	if(user && ishuman(user))
-		var/mob/living/carbon/human/owner = user
-		if(has_attachment(/obj/item/attachable/magnetic_harness) || istype(src,/obj/item/weapon/gun/smartgun))
-			var/obj/item/I = owner.wear_suit
-			if(istype(I,/obj/item/clothing/suit/storage/marine))
-				harness_return(user)
-				return 1
+	if(!ishuman(user))
+		return FALSE
+	
+	var/mob/living/carbon/human/owner = user
+
+	if(!has_attachment(/obj/item/attachable/magnetic_harness) && !istype(src, /obj/item/weapon/gun/smartgun))
+		return FALSE
+	
+	var/obj/item/I = owner.wear_suit
+	if(!istype(I, /obj/item/clothing/suit/storage/marine))
+		return FALSE
+
+	harness_return(user)
+	return TRUE
 
 /obj/item/weapon/gun/proc/harness_return(mob/living/carbon/human/user)
 	set waitfor = 0
 	sleep(3)
-	if(loc && user)
-		if(isnull(user.s_store) && isturf(loc))
-			var/obj/item/I = user.wear_suit
-			user.equip_to_slot_if_possible(src, WEAR_J_STORE)
-			if(user.s_store == src)
-				to_chat(user, SPAN_WARNING("[src] snaps into place on [I]."))
-			user.update_inv_s_store()
+	if(!loc || !user)
+		return
+	if(user.s_store || !isturf(loc))
+		return
+	
+	var/obj/item/I = user.wear_suit
+	user.equip_to_slot_if_possible(src, WEAR_J_STORE)
+	if(user.s_store == src)
+		to_chat(user, SPAN_WARNING("[src] snaps into place on [I]."))
+	user.update_inv_s_store()
 
 /obj/item/weapon/gun/attack_self(mob/user)
 	..()
@@ -227,14 +239,18 @@ should be alright.
 
 	//There are only two ways to interact here.
 	if(flags_item & TWOHANDED)
-		if(flags_item & WIELDED) unwield(user)//Trying to unwield it
-		else wield(user)//Trying to wield it
-	else unload(user)//We just unload it.
+		if(flags_item & WIELDED) 
+			unwield(user) // Trying to unwield it
+		else 
+			wield(user) // Trying to wield it
+	else
+		unload(user) // We just unload it.
 
 //Clicking stuff onto the gun.
 //Attachables & Reloading
 /obj/item/weapon/gun/attackby(obj/item/I, mob/user)
-	if(flags_gun_features & GUN_BURST_FIRING) return
+	if(flags_gun_features & GUN_BURST_FIRING) 
+		return
 
 	if(istype(I,/obj/item/attachable))
 		if(check_inactive_hand(user)) attach_to_gun(user,I)
@@ -275,7 +291,7 @@ should be alright.
 			return
 		if(istype(src, AM.gun_type) || (AM.type in src.accepted_ammo))
 			if(current_mag)
-				unload(user,0,1)
+				unload(user, FALSE, TRUE)
 			to_chat(user, SPAN_NOTICE("You start a tactical reload."))
 			var/old_mag_loc = AM.loc
 			var/tac_reload_time = 15
@@ -301,9 +317,6 @@ should be alright.
 /obj/item/weapon/proc/unique_action(mob/M) //moved this up a path to make macroing for other weapons easier -spookydonut
 	return
 
-///obj/item/weapon/gun/proc/unique_action(mob/M) //Anything unique the gun can do, like pump or spin or whatever.
-//	return
-
 /obj/item/weapon/gun/proc/check_inactive_hand(mob/user)
 	if(user)
 		var/obj/item/weapon/gun/in_hand = user.get_inactive_hand()
@@ -322,11 +335,13 @@ should be alright.
 	return 1
 
 /obj/item/weapon/gun/proc/has_attachment(A)
-	if(!A) return
+	if(!A) 
+		return FALSE
 	for(var/slot in attachments)
 		var/obj/item/attachable/R = attachments[slot]
 		if(R && istype(R, A))
-			return 1
+			return TRUE
+	return FALSE
 
 /obj/item/weapon/gun/proc/check_iff()
 	iff_enabled_current = FALSE
@@ -443,7 +458,8 @@ should be alright.
 		to_chat(user, SPAN_WARNING("You need a gun in your active hand to do that!"))
 		return
 
-	if(G.flags_gun_features & GUN_BURST_FIRING) return
+	if(G.flags_gun_features & GUN_BURST_FIRING) 
+		return
 
 	return G
 
@@ -711,11 +727,19 @@ should be alright.
 	set desc = "Removes the magazine from your current gun and drops it on the ground, or clears the chamber if your gun is already empty."
 	set src = usr.contents
 
-	var/obj/item/weapon/gun/G = get_active_firearm(usr)
-	if(!G) return
+	var/mob/user = usr
+	var/obj/item/weapon/gun/G = get_active_firearm(user)
+	if(!G) 
+		return
 	src = G
 
-	unload(usr,,1) //We want to drop the mag on the ground.
+	var/drop_to_ground = TRUE
+	if (user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND)
+		drop_to_ground = FALSE
+		unwield(user)
+		user.swap_hand()
+	
+	unload(user, FALSE, drop_to_ground) //We want to drop the mag on the ground.
 
 /obj/item/weapon/gun/verb/use_unique_action()
 	set category = "Weapons"

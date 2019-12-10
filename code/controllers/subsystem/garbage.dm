@@ -64,13 +64,12 @@ var/datum/subsystem/garbage/SSgarbage
 		return
 
 	var/list/L = list()
-	L += "<b>Garbage Collector Forced Deletions in this round</b><br>"
 	for(var/A in SSgarbage.hard_del_profiling)
 		L += "<br>[A] = [SSgarbage.hard_del_profiling[A]]"
 	if(L.len == 1)
 		to_chat(usr, "No garbage collector deletions this round")
 		return
-	usr << browse(jointext(L,""),"window=harddellogs")
+	show_browser(usr, jointext(L,""), "Garbage Collector Forced Deletions in This Round", "harddellogs")
 
 
 

@@ -93,7 +93,7 @@
 	if(!on)
 		return
 
-	var/dat = "<html><head><title>[src]</title></head><body><TT>"
+	var/dat = "<html><body><TT>"
 
 	if(!istype(src, /obj/item/device/radio/headset)) //Headsets dont get a mic button
 		dat += "Microphone: [broadcasting ? "<A href='byond://?src=\ref[src];talk=0'>Engaged</A>" : "<A href='byond://?src=\ref[src];talk=1'>Disengaged</A>"]<BR>"
@@ -111,8 +111,7 @@
 	for (var/ch_name in channels)
 		dat+=text_sec_channel(ch_name, channels[ch_name])
 	dat+={"[text_wires()]</TT></body></html>"}
-	user << browse(dat, "window=radio")
-	onclose(user, "radio")
+	show_browser(user, dat, name, "radio")
 	return
 
 /obj/item/device/radio/proc/text_wires()
@@ -139,7 +138,7 @@
 		return
 
 	if (!(issilicon(usr) || (usr.contents.Find(src) || ( in_range(src, usr) && istype(loc, /turf) ))))
-		usr << browse(null, "window=radio")
+		close_browser(usr, "radio")
 		return
 	usr.set_interaction(src)
 	if (href_list["track"])
@@ -648,8 +647,7 @@
 		for (var/ch_name in channels)
 			dat+=text_sec_channel(ch_name, channels[ch_name])
 	dat+={"[text_wires()]</TT></body></html>"}
-	user << browse(dat, "window=radio")
-	onclose(user, "radio")
+	show_browser(user, dat, name, "radio")
 	return
 
 

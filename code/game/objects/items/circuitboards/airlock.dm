@@ -19,7 +19,7 @@
 	if(H.getBrainLoss() >= 60)
 		return
 
-	var/t1 = text("<B>Access control</B><br>\n")
+	var/t1
 
 
 	if (last_configurator)
@@ -50,7 +50,7 @@
 
 	t1 += text("<p><a href='?src=\ref[];close=1'>Close</a></p>\n", src)
 
-	user << browse(t1, "window=airlock_electronics")
+	show_browser(user, t1, "Access Control", "airlock_electronics")
 	onclose(user, "airlock")
 
 
@@ -59,7 +59,7 @@
 	if (usr.stat || usr.is_mob_restrained() || (!ishuman(usr) && !istype(usr,/mob/living/silicon)))
 		return
 	if (href_list["close"])
-		usr << browse(null, "window=airlock")
+		close_browser(usr, "airlock")
 		return
 
 	if (href_list["login"])

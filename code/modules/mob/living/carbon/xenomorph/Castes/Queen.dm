@@ -542,7 +542,7 @@
 	
 	ovipositor = FALSE
 	map_view = 0
-	src << browse(null, "window=queenminimap")
+	close_browser(src, "queenminimap")
 	update_icons()
 	new /obj/ovipositor(loc)
 
@@ -617,3 +617,26 @@
 
 /mob/living/carbon/Xenomorph/Queen/gib(var/cause = "gibbing")
 	death(cause, 1) //we need the body to show the queen's name at round end.
+
+/mob/living/carbon/Xenomorph/Queen/proc/update_mapview(var/close = FALSE, var/force_update = FALSE)
+	if(close)
+		map_view = 0
+		close_browser(src, "queenminimap")
+		return
+	map_view = 1
+	if(world.time > next_map_gen)
+		generate_xeno_mapview()
+		next_map_gen = world.time + 6000
+	if(!xeno_mapview_overlay || force_update)
+		overlay_xeno_mapview(hivenumber)
+	src << browse_rsc(xeno_mapview_overlay, "xeno_minimap.png")
+	show_browser(src, "<img src=xeno_minimap.png>", "Queen Mind Map", "queenminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
+	onclose(src, "queenminimap", src)
+
+/mob/living/carbon/Xenomorph/Queen/Topic(href, href_list)
+	if (href_list["close"]) // Closing minimap properly
+		map_view = 0
+		close_browser(src, "queenminimap")
+		return
+
+	..()

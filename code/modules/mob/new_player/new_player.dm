@@ -25,11 +25,12 @@
 	new_player_panel_proc()
 
 
-/mob/new_player/proc/new_player_panel_proc()
+/mob/new_player/proc/new_player_panel_proc(var/refresh = FALSE)
 	var/tempnumber = rand(1, 999)
 	var/postfix_text = client.prefs.xeno_postfix ? ("-"+client.prefs.xeno_postfix) : ""
 	var/prefix_text = client.prefs.xeno_prefix ? client.prefs.xeno_prefix : "XX"
 	var/xeno_text = "[prefix_text]-[tempnumber][postfix_text]"
+	var/round_start = !ticker || !ticker.mode || ticker.current_state <= GAME_STATE_PREGAME
 
 	var/output = "<div align='center'>Welcome,"
 	output +="<br><b>[client.prefs.real_name]</b>"
@@ -38,7 +39,7 @@
 
 	output += "<p><a href='byond://?src=\ref[src];lobby_choice=show_statistics'>View Statistics</A></p>"
 
-	if(!ticker || !ticker.mode || ticker.current_state <= GAME_STATE_PREGAME)
+	if(round_start)
 		output += "<p>\[ [ready? "<b>Ready</b>":"<a href='byond://?src=\ref[src];lobby_choice=ready'>Ready</a>"] | [ready? "<a href='byond://?src=\ref[src];lobby_choice=ready'>Not Ready</a>":"<b>Not Ready</b>"] \]</p>"
 		output += "<b>Be Xenomorph:</b> [client.prefs.be_special & BE_ALIEN ? "Yes" : "No"]"
 
@@ -68,8 +69,9 @@
 			output += "<p><b><a href='byond://?src=\ref[src];lobby_choice=showpoll'>Show Player Polls</A>[newpoll?" (NEW!)":""]</b></p>"
 
 	output += "</div>"
-
-	src << browse(output,"window=playersetup;size=240x320;can_close=0")
+	if (refresh)
+		close_browser(src, "playersetup")
+	show_browser(src, output, null, "playersetup", "size=240x[round_start ? 330 : 380];can_close=0;can_minimize=0")
 	return
 
 /mob/new_player/Stat()
@@ -116,8 +118,7 @@
 			new_player_panel_proc()
 
 		if("refresh")
-			src << browse(null, "window=playersetup") //closes the player setup window
-			new_player_panel_proc()
+			new_player_panel_proc(TRUE)
 
 		if("observe")
 
@@ -229,100 +230,6 @@
 				if(client) client.prefs.process_link(src, href_list)
 			else new_player_panel()
 
-			/*
-	else if(!href_list["late_join"])
-
-	if("privacy_poll")
-		establish_db_connection()
-		if(!dbcon.IsConnected())
-			return
-		var/voted = 0
-
-		//First check if the person has not voted yet.
-		var/DBQuery/query = dbcon.NewQuery("SELECT * FROM erro_privacy WHERE ckey='[src.ckey]'")
-		query.Execute()
-		while(query.NextRow())
-			voted = 1
-			break
-
-		//This is a safety switch, so only valid options pass through
-		var/option = "UNKNOWN"
-		switch(href_list["privacy_poll"])
-			if("signed")
-				option = "SIGNED"
-			if("anonymous")
-				option = "ANONYMOUS"
-			if("nostats")
-				option = "NOSTATS"
-			if("later")
-				usr << browse(null,"window=privacypoll")
-				return
-			if("abstain")
-				option = "ABSTAIN"
-
-		if(option == "UNKNOWN")
-			return
-
-		if(!voted)
-			var/sql = "INSERT INTO erro_privacy VALUES (null, Now(), '[src.ckey]', '[option]')"
-			var/DBQuery/query_insert = dbcon.NewQuery(sql)
-			query_insert.Execute()
-			to_chat(usr, "<b>Thank you for your vote!</b>")
-			usr << browse(null,"window=privacypoll")
-
-
-	if("pollid")
-
-		var/pollid = href_list["pollid"]
-		if(istext(pollid))
-			pollid = text2num(pollid)
-		if(isnum(pollid))
-			src.poll_player(pollid)
-		return
-
-
-	if(href_list["votepollid"] && href_list["votetype"])
-		var/pollid = text2num(href_list["votepollid"])
-		var/votetype = href_list["votetype"]
-		switch(votetype)
-			if("OPTION")
-				var/optionid = text2num(href_list["voteoptionid"])
-				vote_on_poll(pollid, optionid)
-			if("TEXT")
-				var/replytext = href_list["replytext"]
-				log_text_poll_reply(pollid, replytext)
-			if("NUMVAL")
-				var/id_min = text2num(href_list["minid"])
-				var/id_max = text2num(href_list["maxid"])
-
-				if( (id_max - id_min) > 100 )	//Basic exploit prevention
-					to_chat(usr, "The option ID difference is too big. Please contact administration or the database admin.")
-					return
-
-				for(var/optionid = id_min; optionid <= id_max; optionid++)
-					if(!isnull(href_list["o[optionid]"]))	//Test if this optionid was replied to
-						var/rating
-						if(href_list["o[optionid]"] == "abstain")
-							rating = null
-						else
-							rating = text2num(href_list["o[optionid]"])
-							if(!isnum(rating))
-								return
-
-						vote_on_numval_poll(pollid, optionid, rating)
-			if("MULTICHOICE")
-				var/id_min = text2num(href_list["minoptionid"])
-				var/id_max = text2num(href_list["maxoptionid"])
-
-				if( (id_max - id_min) > 100 )	//Basic exploit prevention
-					to_chat(usr, "The option ID difference is too big. Please contact administration or the database admin.")
-					return
-
-				for(var/optionid = id_min; optionid <= id_max; optionid++)
-					if(!isnull(href_list["option_[optionid]"]))	//Test if this optionid was selected
-						vote_on_poll(pollid, optionid, 1)
-		*/
-
 /mob/new_player/proc/AttemptLateSpawn(rank, spawning_at)
 	if (src != usr)
 		return
@@ -386,7 +293,7 @@
 	var/mins = (mills % 36000) / 600
 	var/hours = mills / 36000
 
-	var/dat = "<html><body><center>"
+	var/dat = "<html><body onselectstart='return false;'><center>"
 	dat += "Round Duration: [round(hours)]h [round(mins)]m<br>"
 
 	if(EvacuationAuthority)
@@ -408,7 +315,7 @@
 		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"
 
 	dat += "</center>"
-	src << browse(dat, "window=latechoices;size=300x640;can_close=1")
+	show_browser(src, dat, "Late Join", "latechoices")
 
 
 /mob/new_player/proc/create_character()
@@ -469,17 +376,17 @@
 	dat += "<h4>Crew Manifest:</h4>"
 	dat += data_core.get_manifest(OOC = 1)
 
-	src << browse(dat, "window=manifest;size=400x420;can_close=1")
+	show_browser(src, dat, "Crew Manifest", "manifest")
 
 /mob/new_player/Move()
 	return 0
 
 /mob/new_player/proc/close_spawn_windows()
-	src << browse(null, "window=latechoices") //closes late choices window
-	src << browse(null, "window=playersetup") //closes the player setup window
+	close_browser(src, "latechoices") //closes late choices window
+	close_browser(src, "playersetup") //closes the player setup window
 	src << sound(null, repeat = 0, wait = 0, volume = 85, channel = 1) // Stops lobby music.
-	if(src:open_uis)
-		for(var/datum/nanoui/ui in src:open_uis)
+	if(src.open_uis)
+		for(var/datum/nanoui/ui in src.open_uis)
 			if(ui.allowed_user_stat == -1)
 				ui.close()
 				continue

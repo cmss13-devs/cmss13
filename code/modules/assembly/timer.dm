@@ -70,19 +70,17 @@
 		return 0
 	var/second = time % 60
 	var/minute = (time - second) / 60
-	var/dat = text("<TT><B>Timing Unit</B>\n[] []:[]\n<A href='?src=\ref[];tp=-30'>-</A> <A href='?src=\ref[];tp=-1'>-</A> <A href='?src=\ref[];tp=1'>+</A> <A href='?src=\ref[];tp=30'>+</A>\n</TT>", (timing ? text("<A href='?src=\ref[];time=0'>Timing</A>", src) : text("<A href='?src=\ref[];time=1'>Not Timing</A>", src)), minute, second, src, src, src, src)
+	var/dat = text("<TT>[] []:[]\n<A href='?src=\ref[];tp=-30'>-</A> <A href='?src=\ref[];tp=-1'>-</A> <A href='?src=\ref[];tp=1'>+</A> <A href='?src=\ref[];tp=30'>+</A>\n</TT>", (timing ? text("<A href='?src=\ref[];time=0'>Timing</A>", src) : text("<A href='?src=\ref[];time=1'>Not Timing</A>", src)), minute, second, src, src, src, src)
 	dat += "<BR><BR><A href='?src=\ref[src];refresh=1'>Refresh</A>"
 	dat += "<BR><BR><A href='?src=\ref[src];close=1'>Close</A>"
-	user << browse(dat, "window=timer")
-	onclose(user, "timer")
+	show_browser(user, dat, "Timing Unit", "timer")
 	return
 
 
 /obj/item/device/assembly/timer/Topic(href, href_list)
 	..()
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !in_range(loc, usr))
-		usr << browse(null, "window=timer")
-		onclose(usr, "timer")
+		close_browser(usr, "timer")
 		return
 
 	if(href_list["time"])
@@ -97,7 +95,7 @@
 		time = min(max(round(time), 3), 600)
 
 	if(href_list["close"])
-		usr << browse(null, "window=timer")
+		close_browser(usr, "timer")
 		return
 
 	if(usr)

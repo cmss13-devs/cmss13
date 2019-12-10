@@ -77,18 +77,7 @@
 
 /datum/action/xeno_action/show_minimap/action_activate()
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
-	if(X.map_view)
-		X.map_view = 0
-		X << browse(null, "window=queenminimap")
-		return
-	X.map_view = 1
-	if(world.time > next_map_gen)
-		generate_xeno_mapview()
-		next_map_gen = world.time + 6000
-	if(!xeno_mapview_overlay)
-		overlay_xeno_mapview(X.hivenumber)
-	X << browse_rsc(xeno_mapview_overlay, "xeno_minimap.png")
-	X << browse("<html><head><script type=\"text/javascript\">function ref() { document.body.innerHTML = '<img src=\"xeno_minimap.png?'+Math.random()+'\">'; } setInterval('ref()',1000);</script></head><body><img src=xeno_minimap.png></body></html>","window=queenminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
+	X.update_mapview(X.map_view, TRUE)
 
 // Shift Spits
 /datum/action/xeno_action/shift_spits

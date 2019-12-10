@@ -175,7 +175,7 @@
 		<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle 'Unload Weapon' Ejecting Magazines to Your Hands</a><br>
 	"}
 
-	src << browse(dat, "window=togglepreferences;size=475x110")
+	show_browser(src, dat, "Toggle Preferences", "togglepreferences", "size=475x200")
 
 /client/proc/toggle_ignore_self() // Toggle whether anything will happen when you click yourself in non-help intent
 	prefs.toggle_prefs ^= TOGGLE_IGNORE_SELF

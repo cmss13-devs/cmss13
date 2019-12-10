@@ -65,14 +65,12 @@
 /obj/structure/machinery/power/generator_type2/interact(mob/user)
 	if ( (get_dist(src, user) > 1 ) && (!isAI(user)))
 		user.unset_interaction()
-		user << browse(null, "window=teg")
+		close_browser(user, "teg")
 		return
 
 	user.set_interaction(src)
 
-	var/t = "<PRE><B>Thermo-Electric Generator</B><HR>"
-
-	t += "Output : [round(lastgen)] W<BR><BR>"
+	var/t = "Output : [round(lastgen)] W<BR><BR>"
 
 	t += "<B>Cold loop</B><BR>"
 	t += "Temperature: [round(input1.temperature, 0.1)] K<BR>"
@@ -85,8 +83,7 @@
 	t += "<BR><HR><A href='?src=\ref[src];close=1'>Close</A>"
 
 	t += "</PRE>"
-	user << browse(t, "window=teg;size=460x300")
-	onclose(user, "teg")
+	show_browser(user, t, "Thermo-Electric Generator", "teg", "size=460x300")
 	return 1
 
 
@@ -94,7 +91,7 @@
 	..()
 
 	if( href_list["close"] )
-		usr << browse(null, "window=teg")
+		close_browser(usr, "teg")
 		usr.unset_interaction()
 		return 0
 

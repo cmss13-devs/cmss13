@@ -257,27 +257,23 @@
 	var/answer = alert(src, "Which kind of faxes would you like to see?", "Faxes", "CL faxes", "USCM faxes", "Cancel")
 	switch(answer)
 		if("CL faxes")
-			var/body = "<html><head><title>Faxes from the CL</title></head>"
-			body += "<body><B>Faxes:</B>"
-			body += "<br><br>"
+			var/body = "<body>"
 
 			for(var/text in CLFaxes)
 				body += text
 				body += "<br><br>"
 
-			body += "<br><br></body></html>"
-			src << browse(body, "window=clfaxviewer;size=300x600")
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes from the CL", "clfaxviewer", "size=300x600")
 		if("USCM faxes")
-			var/body = "<html><head><title>Faxes</title></head>"
-			body += "<body><B>Faxes:</B>"
-			body += "<br><br>"
+			var/body = "<body>"
 
 			for(var/text in USCMFaxes)
 				body += text
 				body += "<br><br>"
 
-			body += "<br><br></body></html>"
-			src << browse(body, "window=uscmfaxviewer;size=300x600")
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes from the USCM", "uscmfaxviewer", "size=300x600")
 		if("Cancel")
 			return
 
@@ -579,7 +575,7 @@
 		<BR>
 		"}
 
-	usr << browse(dat, "window=events")
+	show_browser(usr, dat, "Events Panel", "events")
 	return
 
 /client/proc/event_panel()
@@ -593,7 +589,7 @@
 /datum/admins/proc/chempanel()
 	if(!check_rights(R_MOD)) return
 
-	var/dat = {"<center><B>Chem Panel</B></center><hr>\n"}
+	var/dat
 	if(check_rights(R_MOD,0))
 		dat += {"<A href='?src=\ref[src];chem_panel=view_reagent'>View Reagent</A><br>
 				"}
@@ -610,7 +606,7 @@
 				<A href='?src=\ref[src];chem_panel=create_custom_reaction'>Create Custom Reaction</A><br>
 				"}
 
-	usr << browse(dat, "window=chempanel;size=210x300")
+	show_browser(usr, dat, "Chem Panel", "chempanel", "size=210x300")
 	return
 
 /client/proc/chem_panel()

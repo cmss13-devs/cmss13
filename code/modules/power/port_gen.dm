@@ -274,7 +274,7 @@ display round(lastgen) and phorontank amount
 	if (get_dist(src, user) > 1 )
 		if (!isAI(user))
 			user.unset_interaction()
-			user << browse(null, "window=port_gen")
+			close_browser(user, "port_gen")
 			return
 
 	user.set_interaction(src)
@@ -325,7 +325,7 @@ display round(lastgen) and phorontank amount
 				power_output++
 				src.updateUsrDialog()
 		if (href_list["action"] == "close")
-			usr << browse(null, "window=port_gen")
+			close_browser(usr, "port_gen")
 			usr.unset_interaction()
 
 /obj/structure/machinery/power/port_gen/pacman/inoperable(var/additional_flags)

@@ -263,7 +263,7 @@ body
 
 	html += "</body></html>"
 
-	usr << browse(html, "window=variables\ref[D];size=475x650")
+	show_browser(usr, html, "View Variables", "variables\ref[D]", "size=475x650")
 
 	return
 
@@ -279,9 +279,9 @@ body
 	if(!(admin_holder.rights & R_DEBUG) && !is_safe_variable(name))
 		return html
 	if(DA)
-		html += "<li style='backgroundColor:white'>(<a href='?_src_=vars;datumedit=\ref[DA];varnameedit=[name]'>E</a>) (<a href='?_src_=vars;datumchange=\ref[DA];varnamechange=[name]'>C</a>) (<a href='?_src_=vars;datummass=\ref[DA];varnamemass=[name]'>M</a>) "
+		html += "<li style='backgroundColor:white'><a href='?_src_=vars;datumedit=\ref[DA];varnameedit=[name]'>E</a><a href='?_src_=vars;datumchange=\ref[DA];varnamechange=[name]'>C</a><a href='?_src_=vars;datummass=\ref[DA];varnamemass=[name]'>M</a> "
 		if(value != initial(DA.vars[name]))
-			html += "<font color='#8B008B'>"
+			html += "<font color='#B300B3'>"
 			change = 1
 	else
 		html += "<li>"
@@ -338,7 +338,6 @@ body
 	else
 		html += "[name] = <span class='value'>[value]</span>"
 	if(change)
-//			html += "<font color='red'> * Changed * </font>"
 		html += "</font>"
 
 	html += "</li>"

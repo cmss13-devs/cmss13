@@ -127,14 +127,14 @@ var/global/datum/controller/gameticker/ticker = new()
 	equip_characters()
 	data_core.manifest()
 
-	for(var/mob/new_player/np in player_list)
-		np.new_player_panel_proc()
-
 	spawn(2)
 		mode.initialize_emergency_calls()
 
 	current_state = GAME_STATE_PLAYING
 
+	for(var/mob/new_player/np in player_list)
+		np.new_player_panel_proc(TRUE)
+	
 	callHook("roundstart")
 
 	//here to initialize the random events nicely at round start
@@ -152,9 +152,6 @@ var/global/datum/controller/gameticker/ticker = new()
 		to_world("<FONT color='blue'><B>Enjoy the game!</B></FONT>")
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
-
-	//start_events() //handles random events and space dust.
-	//new random event system is handled from the MC.
 
 	if(config.autooocmute)
 		to_world(SPAN_DANGER("<B>The OOC channel has been globally disabled due to round start!</B>"))

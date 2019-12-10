@@ -48,7 +48,7 @@
 			</html>
 
 			"}
-	usr << browse("[dat]", "window=map;size=[window_size]")
+	show_browser(usr, dat, name, "map", "size=[window_size]")
 
 /obj/item/map/lazarus_landing_map
 	name = "\improper Lazarus Landing Map"

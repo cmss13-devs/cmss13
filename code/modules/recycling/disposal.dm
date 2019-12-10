@@ -200,7 +200,7 @@
 		user.unset_interaction()
 		return
 
-	var/dat = "<head><title>Waste Disposal Unit</title></head><body><TT><B>Waste Disposal Unit</B><HR>"
+	var/dat = "<body><TT>"
 
 	if(!ai)  //AI can't pull flush handle
 		if(flush)
@@ -220,8 +220,7 @@
 	dat += "Pressure: [disposal_pressure*100/SEND_PRESSURE]%<BR></body>"
 
 	user.set_interaction(src)
-	user << browse(dat, "window=disposal;size=360x170")
-	onclose(user, "disposal")
+	show_browser(user, dat, "Waste Disposal Unit", "disposal")
 
 //Handle machine interaction
 /obj/structure/machinery/disposal/Topic(href, href_list)
@@ -243,7 +242,7 @@
 
 		if(href_list["close"])
 			usr.unset_interaction()
-			usr << browse(null, "window=disposal")
+			close_browser(usr, "disposal")
 			return
 
 		if(href_list["pump"])
@@ -260,7 +259,7 @@
 		if(href_list["eject"])
 			eject()
 	else
-		usr << browse(null, "window=disposal")
+		close_browser(usr, "disposal")
 		usr.unset_interaction()
 		return
 

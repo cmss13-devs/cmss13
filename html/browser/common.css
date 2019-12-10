@@ -1,10 +1,10 @@
-body 
-{ 
+body { 
 	padding: 0;
 	margin: 0;
 	background-color: #272727;
 	font-size: 12px;
 	color: #ffffff;
+	font-family: Verdana, Geneva, sans-serif;
 	line-height: 170%;
 }
 
@@ -14,25 +14,32 @@ hr
 	height: 1px;
 }
 
-a, a:link, a:visited, a:active, .linkOn, .linkOff
-{ 
+input, select, textarea {
+	background-color: #333333;
+	color: #507aac;
+	border: 1px solid #161616;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+button, .button {
+    box-sizing: content-box;
+}
+
+a, a:link, a:visited, a:active, .linkOn, .linkOff, button, .button { 
 	color: #ffffff; 
 	text-decoration: none;
 	background: #40628a;
 	border: 1px solid #161616;
-	padding: 1px 4px 1px 4px;
-	margin: 0 2px 0 0;
+	padding: 0 4px 0 4px;
 	cursor:default;
+	display: inline-block;
 }
 
-a:hover 
-{ 
-	color: #40628a;
-	background: #ffffff;
+a:hover { 
+	background: #507aac;
 }
 
-a.white, a.white:link, a.white:visited, a.white:active
-{ 
+a.white, a.white:link, a.white:visited, a.white:active { 
 	color: #40628a; 
 	text-decoration: none;
 	background: #ffffff;
@@ -42,39 +49,44 @@ a.white, a.white:link, a.white:visited, a.white:active
 	cursor:default;
 }
 
-a.white:hover 
-{ 
+a.white:hover { 
 	color: #ffffff;
 	background: #40628a;
 }
 
-.linkOn, a.linkOn:link, a.linkOn:visited, a.linkOn:active, a.linkOn:hover
-{ 
+.linkOn, a.linkOn:link, a.linkOn:visited, a.linkOn:active, a.linkOn:hover { 
 	color: #ffffff; 
 	background: #2f943c;
 	border-color: #24722e;
 }
 
-.linkOff, a.linkOff:link, a.linkOff:visited, a.linkOff:active, a.linkOff:hover
-{ 
+.linkOff, a.linkOff:link, a.linkOff:visited, a.linkOff:active, a.linkOff:hover { 
 	color: #ffffff; 
 	background: #999999;
 	border-color: #666666;
 }
 
-a.icon, .linkOn.icon, .linkOff.icon
-{
+a.icon, .linkOn.icon, .linkOff.icon {
 	position: relative;
 	padding: 1px 4px 2px 20px;
 }
 
-a.icon img, .linkOn.icon img
-{
+a.icon img, .linkOn.icon img {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 18px;
 	height: 18px;
+}
+
+.inactive, a.inactive:link, a.inactive:visited, a.inactive:active {
+    color: #ffffff;
+    background: #999999;
+    border-color: #666666;
+}
+
+a.inactive:hover {
+	background: #b3b3b3;
 }
 
 ul
@@ -121,16 +133,13 @@ h4
 	font-size: 12px;
 }
 
-.uiWrapper
-{
-
+.uiWrapper {
 	width: 100%;
 	height: 100%;
 	padding-top:32px;
 }
 
-.uiTitle
-{
+.uiTitle {
 	clear: both;
 	padding: 6px 8px 6px 8px;
 	border-bottom: 2px solid #161616;
@@ -139,34 +148,30 @@ h4
 	font-size: 16px;
 }
 
-.uiTitleWrapper
- {
- 	position:fixed;
- 	top:0px;
- 	left:0px;
- 	right:0px;
- 	z-index: 10
- }
+.uiTitleWrapper {
+	position:fixed;
+	top:0px;
+	left:0px;
+	right:0px;
+	z-index: 10
+}
  
- .uiTitleButtons
- {
- 	position:fixed;
- 	top:0px;
- 	right:0px;
- 	height:32px;
- 	z-index:11;
- }
+.uiTitleButtons {
+	position:fixed;
+	top:0px;
+	right:0px;
+	height:32px;
+	z-index:11;
+}
 
 
-.uiTitle.icon
-{
+.uiTitle.icon {
 	padding: 6px 8px 6px 42px;
 	background-position: 2px 50%;
 	background-repeat: no-repeat;
 }
 
-.uiContent
-{	
+.uiContent {	
 	clear: both;
 	padding: 8px;
 	font-family: Verdana, Geneva, sans-serif;
@@ -310,4 +315,168 @@ div.notice
 {
 	width: 100%;
 	clear: both;
+}
+
+.radioButton {
+	border: 0;
+	background-color: #272727;
+}
+
+.paper {
+	background-color: white;
+	font-size: 12px;
+	color: black;
+}
+
+a.green {
+	background-color: #008000;
+}
+
+a.green:hover {
+	background-color: #00b300;
+}
+
+a.red {
+	background-color: #cc0000;
+}
+
+a.red:hover {
+	background-color: #ff0000;
+}
+
+a.blue {
+	background-color: #333399;
+}
+
+a.blue:hover {
+	background-color: #4040bf;
+}
+
+a.orange {
+	background-color: 	#cc8500;
+}
+
+a.orange:hover {
+	background-color: #ffa600;
+}
+
+a.purple {
+	background-color: 	#802880;
+}
+
+a.purple:hover {
+	background-color: #9b319b;
+}
+
+.red_text {
+	color: #cc0000;
+}
+
+.blue_text {
+	color: #6666cc;
+}
+
+.green_text {
+	color: #00b300;
+}
+
+.orange_text {
+	color: #ffb833;
+}
+
+.cyan_text {
+	color: #00cccc;
+}
+
+.pink_text {
+	color: #ff99aa;
+}
+
+.white_text {
+	color: white;
+}
+
+.purple_text {
+	color: #802880;
+}
+
+.header_text {
+	color: #40628a;
+}
+
+.good_text {
+	color: #507aac;
+}
+
+.bad_text {
+	color: #ff1a1a;
+}
+
+.okay_text {
+	color: white;
+}
+
+/* Job pref colors*/
+.job_honor_guard_sl {
+	background-color: #ff8080;
+}
+
+.job_bunker_crew {
+	background-color: #8874be;
+}
+
+.job_cmo {
+	background-color: #52e052;
+}
+
+.job_doctor {
+	background-color: #75f075;
+}
+
+.job_researcher {
+	background-color: #75f075;
+}
+
+.job_cl {
+	background-color: #ffa64d;
+}
+
+.job_synth {
+	background-color: #7cd115;
+}
+
+.job_command {
+	background-color: #9999ff;
+}
+
+.job_co {
+	background-color: #3333cc;
+}
+
+.job_mp {
+	background-color: #e83030;
+}
+
+.job_cmp {
+	background-color: #ff4d4d;
+}
+
+.job_ce {
+	background-color: #e6b800;
+}
+
+.job_ro {
+	background-color: #8378a1;
+}
+
+.job_mt {
+	background-color: #ffdb4d;
+}
+
+.job_ct {
+	background-color: #a697ce;
+}
+
+.job_marine {
+	background-color: #ed5e5e;
 }

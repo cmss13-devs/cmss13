@@ -205,8 +205,7 @@
 <A href='?src=\ref[src];action=dispose'>Eject ingredients!<BR>\
 "}
 
-	user << browse("<HEAD><TITLE>Microwave Controls</TITLE></HEAD><TT>[dat]</TT>", "window=microwave")
-	onclose(user, "microwave")
+	show_browser(user, dat, "Microwave Controls", "microwave")
 	return
 
 

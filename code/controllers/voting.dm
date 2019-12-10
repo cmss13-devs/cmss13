@@ -38,12 +38,12 @@ datum/controller/vote
 				result()
 				for(var/client/C in voting)
 					if(C)
-						C << browse(null,"window=vote;can_close=0")
+						close_browser(C,"vote")
 				reset()
 			else
 				for(var/client/C in voting)
 					if(C)
-						C << browse(vote.interface(C),"window=vote;can_close=0")
+						show_browser(C, vote.interface(C), "Vote", "vote", "can_close=0")
 
 				voting.Cut()
 
@@ -293,7 +293,7 @@ datum/controller/vote
 		switch(href_list["vote"])
 			if("close")
 				voting -= usr.client
-				usr << browse(null, "window=vote")
+				close_browser(usr, "vote")
 				return
 			if("cancel")
 				if(usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))
@@ -322,7 +322,7 @@ datum/controller/vote
 	set name = "Vote"
 
 	if(vote)
-		src << browse(vote.interface(client),"window=vote;can_close=0")
+		show_browser(src, vote.interface(client), "Vote", "vote", "can_close=0")
 
 
 

@@ -8,6 +8,10 @@ body {
     background: #272727;
 }
 
+input {
+    font-family: Verdana, Geneva, sans-serif;
+}
+
 #uiNoScript {
     position: fixed;
     top: 50%;
@@ -32,7 +36,16 @@ hr {
 	float: none;
 }
 
-.link, .linkOn, .linkOff, .selected, .disabled, .yellowButton, .redButton {
+button, .button {
+    box-sizing: content-box;
+}
+
+input {
+    float: left;
+    border: 1px solid black;
+}
+
+.link, .linkOn, .linkActive, .linkOff, .selected, .disabled, .yellowButton, .redButton, a, button, .button {
     min-width: 15px;
     height: 16px;
     float: left;
@@ -41,6 +54,7 @@ hr {
     padding: 0px 4px 4px 4px;
     margin: 0 2px 2px 0;
     text-decoration: none;
+    color: white;
     background: #40628a;
     cursor: default;
     white-space: nowrap;

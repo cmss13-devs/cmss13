@@ -452,12 +452,12 @@
 
 	// Doesn't work on non-humans and synthetics
 	if(!istype(src, /mob/living/carbon))
-		user.show_message("\n\blue Health Analyzer results for ERROR:\n\t Overall Status: ERROR")
-		user.show_message("\tType: <font color='blue'>Oxygen</font>-<font color='green'>Toxin</font>-<font color='#FFA500'>Burns</font>-<font color='red'>Brute</font>", 1)
-		user.show_message("\tDamage: <font color='blue'>?</font> - <font color='green'>?</font> - <font color='#FFA500'>?</font> - <font color='red'>?</font>")
+		user.show_message("\nHealth Analyzer results for ERROR:\n\t Overall Status: ERROR")
+		user.show_message("\tType: [SET_CLASS("Oxygen", INTERFACE_BLUE)]-[SET_CLASS("Toxin", INTERFACE_GREEN)]-[SET_CLASS("Burns", INTERFACE_ORANGE)]-[SET_CLASS("Brute", INTERFACE_RED)]", 1)
+		user.show_message("\tDamage: [SET_CLASS("?", INTERFACE_BLUE)] - [SET_CLASS("?", INTERFACE_GREEN)] - [SET_CLASS("?", INTERFACE_ORANGE)] - [SET_CLASS("?", INTERFACE_RED)]")
 		user.show_message(SPAN_NOTICE("Body Temperature: [src.bodytemperature-T0C]&deg;C ([src.bodytemperature*1.8-459.67]&deg;F)"), 1)
-		user.show_message(SPAN_DANGER("<b>Warning: Blood Level ERROR: --% --cl.\blue Type: ERROR"))
-		user.show_message(SPAN_NOTICE("Subject's pulse: <font color='red'>-- bpm.</font>"))
+		user.show_message(SPAN_DANGER("<b>Warning: Blood Level ERROR: --% --cl.Type: ERROR"))
+		user.show_message(SPAN_NOTICE("Subject's pulse: [SET_CLASS("-- bpm", INTERFACE_RED)]"))
 		return
 
 	// Calculate damage amounts
@@ -470,11 +470,11 @@
 	// Show overall
 	if(src.status_flags & FAKEDEATH)
 		OX = fake_oxy > 50 			? 	"<b>[fake_oxy]</b>" 			: fake_oxy
-		dat += "\n\blue Health Analyzer for [src]:\n\tOverall Status: <b>DEAD</b>\n"
+		dat += "\nHealth Analyzer for [src]:\n\tOverall Status: <b>DEAD</b>\n"
 	else
 		dat += "\nHealth Analyzer results for [src]:\n\tOverall Status: [src.stat > 1 ? "<b>DEAD</b>" : "<b>[src.health - src.halloss]% healthy"]</b>\n"
-	dat += "\tType:    <font color='blue'>Oxygen</font>-<font color='green'>Toxin</font>-<font color='#FFA500'>Burns</font>-<font color='red'>Brute</font>\n"
-	dat += "\tDamage: \t<font color='blue'>[OX]</font> - <font color='green'>[TX]</font> - <font color='#FFA500'>[BU]</font> - <font color='red'>[BR]</font>\n"
+	dat += "\tType:    [SET_CLASS("Oxygen", INTERFACE_BLUE)]-[SET_CLASS("Toxin", INTERFACE_GREEN)]-[SET_CLASS("Burns", INTERFACE_ORANGE)]-[SET_CLASS("Brute", INTERFACE_RED)]\n"
+	dat += "\tDamage: \t[SET_CLASS(OX, INTERFACE_BLUE)] - [SET_CLASS(TX, INTERFACE_GREEN)] - [SET_CLASS(BU, INTERFACE_ORANGE)] - [SET_CLASS(BR, INTERFACE_RED)]\n"
 	dat += "\tUntreated: {B}=Burns,{T}=Trauma,{F}=Fracture\n"
 
 	var/unrevivable = 0
@@ -619,13 +619,13 @@
 			var/blood_type = H.blood_type
 			blood_percent *= 100
 			if(blood_volume <= 500 && blood_volume > 336)
-				dat += "\t<span class='scanner'> <b>Warning: Blood Level LOW: [blood_percent]% [blood_volume]cl.</span><font color='blue;'> Type: [blood_type]</font>\n"
+				dat += "\t<span class='scanner'> <b>Warning: Blood Level LOW: [blood_percent]% [blood_volume]cl.</span> [SET_CLASS("Type: [blood_type]", INTERFACE_BLUE)]\n"
 			else if(blood_volume <= 336)
-				dat += "\t<span class='scanner'> <b>Warning: Blood Level CRITICAL: [blood_percent]% [blood_volume]cl.</span><font color='blue;'> Type: [blood_type]</font>\n"
+				dat += "\t<span class='scanner'> <b>Warning: Blood Level CRITICAL: [blood_percent]% [blood_volume]cl.</span> [SET_CLASS("Type: [blood_type]", INTERFACE_BLUE)]\n"
 			else
 				dat += "\tBlood Level normal: [blood_percent]% [blood_volume]cl. Type: [blood_type]\n"
 		// Show pulse
-		dat += "\tPulse: <font color='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? "red" : ""]'>[H.get_pulse(GETPULSE_TOOL)] bpm.</font>\n"
+		dat += "\tPulse: <span class='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? INTERFACE_RED : ""]'>[H.get_pulse(GETPULSE_TOOL)] bpm.</span>\n"
 		if((H.stat == DEAD && !H.client))
 			unrevivable = 1
 		if(!unrevivable)
@@ -666,12 +666,12 @@
 	if(hud_mode)
 		dat = replacetext(dat, "\n", "<br>")
 		dat = replacetext(dat, "\t", "&emsp;")
-		dat = replacetext(dat, "class='warning'", "style='color:red;'")
-		dat = replacetext(dat, "class='scanner'", "style='color:red;'")
-		dat = replacetext(dat, "class='scannerb'", "style='color:red; font-weight: bold;'")
-		dat = replacetext(dat, "class='scannerburn'", "style='color:#FFA500;'")
-		dat = replacetext(dat, "class='scannerburnb'", "style='color:#FFA500; font-weight: bold;'")
-		user << browse(dat, "window=handscanner;size=500x400")
+		dat = replacetext(dat, "class='warning'", "class='[INTERFACE_RED]'")
+		dat = replacetext(dat, "class='scanner'", "class='[INTERFACE_RED]'")
+		dat = replacetext(dat, "class='scannerb'", "style='font-weight: bold;' class='[INTERFACE_RED]'")
+		dat = replacetext(dat, "class='scannerburn'", "class='[INTERFACE_ORANGE]'")
+		dat = replacetext(dat, "class='scannerburnb'", "style='font-weight: bold;' class='[INTERFACE_ORANGE]'")
+		show_browser(user, dat, name, "handscanner", "size=500x400")
 	else
 		user.show_message(dat, 1)
 

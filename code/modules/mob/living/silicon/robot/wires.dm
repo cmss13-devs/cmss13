@@ -134,7 +134,7 @@
 			else
 				src.pulse(t1)
 		else if (href_list["close2"])
-			usr << browse(null, "window=borgwires")
+			close_browser(usr, "borgwires")
 			usr.unset_interaction()
 			return
 

@@ -8,7 +8,7 @@
 	title = JOB_CHIEF_ENGINEER
 	flag = ROLE_CHIEF_ENGINEER
 	department_flag = ROLEGROUP_MARINE_ENGINEERING
-	selection_color = "#ffeeaa"
+	selection_class = "job_ce"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Chief Engineer (CE)"
 	minimum_playtimes = list(
@@ -24,7 +24,7 @@
 	title = JOB_CHIEF_REQUISITION
 	flag = ROLE_REQUISITION_OFFICER
 	department_flag = ROLEGROUP_MARINE_ENGINEERING
-	selection_color = "#9990B2"
+	selection_class = "job_ro"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Requisitions Officer (RO)"
 	minimum_playtimes = list(
@@ -46,7 +46,7 @@
 	allow_additional = 1
 	scaled = 1
 	supervisors = "the chief engineer"
-	selection_color = "#fff5cc"
+	selection_class = "job_mt"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Maintenance Tech (MT)"
 
@@ -70,7 +70,7 @@
 	allow_additional = 1
 	scaled = 1
 	supervisors = "the requisitions officer"
-	selection_color = "#BAAFD9"
+	selection_class = "job_ct"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Cargo Technician (CT)"
 

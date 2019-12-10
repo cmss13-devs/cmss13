@@ -141,13 +141,13 @@
 			if(!O.client) continue
 			if(U.name == "Unknown") to_chat(O, "<b>[U]</b> holds \a [itemname] up to one of your cameras ...")
 			else to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
-			O << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", itemname, info), text("window=[]", itemname))
+			show_browser(O, info, itemname, itemname)
 		for(var/mob/O in player_list)
 			if (istype(O.interactee, /obj/structure/machinery/computer/security))
 				var/obj/structure/machinery/computer/security/S = O.interactee
 				if (S.current == src)
 					to_chat(O, "[U] holds \a [itemname] up to one of the cameras ...")
-					O << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", itemname, info), text("window=[]", itemname))
+					show_browser(O, info, itemname, itemname)
 	else if (istype(W, /obj/item/device/camera_bug))
 		if (!src.can_use())
 			to_chat(user, SPAN_NOTICE(" Camera non-functional"))

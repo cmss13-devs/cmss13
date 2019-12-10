@@ -21,7 +21,7 @@
 	attack_hand(mob/user as mob)
 		user.set_interaction(src)
 
-		var/dat = "Photocopier<BR><BR>"
+		var/dat
 		if(copy || photocopy || bundle)
 			dat += "<a href='byond://?src=\ref[src];remove=1'>Remove Paper</a><BR>"
 			if(toner)
@@ -36,8 +36,7 @@
 		dat += "Current toner level: [toner]"
 		if(!toner)
 			dat +="<BR>Please insert a new toner cartridge!"
-		user << browse(dat, "window=copier")
-		onclose(user, "copier")
+		show_browser(user, dat, "Photocopier", "copier")
 		return
 
 	Topic(href, href_list)

@@ -2,54 +2,44 @@
 /datum/admins/proc/player_panel_new()//The new one
 	if (!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
 		return
-	var/dat = "<html><head><title>Admin Player Panel</title></head>"
+	var/dat = "<html>"
 
 	//javascript, the part that does most of the work~
 	dat += {"
-
 		<head>
 			<script type='text/javascript'>
 
 				var locked_tabs = new Array();
 
-				function updateSearch(){
-
-
+				function updateSearch() {
 					var filter_text = document.getElementById('filter');
 					var filter = filter_text.value.toLowerCase();
 
-					if(complete_list != null && complete_list != ""){
+					if (complete_list != null && complete_list != "") {
 						var mtbl = document.getElementById("maintable_data_archive");
 						mtbl.innerHTML = complete_list;
 					}
 
-					if(filter.value == ""){
+					if (filter.value == "") {
 						return;
-					}else{
-
+					} else {
 						var maintable_data = document.getElementById('maintable_data');
 						var ltr = maintable_data.getElementsByTagName("tr");
-						for ( var i = 0; i < ltr.length; ++i )
-						{
-							try{
+						for (var i = 0; i < ltr.length; ++i) {
+							try {
 								var tr = ltr\[i\];
-								if(tr.getAttribute("id").indexOf("data") != 0){
+								if (tr.getAttribute("id").indexOf("data") != 0) {
 									continue;
 								}
+								tr.style.display = '';
 								var ltd = tr.getElementsByTagName("td");
 								var td = ltd\[0\];
 								var lsearch = td.getElementsByTagName("b");
 								var search = lsearch\[0\];
-								//var inner_span = li.getElementsByTagName("span")\[1\] //Should only ever contain one element.
-								//document.write("<p>"+search.innerText+"<br>"+filter+"<br>"+search.innerText.indexOf(filter))
-								if ( search.innerText.toLowerCase().indexOf(filter) == -1 )
-								{
-									//document.write("a");
-									//ltr.removeChild(tr);
-									td.innerHTML = "";
-									i--;
+								if (search.innerText.toLowerCase().indexOf(filter) == -1) {
+									tr.style.display = 'none';
 								}
-							}catch(err) {   }
+							} catch(err) {}
 						}
 					}
 
@@ -58,21 +48,16 @@
 					var debug = document.getElementById("debug");
 
 					locked_tabs = new Array();
-
 				}
 
-				function expand(id,job,name,real_name,image,key,ip,antagonist,ref){
-
+				function expand(id,job,name,real_name,image,key,ip,antagonist,ref) {
 					clearAll();
 
 					var span = document.getElementById(id);
 
 					body = "<table><tr><td>";
-
 					body += "</td><td align='center'>";
-
 					body += "<font size='2'><b>"+job+" "+name+"</b><br><b>Real name "+real_name+"</b><br><b>Played by "+key+" ("+ip+")</b></font>"
-
 					body += "</td><td align='center'>";
 
 					body += "<a href='?src=\ref[src];ahelp=adminplayeropts;extra="+ref+"'>PP</a> - "
@@ -83,102 +68,90 @@
 					body += "<a href='?src=\ref[usr];priv_msg=\ref"+ref+"'>PM</a> - "
 					body += "<a href='?src=\ref[src];subtlemessage="+ref+"'>SM</a> - "
 					body += "<a href='?src=\ref[src];adminplayerobservejump="+ref+"'>JMP</a><br>"
-					if(antagonist > 0)
+					if (antagonist > 0)
 						body += "<font size='2'><a href='?src=\ref[src];check_antagonist=1'><font color='red'><b>Antagonist</b></font></a></font>";
-
 					body += "</td></tr></table>";
-
 
 					span.innerHTML = body
 				}
 
-				function clearAll(){
+				function clearAll() {
 					var spans = document.getElementsByTagName('span');
-					for(var i = 0; i < spans.length; i++){
+					for (var i = 0; i < spans.length; i++) {
 						var span = spans\[i\];
 
 						var id = span.getAttribute("id");
 
-						if(!(id.indexOf("item")==0))
+						if(id.indexOf("item") != 0)
 							continue;
 
 						var pass = 1;
 
-						for(var j = 0; j < locked_tabs.length; j++){
-							if(locked_tabs\[j\]==id){
+						for (var j = 0; j < locked_tabs.length; j++) {
+							if (locked_tabs\[j\]==id) {
 								pass = 0;
 								break;
 							}
 						}
 
-						if(pass != 1)
+						if (pass != 1)
 							continue;
-
-
-
 
 						span.innerHTML = "";
 					}
 				}
 
-				function addToLocked(id,link_id,notice_span_id){
+				function addToLocked(id,link_id,notice_span_id) {
 					var link = document.getElementById(link_id);
 					var decision = link.getAttribute("name");
-					if(decision == "1"){
+					if (decision == "1") {
 						link.setAttribute("name","2");
-					}else{
+					} else {
 						link.setAttribute("name","1");
 						removeFromLocked(id,link_id,notice_span_id);
 						return;
 					}
 
 					var pass = 1;
-					for(var j = 0; j < locked_tabs.length; j++){
-						if(locked_tabs\[j\]==id){
+					for (var j = 0; j < locked_tabs.length; j++) {
+						if (locked_tabs\[j\]==id) {
 							pass = 0;
 							break;
 						}
 					}
-					if(!pass)
+					if (!pass)
 						return;
 					locked_tabs.push(id);
 					var notice_span = document.getElementById(notice_span_id);
 					notice_span.innerHTML = "<font color='red'>Locked</font> ";
-					//link.setAttribute("onClick","attempt('"+id+"','"+link_id+"','"+notice_span_id+"');");
-					//document.write("removeFromLocked('"+id+"','"+link_id+"','"+notice_span_id+"')");
-					//document.write("aa - "+link.getAttribute("onClick"));
 				}
 
-				function attempt(ab){
+				function attempt(ab) {
 					return ab;
 				}
 
-				function removeFromLocked(id,link_id,notice_span_id){
-					//document.write("a");
+				function removeFromLocked(id,link_id,notice_span_id) {
 					var index = 0;
 					var pass = 0;
-					for(var j = 0; j < locked_tabs.length; j++){
-						if(locked_tabs\[j\]==id){
+					for (var j = 0; j < locked_tabs.length; j++) {
+						if (locked_tabs\[j\]==id) {
 							pass = 1;
 							index = j;
 							break;
 						}
 					}
-					if(!pass)
+					if (!pass)
 						return;
 					locked_tabs\[index\] = "";
 					var notice_span = document.getElementById(notice_span_id);
 					notice_span.innerHTML = "";
-					//var link = document.getElementById(link_id);
-					//link.setAttribute("onClick","addToLocked('"+id+"','"+link_id+"','"+notice_span_id+"')");
 				}
 
-				function selectTextField(){
+				function selectTextField() {
 					var filter_text = document.getElementById('filter');
 					filter_text.focus();
 					filter_text.select();
 				}
-
 			</script>
 		</head>
 
@@ -186,11 +159,10 @@
 	"}
 
 	//body tag start + onload and onkeypress (onkeyup) javascript event calls
-	dat += "<body onload='selectTextField(); updateSearch();' onkeyup='updateSearch();'>"
+	dat += "<body onload='selectTextField(); updateSearch();'>"
 
 	//title + search bar
 	dat += {"
-
 		<table width='560' align='center' cellspacing='0' cellpadding='5' id='maintable'>
 			<tr id='title_tr'>
 				<td align='center'>
@@ -201,101 +173,91 @@
 			</tr>
 			<tr id='search_tr'>
 				<td align='center'>
-					<b>Search:</b> <input type='text' id='filter' value='' style='width:300px;'>
+					<b>Search:</b> <input type='text' id='filter' value='' onkeyup='updateSearch();' style='width:300px;'>
 				</td>
 			</tr>
-	</table>
-
+		</table>
 	"}
 
 	//player table header
 	dat += {"
 		<span id='maintable_data_archive'>
-		<table width='560' align='center' cellspacing='0' cellpadding='5' id='maintable_data'>"}
+		<table width='600' align='center' cellspacing='0' cellpadding='5' id='maintable_data'>"}
 
 	var/list/mobs = sortmobs()
 	var/i = 1
 	for(var/mob/M in mobs)
-		if(M.ckey)
+		if(!M.ckey)
+			continue
+		
+		var/color = i % 2 == 0 ? "#6289b7" : "#48709d"
+		var/is_antagonist = is_special_character(M)
 
-			var/color = "#e6e6e6"
-			if(i%2 == 0)
-				color = "#f2f2f2"
-			var/is_antagonist = is_special_character(M)
+		var/M_job = ""
 
-			var/M_job = ""
-
-			if(isliving(M))
-
-				if(iscarbon(M)) //Carbon stuff
-					if(ishuman(M))
-						M_job = M.job
-					else if(ismonkey(M))
-						M_job = "Monkey"
-					else if(isXeno(M))
-						M_job = "Alien"
-					else
-						M_job = "Carbon-based"
-
-				else if(issilicon(M)) //silicon
-					if(isAI(M))
-						M_job = "AI"
-					else if(isrobot(M))
-						M_job = "Cyborg"
-					else
-						M_job = "Silicon-based"
-
-				else if(isanimal(M)) //simple animals
-					if(iscorgi(M))
-						M_job = "Corgi"
-					else
-						M_job = "Animal"
-
+		if(isliving(M))
+			if(iscarbon(M)) //Carbon stuff
+				if(ishuman(M))
+					M_job = M.job
+				else if(ismonkey(M))
+					M_job = "Monkey"
+				else if(isXeno(M))
+					M_job = "Alien"
 				else
-					M_job = "Living"
+					M_job = "Carbon-based"
+			else if(issilicon(M)) //silicon
+				if(isAI(M))
+					M_job = "AI"
+				else if(isrobot(M))
+					M_job = "Cyborg"
+				else
+					M_job = "Silicon-based"
+			else if(isanimal(M)) //simple animals
+				if(iscorgi(M))
+					M_job = "Corgi"
+				else
+					M_job = "Animal"
+			else
+				M_job = "Living"
+		else if(istype(M,/mob/new_player))
+			M_job = "New player"
+		else if(isobserver(M))
+			M_job = "Ghost"
 
-			else if(istype(M,/mob/new_player))
-				M_job = "New player"
+		M_job = replacetext(M_job, "'", "")
+		M_job = replacetext(M_job, "\"", "")
+		M_job = replacetext(M_job, "\\", "")
 
-			else if(isobserver(M))
-				M_job = "Ghost"
+		var/M_name = M.name
+		M_name = replacetext(M_name, "'", "")
+		M_name = replacetext(M_name, "\"", "")
+		M_name = replacetext(M_name, "\\", "")
+		var/M_rname = M.real_name
+		M_rname = replacetext(M_rname, "'", "")
+		M_rname = replacetext(M_rname, "\"", "")
+		M_rname = replacetext(M_rname, "\\", "")
 
-			M_job = replacetext(M_job, "'", "")
-			M_job = replacetext(M_job, "\"", "")
-			M_job = replacetext(M_job, "\\", "")
+		var/M_key = M.key
+		M_key = replacetext(M_key, "'", "")
+		M_key = replacetext(M_key, "\"", "")
+		M_key = replacetext(M_key, "\\", "")
 
-			var/M_name = M.name
-			M_name = replacetext(M_name, "'", "")
-			M_name = replacetext(M_name, "\"", "")
-			M_name = replacetext(M_name, "\\", "")
-			var/M_rname = M.real_name
-			M_rname = replacetext(M_rname, "'", "")
-			M_rname = replacetext(M_rname, "\"", "")
-			M_rname = replacetext(M_rname, "\\", "")
+		//output for each mob
+		dat += {"
+			<tr id='data[i]' name='[i]' onClick="addToLocked('item[i]','data[i]','notice_span[i]')">
+				<td align='center' bgcolor='[color]'>
+					<span id='notice_span[i]'></span>
+					<a id='link[i]'
+					onmouseover='expand("item[i]","[M_job]","[M_name]","[M_rname]","--unused--","[M_key]","[M.lastKnownIP]",[is_antagonist],"\ref[M]")'
+					>
+					<b id='search[i]'>[M_name] - [M_rname] - [M_key] ([M_job])</b>
+					</a>
+					<br><span id='item[i]'></span>
+				</td>
+			</tr>
+		"}
 
-			var/M_key = M.key
-			M_key = replacetext(M_key, "'", "")
-			M_key = replacetext(M_key, "\"", "")
-			M_key = replacetext(M_key, "\\", "")
-
-			//output for each mob
-			dat += {"
-
-				<tr id='data[i]' name='[i]' onClick="addToLocked('item[i]','data[i]','notice_span[i]')">
-					<td align='center' bgcolor='[color]'>
-						<span id='notice_span[i]'></span>
-						<a id='link[i]'
-						onmouseover='expand("item[i]","[M_job]","[M_name]","[M_rname]","--unused--","[M_key]","[M.lastKnownIP]",[is_antagonist],"\ref[M]")'
-						>
-						<b id='search[i]'>[M_name] - [M_rname] - [M_key] ([M_job])</b>
-						</a>
-						<br><span id='item[i]'></span>
-					</td>
-				</tr>
-
-			"}
-
-			i++
+		i++
 
 
 	//player table ending
@@ -310,14 +272,14 @@
 	</body></html>
 	"}
 
-	usr << browse(dat, "window=players;size=600x480")
+	show_browser(usr, dat, "Admin Player Panel", "players", "size=600x480")
 
 //Extended panel with ban related things
 /datum/admins/proc/player_panel_extended()
 	if (!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
 		return
 
-	var/dat = "<html><head><title>Player Menu</title></head>"
+	var/dat = "<html>"
 	dat += "<body><table border=1 cellspacing=5><B><tr><th>Key</th><th>Name</th><th>Real Name</th><th>PP</th><th>CID</th><th>IP</th><th>JMP</th><th>Notes</th></tr></B>"
 	//add <th>IP:</th> to this if wanting to add back in IP checking
 	//add <td>(IP: [M.lastKnownIP])</td> if you want to know their ip to the lists below
@@ -356,12 +318,12 @@
 
 	dat += "</table></body></html>"
 
-	usr << browse(dat, "window=players;size=640x480")
+	show_browser(usr, dat, "Player Menu", "players", "size=640x480")
 
 
 /datum/admins/proc/check_antagonists()
 	if (ticker && ticker.current_state >= GAME_STATE_PLAYING)
-		var/dat = "<html><head><title>Round Status</title></head><body><h1><B>Round Status</B></h1>"
+		var/dat = "<html><body><h1><B>Round Status</B></h1>"
 		dat += "Current Game Mode: <B>[ticker.mode.name]</B><BR>"
 		dat += "Round Duration: <B>[round(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
 
@@ -438,7 +400,7 @@
 			dat += check_role_table("Traitors", ticker.mode.traitors, src)
 
 		dat += "</body></html>"
-		usr << browse(dat, "window=roundstatus;size=600x500")
+		show_browser(usr, dat, "Round Status", "roundstatus", "size=600x500")
 	else
 		alert("The game hasn't started yet!")
 
@@ -489,96 +451,96 @@
 		to_chat(usr, "Error: you are not an admin!")
 		return
 
-	var/body = "<html><head><title>Options for [M.key] played by [M.client]</title></head>"
+	var/body = "<html>"
 	body += "<body>Name: <b>[M]</b>"
 	if(M.client)
 		body += " - Ckey: <b>[M.client]</b> "
-		body += "\[<A href='?src=\ref[src];editrights=show'>[M.client.admin_holder ? M.client.admin_holder.rank : "Player"]</A>\]"
+		body += "<A href='?src=\ref[src];editrights=show'>[M.client.admin_holder ? M.client.admin_holder.rank : "Player"]</A>"
 
 	if(istype(M, /mob/new_player))
 		body += "| <B>Hasn't Entered Game</B> "
 	else
-		body += {" \[<A href='?src=\ref[src];revive=\ref[M]'>Heal</A>\]
+		body += {" <A href='?src=\ref[src];revive=\ref[M]'>Heal</A>
 		<br><b>Mob type</b> = [M.type]<br>
 		"}
 
 	body += {"
-		\[
 		<a href='?_src_=vars;Vars=\ref[M]'>VV</a> -
+		<a href='?src=\ref[src];traitor=\ref[M]'>TP</a> -
 		<a href='?src=\ref[usr];priv_msg=\ref[M]'>PM</a> -
 		<a href='?src=\ref[src];subtlemessage=\ref[M]'>SM</a> -
 		<a href='?src=\ref[src];adminplayerobservejump=\ref[M]'>JMP</a> -
-		<a href='?src=\ref[src];adminplayerfollow=\ref[M]'>FLW</a> ]<br>
+		<a href='?src=\ref[src];adminplayerfollow=\ref[M]'>FLW</a><br>
 		<br><b>Admin Tools:</b><br>
-		\[ Ban:
+		Ban:
 		<A href='?src=\ref[src];newban=\ref[M]'>Ban</A> |
 		<A href='?src=\ref[src];eorgban=\ref[M]'>EORG Ban</A> |
 		<A href='?src=\ref[src];jobban2=\ref[M]'>Jobban</A> |
-		<A href='?src=\ref[src];notes=show;mob=\ref[M]'>Notes</A> ]
+		<A href='?src=\ref[src];notes=show;mob=\ref[M]'>Notes</A>
 	"}
 
 	if(M.client)
 		body += "\ <br>"
 		var/muted = M.client.prefs.muted
-		body += {"\[ Mute: <A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_IC]'><font color='[(muted & MUTE_IC)?"red":"blue"]'>IC</font></a> |
-			<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_OOC]'><font color='[(muted & MUTE_OOC)?"red":"blue"]'>OOC</font></a> |
-			<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_PRAY]'><font color='[(muted & MUTE_PRAY)?"red":"blue"]'>Pray</font></a> |
-			<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_ADMINHELP]'><font color='[(muted & MUTE_ADMINHELP)?"red":"blue"]'>Ahelp</font></a> |
-			<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_DEADCHAT]'><font color='[(muted & MUTE_DEADCHAT)?"red":"blue"]'>Dchat</font></a> |
-			 <A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_ALL]'><font color='[(muted & MUTE_ALL)?"red":"blue"]'>Toggle All</font></a> ]
+		body += {"Mute: <A class='[(muted & MUTE_IC)?"red":"blue"]' href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_IC]'>IC</a> |
+			<A class='[(muted & MUTE_OOC)?"red":"blue"]' href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_OOC]'>OOC</a> |
+			<A class='[(muted & MUTE_PRAY)?"red":"blue"]' href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_PRAY]'>Pray</a> |
+			<A class='[(muted & MUTE_ADMINHELP)?"red":"blue"]' href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_ADMINHELP]'>Ahelp</a> |
+			<A class='[(muted & MUTE_DEADCHAT)?"red":"blue"]' href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_DEADCHAT]'>Dchat</a> |
+			<A class='[(muted & MUTE_ALL)?"red":"blue"]' href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_ALL]'>Toggle All</a>
 		"}
 
-	body += {"<br>\[ Misc:
-		<A href='?_src_=admin_holder;sendbacktolobby=\ref[M]'>Back to Lobby</A> | <A href='?src=\ref[src];getmob=\ref[M]'>Get</A> | <A href='?src=\ref[src];narrateto=\ref[M]'>Narrate</A> | <A href='?src=\ref[src];sendmob=\ref[M]'>Send</A> ]
+	body += {"<br>Misc:
+		<A href='?_src_=admin_holder;sendbacktolobby=\ref[M]'>Back to Lobby</A> | <A href='?src=\ref[src];getmob=\ref[M]'>Get</A> | <A href='?src=\ref[src];narrateto=\ref[M]'>Narrate</A> | <A href='?src=\ref[src];sendmob=\ref[M]'>Send</A>
 	"}
 
 	if (M.client)
 		if(!istype(M, /mob/new_player))
 			body += {"<br><br>
 				<b>Transformation:</b>
-				<br>\[ Humanoid: <A href='?src=\ref[src];simplemake=human;mob=\ref[M]'>Human</A> | <a href='?src=\ref[src];makeyautja=\ref[M]'>Yautja</a> |
+				<br>Humanoid: <A href='?src=\ref[src];simplemake=human;mob=\ref[M]'>Human</A> | <a href='?src=\ref[src];makeyautja=\ref[M]'>Yautja</a> |
 				<A href='?src=\ref[src];simplemake=farwa;mob=\ref[M]'>Farwa</A> |
 				<A href='?src=\ref[src];simplemake=monkey;mob=\ref[M]'>Monkey</A> |
 				<A href='?src=\ref[src];simplemake=neaera;mob=\ref[M]'>Neaera</A> |
-				<A href='?src=\ref[src];simplemake=yiren;mob=\ref[M]'>Yiren</A> \]
-				<br>\[ Alien Tier 0: <A href='?src=\ref[src];simplemake=larva;mob=\ref[M]'>Larva</A> \]
-				<br>\[ Alien Tier 1: <A href='?src=\ref[src];simplemake=runner;mob=\ref[M]'>Runner</A> |
+				<A href='?src=\ref[src];simplemake=yiren;mob=\ref[M]'>Yiren</A>
+				<br>Alien Tier 0: <A href='?src=\ref[src];simplemake=larva;mob=\ref[M]'>Larva</A>
+				<br>Alien Tier 1: <A href='?src=\ref[src];simplemake=runner;mob=\ref[M]'>Runner</A> |
 				<A href='?src=\ref[src];simplemake=drone;mob=\ref[M]'>Drone</A> |
 				<A href='?src=\ref[src];simplemake=sentinel;mob=\ref[M]'>Sentinel</A> |
-				<A href='?src=\ref[src];simplemake=defender;mob=\ref[M]'>Defender</A> \]
-				<br>\[ Alien Tier 2: <A href='?src=\ref[src];simplemake=lurker;mob=\ref[M]'>Lurker</A> |
+				<A href='?src=\ref[src];simplemake=defender;mob=\ref[M]'>Defender</A>
+				<br>Alien Tier 2: <A href='?src=\ref[src];simplemake=lurker;mob=\ref[M]'>Lurker</A> |
 				<A href='?src=\ref[src];simplemake=warrior;mob=\ref[M]'>Warrior</A> |
 				<A href='?src=\ref[src];simplemake=spitter;mob=\ref[M]'>Spitter</A> |
 				<A href='?src=\ref[src];simplemake=burrower;mob=\ref[M]'>Burrower</A> |
 				<A href='?src=\ref[src];simplemake=hivelord;mob=\ref[M]'>Hivelord</A> |
-				<A href='?src=\ref[src];simplemake=carrier;mob=\ref[M]'>Carrier</A> \]
-				<br>\[ Alien Tier 3: <A href='?src=\ref[src];simplemake=ravager;mob=\ref[M]'>Ravager</A> |
+				<A href='?src=\ref[src];simplemake=carrier;mob=\ref[M]'>Carrier</A>
+				<br>Alien Tier 3: <A href='?src=\ref[src];simplemake=ravager;mob=\ref[M]'>Ravager</A> |
 				<A href='?src=\ref[src];simplemake=praetorian;mob=\ref[M]'>Praetorian</A> |
 				<A href='?src=\ref[src];simplemake=boiler;mob=\ref[M]'>Boiler</A> |
-				<A href='?src=\ref[src];simplemake=crusher;mob=\ref[M]'>Crusher</A> \]
-				<br>\[ Alien Tier 4: <A href='?src=\ref[src];simplemake=queen;mob=\ref[M]'>Queen</A> \]
-				<br>\[ Alien Specials: <A href='?src=\ref[src];simplemake=ravenger;mob=\ref[M]'>Ravenger</A> |
-				<A href='?src=\ref[src];simplemake=predalien;mob=\ref[M]'>Predalien</A> \]
-				<br>\[ Misc: <A href='?src=\ref[src];makeai=\ref[M]'>AI</A> | <A href='?src=\ref[src];simplemake=cat;mob=\ref[M]'>Cat</A> |
+				<A href='?src=\ref[src];simplemake=crusher;mob=\ref[M]'>Crusher</A>
+				<br>Alien Tier 4: <A href='?src=\ref[src];simplemake=queen;mob=\ref[M]'>Queen</A>
+				<br>Alien Specials: <A href='?src=\ref[src];simplemake=ravenger;mob=\ref[M]'>Ravenger</A> |
+				<A href='?src=\ref[src];simplemake=predalien;mob=\ref[M]'>Predalien</A>
+				<br>Misc: <A href='?src=\ref[src];makeai=\ref[M]'>AI</A> | <A href='?src=\ref[src];simplemake=cat;mob=\ref[M]'>Cat</A> |
 				<A href='?src=\ref[src];simplemake=corgi;mob=\ref[M]'>Corgi</A> |
-				<A href='?src=\ref[src];simplemake=crab;mob=\ref[M]'>Crab</A> | <A href='?src=\ref[src];simplemake=observer;mob=\ref[M]'>Observer</A> | <A href='?src=\ref[src];simplemake=robot;mob=\ref[M]'>Robot</A> \]
+				<A href='?src=\ref[src];simplemake=crab;mob=\ref[M]'>Crab</A> | <A href='?src=\ref[src];simplemake=observer;mob=\ref[M]'>Observer</A> | <A href='?src=\ref[src];simplemake=robot;mob=\ref[M]'>Robot</A>
 			"}
 
 	body += {"<br><br><b>Other actions:</b>
 		<br>
-		\[ Force: <A href='?src=\ref[src];forcespeech=\ref[M]'>Force Say</A> | <A href='?src=\ref[src];forceemote=\ref[M]'>Force Emote</A> ]<br>
-		\[ Thunderdome: <A href='?src=\ref[src];tdome1=\ref[M]'>Thunderdome 1</A> | <A href='?src=\ref[src];tdome2=\ref[M]'>Thunderdome 2</A> ]
+		Force: <A href='?src=\ref[src];forcespeech=\ref[M]'>Force Say</A> | <A href='?src=\ref[src];forceemote=\ref[M]'>Force Emote</A><br>
+		Thunderdome: <A href='?src=\ref[src];tdome1=\ref[M]'>Thunderdome 1</A> | <A href='?src=\ref[src];tdome2=\ref[M]'>Thunderdome 2</A>
 	"}
 
 	if(ishuman(M))
-		body += {"<br>\[ Infection: <A href='?src=\ref[src];larvainfect=\ref[M]'>Xeno Larva</A> | <A href='?src=\ref[src];zombieinfect=\ref[M]'>Zombie Virus</A> ]
+		body += {"<br>Infection: <A href='?src=\ref[src];larvainfect=\ref[M]'>Xeno Larva</A> | <A href='?src=\ref[src];zombieinfect=\ref[M]'>Zombie Virus</A>
 	"}
 
 	if(isXeno(M))
-		body += "<br>\[ Upgrade: <A href='?src=\ref[src];xenoupgrade=\ref[M]'>Upgrade Xeno</A> ]"
+		body += "<br>Upgrade: <A href='?src=\ref[src];xenoupgrade=\ref[M]'>Upgrade Xeno</A>"
 
 	body += {"<br>
 		</body></html>
 	"}
 
-	usr << browse(body, "window=adminplayeropts;size=550x515")
+	show_browser(usr, body, "Options for [M.key] played by [M.client]", "adminplayeropts", "size=570x530")

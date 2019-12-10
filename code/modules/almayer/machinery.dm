@@ -224,7 +224,7 @@
 /obj/structure/machinery/prop/almayer/CICmap/Dispose()
 	for(var/mob/living/L in current_viewers)
 		to_chat(L, SPAN_NOTICE("You stop looking at the map."))
-		L << browse(null, "window=marineminimap")
+		close_browser(L,"marineminimap")
 		current_viewers -= L
 		continue
 	..()
@@ -233,7 +233,7 @@
 	if(ishuman(user) && get_dist(src,user) < 3 && powered())
 		if(user in current_viewers)
 			to_chat(user, SPAN_NOTICE("You stop looking at the map."))
-			user << browse(null, "window=marineminimap")
+			close_browser(user, "marineminimap")
 			current_viewers -= user
 			return
 		current_viewers += user
@@ -241,7 +241,8 @@
 			overlay_marine_mapview()
 		to_chat(user, SPAN_NOTICE("You start looking at the map."))
 		user << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
-		user << browse("<html><head><script type=\"text/javascript\">function ref() { document.body.innerHTML = '<img src=\"marine_minimap.png?'+Math.random()+'\">'; } setInterval('ref()',1000);</script></head><body><img src=marine_minimap.png></body></html>","window=marineminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
+		show_browser(user, "<img src=marine_minimap.png>", "CIC Map Table", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
+		onclose(user, "marineminimap", src, list("close" = 1, "viewer" = "\ref[user]"))
 		return
 	..()
 
@@ -251,11 +252,23 @@
 	for(var/mob/living/L in current_viewers)
 		if(!powered() || get_dist(src,L) > 2)
 			to_chat(L, SPAN_NOTICE("You stop looking at the map."))
-			L << browse(null, "window=marineminimap")
+			close_browser(L, "marineminimap")
 			current_viewers -= L
 			continue
 
 		L << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
+		show_browser(L, "<img src=marine_minimap.png>", "CIC Map Table", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
+		onclose(L, "marineminimap", src, list("close" = 1, "viewer" = "\ref[L]"))
+
+
+/obj/structure/machinery/prop/almayer/CICmap/Topic(href, href_list)
+	if (href_list["close"])
+		var/mob/living/L = locate(href_list["viewer"])
+		if (!L)
+			return
+		to_chat(L, SPAN_NOTICE("You stop looking at the map."))
+		close_browser(L, "marineminimap")
+		current_viewers -= L
 
 //Nonpower using props
 

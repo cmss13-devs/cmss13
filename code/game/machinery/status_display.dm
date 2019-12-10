@@ -140,7 +140,7 @@
 	overlays += image('icons/obj/structures/machinery/status_display.dmi', icon_state=picture_state)
 
 /obj/structure/machinery/status_display/proc/update_display(line1, line2)
-	var/new_text = {"<div style="font-size:[FONT_SIZE];color:[FONT_COLOR];font:'[FONT_STYLE]';text-align:center;" valign="top">[line1]<br>[line2]</div>"}
+	var/new_text = {"<div style="font-size:[FONT_SIZE];color:[DEFAULT_FONT_COLOR];font:'[FONT_STYLE]';text-align:center;" valign="top">[line1]<br>[line2]</div>"}
 	if(maptext != new_text)
 		maptext = new_text
 
@@ -262,6 +262,6 @@
 		overlays.Cut()
 	overlays += image('icons/obj/structures/machinery/status_display.dmi', icon_state=picture_state)
 
-#undef FONT_COLOR
+#undef DEFAULT_FONT_COLOR
 #undef FONT_STYLE
 #undef SCROLL_SPEED

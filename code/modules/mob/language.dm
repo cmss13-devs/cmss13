@@ -238,10 +238,10 @@
 	set category = "IC"
 	set src = usr
 
-	var/dat = "<b>[FONT_SIZE_LARGE("Known Languages")]</b><br/><br/>"
+	var/dat
 
 	for(var/datum/language/L in languages)
 		dat += "<b>[L.name] (:[L.key])</b><br/>[L.desc]<br/><br/>"
 
-	src << browse(dat, "window=checklanguage")
+	show_browser(src, dat, "Known Languages", "checklanguage")
 	return

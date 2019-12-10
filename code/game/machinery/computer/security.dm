@@ -110,7 +110,7 @@
 							dat += text("<td>[]</td></tr>", crimstat)
 						dat += "</table><hr width='75%' />"
 					dat += text("<A href='?src=\ref[];choice=Record Maintenance'>Record Maintenance</A><br><br>", src)
-					dat += text("<A href='?src=\ref[];choice=Log Out'>{Log Out}</A>",src)
+					dat += text("<A href='?src=\ref[];choice=Log Out'>Log Out</A>",src)
 				if(2.0)
 					dat += "<B>Records Maintenance</B><HR>"
 					dat += "<BR><A href='?src=\ref[src];choice=Delete All Records'>Delete All Records</A><BR><BR><A href='?src=\ref[src];choice=Return'>Back</A>"
@@ -173,15 +173,15 @@
 							var/background
 							switch(crimstat)
 								if("*Arrest*")
-									background = "'background-color:#DC143C;'"
+									background = "'background-color:#BB1133;'"
 								if("Incarcerated")
-									background = "'background-color:#CD853F;'"
+									background = "'background-color:#B6732F;'"
 								if("Released")
 									background = "'background-color:#3BB9FF;'"
 								if("None")
-									background = "'background-color:#00FF7F;'"
+									background = "'background-color:#1AAFFF;'"
 								if("")
-									background = "'background-color:#FFFFFF;'"
+									background = ""
 									crimstat = "No Record."
 							dat += text("<tr style=[]><td><A href='?src=\ref[];choice=Browse Record;d_rec=\ref[]'>[]</a></td>", background, src, R, R.fields["name"])
 							dat += text("<td>[]</td>", R.fields["id"])
@@ -191,9 +191,8 @@
 						dat += text("<br><A href='?src=\ref[];choice=Return'>Return to index.</A>", src)
 				else
 		else
-			dat += text("<A href='?src=\ref[];choice=Log In'>{Log In}</A>", src)
-	user << browse(text("<HEAD><TITLE>Security Records</TITLE></HEAD><TT>[]</TT>", dat), "window=secure_rec;size=600x400")
-	onclose(user, "secure_rec")
+			dat += text("<A href='?src=\ref[];choice=Log In'>Log In</A>", src)
+	show_browser(user, dat, "Security Records", "secure_rec", "size=600x400")
 	return
 
 /*Revised /N

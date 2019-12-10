@@ -72,7 +72,7 @@
 
 	else if(href_list["FaxView"])
 		var/info = locate(href_list["FaxView"])
-		usr << browse("<HTML><HEAD><TITLE>Fax Message</TITLE></HEAD><BODY>[info]</BODY></HTML>", "window=Fax Message")
+		show_browser(usr, "<body class='paper'>[info]</body>", "Fax Message", "Fax Message")
 
 	//Logs all hrefs
 	if(config && config.log_hrefs && href_logfile)

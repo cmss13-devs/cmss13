@@ -95,7 +95,7 @@
 		dat += "<A href='?src=\ref[src];action=juice'>Turn on!<BR>"
 	if (beaker)
 		dat += "<A href='?src=\ref[src];action=detach'>Detach a beaker!<BR>"
-	user << browse("<HEAD><TITLE>Juicer</TITLE></HEAD><TT>[dat]</TT>", "window=juicer")
+	show_browser(user, dat, "Juicer", "juicer")
 	onclose(user, "juicer")
 	return
 

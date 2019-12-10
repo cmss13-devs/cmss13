@@ -82,8 +82,7 @@
 
 	user.set_interaction(src)
 
-	user << browse(display_contents(user), "window=computer;size=400x500")
-	onclose(user, "computer")
+	show_browser(user, display_contents(user), name, "computer", "size=400x500")
 	return
 
 /obj/structure/machinery/door_display/proc/display_contents(var/mob/user as mob)

@@ -54,25 +54,31 @@
 	start_processing()
 
 /obj/structure/machinery/computer/communications/process()
-	if(..())
-		if(state != STATE_STATUSDISPLAY)
-			updateDialog()
+	if(..() && state != STATE_STATUSDISPLAY)
+		updateDialog()
 
 /obj/structure/machinery/computer/communications/proc/update_mapview(var/close = 0)
-	if(close || (current_mapviewer && !Adjacent(current_mapviewer)))
-		if(current_mapviewer)
-			current_mapviewer << browse(null, "window=marineminimap")
-			current_mapviewer = null
+	if(close)
+		return
+	if (current_mapviewer && !Adjacent(current_mapviewer))
+		close_browser(current_mapviewer, "marineminimap")
+		current_mapviewer = null
 		return
 	if(!istype(marine_mapview_overlay_5))
 		overlay_marine_mapview()
 	current_mapviewer << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
-	current_mapviewer << browse("<img src=marine_minimap.png>","window=marineminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
+	show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
+	onclose(current_mapviewer, "marineminimap", src)
 
 /obj/structure/machinery/computer/communications/Topic(href, href_list)
 	if(..()) return FALSE
 
 	usr.set_interaction(src)
+
+	if (href_list["close"] && current_mapviewer)
+		close_browser(current_mapviewer, "marineminimap")
+		current_mapviewer = null
+		return
 
 	switch(href_list["operation"])
 		if("mapview")
@@ -175,7 +181,6 @@
 
 				log_game("[key_name(usr)] has called for an emergency evacuation.")
 				message_admins("[key_name_admin(usr)] has called for an emergency evacuation.")
-				post_status("shuttle")
 				return TRUE
 
 			state = STATE_EVACUATION
@@ -304,16 +309,6 @@
 		if("status")
 			state = STATE_STATUSDISPLAY
 
-		// Status display stuff
-		if("setstat")
-			switch(href_list["statdisp"])
-				if("message")
-					post_status("message", stat_msg1, stat_msg2)
-				if("alert")
-					post_status("alert", href_list["alert"])
-				else
-					post_status(href_list["statdisp"])
-
 		if("setmsg1")
 			stat_msg1 = reject_bad_text(trim(copytext(sanitize(input("Line 1", "Enter Message Text", stat_msg1) as text|null), 1, 40)), 40)
 			updateDialog()
@@ -372,22 +367,21 @@
 	var/dat = "<head><title>Communications Console</title></head><body>"
 	if(EvacuationAuthority.evac_status == EVACUATION_STATUS_INITIATING)
 		dat += "<B>Evacuation in Progress</B>\n<BR>\nETA: [EvacuationAuthority.get_status_panel_eta()]<BR>"
-
 	switch(state)
 		if(STATE_DEFAULT)
 			if(authenticated)
-				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=logout'>LOG OUT</A> \]"
-				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=changeseclevel'>Change alert level</A> \]"
-				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=status'>Set status display</A> \]"
-				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=messagelist'>Message list</A> \]"
-				dat += "<BR>\[ <A href='?src=\ref[src];operation=mapview'>Toggle Tactical Map</A> \]"
-				dat += "<BR>\[ <A href='?src=\ref[src];operation=defconlist'>List DEFCON assets</A> \]"
-				dat += "<BR>\[ <A href='?src=\ref[src];operation=defcon'>Enable DEFCON assets</A> \]"
+				dat += "<BR><A HREF='?src=\ref[src];operation=logout'>LOG OUT</A>"
+				dat += "<BR><A HREF='?src=\ref[src];operation=changeseclevel'>Change alert level</A>"
+				dat += "<BR><A HREF='?src=\ref[src];operation=status'>Set status display</A>"
+				dat += "<BR><A HREF='?src=\ref[src];operation=messagelist'>Message list</A>"
+				dat += "<BR><A href='?src=\ref[src];operation=mapview'>Toggle Tactical Map</A>"
+				dat += "<BR><A href='?src=\ref[src];operation=defconlist'>List DEFCON assets</A>"
+				dat += "<BR><A href='?src=\ref[src];operation=defcon'>Enable DEFCON assets</A>"
 				dat += "<BR><hr>"
 				dat += "<BR>DEFCON [defcon_controller.current_defcon_level]: [defcon_controller.check_defcon_percentage()]%"
 				dat += "<BR>Threat assessment level: [defcon_controller.last_objectives_completion_percentage*100]%"
 				dat += "<BR>Remaining DEFCON asset points: [defcon_controller.remaining_reward_points]."
-				dat += "<BR>\[ <A href='?src=\ref[src];operation=defcon'>Enable DEFCON assets</A> \]"
+				dat += "<BR><A href='?src=\ref[src];operation=defcon'>Enable DEFCON assets</A>"
 				dat += "<BR><hr>"
 
 				if(authenticated == 2)
@@ -395,31 +389,31 @@
 					if(ticker.mode.active_lz)
 						dat += "<BR>[ticker.mode.active_lz.loc.loc]"
 					else
-						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=selectlz'>Select primary LZ</A> \]"
+						dat += "<BR><A HREF='?src=\ref[src];operation=selectlz'>Select primary LZ</A>"
 					dat += "<BR><hr>"
-					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=announce'>Make an announcement</A> \]"
-					dat += admins.len > 0 ? "<BR>\[ <A HREF='?src=\ref[src];operation=messageUSCM'>Send a message to USCM</A> \]" : "<BR>\[ USCM communication offline \]"
-					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=award'>Award a medal</A> \]"
-					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=distress'>Send Distress Beacon</A> \]"
-					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=destroy'>Activate Self Destruct</A> \]"
+					dat += "<BR><A HREF='?src=\ref[src];operation=announce'>Make an announcement</A>"
+					dat += admins.len > 0 ? "<BR><A HREF='?src=\ref[src];operation=messageUSCM'>Send a message to USCM</A>" : "<BR>USCM communication offline"
+					dat += "<BR><A HREF='?src=\ref[src];operation=award'>Award a medal</A>"
+					dat += "<BR><A HREF='?src=\ref[src];operation=distress'>Send Distress Beacon</A>"
+					dat += "<BR><A HREF='?src=\ref[src];operation=destroy'>Activate Self Destruct</A>"
 					switch(EvacuationAuthority.evac_status)
-						if(EVACUATION_STATUS_STANDING_BY) dat += "<BR>\[ <A HREF='?src=\ref[src];operation=evacuation_start'>Initiate emergency evacuation</A> \]"
-						if(EVACUATION_STATUS_INITIATING) dat += "<BR>\[ <A HREF='?src=\ref[src];operation=evacuation_cancel'>Cancel emergency evacuation</A> \]"
+						if(EVACUATION_STATUS_STANDING_BY) dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_start'>Initiate emergency evacuation</A>"
+						if(EVACUATION_STATUS_INITIATING) dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_cancel'>Cancel emergency evacuation</A>"
 
 			else
-				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=login'>LOG IN</A> \]"
+				dat += "<BR><A HREF='?src=\ref[src];operation=login'>LOG IN</A>"
 
 		if(STATE_EVACUATION)
-			dat += "Are you sure you want to evacuate the [MAIN_SHIP_NAME]? \[ <A HREF='?src=\ref[src];operation=evacuation_start'>Confirm</A>\]"
+			dat += "Are you sure you want to evacuate the [MAIN_SHIP_NAME]? <A HREF='?src=\ref[src];operation=evacuation_start'>Confirm</A>"
 
 		if(STATE_EVACUATION_CANCEL)
-			dat += "Are you sure you want to cancel the evacuation of the [MAIN_SHIP_NAME]? \[ <A HREF='?src=\ref[src];operation=evacuation_cancel'>Confirm</A>\]"
+			dat += "Are you sure you want to cancel the evacuation of the [MAIN_SHIP_NAME]? <A HREF='?src=\ref[src];operation=evacuation_cancel'>Confirm</A>"
 
 		if(STATE_DISTRESS)
-			dat += "Are you sure you want to trigger a distress signal? The signal can be picked up by anyone listening, friendly or not. \[ <A HREF='?src=\ref[src];operation=distress'>Confirm</A>\]"
+			dat += "Are you sure you want to trigger a distress signal? The signal can be picked up by anyone listening, friendly or not. <A HREF='?src=\ref[src];operation=distress'>Confirm</A>"
 
 		if(STATE_DESTROY)
-			dat += "Are you sure you want to trigger the self destruct? This would mean abandoning ship. \[ <A HREF='?src=\ref[src];operation=destroy'>Confirm</A>\]"
+			dat += "Are you sure you want to trigger the self destruct? This would mean abandoning ship. <A HREF='?src=\ref[src];operation=destroy'>Confirm</A>"
 
 		if(STATE_MESSAGELIST)
 			dat += "Messages:"
@@ -430,7 +424,7 @@
 			if (currmsg)
 				dat += "<B>[messagetitle[currmsg]]</B><BR><BR>[messagetext[currmsg]]"
 				if (authenticated)
-					dat += "<BR><BR>\[ <A HREF='?src=\ref[src];operation=delmessage'>Delete \]"
+					dat += "<BR><BR><A HREF='?src=\ref[src];operation=delmessage'>Delete"
 			else
 				state = STATE_MESSAGELIST
 				attack_hand(user)
@@ -438,7 +432,7 @@
 
 		if(STATE_DELMESSAGE)
 			if (currmsg)
-				dat += "Are you sure you want to delete this message? \[ <A HREF='?src=\ref[src];operation=delmessage2'>OK</A>|<A HREF='?src=\ref[src];operation=viewmessage'>Cancel</A> \]"
+				dat += "Are you sure you want to delete this message? <A HREF='?src=\ref[src];operation=delmessage2'>OK</A>|<A HREF='?src=\ref[src];operation=viewmessage'>Cancel</A>"
 			else
 				state = STATE_MESSAGELIST
 				attack_hand(user)
@@ -446,10 +440,10 @@
 
 		if(STATE_STATUSDISPLAY)
 			dat += "Set Status Displays<BR>"
-			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=blank'>Clear</A> \]<BR>"
-			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=time'>Station Time</A> \]<BR>"
-			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=shuttle'>Shuttle ETA</A> \]<BR>"
-			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=message'>Message</A> \]"
+			dat += "<A HREF='?src=\ref[src];operation=setstat;statdisp=blank'>Clear</A><BR>"
+			dat += "<A HREF='?src=\ref[src];operation=setstat;statdisp=time'>Station Time</A><BR>"
+			dat += "<A HREF='?src=\ref[src];operation=setstat;statdisp=shuttle'>Shuttle ETA</A><BR>"
+			dat += "<A HREF='?src=\ref[src];operation=setstat;statdisp=message'>Message</A>"
 			dat += "<ul><li> Line 1: <A HREF='?src=\ref[src];operation=setmsg1'>[ stat_msg1 ? stat_msg1 : "(none)"]</A>"
 			dat += "<li> Line 2: <A HREF='?src=\ref[src];operation=setmsg2'>[ stat_msg2 ? stat_msg2 : "(none)"]</A></ul><br>"
 			dat += "\[ Alert: <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=default'>None</A> |"
@@ -461,14 +455,15 @@
 			dat += "Current alert level: [get_security_level()]<BR>"
 			if(security_level == SEC_LEVEL_DELTA)
 				if(EvacuationAuthority.dest_status >= NUKE_EXPLOSION_ACTIVE)
-					dat += "<font color='red'><b>The self-destruct mechanism is active. [EvacuationAuthority.evac_status != EVACUATION_STATUS_INITIATING ? "You have to manually deactivate the self-destruct mechanism." : ""]</b></font><BR>"
+					dat += SET_CLASS("<b>The self-destruct mechanism is active. [EvacuationAuthority.evac_status != EVACUATION_STATUS_INITIATING ? "You have to manually deactivate the self-destruct mechanism." : ""]</b>", INTERFACE_RED)
+					dat += "<BR>"
 				switch(EvacuationAuthority.evac_status)
 					if(EVACUATION_STATUS_INITIATING)
-						dat += "<font color='red'><b>Evacuation initiated. Evacuate or rescind evacuation orders.</b></font>"
+						dat += SET_CLASS("<b>Evacuation initiated. Evacuate or rescind evacuation orders.</b>", INTERFACE_RED)
 					if(EVACUATION_STATUS_IN_PROGRESS)
-						dat += "<font color='red'><b>Evacuation in progress.</b></font>"
+						dat += SET_CLASS("<b>Evacuation in progress.</b>", INTERFACE_RED)
 					if(EVACUATION_STATUS_COMPLETE)
-						dat += "<font color='red'><b>Evacuation complete.</b></font>"
+						dat += SET_CLASS("<b>Evacuation complete.</b>", INTERFACE_RED)
 			else
 				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Blue</A><BR>"
 				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Green</A>"
@@ -485,33 +480,32 @@
 					continue
 				dat += "DEFCON [DR.minimum_defcon_level] - [DR.name]<BR>"
 
-	dat += "<BR>\[ [(state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A>|" : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
-	user << browse(dat, "window=communications;size=400x500")
+	dat += "<BR>[(state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A>|" : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A>"
+	show_browser(user, dat, name, "communications")
 	onclose(user, "communications")
 
-/obj/structure/machinery/computer/communications/proc/post_status(command, data1, data2)
  //A simpler version that doesn't have everything the other one has
  /obj/structure/machinery/computer/communications/simple
  	circuit = null
 
 /obj/structure/machinery/computer/communications/simple/attack_hand(var/mob/user as mob)
 	user.set_interaction(src)
-	var/dat = "<head><title>Communications Console</title></head><body>"
+	var/dat = "<body>"
 
 	switch(state)
 		if(STATE_DEFAULT)
 			if(authenticated)
-				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=logout'>LOG OUT</A> \]"
-				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=messagelist'>Message list</A> \]"
-				dat += "<BR>\[ <A href='?src=\ref[src];operation=mapview'>Toggle Tactical Map</A> \]"
+				dat += "<BR><A HREF='?src=\ref[src];operation=logout'>LOG OUT</A>"
+				dat += "<BR><A HREF='?src=\ref[src];operation=messagelist'>Message list</A>"
+				dat += "<BR><A href='?src=\ref[src];operation=mapview'>Toggle Tactical Map</A>"
 				dat += "<BR><hr>"
 
 				if(authenticated == 2)
-					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=announce'>Make an announcement</A> \]"
-					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=award'>Award a medal</A> \]"
+					dat += "<BR><A HREF='?src=\ref[src];operation=announce'>Make an announcement</A>"
+					dat += "<BR><A HREF='?src=\ref[src];operation=award'>Award a medal</A>"
 
 			else
-				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=login'>LOG IN</A> \]"
+				dat += "<BR><A HREF='?src=\ref[src];operation=login'>LOG IN</A>"
 
 		if(STATE_MESSAGELIST)
 			dat += "Messages:"
@@ -522,7 +516,7 @@
 			if (currmsg)
 				dat += "<B>[messagetitle[currmsg]]</B><BR><BR>[messagetext[currmsg]]"
 				if (authenticated)
-					dat += "<BR><BR>\[ <A HREF='?src=\ref[src];operation=delmessage'>Delete \]"
+					dat += "<BR><BR><A HREF='?src=\ref[src];operation=delmessage'>Delete"
 			else
 				state = STATE_MESSAGELIST
 				attack_hand(user)
@@ -530,14 +524,14 @@
 
 		if(STATE_DELMESSAGE)
 			if (currmsg)
-				dat += "Are you sure you want to delete this message? \[ <A HREF='?src=\ref[src];operation=delmessage2'>OK</A>|<A HREF='?src=\ref[src];operation=viewmessage'>Cancel</A> \]"
+				dat += "Are you sure you want to delete this message? <A HREF='?src=\ref[src];operation=delmessage2'>OK</A>|<A HREF='?src=\ref[src];operation=viewmessage'>Cancel</A>"
 			else
 				state = STATE_MESSAGELIST
 				attack_hand(user)
 				return FALSE
 
-	dat += "<BR>\[ [(state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A>|" : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
-	user << browse(dat, "window=communications;size=400x500")
+	dat += "<BR>[(state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A>|" : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A>"
+	show_browser(user, dat, "Communications Console", "communications", "size=400x500")
 	onclose(user, "communications")
 #undef STATE_DEFAULT
 #undef STATE_MESSAGELIST

@@ -130,7 +130,7 @@
 	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
 		to_chat(usr, "Error: you are not an admin!")
 		return
-	var/dat = "<html><head><title>Info on [key]</title></head>"
+	var/dat = "<html>"
 	dat += "<body>"
 
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
@@ -153,15 +153,14 @@
 			if(I.author == usr.key || I.author == "Adminbot" || ishost(usr))
 				dat += "<A href='?src=\ref[src];remove_player_info=[key];remove_index=[i]'>Remove</A>"
 			dat += "<br><br>"
-		if(update_file) 
-			info << infos
+		if(update_file) info << infos
 
 	dat += "<br>"
 	dat += "<A href='?src=\ref[src];add_player_info=[key]'>Add Comment</A><br>"
 	dat += "<A href='?src=\ref[src];player_notes_copy=[key]'>Copy Player Notes</A><br>"
 
 	dat += "</body></html>"
-	usr << browse(dat, "window=adminplayerinfo;size=480x480")
+	show_browser(usr, dat, "Info on [key]", "adminplayerinfo", "size=480x480")
 
 /datum/admins/proc/sleepall()
 	set name = "E: Toggle Sleep In View"
@@ -187,16 +186,15 @@
 	set desc = "View any Ahelps that went unanswered"
 	set category = "Admin"
 
-	var/body = "<html><head><title>Unheard Ahelps</title></head>" //DISCLAMER: I suck at HTML
-	body += "<body><B>Unheard Ahelps</B>"
+	var/body = "<body>"
 	body += "<br>"
 
 	for(var/CID in unansweredAhelps)
 		body += "[unansweredAhelps[CID]]" //If I have done these correctly, it should have the options bar as well a mark and noresponse
 
-	body += "<br><br></body></html>"
+	body += "<br><br></body>"
 
-	src << browse(body, "window=ahelps;size=800x300")
+	show_browser(src, body, "Unheard Ahelps", "ahelps", "size=800x300")
 
 /client/proc/cmd_admin_say(msg as text)
 	set name = "Asay" //Gave this shit a shorter name so you only have to time out "asay" rather than "admin say" to use it --NeoFite
@@ -271,8 +269,6 @@
 		return
 
 	var/dat = {"
-		<B>Teleport Panel</B><BR>
-		<BR>
 		<A href='?src=\ref[src];teleport=jump_to_area'>Jump to Area</A><BR>
 		<A href='?src=\ref[src];teleport=jump_to_turf'>Jump to Turf</A><BR>
 		<A href='?src=\ref[src];teleport=jump_to_mob'>Jump to Mob</A><BR>
@@ -285,7 +281,7 @@
 		<BR>
 		"}
 
-	usr << browse(dat, "window=teleports")
+	show_browser(usr, dat, "Teleport Panel", "teleports")
 	return
 
 /client/proc/teleport_panel()
@@ -300,14 +296,12 @@
 		return
 
 	var/dat = {"
-		<B>Vehicle Panel</B><BR>
-		<BR>
 		<A href='?src=\ref[src];vehicle=remove_clamp'>Remove Clamp from Tank</A><BR>
 		<A href='?src=\ref[src];vehicle=remove_players'>Eject Players from Tank</A><BR>
 		<BR>
 		"}
 
-	usr << browse(dat, "window=vehicles")
+	show_browser(usr, dat, "Vehicle Panel", "vehicles")
 	return
 
 /client/proc/vehicle_panel()

@@ -281,8 +281,7 @@
 	<BR><A href='?src=\ref[user];refresh=1'>Refresh</A>
 	<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>
 	<BR>"}
-	user << browse(dat, text("window=mob[];size=325x500", name))
-	onclose(user, "mob[name]")
+	show_browser(user, dat, name, "mob[name]")
 	return
 
 
@@ -330,7 +329,8 @@
 /client/verb/changes()
 	set name = "Changelog"
 	set category = "OOC"
-	getFiles(
+
+	getFiles (
 		'html/postcardsmall.jpg',
 		'html/somerights20.png',
 		'html/88x31.png',
@@ -349,9 +349,11 @@
 		'html/chevron-expand.png',
 		'html/changelog.css',
 		'html/changelog.js',
-		'html/changelog.html'
-		)
-	src << browse('html/changelog.html', "window=changes;size=675x650")
+	)
+	
+	var/changelog_html = file2text('html/changelog.html')
+	
+	show_browser(src, changelog_html, null, "changes", "size=675x650")
 	if(prefs.lastchangelog != changelog_hash)
 		prefs.lastchangelog = changelog_hash
 		prefs.save_preferences()
@@ -359,16 +361,15 @@
 
 /mob/Topic(href, href_list)
 	if(href_list["mach_close"])
-		var/t1 = text("window=[href_list["mach_close"]]")
+		var/t1 = href_list["mach_close"]
 		unset_interaction()
-		src << browse(null, t1)
+		close_browser(src, t1)
 
 	if(href_list["flavor_more"])
-		usr << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", name, replacetext(flavor_text, "\n", "<BR>")), text("window=[];size=500x200", name))
+		show_browser(usr, "<BODY><TT>[replacetext(flavor_text, "\n", "<BR>")]</TT></BODY>", name, name, "size=500x200")
 		onclose(usr, "[name]")
 	if(href_list["flavor_change"])
 		update_flavor_text()
-//	..()
 	return
 
 

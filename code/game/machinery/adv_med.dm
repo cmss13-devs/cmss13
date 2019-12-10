@@ -240,29 +240,27 @@
 	if (delete && temphtml) //Window in buffer but its just simple message, so nothing
 		delete = delete
 	else if (!delete && temphtml) //Window in buffer - its a menu, dont add clear message
-		dat = text("[]<BR><BR><A href='?src=\ref[];clear=1'>Main Menu</A>", temphtml, src)
+		dat = "[temphtml]<BR><BR><A href='?src=\ref[src];clear=1'>Main Menu</A>"
+	else if (connected) //Is something connected?
+		var/mob/living/carbon/human/H = connected.occupant
+		var/datum/data/record/N = null
+		for(var/datum/data/record/R in data_core.medical)
+			if (R.fields["name"] == H.real_name)
+				N = R
+		if(isnull(N))
+			N = create_medical_record(H)
+		var/list/od = connected.get_occupant_data()
+		dat = format_occupant_data(od)
+		N.fields["last_scan_time"] = od["stationtime"]
+		N.fields["last_scan_result"] = dat
+		N.fields["autodoc_data"] = generate_autodoc_surgery_list(H)
+		visible_message(SPAN_NOTICE("\The [src] pings as it stores the scan report of [connected.occupant.real_name]"))
+		playsound(src.loc, 'sound/machines/ping.ogg', 25, 1)
 	else
-		if (connected) //Is something connected?
-			var/mob/living/carbon/human/H = connected.occupant
-			var/datum/data/record/N = null
-			for(var/datum/data/record/R in data_core.medical)
-				if (R.fields["name"] == H.real_name)
-					N = R
-			if(isnull(N))
-				N = create_medical_record(H)
-			var/list/od = connected.get_occupant_data()
-			dat = format_occupant_data(od)
-			N.fields["last_scan_time"] = od["stationtime"]
-			N.fields["last_scan_result"] = dat
-			N.fields["autodoc_data"] = generate_autodoc_surgery_list(H)
-			visible_message(SPAN_NOTICE("\The [src] pings as it stores the scan report of [connected.occupant.real_name]"))
-			playsound(src.loc, 'sound/machines/ping.ogg', 25, 1)
-			//dat += "<HR><A href='?src=\ref[src];print=1'>Print</A><BR>" // no more printing
-		else
-			dat = "<font color='red'> Error: No Body Scanner connected.</font>"
+		dat = SET_CLASS("Error: No Body Scanner connected.", INTERFACE_RED)
 
-	dat += text("<BR><A href='?src=\ref[];mach_close=scanconsole'>Close</A>", user)
-	user << browse(dat, "window=scanconsole;size=430x600")
+	dat += "<BR><A href='?src=\ref[user];mach_close=scanconsole'>Close</A>"
+	show_browser(user, dat, name, "scanconsole")
 	return
 
 
@@ -319,8 +317,13 @@
 
 
 /obj/structure/machinery/body_scanconsole/proc/format_occupant_data(var/list/occ)
-	var/dat = "<font color='blue'><b>Scan performed at [occ["stationtime"]]</b></font><br>"
-	dat += "<font color='blue'><b>Occupant Statistics:</b></font><br>"
+	var/dat = "<html><head><style>"
+	dat += "table {border: 2px solid; border-collapse: collapse;}"
+	dat += "td, th {border: 1px solid; padding-left: 5 px; padding-right: 5px;}"
+	dat += "tr {border: 1px solid;}"
+	dat += "</style></head><body>"
+	dat += "<b>[SET_CLASS("Scan time:", INTERFACE_HEADER_COLOR)] [occ["stationtime"]]<br>"
+	dat += "[SET_CLASS("Occupant Statistics:", INTERFACE_HEADER_COLOR)]<br>"
 	var/aux
 	switch (occ["stat"])
 		if(0)
@@ -329,32 +332,54 @@
 			aux = "Unconscious"
 		else
 			aux = "Dead"
-	dat += text("[]\tHealth %: [] ([])</font><br>", (occ["health"] > 50 ? "<font color='blue'>" : "<font color='red'>"), occ["health"], aux)
+	var/s_class = occ["health"] > 50 ? INTERFACE_GOOD : INTERFACE_BAD
+	dat += "[SET_CLASS("Health:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["health"]]% ([aux])</font>", s_class)]<br>"
 	if (occ["virus_present"])
-		dat += "<font color='red'>Viral pathogen detected in blood stream.</font><br>"
-	dat += text("[]\t-Brute Damage %: []</font><br>", (occ["bruteloss"] < 60 ? "<font color='blue'>" : "<font color='red'>"), occ["bruteloss"])
-	dat += text("[]\t-Respiratory Damage %: []</font><br>", (occ["oxyloss"] < 60 ? "<font color='blue'>" : "<font color='red'>"), occ["oxyloss"])
-	dat += text("[]\t-Toxin Content %: []</font><br>", (occ["toxloss"] < 60 ? "<font color='blue'>" : "<font color='red'>"), occ["toxloss"])
-	dat += text("[]\t-Burn Severity %: []</font><br><br>", (occ["fireloss"] < 60 ? "<font color='blue'>" : "<font color='red'>"), occ["fireloss"])
+		dat += SET_CLASS("Viral pathogen detected in blood stream.", INTERFACE_RED)
+		dat += "<br>"
+		
+	s_class = occ["bruteloss"] < 60 ? INTERFACE_GOOD : INTERFACE_BAD
+	dat += "[SET_CLASS("&nbsp&nbspBrute Damage:", INTERFACE_RED)] [SET_CLASS("[occ["bruteloss"]]%", s_class)]<br>"
+	
+	s_class = occ["oxyloss"] < 60 ? INTERFACE_GOOD : INTERFACE_BAD
+	dat += "[SET_CLASS("&nbsp&nbspRespiratory Damage:", INTERFACE_BLUE)] [SET_CLASS("[occ["oxyloss"]]%", s_class)]<br>"
 
-	dat += text("[]\tGenetic Tissue Damage %: []</font><br>", (occ["cloneloss"] < 1 ?"<font color='blue'>" : "<font color='red'>"), occ["cloneloss"])
-	dat += text("[]\tApprox. Brain Damage %: []</font><br>", (occ["brainloss"] < 1 ?"<font color='blue'>" : "<font color='red'>"), occ["brainloss"])
-	dat += text("Knocked Out Summary %: [] ([] seconds left!)<br>", occ["knocked_out"], round(occ["knocked_out"] / 4))
-	dat += text("Body Temperature: [occ["bodytemp"]-T0C]&deg;C ([occ["bodytemp"]*1.8-459.67]&deg;F)<br><HR>")
+	s_class = occ["toxloss"] < 60 ? INTERFACE_GOOD : INTERFACE_BAD
+	dat += "[SET_CLASS("&nbsp&nbspToxin Content:", INTERFACE_GREEN)] [SET_CLASS("[occ["toxloss"]]%", s_class)]<br>"
 
-	dat += text("[]\tBlood Level %: [] ([] units)</FONT><BR>", (occ["blood_amount"] > 448 ?"<font color='blue'>" : "<font color='red'>"), occ["blood_amount"]*100 / 560, occ["blood_amount"])
+	s_class = occ["fireloss"] < 60 ? INTERFACE_GOOD : INTERFACE_BAD
+	dat += "[SET_CLASS("&nbsp&nbspBurn Severity:", INTERFACE_ORANGE)] [SET_CLASS("[occ["fireloss"]]%", s_class)]<br>"
 
-	dat += text("Inaprovaline: [] units<BR>", occ["inaprovaline_amount"])
-	dat += text("Suxamorycin: [] units<BR>", occ["stoxin_amount"])
-	dat += text("[]\tDermaline: [] units</FONT><BR>", (occ["dermaline_amount"] < 30 ? "<font color='black'>" : "<font color='red'>"), occ["dermaline_amount"])
-	dat += text("[]\tBicaridine: [] units<BR>", (occ["bicaridine_amount"] < 30 ? "<font color='black'>" : "<font color='red'>"), occ["bicaridine_amount"])
-	dat += text("[]\tDexalin: [] units<BR>", (occ["dexalin_amount"] < 30 ? "<font color='black'>" : "<font color='red'>"), occ["dexalin_amount"])
+	s_class = occ["cloneloss"] < 1 ? INTERFACE_GOOD : INTERFACE_BAD
+	dat += "[SET_CLASS("&nbsp&nbspGenetic Tissue Damage:", INTERFACE_CYAN)] [SET_CLASS("[occ["cloneloss"]]%", s_class)]<br>"
+
+	s_class = occ["brainloss"] < 1 ? INTERFACE_GOOD : INTERFACE_BAD
+	dat += "[SET_CLASS("&nbsp&nbspApprox. Brain Damage:", INTERFACE_PINK)] [SET_CLASS("[occ["brainloss"]]%", s_class)]<br><br>"
+
+	dat += "[SET_CLASS("Knocked Out Summary:", "#40628a")] [occ["knocked_out"]]% ([round(occ["knocked_out"] / 4)] seconds left!)<br>"
+	dat += "[SET_CLASS("Body Temperature:", "#40628a")] [occ["bodytemp"]-T0C]&deg;C ([occ["bodytemp"]*1.8-459.67]&deg;F)<br><HR>"
+
+	s_class = occ["blood_amount"] > 448 ? INTERFACE_OKAY : INTERFACE_BAD
+	dat += "[SET_CLASS("Blood Level:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["blood_amount"]*100 / 560]% ([occ["blood_amount"]] units)", s_class)]<br><br>"
+
+	dat += "[SET_CLASS("Inaprovaline:", INTERFACE_HEADER_COLOR)] [occ["inaprovaline_amount"]] units<BR>"
+	dat += "[SET_CLASS("Suxamorycin:", INTERFACE_HEADER_COLOR)] [occ["stoxin_amount"]] units<BR>"
+
+	s_class = occ["dermaline_amount"] < 30 ? INTERFACE_OKAY : INTERFACE_BAD
+	dat += "[SET_CLASS("Dermaline:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["dermaline_amount"]] units:", s_class)]<BR>"
+
+	s_class = occ["bicaridine_amount"] < 30 ? INTERFACE_OKAY : INTERFACE_BAD
+	dat += "[SET_CLASS("Bicaridine:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["bicaridine_amount"]] units", s_class)]<BR>"
+
+	s_class = occ["dexalin_amount"] < 30 ? INTERFACE_OKAY : INTERFACE_BAD
+	dat += "[SET_CLASS("Dexalin:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["dexalin_amount"]] units", s_class)]<BR>"
 
 	for(var/datum/disease/D in occ["tg_diseases_list"])
 		if(!D.hidden[SCANNER])
-			dat += text("<font color='red'><B>Warning: [D.form] Detected</B>\nName: [D.name].\nType: [D.spread].\nStage: [D.stage]/[D.max_stages].\nPossible Cure: [D.cure]</FONT><BR>")
+			dat += SET_CLASS("<B>Warning: [D.form] Detected</B>\nName: [D.name].\nType: [D.spread].\nStage: [D.stage]/[D.max_stages].\nPossible Cure: [D.cure]</b>", INTERFACE_RED)
+			dat += "<BR>"
 
-	dat += "<HR><table border='1'>"
+	dat += "<HR><table>"
 	dat += "<tr>"
 	dat += "<th>Organ</th>"
 	dat += "<th>Burn Damage</th>"
@@ -380,22 +405,22 @@
 		if(istype(e, /datum/limb/chest) && occ["lung_ruptured"])
 			lung_ruptured = "Lung ruptured:<br>"
 		if(e.status & LIMB_SPLINTED)
-			splint = "Splinted:<br>"
+			splint = "Splinted<br>"
 		for(var/datum/effects/bleeding/external/E in e.bleeding_effects_list)
-			bled = "Bleeding:<br>"
+			bled = "Bleeding<br>"
 			break
 		if(e.status & LIMB_BROKEN)
-			AN = "[e.broken_description]:<br>"
+			AN = "[e.broken_description]<br>"
 		if(e.status & LIMB_ROBOT)
-			robot = "Prosthetic:<br>"
+			robot = "Prosthetic<br>"
 		if(e.surgery_open_stage)
-			open = "Open:<br>"
+			open = "Open<br>"
 
 		var/unknown_body = 0
 		if (e.implants.len)
 			for(var/I in e.implants)
 				if(is_type_in_list(I,known_implants))
-					imp += "[I] implanted:<br>"
+					imp += "[I] implanted<br>"
 				else
 					unknown_body++
 		if(e.hidden)
@@ -405,12 +430,13 @@
 				unknown_body++
 		if(unknown_body)
 			if(unknown_body > 1)
-				imp += "Unknown bodies present:<br>"
+				imp += "Unknown bodies present<br>"
 			else
-				imp += "Unknown body present:<br>"
+				imp += "Unknown body present<br>"
 
 		if(!AN && !open && !imp && !bled && !internal_bleeding && !lung_ruptured)
-			AN = "None:"
+			AN = "None"
+		
 		if(!(e.status & LIMB_DESTROYED))
 			dat += "<td>[e.display_name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][imp][internal_bleeding][lung_ruptured]</td>"
 		else
@@ -418,26 +444,33 @@
 		dat += "</tr>"
 
 	for(var/datum/internal_organ/i in occ["internal_organs"])
-
 		var/mech = ""
 		if(i.robotic == ORGAN_ASSISTED)
-			mech = "Assisted:<br>"
+			mech += "Assisted<br>"
 		if(i.robotic == ORGAN_ROBOT)
-			mech = "Mechanical:<br>"
+			mech += "Mechanical<br>"
+		
+		if(!mech)
+			mech = "None"
 
 		dat += "<tr>"
-		dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[mech]</td><td></td>"
+		dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[mech]</td>"
 		dat += "</tr>"
 	dat += "</table>"
 
 	var/list/species_organs = occ["species_organs"]
 	for(var/organ_name in species_organs)
 		if(!locate(species_organs[organ_name]) in occ["internal_organs"])
-			dat += text("<font color='red'>No [organ_name] detected.</font><BR>")
+			dat += SET_CLASS("No [organ_name] detected.", INTERFACE_RED)
+			dat += "<BR>"
 
 	if(occ["sdisabilities"] & BLIND)
-		dat += text("<font color='red'>Cataracts detected.</font><BR>")
+		dat += SET_CLASS("Cataracts detected.", INTERFACE_RED)
+		dat += "<BR>"
 	if(occ["sdisabilities"] & NEARSIGHTED)
-		dat += text("<font color='red'>Retinal misalignment detected.</font><BR>")
+		dat += SET_CLASS("Retinal misalignment detected.", INTERFACE_RED)
+		dat += "<BR>"
+	
+	dat += "</body></html>"
 	return dat
 

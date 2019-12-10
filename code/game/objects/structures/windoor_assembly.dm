@@ -181,7 +181,7 @@ obj/structure/windoor_assembly/Dispose()
 				if(!src.electronics)
 					to_chat(usr, SPAN_DANGER("The assembly is missing electronics."))
 					return
-				usr << browse(null, "window=windoor_access")
+				close_browser(usr, "windoor_access")
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				user.visible_message("[user] pries the windoor into the frame.", "You start prying the windoor into the frame.")
 

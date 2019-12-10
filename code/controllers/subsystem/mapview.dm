@@ -33,7 +33,7 @@ var/datum/subsystem/mapview/SSmapview
 
 	for(var/mob/living/carbon/Xenomorph/Queen/Q in living_xeno_list)
 		if(Q.map_view)
-			overlay_xeno_mapview()
+			Q.update_mapview(FALSE, TRUE)
 			break
 
 	if (MC_TICK_CHECK)
@@ -57,7 +57,6 @@ var/datum/subsystem/mapview/SSmapview
 
 			var/obj/structure/machinery/computer/overwatch/O = MM
 			if(istype(O) && O.current_squad && O.current_mapviewer)
-				overlay_marine_mapview(O.current_squad)
 				O.update_mapview()
 
 				if (MC_TICK_CHECK)

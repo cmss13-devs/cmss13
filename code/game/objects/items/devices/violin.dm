@@ -236,7 +236,7 @@
 	if(!isliving(user) || user.stat || user.is_mob_restrained() || user.lying)	return
 	user.set_interaction(src)
 
-	var/dat = "<HEAD><TITLE>Violin</TITLE></HEAD><BODY>"
+	var/dat = "<BODY>"
 
 	if(song)
 		if(song.lines.len > 0 && !(playing))
@@ -281,13 +281,13 @@
 		else
 			dat += "<A href='?src=\ref[src];help=2'>Show Help</A><BR>"
 	dat += "</BODY></HTML>"
-	user << browse(dat, "window=violin;size=700x300")
+	show_browser(user, dat, "Violin", "violin", "size=700x300")
 	onclose(user, "violin")
 
 /obj/item/device/violin/Topic(href, href_list)
 
 	if(!in_range(src, usr) || issilicon(usr) || !isliving(usr) || !usr.canmove || usr.is_mob_restrained())
-		usr << browse(null, "window=violin;size=700x300")
+		close_browser(usr, "violin;size=700x300")
 		onclose(usr, "violin")
 		return
 

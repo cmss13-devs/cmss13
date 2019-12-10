@@ -30,7 +30,7 @@
 	if(..())
 		return
 
-	var/dat = "<font size=5><center>Personal Computer</center></font><HR>"
+	var/dat
 
 	switch(screen)
 		if(0)
@@ -51,8 +51,7 @@
 					var/datum/fluff_email/FE = mail
 					dat += "<A href='?src=\ref[src];selectmail=[i]'>[FE.title]</A><BR>"
 
-	user << browse(dat, "window=email;size=600x520")
-	onclose(user, "email")
+	show_browser(user, dat, "Personal Computer", "email", "size=600x520")
 
 
 /obj/structure/machinery/computer/emails/Topic(href, href_list)

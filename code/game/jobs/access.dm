@@ -87,27 +87,45 @@
 
 /proc/get_region_accesses(var/code)
 	switch(code)
-		if(0) return get_all_accesses()
-		if(1) return list(ACCESS_MARINE_WO, ACCESS_MARINE_BRIG)//security
-		if(2) return list(ACCESS_MARINE_CMO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_CHEMISTRY)//medbay
-		if(3) return list(ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)//research
-		if(4) return list(ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING)//engineering and maintenance
-		if(5) return list(ACCESS_MARINE_COMMANDER, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_CARGO, ACCESS_MARINE_SEA)//command
-		if(6) return list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_ENGPREP, ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP)//spess mahreens
-		if(7) return list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)//squads
-		if(8) return list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING)//Civilian
+		if(0)
+			return get_all_accesses()
+		if(1)
+			return list(ACCESS_MARINE_WO, ACCESS_MARINE_BRIG) // Security
+		if(2)
+			return list(ACCESS_MARINE_CMO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_CHEMISTRY) // Medbay
+		if(3)
+			return list(ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE) // Research
+		if(4)
+			return list(ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING) // Engineering
+		if(5)
+			return list(ACCESS_MARINE_COMMANDER, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_CARGO, ACCESS_MARINE_SEA) // Command
+		if(6)
+			return list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_ENGPREP, ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP)//spess mahreens
+		if(7)
+			return list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA) // Squads
+		if(8)
+			return list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING)//Civilian
 
 /proc/get_region_accesses_name(code)
 	switch(code)
-		if(0) return "All"
-		if(1) return "[MAIN_SHIP_NAME] Security"//security
-		if(2) return "[MAIN_SHIP_NAME] Medbay"//medbay
-		if(3) return "[MAIN_SHIP_NAME] Research"//research
-		if(4) return "[MAIN_SHIP_NAME] Engineering"//engineering and maintenance
-		if(5) return "[MAIN_SHIP_NAME] Command"//command
-		if(6) return "Marines"//marine prep
-		if(7) return "Squads"//squads
-		if(8) return "Civilian"//Civilian
+		if(0)
+			return "All"
+		if(1)
+			return "[MAIN_SHIP_NAME] Security" // Security
+		if(2)
+			return "[MAIN_SHIP_NAME] Medbay" // Medbay
+		if(3)
+			return "[MAIN_SHIP_NAME] Research" // Research
+		if(4)
+			return "[MAIN_SHIP_NAME] Engineering" // Engineering
+		if(5)
+			return "[MAIN_SHIP_NAME] Command" // Command
+		if(6)
+			return "Marines" // Marine prep
+		if(7)
+			return "Squads" // Squads
+		if(8)
+			return "Civilian" // Civilian
 
 
 /proc/get_access_desc(A)

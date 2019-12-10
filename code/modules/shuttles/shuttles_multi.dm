@@ -56,7 +56,7 @@
 	if(!istype(MS)) return
 
 	var/dat
-	dat = "<center>[shuttle_tag] Ship Control<hr>"
+	dat = "<center>"
 
 
 	if(MS.moving_status != SHUTTLE_IDLE)
@@ -74,7 +74,7 @@
 	dat += "<b><A href='?src=\ref[src];move_multi=[1]'>Move ship</A></b><br>"
 	dat += "<b><A href='?src=\ref[src];start=[1]'>Return to base</A></b></center>"
 
-	user << browse("[dat]", "window=[shuttle_tag]shuttlecontrol;size=300x600")
+	show_browser(user, dat, "[shuttle_tag] Ship Control", "[shuttle_tag]shuttlecontrol", "size=300x600")
 
 /obj/structure/machinery/computer/shuttle_control/multi/Topic(href, href_list)
 	if(..())

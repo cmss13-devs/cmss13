@@ -11,6 +11,11 @@ var/global/list/special_roles = list(
 	"Predator" = 1,
 )
 
+var/global/list/stylesheets = list(
+	"Modern" = 'html/browser/common.css',
+	"Legacy" = 'html/browser/legacy.css'
+)
+
 var/const/MAX_SAVE_SLOTS = 10
 #define XENO_PREFIX_LIMIT 2
 #define XENO_POSTFIX_LIMIT 2
@@ -140,6 +145,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/xeno_prefix = "XX"
 	var/xeno_postfix = ""
 
+	var/stylesheet = "Modern"
+
 /datum/preferences/New(client/C)
 	if(istype(C))
 		if(!IsGuestKey(C.key))
@@ -152,17 +159,20 @@ var/const/MAX_SAVE_SLOTS = 10
 	gear = list()
 
 /datum/preferences/proc/ShowChoices(mob/user)
-	if(!user || !user.client)	return
+	if(!user || !user.client)	
+		return
 	update_preview_icon()
 	user << browse_rsc(preview_icon_front, "previewicon.png")
 	user << browse_rsc(preview_icon_side, "previewicon2.png")
 
 	var/dat = "<html><head><style>"
-	dat += "#wrapper 		{position: relative; width: 625px; height: 200px; margin: 0 auto;}"
-	dat += "#preview		{position: absolute; top: 30px; left: 300px;}"
-	dat += "#right			{position: absolute; top: 201px; left: 300px;}"
+	dat += "#wrapper 		{position: relative; margin: 0 auto;}"
+	dat += "#column1			{width: 30%; float: left;}"
+	dat += "#column2			{width: 30%; float: left;}"
+	dat += "#column3			{width: 40%; float: left;}"
+	dat += ".square			{width: 15px; height: 15px; display: inline-block;}"
 	dat += "</style></head>"
-	dat += "<body>"
+	dat += "<body onselectstart='return false;'>"
 
 	if(path)
 		dat += "<center>"
@@ -188,24 +198,18 @@ var/const/MAX_SAVE_SLOTS = 10
 
 
 	dat += "<div id='wrapper'>"
-	dat += "<big><big><b>Name:</b> "
+	dat += "<div id='column1'>"
+	dat += "<h1><u><b>Name:</b></u> "
 	dat += "<a href='?_src_=prefs;preference=name;task=input'><b>[real_name]</b></a>"
-	dat += " (<a href='?_src_=prefs;preference=name;task=random'>&reg</A>)</big></big>"
-	dat += "<br>"
+	dat += "<a href='?_src_=prefs;preference=name;task=random'>&reg</A></h1>"
 	dat += "Always Pick Random Name: <a href='?_src_=prefs;preference=rand_name'>[be_random_name ? "Yes" : "No"]</a>"
 	dat += "<br>"
 	dat += "Always Pick Random Appearance: <a href='?_src_=prefs;preference=rand_body'>[be_random_body ? "Yes" : "No"]</a>"
 	dat += "<br><br>"
 
 
-	//dat += "</td><td><b>Preview</b><br><img src=previewicon.png height=64 width=64><img src=previewicon2.png height=64 width=64></td></tr></table>"
-
-	//dat += "</td><td width='300px' height='300px'>"
-
-
-	dat += "<big><b><u>Physical Information:</u></b>"
-	dat += " (<a href='?_src_=prefs;preference=all;task=random'>&reg;</A>)</big>"
-	dat += "<br>"
+	dat += "<h2><b><u>Physical Information:</u></b>"
+	dat += "<a href='?_src_=prefs;preference=all;task=random'>&reg;</A></h2>"
 	dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'><b>[age]</b></a><br>"
 	dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br>"
 	dat += "<b>Ethnicity:</b> <a href='?_src_=prefs;preference=ethnicity;task=input'><b>[ethnicity]</b></a><br>"
@@ -213,8 +217,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "<b>Poor Eyesight:</b> <a href='?_src_=prefs;preference=disabilities'><b>[disabilities == 0 ? "No" : "Yes"]</b></a><br>"
 	dat += "<br>"
 
-	dat += "<big><b><u>Occupation Choices:</u></b></big>"
-	dat += "<br>"
+	dat += "<h2><b><u>Occupation Choices:</u></b></h2>"
 
 	var/n = 0
 
@@ -244,11 +247,11 @@ var/const/MAX_SAVE_SLOTS = 10
 				ban_check_name = "Synth Survivor"
 
 		if(jobban_isbanned(user, ban_check_name))
-			dat += "<b>Be [role_name]:</b> <font color=red><b> \[BANNED]</b></font><br>"
+			dat += "<b>Be [role_name]:</b> <font color=red><b>\[BANNED]</b></font><br>"
 		else if(!can_play_special_job(user.client, ban_check_name))
-			dat += "<b>Be [role_name]:</b> <font color=red><b> \[TIMELOCKED]</b></font><br>"
+			dat += "<b>Be [role_name]:</b> <font color=red><b>\[TIMELOCKED]</b></font><br>"
 			for(var/requirement in missing_requirements)
-				dat += "[requirement] - [duration2text(missing_requirements[requirement])] Hours<br>"
+				dat += "\t[requirement] - [duration2text(missing_requirements[requirement])] Hours<br>"
 		else
 			dat += "<b>Be [role_name]:</b> <a href='?_src_=prefs;preference=be_special;num=[n]'><b>[be_special & (1<<n) ? "Yes" : "No"]</b></a><br>"
 			if(role_name == "Xenomorph")
@@ -267,10 +270,71 @@ var/const/MAX_SAVE_SLOTS = 10
 
 		n++
 
-	dat += "\t<a href='?_src_=prefs;preference=job;task=menu'><b>Set Marine Role Preferences</b></a><br>"
+	dat += "\t<a href='?_src_=prefs;preference=job;task=menu'><b>Set Marine Role Preferences</b></a>"
+	dat += "</div>"
+
+	dat += "<div id='column2'>"
+	dat += "<img src=previewicon.png width=64 height=64><img src=previewicon2.png width=64 height=64 margin-left=auto margin-right=auto>"
+	dat += "<br>"
+	dat += "<b>Hair:</b> "
+	dat += "<a href='?_src_=prefs;preference=h_style;task=input'>[h_style]</a>"
+	dat += " | "
+	dat += "<a href='?_src_=prefs;preference=hair;task=input'>"
+	dat += "Color <span class='square' style='background-color: #[num2hex(r_hair, 2)][num2hex(g_hair, 2)][num2hex(b_hair)];'></span>"
+	dat += "</a>"
 	dat += "<br>"
 
-	dat += "<big><b><u>Marine Gear:</u></b></big><br>"
+	dat += "<b>Facial Hair:</b> "
+	dat += "<a href='?_src_=prefs;preference=f_style;task=input'>[f_style]</a>"
+	dat += " | "
+	dat += "<a href='?_src_=prefs;preference=facial;task=input'>"
+	dat += "Color <span class='square' style='background-color: #[num2hex(r_facial, 2)][num2hex(g_facial, 2)][num2hex(b_facial)];'></span>"
+	dat += "</a>"
+	dat += "<br>"
+
+	dat += "<b>Eye:</b> "
+	dat += "<a href='?_src_=prefs;preference=eyes;task=input'>"
+	dat += "Color <span class='square' style='background-color: #[num2hex(r_eyes, 2)][num2hex(g_eyes, 2)][num2hex(b_eyes)];'></span>"
+	dat += "</a>"
+	dat += "<br><br>"
+	dat += "<h2><b><u>Background Information:</u></b></h2>"
+	dat += "<b>Citizenship</b>: <a href='byond://?src=\ref[user];preference=citizenship;task=input'>[citizenship]</a><br/>"
+	dat += "<b>Religion</b>: <a href='byond://?src=\ref[user];preference=religion;task=input'>[religion]</a><br/>"
+
+	dat += "<b>Corporate Relation:</b> <a href ='?_src_=prefs;preference=nt_relation;task=input'><b>[nanotrasen_relation]</b></a><br>"
+	dat += "<b>Preferred Squad:</b> <a href ='?_src_=prefs;preference=prefsquad;task=input'><b>[preferred_squad]</b></a><br>"
+
+	if(jobban_isbanned(user, "Records"))
+		dat += "<b>You are banned from using character records.</b><br>"
+	else
+		dat += "<b><a href=\"byond://?src=\ref[user];preference=records;record=1\">Character Records</a></b><br>"
+
+	dat += "<a href='byond://?src=\ref[user];preference=flavor_text;task=open'><b>Character Description</b></a>"
+	
+	dat += "<br><br>"
+
+	dat += "<b>Eye:</b> "
+	dat += "<a href='?_src_=prefs;preference=eyes;task=input'>"
+	dat += "Color <span class='square' style='background-color: #[num2hex(r_eyes, 2)][num2hex(g_eyes, 2)][num2hex(b_eyes)];'></span>"
+	dat += "</a>"
+	dat += "<br><br>"
+	dat += "<h2><b><u>Background Information:</u></b></h2>"
+	dat += "<b>Citizenship</b>: <a href='byond://?src=\ref[user];preference=citizenship;task=input'>[citizenship]</a><br/>"
+	dat += "<b>Religion</b>: <a href='byond://?src=\ref[user];preference=religion;task=input'>[religion]</a><br/>"
+
+	dat += "<b>Corporate Relation:</b> <a href ='?_src_=prefs;preference=nt_relation;task=input'><b>[nanotrasen_relation]</b></a><br>"
+	dat += "<b>Preferred Squad:</b> <a href ='?_src_=prefs;preference=prefsquad;task=input'><b>[preferred_squad]</b></a><br>"
+
+	if(jobban_isbanned(user, "Records"))
+		dat += "<b>You are banned from using character records.</b><br>"
+	else
+		dat += "<b><a href=\"byond://?src=\ref[user];preference=records;record=1\">Character Records</a></b><br>"
+
+	dat += "<a href='byond://?src=\ref[user];preference=flavor_text;task=open'><b>Character Description</b></a>"
+	
+	dat += "<br><br>"
+
+	dat += "<h2><b><u>Marine Gear:</u></b></h2>"
 	if(gender == MALE)
 		dat += "<b>Underwear:</b> <a href ='?_src_=prefs;preference=underwear;task=input'><b>[underwear_m[underwear]]</b></a><br>"
 	else
@@ -283,7 +347,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "<b>Custom Loadout:</b> "
 	var/total_cost = 0
 
-	if(!islist(gear)) gear = list()
+	if(!islist(gear)) 
+		gear = list()
 
 	if(gear && gear.len)
 		dat += "<br>"
@@ -291,57 +356,20 @@ var/const/MAX_SAVE_SLOTS = 10
 			var/datum/gear/G = gear_datums[gear[i]]
 			if(G)
 				total_cost += G.cost
-				dat += "[gear[i]] ([G.cost] points) <a href='byond://?src=\ref[user];preference=loadout;task=remove;gear=[i]'>\[remove\]</a><br>"
+				dat += "[gear[i]] ([G.cost] points) <a href='byond://?src=\ref[user];preference=loadout;task=remove;gear=[i]'>Remove</a><br>"
 
 		dat += "<b>Used:</b> [total_cost] points."
 	else
 		dat += "None"
 
 	if(total_cost < MAX_GEAR_COST)
-		dat += " <a href='byond://?src=\ref[user];preference=loadout;task=input'>\[add\]</a>"
+		dat += " <a href='byond://?src=\ref[user];preference=loadout;task=input'>Add</a>"
 		if(gear && gear.len)
-			dat += " <a href='byond://?src=\ref[user];preference=loadout;task=clear'>\[clear\]</a>"
-
-	dat += "<br><br>"
-
-	dat += "<big><b><u>UI Customization:</u></b></big><br>"
-	dat += "<b>Style:</b> <a href='?_src_=prefs;preference=ui'><b>[UI_style]</b></a><br>"
-	dat += "<b>Color</b>: <a href='?_src_=prefs;preference=UIcolor'><b>[UI_style_color]</b></a> <table style='display:inline;' bgcolor='[UI_style_color]'><tr><td>__</td></tr></table><br>"
-	dat += "<b>Alpha</b>: <a href='?_src_=prefs;preference=UIalpha'><b>[UI_style_alpha]</b></a><br>"
-	if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
-		dat += "<b>View Master Controller Tab: <a href='?_src_=prefs;preference=ViewMC'><b>[View_MC ? "TRUE" : "FALSE"]</b></a>"
-
-
-	dat += "<div id='preview'>"
-	dat += "<img src=previewicon.png width=64 height=64><img src=previewicon2.png width=64 height=64 margin-left=auto margin-right=auto>"
-	//dat += "</div>"
-	dat += "<br>"
-	dat += "<b>Hair:</b> <a href='?_src_=prefs;preference=h_style;task=input'>[h_style]</a> | <a href='?_src_=prefs;preference=hair;task=input'>Color</a> <font face='fixedsys' size='3' color='#[num2hex(r_hair, 2)][num2hex(g_hair, 2)][num2hex(b_hair, 2)]'><table style='display:inline;' bgcolor='#[num2hex(r_hair, 2)][num2hex(g_hair, 2)][num2hex(b_hair)]'><tr><td>__</td></tr></table></font> "
-	dat += "<br>"
-
-	dat += "<b>Facial Hair:</b> <a href='?_src_=prefs;preference=f_style;task=input'>[f_style]</a> | <a href='?_src_=prefs;preference=facial;task=input'>Color</a> <font face='fixedsys' size='3' color='#[num2hex(r_facial, 2)][num2hex(g_facial, 2)][num2hex(b_facial, 2)]'><table  style='display:inline;' bgcolor='#[num2hex(r_facial, 2)][num2hex(g_facial, 2)][num2hex(b_facial)]'><tr><td>__</td></tr></table></font> "
-	dat += "<br>"
-
-	dat += "<b>Eye:</b> <a href='?_src_=prefs;preference=eyes;task=input'>Color</a> <font face='fixedsys' size='3' color='#[num2hex(r_eyes, 2)][num2hex(g_eyes, 2)][num2hex(b_eyes, 2)]'><table  style='display:inline;' bgcolor='#[num2hex(r_eyes, 2)][num2hex(g_eyes, 2)][num2hex(b_eyes)]'><tr><td>__</td></tr></table></font><br>"
+			dat += " <a href='byond://?src=\ref[user];preference=loadout;task=clear'>Clear</a>"
 	dat += "</div>"
 
-	dat += "<div id='right'>"
-	dat += "<big><b><u>Background Information:</u></b></big><br>"
-	dat += "<b>Citizenship</b>: <a href='byond://?src=\ref[user];preference=citizenship;task=input'>[citizenship]</a><br/>"
-	dat += "<b>Religion</b>: <a href='byond://?src=\ref[user];preference=religion;task=input'>[religion]</a><br/>"
-
-	dat += "<b>Corporate Relation:</b> <a href ='?_src_=prefs;preference=nt_relation;task=input'><b>[nanotrasen_relation]</b></a><br>"
-	dat += "<b>Preferred Squad:</b> <a href ='?_src_=prefs;preference=prefsquad;task=input'><b>[preferred_squad]</b></a><br>"
-
-	if(jobban_isbanned(user, "Records"))
-		dat += "<b>You are banned from using character records.</b><br>"
-	else
-		dat += "<b><a href=\"byond://?src=\ref[user];preference=records;record=1\">Character Records</a></b><br>"
-
-	dat += "<a href='byond://?src=\ref[user];preference=flavor_text;task=open'><b>Character Description</b></a><br>"
-	dat += "<br>"
-
-	dat += "<big><b><u>Game Settings:</u></b></big><br>"
+	dat += "<div id='column3'>"
+	dat += "<h2><b><u>Game Settings:</u></b></h2>"
 	dat += "<b>Play Admin Midis:</b> <a href='?_src_=prefs;preference=hear_midis'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
 	dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'><b>[(toggles_sound & SOUND_LOBBY) ? "Yes" : "No"]</b></a><br>"
 	dat += "<b>Ghost Ears:</b> <a href='?_src_=prefs;preference=ghost_ears'><b>[(toggles_chat & CHAT_GHOSTEARS) ? "All Speech" : "Nearest Creatures"]</b></a><br>"
@@ -365,29 +393,32 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	if(config.allow_Metadata)
 		dat += "<b>OOC Notes:</b> <a href='?_src_=prefs;preference=metadata;task=input'> Edit </a><br>"
-
-	dat += "<br>"
-	dat += "</div>"
-
 	dat += "<br>"
 
-	dat += "</div></body></html>"
-	user << browse(dat, "window=preferences;size=670x830")
+	dat += "<h2><b><u>UI Customization:</u></b></h2>"
+	dat += "<b>Style:</b> <a href='?_src_=prefs;preference=ui'><b>[UI_style]</b></a><br>"
+	dat += "<b>Color</b>: <a href='?_src_=prefs;preference=UIcolor'><b>[UI_style_color]</b> <table style='display:inline;' bgcolor='[UI_style_color]'><tr><td>__</td></tr></table></a><br>"
+	dat += "<b>Alpha</b>: <a href='?_src_=prefs;preference=UIalpha'><b>[UI_style_alpha]</b></a><br><br>"
+	dat += "<b>Stylesheet</b>: <a href='?_src_=prefs;preference=stylesheet'><b>[stylesheet]</b></a><br>"
+	if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
+		dat += "<b>View Master Controller Tab: <a href='?_src_=prefs;preference=ViewMC'><b>[View_MC ? "TRUE" : "FALSE"]</b></a>"
+	
+	dat += "</div></div></body></html>"
+	show_browser(user, dat, "Preferences", "preferences", "size=780x700")
 
-/datum/preferences/proc/SetChoices(mob/user, limit = 13, list/splitJobs = list(), width = 600, height = 650)
-	if(!RoleAuthority) return
-
-	//limit 	 - The amount of jobs allowed per column. Defaults to 13 to make it look nice.
-	//splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
-	//width	 - Screen' width. Defaults to 550 to make it look nice.
-	//height 	 - Screen's height. Defaults to 500 to make it look nice.
-
+//limit 	 	- The amount of jobs allowed per column. Defaults to 13 to make it look nice.
+//splitJobs 	- Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
+//width	 		- Screen' width. Defaults to 550 to make it look nice.
+//height 	 	- Screen's height. Defaults to 500 to make it look nice.
+/datum/preferences/proc/SetChoices(mob/user, limit = 13, list/splitJobs = list(), width = 800, height = 850)
+	if(!RoleAuthority) 
+		return
 
 	var/HTML = "<body>"
 	HTML += "<tt><center>"
 	HTML += "<b>Choose occupation chances</b><br>Unavailable occupations are crossed out.<br><br>"
-	HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>\[Done\]</a></center><br>" // Easier to press up here.
-	HTML += "<table width='100%' cellpadding='1' cellspacing='0'><tr><td valign='top' width='20%'>" // Table within a table for alignment, also allows you to easily add more colomns.
+	HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Done</a></center><br>" // Easier to press up here.
+	HTML += "<table width='100%' cellpadding='1' cellspacing='0' style='color: black;'><tr><td valign='top' width='20%'>" // Table within a table for alignment, also allows you to easily add more colomns.
 	HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
 	var/index = -1
 
@@ -402,65 +433,90 @@ var/const/MAX_SAVE_SLOTS = 10
 				//If the cells were broken up by a job in the splitJob list then it will fill in the rest of the cells with
 				//the last job's selection color. Creating a rather nice effect.
 				for(var/j = 0, j < (limit - index), j += 1)
-					HTML += "<tr bgcolor='[lastJob.selection_color]'><td width='60%' align='right'><a>&nbsp</a></td><td><a>&nbsp</a></td></tr>"
+					HTML += "<tr class='[lastJob.selection_class]'><td width='60%' align='right'><a>&nbsp</a></td><td><a>&nbsp</a></td></tr>"
 			HTML += "</table></td><td valign='top' width='20%'><table width='100%' cellpadding='1' cellspacing='0'>"
 			index = 0
 
-		HTML += "<tr bgcolor='[job.selection_color]'><td width='60%' align='right'>"
+		HTML += "<tr class='[job.selection_class]'><td width='40%' align='right'>"
 		lastJob = job
+
 		if(jobban_isbanned(user, job.title))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td><b> \[BANNED]</b></td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td><b>BANNED</b></td></tr>"
 			continue
 		else if(job.flags_startup_parameters & ROLE_WHITELISTED && !(RoleAuthority.roles_whitelist[user.ckey] & job.flags_whitelist))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td> \[WHITELISTED]</td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td>WHITELISTED</td></tr>"
 			continue
 		else if(!job.can_play_role(user.client))
 			var/list/missing_requirements = job.get_role_requirements(user.client.player_entity)
-			HTML += "<b><del>[job.disp_title]</del></b></td><td> \[TIMELOCKED]</td></tr>"
+			HTML += "<b><del>[job.disp_title]</del></b></td><td>TIMELOCKED</td></tr>"
 			for(var/requirement in missing_requirements)
-				HTML += "<tr bgcolor='[job.selection_color]'><td width='60%' align='right'>[requirement]</td><td> [duration2text(missing_requirements[requirement])] Hours</td></tr>"
-			HTML += "<tr bgcolor='[job.selection_color]'><td align='center' colspan='2'>---</td></tr>"
+				HTML += "<tr class='[job.selection_class]'><td width='40%' align='right'>[requirement]</td><td>[duration2text(missing_requirements[requirement])] Hours</td></tr>"
 			continue
-		else 
-			HTML += "<b>[job.disp_title]</b>"
+		
+		HTML += "<b>[job.disp_title]</b>"
 
-			HTML += "</td><td width='40%'>"
+		HTML += "</td><td width='60%'>"
 
-			HTML += "<a href='?_src_=prefs;preference=job;task=input;text=[job.title]'>"
+		var/cur_priority = 4
 
-			if(GetJobDepartment(job, 1) & job.flag)
-				HTML += " <font color=blue>\[High]</font>"
-			else if(GetJobDepartment(job, 2) & job.flag)
-				HTML += " <font color=green>\[Medium]</font>"
-			else if(GetJobDepartment(job, 3) & job.flag)
-				HTML += " <font color=orange>\[Low]</font>"
-			else
-				HTML += " <font color=red>\[NEVER]</font>"
-			if(job.alt_titles)
-				HTML += "</a></td></tr><tr bgcolor='[lastJob.selection_color]'><td width='60%' align='center'><a>&nbsp</a></td><td><a href=\"byond://?src=\ref[user];preference=job;task=alt_title;job=\ref[job]\">\[[GetPlayerAltTitle(job)]\]</a></td></tr>"
-			HTML += "</a></td></tr>"
+		if(GetJobDepartment(job, 1) & job.flag)
+			cur_priority = 1
+		else if(GetJobDepartment(job, 2) & job.flag)
+			cur_priority = 2
+		else if(GetJobDepartment(job, 3) & job.flag)
+			cur_priority = 3
+
+		var/b_color
+		var/priority_text
+		for (var/j in 1 to 4)
+			switch (j)
+				if(1)
+					b_color = "blue"
+					priority_text = "HIGH"
+				if(2)
+					b_color = "green"
+					priority_text = "MEDIUM"
+				if(3)
+					b_color = "orange"
+					priority_text = "LOW"
+				else
+					b_color = "red" 
+					priority_text = "NEVER"
+				
+			HTML += "<a class='[j == cur_priority ? b_color : "inactive"]' href='?_src_=prefs;preference=job;task=input;text=[job.title];target_priority=[j];'>[priority_text]</a>"
+			if (j < 4)
+				HTML += "&nbsp"
+
+		if(job.alt_titles)
+			HTML += "</td></tr><tr class='[lastJob.selection_class]'><td width='60%' align='center'><a>&nbsp</a></td><td><a href=\"byond://?src=\ref[user];preference=job;task=alt_title;job=\ref[job]\">\[[GetPlayerAltTitle(job)]\]</a></td></tr>"
+		HTML += "</td></tr>"
 
 	HTML += "</td'></tr></table>"
 	HTML += "</center></table>"
 
 	if(user.client.prefs) //Just makin sure
-		if(user.client.prefs.alternate_option == GET_RANDOM_JOB)
-			HTML += "<center><br><u><a href='?_src_=prefs;preference=job;task=random'><font color=green>Get random job if preferences unavailable</font></a></u></center><br>"
+		var/b_color = "green"
+		var/msg = "Get random job if preferences unavailable"
+
 		if(user.client.prefs.alternate_option == BE_ASSISTANT)
-			HTML += "<center><br><u><a href='?_src_=prefs;preference=job;task=random'><font color=red>Be marine if preference unavailable</font></a></u></center><br>"
-		if(user.client.prefs.alternate_option == RETURN_TO_LOBBY)
-			HTML += "<center><br><u><a href='?_src_=prefs;preference=job;task=random'><font color=purple>Return to lobby if preference unavailable</font></a></u></center><br>"
+			b_color = "red"
+			msg = "Be marine if preference unavailable"
+		else if(user.client.prefs.alternate_option == RETURN_TO_LOBBY)
+			b_color = "purple"
+			msg = "Return to lobby if preference unavailable"
 
-	HTML += "<center><a href='?_src_=prefs;preference=job;task=reset'>\[Reset\]</a></center>"
-	HTML += "</tt>"
+		HTML += "<center><br><a class='[b_color]' href='?_src_=prefs;preference=job;task=random'>[msg]</a></center><br>"
 
-	user << browse(null, "window=preferences")
-	user << browse(HTML, "window=mob_occupation;size=[width]x[height]")
+	HTML += "<center><a href='?_src_=prefs;preference=job;task=reset'>Reset</a></center>"
+	HTML += "</tt></body>"
 
+	close_browser(user, "preferences")
+	show_browser(user, HTML, "Job Preferences", "mob_occupation", "size=[width]x[height]")
+	onclose(user, "mob_occupation", user.client, list("_src_" = "prefs", "preference" = "job", "task" = "close"))
 	return
 
 /datum/preferences/proc/SetRecords(mob/user)
-	var/HTML = "<body>"
+	var/HTML = "<body onselectstart='return false;'>"
 	HTML += "<tt><center>"
 	HTML += "<b>Set Character Records</b><br>"
 
@@ -477,26 +533,24 @@ var/const/MAX_SAVE_SLOTS = 10
 	HTML += TextPreview(sec_record,40)
 
 	HTML += "<br>"
-	HTML += "<a href=\"byond://?src=\ref[user];preference=records;records=-1\">\[Done\]</a>"
+	HTML += "<a href=\"byond://?src=\ref[user];preference=records;records=-1\">Done</a>"
 	HTML += "</center></tt>"
 
-	user << browse(null, "window=preferences")
-	user << browse(HTML, "window=records;size=350x300")
+	close_browser(user, "preferences")
+	show_browser(user, HTML, "Set Records", "records", "size=350x300")
 	return
 
 /datum/preferences/proc/SetFlavorText(mob/user)
 	var/HTML = "<body>"
-	HTML += "<tt><center>"
-	HTML += "<b>Set Flavor Text</b> <hr />"
-	HTML += "<br></center>"
+	HTML += "<tt>"
 	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=general'>General:</a> "
 	HTML += TextPreview(flavor_texts["general"])
 	HTML += "<br>"
 	HTML += "<hr />"
-	HTML +="<a href='?src=\ref[user];preference=flavor_text;task=done'>\[Done\]</a>"
+	HTML +="<a href='?src=\ref[user];preference=flavor_text;task=done'>Done</a>"
 	HTML += "<tt>"
-	user << browse(null, "window=preferences")
-	user << browse(HTML, "window=flavor_text;size=430x300")
+	close_browser(user, "preferences")
+	show_browser(user, HTML, "Set Flavor Text", "flavor_text;size=430x300")
 	return
 
 /datum/preferences/proc/GetPlayerAltTitle(datum/job/job)
@@ -510,21 +564,17 @@ var/const/MAX_SAVE_SLOTS = 10
 	if(job.title != new_title)
 		player_alt_titles[job.title] = new_title
 
-/datum/preferences/proc/SetJob(mob/user, role)
+/datum/preferences/proc/SetJob(mob/user, role, priority)
 	var/datum/job/job = RoleAuthority.roles_for_mode[role]
 	if(!job)
-		user << browse(null, "window=mob_occupation")
+		close_browser(user, "mob_occupation")
 		ShowChoices(user)
 		return
 
-	if(GetJobDepartment(job, 1) & job.flag)
-		SetJobDepartment(job, 1)
-	else if(GetJobDepartment(job, 2) & job.flag)
-		SetJobDepartment(job, 2)
-	else if(GetJobDepartment(job, 3) & job.flag)
-		SetJobDepartment(job, 3)
-	else//job = Never
-		SetJobDepartment(job, 4)
+	if (priority < 1 || priority > 4)
+		return
+
+	SetJobDepartment(job, priority)
 
 	SetChoices(user)
 	return 1
@@ -547,7 +597,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	job_marines_low = 0
 
 /datum/preferences/proc/GetJobDepartment(var/datum/job/job, var/level)
-	if(!job || !level)	return 0
+	if(!job || !level)	
+		return FALSE
 	switch(job.department_flag)
 		if(ROLEGROUP_MARINE_COMMAND)
 			switch(level)
@@ -581,18 +632,13 @@ var/const/MAX_SAVE_SLOTS = 10
 					return job_marines_med
 				if(3)
 					return job_marines_low
-	return 0
+	return FALSE
 
 /datum/preferences/proc/SetJobDepartment(var/datum/job/job, var/level)
-	if(!job || !level)	return 0
+	if(!job || !level)	
+		return FALSE
 	switch(level)
-		if(1)//Only one of these should ever be active at once so clear them all here
-			job_command_high = 0
-			job_medsci_high = 0
-			job_engi_high = 0
-			job_marines_high = 0
-			return 1
-		if(2)//Set current highs to med, then reset them
+		if(1)//Set current highs to med, then reset them
 			job_command_med |= job_command_high
 			job_medsci_med |= job_medsci_high
 			job_engi_med |= job_engi_high
@@ -604,46 +650,51 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	switch(job.department_flag)
 		if(ROLEGROUP_MARINE_COMMAND)
+			job_command_high &= ~job.flag
+			job_command_med &= ~job.flag
+			job_command_low &= ~job.flag
 			switch(level)
-				if(2)
+				if(1)
 					job_command_high = job.flag
-					job_command_med &= ~job.flag
-				if(3)
+				if(2)
 					job_command_med |= job.flag
-					job_command_low &= ~job.flag
-				else
+				if(3)
 					job_command_low |= job.flag
 		if(ROLEGROUP_MARINE_MED_SCIENCE)
+			job_medsci_high &= ~job.flag
+			job_medsci_med &= ~job.flag
+			job_medsci_low &= ~job.flag
 			switch(level)
-				if(2)
+				if(1)
 					job_medsci_high = job.flag
-					job_medsci_med &= ~job.flag
-				if(3)
+				if(2)
 					job_medsci_med |= job.flag
-					job_medsci_low &= ~job.flag
-				else
+				if(3)
 					job_medsci_low |= job.flag
 		if(ROLEGROUP_MARINE_ENGINEERING)
+			job_engi_high &= ~job.flag
+			job_engi_med &= ~job.flag
+			job_engi_low &= ~job.flag
 			switch(level)
-				if(2)
+				if(1)
 					job_engi_high = job.flag
 					job_engi_med &= ~job.flag
-				if(3)
+				if(2)
 					job_engi_med |= job.flag
-					job_engi_low &= ~job.flag
-				else
+				if(3)
 					job_engi_low |= job.flag
 		if(ROLEGROUP_MARINE_SQUAD_MARINES)
+			job_marines_high &= ~job.flag
+			job_marines_med &= ~job.flag
+			job_marines_low &= ~job.flag
 			switch(level)
-				if(2)
+				if(1)
 					job_marines_high = job.flag
-					job_marines_med &= ~job.flag
-				if(3)
+				if(2)
 					job_marines_med |= job.flag
-					job_marines_low &= ~job.flag
-				else
+				if(3)
 					job_marines_low |= job.flag
-	return 1
+	return TRUE
 
 /datum/preferences/proc/process_link(mob/user, list/href_list)
 	if(!istype(user, /mob/new_player) && !istype(user, /mob/dead/observer)) return
@@ -652,7 +703,7 @@ var/const/MAX_SAVE_SLOTS = 10
 		if("job")
 			switch(href_list["task"])
 				if("close")
-					user << browse(null, "window=mob_occupation")
+					close_browser(user, "mob_occupation")
 					ShowChoices(user)
 				if("reset")
 					ResetJobs()
@@ -674,7 +725,8 @@ var/const/MAX_SAVE_SLOTS = 10
 							SetPlayerAltTitle(job, choice)
 							SetChoices(user)
 				if("input")
-					SetJob(user, href_list["text"])
+					var/priority = text2num(href_list["target_priority"])
+					SetJob(user, href_list["text"], priority)
 				else
 					SetChoices(user)
 			return 1
@@ -726,7 +778,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					SetFlavorText(user)
 					return
 				if("done")
-					user << browse(null, "window=flavor_text")
+					close_browser(user, "flavor_text")
 					ShowChoices(user)
 					return
 				if("general")
@@ -749,7 +801,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				SetRecords(user)
 				return
 			else
-				user << browse(null, "window=records")
+				close_browser(user, "records")
 
 			switch(href_list["task"])
 				if("med_record")
@@ -1170,6 +1222,10 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/UI_style_alpha_new = input(user, "Select a new alpha(transparence) parametr for UI, between 50 and 255") as num
 					if(!UI_style_alpha_new|!(UI_style_alpha_new <= 255 && UI_style_alpha_new >= 50)) return
 					UI_style_alpha = UI_style_alpha_new
+
+				if("stylesheet")
+					var/stylesheet_new = input(user, "Select a stylesheet to use (affects non-NanoUI interfaces)") in stylesheets
+					stylesheet = stylesheet_new
 				
 				if("ViewMC")
 					if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
@@ -1450,7 +1506,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 
 /datum/preferences/proc/open_load_dialog(mob/user)
-	var/dat = "<body>"
+	var/dat = "<body onselectstart='return false;'>"
 	dat += "<tt><center>"
 
 	var/savefile/S = new /savefile(path)
@@ -1468,7 +1524,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "<hr>"
 	dat += "<a href='byond://?src=\ref[user];preference=close_load_dialog'>Close</a><br>"
 	dat += "</center></tt>"
-	user << browse(dat, "window=saves;size=300x390")
+	show_browser(user, dat, "Load Character", "saves")
 
 /datum/preferences/proc/close_load_dialog(mob/user)
-	user << browse(null, "window=saves")
+	close_browser(user, "saves")

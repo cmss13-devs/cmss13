@@ -99,7 +99,7 @@
 /obj/structure/machinery/power/generator/interact(mob/user)
 	if ( (get_dist(src, user) > 1 ) && (!isAI(user)))
 		user.unset_interaction()
-		user << browse(null, "window=teg")
+		close_browser(user, "teg")
 		return
 
 	user.set_interaction(src)
@@ -129,7 +129,7 @@
 	t += "<HR>"
 	t += "<A href='?src=\ref[src]'>Refresh</A> <A href='?src=\ref[src];close=1'>Close</A>"
 
-	user << browse(t, "window=teg;size=460x300")
+	show_browser(user, t, name, "teg")
 	onclose(user, "teg")
 	return 1
 
@@ -137,7 +137,7 @@
 /obj/structure/machinery/power/generator/Topic(href, href_list)
 	..()
 	if( href_list["close"] )
-		usr << browse(null, "window=teg")
+		close_browser(usr, "teg")
 		usr.unset_interaction()
 		return 0
 

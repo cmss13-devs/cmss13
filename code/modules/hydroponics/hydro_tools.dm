@@ -155,7 +155,7 @@
 		dat += "<br>It has [grown_seed.flower_colour ? "<font color='[grown_seed.flower_colour]'>flowers</font>" : "flowers"]."
 
 	if(dat)
-		user << browse(dat,"window=plant_analyzer")
+		show_browser(user, dat, "Plant Analysis", "plant_analyzer")
 
 	return
 

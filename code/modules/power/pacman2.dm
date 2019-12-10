@@ -124,24 +124,24 @@
 			if (get_dist(src, user) > 1 )
 				if (!isAI(user))
 					user.machine = null
-					user << browse(null, "window=port_gen")
+					close_browser(user, "port_gen")
 					return
 
 			user.machine = src
 
-			var/dat = text("<b>[name]</b><br>")
+			var/dat
 			if (active)
-				dat += text("Generator: <A href='?src=\ref[src];action=disable'>On</A><br>")
+				dat += "Generator: <A href='?src=\ref[src];action=disable'>On</A><br>"
 			else
-				dat += text("Generator: <A href='?src=\ref[src];action=enable'>Off</A><br>")
+				dat += "Generator: <A href='?src=\ref[src];action=enable'>Off</A><br>"
 			if(P)
-				dat += text("Currently loaded phoron tank: [P.air_contents.phoron]<br>")
+				dat += "Currently loaded phoron tank: [P.air_contents.phoron]<br>"
 			else
-				dat += text("No phoron tank currently loaded.<br>")
-			dat += text("Power output: <A href='?src=\ref[src];action=lower_power'>-</A> [power_gen * power_output] <A href='?src=\ref[src];action=higher_power'>+</A><br>")
-			dat += text("Heat: [heat]<br>")
+				dat += "No phoron tank currently loaded.<br>"
+			dat += "Power output: <A href='?src=\ref[src];action=lower_power'>-</A> [power_gen * power_output] <A href='?src=\ref[src];action=higher_power'>+</A><br>"
+			dat += "Heat: [heat]<br>"
 			dat += "<br><A href='?src=\ref[src];action=close'>Close</A>"
-			user << browse("[dat]", "window=port_gen")
+			show_browser(user, dat, name, "port_gen")
 
 	Topic(href, href_list)
 		if(..())
@@ -168,5 +168,5 @@
 					power_output++
 					src.updateUsrDialog()
 			if (href_list["action"] == "close")
-				usr << browse(null, "window=port_gen")
+				close_browser(usr, "port_gen")
 				usr.machine = null

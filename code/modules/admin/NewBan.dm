@@ -169,7 +169,7 @@ var/savefile/Banlist
 /datum/admins/proc/unbanpanel()
 	var/count = 0
 	var/dat
-	//var/dat = "<HR><B>Unban Player:</B> \blue(U) = Unban , (E) = Edit Ban\green (Total<HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 >"
+	
 	Banlist.cd = "/base"
 	for (var/A in Banlist.dir)
 		count++
@@ -198,10 +198,11 @@ var/savefile/Banlist
 		dat += "<tr><td>[unban_link][perma_links] Key: <B>[key]</B></td><td>ComputerID: <B>[id]</B></td><td>IP: <B>[ip]</B></td><td> [expiry]</td><td>(By: [by])</td><td>(Reason: [reason])</td></tr>"
 
 	dat += "</table>"
-	var/dat_header = "<HR><B>Bans:</B> <FONT COLOR=blue>(U) = Unban , (E) = Edit Ban"
-	if(ishost(usr))	dat_header += ", (P) = Upgrade to Perma, (L) = Lift Permaban"
-	dat_header += "</FONT> - <FONT COLOR=green>([count] Bans)</FONT><HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 >[dat]"
-	usr << browse(dat_header, "window=unbanp;size=875x400")
+	var/dat_header = "<HR><B>Bans:</B> <span class='[INTERFACE_BLUE]'>(U) = Unban , (E) = Edit Ban"
+	if(ishost(usr))	
+		dat_header += ", (P) = Upgrade to Perma, (L) = Lift Permaban"
+	dat_header += "</span> - <span class='[INTERFACE_GREEN]'>([count] Bans)</span><HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 >[dat]"
+	show_browser(usr, dat_header, "Unban Panel", "unbanp", "size=875x400")
 
 //////////////////////////////////// DEBUG ////////////////////////////////////
 

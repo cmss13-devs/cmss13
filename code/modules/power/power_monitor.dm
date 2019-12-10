@@ -42,12 +42,12 @@
 	if ( (get_dist(src, user) > 1 ) || (stat & (BROKEN|NOPOWER)) )
 		if (!issilicon(user))
 			user.unset_interaction()
-			user << browse(null, "window=powcomp")
+			close_browser(user, "powcomp")
 			return
 
 
 	user.set_interaction(src)
-	var/t = "<TT><B>Power Monitoring</B><HR>"
+	var/t = "<TT>"
 
 	t += "<BR><HR><A href='?src=\ref[src];update=1'>Refresh</A>"
 	t += "<BR><HR><A href='?src=\ref[src];close=1'>Close</A>"
@@ -82,14 +82,13 @@
 			t += "<HR>Total demand: [total_demand] W</FONT>"
 		t += "</PRE></TT>"
 
-	user << browse(t, "window=powcomp;size=420x900")
-	onclose(user, "powcomp")
+	show_browser(user, t, "Power Monitoring", "powcomp", "size=420x900")
 
 
 /obj/structure/machinery/power/monitor/Topic(href, href_list)
 	..()
 	if( href_list["close"] )
-		usr << browse(null, "window=powcomp")
+		close_browser(usr, "powcomp")
 		usr.unset_interaction()
 		return
 	if( href_list["update"] )

@@ -213,7 +213,7 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 
 // Default font settings
 #define FONT_SIZE "5pt"
-#define FONT_COLOR "#09f"
+#define DEFAULT_FONT_COLOR "#09f"
 #define FONT_STYLE "Arial Black"
 #define SCROLL_SPEED 2
 

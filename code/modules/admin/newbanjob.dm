@@ -214,29 +214,7 @@ var/savefile/Banlistjob
 
 	dat += "</table>"
 	dat = "<HR><B>Bans:</B> <FONT COLOR=blue>(U) = Unban , </FONT> - <FONT COLOR=green>([count] Bans)</FONT><HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 >[dat]"
-	usr << browse(dat, "window=unbanp;size=875x400")
-
-/*/datum/admins/proc/permjobban(ckey, computerid, reason, bannedby, temp, minutes, rank)
-	if(AddBanjob(ckey, computerid, reason, usr.ckey, 0, 0, job))
-		to_chat(M, SPAN_WARNING("<BIG><B>You have been banned from [job] by [usr.client.ckey].\nReason: [reason].</B></BIG>"))
-		to_chat(M, SPAN_WARNING("This is a permanent ban."))
-		if(config.banappeals)
-			to_chat(M, SPAN_WARNING("To try to resolve this matter head to [config.banappeals]"))
-		else
-			to_chat(M, SPAN_WARNING("No ban appeals URL has been set."))
-		log_admin("[usr.client.ckey] has banned from [job] [ckey].\nReason: [reason]\nThis is a permanent ban.")
-		message_admins("\blue[usr.client.ckey] has banned from [job] [ckey].\nReason: [reason]\nThis is a permanent ban.")
-/datum/admins/proc/timejobban(ckey, computerid, reason, bannedby, temp, minutes, rank)
-	if(AddBanjob(ckey, computerid, reason, usr.ckey, 1, mins, job))
-		to_chat(M, SPAN_WARNING("<BIG><B>You have been jobbanned from [job] by [usr.client.ckey].\nReason: [reason].</B></BIG>"))
-		to_chat(M, SPAN_WARNING("This is a temporary ban, it will be removed in [mins] minutes."))
-		if(config.banappeals)
-			to_chat(M, SPAN_WARNING("To try to resolve this matter head to [config.banappeals]"))
-		else
-			to_chat(M, SPAN_WARNING("No ban appeals URL has been set."))
-		log_admin("[usr.client.ckey] has jobbanned from [job] [ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.")
-		message_admins("\blue[usr.client.ckey] has banned from [job] [ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.")*/
-//////////////////////////////////// DEBUG ////////////////////////////////////
+	show_browser(usr, dat, "Unjobban Panel", "unbanp", "size=875x400")
 
 /proc/CreateBansjob()
 

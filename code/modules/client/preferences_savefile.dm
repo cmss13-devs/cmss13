@@ -61,6 +61,7 @@
 	S["toggle_prefs"]		>> toggle_prefs
 	S["UI_style_color"]		>> UI_style_color
 	S["UI_style_alpha"]		>> UI_style_alpha
+	S["stylesheet"] 		>> stylesheet
 	S["fps"]				>> fps
 
 	S["xeno_prefix"]		>> xeno_prefix
@@ -112,6 +113,7 @@
 	S["ooccolor"]			<< ooccolor
 	S["lastchangelog"]		<< lastchangelog
 	S["UI_style"]			<< UI_style
+	S["stylesheet"] 		<< stylesheet
 	S["be_special"]			<< be_special
 	S["default_slot"]		<< default_slot
 	S["toggles_chat"]		<< toggles_chat

@@ -88,12 +88,12 @@
 		return
 		dat+= "<HR><BR><A href='?src=\ref[user];mach_close=suit_storage_unit'>Close panel</A>"
 	if(isUV) //The thing is running its cauterisation cycle. You have to wait.
-		dat += "<HEAD><TITLE>Suit storage unit</TITLE></HEAD>"
-		dat+= "<font color ='red'><B>Unit is cauterising contents with UV ray. Please wait.</font></B><BR>"
+		dat += SET_CLASS("<B>Unit is cauterising contents with UV ray. Please wait.</B>", INTERFACE_RED)
+		dat += "<BR>"
 
 	else
-		dat+= "<HEAD><TITLE>Suit storage unit</TITLE></HEAD>"
-		dat+= "<font color='blue'><font size = 4><B>U-Stor-It Suit Storage Unit, model DS1900</B></FONT><BR>"
+		dat+= SET_CLASS("<font size = 4><B>U-Stor-It Suit Storage Unit, model DS1900</B></FONT>", INTERFACE_BLUE)
+		dat += "<BR>"
 		dat+= "<B>Welcome to the Unit control panel.</B><HR>"
 
 		dat += "<font color='black'>Helmet storage compartment: <B>[inserted_helmet ? inserted_helmet.name : "</font><font color ='grey'>No helmet detected."]</B></font><BR>"
@@ -117,8 +117,7 @@
 		dat += "<A href='?src=\ref[src];start_UV=1'>Start Disinfection cycle</A><BR>"
 		dat += "<BR><BR><A href='?src=\ref[user];mach_close=suit_storage_unit'>Close control panel</A>"
 
-	user << browse(dat, "window=suit_storage_unit;size=400x500")
-	onclose(user, "suit_storage_unit")
+	show_browser(user, dat, "Suit Storage Unit", "suit_storage_unit", "size=400x500")
 	return
 
 

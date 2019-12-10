@@ -2,36 +2,18 @@
 
 <head>
   <title>Create Object</title>
-  <style type="text/css">
-    body
-    {
-      font-size: 9pt;
-      font-family: Verdana, sans-serif;
-    }
-
-    h1, h2, h3, h4, h5, h6
-    {
-      color: #00f;
-      font-family: Georgia, Arial, sans-serif;
-    }
-    img { 
-      border: 0px; 
-    }
-    p.lic {
-      font-size: 6pt;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="common.css">
 </head>
 
 <body>
 	<form name="spawner" action="byond://?src=/* ref src */" method="get">
 		<input type="hidden" name="src" value="/* ref src */">
 		
-		Type <input type="text" name="filter" value="" onkeypress="submitFirst(event)" style="width:350px"> <input type = "button" value = "Search" onclick = "updateSearch()" /><br>
+		Type <input type="text" name="filter" value="" onkeypress="submitFirst(event)" style="width:350px"> <input type = "button" class="button" value = "Search" onclick = "updateSearch()" /><br>
 		Offset: <input type="text" name="offset" value="x,y,z" style="width:250px">
 		
-		A <input type="radio" name="offset_type" value="absolute">
-		R <input type="radio" name="offset_type" value="relative" checked="checked"><br>
+		A <input type="radio" class ="radioButton" name="offset_type" value="absolute">
+		R <input type="radio" class ="radioButton" name="offset_type" value="relative" checked="checked"><br>
 		
 		Number: <input type="text" name="object_count" value="1" style="width:30px">
 		Dir: <input type="text" name="object_dir" value="2" style="width:30px">
@@ -43,8 +25,8 @@
 				<option value='inmarked'>In marked object</option>
 			</select>
 		<br><br>
-		<select name="object_list" id="object_list" size="18" multiple style="width:98%"></select><br>
-		<input type="submit" value="Spawn">
+		<select name="object_list" size="18" multiple style="width:98%"></select><br>
+		<input type="submit" class="button" value="Spawn">
 	</form>
 	
 	<script language="JavaScript">

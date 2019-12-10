@@ -67,26 +67,39 @@
 		dat += "This console is not connected to a sleeper or the sleeper is non-functional."
 	else
 		var/mob/living/occupant = connected.occupant
-		dat += "<font color='blue'><B>Occupant Statistics:</B></FONT><BR>"
+		dat += SET_CLASS("<B>Occupant Statistics:</B>", INTERFACE_BLUE)
+		dat += "<BR>"
 		if (occupant)
 			var/t1
 			switch(occupant.stat)
 				if(0)
 					t1 = "Conscious"
 				if(1)
-					t1 = "<font color='blue'>Unconscious</font>"
+					t1 = SET_CLASS("Unconscious", INTERFACE_BLUE)
 				if(2)
-					t1 = "<font color='red'>*dead*</font>"
+					t1 = SET_CLASS("*dead*", INTERFACE_RED)
 				else
-			dat += text("[]\tHealth %: [] ([])</FONT><BR>", (occupant.health > 50 ? "<font color='blue'>" : "<font color='red'>"), occupant.health, t1)
+			var/s_class = occupant.health > 50 ? INTERFACE_BLUE : INTERFACE_RED
+			dat += SET_CLASS("\tHealth %: [occupant.health] ([t1])", s_class)
+			dat += "<BR>"
 			if(iscarbon(occupant))
 				var/mob/living/carbon/C = occupant
-				dat += text("[]\t-Pulse, bpm: []</FONT><BR>", (C.pulse == PULSE_NONE || C.pulse == PULSE_THREADY ? "<font color='red'>" : "<font color='blue'>"), C.get_pulse(GETPULSE_TOOL))
-			dat += text("[]\t-Brute Damage %: []</FONT><BR>", (occupant.getBruteLoss() < 60 ? "<font color='blue'>" : "<font color='red'>"), occupant.getBruteLoss())
-			dat += text("[]\t-Respiratory Damage %: []</FONT><BR>", (occupant.getOxyLoss() < 60 ? "<font color='blue'>" : "<font color='red'>"), occupant.getOxyLoss())
-			dat += text("[]\t-Toxin Content %: []</FONT><BR>", (occupant.getToxLoss() < 60 ? "<font color='blue'>" : "<font color='red'>"), occupant.getToxLoss())
-			dat += text("[]\t-Burn Severity %: []</FONT><BR>", (occupant.getFireLoss() < 60 ? "<font color='blue'>" : "<font color='red'>"), occupant.getFireLoss())
-			dat += text("<HR>Knocked Out Summary %: [] ([] seconds left!)<BR>", occupant.knocked_out, round(occupant.knocked_out / 4))
+				s_class = C.pulse == PULSE_NONE || C.pulse == PULSE_THREADY ? INTERFACE_RED : INTERFACE_BLUE
+				dat += SET_CLASS("\t-Pulse, bpm: [C.get_pulse(GETPULSE_TOOL)]<BR>", s_class)
+
+			s_class = occupant.getBruteLoss() < 60 ? INTERFACE_BLUE : INTERFACE_RED
+			dat += SET_CLASS("\t-Brute Damage %: [occupant.getBruteLoss()]<BR>", s_class)
+			
+			s_class = occupant.getOxyLoss() < 60 ? INTERFACE_BLUE : INTERFACE_RED
+			dat += SET_CLASS("\t-Respiratory Damage %: [occupant.getOxyLoss()]<BR>", s_class)
+			
+			s_class = occupant.getToxLoss() < 60 ? INTERFACE_BLUE : INTERFACE_RED
+			dat += SET_CLASS("\t-Toxin Content %: [occupant.getToxLoss()]<BR>", s_class)
+			
+			s_class = occupant.getFireLoss() < 60 ? INTERFACE_BLUE : INTERFACE_RED
+			dat += SET_CLASS("\t-Burn Severity %: [occupant.getFireLoss()]<BR>", s_class)
+			
+			dat += "<HR>Knocked Out Summary %: [occupant.knocked_out] ([round(occupant.knocked_out / 4)] seconds left!)<BR>"
 			if(occupant.reagents)
 				for(var/chemical in connected.available_chemicals)
 					dat += "[connected.available_chemicals[chemical]]: [occupant.reagents.get_reagent_amount(chemical)] units<br>"
@@ -115,9 +128,8 @@
 			dat += "<HR><A href='?src=\ref[src];ejectify=1'>Eject Patient</A>"
 		else
 			dat += "The sleeper is empty."
-	dat += text("<BR><BR><A href='?src=\ref[];mach_close=sleeper'>Close</A>", user)
-	user << browse(dat, "window=sleeper;size=400x500")
-	onclose(user, "sleeper")
+	dat += "<BR><BR><A href='?src=\ref[user];mach_close=sleeper'>Close</A>"
+	show_browser(user, dat, "sleeper")
 	return
 
 /obj/structure/machinery/sleep_console/Topic(href, href_list)

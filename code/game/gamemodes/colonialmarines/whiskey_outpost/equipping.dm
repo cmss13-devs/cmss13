@@ -56,7 +56,7 @@ Make the USCM proud!"}
 //Chief MP
 /datum/job/command/warrant/whiskey
 	title = "Honor Guard Squad Leader"
-	selection_color = "#ffaaaa"
+	selection_class = "job_honor_guard_sl"
 	gear_preset = "WO Honor Guard Squad Leader"
 
 	generate_entry_message(mob/living/carbon/human/H)
@@ -199,7 +199,7 @@ Assist both the Bunker Crew Master and the Quartermaster in their duties."}
 /datum/job/logistics/tech/cargo/whiskey
 	title = "Bunker Crew Logistics"
 	supervisors = "the bunker crew master and the quartermaster"
-	selection_color = "#BAAFD9"
+	selection_class = "job_bunker_crew"
 	gear_preset = "WO Bunker Crew Logistics"
 
 

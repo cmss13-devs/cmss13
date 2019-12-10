@@ -130,7 +130,7 @@
 
 	user.set_interaction(src)
 	var/dat
-	dat = "<font face = \"Courier\"><HEAD><TITLE>[src.name]</TITLE></HEAD><center><H3>[src.name] Access</H3></center>"
+	dat = "<font face = \"Courier\">"
 	dat += "<br>[temp]<br>"
 	dat += "<br>Power Status: <a href='?src=\ref[src];input=toggle'>[src.toggled ? "On" : "Off"]</a>"
 	if(on && toggled)
@@ -179,7 +179,7 @@
 
 	dat += "</font>"
 	temp = ""
-	user << browse(dat, "window=tcommachine;size=520x500;can_resize=0")
+	show_browser(user, dat, "[src] Access", "tcommachine", "size=520x500;can_resize=0")
 	onclose(user, "dormitory")
 
 

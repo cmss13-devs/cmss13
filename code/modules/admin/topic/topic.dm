@@ -407,7 +407,6 @@
 			return
 
 		var/dat = ""
-		var/header = "<head><title>Job-Ban Panel: [M.name]</title></head>"
 		var/body
 		var/jobs = ""
 
@@ -601,8 +600,8 @@
 		jobs += "</tr></table>"
 
 		body = "<body>[jobs]</body>"
-		dat = "<tt>[header][body]</tt>"
-		usr << browse(dat, "window=jobban2;size=800x490")
+		dat = "<tt>[body]</tt>"
+		show_browser(usr, dat, "Job-Ban Panel: [M.name]", "jobban2", "size=800x490")
 		return
 	//JOBBAN'S INNARDS
 	else if(href_list["jobban3"])
@@ -847,10 +846,8 @@
 		var/dat = {"<B>What mode do you wish to play?</B><HR>"}
 		for(var/mode in config.modes)
 			dat += {"<A href='?src=\ref[src];c_mode2=[mode]'>[config.mode_names[mode]]</A><br>"}
-		// dat += {"<A href='?src=\ref[src];c_mode2=secret'>Secret</A><br>"}
-		// dat += {"<A href='?src=\ref[src];c_mode2=random'>Random</A><br>"}
 		dat += {"Now: [master_mode]"}
-		usr << browse(dat, "window=c_mode")
+		show_browser(usr, dat, "Change Gamemode", "c_mode")
 
 	else if(href_list["f_secret"])
 		if(!check_rights(R_ADMIN))	return
@@ -864,7 +861,7 @@
 			dat += {"<A href='?src=\ref[src];f_secret2=[mode]'>[config.mode_names[mode]]</A><br>"}
 		dat += {"<A href='?src=\ref[src];f_secret2=secret'>Random (default)</A><br>"}
 		dat += {"Now: [secret_force_mode]"}
-		usr << browse(dat, "window=f_secret")
+		show_browser(usr, dat, "Change Secret Gamemode", "f_secret")
 
 	else if(href_list["c_mode2"])
 		if(!check_rights(R_ADMIN|R_SERVER))	return
@@ -1498,7 +1495,7 @@
 					sent_title = "USCM High Command"
 
 				fax_message = generate_templated_fax(0, "USCM CENTRAL COMMAND", subject,addressed_to, message_body,sent_by, sent_title, "United States Colonial Marine Corps")
-		usr << browse(fax_message, "window=uscmfaxpreview;size=500x400")
+		show_browser(usr, "<body class='paper'>[fax_message]</body>", "uscmfaxpreview", "size=500x400")
 		var/send_choice = input("Send this fax?") in list("Send", "Cancel")
 		if(send_choice == "Cancel") 
 			return
@@ -1577,7 +1574,7 @@
 				if(!sent_by) 
 					return
 				fax_message = generate_templated_fax(1, "WEYLAND-YUTANI CORPORATE AFFAIRS - USS ALMAYER", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani")
-		usr << browse(fax_message, "window=clfaxpreview;size=500x400")
+		show_browser(usr, "<body class='paper'>[fax_message]</body>", "clfaxpreview", "size=500x400")
 		var/send_choice = input("Send this fax?") in list("Send", "Cancel")
 		if(send_choice == "Cancel") 
 			return

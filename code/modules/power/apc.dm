@@ -932,7 +932,7 @@
 		return 0
 
 	else if (href_list["close2"])
-		usr << browse(null, "window=apcwires")
+		close_browser(usr, "apcwires")
 		return 0
 
 	else if(href_list["overload"])

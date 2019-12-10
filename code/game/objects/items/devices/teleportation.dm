@@ -30,15 +30,15 @@
 		dat = "[src.temp]<BR><BR><A href='byond://?src=\ref[src];temp=1'>Clear</A>"
 	else
 		dat = {"
-<B>Persistent Signal Locator</B><HR>
-Frequency:
-<A href='byond://?src=\ref[src];freq=-10'>-</A>
-<A href='byond://?src=\ref[src];freq=-2'>-</A> [format_frequency(src.frequency)]
-<A href='byond://?src=\ref[src];freq=2'>+</A>
-<A href='byond://?src=\ref[src];freq=10'>+</A><BR>
+		Frequency:
+		<A href='byond://?src=\ref[src];freq=-10'>-</A>
+		<A href='byond://?src=\ref[src];freq=-2'>-</A> [format_frequency(frequency)]
+		<A href='byond://?src=\ref[src];freq=2'>+</A>
+		<A href='byond://?src=\ref[src];freq=10'>+</A><BR>
 
-<A href='?src=\ref[src];refresh=1'>Refresh</A>"}
-	user << browse(dat, "window=radio")
+		<A href='?src=\ref[src];refresh=1'>Refresh</A>
+		"}
+	show_browser(user, dat, "Persistent Signal Locator", "radio")
 	onclose(user, "radio")
 	return
 

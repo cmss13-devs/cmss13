@@ -460,7 +460,7 @@ var/list/ob_type_fuel_requirements
 
 	user.set_interaction(src)
 
-	var/dat = "<font size=5><center>Orbital Cannon System Control Console</center></font><HR>"
+	var/dat
 	if(!almayer_orbital_cannon)
 		dat += "No Orbital Cannon System Detected!<BR>"
 	else if(!almayer_orbital_cannon.tray)
@@ -493,8 +493,7 @@ var/list/ob_type_fuel_requirements
 
 		dat += "<HR><BR><A href='?src=\ref[src];close=1'><font size=3>Close</font></A><BR>"
 
-	user << browse(dat, "window=orbital_console;size=500x350")
-	onclose(user, "orbital_console")
+	show_browser(user, dat, "Orbital Cannon System Control Console", "orbital_console", "size=500x350")
 
 
 /obj/structure/machinery/computer/orbital_cannon_console/Topic(href, href_list)
@@ -517,7 +516,7 @@ var/list/ob_type_fuel_requirements
 		orbital_window_page = 0
 
 	else if(href_list["close"])
-		usr << browse(null, "window=orbital_console")
+		close_browser(usr, "orbital_console")
 		usr.unset_interaction()
 
 	add_fingerprint(usr)

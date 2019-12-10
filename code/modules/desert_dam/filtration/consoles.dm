@@ -54,11 +54,10 @@ var/global/river_activated = 0
 	//var/d2
 
 	if (istype(user, /mob/living/carbon/human) || issilicon(user))
-		d1 = text("<A href='?src=\ref[];reset=1'>ACTIVATE RIVER</A>", src)
+		d1 = "<A href='?src=\ref[src];reset=1'>ACTIVATE RIVER</A>"
 		var/dat = "<HTML><HEAD></HEAD><BODY><TT>[d1]</TT></BODY></HTML>"
 		river_activated = 1
-		user << browse(dat, "window=console")
-		onclose(user, "console")
+		show_browser(user, dat, "Filtration Control Console", "console")
 
 /obj/structure/machinery/filtration/console/Topic(href, href_list)
 	..()
@@ -71,6 +70,6 @@ var/global/river_activated = 0
 	if ((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (issilicon(usr)))
 		usr.set_interaction(src)
 	else
-		usr << browse(null, "window=console")
+		close_browser(usr, "console")
 		return
 	return

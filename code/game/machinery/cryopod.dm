@@ -60,15 +60,13 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	if(!(ticker))
 		return
 
-	dat += "<hr/><br/><b>Cryogenic Oversight Control for [cryotype]</b><br/>"
 	dat += "<i>Welcome, [user.real_name].</i><br/><br/><hr/>"
 	dat += "<a href='?src=\ref[src];log=1'>View storage log</a>.<br>"
 	dat += "<a href='?src=\ref[src];view=1'>View objects</a>.<br>"
 	dat += "<a href='?src=\ref[src];item=1'>Recover object</a>.<br>"
 	dat += "<a href='?src=\ref[src];allitems=1'>Recover all objects</a>.<br>"
 
-	user << browse(dat, "window=cryopod_console")
-	onclose(user, "cryopod_console")
+	show_browser(user, dat, "Cryogenic Oversight Control for [cryotype]", "cryopod_console")
 
 /obj/structure/machinery/computer/cryopod/Topic(href, href_list)
 
@@ -87,7 +85,7 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 			dat += "[person]<br/>"
 		dat += "<hr/>"
 
-		user << browse(dat, "window=cryolog")
+		show_browser(user, dat, "Cryogenic Oversight Control Logs", "cryolog")
 
 	if(href_list["view"])
 
@@ -96,7 +94,7 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 			dat += "[I.name]<br/>"
 		dat += "<hr/>"
 
-		user << browse(dat, "window=cryoitems")
+		show_browser(user, dat, "Cryogenic Oversight Control Logs", "cryoitems")
 
 	else if(href_list["item"])
 

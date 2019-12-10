@@ -65,8 +65,7 @@ Code:
 <A href='byond://?src=\ref[src];code=5'>+</A><BR>
 [t1]
 </TT>"}
-	user << browse(dat, "window=radio")
-	onclose(user, "radio")
+	show_browser(user, dat, "Radio Signaller", "radio")
 	return
 
 
@@ -74,8 +73,7 @@ Code:
 	..()
 
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !in_range(loc, usr))
-		usr << browse(null, "window=radio")
-		onclose(usr, "radio")
+		close_browser(usr, "radio")
 		return
 
 	if (href_list["freq"])

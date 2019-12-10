@@ -11,9 +11,6 @@
 	var/mode = 0.0
 	var/printing = null
 
-/obj/structure/machinery/computer/card/proc/is_centcom()
-	return 0
-
 /obj/structure/machinery/computer/card/proc/is_authenticated()
 	return scan ? check_access(scan) : 0
 
@@ -66,18 +63,19 @@
 			id_card.forceMove(src)
 			modify = id_card
 
-	nanomanager.update_uis(src)
-	attack_hand(user)
+	ui_interact(user)
 
 /obj/structure/machinery/computer/card/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/card/attack_hand(mob/user as mob)
-	if(..()) return
-	if(stat & (NOPOWER|BROKEN)) return
+	if(..()) 
+		return
+	if(stat & (NOPOWER|BROKEN)) 
+		return
 	ui_interact(user)
 
-/obj/structure/machinery/computer/card/ui_interact(mob/user, ui_key="main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/structure/machinery/computer/card/ui_interact(mob/user, ui_key="main", var/datum/nanoui/ui = null, var/force_open = 0)
 
 	user.set_interaction(src)
 
@@ -94,28 +92,16 @@
 	data["authenticated"] = is_authenticated()
 	data["has_modify"] = !!modify
 	data["account_number"] = modify ? modify.associated_account_number : null
-	data["centcom_access"] = is_centcom()
-	data["all_centcom_access"] = null
 	data["regions"] = null
 
-	data["command_jobs"] = format_jobs(ROLES_COMMAND)
+	data["command_jobs"] = format_jobs(ROLES_COMMAND - ROLES_ENGINEERING - ROLES_REQUISITION - ROLES_MEDICAL)
 	data["engineering_jobs"] = format_jobs(ROLES_ENGINEERING)
+	data["requisition_jobs"] = format_jobs(ROLES_REQUISITION)
 	data["medical_jobs"] = format_jobs(ROLES_MEDICAL)
 	data["marine_jobs"] = format_jobs(ROLES_UNASSIGNED)
 	data["civilian_jobs"] = format_jobs(list("Colonist","Passenger"))
-//	data["squad_jobs"] = format_jobs(all_squad_positions)
-	data["centcom_jobs"] = format_jobs(get_all_centcom_jobs())
 
-	if (modify && is_centcom())
-		var/list/all_centcom_access = list()
-		for(var/access in get_all_centcom_access())
-			all_centcom_access.Add(list(list(
-				"desc" = replacetext(get_centcom_access_desc(access), " ", "&nbsp"),
-				"ref" = access,
-				"allowed" = (access in modify.access) ? 1 : 0)))
-
-		data["all_centcom_access"] = all_centcom_access
-	else if (modify)
+	if (modify)
 		var/list/regions = list()
 		for(var/i = 1; i <= 7; i++)
 			var/list/accesses = list()
@@ -184,7 +170,7 @@
 				if(is_authenticated())
 					var/access_type = text2num(href_list["access_target"])
 					var/access_allowed = text2num(href_list["allowed"])
-					if(access_type in (is_centcom() ? get_all_centcom_access() : get_all_accesses()))
+					if(access_type in get_all_accesses())
 						modify.access -= access_type
 						if(!access_allowed)
 							modify.access += access_type
@@ -201,20 +187,18 @@
 						log_admin("[key_name_admin(usr)] gave the ID of [modify.registered_name] the assignment [modify.assignment].")
 				else
 					var/list/access = list()
-					if(is_centcom())
-						access = get_centcom_access(t1)
-					else
-						var/datum/job/jobdatum
-						for(var/jobtype in typesof(/datum/job))
-							var/datum/job/J = new jobtype
-							if(ckey(J.title) == ckey(t1))
-								jobdatum = J
-								break
-						if(!jobdatum)
-							to_chat(usr, SPAN_DANGER("No log exists for this job: [t1]"))
-							return
+					var/datum/job/jobdatum
+					
+					for(var/jobtype in typesof(/datum/job))
+						var/datum/job/J = new jobtype
+						if(ckey(J.title) == ckey(t1))
+							jobdatum = J
+							break
+					if(!jobdatum)
+						to_chat(usr, SPAN_DANGER("No log exists for this job: [t1]"))
+						return
 
-						access = jobdatum.get_access()
+					access = jobdatum.get_access()
 
 					modify.access = access
 					modify.assignment = t1
@@ -232,7 +216,7 @@
 					if(temp_name)
 						modify.registered_name = temp_name
 					else
-						src.visible_message(SPAN_NOTICE("[src] buzzes rudely."))
+						visible_message(SPAN_NOTICE("[src] buzzes rudely."))
 			nanomanager.update_uis(src)
 
 		if ("account")
@@ -287,13 +271,6 @@
 	if (modify)
 		modify.name = text("[modify.registered_name]'s ID Card ([modify.assignment])")
 
-	return 1
+	ui_interact(usr)
 
-/obj/structure/machinery/computer/card/centcom
-	name = "CentCom Identification Computer"
-	circuit = "/obj/item/circuitboard/computer/card/centcom"
-	req_access = list(ACCESS_WY_CORPORATE)
-
-
-/obj/structure/machinery/computer/card/centcom/is_centcom()
 	return 1

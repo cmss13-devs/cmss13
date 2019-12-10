@@ -568,7 +568,7 @@
 		src.add_fingerprint(usr)
 		return 1
 	else
-		usr << browse(null, "window=vending")
+		close_browser(usr, "window=vending")
 
 
 /obj/structure/machinery/vending/proc/vend(datum/data/vending_product/R, mob/user)

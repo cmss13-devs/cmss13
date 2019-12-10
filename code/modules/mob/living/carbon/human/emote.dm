@@ -593,9 +593,7 @@
 	set category = "IC"
 
 	var/HTML = "<body>"
-	HTML += "<tt><center>"
-	HTML += "<b>Update Flavour Text</b> <hr />"
-	HTML += "<br></center>"
+	HTML += "<tt>"
 	HTML += "<a href='byond://?src=\ref[src];flavor_change=general'>General:</a> "
 	HTML += TextPreview(flavor_texts["general"])
 	HTML += "<br>"
@@ -626,4 +624,4 @@
 	HTML += "<hr />"
 	HTML +="<a href='?src=\ref[src];flavor_change=done'>\[Done\]</a>"
 	HTML += "<tt>"
-	src << browse(HTML, "window=flavor_changes;size=430x300")
+	show_browser(src, HTML, "Update Flavor Text", "flavor_changes", "size=430x300")

@@ -105,8 +105,7 @@
 	memory += "[new_text]<BR>"
 
 /datum/mind/proc/show_memory(mob/recipient)
-	var/output = "<B>[current.real_name]'s Memory</B><HR>"
-	output += memory
+	var/output = memory
 
 	if(objectives.len>0)
 		output += "<HR><B>Objectives:</B>"
@@ -116,7 +115,7 @@
 			output += "<B>Objective #[obj_count]</B>: [objective.explanation_text]"
 			obj_count++
 
-	recipient << browse(output,"window=memory")
+	show_browser(recipient, output, "[current.real_name]'s Memory", "memory")
 
 //this is an objective that the player has just completed
 //and we want to store the objective clues generated based on it -spookydonut
@@ -126,7 +125,7 @@
 			objective_memory += R
 
 /datum/mind/proc/view_objective_memories(mob/recipient)
-	var/output = "<B>[current.real_name]'s objectives clues</B><HR>"
+	var/output
 	
 	// Do we have DEFCON?
 	if(objectives_controller)
@@ -154,15 +153,14 @@
 		// Item and body retrieval %, power, etc.
 		output += objectives_controller.get_objectives_progress()
 
-	recipient << browse(output,"window=objectivesmemory")
+	show_browser(recipient, output, "[current.real_name]'s objectives clues", "objectivesmemory")
 
 /datum/mind/proc/edit_memory()
 	if(!ticker || !ticker.mode)
 		alert("Not before round-start!", "Alert")
 		return
 
-	var/out = "<B>[name]</B>[(current&&(current.real_name!=name))?" (as [current.real_name])":""]<br>"
-	out += "Mind currently owned by key: [key] [active?"(synced)":"(not synced)"]<br>"
+	var/out = "Mind currently owned by key: [key] [active?"(synced)":"(not synced)"]<br>"
 	out += "Assigned role: [assigned_role]. <a href='?src=\ref[src];role_edit=1'>Edit</a><br>"
 	out += "Factions and special roles:<br>"
 
@@ -217,7 +215,7 @@
 
 	out += "<a href='?src=\ref[src];obj_announce=1'>Announce objectives</a><br><br>"
 
-	usr << browse(out, "window=edit_memory[src]")
+	show_browser(usr, out, "<B>[name]</B>[(current&&(current.real_name!=name))?" (as [current.real_name])":""]", "edit_memory[src]")
 
 /datum/mind/Topic(href, href_list)
 	if(!check_rights(R_ADMIN))	return

@@ -113,7 +113,7 @@
 	if ( (get_dist(src, usr) > 1 ))
 		if (!issilicon(usr))
 			usr.unset_interaction()
-			usr << browse(null, "window=air_alarm")
+			close_browser(usr, "air_alarm")
 			return
 
 	if(href_list["gentoggle"])

@@ -174,7 +174,7 @@
 	dat += "<h3>SIMPLIFIED COORDINATES OF TARGET:</h3><BR>"
 	dat += "<h4>LONGITUDE [obfuscate_x(coord.x)]. LATITUDE [obfuscate_y(coord.y)].</h4></TT></body></html>"
 
-	user << browse(dat, "window=tacbinos")
+	show_browser(user, dat, name, "tacbinos")
 	onclose(user, "tacbinos")
 	return
 

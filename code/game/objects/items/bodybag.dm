@@ -305,7 +305,7 @@
 				for(var/datum/data/record/R in data_core.medical)
 					if (R.fields["name"] == H.real_name)
 						if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
-							usr << browse(R.fields["last_scan_result"], "window=scanresults;size=430x600")
+							show_browser(usr, R.fields["last_scan_result"], "Last Medical Scan of [H]", "scanresults", "size=430x600")
 						break
 
 

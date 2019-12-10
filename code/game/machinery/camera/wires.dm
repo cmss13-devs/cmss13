@@ -129,8 +129,7 @@
 	t1 += "<br>\n[(alarm_on ? "The alarm light is on." : "The alarm light is off.")]"
 
 	t1 += "<p><a href='?src=\ref[src];close2=1'>Close</a></p>\n"
-	user << browse(t1, "window=wires")
-	onclose(user, "wires")
+	show_browser(user, t1, "Camera Access Panel", "wires")
 
 
 
@@ -158,7 +157,7 @@
 			else
 				src.pulse(t1)
 		else if (href_list["close2"])
-			usr << browse(null, "window=wires")
+			close_browser(usr, "wires")
 			usr.unset_interaction()
 			return
 

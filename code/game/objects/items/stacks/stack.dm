@@ -26,7 +26,7 @@
 
 /obj/item/stack/Dispose()
 	if (usr && usr.interactee == src)
-		usr << browse(null, "window=stack")
+		close_browser(src, "stack")
 	. = ..()
 
 /obj/item/stack/examine(mob/user)
@@ -40,7 +40,7 @@
 	if(!recipes)
 		return
 	if(!src || amount <= 0)
-		user << browse(null, "window=stack")
+		close_browser(user, "stack")
 	user.set_interaction(src) //for correct work of onclose
 	var/list/recipe_list = recipes
 	if(recipes_sublist && recipe_list[recipes_sublist] && istype(recipe_list[recipes_sublist], /datum/stack_recipe_list))
@@ -90,8 +90,7 @@
 					t1 += " <A href='?src=\ref[src];make=[i];multiplier=[max_multiplier]'>[max_multiplier*R.res_amount]x</A>"
 
 	t1 += "</TT></body></HTML>"
-	user << browse(t1, "window=stack")
-	onclose(user, "stack")
+	show_browser(user, t1, "Construction using [src]", "stack")
 	return
 
 /obj/item/stack/Topic(href, href_list)

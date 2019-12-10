@@ -35,11 +35,11 @@
 	if ( (get_dist(src, user) > 1 ) || (stat & (BROKEN|NOPOWER)) )
 		if (!issilicon(user))
 			user.unset_interaction()
-			user << browse(null, "window=op")
+			close_browser(user, "op")
 			return
 
 	user.set_interaction(src)
-	var/dat = "<HEAD><TITLE>Operating Computer</TITLE><META HTTP-EQUIV='Refresh' CONTENT='10'></HEAD><BODY>\n"
+	var/dat = "<HEAD><META HTTP-EQUIV='Refresh' CONTENT='10'></HEAD><BODY>\n"
 	dat += "<A HREF='?src=\ref[user];mach_close=op'>Close</A><br><br>" //| <A HREF='?src=\ref[user];update=1'>Update</A>"
 	if(src.table && src.table.buckled_mob)
 		src.victim = src.table.buckled_mob
@@ -65,8 +65,7 @@
 <BR>
 <B>No Patient Detected</B>
 "}
-	user << browse(dat, "window=op")
-	onclose(user, "op")
+	show_browser(user, dat, "Operating Computer", "op")
 
 
 /obj/structure/machinery/computer/operating/Topic(href, href_list)

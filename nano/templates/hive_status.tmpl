@@ -1,7 +1,6 @@
 <style type="text/css">
 	.xenoButton {
 		float: right;
-		padding: 0 4px 0 4px;
 		background-color: #52375C;
 		cursor: default;
 	}
@@ -67,7 +66,38 @@
 		height: 16px;
 		background-image: url(xenoSSDIcon.png);
 	}
+
+	#filter {
+		background-color: #684675;
+		color: #ccab7f;;
+		border: 1px solid #161616;
+	}
+
+	#xeno_list {
+		border-collapse: collapse; 
+		width: 100%;
+	}
 </style>
+<script type="text/javascript">
+	function updateSearch() {
+		var filter_text = document.getElementById("filter");
+		var filter = filter_text.value.toLowerCase();
+
+		var xeno_list = document.getElementById("xeno_list");
+		var ltr = xeno_list.getElementsByTagName("tr");
+
+		for (var i = 0; i < ltr.length; ++i) {
+			try {
+				var tr = ltr[i];
+				tr.style.display = '';
+				var td = tr.getElementsByTagName("td")[1];
+				if (td.innerText.toLowerCase().indexOf(filter) == -1) {
+					tr.style.display = 'none';
+				}
+			} catch(err) {}
+		}
+	}
+</script>
 
 {{:helper.xenoMode()}}
 <center>
@@ -118,8 +148,11 @@
 {{/for}}
 
 <hr>
+<center>
+	<input type="text" id="filter" value="" onkeyup="updateSearch();" style="width:80%;">
+</center>
 
-<table style="border-collapse: collapse; width: 100%;">
+<table id="xeno_list">
 	<tr style="text-align: left;">
 		<th class="noPadCell"></th>
 		<th>Name</th>
@@ -145,7 +178,7 @@
 					{{/if}}
 				{{/if}}
 			</td>
-			<td>{{:data.xeno_info[keys.nicknumber].name}}</td>
+			<td id="xeno_name">{{:data.xeno_info[keys.nicknumber].name}}</td>
 			<td>{{:data.xeno_info[keys.nicknumber].strain}}</td>
 			<td>{{:data.xeno_vitals[keys.nicknumber].area}}</td>
 			<td>

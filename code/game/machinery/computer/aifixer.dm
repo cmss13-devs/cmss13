@@ -29,7 +29,7 @@
 		return
 
 	user.set_interaction(src)
-	var/dat = "<h3>AI System Integrity Restorer</h3><br><br>"
+	var/dat
 
 	if (src.occupant)
 		dat += "Stored AI: [src.occupant.name]<br>System integrity: [(src.occupant.health+100)/2]%<br>"
@@ -44,8 +44,7 @@
 			dat += "<br><br>Reconstruction in process, please wait.<br>"
 	dat += {" <A href='?src=\ref[user];mach_close=computer'>Close</A>"}
 
-	user << browse(dat, "window=computer;size=400x500")
-	onclose(user, "computer")
+	show_browser(user, dat, "AI System Integrity Restorer", "computer", "size=400x500")
 	return
 
 /obj/structure/machinery/computer/aifixer/process()

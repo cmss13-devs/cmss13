@@ -28,7 +28,7 @@
 			to_chat(user, SPAN_NOTICE("The pages of [title] have been cut out!"))
 			return
 	if(src.dat)
-		user << browse("<TT><I>Owner: [author].</I></TT> <BR>" + "[dat]", "window=book;size=800x600")
+		show_browser(user, "<body class='paper'><TT><I>Owner: [author].</I></TT> <BR>[dat]</body>", "window=book;size=800x600")
 		user.visible_message("[user] opens \"[src.title]\".")
 		onclose(user, "book")
 	else
@@ -94,6 +94,6 @@
 	if(user.zone_selected == "eyes")
 		user.visible_message(SPAN_NOTICE("You open up the book and show it to [M]. "), \
 			SPAN_NOTICE(" [user] opens up a book and shows it to [M]. "))
-		M << browse("<TT><I>Penned by [author].</I></TT> <BR>" + "[dat]", "window=book")
+		show_browser(M, "<body class='paper'><TT><I>Penned by [author].</I></TT> <BR>[dat]</body>", "window=book")
 
 

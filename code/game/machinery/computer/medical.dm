@@ -129,7 +129,7 @@
 				else
 		else
 			dat += text("<A href='?src=\ref[];login=1'>{Log In}</A>", src)
-	user << browse(text("<HEAD><TITLE>Medical Records</TITLE></HEAD><TT>[]</TT>", dat), "window=med_rec")
+	show_browser(user, dat, "Medical Records", "med_rec")
 	onclose(user, "med_rec")
 	return
 

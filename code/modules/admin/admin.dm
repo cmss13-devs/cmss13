@@ -67,7 +67,7 @@ var/global/floorIsLava = 0
 	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
 		to_chat(usr, "Error: you are not an admin!")
 		return
-	var/dat = "<html><head><title>Copying notes for [key]</title></head>"
+	var/dat = "<html>"
 	dat += "<body>"
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
@@ -88,7 +88,7 @@ var/global/floorIsLava = 0
 	var/regex/remove_author = new("(?=Banned by).*?(?=\\|)", "g")
 	dat = remove_author.Replace(dat, "Banned ")
 
-	usr << browse(dat, "window=notescopy;size=480x480")
+	show_browser(usr, dat, "Copying notes for [key]", "notescopy", "size=480x480")
 
 
 /datum/admins/proc/Jobbans()
@@ -99,7 +99,7 @@ var/global/floorIsLava = 0
 	var/i //individual record / ban reason
 	var/t //text to show in the window
 	var/u //unban button href arg
-	var/dat = "<b>Job Bans!</b><hr><table>"
+	var/dat = "<table>"
 	for(r in jobban_keylist)
 		L = jobban_keylist[r]
 		for(c in L)
@@ -108,14 +108,13 @@ var/global/floorIsLava = 0
 			u = "[c] - [r]"
 			dat += "<tr><td>[t] (<A href='?src=\ref[src];removejobban=[u]'>unban</A>)</td></tr>"
 	dat += "</table>"
-	usr << browse(dat, "window=ban;size=400x400")
+	show_browser(usr, dat, "Job Bans", "ban", "size=400x400")
 
 
 /datum/admins/proc/Game()
 	if(!check_rights(0))	return
 
 	var/dat = {"
-		<center><B>Game Panel</B></center><hr>\n
 		<A href='?src=\ref[src];c_mode=1'>Change Game Mode</A><br>
 		"}
 	if(master_mode == "secret")
@@ -129,7 +128,7 @@ var/global/floorIsLava = 0
 		<A href='?src=\ref[src];create_mob=1'>Create Mob</A><br>
 		"}
 
-	usr << browse(dat, "window=admin2;size=210x280")
+	show_browser(usr, dat, "Game Panel", "admin2", "size=210x280")
 	return
 
 /////////////////////////////////////////////////////////////////////////////////////////////////admins2.dm merge

@@ -509,14 +509,14 @@
 	if ( (get_dist(src, user) > 1 ))
 		if (!issilicon(user))
 			user.unset_interaction()
-			user << browse(null, "window=air_alarm")
-			user << browse(null, "window=AAlarmwires")
+			close_browser(user, "air_alarm")
+			close_browser(user, "AAlarmwires")
 			return
 
 
 		else if (issilicon(user) && aidisabled)
 			to_chat(user, "AI control for this Air Alarm interface has been disabled.")
-			user << browse(null, "window=air_alarm")
+			close_browser(user, "air_alarm")
 			return
 
 	if(wiresexposed && (!issilicon(user)))
@@ -541,12 +541,10 @@
 			t1 += "<br>"
 		t1 += text("<br>\n[(locked ? "The Air Alarm is locked." : "The Air Alarm is unlocked.")]<br>\n[((shorted || (stat & (NOPOWER|BROKEN))) ? "The Air Alarm is offline." : "The Air Alarm is working properly!")]<br>\n[(aidisabled ? "The 'AI control allowed' light is off." : "The 'AI control allowed' light is on.")]")
 		t1 += text("<p><a href='?src=\ref[src];close2=1'>Close</a></p></body></html>")
-		user << browse(t1, "window=AAlarmwires")
-		onclose(user, "AAlarmwires")
+		show_browser(user, t1, name, "AAlarmwires")
 
 	if(!shorted)
-		user << browse(return_text(user),"window=air_alarm")
-		onclose(user, "air_alarm")
+		show_browser(user, return_text(user), name, "air_alarm")
 
 	return
 
@@ -645,9 +643,9 @@ Pressure: <span class='dl[pressure_dangerlevel]'>[environment_pressure]</span>kP
 <HR>
 "}
 			if (mode==AALARM_MODE_PANIC)
-				output += "<font color='red'><B>PANIC SYPHON ACTIVE</B></font><br><A href='?src=\ref[src];mode=[AALARM_MODE_SCRUBBING]'>Turn syphoning off</A>"
+				output += "[SET_CLASS("<B>PANIC SYPHON ACTIVE</B>", INTERFACE_RED)]<br><A href='?src=\ref[src];mode=[AALARM_MODE_SCRUBBING]'>Turn syphoning off</A>"
 			else
-				output += "<A href='?src=\ref[src];mode=[AALARM_MODE_PANIC]'><font color='red'>ACTIVATE PANIC SYPHON IN AREA</font></A>"
+				output += "<A href='?src=\ref[src];mode=[AALARM_MODE_PANIC]'>[SET_CLASS("ACTIVATE PANIC SYPHON IN AREA", INTERFACE_RED)]</A>"
 
 
 		if (AALARM_SCREEN_VENT)
@@ -722,8 +720,8 @@ Nitrous Oxide
 <BR>
 "}
 					sensor_data += {"
-<B>Panic syphon:</B> [data["panic"]?"<font color='red'><B>PANIC SYPHON ACTIVATED</B></font>":""]
-<A href='?src=\ref[src];id_tag=[id_tag];command=panic_siphon;val=[!data["panic"]]'><font color='[(data["panic"]?"blue'>Dea":"red'>A")]ctivate</font></A><BR>
+<B>Panic syphon:</B> [data["panic"] ? "[SET_CLASS("<B>PANIC SYPHON ACTIVATED</B>", INTERFACE_RED)]" : ""]
+<A href='?src=\ref[src];id_tag=[id_tag];command=panic_siphon;val=[!data["panic"]]'>[data["panic"] ? "[SET_CLASS("Deactivate", INTERFACE_BLUE)]" : "[SET_CLASS("Activate", INTERFACE_RED)]"]</A><BR>
 <HR>
 "}
 			else
@@ -733,11 +731,12 @@ Nitrous Oxide
 		if (AALARM_SCREEN_MODE)
 			output += "<a href='?src=\ref[src];screen=[AALARM_SCREEN_MAIN]'>Main menu</a><br><b>Air machinery mode for the area:</b><ul>"
 			var/list/modes = list(AALARM_MODE_SCRUBBING   = "Filtering - Scrubs out contaminants",\
-				AALARM_MODE_REPLACEMENT = "<font color='blue'>Replace Air - Siphons out air while replacing</font>",\
-				AALARM_MODE_PANIC       = "<font color='red'>Panic - Siphons air out of the room</font>",\
-				AALARM_MODE_CYCLE       = "<font color='red'>Cycle - Siphons air before replacing</font>",\
-				AALARM_MODE_FILL        = "<font color='green'>Fill - Shuts off scrubbers and opens vents</font>",\
-				AALARM_MODE_OFF         = "<font color='blue'>Off - Shuts off vents and scrubbers</font>",)
+				AALARM_MODE_REPLACEMENT = SET_CLASS("Replace Air - Siphons out air while replacing", INTERFACE_BLUE),\
+				AALARM_MODE_PANIC       = SET_CLASS("Panic - Siphons air out of the room", INTERFACE_RED),\
+				AALARM_MODE_CYCLE       = SET_CLASS("Cycle - Siphons air before replacing", INTERFACE_RED),\
+				AALARM_MODE_FILL        = SET_CLASS("Fill - Shuts off scrubbers and opens vents", INTERFACE_GREEN),\
+				AALARM_MODE_OFF         = SET_CLASS("Off - Shuts off vents and scrubbers", INTERFACE_BLUE)
+			)
 			for (var/m=1,m<=modes.len,m++)
 				if (mode==m)
 					output += "<li><A href='?src=\ref[src];mode=[m]'><b>[modes[m]]</b></A> (selected)</li>"
@@ -793,8 +792,8 @@ table tr:first-child th:first-child { border: none;}
 /obj/structure/machinery/alarm/Topic(href, href_list)
 	if(..() || !( Adjacent(usr) || issilicon(usr)) ) // dont forget calling super in machine Topics -walter0o
 		usr.unset_interaction()
-		usr << browse(null, "window=air_alarm")
-		usr << browse(null, "window=AAlarmwires")
+		close_browser(usr, "air_alarm")
+		close_browser(usr, "AAlarmwires")
 		return
 
 	add_fingerprint(usr)

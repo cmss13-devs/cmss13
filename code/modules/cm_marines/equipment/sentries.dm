@@ -484,7 +484,7 @@
 			if(locked)
 				if(user.interactee == src)
 					user.unset_interaction()
-					user << browse(null, "window=turret")
+					close_browser(user, "turret")
 			else
 				if(user.interactee == src)
 					attack_hand(user)

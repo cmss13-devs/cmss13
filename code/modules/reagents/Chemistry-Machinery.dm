@@ -326,7 +326,7 @@
 
 		loaded_pill_bottle = null
 	else if(href_list["close"])
-		user << browse(null, "window=chemmaster")
+		close_browser(user, "chemmaster")
 		user.unset_interaction()
 		return
 
@@ -450,7 +450,7 @@
 			for(var/i = 1 to MAX_PILL_SPRITE)
 				dat += "<tr><td><a href=\"?src=\ref[src]&pill_sprite=[i]\"><img src=\"pill[i].png\" /></a></td></tr>"
 			dat += "</table>"
-			user << browse(dat, "window=chem_master")
+			show_browser(user, dat, "Change Pill Type", "chem_master")
 			return
 		else if(href_list["change_bottle"])
 			#define MAX_BOTTLE_SPRITE 4 //max icon state of the bottle sprites
@@ -458,7 +458,7 @@
 			for(var/i = 1 to MAX_BOTTLE_SPRITE)
 				dat += "<tr><td><a href=\"?src=\ref[src]&bottle_sprite=[i]\"><img src=\"bottle-[i].png\" /></a></td></tr>"
 			dat += "</table>"
-			user << browse(dat, "window=chem_master")
+			show_browser(user, dat, "Change Bottle Type", "chem_master")
 			return
 		else if(href_list["pill_sprite"])
 			pillsprite = href_list["pill_sprite"]
@@ -499,25 +499,25 @@
 			dat += "Add to buffer:<BR>"
 			for(var/datum/reagent/G in beaker.reagents.reagent_list)
 				dat += "[G.name] , [G.volume] Units - "
-				dat += "<A href='?src=\ref[src];add=[G.id];amount=1'>(1)</A> "
-				dat += "<A href='?src=\ref[src];add=[G.id];amount=5'>(5)</A> "
-				dat += "<A href='?src=\ref[src];add=[G.id];amount=10'>(10)</A> "
-				dat += "<A href='?src=\ref[src];add=[G.id];amount=30'>(30)</A> "
-				dat += "<A href='?src=\ref[src];add=[G.id];amount=60'>(60)</A> "
-				dat += "<A href='?src=\ref[src];add=[G.id];amount=[G.volume]'>(All)</A> "
-				dat += "<A href='?src=\ref[src];addcustom=[G.id]'>(Custom)</A><BR>"
+				dat += "<A href='?src=\ref[src];add=[G.id];amount=1'>1</A> "
+				dat += "<A href='?src=\ref[src];add=[G.id];amount=5'>5</A> "
+				dat += "<A href='?src=\ref[src];add=[G.id];amount=10'>10</A> "
+				dat += "<A href='?src=\ref[src];add=[G.id];amount=30'>30</A> "
+				dat += "<A href='?src=\ref[src];add=[G.id];amount=60'>60</A> "
+				dat += "<A href='?src=\ref[src];add=[G.id];amount=[G.volume]'>All</A> "
+				dat += "<A href='?src=\ref[src];addcustom=[G.id]'>Custom</A><BR>"
 
 		dat += "<HR>Transfer to <A href='?src=\ref[src];toggle=1'>[(!mode ? "disposal" : "beaker")]:</A><BR>"
 		if(reagents.total_volume)
 			for(var/datum/reagent/N in reagents.reagent_list)
 				dat += "[N.name] , [N.volume] Units - "
-				dat += "<A href='?src=\ref[src];remove=[N.id];amount=1'>(1)</A> "
-				dat += "<A href='?src=\ref[src];remove=[N.id];amount=5'>(5)</A> "
-				dat += "<A href='?src=\ref[src];remove=[N.id];amount=10'>(10)</A> "
-				dat += "<A href='?src=\ref[src];remove=[N.id];amount=30'>(30)</A> "
-				dat += "<A href='?src=\ref[src];remove=[N.id];amount=60'>(60)</A> "
-				dat += "<A href='?src=\ref[src];remove=[N.id];amount=[N.volume]'>(All)</A> "
-				dat += "<A href='?src=\ref[src];removecustom=[N.id]'>(Custom)</A><BR>"
+				dat += "<A href='?src=\ref[src];remove=[N.id];amount=1'>1</A> "
+				dat += "<A href='?src=\ref[src];remove=[N.id];amount=5'>5</A> "
+				dat += "<A href='?src=\ref[src];remove=[N.id];amount=10'>10</A> "
+				dat += "<A href='?src=\ref[src];remove=[N.id];amount=30'>30</A> "
+				dat += "<A href='?src=\ref[src];remove=[N.id];amount=60'>60</A> "
+				dat += "<A href='?src=\ref[src];remove=[N.id];amount=[N.volume]'>All</A> "
+				dat += "<A href='?src=\ref[src];removecustom=[N.id]'>Custom</A><BR>"
 		else
 			dat += "Empty<BR>"
 		if(!condi)
@@ -527,10 +527,9 @@
 		else
 			dat += "<A href='?src=\ref[src];createbottle=1;user=\ref[user]'>Create bottle (50 units max)</A>"
 	if(!condi)
-		user << browse("<TITLE>Chemmaster 3000</TITLE>Chemmaster menu:<BR><BR>[dat]", "window=chem_master;size=575x400")
+		show_browser(user, "Chemmaster menu:<BR><BR>[dat]", "Chemmaster 3000", "chem_master")
 	else
-		user << browse("<TITLE>Condimaster 3000</TITLE>Condimaster menu:<BR><BR>[dat]", "window=chem_master;size=575x400")
-	onclose(user, "chem_master")
+		show_browser(user, "Condimaster menu:<BR><BR>[dat]", "Condimaster 3000", "chem_master")
 	return
 
 /obj/structure/machinery/chem_master/condimaster
@@ -682,7 +681,7 @@
 
 
 	else
-		user << browse(null, "window=pandemic")
+		close_browser(user, "pandemic")
 		updateUsrDialog()
 		return
 
@@ -779,8 +778,7 @@
 		dat += "<BR><A href='?src=\ref[src];eject=1'>Eject beaker</A>[((beaker.reagents.total_volume && beaker.reagents.reagent_list.len) ? "-- <A href='?src=\ref[src];empty_beaker=1'>Empty beaker</A>":"")]<BR>"
 		dat += "<A href='?src=\ref[user];mach_close=pandemic'>Close</A>"
 
-	user << browse("<TITLE>[name]</TITLE><BR>[dat]", "window=pandemic;size=575x400")
-	onclose(user, "pandemic")
+	show_browser(user, "<TITLE>[name]</TITLE><BR>[dat]", name, "pandemic")
 	return
 
 
@@ -971,7 +969,7 @@
 			dat += "<A href='?src=\ref[src];action=detach'>Detach the beaker</a><BR>"
 	else
 		dat += "Please wait..."
-	user << browse("<HEAD><TITLE>All-In-One Grinder</TITLE></HEAD><TT>[dat]</TT>", "window=reagentgrinder")
+	show_browser(user, "<HEAD><TITLE>All-In-One Grinder</TITLE></HEAD><TT>[dat]</TT>", name, "reagentgrinder")
 	onclose(user, "reagentgrinder")
 	return
 

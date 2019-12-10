@@ -16,7 +16,7 @@
 	var/title_buttons = ""
 
 
-/datum/browser/New(nuser, nwindow_id, ntitle = 0, nwidth = 0, nheight = 0, var/atom/nref = null)
+/datum/browser/New(nuser, nwindow_id, ntitle = 0, stylesheet = 'html/browser/common.css', nwidth = 0, nheight = 0, var/atom/nref = null)
 
 	user = nuser
 	window_id = nwindow_id
@@ -28,7 +28,7 @@
 		height = nheight
 	if (nref)
 		ref = nref
-	add_stylesheet("common", 'html/browser/common.css') // this CSS sheet is common to all UIs
+	add_stylesheet("common", stylesheet) // this CSS sheet is common to all UIs
 
 /datum/browser/proc/set_title(ntitle)
 	title = format_text(ntitle)
@@ -109,7 +109,7 @@
 		onclose(user, window_id, ref)
 
 /datum/browser/proc/close()
-	user << browse(null, "window=[window_id]")
+	close_browser(user, "[window_id]")
 
 // This will allow you to show an icon in the browse window
 // This is added to mob so that it can be used without a reference to the browser object
@@ -140,35 +140,82 @@
 // then use 	: onclose(user, "fred")
 //
 // Optionally, specify the "ref" parameter as the controlled atom (usually src)
-// to pass a "close=1" parameter to the atom's Topic() proc for special handling.
+// to pass a "close=1" parameter or a custom list of parameters to the atom's 
+// Topic() proc for special handling.
 // Otherwise, the user mob's machine var will be reset directly.
 //
-/proc/onclose(mob/user, windowid, var/atom/ref=null)
-	if(!user || !user.client) return
-	var/param = "null"
-	if(ref)
-		param = "\ref[ref]"
+/proc/onclose(user, windowid, var/atom/ref, var/list/params)
+	var/client/C = user
+	
+	if (ismob(user))
+		var/mob/M = user
+		C = M.client
 
-	winset(user, windowid, "on-close=\".windowclose [param]\"")
+	if (!istype(C))
+		return
+	
+	var/ref_string = "null"
+	if (ref)
+		ref_string = "\ref[ref]"
+	
+	var/params_string = "null"
+	if (params)
+		params_string = ""
+		for (var/param in params)
+			params_string += "[param]=[params[param]];"
+		params_string = copytext(params_string, 1, -1)
+
+	winset(C, windowid, "on-close=\".windowclose \\\"[ref_string]\\\" \\\"[params_string]\\\"\"")
 
 
 // the on-close client verb
 // called when a browser popup window is closed after registering with proc/onclose()
-// if a valid atom reference is supplied, call the atom's Topic() with "close=1"
+// if a valid atom reference is supplied, call the atom's Topic() with "close=1" or
+// a custom list of parameters
 // otherwise, just reset the client mob's machine var.
 //
-/client/verb/windowclose(var/atomref as text)
+/client/verb/windowclose(var/atomref as text|null, var/params as text|null)
 	set hidden = 1						// hide this verb from the user's panel
 	set name = ".windowclose"			// no autocomplete on cmd line
-	if(atomref!="null")				// if passed a real atomref
+	
+	if(atomref && atomref != "null")				// if passed a real atomref
 		var/hsrc = locate(atomref)	// find the reffed atom
 		if(hsrc)
 			usr = src.mob
-			src.Topic("close=1", list("close"="1"), hsrc)	// this will direct to the atom's
-			return										// Topic() proc via client.Topic()
+			var/param_string = "close=1"
+			var/list/param_list = list("close"="1")
+
+			if (params && params != "null")
+				param_string = params
+				param_list = params2list(params)
+			
+			// this will direct to the atom's Topic() proc via client.Topic()
+			Topic(param_string, param_list, hsrc)	
+			return
 
 	// no atomref specified (or not found)
 	// so just reset the user mob's machine var
 	if(src && src.mob)
 		src.mob.unset_interaction()
 	return
+
+/proc/show_browser(var/target, var/browser_content, var/browser_name, var/id = null, var/window_options = null)
+	var/client/C = target
+	
+	if (ismob(target))
+		var/mob/M = target
+		C = M.client
+	
+	if (!istype(C))
+		return
+
+	var/stylesheet = C.prefs.stylesheet
+	if (!(stylesheet in stylesheets))
+		C.prefs.stylesheet = "Modern"
+		stylesheet = "Modern"
+	
+	var/datum/browser/popup = new(C, id ? id : browser_name, browser_name, stylesheets[stylesheet])
+	popup.set_content(browser_content)
+	if (window_options)
+		popup.set_window_options(window_options)
+	popup.open()

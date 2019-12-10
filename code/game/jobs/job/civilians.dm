@@ -15,7 +15,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the acting commanding officer"
-	selection_color = "#99FF99"
+	selection_class = "job_cmo"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Chief Medical Officer (CMO)"
 	minimum_playtimes = list(
@@ -35,7 +35,7 @@
 	allow_additional = 1	
 	scaled = 1
 	supervisors = "the chief medical officer"
-	selection_color = "#BBFFBB"
+	selection_class = "job_doctor"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Doctor"
 	minimum_playtimes = list(
@@ -62,7 +62,7 @@
 	allow_additional = 1
 	scaled = 1
 	supervisors = "chief medical officer"
-	selection_color = "#BBFFBB"
+	selection_class = "job_researcher"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Researcer"
 	minimum_playtimes = list(
@@ -87,7 +87,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the W-Y corporate office"
-	selection_color = "#ffeedd"
+	selection_class = "job_cl"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Corporate Liaison (CL)"
 	minimum_playtimes = list(
@@ -118,7 +118,7 @@
 	allow_additional = 1
 	scaled = 1
 	supervisors = "the acting commanding officer"
-	selection_color = "#aaee55"
+	selection_class = "job_synth"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	flags_whitelist = WHITELIST_SYNTHETIC
 	gear_preset = "USCM Synthetic"

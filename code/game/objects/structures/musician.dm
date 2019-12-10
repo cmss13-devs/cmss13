@@ -322,7 +322,7 @@
 /obj/structure/device/piano/Topic(href, href_list)
 
 	if(!in_range(src, usr) || issilicon(usr) || !anchored || !usr.canmove || usr.is_mob_restrained())
-		usr << browse(null, "window=piano;size=700x300")
+		close_browser(usr, "piano;size=700x300")
 		onclose(usr, "piano")
 		return
 

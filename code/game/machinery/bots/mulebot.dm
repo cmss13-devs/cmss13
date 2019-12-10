@@ -258,8 +258,7 @@
 		else
 			dat += "The bot is in maintenance mode and cannot be controlled.<BR>"
 
-	user << browse("<HEAD><TITLE>Mulebot [suffix ? "([suffix])" : ""]</TITLE></HEAD>[dat]", "window=mulebot;size=350x500")
-	onclose(user, "mulebot")
+	show_browser(user, dat, "Mulebot [suffix ? "([suffix])" : ""]", "mulebot", "size=350x500")
 	return
 
 // returns the wire panel text
@@ -385,7 +384,7 @@
 
 			if("close")
 				usr.unset_interaction()
-				usr << browse(null,"window=mulebot")
+				close_browser(usr,"mulebot")
 
 
 			if("wirecut")
@@ -422,7 +421,7 @@
 		updateDialog()
 		//src.updateUsrDialog()
 	else
-		usr << browse(null, "window=mulebot")
+		close_browser(usr, "mulebot")
 		usr.unset_interaction()
 	return
 

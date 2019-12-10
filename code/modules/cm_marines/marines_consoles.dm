@@ -50,11 +50,12 @@
 
 	user.set_interaction(src)
 	var/dat
+	var/title
 	if (!( ticker ))
 		return
 	if (mode) // accessing crew manifest
 
-		dat += "<h4>Crew Manifest</h4>"
+		title = "Crew Manifest"
 		dat += "Entries cannot be modified from this terminal.<br><br>"
 		if(data_core)
 			dat += data_core.get_manifest(0) // make it monochrome
@@ -72,7 +73,8 @@
 			crew += "[R]<br>"*/
 		//dat = "<tt><b>Crew Manifest:</b><br>Please use security record computer to modify entries.<br><br>[crew]<a href='?src=\ref[src];choice=print'>Print</a><br><br><a href='?src=\ref[src];choice=mode;mode_target=0'>Access ID modification console.</a><br></tt>"
 	else
-		var/header = "<div align='center'><b>Identification Card Modifier</b></div>"
+		title = "Identification Card Modifier"
+		var/header
 
 		var/target_name
 		var/target_owner
@@ -97,11 +99,11 @@
 			scan_name = "--------"
 
 		if(!authenticated)
-			header += "<br><i>Please insert the cards into the slots</i><br>"
+			header += "<i>Please insert the cards into the slots</i><br>"
 			header += "Target: <a href='?src=\ref[src];choice=modify'>[target_name]</a><br>"
 			header += "Confirm Identity: <a href='?src=\ref[src];choice=scan'>[scan_name]</a><br>"
 		else
-			header += "<div align='center'><br>"
+			header += "<div align='center'>"
 			header += "<a href='?src=\ref[src];choice=modify'>Remove [target_name]</a> || "
 			header += "<a href='?src=\ref[src];choice=scan'>Remove [scan_name]</a> <br> "
 			header += "<a href='?src=\ref[src];choice=mode;mode_target=1'>Access Crew Manifest</a> || "
@@ -181,38 +183,28 @@
 				paygrade += "</select>"
 				paygrade += "<input type='submit' value='Modify'>"
 				paygrade += "</form>"
-			var/accesses = ""
-			if(istype(src,/obj/structure/machinery/computer/card/centcom))
-				accesses += "<h5>Central Command:</h5>"
-				for(var/A in get_all_centcom_access())
+			var/accesses = "<div align='center'><b>Access</b></div>"
+			accesses += "<table style='width:100%'>"
+			accesses += "<tr>"
+			for(var/i = 1; i <= 6; i++)
+				accesses += "<td style='width:14%'><b>[get_region_accesses_name(i)]:</b></td>"
+			accesses += "</tr><tr>"
+			for(var/i = 1; i <= 6; i++)
+				accesses += "<td style='width:14%' valign='top'>"
+				for(var/A in get_region_accesses(i))
 					if(A in ID_to_modify.access)
-						accesses += "<a href='?src=\ref[src];choice=access;access_target=[A];allowed=0'><font color=\"red\">[replacetext(get_centcom_access_desc(A), " ", "&nbsp")]</font></a> "
+						accesses += "<a href='?src=\ref[src];choice=access;access_target=[A];allowed=0'><font color=\"red\">[replacetext(get_access_desc(A), " ", "&nbsp")]</font></a> "
 					else
-						accesses += "<a href='?src=\ref[src];choice=access;access_target=[A];allowed=1'>[replacetext(get_centcom_access_desc(A), " ", "&nbsp")]</a> "
-			else
-				accesses += "<div align='center'><b>Access</b></div>"
-				accesses += "<table style='width:100%'>"
-				accesses += "<tr>"
-				for(var/i = 1; i <= 6; i++)
-					accesses += "<td style='width:14%'><b>[get_region_accesses_name(i)]:</b></td>"
-				accesses += "</tr><tr>"
-				for(var/i = 1; i <= 6; i++)
-					accesses += "<td style='width:14%' valign='top'>"
-					for(var/A in get_region_accesses(i))
-						if(A in ID_to_modify.access)
-							accesses += "<a href='?src=\ref[src];choice=access;access_target=[A];allowed=0'><font color=\"red\">[replacetext(get_access_desc(A), " ", "&nbsp")]</font></a> "
-						else
-							accesses += "<a href='?src=\ref[src];choice=access;access_target=[A];allowed=1'>[replacetext(get_access_desc(A), " ", "&nbsp")]</a> "
-						accesses += "<br>"
-					accesses += "</td>"
-				accesses += "</tr></table>"
+						accesses += "<a href='?src=\ref[src];choice=access;access_target=[A];allowed=1'>[replacetext(get_access_desc(A), " ", "&nbsp")]</a> "
+					accesses += "<br>"
+				accesses += "</td>"
+			accesses += "</tr></table>"
 			body = "[carddesc]<br>[jobs]<br>[paygrade]<br><br>[accesses]" //CHECK THIS
 		else
 			body = "<a href='?src=\ref[src];choice=auth'>{Log in}</a> <br><hr>"
 			body += "<a href='?src=\ref[src];choice=mode;mode_target=1'>Access Crew Manifest</a>"
 		dat = "<tt>[header][body]<hr><br></tt>"
-	user << browse(dat, "window=id_com;size=625x500")
-	onclose(user, "id_com")
+	show_browser(user, dat, title, "id_com", "size=625x500")
 	return
 
 /obj/structure/machinery/computer/marine_card/Topic(href, href_list)
@@ -330,13 +322,6 @@
 				printing = 1
 				sleep(50)
 				var/obj/item/paper/P = new /obj/item/paper( loc )
-				/*var/t1 = "<B>Crew Manifest:</B><BR>"
-				var/list/L = list()
-				for (var/datum/data/record/t in data_core.general)
-					var/R = t.fields["name"] + " - " + t.fields["rank"]
-					L += R
-				for(var/R in sortList(L))
-					t1 += "[R]<br>"*/
 
 				var/t1 = "<h4>Crew Manifest</h4>"
 				t1 += "<br>"
@@ -399,11 +384,12 @@
 /obj/structure/machinery/computer/squad_changer/attack_hand(var/mob/user as mob)
 	if(..())
 		return
-	if(user) add_fingerprint(user)
+	if(user) 
+		add_fingerprint(user)
 
 	usr.set_interaction(src)
 
-	var/dat = "<div align='center'><b>Squad Distribution Console</b></div>"
+	var/dat
 
 	var/target_name
 
@@ -424,10 +410,8 @@
 	dat += "<hr>"
 
 	dat += "<BR><A href='?src=\ref[src];squad=1'>Modify Squad</A><BR>"
-//	dat += "<BR><A href='?src=\ref[src];checksquads=1'>Examine Squads</A><BR></CENTER>" //I am too lazy to do this right now.
 
-	user << browse(dat, "window=computer;size=400x300")
-	onclose(user, "computer")
+	show_browser(user, dat, "Squad Distribution Console", "computer", "size=400x300")
 
 
 /obj/structure/machinery/computer/squad_changer/Topic(href, href_list)
@@ -491,6 +475,7 @@
 					to_chat(usr, SPAN_WARNING("The ID in the machine is not owned by the person whose hand is scanned."))
 			else
 				to_chat(usr, SPAN_WARNING("You don't have sufficient access to use this console."))
+		updateUsrDialog()
 		src.add_fingerprint(usr)
 	return
 

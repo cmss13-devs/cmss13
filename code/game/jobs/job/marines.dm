@@ -3,7 +3,7 @@
 /datum/job/marine
 	department_flag = ROLEGROUP_MARINE_SQUAD_MARINES
 	supervisors = "the acting squad leader"
-	selection_color = "#ffeeee"
+	selection_class = "job_marine"
 	total_positions = 8
 	spawn_positions = 8
 	allow_additional = 1

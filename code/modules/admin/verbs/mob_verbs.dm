@@ -50,7 +50,7 @@
 	for(var/t in L)
 		dat += "[t]<br>"
 
-	usr << browse(dat, "window=content")
+	show_browser(usr, dat, "Contents of [M]", "content")
 
 /client/proc/cmd_admin_addhud(mob/M as mob in mob_list)
 	set name = "Add HUD To"

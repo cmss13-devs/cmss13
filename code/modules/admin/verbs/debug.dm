@@ -485,4 +485,4 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		str += "[tmp],[individual_counts[tmp]]<BR>"
 
 
-	usr << browse("<HEAD><TITLE>Ticker count</TITLE></HEAD><TT>[str]</TT>", "window=tickercount")
+	show_browser(usr, "<TT>[str]</TT>", "Ticker Count", "tickercount")

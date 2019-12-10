@@ -93,6 +93,6 @@
 						src.attack_self(M)
 			src.add_fingerprint(usr)
 		else
-			usr << browse(null, "window=implantpad")
+			close_browser(usr, "implantpad")
 			return
 		return

@@ -385,7 +385,7 @@
 			if (locked)
 				if (user.machine==src)
 					user.unset_machine()
-					user << browse(null, "window=turretid")
+					close_browser(user, "turretid")
 			else
 				if (user.machine==src)
 					src.attack_hand(user)
@@ -403,7 +403,7 @@
 		if ( !issilicon(user) )
 			to_chat(user, SPAN_NOTICE("You are too far away."))
 			user.unset_machine()
-			user << browse(null, "window=turretid")
+			close_browser(user, "turretid")
 			return
 
 	user.set_machine(src)
@@ -422,7 +422,7 @@
 		t += text("Turrets [] - <A href='?src=\ref[];toggleOn=1'>[]?</a><br>\n", src.enabled?"activated":"deactivated", src, src.enabled?"Disable":"Enable")
 		t += text("Currently set for [] - <A href='?src=\ref[];toggleLethal=1'>Change to []?</a><br>\n", src.lethal?"lethal":"stun repeatedly", src,  src.lethal?"Stun repeatedly":"Lethal")
 
-	user << browse(t, "window=turretid")
+	show_brower(user, t, name, "turretid")
 	onclose(user, "turretid")
 
 
@@ -539,7 +539,7 @@
 		dat += {"<b>Ammo: </b>[max(0, projectiles)]<br>
 					</body>
 					</html>"}
-		user << browse(dat, "window=turret")
+		show_browser(user, dat, name, "turret")
 		onclose(user, "turret")
 		return
 

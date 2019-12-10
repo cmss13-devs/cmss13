@@ -750,7 +750,7 @@
 			var/damageFire = occupant.getFireLoss() > 50 ? "<b>[occupant.getFireLoss()]</b>" : occupant.getFireLoss()
 			var/damageBrute = occupant.getBruteLoss() > 50 ? "<b>[occupant.getBruteLoss()]</b>" : occupant.getBruteLoss()
 			dat += "Name: [occupant.name]<br>"
-			dat += "Damage: <font color='blue'>[damageOxy]</font> - <font color='green'>[damageTox]</font> - <font color='#FFA500'>[damageFire]</font> - <font color='red'>[damageBrute]</font><br>"
+			dat += "Damage: [SET_CLASS("[damageOxy]", INTERFACE_BLUE)] - [SET_CLASS("[damageTox]", INTERFACE_GREEN)] - [SET_CLASS("[damageFire]", INTERFACE_ORANGE)] - [SET_CLASS("[damageBrute]", INTERFACE_RED)]<br>"
 			dat += "The patient is [t1]. <br>"
 			dat += "[operating]<br>"
 			dat += "<a href='?src=\ref[src];ejectify=1'>Eject Patient</a>"
@@ -855,7 +855,7 @@
 		else
 			dat += "The Med-Pod is empty."
 	dat += text("<a href='?src=\ref[];mach_close=sleeper'>Close</a>", user)
-	user << browse(dat, "window=sleeper;size=600x600")
+	show_browser(user, dat, "Autodoc Medical System", "sleeper", "size=300x400")
 	onclose(user, "sleeper")
 
 /obj/structure/machinery/autodoc_console/Topic(href, href_list)

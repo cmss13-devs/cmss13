@@ -66,7 +66,7 @@
 		user.visible_message(SPAN_NOTICE("[user] [open ? "opens" : "closes"] the hatch on the [src]."), SPAN_NOTICE("You [open ? "open" : "close"] the hatch on the [src]."))
 		update_icon()
 		if(!open && user.interactee == src)
-			user << browse(null, "window=spaceheater")
+			close_browser(user, "spaceheater")
 			user.unset_interaction()
 	else
 		..()
@@ -97,8 +97,7 @@
 		dat += "<A href='?src=\ref[src];op=temp;val=5'>+</A><BR>"
 
 		user.set_interaction(src)
-		user << browse("<HEAD><TITLE>Space Heater Control Panel</TITLE></HEAD><TT>[dat]</TT>", "window=spaceheater")
-		onclose(user, "spaceheater")
+		show_browser(user, dat, "Space Heater Control Panel", "spaceheater")
 	else
 		on = !on
 		if(on)
@@ -146,7 +145,7 @@
 
 		updateDialog()
 	else
-		usr << browse(null, "window=spaceheater")
+		close_browser(usr, "spaceheater")
 		usr.unset_interaction()
 	return
 

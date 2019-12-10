@@ -121,7 +121,7 @@ var/list/mechtoys = list(
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return 1
 	user.set_interaction(src)
-	var/dat = "<head><title>Supply Drop Console Console</title></head><body>"
+	var/dat = "<body>"
 
 	if(can_pick_squad)
 		if(!current_squad) //No squad has been set yet. Pick one.
@@ -138,11 +138,13 @@ var/list/mechtoys = list(
 		if(cooldown_left > 0)
 			dat += "Launch tubes resetting ([round(cooldown_left/10)] seconds)<br>"
 		else
-			dat += "<font color='green'>Ready!</font><br>"
+			dat += SET_CLASS("Ready!", INTERFACE_GREEN)
+			dat += "<br>"
 		dat += "<B>Launch Pad Status:</b> "
 		var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc
 		if(C)
-			dat += "<font color='green'>Supply crate loaded</font><BR>"
+			dat += SET_CLASS("Supply crate loaded", INTERFACE_GREEN)
+			dat += "<BR>"
 		else
 			dat += "Empty<BR>"
 		dat += "<B>Longitude:</B> [x_supply] <A href='?src=\ref[src];operation=supply_x'>\[Change\]</a><BR>"
@@ -151,7 +153,7 @@ var/list/mechtoys = list(
 	dat += "<BR><BR>----------------------<br>"
 	dat += "<A href='?src=\ref[src];operation=refresh'>{Refresh}</a><br>"
 
-	user << browse(dat, "window=overwatch;size=550x550")
+	show_browser(user, dat, "Supply Drop Console Console", "overwatch", "size=550x550")
 	return
 
 /obj/structure/machinery/computer/supply_drop_console/Topic(href, href_list)
@@ -564,16 +566,14 @@ var/list/mechtoys = list(
 	else
 		var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
 		if (shuttle)
-			dat += {"<BR><B>Automated Storage and Retrieval System</B><HR>
-			Location: [shuttle.has_arrive_time() ? "Raising platform":shuttle.at_station() ? "Raised":"Lowered"]<BR>
+			dat += {"Location: [shuttle.has_arrive_time() ? "Raising platform":shuttle.at_station() ? "Raised":"Lowered"]<BR>
 			<HR>Supply points: [supply_controller.points]<BR>
 		<BR>\n<A href='?src=\ref[src];order=categories'>Request items</A><BR><BR>
 		<A href='?src=\ref[src];vieworders=1'>View approved orders</A><BR><BR>
 		<A href='?src=\ref[src];viewrequests=1'>View requests</A><BR><BR>
 		<A href='?src=\ref[user];mach_close=computer'>Close</A>"}
 
-	user << browse(dat, "window=computer;size=575x450")
-	onclose(user, "computer")
+	show_browser(user, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
 	return
 
 /obj/structure/machinery/computer/ordercomp/Topic(href, href_list)
@@ -692,7 +692,6 @@ var/list/mechtoys = list(
 	else
 		var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
 		if (shuttle)
-			dat += "<BR><B>Automated Storage and Retrieval System</B><HR>"
 			dat += "\nPlatform position: "
 			if (shuttle.has_arrive_time())
 				dat += "Moving<BR>"
@@ -732,8 +731,7 @@ var/list/mechtoys = list(
 		\n<A href='?src=\ref[user];mach_close=computer'>Close</A>"}
 
 
-	user << browse(dat, "window=computer;size=575x450")
-	onclose(user, "computer")
+	show_browser(user, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
 	return
 
 /obj/structure/machinery/computer/supplycomp/Topic(href, href_list)

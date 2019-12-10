@@ -260,9 +260,7 @@
 	<BR><A href='?src=\ref[user];refresh=1'>Refresh</A>
 	<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>
 	<BR>"}
-	user << browse(dat, "window=mob[name];size=380x540")
-	onclose(user, "mob[name]")
-	return
+	show_browser(user, dat, name, "mob[name]")
 
 // called when something steps onto a human
 // this handles mulebots and vehicles
@@ -364,7 +362,7 @@
 	if (href_list["mach_close"])
 		var/t1 = text("window=[]", href_list["mach_close"])
 		unset_interaction()
-		src << browse(null, t1)
+		close_browser(src, t1)
 
 
 	if (href_list["item"])
@@ -793,7 +791,7 @@
 			for(var/datum/data/record/R in data_core.medical)
 				if (R.fields["name"] == real_name)
 					if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
-						usr << browse(R.fields["last_scan_result"], "window=scanresults;size=430x600")
+						show_browser(usr, R.fields["last_scan_result"], "Medical Scan Report", "scanresults", "size=430x600")
 					break
 
 	if (href_list["lookitem"])
@@ -804,7 +802,7 @@
 	if (href_list["flavor_change"])
 		switch(href_list["flavor_change"])
 			if("done")
-				src << browse(null, "window=flavor_changes")
+				close_browser(src, "flavor_changes")
 				return
 			if("general")
 				var/msg = input(usr,"Update the general description of your character. This will be shown regardless of clothing, and may include OOC notes and preferences.","Flavor Text",html_decode(flavor_texts[href_list["flavor_change"]])) as message
@@ -1027,11 +1025,9 @@
 	set name = "View Crew Manifest"
 	set category = "IC"
 
-	var/dat
-	dat += "<h4>Crew Manifest</h4>"
-	dat += data_core.get_manifest()
+	var/dat = data_core.get_manifest()
 
-	src << browse(dat, "window=manifest;size=370x420;can_close=1")
+	show_browser(src, dat, "Crew Manifest", "manifest", "size=370x420")
 
 /mob/living/carbon/human/proc/set_species(var/new_species, var/default_colour)
 	if(!new_species)
@@ -1245,7 +1241,7 @@
 	set category = "IC"
 	set src = usr
 
-	var/dat = "<b><font size = 5>Skills:</font></b><br/><br/>"
+	var/dat
 	if(!usr || !usr.mind || !usr.mind.cm_skills)
 		dat += "NULL<br/>"
 	else
@@ -1270,7 +1266,7 @@
 		dat += "Powerloader: [usr.mind.cm_skills.get_skill_level(SKILL_POWERLOADER)]<br/>"
 		dat += "Large Vehicle: [usr.mind.cm_skills.get_skill_level(SKILL_LARGE_VEHICLE)]<br/>"
 
-	src << browse(dat, "window=checkskills")
+	show_browser(src, dat, "Skills", "checkskills")
 	return
 
 /mob/living/carbon/human/verb/remove_your_splints()

@@ -59,7 +59,7 @@
 	return
 
 /obj/item/clipboard/attack_self(mob/user as mob)
-	var/dat = "<title>Clipboard</title>"
+	var/dat
 	if(haspen)
 		dat += "<A href='?src=\ref[src];pen=1'>Remove Pen</A><BR><HR>"
 	else
@@ -77,7 +77,7 @@
 	for(var/obj/item/photo/Ph in src)
 		dat += "<A href='?src=\ref[src];remove=\ref[Ph]'>Remove</A> - <A href='?src=\ref[src];look=\ref[Ph]'>[Ph.name]</A><BR>"
 
-	user << browse(dat, "window=clipboard")
+	show_browser(user, dat, "Clipboard", "clipboard")
 	onclose(user, "clipboard")
 	add_fingerprint(usr)
 	return
@@ -136,11 +136,11 @@
 			if(P && (P.loc == src) && istype(P, /obj/item/paper) )
 
 				if(!(istype(usr, /mob/living/carbon/human) || istype(usr, /mob/dead/observer) || issilicon(usr)))
-					usr << browse("<HTML><HEAD><TITLE>[P.name]</TITLE></HEAD><BODY>[stars(P.info)][P.stamps]</BODY></HTML>", "window=[P.name]")
-					onclose(usr, "[P.name]")
+					show_browser(usr, "<BODY class='paper'>[stars(P.info)][P.stamps]</BODY>", P.name, P.name)
+					onclose(usr, P.name)
 				else
-					usr << browse("<HTML><HEAD><TITLE>[P.name]</TITLE></HEAD><BODY>[P.info][P.stamps]</BODY></HTML>", "window=[P.name]")
-					onclose(usr, "[P.name]")
+					show_browser(usr, "<BODY class='paper'>[P.info][P.stamps]</BODY>", P.name, P.name)
+					onclose(usr, P.name)
 
 		else if(href_list["look"])
 			var/obj/item/photo/P = locate(href_list["look"])

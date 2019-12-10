@@ -122,19 +122,34 @@
 /obj/item/device/assembly/infra/interact(mob/user as mob)//TODO: change this this to the wire control panel
 	if(!secured)	return
 	user.set_interaction(src)
+
+	/* a testament to autism
 	var/dat = text("<TT><B>Infrared Laser</B>\n<B>Status</B>: []<BR>\n<B>Visibility</B>: []<BR>\n</TT>", (on ? text("<A href='?src=\ref[];state=0'>On</A>", src) : text("<A href='?src=\ref[];state=1'>Off</A>", src)), (src.visible ? text("<A href='?src=\ref[];visible=0'>Visible</A>", src) : text("<A href='?src=\ref[];visible=1'>Invisible</A>", src)))
+	*/
+
+	var/dat = "<TT><B>Infrared Laser</B>\n<B>Status</B>: "
+	if (on)
+		dat += "<A href='?src=\ref[src];state=0'>On</A>"
+	else
+		dat += "<A href='?src=\ref[src];state=1'>Off</A>"
+	dat += "<BR>\n<B>Visibility</B>: "
+
+	if (visible)
+		dat += "<A href='?src=\ref[src];visible=0'>Visible</A>"
+	else
+		dat += "<A href='?src=\ref[src];visible=1'>Invisible</A>"
+	
+	dat += "<BR>\n</TT>"
 	dat += "<BR><BR><A href='?src=\ref[src];refresh=1'>Refresh</A>"
 	dat += "<BR><BR><A href='?src=\ref[src];close=1'>Close</A>"
-	user << browse(dat, "window=infra")
-	onclose(user, "infra")
+	show_browser(user, dat, "Infrared Laser", "infra")
 	return
 
 
 /obj/item/device/assembly/infra/Topic(href, href_list)
 	..()
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !in_range(loc, usr))
-		usr << browse(null, "window=infra")
-		onclose(usr, "infra")
+		close_browser(usr, "infra")
 		return
 
 	if(href_list["state"])
@@ -148,7 +163,7 @@
 				first.vis_spread(visible)
 
 	if(href_list["close"])
-		usr << browse(null, "window=infra")
+		close_browser(usr, "infra")
 		return
 
 	if(usr)

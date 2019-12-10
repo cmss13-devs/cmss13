@@ -71,11 +71,11 @@
 	if(in_range(user, src) || istype(user, /mob/dead/observer))
 		if(!(istype(user, /mob/dead/observer) || istype(user, /mob/living/carbon/human) || issilicon(user)))
 			// Show scrambled paper if they aren't a ghost, human, or silicone.
-			usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)][stamps]</BODY></HTML>", "window=[name]")
-			onclose(user, "[name]")
+			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name)
+			onclose(user, name)
 		else
-			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info][stamps]</BODY></HTML>", "window=[name]")
-			onclose(user, "[name]")
+			show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name)
+			onclose(user, name)
 	else
 		to_chat(user, SPAN_NOTICE("It is too far away."))
 	return
@@ -86,6 +86,7 @@
 	set src in usr
 
 	var/n_name = copytext(sanitize(input(usr, "What would you like to label the paper?", "Paper Labelling", null)  as text), 1, MAX_NAME_LEN)
+	close_browser(usr, name)
 	if((loc == usr && usr.stat == 0))
 		name = "[(n_name ? text("[n_name]") : "paper")]"
 	add_fingerprint(usr)
@@ -108,12 +109,12 @@
 	else //cyborg or AI not seeing through a camera
 		dist = get_dist(src, user)
 	if(dist < 2)
-		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info][stamps]</BODY></HTML>", "window=[name]")
-		onclose(usr, "[name]")
+		show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name)
+		onclose(user, name)
 	else
 		//Show scrambled paper
-		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)][stamps]</BODY></HTML>", "window=[name]")
-		onclose(usr, "[name]")
+		show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name)
+		onclose(user, name)
 	return
 
 /obj/item/paper/attack(mob/living/carbon/M, mob/living/carbon/user)
@@ -197,8 +198,6 @@
 
 
 /obj/item/paper/proc/parsepencode(var/t, var/obj/item/tool/pen/P, mob/user as mob, var/iscrayon = 0)
-//	t = copytext(sanitize(t),1,MAX_MESSAGE_LEN)
-
 	t = replacetext(t, "\[center\]", "<center>")
 	t = replacetext(t, "\[/center\]", "</center>")
 	t = replacetext(t, "\[br\]", "<BR>")
@@ -267,7 +266,7 @@
 
 
 /obj/item/paper/proc/openhelp(mob/user as mob)
-	user << browse({"<HTML><HEAD><TITLE>Pen Help</TITLE></HEAD>
+	var/dat = {"<HTML>
 	<BODY>
 		<b><center>Crayon&Pen commands</center></b><br>
 		<br>
@@ -288,7 +287,8 @@
 		\[list\] - \[/list\] : A list.<br>
 		\[*\] : A dot used for lists.<br>
 		\[hr\] : Adds a horizontal rule.
-	</BODY></HTML>"}, "window=paper_help")
+	</BODY></HTML>"}
+	show_browser(user, dat, "Pen Help", "paper_help")
 
 /obj/item/paper/proc/burnpaper(obj/item/P, mob/user)
 	var/class = "<span class='warning'>"
@@ -348,7 +348,7 @@
 			info += t // Oh, he wants to edit to the end of the file, let him.
 			updateinfolinks()
 
-		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info_links][stamps]</BODY></HTML>", "window=[name]") // Update the window
+		show_browser(usr, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
 
 		update_icon()
 
@@ -383,7 +383,7 @@
 		if ( istype(P, /obj/item/tool/pen/robopen) && P:mode == 2 )
 			P:RenamePaper(user,src)
 		else
-			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info_links][stamps]</BODY></HTML>", "window=[name]")
+			show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
 		//openhelp(user)
 		return
 

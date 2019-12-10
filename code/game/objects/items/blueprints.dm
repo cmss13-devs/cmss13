@@ -46,30 +46,29 @@
 
 /obj/item/blueprints/interact()
 	var/area/A = get_area()
-	var/text = {"<HTML><head><title>[src]</title></head><BODY>
-<h2>[station_name] blueprints</h2>
-<small>Property of Weyland Yutani. For heads of staff only. Store in high-secure storage.</small><hr>
-"}
+	var/text = {"<HTML><BODY>
+	<small>Property of Weyland Yutani. For heads of staff only. Store in high-secure storage.</small><hr>
+	"}
 	switch (get_area_type())
 		if (AREA_SPACE)
 			text += {"
-<p>According the blueprints, you are now in <b>outer space</b>.  Hold your breath.</p>
-<p><a href='?src=\ref[src];action=create_area'>Mark this place as new area.</a></p>
-"}
+			<p>According the blueprints, you are now in <b>outer space</b>.  Hold your breath.</p>
+			<p><a href='?src=\ref[src];action=create_area'>Mark this place as new area.</a></p>
+			"}
 		if (AREA_STATION)
 			text += {"
-<p>According the blueprints, you are now in <b>\"[A.name]\"</b>.</p>
-<p>You may <a href='?src=\ref[src];action=edit_area'>
-move an amendment</a> to the drawing.</p>
-"}
+			<p>According the blueprints, you are now in <b>\"[A.name]\"</b>.</p>
+			<p>You may <a href='?src=\ref[src];action=edit_area'>
+			move an amendment</a> to the drawing.</p>
+			"}
 		if (AREA_SPECIAL)
 			text += {"
-<p>This place isn't noted on the blueprint.</p>
-"}
+			<p>This place isn't noted on the blueprint.</p>
+			"}
 		else
 			return
 	text += "</BODY></HTML>"
-	usr << browse(text, "window=blueprints")
+	show_browser(usr, text, "[station_name] blueprints", "blueprints")
 	onclose(usr, "blueprints")
 
 

@@ -43,7 +43,7 @@
 			qdel(W)
 	else
 		if(istype(W, /obj/item/tool/pen) || istype(W, /obj/item/toy/crayon))
-			usr << browse("", "window=[name]") //Closes the dialog
+			close_browser(usr, name) //Closes the dialog
 		P = contents[page]
 		P.attackby(W, user)
 
@@ -102,19 +102,20 @@
 		if(istype(src[page], /obj/item/paper))
 			var/obj/item/paper/P = src[page]
 			if(!(istype(usr, /mob/living/carbon/human) || istype(usr, /mob/dead/observer) || issilicon(usr)))
-				dat+= "<HTML><HEAD><TITLE>[P.name]</TITLE></HEAD><BODY>[stars(P.info)][P.stamps]</BODY></HTML>"
+				dat+= "<BODY class='paper'>[stars(P.info)][P.stamps]</BODY>"
 			else
-				dat+= "<HTML><HEAD><TITLE>[P.name]</TITLE></HEAD><BODY>[P.info][P.stamps]</BODY></HTML>"
-			human_user << browse(dat, "window=[name]")
+				dat+= "<BODY class='paper'>[P.info][P.stamps]</BODY>"
+			show_browser(human_user, dat, P.name, name)
 			P.add_fingerprint(usr)
 		else if(istype(src[page], /obj/item/photo))
 			var/obj/item/photo/P = src[page]
 			human_user << browse_rsc(P.img, "tmp_photo.png")
-			human_user << browse(dat + "<html><head><title>[P.name]</title></head>" \
+			dat += "<html>" \
 			+ "<body style='overflow:hidden'>" \
 			+ "<div> <img src='tmp_photo.png' width = '180'" \
 			+ "[P.scribble ? "<div> Written on the back:<br><i>[P.scribble]</i>" : null]"\
-			+ "</body></html>", "window=[name]")
+			+ "</body></html>"
+			show_browser(human_user, dat, P.name, name)
 			P.add_fingerprint(usr)
 		add_fingerprint(usr)
 		update_icon()

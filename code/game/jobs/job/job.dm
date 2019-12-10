@@ -11,7 +11,7 @@
 	var/scaled = 0
 	var/current_positions 	= 0 //How many players have this job
 	var/supervisors 		= "" //Supervisors, who this person answers to directly. Should be a string, shown to the player when they enter the game.
-	var/selection_color 	= "#ffffff" //Sellection screen color.
+	var/selection_class 	= "" // Job Selection span class (for background color)
 	var/list/alt_titles 	//List of alternate titles, if any.
 
 	var/flag = NO_FLAGS 					//TODO robust this later.

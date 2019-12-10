@@ -124,8 +124,7 @@
 	if(..())
 		return
 	user.set_interaction(src)
-	var/dat = "<center><h2>Dropship Part Fabricator</h2></center><hr/>"
-	dat += "<h4>Points Available: [get_point_store()]</h4>"
+	var/dat = "<h4>Points Available: [get_point_store()]</h4>"
 	dat += "<h3>Dropship Equipment:</h3>"
 	for(var/build_type in typesof(/obj/structure/dropship_equipment))
 		var/obj/structure/dropship_equipment/DE = build_type
@@ -143,8 +142,7 @@
 			dat += "<a href='byond://?src=\ref[src];produce=[build_type];cost=[build_cost]'>[build_name] ([build_cost])</a><br>"
 
 
-	user << browse(dat, "window=dropship_part_fab")
-	onclose(user, "dropship_part_fab")
+	show_browser(user, dat, "Dropship Part Fabricator", "dropship_part_fab")
 	return
 
 /obj/structure/machinery/part_fabricator/tank
@@ -168,8 +166,7 @@
 	if(..())
 		return
 	user.set_interaction(src)
-	var/dat = "<center><h2>Tank Part Fabricator</h2></center><hr/>"
-	dat += "<h4>Points Available: [get_point_store()]</h4>"
+	var/dat = "<h4>Points Available: [get_point_store()]</h4>"
 	dat += "<h3>Tank Equipment:</h3>"
 	for(var/build_type in typesof(/obj/item/hardpoint))
 		var/obj/item/hardpoint/TE = build_type
@@ -185,6 +182,5 @@
 		var/build_cost = initial(TA.point_cost)
 		if(build_cost)
 			dat += "<a href='byond://?src=\ref[src];produce=[build_type];cost=[build_cost]'>[build_name] ([build_cost])</a><br>"
-	user << browse(dat, "window=tank_part_fab")
-	onclose(user, "tank_part_fab")
+	show_browser(user, dat, "Tank Part Fabricator", "tank_part_fab")
 	return

@@ -453,7 +453,7 @@ nanoui is used to open and update nano browser uis
 /datum/nanoui/proc/close()
 	is_auto_updating = 0
 	nanomanager.ui_closed(src)
-	user << browse(null, "window=[window_id]")
+	close_browser(user, "[window_id]")
 
 	qdel(src)
 

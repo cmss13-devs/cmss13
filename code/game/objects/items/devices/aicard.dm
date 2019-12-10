@@ -60,7 +60,7 @@
 /obj/item/device/aicard/Topic(href, href_list)
 	var/mob/U = usr
 	if (!in_range(src, U)||U.interactee!=src)//If they are not in range of 1 or less or their machine is not the card (ie, clicked on something else).
-		U << browse(null, "window=aicard")
+		close_browser(U, "aicard")
 		U.unset_interaction()
 		return
 
@@ -69,7 +69,7 @@
 
 	switch(href_list["choice"])//Now we switch based on choice.
 		if ("Close")
-			U << browse(null, "window=aicard")
+			close_browser(U, "aicard")
 			U.unset_interaction()
 			return
 
@@ -80,7 +80,7 @@
 			var/confirm = alert("Are you sure you want to wipe this card's memory? This cannot be undone once started.", "Confirm Wipe", "Yes", "No")
 			if(confirm == "Yes")
 				if(isnull(src)||!in_range(src, U)||U.interactee!=src)
-					U << browse(null, "window=aicard")
+					close_browser(U, "aicard")
 					U.unset_interaction()
 					return
 				else

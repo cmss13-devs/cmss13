@@ -43,9 +43,8 @@
 /obj/structure/machinery/computer/atmos_alert/attack_hand(mob/user)
 	if(..(user))
 		return
-	user << browse(return_text(),"window=computer")
+	show_browser(user, return_text(), name, "computer")
 	user.set_interaction(src)
-	onclose(user, "computer")
 
 /obj/structure/machinery/computer/atmos_alert/process()
 	if(..())

@@ -1,6 +1,6 @@
 /datum/job/command
 	department_flag = ROLEGROUP_MARINE_COMMAND
-	selection_color = "#ddddff"
+	selection_class = "job_command"
 	supervisors = "the acting commanding officer"
 	total_positions = 1
 	spawn_positions = 1
@@ -10,7 +10,7 @@
 	title = JOB_CO
 	flag = ROLE_COMMANDING_OFFICER
 	supervisors = "USCM high command"
-	selection_color = "#ccccff"
+	selection_class = "job_co"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	flags_whitelist = WHITELIST_COMMANDER
 	gear_preset = "USCM Captain (CO)"
@@ -168,7 +168,7 @@
 	spawn_positions = 5
 	allow_additional = 1
 	scaled = 1
-	selection_color = "#ffdddd"
+	selection_class = "job_mp"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Military Police (MP)"
 	minimum_playtimes = list(
@@ -190,7 +190,7 @@
 /datum/job/command/warrant
 	title = JOB_CHIEF_POLICE
 	flag = ROLE_CHIEF_MP
-	selection_color = "#ffaaaa"
+	selection_class = "job_cmp"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Chief MP (CMP)"
 	minimum_playtimes = list(

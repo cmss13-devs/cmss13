@@ -67,7 +67,7 @@
 ///// Z-Level stuff
 //What number the make points to is in the define # at the top of construction.dm in same folder
 
-	user << browse("<HEAD><TITLE>[src]</TITLE></HEAD><TT>[dat]</TT>", "window=pipedispenser")
+	show_browser(user, dat, name, "pipedispenser")
 	onclose(user, "pipedispenser")
 	return
 
@@ -75,7 +75,7 @@
 	if(..())
 		return
 	if(unwrenched || !usr.canmove || usr.stat || usr.is_mob_restrained() || !in_range(loc, usr))
-		usr << browse(null, "window=pipedispenser")
+		close_browser(usr, "pipedispenser")
 		return
 	usr.set_interaction(src)
 	src.add_fingerprint(usr)
@@ -117,7 +117,7 @@
 				src.stat |= MAINT
 				src.unwrenched = 1
 				if (usr.interactee==src)
-					usr << browse(null, "window=pipedispenser")
+					close_browser(usr, "pipedispenser")
 		else /*if (unwrenched==1)*/
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			to_chat(user, SPAN_NOTICE(" You begin to fasten \the [src] to the floor..."))
@@ -181,7 +181,7 @@ Nah
 "}
 ///// Z-Level stuff
 
-	user << browse("<HEAD><TITLE>[src]</TITLE></HEAD><TT>[dat]</TT>", "window=pipedispenser")
+	show_browser(user, dat, name, "pipedispenser")
 	return
 
 // 0=straight, 1=bent, 2=junction-j1, 3=junction-j2, 4=junction-y, 5=trunk
@@ -194,7 +194,7 @@ Nah
 	src.add_fingerprint(usr)
 	if(href_list["dmake"])
 		if(unwrenched || !usr.canmove || usr.stat || usr.is_mob_restrained() || !in_range(loc, usr))
-			usr << browse(null, "window=pipedispenser")
+			close_browser(usr, "pipedispenser")
 			return
 		if(!wait)
 			var/p_type = text2num(href_list["dmake"])

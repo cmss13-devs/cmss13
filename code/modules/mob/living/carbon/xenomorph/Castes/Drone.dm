@@ -57,6 +57,7 @@
 	name = "Drone"
 	desc = "An Alien Drone"
 	icon = 'icons/mob/xenos/xenomorph_48x48.dmi'
+	icon_size = 48
 	icon_state = "Drone Walking"
 	plasma_types = list(PLASMA_PURPLE)
 	tier = 1

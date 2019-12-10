@@ -50,6 +50,7 @@
 	desc = "A small red alien that looks like it could run fairly quickly..."
 	icon = 'icons/mob/xenos/xenomorph_64x64.dmi' //They are now like, 2x1 or something
 	icon_state = "Runner Walking"
+	icon_size = 64
 	layer = MOB_LAYER
 	plasma_types = list(PLASMA_CATECHOLAMINE)
 	flags_pass = PASS_FLAGS_CRAWLER

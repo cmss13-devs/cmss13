@@ -5,7 +5,7 @@ var/datum/subsystem/decorator/SSdecorator
 // That's why we define this here
 /atom/Decorate()
 	if(SSdecorator.registered_decorators[type])
-		SSdecorator.decoratable += src
+		SSdecorator.decorate(src)
 
 /datum/subsystem/decorator
 	name          = "Decorator"
@@ -14,14 +14,18 @@ var/datum/subsystem/decorator/SSdecorator
 	priority      = SS_PRIORITY_DECORATOR
 	flags		  = SS_FIRE_IN_LOBBY
 
+	can_fire = FALSE
+
 	var/list/currentrun
 	var/list/decoratable
 	var/list/registered_decorators
+	var/list/datum/decorator/active_decorators
 
 
 /datum/subsystem/decorator/New()
 	decoratable = list()
 	registered_decorators = list()
+	active_decorators = list()
 
 	var/list/all_decors = typesof(/datum/decorator) - list(/datum/decorator) - typesof(/datum/decorator/manual)
 	for(var/decor_type in all_decors)
@@ -29,6 +33,9 @@ var/datum/subsystem/decorator/SSdecorator
 		if(!decor.is_active_decor())
 			continue
 		var/list/applicable_types = decor.get_decor_types()
+		if(!applicable_types || !applicable_types.len)
+			continue
+		active_decorators |= decor
 		for(var/app_type in applicable_types)
 			if(!registered_decorators[app_type])
 				registered_decorators[app_type] = list()
@@ -45,24 +52,27 @@ var/datum/subsystem/decorator/SSdecorator
 		CHECK_TICK
 	..()
 
-/datum/subsystem/decorator/proc/add_decorator(decor_type, force_update = FALSE)	
+/datum/subsystem/decorator/proc/add_decorator(decor_type)	
 	var/datum/decorator/decor = new decor_type()
 
 	// DECORATOR IS ENABLED FORCEFULLY
 
 	var/list/applicable_types = decor.get_decor_types()
+	if(!applicable_types || !applicable_types.len)
+		return
+	active_decorators |= decor
 	for(var/app_type in applicable_types)
 		if(!registered_decorators[app_type])
 			registered_decorators[app_type] = list()
 		registered_decorators[app_type] += decor
 
 	for(var/i in registered_decorators)		
-		registered_decorators[i] = sortDecorators(registered_decorators[i])
-	
-	if(force_update)
-		// OH GOD YOU BETTER NOT DO THIS IF YOU VALUE YOUR TIME
-		for(var/atom/o in world)
-			o.Decorate()
+		registered_decorators[i] = sortDecorators(registered_decorators[i])	
+
+/datum/subsystem/decorator/proc/force_update()
+	// OH GOD YOU BETTER NOT DO THIS IF YOU VALUE YOUR TIME
+	for(var/atom/o in world)
+		o.Decorate()
 
 /datum/subsystem/decorator/stat_entry()
 	if(registered_decorators && decoratable)
@@ -70,27 +80,16 @@ var/datum/subsystem/decorator/SSdecorator
 		return
 	..("INITING")
 
+/datum/subsystem/decorator/proc/decorate(var/atom/o)
+	if (!o || o.disposed)
+		return
 
-/datum/subsystem/decorator/fire(resumed = FALSE)
-	if (!resumed)
-		currentrun = decoratable.Copy()
-		decoratable.Cut()
+	var/list/datum/decorator/decors = registered_decorators[o.type]
+	if(!decors)
+		return
 
-	while (currentrun.len)
-		var/atom/o = currentrun[currentrun.len]
-		currentrun.len--
-
-		if (!o || o.disposed)
-			continue
-
-		var/list/datum/decorator/decors = registered_decorators[o.type]
-		if(decors)
-			for(var/datum/decorator/decor in decors)
-				decor.decorate(o)
-		
-		if (MC_TICK_CHECK)
-			return
-
+	for(var/datum/decorator/decor in decors)
+		decor.decorate(o)
 
 // List of lists, sorts by element[key] - for things like crew monitoring computer sorting records by name.
 /datum/subsystem/decorator/proc/sortDecorators(var/list/datum/decorator/L)

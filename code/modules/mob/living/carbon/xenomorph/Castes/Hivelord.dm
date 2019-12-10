@@ -64,6 +64,7 @@
 	name = "Hivelord"
 	desc = "A builder of really big hives."
 	icon = 'icons/mob/xenos/xenomorph_64x64.dmi'
+	icon_size = 64
 	icon_state = "Hivelord Walking"
 	plasma_types = list(PLASMA_PURPLE,PLASMA_PHEROMONE)
 	pixel_x = -16

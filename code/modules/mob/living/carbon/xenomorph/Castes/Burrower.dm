@@ -72,6 +72,7 @@
 	name = "Burrower"
 	desc = "A beefy, alien with sharp claws."
 	icon = 'icons/mob/xenos/xenomorph_64x64.dmi'
+	icon_size = 64
 	icon_state = "Burrower Walking"
 	layer = MOB_LAYER
 	plasma_stored = 100

@@ -53,6 +53,7 @@
 	name = "Sentinel"
 	desc = "A slithery, spitting kind of alien."
 	icon = 'icons/mob/xenos/xenomorph_48x48.dmi'
+	icon_size = 48
 	icon_state = "Sentinel Walking"
 	plasma_types = list(PLASMA_NEUROTOXIN)
 	pixel_x = -12

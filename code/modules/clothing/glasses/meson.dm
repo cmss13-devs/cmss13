@@ -7,15 +7,13 @@
 	icon_state = "meson"
 	item_state = "glasses"
 	actions_types = list(/datum/action/item_action/toggle)
-	
-	toggleable = 1
+	toggleable = TRUE
 	fullscreen_vision = /obj/screen/fullscreen/meson
-
 
 /obj/item/clothing/glasses/meson/prescription
 	name = "prescription optical meson scanner"
 	desc = "Used for shield the user's eyes from harmful electromagnetic emissions, can also be used as safety googles. Contains prescription lenses."
-	prescription = 1
+	prescription = TRUE
 
 /obj/item/clothing/glasses/meson/yautja
 	name = "bio-mask x-ray"
@@ -27,7 +25,6 @@
 	flags_inventory = COVEREYES
 	flags_item = NODROP|DELONDROP
 
-	Dispose()
-		..()
-		return GC_HINT_RECYCLE
-
+/obj/item/clothing/glasses/meson/yautja/Dispose()
+	..()
+	return GC_HINT_RECYCLE

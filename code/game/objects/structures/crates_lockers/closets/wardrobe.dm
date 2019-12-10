@@ -31,22 +31,6 @@
 	new /obj/item/clothing/head/beret/sec/alt(src)
 	return
 
-
-/obj/structure/closet/wardrobe/pink
-	name = "pink wardrobe"
-	icon_state = "pink"
-	icon_closed = "pink"
-
-/obj/structure/closet/wardrobe/pink/New()
-	..()
-	new /obj/item/clothing/under/color/pink(src)
-	new /obj/item/clothing/under/color/pink(src)
-	new /obj/item/clothing/under/color/pink(src)
-	new /obj/item/clothing/shoes/brown(src)
-	new /obj/item/clothing/shoes/brown(src)
-	new /obj/item/clothing/shoes/brown(src)
-	return
-
 /obj/structure/closet/wardrobe/black
 	name = "black wardrobe"
 	icon_state = "black"
@@ -129,22 +113,6 @@
 	new /obj/item/clothing/under/color/orange(src)
 	new /obj/item/clothing/under/color/orange(src)
 	new /obj/item/clothing/under/color/orange(src)
-	new /obj/item/clothing/shoes/orange(src)
-	new /obj/item/clothing/shoes/orange(src)
-	new /obj/item/clothing/shoes/orange(src)
-	return
-
-
-/obj/structure/closet/wardrobe/yellow
-	name = "yellow wardrobe"
-	icon_state = "wardrobe-y"
-	icon_closed = "wardrobe-y"
-
-/obj/structure/closet/wardrobe/yellow/New()
-	..()
-	new /obj/item/clothing/under/color/yellow(src)
-	new /obj/item/clothing/under/color/yellow(src)
-	new /obj/item/clothing/under/color/yellow(src)
 	new /obj/item/clothing/shoes/orange(src)
 	new /obj/item/clothing/shoes/orange(src)
 	new /obj/item/clothing/shoes/orange(src)
@@ -371,10 +339,6 @@
 	new /obj/item/clothing/under/color/yellow(src)
 	new /obj/item/clothing/under/color/green(src)
 	new /obj/item/clothing/under/color/orange(src)
-	new /obj/item/clothing/under/color/pink(src)
-	new /obj/item/clothing/under/dress/plaid_blue(src)
-	new /obj/item/clothing/under/dress/plaid_red(src)
-	new /obj/item/clothing/under/dress/plaid_purple(src)
 	new /obj/item/clothing/shoes/blue(src)
 	new /obj/item/clothing/shoes/yellow(src)
 	new /obj/item/clothing/shoes/green(src)

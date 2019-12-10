@@ -8,13 +8,6 @@
 	item_state = "bl_suit"
 	worn_state = "black"
 
-/obj/item/clothing/under/color/blackf
-	name = "feminine black jumpsuit"
-	desc = "It's very smart and in a ladies-size!"
-	icon_state = "black"
-	item_state = "bl_suit"
-	worn_state = "black"
-
 /obj/item/clothing/under/color/blue
 	name = "blue jumpsuit"
 	icon_state = "blue"
@@ -42,18 +35,6 @@
 	has_sensor = 2
 	sensor_mode = 3
 
-/obj/item/clothing/under/color/pink
-	name = "pink jumpsuit"
-	icon_state = "pink"
-	item_state = "p_suit"
-	worn_state = "pink"
-
-/obj/item/clothing/under/color/red
-	name = "red jumpsuit"
-	icon_state = "red"
-	item_state = "r_suit"
-	worn_state = "red"
-
 /obj/item/clothing/under/color/white
 	name = "white jumpsuit"
 	icon_state = "white"
@@ -66,49 +47,6 @@
 	item_state = "y_suit"
 	worn_state = "yellow"
 
-/obj/item/clothing/under/psyche
-	name = "psychedelic jumpsuit"
-	desc = "Groovy!"
-	icon_state = "psyche"
-	worn_state = "psyche"
-
-/obj/item/clothing/under/lightblue
-	name = "lightblue jumpsuit"
-	desc = "lightblue"
-	icon_state = "lightblue"
-	worn_state = "lightblue"
-
-/obj/item/clothing/under/aqua
-	name = "aqua jumpsuit"
-	desc = "aqua"
-	icon_state = "aqua"
-	worn_state = "aqua"
-
-/obj/item/clothing/under/purple
-	name = "purple jumpsuit"
-	desc = "purple"
-	icon_state = "purple"
-	item_state = "p_suit"
-	worn_state = "purple"
-
-/obj/item/clothing/under/lightpurple
-	name = "lightpurple jumpsuit"
-	desc = "lightpurple"
-	icon_state = "lightpurple"
-	worn_state = "lightpurple"
-
-/obj/item/clothing/under/lightgreen
-	name = "lightgreen jumpsuit"
-	desc = "lightgreen"
-	icon_state = "lightgreen"
-	worn_state = "lightgreen"
-
-/obj/item/clothing/under/lightblue
-	name = "lightblue jumpsuit"
-	desc = "lightblue"
-	icon_state = "lightblue"
-	worn_state = "lightblue"
-
 /obj/item/clothing/under/lightbrown
 	name = "lightbrown jumpsuit"
 	desc = "lightbrown"
@@ -120,18 +58,6 @@
 	desc = "brown"
 	icon_state = "brown"
 	worn_state = "brown"
-
-/obj/item/clothing/under/yellowgreen
-	name = "yellowgreen jumpsuit"
-	desc = "yellowgreen"
-	icon_state = "yellowgreen"
-	worn_state = "yellowgreen"
-
-/obj/item/clothing/under/darkblue
-	name = "darkblue jumpsuit"
-	desc = "darkblue"
-	icon_state = "darkblue"
-	worn_state = "darkblue"
 
 /obj/item/clothing/under/lightred
 	name = "lightred jumpsuit"

@@ -97,6 +97,7 @@
 	name = "Queen"
 	desc = "A huge, looming alien creature. The biggest and the baddest."
 	icon = 'icons/mob/xenos/xenomorph_64x64.dmi'
+	icon_size = 64
 	var/icon_body = 'icons/mob/xenos/xenomorph_64x64.dmi'
 	var/icon_ovi = 'icons/mob/xenos/Ovipositor.dmi'
 	icon_state = "Queen Walking"

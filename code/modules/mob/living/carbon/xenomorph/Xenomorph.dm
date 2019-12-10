@@ -51,6 +51,7 @@
 	rebounds = TRUE
 	faction = FACTION_XENOMORPH
 	var/hivenumber = XENO_HIVE_NORMAL
+	var/icon_size = 48
 	var/datum/mutator_set/individual_mutators/mutators = new
 
 	// Mutatotion types/Strain names

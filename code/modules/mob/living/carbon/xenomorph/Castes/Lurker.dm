@@ -76,6 +76,7 @@
 	name = "Lurker"
 	desc = "A beefy, fast alien with sharp claws."
 	icon = 'icons/mob/xenos/xenomorph_48x48.dmi'
+	icon_size = 48
 	icon_state = "Lurker Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
 	pixel_x = -12

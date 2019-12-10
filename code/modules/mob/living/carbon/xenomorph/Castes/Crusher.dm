@@ -58,6 +58,7 @@
 	name = "Crusher"
 	desc = "A huge alien with an enormous armored head crest."
 	icon = 'icons/mob/xenos/2x2_Xenos.dmi'
+	icon_size = 64
 	icon_state = "Crusher Walking"
 	plasma_types = list(PLASMA_CHITIN)
 	tier = 3

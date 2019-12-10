@@ -62,6 +62,7 @@
 	name = "Spitter"
 	desc = "A gross, oozing alien of some kind."
 	icon = 'icons/mob/xenos/xenomorph_48x48.dmi'
+	icon_size = 48
 	icon_state = "Spitter Walking"
 	plasma_types = list(PLASMA_NEUROTOXIN)
 	pixel_x = -12

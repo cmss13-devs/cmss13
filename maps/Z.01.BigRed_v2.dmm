@@ -20951,7 +20951,7 @@
 /area/bigredv2/outside/admin_building)
 "aYT" = (
 /obj/structure/machinery/atm{
-	name = "Weyland Yutani Automatic Teller Machine";
+	name = "Weston-Yamada Automatic Teller Machine";
 	pixel_y = 30
 	},
 /turf/open/floor{
@@ -21837,7 +21837,7 @@
 "bbp" = (
 /obj/structure/bed/chair,
 /obj/structure/machinery/atm{
-	name = "Weyland Yutani Automatic Teller Machine";
+	name = "Weston-Yamada Automatic Teller Machine";
 	pixel_y = 30
 	},
 /turf/open/floor,

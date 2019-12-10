@@ -143,7 +143,7 @@
 
 /obj/item/reagent_container/glass/bottle/suxamorycin
 	name = "Suxamorycin bottle"
-	desc = "A bottle of suxamorycin. A fairly new, powerful muscle relaxant, engineered from suxamethonium chloride. The Company takes great pride in its quick effect and short duration, albeit its long-term effects are not tested yet."
+	desc = "A bottle of suxamorycin. A fairly new, powerful muscle relaxant, engineered from suxamethonium chloride. Weston-Yamada takes great pride in its quick effect and short duration, albeit its long-term effects are not tested yet."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle20"
 

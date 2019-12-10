@@ -77,14 +77,14 @@ log transactions
 
 /obj/structure/machinery/atm/attack_hand(mob/user as mob)
 	if(issilicon(user))
-		to_chat(user, SPAN_DANGER("[htmlicon(src, usr)] Artificial unit recognized. Artificial units do not currently receive monetary compensation, as per Weyland Yutani regulation #1005."))
+		to_chat(user, SPAN_DANGER("[htmlicon(src, usr)] Artificial unit recognized. Artificial units do not currently receive monetary compensation, as per Weston-Yamada regulation #1005."))
 		return
 	if(get_dist(src,user) <= 1)
 
 		//js replicated from obj/structure/machinery/computer/card
-		var/dat = "<h1>Company Automatic Teller Machine</h1>"
+		var/dat = "<h1>Weston-Yamada Automatic Teller Machine</h1>"
 		dat += "For all your monetary needs!<br>"
-		dat += "<i>This terminal is</i> [machine_id]. <i>Report this code when contacting Weyland Yutani IT Support</i><br/>"
+		dat += "<i>This terminal is</i> [machine_id]. <i>Report this code when contacting Weston-Yamada IT Support</i><br/>"
 
 		dat += "Card: <a href='?src=\ref[src];choice=insert_card'>[held_card ? held_card.name : "------"]</a><br><br>"
 
@@ -166,7 +166,7 @@ log transactions
 			dat += "<input type='submit' class='button' value='Submit'><br>"
 			dat += "</form>"
 
-		show_browser(user, dat, "Company Automatic Teller Machine", "atm", "size=550x650")
+		show_browser(user, dat, "Weston-Yamada Automatic Teller Machine", "atm", "size=550x650")
 	else
 		close_browser(user,"atm")
 

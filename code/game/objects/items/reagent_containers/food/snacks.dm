@@ -2911,7 +2911,7 @@
 
 /obj/item/reagent_container/food/snacks/packaged_burrito
 	name = "Packaged Burrito"
-	desc = "A hard microwavable burrito. There's no time given for how long to cook it. Packaged by the Weyland-Yutani Corporation."
+	desc = "A hard microwavable burrito. There's no time given for how long to cook it. Packaged by the Weston-Yamada Corporation."
 	icon_state = "burrito"
 	bitesize = 2
 	package = 1
@@ -2928,7 +2928,7 @@
 
 /obj/item/reagent_container/food/snacks/packaged_burger
 	name = "Packaged Cheeseburger"
-	desc = "A soggy microwavable burger. There's no time given for how long to cook it. Packaged by the Weyland-Yutani Corporation."
+	desc = "A soggy microwavable burger. There's no time given for how long to cook it. Packaged by the Weston-Yamada Corporation."
 	icon_state = "burger"
 	bitesize = 3
 	package = 1
@@ -2947,7 +2947,7 @@
 
 /obj/item/reagent_container/food/snacks/packaged_hdogs
 	name = "Packaged Hotdog"
-	desc = "A singular squishy, room temperature, hot dog. There's no time given for how long to cook it, so you assume its probably good to go. Packaged by the Weyland-Yutani Corporation."
+	desc = "A singular squishy, room temperature, hot dog. There's no time given for how long to cook it, so you assume its probably good to go. Packaged by the Weston-Yamada Corporation."
 	icon_state = "hot_dogs"
 	bitesize = 2
 	package = 1

@@ -19,7 +19,7 @@
 	matter = list("metal" = 700, "glass" = 50)
 
 /obj/item/cell/crap
-	name = "\improper Yutani brand rechargable AA battery"
+	name = "\improper Yamada brand rechargable AA battery"
 	desc = "You can't top the plasma top." //TOTALLY TRADEMARK INFRINGEMENT
 	
 	maxcharge = 500

@@ -95,5 +95,5 @@ Template
 
 /datum/poster/poster_18
 	icon_state="poster18"
-	name = "Weyland Yutani Poster"
+	name = "Weston-Yamada Poster"
 	desc = "You don't have much choice in brand loyalty when there's basically only one brand."

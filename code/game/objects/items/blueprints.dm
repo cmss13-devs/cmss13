@@ -47,7 +47,7 @@
 /obj/item/blueprints/interact()
 	var/area/A = get_area()
 	var/text = {"<HTML><BODY>
-	<small>Property of Weyland Yutani. For heads of staff only. Store in high-secure storage.</small><hr>
+	<small>Property of Weston-Yamada. For heads of staff only. Store in high-secure storage.</small><hr>
 	"}
 	switch (get_area_type())
 		if (AREA_SPACE)

@@ -18,7 +18,7 @@
 	minimum_playtimes = list()
 
 /datum/job/command/commander/generate_entry_message()
-	entry_message_body = "Your job is HEAVY ROLE PLAY and requires you to stay IN CHARACTER at all times. While you support Weyland-Yutani, you report to the USCM High Command, not the corporate office. Your primary task is the safety of the ship and her crew, and ensuring the survival and success of the marines. Your first order of business should be briefing the marines on the mission they are about to undertake. If you require any help, use adminhelp to talk to game staff about what you're supposed to do. Godspeed, captain!"
+	entry_message_body = "Your job is HEAVY ROLE PLAY and requires you to stay IN CHARACTER at all times. While you support Weston-Yamada, you report to the USCM High Command, not the corporate office. Your primary task is the safety of the ship and her crew, and ensuring the survival and success of the marines. Your first order of business should be briefing the marines on the mission they are about to undertake. If you require any help, use adminhelp to talk to game staff about what you're supposed to do. Godspeed, captain!"
 	return ..()
 
 /datum/job/command/commander/announce_entry_message(mob/living/carbon/human/H)

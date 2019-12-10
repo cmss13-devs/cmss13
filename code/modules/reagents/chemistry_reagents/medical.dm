@@ -1026,7 +1026,7 @@
 /datum/reagent/suxamorycin
 	name = "Suxamorycin"
 	id = "suxamorycin"
-	description = "A fairly new, powerful muscle relaxant, engineered from suxamethonium chloride. The Company takes great pride in its quick effect and short duration, albeit its long-term effects are not tested yet."
+	description = "A fairly new, powerful muscle relaxant, engineered from suxamethonium chloride. Weston-Yamada takes great pride in its quick effect and short duration, albeit its long-term effects are not tested yet."
 	reagent_state = LIQUID
 	custom_metabolism = 0.5
 	color = "#32a852"

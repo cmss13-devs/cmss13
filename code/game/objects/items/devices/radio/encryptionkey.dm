@@ -155,7 +155,7 @@
 	channels = list("Colonist" = 1)
 
 /obj/item/device/encryptionkey/PMC
-	name = "\improper Weyland Yutani encryption key"
+	name = "\improper Weston-Yamada encryption key"
 	icon_state = "wy_key"
 	channels = list("WY PMC" = 1)
 

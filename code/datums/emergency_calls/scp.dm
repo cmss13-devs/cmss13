@@ -1,5 +1,5 @@
 
-//Weyland Yutani SCP. Neutral to USCM, hostile to xenos.
+//Weston-Yamada SCP. Neutral to USCM, hostile to xenos.
 /datum/emergency_call/scp
 	name = "SCP - Secure, Contain, Protect (Squad)"
 	mob_min = 5
@@ -30,23 +30,23 @@
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weyland Yutani SCP PMC squad leader!")))
-		arm_equipment(mob, "Weyland-Yutani SCP PMC (Leader)", TRUE, TRUE)
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC squad leader!")))
+		arm_equipment(mob, "Weston-Yamada SCP PMC (Leader)", TRUE, TRUE)
 	else if(medics < max_medics)
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weyland Yutani SCP PMC medic!")))
-		arm_equipment(mob, "Weyland-Yutani SCP PMC (Medic)", TRUE, TRUE)
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC medic!")))
+		arm_equipment(mob, "Weston-Yamada SCP PMC (Medic)", TRUE, TRUE)
 		medics++
 	else if(heavies < max_heavies*ERT_PMC_GUNNER_FRACTION)
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weyland Yutani SCP PMC heavy gunner!")))
-		arm_equipment(mob, "Weyland-Yutani SCP PMC (Gunner)", TRUE, TRUE)
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC heavy gunner!")))
+		arm_equipment(mob, "Weston-Yamada SCP PMC (Gunner)", TRUE, TRUE)
 		heavies++
 	else if(heavies < max_heavies)
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weyland Yutani SCP PMC sniper!")))
-		arm_equipment(mob, "Weyland-Yutani SCP PMC (Sniper)", TRUE, TRUE)
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC sniper!")))
+		arm_equipment(mob, "Weston-Yamada SCP PMC (Sniper)", TRUE, TRUE)
 		heavies++
 	else
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weyland Yutani SCP PMC mercenary!")))
-		arm_equipment(mob, "Weyland-Yutani SCP PMC (Standard)", TRUE, TRUE)
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC mercenary!")))
+		arm_equipment(mob, "Weston-Yamada SCP PMC (Standard)", TRUE, TRUE)
 	print_backstory(mob)
 
 	sleep(10)
@@ -54,9 +54,9 @@
 
 
 /datum/emergency_call/scp/print_backstory(mob/living/carbon/human/M)
-	to_chat(M, "<B>You are part of Weyland Yutani Special Task Force Royal that arrived in 2182 following the UA withdrawl of the Tychon's Rift sector.</b>")
-	to_chat(M, "<B>Task-force Royal is stationed aboard the USCSS Lunalorne, a powerful Weyland-Yutani cruiser that patrols the outer edges of Tychon's Rift.</b>")
-	to_chat(M, "<B>Under the directive of Weyland-Yutani board member Johan Almric, you act as private security for Weyland Yutani science teams.</b>")
+	to_chat(M, "<B>You are part of Weston-Yamada Special Task Force Royal that arrived in 2182 following the UA withdrawl of the Tychon's Rift sector.</b>")
+	to_chat(M, "<B>Task-force Royal is stationed aboard the USCSS Lunalorne, a powerful Weston-Yamada cruiser that patrols the outer edges of Tychon's Rift.</b>")
+	to_chat(M, "<B>Under the directive of Weston-Yamada board member Johan Almric, you act as private security for Weston-Yamada science teams.</b>")
 	to_chat(M, "<B>The USCSS Lunalorne contains a crew of roughly two hundred PMCs, and one hundred scientists and support personnel.</b>")
 	to_chat(M, "")
 	to_chat(M, "")

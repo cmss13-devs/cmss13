@@ -38,7 +38,7 @@
 	name = "Survivor - PMC"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = "Weyland-Yutani PMC (Standard)"
+	assignment = "Weston-Yamada PMC (Standard)"
 	rank = JOB_PMC
 	paygrade = "PMC1"
 	skills = /datum/skills/pmc
@@ -61,10 +61,10 @@
 
 /*****************************************************************************************************/
 /datum/equipment_preset/wy/pmc_standard
-	name = "Weyland-Yutani PMC (Standard)"
+	name = "Weston-Yamada PMC (Standard)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = "Weyland-Yutani PMC (Standard)"
+	assignment = "Weston-Yamada PMC (Standard)"
 	rank = JOB_PMC
 	paygrade = "PMC1"
 	skills = /datum/skills/pmc
@@ -113,10 +113,10 @@
 
 /*****************************************************************************************************/
 /datum/equipment_preset/wy/pmc_medic
-	name = "Weyland-Yutani PMC (Medic)"
+	name = "Weston-Yamada PMC (Medic)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = "Weyland-Yutani PMC (Medic)"
+	assignment = "Weston-Yamada PMC (Medic)"
 	rank = "PMC Medic"
 	paygrade = "PMC2"
 	skills = /datum/skills/pmc/medic
@@ -156,7 +156,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wy/pmc_leader
-	name = "Weyland-Yutani PMC (Leader)"
+	name = "Weston-Yamada PMC (Leader)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_LEADER
@@ -189,7 +189,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wy/pmc_gunner
-	name = "Weyland-Yutani PMC (Gunner)"
+	name = "Weston-Yamada PMC (Gunner)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_GUNNER
@@ -217,7 +217,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wy/pmc_sniper
-	name = "Weyland-Yutani PMC (Sniper)"
+	name = "Weston-Yamada PMC (Sniper)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_SNIPER
@@ -246,7 +246,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wy/deathsquad
-	name = "Weyland-Yutani Deathsquad"
+	name = "Weston-Yamada Deathsquad"
 	flags = EQUIPMENT_PRESET_EXTRA
 	uses_special_name = TRUE //We always use a codename!
 
@@ -298,7 +298,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wy/deathsquad/medic
-	name = "Weyland-Yutani Deathsquad Medic"
+	name = "Weston-Yamada Deathsquad Medic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "Deathsquad Medic"
@@ -338,7 +338,7 @@
 
 /*****************************************************************************************************/
 /datum/equipment_preset/wy/deathsquad/terminator
-	name = "Weyland-Yutani Deathsquad Terminator"
+	name = "Weston-Yamada Deathsquad Terminator"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "Deathsquad Terminator"
@@ -363,7 +363,7 @@
 
 /*****************************************************************************************************/
 /datum/equipment_preset/wy/deathsquad/leader
-	name = "Weyland-Yutani Deathsquad Leader"
+	name = "Weston-Yamada Deathsquad Leader"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "Deathsquad Leader"
@@ -375,16 +375,16 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wy/pmc_standard/scp
-	name = "Weyland-Yutani SCP PMC (Standard)"
+	name = "Weston-Yamada SCP PMC (Standard)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = "Weyland-Yutani SCP PMC (Standard)"
+	assignment = "Weston-Yamada SCP PMC (Standard)"
 	rank = "SCP PMC Standard"
 
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wy/pmc_medic/scp
-	name = "Weyland-Yutani SCP PMC (Medic)"
+	name = "Weston-Yamada SCP PMC (Medic)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "SCP PMC Medic"
@@ -393,7 +393,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wy/pmc_leader/scp
-	name = "Weyland-Yutani SCP PMC (Leader)"
+	name = "Weston-Yamada SCP PMC (Leader)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "SCP PMC Officer"
@@ -402,7 +402,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wy/pmc_gunner/scp
-	name = "Weyland-Yutani SCP PMC (Gunner)"
+	name = "Weston-Yamada SCP PMC (Gunner)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "SCP PMC Specialist"
@@ -411,7 +411,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wy/pmc_sniper/scp
-	name = "Weyland-Yutani SCP PMC (Sniper)"
+	name = "Weston-Yamada SCP PMC (Sniper)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "SCP PMC Sniper"

@@ -98,7 +98,7 @@
 
 /obj/item/clothing/suit/armor/vest/security
 	name = "security armor"
-	desc = "An armored vest that protects against some damage. This one has a Weyland-Yutani corporate badge."
+	desc = "An armored vest that protects against some damage. This one has a Weston-Yamada corporate badge."
 	icon_state = "armorsec"
 	item_state = "armor"
 	slowdown = SLOWDOWN_ARMOR_MEDIUM //prevents powergaming marine by swapping armor.

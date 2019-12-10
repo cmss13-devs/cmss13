@@ -203,7 +203,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/combat
 	name = "\improper MK221 tactical shotgun"
-	desc = "The Weyland-Yutani MK221 Shotgun, a semi-automatic shotgun with a quick fire rate."
+	desc = "The Weston-Yamada MK221 Shotgun, a semi-automatic shotgun with a quick fire rate."
 	icon_state = "mk221"
 	item_state = "mk221"
 	

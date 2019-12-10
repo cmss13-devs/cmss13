@@ -557,7 +557,7 @@
 
 /obj/item/storage/backpack/commando
 	name = "commando bag"
-	desc = "A heavy-duty bag carried by Weyland Yutani commandos."
+	desc = "A heavy-duty bag carried by Weston-Yamada commandos."
 	icon_state = "commandopack"
 	worn_accessible = TRUE
 

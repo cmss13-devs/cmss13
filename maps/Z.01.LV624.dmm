@@ -8458,7 +8458,7 @@
 /obj/item/clothing/suit/redtag,
 /obj/structure/closet/athletic_mixed,
 /obj/structure/machinery/atm{
-	name = "Weyland Yutani Automatic Teller Machine";
+	name = "Weston-Yamada Automatic Teller Machine";
 	pixel_y = 30
 	},
 /obj/item/document_objective/folder,

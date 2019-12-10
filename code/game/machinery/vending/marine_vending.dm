@@ -418,7 +418,7 @@
 //MARINE MEDICAL VENDOR -APOPHIS775 31JAN2017
 /obj/structure/machinery/vending/MarineMed
 	name = "\improper MarineMed"
-	desc = "Marine Medical Drug Dispenser - Provided by Weyland-Yutani Pharmaceuticals Division(TM)"
+	desc = "Marine Medical Drug Dispenser - Provided by Weston-Yamada Pharmaceuticals Division(TM)"
 	icon_state = "marinemed"
 	icon_deny = "marinemed-deny"
 	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"

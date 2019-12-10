@@ -150,7 +150,7 @@
 
 
 /obj/structure/machinery/r_n_d/organic_analyzer
-	name = "Weyland Yutani Brand Organic Analyzer(TM)"
+	name = "Weston-Yamada Brand Organic Analyzer(TM)"
 	icon_state = "d_analyzer"
 	use_power = 1
 	idle_power_usage = 30
@@ -167,7 +167,7 @@
 
 
 /obj/structure/machinery/r_n_d/bioprinter
-	name = "Weyland Yutani Brand Bio-Organic Printer(TM)"
+	name = "Weston-Yamada Brand Bio-Organic Printer(TM)"
 	icon_state = "protolathe"
 	flags_atom = OPENCONTAINER
 	use_power = 1

@@ -478,7 +478,7 @@
 					sleep(40)
 					var/obj/item/paper/P = new /obj/item/paper( src.loc )
 					P.name = text("Scan: [], []",record.fields["name"],worldtime2text())
-					P.info += text("<center><img src = wylogo.png><HR><I><B>Official Company Document</B><BR>Scan Record</I><HR><H2>[]</H2>\n</center>",record.fields["name"])
+					P.info += text("<center><img src = wylogo.png><HR><I><B>Official Weston-Yamada Document</B><BR>Scan Record</I><HR><H2>[]</H2>\n</center>",record.fields["name"])
 					for(var/datum/data/record/R in data_core.medical)
 						if (R.fields["name"] ==  record.fields["name"])
 							if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
@@ -529,6 +529,6 @@
 
 /obj/structure/machinery/computer/med_data/laptop
 	name = "Medical Laptop"
-	desc = "Cheap Weyland Yutani Laptop."
+	desc = "Cheap Weston-Yamada Laptop."
 	icon_state = "medlaptop"
 	density = 0

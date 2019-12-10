@@ -28,7 +28,7 @@
 	for(var/mob/new_player/np in player_list)
 		np.new_player_panel_proc()
 	spawn(50)
-		marine_announcement("We've lost contact with the Weyland-Yutani's research facility, [name]. The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
+		marine_announcement("We've lost contact with the Weston-Yamada's research facility, [name]. The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
 
 /datum/game_mode/infection/can_start()
 	initialize_starting_survivor_list()

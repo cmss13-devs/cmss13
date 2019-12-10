@@ -3,7 +3,7 @@
 
 //Deathsquad Commandos
 /datum/emergency_call/death
-	name = "Weyland Deathsquad"
+	name = "Weston Deathsquad"
 	mob_max = 8
 	mob_min = 5
 	arrival_message = "Intercepted Transmission: '!`2*%slau#*jer t*h$em a!l%. le&*ve n(o^ w&*nes%6es.*v$e %#d ou^'"
@@ -33,25 +33,25 @@
 		leader = mob
 		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are the Deathsquad Leader!")))
 		to_chat(mob, "<B> You must clear out any traces of the infestation and its survivors.</b>")
-		to_chat(mob, "<B> Follow any orders directly from Weyland-Yutani!</b>")
-		arm_equipment(mob, "Weyland-Yutani Deathsquad Leader", TRUE, TRUE)
+		to_chat(mob, "<B> Follow any orders directly from Weston-Yamada!</b>")
+		arm_equipment(mob, "Weston-Yamada Deathsquad Leader", TRUE, TRUE)
 	else if(medics < max_medics)
 		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Deathsquad Medic!")))
 		to_chat(mob, "<B> You must clear out any traces of the infestation and its survivors.</b>")
-		to_chat(mob, "<B> Follow any orders directly from Weyland-Yutani!</b>")
-		arm_equipment(mob, "Weyland-Yutani Deathsquad Medic", TRUE, TRUE)
+		to_chat(mob, "<B> Follow any orders directly from Weston-Yamada!</b>")
+		arm_equipment(mob, "Weston-Yamada Deathsquad Medic", TRUE, TRUE)
 		medics++
 	else if(heavies < max_heavies)
 		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Deathsquad Terminator!")))
 		to_chat(mob, "<B> You must clear out any traces of the infestation and its survivors.</b>")
-		to_chat(mob, "<B> Follow any orders directly from Weyland-Yutani!</b>")
-		arm_equipment(mob, "Weyland-Yutani Deathsquad Terminator", TRUE, TRUE)
+		to_chat(mob, "<B> Follow any orders directly from Weston-Yamada!</b>")
+		arm_equipment(mob, "Weston-Yamada Deathsquad Terminator", TRUE, TRUE)
 		heavies++
 	else
 		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Deathsquad Commando!")))
 		to_chat(mob, "<B> You must clear out any traces of the infestation and its survivors.</b>")
-		to_chat(mob, "<B> Follow any orders directly from Weyland-Yutani!</b>")
-		arm_equipment(mob, "Weyland-Yutani Deathsquad", TRUE, TRUE)
+		to_chat(mob, "<B> Follow any orders directly from Weston-Yamada!</b>")
+		arm_equipment(mob, "Weston-Yamada Deathsquad", TRUE, TRUE)
 
 	sleep(10)
 	to_chat(M, "<B>Objectives:</b> [objectives]")

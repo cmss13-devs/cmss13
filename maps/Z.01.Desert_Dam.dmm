@@ -17800,7 +17800,7 @@
 /area/desert_dam/exterior/valley/valley_telecoms)
 "aUv" = (
 /obj/structure/machinery/atm{
-	name = "Weyland Yutani Automatic Teller Machine";
+	name = "Weston-Yamada Automatic Teller Machine";
 	pixel_y = 30
 	},
 /turf/open/floor/prison{
@@ -39881,7 +39881,7 @@
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "chk" = (
 /obj/structure/machinery/atm{
-	name = "Weyland Yutani Automatic Teller Machine";
+	name = "Weston-Yamada Automatic Teller Machine";
 	pixel_y = 30
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -53411,7 +53411,7 @@
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "cTP" = (
 /obj/structure/machinery/atm{
-	name = "Weyland Yutani Automatic Teller Machine";
+	name = "Weston-Yamada Automatic Teller Machine";
 	pixel_y = 30
 	},
 /turf/open/floor/prison{
@@ -59022,7 +59022,7 @@
 /area/desert_dam/building/dorms/hallway_northwing)
 "dxj" = (
 /obj/structure/machinery/atm{
-	name = "Weyland Yutani Automatic Teller Machine";
+	name = "Weston-Yamada Automatic Teller Machine";
 	pixel_y = 30
 	},
 /turf/open/floor/prison{
@@ -61477,7 +61477,7 @@
 /area/desert_dam/building/dorms/pool)
 "dIM" = (
 /obj/structure/machinery/atm{
-	name = "Weyland Yutani Automatic Teller Machine";
+	name = "Weston-Yamada Automatic Teller Machine";
 	pixel_y = 30
 	},
 /turf/open/floor/prison{

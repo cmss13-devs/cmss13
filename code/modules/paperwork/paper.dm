@@ -535,7 +535,7 @@
 								prob(15);pick(chemical_gen_classes_list["T4"]))
 		if(!random_chem)
 			random_chem = pick(chemical_gen_classes_list["T1"])
-		var/data = "<center><img src = wylogo.png><HR><I><B>Official Company Document</B><BR>Experiment Notes</I><HR><H2>"
+		var/data = "<center><img src = wylogo.png><HR><I><B>Official Weston-Yamada Document</B><BR>Experiment Notes</I><HR><H2>"
 		var/chem_name = chemical_gen_stats_list["[random_chem]"]["name"]
 		if(!note_type)
 			note_type = pick(prob(35);"synthesis",prob(65);"test")
@@ -557,13 +557,13 @@
 						var/U = chem_catalysts[I]
 						data += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
 				data += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
-				data += "<BR>\n<HR> - <I>The Company</I>"
+				data += "<BR>\n<HR> - <I>Weston-Yamada</I>"
 			if("test")
 				var/list/chem_properties = chemical_gen_stats_list["[random_chem]"]["properties"]
 				name = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
 				data += "Note for [name]</H2></center>"
 				data += "Subject <I>[rand(10000,99999)]</I> experienced [pick(chem_properties)] effects during testing of [chem_name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
-				data += "<BR>\n<HR> - <I>The Company</I>"
+				data += "<BR>\n<HR> - <I>Weston-Yamada</I>"
 		info = data
 		
 /obj/item/paper/research_notes/bad

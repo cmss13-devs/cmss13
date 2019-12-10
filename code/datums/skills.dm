@@ -9,7 +9,9 @@
 /datum/skill/proc/set_skill(var/new_level, var/datum/mind/owner)
 	skill_level = new_level
 
-/datum/skill/proc/is_skilled(var/req_level)
+/datum/skill/proc/is_skilled(var/req_level, var/is_explicit = FALSE)
+	if(is_explicit)
+		return (skill_level == req_level)
 	return (skill_level >= req_level)
 
 // Lots of defines here. See #define/skills.dm
@@ -174,11 +176,11 @@
 	return S.set_skill(new_level, owner)
 
 // Checks if the skillset is AT LEAST skilled enough to pass a skillcheck for the given skill level
-/datum/skills/proc/is_skilled(var/skill, var/req_level)
+/datum/skills/proc/is_skilled(var/skill, var/req_level, var/is_explicit = FALSE)
 	var/datum/skill/S = get_skill(skill)
 	if(isnull(S))
 		return FALSE
-	return S.is_skilled(req_level)
+	return S.is_skilled(req_level, is_explicit)
 
 // Adjusts the full skillset to a new type of skillset. Pass the datum type path for the desired skillset
 /datum/skills/proc/set_skillset(var/skillset_type)

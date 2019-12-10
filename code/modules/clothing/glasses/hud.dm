@@ -5,12 +5,11 @@
 	
 	var/hud_type
 
-
 /obj/item/clothing/glasses/hud/equipped(mob/living/carbon/human/user, slot)
+	..()
 	if(slot == WEAR_EYES && active)
 		var/datum/mob_hud/H = huds[hud_type]
 		H.add_hud_to(user)
-	..()
 
 /obj/item/clothing/glasses/hud/dropped(mob/living/carbon/human/user)
 	if(istype(user) && active)
@@ -32,30 +31,16 @@
 				MH.remove_hud_from(user)
 				playsound(user, 'sound/handling/hud_off.ogg', 25, 1)
 
-
 /obj/item/clothing/glasses/hud/health
 	name = "\improper HealthMate HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status."
 	icon_state = "healthhud"
 	flags_armor_protection = 0
-	toggleable = 1
+	toggleable = TRUE
 	hud_type = MOB_HUD_MEDICAL_ADVANCED
 	actions_types = list(/datum/action/item_action/toggle)
-
-/obj/item/clothing/glasses/hud/health/attack_self(mob/living/user)
-	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-		..()
-	else
-		to_chat(user, SPAN_WARNING("You have no idea what any of the data means and power it off before it makes you nauseated."))
-		active = 0
-
-/obj/item/clothing/glasses/hud/health/equipped(mob/living/carbon/human/user, slot)
-	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-		..()
-	else
-		to_chat(user, SPAN_WARNING("You have no idea what any of the data means and power it off before it makes you nauseated."))
-		active = 0
-
+	req_skill = SKILL_MEDICAL
+	req_skill_level = SKILL_MEDICAL_MEDIC
 
 /obj/item/clothing/glasses/hud/sensor
 	name = "\improper SensorMate HUD"
@@ -63,29 +48,17 @@
 	icon_state = "sensorhud"
 	deactive_state = "sensorhud_d"
 	flags_armor_protection = 0
-	toggleable = 1
+	toggleable = TRUE
 	hud_type = MOB_HUD_MEDICAL_BASIC
 	actions_types = list(/datum/action/item_action/toggle)
-
-/obj/item/clothing/glasses/hud/sensor/attack_self(mob/living/user)
-	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
-		..()
-	else
-		to_chat(user, SPAN_WARNING("You have no idea what any of the data means and power it off before it makes you nauseated."))
-		active = 0
-
-/obj/item/clothing/glasses/hud/sensor/equipped(mob/living/carbon/human/user, slot)
-	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
-		..()
-	else
-		to_chat(user, SPAN_WARNING("You have no idea what any of the data means and power it off before it makes you nauseated."))
-		active = 0
+	req_skill = SKILL_MEDICAL
+	req_skill_level = SKILL_MEDICAL_CHEM
 
 /obj/item/clothing/glasses/hud/security
 	name = "\improper PatrolMate HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their ID status and security records."
 	icon_state = "securityhud"
-	toggleable = 1
+	toggleable = TRUE
 	flags_armor_protection = 0
 	hud_type = MOB_HUD_SECURITY_ADVANCED
 	actions_types = list(/datum/action/item_action/toggle)
@@ -98,5 +71,5 @@
 	item_state = "jensenshades"
 	vision_flags = SEE_MOBS
 	invisa_view = 2
-	toggleable = 0
+	toggleable = FALSE
 	actions_types = list()

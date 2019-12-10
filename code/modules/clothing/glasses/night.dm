@@ -10,7 +10,6 @@
 	darkness_view = 7
 	fullscreen_vision = /obj/screen/fullscreen/nvg
 
-
 /obj/item/clothing/glasses/night/M4RA
 	name = "\improper M4RA Battle sight"
 	desc = "A headset and night vision goggles system for the M4RA Battle Rifle. Allows highlighted imaging of surroundings. Click it to toggle."
@@ -19,10 +18,12 @@
 	deactive_state = "m56_goggles_0"
 	vision_flags = SEE_TURFS
 	darkness_view = 12
-	toggleable = 1
+	toggleable = TRUE
 	fullscreen_vision = null
 	actions_types = list(/datum/action/item_action/toggle)
-
+	req_skill = SKILL_SPEC_WEAPONS
+	req_skill_level = SKILL_SPEC_SCOUT
+	req_skill_explicit = TRUE
 
 /obj/item/clothing/glasses/night/m42_night_goggles
 	name = "\improper M42 scout sight"
@@ -32,17 +33,20 @@
 	deactive_state = "m56_goggles_0"
 	vision_flags = SEE_TURFS
 	darkness_view = 12
-	toggleable = 1
+	toggleable = TRUE
 	fullscreen_vision = null
 	actions_types = list(/datum/action/item_action/toggle)
-
+	req_skill = SKILL_SPEC_WEAPONS
+	req_skill_level = SKILL_SPEC_SNIPER
+	req_skill_explicit = TRUE
 
 /obj/item/clothing/glasses/night/m42_night_goggles/upp
 	name = "\improper Type 9 commando goggles"
 	desc = "A headset and night vision goggles system used by UPP forces. Allows highlighted imaging of surroundings. Click it to toggle."
 	icon_state = "upp_goggles"
 	deactive_state = "upp_goggles_0"
-
+	req_skill = null
+	req_skill_level = null
 
 /obj/item/clothing/glasses/night/m56_goggles
 	name = "\improper M56 head mounted sight"
@@ -51,10 +55,12 @@
 	icon_state = "m56_goggles"
 	deactive_state = "m56_goggles_0"
 	darkness_view = 5
-	toggleable = 1
+	toggleable = TRUE
 	actions_types = list(/datum/action/item_action/toggle)
 	vision_flags = SEE_TURFS
 	fullscreen_vision = null
+	req_skill = SKILL_SMARTGUN
+	req_skill_level = SKILL_SMART_USE
 
 /obj/item/clothing/glasses/night/m56_goggles/mob_can_equip(mob/user, slot)
 	if(slot == WEAR_EYES)
@@ -62,10 +68,8 @@
 			var/mob/living/carbon/human/H = user
 			if(!istype(H.back, /obj/item/smartgun_powerpack))
 				to_chat(user, "You must be wearing an M56 Powerpack on your back to wear these.")
-				return 0
+				return FALSE
 	return ..()
-
-
 
 /obj/item/clothing/glasses/night/yautja
 	name = "bio-mask nightvision"
@@ -76,7 +80,6 @@
 	flags_inventory = COVEREYES
 	flags_item = NODROP|DELONDROP
 	fullscreen_vision = null
-
 
 /obj/item/clothing/glasses/night/yautja/Dispose()
 	..()

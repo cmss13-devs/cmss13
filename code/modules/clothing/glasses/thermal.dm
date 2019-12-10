@@ -6,8 +6,7 @@
 	desc = "Thermals in the shape of glasses."
 	icon_state = "thermal"
 	item_state = "glasses"
-	
-	toggleable = 1
+	toggleable = TRUE
 	vision_flags = SEE_MOBS
 	invisa_view = 2
 	eye_protection = -1
@@ -26,7 +25,6 @@
 				M.disabilities &= ~NEARSIGHTED
 	..()
 
-
 /obj/item/clothing/glasses/thermal/syndi	//These are now a traitor item, concealed as mesons.	-Pete
 	name = "Optical Meson Scanner"
 	desc = "Used for seeing walls, floors, and stuff through anything."
@@ -39,7 +37,7 @@
 	desc = "A monocle thermal."
 	icon_state = "thermoncle"
 	flags_atom = null //doesn't protect eyes because it's a monocle, duh
-	toggleable = 0
+	toggleable = FALSE
 	flags_armor_protection = 0
 
 /obj/item/clothing/glasses/thermal/eyepatch
@@ -47,7 +45,7 @@
 	desc = "An eyepatch with built-in thermal optics"
 	icon_state = "eyepatch"
 	item_state = "eyepatch"
-	toggleable = 0
+	toggleable = FALSE
 	flags_armor_protection = 0
 
 /obj/item/clothing/glasses/thermal/jensen
@@ -55,8 +53,7 @@
 	desc = "A set of implantable lenses designed to augment your vision"
 	icon_state = "thermalimplants"
 	item_state = "syringe_kit"
-	toggleable = 0
-
+	toggleable = FALSE
 
 /obj/item/clothing/glasses/thermal/yautja
 	name = "bio-mask thermal"
@@ -68,8 +65,8 @@
 	invisa_view = 2
 	flags_inventory = COVEREYES
 	flags_item = NODROP|DELONDROP
-	toggleable = 0
+	toggleable = FALSE
 
-	Dispose()
-		..()
-		return GC_HINT_RECYCLE
+/obj/item/clothing/glasses/thermal/yautja/Dispose()
+	..()
+	return GC_HINT_RECYCLE

@@ -215,7 +215,6 @@ datum/objective/steal
 		"a hand teleporter" = /obj/item/device/hand_tele,
 		"an RCD" = /obj/item/device/rcd,
 		"a jetpack" = /obj/item/tank/jetpack,
-		"a captain's jumpsuit" = /obj/item/clothing/under/rank/captain,
 		"a functional AI" = /obj/item/device/aicard,
 		"a pair of magboots" = /obj/item/clothing/shoes/magboots,
 		"the station blueprints" = /obj/item/blueprints,
@@ -225,8 +224,6 @@ datum/objective/steal
 		"a research director's jumpsuit" = /obj/item/clothing/under/rank/research_director,
 		"a chief engineer's jumpsuit" = /obj/item/clothing/under/rank/chief_engineer,
 		"a chief medical officer's jumpsuit" = /obj/item/clothing/under/rank/chief_medical_officer,
-		"a head of security's jumpsuit" = /obj/item/clothing/under/rank/head_of_security,
-		"a head of personnel's jumpsuit" = /obj/item/clothing/under/rank/head_of_personnel,
 		"the hypospray" = /obj/item/reagent_container/hypospray,
 		"an ablative armor vest" = /obj/item/clothing/suit/armor/laserproof,
 	)

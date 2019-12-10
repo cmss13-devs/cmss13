@@ -115,13 +115,6 @@
 	item_state = "clown_hat"
 	vision_impair = 0
 
-/obj/item/clothing/mask/gas/sexyclown
-	name = "sexy-clown wig and mask"
-	desc = "A feminine clown mask for the dabbling crossdressers or female entertainers."
-	icon_state = "sexyclown"
-	item_state = "sexyclown"
-	vision_impair = 0
-
 /obj/item/clothing/mask/gas/mime
 	name = "mime mask"
 	desc = "The traditional mime's mask. It has an eerie facial posture."
@@ -137,30 +130,11 @@
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	vision_impair = 0
 
-/obj/item/clothing/mask/gas/sexymime
-	name = "sexy mime mask"
-	desc = "A traditional female mime's mask."
-	icon_state = "sexymime"
-	item_state = "sexymime"
-	vision_impair = 0
-
 /obj/item/clothing/mask/gas/death_commando
 	name = "Death Commando Mask"
 	icon_state = "death_commando_mask"
 	item_state = "death_commando_mask"
 	siemens_coefficient = 0.2
-
-/obj/item/clothing/mask/gas/cyborg
-	name = "cyborg visor"
-	desc = "Beep boop"
-	icon_state = "death"
-	vision_impair = 0
-
-/obj/item/clothing/mask/gas/owl_mask
-	name = "owl mask"
-	desc = "Twoooo!"
-	icon_state = "owl"
-	vision_impair = 0
 
 /obj/item/clothing/mask/gas/fake_mustache
 	name = "fake mustache"

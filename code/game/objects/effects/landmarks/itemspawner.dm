@@ -77,11 +77,6 @@
 	new /obj/item/clothing/head/plaguedoctorhat(src.loc)
 	qdel(src)
 
-/obj/effect/landmark/costume/nightowl/New()
-	new /obj/item/clothing/under/owl(src.loc)
-	new /obj/item/clothing/mask/gas/owl_mask(src.loc)
-	qdel(src)
-
 /obj/effect/landmark/costume/pirate/New()
 	new /obj/item/clothing/under/pirate(src.loc)
 	new /obj/item/clothing/suit/pirate(src.loc)
@@ -93,14 +88,4 @@
 /obj/effect/landmark/costume/commie/New()
 	new /obj/item/clothing/under/soviet(src.loc)
 	new /obj/item/clothing/head/ushanka(src.loc)
-	qdel(src)
-
-/obj/effect/landmark/costume/imperium_monk/New()
-	new /obj/item/clothing/suit/imperium_monk(src.loc)
-	if (prob(25))
-		new /obj/item/clothing/mask/gas/cyborg(src.loc)
-	qdel(src)
-
-/obj/effect/landmark/costume/holiday_priest/New()
-	new /obj/item/clothing/suit/holidaypriest(src.loc)
 	qdel(src)

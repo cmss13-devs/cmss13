@@ -177,7 +177,6 @@
 /datum/equipment_preset/proc/spawn_rebel_uniform(var/mob/living/carbon/human/H)
 	if(!istype(H)) return
 	var/uniformpath = pick(
-		/obj/item/clothing/under/colonist,
 		/obj/item/clothing/under/colonist/clf,
 		)
 	H.equip_to_slot_or_del(new uniformpath, WEAR_BODY)

@@ -119,37 +119,6 @@
 
 
 /*
- * Head of Security
- */
-/obj/item/clothing/under/rank/head_of_security
-	desc = "It's a jumpsuit worn by those few with the dedication to achieve the position of \"Head of Security\". It has additional armor to protect the wearer."
-	name = "head of security's jumpsuit"
-	icon_state = "hosred"
-	item_state = "r_suit"
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_NONE
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
-	siemens_coefficient = 0.8
-
-/obj/item/clothing/under/rank/head_of_security/corp
-	icon_state = "hos_corporate"
-	rollable_sleeves = FALSE
-
-//Jensen cosplay gear
-/obj/item/clothing/under/rank/head_of_security/jensen
-	desc = "You never asked for anything that stylish."
-	name = "head of security's jumpsuit"
-	icon_state = "jensen"
-	item_state = "jensen"
-	siemens_coefficient = 0.6
-	rollable_sleeves = FALSE
-
-/*
  * Navy uniforms
  */
 

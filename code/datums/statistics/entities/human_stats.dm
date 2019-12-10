@@ -12,20 +12,24 @@
 /datum/entity/player_stats/human/get_playtime(var/type)
 	if(!type)
 		return ..()
-	if(!job_stats_list["[type]"])
-		return 0
 	if(type == JOB_SQUAD_ROLES)
 		var/total_squad_time = 0
 		for(var/squad_type in JOB_SQUAD_ROLES_LIST)
 			var/datum/entity/player_stats/job/squad_stat = job_stats_list["[squad_type]"]
+			if(!squad_stat) // Have not played the squad role yet
+				continue
 			total_squad_time += squad_stat.get_playtime()
 		return total_squad_time
 	else if(type == JOB_COMMAND_ROLES)
 		var/total_command_time = 0
 		for(var/command_type in JOB_COMMAND_ROLES_LIST)
 			var/datum/entity/player_stats/job/command_stat = job_stats_list["[command_type]"]
+			if(!command_stat) // Have not played the command role yet
+				continue
 			total_command_time += command_stat.get_playtime()
 		return total_command_time
+	else if(!job_stats_list["[type]"]) // Have not played the role yet
+		return 0
 	var/datum/entity/player_stats/job/S = job_stats_list["[type]"]
 	return S.get_playtime()
 

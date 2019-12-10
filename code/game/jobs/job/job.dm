@@ -50,8 +50,9 @@
 /datum/job/proc/get_role_requirements(var/datum/entity/player_entity/selected_entity)
 	var/list/return_requirements = list()
 	for(var/prereq in minimum_playtimes)
-		if(selected_entity.get_playtime(STATISTIC_HUMAN, prereq) < minimum_playtimes[prereq])
-			return_requirements[prereq] = minimum_playtimes[prereq] - selected_entity.get_playtime(STATISTIC_HUMAN, prereq)
+		var/playtime = selected_entity.get_playtime(STATISTIC_HUMAN, prereq)
+		if(playtime < minimum_playtimes[prereq])
+			return_requirements[prereq] = minimum_playtimes[prereq] - playtime
 	return return_requirements
 
 /datum/job/proc/get_access()

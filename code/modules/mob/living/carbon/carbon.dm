@@ -426,3 +426,22 @@
 		C.visible_message(SPAN_DANGER("[C] has successfully extinguished the fire on [src]!"), \
 		SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
 		ExtinguishMob()
+
+/mob/living/carbon/resist_buckle()
+	if(istype(buckled, /obj/structure/bed/nest))
+		buckled.manual_unbuckle(src)
+		return
+		
+	if(handcuffed)
+		next_move = world.time + 100
+		last_special = world.time + 100
+		visible_message(SPAN_DANGER("<B>[src] attempts to unbuckle themself!</B>"),\
+		SPAN_DANGER("You attempt to unbuckle yourself. (This will take around 2 minutes and you need to stand still)"))
+		if(do_after(src, 1200, INTERRUPT_ALL^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
+			if(!buckled)
+				return
+			visible_message(SPAN_DANGER("<B>[src] manages to unbuckle themself!</B>"),\
+						SPAN_NOTICE("You successfully unbuckle yourself."))
+			buckled.manual_unbuckle(src)
+	else
+		buckled.manual_unbuckle(src)

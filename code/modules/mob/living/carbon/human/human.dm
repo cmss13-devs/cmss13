@@ -1367,3 +1367,123 @@
 /mob/living/carbon/human/yiren/New()
 	..()
 	set_species("Yiren")
+
+
+/mob/living/carbon/human/resist_fire()
+	if(isYautja(src))
+		fire_stacks = max(fire_stacks - rand(6,10), 0)
+		KnockDown(1, TRUE) // actually 0.5
+		spin(10, 2)
+		visible_message(SPAN_DANGER("[src] expertly rolls on the floor, greatly reducing the amount of flames!"), \
+			SPAN_NOTICE("You expertly roll to extinguish the flames!"), null, 5)
+	else
+		fire_stacks = max(fire_stacks - rand(3,6), 0)
+		KnockDown(4, TRUE)
+		spin(40, 2)
+		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
+			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
+
+	if(fire_stacks > 0 && !istype(get_turf(src), /turf/open/gm/river))
+		return
+	
+	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"), \
+			SPAN_NOTICE("You extinguish yourself."), null, 5)
+	ExtinguishMob()
+	return
+
+/mob/living/carbon/human/resist_acid()
+	var/sleep_amount = 1
+	if(isYautja(src))
+		KnockDown(1, TRUE)
+		spin(10, 2)
+		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"), \
+			SPAN_NOTICE("You expertly roll to get rid of the acid!"), null, 5)
+	else
+		sleep_amount = 4
+		KnockDown(4, TRUE)
+		spin(40, 2)
+		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"), \
+			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
+
+	sleep(sleep_amount)
+
+	if(!prob(50) && !istype(get_turf(src), /turf/open/gm/river))
+		return
+
+	visible_message(SPAN_DANGER("[src] has successfully removed the acid!"), \
+			SPAN_NOTICE("You get rid of the acid."), null, 5)
+	extinguish_acid()
+	return
+
+/mob/living/carbon/human/resist_restraints()
+	var/restraint
+	var/breakouttime
+	if(handcuffed)
+		restraint = handcuffed
+		breakouttime = handcuffed.breakouttime
+	else if(legcuffed)
+		restraint = legcuffed
+		breakouttime = legcuffed.breakouttime
+	else
+		return
+
+	next_move = world.time + 100
+	last_special = world.time + 10
+	var/can_break_cuffs
+	if(iszombie(src))
+		visible_message(SPAN_DANGER("[src] is attempting to break out of [restraint]..."), \
+		SPAN_NOTICE("You use your superior zombie strength to start breaking [restraint]..."))
+		if(!do_after(src, 100, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
+			return
+
+		if(!restraint || buckled)
+			return
+		visible_message(SPAN_DANGER("[src] tears [restraint] in half!"), \
+			SPAN_NOTICE("You tear [restraint] in half!"))
+		restraint = null
+		if(handcuffed)
+			qdel(handcuffed)
+			handcuffed = null
+			handcuff_update()
+		else
+			qdel(legcuffed)
+			legcuffed = null
+			handcuff_update()
+		return
+	if(species.can_shred(src))
+		can_break_cuffs = TRUE
+	if(can_break_cuffs) //Don't want to do a lot of logic gating here.
+		to_chat(usr, SPAN_DANGER("You attempt to break [restraint]. (This will take around 5 seconds and you need to stand still)"))
+		for(var/mob/O in viewers(src))
+			O.show_message(SPAN_DANGER("<B>[src] is trying to break [restraint]!</B>"), 1)
+		if(!do_after(src, 50, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
+			return
+
+		if(!restraint || buckled)
+			return
+		for(var/mob/O in viewers(src))
+			O.show_message(SPAN_DANGER("<B>[src] manages to break [restraint]!</B>"), 1)
+		to_chat(src, SPAN_WARNING("You successfully break [restraint]."))
+		say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
+		if(handcuffed)
+			qdel(handcuffed)
+			handcuffed = null
+			handcuff_update()
+		else
+			qdel(legcuffed)
+			legcuffed = null
+			handcuff_update()
+	else
+		var/displaytime = max(1, round(breakouttime / 600)) //Minutes
+		to_chat(src, SPAN_WARNING("You attempt to remove [restraint]. (This will take around [displaytime] minute(s) and you need to stand still)"))
+		for(var/mob/O in viewers(src))
+			O.show_message(SPAN_DANGER("<B>[usr] attempts to remove [restraint]!</B>"), 1)
+		if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
+			return
+
+		if(!restraint || buckled)
+			return // time leniency for lag which also might make this whole thing pointless but the server
+		for(var/mob/O in viewers(src))//                                         lags so hard that 40s isn't lenient enough - Quarxink
+			O.show_message(SPAN_DANGER("<B>[src] manages to remove [restraint]!</B>"), 1)
+		to_chat(src, SPAN_NOTICE(" You successfully remove [restraint]."))
+		drop_inv_item_on_ground(restraint)

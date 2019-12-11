@@ -769,3 +769,15 @@
 		if(A.name == action)
 			A.remove_action(src)
 
+/mob/living/carbon/Xenomorph/resist_fire()
+	fire_stacks = max(fire_stacks - rand(3, 6), 0)
+	KnockDown(4, TRUE)
+	visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
+		SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
+	if(fire_stacks > 0 && !istype(get_turf(src), /turf/open/gm/river))
+		return
+
+	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"), \
+		SPAN_NOTICE("You extinguish yourself."), null, 5)
+	ExtinguishMob()
+	return

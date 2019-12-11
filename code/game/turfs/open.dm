@@ -286,9 +286,6 @@
 			if(isXenoBoiler(C))
 				river_slowdown = -0.5
 
-		if(C.on_fire)
-			C.ExtinguishMob()
-
 		var/new_slowdown = C.next_move_slowdown + river_slowdown
 		C.set_next_move_slowdown(new_slowdown)
 

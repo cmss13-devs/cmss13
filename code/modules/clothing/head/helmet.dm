@@ -314,7 +314,7 @@
 	update_icon()
 
 /obj/item/clothing/head/helmet/marine/update_icon()
-	if(pockets.contents.len && (flags_marine_helmet & HELMET_GARB_OVERLAY))
+	if(pockets && pockets.contents.len && (flags_marine_helmet & HELMET_GARB_OVERLAY))
 		if(!helmet_overlays["band"])
 			var/image/I = image('icons/obj/items/clothing/cm_hats.dmi', src, "helmet_band")
 			helmet_overlays["band"] = I

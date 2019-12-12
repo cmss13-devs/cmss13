@@ -65,6 +65,66 @@
 		</td>
 	</tr>
 </table>
+			<h2 class="date">12 December 2019</h2>
+			<h3 class="author">Cakey updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Nightvision goggles now have skill requirements.</li>
+				<li class="rscadd">Added medal tracking to the statistics panel. Any medals you recieve will now be tracked under the medals tab, under the human tab.</li>
+				<li class="rscadd">Added niche statistics for medals given and received.</li>
+				<li class="rscadd">Role timelocks are here. Once enabled, new players will be unable to play as roles they do not meet the playtime requirements to. You will be able to view any unmet requirements for a role in the character creation menu. Additionally, Queen will be timelocked as well (Only for round-start, anyone can still evolve to queen after the round has started). Existing players with playtime in a role will have their roles unlocked without needing to meet any requirements.</li>
+				<li class="rscadd">Added the Senior Enlisted advisor, a mentor-only role dedicated to helping and teaching players about game mechanics, regulations, law, and potentially offering new roleplay opportunities for ship-side roles. SEAs have no combat skills, are ranked E8 GySGT (Gunnery Sergeant), and are old grouches!</li>
+				<li class="rscadd">SEA players with over 9 hours played will be granted the rank of E9 SGM (Sergeant Major)</li>
+				<li class="rscadd">Added minimum character ages to certain roles. If your character does not meet the age requirement for the role you are spawned in as, it will be changed to the minimum age.</li>
+				<li class="rscadd">PFC Marines with playtimes under 9 hours will now be given the rank of Private (PVT) to better help players identify those that may be new to the game. Try not to bully the newbies!</li>
+				<li class="rscadd">Humans will now show their rank next to their name on examine.</li>
+				<li class="maptweak">Added the Senior Enlisted Advisor office near Cryogenics.</li>
+			</ul>
+			<h3 class="author">Neth updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Stun and Knockdown recovery attempt now done when said Stun or Knockdown should end, instead of next life tick.</li>
+				<li class="tweak">Buckshot stun rebalanced from 0.1-2.0 second range to flat 0.9 seconds of stun</li>
+				<li class="tweak">Slug stun rebalanced from 0.1-3.2 second range to flat 1.1 seconds of stun</li>
+			</ul>
+			<h3 class="author">TheDonkified updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Most non-NanoUI interfaces have been converted to use an updated style sheet. Report on Gitlab any legacy interfaces (only interfaces expected to be used were updated). There might be more style sheets added, but for now only the new darkmode and legacy are supported.</li>
+				<li class="rscadd">Added search functionality to hive status</li>
+				<li class="rscadd">Added search functionality to the overwatch menu</li>
+				<li class="tweak">Restructured Character Prefs menu to be more reasonably sized with "Modern" UI</li>
+				<li class="tweak">The job prefs screen will now display priorities all together rather than forcing you to cycle</li>
+				<li class="bugfix">Closing TacMap windows for both sides should properly close them in most cases. Occasionally, you will need to close them multiple times.</li>
+				<li class="bugfix">Fixes being unable to demote ROs to CTs or promoting people to RO via identification computer [Patrick Bisson]</li>
+				<li class="bugfix">Can assign people to command roles via identification computer</li>
+				<li class="bugfix">Bioscans accurately count planetside mobs. [Terror4000rus]</li>
+				<li class="bugfix">Flames go through grilles now. [csd]</li>
+				<li class="bugfix">Any issues with extinguisher water not going through objects are resolved. [Terror4000rus]</li>
+				<li class="bugfix">Throw speed from explosions will be properly calculated now.</li>
+				<li class="rscadd">Added a preference for guns with auto-ejectors to cause you to unwield, put the empty magazine in your offhand, and switch to that offhand. [Sakuyoi]</li>
+				<li class="rscadd">Added a preference to disable auto-ejectors completely. There is a still a verb in the 'Weapon' tab for disabling it for individual guns. [slowest]</li>
+				<li class="rscadd">Added a preference for the 'Unload Magazine' verb and 'Eject magazine' HUD button to cause you to unwield, put the empty magazine in your offhand, and switch to that offhand.</li>
+				<li class="tweak">Instead of individual verbs for toggleable prefs (bar the xeno prefs), they have been replaced with an all-encompassing 'Toggle Preferences' verb in the preferences tab that opens up a window and shiny buttons to press.</li>
+				<li class="tweak">CE has max-level powerloader skill. [forest2001, Destrok]</li>
+				<li class="tweak">The CO tablet and CIC communications computer have separate cooldowns for announcements. [Dauntausa]</li>
+				<li class="tweak">The CO tablet announcements gives a tiny message at the end stating they were made from a CO tablet. [CallMeArty]</li>
+				<li class="tweak">Buffed the Mod88. It has faster firing speed (not as fast as M4A3) and more damage. [Chekov Archer]</li>
+				<li class="tweak">The width of extinguisher spray is no longer RNG (clicking on a tile orthogonal to you will be guaranteed 3 tiles wide). RNG is now related to which side is the strongest.</li>
+			</ul>
+			<h3 class="author">TobiNerd updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="imageadd">Added bat and slug sprites by Emerald Blood.</li>
+				<li class="maptweak">Added a few bats to the northern caves on LV.</li>
+			</ul>
+			<h3 class="author">Vampmare updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Reorganized everything admin related.</li>
+				<li class="tweak">Adminhelp and Staffwho verbs were moved to OOC tab.</li>
+				<li class="tweak">Water no longer EXTINGUISHES FIRE when you ENTER it. You need to RESIST first.</li>
+				<li class="tweak">Resisting in water now instantly removes fire or acid.</li>
+				<li class="tweak">The Company is now known as Weston-Yamada.</li>
+				<li class="tweak">Big Red now uses the Trijent uniforms and associated armours.</li>
+				<li class="imageadd">Sniper ghillie suit now has a Trijent/Big Red variant.</li>
+			</ul>
+
 			<h2 class="date">06 December 2019</h2>
 			<h3 class="author">Cakey updated:</h3>
 			<ul class="changes bgimages16">
@@ -448,95 +508,6 @@
 				<li class="bugfix">Made sentry holders unbreakable - prevents turrets being destroyed pre-drop.</li>
 				<li class="tweak">Made checkpoint podlocks acidable.</li>
 				<li class="tweak">Increased the accuracy and burst-rate of static sentries slightly.</li>
-			</ul>
-
-			<h2 class="date">10 October 2019</h2>
-			<h3 class="author">Atebite updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="experiment">The explosions of the future are here! Yet another explosion system has been created, and this one is virtually lag-free</li>
-				<li class="experiment">A neat side-effect of the new system is that the blast wave now travels out from the epicenter in real time. This also means it is technically possible to outrun explosions. Don't look at it while you're running away, cool guy</li>
-				<li class="tweak">Claymore explosions are now directed. The explosion will only occur in a cone in front of the claymore</li>
-				<li class="bugfix">Window frames, chairs, racks, flora and more are now destroyed by explosions</li>
-				<li class="imageadd">New lobby art has been added. The development team would like to thank all the artists for these amazing drawings, and for allowing us to use them.</li>
-				<li class="imageadd">A beautiful portrayal of a slow and uneventful day at the FOB. Made by LightCrabPress</li>
-				<li class="imageadd">CLF soldiers trudging through the deep winter snow. Made by Redsting</li>
-				<li class="imageadd">A painting of PFC Checkers that somehow didn't make it in before now. Made by NicBoone</li>
-				<li class="rscadd">The author of the lobby art on display will now be credited in chat when you join</li>
-				<li class="tweak">The resolution of all lobby art has been increased from 480x480 to 1056x1056</li>
-			</ul>
-			<h3 class="author">Cakey updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="maptweak">The Gym has returned to the Almayer.</li>
-				<li class="maptweak">The Chapel has been moved to the upper deck.</li>
-				<li class="rscadd">Added the classic Weyland-Yutani playing card game, UNO, to the Marine arsenal.</li>
-				<li class="tweak">Renamed the Walkman vendor to the Rec-Vend. It now additionally vends playing cards.</li>
-			</ul>
-			<h3 class="author">Fourkhan updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Oppressor Prae's grenade no longer goes on permenant cooldown if the Prae moves during cast.</li>
-				<li class="bugfix">Oppressor Prae's grenade no longer goes on cooldown - at all - if it's cancelled during cast.</li>
-			</ul>
-			<h3 class="author">Jeser updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed Nuke being spawned anchored to ground.</li>
-				<li class="bugfix">Fixed Nuke being vulnerable to area depowering bug.</li>
-				<li class="bugfix">Fixed Nuke 8 minute timer taking 22 real minutes.</li>
-				<li class="tweak">M42A Scoped Rifle, M42C Anti-Tank Sniper Rifle and M4RA Battle Rifle now show amount of rounds left upon examining.</li>
-				<li class="tweak">M5 RPG now shows the type of rocket loaded into it.</li>
-				<li class="bugfix">M92 Grenade Launcher now starts full instead of missing one HEDP grenade.</li>
-			</ul>
-			<h3 class="author">RavingManiac updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Explosion damage to resin walls and resin doors increased dramatically</li>
-				<li class="tweak">Resin structures made easier to destroy with melee weapons</li>
-				<li class="tweak">Explosions ignore resistance on the centre tile. This prevents stuff like OBs on cavern walls being completely neutralized</li>
-				<li class="tweak">Open airlocks take half as much damage from explosions, up from taking no damage</li>
-				<li class="bugfix">Fixed some structures like chairs being indestructible to explosions</li>
-			</ul>
-			<h3 class="author">Retrokinesis updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="experiment">Shooting targets are now structures instead of items to avoid overlay-related crashes.</li>
-			</ul>
-			<h3 class="author">Slywater updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="experiment">Reworked Trijent Dam to remedy some major combat issues.</li>
-				<li class="tweak">Rebalanced LZ2's flanks and chokepoints.</li>
-				<li class="tweak">Made TComms more tank-friendly.</li>
-				<li class="tweak">Tightened up LZ1 chokepoints, and made LZ1 slightly more defensible.</li>
-				<li class="rscdel">Made Trijent 12% smaller, culled North labs and the Northern river course.</li>
-				<li class="tweak">Slightly decreased human water damage, greatly increased xeno water damage.</li>
-				<li class="tweak">Made all cave areas weedable.</li>
-				<li class="rscadd">Added static sentries to all checkpoints. The turrets will activate when power is restored, and can be manually retracted after activation by clicking the holder.</li>
-				<li class="tweak">Made northern crossing locations more marine-friendly.</li>
-				<li class="rscadd">Added transit shuttles. Shuttles can only be used after being linked. To link a shuttle, find its destination terminal and activate it. The terminal requires power to be activated.</li>
-				<li class="rscadd">Added a shuttle which travels from LZ1 hangar to Wilderness valley.</li>
-				<li class="rscadd">Added a shuttle which travels from LZ2 warehouse to Eastern medical wing.</li>
-			</ul>
-			<h3 class="author">TheDonkified updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Can't slash blastdoors/poddoors any more</li>
-			</ul>
-			<h3 class="author">Vampmare updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Funds has been allocated to the Sniper Spec. They will now receive a Ghillie suit and helmet in their kit.</li>
-				<li class="tweak">The PFC sniper kit, mini-engineer kit and veteran kit has had their cost reduced to 30 points.</li>
-				<li class="bugfix">MOOC is now shown to synthetics.</li>
-				<li class="bugfix">You can no longer strip off the base attachments of the SVD.</li>
-				<li class="bugfix">Xenos no longer have access to View-Objective-Clues. /:cl:</li>
-				<li class="experiment">Backend of bleeding and internal bleeding has been completely refactored. Report any bugs or other weird things as fast as possible on the gitlab.</li>
-				<li class="tweak">This is nothing new, but Cryocells still slowly heal IB and in the worst cases after two minutes completely heal it.</li>
-				<li class="tweak">Autoinjectors have been changed. They now have 3 uses each and will inject exactly half the amount of the overdose limit. They have gotten a new sprite to reflect this new mechanic. Injectors that didnt fit into the new system has been removed.</li>
-				<li class="tweak">The skill required to open/use pill bottles have been upped a level. So only Squad Medics and up can do it now.</li>
-				<li class="tweak">Pill bottles have become slightly more expensive in the Squad Medic vendor to compete with autoinjectors.</li>
-				<li class="tweak">First Responder medical kit has been changed. It will now contain autoinjectors and less medical supplies. A special injector is supplied to mini-medics, but be careful when using it, its very easy to overdose. They gain a special MedHUD called Sensor HUD. This should move it more to self-reliance than replacing Squad Medics.</li>
-				<li class="imageadd">M56 Goggles now have their own sprite to differ them from UPP goggles.</li>
-				<li class="imageadd">Injector pouch has a new sprite and now has room for 7 injectors.</li>
-				<li class="imageadd">Some pouches may have gotten edgier, this is to create more consistency between pouches.</li>
-				<li class="tweak">Old neuro is now applied on INFECTED humans. So if you're infected, you'll get short knockdowns every time you're hit by neuro.</li>
-				<li class="tweak">You can now RESIST out of acid.</li>
-				<li class="tweak">The duration of acid has been doubled. The damage over the entire duration is unchanged.</li>
-				<li class="tweak">Tank Crewman pop scaling is now set to 120 marines required.</li>
-				<li class="tweak">Synthetics now unlock an extra slot above 140 marines.</li>
 			</ul>
 </div>
 </body>

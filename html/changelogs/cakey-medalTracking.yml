@@ -1,7 +1,0 @@
-author: Cakey
-
-delete-after: True
-
-changes: 
-  - rscadd: "Added medal tracking to the statistics panel. Any medals you recieve will now be tracked under the medals tab, under the human tab."
-  - rscadd: "Added niche statistics for medals given and received."

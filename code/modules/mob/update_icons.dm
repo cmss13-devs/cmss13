@@ -69,6 +69,3 @@
 
 /mob/proc/update_burst()
 	return
-
-/mob/proc/update_hud()
-	return

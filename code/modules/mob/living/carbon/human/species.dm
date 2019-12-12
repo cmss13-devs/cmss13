@@ -8,7 +8,6 @@
 
 	var/icobase = 'icons/mob/humans/species/r_human.dmi'    // Normal icon set.
 	var/deform = 'icons/mob/humans/species/r_def_human.dmi' // Mutated icon set.
-	var/prone_icon                                       // If set, draws this from icobase when mob is prone.
 	var/eyes = "eyes_s"                                  // Icon for eyes.
 	var/uses_ethnicity = FALSE						 //Set to TRUE to load proper ethnicities and what have you
 
@@ -460,15 +459,15 @@
 	name = "Early Synthetic"
 	name_plural = "Early Synthetics"
 	uses_ethnicity = FALSE
-	
+
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
 	deform = 'icons/mob/humans/species/r_synthetic.dmi'
-	
+
 	rarity_value = 1.5
 	slowdown = 1.3 //Slower than later synths
 	total_health = 200 //But more durable
 	insulated = 1
-	
+
 	hair_color = "#000000"
 
 	knock_down_reduction = 2
@@ -922,7 +921,7 @@
 
 	if(!user.species.melee_allowed)
 		to_chat(user, SPAN_DANGER("You are currently unable to attack."))
-		return FALSE 
+		return FALSE
 
 	// Check if they have a functioning hand.
 	var/datum/limb/E = user.get_limb("l_hand")

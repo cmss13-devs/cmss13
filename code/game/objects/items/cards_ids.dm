@@ -77,6 +77,8 @@
 	var/list/uniform_sets = null
 	var/list/vended_items = list()
 
+	var/pinned_on_uniform = TRUE //whether the id's onmob overlay only appear when wearing a uniform
+
 
 /obj/item/card/id/New()
 	..()
@@ -294,6 +296,7 @@
 	desc = "A marine dog tag."
 	icon_state = "dogtag"
 	item_state = "dogtag"
+	pinned_on_uniform = FALSE
 	var/dogtag_taken = FALSE
 
 

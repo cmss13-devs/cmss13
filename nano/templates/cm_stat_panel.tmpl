@@ -33,6 +33,7 @@ Used in: /code/datums/statistics/entities/player_entity.dm
         {{if data.subMenu == 0}}
             {{:helper.link('Weapons', null, {'dataMenu' : 3}, data.dataMenu == 3 ? 'selected' : null)}}
             {{:helper.link('Roles', null, {'dataMenu' : 4}, data.dataMenu == 4 ? 'selected' : null)}}
+            {{:helper.link('Medals', null, {'dataMenu' : 5}, data.dataMenu == 5 ? 'selected' : null)}}
         {{else data.subMenu == 1}}
             {{:helper.link('Castes', null, {'dataMenu' : 3}, data.dataMenu == 3 ? 'selected' : null)}}
         {{/if}}
@@ -1003,6 +1004,24 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                     </div>
                                 </fieldset>
                             {{/if}}
+                        </fieldset>
+                    {{/props}}
+                {{else data.dataMenu == 5}}
+                    {{props data.human.medal_list :medal_value:medal_index}}
+                        <fieldset class="fieldContainerSpaced">
+                            <div class="itemLabelClearBoth">
+                                <b>{{:medal_value.medal_type}}</b>
+                            </div>
+                            <div class="itemLabelClearBoth">
+                                <b>{{:medal_value.recipient}}</b>
+                            </div>
+                            <div class="itemLabelClearBoth">
+                                {{:medal_value.recipient_job}}
+                            </div>
+							<hr>
+                            <div class="itemContent">
+                                {{:medal_value.citation}}
+                            </div>
                         </fieldset>
                     {{/props}}
                 {{/if}}

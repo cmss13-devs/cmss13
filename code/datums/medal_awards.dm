@@ -32,6 +32,8 @@ var/global/list/medal_awards = list()
 	var/citation = copytext(sanitize(input("What should the medal citation read?","Medal Citation", null) as text|null), 1, MAX_PAPER_MESSAGE_LEN)
 	if(!citation) return
 	for(var/mob/M in living_mob_list)
+		if(M == usr)
+			M.count_niche_stat(STATISTICS_NICHE_MEDALS_GIVE)
 		if(M.real_name == chosen_recipient)
 			posthumous = 0
 			break
@@ -42,6 +44,9 @@ var/global/list/medal_awards = list()
 	RA.medal_names += medal_type
 	RA.medal_citations += citation
 	RA.posthumous += posthumous
+
+	var/datum/entity/player_entity/P = setup_player_entity()
+	P.track_medal_earned(medal_type, chosen_recipient, recipient_rank, citation)
 
 	if(medal_location)
 		var/obj/item/clothing/accessory/medal/MD

@@ -102,6 +102,8 @@
 #define STATISTICS_DEATH_LIST_LEN 10
 
 #define STATISTICS_NICHE_EXECUTION                  "Executions Made"
+#define STATISTICS_NICHE_MEDALS                     "Medals Received"
+#define STATISTICS_NICHE_MEDALS_GIVE                "Medals Given"
 #define STATISTICS_NICHE_SHOCK                      "Times Shocked"
 #define STATISTICS_NICHE_GRENADES                   "Grenades Thrown"
 #define STATISTICS_NICHE_FLIGHT                     "Flights Piloted"

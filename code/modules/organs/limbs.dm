@@ -127,7 +127,7 @@
 		take_damage(damage, 0, 1, 1, used_weapon = "EMP")
 
 
-/datum/limb/proc/take_damage_organ_damage(brute, sharp)	
+/datum/limb/proc/take_damage_organ_damage(brute, sharp)
 	if(!owner)
 		return
 
@@ -330,11 +330,11 @@ This function completely restores a damaged organ to perfect condition.
 /datum/limb/proc/take_damage_internal_bleeding(damage)
 	if(!owner)
 		return
-	
+
 	var/armor = owner.getarmor_organ(src, ARMOR_INTERNALDAMAGE)
 	if(owner.mind && owner.mind.cm_skills)
 		armor += owner.mind.cm_skills.get_skill_level(SKILL_ENDURANCE)*5
-	
+
 	var/damage_ratio = armor_damage_reduction(config.marine_organ_damage, 2*damage/3, armor, 0, 0, 0, max_damage ? (100*(max_damage - brute_dam) / max_damage) : 100)
 	if(prob(damage_ratio) && damage > 10)
 		var/datum/wound/internal_bleeding/I = new (0)
@@ -343,7 +343,7 @@ This function completely restores a damaged organ to perfect condition.
 		owner.custom_pain("You feel something rip in your [display_name]!", 1)
 
 /datum/limb/proc/createwound(var/type = CUT, var/damage, var/impact_name)
-	if(!damage) 
+	if(!damage)
 		return
 
 	//moved this before the open_wound check so that having many small wounds for example doesn't somehow protect you from taking internal damage (because of the return)
@@ -394,7 +394,7 @@ This function completely restores a damaged organ to perfect condition.
 				other.merge_wound(W)
 				W = null // to signify that the wound was added
 				break
-		if(W) 
+		if(W)
 			wounds += W
 
 
@@ -427,7 +427,7 @@ This function completely restores a damaged organ to perfect condition.
 	if(external)
 		for(var/datum/effects/bleeding/external/B in bleeding_effects_list)
 			qdel(B)
-	
+
 	if(internal)
 		for(var/datum/effects/bleeding/internal/I in bleeding_effects_list)
 			qdel(I)
@@ -468,7 +468,7 @@ This function completely restores a damaged organ to perfect condition.
 			if(trace_chemicals[chemID] <= 0)
 				trace_chemicals.Remove(chemID)
 
-	//Bone fractures	
+	//Bone fractures
 	if(!(status & LIMB_BROKEN))
 		perma_injury = 0
 	if(knitting_time > 0)
@@ -642,7 +642,7 @@ This function completely restores a damaged organ to perfect condition.
 			hidden = null
 
 		// If any organs are attached to this, destroy them
-		for(var/datum/limb/O in children) 
+		for(var/datum/limb/O in children)
 			O.droplimb(amputation, delete_limb, cause)
 
 		//Replace all wounds on that arm with one wound on parent organ.
@@ -672,57 +672,57 @@ This function completely restores a damaged organ to perfect condition.
 				owner.drop_inv_item_on_ground(owner.wear_mask, null, TRUE)
 				owner.update_hair()
 			if(BODY_FLAG_ARM_RIGHT)
-				if(status & LIMB_ROBOT) 	
+				if(status & LIMB_ROBOT)
 					organ = new /obj/item/robot_parts/r_arm(owner.loc)
-				else 						
+				else
 					organ = new /obj/item/limb/arm/r_arm(owner.loc, owner)
 				if(owner.w_uniform && !amputation)
 					var/obj/item/clothing/under/U = owner.w_uniform
 					U.removed_parts |= body_part
 					owner.update_inv_w_uniform()
 			if(BODY_FLAG_ARM_LEFT)
-				if(status & LIMB_ROBOT) 	
+				if(status & LIMB_ROBOT)
 					organ = new /obj/item/robot_parts/l_arm(owner.loc)
-				else 						
+				else
 					organ = new /obj/item/limb/arm/l_arm(owner.loc, owner)
 				if(owner.w_uniform && !amputation)
 					var/obj/item/clothing/under/U = owner.w_uniform
 					U.removed_parts |= body_part
 					owner.update_inv_w_uniform()
 			if(BODY_FLAG_LEG_RIGHT)
-				if(status & LIMB_ROBOT) 	
+				if(status & LIMB_ROBOT)
 					organ = new /obj/item/robot_parts/r_leg(owner.loc)
-				else 						
+				else
 					organ = new /obj/item/limb/leg/r_leg(owner.loc, owner)
 				if(owner.w_uniform && !amputation)
 					var/obj/item/clothing/under/U = owner.w_uniform
 					U.removed_parts |= body_part
 					owner.update_inv_w_uniform()
 			if(BODY_FLAG_LEG_LEFT)
-				if(status & LIMB_ROBOT) 	
+				if(status & LIMB_ROBOT)
 					organ = new /obj/item/robot_parts/l_leg(owner.loc)
-				else 						
+				else
 					organ = new /obj/item/limb/leg/l_leg(owner.loc, owner)
 				if(owner.w_uniform && !amputation)
 					var/obj/item/clothing/under/U = owner.w_uniform
 					U.removed_parts |= body_part
 					owner.update_inv_w_uniform()
 			if(BODY_FLAG_HAND_RIGHT)
-				if(!(status & LIMB_ROBOT)) 
+				if(!(status & LIMB_ROBOT))
 					organ= new /obj/item/limb/hand/r_hand(owner.loc, owner)
 				owner.drop_inv_item_on_ground(owner.gloves, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.r_hand, null, TRUE)
 			if(BODY_FLAG_HAND_LEFT)
-				if(!(status & LIMB_ROBOT)) 
+				if(!(status & LIMB_ROBOT))
 					organ= new /obj/item/limb/hand/l_hand(owner.loc, owner)
 				owner.drop_inv_item_on_ground(owner.gloves, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.l_hand, null, TRUE)
 			if(BODY_FLAG_FOOT_RIGHT)
-				if(!(status & LIMB_ROBOT)) 
+				if(!(status & LIMB_ROBOT))
 					organ= new /obj/item/limb/foot/r_foot/(owner.loc, owner)
 				owner.drop_inv_item_on_ground(owner.shoes, null, TRUE)
 			if(BODY_FLAG_FOOT_LEFT)
-				if(!(status & LIMB_ROBOT)) 
+				if(!(status & LIMB_ROBOT))
 					organ = new /obj/item/limb/foot/l_foot(owner.loc, owner)
 				owner.drop_inv_item_on_ground(owner.shoes, null, TRUE)
 
@@ -740,6 +740,7 @@ This function completely restores a damaged organ to perfect condition.
 
 		owner.update_body(1, 1)
 		owner.UpdateDamageIcon(1)
+		owner.update_med_icon()
 
 		// OK so maybe your limb just flew off, but if it was attached to a pair of cuffs then hooray! Freedom!
 		release_restraints()
@@ -780,7 +781,7 @@ This function completely restores a damaged organ to perfect condition.
 		return TRUE
 	var/not_bandaged = FALSE
 	for (var/datum/wound/W in wounds)
-		if (W.internal) 
+		if (W.internal)
 			continue
 		not_bandaged |= !W.bandaged
 	return !not_bandaged
@@ -950,9 +951,9 @@ This function completely restores a damaged organ to perfect condition.
 		owner.visible_message(SPAN_DANGER("\The [W] sticks in the wound!"))
 	implants += W
 	start_processing()
-	
+
 	if(is_sharp(W) || istype(W, /obj/item/shard/shrapnel))
-		W.embedded_organ = src		
+		W.embedded_organ = src
 		owner.embedded_items += W
 		if(is_sharp(W)) // Only add the verb if its not a shrapnel
 			owner.verbs += /mob/proc/yank_out_object
@@ -976,6 +977,7 @@ This function completely restores a damaged organ to perfect condition.
 					SPAN_NOTICE("[user] finish applying [S] to [possessive_their] [display_name]."))
 				status |= LIMB_SPLINTED
 				. = 1
+				owner.update_med_icon()
 		else
 			user.visible_message(SPAN_WARNING("[user] fumbles with the [S]"), SPAN_WARNING("You fumble with the [S]..."))
 			if(do_after(user, 150, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))

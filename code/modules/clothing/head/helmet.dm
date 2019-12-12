@@ -284,7 +284,7 @@
 
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type,null,new_protection)
-	..()
+
 	helmet_overlays = list("damage","band","item") //To make things simple.
 	pockets = new/obj/item/storage/internal(src)
 	pockets.storage_slots = 2
@@ -294,6 +294,8 @@
 
 	camera = new /obj/structure/machinery/camera(src)
 	camera.network = list("Overwatch")
+
+	..()
 
 /obj/item/clothing/head/helmet/marine/attack_hand(mob/user)
 	if (pockets.handle_attack_hand(user))

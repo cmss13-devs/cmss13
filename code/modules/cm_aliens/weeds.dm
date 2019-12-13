@@ -23,8 +23,6 @@
 		weed_strength = node.weed_strength
 		node.add_child(src)
 
-	health = 1
-
 	update_icon()
 	update_neighbours()
 	if(node && node.loc && (get_dist(node, src) < node.node_range))
@@ -297,7 +295,6 @@
 		weed_strength = X.weed_level
 		if (weed_strength < 1)
 			weed_strength = 1
-		health = 15
 		node_range = node_range + weed_strength - 1//stronger weeds expand further!
 
 /obj/effect/alien/weeds/node/Dispose()

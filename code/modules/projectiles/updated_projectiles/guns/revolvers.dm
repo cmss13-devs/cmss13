@@ -4,7 +4,7 @@
 /obj/item/weapon/gun/revolver
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_MEDIUM
-	
+
 	matter = list("metal" = 2000)
 	fire_sound = 'sound/weapons/gun_44mag_v3.ogg'
 	reload_sound = 'sound/weapons/gun_44mag_speed_loader.wav'
@@ -38,7 +38,7 @@
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.min_recoil_value
 	recoil_unwielded = config.med_recoil_value
-
+	movement_acc_penalty_mult = 3
 
 /obj/item/weapon/gun/revolver/examine(mob/user)
 	..()
@@ -315,7 +315,7 @@
 	desc = "The Nagant-Yamasaki 7.62 is an effective killing machine designed by a consortion of shady Not-Americans. It is frequently found in the hands of criminals or mercenaries."
 	icon_state = "ny762"
 	item_state = "ny762"
-	
+
 	fire_sound = 'sound/weapons/gun_pistol_medium.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/revolver/upp
 	force = 8
@@ -386,7 +386,7 @@
 	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It uses heavy .454 rounds."
 	icon_state = "mateba"
 	item_state = "mateba"
-	
+
 	fire_sound = 'sound/weapons/gun_mateba.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba
 	force = 15

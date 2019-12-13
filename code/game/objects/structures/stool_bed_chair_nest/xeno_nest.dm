@@ -169,7 +169,9 @@
 	resisting_ready = 0
 	buckled_mob.pixel_y = 0
 	buckled_mob.old_y = 0
-	var/endurance_buff = buckled_mob.mind.cm_skills.get_skill_level(SKILL_ENDURANCE) * 0.05
+	var/endurance_buff = 0
+	if(user.mind && user.mind.cm_skills)
+		endurance_buff = buckled_mob.mind.cm_skills.get_skill_level(SKILL_ENDURANCE) * 0.05
 	buckled_mob.Stun(1.5 - endurance_buff) // 2 seconds + double effect from endurance
 	..()
 

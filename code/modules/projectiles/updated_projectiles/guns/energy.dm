@@ -13,7 +13,7 @@
 	item_state = "taser"
 	muzzle_flash = null //TO DO.
 	fire_sound = 'sound/weapons/Taser.ogg'
-	
+
 	matter = list("metal" = 2000)
 	ammo = /datum/ammo/energy/taser
 	movement_acc_penalty_mult = 1
@@ -35,6 +35,7 @@
 	scatter = config.med_scatter_value
 	scatter_unwielded = config.med_scatter_value
 	damage_mult = config.base_hit_damage_mult
+	movement_acc_penalty_mult = 0
 
 
 /obj/item/weapon/gun/energy/taser/update_icon()
@@ -79,7 +80,7 @@
 	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "plasmarifle"
 	item_state = "plasmarifle"
-	
+
 	unacidable = TRUE
 	fire_sound = 'sound/weapons/pred_plasma_shot.ogg'
 	ammo = /datum/ammo/energy/yautja/rifle/bolt
@@ -196,7 +197,7 @@
 	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "plasmapistol"
 	item_state = "plasmapistol"
-	
+
 	unacidable = TRUE
 	fire_sound = 'sound/weapons/pulse3.ogg'
 	flags_equip_slot = SLOT_WAIST

@@ -120,14 +120,6 @@ There are several things that need to be remembered:
 		overlays -= overlays_standing[cache_index]
 
 
-
-/mob/living/carbon/human/update_icons()
-	overlays.Cut()
-	icon = stand_icon
-	for(var/image/I in overlays_standing)
-		overlays += I
-
-
 /mob/living/carbon/human/update_transform()
 	if(lying == lying_prev)
 		return
@@ -214,7 +206,7 @@ var/global/list/damage_icon_parts = list()
 
 
 //BASE MOB SPRITE
-/mob/living/carbon/human/proc/update_body(var/update_icons = 1, var/force_cache_update = 0)
+/mob/living/carbon/human/proc/update_body(var/force_cache_update = 0)
 	var/g = get_gender_name(gender)
 	var/has_head = 0
 
@@ -482,8 +474,12 @@ var/global/list/damage_icon_parts = list()
 	update_inv_pockets()
 	update_fire()
 	update_burst()
+	update_hair()
+	update_body()
+	update_targeted()
+	update_med_icon()
 	UpdateDamageIcon()
-	update_icons()
+
 
 
 
@@ -897,7 +893,7 @@ var/global/list/damage_icon_parts = list()
 	switch(fire_stacks)
 		if(1 to 14)
 			I = image("icon"='icons/mob/humans/onmob/OnFire.dmi', "icon_state"="Standing_weak", "layer"= -FIRE_LAYER)
-		if(15 to 20)
+		if(15 to INFINITY)
 			I = image("icon"='icons/mob/humans/onmob/OnFire.dmi', "icon_state"="Standing_medium", "layer"= -FIRE_LAYER)
 		else
 			return

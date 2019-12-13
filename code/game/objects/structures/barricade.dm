@@ -723,9 +723,9 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	icon_state = "folding"
 	icon = 'icons/obj/items/marine-items.dmi'
 
-/obj/item/folding_barricade/attack_self(mob/user as mob)
-	for(var/obj/structure/barricade/B in loc)
-		if(B != src && B.dir == dir)
+/obj/item/folding_barricade/attack_self(mob/user)
+	for(var/obj/structure/barricade/B in user.loc)
+		if(B.dir == user.dir)
 			to_chat(user, SPAN_WARNING("There's already a barricade here."))
 			return
 	var/turf/open/OT = usr.loc
@@ -737,6 +737,12 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 	if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
+
+	for(var/obj/structure/barricade/B in user.loc)
+		if(B.dir == user.dir)
+			to_chat(user, SPAN_WARNING("There's already a barricade here."))
+			return
+
 	user.visible_message(SPAN_NOTICE("[user] has finished deploying [src]."),
 			SPAN_NOTICE("You finish deploying [src]."))
 	var/obj/structure/barricade/deployable/cade = new(user.loc)

@@ -106,7 +106,7 @@ Additional game mode variables.
 			sq.max_engineers = engi_slot_formula(marine_starting_num)
 			sq.max_medics = medic_slot_formula(marine_starting_num)
 
-	for(var/i in RoleAuthority.roles_by_name)	
+	for(var/i in RoleAuthority.roles_by_name)
 		var/datum/job/J = RoleAuthority.roles_by_name[i]
 		if(J.scaled)
 			J.set_spawn_positions(marine_starting_num)
@@ -252,7 +252,7 @@ Additional game mode variables.
 			to_chat(new_predator, SPAN_NOTICE("Hunt at your discretion, yet be observant rather than violent."))
 			to_chat(new_predator, SPAN_NOTICE("And above all, listen to your Elders!"))
 
-	new_predator.update_icons()
+	new_predator.regenerate_icons()
 	initialize_predator(new_predator)
 	new_predator.mind.set_cm_skills(/datum/skills/yautja/warrior)
 	return new_predator
@@ -286,7 +286,7 @@ Additional game mode variables.
 		if(new_queen)
 			setup_new_xeno(new_queen)
 			picked_queen = new_queen
-			possible_xenomorphs -= new_queen	
+			possible_xenomorphs -= new_queen
 
 
 	var/datum/mind/new_xeno
@@ -312,7 +312,7 @@ Additional game mode variables.
 			hive.stored_larva += round((xeno_starting_num - i))
 			hive.hive_ui.update_burrowed_larva()
 			break
-	
+
 
 	/*
 	Our list is empty. This can happen if we had someone ready as alien and predator, and predators are picked first.
@@ -463,7 +463,7 @@ Additional game mode variables.
 	original.stat = 1
 	transform_survivor(ghost_mind) //Create a new host
 	original.adjustBruteLoss(50) //Do some damage to the host
-	
+
 	var/obj/structure/bed/nest/start_nest = new /obj/structure/bed/nest(original.loc) //Create a new nest for the host
 	original.statistic_exempt = TRUE
 	original.buckled = start_nest

@@ -5,7 +5,7 @@
 	icon_state = "" //should return the honk-error sprite if there's no assigned icon.
 	reload_sound = 'sound/weapons/flipblade.ogg'
 	cocked_sound = 'sound/weapons/gun_pistol_cocked.ogg'
-	
+
 	matter = list("metal" = 2000)
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_MEDIUM
@@ -34,6 +34,11 @@
 
 /obj/item/weapon/gun/pistol/unique_action(mob/user)
 		cock(user)
+
+
+/obj/item/weapon/gun/pistol/set_gun_config_values()
+	..()
+	movement_acc_penalty_mult = 3
 
 //-------------------------------------------------------
 //M4A3 PISTOL
@@ -106,7 +111,7 @@
 	desc = "A timeless classic since the first World War. Once standard issue for the USCM, now back order only. Chambered in .45 ACP. Unfortunately, due to the progression of IFF technology, M1911 .45 ACP is NOT compatible with the SU-6."
 	icon_state = "m4a345"
 	item_state = "m4a3"
-	
+
 	fire_sound = 'sound/weapons/gun_glock.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/m1911
 
@@ -207,7 +212,7 @@
 	desc = "An updated variant of an old eastern design, dating back to from the 20th century. Commonly found among mercenary companies due to its reliability, but also issued to UPP armed forces. Features an integrated silencer, and chambered in the razor small .22 rounds. This one is usually loaded with the more common .22 hollowpoint rounds and appears to be a mercenary version.."
 	icon_state = "pk9"
 	item_state = "pk9"
-	
+
 	fire_sound = 'sound/weapons/gun_c99.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/c99
 	attachable_allowed = list(
@@ -296,7 +301,7 @@
 	desc = "A tiny pistol meant for hiding in hard-to-reach areas. Best not ask where it came from."
 	icon_state = "holdout"
 	item_state = "holdout"
-	
+
 	fire_sound = 'sound/weapons/gun_pistol_holdout.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/holdout
 	w_class = SIZE_TINY
@@ -362,7 +367,7 @@
 	desc = "A powerful sidearm issued mainly to Weston-Yamada response teams, but issued to the USCM in small numbers, based on the original VP70 more than a century ago. Fires 9mm armor shredding rounds and is capable of 3-round burst."
 	icon_state = "88m4"
 	item_state = "88m4"
-	
+
 	fire_sound = 'sound/weapons/gun_88m4_v7.ogg'
 	reload_sound = 'sound/weapons/gun_88m4_reload.ogg'
 	unload_sound = 'sound/weapons/gun_88m4_unload.ogg'
@@ -395,7 +400,7 @@
 	desc = "A massive, formidable automatic handgun chambered in 9mm squash-head rounds. Commonly seen in the hands of wealthy Weston-Yamada members."
 	icon_state = "vp78"
 	item_state = "vp78"
-	
+
 	fire_sound = 'sound/weapons/gun_vp78_v2.ogg'
 	reload_sound = 'sound/weapons/gun_vp78_reload.ogg'
 	unload_sound = 'sound/weapons/gun_vp78_unload.ogg'
@@ -444,7 +449,7 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	desc = "An advanced, select-fire machine pistol capable of three round burst. Last seen cleaning up the mean streets of Detroit."
 	icon_state = "auto9"
 	item_state = "auto9"
-	
+
 	fire_sound = 'sound/weapons/gun_pistol_large.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/auto9
 	force = 15
@@ -473,7 +478,7 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	desc = "A powerful sidearm issued mainly to highly trained elite assassin necro-cyber-agents."
 	icon_state = "c70"
 	item_state = "c70"
-	
+
 	current_mag = /obj/item/ammo_magazine/pistol/chimp
 	fire_sound = 'sound/weapons/gun_chimp70.ogg'
 	w_class = SIZE_MEDIUM

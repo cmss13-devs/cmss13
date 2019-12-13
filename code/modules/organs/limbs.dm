@@ -738,7 +738,7 @@ This function completely restores a damaged organ to perfect condition.
 				var/lol = pick(cardinal)
 				step(organ,lol)
 
-		owner.update_body(1, 1)
+		owner.update_body(1)
 		owner.UpdateDamageIcon(1)
 		owner.update_med_icon()
 

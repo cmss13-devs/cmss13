@@ -16,23 +16,14 @@
 	force = 15
 	throwforce = 12
 	w_class = SIZE_HUGE
-	var/obj/structure/bed/stool/origin = null
 
-/obj/item/stool/proc/deploy(var/mob/user)
+/obj/item/stool/proc/deploy_stool(mob/user)
+	new /obj/structure/bed/stool(get_turf(user))
+	user.temp_drop_inv_item(src)
+	user.visible_message(SPAN_NOTICE("[user] puts [src] down."), SPAN_NOTICE("You put [src] down."))
+	qdel(src)
 
-	if(!origin)
-		user.temp_drop_inv_item(src)
-		qdel(src)
-		return
-
-	if(user)
-		origin.loc = get_turf(user)
-		user.temp_drop_inv_item(src)
-		user.visible_message(SPAN_NOTICE("[user] puts [src] down."), SPAN_NOTICE("You put [src] down."))
-		qdel(src)
-
-/obj/item/stool/attack_self(mob/user as mob)
-	..()
-	deploy(user)
+/obj/item/stool/attack_self(mob/user)
+	deploy_stool(user)
 
 

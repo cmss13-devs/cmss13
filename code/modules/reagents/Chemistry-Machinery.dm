@@ -73,9 +73,9 @@
   * @return nothing
   */
 /obj/structure/machinery/chem_dispenser/ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null, var/force_open = 0)
-	if (stat & (BROKEN|NOPOWER)) 
+	if (stat & (BROKEN|NOPOWER))
 		return
-	if (user.stat || user.is_mob_restrained()) 
+	if (user.stat || user.is_mob_restrained())
 		return
 
 	// this is the data which will be sent to the ui
@@ -269,6 +269,20 @@
 			qdel(src)
 			return
 
+
+/obj/structure/machinery/chem_master/power_change()
+	..()
+	update_icon()
+
+/obj/structure/machinery/chem_master/update_icon()
+	if(stat & BROKEN)
+		icon_state = (beaker?"mixer1_b":"mixer0_b")
+	else if(stat & NOPOWER)
+		icon_state = (beaker?"mixer1_nopower":"mixer0_nopower")
+	else
+		icon_state = (beaker?"mixer1":"mixer0")
+
+
 /obj/structure/machinery/chem_master/attackby(obj/item/B, mob/living/user)
 
 	if(istype(B, /obj/item/reagent_container/glass))
@@ -280,7 +294,7 @@
 		user.drop_inv_item_to_loc(B, src)
 		to_chat(user, SPAN_NOTICE("You add the beaker to the machine!"))
 		updateUsrDialog()
-		icon_state = "mixer1"
+		update_icon()
 
 	else if(istype(B, /obj/item/storage/pill_bottle))
 
@@ -303,14 +317,14 @@
 				source.reagents.trans_id_to(dest, reagent_id, amount)
 
 /obj/structure/machinery/chem_master/Topic(href, href_list)
-	if(stat & (BROKEN|NOPOWER)) 
+	if(stat & (BROKEN|NOPOWER))
 		return
 	if(!ishuman(usr))
 		return
 	var/mob/living/carbon/human/user = usr
-	if(user.stat || user.is_mob_restrained()) 
+	if(user.stat || user.is_mob_restrained())
 		return
-	if(!in_range(src, user)) 
+	if(!in_range(src, user))
 		return
 
 	add_fingerprint(user)
@@ -379,7 +393,8 @@
 
 			beaker = null
 			reagents.clear_reagents()
-			icon_state = "mixer0"
+			update_icon()
+
 		else if (href_list["createpill"] || href_list["createpill_multiple"])
 			var/count = 1
 
@@ -426,7 +441,7 @@
 				var/name = reject_bad_text(input(user,"Name:","Name your bottle!", reagents.get_master_reagent_name()) as text|null)
 				if (!name)
 					return
-				
+
 				var/obj/item/reagent_container/glass/bottle/P = new/obj/item/reagent_container/glass/bottle()
 				P.name = "[name] bottle"
 				P.icon_state = "bottle-"+bottlesprite
@@ -437,7 +452,7 @@
 
 				if (!Adjacent(usr) || !usr.put_in_hands(P))
 					P.forceMove(loc)
-				
+
 			else
 				var/obj/item/reagent_container/food/condiment/P = new/obj/item/reagent_container/food/condiment()
 				reagents.trans_to(P, 50)
@@ -562,22 +577,13 @@
 	var/list/discovered_diseases = list()
 
 
-/obj/structure/machinery/computer/pandemic/set_broken()
-	icon_state = (beaker?"mixer1_b":"mixer0_b")
-	stat |= BROKEN
-
-
-/obj/structure/machinery/computer/pandemic/power_change()
-	..()
+/obj/structure/machinery/computer/pandemic/update_icon()
 	if(stat & BROKEN)
 		icon_state = (beaker?"mixer1_b":"mixer0_b")
-
-	else if(!(stat & NOPOWER))
-		icon_state = (beaker?"mixer1":"mixer0")
-
+	else if(stat & NOPOWER)
+		icon_state = (beaker?"mixer1_nopower":"mixer0_nopower")
 	else
-		spawn(rand(0, 15))
-			icon_state = (beaker?"mixer1_nopower":"mixer0_nopower")
+		icon_state = (beaker?"mixer1":"mixer0")
 
 
 /obj/structure/machinery/computer/pandemic/Topic(href, href_list)
@@ -659,7 +665,7 @@
 	else if (href_list["eject"])
 		beaker.forceMove(loc)
 		beaker = null
-		icon_state = "mixer0"
+		update_icon()
 		updateUsrDialog()
 		return
 	else if(href_list["clear"])
@@ -793,7 +799,7 @@
 		user.drop_inv_item_to_loc(I, src)
 		to_chat(user, SPAN_NOTICE("You add the beaker to the machine!"))
 		updateUsrDialog()
-		icon_state = "mixer1"
+		update_icon()
 
 	else
 		..()

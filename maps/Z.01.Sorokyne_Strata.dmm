@@ -3900,28 +3900,6 @@
 "akF" = (
 /turf/open/ice,
 /area/strata/ag/exterior/paths/north_outpost)
-"akG" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata,
-/obj/effect/blocker/sorokyne_cold_water,
-/turf/open/gm/river,
-/area/strata/ag/exterior/paths/north_outpost)
-"akH" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
-/obj/effect/blocker/sorokyne_cold_water,
-/turf/open/gm/river,
-/area/strata/ag/exterior/paths/north_outpost)
 "akI" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 5
@@ -4077,14 +4055,6 @@
 /area/strata/ag/exterior/paths/north_outpost)
 "ali" = (
 /turf/open/snow/layer2,
-/area/strata/ag/exterior/paths/north_outpost)
-"alj" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata,
-/obj/effect/blocker/sorokyne_cold_water,
-/turf/open/gm/river,
 /area/strata/ag/exterior/paths/north_outpost)
 "alk" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
@@ -4497,24 +4467,7 @@
 	},
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
-/area/strata/ag/exterior/paths/north_outpost)
-"amw" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/effect/blocker/sorokyne_cold_water,
-/turf/open/gm/river,
-/area/strata/ag/exterior/paths/north_outpost)
-"amx" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/effect/blocker/sorokyne_cold_water,
-/turf/open/gm/river,
-/area/strata/ag/exterior/paths/north_outpost)
+/area/strata/ag/exterior/marsh/water)
 "amy" = (
 /obj/effect/decal/strata_decals/rocks/ice/ice1{
 	dir = 10
@@ -4654,37 +4607,6 @@
 	icon_state = "cement3"
 	},
 /area/strata/ag/exterior/research_decks/north)
-"amR" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/effect/blocker/sorokyne_cold_water,
-/turf/open/gm/river,
-/area/strata/ag/exterior/paths/north_outpost)
-"amS" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform_decoration/strata,
-/obj/effect/blocker/sorokyne_cold_water,
-/turf/open/gm/river,
-/area/strata/ag/exterior/paths/north_outpost)
-"amT" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata,
-/obj/effect/blocker/sorokyne_cold_water,
-/turf/open/gm/river,
-/area/strata/ag/exterior/paths/north_outpost)
-"amU" = (
-/obj/structure/platform/strata,
-/obj/effect/blocker/sorokyne_cold_water,
-/turf/open/gm/river,
-/area/strata/ag/exterior/paths/north_outpost)
 "amV" = (
 /obj/structure/platform/strata,
 /obj/structure/platform_decoration/strata{
@@ -4692,7 +4614,7 @@
 	},
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
-/area/strata/ag/exterior/paths/north_outpost)
+/area/strata/ag/exterior/marsh/water)
 "amW" = (
 /turf/open/snow/layer3,
 /area/strata/ag/exterior/paths/north_outpost)
@@ -4977,15 +4899,7 @@
 	},
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
-/area/strata/ag/exterior/paths/north_outpost)
-"anN" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
-/obj/effect/blocker/sorokyne_cold_water,
-/turf/open/gm/river,
-/area/strata/ag/exterior/paths/north_outpost)
+/area/strata/ag/exterior/marsh/water)
 "anO" = (
 /obj/effect/decal/strata_decals/rocks/ice/ice1{
 	dir = 4
@@ -33076,7 +32990,7 @@
 	dir = 4;
 	icon_state = "floor3"
 	},
-/area/strata/ag/exterior/marsh/water)
+/area/strata/ag/exterior/research_decks/south)
 "bMj" = (
 /obj/structure/largecrate/random,
 /obj/structure/barricade/handrail/strata,
@@ -33084,7 +32998,7 @@
 	dir = 4;
 	icon_state = "floor3"
 	},
-/area/strata/ag/exterior/marsh/water)
+/area/strata/ag/exterior/research_decks/south)
 "bMk" = (
 /obj/structure/machinery/space_heater,
 /obj/structure/barricade/handrail/strata,
@@ -33092,7 +33006,7 @@
 	dir = 4;
 	icon_state = "floor3"
 	},
-/area/strata/ag/exterior/marsh/water)
+/area/strata/ag/exterior/research_decks/south)
 "bMl" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -38082,22 +37996,6 @@
 	},
 /turf/open/snow/layer2,
 /area/strata/ag/exterior/marsh/center)
-"cbX" = (
-/obj/structure/flora/grass/tallgrass/ice,
-/turf/open/ice,
-/area/strata/ag/exterior/marsh/water)
-"cbY" = (
-/obj/structure/flora/grass/tallgrass/ice/corner{
-	dir = 1
-	},
-/turf/open/ice,
-/area/strata/ag/exterior/marsh/water)
-"cbZ" = (
-/obj/structure/flora/grass/tallgrass/ice/corner{
-	dir = 9
-	},
-/turf/open/ice,
-/area/strata/ag/exterior/marsh/water)
 "cca" = (
 /turf/open/snow/layer3,
 /area/strata/ag/exterior/tcomms/tcomms_cave)
@@ -38348,12 +38246,6 @@
 	},
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
-/area/strata/ag/exterior/marsh/water)
-"ccQ" = (
-/obj/structure/flora/grass/tallgrass/ice/corner{
-	dir = 6
-	},
-/turf/open/ice,
 /area/strata/ag/exterior/marsh/water)
 "ccR" = (
 /turf/closed/wall/strata_outpost_bare,
@@ -38709,12 +38601,6 @@
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
-/area/strata/ag/exterior/marsh/water)
-"cdQ" = (
-/obj/structure/flora/grass/tallgrass/ice/corner{
-	dir = 4
-	},
-/turf/open/ice,
 /area/strata/ag/exterior/marsh/water)
 "cdR" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
@@ -40667,14 +40553,7 @@
 	},
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
-/area/strata/ag/exterior/marsh/river)
-"cjT" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/effect/blocker/sorokyne_cold_water,
-/turf/open/gm/river,
-/area/strata/ag/exterior/marsh/river)
+/area/strata/ag/exterior/marsh/water)
 "cjU" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/barricade/handrail/strata{
@@ -40790,11 +40669,7 @@
 	},
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
-/area/strata/ag/exterior/marsh/river)
-"cky" = (
-/obj/effect/blocker/sorokyne_cold_water,
-/turf/open/gm/river,
-/area/strata/ag/exterior/marsh/river)
+/area/strata/ag/exterior/marsh/water)
 "ckz" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/barricade/handrail/strata{
@@ -40831,12 +40706,7 @@
 	},
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
-/area/strata/ag/exterior/marsh/river)
-"ckD" = (
-/obj/structure/platform/strata,
-/obj/effect/blocker/sorokyne_cold_water,
-/turf/open/gm/river,
-/area/strata/ag/exterior/marsh/river)
+/area/strata/ag/exterior/marsh/water)
 "ckE" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/barricade/handrail/strata{
@@ -43750,9 +43620,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/nearlz1)
-"cuq" = (
-/turf/closed/wall/strata_ice,
-/area/strata/ag/interior/nearlz1)
 "cur" = (
 /obj/structure/bookcase,
 /obj/item/book/manual/atmospipes,
@@ -46210,7 +46077,7 @@
 	dir = 4;
 	icon_state = "floor3"
 	},
-/area/strata/ag/exterior/marsh/water)
+/area/strata/ag/exterior/research_decks/south)
 "kPC" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/strata{
@@ -47052,12 +46919,6 @@
 /obj/item/clothing/suit/storage/snow_suit/doctor,
 /turf/open/ice,
 /area/strata/ag/exterior/paths/southresearch)
-"oDv" = (
-/obj/effect/decal/strata_decals/rocks/ice/ice1{
-	dir = 10
-	},
-/turf/open/snow/layer1,
-/area/strata/ag/exterior)
 "oEC" = (
 /obj/structure/machinery/computer/shuttle_control/dropship2,
 /obj/structure/table/reinforced/prison,
@@ -47185,7 +47046,7 @@
 "pmO" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/ice,
-/area/strata/ag/exterior/marsh/water)
+/area/strata/ag/exterior/marsh/river)
 "ppQ" = (
 /obj/structure/machinery/weather_siren{
 	pixel_y = -8
@@ -47301,7 +47162,7 @@
 	dir = 6
 	},
 /turf/open/snow/layer2,
-/area/strata/ag/exterior)
+/area/strata/ag/exterior/north_lz_caves)
 "pZF" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
@@ -48580,7 +48441,7 @@
 	dir = 9
 	},
 /turf/open/snow/layer1,
-/area/strata/ag/exterior)
+/area/strata/ag/exterior/north_lz_caves)
 "xcd" = (
 /obj/structure/inflatable,
 /turf/open/floor/strata{
@@ -56348,8 +56209,8 @@ clX
 bDr
 cuc
 bEG
-cuq
-cjd
+aac
+aac
 cjS
 ckx
 ckC
@@ -56607,10 +56468,10 @@ ctZ
 cuc
 cui
 apo
-cjd
-cjT
-cky
-ckD
+aac
+acD
+acX
+adv
 clp
 clq
 clp
@@ -56865,7 +56726,7 @@ gXX
 cuc
 bEG
 bQr
-cjd
+aac
 cjU
 ckz
 ckE
@@ -57643,8 +57504,8 @@ aYG
 bae
 bad
 aTz
-oDv
-bDt
+vTm
+bcW
 bfI
 biT
 bcW
@@ -63107,8 +62968,8 @@ aac
 aac
 aac
 aac
-cbX
-cbZ
+bUL
+cdL
 bri
 bwg
 bsn
@@ -63365,7 +63226,7 @@ aac
 aac
 aac
 aac
-cbY
+bCc
 acC
 cdM
 bwg
@@ -63623,7 +63484,7 @@ brg
 bZX
 caF
 brh
-cbZ
+cdL
 acD
 cdN
 afW
@@ -64916,7 +64777,7 @@ bwg
 bAt
 bsr
 afr
-ccQ
+bRr
 bUM
 bUM
 aac
@@ -65172,9 +65033,9 @@ brg
 bsm
 bwg
 bAu
-ccQ
-cdQ
-cbX
+bRr
+bUM
+bUL
 aac
 aac
 aac
@@ -73607,8 +73468,8 @@ akx
 akF
 akx
 akF
-amR
-amT
+acC
+afW
 aoJ
 akC
 akx
@@ -73865,8 +73726,8 @@ akx
 akF
 akx
 akF
-amw
-amU
+acD
+adv
 apG
 akA
 akx
@@ -74122,9 +73983,9 @@ ajk
 akx
 akx
 akF
-amR
+acC
 anM
-anN
+afr
 apG
 akA
 akx
@@ -74380,8 +74241,8 @@ ajk
 akx
 akx
 akF
-amS
-anN
+bAt
+afr
 aoJ
 apH
 ale
@@ -74638,7 +74499,7 @@ ald
 akx
 akx
 akF
-akH
+bAu
 akF
 aoK
 apI
@@ -75669,7 +75530,7 @@ ajk
 akx
 akx
 akF
-akG
+bri
 amu
 ajO
 akC
@@ -75928,7 +75789,7 @@ akx
 akx
 akF
 amv
-amT
+afW
 amu
 aoL
 ali
@@ -76185,8 +76046,8 @@ akC
 akx
 akx
 akF
-amw
-amU
+acD
+adv
 akF
 ali
 ajk
@@ -76443,7 +76304,7 @@ akA
 akx
 akx
 akF
-amx
+acQ
 amV
 akF
 ali
@@ -76702,7 +76563,7 @@ akx
 akF
 akx
 akF
-akH
+bAu
 akF
 ajk
 akx
@@ -82889,7 +82750,7 @@ aii
 adN
 ado
 ajT
-akG
+bri
 akF
 akx
 ali
@@ -83147,7 +83008,7 @@ adN
 adN
 ado
 ajT
-akH
+bAu
 akF
 akx
 ajk
@@ -83406,7 +83267,7 @@ ado
 ado
 ajU
 akI
-akG
+bri
 akF
 ajk
 ajk
@@ -83664,7 +83525,7 @@ aiH
 ajq
 ajU
 ajT
-alj
+caE
 akF
 ajk
 amz
@@ -83922,7 +83783,7 @@ aiH
 aiH
 ajV
 ajT
-akH
+bAu
 akF
 akx
 ajk

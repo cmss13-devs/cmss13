@@ -2,34 +2,7 @@
 	name = "HUD"
 	desc = "A heads-up display that provides important info in (almost) real time."
 	flags_atom = null //doesn't protect eyes because it's a monocle, duh
-	
-	var/hud_type
 
-/obj/item/clothing/glasses/hud/equipped(mob/living/carbon/human/user, slot)
-	..()
-	if(slot == WEAR_EYES && active)
-		var/datum/mob_hud/H = huds[hud_type]
-		H.add_hud_to(user)
-
-/obj/item/clothing/glasses/hud/dropped(mob/living/carbon/human/user)
-	if(istype(user) && active)
-		if(src == user.glasses) //dropped is called before the inventory reference is updated.
-			var/datum/mob_hud/H = huds[hud_type]
-			H.remove_hud_from(user)
-	..()
-
-/obj/item/clothing/glasses/hud/attack_self(mob/user)
-	..()
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(toggleable && H.glasses == src) //toggleable and worn
-			var/datum/mob_hud/MH = huds[hud_type]
-			if(active)
-				MH.add_hud_to(user)
-				playsound(user, 'sound/handling/hud_on.ogg', 25, 1)
-			else
-				MH.remove_hud_from(user)
-				playsound(user, 'sound/handling/hud_off.ogg', 25, 1)
 
 /obj/item/clothing/glasses/hud/health
 	name = "\improper HealthMate HUD"

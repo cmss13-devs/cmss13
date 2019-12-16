@@ -12,20 +12,21 @@
 	var/secondary_skill //If there's a second skill we want a single pamphlet to increase.
 
 /obj/item/pamphlet/attack_self(mob/living/carbon/human/user)
-	if(user.mind.cm_skills)
-		if(user.has_used_pamphlet == TRUE)
-			to_chat(usr, SPAN_WARNING("You've already used a pamphlet!"))
-			return
-		if(skillcheck(user, "[skill_to_increment]", skill_increment) || (secondary_skill && skillcheck(user, "[secondary_skill]", skill_increment)))
-			to_chat(usr, SPAN_WARNING("You don't need this, you're already trained!"))
-			return
-		else
-			to_chat(usr, SPAN_NOTICE("You read over the pamphlet a few times, learning a new skill."))
-			user.mind.cm_skills.set_skill("[skill_to_increment]", skill_increment)
-			if(secondary_skill)
-				user.mind.cm_skills.set_skill("[secondary_skill]", skill_increment)
-			user.has_used_pamphlet = TRUE
-			qdel(src)
+	if(!user.mind || !user.mind.cm_skills || !istype(user))
+		return
+	if(user.has_used_pamphlet == TRUE)
+		to_chat(usr, SPAN_WARNING("You've already used a pamphlet!"))
+		return
+	if(skillcheck(user, skill_to_increment, skill_increment) || (secondary_skill && skillcheck(user, secondary_skill, skill_increment)))
+		to_chat(usr, SPAN_WARNING("You don't need this, you're already trained!"))
+		return
+	else
+		to_chat(usr, SPAN_NOTICE("You read over the pamphlet a few times, learning a new skill."))
+		user.mind.cm_skills.set_skill(skill_to_increment, skill_increment)
+		if(secondary_skill)
+			user.mind.cm_skills.set_skill(secondary_skill, skill_increment)
+		user.has_used_pamphlet = TRUE
+		qdel(src)
 
 /obj/item/pamphlet/medical
 	name = "medical instructional pamphlet"
@@ -37,5 +38,5 @@
 	name = "engineer instructional pamphlet"
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has an engineering insignia."
 	icon_state = "pamphlet_construction"
-	skill_to_increment = "construction"
+	skill_to_increment = SKILL_CONSTRUCTION
 	secondary_skill = SKILL_ENGINEER

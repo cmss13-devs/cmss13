@@ -29,7 +29,7 @@
 			var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
 			if(!heart)
 				b_volume = 0
-			else if(reagents.get_reagent_amount("peridaxon") >= 0.05)
+			else if(reagents.has_reagent("peridaxon"))
 				b_volume *= 1
 			else if(heart.damage > 1 && heart.damage < heart.min_bruised_damage)
 				b_volume *= 0.8
@@ -39,7 +39,7 @@
 				b_volume *= 0.3
 
 	//Effects of bloodloss
-		switch(blood_volume)
+		switch(b_volume)
 			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
 				if(prob(1))
 					var/word = pick("dizzy","woozy","faint")

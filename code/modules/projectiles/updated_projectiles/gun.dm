@@ -293,7 +293,7 @@
 
 	var/new_icon_state = base_gun_icon
 
-	if(has_empty_icon && !in_chamber && (!current_mag || current_mag.current_rounds <= 0))
+	if(has_empty_icon && (!current_mag || current_mag.current_rounds <= 0))
 		new_icon_state += "_e"
 
 	if(has_open_icon && (!current_mag || !current_mag.chamber_closed))
@@ -427,7 +427,7 @@ This sets all the initial datum's stuff. The bullet does the rest.
 User can be passed as null, (a gun reloading itself for instance), so we need to watch for that constantly.
 */
 /obj/item/weapon/gun/proc/reload(mob/user, obj/item/ammo_magazine/magazine) //override for guns who use more special mags.
-	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG)) 
+	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG))
 		return
 
 	if(!magazine || !istype(magazine))
@@ -484,7 +484,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 //Drop out the magazine. Keep the ammo type for next time so we don't need to replace it every time.
 //This can be passed with a null user, so we need to check for that as well.
 /obj/item/weapon/gun/proc/unload(mob/user, reload_override = 0, drop_override = 0, loc_override = 0) //Override for reloading mags after shooting, so it doesn't interrupt burst. Drop is for dropping the magazine on the ground.
-	if(!reload_override && (flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG))) 
+	if(!reload_override && (flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG)))
 		return
 
 	if(!current_mag || isnull(current_mag) || (current_mag.loc != src && !loc_override))
@@ -493,7 +493,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 
 	if(drop_override || !user) //If we want to drop it on the ground or there's no user.
 		current_mag.loc = get_turf(src) //Drop it on the ground.
-	else 
+	else
 		user.put_in_hands(current_mag)
 
 	playsound(user, unload_sound, 25, 1, 5)
@@ -501,15 +501,15 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	SPAN_NOTICE("You unload [current_mag] from [src]."), null, 4)
 	current_mag.update_icon()
 	current_mag = null
-	
+
 	update_icon()
 
 //Manually cock the gun
 //This only works on weapons NOT marked with UNUSUAL_DESIGN or INTERNAL_MAG
 /obj/item/weapon/gun/proc/cock(mob/user)
-	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG)) 
+	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG))
 		return
-	if(cock_cooldown > world.time) 
+	if(cock_cooldown > world.time)
 		return
 
 	cock_cooldown = world.time + cock_delay
@@ -626,7 +626,7 @@ and you're good to go.
 			if(current_mag.current_rounds <= 0 && flags_gun_features & GUN_AUTO_EJECTOR)
 				if (user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF)
 					update_icon()
-				else if (!(flags_gun_features & GUN_BURST_FIRING) || !in_chamber) // Magazine will only unload once burstfire is over 
+				else if (!(flags_gun_features & GUN_BURST_FIRING) || !in_chamber) // Magazine will only unload once burstfire is over
 					var/drop_to_ground = TRUE
 					if (user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
 						drop_to_ground = FALSE
@@ -705,7 +705,7 @@ and you're good to go.
 
 	var/bullets_fired
 	for(bullets_fired = 1 to bullets_to_fire)
-		if(loc != user) 
+		if(loc != user)
 			break //If you drop it while bursting, for example.
 
 		if (bullets_fired > 1 && !(flags_gun_features & GUN_BURST_FIRING)) // No longer burst firing somehow
@@ -788,11 +788,11 @@ and you're good to go.
 /obj/item/weapon/gun/attack(mob/living/M, mob/living/user, def_zone)
 	if(!(flags_gun_features & GUN_CAN_POINTBLANK)) // If it can't point blank, you can't suicide and such.
 		return ..()
-	
+
 	if(M == user && user.zone_selected == "mouth")
 		if(!able_to_fire(user))
 			return
-		
+
 		flags_gun_features ^= GUN_CAN_POINTBLANK //If they try to click again, they're going to hit themselves.
 		M.visible_message(SPAN_WARNING("[user] sticks their gun in their mouth, ready to pull the trigger."))
 
@@ -800,7 +800,7 @@ and you're good to go.
 			M.visible_message(SPAN_NOTICE("[user] decided life was worth living."))
 			flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
 			return
-		
+
 		if(active_attachable && !(active_attachable.flags_attach_features & ATTACH_PROJECTILE))
 			active_attachable.activate_attachment(src, null, TRUE)//We're not firing off a nade into our mouth.
 		var/obj/item/projectile/projectile_to_fire = load_into_chamber(user)
@@ -836,15 +836,15 @@ and you're good to go.
 			last_fired = world.time
 
 			projectile_to_fire.play_damage_effect(user)
-			if(!delete_bullet(projectile_to_fire)) 
+			if(!delete_bullet(projectile_to_fire))
 				qdel(projectile_to_fire) //If this proc DIDN'T delete the bullet, we're going to do so here.
 
 			reload_into_chamber(user) //Reload the sucker.
-		else 
+		else
 			click_empty(user)//If there's no projectile, we can't do much.
-		
+
 		flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
-		return	
+		return
 	else if(user.a_intent != "hurt") // Not in harm intent, so won't point blank. Will whack them instead.
 		return ..()
 

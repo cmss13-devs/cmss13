@@ -211,7 +211,7 @@
 		if(order == "help")
 			to_chat(src, SPAN_NOTICE("<br>Orders give a buff to nearby soldiers for a short period of time, followed by a cooldown, as follows:<br><B>Move</B> - Increased mobility and chance to dodge projectiles.<br><B>Hold</B> - Increased resistance to pain and combat wounds.<br><B>Focus</B> - Increased gun accuracy and effective range.<br>"))
 			return
-		if(order == "cancel") 
+		if(order == "cancel")
 			return
 
 		if(!command_aura_available)
@@ -222,10 +222,14 @@
 	var/command_aura_strength = mind.cm_skills.get_skill_level(SKILL_LEADERSHIP) - SKILL_LEAD_BEGINNER
 	var/command_aura_duration = mind.cm_skills.get_skill_level(SKILL_LEADERSHIP) * 100
 
-	for(var/mob/living/carbon/human/H in range(COMMAND_ORDER_RANGE, src))
+	var/turf/T = get_turf(src)
+	for(var/mob/living/carbon/human/H in range(COMMAND_ORDER_RANGE, T))
 		if(H.stat == DEAD)
 			continue
 		H.activate_order_buff(order, command_aura_strength, command_aura_duration)
+
+	if(loc != T) //if we were inside something, the range() missed us.
+		activate_order_buff(order, command_aura_strength, command_aura_duration)
 
 	for(var/datum/action/A in actions)
 		A.update_button_icon()
@@ -285,7 +289,7 @@
 		if(COMMAND_ORDER_MOVE)
 			if(mobility_aura_count > 1)
 				mobility_aura_count--
-			else 
+			else
 				mobility_aura_count = 0
 				mobility_aura = 0
 		if(COMMAND_ORDER_HOLD)
@@ -314,7 +318,7 @@
 	var/hud_choice = input("Choose a HUD to toggle", "Toggle HUD", null) as null|anything in list("Medical HUD", "Security HUD")
 	if(usr.is_mob_incapacitated())
 		return
-		
+
 	var/datum/mob_hud/H
 	var/chosen_HUD = 1
 	switch(hud_choice)

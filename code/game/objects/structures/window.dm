@@ -177,7 +177,7 @@
 
 		if(windowknock_cooldown > world.time)
 			return
-			
+
 		playsound(loc, 'sound/effects/glassknock.ogg', 25, 1)
 		user.visible_message(SPAN_WARNING("[user] bangs against [src]!"),
 		SPAN_WARNING("You bang against [src]!"),
@@ -671,7 +671,7 @@
 	name = "window"
 	icon_state = "prison_window0"
 	basestate = "prison_window"
-	window_frame = /obj/structure/window_frame/prison/reinforced
+	window_frame = /obj/structure/window_frame/prison
 
 /obj/structure/window/framed/prison/reinforced
 	name = "reinforced window"

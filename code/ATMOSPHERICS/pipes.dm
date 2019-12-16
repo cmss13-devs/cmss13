@@ -66,9 +66,6 @@
 
 /obj/structure/machinery/atmospherics/pipe/Dispose()
 	if(!disposed) //not already qdel'd
-		if(contents.len)
-			for(var/atom/movable/A in contents)
-				A.forceMove(loc)
 		if(parent)
 			qdel(parent)
 		for(var/obj/structure/machinery/atmospherics/pipe/node in pipeline_expansion())

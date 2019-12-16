@@ -125,7 +125,7 @@
 /datum/internal_organ/lungs/process()
 	..()
 
-	if(is_bruised() && !owner.reagents.get_reagent_amount("peridaxon") >= 0.05)
+	if(is_bruised() && !owner.reagents.has_reagent("peridaxon"))
 		if(prob(2))
 			spawn owner.emote("me", 1, "coughs up blood!")
 			owner.drip(10)
@@ -173,7 +173,7 @@
 
 		// Get the effectiveness of the liver.
 		var/filter_effect = 3
-		if(!owner.reagents.get_reagent_amount("peridaxon") >= 0.05)
+		if(!owner.reagents.has_reagent("peridaxon"))
 			if(is_bruised())
 				filter_effect -= 1
 			if(is_broken())
@@ -194,7 +194,7 @@
 			owner.adjustToxLoss(-0.5)
 
 		//Deal toxin damage if damaged
-		if(!owner.reagents.get_reagent_amount("peridaxon") >= 0.05)
+		if(!owner.reagents.has_reagent("peridaxon"))
 			if(is_bruised() && prob(25))
 				owner.adjustToxLoss(0.1 * (damage/2))
 			else if(is_broken() && prob(50))
@@ -213,7 +213,7 @@
 /datum/internal_organ/kidneys/process()
 	..()
 	//Deal toxin damage if damaged
-	if(!owner.reagents.get_reagent_amount("peridaxon") >= 0.05)
+	if(!owner.reagents.has_reagent("peridaxon"))
 		if(is_bruised() && prob(25))
 			owner.adjustToxLoss(0.1 * (damage/3))
 		else if(is_broken() && prob(50))
@@ -248,7 +248,7 @@
 
 /datum/internal_organ/eyes/process() //Eye damage replaces the old eye_stat var.
 	..()
-	if(!owner.reagents.get_reagent_amount("peridaxon") >= 0.05)
+	if(!owner.reagents.has_reagent("peridaxon"))
 		if(is_bruised())
 			owner.eye_blurry = 20
 		if(is_broken())

@@ -317,7 +317,7 @@
 		if(WEAR_BODY)
 			w_uniform = W
 			W.equipped(src, slot)
-			sec_hud_set_ID()
+			update_suit_sensors()
 			update_inv_w_uniform()
 		if(WEAR_L_STORE)
 			l_store = W

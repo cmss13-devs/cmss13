@@ -407,11 +407,11 @@ Buildable meters
 
 	for(var/obj/structure/machinery/atmospherics/M in src.loc)
 		if((M.initialize_directions & pipe_dir) && M.check_connect_types_construction(M,src))	// matches at least one direction on either type of pipe & same connection type
-			to_chat(user, SPAN_DANGER("There is already a pipe of the same type at this location."))
+			to_chat(user, SPAN_WARNING("There is already a pipe of the same type at this location."))
 			return 1
 	// no conflicts found
 
-	var/pipefailtext = SPAN_DANGER("There's nothing to connect this pipe section to!") //(with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)"
+	var/pipefailtext = SPAN_WARNING("There's nothing to connect this pipe section to!") //(with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)"
 
 	//TODO: Move all of this stuff into the various pipe constructors.
 	switch(pipe_type)
@@ -422,7 +422,7 @@ Buildable meters
 			P.initialize_directions = pipe_dir
 			P.level = pipelevel
 			P.initialize()
-			if (!P)
+			if(!P || P.disposed)
 				to_chat(usr, pipefailtext)
 				return 1
 			P.build_network()
@@ -440,7 +440,7 @@ Buildable meters
 			P.initialize_directions = pipe_dir
 			P.level = pipelevel
 			P.initialize()
-			if (!P)
+			if(!P || P.disposed)
 				to_chat(usr, pipefailtext)
 				return 1
 			P.build_network()
@@ -458,7 +458,7 @@ Buildable meters
 			P.initialize_directions = pipe_dir
 			P.level = pipelevel
 			P.initialize()
-			if (!P)
+			if(!P || P.disposed)
 				to_chat(usr, pipefailtext)
 				return 1
 			P.build_network()
@@ -476,7 +476,7 @@ Buildable meters
 			P.initialize_directions = pipe_dir
 			P.level = pipelevel
 			P.initialize()
-			if (!P)
+			if(!P || P.disposed)
 				to_chat(usr, pipefailtext)
 				return 1
 			P.build_network()
@@ -493,7 +493,7 @@ Buildable meters
 			P.initialize_directions = pipe_dir //this var it's used to know if the pipe is bent or not
 			P.initialize_directions_he = pipe_dir
 			P.initialize()
-			if (!P)
+			if(!P || P.disposed)
 				to_chat(usr, pipefailtext)
 				return 1
 			P.build_network()
@@ -668,7 +668,7 @@ Buildable meters
 			P.initialize_directions_he = src.get_hdir()
 
 			P.initialize()
-			if (!P)
+			if(!P || P.disposed)
 				to_chat(usr, pipefailtext) //"There's nothing to connect this pipe to! (with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)"
 				return 1
 			P.build_network()
@@ -849,7 +849,7 @@ Buildable meters
 
 			P.level = pipelevel
 			P.initialize()
-			if (!P)
+			if(!P || P.disposed)
 				to_chat(usr, pipefailtext)
 				return 1
 			P.build_network()
@@ -987,7 +987,7 @@ Buildable meters
 	if (!istype(W, /obj/item/tool/wrench))
 		return ..()
 	if(!locate(/obj/structure/machinery/atmospherics/pipe, src.loc))
-		to_chat(user, SPAN_DANGER("You need to fasten it to a pipe"))
+		to_chat(user, SPAN_WARNING("You need to fasten it to a pipe."))
 		return 1
 	new/obj/structure/machinery/meter( src.loc )
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)

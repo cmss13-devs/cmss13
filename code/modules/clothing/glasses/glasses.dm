@@ -17,6 +17,7 @@
 	var/req_skill
 	var/req_skill_level
 	var/req_skill_explicit = FALSE
+	var/hud_type //hud type the glasses gives
 
 /obj/item/clothing/glasses/get_icon_state(mob/user_mob, slot)
 	if(item_state_slots && item_state_slots[slot])
@@ -39,49 +40,67 @@
 
 /obj/item/clothing/glasses/proc/can_use_active_effect(var/mob/living/carbon/human/user)
 	if(req_skill && req_skill_level && !(!req_skill_explicit && skillcheck(user, req_skill, req_skill_level)) && !(req_skill_explicit && skillcheckexplicit(user, req_skill, req_skill_level)))
-		if(active)
-			to_chat(user, SPAN_WARNING("You have no idea what any of the data means and power it off before it makes you nauseated."))
-		active = FALSE
-		update_icon()
-		user.update_inv_glasses()
 		return FALSE
 	else
 		return TRUE
 
-/obj/item/clothing/glasses/equipped(var/mob/living/carbon/human/user)
-	if(!can_use_active_effect(user))
-		return
-	..()
-
-/obj/item/clothing/glasses/attack_self(mob/user)
-	if(!can_use_active_effect(user))
-		return
-
-	if(!toggleable)
-		return
-
-	if(active)
-		active = FALSE
-		update_icon()
-		user.update_inv_glasses()
-		to_chat(user, "You deactivate the optical matrix on [src].")
-	else
-		active = TRUE
-		update_icon()
-		user.update_inv_glasses()
-		to_chat(user, "You activate the optical matrix on [src].")
-
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
+/obj/item/clothing/glasses/proc/toggle_glasses_effect()
+	active = !active
+	update_icon()
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
 		if(H.glasses == src)
 			if(has_tint)
 				H.update_tint()
 			H.update_sight()
 			H.update_glass_vision(src)
 
+			if(hud_type)
+				var/datum/mob_hud/MH = huds[hud_type]
+				if(active)
+					MH.add_hud_to(H)
+					playsound(H, 'sound/handling/hud_on.ogg', 25, 1)
+				else
+					MH.remove_hud_from(H)
+					playsound(H, 'sound/handling/hud_off.ogg', 25, 1)
+
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.update_button_icon()
+
+/obj/item/clothing/glasses/equipped(mob/user, slot)
+	if(active)
+		if(!can_use_active_effect(user))
+			toggle_glasses_effect()
+			to_chat(user, SPAN_WARNING("You have no idea what any of the data means and power it off before it makes you nauseated."))
+
+		else if(hud_type && slot == WEAR_EYES)
+			var/datum/mob_hud/MH = huds[hud_type]
+			MH.add_hud_to(user)
+	..()
+
+/obj/item/clothing/glasses/dropped(mob/living/carbon/human/user)
+	if(hud_type && active && istype(user))
+		if(src == user.glasses) //dropped is called before the inventory reference is updated.
+			var/datum/mob_hud/H = huds[hud_type]
+			H.remove_hud_from(user)
+	..()
+
+/obj/item/clothing/glasses/attack_self(mob/user)
+	if(!toggleable)
+		return
+
+	if(!can_use_active_effect(user))
+		to_chat(user, SPAN_WARNING("You have no idea how to use [src]."))
+		return
+
+	if(active)
+		to_chat(user, SPAN_NOTICE("You deactivate the optical matrix on [src]."))
+	else
+		to_chat(user, SPAN_NOTICE("You activate the optical matrix on [src]."))
+
+	toggle_glasses_effect()
+
 
 /obj/item/clothing/glasses/science
 	name = "weird science goggles"
@@ -278,7 +297,7 @@
 	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze."
 	icon_state = "sunhud"
 	eye_protection = 1
-	var/hud_type = MOB_HUD_SECURITY_ADVANCED
+	hud_type = MOB_HUD_SECURITY_ADVANCED
 
 /obj/item/clothing/glasses/sunglasses/sechud/eyepiece
 	name = "Security HUD Sight"
@@ -287,18 +306,6 @@
 	item_state = "securityhud"
 	eye_protection = 1
 
-/obj/item/clothing/glasses/sunglasses/sechud/equipped(mob/living/carbon/human/user, slot)
-	if(slot == WEAR_EYES)
-		var/datum/mob_hud/H = huds[hud_type]
-		H.add_hud_to(user)
-	..()
-
-/obj/item/clothing/glasses/sunglasses/sechud/dropped(mob/living/carbon/human/user)
-	if(istype(user))
-		if(src == user.glasses) //dropped is called before the inventory reference is updated.
-			var/datum/mob_hud/H = huds[hud_type]
-			H.remove_hud_from(user)
-	..()
 
 /obj/item/clothing/glasses/sunglasses/sechud/tactical
 	name = "tactical SWAT HUD"

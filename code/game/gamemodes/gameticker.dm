@@ -28,21 +28,12 @@ var/global/datum/controller/gameticker/ticker = new()
 
 /datum/controller/gameticker/proc/pregame()
 	login_music = pick(
-	'sound/music/good_day_to_die.ogg',
-	'sound/music/Aliens_Main_Theme.ogg',
-	'sound/music/Boys_Are_Back_In_Town.ogg',
-	'sound/music/fortunate_son.ogg',
-	'sound/music/buffalo_springfield.ogg',
-	'sound/music/warrior_song.ogg')
-
-/*	AMERICAN INDEPENDENCE DAY
-	'sound/music/America_Fuck_Yeah.ogg',
-	'sound/music/America_The_Beautiful.ogg',
-	'sound/music/God_Bless_the_USA.ogg',
-	'sound/music/Made_In_The_USA.ogg',
-	'sound/music/Red_White_and_Blue.ogg',
-	'sound/music/Stars_and_Stripes_Fly.ogg',)
-*/
+	"sound/music/1.ogg",
+	"sound/music/2.ogg",
+	"sound/music/3.ogg",
+	"sound/music/4.ogg",
+	"sound/music/5.ogg",
+	"sound/music/6.ogg")
 	do
 		pregame_timeleft = 180
 		if(round_statistics)

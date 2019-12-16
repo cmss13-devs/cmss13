@@ -1,6 +1,3 @@
-sound/music/Aliens_Main_Theme.ogg
-sound/music/DeadSpace_Ring_Around_the_Rosie.ogg
-sound/music/Suspense_Explore.ogg
 sound/misc/Game_Over_Man.ogg
 sound/misc/asses_kicked.ogg
 sound/misc/hardon.ogg

@@ -11,6 +11,9 @@ cfg/
 tools/Runtime Condenser/Input.txt
 tools/Runtime Condenser/Output.txt
 tools/MapDaemon/logs/*.txt
+sound/music/*.ogg
+sound/music/walkman/*/*.ogg
+sound/music/walkman/*.txt
 *.json
 *.before
 __pycache__

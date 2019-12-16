@@ -98,10 +98,10 @@
 			return
 	paused = FALSE
 	if(current_song.status & SOUND_PAUSED)
-		to_chat(current_listener,SPAN_INFO("Resuming : [current_songnames[pl_index]] ([pl_index] of [current_playlist.len])"))
+		to_chat(current_listener,SPAN_INFO("Resuming [pl_index] of [current_playlist.len]"))
 		update_song(current_song,current_listener)
 	else
-		to_chat(current_listener,SPAN_INFO("Now playing : [current_songnames[pl_index]] ([pl_index] of [current_playlist.len])"))
+		to_chat(current_listener,SPAN_INFO("Now playing [pl_index] of [current_playlist.len]"))
 		update_song(current_song,current_listener,0)
 
 	update_song(current_song,current_listener)
@@ -301,6 +301,7 @@
 	var/side1_icon = "cassette"
 	var/flipped = FALSE //Tape side
 	var/list/songs = list()
+	var/id = 1
 
 /obj/item/device/cassette_tape/attack_self(mob/user)
 	if(flipped == TRUE)
@@ -320,122 +321,132 @@
 
 /obj/item/device/cassette_tape/pop1
 	name = "blue cassette"
-	desc = "A plastic cassette tape with a blue sticker. It has marker scrawled on the front. It reads:\nSide 1\nStarship - We Built this City \nDire Straits - Money For Nothing \nTears for Fears - Everybody Wants to Rule the World\nSide 2\nBonnie Tyler - Holding Out for a Hero\nBruce Springsteen - Dancing in the Dark\nAsia - Heat of the Moment"
+	id = 2
+	desc = "A plastic cassette tape with a blue sticker."
 	icon_state = "cassette_blue"
 	side1_icon = "cassette_blue"
-	songs = list("side1" = list('sound/music/walkman/pop1/1-1-1WeBuiltThisCity.ogg' = "Starship - We Built this City",\
-								'sound/music/walkman/pop1/1-1-2MoneyForNothing.ogg' = "Dire Straits - Money For Nothing",\
-								'sound/music/walkman/pop1/1-1-3EverybodyWantsToRuleTheWorld.ogg' = "Tears for Fears - Everybody Wants to Rule the World"),\
-				 "side2" = list('sound/music/walkman/pop1/1-2-1HoldingOutForAHero.ogg' = "Bonnie Tyler - Holding Out for a Hero",\
-								'sound/music/walkman/pop1/1-2-2DancingInTheDark.ogg' = "Bruce Springsteen - Dancing in the Dark",\
-								'sound/music/walkman/pop1/1-2-3HeatoftheMoment.ogg' = "Asia - Heat of the Moment"))
+	songs = list("side1" = list("sound/music/walkman/pop1/1-1-1.ogg",\
+								"sound/music/walkman/pop1/1-1-2.ogg",\
+								"sound/music/walkman/pop1/1-1-3.ogg"),\
+				 "side2" = list("sound/music/walkman/pop1/1-2-1.ogg",\
+								"sound/music/walkman/pop1/1-2-2.ogg",\
+								"sound/music/walkman/pop1/1-2-3.ogg"))
 
 /obj/item/device/cassette_tape/pop2
 	name = "rainbow cassette"
-	desc = "A plastic cassette tape with a rainbow colored sticker. It has marker scrawled on the front. It reads:\nSide 1\nDuran Duran - Rio\nMen Without Hats - Safety Dance\nDead or Alive - You Spin Me Round (Like a Record)\nSide 2\nSoft Cell - Tainted Love\nA-HA - Take on Me\nEurythmics - Sweet Dreams"
+	id = 3
+	desc = "A plastic cassette tape with a rainbow colored sticker."
 	icon_state = "cassette_rainbow"
 	side1_icon = "cassette_rainbow"
-	songs = list("side1" = list('sound/music/walkman/pop2/2-1-1Rio.ogg' = "Duran Duran - Rio",\
-								'sound/music/walkman/pop2/2-1-2SafetyDance.ogg' = "Men Without Hats - Safety Dance",\
-								'sound/music/walkman/pop2/2-1-3YouSpinMeRightRound.ogg' = "Dead or Alive - You Spin Me Round (Like a Record"),\
-				 "side2" = list('sound/music/walkman/pop2/2-2-1TaintedLove.ogg' = "Soft Cell - Tainted Love",\
-								'sound/music/walkman/pop2/2-2-2TakeOnMe.ogg' = "A-HA - Take on Me",\
-								'sound/music/walkman/pop2/2-2-3SweetDreams.ogg' = "Eurythmics - Sweet Dreams"))
+	songs = list("side1" = list("sound/music/walkman/pop2/2-1-1.ogg",\
+								"sound/music/walkman/pop2/2-1-2.ogg",\
+								"sound/music/walkman/pop2/2-1-3.ogg"),\
+				 "side2" = list("sound/music/walkman/pop2/2-2-1.ogg",\
+								"sound/music/walkman/pop2/2-2-2.ogg",\
+								"sound/music/walkman/pop2/2-2-3.ogg"))
 
 /obj/item/device/cassette_tape/pop3
 	name = "orange cassette"
-	desc = "A plastic cassette tape with an orange sticker. It has marker scrawled on the front. It reads:\nSide 1\nREM - It's the End of the World as We Know It\nFlashdance - Maniac\nCorey Hart - Sunglasses at Night\nSide 2\nThe Go-Go's - We Got the Beat\nWhitney Houston - I Wanna Dance with Somebody\nHuey Lewis - The Power Of Love "
+	id = 4
+	desc = "A plastic cassette tape with an orange sticker."
 	icon_state = "cassette_orange"
 	side1_icon = "cassette_orange"
-	songs = list("side1" = list('sound/music/walkman/pop3/3-1-1EndOfTheWorldAsWeKnowIt.ogg' = "REM - It's the End of the World as We Know It",\
-								'sound/music/walkman/pop3/3-1-2Maniac.ogg' = "Flashdance - Maniac",\
-								'sound/music/walkman/pop3/3-1-3SunglassesAtNight.ogg' = "Corey Hart - Sunglasses at Night"),\
-				 "side2" = list('sound/music/walkman/pop3/3-2-1WeGotTheBeat.ogg' = "The Go-Go's - We Got the Beat",\
-								'sound/music/walkman/pop3/3-2-2IWannaDanceWithSomebody.ogg' = "Whitney Houston - I Wanna Dance with Somebody",\
-								'sound/music/walkman/pop3/3-2-3ThePowerOfLove.ogg' = "Huey Lewis - The Power Of Love"))
+	songs = list("side1" = list("sound/music/walkman/pop3/3-1-1.ogg",\
+								"sound/music/walkman/pop3/3-1-2.ogg",\
+								"sound/music/walkman/pop3/3-1-3.ogg"),\
+				 "side2" = list("sound/music/walkman/pop3/3-2-1.ogg",\
+								"sound/music/walkman/pop3/3-2-2.ogg",\
+								"sound/music/walkman/pop3/3-2-3.ogg"))
 
 /obj/item/device/cassette_tape/pop4
 	name = "pink cassette"
-	desc = "A plastic cassette tape with a pink striped sticker. It has marker scrawled on the front. It reads:\nSide 1\nQueen - Under Pressure\nDexy's Midnight Runners - Come on Eileen\nSimple Minds - Don't You Forget About Me\nSide 2\nMichael Jackson - Beat It\nEurope - Final Countdown\nKenny Loggins - Danger Zone"
+	id = 5
+	desc = "A plastic cassette tape with a pink striped sticker."
 	icon_state = "cassette_pink_stripe"
 	side1_icon = "cassette_pink_stripe"
-	songs = list("side1" = list('sound/music/walkman/pop4/4-1-1UnderPressure.ogg' = "Queen - Under Pressure",\
-								'sound/music/walkman/pop4/4-1-2ComeOnEileen.ogg' = "Dexy's Midnight Runners - Come on Eileen",\
-								'sound/music/walkman/pop4/4-1-3Don\'tYouForgetAboutMe.ogg' = "Simple Minds - Don't You Forget About Me"),\
-				 "side2" = list('sound/music/walkman/pop4/4-2-1BeatIt.ogg' = "Michael Jackson - Beat It",\
-								'sound/music/walkman/pop4/4-2-2TheFinalCountdown.ogg' = "Europe - Final Countdown",\
-								'sound/music/walkman/pop4/4-2-3DangerZone.ogg' = "Kenny Loggins - Danger Zone"))
+	songs = list("side1" = list("sound/music/walkman/pop4/4-1-1.ogg",\
+								"sound/music/walkman/pop4/4-1-2.ogg",\
+								"sound/music/walkman/pop4/4-1-3.ogg"),\
+				 "side2" = list("sound/music/walkman/pop4/4-2-1.ogg",\
+								"sound/music/walkman/pop4/4-2-2.ogg",\
+								"sound/music/walkman/pop4/4-2-3.ogg"))
 
 /obj/item/device/cassette_tape/heavymetal
 	name = "red-black cassette"
-	desc = "A plastic cassette tape with a red and black sticker. It has marker scrawled on the front. It reads:\nSide 1\nScorpions - Rock You Like A Hurricane\nRatt - Round and Round\nDon Felder - Takin' a Ride\nSide 2\nVan Halen - Panana\nIron Maiden - The Trooper\nCheap Trick - Reach Out"
+	id = 6
+	desc = "A plastic cassette tape with a red and black sticker."
 	icon_state = "cassette_red_black"
 	side1_icon = "cassette_red_black"
-	songs = list("side1" = list('sound/music/walkman/heavymetal/5-1-1RockYouLikeAHurricane.ogg' = "Scorpions - Rock You Like A Hurricane",\
-								'sound/music/walkman/heavymetal/5-1-2RoundAndRound.ogg' = "Ratt - Round and Round",\
-								'sound/music/walkman/heavymetal/5-1-3TakinARide.ogg' = "Don Felder - Takin' a Ride"),\
-				 "side2" = list('sound/music/walkman/heavymetal/5-2-1Panama.ogg' = "Van Halen - Panama",\
-								'sound/music/walkman/heavymetal/5-2-2TheTrooper.ogg' = "Iron Maiden - The Trooper",\
-								'sound/music/walkman/heavymetal/5-2-3ReachOut.ogg' = "Cheap Trick - Reach Out"))
+	songs = list("side1" = list("sound/music/walkman/heavymetal/5-1-1.ogg",\
+								"sound/music/walkman/heavymetal/5-1-2.ogg",\
+								"sound/music/walkman/heavymetal/5-1-3.ogg"),\
+				 "side2" = list("sound/music/walkman/heavymetal/5-2-1.ogg",\
+								"sound/music/walkman/heavymetal/5-2-2.ogg",\
+								"sound/music/walkman/heavymetal/5-2-3.ogg"))
 
 /obj/item/device/cassette_tape/hairmetal
 	name = "red striped cassette"
-	desc = "A plastic cassette tape with a gray sticker with red stripes. It has marker scrawled on the front. It reads:\nSide 1\nMotley Crue - Kickstart My Heart\nPoison - Talk Dirty to Me\nWarrant - Cherry Pie\nSide 2\nDef Leppard - Pour Some Sugar on Me\nJudas Priest - You've Got Another Thing Comin'\nLita Ford - Kiss Me Deadly"
+	id = 7
+	desc = "A plastic cassette tape with a gray sticker with red stripes."
 	icon_state = "cassette_red_stripe"
 	side1_icon = "cassette_red_stripe"
-	songs = list("side1" = list('sound/music/walkman/hairmetal/6-1-1KickstartMyHeart.ogg' = "Motley Crue - Kickstart My Heart",\
-								'sound/music/walkman/hairmetal/6-1-2TalkDirtyToMe.ogg' = "Poison - Talk Dirty to Me",\
-								'sound/music/walkman/hairmetal/6-1-3CherryPie.ogg' = "Warrant - Cherry Pie"),\
-				 "side2" = list('sound/music/walkman/hairmetal/6-2-1PourSomeSugarOnMe.ogg' = "Def Leppard - Pour Some Sugar on Me",\
-								'sound/music/walkman/hairmetal/6-2-2YouGotAnotherThingComin.ogg' = "Judas Priest - You've Got Another Thing Comin'",\
-								'sound/music/walkman/hairmetal/6-2-3KissMeDeadly.ogg' = "Lita Ford - Kiss Me Deadly"))
+	songs = list("side1" = list("sound/music/walkman/hairmetal/6-1-1.ogg",\
+								"sound/music/walkman/hairmetal/6-1-2.ogg",\
+								"sound/music/walkman/hairmetal/6-1-3.ogg"),\
+				 "side2" = list("sound/music/walkman/hairmetal/6-2-1.ogg",\
+								"sound/music/walkman/hairmetal/6-2-2.ogg",\
+								"sound/music/walkman/hairmetal/6-2-3.ogg"))
 
 /obj/item/device/cassette_tape/indie
 	name = "rising sun cassette"
-	desc = "A plastic cassette tape with the Japanese Rising Sun. It has marker scrawled on the front. It reads:\nSide 1\nSTEREOMA - This City is Death\nThe Orion Experience - Cult of Dionysus\nKites With Lights - Cosmonauts\nSide 2\nI Don't Know How But They Found Me - Modern Day Cain\nSaint Motel - My Type\nLIP - Help"
+	id = 8
+	desc = "A plastic cassette tape with the Japanese Rising Sun."
 	icon_state = "cassette_rising_sun"
 	side1_icon = "cassette_rising_sun"
-	songs = list("side1" = list('sound/music/walkman/indie/07-1-1ThisCityIsDeath.ogg' = "STEREOMA - This City is Death",\
-								'sound/music/walkman/indie/07-1-2CultOfDionysus.ogg' = "The Orion Experience - Cult of Dionysus",\
-								'sound/music/walkman/indie/07-1-3Cosmonauts.ogg' = "Kites With Lights - Cosmonauts"),\
-				 "side2" = list('sound/music/walkman/indie/07-2-1ModernDayCain.ogg' = "I Don't Know How But They Found Me - Modern Day Cain",\
-								'sound/music/walkman/indie/07-2-2MyType.ogg' = "Saint Motel - My Type",\
-								'sound/music/walkman/indie/07-2-3Help.ogg' = "LIP - Help"))
+	songs = list("side1" = list("sound/music/walkman/indie/7-1-1.ogg",\
+								"sound/music/walkman/indie/7-1-2.ogg",\
+								"sound/music/walkman/indie/7-1-3.ogg"),\
+				 "side2" = list("sound/music/walkman/indie/7-2-1.ogg",\
+								"sound/music/walkman/indie/7-2-2.ogg",\
+								"sound/music/walkman/indie/7-2-3.ogg"))
 
 /obj/item/device/cassette_tape/hiphop
 	name = "blue stripe cassette"
-	desc = "An orange plastic cassette tape with a blue stripe. It has marker scrawled on the front. It reads:\nSide 1\nBeastie Boys - Intergalactic\nRun-D.M.C. - It's Tricky\nGrandmaster Flash and the Furious Five - The Message\nSide 2\nEric B - I Ain't No Joke\nLL Cool J - Rock The Bells\nSugarhill Gang - Apache"
+	id = 9
+	desc = "An orange plastic cassette tape with a blue stripe."
 	icon_state = "cassette_orange_blue"
 	side1_icon = "cassette_orange_blue"
-	songs = list("side1" = list('sound/music/walkman/hiphop/08-1-1Intergalactic.ogg' = "Beastie Boys - Intergalactic",\
-								'sound/music/walkman/hiphop/08-1-2ItsTricky.ogg' = "Run-D.M.C. - It's Tricky",\
-								'sound/music/walkman/hiphop/08-1-3TheMessage.ogg' = "Grandmaster Flash and the Furious Five - The Message"),\
-				 "side2" = list('sound/music/walkman/hiphop/08-2-1IAintNoJoke.ogg' = "Eric B - I Ain't No Joke",\
-								'sound/music/walkman/hiphop/08-2-2RockTheBells.ogg' = "LL Cool J - Rock The Bells",\
-								'sound/music/walkman/hiphop/08-2-3Apache.ogg' = "Sugarhill Gang - Apache"))
+	songs = list("side1" = list("sound/music/walkman/hiphop/8-1-1.ogg",\
+								"sound/music/walkman/hiphop/8-1-2.ogg",\
+								"sound/music/walkman/hiphop/8-1-3.ogg"),\
+				 "side2" = list("sound/music/walkman/hiphop/8-2-1.ogg",\
+								"sound/music/walkman/hiphop/8-2-2.ogg",\
+								"sound/music/walkman/hiphop/8-2-3.ogg"))
 
 /obj/item/device/cassette_tape/nam
 	name = "green cassette"
-	desc = "A green plastic cassette tape. It has marker scrawled on the front. It reads:\nSide 1\nBlack Sabbath - Paranoid\nCreedence Clearwater Revival - Fortunate Son\nBuffalo Springfield - For What it's Worth\nSide 2\nTen Years After - I'd Love to Change the World\nJudas Priest - The Temptations - Ball of Confusion\nThe Outlaws - Green Grass and High Tides"
+	id = 10
+	desc = "A green plastic cassette tape."
 	icon_state = "cassette_green"
 	side1_icon = "cassette_green"
-	songs = list("side1" = list('sound/music/walkman/nam/09-1-1Paranoid.ogg' = "Black Sabbath - Paranoid",\
-								'sound/music/walkman/nam/09-1-2FortunateSon.ogg' = "Creedence Clearwater Revival - Fortunate Son",\
-								'sound/music/walkman/nam/09-1-3StopChildrenWhatsThatSound.ogg' = "Buffalo Springfield - For What it's Worth"),\
-				 "side2" = list('sound/music/walkman/nam/09-2-1IdLoveToChangeTheWorld.ogg' = "Ten Years After - I'd Love to Change the World",\
-								'sound/music/walkman/nam/09-2-2BallOfConfusion.ogg' = "The Temptations - Ball of Confusion",\
-								'sound/music/walkman/nam/09-2-3GreenGrassAndHighTides.ogg' = "The Outlaws - Green Grass and High Tides"))
+	songs = list("side1" = list("sound/music/walkman/nam/9-1-1.ogg",\
+								"sound/music/walkman/nam/9-1-2.ogg",\
+								"sound/music/walkman/nam/9-1-3.ogg"),\
+				 "side2" = list("sound/music/walkman/nam/9-2-1.ogg",\
+								"sound/music/walkman/nam/9-2-2.ogg",\
+								"sound/music/walkman/nam/9-2-3.ogg"))
 
 /obj/item/device/cassette_tape/ocean
 	name = "ocean cassette"
-	desc = "A blue and white plastic cassette tape. It has marker scrawled on the front. It reads:\nSide 1\nBeach Boys - Surfin' Safari\nBeach Boys - I Get Around\nSurfaris - Wipe Out\nJan & Dean - Surf City\nSide 2\nBeach Boys - Kokomo\nBeach Boys - Wouldn't it Be Nice\nThe Belairs - Mr. Moto\nThe Trashmen - Surfin Bird"
+	id = 11
+	desc = "A blue and white plastic cassette tape."
 	icon_state = "cassette_ocean"
 	side1_icon = "cassette_ocean"
-	songs = list("side1" = list('sound/music/walkman/surf/10-1-1SurfinSafari.ogg' = "Beach Boys - Surfin' Safari",\
-								'sound/music/walkman/surf/10-1-2IGetAround.ogg' = "Beach Boys - I Get Around",\
-								'sound/music/walkman/surf/10-1-3WipeOut.ogg' = "Surfaris - Wipe Out",\
-								'sound/music/walkman/surf/10-1-4SurfCity.ogg' = "Jan & Dean - Surf City"),\
-				 "side2" = list('sound/music/walkman/surf/10-2-1Kokomo.ogg' = "Beach Boys - Kokomo",\
-								'sound/music/walkman/surf/10-2-2WouldntItBeNice.ogg' = "Beach Boys - Wouldn't it Be Nice",\
-								'sound/music/walkman/surf/10-2-3MrMOTO.ogg' = "The Belairs - Mr. Moto",\
-								'sound/music/walkman/surf/10-2-4TheSurfinBird.ogg' = "The Trashmen - Surfin Bird"))
+	songs = list("side1" = list("sound/music/walkman/surf/10-1-1.ogg",\
+								"sound/music/walkman/surf/10-1-2.ogg",\
+								"sound/music/walkman/surf/10-1-3.ogg",\
+								"sound/music/walkman/surf/10-1-4ogg"),\
+				 "side2" = list("sound/music/walkman/surf/10-2-1.ogg",\
+								"sound/music/walkman/surf/10-2-2.ogg",\
+								"sound/music/walkman/surf/10-2-3.ogg",\
+								"sound/music/walkman/surf/10-2-4.ogg"))

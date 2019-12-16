@@ -118,6 +118,7 @@ There are several things that need to be remembered:
 /mob/living/carbon/human/remove_overlay(cache_index)
 	if(overlays_standing[cache_index])
 		overlays -= overlays_standing[cache_index]
+		overlays_standing[cache_index] = null
 
 
 /mob/living/carbon/human/update_transform()

@@ -175,12 +175,12 @@
 
 
 /obj/item/device/radio/headset/syndicate
-	
+
 	keyslot1 = new /obj/item/device/encryptionkey/syndicate
 
 
 /obj/item/device/radio/headset/binary
-	
+
 	keyslot1 = new /obj/item/device/encryptionkey/binary
 
 
@@ -273,7 +273,7 @@
 
 
 /obj/item/device/radio/headset/almayer/ce
-	name = "chief engineer's headset"
+	name = "chief engineer's radio headset"
 	desc = "The headset of the guy in charge of spooling engines, managing MTs, and tearing up the floor for scrap metal. Of robust and sturdy construction. Channels are as follows: :v - marine command, :e - engineering"
 	icon_state = "ce_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/ce
@@ -303,7 +303,7 @@
 	keyslot1 = new /obj/item/device/encryptionkey/req
 
 /obj/item/device/radio/headset/almayer/ro
-	name = "supply radio headset"
+	name = "requisition officer radio headset"
 	desc = "A headset used by the RO for controlling his or her slave(s). Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :u - requisitions"
 	icon_state = "ro_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/ro

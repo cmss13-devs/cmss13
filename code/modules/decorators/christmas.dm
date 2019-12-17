@@ -51,6 +51,7 @@
 	helmet.icon_state = "santahat"
 	helmet.flags_inventory = BLOCKSHARPOBJ
 	helmet.flags_inv_hide = HIDEEARS|HIDEALLHAIR
+	helmet.flags_marine_helmet = NO_FLAGS
 	helmet.update_icon()
 
 // barricade definition. Also only a single definition

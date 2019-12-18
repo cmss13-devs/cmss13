@@ -40,17 +40,6 @@
         <br>
         {{:data.rounds}} out of {{:data.rounds_max}}
     </div>
-
-    <br><br>
-
-    <div class="itemLabel">
-        Burst Fire:
-    </div>
-    <div class="itemContent">
-        Burst fire is currently <b>{{:data.burst_fire ? '<span class="good">ON</span>' : '<span class="bad">OFF</span>'}}</b>
-        <br>
-        {{:helper.link(data.burst_fire ? 'Turn off burst fire' : 'Turn on burst fire', data.burst_fire ? 'seek-next' : 'play', { '?src' : data.self_ref, 'op' : 'burst'}, data.is_on ? null : 'disabled')}}
-    </div>
     
     <br><br>
         

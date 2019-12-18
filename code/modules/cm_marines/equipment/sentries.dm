@@ -1,6 +1,23 @@
 //Deployable turrets. They can be either automated, manually fired, or installed with a pAI.
 //They are built in stages, and only engineers have access to them.
 
+/obj/effect/turret_trigger
+	name = "turret trigger"
+	icon = 'icons/effects/effects.dmi'
+	anchored = TRUE
+	mouse_opacity = 0
+	invisibility = INVISIBILITY_MAXIMUM
+	var/obj/structure/machinery/marine_turret/linked_turret
+
+/obj/effect/turret_trigger/New(loc, var/obj/structure/machinery/marine_turret/source_turret)
+	..()
+	linked_turret = source_turret
+
+/obj/effect/turret_trigger/Crossed(atom/movable/A)
+	if(!linked_turret) //something went very wrong
+		qdel(src)
+	linked_turret.get_target(A)
+
 /obj/item/ammo_magazine/sentry
 	name = "M30 ammo drum (10x28mm Caseless)"
 	desc = "An ammo drum of 500 10x28mm caseless rounds for the UA 571-C Sentry Gun. Just feed it into the sentry gun's ammo port when its ammo is depleted."
@@ -8,7 +25,7 @@
 	icon_state = "ua571c"
 	flags_magazine = NO_FLAGS //can't be refilled or emptied by hand
 	caliber = "10x28mm"
-	max_rounds = 500
+	max_rounds = 750
 	default_ammo = /datum/ammo/bullet/turret
 	gun_type = null
 
@@ -196,13 +213,13 @@
 			to_chat(user, SPAN_WARNING("You must install [src]'s plating first."))
 			return
 		var/obj/item/tool/weldingtool/WT = O
-		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+		playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 		user.visible_message(SPAN_NOTICE("[user] begins welding [src]'s parts together."),
 		SPAN_NOTICE("You begin welding [src]'s parts together."))
 		if(do_after(user,60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			if(!src || !WT || !WT.isOn()) return
 			if(WT.remove_fuel(0, user))
-				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+				playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] welds [src]'s plating to the frame."),
 				SPAN_NOTICE("You weld [src]'s plating to the frame."))
 				is_welded = 1
@@ -273,12 +290,13 @@
 	use_power = 0
 	flags_atom = RELAY_CLICK
 	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_ENGPREP, ACCESS_MARINE_LEADER)
+	var/list/atom/movable/targets = list() // Lists of current potential targets
+	var/list/obj/effect/turret_trigger/turret_triggers = list()
 	var/iff_signal = ACCESS_IFF_MARINE // Either a single IFF signal or a list of signals
-	var/rounds = 500
-	var/rounds_max = 500
-	var/burst_size = 6
+	var/rounds = 750
+	var/rounds_max = 750
 	var/locked = 0
-	var/atom/target = null
+	var/atom/movable/target = null
 	var/manual_override = 0
 	var/on = FALSE
 	health = 200
@@ -286,12 +304,9 @@
 	stat = SENTRY_FUNCTIONAL
 	var/datum/effect_system/spark_spread/spark_system //The spark system, used for generating... sparks?
 	var/obj/item/cell/high/cell = null
-	var/burst_fire = 0
-	var/burst_scatter_mult = 4
 	var/obj/structure/machinery/camera/camera = null
-	var/fire_delay = 3
+	var/fire_delay = 1.5
 	var/last_fired = 0
-	var/is_bursting = FALSE
 	var/range = 8
 	var/muzzle_flash_lum = 3 //muzzle flash brightness
 	var/obj/item/turret_laptop/laptop = null
@@ -300,21 +315,19 @@
 	var/obj/item/projectile/in_chamber = null
 	var/angle = 1
 	var/list/angle_list = list(180,135,90,60,30)
+	var/list/other_targets = list() //List of special target types to shoot at, if needed.
 	var/owner_mob
 
 /obj/structure/machinery/marine_turret/New()
 	spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
-	burst_scatter_mult = config.lmed_scatter_value
 	cell = new (src)
 	camera = new (src)
 	camera.network = list("military")
 	camera.c_tag = "[name] ([rand(0, 1000)])"
 	ammo = ammo_list[ammo]
 	stat = SENTRY_FUNCTIONAL
-	spawn(2)
-		start_processing()
 
 /obj/structure/machinery/marine_turret/power_change()
 	return
@@ -329,17 +342,16 @@
 	if(cell)
 		qdel(cell)
 		cell = null
-	if(target)
-		target = null
-	SetLuminosity(0)
-	//processing_objects.Remove(src)
+	target = null
+	targets = null
+	delete_turret_triggers()
 	. = ..()
 
 /obj/structure/machinery/marine_turret/attack_hand(mob/user as mob)
 	if(isYautja(user))
 		to_chat(user, SPAN_WARNING("You punch [src] but nothing happens."))
 		return
-	src.add_fingerprint(user)
+	add_fingerprint(user)
 
 	if(!cell || cell.charge <= 0)
 		to_chat(user, SPAN_WARNING("You try to activate [src] but nothing happens. The cell must be empty."))
@@ -378,7 +390,7 @@
 
 	var/list/data = list(
 		"self_ref" = "\ref[src]",
-		"name" = copytext(src.name, 2),
+		"name" = copytext(name, 2),
 		"is_on" = on,
 		"rounds" = rounds,
 		"rounds_max" = rounds_max,
@@ -388,14 +400,13 @@
 		"cell_charge" = cell ? cell.charge : 0,
 		"cell_maxcharge" = cell ? cell.maxcharge : 0,
 		"dir" = dir,
-		"burst_fire" = burst_fire,
 		"manual_override" = manual_override,
 		"angle" = angle_list[angle],
 	)
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "cm_sentry.tmpl", "[src.name] UI", 625, 525)
+		ui = new(user, src, ui_key, "cm_sentry.tmpl", "[name] UI", 625, 525)
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)
@@ -413,49 +424,34 @@
 
 	user.set_interaction(src)
 	switch(href_list["op"])
-		if("burst")
-			if(!cell || cell.charge <= 0 || !anchored || immobile || !on || stat)
-				return
-
-			if(burst_fire)
-				burst_fire = 0
-				fire_delay = 3
-				visible_message("[htmlicon(src, viewers(src))] A green light on [src] blinks slowly.")
-				to_chat(usr, SPAN_NOTICE(" You deactivate the burst fire mode."))
-			else
-				burst_fire = 1
-				fire_delay = 15
-				user.visible_message(SPAN_NOTICE("[user] activates [src]'s burst fire mode."),
-				SPAN_NOTICE("You activate [src]'s burst fire mode."))
-				visible_message("[htmlicon(src, viewers(src))] <span class='notice'>A green light on [src] blinks rapidly.</span>")
-
 		if("angle")
 			var/angle_selected = input(user, "Please select a FoF:", "Field of Fire", null) in angle_list
 			angle = angle_list.Find(angle_selected)
-			//range = 2+angle
-			visible_message("[htmlicon(src, viewers(src))] <span class='notice'>The [name] beeps [angle+1] times, confirming the field of fire is set to [angle_selected] degrees.</span>")
+			visible_message(SPAN_NOTICE("[htmlicon(src, viewers(src))] The [name] beeps [angle+1] times, confirming the field of fire is set to [angle_selected] degrees."))
 
 		if("power")
+			target = null
 			if(!on)
 				user.visible_message(SPAN_NOTICE("[user] activates [src]."),
 				SPAN_NOTICE("You activate [src]."))
-				visible_message("[htmlicon(src, viewers(src))] <span class='notice'>The [name] hums to life and emits several beeps.</span>")
-				visible_message("[htmlicon(src, viewers(src))] <span class='notice'>The [name] buzzes in a monotone voice: 'Default systems initiated'.</span>'")
-				target = null
+				visible_message(SPAN_NOTICE("[htmlicon(src, viewers(src))] The [name] hums to life and emits several beeps."))
+				visible_message(SPAN_NOTICE("[htmlicon(src, viewers(src))] The [name] buzzes in a monotone voice: 'Default systems initiated'."))
+				create_turret_triggers()
 				on = TRUE
 				SetLuminosity(7)
 				if(!camera)
 					camera = new /obj/structure/machinery/camera(src)
 					camera.network = list("military")
-					camera.c_tag = src.name
+					camera.c_tag = name
 				update_icon()
+				get_target()
 			else
 				on = FALSE
 				user.visible_message(SPAN_NOTICE("[user] deactivates [src]."),
 				SPAN_NOTICE("You deactivate [src]."))
-				visible_message("[htmlicon(src, viewers(src))] <span class='notice'>The [name] powers down and goes silent.</span>")
+				visible_message(SPAN_NOTICE("[htmlicon(src, viewers(src))] The [name] powers down and goes silent."))
+				delete_turret_triggers()
 				update_icon()
-
 	attack_hand(user)
 
 //Manual override turns off automatically once the user no longer interacts with the turret.
@@ -512,7 +508,7 @@
 				user.visible_message(SPAN_NOTICE("[user] unanchors [src] from the ground."),
 				SPAN_NOTICE("You unanchor [src] from the ground."))
 				anchored = 0
-				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			return
 
 		//Secure
@@ -570,7 +566,7 @@
 				user.visible_message(SPAN_NOTICE("[user] repairs [src]."),
 				SPAN_NOTICE("You repair [src]."))
 				update_health(-50)
-				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+				playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 		return
 
 	if(iscrowbar(O))
@@ -661,7 +657,7 @@
 	health -= damage
 	if(health <= 0 && stat != 2)
 		stat |= SENTRY_DESTROYED
-		visible_message("[htmlicon(src, viewers(src))] <span class='warning'>The [name] starts spitting out sparks and smoke!")
+		visible_message(SPAN_WARNING("[htmlicon(src, viewers(src))] The [name] starts spitting out sparks and smoke!"))
 		playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
 		for(var/i = 1 to 6)
 			dir = pick(1, 2, 3, 4)
@@ -701,7 +697,7 @@
 
 	if(cell.charge - power <= 0)
 		cell.charge = 0
-		visible_message("[htmlicon(src, viewers(src))] <span class='warning'>[src] emits a low power warning and immediately shuts down!</span>")
+		visible_message(SPAN_WARNING("[htmlicon(src, viewers(src))] [src] emits a low power warning and immediately shuts down!"))
 		playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
 		on = FALSE
 		update_icon()
@@ -717,7 +713,7 @@
 		check_power(-(rand(100, 500)))
 	if(on)
 		if(prob(50))
-			visible_message("[htmlicon(src, viewers(src))] <span class='danger'>[src] beeps and buzzes wildly, flashing odd symbols on its screen before shutting down!</span>")
+			visible_message(SPAN_DANGER("[htmlicon(src, viewers(src))] [src] beeps and buzzes wildly, flashing odd symbols on its screen before shutting down!"))
 			playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
 			for(var/i = 1 to 6)
 				dir = pick(1, 2, 3, 4)
@@ -731,7 +727,6 @@
 	if(health <= 0)
 		return
 	update_health(severity)
-
 
 /obj/structure/machinery/marine_turret/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoLarva(M)) return //Larvae can't do shit
@@ -755,28 +750,23 @@
 		update_health(round(Proj.damage/10))
 	return 1
 
-/obj/structure/machinery/marine_turret/process()
+//Update this to care about angle
+/obj/structure/machinery/marine_turret/proc/get_turret_trigger_turfs()
+	return orange(src, range)
 
-	if(!anchored)
-		return
+/obj/structure/machinery/marine_turret/proc/create_turret_triggers()
+	var/list/turf/trigger_spots = get_turret_trigger_turfs()
+	for(var/turf/T in trigger_spots)
+		for(var/atom/movable/A in T)
+			if((isliving(A) && !isrobot(A)) || (A.type in other_targets))
+				targets.Add(A)
+		turret_triggers.Add(new /obj/effect/turret_trigger(T, src))
 
-	if(!on || stat || !cell)
-		return
-
-	if(!check_power(2))
-		return
-
-	if(operator || manual_override) //If someone's firing it manually.
-		return
-
-	if(rounds == 0)
-		update_icon()
-		return
-
-	manual_override = 0
-	target = get_target()
-	process_shot()
-	return
+/obj/structure/machinery/marine_turret/proc/delete_turret_triggers()
+	targets = list()
+	for(var/obj/effect/turret_trigger/T in turret_triggers)
+		turret_triggers.Remove(T)
+		qdel(T)
 
 /obj/structure/machinery/marine_turret/proc/load_into_chamber()
 	if(in_chamber)
@@ -788,36 +778,9 @@
 	in_chamber.generate_bullet(ammo)
 	return 1
 
-/obj/structure/machinery/marine_turret/proc/process_shot()
-	set waitfor = 0
-
-	if(isnull(target)) return //Acquire our victim.
-
-	if(!ammo) return
-
-	if(target && (world.time-last_fired >= fire_delay))
-		if(world.time-last_fired >= 300) //if we haven't fired for a while, beep first
-			playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
-			sleep(3)
-
-		last_fired = world.time
-
-		if(burst_fire)
-			var/burst_amount = Clamp(burst_size, 0, rounds)
-			for(var/i = 1 to burst_amount)
-				is_bursting = TRUE
-				if(fire_shot(i))
-					sleep(1)
-				else
-					break
-			is_bursting = FALSE
-		else
-			fire_shot()
-
-	target = null
-
-/obj/structure/machinery/marine_turret/proc/fire_shot(shots_fired = 1)
-	if(!target || !on || !ammo) return
+/obj/structure/machinery/marine_turret/proc/fire_shot()
+	if(isnull(target) || !ammo || !target || !on || !anchored || !check_power(2))
+		return
 
 	var/turf/my_loc = get_turf(src)
 	var/turf/targloc = get_turf(target)
@@ -827,44 +790,47 @@
 
 	if(!check_power(2)) return
 
-	if(get_dir(src, targloc) & turn(dir, 180)) return
+	if(get_dir(src, targloc) & turn(dir, 180))
+		return
 
-	if(load_into_chamber())
-		if(istype(in_chamber,/obj/item/projectile))
+	if(!load_into_chamber())
+		return
+	if(istype(in_chamber,/obj/item/projectile))
+		var/initial_angle = Get_Angle(my_loc, targloc)
+		var/final_angle = initial_angle
+		var/total_scatter_angle = in_chamber.ammo.scatter
 
-			var/initial_angle = Get_Angle(my_loc, targloc)
-			var/final_angle = initial_angle
+		if(total_scatter_angle > 0)
+			final_angle += rand(-total_scatter_angle, total_scatter_angle)
+			target = get_angle_target_turf(my_loc, final_angle, 30)
 
+		in_chamber.ammo.accurate_range = 1 + angle
 
-			var/total_scatter_angle = in_chamber.ammo.scatter
+		//Setup projectile
+		in_chamber.original = target
+		in_chamber.dir = dir
+		in_chamber.accuracy = round(in_chamber.accuracy * (config.base_hit_accuracy_mult - config.med_hit_accuracy_mult)) //This is gross but needed to make accuracy behave like the minigun's
+		in_chamber.def_zone = pick("chest", "chest", "chest", "head")
+		in_chamber.weapon_source_mob = owner_mob
 
-			if (shots_fired > 1)
-				total_scatter_angle += burst_scatter_mult * (shots_fired - 1)
+		//Shoot at the thing
+		playsound(loc, 'sound/weapons/gun_sentry.ogg', 75, 1)
+		in_chamber.fire_at(target, src, null, ammo.max_range, ammo.shell_speed)
+		muzzle_flash(final_angle)
+		in_chamber = null
+		rounds--
+		if(rounds == 0)
+			visible_message(SPAN_WARNING("[htmlicon(src, viewers(src))] The [name] beeps steadily and its ammo light blinks red."))
+			playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
 
-			var/mob/living/carbon/C = target
-			if(total_scatter_angle > 0 && (!istype(C) || !C.stat))
-				final_angle += rand(-total_scatter_angle, total_scatter_angle)
-				target = get_angle_target_turf(my_loc, final_angle, 30)
-
-			in_chamber.ammo.accurate_range = 1 + angle
-
-			//Setup projectile
-			in_chamber.original = target
-			in_chamber.dir = dir
-			in_chamber.accuracy = round(in_chamber.accuracy * (config.base_hit_accuracy_mult - config.med_hit_accuracy_mult)) //This is gross but needed to make accuracy behave like the minigun's
-			in_chamber.def_zone = pick("chest", "chest", "chest", "head")
-			in_chamber.weapon_source_mob = owner_mob
-
-			//Shoot at the thing
-			playsound(loc, 'sound/weapons/gun_sentry.ogg', 75, 1)
-			in_chamber.fire_at(target, src, null, ammo.max_range, ammo.shell_speed)
-			muzzle_flash(final_angle)
-			in_chamber = null
-			rounds--
-			if(rounds == 0)
-				visible_message("[htmlicon(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red.</span>")
-				playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
-	return 1
+	update_icon()
+	if(targets.len && !operator && !manual_override)
+		var/shot_delay = fire_delay
+		if(world.time - last_fired >= SECONDS_30) //if we haven't fired for a while, beep first
+			playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
+			shot_delay = 3
+		add_timer(CALLBACK(src, /obj/structure/machinery/marine_turret/proc/get_target), shot_delay)
+	last_fired = world.time
 
 //Mostly taken from gun code.
 /obj/structure/machinery/marine_turret/proc/muzzle_flash(var/angle)
@@ -884,77 +850,119 @@
 	I.transform = rotate
 	I.flick_overlay(src, 3)
 
-/obj/structure/machinery/marine_turret/proc/get_target()
+/obj/structure/machinery/marine_turret/proc/get_target(var/atom/movable/new_target)
+	if(!targets.Find(new_target))
+		targets.Add(new_target)
+
+	if(!targets.len || !anchored || !ammo || !on || operator || manual_override || world.time - last_fired <= fire_delay)
+		return
+
 	var/list/conscious_targets = list()
 	var/list/unconscious_targets = list()
+	var/list/inanimate_targets = list()
 
-	var/list/turf/path = list()
-	var/turf/T
-	var/mob/M
+	for(var/atom/movable/A in targets)
+		if(isliving(A))
+			var/mob/living/M = A
+			if(M.stat & DEAD)
+				if(A == target)
+					target = null
+				targets.Remove(A)
+				continue
+		else if(!(A.type in other_targets))
+			if(A == target)
+				target = null
+			targets.Remove(A)
+			continue
 
-	for(M in orange(range, src)) // orange allows sentry to fire through gas and darkness
-		if(!isliving(M) || M.stat & DEAD || isrobot(M)) continue // No dead or non living.
-
-		/*
-		I really, really need to replace this with some that isn't insane. You shouldn't have to fish for access like this.
-		This should be enough shortcircuiting, but it is possible for the code to go all over the possibilities and generally
-		slow down. It'll serve for now.
-		*/
-		var/mob/living/carbon/human/H = M
-		if(istype(H) && H.get_target_lock(iff_signal)) continue
-
-		if(angle > 0)
-			var/opp
-			var/adj
-
-			switch(dir)
-				if(NORTH)
-					opp = x-M.x
-					adj = M.y-y
-				if(SOUTH)
-					opp = x-M.x
-					adj = y-M.y
-				if(EAST)
-					opp = y-M.y
-					adj = M.x-x
-				if(WEST)
-					opp = y-M.y
-					adj = x-M.x
-
-			var/r = 9999
-			if(adj != 0) r = abs(opp/adj)
-			var/angledegree = arcsin(r/sqrt(1+(r*r)))
-			if(adj < 0)
+		if(ishuman(A))
+			var/mob/living/carbon/human/H = A
+			if(istype(H) && H.get_target_lock(iff_signal))
+				if(A == target)
+					target = null
+				targets.Remove(H)
 				continue
 
-			if((angledegree*2) > angle_list[angle])
-				continue
+		if(angle <= 0)
+			target = null
+			return
+		var/opp
+		var/adj
 
-		path = getline2(src, M, include_from_atom = FALSE)
+		switch(dir)
+			if(NORTH)
+				opp = x-A.x
+				adj = A.y-y
+			if(SOUTH)
+				opp = x-A.x
+				adj = y-A.y
+			if(EAST)
+				opp = y-A.y
+				adj = A.x-x
+			if(WEST)
+				opp = y-A.y
+				adj = x-A.x
 
-		if(path.len)
-			var/blocked = FALSE
-			for(T in path)
-				if(T.density || T.opacity)
+		var/r = 9999
+		if(adj != 0)
+			r = abs(opp/adj)
+		var/angledegree = arcsin(r/sqrt(1+(r*r)))
+		if(adj < 0)
+			if(A == target)
+				target = null
+			targets.Remove(A)
+			continue
+
+		if((angledegree*2) > angle_list[angle])
+			if(A == target)
+				target = null
+			targets.Remove(A)
+			continue
+
+		var/list/turf/path = getline2(src, A, include_from_atom = FALSE)
+
+		if(!path.len)
+			if(A == target)
+				target = null
+			targets.Remove(A)
+			continue
+
+		var/blocked = FALSE
+		for(var/turf/T in path)
+			if(T.density || T.opacity)
+				blocked = TRUE
+				break
+			for(var/obj/structure/S in T)
+				if(S.density || S.opacity)
 					blocked = TRUE
 					break
-				for(var/obj/structure/S in T)
-					if(S.density || S.opacity)
-						blocked = TRUE
-						break
-				if(blocked)
-					break
 			if(blocked)
-				continue
+				break
+		if(blocked)
+			if(A == target)
+				target = null
+			targets.Remove(A)
+			continue
+		if(!isliving(A))
+			inanimate_targets += A
+		else
+			var/mob/living/M = A
 			if(M.stat & UNCONSCIOUS)
 				unconscious_targets += M
 			else
 				conscious_targets += M
 
 	if(conscious_targets.len)
-		. = pick(conscious_targets)
+		target = pick(conscious_targets)
 	else if(unconscious_targets.len)
-		. = pick(unconscious_targets)
+		target = pick(unconscious_targets)
+	else if(inanimate_targets.len)
+		target = pick(inanimate_targets)
+	
+	if(!target) //No targets, don't bother firing
+		return
+
+	fire_shot()
 
 //Direct replacement to new proc. Everything works.
 /obj/structure/machinery/marine_turret/handle_click(mob/living/carbon/human/user, atom/A, params)
@@ -963,11 +971,10 @@
 	if(istype(A, /obj/screen)) return HANDLE_CLICK_UNHANDLED
 	if(!manual_override) return HANDLE_CLICK_UNHANDLED
 	if(operator.interactee != src) return HANDLE_CLICK_UNHANDLED
-	if(is_bursting) return
 	if(get_dist(user, src) > 1 || user.is_mob_incapacitated())
 		user.visible_message(SPAN_NOTICE("[user] lets go of [src]"),
 		SPAN_NOTICE("You let go of [src]"))
-		visible_message("[htmlicon(src, viewers(src))] <span class='notice'>The [name] buzzes: AI targeting re-initialized.</span>")
+		visible_message(SPAN_NOTICE("[htmlicon(src, viewers(src))] The [name] buzzes: AI targeting re-initialized."))
 		user.unset_interaction()
 		return HANDLE_CLICK_UNHANDLED
 	if(user.get_active_hand() != null)
@@ -999,8 +1006,8 @@
 		if(dx > 0)	direct = EAST
 		else		direct = WEST
 
-	if(direct == dir && target.loc != src.loc && target.loc != operator.loc)
-		process_shot()
+	if(direct == dir && target.loc != loc && target.loc != operator.loc)
+		fire_shot()
 		return HANDLE_CLICK_HANDLED
 
 	return HANDLE_CLICK_UNHANDLED
@@ -1033,9 +1040,8 @@
 	name = "UA-577 Gauss Turret"
 	immobile = 1
 	on = TRUE
-	burst_fire = 1
-	rounds = 500
-	rounds_max = 500
+	rounds = 750
+	rounds_max = 750
 	icon_state = "sentry_on"
 
 /obj/structure/machinery/marine_turret/premade/New()
@@ -1054,7 +1060,7 @@
 	if(isYautja(user))
 		to_chat(user, SPAN_WARNING("You punch [src] but nothing happens."))
 		return
-	src.add_fingerprint(user)
+	add_fingerprint(user)
 
 	if(!cell || cell.charge <= 0)
 		to_chat(user, SPAN_WARNING("You try to activate [src] but nothing happens. The cell must be empty."))
@@ -1064,23 +1070,24 @@
 		to_chat(user, SPAN_WARNING("It must be anchored to the ground before you can activate it."))
 		return
 
+	target = null
 	if(!on)
 		to_chat(user, "You turn on the [src].")
 		visible_message(SPAN_NOTICE("[src] hums to life and emits several beeps."))
 		visible_message("[htmlicon(src, viewers(src))] [src] buzzes in a monotone: 'Default systems initiated.'")
-		target = null
 		on = TRUE
 		SetLuminosity(7)
 		if(!camera)
 			camera = new /obj/structure/machinery/camera(src)
 			camera.network = list("military")
-			camera.c_tag = src.name
+			camera.c_tag = name
 		update_icon()
+		get_target()
 	else
 		on = FALSE
 		user.visible_message(SPAN_NOTICE("[user] deactivates [src]."),
 		SPAN_NOTICE("You deactivate [src]."))
-		visible_message("[htmlicon(src, viewers(src))] <span class='notice'>The [name] powers down and goes silent.</span>")
+		visible_message(SPAN_NOTICE("[htmlicon(src, viewers(src))] The [name] powers down and goes silent."))
 		update_icon()
 
 //the turret inside a static sentry deployment system
@@ -1091,9 +1098,7 @@
 	angle = -1
 	rounds = 1000000
 	iff_signal = ACCESS_IFF_MARINE
-	burst_size = 25
 	locked = 1
-	burst_scatter_mult = 1
 	fire_delay = 1
 	range = 10
 	muzzle_flash_lum = 4 //muzzle flash brightness
@@ -1203,11 +1208,11 @@
 		playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
 		deployment_cooldown = world.time + 50
 		deployed_turret.on = 1
-		deployed_turret.loc = src.loc
+		deployed_turret.loc = loc
 		icon_state = "sentry_system_deployed"
 
 		for(var/mob/M in deployed_turret.loc)
-			if(deployed_turret.loc == src.loc)
+			if(deployed_turret.loc == loc)
 				step( M, deployed_turret.dir )
 			else
 				step( M, get_dir(src,deployed_turret) )

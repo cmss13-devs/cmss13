@@ -982,7 +982,7 @@
 	accuracy_var_low = config.low_proj_variance
 	accuracy_var_high = config.low_proj_variance
 	max_range = config.norm_shell_range
-	damage = config.lmed_hit_damage
+	damage = config.mlow_hit_damage
 	penetration = config.mlow_armor_penetration
 	accuracy = config.high_hit_accuracy
 

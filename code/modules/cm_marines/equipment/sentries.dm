@@ -328,6 +328,8 @@
 	camera.c_tag = "[name] ([rand(0, 1000)])"
 	ammo = ammo_list[ammo]
 	stat = SENTRY_FUNCTIONAL
+	if(on)
+		create_turret_triggers()
 
 /obj/structure/machinery/marine_turret/power_change()
 	return

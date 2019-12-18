@@ -214,6 +214,11 @@
 	if(has_limb("l_foot") && has_limb("l_leg"))
 		.++
 
+/mob/living/carbon/human/proc/disable_special_flags()
+	status_flags |= CANPUSH
+	anchored = FALSE
+	frozen = FALSE
+
 /mob/living/carbon/human/proc/disable_detectors()
 	for(var/obj/I in src)
 		check_if_detector(I)

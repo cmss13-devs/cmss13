@@ -142,10 +142,11 @@
 	src.mob.on_mob_jump()
 	src.mob.loc = M.loc
 
-/client/proc/Getmob(var/mob/M in mob_list)
+/client/proc/Getmob(var/mob/M)
 	set name = "Get Mob"
-	set category = null
 	set desc = "Mob to teleport"
+	set category = null
+	set hidden = 1
 
 	if(!src.admin_holder)
 		to_chat(src, "Only administrators may use this command.")

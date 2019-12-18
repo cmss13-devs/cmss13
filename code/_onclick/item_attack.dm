@@ -10,7 +10,7 @@
 /atom/movable/attackby(obj/item/W, mob/living/user)
 	if(W)
 		if(!(W.flags_item & NOBLUDGEON))
-			visible_message(SPAN_DANGER("[src] has been hit by [user] with [W]."), null, 5)
+			visible_message(SPAN_DANGER("[src] has been hit by [user] with [W]."), null, null, 5)
 			user.animation_attack_on(src)
 			user.flick_attack_overlay(src, "punch")
 

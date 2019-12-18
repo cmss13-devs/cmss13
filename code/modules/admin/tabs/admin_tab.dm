@@ -1,5 +1,5 @@
 /client/proc/deadmin_self()
-	set name = "A: De-admin"
+	set name = "A: De-Admin"
 	set category = "Admin"
 
 	if(!admin_holder)
@@ -15,7 +15,7 @@
 	to_chat(src, "<br><br><span class='centerbold'><big>You are now a normal player. You can ascend back to adminhood at any time using the 'Re-admin Self' verb in your Admin panel.</big></span><br>")
 
 /client/proc/readmin_self()
-	set name = "A: Re-admin"
+	set name = "A: Re-Admin"
 	set category = "Admin"
 
 	verbs -= /client/proc/readmin_self

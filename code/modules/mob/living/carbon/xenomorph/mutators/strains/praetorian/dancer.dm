@@ -211,8 +211,7 @@
 				T.launch_towards(get_step_towards(T, src), 6, SPEED_SLOW, src)
 
 			// Just making sure..
-			if (Adjacent(T) && start_pulling(T, 0, TRUE))
-				
+			if (Adjacent(T) && start_pulling(T, 0, TRUE) && !isSynth(T))
 				T.drop_held_items()
 				T.KnockDown(2) // So ungas can blast the Praetorian
 				T.Stun(2)

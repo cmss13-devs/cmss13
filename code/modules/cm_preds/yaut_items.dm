@@ -1681,7 +1681,7 @@
 	else ..()
 
 /obj/item/weapon/combistick/launch_impact(atom/hit_atom)
-	if(isYautja(hit_atom) && ishuman(hit_atom))
+	if(isYautja(hit_atom))
 		var/mob/living/carbon/human/H = hit_atom
 		if(H.put_in_hands(src))
 			hit_atom.visible_message(SPAN_NOTICE(" [hit_atom] expertly catches [src] out of the air. "), \

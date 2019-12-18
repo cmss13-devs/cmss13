@@ -877,7 +877,7 @@
 
 		if(ishuman(A))
 			var/mob/living/carbon/human/H = A
-			if(istype(H) && H.get_target_lock(iff_signal))
+			if(H.get_target_lock(iff_signal) || H.invisibility)
 				if(A == target)
 					target = null
 				targets.Remove(H)

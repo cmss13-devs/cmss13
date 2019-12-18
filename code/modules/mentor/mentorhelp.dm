@@ -352,11 +352,11 @@
 		if("L: Discord")
 			msg += "You can join our Discord server by using <a href='https://discordapp.com/invite/TByu8b5'>this link</a>!"
 		if("L: Xeno Quickstart Guide")
-			msg += "Your answer can be found on the Xeno Quickstart Guide on our wiki. <a href='http://cm-ss13.com/wiki/Xeno_Quickstart_Guide'>Check it out here.</a>"
+			msg += "Your answer can be found on the Xeno Quickstart Guide on our wiki. <a href='[URL_WIKI_XENO_QUICKSTART]'>Check it out here.</a>"
 		if("L: Marine quickstart guide")
-			msg += "Your answer can be found on the Marine Quickstart Guide on our wiki. <a href='http://cm-ss13.com/wiki/Marine_Quickstart_Guide'>Check it out here.</a>"
+			msg += "Your answer can be found on the Marine Quickstart Guide on our wiki. <a href='[URL_WIKI_MARINE_QUICKSTART]'>Check it out here.</a>"
 		if("L: Current Map")
-			msg += "If you need a map to the current game, you can (usually) find them on the front page of our wiki in the 'Maps' section. <a href='http://cm-ss13.com/wiki/Main_Page'>Check it out here.</a> If the map is not listed, it's a new or rare map and the overview hasn't been finished yet."
+			msg += "If you need a map to the current game, you can (usually) find them on the front page of our wiki in the 'Maps' section. <a href='[URL_WIKI_LANDING]'>Check it out here.</a> If the map is not listed, it's a new or rare map and the overview hasn't been finished yet."
 		if("A: No plasma regen")
 			msg += "If you have low/no plasma regen, it's most likely because you are off weeds or are currently using a passive ability, such as the Runner's 'Hide' or emitting a pheromone."
 		if("A: Devour as Xeno")
@@ -372,9 +372,9 @@
 		if("L: Leaving the server")
 			msg += "If you need to leave the server as a marine, either go to cryo or ask someone to cryo you before leaving. If you are a xenomorph, find a safe place to rest and ghost before leaving."
 		if("M: Macros")
-			msg += "To set a macro right click the title bar, select Client->Macros. Binding unique-action to a key is useful for pumping shotguns etc; Binding load-from-attachment will activate any scopes etc; Binding resist and give to seperate keys is also handy. For more information on macros, head over to our guide, at: http://cm-ss13.com/wiki/Macros"
+			msg += "To set a macro right click the title bar, select Client->Macros. Binding unique-action to a key is useful for pumping shotguns etc; Binding load-from-attachment will activate any scopes etc; Binding resist and give to seperate keys is also handy. For more information on macros, head over to our <a href='[URL_WIKI_MACROS]'>macro guide</a>."
 		if("C: Changelog")
-			msg += "The answer to your question can be found in the changelog. Click the changelog button at the top-right of the screen to view it in-game, or visit https://cm-ss13.com/changelog/ to open it in your browser instead."
+			msg += "The answer to your question can be found in the changelog. Click the changelog button at the top-right of the screen to view it in-game, or visit <a href='[URL_CHANGELOG]'>https://cm-ss13.com/changelog</a> to open it in your browser instead."
 	msg = SPAN_NOTICE(msg)
 
 	send_message(responder, msg, TRUE)

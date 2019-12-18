@@ -183,7 +183,7 @@
 
 
 /datum/job/command/police/generate_entry_message(mob/living/carbon/human/H)
-	entry_message_body = "You are held by a higher standard and are required to obey not only the server rules but the <a href='http://cm-ss13.com/wiki/Marine_Law'>Marine Law</a>. Failure to do so may result in a job ban or server ban. Your primary job is to maintain peace and stability aboard the ship. Marines can get rowdy after a few weeks of cryosleep! In addition, you are tasked with the security of high-ranking personnel, including the command staff. Keep them safe!"
+	entry_message_body = "You are held by a higher standard and are required to obey not only the server rules but the <a href='[URL_WIKI_LAW]'>Marine Law</a>. Failure to do so may result in a job ban or server ban. Your primary job is to maintain peace and stability aboard the ship. Marines can get rowdy after a few weeks of cryosleep! In addition, you are tasked with the security of high-ranking personnel, including the command staff. Keep them safe!"
 	return ..()
 
 //Chief MP
@@ -199,7 +199,7 @@
 	)
 
 /datum/job/command/warrant/generate_entry_message(mob/living/carbon/human/H)
-	entry_message_body = "You are held by a higher standard and are required to obey not only the server rules but the <a href='http://cm-ss13.com/wiki/Marine_Law'>Marine Law</a>. Failure to do so may result in a job ban or server ban. You lead the Military Police, ensure your officers maintain peace and stability aboard the ship. Marines can get rowdy after a few weeks of cryosleep! In addition, you are tasked with the security of high-ranking personnel, including the command staff. Keep them safe!"
+	entry_message_body = "You are held by a higher standard and are required to obey not only the server rules but the <a href='[URL_WIKI_LAW]'>Marine Law</a>. Failure to do so may result in a job ban or server ban. You lead the Military Police, ensure your officers maintain peace and stability aboard the ship. Marines can get rowdy after a few weeks of cryosleep! In addition, you are tasked with the security of high-ranking personnel, including the command staff. Keep them safe!"
 	return ..()
 
 /datum/job/command/senior
@@ -220,7 +220,7 @@
 	)
 
 /datum/job/command/senior/generate_entry_message()
-	entry_message_body = "You are held to a higher standard and are required to obey not only the Server Rules but <a href='http://cm-ss13.com/wiki/Marine_Law'>Marine Law</a> and <a href='http://cm-ss13.com/wiki/Standard_Operating_Procedure'>Standard Operating Procedure</a>. Failure to do so may result in your Mentorship Removal. Your primary job is to teach others the game and its mechanics, and offer advice to all USCM Departments and Personnel on-board."
+	entry_message_body = "You are held to a higher standard and are required to obey not only the Server Rules but <a href='[URL_WIKI_LAW]'>Marine Law</a> and <a href='[URL_WIKI_SOP]'>Standard Operating Procedure</a>. Failure to do so may result in your Mentorship Removal. Your primary job is to teach others the game and its mechanics, and offer advice to all USCM Departments and Personnel on-board."
 	return ..()
 
 /datum/job/command/senior/announce_entry_message(mob/living/carbon/human/H)

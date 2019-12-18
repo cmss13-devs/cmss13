@@ -52,14 +52,14 @@
 		else
 			recieve_pm_type = admin_holder.rank
 		// Automatically link certain phrases from staff.
-		msg = replacetext(msg,"T:Marine","<a href=\"https://cm-ss13.com/wiki/Marine_Quickstart_Guide\">Marine Quickstart Guide</a>")
-		msg = replacetext(msg,"T:Xeno","<a href=\"https://cm-ss13.com/wiki/Xeno_Quickstart_Guide\">Xeno Quickstart Guide</a>")
-		msg = replacetext(msg,"T:Rules","<a href=\"https://cm-ss13.com/wiki/Rules\">Rules Page</a>")
-		msg = replacetext(msg,"T:Law","<a href=\"https://cm-ss13.com/wiki/Marine_Law\">Marine Law</a>")
-		msg = replacetext(msg,"T:Forums","<a href=\"https://cm-ss13.com/\">Forums</a>")
-		msg = replacetext(msg,"T:Wiki","<a href=\"https://cm-ss13.com/wiki/Main_Page\">Wiki</a>")
-		msg = replacetext(msg,"T:Gitlab","<a href=\"https://gitlab.com/cmdevs/ColonialMarines/issues\">Gitlab</a>")
-		msg = replacetext(msg,"T:APC","<a href=\"https://cm-ss13.com/wiki/Guide_to_Engineering#APC_Maintenance\">APC Repair</a>")
+		msg = replacetext(msg,"T:Marine","<a href=\"[URL_WIKI_MARINE_QUICKSTART]\">Marine Quickstart Guide</a>")
+		msg = replacetext(msg,"T:Xeno","<a href=\"[URL_WIKI_XENO_QUICKSTART]\">Xeno Quickstart Guide</a>")
+		msg = replacetext(msg,"T:Rules","<a href=\"[URL_WIKI_RULES]\">Rules Page</a>")
+		msg = replacetext(msg,"T:Law","<a href=\"[URL_WIKI_LAW]\">Marine Law</a>")
+		msg = replacetext(msg,"T:Forums","<a href=\"[URL_FORUM]\">Forums</a>")
+		msg = replacetext(msg,"T:Wiki","<a href=\"[URL_WIKI_LANDING]\">Wiki</a>")
+		msg = replacetext(msg,"T:Gitlab","<a href=\"[URL_ISSUE_TRACKER]\">Gitlab</a>")
+		msg = replacetext(msg,"T:APC","<a href=\"[URL_WIKI_APC]\">APC Repair</a>")
 
 	else if(!C.admin_holder || !(C.admin_holder.rights & R_MOD))
 		to_chat(src, "<font color='red'>Error: Admin-PM: Non-admin to non-admin PM communication is forbidden.</font>")

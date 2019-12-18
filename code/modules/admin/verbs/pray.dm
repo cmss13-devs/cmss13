@@ -23,7 +23,7 @@
 		msg = SPAN_NOTICE("<b><font color=purple>PRAY: </font>[key_name(src, 1)] (<A HREF='?_src_=admin_holder;ahelp=mark=\ref[src]'>Mark</A>) (<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[src]'>?</A>) (<A HREF='?_src_=admin_holder;ahelp=adminplayeropts;extra=\ref[src]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[src]'>VV</A>) (<A HREF='?_src_=admin_holder;subtlemessage=\ref[src]'>SM</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[src]'>JMP</A>) (<A HREF='?_src_=admin_holder;adminspawncookie=\ref[src]'>SC</a>):</b> [msg]")
 	log_admin(msg)
 	for(var/client/C in admins)
-		if(C.prefs.toggles_chat & CHAT_PRAYER)
+		if(AHOLD_IS_MOD(C.admin_holder) && C.prefs.toggles_chat & CHAT_PRAYER)
 			to_chat(C, msg)
 	if(liaison)
 		to_chat(usr, "Your corporate overlords at Weston-Yamada have received your message.")

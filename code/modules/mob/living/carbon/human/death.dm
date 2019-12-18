@@ -17,10 +17,6 @@
 		return
 	..()
 
-
-
-
-
 /mob/living/carbon/human/gib_animation()
 	new /obj/effect/overlay/temp/gib_animation(loc, src, species ? species.gibbed_anim : "gibbed-h")
 
@@ -30,33 +26,25 @@
 	else
 		hgibs(loc, viruses, src)
 
-
-
 /mob/living/carbon/human/spawn_dust_remains()
 	if(species)
 		new species.remains_type(loc)
 	else
 		new /obj/effect/decal/cleanable/ash(loc)
 
-
 /mob/living/carbon/human/dust_animation()
 	new /obj/effect/overlay/temp/dust_animation(loc, src, "dust-h")
-
-
-
 
 /mob/living/carbon/human/rejuvenate()
 	..()
 	callHook("clone", list(src))
-
-
-
 
 /mob/living/carbon/human/death(var/cause, var/gibbed)
 	if(stat == DEAD) 
 		return
 	living_human_list -= src
 	if(!gibbed) 
+		disable_special_flags()
 		disable_detectors()
 		disable_lights()
 	if(pulledby && isXeno(pulledby)) // Xenos lose grab on dead humans

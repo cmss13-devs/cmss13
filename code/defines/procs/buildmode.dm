@@ -240,6 +240,8 @@
 					T.ChangeTurf(holder.buildmode.objholder)
 				else
 					var/obj/A = new holder.buildmode.objholder (get_turf(object))
+					if(!istype(A))
+						return
 					A.dir = holder.builddir.dir
 			else if(mods["middle"])
 				holder.buildmode.objholder = text2path("[object.type]")

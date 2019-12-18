@@ -56,32 +56,30 @@
 		return ..()
 
 /obj/item/tool/extinguisher/afterattack(atom/target, mob/user , flag)
-	//TODO; Add support for reagents in water.
-
-	if( istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(src,target) <= 1)
+	if(istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(src,target) <= 1)
 		var/obj/o = target
 		o.reagents.trans_to(src, 50)
 		to_chat(user, SPAN_NOTICE(" \The [src] is now refilled"))
 		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		return
 
-	if (safety)
+	if(safety)
 		return ..()
 	
-	if (src.reagents.total_volume < 1)
+	if(src.reagents.total_volume < 1)
 		to_chat(usr, SPAN_DANGER("\The [src] is empty."))
 		return
 
-	if (world.time < src.last_use + 20)
+	if(world.time < src.last_use + 20)
 		return
 
 	src.last_use = world.time
 
 	playsound(src.loc, 'sound/effects/extinguish.ogg', 52, 1, 7)
 
-	var/direction = get_dir(src,target)
+	var/direction = get_dir(src, target)
 
-	if(usr.buckled && isobj(usr.buckled) && !usr.buckled.anchored )
+	if(usr.buckled && isobj(usr.buckled) && !usr.buckled.anchored)
 		spawn(0)
 			var/obj/structure/bed/chair/C = null
 			if(istype(usr.buckled, /obj/structure/bed/chair))
@@ -115,6 +113,15 @@
 			B.Move(get_step(usr,movementdirection), movementdirection)
 			sleep(3)
 			B.Move(get_step(usr,movementdirection), movementdirection)
+
+	if(target == user)
+		if(!isliving(user))
+			return
+		var/mob/living/M = user
+		M.ExtinguishMob()
+		new /obj/effect/particle_effect/water(get_turf(user))
+		reagents.total_volume -= EXTINGUISHER_WATER_USE_AMT
+		return
 
 	var/turf/T = get_turf(target)
 	var/turf/T1 = get_step(T,turn(direction, 90))
@@ -172,7 +179,7 @@
 			if(iscarbon(atm) || istype(atm, /obj/structure/barricade))
 				atm.extinguish_acid()
 		T = get_turf(W)
-		if(W.loc == target) 
+		if(T == target) 
 			break
 		sleep(2)
 	qdel(W)

@@ -23,9 +23,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/toggleprayers,			/*toggles prayers on/off*/
 	/client/proc/toggle_hear_radio,		/*toggles whether we hear the radio*/
 	/client/proc/event_panel,
-	/datum/admins/proc/toggleooc,		/*toggles ooc on/off for everyone*/
-	/datum/admins/proc/togglelooc,		/*toggles ooc on/off for everyone*/
-	/datum/admins/proc/toggledsay,		/*toggles dsay on/off for everyone*/
 	/client/proc/game_panel,			/*game panel, allows to change game-mode etc*/
 	/client/proc/cmd_admin_say,			/*admin-only ooc chat*/
 	/client/proc/free_slot,				/*frees slot for chosen job*/
@@ -196,7 +193,9 @@ var/list/admin_verbs_mod = list(
 	/client/proc/xooc,					// Xeno OOC
 	/client/proc/mooc,					// Marine OOC
 	/datum/admins/proc/view_txt_log,
-	/datum/admins/proc/toggleooc,		/*toggles ooc on/off for everyone*/	/*displays the contents of an instance*/
+	/datum/admins/proc/toggleooc,		/*toggles ooc on/off for everyone*/
+	/datum/admins/proc/togglelooc,		/*toggles ooc on/off for everyone*/
+	/datum/admins/proc/toggledsay,		/*toggles dsay on/off for everyone*/
 	/client/proc/cmd_admin_xeno_report,  //Allows creation of IC reports by the Queen Mother
 	/datum/admins/proc/viewUnheardAhelps,
 	/client/proc/view_faxes,
@@ -260,6 +259,9 @@ var/list/admin_verbs_mod = list(
 		admin_verbs_color,
 		admin_verbs_sounds,
 		admin_verbs_spawn,
+		admin_verbs_teleport,
+		admin_mob_event_verbs_hideable,
+		admin_mob_verbs_hideable,
 		debug_verbs
 		)
 

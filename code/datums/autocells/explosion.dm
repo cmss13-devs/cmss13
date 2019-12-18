@@ -281,7 +281,7 @@
 		var/explosion_source = E.explosion_source
 		var/mob/explosion_source_mob = E.explosion_source_mob
 
-		log_attack("Mob [M.name] ([M.ckey]) was harmed by explosion in [T.loc.name] caused by [explosion_source] at ([M.loc.x],[M.loc.y],[M.loc.z])")
+		log_attack("Mob [M.name] ([M.ckey]) was harmed by explosion in [T.loc.name] caused by [explosion_source] at ([T.x],[T.y],[T.z])")
 
 		if(ismob(explosion_source_mob))
 			var/mob/firing_mob = explosion_source_mob

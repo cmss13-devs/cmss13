@@ -935,7 +935,7 @@
 				blocked = TRUE
 				break
 			for(var/obj/structure/S in T)
-				if(S.density || S.opacity)
+				if(S.opacity)
 					blocked = TRUE
 					break
 			if(blocked)

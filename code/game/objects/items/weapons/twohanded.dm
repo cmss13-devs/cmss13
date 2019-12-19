@@ -203,7 +203,7 @@
 	unwieldsound = 'sound/weapons/saberoff.ogg'
 	flags_atom = FPRINT|NOBLOODY
 	flags_item = NOSHIELD|TWOHANDED
-	
+
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
@@ -308,6 +308,7 @@
 	attack_verb = list("whacked")
 	hitsound = "swing_hit"
 
+	var/detonating = FALSE
 	var/wielded_attack_verb = list("charged")
 	var/wielded_hitsound = null
 	var/unwielded_attack_verb = list("whacked")
@@ -327,15 +328,23 @@
 
 /obj/item/weapon/twohanded/lungemine/afterattack(atom/target, mob/user, proximity_flag)
 	. = ..()
+	if(proximity_flag)
+		detonate_check(target, user)
+
+/obj/item/weapon/twohanded/lungemine/proc/detonate_check(atom/target, mob/user)
+	if(detonating) //don't detonate twice
+		return
+
 	if(!(flags_item & WIELDED)) //must be wielded to detonate
 		return
 
-	if(!istype(target) || !proximity_flag)
+	if(!istype(target))
 		return
 
 	if(!target.density && !istype(target, /mob))
 		return
 
+	detonating = TRUE
 	playsound(user, 'sound/items/Wirecutter.ogg', 50, 1)
 
 	sleep(3)

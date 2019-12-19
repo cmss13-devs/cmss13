@@ -57,6 +57,8 @@
 	if(secure_radio_connections)
 		for(var/ch_name in secure_radio_connections)
 			var/datum/radio_frequency/RF = secure_radio_connections[ch_name]
+			if(!RF)
+				continue
 			RF.remove_listener(src)
 			secure_radio_connections -= RF
 
@@ -66,7 +68,8 @@
 /obj/item/device/radio/proc/remove_all_freq()
 	for(var/X in radio_controller.frequencies)
 		var/datum/radio_frequency/F = radio_controller.frequencies[X]
-		F.remove_listener(src)
+		if(F)
+			F.remove_listener(src)
 
 
 /obj/item/device/radio/initialize()

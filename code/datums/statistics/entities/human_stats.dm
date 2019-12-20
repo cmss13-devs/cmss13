@@ -78,11 +78,12 @@
 	if(statistic_exempt || !mind)
 		return
 	var/datum/entity/player_stats/human/human_stats = mind.setup_human_stats()
+	var/job_actual = get_actual_job_name(src)
 	if(!human_stats.round_played)
 		human_stats.total_rounds_played += 1
 		human_stats.round_played = TRUE
 	human_stats.total_playtime += life_time_total
-	human_stats.track_job_playtime(job, life_time_total)
+	human_stats.track_job_playtime(job_actual, life_time_total)
 	human_stats.recalculate_top_weapon()
 	human_stats.recalculate_nemesis()
 	..()
@@ -214,8 +215,9 @@
 		return
 	var/datum/entity/player_stats/human/S = mind.setup_human_stats()
 	S.steps_walked += amount
-	if(job)
-		S.count_personal_steps_walked(job, amount)
+	var/job_actual = get_actual_job_name(src)
+	if(job_actual)
+		S.count_personal_steps_walked(job_actual, amount)
 
 /datum/entity/player_stats/human/proc/count_weapon_hit(var/weapon, var/amount = 1)
 	if(!weapon)

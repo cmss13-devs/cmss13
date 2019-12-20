@@ -27,7 +27,7 @@
 	if(mob.client) mob.client.change_view(world.view)
 
 	ticker.mode.traitors += mob.mind
-	mob.mind.special_role = "MODE"
+	mob.mind.assigned_role = "MODE"
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob

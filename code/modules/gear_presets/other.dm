@@ -222,7 +222,7 @@
 	idtype = /obj/item/card/id/silver/cl
 	assignment = "Corporate Representative"
 	rank = "MODE"
-	special_role = "MODE"
+	special_role = "Corporate Representative"
 	skills = /datum/skills/civilian
 
 /datum/equipment_preset/other/business_person/New()
@@ -381,8 +381,8 @@
 
 /datum/equipment_preset/other/zombie/load_id(mob/living/carbon/human/H)
 	if(H.mind)
-		H.mind.assigned_role = "Zombie"
-		H.mind.special_role = "MODE"
+		H.mind.assigned_role = "MODE"
+		H.mind.special_role = "Zombie"
 
 /datum/equipment_preset/other/zombie/load_race(mob/living/carbon/human/H)
 	H.set_species("Zombie")

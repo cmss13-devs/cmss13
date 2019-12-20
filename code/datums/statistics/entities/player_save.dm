@@ -367,6 +367,16 @@
 					new_nemesis.value = save_nemesis["value"]
 					new_caste.nemesis = new_nemesis
 
+				if(save_caste["abilities_used"])
+					var/save_abilities_used = save_caste["abilities_used"]
+					var/list/new_abilities_used_list = new()
+					for(var/save_ability in save_abilities_used)
+						var/datum/entity/statistic/new_ability_used = new()
+						new_ability_used.name = save_ability["name"]
+						new_ability_used.value = save_ability["value"]
+						new_abilities_used_list["[new_ability_used.name]"] = new_ability_used
+					new_caste.abilities_used = new_abilities_used_list
+				
 				if(save_caste["humans_killed"])
 					var/save_humans_killed = save_caste["humans_killed"]
 					var/list/new_humans_killed_list = new()

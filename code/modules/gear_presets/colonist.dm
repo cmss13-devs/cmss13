@@ -1,10 +1,10 @@
 
 /datum/equipment_preset/colonist
-	name = "Colonist"
+	name = JOB_COLONIST
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "Colonist"
-	rank = "Colonist"
-	special_role = "MODE"
+	assignment = JOB_COLONIST
+	rank = JOB_COLONIST
+	special_role = JOB_COLONIST
 	faction = FACTION_COLONIST
 
 	access = list(ACCESS_CIVILIAN_PUBLIC)

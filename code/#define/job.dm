@@ -17,6 +17,7 @@ var/global/list/JOB_SQUAD_ROLES_LIST    = list(JOB_SQUAD_MARINE, JOB_SQUAD_LEADE
 
 #define JOB_COLONIST                    "Colonist"
 #define JOB_PASSENGER                   "Passenger"
+#define JOB_SURVIVOR                    "Survivor"
 
 #define JOB_CMO                         "Chief Medical Officer"
 #define JOB_DOCTOR                      "Doctor"

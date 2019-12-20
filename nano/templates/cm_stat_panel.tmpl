@@ -187,8 +187,11 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                 </div>
                 <fieldset class="fieldContainerSpaced">
                     {{props data.round.participants}}
+                        <div class="itemLabelClear">
+                            {{:value.name}}:
+                        </div>
                         <div class="itemContentSmallRight">
-                            {{:value.name}}: {{:value.value}}
+                            {{:value.value}}
                         </div>
                     {{/props}}
                 </fieldset>
@@ -197,8 +200,11 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                 </div>
                 <fieldset class="fieldContainerSpaced">
                     {{props data.round.total_deaths}}
+                        <div class="itemLabelClear">
+                            {{:value.name}}:
+                        </div>
                         <div class="itemContentSmallRight">
-                            {{:value.name}}: {{:value.value}}
+                            {{:value.value}}
                         </div>
                     {{/props}}
                 </fieldset>
@@ -208,8 +214,11 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                     </div>
                     <fieldset class="fieldContainerSpaced">
                         {{props data.round.hijack_participants}}
+                            <div class="itemLabelClear">
+                                {{:value.name}}:
+                            </div>
                             <div class="itemContentSmallRight">
-                                {{:value.name}}: {{:value.value}}
+                                {{:value.value}}
                             </div>
                         {{/props}}
                     </fieldset>
@@ -221,8 +230,11 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                     <div class="itemContentSmallRight">
                         <fieldset class="fieldContainerSpaced">
                             {{props data.round.final_participants}}
+                                <div class="itemLabelClear">
+                                    {{:value.name}}:
+                                </div>
                                 <div class="itemContentSmallRight">
-                                    {{:value.name}}: {{:value.value}}
+                                    {{:value.value}}
                                 </div>
                             {{/props}}
                         </fieldset>
@@ -467,8 +479,11 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                             <b>Abilities Used:</b>
                         </div>
                         {{props caste_value.abilities_used :ability_value:ability_index}}
+                            <div class="itemLabelClear">
+                                {{:ability_value.name}}:
+                            </div>
                             <div class="itemContentSmallRight">
-                                {{:ability_value.name}}: {{:ability_value.value}}
+                                {{:ability_value.value}}
                             </div>
                         {{/props}}
                         {{if caste_value.nemesis}}
@@ -1269,8 +1284,11 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                 <b>Abilities Used:</b>
                             </div>
                             {{props caste_value.abilities_used :ability_value:ability_index}}
+                                <div class="itemLabelClear">
+                                    {{:ability_value.name}}:
+                                </div>
                                 <div class="itemContentSmallRight">
-                                    {{:ability_value.name}}: {{:ability_value.value}}
+                                    {{:ability_value.value}}
                                 </div>
                             {{/props}}
                             {{if caste_value.nemesis}}

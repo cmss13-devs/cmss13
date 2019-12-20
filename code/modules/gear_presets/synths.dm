@@ -123,8 +123,8 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_SURVIVOR
 	idtype = /obj/item/card/id/lanyard
-	assignment = "Assistant"
-	special_role = "MODE"
+	assignment = JOB_SURVIVOR
+	special_role = JOB_SYNTH
 	skills = /datum/skills/early_synthetic
 
 /datum/equipment_preset/synth/survivor/load_race(mob/living/carbon/human/H)
@@ -155,8 +155,8 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_SURVIVOR
 	idtype = /obj/item/card/id/lanyard
-	assignment = "Survivor"
-	special_role = "MODE"
+	assignment = JOB_SURVIVOR
+	special_role = JOB_SYNTH
 	skills = /datum/skills/early_synthetic
 
 /datum/equipment_preset/synth/working_joe/New()

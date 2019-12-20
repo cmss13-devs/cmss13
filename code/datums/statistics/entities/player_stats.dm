@@ -96,20 +96,22 @@
 	if(statistic_exempt || !mind)
 		return
 	var/datum/entity/player_stats/human/human_stats = mind.setup_human_stats()
-	human_stats.count_human_kill(job_name, cause, job)
+	var/job_actual = get_actual_job_name(src)
+	human_stats.count_human_kill(job_name, cause, job_actual)
 
 /mob/living/carbon/human/count_xeno_kill(var/killed_caste, var/cause)
 	if(statistic_exempt || !mind)
 		return
 	var/datum/entity/player_stats/human/human_stats = mind.setup_human_stats()
-	human_stats.count_xeno_kill(killed_caste, cause, job)
+	var/job_actual = get_actual_job_name(src)
+	human_stats.count_xeno_kill(killed_caste, cause, job_actual)
 
 /mob/living/carbon/human/count_niche_stat(var/niche_name, var/amount = 1, var/weapon_name)
 	if(statistic_exempt || !mind)
 		return
-	var/job_name = get_actual_job_name(src)
+	var/job_actual = get_actual_job_name(src)
 	var/datum/entity/player_stats/human/human_stats = mind.setup_human_stats()
-	human_stats.count_niche_stat(niche_name, amount, job_name, weapon_name)
+	human_stats.count_niche_stat(niche_name, amount, job_actual, weapon_name)
 
 //Xeno
 /mob/living/carbon/Xenomorph/count_human_kill(var/job_name, var/cause)

@@ -1,5 +1,4 @@
 //Refer to life.dm for caller
-
 /mob/living/carbon/human/proc/handle_regular_hud_updates()
 
 	//Now handle what we see on our screen
@@ -122,18 +121,24 @@
 					if(150 to 250)					hud_used.nutrition_icon.icon_state = "nutrition3"
 					else							hud_used.nutrition_icon.icon_state = "nutrition4"
 
-			if(hud_used.pressure_icon)
-				hud_used.pressure_icon.icon_state = "pressure[pressure_alert]"
-
-			if(hud_used.toxin_icon)
-				if(hal_screwyhud == 4 || phoron_alert)	hud_used.toxin_icon.icon_state = "tox1"
-				else									hud_used.toxin_icon.icon_state = "tox0"
 			if(hud_used.oxygen_icon)
 				if(hal_screwyhud == 3 || oxygen_alert)	hud_used.oxygen_icon.icon_state = "oxy1"
 				else									hud_used.oxygen_icon.icon_state = "oxy0"
-			if(hud_used.fire_icon)
-				if(fire_alert)							hud_used.fire_icon.icon_state = "fire[fire_alert]" //fire_alert is either 0 if no alert, 1 for cold and 2 for heat.
-				else									hud_used.fire_icon.icon_state = "fire0"
+
+			check_status_effects()
+
+			if(hud_used.pulse_line)
+				var/percieved_shock = traumatic_shock
+				if(species && species.flags & NO_PAIN)
+					percieved_shock = 0
+
+				switch(percieved_shock)
+					if(100 to INFINITY)			
+						hud_used.pulse_line.icon_state = "pulse_dying"
+					if(20 to 99)				
+						hud_used.pulse_line.icon_state = "pulse_hurt"
+					else					
+						hud_used.pulse_line.icon_state = "pulse_good"
 
 			if(hud_used.bodytemp_icon)
 				if (!species)
@@ -180,3 +185,43 @@
 		if(interactee)
 			interactee.check_eye(src)
 	return 1
+
+
+/mob/living/carbon/human/proc/check_status_effects()
+	var/status_effect_placement = 1
+
+	var/datum/custom_hud/ui_datum
+	if(client)
+		ui_datum = custom_huds_list[client.prefs.UI_style]
+	else
+		ui_datum = custom_huds_list["midnight"]
+
+	var/is_bleeding = is_bleeding()
+	if(is_bleeding)
+		hud_used.bleeding_icon.name = "bleeding"
+		hud_used.bleeding_icon.icon_state = "status_bleed"
+		hud_used.bleeding_icon.screen_loc = ui_datum.get_status_loc(status_effect_placement)
+		status_effect_placement++
+	else
+		hud_used.bleeding_icon.name = ""
+		hud_used.bleeding_icon.icon_state = "status_0"
+
+	var/is_slowed = (slowed || superslowed)
+	if(is_slowed)
+		hud_used.slowed_icon.name = "slowed"
+		hud_used.slowed_icon.icon_state = "status_slow"
+		hud_used.slowed_icon.screen_loc = ui_datum.get_status_loc(status_effect_placement)
+		status_effect_placement++
+	else
+		hud_used.slowed_icon.name = ""
+		hud_used.slowed_icon.icon_state = "status_0"
+
+	var/is_embedded = embedded_items.len
+	if(is_embedded)
+		hud_used.shrapnel_icon.name = "shrapnel"
+		hud_used.shrapnel_icon.icon_state = "status_shrapnel"
+		hud_used.shrapnel_icon.screen_loc = ui_datum.get_status_loc(status_effect_placement)
+		status_effect_placement++
+	else
+		hud_used.shrapnel_icon.name = ""
+		hud_used.shrapnel_icon.icon_state = "status_0"

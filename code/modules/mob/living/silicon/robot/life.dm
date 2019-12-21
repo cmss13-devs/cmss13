@@ -251,17 +251,18 @@
 	return 1
 
 /mob/living/silicon/robot/proc/update_items()
-	if (src.client)
-		src.client.screen -= src.contents
-		for(var/obj/I in src.contents)
+	if (client)
+		client.screen -= contents
+		for(var/obj/I in contents)
 			if(I && !(istype(I,/obj/item/cell) || istype(I,/obj/item/device/radio)  || istype(I,/obj/structure/machinery/camera) || istype(I,/obj/item/device/mmi)))
-				src.client.screen += I
-	if(src.module_state_1)
-		src.module_state_1:screen_loc = ui_inv1
-	if(src.module_state_2)
-		src.module_state_2:screen_loc = ui_inv2
-	if(src.module_state_3)
-		src.module_state_3:screen_loc = ui_inv3
+				client.screen += I
+	var/datum/custom_hud/robot/ui_datum = custom_huds_list["robot"]
+	if(module_state_1)
+		module_state_1.screen_loc = ui_datum.ui_inv1
+	if(module_state_2)
+		module_state_2.screen_loc = ui_datum.ui_inv2
+	if(module_state_3)
+		module_state_3.screen_loc = ui_datum.ui_inv3
 	update_icons()
 
 /mob/living/silicon/robot/proc/process_killswitch()

@@ -15,8 +15,6 @@
 	var/tail                                   // Name of tail image in species effects icon file.
 	var/datum/unarmed_attack/unarmed           // For empty hand harm-intent attack
 	var/datum/unarmed_attack/secondary_unarmed // For empty hand harm-intent attack if the first fails.
-	var/datum/hud_data/hud
-	var/hud_type
 	var/slowdown = 0
 	var/gluttonous        // Can eat some mobs. 1 for monkeys, 2 for people.
 	var/rarity_value = 1  // Relative rarity/collector value for this species. Only used by ninja and cultists atm.
@@ -99,19 +97,15 @@
 	var/melee_allowed = TRUE
 
 /datum/species/New()
-	if(hud_type)
-		hud = new hud_type()
-	else
-		hud = new()
-
-	if(unarmed_type) unarmed = new unarmed_type()
-	if(secondary_unarmed_type) secondary_unarmed = new secondary_unarmed_type()
+	if(unarmed_type) 
+		unarmed = new unarmed_type()
+	if(secondary_unarmed_type) 
+		secondary_unarmed = new secondary_unarmed_type()
 
 /datum/species/proc/handle_npc(var/mob/living/carbon/human/H)
     return
 
 /datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs and limbs.
-
 	H.limbs = list()
 	H.internal_organs = list()
 	H.internal_organs_by_name = list()
@@ -492,7 +486,6 @@
 	cold_level_1 = -1  //zombies don't mind the cold
 	cold_level_2 = -1
 	cold_level_3 = -1
-	hud_type = /datum/hud_data/zombie
 	has_fine_manipulation = FALSE
 	knock_down_reduction = 10
 	stun_reduction = 10
@@ -558,22 +551,6 @@
 		spawn(30)
 			H.jitteriness = 0
 
-
-/datum/hud_data/zombie
-	has_a_intent = 1
-	has_m_intent = 1
-	has_warnings = 1
-	has_pressure = 1
-	has_nutrition = 0
-	has_bodytemp = 1
-	has_hands = 1
-	has_drop = 0
-	has_throw = 0
-	has_resist = 1
-	has_internals = 0
-	gear = list()
-
-
 /datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)
 	H.set_languages(list("English", "Russian", "Tradeband", "Sainja", "Xenomorph"))
 	living_human_list -= H
@@ -596,7 +573,6 @@
 	flesh_color = "#907E4A"
 	speech_sounds = list('sound/voice/pred_click1.ogg', 'sound/voice/pred_click2.ogg')
 	speech_chance = 100
-	hud_type = /datum/hud_data/yautja
 	death_message = "clicks in agony and falls still, motionless and completely lifeless..."
 	darksight = 5
 	slowdown = -0.5
@@ -975,77 +951,3 @@
 	attack_verb = list("maul")
 	damage = 15
 	shredding = 1
-
-/datum/hud_data
-	var/icon              // If set, overrides ui_style.
-	var/has_a_intent = 1  // Set to draw intent box.
-	var/has_m_intent = 1  // Set to draw move intent box.
-	var/has_warnings = 1  // Set to draw environment warnings.
-	var/has_pressure = 1  // Draw the pressure indicator.
-	var/has_nutrition = 1 // Draw the nutrition indicator.
-	var/has_bodytemp = 1  // Draw the bodytemp indicator.
-	var/has_hands = 1     // Set to draw shand.
-	var/has_drop = 1      // Set to draw drop button.
-	var/has_throw = 1     // Set to draw throw button.
-	var/has_resist = 1    // Set to draw resist button.
-	var/has_internals = 1 // Set to draw the internals toggle button.
-	var/is_yautja = 0
-	var/list/equip_slots = list() // Checked by mob_can_equip().
-
-	// Contains information on the position and tag for all inventory slots
-	// to be drawn for the mob. This is fairly delicate, try to avoid messing with it
-	// unless you know exactly what it does.
-	var/list/gear = list(
-		"i_clothing" =   list("loc" = ui_iclothing, "slot" = WEAR_BODY, "state" = "center", "toggle" = 1, "dir" = SOUTH),
-		"o_clothing" =   list("loc" = ui_oclothing, "slot" = WEAR_JACKET, "state" = "equip",  "toggle" = 1,  "dir" = SOUTH),
-		"mask" =         list("loc" = ui_mask,      "slot" = WEAR_FACE, "state" = "equip",  "toggle" = 1,  "dir" = NORTH),
-		"gloves" =       list("loc" = ui_gloves,    "slot" = WEAR_HANDS,    "state" = "gloves", "toggle" = 1),
-		"eyes" =         list("loc" = ui_glasses,   "slot" = WEAR_EYES,   "state" = "glasses","toggle" = 1),
-		"wear_ear" =     list("loc" = ui_wear_ear,  "slot" = WEAR_EAR,     "state" = "ears",   "toggle" = 1),
-		"head" =         list("loc" = ui_head,      "slot" = WEAR_HEAD,      "state" = "hair",   "toggle" = 1),
-		"shoes" =        list("loc" = ui_shoes,     "slot" = WEAR_FEET,     "state" = "shoes",  "toggle" = 1),
-		"suit storage" = list("loc" = ui_sstore1,   "slot" = WEAR_J_STORE,   "state" = "belt",   "dir" = 8),
-		"back" =         list("loc" = ui_back,      "slot" = WEAR_BACK,      "state" = "back",   "dir" = NORTH),
-		"id" =           list("loc" = ui_id,        "slot" = WEAR_ID,   "state" = "id",     "dir" = NORTH),
-		"storage1" =     list("loc" = ui_storage1,  "slot" = WEAR_L_STORE,   "state" = "pocket"),
-		"storage2" =     list("loc" = ui_storage2,  "slot" = WEAR_R_STORE,   "state" = "pocket"),
-		"belt" =         list("loc" = ui_belt,      "slot" = WEAR_WAIST,      "state" = "belt")
-		)
-
-/datum/hud_data/New()
-	..()
-	for(var/slot in gear)
-		equip_slots |= gear[slot]["slot"]
-
-	if(has_hands)
-		equip_slots |= WEAR_L_HAND
-		equip_slots |= WEAR_R_HAND
-		equip_slots |= WEAR_HANDCUFFS
-
-	if(WEAR_BACK in equip_slots)
-		equip_slots |= WEAR_IN_BACK
-		equip_slots |= WEAR_IN_SCABBARD
-
-	equip_slots |= WEAR_LEGCUFFS
-
-	if(WEAR_WAIST in equip_slots)
-		equip_slots |= WEAR_IN_BELT
-
-	if(WEAR_J_STORE in equip_slots)
-		equip_slots |= WEAR_IN_J_STORE
-
-	if(WEAR_L_STORE in equip_slots)
-		equip_slots |= WEAR_IN_L_STORE
-
-	if(WEAR_R_STORE in equip_slots)
-		equip_slots |= WEAR_IN_R_STORE
-
-	if(WEAR_BODY in equip_slots)
-		equip_slots |= WEAR_ACCESSORY
-		equip_slots |= WEAR_IN_ACCESSORY
-
-	if(WEAR_JACKET in equip_slots)
-		equip_slots |= WEAR_IN_JACKET
-
-	if(WEAR_FEET in equip_slots)
-		equip_slots |= WEAR_IN_SHOES

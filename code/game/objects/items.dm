@@ -363,8 +363,8 @@ cases. Override_icon_state should be a list.*/
 		//START HUMAN
 		var/mob/living/carbon/human/H = M
 		var/list/mob_equip = list()
-		if(H.species.hud && H.species.hud.equip_slots)
-			mob_equip = H.species.hud.equip_slots
+		if(H.hud_used && H.hud_used.equip_slots)
+			mob_equip = H.hud_used.equip_slots
 
 		if(H.species && !(slot in mob_equip))
 			return 0

@@ -23,10 +23,6 @@
 			else
 				hud_used.pred_power_icon.icon_state = "powerbar10"
 
-//Uses the base hud_data, which is human, but just tweaks one lil thing.
-/datum/hud_data/yautja
-	is_yautja = 1
-
 /mob/living/carbon/human/proc/butcher()
 	set category = "Yautja"
 	set name = "Butcher"

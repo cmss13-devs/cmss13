@@ -24,6 +24,13 @@
 	var/obj/screen/locate_nuke
 	var/obj/screen/pred_power_icon
 
+	var/obj/screen/frame_hud
+	var/obj/screen/pulse_line
+
+	var/obj/screen/slowed_icon
+	var/obj/screen/bleeding_icon
+	var/obj/screen/shrapnel_icon
+
 	var/obj/screen/module_store_icon
 
 	var/obj/screen/nutrition_icon
@@ -38,11 +45,8 @@
 	var/obj/screen/pull_icon
 	var/obj/screen/throw_icon
 	var/obj/screen/oxygen_icon
-	var/obj/screen/pressure_icon
-	var/obj/screen/toxin_icon
-	var/obj/screen/internals
-	var/obj/screen/healths
 	var/obj/screen/fire_icon
+	var/obj/screen/healths
 	var/obj/screen/bodytemp_icon
 
 	var/obj/screen/gun_setting_icon
@@ -57,6 +61,8 @@
 
 	var/obj/screen/action_button/hide_toggle/hide_actions_toggle
 	var/action_buttons_hidden = 0
+
+	var/list/equip_slots = list()
 
 
 /datum/hud/New(mob/owner)
@@ -97,6 +103,13 @@
 
 	module_store_icon = null
 
+	frame_hud = null
+	pulse_line = null
+
+	slowed_icon = null
+	shrapnel_icon = null
+	bleeding_icon = null
+
 	nutrition_icon = null
 
 	use_attachment = null
@@ -109,11 +122,8 @@
 	pull_icon = null
 	throw_icon = null
 	oxygen_icon = null
-	pressure_icon = null
-	toxin_icon = null
-	internals = null
-	healths = null
 	fire_icon = null
+	healths = null
 	bodytemp_icon = null
 
 	gun_setting_icon = null
@@ -156,9 +166,6 @@
 			if(infodisplay.len)
 				mymob.client.screen += infodisplay
 
-			if(action_intent)
-				action_intent.screen_loc = initial(action_intent.screen_loc) //Restore intent selection to the original position
-
 		if(HUD_STYLE_REDUCED)	//Reduced HUD
 			hud_shown = 0	//Governs behavior of other procs
 			if(static_inventory.len)
@@ -177,7 +184,6 @@
 				mymob.client.screen += r_hand_hud_object	//we want the hands to be visible
 			if(action_intent)
 				mymob.client.screen += action_intent		//we want the intent switcher visible
-				action_intent.screen_loc = ui_acti_alt	//move this to the alternative position, where zone_select usually is.
 
 		if(HUD_STYLE_NOHUD)	//No HUD
 			hud_shown = 0	//Governs behavior of other procs
@@ -217,3 +223,127 @@
 		to_chat(usr, SPAN_INFO("Switched HUD mode. Press F12 to toggle."))
 	else
 		to_chat(usr, SPAN_WARNING("This mob type does not use a HUD."))
+
+
+/datum/hud/proc/draw_act_intent(var/datum/custom_hud/ui_datum, var/ui_alpha)
+	var/obj/screen/using = new /obj/screen/act_intent/corner()
+	using.icon = ui_datum.ui_style_icon
+	if(ui_alpha)
+		using.alpha = ui_alpha
+	using.icon_state = "intent_"+mymob.a_intent
+	using.screen_loc = ui_datum.ui_acti
+	static_inventory += using
+	action_intent = using
+
+/datum/hud/proc/draw_mov_intent(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+	var/obj/screen/using = new /obj/screen/mov_intent()
+	using.icon = ui_datum.ui_style_icon
+	using.screen_loc = ui_datum.ui_movi
+	if(ui_alpha)
+		using.alpha = ui_alpha
+	if(ui_color)
+		using.color = ui_color
+	using.icon_state = (mymob.m_intent == MOVE_INTENT_RUN ? "running" : "walking")
+	static_inventory += using
+	move_intent = using
+
+/datum/hud/proc/draw_drop(var/datum/custom_hud/ui_datum, var/ui_alpha)
+	var/obj/screen/using = new /obj/screen/drop()
+	using.icon = ui_datum.ui_style_icon
+	using.screen_loc = ui_datum.ui_drop_throw
+	if(ui_alpha)
+		using.alpha = ui_alpha
+	static_inventory += using
+
+/datum/hud/proc/draw_throw(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+	throw_icon = new /obj/screen/throw_catch()
+	throw_icon.icon = ui_datum.ui_style_icon
+	throw_icon.screen_loc = ui_datum.ui_drop_throw
+	if(ui_alpha)
+		throw_icon.alpha = ui_alpha
+	if(ui_color)
+		throw_icon.color = ui_color
+	hotkeybuttons += throw_icon
+
+/datum/hud/proc/draw_pull(var/datum/custom_hud/ui_datum)
+	pull_icon = new /obj/screen/pull()
+	pull_icon.icon = ui_datum.ui_style_icon
+	pull_icon.screen_loc = ui_datum.ui_pull
+	pull_icon.update_icon(mymob)
+	hotkeybuttons += pull_icon
+
+/datum/hud/proc/draw_resist(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+	var/obj/screen/using = new /obj/screen/resist()
+	using.icon = ui_datum.ui_style_icon
+	using.screen_loc = ui_datum.ui_resist
+	if(ui_alpha)
+		using.alpha = ui_alpha
+	if(ui_color)
+		using.color = ui_color
+	hotkeybuttons += using
+
+/datum/hud/proc/draw_left_hand(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+	var/obj/screen/inventory/inv_box = new /obj/screen/inventory()
+	inv_box.name = WEAR_L_HAND
+	inv_box.icon = ui_datum.ui_style_icon
+	inv_box.dir = EAST
+	inv_box.screen_loc = ui_datum.ui_lhand
+	inv_box.icon_state = "hand_inactive"
+	if(mymob && mymob.hand)
+		inv_box.icon_state = "hand_active"
+	if(ui_alpha)
+		inv_box.alpha = ui_alpha
+	if(ui_color)
+		inv_box.color = ui_color
+	inv_box.layer = HUD_LAYER
+	inv_box.slot_id = WEAR_L_HAND
+	l_hand_hud_object = inv_box
+	static_inventory += inv_box
+
+/datum/hud/proc/draw_right_hand(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+	var/obj/screen/inventory/inv_box = new /obj/screen/inventory()
+	inv_box.name = WEAR_R_HAND
+	inv_box.icon = ui_datum.ui_style_icon
+	inv_box.dir = WEST
+	inv_box.screen_loc = ui_datum.ui_rhand
+	inv_box.icon_state = "hand_inactive"
+	if(mymob && !mymob.hand)	//This being 0 or null means the right hand is in use
+		inv_box.icon_state = "hand_active"
+	if(ui_alpha)
+		inv_box.alpha = ui_alpha
+	if(ui_color)
+		inv_box.color = ui_color
+	inv_box.layer = HUD_LAYER
+	inv_box.slot_id = WEAR_R_HAND
+	r_hand_hud_object = inv_box
+	static_inventory += inv_box
+
+/datum/hud/proc/draw_swaphand(var/handswap_part, var/handswap_part_loc, var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+	var/obj/screen/using = new /obj/screen/inventory()
+	using.name = "hand"
+	using.icon = ui_datum.ui_style_icon
+	using.icon_state = handswap_part
+	using.screen_loc = handswap_part_loc
+	if(ui_alpha)
+		using.alpha = ui_alpha
+	if(ui_color)
+		using.color = ui_color
+	using.layer = HUD_LAYER
+	static_inventory += using
+
+/datum/hud/proc/draw_healths(var/datum/custom_hud/ui_datum, var/ui_alpha)
+	healths = new /obj/screen/healths()
+	healths.icon = ui_datum.ui_style_icon
+	healths.screen_loc = ui_datum.UI_HEALTH_LOC
+	infodisplay += healths
+
+/datum/hud/proc/draw_zone_sel(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+	zone_sel = new /obj/screen/zone_sel()
+	zone_sel.icon = ui_datum.ui_style_icon
+	zone_sel.screen_loc = ui_datum.ui_zonesel
+	if(ui_alpha)
+		zone_sel.alpha = ui_alpha
+	if(ui_color)
+		zone_sel.color = ui_color
+	zone_sel.update_icon(mymob)
+	static_inventory += zone_sel

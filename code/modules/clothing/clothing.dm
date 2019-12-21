@@ -235,6 +235,68 @@
 		var/mob/M = src.loc
 		M.update_inv_wear_mask()
 
+/obj/item/clothing/mask/verb/toggle_internals()
+	set category = "Object"
+	set name = "Toggle Internals"
+	set src in usr
+
+	if(!(flags_inventory & ALLOWINTERNALS))
+		to_chat(usr, SPAN_NOTICE("This mask doesnt support internals."))
+		return
+
+	if(!iscarbon(usr))
+		return
+
+	var/mob/living/carbon/C = usr
+	if(C.is_mob_incapacitated())
+		return
+	
+	if(C.internal)
+		C.internal = null
+		to_chat(C, SPAN_NOTICE("No longer running on internals."))
+	else
+		var/list/nicename = null
+		var/list/tankcheck = null
+		var/breathes = "oxygen"    //default, we'll check later
+		if(ishuman(C))
+			var/mob/living/carbon/human/H = C
+			breathes = H.species.breath_type
+			nicename = list ("suit", "back", "belt", "right hand", "left hand", "left pocket", "right pocket")
+			tankcheck = list (H.s_store, C.back, H.belt, C.r_hand, C.l_hand, H.l_store, H.r_store)
+		else
+			nicename = list("Right Hand", "Left Hand", "Back")
+			tankcheck = list(C.r_hand, C.l_hand, C.back)
+		var/best = 0
+		var/bestpressure = 0
+		for(var/i=1, i<tankcheck.len+1, ++i)
+			if(istype(tankcheck[i], /obj/item/tank))
+				var/obj/item/tank/t = tankcheck[i]
+				var/goodtank
+				if(t.gas_type == GAS_TYPE_N2O) //anesthetic
+					goodtank = TRUE
+				else
+					switch(breathes)
+						if("nitrogen")
+							if(t.gas_type == GAS_TYPE_NITROGEN)
+								goodtank = TRUE
+						if ("oxygen")
+							if(t.gas_type == GAS_TYPE_OXYGEN || t.gas_type == GAS_TYPE_AIR)
+								goodtank = TRUE
+						if ("carbon dioxide")
+							if(t.gas_type == GAS_TYPE_CO2)
+								goodtank = TRUE
+				if(goodtank)
+					if(t.pressure >= 20 && t.pressure > bestpressure)
+						best = i
+						bestpressure = t.pressure
+		//We've determined the best container now we set it as our internals
+		if(best)
+			to_chat(C, SPAN_NOTICE("You are now running on internals from [tankcheck[best]] on your [nicename[best]]."))
+			C.internal = tankcheck[best]
+		if(!C.internal)
+			to_chat(C, SPAN_NOTICE("You don't have a[breathes=="oxygen" ? "n oxygen" : addtext(" ",breathes)] tank."))
+	return TRUE
+
 
 //some gas masks modify the air that you breathe in.
 /obj/item/clothing/mask/proc/filter_air(list/air_info)

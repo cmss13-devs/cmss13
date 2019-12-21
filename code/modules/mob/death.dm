@@ -62,6 +62,9 @@
 	if(hud_used && hud_used.healths)
 		hud_used.healths.icon_state = "health7"
 
+	if(hud_used && hud_used.pulse_line)
+		hud_used.pulse_line.icon_state = "pulse_dead"
+
 	timeofdeath = world.time
 	life_time_total = world.time - life_time_start
 	if(mind) mind.store_memory("Time of death: [worldtime2text()]", 0)

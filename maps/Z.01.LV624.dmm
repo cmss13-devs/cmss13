@@ -14911,7 +14911,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
 "aPR" = (
-/obj/structure/lazarus_sign{
+/obj/structure/lz_sign/lazarus_sign{
 	density = 0
 	},
 /turf/open/gm/grass,
@@ -20310,7 +20310,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
 "nsA" = (
-/obj/structure/lazarus_sign{
+/obj/structure/lz_sign/lazarus_sign{
 	layer = 4
 	},
 /turf/open/gm/dirt,

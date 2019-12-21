@@ -96,6 +96,7 @@
 			if(MAP_PRISON_STATION) new /obj/item/map/FOP_map(T)
 			if(MAP_DESERT_DAM) new /obj/item/map/desert_dam(T)
 			if(MAP_WHISKEY_OUTPOST) new /obj/item/map/whiskey_outpost_map(T)
+			if(MAP_SOROKYNE_STRATA) new /obj/item/map/sorokyne_map(T)
 	if(monkey_amount)
 		//var/debug_tally = 0
 		switch(map_tag)

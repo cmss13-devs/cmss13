@@ -60085,6 +60085,10 @@
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/hallway/central/south)
+"mbk" = (
+/obj/structure/lz_sign/prison_sign,
+/turf/open/floor/plating,
+/area/prison/hanger/main)
 "mbN" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
@@ -110145,7 +110149,7 @@ aYM
 aYM
 aYM
 aYM
-aYM
+mbk
 aYM
 bia
 biU

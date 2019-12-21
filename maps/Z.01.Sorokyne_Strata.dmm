@@ -99,7 +99,7 @@
 /turf/open/floor/interior/plastic,
 /area/strata/ag/exterior/paths/cabin_area/shed)
 "aau" = (
-/turf/closed/wall/resin/ondirt,
+/turf/closed/wall/resin/strata/on_tiles,
 /area/strata/ag/interior/paths/cabin_area/cave)
 "aav" = (
 /obj/effect/decal/strata_decals/rocks/ice/ice1{
@@ -174,7 +174,7 @@
 /area/strata/ag/exterior/paths/cabin_area/central)
 "aaG" = (
 /obj/effect/decal/cleanable/blood,
-/turf/closed/wall/resin/ondirt,
+/turf/closed/wall/resin/strata/on_tiles,
 /area/strata/ag/interior/paths/cabin_area/cave)
 "aaH" = (
 /turf/open/ice,
@@ -211,7 +211,7 @@
 /turf/open/snow/layer0,
 /area/strata/ag/exterior)
 "aaO" = (
-/turf/closed/wall/resin/membrane/ondirt,
+/turf/closed/wall/resin/membrane/strata/on_tiles,
 /area/strata/ag/interior/paths/cabin_area/cave)
 "aaP" = (
 /obj/effect/decal/remains/xeno,
@@ -753,7 +753,7 @@
 /turf/open/snow/layer0,
 /area/strata/ag/exterior/paths/cabin_area/central)
 "acz" = (
-/turf/closed/wall/resin/ondirt,
+/turf/closed/wall/resin/strata/on_tiles,
 /area/strata/ag/interior/dorms/hive)
 "acA" = (
 /obj/structure/machinery/power/apc{
@@ -6615,7 +6615,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "asv" = (
-/turf/closed/wall/resin/membrane/ondirt,
+/turf/closed/wall/resin/membrane/strata/on_tiles,
 /area/strata/ag/interior/dorms/hive)
 "asw" = (
 /obj/structure/bed/nest,
@@ -14550,7 +14550,7 @@
 /area/strata/ag/interior/dorms/hive)
 "aMx" = (
 /obj/effect/decal/cleanable/blood,
-/turf/closed/wall/resin/ondirt,
+/turf/closed/wall/resin/strata/on_tiles,
 /area/strata/ag/interior/dorms/hive)
 "aMy" = (
 /obj/structure/largecrate/hunter_games_construction,
@@ -36885,7 +36885,7 @@
 /turf/open/snow/layer0,
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "bYQ" = (
-/turf/closed/wall/resin/ondirt,
+/turf/closed/wall/resin/strata/on_tiles,
 /area/strata/ug/interior/jungle/deep/minehead)
 "bYR" = (
 /obj/structure/machinery/light/small{
@@ -45084,7 +45084,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/minehead)
 "fBh" = (
-/turf/closed/wall/resin/membrane/ondirt,
+/turf/closed/wall/resin/membrane/strata/on_tiles,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "fBC" = (
 /obj/structure/floodgate,
@@ -45587,6 +45587,13 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks/south)
+"isu" = (
+/obj/structure/lz_sign/sorokyne_sign/interior,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/strata/ag/interior/dorms/north)
 "ivY" = (
 /obj/item/tool/crowbar,
 /turf/open/snow/layer0,
@@ -45870,7 +45877,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/tcomms)
 "jLY" = (
-/turf/closed/wall/resin/ondirt,
+/turf/closed/wall/resin/strata/on_tiles,
 /area/strata/ag/exterior)
 "jNn" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
@@ -47043,6 +47050,10 @@
 /obj/structure/sign/safety/blast_door,
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/interior/outpost/gen/bball/nest)
+"plC" = (
+/obj/structure/lz_sign/sorokyne_sign,
+/turf/open/snow/layer1,
+/area/strata/ag/exterior/nearlz2)
 "pmO" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/ice,
@@ -47434,7 +47445,7 @@
 	},
 /area/strata/ag/interior/landingzone_1)
 "rzG" = (
-/turf/closed/wall/resin/ondirt,
+/turf/closed/wall/resin/strata/on_tiles,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "rDl" = (
 /obj/structure/machinery/weather_siren{
@@ -48614,7 +48625,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks/south)
 "xXi" = (
-/turf/closed/wall/resin/membrane/ondirt,
+/turf/closed/wall/resin/membrane/strata/on_tiles,
 /area/strata/ug/interior/jungle/deep/minehead)
 "xYw" = (
 /obj/effect/decal/strata_decals/rocks/ice/ice1{
@@ -54375,7 +54386,7 @@ asw
 acz
 acz
 aot
-bAw
+isu
 awX
 bHo
 bIz
@@ -54633,7 +54644,7 @@ akX
 aRb
 acz
 aot
-bAx
+bAz
 awX
 bHo
 bIV
@@ -55923,10 +55934,10 @@ aMx
 aTq
 acz
 aot
-bAz
+bAx
 bCK
 bHq
-bAz
+bAw
 aLf
 bIy
 aLf
@@ -60916,7 +60927,7 @@ bHt
 ciz
 ciz
 ciz
-ciz
+plC
 ckZ
 cmE
 cnC
@@ -61174,7 +61185,7 @@ chQ
 ciz
 ciz
 ciz
-ciz
+cjz
 cjz
 cmE
 cnD

@@ -3141,7 +3141,7 @@
 	},
 /area/bigredv2/outside/nw)
 "ahU" = (
-/obj/structure/solaris_sign,
+/obj/structure/lz_sign/solaris_sign,
 /turf/open/floor{
 	tag = "icon-asteroidwarning";
 	icon_state = "asteroidwarning"
@@ -33024,6 +33024,10 @@
 	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/caves_research)
+"jvt" = (
+/obj/structure/lz_sign/solaris_sign,
+/turf/open/mars,
+/area/bigredv2/outside/w)
 "jCY" = (
 /turf/open/mars_cave{
 	tag = "icon-mars_cave_10";
@@ -41330,7 +41334,7 @@ aMz
 aYD
 aYD
 aDv
-aYF
+jvt
 aYF
 aYF
 bcp

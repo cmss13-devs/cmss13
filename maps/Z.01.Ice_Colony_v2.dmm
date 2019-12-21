@@ -20520,7 +20520,7 @@
 	},
 /area/ice_colony/exterior/surface/landing_pad)
 "aYP" = (
-/obj/structure/ice_sign,
+/obj/structure/lz_sign/ice_sign,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "aYQ" = (
@@ -20903,7 +20903,6 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/recharge_station,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "aZW" = (
@@ -21174,16 +21173,6 @@
 	tag = "icon-warnplate (WEST)";
 	icon_state = "warnplate";
 	dir = 8
-	},
-/area/ice_colony/underground/hangar)
-"baG" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/plating/icefloor{
-	tag = "icon-warnplate (EAST)";
-	icon_state = "warnplate";
-	dir = 4
 	},
 /area/ice_colony/underground/hangar)
 "baH" = (
@@ -24011,11 +24000,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
-"bii" = (
-/obj/structure/table/reinforced,
-/obj/structure/machinery/computer/shuttle_control/dropship2,
-/turf/open/floor/plating/icefloor,
-/area/ice_colony/landing/console2)
 "bij" = (
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
@@ -36125,7 +36109,6 @@
 /area/ice_colony/underground/security)
 "bMY" = (
 /obj/structure/table/reinforced,
-
 /turf/open/floor{
 	tag = "icon-darkred2 (NORTHEAST)";
 	icon_state = "darkred2";
@@ -41007,6 +40990,16 @@
 	dir = 9
 	},
 /area/ice_colony/exterior/surface/valley/south)
+"hRN" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor{
+	tag = "icon-warnplate (WEST)";
+	icon_state = "warnplate";
+	dir = 8
+	},
+/area/ice_colony/underground/hangar)
 "iBu" = (
 /obj/structure/table/reinforced,
 /obj/item/paper/research_notes,
@@ -41015,10 +41008,17 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/underground/research)
+"iQg" = (
+/obj/item/packageWrap,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/underground/hangar)
 "jsn" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/snow/layer1,
 /area/ice_colony/exterior/surface/valley/south)
+"jtr" = (
+/turf/closed/wall,
+/area/ice_colony/exterior/surface/cliff)
 "jCk" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
@@ -41032,6 +41032,17 @@
 	dir = 8
 	},
 /area/ice_colony/surface/hangar/alpha)
+"jZI" = (
+/obj/structure/table/reinforced,
+/obj/structure/machinery/computer/shuttle_control/dropship2,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/underground/hangar)
+"kcN" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/underground/hangar)
 "kKZ" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -41058,6 +41069,13 @@
 	icon_state = "wood"
 	},
 /area/ice_colony/underground/crew/library)
+"lyD" = (
+/obj/structure/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/underground/hangar)
 "lyE" = (
 /obj/structure/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
@@ -41149,6 +41167,9 @@
 	},
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/leisure)
+"pyn" = (
+/turf/closed/wall,
+/area/ice_colony/underground/hangar)
 "qny" = (
 /obj/structure/table/woodentable,
 /obj/item/document_objective/folder,
@@ -41187,6 +41208,10 @@
 	dir = 9
 	},
 /area/ice_colony/exterior/surface/valley/south)
+"rmR" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/underground/hangar)
 "rvL" = (
 /obj/structure/table/reinforced,
 /obj/item/document_objective/folder,
@@ -41291,6 +41316,10 @@
 	dir = 2
 	},
 /area/ice_colony/surface/dorms)
+"tBe" = (
+/obj/structure/bed/chair,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/underground/hangar)
 "tFy" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Colony Dormitories";
@@ -41334,6 +41363,11 @@
 	dir = 1
 	},
 /area/ice_colony/exterior/surface/landing_pad)
+"uuK" = (
+/obj/structure/table,
+/obj/item/toy/deck/uno,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/underground/hangar)
 "uAe" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor{
@@ -41341,17 +41375,6 @@
 	icon_state = "darkyellow2"
 	},
 /area/ice_colony/surface/tcomms)
-"uBf" = (
-/obj/structure/machinery/alarm{
-	dir = 8;
-	pixel_x = 24
-	},
-/turf/open/floor/plating/icefloor{
-	tag = "icon-warnplate (SOUTHEAST)";
-	icon_state = "warnplate";
-	dir = 6
-	},
-/area/ice_colony/underground/hangar)
 "uPr" = (
 /turf/open/floor{
 	dir = 6;
@@ -41364,6 +41387,13 @@
 /obj/item/disk/objective,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/research)
+"vhS" = (
+/obj/structure/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/underground/hangar)
 "vtU" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-W";
@@ -41436,6 +41466,12 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/tcomms)
+"yhm" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/underground/hangar)
 "yle" = (
 /obj/structure/filingcabinet,
 /obj/item/paper/research_notes,
@@ -56799,19 +56835,19 @@ aba
 abb
 aaC
 aab
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
+pyn
+pyn
+pyn
+pyn
+pyn
+pyn
+pyn
+pyn
+pyn
+pyn
+pyn
+pyn
+pyn
 aZF
 aZF
 beB
@@ -57081,19 +57117,19 @@ aJH
 aaR
 abb
 aab
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+pyn
 aZF
 aZF
 aZG
@@ -57363,19 +57399,19 @@ aJQ
 aKl
 aaQ
 aab
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
-aZF
+aZG
+aZT
+aZT
+aZW
+vhS
+aZW
+kcN
+aZW
+vhS
+aZW
+aZU
+aZG
+pyn
 aZF
 aZF
 aZG
@@ -57646,16 +57682,16 @@ aca
 afx
 aab
 aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
+aZT
+aZW
+aZW
+aZW
+tBe
+uuK
+iQg
+aZW
+aZW
+aZW
 aZG
 aZG
 aZG
@@ -57928,17 +57964,17 @@ aJN
 aaQ
 aab
 aZG
-aZT
-aZT
+aZU
+aZW
 bao
+baJ
+baJ
+baJ
+hRN
+baJ
+baJ
+baJ
 bay
-baJ
-baJ
-baJ
-baJ
-baJ
-baJ
-baJ
 baJ
 baJ
 baJ
@@ -58210,7 +58246,7 @@ aba
 afx
 aab
 aZG
-aZT
+rmR
 aZW
 bap
 aZW
@@ -58492,7 +58528,7 @@ aJN
 aaQ
 aab
 aZG
-aZU
+aZW
 aZW
 bap
 baz
@@ -61879,7 +61915,6 @@ aZG
 bab
 aZW
 baq
-baG
 baN
 baN
 baN
@@ -61890,7 +61925,6 @@ baN
 baN
 baN
 baN
-baG
 baN
 baN
 baN
@@ -61900,12 +61934,14 @@ baN
 baN
 baN
 baN
-baG
-uBf
-bii
-bab
-biO
-bji
+baN
+baN
+baN
+bhu
+aZW
+aZW
+aZW
+aZW
 aZG
 bgH
 bgH
@@ -62158,36 +62194,36 @@ aac
 aac
 aab
 aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
-aZG
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
+aZW
 aZG
 bjK
 bjV
@@ -62439,38 +62475,38 @@ acj
 acD
 aac
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-bjA
+aZG
+aZW
+aZW
+aZW
+aZW
+yhm
+aZW
+aZW
+aZW
+aZW
+aZG
+aZW
+aZW
+aZW
+aZW
+yhm
+aZW
+aZW
+aZW
+aZW
+aZG
+aZW
+aZW
+aZW
+aZW
+yhm
+lyD
+jZI
+bab
+biO
+bji
+aZG
 bjA
 bjA
 bjA
@@ -62720,39 +62756,39 @@ aJL
 aZr
 acm
 aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aab
-aab
+jtr
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
+aZG
 aab
 aab
 bjA
@@ -63002,40 +63038,40 @@ aJL
 aaU
 abG
 aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
+jtr
 aab
 bjA
 bku

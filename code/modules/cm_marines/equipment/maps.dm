@@ -88,7 +88,7 @@
 /obj/item/map/sorokyne_map
 	name = "\improper Sorokyne Outpost Map"
 	desc = "A labelled schematic of the Sorokyne Outpost and the surrounding caves."
-	html_link = "placeholder" // TRIIODINE PUT URL HERE
+	html_link = "images/2/21/Sorokyne_Wiki_Map.jpg" //The fact that this is just a wiki-link makes me sad and amused.
 	color = "cyan"
 
 //used by marine equipment machines to spawn the correct map.

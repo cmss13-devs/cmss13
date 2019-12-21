@@ -20,7 +20,8 @@ mob/living/carbon/var
 	hal_crit = 0
 
 mob/living/carbon/proc/handle_hallucinations()
-	if(handling_hal) return
+	if(handling_hal) 
+		return
 	handling_hal = 1
 	while(client && hallucination > 20)
 		sleep(rand(200,500)/(hallucination/25))
@@ -37,14 +38,20 @@ mob/living/carbon/proc/handle_hallucinations()
 				//to_chat(src, "Traitor Items")
 				if(!halitem)
 					halitem = new
-					var/list/slots_free = list(ui_lhand,ui_rhand)
-					if(l_hand) slots_free -= ui_lhand
-					if(r_hand) slots_free -= ui_rhand
-					if(istype(src,/mob/living/carbon/human))
+					var/datum/custom_hud/ui_datum = custom_huds_list[client.prefs.UI_style]
+					var/list/slots_free = list(ui_datum.ui_lhand, ui_datum.ui_rhand)
+					if(l_hand) 
+						slots_free -= ui_datum.ui_lhand
+					if(r_hand) 
+						slots_free -= ui_datum.ui_rhand
+					if(ishuman(src))
 						var/mob/living/carbon/human/H = src
-						if(!H.belt) slots_free += ui_belt
-						if(!H.l_store) slots_free += ui_storage1
-						if(!H.r_store) slots_free += ui_storage2
+						if(!H.belt) 
+							slots_free += ui_datum.ui_belt
+						if(!H.l_store) 
+							slots_free += ui_datum.ui_storage1
+						if(!H.r_store) 
+							slots_free += ui_datum.ui_storage2
 					if(slots_free.len)
 						halitem.screen_loc = pick(slots_free)
 						halitem.layer = 50
@@ -75,7 +82,8 @@ mob/living/carbon/proc/handle_hallucinations()
 								halitem.icon = 'icons/obj/items/weapons/grenade.dmi'
 								halitem.icon_state = "flashbang1"
 								halitem.name = "Flashbang"
-						if(client) client.screen += halitem
+						if(client) 
+							client.screen += halitem
 						spawn(rand(100,250))
 							if(client)
 								client.screen -= halitem
@@ -102,9 +110,11 @@ mob/living/carbon/proc/handle_hallucinations()
 								halimage = image('icons/obj/items/assemblies.dmi',target,"plastic-explosive2",OBJ_LAYER+0.01)
 
 
-						if(client) client.images += halimage
+						if(client) 
+							client.images += halimage
 						spawn(rand(10,50)) //Only seen for a brief moment.
-							if(client) client.images -= halimage
+							if(client) 
+								client.images -= halimage
 							halimage = null
 
 

@@ -43,27 +43,28 @@
 
 /mob/living/carbon/Xenomorph/regenerate_icons()
 	..()
-
 	update_inv_r_hand()
 	update_inv_l_hand()
 	update_icons()
 
 
 /mob/living/carbon/Xenomorph/update_inv_pockets()
+	var/datum/custom_hud/alien/ui_datum = custom_huds_list["alien"]
 	if(l_store)
 		if(client && hud_used && hud_used.hud_shown)
-			l_store.screen_loc = ui_storage1
+			l_store.screen_loc = ui_datum.ui_storage1
 			client.screen += l_store
 	if(r_store)
 		if(client && hud_used && hud_used.hud_shown)
-			r_store.screen_loc = ui_storage2
+			r_store.screen_loc = ui_datum.ui_storage2
 			client.screen += r_store
 
 /mob/living/carbon/Xenomorph/update_inv_r_hand()
 	remove_overlay(X_R_HAND_LAYER)
 	if(r_hand)
 		if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD)
-			r_hand.screen_loc = ui_rhand
+			var/datum/custom_hud/alien/ui_datum = custom_huds_list["alien"]
+			r_hand.screen_loc = ui_datum.ui_rhand
 			client.screen += r_hand
 		var/t_state = r_hand.item_state
 		if(!t_state)
@@ -75,7 +76,8 @@
 	remove_overlay(X_L_HAND_LAYER)
 	if(l_hand)
 		if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD)
-			l_hand.screen_loc = ui_lhand
+			var/datum/custom_hud/alien/ui_datum = custom_huds_list["alien"]
+			l_hand.screen_loc = ui_datum.ui_lhand
 			client.screen += l_hand
 		var/t_state = l_hand.item_state
 		if(!t_state)

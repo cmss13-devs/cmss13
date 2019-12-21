@@ -235,13 +235,6 @@ proc/tg_list2text(list/list, glue=",")
 	if(rights & R_MENTOR)		. += "[seperator]+MENTOR"
 	return .
 
-/proc/ui_style2icon(ui_style)
-	switch(ui_style)
-		if("old")		return 'icons/mob/hud/screen1_old.dmi'
-		if("Orange")	return 'icons/mob/hud/screen1_Orange.dmi'
-		if("Midnight")	return 'icons/mob/hud/screen1_Midnight.dmi'
-		else			return 'icons/mob/hud/screen1_White.dmi'
-
 //Shows all the direction represented by direction
 /proc/alldir2text_short(direction)
 	var/dirs = ""

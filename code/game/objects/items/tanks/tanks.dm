@@ -130,14 +130,10 @@
 			if(location.internal == src)
 				location.internal = null
 				to_chat(usr, SPAN_NOTICE(" You close the tank release valve."))
-				if (location.hud_used && location.hud_used.internals)
-					location.hud_used.internals.icon_state = "internal0"
 			else
 				if(location.wear_mask && (location.wear_mask.flags_inventory & ALLOWINTERNALS))
 					location.internal = src
 					to_chat(usr, SPAN_NOTICE(" You open \the [src] valve."))
-					if (location.hud_used && location.hud_used.internals)
-						location.hud_used.internals.icon_state = "internal1"
 				else
 					to_chat(usr, SPAN_NOTICE(" You need something to connect to \the [src]."))
 

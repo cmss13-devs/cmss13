@@ -200,8 +200,6 @@
 	if(I.flags_inv_hide & HIDEEYES)
 		update_inv_glasses()
 	if(!equipping && internal)
-		if(hud_used && hud_used.internals)
-			hud_used.internals.icon_state = "internal0"
 		internal = null
 	update_tint()
 	update_inv_wear_mask()

@@ -67,8 +67,6 @@
 			internal = null
 		if(internal)
 			return internal.return_air()
-		else if(hud_used && hud_used.internals)
-			hud_used.internals.icon_state = "internal0"
 	return null
 
 /mob/living/carbon/human/proc/handle_breath(list/air_info)

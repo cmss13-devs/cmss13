@@ -4,13 +4,13 @@
 	voice_name = "unknown"
 	icon = 'icons/mob/humans/human.dmi'
 	icon_state = "body_m_s"
-	directional_lum = 0 //humans carrying light sources only illuminate the area in front of themselves
+	directional_lum = 0 				//humans carrying light sources only illuminate the area in front of themselves
 	hud_possible = list(HEALTH_HUD,STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPCHEM_HUD,IMPTRACK_HUD, SPECIALROLE_HUD, SQUAD_HUD, ORDER_HUD)
-	var/embedded_flag	  //To check if we've need to roll for damage on movement while an item is imbedded in us.
-	var/regenZ = 1 //Temp zombie thing until I write a better method ~Apop
-	var/allow_gun_usage = FALSE //False by default, so that synthetics can't use guns.
-	var/has_used_pamphlet = FALSE //Has this person used a pamphlet?
-	var/list/embedded_items = list() //A list of all the shrapnel currently embedded in the human
+	var/embedded_flag	  				//To check if we've need to roll for damage on movement while an item is imbedded in us.
+	var/regenZ = 1 						//Temp zombie thing until I write a better method ~Apop
+	var/allow_gun_usage = FALSE 		//False by default, so that synthetics can't use guns.
+	var/has_used_pamphlet = FALSE 		//Has this person used a pamphlet?
+	var/list/embedded_items = list() 	//A list of all the shrapnel currently embedded in the human
 
 	var/list/synthetic_HUD_toggled = list(FALSE,FALSE)
 
@@ -409,8 +409,6 @@
 				if (internal)
 					internal.add_fingerprint(usr)
 					internal = null
-					if (hud_used && hud_used.internals)
-						hud_used.internals.icon_state = "internal0"
 					visible_message("[src] is no longer running on internals.", null, null, 1)
 				else
 					if(istype(wear_mask, /obj/item/clothing/mask))
@@ -423,8 +421,6 @@
 						if (internal)
 							visible_message(SPAN_NOTICE("[src] is now running on internals."), null, null, 1)
 							internal.add_fingerprint(usr)
-							if (hud_used && hud_used.internals)
-								hud_used.internals.icon_state = "internal1"
 
 				// Update strip window
 				if(usr.interactee == src && Adjacent(usr))

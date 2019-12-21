@@ -39,7 +39,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/ooccolor = "#b82e00"
 	var/be_special = 0				// Special role selection
 	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK // flags in #define/mode.dm
-	var/UI_style = "Midnight"
+	var/UI_style = "midnight"
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
 	var/toggles_sound = TOGGLES_SOUND_DEFAULT
 	var/UI_style_color = "#ffffff"
@@ -1204,14 +1204,16 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("ui")
 					switch(UI_style)
-						if("Midnight")
-							UI_style = "Orange"
-						if("Orange")
+						if("dark")
+							UI_style = "midnight"
+						if("midnight")
+							UI_style = "orange"
+						if("orange")
 							UI_style = "old"
 						if("old")
-							UI_style = "White"
+							UI_style = "white"
 						else
-							UI_style = "Midnight"
+							UI_style = "dark"
 
 				if("UIcolor")
 					var/UI_style_color_new = input(user, "Choose your UI color, dark colors are not recommended!") as color|null

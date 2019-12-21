@@ -17,6 +17,16 @@ var/list/MAPS_COLD_TEMP = list(MAP_ICE_COLONY, MAP_SOROKYNE_STRATA)
 //List of player votes. Name of the map from NEXT_MAP_CANDIADATES indexed by ckey
 var/list/player_votes = list()
 
+// Global lists of the HUDs
+var/global/list/custom_huds_list = list("midnight" = new /datum/custom_hud(),
+									"dark" = new /datum/custom_hud/dark(),
+									"old" = new /datum/custom_hud/old(),
+									"orange" = new /datum/custom_hud/orange(),
+									"white" = new /datum/custom_hud/white(),
+									"alien" = new /datum/custom_hud/alien(),
+									"robot" = new /datum/custom_hud/robot()
+									)
+
 //Since it didn't really belong in any other category, I'm putting this here
 //This is for procs to replace all the goddamn 'in world's that are chilling around the code
 

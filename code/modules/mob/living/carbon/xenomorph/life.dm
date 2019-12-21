@@ -317,13 +317,8 @@ updatehealth()
 		if(env_temperature > (T0C + 66))
 			adjustFireLoss((env_temperature - (T0C + 66)) / 5) //Might be too high, check in testing.
 			updatehealth() //Make sure their actual health updates immediately
-			if(hud_used && hud_used.fire_icon)
-				hud_used.fire_icon.icon_state = "fire2"
 			if(prob(20))
 				to_chat(src, SPAN_WARNING("You feel a searing heat!"))
-		else
-			if(hud_used && hud_used.fire_icon)
-				hud_used.fire_icon.icon_state = "fire0"
 
 	if(!T || !istype(T))
 		return

@@ -133,7 +133,6 @@
 /obj/screen/gun/move
 	name = "Allow Walking"
 	icon_state = "no_walk0"
-	screen_loc = ui_gun2
 
 	update_icon(mob/user)
 		if(user.gun_mode)
@@ -164,7 +163,6 @@
 /obj/screen/gun/run
 	name = "Allow Running"
 	icon_state = "no_run0"
-	screen_loc = ui_gun3
 
 	update_icon(mob/user)
 		if(user.gun_mode)
@@ -196,7 +194,6 @@
 /obj/screen/gun/item
 	name = "Allow Item Use"
 	icon_state = "no_item0"
-	screen_loc = ui_gun1
 
 	update_icon(mob/user)
 		if(user.gun_mode)
@@ -227,7 +224,6 @@
 /obj/screen/gun/mode
 	name = "Toggle Gun Mode"
 	icon_state = "gun0"
-	screen_loc = ui_gun_select
 
 	update_icon(mob/user)
 		if(user.gun_mode) icon_state = "gun1"
@@ -243,7 +239,6 @@
 /obj/screen/zone_sel
 	name = "damage zone"
 	icon_state = "zone_sel"
-	screen_loc = ui_zonesel
 	var/selecting = "chest"
 
 /obj/screen/zone_sel/update_icon(mob/living/user)
@@ -314,18 +309,8 @@
 		update_icon(user)
 	return 1
 
-
-/obj/screen/zone_sel/alien
-	icon = 'icons/mob/hud/screen1_alien.dmi'
-
 /obj/screen/zone_sel/robot
 	icon = 'icons/mob/hud/screen1_robot.dmi'
-
-
-
-
-
-
 
 /obj/screen/clicked(var/mob/user)
 	if(!user)	return 1
@@ -438,15 +423,10 @@
 				return 1
 	return 0
 
-
-
-
-
 /obj/screen/throw_catch
 	name = "throw/catch"
-	icon = 'icons/mob/hud/screen1_Midnight.dmi'
+	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "act_throw_off"
-	screen_loc = ui_drop_throw
 
 /obj/screen/throw_catch/clicked(var/mob/user, var/list/mods)
 	var/mob/living/carbon/C = user
@@ -465,9 +445,8 @@
 
 /obj/screen/drop
 	name = "drop"
-	icon = 'icons/mob/hud/screen1_Midnight.dmi'
+	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "act_drop"
-	screen_loc = ui_drop_throw
 	layer = HUD_LAYER
 
 /obj/screen/drop/clicked(var/mob/user)
@@ -477,10 +456,9 @@
 
 /obj/screen/resist
 	name = "resist"
-	icon = 'icons/mob/hud/screen1_Midnight.dmi'
+	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "act_resist"
 	layer = HUD_LAYER
-	screen_loc = ui_pull_resist
 
 /obj/screen/resist/clicked(var/mob/user)
 	if(isliving(user))
@@ -488,16 +466,10 @@
 		L.resist()
 		return 1
 
-/obj/screen/resist/alien
-	icon = 'icons/mob/hud/screen1_alien.dmi'
-	screen_loc = ui_storage2
-
-
 /obj/screen/mov_intent
 	name = "run/walk toggle"
-	icon = 'icons/mob/hud/screen1_Midnight.dmi'
+	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "running"
-	screen_loc = ui_movi
 
 /obj/screen/mov_intent/clicked(mob/living/user)
 	if (..())
@@ -539,7 +511,6 @@
 /obj/screen/act_intent
 	name = "intent"
 	icon_state = "intent_help"
-	screen_loc = ui_acti
 
 /obj/screen/act_intent/clicked(var/mob/user)
 	user.a_intent_change("right")
@@ -564,105 +535,15 @@
 	return 1
 
 
-/obj/screen/internals
-	name = "toggle internals"
-	icon_state = "internal0"
-	screen_loc = ui_internal
-
-/obj/screen/internals/clicked(var/mob/user)
-	if (..())
-		return 1
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		if(!C.is_mob_incapacitated())
-			if(C.internal)
-				C.internal = null
-				to_chat(C, SPAN_NOTICE("No longer running on internals."))
-				icon_state = "internal0"
-			else
-				if(!istype(C.wear_mask, /obj/item/clothing/mask))
-					to_chat(C, SPAN_NOTICE("You are not wearing a mask."))
-					return 1
-				else
-					var/list/nicename = null
-					var/list/tankcheck = null
-					var/breathes = "oxygen"    //default, we'll check later
-
-					if(ishuman(C))
-						var/mob/living/carbon/human/H = C
-						breathes = H.species.breath_type
-						nicename = list ("suit", "back", "belt", "right hand", "left hand", "left pocket", "right pocket")
-						tankcheck = list (H.s_store, C.back, H.belt, C.r_hand, C.l_hand, H.l_store, H.r_store)
-
-					else
-
-						nicename = list("Right Hand", "Left Hand", "Back")
-						tankcheck = list(C.r_hand, C.l_hand, C.back)
-
-					var/best = 0
-					var/bestpressure = 0
-
-					for(var/i=1, i<tankcheck.len+1, ++i)
-						if(istype(tankcheck[i], /obj/item/tank))
-							var/obj/item/tank/t = tankcheck[i]
-							var/goodtank
-							if(t.gas_type == GAS_TYPE_N2O) //anesthetic
-								goodtank = TRUE
-							else
-								switch(breathes)
-
-									if("nitrogen")
-										if(t.gas_type == GAS_TYPE_NITROGEN)
-											goodtank = TRUE
-
-									if ("oxygen")
-										if(t.gas_type == GAS_TYPE_OXYGEN || t.gas_type == GAS_TYPE_AIR)
-											goodtank = TRUE
-
-									if ("carbon dioxide")
-										if(t.gas_type == GAS_TYPE_CO2)
-											goodtank = TRUE
-							if(goodtank)
-								if(t.pressure >= 20 && t.pressure > bestpressure)
-									best = i
-									bestpressure = t.pressure
-
-					//We've determined the best container now we set it as our internals
-
-					if(best)
-						to_chat(C, SPAN_NOTICE("You are now running on internals from [tankcheck[best]] on your [nicename[best]]."))
-						C.internal = tankcheck[best]
-
-
-					if(C.internal)
-						icon_state = "internal1"
-					else
-						to_chat(C, SPAN_NOTICE("You don't have a[breathes=="oxygen" ? "n oxygen" : addtext(" ",breathes)] tank."))
-	return 1
-
-
-
 /obj/screen/healths
 	name = "health"
 	icon_state = "health0"
-	screen_loc = ui_health
-	icon = 'icons/mob/hud/screen1_Midnight.dmi'
-
-/obj/screen/healths/alien
-	icon = 'icons/mob/hud/screen1_alien.dmi'
-	screen_loc = ui_alien_health
-
-/obj/screen/healths/robot
-	icon = 'icons/mob/hud/screen1_robot.dmi'
-	screen_loc = ui_borg_health
-
-
+	icon = 'icons/mob/hud/human_midnight.dmi'
 
 /obj/screen/pull
 	name = "stop pulling"
-	icon = 'icons/mob/hud/screen1_Midnight.dmi'
+	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "pull0"
-	screen_loc = ui_pull_resist
 
 /obj/screen/pull/clicked(var/mob/user)
 	if (..())
@@ -680,25 +561,21 @@
 
 
 /obj/screen/squad_leader_locator
-	icon = 'icons/mob/hud/screen1_Midnight.dmi'
+	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "trackoff"
 	name = "squad leader locator"
 	alpha = 0 //invisible
 	mouse_opacity = 0
-	screen_loc = ui_sl_locator
 
 /obj/screen/queen_locator
-	icon = 'icons/mob/hud/screen1_alien.dmi'
+	icon = 'icons/mob/hud/alien_standard.dmi'
 	icon_state = "trackoff"
 	name = "queen locator"
-	screen_loc = ui_queen_locator
 
 /obj/screen/xenonightvision
-	icon = 'icons/mob/hud/screen1_alien.dmi'
+	icon = 'icons/mob/hud/alien_standard.dmi'
 	name = "toggle night vision"
-	icon = 'icons/mob/hud/screen1_alien.dmi'
 	icon_state = "nightvision1"
-	screen_loc = ui_alien_nightvision
 
 /obj/screen/xenonightvision/clicked(var/mob/user)
 	if (..())
@@ -711,27 +588,17 @@
 		icon_state = "nightvision1"
 	return 1
 
-
 /obj/screen/bodytemp
 	name = "body temperature"
 	icon_state = "temp0"
-	screen_loc = ui_temp
 
 /obj/screen/oxygen
 	name = "oxygen"
 	icon_state = "oxy0"
-	screen_loc = ui_oxygen
-
-/obj/screen/fire
-	name = "fire"
-	icon_state = "fire0"
-	screen_loc = ui_fire
-
 
 /obj/screen/toggle_inv
 	name = "toggle"
 	icon_state = "other"
-	screen_loc = ui_inventory
 
 /obj/screen/toggle_inv/clicked(var/mob/user)
 	if (..())

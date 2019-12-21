@@ -7,6 +7,7 @@
 
 /datum/hud
 	var/mob/mymob
+	var/datum/custom_hud/ui_datum
 
 	var/hud_version = HUD_STYLE_STANDARD	//the hud version used (standard, reduced, none)
 	var/hud_shown = TRUE			//Used for the HUD toggle (F12)

@@ -24317,10 +24317,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
-"bjg" = (
-/obj/structure/machinery/power/port_gen/pacman,
-/turf/open/floor/plating/icefloor,
-/area/ice_colony/landing/console)
 "bji" = (
 /obj/structure/table/reinforced,
 /obj/item/device/flashlight,
@@ -41040,7 +41036,7 @@
 /obj/structure/table/reinforced,
 /obj/structure/machinery/computer/shuttle_control/dropship2,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/underground/hangar)
+/area/ice_colony/landing/console)
 "kcN" = (
 /obj/structure/bed/chair{
 	dir = 4

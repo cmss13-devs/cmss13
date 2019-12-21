@@ -24317,6 +24317,10 @@
 /obj/structure/machinery/light,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
+"bjg" = (
+/obj/structure/machinery/power/port_gen/pacman,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/landing/console)
 "bji" = (
 /obj/structure/table/reinforced,
 /obj/item/device/flashlight,

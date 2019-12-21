@@ -490,8 +490,8 @@ var/global/list/damage_icon_parts = list()
 /mob/living/carbon/human/update_inv_w_uniform()
 	remove_overlay(UNIFORM_LAYER)
 	if(w_uniform)
-		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown)
-			w_uniform.screen_loc = ui_iclothing
+		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
+			w_uniform.screen_loc = hud_used.ui_datum.ui_iclothing
 			client.screen += w_uniform
 
 		if(!(wear_suit && wear_suit.flags_inv_hide & HIDEJUMPSUIT))
@@ -507,8 +507,8 @@ var/global/list/damage_icon_parts = list()
 	remove_overlay(ID_LAYER)
 	if(!wear_id)
 		return
-	if(client && hud_used && hud_used.hud_shown)
-		wear_id.screen_loc = ui_id
+	if(client && hud_used && hud_used.hud_shown && hud_used.ui_datum)
+		wear_id.screen_loc = hud_used.ui_datum.ui_id
 		client.screen += wear_id
 
 	if(!wear_id.pinned_on_uniform || (w_uniform && w_uniform.displays_id && !w_uniform.rolled_sleeves))
@@ -523,8 +523,8 @@ var/global/list/damage_icon_parts = list()
 	remove_overlay(GLOVES_LAYER)
 	var/image/I
 	if(gloves)
-		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown)
-			gloves.screen_loc = ui_gloves
+		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
+			gloves.screen_loc = hud_used.ui_datum.ui_gloves
 			client.screen += gloves
 
 		if(!(wear_suit && wear_suit.flags_inv_hide & HIDEGLOVES))
@@ -543,8 +543,8 @@ var/global/list/damage_icon_parts = list()
 /mob/living/carbon/human/update_inv_glasses()
 	remove_overlay(GLASSES_LAYER)
 	if(glasses)
-		if(client && hud_used &&  hud_used.hud_shown && hud_used.inventory_shown)
-			glasses.screen_loc = ui_glasses
+		if(client && hud_used &&  hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
+			glasses.screen_loc = hud_used.ui_datum.ui_glasses
 			client.screen += glasses
 
 		var/image/I = glasses.get_mob_overlay(src, WEAR_EYES)
@@ -557,8 +557,8 @@ var/global/list/damage_icon_parts = list()
 /mob/living/carbon/human/update_inv_ears()
 	remove_overlay(EARS_LAYER)
 	if(wear_ear)
-		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown)
-			wear_ear.screen_loc = ui_wear_ear
+		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
+			wear_ear.screen_loc = hud_used.ui_datum.ui_wear_ear
 			client.screen += wear_ear
 
 		var/image/I = wear_ear.get_mob_overlay(src, WEAR_EAR)
@@ -572,8 +572,8 @@ var/global/list/damage_icon_parts = list()
 	remove_overlay(SHOES_LAYER)
 	var/image/I
 	if(shoes)
-		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown)
-			shoes.screen_loc = ui_shoes
+		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
+			shoes.screen_loc = hud_used.ui_datum.ui_shoes
 			client.screen += shoes
 
 		if(!((wear_suit && wear_suit.flags_inv_hide & HIDESHOES) || (w_uniform && w_uniform.flags_inv_hide & HIDESHOES)))
@@ -592,8 +592,8 @@ var/global/list/damage_icon_parts = list()
 	remove_overlay(SUIT_STORE_LAYER)
 	if(s_store)
 
-		if(client && hud_used && hud_used.hud_shown)
-			s_store.screen_loc = ui_sstore1
+		if(client && hud_used && hud_used.hud_shown && hud_used.ui_datum)
+			s_store.screen_loc = hud_used.ui_datum.ui_sstore1
 			client.screen += s_store
 
 		var/image/I	= s_store.get_mob_overlay(src, WEAR_J_STORE)
@@ -609,8 +609,8 @@ var/global/list/damage_icon_parts = list()
 	remove_overlay(HEAD_GARB_LAYER)
 	if(head)
 
-		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown)
-			head.screen_loc = ui_head
+		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
+			head.screen_loc = hud_used.ui_datum.ui_head
 			client.screen += head
 
 		var/image/I = head.get_mob_overlay(src, WEAR_HEAD)
@@ -649,8 +649,8 @@ var/global/list/damage_icon_parts = list()
 	remove_overlay(BELT_LAYER)
 	if(!belt)
 		return
-	if(client && hud_used && hud_used.hud_shown)
-		belt.screen_loc = ui_belt
+	if(client && hud_used && hud_used.hud_shown && hud_used.ui_datum)
+		belt.screen_loc = hud_used.ui_datum.ui_belt
 		client.screen += belt
 	var/image/I = belt.get_mob_overlay(src, WEAR_WAIST)
 	I.layer = -BELT_LAYER
@@ -665,8 +665,8 @@ var/global/list/damage_icon_parts = list()
 	remove_overlay(SUIT_GARB_LAYER)
 
 	if(wear_suit)
-		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown)
-			wear_suit.screen_loc = ui_oclothing
+		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
+			wear_suit.screen_loc = hud_used.ui_datum.ui_oclothing
 			client.screen += wear_suit
 
 		var/image/I = wear_suit.get_mob_overlay(src, WEAR_JACKET)
@@ -712,11 +712,14 @@ var/global/list/damage_icon_parts = list()
 
 
 /mob/living/carbon/human/update_inv_pockets()
-	if(l_store && client && hud_used && hud_used.hud_shown)
-		l_store.screen_loc = ui_storage1
+	if(!(client && hud_used && hud_used.hud_shown && hud_used.ui_datum))
+		return
+
+	if(l_store)
+		l_store.screen_loc = hud_used.ui_datum.ui_storage1
 		client.screen += l_store
-	if(r_store && client && hud_used && hud_used.hud_shown)
-		r_store.screen_loc = ui_storage2
+	if(r_store)
+		r_store.screen_loc = hud_used.ui_datum.ui_storage2
 		client.screen += r_store
 
 
@@ -724,8 +727,8 @@ var/global/list/damage_icon_parts = list()
 	remove_overlay(FACEMASK_LAYER)
 	if(!wear_mask)
 		return
-	if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown)
-		wear_mask.screen_loc = ui_mask
+	if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
+		wear_mask.screen_loc = hud_used.ui_datum.ui_mask
 		client.screen += wear_mask
 
 	if(!(head && head.flags_inv_hide & HIDEMASK))
@@ -739,8 +742,8 @@ var/global/list/damage_icon_parts = list()
 	remove_overlay(BACK_LAYER)
 	if(!back)
 		return
-	if(client && hud_used && hud_used.hud_shown)
-		back.screen_loc = ui_back
+	if(client && hud_used && hud_used.hud_shown && hud_used.ui_datum)
+		back.screen_loc = hud_used.ui_datum.ui_back
 		client.screen += back
 
 	var/image/I = back.get_mob_overlay(src, WEAR_BACK)
@@ -774,9 +777,9 @@ var/global/list/damage_icon_parts = list()
 	remove_overlay(R_HAND_LAYER)
 	if(!r_hand)
 		return
-	if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD)
+	if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD && hud_used.ui_datum)
 		client.screen += r_hand
-		r_hand.screen_loc = ui_rhand
+		r_hand.screen_loc = hud_used.ui_datum.ui_rhand
 
 	var/image/I = r_hand.get_mob_overlay(src, WEAR_R_HAND)
 	I.layer = -R_HAND_LAYER
@@ -789,9 +792,9 @@ var/global/list/damage_icon_parts = list()
 	remove_overlay(L_HAND_LAYER)
 	if(!l_hand)
 		return
-	if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD)
+	if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD && hud_used.ui_datum)
 		client.screen += l_hand
-		l_hand.screen_loc = ui_lhand
+		l_hand.screen_loc = hud_used.ui_datum.ui_lhand
 	var/image/I = l_hand.get_mob_overlay(src, WEAR_L_HAND)
 	I.layer = -L_HAND_LAYER
 	overlays_standing[L_HAND_LAYER] = I

@@ -1,5 +1,4 @@
 /datum/hud/human
-	var/datum/custom_hud/ui_datum
 	var/list/gear = list()
 
 /datum/hud/human/New(var/mob/living/carbon/human/owner, var/datum/custom_hud/hud_type, var/ui_color = "#ffffff", var/ui_alpha = 255)

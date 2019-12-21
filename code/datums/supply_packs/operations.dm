@@ -3,23 +3,6 @@ OPERATIONS
 *******************************************************************************/
 
 
-/datum/supply_packs/specialops
-	name = "special operations crate (operator kit x2)"
-	contains = list(/obj/item/attachable/suppressor,
-					/obj/item/attachable/suppressor,
-					/obj/item/attachable/reddot,
-					/obj/item/attachable/reddot,
-					/obj/item/explosive/grenade/smokebomb,
-					/obj/item/explosive/grenade/smokebomb,
-					/obj/item/clothing/mask/gas/swat,
-					/obj/item/clothing/mask/gas/swat,
-					/obj/item/clothing/accessory/storage/webbing,
-					/obj/item/clothing/accessory/storage/webbing
-					)
-	cost = RO_PRICE_PRICY
-	containertype = /obj/structure/closet/crate
-	containername = "special ops crate"
-	group = "Operations"
 
 /datum/supply_packs/flares
 	name = "flare packs crate (x20)"

@@ -173,7 +173,6 @@
 		// MISCELLANEOUS
 		/obj/item/device/flashlight/combat = round(scale * 5),
 		/obj/item/tool/shovel/etool = round(scale * 4),
-		/obj/item/clothing/mask/gas = round(scale * 10),
 		/obj/item/storage/box/m94/signal = round(scale * 2),
 		/obj/item/storage/box/m94 = round(scale * 10),
 		/obj/item/folding_barricade = round(scale * 4)
@@ -231,7 +230,6 @@
 		/obj/item/explosive/grenade/smokebomb = round(scale * 1),
 		/obj/item/storage/box/m94 = round(scale * 10),
 		/obj/item/device/flashlight/combat = round(scale * 15),
-		/obj/item/clothing/mask/gas = round(scale * 10),
 	)
 
 	contraband = list()
@@ -537,7 +535,6 @@
 						/obj/item/storage/pouch/medkit = 4,
 						/obj/item/storage/pouch/magazine = 4,
 						/obj/item/storage/pouch/pistol = 4,
-						/obj/item/clothing/mask/gas = 4
 					)
 	contraband = list(/obj/item/reagent_container/blood/OMinus = 1)
 
@@ -588,7 +585,6 @@
 						/obj/item/storage/box/m56_system = 1,
 						/obj/item/smartgun_powerpack = 1,
 						/obj/item/storage/pouch/magazine = 1,
-						/obj/item/clothing/mask/gas = 1,
 						/obj/item/storage/belt/gun/smartgunner/full = 1
 			)
 	contraband = list()
@@ -620,7 +616,6 @@
 						/obj/item/storage/pouch/magazine/large = 1,
 						/obj/item/storage/pouch/general/large = 1,
 						/obj/item/storage/pouch/pistol = 1,
-						/obj/item/clothing/mask/gas = 1,
 						/obj/item/device/whistle = 1,
 						/obj/item/storage/box/zipcuffs = 2
 					)
@@ -755,6 +750,7 @@
 					/obj/item/clothing/suit/storage/marine/class/light = 10,
 					/obj/item/clothing/head/helmet/marine = 20,
 					/obj/item/clothing/mask/rebreather/scarf = 10,
+					/obj/item/clothing/mask/gas = 20
 					)
 
 	prices = list()

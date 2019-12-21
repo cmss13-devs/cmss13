@@ -5,7 +5,7 @@
 	obj_icon_state_path = "+acid"
 	mob_icon_state_path = "human_acid"
 	var/original_duration = 50			//Set to 50 for safety reasons if something fails
-	var/damage_in_total = 50
+	var/damage_in_total = 40
 
 /datum/effects/acid/New(var/atom/A, var/zone = "chest")
 	..()

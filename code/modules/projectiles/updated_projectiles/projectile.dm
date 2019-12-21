@@ -414,10 +414,6 @@
 
 	effective_accuracy = max(5, effective_accuracy) //default hit chance is at least 5%.
 
-	if(isliving(P.firer))
-		var/mob/living/shooter_living = P.firer
-		effective_accuracy -= round((shooter_living.maxHealth - shooter_living.health) / 4) //Less chance to hit when injured.
-
 	if(ishuman(P.firer))
 		var/mob/living/carbon/human/shooter_human = P.firer
 		if(shooter_human.marksman_aura)

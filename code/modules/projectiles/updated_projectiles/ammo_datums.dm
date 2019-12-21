@@ -1456,7 +1456,7 @@
 		pass_down_the_line = TRUE
 
 	if(M.superslowed < 10)
-		M.AdjustSuperslowed(4 * power) // Superslow them a bit more
+		M.AdjustSuperslowed(3 * power) // Superslow them a bit more
 		if(!pass_down_the_line)
 			M.visible_message(SPAN_DANGER("[M] movements are slowed."))
 
@@ -1467,6 +1467,9 @@
 	var/hit_someone = FALSE
 	for(var/mob/living/carbon/M in orange(radius,T))
 		if(isXeno(M) && isXeno(firer) && M:hivenumber == firer:hivenumber)
+			continue
+
+		if(istype(M.buckled, /obj/structure/bed/nest))
 			continue
 
 		hit_someone = TRUE
@@ -1499,6 +1502,10 @@
 	name = "neurotoxic spit"
 	spit_cost = 50
 	effect_power = 2
+
+/datum/ammo/xeno/toxin/queen/New()
+	..()
+	accuracy = config.high_hit_accuracy*2
 
 /datum/ammo/xeno/toxin/queen/on_hit_mob(mob/M,obj/item/projectile/P)
 	apply_neuro(M, effect_power, TRUE)
@@ -1545,13 +1552,14 @@
 	..()
 	bonus_projectiles_amount = 0
 
-/datum/ammo/xeno/toxin/burst/on_hit_mob(mob/M,obj/item/projectile/P)
+/datum/ammo/xeno/toxin/burst/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(isXeno(M) && isXeno(P.firer) && M:hivenumber == P.firer:hivenumber)
 		apply_neuro(M, effect_power*1.5, TRUE)
-	neuro_flak(get_turf(M),P, effect_power, FALSE, 2)
+
+	neuro_flak(get_turf(M), P, effect_power, FALSE, 1)
 
 /datum/ammo/xeno/toxin/burst/on_near_target(turf/T, obj/item/projectile/P)
-	return neuro_flak(T,P, effect_power, FALSE, 2)
+	return neuro_flak(T,P, effect_power, FALSE, 1)
 
 /datum/ammo/xeno/sticky
 	name = "sticky resin spit"

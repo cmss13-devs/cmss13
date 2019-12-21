@@ -23,15 +23,3 @@
 	name = "road"
 	icon_state = "stop_decal1"
 	layer = TURF_LAYER
-
-
-//TODO:
-//Relocate me somewhere that makes more sense
-/obj/structure/chigusa_sign
-	name = "Chigusa Sign"
-	desc = "A large sign reading 'lazarus landing pop. 73', there's blood smeared on it."
-	icon = 'icons/obj/structures/props/landing_signs.dmi'
-	icon_state = "laz_sign"
-	bound_width = 64
-	bound_height = 64
-	density = 1

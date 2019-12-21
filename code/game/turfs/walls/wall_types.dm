@@ -404,6 +404,9 @@
 //this one is only for map use
 /turf/closed/wall/resin/ondirt
 	old_turf = "/turf/open/gm/dirt"
+//strata specifics
+/turf/closed/wall/resin/strata/on_tiles
+	old_turf = "/turf/open/floor/strata"
 
 /turf/closed/wall/resin/thick
 	name = "thick resin wall"
@@ -425,6 +428,9 @@
 //this one is only for map use
 /turf/closed/wall/resin/membrane/ondirt
 	old_turf = "/turf/open/gm/dirt"
+//strata specifics
+/turf/closed/wall/resin/membrane/strata/on_tiles
+	old_turf = "/turf/open/floor/strata"
 
 /turf/closed/wall/resin/membrane/thick
 	name = "thick resin membrane"

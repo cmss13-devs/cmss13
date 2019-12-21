@@ -61736,7 +61736,7 @@
 	},
 /area/desert_dam/building/administration/lobby)
 "dJR" = (
-/obj/structure/dam_sign/damaged,
+/obj/structure/lz_sign/dam_sign/damaged,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "dJS" = (
@@ -69413,6 +69413,13 @@
 	icon_state = "vault"
 	},
 /area/desert_dam/building/substation/northwest)
+"rJA" = (
+/obj/structure/lz_sign/dam_sign,
+/turf/open/desert/dirt{
+	icon_state = "desert_transition_edge1";
+	dir = 2
+	},
+/area/desert_dam/exterior/valley/valley_cargo)
 "rPp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -78362,7 +78369,7 @@ dTs
 dTs
 dTs
 dTs
-csB
+rJA
 cxT
 duc
 drN

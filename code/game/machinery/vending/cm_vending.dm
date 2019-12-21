@@ -2098,7 +2098,8 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("Charlie Squad radio encryption key", 5, /obj/item/device/encryptionkey/charlie, "black"),
 		list("Delta Squad radio encryption key", 5, /obj/item/device/encryptionkey/delta, "black"),
 		list("Supply Radio Encryption Key", 5, /obj/item/device/encryptionkey/req, "black"),
-		list("Engineering Radio Encryption Key", 5, /obj/item/device/encryptionkey/engi, "black")
+		list("Engineering Radio Encryption Key", 5, /obj/item/device/encryptionkey/engi, "black"),
+		list("Gas Mask", 20, /obj/item/clothing/mask/gas, "black")
 		)
 
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/populate_product_list(var/scale)
@@ -2157,7 +2158,8 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 							list("M3 Pattern Smooth Marine Armor", 20, /obj/item/clothing/suit/storage/marine/smooth, "black"),
 							list("M3-H Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/class/heavy, "black"),
 							list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/class/light, "black"),
-							list("M10 Pattern Marine Helmet", 20, /obj/item/clothing/head/helmet/marine, "black")
+							list("M10 Pattern Marine Helmet", 20, /obj/item/clothing/head/helmet/marine, "black"),
+							list("Gas Mask", 20, /obj/item/clothing/mask/gas, "black")
 							)
 
 //SQUAD PREP WEAPON RACKS.

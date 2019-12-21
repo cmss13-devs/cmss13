@@ -22,7 +22,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	siemens_coefficient = 0.9
 	var/gas_filter_strength = 1			//For gas mask filters
-	var/vision_impair = 1 //Oh lord, the pre-alpha curse
+	var/vision_impair = 0 //Oh lord, the pre-alpha curse
 	var/list/filtered_gases = list("phoron", "sleeping_agent", "carbon_dioxide")
 
 /obj/item/clothing/mask/gas/PMC

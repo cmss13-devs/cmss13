@@ -278,18 +278,16 @@
 	M.last_damage_source = source
 	M.last_damage_mob = source_mob
 
-	//Gas masks protect from inhalation and face contact effects, even without internals. Breath masks don't for balance reasons
-	if(!istype(M.wear_mask, /obj/item/clothing/mask/gas))
-		M.adjustOxyLoss(5) //Basic oxyloss from "can't breathe"
-		M.adjustFireLoss(amount*rand(10, 15)) //Inhalation damage
-		if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
-			M.coughedtime = 1
-			if(prob(50))
-				M.emote("cough")
-			else
-				M.emote("gasp")
-			spawn(15)
-				M.coughedtime = 0
+	M.adjustOxyLoss(5) //Basic oxyloss from "can't breathe"
+	M.adjustFireLoss(amount*rand(10, 15)) //Inhalation damage
+	if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
+		M.coughedtime = 1
+		if(prob(50))
+			M.emote("cough")
+		else
+			M.emote("gasp")
+		spawn(15)
+			M.coughedtime = 0
 
 	//Topical damage (acid on exposed skin)
 	to_chat(M, SPAN_DANGER("Your skin feels like it is melting away!"))
@@ -325,24 +323,22 @@
 
 	var/effect_amt = round(6 + amount*6)
 
-	//Gas masks protect from inhalation and face contact effects, even without internals. Breath masks don't for balance reasons
-	if(!istype(M.wear_mask, /obj/item/clothing/mask/gas))
-		M.adjustOxyLoss(15) //Causes even more oxyloss damage due to neurotoxin locking up respiratory system
-		M.ear_deaf = max(M.ear_deaf, round(effect_amt*1.5)) //Paralysis of hearing system, aka deafness
-		if(!M.eye_blind) //Eye exposure damage
-			to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
-		M.eye_blurry = max(M.eye_blurry, effect_amt*2)
-		M.eye_blind = max(M.eye_blind, round(effect_amt))
-		if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
-			M.coughedtime = 1
-			if(prob(50))
-				M.emote("cough")
-			else
-				M.emote("gasp")
-			spawn(15)
-				M.coughedtime = 0
-		if (prob(10))
-			M.KnockDown(5)
+	M.adjustOxyLoss(15) //Causes even more oxyloss damage due to neurotoxin locking up respiratory system
+	M.ear_deaf = max(M.ear_deaf, round(effect_amt*1.5)) //Paralysis of hearing system, aka deafness
+	if(!M.eye_blind) //Eye exposure damage
+		to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
+	M.eye_blurry = max(M.eye_blurry, effect_amt*2)
+	M.eye_blind = max(M.eye_blind, round(effect_amt))
+	if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
+		M.coughedtime = 1
+		if(prob(50))
+			M.emote("cough")
+		else
+			M.emote("gasp")
+		spawn(15)
+			M.coughedtime = 0
+	if (prob(10))
+		M.KnockDown(5)
 
 	//Topical damage (neurotoxin on exposed skin)
 	to_chat(M, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
@@ -377,24 +373,22 @@
 
 	var/effect_amt = round(6 + amount*6)
 
-	//Gas masks protect from inhalation and face contact effects, even without internals. Breath masks don't for balance reasons
-	if(!istype(M.wear_mask, /obj/item/clothing/mask/gas))
-		M.adjustOxyLoss(20) // MUCH harsher
-		M.ear_deaf = max(M.ear_deaf, round(effect_amt*1.5)) //Paralysis of hearing system, aka deafness
-		if(!M.eye_blind) //Eye exposure damage
-			to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
-		M.eye_blurry = max(M.eye_blurry, effect_amt*2)
-		M.eye_blind = max(M.eye_blind, round(effect_amt))
-		if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
-			M.coughedtime = 1
-			if(prob(50))
-				M.emote("cough")
-			else
-				M.emote("gasp")
-			spawn(15)
-				M.coughedtime = 0
-		if (prob(20))
-			M.KnockDown(5)
+	M.adjustOxyLoss(20) // MUCH harsher
+	M.ear_deaf = max(M.ear_deaf, round(effect_amt*1.5)) //Paralysis of hearing system, aka deafness
+	if(!M.eye_blind) //Eye exposure damage
+		to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
+	M.eye_blurry = max(M.eye_blurry, effect_amt*2)
+	M.eye_blind = max(M.eye_blind, round(effect_amt))
+	if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
+		M.coughedtime = 1
+		if(prob(50))
+			M.emote("cough")
+		else
+			M.emote("gasp")
+		spawn(15)
+			M.coughedtime = 0
+	if (prob(20))
+		M.KnockDown(5)
 
 	//Topical damage (neurotoxin on exposed skin)
 	to_chat(M, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))

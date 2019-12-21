@@ -208,3 +208,9 @@ var/global/list/gear_datums = list()
 	path = /obj/item/clothing/accessory/patch/falcon
 	cost = 1
 	slot = WEAR_IN_ACCESSORY
+
+/datum/gear/gas_mask
+	display_name = "Gas Mask"
+	path = /obj/item/clothing/mask/gas
+	cost = 2
+	slot = WEAR_FACE

@@ -983,7 +983,9 @@
 	accuracy_var_high = config.low_proj_variance
 	max_range = config.norm_shell_range
 	damage = config.mlow_hit_damage
-	penetration = config.mlow_armor_penetration
+	penetration = config.hmed_armor_penetration
+	damage_armor_punch = 0
+	shell_speed = 2*config.ultra_shell_speed
 	accuracy = config.high_hit_accuracy
 
 /datum/ammo/bullet/turret/dumb

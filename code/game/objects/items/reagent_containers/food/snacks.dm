@@ -2874,7 +2874,7 @@
 /obj/item/reagent_container/food/snacks/hotdog
 	name = "hotdog"
 	desc = "Unrelated to dogs, maybe."
-	icon_state = "hotdog"
+	icon_state = "open-hotdog"
 	bitesize = 2
 	New()
 		..()
@@ -2912,7 +2912,7 @@
 /obj/item/reagent_container/food/snacks/packaged_burrito
 	name = "Packaged Burrito"
 	desc = "A hard microwavable burrito. There's no time given for how long to cook it. Packaged by the Weston-Yamada Corporation."
-	icon_state = "burrito"
+	icon_state = "packaged-burrito"
 	bitesize = 2
 	package = 1
 	New()
@@ -2924,7 +2924,7 @@
 			playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 			to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy burrito!"))
 			package = 0
-			icon_state = "openburrito"
+			icon_state = "open-burrito"
 
 /obj/item/reagent_container/food/snacks/packaged_burger
 	name = "Packaged Cheeseburger"
@@ -2948,7 +2948,7 @@
 /obj/item/reagent_container/food/snacks/packaged_hdogs
 	name = "Packaged Hotdog"
 	desc = "A singular squishy, room temperature, hot dog. There's no time given for how long to cook it, so you assume its probably good to go. Packaged by the Weston-Yamada Corporation."
-	icon_state = "hot_dogs"
+	icon_state = "packaged-hotdog"
 	bitesize = 2
 	package = 1
 	New()
@@ -2961,7 +2961,7 @@
 			playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 			to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hotdog!"))
 			package = 0
-			icon_state = "hotdog"
+			icon_state = "open-hotdog"
 
 /obj/item/reagent_container/food/snacks/upp
 	name = "\improper UPP ration"

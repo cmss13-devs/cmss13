@@ -159,15 +159,14 @@
 /obj/item/device/walkman/update_icon()
 	..()
 	overlays.Cut()
+	if(design)
+		icon_state = "walkman_[design]"
 	if(tape)
 		if(!paused)
-			icon_state = "walkman_playing"
-		else
-			icon_state = "walkman"
+			overlays += "+playing"
 	else
-		icon_state = "walkman_empty"
-	if(design)
-		overlays += "design_[design]"
+		overlays += "+empty"
+
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		H.regenerate_icons()

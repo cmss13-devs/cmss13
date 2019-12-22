@@ -1,4 +1,4 @@
-
+#define HELMET_GARB_ACTUAL_ICON_STATE "icon_state"
 /obj/item/clothing/head/helmet
 	name = "helmet"
 	desc = "Standard Security gear. Protects the head from impacts."
@@ -216,7 +216,7 @@
 
 /obj/item/clothing/head/helmet/marine
 	name = "\improper M10 pattern marine helmet"
-	desc = "A standard M10 Pattern Helmet. It reads on the label, 'The difference between an open-casket and closed-casket funeral. Wear on head for best results.'. Contains a small built-in camera."
+	desc = "A standard M10 Pattern Helmet. The inside label, along with washing information, reads, 'The difference between an open-casket and closed-casket funeral. Wear on head for best results.'. There is a built-in camera on the right side."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "helmet"
 	item_state = "helmet"
@@ -238,7 +238,10 @@
 	flags_inv_hide = HIDEEARS
 	var/flags_marine_helmet = HELMET_SQUAD_OVERLAY|HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY|HELMET_STORE_GARB
 	var/obj/item/storage/internal/pockets
+
+	// Really the list of special cosmetic items -> their icon_state(s)
 	var/list/allowed_helmet_items = list(
+						///// TOBACCO-RELATED
 						/obj/item/tool/lighter/random = "helmet_lighter_",
 						/obj/item/tool/lighter/zippo = "helmet_lighter_zippo",
 						/obj/item/storage/box/matches = "helmet_matches",
@@ -249,22 +252,103 @@
 						/obj/item/storage/fancy/cigarettes/lady_finger = "helmet_cig_lf",
 						/obj/item/storage/fancy/cigarettes/blackpack = "helmet_cig_blackpack",
 						/obj/item/storage/fancy/cigarettes/arcturian_ace = "helmet_cig_aapack",
+
+						///// CARDS
 						/obj/item/toy/deck = "helmet_card_card",
 						/obj/item/toy/handcard = "helmet_card_card",
+						/obj/item/toy/handcard/aceofspades = "ace_of_spades",
+						/obj/item/toy/handcard/uno_reverse_red = "red_reverse",
+						/obj/item/toy/handcard/uno_reverse_blue = "blue_reverse",
+						/obj/item/toy/handcard/uno_reverse_yellow = "yellow_reverse",
+						/obj/item/toy/handcard/uno_reverse_purple = "purple_reverse",
+
+						///// FOOD AND SNACKS
 						/obj/item/reagent_container/food/drinks/flask = "helmet_flask",
 						/obj/item/reagent_container/food/drinks/flask/marine = "helmet_flask",
 						/obj/item/reagent_container/food/snacks/eat_bar = "helmet_snack_eat",
 						/obj/item/reagent_container/food/snacks/packaged_burrito = "helmet_snack_burrito",
+						/obj/item/reagent_container/food/snacks/mushroompizzaslice = "pizza", // Fuck whoever put these under different paths for some REASON
+						/obj/item/reagent_container/food/snacks/vegetablepizzaslice = "pizza",
+						/obj/item/reagent_container/food/snacks/meatpizzaslice = "pizza",
+						/obj/item/reagent_container/food/snacks/packaged_burrito = HELMET_GARB_ACTUAL_ICON_STATE,
+						/obj/item/reagent_container/food/snacks/packaged_hdogs = HELMET_GARB_ACTUAL_ICON_STATE,
+						/obj/item/reagent_container/food/snacks/wrapped/chunk = "chunkbox",
+						/obj/item/reagent_container/food/snacks/donkpocket = "donkpocket",
+						/obj/item/reagent_container/food/snacks/wrapped/booniebars = "boonie-bars",
+						/obj/item/reagent_container/food/snacks/wrapped/barcardine = "barcardine-bars",
+
+
+						///// EYEWEAR
+						/obj/item/clothing/glasses/mgoggles = "goggles-h",
+						/obj/item/clothing/glasses/mgoggles/prescription = "goggles-h",
+						/obj/item/clothing/glasses/sunglasses = "sunglasses",
+						/obj/item/clothing/glasses/sunglasses/prescription = "sunglasses",
+						/obj/item/clothing/glasses/sunglasses/aviator = "aviator",
+						/obj/item/clothing/glasses/sunglasses/big = "bigsunglasses",
+						/obj/item/clothing/glasses/sunglasses/sechud = "sechud",
+						/obj/item/clothing/glasses/eyepatch = "eyepatch",
+						/obj/item/clothing/glasses/regular/hipster = "persc-glasses",
+
+						///// WALKMAN AND CASSETTES
+						/obj/item/device/walkman = HELMET_GARB_ACTUAL_ICON_STATE,
+						/obj/item/device/cassette_tape/pop1 = "cassette_blue",
+						/obj/item/device/cassette_tape/pop2 = "cassette_rainbow",
+						/obj/item/device/cassette_tape/pop3 = "cassette_orange",
+						/obj/item/device/cassette_tape/pop4 = "cassette_pink_stripe",
+						/obj/item/device/cassette_tape/heavymetal = "cassette_red_black",
+						/obj/item/device/cassette_tape/hairmetal = "cassette_red_stripe",
+						/obj/item/device/cassette_tape/indie = "cassette_rising_sun",
+						/obj/item/device/cassette_tape/hiphop = "cassette_orange_blue",
+						/obj/item/device/cassette_tape/nam = "cassette_green",
+						/obj/item/device/cassette_tape/ocean = "cassette_ocean",
+
+						///// PREFERENCES GEAR
+						/obj/item/prop/helmetgarb/gunoil = "gunoil",
+						/obj/item/prop/helmetgarb/netting = "netting",
+						/obj/item/prop/helmetgarb/spent_buckshot = "spent_buckshot",
+						/obj/item/prop/helmetgarb/spent_slug = "spent_slug",
+						/obj/item/prop/helmetgarb/spent_flech = "spent_flech",
+						/obj/item/prop/helmetgarb/prescription_bottle = "prescription_bottle",
+						/obj/item/prop/helmetgarb/raincover = "raincover",
+						/obj/item/prop/helmetgarb/rabbitsfoot = "rabbitsfoot",
+						/obj/item/prop/helmetgarb/rosary = "helmet_rosary", // This one was already in the game for some reason, but never had an object
+						/obj/item/prop/helmetgarb/lucky_feather = "lucky_feather",
+						/obj/item/prop/helmetgarb/flair_initech = "flair_initech",
+						/obj/item/prop/helmetgarb/flair_io = "flair_io",
+						/obj/item/prop/helmetgarb/flair_peace ="flair_peace_smiley",
+						/obj/item/prop/helmetgarb/flair_uscm = "flair_uscm",
+						/obj/item/prop/helmetgarb/spacejam_tickets = "tickets_to_space_jam",
+
+						///// MISC
 						/obj/item/tool/pen = "helmet_pen_black",
 						/obj/item/tool/pen/blue = "helmet_pen_blue",
 						/obj/item/tool/pen/red = "helmet_pen_red",
-						/obj/item/clothing/glasses/mgoggles = "goggles-h",
-						/obj/item/clothing/glasses/mgoggles/prescription = "goggles-h",
 						/obj/item/clothing/glasses/welding ="welding-h",
-						/obj/item/clothing/head/headband = "headband",
+						/obj/item/clothing/head/headband = "headbandgreen",
 						/obj/item/clothing/head/headband/tan = "headbandtan",
 						/obj/item/clothing/head/headband/red = "headbandred",
+						/obj/item/tool/candle = "candle",
+						/obj/item/clothing/mask/facehugger/lamarr = "lamarr",
+						/obj/item/toy/crayon/red = "crayonred",
+						/obj/item/toy/crayon/orange = "crayonorange",
+						/obj/item/toy/crayon/yellow = "crayonyellow",
+						/obj/item/toy/crayon/green = "crayongreen",
+						/obj/item/toy/crayon/blue = "crayonblue",
+						/obj/item/toy/crayon/purple = "crayonpurple",
+						/obj/item/toy/crayon/rainbow = "crayonrainbow",
+						/obj/item/paper = "paper",
+						/obj/item/device/flashlight/flare = "flare",
+						/obj/item/clothing/head/headset = "headset",
+						/obj/item/clothing/accessory/patch = "uscmpatch",
+						/obj/item/clothing/accessory/patch/falcon = "falconspatch",
+						/obj/item/ammo_magazine/handful = "bullet",
+
+						///// MEDICAL
+						/obj/item/stack/medical/bruise_pack ="brutepack",
+						/obj/item/stack/medical/ointment = "ointment",
+						/obj/item/tool/surgery/scalpel = "scalpel",
 						/obj/item/reagent_container/hypospray/autoinjector = "helmet_injector")
+	
 	var/specialty = "M10 pattern marine" //Give them a specialty var so that they show up correctly in vendors.
 	valid_accessory_slots = list(ACCESSORY_SLOT_HELM_C)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_HELM_C)
@@ -285,7 +369,7 @@
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type,null,new_protection)
 
-	helmet_overlays = list("damage","band","item") //To make things simple.
+	helmet_overlays = list() //To make things simple.
 	pockets = new/obj/item/storage/internal(src)
 	pockets.storage_slots = 2
 	pockets.max_w_class = SIZE_TINY //can hold tiny items only, EXCEPT for glasses & metal flask.
@@ -316,26 +400,21 @@
 	update_icon()
 
 /obj/item/clothing/head/helmet/marine/update_icon()
+	// Currently done by delegating to the human onmob head inventory updater
+	// not the best *possible* solution, but this is complicated by the fact that 
+	// adding an image to src or trying to render it in overlays does nothing because
+	// the "primary" icon of src is the holdable object, not the onmob.
+	// the human sprite is the only thing that reliably renders things, so 
+	// we have to add overlays to that.
+	helmet_overlays = list() // Rebuild our list every time
 	if(pockets && pockets.contents.len && (flags_marine_helmet & HELMET_GARB_OVERLAY))
-		if(!helmet_overlays["band"])
-			var/image/I = image('icons/obj/items/clothing/cm_hats.dmi', src, "helmet_band")
-			helmet_overlays["band"] = I
-
-		if(!helmet_overlays["item"])
-			var/obj/O = pockets.contents[1]
+		helmet_overlays += "helmet_band"
+		for(var/obj/O in pockets.contents)
 			if(allowed_helmet_items[O.type])
-				var/image/I = image('icons/obj/items/clothing/cm_hats.dmi', src, "[allowed_helmet_items[O.type]][O.type == /obj/item/tool/lighter/random ? O:clr : ""]")
-				helmet_overlays["item"] = I
-
-	else
-		if(helmet_overlays["item"])
-			var/image/RI = helmet_overlays["item"]
-			helmet_overlays["item"] = null
-			qdel(RI)
-		if(helmet_overlays["band"])
-			var/image/J = helmet_overlays["band"]
-			helmet_overlays["band"] = null
-			qdel(J)
+				if(allowed_helmet_items[O.type] == HELMET_GARB_ACTUAL_ICON_STATE)
+					helmet_overlays += O.icon_state
+				else
+					helmet_overlays += allowed_helmet_items[O.type]
 
 	if(ismob(loc))
 		var/mob/M = loc
@@ -863,3 +942,6 @@
 	apply_explosion_overlay()
 	cell_explosion(loc, 40, 18, null, initial(name), activator)
 	qdel(src)
+
+
+#undef HELMET_GARB_ACTUAL_ICON_STATE

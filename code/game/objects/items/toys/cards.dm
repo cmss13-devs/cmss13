@@ -250,6 +250,22 @@
 	icon_state = "spades_ace"
 	desc = "An Ace of Spades"
 
+/obj/item/toy/handcard/uno_reverse_red
+	icon_state = "red_reverse"
+	desc = "Always handy to have one or three of these up your sleeve.."
+
+/obj/item/toy/handcard/uno_reverse_blue
+	icon_state = "blue_reverse"
+	desc = "Always handy to have one or three of these up your sleeve.."
+
+/obj/item/toy/handcard/uno_reverse_yellow
+	icon_state = "yellow_reverse"
+	desc = "Always handy to have one or three of these up your sleeve.."
+
+/obj/item/toy/handcard/uno_reverse_purple
+	icon_state = "purple_reverse"
+	desc = "Always handy to have one or three of these up your sleeve.."
+
 /obj/item/toy/handcard/attackby(obj/item/O, mob/user)
 	if(istype(O,/obj/item/toy/handcard))
 		var/obj/item/toy/handcard/H = O

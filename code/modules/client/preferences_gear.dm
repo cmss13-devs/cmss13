@@ -111,7 +111,7 @@ var/global/list/gear_datums = list()
 	display_name = "Cigarette"
 	path = /obj/item/clothing/mask/cigarette
 	slot = WEAR_FACE
-	cost = 2
+	cost = 1
 
 /datum/gear/cmgoggles
 	display_name = "Ballistic Goggles"
@@ -173,6 +173,30 @@ var/global/list/gear_datums = list()
 	slot = WEAR_IN_BACK
 	cost = 2
 
+/datum/gear/uno_reverse_red
+	display_name = "Uno Reverse - Red"
+	path = /obj/item/toy/handcard/uno_reverse_red
+	slot = WEAR_IN_BACK
+	cost = 2
+
+/datum/gear/uno_reverse_blue
+	display_name = "Uno Reverse - Blue"
+	path = /obj/item/toy/handcard/uno_reverse_blue
+	slot = WEAR_IN_BACK
+	cost = 2
+
+/datum/gear/uno_reverse_purple
+	display_name = "Uno Reverse - Purple"
+	path = /obj/item/toy/handcard/uno_reverse_purple
+	slot = WEAR_IN_BACK
+	cost = 2
+
+/datum/gear/uno_reverse_yellow
+	display_name = "Uno Reverse - Yellow"
+	path = /obj/item/toy/handcard/uno_reverse_yellow
+	slot = WEAR_IN_BACK
+	cost = 2
+
 /datum/gear/candy
 	display_name = "Bar of candy"
 	path = /obj/item/reagent_container/food/snacks/candy
@@ -189,7 +213,7 @@ var/global/list/gear_datums = list()
 	display_name = "Pen"
 	path = /obj/item/tool/pen
 	slot = WEAR_IN_BACK
-	cost = 2
+	cost = 1
 
 /datum/gear/lighter
 	display_name = "Random Lighter"
@@ -214,3 +238,92 @@ var/global/list/gear_datums = list()
 	path = /obj/item/clothing/mask/gas
 	cost = 2
 	slot = WEAR_FACE
+/datum/gear/gunoil
+	display_name = "Gun Oil"
+	path = /obj/item/prop/helmetgarb/gunoil
+	cost = 1
+	slot = WEAR_IN_BACK
+
+/datum/gear/netting
+	display_name = "Helmet Netting"
+	path = /obj/item/prop/helmetgarb/netting
+	cost = 1
+	slot = WEAR_IN_BACK
+
+/datum/gear/spent_buck
+	display_name = "Spent Buckshot"
+	path = /obj/item/prop/helmetgarb/spent_buckshot
+	cost = 1
+	slot = WEAR_IN_BACK
+
+/datum/gear/spent_slugs
+	display_name = "Spent Slugs"
+	path = /obj/item/prop/helmetgarb/spent_slug
+	cost = 1
+	slot = WEAR_IN_BACK
+
+/datum/gear/spent_flechette
+	display_name = "Spent Flechette"
+	path = /obj/item/prop/helmetgarb/spent_flech
+	cost = 1
+	slot = WEAR_IN_BACK
+
+/datum/gear/prescription_bottle
+	display_name = "Prescription Bottle"
+	path = /obj/item/prop/helmetgarb/prescription_bottle
+	cost = 1
+	slot = WEAR_IN_BACK
+
+/datum/gear/raincover
+	display_name = "Helmet Rain Cover"
+	path = /obj/item/prop/helmetgarb/raincover
+	cost = 1
+	slot = WEAR_IN_BACK
+
+/datum/gear/rabbits_foot
+	display_name = "Rabbit's Foot"
+	path = /obj/item/prop/helmetgarb/rabbitsfoot
+	cost = 1
+	slot = WEAR_IN_BACK
+
+/datum/gear/rosary
+	display_name = "Rosary"
+	path = /obj/item/prop/helmetgarb/rosary
+	cost = 1
+	slot = WEAR_IN_BACK
+
+/datum/gear/lucky_feather
+	display_name = "Lucky Feather"
+	path = /obj/item/prop/helmetgarb/lucky_feather
+	cost = 1
+	slot = WEAR_IN_BACK
+
+/datum/gear/flair_initech
+	display_name = "Initech Flair"
+	path = /obj/item/prop/helmetgarb/flair_initech
+	cost = 1
+	slot = WEAR_IN_BACK
+
+/datum/gear/flair_io
+	display_name = "Io Flair"
+	path = /obj/item/prop/helmetgarb/flair_io
+	cost = 1
+	slot = WEAR_IN_BACK
+
+/datum/gear/flair_peace
+	display_name = "Peace and Love Flair"
+	path = /obj/item/prop/helmetgarb/flair_peace
+	cost = 1
+	slot = WEAR_IN_BACK
+
+/datum/gear/flair_uscm
+	display_name = "USCM Flair"
+	path = /obj/item/prop/helmetgarb/flair_uscm
+	cost = 1
+	slot = WEAR_IN_BACK
+
+/datum/gear/spacejam_tickets
+	display_name = "Authentic Tickets to Space Jam"
+	path = /obj/item/prop/helmetgarb/spacejam_tickets
+	cost = 4
+	slot = WEAR_IN_BACK

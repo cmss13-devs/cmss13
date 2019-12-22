@@ -72,27 +72,31 @@ There are several things that need to be remembered:
 */
 
 //Human Overlays Indexes/////////
-#define MUTANTRACE_LAYER		30
-#define DAMAGE_LAYER			29
-#define UNIFORM_LAYER			28
-#define TAIL_LAYER				27	//bs12 specific. this hack is probably gonna come back to haunt me
-#define ID_LAYER				26
-#define SHOES_LAYER				25
-#define GLOVES_LAYER			24
-#define MEDICAL_LAYER			23	//For splint and gauze overlays
-#define SUIT_LAYER				22
-#define SUIT_GARB_LAYER			21
-#define SUIT_SQUAD_LAYER		20
-#define GLASSES_LAYER			19
-#define BELT_LAYER				18
-#define SUIT_STORE_LAYER		17
-#define BACK_LAYER				16
-#define HAIR_LAYER				15
-#define EARS_LAYER				14
-#define FACEMASK_LAYER			13
-#define HEAD_LAYER				12
-#define HEAD_GARB_LAYER			11
-#define HEAD_SQUAD_LAYER		10
+#define MUTANTRACE_LAYER		34
+#define DAMAGE_LAYER			33
+#define UNIFORM_LAYER			32
+#define TAIL_LAYER				31	//bs12 specific. this hack is probably gonna come back to haunt me
+#define ID_LAYER				30
+#define SHOES_LAYER				29
+#define GLOVES_LAYER			28
+#define MEDICAL_LAYER			27	//For splint and gauze overlays
+#define SUIT_LAYER				26
+#define SUIT_GARB_LAYER			25
+#define SUIT_SQUAD_LAYER		24
+#define GLASSES_LAYER			23
+#define BELT_LAYER				22
+#define SUIT_STORE_LAYER		21
+#define BACK_LAYER				20
+#define HAIR_LAYER				19
+#define EARS_LAYER				18
+#define FACEMASK_LAYER			17
+#define HEAD_LAYER				16
+#define HEAD_SQUAD_LAYER		15
+#define HEAD_GARB_LAYER			14
+#define HEAD_GARB_LAYER_2		13	// These actual defines are unused but this space within the overlays list is
+#define HEAD_GARB_LAYER_3		12	//  |
+#define HEAD_GARB_LAYER_4		11	//  |
+#define HEAD_GARB_LAYER_5		10	// End here
 #define COLLAR_LAYER			9
 #define HANDCUFF_LAYER			8
 #define LEGCUFF_LAYER			7
@@ -102,7 +106,7 @@ There are several things that need to be remembered:
 #define TARGETED_LAYER			3	//for target sprites when held at gun point, and holo cards.
 #define FIRE_LAYER				2	//If you're on fire		//BS12: Layer for the target overlay from weapon targeting system
 #define EFFECTS_LAYER			1  //If you're hit by an acid DoT
-#define TOTAL_LAYERS			30
+#define TOTAL_LAYERS			34
 //////////////////////////////////
 
 /mob/living/carbon/human
@@ -266,7 +270,7 @@ var/global/list/damage_icon_parts = list()
 			if(istype(part, /datum/limb/chest)) //already done above
 				continue
 
-			if (istype(part, /datum/limb/groin) || istype(part, /datum/limb/head))
+			if(istype(part, /datum/limb/groin) || istype(part, /datum/limb/head))
 				temp = part.get_icon(race_icon,deform_icon,g)
 			else
 				temp = part.get_icon(race_icon,deform_icon)
@@ -310,7 +314,7 @@ var/global/list/damage_icon_parts = list()
 
 	/*
 	//Skin colour. Not in cache because highly variable (and relatively benign).
-	if (species.flags & HAS_SKIN_COLOR)
+	if(species.flags & HAS_SKIN_COLOR)
 		stand_icon.Blend(rgb(r_skin, g_skin, b_skin), ICON_ADD)
 	*/
 
@@ -397,9 +401,9 @@ var/global/list/damage_icon_parts = list()
 /mob/living/carbon/human/update_targeted()
 	remove_overlay(TARGETED_LAYER)
 	var/image/I
-	if (targeted_by && target_locked)
+	if(targeted_by && target_locked)
 		I = image("icon" = target_locked)
-	else if (!targeted_by && target_locked)
+	else if(!targeted_by && target_locked)
 		qdel(target_locked)
 		target_locked = null
 	if(holo_card_color)
@@ -602,11 +606,14 @@ var/global/list/damage_icon_parts = list()
 		apply_overlay(SUIT_STORE_LAYER)
 
 
+#define MAX_HEAD_GARB_ITEMS 5
 
 /mob/living/carbon/human/update_inv_head()
 	remove_overlay(HEAD_LAYER)
 	remove_overlay(HEAD_SQUAD_LAYER)
-	remove_overlay(HEAD_GARB_LAYER)
+	for(var/i in HEAD_GARB_LAYER to (HEAD_GARB_LAYER + MAX_HEAD_GARB_ITEMS - 1))
+		remove_overlay(i)
+
 	if(head)
 
 		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
@@ -628,21 +635,23 @@ var/global/list/damage_icon_parts = list()
 					J.layer = -HEAD_SQUAD_LAYER
 					overlays_standing[HEAD_SQUAD_LAYER] = J
 					apply_overlay(HEAD_SQUAD_LAYER)
-			var/image/K
-			var/image/IMG
-			for(var/i in marine_helmet.helmet_overlays)
-				K = marine_helmet.helmet_overlays[i]
-				if(K)
-					if(!IMG)
-						IMG = image('icons/mob/humans/onmob/helmet_garb.dmi',src,K.icon_state, "layer" = -HEAD_GARB_LAYER)
-					else
-						IMG.overlays += image('icons/mob/humans/onmob/helmet_garb.dmi',src,K.icon_state, "layer" = -HEAD_GARB_LAYER)
-			if(!IMG)
-				return
-			overlays_standing[HEAD_GARB_LAYER] = IMG
-			apply_overlay(HEAD_GARB_LAYER)
 
+			var/num_helmet_overlays = 0
+			for(var/i in 1 to marine_helmet.helmet_overlays.len)
+				// Add small numbers to the head garb layer so we don't have a layer conflict
+				// the i-1 bit is to make it 0-based, not 1-based like BYOND wants
+				overlays_standing[HEAD_GARB_LAYER + (i-1)] = image('icons/mob/humans/onmob/helmet_garb.dmi', src, marine_helmet.helmet_overlays[i])
+				num_helmet_overlays++
 
+			// null out the rest of the space allocated for helmet overlays
+			// God I hate 1-based indexing
+			for(var/i in num_helmet_overlays+1 to MAX_HEAD_GARB_ITEMS)
+				overlays_standing[HEAD_GARB_LAYER + (i-1)] = null
+				
+			for(var/i in HEAD_GARB_LAYER to (HEAD_GARB_LAYER + MAX_HEAD_GARB_ITEMS - 1))
+				apply_overlay(i)
+
+#undef MAX_HEAD_GARB_ITEMS
 
 
 /mob/living/carbon/human/update_inv_belt()
@@ -843,7 +852,7 @@ var/global/list/damage_icon_parts = list()
 /mob/living/carbon/human/proc/generate_head_icon()
 //gender no longer matters for the mouth, although there should probably be seperate base head icons.
 //	var/g = "m"
-//	if (gender == FEMALE)	g = "f"
+//	if(gender == FEMALE)	g = "f"
 
 	//base icons
 	var/icon/face_lying	= new /icon('icons/mob/humans/human_hair.dmi',"bald_l")

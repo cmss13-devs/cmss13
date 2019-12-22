@@ -272,17 +272,22 @@ Quick adjacency (to turf):
 
 
 /atom/proc/clear_path(var/atom/A, var/list/atom/ignore = list())
-	if (get_dist(src, A) <= 1)
+	if(get_dist(src, A) <= 1)
 		return handle_barriers(A, ignore)
 	
 	var/turf/curT = get_turf(A)
 	var/is_turf = isturf(A)
-	for (var/turf/T in getline2(A, src))
-		if (curT == T)
+	for(var/turf/T in getline2(A, src))		
+		if(curT == T)
 			continue
+		if(T.density)
+			return T
+		for(var/atom/potential_dense_object in T)
+			if(potential_dense_object.density)
+				return potential_dense_object
 		var/atom/result = T.handle_barriers(curT, list(A) + ignore)
-		if (result != T)
+		if(result != T)
 			return result
-		else if (is_turf && T == A || T == A.loc)
+		else if(is_turf && T == A || T == A.loc)
 			break
 	return src

@@ -6,6 +6,7 @@
 
 #define SECONDS_1 		10
 #define SECONDS_2 		20
+#define SECONDS_3 		30
 #define SECONDS_4 		40
 #define SECONDS_5 		50
 #define SECONDS_6 		60

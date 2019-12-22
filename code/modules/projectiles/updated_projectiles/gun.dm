@@ -845,8 +845,13 @@ and you're good to go.
 
 		flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
 		return
-	else if(user.a_intent != "hurt") // Not in harm intent, so won't point blank. Will whack them instead.
+	else if(user.a_intent == HELP_INTENT) //Thwack them
 		return ..()
+
+	if(M.stat == UNCONSCIOUS && user.a_intent in list(GRAB_INTENT, DISARM_INTENT)) //Execution
+		user.visible_message(SPAN_DANGER("[user] puts [src] up to [M], steadying their aim."), SPAN_WARNING("You put [src] up to [M], steadying your aim."))
+		if(!do_after(user, SECONDS_3, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_HOSTILE))
+			return FALSE
 
 	//Point blanking doesn't actually fire the projectile. Instead, it simulates firing the bullet proper.
 	flags_gun_features &= ~GUN_BURST_FIRING
@@ -888,6 +893,9 @@ and you're good to go.
 	M.bullet_act(projectile_to_fire)
 
 	last_fired = world.time
+
+	if(M.stat == UNCONSCIOUS && user.a_intent in list(GRAB_INTENT, DISARM_INTENT)) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
+		M.death()
 
 	if(!delete_bullet(projectile_to_fire)) qdel(projectile_to_fire)
 	reload_into_chamber(user) //Reload into the chamber if the gun supports it.

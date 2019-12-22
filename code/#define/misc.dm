@@ -54,16 +54,16 @@
 #define INTERRUPT_NEEDHAND          (1<<5)
 #define INTERRUPT_RESIST            (1<<6)  // Allows timed actions to be cancelled upon hitting resist, on by default
 #define INTERRUPT_DIFF_SELECT_ZONE  (1<<7)  // By default not in INTERRUPT_ALL (too niche)
-#define INTERRUPT_OUT_OF_RANGE      (1<<8)  // By default not in INTERRUPT_ALL, should not be used in conjunction with
-                                            // INTERRUPT_DIFF_TURF
-#define INTERRUPT_LCLICK            (1<<9)  // Mainly for boiler globs
-#define INTERRUPT_RCLICK            (1<<10)
-#define INTERRUPT_SHIFTCLICK        (1<<11)
-#define INTERRUPT_ALTCLICK          (1<<12)
-#define INTERRUPT_CTRLCLICK         (1<<13)
-#define INTERRUPT_MIDDLECLICK       (1<<14)
-#define INTERRUPT_DAZED             (1<<15)
-#define INTERRUPT_EMOTE             (1<<16)
+#define INTERRUPT_OUT_OF_RANGE      (1<<8)  // By default not in INTERRUPT_ALL, should not be used in conjunction with INTERRUPT_DIFF_TURF
+#define INTERRUPT_DIFF_INTENT       (1<<9)  // By default not in INTERRUPT_ALL (too niche)
+#define INTERRUPT_LCLICK            (1<<10)  // Mainly for boiler globs
+#define INTERRUPT_RCLICK            (1<<11)
+#define INTERRUPT_SHIFTCLICK        (1<<12)
+#define INTERRUPT_ALTCLICK          (1<<13)
+#define INTERRUPT_CTRLCLICK         (1<<14)
+#define INTERRUPT_MIDDLECLICK       (1<<15)
+#define INTERRUPT_DAZED             (1<<16)
+#define INTERRUPT_EMOTE             (1<<17)
 
 #define INTERRUPT_ALL               (INTERRUPT_DIFF_LOC|INTERRUPT_DIFF_TURF|INTERRUPT_UNCONSCIOUS|INTERRUPT_KNOCKED_DOWN|INTERRUPT_STUNNED|INTERRUPT_NEEDHAND|INTERRUPT_RESIST)
 #define INTERRUPT_ALL_OUT_OF_RANGE  (INTERRUPT_ALL & (~INTERRUPT_DIFF_TURF)|INTERRUPT_OUT_OF_RANGE)

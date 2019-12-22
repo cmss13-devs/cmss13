@@ -92,11 +92,11 @@ There are several things that need to be remembered:
 #define FACEMASK_LAYER			17
 #define HEAD_LAYER				16
 #define HEAD_SQUAD_LAYER		15
-#define HEAD_GARB_LAYER			14
-#define HEAD_GARB_LAYER_2		13	// These actual defines are unused but this space within the overlays list is
-#define HEAD_GARB_LAYER_3		12	//  |
-#define HEAD_GARB_LAYER_4		11	//  |
-#define HEAD_GARB_LAYER_5		10	// End here
+#define HEAD_GARB_LAYER_2		14	// These actual defines are unused but this space within the overlays list is
+#define HEAD_GARB_LAYER_3		13	//  |
+#define HEAD_GARB_LAYER_4		12	//  |
+#define HEAD_GARB_LAYER_5		11	// End here
+#define HEAD_GARB_LAYER			10
 #define COLLAR_LAYER			9
 #define HANDCUFF_LAYER			8
 #define LEGCUFF_LAYER			7

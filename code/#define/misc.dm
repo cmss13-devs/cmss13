@@ -75,7 +75,7 @@
 // BEHAVIOR FLAGS
 // These flags describe behaviors related to a given timed action.
 // These behaviors are either of the person performing the action or any targets.
-#define BEHAVIOR_IMMOBILE           (1<<17) // You cannot move the person while this action is being performed
+#define BEHAVIOR_IMMOBILE           (1<<18) // You cannot move the person while this action is being performed
 
 // *************************************** //
 //           END DO_AFTER FLAGS            //

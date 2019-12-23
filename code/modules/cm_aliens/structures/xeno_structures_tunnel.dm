@@ -183,7 +183,7 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 
 	if(global_tunnel_list.len) //Make sure other tunnels exist
 		M.forceMove(src) //become one with the tunnel
-		to_chat(M, SPAN_HIGHDANGER("Alt + Click the tunnel to exit, ctrl click to choose a destination."))
+		to_chat(M, SPAN_HIGHDANGER("Alt + Click the tunnel to exit, Ctrl + Click to choose a destination."))
 		pick_tunnel(M)
 	else
 		to_chat(M, SPAN_WARNING("\The [src] ended unexpectedly, so you return back up."))

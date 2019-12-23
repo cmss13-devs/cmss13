@@ -1198,23 +1198,23 @@
 /mob/proc/update_tint()
 
 /mob/living/carbon/human/update_tint()
-	var/is_tinted = FALSE
+	var/tint_level = VISION_IMPAIR_NONE
 
 	if(istype(head, /obj/item/clothing/head/welding))
 		var/obj/item/clothing/head/welding/O = head
 		if(!O.up && tinted_weldhelh)
-			is_tinted = TRUE
+			tint_level = VISION_IMPAIR_MAX
 
 	if(glasses && glasses.has_tint && glasses.active && tinted_weldhelh)
-		is_tinted = TRUE
+		tint_level = VISION_IMPAIR_MAX
 
 	if(istype(wear_mask, /obj/item/clothing/mask/gas))
 		var/obj/item/clothing/mask/gas/G = wear_mask
-		if(G.vision_impair && tinted_weldhelh)
-			is_tinted = TRUE
+		if(G.vision_impair && tinted_weldhelh && tint_level < G.vision_impair)
+			tint_level = G.vision_impair
 
-	if(is_tinted)
-		overlay_fullscreen("tint", /obj/screen/fullscreen/impaired, 2)
+	if(tint_level)
+		overlay_fullscreen("tint", /obj/screen/fullscreen/impaired, tint_level)
 		return 1
 	else
 		clear_fullscreen("tint", 0)

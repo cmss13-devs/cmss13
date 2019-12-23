@@ -1050,7 +1050,7 @@
 	indestructible = 1
 	
 	matter = list("metal" = 10000)
-	current_mag = /obj/item/ammo_magazine/internal/launcher/rocket
+	current_mag = /obj/item/ammo_magazine/rocket
 	flags_equip_slot = NO_FLAGS
 	w_class = SIZE_HUGE
 	force = 15
@@ -1061,7 +1061,7 @@
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/scope/mini)
 
-	flags_gun_features = GUN_INTERNAL_MAG|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	gun_skill_category = SKILL_SPEC_WEAPONS
 	var/datum/effect_system/smoke_spread/smoke
 
@@ -1086,7 +1086,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/examine(mob/user)
 	..()
-	if(!current_mag.current_rounds)
+	if(!current_mag)
 		to_chat(user, "It's empty.")
 	else
 		to_chat(user, "It has a 84mm [ammo.name] loaded.")
@@ -1103,8 +1103,8 @@
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ROCKET)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
-		if(src.current_mag.current_rounds > 0)
-			src.make_rocket(user, 0, 1)
+		if(current_mag.current_rounds > 0)
+			make_rocket(user, 0, 1)
 
 /obj/item/weapon/gun/launcher/rocket/load_into_chamber(mob/user)
 //	if(active_attachable) active_attachable = null
@@ -1120,9 +1120,8 @@
 	return 1
 
 /obj/item/weapon/gun/launcher/rocket/proc/make_rocket(mob/user, drop_override = 0, empty = 1)
-	var/obj/item/ammo_magazine/rocket/r  = new
-	r.default_ammo = src.ammo.type
-	if (empty == 1)
+	var/obj/item/ammo_magazine/rocket/r = new current_mag.type()
+	if(empty)
 		r.current_rounds = 0
 	if(drop_override || !user) //If we want to drop it on the ground or there's no user.
 		r.forceMove(get_turf(src)) //Drop it on the ground.
@@ -1130,9 +1129,10 @@
 	r.update_icon()
 
 /obj/item/weapon/gun/launcher/rocket/reload(mob/user, obj/item/ammo_magazine/rocket)
-	if(flags_gun_features & GUN_BURST_FIRING) return
+	if(flags_gun_features & GUN_BURST_FIRING)
+		return
 
-	if(!rocket || !istype(rocket) || rocket.caliber != current_mag.caliber)
+	if(!rocket || !istype(rocket) || !istype(src, rocket.gun_type))
 		to_chat(user, SPAN_WARNING("That's not going to fit!"))
 		return
 
@@ -1147,23 +1147,29 @@
 	if(user)
 		to_chat(user, SPAN_NOTICE("You begin reloading [src]. Hold still..."))
 		if(do_after(user,current_mag.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-			replace_ammo(user,rocket)
-			current_mag.current_rounds = current_mag.max_rounds
+			qdel(current_mag)
+			user.drop_inv_item_on_ground(rocket)
+			current_mag = rocket
+			rocket.forceMove(src)
+			replace_ammo(,rocket)
 			to_chat(user, SPAN_NOTICE("You load [rocket] into [src]."))
-			if(reload_sound) playsound(user, reload_sound, 25, 1)
-			else playsound(user,'sound/machines/click.ogg', 25, 1)
+			if(reload_sound)
+				playsound(user, reload_sound, 25, 1)
+			else
+				playsound(user,'sound/machines/click.ogg', 25, 1)
 		else
 			to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
 			return
 	else
+		qdel(current_mag)
+		current_mag = rocket
+		rocket.forceMove(src)
 		replace_ammo(,rocket)
-		current_mag.current_rounds = current_mag.max_rounds
-	qdel(rocket)
 	return 1
 
 /obj/item/weapon/gun/launcher/rocket/unload(mob/user,  reload_override = 0, drop_override = 0)
 	if(user)
-		if(current_mag.current_rounds == 0)
+		if(!current_mag.current_rounds < 0)
 			to_chat(user, SPAN_WARNING("[src] is already empty!"))
 			return
 		to_chat(user, SPAN_NOTICE("You begin unloading [src]. Hold still..."))
@@ -1171,9 +1177,8 @@
 			playsound(user, unload_sound, 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] unloads [ammo] from [src]."),
 			SPAN_NOTICE("You unload [ammo] from [src]."))
-			src.make_rocket(user, drop_override, 0)
+			make_rocket(user, drop_override, 0)
 			current_mag.current_rounds = 0
-			update_icon()
 
 //Adding in the rocket backblast. The tile behind the specialist gets blasted hard enough to down and slightly wound anyone
 /obj/item/weapon/gun/launcher/rocket/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
@@ -1199,9 +1204,9 @@
 	icon_state = "m57a4"
 	item_state = "m57a4"
 	
-	current_mag = /obj/item/ammo_magazine/internal/launcher/rocket/m57a4
+	current_mag = /obj/item/ammo_magazine/rocket/m57a4
 	aim_slowdown = SLOWDOWN_ADS_SUPERWEAPON
-	flags_gun_features = GUN_INTERNAL_MAG|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
 /obj/item/weapon/gun/launcher/rocket/m57a4/set_gun_config_values()
 	..()

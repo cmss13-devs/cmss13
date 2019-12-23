@@ -198,6 +198,9 @@
 			return
 
 	var/message = input("Please enter your message:", "Mentor Help", null, null) as message|null
+	if(!message)
+		open = FALSE
+		return
 
 	send_message(sender, message)
 
@@ -325,7 +328,7 @@
 		to_chat(responder, SPAN_NOTICE("<b>NOTICE:</b> A mentor is already handling this thread!"))
 		return
 
-	var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "L: Discord", "L: Xeno Quickstart Guide", "L: Marine quickstart guide", "L: Current Map", "A: No plasma regen", "A: Devour as Xeno", "E: Event in progress", "R: Radios", "B: Binoculars", "D: Joining disabled", "L: Leaving the server", "M: Macros", "C: Changelog")
+	var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "L: Discord", "L: Xeno Quickstart Guide", "L: Marine quickstart guide", "L: Current Map", "A: No plasma regen", "A: Devour as Xeno", "T: Tunnel", "E: Event in progress", "R: Radios", "B: Binoculars", "D: Joining disabled", "L: Leaving the server", "M: Macros", "C: Changelog", "H: Clear Cache")
 
 	if(!check_author())
 		return
@@ -356,25 +359,29 @@
 		if("L: Marine quickstart guide")
 			msg += "Your answer can be found on the Marine Quickstart Guide on our wiki. <a href='[URL_WIKI_MARINE_QUICKSTART]'>Check it out here.</a>"
 		if("L: Current Map")
-			msg += "If you need a map to the current game, you can (usually) find them on the front page of our wiki in the 'Maps' section. <a href='[URL_WIKI_LANDING]'>Check it out here.</a> If the map is not listed, it's a new or rare map and the overview hasn't been finished yet."
+			msg += "If you need a map overview of the current round, use Current Map verb in OOC tab to check name of the map. Then open our <a href='[URL_WIKI_LANDING]'>wiki front page</a> and look for the map overview in the 'Maps' section. If the map is not listed, it's a new or rare map and the overview hasn't been finished yet."
 		if("A: No plasma regen")
 			msg += "If you have low/no plasma regen, it's most likely because you are off weeds or are currently using a passive ability, such as the Runner's 'Hide' or emitting a pheromone."
 		if("A: Devour as Xeno")
-			msg += "Devouring is useful to quickly transport incapacitated hosts from one place to another. In order to devour a host as a Xeno, grab the mob (CTRL+Click) and then click on yourself to begin devouring. The host can resist by breaking out of your belly, so make sure your target is incapacitated, or only have them devoured for a short time. To release your target, click 'Regurgitate' on the HUD to throw them back up."
+			msg += "Devouring is useful to quickly transport incapacitated hosts from one place to another. In order to devour a host as a Xeno, grab the mob (CTRL+Click) and then click on yourself to begin devouring. The host can break out of your belly, which will result in your death so make sure your target is incapacitated. After approximately 1 minute host will be automatically regurgitated. To release your target voluntary, click 'Regurgitate' on the HUD to throw them back up."
+		if("T: Tunnel")
+			msg += "Click on the tunnel to enter it. While being in the tunnel, Alt + Click it to exit, Ctrl + Click to choose a destination."
 		if("E: Event in progress")
 			msg += "There is currently a special event running and many things may be changed or different, however normal rules still apply unless you have been specifically instructed otherwise by a staff member."
 		if("R: Radios")
-			msg += "Radios have been changed, the prefix for all squad marines is now ; to access your squad radio. Squad Medics have access to the medical channel using :m, Engineers have :e and the (acting) Squad Leader has :v for command.  Examine your radio headset to get a listing of the channels you have access to."
+			msg += "Examine your radio headset (Shift + Click) to get a list of the channels your headset has access to. Marine headsets have their respective squad channels available on \";\" key. Ship crew headsets have access to the Almayer public comms on \";\" and their respective department channel on \":h\". Command channel key is \":v\"."
 		if("B: Binoculars")
 			msg += "To use your binoculars, take them into your hand and activate them by using Z (Hotkey Mode). Ctrl + Click on any open tile to set a laser. To switch between the lasers, Right Click the Binoculars in hand and press toggle mode or Alt + Click them. The Red laser is a CAS marker for pilots to fire upon, it must be held for the Pilot to drop ordinance on it. The green laser is a coordinate marker that will give you a longitude and a latitude to give to your Staff Officer and Requisitions Staff. They will give you access to a devastating Orbital Bombardment or to drop supplies for you and your squad. Your squad engineers can also use the coordinates to drop mortar shells on top of your enemies."
 		if("D: Joining disabled")
-			msg += "A staff member has disabled joining for new players as the current round is coming to an end, you can observe while it ends and wait for a new round to start."
+			msg += "Joining for new players is disabled for the current round due to either a staff member or and automatic setting during the end of the round. You can observe while it ends and wait for a new round to start."
 		if("L: Leaving the server")
-			msg += "If you need to leave the server as a marine, either go to cryo or ask someone to cryo you before leaving. If you are a xenomorph, find a safe place to rest and ghost before leaving."
+			msg += "If you need to leave the server as a marine, either go to cryo or ask someone to cryo you before leaving. If you are a xenomorph, find a safe place to rest and ghost before leaving, that will instantly unlock your xeno for observers to join."
 		if("M: Macros")
-			msg += "To set a macro right click the title bar, select Client->Macros. Binding unique-action to a key is useful for pumping shotguns etc; Binding load-from-attachment will activate any scopes etc; Binding resist and give to seperate keys is also handy. For more information on macros, head over to our <a href='[URL_WIKI_MACROS]'>macro guide</a>."
+			msg += "This <a href='[URL_WIKI_MACROS]'>guide</a> explains how to set up macros including examples of most common and useful ones."
 		if("C: Changelog")
-			msg += "The answer to your question can be found in the changelog. Click the changelog button at the top-right of the screen to view it in-game, or visit <a href='[URL_CHANGELOG]'>https://cm-ss13.com/changelog</a> to open it in your browser instead."
+			msg += "The answer to your question can be found in the changelog. Click the changelog button at the top-right of the screen to view it in-game, or visit <a href='[URL_CHANGELOG]'>changelog page</a> on our wiki instead."
+		if("H: Clear Cache")
+			msg += "In order to clear cache, you need to click on gear icon located in upper-right corner of your BYOND client and select preferences. Switch to Games tab and click Clear Cache button. In some cases you need to manually delete cache. To do that, select Advanced tab and click Open User Directory and delete \"cache\" folder there."
 	msg = SPAN_NOTICE(msg)
 
 	send_message(responder, msg, TRUE)

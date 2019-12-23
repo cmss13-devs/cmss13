@@ -42,7 +42,7 @@
 	gas_filter_strength = 3
 	eye_protection = 2
 	var/current_goggles = 0 //0: OFF. 1: NVG. 2: Thermals. 3: Mesons
-	vision_impair = 0
+	vision_impair = VISION_IMPAIR_NONE
 	unacidable = TRUE
 	anti_hug = 100
 	item_state_slots = list(WEAR_FACE = "pred_mask1")
@@ -52,7 +52,7 @@
 	loc = location
 
 	var/mask_input[] = list(1,2,3,4,5,6,7,8,9,10,11)
-	if(mask_number in mask_input) 
+	if(mask_number in mask_input)
 		icon_state = "pred_mask[mask_number]"
 		item_state_slots = list(WEAR_FACE = "pred_mask[mask_number]")
 	if(elder_restricted) //Not possible for non-elders.
@@ -399,7 +399,7 @@
 	desc = "An extremely complex, yet simple-to-operate set of armored bracers worn by the Yautja. It has many functions, activate them to use some."
 	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "bracer"
-	
+
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
 	flags_item = 0
@@ -978,7 +978,7 @@
 			return
 		if(exploding)
 			return
-		to_chat(M, SPAN_USERDANGER("You set the timer. May your journey to the great hunting grounds be swift."))
+		to_chat(M, SPAN_DANGER("You set the timer. May your journey to the great hunting grounds be swift."))
 		var/area/A = get_area(M)
 		var/turf/T = get_turf(M)
 		message_staff(FONT_SIZE_HUGE("ALERT: [usr] ([usr.key]) triggered their predator self-destruct sequence [A ? "in [A.name]":""] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
@@ -1231,7 +1231,7 @@
 	desc = "A device covered in sacred text. It whirrs and beeps every couple of seconds."
 	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "teleporter"
-	
+
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_TINY
 	force = 1

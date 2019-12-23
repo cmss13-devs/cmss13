@@ -861,6 +861,7 @@
 #include "code\modules\admin\tabs\server_tab.dm"
 #include "code\modules\admin\topic\topic.dm"
 #include "code\modules\admin\topic\topic_ahelps.dm"
+#include "code\modules\admin\topic\topic_autoresponses.dm"
 #include "code\modules\admin\topic\topic_chems.dm"
 #include "code\modules\admin\topic\topic_events.dm"
 #include "code\modules\admin\topic\topic_teleports.dm"

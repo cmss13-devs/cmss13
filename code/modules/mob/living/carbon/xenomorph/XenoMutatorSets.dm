@@ -32,6 +32,8 @@
 	var/pick = input("Which strain would you like to purchase?") as null|anything in mutators_for_purchase
 	if(!pick)
 		return FALSE
+	if(alert(usr, "[xeno_mutator_list[pick].description]\n\nConfirm mutation?", "Strain purchase", "Yes", "No") == "No")
+		return
 	if(xeno_mutator_list[pick].apply_mutator(src))
 		to_chat(usr, "Mutation complete!")
 		return TRUE

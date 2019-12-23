@@ -245,7 +245,8 @@
 		msg = "Your self-preservation law echoes in your circuits.\nYou detect something hunting you."
 	if(isXeno(M))
 		msg = "The acid boils in your veins.\nYou sense you are being hunted."
-	to_chat(M, SPAN_YAUTJABOLDBIG("[msg]"))
+	to_chat(M, FONT_SIZE_HUGE(SPAN_YAUTJABOLD(msg)))
+	M.playsound_local(M, 'sound/voice/pred_click1.ogg', 35)
 	to_chat(src, SPAN_YAUTJABOLD("You have chosen [M] as your next prey."))
 	message_staff("[key_name(src)] has marked [key_name(M)] for the Hunt. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>).", 1)
 	log_admin("[key_name(src)] has marked [key_name(M)] for the Hunt.")

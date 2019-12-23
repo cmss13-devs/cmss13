@@ -1131,19 +1131,20 @@
 		list("SMARTGUN SET (Mandatory)", 0, null, null, null),
 		list("Essential Smartgunner Set", 0, /obj/item/storage/box/m56_system, MARINE_CAN_BUY_ESSENTIALS, "white"),
 
-		list("SPECIAL AMMUNITION", 0, null, null, null),
-		list("M56 powerpack", 15, /obj/item/smartgun_powerpack, null, "black"),
-		list("M56 ammunition drum", 15, /obj/item/ammo_magazine/smartgun, null, "black"),
+		list("SMARTGUN AMMUNITION", 0, null, null, null),
+		list("M56 ammunition drum", 15, /obj/item/ammo_magazine/smartgun, null, "white"),
+
+		list("SMARTGUN ATTACHMENTS", 0, null, null, null),
+		list("Barrel Charger", 45, /obj/item/attachable/heavy_barrel, null, "black"),
+		list("Burst Fire Assembly", 15, /obj/item/attachable/burstfire_assembly, null, "black"),
 
 		list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
 		list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Reflex sight", 0, /obj/item/attachable/reflex, MARINE_CAN_BUY_ATTACHMENT, "black"),
-		list("Burst Fire Assembly", 0, /obj/item/attachable/burstfire_assembly, MARINE_CAN_BUY_ATTACHMENT, "black"),
 
 		list("MISCELLANEOUS AND SPECIAL", 0, null, null, null),
-		list("Motion Detector", 15, /obj/item/device/motiondetector, null, "black"),
-		list("Barrel Charger", 45, /obj/item/attachable/heavy_barrel, null, "black")
+		list("High-capacity power cell", 5, /obj/item/cell/high, null, "black"),
 	)
 
 
@@ -2043,7 +2044,6 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Laser Sight", round(scale * 3), /obj/item/attachable/lasersight, "black"),
 		list("Mini Flamethrower", round(scale * 1.5), /obj/item/attachable/attached_gun/flamer, "black"),
 		list("U7 Underbarrel Shotgun", round(scale * 1.5), /obj/item/attachable/attached_gun/shotgun, "black"),
-		list("Underbarrel Flashlight Grip", round(scale * 3), /obj/item/attachable/flashlight/grip, "black"),
 		list("Vertical Grip", round(scale * 3), /obj/item/attachable/verticalgrip, "black"),
 
 		list("Stock", -1, null, null),

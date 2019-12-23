@@ -113,10 +113,11 @@
 
 /obj/item/ammo_magazine/rocket
 	name = "\improper 84mm high explosive rocket"
-	desc = "A rocket tube for an M5 RPG rocket."
+	desc = "A rocket tube loaded with a HE warhead. Deals high damage to soft targets on direct hit and stuns most targets in a 5-meter wide area for a short time. Has decreased effect on heavily armored targets."
 	caliber = "rocket"
 	icon_state = "rocket"
 	
+	reload_delay = 60
 	matter = list("metal" = 10000)
 	w_class = SIZE_MEDIUM
 	max_rounds = 1
@@ -167,21 +168,23 @@
 		to_chat(user, SPAN_WARNING("You must be standing behind \the [M] in order to reload it!"))
 		return
 	user.drop_inv_item_on_ground(src)
+	qdel(in_hand.current_mag)
 	in_hand.replace_ammo(user,src)
-	in_hand.current_mag.current_rounds = in_hand.current_mag.max_rounds
-	current_rounds = 0
+	in_hand.current_mag = src
+	forceMove(in_hand)
 	to_chat(user, SPAN_NOTICE("You load \the [src] into \the [M]'s [in_hand]."))
 	if(in_hand.reload_sound)
 		playsound(M, in_hand.reload_sound, 25, 1)
 	else
 		playsound(M,'sound/machines/click.ogg', 25, 1)
 
-	update_icon()
 	return 1
 
 /obj/item/ammo_magazine/rocket/update_icon()
 	if(current_rounds <= 0)
+		name = "\improper 84mm spent rocket tube"
 		icon_state = "rocket_e"
+		desc = "Spent rocket tube for M5 RPG rocket launcher. Activate in hand to disassemble for metal."
 	else
 		icon_state = initial(icon_state)
 
@@ -189,29 +192,20 @@
 	name = "\improper 84mm anti-armor rocket"
 	icon_state = "ap_rocket"
 	default_ammo = /datum/ammo/rocket/ap
-	desc = "A tube for an AP rocket, the warhead of which is extremely dense and turns molten on impact. When empty, use this frame to deconstruct it."
+	desc = "A rocket tube loaded with an AP warhead. Capable of piercing heavily armored targets. Deals very little to no splash damage. Inflicts guaranteed stun to most targets. Has high accuracy within 7 meters."
 
 /obj/item/ammo_magazine/rocket/wp
 	name = "\improper 84mm white-phosphorus rocket"
 	icon_state = "wp_rocket"
 	default_ammo = /datum/ammo/rocket/wp
-	desc = "A highly destructive warhead that bursts into deadly flames on impact. Use this in hand to deconstruct it."
-
-/obj/item/ammo_magazine/internal/launcher/rocket
-	name = "\improper 84mm internal tube"
-	desc = "The internal tube of a M5 RPG."
-	caliber = "rocket"
-	default_ammo = /datum/ammo/rocket
-	max_rounds = 1
-	reload_delay = 60
-
+	desc = "Rocket tube loaded with WP warhead. Has two damaging factors. On hit disperses X-Variant Napthal (blue flames) in a 4-meter radius circle, ignoring cover, while simultaneously bursting into highly heated shrapnel that ignites targets within slightly bigger area."
 
 //-------------------------------------------------------
 //M5 RPG'S MEAN FUCKING COUSIN
 
 /obj/item/ammo_magazine/rocket/m57a4
 	name = "\improper 84mm thermobaric rocket array"
-	desc = "A thermobaric rocket tube for an M83AM quad launcher. Activate in hand to receive some metal when it's used up."
+	desc = "A thermobaric rocket tube for an M57-A4 quad launcher with 4 warheads."
 	caliber = "rocket array"
 	icon_state = "quad_rocket"
 	
@@ -223,10 +217,6 @@
 /obj/item/ammo_magazine/rocket/m57a4/update_icon()
 	..()
 	if(current_rounds <= 0)
+		name = "\improper 84mm spent rocket array"
+		desc = "A spent rocket tube assembly for the M57-A4 quad launcher. Activate in hand to disassemble for metal."
 		icon_state = "quad_rocket_e"
-
-/obj/item/ammo_magazine/internal/launcher/rocket/m57a4
-	desc = "The internal tube of an M83AM Thermobaric Launcher."
-	caliber = "rocket array"
-	default_ammo = /datum/ammo/rocket/wp/quad
-	max_rounds = 4

@@ -111,6 +111,15 @@
 #define ALLOWCPR		512 // Allows CPR even though the face is covered by a mask
 //HELMET AND MASK======================================================================================
 
+//GASMASK IMPAIRMENT LEVELS===========================================================================
+#define VISION_IMPAIR_NONE		0	//No visual impairment
+#define VISION_IMPAIR_MIN		1	//2 tiles of partial impairment
+#define VISION_IMPAIR_WEAK		2	//3 tiles of partial impairment
+#define VISION_IMPAIR_MED		3	//1 tile of full and 2 of partial impairment
+#define VISION_IMPAIR_STRONG	4	//2 tiles of full and 2 of partial impairment
+#define VISION_IMPAIR_MAX		5	//3 tiles of full and 2 of partial impairment (original one)
+//GASMASK IMPAIRMENT LEVELS===========================================================================
+
 //SUITS AND HELMETS====================================================================================
 //To successfully stop taking all pressure damage you must have both a suit and head item with this flag.
 #define BLOCKSHARPOBJ 	128  //From /tg: prevents syringes, parapens and hypos if the external suit or helmet (if targeting head) has this flag. Example: space suits, biosuit, bombsuits, thick suits that cover your body.

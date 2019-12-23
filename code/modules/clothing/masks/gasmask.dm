@@ -22,7 +22,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	siemens_coefficient = 0.9
 	var/gas_filter_strength = 1			//For gas mask filters
-	var/vision_impair = 0 //Oh lord, the pre-alpha curse
+	var/vision_impair = VISION_IMPAIR_MAX	//Changed system to support more than 2 versions of impairment
 	var/list/filtered_gases = list("phoron", "sleeping_agent", "carbon_dioxide")
 
 /obj/item/clothing/mask/gas/PMC
@@ -31,7 +31,7 @@
 	item_state = "helmet"
 	icon_state = "pmc_mask"
 	anti_hug = 3
-	vision_impair = 0
+	vision_impair = VISION_IMPAIR_NONE
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -106,21 +106,21 @@
 	item_state = "s-ninja_mask"
 	vchange = 1
 	siemens_coefficient = 0.2
-	vision_impair = 0
+	vision_impair = VISION_IMPAIR_NONE
 
 /obj/item/clothing/mask/gas/clown_hat
 	name = "clown wig and mask"
 	desc = "A true prankster's facial attire. A clown is incomplete without his wig and mask."
 	icon_state = "clown"
 	item_state = "clown_hat"
-	vision_impair = 0
+	vision_impair = VISION_IMPAIR_NONE
 
 /obj/item/clothing/mask/gas/mime
 	name = "mime mask"
 	desc = "The traditional mime's mask. It has an eerie facial posture."
 	icon_state = "mime"
 	item_state = "mime"
-	vision_impair = 0
+	vision_impair = VISION_IMPAIR_NONE
 
 /obj/item/clothing/mask/gas/monkeymask
 	name = "monkey mask"
@@ -128,7 +128,7 @@
 	icon_state = "monkeymask"
 	item_state = "monkeymask"
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
-	vision_impair = 0
+	vision_impair = VISION_IMPAIR_NONE
 
 /obj/item/clothing/mask/gas/death_commando
 	name = "Death Commando Mask"
@@ -140,7 +140,7 @@
 	name = "fake mustache"
 	desc = "It is almost perfect."
 	icon_state = "souto_man"
-	vision_impair = 0
+	vision_impair = VISION_IMPAIR_NONE
 	unacidable = TRUE
 	flags_item = NODROP|DELONDROP
 	flags_inventory = CANTSTRIP|COVEREYES|COVERMOUTH|ALLOWINTERNALS|ALLOWREBREATH|BLOCKGASEFFECT|ALLOWCPR|BLOCKSHARPOBJ

@@ -216,19 +216,21 @@
 			to_chat(H_user, SPAN_NOTICE("You were interrupted!"))
 			return
 
-	if ((embedded_human.embedded_items.len - embedded_human.get_visible_implants().len) <= 0)
-		to_chat(H_user, SPAN_NOTICE("You couldn't find any shrapnel."))
-		return
-
-	for (var/obj/item/shard/shrapnel/S in embedded_human.embedded_items)
+	var/no_shards = TRUE
+	for (var/obj/item/shard/S in embedded_human.embedded_items)
 		var/datum/limb/organ = S.embedded_organ
 		to_chat(embedded_human, SPAN_NOTICE("You remove [S] from your [organ.display_name]."))
 		S.loc = embedded_human.loc
 		organ.implants -= S
 		embedded_human.embedded_items -= S
+		no_shards = FALSE
 		organ = null
 		QDEL_IN(S, 300)
 		H_user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
+
+	if(no_shards)
+		to_chat(H_user, SPAN_NOTICE("You couldn't find any shrapnel."))
+		return
 
 	to_chat(H_user, SPAN_NOTICE("You dig out all the shrapnel you can find from your body."))
 

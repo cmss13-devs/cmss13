@@ -1,0 +1,14 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - tweak: "Updated autoresponses and added new ones. [#8415]"
+  - rscadd: "Made it very difficult not to notice being marked for hunt by yautja."
+  - rscadd: "Made it very difficult not to notice a C4 being planted on you."
+  - rscadd: "Embedded glass shards are now also removed with knife along with shrapnel. [#8205]"
+  - rscdel: "Removed policing skills from survivors."
+  - rscdel: "Removed Flashlight Grip from squad attachments vendor since it is available in Weapons Rack."
+  - tweak: "Tweaked the content of the smartgunner Equipment Rack. [#8503]"
+  - bugfix: "Fixed the bug that made any rocket into HE when you unloaded RPG. [Watermelon914]"
+  - tweak: "Updated descriptions of RPG rockets to include information about warhead behavior upon hitting target."

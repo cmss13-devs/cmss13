@@ -51,6 +51,9 @@
 
 	user.visible_message(SPAN_WARNING("[user] is trying to plant [name] on [target]!"),
 	SPAN_WARNING("You are trying to plant [name] on [target]!"))
+	if(ismob(target))
+		var/mob/M = target
+		to_chat(M, FONT_SIZE_HUGE(SPAN_DANGER("[user] is trying to plant [name] on you!")))
 	bombers += "[key_name(user)] attached C4 to [target.name]."
 
 	if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
@@ -58,6 +61,8 @@
 		loc = null
 
 		if(ismob(target))
+			var/mob/M = target
+			to_chat(M, FONT_SIZE_HUGE(SPAN_DANGER("[user] plants [name] on you!")))
 			user.attack_log += "\[[time_stamp()]\] <font color='red'> [user.real_name] successfully planted [name] on [target:real_name] ([target:ckey])</font>"
 			message_admins("[key_name(user, user.client)](<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[user]'>?</A>) planted [src.name] on [key_name(target)](<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[target]'>?</A>) with [timer] second fuse")
 			log_game("[key_name(user)] planted [src.name] on [key_name(target)] with [timer] second fuse")

@@ -970,7 +970,7 @@
 /area/strata/ag/exterior/marsh/water)
 "adb" = (
 /obj/effect/landmark{
-	name = "yautja_teleporter_loc"
+	name = "yautja_teleport_loc"
 	},
 /turf/open/snow/layer3,
 /area/strata/ag/exterior/paths/cabin_area/central)
@@ -36333,7 +36333,7 @@
 	dir = 6
 	},
 /obj/effect/landmark{
-	name = "yautja_teleporter_loc"
+	name = "yautja_teleport_loc"
 	},
 /turf/open/snow/layer1,
 /area/strata/ag/exterior/paths/southresearch)
@@ -37540,7 +37540,7 @@
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "caK" = (
 /obj/effect/landmark{
-	name = "yautja_teleporter_loc"
+	name = "yautja_teleport_loc"
 	},
 /turf/open/snow/layer0,
 /area/strata/ag/exterior/paths/north_outpost)
@@ -45261,7 +45261,7 @@
 	dir = 6
 	},
 /obj/effect/landmark{
-	name = "yautja_teleporter_loc"
+	name = "yautja_teleport_loc"
 	},
 /turf/open/ice,
 /area/strata/ag/exterior/marsh)
@@ -47744,7 +47744,7 @@
 	dir = 6
 	},
 /obj/effect/landmark{
-	name = "yautja_teleporter_loc"
+	name = "yautja_teleport_loc"
 	},
 /turf/open/ice,
 /area/strata/ag/exterior/paths/southresearch)

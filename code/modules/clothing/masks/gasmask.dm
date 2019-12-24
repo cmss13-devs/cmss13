@@ -22,7 +22,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	siemens_coefficient = 0.9
 	var/gas_filter_strength = 1			//For gas mask filters
-	var/vision_impair = VISION_IMPAIR_MAX	//Changed system to support more than 2 versions of impairment
+	var/vision_impair = VISION_IMPAIR_NONE //Changed system to support more than 2 versions of impairment
 	var/list/filtered_gases = list("phoron", "sleeping_agent", "carbon_dioxide")
 
 /obj/item/clothing/mask/gas/PMC

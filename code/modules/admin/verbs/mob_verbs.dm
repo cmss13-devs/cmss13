@@ -121,6 +121,23 @@
 	log_admin("[key_name(usr)] healed / revived [key_name(M)]")
 	message_admins(SPAN_DANGER("Admin [key_name_admin(usr)] healed / revived [key_name_admin(M)]!"), 1)
 
+/client/proc/rejuvenate_all_in_view()
+	set name = "E: Rejuvenate All In View"
+	set category = "Admin"
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
+	if(alert("This will rejuvenate ALL mobs within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
+		return
+
+	for(var/mob/living/M in view())
+		M.rejuvenate(FALSE)
+
+	log_admin("[key_name(usr)] used Rejuvenate All In View.")
+	message_admins("[key_name(usr)] used Rejuvenate All In View.")
+
 /client/proc/cmd_admin_subtle_message(mob/M as mob in mob_list)
 	set name = "Subtle Message"
 	set category = null

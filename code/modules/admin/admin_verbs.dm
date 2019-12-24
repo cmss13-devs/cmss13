@@ -34,7 +34,7 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/admin_force_selfdestruct,
 	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
 	/client/proc/check_round_statistics,
-	/client/proc/force_shuttle,
+	/client/proc/force_shuttle
 )
 var/list/admin_verbs_ban = list(
 	/client/proc/unban_panel
@@ -181,6 +181,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/dsay,
 	/client/proc/chem_panel,			/*chem panel, allows viewing, editing and creation of reagent and chemical_reaction datums*/
 	/client/proc/vehicle_panel,
+	/client/proc/rejuvenate_all_in_view,
 	/datum/admins/proc/togglesleep,
 	/datum/admins/proc/sleepall,
 	/datum/admins/proc/togglejoin,

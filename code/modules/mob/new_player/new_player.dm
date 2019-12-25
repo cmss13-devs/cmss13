@@ -278,6 +278,11 @@
 				hs.stored_larva++
 				hs.hive_ui.update_burrowed_larva()
 
+	if(character.mind && character.mind.player_entity)
+		var/datum/entity/player_entity/player = character.mind.player_entity
+		if(player.get_playtime(STATISTIC_HUMAN) == 0 && player.get_playtime(STATISTIC_XENO) == 0)
+			msg_admin_niche("NEW PLAYER: <b>[key_name(character, 1, 1, 0)] (<A HREF='?_src_=admin_holder;ahelp=adminmoreinfo;extra=\ref[character]'>?</A>)</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
+
 	qdel(src)
 
 /mob/new_player/proc/AnnounceArrival(var/mob/living/carbon/human/character, var/rank, var/join_message)

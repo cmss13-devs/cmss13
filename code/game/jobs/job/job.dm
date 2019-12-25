@@ -111,8 +111,7 @@
 		var/t = {"
 <span class='role_body'>|______________________|</span>
 <span class='role_header'>You are \a [title_given]![flags_startup_parameters & ROLE_ADMIN_NOTIFY? "\nYou are playing a job that is important for game progression. If you have to disconnect, please notify the admins via adminhelp." : ""]</span>
-<span class='role_body'>[generate_entry_message(H)]
-As the [title_given] you answer to [supervisors]. Special circumstances may change this.[M ? "\nYour account number is: <b>[M.account_number]</b>. Your account pin is: <b>[M.remote_access_pin]</b>." : ""]</span>
+<span class='role_body'>[generate_entry_message(H)].[M ? "\nYour account number is: <b>[M.account_number]</b>. Your account pin is: <b>[M.remote_access_pin]</b>." : ""]</span>
 <span class='role_body'>|______________________|</span>
 		"}
 		to_chat(H, t)

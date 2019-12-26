@@ -738,6 +738,7 @@
 	bonus_projectiles_amount = config.low_proj_extra
 	shell_speed = config.reg_shell_speed
 	damage_armor_punch = 0
+	pen_armor_punch = 0
 
 /datum/ammo/bullet/shotgun/buckshot/on_hit_mob(mob/M,obj/item/projectile/P)
 	knockback(M,P)
@@ -768,6 +769,7 @@
 	shell_speed = config.reg_shell_speed
 	scatter = config.super_scatter_value
 	damage_armor_punch = 0
+	pen_armor_punch = 0
 
 /datum/ammo/bullet/shotgun/spread/masterkey/New()
 	..()
@@ -985,6 +987,7 @@
 	damage = config.mlow_hit_damage
 	penetration = config.hmed_armor_penetration
 	damage_armor_punch = 0
+	pen_armor_punch = 0
 	shell_speed = 2*config.ultra_shell_speed
 	accuracy = config.high_hit_accuracy
 

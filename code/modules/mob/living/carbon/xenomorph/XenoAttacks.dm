@@ -12,7 +12,7 @@
 		else
 			M.animation_attack_on(src)
 			M.flick_attack_overlay(src, "punch")
-			visible_message(SPAN_DANGER("[S] [S.attacktext] [src]!"), null, null, 5)
+			visible_message(SPAN_DANGER("[S] [S.attacktext] [src]!"), null, null, 5, CHAT_TYPE_MELEE_HIT)
 			var/damage = rand(S.melee_damage_lower, S.melee_damage_upper)
 			apply_damage(damage, BRUTE)
 			last_damage_source = initial(M.name)
@@ -30,10 +30,10 @@
 		if("help")
 			if(stat == DEAD)
 				M.visible_message(SPAN_WARNING("\The [M] pokes \the [src], but nothing happens."), \
-				SPAN_WARNING("You poke \the [src], but nothing happens."), null, 5)
+				SPAN_WARNING("You poke \the [src], but nothing happens."), null, 5, CHAT_TYPE_FLUFF_ACTION)
 			else
 				M.visible_message(SPAN_WARNING("\The [M] pokes \the [src]."), \
-				SPAN_WARNING("You poke \the [src]."), null, 5)
+				SPAN_WARNING("You poke \the [src]."), null, 5, CHAT_TYPE_FLUFF_ACTION)
 
 		if("grab")
 			if(M == src || anchored)
@@ -55,12 +55,12 @@
 				damage += attack.damage > 5 ? attack.damage : 0
 
 				playsound(loc, attack.attack_sound, 25, 1)
-				visible_message(SPAN_DANGER("[M] [pick(attack.attack_verb)]ed [src]!"), null, null, 5)
+				visible_message(SPAN_DANGER("[M] [pick(attack.attack_verb)]ed [src]!"), null, null, 5, CHAT_TYPE_MELEE_HIT)
 				apply_damage(damage, BRUTE)
 				updatehealth()
 			else
 				playsound(loc, attack.miss_sound, 25, 1)
-				visible_message(SPAN_DANGER("[M] tried to [pick(attack.attack_verb)] [src]!"), null, null, 5)
+				visible_message(SPAN_DANGER("[M] tried to [pick(attack.attack_verb)] [src]!"), null, null, 5, CHAT_TYPE_MELEE_HIT)
 
 	return
 
@@ -73,7 +73,7 @@
 	if(src != M)
 		if(isXenoLarva(M)) //Larvas can't eat people
 			M.visible_message(SPAN_DANGER("[M] nudges its head against \the [src]."), \
-			SPAN_DANGER("You nudge your head against \the [src]."))
+			SPAN_DANGER("You nudge your head against \the [src]."), null, null, CHAT_TYPE_XENO_FLUFF)
 			return 0
 
 		switch(M.a_intent)
@@ -86,7 +86,7 @@
 					M.attempt_tailswipe(src)
 				else
 					M.visible_message(SPAN_NOTICE("\The [M] caresses \the [src] with its scythe-like arm."), \
-					SPAN_NOTICE("You caress \the [src] with your scythe-like arm."), null, 5)
+					SPAN_NOTICE("You caress \the [src] with your scythe-like arm."), null, 5, CHAT_TYPE_XENO_FLUFF)
 
 			if("grab")
 				if(M == src || anchored)
@@ -96,14 +96,14 @@
 					M.start_pulling(src)
 
 					M.visible_message(SPAN_WARNING("[M] grabs \the [src]!"), \
-					SPAN_WARNING("You grab \the [src]!"), null, 5)
+					SPAN_WARNING("You grab \the [src]!"), null, 5, CHAT_TYPE_XENO_FLUFF)
 					playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
-			if("hurt")//Can't slash other xenos for now. SORRY  // You can now! --spookydonut
+			if("hurt")
 				M.animation_attack_on(src)
 				if(hivenumber == M.hivenumber)
 					M.visible_message(SPAN_WARNING("\The [M] nibbles \the [src]."), \
-					SPAN_WARNING("You nibble \the [src]."), null, 5)
+					SPAN_WARNING("You nibble \the [src]."), null, 5, CHAT_TYPE_XENO_FLUFF)
 					return 1
 				else
 					// copypasted from attack_alien.dm
@@ -118,11 +118,11 @@
 					if(!damage)
 						playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
 						M.visible_message(SPAN_DANGER("\The [M] lunges at [src]!"), \
-						SPAN_DANGER("You lunge at [src]!"), null, 5)
+						SPAN_DANGER("You lunge at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 						return 0
 
 					M.visible_message(SPAN_DANGER("\The [M] slashes [src]!"), \
-					SPAN_DANGER("You slash [src]!"), null, 5)
+					SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 					last_damage_source = initial(M.name)
 					last_damage_mob = M
 					src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [M.name] ([M.ckey])</font>")
@@ -139,13 +139,13 @@
 				if(!(isXenoQueen(M)) || M.hivenumber != src.hivenumber)
 					playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
 					M.visible_message(SPAN_WARNING("\The [M] shoves \the [src]!"), \
-					SPAN_WARNING("You shove \the [src]!"), null, 5)
+					SPAN_WARNING("You shove \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 					if(ismonkey(src))
 						KnockDown(8)
 				else
 					playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 					M.visible_message(SPAN_WARNING("\The [M] shoves \the [src] out of her way!"), \
-					SPAN_WARNING("You shove \the [src] out of your way!"), null, 5)
+					SPAN_WARNING("You shove \the [src] out of your way!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 					src.KnockDown(1)
 		return 1
 

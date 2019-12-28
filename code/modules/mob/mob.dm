@@ -76,7 +76,7 @@
 	for(var/hud in hud_possible)
 		hud_list[hud] = image('icons/mob/hud/hud.dmi', src, "")
 
-/mob/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
+/mob/proc/show_message(msg, type, alt, alt_type, message_flags = CHAT_TYPE_OTHER)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 
 	if(!client)	return
 
@@ -95,11 +95,11 @@
 				type = alt_type
 				if (type & 1 && (sdisabilities & BLIND))
 					return
-
-	if(stat == UNCONSCIOUS)
-		to_chat(src, "<I>... You can almost hear someone talking ...</I>")
-	else
-		to_chat(src, msg)
+	if(message_flags == CHAT_TYPE_OTHER || (message_flags & client.prefs.chat_display_preferences) > 0) // or logic between types
+		if(stat == UNCONSCIOUS)
+			to_chat(src, "<I>... You can almost hear someone talking ...</I>")
+		else
+			to_chat(src, msg)
 
 
 // Show a message to all mobs in sight of this one
@@ -108,20 +108,25 @@
 // self_message (optional) is what the src mob sees  e.g. "You do something!"
 // blind_message (optional) is what blind people will hear e.g. "You hear something!"
 
-/mob/visible_message(message, self_message, blind_message, max_distance)
+/mob/visible_message(message, self_message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/view_dist = 7
+	var/flags = message_flags
 	if(max_distance) view_dist = max_distance
 	for(var/mob/M in viewers(view_dist, src))
 		var/msg = message
 		if(self_message && M==src)
 			msg = self_message
-		M.show_message( msg, 1, blind_message, 2)
+			if(flags & CHAT_TYPE_TARGETS_ME)
+				flags = CHAT_TYPE_BEING_HIT
+		M.show_message( msg, 1, blind_message, 2, flags)
 	for(var/obj/vehicle/V in orange(max_distance))
 		for(var/mob/M in V.contents)
 			var/msg = message
 			if(self_message && M==src)
 				msg = self_message
-			M.show_message( msg, 1, blind_message, 2)
+				if(flags & CHAT_TYPE_TARGETS_ME)
+					flags = CHAT_TYPE_BEING_HIT
+			M.show_message( msg, 1, blind_message, 2, flags)
 
 // Shows three different messages depending on who does it to who and how does it look like to outsiders
 // message_mob: "You do something to X!"
@@ -139,11 +144,11 @@
 // Use for objects performing visible actions
 // message is output to anyone who can see, e.g. "The [src] does something!"
 // blind_message (optional) is what blind people will hear e.g. "You hear something!"
-/atom/proc/visible_message(message, blind_message, max_distance)
+/atom/proc/visible_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/view_dist = 7
 	if(max_distance) view_dist = max_distance
 	for(var/mob/M in viewers(view_dist, src))
-		M.show_message(message, 1, blind_message, 2)
+		M.show_message(message, 1, blind_message, 2, message_flags)
 
 
 /mob/proc/findname(msg)

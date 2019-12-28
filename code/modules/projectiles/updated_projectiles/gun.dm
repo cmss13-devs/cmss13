@@ -477,7 +477,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		ready_in_chamber()
 		cock_gun(user)
 	user.visible_message(SPAN_NOTICE("[user] loads [magazine] into [src]!"),
-	SPAN_NOTICE("You load [magazine] into [src]!"), null, 3)
+	SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
 	if(reload_sound) playsound(user, reload_sound, 25, 1, 5)
 
 
@@ -498,7 +498,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 
 	playsound(user, unload_sound, 25, 1, 5)
 	user.visible_message(SPAN_NOTICE("[user] unloads [current_mag] from [src]."),
-	SPAN_NOTICE("You unload [current_mag] from [src]."), null, 4)
+	SPAN_NOTICE("You unload [current_mag] from [src]."), null, 4, CHAT_TYPE_COMBAT_ACTION)
 	current_mag.update_icon()
 	current_mag = null
 
@@ -516,7 +516,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	cock_gun(user)
 	if(in_chamber)
 		user.visible_message(SPAN_NOTICE("[user] cocks [src], clearing a [in_chamber.name] from its chamber."),
-		SPAN_NOTICE("You cock [src], clearing a [in_chamber.name] from its chamber."), null, 4)
+		SPAN_NOTICE("You cock [src], clearing a [in_chamber.name] from its chamber."), null, 4, CHAT_TYPE_COMBAT_ACTION)
 		if(current_mag)
 			var/found_handful
 			for(var/obj/item/ammo_magazine/handful/H in user.loc)
@@ -532,7 +532,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		in_chamber = null
 	else
 		user.visible_message(SPAN_NOTICE("[user] cocks [src]."),
-		SPAN_NOTICE("You cock [src]."), null, 4)
+		SPAN_NOTICE("You cock [src]."), null, 4, CHAT_TYPE_COMBAT_ACTION)
 	ready_in_chamber() //This will already check for everything else, loading the next bullet.
 
 
@@ -849,7 +849,7 @@ and you're good to go.
 		return ..()
 
 	if(M.stat == UNCONSCIOUS && user.a_intent in list(GRAB_INTENT, DISARM_INTENT)) //Execution
-		user.visible_message(SPAN_DANGER("[user] puts [src] up to [M], steadying their aim."), SPAN_WARNING("You put [src] up to [M], steadying your aim."))
+		user.visible_message(SPAN_DANGER("[user] puts [src] up to [M], steadying their aim."), SPAN_WARNING("You put [src] up to [M], steadying your aim."),null, null, CHAT_TYPE_COMBAT_ACTION)
 		if(!do_after(user, SECONDS_3, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_HOSTILE))
 			return FALSE
 
@@ -874,7 +874,7 @@ and you're good to go.
 		damage_buff += config.med_hit_damage_mult
 	damage_buff *= damage_mult
 	projectile_to_fire.damage *= damage_buff //Multiply the damage for point blank.
-	user.visible_message(SPAN_DANGER("[user] fires [src] point blank at [M]!"))
+	user.visible_message(SPAN_DANGER("[user] fires [src] point blank at [M]!"), null, null, null, CHAT_TYPE_WEAPON_USE)
 	user.track_shot(initial(name))
 	apply_bullet_effects(projectile_to_fire, user) //We add any damage effects that we need.
 	simulate_recoil(1, user)
@@ -1048,7 +1048,7 @@ and you're good to go.
 			user.visible_message(
 			SPAN_DANGER("[user] fires [active_attachable][reflex ? " by reflex":""]!"), \
 			SPAN_WARNING("You fire [active_attachable][reflex ? "by reflex":""]!"), \
-			SPAN_WARNING("You hear a [istype(projectile_to_fire.ammo, /datum/ammo/bullet) ? "gunshot" : "blast"]!"), 4
+			SPAN_WARNING("You hear a [istype(projectile_to_fire.ammo, /datum/ammo/bullet) ? "gunshot" : "blast"]!"), 4, CHAT_TYPE_WEAPON_USE
 			)
 		else
 			if(!(flags_gun_features & GUN_SILENCED))
@@ -1060,12 +1060,12 @@ and you're good to go.
 					user.visible_message(
 					SPAN_DANGER("[user] fires [src][reflex ? " by reflex":""]!"), \
 					SPAN_WARNING("You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag && current_mag.current_rounds ? "<B>[current_mag.current_rounds+offset_or_not]</b>/[current_mag.max_rounds]" : ""]"), \
-					SPAN_WARNING("You hear a [istype(projectile_to_fire.ammo, /datum/ammo/bullet) ? "gunshot" : "blast"]!"), 4
+					SPAN_WARNING("You hear a [istype(projectile_to_fire.ammo, /datum/ammo/bullet) ? "gunshot" : "blast"]!"), 4, CHAT_TYPE_WEAPON_USE
 					)
 			else
 				playsound(user, actual_sound, 25)
 				if(bullets_fired == 1)
-					to_chat(user, SPAN_WARNING("You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag && current_mag.current_rounds ? "<B>[current_mag.current_rounds-1]</b>/[current_mag.max_rounds]" : ""]"))
+					to_chat(user, SPAN_WARNING("You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag && current_mag.current_rounds ? "<B>[current_mag.current_rounds-1]</b>/[current_mag.max_rounds]" : ""]"), null , null, CHAT_TYPE_WEAPON_USE)
 
 	return 1
 

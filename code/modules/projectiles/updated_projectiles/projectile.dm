@@ -375,7 +375,7 @@
 			animatation_displace_reset(L)
 			if(ammo.sound_miss) L.playsound_local(get_turf(L), ammo.sound_miss, 75, 1)
 			L.visible_message(SPAN_AVOIDHARM("[src] misses [L]!"),
-				SPAN_AVOIDHARM("[src] narrowly misses you!"), null, 4)
+				SPAN_AVOIDHARM("[src] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
 
 
 
@@ -945,7 +945,7 @@
 		to_chat(src, isXeno(src) ? SPAN_XENODANGER("[hit_msg]"):SPAN_HIGHDANGER("[hit_msg]"))
 	else
 		visible_message(SPAN_DANGER("[name] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
-						SPAN_HIGHDANGER("You are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4)
+						SPAN_HIGHDANGER("You are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
 
 	if(P.weapon_source)
 		last_damage_source = "[P.weapon_source]"

@@ -67,7 +67,54 @@
 	else
 		to_chat(src, "As a ghost, you will [(prefs.toggles_chat & CHAT_DEAD) ? "now" : "no longer"] see deadchat.")
 
+/client/verb/toggle_chat_shooting()
+	set name = "Show/Hide Firing Messages"
+	set category = "Preferences"
+	set desc = ".Enable or Disable messages informing about weapon fire"
+	prefs.chat_display_preferences ^= CHAT_TYPE_WEAPON_USE
+	to_chat(src, "As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_WEAPON_USE) ? "see all weapon fire messages" : "never see weapon fire messages"].")
+	prefs.save_preferences()
 	 
+/client/verb/toggle_chat_xeno_attack()
+	set name = "Show/Hide Xeno Attack Messages"
+	set category = "Preferences"
+	set desc = ".Enable or Disable messages informing about xeno attacks"
+	prefs.chat_display_preferences ^= CHAT_TYPE_XENO_COMBAT
+	to_chat(src, "As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_XENO_COMBAT) ? "see all xeno attack messages" : "never see xeno attack messages"].")
+	prefs.save_preferences()
+
+/client/verb/toggle_chat_xeno_armor()
+	set name = "Show/Hide Xeno Armour Break Messages"
+	set category = "Preferences"
+	set desc = ".Enable or Disable messages informing about xeno armor"
+	prefs.chat_display_preferences ^= CHAT_TYPE_ARMOR_DAMAGE
+	to_chat(src, "As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_ARMOR_DAMAGE) ? "see all xeno armor messages" : "never see xeno armor messages"].")
+	prefs.save_preferences()
+
+/client/verb/toggle_chat_someone_hit()
+	set name = "Show/Hide Someone Hit Messages"
+	set category = "Preferences"
+	set desc = ".Enable or Disable messages informing about someone being hit"
+	prefs.chat_display_preferences ^= CHAT_TYPE_TAKING_HIT
+	to_chat(src, "As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_TAKING_HIT) ? "see all player hit messages" : "never see player hit messages"].")
+	prefs.save_preferences()
+
+/client/verb/toggle_chat_you_hit()
+	set name = "Show/Hide You Hit Messages"
+	set category = "Preferences"
+	set desc = ".Enable or Disable messages informing about you being hit"
+	prefs.chat_display_preferences ^= CHAT_TYPE_BEING_HIT
+	to_chat(src, "As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_BEING_HIT) ? "see you being hit messages" : "never see you being hit messages"].")
+	prefs.save_preferences()
+
+/client/verb/toggle_chat_you_pain()
+	set name = "Show/Hide Pain Messages"
+	set category = "Preferences"
+	set desc = ".Enable or Disable messages informing about you being in pain"
+	prefs.chat_display_preferences ^= CHAT_TYPE_PAIN
+	to_chat(src, "As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_PAIN) ? "see you being in pain messages" : "never see you being in pain messages"].")
+	prefs.save_preferences()
+
 
 /client/proc/toggleprayers()
 	set name = "Show/Hide Prayers"

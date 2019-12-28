@@ -317,3 +317,19 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 #define DECORATOR_MONTH_SPECIFIC 10
 #define DECORATOR_DAY_SPECIFIC 20
 #define DECORATOR_HIGHEST_PRIORITY 50
+
+// Chat message types
+#define CHAT_TYPE_OTHER 0
+#define CHAT_TYPE_BEING_HIT 1
+#define CHAT_TYPE_WEAPON_USE 2
+#define CHAT_TYPE_ARMOR_DAMAGE 4
+#define CHAT_TYPE_MELEE_HIT 8
+#define CHAT_TYPE_FLUFF_ACTION 16
+#define CHAT_TYPE_COMBAT_ACTION 32
+#define CHAT_TYPE_XENO_COMBAT 64
+#define CHAT_TYPE_XENO_FLUFF 128
+#define CHAT_TYPE_TAKING_HIT 256
+#define CHAT_TYPE_PAIN 512
+
+#define CHAT_TYPE_ALL ((1<<16) - 1) // this is so if we have newer flags, we still have ALL working. This will work for 16 first flags
+#define CHAT_TYPE_TARGETS_ME CHAT_TYPE_TAKING_HIT

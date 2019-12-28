@@ -57,6 +57,7 @@
 	S["be_special"]			>> be_special
 	S["default_slot"]		>> default_slot
 	S["toggles_chat"]		>> toggles_chat
+	S["chat_display_preferences"] >> chat_display_preferences
 	S["toggles_sound"]		>> toggles_sound
 	S["toggle_prefs"]		>> toggle_prefs
 	S["UI_style_color"]		>> UI_style_color
@@ -84,6 +85,7 @@
 	be_special		= sanitize_integer(be_special, 0, 65535, initial(be_special))
 	default_slot	= sanitize_integer(default_slot, 1, MAX_SAVE_SLOTS, initial(default_slot))
 	toggles_chat	= sanitize_integer(toggles_chat, 0, 65535, initial(toggles_chat))
+	chat_display_preferences	= sanitize_integer(chat_display_preferences, 0, 65535, initial(chat_display_preferences))
 	toggles_sound	= sanitize_integer(toggles_sound, 0, 65535, initial(toggles_sound))
 	toggle_prefs	= sanitize_integer(toggle_prefs, 0, 65535, initial(toggle_prefs))
 	UI_style_color	= sanitize_hexcolor(UI_style_color, initial(UI_style_color))
@@ -117,6 +119,7 @@
 	S["be_special"]			<< be_special
 	S["default_slot"]		<< default_slot
 	S["toggles_chat"]		<< toggles_chat
+	S["chat_display_preferences"] << chat_display_preferences
 	S["toggles_sound"]		<< toggles_sound
 	S["toggle_prefs"]		<< toggle_prefs
 	S["fps"]				<< fps

@@ -147,10 +147,8 @@
 	updatehealth()
 
 /mob/living/carbon/Xenomorph/proc/check_blood_splash(damage = 0, damtype = BRUTE, chancemod = 0, radius = 1)
-	if(!damage)
-		return 0
-	if(map_tag == MAP_WHISKEY_OUTPOST)
-		return 0
+	if(!damage || world.time < acid_splash_last + acid_splash_cooldown ||map_tag == MAP_WHISKEY_OUTPOST)
+		return FALSE
 	var/chance = 20 //base chance
 	if(damtype == BRUTE) chance += 5
 	chance += chancemod + (damage * 0.33)
@@ -188,6 +186,7 @@
 				if(prob(60) && !victim.stat && !(victim.species.flags & NO_PAIN))
 					victim.emote("scream") //Topkek
 				victim.take_limb_damage(0, rand(8, 12)) //Sizzledam! This automagically burns a random existing body part.
+				acid_splash_last = world.time
 
 /mob/living/carbon/Xenomorph/proc/apply_overheal_damage(var/damage)
 	overheal -= damage

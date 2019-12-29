@@ -122,6 +122,8 @@
 	var/charge_speed_buildup = 0.15 //POSITIVE amount of speed built up during a charge each step
 	var/charge_turfs_to_charge = 5 //Amount of turfs to build up before a charge begins
 
+	var/acid_splash_cooldown = SECONDS_5 //Time it takes between acid splash retaliate procs. Variable per caste, for if we want future castes that are acid bombs
+
 	/* Resolve this line once structures are resolved.
 	//Types of special structures this caste can build
 	var/list/structures_allowed = list()

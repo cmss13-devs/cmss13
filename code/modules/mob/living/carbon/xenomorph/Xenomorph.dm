@@ -290,6 +290,9 @@
 
 	var/acid_spray_activation_time = 12
 
+	var/acid_splash_cooldown = SECONDS_5 //Time it takes between acid splash retaliate procs
+	var/acid_splash_last //Last recorded time that an acid splash procced
+
 	//New variables for how charges work, max speed, speed buildup, all that jazz
 	// TODO: move this to caste-specific if possible (this one's tricky)
 	var/charge_speed_max = 1.5 //Can only gain this much speed before capping
@@ -404,6 +407,7 @@
 		to_world("something went very wrong")
 		return
 	upgrade = caste.upgrade
+	acid_splash_cooldown = caste.acid_splash_cooldown
 	mutators.user_levelled_up(upgrade)
 	if(isXenoQueenLeadingHive(src))
 		//The Queen matures, so does the Hive!

@@ -17,8 +17,6 @@ var/global/list/stylesheets = list(
 )
 
 var/const/MAX_SAVE_SLOTS = 10
-#define XENO_PREFIX_LIMIT 2
-#define XENO_POSTFIX_LIMIT 2
 
 /datum/preferences
 	//doohickeys for savefiles
@@ -145,6 +143,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	// XENO NAMES
 	var/xeno_prefix = "XX"
 	var/xeno_postfix = ""
+	var/xeno_name_ban = FALSE
 
 	var/stylesheet = "Modern"
 
@@ -919,10 +918,29 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(new_predator_boot_type) predator_boot_type = round(text2num(new_predator_boot_type))
 
 				if("xeno_prefix")
+					if(xeno_name_ban)
+						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You are banned from xeno name picking.")))
+						xeno_prefix = ""
+						return					
+
 					var/new_xeno_prefix = input(user, "Choose your xenomorph prefix. One or two letters capitalized. Put empty text if you want to default it to 'XX'", "Xenomorph Prefix") as text|null
 					new_xeno_prefix = uppertext(new_xeno_prefix)
-					if(length(new_xeno_prefix) > XENO_PREFIX_LIMIT)
-						to_chat(user, "<font color='red'>Invalid Xeno Prefix. Your Prefix can only be up to [XENO_PREFIX_LIMIT] letters long.</font>")
+
+					var/prefix_length = length(new_xeno_prefix)
+
+					if(prefix_length>3)
+						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Invalid Xeno Prefix. Your Prefix can only be up to 3 letters long.")))
+
+					if(prefix_length==3)
+						var/datum/entity/player_entity/selected_entity = user.client.player_entity
+						var/playtime = selected_entity.get_playtime(STATISTIC_XENO)
+						if(playtime < 124 HOURS)
+							to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You need to play [Ceiling((124 HOURS - playtime)/HOURS_1)] more hours to unlock xeno three letter prefix.")))
+							return
+						if(xeno_postfix)
+							to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You can't use three letter prefix with any postfix.")))
+							return
+						
 					else if(length(new_xeno_prefix)==0)
 						xeno_prefix = "XX"
 					else
@@ -940,10 +958,24 @@ var/const/MAX_SAVE_SLOTS = 10
 							to_chat(user, "<font color='red'>Invalid Xeno Prefix. Your Prefix can contain either single letter or two letters.</font>")
 
 				if("xeno_postfix")
+					if(xeno_name_ban)
+						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You are banned from xeno name picking.")))
+						xeno_postfix = ""
+						return
+					var/datum/entity/player_entity/selected_entity = user.client.player_entity
+					var/playtime = selected_entity.get_playtime(STATISTIC_XENO)
+					if(playtime < 24 HOURS)
+						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You need to play [Ceiling((24 HOURS - playtime)/HOURS_1)] more hours to unlock xeno postfix.")))
+						return
+
+					if(length(xeno_prefix)==3)
+						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You can't use three letter prefix with any postfix.")))
+						return
+					 
 					var/new_xeno_postfix = input(user, "Choose your xenomorph postfix. One capital letter with or without a digit at the end. Put empty text if you want to remove postfix", "Xenomorph Postfix") as text|null
 					new_xeno_postfix = uppertext(new_xeno_postfix)
-					if(length(new_xeno_postfix)>XENO_POSTFIX_LIMIT)
-						to_chat(user, "<font color='red'>Invalid Xeno Postfix. Your Postfix can only be up to [XENO_POSTFIX_LIMIT] letters long.</font>")
+					if(length(new_xeno_postfix)>2)
+						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Invalid Xeno Postfix. Your Postfix can only be up to 2 letters long.")))
 					else if(length(new_xeno_postfix)==0)
 						xeno_postfix = ""
 					else

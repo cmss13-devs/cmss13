@@ -475,6 +475,8 @@
 		Ban:
 		<A href='?src=\ref[src];newban=\ref[M]'>Ban</A> |
 		<A href='?src=\ref[src];eorgban=\ref[M]'>EORG Ban</A> |
+		<A href='?src=\ref[src];xenoresetname=\ref[M]'>Xeno Name Reset</A> |
+		<A href='?src=\ref[src];xenobanname=\ref[M]'>Xeno Name Ban</A> |
 		<A href='?src=\ref[src];jobban2=\ref[M]'>Jobban</A> |
 		<A href='?src=\ref[src];notes=show;mob=\ref[M]'>Notes</A>
 	"}

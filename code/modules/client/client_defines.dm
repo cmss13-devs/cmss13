@@ -63,6 +63,7 @@
 
 	var/xeno_prefix = "XX"
 	var/xeno_postfix = ""
+	var/xeno_name_ban = FALSE
 
 	var/datum/entity/player_entity/player_entity = null
 	

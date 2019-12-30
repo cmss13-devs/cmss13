@@ -821,6 +821,85 @@
 		notes_add(M.ckey, "Banned by [usr.client.ckey]|Duration: [mins] minutes|Reason: [reason]", usr)
 		qdel(M.client)
 
+	else if(href_list["xenoresetname"])
+		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))
+			return
+		
+		var/mob/living/carbon/Xenomorph/X = locate(href_list["xenoresetname"])
+		if(!isXeno(X))
+			to_chat(usr, SPAN_WARNING("Not a xeno"))
+			return
+
+		if(alert("Are you sure you want to reset xeno name for [X.ckey]?", , "Yes", "No") == "No")
+			return
+
+		if(!X.ckey)
+			to_chat(usr, SPAN_DANGER("Warning: Mob ckey for [X.name] not found."))
+			return
+
+		log_admin("[usr.client.ckey] has reset [X.ckey] xeno name")
+		message_admins("[usr.client.ckey] has reset [X.ckey] xeno name")
+
+		to_chat(X, SPAN_DANGER("Warning: Your xeno name has been reset by [usr.client.ckey]."))
+		
+		X.client.xeno_prefix = "XX"
+		X.client.xeno_postfix = ""
+		X.client.prefs.xeno_prefix = "XX"
+		X.client.prefs.xeno_postfix = ""
+
+		X.client.prefs.save_preferences()
+		X.generate_name()
+
+	else if(href_list["xenobanname"])
+		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))
+			return
+		
+		var/mob/living/carbon/Xenomorph/X = locate(href_list["xenobanname"])
+		var/mob/M = locate(href_list["xenobanname"])
+
+		if(ismob(M) && X.client && X.client.xeno_name_ban)
+			if(alert("Are you sure you want to UNBAN [X.ckey] and let them use xeno name?", ,"Yes", "No") == "No")
+				return
+			X.client.xeno_name_ban = FALSE
+			X.client.prefs.xeno_name_ban = FALSE		
+
+			X.client.prefs.save_preferences()
+			log_admin("[usr.client.ckey] has unbanned [X.ckey] from using xeno names")
+			message_admins("[usr.client.ckey] has unbanned [X.ckey] from using xeno names")
+
+			notes_add(X.ckey, "Xeno Name Unbanned by [usr.client.ckey]", usr)
+			to_chat(X, SPAN_DANGER("Warning: You can use xeno names again."))
+			return
+
+
+		if(!isXeno(X))
+			to_chat(usr, SPAN_WARNING("Not a xeno"))
+			return
+
+		if(alert("Are you sure you want to BAN [X.ckey] from ever using any xeno name?", , "Yes", "No") == "No")
+			return
+
+		if(!X.ckey)
+			to_chat(usr, SPAN_DANGER("Warning: Mob ckey for [X.name] not found."))
+			return
+
+		log_admin("[usr.client.ckey] has banned [X.ckey] from using xeno names")
+		message_admins("[usr.client.ckey] has banned [X.ckey] from using xeno names")
+
+		notes_add(X.ckey, "Xeno Name Banned by [usr.client.ckey]|Reason: Xeno name was [X.name]", usr)
+
+		to_chat(X, SPAN_DANGER("Warning: You were banned from using xeno names by [usr.client.ckey]."))
+		
+		X.client.xeno_prefix = "XX"
+		X.client.xeno_postfix = ""
+		X.client.xeno_name_ban = TRUE
+		X.client.prefs.xeno_prefix = "XX"
+		X.client.prefs.xeno_postfix = ""
+		X.client.prefs.xeno_name_ban = TRUE		
+
+		X.client.prefs.save_preferences()
+		X.generate_name()
+
 	else if(href_list["mute"])
 		if(!check_rights(R_MOD,0) && !check_rights(R_ADMIN))  
 			return

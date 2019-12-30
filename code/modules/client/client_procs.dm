@@ -180,9 +180,10 @@
 	fps = prefs.fps
 	xeno_prefix = prefs.xeno_prefix	
 	xeno_postfix = prefs.xeno_postfix
-	if(!xeno_prefix)	
+	xeno_name_ban = prefs.xeno_name_ban
+	if(!xeno_prefix || xeno_name_ban)	
 		xeno_prefix = "XX"
-	if(!xeno_postfix)
+	if(!xeno_postfix || xeno_name_ban)
 		xeno_postfix = ""
 	. = ..()	//calls mob.Login()
 	chatOutput.start()

@@ -499,7 +499,7 @@
 /datum/equipment_preset/uscm_ship/sea/load_rank(mob/living/carbon/human/H)
 	if(H.mind && H.mind.player_entity)
 		var/datum/entity/player_entity/player = H.mind.player_entity
-		if(player.get_playtime("human", rank) >= HOURS_9)
+		if(player.get_playtime(STATISTIC_HUMAN, rank) >= HOURS_9)
 			return "E9"
 	return paygrade
 

@@ -67,6 +67,7 @@
 
 	S["xeno_prefix"]		>> xeno_prefix
 	S["xeno_postfix"]		>> xeno_postfix
+	S["xeno_name_ban"]		>> xeno_name_ban
 	S["view_controller"]	>> View_MC
 
 	S["synth_name"]			>> synthetic_name
@@ -126,6 +127,7 @@
 
 	S["xeno_prefix"]		<< xeno_prefix
 	S["xeno_postfix"]		<< xeno_postfix
+	S["xeno_name_ban"]		<< xeno_name_ban
 
 	S["view_controller"]	<< View_MC
 

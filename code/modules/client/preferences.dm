@@ -941,7 +941,7 @@ var/const/MAX_SAVE_SLOTS = 10
 							to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You can't use three letter prefix with any postfix.")))
 							return
 						
-					else if(length(new_xeno_prefix)==0)
+					if(length(new_xeno_prefix)==0)
 						xeno_prefix = "XX"
 					else
 						var/all_ok = TRUE

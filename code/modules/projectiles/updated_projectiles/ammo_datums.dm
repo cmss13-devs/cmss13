@@ -1063,6 +1063,8 @@
 /datum/ammo/rocket/on_hit_mob(mob/M, obj/item/projectile/P)
 	cell_explosion(get_turf(M), 200, 50, null, P.weapon_source, P.firer)
 	smoke.set_up(1, get_turf(M))
+	if(isHumanStrict(M)) // No yautya or synths. Makes humans gib on direct hit.
+		M.ex_act(350, P.dir, P.weapon_source, P.firer, 100)
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_obj(obj/O, obj/item/projectile/P)
@@ -1098,6 +1100,8 @@
 	M.ex_act(150, P.dir, P.weapon_source, P.firer, 100)
 	M.KnockDown(4)
 	M.KnockOut(4)
+	if(isHumanStrict(M)) // No yautya or synths. Makes humans gib on direct hit.
+		M.ex_act(350, P.dir, P.weapon_source, P.firer, 100)
 	cell_explosion(T, 100, 50, null, P.weapon_source, P.firer)
 	smoke.set_up(1, T)
 	smoke.start()
@@ -1895,6 +1899,24 @@
 	penetration = config.min_armor_penetration
 	shell_speed = config.slow_shell_speed
 	shrapnel_chance = 0
+
+/datum/ammo/bullet/shrapnel/light/human
+	name = "human bone fragments"
+	icon_state = "shrapnel_human"
+
+/datum/ammo/bullet/shrapnel/light/human/New()
+	..()
+	shrapnel_chance = 50
+	shrapnel_type = /obj/item/shard/shrapnel/bone_chips/human
+
+/datum/ammo/bullet/shrapnel/light/xeno
+	name = "alien bone fragments"
+	icon_state = "shrapnel_xeno"
+
+/datum/ammo/bullet/shrapnel/light/xeno/New()
+	..()
+	shrapnel_chance = 50
+	shrapnel_type = /obj/item/shard/shrapnel/bone_chips/xeno
 
 /datum/ammo/bullet/shrapnel/spall // weak shrapnel
 	name = "spall"

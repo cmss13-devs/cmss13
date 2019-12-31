@@ -164,9 +164,6 @@
 	if (!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.lying || user.stat || buckled_mob || M.buckled)
 		return
 
-	if (M.mob_size > MOB_SIZE_HUMAN)
-		to_chat(user, SPAN_WARNING("[M] is too big to buckle in."))
-		return
 	if (isXeno(user))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do that, try a nest."))
 		return
@@ -182,6 +179,12 @@
 	else
 		if(M.loc != src.loc)
 			return
+	if (M.mob_size == MOB_SIZE_XENO && M.stat == DEAD && istype(src, /obj/structure/bed/roller))
+		do_buckle(M, user)
+		return
+	if (M.mob_size > MOB_SIZE_HUMAN)
+		to_chat(user, SPAN_WARNING("[M] is too big to buckle in."))
+		return
 	do_buckle(M, user)
 
 // the actual buckling proc

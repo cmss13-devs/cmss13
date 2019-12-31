@@ -27,7 +27,9 @@
 		last_damage_mob = source_mob
 
 	if (damage >= health && damage >= EXPLOSION_THRESHOLD_GIB)
+		var/oldloc = loc
 		gib(source)
+		create_shrapnel(oldloc, rand(16, 24), , , /datum/ammo/bullet/shrapnel/light/xeno, source, source_mob)
 		return
 	if (damage >= 0)
 		b_loss += damage * 0.5

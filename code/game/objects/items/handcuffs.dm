@@ -13,7 +13,7 @@
 	matter = list("metal" = 500)
 	
 	var/dispenser = 0
-	var/breakouttime = MINUTES_2 //2 minutes
+	var/breakouttime = MINUTES_1 // 1 minute
 	var/single_use = 0 //determines if handcuffs will be deleted on removal
 	var/cuff_sound = 'sound/weapons/handcuffs.ogg'
 	var/cuff_delay = SECONDS_4 //how many deciseconds it takes to cuff someone

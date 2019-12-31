@@ -116,7 +116,9 @@
 		last_damage_mob = source_mob
 
 	if (damage >= EXPLOSION_THRESHOLD_GIB)
+		var/oldloc = loc
 		gib(source)
+		create_shrapnel(oldloc, rand(16, 24), , , /datum/ammo/bullet/shrapnel/light/human, source, source_mob)
 		return
 
 	if(!istype(wear_ear, /obj/item/clothing/ears/earmuffs))

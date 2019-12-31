@@ -1622,6 +1622,7 @@
 		A.layer = LOWER_ITEM_LAYER //below any item, above BELOW_OBJ_LAYER (smartfridge)
 
 	A.add_hiddenprint(src)
+	A.name += " ([O])"
 
 	if(!isturf(O))
 		msg_admin_attack("[src.name] ([src.ckey]) spat acid on [O] at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>).")

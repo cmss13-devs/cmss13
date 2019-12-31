@@ -128,7 +128,7 @@ var/global/list/randomized_pill_icons
 	New()
 		..()
 		icon_state = randomized_pill_icons[1]
-		reagents.add_reagent("anti_toxin", 25)
+		reagents.add_reagent("anti_toxin", 15)
 
 /obj/item/reagent_container/pill/tox
 	pill_desc = "A toxins pill. It's highly toxic."

@@ -117,4 +117,10 @@
 	desc = "It looks like it came from a prehistoric animal."
 	damage_on_move = 0.4
 
+/obj/item/shard/shrapnel/bone_chips/human
+	name = "human bone fragments"
+	desc = "Oh god, their bits are everywhere!"
 
+/obj/item/shard/shrapnel/bone_chips/xeno
+	name = "alien bone fragments"
+	desc = "Sharp, jagged fragments of alien bone. Looks like the previous owner exploded violently..."

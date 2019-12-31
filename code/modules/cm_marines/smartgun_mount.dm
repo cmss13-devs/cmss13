@@ -659,6 +659,7 @@
 
 /obj/structure/machinery/m56d_hmg/on_set_interaction(mob/user)
 	flags_atom |= RELAY_CLICK
+	user.status_flags |= IMMOBILE_ACTION
 	user.reset_view(src)
 	if(zoom)
 		var/tilesize = 32
@@ -680,6 +681,7 @@
 
 /obj/structure/machinery/m56d_hmg/on_unset_interaction(mob/user)
 	flags_atom &= ~RELAY_CLICK
+	user.status_flags &= ~IMMOBILE_ACTION
 	user.reset_view(null)
 	if(zoom && user.client)
 		user.client.change_view(world.view)

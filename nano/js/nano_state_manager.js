@@ -22,7 +22,7 @@ NanoStateManager = function ()
 	var init = function () 
 	{
 		// We store initialData and templateData in the body tag, it's as good a place as any
-		_data = $('body').data('initialData');	
+		_data = window.initial_data;
 		
 		if (_data == null || !_data.hasOwnProperty('config') || !_data.hasOwnProperty('data'))
 		{

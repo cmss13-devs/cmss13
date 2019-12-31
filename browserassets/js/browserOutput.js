@@ -40,7 +40,7 @@ var opts = {
 	'suppressOptionsClose': false, //Whether or not we should be hiding the suboptions menu
 	'highlightTerms': [],
 	'highlightLimit': 5,
-	'highlightColor': '#FFFF00', //The color of the highlighted message
+	'highlightColor': ['#FFFF00','#FFCC00','#FFAA00','#CCFF00','#AAFF00'], //The color of the highlighted message
 	'pingDisabled': false, //Has the user disabled the ping counter
 
 	//Ping display
@@ -94,12 +94,14 @@ function linkify(text) {
 }
 
 //Actually turns the highlight term match into appropriate html
-function addHighlightMarkup(match) {
-	var extra = '';
-	if (opts.highlightColor) {
-		extra += ' style="background-color: '+opts.highlightColor+'"';
-	}
-	return '<span class="highlight"'+extra+'>'+match+'</span>';
+function getHighlightMarkupFunction(highlightType) {
+	return function(match){
+		var extra = '';
+		if (opts.highlightColor) {
+			extra += ' style="background-color: '+opts.highlightColor[highlightType]+'"';
+		}
+		return '<span class="highlight"'+extra+'>'+match+'</span>';
+	};
 }
 
 //Highlights words based on user settings
@@ -118,7 +120,7 @@ function highlightTerms(el) {
 					var newWord = null;
 					for (var i = 0; i < opts.highlightTerms.length; i++) { //Each highlight term
 						if (opts.highlightTerms[i] && words[w].toLowerCase().indexOf(opts.highlightTerms[i].toLowerCase()) > -1) { //If a match is found
-							newWord = words[w].replace(new RegExp(opts.highlightTerms[i], 'gi'), addHighlightMarkup);
+							newWord = words[w].replace(new RegExp(opts.highlightTerms[i], 'gi'), getHighlightMarkupFunction(i));
 							break;
 						}
 					}
@@ -162,10 +164,11 @@ function output(message, flag) {
 		escaper(message)
 	} else {
 		opts.lastPang = Date.now();
+		var parsed = $.parseJSON(message)
+		if(parsed)
+			message = parsed.message.trim();
+		message = message.replace("\t","&nbsp;&nbsp;&nbsp;&nbsp;").replace(/[^\x00-\x7F]/g, ""); // literally DIE UNICODE
 	}
-	
-	message = message.replace(/\+/g, "%20")
-	message = decodeURIComponent(message).trim()
 
 	//Stuff we do along with appending a message
 	var atBottom = false;
@@ -465,7 +468,6 @@ $(function() {
 		'sfontType': getCookie('fonttype'),
 		'spingDisabled': getCookie('pingdisabled'),
 		'shighlightTerms': getCookie('highlightterms'),
-		'shighlightColor': getCookie('highlightcolor'),
 		'sfireMessages': getCookie('firemessages'),
 	};
 
@@ -497,10 +499,6 @@ $(function() {
 			output('<span class="internal boldnshit">Loaded highlight strings of: ' + actualTerms+'</span>', 'internal');
 			opts.highlightTerms = savedTerms;
 		}
-	}
-	if (savedConfig.shighlightColor) {
-		opts.highlightColor = savedConfig.shighlightColor;
-		output('<span class="internal boldnshit">Loaded highlight color of: '+savedConfig.shighlightColor+'</span>', 'internal');
 	}
 	if (savedConfig.sfireMessages) {
 		opts.sfireMessages = savedConfig.sfireMessages;
@@ -786,26 +784,17 @@ $(function() {
 		if ($('.popup .highlightTerm').is(':visible')) {return;}
 		var termInputs = '';
 		for (var i = 0; i < opts.highlightLimit; i++) {
-			termInputs += '<div><input type="text" name="highlightTermInput'+i+'" id="highlightTermInput'+i+'" class="highlightTermInput'+i+'" maxlength="255" value="'+(opts.highlightTerms[i] ? opts.highlightTerms[i] : '')+'" /></div>';
+			termInputs += '<div><input type="text" style="background-color: '+opts.highlightColor[i]+ '" name="highlightTermInput'+i+'" id="highlightTermInput'+i+'" class="highlightTermInput'+i+'" maxlength="255" value="'+(opts.highlightTerms[i] ? opts.highlightTerms[i] : '')+'" /></div>';
 		}
 		var popupContent = '<div class="head">String Highlighting</div>' +
 			'<div class="highlightPopup" id="highlightPopup">' +
 				'<div>Choose up to '+opts.highlightLimit+' strings that will highlight the line when they appear in chat.</div>' +
 				'<form id="highlightTermForm">' +
 					termInputs +
-					'<div><input type="text" name="highlightColor" id="highlightColor" class="highlightColor" '+
-						'style="background-color: '+(opts.highlightColor ? opts.highlightColor : '#FFFF00')+'" value="'+(opts.highlightColor ? opts.highlightColor : '#FFFF00')+'" maxlength="7" /></div>' +
 					'<div><input type="submit" name="highlightTermSubmit" id="highlightTermSubmit" class="highlightTermSubmit" value="Save" /></div>' +
 				'</form>' +
 			'</div>';
 		createPopup(popupContent, 250);
-	});
-
-	$('body').on('keyup', '#highlightColor', function() {
-		var color = $('#highlightColor').val();
-		color = color.trim();
-		if (!color || color.charAt(0) != '#') return;
-		$('#highlightColor').css('background-color', color);
 	});
 
 	$('body').on('submit', '#highlightTermForm', function(e) {
@@ -827,18 +816,10 @@ $(function() {
 			count++;
 		}
 
-		var color = $('#highlightColor').val();
-		color = color.trim();
-		if (color == '' || color.charAt(0) != '#') {
-			opts.highlightColor = '#FFFF00';
-		} else {
-			opts.highlightColor = color;
-		}
 		var $popup = $('#highlightPopup').closest('.popup');
 		$popup.remove();
 
 		setCookie('highlightterms', JSON.stringify(opts.highlightTerms), 365);
-		setCookie('highlightcolor', opts.highlightColor, 365);
 	});
 
 	$('#clearMessages').click(function() {

@@ -37,7 +37,8 @@ var/datum/subsystem/chat/SSchat
 
 	for(var/i in chatQueue)
 		var/client/C = i
-		C << output(chatQueue[C], "browseroutput:output")
+		var/msg = url_encode(json_encode(list("message"=chatQueue[C])))
+		C << output(msg, "browseroutput:output")
 		chatQueue -= C
 
 		if(MC_TICK_CHECK)
@@ -57,6 +58,28 @@ var/datum/subsystem/chat/SSchat
 
 	processQueue.Add(ci)
 
+/datum/subsystem/chat/proc/de_queue_single(var/target, var/encoded_message, var/clean_message)
+	var/client/C
+	if (istype(target, /client))
+		C = target
+	else if (istype(target, /mob))
+		C = target:client
+	else if (istype(target, /datum/mind) && target:current)
+		C = target:current:client
+
+	if(!C || !istype(C))
+		return
+
+	if(C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)
+		C << clean_message
+		return
+
+	if (C.chatOutput && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
+		C.chatOutput.messageQueue += encoded_message
+		return
+
+	chatQueue[C] += encoded_message
+
 /datum/subsystem/chat/proc/de_queue(var/target, var/message)
 	#define GCHAT_UNDEFINED_LIST 0
 	#define GCHAT_CLIENT_LIST 1
@@ -70,14 +93,12 @@ var/datum/subsystem/chat/SSchat
 		type_of_list = GCHAT_CLIENT_LIST
 
 	var/clean_message = message
+
 	//Some macros remain in the string even after parsing and fuck up the eventual output
-	message = replacetext(message, "\improper", "")
-	message = replacetext(message, "\proper", "")
-	message = replacetext(message, "\n", "<br>")
-	message = replacetext(message, "\t", "["&nbsp;&nbsp;&nbsp;&nbsp;"]["&nbsp;&nbsp;&nbsp;&nbsp;"]")
+	message = replacetextEx(message, "\n", "<br>")
 	message += "<br>"
 
-	var/encoded_message = url_encode(url_encode(message))
+	var/encoded_message = message
 
 	//Grab us a client if possible
 	if(islist(target))		
@@ -130,23 +151,4 @@ var/datum/subsystem/chat/SSchat
 		#undef GCHAT_MOB_LIST
 		#undef GCHAT_MIND_LIST
 	else
-		var/client/C
-		if (istype(target, /client))
-			C = target
-		else if (istype(target, /mob))
-			C = target:client
-		else if (istype(target, /datum/mind) && target:current)
-			C = target:current:client
-
-		if(!C || !istype(C))
-			return
-
-		if(C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)
-			C << clean_message
-			return
-
-		if (C.chatOutput && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
-			C.chatOutput.messageQueue += message
-			return
-
-		chatQueue[C] += encoded_message
+		de_queue_single(target, encoded_message, clean_message)

@@ -386,10 +386,6 @@ nanoui is used to open and update nano browser uis
 	if (templates.len > 0)
 		template_data_json = strip_improper(json_encode(templates))
 
-	var/list/send_data = get_send_data(initial_data)
-	var/initial_data_json = replacetext(replacetext(json_encode(send_data), "&#34;", "&amp;#34;"), "'", "&#39;")
-	initial_data_json = strip_improper(initial_data_json)
-
 	var/url_parameters_json = json_encode(list("src" = "\ref[src]"))
 
 	return {"
@@ -408,10 +404,11 @@ nanoui is used to open and update nano browser uis
 					NanoStateManager.receiveUpdateData(jsonString);
 				}
 			}
+			window.initial_data = [json_encode(get_send_data(initial_data))];
 		</script>
 		[head_content]
 	</head>
-	<body scroll=auto data-template-data='[template_data_json]' data-url-parameters='[url_parameters_json]' data-initial-data='[initial_data_json]'>
+	<body scroll=auto data-template-data='[template_data_json]' data-url-parameters='[url_parameters_json]'>
 		<div id='uiLayout'>
 		</div>
 		<noscript>
@@ -487,7 +484,7 @@ nanoui is used to open and update nano browser uis
 	var/list/send_data = get_send_data(data)
 
 	//user << json_encode(data) // used for debugging
-	user << output(list2params(list(json_encode(send_data))),"[window_id].browser:receiveUpdateData")
+	user << output(url_encode(json_encode(send_data)),"[window_id].browser:receiveUpdateData")
 
  /**
   * This Topic() proc is called whenever a user clicks on a link within a Nano UI

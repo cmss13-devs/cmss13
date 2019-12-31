@@ -212,14 +212,12 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 		target = clients
 
 	var/clean_message = message
-	//Some macros remain in the string even after parsing and fuck up the eventual output
-	message = replacetext(message, "`", "")
-	message = replacetext(message, "\improper", "")
-	message = replacetext(message, "\proper", "")
-	message = replacetext(message, "\n", "<br>")
-	message = replacetext(message, "\t", "["&nbsp;&nbsp;&nbsp;&nbsp;"]["&nbsp;&nbsp;&nbsp;&nbsp;"]")
 
-	var/encoded_message = url_encode(url_encode(message))
+	//Some macros remain in the string even after parsing and fuck up the eventual output
+	message = replacetextEx(message, "\n", "<br>")
+	message += "<br>"
+
+	var/encoded_message = message
 	//Grab us a client if possible
 	if(islist(target))
 		for(var/T in target)
@@ -244,7 +242,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 				C.chatOutput.messageQueue += message
 				continue
 
-			C << output(encoded_message, "browseroutput:output")
+			C << output(url_encode(json_encode(list("message"=encoded_message))), "browseroutput:output")
 	else
 		var/client/C
 		if (istype(target, /client))
@@ -264,7 +262,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 			C.chatOutput.messageQueue += message
 			return
 
-		C << output(encoded_message, "browseroutput:output")
+		C << output(json_encode(list("message"=encoded_message)), "browseroutput:output")
 
 /proc/to_world(var/message)
 	to_chat(world, message)

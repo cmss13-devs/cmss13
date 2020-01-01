@@ -698,17 +698,24 @@
 			M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
 			SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 
-/datum/shuttle/ferry/marine/proc/hijack(mob/living/carbon/Xenomorph/M)
+/datum/shuttle/ferry/marine/proc/hijack(mob/living/carbon/Xenomorph/M, shuttle_tag)
 	if(!queen_locked) //we have not hijacked it yet
 		if(world.time < SHUTTLE_LOCK_TIME_LOCK)
 			to_chat(M, SPAN_XENODANGER("You can't mobilize the strength to hijack the shuttle yet. Please wait another [round((SHUTTLE_LOCK_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again."))
 			return
+
+		var/message
+		if (shuttle_tag == "Ground Transport 1") // CORSAT monorail
+			message = "We have wrested away remote control of the metal crawler! Rejoice!"
+		else
+			message = "We have wrested away remote control of the metal bird! Rejoice!"
+
 		to_chat(M, SPAN_XENONOTICE("You interact with the machine and disable remote control."))
-		xeno_message(SPAN_XENOANNOUNCE("We have wrested away remote control of the metal bird! Rejoice!"),3,M.hivenumber)
+		xeno_message(SPAN_XENOANNOUNCE("[message]"),3,M.hivenumber)
 		last_locked = world.time
 		queen_locked = 1
 
-/datum/shuttle/ferry/marine/proc/door_override(mob/living/carbon/Xenomorph/M)
+/datum/shuttle/ferry/marine/proc/door_override(mob/living/carbon/Xenomorph/M, shuttle_tag)
 	if(!door_override)
 		to_chat(M, SPAN_XENONOTICE("You override the doors."))
 		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"),3,M.hivenumber)
@@ -739,12 +746,14 @@
 	if (!istype(shuttle))
 		..()
 		return
+
 	if(M.caste.is_intelligent)
 		attack_hand(M)
 		if(!shuttle.iselevator)
-			shuttle.door_override(M)
-			if(onboard) //This is the shuttle's onboard console
-				shuttle.hijack(M)
+			if (shuttle_tag != "Ground Transport 1")
+				shuttle.door_override(M)
+			if(onboard || shuttle_tag == "Ground Transport 1") //This is the shuttle's onboard console or the control console for the CORSAT monorail
+				shuttle.hijack(M, shuttle_tag)
 	else
 		..()
 
@@ -756,13 +765,15 @@
 				shuttle_tag = "[MAIN_SHIP_NAME] Dropship 1"
 			if("sh_dropship2")
 				shuttle_tag = "[MAIN_SHIP_NAME] Dropship 2"
+			if ("gr_transport1")
+				shuttle_tag = "Ground Transport 1"
 			else
 				return
 
 		var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
 		shuttle.door_override(M)
 		if(do_after(usr, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			shuttle.hijack(M)
+			shuttle.hijack(M, shuttle_tag)
 	else
 		..()
 

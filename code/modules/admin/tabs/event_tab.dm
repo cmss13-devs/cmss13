@@ -350,6 +350,24 @@
 	else
 		dropship.process_state = WAIT_LAUNCH
 
+/client/proc/force_ground_shuttle()
+	set name = "F: Force Ground Transport"
+	set desc = "Force a ground transport vehicle to launch"
+	set category = "Event"
+
+	var/tag = input("Which vehicle should be force launched?", "Select a dropship:") as null|anything in list("Transport 1")
+	if(!tag)
+		return
+
+	var/datum/shuttle/ferry/marine/dropship = shuttle_controller.shuttles["Ground" + " " + tag]
+	if(!dropship)
+		to_chat(src, SPAN_DANGER("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN_2</span>"))
+		to_chat(src, SPAN_DANGER("This is expected if map != CORSAT.</span>"))
+		log_admin("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN")
+		return
+
+	dropship.process_state = WAIT_LAUNCH
+
 /client/proc/cmd_admin_create_centcom_report()
 	set name = "A: Create Command Report"
 	set category = "Event"

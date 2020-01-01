@@ -144,7 +144,7 @@
 	var/message = "Warning, casulties have exceeded [threshold_crossed]%"
 	if(failed)
 		message += "\nThe operation has failed, begin strategic withdrawl."
-	command_announcement.Announce(message, "[MAIN_AI_SYSTEM]", new_sound = 'sound/AI/commandreport.ogg')
+	marine_announcement(message, "[MAIN_AI_SYSTEM]", new_sound = 'sound/AI/commandreport.ogg')
 
 /datum/cm_objective/minimise_losses/check_completion()
 	. = ..()

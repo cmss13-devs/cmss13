@@ -90,6 +90,12 @@
 	desc = "A labelled schematic of the Sorokyne Outpost and the surrounding caves."
 	html_link = "images/2/21/Sorokyne_Wiki_Map.jpg" //The fact that this is just a wiki-link makes me sad and amused.
 	color = "cyan"
+/obj/item/map/corsat
+	name = "\improper CORSAT map"
+	desc = "A blueprint of CORSAT station"
+	html_link = "images/8/8e/CORSAT_Satellite.png"
+	color = "red"
+
 
 //used by marine equipment machines to spawn the correct map.
 /obj/item/map/current_map
@@ -131,6 +137,11 @@
 			desc = "A map of Weston-Yamada colony Sorokyne Outpost, commonly known as Sorokyne Strata."
 			html_link = "images/1/1c/Sorokyne_map.png"
 			color = "cyan"
+		if (MAP_CORSAT)
+			name = "\improper CORSAT map"
+			desc = "A blueprint of CORSAT station"
+			html_link = "images/8/8e/CORSAT_Satellite.png"
+			color = "red"
 		else
 			qdel(src)
 

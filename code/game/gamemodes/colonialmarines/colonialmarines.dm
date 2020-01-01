@@ -5,6 +5,7 @@
 	xeno_required_num = 1 //Need at least one xeno.
 	monkey_amount = 25 //Resolve this line once structures are resolved.
 	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED
+	var/round_status_flags
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -97,6 +98,7 @@
 			if(MAP_DESERT_DAM) new /obj/item/map/desert_dam(T)
 			if(MAP_WHISKEY_OUTPOST) new /obj/item/map/whiskey_outpost_map(T)
 			if(MAP_SOROKYNE_STRATA) new /obj/item/map/sorokyne_map(T)
+			if(MAP_CORSAT) new /obj/item/map/corsat(T)
 	if(monkey_amount)
 		//var/debug_tally = 0
 		switch(map_tag)
@@ -106,6 +108,7 @@
 			if(MAP_PRISON_STATION) monkey_types = list(/mob/living/carbon/human/monkey)
 			if(MAP_DESERT_DAM) monkey_types = list(/mob/living/carbon/human/stok)
 			if(MAP_SOROKYNE_STRATA) monkey_types = list(/mob/living/carbon/human/yiren)
+			if(MAP_CORSAT) monkey_types = list(/mob/living/carbon/human/yiren, /mob/living/carbon/human/farwa, /mob/living/carbon/human/monkey, /mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
 			else monkey_types = list(/mob/living/carbon/human/monkey) //make sure we always have a monkey type
 		if(monkey_types.len)
 			for(var/i = min(monkey_amount,monkey_spawns.len), i > 0, i--)
@@ -170,11 +173,15 @@
 				marine_announcement("We've lost contact with Weston-Yamada's extra-solar colony, \"[map_tag]\", on the planet \"Navarone.\" The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
 			if (MAP_SOROKYNE_STRATA)
 				marine_announcement("An automated distress signal has been recieved from a mining colony on border world LV-976, \"Sorokyne Outpost\". A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
+			if (MAP_CORSAT)
+				marine_announcement("An automated distress signal has been received from Weyland-Yutani's Corporate Orbital Research Station for Advanced Technology, or CORSAT. The [MAIN_SHIP_NAME] has been dispatched to investigate.", "[MAIN_SHIP_NAME]")
 	..()
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
 #define FOG_DELAY_INTERVAL		MINUTES_30 // 30 minutes
+#define PODLOCKS_OPEN_WAIT		MINUTES_45 // CORSAT pod doors drop at 12:45
+
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/colonialmarines/process()
 	. = ..()
@@ -199,6 +206,20 @@
 		if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.
 			if(flags_round_type & MODE_FOG_ACTIVATED && world.time >= (FOG_DELAY_INTERVAL + round_time_lobby + round_time_fog))
 				disperse_fog() //Some RNG thrown in.
+			if (!(round_status_flags & ROUNDSTATUS_PODDOORS_OPEN) && map_tag == MAP_CORSAT && world.time >= (PODLOCKS_OPEN_WAIT + round_time_lobby))
+				
+				round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN
+				
+				var/input = "Biohazard locks lifting in 30 seconds per automated lockdown protocol."
+				var/name = "CORSAT Security Authority automated announcement"
+				marine_announcement(input, name, new_sound = 'sound/AI/commandreport.ogg')
+				for(var/mob/M in player_list)
+					if(isXeno(M))
+						sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))
+						to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
+						to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in 30 seconds."))
+				add_timer(CALLBACK(src, .proc/open_podlocks, "corsat_lockdown"), 300)
+
 			if(round_should_check_for_win)
 				check_win()
 			round_checkwin = 0
@@ -218,6 +239,8 @@
 
 
 #undef FOG_DELAY_INTERVAL
+#undef PODLOCKS_OPEN_WAIT
+
 ///////////////////////////
 //Checks to see who won///
 //////////////////////////

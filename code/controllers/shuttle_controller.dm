@@ -70,6 +70,27 @@
 	shuttles[shuttle1.shuttle_tag] = shuttle1
 	process_shuttles += shuttle1
 
+	//END: ALMAYER SHUTTLES AND EVAC PODS
+
+	// START: CORSAT shuttle(s).. i mean monorails, what
+	// Added by Fourkhan, 5/31/2019 - 6/7/19
+	if (map_tag == MAP_CORSAT)
+		shuttle1 = new
+		shuttle1.location = 0
+		shuttle1.warmup_time = SECONDS_10
+		shuttle1.move_time = DROPSHIP_CORSAT_DURATION // 30s
+		shuttle1.shuttle_tag = "Ground Transport 1"
+		shuttle1.info_tag = "CORSAT Monorail"
+		shuttle1.can_be_optimized = FALSE
+		shuttle1.can_do_gun_mission = FALSE
+		shuttle1.sound_target = 37
+		shuttle1.load_datums()
+		shuttle1.alerts_allowed = 10
+		shuttles[shuttle1.shuttle_tag] = shuttle1
+		process_shuttles += shuttle1
+
+	// END: CORSAT shuttles
+
 	//START: ALMAYER SHUTTLES AND EVAC PODS
 	var/datum/shuttle/ferry/marine/evacuation_pod/P
 	for(var/i = 1 to MAIN_SHIP_ESCAPE_POD_NUMBER)
@@ -82,7 +103,7 @@
 		process_shuttles += P
 
 
-	//END: ALMAYER SHUTTLES AND EVAC PODS
+
 
 	// Distress Shuttles - ERT
 	var/datum/shuttle/ferry/ert/ES

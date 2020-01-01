@@ -716,3 +716,84 @@
 	icon_state = "prison_cellwindow0"
 	basestate = "prison_cellwindow"
 	desc = "A glass window with a special rod matrice inside a wall frame."
+
+//Biodome windows
+
+/obj/structure/window/framed/corsat
+	name = "reinforced window"
+	desc = "A glass window with a special rod matrice inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	health = 100
+	reinf = TRUE
+	icon = 'icons/turf/walls/windows_corsat.dmi'
+	icon_state = "padded_rwindow0"
+	basestate = "padded_rwindow"
+	window_frame = /obj/structure/window_frame/corsat
+
+/obj/structure/window/framed/corsat/research
+	desc = "A purple tinted glass window with a special rod matrice inside a wall frame. It looks quite strong. Might take some good hits to shatter it."
+	health = 200
+	icon_state = "paddedresearch_rwindow0"
+	basestate = "paddedresearch_rwindow"
+	window_frame = /obj/structure/window_frame/corsat/research
+
+/obj/structure/window/framed/corsat/security
+	desc = "A red tinted glass window with a special rod matrice inside a wall frame. It looks very strong."
+	health = 300
+	icon_state = "paddedsec_rwindow0"
+	basestate = "paddedsec_rwindow"
+	window_frame = /obj/structure/window_frame/corsat/security
+
+/obj/structure/window/framed/corsat/cell
+	name = "cell window"
+	icon_state = "padded_cellwindow0"
+	basestate = "padded_cellwindow"
+	desc = "A glass window with a special rod matrice inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
+	not_damageable = 1
+	not_deconstructable = 1
+	unacidable = TRUE
+	health = 1000000 //Failsafe, shouldn't matter
+
+/obj/structure/window/framed/corsat/cell/research
+	icon_state = "paddedresearch_cellwindow0"
+	basestate = "paddedresearch_cellwindow"
+
+/obj/structure/window/framed/corsat/cell/security
+	icon_state = "paddedsec_cellwindow0"
+	basestate = "paddedsec_cellwindow"
+
+/obj/structure/window/framed/corsat/hull
+	name = "hull window"
+	desc = "A glass window with a special rod matrice inside a wall frame. This one has an automatic shutter system to prevent any atmospheric breach."
+	health = 200
+	var/triggered = FALSE //indicates if the shutters have already been triggered
+
+/obj/structure/window/framed/corsat/hull/research
+	health = 300
+
+/obj/structure/window/framed/corsat/hull/security
+	health = 400
+
+/obj/structure/window/framed/corsat/hull/Dispose()
+	spawn_shutters()
+	.=..()
+
+/obj/structure/window/framed/corsat/hull/proc/spawn_shutters(var/from_dir = 0)
+	if(triggered)
+		return
+
+	triggered = 1
+	for(var/direction in cardinal)
+		if(direction == from_dir)
+			continue //doesn't check backwards
+
+		for(var/obj/structure/window/framed/corsat/hull/W in get_step(src,direction) )
+			W.spawn_shutters(turn(direction,180))
+
+	var/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/P = new(get_turf(src))
+	switch(junction)
+		if(4,5,8,9,12)
+			P.dir = 2
+		else
+			P.dir = 4
+	
+	INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/close)

@@ -514,3 +514,7 @@
 			return "strata_ribbed_outpost_"
 		if (WALL_STRATA_OUTPOST_BARE)
 			return "strata_bare_outpost_"
+		if (WALL_DOME)
+			return "dome"
+		if (WALL_DOMER)
+			return "r_dome"

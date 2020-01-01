@@ -201,3 +201,16 @@
 	icon_state = "strata_window0_frame"
 	basestate = "strata_window"
 	reinforced = TRUE
+
+/obj/structure/window_frame/corsat
+	icon = 'icons/turf/walls/windows_corsat.dmi'
+	icon_state = "padded_rwindow0_frame"
+	basestate = "padded_rwindow"
+	reinforced = TRUE
+	window_type = /obj/structure/window/framed/corsat
+
+/obj/structure/window_frame/corsat/research
+	window_type = /obj/structure/window/framed/corsat/research
+
+/obj/structure/window_frame/corsat/security
+	window_type = /obj/structure/window/framed/corsat/security

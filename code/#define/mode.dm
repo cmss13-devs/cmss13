@@ -4,6 +4,7 @@
 #define DISTRESS_TIME_LOCK 				MINUTES_6
 #define SHUTTLE_TIME_LOCK 				MINUTES_15
 #define SHUTTLE_LOCK_COOLDOWN 			MINUTES_10
+#define MONORAIL_LOCK_COOLDOWN			MINUTES_3
 #define SHUTTLE_LOCK_TIME_LOCK 			MINUTES_1
 #define EVACUATION_AUTOMATIC_DEPARTURE 	MINUTES_10 //All pods automatically depart in 10 minutes, unless they are full or unable to launch for some reason.
 #define EVACUATION_ESTIMATE_DEPARTURE 	((evac_time + EVACUATION_AUTOMATIC_DEPARTURE - world.time) * 0.1)
@@ -37,6 +38,9 @@
 #define MODE_FOG_ACTIVATED 		16
 #define MODE_INFECTION			32
 #define MODE_HUMAN_ANTAGS		64
+
+#define ROUNDSTATUS_FOG_DOWN 		1
+#define ROUNDSTATUS_PODDOORS_OPEN	2
 
 #define BE_ALIEN				1
 #define BE_ALIEN_AFTER_DEATH	2

@@ -329,7 +329,7 @@
 				for(var/i=1, i<=amount, i++)
 					new /obj/item/shard(pick(turfs))
 					new /obj/item/shard(pick(turfs))
-		if(CEILING_METAL)
+		if(CEILING_METAL,CEILING_REINFORCED_METAL)
 			playsound(src, "sound/effects/metal_crash.ogg", 60, 1)
 			spawn(8)
 				if(amount >1)
@@ -368,6 +368,8 @@
 			to_chat(user, "It is deep underground. The cavern roof lies above.")
 		if(CEILING_DEEP_UNDERGROUND_METAL)
 			to_chat(user, "It is deep underground. The ceiling above is metal.")
+		if(CEILING_REINFORCED_METAL)
+			to_chat(user, "The ceiling above is heavy reinforced metal. Nothing is getting through that.")
 
 /turf/proc/wet_floor()
 	return
@@ -450,6 +452,13 @@
 
 /turf/open/floor/ice/can_dig_xeno_tunnel()
 	return TRUE
+
+/turf/open/floor/wood/can_dig_xeno_tunnel()
+	return TRUE
+
+/turf/open/floor/corsat/can_dig_xeno_tunnel()
+	return TRUE
+	
 
 //what dirt type you can dig from this turf if any.
 /turf/proc/get_dirt_type()

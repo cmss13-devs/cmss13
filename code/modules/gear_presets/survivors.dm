@@ -13,6 +13,8 @@
 	faction = FACTION_SURVIVOR
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
+	access = list(ACCESS_CIVILIAN_PUBLIC)
+
 /datum/equipment_preset/survivor/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new
@@ -28,6 +30,8 @@
 	assignment = "Scientist"
 	skills = /datum/skills/civilian/survivor/scientist
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH)
+
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH)
 
 /datum/equipment_preset/survivor/scientist/load_gear(mob/living/carbon/human/H)
@@ -260,6 +264,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH)
+
 /datum/equipment_preset/survivor/botanist/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 
@@ -288,6 +294,8 @@
 	skills = /datum/skills/civilian/survivor/atmos
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING)
+
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 
 /datum/equipment_preset/survivor/atmos_tech/load_gear(mob/living/carbon/human/H)
 
@@ -345,6 +353,8 @@
 	skills = /datum/skills/civilian/survivor/miner
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING)
+
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 
 /datum/equipment_preset/survivor/miner/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/miner(H), WEAR_BODY)

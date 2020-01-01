@@ -610,9 +610,14 @@
 	icon = 'icons/obj/structures/doors/dropship2_side.dmi' //Tiles with is here FOR SAFETY PURPOSES
 	id = "sh_dropship2"
 
+/obj/structure/machinery/door/airlock/dropship_hatch/monorail
+	icon = 'icons/obj/structures/doors/pod_doors.dmi' //TEMPLATE NEED TO REPLACE LATER
+	name = "monorail door"
+	id = "gr_transport1"
+
 /obj/structure/machinery/door/airlock/hatch/cockpit
 	icon = 'icons/obj/structures/doors/dropship1_pilot.dmi'
-	name = "\improper Cockpit"
+	name = "cockpit"
 	req_access = list(ACCESS_MARINE_DROPSHIP)
 	req_one_access = list()
 	unslashable = TRUE
@@ -625,7 +630,7 @@
 
 //PRISON AIRLOCKS
 /obj/structure/machinery/door/airlock/prison/
-	name = "\improper Cell Door"
+	name = "cell Door"
 	icon = 'icons/obj/structures/doors/celldoor.dmi'
 	glass = 0
 

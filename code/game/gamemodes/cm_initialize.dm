@@ -608,6 +608,19 @@ Additional game mode variables.
 					"Survivor - Salesman",
 					"Survivor - Security",
 				)
+			if(MAP_CORSAT)
+				survivor_types = list(
+					"Survivor - Scientist",
+					"Survivor - Scientist",
+					"Survivor - Scientist",
+					"Survivor - Civilian",
+					"Survivor - Civilian",
+					"Survivor - Doctor",
+					"Survivor - Salesman",
+					"Survivor - Security",
+					"Survivor - Corporate",
+					"Survivor - Atmos Tech",
+				)
 			else
 				survivor_types = list(
 					"Survivor - Assistant",
@@ -659,6 +672,8 @@ Additional game mode variables.
 				switch(map_tag)
 					if(MAP_PRISON_STATION)
 						to_chat(H, SPAN_NOTICE(" You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks... until now."))
+					if(MAP_CORSAT)
+						to_chat(H, SPAN_NOTICE("You are a survivor of the containment breach on the Corporate Orbital Research Station for Advanced Technology (CORSAT). You worked or lived on the station, and managed to avoid the alien attacks... until now."))
 					if(MAP_ICE_COLONY)
 						to_chat(H, SPAN_NOTICE("You are a survivor of the attack on the ice habitat. You worked or lived on the colony, and managed to avoid the alien attacks... until now."))
 					else
@@ -690,6 +705,8 @@ Additional game mode variables.
 			switch(map_tag)
 				if(MAP_PRISON_STATION)
 					to_chat(H, SPAN_NOTICE("You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks.. until now."))
+				if(MAP_CORSAT)
+					to_chat(H, SPAN_NOTICE("You are a survivor of the containment breach on the Corporate Orbital Research Station for Advanced Technology (CORSAT). You worked or lived on the station, and managed to avoid the alien attacks... until now."))
 				if(MAP_ICE_COLONY)
 					to_chat(H, SPAN_NOTICE("You are a survivor of the attack on the ice habitat. You worked or lived on the colony, and managed to avoid the alien attacks.. until now."))
 				else

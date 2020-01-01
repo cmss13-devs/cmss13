@@ -428,7 +428,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE, WEAR_IN_BACK)
 
 /datum/equipment_preset/proc/add_ice_colony_survivor_equipment(var/mob/living/carbon/human/H)
-	if(map_tag in MAPS_COLD_TEMP)
+	if(map_tag in MAPS_COLD_TEMP && map_tag != MAP_CORSAT)
 		H.equip_to_slot_or_del(new /obj/item/clothing/head/ushanka, WEAR_HEAD)
 		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/snow_suit, WEAR_JACKET)
 		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather, WEAR_FACE)

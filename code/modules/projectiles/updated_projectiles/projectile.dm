@@ -335,29 +335,16 @@
 	permutated += L
 
 	var/hit_chance = L.get_projectile_hit_chance(src)
-	if( hit_chance ) // Calculated from combination of both ammo accuracy and gun accuracy
-		var/mob_is_hit = FALSE
-		var/hit_roll
-		var/i = 0
-		while(++i <= 2 && hit_chance > 0) // This runs twice if necessary
-			hit_roll 					= rand(0, 99) //Our randomly generated roll
-			if(hit_roll < 25) def_zone 	= pick(base_miss_chance)	// Still hit but now we might hit the wrong body part
-			hit_chance 				   -= base_miss_chance[def_zone] // Reduce accuracy based on spot.
 
-			switch(i)
-				if(1)
-					if(hit_chance > hit_roll)
-						mob_is_hit = TRUE
-						break //Hit
-					if( hit_chance < (hit_roll - 20) )
-						break //Outright miss.
-					def_zone 	  = pick(base_miss_chance) //We're going to pick a new target and let this run one more time.
-					hit_chance   -= 10 //If you missed once, the next go around will be harder to hit.
-				if(2)
-					if(hit_chance > hit_roll)
-						mob_is_hit = TRUE
-						break
-		if(mob_is_hit)
+	if(hit_chance) // Calculated from combination of both ammo accuracy and gun accuracy
+
+		var/hit_roll = rand(1,100)
+
+		if(original != L || hit_roll > hit_chance-base_miss_chance[def_zone]-20)	// If hit roll is high or the firer wasn't aiming at this mob, we still hit but now we might hit the wrong body part
+			def_zone = ran_zone()
+		hit_chance -= base_miss_chance[def_zone] // Reduce accuracy based on spot.
+
+		if(hit_chance > hit_roll)
 			var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 
 			// If the ammo should hit the surface of the target and there is a mob blocking

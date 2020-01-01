@@ -452,3 +452,9 @@
 
 /turf/open/floor/interior/plastic/alt
 	icon_state = "plasticfloor2"
+
+// Biodome tiles
+
+/turf/open/floor/corsat
+	icon = 'icons/turf/floors/corsat.dmi'
+	icon_state = "plating"

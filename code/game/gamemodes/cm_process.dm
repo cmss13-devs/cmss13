@@ -135,6 +135,12 @@ of predators), but can be added to include variant game modes (like humans vs. h
 		sleep(1)
 	round_fog = null
 
+// Open podlocks with the given ID if they aren't already opened.
+// DO NOT USE THIS WITH ID's CORRESPONDING TO SHUTTLES OR THEY WILL BREAK!
+/datum/game_mode/proc/open_podlocks(var/podlock_id)
+	for(var/obj/structure/machinery/door/poddoor/M in machines)
+		if(M.id == podlock_id && M.density)
+			M.open()
 
 //Variables for the below function that we need to keep throught the round
 var/peakHumans = 1

@@ -57,6 +57,8 @@
 			shuttle_tag = "[MAIN_SHIP_NAME] Dropship 1"
 		if("sh_dropship2")
 			shuttle_tag = "[MAIN_SHIP_NAME] Dropship 2"
+		if("gr_transport1")
+			shuttle_tag = "Ground Transport 1"
 	if(!shuttle_tag)
 		return
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]

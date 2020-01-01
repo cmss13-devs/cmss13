@@ -34,7 +34,9 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/admin_force_selfdestruct,
 	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
 	/client/proc/check_round_statistics,
-	/client/proc/force_shuttle
+	/client/proc/force_shuttle,
+	/client/proc/force_ground_shuttle,
+	/client/proc/force_teleporter,
 )
 var/list/admin_verbs_ban = list(
 	/client/proc/unban_panel

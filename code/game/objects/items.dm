@@ -188,7 +188,7 @@ cases. Override_icon_state should be a list.*/
 		if(override_protection && override_protection.len) 
 			new_protection = override_protection[map_tag]
 		switch(map_tag)
-			if(MAP_ICE_COLONY) //Can easily add other states if needed.
+			if(MAP_ICE_COLONY, MAP_CORSAT) //Can easily add other states if needed.
 				icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
 				item_state = new_item_state ? new_item_state : "s_" + item_state
 				if(new_protection) 

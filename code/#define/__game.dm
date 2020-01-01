@@ -23,6 +23,7 @@
 #define MAP_WHISKEY_OUTPOST "Whiskey Outpost" // Unused
 #define MAP_DESERT_DAM "Trijent Dam"  // Highpop only
 #define MAP_SOROKYNE_STRATA "Sorokyne Strata" // Highpop only
+#define MAP_CORSAT "CORSAT" // Highpop only
 
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130 // number of players before we switch to lowpop maps only (LV, BR, Prison)
 
@@ -126,6 +127,7 @@ Tells the GC how to handle deletion of the object
 
 #define DOCK_ATTEMPT_TIMEOUT 			SECONDS_20	//how long in ticks we wait before assuming the docking controller is broken or blown up.
 #define DROPSHIP_TRANSIT_DURATION		SECONDS_100	// 100 seconds
+#define DROPSHIP_CORSAT_DURATION		SECONDS_30  // 30 seconds 
 #define ELEVATOR_TRANSIT_DURATION		SECONDS_5	// 5 seconds
 #define TRANSIT_POD_TRANSIT_DURATION	SECONDS_30 	// 30 seconds
 #define DROPSHIP_CRASH_TRANSIT_DURATION	MINUTES_3	// 180 seconds. 3 minutes
@@ -210,6 +212,7 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 #define CEILING_UNDERGROUND_METAL 4
 #define CEILING_DEEP_UNDERGROUND 5
 #define CEILING_DEEP_UNDERGROUND_METAL 5
+#define CEILING_REINFORCED_METAL 6
 
 // Default font settings
 #define FONT_SIZE "5pt"
@@ -265,6 +268,8 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 #define WALL_STRATA_ICE (1<<20)
 #define WALL_STRATA_OUTPOST_RIBBED (1<<21)
 #define WALL_STRATA_OUTPOST_BARE (1<<22)
+#define WALL_DOME (1<<23)
+#define WALL_DOMER (1<<24)
 
 //Defines for dropship weapon gimbals
 #define GIMBAL_LEFT -1
@@ -301,6 +306,7 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 // Defines for shuttles (primarily to separate dropships and elevators)
 #define SHUTTLE_DROPSHIP 1
 #define SHUTTLE_ELEVATOR 2
+#define SHUTTLE_GROUND   3
 
 // Misc game defines
 #define EXTINGUISHER_WATER_USE_AMT	5 // Amount of water consumed by extinguisher per use

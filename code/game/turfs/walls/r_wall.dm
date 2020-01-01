@@ -319,3 +319,25 @@
 
 /turf/closed/wall/r_wall/prison_unmeltable/attackby() //This should fix everything else. No cables, etc
 		return
+
+//Biodome
+
+/turf/closed/wall/r_wall/biodome
+	name = "reinforced metal wall"
+	icon = 'icons/turf/walls/corsat.dmi'
+	icon_state = "r_dome"
+	walltype = WALL_DOMER
+
+/turf/closed/wall/r_wall/biodome/biodome_unmeltable
+	name = "heavy reinforced wall"
+	desc = "A huge chunk of ultra-reinforced metal used to seperate rooms. Looks virtually indestructible."
+	hull = 1
+
+/turf/closed/wall/r_wall/biodome/biodome_unmeltable/ex_act(severity) //Should make it indestructable
+		return
+
+/turf/closed/wall/r_wall/biodome/biodome_unmeltable/fire_act(exposed_temperature, exposed_volume)
+		return
+
+/turf/closed/wall/r_wall/biodome/biodome_unmeltable/attackby() //This should fix everything else. No cables, etc
+		return

@@ -306,7 +306,13 @@
 	icon_state = "metal"
 	walltype = WALL_METAL
 
+//Biodome wall
 
+/turf/closed/wall/biodome
+	name = "metal wall"
+	icon = 'icons/turf/walls/corsat.dmi'
+	icon_state = "dome"
+	walltype = WALL_DOME
 
 //Wood wall
 

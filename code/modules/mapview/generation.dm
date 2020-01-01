@@ -147,10 +147,10 @@
 		if(T.y > max_y && !istype(T,/turf/open/space))
 			max_y = T.y
 		var/area/A = get_area(T)
-		if(map_tag != MAP_PRISON_STATION && istype(T,/turf/open/space))
+		if((map_tag != MAP_PRISON_STATION || map_tag != MAP_CORSAT) && istype(T,/turf/open/space))
 			minimap.DrawBox(rgb(0,0,0),T.x,T.y)
 			continue
-		if(A.ceiling > CEILING_METAL)
+		if(A.ceiling > CEILING_METAL && A.ceiling != CEILING_REINFORCED_METAL)
 			minimap.DrawBox(rgb(0,0,0),T.x,T.y)
 			continue
 		if(istype(T,/turf/closed) || istype(T,/turf/open/gm/empty))
@@ -167,6 +167,9 @@
 			continue
 		if(A.ceiling == CEILING_METAL)
 			minimap.DrawBox(rgb(50,50,50),T.x,T.y)
+			continue
+		if(A.ceiling == CEILING_REINFORCED_METAL)
+			minimap.DrawBox(rgb(35,35,35),T.x,T.y)
 			continue
 		if(A.ceiling == CEILING_GLASS)
 			minimap.DrawBox(rgb(100,100,100),T.x,T.y)

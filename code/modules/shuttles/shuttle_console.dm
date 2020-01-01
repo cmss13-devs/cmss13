@@ -202,7 +202,8 @@
 					shuttle1.launch_crash()
 					if(round_statistics)
 						round_statistics.track_hijack()
-					marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg')
+					marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", \
+					"Dropship Alert", new_sound = 'sound/AI/hijack.ogg')
 					shuttle.alerts_allowed--
 					to_chat(M, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
 					var/mob/living/carbon/Xenomorph/Queen/Q = M // typechecked above
@@ -259,7 +260,7 @@
 			to_chat(usr, SPAN_NOTICE("You reset the flight plan to a transport mission between the Almayer and the planet."))
 
 	if(href_list["lockdown"])
-		if(shuttle.door_override || z == 3)
+		if(shuttle.door_override)
 			return // its been locked down by the queen
 
 		var/ship_id = "sh_dropship1"
@@ -322,7 +323,7 @@
 			reardoor.unlock()
 
 	if(href_list["side door"])
-		if(shuttle.door_override || z == 3)
+		if(shuttle.door_override)
 			return // its been locked down by the queen
 
 		var/ship_id = "sh_dropship1"
@@ -349,7 +350,7 @@
 					to_chat(usr, SPAN_WARNING("You hear a [sidename] door lock."))
 
 	if(href_list["rear door"])
-		if(shuttle.door_override || z == 3)
+		if(shuttle.door_override)
 			return // its been locked down by the queen
 
 		var/ship_id = "sh_dropship1"
@@ -443,9 +444,6 @@
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
 	onboard = 1
-
-
-
 
 
 //Elevator control console

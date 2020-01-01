@@ -1,0 +1,119 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/window/framed/corsat,
+/turf/open/floor/plating,
+/area/corsat/gamma/airlock/north)
+"b" = (
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/gamma/airlock/north)
+"c" = (
+/turf/open/floor/corsat{
+	icon_state = "retrosquares"
+	},
+/area/corsat/gamma/airlock/north)
+"d" = (
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor/corsat{
+	icon_state = "retrosquares"
+	},
+/area/corsat/gamma/airlock/north)
+"e" = (
+/obj/structure/machinery/atmospherics/unary/vent_pump{
+	dir = 8;
+	on = 1
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/gamma/airlock/north)
+"f" = (
+/obj/structure/window/framed/corsat/security,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	density = 0;
+	dir = 4;
+	icon_state = "shutter0";
+	id = "GammaDSC2";
+	name = "Security Shutters";
+	opacity = 0
+	},
+/turf/open/floor/plating,
+/area/corsat/gamma/airlock/north)
+"g" = (
+/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
+/area/corsat/gamma/airlock/north)
+"h" = (
+/obj/structure/machinery/door/poddoor/two_tile/four_tile{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "GammaNorthS";
+	name = "Gamma North Airlock";
+	opacity = 0;
+	unacidable = 0;
+	use_power = 1
+	},
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
+/area/corsat/gamma/airlock/north)
+"i" = (
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
+/area/corsat/gamma/airlock/north)
+"j" = (
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
+/area/corsat/gamma/airlock/north)
+"k" = (
+/obj/structure/sign/safety/airlock{
+	pixel_y = 32
+	},
+/turf/open/snow/layer3,
+/area/corsat/gamma/biodome)
+"l" = (
+/turf/open/snow/layer0,
+/area/corsat/gamma/biodome)
+"m" = (
+/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/turf/open/snow/layer0,
+/area/corsat/gamma/biodome)
+"n" = (
+/turf/open/snow/layer3,
+/area/corsat/gamma/biodome)
+
+(1,1,1) = {"
+a
+g
+k
+"}
+(2,1,1) = {"
+b
+h
+l
+"}
+(3,1,1) = {"
+c
+i
+l
+"}
+(4,1,1) = {"
+d
+j
+m
+"}
+(5,1,1) = {"
+e
+i
+l
+"}
+(6,1,1) = {"
+f
+g
+n
+"}

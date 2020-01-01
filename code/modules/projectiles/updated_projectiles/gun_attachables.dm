@@ -435,7 +435,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/flashlight/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
 	if(turn_off && !(G.flags_gun_features & GUN_FLASHLIGHT_ON))
-		return
+		return FALSE
 	var/flashlight_on = (G.flags_gun_features & GUN_FLASHLIGHT_ON) ? -1 : 1
 	var/atom/movable/light_source =  ismob(G.loc) ? G.loc : G
 	light_source.SetLuminosity(light_mod * flashlight_on)
@@ -454,7 +454,7 @@ Defined in conflicts.dm of the #defines folder.
 	for(var/X in G.actions)
 		var/datum/action/A = X
 		A.update_button_icon()
-	return 1
+	return TRUE
 
 
 
@@ -545,7 +545,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "sniperscope_a"
 	desc = "An ARMAT S8 telescopic eye piece. Fixed at 4x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
 	slot = "rail"
-	aim_speed_mod = SLOWDOWN_ADS_SCOPE //Extra slowdown when aiming
+	aim_speed_mod = SLOWDOWN_ADS_SCOPE //Extra slowdown when wielded
 	wield_delay_mod = WIELD_DELAY_FAST
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
@@ -597,10 +597,11 @@ Defined in conflicts.dm of the #defines folder.
 	var/aim_slowdown = 0
 	var/fire_delay = 0
 	single_fire = 1
-	handle(sender, datum/event_args/ev_args)
-		if(G.zoom)
-			G.slowdown -= aim_slowdown
-			G.fire_delay -= fire_delay
+
+/datum/event_handler/miniscope_zoomout/handle(sender, datum/event_args/ev_args)
+	if(G.zoom)
+		G.slowdown -= aim_slowdown
+		G.fire_delay -= fire_delay
 
 
 /obj/item/attachable/scope/mini
@@ -611,7 +612,7 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "rail"
 	zoom_offset = 6
 	zoom_viewsize = 7
-	var/dynamic_aim_slowdown = 2
+	var/dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
 
 /obj/item/attachable/scope/mini/New()
 	..()
@@ -648,7 +649,7 @@ Defined in conflicts.dm of the #defines folder.
 	zoom_viewsize = 7
 	pixel_shift_y = 15
 	has_marine_iff = TRUE
-	var/dynamic_aim_slowdown = 0.4
+	var/dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
 
 /obj/item/attachable/scope/mini_iff/New()
 	..()
@@ -1412,7 +1413,6 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/bipod/proc/undeploy_bipod(obj/item/weapon/gun/G)
 	bipod_deployed = FALSE
-	aim_speed_mod -= SLOWDOWN_ADS_SCOPE
 	wield_delay_mod -= WIELD_DELAY_FAST
 	accuracy_mod -= config.hmed_hit_accuracy_mult
 	burst_scatter_mod += config.low_scatter_value
@@ -1440,7 +1440,6 @@ Defined in conflicts.dm of the #defines folder.
 		if(user)
 			if(bipod_deployed)
 				to_chat(user, SPAN_NOTICE("You deploy [src][support ? " on [support]" : ""]."))
-				aim_speed_mod += SLOWDOWN_ADS_SCOPE
 				wield_delay_mod += WIELD_DELAY_FAST
 				accuracy_mod += config.hmed_hit_accuracy_mult
 				burst_scatter_mod -= config.low_scatter_value

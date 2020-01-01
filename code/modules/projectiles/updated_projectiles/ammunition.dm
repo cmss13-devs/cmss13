@@ -15,7 +15,7 @@ They're all essentially identical when it comes to getting the job done.
 	matter = list("metal" = 1000)
 	 //Low.
 	throwforce = 2
-	w_class = SIZE_TINY
+	w_class = SIZE_SMALL
 	throw_speed = SPEED_SLOW
 	throw_range = 6
 	var/default_ammo = /datum/ammo/bullet

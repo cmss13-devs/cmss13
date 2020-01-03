@@ -306,6 +306,7 @@
 	var/obj/item/cell/high/cell = null
 	var/obj/structure/machinery/camera/camera = null
 	var/fire_delay = 1.5
+	var/last_sound = 0
 	var/last_fired = 0
 	var/range = 8
 	var/muzzle_flash_lum = 3 //muzzle flash brightness
@@ -781,7 +782,7 @@
 	return 1
 
 /obj/structure/machinery/marine_turret/proc/fire_shot()
-	if(isnull(target) || !ammo || !target || !on || !anchored || !check_power(2))
+	if(isnull(target) || !ammo || !target || !on || !anchored || !check_power(2) || world.time - last_fired <= fire_delay)
 		return
 
 	var/turf/my_loc = get_turf(src)
@@ -816,7 +817,9 @@
 		in_chamber.weapon_source_mob = owner_mob
 
 		//Shoot at the thing
-		playsound(loc, 'sound/weapons/gun_sentry.ogg', 75, 1)
+		if(last_sound > world.time + 6)
+			playsound(loc, 'sound/weapons/gun_sentry.ogg', 75, 1)
+			last_sound = world.time
 		in_chamber.fire_at(target, src, null, ammo.max_range, ammo.shell_speed)
 		muzzle_flash(final_angle)
 		in_chamber = null

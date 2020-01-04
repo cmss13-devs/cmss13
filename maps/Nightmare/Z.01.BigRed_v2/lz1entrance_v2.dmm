@@ -530,7 +530,7 @@
 	},
 /area/bigredv2/outside/nw)
 "bq" = (
-/obj/structure/solaris_sign,
+/obj/structure/lz_sign/solaris_sign,
 /turf/open/floor{
 	tag = "icon-asteroidwarning";
 	icon_state = "asteroidwarning"

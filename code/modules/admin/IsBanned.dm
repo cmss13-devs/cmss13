@@ -1,7 +1,16 @@
 #ifndef OVERRIDE_BAN_SYSTEM
 //Blocks an attempt to connect before even creating our client datum thing.
-world/IsBanned(key,address,computer_id)
+world/IsBanned(key,address,computer_id, type)
 	var/ckey = ckey(key)
+
+	// This is added siliently. Thanks to MSO for this fix. You will see it when/if we go OS
+	if (type == "world")
+		return ..() //shunt world topic banchecks to purely to byond's internal ban system
+
+	var/client/C = directory[ckey]
+	if (C && ckey == C.ckey && computer_id == C.computer_id && address == C.address)
+		return //don't recheck connected clients.
+
 	if(ckey in admin_datums && !isnull(admin_datums[ckey]) && (admin_datums[ckey].rights & R_MOD))
 		return ..()
 

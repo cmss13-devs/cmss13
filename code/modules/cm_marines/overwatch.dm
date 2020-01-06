@@ -315,7 +315,9 @@
 	else
 		dat += "<B>Current Cannon Status:</B> "
 		var/cooldown_left = (almayer_orbital_cannon.last_orbital_firing + 5000) - world.time
-		if(cooldown_left > 0)
+		if(almayer_orbital_cannon.is_disabled)
+			dat += "Cannon is disabled!<br>"
+		else if(cooldown_left > 0)
 			dat += "Cannon on cooldown ([round(cooldown_left/10)] seconds)<br>"
 		else if(!almayer_orbital_cannon.chambered_tray)
 			dat += SET_CLASS("No ammo chambered in the cannon.", INTERFACE_RED)
@@ -545,7 +547,9 @@
 				else
 					handle_supplydrop()
 		if("dropbomb")
-			if((almayer_orbital_cannon.last_orbital_firing + 5000) > world.time)
+			if(almayer_orbital_cannon.is_disabled)
+				to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Orbital bombardment disabled!")]")
+			else if((almayer_orbital_cannon.last_orbital_firing + 5000) > world.time)
 				to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Orbital bombardment not yet available!")]")
 			else
 				handle_bombard()

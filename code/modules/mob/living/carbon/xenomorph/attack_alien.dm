@@ -713,6 +713,9 @@
 		to_chat(M, SPAN_XENONOTICE("You interact with the machine and disable remote control."))
 		xeno_message(SPAN_XENOANNOUNCE("[message]"),3,M.hivenumber)
 		last_locked = world.time
+		if(almayer_orbital_cannon)
+			almayer_orbital_cannon.is_disabled = TRUE
+			add_timer(CALLBACK(almayer_orbital_cannon, .obj/structure/orbital_cannon/proc/enable), MINUTES_10, TIMER_UNIQUE)
 		queen_locked = 1
 
 /datum/shuttle/ferry/marine/proc/door_override(mob/living/carbon/Xenomorph/M, shuttle_tag)

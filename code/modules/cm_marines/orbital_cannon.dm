@@ -21,6 +21,7 @@ var/list/ob_type_fuel_requirements
 	var/loaded_tray = FALSE
 	var/ob_cannon_busy = FALSE
 	var/last_orbital_firing = 0 //stores the last time it was fired to check when we can fire again
+	var/is_disabled = FALSE
 
 /obj/structure/orbital_cannon/New()
 	..()
@@ -59,6 +60,8 @@ var/list/ob_type_fuel_requirements
 		else
 			icon_state = "OBC_unloaded"
 
+/obj/structure/orbital_cannon/proc/enable()
+	is_disabled = FALSE
 
 /obj/structure/orbital_cannon/proc/load_tray(mob/user)
 	set waitfor = 0

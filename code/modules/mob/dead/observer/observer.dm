@@ -139,6 +139,7 @@ Works together with spawning an observer, noted above.
 			ghost.client.change_view(world.view) //reset view range to default
 			ghost.client.pixel_x = 0 //recenters our view
 			ghost.client.pixel_y = 0
+			ghost.client.soundOutput.update_ambience()
 		return ghost
 
 /*
@@ -173,12 +174,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/Move(NewLoc, direct)
 	following = null
 	dir = direct
+	var/area/last_area = get_area(loc)
 	if(NewLoc)
-		loc = NewLoc
 		for(var/obj/effect/step_trigger/S in NewLoc)
 			S.Crossed(src)
 
-		return
 	loc = get_turf(src) //Get out of closets and such as a ghost
 	if((direct & NORTH) && y < world.maxy)
 		y++
@@ -189,7 +189,15 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	else if((direct & WEST) && x > 1)
 		x--
 
-	for(var/obj/effect/step_trigger/S in locate(x, y, z))	//<-- this is dumb
+	var/turf/new_turf = locate(x, y, z)
+
+	var/area/new_area = new_turf.loc
+		
+	if(new_area != last_area)
+		new_area.Entered(src)
+		last_area.Exited(src)
+
+	for(var/obj/effect/step_trigger/S in new_turf)	//<-- this is dumb
 		S.Crossed(src)
 
 /mob/dead/observer/examine(mob/user)

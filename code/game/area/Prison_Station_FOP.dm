@@ -2,6 +2,8 @@
 /area/prison
 	name = "Fiorina Orbital Penitentiary"
 	ceiling = CEILING_GLASS
+	ambience_exterior = AMBIENCE_ALMAYER
+	ceiling_muffle = FALSE
 
 //SECURITY
 /area/prison/security

@@ -7,6 +7,8 @@
 	var/invisa_view = FALSE
 	var/prescription = FALSE
 	var/toggleable = FALSE
+	var/toggle_on_sound = 'sound/machines/click.ogg'
+	var/toggle_off_sound = 'sound/machines/click.ogg'
 	var/active = TRUE
 	flags_inventory = COVEREYES
 	flags_equip_slot = SLOT_EYES
@@ -96,8 +98,10 @@
 
 	if(active)
 		to_chat(user, SPAN_NOTICE("You deactivate the optical matrix on [src]."))
+		playsound_client(user.client, toggle_off_sound, null, 75)
 	else
 		to_chat(user, SPAN_NOTICE("You activate the optical matrix on [src]."))
+		playsound_client(user.client, toggle_on_sound, null, 75)
 
 	toggle_glasses_effect()
 

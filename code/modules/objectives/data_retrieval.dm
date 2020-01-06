@@ -67,7 +67,7 @@
 /datum/cm_objective/retrieve_data/terminal/complete()
 	if(..())
 		data_source.visible_message(SPAN_NOTICE("[data_source] pings softly as it finishes the upload."))
-		playsound(data_source, 'sound/machines/ping.ogg', 25, 1)
+		playsound(data_source, 'sound/machines/screen_output1.ogg', 25, 1)
 
 /datum/cm_objective/retrieve_data/terminal/get_clue()
 	return "Upload data from [data_source] in [get_area(data_source)], the password is [decryption_password]"
@@ -99,7 +99,7 @@
 		if(istype(disk.loc,/obj/structure/machinery/computer/disk_reader))
 			var/obj/structure/machinery/computer/disk_reader/reader = disk.loc
 			reader.visible_message("\The [reader] pings softly as the upload finishes and ejects the disk.")
-			playsound(reader, 'sound/machines/ping.ogg', 25, 1)
+			playsound(reader, 'sound/machines/screen_output1.ogg', 25, 1)
 			disk.forceMove(reader.loc)
 			disk.name = "[disk.name] (complete)"
 			reader.disk = null

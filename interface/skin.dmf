@@ -488,6 +488,25 @@ menu "menu"
 		command = "hotkeys-help"
 		category = "&Help"
 		saved-params = "is-checked"
+	elem 
+		name = "Volume"
+		command = ""
+		saved-params = "is-checked"
+	elem 
+		name = "&Effects"
+		command = "Adjust-Volume-SFX"
+		category = "Volume"
+		saved-params = "is-checked"
+	elem 
+		name = "&Ambience"
+		command = "Adjust-Volume-Ambience"
+		category = "Volume"
+		saved-params = "is-checked"
+	elem 
+		name = "Admin &Music"
+		command = "Adjust-Volume-Admin-Music"
+		category = "Volume"
+		saved-params = "is-checked"
 
 
 window "Telecomms IDE"
@@ -804,8 +823,8 @@ window "outputwindow"
 		anchor1 = 0,0
 		anchor2 = 100,100
 		background-color = #ffffff
-		is-disabled = true
 		is-visible = false
+		is-disabled = true
 		saved-params = ""
 		auto-format = false
 	elem "output"

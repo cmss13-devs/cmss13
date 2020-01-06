@@ -44,9 +44,8 @@
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'> [user] primed \a grenade ([name]) at ([src.loc.x],[src.loc.y],[src.loc.z]) ([user.ckey])</font>")
 		if(initial(dangerous) && has_species(user, "Human"))
 			var/nade_sound = user.gender == FEMALE ? get_sfx("female_fragout") : get_sfx("male_fragout")
+			playsound(user, nade_sound, 35)
 
-			for(var/mob/living/carbon/human/H in hearers(6,user))
-				H.playsound_local(user, nade_sound, 35)
 			
 		var/mob/living/carbon/C = user
 		if(istype(C) && !C.throw_mode)

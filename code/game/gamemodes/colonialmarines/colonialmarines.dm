@@ -307,7 +307,9 @@
 		if(MODE_INFESTATION_X_MINOR) musical_track = pick('sound/theme/neutral_melancholy1.ogg','sound/theme/neutral_melancholy2.ogg')
 		if(MODE_INFESTATION_M_MINOR) musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
 		if(MODE_INFESTATION_DRAW_DEATH) musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
-	world << musical_track
+	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
+	S.status = SOUND_STREAM
+	sound_to(world, S)
 	if(round_statistics)
 		round_statistics.game_mode = name
 		round_statistics.round_length = world.time

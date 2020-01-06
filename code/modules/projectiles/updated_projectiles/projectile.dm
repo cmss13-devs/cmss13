@@ -360,7 +360,7 @@
 			return 1
 		else if (!L.lying)
 			animatation_displace_reset(L)
-			if(ammo.sound_miss) L.playsound_local(get_turf(L), ammo.sound_miss, 75, 1)
+			if(ammo.sound_miss) playsound_client(L.client, ammo.sound_miss, get_turf(L), 75, TRUE)
 			L.visible_message(SPAN_AVOIDHARM("[src] misses [L]!"),
 				SPAN_AVOIDHARM("[src] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
 

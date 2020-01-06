@@ -284,6 +284,8 @@
 	name = "\improper Colony Grounds"
 	icon_state = "red"
 	ceiling = CEILING_NONE
+	soundscape_interval = 40
+	soundscape_playlist = SCAPE_PL_WIND
 
 /area/bigredv2/outside/ne
 	name = "\improper Northeast Colony Grounds"

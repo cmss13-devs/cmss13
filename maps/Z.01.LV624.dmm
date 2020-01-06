@@ -10490,9 +10490,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
-"aEk" = (
-/turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
 "aEl" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	tag = "icon-landingstripe (WEST)";
@@ -11152,7 +11149,7 @@
 "aFL" = (
 /obj/structure/machinery/camera/autoname/lz_camera,
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "aFM" = (
 /obj/structure/machinery/landinglight/ds1{
 	tag = "icon-landingstripe (WEST)";
@@ -15331,7 +15328,7 @@
 	name = "1"
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "aQV" = (
 /obj/effect/decal/remains/xeno,
 /turf/open/gm/grass,
@@ -55103,25 +55100,25 @@ aGz
 aGz
 aGz
 aDI
-aEk
-aEk
+aSO
+aSO
 aFL
-aEk
-aEk
+aSO
+aSO
 aFc
 aFc
 aFc
-aEk
-aEk
+aSO
+aSO
 aFL
-aEk
-aEk
-aEk
+aSO
+aSO
+aSO
 aFc
 aFc
 aFc
 aFc
-aEk
+aSO
 aFL
 aQU
 aRZ
@@ -55331,10 +55328,10 @@ aDM
 aDM
 hSa
 aDJ
-aEk
-aEk
-aEk
-aEk
+aSO
+aSO
+aSO
+aSO
 aFc
 aFc
 aFc
@@ -55344,13 +55341,13 @@ aFc
 aFc
 aFc
 aFc
-aEk
+aSO
 aFc
 aFc
 aFc
 aFc
-aEk
-aEk
+aSO
+aSO
 aFc
 aSa
 aMq
@@ -55559,10 +55556,10 @@ btF
 btF
 aDi
 aDK
-aEk
-aEk
-aEk
-aEk
+aSO
+aSO
+aSO
+aSO
 aFc
 aFc
 aFc
@@ -55578,7 +55575,7 @@ aFc
 aFc
 aFc
 aFc
-aEk
+aSO
 aFc
 aSb
 aMq
@@ -55787,7 +55784,7 @@ dbY
 btF
 aDi
 aDL
-aEk
+aSO
 aFc
 aFc
 aFc
@@ -56015,7 +56012,7 @@ aFI
 btF
 aDi
 aDI
-aEk
+aSO
 aFc
 aFc
 aFc
@@ -56034,8 +56031,8 @@ aFc
 aFc
 aFc
 aFc
-aEk
-aEk
+aSO
+aSO
 aRZ
 aMq
 aFI
@@ -56243,7 +56240,7 @@ aFI
 btF
 aDi
 aDJ
-aEk
+aSO
 aFc
 aFc
 aFc
@@ -56262,8 +56259,8 @@ aFc
 aFc
 aFc
 aFc
-aEk
-aEk
+aSO
+aSO
 aSa
 aMq
 aFI
@@ -56471,7 +56468,7 @@ nSR
 btF
 aDi
 aDK
-aEk
+aSO
 aFc
 aFc
 aFc
@@ -56490,8 +56487,8 @@ aFc
 aFc
 aFc
 aFc
-aEk
-aEk
+aSO
+aSO
 aSb
 aMq
 aFI
@@ -56699,7 +56696,7 @@ tKI
 btF
 aDi
 aDL
-aEk
+aSO
 aFc
 aFc
 aFc
@@ -56927,10 +56924,10 @@ tKI
 btF
 aDi
 aDI
-aEk
-aEk
-aEk
-aEk
+aSO
+aSO
+aSO
+aSO
 aFc
 aFc
 aFc
@@ -56946,7 +56943,7 @@ aFc
 aFc
 aFc
 aFc
-aEk
+aSO
 aFc
 aRZ
 aMq
@@ -57155,10 +57152,10 @@ rKQ
 btF
 aDi
 aDJ
-aEk
-aEk
-aEk
-aEk
+aSO
+aSO
+aSO
+aSO
 aFc
 aFc
 aFc
@@ -57168,13 +57165,13 @@ aFc
 aFc
 aFc
 aFc
-aEk
+aSO
 aFc
 aFc
 aFc
 aFc
-aEk
-aEk
+aSO
+aSO
 aFc
 aSa
 aMq
@@ -57383,27 +57380,27 @@ jtg
 btF
 aDi
 aDK
-aEk
-aEk
+aSO
+aSO
 aFL
-aEk
-aEk
+aSO
+aSO
 aFc
 aFc
 aFc
-aEk
-aEk
+aSO
+aSO
 aFL
-aEk
-aEk
-aEk
+aSO
+aSO
+aSO
 aFc
 aFc
 aFc
 aFc
-aEk
+aSO
 aFL
-aEk
+aSO
 aSb
 aMq
 btF

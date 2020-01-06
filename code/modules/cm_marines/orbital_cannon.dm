@@ -212,7 +212,7 @@ var/list/ob_type_fuel_requirements
 	var/turf/target = locate(T.x + inaccurate_fuel * round(rand(-3,3), 1), T.y + inaccurate_fuel * round(rand(-3,3), 1), T.z)
 	if(user)
 		tray.warhead.source_mob = user
-	playsound(target, 'sound/weapons/gun_orbital_travel.ogg', 100, 1, 75)
+	playsound_spacial(target, 'sound/weapons/gun_orbital_travel.ogg', 100, 12 SECONDS)
 	var/cancellation_token = rand(0,32000)
 	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
 	orbital_cannon_cancellation["[cancellation_token]"] = src

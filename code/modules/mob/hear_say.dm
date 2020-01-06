@@ -47,7 +47,7 @@
 		to_chat(src, "<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] [verb], <span class='[style]'>\"[message]\"</span>")
 		if (speech_sound && (get_dist(speaker, src) <= world.view && src.z == speaker.z))
 			var/turf/source = speaker? get_turf(speaker) : get_turf(src)
-			src.playsound_local(source, speech_sound, sound_vol, 1)
+			playsound_client(src.client, speech_sound, source, sound_vol, GET_RANDOM_FREQ)
 
 
 /mob/proc/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/mob/speaker = null, var/hard_to_hear = 0, var/vname ="", var/command = 0)

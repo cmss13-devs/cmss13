@@ -201,7 +201,8 @@
 
 	var/list/turfs_src = get_shuttle_turfs(T_src, info_datums) //Which turfs are we moving?
 
-	playsound(turfs_src[sound_target], sound_takeoff, 100, 0)
+	playsound_spacial(turfs_src[sound_target], sound_takeoff, 100, 20 SECONDS)
+	//playsound_area(get_area(turfs_src[sound_target]),'sound/effects/drums.ogg',100)
 
 	sleep(warmup_time) //Warming up
 
@@ -244,8 +245,10 @@
 	if(EvacuationAuthority.dest_status >= NUKE_EXPLOSION_IN_PROGRESS) 
 		return FALSE //If a nuke is in progress, don't attempt a landing.
 
-	playsound(turfs_int[sound_target], sound_landing, 100, 0)
-	playsound(turfs_trg[sound_target], sound_landing, 100, 0)
+	playsound_area(get_area(turfs_int[sound_target]), sound_landing, 100)
+	playsound_spacial(turfs_trg[sound_target], sound_landing, 100, 20 SECONDS)
+	playsound_area(get_area(turfs_int[sound_target]), channel = SOUND_CHANNEL_AMBIENCE, status = SOUND_UPDATE)
+
 
 	var/list/lightsdest = get_landing_lights(T_trg)
 	for(var/obj/structure/machinery/landinglight/F in lightsdest)
@@ -348,7 +351,7 @@
 	//START: Heavy lifting backend
 
 	var/list/turfs_src = get_shuttle_turfs(T_src, info_datums) //Which turfs are we moving?
-	playsound(turfs_src[sound_target], sound_takeoff, 100, 0)
+	playsound_spacial(turfs_src[sound_target], sound_takeoff, 100, 20 SECONDS)
 
 	sleep(warmup_time) //Warming up
 
@@ -427,7 +430,8 @@
 
 	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg')
 
-	playsound(turfs_int[sound_target], sound_landing, 100, 0)
+	playsound_area(get_area(turfs_int[sound_target]), sound_landing, 100)
+	playsound_area(get_area(turfs_int[sound_target]), channel = SOUND_CHANNEL_AMBIENCE, status = SOUND_UPDATE)
 
 	sleep(85)
 

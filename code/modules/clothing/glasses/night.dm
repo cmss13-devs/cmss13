@@ -6,7 +6,8 @@
 	desc = "You can totally see in the dark now!"
 	icon_state = "night"
 	item_state = "glasses"
-	
+	toggle_on_sound = 'sound/handling/toggle_nv1.ogg'
+	toggle_off_sound = 'sound/handling/toggle_nv2.ogg'
 	darkness_view = 7
 	fullscreen_vision = /obj/screen/fullscreen/nvg
 

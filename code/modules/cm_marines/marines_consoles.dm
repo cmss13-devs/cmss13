@@ -370,7 +370,7 @@
 			if(ismob(G.grabbed_thing))
 				person_to_modify = G.grabbed_thing
 				H.visible_message(SPAN_NOTICE("You hear a beep as [person_to_modify]'s hand is scanned to \the [name]."))
-				playsound(H.loc, 'sound/machines/ping.ogg', 25, 1)
+				playsound(H.loc, 'sound/machines/screen_output1.ogg', 25, 1)
 	else
 		..()
 

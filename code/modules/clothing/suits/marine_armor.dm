@@ -562,14 +562,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	unacidable = TRUE
 	specialty = "M3-G4 grenadier"
-
-/obj/item/clothing/suit/storage/marine/M3G/mob_can_equip(mob/M, slot, disable_warning = 0)
-	. = ..()
-	if(.)
-		if(!skillcheck(M, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && M.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
-			to_chat(M, SPAN_WARNING("You are not trained to use [src]!"))
-			return 0
-
+	flags_item = MOB_LOCK_ON_EQUIP
 
 /obj/item/clothing/suit/storage/marine/M3T
 	name = "\improper M3-T light armor"
@@ -588,6 +581,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	allowed = list(/obj/item/weapon/gun/launcher/rocket)
 	unacidable = TRUE
 	specialty = "M3-T light"
+	flags_item = MOB_LOCK_ON_EQUIP
 
 /obj/item/clothing/suit/storage/marine/M3S
 	name = "\improper M3-S light armor"
@@ -605,13 +599,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	unacidable = TRUE
 	specialty = "M3-S light"
-
-/obj/item/clothing/suit/storage/marine/M3S/mob_can_equip(mob/M, slot, disable_warning = 0)
-	. = ..()
-	if(.)
-		if(!skillcheck(M, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && M.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)
-			to_chat(M, SPAN_WARNING("You are not trained to use [src]!"))
-			return 0
+	flags_item = MOB_LOCK_ON_EQUIP
 
 /obj/item/clothing/suit/storage/marine/M35
 	name = "\improper M35 pyrotechnician armor"
@@ -632,13 +620,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	unacidable = TRUE
 	specialty = "M35 pyrotechnician"
-
-/obj/item/clothing/suit/storage/marine/M35/mob_can_equip(mob/M, slot, disable_warning = 0)
-	. = ..()
-	if(.)
-		if(!skillcheck(M, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && M.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_PYRO)
-			to_chat(M, SPAN_WARNING("You are not trained to use [src]!"))
-			return 0
+	flags_item = MOB_LOCK_ON_EQUIP
 
 /obj/item/clothing/suit/storage/marine/ghillie
 	name = "\improper M45 pattern ghillie armor"
@@ -656,13 +638,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	specialty = "M45 pattern ghillie"
 	flags_marine_armor = ARMOR_LAMP_OVERLAY
-
-/obj/item/clothing/suit/storage/marine/ghillie/mob_can_equip(mob/M, slot, disable_warning = 0)
-	. = ..()
-	if(.)
-		if(!skillcheck(M, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && M.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)
-			to_chat(M, SPAN_WARNING("You are not trained to use [src]!"))
-			return 0
+	flags_item = MOB_LOCK_ON_EQUIP
 
 //=============================//PMCS\\==================================\\
 //=======================================================================\\

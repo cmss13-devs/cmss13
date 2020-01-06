@@ -69,7 +69,8 @@
 #define TWOHANDED				16	// The item is twohanded.
 #define WIELDED					32	// The item is wielded with both hands.
 #define	ITEM_ABSTRACT			64	// The item is abstract (grab, powerloader_clamp, etc)
-#define ITEM_PREDATOR			128 //Specific predator item interactions.
+#define ITEM_PREDATOR			128 // Specific predator item interactions.
+#define MOB_LOCK_ON_EQUIP		256	// Lock this item to the mob that equips it up until permadeath		
 
 //==========================================================================================
 

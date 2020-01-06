@@ -22,9 +22,7 @@
 	toggleable = TRUE
 	fullscreen_vision = null
 	actions_types = list(/datum/action/item_action/toggle)
-	req_skill = SKILL_SPEC_WEAPONS
-	req_skill_level = SKILL_SPEC_SCOUT
-	req_skill_explicit = TRUE
+	flags_item = MOB_LOCK_ON_EQUIP
 
 /obj/item/clothing/glasses/night/m42_night_goggles
 	name = "\improper M42 scout sight"
@@ -37,9 +35,7 @@
 	toggleable = TRUE
 	fullscreen_vision = null
 	actions_types = list(/datum/action/item_action/toggle)
-	req_skill = SKILL_SPEC_WEAPONS
-	req_skill_level = SKILL_SPEC_SNIPER
-	req_skill_explicit = TRUE
+	flags_item = MOB_LOCK_ON_EQUIP
 
 /obj/item/clothing/glasses/night/m42_night_goggles/upp
 	name = "\improper Type 9 commando goggles"

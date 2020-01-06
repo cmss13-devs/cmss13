@@ -28,6 +28,7 @@ var/list/mechtoys = list(
 	luminosity = 1
 	lighting_use_dynamic = 0
 	requires_power = 0
+	ambience_exterior = AMBIENCE_ALMAYER
 
 /area/supply/dock //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
 	name = "Supply Shuttle"

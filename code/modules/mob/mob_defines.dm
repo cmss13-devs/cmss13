@@ -187,3 +187,5 @@
 
 	var/last_damage_source // for tracking whatever damaged us last, mainly for stat tracking
 	var/last_damage_mob // for tracking last hits on mob death, for kill stat tracking and moderation
+
+	var/ambience_playing = FALSE

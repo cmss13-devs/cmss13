@@ -143,6 +143,7 @@
 	///////////
 /client/New(TopicData)
 	chatOutput = new /datum/chatOutput(src)
+	soundOutput = new /datum/soundOutput(src)
 	TopicData = null							//Prevent calls to client.Topic from connect
 
 	if(!(connection in list("seeker", "web")))					//Invalid connection type.

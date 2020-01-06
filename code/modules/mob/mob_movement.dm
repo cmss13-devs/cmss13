@@ -103,6 +103,8 @@
 	if(mob.control_object)
 		return Move_object(direct) //admins possessing object
 
+	soundOutput.on_movement(n)
+	
 	if(isobserver(mob) || isAI(mob))
 		return mob.Move(n,direct)
 

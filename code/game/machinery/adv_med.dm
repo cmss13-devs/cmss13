@@ -82,7 +82,7 @@
 	//prevents occupant's belonging from landing inside the machine
 	for(var/obj/O in src)
 		O.loc = loc
-
+	playsound(src, 'sound/machines/scanning_pod1.ogg')
 
 /obj/structure/machinery/bodyscanner/proc/go_out()
 	if ((!( src.occupant ) || src.locked))
@@ -94,6 +94,7 @@
 	occupant = null
 	update_use_power(1)
 	icon_state = "body_scanner_0"
+	playsound(src, 'sound/machines/hydraulics_3.ogg')
 
 
 /obj/structure/machinery/bodyscanner/attack_hand(mob/living/user)
@@ -255,7 +256,7 @@
 		N.fields["last_scan_result"] = dat
 		N.fields["autodoc_data"] = generate_autodoc_surgery_list(H)
 		visible_message(SPAN_NOTICE("\The [src] pings as it stores the scan report of [connected.occupant.real_name]"))
-		playsound(src.loc, 'sound/machines/ping.ogg', 25, 1)
+		playsound(src.loc, 'sound/machines/screen_output1.ogg', 25)
 	else
 		dat = SET_CLASS("Error: No Body Scanner connected.", INTERFACE_RED)
 

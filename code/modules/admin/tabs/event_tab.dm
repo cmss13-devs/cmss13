@@ -477,35 +477,33 @@
 		if("Sound from list")
 			play_sound_from_list()
 		if("Imported sound")
-			var/S = input("Pick a sound to play.") as sound
+			var/S = input("Pick a sound to play.") as file
 			play_imported_sound(S)
 		if("Cancel")
 			return
 
-/client/proc/play_imported_sound(S as sound)
+/client/proc/play_imported_sound(soundin)
 	if(!check_rights(R_SOUNDS))	
 		return
 	if(midi_playing)
 		to_chat(usr, "No. An Admin already played a midi recently.")
 		return
 
-	var/sound/uploaded_sound = sound(S, repeat = 0, wait = 1, channel = 777)
-	uploaded_sound.priority = 250
-	switch(alert("Play sound globally or locally?", "Sound", "Global", "Local", "Individual", "Cancel"))
+	switch(alert("Play sound globally or locally?\n(NOTE : If an admin sound is already being played, this one will override it)", "Sound", "Global", "Local", "Individual", "Cancel"))
 		if("Global")
 			for(var/mob/M in player_list)
 				if(M.client.prefs.toggles_sound & SOUND_MIDI)
-					SSmidi.queue(M, uploaded_sound)
+					playsound_client(src, soundin, channel = SOUND_CHANNEL_ADMIN_MIDI, vol_cat = VOLUME_ADM, status = SOUND_STREAM)
 					heard_midi++
 		if("Local")
-			playsound(get_turf(src.mob), uploaded_sound, 50, 0)
+			playsound(get_turf(src.mob), soundin, 50, 0, channel = SOUND_CHANNEL_ADMIN_MIDI, vol_cat = VOLUME_ADM, status = SOUND_STREAM)
 			for(var/mob/M in view())
 				heard_midi++
 		if("Individual")
 			var/mob/target = input("Select a mob to play sound to:", "List of All Mobs") as null|anything in mob_list
 			if(istype(target,/mob/))
 				if(target.client.prefs.toggles_sound & SOUND_MIDI)
-					target << uploaded_sound
+					playsound_client(src, soundin, channel = SOUND_CHANNEL_ADMIN_MIDI, vol_cat = VOLUME_ADM, status = SOUND_STREAM)
 					heard_midi = "[target] ([target.key])"
 				else
 					heard_midi = 0
@@ -513,11 +511,11 @@
 			return
 	 
 	if(isnum(heard_midi))
-		log_admin("[key_name(src)] played sound `[S]` for [heard_midi] player(s). [clients.len - heard_midi] player(s) have disabled admin midis.")
-		message_admins("[key_name_admin(src)] played sound `[S]` for [heard_midi] player(s). [clients.len - heard_midi] player(s) have disabled admin midis.")
+		log_admin("[key_name(src)] played sound `[soundin]` for [heard_midi] player(s). [clients.len - heard_midi] player(s) have disabled admin midis.")
+		message_admins("[key_name_admin(src)] played sound `[soundin]` for [heard_midi] player(s). [clients.len - heard_midi] player(s) have disabled admin midis.")
 	else
-		log_admin("[key_name(src)] played sound `[S]` for [heard_midi].")
-		message_admins("[key_name_admin(src)] played sound `[S]` for [heard_midi].")
+		log_admin("[key_name(src)] played sound `[soundin]` for [heard_midi].")
+		message_admins("[key_name_admin(src)] played sound `[soundin]` for [heard_midi].")
 		return
 
 	// A 30 sec timer used to show Admins how many players are silencing the sound after it starts - see preferences_toggles.dm

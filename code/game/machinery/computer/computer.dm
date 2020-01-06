@@ -130,7 +130,7 @@
 	. = ..()
 	if(!.) //not broken or unpowered
 		if(ishuman(usr))
-			pick(playsound(src, 'sound/machines/computer_typing1.ogg', 5, 1), playsound(src, 'sound/machines/computer_typing2.ogg', 5, 1), playsound(src, 'sound/machines/computer_typing3.ogg', 5, 1))
+			playsound(src, pick('sound/machines/computer_typing4.ogg', 'sound/machines/computer_typing5.ogg', 'sound/machines/computer_typing6.ogg'), 5, 1)
 
 /obj/structure/machinery/computer/fixer
 	var/all_configs

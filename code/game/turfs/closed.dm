@@ -4,6 +4,7 @@
 /turf/closed
 	density = 1
 	opacity = 1
+	var/sound_muffling = MUFFLE_LOW
 
 /turf/closed/get_explosion_resistance()
 	return 1000000

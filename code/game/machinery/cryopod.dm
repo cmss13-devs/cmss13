@@ -528,7 +528,7 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	var/turf/location = get_turf(src)
 	log_admin("[key_name_admin(M)] has entered a stasis pod. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
 	message_admins(SPAN_NOTICE("[key_name_admin(M)] has entered a stasis pod."))
-
+	playsound(src, 'sound/machines/hydraulics_3.ogg', 30)
 
 /obj/structure/machinery/cryopod/proc/go_out()
 	if(!occupant)
@@ -537,3 +537,4 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	occupant = null
 	stop_processing()
 	icon_state = "body_scanner_0"
+	playsound(src, 'sound/machines/pod_open.ogg', 30)

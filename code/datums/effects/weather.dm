@@ -30,10 +30,9 @@
 
 	if (ambience_path \
 		&& affected_mob.client && (affected_mob.client.prefs.toggles_sound & SOUND_AMBIENCE) \
-		&& (affected_mob.client.played + WEATHER_SOUND_WAIT) < world.time)
-		
-		affected_mob.client.played = world.time
-		sound_to(affected_mob, sound(ambience_path, repeat = 0, wait = 0, volume = 30, channel = 2))
+		&& (affected_mob.client.soundOutput.ambience != ambience_path))
+		affected_mob.client.soundOutput.ambience = ambience_path
+		affected_mob.client.soundOutput.update_ambience()
 
 	return TRUE
 

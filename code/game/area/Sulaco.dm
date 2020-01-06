@@ -3,10 +3,14 @@
 	ceiling = CEILING_METAL
 	requires_power = 0
 	test_exemptions = MAP_TEST_EXEMPTION_SPACE
+	ambience_exterior = AMBIENCE_ALMAYER
+	ceiling_muffle = FALSE
+
 
 //Drop Pods
 /area/shuttle/drop1
-	ambience = list('sound/ambience/ambigen10.ogg','sound/ambience/ambispace.ogg','sound/ambience/ambisin4.ogg','sound/ambience/signal.ogg')
+	//soundscape_playlist = list('sound/soundscape/drum1.ogg')
+	soundscape_interval = 30 //seconds
 	is_resin_allowed = FALSE
 	flags_atom = AREA_NOTUNNEL
 	
@@ -18,9 +22,11 @@
 /area/shuttle/drop1/sulaco
 	name = "\improper Dropship Alamo"
 	icon_state = "shuttlered"
+	base_muffle = MUFFLE_HIGH
 
 /area/shuttle/drop1/LV624
 	name = "\improper Dropship Alamo"
+	ambience_exterior = AMBIENCE_LV624
 	icon_state = "shuttle"
 
 /area/shuttle/drop1/Haunted
@@ -29,21 +35,26 @@
 
 /area/shuttle/drop1/prison
 	name = "\improper Dropship Alamo"
+	ambience_exterior = AMBIENCE_PRISON
 	icon_state = "shuttle"
 
 /area/shuttle/drop1/BigRed
 	name = "\improper Dropship Alamo"
+	ambience_exterior = AMBIENCE_BIGRED
 	icon_state = "shuttle"
 
 /area/shuttle/drop1/ice_colony
 	name = "\improper Dropship Alamo"
+	ambience_exterior = AMBIENCE_ICE
 	icon_state = "shuttle"
 
 /area/shuttle/drop1/DesertDam
 	name = "\improper Dropship Alamo"
+	ambience_exterior = AMBIENCE_TRIJENT
 	icon_state = "shuttle"
 
 /area/shuttle/drop1/transit
+	ambience_exterior 	= 'sound/ambience/dropship_ambience_loop.ogg'
 	name = "\improper Dropship Alamo Transit"
 	icon_state = "shuttle2"
 
@@ -58,15 +69,19 @@
 	return TRUE
 
 /area/shuttle/drop2
+	//soundscape_playlist = list('sound/soundscape/drum1.ogg')
+	soundscape_interval = 30 //seconds
 	is_resin_allowed = FALSE
 	flags_atom = AREA_NOTUNNEL
 
 /area/shuttle/drop2/sulaco
 	name = "\improper Dropship Normandy"
 	icon_state = "shuttle"
+	base_muffle = MUFFLE_HIGH
 
 /area/shuttle/drop2/LV624
 	name = "\improper Dropship Normandy"
+	ambience_exterior = AMBIENCE_LV624
 	icon_state = "shuttle2"
 
 /area/shuttle/drop2/Haunted
@@ -75,21 +90,26 @@
 
 /area/shuttle/drop2/prison
 	name = "\improper Dropship Normandy"
+	ambience_exterior = AMBIENCE_PRISON
 	icon_state = "shuttle2"
 
 /area/shuttle/drop2/BigRed
 	name = "\improper Dropship Normandy"
+	ambience_exterior = AMBIENCE_BIGRED
 	icon_state = "shuttle2"
 
 /area/shuttle/drop2/ice_colony
 	name = "\improper Dropship Normandy"
+	ambience_exterior = AMBIENCE_ICE
 	icon_state = "shuttle2"
 
 /area/shuttle/drop2/DesertDam
 	name = "\improper Dropship Normandy"
+	ambience_exterior = AMBIENCE_TRIJENT
 	icon_state = "shuttle2"
 
 /area/shuttle/drop2/transit
+	ambience_exterior 	= 'sound/ambience/dropship_ambience_loop.ogg'
 	name = "\improper Dropship Normandy Transit"
 	icon_state = "shuttlered"
 

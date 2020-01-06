@@ -47,6 +47,8 @@
 /area/ice_colony/exterior/surface
 	name = "\improper Ice Colony - Exterior Surface"
 	fake_zlevel = 1 // above ground
+	ambience_exterior = AMBIENCE_ICE
+	soundscape_playlist = SCAPE_PL_WIND
 
 //Equivalent of space. None of this area should be accessible. If these are valleys, make separate areas
 /area/ice_colony/exterior/surface/cliff
@@ -149,7 +151,7 @@
 	icon_state = "cave"
 	ceiling = CEILING_DEEP_UNDERGROUND
 	fake_zlevel = 2 // underground
-
+	ambience_exterior = null
 //
 // Caves
 // Extremely simple, anything that is not built is a cave
@@ -160,6 +162,8 @@
 /area/ice_colony/exterior/underground/caves
 	name = "\improper Underground Caves"
 	icon_state = "cave"
+	sound_environment = 6
+	soundscape_playlist = SCAPE_PL_CAVE
 
 /area/ice_colony/exterior/underground/caves/open
 	icon_state = "explored"
@@ -180,6 +184,7 @@
 	icon_state = "clear"
 	ceiling = CEILING_METAL
 	fake_zlevel = 1 // above ground
+	ambience_exterior = AMBIENCE_ICE
 
 /*
  * Surface - Bar
@@ -466,6 +471,9 @@
 	icon_state = "explored"
 	ceiling = CEILING_DEEP_UNDERGROUND_METAL
 	fake_zlevel = 2 // underground
+	ambience_exterior = AMBIENCE_ALMAYER
+	ceiling_muffle = FALSE
+	sound_environment = 2
 
 /*
  * Underground - Crew Areas
@@ -575,6 +583,8 @@
 /area/ice_colony/underground/maintenance
 	name = "\improper Underground Maintenance"
 	icon_state = "maintcentral"
+	sound_environment = 6
+	base_muffle = MUFFLE_MEDIUM
 
 /area/ice_colony/underground/maintenance/central
 	name = "\improper Underground Central Maintenance"

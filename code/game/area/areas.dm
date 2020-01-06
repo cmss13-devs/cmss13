@@ -1,7 +1,5 @@
 // Areas.dm
 
-
-
 // ===
 /area
 	var/global/global_uid = 0
@@ -18,6 +16,19 @@
 	
 	// Weather
 	var/weather_enabled = TRUE	// Manual override for weather if set to false
+
+	// Ambience sounds
+	var/ambience_exterior 	= null //The sound that plays as ambience
+	var/sound_environment 	= 2 //Reverberation applied to ALL sounds that a client in this area hears  
+								//Full list of environments in the BYOND reference http://www.byond.com/docs/ref/#/sound/var/environment
+								//Also, diferent environments affect muffling differently
+	var/list/soundscape_playlist = list() //Clients in this area will hear one of the sounds in this list from time to time
+	var/soundscape_interval = INITIAL_SOUNDSCAPE_COOLDOWN //The base interval between each soundscape.
+	var/ceiling_muffle = TRUE //If true, this area's ceiling type will alter the muffling of the ambience sound
+	var/base_muffle = 0 //Ambience will always be muffled by this ammount at minimum
+						//NOTE: Values from 0 to -10000 ONLY. The rest won't work
+
+
 
 /area/New()
 	..()
@@ -294,48 +305,42 @@
 
 
 /area/Entered(A,atom/OldLoc)
-	var/musVolume = 20
-	var/sound = 'sound/ambience/ambigen1.ogg'
 
 	if(istype(A, /obj/structure/machinery))
-		var/area/newarea = get_area(A)
-		var/area/oldarea = get_area(OldLoc)
-		oldarea.master.area_machines -= A
-		newarea.master.area_machines += A
+		master.area_machines += A
 		return
 
-	if(!istype(A,/mob/living))	return
-	var/mob/living/L = A
+	if(ismob(A))	
+		var/mob/M = A
+		if(!M.lastarea)
+			M.lastarea = src
+			
+		if(isliving(M))
+			var/mob/living/L = M
+			if((!M.lastarea.has_gravity) && (has_gravity) && (L.m_intent == MOVE_INTENT_RUN)) // Being ready when you change areas gives you a chance to avoid falling all together.
+				thunk(L)
+				L.make_floating(0)
+
+			// Update all our weather vars and trackers
+			L.update_weather()
+
+		if(!M.client)	
+			return
+
+		if(M.client.soundOutput)
+			M.client.soundOutput.update_ambience(src)
+
+/area/Exited(A)
 	
-	// Update all our weather vars and trackers
-	L.update_weather()
+	if(istype(A, /obj/structure/machinery))
+		master.area_machines -= A
+		return
+	if(ismob(A))
+		var/mob/M = A
+		M.lastarea = src	
+	
 
-	if(!L.ckey)	return
 
-	if(!L.lastarea)
-		L.lastarea = get_area(L.loc)
-	var/area/newarea = get_area(L.loc)
-	var/area/oldarea = L.lastarea
-
-	if((oldarea.has_gravity == 0) && (newarea.has_gravity == 1) && (L.m_intent == MOVE_INTENT_RUN)) // Being ready when you change areas gives you a chance to avoid falling all together.
-		thunk(L)
-		L.make_floating(0)
-
-	L.lastarea = newarea
-
-	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
-	if(!(L && L.client && (L.client.prefs.toggles_sound & SOUND_AMBIENCE)))	return
-
-	if(!L.client.ambience_playing)
-		L.client.ambience_playing = 1
-		L << sound('sound/ambience/shipambience.ogg', repeat = 1, wait = 0, volume = 30, channel = 2)
-
-	if(src.ambience.len && prob(35))
-		sound = pick(ambience)
-
-		if(world.time > L.client.played + 900)
-			L << sound(sound, repeat = 0, wait = 0, volume = musVolume, channel = 1)
-			L.client.played = world.time
 
 /area/proc/gravitychange(var/gravitystate = 0, var/area/A)
 
@@ -377,7 +382,6 @@
 		mob:AdjustKnockeddown(2)
 
 	to_chat(mob, "Gravity!")
-
 
 
 

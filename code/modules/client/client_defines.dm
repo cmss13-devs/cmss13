@@ -33,9 +33,10 @@
 		///////////////
 		//SOUND STUFF//
 		///////////////
-	var/ambience_playing= null
 	var/played			= 0
 	var/midi_silenced	= 0
+	var/datum/soundOutput/soundOutput
+	var/list/volume_preferences = list(1, 0.5, 1)//Game, music, admin midis
 
 		////////////
 		//SECURITY//
@@ -66,7 +67,7 @@
 	var/xeno_name_ban = FALSE
 
 	var/datum/entity/player_entity/player_entity = null
-	
+
 	//Chat stuff
 	var/datum/chatOutput/chatOutput
 

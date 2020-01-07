@@ -186,6 +186,7 @@
 #include "code\datums\disease.dm"
 #include "code\datums\effects.dm"
 #include "code\datums\fluff_emails.dm"
+#include "code\datums\matrix_editor.dm"
 #include "code\datums\medal_awards.dm"
 #include "code\datums\mind.dm"
 #include "code\datums\mixed.dm"

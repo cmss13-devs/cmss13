@@ -75,6 +75,10 @@
 		var_value = "\icon[var_value]"
 		default = "icon"
 
+	else if(istype(var_value,/matrix))
+		to_chat(usr, "Variable appears to be <b>MATRIX</b>.")
+		default = "matrix"
+
 	else if(istype(var_value,/atom) || istype(var_value,/datum))
 		to_chat(usr, "Variable appears to be <b>TYPE</b>.")
 		default = "type"
@@ -115,8 +119,13 @@
 		if(dir)
 			to_chat(usr, "If a direction, direction is: [dir]")
 
-	var/class = input("What kind of variable?","Variable Type",default) as null|anything in list("text",
-		"num","type","icon","file","edit referenced object","restore to default")
+	var/list/possible_classes = list("text",
+		"num","type","icon","file")
+	if(variable == "transform")
+		possible_classes += "matrix"
+	possible_classes += "edit referenced object"
+	possible_classes += "restore to default"
+	var/class = input("What kind of variable?","Variable Type",default) as null|anything in possible_classes
 
 	if(!class)
 		return
@@ -371,5 +380,56 @@
 						if (A.type == O.type)
 							A.vars[variable] = O.vars[variable]
 
-	log_admin("[key_name(src)] mass modified [original_name]'s [variable] to [O.vars[variable]]")
-	message_admins("[key_name_admin(src)] mass modified [original_name]'s [variable] to [O.vars[variable]]", 1)
+		if("matrix")
+			if(!LAZYLEN(stored_matrices))
+				to_chat(usr, "You don't have any matrices stored!")
+				return
+
+			var/matrix_name = input("Choose a matrix", "Matrix") as null|anything in (stored_matrices + "Cancel")
+			if(!matrix_name || matrix_name == "Cancel")
+				return
+
+			var/matrix/MX = LAZYACCESS(stored_matrices, matrix_name)
+			if(!MX)
+				return
+
+			O.vars[variable] = MX
+			if(method)
+				if(istype(O, /mob))
+					for(var/mob/M in mob_list)
+						if ( istype(M , O.type) )
+							M.vars[variable] = O.vars[variable]
+
+				else if(istype(O, /obj))
+					for(var/obj/A in object_list)
+						if ( istype(A , O.type) )
+							A.vars[variable] = O.vars[variable]
+
+				else if(istype(O, /turf))
+					for(var/turf/A in turfs)
+						if ( istype(A , O.type) )
+							A.vars[variable] = O.vars[variable]
+
+			else
+				if(istype(O, /mob))
+					for(var/mob/M in mob_list)
+						if (M.type == O.type)
+							M.vars[variable] = O.vars[variable]
+
+				else if(istype(O, /obj))
+					for(var/obj/A in object_list)
+						if (A.type == O.type)
+							A.vars[variable] = O.vars[variable]
+
+				else if(istype(O, /turf))
+					for(var/turf/A in turfs)
+						if (A.type == O.type)
+							A.vars[variable] = O.vars[variable]
+
+			log_admin("[key_name(src)] mass modified [original_name]'s [variable] to their matrix \"[matrix_name]\" with columns ([MX.a], [MX.b], [MX.c]), ([MX.d], [MX.e], [MX.f])")
+			message_admins("[key_name_admin(src)] mass modified [original_name]'s [variable] to their matrix \"[matrix_name]\" with columns ([MX.a], [MX.b], [MX.c]), ([MX.d], [MX.e], [MX.f])", 1)
+
+	// Matrix edits make their own custom log
+	if(class != "matrix")
+		log_admin("[key_name(src)] mass modified [original_name]'s [variable] to [O.vars[variable]]")
+		message_admins("[key_name_admin(src)] mass modified [original_name]'s [variable] to [O.vars[variable]]", 1)

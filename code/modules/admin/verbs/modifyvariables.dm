@@ -15,13 +15,15 @@ var/list/forbidden_varedit_object_types = list(
 /client/proc/mod_list_add_ass() //haha
 	var/class = "text"
 	
+	var/list/possible_classes = list("text","num","type","reference","mob reference","icon","file","list")
+	if(LAZYLEN(stored_matrices))
+		possible_classes += "matrix"
 	if(admin_holder && admin_holder.marked_datums.len)
-		class = input("What kind of variable?","Variable Type") as null|anything in list("text",
-			"num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default","marked datum")
-	else
-		class = input("What kind of variable?","Variable Type") as null|anything in list("text",
-			"num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default")
+		possible_classes += "marked_datum"
+	possible_classes += "edit referenced object"
+	possible_classes += "restore to default"
 
+	class = input("What kind of variable?","Variable Type") as null|anything in possible_classes
 	if(!class)
 		return
 
@@ -50,6 +52,17 @@ var/list/forbidden_varedit_object_types = list(
 		if("icon")
 			var_value = input("Pick icon:","Icon") as null|icon
 
+		if("matrix")
+			var/matrix_name = input("Choose a matrix", "Matrix") as null|anything in (stored_matrices + "Cancel")
+			if(!matrix_name || matrix_name == "Cancel")
+				return
+
+			var/matrix/M = LAZYACCESS(stored_matrices, matrix_name)
+			if(!M)
+				return
+
+			var_value = M
+
 		if("marked datum")
 			var/datum/D = input_marked_datum(admin_holder.marked_datums)
 			var_value = D
@@ -62,12 +75,18 @@ var/list/forbidden_varedit_object_types = list(
 /client/proc/mod_list_add(var/list/L)
 
 	var/class = "text"
+
+	var/list/possible_classes = list("text","num","type","reference","mob reference","icon","file","list")
+	if(LAZYLEN(stored_matrices))
+		possible_classes += "matrix"
 	if(admin_holder && admin_holder.marked_datums.len)
-		class = input("What kind of variable?","Variable Type") as null|anything in list("text",
-			"num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default","marked datum")
-	else
-		class = input("What kind of variable?","Variable Type") as null|anything in list("text",
-			"num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default")
+		possible_classes += "marked_datum"
+	possible_classes += "edit referenced object"
+	possible_classes += "restore to default"
+
+	class = input("What kind of variable?","Variable Type") as null|anything in possible_classes
+	if(!class)
+		return
 
 	if(!class)
 		return
@@ -96,6 +115,17 @@ var/list/forbidden_varedit_object_types = list(
 
 		if("icon")
 			var_value = input("Pick icon:","Icon") as icon
+
+		if("matrix")
+			var/matrix_name = input("Choose a matrix", "Matrix") as null|anything in (stored_matrices + "Cancel")
+			if(!matrix_name || matrix_name == "Cancel")
+				return
+
+			var/matrix/M = LAZYACCESS(stored_matrices, matrix_name)
+			if(!M)
+				return
+
+			var_value = M
 
 		if("marked datum")
 			var/datum/D = input_marked_datum(admin_holder.marked_datums)
@@ -155,6 +185,10 @@ var/list/forbidden_varedit_object_types = list(
 		variable = "[htmlicon(variable, usr)]"
 		default = "icon"
 
+	else if(istype(variable,/matrix))
+		to_chat(usr, "Variable appears to be <b>MATRIX</b>.")
+		default = "matrix"
+
 	else if(istype(variable,/atom) || istype(variable,/datum))
 		to_chat(usr, "Variable appears to be <b>TYPE</b>.")
 		default = "type"
@@ -197,9 +231,15 @@ var/list/forbidden_varedit_object_types = list(
 			to_chat(usr, "If a direction, direction is: [dir]")
 
 	var/class = "text"
-	var/list/choices = list("text","num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default")
+
+	var/list/choices = list("text","num","type","reference","mob reference","icon","file","list")
+	if(LAZYLEN(stored_matrices))
+		choices += "matrix"
 	if(admin_holder && admin_holder.marked_datums.len)
-		choices += "marked datum"
+		choices += "marked_datum"
+	choices += "edit referenced object"
+	choices += "restore to default"
+
 	if(!isnull(default) && default != "num")
 		choices += "edit associated variable"
 	choices += "DELETE FROM LIST"
@@ -244,6 +284,17 @@ var/list/forbidden_varedit_object_types = list(
 
 		if("icon")
 			L[L.Find(variable)] = input("Pick icon:","Icon") as icon
+
+		if("matrix")
+			var/matrix_name = input("Choose a matrix", "Matrix") as null|anything in (stored_matrices + "Cancel")
+			if(!matrix_name || matrix_name == "Cancel")
+				return
+
+			var/matrix/M = LAZYACCESS(stored_matrices, matrix_name)
+			if(!M)
+				return
+
+			L[L.Find(variable)] = M
 
 		if("marked datum")
 			var/datum/D = input_marked_datum(admin_holder.marked_datums)
@@ -304,6 +355,10 @@ var/list/forbidden_varedit_object_types = list(
 				var_value = "\icon[var_value]"
 				class = "icon"
 
+			else if(istype(var_value,/matrix))
+				to_chat(usr, "Variable appears to be <b>MATRIX</b>.")
+				class = "matrix"
+
 			else if(istype(var_value,/atom) || istype(var_value,/datum))
 				to_chat(usr, "Variable appears to be <b>TYPE</b>.")
 				class = "type"
@@ -315,7 +370,6 @@ var/list/forbidden_varedit_object_types = list(
 			else if(istype(var_value,/client))
 				to_chat(usr, "Variable appears to be <b>CLIENT</b>.")
 				class = "cancel"
-
 			else
 				to_chat(usr, "Variable appears to be <b>FILE</b>.")
 				class = "file"
@@ -360,6 +414,10 @@ var/list/forbidden_varedit_object_types = list(
 			var_value = "\icon[var_value]"
 			default = "icon"
 
+		else if(istype(var_value,/matrix))
+			to_chat(usr, "Variable appears to be <b>MATRIX</b>.")
+			class = "matrix"
+
 		else if(istype(var_value,/atom) || istype(var_value,/datum))
 			to_chat(usr, "Variable appears to be <b>TYPE</b>.")
 			default = "type"
@@ -400,13 +458,16 @@ var/list/forbidden_varedit_object_types = list(
 			if(dir)
 				to_chat(usr, "If a direction, direction is: [dir]")
 
-		if(admin_holder && admin_holder.marked_datums.len)
-			class = input("What kind of variable?","Variable Type",default) as null|anything in list("text",
-				"num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default","marked datum")
-		else
-			class = input("What kind of variable?","Variable Type",default) as null|anything in list("text",
-				"num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default")
 
+		var/list/possible_classes = list("text","num","type","reference","mob reference","icon","file","list")
+		if(LAZYLEN(stored_matrices))
+			possible_classes += "matrix"
+		if(admin_holder && admin_holder.marked_datums.len)
+			possible_classes += "marked_datum"
+		possible_classes += "edit referenced object"
+		possible_classes += "restore to default"
+
+		class = input("What kind of variable?","Variable Type",default) as null|anything in possible_classes
 		if(!class)
 			return
 
@@ -479,10 +540,26 @@ var/list/forbidden_varedit_object_types = list(
 			if(var_new==null) return
 			O.vars[variable] = var_new
 
+		if("matrix")
+			var/matrix_name = input("Choose a matrix", "Matrix") as null|anything in (stored_matrices + "Cancel")
+			if(!matrix_name || matrix_name == "Cancel")
+				return
+
+			var/matrix/M = LAZYACCESS(stored_matrices, matrix_name)
+			if(!M)
+				return
+
+			O.vars[variable] = M
+
+			world.log << "### VarEdit by [key_name(src)]: [O.type] '[variable]': [var_value] => matrix \"[matrix_name]\" with columns ([M.a], [M.b], [M.c]), ([M.d], [M.e], [M.f])"
+			log_admin("[key_name(src)] modified [original_name]'s '[variable]': [html_encode("[var_value]")] => matrix \"[matrix_name]\" with columns ([M.a], [M.b], [M.c]), ([M.d], [M.e], [M.f])")
+			message_admins("[key_name_admin(src)] modified [original_name]'s '[variable]': [var_value] => matrix \"[matrix_name]\" with columns ([M.a], [M.b], [M.c]), ([M.d], [M.e], [M.f])", 1)
+
 		if("marked datum")
 			var/datum/D = input_marked_datum(admin_holder.marked_datums)
 			O.vars[variable] = D
 
-	world.log << "### VarEdit by [key_name(src)]: [O.type] '[variable]': [var_value] => [html_encode("[O.vars[variable]]")]"
-	log_admin("[key_name(src)] modified [original_name]'s '[variable]': [html_encode("[var_value]")] => [O.vars[variable]]")
-	message_admins("[key_name_admin(src)] modified [original_name]'s '[variable]': [var_value] => [O.vars[variable]]", 1)
+	if(class != "matrix")
+		world.log << "### VarEdit by [key_name(src)]: [O.type] '[variable]': [var_value] => [html_encode("[O.vars[variable]]")]"
+		log_admin("[key_name(src)] modified [original_name]'s '[variable]': [html_encode("[var_value]")] => [O.vars[variable]]")
+		message_admins("[key_name_admin(src)] modified [original_name]'s '[variable]': [var_value] => [O.vars[variable]]", 1)

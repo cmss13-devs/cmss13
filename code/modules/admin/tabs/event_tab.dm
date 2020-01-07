@@ -571,6 +571,10 @@
 		<A href='?src=\ref[src];events=decrease_defcon'>Decrease DEFCON level</A><BR>
 		<A href='?src=\ref[src];events=give_defcon_points'>Give DEFCON points</A><BR>
 		<BR>
+		<B>Research</B><BR>
+		<A href='?src=\ref[src];events=change_clearance'>Change Research Clearance</A><BR>
+		<A href='?src=\ref[src];events=give_research_credits'>Give Research Credits</A><BR>
+		<BR>
 		<B>Power</B><BR>
 		<A href='?src=\ref[src];events=unpower'>Unpower ship SMESs and APCs</A><BR>
 		<A href='?src=\ref[src];events=power'>Power ship SMESs and APCs</A><BR>
@@ -610,7 +614,8 @@
 		dat += {"<A href='?src=\ref[src];chem_panel=view_reagent'>View Reagent</A><br>
 				"}
 	if(check_rights(R_VAREDIT,0))
-		dat += {"<A href='?src=\ref[src];chem_panel=view_reaction'>View Reaction</A><br>
+		dat += {"<A href='?src=\ref[src];chem_panel=view_reaction'>View Reaction</A><br>"}
+		dat += {"<A href='?src=\ref[src];chem_panel=sync_filter'>Sync Reaction</A><br>
 				<br>"}
 	if(check_rights(R_SPAWN,0))
 		dat += {"<A href='?src=\ref[src];chem_panel=spawn_reagent'>Spawn Reagent in Container</A><br>

@@ -525,55 +525,120 @@
 	unacidable = TRUE
 	var/tier
 	var/note_type
-	New()
-		var/random_chem 
-		if(tier)
-			random_chem = pick(chemical_gen_classes_list[tier])
-		else 
-			random_chem = pick(	prob(55);pick(chemical_gen_classes_list["T2"]),
-								prob(30);pick(chemical_gen_classes_list["T3"]),
-								prob(15);pick(chemical_gen_classes_list["T4"]))
-		if(!random_chem)
-			random_chem = pick(chemical_gen_classes_list["T1"])
-		var/data = "<center><img src = wylogo.png><HR><I><B>Official Weston-Yamada Document</B><BR>Experiment Notes</I><HR><H2>"
-		var/chem_name = chemical_gen_stats_list["[random_chem]"]["name"]
-		if(!note_type)
-			note_type = pick(prob(35);"synthesis",prob(65);"test")
-		switch(note_type)
-			if("synthesis")
-				var/list/chem_reagents = chemical_gen_reactions_list["[random_chem]"]["required_reagents"]
-				var/list/chem_catalysts = chemical_gen_reactions_list["[random_chem]"]["required_catalysts"]
-				name = "Synthesis of [chem_name]"
-				data += "[name] </H2></center>"
-				data += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [chem_name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
-				for(var/I in chem_reagents)
+	var/full_report
+
+/obj/item/paper/research_notes/Initialize()
+	. = ..()
+	add_timer(CALLBACK(src, .proc/generate), 7) //To make sure reagents got initialized first
+
+/obj/item/paper/research_notes/proc/generate()
+	var/random_chem 
+	if(tier)
+		random_chem = pick(chemical_gen_classes_list[tier])
+	else 
+		random_chem = pick(	prob(55);pick(chemical_gen_classes_list["T2"]),
+							prob(30);pick(chemical_gen_classes_list["T3"]),
+							prob(15);pick(chemical_gen_classes_list["T4"]))
+	if(!random_chem)
+		random_chem = pick(chemical_gen_classes_list["T1"])
+	var/data = "<center><img src = wylogo.png><HR><I><B>Official Weston-Yamada Document</B><BR>Experiment Notes</I><HR><H2>"
+	var/datum/reagent/C = chemical_reagents_list["[random_chem]"]
+	if(!note_type)
+		note_type = pick(prob(35);"synthesis",prob(65);"test")
+	switch(note_type)
+		if("synthesis")
+			var/datum/chemical_reaction/G = chemical_reactions_list[C.id]
+			name = "Synthesis of [C.name]"
+			data += "[name] </H2></center>"
+			data += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [C.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
+			for(var/I in G.required_reagents)
+				var/datum/reagent/R = chemical_reagents_list["[I]"]
+				var/U = G.required_reagents[I]
+				data += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
+			if(G.required_catalysts && G.required_catalysts.len)
+				data += "<BR>\nWhile using the following catalysts: <BR>\n<BR>\n"
+				for(var/I in G.required_catalysts)
 					var/datum/reagent/R = chemical_reagents_list["[I]"]
-					var/U = chem_reagents[I]
+					var/U = G.required_catalysts[I]
 					data += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
-				if(chem_catalysts)
-					data += "<BR>\nWhile using the following catalysts: <BR>\n<BR>\n"
-					for(var/I in chem_catalysts)
-						var/datum/reagent/R = chemical_reagents_list["[I]"]
-						var/U = chem_catalysts[I]
-						data += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
+			if(full_report)
+				data += "<BR>The following properties have been discovered during tests:<BR><font size = \"2.5\">[C.description]\n"
+				data += "<BR>Overdoses at: [C.overdose] units</font><BR>\n"
+			else
 				data += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
-				data += "<BR>\n<HR> - <I>Weston-Yamada</I>"
-			if("test")
-				var/list/chem_properties = chemical_gen_stats_list["[random_chem]"]["properties"]
-				name = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
-				data += "Note for [name]</H2></center>"
-				data += "Subject <I>[rand(10000,99999)]</I> experienced [pick(chem_properties)] effects during testing of [chem_name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
-				data += "<BR>\n<HR> - <I>Weston-Yamada</I>"
-		info = data
-		
+			data += "<BR>\n<HR> - <I>Weston-Yamada</I>"
+		if("test")
+			name = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
+			data += "Note for [name]</H2></center>"
+			data += "Subject <I>[rand(10000,99999)]</I> experienced [pick(C.properties)] effects during testing of [C.name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
+			data += "<BR>\n<HR> - <I>Weston-Yamada</I>"
+	info = data
+
 /obj/item/paper/research_notes/bad
 	note_type = "synthesis"
 	tier = "T1"
 
 /obj/item/paper/research_notes/good
 	note_type = "synthesis"
-	New()
-		tier = pick("T3","T4")
-		..()
+	full_report = TRUE
 
-	
+/obj/item/paper/research_notes/good/Initialize()
+		tier = pick("T3","T4")
+		. = ..()
+
+/obj/item/paper/chem_report
+	icon_state = "paper_wy_words"
+	var/datum/reagent/data
+	var/completed = FALSE
+
+/obj/item/paper/chem_report/proc/generate(var/datum/reagent/S)
+	if(!S)
+		return
+	info += "<B>ID:</B> <I>[S.name]</I><BR><BR>\n"
+	info += "<B>Database Details:</B><BR>\n"
+	if(S.chemclass >= CHEM_CLASS_ULTRA)
+		if(chemical_research_data.clearance_level >= S.gen_tier)
+			info += "<I>The following information relating to [S.name] is restricted with a level [S.gen_tier] clearance classification.</I><BR>"
+			info += "<font size = \"2.5\">[S.description]\n"
+			info += "<BR>Overdoses at: [S.overdose] units</font><BR>\n"
+			completed = TRUE
+		else
+			info += "CLASSIFIED:<I> Clearance level [S.gen_tier] required to read the database entry.</I><BR>\n"
+	else if(S.chemclass >= CHEM_CLASS_SPECIAL)
+		info += "CLASSIFIED:<I> Clearance level <B>X</B> required to read the database entry.</I><BR>\n"
+	else if(S.description)
+		info += "<font size = \"2.5\">[S.description]\n"
+		info += "<BR>Overdoses at: [S.overdose] units</font><BR>\n"
+		completed = TRUE
+	else
+		info += "<I>No details on this reagent could be found in the database.</I><BR>\n"
+	if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[S.id])
+		info += "<BR><I>Saved emission spectrum of [S.name] to the database.</I><BR>\n"
+	info += "<BR><B>Composition Details:</B><BR>\n"
+	if(chemical_reactions_list[S.id])
+		var/datum/chemical_reaction/C = chemical_reactions_list[S.id]
+		for(var/I in C.required_reagents)
+			var/datum/reagent/R = chemical_reagents_list["[I]"]
+			if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id])
+				info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
+				completed = FALSE
+			else
+				var/U = C.required_reagents[I]
+				info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
+		if(C.required_catalysts)
+			if(C.required_catalysts.len)
+				info += "<BR>Reaction would require the following catalysts:<BR>\n"
+				for(var/I in C.required_catalysts)
+					var/datum/reagent/R = chemical_reagents_list["[I]"]
+					if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id])
+						info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
+						completed = FALSE
+					else
+						var/U = C.required_catalysts[I]
+						info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
+	else if(chemical_gen_classes_list["C1"].Find(S.id))
+		info += "<font size = \"2\"><I> - [S.name]</I></font><BR>\n"
+	else
+		info += "<I>ERROR: Unable to analyze emission spectrum of sample.</I>" //A reaction to make this doesn't exist, so this is our IC excuse
+		completed = FALSE
+	data = S

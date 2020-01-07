@@ -21,17 +21,28 @@
 			else
 				to_chat(usr,SPAN_WARNING("No reaction with this ID could been found."))
 			return
-		if("spawn_reagent")
-			var/target = input(usr,"Enter the ID of the chemical reagent you wish to make:")
+		if("sync_filter")
+			var/target = input(usr,"Enter the ID of the chemical reaction you wish to syncronize. This is only necessary if you edited a reaction through the debugger (VV).")
 			if(!target)
 				return
+			var/datum/chemical_reaction/R = chemical_reactions_list[target]
+			if(R)
+				chemical_reactions_filtered_list[R.get_filter()] -= R
+				chemical_reactions_filtered_list[R.get_filter()] += R //I know this is ugly but blame byond for not making this easier
+				log_debug("[key_name(usr)] resyncronized [R.id]")
+				to_chat(usr,SPAN_WARNING("Resyncronized [R.id]."))
+			else
+				to_chat(usr,SPAN_WARNING("No reaction with this ID could been found."))
+			return
+		if("spawn_reagent")
+			var/target = input(usr,"Enter the ID of the chemical reagent you wish to make:")
 			if(!chemical_reagents_list[target])
 				to_chat(usr,SPAN_WARNING("No reagent with this ID could been found."))
 				return
 			var/volume = input(usr,"How much? An appropriate container will be selected.") as num
 			if(volume <= 0)
 				return
-				
+
 			if(volume > 120)
 				if(volume > 300)
 					volume = 300
@@ -58,27 +69,16 @@
 			var/tier = input(usr,"Enter the generation tier you wish. This will affect the number of properties (tier + 1), rarity of components and potential for good properties. Ought to be 1-4, max 10.") as num
 			if(tier <= 0)
 				return
-
 			if(tier > 10) 
 				tier = 10
 			var/datum/reagent/generated/R = new /datum/reagent/generated
-			var/list/stats_holder = list("name","properties","description","overdose","overdose_critical","nutriment_factor","custom_metabolism","color")
-			chemical_gen_stats_list["[target]"] += stats_holder
 			R.id = target
 			R.gen_tier = tier
-			R.chemclass = CHEM_CLASS_NONE //So we don't count it towards defcon
+			R.chemclass = CHEM_CLASS_RARE
+			R.save_chemclass() 
 			R.properties = list()
 			R.generate_name()
 			R.generate_stats()
-			//Save all variables from our holder
-			R.name = chemical_gen_stats_list["[target]"]["name"]
-			R.properties = chemical_gen_stats_list["[target]"]["properties"]
-			R.description = chemical_gen_stats_list["[target]"]["description"]
-			R.overdose = chemical_gen_stats_list["[target]"]["overdose"]
-			R.overdose_critical = chemical_gen_stats_list["[target]"]["overdose_critical"]
-			R.nutriment_factor = chemical_gen_stats_list["[target]"]["nutriment_factor"]
-			R.custom_metabolism = chemical_gen_stats_list["[target]"]["custom_metabolism"]
-			R.color = chemical_gen_stats_list["[target]"]["color"]
 			//Save our reagent
 			chemical_reagents_list[target] = R
 			log_admin("[key_name(usr)] has generated the reagent: [target].")
@@ -91,32 +91,20 @@
 							to_chat(usr,SPAN_WARNING("This ID is already in use."))
 							return
 						var/datum/chemical_reaction/generated/G = new /datum/chemical_reaction/generated
-						var/list/recipe_holder = list("required_reagents","required_catalysts")
-						chemical_gen_reactions_list["[target]"] += recipe_holder
 						G.id = target
 						G.result = target
 						G.name = R.name
 						G.gen_tier = tier
 						G.generate_recipe()
-						//Save all variables from our holder
-						G.required_reagents = chemical_gen_reactions_list["[target]"]["required_reagents"]
-						G.required_catalysts = chemical_gen_reactions_list["[target]"]["required_catalysts"]
 						//Save our reaction
 						chemical_reactions_list[target] = G
 						if(!chemical_reactions_list[target])
-							to_chat(usr,SPAN_WARNING("Something went wrong when saving the reaction."))
-							chemical_gen_stats_list["[target]"] -= stats_holder
+							to_chat(usr,SPAN_WARNING("Something went wrong when saving the reaction. The associated reagent has been deleted."))
+							chemical_reagents_list[target] -= R
 							return
-						var/list/reaction_ids = list()
-						if(G.required_reagents && G.required_reagents.len)
-							for(var/reaction in G.required_reagents)
-								reaction_ids += reaction
-						// Create filters based on each reagent id in the required reagents list
-						for(var/id in reaction_ids)
-							if(!chemical_reactions_filtered_list[id])
-								chemical_reactions_filtered_list[id] = list()
-							chemical_reactions_filtered_list[id] += G
-							break // Don't bother adding ourselves to other reagent ids, it is redundant.
+						var/filter_id = G.get_filter()
+						if(filter_id)
+							chemical_reactions_filtered_list[filter_id] += G
 						response = alert(usr,"Do you want to do anything else?",null,"View my reaction","View my reagent","Finish")
 					if("View my reagent")
 						if(chemical_reagents_list[target])
@@ -125,8 +113,9 @@
 							log_admin("[key_name(usr)] is viewing the chemical reaction for [R].")
 						else
 							to_chat(usr,SPAN_WARNING("No reaction with this ID could been found. Wait what? But I just... Contact a debugger."))
-							chemical_gen_stats_list.Remove("[target]")
-							chemical_gen_reactions_list.Remove("[target]")
+							chemical_reagents_list.Remove(target)
+							chemical_reactions_list.Remove("[target]")
+							chemical_reactions_filtered_list.Remove("[target]")
 						return
 					if("View my reaction")
 						if(chemical_reactions_list[target])
@@ -134,15 +123,15 @@
 							usr.client.debug_variables(G)
 						else
 							to_chat(usr,SPAN_WARNING("No reaction with this ID could been found. Wait what? But I just... Contact a debugger."))
-							chemical_gen_stats_list.Remove("[target]")
-							chemical_gen_reactions_list.Remove("[target]")
+							chemical_reagents_list.Remove(target)
+							chemical_reactions_list.Remove("[target]")
+							chemical_reactions_filtered_list.Remove("[target]")
 						return
 					else
 						break
 			//See what we want to do last
 			if(alert(usr,"Spawn container with reagent?","Custom reagent [target]","Yes","No") == "No")
 				return
-
 			var/volume = input(usr,"How much? An appropriate container will be selected.") as num
 			if(volume <= 0)
 				return
@@ -170,18 +159,18 @@
 				to_chat(usr,SPAN_WARNING("This ID is already in use."))
 				return
 			var/datum/reagent/generated/R = new /datum/reagent/generated
-			var/list/stats_holder = list("name" = target,"properties" = list(),"description" = "","overdose" = 15,"overdose_critical" = 30,"nutriment_factor" = 0,"custom_metabolism" = 0.2,"color" = text("#[][][]",num2hex(rand(0,255)),num2hex(rand(0,255)),num2hex(rand(0,255))))
-			chemical_gen_stats_list["[target]"] += stats_holder
 			R.id = target
 			R.chemclass = CHEM_CLASS_NONE //So we don't count it towards defcon
 			R.properties = list()
+			R.overdose = 15
+			R.overdose_critical = 30
 			var/response = alert(usr,"Use capitalized ID as name?","Custom reagent [target]","[capitalize(target)]","Random name")
 			if(!response)
 				return
 			if(response == "Random name")
 				R.generate_name()
 			else
-				chemical_gen_stats_list["[target]"]["name"] = capitalize(response)
+				R.name = capitalize(response)
 			response = alert(usr,"What do you want customized?","Custom reagent [target]","Add property","Randomize non property vars","Finish")
 			while(response != "Finish")
 				switch(response)
@@ -202,7 +191,7 @@
 						pool = sortAssoc(pool)
 						var/property = input(usr,"Which property do you want?") as null|anything in pool
 						var/potency = input(usr,"Choose the potency (this is a strength modifier, ought to be between 1-4)") as num
-						R.add_property(property,potency)
+						R.insert_property(property,potency)
 						response = alert(usr,"Done. Add more?","Custom reagent [target]","Specific property","Specific number","No more properties")
 					if("Specific number")
 						var/number = input(usr,"How many properties?") as num
@@ -218,15 +207,7 @@
 						response = alert(usr,"Done. What do you want customized next?","Custom reagent [target]","Add property","Randomize non property vars","Finish")
 					else
 						break
-			//Save all variables from our holder
-			R.name = chemical_gen_stats_list["[target]"]["name"]
-			R.properties = chemical_gen_stats_list["[target]"]["properties"]
-			R.description = chemical_gen_stats_list["[target]"]["description"]
-			R.overdose = chemical_gen_stats_list["[target]"]["overdose"]
-			R.overdose_critical = chemical_gen_stats_list["[target]"]["overdose_critical"]
-			R.nutriment_factor = chemical_gen_stats_list["[target]"]["nutriment_factor"]
-			R.custom_metabolism = chemical_gen_stats_list["[target]"]["custom_metabolism"]
-			R.color = chemical_gen_stats_list["[target]"]["color"]
+			R.generate_description()
 			//Save our reagent
 			chemical_reagents_list[target] = R
 			log_admin("[key_name(usr)] has created a custom reagent: [target].")
@@ -264,10 +245,8 @@
 				to_chat(usr,SPAN_WARNING("This ID is already in use."))
 				return
 			var/datum/chemical_reaction/generated/R = new /datum/chemical_reaction/generated
-			var/list/recipe_holder = list("required_reagents","required_catalysts","result")
-			chemical_gen_reactions_list["[target]"] += recipe_holder
 			R.id = target
-			chemical_gen_reactions_list["[target]"]["result"] = input(usr,"Enter the reagent ID the reaction should result in:")
+			R.result = input(usr,"Enter the reagent ID the reaction should result in:")
 			R.name = capitalize(target)
 			var/modifier = 1
 			var/component = "water"
@@ -284,9 +263,9 @@
 					if("Select type")
 						response = alert(usr,"Enter id manually or select from list?","Custom reaction [target]","Select from list","Manual input","Back")
 					if("Select from list")
-						var/list/pool = chemical_reagents_list
-						//for(var/datum/reagent/I in chemical_reagents_list)
-							//pool += I.id
+						var/list/pool = list()
+						for(var/datum/reagent/I in chemical_reagents_list)
+							pool += I.id
 						pool = sortAssoc(pool)
 						component = input(usr,"Select:") as null|anything in pool
 						if(!component)
@@ -310,29 +289,17 @@
 						response = alert(usr,"What do you want customized?","Custom reaction [target]","Add component","Add catalyst","Finish")
 					else
 						return
-			//Save all variables from our holder
-			R.required_reagents = chemical_gen_reactions_list["[target]"]["required_reagents"]
-			R.required_catalysts = chemical_gen_reactions_list["[target]"]["required_catalysts"]
-			R.result = chemical_gen_reactions_list["[target]"]["result"]
-			//Save each reaction ID
-			var/list/reaction_ids = list()
-			if(R.required_reagents && R.required_reagents.len)
-				for(var/reaction in R.required_reagents)
-					reaction_ids += reaction
-			if(reaction_ids && reaction_ids.len < 3)
-				to_chat(usr,SPAN_WARNING("You need to add at least 3 components."))
+			if(R.required_reagents.len < 3)
+				to_chat(usr,SPAN_WARNING("You need to add at least 3 components excluding catalysts. The reaction has not been saved."))
 				return
 			//Save our reaction
 			chemical_reactions_list[target] = R
+			var/filter_id = R.get_filter()
+			if(filter_id)
+				chemical_reactions_filtered_list[filter_id] += R
 			if(!chemical_reactions_list[target])
 				to_chat(usr,SPAN_WARNING("Something went wrong when saving the reaction."))
 				return
-			// Create filters based on each reagent id in the required reagents list
-			for(var/id in reaction_ids)
-				if(!chemical_reactions_filtered_list[id])
-					chemical_reactions_filtered_list[id] = list()
-				chemical_reactions_filtered_list[id] += R
-				break // Don't bother adding ourselves to other reagent ids, it is redundant.
 			usr.client.debug_variables(chemical_reactions_list[target])
 			log_admin("[key_name(usr)] has created a custom chemical reaction: [target].")
 			message_admins("[key_name_admin(usr)] has created a custom chemical reaction: [target].")

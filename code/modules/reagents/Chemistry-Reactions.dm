@@ -21,3 +21,14 @@
 
 /datum/chemical_reaction/proc/on_reaction(var/datum/reagents/holder, var/created_volume)
 	return
+
+/datum/chemical_reaction/proc/get_filter()
+	var/list/reaction_ids = list()
+	if(required_reagents && required_reagents.len)
+		for(var/reaction in required_reagents)
+			reaction_ids += reaction
+	// Create filters based on each reagent id in the required reagents list
+	for(var/id in reaction_ids)
+		if(!chemical_reactions_filtered_list[id])
+			chemical_reactions_filtered_list[id] = list()
+		return id // We don't have to bother adding ourselves to other reagent ids, it is redundant.

@@ -214,29 +214,7 @@
 		if(H.health > config.health_threshold_dead)
 			user.visible_message(SPAN_NOTICE("[htmlicon(src, viewers(src))] \The [src] beeps: Defibrillation successful."))
 			user.track_life_saved(user.job)
-			H.track_revive(H.job)
-			living_mob_list.Add(H)
-			callHook("clone", list(H))
-			if(!isSynth(H) && !isYautja(H))
-				living_human_list.Add(H)
-			dead_mob_list.Remove(H)
-			H.timeofdeath = 0
-			H.life_time_start = world.time
-			H.life_time_total = 0
-			H.life_steps_total = 0
-			H.last_damage_mob = null
-			H.last_damage_source = null
-			H.tod = null
-			H.stat = UNCONSCIOUS
-			H.emote("gasp")
-			H.regenerate_icons()
-			H.reload_fullscreens()
-			H.update_canmove()
-			H.flash_eyes()
-			H.apply_effect(10, EYE_BLUR)
-			H.apply_effect(10, PARALYZE)
-			H.update_canmove()
-			H.updatehealth() //One more time, so it doesn't show the target as dead on HUDs
+			H.handle_revive()
 			to_chat(H, SPAN_NOTICE("You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane."))
 		else
 			user.visible_message(SPAN_WARNING("[htmlicon(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Vital signs are too weak, repair damage and try again.")) //Freak case

@@ -4928,7 +4928,13 @@
 	},
 /area/almayer/medical/medical_science)
 "aml" = (
-/obj/structure/machinery/photocopier,
+/obj/structure/filingcabinet/filingcabinet,
+/obj/item/folder/black,
+/obj/item/folder/black,
+/obj/item/folder/black,
+/obj/item/folder/white,
+/obj/item/folder/white,
+/obj/item/folder/white,
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
@@ -6634,24 +6640,21 @@
 	},
 /area/almayer/medical/testlab)
 "apW" = (
-/obj/structure/machinery/telecomms/server/presets/common{
-	},
+/obj/structure/machinery/telecomms/server/presets/common,
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "apX" = (
-/obj/structure/machinery/telecomms/server/presets/medical{
-	},
+/obj/structure/machinery/telecomms/server/presets/medical,
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "apY" = (
-/obj/structure/machinery/telecomms/server/presets/engineering{
-	},
+/obj/structure/machinery/telecomms/server/presets/engineering,
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
 	icon_state = "tcomms"
@@ -7031,24 +7034,10 @@
 /area/almayer/medical/medical_science)
 "aqP" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile_green_side (NORTHWEST)"
-	},
-/area/almayer/medical/medical_science)
-"aqQ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTHEAST)"
 	},
 /area/almayer/medical/medical_science)
 "aqR" = (
@@ -7764,32 +7753,28 @@
 	},
 /area/almayer/command/airoom)
 "asH" = (
-/obj/structure/machinery/telecomms/bus/preset_three{
-	},
+/obj/structure/machinery/telecomms/bus/preset_three,
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "asI" = (
-/obj/structure/machinery/telecomms/bus/preset_two{
-	},
+/obj/structure/machinery/telecomms/bus/preset_two,
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "asJ" = (
-/obj/structure/machinery/telecomms/bus/preset_four{
-	},
+/obj/structure/machinery/telecomms/bus/preset_four,
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "asK" = (
-/obj/structure/machinery/telecomms/bus/preset_one{
-	},
+/obj/structure/machinery/telecomms/bus/preset_one,
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
 	icon_state = "tcomms"
@@ -8422,8 +8407,7 @@
 	},
 /area/almayer/command/airoom)
 "aui" = (
-/obj/structure/machinery/telecomms/hub/preset{
-	},
+/obj/structure/machinery/telecomms/hub/preset,
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
 	icon_state = "tcomms"
@@ -9095,32 +9079,28 @@
 	},
 /area/almayer/command/airoom)
 "avN" = (
-/obj/structure/machinery/telecomms/processor/preset_two{
-	},
+/obj/structure/machinery/telecomms/processor/preset_two,
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "avO" = (
-/obj/structure/machinery/telecomms/processor/preset_three{
-	},
+/obj/structure/machinery/telecomms/processor/preset_three,
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "avP" = (
-/obj/structure/machinery/telecomms/processor/preset_four{
-	},
+/obj/structure/machinery/telecomms/processor/preset_four,
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "avQ" = (
-/obj/structure/machinery/telecomms/processor/preset_one{
-	},
+/obj/structure/machinery/telecomms/processor/preset_one,
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
 	icon_state = "tcomms"
@@ -10121,24 +10101,21 @@
 	},
 /area/almayer/shipboard/brig)
 "axV" = (
-/obj/structure/machinery/telecomms/server/presets/command{
-	},
+/obj/structure/machinery/telecomms/server/presets/command,
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "axW" = (
-/obj/structure/machinery/telecomms/server/presets/security{
-	},
+/obj/structure/machinery/telecomms/server/presets/security,
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
 "axX" = (
-/obj/structure/machinery/telecomms/server/presets/squads{
-	},
+/obj/structure/machinery/telecomms/server/presets/squads,
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
 	icon_state = "tcomms"
@@ -16461,7 +16438,7 @@
 	},
 /obj/structure/machinery/door/window/westright{
 	dir = 4;
-	req_access = list(14)
+	req_access = list(28)
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
@@ -45284,7 +45261,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "Research Laboratory";
 	req_access = list(28);
-	req_one_access = list(20)
+	req_one_access = list()
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2;
@@ -47058,12 +47035,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
 "jHs" = (
-/obj/structure/table/almayer,
-/obj/item/tool/hand_labeler{
-	pixel_x = 8
-	},
-/obj/item/device/reagent_scanner{
-	pixel_x = -6
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
@@ -47768,14 +47742,6 @@
 	tag = "icon-sterile_green_side (NORTHWEST)"
 	},
 /area/almayer/medical/containment)
-"kCE" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
-	},
-/area/almayer/medical/medical_science)
 "kDk" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Testing Laboratory";
@@ -49550,11 +49516,12 @@
 /area/almayer/living/gym)
 "mHD" = (
 /obj/structure/table/almayer,
-/obj/structure/machinery/computer/emails{
-	dir = 4
-	},
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/machinery/computer/research{
+	icon_state = "research";
+	dir = 4
 	},
 /turf/open/floor/wood,
 /area/almayer/medical/medical_science)
@@ -50146,7 +50113,6 @@
 	dir = 8;
 	tag = "icon-map-supply (WEST)"
 	},
-/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -50741,6 +50707,16 @@
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
+"obw" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (SOUTHEAST)"
+	},
+/area/almayer/medical/medical_science)
 "obQ" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4;
@@ -52088,13 +52064,7 @@
 	},
 /area/almayer/squads/req)
 "pYo" = (
-/obj/structure/table/almayer,
-/obj/item/storage/toolbox/mechanical{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/obj/item/storage/toolbox/electrical,
-/obj/item/tool/screwdriver,
+/obj/structure/machinery/chem_simulator,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -52795,16 +52765,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/port_point_defense)
-"qTB" = (
-/obj/structure/filingcabinet/filingcabinet,
-/obj/item/folder/black,
-/obj/item/folder/black,
-/obj/item/folder/black,
-/obj/item/folder/white,
-/obj/item/folder/white,
-/obj/item/folder/white,
-/turf/open/floor/wood,
-/area/almayer/medical/medical_science)
 "qTZ" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4;
@@ -52998,16 +52958,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull)
-"rhO" = (
-/obj/structure/machinery/firealarm{
-	pixel_y = 28
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
-	},
-/area/almayer/medical/medical_science)
 "rhP" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -53488,10 +53438,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
 "rGR" = (
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
+/obj/structure/filingcabinet/filingcabinet,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
@@ -54653,9 +54600,12 @@
 	},
 /area/almayer/medical/hydroponics)
 "sXd" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	tag = "icon-plant-10"
+/obj/structure/table/almayer,
+/obj/item/device/reagent_scanner{
+	pixel_x = -6
+	},
+/obj/item/tool/hand_labeler{
+	pixel_x = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
@@ -55791,15 +55741,12 @@
 /area/almayer/shipboard/port_point_defense)
 "uoi" = (
 /obj/structure/rack,
-/obj/item/device/assembly/timer{
-	pixel_y = -7
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 3;
+	pixel_y = 5
 	},
-/obj/item/device/assembly/timer{
-	pixel_y = -7
-	},
-/obj/item/device/assembly/prox_sensor,
-/obj/item/device/assembly/prox_sensor,
-/obj/item/stack/cable_coil/orange,
+/obj/item/storage/toolbox/electrical,
+/obj/item/tool/screwdriver,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
 	tag = "icon-sterile"
@@ -58101,8 +58048,7 @@
 /turf/open/floor/almayer,
 /area/almayer/engineering/engine_core)
 "wWm" = (
-/obj/structure/table/almayer,
-/obj/item/device/flashlight/lamp,
+/obj/structure/machinery/photocopier,
 /turf/open/floor/wood,
 /area/almayer/medical/medical_science)
 "wWz" = (
@@ -58511,7 +58457,10 @@
 /area/almayer/medical/morgue)
 "xuE" = (
 /obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "sterile_green_side";
@@ -92325,7 +92274,7 @@ aAS
 ajo
 amk
 amk
-rhO
+aqR
 qqQ
 aoM
 aoM
@@ -92721,7 +92670,7 @@ aii
 abg
 avj
 amk
-tvu
+anv
 dbv
 elH
 amk
@@ -92924,7 +92873,7 @@ all
 amK
 avj
 amk
-qTB
+tvu
 anv
 anv
 aLP
@@ -93132,8 +93081,8 @@ anw
 uhV
 jlG
 aqP
-kCE
-kCE
+asz
+asz
 npt
 xuE
 hqh
@@ -93334,11 +93283,11 @@ amm
 anv
 anv
 apN
-aqQ
+asA
 aoM
 aoM
 avA
-avH
+obw
 aPJ
 asA
 aOe
@@ -93943,7 +93892,7 @@ amk
 amk
 amk
 amk
-aqR
+asy
 avG
 oeg
 aOd

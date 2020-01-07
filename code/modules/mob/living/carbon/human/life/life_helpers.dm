@@ -276,3 +276,28 @@
 	var/shift_left = (SShuman.next_fire - world.time) * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill
 	if(knocked_down > shift_left)
 		knocked_down += SShuman.wait * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill - shift_left
+
+/mob/living/carbon/human/proc/handle_revive()
+	track_revive(job)
+	living_mob_list.Add(src)
+	callHook("clone", list(src))
+	if(!isSynth(src) && !isYautja(src))
+		living_human_list.Add(src)
+	dead_mob_list.Remove(src)
+	timeofdeath = 0
+	life_time_start = world.time
+	life_time_total = 0
+	life_steps_total = 0
+	last_damage_mob = null
+	last_damage_source = null
+	tod = null
+	stat = UNCONSCIOUS
+	emote("gasp")
+	regenerate_icons()
+	reload_fullscreens()
+	update_canmove()
+	flash_eyes()
+	apply_effect(10, EYE_BLUR)
+	apply_effect(10, PARALYZE)
+	update_canmove()
+	updatehealth() //One more time, so it doesn't show the target as dead on HUDs

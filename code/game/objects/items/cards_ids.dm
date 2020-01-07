@@ -127,6 +127,23 @@
 	icon_state = "silver"
 	item_state = "silver_id"
 
+/obj/item/card/id/silver/clearance_badge
+	name = "corporate doctor badge"
+	desc = "A corporate holo-badge. It is fingerprint locked with clearance level 3 access. It is commonly held by corporate doctors."
+	icon_state = "clearance"
+	var/clearance_access = 3
+
+/obj/item/card/id/silver/clearance_badge/scientist
+	name = "corporate scientist badge"
+	desc = "A corporate holo-badge. It is fingerprint locked with clearance level 4 access. It is commonly held by corporate scientists."
+	clearance_access = 4
+
+/obj/item/card/id/silver/clearance_badge/cl
+	name = "corporate liason badge"
+	desc = "A corporate holo-badge in unique corporate orange and white. It is fingerprint locked with clearance level 5 access. It is commonly held by corporate liasons."
+	icon_state = "cl"
+	clearance_access = 5
+
 /obj/item/card/id/pizza
 	name = "pizza guy badge"
 	desc = "It reads: 'Pizza-guy local union No. 217','We always deliver!'"

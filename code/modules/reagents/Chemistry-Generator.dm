@@ -15,56 +15,35 @@
 	- TobiNerd July 2019
 */
 
-/datum/proc/save_chemical_classes() //Called from /datum/reagents/New()
-	chemical_gen_classes_list = list("C","C1","C2","C3","C4","C5","C6","T1","T2","T3","T4")
-	chemical_gen_classes_list["C"] = list()
-	chemical_gen_classes_list["C1"] = list()
-	chemical_gen_classes_list["C2"] = list()
-	chemical_gen_classes_list["C3"] = list()
-	chemical_gen_classes_list["C4"] = list()
-	chemical_gen_classes_list["C5"] = list()
-	chemical_gen_classes_list["C6"] = list()
-	chemical_gen_classes_list["T1"] = list()
-	chemical_gen_classes_list["T2"] = list()
-	chemical_gen_classes_list["T3"] = list()
-	chemical_gen_classes_list["T4"] = list()
+/datum/reagent/proc/save_chemclass() //Called from /datum/reagents/New()
 	//Store all classed reagents so we can easily access chem IDs based on class.
-	var/id
-	var/chemclass
-	var/gen_tier
-	var/paths = typesof(/datum/reagent) - /datum/reagent //Can't use chemical_reagents_list here, RIP
-	for(var/path in paths)
-		var/datum/reagent/D = new path()
-		id = D.id
-		chemclass = D.chemclass
-		gen_tier = D.gen_tier
-		if(chemclass)
-			switch(chemclass)
-				if(CHEM_CLASS_BASIC)
-					chemical_gen_classes_list["C1"] += id
-				if(CHEM_CLASS_COMMON)
-					chemical_gen_classes_list["C2"] += id
-				if(CHEM_CLASS_UNCOMMON)
-					chemical_gen_classes_list["C3"] += id
-				if(CHEM_CLASS_RARE)
-					chemical_gen_classes_list["C4"] += id
-				if(CHEM_CLASS_SPECIAL)
-					chemical_gen_classes_list["C5"] += id
-					chemical_objective_list[id] = D.objective_value
-				if(CHEM_CLASS_ULTRA)
-					chemical_gen_classes_list["C6"] += id
-					chemical_objective_list[id] = D.objective_value
-			chemical_gen_classes_list["C"] += id
-		if(gen_tier)
-			switch(gen_tier)
-				if(1)
-					chemical_gen_classes_list["T1"] += id
-				if(2)
-					chemical_gen_classes_list["T2"] += id
-				if(3)
-					chemical_gen_classes_list["T3"] += id
-				if(4)
-					chemical_gen_classes_list["T4"] += id
+	if(chemclass)
+		switch(chemclass)
+			if(CHEM_CLASS_BASIC)
+				chemical_gen_classes_list["C1"] += id
+			if(CHEM_CLASS_COMMON)
+				chemical_gen_classes_list["C2"] += id
+			if(CHEM_CLASS_UNCOMMON)
+				chemical_gen_classes_list["C3"] += id
+			if(CHEM_CLASS_RARE)
+				chemical_gen_classes_list["C4"] += id
+			if(CHEM_CLASS_SPECIAL)
+				chemical_gen_classes_list["C5"] += id
+				chemical_objective_list[id] = objective_value
+			if(CHEM_CLASS_ULTRA)
+				chemical_gen_classes_list["C6"] += id
+				chemical_objective_list[id] = objective_value
+		chemical_gen_classes_list["C"] += id
+	if(gen_tier)
+		switch(gen_tier)
+			if(1)
+				chemical_gen_classes_list["T1"] += id
+			if(2)
+				chemical_gen_classes_list["T2"] += id
+			if(3)
+				chemical_gen_classes_list["T3"] += id
+			if(4)
+				chemical_gen_classes_list["T4"] += id
 
 ///////////////////////////////RECIPE GENERATOR///////////////////////////////
 /datum/chemical_reaction/proc/generate_recipe()
@@ -90,19 +69,10 @@
 			modifier = 1
 		add_component(null, modifier)
 		//make sure the final recipe is not already being used. If it is, start over.
-		if(i==3)
-			var/matches = 0
-			for(var/R in chemical_gen_reactions_list["[id]"]["required_reagents"])
-				if(chemical_reactions_filtered_list[R])
-					for(var/reaction in chemical_reactions_filtered_list[R])//We filter the chemical_reactions_filtered_list so we don't have to search through as much
-						var/datum/chemical_reaction/C = reaction
-						for(var/B in C.required_reagents)
-							if(chemical_gen_reactions_list["[id]"]["required_reagents"].Find(B))
-								matches++
-			if(matches >= 3)
-				chemical_gen_reactions_list["[id]"]["required_reagents"] = list()
-				i = 0	
-				chemical_objective_list[id] = 10
+		if(i==3 && check_duplicate())
+			required_reagents = list()
+			i = 0	
+			chemical_objective_list[id] = 10
 	
 	//pick catalyst
 	if(prob(40) || gen_tier >= 4)//chance of requiring a catalyst
@@ -164,7 +134,7 @@
 						chem_id = pick(chemical_gen_classes_list["C5"])
 						new_objective_value += OBJECTIVE_HIGH_VALUE
 				else
-					if(!chemical_gen_reactions_list["[id]"]["required_reagents"] || is_catalyst)//first component is guaranteed special in chems tier 4 or higher, catalysts are always special in tier 4 or higher
+					if(!required_reagents || is_catalyst)//first component is guaranteed special in chems tier 4 or higher, catalysts are always special in tier 4 or higher
 						chem_id = pick(chemical_gen_classes_list["C5"])
 						new_objective_value += OBJECTIVE_HIGH_VALUE
 					else if(roll<=15)
@@ -179,33 +149,31 @@
 						new_objective_value += OBJECTIVE_HIGH_VALUE
 			
 		//if we are already using this reagent, try again
-		if(chemical_gen_reactions_list["[id]"]["required_reagents"])
-			if(chemical_gen_reactions_list["[id]"]["required_reagents"].Find(chem_id))
+		if(required_reagents && required_reagents.Find(chem_id))
+			if(my_chemid) //If this was a manually set chemid, return FALSE so we don't cause an infinite loop
+				return FALSE
+			else
+				i--
+				continue
+		else if(is_catalyst)
+			new_objective_value += 20 //Worth a little more if it doesn't use up the rare reagent!
+			if(required_catalysts && required_catalysts.Find(chem_id))
 				if(my_chemid) //If this was a manually set chemid, return FALSE so we don't cause an infinite loop
 					return FALSE
 				else
 					i--
 					continue
-		else if(is_catalyst)
-			new_objective_value += 20 //Worth a little more if it doesn't use up the rare reagent!
-			if(chemical_gen_reactions_list["[id]"]["required_catalysts"])
-				if(chemical_gen_reactions_list["[id]"]["required_catalysts"].Find(chem_id))
-					if(my_chemid) //If this was a manually set chemid, return FALSE so we don't cause an infinite loop
-						return FALSE
-					else
-						i--
-						continue
 		
 		var/list/component_modifier[0]
 		component_modifier["[chem_id]"] = modifier
 		if(is_catalyst) 
-			chemical_gen_reactions_list["[id]"]["required_catalysts"] += component_modifier
+			required_catalysts += component_modifier
 		else 
-			chemical_gen_reactions_list["[id]"]["required_reagents"] += component_modifier
+			required_reagents += component_modifier
 
 		chemical_objective_list[id] = chemical_objective_list[id] + new_objective_value
 
-	return TRUE
+	return chem_id
 
 ////////////////////////////////NAME GENERATOR////////////////////////////////
 /datum/reagent/proc/generate_name()
@@ -227,8 +195,8 @@
 			if(R.name == gen_name)//if we are already using this name, try again
 				gen_name = ""
 	//set name
-	chemical_gen_stats_list["[id]"]["name"] = gen_name
-	return gen_name
+	name = gen_name
+	return name
 
 /datum/reagent/proc/generate_stats(var/no_properties)
 	..()
@@ -238,55 +206,48 @@
 		for(var/i=0;i<gen_tier+1;i++)
 			if(i == 0) //The first property is random to offset the value balance
 				gen_value = add_property()
-			else if(gen_value == gen_tier - 1) //If we are balanced, don't add any more
+			else if(gen_value == gen_tier * 2 - 1) //If we are balanced, don't add any more
 				break
 			else
 				gen_value += add_property(0,0, gen_tier - gen_value - 1) //add property based on our offset from the prefered balance
 
 	//OD ratios
-	var/gen_overdose = 5
+	overdose = 5
 	for(var/i=1;i<=rand(1,11);i++) //We add 5 units to the overdose per cycle, min 5u, max 60u
 		if(prob(40))//Deviating from 5 gets exponentially more rare.
-			gen_overdose += 5
-	var/gen_overdose_critical = gen_overdose + 5
+			overdose += 5
+	overdose_critical = overdose + 5
 	for(var/i=1;i<=rand(1,5);i++) //overdose_critical is min 5u, to max 30u + normal overdose
 		if(prob(20))
-			gen_overdose_critical += 5
-	
-	chemical_gen_stats_list["[id]"]["overdose"] = gen_overdose
-	chemical_gen_stats_list["[id]"]["overdose_critical"] = gen_overdose_critical
+			overdose_critical += 5
 	
 	//Nutriment factor
-	var/gen_nutriment_factor = 0
-	if(chemical_gen_stats_list["[id]"]["properties"] && PROPERTY_NUTRITIOUS in chemical_gen_stats_list["[id]"]["properties"])
-		gen_nutriment_factor = 0.5
+	if(properties && PROPERTY_NUTRITIOUS in properties)
+		nutriment_factor = 0.5
 		for(var/i=1;i<=rand(1,5);i++) //min 0.5, to max 3 (the nutriment factor of pure nutriment)
 			if(prob(60))//Deviating from 0.5 gets exponentially more rare.
-				gen_nutriment_factor += 0.5
-		
-	chemical_gen_stats_list["[id]"]["nutriment_factor"] = gen_nutriment_factor
+				nutriment_factor += 0.5
+		properties[PROPERTY_NUTRITIOUS] = nutriment_factor
 
 	//Metabolism
-	var/gen_custom_metabolism = 0.2
 	var/direction = rand(0,1) //the direction we deviate from 0.2
 	for(var/i=1;i<=rand(1,8);i++) //min of 0.01 (barely metabolizes, but chance is 0.00065%, so it deserves to be this miraculous) to max 0.4 (neuraline)
 		if(prob(40)) //Deviating from 0.2 gets exponentially more rare
 			if(direction)
-				gen_custom_metabolism += 0.025
+				custom_metabolism += 0.025
 			else
-				gen_custom_metabolism -= 0.025
-				if(gen_custom_metabolism<0.01)
-					gen_custom_metabolism = 0.01
-	
-	chemical_gen_stats_list["[id]"]["custom_metabolism"] = gen_custom_metabolism
+				custom_metabolism -= 0.025
+				if(custom_metabolism<0.01)
+					custom_metabolism = 0.01
 	
 	//Color
-	var/gen_color = text("#[][][]",num2hex(rand(0,255)),num2hex(rand(0,255)),num2hex(rand(0,255)))
-	chemical_gen_stats_list["[id]"]["color"] = gen_color
+	color = text("#[][][]",num2hex(rand(0,255)),num2hex(rand(0,255)),num2hex(rand(0,255)))
 	
+	//Description
+	generate_description()
 	return TRUE
 
-/datum/proc/get_negative_chem_properties(var/admin_properties)
+/proc/get_negative_chem_properties(var/special_properties)
 	var/list/negative_properties = list(PROPERTY_HYPOXEMIC = "Reacts with hemoglobin in red blood cells preventing oxygen from being absorbed, resulting in hypoxemia.",\
 										PROPERTY_TOXIC = "Poisonous substance which causes harm on contact with or through absorption by organic tissues, resulting in bad health or severe illness.",\
 										PROPERTY_CORROSIVE = "Damages or destroys other substances on contact through a chemical reaction. Causes chemical burns on contact with living tissue.",\
@@ -301,13 +262,13 @@
 										PROPERTY_CARDIOTOXIC = "Attacks cardiomyocytes when passing through the heart in the bloodstream. This disrupts the cardiac cycle and can lead to cardiac arrest.",\
 										PROPERTY_NEUROTOXIC = "Breaks down neurons causing widespread damage to the central nervous system and brain functions.")
 										
-	if(admin_properties)
+	if(special_properties)
 		negative_properties += list(	PROPERTY_EMBRYONIC = "The chemical agent carries causes an infection of type REDACTED parasitic embryonic organism.",\
 										PROPERTY_TRANSFORMING = "The chemical agent carries REDACTED, altering the host psychologically and physically.",\
 										PROPERTY_RAVENING = "The chemical agent carries the X-65 biological organism.")
 	return negative_properties
 
-/datum/proc/get_neutral_chem_properties(var/admin_properties)
+/proc/get_neutral_chem_properties(var/special_properties)
 	var/list/neutral_properties = list( PROPERTY_NUTRITIOUS = "The compound can be used as, or be broken into, nutrition for cell metabolism.",\
 										PROPERTY_KETOGENIC = "Activates ketosis causing the liver to rapidly burn fatty acids and alcohols in the body, resulting in weight loss. Can cause ketoacidosis in high concentrations, resulting in a buildup of acids and lowered pH levels in the blood.",\
 										PROPERTY_PAINING = "Activates the somatosensory system causing neuropathic pain all over the body. Unlike nociceptive pain, this is not caused to any tissue damage and is solely perceptive.",\
@@ -325,11 +286,11 @@
 										PROPERTY_EMETIC = "Acts on the enteric nervous system to induce emesis, the forceful emptying of the stomach.",\
 										PROPERTY_PSYCHOSTIMULATING = "Stimulates psychological functions causing increased awareness, focus and anti-depressing effects.",\
 										PROPERTY_ANTIHALLUCINOGENIC = "Stabilizes perseptive abnormalities such as hallucinations caused by mindbreaker toxin.")
-	if(admin_properties)
+	if(special_properties)
 		neutral_properties += list(		PROPERTY_CROSSMETABOLIZING = "The chemical can be metabolized in other humanoid lifeforms.")
 	return neutral_properties
 
-/datum/proc/get_positive_chem_properties(var/admin_properties)
+/proc/get_positive_chem_properties(var/special_properties)
 	var/list/positive_properties = list(PROPERTY_ANTITOXIC = "Absorbs and neutralizes toxic chemicals in the bloodstream and allowing them to be excreted safely.",\
 										PROPERTY_ANTICORROSIVE = "Accelerates cell division around corroded areas in order to replace the lost tissue. Excessive use can trigger apoptosis.",\
 										PROPERTY_NEOGENETIC = "Regenerates ruptured membranes resulting in the repair of damaged organic tissue. High concentrations can corrode the cell membranes.",\
@@ -348,8 +309,9 @@
 										PROPERTY_FLUXING = "Liquifies large crystalline and metallic structures under bodytemperature in the body and allows it to migrate to and be excreted through the skin.",\
 										PROPERTY_NEUROCRYOGENIC = "Causes a temporal freeze of all neurological processes and cellular respirations in the brain. This allows the brain to be preserved for long periods of time.",\
 										PROPERTY_ANTIPARASITIC = "Antimicrobial property specifically targeting parasitic pathogens in the body disrupting their growth and potentially killing them.")
-	if(admin_properties)
-		positive_properties += list(	PROPERTY_OMNIPOTENT = "Fully revitalizes all bodily functions.",\
+	if(special_properties)
+		positive_properties += list(	PROPERTY_DEFIBRILLATING = "Causes an electrochemical reaction in the cardiac muscles, forcing the heart to continue pumping. May cause irregular heart rhythms.",\
+										PROPERTY_OMNIPOTENT = "Fully revitalizes all bodily functions.",\
 										PROPERTY_CURING = "Binds to and neutralizes the X-65 biological organism.")
 	return positive_properties
 
@@ -358,7 +320,6 @@
 	var/list/negative_properties = get_negative_chem_properties()
 	var/list/neutral_properties = get_neutral_chem_properties()
 	var/list/positive_properties = get_positive_chem_properties()
-	var/list/all_properties = negative_properties + neutral_properties + positive_properties
 	
 	//Determine potency modifier
 	var/potency
@@ -366,16 +327,24 @@
 		potency = my_potency
 	else
 		potency = rand(0,100)
-		if(potency<=45)
-			potency = 1 //45%
-		else if(potency<=80)
-			potency = 2 //35%
+		if(potency<=25)
+			potency = 1 //25%
+		else if(potency<=46)
+			potency = 2 //21%
+		else if(potency<=64)
+			potency = 3 //18%
+		else if(potency<=79)
+			potency = 4 //15%
+		else if(potency<=89)
+			potency = 5 //10%
 		else if(potency<=95)
-			potency = 3 //15%
+			potency = 6 //7%
+		else if(potency<=98)
+			potency = 7 //3%
 		else
-			potency = 4 //5%
-		//We limit how potent chems can be. So something that is just level 4 healing doesn't spawn too regularly.
-		potency = min(potency, gen_tier + 1)
+			potency = 8 //2%
+		//We limit how potent chems can be. So something that is just level 8 healing doesn't spawn too regularly.
+		potency = min(potency, gen_tier + 2)
 
 	//Determine properties
 	var/roll = rand(1,100)
@@ -429,16 +398,39 @@
 	else
 		new_value = potency
 
-	//Override conflicting properties
-	var/info
-	if(chemical_gen_stats_list["[id]"]["properties"])
+	insert_property(property, potency)
+	return new_value
+
+/////////////////////////GENERATOR HELPER PROCS/////////////////////////
+
+/datum/reagent/proc/insert_property(var/property, var/potency)
+	if(properties)
 		//The list below defines what properties should override each other.
-		var/list/conflicting_properties = list(PROPERTY_NUTRITIOUS = PROPERTY_HEMORRAGING,PROPERTY_NUTRITIOUS = PROPERTY_HEMOLYTIC,PROPERTY_TOXIC = PROPERTY_ANTITOXIC,PROPERTY_CORROSIVE = PROPERTY_ANTICORROSIVE,PROPERTY_BIOCIDIC = PROPERTY_NEOGENETIC,PROPERTY_HYPERTHERMIC = PROPERTY_HYPOTHERMIC,PROPERTY_NUTRITIOUS = PROPERTY_KETOGENIC,PROPERTY_PAINING = PROPERTY_PAINKILLING,PROPERTY_HALLUCINOGENIC = PROPERTY_ANTIHALLUCINOGENIC,PROPERTY_HEPATOTOXIC = PROPERTY_HEPATOPEUTIC,PROPERTY_NEPHROTOXIC = PROPERTY_NEPHROPEUTIC,PROPERTY_PNEUMOTOXIC = PROPERTY_PNEUMOPEUTIC, PROPERTY_OCULOTOXIC = PROPERTY_OCULOPEUTIC, PROPERTY_CARDIOTOXIC = PROPERTY_CARDIOPEUTIC,PROPERTY_NEUROTOXIC = PROPERTY_NEUROPEUTIC, PROPERTY_FLUXING = PROPERTY_REPAIRING, PROPERTY_RELAXING = PROPERTY_MUSCLESTIMULATING,PROPERTY_HEMOGENIC = PROPERTY_HEMOLYTIC,PROPERTY_HEMOGENIC = PROPERTY_HEMORRAGING)
+		var/list/conflicting_properties = list(	PROPERTY_NUTRITIOUS = PROPERTY_HEMORRAGING,		PROPERTY_NUTRITIOUS = PROPERTY_HEMOLYTIC,		PROPERTY_TOXIC = PROPERTY_ANTITOXIC,\
+												PROPERTY_CORROSIVE = PROPERTY_ANTICORROSIVE,	PROPERTY_BIOCIDIC = PROPERTY_NEOGENETIC,		PROPERTY_HYPERTHERMIC = PROPERTY_HYPOTHERMIC,\
+												PROPERTY_NUTRITIOUS = PROPERTY_KETOGENIC,		PROPERTY_PAINING = PROPERTY_PAINKILLING,		PROPERTY_HALLUCINOGENIC = PROPERTY_ANTIHALLUCINOGENIC,\
+												PROPERTY_HEPATOTOXIC = PROPERTY_HEPATOPEUTIC,	PROPERTY_NEPHROTOXIC = PROPERTY_NEPHROPEUTIC,	PROPERTY_PNEUMOTOXIC = PROPERTY_PNEUMOPEUTIC,\
+												PROPERTY_OCULOTOXIC = PROPERTY_OCULOPEUTIC, 	PROPERTY_CARDIOTOXIC = PROPERTY_CARDIOPEUTIC,	PROPERTY_NEUROTOXIC = PROPERTY_NEUROPEUTIC,\
+												PROPERTY_FLUXING = PROPERTY_REPAIRING, 			PROPERTY_RELAXING = PROPERTY_MUSCLESTIMULATING,	PROPERTY_HEMOGENIC = PROPERTY_HEMOLYTIC,\
+												PROPERTY_HEMOGENIC = PROPERTY_HEMORRAGING,		PROPERTY_NUTRITIOUS = PROPERTY_EMETIC)
+		//The list below defines which properties should be combined into a combo property
+		var/list/combining_properties = list(	PROPERTY_DEFIBRILLATING = list(PROPERTY_MUSCLESTIMULATING, PROPERTY_CARDIOPEUTIC))
 		var/match
-		for(var/P in chemical_gen_stats_list["[id]"]["properties"])
+		for(var/P in properties)
 			if(P == property)
 				match = P
 			else
+				//Handle properties that combine
+				for(var/C in combining_properties)
+					var/list/combo = combining_properties[C]
+					if(combo.Find(property))
+						for(var/piece in combo)
+							if(properties.Find(piece))
+								property = C
+								potency = max(potency - properties[P], properties[P] - potency, 1)
+								properties -= P
+								break
+				//Handle properties that conflict
 				for(var/C in conflicting_properties)
 					if(property == C && P == conflicting_properties[C])
 						match = P
@@ -447,59 +439,89 @@
 						match = P
 						break
 			if(match)
-				chemical_gen_stats_list["[id]"]["properties"] -= match
-	//Handle description
-			else
-				info += text("<BR><B>[]</B> - []<BR>",capitalize(P),all_properties["[P]"]) //We only keep the description we didn't override
-	
-	info += text("<BR><B>[]</B> - []<BR>",capitalize(property),all_properties["[property]"]) //We add the description for the new property
+				//Handle changes in potency
+				if(properties[match] > potency) //Decrease
+					properties[match] -= potency
+					return FALSE
+				else if(properties[match] < potency) //Override
+					potency -= properties[match]
+					properties -= match
+				else //Cancelled out
+					properties -= match
+					return FALSE
+				break
+		//Add the property
+		var/list/property_potency[0]
+		property_potency["[property]"] = potency
+		properties += property_potency
+		return TRUE
 
-	var/list/property_potency[0]
-	property_potency["[property]"] = potency
-	chemical_gen_stats_list["[id]"]["properties"] += property_potency
-	chemical_gen_stats_list["[id]"]["description"] = info
-	return new_value
+/datum/reagent/proc/generate_description()
+	var/list/all_properties = get_negative_chem_properties(TRUE) + get_neutral_chem_properties(TRUE) + get_positive_chem_properties(TRUE)
+	var/info
+	for(var/P in properties)
+		info += "<BR><B>[capitalize(P)] Level [properties[P]]</B> - [all_properties[P]]<BR>"
+	description = info
+
+/datum/reagent/proc/make_alike(var/datum/reagent/C)
+	name = C.name
+	id = C.id
+	properties = C.properties.Copy()
+	description = C.description
+	overdose = C.overdose
+	overdose_critical = C.overdose_critical
+	nutriment_factor = C.nutriment_factor
+	custom_metabolism = C.custom_metabolism
+	color = C.color
+	original_type = C.original_type
+
+/datum/chemical_reaction/proc/make_alike(var/datum/chemical_reaction/C)
+	id = C.id
+	required_reagents = C.required_reagents.Copy()
+	required_catalysts = C.required_catalysts.Copy()
+	result = C.result
+	result_amount = C.result_amount
+
+/datum/chemical_reaction/proc/check_duplicate()
+	var/matches = 0
+	for(var/R in required_reagents)
+		if(chemical_reactions_filtered_list[R])
+			for(var/reaction in chemical_reactions_filtered_list[R])//We filter the chemical_reactions_filtered_list so we don't have to search through as much
+				var/datum/chemical_reaction/C = reaction
+				for(var/B in C.required_reagents)
+					if(required_reagents.Find(B))
+						matches++
+	if(matches >= required_reagents.len)
+		return TRUE	
 
 /////////////////////////RANDOMLY GENERATED CHEMICALS/////////////////////////
 /datum/chemical_reaction/generated/
 	result_amount = 1 //Makes it a bit harder to mass produce
-	gen_tier = 0
 
 /datum/reagent/generated/
 	reagent_state = LIQUID //why isn't this default, seriously
-	var/list/properties = list() //Decides properties
 	chemclass = CHEM_CLASS_ULTRA
 	objective_value = 10
-	gen_tier = 0
+	scannable = 1
 
 /datum/reagent/generated/New()
 	//Generate stats
-	if(!chemical_gen_stats_list["[id]"])
-		var/list/stats_holder = list("name","properties","description","overdose","overdose_critical","nutriment_factor","custom_metabolism","color")
-		chemical_gen_stats_list["[id]"] += stats_holder
+	if(!id) //So we can initiate a new datum without generating it
+		return
+	if(!chemical_reagents_list[id])
 		generate_name()
 		generate_stats()
-	name = chemical_gen_stats_list["[id]"]["name"]
-	properties = chemical_gen_stats_list["[id]"]["properties"]
-	description = chemical_gen_stats_list["[id]"]["description"]
-	overdose = chemical_gen_stats_list["[id]"]["overdose"]
-	overdose_critical = chemical_gen_stats_list["[id]"]["overdose_critical"]
-	nutriment_factor = chemical_gen_stats_list["[id]"]["nutriment_factor"]
-	custom_metabolism = chemical_gen_stats_list["[id]"]["custom_metabolism"]
-	color = chemical_gen_stats_list["[id]"]["color"]
+		chemical_reagents_list[id] = src
+	make_alike(chemical_reagents_list[id])
 
 /datum/chemical_reaction/generated/New()
 	//Generate recipe
-	if(!chemical_gen_reactions_list)
-		chemical_gen_reactions_list = list()
-	if(!chemical_gen_reactions_list["[id]"])
-		var/list/recipe_holder = list("required_reagents","required_catalysts","result")
-		chemical_gen_reactions_list["[id]"] += recipe_holder
+	if(!id) //So we can initiate a new datum without generating it
+		return
+	if(!chemical_reactions_list[id])
 		generate_recipe()
-	required_reagents = chemical_gen_reactions_list["[id]"]["required_reagents"]
-	required_catalysts = chemical_gen_reactions_list["[id]"]["required_catalysts"]
-	if(!result)
-		result = chemical_gen_reactions_list["[id]"]["result"]
+		chemical_reactions_list[id] = src
+	make_alike(chemical_reactions_list[id])
 
 /////////Tier 1
 //alpha
@@ -530,25 +552,25 @@
 	id = "gamma"
 	gen_tier = 1
 
-/////////Tier 2
 /datum/chemical_reaction/generated/delta
 	id = "delta"
 	result = "delta"
-	gen_tier = 2
+	gen_tier = 1
 		
 /datum/reagent/generated/delta
 	id = "delta"
-	gen_tier = 2
+	gen_tier = 1
 
 /datum/chemical_reaction/generated/epsilon
 	id = "epsilon"
 	result = "epsilon"
-	gen_tier = 2
+	gen_tier = 1
 
 /datum/reagent/generated/epsilon
 	id = "epsilon"
-	gen_tier = 2
+	gen_tier = 1
 
+/////////Tier 2
 /datum/chemical_reaction/generated/zeta
 	id = "zeta"
 	result = "zeta"
@@ -558,25 +580,25 @@
 	id = "zeta"
 	gen_tier = 2
 
-/////////Tier 3 zeta
 /datum/chemical_reaction/generated/eta
 	id = "eta"
 	result = "eta"
-	gen_tier = 3
+	gen_tier = 2
 
 /datum/reagent/generated/eta
 	id = "eta"
-	gen_tier = 3
+	gen_tier = 2
 
 /datum/chemical_reaction/generated/theta
 	id = "theta"
 	result = "theta"
-	gen_tier = 3
+	gen_tier = 2
 
 /datum/reagent/generated/theta
 	id = "theta"
-	gen_tier = 3
+	gen_tier = 2
 
+/////////Tier 3 zeta
 /datum/chemical_reaction/generated/iota
 	id = "iota"
 	result = "iota"
@@ -586,14 +608,23 @@
 	id = "iota"
 	gen_tier = 3
 
-/////////Tier 4
 /datum/chemical_reaction/generated/kappa
 	id = "kappa"
 	result = "kappa"
-	gen_tier = 4
+	gen_tier = 3
 
 /datum/reagent/generated/kappa
 	id = "kappa"
+	gen_tier = 3
+
+/////////Tier 4
+/datum/chemical_reaction/generated/lambda
+	id = "lambda"
+	result = "lambda"
+	gen_tier = 4
+
+/datum/reagent/generated/lambda
+	id = "lambda"
 	gen_tier = 4
 
 /////////////////////////PROCESS/////////////////////////
@@ -630,7 +661,7 @@
 			M.last_damage_source = "Experimental chemical overdose"
 			M.last_damage_mob = last_source_mob
 
-		var/potency = properties[P]
+		var/potency = properties[P] * 0.5
 		if(!potency) continue
 		switch(P)
 /////////Negative Properties/////////
@@ -675,6 +706,7 @@
 							C.blood_volume = max(C.blood_volume-8*potency,0)
 							M.drowsyness = min(M.drowsyness + potency,15*potency)
 							M.reagent_move_delay_modifier += potency
+							M.recalculate_move_delay = TRUE
 							if(prob(10)) M.emote(pick("yawn","gasp"))
 							if(is_COD)
 								M.adjustOxyLoss(4*potency)
@@ -869,6 +901,7 @@
 				else
 					M.reagent_move_delay_modifier += potency
 					if(prob(10)) M.emote("yawn")
+				M.recalculate_move_delay = TRUE
 			if(PROPERTY_HYPERTHERMIC) //increase bodytemperature
 				if(prob(10)) M.emote("gasp")
 				if(is_OD)
@@ -985,7 +1018,7 @@
 				if(iscarbon(M))
 					var/mob/living/carbon/C = M
 					if(C.blood_volume < BLOOD_VOLUME_NORMAL)
-						C.blood_volume = max(0.2 * nutriment_factor * potency,BLOOD_VOLUME_NORMAL)
+						C.blood_volume = max(0.2 * potency,BLOOD_VOLUME_NORMAL)
 /////////Positive Properties///////// 
 			if(PROPERTY_ANTITOXIC) //toxin healing
 				if(is_OD)
@@ -1039,6 +1072,7 @@
 						M.take_limb_damage(potency)
 						M.adjustOxyLoss(2*potency)
 						M.reagent_move_delay_modifier += potency
+						M.recalculate_move_delay = TRUE
 			if(PROPERTY_NERVESTIMULATING) //stun decrease
 				if(prob(10)) M.emote("twitch")
 				if(is_OD)
@@ -1048,12 +1082,10 @@
 					if(is_COD)
 						M.KnockOut(potency*2)
 				else
-					if(potency>2)
-						M.AdjustKnockedout(-potency)
-						M.AdjustStunned(-potency)
-						M.AdjustKnockeddown(-potency)
-					else
-						M.AdjustStunned(-0.5*potency)
+					M.AdjustKnockedout(potency*-1)
+					M.AdjustStunned(potency*-1)
+					M.AdjustKnockeddown(potency*-1)
+					M.AdjustStunned(-0.5*potency)
 					M.stuttering = max(M.stuttering-2*potency, 0)
 					M.confused = max(M.confused-2*potency, 0)
 					M.eye_blurry = max(M.eye_blurry-2*potency, 0)
@@ -1072,7 +1104,8 @@
 								E.damage += potency
 								M.take_limb_damage(0.5*potency)
 				else
-					M.reagent_move_delay_modifier -= 0.2*potency
+					M.reagent_move_delay_modifier -= potency
+					M.recalculate_move_delay = TRUE
 			if(PROPERTY_PAINKILLING) //painkiller
 				if(is_OD)
 					M.hallucination = max(M.hallucination, potency) //Hallucinations and tox damage
@@ -1222,15 +1255,25 @@
 										H.vomit()
 									else
 										A.counter = 90
+			//effects while dead are handled by handle_necro_chemicals_in_body()
 			if(PROPERTY_NEUROCRYOGENIC) //slows brain death
 				if(is_OD)
 					M.bodytemperature = max(M.bodytemperature-5*potency,0)
 					if(is_COD)
 						M.adjustBrainLoss(5 * potency)
-				else //effects while dead are handled by handle_necro_chemicals_in_body()
+				else
 					if(prob(20)) to_chat(M, SPAN_WARNING("You feel like you have the worst brain freeze ever!"))
 					M.knocked_out = max(M.knocked_out, 20)
 					M.stunned = max(M.stunned,21)
+			if(PROPERTY_DEFIBRILLATING)
+				if(is_OD)
+					M.reagent_pain_modifier += 30*potency
+					M.adjustOxyLoss(2*potency)
+					if(is_COD && ishuman(M))
+						var/mob/living/carbon/human/H = M
+						var/datum/internal_organ/heart/L = H.internal_organs_by_name["heart"]
+						if(L)
+							L.damage += potency
 /////////ADMIN ONLY PROPERTIES/////////
 			if(PROPERTY_EMBRYONIC) //Adds embryo's. 
 				if(ishuman(M))

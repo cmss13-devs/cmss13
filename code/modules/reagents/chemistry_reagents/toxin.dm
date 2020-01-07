@@ -10,6 +10,7 @@
 	color = "#CF3600" // rgb: 207, 54, 0
 	var/toxpwr = 0.7 // Toxins are really weak, but without being treated, last very long.
 	custom_metabolism = 0.1
+	properties = list(PROPERTY_TOXIC = 1)
 
 	on_mob_life(mob/living/M,alien)
 		. = ..()
@@ -63,6 +64,7 @@
 	color = "#13BC5E" // rgb: 19, 188, 94
 	toxpwr = 0
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_TOXIC = 4, PROPERTY_CARCINOGENIC = 1)
 
 	on_mob_life(mob/living/carbon/M)
 		. = ..()
@@ -94,6 +96,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_HYPOXEMIC = 8, PROPERTY_BIOCIDIC = 1)
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -120,6 +123,7 @@
 	toxpwr = 4
 	custom_metabolism = 0.4
 	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_HYPOXEMIC = 2)
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -181,6 +185,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_HALLUCINOGENIC = 8)
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -276,6 +281,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_RELAXING = 1)
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -314,6 +320,7 @@
 	overdose = REAGENTS_OVERDOSE/2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_RELAXING = 6)
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -365,6 +372,7 @@
 	toxpwr = 2
 	overdose = 20
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_RELAXING = 8, PROPERTY_HYPOXEMIC = 4)
 
 	on_mob_life(mob/living/carbon/M)
 		. = ..()
@@ -418,6 +426,7 @@
 	toxpwr = 1
 	var/meltprob = 10
 	chemclass = CHEM_CLASS_BASIC
+	properties = list(PROPERTY_TOXIC = 1, PROPERTY_CORROSIVE = 1)
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -493,3 +502,4 @@
 	toxpwr = 2
 	meltprob = 30
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_TOXIC = 1, PROPERTY_CORROSIVE = 2)

@@ -13,6 +13,7 @@
 	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_PAINKILLING = 2)
 
 /datum/reagent/inaprovaline/on_mob_life(mob/living/M, alien)
 	. = ..()
@@ -77,6 +78,7 @@
 	overdose = HIGH_REAGENTS_OVERDOSE
 	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_PAINKILLING = 4)
 
 /datum/reagent/paracetamol/on_mob_life(mob/living/M)
 	. = ..()
@@ -102,6 +104,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_PAINKILLING = 6)
 
 /datum/reagent/tramadol/on_mob_life(mob/living/M)
 	. = ..()
@@ -130,6 +133,7 @@
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_PAINKILLING = 8)
 
 /datum/reagent/oxycodone/on_mob_life(mob/living/M)
 	. = ..()
@@ -201,6 +205,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_ANTICORROSIVE = 2)
 
 /datum/reagent/kelotane/on_mob_life(var/mob/living/M)
 	. = ..()
@@ -225,6 +230,7 @@
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_ANTICORROSIVE = 4)
 
 /datum/reagent/dermaline/on_mob_life(mob/living/M, alien)
 	. = ..()
@@ -306,6 +312,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_ANTICORROSIVE = 1, PROPERTY_ANTITOXIC = 1)
 
 /datum/reagent/tricordrazine/on_mob_life(mob/living/M, alien)
 	. = ..()
@@ -336,6 +343,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_ANTITOXIC = 2)
 
 /datum/reagent/anti_toxin/on_mob_life(mob/living/M,alien)
 	. = ..()
@@ -460,6 +468,7 @@
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_NERVESTIMULATING = 2)
 
 /datum/reagent/synaptizine/on_mob_life(mob/living/M)
 	. = ..()
@@ -490,6 +499,7 @@
 	overdose_critical = 3
 	scannable = 0
 	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_NERVESTIMULATING = 5)
 
 /datum/reagent/neuraline/on_mob_life(mob/living/M)
 	. = ..()
@@ -514,6 +524,7 @@
 	overdose = REAGENTS_OVERDOSE/2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_ANTITOXIC = 1, PROPERTY_BIOCIDIC = 1)
 
 /datum/reagent/arithrazine/on_mob_life(mob/living/M)
 	. = ..()
@@ -566,6 +577,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_PAINKILLING = 1, PROPERTY_NEUROPEUTIC = 2)
 
 /datum/reagent/alkysine/on_mob_life(mob/living/M)
 	. = ..()
@@ -589,6 +601,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_OCULOPEUTIC = 1)
 
 /datum/reagent/imidazoline/on_mob_life(mob/living/M)
 	. = ..()
@@ -636,6 +649,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_NEOGENETIC = 2)
 
 /datum/reagent/bicaridine/on_mob_life(mob/living/M, alien)
 	. = ..()
@@ -680,6 +694,7 @@
 	scannable = 1
 	custom_metabolism = 0.4
 	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_PAINKILLING = 3, PROPERTY_MUSCLESTIMULATING = 1)
 
 /datum/reagent/adrenaline/on_mob_life(mob/living/M)
 	. = ..()
@@ -713,6 +728,7 @@
 	overdose = LOW_REAGENTS_OVERDOSE
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_MUSCLESTIMULATING = 1, PROPERTY_CARCINOGENIC = 1)
 
 /datum/reagent/hyperzine/on_mob_life(mob/living/M)
 	. = ..()
@@ -829,6 +845,7 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_CRYOMETABOLIZING = 3, PROPERTY_NEOGENETIC = 2, PROPERTY_ANTICORROSIVE = 2, PROPERTY_ANTITOXIC = 2)
 
 /datum/reagent/cryoxadone/on_mob_life(mob/living/M)
 	. = ..()
@@ -847,6 +864,7 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_CRYOMETABOLIZING = 6, PROPERTY_NEOGENETIC = 6, PROPERTY_ANTICORROSIVE = 6, PROPERTY_ANTITOXIC = 6)
 
 /datum/reagent/clonexadone/on_mob_life(mob/living/M)
 	. = ..()
@@ -949,6 +967,7 @@
 	custom_metabolism = 0.01
 	data = 0
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_PSYCHOSTIMULATING = 1)
 
 /datum/reagent/antidepressant/methylphenidate/on_mob_life(mob/living/M)
 	. = ..()
@@ -970,6 +989,7 @@
 	custom_metabolism = 0.01
 	data = 0
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_PSYCHOSTIMULATING = 2)
 
 /datum/reagent/antidepressant/citalopram/on_mob_life(mob/living/M)
 	. = ..()
@@ -992,6 +1012,7 @@
 	custom_metabolism = 0.01
 	data = 0
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_PSYCHOSTIMULATING = 4, PROPERTY_HALLUCINOGENIC = 3)
 
 /datum/reagent/antidepressant/paroxetine/on_mob_life(mob/living/M)
 	. = ..()
@@ -1035,6 +1056,7 @@
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	data = 0
 	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_RELAXING = 6, PROPERTY_HALLUCINOGENIC = 1)
 
 /datum/reagent/suxamorycin/on_mob_life(mob/living/M)
 	. = ..()

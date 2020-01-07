@@ -11,6 +11,7 @@
 	nutriment_factor = 15 * REAGENTS_METABOLISM
 	color = "#664330" // rgb: 102, 67, 48
 	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_NUTRITIOUS = 6)
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -33,6 +34,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_NUTRITIOUS = -4)
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -73,6 +75,7 @@
 	reagent_state = LIQUID
 	color = "#B31008" // rgb: 179, 16, 8
 	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_HYPERTHERMIC = 1)
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -106,6 +109,7 @@
 	reagent_state = LIQUID
 	color = "#B31008" // rgb: 179, 16, 8
 	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_HYPERTHERMIC = 2)
 
 	reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)
 		if(!istype(M, /mob/living) || has_species(M,"Horror"))
@@ -191,6 +195,7 @@
 	reagent_state = LIQUID
 	color = "#B31008" // rgb: 139, 166, 233
 	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_HYPOTHERMIC = 6)
 
 	on_mob_life(mob/living/M)
 		. = ..()

@@ -30,6 +30,7 @@
 	assignment = "Scientist"
 	skills = /datum/skills/civilian/survivor/scientist
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	idtype = /obj/item/card/id/silver/clearance_badge/scientist
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH)
 
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH)
@@ -62,6 +63,7 @@
 	assignment = "Doctor"
 	skills = /datum/skills/civilian/survivor/doctor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	idtype = /obj/item/card/id/silver/clearance_badge
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH)
 
 
@@ -93,7 +95,7 @@
 	assignment = "Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	idtype = /obj/item/card/id/silver/cl
+	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/corporate/load_gear(mob/living/carbon/human/H)

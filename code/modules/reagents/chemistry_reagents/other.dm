@@ -48,7 +48,7 @@
 	id = "whiteblood"
 	color = "#EEEEEE"
 	description = "A synthetic blood-like liquid used by all Synthetics. Very effective as a medium for liquid cooling of electronics."
-	chemclass = CHEM_CLASS_RARE
+	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/blood/zomb_blood
 	name = "Grey Blood"
@@ -165,6 +165,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_HALLUCINOGENIC = 2)
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -275,6 +276,7 @@
 	color = "#484848" // rgb: 72, 72, 72
 	overdose = REAGENTS_OVERDOSE
 	chemclass = CHEM_CLASS_BASIC
+	properties = list(PROPERTY_NEUROTOXIC = 4)
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -323,6 +325,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_BASIC
+	properties = list(PROPERTY_BIOCIDIC = 1)
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -344,6 +347,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_BASIC
+	properties = list(PROPERTY_TOXIC = 1)
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -410,6 +414,7 @@
 	reagent_state = SOLID
 	color = "#FFFFFF" // rgb: 255, 255, 255
 	chemclass = CHEM_CLASS_BASIC
+	properties = list(PROPERTY_NUTRITIOUS = 1)
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -443,6 +448,7 @@
 	reagent_state = SOLID
 	color = "#C7C7C7" // rgb: 199,199,199
 	chemclass = CHEM_CLASS_BASIC
+	properties = list(PROPERTY_TOXIC = 2)
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -508,6 +514,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_BASIC
+	properties = list(PROPERTY_HEMOGENIC = 2)
 
 /datum/reagent/iron/on_overdose(mob/living/M)
 	M.apply_damages(1, 0, 1) //Overdose starts getting bad
@@ -708,6 +715,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_NEUROTOXIC = 2)
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -841,6 +849,7 @@
 	durationmod = -0.75
 	radiusmod = -0.075
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_CORROSIVE = 8, PROPERTY_TOXIC = 6)
 
 /datum/reagent/chlorinetrifluoride/on_mob_life(var/mob/living/M) // Not a good idea, instantly messes you up from the inside out.
 	. = ..()
@@ -867,6 +876,7 @@
 	intensitymod = -1
 	radiusmod = 0.1
 	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_TOXIC = 2)
 
 /datum/reagent/methane/on_mob_life(var/mob/living/M)
 	. = ..()

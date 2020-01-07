@@ -57,7 +57,6 @@
 
 /mob/living/carbon/human/proc/handle_necro_chemicals_in_body()
 	for(var/datum/reagent/generated/R in reagents.reagent_list)
-		R.holder.remove_reagent(R.id, R.custom_metabolism)
 		var/is_OD
 		var/is_COD
 		if(R.overdose && R.volume >= R.overdose)
@@ -69,9 +68,17 @@
 			if(!potency) continue
 			switch(P)
 				if(PROPERTY_NEUROCRYOGENIC)
+					R.holder.remove_reagent(R.id, R.custom_metabolism)
 					if(is_OD)
 						bodytemperature = max(bodytemperature-5*potency,0)
 						if(is_COD)
 							adjustBrainLoss(5 * potency)
 					else
 						revive_grace_period += SECONDS_5 * potency
+				if(PROPERTY_DEFIBRILLATING)
+					R.holder.remove_reagent(R.id, R.custom_metabolism)
+					adjustOxyLoss(-getOxyLoss())
+					if(check_tod() && is_revivable() && health > config.health_threshold_dead)
+						to_chat(src, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
+						playsound_client(src.client, 'sound/effects/Heart Beat Short.ogg', 35)
+						add_timer(CALLBACK(src, .proc/handle_revive), 50, TIMER_UNIQUE)

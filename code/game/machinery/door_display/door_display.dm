@@ -188,8 +188,9 @@
 /obj/structure/machinery/door_display/research_cell
 	var/open_shutter = 0
 	icon = 'icons/obj/structures/machinery/computer.dmi'
-	icon_state = "containment"
+	icon_state = "research"
 	maptext = ""
+	req_access = list(ACCESS_MARINE_RESEARCH)
 
 /obj/structure/machinery/door_display/research_cell/New()
 	..()

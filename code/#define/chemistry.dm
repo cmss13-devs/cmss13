@@ -106,7 +106,9 @@
 #define PROPERTY_FLUXING 			"fluxing"
 #define PROPERTY_NEUROCRYOGENIC		"neurocryogenic"
 #define PROPERTY_ANTIPARASITIC		"anti-parasitic"
-//Admin Properties
+//Combo, made by combining other properties
+#define PROPERTY_DEFIBRILLATING		"defibrillating"
+//Admin Only Properties
 #define PROPERTY_CROSSMETABOLIZING	"cross-metabolizing"
 #define PROPERTY_EMBRYONIC			"embryonic"
 #define PROPERTY_TRANSFORMING		"transforming"

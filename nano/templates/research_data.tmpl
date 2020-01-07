@@ -1,0 +1,18 @@
+<div>
+	<h2><b>Research Credits Available:</b> {{:data.rsc_credits}}</h2>
+	<h2><b>Current Clearance Access:</b> Level {{:data.clearance_level}}</h2>
+</div>
+
+{{:helper.link('Broker Clearance for ' + data.broker_cost + ' credits', null, {'broker_clearance' : 1})}}
+<br>
+<h2>Research Data</h2>
+<div>
+	{{props data.research_documents :documents:type}}
+		<h3>{{:type}}</h3>
+		{{props data.research_documents[type] :document:title}}
+			<b>{{:title}}</b>
+			{{:helper.link('Print', 'print', {'print_type' : type, 'print_title' : title})}}
+			<br><br>
+		{{/props}}
+	{{/props}}
+</div>

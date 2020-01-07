@@ -5,7 +5,7 @@
 
 /datum/reagent
 	var/name = "Reagent"
-	var/id = "reagent"
+	var/id = ""
 	var/description = ""
 	var/datum/reagents/holder = null
 	var/reagent_state = SOLID
@@ -21,17 +21,18 @@
 	var/ingestible = TRUE // Set this to FALSE if the reagent must be delivered through injection only
 	//var/list/viruses = list()
 	var/color = "#000000" // rgb: 0, 0, 0 (does not support alpha channels - yet!)
+	var/last_source_mob
 	// For chemical fire
 	var/chemfiresupp = FALSE
 	var/intensitymod = 0
 	var/durationmod = 0
 	var/radiusmod = 0
-	// Chem generator Stuff
+	// Chem generator and research stuff
 	var/chemclass = CHEM_CLASS_NONE //Decides how rare the chem in the generation process
 	var/gen_tier = 0 //Decides the chance of the chem being good during generation
-	// How valuable it is to identify the chemical. (Only works on chemclass SPECIAL or ULTRA)
-	var/objective_value
-	var/last_source_mob
+	var/objective_value // How valuable it is to identify the chemical. (Only works on chemclass SPECIAL or ULTRA)
+	var/list/properties = list() //Decides properties
+	var/original_type //For tracing back
 
 /datum/reagent/proc/reaction_mob(var/mob/M, var/method=TOUCH, var/volume) //By default we have a chance to transfer some
 	if(!istype(M, /mob/living))	return 0

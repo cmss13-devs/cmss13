@@ -78,3 +78,17 @@
 				log_admin("[key_name(usr)] added [amount] DEFCON points.", 1)
 				message_admins(SPAN_NOTICE("[key_name_admin(usr)] added [amount] DEFCON points."), 1)
 				objectives_controller.add_admin_points(amount)
+		if("change_clearance")
+			var/list/clearance_levels = list(0,1,2,3,4,5)
+			var/level = input("Select new clearance level:","Current level: [chemical_research_data.clearance_level]") as null|anything in clearance_levels
+			if(!level)
+				return
+			log_admin("[key_name(usr)] changed research clearance level to [level].", 1)
+			message_admins(SPAN_NOTICE("[key_name_admin(usr)] changed research clearance level to [level]."), 1)
+			chemical_research_data.clearance_level = level
+		if("give_research_credits")
+			var/amount = input(usr, "How many credits to add?") as num
+			if(amount != 0) //can add negative numbers too!
+				log_admin("[key_name(usr)] added [amount] research credits.", 1)
+				message_admins(SPAN_NOTICE("[key_name_admin(usr)] added [amount] research credits."), 1)
+				chemical_research_data.update_credits(amount)

@@ -1,0 +1,216 @@
+<style>
+    body {
+        background-color: "#272727";
+        min-height: 100vh;
+        color: "#FFFFFF";
+    }
+
+	.container {
+		display: flex;
+		flex-direction: row;
+		align-items: stretch;
+		justify-content: center;
+	}
+
+    p {
+        margin: 3px;
+    }
+
+	h3 {
+		color: white;
+	}
+    
+    .border {
+        border-style: solid;
+        border-color: #e9c183;
+		border-width: thin;
+    }
+
+	.settings {
+		bottom: 0px;
+		max-height: 150px;
+		max-width: 250px;
+	}
+
+	.lower {
+		display: flex;
+		flex-direction: column;
+		
+		margin-top: 10px;
+	}
+
+	.target, .reference {
+		display: flex;
+		flex-direction: row;
+		align-items: stretch;
+		justify-content: space-between;
+	}
+
+	.reference {
+		margin-top: 10px;
+	}
+
+	.info {
+		max-width: 473px;
+		padding-right: 20px;
+	}
+
+	.infoheader {
+		color: #e9c183;
+		margin-left: 3px;
+	}
+
+	.selection {
+		display: flex;
+		flex-direction: column;
+		min-width: 311px;
+		max-width: 311px;
+		text-align: center;
+	}
+
+    .properties {
+		display: flex;
+        padding: 4px 0px 10px 0px;
+        overflow: auto;
+		margin-top: 15px;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		align-items: flex-start;
+    }
+
+	.statusbar {
+		font: 14px, Inconsolata, monospace;
+		background-color: black;
+		color: #f9d193;
+		width: calc(100vw - 325px);
+		padding-left: 3px;
+		text-shadow: 0 0 4px #805825;
+		margin-right: 5px;
+	}
+
+	.menu {
+		width: 310px;
+		min-height: 81px;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		align-content: space-between;
+		justify-content: space-evenly;
+	}
+
+	.menubutton, .modebutton, .propbutton {
+		flex-grow: 1;
+		margin: 0px 0px 2px 2px;
+		padding: 2px;
+	}
+
+	.menubutton, .modebutton {
+		max:height: 20px;
+		min-height: 20px;
+		max-width: 150px;
+		min-width: 133px;
+	}
+
+	.propbutton {
+		max:height: 20px;
+		min-height: 20px;
+		max-width: 140px;
+		min-width: 140px;
+	}
+
+	.menubutton:not(.disabled), .modebutton:not(.selected), .propbutton:not(.selected){
+		cursor: pointer;
+		background: #40628a;
+		text-align: center;
+		border: 1px solid #161616;
+	}
+	.menubutton:not(.disabled):hover, .modebutton:not(.selected):hover, .propbutton:not(.selected):hover{
+		background: #507aac;
+	}
+
+</style>
+<div class="container">
+	<div class="border statusbar">
+		<b>STATUS: </b>{{:data.status_bar}} 
+		<br>
+		<b>RESEARCH CREDITS:</b> {{:data.rsc_credits}}
+		<br>
+		{{if data.target }}
+			<b>TARGET DATA:</b> {{:data.target}}
+		{{else}}
+			<b>TARGET DATA:</b> NOT FOUND
+		{{/if}}
+		<br>
+		{{if data.reference }}
+			<b>REFERENCE DATA:</b> {{:data.reference}}
+		{{else}}
+			<b>REFERENCE DATA:</b> NOT FOUND
+		{{/if}}
+	</div>
+	<div class="menu">
+		{{if data.simulating }} 
+			{{:helper.link("STOP", 'alert', {'stop_simulation' : 1}, undefined, 'menubutton redButton')}}
+		{{else}}
+			{{:helper.link("SIMULATE", 'radiation', {'simulate' : 1}, (data.ready && data.target_property) ? null : 'disabled', 'menubutton')}}
+			{{:helper.link("AMPLIFY ", 'gear', {'set_mode' : 'amp'}, (data.mode == 1) ? 'selected' : null, 'modebutton')}}
+			{{:helper.link("EJECT TARGET", 'eject', {'ejectT' : 1}, data.target ? null : 'disabled', 'menubutton')}}
+			{{:helper.link("SUPPRESS", 'gear', {'set_mode' : 'sup'}, (data.mode == 2) ? 'selected' : null, 'modebutton')}}
+			{{:helper.link("EJECT REFERENCE", 'eject', {'ejectR' : 1}, data.reference ? null : 'disabled', 'menubutton')}}
+			{{:helper.link("RELATE  ", 'gear', {'set_mode' : 'rel'}, (data.mode == 3) ? 'selected' : null, 'modebutton')}}
+		{{/if}}
+	</div>
+</div>
+<div class="lower">
+	<div class="target">
+		<div class="info">
+			{{if data.target_property}}
+				<h3 class="infoheader">{{:data.property_codings[data.target_property]}} - {{:data.target_property}}</h3>
+				<p>
+					{{:data.target_info}}
+					<br><b>Research Cost: {{:data.property_costs[data.target_property]}}</b>
+				</p>
+			{{/if}}
+		</div>
+		<div class="selection">
+			<h1>Target Properties</h1>
+			{{if data.target}}
+				{{if data.target_property_list }} 
+					<div class="properties">
+						{{props data.target_property_list :level:property}}
+							{{:helper.link('<b>' + data.property_codings[property] + ' Level ' + level + '</b>', null, {'set_target' : property}, (data.target_property == property) ? 'selected' : null, 'propbutton')}}
+						{{/props}}
+					</div>
+				{{else}}
+					<span>PROPERTIES CAN NOT BE SIMULATED</span>
+				{{/if}}
+			{{/if}}
+		</div>
+	</div>
+	<div class="reference">
+		{{if data.mode == 3 }}
+			<div class="info">
+				{{if data.reference_property }}
+					<h3 class="infoheader">{{:data.property_codings[data.reference_property]}} - {{:data.reference_property}}</h3>
+					<p>
+						{{:data.reference_info}}
+					</p>
+				{{/if}}
+			</div>
+			<div class="selection">
+				<h1>Reference Properties</h1>
+				{{if data.reference}}
+					{{if data.reference_property_list }}
+						<div class="properties">
+							{{props data.reference_property_list :level:property}}
+								{{:helper.link('<b>' + data.property_codings[property] + ' Level ' + level + '</b>', null, {'set_reference' : property}, (data.reference_property == property) ? 'selected' : null, 'propbutton')}} 
+							{{/props}}
+						</div>
+					{{else}}
+						<span>PROPERTIES CAN NOT BE SIMULATED</span>
+					{{/if}}
+				{{/if}}
+			</div>
+		{{/if}}
+	</div>
+</div>

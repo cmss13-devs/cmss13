@@ -3,8 +3,18 @@
 	department_flag = ROLEGROUP_MARINE_MED_SCIENCE
 	gear_preset = "Colonist"
 
+/datum/job/civilian
+	department_flag = ROLEGROUP_MARINE_MED_SCIENCE
+	gear_preset = "Colonist"
+
 /datum/job/civilian/colonist
 	title = JOB_COLONIST
+
+/datum/job/civilian/survivor
+	title = JOB_SURVIVOR
+	minimum_playtimes = list(
+		JOB_SQUAD = HOURS_3
+	)
 
 /datum/job/civilian/passenger
 	title = JOB_PASSENGER

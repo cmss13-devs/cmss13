@@ -239,6 +239,9 @@ var/const/MAX_SAVE_SLOTS = 10
 
 			if("Survivor")
 				ban_check_name = "Survivor"
+				var/datum/entity/player_entity = user.client.player_entity
+				var/datum/job/J = RoleAuthority.roles_by_path[/datum/job/civilian/survivor]
+				missing_requirements = J.get_role_requirements(player_entity)
 
 			if("Predator")
 				ban_check_name = "Predator"

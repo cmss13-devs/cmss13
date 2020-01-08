@@ -434,7 +434,6 @@ Additional game mode variables.
 	new_xeno.key = xeno_candidate
 	if(new_xeno.client)
 		new_xeno.client.change_view(world.view)
-		new_xeno.client.player_entity = setup_player_entity(new_xeno.ckey)
 	if(new_xeno.mind)
 		new_xeno.mind.player_entity = setup_player_entity(new_xeno.ckey)
 	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")

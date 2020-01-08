@@ -152,16 +152,17 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(stat == DEAD)
 		ghostize(1)
-		if(client && client.player_entity)
-			client.player_entity.update_panel_data(round_statistics)
+		if(mind && mind.player_entity)
+			mind.player_entity.update_panel_data(round_statistics)
 	else
 		var/response = alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)","Are you sure you want to ghost?","Ghost","Stay in body")
 		if(response != "Ghost")	return	//didn't want to ghost after-all
 		AdjustSleeping(2) // Sleep so you will be properly recognized as ghosted
 		var/turf/location = get_turf(src)
 		track_death_calculations()
-		if(client && client.player_entity)
-			client.player_entity.update_panel_data(round_statistics)
+		if(mind && mind.player_entity)
+			mind.player_entity.update_panel_data(round_statistics)
+			mind.wipe_entity()
 		if(location) //to avoid runtime when a mob ends up in nullspace
 			msg_admin_niche("[key_name_admin(usr)] has ghosted. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
 		log_game("[key_name_admin(usr)] has ghosted.")

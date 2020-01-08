@@ -19,6 +19,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/cmd_admin_world_narrate,	/*sends text to all players with no padding*/
 	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command.
 	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI
+	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
 	/client/proc/show_objectives_status,
 	/client/proc/toggleprayers,			/*toggles prayers on/off*/
 	/client/proc/toggle_hear_radio,		/*toggles whether we hear the radio*/

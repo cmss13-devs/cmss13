@@ -532,9 +532,9 @@
 		return
 
 	if(timing)
-		xeno_message(SPAN_XENOANNOUNCE("The tallhosts have deployed a hive killer at [loc.name]! Stop it at all costs!"),2, hivenumber)
+		xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have deployed a hive killer at [loc.name]! Stop it at all costs!"), hivenumber, XENO_GENERAL_ANNOUNCE)
 	else
-		xeno_message(SPAN_XENOANNOUNCE("The hive killer has been disabled! Rejoice!"),2, hivenumber)
+		xeno_announcement(SPAN_XENOANNOUNCE("The hive killer has been disabled! Rejoice!"), hivenumber, XENO_GENERAL_ANNOUNCE)
 
 /*
  *    Helper procs for the Hive Status UI

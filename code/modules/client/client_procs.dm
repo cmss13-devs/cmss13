@@ -242,6 +242,14 @@
 /client/Dispose()
 	. = ..()
 
+	if(chatOutput)
+		qdel(chatOutput)
+		chatOutput = null
+
+	if(soundOutput)
+		qdel(soundOutput)
+		soundOutput = null
+
 	if(admin_holder)
 		admin_holder.owner = null
 		admins -= src

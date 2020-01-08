@@ -32,7 +32,7 @@
 		&& affected_mob.client && (affected_mob.client.prefs.toggles_sound & SOUND_AMBIENCE) \
 		&& (affected_mob.client.soundOutput.ambience != ambience_path))
 		affected_mob.client.soundOutput.ambience = ambience_path
-		affected_mob.client.soundOutput.update_ambience()
+		affected_mob.client.soundOutput.update_ambience(null, TRUE)
 
 	return TRUE
 

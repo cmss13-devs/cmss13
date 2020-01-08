@@ -25,33 +25,32 @@
 	
 	S.frequency = frequency
 	var/muffling = 0
-
 	var/turf/T = get_turf(emit_pos)
 	if(isturf(T))
-		S.x = emit_pos.x - owner.mob.x
+		var/turf/owner_turf = get_turf(owner.mob)
+		S.x = emit_pos.x - owner_turf.x
 		S.y = 0
-		S.z = emit_pos.y - owner.mob.y
+		S.z = emit_pos.y - owner_turf.y
 		S.falloff = FALLOFF_SOUNDS * max(round(S.volume * 0.025), 1)
-		
+
 		if(status & SOUND_MUFFLE)
-			var/dist = get_dist(emit_pos, owner.mob)
-			var/list/line = getline2(emit_pos, owner.mob)
-			for(var/turf/closed/C in line)
-				muffling += C.sound_muffling
-			if(muffling < MUFFLE_HIGH) return FALSE
-			if(dist <= 1 && muffling != 0)
-				muffling = MUFFLE_LOW
-			if(muffling > 0)
-				S.falloff = (500 / muffling) * -1
+			var/dist = get_dist(emit_pos, owner_turf)
+			if(dist > -1)
+				var/list/line = getline2(emit_pos, owner_turf)
+				for(var/turf/closed/C in line)
+					muffling += C.sound_muffling
+				if(muffling < MUFFLE_HIGH) return FALSE
+				if(muffling < 0)
+					S.falloff = (500 / muffling) * -1
 			S.echo = list(muffling)
-	
+			
 	S.status = status
 	if(owner.mob.ear_deaf > 0)
 		S.status |= SOUND_MUTE
 
 	sound_to(owner,S)
 
-/datum/soundOutput/proc/update_ambience(area/new_area)
+/datum/soundOutput/proc/update_ambience(area/new_area, force_cur_amb)
 	if(!istype(new_area))
 		new_area = get_area(owner.mob)
 	
@@ -64,10 +63,11 @@
 	S.environment = new_area.sound_environment
 	S.status = SOUND_STREAM
 	
-	if(new_area.ambience_exterior == ambience)
-		S.status |= SOUND_UPDATE
-	else if(!(SSWeather.is_weather_event))
-		ambience = new_area.ambience_exterior
+	if(!force_cur_amb)
+		if(new_area.ambience_exterior == ambience)
+			S.status |= SOUND_UPDATE
+		else 
+			ambience = new_area.ambience_exterior
 	
 	var/muffle
 	if(new_area.ceiling_muffle)
@@ -108,7 +108,7 @@
 			S.x = I.x - owner_turf.x
 			S.z = I.y - owner_turf.y
 			S.y = 1
-			if(I.z != owner_turf.z || abs(S.x) > I.volume/4 || abs(S.z) > I.volume/4 || owner.mob.ear_deaf > 0) 
+			if(I.z != owner_turf.z || abs(S.x) > I.volume/3 || abs(S.z) > I.volume/3 || owner.mob.ear_deaf > 0) 
 				S.volume = 0
 				S.falloff = 0
 			else
@@ -167,17 +167,29 @@
 	set name = "S : Adjust Volume SFX"
 	set category = "Preferences"
 	volume_preferences[VOLUME_SFX]	= (input("Set the volume for sound effects", "Volume", volume_preferences[VOLUME_SFX]*100) as num) / 100
-
+	if(volume_preferences[VOLUME_SFX] > 1)
+		volume_preferences[VOLUME_SFX] = 1
+	if(volume_preferences[VOLUME_SFX] < 0)
+		volume_preferences[VOLUME_SFX] = 0
+			
 /client/verb/adjust_volume_ambience()
 	set name = "S : Adjust Volume Ambience"
 	set category = "Preferences"
 	volume_preferences[VOLUME_AMB]	= (input("Set the volume for ambience sounds and music", "Volume", volume_preferences[VOLUME_AMB]*100) as num) / 100
+	if(volume_preferences[VOLUME_AMB] > 1)
+		volume_preferences[VOLUME_AMB] = 1
+	if(volume_preferences[VOLUME_AMB] < 0)
+		volume_preferences[VOLUME_AMB] = 0			
 	soundOutput.update_ambience()
 
 /client/verb/adjust_volume_admin_music()
 	set name = "S : Adjust Volume Admin Music"
 	set category = "Preferences"
 	volume_preferences[VOLUME_ADM]	= (input("Set the volume for admin music", "Volume", volume_preferences[VOLUME_ADM] *100) as num) / 100
+	if(volume_preferences[VOLUME_ADM] > 1)
+		volume_preferences[VOLUME_ADM] = 1
+	if(volume_preferences[VOLUME_ADM] < 0)
+		volume_preferences[VOLUME_ADM] = 0	
 	var/sound/S = sound()
 	S.channel = SOUND_CHANNEL_ADMIN_MIDI
 	S.volume = 100 * volume_preferences[VOLUME_ADM]

@@ -551,10 +551,13 @@ qdel(src)
 		target.icon_state = old_icon_state
 		target.icon = old_icon
 
-
 		for (var/atom/movable/A in T)
-			A.forceMove(target)
+			if (isobj(A))
+				A.loc = target
+
+
 			if (ismob(A))
+				A.loc = target
 				if(iscarbon(A))
 					var/mob/living/carbon/M = A
 					if(M.client)
@@ -568,6 +571,7 @@ qdel(src)
 					if(!iselevator)
 						if(!M.buckled)
 							knocked_down_mobs += M
+				landing_area.Entered(A)
 
 		if(turftoleave && ispath(turftoleave))
 			T.ChangeTurf(turftoleave)

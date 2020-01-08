@@ -105,7 +105,8 @@ var/list/ventcrawl_machinery = list(/obj/structure/machinery/atmospherics/unary/
 
 					forceMove(vent_found)
 					add_ventcrawl(vent_found)
-
+					client.soundOutput.ambience = 'sound/ambience/shipambience.ogg' //Force an ambience change
+					client.soundOutput.update_ambience(null, TRUE)
 				else
 					vent_found.start_processing()
 					to_chat(src, SPAN_WARNING("This vent is not connected to anything."))

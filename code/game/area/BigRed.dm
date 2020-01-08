@@ -284,7 +284,7 @@
 	name = "\improper Colony Grounds"
 	icon_state = "red"
 	ceiling = CEILING_NONE
-	soundscape_interval = 40
+	soundscape_interval = 30
 	soundscape_playlist = SCAPE_PL_WIND
 
 /area/bigredv2/outside/ne
@@ -330,6 +330,8 @@
 	name = "\improper Unknown Area"
 	icon_state = "bluenew"
 	ceiling = CEILING_UNDERGROUND
+	sound_environment = 6
+	soundscape_playlist = SCAPE_PL_CAVE
 
 /area/bigredv2/caves/eta
 	ceiling = CEILING_UNDERGROUND_METAL

@@ -263,7 +263,7 @@
                 if(!input || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE || !(usr in view(1, src)))
                     return FALSE
 
-                input += "<br><br><i>- Sent from a USCM Command Tablet</i>"
+                input += "<br><br><i>- Sent from my USCM Command Tablet</i>"
 
                 marine_announcement(input)
                 log_announcement("[usr.name] ([usr.ckey]) has announced the following: [input]")

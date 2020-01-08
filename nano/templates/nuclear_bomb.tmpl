@@ -1,16 +1,57 @@
-<div class="item" style="padding-top: 10px">
-	<span class='white'>NUCLEAR FISSION EXPLOSIVE</span>
-</div>
+<style type="text/css">
+	.dangerButton {
+		min-width: 15px;
+		float: left;
+		text-align: center;
+		border: 1px solid #161616;
+		padding: 0px 4px 4px 4px;
+		margin: 0 2px 2px 0;
+		color: #white;
+		box-sizing: content-box;
+		background-color: #8c0101;
+		cursor: default;
+		white-space: nowrap;
+	}
+	
+	.dangerButton:hover {
+		background-color: #a60000;
+	}
+
+	.NukeTable {
+		text-align: left;
+		border-collapse: collapse;
+		table-layout: fixed;
+		font-weight: bold;
+	}
+
+</style>
 
 <div class="itemContent" style="padding-top: 2px; width: 100%">
 	<h2>Time Until Detonation: {{:data.timeleft}}</h2>
 </div>
-<div class="itemContent" style="padding-top: 2px; width: 100%">		
-	<h2>{{:helper.link(data.timing ? 'STOP TIMER' : 'START TIMER', 'alert', {'command' : 'toggleNuke'})}}</h2>
-</div>
 <div class="itemContent" style="padding-top: 2px; width: 100%">
-	Safety: {{:helper.link(data.safety ? 'Safe' : 'Engaged', 'alert', {'command' : 'toggleSafety'})}}
+	<h2>{{:helper.link(data.timing ? 'STOP COUNTDOWN' : 'START COUNTDOWN', 'alert', {'command' : 'toggleNuke'}, null, 'dangerButton')}}</h2>
 </div>
-<div class="itemContent" style="padding-top: 2px; width: 100%">
-	Anchor: {{:helper.link(data.anchor ? 'Engaged' : 'Off', 'alert', {'command' : 'toggleAnchor'})}}
-</div>
+<br>
+<table class="NukeTable">
+	<tr>
+		<td>Safety:</td>
+		<td>
+			{{if data.safety}}
+				{{:helper.link('ENABLED', 'alert', {'command' : 'toggleSafety'})}}
+			{{else}}
+				{{:helper.link('DISABLED', 'alert', {'command' : 'toggleSafety'}, null, 'dangerButton')}}
+			{{/if}}
+		</td>
+	</tr>
+	<tr>
+		<td>Anchor:</td>
+		<td>
+			{{if data.anchor}}
+				{{:helper.link('DEPLOYED', 'alert', {'command' : 'toggleAnchor'}, null, 'dangerButton')}}
+			{{else}}
+				{{:helper.link('RETRACTED', 'alert', {'command' : 'toggleAnchor'})}}
+			{{/if}}
+		</td>
+	</tr>
+</table>

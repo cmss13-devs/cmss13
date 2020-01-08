@@ -447,6 +447,20 @@
 	else
 		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
 
+/client/proc/cmd_admin_create_predator_report()
+	set name = "A: Create Yautja AI Announcement"
+	set category = "Event"
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+	var/input = input(usr, "This should be a message from the predator ship's AI. Check with online staff before you send this. Do not use html.", "What?", "") as message|null
+	if(!input)
+		return FALSE
+	yautja_announcement(SPAN_YAUTJABOLDBIG(input))
+	log_admin("[key_name(src)] has created a predator ship AI report: [input]")
+	message_admins("[key_name_admin(src)] has created a predator ship AI report")
+
 /client/proc/cmd_admin_world_narrate() // Allows administrators to fluff events a little easier -- TLE
 	set name = "N: Narrate to Everyone"
 	set category = "Event"

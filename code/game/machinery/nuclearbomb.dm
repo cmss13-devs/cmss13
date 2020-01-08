@@ -50,6 +50,9 @@ var/bomb_set = FALSE
 	if(user.is_mob_incapacitated() || !user.canmove || get_dist(src, user) > 1 || isAI(user))
 		return
 
+	if(isYautja(user))
+		to_chat(usr, SPAN_YAUTJABOLD("A human Purification Device. Primitive and bulky, but effective. You don't have time to try figure out their counterintuitive controls. Better leave hunting grounds before it detonates."))
+
 	user.set_interaction(src)
 	if(deployable)
 		if (!ishuman(user) && !isXenoQueen(user))
@@ -84,7 +87,7 @@ var/bomb_set = FALSE
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
-		ui = new(user, src, ui_key, "nuclear_bomb.tmpl","Nuclear Control Panel", 550, 250)
+		ui = new(user, src, ui_key, "nuclear_bomb.tmpl","Nuclear Fission Explosives Control Panel", 500, 250)
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)
@@ -154,7 +157,7 @@ var/bomb_set = FALSE
 			being_used = TRUE
 			if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				timing = !timing
-				if (timing)
+				if(timing)
 					icon_state = "nuclearbomb2"
 					if(!safety)
 						bomb_set = TRUE
@@ -163,6 +166,8 @@ var/bomb_set = FALSE
 						var/name = "[MAIN_AI_SYSTEM] Nuclear Tracker"
 						var/input = "ALERT.\n\nNUCLEAR EXPLOSIVE ORDINANCE ACTIVATED.\n\nDETONATION IN [timeleft/10] SECONDS."
 						marine_announcement(input, name, 'sound/misc/notice1.ogg')
+						announce_xenos()
+						announce_yautja()
 						message_admins("[src] has been activated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;adminplayerobservejump=[usr]'>JMP</A>)")
 						log_admin("[src] has been activated by [key_name(usr)].")
 					else
@@ -213,6 +218,12 @@ var/bomb_set = FALSE
 		if ((M.client && M.interactee == src))
 			attack_hand(M)
 
+/obj/structure/machinery/nuclearbomb/proc/announce_yautja()
+	var/t_left = duration2text_sec(rand(timeleft - timeleft / 10, timeleft + timeleft / 10))
+	if(timing)
+		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>A human Purification Device has been detected. You have approximately [t_left] to abandon the hunting grounds before it activates."))
+	else
+		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>The human Purification Device's signature has disappeared."))
 
 /obj/structure/machinery/nuclearbomb/proc/announce_xenos()
 	for(var/datum/hive_status/hive in hive_datum)
@@ -230,6 +241,7 @@ var/bomb_set = FALSE
 	var/input = "ALERT.\n\nNUCLEAR EXPLOSIVE ORDINANCE DEACTIVATED"
 	marine_announcement(input, name, 'sound/misc/notice1.ogg')
 	announce_xenos()
+	announce_yautja()
 
 /obj/structure/machinery/nuclearbomb/proc/explode()
 	if(safety)

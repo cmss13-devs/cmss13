@@ -396,7 +396,7 @@
 		for(var/Z in actions)
 			var/datum/action/A = Z
 			A.update_button_icon()
-	playsound(loc, screech_sound_effect, 75, 0)
+	playsound(loc, screech_sound_effect, 75, 0, status = 0)
 	visible_message(SPAN_XENOHIGHDANGER("\The [src] emits an ear-splitting guttural roar!"))
 	create_shriekwave() //Adds the visual effect. Wom wom wom
 	//stop_momentum(charge_dir) //Screech kills a charge

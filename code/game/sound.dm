@@ -29,10 +29,9 @@
 	for(var/mob/M in player_list)
 		if(!M.client || !M.client.soundOutput) 
 			continue
-		if(get_dist(M, turf_source) <= sound_range)
-			T = get_turf(M)
-			if(T && T.z == turf_source.z)
-				M.client.soundOutput.process_sound(soundin, turf_source, vol, frequency, vol_cat, channel, status)
+		T = get_turf(M)
+		if(get_dist(T, turf_source) <= sound_range && T.z == turf_source.z)
+			M.client.soundOutput.process_sound(soundin, turf_source, vol, frequency, vol_cat, channel, status)
 
 //This is the replacement for playsound_local. Use this for sending sounds directly to a client
 /proc/playsound_client(client/C, soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel, status)

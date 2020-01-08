@@ -75,7 +75,7 @@
 //******************
 
 /mob/living/carbon/human/track_death_calculations()
-	if(statistic_exempt || !mind)
+	if(statistic_exempt || !mind || !mind.player_entity)
 		return
 	var/datum/entity/player_stats/human/human_stats = mind.setup_human_stats()
 	var/job_actual = get_actual_job_name(src)

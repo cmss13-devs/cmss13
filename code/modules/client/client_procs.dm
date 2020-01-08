@@ -360,6 +360,8 @@
 	return .
 
 /proc/setup_player_entity(var/ckey)
+	if(!ckey)
+		return
 	if(player_entities["[ckey]"])
 		return player_entities["[ckey]"]
 	var/datum/entity/player_entity/P = new()

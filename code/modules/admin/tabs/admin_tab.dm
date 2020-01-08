@@ -98,6 +98,9 @@
 			player_entity.update_panel_data(round_statistics)
 		var/mob/body = mob
 		body.track_death_calculations()
+		if(body.mind && body.mind.player_entity)
+			body.mind.player_entity.update_panel_data(round_statistics)
+			body.mind.wipe_entity()
 		body.ghostize(1)
 		if(body && !body.key)
 			body.key = "@[key]"	//Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus

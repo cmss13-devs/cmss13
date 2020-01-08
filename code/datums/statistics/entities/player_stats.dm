@@ -75,8 +75,8 @@
 		return
 	if(round_statistics)
 		round_statistics.recalculate_nemesis()
-	if(client && client.player_entity)
-		client.player_entity.update_panel_data(round_statistics)
+	if(mind && mind.player_entity)
+		mind.player_entity.update_panel_data(round_statistics)
 
 //*****************
 //Mob Procs - kills

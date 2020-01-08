@@ -392,7 +392,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	set category = null
 	set name = "Grant All Skills"
 
-	if (!ticker)
+	if(!ticker)
 		alert("Wait until the game starts")
 		return
 	if(M.mind)
@@ -423,8 +423,13 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	log_admin("[key_name(usr)] assumed direct control of [M].")
 	var/mob/adminmob = src.mob
 	M.ckey = src.ckey
-	if(M.client) M.client.change_view(world.view)
-	if( isobserver(adminmob) )
+	if(M.client)
+		M.client.change_view(world.view)
+	if(M.mind)
+		if(M.mind.player_entity)
+			M.track_death_calculations()
+		M.mind.player_entity = setup_player_entity(src.ckey)
+	if(isobserver(adminmob))
 		qdel(adminmob)
 
 /client/proc/cmd_debug_mob_lists()

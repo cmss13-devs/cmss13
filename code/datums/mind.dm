@@ -395,12 +395,19 @@
 /datum/mind/proc/setup_human_stats()
 	if(!player_entity)
 		player_entity = setup_player_entity(ckey)
+		if(!player_entity)
+			return
 	return player_entity.setup_human_stats()
 
 /datum/mind/proc/setup_xeno_stats()
 	if(!player_entity)
 		player_entity = setup_player_entity(ckey)
+		if(!player_entity)
+			return
 	return player_entity.setup_xeno_stats()
+
+/datum/mind/proc/wipe_entity()
+	player_entity = null
 
 //Initialisation procs
 /mob/proc/mind_initialize()

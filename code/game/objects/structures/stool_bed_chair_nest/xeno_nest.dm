@@ -37,55 +37,27 @@
 		healthcheck()
 
 /obj/structure/bed/nest/manual_unbuckle(mob/living/user)
-	if(buckled_mob)
-		if(buckled_mob.buckled == src)
-			if(buckled_mob != user)
-				if(user.stat || user.lying || user.is_mob_restrained())
-					return
-				if(isXeno(user))
-					var/mob/living/carbon/Xenomorph/X = user
-					if(!X.caste.can_denest_hosts)
-						to_chat(X, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
-						return
-				buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"),\
-				SPAN_NOTICE("\The [user] pulls you free from \the [src]."),\
-				SPAN_NOTICE("You hear squelching."))
-				playsound(loc, "alien_resin_move", 50)
+	if(!(buckled_mob && buckled_mob.buckled == src && (buckled_mob != user)))
+		return
 
-				if(ishuman(buckled_mob))
-					var/mob/living/carbon/human/H = buckled_mob
-					H.start_nesting_cooldown()
-				unbuckle()
-			else
-				if(buckled_mob.stat)
-					to_chat(buckled_mob, SPAN_WARNING("You're a little too unconscious to try that."))
-					return
-				if(resisting_ready && buckled_mob == user && buckled_mob.stat != DEAD)
-					buckled_mob.visible_message(SPAN_DANGER("\The [buckled_mob] breaks free from \the [src]!"),\
-					SPAN_DANGER("You pull yourself free from \the [src]!"),\
-					SPAN_NOTICE("You hear squelching."))
-					unbuckle()
-					return
-				if(resisting)
-					to_chat(buckled_mob, SPAN_WARNING("You're already trying to free yourself. Give it some time."))
-					return
-				if(buckled_mob && buckled_mob.name)
-					buckled_mob.visible_message(SPAN_WARNING("\The [buckled_mob] struggles to break free of \the [src]."),\
-					SPAN_WARNING("You struggle to break free from \the [src]."),\
-					SPAN_NOTICE("You hear squelching."))
-				resisting = 1
-				var/mob/oldbuckled = buckled_mob
-				spawn(nest_resist_time)
-					if(resisting && buckled_mob == oldbuckled && buckled_mob.stat != DEAD) //Must be alive and conscious
-						resisting = 0
-						resisting_ready = 1
-						if(ishuman(usr))
-							var/mob/living/carbon/human/H = usr
-							if(H.handcuffed)
-								to_chat(buckled_mob, SPAN_DANGER("You are ready to break free of the nest, but your limbs are still secured. Resist once more to pop up, then resist again to break your limbs free!"))
-							else
-								to_chat(buckled_mob, SPAN_DANGER("You are ready to break free! Resist once more to free yourself!"))
-			add_fingerprint(user)
+	if(user.stat || user.lying || user.is_mob_restrained())
+		return
+
+	if(isXeno(user))
+		var/mob/living/carbon/Xenomorph/X = user
+		if(!X.caste.can_denest_hosts)
+			to_chat(X, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
+			return
+
+	buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"),\
+	SPAN_NOTICE("\The [user] pulls you free from \the [src]."),\
+	SPAN_NOTICE("You hear squelching."))
+	playsound(loc, "alien_resin_move", 50)
+	if(ishuman(buckled_mob))
+		var/mob/living/carbon/human/H = buckled_mob
+		H.start_nesting_cooldown()
+	unbuckle()
+	return
 
 /mob/living/carbon/human/proc/start_nesting_cooldown()
 	set waitfor = 0
@@ -94,7 +66,6 @@
 	recently_unbuckled = 0
 
 /obj/structure/bed/nest/buckle_mob(mob/M as mob, mob/user as mob)
-
 	if(!ismob(M) || isXenoLarva(user) || (get_dist(src, user) > 1) || (M.loc != loc) || user.is_mob_restrained() || user.stat || user.lying || M.buckled || !iscarbon(user))
 		return
 
@@ -136,17 +107,29 @@
 	user.visible_message(SPAN_WARNING("[user] pins [M] into [src], preparing the securing resin."),
 	SPAN_WARNING("[user] pins [M] into [src], preparing the securing resin."))
 	var/M_loc = M.loc
-	if(do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		if(M.loc != M_loc) return
-		if(buckled_mob) //Just in case
-			to_chat(user, SPAN_WARNING("There's already someone in [src]."))
+	if(!do_after(user, 75, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		return
+	if(M.loc != M_loc) 
+		return
+
+	if(buckled_mob) //Just in case
+		to_chat(user, SPAN_WARNING("There's already someone in [src]."))
+		return
+
+	if(ishuman(M)) //Improperly stunned Marines won't be nested
+		var/mob/living/carbon/human/H = M
+		if(!H.lying) //Don't ask me why is has to be
+			to_chat(user, SPAN_WARNING("[M] is resisting, ground them."))
 			return
-		if(ishuman(M)) //Improperly stunned Marines won't be nested
-			var/mob/living/carbon/human/H = M
-			if(!H.lying) //Don't ask me why is has to be
-				to_chat(user, SPAN_WARNING("[M] is resisting, ground them."))
-				return
-		do_buckle(M, user)
+			
+	do_buckle(M, user)
+	if(!M.mind)
+		return
+
+	var/choice = alert(M, "You have no possibility of escaping unless freed by your fellow marines, do you wish to Ghost? If you are freed while ghosted, you will be given the choice to return to your body.", ,"Ghost", "Remain")
+	if(choice == "Ghost")
+		var/mob/dead/observer/ghost = M.ghostize(FALSE)
+		M.mind.ghost_mob = ghost
 
 /obj/structure/bed/nest/send_buckling_message(mob/M, mob/user)
 	M.visible_message(SPAN_XENONOTICE("[user] secretes a thick, vile resin, securing [M] into [src]!"), \
@@ -165,14 +148,15 @@
 /obj/structure/bed/nest/unbuckle(mob/user)
 	if(!buckled_mob)
 		return
-	resisting = 0
-	resisting_ready = 0
+	resisting = FALSE
+	resisting_ready = FALSE
 	buckled_mob.pixel_y = 0
 	buckled_mob.old_y = 0
-	var/endurance_buff = 0
-	if(buckled_mob.mind && buckled_mob.mind.cm_skills)
-		endurance_buff = buckled_mob.mind.cm_skills.get_skill_level(SKILL_ENDURANCE) * 0.05
-	buckled_mob.Stun(1.5 - endurance_buff) // 2 seconds + double effect from endurance
+
+	if(buckled_mob.mind && buckled_mob.mind.ghost_mob && buckled_mob.stat != DEAD)
+		if(alert(buckled_mob.mind.ghost_mob, "You have been freed from your nest, do you want to return to your body?", ,"Yes", "No") == "Yes")
+			buckled_mob.mind.ghost_mob.can_reenter_corpse = 1
+			buckled_mob.mind.ghost_mob.reenter_corpse() // We need to go deeper
 	..()
 
 /obj/structure/bed/nest/ex_act(var/power)

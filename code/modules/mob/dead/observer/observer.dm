@@ -222,7 +222,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/verb/reenter_corpse()
 	set category = "Ghost"
 	set name = "Re-enter Corpse"
-	if(!client)	return
+	if(!client)	
+		return
 	if(!mind || !mind.current || mind.current.disposed || !can_reenter_corpse)
 		to_chat(src, "<span style='color: red;'>You have no body.</span>")
 		return
@@ -230,9 +231,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, "<span style='color: red;'>Another consciousness is in your body...It is resisting you.</span>")
 		return
 	mind.current.key = key
+	mind.ghost_mob = null
 	if(mind.current.client)
 		mind.current.client.change_view(world.view)
-	return 1
+	return TRUE
 
 /mob/dead/observer/verb/toggle_HUDs()
 	set category = "Ghost"

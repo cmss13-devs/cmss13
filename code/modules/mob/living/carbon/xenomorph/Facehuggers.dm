@@ -183,26 +183,23 @@
 	attached = 0
 
 /obj/item/clothing/mask/facehugger/proc/leap_at_nearest_target()
-	if(isturf(loc))
-		var/mob/living/M
-		var/i = 10//So if we have a pile of dead bodies around, it doesn't scan everything, just ten iterations.
-		for(M in view(4,src))
-			if(!i) break
-			if(CanHug(M))
-				M.visible_message(SPAN_WARNING("\The scuttling [src] leaps at [M]!"), \
-				SPAN_WARNING("The scuttling [src] leaps at [M]!"))
-				leaping = 1
-				launch_towards(M, 4, SPEED_FAST)
-				break
-			i--
-		if(!attached) //Didn't hit anything?
-			i = 5
-			for(M in loc)
-				if(!i) break
-				if(CanHug(M))
-					Attach(M)
-					break
-				i--
+	if(!isturf(loc))
+		return
+	for(var/mob/living/M in view(4, src))
+		if(CanHug(M))
+			M.visible_message(SPAN_WARNING("\The scuttling [src] leaps at [M]!"), \
+			SPAN_WARNING("The scuttling [src] leaps at [M]!"))
+			leaping = 1
+			launch_towards(M, 4, SPEED_FAST)
+			break
+
+	if(attached) //Didn't hit anything?
+		return
+	
+	for(var/mob/living/M in loc)
+		if(CanHug(M))
+			Attach(M)
+			break
 
 /obj/item/clothing/mask/facehugger/proc/Attach(mob/living/M)
 	set waitfor = 0

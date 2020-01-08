@@ -227,8 +227,6 @@
 
 			else
 				var/tackle_bonus = 0
-				if(M.frenzy_aura > 0)
-					tackle_bonus = M.frenzy_aura * 3
 				if(isYautja(src))
 					if(prob((M.caste.tackle_chance + tackle_bonus)*0.2))
 						playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)

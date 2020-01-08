@@ -106,7 +106,7 @@
 			status = EGG_BURST
 			var/obj/item/clothing/mask/facehugger/child = new(loc)
 			child.hivenumber = hivenumber
-			child.leap_at_nearest_target()
+			add_timer(CALLBACK(child, /obj/item/clothing/mask/facehugger.proc/leap_at_nearest_target), 10)
 
 /obj/effect/alien/egg/bullet_act(var/obj/item/projectile/P)
 	..()

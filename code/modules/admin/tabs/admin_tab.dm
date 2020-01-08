@@ -89,7 +89,7 @@
 		ghost.can_reenter_corpse = 1
 		ghost.reenter_corpse()
 
-	else if(istype(mob,/mob/new_player))
+	else if(istype(mob, /mob/new_player))
 		to_chat(src, "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>")
 	else
 		//ghostize

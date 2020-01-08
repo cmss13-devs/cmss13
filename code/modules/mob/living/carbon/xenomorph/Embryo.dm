@@ -56,7 +56,7 @@
 				var/mob/living/carbon/Xenomorph/Larva/L = locate() in affected_mob
 				if(L)
 					L.chest_burst(affected_mob)
-				Dispose()
+				qdel(src)
 				return FALSE
 		else
 			var/mob/living/carbon/Xenomorph/Larva/L = locate() in affected_mob
@@ -142,27 +142,25 @@
 /obj/item/alien_embryo/proc/become_larva()
 	// We do not allow chest bursts on the Centcomm Z-level, to prevent
 	// stranded players from admin experiments and other issues
-	if (!affected_mob || affected_mob.z == 2)
+	if(!affected_mob || affected_mob.z == 2)
 		return
 
 	var/client/picked
-
-	if(!affected_mob.first_xeno)
-		// If the bursted person themselves has Xeno enabled, they get the honor of first dibs on the new larva
-		if (affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, "Alien"))
-			picked = affected_mob.client
-		else
-			// Get a candidate from observers
-			var/list/candidates = get_alien_candidates()
-
-			if (candidates && candidates.len)
-				picked = pick(candidates)
-	else
+	// If the bursted person themselves has Xeno enabled, they get the honor of first dibs on the new larva
+	if(affected_mob.first_xeno || (affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, "Alien")))
 		picked = affected_mob.client
+	else if(affected_mob.mind && affected_mob.mind.ghost_mob && affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, "Alien"))
+		picked = affected_mob.mind.ghost_mob.client
+	else
+		// Get a candidate from observers
+		var/list/candidates = get_alien_candidates()
+
+		if(candidates && candidates.len)
+			picked = pick(candidates)
 
 	// Spawn the larva
 	var/mob/living/carbon/Xenomorph/Larva/new_xeno
-
+	
 	if(isYautja(affected_mob))
 		new_xeno = new /mob/living/carbon/Xenomorph/Larva/predalien(affected_mob)
 	else
@@ -186,14 +184,15 @@
 		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva inside a host! Move to burst out of it!"))
 		to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")
 		to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';My life for the queen!')")
-		new_xeno << sound('sound/effects/xeno_newlarva.ogg')
+		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 25, 1)
 
 	stage = 6
 
 /mob/living/carbon/Xenomorph/Larva/proc/chest_burst(mob/living/carbon/victim)
 	set waitfor = 0
-	if(victim.chestburst || loc != victim) return
-	victim.chestburst = 1
+	if(victim.chestburst || loc != victim) 
+		return
+	victim.chestburst = TRUE
 	to_chat(src, SPAN_DANGER("You start bursting out of [victim]'s chest!"))
 	if(victim.knocked_out < 1)
 		victim.KnockOut(20)
@@ -201,20 +200,24 @@
 								 SPAN_DANGER("You feel something ripping up your insides!"))
 	victim.make_jittery(300)
 	sleep(30)
-	if(!victim || !victim.loc) return//host could've been deleted, or we could've been removed from host.
+	if(!victim || !victim.loc) 
+		return//host could've been deleted, or we could've been removed from host.
 	if(loc != victim)
 		victim.chestburst = 0
 		return
 	victim.update_burst()
 	sleep(6) //Sprite delay
-	if(!victim || !victim.loc) return
+	if(!victim || !victim.loc) 
+		return
 	if(loc != victim)
 		victim.chestburst = 0 //if a doc removes the larva during the sleep(6), we must remove the 'bursting' overlay on the human
 		victim.update_burst()
 		return
 
-	if(isYautja(victim)) victim.emote("roar")
-	else victim.emote("scream")
+	if(isYautja(victim)) 
+		victim.emote("roar")
+	else 
+		victim.emote("scream")
 
 	var/burstcount = 0
 

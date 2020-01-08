@@ -35,6 +35,7 @@
 	var/name				//replaces mob/var/original_name
 	var/mob/living/current
 	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
+	var/mob/dead/observer/ghost_mob = null // If we're in a ghost, a reference to it
 	var/active = 0
 
 	var/memory
@@ -49,22 +50,13 @@
 	var/role_alt_title
 	var/role_comm_title
 
-//	var/datum/job/assigned_job
-
 	var/list/datum/objective/objectives = list()
 	var/list/datum/objective/special_verbs = list()
 
 	var/datum/entity/player_entity/player_entity = null
 
-	var/has_been_rev = 0//Tracks if this mind has been a rev or not
-
 	var/faction = FACTION_NEUTRAL			//associated faction
 	var/datum/changeling/changeling		//changeling holder
-
-	var/rev_cooldown = 0
-
-	// the world.time since the mob has been brigged, or -1 if not at all
-	var/brigged_since = -1
 
 	//put this here for easier tracking ingame
 	var/datum/money_account/initial_account
@@ -76,8 +68,9 @@
 
 /datum/mind/proc/transfer_to(mob/living/new_character)
 	if(!istype(new_character))
-		world.log << "## DEBUG: transfer_to(): Some idiot has tried to transfer_to() a non mob/living mob. Please inform Carn"
-	if(current)	current.mind = null	//remove ourself from our old body's mind variable
+		world.log << "## DEBUG: transfer_to(): Some idiot has tried to transfer_to() a non mob/living mob. Please inform a dev"
+	if(current)	
+		current.mind = null	//remove ourself from our old body's mind variable
 
 	if(new_character.mind) new_character.mind.current = null //remove any mind currently in our new body's mind variable
 	nanomanager.user_transferred(current, new_character) // transfer active NanoUI instances to new user

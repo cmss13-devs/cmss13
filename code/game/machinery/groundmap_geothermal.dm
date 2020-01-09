@@ -145,7 +145,7 @@
 				user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s internal damage."),
 				SPAN_NOTICE("You start welding [src]'s internal damage."))
 				if(do_after(user, 200, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(buildstate != 1 || is_on || !WT.isOn()) 
+					if(buildstate != 1 || is_on || !WT.isOn())
 						return FALSE
 					playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 					buildstate = 2
@@ -165,7 +165,7 @@
 			user.visible_message(SPAN_NOTICE("[user] starts securing [src]'s wiring."),
 			SPAN_NOTICE("You start securing [src]'s wiring."))
 			if(do_after(user, 120, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 12))
-				if(buildstate != 2 || is_on) 
+				if(buildstate != 2 || is_on)
 					return FALSE
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				buildstate = 3
@@ -182,7 +182,7 @@
 			user.visible_message(SPAN_NOTICE("[user] starts repairing [src]'s tubing and plating."),
 			SPAN_NOTICE("You start repairing [src]'s tubing and plating."))
 			if(do_after(user, 150, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				if(buildstate != 3 || is_on) 
+				if(buildstate != 3 || is_on)
 					return FALSE
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				buildstate = 0
@@ -280,10 +280,11 @@
 
 /obj/structure/machinery/colony_floodlight
 	name = "Colony Floodlight"
-	icon = 'icons/turf/ground_map.dmi'
-	icon_state = "floodoff"
+	icon = 'icons/obj/structures/machinery/big_floodlight.dmi'
+	icon_state = "flood_s_off"
 	density = 1
 	anchored = 1
+	layer = WINDOW_LAYER
 	var/damaged = 0 //Can be smashed by xenos
 	var/is_lit = 0 //whether the floodlight is switched to on or off. Does not necessarily mean it emits light.
 	unslashable = TRUE
@@ -304,11 +305,11 @@
 
 /obj/structure/machinery/colony_floodlight/update_icon()
 	if(damaged)
-		icon_state = "flooddmg"
+		icon_state = "flood_s_dmg"
 	else if(is_lit)
-		icon_state = "floodon"
+		icon_state = "flood_s_on"
 	else
-		icon_state = "floodoff"
+		icon_state = "flood_s_off"
 
 /obj/structure/machinery/colony_floodlight/attackby(obj/item/I, mob/user)
 	if(damaged)

@@ -23,7 +23,6 @@ var/list/whitelist = list()
 		var/datum/caste_datum/C = RoleAuthority.castes_by_name[CASTE_QUEEN]
 		return C.can_play_caste(client, CASTE_QUEEN)
 	if(job == JOB_SURVIVOR)
-		var/datum/entity/player_entity = client.player_entity
 		var/datum/job/J = RoleAuthority.roles_by_path[/datum/job/civilian/survivor]
 		return J.can_play_role(client)
 	return TRUE

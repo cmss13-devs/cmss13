@@ -28,6 +28,9 @@
 	//Effects
 	var/list/effects_list = list()
 
+	// Base transform matrix
+	var/matrix/base_transform = null
+
 	///Chemistry.
 	var/datum/reagents/reagents = null
 
@@ -93,8 +96,15 @@ directive is properly returned.
 	if(loc)
 		return loc.return_gas()
 
+// Updates the atom's transform
+/atom/proc/apply_transform(var/matrix/M)
+	if(!base_transform)
+		transform = M
+		return
 
-
+	var/matrix/base_copy = matrix(base_transform)
+	// Compose the base and applied transform in that order
+	transform = base_copy.Multiply(M)
 
 /atom/proc/on_reagent_change()
 	return

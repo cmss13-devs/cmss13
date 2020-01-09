@@ -79,7 +79,7 @@
 	if (screen_loc == "CENTER-7,CENTER-7" && fs_view != client_view)
 		var/list/actualview = getviewsize(client_view)
 		fs_view = client_view
-		transform = matrix(actualview[1]/15, 0, 0, 0, actualview[2]/15, 0)
+		apply_transform(matrix(actualview[1]/15, 0, 0, 0, actualview[2]/15, 0))
 
 
 /obj/screen/fullscreen/brute

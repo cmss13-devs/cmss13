@@ -144,7 +144,7 @@
 
 	var/matrix/rotate = matrix() //Change the bullet angle.
 	rotate.Turn(angle)
-	src.transform = rotate
+	src.apply_transform(rotate)
 
 
 	follow_flightpath(speed,change_x,change_y,range) //pyew!

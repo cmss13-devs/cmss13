@@ -36,7 +36,7 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 
 	icon_state = "[get_limb_icon_name(H.species, b_icon, H.gender, name, e_icon)]"
 	dir = SOUTH
-	transform = turn(transform, rand(70,130))
+	apply_transform(turn(transform, rand(70,130)))
 
 
 

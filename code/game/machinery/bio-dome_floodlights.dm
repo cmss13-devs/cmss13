@@ -77,10 +77,11 @@
 
 /obj/structure/machinery/hydro_floodlight
 	name = "Biodome Floodlight"
-	icon = 'icons/turf/ground_map.dmi'
-	icon_state = "floodoff"
+	icon = 'icons/obj/structures/machinery/big_floodlight.dmi'
+	icon_state = "flood_s_off"
 	density = 1
 	anchored = 1
+	layer = WINDOW_LAYER
 	var/damaged = 0 //Can be smashed by xenos
 	var/is_lit = 0
 	unslashable = TRUE
@@ -96,11 +97,11 @@
 
 /obj/structure/machinery/hydro_floodlight/update_icon()
 	if(damaged)
-		icon_state = "flooddmg"
+		icon_state = "flood_s_dmg"
 	else if(is_lit)
-		icon_state = "floodon"
+		icon_state = "flood_s_on"
 	else
-		icon_state = "floodoff"
+		icon_state = "flood_s_off"
 
 /obj/structure/machinery/hydro_floodlight/attackby(obj/item/W as obj, mob/user as mob)
 	var/obj/item/tool/weldingtool/WT = W

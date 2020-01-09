@@ -946,7 +946,7 @@
 	is_tipped_over = TRUE
 	density = 0
 	A.Turn(90)
-	transform = A
+	apply_transform(A)
 	malfunction()
 
 /obj/structure/machinery/vending/proc/flip_back()
@@ -954,5 +954,5 @@
 	is_tipped_over = FALSE
 	density = 1
 	var/matrix/A = matrix()
-	transform = A
+	apply_transform(A)
 	stat &= ~BROKEN //Remove broken. MAGICAL REPAIRS

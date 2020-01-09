@@ -362,7 +362,7 @@
 	if(caste && caste.adjust_size_x != 1)
 		var/matrix/M = matrix()
 		M.Scale(caste.adjust_size_x, caste.adjust_size_y)
-		transform = M
+		apply_transform(M)
 
 	regenerate_icons()
 	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks

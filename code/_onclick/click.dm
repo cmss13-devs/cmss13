@@ -292,7 +292,7 @@
 	screen_loc = "CENTER-[(ox-1)*0.5],CENTER-[(oy-1)*0.5]"
 	var/matrix/M = new
 	M.Scale(px/sx, py/sy)
-	transform = M
+	apply_transform(M)
 
 
 

@@ -112,7 +112,7 @@
 	..()
 	pixel_x = rand(-10,10)
 	pixel_y = rand(-10,10)
-	transform = turn(transform,rand(0,360))
+	apply_transform(turn(transform,rand(0,360)))
 
 /obj/item/trash/ucigbutt
 	name = "cigarette butt"

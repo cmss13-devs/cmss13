@@ -11,8 +11,8 @@
 #define VOLUME_AMB 2
 #define VOLUME_ADM 3
 
-#define MUFFLE_LOW -2000
-#define MUFFLE_MEDIUM -5000
+#define MUFFLE_LOW -500
+#define MUFFLE_MEDIUM -2000
 #define MUFFLE_HIGH -10000
 //Reserved channels
 

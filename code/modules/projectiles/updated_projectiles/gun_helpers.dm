@@ -156,7 +156,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		var/obj/item/attachable/A = attachments[slot]
 		if (!A || !A.light_mod)
 			continue
-		return A.activate_attachment(src, bearer, 1)
+		bearer.SetLuminosity(-A.light_mod)
+		SetLuminosity(A.light_mod)
+		return TRUE
 	return FALSE
 
 /obj/item/weapon/gun/pickup(mob/user)

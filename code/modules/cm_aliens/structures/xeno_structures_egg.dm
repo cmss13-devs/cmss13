@@ -25,7 +25,7 @@
 	delete_egg_triggers()
 
 /obj/effect/alien/egg/ex_act(severity)
-	Burst(1)//any explosion destroys the egg.
+	Burst(TRUE)//any explosion destroys the egg.
 
 /obj/effect/alien/egg/attack_alien(mob/living/carbon/Xenomorph/M)
 
@@ -33,7 +33,7 @@
 		M.animation_attack_on(src)
 		M.visible_message(SPAN_XENOWARNING("[M] crushes \the [src]"),
 			SPAN_XENOWARNING("You crush \the [src]"))
-		Burst(1)
+		Burst(TRUE)
 		return
 
 	if(!istype(M))
@@ -54,7 +54,7 @@
 				to_chat(M, SPAN_XENOWARNING("You nudge the egg, but nothing happens."))
 				return
 			to_chat(M, SPAN_XENONOTICE("You retrieve the child."))
-			Burst(0)
+			Burst(FALSE)
 
 /obj/effect/alien/egg/proc/Grow()
 	set waitfor = 0
@@ -87,7 +87,7 @@
 		egg_triggers -= trigger
 		qdel(trigger)
 
-/obj/effect/alien/egg/proc/Burst(kill = 1) //drops and kills the hugger if any is remaining
+/obj/effect/alien/egg/proc/Burst(var/kill = TRUE, var/instant_trigger = FALSE) //drops and kills the hugger if any is remaining
 	set waitfor = 0
 	if(kill && status != EGG_DESTROYED)
 		delete_egg_triggers()
@@ -106,7 +106,10 @@
 			status = EGG_BURST
 			var/obj/item/clothing/mask/facehugger/child = new(loc)
 			child.hivenumber = hivenumber
-			add_timer(CALLBACK(child, /obj/item/clothing/mask/facehugger.proc/leap_at_nearest_target), 10)
+			if(instant_trigger)
+				add_timer(CALLBACK(child, /obj/item/clothing/mask/facehugger.proc/leap_at_nearest_target), 10)
+			else
+				child.GoIdle()
 
 /obj/effect/alien/egg/bullet_act(var/obj/item/projectile/P)
 	..()
@@ -185,16 +188,16 @@
 
 /obj/effect/alien/egg/proc/healthcheck()
 	if(health <= 0)
-		Burst(1)
+		Burst(TRUE)
 
 /obj/effect/alien/egg/HasProximity(atom/movable/AM as mob|obj)
 	if(status == EGG_GROWN)
 		if(!CanHug(AM) || isYautja(AM) || isSynth(AM)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
 			return
-		Burst(0)
+		Burst(FALSE, TRUE)
 
 /obj/effect/alien/egg/flamer_fire_act() // gotta kill the egg + hugger
-	Burst(1)
+	Burst(TRUE)
 
 
 //The invisible traps around the egg to tell it there's a mob right next to it.

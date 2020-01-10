@@ -34,14 +34,15 @@
 		S.falloff = FALLOFF_SOUNDS * max(round(S.volume * 0.025), 1)
 
 		if(status & SOUND_MUFFLE)
-			var/dist = get_dist(emit_pos, owner_turf)
-			if(dist > -1)
-				var/list/line = getline2(emit_pos, owner_turf)
-				for(var/turf/closed/C in line)
-					muffling += C.sound_muffling
-				if(muffling < MUFFLE_HIGH) return FALSE
-				if(muffling < 0)
-					S.falloff = (500 / muffling) * -1
+			var/dist = get_dist(emit_pos, owner.mob)
+			var/list/line = getline2(emit_pos, owner.mob)
+			for(var/turf/closed/C in line)
+				if(C.sound_muffling < muffling)
+					muffling = C.sound_muffling
+			if(dist <= 1 && muffling != 0)
+				muffling = MUFFLE_LOW
+			if(muffling > 0)
+				S.falloff = (500 / muffling) * -1
 			S.echo = list(muffling)
 			
 	S.status = status

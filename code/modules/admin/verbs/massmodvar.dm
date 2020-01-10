@@ -119,9 +119,8 @@
 		if(dir)
 			to_chat(usr, "If a direction, direction is: [dir]")
 
-	var/list/possible_classes = list("text",
-		"num","type","icon","file")
-	if(variable == "transform")
+	var/list/possible_classes = list("text","num","type","icon","file")
+	if(LAZYLEN(stored_matrices))
 		possible_classes += "matrix"
 	possible_classes += "edit referenced object"
 	possible_classes += "restore to default"

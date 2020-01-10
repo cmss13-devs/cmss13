@@ -55,7 +55,7 @@
 	var/list/data = list(
 		"rsc_credits" = chemical_research_data.rsc_credits,
 		"clearance_level" = chemical_research_data.clearance_level,
-		"broker_cost" = max(2*(chemical_research_data.clearance_level + 1) - (5 - defcon_controller.current_defcon_level), 3),
+		"broker_cost" = max(3*(chemical_research_data.clearance_level + 1) - 2*(5 - defcon_controller.current_defcon_level), 1),
 		"research_documents" = chemical_research_data.research_documents
 	)
 

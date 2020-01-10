@@ -1982,7 +1982,7 @@
 		if(reference && !reference.completed)
 			status_bar = "INCOMPLETE DATA DETECTED IN REFERENCE"
 			return FALSE
-		if(target && !target.completed && target.data.properties.len < 2)
+		if(target && target.data.properties.len < 2)
 			status_bar = "TARGET COMPLEXITY INSUFFICIENT FOR RELATION"
 			return FALSE
 		if(reference && target)

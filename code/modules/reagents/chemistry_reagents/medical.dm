@@ -728,7 +728,7 @@
 	overdose = LOW_REAGENTS_OVERDOSE
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_MUSCLESTIMULATING = 1, PROPERTY_CARCINOGENIC = 1)
+	properties = list(PROPERTY_MUSCLESTIMULATING = 1, PROPERTY_CARDIOTOXIC = 1)
 
 /datum/reagent/hyperzine/on_mob_life(mob/living/M)
 	. = ..()

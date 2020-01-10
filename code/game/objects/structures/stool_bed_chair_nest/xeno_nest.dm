@@ -81,7 +81,7 @@
 		to_chat(user, SPAN_WARNING("\The [M] is too big to fit in [src]."))
 		return
 
-	if(!isXeno(user))
+	if(!isXeno(user) || isSynth(M))
 		to_chat(user, SPAN_WARNING("Gross! You're not touching that stuff."))
 		return
 

@@ -71,7 +71,6 @@
 
 //Deal with picking up facehuggers. "attack_alien" is the universal 'xenos click something while unarmed' proc.
 /obj/item/clothing/mask/facehugger/attack_alien(mob/living/carbon/Xenomorph/user)
-
 	if(user.hivenumber != hivenumber)
 		user.animation_attack_on(src)
 		user.visible_message(SPAN_XENOWARNING("[user] crushes \the [src]"), SPAN_XENOWARNING("You crush \the [src]"))
@@ -85,12 +84,19 @@
 		attack_hand(user)//Not a carrier, or already full? Just pick it up.
 
 /obj/item/clothing/mask/facehugger/attack(mob/M, mob/user)
-	if(CanHug(M) && (M.is_mob_incapacitated() || M.lying || M.buckled && !isYautja(M)))
-		Attach(M)
-		user.update_icons()
-	else
+	if(!(CanHug(M) && (M.is_mob_incapacitated() || M.lying || M.buckled && !isYautja(M))))
 		to_chat(user, SPAN_WARNING("The facehugger refuses to attach."))
 		..()
+		return
+
+	if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_BUILD))
+		return
+
+	if(!(CanHug(M) && (M.is_mob_incapacitated() || M.lying || M.buckled)))
+		return
+
+	Attach(M)
+	user.update_icons()
 
 /obj/item/clothing/mask/facehugger/attack_self(mob/user)
 	if(isXenoCarrier(user))
@@ -185,12 +191,12 @@
 /obj/item/clothing/mask/facehugger/proc/leap_at_nearest_target()
 	if(!isturf(loc))
 		return
-	for(var/mob/living/M in view(4, src))
+	for(var/mob/living/M in view(3, src))
 		if(CanHug(M))
 			M.visible_message(SPAN_WARNING("\The scuttling [src] leaps at [M]!"), \
 			SPAN_WARNING("The scuttling [src] leaps at [M]!"))
 			leaping = 1
-			launch_towards(M, 4, SPEED_FAST)
+			launch_towards(M, 3, SPEED_FAST)
 			break
 
 	if(attached) //Didn't hit anything?

@@ -23,7 +23,7 @@ var/datum/subsystem/global_sound/SSglobal_sound
 		var/client/C = currentrun[currentrun.len]
 		currentrun.len--
 
-		if(!C.soundOutput) 
+		if(!C || !C.soundOutput) 
 			continue
 
 		C.soundOutput.process()

@@ -334,6 +334,7 @@
 /datum/hive_status
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/mob/living/carbon/Xenomorph/Queen/living_xeno_queen
+	var/egg_planting_range = 15
 	var/slashing_allowed = 1 //This initial var allows the queen to turn on or off slashing. Slashing off means harm intent does much less damage.
 	var/queen_time = 300 //5 minutes between queen deaths
 	var/xeno_queen_timer
@@ -721,6 +722,16 @@
 	slots[1] = max(0, Ceiling(effective_total * (0.5 - tier_3_xenos.len / effective_total) * tier_slot_multiplier) - tier_2_xenos.len)
 
 	return slots
+
+// returns if that location can be used to plant eggs
+/datum/hive_status/proc/in_egg_plant_range(var/turf/T)	
+	if(!istype(living_xeno_queen))
+		return TRUE // xenos already dicked without queen. Let them plant whereever
+		
+	if(!living_xeno_queen.ovipositor)
+		return FALSE // ovid queen only
+
+	return get_dist(living_xeno_queen, T) <= egg_planting_range	
 
 /* Resolve this line once structures are resolved.
 /datum/hive_status/proc/can_build_structure(var/structure_name)

@@ -897,8 +897,8 @@
 		updateUsrDialog()
 		return 0
 
-	if(istype(O,/obj/item/storage/bag/plants))
-		var/obj/item/storage/bag/plants/B = O
+	if(istype(O,/obj/item/storage))
+		var/obj/item/storage/B = O
 		if(B.contents.len > 0)
 			to_chat(user, SPAN_NOTICE("You start dumping the contents of [B] into [src]."))
 			if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
@@ -911,7 +911,6 @@
 						to_chat(user, SPAN_WARNING("Cannot refine [I] into a reagent."))
 						break
 					else
-						//B.remove_from_storage(I)
 						user.drop_inv_item_to_loc(I, src)
 						holdingitems += I
 			playsound(user.loc, "rustle", 15, 1, 6)
@@ -2037,8 +2036,8 @@
 				C.overdose = max(5, C.overdose - 5)
 			C.overdose_critical = max(10, C.overdose_critical - 5)
 		else if(dictionary["negative"].Find(target_property))
-			C.overdose += 10
-			C.overdose_critical += 10
+			C.overdose += 5
+			C.overdose_critical += 5
 		end_simulation(C)
 
 /obj/structure/machinery/chem_simulator/proc/suppress()
@@ -2048,8 +2047,8 @@
 		//Change the reagent
 		C.properties[target_property] = max(C.properties[target_property]-1,0)
 		if(dictionary["positive"].Find(target_property))
-			C.overdose += 10
-			C.overdose_critical += 10
+			C.overdose += 5
+			C.overdose_critical += 5
 		else if(dictionary["negative"].Find(target_property))
 			if(C.overdose <= 5)
 				C.overdose = max(C.overdose - 1,1)
@@ -2072,8 +2071,8 @@
 				C.overdose = max(5, C.overdose - 5)
 			C.overdose_critical = max(10, C.overdose_critical - 5)
 		else if(dictionary["negative"].Find(reference_property))
-			C.overdose += 10
-			C.overdose_critical += 10
+			C.overdose += 5
+			C.overdose_critical += 5
 		end_simulation(C)
 
 /obj/structure/machinery/chem_simulator/proc/end_simulation(var/datum/reagent/C)

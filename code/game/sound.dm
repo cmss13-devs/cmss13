@@ -9,7 +9,7 @@
 //channel: use this only when you want to force the sound to play on an specific channel
 //status: the regular 4 sound flags + SOUND_MUFFLE, which tells soundOutput to apply muffling based on closed turfs in the way
 
-/proc/playsound(atom/source, soundin, vol = 100, vary, sound_range, vol_cat = VOLUME_SFX, channel = 0, status = SOUND_MUFFLE)
+/proc/playsound(atom/source, soundin, vol = 100, vary, sound_range, vol_cat = VOLUME_SFX, channel = 0, status = SOUND_MUFFLE, falloff_mod = 1)
 	if(isarea(source))
 		error("[source] is an area and is trying to make the sound: [soundin]")
 		return
@@ -31,7 +31,7 @@
 			continue
 		T = get_turf(M)
 		if(get_dist(T, turf_source) <= sound_range && T.z == turf_source.z)
-			M.client.soundOutput.process_sound(soundin, turf_source, vol, frequency, vol_cat, channel, status)
+			M.client.soundOutput.process_sound(soundin, turf_source, vol, frequency, vol_cat, channel, status, falloff_mod)
 
 //This is the replacement for playsound_local. Use this for sending sounds directly to a client
 /proc/playsound_client(client/C, soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel, status)
@@ -40,10 +40,10 @@
 
 
 //Use this proc for things like OBs, dropships, or anything that plays a lenghty sound that needs to be heard even by those who arrive late
-/proc/playsound_spacial(atom/source, soundin, vol = 100, duration)
+/proc/playsound_spacial(atom/source, soundin, vol = 100, duration, falloff_mod = 1)
 	var/sound/S = sound(soundin)
 	S.volume = vol
-	S.falloff = FALLOFF_SOUNDS * max(round(S.volume * 0.025), 1)
+	S.falloff = FALLOFF_SOUNDS * falloff_mod * max(round(S.volume * 0.025), 1)
 	var/turf/T = get_turf(source)
 	S.x = T.x  //The XYZ variables are being used as a way to carry the origin's coords, 
 	S.y = T.y  //NOT THE ACTUAL SOUND COORDS

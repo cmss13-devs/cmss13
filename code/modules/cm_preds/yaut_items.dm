@@ -874,7 +874,7 @@
 	var/mob/user = usr
 	var/source_mob = user
 
-	playsound(src.loc,'sound/effects/pred_countdown.ogg', 100, 0, 15, 10)
+	playsound(src, 'sound/effects/pred_countdown.ogg', 100, 0, 15)
 	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))
 	do_after(victim, rand(72, 80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 
@@ -1028,7 +1028,7 @@
 	to_chat(usr, SPAN_NOTICE(" You feel a faint hiss and a crystalline injector drops into your hand."))
 	var/obj/item/reagent_container/hypospray/autoinjector/yautja/O = new(usr)
 	usr.put_in_active_hand(O)
-	playsound(src,'sound/machines/click.ogg', 15, 1)
+	playsound(src, 'sound/machines/click.ogg', 15, 1)
 	return 1
 
 /obj/item/clothing/gloves/yautja/verb/call_disk()

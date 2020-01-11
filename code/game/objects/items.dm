@@ -341,9 +341,7 @@ cases. Override_icon_state should be a list.*/
 // for items that can be placed in multiple slots
 // note this isn't called during the initial dressing of a player
 /obj/item/proc/equipped(mob/user, slot)
-	if(flags_item & MOB_LOCK_ON_EQUIP)
-		if(locked_to_mob)
-			return
+	if((flags_item & MOB_LOCK_ON_EQUIP) && !locked_to_mob)
 		locked_to_mob = user
 
 	src.dir = SOUTH//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards

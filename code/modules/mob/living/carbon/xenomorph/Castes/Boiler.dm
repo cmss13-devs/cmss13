@@ -165,10 +165,12 @@
 	bomb_cooldown = 1
 	is_bombarding = 0
 
+	// Some oddness with show_remaining_time allows you to still fire even if you move on the very last tick
+	var/cur_loc = get_turf(src)
 	var/time_remaining = do_after(src, bombard_speed, INTERRUPT_NO_NEEDHAND|INTERRUPT_LCLICK, BUSY_ICON_HOSTILE, show_remaining_time = TRUE)
 	var/temp_damage = ammo.damage // stores the damage so that it can be reverted
 
-	if(time_remaining && (mutation_type != BOILER_RAILGUN))
+	if((time_remaining || get_turf(src) != cur_loc) && (mutation_type != BOILER_RAILGUN))
 		bomb_cooldown = 0
 		to_chat(src, SPAN_WARNING("You decide not to launch any acid."))
 		return

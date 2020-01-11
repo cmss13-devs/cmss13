@@ -13,7 +13,7 @@
 /datum/job/civilian/survivor
 	title = JOB_SURVIVOR
 	minimum_playtimes = list(
-		JOB_SQUAD = HOURS_3
+		JOB_SQUAD_ROLES = HOURS_3
 	)
 
 /datum/job/civilian/passenger

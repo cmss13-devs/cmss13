@@ -104,10 +104,15 @@
 			to_chat(user, SPAN_WARNING("[M] is resisting, ground them."))
 			return
 
+	var/securing_time = 15
+	// Don't increase the nesting time for monkeys and other species
+	if(isHumanStrict(M))
+		securing_time = 75
+
 	user.visible_message(SPAN_WARNING("[user] pins [M] into [src], preparing the securing resin."),
 	SPAN_WARNING("[user] pins [M] into [src], preparing the securing resin."))
 	var/M_loc = M.loc
-	if(!do_after(user, 75, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(!do_after(user, securing_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		return
 	if(M.loc != M_loc) 
 		return

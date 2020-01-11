@@ -242,7 +242,7 @@
 	msg_admin_attack("Explosion with Power: [power], Falloff: [falloff] in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[epicenter.x];Y=[epicenter.y];Z=[epicenter.z]'>JMP</a>)")
 
 	playsound(epicenter, 'sound/effects/explosionfar.ogg', 100, 1, round(power^2,1), 1000)
-	playsound(epicenter, "explosion", 75, 1, max(round(power,1),7) )
+	playsound(epicenter, "explosion", 75, 1, max(round(power,1),7))
 
 	var/datum/automata_cell/explosion/E = null
 	if(direction)

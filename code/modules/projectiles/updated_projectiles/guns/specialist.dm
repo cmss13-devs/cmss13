@@ -1169,7 +1169,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/unload(mob/user,  reload_override = 0, drop_override = 0)
 	if(user)
-		if(!current_mag.current_rounds < 0)
+		if(current_mag.current_rounds <= 0)
 			to_chat(user, SPAN_WARNING("[src] is already empty!"))
 			return
 		to_chat(user, SPAN_NOTICE("You begin unloading [src]. Hold still..."))

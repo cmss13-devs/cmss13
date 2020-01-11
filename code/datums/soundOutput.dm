@@ -14,7 +14,7 @@
 	owner = C
 	. = ..()
 
-/datum/soundOutput/proc/process_sound(soundin, atom/emit_pos, relat_vol, frequency, vol_cat = VOLUME_SFX, channel, status)
+/datum/soundOutput/proc/process_sound(soundin, atom/emit_pos, relat_vol, frequency, vol_cat = VOLUME_SFX, channel, status, falloff_mod = 1)
 	var/sound/S = sound(soundin)
 	S.volume = owner.volume_preferences[vol_cat] * relat_vol
 
@@ -31,7 +31,7 @@
 		S.x = emit_pos.x - owner_turf.x
 		S.y = 0
 		S.z = emit_pos.y - owner_turf.y
-		S.falloff = FALLOFF_SOUNDS * max(round(S.volume * 0.025), 1)
+		S.falloff = FALLOFF_SOUNDS * falloff_mod * max(round(S.volume * 0.025), 1)
 
 		if(status & SOUND_MUFFLE)
 			var/dist = get_dist(emit_pos, owner.mob)
@@ -152,8 +152,8 @@
 		if(iscarbon(owner.mob))
 			var/mob/living/carbon/C = owner.mob
 			if((status_flags & EAR_DEAF_MUTE) && C.ear_deaf <= 0)
-				var/sound/S = sound()
-				S.channel = 0
+				// Unmute all channels
+				var/sound/S = sound(null)
 				S.status = SOUND_UPDATE
 				sound_to(owner, S)
 				status_flags ^= EAR_DEAF_MUTE

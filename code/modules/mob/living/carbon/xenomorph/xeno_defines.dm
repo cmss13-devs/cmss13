@@ -349,6 +349,7 @@
 	var/list/totalXenos	= list()  //list of living xenos
 	var/isSlotOpen = TRUE //Set true for starting alerts only after the hive has reached its full potential
 	var/turf/hive_location = null //Set to a turf ref every time the queen ovis, for defining the hive location.
+	var/allowed_nest_distance = 15 //How far away do we allow nests from an ovied Queen. Default 15 tiles.
 
 	var/datum/mutator_set/hive_mutators/mutators = new
 	var/tier_slot_multiplier = 1.0

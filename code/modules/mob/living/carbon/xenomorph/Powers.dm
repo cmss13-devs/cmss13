@@ -1434,6 +1434,17 @@
 			to_chat(src, SPAN_WARNING("Resin doors need a wall or resin door next to them to stand up."))
 			return FALSE
 
+	if(selected_resin == RESIN_NEST && hive && hive.living_xeno_queen)
+		if(src == hive.living_xeno_queen)
+			to_chat(src, SPAN_WARNING("You don't bother with such small affairs as building nests."))
+			return 
+		if(!hive.living_xeno_queen.ovipositor)
+			to_chat(src, SPAN_WARNING("Queen is not in her ovipositor, the nest will break down."))
+			return 
+		if(get_dist(src, hive.living_xeno_queen) > hive.allowed_nest_distance)
+			to_chat(src, SPAN_WARNING("Queen is too far away, the nest will break down."))
+			return
+
 	var/wait_time = caste.build_time
 
 	alien_weeds.secreting = 1

@@ -362,12 +362,7 @@
 	if(!isHumanStrict(target))
 		impregnation_amount = 1
 	else
-		impregnation_amount = pick(
-			prob(50); 1,
-			prob(25); 2,
-			prob(12.5); 3,
-			prob(6.25); 4
-		)
+		impregnation_amount = pick(1, 1, 1, 1, 2, 3)
 
 	var/bonus_larva_spawn_chance = hive_datum[hivenumber].bonus_larva_spawn_chance
 	if(bonus_larva_spawn_chance > 0)

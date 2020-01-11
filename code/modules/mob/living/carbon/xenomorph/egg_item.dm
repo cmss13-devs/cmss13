@@ -27,12 +27,10 @@
 			to_chat(user, "This one appears to have been laid by a corrupted Queen.")
 
 /obj/item/xeno_egg/afterattack(atom/target, mob/user, proximity)
-	if(!proximity)
-		return
 	if(isXeno(user))
 		var/turf/T = get_turf(target)
-		plant_egg(user, T)
-	if(ishuman(user))
+		plant_egg(user, T, proximity)
+	if(!proximity && ishuman(user))
 		var/turf/T = get_turf(target)
 		plant_egg_in_containment(user, T)
 
@@ -57,7 +55,12 @@
 	playsound(T, 'sound/effects/splat.ogg', 15, 1)
 	qdel(src)
 
-/obj/item/xeno_egg/proc/plant_egg(mob/living/carbon/Xenomorph/user, turf/T)
+/obj/item/xeno_egg/proc/plant_egg(mob/living/carbon/Xenomorph/user, turf/T, proximity = TRUE)
+	if(!proximity && user != user.hive.living_xeno_queen)
+		return // no message because usual behavior is not to show any
+	if(!user.hive)
+		to_chat(user, SPAN_XENOWARNING("Your hive cannot procreate."))
+		return
 	if(!user.check_alien_construction(T))
 		return
 	if(!user.check_plasma(30))
@@ -65,6 +68,14 @@
 	if(!(locate(/obj/effect/alien/weeds) in T))
 		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on weeds."))
 		return
+	if(!user.hive.in_egg_plant_range(T))
+		to_chat(user, SPAN_XENOWARNING("[src] can only be planted near Queen in ovipositor form. Come closer, child."))
+		return
+
+	if(user == user.hive.living_xeno_queen && !user.hive.living_xeno_queen.in_egg_plant_range(T))
+		to_chat(user, SPAN_XENOWARNING("[T] is too far from you."))
+		return
+
 	user.visible_message(SPAN_XENONOTICE("[user] starts planting [src]."), \
 					SPAN_XENONOTICE("You start planting [src]."), null, 5)
 	var/plant_time = 35

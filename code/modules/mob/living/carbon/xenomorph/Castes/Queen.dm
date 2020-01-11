@@ -123,6 +123,7 @@
 	var/egg_amount = 0 //amount of eggs inside the queen
 	var/last_larva_time = 0
 	var/screech_sound_effect = 'sound/voice/alien_queen_screech.ogg' //the noise the Queen makes when she screeches. Done this way for VV purposes.
+	var/egg_planting_range = 3 // in ovipositor queen can plant egg up to this amount of tiles away from her position
 
 	tileoffset = 0
 	viewsize = 12
@@ -641,3 +642,8 @@
 		return
 
 	..()
+
+/mob/living/carbon/Xenomorph/Queen/proc/in_egg_plant_range(var/turf/T)
+	if(!ovipositor)
+		return FALSE // can't range plant while not in ovi... but who the fuck cares, we can't plant anyways
+	return get_dist(src, T) <= egg_planting_range

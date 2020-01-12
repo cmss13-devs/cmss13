@@ -933,6 +933,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 					if(prefix_length>3)
 						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Invalid Xeno Prefix. Your Prefix can only be up to 3 letters long.")))
+						return
 
 					if(prefix_length==3)
 						var/datum/entity/player_entity/selected_entity = user.client.player_entity
@@ -979,6 +980,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					new_xeno_postfix = uppertext(new_xeno_postfix)
 					if(length(new_xeno_postfix)>2)
 						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Invalid Xeno Postfix. Your Postfix can only be up to 2 letters long.")))
+						return
 					else if(length(new_xeno_postfix)==0)
 						xeno_postfix = ""
 					else

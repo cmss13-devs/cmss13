@@ -30,7 +30,7 @@
 	if(isXeno(user))
 		var/turf/T = get_turf(target)
 		plant_egg(user, T, proximity)
-	if(!proximity && ishuman(user))
+	if(proximity && ishuman(user))
 		var/turf/T = get_turf(target)
 		plant_egg_in_containment(user, T)
 

@@ -333,15 +333,8 @@
 			embryos++
 
 		if(!embryos)
-			var/embryos_to_implant = get_impregnation_amount(target)
-			for(var/i=0, i < embryos_to_implant, i++)
-				var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(target)
-				embryo.hivenumber = hivenumber
-
-			/* Resolve this line once structures are resolved.
 			var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(target)
 			embryo.hivenumber = hivenumber
-			*/
 
 			icon_state = "[initial(icon_state)]_impregnated"
 

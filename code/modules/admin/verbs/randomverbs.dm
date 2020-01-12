@@ -100,3 +100,12 @@ proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
 		log_admin("Admin [key_name(src)] has toggled Ordukai Mode.")
 	else
 		to_chat(usr, SPAN_WARNING("You need to be a ghost in order to use this."))
+
+// bite me
+var/global/grenade_antigrief_on = TRUE
+/client/proc/toggle_grenade_antigrief()
+	set name = "X: Toggle Grenade Antigrief"
+	set category = "Admin"
+
+	grenade_antigrief_on = !grenade_antigrief_on
+	message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has [grenade_antigrief_on ? "enabled" : "disabled"] grenade antigrief"))

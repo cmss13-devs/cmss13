@@ -64,7 +64,6 @@ var/global/list/chemical_identified_list = list()	//List of all identified objec
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
 var/global/list/chemical_gen_classes_list = list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list())
 
-
 var/global/list/landmarks_list = list()				//List of all landmarks created
 var/global/list/surgery_steps = list()				//List of all surgery steps  |BS12
 var/global/list/side_effects = list()				//List of all medical sideeffects types by thier names |BS12
@@ -89,6 +88,12 @@ var/global/list/marine_vendors = list() //Used by our gamemode code
 var/global/list/cargo_ammo_vendors = list() //Used by our gamemode code
 var/global/list/cargo_guns_vendors = list() //Used by our gamemode code
 var/global/list/cm_vending_vendors = list() //Used by our gamemode code
+
+// exceptions to grenade antigrief
+var/global/list/grenade_antigrief_exempt_areas = list(
+	/area/almayer/medical/containment,
+	/area/almayer/medical/testlab
+)
 
 var/global/list/yautja_gear = list() // list of loose pred gear
 

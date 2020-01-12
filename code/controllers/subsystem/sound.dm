@@ -34,4 +34,6 @@ var/datum/subsystem/global_sound/SSglobal_sound
 /datum/subsystem/global_sound/proc/add_sound(sound/S, duration)
 	soundlen_map[S] = duration / 10
 	for(var/client/C in clients)
+		if(!C || !C.soundOutput)
+			continue
 		C.soundOutput.update_globalsounds()

@@ -491,12 +491,12 @@
 		if("Sound from list")
 			play_sound_from_list()
 		if("Imported sound")
-			var/S = input("Pick a sound to play.") as file
+			var/S = input("Pick a sound to play.") as sound
 			play_imported_sound(S)
 		if("Cancel")
 			return
 
-/client/proc/play_imported_sound(soundin)
+/client/proc/play_imported_sound(soundin as sound)
 	if(!check_rights(R_SOUNDS))	
 		return
 	if(midi_playing)

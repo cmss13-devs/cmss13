@@ -47,8 +47,8 @@ var/datum/subsystem/tracking/SStracking
 			else if(isXeno(current_mob))
 				var/mob/living/carbon/Xenomorph/xeno_mob = current_mob
 				xeno_mob.queen_locator()
-			if (MC_TICK_CHECK)
-				return
+			// if (MC_TICK_CHECK)
+			// 	return
 		//currentrun -= tracked_group
 
 /datum/subsystem/tracking/proc/start_tracking(var/tracked_group, var/mob/living/carbon/mob)

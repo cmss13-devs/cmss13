@@ -47,7 +47,7 @@
 
 	user.visible_message(SPAN_NOTICE("[user] labels [A] as \"[label]\"."), \
 						 SPAN_NOTICE("You label [A] as \"[label]\"."))
-	msg_admin_niche("[user]/([user.ckey]) has labeled [A.name] with label \"[label]\".")
+	log_admin("[user] has labeled [A.name] with label \"[label]\". (CKEY: ([user.ckey]))")
 	A.name = "[A.name] ([label])"
 	labels_left--
 
@@ -114,7 +114,7 @@
 	M.last_damage_mob = user
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been stabbed with [name]  by [user.name] ([user.ckey])</font>")
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [name] to stab [M.name] ([M.ckey])</font>")
-	msg_admin_attack("[user.name] ([user.ckey]) Used the [name] to stab [M.name] ([M.ckey]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
+	msg_admin_attack("[user.name] ([user.ckey]) Used the [name] to stab [M.name] ([M.ckey]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 	return
 
 

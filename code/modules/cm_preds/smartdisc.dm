@@ -49,7 +49,7 @@
 		return
 
 	if(user)
-		msg_admin_attack("[user.name] ([user.ckey]) primed \a [src] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
+		msg_admin_attack("[user.name] ([user.ckey]) primed \a [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 	icon_state = initial(icon_state) + "_active"
 	active = 1

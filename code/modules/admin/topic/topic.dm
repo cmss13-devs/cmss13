@@ -1217,8 +1217,7 @@
 			return
 
 		L.revive()
-		message_admins(SPAN_DANGER("Admin [key_name_admin(usr)] healed / revived [key_name_admin(L)]!"), 1)
-		log_admin("[key_name(usr)] healed / revived [key_name(L)]")
+		msg_admin_all("[usr.ckey] ahealed [L.name] ([L.ckey]) in [get_area(L)] ([L.x],[L.y],[L.z]). (NAME: [usr.name])", L.x, L.y, L.z)
 
 	else if(href_list["makealien"])
 		if(!check_rights(R_SPAWN))	return

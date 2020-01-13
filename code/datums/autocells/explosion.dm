@@ -239,7 +239,7 @@
 
 	falloff = max(falloff, power/100)
 
-	msg_admin_attack("Explosion with Power: [power], Falloff: [falloff] in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[epicenter.x];Y=[epicenter.y];Z=[epicenter.z]'>JMP</a>)")
+	msg_admin_attack("Explosion with Power: [power], Falloff: [falloff] in [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]).", epicenter.x, epicenter.y, epicenter.z)
 
 	playsound(epicenter, 'sound/effects/explosionfar.ogg', 100, 1, round(power^2,1))
 	playsound(epicenter, "explosion", 75, 1, max(round(power,1),7))
@@ -304,7 +304,7 @@
 
 				firing_mob.attack_log += "\[[time_stamp()]\] <b>[firing_mob]/[firing_mob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firing_mob)]."
 
-				msg_admin_attack("[firing_mob] ([firing_mob.ckey]) blew up [M] ([M.ckey]) with \a [explosion_source] in [get_area(firing_mob)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location_of_mob.x];Y=[location_of_mob.y];Z=[location_of_mob.z]'>JMP</a>)")
+				msg_admin_attack("[firing_mob] ([firing_mob.ckey]) blew up [M] ([M.ckey]) with \a [explosion_source] in [get_area(firing_mob)] ([location_of_mob.x],[location_of_mob.y],[location_of_mob.z]).", location_of_mob.x, location_of_mob.y, location_of_mob.z)
 		else if(explosion_source_mob)
 			var/mob/firing_mob = explosion_source_mob
 			var/turf/location_of_mob = get_turf(firing_mob)
@@ -318,7 +318,8 @@
 
 			M.attack_log += "\[[time_stamp()]\] <b>[firing_mob]</b> blew up <b>[M]/[M.ckey]</b> with a <b>[explosion_source]</b> in [get_area(firing_mob)]."
 
-			msg_admin_attack("[firing_mob] blew up [M] ([M.ckey]) with a [explosion_source] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location_of_mob.x];Y=[location_of_mob.y];Z=[location_of_mob.z]'>JMP</a>)")
+			msg_admin_attack("[firing_mob] ([firing_mob.ckey]) blew up [M] ([M.ckey]) with \a [explosion_source] in [get_area(firing_mob)] ([location_of_mob.x],[location_of_mob.y],[location_of_mob.z]).", location_of_mob.x, location_of_mob.y, location_of_mob.z)
+
 		else if(explosion_source)
 			M.attack_log += "\[[time_stamp()]\] <b>[M]/[M.ckey]</b> was blown up with a <b>[explosion_source]</b> in [get_area(M)].</b>"
 		else

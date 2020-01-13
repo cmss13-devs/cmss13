@@ -110,7 +110,7 @@
 	color = "#B31008" // rgb: 179, 16, 8
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_HYPERTHERMIC = 2)
-
+	spray_warning = TRUE
 	reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)
 		if(!istype(M, /mob/living) || has_species(M,"Horror"))
 			return

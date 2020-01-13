@@ -556,7 +556,7 @@
 				else
 					H.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
 					user.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
-					msg_admin_attack("[user] ([user.ckey]) shot [H] ([H.ckey]) with \a [name] in [get_area(user)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
+					msg_admin_attack("[user] ([user.ckey]) shot [H] ([H.ckey]) with \a [name] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 				if(weapon_source)
 					H.track_shot_hit(weapon_source, H)
 			if(istype(H.wear_suit, /obj/item/clothing/suit/fire)) continue

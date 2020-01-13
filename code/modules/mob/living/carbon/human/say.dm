@@ -111,7 +111,7 @@
 		italics = 1
 		message_range = 2
 
-	..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0)	//ohgod we should really be passing a datum here.
+	..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode)	//ohgod we should really be passing a datum here.
 
 	INVOKE_ASYNC(src, /mob/living/carbon/human/proc/say_to_radios, used_radios, message, message_mode, verb, speaking)
 

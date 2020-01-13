@@ -166,7 +166,7 @@
 
 		src.occupant.attack_log += "\[[time_stamp()]\] Was gibbed by <b>[user]/[user.ckey]</b>" //One shall not simply gib a mob unnoticed!
 		user.attack_log += "\[[time_stamp()]\] Gibbed <b>[src.occupant]/[src.occupant.ckey]</b>"
-		msg_admin_attack("[user.name] ([user.ckey]) gibbed [src.occupant] ([src.occupant.ckey]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
+		msg_admin_attack("[user.name] ([user.ckey]) gibbed [src.occupant] ([src.occupant.ckey]) in [user.loc.name] ([user.x], [user.y], [user.z]).", user.x, user.y, user.z)
 
 		src.occupant.death("gibber", 1)
 		src.occupant.ghostize()
@@ -201,7 +201,7 @@
 		if(src.occupant.client) // Gibbed a cow with a client in it? log that shit
 			src.occupant.attack_log += "\[[time_stamp()]\] Was gibbed by <b>[user]/[user.ckey]</b>"
 			user.attack_log += "\[[time_stamp()]\] Gibbed <b>[src.occupant]/[src.occupant.ckey]</b>"
-			msg_admin_attack("\[[time_stamp()]\] <b>[key_name(user)]</b> gibbed <b>[key_name(src.occupant)]</b>")
+			msg_admin_attack("[user.name] ([user.ckey]) gibbed [src.occupant] ([src.occupant.ckey]) in [user.loc.name] ([user.x], [user.y], [user.z]).", user.x, user.y, user.z)
 
 		src.occupant.death("gibber", 1)
 		src.occupant.ghostize()

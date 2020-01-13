@@ -185,7 +185,7 @@
 			L.KnockDown(4)
 
 	playsound(loc, 'sound/weapons/Egloves.ogg', 25, 1, 6)
-	msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src] at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+	msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 	deductcharge(hitcost)
 

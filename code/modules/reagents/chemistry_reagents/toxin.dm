@@ -498,6 +498,7 @@
 	id = "pacid"
 	description = "An extremely corrosive acid that's capable of disolving a broad range of materials very quickly."
 	reagent_state = LIQUID
+	spray_warning = TRUE
 	color = "#8E18A9" // rgb: 142, 24, 169
 	toxpwr = 2
 	meltprob = 30

@@ -108,7 +108,7 @@
 				SPAN_WARNING("[user] puts [GM] into [src]."))
 				user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has placed [GM] ([GM.ckey]) in disposals.</font>")
 				GM.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been placed in disposals by [user] ([user.ckey])</font>")
-				msg_admin_attack("[user] ([user.ckey]) placed [GM] ([GM.ckey]) in a disposals unit. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
+				msg_admin_attack("[user] ([user.ckey]) placed [GM] ([GM.ckey]) in a disposals unit in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 				flush()*/
 		return
 
@@ -153,7 +153,7 @@
 
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has placed [target.name] ([target.ckey]) in disposals.</font>")
 		target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been placed in disposals by [user.name] ([user.ckey])</font>")
-		msg_admin_attack("[user] ([user.ckey]) placed [target] ([target.ckey]) in a disposals unit. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
+		msg_admin_attack("[user] ([user.ckey]) placed [target] ([target.ckey]) in a disposals unit in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 	target.forceMove(src)
 	flush()

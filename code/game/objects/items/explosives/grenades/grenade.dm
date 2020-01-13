@@ -33,16 +33,11 @@
 			to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
 			return
 
-		// Don't allow people to prime nades on the Almayer/Dropships if the dropship hasn't crashed and the alert level is not red+
-		// An exception is made for research, since they're usually used for chemnade testing
-		var/turf/T = get_turf(src)
-		if(!(T.loc.type in grenade_antigrief_exempt_areas))
-			var/crash_occured = (ticker && ticker.mode && ticker.mode.is_in_endgame)
-			if(harmful && (T.z in MAIN_SHIP_AND_DROPSHIPS_Z_LEVELS) && (security_level < SEC_LEVEL_RED) && !crash_occured && grenade_antigrief_on)
-				to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from priming the grenade!"))
-				// Let staff know, in case someone's actually about to try to grief
-				message_staff("[key_name(user)] attempted to prime \a [name] in [T.loc] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
-				return
+		if(grenade_grief_check(src))
+			to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from priming the grenade!"))
+			// Let staff know, in case someone's actually about to try to grief
+			message_staff("[key_name(user)] attempted to prime \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+			return
 
 		add_fingerprint(user)
 		activate(user)

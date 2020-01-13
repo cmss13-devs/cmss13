@@ -111,7 +111,7 @@
 			else
 				AM.ex_act(EXPLOSION_THRESHOLD_MLOW)
 		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
-			playsound(U, get_sfx("explosion"), 40, 1, 20, falloff = 3)
+			playsound(U, get_sfx("explosion"), 40, 1, 20)
 			soundplaycooldown = 3
 		soundplaycooldown--
 		if(!debriscooldown)

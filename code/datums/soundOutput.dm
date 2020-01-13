@@ -106,14 +106,12 @@
 			else
 				S.status = SOUND_UPDATE
 			S.channel = globalsounds_channels[I]
+			S.volume = I.volume * owner.volume_preferences[VOLUME_SFX]
 			S.x = I.x - owner_turf.x
 			S.z = I.y - owner_turf.y
 			S.y = 1
 			if(I.z != owner_turf.z || abs(S.x) > I.volume/3 || abs(S.z) > I.volume/3 || owner.mob.ear_deaf > 0) 
-				S.volume = 0
-				S.falloff = 0
-			else
-				S.volume = I.volume * owner.volume_preferences[VOLUME_SFX]
+				S.status |= SOUND_MUTE
 			sound_to(owner, S)
 		return TRUE
 	else

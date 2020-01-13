@@ -33,7 +33,7 @@
 // Debug verbs.
 /client/proc/restart_controller(controller in list("Master", "Failsafe", "Supply Shuttle"))
 	set category = "Debug"
-	set name = "Restart Controller"
+	set name = "X: Restart Controller"
 	set desc = "Restart one of the various periodic loop controllers for the game (be careful!)"
 
 	if (!admin_holder || !(usr.client.admin_holder.rights & R_DEBUG))
@@ -60,7 +60,7 @@
 
 /client/proc/debug_controller(controller in get_world_controllers())
 	set category = "Debug"
-	set name = "Debug Controller"
+	set name = "B: Debug Controller"
 	set desc = "debug the various periodic loop controllers for the game (be careful!)."
 
 	if (!admin_holder || !(usr.client.admin_holder.rights & R_DEBUG))

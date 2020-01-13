@@ -3,13 +3,13 @@
 
 /client/proc/debug_variables(datum/D in world)
 	set category = "Debug"
-	set name = "View Variables"
+	set name = "B: View Variables"
 
 	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
 		to_chat(usr, SPAN_DANGER("You need to be a moderator or higher to access this."))
 		return
 
-	if(!D)	
+	if(!D)
 		return
 
 	var/title = ""

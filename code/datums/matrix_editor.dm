@@ -3,7 +3,7 @@
 	var/selected_matrix = ""
 
 /client/proc/matrix_editor()
-	set name = "Matrix Editor"
+	set name = "A: Matrix Editor"
 	set category = "Debug"
 
 	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & R_DEBUG))

@@ -96,13 +96,17 @@
 			return 0
 
 	src.add_fingerprint(user)
-	if(master_item.loc == user)
-		src.open(user)
+	if(master_item.loc == user || master_item.loc.loc == user) // loc.loc for webbings/accessories
+		if(storage_flags & STORAGE_USING_DRAWING_METHOD && ishuman(user) && contents.len)
+			var/obj/item/I = contents[contents.len]
+			I.attack_hand(user)
+		else
+			open(user)
 		return 0
 
 	for(var/mob/M in range(1, master_item.loc))
 		if(M.s_active == src)
-			src.close(M)
+			close(M)
 	return 1
 
 /obj/item/storage/internal/Adjacent(var/atom/neighbor)

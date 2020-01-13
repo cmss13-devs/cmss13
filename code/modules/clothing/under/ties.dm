@@ -40,7 +40,7 @@
 		to_chat(user, SPAN_NOTICE("You attach \the [src] to \the [has_suit]."))
 		src.add_fingerprint(user)
 
-/obj/item/clothing/accessory/proc/on_removed()
+/obj/item/clothing/accessory/proc/on_removed(mob/living/user, obj/item/clothing/C)
 	if(!has_suit)
 		return
 	has_suit.overlays -= get_inv_overlay()
@@ -470,11 +470,8 @@
 	. = ..()
 
 /obj/item/clothing/accessory/storage/attack_hand(mob/user as mob)
-	if (has_suit)	//if we are part of a suit
-		hold.open(user)
-		return
 
-	if (hold.handle_attack_hand(user))	//otherwise interact as a regular storage item
+	if (hold.handle_attack_hand(user))
 		..(user)
 
 /obj/item/clothing/accessory/storage/MouseDrop(obj/over_object as obj)
@@ -502,6 +499,14 @@
 	for(var/obj/item/I in hold.contents)
 		hold.remove_from_storage(I, T)
 	src.add_fingerprint(user)
+
+/obj/item/clothing/accessory/storage/on_attached(obj/item/clothing/C, mob/living/user)
+	..()
+	C.verbs += /obj/item/clothing/suit/storage/verb/toggle_draw_mode
+
+/obj/item/clothing/accessory/storage/on_removed(mob/living/user, obj/item/clothing/C)
+	..()
+	C.verbs -= /obj/item/clothing/suit/storage/verb/toggle_draw_mode
 
 /obj/item/clothing/accessory/storage/webbing
 	name = "webbing"

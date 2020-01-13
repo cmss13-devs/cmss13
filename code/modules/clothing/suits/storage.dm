@@ -29,4 +29,25 @@
 	pockets.hear_talk(M, msg)
 	..()
 
+/obj/item/clothing/suit/storage/verb/toggle_draw_mode()
+	set name = "Switch Storage Drawing Method"
+	set category = "Object"
 
+	var/toggled = FALSE // Only for the message
+
+	if(!istype(src, /obj/item/clothing/suit/storage)) // This will trigger on uniforms, for webbings etc
+		for(var/obj/item/clothing/accessory/storage/A in accessories)
+			A.hold.storage_flags ^= STORAGE_USING_DRAWING_METHOD
+
+			if(A.hold.storage_flags & STORAGE_USING_DRAWING_METHOD) // Just for the message
+				toggled = TRUE
+	else
+		pockets.storage_flags ^= STORAGE_USING_DRAWING_METHOD
+
+		if(pockets.storage_flags & STORAGE_USING_DRAWING_METHOD)
+			toggled = TRUE
+
+	if(toggled)
+		to_chat(usr, "Clicking [src] with an empty hand now puts the last stored item in your hand.")
+	else
+		to_chat(usr, "Clicking [src] with an empty hand now opens the storage menu.")

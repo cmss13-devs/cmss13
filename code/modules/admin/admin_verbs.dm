@@ -6,6 +6,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/deadmin_self,			/*destroys our own admin datum so we can play as a regular player*/
 	/client/proc/open_STUI, 			// This proc can be used by all admins but depending on your rank you see diffrent stuff.
 	/client/proc/debug_variables,		/*allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify*/
+	/client/proc/debug_global_variables
 	)
 
 var/list/admin_verbs_admin = list(
@@ -159,7 +160,8 @@ var/list/admin_mob_verbs_hideable = list(
 	/datum/admins/proc/show_player_panel,
 	/client/proc/cmd_admin_delete,
 	/datum/admins/proc/togglesleep,
-	/client/proc/debug_variables
+	/client/proc/debug_variables,
+	/client/proc/debug_global_variables
 )
 
 var/list/admin_verbs_teleport = list(
@@ -178,6 +180,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/player_panel_new,		/*shows an interface for all players, with links to various panels*/
 	/client/proc/cmd_admin_pm_context,	/*right-click adminPM interface*/
 	/client/proc/debug_variables,		/*allows us to -see- the variables of any instance in the game.*/
+	/client/proc/debug_global_variables,
 	/client/proc/toggledebuglogs,
 	/client/proc/togglenichelogs,
 	/datum/admins/proc/player_notes_show,

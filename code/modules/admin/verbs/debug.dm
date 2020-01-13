@@ -10,7 +10,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 // Wrapper verb for advanced proccall
 /client/proc/advproccall()
 	set category = "Debug"
-	set name = "Advanced ProcCall"
+	set name = "A: Advanced ProcCall"
 
 	callproc(null)
 
@@ -144,7 +144,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 /client/proc/callatomproc(atom/A)
 	set category = "Debug"
-	set name = "Atom ProcCall"
+	set name = "B: Atom ProcCall"
 	set waitfor = 0
 
 	if(!check_rights(R_DEBUG) || (config.debugparanoid && !check_rights(R_ADMIN))) 
@@ -296,7 +296,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 /client/proc/cmd_admin_change_hivenumber()
 	set category = "Debug"
-	set name = "Change Hivenumber"
+	set name = "E: Change Hivenumber"
 
 	var/mob/living/carbon/Xenomorph/X = input(src,"Select a xeno.", null, null) in living_xeno_list
 	if(!istype(X))
@@ -307,7 +307,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 /client/proc/cmd_debug_toggle_should_check_for_win()
 	set category = "Debug"
-	set name = "Toggle Round End Checks"
+	set name = "H: Toggle Round End Checks"
 
 	if(!ticker || !ticker.mode)
 		to_chat(usr, "Mode not found?")
@@ -322,7 +322,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 //TODO: merge the vievars version into this or something maybe mayhaps
 /client/proc/cmd_debug_del_all()
 	set category = "Debug"
-	set name = "Delete Instance"
+	set name = "E: Delete Instance"
 
 	// to prevent REALLY stupid deletions
 	var/blocked = list(/obj, /obj/item, /obj/effect, /obj/structure/machinery, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/Xenomorph, /mob/living/carbon/human, /mob/dead, /mob/dead/observer, /mob/living/silicon, /mob/living/silicon/robot, /mob/living/silicon/ai)
@@ -353,7 +353,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 /client/proc/cmd_debug_make_powernets()
 	set category = "Debug"
-	set name = "Generate Powernets"
+	set name = "X: Generate Powernets"
 	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	makepowernets()
 	log_admin("[key_name(src)] has remade the powernet. makepowernets() called.")
@@ -434,7 +434,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 /client/proc/cmd_debug_mob_lists()
 	set category = "Debug"
-	set name = "Debug Mob Lists"
+	set name = "E: Debug Mob Lists"
 	set desc = "For when you just gotta know"
 
 	switch(input("Which list?") in list("Players","Admins","Mobs","Living Mobs","Dead Mobs", "Clients"))
@@ -454,7 +454,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 /client/proc/cmd_debug_list_processing_items()
 	set category = "Debug"
-	set name = "List Processing Items"
+	set name = "C: List Processing Items"
 	set desc = "For scheduler debugging"
 
 	var/list/individual_counts = list()

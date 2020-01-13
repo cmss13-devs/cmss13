@@ -26,7 +26,7 @@ var/global/list/power_update_requests_by_area = list()
 	power_last_profile_time = world.time
 
 /client/proc/toggle_power_update_profiling()
-	set name = "Toggle Area Power Update Profiling"
+	set name = "T: Toggle Area Power Update Profiling"
 	set desc = "Toggles the recording of area power update requests."
 	set category = "Debug"
 	if(!check_rights(R_DEBUG))	return

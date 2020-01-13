@@ -163,7 +163,7 @@ var/global/floorIsLava = 0
 /datum/admins/proc/spawn_atom(var/object as text)
 	set category = "Debug"
 	set desc = "(atom path) Spawn an atom"
-	set name = "Spawn"
+	set name = "A: Spawn"
 
 	if(!check_rights(R_SPAWN))	return
 

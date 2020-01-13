@@ -53,7 +53,7 @@ var/datum/subsystem/garbage/SSgarbage
 
 
 /client/proc/gc_dump_hdl()
-	set name = "(GC) Hard Del List"
+	set name = "G: GC Hard Del List"
 	set desc = "List types that fail to soft del and are hard del()'d by the GC."
 	set category = "Debug"
 

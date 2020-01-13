@@ -96,6 +96,8 @@
 			return prefs.process_link(usr, href_list)
 		if("vars")
 			return view_var_Topic(href, href_list, hsrc)
+		if("glob_vars")
+			return view_glob_var_Topic(href, href_list, hsrc)
 		if("matrices")
 			return matrix_editor_Topic(href, href_list, hsrc)
 		if("chat")

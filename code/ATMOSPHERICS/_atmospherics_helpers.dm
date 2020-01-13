@@ -13,7 +13,7 @@
 
 
 /client/proc/atmos_toggle_debug(var/obj/structure/machinery/atmospherics/M in view())
-	set name = "Toggle Debug Messages"
+	set name = "T: Toggle Debug Messages"
 	set category = "Debug"
 	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	M.debug = !M.debug

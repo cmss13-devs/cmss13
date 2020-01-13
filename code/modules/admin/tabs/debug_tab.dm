@@ -1,6 +1,6 @@
 /client/proc/enable_debug_verbs()
 	set category = "Debug"
-	set name = "*Debug Verbs - Show*"
+	set name = "Z: Debug Verbs - Show"
 
 	if(!check_rights(R_DEBUG)) 
 		return
@@ -10,7 +10,7 @@
 
 /client/proc/hide_debug_verbs()
 	set category = "Debug"
-	set name = "*Debug Verbs - Hide*"
+	set name = "Z: Debug Verbs - Hide"
 
 	if(!check_rights(R_DEBUG)) 
 		return
@@ -20,7 +20,7 @@
 
 /client/proc/check_round_statistics()
 	set category = "Debug"
-	set name = "Round Statistics"
+	set name = "C: Round Statistics"
 	if(!check_rights(R_ADMIN|R_DEBUG))	
 		return
 
@@ -28,7 +28,7 @@
 
 /client/proc/cmd_admin_delete(atom/O as obj|mob|turf in world)
 	set category = "Debug"
-	set name = "Delete"
+	set name = "E: Delete"
 
 	if (!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -42,7 +42,7 @@
 
 /client/proc/ticklag()
 	set category = "Debug"
-	set name = "Set Ticklag"
+	set name = "S: Set Ticklag"
 	set desc = "Sets a new tick lag. Recommend you don't mess with this too much! Stable, time-tested ticklag value is 0.9"
 
 	if(!check_rights(R_DEBUG))	return
@@ -93,7 +93,7 @@
 	return
 
 /client/proc/reload_admins()
-	set name = "Reload Admins"
+	set name = "F: Reload Admins"
 	set category = "Debug"
 	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	if(!check_rights(R_SERVER))	return
@@ -102,7 +102,7 @@
 	load_admins()
 
 /client/proc/reload_whitelist()
-	set name = "Reload Whitelist"
+	set name = "F: Reload Whitelist"
 	set category = "Debug"
 	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	if(!check_rights(R_SERVER) || !RoleAuthority) return

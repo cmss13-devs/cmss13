@@ -100,7 +100,7 @@
 	if(!(A in accessories))
 		return
 
-	A.on_removed(user)
+	A.on_removed(user, src)
 	accessories -= A
 	update_clothing_icon()
 

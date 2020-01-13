@@ -130,7 +130,7 @@
 
 /mob/living/carbon/Xenomorph/Carrier/proc/store_hugger(obj/item/clothing/mask/facehugger/F)
 	if(huggers_max > 0 && huggers_cur < huggers_max)
-		if(F.stat == CONSCIOUS && !F.sterile)
+		if(F.stat != DEAD && !F.sterile)
 			huggers_cur++
 			to_chat(src, SPAN_NOTICE("You store the facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
 			qdel(F)

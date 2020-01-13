@@ -1,0 +1,7 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - bugfix: "Unconscious facehuggers (in manually opened egg or dropped on the ground) now can be stored as Carrier or used to infect hosts directly without delay. They still need time to recover to be able to jump on their own."
+  - rscadd: "Ctrl + Clicking eggs as xenomorph will now open egg and put facehugger into your empty hand, provided you can carry facehuggers and have an empty hand."

@@ -56,6 +56,15 @@
 			to_chat(M, SPAN_XENONOTICE("You retrieve the child."))
 			Burst(FALSE)
 
+/obj/effect/alien/egg/clicked(var/mob/user, var/list/mods)
+	if(isobserver(user))
+		return
+	var/mob/living/carbon/Xenomorph/X = user
+	if(istype(X) && status == EGG_GROWN && mods["ctrl"] && X.caste.can_hold_facehuggers)
+		Burst(FALSE, FALSE, X)
+
+	return ..()
+
 /obj/effect/alien/egg/proc/Grow()
 	set waitfor = 0
 	update_icon()
@@ -87,7 +96,7 @@
 		egg_triggers -= trigger
 		qdel(trigger)
 
-/obj/effect/alien/egg/proc/Burst(var/kill = TRUE, var/instant_trigger = FALSE) //drops and kills the hugger if any is remaining
+/obj/effect/alien/egg/proc/Burst(var/kill = TRUE, var/instant_trigger = FALSE, var/mob/living/carbon/Xenomorph/X = null) //drops and kills the hugger if any is remaining
 	set waitfor = 0
 	if(kill && status != EGG_DESTROYED)
 		delete_egg_triggers()
@@ -106,6 +115,9 @@
 			status = EGG_BURST
 			var/obj/item/clothing/mask/facehugger/child = new(loc)
 			child.hivenumber = hivenumber
+			if(X && X.caste.can_hold_facehuggers && (!X.l_hand || !X.r_hand))	//sanity checks
+				X.put_in_hands(child)
+				return
 			if(instant_trigger)
 				add_timer(CALLBACK(child, /obj/item/clothing/mask/facehugger.proc/leap_at_nearest_target), 10)
 			else

@@ -10,7 +10,11 @@
 	pockets.max_storage_space = 4
 
 /obj/item/clothing/suit/storage/attack_hand(mob/user)
-	if (pockets.handle_attack_hand(user))
+	if(loc != user)
+		..(user) // If it's in a box (e.g. SG or spec gear), don't click the pockets pls
+		return
+
+	if(pockets.handle_attack_hand(user))
 		..(user)
 
 /obj/item/clothing/suit/storage/MouseDrop(obj/over_object)

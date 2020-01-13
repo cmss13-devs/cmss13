@@ -1920,3 +1920,18 @@ var/list/WALLITEMS = list(
 			return D
 
 	return null
+
+// Returns true if arming a given grenade might be considered grief
+// Grenades are considered "griefy" if they are primed when all the following are true:
+// * The grenade is on the Almayer/dropship transit z levels
+// * The alert level is green/blue (alternatively, not red+)
+// * The dropship crash hasn't happened yet
+// * An admin hasn't disabled grenade antigrief
+// Certain areas may be exempt from this check. Look up grenade_antigrief_exempt_areas
+/proc/grenade_grief_check(var/obj/item/explosive/grenade/G)
+	var/turf/T = get_turf(G)
+	if(!(T.loc.type in grenade_antigrief_exempt_areas))
+		var/crash_occured = (ticker && ticker.mode && ticker.mode.is_in_endgame)
+		if(G.harmful && (T.z in MAIN_SHIP_AND_DROPSHIPS_Z_LEVELS) && (security_level < SEC_LEVEL_RED) && !crash_occured && grenade_antigrief_on)
+			return TRUE
+	return FALSE

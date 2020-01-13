@@ -1160,13 +1160,21 @@ Defined in conflicts.dm of the #defines folder.
 	if(get_dist(user,target) > max_range)
 		to_chat(user, SPAN_WARNING("Too far to fire the attachment!"))
 		return
-	if(current_rounds > 0) prime_grenade(target,gun,user)
 
+	if(current_rounds > 0)
+		prime_grenade(target,gun,user)
 
 /obj/item/attachable/attached_gun/grenade/proc/prime_grenade(atom/target,obj/item/weapon/gun/gun,mob/living/user)
 	set waitfor = 0
 	var/nade_type = loaded_grenades[1]
 	var/obj/item/explosive/grenade/HE/G = new nade_type (get_turf(gun))
+
+	if(grenade_grief_check(G))
+		qdel(G)
+		to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from firing!"))
+		message_staff("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+		return
+
 	playsound(user.loc, fire_sound, 50, 1)
 	message_admins("[key_name_admin(user)] fired an underslung grenade launcher (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[user]'>JMP</A>)")
 	log_game("[key_name_admin(user)] used an underslung grenade launcher.")

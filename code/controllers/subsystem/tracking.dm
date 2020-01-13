@@ -37,7 +37,7 @@ var/datum/subsystem/tracking/SStracking
 
 	for(var/tracked_group in currentrun)
 		for(var/mob/living/current_mob in currentrun[tracked_group])
-			//currentrun[tracked_group] -= current_mob
+			currentrun[tracked_group] -= current_mob
 			if(!current_mob)
 				stop_tracking(tracked_group, current_mob)
 				continue
@@ -47,9 +47,9 @@ var/datum/subsystem/tracking/SStracking
 			else if(isXeno(current_mob))
 				var/mob/living/carbon/Xenomorph/xeno_mob = current_mob
 				xeno_mob.queen_locator()
-			// if (MC_TICK_CHECK)
-			// 	return
-		//currentrun -= tracked_group
+			if (MC_TICK_CHECK)
+			 	return
+		currentrun -= tracked_group
 
 /datum/subsystem/tracking/proc/start_tracking(var/tracked_group, var/mob/living/carbon/mob)
 	if(!mob)

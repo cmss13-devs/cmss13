@@ -55,7 +55,7 @@
 	if(!isarea(A)) 
 		return FALSE
 	for(var/mob/living/M in A.contents)
-		if(!M.client || !M.client.soundOutput) 
+		if(!M || !M.client || !M.client.soundOutput) 
 			continue
 		M.client.soundOutput.process_sound(soundin, null, vol, 0,VOLUME_AMB, channel, status)
 

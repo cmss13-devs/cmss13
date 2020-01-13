@@ -194,7 +194,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/area/new_area = new_turf.loc
 		
-	if(new_area != last_area)
+	if((new_area != last_area) && new_area)
 		new_area.Entered(src)
 		last_area.Exited(src)
 

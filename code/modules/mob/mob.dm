@@ -445,7 +445,7 @@
 
 		attack_log += "\[[time_stamp()]\]<font color='green'> Grabbed [M.name] ([M.ckey]) </font>"
 		M.attack_log += "\[[time_stamp()]\]<font color='orange'> Grabbed by [name] ([ckey]) </font>"
-		msg_admin_attack("[key_name(src)] grabbed [key_name(M)]")
+		msg_admin_attack("[key_name(src)] grabbed [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 		if(!no_msg)
 			visible_message(SPAN_WARNING("[src] has grabbed [M] passively!"), null, null, 5)

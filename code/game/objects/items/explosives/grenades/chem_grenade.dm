@@ -137,15 +137,13 @@
 		return
 
 	playsound(src.loc, 'sound/effects/bamf.ogg', 50, 1)
-
-	var/det_area = get_area(src)
 	var/reagent_list_text = ""
 	for(var/obj/O in beakers)
 		if(!O.reagents) continue
 		for(var/reagent in O.reagents.reagent_list)
 			reagent_list_text += " [reagent], "
 
-	msg_admin_attack("[src] detonated with contents[reagent_list_text]in [det_area] at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+	msg_admin_attack("[src] detonated a chemnade (REAGENTS: [reagent_list_text]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 	for(var/obj/item/reagent_container/glass/G in beakers)
 		G.reagents.trans_to(src, G.reagents.total_volume)

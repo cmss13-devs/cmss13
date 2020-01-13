@@ -21,9 +21,7 @@
 	src.mob.on_mob_jump()
 	src.mob.forceMove(pick(get_area_turfs(A)))
 
-	log_admin("[key_name(usr)] jumped to [A]")
-	message_admins("[key_name_admin(usr)] jumped to [A] (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[usr]'>JMP</A>)", 1)
-
+	msg_admin_all("[usr.ckey] jumped to area [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z]). (NAME: [usr.name])", usr.loc.x, usr.loc.y, usr.loc.z)
 
 /client/proc/jump_to_turf(var/turf/T in turfs)
 	set name = "Jump to Turf"
@@ -39,8 +37,7 @@
 	if(!isobserver(mob))
 		src.admin_ghost()
 
-	log_admin("[key_name(usr)] jumped to [T.x],[T.y],[T.z] in [T.loc]")
-	message_admins("[key_name_admin(usr)] jumped to [T.x],[T.y],[T.z] in [T.loc]", 1)
+	msg_admin_all("[usr.ckey] jumped to a turf in [T.loc] ([T.x],[T.y],[T.z]). (NAME: [usr.name])", T.x, T.y, T.z)
 
 	src.mob.on_mob_jump()
 	src.mob.forceMove(T)
@@ -59,8 +56,7 @@
 		to_chat(usr, "This object is not located in the game world.")
 		return
 
-	log_admin("[key_name(usr)] jumped to [O]")
-	message_admins("[key_name_admin(usr)] jumped to [O] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[object_location.x];Y=[object_location.y];Z=[object_location.z]'>JMP</A>)")
+	msg_admin_all("[usr.ckey] jumped to [O] in [get_area(O)] ([O.x],[O.y],[O.z]). (NAME: [usr.name])", O.x, O.y, O.z)
 	
 	if(src.mob)
 		if(!isobserver(mob))
@@ -78,8 +74,8 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	log_admin("[key_name(usr)] jumped to [key_name(M)]")
-	message_admins("[key_name_admin(usr)] jumped to [key_name_admin(M)] (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[M]'>JMP</A>)")
+	msg_admin_all("[usr.ckey] jumped to [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z]). (NAME: [usr.name])", M.loc.x, M.loc.y, M.loc.z)
+
 	if(src.mob)
 		if(!isobserver(mob))
 			src.admin_ghost()
@@ -111,8 +107,8 @@
 		A.z = tz
 		//This is a bit hacky but ensures it works properly
 		A.forceMove(A.loc)
-			 
-	message_admins("[key_name_admin(usr)] jumped to coordinates [tx], [ty], [tz] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[tx];Y=[ty];Z=[tz]'>JMP</a>)")
+
+	msg_admin_all("[usr.ckey] jumped to [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z]). (NAME: [usr.name])", usr.loc.x, usr.loc.y, usr.loc.z)
 
 /client/proc/jumptokey()
 	set name = "Jump to Ckey"
@@ -137,8 +133,8 @@
 	if(!isobserver(mob))
 		src.admin_ghost()
 
-	log_admin("[key_name(usr)] jumped to [key_name(M)]")
-	message_admins("[key_name_admin(usr)] jumped to [key_name_admin(M)] (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[M]'>JMP</A>)", 1)
+	msg_admin_all("[usr.ckey] jumped to ckey [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z]).", M.loc.x, M.loc.y, M.loc.z)	
+
 	src.mob.on_mob_jump()
 	src.mob.loc = M.loc
 
@@ -152,8 +148,8 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	log_admin("[key_name(usr)] teleported [key_name(M)]")
-	message_admins("[key_name_admin(usr)] teleported [key_name_admin(M)]", 1)
+	msg_admin_all("[usr.ckey] teleported [key_name(M)] to themselves in [get_area(usr)] ([usr.x],[usr.y],[usr.z]). (NAME: [usr.name])", usr.x, usr.y, usr.z)
+
 	M.on_mob_jump()
 	M.loc = get_turf(usr)
 
@@ -176,8 +172,7 @@
 	if(!M)
 		return
 
-	log_admin("[key_name(usr)] teleported [key_name(M)]")
-	message_admins("[key_name_admin(usr)] teleported [key_name(M)]", 1)
+	msg_admin_all("[usr.ckey] teleported [key_name(M)] to themselves in [get_area(usr)] ([usr.x],[usr.y],[usr.z]). (NAME: [usr.name])", usr.x, usr.y, usr.z)
 
 	M.on_mob_jump()
 	M.loc = get_turf(usr)
@@ -195,5 +190,4 @@
 		M.on_mob_jump()
 		M.loc = pick(get_area_turfs(A))
 
-		log_admin("[key_name(usr)] teleported [key_name(M)] to [A]")
-		message_admins("[key_name_admin(usr)] teleported [key_name_admin(M)] to [A] <A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[M]'>JMP</A>", 1)
+		msg_admin_all("[usr.ckey] teleported [key_name(M)] to [get_area(M)] ([M.x],[M.y],[M.z]). (NAME: [usr.name])", M.x, M.y, M.z)

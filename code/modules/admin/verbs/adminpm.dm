@@ -86,9 +86,9 @@
 						adminhelp(reply)													//sender has left, adminhelp instead
 				return
 
-	recieve_message = "<font color='[recieve_color]'><b>[recieve_pm_type] PM from [get_options_bar(src, C.admin_holder ? 1 : 0, C.admin_holder ? 1 : 0, 1)]: <font color='#DA6200'>[msg]</b></font><br>"
+	recieve_message = "<br><font color='[recieve_color]'><b>[recieve_pm_type] PM from [get_options_bar(src, C.admin_holder ? 1 : 0, C.admin_holder ? 1 : 0, 1)]: <font color='#DA6200'>[msg]</b></font><br>"
 	to_chat(C, recieve_message)
-	to_chat(src, "<font color='#009900'><b>[send_pm_type]PM to [get_options_bar(C, admin_holder ? 1 : 0, admin_holder ? 1 : 0, 1)]: <font color='#DA6200'>[msg]</b></font><br>")
+	to_chat(src, "<br><font color='#009900'><b>[send_pm_type]PM to [get_options_bar(C, admin_holder ? 1 : 0, admin_holder ? 1 : 0, 1)]: <font color='#DA6200'>[msg]</b></font><br>")
 
 	//play the recieving admin the adminhelp sound (if they have them enabled)
 	//non-admins shouldn't be able to disable this

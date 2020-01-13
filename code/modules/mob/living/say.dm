@@ -78,7 +78,7 @@ var/list/department_radio_keys = list(
 		qdel(speech_bubble)
 
 
-/mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/italics=0, var/message_range = world.view, var/sound/speech_sound, var/sound_vol, var/nolog = 0)
+/mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/italics=0, var/message_range = world.view, var/sound/speech_sound, var/sound_vol, var/nolog = 0, var/message_mode = null)
 	var/turf/T
 
 	for(var/dst=0; dst<=1; dst++) //Will run twice if src has a clone
@@ -149,7 +149,16 @@ var/list/department_radio_keys = list(
 	//used for STUI to stop logging of animal messages and radio
 	//if(!nolog)
 	//Rather see stuff twice then not at all.
-	log_say("[name]/[key] : [message]")
+
+	// Log people differently, first, check if they are human
+	if(istype(src, /mob/living/carbon/human))
+		if(message_mode)	// we are talking into a radio
+			log_say("[name] \[[message_mode]\]: [message] (CKEY: [key]) (JOB: [job])")
+		else				// we talk normally
+			log_say("[name]: [message] (CKEY: [key]) (JOB: [job])")
+	else
+		log_say("[name]: [message] (CKEY: [key])")
+		
 	return 1
 
 /mob/living/proc/say_signlang(var/message, var/verb="gestures", var/datum/language/language)

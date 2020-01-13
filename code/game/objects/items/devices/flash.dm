@@ -31,7 +31,7 @@
 
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been flashed (attempt) with [src.name]  by [user.name] ([user.ckey])</font>")
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to flash [M.name] ([M.ckey])</font>")
-	msg_admin_attack("[user.name] ([user.ckey]) Used the [src.name] to flash [M.name] ([M.ckey]) at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+	msg_admin_attack("[user.name] ([user.ckey]) used the [src.name] to flash [M.name] ([M.ckey]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 	if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_FLASH))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
@@ -141,6 +141,10 @@
 			sleep(5)
 			qdel(animation)
 
+	// Adds logging if you use it as an AoE flash
+	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] in hand to flash everyone around him in [src.loc.name] ([src.loc.x],[src.loc.y],[src.loc.z])</font>")
+	msg_admin_attack("[user.name] ([user.ckey]) used the [src.name] to flash everyone around him in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+
 	for(var/mob/living/carbon/human/M in oviewers(3, null))
 		if(prob(50))
 			if (locate(/obj/item/device/cloaking_device, M))
@@ -148,6 +152,8 @@
 					S.active = 0
 					S.icon_state = "shield0"
 		M.flash_eyes()
+		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been AoE flashed (attempt) with [src.name] by [user.name] ([user.ckey]) in [src.loc.name] ([src.loc.x],[src.loc.y],[src.loc.z])</font>")
+		msg_admin_attack("[M.name] ([M.ckey]) has been AoE flashed with [src.name] by [user.name] ([user.ckey]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 	return
 

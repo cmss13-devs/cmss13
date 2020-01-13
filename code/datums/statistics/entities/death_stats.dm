@@ -128,14 +128,12 @@
 	if(A.name)
 		observer_message += " at \the <b>[A.name]</b>"
 
-	var/admin_message = observer_message + " (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)"
+	msg_admin_attack(observer_message, src.loc.x, src.loc.y, src.loc.z)
 
 	for(var/mob/dead/observer/g in player_list)
 		if(g.client && g.client.admin_holder && (g.client.admin_holder.rights & R_MOD) && (g.client.prefs.toggles_chat & CHAT_ATTACKLOGS))
 			continue
 		to_chat(g, SPAN_DEADSAY(observer_message + " (<a href='?src=\ref[g];jumptocoord=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)"))
-
-	msg_admin_attack(admin_message)
 
 	if(round_statistics)
 		new_death.linked_round = round_statistics

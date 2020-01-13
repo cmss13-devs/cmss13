@@ -118,8 +118,7 @@
 
 	M.revive(FALSE) // Argument means that viruses will be cured (except zombie virus)
 
-	log_admin("[key_name(usr)] healed / revived [key_name(M)]")
-	message_admins(SPAN_DANGER("Admin [key_name_admin(usr)] healed / revived [key_name_admin(M)]!"), 1)
+	msg_admin_all("[usr.ckey] ahealed [M.name] ([M.ckey]) in [get_area(M)] ([M.x],[M.y],[M.z]). (NAME: [usr.name])", M.x, M.y, M.z)
 
 /client/proc/rejuvenate_all_in_view()
 	set name = "E: Rejuvenate All In View"
@@ -135,8 +134,7 @@
 	for(var/mob/living/M in view())
 		M.rejuvenate(FALSE)
 
-	log_admin("[key_name(usr)] used Rejuvenate All In View.")
-	message_admins("[key_name(usr)] used Rejuvenate All In View.")
+	msg_admin_all("[usr.ckey] ahealed everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z]). (NAME: [usr.name])", usr.x, usr.y, usr.z)
 
 /client/proc/cmd_admin_subtle_message(mob/M as mob in mob_list)
 	set name = "Subtle Message"
@@ -157,8 +155,7 @@
 			if(usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))
 				to_chat(M, SPAN_ANNOUNCEMENT_HEADER_BLUE("You hear a voice in your head... [msg]"))
 
-	log_admin("SubtlePM: [key_name(usr)] -> [key_name(M)] : [msg]")
-	message_admins(SPAN_NOTICE("\bold SubtleMessage: [key_name_admin(usr)] -> [key_name_admin(M)] : [msg]"), 1)
+	msg_admin_all("[usr.ckey] subtle messaged [M.name] ([M.ckey]), saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z]). (NAME: [usr.name])", M.x, M.y, M.z)
 
 /client/proc/cmd_admin_direct_narrate(var/mob/M)
 	set name = "Narrate"

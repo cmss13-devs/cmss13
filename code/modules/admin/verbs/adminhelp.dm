@@ -127,7 +127,7 @@ var/global/list/ahelp_msgs = list()
 			to_chat(X, msg)
 
 	//show it to the person adminhelping too
-	to_chat(src, "<font color='#009900'><b>PM to Staff ([selected_type]):</font><br>&emsp;<font color='#DA6200'>[original_msg]</b></font><br>")
+	to_chat(src, "<br><font color='#009900'><b>PM to Staff ([selected_type]):</font><br>&emsp;<font color='#DA6200'>[original_msg]</b></font><br>")
 	
 	// Adminhelp cooldown
 	verbs -= /client/verb/adminhelp

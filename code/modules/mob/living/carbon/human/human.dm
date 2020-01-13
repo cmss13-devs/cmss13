@@ -1025,7 +1025,7 @@
 
 	var/dat = data_core.get_manifest()
 
-	show_browser(src, dat, "Crew Manifest", "manifest", "size=370x420")
+	show_browser(src, dat, "Crew Manifest", "manifest", "size=375x420")
 
 /mob/living/carbon/human/proc/set_species(var/new_species, var/default_colour)
 	if(!new_species)

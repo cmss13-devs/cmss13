@@ -519,7 +519,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/dat = data_core.get_manifest()
 
-	show_browser(src, dat, "Crew Manifest", "manifest", "size=370x420")
+	show_browser(src, dat, "Crew Manifest", "manifest", "size=375x420")
 
 /mob/dead/verb/hive_status()
 	set name = "Hive Status"

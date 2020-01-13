@@ -60,9 +60,9 @@
 
 /obj/item/clothing/mask/facehugger/attack_hand(var/mob/user)
 
-	if((stat == CONSCIOUS && !sterile))
+	if(stat != DEAD && !sterile)
 		if(CanHug(user))
-			Attach(user) //If we're conscious, don't let them pick us up even if this fails. Just return.
+			Attach(user) //If we're alive, don't let them pick us up even if this fails. Just return.
 			return
 	if(!isXeno(user) && stat != DEAD)
 		return
@@ -201,7 +201,7 @@
 
 	if(attached) //Didn't hit anything?
 		return
-	
+
 	for(var/mob/living/M in loc)
 		if(CanHug(M))
 			Attach(M)
@@ -210,12 +210,11 @@
 /obj/item/clothing/mask/facehugger/proc/Attach(mob/living/M)
 	set waitfor = 0
 
-	if(attached || M.status_flags & XENO_HOST || isXeno(M) || iszombie(M) || loc == M || stat != CONSCIOUS) return
+	if(attached || M.status_flags & XENO_HOST || isXeno(M) || iszombie(M) || loc == M || stat == DEAD)
+		return
 
 	attached++
-
 	reset_attach_status()
-
 	M.visible_message(SPAN_DANGER("[src] leaps at [M]'s face!"))
 	if(throwing) throwing = 0
 
@@ -224,7 +223,8 @@
 		X.drop_inv_item_on_ground(src)
 		X.update_icons()
 
-	if(isturf(M.loc)) loc = M.loc //Just checkin
+	if(isturf(M.loc))
+		loc = M.loc //Just checkin
 
 	var/cannot_infect //To determine if the hugger just rips off the protection or can infect.
 	if(ishuman(M))

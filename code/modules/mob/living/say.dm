@@ -153,6 +153,8 @@ var/list/department_radio_keys = list(
 	// Log people differently, first, check if they are human
 	if(istype(src, /mob/living/carbon/human))
 		if(message_mode)	// we are talking into a radio
+			if(message_mode == "headset")	// default value, means general
+				message_mode = "General"
 			log_say("[name] \[[message_mode]\]: [message] (CKEY: [key]) (JOB: [job])")
 		else				// we talk normally
 			log_say("[name]: [message] (CKEY: [key]) (JOB: [job])")

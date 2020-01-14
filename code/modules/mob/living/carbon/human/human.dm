@@ -51,17 +51,33 @@
 
 /mob/living/carbon/human/Dispose()
 	if(assigned_squad)
+		SStracking.stop_tracking(assigned_squad.tracking_id, src)
 		var/n = assigned_squad.marines_list.Find(src)
 		if(n)
 			assigned_squad.marines_list[n] = name //mob reference replaced by name string
 		if(assigned_squad.squad_leader == src)
 			assigned_squad.squad_leader = null
 		assigned_squad = null
+
+	if(internal_organs_by_name)
+		for(var/name in internal_organs_by_name)
+			var/datum/internal_organ/I = internal_organs_by_name[name]
+			if(I)
+				I.owner = null
+			internal_organs_by_name[name] = null
+		internal_organs_by_name = null
+
+	if(limbs)
+		for(var/datum/limb/L in limbs)
+			L.owner = null
+			qdel(L)
+		limbs = null
+
 	remove_from_all_mob_huds()
 	human_mob_list -= src
 	living_human_list -= src
 	processable_human_list -= src
-	. = ..()
+	return ..()
 
 /mob/living/carbon/human/Stat()
 	if (!..())
@@ -1070,7 +1086,6 @@
 	INVOKE_ASYNC(src, .proc/update_body, 1, 0)
 	INVOKE_ASYNC(src, .proc/update_hair)
 
-
 	if(species)
 		return 1
 	else
@@ -1343,28 +1358,22 @@
 				to_chat(HS, SPAN_WARNING("There are no splints to remove."))
 
 /mob/living/carbon/human/yautja/New()
-	..()
-	set_species("Yautja")
+	..(new_species = "Yautja")
 
 /mob/living/carbon/human/monkey/New()
-	..()
-	set_species("Monkey")
+	..(new_species = "Monkey")
 
 /mob/living/carbon/human/farwa/New()
-	..()
-	set_species("Farwa")
+	..(new_species = "Farwa")
 
 /mob/living/carbon/human/neaera/New()
-	..()
-	set_species("Neaera")
+	..(new_species = "Neaera")
 
 /mob/living/carbon/human/stok/New()
-	..()
-	set_species("Stok")
+	..(new_species = "Stok")
 
 /mob/living/carbon/human/yiren/New()
-	..()
-	set_species("Yiren")
+	..(new_species = "Yiren")
 
 
 /mob/living/carbon/human/resist_fire()

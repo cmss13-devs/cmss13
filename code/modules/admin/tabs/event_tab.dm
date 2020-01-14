@@ -525,8 +525,8 @@
 			return
 	 
 	if(isnum(heard_midi))
-		log_admin("[key_name(src)] played sound `[soundin]` for [heard_midi] player(s). [clients.len - heard_midi] player(s) have disabled admin midis.")
-		message_admins("[key_name_admin(src)] played sound `[soundin]` for [heard_midi] player(s). [clients.len - heard_midi] player(s) have disabled admin midis.")
+		log_admin("[key_name(src)] played sound `[soundin]` for [heard_midi] player(s). [length(player_list) - heard_midi] player(s) have disabled admin midis.")
+		message_admins("[key_name_admin(src)] played sound `[soundin]` for [heard_midi] player(s). [length(player_list) - heard_midi] player(s) have disabled admin midis.")
 	else
 		log_admin("[key_name(src)] played sound `[soundin]` for [heard_midi].")
 		message_admins("[key_name_admin(src)] played sound `[soundin]` for [heard_midi].")

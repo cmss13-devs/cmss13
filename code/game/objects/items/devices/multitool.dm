@@ -17,9 +17,3 @@
 	throw_speed = SPEED_VERY_FAST
 
 	matter = list("metal" = 50,"glass" = 20)
-	var/obj/structure/machinery/telecomms/buffer // simple machine buffer for device linkage
-
-	
-/obj/item/device/multitool/Dispose()
-	buffer = null
-	. = ..()

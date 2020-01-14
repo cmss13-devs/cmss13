@@ -75,13 +75,14 @@
 	add_fingerprint(user)
 
 /mob/living/carbon/human/proc/get_ghost()
-	if(mind && !client) //Let's call up the correct ghost! Also, bodies with clients only, thank you.
-		for(var/mob/dead/observer/G in player_list)
-			if(G.mind == mind)
-				var/mob/dead/observer/ghost = G
-				if(ghost && ghost.client && ghost.can_reenter_corpse)
-					return ghost
-	return null
+	if(client)
+		return FALSE
+
+	for(var/mob/dead/observer/G in player_list)
+		if(G.mind.current == src)
+			var/mob/dead/observer/ghost = G
+			if(ghost && ghost.client && ghost.can_reenter_corpse)
+				return ghost
 
 /mob/living/carbon/human/proc/is_revivable()
 	var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]

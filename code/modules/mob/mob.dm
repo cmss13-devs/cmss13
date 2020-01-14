@@ -3,9 +3,33 @@
 	mob_list -= src
 	dead_mob_list -= src
 	living_mob_list -= src
+	player_list -= src
+	
+	if(mind)
+		if(mind.current == src)
+			mind.current = null
+		if(mind.original == src)
+			mind.original = null
+		mind = null
+
+	if(hud_used)
+		qdel(hud_used)
+		hud_used = null
+
+	if(open_uis)
+		for(var/datum/nanoui/ui in open_uis)
+			ui.close()
+			qdel(ui)
+		open_uis = null
+
+	interactee = null
+
+	last_damage_source = null
+	last_damage_mob = null
+
 	ghostize()
 	clear_fullscreens()
-	. = ..()
+	return ..()
 
 /mob/New()
 	mob_list += src

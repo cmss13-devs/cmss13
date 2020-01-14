@@ -58,6 +58,11 @@ Pipelines + Other Objects -> Pipe network
 	for(var/mob/living/M in src) //ventcrawling is serious business
 		M.remove_ventcrawl()
 		M.forceMove(loc)
+
+	if(pipe_vision_img)
+		qdel(pipe_vision_img)
+		pipe_vision_img = null
+
 	stop_processing()
 	. = ..()
 

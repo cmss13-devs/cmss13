@@ -1,6 +1,3 @@
-
-
-
 #define GC_COLLECTIONS_PER_TICK 300 // Was 100.
 #define GC_COLLECTION_TIMEOUT (60 SECONDS)
 #define GC_FORCE_DEL_PER_TICK 10
@@ -8,9 +5,7 @@
 //#define GC_FINDREF
 
 
-
 var/datum/subsystem/garbage/SSgarbage
-
 
 /datum/subsystem/garbage
 	name          = "Garbage"
@@ -123,14 +118,23 @@ var/datum/subsystem/garbage/SSgarbage
 				testing("GC: [A] | [A.type] has contents:")
 				for(var/atom/B in A.contents)
 					testing("[B] | [B.type]")
-		var/found = 0
-		for(var/atom/R in world)
-			found += LookForRefs(R, D)
+
+		var/world_found = 0
+		var/datum_found = 0
+		var/client_found = 0
+		var/global_vars_found = 0
+		for(var/datum/R in world) // ATOMS
+			world_found += LookForRefs(R, D)
 		for(var/datum/R)
-			found += LookForRefs(R, D)
+			datum_found += LookForRefs(R, D)
+		for(var/client/R)
+			client_found += LookForRefs(R, D)
 		for(var/A in global.vars)
-			found += LookForListRefs(global.vars[A], D, null, A)
-		to_chat(world, "we found [found]")
+			global_vars_found += LookForListRefs(global.vars[A], D, null, A)
+		to_chat(world, "we found in world [world_found]")
+		to_chat(world, "we found in datum [datum_found]")
+		to_chat(world, "we found in client [client_found]")
+		to_chat(world, "we found in global vars [global_vars_found]")
 		#endif
 
 
@@ -143,7 +147,7 @@ var/datum/subsystem/garbage/SSgarbage
 		else
 			hard_del_profiling[D.type] = 1
 
-		//del D
+		del(D)
 		gc_count++
 		hard_del_count++
 		remainingForceDelPerTick--
@@ -268,7 +272,7 @@ world/loop_checks = 0
 		if(istype(D.vars[V], /datum))
 			var/datum/A = D.vars[V]
 			if(A == targ)
-				testing("GC: [A] | [A.type] referenced by [D] | [D.type], var [V]")
+				testing("GC: [A] | [A.type] referenced by [D] | \ref[D] | [D.type], var [V]")
 				. += 1
 		else if(islist(D.vars[V]))
 			. += LookForListRefs(D.vars[V], targ, D, V)

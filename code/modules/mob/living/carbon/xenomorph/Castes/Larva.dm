@@ -89,8 +89,9 @@
 
 	var/name_prefix = ""
 
-	name_prefix = hive.prefix
-	color = hive.color
+	if(hive)
+		name_prefix = hive.prefix
+		color = hive.color
 	if(hivenumber == XENO_HIVE_CORRUPTED)
 		add_language("English")
 

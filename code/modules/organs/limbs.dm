@@ -86,6 +86,38 @@
 /datum/limb/proc/process()
 		return 0
 
+/datum/limb/Dispose()
+	owner = null
+	parent = null
+	if(children)
+		for(var/datum/limb/L in children)
+			L.parent = null
+		children = null
+
+	if(hidden)
+		qdel(hidden)
+		hidden = null
+
+	if(internal_organs)
+		for(var/datum/internal_organ/IO in internal_organs)
+			IO.owner = null
+			qdel(IO)
+		internal_organs = null
+
+	if(implants)
+		for(var/I in implants)
+			qdel(I)
+		implants = null
+
+	if(bleeding_effects_list)
+		for(var/datum/effects/bleeding/B in bleeding_effects_list)
+			qdel(B)
+		bleeding_effects_list = null
+
+	splinted_icon = null
+
+	return ..()
+
 //Autopsy stuff
 
 //Handles chem traces

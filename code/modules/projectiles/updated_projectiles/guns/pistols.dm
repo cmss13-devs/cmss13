@@ -29,8 +29,9 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED //For easy reference.
 
 /obj/item/weapon/gun/pistol/New()
-		..()
-		if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
+	. = ..()
+	if(current_mag && current_mag.current_rounds > 0)
+		load_into_chamber()
 
 /obj/item/weapon/gun/pistol/unique_action(mob/user)
 		cock(user)

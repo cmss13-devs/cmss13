@@ -7,3 +7,8 @@
 
 /datum/event_handler/proc/handle(sender, datum/event_args/event_args)
 	return 0
+
+/datum/event_handler/Dispose()
+	for(var/datum/event/E in events)
+		E.handlers -= src
+	. = ..()

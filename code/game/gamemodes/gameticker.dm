@@ -166,12 +166,14 @@ var/global/datum/controller/gameticker/ticker = new()
 
 /datum/controller/gameticker/proc/create_characters()
 	for(var/mob/new_player/player in player_list)
-		if(player && player.ready && player.mind)
-			if(!player.mind.assigned_role)
-				continue
-			else
-				player.create_character()
-				qdel(player)
+		if(!(player && player.ready && player.mind))
+			continue
+		
+		if(!player.mind.assigned_role)
+			continue
+			
+		player.create_character()
+		qdel(player)
 
 /datum/controller/gameticker/proc/collect_minds()
 	for(var/mob/living/player in player_list)

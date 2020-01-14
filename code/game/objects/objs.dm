@@ -20,6 +20,8 @@
 	object_list += src
 
 /obj/Dispose()
+	if(buckled_mob) 
+		unbuckle()
 	. = ..()
 	object_list -= src
 
@@ -96,10 +98,6 @@
 
 /obj/proc/hear_talk(mob/M, text)
 	return
-
-/obj/Dispose()
-	if(buckled_mob) unbuckle()
-	. = ..()
 
 /obj/attack_hand(mob/user)
 	if(can_buckle) manual_unbuckle(user)

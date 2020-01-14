@@ -126,8 +126,6 @@
 	if(stat & (BROKEN|NOPOWER))
 		return
 
-	var/obj/item/device/multitool/P = get_multitool(user)
-
 	user.set_interaction(src)
 	var/dat
 	dat = "<font face = \"Courier\">"
@@ -170,12 +168,6 @@
 
 		dat += "<br>  <a href='?src=\ref[src];input=freq'>\[Add Filter\]</a>"
 		dat += "<hr>"
-
-		if(P)
-			if(P.buffer)
-				dat += "<br><br>MULTITOOL BUFFER: [P.buffer] ([P.buffer.id]) <a href='?src=\ref[src];link=1'>\[Link\]</a> <a href='?src=\ref[src];flush=1'>\[Flush\]"
-			else
-				dat += "<br><br>MULTITOOL BUFFER: <a href='?src=\ref[src];buffer=1'>\[Add Machine\]</a>"
 
 	dat += "</font>"
 	temp = ""
@@ -302,8 +294,6 @@
 	if(stat & (BROKEN|NOPOWER))
 		return
 
-	var/obj/item/device/multitool/P = get_multitool(usr)
-
 	if(href_list["input"])
 		switch(href_list["input"])
 
@@ -370,32 +360,6 @@
 				if(src in T.links)
 					T.links.Remove(src)
 				links.Remove(T)
-
-	if(href_list["link"])
-
-		if(P)
-			if(P.buffer && P.buffer != src)
-				if(!(src in P.buffer.links))
-					P.buffer.links.Add(src)
-
-				if(!(P.buffer in src.links))
-					src.links.Add(P.buffer)
-
-				temp = "<font color = #666633>-% Successfully linked with \ref[P.buffer] [P.buffer.name] %-</font color>"
-
-			else
-				temp = "<font color = #666633>-% Unable to acquire buffer %-</font color>"
-
-	if(href_list["buffer"])
-
-		P.buffer = src
-		temp = "<font color = #666633>-% Successfully stored \ref[P.buffer] [P.buffer.name] in buffer %-</font color>"
-
-
-	if(href_list["flush"])
-
-		temp = "<font color = #666633>-% Buffer successfully flushed. %-</font color>"
-		P.buffer = null
 
 	src.Options_Topic(href, href_list)
 

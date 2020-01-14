@@ -5,6 +5,17 @@
 	var/list/datum/pipeline/line_members = list()
 		//membership roster to go through for updates and what not
 
+/datum/pipe_network/Dispose()
+	normal_members = null
+
+	pipe_networks -= src
+	SSpipenet.currentrun_pipenets -= src
+
+	for(var/datum/pipeline/P in line_members)
+		P.network = null
+	line_members = null
+
+	return ..()
 
 /datum/pipe_network/proc/build_network(obj/structure/machinery/atmospherics/start_normal, obj/structure/machinery/atmospherics/reference)
 	//Purpose: Generate membership roster
@@ -14,8 +25,6 @@
 		qdel(src)
 
 	start_normal.network_expand(src, reference)
-
-	update_network_gases()
 
 	if((normal_members.len>0)||(line_members.len>0))
 		pipe_networks += src
@@ -35,7 +44,4 @@
 	for(var/datum/pipeline/line_member in giver.line_members)
 		line_member.network = src
 
-	update_network_gases()
 	return 1
-
-/datum/pipe_network/proc/update_network_gases()

@@ -24365,7 +24365,7 @@
 	},
 /area/almayer/hallways/starboard_umbilical)
 "bpV" = (
-/obj/effect/landmark{
+/obj/effect/landmark/start{
 	name = "JoinLate"
 	},
 /turf/open/floor/almayer{
@@ -25990,7 +25990,7 @@
 /turf/open/floor/almayer,
 /area/almayer/living/cafeteria_starboard)
 "bvE" = (
-/obj/effect/landmark{
+/obj/effect/landmark/start{
 	name = "JoinLate"
 	},
 /turf/open/floor/almayer{
@@ -30103,7 +30103,7 @@
 /obj/effect/landmark/start{
 	name = "Squad Marine"
 	},
-/obj/effect/landmark{
+/obj/effect/landmark/start{
 	name = "JoinLate"
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -30741,7 +30741,7 @@
 /obj/effect/landmark/start{
 	name = "Squad Marine"
 	},
-/obj/effect/landmark{
+/obj/effect/landmark/start{
 	name = "JoinLate"
 	},
 /turf/open/floor/almayer,
@@ -33237,7 +33237,7 @@
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
 "bPM" = (
-/obj/effect/landmark{
+/obj/effect/landmark/start{
 	name = "JoinLate"
 	},
 /turf/open/floor/almayer{
@@ -33977,7 +33977,7 @@
 	},
 /area/almayer/hallways/vehiclehangar)
 "bRV" = (
-/obj/effect/landmark{
+/obj/effect/landmark/start{
 	name = "JoinLate"
 	},
 /turf/open/floor/almayer{
@@ -42438,7 +42438,7 @@
 	},
 /area/almayer/shipboard/brig_cells)
 "dAy" = (
-/obj/effect/landmark{
+/obj/effect/landmark/start{
 	name = "JoinLate"
 	},
 /turf/open/floor/almayer{

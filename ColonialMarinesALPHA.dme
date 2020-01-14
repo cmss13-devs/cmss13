@@ -549,7 +549,6 @@
 #include "code\game\objects\effects\landmarks\itemspawner.dm"
 #include "code\game\objects\effects\landmarks\landmarks.dm"
 #include "code\game\objects\effects\landmarks\survivor_spawner.dm"
-#include "code\game\objects\effects\spawners\bombspawner.dm"
 #include "code\game\objects\effects\spawners\gibspawner.dm"
 #include "code\game\objects\effects\spawners\random.dm"
 #include "code\game\objects\effects\spawners\spawner.dm"

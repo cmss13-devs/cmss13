@@ -15,13 +15,10 @@
 	layer = ABOVE_FLY_LAYER
 	var/adminlarva = 0
 	var/can_reenter_corpse
-	var/datum/hud/living/carbon/hud = null // hud
 	var/started_as_observer //This variable is set to 1 when you enter the game as an observer.
 							//If you died in the game and are a ghost - this will remain as null.
 							//Note that this is not a reliable way to determine if admins started as observers, since they change mobs a lot.
-//	var/has_enabled_antagHUD = 0
 	var/list/HUD_toggled = list(0,0,0,0)
-//	var/antagHUD = 0
 	universal_speak = 1
 	var/atom/movable/following = null
 
@@ -81,6 +78,10 @@
 	if(client && client.player_entity)
 		client.player_entity.update_panel_data(round_statistics)
 
+/mob/dead/observer/Dispose()
+	following = null
+	return ..()
+
 /mob/dead/observer/MouseDrop(atom/A)
 	if(!usr || !A)
 		return
@@ -127,20 +128,28 @@ Works together with spawning an observer, noted above.
 
 	return 1
 
-/mob/proc/ghostize(var/can_reenter_corpse = 1)
-	if(key)
-		var/mob/dead/observer/ghost = new(src)	//Transfer safety to observer spawning proc.
-		ghost.can_reenter_corpse = can_reenter_corpse
-		ghost.timeofdeath = timeofdeath //BS12 EDIT
-		ghost.key = key
-		if(!can_reenter_corpse)
-			away_timer = 300 //they'll never come back, so we can max out the timer right away.
-		if(ghost.client)
-			ghost.client.change_view(world.view) //reset view range to default
-			ghost.client.pixel_x = 0 //recenters our view
-			ghost.client.pixel_y = 0
-			ghost.client.soundOutput.update_ambience()
-		return ghost
+/mob/proc/ghostize(var/can_reenter_corpse = TRUE)
+	if(!key)
+		return
+
+	var/mob/dead/observer/ghost = new(src)	//Transfer safety to observer spawning proc.
+
+	ghost.can_reenter_corpse = can_reenter_corpse
+	ghost.timeofdeath = timeofdeath //BS12 EDIT
+	ghost.key = key
+	ghost.mind = mind
+	mind = null
+
+	if(!can_reenter_corpse)
+		away_timer = 300 //they'll never come back, so we can max out the timer right away.
+
+	if(ghost.client)
+		ghost.client.change_view(world.view) //reset view range to default
+		ghost.client.pixel_x = 0 //recenters our view
+		ghost.client.pixel_y = 0
+		ghost.client.soundOutput.update_ambience()
+		
+	return ghost
 
 /*
 This is the proc mobs get to turn into a ghost. Forked from ghostize due to compatibility issues.
@@ -223,18 +232,19 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/verb/reenter_corpse()
 	set category = "Ghost"
 	set name = "Re-enter Corpse"
+
 	if(!client)	
 		return
+
 	if(!mind || !mind.current || mind.current.disposed || !can_reenter_corpse)
 		to_chat(src, "<span style='color: red;'>You have no body.</span>")
 		return
+
 	if(mind.current.key && copytext(mind.current.key,1,2)!="@")	//makes sure we don't accidentally kick any clients
 		to_chat(src, "<span style='color: red;'>Another consciousness is in your body...It is resisting you.</span>")
 		return
-	mind.current.key = key
-	mind.ghost_mob = null
-	if(mind.current.client)
-		mind.current.client.change_view(world.view)
+
+	mind.transfer_to(mind.current, TRUE)
 	return TRUE
 
 /mob/dead/observer/verb/toggle_HUDs()

@@ -136,8 +136,6 @@
 	var/const/deafness = 2//Carbon
 	var/const/muteness = 4//Carbon
 
-	var/datum/dna/dna = null//Carbon
-
 	var/voice_name = "unidentifiable voice"
 
 	var/faction = "neutral" //Used for checking whether hostile simple animals will attack you, possibly more stuff later

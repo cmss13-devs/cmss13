@@ -9,6 +9,12 @@
 	z_initial = z_descend(location)
 	loc = location
 
+/datum/cas_signal/Dispose()
+	if(linked_cam)
+		qdel(linked_cam)
+		linked_cam = null
+	. = ..()
+
 /datum/cas_signal/proc/get_name()
 	var/area/laser_area = get_area(loc)
 	var/obstructed = obstructed_signal()?"OBSTRUCTED":""

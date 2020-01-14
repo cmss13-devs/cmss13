@@ -106,23 +106,6 @@
 		new /obj/item/storage/pouch/syringe(src)
 		new /obj/item/storage/pouch/medkit(src)
 
-
-
-/obj/structure/closet/secure_closet/animal
-	name = "animal control closet"
-	req_access = list(ACCESS_MARINE_MEDBAY)
-
-	New()
-		..()
-		sleep(2)
-		new /obj/item/device/assembly/signaler(src)
-		new /obj/item/device/radio/electropack(src)
-		new /obj/item/device/radio/electropack(src)
-		new /obj/item/device/radio/electropack(src)
-		return
-
-
-
 /obj/structure/closet/secure_closet/chemical
 	name = "chemical closet"
 	desc = "Store dangerous chemicals in here."
@@ -140,9 +123,6 @@
 		for(var/i = 0, i < 4, i++)
 			new /obj/item/storage/box/pillbottles(src)
 		return
-
-/obj/structure/closet/secure_closet/chemical/antag
-	req_access = list(ACCESS_ILLEGAL_PIRATE)
 
 /obj/structure/closet/secure_closet/medical_wall
 	name = "first aid closet"

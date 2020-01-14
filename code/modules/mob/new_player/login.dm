@@ -16,7 +16,8 @@
 	lastarea = get_area(src.loc)
 
 	sight |= SEE_TURFS
-	player_list |= src
+
+	. = ..()
 
 	new_player_panel()
 

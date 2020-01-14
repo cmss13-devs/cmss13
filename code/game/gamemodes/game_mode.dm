@@ -192,15 +192,6 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	return candidates		//Returns:	The number of people who had the antagonist role set to yes
 
 
-/datum/game_mode/proc/latespawn(var/mob)
-
-/datum/game_mode/proc/num_players()
-	. = 0
-	for(var/mob/new_player/P in player_list)
-		if(P.client && P.ready)
-			. ++
-
-
 ///////////////////////////////////
 //Keeps track of all living heads//
 ///////////////////////////////////

@@ -164,10 +164,12 @@ var/datum/mob_hud/huds = list(
 
 /mob/living/carbon/Xenomorph/remove_from_all_mob_huds()
 	for(var/datum/mob_hud/hud in huds)
-		if(!istype(hud, /datum/mob_hud/xeno))
-			continue
-		hud.remove_from_hud(src)
-
+		if(istype(hud, /datum/mob_hud/xeno))
+			hud.remove_from_hud(src)
+			hud.remove_hud_from(src)
+		else if (istype(hud, /datum/mob_hud/xeno_infection))
+			hud.remove_hud_from(src) 
+			
 
 
 

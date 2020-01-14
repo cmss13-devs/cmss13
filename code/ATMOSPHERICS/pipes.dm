@@ -68,6 +68,7 @@
 	if(!disposed) //not already qdel'd
 		if(parent)
 			qdel(parent)
+			parent = null
 		for(var/obj/structure/machinery/atmospherics/pipe/node in pipeline_expansion())
 			if(istype(node) && !node.disposed && !node.parent)
 				node.parent = new /datum/pipeline()

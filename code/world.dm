@@ -137,6 +137,16 @@ var/world_topic_spam_protect_time = world.timeofday
 
 		return list2params(s)
 
+	// Used in external requests for player data.
+	else if (T == "pinfo")
+		var/retdata = ""
+		if(addr != "127.0.0.1")
+			return "Nah ah ah, you didn't say the magic word"
+		for(var/client/C in clients)
+			retdata  += C.key+","+C.address+","+C.computer_id+"|"
+
+		return retdata
+
 	else if(copytext(T,1,6) == "notes")
 		if(addr != "127.0.0.1")
 			return "Nah ah ah, you didn't say the magic word"

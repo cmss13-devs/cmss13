@@ -13,6 +13,7 @@
 
 var/global/datum/entity/round_stats/round_statistics
 var/global/list/datum/entity/player_entity/player_entities = list()
+var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracking_ids to tacbinos and signal flares
 
 /datum/game_mode
 	var/name = "invalid"

@@ -361,8 +361,8 @@
 	new /obj/item/device/encryptionkey/engi(src)
 	new /obj/item/device/encryptionkey/jtac(src)
 	new /obj/item/device/encryptionkey/jtac(src)
-	new /obj/item/device/binoculars/tactical/range(src)
-	new /obj/item/device/binoculars/tactical/range(src)
+	new /obj/item/device/binoculars/range(src)
+	new /obj/item/device/binoculars/range(src)
 
 /obj/structure/mortar/wo
 	//offset_per_turfs = 1

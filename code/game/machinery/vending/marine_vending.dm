@@ -607,7 +607,7 @@
 						/obj/item/clothing/accessory/storage/webbing = 1,
 						/obj/item/explosive/plastique = 1,
 						/obj/item/explosive/grenade/smokebomb = 3,
-						/obj/item/device/binoculars/tactical = 1,
+						/obj/item/device/binoculars/range/designator = 1,
 						/obj/item/device/motiondetector = 1,
 						/obj/item/storage/backpack/marine/satchel = 2,
 						/obj/item/weapon/gun/flamer = 2,

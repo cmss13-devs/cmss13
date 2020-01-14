@@ -1,7 +1,7 @@
 /obj/item/device/binoculars
-
 	name = "binoculars"
-	desc = "A pair of binoculars."
+	desc = "A military-issued pair of binoculars."
+	icon = 'icons/obj/items/binoculars.dmi'
 	icon_state = "binoculars"
 
 	flags_atom = FPRINT|CONDUCT
@@ -13,6 +13,10 @@
 
 	//matter = list("metal" = 50,"glass" = 50)
 
+/obj/item/device/binoculars/Initialize()
+	. = ..()
+	select_gamemode_skin(type)
+
 /obj/item/device/binoculars/attack_self(mob/user)
 	zoom(user, 11, 12)
 
@@ -23,35 +27,128 @@
 /obj/item/device/binoculars/on_unset_interaction(var/mob/user)
 	flags_atom &= ~RELAY_CLICK
 
-/obj/item/device/binoculars/tactical
-	name = "tactical binoculars"
-	desc = "A pair of binoculars, with a laser targeting function. Ctrl+Click to target something. Alt + Click to switch modes."
+/obj/item/device/binoculars/civ
+	desc = "A pair of binoculars."
+
+/obj/item/device/binoculars/civ/Initialize()
+	. = ..()
+	icon_state = "binoculars_civ"
+
+//RANGEFINDER with ability to acquire coordinates
+/obj/item/device/binoculars/range
+	name = "rangefinder"
+	desc = "A pair of binoculars with a rangefinding function. Ctrl + Click turf to acquire it's coordinates. Ctrl + Click rangefinder to stop lasing."
+	icon_state = "rangefinder"
 	var/laser_cooldown = 0
 	var/cooldown_duration = 200 //20 seconds
-	var/obj/effect/overlay/temp/laser_target/laser
 	var/obj/effect/overlay/temp/laser_coordinate/coord
 	var/target_acquisition_delay = 100 //10 seconds
-	var/mode = 0 //Able to be switched between modes, 0 for cas laser, 1 for finding coordinates.
-	var/changable = 1 //If set to 0, you can't toggle the mode between CAS and coordinate finding
 
-/obj/item/device/binoculars/tactical/clicked(mob/user, list/mods)
-	if (isobserver(user) || isXeno(user)) return
-
-	if (mods["alt"])
-		toggle_bino_mode(user)
-		return 1
-
-	return ..()
-
-/obj/item/device/binoculars/tactical/New()
-	..()
+/obj/item/device/binoculars/range/Initialize()
+	. = ..()
 	update_icon()
 
-/obj/item/device/binoculars/tactical/examine()
-	..()
-	to_chat(usr, SPAN_NOTICE("They are currently set to [mode ? "range finder" : "CAS marking"] mode."))
+/obj/item/device/binoculars/range/Dispose()
+	if(coord)
+		qdel(coord)
+		coord = null
+	. = ..()
 
-/obj/item/device/binoculars/tactical/Dispose()
+/obj/item/device/binoculars/range/update_icon()
+	overlays += "laser_range"
+
+/obj/item/device/binoculars/range/on_unset_interaction(var/mob/user)
+	..()
+	if(user && coord && !zoom)
+		qdel(coord)
+		coord = null
+
+/obj/item/device/binoculars/range/clicked(mob/user, list/mods)
+	if(!ishuman(usr))
+		return
+	if(mods["ctrl"])
+		stop_targeting(user)
+		return 1
+	return ..()
+
+/obj/item/device/binoculars/range/handle_click(var/mob/living/carbon/human/user, var/atom/A, var/list/mods)
+	if(!istype(user))
+		return
+	if(mods["ctrl"])
+		acquire_target(A, user)
+		return TRUE
+	return FALSE
+
+/obj/item/device/binoculars/range/proc/stop_targeting(mob/living/carbon/human/user)
+	if(coord)
+		qdel(coord)
+		coord = null
+		to_chat(user, SPAN_WARNING("You stop lasing."))
+
+/obj/item/device/binoculars/range/proc/acquire_target(atom/A, mob/living/carbon/human/user)
+	set waitfor = 0
+
+	if(!user.mind)
+		return
+	if(coord)
+		to_chat(user, SPAN_WARNING("You're already targeting something."))
+		return
+	if(world.time < laser_cooldown)
+		to_chat(user, SPAN_WARNING("[src]'s laser battery is recharging."))
+		return
+
+	var/acquisition_time = target_acquisition_delay
+	if(user.mind.cm_skills)
+		acquisition_time = max(15, acquisition_time - 25*user.mind.cm_skills.get_skill_level(SKILL_LEADERSHIP))
+
+	var/datum/squad/S = user.assigned_squad
+
+	var/las_name = ""
+	if(S)
+		las_name = S.name
+
+	var/turf/TU = get_turf(A)
+	if(!istype(TU) || user.action_busy)
+		return
+	playsound(src, 'sound/effects/nightvision.ogg', 35)
+	to_chat(user, SPAN_NOTICE("INITIATING LASER TARGETING. Stand still."))
+	if(!do_after(user, acquisition_time, INTERRUPT_ALL, BUSY_ICON_GENERIC) || world.time < laser_cooldown)
+		return
+	var/obj/effect/overlay/temp/laser_coordinate/LT = new (TU, las_name, user)
+	coord = LT
+	interact(user)
+	playsound(src, 'sound/effects/binoctarget.ogg', 35)
+	while(coord)
+		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			if(coord)
+				qdel(coord)
+				coord = null
+			break
+
+/obj/item/device/binoculars/range/interact(mob/user as mob)
+	var/dat = "<html><head><title>[src]</title></head><body><TT>"
+
+	dat += "<h3>SIMPLIFIED COORDINATES OF TARGET:</h3><BR>"
+	dat += "<h4>LONGITUDE [obfuscate_x(coord.x)]. LATITUDE [obfuscate_y(coord.y)].</h4></TT></body></html>"
+
+	show_browser(user, dat, "Coordinates successfully acquired", "rangebinos")
+	onclose(user, "rangebinos")
+	return
+
+//LASER DESIGNATOR with ability to acquire coordinates and CAS lasing support
+/obj/item/device/binoculars/range/designator
+	name = "laser designator"
+	desc = "A laser designator with two modes: target marking for CAS with IR laser and rangefinding. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes."
+	var/obj/effect/overlay/temp/laser_target/laser
+	var/mode = 0 //Able to be switched between modes, 0 for cas laser, 1 for finding coordinates.
+	var/tracking_id //a set tracking id used for CAS
+
+/obj/item/device/binoculars/range/designator/New()
+	..()
+	tracking_id = cas_tracking_id_increment++
+	desc = "A laser designator with two modes: target marking for CAS with IR laser and rangefinding. Tracking ID for CAS: [tracking_id]. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes."
+
+/obj/item/device/binoculars/range/designator/Dispose()
 	if(laser)
 		qdel(laser)
 		laser = null
@@ -60,51 +157,63 @@
 		coord = null
 	. = ..()
 
-/obj/item/device/binoculars/tactical/on_unset_interaction(var/mob/user)
-	..()
-
-	if (user && (laser || coord))
-		if (!zoom)
-			if(laser)
-				qdel(laser)
-			if(coord)
-				qdel(coord)
-
-/obj/item/device/binoculars/tactical/update_icon()
-	..()
+/obj/item/device/binoculars/range/designator/update_icon()
 	if(mode)
-		overlays += "binoculars_range"
+		overlays += "laser_range"
 	else
-		overlays += "binoculars_laser"
+		overlays += "laser_cas"
 
-/obj/item/device/binoculars/tactical/handle_click(var/mob/living/user, var/atom/A, var/list/mods)
-	if (mods["ctrl"])
-		acquire_target(A, user)
+/obj/item/device/binoculars/range/designator/examine()
+	..()
+	to_chat(usr, SPAN_NOTICE("They are currently set to [mode ? "range finder" : "CAS marking"] mode."))
+
+/obj/item/device/binoculars/range/designator/clicked(mob/user, list/mods)
+	if(!ishuman(usr))
+		return
+	if(mods["alt"])
+		toggle_bino_mode(user)
 		return 1
-	return 0
+	return ..()
 
-/obj/item/device/binoculars/tactical/verb/toggle_mode()
+/obj/item/device/binoculars/range/designator/stop_targeting(mob/living/carbon/human/user)
+	..()
+	if(laser)
+		qdel(laser)
+		laser = null
+		to_chat(user, SPAN_WARNING("You stop lasing."))
+
+/obj/item/device/binoculars/range/designator/verb/toggle_mode()
 	set category = "Object"
 	set name = "Toggle Laser Mode"
+	set desc = "Toggles laser mode of tactical binoculars between rangefinding and lasing for CAS"
 
-	if(isobserver(usr) || isXeno(usr))
+	if(!ishuman(usr))
 		return
 	toggle_bino_mode(usr)
 
-/obj/item/device/binoculars/tactical/proc/toggle_bino_mode(mob/user)
-
-	if(!changable)
-		to_chat(user, "These binoculars only have one mode.")
+/obj/item/device/binoculars/range/designator/proc/toggle_bino_mode(mob/user)
+	if(user.action_busy || laser || coord)
 		return
 
-	if(!zoom)
-		mode = !mode
-		to_chat(user, SPAN_NOTICE("You switch [src] to [mode? "range finder" : "CAS marking" ] mode."))
-		update_icon()
-		playsound(usr, 'sound/machines/click.ogg', 15, 1)
+	mode = !mode
+	to_chat(user, SPAN_NOTICE("You switch [src] to [mode? "range finder" : "CAS marking"] mode."))
+	update_icon()
+	playsound(usr, 'sound/machines/click.ogg', 15, 1)
 
-/obj/item/device/binoculars/tactical/proc/acquire_target(atom/A, mob/living/carbon/human/user)
+/obj/item/device/binoculars/range/designator/on_unset_interaction(var/mob/user)
+	..()
+
+	if(user && (laser || coord) && !zoom)
+		if(laser)
+			qdel(laser)
+		if(coord)
+			qdel(coord)
+
+/obj/item/device/binoculars/range/designator/acquire_target(atom/A, mob/living/carbon/human/user)
 	set waitfor = 0
+
+	if(!user.mind)
+		return
 
 	if(laser || coord)
 		to_chat(user, SPAN_WARNING("You're already targeting something."))
@@ -114,17 +223,18 @@
 		to_chat(user, SPAN_WARNING("[src]'s laser battery is recharging."))
 		return
 
-	if(!user.mind)
-		return
-
 	var/acquisition_time = target_acquisition_delay
 	if(user.mind.cm_skills)
 		acquisition_time = max(15, acquisition_time - 25*user.mind.cm_skills.get_skill_level(SKILL_LEADERSHIP))
 
 	var/datum/squad/S = user.assigned_squad
 
-	var/laz_name = ""
-	if(S) laz_name = S.name
+	var/las_name
+	if(S)
+		las_name = S.name
+	else
+		las_name = "X"
+	las_name = las_name + "-[tracking_id]"
 
 	var/turf/TU = get_turf(A)
 	var/area/targ_area = get_area(A)
@@ -146,56 +256,39 @@
 	if(!do_after(user, acquisition_time, INTERRUPT_ALL, BUSY_ICON_GENERIC) || world.time < laser_cooldown || laser)
 		return
 	if(mode)
-		var/obj/effect/overlay/temp/laser_coordinate/LT = new (TU, laz_name, user)
+		var/obj/effect/overlay/temp/laser_coordinate/LT = new (TU, las_name, user)
 		coord = LT
 		interact(user)
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)
 		while(coord)
-			if(!do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				if(coord)
 					qdel(coord)
 					coord = null
 				break
 	else
 		to_chat(user, SPAN_NOTICE("TARGET ACQUIRED. LASER TARGETING IS ONLINE. DON'T MOVE."))
-		var/obj/effect/overlay/temp/laser_target/LT = new (TU, laz_name, user)
+		var/obj/effect/overlay/temp/laser_target/LT = new (TU, las_name, user, tracking_id)
 		laser = LT
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)
 		while(laser)
-			if(!do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				if(laser)
 					qdel(laser)
 					laser = null
 				break
 
-/obj/item/device/binoculars/tactical/interact(mob/user as mob)
-	var/dat = "<html><head><title>[src]</title></head><body><TT>"
-
-	dat += "<h3>SIMPLIFIED COORDINATES OF TARGET:</h3><BR>"
-	dat += "<h4>LONGITUDE [obfuscate_x(coord.x)]. LATITUDE [obfuscate_y(coord.y)].</h4></TT></body></html>"
-
-	show_browser(user, dat, name, "tacbinos")
-	onclose(user, "tacbinos")
-	return
-
-/obj/item/device/binoculars/tactical/scout
-	name = "scout tactical binoculars"
-	desc = "A modified version of tactical binoculars with an advanced laser targeting function. Ctrl+Click to target something. Alt + Click to switch modes."
+//IMPROVED LASER DESIGNATER, faster cooldown, faster target acquisition, can be found only in scout spec kit
+/obj/item/device/binoculars/range/designator/scout
+	name = "scout laser designator"
+	desc = "An improved laser designator, issued to USCM scouts, with two modes: target marking for CAS with IR laser and rangefinding. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes."
 	cooldown_duration = 80
 	target_acquisition_delay = 30
 
-//For events
-/obj/item/device/binoculars/tactical/range
-	name = "range-finder"
-	desc = "A pair of binoculars designed to find coordinates."
-	changable = 0
-	mode = 1
-
-// Laser Designator
-
+//ADVANCED LASER DESIGNATER, was used for WO.
 /obj/item/device/binoculars/designator
-	name = "laser designator" // Make sure they know this will kill people in the desc below.
-	desc = "A laser designator, used to mark targets for airstrikes. This one comes with two modes, one for IR laser which calls in a napalm airstrike upon the position, the other being a UV laser which calculates the distance for a mortar strike. On the side there is a label that reads:<span class='notice'> !!WARNING: Deaths from use of this tool will have the user held accountable!!</span>"
+	name = "advanced laser designator" // Make sure they know this will kill people in the desc below.
+	desc = "An advanced laser designator, used to mark targets for airstrikes and mortar fire. This one comes with two modes, one for IR laser which calls in a napalm airstrike upon the position, the other being a UV laser which calculates the distance for a mortar strike. On the side there is a label that reads:<span class='notice'> !!WARNING: Deaths from use of this tool will have the user held accountable!!</span>"
 	icon_state = "designator_e"
 
 	//laser_con is to add you to the list of laser users.
@@ -206,15 +299,15 @@
 	throw_range = 15
 	throw_speed = SPEED_VERY_FAST
 	var/atom/target = null // required for lazing at things.
-	var/laz_r = 0 //Red Laser, Used to Replace the IR. 0 is not active, 1 is cool down, 2 is actively Lazing the target
-	var/laz_b = 0 //Blue laser, Used to rangefind the coordinates for a mortar strike. 0 is not active, 1 is cool down, 2 is active laz.
-	var/laz_mode = 0 //What laser mode we are on. If we're on 0 we're not active, 1 is IR laser, 2 is UV Laser
+	var/las_r = 0 //Red Laser, Used to Replace the IR. 0 is not active, 1 is cool down, 2 is actively Lazing the target
+	var/las_b = 0 //Blue laser, Used to rangefind the coordinates for a mortar strike. 0 is not active, 1 is cool down, 2 is active laz.
+	var/las_mode = 0 //What laser mode we are on. If we're on 0 we're not active, 1 is IR laser, 2 is UV Laser
 	var/plane_toggle = 0 //Attack plane for Airstrike 0 for E-W 1 for N-S, Mortar power for mortars.
 	var/mob/living/carbon/human/FAC = null // Our lovely Forward Air Controllers
-	var/lazing = 0 //ARe we using it right now?
+	var/lasing = FALSE //Are we using it right now?
 
 /obj/item/device/binoculars/designator/update_icon()
-	switch(laz_mode)
+	switch(las_mode)
 		if(0)
 			icon_state = "designator_e"
 		if(1)
@@ -231,19 +324,19 @@
 
 	playsound(src,'sound/machines/click.ogg', 15, 1)
 
-	switch(laz_mode)
+	switch(las_mode)
 		if(0) //Actually adding descriptions so you can tell what the hell you've selected now.
-			laz_mode = 1
+			las_mode = 1
 			to_chat(usr, SPAN_WARNING("IR Laser enabled! You will now designate airstrikes!"))
 			update_icon()
 			return
 		if(1)
-			laz_mode = 2
+			las_mode = 2
 			to_chat(usr, SPAN_WARNING("UV Laser enabled! You will now designate mortars!"))
 			update_icon()
 			return
 		if(2)
-			laz_mode = 0
+			las_mode = 0
 			to_chat(usr, SPAN_WARNING(" System offline, now this is just a pair of binoculars but heavier."))
 			update_icon()
 			return
@@ -277,54 +370,49 @@
 		FAC = null
 		return
 
-
-
-/obj/item/device/binoculars/designator/proc/laz(var/mob/living/carbon/human/user, var/atom/A, var/params)
-	if(!FAC) return 0
-	if(FAC != user) return 0
-	if(istype(A,/obj/screen)) return 0
+/obj/item/device/binoculars/designator/proc/lasering(var/mob/living/carbon/human/user, var/atom/A, var/params)
+	if(!FAC || FAC != user || istype(A,/obj/screen))
+		return FALSE
 	if(user.stat)
 		zoom(user)
 		FAC = null
-		return 0
-
-	if(lazing)
-		return 0
-
+		return FALSE
+	if(lasing)
+		return FALSE
 	target = A
 	if(!istype(target))
-		return 0
-
+		return FALSE
 	if(target.z != FAC.z || target.z == 0 || FAC.z == 0 || isnull(FAC.loc))
-		return 0
+		return FALSE
 
 	var/list/modifiers = params2list(params) //Only single clicks.
-	if(modifiers["middle"] || modifiers["shift"] || modifiers["alt"] || modifiers["ctrl"])	return 0
+	if(modifiers["middle"] || modifiers["shift"] || modifiers["alt"] || modifiers["ctrl"])
+		return FALSE
 
 	var/turf/SS = get_turf(src) //Stand Still, not what you're thinking.
 	var/turf/T = get_turf(A)
 
-	if(!laz_mode)
+	if(!las_mode)
 		to_chat(user, SPAN_WARNING("The Laser Designator is currently off!"))
 		return 0
 
-	if(laz_r || laz_b) //Make sure we don't spam strikes
+	if(las_r || las_b) //Make sure we don't spam strikes
 		to_chat(user, SPAN_WARNING("The laser is currently cooling down. Please wait roughly 10 minutes from lasing the target."))
 		return 0
 
 	to_chat(user, SPAN_BOLDNOTICE(" You start lasing the target area."))
-	message_admins("ALERT: [user] ([user.key]) IS CURRENTLY LAZING A TARGET: CURRENT MODE [laz_mode], at ([T.x],[T.y],[T.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>).") // Alert all the admins to this asshole. Added the jmp command from the explosion code.
+	message_admins("ALERT: [user] ([user.key]) IS CURRENTLY LASING A TARGET: CURRENT MODE [las_mode], at ([T.x],[T.y],[T.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>).") // Alert all the admins to this asshole. Added the jmp command from the explosion code.
 	var/obj/effect/las_target/lasertarget = new(T.loc)
-	if(laz_mode == 1 && !laz_r) // Heres our IR bomb code.
-		lazing = 1
-		lasertarget.icon_state = "laz_r"
-		laz_r = 2
+	if(las_mode == 1 && !las_r) // Heres our IR bomb code.
+		lasing = TRUE
+		lasertarget.icon_state = "las_r"
+		las_r = 2
 		sleep(50)
 		if(SS != get_turf(src)) //Don't move.
-			lazing = 0
-			laz_r = 0
+			lasing = FALSE
+			las_r = 0
 			return 0
-		lasertarget.icon_state = "lazlock_r"
+		lasertarget.icon_state = "laslock_r"
 		var/offset_x = 0
 		var/offset_y = 0
 		if(!plane_toggle)
@@ -346,19 +434,19 @@
 		explosion(target_4,  -1, 2, 3, 5)
 		sleep(1)
 		qdel(lasertarget)
-		lazing = 0
-		laz_r = 1
+		lasing = FALSE
+		las_r = 1
 		sleep(6000)
-		laz_r = 0
+		las_r = 0
 		return
-	else if(laz_mode == 2 && !laz_b) //Give them the option for mortar fire.
-		lazing = 1
+	else if(las_mode == 2 && !las_b) //Give them the option for mortar fire.
+		lasing = TRUE
 		lasertarget.icon_state = "laz_b"
-		laz_b = 2
+		las_b = 2
 		sleep(50)
 		if(SS != get_turf(src)) //Don't move.
-			lazing = 0
-			laz_b = 0
+			lasing = FALSE
+			las_b = 0
 			return 0
 		lasertarget.icon_state = "lazlock_b"
 		var/HE_power = 0
@@ -379,20 +467,20 @@
 			explosion(target_2, -1, HE_power, con_power, con_power)
 			sleep(rand(15,30))
 			explosion(target_3, -1, HE_power, con_power, con_power)
-			lazing = 0
-			laz_b = 1
+			lasing = FALSE
+			las_b = 1
 			sleep(6000)
-			laz_b = 0
+			las_b = 0
 			return
 
 /obj/item/device/binoculars/designator/afterattack(atom/A as mob|obj|turf, mob/user as mob, params) // This is actually WAY better, espically since its fucken already in the code.
-	laz(user, A, params)
+	lasering(user, A, params)
 	return
 
 /obj/effect/las_target
 	name = "laser"
-	icon = 'icons/turf/whiskeyoutpost.dmi'
-	icon_state = "laz_r"
+	icon = 'icons/obj/items/binoculars.dmi'
+	icon_state = "las_r"
 	opacity = 1
 	anchored = 1
 	mouse_opacity = 0

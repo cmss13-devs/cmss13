@@ -580,3 +580,10 @@
 	new /obj/item/device/multitool(src)
 	new /obj/item/tool/weldingtool(src)
 	new /obj/item/stack/cable_coil(src)
+
+/obj/item/storage/pouch/tools/tank/New()
+	..()
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wrench(src)
+	new /obj/item/tool/weldingtool/hugetank(src)
+	new /obj/item/tool/extinguisher/mini(src)

@@ -59,17 +59,14 @@
 /area/corsat/sigma/hangar/cargo
 	name = "\improper Sigma Hangar Cargo Checkpoint"
 	icon_state = "sigma_hangar"
-	ceiling = CEILING_METAL
 
 /area/corsat/sigma/hangar/checkpoint
 	name = "\improper Sigma Hangar Checkpoint"
 	icon_state = "sigma_hangar"
-	ceiling = CEILING_METAL
 
 /area/corsat/sigma/hangar/id
 	name = "\improper Sigma Hangar ID Checkpoint"
 	icon_state = "corsat_id"
-	ceiling = CEILING_METAL
 
 /area/corsat/sigma/hangar/arrivals
 	name = "\improper Sigma Arrivals"
@@ -82,7 +79,6 @@
 /area/corsat/sigma/hangar/security
 	name = "\improper Sigma Hangar Security"
 	icon_state = "sigma_hangar_security"
-	ceiling = CEILING_METAL
 
 /area/corsat/sigma/airlock/east
 	name = "\improper Sigma Dome East Airlock"
@@ -127,12 +123,10 @@
 /area/corsat/sigma/dorms
 	name = "\improper Sigma Residential Module"
 	icon_state = "sigma_residential"
-	ceiling = CEILING_METAL
 
 /area/corsat/sigma/checkpoint
 	name = "\improper Sigma Security Checkpoint"
 	icon_state = "sigma_security_checkpoint"
-	ceiling = CEILING_METAL
 
 /area/corsat/sigma/southeast
 	name = "\improper Sigma Sector Southeast Hallways"
@@ -168,7 +162,6 @@
 /area/corsat/sigma/south/complex
 	name = "\improper Sigma Research Complex"
 	icon_state = "sigma_complex"
-	ceiling = CEILING_METAL
 
 /area/corsat/sigma/south/complex/teleporter
 	name = "\improper Sigma Teleporter"
@@ -187,7 +180,6 @@
 /area/corsat/sigma/south/security
 	name = "\improper Sigma Security Hub"
 	icon_state = "sigma_security"
-	ceiling = CEILING_METAL
 
 /area/corsat/sigma/south/offices
 	name = "\improper Sigma Offices"
@@ -238,12 +230,10 @@
 /area/corsat/gamma/hangar/cargo
 	name = "\improper Gamma Hangar Cargo Checkpoint"
 	icon_state = "gamma_hangar"
-	ceiling = CEILING_METAL
 
 /area/corsat/gamma/hangar/checkpoint
 	name = "\improper Gamma Hangar Checkpoint"
 	icon_state = "gamma_hangar"
-	ceiling = CEILING_METAL
 
 /area/corsat/gamma/hangar/office
 	name = "\improper Gamma Hangar Office"
@@ -256,7 +246,6 @@
 /area/corsat/gamma/hangar/security
 	name = "\improper Gamma Hangar Security"
 	icon_state = "gamma_hangar_security"
-	ceiling = CEILING_METAL
 
 /area/corsat/gamma/hangar/arrivals
 	name = "\improper Gamma Arrivals"
@@ -282,22 +271,18 @@
 /area/corsat/gamma/residential/west
 	name = "\improper CORSAT Academy"
 	icon_state = "gamma_residential_west"
-	ceiling = CEILING_METAL
 
 /area/corsat/gamma/residential/east
 	name = "\improper Gamma North Residential"
 	icon_state = "gamma_residential_east"
-	ceiling = CEILING_METAL
 
 /area/corsat/gamma/residential/maint
 	name = "\improper Gamma Residential Maintenance"
 	icon_state = "gamma_residential_maint"
-	ceiling = CEILING_METAL
 
 /area/corsat/gamma/residential/researcher
 	name = "\improper Researcher Quarters"
 	icon_state = "researcher_quarters"
-	ceiling = CEILING_METAL
 
 /area/corsat/gamma/residential/lounge
 	name = "\improper Researcher Lounge"
@@ -371,7 +356,6 @@
 /area/corsat/gamma/security
 	name = "\improper CORSAT Security Hub"
 	icon_state = "gamma_security"
-	ceiling = CEILING_METAL
 
 /area/corsat/gamma/security/cells
 	name = "\improper CORSAT Security Cells"
@@ -418,7 +402,6 @@
 /area/corsat/gamma/sigmaremote
 	name = "\improper Sigma Remote Complex"
 	icon_state = "sigma_complex_remote"
-	ceiling = CEILING_METAL
 
 /area/corsat/gamma/sigmaremote/teleporter
 	name = "\improper Sigma Remote Teleporter"
@@ -429,6 +412,7 @@
 /area/corsat/gamma/airlock/north
 	name = "\improper Gamma Dome North Airlock"
 	icon_state = "gamma_airlock_north"
+	ceiling = CEILING_GLASS
 
 /area/corsat/gamma/airlock/north/id
 	name = "\improper Gamma North ID Checkpoint"
@@ -445,6 +429,7 @@
 /area/corsat/gamma/airlock/control
 	name = "\improper Gamma Dome Control Module"
 	icon_state = "gamma_control"
+	ceiling = CEILING_GLASS
 
 /area/corsat/gamma/biodome
 	name = "\improper Biodome Gamma"
@@ -509,6 +494,7 @@
 /area/corsat/theta/airlock/east
 	name = "\improper Theta Dome East Airlock"
 	icon_state = "theta_airlock_east"
+	ceiling = CEILING_GLASS
 
 /area/corsat/theta/airlock/east/id
 	name = "\improper Theta East ID Checkpoint"
@@ -517,6 +503,7 @@
 /area/corsat/theta/airlock/control
 	name = "\improper Theta Dome Control Module"
 	icon_state = "theta_control"
+	ceiling = CEILING_GLASS
 
 //OMEGA SECTOR
 

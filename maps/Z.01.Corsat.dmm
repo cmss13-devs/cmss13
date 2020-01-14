@@ -27513,8 +27513,8 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "buU" = (
-/obj/structure/window/framed/corsat/hull,
 /obj/structure/machinery/atmospherics/pipe/simple/visible,
+/obj/structure/window/framed/corsat,
 /turf/open/floor/plating,
 /area/corsat/inaccessible)
 "buV" = (
@@ -30540,8 +30540,6 @@
 	name = "riot cabinet";
 	req_access = list(100)
 	},
-/obj/item/weapon/stunprod,
-/obj/item/weapon/stunprod,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "red"
@@ -34551,10 +34549,10 @@
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
 "bQv" = (
-/obj/structure/window/framed/corsat/hull,
 /obj/structure/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
+/obj/structure/window/framed/corsat,
 /turf/open/floor/plating,
 /area/corsat/inaccessible)
 "bQw" = (
@@ -34670,7 +34668,7 @@
 	},
 /area/corsat/gamma/engineering)
 "bQN" = (
-/obj/structure/window/framed/corsat/hull,
+/obj/structure/window/framed/corsat,
 /turf/open/floor/plating,
 /area/corsat/inaccessible)
 "bQO" = (
@@ -35636,7 +35634,6 @@
 	name = "specimen control cabinet";
 	req_access = list(103)
 	},
-/obj/item/weapon/stunprod,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "purplewhite"
@@ -65822,7 +65819,6 @@
 	name = "specimen control cabinet";
 	req_access = list(103)
 	},
-/obj/item/weapon/stunprod,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},

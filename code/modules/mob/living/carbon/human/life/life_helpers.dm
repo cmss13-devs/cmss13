@@ -290,6 +290,7 @@
 	life_steps_total = 0
 	last_damage_mob = null
 	last_damage_source = null
+	statistic_tracked = FALSE
 	tod = null
 	stat = UNCONSCIOUS
 	emote("gasp")

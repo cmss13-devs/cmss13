@@ -211,7 +211,7 @@
 		R.steps_walked += amount
 
 /mob/living/carbon/human/track_steps_walked(var/amount = 1)
-	if(statistic_exempt || !client || !ishuman(src))
+	if(statistic_exempt || !client || !ishuman(src) || !mind)
 		return
 	var/datum/entity/player_stats/human/S = mind.setup_human_stats()
 	S.steps_walked += amount

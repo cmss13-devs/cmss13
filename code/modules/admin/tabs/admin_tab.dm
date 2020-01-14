@@ -88,24 +88,28 @@
 		var/mob/dead/observer/ghost = mob
 		ghost.can_reenter_corpse = 1
 		ghost.reenter_corpse()
+		return
 
-	else if(istype(mob, /mob/new_player))
+	if(istype(mob,/mob/new_player))
 		to_chat(src, "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>")
-	else
-		//ghostize
-		log_admin("[key_name(usr)] admin ghosted.")
-		if(player_entity)
-			player_entity.update_panel_data(round_statistics)
-		var/mob/body = mob
-		body.track_death_calculations()
-		if(body.mind && body.mind.player_entity)
-			body.mind.player_entity.update_panel_data(round_statistics)
-			body.mind.wipe_entity()
-		body.ghostize(1)
-		if(body && !body.key)
-			body.key = "@[key]"	//Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
-			if(body.client) 
-				body.client.change_view(world.view) //reset view range to default.
+		return
+	
+	//ghostize
+	log_admin("[key_name(usr)] admin ghosted.")
+	if(player_entity)
+		player_entity.update_panel_data(round_statistics)
+		
+	var/mob/body = mob
+	body.track_death_calculations()
+	if(body.mind && body.mind.player_entity)
+		body.mind.player_entity.update_panel_data(round_statistics)
+		body.mind.wipe_entity()
+	body.ghostize(TRUE)
+	if(body && !body.key)
+		body.key = "@[key]"	//Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
+		if(body.client) 
+			body.client.change_view(world.view) //reset view range to default.
+
 		//re-open STUI
 	if(new_STUI)
 		STUI.ui_interact(mob)

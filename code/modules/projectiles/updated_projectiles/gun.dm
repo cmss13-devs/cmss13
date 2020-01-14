@@ -602,7 +602,7 @@ and you're good to go.
 		chambered = ammo_list[/datum/ammo/bullet] //Slap on a default bullet if somehow ammo wasn't passed.
 
 	var/weapon_source_mob
-	if(ismob(usr))
+	if(isliving(usr))
 		var/mob/M = usr
 		weapon_source_mob = M
 	var/obj/item/projectile/P = new /obj/item/projectile(bullet_source, weapon_source_mob, src)

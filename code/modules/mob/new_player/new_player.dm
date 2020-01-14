@@ -1,22 +1,22 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:33
 
 /mob/new_player
-	var/ready = 0
-	var/spawning = 0//Referenced when you want to delete the new_player later on in the code.
-	var/totalPlayers = 0		 //Player counts for the Lobby tab
-	var/totalPlayersReady = 0
-	universal_speak = 1
+	var/ready = FALSE
+	var/spawning = FALSE//Referenced when you want to delete the new_player later on in the code.
 
 	invisibility = 101
 
-	density = 0
-	stat = 2
-	canmove = 0
+	density = FALSE
+	canmove = FALSE
+	anchored = TRUE
+	universal_speak = TRUE
+	stat = DEAD
 
-	anchored = 1	//  don't get pushed around
+/mob/new_player/Dispose()
+	if(ready)
+		readied_players--
 
-/mob/new_player/New()
-	mob_list += src
+	return ..()
 
 /mob/new_player/verb/new_player_panel()
 	set src = usr
@@ -80,27 +80,24 @@
 
 	stat("Time:","[worldtime2text()]")
 	stat("Map:", "[map_tag]")
-	if(ticker)
-		if(ticker.hide_mode)
-			stat("Game Mode:", "Colonial Marines")
-		else if(ticker.hide_mode == 0)
-			stat("Game Mode:", "[master_mode]") // Old setting for showing the game mode
+	if(!ticker)
+		return
 
-		if(ticker.current_state == GAME_STATE_PREGAME)
-			stat("Time To Start:", "[ticker.pregame_timeleft][going ? "" : " (DELAYED)"]")
-			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
-			totalPlayers = 0
-			totalPlayersReady = 0
-			for(var/mob/new_player/player in player_list)
-				stat("[player.key]", (player.ready)?("(Playing)"):(null))
-				totalPlayers++
-				if(player.ready)totalPlayersReady++
+	if(ticker.hide_mode)
+		stat("Game Mode:", "Colonial Marines")
+	else if(ticker.hide_mode == 0)
+		stat("Game Mode:", "[master_mode]") // Old setting for showing the game mode
 
-	return 1
-
+	if(ticker.current_state == GAME_STATE_PREGAME)
+		stat("Time To Start:", "[ticker.pregame_timeleft][going ? "" : " (DELAYED)"]")
+		stat("Players: [length(player_list)]", "Players Ready: [readied_players]")
+		for(var/mob/new_player/player in player_list)
+			stat("[player.key]", player.ready ? "(Playing)" : "")
 
 /mob/new_player/Topic(href, href_list[])
-	if(!client)	return
+	if(!client)	
+		return
+
 	switch(href_list["lobby_choice"])
 		if("show_preferences")
 			client.prefs.ShowChoices(src)
@@ -115,6 +112,10 @@
 		if("ready")
 			if(!ticker || ticker.current_state <= GAME_STATE_PREGAME) // Make sure we don't ready up after the round has started
 				ready = !ready
+				if(ready)
+					readied_players++
+				else
+					readied_players--
 			new_player_panel_proc()
 
 		if("refresh")
@@ -126,7 +127,7 @@
 				if(!client)	return 1
 				var/mob/dead/observer/observer = new()
 
-				spawning = 1
+				spawning = TRUE
 
 				observer.started_as_observer = 1
 				close_spawn_windows()
@@ -243,7 +244,7 @@
 		to_chat(src, alert("[rank] is not available. Please try another."))
 		return
 
-	spawning = 1
+	spawning = TRUE
 	close_spawn_windows()
 
 	var/datum/spawnpoint/S //We need to find a spawn location for them.
@@ -259,7 +260,6 @@
 	RoleAuthority.equip_role(character, RoleAuthority.roles_for_mode[rank], T)
 	EquipCustomItems(character)
 
-	ticker.mode.latespawn(character)
 	data_core.manifest_inject(character)
 	if(map_tag == MAP_WHISKEY_OUTPOST)
 		call(/datum/game_mode/whiskey_outpost/proc/spawn_player)(character)
@@ -324,7 +324,7 @@
 
 
 /mob/new_player/proc/create_character()
-	spawning = 1
+	spawning = TRUE
 	close_spawn_windows()
 
 	var/mob/living/carbon/human/new_character

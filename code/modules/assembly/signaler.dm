@@ -163,6 +163,10 @@ Code:
 		M.visible_message("[M]'s finger twitches a bit over [src]'s signal button!")
 	return
 
+/obj/item/device/assembly/signaler/Dispose()
+	radio_connection = null
+	return ..()
+
 /obj/item/device/assembly/signaler/verb/deadman_it()
 	set src in usr
 	set name = "Threaten to push the button!"
@@ -170,3 +174,4 @@ Code:
 	deadman = 1
 	processing_objects.Add(src)
 	usr.visible_message(SPAN_DANGER("[usr] moves their finger over [src]'s signal button..."))
+

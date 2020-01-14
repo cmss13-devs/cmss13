@@ -21,6 +21,10 @@
 
 
 /mob/living/Dispose()
+	pipes_shown = null
+	actions = null
+	new_actions = null
+
 	if(attack_icon)
 		qdel(attack_icon)
 		attack_icon = null

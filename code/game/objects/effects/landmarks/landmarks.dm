@@ -6,7 +6,6 @@
 	unacidable = TRUE
 
 /obj/effect/landmark/New()
-
 	..()
 	tag = "landmark*[name]"
 	invisibility = 101
@@ -14,14 +13,12 @@
 	landmarks_list += src
 
 	switch(name)			//some of these are probably obsolete
-
 		if("start")
 			newplayer_start += loc
 			qdel(src)
 
 		if("JoinLate")
 			latejoin += loc
-			qdel(src)
 
 		if("latewhiskey")
 			latewhiskey += loc
@@ -120,11 +117,10 @@
 
 /obj/effect/landmark/start/New()
 	..()
-	if(!disposed)
+
+	if(name != "start")
 		tag = "start*[name]"
 		invisibility = 101
-
-	return 1
 
 /obj/effect/landmark/start/AISloc
 	name = "AI"

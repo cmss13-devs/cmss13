@@ -651,7 +651,9 @@ cases. Override_icon_state should be a list.*/
 	calee = _calee
 
 /datum/event_handler/event_gun_zoom/Dispose()
-	zooming_item = null
+	if(zooming_item)
+		zooming_item.zoom_event_handler = null
+		zooming_item = null
 	calee = null
 	. = ..()
 

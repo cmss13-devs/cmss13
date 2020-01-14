@@ -87,7 +87,7 @@
 	var/mob/M
 	for(var/obj/effect/landmark/start/S in world)
 		if(!istype(S, /obj/effect/landmark/start/whiskey))
-			qdel(S)
+			qdel(S) 
 
 	if(config) config.remove_gun_restrictions = 1
 

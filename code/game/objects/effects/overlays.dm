@@ -122,6 +122,7 @@
 			qdel(signal.linked_cam)
 			signal.linked_cam = null
 		qdel(signal)
+		signal = null
 	if(source_binoc)
 		source_binoc.laser_cooldown = world.time + source_binoc.cooldown_duration
 		source_binoc.laser = null

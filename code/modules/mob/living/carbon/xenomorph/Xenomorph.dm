@@ -514,11 +514,33 @@
 
 	if(hive)
 		hive.remove_xeno(src, TRUE)
+		hive = null
+
+	remove_from_all_mob_huds()
+
+	for(var/datum/action/xeno_action/XA in actions)
+		qdel(XA)
+		XA = null
+
+	reagents = null
+
+	observed_xeno = null
+	wear_suit = null
+	head = null
+	r_store = null
+	l_store = null
+
+	start_dig = null
+	ammo = null
+
+	selected_ability = null
+	queued_action = null
 
 	if(mutators)
 		qdel(mutators)
 		mutators = null
 
+	caste = null
 	. = ..()
 
 

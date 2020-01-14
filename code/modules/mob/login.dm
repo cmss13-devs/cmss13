@@ -26,6 +26,8 @@
 						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)] (no longer logged in).")
 
 /mob/Login()
+	if(!client)
+		return
 
 	player_list |= src
 	update_Login_details()
@@ -33,14 +35,17 @@
 
 	client.images = null
 	client.screen = null				//remove hud items just in case
-	if(!hud_used) create_hud()
-	if(hud_used) hud_used.show_hud(hud_used.hud_version)
+	if(!hud_used) 
+		create_hud()
+	if(hud_used) 
+		hud_used.show_hud(hud_used.hud_version)
 
 	reload_fullscreens()
 
 	next_move = 1
 	sight |= SEE_SELF
-	..()
+
+	. = ..()
 
 	reset_view(loc)
 

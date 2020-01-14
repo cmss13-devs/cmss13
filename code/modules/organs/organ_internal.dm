@@ -259,8 +259,8 @@
 	removed_type = /obj/item/organ/eyes/prosthetic
 
 /datum/internal_organ/proc/remove(var/mob/user)
-
-	if(!removed_type) return 0
+	if(!removed_type) 
+		return 0
 
 	var/obj/item/organ/removed_organ = new removed_type(get_turf(user), src)
 
@@ -268,3 +268,9 @@
 		organ_holder = removed_organ
 
 	return removed_organ
+
+/datum/internal_organ/Dispose()
+	owner = null
+	organ_holder = null
+
+	return ..()

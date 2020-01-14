@@ -12,7 +12,17 @@
 	if(network)
 		qdel(network)
 
-	..()
+	if(members)
+		for(var/obj/structure/machinery/atmospherics/pipe/P in members)
+			P.parent = null
+		members = null
+
+	if(edges)
+		for(var/obj/structure/machinery/atmospherics/pipe/P in edges)
+			P.parent = null
+		edges = null
+
+	return ..()
 
 /datum/pipeline/proc/process()//This use to be called called from the pipe networks
 

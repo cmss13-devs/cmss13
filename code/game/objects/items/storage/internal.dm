@@ -130,3 +130,8 @@
 //things to do when an item is removed in the obj's internal pocket
 /obj/item/proc/on_pocket_removal()
 	return
+
+/obj/item/storage/internal/Dispose()
+	master_item = null
+	. = ..()
+	

@@ -19,10 +19,13 @@
 	handle.events += src
 
 /datum/event/proc/remove_handler(datum/event_handler/handle)
-	if(!handle || !handle in handlers)
+	if(isnull(handle) || !handle in handlers)
 		return
 
-	handlers -= handle
+	handlers -= handle // This reference is sometimes keeping it alive, so it gets disposed after it.
+
+	if(!handle)
+		return
 
 	handle.events -= src
 	for(var/datum/event/ev in handle.events)

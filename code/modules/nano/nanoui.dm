@@ -101,10 +101,14 @@ nanoui is used to open and update nano browser uis
  * Clear references to the nanoui instance to prepare for garbage collection
  */
 /datum/nanoui/Dispose()
-	user = null
+	if(user)
+		nanomanager.ui_closed(src)
+		close_browser(user, "[window_id]")
+		user = null
+
 	src_object = null
 	ref = null
-	. = ..()
+	return ..()
 
  /**
   * Use this proc to add assets which are common to (and required by) all nano uis

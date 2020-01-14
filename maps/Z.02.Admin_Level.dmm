@@ -7900,7 +7900,6 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "to" = (
-/obj/structure/closet/secure_closet/chemical/antag,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"

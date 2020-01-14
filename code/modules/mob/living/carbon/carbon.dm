@@ -4,6 +4,23 @@
 	handle_fire() //Check if we're on fire
 
 /mob/living/carbon/Dispose()
+	if(species)
+		species = null
+
+	if(handcuffed)
+		qdel(handcuffed)
+		handcuffed = null
+
+	if(legcuffed)
+		qdel(legcuffed)
+		legcuffed = null
+
+	if(internal_organs)
+		for(var/datum/internal_organ/I in internal_organs)
+			I.owner = null
+			qdel(I)
+		internal_organs = null
+
 	for(var/datum/disease/virus in viruses)
 		virus.cure()
 	. = ..()

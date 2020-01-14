@@ -185,7 +185,7 @@
 /obj/item/device/binoculars/range/designator/verb/toggle_mode()
 	set category = "Object"
 	set name = "Toggle Laser Mode"
-	set desc = "Toggles laser mode of tactical binoculars between rangefinding and lasing for CAS"
+	set desc = "Toggles laser mode of laser designator between rangefinding and lasing for CAS"
 
 	if(!ishuman(usr))
 		return

@@ -291,7 +291,7 @@ var/distress_cancel = 0
 var/destroy_cancel = 0
 
 //Coordinate obsfucator
-//Used by the tactical binoculars and linked systems to prevent coords collection/prefiring
+//Used by the rangefinders and linked systems to prevent coords collection/prefiring
 var/global/obfs_x = 0 //A number between -500 and 500
 var/global/obfs_y = 0 //A number between -500 and 500
 

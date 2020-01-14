@@ -36,7 +36,7 @@
 //******************
 
 /mob/living/carbon/Xenomorph/track_death_calculations()
-	if(statistic_exempt || !mind || !mind.player_entity)
+	if(statistic_exempt || statistic_tracked || !mind || !mind.player_entity)
 		return
 	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
 	if(!xeno_stats.round_played)

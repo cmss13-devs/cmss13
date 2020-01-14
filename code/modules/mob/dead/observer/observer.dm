@@ -171,7 +171,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		track_death_calculations()
 		if(mind && mind.player_entity)
 			mind.player_entity.update_panel_data(round_statistics)
-			mind.wipe_entity()
 		if(location) //to avoid runtime when a mob ends up in nullspace
 			msg_admin_niche("[key_name_admin(usr)] has ghosted. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
 		log_game("[key_name_admin(usr)] has ghosted.")

@@ -434,6 +434,9 @@ Additional game mode variables.
 	if(new_xeno.client)
 		new_xeno.client.change_view(world.view)
 	if(new_xeno.mind)
+		if(new_xeno.mind.player_entity)
+			new_xeno.track_death_calculations()
+		new_xeno.statistic_tracked = FALSE
 		new_xeno.mind.player_entity = setup_player_entity(new_xeno.ckey)
 	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
 	log_admin("[new_xeno.key] has joined as [new_xeno].")

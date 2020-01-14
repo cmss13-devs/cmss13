@@ -429,6 +429,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		if(M.mind.player_entity)
 			M.track_death_calculations()
 		M.mind.player_entity = setup_player_entity(src.ckey)
+		M.statistic_tracked = FALSE
 	if(isobserver(adminmob))
 		qdel(adminmob)
 

@@ -75,6 +75,7 @@
 	var/luminosity_total = 0 //For max luminosity stuff.
 
 	var/statistic_exempt = FALSE
+	var/statistic_tracked = FALSE //So we don't repeat log the same data on death/ghost/cryo
 	var/life_time_start = 0
 	var/life_time_total = 0
 	var/timeofdeath = 0.0//Living

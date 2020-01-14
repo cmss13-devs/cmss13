@@ -48,6 +48,7 @@ var/list/mechtoys = list(
 	anchored = 1
 	layer = MOB_LAYER
 	flags_can_pass_all = PASS_UNDER|PASS_THROUGH
+	var/collide_message_busy	// Timer to stop collision spam
 
 /obj/structure/plasticflaps/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(mover.flags_pass & flags_can_pass_all || !iscarbon(mover))
@@ -59,8 +60,15 @@ var/list/mechtoys = list(
 	var/mob/living/carbon/C = AM
 	if (!istype(C))
 		return
+	if (isHumanStrict(C))
+		return
+	if(collide_message_busy > world.time)
+		return
+	
+	collide_message_busy = world.time + SECONDS_3
 	C.visible_message(SPAN_NOTICE("[C] tries to go through \the [src]."), \
-		SPAN_NOTICE("You try to go through \the [src]."))
+	SPAN_NOTICE("You try to go through \the [src]."))
+	
 	if(do_after(C, SECONDS_2, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		C.forceMove(get_turf(src))
 

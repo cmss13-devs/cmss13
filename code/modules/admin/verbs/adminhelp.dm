@@ -113,7 +113,7 @@ var/global/list/ahelp_msgs = list()
 	if(!mob)	return	//this doesn't happen
 
 	STUI.staff.Add("\[[time_stamp()]] <font color=red>[key_name(src)] AHELP: </font><font color='#006400'>[get_options_bar(mob, 4, 1, 1, 0)]:</b> [msg]</font><br>")
-	STUI.processing |= 3
+	STUI.processing |= STUI_LOG_STAFF_CHAT
 	msg = "<font color='#009900'><b>[selected_upper]: [get_options_bar(mob, 2, 1, 1, msg=original_msg)]:</b></font> <br>&emsp;<font color='#DA6200'><b>[msg]</font></b><br>"
 
 	var/list/current_staff = get_staff_by_category()

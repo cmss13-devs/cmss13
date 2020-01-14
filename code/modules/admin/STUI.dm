@@ -8,11 +8,11 @@
 		OOC_CHAT 		4
 		GAME_CHAT 		5
 		DEBUG 			6
+		RUNTIME         7
 		DEFAULT CONFIG LENGTH == 150
 		TODO:
 			** setup a way of opening a single log
 */
-
 
 /datum/STUI
 	var/name = "STUI"
@@ -22,7 +22,8 @@
 	var/list/ooc = list()			//OOC chat
 	var/list/game = list()			//Game Chat
 	var/list/debug = list()			//Debug info
-	var/list/processing	= list()	//list of logs that need processing
+	var/list/runtime = list()       //Runtimes
+	var/list/processing	= 0     	//bitflag for logs that need processing
 
 /datum/STUI/Topic(href, href_list)
 	if(href_list["command"])
@@ -30,14 +31,14 @@
 		processing |= usr.STUI_log		//forces the UI to update
 
 /datum/STUI/proc/ui_interact(mob/user, ui_key = "STUI", var/datum/nanoui/ui = null, var/force_open = 1,var/force_start = 0)
-	if(!(user.STUI_log in processing) && !force_start)
+	if(!(user.STUI_log & processing) && !force_start)
 		return
 
 	var/data[0]
 
 	data["current_log"] = user.STUI_log
 	switch(user.STUI_log)
-		if(1)
+		if(STUI_LOG_ATTACK)
 			if(user.client.admin_holder.rights & R_MOD)
 				data["colour"] = "bad"
 				if(attack.len > config.STUI_length+1)
@@ -45,7 +46,7 @@
 				data["log"] = jointext(attack, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
-		if(2)
+		if(STUI_LOG_ADMIN)
 			if(user.client.admin_holder.rights & R_ADMIN)
 				data["colour"] = "blue"
 				if(admin.len > config.STUI_length+1)
@@ -53,7 +54,7 @@
 				data["log"] = jointext(admin, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
-		if(3)
+		if(STUI_LOG_STAFF_CHAT)
 			if(user.client.admin_holder.rights & R_ADMIN)
 				data["colour"] = "average"
 				if(staff.len > config.STUI_length+1)
@@ -61,7 +62,7 @@
 				data["log"] = jointext(staff, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
-		if(4)
+		if(STUI_LOG_OOC_CHAT)
 			if(user.client.admin_holder.rights & R_MOD)
 				data["colour"] = "average"
 				if(ooc.len > config.STUI_length+1)
@@ -69,7 +70,7 @@
 				data["log"] = jointext(ooc, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
-		if(5)
+		if(STUI_LOG_GAME_CHAT)
 			if((user.client.admin_holder.rights & R_ADMIN) || (user.client.admin_holder.rights & R_DEBUG))
 				data["colour"] = "white"
 				if(game.len > config.STUI_length+1)
@@ -77,8 +78,7 @@
 				data["log"] = jointext(game, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
-
-		else
+		if(STUI_LOG_DEBUG)
 			if(user.client.admin_holder.rights & R_DEBUG)
 				data["colour"] = "average"
 				if(debug.len > config.STUI_length+1)
@@ -86,6 +86,15 @@
 				data["log"] = jointext(debug, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
+		if(STUI_LOG_RUNTIME)
+			if(user.client.admin_holder.rights & R_DEBUG)
+				data["colour"] = "average"
+				if(runtime.len > config.STUI_length+1)
+					runtime.Cut(,runtime.len-config.STUI_length)
+				data["log"] = jointext(runtime, "\n")
+			else
+				data["log"] = "You do not have the right permissions to view this."
+
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if(!ui)

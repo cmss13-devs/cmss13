@@ -217,7 +217,7 @@
 
 	log_admin("ADMIN : [key_name(src)] : [msg]")
 	STUI.staff.Add("\[[time_stamp()]] <font color='#800080'>ADMIN: [key_name(src)] : [msg]</font><br>")
-	STUI.processing |= 3
+	STUI.processing |= STUI_LOG_STAFF_CHAT
 
 	var/color = "adminsay"
 	if(ishost(usr))
@@ -240,7 +240,7 @@
 	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
 	log_admin("MOD: [key_name(src)] : [msg]")
 	STUI.staff.Add("\[[time_stamp()]] <font color='#b82e00'>MOD: [key_name(src)] : [msg]</font><br>")
-	STUI.processing |= 3
+	STUI.processing |= STUI_LOG_STAFF_CHAT
 
 	if (!msg)
 		return

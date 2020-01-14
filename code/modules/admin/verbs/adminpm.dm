@@ -97,7 +97,7 @@
 
 	log_admin("PM: [key_name(src)]->[key_name(C)]: [msg]")
 	STUI.staff.Add("PM: [key_name(src)]->[key_name(C)]: [msg]<br>")
-	STUI.processing |= 3
+	STUI.processing |= STUI_LOG_STAFF_CHAT
 	//we don't use message_admins here because the sender/receiver might get it too
 	for(var/client/X in admins)
 		//check client/X is an admin and isn't the sender or recipient

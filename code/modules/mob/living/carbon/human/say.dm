@@ -48,7 +48,7 @@
 			else if(speaking.name == "Xenomorph")
 				hive_prefix = "XENO"
 			STUI.game.Add("\[[time_stamp()]]<font color='#0099FF'>[hive_prefix]: [key_name(src)] : [message]</font><br>")
-			STUI.processing |= 5
+			STUI.processing |= STUI_LOG_GAME_CHAT
 			speaking.broadcast(src,trim(message))
 			return
 		//If we've gotten this far, keep going!
@@ -98,7 +98,7 @@
 	//speaking into radios
 	if(used_radios.len)
 		STUI.game.Add("\[[time_stamp()]]<font color='#FF0000'>RADIO: [key_name(src)] : [message]</font><br>")
-		STUI.processing |= 5
+		STUI.processing |= STUI_LOG_GAME_CHAT
 		if (speech_sound)
 			sound_vol *= 0.5
 

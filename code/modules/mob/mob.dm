@@ -1,4 +1,3 @@
-
 /mob/Dispose()//This makes sure that mobs with clients/keys are not just deleted from the game.
 	mob_list -= src
 	dead_mob_list -= src
@@ -10,7 +9,6 @@
 			mind.current = null
 		if(mind.original == src)
 			mind.original = null
-		mind = null
 
 	if(hud_used)
 		qdel(hud_used)

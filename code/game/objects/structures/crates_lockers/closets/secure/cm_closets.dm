@@ -588,7 +588,7 @@
 /obj/structure/closet/secure_closet/sea/New()
 	..()
 	new /obj/item/device/whistle(src)
-	new /obj/item/device/binoculars/tactical/range(src)
+	new /obj/item/device/binoculars/range(src)
 	new /obj/item/clothing/suit/armor/bulletproof/badge(src)
 	new /obj/item/device/radio/headset/almayer/mcom(src)
 	new /obj/item/clothing/under/marine/officer/bridge(src)

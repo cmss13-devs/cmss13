@@ -300,7 +300,6 @@
 	desc = "A mining lantern."
 	brightness_on = 6			// luminosity when on
 
-
 //Signal Flare
 /obj/item/device/flashlight/flare/signal
 	name = "signal flare"
@@ -315,9 +314,9 @@
 	..()
 	fuel = rand(80, 100)
 
-
-/obj/item/device/flashlight/flare/signal/attack_self(mob/user)
-
+/obj/item/device/flashlight/flare/signal/attack_self(mob/living/carbon/human/user)
+	if(!istype(user))
+		return
 	// Usual checks
 	if(!fuel)
 		to_chat(user, SPAN_NOTICE("It's out of fuel."))
@@ -340,17 +339,14 @@
 	damtype = "fire"
 	processing_objects += src
 	faction = user.faction
-	activate_signal(user)
+	add_timer(CALLBACK(src, .proc/activate_signal, user), SECONDS_5)
 
-
-/obj/item/device/flashlight/flare/signal/proc/activate_signal(mob/user)
-	set waitfor = 0
-	sleep(50)
+/obj/item/device/flashlight/flare/signal/proc/activate_signal(mob/living/carbon/human/user)
 	if(faction && cas_groups[faction])
-		var/target_id = rand(1,100000)
 		signal = new(src)
+		signal.target_id = cas_tracking_id_increment++
+		name = "[user.assigned_squad ? user.assigned_squad.name : "X"]-[signal.target_id] flare"
 		signal.name = name
-		signal.target_id = target_id
 		cas_groups[user.faction].add_signal(signal)
 		anchored = TRUE
 		visible_message(SPAN_DANGER("[src]'s flame reaches full strength. It's fully active now."), null, 5)
@@ -361,7 +357,6 @@
 	if(anchored)
 		to_chat(user, "[src] is too hot. You will burn your hand if you pick it up.")
 		return
-
 	..()
 
 /obj/item/device/flashlight/flare/signal/Dispose()

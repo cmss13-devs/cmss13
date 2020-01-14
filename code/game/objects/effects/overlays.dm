@@ -76,7 +76,7 @@
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "laser_target_coordinate"
 	effect_duration = 600
-	var/obj/item/device/binoculars/tactical/source_binoc
+	var/obj/item/device/binoculars/range/designator/source_binoc
 
 /obj/effect/overlay/temp/laser_coordinate/Dispose()
 	if(source_binoc)
@@ -95,20 +95,19 @@
 	icon_state = "laser_target2"
 	effect_duration = 600
 	var/target_id
-	var/obj/item/device/binoculars/tactical/source_binoc
+	var/obj/item/device/binoculars/range/designator/source_binoc
 	var/datum/cas_signal/signal
 	var/mob/living/carbon/human/user
 
-/obj/effect/overlay/temp/laser_target/New(loc, squad_name, _user)
+/obj/effect/overlay/temp/laser_target/New(loc, squad_name, _user, tracking_id)
 	..()
 	user = _user
 	if(squad_name)
 		name = "[squad_name] laser"
-	target_id = rand(1,100000) //giving it a pseudo unique id.
 	if(user && user.faction && cas_groups[user.faction])
 		signal = new(src)
 		signal.name = name
-		signal.target_id = target_id
+		signal.target_id = tracking_id
 		signal.linked_cam = new(loc, name)
 		signal.linked_cam.invisibility = 101
 		signal.linked_cam.unslashable = TRUE

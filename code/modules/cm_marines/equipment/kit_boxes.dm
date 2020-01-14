@@ -90,7 +90,7 @@
 		if(Check_WO())
 			new /obj/item/device/binoculars/designator(src)
 		else
-			new /obj/item/device/binoculars/tactical/scout(src)
+			new /obj/item/device/binoculars/range/designator/scout(src)
 
 
 /obj/item/storage/box/spec/pyro
@@ -329,7 +329,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		new /obj/item/storage/belt/gun/flaregun/full_nogun(src)
 		new /obj/item/storage/box/m94/signal(src)
 		new /obj/item/storage/box/m94/signal(src)
-		new /obj/item/device/binoculars/tactical(src)
+		new /obj/item/device/binoculars/range/designator(src)
 		new /obj/item/device/encryptionkey/jtac(src)
 
 /obj/item/storage/box/kit/mini_intel

@@ -115,7 +115,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/binoculars/tactical/range, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium, WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
 

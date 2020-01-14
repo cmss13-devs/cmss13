@@ -1092,7 +1092,7 @@
 		list("Multitool", 4, /obj/item/device/multitool, null, "black"),
 		list("Plastique explosive", 5, /obj/item/explosive/plastique, null, "black"),
 		list("Power control module", 2, /obj/item/circuitboard/apc, null, "black"),
-		list("Range Finder", 10, /obj/item/device/binoculars/tactical/range, null, "black"),
+		list("Range Finder", 10, /obj/item/device/binoculars/range, null, "black"),
 
 		list("AMMUNITION", 0, null, null, null),
 		list("M39 AP magazine (10x20mm)", 6, /obj/item/ammo_magazine/smg/m39/ap , null, "black"),
@@ -1417,7 +1417,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 /obj/effect/essentials_set/leader
 	spawned_gear_list = list(
 		/obj/item/explosive/plastique,
-		/obj/item/device/binoculars/tactical,
+		/obj/item/device/binoculars/range/designator,
 		/obj/item/map/current_map,
 		/obj/item/weapon/gun/flamer,
 		/obj/item/tool/extinguisher/mini,

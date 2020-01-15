@@ -154,7 +154,10 @@
 			S.channel = SOUND_CHANNEL_SOUNDSCAPE
 			sound_to(owner, S)
 		var/area/A = get_area(owner.mob)
-		scape_cooldown = pick(A.soundscape_interval, A.soundscape_interval + 1, A.soundscape_interval -1)
+		if(A)
+			scape_cooldown = pick(A.soundscape_interval, A.soundscape_interval + 1, A.soundscape_interval -1)
+		else
+			scape_cooldown = INITIAL_SOUNDSCAPE_COOLDOWN
 
 	if(status_flags != 0)
 		if(owner.mob.stat == DEAD)

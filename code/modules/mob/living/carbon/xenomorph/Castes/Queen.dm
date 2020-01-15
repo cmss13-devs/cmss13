@@ -247,7 +247,7 @@
 						newegg.hivenumber = hivenumber
 
 		for(var/mob/living/carbon/Xenomorph/Larva/L in range(1))
-			if(!L.ckey || !L.client) // no one home
+			if(!L.ckey)
 				visible_message(SPAN_XENODANGER("[L] quickly burrows into the ground."))
 				hive_datum[hivenumber].stored_larva++
 				hive.hive_ui.update_burrowed_larva()

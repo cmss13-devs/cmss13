@@ -72,11 +72,16 @@
 
 	if(current)	
 		current.mind = null	//remove ourself from our old body's mind variable
+		nanomanager.user_transferred(current, new_character) // transfer active NanoUI instances to new user
+
+	if(key)
+		if(new_character.key != key)
+			new_character.ghostize(TRUE)
+	else
+		key = new_character.key
 
 	if(new_character.mind) 
 		new_character.mind.current = null //remove any mind currently in our new body's mind variable
-
-	nanomanager.user_transferred(current, new_character) // transfer active NanoUI instances to new user
 
 	current = new_character		//link ourself to our new body
 	new_character.mind = src	//and link our new body to ourself

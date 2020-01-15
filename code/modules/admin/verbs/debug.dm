@@ -410,28 +410,26 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 	if(!check_rights(R_DEBUG|R_ADMIN))	
 		return
+
 	if(M.disposed) 
 		return //mob is garbage collected
+
 	if(M.ckey)
 		if(alert("This mob is being controlled by [M.ckey]. Are you sure you wish to assume control of it? [M.ckey] will be made a ghost.",,"Yes","No") != "Yes")
 			return
-		else
-			var/mob/dead/observer/ghost = new/mob/dead/observer(M,1)
-			ghost.ckey = M.ckey
-			if(ghost.client) ghost.client.change_view(world.view)
-	message_admins(SPAN_NOTICE("[key_name_admin(usr)] assumed direct control of [M]."), 1)
-	log_admin("[key_name(usr)] assumed direct control of [M].")
-	var/mob/adminmob = src.mob
-	M.ckey = src.ckey
-	if(M.client)
-		M.client.change_view(world.view)
+		
+		M.ghostize()
+
 	if(M.mind)
 		if(M.mind.player_entity)
 			M.track_death_calculations()
 		M.mind.player_entity = setup_player_entity(src.ckey)
 		M.statistic_tracked = FALSE
-	if(isobserver(adminmob))
-		qdel(adminmob)
+
+	usr.mind.transfer_to(M, TRUE)
+
+	log_admin("[key_name(usr)] assumed direct control of [M].")
+	message_admins(SPAN_NOTICE("[key_name_admin(usr)] assumed direct control of [M]."), 1)
 
 /client/proc/cmd_debug_mob_lists()
 	set category = "Debug"

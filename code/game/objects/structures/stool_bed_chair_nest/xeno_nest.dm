@@ -13,6 +13,7 @@
 	var/resisting = 0
 	var/resisting_ready = 0
 	var/nest_resist_time = 1200
+	var/mob/dead/observer/ghost_of_buckled_mob =  null
 	layer = RESIN_STRUCTURE_LAYER
 
 /obj/structure/bed/nest/New()
@@ -133,8 +134,7 @@
 
 	var/choice = alert(M, "You have no possibility of escaping unless freed by your fellow marines, do you wish to Ghost? If you are freed while ghosted, you will be given the choice to return to your body.", ,"Ghost", "Remain")
 	if(choice == "Ghost")
-		var/mob/dead/observer/ghost = M.ghostize(FALSE)
-		M.mind.ghost_mob = ghost
+		ghost_of_buckled_mob = M.ghostize(FALSE)
 
 /obj/structure/bed/nest/send_buckling_message(mob/M, mob/user)
 	M.visible_message(SPAN_XENONOTICE("[user] secretes a thick, vile resin, securing [M] into [src]!"), \
@@ -158,10 +158,10 @@
 	buckled_mob.pixel_y = 0
 	buckled_mob.old_y = 0
 
-	if(buckled_mob.mind && buckled_mob.mind.ghost_mob && buckled_mob.stat != DEAD)
-		if(alert(buckled_mob.mind.ghost_mob, "You have been freed from your nest, do you want to return to your body?", ,"Yes", "No") == "Yes")
-			buckled_mob.mind.ghost_mob.can_reenter_corpse = 1
-			buckled_mob.mind.ghost_mob.reenter_corpse() // We need to go deeper
+	if(ghost_of_buckled_mob && buckled_mob.stat != DEAD)
+		if(alert(ghost_of_buckled_mob, "You have been freed from your nest, do you want to return to your body?", ,"Yes", "No") == "Yes")
+			ghost_of_buckled_mob.can_reenter_corpse = TRUE
+			ghost_of_buckled_mob.reenter_corpse()
 	..()
 
 /obj/structure/bed/nest/ex_act(var/power)
@@ -210,3 +210,7 @@
 
 /obj/structure/bed/nest/flamer_fire_act()
 	qdel(src)
+
+/obj/structure/bed/nest/Dispose()
+	ghost_of_buckled_mob = null
+	. = ..()

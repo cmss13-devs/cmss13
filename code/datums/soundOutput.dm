@@ -93,19 +93,37 @@
 /datum/soundOutput/proc/on_movement(atom/A)
 	update_globalsounds()
 
-/datum/soundOutput/proc/update_globalsounds()	
-	globalsounds_channels -= globalsounds_channels - SSglobal_sound.soundlen_map 
+//Someone might ask why even have the subsystem time the duration of the sound instead of letting
+//soundOutput do so in process(). Well, that would mean giving one base copy of each global sound
+//to every player and losing the ability to modify the base sound for everyone equally
+
+/datum/soundOutput/proc/update_globalsound_list()//This proc's purpose is to add our own channel to each sound in the SS
 	if(SSglobal_sound.soundlen_map.len)
-		var/sound/S = sound()
-		var/turf/owner_turf = get_turf(owner.mob)
+		var/sound/S = sound()	
 		for(var/sound/I in SSglobal_sound.soundlen_map)
+			if(!istype(I))
+				continue
 			if(!globalsounds_channels[I]) 
 				globalsounds_channels[I] = get_free_channel()
 				S.file = I.file
-				S.falloff = I.falloff
-			else
-				S.status = SOUND_UPDATE
-			S.channel = globalsounds_channels[I]
+				S.status = SOUND_MUTE
+				S.channel = globalsounds_channels[I]
+				S.y = 1 //A hack way of making BYOND treat this sound as 3D
+				sound_to(owner, S) //Send the sound we just received to the owner but muted, so we can use SOUND_UPDATE on update_global_sounds
+		update_globalsounds()
+
+/datum/soundOutput/proc/update_globalsounds()//This proc deals with removing references to sounds that have ended and also with updating their position relative to us	
+	if(globalsounds_channels.len)
+		var/sound/S = sound()
+		var/turf/owner_turf = get_turf(owner.mob)
+		for(var/sound/I in globalsounds_channels)
+			if(!istype(I) || I.disposed)
+				globalsounds_channels -= I
+				continue
+			S.file = I.file
+			S.falloff = I.falloff
+			S.status = SOUND_UPDATE
+			S.channel = globalsounds_channels[I]//The advantage of having the subsystem keep the sound
 			S.volume = I.volume * owner.volume_preferences[VOLUME_SFX]
 			S.x = I.x - owner_turf.x
 			S.z = I.y - owner_turf.y

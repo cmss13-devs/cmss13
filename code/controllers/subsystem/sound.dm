@@ -18,6 +18,7 @@ var/datum/subsystem/global_sound/SSglobal_sound
 	for(var/sound/S in soundlen_map)
 		if(--soundlen_map[S] <= 0)
 			soundlen_map -= S
+			qdel(S)
 		
 	while(currentrun.len)
 		var/client/C = currentrun[currentrun.len]
@@ -36,4 +37,4 @@ var/datum/subsystem/global_sound/SSglobal_sound
 	for(var/client/C in clients)
 		if(!C || !C.soundOutput)
 			continue
-		C.soundOutput.update_globalsounds()
+		C.soundOutput.update_globalsound_list()

@@ -190,3 +190,16 @@
 	max_rounds = 20
 	gun_type = /obj/item/weapon/gun/rifle/l42mk1
 	w_class = SIZE_MEDIUM
+
+//-------------------------------------------------------
+//Basira-Armstrong rifle
+
+/obj/item/ammo_magazine/rifle/hunting
+	name = "\improper Basira-Armstrong magazine (6.5mm)"
+	desc = "A magazine for the Basira-Armstrong rifle. Compliant with the 10-cartridge limit on civilian semi-automatic rifles."
+	caliber = "6.5mm"
+	icon_state = "hunting"
+	default_ammo = /datum/ammo/bullet/rifle
+	max_rounds = 10
+	gun_type = /obj/item/weapon/gun/rifle/hunting
+	w_class = SIZE_SMALL

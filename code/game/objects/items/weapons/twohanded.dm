@@ -326,6 +326,10 @@
 	attack_verb = unwielded_attack_verb
 	hitsound = unwielded_hitsound
 
+/obj/item/weapon/twohanded/lungemine/attack(mob/living/M, mob/living/user)
+	. = ..()
+	detonate_check(M, user)
+
 /obj/item/weapon/twohanded/lungemine/afterattack(atom/target, mob/user, proximity_flag)
 	. = ..()
 	if(proximity_flag)
@@ -342,6 +346,9 @@
 		return
 
 	if(!target.density && !istype(target, /mob))
+		return
+
+	if(target == user)
 		return
 
 	detonating = TRUE

@@ -3,14 +3,14 @@
 	desc = "A small electronic device able to ignite combustable substances."
 	icon_state = "igniter"
 	matter = list("metal" = 500, "glass" = 50, "waste" = 10)
-	
+
 	heat_source = 1000 //Can ignite Thermite.
 	secured = 1
 	wires = WIRE_RECEIVE
 
 /obj/item/device/assembly/igniter/activate()
 	if(!..())	return 0//Cooldown check
-	
+
 	if(holder && istype(holder.loc,/obj/item/explosive/grenade/chem_grenade))
 		var/obj/item/explosive/grenade/chem_grenade/grenade = holder.loc
 		grenade.prime()

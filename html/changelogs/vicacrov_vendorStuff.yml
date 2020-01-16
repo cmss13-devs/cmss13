@@ -1,0 +1,7 @@
+author: Vicacrov
+
+delete-after: True
+
+changes: 
+  - tweak: "Vendors - Added zippo lighters to the CIC and the colony cigarette vendors."
+  - bugfix: "Vendors - Fixed the hangar's engi-vend access requirements."

@@ -95,7 +95,7 @@
 	clf_products = list(
 		/obj/item/weapon/gun/rifle/mar40/carbine = 40,
 		/obj/item/weapon/gun/rifle/mar40 = 40,
-		/obj/item/weapon/gun/rifle/sniper/svd = 40,
+		/obj/item/weapon/gun/rifle/hunting = 40,
 		/obj/item/weapon/gun/shotgun/merc = 40,
 		/obj/item/weapon/gun/shotgun/double = 40,
 		/obj/item/weapon/gun/shotgun/pump/cmb = 40,
@@ -133,7 +133,7 @@
 
 	clf_products = list(
 		/obj/item/ammo_magazine/rifle/mar40 = 40,
-		/obj/item/ammo_magazine/sniper/svd = 40,
+		/obj/item/ammo_magazine/rifle/hunting = 40,
 		/obj/item/ammo_magazine/shotgun/buckshot = 40,
 		/obj/item/ammo_magazine/shotgun/incendiary = 40,
 		/obj/item/ammo_magazine/shotgun/slugs = 40,
@@ -164,6 +164,7 @@
 		/obj/item/ammo_magazine/rifle/type71 = 80,
 		/obj/item/ammo_magazine/smg/skorpion = 80,
 		/obj/item/ammo_magazine/pistol/c99 = 40,
+		/obj/item/ammo_magazine/minigun = 40,
 		/obj/item/explosive/grenade/empgrenade = 40,
 		/obj/item/explosive/grenade/smokebomb = 40,
 		/obj/item/explosive/grenade/HE/upp = 40,

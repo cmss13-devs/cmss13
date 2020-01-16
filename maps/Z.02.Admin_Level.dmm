@@ -3024,6 +3024,9 @@
 	dir = 2
 	},
 /area/yautja)
+"iQ" = (
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/mainroom)
 "iS" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy14"
@@ -5641,7 +5644,7 @@
 	},
 /area/adminlevel/bunker01/storage)
 "oI" = (
-/obj/structure/closet/firecloset,
+/obj/structure/machinery/vending/assist,
 /turf/open/floor/almayer{
 	tag = "icon-green (NORTHEAST)";
 	icon_state = "green";
@@ -5944,7 +5947,7 @@
 /area/adminlevel/bunker01/kitchen)
 "pf" = (
 /obj/structure/machinery/door/airlock/almayer/marine/requisitions{
-	name = "\improper Storage";
+	name = "\improper Tools";
 	req_access = list(201);
 	req_one_access = null
 	},
@@ -6300,7 +6303,7 @@
 "qe" = (
 /obj/structure/machinery/door/airlock/almayer/marine/requisitions{
 	dir = 1;
-	name = "\improper Storage";
+	name = "\improper Tools";
 	req_access = list(201);
 	req_one_access = null
 	},
@@ -8023,6 +8026,16 @@
 	dir = 2
 	},
 /area/adminlevel/ert_station)
+"uD" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/item/tool/crowbar,
+/turf/open/floor/almayer{
+	icon_state = "orange";
+	tag = "icon-orange (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
 "uK" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/almayer{
@@ -8052,6 +8065,13 @@
 	icon_state = "floor"
 	},
 /area/adminlevel/ert_station)
+"vN" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "blue";
+	tag = "icon-blue (EAST)"
+	},
+/area/adminlevel/bunker01/mainroom)
 "vO" = (
 /obj/structure/closet/cabinet,
 /turf/open/floor/almayer{
@@ -8141,6 +8161,13 @@
 	dir = 8
 	},
 /area/adminlevel/ert_station)
+"yN" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "emerald";
+	tag = "icon-emerald (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
 "yQ" = (
 /obj/structure/machinery/sleeper,
 /turf/open/floor/almayer{
@@ -8221,6 +8248,13 @@
 	dir = 8
 	},
 /area/adminlevel/ert_station)
+"Ai" = (
+/turf/open/floor/almayer{
+	tag = "icon-green (EAST)";
+	icon_state = "green";
+	dir = 4
+	},
+/area/adminlevel/bunker01/mainroom)
 "Al" = (
 /obj/structure/sink{
 	dir = 4;
@@ -8419,6 +8453,13 @@
 	icon_state = "tcomms"
 	},
 /area/tdome)
+"Ea" = (
+/obj/structure/largecrate/supply/weapons/m56d,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
 "Ee" = (
 /obj/effect/landmark{
 	name = "tdome1"
@@ -8471,6 +8512,13 @@
 	dir = 8
 	},
 /area/adminlevel/ert_station)
+"Fh" = (
+/obj/structure/largecrate/supply/supplies/plasteel,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
 "Fo" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-N";
@@ -8668,6 +8716,10 @@
 	dir = 10
 	},
 /area/adminlevel/ert_station)
+"Jq" = (
+/obj/structure/ladder,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/bedroom)
 "Js" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-W";
@@ -8685,6 +8737,17 @@
 	dir = 4
 	},
 /area/adminlevel/ert_station)
+"JQ" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/item/tool/crowbar,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red";
+	tag = "icon-red (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
 "JT" = (
 /obj/structure/curtain/shower,
 /turf/open/floor/prison{
@@ -8710,6 +8773,13 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"Ke" = (
+/obj/structure/closet/crate/secure/mortar_ammo/full,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
 "Kq" = (
 /turf/open/floor/almayer{
 	tag = "icon-redfull";
@@ -8723,6 +8793,12 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"KG" = (
+/turf/open/floor/almayer{
+	icon_state = "orange";
+	tag = "icon-orange (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
 "KH" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	damage_cap = 50000;
@@ -9015,6 +9091,13 @@
 "OT" = (
 /turf/closed/wall/almayer/outer,
 /area/tdome/tdomeobserve)
+"OZ" = (
+/obj/structure/largecrate/supply/supplies/metal,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
 "Po" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -9056,6 +9139,9 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"Qc" = (
+/turf/closed/wall/rock/brown,
+/area/adminlevel/bunker01/mainroom)
 "Qk" = (
 /turf/open/floor/almayer{
 	tag = "icon-redfull";
@@ -9104,6 +9190,18 @@
 	icon_state = "redfull"
 	},
 /area/adminlevel/ert_station)
+"Rm" = (
+/obj/structure/ladder,
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves)
+"RE" = (
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
+	name = "\improper Storage";
+	req_access = list(201);
+	req_one_access = null
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
 "RK" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/almayer{
@@ -9487,6 +9585,13 @@
 	dir = 5
 	},
 /area/tdome/tdomeobserve)
+"YR" = (
+/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
 "Zd" = (
 /turf/open/floor/almayer{
 	tag = "icon-bluefull";
@@ -27521,11 +27626,11 @@ gc
 gc
 gc
 gc
-gc
-gc
-gc
-gc
-gc
+ou
+ou
+ou
+ou
+ou
 qg
 pW
 qi
@@ -27674,10 +27779,10 @@ gc
 gc
 gc
 ou
-ou
-ou
-ou
-ou
+oE
+oR
+pa
+pq
 ou
 ov
 ov
@@ -27826,10 +27931,10 @@ gc
 gc
 gc
 ou
-oE
-oR
-pa
-pq
+oF
+oS
+pb
+pr
 pF
 pQ
 qd
@@ -29193,7 +29298,7 @@ nu
 nB
 nU
 oj
-nU
+Jq
 oJ
 nu
 pj
@@ -30413,13 +30518,13 @@ oz
 or
 pe
 Al
-pC
+pp
 It
 qf
 pC
 pp
 pp
-pC
+pp
 ra
 pp
 rH
@@ -30565,11 +30670,11 @@ oB
 or
 nx
 pv
+RE
 pD
 pD
 pD
-pD
-pD
+RE
 pD
 pD
 ra
@@ -30716,13 +30821,13 @@ nL
 oC
 oO
 nx
-gc
-gc
-gc
-gc
-gc
-gc
-gc
+YR
+yN
+Ai
+Ai
+vN
+KG
+Ea
 pD
 Wu
 Dt
@@ -30856,11 +30961,11 @@ fY
 fY
 fY
 fY
-gc
-gc
-gc
-gc
-gc
+fY
+fY
+fY
+fY
+fY
 nG
 nM
 ob
@@ -30868,13 +30973,13 @@ Iu
 ot
 oP
 nG
-gc
-gc
-gc
-gc
-gc
-gc
-gc
+YR
+yN
+OZ
+OZ
+Fh
+KG
+Ea
 pD
 ra
 ro
@@ -31008,11 +31113,11 @@ fY
 fY
 fY
 fY
-gc
-gc
-gc
-gc
-gc
+fY
+fY
+fY
+fY
+fY
 nG
 nN
 oc
@@ -31020,13 +31125,13 @@ oy
 oD
 oQ
 nG
-gc
-gc
-gc
-gc
-gc
-gc
-gc
+Ke
+JQ
+OZ
+OZ
+Fh
+uD
+Ea
 pD
 rb
 rp
@@ -31040,7 +31145,7 @@ sE
 sE
 rE
 rE
-gc
+fY
 fY
 fY
 fY
@@ -31161,10 +31266,10 @@ fY
 fY
 fY
 fY
-gc
-gc
-gc
-gc
+fY
+fY
+fY
+fY
 nG
 nW
 oo
@@ -31172,10 +31277,10 @@ zz
 oM
 oW
 nG
-gc
-gc
-gc
-gc
+pD
+pD
+pD
+pD
 pD
 pD
 pD
@@ -31191,9 +31296,9 @@ sE
 tc
 tj
 rE
-gc
-gc
-gc
+fY
+fY
+fY
 fY
 fY
 aa
@@ -31313,10 +31418,10 @@ fY
 fY
 fY
 fY
-gc
-gc
-gc
-gc
+fY
+fY
+fY
+fY
 nG
 nG
 nG
@@ -31324,11 +31429,11 @@ nG
 nG
 nG
 nG
-gc
-gc
-gc
-gc
-pD
+fY
+fY
+fY
+fY
+fY
 pp
 pp
 pp
@@ -31343,9 +31448,9 @@ tv
 td
 tk
 rE
-gc
-gc
 fY
+fY
+gc
 fY
 fY
 aa
@@ -31463,42 +31568,42 @@ aa
 fY
 fY
 fY
+gc
+gc
 fY
-fY
 gc
-gc
-gc
-gc
-gc
-gc
-gc
-gc
-gc
-gc
-gc
-gc
-gc
-gc
-gc
-pD
-pp
-pp
-pp
-pp
-pp
-rE
-rE
-rE
-rE
-rE
-rE
-rE
-rE
-rE
 gc
 fY
 fY
 fY
+fY
+fY
+fY
+fY
+fY
+fY
+gc
+gc
+gc
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+rE
+rE
+rE
+rE
+rE
+rE
+rE
+rE
+rE
+fY
+gc
+gc
+gc
 fY
 aa
 aa
@@ -31614,32 +31719,10 @@ aa
 (146,1,1) = {"
 fY
 fY
+gc
+gc
+gc
 fY
-fY
-fY
-fY
-fY
-gc
-gc
-gc
-gc
-gc
-gc
-gc
-gc
-gc
-gc
-gc
-gc
-gc
-pD
-pD
-pD
-pD
-pD
-pD
-pD
-gc
 gc
 gc
 gc
@@ -31649,8 +31732,30 @@ gc
 gc
 fY
 fY
+gc
+gc
+gc
+gc
+gc
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+Qc
 fY
 fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+gc
+gc
+gc
 fY
 aa
 aa
@@ -31766,29 +31871,11 @@ aa
 (147,1,1) = {"
 fY
 fY
-fY
-fY
-fY
-fY
-fY
-fY
-gc
-gc
-gc
 gc
 gc
 gc
 fY
 fY
-fY
-fY
-fY
-gc
-gc
-gc
-gc
-gc
-gc
 gc
 gc
 gc
@@ -31796,13 +31883,31 @@ gc
 gc
 gc
 fY
-fY
+gc
 gc
 fY
 fY
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
 fY
 fY
-fY
+gc
+gc
+gc
+gc
 fY
 aa
 aa
@@ -31917,6 +32022,9 @@ aa
 "}
 (148,1,1) = {"
 fY
+gc
+gc
+gc
 fY
 fY
 fY
@@ -31926,13 +32034,10 @@ fY
 fY
 fY
 fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
+gc
+gc
+gc
+gc
 fY
 fY
 fY
@@ -31948,11 +32053,11 @@ fY
 fY
 fY
 fY
-fY
-fY
-fY
-fY
-fY
+gc
+gc
+gc
+gc
+gc
 fY
 fY
 fY
@@ -32069,20 +32174,20 @@ aa
 "}
 (149,1,1) = {"
 fY
+Rm
+gc
+gc
 fY
 fY
 fY
 fY
 fY
+gc
+Rm
 fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
-fY
+gc
+gc
+gc
 fY
 fY
 fY
@@ -32100,13 +32205,13 @@ fY
 fY
 fY
 fY
+gc
+gc
+gc
+gc
+gc
 fY
-fY
-fY
-fY
-fY
-fY
-fY
+Rm
 fY
 aa
 aa

@@ -599,9 +599,8 @@ Defined in conflicts.dm of the #defines folder.
 	single_fire = 1
 
 /datum/event_handler/miniscope_zoomout/handle(sender, datum/event_args/ev_args)
-	if(G.zoom)
-		G.slowdown -= aim_slowdown
-		G.fire_delay -= fire_delay
+	G.slowdown -= aim_slowdown
+	G.fire_delay -= fire_delay
 
 
 /obj/item/attachable/scope/mini
@@ -637,6 +636,13 @@ Defined in conflicts.dm of the #defines folder.
 				handler.fire_delay = config.max_fire_delay
 
 			user.add_zoomout_handler(handler)
+
+
+/obj/item/attachable/scope/mini/hunting //can only be attached to the hunting rifle to prevent vending hunting rifles to cannibalize scopes
+	name = "2x hunting mini-scope"
+	icon_state = "huntingscope"
+	attach_icon = "huntingscope"
+	desc = "While the Basira-Armstrong rifle is compatible with most telescopic devices, its accompanying scope is usable only with the Basira-Armstrong. Fixed at a modest 2x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
 
 
 /obj/item/attachable/scope/mini_iff
@@ -768,6 +774,25 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = -config.min_recoil_value
 	scatter_unwielded_mod = -config.min_scatter_value
 
+/obj/item/attachable/stock/hunting
+	name = "wooden stock"
+	desc = "The non-detachable stock of a Basira-Armstrong rifle."
+	icon_state = "huntingstock"
+	pixel_shift_x = 41
+	pixel_shift_y = 10
+	flags_attach_features = NO_FLAGS
+
+/obj/item/attachable/stock/hunting/New()
+	..()
+	//it makes stuff much better when two-handed
+	accuracy_mod = config.med_hit_accuracy_mult
+	recoil_mod = -config.low_recoil_value
+	scatter_mod = -config.low_scatter_value
+	movement_acc_penalty_mod = -config.low_movement_accuracy_penalty_mult
+	//it makes stuff much worse when one handed
+	accuracy_unwielded_mod = -config.low_hit_accuracy_mult
+	recoil_unwielded_mod = config.low_recoil_value
+	scatter_unwielded_mod = config.low_scatter_value
 
 /obj/item/attachable/stock/rifle
 	name = "\improper M41A skeleton stock"

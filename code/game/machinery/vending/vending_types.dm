@@ -181,7 +181,8 @@
 					/obj/item/storage/fancy/cigarettes/lady_finger = 15,
 					/obj/item/storage/fancy/cigarettes/blackpack = 10,
 					/obj/item/storage/box/matches = 10,
-					/obj/item/tool/lighter/random = 20)
+					/obj/item/tool/lighter/random = 20,
+					/obj/item/tool/lighter/zippo = 5)
 	prices = list(/obj/item/storage/fancy/cigarettes/kpack = 20,
 					/obj/item/storage/fancy/cigarettes/arcturian_ace = 25,
 					/obj/item/storage/fancy/cigarettes/emeraldgreen = 40,
@@ -189,7 +190,8 @@
 					/obj/item/storage/fancy/cigarettes/lady_finger = 30,
 					/obj/item/storage/fancy/cigarettes/blackpack = 50,
 					/obj/item/storage/box/matches = 1,
-					/obj/item/tool/lighter/random = 2)
+					/obj/item/tool/lighter/random = 2,
+					/obj/item/tool/lighter/zippo = 20)
 
 /obj/structure/machinery/vending/medical
 	name = "WestonMed Plus"

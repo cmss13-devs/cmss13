@@ -37929,7 +37929,8 @@
 /area/almayer/hallways/hangar)
 "cdE" = (
 /obj/structure/machinery/vending/engivend{
-	req_access = list(7,23,27)
+	req_access = null;
+	req_one_access = list(7,23,27)
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";

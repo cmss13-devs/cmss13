@@ -70,7 +70,7 @@
 
 
 /mob/living/carbon/Xenomorph/create_hud()
-	if(client && !hud_used)
+	if(!hud_used)
 		hud_used = new /datum/hud/alien(src)
 
 
@@ -93,5 +93,5 @@
 
 
 /mob/living/carbon/Xenomorph/Larva/create_hud()
-	if(client && !hud_used)
+	if(!hud_used)
 		hud_used = new /datum/hud/larva(src)

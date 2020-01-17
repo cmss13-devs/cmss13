@@ -102,6 +102,9 @@
 			to_chat(usr, "Something went wrong with mob transformation...")
 			return
 
+	if(!M.hud_used)
+		M.create_hud()
+		
 	arm_equipment(M, dresscode, count_participant)
 	M.regenerate_icons()
 	if(!no_logs)

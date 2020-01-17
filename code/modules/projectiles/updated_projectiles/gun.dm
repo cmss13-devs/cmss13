@@ -43,10 +43,14 @@
 	//Basic stats.
 	var/accuracy_mult 			= 0				//Multiplier. Increased and decreased through attachments. Multiplies the projectile's accuracy by this number.
 	var/damage_mult 			= 1				//Same as above, for damage.
-	var/damage_falloff_mult 		= 1				//Same as above, for damage bleed (falloff)
+	var/damage_falloff_mult 	= 1				//Same as above, for damage bleed (falloff)
+	var/damage_buildup_mult		= 1				//Same as above, for damage bleed (buildup)
 	var/recoil 					= 0				//Screen shake when the weapon is fired.
 	var/scatter					= 0				//How much the bullet scatters when fired.
 	var/burst_scatter_mult		= 4				//Multiplier. Increases or decreases how much bonus scatter is added with each bullet during burst fire (wielded only).
+
+	var/effective_range_min		= 0				//What minimum range the weapon deals full damage, builds up the closer you get. 0 for no minimum.
+	var/effective_range_max		= 0				//What maximum range the weapon deals full damage, tapers off using damage_falloff after hitting this value. 0 for no maximum.
 
 	var/accuracy_mult_unwielded 		= 1		//same vars as above but for unwielded firing.
 	var/recoil_unwielded 				= 0
@@ -147,9 +151,13 @@
 	scatter_unwielded = config.med_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	damage_falloff_mult = config.reg_damage_falloff
+	damage_buildup_mult = config.reg_damage_buildup
 	recoil = config.no_recoil_value
 	recoil_unwielded = config.no_recoil_value
 	movement_acc_penalty_mult = config.high_movement_accuracy_penalty_mult
+
+	effective_range_min = config.no_effective_range_min
+	effective_range_max = config.no_effective_range_max
 
 	//reset initial define-values
 	aim_slowdown = initial(aim_slowdown)
@@ -179,6 +187,9 @@
 		scatter_unwielded += R.scatter_unwielded_mod
 		damage_mult += R.damage_mod
 		damage_falloff_mult += R.damage_falloff_mod
+		damage_buildup_mult += R.damage_buildup_mod
+		effective_range_min += R.range_min_mod
+		effective_range_max += R.range_max_mod
 		recoil += R.recoil_mod
 		burst_scatter_mult += R.burst_scatter_mod
 		burst_amount += R.burst_mod
@@ -1033,7 +1044,13 @@ and you're good to go.
 			projectile_to_fire.scatter *= scatter_debuff
 
 	projectile_to_fire.damage = round(projectile_to_fire.damage * damage_mult) 		// Apply gun damage multiplier to projectile damage
-	projectile_to_fire.damage_falloff	= (damage_falloff_mult>0?damage_falloff_mult : 0) * projectile_to_fire.ammo.damage_falloff	// Apply gun damage bleed multiplier to projectile damage bleed
+
+	// Apply effective range and falloffs/buildups
+	projectile_to_fire.damage_falloff = damage_falloff_mult * projectile_to_fire.ammo.damage_falloff
+	projectile_to_fire.damage_buildup = damage_buildup_mult * projectile_to_fire.ammo.damage_buildup
+
+	projectile_to_fire.effective_range_min = effective_range_min + projectile_to_fire.ammo.effective_range_min //Add on ammo-level value, if specified.
+	projectile_to_fire.effective_range_max = effective_range_max + projectile_to_fire.ammo.effective_range_max //Add on ammo-level value, if specified.
 
 	projectile_to_fire.shot_from = src
 

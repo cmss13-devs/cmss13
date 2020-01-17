@@ -163,13 +163,27 @@ Burn time = How long do we want our flames to last?
 	var/buckshot_damage_falloff = 5 //ditto but 18.3 (!!!)
 	var/extra_damage_falloff = 10 //ditto but 9.75
 
+	var/reg_damage_buildup = 1
+	var/med_damage_buildup = 2
+	var/high_damage_buildup = 3
+
+	var/no_effective_range_min = 0 //Default so no weapon starts off with a minimum effective range
+	var/min_effective_range_min = 1
+	var/reg_effective_range_min = 4
+	var/med_effective_range_min = 7 //Half a screen
+
+	var/no_effective_range_max = 0 //Default so no weapon starts off with a maximum effective range, defaulting to the legacy damage falloff method
+	var/min_effective_range_max = 3
+	var/reg_effective_range_max = 6
+	var/med_effective_range_max = 9
+	var/high_effective_range_max = 22 //One full screen over
+
 	var/min_burst_value = 1 //How many boolets exit your gun when you burst fire.
 	var/low_burst_value = 2
 	var/med_burst_value = 3
 	var/high_burst_value = 4
 	var/mhigh_burst_value = 5
 	var/max_burst_value = 6
-
 
 	var/min_fire_delay = 1 //How many ticks you have to wait between firing. Burst delay uses the same variable!
 	var/mlow_fire_delay = 2

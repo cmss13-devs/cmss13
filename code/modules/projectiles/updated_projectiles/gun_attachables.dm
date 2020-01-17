@@ -49,6 +49,9 @@ Defined in conflicts.dm of the #defines folder.
 	var/accuracy_unwielded_mod = 0 //same as above but for onehanded.
 	var/damage_mod 		= 0 //Modifer to the damage mult, works off a multiplier.
 	var/damage_falloff_mod = 0 //Modifier to damage falloff, works off a multiplier.
+	var/damage_buildup_mod = 0 //Modifier to damage buildup, works off a multiplier.
+	var/range_min_mod = 0 //Modifier to minimum effective range, tile value.
+	var/range_max_mod = 0 //Modifier to maximum effective range, tile value.
 	var/melee_mod 		= 0 //Changing to a flat number so this actually doesn't screw up the calculations.
 	var/scatter_mod 	= 0 //Increases or decreases scatter chance.
 	var/scatter_unwielded_mod = 0 //same as above but for onehanded firing.

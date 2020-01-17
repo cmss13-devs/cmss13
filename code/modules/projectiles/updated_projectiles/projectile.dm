@@ -40,7 +40,11 @@
 	var/damage = 0
 	var/accuracy = 85 //Base projectile accuracy. Can maybe be later taken from the mob if desired.
 
-	var/damage_falloff = 0 //how many damage point the projectile loses per tiles travelled
+	var/damage_falloff = 0 //how much effectiveness in damage the projectile loses per tiles travelled beyond the effective range
+	var/damage_buildup = 0 //how much effectiveness in damage the projectile loses before the effective range
+
+	var/effective_range_min	= 0	//What minimum range the projectile deals full damage, builds up the closer you get. 0 for no minimum. Set by the weapon.
+	var/effective_range_max	= 0	//What maximum range the projectile deals full damage, tapers off using damage_falloff after hitting this value. 0 for no maximum. Set by the weapon.
 
 	var/scatter = 0
 
@@ -98,7 +102,15 @@
 	accuracy   *= rand(config.proj_variance_low-ammo.accuracy_var_low, config.proj_variance_high+ammo.accuracy_var_high) * config.proj_base_accuracy_mult//Rand only works with integers.
 	damage     *= rand(config.proj_variance_low-ammo.damage_var_low, config.proj_variance_high+ammo.damage_var_high) * config.proj_base_damage_mult
 	damage_falloff = ammo.damage_falloff
+	damage_buildup = ammo.damage_buildup
 	projectile_override_flags = special_flags
+
+/obj/item/projectile/proc/calculate_damage()
+	if(effective_range_min && distance_travelled < effective_range_min)
+		return max(0, damage - round((effective_range_min - distance_travelled) * damage_falloff)) 
+	else if(distance_travelled > effective_range_max)
+		return max(0, damage - round((distance_travelled - effective_range_max) * damage_falloff)) 
+	return damage
 
 // Target, firer, shot from (i.e. the gun), projectile range, projectile speed, original target (who was aimed at, not where projectile is going towards)
 /obj/item/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override)
@@ -671,7 +683,7 @@
 	if(!P) return
 
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	var/damage = max(0, P.damage - round(P.distance_travelled * P.ammo.damage_falloff))
+	var/damage = P.calculate_damage()
 	if(P.ammo.debilitate && stat != DEAD && ( damage || (ammo_flags & AMMO_IGNORE_RESIST) ) )
 		apply_effects(arglist(P.ammo.debilitate))
 
@@ -695,7 +707,7 @@
 		var/mob/M = P.weapon_source_mob
 		M.track_shot_hit(P.weapon_source, src)
 
-	var/damage = max(0, P.damage - round(P.distance_travelled * P.ammo.damage_falloff))
+	var/damage = P.calculate_damage()
 	var/damage_result = damage
 
 	//Any projectile can decloak a predator. It does defeat one free bullet though.
@@ -784,7 +796,7 @@
 
 	flash_weak_pain()
 
-	var/damage = max(0, P.damage - round(P.distance_travelled * P.damage_falloff)) //Has to be at least zero, no negatives.
+	var/damage = P.calculate_damage()
 	var/damage_result = damage
 
 	if(damage > 0 && !(ammo_flags & AMMO_IGNORE_ARMOR))

@@ -367,3 +367,5 @@
 		var/ui_color = client.prefs.UI_style_color
 		var/ui_alpha = client.prefs.UI_style_alpha
 		hud_used = new /datum/hud/human(src, ui_datum, ui_color, ui_alpha)
+	else
+		hud_used = new /datum/hud/human(src)

@@ -40,8 +40,10 @@
 						//this is a bandaid until it's properly fixed.
 
 /obj/effect/landmark/corpsespawner/proc/createCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
-	var/mob/living/carbon/human/M = new /mob/living/carbon/human (src.loc)
+	var/mob/living/carbon/human/M = new /mob/living/carbon/human(src.loc)
 	M.real_name = name
+	if(!M.hud_used)
+		M.create_hud()
 	M.death("existing", 1) //Kills the new mob
 	if(corpseuniform)
 		M.equip_to_slot_or_del(new corpseuniform(M), WEAR_BODY)

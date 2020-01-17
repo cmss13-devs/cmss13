@@ -6,7 +6,7 @@
 
 
 /mob/living/silicon/ai/create_hud()
-	if(client && !hud_used)
+	if(!hud_used)
 		hud_used = new /datum/hud/ai(src)
 
 
@@ -16,7 +16,7 @@
 	..()
 
 /mob/living/brain/create_hud()
-	if(client && !hud_used)
+	if(!hud_used)
 		hud_used = new /datum/hud/brain(src)
 
 
@@ -51,5 +51,5 @@
 	static_inventory += zone_sel
 
 /mob/living/carbon/hellhound/create_hud()
-	if(client && !hud_used)
+	if(!hud_used)
 		hud_used = new /datum/hud/hellhound(src)

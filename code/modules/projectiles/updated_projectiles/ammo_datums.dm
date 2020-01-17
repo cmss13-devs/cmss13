@@ -1520,6 +1520,7 @@
 /datum/ammo/xeno/toxin/queen/New()
 	..()
 	accuracy = config.high_hit_accuracy*2
+	max_range = config.near_shell_range - 1
 
 /datum/ammo/xeno/toxin/queen/on_hit_mob(mob/M,obj/item/projectile/P)
 	apply_neuro(M, effect_power, TRUE)

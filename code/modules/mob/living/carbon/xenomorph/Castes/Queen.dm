@@ -24,7 +24,7 @@
 	fire_immune = 1
 	aura_strength = 2 //The Queen's aura is strong and stays so, and gets devastating late game. Climbs by 1 to 5
 	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs"
-	spit_delay = 25
+	spit_delay = 35
 	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/medium)
 	can_hold_facehuggers = 0
 	can_hold_eggs = CAN_HOLD_ONE_HAND
@@ -41,7 +41,7 @@
 	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs."
 	upgrade = 1
 
-	spit_delay = 20
+	spit_delay = 30
 	tackle_chance = 45
 	aura_strength = 3
 
@@ -50,7 +50,7 @@
 	caste_desc = "The biggest and baddest xeno. The Empress controls multiple hives and planets."
 	upgrade = 2
 
-	spit_delay = 15
+	spit_delay = 25
 	tackle_chance = 50
 	aura_strength = 4
 	tacklemin = 5
@@ -61,7 +61,7 @@
 	caste_desc = "The most perfect Xeno form imaginable."
 	upgrade = 3
 
-	spit_delay = 10
+	spit_delay = 20
 	tackle_chance = 55
 	aura_strength = 5
 	tacklemin = 6

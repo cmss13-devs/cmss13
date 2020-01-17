@@ -2,7 +2,6 @@ var/datum/subsystem/effects/SSeffects
 
 var/list/active_effects = list()
 
-
 /datum/subsystem/effects
 	name     = "Effects"
 	wait     = 1 SECOND

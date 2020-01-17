@@ -200,9 +200,9 @@
 		if(user.action_busy)
 			return
 		var/self_fixing = FALSE
-		if(H.species.flags & IS_SYNTHETIC)
-			if(M == user)
-				self_fixing = TRUE
+		
+		if(H.species.flags & IS_SYNTHETIC && M == user)
+			self_fixing = TRUE
 
 		if(S.brute_dam && welding)
 			remove_fuel(1,user)

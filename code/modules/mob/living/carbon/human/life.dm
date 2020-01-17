@@ -48,7 +48,8 @@
 			handle_blood()
 
 			//Random events (vomiting etc)
-			handle_random_events()
+			if(!stat && getToxLoss() >= 45 && nutrition > 20)
+				vomit()
 
 			//effects of being grabbed aggressively by another mob
 			if(pulledby && pulledby.grab_level)

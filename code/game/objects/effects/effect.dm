@@ -1,11 +1,14 @@
 /obj/effect
+	var/handled_by_master_subsystem = TRUE
 
 /obj/effect/New()
 	..()
-	effect_list += src
+	if(handled_by_master_subsystem)
+		effect_list += src
 
 /obj/effect/Dispose()
 	. = ..()
-	effect_list -= src
+	if(handled_by_master_subsystem)
+		effect_list -= src
 
 

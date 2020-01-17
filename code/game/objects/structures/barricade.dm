@@ -315,7 +315,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		if(75 to INFINITY) damage_state = BARRICADE_DMG_NONE
 
 /obj/structure/barricade/proc/acid_smoke_damage(var/obj/effect/particle_effect/smoke/S)
-	take_damage( 15 )
+	take_damage(XENO_ACID_BARRICADE_DAMAGE)
 
 /obj/structure/barricade/verb/rotate()
 	set name = "Rotate Barricade Counter-Clockwise"

@@ -1540,9 +1540,10 @@
 	if(ishuman(target)) //Slicey dicey!
 		if(prob(14))
 			var/datum/limb/affecting
-			affecting = target:get_limb(ran_zone(user.zone_selected,60))
+			var/mob/living/carbon/human/H = target
+			affecting = H.get_limb(ran_zone(user.zone_selected,60))
 			if(!affecting)
-				affecting = target:get_limb(ran_zone(user.zone_selected,90)) //No luck? Try again.
+				affecting = H.get_limb(ran_zone(user.zone_selected,90)) //No luck? Try again.
 			if(affecting)
 				if(affecting.body_part != BODY_FLAG_CHEST && affecting.body_part != BODY_FLAG_GROIN) //as hilarious as it is
 					user.visible_message(SPAN_DANGER("The limb is sliced clean off!"),SPAN_DANGER("You slice off a limb!"))

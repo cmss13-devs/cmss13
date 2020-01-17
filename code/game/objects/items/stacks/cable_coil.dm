@@ -305,19 +305,19 @@
 	..()
 
 /obj/item/stack/cable_coil/attack(mob/M as mob, mob/user as mob)
-	if(hasorgans(M))
-		var/datum/limb/S = M:get_limb(user.zone_selected)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		
+		var/datum/limb/S = H.get_limb(user.zone_selected)
 		if(!(S.status & LIMB_ROBOT) || user.a_intent != "help")
 			return ..()
 
 		if(user.action_busy)
 			return
 		var/self_fixing = FALSE
-		if(istype(M,/mob/living/carbon/human))
-			var/mob/living/carbon/human/H = M
-			if(H.species.flags & IS_SYNTHETIC)
-				if(M == user)
-					self_fixing = TRUE
+
+		if(H.species.flags & IS_SYNTHETIC && M == user)
+			self_fixing = TRUE
 
 		if(S.burn_dam > 0 && use(1))
 			if(self_fixing)

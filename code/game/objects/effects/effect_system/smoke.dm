@@ -11,9 +11,10 @@
 	anchored = 1
 	mouse_opacity = 0
 	layer = ABOVE_MOB_LAYER + 0.1 //above mobs and barricades
+	handled_by_master_subsystem = FALSE // How we escape from the default processing list and do our own thang, girl
 	var/amount = 2
 	var/spread_speed = 1 //time in decisecond for a smoke to spread one tile.
-	var/time_to_live = 4
+	var/time_to_live = 8
 	var/smokeranking = SMOKE_RANK_HARMLESS //Override priority. A higher ranked smoke cloud will displace lower and equal ones on spreading.
 	flags_pass = PASS_FLAGS_SMOKE
 	var/source = null
@@ -31,25 +32,25 @@
 	source = new_source
 	source_mob = new_source_mob
 	time_to_live += rand(-1,1)
-	processing_objects.Add(src)
+	active_smoke_effects += src	
 
 /obj/effect/particle_effect/smoke/Dispose()
-	source = null
-	source_mob = null
+	. = ..()
 	if(opacity)
 		SetOpacity(0)
-	processing_objects.Remove(src)
-	. =..()
-
-
+	active_smoke_effects -= src
+	
 /obj/effect/particle_effect/smoke/process()
 	time_to_live--
 	if(time_to_live <= 0)
 		qdel(src)
+		return
 	else if(time_to_live == 1)
 		alpha = 180
 		amount = 0
 		SetOpacity(0)
+
+	apply_smoke_effect(get_turf(src))
 
 /obj/effect/particle_effect/smoke/ex_act(severity)
 	if( prob(severity/EXPLOSION_THRESHOLD_LOW * 100) )
@@ -115,7 +116,7 @@
 /////////////////////////////////////////////
 
 /obj/effect/particle_effect/smoke/bad
-	time_to_live = 5
+	time_to_live = 10
 	smokeranking = SMOKE_RANK_LOW
 
 /obj/effect/particle_effect/smoke/bad/Move()
@@ -194,7 +195,7 @@
 /////////////////////////////////////////////
 
 /obj/effect/particle_effect/smoke/phosphorus
-	time_to_live = 5
+	time_to_live = 10
 	smokeranking = SMOKE_RANK_HIGH
 
 /obj/effect/particle_effect/smoke/phosphorus/Move()
@@ -231,7 +232,7 @@
 
 /obj/effect/particle_effect/smoke/flashbang
 	name = "illumination"
-	time_to_live = 2
+	time_to_live = 4
 	opacity = 0
 	icon_state = "sparks"
 	icon = 'icons/effects/effects.dmi'
@@ -243,7 +244,7 @@
 
 //Xeno acid smoke.
 /obj/effect/particle_effect/smoke/xeno_burn
-	time_to_live = 6
+	time_to_live = 12
 	color = "#86B028" //Mostly green?
 	anchored = 1
 	spread_speed = 7
@@ -251,14 +252,9 @@
 	smokeranking = SMOKE_RANK_BOILER
 
 /obj/effect/particle_effect/smoke/xeno_burn/apply_smoke_effect(turf/T)
-	for(var/mob/living/L in T)
-		affect(L)
+	..()
 	for(var/obj/structure/barricade/B in T)
 		B.acid_smoke_damage(src)
-	for(var/obj/vehicle/multitile/hitbox/cm_armored/H in T)
-		var/obj/vehicle/multitile/root/cm_armored/R = H.root
-		if(!R) continue
-		R.take_damage_type(30, "acid")
 
 //No effect when merely entering the smoke turf, for balance reasons
 /obj/effect/particle_effect/smoke/xeno_burn/Crossed(mob/living/carbon/M as mob)
@@ -278,8 +274,8 @@
 	M.last_damage_source = source
 	M.last_damage_mob = source_mob
 
-	M.adjustOxyLoss(5) //Basic oxyloss from "can't breathe"
-	M.adjustFireLoss(amount*rand(10, 15)) //Inhalation damage
+	M.adjustOxyLoss(3) //Basic oxyloss from "can't breathe"
+	M.adjustFireLoss(amount*rand(8, 10)) //Inhalation damage
 	if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
 		M.coughedtime = 1
 		if(prob(50))
@@ -300,7 +296,7 @@
 
 //Xeno neurotox smoke.
 /obj/effect/particle_effect/smoke/xeno_weak
-	time_to_live = 6
+	time_to_live = 12
 	color = "#ffbf58" //Mustard orange?
 	spread_speed = 7
 	amount = 1 //Amount depends on Boiler upgrade!
@@ -323,12 +319,12 @@
 
 	var/effect_amt = round(6 + amount*6)
 
-	M.adjustOxyLoss(15) //Causes even more oxyloss damage due to neurotoxin locking up respiratory system
+	M.adjustOxyLoss(9) //Causes even more oxyloss damage due to neurotoxin locking up respiratory system
 	M.ear_deaf = max(M.ear_deaf, round(effect_amt*1.5)) //Paralysis of hearing system, aka deafness
 	if(!M.eye_blind) //Eye exposure damage
 		to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
-	M.eye_blurry = max(M.eye_blurry, effect_amt*2)
-	M.eye_blind = max(M.eye_blind, round(effect_amt))
+	M.eye_blurry = max(M.eye_blurry, effect_amt)
+	M.eye_blind = max(M.eye_blind, round(effect_amt/3))
 	if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
 		M.coughedtime = 1
 		if(prob(50))
@@ -337,8 +333,8 @@
 			M.emote("gasp")
 		spawn(15)
 			M.coughedtime = 0
-	if (prob(10))
-		M.KnockDown(5)
+	if (prob(20))
+		M.KnockDown(1)
 
 	//Topical damage (neurotoxin on exposed skin)
 	to_chat(M, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
@@ -350,7 +346,7 @@
 		H.recalculate_move_delay = TRUE
 
 /obj/effect/particle_effect/smoke/xeno_weak_fire
-	time_to_live = 8
+	time_to_live = 16
 	color = "#b33e1e" 
 	spread_speed = 7
 	amount = 1 
@@ -358,7 +354,8 @@
 
 //No effect when merely entering the smoke turf, for balance reasons
 /obj/effect/particle_effect/smoke/xeno_weak_fire/Crossed(mob/living/carbon/M as mob)
-	return
+	M.ExtinguishMob()
+	. = ..()
 
 /obj/effect/particle_effect/smoke/xeno_weak_fire/affect(var/mob/living/carbon/M)
 	..()
@@ -373,12 +370,11 @@
 
 	var/effect_amt = round(6 + amount*6)
 
-	M.adjustOxyLoss(20) // MUCH harsher
+	M.adjustOxyLoss(9) // MUCH harsher
 	M.ear_deaf = max(M.ear_deaf, round(effect_amt*1.5)) //Paralysis of hearing system, aka deafness
 	if(!M.eye_blind) //Eye exposure damage
 		to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
-	M.eye_blurry = max(M.eye_blurry, effect_amt*2)
-	M.eye_blind = max(M.eye_blind, round(effect_amt))
+	M.eye_blind = max(M.eye_blind, round(effect_amt/3))
 	if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
 		M.coughedtime = 1
 		if(prob(50))
@@ -388,7 +384,7 @@
 		spawn(15)
 			M.coughedtime = 0
 	if (prob(20))
-		M.KnockDown(5)
+		M.KnockDown(1)
 
 	//Topical damage (neurotoxin on exposed skin)
 	to_chat(M, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
@@ -397,7 +393,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.temporary_slowdown = max(H.temporary_slowdown, 4) //One tick every two second
-
+		H.recalculate_move_delay = TRUE
 
 /obj/effect/particle_effect/smoke/xeno_weak_fire/spread_smoke(direction)
 	set waitfor = 0
@@ -482,6 +478,7 @@
 /datum/effect_system/smoke_spread/phosphorus
 	smoke_type = /obj/effect/particle_effect/smoke/phosphorus
 
+// XENO SMOKES
 
 /datum/effect_system/smoke_spread/xeno_acid
 	smoke_type = /obj/effect/particle_effect/smoke/xeno_burn

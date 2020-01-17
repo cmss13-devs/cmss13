@@ -166,3 +166,5 @@
 #define THROW_MODE_OFF      0
 #define THROW_MODE_NORMAL   1
 #define THROW_MODE_HIGH     2
+
+#define XENO_ACID_BARRICADE_DAMAGE 5

@@ -338,10 +338,8 @@ This function restores all limbs.
 
 /mob/living/carbon/human/get_limb(zone)
 	zone = check_zone(zone)
-	for(var/X in limbs)
-		var/datum/limb/EO = X
-		if(EO.name == zone)
-			return EO
+	return (locate(limb_types_by_name[zone]) in limbs)
+
 
 /*
 	Describes how human mobs get damage applied.

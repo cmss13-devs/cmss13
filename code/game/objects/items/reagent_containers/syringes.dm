@@ -230,15 +230,14 @@
 
 
 /obj/item/reagent_container/syringe/proc/syringestab(mob/living/carbon/target as mob, mob/living/carbon/user as mob)
-
 	user.attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [target.name] ([target.ckey]) with [src.name] (INTENT: [uppertext(user.a_intent)])</font>"
 	target.attack_log += "\[[time_stamp()]\]<font color='orange'> Attacked by [user.name] ([user.ckey]) with [src.name] (INTENT: [uppertext(user.a_intent)])</font>"
 	msg_admin_attack("[user.name] ([user.ckey]) attacked [target.name] ([target.ckey]) with [src.name] (INTENT: [uppertext(user.a_intent)]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
-	if(istype(target, /mob/living/carbon/human))
-
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
 		var/target_zone = ran_zone(check_zone(user.zone_selected, target))
-		var/datum/limb/affecting = target:get_limb(target_zone)
+		var/datum/limb/affecting = H.get_limb(target_zone)
 
 		if (!affecting)
 			return
@@ -247,7 +246,6 @@
 			return
 		var/hit_area = affecting.display_name
 
-		var/mob/living/carbon/human/H = target
 		if((user != target) && H.check_shields(7, "the [src.name]"))
 			return
 

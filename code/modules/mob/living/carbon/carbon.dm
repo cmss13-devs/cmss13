@@ -14,9 +14,7 @@
 
 	. = ..()
 
-	if(species)
-		qdel(species)
-		species = null
+	species = null
 
 	if(handcuffed)
 		qdel(handcuffed)

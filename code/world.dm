@@ -49,7 +49,7 @@ var/global/datum/global_init/init = new ()
 	//Emergency Fix
 	//end-emergency fix
 
-	src.update_status()
+	update_status()
 
 	. = ..()
 

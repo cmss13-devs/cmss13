@@ -35,7 +35,6 @@
 	return
 
 /mob/proc/death(var/cause, var/gibbed = 0, var/deathmessage = "seizes up and falls limp...")
-
 	if(stat == DEAD)
 		return 0
 

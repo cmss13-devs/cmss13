@@ -107,6 +107,7 @@
 			M.update_canmove()
 			N.buckled_mob = M
 			N.afterbuckle(M)
+	M.undefibbable = TRUE
 	qdel(src)
 
 

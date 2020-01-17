@@ -364,8 +364,8 @@
 			dat += "<br><table cellspacing=5><tr><td><B>Aliens</B></td><td></td><td></td></tr>"
 			for(var/datum/mind/L in ticker.mode.xenomorphs)
 				var/mob/M = L.current
-				var/location = get_area(M.loc)
 				if(M)
+					var/location = get_area(M.loc)
 					dat += "<tr><td><A href='?src=\ref[usr];priv_msg=\ref[M]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
 					dat += "<td>[location]</td>"
 					dat += "<td><a href='?src=\ref[usr];track=\ref[M]'>F</a></td>"

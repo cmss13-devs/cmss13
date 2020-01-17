@@ -1,7 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
 /mob/living/carbon/human/Life()
-
 	set invisibility = 0
 	set background = 1
 
@@ -10,14 +9,14 @@
 	if(!loc) //Fixing a null error that occurs when the mob isn't found in the world -- TLE
 		return
 
-	..()
-
 	if(undefibbable && stat == DEAD)
 		for (var/datum/data/record/R in data_core.general)	// Change their status on the Crew Manifest to Deceased
 			if (R.fields["name"] == real_name)
 				R.fields["p_stat"] = "*Deceased*"
 		processable_human_list -= src
 		return
+
+	..()
 
 	blinded = null
 	fire_alert = 0 //Reset this here, because both breathe() and handle_environment() have a chance to set it.

@@ -39,7 +39,10 @@
 	var/damage 						= 0 		// This is the base damage of the bullet as it is fired
 	var/damage_var_low				= 0 		// Same as with accuracy variance
 	var/damage_var_high				= 0
-	var/damage_falloff 				= 0 		// How much damage the bullet loses per turf traveled
+	var/damage_falloff 				= 0 		// How much damage the bullet loses per turf traveled after the effective range
+	var/damage_buildup 				= 0 		// How much damage the bullet loses per turf away before the effective range
+	var/effective_range_min			= 0			//What minimum range the ammo deals full damage, builds up the closer you get. 0 for no minimum. Added onto gun range as a modifier.
+	var/effective_range_max			= 0			//What maximum range the ammo deals full damage, tapers off using damage_falloff after hitting this value. 0 for no maximum. Added onto gun range as a modifier.
 	var/damage_type 				= BRUTE 	// BRUTE, BURN, TOX, OXY, CLONE are the only things that should be in here
 	var/penetration					= 0 		// How much armor it ignores before calculations take place
 	var/shrapnel_chance 			= 0 		// The % chance it will imbed in a human
@@ -61,7 +64,10 @@
 	max_range 			= config.norm_shell_range 	// This will de-increment a counter on the bullet.
 	damage_var_low		= config.min_proj_variance 	// Same as with accuracy variance.
 	damage_var_high		= config.min_proj_variance
-	damage_falloff 		= config.reg_damage_falloff 	// How much damage the bullet loses per turf traveled.
+	damage_falloff 		= config.reg_damage_falloff // How much damage the bullet loses per turf traveled after the effective range
+	damage_buildup 		= config.reg_damage_buildup // How much damage the bullet loses per turf away before the effective range
+	effective_range_min	= config.no_effective_range_min	//What minimum range the ammo deals full damage, builds up the closer you get. 0 for no minimum. Added onto gun range as a modifier.
+	effective_range_max	= config.no_effective_range_max	//What maximum range the ammo deals full damage, tapers off using damage_falloff after hitting this value. 0 for no maximum. Added onto gun range as a modifier.
 	shell_speed 		= config.slow_shell_speed 	// How fast the projectile moves.
 
 /datum/ammo/proc/do_at_half_range(obj/item/projectile/P)

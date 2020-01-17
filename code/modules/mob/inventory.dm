@@ -19,7 +19,7 @@
 		W.forceMove(src)
 		l_hand = W
 		W.layer = ABOVE_HUD_LAYER
-		W.pickup(src,WEAR_L_HAND)
+		W.equipped(src,WEAR_L_HAND)
 		update_inv_l_hand()
 		return 1
 	return 0
@@ -32,7 +32,7 @@
 		W.forceMove(src)
 		r_hand = W
 		W.layer = ABOVE_HUD_LAYER
-		W.pickup(src,WEAR_R_HAND)
+		W.equipped(src,WEAR_R_HAND)
 		update_inv_r_hand()
 		return 1
 	return 0

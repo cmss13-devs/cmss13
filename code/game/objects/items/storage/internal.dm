@@ -132,6 +132,6 @@
 	return
 
 /obj/item/storage/internal/Dispose()
-	master_item = null
 	. = ..()
+	master_item = null
 	

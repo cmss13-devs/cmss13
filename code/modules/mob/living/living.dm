@@ -22,8 +22,6 @@
 
 /mob/living/Dispose()
 	pipes_shown = null
-	actions = null
-	new_actions = null
 
 	if(attack_icon)
 		qdel(attack_icon)
@@ -34,7 +32,17 @@
 	if(event_movement)
 		qdel(event_movement)
 		event_movement = null
+
 	. = ..()
+
+	if(actions)
+		for(var/datum/action/A in actions)
+			qdel(A)
+		actions = null
+	if(new_actions)
+		for(var/datum/action/A in new_actions)
+			qdel(A)
+		new_actions = null
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
 //affects them once clothing is factored in. ~Errorage

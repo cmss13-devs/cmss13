@@ -1,5 +1,4 @@
 /mob/living/carbon/human/gib(var/cause = "gibbing")
-
 	var/is_a_synth = isSynth(src)
 	for(var/datum/limb/E in limbs)
 		if(istype(E, /datum/limb/chest))
@@ -11,6 +10,7 @@
 			// Override the current limb status
 			E.droplimb(0, 0, cause)
 
+	undefibbable = TRUE
 
 	if(is_a_synth)
 		spawn_gibs()

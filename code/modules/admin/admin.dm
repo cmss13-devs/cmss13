@@ -1,4 +1,3 @@
-
 var/global/BSACooldown = 0
 var/global/floorIsLava = 0
 
@@ -172,7 +171,7 @@ var/global/floorIsLava = 0
 /datum/admins/proc/spawn_atom(var/object as text)
 	set category = "Debug"
 	set desc = "(atom path) Spawn an atom"
-	set name = "A: Spawn"
+	set name = "Spawn"
 
 	if(!check_rights(R_SPAWN))	return
 

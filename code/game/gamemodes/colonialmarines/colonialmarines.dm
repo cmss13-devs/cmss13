@@ -212,7 +212,7 @@
 				
 				var/input = "Biohazard locks lifting in 30 seconds per automated lockdown protocol."
 				var/name = "CORSAT Security Authority automated announcement"
-				marine_announcement(input, name, new_sound = 'sound/AI/commandreport.ogg')
+				marine_announcement(input, name, 'sound/AI/commandreport.ogg')
 				for(var/mob/M in player_list)
 					if(isXeno(M))
 						sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))

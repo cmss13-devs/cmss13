@@ -1,0 +1,14 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed announcements being seen by players in lobby."
+  - bugfix: "Fixed dropship hijack announcement not been played."
+  - bugfix: "Fixed command announcements being seen by unconscious humans."
+  - bugfix: "Fixed Yautja announcements not being seen by observers."
+  - bugfix: "ARES standard telecomms announcements will play sound only to humans in Almayer z-level and observers now."
+  - bugfix: "Fixed announcements being seen by all factions. Command announcements will be seen only by USCM and PMCs factions from now on."
+  - tweak: "Maintenance access changes announcements will use ARES standard telecomms announcements instead of command announcements now. That means they can only be heard on Almayer and only if you have access to Almayer General channel in your headset or you are standing near intercom."
+  - rscadd: "Added new type of announcement: ARES shipwide announcement. It works like command announcement, but only for humans in Almayer z-level. It also doesn't rely on Tcomms being powered or having access to Almayer General channel, so all humans on ship will see it. Currently only available for admins."
+  - rscadd: "Added option for admins to choose which faction or hive they want to send announcement to (including All Hives/Factions options), allowing more flexible announcements use during events. Read instructions during making announcement for more info."

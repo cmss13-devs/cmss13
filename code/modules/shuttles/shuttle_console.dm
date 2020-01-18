@@ -202,8 +202,7 @@
 					shuttle1.launch_crash()
 					if(round_statistics)
 						round_statistics.track_hijack()
-					marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", \
-					"Dropship Alert", new_sound = 'sound/AI/hijack.ogg')
+					marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg')
 					shuttle.alerts_allowed--
 					to_chat(M, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
 					var/mob/living/carbon/Xenomorph/Queen/Q = M // typechecked above

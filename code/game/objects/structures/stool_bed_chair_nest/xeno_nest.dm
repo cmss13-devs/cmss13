@@ -212,5 +212,8 @@
 	qdel(src)
 
 /obj/structure/bed/nest/Dispose()
-	ghost_of_buckled_mob = null
+	unbuckle()
+	
 	. = ..()
+
+	ghost_of_buckled_mob = null

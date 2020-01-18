@@ -19,7 +19,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/getserverlog,			/*allows us to fetch server logs (diary) for other days*/
 	/client/proc/cmd_admin_world_narrate,	/*sends text to all players with no padding*/
 	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command.
-	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI
+	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
+	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
 	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
 	/client/proc/show_objectives_status,
 	/client/proc/toggleprayers,			/*toggles prayers on/off*/

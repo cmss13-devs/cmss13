@@ -375,77 +375,104 @@
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
-	var/input = input(usr, "Please enter anything you want. Anything. Serious.", "What?", "") as message|null
+	var/faction = input(usr, "Please choose faction you want to see your announcement.", "Faction Selection", "") as null|anything in list(FACTION_MARINE, FACTION_PMC, FACTION_CLF, FACTION_UPP, FACTION_SURVIVOR, FACTION_FREELANCER, FACTION_MERCENARY, FACTION_COLONIST, FACTION_GLADIATOR, FACTION_NEUTRAL, "Everyone (-Yautja)")
+	if(!faction)
+		return
+	var/input = input(usr, "Please enter announcement text. Be advised, this announcement will be heard both on Almayer and planetside by conscious humans of selected faction.", "What?", "") as message|null
 	if(!input)
 		return
-	var/customname = input(usr, "Pick a title for the report.", "Title") as text|null
+	var/customname = input(usr, "Pick a title for the announcement. Cancel for \"USCM Update\" title.", "Title") as text|null
 	if(!customname)
 		customname = "USCM Update"
-	for (var/obj/structure/machinery/computer/communications/C in machines)
-		if(! (C.stat & (BROKEN|NOPOWER) ) )
-			var/obj/item/paper/P = new /obj/item/paper( C.loc )
-			P.name = "'[command_name] Update.'"
-			P.info = input
-			P.update_icon()
-			C.messagetitle.Add("[command_name] Update")
-			C.messagetext.Add(P.info)
+	if(faction == FACTION_MARINE)
+		for(var/obj/structure/machinery/computer/communications/C in machines)
+			if(!(C.stat & (BROKEN|NOPOWER)))
+				var/obj/item/paper/P = new /obj/item/paper( C.loc )
+				P.name = "'[command_name] Update.'"
+				P.info = input
+				P.update_icon()
+				C.messagetitle.Add("[command_name] Update")
+				C.messagetext.Add(P.info)
 
-	switch(alert("Should this be announced to the general population?",,"Yes","No"))
-		if("Yes")
-			marine_announcement(input, customname, 'sound/AI/commandreport.ogg');
-		//if("No")
-		//	world << sound('sound/AI/commandreport.ogg')
+		if(alert("Press \"Yes\" if you want to announce it to ship crew and marines. Press \"No\" to keep it only as printed report on communication console.",,"Yes","No") == "Yes")
+			if(alert("Do you want PMCs to see this announcement?",,"Yes","No") == "Yes")
+				marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction)
+			else
+				marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction, FALSE)
+	else
+		marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction)
 
-	log_admin("[key_name(src)] has created a command report: [input]")
-	message_admins("[key_name_admin(src)] has created a command report")
+	log_admin("[key_name(src)] has created a [faction] command report: [input]")
+	message_admins("[key_name_admin(src)] has created a [faction] command report")
 
 /client/proc/cmd_admin_xeno_report()
 	set name = "A: Create Queen Mother Report"
-	set desc = "Basically a MOTHER report, but only for Xenos"
+	set desc = "Basically a command announcement, but only for selected Xenos Hive"
 	set category = "Event"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
-	var/input = input(usr, "This should be a message from the ruler of the Xenomorph race.", "What?", "") as message|null
-	var/customname = "Queen Mother Psychic Directive"
-	if(!input) 
+	var/list/hives = list("Regular" = 1, "Corrupted" = 2, "Alpha" = 3, "Beta" = 4, "Zeta" = 5, "All hives" = 6)
+	var/hive_choice = input(usr, "Please choose the hive you want to see your announcement. Selecting \"All hives\" option will change title to \"Unknown Higher Force\"", "Hive Selection", "") as null|anything in hives
+	if(!hive_choice)
 		return FALSE
+	var/hivenumber = hives[hive_choice]
+	var/input = input(usr, "This should be a message from the ruler of the Xenomorph race.", "What?", "") as message|null
+	if(!input)
+		return FALSE
+	xeno_announcement(input, hivenumber, QUEEN_MOTHER_ANNOUNCE)
 
-	var/data = "<br>[SPAN_ANNOUNCEMENT_HEADER_BLUE(customname)]<br><br>[SPAN_ANNOUNCEMENT_BODY(input)]<br>"
+	log_admin("[key_name(src)] has created a [hive_choice] Queen Mother report: [input]")
+	message_admins("[key_name_admin(src)] has created a [hive_choice] Queen Mother report")
 
-	for(var/mob/M in player_list)
-		if(isXeno(M) || isobserver(M))
-			to_chat(M, data)
-
-	log_admin("[key_name(src)] has created a Queen Mother report: [input]")
-	message_admins("[key_name_admin(src)] has created a Queen Mother report")
-	 
 /client/proc/cmd_admin_create_AI_report()
-	set name = "A: Create ARES Announcement"
+	set name = "A: Create ARES Comms Announcement"
 	set category = "Event"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
-	var/input = input(usr, "This should be a message from the ship's AI.  Check with online staff before you send this. Do not use html.", "What?", "") as message|null
-	if(!input) 
+	var/input = input(usr, "This is a standard message from the ship's AI. It uses Almayer General channel and won't be heard by humans without access to Almayer General channel (headset or intercom). Check with online staff before you send this. Do not use html.", "What?", "") as message|null
+	if(!input)
 		return FALSE
 	if(ai_announcement(input))
-		for (var/obj/structure/machinery/computer/communications/C in machines)
-			if(! (C.stat & (BROKEN|NOPOWER) ) )
-				var/obj/item/paper/P = new /obj/item/paper( C.loc )
+		for(var/obj/structure/machinery/computer/communications/C in machines)
+			if(!(C.stat & (BROKEN|NOPOWER)))
+				var/obj/item/paper/P = new /obj/item/paper(C.loc)
 				P.name = "'[MAIN_AI_SYSTEM] Update.'"
 				P.info = input
 				P.update_icon()
 				C.messagetitle.Add("[MAIN_AI_SYSTEM] Update")
 				C.messagetext.Add(P.info)
-
-		log_admin("[key_name(src)] has created an AI report: [input]")
-		message_admins("[key_name_admin(src)] has created an AI report")
-		 
+		log_admin("[key_name(src)] has created an AI comms report: [input]")
+		message_admins("[key_name_admin(src)] has created an AI comms report")
 	else
 		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+
+/client/proc/cmd_admin_create_AI_shipwide_report()
+	set name = "A: Create ARES Shipwide Announcement"
+	set category = "Event"
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+	var/input = input(usr, "This is an announcement type message from the ship's AI. This will be announced to every conscious human on Almayer z-level. Be aware, this will work even if ARES unpowered/destroyed. Check with online staff before you send this.", "What?", "") as message|null
+	if(!input)
+		return FALSE
+
+	for(var/obj/structure/machinery/computer/communications/C in machines)
+		if(!(C.stat & (BROKEN|NOPOWER)))
+			var/obj/item/paper/P = new /obj/item/paper(C.loc)
+			P.name = "'[MAIN_AI_SYSTEM] Update.'"
+			P.info = input
+			P.update_icon()
+			C.messagetitle.Add("[MAIN_AI_SYSTEM] Update")
+			C.messagetext.Add(P.info)
+
+	shipwide_ai_announcement(input)
+	log_admin("[key_name(src)] has created an AI shipwide report: [input]")
+	message_admins("[key_name_admin(src)] has created an AI shipwide report")
 
 /client/proc/cmd_admin_create_predator_report()
 	set name = "A: Create Yautja AI Announcement"
@@ -454,7 +481,7 @@
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
-	var/input = input(usr, "This should be a message from the predator ship's AI. Check with online staff before you send this. Do not use html.", "What?", "") as message|null
+	var/input = input(usr, "This is a message from the predator ship's AI. Check with online staff before you send this.", "What?", "") as message|null
 	if(!input)
 		return FALSE
 	yautja_announcement(SPAN_YAUTJABOLDBIG(input))

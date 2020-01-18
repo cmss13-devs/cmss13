@@ -222,9 +222,13 @@ Additional game mode variables.
 	new_predator.mind_initialize()
 	new_predator.key = pred_candidate.key
 	new_predator.mind.key = new_predator.key
-	if(new_predator.client) new_predator.client.change_view(world.view)
+	new_predator.statistic_exempt = TRUE
+	
+	if(new_predator.client) 
+		new_predator.client.change_view(world.view)
 
-	if(!new_predator.client.prefs) new_predator.client.prefs = new /datum/preferences(new_predator.client) //Let's give them one.
+	if(!new_predator.client.prefs) 
+		new_predator.client.prefs = new /datum/preferences(new_predator.client) //Let's give them one.
 
 	if(wants_elder)
 		arm_equipment(new_predator, "Yautja Elder", FALSE, TRUE)

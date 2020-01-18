@@ -540,8 +540,9 @@
 		qdel(mutators)
 		mutators = null
 
-	caste = null
 	. = ..()
+
+	caste = null
 
 
 

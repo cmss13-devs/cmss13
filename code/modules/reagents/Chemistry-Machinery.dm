@@ -1847,9 +1847,9 @@
 		"property_codings" = property_codings
 	)
 	
-	if(target && target.completed)
+	if(target && target.data && target.completed)
 		data["target_property_list"] = target.data.properties
-	if(reference && reference.completed)
+	if(reference && reference.data && reference.completed)
 		data["reference_property_list"] = reference.data.properties
 	
 	if(target_property)
@@ -1971,9 +1971,13 @@
 					property_costs[P] = target.data.properties[P]
 
 /obj/structure/machinery/chem_simulator/proc/check_ready()
-	if(target && !target.completed)
-		status_bar = "INCOMPLETE DATA DETECTED IN TARGET"
-		return FALSE
+	if(target)
+		if(!target.completed)
+			status_bar = "INCOMPLETE DATA DETECTED IN TARGET"
+			return FALSE
+		if(!target.data)
+			status_bar = "DATA CORRUPTION DETECTED, RESCAN CHEMICAL"
+			return FALSE
 	if(property_costs[target_property] > chemical_research_data.rsc_credits)
 		status_bar = "INSUFFICIENT FUNDS"
 		return FALSE
@@ -1999,10 +2003,10 @@
 	flick("[icon_state]_printing",src)
 	sleep(10)
 	var/obj/item/paper/chem_report/report = new /obj/item/paper/chem_report/(loc)
-	report.data = chemical_reagents_list[id]
-	report.name = "Simulation result for [report.data.name]"
-	report.info += "<center><img src = wylogo.png><HR><I><B>Official Company Document</B><BR>Simulated Synthesis Report</I><HR><H2>Result for [report.data.name]</H2></center>"
-	report.generate(report.data)
+	var/datum/reagent/D = chemical_reagents_list[id]
+	report.name = "Simulation result for [D.name]"
+	report.info += "<center><img src = wylogo.png><HR><I><B>Official Company Document</B><BR>Simulated Synthesis Report</I><HR><H2>Result for [D.name]</H2></center>"
+	report.generate(D)
 	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the Synthesis Simulator.<BR>The USS Almayer, [time2text(world.timeofday, "MM/DD")]/[game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
 	playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
 	if(is_new)
@@ -2088,7 +2092,7 @@
 	simulations += C.id //Remember we've simulated this
 	chemical_research_data.update_credits(property_costs[target_property] * -1) //Pay
 	//Determined rarity of new components
-	C.gen_tier = max(min(C.chemclass, CHEM_CLASS_RARE),C.gen_tier)
+	C.gen_tier = max(min(C.chemclass, CHEM_CLASS_RARE),C.gen_tier,1)
 	//Change a single component of the reaction
 	var/datum/chemical_reaction/generated/R = new /datum/chemical_reaction/generated
 	R.make_alike(chemical_reactions_list[target.data.id])

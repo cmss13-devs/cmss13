@@ -641,4 +641,6 @@
 	else
 		info += "<I>ERROR: Unable to analyze emission spectrum of sample.</I>" //A reaction to make this doesn't exist, so this is our IC excuse
 		completed = FALSE
+	if(!S.properties) //Safety for empty reagents
+		completed = FALSE
 	data = S

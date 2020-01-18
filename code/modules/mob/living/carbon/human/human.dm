@@ -57,6 +57,8 @@
 			assigned_squad.marines_list[n] = name //mob reference replaced by name string
 		if(assigned_squad.squad_leader == src)
 			assigned_squad.squad_leader = null
+		if(assigned_squad.overwatch_officer == src)
+			assigned_squad.overwatch_officer = null
 		assigned_squad = null
 
 	if(internal_organs_by_name)

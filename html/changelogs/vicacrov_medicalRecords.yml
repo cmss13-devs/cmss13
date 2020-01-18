@@ -1,6 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes: 
-  - tweak: "Crew manifest - The manifest now automatically updates a person's status to Deceased if they become permadead."

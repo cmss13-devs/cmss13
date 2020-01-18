@@ -1,6 +1,0 @@
-author: Cakey
-
-delete-after: True
-
-changes: 
-  - bugfix: "Fixed certain issues that caused player statistics to completely break and no longer track anything."

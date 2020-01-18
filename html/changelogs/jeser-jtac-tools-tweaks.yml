@@ -1,9 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - rscadd: "Activated signal flares and red lasers will now receive specific name with fixed ID number that will be visible to PO in their weapons console. For example: Bravo-6 flare (Central Barrens), Charlie-4 laser (East Jungle). If user doesn't have squad assigned, squad name will be changed to X. [#8594]"
-  - tweak: "Tactical binoculars were renamed to Laser Designators. Their description now contains their ID number. Rangefinders and laser designators descriptions have been updated.
-  - rscadd: "Ctrl + Clicking rangefinder or laser designator during lasing will stop lasing without looking up from the device."
-  - imageadd: "New binoculars and rangefinders/laser designator sprites by Frans_Feiffer. Old binoculars sprite is used for civillian version."

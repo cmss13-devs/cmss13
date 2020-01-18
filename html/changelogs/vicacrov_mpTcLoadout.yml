@@ -1,7 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes: 
-  - tweak: "Chief and Military Police - CMPs and MPs now spawn with a knife in their boots and a universal recorder in their pockets."
-  - tweak: "Tank Crewman - The TCs' now spawn with a slightly different loadout, to help newer TCs get started."

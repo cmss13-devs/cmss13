@@ -1,7 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes: 
-  - tweak: "Requisitions - The RO now has a level one policing skill (akin to other officers) and spawns with a flash."
-  - tweak: "Requisitions - Humans cannot walk through plastic flaps anymore. Xenomorphs, synthetics, predators, and crabs are not affected by this."

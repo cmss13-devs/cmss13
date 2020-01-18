@@ -1,6 +1,0 @@
-author: Neth
-
-delete-after: True
-
-changes: 
-  - bugfix: "Fixes larvae burrowing upon bursting when they have active players in them."

@@ -65,6 +65,77 @@
 		</td>
 	</tr>
 </table>
+			<h2 class="date">18 January 2020</h2>
+			<h3 class="author">Cakey updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed the L42 zero damage falloff (It wasn't working).</li>
+				<li class="rscadd">Mods can now play as Senior Enlisted Advisors.</li>
+				<li class="bugfix">Fixed certain issues that caused player statistics to completely break and no longer track anything.</li>
+			</ul>
+			<h3 class="author">Fourkhan updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Smoke effects should now apply much more consistently across the board.</li>
+				<li class="experimental">Damage numbers should be approximately the same.</li>
+				<li class="bugfix">Boiler acid smoke now damages barricades as intended (previously it did nothing).</li>
+				<li class="bugfix">Oppressor Prae smoke now extinguishes mobs more consistently.</li>
+				<li class="tweak">Greatly increased the efficiency of some small components of the combat backend.</li>
+				<li class="tweak">Increased Queen's Neuro Cooldown by 1 second.</li>
+				<li class="tweak">Decreased the max range for Queen's neuro from 8+ to 6 tiles.</li>
+				<li class="tweak">Effectively, this means Queen neuro has 100% hit chance while there are 4 or less tiles between the Queen and the Marine, NOT counting the tile the Queen or Marine is standing on.</li>
+			</ul>
+			<h3 class="author">Jeser updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed announcements being seen by players in lobby.</li>
+				<li class="bugfix">Fixed dropship hijack announcement not been played.</li>
+				<li class="bugfix">Fixed command announcements being seen by unconscious humans.</li>
+				<li class="bugfix">Fixed Yautja announcements not being seen by observers.</li>
+				<li class="bugfix">ARES standard telecomms announcements will play sound only to humans in Almayer z-level and observers now.</li>
+				<li class="bugfix">Fixed announcements being seen by all factions. Command announcements will be seen only by USCM and PMCs factions from now on.</li>
+				<li class="tweak">Maintenance access changes announcements will use ARES standard telecomms announcements instead of command announcements now. That means they can only be heard on Almayer and only if you have access to Almayer General channel in your headset or you are standing near intercom.</li>
+				<li class="rscadd">Added new type of announcement: ARES shipwide announcement. It works like command announcement, but only for humans in Almayer z-level. It also doesn't rely on Tcomms being powered or having access to Almayer General channel, so all humans on ship will see it. Currently only available for admins.</li>
+				<li class="rscadd">Added option for admins to choose which faction or hive they want to send announcement to (including All Hives/Factions options), allowing more flexible announcements use during events. Read instructions during making announcement for more info.</li>
+				<li class="rscadd">Activated signal flares and red lasers will now receive specific name with fixed ID number that will be visible to PO in their weapons console. For example: Bravo-6 flare (Central Barrens), Charlie-4 laser (East Jungle). If user doesn't have squad assigned, squad name will be changed to X. [#8594]</li>
+				<li class="tweak">Tactical binoculars were renamed to Laser Designators. Their description now contains their ID number. Rangefinders and laser designators descriptions have been updated.</li>
+				<li class="rscadd">Ctrl + Clicking rangefinder or laser designator during lasing will stop lasing without looking up from the device.</li>
+				<li class="imageadd">New binoculars and rangefinders/laser designator sprites by Frans_Feiffer. Old binoculars sprite is used for civillian version.</li>
+				<li class="bugfix">Unconscious facehuggers (in manually opened egg or dropped on the ground) now can be stored as Carrier or used to infect hosts directly without delay. They still need time to recover to be able to jump on their own.</li>
+				<li class="rscadd">Ctrl + Clicking eggs as xenomorph will now open egg and put facehugger into your empty hand, provided you can carry facehuggers and have an empty hand.</li>
+			</ul>
+			<h3 class="author">Neth updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixes larvae burrowing upon bursting when they have active players in them.</li>
+			</ul>
+			<h3 class="author">Ranged66 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added 'switch storage drawing method' functionality to all clothing with storage (armor, labcoats, vests etc!), and webbings or other accessories.</li>
+			</ul>
+			<h3 class="author">RavingManiac updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">New firearm: The Basira-Armstrong rifle, a civilian semi-automatic hunting rifle renown for its light weight and pinpoint accuracy. Comparable to the L42A battle rifle. Replaces the CLF's SVD in most instances.</li>
+				<li class="tweak">CLF firearms skill is now 'untrained' for fighters and medics. CLF leaders are gifted with standard firearms training.</li>
+				<li class="bugfix">CLF uniform name fixed.</li>
+				<li class="rscadd">Proximity sensors will now beep on detecting movement, followed by an adjustable 2-10 second delay before triggering.</li>
+				<li class="tweak">Proximity sensors will no longer trigger upon being dropped, thrown or otherwise moved around.</li>
+				<li class="bugfix">Mini-scopes will properly revert gun slowdown when zooming out.</li>
+				<li class="bugfix">Lunge mines should work properly when used on mobs now.</li>
+			</ul>
+			<h3 class="author">TobiNerd updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">On Corsat, mostly everything on the marine side of the lockdown is now glass ceiling. Xeno side is mostly unchanged, but the control modules are now also glass (#8912).</li>
+				<li class="bugfix">Corsat canister rooms are no longer protected by pressure shutters (Demetrius Montanez, #8892).</li>
+				<li class="rscdel">Removed the xeno stunprods that could be found in Corsat, Omega, due to being bugged.</li>
+			</ul>
+			<h3 class="author">Vicacrov updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Crew manifest - The manifest now automatically updates a person's status to Deceased if they become permadead.</li>
+				<li class="tweak">Chief and Military Police - CMPs and MPs now spawn with a knife in their boots and a universal recorder in their pockets.</li>
+				<li class="tweak">Tank Crewman - The TCs' now spawn with a slightly different loadout, to help newer TCs get started.</li>
+				<li class="tweak">Requisitions - The RO now has a level one policing skill (akin to other officers) and spawns with a flash.</li>
+				<li class="tweak">Requisitions - Humans cannot walk through plastic flaps anymore. Xenomorphs, synthetics, predators, and crabs are not affected by this.</li>
+				<li class="tweak">Vendors - Added zippo lighters to the CIC and the colony cigarette vendors.</li>
+				<li class="bugfix">Vendors - Fixed the hangar's engi-vend access requirements.</li>
+			</ul>
+
 			<h2 class="date">12 January 2020</h2>
 			<h3 class="author">Neth updated:</h3>
 			<ul class="changes bgimages16">
@@ -471,72 +542,6 @@
 			<h3 class="author">monkeysfist101 updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="tweak">Fixed a few cassette description typos and incorrectly named songs.</li>
-			</ul>
-
-			<h2 class="date">16 November 2019</h2>
-			<h3 class="author">Atebite updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed all pipes that weren't properly connected on all maps.</li>
-				<li class="tweak">The cooldown on Resin Whisperer's build ability is now only applied if the building succeeds.</li>
-				<li class="tweak">Smartguns are now unacidable and indestructible</li>
-			</ul>
-			<h3 class="author">Cakey updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Reduced the chat timer cooldown.</li>
-				<li class="rscadd">Beanbag shells will now use a separate sound when firing.</li>
-			</ul>
-			<h3 class="author">Fourkhan updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Nerfed Dancer's tail attack damage in preparation for a more comprehensive rework.</li>
-			</ul>
-			<h3 class="author">Neth updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">you can now dedicate a discard pile so if someone is right near one, they will discard to it instead of right in front of them</li>
-				<li class="rscadd">you can now draw more than 1 card from the deck by using separate verb</li>
-				<li class="rscadd">hands and piles of cards no longer freak out at 20 cards and stop rendering the entire pile. the limit is now 80 cards</li>
-				<li class="rscadd">you can now sort your hand of cards</li>
-			</ul>
-			<h3 class="author">Phil235 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed lighting issues with flashlight grip.</li>
-				<li class="tweak">Flashlight grip is now as bright as rail flashlight.</li>
-				<li class="tweak">You can no longer attach two light source attachments on a gun.</li>
-			</ul>
-			<h3 class="author">TheDonkified updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Corner pouncing and corner throwing/grenade firing/etc have been added.</li>
-				<li class="rscadd">When thrown by another mob or propelled by another mob and you hit something dense (NOT A MOB), you will get damage. For example, you're fellow marines blows you up and you are thrown against a wall.</li>
-				<li class="rscadd">You can throw items over machines (such as vendors or consoles) as well as mobs. When trying to perform a high toss, there is a ~1 second timer before you perform the throw. It also has a maximum range of 4 tiles. If there are items that you think should not block high toss, feel free to make a suggestion in Gitlab.</li>
-				<li class="rscadd">To activate high toss, press CTRL+R or CTRL+click the throw HUD button. Note: if to untoggle throw, you need to follow the same procedure you used to toggle a throw type in the first place (e.g. you are in high toss throw mode, you need to press CTRL+R, CTRL+click the throw HUD button, or use your high toss macro to untoggle throwing). You can macro throwing, the commands are Toggle-Normal-Throw and Toggle-High-Toss.</li>
-				<li class="rscadd">You can walk through plastic flaps, there is a 2 second delay.</li>
-				<li class="rscadd">Smoke goes through girders now.</li>
-				<li class="rscadd">Flamethrowers deal damage to barricades (only when hitting them at the front) and resin structures.</li>
-				<li class="tweak">Fire cannot go through the front of barricades. Acid spray cannot go through barricades at all.</li>
-				<li class="tweak">Reworked how movement and slashing was handled with barricades and adjacent structures.</li>
-				<li class="bugfix">Diagonal movement exploits and bugs have been resolved.</li>
-				<li class="bugfix">You can slash people who are not fully protected by cover (behind an open plasteel barricade, not protected by both sides if you are attack from a corner, etc)</li>
-				<li class="experiment">Throwing has been changed as well as how throw damage is calculated. Report any issues where something is too weak or too strong.</li>
-				<li class="bugfix">You can slash portable TComms again.</li>
-			</ul>
-			<h3 class="author">TobiNerd updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed a bunch of symmetrical inconsistencies for lights on the Almayer.</li>
-			</ul>
-			<h3 class="author">Vampmare updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added the S-V42 Prototype Smartpack. A backpack with inbuilt flashlight that unlocks special abilities if equipped by a Synthethic. First ability is Protective Form, the Synthetic gains insane protection but is unable to attack for a short duration. Second ability is Immobile Form, the Synthetic becomes unable to move, but also unable to be moved by others. Last ability is Repair Form, which just heals the Synthetic for a good bit damage after standing still for some time. All abilities have a cost, the backpack has  a battery with charge and the only way to recharge the battery is by using GRAB intent on APCs, sucking out their power.</li>
-				<li class="tweak">Added three colours of S-V42 Prototype Smartpack to Synthetic Vendors.</li>
-				<li class="tweak">Human abilities, like the orders, now properly show when they're on CD and not.</li>
-				<li class="bugfix">IB now shows up properly on the Health Analyzer.</li>
-				<li class="tweak">Embedded objects will now show up on the Health Analyzer.</li>
-				<li class="bugfix">Increased shrapnel text so its noticeable now.</li>
-				<li class="tweak">Added kelotane, bicaridine and tramadol autoinjectors to WeylandMed Plus vendors, planetside ones.</li>
-				<li class="tweak">Xenos can no longer drag DEAD and INFECTED bodies that won't have time to burst. So anyone infected just before they die become undraggable.</li>
-				<li class="bugfix">Dexalin Plus autoinjectors are now actually dexalin plus and not discount version.</li>
-				<li class="tweak">Bleeding has been tweaked to be more sane.</li>
-				<li class="tweak">Renamed the L42 to L42A battle rifle and changed its description.</li>
-				<li class="tweak">Changed the gel fuel description to be more clear about what it does.</li>
-				<li class="tweak">Increased nade falloff, effective range reduced as a result.</li>
 			</ul>
 </div>
 </body>

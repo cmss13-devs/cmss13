@@ -129,8 +129,10 @@
 
 				spawning = TRUE
 
-				observer.started_as_observer = 1
+				observer.started_as_observer = TRUE
+
 				close_spawn_windows()
+
 				var/obj/O = locate("landmark*Observer-Start")
 				if(istype(O))
 					to_chat(src, SPAN_NOTICE("Now teleporting."))
@@ -145,11 +147,13 @@
 					client.prefs.real_name = random_name(client.prefs.gender)
 				observer.real_name = client.prefs.real_name
 				observer.name = observer.real_name
-				observer.key = key
-				observer.timeofdeath = 0
-				if(observer.client) observer.client.change_view(world.view)
-				qdel(src)
 
+				mind.transfer_to(observer, TRUE)
+
+				if(observer.client) 
+					observer.client.change_view(world.view)
+
+				qdel(src)
 				return 1
 
 		if("late_join")

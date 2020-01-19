@@ -147,7 +147,8 @@ Works together with spawning an observer, noted above.
 		ghost.client.change_view(world.view) //reset view range to default
 		ghost.client.pixel_x = 0 //recenters our view
 		ghost.client.pixel_y = 0
-		ghost.client.soundOutput.update_ambience()
+		if(ghost.client.soundOutput)
+			ghost.client.soundOutput.update_ambience()
 		
 	return ghost
 

@@ -33,7 +33,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/hydroponics)
 "aae" = (
-/obj/structure/window_frame/colony/reinforced,
+/obj/structure/window_frame/colony,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0
@@ -80,7 +80,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aaj" = (
-/obj/structure/window_frame/colony/reinforced,
+/obj/structure/window_frame/colony,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0;
@@ -107,12 +107,6 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv624/ground/compound/n)
-"aam" = (
-/obj/structure/window/framed/colony/reinforced{
-	tiles_special = list(/obj/structure/machinery/door/airlock,/obj/structure/window/framed,/obj/structure/window_frame)
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/hydroponics)
 "aan" = (
 /obj/structure/machinery/biogenerator,
 /obj/structure/flora/jungle/vines/heavy{
@@ -149,7 +143,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aar" = (
-/obj/structure/window_frame/colony/reinforced,
+/obj/structure/window_frame/colony,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0
@@ -287,7 +281,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/hydroponics)
 "anI" = (
-/obj/structure/window/framed/colony/reinforced,
+/obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "anJ" = (
@@ -307,7 +301,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "anU" = (
-/obj/structure/window_frame/colony/reinforced,
+/obj/structure/window_frame/colony,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0
@@ -548,7 +542,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "arq" = (
-/obj/structure/window_frame/colony/reinforced,
+/obj/structure/window_frame/colony,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0;
@@ -711,7 +705,7 @@
 	icon_state = "heavy_6";
 	pixel_x = 0
 	},
-/obj/structure/window_frame/colony/reinforced,
+/obj/structure/window_frame/colony,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0;
@@ -1420,7 +1414,7 @@ aZe
 aoC
 aZI
 aZM
-aam
+anI
 "}
 (9,1,1) = {"
 aab
@@ -1458,7 +1452,7 @@ aat
 aah
 ntu
 aZM
-aam
+anI
 "}
 (11,1,1) = {"
 fAl

@@ -121,14 +121,14 @@
 				globalsounds_channels -= I
 				continue
 			S.file = I.file
-			S.falloff = I.falloff
+			S.falloff = I.falloff / 5 //One fifth of the range will be an area where the volume is unaltered
 			S.status = SOUND_UPDATE
 			S.channel = globalsounds_channels[I]//The advantage of having the subsystem keep the sound
 			S.volume = I.volume * owner.volume_preferences[VOLUME_SFX]
 			S.x = I.x - owner_turf.x
 			S.z = I.y - owner_turf.y
 			S.y = 1
-			if(I.z != owner_turf.z || abs(S.x) > I.volume/3 || abs(S.z) > I.volume/3 || owner.mob.ear_deaf > 0) 
+			if(I.z != owner_turf.z || abs(S.x) > I.falloff || abs(S.z) > I.falloff  || owner.mob.ear_deaf > 0) 
 				S.status |= SOUND_MUTE
 			sound_to(owner, S)
 		return TRUE

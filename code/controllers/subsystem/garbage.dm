@@ -155,8 +155,9 @@ var/datum/subsystem/garbage/SSgarbage
 			#ifdef GG_DEBUG
 			WARNING("GC process sleeping due to high CPU usage!")
 			#endif
-			sleep(calculateticks(2))
-
+			next_fire += calculateticks(2)
+			pause()
+			return
 
 		count++
 

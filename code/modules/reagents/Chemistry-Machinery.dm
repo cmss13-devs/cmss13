@@ -6,8 +6,9 @@
 	icon_state = "dispenser"
 	use_power = 0
 	idle_power_usage = 40
-	req_one_access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_CHEMISTRY)
 	layer = BELOW_OBJ_LAYER //So beakers reliably appear above it
+	var/req_skill = SKILL_MEDICAL
+	var/req_skill_level = SKILL_MEDICAL_DOCTOR
 	var/ui_title = "Chem Dispenser 5000"
 	var/energy = 100
 	var/max_energy = 100
@@ -172,9 +173,8 @@
 /obj/structure/machinery/chem_dispenser/attack_hand(mob/user as mob)
 	if(stat & BROKEN)
 		return
-	var/mob/living/carbon/human/H = user
-	if(!check_access(H.wear_id))
-		to_chat(user, SPAN_WARNING("Access denied."))
+	if(req_skill && !skillcheck(user, req_skill, req_skill_level))
+		to_chat(user, SPAN_WARNING("You don't have the training to use this."))
 		return
 	ui_interact(user)
 
@@ -183,9 +183,10 @@
 	name = "soda fountain"
 	desc = "A drink fabricating machine, capable of producing many sugary drinks with just one touch."
 	ui_title = "Soda Dispens-o-matic"
+	req_skill = null
+	req_skill_level = null
 	energy = 100
 	accept_glass = 1
-	req_one_access = list()
 	max_energy = 100
 	dispensable_reagents = list("water","ice","coffee","cream","tea","icetea","cola","spacemountainwind","dr_gibb","space_up","tonic","sodawater","lemon_lime","sugar","orangejuice","limejuice","watermelonjuice")
 
@@ -208,10 +209,11 @@
 	icon_state = "booze_dispenser"
 	name = "booze dispenser"
 	ui_title = "Booze Portal 9001"
+	req_skill = null
+	req_skill_level = null
 	energy = 100
 	accept_glass = 1
 	max_energy = 100
-	req_one_access = list()
 	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
 	dispensable_reagents = list("lemon_lime","sugar","orangejuice","limejuice","sodawater","tonic","beer","kahlua","whiskey","sake","wine","vodka","gin","rum","tequilla","vermouth","cognac","ale","mead")
 
@@ -242,6 +244,8 @@
 	use_power = 1
 	idle_power_usage = 20
 	layer = BELOW_OBJ_LAYER //So bottles/pills reliably appear above it
+	var/req_skill = SKILL_MEDICAL
+	var/req_skill_level = SKILL_MEDICAL_DOCTOR
 	var/obj/item/reagent_container/beaker = null
 	var/obj/item/storage/pill_bottle/loaded_pill_bottle = null
 	var/mode = 0
@@ -486,6 +490,9 @@
 /obj/structure/machinery/chem_master/attack_hand(mob/living/user)
 	if(stat & BROKEN)
 		return
+	if(req_skill && !skillcheck(user, req_skill, req_skill_level))
+		to_chat(user, SPAN_WARNING("You don't have the training to use this."))
+		return
 	user.set_interaction(src)
 	if(!(user.client in has_sprites))
 		spawn()
@@ -549,6 +556,8 @@
 
 /obj/structure/machinery/chem_master/condimaster
 	name = "CondiMaster 3000"
+	req_skill = null
+	req_skill_level = null
 	condi = 1
 
 ////////////////////////////////////////////////////////////////////////

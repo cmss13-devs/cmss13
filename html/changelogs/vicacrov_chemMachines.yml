@@ -1,0 +1,6 @@
+author: Vicacrov
+
+delete-after: True
+
+changes: 
+  - tweak: "Chemistry - The chemmaster and chem dispenser machines are no longer restricted by IDs, but by having a high enough medical skill. This means that doctor/research survivors can now use chemistry machinery."

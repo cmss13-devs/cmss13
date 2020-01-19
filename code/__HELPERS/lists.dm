@@ -701,6 +701,14 @@ datum/proc/dd_SortValue()
 			found += A.contents_recursive()
 	return found
 
+/atom/proc/contents_twice() // easier version of recursive proc, if we want to check people and items on them
+	var/list/found = list()
+	for(var/atom/A in contents)
+		found += A
+		if(A.contents.len)
+			found += A.contents
+	return found
+
 proc/print_list(list/L)
    var/list_str = ""
    for(var/element in L)

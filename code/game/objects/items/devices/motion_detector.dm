@@ -211,7 +211,7 @@
 			if(istype(I, DT))
 				detected = TRUE
 			if(I.contents)
-				for(var/obj/item/CI in I.contents_recursive())
+				for(var/obj/item/CI in I.contents)
 					if(istype(CI, DT))
 						detected = TRUE
 						break
@@ -231,7 +231,7 @@
 		if((isXeno(M) || isYautja(M)) && M.stat == DEAD )
 			detected = TRUE
 		else if(ishuman(M) && M.stat == DEAD && M.contents.len)
-			for(var/obj/I in M.contents_recursive())
+			for(var/obj/I in M.contents_twice())
 				for(var/DT in objects_to_detect)
 					if(istype(I, DT))
 						detected = TRUE

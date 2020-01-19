@@ -638,7 +638,6 @@
 		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, "white"),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, "white"),
 
-
 		list("ARMOR (choose 1)", 0, null, null, null),
 		list("Light armor", 0, /obj/item/clothing/suit/storage/marine/class/light, MARINE_CAN_BUY_ARMOR, "white"),
 		list("Medium armor", 0, /obj/item/clothing/suit/storage/marine, MARINE_CAN_BUY_ARMOR, "white"),
@@ -703,7 +702,6 @@
 /obj/structure/machinery/cm_vending/clothing/smartgun
 	req_access = list(ACCESS_MARINE_SMARTPREP)
 	vendor_role = JOB_SQUAD_SMARTGUN
-	gives_webbing = TRUE
 
 	listed_products = list(
 		list("STANDARD EQUIPMENT (take all)", 0, null, null, null),
@@ -724,6 +722,12 @@
 		list("Magazine pouch", 0, /obj/item/storage/pouch/magazine, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Medium general pouch", 0, /obj/item/storage/pouch/general/medium, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Pistol pouch", 0, /obj/item/storage/pouch/pistol, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+
+		list("ACCESSORIES", 0, null, null, null),
+		list("Shoulder holster", 0, /obj/item/clothing/accessory/holster, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Black webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 
 		list("MASKS", 0, null, null, null),
 		list("Gas mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, "black"),
@@ -758,7 +762,6 @@
 /obj/structure/machinery/cm_vending/clothing/specialist
 	req_access = list(ACCESS_MARINE_SPECPREP)
 	vendor_role = JOB_SQUAD_SPECIALIST
-	gives_webbing = TRUE
 
 	listed_products = list(
 		list("STANDARD EQUIPMENT (take all)", 0, null, null, null),
@@ -767,7 +770,6 @@
 		list("Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, "white"),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/marine, MARINE_CAN_BUY_EAR, "white"),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, "white"),
-
 
 		list("BACKPACK (choose 1)", 0, null, null, null),
 		list("Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, "black"),
@@ -790,6 +792,12 @@
 		list("Large pistol magazine pouch", 0, /obj/item/storage/pouch/magazine/pistol/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Medium general pouch", 0, /obj/item/storage/pouch/general/medium, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Pistol pouch", 0, /obj/item/storage/pouch/pistol, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+
+		list("ACCESSORIES", 0, null, null, null),
+		list("Shoulder holster", 0, /obj/item/clothing/accessory/holster, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Black webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 
 		list("MASKS", 0, null, null, null),
 		list("Gas mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, "black"),
@@ -822,7 +830,6 @@
 /obj/structure/machinery/cm_vending/clothing/leader
 	req_access = list(ACCESS_MARINE_LEADER)
 	vendor_role = JOB_SQUAD_LEADER
-	gives_webbing = TRUE
 
 	listed_products = list(
 		list("STANDARD EQUIPMENT (take all)", 0, null, null, null),
@@ -833,7 +840,6 @@
 		list("Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, "white"),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/marine, MARINE_CAN_BUY_EAR, "white"),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, "white"),
-
 
 		list("BACKPACK (choose 1)", 0, null, null, null),
 		list("Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, "black"),
@@ -858,6 +864,12 @@
 		list("Large magazine pouch", 0, /obj/item/storage/pouch/magazine/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Large pistol magazine pouch", 0, /obj/item/storage/pouch/magazine/pistol/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Pistol pouch", 0, /obj/item/storage/pouch/pistol, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+
+		list("ACCESSORIES", 0, null, null, null),
+		list("Shoulder holster", 0, /obj/item/clothing/accessory/holster, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Black webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 
 		list("MASKS", 0, null, null, null),
 		list("Gas mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, "black"),
@@ -981,6 +993,12 @@
 		list("Flare Pouch", 0, /obj/item/storage/pouch/flare/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "white"),
 		list("Medium General Pouch", 0, /obj/item/storage/pouch/general/medium, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Tools Pouch", 0, /obj/item/storage/pouch/tools, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "white"),
+
+		list("ACCESSORIES", 0, null, null, null),
+		list("Shoulder holster", 0, /obj/item/clothing/accessory/holster, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Black webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 
 		list("HELMET (choose 1)", 0, null, null, null),
 		list("XM12 pattern intelligence helmet", 0, /obj/item/clothing/head/helmet/marine/intel, MARINE_CAN_BUY_HELMET, "black"),

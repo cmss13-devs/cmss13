@@ -40,10 +40,10 @@
 
 
 //Use this proc for things like OBs, dropships, or anything that plays a lenghty sound that needs to be heard even by those who arrive late
-/proc/playsound_spacial(atom/source, soundin, vol = 100, duration, falloff_mod = 1)
+/proc/playsound_spacial(atom/source, soundin, vol = 100, duration, range = 30)
 	var/sound/S = sound(soundin)
 	S.volume = vol
-	S.falloff = FALLOFF_SOUNDS * falloff_mod * max(round(S.volume * 0.025), 1)
+	S.falloff = range //As DM reference states, all sound within this range will keep at max vol.
 	var/turf/T = get_turf(source)
 	S.x = T.x  //The XYZ variables are being used as a way to carry the origin's coords, 
 	S.y = T.y  //NOT THE ACTUAL SOUND COORDS

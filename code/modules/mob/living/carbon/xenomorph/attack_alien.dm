@@ -607,17 +607,7 @@
 				SPAN_DANGER("You pry \the [src] open."), null, 5, CHAT_TYPE_XENO_COMBAT)
 
 /obj/structure/machinery/door/airlock/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
-	var/move_dir = get_dir(M, M.loc)
-	for(var/atom/movable/AM in get_turf(src))
-		if(AM != src && AM.density && AM.BlockedPassDirs(M, move_dir))
-			to_chat(M, SPAN_WARNING("\The [AM] prevents you from squeezing under \the [src]!"))
-			return
-	if(locked || welded) //Can't pass through airlocks that have been bolted down or welded
-		to_chat(M, SPAN_WARNING("\The [src] is locked down tight. You can't squeeze underneath!"))
-		return
-	M.visible_message(SPAN_WARNING("\The [M] scuttles underneath \the [src]!"), \
-	SPAN_WARNING("You squeeze and scuttle underneath \the [src]."), null, 5)
-	M.forceMove(loc)
+	M.scuttle(src)
 
 //Prying open FIREdoors
 /obj/structure/machinery/door/firedoor/attack_alien(mob/living/carbon/Xenomorph/M)

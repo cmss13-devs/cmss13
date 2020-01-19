@@ -24,7 +24,7 @@
 	item_state = "m42a"
 	unacidable = TRUE
 	indestructible = 1
-	
+
 	fire_sound = 'sound/weapons/gun_sniper.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper
 	force = 12
@@ -67,7 +67,7 @@
 	item_state = "xm42b"
 	unacidable = TRUE
 	indestructible = 1
-	
+
 	fire_sound = 'sound/weapons/sniper_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/anti_tank
 	force = 12
@@ -113,7 +113,7 @@
 	desc = "A high end mag-rail heavy sniper rifle from Weston-Armat chambered in the heaviest ammo available, 10x99mm Caseless."
 	icon_state = "m42c"
 	item_state = "m42c" //NEEDS A TWOHANDED STATE
-	
+
 	fire_sound = 'sound/weapons/sniper_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/elite
 	force = 17
@@ -160,7 +160,7 @@
 	desc = "A sniper variant of the MAR-40 rifle, with a new stock, barrel, and scope. It doesn't have the punch of modern sniper rifles, but it's finely crafted in 2133 by someone probably illiterate. Fires 7.62x54mmR rounds."
 	icon_state = "svd003"
 	item_state = "svd003" //NEEDS A ONE HANDED STATE
-	
+
 	fire_sound = 'sound/weapons/gun_kt42.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/svd
 	attachable_allowed = list(
@@ -216,7 +216,7 @@
 	item_state = "m4ra" //PLACEHOLDER
 	unacidable = TRUE
 	indestructible = 1
-	
+
 	fire_sound = 'sound/weapons/gun_m4ra.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra
 	force = 16
@@ -272,7 +272,7 @@
 	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun.\nYou may toggle firing restrictions by using a special action."
 	icon_state = "m56"
 	item_state = "m56"
-	
+
 	fire_sound = "gun_smartgun"
 	reload_sound = 'sound/weapons/handling/gun_sg_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_sg_unload.ogg'
@@ -778,7 +778,7 @@
 	item_state = "m92" //NEED TWO HANDED SPRITE
 	unacidable = TRUE
 	indestructible = 1
-	
+
 	matter = list("metal" = 6000)
 	w_class = SIZE_LARGE
 	throw_speed = SPEED_SLOW
@@ -914,7 +914,7 @@
 	desc = "A lightweight, single-shot grenade launcher used by the Colonial Marines for area denial and big explosions."
 	icon_state = "m81"
 	item_state = "m81"
-	
+
 	matter = list("metal" = 7000)
 	w_class = SIZE_LARGE
 	throw_speed = SPEED_SLOW
@@ -1054,7 +1054,7 @@
 	item_state = "m5"
 	unacidable = TRUE
 	indestructible = 1
-	
+
 	matter = list("metal" = 10000)
 	current_mag = /obj/item/ammo_magazine/rocket
 	flags_equip_slot = NO_FLAGS
@@ -1092,10 +1092,8 @@
 
 /obj/item/weapon/gun/launcher/rocket/examine(mob/user)
 	..()
-	if(!current_mag)
-		to_chat(user, "It's empty.")
-	else
-		to_chat(user, "It has a 84mm [ammo.name] loaded.")
+	if(current_mag.current_rounds > 0)
+		to_chat(user, "It has an 84mm [ammo.name] loaded.")
 
 
 /obj/item/weapon/gun/launcher/rocket/able_to_fire(mob/living/user)
@@ -1209,7 +1207,7 @@
 	desc = "The M57-A4 'Lightning Bolt' is posssibly the most destructive man-portable weapon ever made. It is a 4-barreled missile launcher capable of burst-firing 4 thermobaric missiles. Enough said."
 	icon_state = "m57a4"
 	item_state = "m57a4"
-	
+
 	current_mag = /obj/item/ammo_magazine/rocket/m57a4
 	aim_slowdown = SLOWDOWN_ADS_SUPERWEAPON
 	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY

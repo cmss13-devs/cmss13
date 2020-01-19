@@ -15,10 +15,6 @@
 	cost = ASRS_LOWEST_WEIGHT
 	buyable = 0
 
-/datum/supply_packs/weapons_sentry/asrs
-	buyable = 0
-	group = "Utility"
-
 /datum/supply_packs/gun/ammo_hpr/asrs
 	buyable = 0
 	group = "Munition"

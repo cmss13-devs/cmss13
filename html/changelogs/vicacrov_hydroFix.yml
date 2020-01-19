@@ -1,6 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes: 
-  - bugfix: "LV-624 - Fixed the overgrown hydro insert having reinforced windows instead of regular ones."

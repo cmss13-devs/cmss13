@@ -1,6 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - rscdel: "Removed UA 571-C sentry crate from free ASRS crates pool."

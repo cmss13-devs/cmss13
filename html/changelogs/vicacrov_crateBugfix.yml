@@ -1,6 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes: 
-  - bugfix: "Requisitions - Fixed the caseless sniper ammo crate containing flak ammo."

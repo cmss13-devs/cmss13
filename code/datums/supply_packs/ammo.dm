@@ -474,11 +474,11 @@ AMMO
 /datum/supply_packs/ammo_sniper_marksman
 	name = "M42A sniper marksman magazines crate (x5)"
 	contains = list(
-					/obj/item/ammo_magazine/sniper/flak,
-					/obj/item/ammo_magazine/sniper/flak,
-					/obj/item/ammo_magazine/sniper/flak,
-					/obj/item/ammo_magazine/sniper/flak,
-					/obj/item/ammo_magazine/sniper/flak
+					/obj/item/ammo_magazine/sniper,
+					/obj/item/ammo_magazine/sniper,
+					/obj/item/ammo_magazine/sniper,
+					/obj/item/ammo_magazine/sniper,
+					/obj/item/ammo_magazine/sniper
 					)
 	cost = RO_PRICE_CHEAP
 	containertype = /obj/structure/closet/crate/ammo

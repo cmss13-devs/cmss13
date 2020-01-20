@@ -354,7 +354,7 @@
 		if(LAZYLEN(stored_matrices))
 			possible_classes += "matrix"
 		if(admin_holder && admin_holder.marked_datums.len)
-			possible_classes += "marked_datum"
+			possible_classes += "marked datum"
 		possible_classes += "edit referenced object"
 		possible_classes += "restore to default"
 

@@ -107,6 +107,9 @@ var/datum/subsystem/garbage/SSgarbage
 		if(remainingForceDelPerTick <= 0)
 			break
 
+		if(world.cpu > 50)
+			continue // no time to harddel
+
 		#ifdef GC_FINDREF
 		to_chat(world, "picnic! searching [locate(D)]")
 		if(istype(D, /atom/movable))
@@ -151,14 +154,7 @@ var/datum/subsystem/garbage/SSgarbage
 		gc_count++
 		hard_del_count++
 		remainingForceDelPerTick--
-		if(world.cpu > 80)
-			#ifdef GG_DEBUG
-			WARNING("GC process sleeping due to high CPU usage!")
-			#endif
-			next_fire += calculateticks(2)
-			pause()
-			return
-
+		
 		count++
 
 		if(MC_TICK_CHECK)

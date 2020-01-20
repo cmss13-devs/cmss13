@@ -19,7 +19,7 @@ var/list/forbidden_varedit_object_types = list(
 	if(LAZYLEN(stored_matrices))
 		possible_classes += "matrix"
 	if(admin_holder && admin_holder.marked_datums.len)
-		possible_classes += "marked_datum"
+		possible_classes += "marked datum"
 	possible_classes += "edit referenced object"
 	possible_classes += "restore to default"
 
@@ -80,7 +80,7 @@ var/list/forbidden_varedit_object_types = list(
 	if(LAZYLEN(stored_matrices))
 		possible_classes += "matrix"
 	if(admin_holder && admin_holder.marked_datums.len)
-		possible_classes += "marked_datum"
+		possible_classes += "marked datum"
 	possible_classes += "edit referenced object"
 	possible_classes += "restore to default"
 
@@ -236,7 +236,7 @@ var/list/forbidden_varedit_object_types = list(
 	if(LAZYLEN(stored_matrices))
 		choices += "matrix"
 	if(admin_holder && admin_holder.marked_datums.len)
-		choices += "marked_datum"
+		choices += "marked datum"
 	choices += "edit referenced object"
 	choices += "restore to default"
 
@@ -463,7 +463,7 @@ var/list/forbidden_varedit_object_types = list(
 		if(LAZYLEN(stored_matrices))
 			possible_classes += "matrix"
 		if(admin_holder && admin_holder.marked_datums.len)
-			possible_classes += "marked_datum"
+			possible_classes += "marked datum"
 		possible_classes += "edit referenced object"
 		possible_classes += "restore to default"
 

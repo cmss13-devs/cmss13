@@ -390,7 +390,7 @@
 				else
 					I.marine_points -= cost
 
-			if(auto_equip)
+			if(auto_equip && istype(IT, /obj/item))
 				if(IT.flags_equip_slot != NO_FLAGS)
 					if(IT.flags_equip_slot == SLOT_ACCESSORY)
 						if(H.w_uniform)
@@ -1675,7 +1675,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 			L[2]--								//taking 1 from amount of products in vendor
 			IT.add_fingerprint(usr)
 
-			if(auto_equip)
+			if(auto_equip && istype(IT, /obj/item))
 				if(IT.flags_equip_slot != NO_FLAGS)
 					if(IT.flags_equip_slot == SLOT_ACCESSORY)
 						if(H.w_uniform)

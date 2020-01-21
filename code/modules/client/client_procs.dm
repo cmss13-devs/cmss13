@@ -241,9 +241,7 @@
 	//////////////
 	//DISCONNECT//
 	//////////////
-/client/Dispose()
-	. = ..()
-
+/client/Del()
 	if(chatOutput)
 		qdel(chatOutput)
 		chatOutput = null
@@ -257,6 +255,12 @@
 		admins -= src
 	directory -= ckey
 	clients -= src
+
+	. = ..()
+
+/client/Dispose()
+	. = ..()
+
 	return GC_HINT_DELETE_NOW
 
 /client/proc/log_client_to_db()

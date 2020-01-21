@@ -129,7 +129,7 @@
 			return
 			
 	do_buckle(M, user)
-	if(!M.mind)
+	if(!M.mind || !ishuman(M))
 		return
 
 	var/choice = alert(M, "You have no possibility of escaping unless freed by your fellow marines, do you wish to Ghost? If you are freed while ghosted, you will be given the choice to return to your body.", ,"Ghost", "Remain")
@@ -158,10 +158,17 @@
 	buckled_mob.pixel_y = 0
 	buckled_mob.old_y = 0
 
-	if(ghost_of_buckled_mob && buckled_mob.stat != DEAD)
+	if(ghost_of_buckled_mob && ishuman(buckled_mob))
+		var/mob/living/carbon/human/H = buckled_mob
+		if(H.undefibbable)
+			return
+			
 		if(alert(ghost_of_buckled_mob, "You have been freed from your nest, do you want to return to your body?", ,"Yes", "No") == "Yes")
+			if(!ghost_of_buckled_mob)
+				return
 			ghost_of_buckled_mob.can_reenter_corpse = TRUE
 			ghost_of_buckled_mob.reenter_corpse()
+			null_ghost_of_buckled_mob()
 	..()
 
 /obj/structure/bed/nest/ex_act(var/power)
@@ -216,4 +223,8 @@
 	
 	. = ..()
 
+	if(ghost_of_buckled_mob)
+		add_timer(CALLBACK(src, .proc/null_ghost_of_buckled_mob), 600) // Give the user 60 seconds to respond when nest is destroyed.
+
+/obj/structure/bed/nest/proc/null_ghost_of_buckled_mob()
 	ghost_of_buckled_mob = null

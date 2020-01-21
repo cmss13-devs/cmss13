@@ -51,6 +51,7 @@
 	var/gloves_type
 	var/headset_type
 	var/gives_webbing = FALSE
+	var/auto_equip = FALSE
 	var/vendor_role = "" //to be compared with assigned_role to only allow those to use that machine.
 	var/squad_tag = ""	//same to restrict vendor to specified squad
 	var/use_points = FALSE
@@ -389,6 +390,16 @@
 				else
 					I.marine_points -= cost
 
+			if(auto_equip)
+				if(IT.flags_equip_slot != NO_FLAGS)
+					if(IT.flags_equip_slot == SLOT_ACCESSORY)
+						if(H.w_uniform)
+							var/obj/item/clothing/C = H.w_uniform
+							if(C.can_attach_accessory(IT))
+								C.attach_accessory(H, IT)
+					else
+						H.equip_to_appropriate_slot(IT)
+
 		add_fingerprint(usr)
 		ui_interact(usr) //updates the nanoUI window
 
@@ -432,6 +443,7 @@
 	desc = "An automated closet hooked up to a colossal storage of standard-issue uniform and armor."
 	icon_state = "uniform_marine"
 	use_points = TRUE
+	auto_equip = TRUE
 
 	vendor_role = JOB_SQUAD_MARINE
 
@@ -1663,6 +1675,16 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 			L[2]--								//taking 1 from amount of products in vendor
 			IT.add_fingerprint(usr)
 
+			if(auto_equip)
+				if(IT.flags_equip_slot != NO_FLAGS)
+					if(IT.flags_equip_slot == SLOT_ACCESSORY)
+						if(H.w_uniform)
+							var/obj/item/clothing/C = H.w_uniform
+							if(C.can_attach_accessory(IT))
+								C.attach_accessory(H, IT)
+					else
+						H.equip_to_appropriate_slot(IT)
+
 		add_fingerprint(usr)
 		ui_interact(usr) //updates the nanoUI window
 
@@ -2087,6 +2109,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 	icon_state = "uniform_marine"
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_CARGO)
+	auto_equip = TRUE
 
 	listed_products = list(
 		list("Miscellaneous", -1, null, null),

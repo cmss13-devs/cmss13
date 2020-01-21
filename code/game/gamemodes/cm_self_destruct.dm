@@ -294,11 +294,12 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 //Generic parent base for the self_destruct items.
 /obj/structure/machinery/self_destruct
 	icon = 'icons/obj/structures/machinery/self_destruct.dmi'
-	use_power = 0 //Runs unpowered, may need to change later.
-	density = 0
-	anchored = 1 //So it doesn't go anywhere.
+	use_power = FALSE //Runs unpowered, may need to change later.
+	density = FALSE
+	anchored = TRUE //So it doesn't go anywhere.
+	unslashable = TRUE
 	unacidable = TRUE //Cannot C4 it either.
-	mouse_opacity = 0 //No need to click or interact with this initially.
+	mouse_opacity = FALSE //No need to click or interact with this initially.
 	var/in_progress = 0 //Cannot interact with while it's doing something, like an animation.
 	var/active_state = SELF_DESTRUCT_MACHINE_INACTIVE //What step of the process it's on.
 

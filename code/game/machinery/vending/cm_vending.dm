@@ -2259,7 +2259,52 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 	)
 
 
+//SMALL PREP WEAPON RACKS.
+//For IOs, possibly for POs and other groundside officers later
+/obj/structure/machinery/cm_vending/sorted/marine_prep/small
+	name = "\improper ColMarTech Small Automated Weapons Rack"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_CARGO, ACCESS_MARINE_BRIDGE)
 
+/obj/structure/machinery/cm_vending/sorted/marine_prep/small/populate_product_list(var/scale)
+	listed_products = list(
+		list("Firearms", -1, null, null),
+		list("M41A Pulse Rifle MK2", round(scale * 15), /obj/item/weapon/gun/rifle/m41a, "black"),
+		list("L42A Battle Rifle", round(scale * 5), /obj/item/weapon/gun/rifle/l42mk1, "black"),
+		list("M39 Submachine Gun", round(scale * 15), /obj/item/weapon/gun/smg/m39, "black"),
+		list("M37A2 Pump Shotgun", round(scale * 7), /obj/item/weapon/gun/shotgun/pump, "black"),
+
+		list("Primary Ammunition", -1, null, null),
+		list("M41A Magazine (10x24mm)", round(scale * 12), /obj/item/ammo_magazine/rifle, "black"),
+		list("L42A Magazine (10x24mm)", round(scale * 7), /obj/item/ammo_magazine/rifle/l42mk1, "black"),
+		list("M39 Magazine (10x20mm)", round(scale * 12), /obj/item/ammo_magazine/smg/m39, "black"),
+		list("Box of shotgun slugs (12g)", round(scale * 5), /obj/item/ammo_magazine/shotgun/slugs, "black"),
+		list("Box of buckshot shells (12g)", round(scale * 5), /obj/item/ammo_magazine/shotgun/buckshot, "black"),
+		list("Box of flechette shells (12g)", round(scale * 2), /obj/item/ammo_magazine/shotgun/flechette, "black"),
+
+		list("Sidearms", -1, null, null),
+		list("88 Mod 4 Combat Pistol", round(scale * 12), /obj/item/weapon/gun/pistol/mod88, "black"),
+		list("M44 Combat Revolver", round(scale * 12), /obj/item/weapon/gun/revolver/m44, "black"),
+		list("M4A3 Service Pistol", round(scale * 12), /obj/item/weapon/gun/pistol/m4a3, "black"),
+
+		list("Sidearm Ammunition", -1, null, null),
+		list("88M4 AP Magazine (9mm)", round(scale * 12), /obj/item/ammo_magazine/pistol/mod88, "black"),
+		list("M44 Speedloader (.44)", round(scale * 10), /obj/item/ammo_magazine/revolver, "black"),
+		list("M4A3 Magazine (9mm)", round(scale * 12), /obj/item/ammo_magazine/pistol, "black"),
+
+		list("Attachments", -1, null, null),
+		list("Bayonet", round(scale * 12), /obj/item/attachable/bayonet, "black"),
+		list("Rail Flashlight", round(scale * 12), /obj/item/attachable/flashlight, "black"),
+		list("Underbarrel Flashlight Grip", round(scale * 5), /obj/item/attachable/flashlight/grip, "black"),
+		list("Underslung Grenade Launcher", round(scale * 12), /obj/item/attachable/attached_gun/grenade, "black"), //They already get these as on-spawns, might as well formalize some spares.
+		list("M39 Folding Stock", round(scale * 5), /obj/item/attachable/stock/smg/collapsible, "black"),
+		list("L42 Synthetic Stock", round(scale * 5), /obj/item/attachable/stock/carbine, "black"),
+
+		list("Utilities", -1, null, null),
+		list("M94 Marking flare pack", round(scale * 5), /obj/item/storage/box/m94, "black"),
+		list("M5 'Night Raider' survival knife", round(scale * 15), /obj/item/weapon/combat_knife, "black"),
+		list("M11 throwing knife", round(scale * 5), /obj/item/weapon/throwing_knife, "black")
+	)
 
 
 #undef MARINE_CAN_BUY_UNIFORM

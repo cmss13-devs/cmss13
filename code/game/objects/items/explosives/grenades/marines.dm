@@ -83,7 +83,7 @@
 /obj/item/explosive/grenade/HE/frag
 	name = "\improper M40 HEFA grenade"
 	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand."
-	icon_state = "grenade_frag"
+	icon_state = "grenade_hefa"
 	item_state = "grenade_hefa"
 	explosion_power = 40
 	shrapnel_count = 48
@@ -245,8 +245,8 @@
 /obj/item/explosive/grenade/HE/holy_hand_grenade
 	name = "\improper Holy Hand Grenade of Antioch"
 	desc = "And Saint Attila raised the hand grenade up on high, saying, \"O LORD, bless this Thy hand grenade that with it Thou mayest blow Thine enemies to tiny bits, in Thy mercy.\" And the LORD did grin and the people did feast upon the lambs and sloths and carp and anchovies... And the LORD spake, saying, \"First shalt thou take out the Holy Pin, then shalt thou count to three, no more, no less. Three shall be the number thou shalt count, and the number of the counting shall be three. Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. Five is right out. Once the number three, being the third number, be reached, then lobbest thou thy Holy Hand Grenade of Antioch towards thy foe, who, being naughty in My sight, shall snuff it.\""
-	icon_state = "banana"
-	item_state = "banana"
+	icon_state = "grenade_antioch"
+	item_state = "grenade_antioch"
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	underslug_launchable = FALSE

@@ -446,6 +446,7 @@
 
 /obj/item/clothing/head/helmet/marine/medic
 	name = "\improper M10 medic helmet"
+	icon_state = "med_helmet"
 	specialty = "M10 medic"
 
 /obj/item/clothing/head/helmet/marine/leader
@@ -464,7 +465,7 @@
 
 /obj/item/clothing/head/helmet/marine/intel
 	name = "\improper XM12 pattern intelligence helmet"
-	desc = "An experimental brain-bucket that works better as a brain-plate. Moderately better at deflecting blunt objects at the cost of humiliation. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your intel work."
+	desc = "An experimental brain-bucket. A dust ruffle hangs from back. Moderately better at deflecting blunt objects at the cost of humiliation. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your intel work."
 	icon_state = "io"
 	item_state = "io"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH

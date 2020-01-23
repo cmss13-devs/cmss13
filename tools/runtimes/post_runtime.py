@@ -65,7 +65,19 @@ def handle_issue(pid, pat):
     requests.post(open_url, headers={"Private-Token": pat, "Content-Type": "application/json"})
 
 if __name__ == "__main__":
-    PID = environ["GITLAB_RUNTIME_PID"]
-    PAT = environ["GITLAB_RUNTIME_PAT"]
+    PID = None
+    PAT = None
+
+    # read PID/PAT from config file
+    with open("config.txt", "r") as config:
+        for line in config.readlines():
+            if line[0] == "#":
+                continue
+
+            data = line.split()
+            if data[0] == "pid" and data[1] != "pid_here":
+                PID = data[1]
+            if data[0] == "pat" and data[1] != "pat_here":
+                PAT = data[1]
 
     handle_issue(PID, PAT)

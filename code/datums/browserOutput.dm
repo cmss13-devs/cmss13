@@ -23,7 +23,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 
 /datum/chatOutput/proc/start()
 	//Check for existing chat
-	if (!owner || !istype(owner))
+	if (!owner || !istype(owner) || owner.disposed)
 		return FALSE
 
 	if(!winexists(owner, "browseroutput"))
@@ -42,19 +42,13 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 	return TRUE
 
 /datum/chatOutput/proc/load()
-	set waitfor = FALSE
-	if (!owner) // Client logged off or something else
+	if(!owner) // Client logged off or something else
 		return
 
-	for(var/load_attempts = 1 to 5) //Try to load 5 times, every 20 seconds
-		var/datum/asset/stuff = get_asset_datum(/datum/asset/group/goonchat)
-		stuff.send(owner)
+	var/datum/asset/stuff = get_asset_datum(/datum/asset/group/goonchat)
+	stuff.send(owner)
 
-		owner << browse(file("browserassets/html/browserOutput.html"), "window=browseroutput")
-
-		sleep(20 SECONDS)
-		if(!owner || loaded)
-			break
+	owner << browse(file("browserassets/html/browserOutput.html"), "window=browseroutput")
 
 /datum/chatOutput/Topic(var/href, var/list/href_list)
 	if(usr.client != owner)
@@ -100,6 +94,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 
 	messageQueue = null
 	sendClientData()
+	check_window_skin()
 
 /datum/chatOutput/proc/enableChat()
 	if (!owner || !istype(owner))
@@ -118,6 +113,18 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 	deets["clientData"]["compid"] = src.owner.computer_id
 	var/data = json_encode(deets)
 	browser_send(data = data)
+
+/datum/chatOutput/proc/check_window_skin()
+	if(!owner || !istype(owner))
+		return FALSE
+
+	if(owner.prefs.window_skin & TOGGLE_WINDOW_SKIN)
+		browser_send(owner, "night_skin")
+	else
+		browser_send(owner, "white_skin")
+
+/datum/chatOutput/proc/toggle_window_skin()
+	owner.toggle_window_skin()
 
 //Called by client, sent data to investigate (cookie history so far)
 /datum/chatOutput/proc/analyzeClientData(cookie = "")

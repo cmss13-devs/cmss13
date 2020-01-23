@@ -363,6 +363,10 @@ function ehjaxCallback(data) {
 		output('<div class="connectionClosed internal restarting">The connection has been closed because the server is restarting. Please wait while you automatically reconnect.</div>', 'internal');
 	} else if (data == 'stopaudio') {
 		$('.dectalk').remove();
+	} else if (data == 'white_skin') {
+		document.getElementById("window_skin").href = "browserOutput.css";
+	} else if (data == 'night_skin') {
+		document.getElementById("window_skin").href = "browserOutput_night.css";
 	} else {
 		//Oh we're actually being sent data instead of an instruction
 		var dataJ;

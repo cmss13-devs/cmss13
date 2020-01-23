@@ -44,6 +44,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
 	var/View_MC = FALSE
+	var/window_skin = 0
 
 	//Synthetic specific preferences
 	var/synthetic_name = "Undefined"

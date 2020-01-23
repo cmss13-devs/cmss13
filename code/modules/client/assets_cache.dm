@@ -428,7 +428,8 @@ var/global/list/asset_datums = list()
 		"fontawesome-webfont.ttf"  = 'browserassets/css/fonts/fontawesome-webfont.ttf',
 		"fontawesome-webfont.woff" = 'browserassets/css/fonts/fontawesome-webfont.woff',
 		"font-awesome.css"	       = 'browserassets/css/font-awesome.css',
-		"browserOutput.css"	       = 'browserassets/css/browserOutput.css'
+		"browserOutput.css"	       = 'browserassets/css/browserOutput.css',
+		"browserOutput_night.css"  = 'browserassets/css/browserOutput_night.css'
 	)
 
 /datum/asset/spritesheet/goonchat

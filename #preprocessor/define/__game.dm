@@ -339,3 +339,6 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 
 #define CHAT_TYPE_ALL ((1<<16) - 1) // this is so if we have newer flags, we still have ALL working. This will work for 16 first flags
 #define CHAT_TYPE_TARGETS_ME CHAT_TYPE_TAKING_HIT
+
+// Window skin types
+#define TOGGLE_WINDOW_SKIN 1

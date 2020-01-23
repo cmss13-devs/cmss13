@@ -7,17 +7,20 @@ html, body {
 	padding: 0; 
 	margin: 0; 
 	height: 100%;
-	color: #000000;
+	color: #b2cce5;
 }
 
 body {
-	background: #fff;
+	background: #272727;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 9pt;
     line-height: 1.3;
 	overflow-x: hidden;
 	overflow-y: scroll;
 	word-wrap: break-word;
+	scrollbar-face-color:#1A1A1A;
+	scrollbar-track-color:#272727;
+	scrollbar-highlight-color:#272727;
 }
 
 h1, h2, h3, h4, h5, h6 {color: #00f; font-family: Georgia, Verdana, sans-serif;}
@@ -56,10 +59,9 @@ img.icon {
 	margin: 0 0 0 7px;
 }
 
-a {color: #0000ff;}
-a:visited {color: #ff00ff;}
+a {color: #d87a43;}
+a:visited {color: #dd47c9;}
 a.popt {text-decoration: none;}
-
 
 /*****************************************
 *
@@ -104,7 +106,7 @@ a.popt {text-decoration: none;}
 	top: 0;
 	right: 40px;
 	width: 45px;
-	background: #ddd;
+	background: #444447;
 	height: 30px;
 	padding: 8px 0 2px 0;
 } 
@@ -121,19 +123,19 @@ a.popt {text-decoration: none;}
 	right: 0;
 }
 #options a {
-	background: #ddd;
+	background: #444447;
     height: 30px;
 	padding: 5px 0;
 	display: block;
-	color: #333;
+	color: #bbbbbb;
 	text-decoration: none;
     line-height: 28px;
     border-top: 1px solid #b4b4b4;
 }
-#options a:hover {background: #ccc;}
+#options a:hover {background: #444447;}
 #options .toggle {
 	width: 40px;
-    background: #ccc;
+    background: #444447;
     border-top: 0;
     float: right;
     text-align: center;
@@ -236,14 +238,14 @@ a.popt {text-decoration: none;}
 
 .say					{}
 .deadsay				{color: #5c00e6;}
-.radio					{color: #4E4E4E;}
+.radio					{color: #b4b4b4;}
 .deptradio				{color: #993399;}
-.comradio				{color: #004080;}
+.comradio				{color: #779cc2;}
 .syndradio				{color: #6D3F40;}
 .centradio				{color: #5C5C8A;}
 .airadio				{color: #FF00FF;}
 
-.secradio				{color: #A30000;}
+.secradio				{color: #a52929;}
 .engradio				{color: #A66300;}
 .medradio				{color: #008160;}
 .sciradio				{color: #993399;}
@@ -251,7 +253,7 @@ a.popt {text-decoration: none;}
 .jtacradio				{color: #702963;}
 .intelradio				{color: #027D02;}
 
-.alpharadio				{color: #EA0000;}
+.alpharadio				{color: #db2626;}
 .bravoradio				{color: #C68610;}
 .charlieradio			{color: #AA55AA;}
 .deltaradio				{color: #007FCF;}
@@ -262,42 +264,42 @@ a.popt {text-decoration: none;}
 .extra_large			{					font-size: 130%}
 .huge					{					font-size: 150%}
 
-.blue					{color: #0000ec;}
+.blue					{color: #386aff;}
 
 .normal					{font-style: normal;}
 
-.alert					{color: #ff0000;}
-h1.alert, h2.alert		{color: #000000;}
+.alert					{color: #ff3838;}
+h1.alert, h2.alert		{color: #c5c5c5;}
 
 .emote					{					font-style: italic;}
 .selecteddna			{color: #FFFFFF; 	background-color: #001B1B}
 
-.attack					{color: #ff0000;}
+.attack					{color: #ff3838;}
 .moderate				{color: #CC0000;}
 .disarm					{color: #990000;}
 .passive				{color: #660000;}
 
 .helpful				{color: #368f31;}
 
-.scanner				{color: #ff0000;}
-.scannerb				{color: #ff0000;	font-weight: bold;}
+.scanner				{color: #ff3838;}
+.scannerb				{color: #ff3838;	font-weight: bold;}
 .scannerburn			{color: #ffa500;}
 .scannerburnb			{color: #ffa500;	font-weight: bold;}
 .rose					{color: #ff5050;}
-.info					{color: #0000CC;}
+.info					{color: #386aff;}
 .debuginfo				{color: #493D26;	font-style: italic;}
-.notice					{color: #000099;}
-.xenonotice				{color: #2a623d;}
-.boldnotice				{color: #000099;	font-weight: bold;}
-.warning				{color: #ff0000;	font-style: italic;}
-.xenowarning			{color: #2a623d;	font-style: italic;}
-.xenominorwarning		{color: #2a623d;	font-weight: bold; font-style: italic;}
-.danger					{color: #ff0000;	font-weight: bold;}
-.xenodanger				{color: #2a623d;	font-weight: bold;}
+.notice					{color: #386aff;}
+.xenonotice				{color: #438559;}
+.boldnotice				{color: #386aff;	font-weight: bold;}
+.warning				{color: #ff3838;	font-style: italic;}
+.xenowarning			{color: #438559;	font-style: italic;}
+.xenominorwarning		{color: #438559;	font-weight: bold; font-style: italic;}
+.danger					{color: #ff3838;	font-weight: bold;}
+.xenodanger				{color: #438559;	font-weight: bold;}
 .avoidharm				{color:	#72a0e5;	font-weight: bold;}
-.highdanger				{color: #ff0000;	font-weight: bold; font-size: 120%;}
-.xenohighdanger			{color: #2a623d; 	font-weight: bold; font-size: 120%;}
-.xenoannounce           {color: #1a472a;    font-family: book-antiqua; font-weight: bold; font-size: 120%;}
+.highdanger				{color: #ff3838;	font-weight: bold; font-size: 120%;}
+.xenohighdanger			{color: #438559; 	font-weight: bold; font-size: 120%;}
+.xenoannounce           {color: #2f4938;    font-family: book-antiqua; font-weight: bold; font-size: 120%;}
 .yautjabold				{color: #800080;	font-weight: bold;}
 .yautjaboldbig			{color: #800080;	font-weight: bold; font-size: 110%;}
 
@@ -307,22 +309,22 @@ h1.alert, h2.alert		{color: #000000;}
 .objectivesuccess		{color: #00ff00;	font-weight: bold; font-size: 110%;}
 .objectivefail			{color: #ff0000;	font-weight: bold; font-size: 110%;}
 
-.xeno					{color: #900090;	font-style: italic;}
-.xenoleader				{color: #730d73;	font-style: italic;						font-size: 120%;}
-.xenoqueen				{color: #730d73; 	font-style: italic; font-weight: bold; font-size: 120%;}
+.xeno					{color: #ac3bac;	font-style: italic;}
+.xenoleader				{color: #724b72;	font-style: italic;						font-size: 120%;}
+.xenoqueen				{color: #724b72; 	font-style: italic; font-weight: bold; font-size: 120%;}
 .newscaster				{color: #800000;}
 
-.role_header			{color: #db0000;	display: block; text-align: center; font-weight: bold; font-family: trebuchet-ms; font-size: 120%;}
-.role_body				{color: #000099;	display: block; text-align: center;}
+.role_header			{color: #e92d2d;	display: block; text-align: center; font-weight: bold; font-family: trebuchet-ms; font-size: 120%;}
+.role_body				{color: #3a3ae9;	display: block; text-align: center;}
 
-.round_setup			{color: #db0000;	font-family: impact; font-size: 125%;}
-.round_header			{color: #db0000; 	display: block; text-align: center; font-family: courier; font-weight: bold; font-size: 140%;}
-.round_body				{color: #001427; 	display: block; text-align: center; font-family: trebuchet-ms; font-weight: bold; font-size: 120%;}
+.round_setup			{color: #e92d2d;	font-family: impact; font-size: 125%;}
+.round_header			{color: #e92d2d; 	display: block; text-align: center; font-family: courier; font-weight: bold; font-size: 140%;}
+.round_body				{color: #c5c5c5; 	display: block; text-align: center; font-family: trebuchet-ms; font-weight: bold; font-size: 120%;}
 .event_announcement		{color: #600d48; 	font-family: arial-narrow; font-weight: bold; font-size: 120%;}
 
-.announce_header		{color: #000000;	font-weight: bold; font-size: 120%;}
-.announce_header_blue	{color: #000099;	font-weight: bold; font-size: 120%;}
-.announce_body			{color: #ff0000;	font-weight: normal; font-size: 100%;}
+.announce_header		{color: #cecece;	font-weight: bold; font-size: 120%;}
+.announce_header_blue	{color: #3a3ae9;	font-weight: bold; font-size: 120%;}
+.announce_body			{color: #e92d2d;	font-weight: normal; font-size: 100%;}
 
 .centerbold				{						display: block; text-align: center; font-weight: bold;}
 
@@ -343,7 +345,7 @@ h1.alert, h2.alert		{color: #000000;}
 
 .connectionClosed, .fatalError {background: red; color: white; padding: 5px;}
 .connectionClosed.restored {background: green;}
-.internal.boldnshit {color: blue; font-weight: bold;}
+.internal.boldnshit {color: #386aff; font-weight: bold;}
 
 /* HELPER CLASSES */
 .text-normal {font-weight: normal; font-style: normal;}

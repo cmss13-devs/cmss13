@@ -241,7 +241,7 @@
 	old_lead.hud_set_squad()
 	old_lead.update_inv_head() //updating marine helmet leader overlays
 	old_lead.update_inv_wear_suit()
-	to_chat(old_lead, "[FONT_SIZE_BIG("<font color='blue'>You're no longer the Squad Leader for [src]!</font>")]")
+	to_chat(old_lead, FONT_SIZE_BIG(SPAN_BLUE("You're no longer the Squad Leader for [src]!")))
 
 
 //Not a safe proc. Returns null if squads or jobs aren't set up.

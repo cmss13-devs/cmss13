@@ -37,7 +37,7 @@ var/global/datum/controller/gameticker/ticker = new()
 	do
 		pregame_timeleft = 180
 		if(round_statistics)
-			to_world("<center><FONT color='blue'><B>[round_statistics.name]</B></FONT></center>")
+			to_world("<center>[SPAN_BLUE("<B>[round_statistics.name]</B>")]</center>")
 		to_world(SPAN_NOTICE("<center><B>Welcome to the pre-game lobby of Colonial Marines!</B></center>"))
 		to_world(SPAN_NOTICE("<center>Please, setup your character and select ready. Game will start in [pregame_timeleft] seconds.</center>"))
 		while(current_state == GAME_STATE_PREGAME)
@@ -139,8 +139,8 @@ var/global/datum/controller/gameticker/ticker = new()
 		for(var/obj/effect/landmark/start/S in landmarks_list)
 			qdel(S)
 		if(round_statistics)
-			to_world("<FONT color='blue'><B>Welcome to [round_statistics.name]</B></FONT>")
-		to_world("<FONT color='blue'><B>Enjoy the game!</B></FONT>")
+			to_world(SPAN_BLUE("<B>Welcome to [round_statistics.name]</B>"))
+		to_world(SPAN_BLUE("<B>Enjoy the game!</B>"))
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
 

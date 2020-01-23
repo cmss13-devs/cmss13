@@ -36,7 +36,6 @@
 #define SPAN_XOOC(X) "<span class='xooc'>[X]</span>"
 #define SPAN_MOOC(X) "<span class='mooc'>[X]</span>"
 #define SPAN_DEBUG(X) "<span class='debuginfo'>[X]</span>"
-#define FONT_MESSAGE_ADMINS(X) "<font color='blue'>[X]</font>"
 #define SPAN_ADMINNOTICE(X) "<span class='adminnotice'>[X]</span>"
 
 // Misc
@@ -62,3 +61,6 @@
 #define SPAN_AVOIDHARM(X) "<span class='avoidharm'>[X]</span>"
 
 #define SPAN_SCANNER(X) "<span class='scanner'>[X]</span>"
+
+// Colours
+#define SPAN_BLUE(X) "<span class='blue'>[X]</span>"

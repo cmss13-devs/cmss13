@@ -26,6 +26,8 @@
 		overlays_standing[cache_index] = null
 
 /mob/living/carbon/Xenomorph/update_icons()
+	if(!caste)
+		return
 	if(stat == DEAD)
 		icon_state = "[caste.caste_name] Dead"
 	else if(lying)

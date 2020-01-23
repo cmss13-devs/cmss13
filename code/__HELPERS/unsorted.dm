@@ -984,14 +984,14 @@ proc/anim(turf/location,atom/target,a_icon,a_icon_state as text,flick_anim as te
 	var/steps = 0
 
 	while(current != target_turf)
-		if(steps > length) return 0
-		if(current.opacity) return 0
+		if(steps > length) return FALSE
+		if(!current || current.opacity) return FALSE
 		for(var/atom/A in current)
-			if(A && A.opacity) return 0
+			if(A && A.opacity) return FALSE
 		current = get_step_towards(current, target_turf)
 		steps++
 
-	return 1
+	return TRUE
 
 /proc/is_blocked_turf(var/turf/T)
 	if(T.density)

@@ -55,8 +55,8 @@
 			qdel(src)
 			return
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
-		if(check_lifecycle())
-			GoIdle()
+		GoIdle()
+		check_lifecycle()
 
 /obj/item/clothing/mask/facehugger/attack_hand(var/mob/user)
 

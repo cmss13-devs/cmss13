@@ -8,7 +8,7 @@
 	icon_state = "Egg Growing"
 	density = 0
 	anchored = 1
-	layer = ABOVE_OBJ_LAYER
+	layer = LYING_LIVING_MOB_LAYER	//to stop hiding eggs under corpses
 	health = 80
 	var/list/egg_triggers = list()
 	var/status = EGG_GROWING //can be EGG_GROWING, EGG_GROWN, EGG_BURST, EGG_BURSTING, or EGG_DESTROYED; all mutually exclusive
@@ -123,7 +123,7 @@
 				X.put_in_hands(child)
 				return
 			if(instant_trigger)
-				add_timer(CALLBACK(child, /obj/item/clothing/mask/facehugger.proc/leap_at_nearest_target), 10)
+				child.leap_at_nearest_target()
 			else
 				child.GoIdle()
 
@@ -210,7 +210,7 @@
 	if(status == EGG_GROWN)
 		if(!CanHug(AM) || isYautja(AM) || isSynth(AM)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
 			return
-		Burst(FALSE, TRUE)
+		Burst(FALSE, TRUE, null)
 
 /obj/effect/alien/egg/flamer_fire_act() // gotta kill the egg + hugger
 	Burst(TRUE)

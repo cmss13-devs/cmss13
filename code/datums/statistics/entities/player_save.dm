@@ -16,6 +16,8 @@
 	if(!S)					return 0
 	S.cd = "/"
 
+	update_panel_data()
+
 	S["version"] 		<< savefile_version
 	S["xeno"]			<< data["xeno"]
 	S["human"]			<< data["human"]

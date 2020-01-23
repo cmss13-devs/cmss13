@@ -610,12 +610,12 @@
 			if(!only_leader)
 				if(plus_name)
 					M << sound('sound/effects/radiostatic.ogg')
-				to_chat(M, "[htmlicon(src, M)] <font color='blue'><B>Overwatch:</b> [nametext][text]</font>")
+				to_chat(M, "[htmlicon(src, M)] [SPAN_BLUE("<B>Overwatch:</b> [nametext][text]")]")
 			else
 				if(current_squad.squad_leader == M)
 					if(plus_name)
 						M << sound('sound/effects/radiostatic.ogg')
-					to_chat(M, "[htmlicon(src, M)] <font color='blue'><B>SL Overwatch:</b> [nametext][text]</font>")
+					to_chat(M, "[htmlicon(src, M)] [SPAN_BLUE("<B>SL Overwatch:</b> [nametext][text]")]")
 					return
 
 /obj/structure/machinery/computer/overwatch/proc/change_lead()

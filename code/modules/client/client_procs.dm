@@ -238,6 +238,9 @@
 			src.donator = 1
 			verbs += /client/proc/set_ooc_color_self
 
+	if(prefs.window_skin & TOGGLE_WINDOW_SKIN)
+		set_night_skin()
+
 	//////////////
 	//DISCONNECT//
 	//////////////

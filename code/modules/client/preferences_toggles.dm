@@ -208,6 +208,22 @@
 	prefs.save_preferences()
 	to_chat(src, "You will [(prefs.be_special & role_flag) ? "now" : "no longer"] be considered for [role] events (where possible).")
 
+/client/verb/toggle_window_skin()
+	set name = "Toggle Window Skin"
+	set category = "Preferences"
+	set desc = "Toggles between the white window skin or the night window skin."
+
+	prefs.window_skin ^= TOGGLE_WINDOW_SKIN
+	if(prefs.window_skin & TOGGLE_WINDOW_SKIN)
+		to_chat(src, "You're now running the night skin for your windows.")
+		set_night_skin()
+	else
+		to_chat(src, "You're now running the white skin for your windows.")
+		set_white_skin()
+	prefs.save_preferences()
+
+	if(chatOutput)
+		chatOutput.check_window_skin()
 
 /client/verb/toggle_prefs() // Toggle whether anything will happen when you click yourself in non-help intent
 	set name = "Toggle Preferences"

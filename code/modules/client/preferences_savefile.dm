@@ -63,6 +63,7 @@
 	S["UI_style_color"]		>> UI_style_color
 	S["UI_style_alpha"]		>> UI_style_alpha
 	S["stylesheet"] 		>> stylesheet
+	S["window_skin"]		>> window_skin
 	S["fps"]				>> fps
 
 	S["xeno_prefix"]		>> xeno_prefix
@@ -91,6 +92,7 @@
 	toggle_prefs	= sanitize_integer(toggle_prefs, 0, 65535, initial(toggle_prefs))
 	UI_style_color	= sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha	= sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
+	window_skin		= sanitize_integer(window_skin, 0, 65535, initial(window_skin))
 
 	synthetic_name 		= synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type		= sanitize_text(synthetic_type, initial(synthetic_type))
@@ -123,6 +125,7 @@
 	S["chat_display_preferences"] << chat_display_preferences
 	S["toggles_sound"]		<< toggles_sound
 	S["toggle_prefs"]		<< toggle_prefs
+	S["window_skin"]		<< window_skin
 	S["fps"]				<< fps
 
 	S["xeno_prefix"]		<< xeno_prefix

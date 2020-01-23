@@ -104,4 +104,4 @@
 		if(X == C || X == src)
 			continue
 		if(X.key!=key && X.key!=C.key && (X.admin_holder.rights & R_ADMIN) || (X.admin_holder.rights & (R_MOD)) )
-			to_chat(X, "<B><font color='blue'>PM: [key_name(src, X, 0)]-&gt;[key_name(C, X, 0)]:</B> \blue [msg]</font>") //inform X
+			to_chat(X, "<B>[SPAN_BLUE("PM: [key_name(src, X, 0)]-&gt;[key_name(C, X, 0)]:</B> \blue [msg]")]") //inform X

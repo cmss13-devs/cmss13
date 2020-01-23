@@ -162,7 +162,7 @@
 	if (ticker.current_state == GAME_STATE_PREGAME)
 		ticker.current_state = GAME_STATE_SETTING_UP
 		log_admin("[usr.key] has started the game.")
-		message_admins("<font color='blue'>[usr.key] has started the game.</font>")
+		message_admins(SPAN_BLUE("[usr.key] has started the game."))
 		 
 		return TRUE
 	else

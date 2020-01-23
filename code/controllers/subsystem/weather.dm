@@ -119,7 +119,7 @@ var/list/weather_notify_objects = list()
 
 	if(!weather_event_instance)
 		log_admin("Bad weather event of type [weather_event_type].")
-		message_admins(FONT_MESSAGE_ADMINS("Bad weather event of type [weather_event_type]."))
+		message_admins(SPAN_BLUE("Bad weather event of type [weather_event_type]."))
 		return
 
 	// Maintain the controller state
@@ -131,10 +131,10 @@ var/list/weather_notify_objects = list()
 
 	if (weather_event_instance.display_name)
 		log_admin("Weather Event of type [weather_event_instance.display_name] starting with duration of [weather_event_instance.length] ds.")
-		message_admins(FONT_MESSAGE_ADMINS("Weather Event of type [weather_event_instance.display_name] starting with duration of [weather_event_instance.length] ds."))
+		message_admins(SPAN_BLUE("Weather Event of type [weather_event_instance.display_name] starting with duration of [weather_event_instance.length] ds."))
 	else
 		log_admin("Weather Event of unknown type ([weather_event_type]) starting with duration of [weather_event_instance.length] ds.")
-		message_admins(FONT_MESSAGE_ADMINS("Weather Event of unknown type [weather_event_type] starting with duration of [weather_event_instance.length] ds."))
+		message_admins(SPAN_BLUE("Weather Event of unknown type [weather_event_type] starting with duration of [weather_event_instance.length] ds."))
 
 	if (weather_event_instance.turf_overlay_icon_state)
 		curr_master_turf_overlay.icon_state = weather_event_instance.turf_overlay_icon_state
@@ -153,10 +153,10 @@ var/list/weather_notify_objects = list()
 
 	if (weather_event_instance.display_name)
 		log_admin("Weather Event of type [weather_event_instance.display_name] ending after [weather_event_instance.length] ds.")
-		message_admins(FONT_MESSAGE_ADMINS("Weather Event of type [weather_event_instance.display_name] ending after [weather_event_instance.length] ds."))
+		message_admins(SPAN_BLUE("Weather Event of type [weather_event_instance.display_name] ending after [weather_event_instance.length] ds."))
 	else
 		log_admin("Weather Event of unknown type ([weather_event_type]) ending after [weather_event_instance.length] ds.")
-		message_admins(FONT_MESSAGE_ADMINS("Weather Event of unknown type [weather_event_type] ending after [weather_event_instance.length] ds."))
+		message_admins(SPAN_BLUE("Weather Event of unknown type [weather_event_type] ending after [weather_event_instance.length] ds."))
 
 	if (map_holder.no_weather_turf_icon_state)
 		curr_master_turf_overlay.icon_state = map_holder.no_weather_turf_icon_state

@@ -28,6 +28,7 @@
 
 /mob/living/carbon/Xenomorph
 	name = "Drone"
+	caste_name = "Drone"
 	desc = "What the hell is THAT?"
 	icon = 'icons/mob/xenos/1x1_Xenos.dmi'
 	icon_state = "Drone Walking"

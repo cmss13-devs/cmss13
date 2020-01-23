@@ -254,7 +254,7 @@ var/datum/mob_hud/huds = list(
 	var/image/holder2 = hud_list[STATUS_HUD_OOC]
 	var/image/holder3 = hud_list[STATUS_HUD_XENO_INFECTION]
 
-	if(species.flags & IS_SYNTHETIC)
+	if(species && species.flags & IS_SYNTHETIC)
 		holder.icon_state = "hudsynth"
 		holder2.icon_state = "hudsynth"
 		holder3.icon_state = "hudsynth"

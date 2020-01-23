@@ -149,6 +149,9 @@
 		var/datum/entity/player_stats/human/human_stats = mind.setup_human_stats()
 		human_stats.death_list.Insert(1, .)
 	if(cause_mob)
+		if(!ismob(cause_mob))
+			CRASH("Statistics attempted to track a mob death with a non-mob cause: [cause_mob] ([cause])")
+			return
 		var/mob/M = cause_mob
 		var/job_name = get_actual_job_name(src)
 		if(!job_name)
@@ -168,6 +171,9 @@
 		var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
 		xeno_stats.death_list.Insert(1, .)
 	if(cause_mob)
+		if(!ismob(cause_mob))
+			CRASH("Statistics attempted to track a mob death with a non-mob cause: [cause_mob] ([cause])")
+			return
 		var/mob/M = cause_mob
 		if(!M.statistic_exempt && M != src)
 			M.count_xeno_kill(caste_name, cause)

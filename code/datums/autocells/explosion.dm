@@ -283,7 +283,10 @@
 
 		log_attack("Mob [M.name] ([M.ckey]) was harmed by explosion in [T.loc.name] caused by [explosion_source] at ([T.x],[T.y],[T.z])")
 
-		if(ismob(explosion_source_mob))
+		if(explosion_source_mob)
+			if(!ismob(explosion_source_mob))
+				CRASH("Statistics attempted to track a source mob incorrectly: [explosion_source_mob] ([explosion_source])")
+				return
 			var/mob/firing_mob = explosion_source_mob
 			M.last_damage_mob = firing_mob
 			var/turf/location_of_mob = get_turf(firing_mob)
@@ -305,22 +308,3 @@
 				firing_mob.attack_log += "\[[time_stamp()]\] <b>[firing_mob]/[firing_mob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firing_mob)]."
 
 				msg_admin_attack("[firing_mob] ([firing_mob.ckey]) blew up [M] ([M.ckey]) with \a [explosion_source] in [get_area(firing_mob)] ([location_of_mob.x],[location_of_mob.y],[location_of_mob.z]).", location_of_mob.x, location_of_mob.y, location_of_mob.z)
-		else if(explosion_source_mob)
-			var/mob/firing_mob = explosion_source_mob
-			var/turf/location_of_mob = get_turf(firing_mob)
-
-			if(isnull(location_of_mob))
-				return
-
-			if(ishuman(firing_mob))
-				var/mob/living/carbon/human/H = firing_mob
-				H.track_shot_hit("explosion", M)
-
-			M.attack_log += "\[[time_stamp()]\] <b>[firing_mob]</b> blew up <b>[M]/[M.ckey]</b> with a <b>[explosion_source]</b> in [get_area(firing_mob)]."
-
-			msg_admin_attack("[firing_mob] ([firing_mob.ckey]) blew up [M] ([M.ckey]) with \a [explosion_source] in [get_area(firing_mob)] ([location_of_mob.x],[location_of_mob.y],[location_of_mob.z]).", location_of_mob.x, location_of_mob.y, location_of_mob.z)
-
-		else if(explosion_source)
-			M.attack_log += "\[[time_stamp()]\] <b>[M]/[M.ckey]</b> was blown up with a <b>[explosion_source]</b> in [get_area(M)].</b>"
-		else
-			M.attack_log += "\[[time_stamp()]\] <b>[M]/[M.ckey]</b> was blown up in [get_area(M)]."

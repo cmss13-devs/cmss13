@@ -68,10 +68,10 @@
 	if(!(locate(/obj/effect/alien/weeds) in T))
 		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on weeds."))
 		return
-	if(!user.hive.in_egg_plant_range(T))
+	var/area/A = get_area(user)
+	if(!user.hive.in_egg_plant_range(T) && !A.statistic_exempt)	//so eggs can be planted in thunderdome/centcomm
 		to_chat(user, SPAN_XENOWARNING("[src] can only be planted near Queen in ovipositor form. Come closer, child."))
 		return
-
 	if(user == user.hive.living_xeno_queen && !user.hive.living_xeno_queen.in_egg_plant_range(T))
 		to_chat(user, SPAN_XENOWARNING("[T] is too far from you."))
 		return

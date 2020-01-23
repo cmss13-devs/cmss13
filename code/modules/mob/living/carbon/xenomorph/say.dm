@@ -39,7 +39,7 @@
 					speaking = L
 					break
 
-	if(!caste.is_robotic)
+	if(caste && !caste.is_robotic)
 		if(isnull(speaking) || speaking.key != "a") //Not hivemind? Then default to xenocommon. BRUTE FORCE YO
 			for(var/datum/language/L in languages)
 				if(L.key == "x")
@@ -68,7 +68,7 @@
 		return
 
 	if(forced)
-		if(caste.is_robotic)
+		if(caste && caste.is_robotic)
 			var/noise = pick('sound/machines/ping.ogg','sound/machines/twobeep.ogg')
 			verb = pick("beeps", "buzzes", "pings")
 			playsound(src.loc, noise, 25, 1)
@@ -130,7 +130,7 @@
 					rendered = SPAN_XENOQUEEN("Hivemind, [name] [overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
 				else if(IS_XENO_LEADER(src))
 					rendered = SPAN_XENOLEADER("Hivemind, Leader [name] [overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
-				else if(caste.is_robotic)
+				else if(caste && caste.is_robotic)
 					var/message_b = pick("high-pitched blast of static","series of pings","long string of numbers","loud, mechanical squeal", "series of beeps")
 					rendered = "<i><span class='game say'>Hivemind, <span class='name'>[name]</span> [overwatch_insert]emits a [message_b]!</span></i>"
 				else

@@ -30,7 +30,7 @@ class Runtime:
     # 1 - File where the error occured
     # 2 - Line number where the error occured
     # 3 - Full runtime details (the stack trace)
-    issue_body_template = "**Error message:** {0}\n\n**Where:** {1}, line {2}\n\n**Stack trace:**\n```\n{3}```"
+    issue_body_template = "**Error message:** {0}\n\n**Where:** {1}, line {2}\n\n**Stack trace:**\n```\n{3}\n```"
 
     def __init__(self, message, file, line, desc):
         self.message = message

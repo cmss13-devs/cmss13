@@ -1360,7 +1360,7 @@
 	..()
 
 /datum/ammo/energy/yautja/caster/sphere/proc/do_area_stun(obj/item/projectile/P)
-	playsound(get_turf(P), 'sound/weapons/wave.ogg', 75, 10, 25, 10)
+	playsound(P, 'sound/weapons/wave.ogg', 75, 1, 25)
 	for (var/mob/living/carbon/M in view(src.stun_range, get_turf(P)))
 		var/stun_time = src.stun_time
 		if (isYautja(M))

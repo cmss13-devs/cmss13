@@ -59,7 +59,7 @@
 						if (map_tag != MAP_WHISKEY_OUTPOST)
 							upgrade_xeno(upgrade+1)
 
-	if(caste.evolution_allowed && evolution_stored < evolution_threshold && hive.living_xeno_queen && (hive.living_xeno_queen.ovipositor || (ticker.game_start_time + XENO_HIVE_EVOLUTION_FREETIME) >= world.time))
+	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && hive.living_xeno_queen && (hive.living_xeno_queen.ovipositor || (ticker.game_start_time + XENO_HIVE_EVOLUTION_FREETIME) >= world.time))
 		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)
 		if(evolution_stored >= evolution_threshold - 1)
 			to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to evolve!")) //Makes this bold so the Xeno doesn't miss it
@@ -75,7 +75,7 @@
 		if(istype(G))
 			G.Die()
 			drop_inv_item_on_ground(G)
-		if(!caste.fire_immune)
+		if(!caste || !caste.fire_immune)
 			var/dmg = armor_damage_reduction(config.xeno_fire, fire_stacks * 2 + 4.5)
 			adjustFireLoss(dmg)
 
@@ -311,9 +311,9 @@ updatehealth()
 
 /mob/living/carbon/Xenomorph/proc/handle_environment()
 	var/turf/T = loc
-	var/recoveryActual = (caste.fire_immune || fire_stacks == 0) ? recovery_aura : 0
+	var/recoveryActual = (!caste || caste.fire_immune || fire_stacks == 0) ? recovery_aura : 0
 	var/env_temperature = loc.return_temperature()
-	if(!caste.fire_immune)
+	if(caste && !caste.fire_immune)
 		if(env_temperature > (T0C + 66))
 			adjustFireLoss((env_temperature - (T0C + 66)) / 5) //Might be too high, check in testing.
 			updatehealth() //Make sure their actual health updates immediately
@@ -328,7 +328,7 @@ updatehealth()
 	if(isXenoRunner(src) && layer != initial(layer))
 		is_runner_hiding = 1
 
-	if(!caste.is_robotic) //Robot no heal
+	if(caste && !caste.is_robotic) //Robot no heal
 		if(caste.innate_healing || check_weeds_for_healing())
 			plasma_stored += plasma_gain * plasma_max / 100
 			if(recovery_aura)
@@ -394,7 +394,7 @@ updatehealth()
 /mob/living/carbon/Xenomorph/proc/queen_locator()
 	if(!hud_used || !hud_used.locate_leader) return
 
-	if(hive && !hive.living_xeno_queen || caste.is_intelligent || !loc)
+	if(hive && !hive.living_xeno_queen || (caste && caste.is_intelligent) || !loc)
 		hud_used.locate_leader.icon_state = "trackoff"
 		return
 

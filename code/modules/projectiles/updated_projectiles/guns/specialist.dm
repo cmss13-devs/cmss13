@@ -876,12 +876,12 @@
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return FALSE
-
-		var/obj/item/explosive/grenade/G = grenades[1]
-		if(grenade_grief_check(G))
-			to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from firing!"))
-			message_staff("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
-			return FALSE
+		if(grenades.len)
+			var/obj/item/explosive/grenade/G = grenades[1]
+			if(grenade_grief_check(G))
+				to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from firing!"))
+				message_staff("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+				return FALSE
 
 /obj/item/weapon/gun/launcher/m92/proc/fire_grenade(atom/target, mob/user)
 	set waitfor = 0

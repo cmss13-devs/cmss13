@@ -36,7 +36,7 @@
 				M.start_pulling(src)
 
 		if("hurt")
-			if(!M.hive.slashing_allowed && !M.caste.is_intelligent)
+			if(!M.hive.slashing_allowed && (M.caste && !M.caste.is_intelligent))
 				to_chat(M, SPAN_WARNING("Slashing is currently <b>forbidden</b> by the Queen. You refuse to slash [src]."))
 				return FALSE
 
@@ -44,7 +44,7 @@
 				to_chat(M, SPAN_WARNING("[src] is dead, why would you want to touch it?"))
 				return FALSE
 
-			if(!M.caste.is_intelligent)
+			if(M.caste && !M.caste.is_intelligent)
 				if(M.hive.slashing_allowed == 2)
 					if(status_flags & XENO_HOST)
 						for(var/obj/item/alien_embryo/embryo in src)
@@ -82,12 +82,12 @@
 			M.animation_attack_on(src)
 
 			//Check for a special bite attack
-			if(prob(M.caste.bite_chance))
+			if(M.caste && prob(M.caste.bite_chance))
 				M.bite_attack(src, damage)
 				return 1
 
-			//Check for a special bite attack
-			if(prob(M.caste.tail_chance))
+			//Check for a special tail attack
+			if(M.caste && prob(M.caste.tail_chance))
 				M.tail_attack(src, damage)
 				return 1
 
@@ -122,7 +122,7 @@
 					var/knock_chance = 1
 					if(M.frenzy_aura > 0)
 						knock_chance += 2 * M.frenzy_aura
-					if(M.caste.is_intelligent)
+					if(M.caste && M.caste.is_intelligent)
 						knock_chance += 2
 					knock_chance += min(round(damage * 0.25), 10) //Maximum of 15% chance.
 					if(prob(knock_chance))
@@ -228,7 +228,7 @@
 			else
 				var/tackle_bonus = 0
 				if(isYautja(src))
-					if(prob((M.caste.tackle_chance + tackle_bonus)*0.2))
+					if(M.caste && prob((M.caste.tackle_chance + tackle_bonus)*0.2))
 						playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 						KnockDown(rand(M.tacklemin, M.tacklemax))
 						M.visible_message(SPAN_DANGER("\The [M] tackles down [src]!"), \
@@ -239,7 +239,7 @@
 						M.visible_message(SPAN_DANGER("\The [M] tries to tackle [src]"), \
 						SPAN_DANGER("You try to tackle [src]"), null, 5, CHAT_TYPE_XENO_COMBAT)
 						return 1
-				else if(prob(M.caste.tackle_chance + tackle_bonus)) //Tackle_chance is now a special var for each caste.
+				else if(M.caste && prob(M.caste.tackle_chance + tackle_bonus)) //Tackle_chance is now a special var for each caste.
 					playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 					KnockDown(rand(M.tacklemin, M.tacklemax))
 					M.visible_message(SPAN_DANGER("\The [M] tackles down [src]!"), \
@@ -276,7 +276,7 @@
 				SPAN_WARNING("You nibble [src]."), null, 5, CHAT_TYPE_XENO_FLUFF)
 				return 1
 
-			if(!M.caste.is_intelligent)
+			if(M.caste && !M.caste.is_intelligent)
 				if(M.hive.slashing_allowed == 2)
 					if(status_flags & XENO_HOST)
 						for(var/obj/item/alien_embryo/embryo in src)
@@ -738,7 +738,7 @@
 		..()
 		return
 
-	if(M.caste.is_intelligent)
+	if(M.caste && M.caste.is_intelligent)
 		attack_hand(M)
 		if(!shuttle.iselevator)
 			if (shuttle_tag != "Ground Transport 1")
@@ -749,7 +749,7 @@
 		..()
 
 /obj/structure/machinery/door_control/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.caste.is_intelligent && normaldoorcontrol == CONTROL_DROPSHIP)
+	if(M.caste && M.caste.is_intelligent && normaldoorcontrol == CONTROL_DROPSHIP)
 		var/shuttle_tag
 		switch(id)
 			if("sh_dropship1")
@@ -877,7 +877,7 @@
 			SPAN_DANGER("You smash \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 
 /obj/structure/girder/attack_alien(mob/living/carbon/Xenomorph/M)
-	if((M.caste.tier < 2 && !isXenoQueen(M)) || unacidable)
+	if((M.caste && M.caste.tier < 2 && !isXenoQueen(M)) || unacidable)
 		to_chat(M, SPAN_WARNING("Your claws aren't sharp enough to damage \the [src]."))
 		return 0
 	else

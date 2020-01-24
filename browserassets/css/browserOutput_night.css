@@ -230,9 +230,9 @@ a.popt {text-decoration: none;}
 .mooc					{color: #009900;	font-weight: bold; font-size: 120%;}
 
 .adminobserver			{color: #996600;	font-weight: bold;}
-.admin					{color: #386aff;	font-weight: bold;}
-.adminsay				{color: #9611D4;	font-weight: bold;}
-.headminsay				{color: #5A0A7F;	font-weight: bold;}
+.admin					{color: #f3ac4e;	font-weight: bold;}
+.adminsay				{color: #c550fc;	font-weight: bold;}
+.headminsay				{color: #7d4b94;	font-weight: bold;}
 
 .name					{					font-weight: bold;}
 
@@ -289,17 +289,17 @@ h1.alert, h2.alert		{color: #c5c5c5;}
 .info					{color: #386aff;}
 .debuginfo				{color: #493D26;	font-style: italic;}
 .notice					{color: #386aff;}
-.xenonotice				{color: #438559;}
+.xenonotice				{color: #51a16c;}
 .boldnotice				{color: #386aff;	font-weight: bold;}
 .warning				{color: #ff3838;	font-style: italic;}
-.xenowarning			{color: #438559;	font-style: italic;}
-.xenominorwarning		{color: #438559;	font-weight: bold; font-style: italic;}
+.xenowarning			{color: #51a16c;	font-style: italic;}
+.xenominorwarning		{color: #51a16c;	font-weight: bold; font-style: italic;}
 .danger					{color: #ff3838;	font-weight: bold;}
-.xenodanger				{color: #438559;	font-weight: bold;}
+.xenodanger				{color: #51a16c;	font-weight: bold;}
 .avoidharm				{color:	#72a0e5;	font-weight: bold;}
 .highdanger				{color: #ff3838;	font-weight: bold; font-size: 120%;}
-.xenohighdanger			{color: #438559; 	font-weight: bold; font-size: 120%;}
-.xenoannounce           {color: #2f4938;    font-family: book-antiqua; font-weight: bold; font-size: 120%;}
+.xenohighdanger			{color: #51a16c; 	font-weight: bold; font-size: 120%;}
+.xenoannounce           {color: #65c585;    font-family: book-antiqua; font-weight: bold; font-size: 120%;}
 .yautjabold				{color: #800080;	font-weight: bold;}
 .yautjaboldbig			{color: #800080;	font-weight: bold; font-size: 110%;}
 
@@ -323,7 +323,7 @@ h1.alert, h2.alert		{color: #c5c5c5;}
 .event_announcement		{color: #600d48; 	font-family: arial-narrow; font-weight: bold; font-size: 120%;}
 
 .announce_header		{color: #cecece;	font-weight: bold; font-size: 120%;}
-.announce_header_blue	{color: #3a3ae9;	font-weight: bold; font-size: 120%;}
+.announce_header_blue	{color: #7575f3;	font-weight: bold; font-size: 120%;}
 .announce_body			{color: #e92d2d;	font-weight: normal; font-size: 100%;}
 
 .centerbold				{						display: block; text-align: center; font-weight: bold;}

@@ -21,7 +21,7 @@
 	src.mob.on_mob_jump()
 	src.mob.forceMove(pick(get_area_turfs(A)))
 
-	msg_admin_all("[usr.ckey] jumped to area [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z]). (NAME: [usr.name])", usr.loc.x, usr.loc.y, usr.loc.z)
+	message_staff(WRAP_STAFF_LOG(usr, "jumped to area [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
 
 /client/proc/jump_to_turf(var/turf/T in turfs)
 	set name = "Jump to Turf"
@@ -37,7 +37,7 @@
 	if(!isobserver(mob))
 		src.admin_ghost()
 
-	msg_admin_all("[usr.ckey] jumped to a turf in [T.loc] ([T.x],[T.y],[T.z]). (NAME: [usr.name])", T.x, T.y, T.z)
+	message_staff(WRAP_STAFF_LOG(usr, "jumped to a turf in [T.loc] ([T.x],[T.y],[T.z])."), T.x, T.y, T.z)
 
 	src.mob.on_mob_jump()
 	src.mob.forceMove(T)
@@ -63,7 +63,7 @@
 		var/mob/A = src.mob
 		A.on_mob_jump()
 		A.forceMove(object_location)
-		msg_admin_all("[usr.ckey] jumped to [O] in [get_area(O)] ([O.x],[O.y],[O.z]). (NAME: [usr.name])", O.x, O.y, O.z)
+		message_staff(WRAP_STAFF_LOG(usr, "jumped to [O] in [get_area(O)] ([O.x],[O.y],[O.z])."), O.x, O.y, O.z)
 
 /client/proc/jumptomob(var/mob/M in mob_list)
 	set name = "Jump to Mob"
@@ -82,7 +82,7 @@
 		if(T && isturf(T))
 			A.on_mob_jump()
 			A.forceMove(T)
-			msg_admin_all("[usr.ckey] jumped to [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z]). (NAME: [usr.name])", M.loc.x, M.loc.y, M.loc.z)
+			message_staff(WRAP_STAFF_LOG(usr, "jumped to [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z])."), M.loc.x, M.loc.y, M.loc.z)
 		else
 			to_chat(A, "This mob is not located in the game world.")
 
@@ -105,7 +105,7 @@
 		A.z = tz
 		//This is a bit hacky but ensures it works properly
 		A.forceMove(A.loc)
-		msg_admin_all("[usr.ckey] jumped to [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z]). (NAME: [usr.name])", usr.loc.x, usr.loc.y, usr.loc.z)
+		message_staff(WRAP_STAFF_LOG(usr, "jumped to [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
 
 /client/proc/jumptokey()
 	set name = "Jump to Ckey"
@@ -132,7 +132,7 @@
 
 	src.mob.on_mob_jump()
 	src.mob.loc = M.loc
-	msg_admin_all("[usr.ckey] jumped to ckey [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z]).", M.loc.x, M.loc.y, M.loc.z)
+	message_staff("[usr.ckey] jumped to ckey [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z]).", M.loc.x, M.loc.y, M.loc.z)
 
 /client/proc/Getmob(var/mob/M)
 	set name = "Get Mob"
@@ -146,7 +146,7 @@
 
 	M.on_mob_jump()
 	M.loc = get_turf(usr)
-	msg_admin_all("[usr.ckey] teleported [key_name(M)] to themselves in [get_area(usr)] ([usr.x],[usr.y],[usr.z]). (NAME: [usr.name])", usr.x, usr.y, usr.z)
+	message_staff(WRAP_STAFF_LOG(usr, "teleported [key_name(M)] to themselves in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
 
 /client/proc/Getkey()
 	set name = "Get Ckey"
@@ -169,7 +169,7 @@
 
 	M.on_mob_jump()
 	M.loc = get_turf(usr)
-	msg_admin_all("[usr.ckey] teleported [key_name(M)] to themselves in [get_area(usr)] ([usr.x],[usr.y],[usr.z]). (NAME: [usr.name])", usr.x, usr.y, usr.z)
+	message_staff(WRAP_STAFF_LOG(usr, "teleported [key_name(M)] to themselves in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
 
 /client/proc/sendmob(var/mob/M in sortmobs())
 	set category = "Admin"
@@ -183,4 +183,4 @@
 	if(A)
 		M.on_mob_jump()
 		M.loc = pick(get_area_turfs(A))
-		msg_admin_all("[usr.ckey] teleported [key_name(M)] to [get_area(M)] ([M.x],[M.y],[M.z]). (NAME: [usr.name])", M.x, M.y, M.z)
+		message_staff(WRAP_STAFF_LOG(usr, "teleported [key_name(M)] to [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)

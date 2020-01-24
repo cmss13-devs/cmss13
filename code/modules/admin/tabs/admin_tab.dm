@@ -283,7 +283,7 @@
 	for(var/mob/living/M in view())
 		M.rejuvenate(FALSE)
 
-	msg_admin_all("[usr.ckey] ahealed everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z]). (NAME: [usr.name])", usr.x, usr.y, usr.z)
+	message_staff(WRAP_STAFF_LOG(usr, "ahealed everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
 
 
 /client/proc/rejuvenate_all_humans_in_view()
@@ -301,7 +301,7 @@
 	for(var/mob/living/carbon/human/M in view())
 		M.rejuvenate(FALSE)
 
-	msg_admin_all("[usr.ckey] ahealed all humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z]). (NAME: [usr.name])", usr.x, usr.y, usr.z)
+	message_staff(WRAP_STAFF_LOG(usr, "ahealed all humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
 
 /client/proc/rejuvenate_all_revivable_humans_in_view()
 	set name = "In View Rejuvenate Revivable Human"
@@ -327,7 +327,7 @@
 			M.rejuvenate(FALSE)
 			continue
 
-	msg_admin_all("[usr.ckey] ahealed all revivable humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z]). (NAME: [usr.name])", usr.x, usr.y, usr.z)
+	message_staff(WRAP_STAFF_LOG(usr, "ahealed all revivable humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
 
 /client/proc/rejuvenate_all_xenos_in_view()
 	set name = "In View Rejuvenate Xenos"
@@ -344,7 +344,7 @@
 	for(var/mob/living/carbon/Xenomorph/X in view())
 		X.rejuvenate(FALSE)
 
-	msg_admin_all("[usr.ckey] ahealed all xenos in [get_area(usr)] ([usr.x],[usr.y],[usr.z]). (NAME: [usr.name])", usr.x, usr.y, usr.z)
+	message_staff(WRAP_STAFF_LOG(usr, "ahealed all xenos in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
 
 // ----------------------------
 // PANELS

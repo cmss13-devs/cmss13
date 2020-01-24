@@ -10,9 +10,14 @@ var/global/floorIsLava = 0
 		if(C && C.admin_holder && (R_ADMIN & C.admin_holder.rights))
 			to_chat(C, msg)
 
-/proc/message_staff(var/msg) // ALL staff - including Mentors
-	msg = "<span class=\"admin\"><span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]</span></span>"
+/proc/message_staff(var/msg, var/jmp_x=0, var/jmp_y=0, var/jmp_z=0) // +MOD and above, not mentors
 	log_adminwarn(msg)
+
+	msg = "<span class=\"admin\"><span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]"
+	if(jmp_x && jmp_y && jmp_z)
+		msg += " (<a href='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[jmp_x];Y=[jmp_y];Z=[jmp_z]'>JMP</a>)"
+	msg += "</span></span>"
+
 	for(var/client/C in admins)
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
 			to_chat(C, msg)
@@ -25,15 +30,6 @@ var/global/floorIsLava = 0
 			if(C.prefs.toggles_chat & CHAT_ATTACKLOGS)
 				var/msg = rendered
 				to_chat(C, msg)
-
-//Messages for ALL staff members EXCLUDING mentors; use this instead of message_admins
-/proc/msg_admin_all(var/text, jump_x, jump_y, jump_z)
-	log_admin(text)
-	var/rendered = "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[text] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[jump_x];Y=[jump_y];Z=[jump_z]'>JMP</a>)</span></span>"
-	for(var/client/C in admins)
-		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
-			var/msg = rendered
-			to_chat(C, msg)
 
 /proc/msg_admin_niche(var/msg) //Toggleable Niche Messages
 	log_admin(msg)

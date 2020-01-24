@@ -9,7 +9,7 @@
 #define AIRLOCK_WIRE_ELECTRIFY      9
 
 /obj/structure/machinery/door/airlock
-	name = "\improper Airlock"
+	name = "airlock"
 	icon = 'icons/obj/structures/doors/Doorint.dmi'
 	icon_state = "door_closed"
 	power_channel = ENVIRON
@@ -734,3 +734,8 @@
 	open()
 	lock()
 	return
+
+/obj/structure/machinery/door/airlock/allowed(mob/M)
+	if(isWireCut(AIRLOCK_WIRE_IDSCAN) || (maint_all_access && check_access_list(list(ACCESS_MARINE_ENGINEERING))))
+		return TRUE
+	return ..(M)

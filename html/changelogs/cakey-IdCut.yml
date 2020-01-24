@@ -1,0 +1,6 @@
+author: Cakey
+
+delete-after: True
+
+changes: 
+  - tweak: "Cutting airlock ID wires will remove access requirements from the airlock."

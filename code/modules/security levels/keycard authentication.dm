@@ -166,11 +166,6 @@ var/global/maint_all_access = 0
 	maint_all_access = 0
 	ai_announcement("The maintenance access requirement has been readded on all airlocks.")
 
-/obj/structure/machinery/door/airlock/allowed(mob/M)
-	if(maint_all_access && src.check_access_list(list(ACCESS_MARINE_ENGINEERING)))
-		return 1
-	return ..(M)
-
 // Keycard reader at the CORSAT locks
 /obj/structure/machinery/keycard_auth/corsat
 	name = "CORSAT Automated Biohazard override"

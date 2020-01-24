@@ -209,7 +209,7 @@
 	to_chat(src, "You will [(prefs.be_special & role_flag) ? "now" : "no longer"] be considered for [role] events (where possible).")
 
 /client/verb/toggle_window_skin()
-	set name = "Toggle Window Skin"
+	set name = "Toggle Night Mode"
 	set category = "Preferences"
 	set desc = "Toggles between the white window skin or the night window skin."
 

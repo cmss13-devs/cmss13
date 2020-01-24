@@ -11,6 +11,56 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "chempuff"
 	flags_pass = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH
+	var/mob/source_user
+
+/obj/effect/decal/chempuff/proc/move_towards(atom/A, move_delay = 3, tiles_left = 1)
+	if(!step_towards(src, A))
+		check_reactions(get_step(src, get_dir(src, A)))
+	else
+		check_reactions()
+	tiles_left -= 1
+	if(tiles_left)
+		add_timer(CALLBACK(src, /obj/effect/decal/chempuff/proc/move_towards, A, move_delay, tiles_left), move_delay)
+	else
+		qdel(src)
+
+/obj/effect/decal/chempuff/proc/check_reactions(turf/T)
+	if(!reagents)
+		return
+	if(!T)
+		T = get_turf(src)
+	reagents.reaction(T)
+	for(var/atom/A in T)
+		reagents.reaction(A)
+		
+		// Are we hitting someone?
+		if(ishuman(A))
+			// Check what they are hit with
+			var/reagent_list_text		// The list of reagents
+			var/counter = 0				// Used for formatting
+			var/log_spraying = FALSE	// If it worths logging
+			for(var/X in reagents.reagent_list)
+				var/datum/reagent/R = X
+				// Is it a chemical we should log?
+				if(R.spray_warning)
+					if(counter == 0)
+						reagent_list_text += "[R.name]"
+					else
+						reagent_list_text += ", [R.name]"
+
+			// One or more bad reagents means we log it
+			if(!counter)
+				log_spraying = TRUE
+
+			// Did we have a log-worthy spray? Then we log it
+			if(log_spraying && source_user)
+				var/mob/living/carbon/human/M = A
+				M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been sprayed with [name] (REAGENT: [reagent_list_text]) by [source_user.name] ([source_user.ckey])</font>")
+				source_user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used \a [name] (REAGENT: [reagent_list_text]) to spray [M.name] ([M.ckey])</font>")
+				msg_admin_attack("[source_user.name] ([source_user.ckey]) used \a [name] to spray [M.name] ([M.ckey]) with [name] (REAGENT: [reagent_list_text]) in [get_area(src)] ([loc.x],[loc.y],[loc.z]).", loc.x, loc.y, loc.z)
+
+		if(istype(A, /obj/structure/machinery/portable_atmospherics/hydroponics) || istype(A, /obj/item/reagent_container/glass))
+			reagents.trans_to(A)
 
 /obj/effect/decal/mecha_wreckage
 	name = "Exosuit wreckage"

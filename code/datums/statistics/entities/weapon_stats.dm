@@ -38,5 +38,5 @@
 		var/datum/entity/statistic/N = new()
 		N.name = niche_name
 		niche_stats["[niche_name]"] = N
-	var/datum/entity/statistic/S = xenos_killed["[niche_name]"]
+	var/datum/entity/statistic/S = niche_stats["[niche_name]"]
 	S.value += amount

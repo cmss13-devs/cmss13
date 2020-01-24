@@ -41,7 +41,7 @@
 	var/list/total_calls = typesof(/datum/emergency_call)
 	if(!total_calls.len)
 		to_world(SPAN_DANGER("\b Error setting up emergency calls, no datums found."))
-		return 0
+		return FALSE
 	for(var/S in total_calls)
 		var/datum/emergency_call/C= new S()
 		if(!C)	continue
@@ -70,7 +70,7 @@
 
 /datum/game_mode/proc/get_specific_call(var/call_name, var/announce = TRUE, var/is_emergency = TRUE)
 	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
-		if (E.name == call_name)
+		if(E.name == call_name)
 			picked_call = E
 			picked_call.activate(announce, is_emergency)
 			return
@@ -114,7 +114,7 @@
 	var/deathtime = world.time - usr.timeofdeath
 
 	if(deathtime < 600) //Nice try, ghosting right after the announcement
-		if (map_tag != MAP_WHISKEY_OUTPOST) // people ghost so often on whiskey outpost.
+		if(map_tag != MAP_WHISKEY_OUTPOST) // people ghost so often on whiskey outpost.
 			to_chat(usr, SPAN_WARNING("You ghosted too recently."))
 			return
 
@@ -129,7 +129,8 @@
 		usr.mind_initialize()
 	if(usr.mind.key != usr.key) usr.mind.key = usr.key //Sigh. This can happen when admin-switching people into afking people, leading to runtime errors for a clientless key.
 
-	if(!usr.client || !usr.mind) return //Somehow
+	if(!usr.client || !usr.mind)
+		return //Somehow
 	if(usr.mind in distress.candidates)
 		to_chat(usr, SPAN_WARNING("You are already a candidate for this emergency response team."))
 		return
@@ -158,7 +159,9 @@
 	if(is_emergency) //non-emergency ERTs don't count as emergency
 		ticker.mode.has_called_emergency = TRUE
 
-	sleep(SECONDS_60) //If after 60 seconds we aren't full, abort
+	add_timer(CALLBACK(src, /datum/emergency_call/proc/spawn_candidates, announce), SECONDS_60)
+
+/datum/emergency_call/proc/spawn_candidates(announce = TRUE)
 	if(candidates.len < mob_min)
 		message_admins("Aborting distress beacon, not enough candidates: found [candidates.len].")
 		ticker.mode.waiting_for_candidates = FALSE
@@ -166,13 +169,12 @@
 		members = list() //Empty the members list.
 		candidates = list()
 
-		if (announce)
+		if(announce)
 			marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon")
 
-		ticker.mode.distress_cooldown = 1
+		disable_calls()
 		ticker.mode.picked_call = null
-		sleep(MINUTES_2)
-		ticker.mode.distress_cooldown = 0
+		add_timer(CALLBACK(src, /datum/emergency_call/proc/enable_calls), MINUTES_2)
 	else //We've got enough!
 		//Trim down the list
 		var/list/datum/mind/picked_candidates = list()
@@ -186,11 +188,9 @@
 					M = pick(candidates)
 				if(!istype(M))//Something went horrifically wrong
 					candidates.Remove(M)
-					if(!candidates.len) break //No empty lists!!
-					M = pick(candidates) //Lets try this again
+					continue //Lets try this again
 				picked_candidates.Add(M)
 				candidates.Remove(M)
-			sleep(3) //Wait for all the above to be done
 			if(candidates.len)
 				for(var/datum/mind/I in candidates)
 					if(I.current)
@@ -215,17 +215,16 @@
 			for(var/datum/mind/M in picked_candidates)
 				members += M
 				i++
-				if(i > mob_max) break //Some logic. Hopefully this will never happen..
+				if(i > mob_max)
+					break //Some logic. Hopefully this will never happen..
 				create_member(M)
-				sleep(1)
 		candidates = null //Blank out the candidates list for next time.
 		candidates = list()
 		ticker.mode.waiting_for_candidates = FALSE
 
 /datum/emergency_call/proc/add_candidate(var/mob/M)
-	if(!M.client) return 0//Not connected
-	if(M.mind && M.mind in candidates) return 0//Already there.
-	if(istype(M,/mob/living/carbon/Xenomorph) && !M.stat) return 0//Something went wrong
+	if(!M.client || (M.mind && M.mind in candidates) || istype(M,/mob/living/carbon/Xenomorph))
+		return FALSE //Not connected or already there or something went wrong.
 	if(M.mind)
 		candidates += M.mind
 	else
@@ -233,7 +232,7 @@
 			M.mind = new /datum/mind(M.key, M.ckey)
 			M.mind_initialize()
 			candidates += M.mind
-	return 1
+	return TRUE
 
 /datum/emergency_call/proc/get_spawn_point(is_for_items)
 	var/list/spawn_list = list()
@@ -253,6 +252,12 @@
 		return null
 
 	return spawn_loc
+
+/datum/emergency_call/proc/disable_calls()
+	ticker.mode.distress_cooldown = TRUE
+
+/datum/emergency_call/proc/enable_calls()
+	ticker.mode.distress_cooldown = FALSE
 
 /datum/emergency_call/proc/create_member(datum/mind/M) //This is the parent, each type spawns its own variety.
 	return

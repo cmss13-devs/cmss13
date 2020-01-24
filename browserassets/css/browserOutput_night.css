@@ -50,10 +50,10 @@ img.icon {
 	font-size: 14px;
 	padding: 2px 4px;
 	line-height: 1;
-	color: black;
+	color: #b2cce5;
 	white-space: nowrap;
 	vertical-align: baseline;
-	background-color: white;
+	background-color: #444447;
 	border-radius: 4px;
     border: 1px solid grey;
 	margin: 0 0 0 7px;
@@ -226,7 +226,7 @@ a.popt {text-decoration: none;}
 .ooc					{					font-weight: bold;}
 .adminobserverooc		{color: #0099cc;	font-weight: bold;}
 .adminooc				{color: #b82e00;	font-weight: bold;}
-.xooc					{color: #6C0094;	font-weight: bold; font-size: 120%;}
+.xooc					{color: #ac04e9;	font-weight: bold; font-size: 120%;}
 .mooc					{color: #009900;	font-weight: bold; font-size: 120%;}
 
 .adminobserver			{color: #996600;	font-weight: bold;}
@@ -237,7 +237,7 @@ a.popt {text-decoration: none;}
 .name					{					font-weight: bold;}
 
 .say					{}
-.deadsay				{color: #5c00e6;}
+.deadsay				{color: #8b4dff;}
 .radio					{color: #b4b4b4;}
 .deptradio				{color: #993399;}
 .comradio				{color: #779cc2;}
@@ -309,9 +309,9 @@ h1.alert, h2.alert		{color: #c5c5c5;}
 .objectivesuccess		{color: #00ff00;	font-weight: bold; font-size: 110%;}
 .objectivefail			{color: #ff0000;	font-weight: bold; font-size: 110%;}
 
-.xeno					{color: #ac3bac;	font-style: italic;}
-.xenoleader				{color: #724b72;	font-style: italic;						font-size: 120%;}
-.xenoqueen				{color: #724b72; 	font-style: italic; font-weight: bold; font-size: 120%;}
+.xeno					{color: #c048c0;	font-style: italic;}
+.xenoleader				{color: #996e99;	font-style: italic;						font-size: 120%;}
+.xenoqueen				{color: #996e99; 	font-style: italic; font-weight: bold; font-size: 120%;}
 .newscaster				{color: #800000;}
 
 .role_header			{color: #e92d2d;	display: block; text-align: center; font-weight: bold; font-family: trebuchet-ms; font-size: 120%;}
@@ -328,9 +328,9 @@ h1.alert, h2.alert		{color: #c5c5c5;}
 
 .centerbold				{						display: block; text-align: center; font-weight: bold;}
 
-.mod					{color: #735638;	font-weight: bold;}
+.mod					{color: #917455;	font-weight: bold;}
 .modooc					{color: #184880;	font-weight: bold;}
-.adminmod				{color: #402A14;	font-weight: bold;}
+.adminmod				{color: #7c440c;	font-weight: bold;}
 .tajaran				{color: #803B56;}
 .tajaran_signlang		{color: #941C1C;}
 .skrell					{color: #00CED1;}

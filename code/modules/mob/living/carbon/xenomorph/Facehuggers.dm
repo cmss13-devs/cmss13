@@ -134,13 +134,11 @@
 	HasProximity(target)
 
 /obj/item/clothing/mask/facehugger/on_found(mob/finder)
-	if(stat == CONSCIOUS)
-		HasProximity(finder)
-		return 1
-	return
+	HasProximity(finder)
+	return 1
 
 /obj/item/clothing/mask/facehugger/HasProximity(atom/movable/AM)
-	if(CanHug(AM))
+	if(stat == CONSCIOUS && CanHug(AM))
 		Attach(AM)
 
 /obj/item/clothing/mask/facehugger/launch_towards(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
@@ -435,19 +433,22 @@
 
 /proc/CanHug(mob/living/carbon/M)
 
-	if(!istype(M) || isXeno(M) || isSynth(M) || iszombie(M) || isHellhound(M) || M.stat == DEAD || M.status_flags & XENO_HOST) return
+	if(!istype(M) || isXeno(M) || isSynth(M) || iszombie(M) || isHellhound(M) || M.stat == DEAD || M.status_flags & XENO_HOST)
+		return FALSE
 
 	//Already have a hugger? NOPE
 	//This is to prevent eggs from bursting all over if you walk around with one on your face,
 	//or an unremovable mask.
 	if(M.wear_mask)
 		var/obj/item/W = M.wear_mask
-		if(W.flags_item & NODROP) return
+		if(W.flags_item & NODROP)
+			return FALSE
 		if(istype(W, /obj/item/clothing/mask/facehugger))
 			var/obj/item/clothing/mask/facehugger/hugger = W
-			if(hugger.stat != DEAD) return
+			if(hugger.stat != DEAD)
+				return FALSE
 
-	return 1
+	return TRUE
 
 /obj/item/clothing/mask/facehugger/flamer_fire_act()
 	Die()

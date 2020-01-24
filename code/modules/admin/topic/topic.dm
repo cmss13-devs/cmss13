@@ -1217,7 +1217,7 @@
 			return
 
 		L.revive()
-		msg_admin_all("[usr.ckey] ahealed [L.name] ([L.ckey]) in [get_area(L)] ([L.x],[L.y],[L.z]). (NAME: [usr.name])", L.x, L.y, L.z)
+		message_staff(WRAP_STAFF_LOG(usr, "ahealed [L.name] ([L.ckey]) in [get_area(L)] ([L.x],[L.y],[L.z])."), L.x, L.y, L.z)
 
 	else if(href_list["makealien"])
 		if(!check_rights(R_SPAWN))	return

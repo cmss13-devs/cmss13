@@ -14,6 +14,7 @@
 #include "#preprocessor\define\_macros.dm"
 #include "#preprocessor\define\_math.dm"
 #include "#preprocessor\define\access.dm"
+#include "#preprocessor\define\admin.dm"
 #include "#preprocessor\define\atmospherics.dm"
 #include "#preprocessor\define\callback.dm"
 #include "#preprocessor\define\chemistry.dm"

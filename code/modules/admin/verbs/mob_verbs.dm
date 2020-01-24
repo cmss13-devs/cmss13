@@ -118,7 +118,7 @@
 
 	M.revive(FALSE) // Argument means that viruses will be cured (except zombie virus)
 
-	msg_admin_all("[usr.ckey] ahealed [M.name] ([M.ckey]) in [get_area(M)] ([M.x],[M.y],[M.z]). (NAME: [usr.name])", M.x, M.y, M.z)
+	message_staff(WRAP_STAFF_LOG(usr, "ahealed [M.name] ([M.ckey]) in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
 
 /client/proc/cmd_admin_subtle_message(mob/M as mob in mob_list)
 	set name = "Subtle Message"
@@ -139,7 +139,7 @@
 			if(usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))
 				to_chat(M, SPAN_ANNOUNCEMENT_HEADER_BLUE("You hear a voice in your head... [msg]"))
 
-	msg_admin_all("[usr.ckey] subtle messaged [M.name] ([M.ckey]), saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z]). (NAME: [usr.name])", M.x, M.y, M.z)
+	message_staff(WRAP_STAFF_LOG(usr, "subtle messaged [M.name] ([M.ckey]), saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
 
 /client/proc/cmd_admin_direct_narrate(var/mob/M)
 	set name = "Narrate"

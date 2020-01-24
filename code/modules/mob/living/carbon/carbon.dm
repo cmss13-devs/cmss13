@@ -14,8 +14,6 @@
 
 	. = ..()
 
-	species = null
-
 	if(handcuffed)
 		qdel(handcuffed)
 		handcuffed = null
@@ -49,7 +47,7 @@
 			if(istype(src, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = src
 				var/organ = H.get_limb("chest")
-				if (istype(organ, /datum/limb))
+				if(istype(organ, /datum/limb))
 					var/datum/limb/temp = organ
 					if(temp.take_damage(d, 0))
 						H.UpdateDamageIcon()
@@ -118,11 +116,11 @@
 
 
 /mob/living/carbon/revive()
-	if (handcuffed && !initial(handcuffed))
+	if(handcuffed && !initial(handcuffed))
 		drop_inv_item_on_ground(handcuffed)
 	handcuffed = initial(handcuffed)
 
-	if (legcuffed && !initial(legcuffed))
+	if(legcuffed && !initial(legcuffed))
 		drop_inv_item_on_ground(legcuffed)
 	legcuffed = initial(legcuffed)
 	recalculate_move_delay = TRUE
@@ -144,15 +142,16 @@
 	return
 
 /mob/living/carbon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & GODMODE) //godmode
+		return FALSE
 	shock_damage *= siemens_coeff
-	if (shock_damage<1)
-		return 0
+	if(shock_damage<1)
+		return FALSE
 
 	src.apply_damage(shock_damage, BURN, def_zone, used_weapon="Electrocution")
 
 	playsound(loc, "sparks", 25, 1)
-	if (shock_damage > 10)
+	if(shock_damage > 10)
 		src.visible_message(
 			SPAN_DANGER("[src] was shocked by the [source]!"), \
 			SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"), \
@@ -221,7 +220,7 @@
 	var/t_him = "it"
 	if(gender == MALE)
 		t_him = "him"
-	else if (gender == FEMALE)
+	else if(gender == FEMALE)
 		t_him = "her"
 	if(lying || sleeping)
 		if(client)
@@ -251,25 +250,25 @@
 //Throwing stuff
 
 /mob/living/carbon/toggle_normal_throw()
-	if (!stat && isturf(loc) && !is_mob_restrained())
+	if(!stat && isturf(loc) && !is_mob_restrained())
 		toggle_throw_mode(THROW_MODE_NORMAL)
 
 /mob/living/carbon/toggle_high_toss()
-	if (!stat && isturf(loc) && !is_mob_restrained())
+	if(!stat && isturf(loc) && !is_mob_restrained())
 		toggle_throw_mode(THROW_MODE_HIGH)
 
 /mob/living/carbon/proc/toggle_throw_mode(type)
-	if (type == THROW_MODE_OFF || throw_mode == type)
+	if(type == THROW_MODE_OFF || throw_mode == type)
 		throw_mode = THROW_MODE_OFF
-		if (hud_used && hud_used.throw_icon)
+		if(hud_used && hud_used.throw_icon)
 			hud_used.throw_icon.icon_state = "act_throw_off"
 		return
 	
 	throw_mode = type
-	if (!hud_used || !hud_used.throw_icon)
+	if(!hud_used || !hud_used.throw_icon)
 		return
 
-	if (type == THROW_MODE_NORMAL)
+	if(type == THROW_MODE_NORMAL)
 		hud_used.throw_icon.icon_state = "act_throw_normal"
 	else
 		hud_used.throw_icon.icon_state = "act_throw_high"
@@ -299,7 +298,7 @@
 
 	var/spin_throw = TRUE
 
-	if (istype(I, /obj/item/grab))
+	if(istype(I, /obj/item/grab))
 		var/obj/item/grab/G = I
 		if(ismob(G.grabbed_thing))
 			if(grab_level >= GRAB_NECK)
@@ -322,18 +321,18 @@
 		thrown_thing = I
 
 	//actually throw it!
-	if (thrown_thing)
+	if(thrown_thing)
 		visible_message(SPAN_WARNING("[src] has thrown [thrown_thing]."), null, null, 5)
 
-		if (!lastarea)
+		if(!lastarea)
 			lastarea = get_area(src.loc)
-		if ((istype(loc, /turf/open/space)) || !lastarea.has_gravity)
+		if((istype(loc, /turf/open/space)) || !lastarea.has_gravity)
 			inertia_dir = get_dir(target, src)
 			step(src, inertia_dir)
 
-		if (throw_type == THROW_MODE_HIGH)
+		if(throw_type == THROW_MODE_HIGH)
 			to_chat(src, SPAN_NOTICE("You prepare to perform a high toss."))
-			if (!do_after(src, SECONDS_1, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			if(!do_after(src, SECONDS_1, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				to_chat(src, SPAN_WARNING("You need to set up the high toss!"))
 				return
 			drop_inv_item_on_ground(I, TRUE)
@@ -430,9 +429,6 @@
 			if(AM == X)
 				stomach_contents -= AM
 				break
-
-/mob/living/carbon/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, var/list/slot_equipment_priority = src.species.slot_equipment_priority)
-	return ..(W,ignore_delay,slot_equipment_priority)
 
 /mob/living/carbon/proc/extinguish_mob(mob/living/carbon/C)
 	fire_stacks = max(fire_stacks - 1, 0)

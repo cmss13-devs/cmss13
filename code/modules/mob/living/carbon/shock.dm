@@ -3,10 +3,6 @@
 
 // proc to find out in how much pain the mob is at the moment
 /mob/living/carbon/proc/updateshock()
-	if(species && species.flags & NO_PAIN)
-		traumatic_shock = 0
-		return
-
 	recalculate_move_delay = TRUE
 
 	// Each damagetype has a unique multiplier that gets rolled into traumatic_shock
@@ -34,7 +30,7 @@
 			if((O.status & LIMB_DESTROYED) && !(O.status & LIMB_AMPUTATED))
 				traumatic_shock += 80
 			else if(O.status & LIMB_BROKEN || O.surgery_open_stage)
-				if (O.status & !LIMB_SPLINTED)
+				if(O.status & !LIMB_SPLINTED)
 					traumatic_shock += 30
 				else
 					traumatic_shock += 10

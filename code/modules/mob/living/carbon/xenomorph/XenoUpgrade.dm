@@ -1,11 +1,17 @@
 
+
 /mob/living/carbon/Xenomorph/proc/upgrade_xeno(newlevel)
-	upgrade = newlevel
-	upgrade_stored = 0
 	visible_message(SPAN_XENONOTICE("\The [src] begins to twist and contort."), \
 	SPAN_XENONOTICE("You begin to twist and contort."))
-	xeno_jitter(25)
-	sleep(25)
+	xeno_jitter(SECONDS_2)
+	add_timer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/upgrade_xeno_finish, newlevel), SECONDS_2)
+
+/mob/living/carbon/Xenomorph/proc/upgrade_xeno_finish(newlevel)
+	if(stat == DEAD || !caste || disposed)
+		return
+
+	upgrade = newlevel
+	upgrade_stored = 0
 
 	switch(upgrade)
 		//FIRST UPGRADE

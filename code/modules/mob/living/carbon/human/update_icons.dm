@@ -132,14 +132,11 @@ There are several things that need to be remembered:
 	if(lying)
 		var/matrix/M = matrix()
 		M.Turn(90)
-		M.Scale(size_multiplier)
 		M.Translate(1,-6)
-		src.apply_transform(M)
+		apply_transform(M)
 	else
 		var/matrix/M = matrix()
-		M.Scale(size_multiplier)
-		M.Translate(0, 16 * (size_multiplier - 1))
-		src.apply_transform(M)
+		apply_transform(M)
 
 
 var/global/list/damage_icon_parts = list()
@@ -375,7 +372,7 @@ var/global/list/damage_icon_parts = list()
 
 	if(f_style && !(wear_suit && (wear_suit.flags_inv_hide & HIDELOWHAIR)) && !(wear_mask && (wear_mask.flags_inv_hide & HIDELOWHAIR)))
 		var/datum/sprite_accessory/facial_hair_style = facial_hair_styles_list[f_style]
-		if(facial_hair_style && facial_hair_style.species_allowed && src.species.name in facial_hair_style.species_allowed)
+		if(facial_hair_style && facial_hair_style.species_allowed && species.name in facial_hair_style.species_allowed)
 			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
 			if(facial_hair_style.do_colouration)
 				facial_s.Blend(rgb(r_facial, g_facial, b_facial), ICON_ADD)
@@ -384,7 +381,7 @@ var/global/list/damage_icon_parts = list()
 
 	if(h_style && !(head && (head.flags_inv_hide & HIDETOPHAIR)))
 		var/datum/sprite_accessory/hair_style = hair_styles_list[h_style]
-		if(hair_style && src.species.name in hair_style.species_allowed)
+		if(hair_style && species.name in hair_style.species_allowed)
 			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 			if(hair_style.do_colouration)
 				hair_s.Blend(rgb(r_hair, g_hair, b_hair), ICON_ADD)

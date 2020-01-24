@@ -27,27 +27,27 @@
 		for(var/T in allowed_tools)
 			if(istype(tool, T))
 				return allowed_tools[T]
-		return 0
+		return FALSE
 
 //Checks if this step applies to the user mob at all
-/datum/surgery_step/proc/is_valid_target(mob/living/carbon/target)
+/datum/surgery_step/proc/is_valid_target(mob/living/carbon/human/target)
 	if(!hasorgans(target))
-		return 0
+		return FALSE
 	if(allowed_species)
 		for(var/species in allowed_species)
 			if(target.species.name == species)
-				return 1
+				return TRUE
 
 	if(disallowed_species)
 		for(var/species in disallowed_species)
 			if(target.species.name == species)
-				return 0
-	return 1
+				return FALSE
+	return TRUE
 
 
 //Checks whether this step can be applied with the given user and target
 /datum/surgery_step/proc/can_use(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/limb/affected, only_checks)
-	return 0
+	return FALSE
 
 //Does stuff to begin the step, usually just printing messages. Moved germs transfering and bloodying here too
 /datum/surgery_step/proc/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
@@ -69,20 +69,20 @@
 
 proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 	if(!istype(M))
-		return 0
+		return FALSE
 	if(user.a_intent == HARM_INTENT) //Check for Hippocratic Oath
-		return 0
+		return FALSE
 	if(user.action_busy) //already doing an action
-		return 1
+		return TRUE
 	if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_BEGINNER))
 		to_chat(user, SPAN_WARNING("You have no idea how to do surgery..."))
-		return 1
+		return TRUE
 	var/datum/limb/affected = M.get_limb(user.zone_selected)
 	if(!affected)
-		return 0
+		return FALSE
 	if(affected.in_surgery_op) //two surgeons can't work on same limb at same time
 		to_chat(user, SPAN_WARNING("You can't operate on the patient's [affected.display_name] while it's already being operated on."))
-		return 1
+		return TRUE
 
 	for(var/datum/surgery_step/S in surgery_steps)
 		//Check if tool is right or close enough, and the target mob valid, and if this step is possible
@@ -90,7 +90,7 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 			var/step_is_valid = S.can_use(user, M, user.zone_selected, tool, affected)
 			if(step_is_valid)
 				if(step_is_valid == SPECIAL_SURGERY_INVALID) //This is a failure that already has a message for failing.
-					return 1
+					return TRUE
 				affected.in_surgery_op = TRUE
 				S.begin_step(user, M, user.zone_selected, tool, affected) //Start on it
 				//We had proper tools! (or RNG smiled.) and user did not move or change hands.
@@ -143,8 +143,8 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 
 	if(user.a_intent == HELP_INTENT)
 		to_chat(user, SPAN_WARNING("You can't see any useful way to use \the [tool] on [M]."))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 //Comb Sort. This works apparently, so we're keeping it that way
 proc/sort_surgeries()

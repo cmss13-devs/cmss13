@@ -26,10 +26,10 @@
 		connected = null
 
 /obj/structure/morgue/update_icon()
-	if (morgue_open)
+	if(morgue_open)
 		icon_state = "[morgue_type]0"
 	else
-		if (contents.len > 1) //not counting the morgue tray
+		if(contents.len > 1) //not counting the morgue tray
 			icon_state = "[morgue_type]2"
 		else
 			icon_state = "[morgue_type]1"
@@ -89,16 +89,16 @@
 
 
 /obj/structure/morgue/attackby(obj/item/P, mob/user)
-	if (istype(P, /obj/item/weapon/zombie_claws))
+	if(istype(P, /obj/item/weapon/zombie_claws))
 		attack_hand()
 		return
-	else if (istype(P, /obj/item/tool/pen))
+	else if(istype(P, /obj/item/tool/pen))
 		var/t = copytext(stripped_input(user, "What would you like the label to be?", name, null),1,MAX_MESSAGE_LEN)
-		if (user.get_active_hand() != P)
+		if(user.get_active_hand() != P)
 			return
-		if ((!in_range(src, user) && src.loc != user))
+		if((!in_range(src, user) && src.loc != user))
 			return
-		if (t)
+		if(t)
 			name = "[initial(name)]- '[t]'"
 		else
 			name = initial(name)
@@ -137,14 +137,14 @@
 	linked_morgue = null
 
 /obj/structure/morgue_tray/MouseDrop_T(atom/movable/O, mob/user)
-	if (!istype(O) || O.anchored || !isturf(O.loc))
+	if(!istype(O) || O.anchored || !isturf(O.loc))
 		return
-	if (!ismob(O) && !istype(O, /obj/structure/closet/bodybag))
+	if(!ismob(O) && !istype(O, /obj/structure/closet/bodybag))
 		return
-	if (!istype(user) || user.is_mob_incapacitated())
+	if(!istype(user) || user.is_mob_incapacitated())
 		return
 	O.forceMove(loc)
-	if (user != O)
+	if(user != O)
 		for(var/mob/B in viewers(user, 3))
 			B.show_message(SPAN_DANGER("[user] stuffs [O] into [src]!"), 1)
 
@@ -166,7 +166,7 @@
 
 
 /obj/structure/morgue/crematorium/toggle_morgue(mob/user)
-	if (cremating)
+	if(cremating)
 		to_chat(user, SPAN_WARNING("It's locked."))
 		return
 	..()
@@ -199,13 +199,13 @@
 		update_icon()
 
 		for(var/mob/living/M in contents)
-			if (M.stat!=DEAD)
-				if (!iscarbon(M))
+			if(M.stat!=DEAD)
+				if(!ishuman(M))
 					M.emote("scream")
 				else
-					var/mob/living/carbon/C = M
-					if (!(C.species && (C.species.flags & NO_PAIN)))
-						C.emote("scream")
+					var/mob/living/carbon/human/H = M
+					if(!(H.species && (H.species.flags & NO_PAIN)))
+						H.emote("scream")
 
 			user.attack_log +="\[[time_stamp()]\] Cremated <b>[M]/[M.ckey]</b>"
 			msg_admin_attack("\[[time_stamp()]\] <b>[user]/[user.ckey]</b> cremated <b>[M]/[M.ckey]</b> in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
@@ -240,8 +240,8 @@
 
 /obj/structure/machinery/crema_switch/attack_hand(mob/user)
 	if(allowed(user))
-		for (var/obj/structure/morgue/crematorium/C in range(7,src))
-			if (C.id == id)
+		for(var/obj/structure/morgue/crematorium/C in range(7,src))
+			if(C.id == id)
 				if(!C.cremating)
 					C.cremate(user)
 	else

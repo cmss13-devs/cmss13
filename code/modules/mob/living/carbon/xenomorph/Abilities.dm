@@ -1119,11 +1119,13 @@
 		return
 	if(X.observed_xeno)
 		var/mob/living/carbon/Xenomorph/target = X.observed_xeno
-		if(!target.caste.can_be_queen_healed)
-			to_chat(X, SPAN_XENOWARNING("This caste cannot be healed!"))
+		if(target.stat == DEAD || target.disposed)
 			return
 		if(X.loc.z != target.loc.z)
 			to_chat(X, SPAN_XENOWARNING("They are too far away to do this."))
+			return
+		if(!target.caste.can_be_queen_healed)
+			to_chat(X, SPAN_XENOWARNING("This caste cannot be healed!"))
 			return
 		if(target.stat != DEAD)
 			if(target.health < target.maxHealth)

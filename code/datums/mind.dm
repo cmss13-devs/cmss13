@@ -150,8 +150,11 @@
 
 		// Item and body retrieval %, power, etc.
 		output += objectives_controller.get_objectives_progress()
+	var/window_name = "objective clues"
+	if(ismob(current))
+		window_name = "[current.real_name]'s objective clues"
 
-	show_browser(recipient, output, "[current.real_name]'s objectives clues", "objectivesmemory")
+	show_browser(recipient, output, window_name, "objectivesmemory")
 
 /datum/mind/proc/edit_memory()
 	if(!ticker || !ticker.mode)

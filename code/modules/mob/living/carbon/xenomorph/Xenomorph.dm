@@ -28,7 +28,6 @@
 
 /mob/living/carbon/Xenomorph
 	name = "Drone"
-	caste_name = "Drone"
 	desc = "What the hell is THAT?"
 	icon = 'icons/mob/xenos/1x1_Xenos.dmi'
 	icon_state = "Drone Walking"
@@ -163,7 +162,7 @@
 	var/selected_resin = RESIN_WALL //which resin structure to build when we secrete resin
 
 	//Naming variables
-	var/caste_name = ""
+	var/caste_name = "Drone"
 	var/nicknumber = 0 //The number after the name. Saved right here so it transfers between castes.
 
 	//This list of inherent verbs lets us take any proc basically anywhere and add them.

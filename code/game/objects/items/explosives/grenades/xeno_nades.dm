@@ -1,6 +1,6 @@
 // Praetorian Neurotoxin grenade.
 /obj/item/explosive/grenade/xeno_neuro_grenade
-	name = "\improper neurotoxin ball"
+	name = "neurotoxin ball"
 	desc = "A small, pulsating ball of gas."
 	icon_state = "neuro_nade"
 	det_time = 30
@@ -15,8 +15,8 @@
 		smoke.attach(src)
 
 /obj/item/explosive/grenade/xeno_neuro_grenade/prime()
-		playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
-		smoke.set_up(2, 0, usr.loc, null, 6, 10)
+		playsound(loc, 'sound/effects/smoke.ogg', 25, 1, 4)
+		smoke.set_up(2, 0, loc, null, 6, 10)
 		smoke.start()
 		smoke = null
 		qdel(src)

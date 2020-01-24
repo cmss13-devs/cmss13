@@ -55,58 +55,12 @@
 	playsound(src.loc, 'sound/effects/spray2.ogg', 25, 1, 3)
 
 /obj/item/reagent_container/spray/proc/Spray_at(atom/A, var/mob/user)
-	var/obj/effect/decal/chempuff/D = new/obj/effect/decal/chempuff(get_turf(src))
+	var/obj/effect/decal/chempuff/D = new /obj/effect/decal/chempuff(get_turf(src))
 	D.create_reagents(amount_per_transfer_from_this)
-	reagents.trans_to(D, amount_per_transfer_from_this, 1/spray_size)
+	reagents.trans_to(D, amount_per_transfer_from_this, 1 / spray_size)
 	D.color = mix_color_from_reagents(D.reagents.reagent_list)
-
-	var/turf/A_turf = get_turf(A)//BS12
-
-	var/spray_dist = spray_size
-	spawn(0)
-		for(var/i=0, i<spray_dist, i++)
-			step_towards(D,A)
-			D.reagents.reaction(get_turf(D))
-			for(var/atom/T in get_turf(D))
-				D.reagents.reaction(T)
-				
-				// Are we hitting someone?
-				if(ishuman(T))
-					// Check what they are hit with
-					var/reagent_list_text		// The list of reagents
-					var/counter = 0;			// Used for formatting
-					var/log_spraying = FALSE;	// If it worths logging
-					for(var/X in reagents.reagent_list)
-						var/datum/reagent/R = X
-						// Is it a chemical we should log?
-						if(R.spray_warning)
-							if(counter == 0)
-								reagent_list_text += "[R.name]"
-							else
-								reagent_list_text += ", [R.name]"
-
-					// One or more bad reagents means we log it
-					if(!counter)
-						log_spraying = TRUE;
-
-					// Did we have a log-worthy spray? Then we log it
-					if(log_spraying)
-						var/mob/living/carbon/human/M = T
-						M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been sprayed with [src.name] (REAGENT: [reagent_list_text]) by [user.name] ([user.ckey])</font>")
-						user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used \a [src.name] (REAGENT: [reagent_list_text]) to spray [M.name] ([M.ckey])</font>")
-						msg_admin_attack("[user.name] ([user.ckey]) used \a [src.name] to spray [M.name] ([M.ckey]) with [src.name] (REAGENT: [reagent_list_text]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
-
-				if(istype(T,/obj/structure/machinery/portable_atmospherics/hydroponics) || istype(T, /obj/item/reagent_container/glass))
-					reagents.trans_to(T)
-
-				// When spraying against the wall, also react with the wall, but
-				// not its contents. BS12
-				if(get_dist(D, A_turf) == 1 && A_turf.density)
-					D.reagents.reaction(A_turf)
-				sleep(2)
-			sleep(3)
-		qdel(D)
-
+	D.source_user = user
+	D.move_towards(A, 3, spray_size)
 
 /obj/item/reagent_container/spray/attack_self(var/mob/user)
 	if(!possible_transfer_amounts)

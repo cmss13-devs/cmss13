@@ -141,7 +141,6 @@
 	temp_chem_holder = new()
 	temp_chem_holder.create_reagents(10)
 	create_reagents(200)
-	connect()
 	update_icon()
 	start_processing()
 
@@ -217,10 +216,6 @@
 	// First, handle an open system or an unconnected closed system.
 
 	var/turf/T = loc
-
-	// If we're attached to a pipenet, then we should let the pipenet know we might have modified some gasses
-	if (closed_system && connected_port)
-		update_connected_network()
 
 	// Handle light requirements.
 	var/area/A = T.loc
@@ -647,7 +642,7 @@
 	else if(istype(O, /obj/item/tool/wrench))
 
 		//If there's a connector here, the portable_atmospherics setup can handle it.
-		if(locate(/obj/structure/machinery/atmospherics/portables_connector/) in loc)
+		if(locate(/obj/structure/pipes/portables_connector) in loc)
 			return ..()
 
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)

@@ -16,7 +16,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ad" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ae" = (
@@ -81,14 +81,13 @@
 "aq" = (
 /obj/structure/table,
 /obj/effect/spawner/random/toolbox,
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4 
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ar" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -96,7 +95,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "as" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -108,7 +107,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "au" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -117,13 +116,13 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aw" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ax" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -131,9 +130,8 @@
 /area/bigredv2/outside/cargo)
 "ay" = (
 /obj/structure/closet/emcloset,
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8 
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -159,7 +157,7 @@
 	},
 /area/bigredv2/outside/cargo)
 "aD" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 4;
 	name = "\improper Cargo Offices"
@@ -186,7 +184,7 @@
 	},
 /area/bigredv2/outside/cargo)
 "aG" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
 /obj/structure/cargo_container{
@@ -199,7 +197,7 @@
 	},
 /area/bigredv2/outside/cargo)
 "aH" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -213,14 +211,14 @@
 	},
 /area/bigredv2/outside/cargo)
 "aI" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aJ" = (
 /obj/structure/largecrate,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -230,7 +228,7 @@
 	},
 /area/bigredv2/outside/cargo)
 "aK" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -241,7 +239,7 @@
 	},
 /area/bigredv2/outside/cargo)
 "aL" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor{
@@ -327,13 +325,13 @@
 /area/bigredv2/outside/cargo)
 "aV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aW" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -381,7 +379,7 @@
 /area/bigredv2/outside/cargo)
 "bb" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bc" = (
@@ -470,11 +468,11 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bp" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bq" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -483,7 +481,7 @@
 /area/bigredv2/outside/cargo)
 "bs" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -491,14 +489,13 @@
 /area/bigredv2/outside/cargo)
 "bt" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8 
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bv" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/floor,
@@ -561,7 +558,7 @@
 /area/bigredv2/outside/cargo)
 "bI" = (
 /obj/item/reagent_container/spray/cleaner,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bJ" = (
@@ -578,7 +575,7 @@
 	},
 /area/bigredv2/outside/cargo)
 "bM" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/largecrate/random/barrel,
 /turf/open/floor{
 	icon_state = "bot";
@@ -611,7 +608,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bR" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Cargo Bay Quartermaster";
@@ -620,13 +617,13 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bS" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bU" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -636,7 +633,7 @@
 	},
 /area/bigredv2/outside/cargo)
 "bV" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -650,7 +647,7 @@
 	},
 /area/bigredv2/outside/cargo)
 "bW" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -665,7 +662,7 @@
 	},
 /area/bigredv2/outside/cargo)
 "bX" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -680,7 +677,7 @@
 	},
 /area/bigredv2/outside/cargo)
 "bY" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /obj/structure/cargo_container{
@@ -743,9 +740,8 @@
 "ci" = (
 /obj/structure/table,
 /obj/item/device/radio,
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1 
 	},
 /obj/item/document_objective/paper,
 /turf/open/floor,
@@ -769,7 +765,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "cm" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	health = 25000
@@ -780,7 +776,7 @@
 /obj/structure/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "co" = (
@@ -845,7 +841,7 @@
 	},
 /area/bigredv2/outside/engineering)
 "cx" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "dark"
 	},

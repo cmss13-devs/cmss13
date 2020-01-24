@@ -6,7 +6,7 @@
 	flags_pass = PASS_FLAGS_CRAWLER
 	var/hibernate = 0 //Disables SCP until toggled back to 0
 	var/scare_played = 0 //Did we rape everyone's ears yet ?
-	var/obj/structure/machinery/atmospherics/unary/vent_pump/entry_vent //Graciously stolen from spider code
+	var/obj/structure/pipes/vents/pump/entry_vent //Graciously stolen from spider code
 	var/scare_sound = list('sound/scp/scare1.ogg','sound/scp/scare2.ogg','sound/scp/scare3.ogg','sound/scp/scare4.ogg')	//Boo
 	var/list/blink_list = list() //List of living things that blinked in our last check cycle
 

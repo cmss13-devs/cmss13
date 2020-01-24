@@ -130,19 +130,15 @@ obj/item/circuitboard/machine/rdserver
 	..()
 	to_chat(user, "The jumper is connecting the [dir2text(machine_dir)] pins.")
 
-/obj/item/circuitboard/machine/unary_atmos/construct(var/obj/structure/machinery/atmospherics/unary/U)
+/obj/item/circuitboard/machine/unary_atmos/construct(var/obj/structure/pipes/unary/U)
 	//TODO: Move this stuff into the relevant constructor when pipe/construction.dm is cleaned up.
 	U.dir = src.machine_dir
-	U.initialize_directions = src.init_dirs
+	U.valid_directions = list(init_dirs)
 	U.initialize()
-	U.build_network()
-	if (U.node)
-		U.node.initialize()
-		U.node.build_network()
 
 /obj/item/circuitboard/machine/unary_atmos/heater
 	name = "Circuit Board (Gas Heating System)"
-	build_path = "/obj/structure/machinery/atmospherics/unary/heater"
+	build_path = "/obj/structure/pipes/unary/heater"
 	
 	frame_desc = "Requires 5 Pieces of Cable, 1 Matter Bin, and 2 Capacitors."
 	req_components = list(
@@ -152,7 +148,7 @@ obj/item/circuitboard/machine/rdserver
 
 /obj/item/circuitboard/machine/unary_atmos/cooler
 	name = "Circuit Board (Gas Cooling System)"
-	build_path = "/obj/structure/machinery/atmospherics/unary/freezer"
+	build_path = "/obj/structure/pipes/unary/freezer"
 	
 	frame_desc = "Requires 2 Pieces of Cable, 1 Matter Bin, 1 Micro Manipulator, and 2 Capacitors."
 	req_components = list(

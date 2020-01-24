@@ -17,9 +17,9 @@
 	if(!proximity)
 		return
 
-	if(!istype(A,/obj/structure/machinery/atmospherics/pipe) || istype(A,/obj/structure/machinery/atmospherics/pipe/tank) || istype(A,/obj/structure/machinery/atmospherics/pipe/vent) || istype(A,/obj/structure/machinery/atmospherics/pipe/simple/heat_exchanging) || istype(A,/obj/structure/machinery/atmospherics/pipe/simple/insulated) || !in_range(user, A))
+	if(!istype(A,/obj/structure/pipes/standard/) || istype(A,/obj/structure/pipes/standard/tank) || istype(A,/obj/structure/pipes/standard/simple/insulated) || !in_range(user, A))
 		return
-	var/obj/structure/machinery/atmospherics/pipe/P = A
+	var/obj/structure/pipes/standard/P = A
 
 	var/turf/T = P.loc
 	if (P.level < 2 && T.level==1 && isturf(T) && T.intact_tile)

@@ -58,7 +58,7 @@ Buildable meters
 	w_class = SIZE_MEDIUM
 	level = 2
 
-/obj/item/pipe/New(var/loc, var/pipe_type as num, var/dir as num, var/obj/structure/machinery/atmospherics/make_from = null)
+/obj/item/pipe/New(var/loc, var/pipe_type as num, var/dir as num, var/obj/structure/pipes/make_from = null)
 	..()
 	if(pipe_type == null)
 		pipe_type = 0
@@ -67,86 +67,82 @@ Buildable meters
 		src.pipename = make_from.name
 		color = make_from.pipe_color
 		var/is_bent
-		if  (make_from.initialize_directions in list(NORTH|SOUTH, WEST|EAST))
+		if  (make_from.valid_directions in list(NORTH|SOUTH, WEST|EAST))
 			is_bent = 0
 		else
 			is_bent = 1
-		if     (istype(make_from, /obj/structure/machinery/atmospherics/pipe/simple/heat_exchanging/junction))
-			src.pipe_type = PIPE_JUNCTION
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/pipe/simple/heat_exchanging))
-			src.pipe_type = PIPE_HE_STRAIGHT + is_bent
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/pipe/simple/insulated))
+		if(istype(make_from, /obj/structure/pipes/standard/simple/insulated))
 			src.pipe_type = PIPE_INSULATED_STRAIGHT + is_bent
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/pipe/simple/visible/supply) || istype(make_from, /obj/structure/machinery/atmospherics/pipe/simple/hidden/supply))
+		else if(istype(make_from, /obj/structure/pipes/standard/simple/visible/supply) || istype(make_from, /obj/structure/pipes/standard/simple/hidden/supply))
 			src.pipe_type = PIPE_SUPPLY_STRAIGHT + is_bent
 			connect_types = list(2)
 			src.color = PIPE_COLOR_BLUE
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/pipe/simple/visible/scrubbers) || istype(make_from, /obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers))
+		else if(istype(make_from, /obj/structure/pipes/standard/simple/visible/scrubbers) || istype(make_from, /obj/structure/pipes/standard/simple/hidden/scrubbers))
 			src.pipe_type = PIPE_SCRUBBERS_STRAIGHT + is_bent
 			connect_types = list(3)
 			src.color = PIPE_COLOR_RED
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/pipe/simple/visible/universal) || istype(make_from, /obj/structure/machinery/atmospherics/pipe/simple/hidden/universal))
+		else if(istype(make_from, /obj/structure/pipes/standard/simple/visible/universal) || istype(make_from, /obj/structure/pipes/standard/simple/hidden/universal))
 			src.pipe_type = PIPE_UNIVERSAL
 			connect_types = list(1,2,3)
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/pipe/simple))
+		else if(istype(make_from, /obj/structure/pipes/standard/simple))
 			src.pipe_type = PIPE_SIMPLE_STRAIGHT + is_bent
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/portables_connector))
+		else if(istype(make_from, /obj/structure/pipes/portables_connector))
 			src.pipe_type = PIPE_CONNECTOR
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/pipe/manifold/visible/supply) || istype(make_from, /obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply))
+		else if(istype(make_from, /obj/structure/pipes/standard/manifold/visible/supply) || istype(make_from, /obj/structure/pipes/standard/manifold/hidden/supply))
 			src.pipe_type = PIPE_SUPPLY_MANIFOLD
 			connect_types = list(2)
 			src.color = PIPE_COLOR_BLUE
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/pipe/manifold/visible/scrubbers) || istype(make_from, /obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers))
+		else if(istype(make_from, /obj/structure/pipes/standard/manifold/visible/scrubbers) || istype(make_from, /obj/structure/pipes/standard/manifold/hidden/scrubbers))
 			src.pipe_type = PIPE_SCRUBBERS_MANIFOLD
 			connect_types = list(3)
 			src.color = PIPE_COLOR_RED
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/pipe/manifold))
+		else if(istype(make_from, /obj/structure/pipes/standard/manifold))
 			src.pipe_type = PIPE_MANIFOLD
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/unary/vent_pump))
+		else if(istype(make_from, /obj/structure/pipes/vents/pump))
 			src.pipe_type = PIPE_UVENT
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/valve))
+		else if(istype(make_from, /obj/structure/pipes/valve))
 			src.pipe_type = PIPE_MVALVE
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/binary/pump/high_power))
+		else if(istype(make_from, /obj/structure/pipes/binary/pump/high_power))
 			src.pipe_type = PIPE_VOLUME_PUMP
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/binary/pump))
+		else if(istype(make_from, /obj/structure/pipes/binary/pump))
 			src.pipe_type = PIPE_PUMP
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/trinary/filter/m_filter))
+		else if(istype(make_from, /obj/structure/pipes/trinary/filter/m_filter))
 			src.pipe_type = PIPE_GAS_FILTER_M
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/trinary/mixer/t_mixer))
+		else if(istype(make_from, /obj/structure/pipes/trinary/mixer/t_mixer))
 			src.pipe_type = PIPE_GAS_MIXER_T
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/trinary/mixer/m_mixer))
+		else if(istype(make_from, /obj/structure/pipes/trinary/mixer/m_mixer))
 			src.pipe_type = PIPE_GAS_MIXER_M
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/trinary/filter))
+		else if(istype(make_from, /obj/structure/pipes/trinary/filter))
 			src.pipe_type = PIPE_GAS_FILTER
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/trinary/mixer))
+		else if(istype(make_from, /obj/structure/pipes/trinary/mixer))
 			src.pipe_type = PIPE_GAS_MIXER
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/unary/vent_scrubber))
+		else if(istype(make_from, /obj/structure/pipes/vents/scrubber))
 			src.pipe_type = PIPE_SCRUBBER
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/binary/passive_gate))
+		else if(istype(make_from, /obj/structure/pipes/binary/passive_gate))
 			src.pipe_type = PIPE_PASSIVE_GATE
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/unary/heat_exchanger))
+		else if(istype(make_from, /obj/structure/pipes/unary/heat_exchanger))
 			src.pipe_type = PIPE_HEAT_EXCHANGE
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/tvalve))
+		else if(istype(make_from, /obj/structure/pipes/tvalve))
 			src.pipe_type = PIPE_MTVALVE
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/pipe/manifold4w/visible/supply) || istype(make_from, /obj/structure/machinery/atmospherics/pipe/manifold4w/hidden/supply))
+		else if(istype(make_from, /obj/structure/pipes/standard/manifold/fourway/visible/supply) || istype(make_from, /obj/structure/pipes/standard/manifold/fourway/hidden/supply))
 			src.pipe_type = PIPE_SUPPLY_MANIFOLD4W
 			connect_types = list(2)
 			src.color = PIPE_COLOR_BLUE
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/pipe/manifold4w/visible/scrubbers) || istype(make_from, /obj/structure/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers))
+		else if(istype(make_from, /obj/structure/pipes/standard/manifold/fourway/visible/scrubbers) || istype(make_from, /obj/structure/pipes/standard/manifold/fourway/hidden/scrubbers))
 			src.pipe_type = PIPE_SCRUBBERS_MANIFOLD4W
 			connect_types = list(3)
 			src.color = PIPE_COLOR_RED
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/pipe/manifold4w))
+		else if(istype(make_from, /obj/structure/pipes/standard/manifold/fourway))
 			src.pipe_type = PIPE_MANIFOLD4W
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/pipe/cap/visible/supply) || istype(make_from, /obj/structure/machinery/atmospherics/pipe/cap/hidden/supply))
+		else if(istype(make_from, /obj/structure/pipes/standard/cap/visible/supply) || istype(make_from, /obj/structure/pipes/standard/cap/hidden/supply))
 			src.pipe_type = PIPE_SUPPLY_CAP
 			connect_types = list(2)
 			src.color = PIPE_COLOR_BLUE
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/pipe/cap/visible/scrubbers) || istype(make_from, /obj/structure/machinery/atmospherics/pipe/cap/hidden/scrubbers))
+		else if(istype(make_from, /obj/structure/pipes/standard/cap/visible/scrubbers) || istype(make_from, /obj/structure/pipes/standard/cap/hidden/scrubbers))
 			src.pipe_type = PIPE_SCRUBBERS_CAP
 			connect_types = list(3)
 			src.color = PIPE_COLOR_RED
-		else if(istype(make_from, /obj/structure/machinery/atmospherics/pipe/cap))
+		else if(istype(make_from, /obj/structure/pipes/standard/cap))
 			src.pipe_type = PIPE_CAP
 
 	else
@@ -405,558 +401,221 @@ Buildable meters
 		dir = 2
 	var/pipe_dir = get_pipe_dir()
 
-	for(var/obj/structure/machinery/atmospherics/M in src.loc)
-		if((M.initialize_directions & pipe_dir) && M.check_connect_types_construction(M,src))	// matches at least one direction on either type of pipe & same connection type
+	for(var/obj/structure/pipes/M in src.loc)
+		if((M.valid_directions & pipe_dir))	// matches at least one direction on either type of pipe & same connection type
 			to_chat(user, SPAN_WARNING("There is already a pipe of the same type at this location."))
 			return 1
 	// no conflicts found
 
-	var/pipefailtext = SPAN_WARNING("There's nothing to connect this pipe section to!") //(with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)"
-
 	//TODO: Move all of this stuff into the various pipe constructors.
 	switch(pipe_type)
 		if(PIPE_SIMPLE_STRAIGHT, PIPE_SIMPLE_BENT)
-			var/obj/structure/machinery/atmospherics/pipe/simple/P = new( src.loc )
+			var/obj/structure/pipes/standard/simple/P = new( src.loc )
 			P.pipe_color = color
 			P.dir = src.dir
-			P.initialize_directions = pipe_dir
+			P.valid_directions = list(pipe_dir)
 			P.level = pipelevel
-			P.initialize()
-			if(!P || P.disposed)
-				to_chat(usr, pipefailtext)
-				return 1
-			P.build_network()
-			if (P.node1)
-				P.node1.initialize()
-				P.node1.build_network()
-			if (P.node2)
-				P.node2.initialize()
-				P.node2.build_network()
 
 		if(PIPE_SUPPLY_STRAIGHT, PIPE_SUPPLY_BENT)
-			var/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply/P = new( src.loc )
+			var/obj/structure/pipes/standard/simple/hidden/supply/P = new( src.loc )
 			P.color = color
 			P.dir = src.dir
-			P.initialize_directions = pipe_dir
+			P.valid_directions = list(pipe_dir)
 			P.level = pipelevel
-			P.initialize()
-			if(!P || P.disposed)
-				to_chat(usr, pipefailtext)
-				return 1
-			P.build_network()
-			if (P.node1)
-				P.node1.initialize()
-				P.node1.build_network()
-			if (P.node2)
-				P.node2.initialize()
-				P.node2.build_network()
 
 		if(PIPE_SCRUBBERS_STRAIGHT, PIPE_SCRUBBERS_BENT)
-			var/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers/P = new( src.loc )
+			var/obj/structure/pipes/standard/simple/hidden/scrubbers/P = new( src.loc )
 			P.color = color
 			P.dir = src.dir
-			P.initialize_directions = pipe_dir
+			P.valid_directions = list(pipe_dir)
 			P.level = pipelevel
-			P.initialize()
-			if(!P || P.disposed)
-				to_chat(usr, pipefailtext)
-				return 1
-			P.build_network()
-			if (P.node1)
-				P.node1.initialize()
-				P.node1.build_network()
-			if (P.node2)
-				P.node2.initialize()
-				P.node2.build_network()
 
 		if(PIPE_UNIVERSAL)
-			var/obj/structure/machinery/atmospherics/pipe/simple/hidden/universal/P = new( src.loc )
+			var/obj/structure/pipes/standard/simple/hidden/universal/P = new( src.loc )
 			P.color = color
 			P.dir = src.dir
-			P.initialize_directions = pipe_dir
+			P.valid_directions = list(pipe_dir)
 			P.level = pipelevel
-			P.initialize()
-			if(!P || P.disposed)
-				to_chat(usr, pipefailtext)
-				return 1
-			P.build_network()
-			if (P.node1)
-				P.node1.initialize()
-				P.node1.build_network()
-			if (P.node2)
-				P.node2.initialize()
-				P.node2.build_network()
-
-		if(PIPE_HE_STRAIGHT, PIPE_HE_BENT)
-			var/obj/structure/machinery/atmospherics/pipe/simple/heat_exchanging/P = new ( src.loc )
-			P.dir = src.dir
-			P.initialize_directions = pipe_dir //this var it's used to know if the pipe is bent or not
-			P.initialize_directions_he = pipe_dir
-			P.initialize()
-			if(!P || P.disposed)
-				to_chat(usr, pipefailtext)
-				return 1
-			P.build_network()
-			if (P.node1)
-				P.node1.initialize()
-				P.node1.build_network()
-			if (P.node2)
-				P.node2.initialize()
-				P.node2.build_network()
 
 		if(PIPE_CONNECTOR)		// connector
-			var/obj/structure/machinery/atmospherics/portables_connector/C = new( src.loc )
+			var/obj/structure/pipes/portables_connector/C = new( src.loc )
 			C.dir = dir
-			C.initialize_directions = pipe_dir
+			C.valid_directions = list(pipe_dir)
 			if (pipename)
 				C.name = pipename
 			C.level = pipelevel
-			C.initialize()
-			C.build_network()
-			if (C.node)
-				C.node.initialize()
-				C.node.build_network()
-
 
 		if(PIPE_MANIFOLD)		//manifold
-			var/obj/structure/machinery/atmospherics/pipe/manifold/M = new( src.loc )
+			var/obj/structure/pipes/standard/manifold/M = new( src.loc )
 			M.pipe_color = color
 			M.dir = dir
-			M.initialize_directions = pipe_dir
-
+			M.valid_directions = list(pipe_dir)
 			M.level = pipelevel
-			M.initialize()
-			if (!M)
-				to_chat(usr, pipefailtext)
-				return 1
-			M.build_network()
-			if (M.node1)
-				M.node1.initialize()
-				M.node1.build_network()
-			if (M.node2)
-				M.node2.initialize()
-				M.node2.build_network()
-			if (M.node3)
-				M.node3.initialize()
-				M.node3.build_network()
 
 		if(PIPE_SUPPLY_MANIFOLD)		//manifold
-			var/obj/structure/machinery/atmospherics/pipe/manifold/hidden/supply/M = new( src.loc )
+			var/obj/structure/pipes/standard/manifold/hidden/supply/M = new( src.loc )
 			M.color = color
 			M.dir = dir
-			M.initialize_directions = pipe_dir
-
+			M.valid_directions = list(pipe_dir)
 			M.level = pipelevel
-			M.initialize()
-			if (!M)
-				to_chat(usr, "There's nothing to connect this manifold to! (with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)")
-				return 1
-			M.build_network()
-			if (M.node1)
-				M.node1.initialize()
-				M.node1.build_network()
-			if (M.node2)
-				M.node2.initialize()
-				M.node2.build_network()
-			if (M.node3)
-				M.node3.initialize()
-				M.node3.build_network()
 
 		if(PIPE_SCRUBBERS_MANIFOLD)		//manifold
-			var/obj/structure/machinery/atmospherics/pipe/manifold/hidden/scrubbers/M = new( src.loc )
+			var/obj/structure/pipes/standard/manifold/hidden/scrubbers/M = new( src.loc )
 			M.color = color
 			M.dir = dir
-			M.initialize_directions = pipe_dir
-
+			M.valid_directions = list(pipe_dir)
 			M.level = pipelevel
-			M.initialize()
-			if (!M)
-				to_chat(usr, "There's nothing to connect this manifold to! (with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)")
-				return 1
-			M.build_network()
-			if (M.node1)
-				M.node1.initialize()
-				M.node1.build_network()
-			if (M.node2)
-				M.node2.initialize()
-				M.node2.build_network()
-			if (M.node3)
-				M.node3.initialize()
-				M.node3.build_network()
 
 		if(PIPE_MANIFOLD4W)		//4-way manifold
-			var/obj/structure/machinery/atmospherics/pipe/manifold4w/M = new( src.loc )
+			var/obj/structure/pipes/standard/manifold/fourway/M = new( src.loc )
 			M.pipe_color = color
 			M.dir = dir
-			M.initialize_directions = pipe_dir
-
+			M.valid_directions = list(pipe_dir)
 			M.level = pipelevel
-			M.initialize()
-			if (!M)
-				to_chat(usr, pipefailtext)
-				return 1
-			M.build_network()
-			if (M.node1)
-				M.node1.initialize()
-				M.node1.build_network()
-			if (M.node2)
-				M.node2.initialize()
-				M.node2.build_network()
-			if (M.node3)
-				M.node3.initialize()
-				M.node3.build_network()
-			if (M.node4)
-				M.node4.initialize()
-				M.node4.build_network()
 
 		if(PIPE_SUPPLY_MANIFOLD4W)		//4-way manifold
-			var/obj/structure/machinery/atmospherics/pipe/manifold4w/hidden/supply/M = new( src.loc )
+			var/obj/structure/pipes/standard/manifold/fourway/hidden/supply/M = new( src.loc )
 			M.color = color
 			M.dir = dir
-			M.initialize_directions = pipe_dir
-			M.connect_types = src.connect_types
-
+			M.valid_directions = list(pipe_dir)
 			M.level = pipelevel
-			M.initialize()
-			if (!M)
-				to_chat(usr, "There's nothing to connect this manifold to! (with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)")
-				return 1
-			M.build_network()
-			if (M.node1)
-				M.node1.initialize()
-				M.node1.build_network()
-			if (M.node2)
-				M.node2.initialize()
-				M.node2.build_network()
-			if (M.node3)
-				M.node3.initialize()
-				M.node3.build_network()
-			if (M.node4)
-				M.node4.initialize()
-				M.node4.build_network()
 
 		if(PIPE_SCRUBBERS_MANIFOLD4W)		//4-way manifold
-			var/obj/structure/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers/M = new( src.loc )
+			var/obj/structure/pipes/standard/manifold/fourway/hidden/scrubbers/M = new( src.loc )
 			M.color = color
 			M.dir = dir
-			M.initialize_directions = pipe_dir
-			M.connect_types = src.connect_types
-
+			M.valid_directions = list(pipe_dir)
 			M.level = pipelevel
-			M.initialize()
-			if (!M)
-				to_chat(usr, "There's nothing to connect this manifold to! (with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)")
-				return 1
-			M.build_network()
-			if (M.node1)
-				M.node1.initialize()
-				M.node1.build_network()
-			if (M.node2)
-				M.node2.initialize()
-				M.node2.build_network()
-			if (M.node3)
-				M.node3.initialize()
-				M.node3.build_network()
-			if (M.node4)
-				M.node4.initialize()
-				M.node4.build_network()
-
-		if(PIPE_JUNCTION)
-			var/obj/structure/machinery/atmospherics/pipe/simple/heat_exchanging/junction/P = new ( src.loc )
-			P.dir = src.dir
-			P.initialize_directions = src.get_pdir()
-			P.initialize_directions_he = src.get_hdir()
-
-			P.initialize()
-			if(!P || P.disposed)
-				to_chat(usr, pipefailtext) //"There's nothing to connect this pipe to! (with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)"
-				return 1
-			P.build_network()
-			if (P.node1)
-				P.node1.initialize()
-				P.node1.build_network()
-			if (P.node2)
-				P.node2.initialize()
-				P.node2.build_network()
 
 		if(PIPE_UVENT)		//unary vent
-			var/obj/structure/machinery/atmospherics/unary/vent_pump/V = new( src.loc )
+			var/obj/structure/pipes/vents/pump/V = new( src.loc )
 			V.dir = dir
-			V.initialize_directions = pipe_dir
-			if (pipename)
+			V.valid_directions = list(pipe_dir)
+			if(pipename)
 				V.name = pipename
-
 			V.level = pipelevel
-			V.initialize()
-			V.build_network()
-			if (V.node)
-				V.node.initialize()
-				V.node.build_network()
-
 
 		if(PIPE_MVALVE)		//manual valve
-			var/obj/structure/machinery/atmospherics/valve/V = new( src.loc)
+			var/obj/structure/pipes/valve/V = new( src.loc)
 			V.dir = dir
-			V.initialize_directions = pipe_dir
+			V.valid_directions = list(pipe_dir)
 			if (pipename)
 				V.name = pipename
-
 			V.level = pipelevel
-			V.initialize()
-			V.build_network()
-			if (V.node1)
-				V.node1.initialize()
-				V.node1.build_network()
-			if (V.node2)
-				V.node2.initialize()
-				V.node2.build_network()
 
 		if(PIPE_PUMP)		//gas pump
-			var/obj/structure/machinery/atmospherics/binary/pump/P = new(src.loc)
+			var/obj/structure/pipes/binary/pump/P = new(src.loc)
 			P.dir = dir
-			P.initialize_directions = pipe_dir
+			P.valid_directions = list(pipe_dir)
 			if (pipename)
 				P.name = pipename
-
 			P.level = pipelevel
-			P.initialize()
-			P.build_network()
-			if (P.node1)
-				P.node1.initialize()
-				P.node1.build_network()
-			if (P.node2)
-				P.node2.initialize()
-				P.node2.build_network()
 
 		if(PIPE_GAS_FILTER)		//gas filter
-			var/obj/structure/machinery/atmospherics/trinary/filter/P = new(src.loc)
+			var/obj/structure/pipes/trinary/filter/P = new(src.loc)
 			P.dir = dir
-			P.initialize_directions = pipe_dir
+			P.valid_directions = list(pipe_dir)
 			if (pipename)
 				P.name = pipename
-
 			P.level = pipelevel
-			P.initialize()
-			P.build_network()
-			if (P.node1)
-				P.node1.initialize()
-				P.node1.build_network()
-			if (P.node2)
-				P.node2.initialize()
-				P.node2.build_network()
-			if (P.node3)
-				P.node3.initialize()
-				P.node3.build_network()
 
 		if(PIPE_GAS_MIXER)		//gas mixer
-			var/obj/structure/machinery/atmospherics/trinary/mixer/P = new(src.loc)
+			var/obj/structure/pipes/trinary/mixer/P = new(src.loc)
 			P.dir = dir
-			P.initialize_directions = pipe_dir
+			P.valid_directions = list(pipe_dir)
 			if (pipename)
 				P.name = pipename
-
 			P.level = pipelevel
-			P.initialize()
-			P.build_network()
-			if (P.node1)
-				P.node1.initialize()
-				P.node1.build_network()
-			if (P.node2)
-				P.node2.initialize()
-				P.node2.build_network()
-			if (P.node3)
-				P.node3.initialize()
-				P.node3.build_network()
 
 		if(PIPE_GAS_FILTER_M)		//gas filter mirrored
-			var/obj/structure/machinery/atmospherics/trinary/filter/m_filter/P = new(src.loc)
+			var/obj/structure/pipes/trinary/filter/m_filter/P = new(src.loc)
 			P.dir = dir
-			P.initialize_directions = pipe_dir
+			P.valid_directions = list(pipe_dir)
 			if (pipename)
 				P.name = pipename
-
 			P.level = pipelevel
-			P.initialize()
-			P.build_network()
-			if (P.node1)
-				P.node1.initialize()
-				P.node1.build_network()
-			if (P.node2)
-				P.node2.initialize()
-				P.node2.build_network()
-			if (P.node3)
-				P.node3.initialize()
-				P.node3.build_network()
 
 		if(PIPE_GAS_MIXER_T)		//gas mixer-t
-			var/obj/structure/machinery/atmospherics/trinary/mixer/t_mixer/P = new(src.loc)
+			var/obj/structure/pipes/trinary/mixer/t_mixer/P = new(src.loc)
 			P.dir = dir
-			P.initialize_directions = pipe_dir
+			P.valid_directions = list(pipe_dir)
 			if (pipename)
 				P.name = pipename
-
 			P.level = pipelevel
-			P.initialize()
-			P.build_network()
-			if (P.node1)
-				P.node1.initialize()
-				P.node1.build_network()
-			if (P.node2)
-				P.node2.initialize()
-				P.node2.build_network()
-			if (P.node3)
-				P.node3.initialize()
-				P.node3.build_network()
 
 		if(PIPE_GAS_MIXER_M)		//gas mixer mirrored
-			var/obj/structure/machinery/atmospherics/trinary/mixer/m_mixer/P = new(src.loc)
+			var/obj/structure/pipes/trinary/mixer/m_mixer/P = new(src.loc)
 			P.dir = dir
-			P.initialize_directions = pipe_dir
-			if (pipename)
+			P.valid_directions = list(pipe_dir)
+			if(pipename)
 				P.name = pipename
-
 			P.level = pipelevel
-			P.initialize()
-			P.build_network()
-			if (P.node1)
-				P.node1.initialize()
-				P.node1.build_network()
-			if (P.node2)
-				P.node2.initialize()
-				P.node2.build_network()
-			if (P.node3)
-				P.node3.initialize()
-				P.node3.build_network()
 
 		if(PIPE_SCRUBBER)		//scrubber
-			var/obj/structure/machinery/atmospherics/unary/vent_scrubber/S = new(src.loc)
+			var/obj/structure/pipes/vents/scrubber/S = new(src.loc)
 			S.dir = dir
-			S.initialize_directions = pipe_dir
+			S.valid_directions = list(pipe_dir)
 			if (pipename)
 				S.name = pipename
-
 			S.level = pipelevel
-			S.initialize()
-			S.build_network()
-			if (S.node)
-				S.node.initialize()
-				S.node.build_network()
 
 		if(PIPE_INSULATED_STRAIGHT, PIPE_INSULATED_BENT)
-			var/obj/structure/machinery/atmospherics/pipe/simple/insulated/P = new( src.loc )
+			var/obj/structure/pipes/standard/simple/insulated/P = new( src.loc )
 			P.dir = src.dir
-			P.initialize_directions = pipe_dir
-
+			P.valid_directions = list(pipe_dir)
 			P.level = pipelevel
-			P.initialize()
-			if(!P || P.disposed)
-				to_chat(usr, pipefailtext)
-				return 1
-			P.build_network()
-			if (P.node1)
-				P.node1.initialize()
-				P.node1.build_network()
-			if (P.node2)
-				P.node2.initialize()
-				P.node2.build_network()
+
 
 		if(PIPE_MTVALVE)		//manual t-valve
-			var/obj/structure/machinery/atmospherics/tvalve/V = new(src.loc)
+			var/obj/structure/pipes/tvalve/V = new(src.loc)
 			V.dir = dir
-			V.initialize_directions = pipe_dir
+			V.valid_directions = list(pipe_dir)
 			if (pipename)
 				V.name = pipename
-
 			V.level = pipelevel
-			V.initialize()
-			V.build_network()
-			if (V.node1)
-				V.node1.initialize()
-				V.node1.build_network()
-			if (V.node2)
-				V.node2.initialize()
-				V.node2.build_network()
-			if (V.node3)
-				V.node3.initialize()
-				V.node3.build_network()
+
 
 		if(PIPE_CAP)
-			var/obj/structure/machinery/atmospherics/pipe/cap/C = new(src.loc)
+			var/obj/structure/pipes/standard/cap/C = new(src.loc)
 			C.dir = dir
-			C.initialize_directions = pipe_dir
-			C.initialize()
-			C.build_network()
-			if(C.node)
-				C.node.initialize()
-				C.node.build_network()
+			C.valid_directions = list(pipe_dir)
 
 		if(PIPE_SUPPLY_CAP)
-			var/obj/structure/machinery/atmospherics/pipe/cap/hidden/supply/C = new(src.loc)
+			var/obj/structure/pipes/standard/cap/hidden/supply/C = new(src.loc)
 			C.dir = dir
-			C.initialize_directions = pipe_dir
-			C.initialize()
-			C.build_network()
-			if(C.node)
-				C.node.initialize()
-				C.node.build_network()
+			C.valid_directions = list(pipe_dir)
 
 		if(PIPE_SCRUBBERS_CAP)
-			var/obj/structure/machinery/atmospherics/pipe/cap/hidden/scrubbers/C = new(src.loc)
+			var/obj/structure/pipes/standard/cap/hidden/scrubbers/C = new(src.loc)
 			C.dir = dir
-			C.initialize_directions = pipe_dir
-			C.initialize()
-			C.build_network()
-			if(C.node)
-				C.node.initialize()
-				C.node.build_network()
+			C.valid_directions = list(pipe_dir)
 
 		if(PIPE_PASSIVE_GATE)		//passive gate
-			var/obj/structure/machinery/atmospherics/binary/passive_gate/P = new(src.loc)
+			var/obj/structure/pipes/binary/passive_gate/P = new(src.loc)
 			P.dir = dir
-			P.initialize_directions = pipe_dir
+			P.valid_directions = list(pipe_dir)
 			if (pipename)
 				P.name = pipename
-
 			P.level = pipelevel
-			P.initialize()
-			P.build_network()
-			if (P.node1)
-				P.node1.initialize()
-				P.node1.build_network()
-			if (P.node2)
-				P.node2.initialize()
-				P.node2.build_network()
+
 
 		if(PIPE_VOLUME_PUMP)		//volume pump
-			var/obj/structure/machinery/atmospherics/binary/pump/high_power/P = new(src.loc)
+			var/obj/structure/pipes/binary/pump/high_power/P = new(src.loc)
 			P.dir = dir
-			P.initialize_directions = pipe_dir
+			P.valid_directions = list(pipe_dir)
 			if (pipename)
 				P.name = pipename
-
 			P.level = pipelevel
-			P.initialize()
-			P.build_network()
-			if (P.node1)
-				P.node1.initialize()
-				P.node1.build_network()
-			if (P.node2)
-				P.node2.initialize()
-				P.node2.build_network()
+
 
 		if(PIPE_HEAT_EXCHANGE)		// heat exchanger
-			var/obj/structure/machinery/atmospherics/unary/heat_exchanger/C = new( src.loc )
+			var/obj/structure/pipes/unary/heat_exchanger/C = new( src.loc )
 			C.dir = dir
-			C.initialize_directions = pipe_dir
+			C.valid_directions = list(pipe_dir)
 			if (pipename)
 				C.name = pipename
-
 			C.level = pipelevel
-			C.initialize()
-			C.build_network()
-			if (C.node)
-				C.node.initialize()
-				C.node.build_network()
+
 
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 	user.visible_message( \
@@ -986,7 +645,7 @@ Buildable meters
 
 	if (!istype(W, /obj/item/tool/wrench))
 		return ..()
-	if(!locate(/obj/structure/machinery/atmospherics/pipe, src.loc))
+	if(!locate(/obj/structure/pipes/standard/, src.loc))
 		to_chat(user, SPAN_WARNING("You need to fasten it to a pipe."))
 		return 1
 	new/obj/structure/machinery/meter( src.loc )

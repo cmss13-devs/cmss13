@@ -12,22 +12,22 @@
 /turf/closed/wall/prison,
 /area/prison/maintenance/residential/access/north)
 "e" = (
-/obj/structure/machinery/atmospherics/pipe/cap/hidden{
+/obj/structure/pipes/standard/cap/hidden{
 	icon_state = "cap";
 	dir = 8
 	},
-/obj/structure/machinery/atmospherics/pipe/cap/hidden{
+/obj/structure/pipes/standard/cap/hidden{
 	icon_state = "cap";
 	dir = 8
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/prison/maintenance/residential/access/north)
 "f" = (
-/obj/structure/machinery/atmospherics/pipe/cap/hidden{
+/obj/structure/pipes/standard/cap/hidden{
 	icon_state = "cap";
 	dir = 4
 	},
-/obj/structure/machinery/atmospherics/pipe/cap/hidden{
+/obj/structure/pipes/standard/cap/hidden{
 	icon_state = "cap";
 	dir = 4
 	},

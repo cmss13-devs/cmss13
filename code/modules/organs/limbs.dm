@@ -532,8 +532,8 @@ This function completely restores a damaged organ to perfect condition.
 					remove_all_bleeding(FALSE, TRUE)
 					wounds -= W
 					wound_disappeared = TRUE
-					if(istype(owner.loc, /obj/structure/machinery/atmospherics/unary/cryo_cell))	// check in case they cheesed the location
-						var/obj/structure/machinery/atmospherics/unary/cryo_cell/cell = owner.loc
+					if(istype(owner.loc, /obj/structure/machinery/cryo_cell))	// check in case they cheesed the location
+						var/obj/structure/machinery/cryo_cell/cell = owner.loc
 						cell.display_message("internal bleeding is")
 			if(owner.reagents.get_reagent_amount("thwei") >= 0.05)
 				remove_all_bleeding(FALSE, TRUE)

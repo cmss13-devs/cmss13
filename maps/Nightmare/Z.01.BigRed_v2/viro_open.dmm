@@ -31,7 +31,7 @@
 /area/bigredv2/outside/nw)
 "af" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -150,7 +150,7 @@
 	},
 /area/bigredv2/outside/virology)
 "ax" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -170,7 +170,7 @@
 	},
 /area/bigredv2/outside/virology)
 "az" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor{
@@ -180,7 +180,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aA" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -191,7 +191,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aC" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -227,7 +227,7 @@
 /turf/open/floor/interior/plastic,
 /area/bigredv2/outside/virology)
 "aI" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /obj/structure/inflatable/door,
@@ -238,7 +238,7 @@
 	},
 /area/bigredv2/outside/nw)
 "aJ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	tag = "icon-asteroidwarning (WEST)";
 	icon_state = "asteroidwarning";
@@ -253,7 +253,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aM" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -288,14 +288,14 @@
 	},
 /area/bigredv2/outside/virology)
 "aQ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor/interior/plastic,
 /area/bigredv2/outside/virology)
 "aR" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -327,7 +327,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/nw)
 "aW" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /obj/structure/inflatable/popped/door,
@@ -338,7 +338,7 @@
 	},
 /area/bigredv2/outside/nw)
 "aX" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
@@ -385,7 +385,7 @@
 /turf/closed/wall/r_wall,
 /area/bigredv2/outside/virology)
 "be" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/research{
 	dir = 1;
 	name = "\improper Virology Lab Decontamination";

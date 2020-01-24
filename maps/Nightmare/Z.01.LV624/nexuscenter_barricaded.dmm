@@ -19,7 +19,7 @@
 /area/lv624/lazarus/main_hall)
 "ad" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/item/stack/sheet/metal,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
@@ -101,7 +101,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "an" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -169,7 +169,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aw" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -264,7 +264,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aH" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/item/frame/table,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -391,7 +391,7 @@
 "aX" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/item/ammo_casing,
 /turf/open/floor{
 	icon_state = "floorscorched1"
@@ -506,7 +506,7 @@
 /area/lv624/lazarus/main_hall)
 "bk" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/table,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
@@ -523,7 +523,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bn" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/item/ammo_casing,
 /turf/closed/wall/mineral/gold,
 /area/lv624/lazarus/main_hall)
@@ -654,7 +654,7 @@
 /obj/effect/decal/cleanable/blood{
 	pixel_y = 12
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/item/limb/hand/l_hand,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -743,7 +743,7 @@
 /area/lv624/lazarus/main_hall)
 "bL" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/table{
 	dir = 2;
 	flipped = 1
@@ -793,7 +793,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bQ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/item/ammo_casing,
 /turf/open/floor{
 	icon_state = "white"
@@ -834,7 +834,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bV" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -907,7 +907,7 @@
 	},
 /area/lv624/lazarus/chapel)
 "Ft" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "Fu" = (
@@ -945,7 +945,7 @@
 /area/lv624/lazarus/chapel)
 "FT" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "FU" = (
@@ -1367,7 +1367,7 @@
 /area/lv624/lazarus/security)
 "OM" = (
 /obj/structure/flora/grass,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "ON" = (

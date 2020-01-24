@@ -74,7 +74,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/n)
 "ak" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor{
 	tag = "icon-white";
 	icon_state = "white";
@@ -119,7 +119,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "ap" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	tag = "icon-white";
 	icon_state = "white";
@@ -157,7 +157,7 @@
 /turf/closed/wall,
 /area/bigredv2/outside/marshall_office)
 "au" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Marshall Office Prison";
@@ -308,7 +308,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aJ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
 	icon_state = "door_locked";
@@ -371,7 +371,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aQ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "redcorner";
 	dir = 4
@@ -412,7 +412,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aW" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "dark"
@@ -439,13 +439,13 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "ba" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "bb" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -453,7 +453,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "bc" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -462,7 +462,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "bd" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor,
@@ -477,7 +477,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bg" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -531,7 +531,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bn" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 2;
@@ -539,7 +539,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bp" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	density = 0;
 	dir = 1;
@@ -561,7 +561,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "br" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "delivery"
 	},
@@ -666,7 +666,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bF" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "redcorner"
@@ -776,7 +776,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bU" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /obj/item/ammo_casing/shell,
@@ -785,7 +785,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bV" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -794,7 +794,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bW" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -880,7 +880,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cg" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "dark"
@@ -936,7 +936,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cm" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/shell,
 /turf/open/floor{
@@ -983,7 +983,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cs" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "ct" = (
@@ -1030,7 +1030,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cz" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1040,7 +1040,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cA" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1053,7 +1053,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1063,7 +1063,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cC" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1074,33 +1074,33 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cE" = (
-/obj/structure/machinery/atmospherics/pipe/manifold4w/hidden/green,
+/obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "cF" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "cK" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "cL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "cM" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1149,9 +1149,8 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cR" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1 
 	},
 /turf/open/floor{
 	dir = 2;
@@ -1173,7 +1172,7 @@
 "cT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/frame/table,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "redcorner"
@@ -1216,7 +1215,7 @@
 /area/bigredv2/outside/marshall_office)
 "cX" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 4;
 	name = "\improper Marshall Office"
@@ -1259,7 +1258,7 @@
 /area/bigredv2/outside/marshall_office)
 "dd" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "de" = (
@@ -1305,7 +1304,7 @@
 /turf/closed/wall/r_wall,
 /area/bigredv2/outside/medical)
 "dk" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 4;
 	name = "\improper Marshall Office"

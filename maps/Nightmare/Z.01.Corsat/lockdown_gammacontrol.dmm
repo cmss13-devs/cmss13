@@ -34,7 +34,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "g" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -43,7 +43,7 @@
 	},
 /area/corsat/gamma/airlock/control)
 "h" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -52,7 +52,7 @@
 	},
 /area/corsat/gamma/airlock/control)
 "i" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},

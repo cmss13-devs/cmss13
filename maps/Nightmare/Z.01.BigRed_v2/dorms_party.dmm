@@ -77,7 +77,7 @@
 	},
 /area/bigredv2/outside/dorms)
 "ap" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor{
@@ -85,7 +85,7 @@
 	},
 /area/bigredv2/outside/dorms)
 "aq" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -137,7 +137,7 @@
 	},
 /area/bigredv2/outside/dorms)
 "az" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /turf/open/floor{
 	icon_state = "grimy"
@@ -153,7 +153,7 @@
 	},
 /area/bigredv2/outside/dorms)
 "aB" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/trash/chunk{
 	pixel_y = 5
 	},
@@ -165,7 +165,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aD" = (
@@ -184,7 +184,7 @@
 /area/bigredv2/outside/dorms)
 "aF" = (
 /obj/structure/table,
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aG" = (
@@ -214,7 +214,7 @@
 	},
 /area/bigredv2/outside/dorms)
 "aK" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "grimy"
@@ -232,7 +232,7 @@
 /area/bigredv2/outside/dorms)
 "aM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/trash/chunk,
 /turf/open/floor{
 	icon_state = "grimy"
@@ -252,7 +252,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aR" = (
@@ -266,7 +266,7 @@
 	},
 /area/bigredv2/outside/dorms)
 "aT" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/floor{
@@ -276,7 +276,7 @@
 "aU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -286,7 +286,7 @@
 /area/bigredv2/outside/dorms)
 "aV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor{
@@ -311,7 +311,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aY" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "ba" = (
@@ -324,13 +324,13 @@
 	},
 /area/bigredv2/outside/dorms)
 "bb" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "bc" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -338,7 +338,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "bd" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -349,7 +349,7 @@
 	icon_state = "snack-broken";
 	stat = 1
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -357,7 +357,7 @@
 /area/bigredv2/outside/dorms)
 "bg" = (
 /obj/structure/machinery/vending/cigarette/colony,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -365,7 +365,7 @@
 /area/bigredv2/outside/dorms)
 "bh" = (
 /obj/structure/machinery/vending/cola,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -373,7 +373,7 @@
 /area/bigredv2/outside/dorms)
 "bi" = (
 /obj/structure/machinery/light,
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "bj" = (
@@ -381,14 +381,14 @@
 	dir = 1;
 	pixel_y = -27
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "bk" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -407,13 +407,13 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "bl" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "bm" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -426,12 +426,12 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "bn" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "bo" = (
 /obj/structure/machinery/light,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},

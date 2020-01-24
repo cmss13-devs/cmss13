@@ -14,7 +14,7 @@
 	},
 /area/corsat/gamma/airlock/north)
 "d" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor/corsat{
@@ -22,9 +22,8 @@
 	},
 /area/corsat/gamma/airlock/north)
 "e" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8 
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -65,7 +64,7 @@
 	},
 /area/corsat/gamma/airlock/north)
 "j" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -80,7 +79,7 @@
 /turf/open/snow/layer0,
 /area/corsat/gamma/biodome)
 "m" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/snow/layer0,
 /area/corsat/gamma/biodome)
 "n" = (

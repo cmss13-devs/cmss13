@@ -34,7 +34,7 @@
 	//var/internal_tank_valve = ONE_ATMOSPHERE
 	//var/obj/structure/machinery/portable_atmospherics/canister/internal_tank
 	//var/datum/gas_mixture/cabin_air
-	//var/obj/structure/machinery/atmospherics/portables_connector/connected_port = null
+	//var/obj/structure/pipes/portables_connector/connected_port = null
 
 	var/obj/item/device/radio/radio = null
 

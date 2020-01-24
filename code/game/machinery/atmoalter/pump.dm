@@ -20,7 +20,4 @@
 	else
 		icon_state = "psiphon:0"
 
-	if(connected_port)
-		overlays += "siphon-connector"
-
 	return

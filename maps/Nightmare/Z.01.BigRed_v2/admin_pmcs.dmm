@@ -14,7 +14,7 @@
 /turf/closed/wall,
 /area/bigredv2/outside/admin_building)
 "af" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
@@ -90,7 +90,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "an" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	tag = "icon-darkred2 (WEST)";
 	icon_state = "darkred2";
@@ -229,7 +229,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aG" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -239,7 +239,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aH" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -284,7 +284,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aM" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/sandbags/wired,
 /turf/open/floor{
 	tag = "icon-darkred2 (WEST)";
@@ -327,7 +327,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "aS" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/corpsespawner/PMC,
 /turf/open/floor{
 	tag = "icon-darkred2 (WEST)";
@@ -373,7 +373,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aX" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -403,9 +403,8 @@
 /area/bigredv2/outside/admin_building)
 "ba" = (
 /obj/structure/table,
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4 
 	},
 /obj/item/clothing/head/helmet/marine/veteran/PMC/leader,
 /turf/open/floor{
@@ -418,7 +417,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -430,7 +429,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bc" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -442,13 +441,13 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bd" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "be" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/floor{
@@ -458,7 +457,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bf" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -469,7 +468,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bg" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -480,7 +479,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bh" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -515,13 +514,13 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bl" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "bm" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -532,7 +531,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "bn" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor{

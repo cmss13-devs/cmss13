@@ -6,7 +6,7 @@
 
 	if(reagents.has_reagent("lexorin"))
 		return
-	if(istype(loc, /obj/structure/machinery/atmospherics/unary/cryo_cell))
+	if(istype(loc, /obj/structure/machinery/cryo_cell))
 		return
 	if(species && (species.flags & NO_BREATHE || species.flags & IS_SYNTHETIC))
 		return

@@ -3,14 +3,14 @@
 	desc = "It measures something."
 	icon = 'icons/obj/structures/machinery/meter.dmi'
 	icon_state = "meterX"
-	var/obj/structure/machinery/atmospherics/pipe/target = null
+	var/obj/structure/pipes/standard/target = null
 	anchored = 1.0
 	power_channel = ENVIRON
 	use_power = 0
 
 /obj/structure/machinery/meter/New()
 	..()
-	src.target = locate(/obj/structure/machinery/atmospherics/pipe) in loc
+	src.target = locate(/obj/structure/pipes/standard/) in loc
 	return 1
 
 /obj/structure/machinery/meter/Dispose()
@@ -19,7 +19,7 @@
 
 /obj/structure/machinery/meter/initialize()
 	if (!target)
-		src.target = locate(/obj/structure/machinery/atmospherics/pipe) in loc
+		src.target = locate(/obj/structure/pipes/standard/) in loc
 
 /obj/structure/machinery/meter/examine(mob/user)
 	var/t = "A gas flow meter. "

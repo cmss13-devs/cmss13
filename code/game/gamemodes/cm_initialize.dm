@@ -448,7 +448,7 @@ Additional game mode variables.
 		var/mob/living/carbon/Xenomorph/X = new_xeno
 		X.generate_name()
 		if(X.is_ventcrawling)
-			X.add_ventcrawl(X.loc) //If we are in a vent, fetch a fresh vent map
+			X.update_pipe_icons(X.loc) //If we are in a vent, fetch a fresh vent map
 	return 1
 
 /datum/game_mode/proc/transform_queen(datum/mind/ghost_mind)

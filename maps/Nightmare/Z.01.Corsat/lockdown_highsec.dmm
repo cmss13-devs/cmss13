@@ -24,7 +24,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "e" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -40,7 +40,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "h" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -51,7 +51,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "j" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor/corsat{
@@ -59,7 +59,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "k" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -68,7 +68,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "l" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor/corsat{
@@ -172,7 +172,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "v" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "red";
 	dir = 1
@@ -251,7 +251,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "F" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -338,7 +338,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "N" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "red"
 	},
@@ -365,7 +365,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "S" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},

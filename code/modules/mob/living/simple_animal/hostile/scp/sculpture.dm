@@ -155,40 +155,7 @@
 				num_turfs--
 		//Coding note : This is known to allow SCP to end up on tiles that contain obstructing structures (doors, machinery, etc)
 		//Although he CAN'T pass through them during normal movement. Will look into a fix soon
-
-	//Do we have a vent ? Good, let's take a look
-	for(entry_vent in view(1, src))
-		if(prob(90)) //10 % chance to consider a vent, to try and avoid constant vent switching
-			return
-		visible_message(SPAN_DANGER("\The [src] starts trying to slide itself into the vent!"))
-		sleep(50) //Let's stop SCP-173 for five seconds to do his parking job
-		..()
-		if(entry_vent.network && entry_vent.network.normal_members.len)
-			var/list/vents = list()
-			for(var/obj/structure/machinery/atmospherics/unary/vent_pump/temp_vent in entry_vent.network.normal_members)
-				vents.Add(temp_vent)
-			if(!vents.len)
-				entry_vent = null
-				return
-			if(check_los()) //Someone started looking at us
-				return
-			var/obj/structure/machinery/atmospherics/unary/vent_pump/exit_vent = pick(vents)
-			spawn()
-				visible_message(SPAN_DANGER("\The [src] suddenly disappears into the vent!"))
-				loc = exit_vent
-				var/travel_time = round(get_dist(loc, exit_vent.loc)/2)
-				spawn(travel_time)
-					if(!exit_vent || exit_vent.welded)
-						forceMove(get_turf(entry_vent))
-						entry_vent = null
-						visible_message(SPAN_DANGER("\The [src] suddenly appears from the vent!"))
-						return
-
-					forceMove(get_turf(exit_vent))
-					entry_vent = null
-					visible_message(SPAN_DANGER("\The [src] suddenly appears from the vent!"))
-		else
-			entry_vent = null
+	..()
 
 //This performs an immediate neck snap check, meant to avoid people cheesing SCP-173 by just running faster than Life() refresh
 /mob/living/simple_animal/scp/sculpture/proc/check_snap_neck(var/forced = FALSE)

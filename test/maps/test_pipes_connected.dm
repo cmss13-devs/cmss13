@@ -10,7 +10,7 @@
 			continue
 
 		for(var/turf/T in A)
-			var/obj/structure/machinery/atmospherics/pipe/P = locate() in T
+			var/obj/structure/pipes/P = locate() in T
 			if(!P)
 				continue
 
@@ -19,30 +19,29 @@
 				continue
 
 			var/fail = FALSE
+			var/is_special = FALSE
 
-			// Endcaps should have 1 connection
-			if(istype(P, /obj/structure/machinery/atmospherics/pipe/cap))
-				var/obj/structure/machinery/atmospherics/pipe/cap/PC = P
-				if(!PC.node)
-					fail = TRUE
+			if(!length(P.connected_to))
+				fail = TRUE
 
-			// Simple pipes should have 2 connections
-			else if(istype(P, /obj/structure/machinery/atmospherics/pipe/simple))
-				var/obj/structure/machinery/atmospherics/pipe/simple/SP = P
-				if(!SP.node1 || !SP.node2)
-					fail = TRUE
+			var/check_connections = 0
+			for(var/direction in P.valid_directions)
+				for(var/obj/structure/pipes/target in get_step(P, direction))
+					check_connections++
+					break
+				
+			if(istype(P, /obj/structure/pipes/vents))
+				is_special = TRUE
 
-			// Manifolds should have 3 connections
-			else if(istype(P, /obj/structure/machinery/atmospherics/pipe/manifold))
-				var/obj/structure/machinery/atmospherics/pipe/manifold/M = P
-				if(!M.node1 || !M.node2 || !M.node3)
-					fail = TRUE
+			if(istype(P, /obj/structure/pipes/unary))
+				is_special = TRUE
+			
+			if(!is_special && check_connections != length(P.valid_directions))
+				to_world("failed [check_connections] and [length(P.valid_directions)]")
+				fail = TRUE
 
-			// 4-way manifolds should have 4 connections
-			else if(istype(P, /obj/structure/machinery/atmospherics/pipe/manifold4w))
-				var/obj/structure/machinery/atmospherics/pipe/manifold4w/M = P
-				if(!M.node1 || !M.node2 || !M.node3 || !M.node4)
-					fail = TRUE
+			if(is_special && (check_connections < 1 || 4 < check_connections))
+				fail = TRUE
 
 			if(!fail)
 				continue

@@ -54,10 +54,6 @@
 	var/list/internal_log = list()
 	var/mode = 0  // 0 - making pass, 1 - viewing logs
 
-/obj/structure/machinery/computer/guestpass/New()
-	..()
-	uid = "[rand(100,999)]-G[rand(10,99)]"
-
 /obj/structure/machinery/computer/guestpass/attackby(obj/O, mob/user)
 	if(istype(O, /obj/item/card/id))
 		if(!giver)
@@ -85,7 +81,7 @@
 		dat += "<a href='?src=\ref[src];action=print'>Print</a><br>"
 		dat += "<a href='?src=\ref[src];mode=0'>Back</a><br>"
 	else
-		dat += "<h3>Guest pass terminal #[uid]</h3><br>"
+		dat += "<h3>Guest pass terminal</h3><br>"
 		dat += "<a href='?src=\ref[src];mode=1'>View activity log</a><br><br>"
 		dat += "Issuing ID: <a href='?src=\ref[src];action=id'>[giver]</a><br>"
 		dat += "Issued to: <a href='?src=\ref[src];choice=giv_name'>[giv_name]</a><br>"
@@ -156,7 +152,7 @@
 				updateUsrDialog()
 
 			if ("print")
-				var/dat = "<h3>Activity log of guest pass terminal #[uid]</h3><br>"
+				var/dat = "<h3>Activity log of guest pass terminal</h3><br>"
 				for (var/entry in internal_log)
 					dat += "[entry]<br><hr>"
 				//to_chat(usr, "Printing the log, standby...")

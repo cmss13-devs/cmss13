@@ -9,7 +9,7 @@
 	},
 /area/bigredv2/outside/nw)
 "d" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "warnplate"
@@ -48,7 +48,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "k" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "l" = (
@@ -66,7 +66,7 @@
 	},
 /area/bigredv2/outside/nw)
 "p" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -76,7 +76,7 @@
 	},
 /area/bigredv2/outside/nw)
 "q" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -86,14 +86,14 @@
 /obj/effect/landmark{
 	name = "hunter_primary"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "s" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "u" = (

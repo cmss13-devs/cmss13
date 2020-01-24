@@ -128,20 +128,20 @@
 /turf/open/floor,
 /area/bigredv2/outside/storage)
 "aA" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor,
 /area/bigredv2/outside/storage)
 "aB" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/storage)
 "aC" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -162,7 +162,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/storage)
 "aF" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/storage)
 "aG" = (
@@ -182,9 +182,8 @@
 /turf/open/floor,
 /area/bigredv2/outside/storage)
 "aK" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1 
 	},
 /obj/structure/table,
 /obj/effect/spawner/random/toolbox,
@@ -197,7 +196,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/storage)
 "aM" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -207,7 +206,7 @@
 	},
 /area/bigredv2/outside/s)
 "aN" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -218,7 +217,7 @@
 	},
 /area/bigredv2/outside/s)
 "aO" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /turf/open/floor{
@@ -247,7 +246,7 @@
 	},
 /area/bigredv2/outside/s)
 "aS" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	tag = "icon-asteroidwarning (EAST)";
 	icon_state = "asteroidwarning";

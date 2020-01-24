@@ -25,7 +25,7 @@
 	},
 /area/bigredv2/outside/c)
 "ae" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	tag = "icon-asteroidwarning (WEST)";
 	icon_state = "asteroidwarning";
@@ -93,7 +93,7 @@
 /turf/closed/wall,
 /area/bigredv2/outside/office_complex)
 "aq" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 4;
 	name = "\improper Office Complex"
@@ -134,7 +134,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "aw" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor/plating{
@@ -335,9 +335,8 @@
 /area/bigredv2/outside/office_complex)
 "bb" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8 
 	},
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating{
@@ -454,7 +453,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "bt" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -704,7 +703,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "ce" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -719,7 +718,7 @@
 /obj/effect/landmark{
 	name = "crap_item"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor/plating{
@@ -760,7 +759,7 @@
 /area/bigredv2/outside/office_complex)
 "cl" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -769,7 +768,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "cm" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor{
@@ -777,7 +776,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "cn" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -811,7 +810,7 @@
 /area/bigredv2/outside/office_complex)
 "cs" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -901,9 +900,8 @@
 "cH" = (
 /obj/structure/table,
 /obj/item/trash/semki,
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4 
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -912,7 +910,7 @@
 "cI" = (
 /obj/structure/table,
 /obj/item/clothing/mask/cigarette,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -979,7 +977,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/office_complex)
 "cS" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -1042,7 +1040,7 @@
 /area/bigredv2/outside/office_complex)
 "db" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -1071,7 +1069,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "df" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -1105,7 +1103,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "dl" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -1140,7 +1138,7 @@
 	},
 /area/bigredv2/outside/se)
 "dr" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 8;
@@ -1412,9 +1410,8 @@
 	},
 /area/bigredv2/outside/office_complex)
 "eb" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4 
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -1422,7 +1419,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "ec" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /turf/open/floor{
@@ -1436,7 +1433,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "ee" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor{
@@ -1444,7 +1441,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "ef" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor{
@@ -1481,7 +1478,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "ek" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},

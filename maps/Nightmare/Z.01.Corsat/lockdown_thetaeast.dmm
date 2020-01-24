@@ -28,14 +28,14 @@
 	},
 /area/corsat/theta/airlock/east)
 "h" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "i" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -44,7 +44,7 @@
 	},
 /area/corsat/theta/airlock/east)
 "j" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor/corsat{
@@ -66,9 +66,8 @@
 	},
 /area/corsat/theta/airlock/east)
 "l" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1 
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"

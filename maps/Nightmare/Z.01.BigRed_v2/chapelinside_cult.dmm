@@ -11,7 +11,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/chapel)
 "ad" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 4;
 	name = "\improper Chapel"
@@ -71,7 +71,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "ak" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor{
@@ -81,7 +81,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "al" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -93,7 +93,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "an" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /obj/effect/decal/cleanable/blood{
@@ -193,7 +193,7 @@
 	icon_state = "wooden_chair";
 	tag = ""
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "chapel"
@@ -251,7 +251,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aE" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -310,7 +310,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aJ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/bed/chair/wood/normal{
 	dir = 8;
 	icon_state = "wooden_chair";
@@ -333,9 +333,8 @@
 	},
 /area/bigredv2/outside/chapel)
 "aN" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4 
 	},
 /obj/effect/decal/cleanable/ash,
 /obj/effect/decal/cleanable/blood,
@@ -346,7 +345,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aO" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -368,7 +367,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aQ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -386,7 +385,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aS" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -402,7 +401,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aT" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -416,7 +415,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aU" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /obj/item/tool/candle,
 /turf/open/floor{
 	tag = "icon-darkish";
@@ -425,7 +424,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aV" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -439,7 +438,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aW" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -451,9 +450,8 @@
 	},
 /area/bigredv2/outside/chapel)
 "aX" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8 
 	},
 /turf/open/floor{
 	tag = "icon-darkish";

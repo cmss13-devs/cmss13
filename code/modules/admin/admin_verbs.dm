@@ -114,7 +114,6 @@ var/list/debug_verbs = list(
     /client/proc/view_power_update_stats_area,
     /client/proc/view_power_update_stats_machines,
     /client/proc/toggle_power_update_profiling,
-    /client/proc/atmos_toggle_debug,
 	/client/proc/nanomapgen_DumpImage
 )
 

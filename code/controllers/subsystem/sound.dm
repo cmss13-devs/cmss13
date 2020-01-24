@@ -24,9 +24,6 @@ var/datum/subsystem/global_sound/SSglobal_sound
 		var/client/C = currentrun[currentrun.len]
 		currentrun.len--
 
-		if(!C || !C.soundOutput) 
-			continue
-
 		C.soundOutput.process()
 
 		if (MC_TICK_CHECK)

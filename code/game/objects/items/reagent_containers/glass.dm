@@ -24,7 +24,7 @@
 		/obj/structure/closet,
 		/obj/structure/sink,
 		/obj/item/storage,
-		/obj/structure/machinery/atmospherics/unary/cryo_cell,
+		/obj/structure/machinery/cryo_cell,
 		/obj/item/explosive/grenade/chem_grenade,
 		/obj/structure/machinery/bot/medbot,
 		/obj/structure/machinery/computer/pandemic,

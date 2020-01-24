@@ -31,9 +31,6 @@ Class Variables:
    uid (num)
       Unique id of machine across all machines.
 
-   gl_uid (global num)
-      Next uid value in sequence
-
    stat (bitflag)
       Machine status bit flags.
       Possible bit flags:
@@ -108,9 +105,7 @@ Class Procs:
 	var/mob/living/carbon/human/operator = null //Had no idea where to put this so I put this here. Used for operating machines with RELAY_CLICK
 		//EQUIP,ENVIRON or LIGHT
 	var/list/component_parts = list() //list of all the parts used to build it, if made from certain kinds of frames.
-	var/uid
 	var/manual = 0
-	var/global/gl_uid = 1
 	layer = OBJ_LAYER
 	var/machine_processing = 0 // whether the machine is busy and requires process() calls in scheduler.
 	throwpass = 1
@@ -281,10 +276,6 @@ Class Procs:
 /obj/structure/machinery/proc/RefreshParts() //Placeholder proc for machines that are built using frames.
 	return
 	return 0
-
-/obj/structure/machinery/proc/assign_uid()
-	uid = gl_uid
-	gl_uid++
 
 /obj/structure/machinery/proc/state(var/msg)
   for(var/mob/O in hearers(src, null))

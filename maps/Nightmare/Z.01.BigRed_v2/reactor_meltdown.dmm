@@ -30,7 +30,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "ai" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aj" = (
@@ -47,26 +47,26 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "am" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "an" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "ao" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "ap" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -84,7 +84,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/s)
 "at" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "au" = (
@@ -148,7 +148,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "aH" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Chief Engineer's Office";
@@ -178,7 +178,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aM" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Engineering Tool Storage";
@@ -216,7 +216,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aR" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Engineering Lockers";
@@ -245,17 +245,17 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aW" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aY" = (
-/obj/structure/machinery/atmospherics/pipe/manifold4w/hidden/green,
+/obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aZ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -263,7 +263,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "ba" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -272,7 +272,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bb" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -283,14 +283,14 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bd" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -300,11 +300,11 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "be" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bf" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -312,7 +312,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bg" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /turf/open/floor,
@@ -323,7 +323,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bj" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/stack/sheet/metal,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -371,13 +371,13 @@
 /area/bigredv2/outside/engineering)
 "bp" = (
 /obj/item/folder/yellow,
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bq" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -390,7 +390,7 @@
 /area/bigredv2/outside/engineering)
 "br" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -398,7 +398,7 @@
 /area/bigredv2/outside/engineering)
 "bs" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor/plating{
@@ -429,7 +429,7 @@
 /area/bigredv2/outside/engineering)
 "by" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bz" = (
@@ -489,7 +489,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -539,15 +539,14 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bT" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8 
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -564,14 +563,14 @@
 /area/bigredv2/outside/engineering)
 "bV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bX" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor,
@@ -601,9 +600,8 @@
 /area/bigredv2/outside/engineering)
 "ce" = (
 /obj/item/tool/lighter/random,
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4 
 	},
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor,
@@ -615,7 +613,7 @@
 	},
 /area/bigredv2/outside/engineering)
 "cg" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -671,7 +669,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cs" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -704,7 +702,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cw" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor/plating{
@@ -747,7 +745,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cC" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -833,7 +831,7 @@
 	},
 /area/bigredv2/outside/sw)
 "cX" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},

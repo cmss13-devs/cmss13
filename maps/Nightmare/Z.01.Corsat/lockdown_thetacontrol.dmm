@@ -9,7 +9,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "c" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -37,7 +37,7 @@
 	},
 /area/corsat/theta/airlock/control)
 "g" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -65,7 +65,7 @@
 	},
 /area/corsat/theta/airlock/control)
 "k" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},

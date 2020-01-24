@@ -16,8 +16,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "East Monorail Station"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/pipes/standard/simple/hidden/scrubbers,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -53,8 +53,8 @@
 	},
 /area/prison/monorail/east)
 "i" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/pipes/standard/simple/hidden/scrubbers,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -103,8 +103,8 @@
 	},
 /area/prison/monorail/east)
 "q" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/pipes/standard/simple/hidden/scrubbers,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -144,8 +144,8 @@
 /turf/open/space,
 /area/space)
 "x" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/pipes/standard/simple/hidden/scrubbers,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 4;
@@ -185,9 +185,8 @@
 	},
 /area/prison/monorail/east)
 "A" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4 
 	},
 /turf/open/floor/prison{
 	tag = "icon-cell_stripe (WEST)";
@@ -196,12 +195,12 @@
 	},
 /area/prison/monorail/east)
 "B" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9;
 	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/pipes/standard/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkred2"
@@ -218,7 +217,7 @@
 	},
 /area/prison/monorail/east)
 "G" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/pipes/standard/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkred2"
@@ -239,7 +238,7 @@
 	},
 /area/prison/monorail/east)
 "M" = (
-/obj/structure/machinery/atmospherics/unary/vent_scrubber{
+/obj/structure/pipes/vents/scrubber{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -249,7 +248,7 @@
 	},
 /area/prison/monorail/east)
 "N" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/pipes/standard/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (NORTHWEST)";
 	icon_state = "intact-scrubbers";
 	dir = 9

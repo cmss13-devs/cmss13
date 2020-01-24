@@ -950,7 +950,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor/prison{
@@ -1662,9 +1662,8 @@
 	},
 /area/desert_dam/exterior/valley/valley_labs)
 "aeB" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -1957,7 +1956,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "afp" = (
 /obj/structure/disposalpipe/junction,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor/prison{
@@ -4515,9 +4514,8 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "ama" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
@@ -5388,7 +5386,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/security/lobby)
 "aok" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
@@ -5447,9 +5445,8 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "aos" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -5460,7 +5457,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "aot" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -5473,7 +5470,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "aou" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -5484,7 +5481,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "aov" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -5579,7 +5576,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "aoJ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2";
@@ -5677,7 +5674,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "aoW" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/junction{
 	dir = 1;
 	icon_state = "pipe-j2"
@@ -6035,7 +6032,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "apT" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
@@ -6061,9 +6058,8 @@
 	},
 /area/shuttle/tri_trans1/alpha)
 "apV" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2";
@@ -6115,7 +6111,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "aqc" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -6545,7 +6541,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_central_north)
 "are" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -6573,7 +6569,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -6726,9 +6722,8 @@
 	},
 /area/desert_dam/exterior/valley/valley_mining)
 "ary" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
@@ -7674,7 +7669,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "atP" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
@@ -8407,7 +8402,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "avJ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2";
@@ -8719,9 +8714,8 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "awz" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2";
@@ -8795,7 +8789,6 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "awH" = (
-/obj/structure/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/machinery/chem_dispenser,
 /turf/open/floor/prison{
 	icon_state = "darkpurple2";
@@ -9405,7 +9398,7 @@
 	},
 /area/desert_dam/interior/caves/east_caves)
 "ayr" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
@@ -9648,7 +9641,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "ayX" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -9658,7 +9651,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ayY" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor/prison{
@@ -9781,9 +9774,8 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "azl" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2";
@@ -9882,9 +9874,8 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "azy" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -11611,7 +11602,7 @@
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aEg" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -11883,7 +11874,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aEM" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -16329,7 +16320,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -16473,7 +16464,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -16905,7 +16896,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
 "aRL" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/prison{
 	dir = 6;
 	icon_state = "whitegreen"
@@ -17115,7 +17106,7 @@
 	name = "\improper Workshop"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -17124,7 +17115,7 @@
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "aSn" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor/prison{
@@ -17149,7 +17140,7 @@
 /area/desert_dam/exterior/valley/valley_cargo)
 "aSq" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor/prison{
@@ -17210,6 +17201,21 @@
 	dir = 10
 	},
 /area)
+"aSz" = (
+/obj/structure/table/reinforced,
+/obj/structure/machinery/door/window/brigdoor/westleft{
+	name = "Security Desk"
+	},
+/obj/structure/machinery/door/window/eastright{
+	name = "Security Desk"
+	},
+/obj/item/tool/stamp,
+/turf/open/floor/prison{
+	tag = "icon-floor (SOUTHWEST)";
+	icon_state = "floor";
+	dir = 10
+	},
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "aSC" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Substation"
@@ -17879,7 +17885,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
 "aUK" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -18420,7 +18426,7 @@
 	},
 /area/desert_dam/building/administration/office)
 "aWv" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
 "aWw" = (
@@ -18586,7 +18592,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
 "aWY" = (
@@ -18730,7 +18736,7 @@
 /area/desert_dam/building/water_treatment_two/purification)
 "aXr" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
 "aXs" = (
@@ -18813,7 +18819,7 @@
 /area/desert_dam/building/security/detective)
 "aXI" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "\improper Colony Administration Office";
@@ -18964,7 +18970,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/hallway)
 "aYh" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /turf/open/floor{
@@ -19007,7 +19013,7 @@
 /area/desert_dam/building/administration/hallway)
 "aYn" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2";
 	dir = 2
@@ -19137,7 +19143,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/marshals_office)
 "aYF" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -19151,7 +19157,7 @@
 /area/desert_dam/building/administration/hallway)
 "aYG" = (
 /obj/structure/disposalpipe/junction,
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2";
 	dir = 2
@@ -19162,7 +19168,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -19173,7 +19179,7 @@
 /area/desert_dam/building/administration/hallway)
 "aYI" = (
 /obj/structure/disposalpipe/junction,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor/prison{
@@ -19282,7 +19288,7 @@
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/office)
 "aYW" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -19450,9 +19456,8 @@
 	},
 /area/desert_dam/building/security/lobby)
 "aZu" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2";
@@ -19789,7 +19794,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -19864,7 +19869,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Security Checkpoint"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -19922,7 +19927,7 @@
 /area/desert_dam/building/administration/archives)
 "baG" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor{
 	tag = "icon-dark2";
 	icon_state = "dark2"
@@ -20000,8 +20005,8 @@
 /area/desert_dam/building/administration/archives)
 "baT" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	tag = "icon-dark2";
 	icon_state = "dark2"
@@ -20092,8 +20097,8 @@
 /area/desert_dam/building/administration/lobby)
 "bbf" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2";
 	dir = 2
@@ -20149,7 +20154,7 @@
 	name = "\improper Colony Archives"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2";
 	dir = 2
@@ -20244,8 +20249,8 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2";
 	dir = 2
@@ -20463,7 +20468,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bcn" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -20595,7 +20600,7 @@
 /area/desert_dam/exterior/valley/valley_northwest)
 "bcE" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2";
 	dir = 2
@@ -20776,7 +20781,7 @@
 /area/desert_dam/building/administration/meetingrooom)
 "bdk" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/meetingrooom)
 "bdm" = (
@@ -20900,7 +20905,7 @@
 	},
 /area/desert_dam/building/administration/meetingrooom)
 "bdH" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -20909,9 +20914,8 @@
 	},
 /area/desert_dam/building/security/lobby)
 "bdI" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/meetingrooom)
@@ -21023,9 +21027,8 @@
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
 "bdY" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /turf/open/floor{
 	tag = "icon-carpet6-2 (WEST)";
@@ -21034,7 +21037,7 @@
 	},
 /area/desert_dam/building/administration/overseer_office)
 "bdZ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor{
@@ -22583,7 +22586,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "biF" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/courtroom)
 "biG" = (
@@ -22959,7 +22962,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_dam)
 "bjH" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -23288,7 +23291,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/office)
 "bkL" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -23902,25 +23905,6 @@
 	dir = 10
 	},
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
-"bmt" = (
-/obj/structure/table/reinforced,
-/obj/structure/machinery/door/window/brigdoor/westleft{
-	name = "Security Desk"
-	},
-/obj/structure/machinery/door/window/eastright{
-	name = "Security Desk"
-	},
-/obj/item/tool/stamp,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
-	},
-/turf/open/floor/prison{
-	tag = "icon-floor (SOUTHWEST)";
-	icon_state = "floor";
-	dir = 10
-	},
-/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "bmu" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 9;
@@ -24424,7 +24408,7 @@
 "bnT" = (
 /obj/structure/rack,
 /obj/item/circuitboard/computer/powermonitor,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/greengrid,
 /area/desert_dam/interior/dam_interior/tech_storage)
 "bnU" = (
@@ -24565,7 +24549,7 @@
 	},
 /area/desert_dam/building/security/northern_hallway)
 "bot" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 4;
@@ -24655,7 +24639,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -24858,7 +24842,7 @@
 	},
 /area/desert_dam/building/security/northern_hallway)
 "bpj" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -24951,7 +24935,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bpw" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -24988,7 +24972,7 @@
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
 "bpz" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -25004,7 +24988,7 @@
 /area/desert_dam/building/administration/hallway)
 "bpA" = (
 /obj/structure/rack,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/greengrid,
 /area/desert_dam/interior/dam_interior/tech_storage)
 "bpB" = (
@@ -25232,9 +25216,8 @@
 	},
 /area/desert_dam/exterior/landing_pad_one)
 "bql" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -25243,7 +25226,7 @@
 	},
 /area/desert_dam/building/security/northern_hallway)
 "bqm" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -25254,7 +25237,7 @@
 	},
 /area/desert_dam/building/security/northern_hallway)
 "bqn" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -25272,7 +25255,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_mining)
 "bqq" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -25285,7 +25268,7 @@
 	},
 /area/desert_dam/building/security/northern_hallway)
 "bqt" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -25298,7 +25281,7 @@
 	},
 /area/desert_dam/building/security/northern_hallway)
 "bqu" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -25309,7 +25292,7 @@
 	},
 /area/desert_dam/building/security/northern_hallway)
 "bqw" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
@@ -25322,7 +25305,7 @@
 	},
 /area/desert_dam/building/security/northern_hallway)
 "bqx" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -25339,7 +25322,7 @@
 	},
 /area/desert_dam/building/security/northern_hallway)
 "bqy" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -25355,7 +25338,7 @@
 	},
 /area/desert_dam/building/security/northern_hallway)
 "bqA" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -25398,7 +25381,7 @@
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
 "bqK" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-floor (SOUTHWEST)";
 	icon_state = "floor";
@@ -25571,7 +25554,7 @@
 	},
 /area/desert_dam/building/security/holding)
 "bro" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -25585,9 +25568,8 @@
 	},
 /area/desert_dam/building/security/northern_hallway)
 "brp" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -25616,7 +25598,7 @@
 	},
 /area/desert_dam/building/security/northern_hallway)
 "brt" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -25737,7 +25719,7 @@
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
 "brK" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -25841,7 +25823,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/holding)
 "brZ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -25915,7 +25897,7 @@
 	},
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "bsk" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -25953,7 +25935,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/security/southern_hallway)
 "bsq" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 4;
@@ -26030,7 +26012,7 @@
 	dir = 2;
 	name = "\improper Secure Tech Storage"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-floor (SOUTHWEST)";
 	icon_state = "floor";
@@ -26076,9 +26058,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
 "bsH" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	on = 1
-	},
+/obj/structure/pipes/vents/pump/on,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -26167,7 +26147,7 @@
 	},
 /area/desert_dam/building/security/southern_hallway)
 "bsT" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -26210,9 +26190,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "btk" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	on = 1
-	},
+/obj/structure/pipes/vents/pump/on,
 /turf/open/floor/prison{
 	tag = "icon-floor (SOUTHWEST)";
 	icon_state = "floor";
@@ -26271,7 +26249,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "btu" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -26359,7 +26337,7 @@
 /area/desert_dam/building/administration/hallway)
 "btI" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2";
@@ -26388,7 +26366,7 @@
 /area/desert_dam/building/administration/hallway)
 "btM" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -26441,7 +26419,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "btU" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -26543,9 +26521,8 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "buk" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
 /obj/structure/machinery/light{
 	dir = 1
@@ -26607,7 +26584,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "buB" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
@@ -26621,7 +26598,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "buC" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -26635,7 +26612,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "buD" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -26669,7 +26646,7 @@
 	},
 /area/desert_dam/building/administration/lobby)
 "buK" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -26705,7 +26682,7 @@
 	},
 /area/desert_dam/building/administration/hallway)
 "buP" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -26716,9 +26693,8 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "buQ" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -26746,7 +26722,7 @@
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "buW" = (
 /obj/structure/disposalpipe/junction,
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -26757,8 +26733,8 @@
 /area/desert_dam/building/administration/hallway)
 "buX" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2";
@@ -26791,7 +26767,7 @@
 	},
 /area/desert_dam/building/administration/hallway)
 "bvb" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -26806,7 +26782,7 @@
 	dir = 2;
 	name = "\improper SMES"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -26817,7 +26793,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
 "bvd" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -26828,7 +26804,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
 "bve" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
@@ -26877,7 +26853,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bvm" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
@@ -27003,7 +26979,7 @@
 	},
 /area/desert_dam/building/security/staffroom)
 "bvG" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/junction{
 	dir = 1;
 	icon_state = "pipe-j2"
@@ -27086,7 +27062,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "bvV" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -27095,7 +27071,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "bvW" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -27126,7 +27102,7 @@
 	icon_state = "pipe-j1";
 	dir = 4
 	},
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -27136,9 +27112,8 @@
 	},
 /area/desert_dam/building/administration/hallway)
 "bwb" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement{
@@ -27242,7 +27217,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
 "bwp" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -27293,7 +27268,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bwy" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -27496,7 +27471,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -27568,7 +27543,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2";
@@ -27640,7 +27615,7 @@
 	icon_state = "pipe-j1";
 	dir = 4
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -27831,7 +27806,7 @@
 	},
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
 "byb" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -27941,7 +27916,7 @@
 	},
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "byx" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/asphalt/cement{
 	icon_state = "cement2"
@@ -27959,7 +27934,7 @@
 	},
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "byz" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -27976,7 +27951,7 @@
 	icon_state = "pipe-j1";
 	dir = 4
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -28003,7 +27978,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper SMES"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -28012,9 +27987,8 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "byE" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -28194,7 +28168,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "bzl" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -28358,7 +28332,7 @@
 	},
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "bzG" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -28385,7 +28359,7 @@
 /area/desert_dam/interior/dam_interior/control_room)
 "bzJ" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "\improper Colony Overseer's Office";
@@ -28670,7 +28644,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/overseer_office)
@@ -28908,7 +28882,7 @@
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "bBt" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -28928,7 +28902,7 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "bBw" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -29050,7 +29024,7 @@
 	},
 /area/desert_dam/building/security/southern_hallway)
 "bBV" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -29075,7 +29049,7 @@
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
 "bCg" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
 "bCh" = (
@@ -29195,7 +29169,7 @@
 	},
 /area/desert_dam/interior/dam_interior/lobby)
 "bCv" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -29349,7 +29323,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "bCS" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement{
 	icon_state = "cement1"
 	},
@@ -29363,9 +29337,7 @@
 	},
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
 "bCU" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	on = 1
-	},
+/obj/structure/pipes/vents/pump/on,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	tag = "icon-floor (SOUTHWEST)";
@@ -29460,7 +29432,7 @@
 	},
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "bDh" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -29498,7 +29470,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "bDl" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -29513,7 +29485,7 @@
 	},
 /area/desert_dam/interior/dam_interior/lobby)
 "bDm" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -29524,7 +29496,7 @@
 	},
 /area/desert_dam/interior/dam_interior/lobby)
 "bDn" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -29647,7 +29619,7 @@
 	},
 /area/desert_dam/building/security/southern_hallway)
 "bDJ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -29673,9 +29645,8 @@
 	},
 /area/desert_dam/building/security/southern_hallway)
 "bDM" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
 	tag = "icon-pipe-s (WEST)";
@@ -29964,9 +29935,8 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "bEE" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -30034,7 +30004,7 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "bEK" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
 /obj/structure/disposalpipe/junction{
@@ -30058,7 +30028,7 @@
 /turf/open/floor/greengrid,
 /area/desert_dam/interior/dam_interior/smes_main)
 "bEN" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -30083,7 +30053,7 @@
 	dir = 2;
 	name = "\improper Engine Room"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -30097,7 +30067,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "bEQ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -30110,7 +30080,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "bER" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -30122,7 +30092,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "bES" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -30133,7 +30103,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "bET" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -30151,7 +30121,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "bEU" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -30165,7 +30135,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bEV" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
@@ -30408,9 +30378,8 @@
 	},
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "bFH" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /turf/open/floor/prison{
 	tag = "icon-cell_stripe";
@@ -30491,9 +30460,7 @@
 	},
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "bFR" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	on = 1
-	},
+/obj/structure/pipes/vents/pump/on,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -30584,9 +30551,8 @@
 	},
 /area/desert_dam/exterior/valley/valley_mining)
 "bGg" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "neutral"
@@ -30599,9 +30565,8 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bGi" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -30678,21 +30643,21 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Marshall Office"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/security/southern_hallway)
 "bGz" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/security/southern_hallway)
 "bGB" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -30700,7 +30665,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/southern_hallway)
 "bGD" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -30711,7 +30676,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/southern_hallway)
 "bGE" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -30730,7 +30695,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/courtroom)
 "bGH" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -30743,7 +30708,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -30769,7 +30734,7 @@
 	},
 /area/desert_dam/building/security/observation)
 "bGL" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/structure/disposalpipe/junction{
@@ -30783,7 +30748,7 @@
 	},
 /area/desert_dam/building/security/southern_hallway)
 "bGO" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /obj/structure/disposalpipe/junction{
 	dir = 1;
 	icon_state = "pipe-j2"
@@ -30817,7 +30782,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/smes_main)
 "bGR" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -30828,7 +30793,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "bGT" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /turf/open/asphalt/cement{
@@ -30914,7 +30879,7 @@
 	},
 /area/desert_dam/interior/dam_interior/lobby)
 "bHg" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -30979,9 +30944,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_backup)
 "bHp" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	on = 1
-	},
+/obj/structure/pipes/vents/pump/on,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	tag = "icon-floor (SOUTHWEST)";
@@ -31275,7 +31238,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_backup)
 "bIn" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -31397,7 +31360,7 @@
 /turf/open/desert/rock/deep/transition,
 /area/desert_dam/interior/caves/east_caves)
 "bIR" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -31593,7 +31556,7 @@
 	},
 /area/desert_dam/interior/dam_interior/lobby)
 "bJs" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -31605,7 +31568,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "bJt" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -31627,7 +31590,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_backup)
 "bJx" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -31680,9 +31643,8 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
 "bJJ" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -31704,7 +31666,7 @@
 	},
 /area/desert_dam/building/security/southern_hallway)
 "bJM" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -31908,7 +31870,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -31997,9 +31959,8 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_mining)
 "bKJ" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/courtroom)
@@ -32056,7 +32017,7 @@
 	},
 /area/desert_dam/building/security/staffroom)
 "bKZ" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/courtroom)
@@ -32068,7 +32029,7 @@
 	},
 /area/desert_dam/building/security/southern_hallway)
 "bLb" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -32091,14 +32052,14 @@
 /area/desert_dam/building/security/southern_hallway)
 "bLe" = (
 /obj/structure/table/woodentable,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/courtroom)
 "bLf" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -32109,7 +32070,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -32132,7 +32093,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bLk" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -32144,7 +32105,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bLl" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
@@ -32172,7 +32133,7 @@
 	},
 /area/desert_dam/building/mining/workshop)
 "bLo" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -32390,7 +32351,7 @@
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "bLX" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/asphalt/cement{
 	icon_state = "cement3"
@@ -32434,7 +32395,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bMd" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /turf/open/asphalt/cement,
@@ -32447,7 +32408,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bMf" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
@@ -32458,7 +32419,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bMg" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -32470,7 +32431,7 @@
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bMi" = (
 /obj/structure/table/reinforced,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -32484,7 +32445,7 @@
 "bMj" = (
 /obj/structure/table/reinforced,
 /obj/item/device/radio,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -32701,7 +32662,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bMO" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/junction,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -32779,7 +32740,7 @@
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "bNd" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
@@ -32793,7 +32754,7 @@
 	},
 /area/desert_dam/building/security/southern_hallway)
 "bNe" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -32821,7 +32782,7 @@
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "bNh" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 4;
@@ -32964,7 +32925,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -33019,7 +32980,7 @@
 	},
 /area/desert_dam/building/security/southern_hallway)
 "bNM" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 6;
@@ -33106,9 +33067,8 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
 "bOc" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement{
@@ -33275,7 +33235,7 @@
 	},
 /area/desert_dam/building/security/prison)
 "bOG" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -33331,7 +33291,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "bOO" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement{
 	icon_state = "cement1"
 	},
@@ -33413,7 +33373,7 @@
 	},
 /area/desert_dam/interior/dam_interior/CE_office)
 "bPd" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor/prison{
@@ -33724,16 +33684,12 @@
 "bPX" = (
 /obj/structure/table,
 /obj/item/device/radio,
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
-	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/desert_dam/interior/dam_interior/office)
 "bPY" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement{
 	icon_state = "cement2"
@@ -33817,7 +33773,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bQh" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowcorners2"
@@ -33988,7 +33944,7 @@
 	},
 /area/desert_dam/building/security/warden)
 "bQE" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "darkred2";
@@ -34147,7 +34103,7 @@
 	},
 /area/desert_dam/interior/dam_interior/office)
 "bRb" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -34430,9 +34386,8 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "bRS" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -34474,7 +34429,7 @@
 	},
 /area/desert_dam/interior/dam_interior/office)
 "bRW" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
@@ -34525,7 +34480,7 @@
 	},
 /area/desert_dam/building/security/prison)
 "bSc" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -34540,7 +34495,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "bSd" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -34555,7 +34510,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "bSe" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
@@ -34676,7 +34631,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bSw" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -34753,7 +34708,7 @@
 	},
 /area/desert_dam/interior/dam_interior/western_dam_cave)
 "bSK" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -34770,7 +34725,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "bSM" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -34803,7 +34758,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "bSS" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -34818,7 +34773,7 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "bSU" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /turf/open/asphalt/cement{
@@ -34840,7 +34795,7 @@
 	dir = 2;
 	name = "\improper Engineering Office"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor{
 	icon_state = "dark"
@@ -34864,7 +34819,7 @@
 	},
 /area/desert_dam/interior/dam_interior/CE_office)
 "bTa" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
 	tag = "icon-pipe-c (NORTH)";
 	icon_state = "pipe-c";
@@ -34978,9 +34933,8 @@
 	},
 /area/desert_dam/building/security/prison)
 "bTp" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
@@ -34990,7 +34944,7 @@
 	},
 /area/desert_dam/building/security/prison)
 "bTq" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -35021,9 +34975,8 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "bTv" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /turf/open/floor/prison{
 	icon_state = "darkred2"
@@ -35065,7 +35018,7 @@
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "bTD" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -35081,7 +35034,7 @@
 	},
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
 "bTF" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -35095,7 +35048,7 @@
 	},
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "bTH" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/west_tunnel)
@@ -35141,7 +35094,7 @@
 	},
 /area/desert_dam/interior/dam_interior/CE_office)
 "bTO" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -35261,7 +35214,7 @@
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "bUp" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -35568,7 +35521,7 @@
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "bVg" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
@@ -35580,9 +35533,8 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "bVh" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -35804,7 +35756,7 @@
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "bVP" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -35824,7 +35776,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "bVR" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -35912,7 +35864,7 @@
 	},
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "bVZ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
@@ -35955,7 +35907,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Warden"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -35965,7 +35917,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/warden)
 "bWg" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -36044,7 +35996,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_dam)
 "bWt" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -36086,9 +36038,8 @@
 	},
 /area/desert_dam/exterior/river/riverside_central_north)
 "bWA" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -36249,7 +36200,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "bWY" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement{
 	icon_state = "cement1"
@@ -36817,7 +36768,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "bYA" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -36871,7 +36822,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_central_north)
 "bYG" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /obj/structure/disposalpipe/junction{
@@ -37001,7 +36952,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "bYZ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -37012,7 +36963,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "bZa" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -37039,7 +36990,7 @@
 	},
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "bZd" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/structure/disposalpipe/junction{
@@ -37084,7 +37035,7 @@
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "bZi" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /obj/structure/disposalpipe/junction{
 	tag = "icon-pipe-j1 (WEST)";
 	icon_state = "pipe-j1";
@@ -37376,7 +37327,7 @@
 /area/desert_dam/interior/dam_interior/disposals)
 "bZS" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -37472,7 +37423,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_mining)
 "cah" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -37789,7 +37740,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "cbf" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -37827,7 +37778,7 @@
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "cbj" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -37843,8 +37794,8 @@
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/glasses/welding,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/floor{
@@ -37906,7 +37857,7 @@
 	},
 /area/desert_dam/interior/dam_interior/lobby)
 "cbs" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -37988,7 +37939,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/security/deathrow)
 "cbB" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -38017,7 +37968,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_medical)
 "cbE" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -38106,7 +38057,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "cbP" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -38121,16 +38072,15 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "cbR" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "cbS" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
@@ -38168,7 +38118,7 @@
 /obj/structure/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/technology_scanner,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor{
@@ -38184,9 +38134,8 @@
 	},
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "cbZ" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /turf/open/floor{
 	tag = "icon-whiteyellowcorner (EAST)";
@@ -38362,7 +38311,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "ccz" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -38371,7 +38320,7 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "ccA" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
@@ -38383,7 +38332,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "ccB" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -38422,10 +38371,6 @@
 "ccF" = (
 /obj/structure/table,
 /obj/item/tool/lighter/random,
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
-	},
 /turf/open/floor{
 	tag = "icon-whiteyellow";
 	icon_state = "whiteyellow";
@@ -38433,7 +38378,7 @@
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "ccG" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -38448,7 +38393,7 @@
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "ccI" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "grimy"
@@ -38609,9 +38554,8 @@
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/interior/dam_interior/break_room)
 "cdn" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -38623,7 +38567,7 @@
 	},
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "cdo" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/asphalt/cement{
 	icon_state = "cement1"
@@ -38846,7 +38790,7 @@
 	},
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "cdQ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -38907,7 +38851,7 @@
 /area/desert_dam/interior/caves/central_caves)
 "cdY" = (
 /obj/structure/table/woodentable,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "grimy"
@@ -39027,7 +38971,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_medical)
 "cet" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -39140,7 +39084,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "ceI" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -39173,7 +39117,7 @@
 /area/desert_dam/building/bar/bar)
 "ceM" = (
 /obj/structure/bed/stool,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -39392,7 +39336,7 @@
 	},
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "cfs" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -39794,7 +39738,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "cgU" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -40041,7 +39985,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "chK" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
@@ -40360,7 +40304,7 @@
 	},
 /area/desert_dam/building/security/prison)
 "ciL" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -40825,7 +40769,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/medical/break_room)
 "ckj" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/prison,
 /area/desert_dam/building/medical/break_room)
 "ckk" = (
@@ -41014,9 +40958,8 @@
 	},
 /area/desert_dam/building/medical/chemistry)
 "ckI" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -41026,7 +40969,7 @@
 	},
 /area/desert_dam/building/medical/chemistry)
 "ckJ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -41046,7 +40989,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "ckM" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /obj/structure/disposalpipe/junction{
@@ -41072,7 +41015,7 @@
 	},
 /area/desert_dam/building/medical/morgue)
 "ckP" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (WEST)";
 	icon_state = "sterile_white";
@@ -41119,7 +41062,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "ckU" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison,
 /area/desert_dam/building/medical/break_room)
 "ckV" = (
@@ -41158,7 +41101,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/break_room)
 "cla" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /obj/structure/disposalpipe/segment,
@@ -41421,7 +41364,7 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "clN" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	dir = 4;
@@ -41431,6 +41374,7 @@
 "clO" = (
 /obj/structure/table,
 /obj/item/device/autopsy_scanner,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (WEST)";
 	icon_state = "sterile_white";
@@ -41606,7 +41550,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/telecommunication)
 "cmp" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/bar/bar)
@@ -41694,7 +41638,7 @@
 	},
 /area/desert_dam/interior/dam_interior/lobby)
 "cmE" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison,
 /area/desert_dam/building/medical/break_room)
@@ -41828,7 +41772,7 @@
 	},
 /area/desert_dam/building/warehouse/breakroom)
 "cnc" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
@@ -42019,9 +41963,8 @@
 	},
 /area/desert_dam/building/medical/chemistry)
 "cnI" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -42208,7 +42151,7 @@
 	},
 /area/desert_dam/building/warehouse/breakroom)
 "coj" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
@@ -42248,7 +42191,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "con" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/junction,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (WEST)";
@@ -42450,6 +42393,7 @@
 	dir = 2;
 	name = "\improper Morgue"
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean2 (SOUTHWEST)";
 	icon_state = "bright_clean2";
@@ -42717,7 +42661,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_backup)
 "cpF" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/junction{
 	dir = 1;
 	icon_state = "pipe-j2"
@@ -42893,7 +42837,7 @@
 	},
 /area/desert_dam/building/telecommunication)
 "cqf" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (WEST)";
@@ -43016,7 +42960,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/warehouse/breakroom)
 "cqw" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -43029,7 +42973,7 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "cqx" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -43050,7 +42994,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "cqA" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -43069,7 +43013,7 @@
 	},
 /area/desert_dam/interior/dam_interior/lobby)
 "cqE" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -43115,7 +43059,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "cqJ" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -43422,7 +43366,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "crP" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
@@ -43434,7 +43378,7 @@
 	},
 /area/desert_dam/building/medical/north_wing_hallway)
 "crQ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement{
@@ -43449,9 +43393,8 @@
 	},
 /area/desert_dam/building/medical/north_wing_hallway)
 "crS" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement{
@@ -43557,7 +43500,7 @@
 	},
 /area/desert_dam/building/security/prison)
 "csm" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -43569,7 +43512,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/execution_chamber)
 "csn" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -43632,7 +43575,7 @@
 	},
 /area/desert_dam/building/telecommunication)
 "csx" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor/prison,
@@ -43714,9 +43657,8 @@
 	},
 /area/desert_dam/building/medical/lobby)
 "csK" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /turf/open/floor/prison{
 	dir = 1;
@@ -43724,7 +43666,7 @@
 	},
 /area/desert_dam/building/medical/lobby)
 "csL" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -43738,7 +43680,7 @@
 "csM" = (
 /obj/effect/spawner/random/toolbox,
 /obj/structure/table/reinforced,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -43752,7 +43694,7 @@
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "csN" = (
 /obj/structure/table/reinforced,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -43764,7 +43706,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "csO" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -43774,7 +43716,7 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "csP" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
@@ -43815,7 +43757,7 @@
 	},
 /area/desert_dam/building/medical/north_wing_hallway)
 "csV" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	dir = 4;
@@ -43932,9 +43874,8 @@
 	},
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "ctl" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement{
@@ -44117,7 +44058,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "ctP" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -44210,7 +44151,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "cud" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	dir = 4;
@@ -44231,7 +44172,7 @@
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/medical/north_wing_hallway)
 "cuj" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -44243,7 +44184,7 @@
 	},
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "cuk" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -44258,7 +44199,7 @@
 	},
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "cul" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -44272,7 +44213,7 @@
 	},
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "cum" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -44285,7 +44226,7 @@
 	},
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "cun" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /obj/structure/disposalpipe/segment{
@@ -44325,7 +44266,7 @@
 	},
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "cus" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement{
@@ -44640,7 +44581,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/CMO)
 "cvj" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
 	tag = "icon-pipe-c (NORTH)";
 	icon_state = "pipe-c";
@@ -44922,7 +44863,7 @@
 /area/desert_dam/building/medical/primary_storage)
 "cvV" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -44951,7 +44892,7 @@
 /area/desert_dam/building/medical/surgury_observation)
 "cwb" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -45270,7 +45211,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "cwV" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -45284,7 +45225,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "cwW" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -45301,7 +45242,7 @@
 	},
 /area/desert_dam/building/medical/CMO)
 "cwX" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -45311,9 +45252,8 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/CMO)
 "cwY" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -45348,7 +45288,7 @@
 	},
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "cxf" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
@@ -45550,7 +45490,7 @@
 /area/desert_dam/building/medical/surgury_observation)
 "cxG" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -45694,7 +45634,7 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "cyb" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
@@ -45708,7 +45648,7 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "cyc" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -45722,7 +45662,7 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "cyd" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -45736,9 +45676,8 @@
 	},
 /area/desert_dam/building/medical/primary_storage)
 "cye" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -46876,7 +46815,7 @@
 	tag = "icon-triagedecalbottom";
 	icon_state = "triagedecalbottom"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	dir = 4;
@@ -47235,7 +47174,7 @@
 	},
 /area/desert_dam/building/medical/emergency_room)
 "cCl" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	dir = 4;
@@ -47581,11 +47520,14 @@
 	},
 /area/desert_dam/building/medical/garage)
 "cDi" = (
-/obj/structure/machinery/atmospherics/portables_connector{
+/obj/structure/pipes/portables_connector{
 	icon_state = "map_connector";
 	dir = 4
 	},
 /obj/structure/machinery/portable_atmospherics/canister/oxygen,
+/obj/structure/pipes/standard/cap/hidden{
+	dir = 4
+	},
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "whitegreen"
@@ -47595,7 +47537,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden{
+/obj/structure/pipes/standard/simple/hidden{
 	icon_state = "intact";
 	dir = 10
 	},
@@ -47613,21 +47555,21 @@
 	},
 /area/desert_dam/interior/dam_interior/CE_office)
 "cDl" = (
-/obj/structure/machinery/atmospherics/unary/cryo_cell,
+/obj/structure/machinery/cryo_cell,
 /obj/effect/decal/medical_decals{
 	tag = "icon-cryotop";
 	icon_state = "cryotop"
 	},
+/obj/structure/pipes/standard/cap/hidden,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitegreen"
 	},
 /area/desert_dam/building/medical/emergency_room)
 "cDm" = (
-/obj/structure/machinery/atmospherics/unary/freezer{
+/obj/structure/pipes/unary/freezer{
 	dir = 2;
-	icon_state = "freezer_1";
-	on = 1
+	icon_state = "freezer_1"
 	},
 /turf/open/floor/prison{
 	dir = 1;
@@ -47639,7 +47581,8 @@
 	tag = "icon-cryotop";
 	icon_state = "cryotop"
 	},
-/obj/structure/machinery/atmospherics/unary/cryo_cell,
+/obj/structure/machinery/cryo_cell,
+/obj/structure/pipes/standard/cap/hidden,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitegreen"
@@ -47979,18 +47922,21 @@
 	},
 /area/desert_dam/building/medical/garage)
 "cEj" = (
-/obj/structure/machinery/atmospherics/portables_connector{
+/obj/structure/pipes/portables_connector{
 	icon_state = "map_connector";
 	dir = 4
 	},
 /obj/structure/machinery/portable_atmospherics/canister/oxygen,
+/obj/structure/pipes/standard/cap/hidden{
+	dir = 4
+	},
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "whitegreen"
 	},
 /area/desert_dam/building/medical/emergency_room)
 "cEk" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden,
+/obj/structure/pipes/standard/manifold/hidden,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "whitegreen"
@@ -48014,14 +47960,14 @@
 	tag = "icon-cryomid";
 	icon_state = "cryomid"
 	},
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden,
+/obj/structure/pipes/standard/manifold/hidden,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "whitegreen"
 	},
 /area/desert_dam/building/medical/emergency_room)
 "cEp" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden,
+/obj/structure/pipes/standard/manifold/hidden,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitegreen"
@@ -48032,7 +47978,7 @@
 	tag = "icon-cryomid";
 	icon_state = "cryomid"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden{
+/obj/structure/pipes/standard/simple/hidden{
 	tag = "icon-intact (NORTHWEST)";
 	icon_state = "intact";
 	dir = 9
@@ -48058,7 +48004,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/workshop)
 "cEu" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
@@ -48325,7 +48271,7 @@
 	},
 /area/desert_dam/building/medical/garage)
 "cFi" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
@@ -48346,7 +48292,7 @@
 	},
 /area/desert_dam/interior/dam_interior/CE_office)
 "cFl" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "whitegreen"
@@ -48367,7 +48313,7 @@
 	},
 /area/desert_dam/building/medical/treatment_room)
 "cFq" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	dir = 1;
@@ -48413,9 +48359,8 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -48425,7 +48370,7 @@
 	},
 /area/desert_dam/interior/dam_interior/CE_office)
 "cFv" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -48443,7 +48388,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper CE Office"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -48458,7 +48403,7 @@
 	},
 /area/desert_dam/interior/dam_interior/CE_office)
 "cFx" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -48477,7 +48422,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -48544,7 +48489,7 @@
 	icon_state = "wooden_chair";
 	tag = ""
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -48709,7 +48654,7 @@
 	tag = "icon-docdecal1";
 	icon_state = "docdecal1"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -48723,7 +48668,7 @@
 	},
 /area/desert_dam/building/medical/emergency_room)
 "cGf" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -48736,7 +48681,7 @@
 	},
 /area/desert_dam/building/medical/emergency_room)
 "cGg" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -48767,7 +48712,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cGj" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
 /obj/structure/disposalpipe/segment{
@@ -48778,7 +48723,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/workshop)
 "cGk" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -48790,7 +48735,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/workshop)
 "cGl" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -48803,7 +48748,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/workshop)
 "cGm" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -48811,7 +48756,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/workshop)
 "cGn" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -48820,7 +48765,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/workshop)
 "cGp" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/structure/disposalpipe/junction{
@@ -48834,7 +48779,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "cGq" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /obj/structure/disposalpipe/junction{
 	tag = "icon-pipe-j1 (WEST)";
 	icon_state = "pipe-j1";
@@ -48862,7 +48807,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "cGt" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -48903,7 +48848,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cGy" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement{
@@ -49184,7 +49129,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "cHi" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (WEST)";
@@ -49347,7 +49292,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "cHD" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -49367,7 +49312,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "cHG" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
@@ -49411,7 +49356,7 @@
 /turf/closed/wall,
 /area/desert_dam/building/medical/east_wing_hallway)
 "cHM" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
@@ -49435,7 +49380,7 @@
 	},
 /area/desert_dam/building/medical/virology_wing)
 "cHQ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	dir = 4;
@@ -49591,7 +49536,7 @@
 	},
 /area/desert_dam/building/warehouse/loading)
 "cIr" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -49739,7 +49684,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/east_wing_hallway)
 "cIL" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/east_wing_hallway)
@@ -49915,7 +49860,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cJn" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/warning_stripes{
 	tag = "icon-N";
@@ -50436,7 +50381,7 @@
 	},
 /area/desert_dam/building/medical/virology_wing)
 "cKH" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/junction{
 	dir = 1;
 	icon_state = "pipe-j2"
@@ -50569,14 +50514,14 @@
 	},
 /area/desert_dam/building/warehouse/breakroom)
 "cLc" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/warehouse)
 "cLd" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -50846,7 +50791,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/warehouse)
 "cMe" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -50854,7 +50799,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/warehouse)
 "cMf" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -50876,7 +50821,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cMj" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -50889,7 +50834,7 @@
 	},
 /area/desert_dam/building/warehouse/breakroom)
 "cMm" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -50897,7 +50842,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/loading)
 "cMn" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -50925,7 +50870,7 @@
 	},
 /area/desert_dam/exterior/landing_pad_two)
 "cMw" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
@@ -51110,7 +51055,7 @@
 	},
 /area/desert_dam/building/medical/virology_isolation)
 "cMY" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
@@ -51162,9 +51107,8 @@
 	},
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "cNf" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -51365,7 +51309,7 @@
 	},
 /area/desert_dam/building/medical/virology_isolation)
 "cNK" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/floor/prison{
@@ -51374,7 +51318,7 @@
 	},
 /area/desert_dam/building/medical/virology_isolation)
 "cNL" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -51384,7 +51328,7 @@
 	},
 /area/desert_dam/building/medical/virology_isolation)
 "cNM" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -51397,7 +51341,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Engineering Central"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -51506,7 +51450,7 @@
 	},
 /area/desert_dam/building/church)
 "cOc" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/warehouse)
 "cOd" = (
@@ -51528,9 +51472,8 @@
 	},
 /area/desert_dam/building/church)
 "cOf" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/security/execution_chamber)
@@ -51582,7 +51525,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "cOq" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/west_tunnel)
@@ -52003,7 +51946,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "cPy" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/desertdam/decals/road_stop{
 	dir = 4;
 	icon_state = "stop_decal5"
@@ -52289,7 +52232,7 @@
 	},
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "cQk" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/warning_stripes{
 	tag = "icon-S";
 	icon_state = "S"
@@ -52356,7 +52299,7 @@
 /turf/closed/wall/wood,
 /area/desert_dam/building/bar/bar_restroom)
 "cQy" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/bar/bar)
 "cQz" = (
@@ -52548,7 +52491,7 @@
 	icon_state = "wooden_chair";
 	tag = ""
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
 "cRa" = (
@@ -52624,9 +52567,8 @@
 	},
 /area/desert_dam/building/medical/virology_isolation)
 "cRp" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (WEST)";
@@ -52635,7 +52577,7 @@
 	},
 /area/desert_dam/building/bar/bar_restroom)
 "cRq" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -52646,7 +52588,7 @@
 	},
 /area/desert_dam/building/bar/bar_restroom)
 "cRr" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -52658,14 +52600,14 @@
 	},
 /area/desert_dam/building/bar/bar_restroom)
 "cRs" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "cRt" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -52689,25 +52631,25 @@
 	icon_state = "wooden_chair";
 	tag = ""
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
 "cRy" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
 "cRz" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/bar/bar)
 "cRA" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -52734,7 +52676,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cRD" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -52751,9 +52693,8 @@
 	},
 /area/desert_dam/exterior/landing_pad_two)
 "cRF" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
@@ -53685,7 +53626,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "cUU" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/warning_stripes{
 	tag = "icon-S";
 	icon_state = "S"
@@ -53706,7 +53647,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/loading)
 "cUW" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -53745,9 +53686,8 @@
 	},
 /area/desert_dam/building/warehouse/warehouse)
 "cVh" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /turf/open/floor/prison{
 	tag = "icon-cell_stripe (NORTH)";
@@ -53810,9 +53750,8 @@
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "cVv" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -54816,6 +54755,14 @@
 	icon_state = "cement_sunbleached9"
 	},
 /area/desert_dam/exterior/valley/valley_medical)
+"cZK" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (WEST)";
+	icon_state = "sterile_white";
+	dir = 8
+	},
+/area/desert_dam/building/medical/morgue)
 "cZP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/desertdam/decals/road_edge{
@@ -54894,7 +54841,7 @@
 	is_resin_allowed = 0
 	})
 "dax" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -55005,9 +54952,8 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
@@ -55561,7 +55507,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "dcS" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -55644,7 +55590,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "ddl" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -55658,7 +55604,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "ddm" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -55669,7 +55615,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/cafeteria)
 "ddn" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -55679,11 +55625,11 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
 "ddo" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -55692,7 +55638,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
 "ddp" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -55706,7 +55652,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Freezer"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -55715,7 +55661,7 @@
 	},
 /area/desert_dam/building/cafeteria/cold_room)
 "ddr" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -55724,9 +55670,8 @@
 	},
 /area/desert_dam/building/cafeteria/cold_room)
 "dds" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -55947,7 +55892,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "deg" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
 	icon_state = "sterile_white";
@@ -55955,7 +55900,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "deh" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
 "dej" = (
@@ -56041,7 +55986,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "det" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement{
@@ -56155,9 +56100,8 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "deK" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
@@ -56576,7 +56520,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/hydroponics/hydroponics)
 "dga" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -56597,7 +56541,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dgc" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-kitchen (SOUTHWEST)";
 	icon_state = "kitchen";
@@ -56605,7 +56549,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dgd" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /turf/open/floor/prison{
@@ -56856,7 +56800,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dgM" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/central_tunnel)
@@ -57785,7 +57729,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Break Room"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "white"
@@ -58415,7 +58359,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/garage)
 "dtw" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /obj/structure/disposalpipe/segment{
@@ -58483,7 +58427,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "dtT" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement{
@@ -58580,7 +58524,7 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "dux" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -59420,20 +59364,20 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_civilian)
 "dzv" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
 "dzw" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
 "dzx" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -59450,7 +59394,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "dzz" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -59470,7 +59414,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dzB" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -59482,7 +59426,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dzC" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -59494,7 +59438,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dzD" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -59648,9 +59592,8 @@
 	},
 /area/desert_dam/building/dorms/hallway_northwing)
 "dAJ" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/prison{
@@ -59658,12 +59601,12 @@
 	},
 /area/desert_dam/building/dorms/hallway_northwing)
 "dAK" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
 "dAL" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	tag = "icon-kitchen (SOUTHWEST)";
@@ -59815,7 +59758,7 @@
 /turf/closed/wall,
 /area/desert_dam/building/dorms/restroom)
 "dBz" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -59845,7 +59788,7 @@
 	},
 /area/desert_dam/building/dorms/pool)
 "dBD" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor/prison{
@@ -59855,7 +59798,7 @@
 	},
 /area/desert_dam/building/dorms/pool)
 "dBF" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "white"
@@ -59877,9 +59820,8 @@
 /area/desert_dam/building/water_treatment_one/hallway)
 "dBM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -60060,9 +60002,8 @@
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "dCz" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement,
@@ -60072,7 +60013,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/CMO)
 "dCD" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	tag = "icon-whiteyellowcorner (EAST)";
@@ -60081,7 +60022,7 @@
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dCE" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
@@ -60375,7 +60316,7 @@
 "dDQ" = (
 /obj/item/seeds/soyaseed,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -60594,7 +60535,7 @@
 	},
 /area/desert_dam/building/dorms/hallway_westwing)
 "dFg" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_westwing)
 "dFh" = (
@@ -60650,7 +60591,7 @@
 /area/desert_dam/exterior/valley/valley_cargo)
 "dFr" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -60757,9 +60698,8 @@
 	},
 /area/desert_dam/building/dorms/restroom)
 "dFZ" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2";
@@ -61010,7 +60950,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dHk" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -61043,7 +60983,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dHp" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -61322,7 +61262,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dIn" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
 	icon_state = "sterile_white";
@@ -61340,7 +61280,7 @@
 	},
 /area/desert_dam/building/dorms/pool)
 "dIp" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -61353,7 +61293,7 @@
 	},
 /area/desert_dam/building/dorms/pool)
 "dIq" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood{
 	tag = "icon-gib6";
@@ -61543,7 +61483,7 @@
 	},
 /area/desert_dam/building/dorms/pool)
 "dIS" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
@@ -61608,7 +61548,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dJj" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -61754,9 +61694,8 @@
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/exterior/river/riverside_east)
 "dJU" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
@@ -61774,9 +61713,8 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dJW" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -61795,9 +61733,8 @@
 	},
 /area/desert_dam/building/dorms/pool)
 "dJY" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /obj/effect/decal/cleanable/blood{
 	layer = 3;
@@ -61820,7 +61757,7 @@
 /area/desert_dam/building/administration/hallway)
 "dKa" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
 /obj/effect/decal/cleanable/blood,
@@ -61893,7 +61830,7 @@
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dKl" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -62088,7 +62025,7 @@
 "dKT" = (
 /obj/structure/table,
 /obj/effect/spawner/random/toolbox,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -62103,7 +62040,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -62115,7 +62052,7 @@
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dKV" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -62126,7 +62063,7 @@
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dKW" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -62138,7 +62075,7 @@
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dKY" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -62152,7 +62089,7 @@
 	dir = 2;
 	name = "\improper Break Room"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -62162,7 +62099,7 @@
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dLa" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -62171,7 +62108,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "dLb" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -62254,7 +62191,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_east)
 "dLn" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -62321,7 +62258,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Restroom"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -62454,7 +62391,7 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/valley/valley_mining)
 "dMg" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -62469,7 +62406,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -62865,7 +62802,7 @@
 	},
 /area/desert_dam/building/medical/chemistry)
 "dOu" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -62880,7 +62817,7 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "dOv" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -62954,7 +62891,7 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "dOH" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -62978,7 +62915,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/medical/break_room)
 "dOK" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
@@ -63035,7 +62972,7 @@
 	},
 /area/desert_dam/building/medical/morgue)
 "dOV" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -63149,7 +63086,7 @@
 	},
 /area/desert_dam/building/medical/north_wing_hallway)
 "dPo" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -63167,7 +63104,7 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "dPs" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
@@ -63181,7 +63118,7 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "dPt" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -63195,7 +63132,7 @@
 	},
 /area/desert_dam/building/medical/north_wing_hallway)
 "dPu" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -63210,7 +63147,7 @@
 	},
 /area/desert_dam/building/medical/north_wing_hallway)
 "dPy" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -63224,7 +63161,7 @@
 	},
 /area/desert_dam/building/medical/north_wing_hallway)
 "dPz" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -63276,9 +63213,8 @@
 	},
 /area/desert_dam/building/medical/north_wing_hallway)
 "dPK" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -63345,7 +63281,7 @@
 	},
 /area/desert_dam/building/medical/lobby)
 "dPU" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -63356,7 +63292,7 @@
 	},
 /area/desert_dam/building/medical/lobby)
 "dPW" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -63450,7 +63386,7 @@
 	},
 /area/desert_dam/building/medical/lobby)
 "dQj" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -63485,7 +63421,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dQn" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/junction{
 	dir = 1;
 	icon_state = "pipe-j2"
@@ -63519,7 +63455,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dQr" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
@@ -63572,7 +63508,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dQv" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
@@ -63597,7 +63533,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dQx" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/roller,
@@ -63629,7 +63565,7 @@
 	},
 /area/desert_dam/building/medical/lobby)
 "dQA" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
@@ -63806,7 +63742,7 @@
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dRc" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden{
+/obj/structure/pipes/standard/simple/hidden{
 	icon_state = "intact";
 	dir = 4
 	},
@@ -63817,7 +63753,7 @@
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dRd" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden{
+/obj/structure/pipes/standard/simple/hidden{
 	icon_state = "intact";
 	dir = 4
 	},
@@ -63828,7 +63764,7 @@
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dRe" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden{
+/obj/structure/pipes/standard/simple/hidden{
 	icon_state = "intact";
 	dir = 4
 	},
@@ -63971,7 +63907,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dRu" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -63981,7 +63917,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dRv" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 1;
@@ -64046,9 +63982,8 @@
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dRG" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -64059,7 +63994,7 @@
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dRH" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -64071,7 +64006,7 @@
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dRI" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -64083,7 +64018,7 @@
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dRJ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -64097,7 +64032,7 @@
 	},
 /area/desert_dam/building/medical/treatment_room)
 "dRL" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -64111,7 +64046,7 @@
 	},
 /area/desert_dam/building/medical/treatment_room)
 "dRM" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -64126,7 +64061,7 @@
 	},
 /area/desert_dam/building/medical/treatment_room)
 "dRN" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /obj/structure/disposalpipe/junction{
 	tag = "icon-pipe-j1 (WEST)";
 	icon_state = "pipe-j1";
@@ -64140,7 +64075,7 @@
 	},
 /area/desert_dam/building/medical/treatment_room)
 "dRO" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -64156,7 +64091,7 @@
 	},
 /area/desert_dam/building/medical/treatment_room)
 "dRP" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -64174,7 +64109,7 @@
 	dir = 2;
 	name = "\improper Surgery"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -64192,7 +64127,7 @@
 	tag = "icon-triagedecalleft";
 	icon_state = "triagedecalleft"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -64206,7 +64141,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dRS" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -64217,7 +64152,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dRT" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -64231,7 +64166,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dRV" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -64246,7 +64181,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dRX" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -64262,7 +64197,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dRY" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -64278,7 +64213,7 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dRZ" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/structure/disposalpipe/junction{
@@ -64296,7 +64231,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -64307,9 +64242,8 @@
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
 "dSb" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -64557,7 +64491,7 @@
 	},
 /area/desert_dam/building/medical/virology_isolation)
 "dSH" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -64591,7 +64525,7 @@
 	},
 /area/desert_dam/building/medical/virology_wing)
 "dSV" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
@@ -64620,7 +64554,7 @@
 	},
 /area/desert_dam/building/medical/virology_isolation)
 "dSY" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -64631,7 +64565,7 @@
 	},
 /area/desert_dam/building/medical/virology_wing)
 "dSZ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -64644,7 +64578,7 @@
 /area/desert_dam/building/medical/virology_wing)
 "dTa" = (
 /obj/structure/machinery/chem_master,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -64679,9 +64613,8 @@
 	},
 /area/desert_dam/building/medical/virology_isolation)
 "dTf" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -64913,7 +64846,7 @@
 /area/desert_dam/building/cafeteria/cafeteria)
 "dUf" = (
 /obj/structure/table/reinforced,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/poddoor/shutters{
 	icon_state = "shutter1";
 	dir = 2
@@ -64952,7 +64885,7 @@
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUm" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -64963,7 +64896,7 @@
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUn" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -65015,7 +64948,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dUu" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/window/framed/colony,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
@@ -65040,7 +64973,7 @@
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUx" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor/prison{
@@ -65058,7 +64991,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUz" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -65147,7 +65080,7 @@
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor/prison{
@@ -65156,10 +65089,9 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUI" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
+/obj/structure/pipes/vents/pump{
 	dir = 8;
-	id_tag = "mining_outpost_pump";
-	on = 1
+	id_tag = "mining_outpost_pump"
 	},
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -65335,7 +65267,7 @@
 "dVx" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -65444,7 +65376,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/water_treatment_one/garage)
 "dVG" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "yellowcorner"
@@ -65499,7 +65431,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -65530,7 +65462,7 @@
 /area/desert_dam/building/water_treatment_one/control_room)
 "dVR" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -65585,7 +65517,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor/prison{
@@ -65666,7 +65598,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -65682,7 +65614,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -65696,7 +65628,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -65712,7 +65644,7 @@
 	},
 /obj/item/seeds/riceseed,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -65727,7 +65659,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -65742,7 +65674,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -65753,7 +65685,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dWp" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -65781,10 +65713,9 @@
 /area/desert_dam/building/water_treatment_one/control_room)
 "dWs" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/unary/vent_pump{
+/obj/structure/pipes/vents/pump{
 	dir = 8;
-	id_tag = "mining_outpost_pump";
-	on = 1
+	id_tag = "mining_outpost_pump"
 	},
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -65879,7 +65810,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dWJ" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/wood,
 /area/desert_dam/building/water_treatment_one/hallway)
 "dWK" = (
@@ -66207,16 +66138,15 @@
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "dXI" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
 "dXJ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -66225,7 +66155,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
 "dXK" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -66233,7 +66163,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
 "dXN" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -66243,7 +66173,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
 "dXO" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/structure/disposalpipe/junction{
@@ -66288,7 +66218,7 @@
 	},
 /area/desert_dam/building/dorms/hallway_northwing)
 "dYb" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
@@ -66299,7 +66229,7 @@
 	},
 /area/desert_dam/building/dorms/hallway_northwing)
 "dYi" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -66340,7 +66270,7 @@
 	},
 /area/desert_dam/building/dorms/restroom)
 "dYz" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -66376,7 +66306,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
 "dYM" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_westwing)
@@ -66406,7 +66336,7 @@
 	},
 /area/desert_dam/building/dorms/hallway_westwing)
 "dYS" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
@@ -66446,15 +66376,14 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_westwing)
 "dZm" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_westwing)
 "dZn" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -66462,7 +66391,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_westwing)
 "dZp" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -66492,7 +66421,7 @@
 	},
 /area/desert_dam/building/dorms/pool)
 "dZH" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
@@ -66501,7 +66430,7 @@
 	},
 /area/desert_dam/building/dorms/pool)
 "dZI" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -66576,13 +66505,13 @@
 	},
 /area/desert_dam/building/dorms/hallway_westwing)
 "ead" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/wood,
 /area/desert_dam/building/water_treatment_one/hallway)
 "eae" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -66592,7 +66521,7 @@
 "eag" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -66600,7 +66529,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/lobby)
 "eak" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/lobby)
 "eal" = (
@@ -66609,7 +66538,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_westwing)
 "eau" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -66617,13 +66546,13 @@
 	},
 /area/desert_dam/building/water_treatment_one/garage)
 "eav" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/hallway)
 "eaw" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -66671,7 +66600,7 @@
 	},
 /area/desert_dam/building/dorms/hallway_westwing)
 "eaK" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cheesie,
 /turf/open/floor/prison,
@@ -66692,7 +66621,7 @@
 	},
 /area/desert_dam/building/dorms/restroom)
 "eaO" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -66722,7 +66651,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -66767,7 +66696,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_westwing)
 "ebc" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -66897,7 +66826,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -67042,7 +66971,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -67051,7 +66980,7 @@
 /area/desert_dam/building/water_treatment_one/hallway)
 "ece" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/floor/prison{
@@ -67062,7 +66991,7 @@
 /area/desert_dam/building/water_treatment_one/garage)
 "ecf" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -67077,7 +67006,7 @@
 	dir = 2
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -67089,7 +67018,7 @@
 /area/desert_dam/building/water_treatment_one/hallway)
 "ech" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -67100,7 +67029,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "eci" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -67113,7 +67042,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -67128,7 +67057,7 @@
 	icon_state = "pipe-j1";
 	dir = 4
 	},
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -67141,7 +67070,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -67156,7 +67085,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -67172,7 +67101,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -67187,7 +67116,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -67199,7 +67128,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /turf/open/floor/prison{
@@ -67214,7 +67143,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -67230,7 +67159,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -67241,7 +67170,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -67257,7 +67186,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -67268,9 +67197,8 @@
 	},
 /area/desert_dam/building/water_treatment_one/control_room)
 "ecv" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -67280,7 +67208,7 @@
 /area/desert_dam/building/water_treatment_one/control_room)
 "ecw" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -67289,7 +67217,7 @@
 /area/desert_dam/building/water_treatment_one/garage)
 "ecx" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -67298,9 +67226,8 @@
 /area/desert_dam/building/water_treatment_one/hallway)
 "ecy" = (
 /obj/structure/machinery/light,
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/hallway)
@@ -67309,12 +67236,12 @@
 	dir = 1;
 	icon_state = "pipe-j2"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
 "ecB" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -67327,13 +67254,13 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "white"
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ecE" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -67342,7 +67269,7 @@
 /area/desert_dam/building/water_treatment_one/equipment)
 "ecH" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	tag = "icon-freezerfloor";
 	icon_state = "freezerfloor"
@@ -67350,25 +67277,23 @@
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ecI" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "white"
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ecK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "white"
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ecL" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 1
 	},
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -67378,7 +67303,7 @@
 /area/desert_dam/building/water_treatment_one/equipment)
 "ecM" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor{
@@ -67387,7 +67312,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ecN" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -67397,10 +67322,9 @@
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ecO" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
+/obj/structure/pipes/vents/pump{
 	dir = 8;
-	id_tag = "mining_outpost_pump";
-	on = 1
+	id_tag = "mining_outpost_pump"
 	},
 /turf/open/floor{
 	tag = "icon-freezerfloor";
@@ -67444,7 +67368,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -67467,7 +67391,7 @@
 	dir = 2;
 	name = "\improper Treatment Checkpoint"
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -67493,7 +67417,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -67534,7 +67458,7 @@
 	name = "\improper Treatment Showers"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	tag = "icon-freezerfloor";
 	icon_state = "freezerfloor"
@@ -67542,7 +67466,7 @@
 /area/desert_dam/building/water_treatment_one/breakroom)
 "eee" = (
 /obj/structure/window/framed/hangar,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/desert_dam/building/water_treatment_one/hallway)
 "eei" = (
@@ -68226,7 +68150,7 @@
 	},
 /area/desert_dam/building/cafeteria/loading)
 "fZd" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
@@ -68565,6 +68489,14 @@
 	dir = 10
 	},
 /area/desert_dam/interior/dam_interior/hanger)
+"jVr" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison{
+	tag = "icon-bright_clean2 (SOUTHWEST)";
+	icon_state = "bright_clean2";
+	dir = 10
+	},
+/area/desert_dam/building/medical/morgue)
 "kgh" = (
 /obj/structure/table/woodentable,
 /obj/item/paper/research_notes,
@@ -68662,6 +68594,18 @@
 	dir = 10
 	},
 /area/desert_dam/building/medical/lobby)
+"liN" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "whitegreen"
+	},
+/area/desert_dam/building/medical/north_wing_hallway)
 "lmq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/vomit,
@@ -68717,6 +68661,14 @@
 /area/desert_dam/exterior/valley/valley_cargo{
 	is_resin_allowed = 0
 	})
+"lKY" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (WEST)";
+	icon_state = "sterile_white";
+	dir = 8
+	},
+/area/desert_dam/building/medical/north_wing_hallway)
 "lOM" = (
 /obj/effect/decal/sand_overlay/sand2/corner2,
 /turf/open/asphalt/cement,
@@ -87376,7 +87328,7 @@ asq
 bkU
 blC
 bmd
-bmt
+aSz
 bkU
 bUQ
 bkU
@@ -107328,11 +107280,11 @@ cjv
 cke
 ckP
 clO
-ckO
-ckc
+cZK
+jVr
 coT
-crR
-dPu
+lKY
+liN
 dPI
 csR
 ctW

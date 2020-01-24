@@ -955,14 +955,14 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "cR" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "cS" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -974,9 +974,8 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "cT" = (
-/obj/structure/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/structure/pipes/vents/pump{
+	dir = 8 
 	},
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
@@ -1238,7 +1237,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/ne)
 "dH" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1249,14 +1248,14 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
 "dI" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
 "dJ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor/plating,
@@ -1276,20 +1275,20 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
 "dN" = (
-/obj/structure/machinery/atmospherics/pipe/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
 "dO" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "dP" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1300,7 +1299,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "dQ" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1312,7 +1311,7 @@
 	},
 /area/bigredv2/outside/ne)
 "dR" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1323,7 +1322,7 @@
 	},
 /area/bigredv2/outside/ne)
 "dS" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1333,7 +1332,7 @@
 	},
 /area/bigredv2/outside/ne)
 "dT" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
 	},
@@ -1342,7 +1341,7 @@
 	},
 /area/bigredv2/outside/ne)
 "dU" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor{
@@ -1367,7 +1366,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/ne)
 "dY" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
 "dZ" = (
@@ -1394,7 +1393,7 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "ed" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1423,7 +1422,7 @@
 /turf/closed/wall,
 /area/bigredv2/outside/hydroponics)
 "ei" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "ej" = (
@@ -1446,7 +1445,7 @@
 	},
 /area/bigredv2/outside/ne)
 "em" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -1499,7 +1498,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "ew" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
 	name = "\improper Bar Maintenance";
@@ -1527,7 +1526,7 @@
 	},
 /area/bigredv2/outside/ne)
 "eA" = (
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /turf/open/floor/plating{
@@ -1536,7 +1535,7 @@
 /area/bigredv2/outside/hydroponics)
 "eB" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/atmospherics/pipe/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
 /turf/open/floor/plating{

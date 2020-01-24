@@ -31,9 +31,6 @@
 	else
 		icon_state = "pscrubber:0"
 
-	if(connected_port)
-		overlays += "scrubber-connector"
-
 	return
 
 

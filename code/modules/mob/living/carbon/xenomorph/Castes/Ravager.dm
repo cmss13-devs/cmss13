@@ -109,7 +109,7 @@
 /mob/living/carbon/Xenomorph/Ravager/proc/delimb(var/mob/living/carbon/human/H, var/datum/limb/O)
 	if(!iszombie(H) && prob(isYautja(H)?20:40)) // lets halve this for preds
 		O = H.get_limb(check_zone(zone_selected))
-		if (O.body_part != BODY_FLAG_CHEST && O.body_part != BODY_FLAG_GROIN && O.body_part != BODY_FLAG_HEAD && O.brute_dam >= 5) //Only limbs.
+		if(O.body_part != BODY_FLAG_CHEST && O.body_part != BODY_FLAG_GROIN && O.body_part != BODY_FLAG_HEAD && O.brute_dam >= 5) //Only limbs.
 			visible_message(SPAN_DANGER("The limb is sliced clean off!"),SPAN_DANGER("You slice off a limb!"))
 			O.droplimb(0, 0, initial(name))
 			return TRUE
@@ -122,9 +122,9 @@
 			
 		var/chance = 100
 		var/attacked_armor = H.getarmor(zone_selected, ARMOR_MELEE)
-		if (attacked_armor > 29) // Medium armor
+		if(attacked_armor > 29) // Medium armor
 			chance = 50
-		if (attacked_armor > 34) // Heavy armor
+		if(attacked_armor > 34) // Heavy armor
 			chance = 30
 			
 		if(!prob(chance))
@@ -133,7 +133,7 @@
 		var/obj/item/shard/shrapnel/shrap = new /obj/item/shard/shrapnel/bone_chips()
 		shrap.on_embed(H, organ)
 
-		if(!stat && !(species && species.flags & NO_PAIN))
+		if(!stat && !(H.species && H.species.flags & NO_PAIN))
 			to_chat(H, SPAN_DANGER("Bits of bone and shrapnel embed themselves in the wound! It hurts like hell!"))
 
 /mob/living/carbon/Xenomorph/Ravager/proc/tail_stab(var/mob/living/carbon/human/H, var/damage)

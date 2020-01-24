@@ -468,7 +468,7 @@
 
 /mob/living/carbon/Xenomorph/examine(mob/user)
 	..()
-	if(isXeno(user) && caste.caste_desc)
+	if(isXeno(user) && caste && caste.caste_desc)
 		to_chat(user, caste.caste_desc)
 
 	if(stat == DEAD)
@@ -709,15 +709,20 @@
 
 /mob/living/carbon/Xenomorph/proc/recalculate_speed()
 	recalculate_move_delay = TRUE
-	speed = caste.speed + speed_modifier
+	speed = speed_modifier
+	if(caste)
+		speed += caste.speed
 
 /mob/living/carbon/Xenomorph/proc/recalculate_armor()
 	//We are calculating it in a roundabout way not to give anyone 100% armor deflection, so we're dividing the differences
 	armor_deflection = armor_modifier + round(100 - (100 - caste.armor_deflection))
 
 /mob/living/carbon/Xenomorph/proc/recalculate_damage()
-	melee_damage_lower = damage_modifier + caste.melee_damage_lower
-	melee_damage_upper = damage_modifier + caste.melee_damage_upper
+	melee_damage_lower = damage_modifier
+	melee_damage_upper = damage_modifier
+	if(caste)
+		melee_damage_lower += caste.melee_damage_lower
+		melee_damage_upper += caste.melee_damage_upper
 
 /mob/living/carbon/Xenomorph/proc/recalculate_evasion()
 	evasion = evasion_modifier + caste.evasion

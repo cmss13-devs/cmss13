@@ -79,13 +79,16 @@
 	human_mob_list -= src
 	living_human_list -= src
 	processable_human_list -= src
-	return ..()
+
+	. = ..()
+
+	species = null
 
 /mob/living/carbon/human/Stat()
-	if (!..())
-		return 0
+	if(!..())
+		return FALSE
 
-	if (statpanel("Stats"))
+	if(statpanel("Stats"))
 		stat("Operation Time:","[worldtime2text()]")
 		stat("Security Level:","[uppertext(get_security_level())]")
 		stat("DEFCON Level:","[defcon_controller.current_defcon_level]")
@@ -112,7 +115,7 @@
 			var/eta_status = EvacuationAuthority.get_status_panel_eta()
 			if(eta_status)
 				stat(null, eta_status)
-		return 1
+		return TRUE
 
 /mob/living/carbon/human/ex_act(var/severity, var/direction, var/source, var/source_mob)
 	if(lying)
@@ -133,7 +136,7 @@
 	if(source_mob)
 		last_damage_mob = source_mob
 
-	if (damage >= EXPLOSION_THRESHOLD_GIB)
+	if(damage >= EXPLOSION_THRESHOLD_GIB)
 		var/oldloc = loc
 		gib(source)
 		create_shrapnel(oldloc, rand(16, 24), , , /datum/ammo/bullet/shrapnel/light/human, source, source_mob)
@@ -158,7 +161,7 @@
 		if(Item2 && isturf(Item2.loc))
 			Item2.explosion_throw(severity, direction)
 
-	if (damage >= 0)
+	if(damage >= 0)
 		b_loss += damage * 0.5
 		f_loss += damage * 0.5
 	else
@@ -199,7 +202,7 @@
 			if("l_arm")
 				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message)
 	if(update)	UpdateDamageIcon()
-	return 1
+	return TRUE
 
 
 /mob/living/carbon/human/attack_animal(mob/living/M as mob)
@@ -237,8 +240,8 @@
 		if(istype(L, /obj/item/implant/loyalty))
 			for(var/datum/limb/O in M.limbs)
 				if(L in O.implants)
-					return 1
-	return 0
+					return TRUE
+	return FALSE
 
 
 
@@ -246,7 +249,7 @@
 	if(ismaintdrone(user))
 		return
 	var/obj/item/clothing/under/suit = null
-	if (istype(w_uniform, /obj/item/clothing/under))
+	if(istype(w_uniform, /obj/item/clothing/under))
 		suit = w_uniform
 
 	user.set_interaction(src)
@@ -302,7 +305,7 @@
 		. = id.assignment
 	else
 		return if_no_id
-	if (!.)
+	if(!.)
 		. = if_no_job
 	return
 
@@ -333,9 +336,9 @@
 
 //repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a seperate proc as it'll be useful elsewhere
 /mob/living/carbon/human/proc/get_visible_name()
-	if( wear_mask && (wear_mask.flags_inv_hide & HIDEFACE) )	//Wearing a mask which hides our face, use id-name if possible
+	if(wear_mask && (wear_mask.flags_inv_hide & HIDEFACE) )	//Wearing a mask which hides our face, use id-name if possible
 		return get_id_name("Unknown")
-	if( head && (head.flags_inv_hide & HIDEFACE) )
+	if(head && (head.flags_inv_hide & HIDEFACE) )
 		return get_id_name("Unknown")		//Likewise for hats
 	var/face_name = get_face_name()
 	var/id_name = get_id_name("")
@@ -368,9 +371,9 @@
 //Removed the horrible safety parameter. It was only being used by ninja code anyways.
 //Now checks siemens_coefficient of the affected area by default
 /mob/living/carbon/human/electrocute_act(var/shock_damage, var/obj/source, var/base_siemens_coeff = 1.0, var/def_zone = null)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & GODMODE)	return FALSE	//godmode
 
-	if (!def_zone)
+	if(!def_zone)
 		def_zone = pick("l_hand", "r_hand")
 
 	var/datum/limb/affected_organ = get_limb(check_zone(def_zone))
@@ -380,17 +383,17 @@
 
 
 /mob/living/carbon/human/Topic(href, href_list)
-	if (href_list["refresh"])
+	if(href_list["refresh"])
 		if(interactee&&(in_range(src, usr)))
 			show_inv(interactee)
 
-	if (href_list["mach_close"])
+	if(href_list["mach_close"])
 		var/t1 = text("window=[]", href_list["mach_close"])
 		unset_interaction()
 		close_browser(src, t1)
 
 
-	if (href_list["item"])
+	if(href_list["item"])
 		if(!usr.is_mob_incapacitated() && Adjacent(usr))
 			if(href_list["item"] == "id")
 				if(istype(wear_id, /obj/item/card/id/dogtag))
@@ -431,19 +434,19 @@
 				usr.visible_message(SPAN_DANGER("<B>[usr] is trying to enable [src]'s internals.</B>"), null, null, 3)
 
 			if(do_after(usr, POCKET_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-				if (internal)
+				if(internal)
 					internal.add_fingerprint(usr)
 					internal = null
 					visible_message("[src] is no longer running on internals.", null, null, 1)
 				else
 					if(istype(wear_mask, /obj/item/clothing/mask))
-						if (istype(back, /obj/item/tank))
+						if(istype(back, /obj/item/tank))
 							internal = back
-						else if (istype(s_store, /obj/item/tank))
+						else if(istype(s_store, /obj/item/tank))
 							internal = s_store
-						else if (istype(belt, /obj/item/tank))
+						else if(istype(belt, /obj/item/tank))
 							internal = belt
-						if (internal)
+						if(internal)
 							visible_message(SPAN_NOTICE("[src] is now running on internals."), null, null, 1)
 							internal.add_fingerprint(usr)
 
@@ -494,7 +497,7 @@
 						else if(U.has_sensor == oldsens)
 							U.set_sensors(usr)
 
-	if (href_list["squadfireteam"])
+	if(href_list["squadfireteam"])
 		if(!usr.is_mob_incapacitated() && get_dist(usr, src) <= 7 && hasHUD(usr,"squadleader"))
 			var/mob/living/carbon/human/H = usr
 			if(assigned_squad != H.assigned_squad) return //still same squad
@@ -548,7 +551,7 @@
 					hud_set_squad()
 
 
-	if (href_list["criminal"])
+	if(href_list["criminal"])
 		if(hasHUD(usr,"security"))
 
 			var/modified = 0
@@ -563,10 +566,10 @@
 				perpname = name
 
 			if(perpname)
-				for (var/datum/data/record/E in data_core.general)
-					if (E.fields["name"] == perpname)
-						for (var/datum/data/record/R in data_core.security)
-							if (R.fields["id"] == E.fields["id"])
+				for(var/datum/data/record/E in data_core.general)
+					if(E.fields["name"] == perpname)
+						for(var/datum/data/record/R in data_core.security)
+							if(R.fields["id"] == E.fields["id"])
 
 								var/setcriminal = input(usr, "Specify a new criminal status for this person.", "Security HUD", R.fields["criminal"]) in list("None", "*Arrest*", "Incarcerated", "Released", "Cancel")
 
@@ -580,7 +583,7 @@
 			if(!modified)
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
-	if (href_list["secrecord"])
+	if(href_list["secrecord"])
 		if(hasHUD(usr,"security"))
 			var/perpname = "wot"
 			var/read = 0
@@ -590,10 +593,10 @@
 					perpname = wear_id:registered_name
 			else
 				perpname = src.name
-			for (var/datum/data/record/E in data_core.general)
-				if (E.fields["name"] == perpname)
-					for (var/datum/data/record/R in data_core.security)
-						if (R.fields["id"] == E.fields["id"])
+			for(var/datum/data/record/E in data_core.general)
+				if(E.fields["name"] == perpname)
+					for(var/datum/data/record/R in data_core.security)
+						if(R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr,"security"))
 								to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Criminal Status:</b> [R.fields["criminal"]]")
 								to_chat(usr, "<b>Minor Crimes:</b> [R.fields["mi_crim"]]")
@@ -607,7 +610,7 @@
 			if(!read)
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
-	if (href_list["secrecordComment"])
+	if(href_list["secrecordComment"])
 		if(hasHUD(usr,"security"))
 			var/perpname = "wot"
 			var/read = 0
@@ -617,24 +620,24 @@
 					perpname = wear_id:registered_name
 			else
 				perpname = src.name
-			for (var/datum/data/record/E in data_core.general)
-				if (E.fields["name"] == perpname)
-					for (var/datum/data/record/R in data_core.security)
-						if (R.fields["id"] == E.fields["id"])
+			for(var/datum/data/record/E in data_core.general)
+				if(E.fields["name"] == perpname)
+					for(var/datum/data/record/R in data_core.security)
+						if(R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr,"security"))
 								read = 1
 								var/counter = 1
 								while(R.fields["com_[counter]"])
 									to_chat(usr, R.fields["com_[counter]"])
 									counter++
-								if (counter == 1)
+								if(counter == 1)
 									to_chat(usr, "No comment found")
 								to_chat(usr, "<a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a>")
 
 			if(!read)
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
-	if (href_list["secrecordadd"])
+	if(href_list["secrecordadd"])
 		if(hasHUD(usr,"security"))
 			var/perpname = "wot"
 			if(wear_id)
@@ -642,13 +645,13 @@
 					perpname = wear_id:registered_name
 			else
 				perpname = src.name
-			for (var/datum/data/record/E in data_core.general)
-				if (E.fields["name"] == perpname)
-					for (var/datum/data/record/R in data_core.security)
-						if (R.fields["id"] == E.fields["id"])
+			for(var/datum/data/record/E in data_core.general)
+				if(E.fields["name"] == perpname)
+					for(var/datum/data/record/R in data_core.security)
+						if(R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr,"security"))
 								var/t1 = copytext(sanitize(input("Add Comment:", "Sec. records", null, null)  as message),1,MAX_MESSAGE_LEN)
-								if ( !(t1) || usr.stat || usr.is_mob_restrained() || !(hasHUD(usr,"security")) )
+								if(!(t1) || usr.stat || usr.is_mob_restrained() || !(hasHUD(usr,"security")) )
 									return
 								var/counter = 1
 								while(R.fields[text("com_[]", counter)])
@@ -660,7 +663,7 @@
 									var/mob/living/silicon/robot/U = usr
 									R.fields[text("com_[counter]")] = text("Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
 
-	if (href_list["medical"])
+	if(href_list["medical"])
 		if(hasHUD(usr,"medical"))
 			var/perpname = "wot"
 			var/modified = 0
@@ -671,10 +674,10 @@
 			else
 				perpname = src.name
 
-			for (var/datum/data/record/E in data_core.general)
-				if (E.fields["name"] == perpname)
-					for (var/datum/data/record/R in data_core.general)
-						if (R.fields["id"] == E.fields["id"])
+			for(var/datum/data/record/E in data_core.general)
+				if(E.fields["name"] == perpname)
+					for(var/datum/data/record/R in data_core.general)
+						if(R.fields["id"] == E.fields["id"])
 
 							var/setmedical = input(usr, "Specify a new medical status for this person.", "Medical HUD", R.fields["p_stat"]) in list("*SSD*", "*Deceased*", "Physically Unfit", "Active", "Disabled", "Cancel")
 
@@ -696,7 +699,7 @@
 			if(!modified)
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
-	if (href_list["medrecord"])
+	if(href_list["medrecord"])
 		if(hasHUD(usr,"medical"))
 			var/perpname = "wot"
 			var/read = 0
@@ -706,10 +709,10 @@
 					perpname = wear_id:registered_name
 			else
 				perpname = src.name
-			for (var/datum/data/record/E in data_core.general)
-				if (E.fields["name"] == perpname)
-					for (var/datum/data/record/R in data_core.medical)
-						if (R.fields["id"] == E.fields["id"])
+			for(var/datum/data/record/E in data_core.general)
+				if(E.fields["name"] == perpname)
+					for(var/datum/data/record/R in data_core.medical)
+						if(R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr,"medical"))
 								to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Blood Type:</b> [R.fields["b_type"]]")
 								to_chat(usr, "<b>Minor Disabilities:</b> [R.fields["mi_dis"]]")
@@ -723,7 +726,7 @@
 			if(!read)
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
-	if (href_list["medrecordComment"])
+	if(href_list["medrecordComment"])
 		if(hasHUD(usr,"medical"))
 			var/perpname = "wot"
 			var/read = 0
@@ -733,24 +736,24 @@
 					perpname = wear_id:registered_name
 			else
 				perpname = src.name
-			for (var/datum/data/record/E in data_core.general)
-				if (E.fields["name"] == perpname)
-					for (var/datum/data/record/R in data_core.medical)
-						if (R.fields["id"] == E.fields["id"])
+			for(var/datum/data/record/E in data_core.general)
+				if(E.fields["name"] == perpname)
+					for(var/datum/data/record/R in data_core.medical)
+						if(R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr,"medical"))
 								read = 1
 								var/counter = 1
 								while(R.fields["com_[counter]"])
 									to_chat(usr, R.fields["com_[counter]"])
 									counter++
-								if (counter == 1)
+								if(counter == 1)
 									to_chat(usr, "No comment found")
 								to_chat(usr, "<a href='?src=\ref[src];medrecordadd=1'>\[Add comment\]</a>")
 
 			if(!read)
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
-	if (href_list["medrecordadd"])
+	if(href_list["medrecordadd"])
 		if(hasHUD(usr,"medical"))
 			var/perpname = "wot"
 			if(wear_id)
@@ -758,13 +761,13 @@
 					perpname = wear_id:registered_name
 			else
 				perpname = src.name
-			for (var/datum/data/record/E in data_core.general)
-				if (E.fields["name"] == perpname)
-					for (var/datum/data/record/R in data_core.medical)
-						if (R.fields["id"] == E.fields["id"])
+			for(var/datum/data/record/E in data_core.general)
+				if(E.fields["name"] == perpname)
+					for(var/datum/data/record/R in data_core.medical)
+						if(R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr,"medical"))
 								var/t1 = copytext(sanitize(input("Add Comment:", "Med. records", null, null)  as message),1,MAX_MESSAGE_LEN)
-								if ( !(t1) || usr.stat || usr.is_mob_restrained() || !(hasHUD(usr,"medical")) )
+								if(!(t1) || usr.stat || usr.is_mob_restrained() || !(hasHUD(usr,"medical")) )
 									return
 								var/counter = 1
 								while(R.fields[text("com_[]", counter)])
@@ -776,7 +779,7 @@
 									var/mob/living/silicon/robot/U = usr
 									R.fields[text("com_[counter]")] = text("Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
 
-	if (href_list["medholocard"])
+	if(href_list["medholocard"])
 		if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 			to_chat(usr, SPAN_WARNING("You're not trained to use this."))
 			return
@@ -797,7 +800,7 @@
 			to_chat(usr, SPAN_NOTICE("You add a [newcolor] holo card on [src]."))
 		update_targeted()
 
-	if (href_list["scanreport"])
+	if(href_list["scanreport"])
 		if(hasHUD(usr,"medical"))
 			if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 				to_chat(usr, SPAN_WARNING("You're not trained to use this."))
@@ -810,17 +813,17 @@
 				return
 
 			for(var/datum/data/record/R in data_core.medical)
-				if (R.fields["name"] == real_name)
+				if(R.fields["name"] == real_name)
 					if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
 						show_browser(usr, R.fields["last_scan_result"], "Medical Scan Report", "scanresults", "size=430x600")
 					break
 
-	if (href_list["lookitem"])
+	if(href_list["lookitem"])
 		var/obj/item/I = locate(href_list["lookitem"])
 		if(istype(I))
 			I.examine(usr)
 
-	if (href_list["flavor_change"])
+	if(href_list["flavor_change"])
 		switch(href_list["flavor_change"])
 			if("done")
 				close_browser(src, "flavor_changes")
@@ -872,12 +875,12 @@
 
 /mob/living/carbon/human/abiotic(var/full_body = 0)
 	if(full_body && ((src.l_hand && !( src.l_hand.flags_item & ITEM_ABSTRACT)) || (src.r_hand && !( src.r_hand.flags_item & ITEM_ABSTRACT)) || (src.back || src.wear_mask || src.head || src.shoes || src.w_uniform || src.wear_suit || src.glasses || src.wear_ear || src.gloves)))
-		return 1
+		return TRUE
 
-	if( (src.l_hand && !(src.l_hand.flags_item & ITEM_ABSTRACT)) || (src.r_hand && !(src.r_hand.flags_item & ITEM_ABSTRACT)) )
-		return 1
+	if((src.l_hand && !(src.l_hand.flags_item & ITEM_ABSTRACT)) || (src.r_hand && !(src.r_hand.flags_item & ITEM_ABSTRACT)) )
+		return TRUE
 
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/get_species()
 	if(!species)
@@ -915,7 +918,7 @@
 				playsound(loc, 'sound/effects/splat.ogg', 25, 1, 7)
 
 				var/turf/location = loc
-				if (istype(location, /turf))
+				if(istype(location, /turf))
 					location.add_vomit_floor(src, 1)
 
 				nutrition -= 40
@@ -929,7 +932,7 @@
 	return gender
 
 /mob/living/carbon/human/revive(keep_viruses)
-	for (var/datum/limb/O in limbs)
+	for(var/datum/limb/O in limbs)
 		if(O.status & LIMB_ROBOT)
 			O.status = LIMB_ROBOT
 		else
@@ -948,7 +951,7 @@
 
 	//try to find the brain player in the decapitated head and put them back in control of the human
 	if(!client && !mind) //if another player took control of the human, we don't want to kick them out.
-		for (var/obj/item/limb/head/H in item_list)
+		for(var/obj/item/limb/head/H in item_list)
 			if(H.brainmob)
 				if(H.brainmob.real_name == src.real_name)
 					if(H.brainmob.mind)
@@ -958,9 +961,9 @@
 	for(var/datum/internal_organ/I in internal_organs)
 		I.damage = 0
 
-	if (!keep_viruses)
-		for (var/datum/disease/virus in viruses)
-			if (istype(virus, /datum/disease/black_goo))
+	if(!keep_viruses)
+		for(var/datum/disease/virus in viruses)
+			if(istype(virus, /datum/disease/black_goo))
 				continue
 			virus.cure(0)
 
@@ -1094,9 +1097,9 @@
 	INVOKE_ASYNC(src, .proc/update_hair)
 
 	if(species)
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 
 /mob/living/carbon/human/print_flavor_text()
@@ -1130,7 +1133,7 @@
 
 	flavor_text = flavor_texts["general"]
 	flavor_text += "\n\n"
-	for (var/T in flavor_texts)
+	for(var/T in flavor_texts)
 		if(flavor_texts[T] && flavor_texts[T] != "")
 			if((T == "head" && head_exposed) || (T == "face" && face_exposed) || (T == "eyes" && eyes_exposed) || (T == "torso" && torso_exposed) || (T == "arms" && arms_exposed) || (T == "hands" && hands_exposed) || (T == "legs" && legs_exposed) || (T == "feet" && feet_exposed))
 				flavor_text += flavor_texts[T]
@@ -1239,10 +1242,10 @@
 
 	if(tint_level)
 		overlay_fullscreen("tint", /obj/screen/fullscreen/impaired, tint_level)
-		return 1
+		return TRUE
 	else
 		clear_fullscreen("tint", 0)
-		return 0
+		return FALSE
 
 
 /mob/proc/update_glass_vision(obj/item/clothing/glasses/G)
@@ -1252,7 +1255,7 @@
 	if(G.fullscreen_vision)
 		if(G == glasses && G.active) //equipped and activated
 			overlay_fullscreen("glasses_vision", G.fullscreen_vision)
-			return 1
+			return TRUE
 		else //unequipped or deactivated
 			clear_fullscreen("glasses_vision", 0)
 
@@ -1313,17 +1316,17 @@
 	if(!HS.action_busy)
 		var/list/datum/limb/to_splint = list()
 		var/same_arm_side = FALSE // If you are trying to splint yourself, need opposite hand to splint an arm/hand
-		if (HS.get_limb(cur_hand).status & LIMB_DESTROYED)
+		if(HS.get_limb(cur_hand).status & LIMB_DESTROYED)
 			to_chat(HS, SPAN_WARNING("You cannot remove splints without a hand."))
 			return
 		for(var/bodypart in list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin"))
 			var/datum/limb/l = HT.get_limb(bodypart)
-			if (l && l.status & LIMB_SPLINTED)
-				if (HS == HT)
-					if ((bodypart in list("l_arm", "l_hand")) && (cur_hand == "l_hand"))
+			if(l && l.status & LIMB_SPLINTED)
+				if(HS == HT)
+					if((bodypart in list("l_arm", "l_hand")) && (cur_hand == "l_hand"))
 						same_arm_side = TRUE
 						continue
-					if ((bodypart in list("r_arm", "r_hand")) && (cur_hand == "r_hand"))
+					if((bodypart in list("r_arm", "r_hand")) && (cur_hand == "r_hand"))
 						same_arm_side = TRUE
 						continue
 				to_splint.Add(l)
@@ -1343,7 +1346,7 @@
 					var/obj/item/stack/W = new /obj/item/stack/medical/splint(HS.loc)
 					W.amount = 0 //we checked that we have at least one bodypart splinted, so we can create it no prob. Also we need amount to be 0
 					W.add_fingerprint(HS)
-					for (var/datum/limb/l in to_splint)
+					for(var/datum/limb/l in to_splint)
 						amount_removed += 1
 						l.status &= ~LIMB_SPLINTED
 						if(!W.add(1))
@@ -1501,3 +1504,14 @@
 			O.show_message(SPAN_DANGER("<B>[src] manages to remove [restraint]!</B>"), 1)
 		to_chat(src, SPAN_NOTICE(" You successfully remove [restraint]."))
 		drop_inv_item_on_ground(restraint)
+
+/mob/living/carbon/human/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, var/list/slot_equipment_priority)
+	if(species)
+		slot_equipment_priority = species.slot_equipment_priority
+	return ..(W,ignore_delay,slot_equipment_priority)
+
+/mob/living/carbon/human/updateshock()
+	if(species && species.flags & NO_PAIN)
+		traumatic_shock = FALSE
+		return
+	return . = ..()

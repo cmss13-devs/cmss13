@@ -123,7 +123,7 @@
 		else
 			return (damage_cap-damage)/EXPLOSION_DAMAGE_MULTIPLIER_DOOR //this should exactly match the amount of damage needed to destroy the door
 	else
-		return 0
+		return FALSE
 
 /obj/structure/machinery/door/airlock/bullet_act(var/obj/item/projectile/Proj)
 	bullet_ping(Proj)
@@ -240,7 +240,7 @@
 				secondsElectrified = -1
 				visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src] airlock!"))
 
-		if (AIRLOCK_WIRE_SAFETY)
+		if(AIRLOCK_WIRE_SAFETY)
 			safe = 0
 			visible_message(SPAN_WARNING("\The [src] airlock flashes a red light and beeps once."))
 
@@ -269,7 +269,7 @@
 			if(secondsElectrified == -1)
 				secondsElectrified = 0
 
-		if (AIRLOCK_WIRE_SAFETY)
+		if(AIRLOCK_WIRE_SAFETY)
 			safe = 1
 
 		if(AIRLOCK_WIRE_SPEED)
@@ -283,15 +283,15 @@
 
 /obj/structure/machinery/door/airlock/proc/isElectrified()
 	if(secondsElectrified != 0)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/structure/machinery/door/airlock/proc/isWireCut(var/wire)
 	return !(wires & getWireFlag(wire))
 
 /obj/structure/machinery/door/airlock/proc/arePowerSystemsOn()
-	if (stat & NOPOWER)
-		return 0
+	if(stat & NOPOWER)
+		return FALSE
 	return (secondsMainPowerLost==0 || secondsBackupPowerLost==0)
 
 /obj/structure/machinery/door/airlock/requiresID()
@@ -299,10 +299,10 @@
 
 /obj/structure/machinery/door/airlock/proc/isAllPowerLost()
 	if(stat & NOPOWER)
-		return 1
+		return TRUE
 	if(isWireCut(AIRLOCK_WIRE_MAIN_POWER) && isWireCut(AIRLOCK_WIRE_BACKUP_POWER))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/structure/machinery/door/airlock/proc/regainMainPower()
 	if(secondsMainPowerLost > 0)
@@ -349,16 +349,16 @@
 // The preceding comment was borrowed from the grille's shock script
 /obj/structure/machinery/door/airlock/shock(mob/user, prb)
 	if(!arePowerSystemsOn())
-		return 0
+		return FALSE
 	if(hasShocked)
-		return 0	//Already shocked someone recently?
+		return FALSE	//Already shocked someone recently?
 	if(..())
 		hasShocked = 1
 		sleep(10)
 		hasShocked = 0
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 
 /obj/structure/machinery/door/airlock/update_icon()
@@ -411,7 +411,7 @@
 	if(panel_open)
 		if(ishuman(usr) && !skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(usr, SPAN_WARNING("You look into \the [src]'s access panel and can only see a jumbled mess of colored wires..."))
-			return 0
+			return FALSE
 
 		ui_interact(user)
 	else
@@ -441,21 +441,21 @@
 		..()
 
 	if(usr.stat || usr.is_mob_restrained() || usr.mob_size == MOB_SIZE_SMALL)
-		return 0
+		return FALSE
 
 	add_fingerprint(usr)
 
 	if((in_range(src, usr) && istype(loc, /turf)) && panel_open)
 		if(ishuman(usr) && !skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(usr, SPAN_WARNING("You don't understand anything about [src]'s wiring!"))
-			return 0
+			return FALSE
 
 		if(href_list["wire"])
 			var/wireId = text2num(href_list["wire"])
 
 			if(!iswirecutter(usr.get_active_hand()))
 				to_chat(usr, "You need wirecutters!")
-				return 1
+				return TRUE
 
 			if(isWireCut(wireId))
 				mend(wireId)
@@ -467,14 +467,14 @@
 
 			if(!ismultitool(usr.get_active_hand()))
 				to_chat(usr, "You need a multitool!")
-				return 1
+				return TRUE
 
 			pulse(wireId)
 
 	add_fingerprint(usr)
 	update_icon()
 
-	return 1
+	return TRUE
 
 /obj/structure/machinery/door/airlock/attackby(obj/item/C, mob/user)
 	if(istype(C, /obj/item/clothing/mask/cigarette))
@@ -577,7 +577,7 @@
 				to_chat(user, SPAN_NOTICE(" You removed the airlock electronics!"))
 
 				var/obj/structure/door_assembly/da = new assembly_type(loc)
-				if (istype(da, /obj/structure/door_assembly/multi_tile))
+				if(istype(da, /obj/structure/door_assembly/multi_tile))
 					da.dir = dir
 
  				da.anchored = 1
@@ -597,7 +597,7 @@
 						check_access()
 					if(req_access.len)
 						ae.conf_access = req_access
-					else if (req_one_access.len)
+					else if(req_one_access.len)
 						ae.conf_access = req_one_access
 						ae.one_access = 1
 				else
@@ -637,10 +637,10 @@
 
 /obj/structure/machinery/door/airlock/open(var/forced=0)
 	if( operating || welded || locked || !loc)
-		return 0
+		return FALSE
 	if(!forced)
 		if( !arePowerSystemsOn() || isWireCut(AIRLOCK_WIRE_OPEN_DOOR) )
-			return 0
+			return FALSE
 	use_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 	if(istype(src, /obj/structure/machinery/door/airlock/glass))
 		playsound(loc, 'sound/machines/windowdoor.ogg', 25, 1)
@@ -672,9 +672,9 @@
 				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
 				M.SetStunned(5)
 				M.SetKnockeddown(5)
-				if (iscarbon(M))
-					var/mob/living/carbon/C = M
-					if (!(C.species && (C.species.flags & NO_PAIN)))
+				if(ishuman(M))
+					var/mob/living/carbon/human/H = M
+					if(!(H.species && (H.species.flags & NO_PAIN)))
 						M.emote("pain")
 			var/turf/location = loc
 			if(istype(location, /turf))
@@ -693,21 +693,21 @@
 	return
 
 /obj/structure/machinery/door/airlock/proc/lock(var/forced=0)
-	if (operating || locked) return
+	if(operating || locked) return
 
 	locked = 1
 	visible_message(SPAN_NOTICE("\The [src] airlock emits a loud thunk, then a click."))
 	update_icon()
 
 /obj/structure/machinery/door/airlock/proc/unlock(var/forced=0)
-	if (operating || !locked) return
+	if(operating || !locked) return
 
-	if (forced || (arePowerSystemsOn())) //only can raise bolts if power's on
+	if(forced || (arePowerSystemsOn())) //only can raise bolts if power's on
 		locked = 0
 		visible_message(SPAN_NOTICE("\The [src] airlock emits a click, then hums slightly."))
 		update_icon()
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/structure/machinery/door/airlock/New()
 	..()
@@ -720,7 +720,7 @@
 
 	if(closeOtherId != null)
 		spawn (5)
-			for (var/obj/structure/machinery/door/airlock/A in machines)
+			for(var/obj/structure/machinery/door/airlock/A in machines)
 				if(A.closeOtherId == closeOtherId && A != src)
 					closeOther = A
 					break

@@ -1,6 +1,4 @@
 /mob/living/carbon/human
-	//CM XENO CUFF
-	var/xenoCuffed = 0
 	//Hair colour and style
 	var/r_hair = 0
 	var/g_hair = 0
@@ -26,8 +24,6 @@
 	var/g_skin = 0
 	var/b_skin = 0
 
-	var/size_multiplier = 1 //multiplier for the mob's icon size
-
 	var/lip_style = null	//no lipstick by default- arguably misleading, as it could be used for general makeup
 
 	var/age = 30		//Player's age (pure fluff)
@@ -36,6 +32,8 @@
 	var/underwear = 1	//Which underwear the player wants
 	var/undershirt = 0	//Which undershirt the player wants.
 	var/backbag = 2		//Which backpack type the player has chosen. Satchel or Backpack.
+
+	var/datum/species/species //Contains icon generation and language information, set during New().
 
 	// General information
 	var/home_system = ""

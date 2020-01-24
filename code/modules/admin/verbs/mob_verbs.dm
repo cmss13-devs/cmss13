@@ -120,22 +120,6 @@
 
 	msg_admin_all("[usr.ckey] ahealed [M.name] ([M.ckey]) in [get_area(M)] ([M.x],[M.y],[M.z]). (NAME: [usr.name])", M.x, M.y, M.z)
 
-/client/proc/rejuvenate_all_in_view()
-	set name = "E: Rejuvenate All In View"
-	set category = "Admin"
-
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
-		return
-
-	if(alert("This will rejuvenate ALL mobs within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
-		return
-
-	for(var/mob/living/M in view())
-		M.rejuvenate(FALSE)
-
-	msg_admin_all("[usr.ckey] ahealed everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z]). (NAME: [usr.name])", usr.x, usr.y, usr.z)
-
 /client/proc/cmd_admin_subtle_message(mob/M as mob in mob_list)
 	set name = "Subtle Message"
 	set category = null

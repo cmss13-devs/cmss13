@@ -1892,6 +1892,12 @@
 
 		topic_teleports(href_list["teleport"])
 
+	else if(href_list["inviews"])
+		if(!check_rights(R_MOD))	
+			return
+
+		topic_inviews(href_list["inviews"])
+
 	else if(href_list["vehicle"])
 		if(!check_rights(R_MOD))	
 			return

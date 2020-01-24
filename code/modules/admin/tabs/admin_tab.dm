@@ -169,8 +169,9 @@
 	show_browser(usr, dat, "Info on [key]", "adminplayerinfo", "size=480x480")
 
 /datum/admins/proc/sleepall()
-	set name = "E: Toggle Sleep In View"
+	set name = "In View Sleep All"
 	set category = "Admin"
+	set hidden = 1
 
 	if(!check_rights(0))	
 		return
@@ -267,6 +268,84 @@
 	verbs -= admin_mob_verbs_hideable
 	verbs += /client/proc/enable_admin_mob_verbs
 
+/client/proc/rejuvenate_all_in_view()
+	set name = "In View Rejuvenate All"
+	set category = "Admin"
+	set hidden = 1
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
+	if(alert("This will rejuvenate ALL mobs within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
+		return
+
+	for(var/mob/living/M in view())
+		M.rejuvenate(FALSE)
+
+	msg_admin_all("[usr.ckey] ahealed everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z]). (NAME: [usr.name])", usr.x, usr.y, usr.z)
+
+
+/client/proc/rejuvenate_all_humans_in_view()
+	set name = "In View Rejuvenate All Humans"
+	set category = "Admin"
+	set hidden = 1
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
+	if(alert("This will rejuvenate ALL humans within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
+		return
+
+	for(var/mob/living/carbon/human/M in view())
+		M.rejuvenate(FALSE)
+
+	msg_admin_all("[usr.ckey] ahealed all humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z]). (NAME: [usr.name])", usr.x, usr.y, usr.z)
+
+/client/proc/rejuvenate_all_revivable_humans_in_view()
+	set name = "In View Rejuvenate Revivable Human"
+	set category = "Admin"
+	set hidden = 1
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
+	if(alert("This will rejuvenate ALL revivable humans within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
+		return
+
+	for(var/mob/living/carbon/human/M in view())
+		if(!isHumanStrict(M) && !isHumanSynthStrict(M))
+			continue
+
+		if(M.stat != DEAD)
+			M.rejuvenate(FALSE)
+			continue
+
+		if(!M.undefibbable && M.stat == DEAD)
+			M.rejuvenate(FALSE)
+			continue
+
+	msg_admin_all("[usr.ckey] ahealed all revivable humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z]). (NAME: [usr.name])", usr.x, usr.y, usr.z)
+
+/client/proc/rejuvenate_all_xenos_in_view()
+	set name = "In View Rejuvenate Xenos"
+	set category = "Admin"
+	set hidden = 1
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
+	if(alert("This will rejuvenate ALL xenos within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
+		return
+
+	for(var/mob/living/carbon/Xenomorph/X in view())
+		X.rejuvenate(FALSE)
+
+	msg_admin_all("[usr.ckey] ahealed all xenos in [get_area(usr)] ([usr.x],[usr.y],[usr.z]). (NAME: [usr.name])", usr.x, usr.y, usr.z)
+
 // ----------------------------
 // PANELS
 // ----------------------------
@@ -293,9 +372,11 @@
 /client/proc/teleport_panel()
 	set name = "C: Teleport Panel"
 	set category = "Admin"
-	if (admin_holder)
-		admin_holder.teleport_panel()
-	return
+
+	if(!admin_holder || !check_rights(R_MOD, FALSE))
+		return
+		
+	admin_holder.teleport_panel()
 
 /datum/admins/proc/vehicle_panel()
 	if(!check_rights(R_MOD, 0))	
@@ -313,6 +394,33 @@
 /client/proc/vehicle_panel()
 	set name = "C: Vehicle Panel"
 	set category = "Admin"
-	if (admin_holder)
-		admin_holder.vehicle_panel()
+
+	if(!admin_holder || !check_rights(R_MOD, FALSE))
+		return
+
+	admin_holder.vehicle_panel()
+
+/datum/admins/proc/in_view_panel()
+	var/dat = {"
+		<A href='?src=\ref[src];inviews=rejuvenateall'>Rejuvenate All Mobs In View</A><BR>
+		<BR>
+		<A href='?src=\ref[src];inviews=rejuvenatemarine'>Rejuvenate Only Humans In View</A><BR>
+	 	<A href='?src=\ref[src];inviews=rejuvenaterevivemarine'>Rejuvenate Only Revivable Humans In View</A><BR>
+		<BR>
+		<A href='?src=\ref[src];inviews=rejuvenatexeno'>Rejuvenate Only Xenos In View</A><BR>
+		<BR>
+		<A href='?src=\ref[src];inviews=sleepall'>Sleep All In View</A><BR>
+		<BR>
+		"}
+
+	show_browser(usr, dat, "In View Panel", "inviews")
 	return
+
+/client/proc/in_view_panel()
+	set name = "C: In View Panel"
+	set category = "Admin"
+
+	if(!admin_holder || !check_rights(R_MOD, FALSE))
+		return
+		
+	admin_holder.in_view_panel()

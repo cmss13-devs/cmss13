@@ -151,7 +151,7 @@ var/list/department_radio_keys = list(
 	//Rather see stuff twice then not at all.
 
 	// Log people differently, first, check if they are human
-	if(istype(src, /mob/living/carbon/human))
+	if(ishuman(src))
 		if(message_mode)	// we are talking into a radio
 			if(message_mode == "headset")	// default value, means general
 				message_mode = "General"

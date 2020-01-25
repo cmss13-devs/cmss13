@@ -10,7 +10,7 @@
 	name = "status display"
 	anchored = 1
 	density = 0
-	use_power = 1
+	use_power = FALSE
 	idle_power_usage = 10
 	var/mode = 0	// 0 = Blank
 					// 1 = Shuttle timer
@@ -43,20 +43,6 @@
 /obj/structure/machinery/status_display/New()
 	..()
 	set_picture("default")
-	start_processing()
-
-// register for radio system
-/obj/structure/machinery/status_display/initialize()
-	..()
-	/*if(radio_controller)
-		radio_controller.add_object(src, frequency)*/
-
-// timed process
-/obj/structure/machinery/status_display/process()
-	if(stat & NOPOWER)
-		remove_display()
-		return
-	update()
 
 /obj/structure/machinery/status_display/emp_act(severity)
 	if(stat & (BROKEN|NOPOWER))
@@ -162,25 +148,6 @@
 	if(maptext)
 		maptext = ""
 
-/obj/structure/machinery/status_display/receive_signal(datum/signal/signal)
-	/*switch(signal.data["command"])
-		if("blank")
-			mode = STATUS_DISPLAY_BLANK
-
-		if("shuttle")
-			mode = STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME
-
-		if("message")
-			mode = STATUS_DISPLAY_MESSAGE
-			set_message(signal.data["msg1"], signal.data["msg2"])
-
-		if("alert")
-			mode = STATUS_DISPLAY_ALERT
-			set_picture(signal.data["picture_state"])
-
-		if("time")
-			mode = STATUS_DISPLAY_TIME*/
-
 /obj/structure/machinery/ai_status_display
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "frame"
@@ -195,13 +162,6 @@
 	var/picture_state	// icon_state of ai picture
 
 	var/emotion = "Neutral"
-
-/obj/structure/machinery/ai_status_display/process()
-	if(stat & NOPOWER)
-		overlays.Cut()
-		return
-
-	update()
 
 /obj/structure/machinery/ai_status_display/emp_act(severity)
 	if(stat & (BROKEN|NOPOWER))

@@ -51,8 +51,7 @@
 
 	for(var/obj/structure/machinery/door/D in targets)
 		if(!D.density)	continue
-		spawn(0)
-			D.open()
+		INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
 
 	return 1
 
@@ -63,8 +62,7 @@
 
 	for(var/obj/structure/machinery/door/D in targets)
 		if(D.density)	continue
-		spawn(0)
-			D.close()
+		INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
 
 	return 1
 
@@ -295,8 +293,7 @@
 
 	for(var/obj/structure/machinery/door/poddoor/D in targets)
 		if(!D.density) continue
-		spawn(0)
-			D.open()
+		INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
 
 	return 1
 
@@ -306,7 +303,6 @@
 
 	for(var/obj/structure/machinery/door/poddoor/D in targets)
 		if(D.density)	continue
-		spawn(0)
-			D.close()
+		INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
 
 	return 1

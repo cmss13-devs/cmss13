@@ -113,8 +113,7 @@ var/global/list/randomized_pill_icons
 		for(var/mob/O in viewers(2, user))
 			O.show_message(SPAN_DANGER("[user] puts something in \the [target]."), 1)
 
-		spawn(5)
-			qdel(src)
+		QDEL_IN(src, 5)
 
 	return
 

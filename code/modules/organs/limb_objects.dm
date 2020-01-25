@@ -96,7 +96,7 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 				hair.Blend(rgb(H.r_hair, H.g_hair, H.b_hair), ICON_ADD)
 
 			overlays.Add(hair) //icon.Blend(hair, ICON_OVERLAY)
-	spawn(5)
+
 	if(brainmob && brainmob.client)
 		brainmob.client.screen.len = null //clear the hud
 

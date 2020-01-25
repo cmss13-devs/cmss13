@@ -15,8 +15,7 @@
 	New()
 		..()
 		//So the scrubbers have time to spawn
-		spawn(10)
-			scanscrubbers()
+		add_timer(CALLBACK(src, .proc/scanscrubbers), 10)
 
 	attack_ai(var/mob/user as mob)
 		return src.attack_hand(user)

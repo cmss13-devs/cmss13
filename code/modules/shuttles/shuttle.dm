@@ -66,8 +66,7 @@
 			arrive_time = world.time + travel_time
 		moving_status = SHUTTLE_INTRANSIT
 		move(departing, interim, direction)
-		spawn(1)
-			close_doors(interim)
+		add_timer(CALLBACK(src, .proc/close_doors, interim), 1)
 
 		while (world.time < arrive_time)
 			sleep(5)
@@ -75,8 +74,8 @@
 		sleep(100)
 
 		move(interim, destination, direction)
-		spawn(1)
-			open_doors(destination)
+		add_timer(CALLBACK(src, .proc/open_doors, destination), 1)
+
 		moving_status = SHUTTLE_IDLE
 
 		//Simple, cheap ticker
@@ -105,13 +104,11 @@
 
 	for(var/obj/structure/machinery/door/unpowered/D in area)
 		if(!D.density && !D.locked)
-			spawn(0)
-				D.close()
+			INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
 
 	for(var/obj/structure/machinery/door/poddoor/shutters/P in area)
 		if(!P.density)
-			spawn(0)
-				P.close()
+			INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/close)
 
 	if (iselevator)	// Super snowflake code
 		for (var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
@@ -136,13 +133,11 @@
 
 	for(var/obj/structure/machinery/door/unpowered/D in area)
 		if(D.density && !D.locked)
-			spawn(0)
-				D.open()
+			INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
 
 	for(var/obj/structure/machinery/door/poddoor/shutters/P in area)
 		if(P.density)
-			spawn(0)
-				P.open()
+			INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/open)
 
 	if (iselevator)	// Super snowflake code
 		for (var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
@@ -153,11 +148,9 @@
 
 		for (var/obj/structure/machinery/door/airlock/D in area)//For elevators
 			if (D.locked)
-				spawn(0)
-					D.unlock()
+				INVOKE_ASYNC(D, /obj/structure/machinery/door/airlock/.proc/unlock)
 			if (D.density)
-				spawn(0)
-					D.open()
+				INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
 
 /datum/shuttle/proc/dock()
 	if (!docking_controller)

@@ -192,8 +192,7 @@
 	on_fire = 1
 	if(on_fire)
 		update_icon()
-		spawn(rand(225, 400))
-			qdel(src)
+		QDEL_IN(src, rand(225, 400))
 
 
 /obj/structure/bed/nest/attack_alien(mob/living/carbon/Xenomorph/M)

@@ -153,8 +153,7 @@
 	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if((M.id == railing_lower_id || M.id == railing_upper_id) && !M.density)
 			effective = 1
-			spawn()
-				M.close()
+			INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/close)
 	if(effective)
 		playsound(locate(HangarElevatorUpper_x,HangarElevatorUpper_y,HangarElevatorUpper_z), 'sound/machines/elevator_openclose.ogg', 50, 0)
 		playsound(locate(HangarElevatorLower_x,HangarElevatorLower_y,HangarElevatorLower_z), 'sound/machines/elevator_openclose.ogg', 50, 0)
@@ -176,11 +175,9 @@
 	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == railing_id && M.density)
 			effective = 1
-			spawn()
-				M.open()
+			INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
 		if(force && M.id == other_id && M.density)
-			spawn()
-				M.open()
+			INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
 	if(effective)
 		playsound(soundturf, 'sound/machines/elevator_openclose.ogg', 50, 0)
 

@@ -511,8 +511,7 @@ below 100 is not dizzy
 	dizziness = min(1000, dizziness + amount)	// store what will be new value
 													// clamped to max 1000
 	if(dizziness > 100 && !is_dizzy)
-		spawn(0)
-			dizzy_process()
+		INVOKE_ASYNC(src, .proc/dizzy_process)
 
 
 /*
@@ -545,8 +544,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	jitteriness = min(1000, jitteriness + amount)	// store what will be new value
 													// clamped to max 1000
 	if(jitteriness > 100 && !is_jittery)
-		spawn(0)
-			jittery_process()
+		INVOKE_ASYNC(src, .proc/jittery_process)
 
 
 // Typo from the oriignal coder here, below lies the jitteriness process. So make of his code what you will, the previous comment here was just a copypaste of the above.

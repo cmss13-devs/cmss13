@@ -50,8 +50,7 @@
 		. = ..()
 		for(var/obj/structure/machinery/door/firedoor/F in loc)
 			if(F != src)
-				spawn(1)
-					qdel(src)
+				QDEL_IN(src, 1)
 				return .
 		var/area/A = get_area(src)
 		ASSERT(istype(A))
@@ -159,11 +158,9 @@
 			// Accountability!
 			users_to_open |= user.name
 			needs_to_close = 1
-		spawn()
-			open()
+		INVOKE_ASYNC(src, .proc/open, TRUE)
 	else
-		spawn()
-			close()
+		INVOKE_ASYNC(src, .proc/close)
 
 	if(needs_to_close)
 		spawn(50)
@@ -229,11 +226,9 @@
 			"You force \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \the [C]!",\
 			"You hear metal strain and groan, and a door [density ? "opening" : "closing"].")
 			if(density)
-				spawn(0)
-					open(1)
+				INVOKE_ASYNC(src, .proc/open, TRUE)
 			else
-				spawn(0)
-					close()
+				INVOKE_ASYNC(src, .proc/close)
 			return
 
 /obj/structure/machinery/door/firedoor/try_to_activate_door(mob/user)

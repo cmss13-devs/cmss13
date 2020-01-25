@@ -933,8 +933,8 @@
 	var/matrix/rotate = matrix()
 	rotate.Turn(angle)
 	I.transform = rotate
-	spawn(1) // Need to do this in order to prevent the ping from being deleted
-		I.flick_overlay(src, 3)
+	// Need to do this in order to prevent the ping from being deleted
+	add_timer(CALLBACK(I, /image/.proc/flick_overlay, src, 3), 1)
 
 /mob/proc/bullet_message(obj/item/projectile/P)
 	if(!P) return

@@ -134,8 +134,7 @@
 	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == railing_id && M.density)
 			effective = 1
-			spawn()
-				M.open()
+			INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
 	if(effective)
 		playsound(locate(SupplyElevator_x,SupplyElevator_y,SupplyElevator_z), 'sound/machines/elevator_openclose.ogg', 50, 0)
 

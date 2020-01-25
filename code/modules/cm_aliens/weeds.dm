@@ -215,8 +215,7 @@
 
 /obj/effect/alien/weeds/fire_act()
 	if(!disposed)
-		spawn(rand(100,175))
-			qdel(src)
+		QDEL_IN(src, rand(100,175))
 
 
 /obj/effect/alien/weeds/weedwall

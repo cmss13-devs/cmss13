@@ -311,7 +311,8 @@
 
 			sleep(1)
 
-		if (D) spawn(10) qdel(D)
+		if(D) 
+			QDEL_IN(D, 10)
 
 		return
 

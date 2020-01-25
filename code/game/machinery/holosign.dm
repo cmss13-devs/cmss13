@@ -67,8 +67,6 @@
 
 	for(var/obj/structure/machinery/holosign/M in machines)
 		if (M.id == src.id)
-			spawn(0)
-				M.toggle()
-				return
+			INVOKE_ASYNC(M, /obj/structure/machinery/holosign.proc/toggle)
 
 	return

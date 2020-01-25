@@ -25,8 +25,7 @@
 
 	for(var/obj/structure/machinery/door/D in A)
 		if(!D.density)
-			spawn(0)
-				D.close()
+			INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
 
 	if(use_umbilical && location == 0)
 		var/umbili_id
@@ -37,8 +36,7 @@
 		else return
 		for(var/obj/structure/machinery/door/poddoor/PD in machines)
 			if(!PD.density && PD.id == umbili_id)
-				spawn(0)
-					PD.close()
+				INVOKE_ASYNC(PD, /obj/structure/machinery/door.proc/close)
 
 
 
@@ -48,13 +46,11 @@
 
 	for(var/obj/structure/machinery/door/unpowered/D in A)
 		if(D.density)
-			spawn(0)
-				D.open()
+			INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
 
 	for(var/obj/structure/machinery/door/airlock/D in A)
 		if(D.density)
-			spawn(0)
-				D.open()
+			INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
 
 
 	if(use_umbilical && location == 0) //arrival at almayer
@@ -67,14 +63,12 @@
 		//open the almayer's north of south umbilical shutters and the shuttle's north or south shutters
 		for(var/obj/structure/machinery/door/poddoor/PD in machines)
 			if(PD.density && PD.id == umbili_id)
-				spawn(0)
-					PD.open()
+				INVOKE_ASYNC(PD, /obj/structure/machinery/door.proc/open)
 
 	else
 		for(var/obj/structure/machinery/door/poddoor/shutters/P in A)
 			if(P.density)
-				spawn(0)
-					P.open()
+				INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/open)
 
 		var/shutter_id
 		if(istype(area_station, /area/shuttle/distress/arrive_2))
@@ -86,8 +80,7 @@
 		if(shutter_id)
 			for(var/obj/structure/machinery/door/poddoor/shutters/T in machines)
 				if(T.density && shutter_id == T.id)
-					spawn(0)
-						T.open()
+					INVOKE_ASYNC(T, /obj/structure/machinery/door.proc/open)
 
 
 

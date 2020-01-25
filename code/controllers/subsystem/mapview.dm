@@ -13,11 +13,13 @@ var/datum/subsystem/mapview/SSmapview
 
 /datum/subsystem/mapview/New()
 	NEW_SS_GLOBAL(SSmapview)
-	spawn(20)
-		map_machines = list()
-		for(var/obj/structure/machinery/C in machines)
-			if(istype(C, /obj/structure/machinery/computer/communications) || istype(C, /obj/structure/machinery/prop/almayer/CICmap) || istype(C, /obj/structure/machinery/computer/overwatch))
-				map_machines += C
+	add_timer(CALLBACK(src, .proc/create_map_machines), 20)
+
+/datum/subsystem/mapview/proc/create_map_machines()
+	map_machines = list()
+	for(var/obj/structure/machinery/C in machines)
+		if(istype(C, /obj/structure/machinery/computer/communications) || istype(C, /obj/structure/machinery/prop/almayer/CICmap) || istype(C, /obj/structure/machinery/computer/overwatch))
+			map_machines += C
 
 ///datum/subsystem/mob/stat_entry()
 //	..("P:[mob_list.len]")

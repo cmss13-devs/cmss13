@@ -197,10 +197,7 @@
 				qdel(I)
 		//BubbleWrap END
 	if(src && usr.interactee == src) //do not reopen closed window
-		spawn()
-			interact(usr)
-			return
-	return
+		INVOKE_ASYNC(src, .proc/interact, usr)
 
 /obj/item/stack/proc/use(used)
 	if(used > amount) //If it's larger than what we have, no go.
@@ -246,7 +243,7 @@
 		F.add_fingerprint(user)
 		use(1)
 		if (src && usr.interactee==src)
-			spawn(0) src.interact(usr)
+			INVOKE_ASYNC(src, /obj/item/stack/.proc/interact, usr)
 	else
 		..()
 	return
@@ -272,10 +269,10 @@
 			to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
 			S.add(to_transfer)
 			if (S && usr.interactee==S)
-				spawn(0) S.interact(usr)
+				INVOKE_ASYNC(S, /obj/item/stack/.proc/interact, usr)
 			src.use(to_transfer)
 			if (src && usr.interactee==src)
-				spawn(0) src.interact(usr)
+				INVOKE_ASYNC(src, /obj/item/stack/.proc/interact, usr)
 			return TRUE
 
 	return ..()

@@ -190,8 +190,7 @@
 				if(prob(5))
 					broken(1)
 
-		spawn(1)
-			update(0)
+		add_timer(CALLBACK(src, .proc/update, 0), 1)
 
 	switch(fitting)
 		if("tube")

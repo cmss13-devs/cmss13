@@ -129,10 +129,7 @@
 		T.lighting_changed = 1
 		SSlighting.changed_turfs += T
 
-	spawn(5)
-		//ma = A.master ? "[A.master]" : "(null)"
-		interact()
-	return
+	add_timer(CALLBACK(src, .proc/interact), 5)
 
 
 /obj/item/blueprints/proc/move_turfs_to_area(var/list/turf/turfs, var/area/A)

@@ -107,13 +107,9 @@
 		if(D.id_tag == src.id)
 			if(specialfunctions & OPEN)
 				if (D.density)
-					spawn(0)
-						D.open()
-						return
+					INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
 				else
-					spawn(0)
-						D.close()
-						return
+					INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
 			if(desiredstate == 1)
 				if(specialfunctions & IDSCAN)
 					D.remoteDisabledIdScanner = 1
@@ -145,11 +141,9 @@
 					if(S.moving_status == SHUTTLE_INTRANSIT)
 						return FALSE
 			if(M.density)
-				spawn()
-					M.open()
+				INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
 			else
-				spawn()
-					M.close()
+				INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/close)
 
 /obj/structure/machinery/door_control/verb/push_button()
 	set name = "Push Button"
@@ -217,9 +211,7 @@
 
 	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == src.id)
-			spawn(0)
-				M.open()
-				return
+			INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
 
 	sleep(20)
 
@@ -231,9 +223,7 @@
 
 	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == src.id)
-			spawn(0)
-				M.close()
-				return
+			INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/close)
 
 	icon_state = "launcherbtt"
 	active = 0

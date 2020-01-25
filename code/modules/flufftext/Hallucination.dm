@@ -353,8 +353,7 @@ proc/check_panel(mob/M)
 	O.name = "blood"
 	var/image/I = image('icons/effects/blood.dmi',O,"floor[rand(1,7)]",O.dir,1)
 	target << I
-	spawn(SECONDS_30)
-		qdel(O)
+	QDEL_IN(O, SECONDS_30)
 	return
 
 var/list/non_fakeattack_weapons = list(/obj/item/device/aicard,\

@@ -91,7 +91,7 @@
 
 	var/sound/speech_sound
 	var/sound_vol
-	if(species.speech_sounds && prob(species.speech_chance))
+	if(species && species.speech_sounds && prob(species.speech_chance))
 		speech_sound = sound(pick(species.speech_sounds))
 		sound_vol = 70
 

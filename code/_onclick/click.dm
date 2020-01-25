@@ -107,6 +107,12 @@
 			if (W.attack_speed)
 				next_move += W.attack_speed
 			if (!A.attackby(W, src, mods) && A && !A.disposed)
+				// in case the attackby slept
+				if(!W)
+					next_move += 4
+					UnarmedAttack(A, 1)
+					return
+
 				W.afterattack(A, src, 1, mods)
 		else
 			next_move += 4

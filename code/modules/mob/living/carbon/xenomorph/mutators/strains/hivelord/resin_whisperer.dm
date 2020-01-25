@@ -61,6 +61,8 @@
 		return
 
 	var/turf/T = get_turf(A)
+	if(!T)
+		return
 	var/list/line_turfs = getline(get_turf(owner), T)
 
 	for(var/turf/LT in line_turfs)

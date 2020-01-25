@@ -123,8 +123,7 @@ FIRE ALARM
 
 /obj/structure/machinery/firealarm/power_change()
 	..()
-	spawn(rand(0,15))
-		update_icon()
+	add_timer(CALLBACK(src, .proc/update_icon), rand(0,15))
 
 /obj/structure/machinery/firealarm/attack_hand(mob/user as mob)
 	if(user.stat || stat & (NOPOWER|BROKEN))

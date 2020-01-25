@@ -45,8 +45,7 @@
 
 	to_chat(O, "<B>You are now [O]. </B>")
 
-	spawn(0)//To prevent the proc from returning null.
-		qdel(src)
+	qdel(src)
 	qdel(animation)
 
 	return O
@@ -163,8 +162,7 @@
 
 	O.Namepick()
 
-	spawn(0)//To prevent the proc from returning null.
-		qdel(src)
+	qdel(src)
 	return O
 
 //human -> alien
@@ -225,8 +223,7 @@
 	if(new_xeno.client) new_xeno.client.change_view(world.view)
 
 	to_chat(new_xeno, "<B>You are now an alien.</B>")
-	spawn(0)//To prevent the proc from returning null.
-		qdel(src)
+	qdel(src)
 	return
 
 /mob/living/carbon/human/proc/corgize()
@@ -248,8 +245,7 @@
 	if(new_corgi.client) new_corgi.client.change_view(world.view)
 
 	to_chat(new_corgi, "<B>You are now a Corgi. Yap Yap!</B>")
-	spawn(0)//To prevent the proc from returning null.
-		qdel(src)
+	qdel(src)
 	return
 
 /mob/living/carbon/human/Animalize()
@@ -283,8 +279,7 @@
 
 
 	to_chat(new_mob, "You suddenly feel more... animalistic.")
-	spawn()
-		qdel(src)
+	QDEL_IN(src, 1)
 	return
 
 /mob/proc/Animalize()

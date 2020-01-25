@@ -649,5 +649,3 @@
 		client.mouse_pointer_icon = initial(client.mouse_pointer_icon) // Reset our mouse pointer when we no longer have an action queued.
 
 
-
-

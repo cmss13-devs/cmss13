@@ -6,8 +6,7 @@
 	..()
 	charge = maxcharge
 
-	spawn(5)
-		updateicon()
+	add_timer(CALLBACK(src, .proc/updateicon), 5)
 
 /obj/item/cell/proc/updateicon()
 	overlays.Cut()
@@ -114,8 +113,7 @@
 
 	explosion(T, devastation_range, heavy_impact_range, light_impact_range, flash_range)
 
-	spawn(1)
-		qdel(src)
+	QDEL_IN(src, 1)
 
 /obj/item/cell/proc/corrupt()
 	charge /= 2

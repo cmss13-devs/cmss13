@@ -42,9 +42,7 @@
 	O.name = "grenade"
 	O.icon = 'icons/effects/explosion.dmi'
 	flick("grenade", O)
-	spawn(7)
-		qdel(O)
-	return
+	QDEL_IN(O, 7)
 
 /obj/item/explosive/grenade/HE/flamer_fire_act()
 	fire_resistance--

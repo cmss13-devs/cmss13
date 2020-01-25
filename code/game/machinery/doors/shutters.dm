@@ -43,8 +43,7 @@
 	if(operating == 1) //emag again
 		operating = 0
 	if(autoclose)
-		spawn(150)
-			autoclose()		//TODO: note to self: look into this ~Carn
+		add_timer(CALLBACK(src, .proc/autoclose), 150)
 	return 1
 
 /obj/structure/machinery/door/poddoor/shutters/close()
@@ -71,8 +70,7 @@
 		/obj/structure/machinery/door/airlock)
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/New()
-	spawn(10) // No fucken idea but this somehow makes it work. What the actual fuck.
-		relativewall_neighbours()
+	add_timer(CALLBACK(src, /atom.proc/relativewall_neighbours), 10)
 	..()
 
 

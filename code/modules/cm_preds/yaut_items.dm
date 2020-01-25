@@ -1745,9 +1745,8 @@
 		active = 1
 		if(dangerous)
 			updateicon()
-		spawn(det_time)
-			prime()
-			return
+
+		add_timer(CALLBACK(src, .proc/prime), det_time)
 
 	prime()
 		if(spawner_type && deliveryamt)

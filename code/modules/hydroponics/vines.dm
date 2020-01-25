@@ -288,8 +288,7 @@
 	if(!istype(src.loc,/turf/open/floor))
 		qdel(src)
 
-	spawn(0)
-		spawn_piece(src.loc)
+	INVOKE_ASYNC(src, .proc/spawn_piece, src.loc)
 
 	processing_objects.Add(src)
 

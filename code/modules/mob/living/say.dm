@@ -71,11 +71,18 @@ var/list/department_radio_keys = list(
 	for(var/mob/M in hear)
 		M << speech_bubble
 
-	spawn(30)
-		if(client) client.images -= speech_bubble
-		for(var/mob/M in hear)
-			if(M.client) M.client.images -= speech_bubble
-		qdel(speech_bubble)
+	add_timer(CALLBACK(src, .proc/remove_speech_bubble, speech_bubble, hear), 30)
+
+
+/mob/living/proc/remove_speech_bubble(var/image/speech_bubble, var/list_of_mobs)
+	if(client) 
+		client.images -= speech_bubble
+
+	for(var/mob/M in list_of_mobs)
+		if(M.client) 
+			M.client.images -= speech_bubble
+
+	qdel(speech_bubble)
 
 
 /mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/italics=0, var/message_range = world.view, var/sound/speech_sound, var/sound_vol, var/nolog = 0, var/message_mode = null)
@@ -134,13 +141,7 @@ var/list/department_radio_keys = list(
 				M << speech_bubble
 			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
 
-		spawn(30)
-			if(client) client.images -= speech_bubble
-			if(not_dead_speaker)
-				for(var/mob/M in listening)
-					if(M.client) M.client.images -= speech_bubble
-			qdel(speech_bubble)
-
+		add_timer(CALLBACK(src, .proc/remove_speech_bubble, speech_bubble, listening), 30)
 
 		for(var/obj/O in listening_obj)
 			if(O) //It's possible that it could be deleted in the meantime.

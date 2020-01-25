@@ -186,7 +186,7 @@
 		if(ticker.mode.active_lz != src && !onboard && isXenoQueen(usr))
 			to_chat(usr, SPAN_WARNING("The shuttle isn't responding to prompts, it looks like this isn't the primary shuttle."))
 			return
-		spawn(0)
+
 		if(shuttle.moving_status == SHUTTLE_IDLE) //Multi consoles, hopefully this will work
 
 			if(shuttle.locked) return

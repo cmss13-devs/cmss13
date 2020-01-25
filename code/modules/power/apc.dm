@@ -137,8 +137,8 @@
 		name = "\improper [area.name] APC"
 		stat |= MAINT
 		update_icon()
-		spawn(5)
-			update()
+		add_timer(CALLBACK(src, .proc/update), 5)
+
 	start_processing_power()
 
 	sleep(0) //Break few ACPs on the colony
@@ -187,8 +187,7 @@
 	update_icon()
 	make_terminal()
 
-	spawn(5)
-		update()
+	add_timer(CALLBACK(src, .proc/update), 5)
 
 /obj/structure/machinery/power/apc/examine(mob/user)
 	to_chat(user, desc)

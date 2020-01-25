@@ -240,40 +240,7 @@
 	return
 
 /obj/structure/machinery/turret/proc/shootAt(var/atom/movable/target)
-	//TODO: THIS
 	return
-	/*
-	var/turf/T = get_turf(src)
-	var/turf/U = get_turf(target)
-	if (!T || !U)
-		return
-	var/obj/item/projectile/A
-	if (src.lasers)
-		switch(lasertype)
-			if(1)
-				A = new /obj/item/projectile/beam( loc )
-			if(2)
-				A = new /obj/item/projectile/beam/heavylaser( loc )
-			if(3)
-				A = new /obj/item/projectile/beam/pulse( loc )
-			if(4)
-				A = new /obj/item/projectile/change( loc )
-			if(5)
-				A = new /obj/item/projectile/beam/lastertag/blue( loc )
-			if(6)
-				A = new /obj/item/projectile/beam/lastertag/red( loc )
-		A.original = target
-		use_power(500)
-	else
-		A = new /obj/item/projectile/energy/electrode( loc )
-		use_power(200)
-	A.current = T
-	A.yo = U.y - T.y
-	A.xo = U.x - T.x
-	spawn( 0 )
-		A.process()
-	return
-*/
 
 /obj/structure/machinery/turret/proc/isDown()
 	return (invisibility!=0)
@@ -341,8 +308,7 @@
 		del(cover)
 	sleep(3)
 	flick("explosion", src)
-	spawn(13)
-		del(src)
+	QDEL_IN(src, 13)
 
 /obj/structure/machinery/turretid
 	name = "Turret deactivation control"

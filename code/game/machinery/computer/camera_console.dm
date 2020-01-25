@@ -69,8 +69,7 @@
 		if(C)
 			if(!can_access_camera(C)) return
 			switch_to_camera(user, C)
-			spawn(5)
-				attack_hand(user)
+			add_timer(CALLBACK(src, .attack_hand, user), 5)
 		return
 
 	proc/can_access_camera(obj/structure/machinery/camera/C)

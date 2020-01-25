@@ -149,8 +149,7 @@
 	if (docking_controller && !docking_controller.undocked())
 		docking_controller.force_undock()
 
-	spawn(10)
-		dock()
+	add_timer(CALLBACK(src, .proc/dock), 10)
 
 	return
 

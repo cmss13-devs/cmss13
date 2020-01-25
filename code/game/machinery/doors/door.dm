@@ -217,11 +217,9 @@
 	if(operating)	operating = 0
 
 	if(autoclose  && normalspeed && !forced)
-		spawn(150 + openspeed)
-			autoclose()
+		add_timer(CALLBACK(src, .proc/autoclose), 150 + openspeed)
 	if(autoclose && !normalspeed && !forced)
-		spawn(5)
-			autoclose()
+		add_timer(CALLBACK(src, .proc/autoclose), 5)
 
 	return 1
 

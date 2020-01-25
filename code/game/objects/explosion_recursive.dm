@@ -85,8 +85,7 @@ explosion resistance exactly as much as their health
 	spawn(2) //just in case something goes wrong
 		if(explosion_in_progress)
 			explosion_damage()
-			spawn(20)
-				qdel(src)
+			QDEL_IN(src, 20)
 
 
 

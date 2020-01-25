@@ -217,7 +217,7 @@
 		/obj/structure/machinery/door/airlock)
 
 /obj/structure/machinery/door/airlock/strata/New()
-	add_timer(CALLBACK(src, /atom/proc/relativewall_neighbours), 10)
+	add_timer(CALLBACK(src, /atom.proc/relativewall_neighbours), 10)
 	..()
 
 /obj/structure/machinery/door/airlock/strata/autoname
@@ -255,8 +255,7 @@
 		/obj/structure/machinery/door/airlock)
 
 /obj/structure/machinery/door/airlock/almayer/New()
-	spawn(10) // No fucken idea but this somehow makes it work. What the actual fuck.
-		relativewall_neighbours()
+	add_timer(CALLBACK(src, /atom.proc/relativewall_neighbours), 10)
 	..()
 
 /obj/structure/machinery/door/airlock/almayer/autoname

@@ -142,8 +142,7 @@
 
 	for(var/obj/structure/machinery/flasher/M in machines)
 		if(M.id == src.id)
-			spawn()
-				M.flash()
+			INVOKE_ASYNC(M, /obj/structure/machinery/flasher.proc/flash)
 
 	sleep(50)
 

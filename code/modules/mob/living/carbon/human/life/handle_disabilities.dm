@@ -13,8 +13,7 @@
 	if(disabilities & COUGHING)
 		if((prob(5) && knocked_out <= 1))
 			drop_held_item()
-			spawn()
-				emote("cough")
+			INVOKE_ASYNC(src, .proc/emote, "cough")
 			return
 
 	if(disabilities & TOURETTES)

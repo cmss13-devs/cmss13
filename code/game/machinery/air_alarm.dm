@@ -417,8 +417,7 @@
 
 			if (alarm_area.atmosalert(2))
 				apply_danger_level(2)
-			spawn(1)
-				updateUsrDialog()
+			add_timer(CALLBACK(src, .proc/updateUsrDialog), 1)
 			update_icon()
 
 	updateDialog()
@@ -480,8 +479,7 @@
 		if(AALARM_WIRE_AALARM)
 			if (alarm_area.atmosalert(0))
 				apply_danger_level(0)
-			spawn(1)
-				updateUsrDialog()
+			add_timer(CALLBACK(src, .proc/updateUsrDialog), 1)
 			update_icon()
 
 	updateDialog()

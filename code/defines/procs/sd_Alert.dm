@@ -80,10 +80,9 @@ proc/sd_Alert(client/who, message, title, buttons = list("Ok"),\
 		if(istype(T)) qdel(T)
 		else CRASH("sd_Alert: tag \"[tag]\" is already in use by datum '[T]' (type: [T.type])")
 	T = new(who, tag)
-	if(duration)
-		spawn(duration)
-			if(T) qdel(T)
-			return
+	if(duration && T)
+		QDEL_IN(T, duration)
+		return
 	T.Display(message,title,buttons,default,unfocus,size,table,style,select,flags)
 	. = T.Response()
 

@@ -24,8 +24,7 @@
 
 	New()
 		..()
-		spawn(MINUTES_2)// 2 minutes
-			qdel(src)
+		QDEL_IN(src, MINUTES_2)
 
 /obj/effect/decal/cleanable/dirt
 	name = "dirt"

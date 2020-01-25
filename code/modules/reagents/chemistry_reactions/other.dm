@@ -332,8 +332,7 @@
 		S.attach(location)
 		S.set_up(holder, created_volume, 0, location)
 		playsound(location, 'sound/effects/smoke.ogg', 25, 1)
-		spawn(0)
-			S.start()
+		INVOKE_ASYNC(S, /datum/effect_system/smoke_spread/chem.proc/start)
 		holder.clear_reagents()
 
 

@@ -15,8 +15,7 @@
 	air_properties_vary_with_direction = 1
 
 	New()
-		spawn(0)
-			update_icon()
+		add_timer(CALLBACK(src, .proc/update_icon), 0)
 		if (src.req_access && src.req_access.len)
 			src.icon_state = "[src.icon_state]"
 			src.base_state = src.icon_state

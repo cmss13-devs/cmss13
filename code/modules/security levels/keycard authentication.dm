@@ -111,8 +111,7 @@
 	for(var/obj/structure/machinery/keycard_auth/KA in machines)
 		if(KA == src || KA.channel != channel) continue
 		KA.reset()
-		spawn()
-			KA.receive_request(src)
+		INVOKE_ASYNC(KA, /obj/structure/machinery/keycard_auth.proc/receive_request, src)
 
 	sleep(confirm_delay)
 	if(confirmed)

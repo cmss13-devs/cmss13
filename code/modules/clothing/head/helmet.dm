@@ -916,8 +916,7 @@
 	O.name = "grenade"
 	O.icon = 'icons/effects/explosion.dmi'
 	flick("grenade", O)
-	spawn(7)
-		qdel(O)
+	QDEL_IN(O, 7)
 	return
 
 /obj/item/clothing/head/helmet/marine/specialist/hefa/attack_self(var/mob/user)

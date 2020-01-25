@@ -97,8 +97,7 @@
 
 	for(var/obj/structure/machinery/door/window/brigdoor/door in targets)
 		if(door.density)	continue
-		spawn(0)
-			door.close()
+		INVOKE_ASYNC(door, /obj/structure/machinery/door.proc/close)
 
 	for(var/obj/structure/closet/secure_closet/brig/C in targets)
 		if(C.broken)	continue
@@ -118,8 +117,7 @@
 
 	for(var/obj/structure/machinery/door/window/brigdoor/door in targets)
 		if(!door.density)	continue
-		spawn(0)
-			door.open()
+		INVOKE_ASYNC(door, /obj/structure/machinery/door.proc/open)
 
 	for(var/obj/structure/closet/secure_closet/brig/C in targets)
 		if(C.broken)	continue

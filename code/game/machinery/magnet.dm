@@ -39,8 +39,7 @@
 			if(radio_controller)
 				radio_controller.add_object(src, freq, RADIO_MAGNETS)
 
-		spawn()
-			magnetic_process()
+		INVOKE_ASYNC(src, .proc/magnetic_process)
 
 	// update the invisibility and icon
 	hide(var/intact)
@@ -123,8 +122,7 @@
 					on = !on
 
 					if(on)
-						spawn()
-							magnetic_process()
+						INVOKE_ASYNC(src, .proc/magnetic_process)
 
 
 
@@ -308,8 +306,7 @@
 
 			radio_connection.post_signal(src, signal, filter = RADIO_MAGNETS)
 
-			spawn(1)
-				updateUsrDialog() // pretty sure this increases responsiveness
+			add_timer(CALLBACK(src, .proc/updateUsrDialog), 1)
 
 		if(href_list["operation"])
 			switch(href_list["operation"])
@@ -332,7 +329,7 @@
 				if("togglemoving")
 					moving = !moving
 					if(moving)
-						spawn() MagnetMove()
+						INVOKE_ASYNC(src, .proc/MagnetMove)
 
 
 		updateUsrDialog()

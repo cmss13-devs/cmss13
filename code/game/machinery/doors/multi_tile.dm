@@ -90,8 +90,7 @@
 		/obj/structure/machinery/door/airlock)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/New()
-	spawn(0) //
-		relativewall_neighbours()
+	INVOKE_ASYNC(src, .relativewall_neighbours)
 	..()
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic

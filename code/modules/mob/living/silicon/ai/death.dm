@@ -29,8 +29,7 @@
 			break
 
 	if(explosive)
-		spawn(10)
-			explosion(src.loc, 3, 6, 12, 15)
+		add_timer(CALLBACK(src, .proc/explosion, src.loc, 3, 6, 12, 15), 10)
 
 	for(var/obj/structure/machinery/ai_status_display/O in machines)
 		spawn( 0 )

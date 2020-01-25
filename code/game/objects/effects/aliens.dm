@@ -20,8 +20,7 @@
 
 /obj/effect/xenomorph/splatter/New() //Self-deletes after creation & animation
 	..()
-	spawn(8)
-		qdel(src)
+	QDEL_IN(src, 8)
 
 
 /obj/effect/xenomorph/splatterblob
@@ -34,8 +33,7 @@
 
 /obj/effect/xenomorph/splatterblob/New() //Self-deletes after creation & animation
 	..()
-	spawn(40)
-		qdel(src)
+	QDEL_IN(src, 40)
 
 
 /obj/effect/xenomorph/spray

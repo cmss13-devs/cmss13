@@ -26,8 +26,7 @@
 			reagents.set_source_mob(user)
 			reagents.trans_to_ingest(M, gulp_size)
 			reagents.reaction(M, INGEST)
-			spawn(5)
-				reagents.trans_to(M, gulp_size)
+			add_timer(CALLBACK(reagents, /datum/reagents.proc/trans_to, M, gulp_size), 5)
 
 		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
 		return 1

@@ -27,7 +27,7 @@
 	target = target.handle_barriers(src) // Checks if target will be attacked by the current alien OR if the blocker will be attacked
 	target.attack_alien(src)
 	track_slashes(caste_name)
-	next_move = world.time + (10 + caste ? caste.attack_delay : 0) //Adds some lag to the 'attack'
+	next_move = world.time + (10 + (caste ? caste.attack_delay : 0)) //Adds some lag to the 'attack'
 	return TRUE
 
 /mob/living/carbon/Xenomorph/RangedAttack(var/atom/A)

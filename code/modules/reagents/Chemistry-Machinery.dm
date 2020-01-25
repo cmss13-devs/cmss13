@@ -1640,6 +1640,9 @@
 				break
 
 		var/datum/reagent/R = programs[program][stage]
+		if(!R)
+			next_stage()
+			continue
 		var/amount
 		if(stage_missing)
 			amount = stage_missing
@@ -1679,7 +1682,7 @@
 			nanomanager.update_uis(src)
 		else //We can dispense any basic or common chemical directly. This does use energy as we're creating stuff from thin air
 			//Check if we have enough energy to afford dispensing
-			var/savings = max(energy - min(amount, energy * 10) / 10, 0)
+			var/savings = energy - min(amount, energy * 10) / 10
 			if(savings < 0) //Check if we can afford dispensing the chemical
 				break
 			output_container.reagents.add_reagent(R.id,amount)
@@ -1969,7 +1972,7 @@
 
 /obj/structure/machinery/chem_simulator/proc/update_costs()
 	property_costs = list()
-	if(target && target.completed)
+	if(target && target.data && target.completed)
 		for(var/P in target.data.properties)
 			switch(mode)
 				if(MODE_AMPLIFY)

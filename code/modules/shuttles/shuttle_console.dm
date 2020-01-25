@@ -28,6 +28,10 @@
 	user.set_interaction(src)
 
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	if(!shuttle)
+		log_debug("Shuttle control computer failed to find shuttle with tag '[shuttle_tag]'!")
+		return
+
 	if(!isXeno(user) && (onboard || z == 1) && !shuttle.iselevator)
 		if(shuttle.queen_locked)
 			if(onboard && (isSynth(user) || user.mind.assigned_role == "Pilot Officer"))

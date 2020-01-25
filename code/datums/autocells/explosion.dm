@@ -290,6 +290,10 @@
 			var/mob/firing_mob = explosion_source_mob
 			M.last_damage_mob = firing_mob
 			var/turf/location_of_mob = get_turf(firing_mob)
+			// who cares about the explosion if it happened nowhere
+			if(!location_of_mob)
+				return
+
 			if(M == firing_mob)
 				M.attack_log += "\[[time_stamp()]\] <b>[M]/[M.ckey]</b> blew himself up with \a <b>[explosion_source]</b> in [get_area(M)]."
 			// One human blew up another, be worried about it but do everything basically the same

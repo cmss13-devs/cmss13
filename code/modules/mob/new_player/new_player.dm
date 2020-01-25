@@ -27,13 +27,13 @@
 
 /mob/new_player/proc/new_player_panel_proc(var/refresh = FALSE)
 	var/tempnumber = rand(1, 999)
-	var/postfix_text = client.prefs.xeno_postfix ? ("-"+client.prefs.xeno_postfix) : ""
-	var/prefix_text = client.prefs.xeno_prefix ? client.prefs.xeno_prefix : "XX"
+	var/postfix_text = (client.prefs && client.prefs.xeno_postfix) ? ("-"+client.prefs.xeno_postfix) : ""
+	var/prefix_text = (client.prefs && client.prefs.xeno_prefix) ? client.prefs.xeno_prefix : "XX"
 	var/xeno_text = "[prefix_text]-[tempnumber][postfix_text]"
 	var/round_start = !ticker || !ticker.mode || ticker.current_state <= GAME_STATE_PREGAME
 
 	var/output = "<div align='center'>Welcome,"
-	output +="<br><b>[client.prefs.real_name]</b>"
+	output +="<br><b>[(client.prefs && client.prefs.real_name) ? client.prefs.real_name : client.key]</b>"
 	output +="<br><b>[xeno_text]</b>"
 	output += "<p><a href='byond://?src=\ref[src];lobby_choice=show_preferences'>Setup Character</A></p>"
 
@@ -41,7 +41,7 @@
 
 	if(round_start)
 		output += "<p>\[ [ready? "<b>Ready</b>":"<a href='byond://?src=\ref[src];lobby_choice=ready'>Ready</a>"] | [ready? "<a href='byond://?src=\ref[src];lobby_choice=ready'>Not Ready</a>":"<b>Not Ready</b>"] \]</p>"
-		output += "<b>Be Xenomorph:</b> [client.prefs.be_special & BE_ALIEN ? "Yes" : "No"]"
+		output += "<b>Be Xenomorph:</b> [(client.prefs && (client.prefs.be_special & BE_ALIEN)) ? "Yes" : "No"]"
 
 	else
 		output += "<a href='byond://?src=\ref[src];lobby_choice=manifest'>View the Crew Manifest</A><br><br>"

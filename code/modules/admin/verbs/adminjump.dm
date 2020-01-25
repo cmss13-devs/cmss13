@@ -105,7 +105,11 @@
 		A.z = tz
 		//This is a bit hacky but ensures it works properly
 		A.forceMove(A.loc)
-		message_staff(WRAP_STAFF_LOG(usr, "jumped to [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
+
+		var/turf/T = get_turf(A)
+		if(!T)
+			return
+		message_staff(WRAP_STAFF_LOG(usr, "jumped to [get_area(usr)] ([T.x],[T.y],[T.z])."), T.x, T.y, T.z)
 
 /client/proc/jumptokey()
 	set name = "Jump to Ckey"

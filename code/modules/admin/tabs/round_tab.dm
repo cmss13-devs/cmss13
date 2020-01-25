@@ -109,6 +109,10 @@
 
 	if(alert("Are you sure you want to end the round?",,"Yes","No") != "Yes")
 		return
+	// trying to end the round before it even starts. bruh
+	if(!ticker.mode)
+		return
+
 	ticker.mode.round_finished = MODE_INFESTATION_DRAW_DEATH
 	log_admin("[key_name(usr)] has made the round end early.")
 	message_admins(SPAN_NOTICE("[key_name(usr)] has made the round end early."))

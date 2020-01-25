@@ -77,10 +77,11 @@
 			photocopier.toner = max(0, photocopier.toner - 1)
 			var/obj/item/paper/chem_report/printing = new /obj/item/paper/chem_report/(photocopier.loc)
 			var/obj/item/paper/chem_report/report = chemical_research_data.research_documents[href_list["print_type"]][href_list["print_title"]]
-			printing.name = report.name
-			printing.info = report.info
-			printing.data = report.data
-			printing.completed = report.completed
+			if(report)
+				printing.name = report.name
+				printing.info = report.info
+				printing.data = report.data
+				printing.completed = report.completed
 		else
 			to_chat(usr, SPAN_WARNING("Printer toner is empty."))
 	else if(href_list["broker_clearance"])

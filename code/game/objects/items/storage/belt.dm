@@ -733,7 +733,7 @@
 	icon_state = "smartpistol_holster"
 	item_state = "marinebelt"
 	storage_slots = 6
-	icon_x = -6
+	icon_x = -5
 	icon_y = -2
 	can_hold = list(
 		/obj/item/weapon/gun/pistol/smart,

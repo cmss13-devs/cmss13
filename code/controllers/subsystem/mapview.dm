@@ -13,7 +13,8 @@ var/datum/subsystem/mapview/SSmapview
 
 /datum/subsystem/mapview/New()
 	NEW_SS_GLOBAL(SSmapview)
-	add_timer(CALLBACK(src, .proc/create_map_machines), 20)
+	spawn(20)
+		create_map_machines()
 
 /datum/subsystem/mapview/proc/create_map_machines()
 	map_machines = list()

@@ -61,7 +61,7 @@
 			Burst(FALSE)
 
 /obj/effect/alien/egg/clicked(var/mob/user, var/list/mods)
-	if(isobserver(user))
+	if(isobserver(user) || get_dist(src, user) > 1)
 		return
 	var/mob/living/carbon/Xenomorph/X = user
 	if(istype(X) && status == EGG_GROWN && mods["ctrl"] && X.caste.can_hold_facehuggers)

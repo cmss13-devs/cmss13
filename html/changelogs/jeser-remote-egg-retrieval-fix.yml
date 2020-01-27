@@ -1,0 +1,6 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed exploit that allowed retrieving huggers from eggs through space and time."

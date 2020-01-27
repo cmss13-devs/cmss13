@@ -263,9 +263,7 @@
 					if("Select type")
 						response = alert(usr,"Enter id manually or select from list?","Custom reaction [target]","Select from list","Manual input","Back")
 					if("Select from list")
-						var/list/pool = list()
-						for(var/datum/reagent/I in chemical_reagents_list)
-							pool += I.id
+						var/list/pool = chemical_reagents_list
 						pool = sortAssoc(pool)
 						component = input(usr,"Select:") as null|anything in pool
 						if(!component)

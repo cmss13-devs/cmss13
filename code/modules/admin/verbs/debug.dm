@@ -436,19 +436,62 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	set name = "E: Debug Mob Lists"
 	set desc = "For when you just gotta know"
 
-	switch(input("Which list?") in list("Players","Admins","Mobs","Living Mobs","Dead Mobs", "Clients"))
+	switch(input("Which list?") in list("Players","Admins","Clients","Mobs","Living Mobs","Dead Mobs","Human Mobs","Living Human Mobs","Xeno Mobs","Xeno Living Mobs","Yautja Mobs"))
 		if("Players")
-			to_chat(usr, jointext(player_list,","))
+			if(player_list.len)
+				to_chat(usr, jointext(player_list," | "))
+			else
+				to_chat(usr, SPAN_WARNING("No mobs in player list found."))
 		if("Admins")
-			to_chat(usr, jointext(admins,","))
-		if("Mobs")
-			to_chat(usr, jointext(mob_list,","))
-		if("Living Mobs")
-			to_chat(usr, jointext(living_mob_list,","))
-		if("Dead Mobs")
-			to_chat(usr, jointext(dead_mob_list,","))
+			if(admins.len)
+				to_chat(usr, jointext(admins," | "))
+			else
+				to_chat(usr, SPAN_WARNING("No mobs in player list found."))
 		if("Clients")
-			to_chat(usr, jointext(clients,","))
+			if(clients.len)
+				to_chat(usr, jointext(clients," | "))
+			else
+				to_chat(usr, SPAN_WARNING("No mobs in player list found."))
+		if("Mobs")
+			if(mob_list.len)
+				to_chat(usr, jointext(mob_list," | "))
+			else
+				to_chat(usr, SPAN_WARNING("No mobs in player list found."))
+		if("Living Mobs")
+			if(living_mob_list.len)
+				to_chat(usr, jointext(living_mob_list," | "))
+			else
+				to_chat(usr, SPAN_WARNING("No mobs in player list found."))
+		if("Dead Mobs")
+			if(dead_mob_list.len)
+				to_chat(usr, jointext(dead_mob_list," | "))
+			else
+				to_chat(usr, SPAN_WARNING("No mobs in player list found."))
+		if("Human Mobs")
+			if(human_mob_list.len)
+				to_chat(usr, jointext(human_mob_list," | "))
+			else
+				to_chat(usr, SPAN_WARNING("No mobs in player list found."))
+		if("Living Human Mobs")
+			if(living_human_list.len)
+				to_chat(usr, jointext(living_human_list," | "))
+			else
+				to_chat(usr, SPAN_WARNING("No mobs in player list found."))
+		if("Xeno Mobs")
+			if(xeno_mob_list.len)
+				to_chat(usr, jointext(xeno_mob_list," | "))
+			else
+				to_chat(usr, SPAN_WARNING("No mobs in player list found."))
+		if("Xeno Living Mobs")
+			if(living_xeno_list.len)
+				to_chat(usr, jointext(living_xeno_list," | "))
+			else
+				to_chat(usr, SPAN_WARNING("No mobs in player list found."))
+		if("Yautja Mobs")
+			if(yautja_mob_list.len)
+				to_chat(usr, jointext(yautja_mob_list," | "))
+			else
+				to_chat(usr, SPAN_WARNING("No mobs in player list found."))
 
 
 /client/proc/cmd_debug_list_processing_items()

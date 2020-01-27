@@ -11,6 +11,7 @@
 	var/allow_gun_usage = FALSE 		//False by default, so that synthetics can't use guns.
 	var/has_used_pamphlet = FALSE 		//Has this person used a pamphlet?
 	var/list/embedded_items = list() 	//A list of all the shrapnel currently embedded in the human
+	var/yautja_hunted_prey
 
 	var/list/synthetic_HUD_toggled = list(FALSE,FALSE)
 

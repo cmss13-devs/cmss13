@@ -584,7 +584,8 @@
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/pred_buy,
 		/mob/living/carbon/human/proc/butcher,
-		/mob/living/carbon/human/proc/mark_for_hunt
+		/mob/living/carbon/human/proc/mark_for_hunt,
+		/mob/living/carbon/human/proc/remove_from_hunt
 		)
 
 	knock_down_reduction = 2
@@ -622,11 +623,17 @@
 	if(gibbed)
 		yautja_mob_list -= H
 
+	if(H.yautja_hunted_prey)
+		H.yautja_hunted_prey = null
+
+	// Notify all yautja so they start the gear recovery
+	message_all_yautja("[H] has died at \the [get_area(H).name].")
+
 /datum/species/yautja/post_species_loss(mob/living/carbon/human/H)
 	var/datum/mob_hud/medical/advanced/A = huds[MOB_HUD_MEDICAL_ADVANCED]
 	A.add_to_hud(H)
 	H.blood_type = pick("A+","A-","B+","B-","O-","O+","AB+","AB-")
-	yautja_mob_list -= src
+	yautja_mob_list -= H
 	for(var/datum/limb/L in H.limbs)
 		switch(L.name)
 			if("groin","chest")
@@ -648,7 +655,7 @@
 	H.universal_understand = 1
 
 	H.blood_type = "Y*"
-	yautja_mob_list += src
+	yautja_mob_list += H
 	for(var/datum/limb/L in H.limbs)
 		switch(L.name)
 			if("groin","chest")

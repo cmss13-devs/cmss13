@@ -35,6 +35,7 @@
 // OOC
 #define SPAN_XOOC(X) "<span class='xooc'>[X]</span>"
 #define SPAN_MOOC(X) "<span class='mooc'>[X]</span>"
+#define SPAN_YOOC(X) "<span class='yooc'>[X]</span>"
 #define SPAN_DEBUG(X) "<span class='debuginfo'>[X]</span>"
 #define SPAN_ADMINNOTICE(X) "<span class='adminnotice'>[X]</span>"
 

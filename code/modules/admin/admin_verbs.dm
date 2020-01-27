@@ -205,6 +205,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/toggleffattacklogs,
 	/client/proc/xooc,					// Xeno OOC
 	/client/proc/mooc,					// Marine OOC
+	/client/proc/yooc,					// Yautja OOC
 	/datum/admins/proc/view_txt_log,
 	/datum/admins/proc/toggleooc,		/*toggles ooc on/off for everyone*/
 	/datum/admins/proc/togglelooc,		/*toggles ooc on/off for everyone*/
@@ -225,32 +226,32 @@ var/list/admin_verbs_mod = list(
 	// mentors don't have access to admin verbs
 	if(admin_holder && !AHOLD_IS_ONLY_MENTOR(admin_holder))
 		verbs += admin_verbs_default
-		if(admin_holder.rights & R_BUILDMODE)	
+		if(admin_holder.rights & R_BUILDMODE)
 			verbs += /client/proc/togglebuildmodeself
-		if(admin_holder.rights & R_ADMIN)		
+		if(admin_holder.rights & R_ADMIN)
 			verbs += admin_verbs_admin
-		if(admin_holder.rights & R_BAN)			
+		if(admin_holder.rights & R_BAN)
 			verbs += admin_verbs_ban
 			verbs += admin_verbs_teleport
-		if(admin_holder.rights & R_FUN)			
+		if(admin_holder.rights & R_FUN)
 			verbs += admin_verbs_fun
-		if(admin_holder.rights & R_SERVER)		
+		if(admin_holder.rights & R_SERVER)
 			verbs += admin_verbs_server
 		if(admin_holder.rights & R_DEBUG)
 			verbs += admin_verbs_debug
 			if(config.debugparanoid && !check_rights(R_ADMIN))
 				verbs.Remove(admin_verbs_paranoid_debug)			//Right now it's just callproc but we can easily add others later on.
-		if(admin_holder.rights & R_POSSESS)		
+		if(admin_holder.rights & R_POSSESS)
 			verbs += admin_verbs_possess
-		if(admin_holder.rights & R_PERMISSIONS)	
+		if(admin_holder.rights & R_PERMISSIONS)
 			verbs += admin_verbs_permissions
-		if(admin_holder.rights & R_COLOR)		
+		if(admin_holder.rights & R_COLOR)
 			verbs += admin_verbs_color
-		if(admin_holder.rights & R_SOUNDS)		
+		if(admin_holder.rights & R_SOUNDS)
 			verbs += admin_verbs_sounds
-		if(admin_holder.rights & R_SPAWN)		
+		if(admin_holder.rights & R_SPAWN)
 			verbs += admin_verbs_spawn
-		if(admin_holder.rights & R_MOD)			
+		if(admin_holder.rights & R_MOD)
 			verbs += admin_verbs_mod
 
 /client/proc/add_admin_whitelists()
@@ -304,7 +305,7 @@ var/list/admin_verbs_mod = list(
 		prefs.ooccolor = new_ooccolor
 		prefs.save_preferences()
 	return
-	 
+
 
 #define MAX_WARNS 3
 #define AUTOBANTIME 10
@@ -353,10 +354,10 @@ var/list/admin_verbs_mod = list(
 	if(!D) return
 	var/path = text2path("/datum/disease/[D]")
 	T.contract_disease(new path, 1)
-	 
+
 	log_admin("[key_name(usr)] gave [key_name(T)] the disease [D].")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] gave [key_name(T)] the disease [D]."), 1)
-	 
+
 
 /client/proc/object_talk(var/msg as text) // -- TLE
 	set category = "Special Verbs"
@@ -367,7 +368,7 @@ var/list/admin_verbs_mod = list(
 			return
 		for (var/mob/V in hearers(mob.control_object))
 			V.show_message("<b>[mob.control_object.name]</b> says: \"" + msg + "\"", 2)
-	 
+
 
 /client/proc/toggle_log_hrefs()
 	set name = "X: Toggle href Logging"

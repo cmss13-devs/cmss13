@@ -56,7 +56,6 @@
 		new_area = get_area(owner.mob)
 	
 	soundscape_playlist = new_area.soundscape_playlist
-	scape_cooldown = new_area.soundscape_interval
 
 	var/sound/S = sound(null,1,0,SOUND_CHANNEL_AMBIENCE)
 	

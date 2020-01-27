@@ -75,6 +75,7 @@
 					SPAN_HELPFUL("[user] <b>bandages</b> your <b>[affecting.display_name]</b>."),
 					SPAN_NOTICE("[user] bandages [possessive_their] [affecting.display_name]."))
 				use(1)
+				playsound(user, 'sound/handling/bandage.ogg', 25, 1, 2)
 		else
 			if(H.can_be_operated_on()) //Checks if mob is lying down on table for surgery
 				if(do_surgery(H,user,src))
@@ -118,6 +119,7 @@
 					SPAN_HELPFUL("[user] <b>salves the wounds</b> on your <b>[affecting.display_name]</b>."),
 					SPAN_NOTICE("[user] salves the wounds [possessive_their] [affecting.display_name]."))
 				use(1)
+				playsound(user, 'sound/handling/ointment_spreading.ogg', 25, 1, 2)				
 		else
 			if (H.can_be_operated_on())        //Checks if mob is lying down on table for surgery
 				if (do_surgery(H,user,src))
@@ -295,3 +297,4 @@
 
 		if(affecting.apply_splints(src, user, M)) // Referenced in external organ helpers.
 			use(1)
+			playsound(user, 'sound/handling/splint1.ogg', 25, 1, 2)	

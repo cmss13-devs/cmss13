@@ -137,6 +137,8 @@
 		else
 			I.loc = newloc
 	I.dropped(src)
+	if(I.unequip_sounds.len)	
+		playsound_client(client, pick(I.unequip_sounds), null, ITEM_EQUIP_VOLUME)
 
 	return TRUE
 

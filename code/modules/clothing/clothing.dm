@@ -358,3 +358,8 @@
 				update_icon()
 				desc = initial(desc) + "It is storing \a [stored_item]."
 				break
+
+/obj/item/clothing/equipped(mob/user, slot)
+	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND && equip_sounds.len)
+		playsound_client(user.client, pick(equip_sounds), null, ITEM_EQUIP_VOLUME)
+	..()	

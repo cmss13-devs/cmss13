@@ -2,6 +2,9 @@
 /area/bigred
 	can_build_special = TRUE
 	powernet_name = "ground"
+	ambience_exterior = AMBIENCE_BIGRED
+	soundscape_playlist = SCAPE_PL_THUNDER
+	soundscape_interval = 50
 
 /area/bigred/ground
 	name = "ground"
@@ -279,30 +282,37 @@
 //Big Red V2
 /area/bigredv2
 	can_build_special = TRUE
+	ambience_exterior = AMBIENCE_BIGRED
+	soundscape_playlist = SCAPE_PL_THUNDER
+	soundscape_interval = 50
 
 /area/bigredv2/outside
 	name = "\improper Colony Grounds"
 	icon_state = "red"
 	ceiling = CEILING_NONE
 	soundscape_interval = 30
-	soundscape_playlist = SCAPE_PL_WIND
+	soundscape_playlist = SCAPE_PL_THUNDER
 
 /area/bigredv2/outside/ne
 	name = "\improper Northeast Colony Grounds"
 	icon_state = "northeast"
+	soundscape_playlist = SCAPE_PL_DESERT_STORM
 
 /area/bigredv2/outside/nw
 	name = "\improper Northwest Colony Grounds"
 	icon_state = "northwest"
 	is_resin_allowed = FALSE
+	soundscape_playlist = SCAPE_PL_DESERT_STORM
 
 /area/bigredv2/outside/c
 	name = "\improper Central Colony Grounds"
 	icon_state = "purple"
+	soundscape_playlist = SCAPE_PL_DESERT_STORM
 
 /area/bigredv2/outside/n
 	name = "\improper Northern Colony Grounds"
 	icon_state = "north"
+	soundscape_playlist = SCAPE_PL_DESERT_STORM
 
 /area/bigredv2/outside/w
 	name = "\improper Western Colony Grounds"
@@ -312,34 +322,47 @@
 /area/bigredv2/outside/e
 	name = "\improper Eastern Colony Grounds"
 	icon_state = "east"
+	soundscape_playlist = SCAPE_PL_DESERT_STORM
 
 /area/bigredv2/outside/se
 	name = "\improper Southeast Colony Grounds"
 	icon_state = "southeast"
+	soundscape_playlist = SCAPE_PL_DESERT_STORM
 
 /area/bigredv2/outside/s
 	name = "\improper Southern Colony Grounds"
 	icon_state = "south"
+	soundscape_playlist = SCAPE_PL_DESERT_STORM
 
 /area/bigredv2/outside/sw
 	name = "\improper Southwest Colony Grounds"
 	icon_state = "southwest"
 	is_resin_allowed = FALSE
+	soundscape_playlist = SCAPE_PL_DESERT_STORM
 
 /area/bigredv2/caves
 	name = "\improper Unknown Area"
 	icon_state = "bluenew"
 	ceiling = CEILING_UNDERGROUND
 	sound_environment = 6
+	ceiling_muffle = FALSE
+	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
+	soundscape_interval = 25 
+	base_muffle = MUFFLE_HIGH
 
 /area/bigredv2/caves/eta
 	ceiling = CEILING_UNDERGROUND_METAL
+	ceiling_muffle = FALSE
+	ambience_exterior = AMBIENCE_ALMAYER
+	sound_environment = 2
+	soundscape_playlist = list()
 
 /area/bigredv2/outside/eta
 	name = "\improper Eta Labs Compound"
 	icon_state = "yellow"
 	ceiling = CEILING_NONE
+	base_muffle = MUFFLE_MEDIUM
 
 /area/bigredv2/caves/eta/living
 	name = "\improper Eta Living Quarters"
@@ -367,6 +390,7 @@
 	name = "\improper General Store"
 	icon_state = "blueold"
 	ceiling = CEILING_METAL
+	
 
 /area/bigredv2/outside/marshall_office
 	name = "\improper Marshall Offices"
@@ -392,6 +416,8 @@
 	name = "\improper Virology Lab"
 	icon_state = "LP"
 	ceiling = CEILING_UNDERGROUND_METAL
+	ceiling_muffle = FALSE
+	base_muffle = MUFFLE_MEDIUM
 
 /area/bigredv2/outside/dorms
 	name = "\improper Dormitories"
@@ -434,6 +460,8 @@
 	icon_state = "ass_line"
 	ceiling = CEILING_UNDERGROUND_METAL
 	is_resin_allowed = FALSE
+	ceiling_muffle = FALSE
+	base_muffle = MUFFLE_LOW
 
 /area/bigredv2/outside/engineering
 	name = "\improper Engineering Complex"
@@ -457,6 +485,10 @@
 
 /area/bigredv2/caves/lambda
 	ceiling = CEILING_UNDERGROUND_METAL
+	ceiling_muffle = FALSE
+	ambience_exterior = AMBIENCE_ALMAYER
+	sound_environment = 2
+	soundscape_playlist = list()
 
 /area/bigredv2/caves/lambda/virology
 	name = "\improper Lambda Virology"
@@ -483,36 +515,71 @@
 	name = "\improper Virology Caves"
 	icon_state = "caves_virology"
 	ceiling = CEILING_UNDERGROUND
+	sound_environment = 6
+	ceiling_muffle = FALSE
+	ambience_exterior = AMBIENCE_CAVE
+	soundscape_playlist = SCAPE_PL_CAVE
+	base_muffle = MUFFLE_HIGH
 
 /area/bigredv2/caves_sw
 	name = "\improper Southwestern Caves"
 	icon_state = "caves_sw"
 	ceiling = CEILING_UNDERGROUND
+	sound_environment = 6
+	ceiling_muffle = FALSE
+	ambience_exterior = AMBIENCE_CAVE
+	soundscape_playlist = SCAPE_PL_CAVE
+	base_muffle = MUFFLE_HIGH	
 
 /area/bigredv2/caves_research
 	name = "\improper W-Y Research Lab Caves"
 	icon_state = "caves_research"
 	ceiling = CEILING_UNDERGROUND
+	sound_environment = 6
+	ceiling_muffle = FALSE
+	ambience_exterior = AMBIENCE_CAVE
+	soundscape_playlist = SCAPE_PL_CAVE
+	base_muffle = MUFFLE_HIGH
 
 /area/bigredv2/caves_se
 	name = "\improper Southeastern Caves"
 	icon_state = "caves_se"
 	ceiling = CEILING_UNDERGROUND
+	sound_environment = 6
+	ceiling_muffle = FALSE
+	ambience_exterior = AMBIENCE_CAVE
+	soundscape_playlist = SCAPE_PL_CAVE
+	base_muffle = MUFFLE_HIGH
 
 /area/bigredv2/caves_east
 	name = "\improper Eastern Caves"
 	icon_state = "caves_east"
 	ceiling = CEILING_UNDERGROUND
+	sound_environment = 6
+	ceiling_muffle = FALSE
+	ambience_exterior = AMBIENCE_CAVE
+	soundscape_playlist = SCAPE_PL_CAVE
+	base_muffle = MUFFLE_HIGH
 
 /area/bigredv2/caves_lambda
 	name = "\improper Lambda Lab Caves"
 	icon_state = "caves_lambda"
 	ceiling = CEILING_UNDERGROUND
+	sound_environment = 6
+	ceiling_muffle = FALSE
+	ambience_exterior = AMBIENCE_CAVE
+	soundscape_playlist = SCAPE_PL_CAVE
+	base_muffle = MUFFLE_HIGH
 
 /area/bigredv2/caves_north
 	name = "\improper Northern Caves"
 	icon_state = "caves_north"
 	ceiling = CEILING_UNDERGROUND
+	sound_environment = 6
+	ceiling_muffle = FALSE
+	ambience_exterior = AMBIENCE_CAVE
+	soundscape_playlist = SCAPE_PL_CAVE
+	base_muffle = MUFFLE_HIGH
 
 /area/bigredv2/landing/console
 	name = "\improper LZ1 'Telecomms'"

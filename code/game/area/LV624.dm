@@ -147,6 +147,7 @@
 	name ="\improper Caves"
 	icon_state = "cave"
 	ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen12.ogg','sound/ambience/ambisin4.ogg')
+	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
 	soundscape_interval = 25 
 	ceiling = CEILING_DEEP_UNDERGROUND

@@ -7,6 +7,9 @@ class Runtime:
         Data class for holding information provided by a runtime
     '''
 
+    # Holds the git branch the runtime occured on
+    branch = ""
+
     # Holds the error message
     message = ""
 
@@ -23,20 +26,25 @@ class Runtime:
     # 0 - Error message
     # 1 - File where the error occured
     # 2 - Line number where the error occured
-    issue_title_template = "{0} - {1}@{2}"
+    # 3 - Branch the error occured on
+    issue_title_template = "{0} - {1}@{2} (on {3})"
 
     # Format for the body of the issue
-    # 0 - Error message
-    # 1 - File where the error occured
-    # 2 - Line number where the error occured
-    # 3 - Full runtime details (the stack trace)
-    issue_body_template = "**Error message:** {0}\n\n**Where:** {1}, line {2}\n\n**Stack trace:**\n```\n{3}\n```"
+    # 0 - Branch the error occured on
+    # 1 - Error message
+    # 2 - File where the error occured
+    # 3 - Line number where the error occured
+    # 4 - Full runtime details (the stack trace)
+    issue_body_template = "**Branch:** {0}\n\n**Error message:** {1}\n\n**Where:** {2}, line {3}\n\n**Stack trace:**\n```\n{4}\n```"
 
     def __init__(self, message, file, line, desc):
         self.message = message
         self.file = file
         self.line = line
         self.desc = desc.replace(";", "\n")
+
+    def set_branch(self, branch):
+        self.branch = branch
 
     def get_msg(self):
         '''
@@ -71,11 +79,11 @@ class Runtime:
             :return title: A formatted issue title for the runtime
         '''
 
-        return self.issue_title_template.format(self.message, self.file, self.line)
+        return self.issue_title_template.format(self.message, self.file, self.line, self.branch)
 
     def get_body(self):
         '''
             :return body: A formatted issue body for the runtime
         '''
 
-        return self.issue_body_template.format(self.message, self.file, self.line, self.desc)
+        return self.issue_body_template.format(self.branch, self.message, self.file, self.line, self.desc)

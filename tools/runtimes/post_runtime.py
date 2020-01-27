@@ -6,8 +6,9 @@
 '''
 
 from sys import argv
-from os import environ
+from os import environ, getcwd, path
 import requests
+from git import Repo
 
 from runtime import Runtime
 
@@ -27,7 +28,12 @@ def handle_issue(pid, pat):
     if not pid or not pat:
         return
 
+    repo = Repo(path.join(getcwd(), "..", ".."))
+    if not repo or repo.bare:
+        return
+
     runtime = Runtime(*[argv[i] for i in range(1, 5)])
+    runtime.set_branch(repo.head.ref.name)
 
     # Check if there's already an issue for the runtime
     list_issues_url = LIST_ISSUES_URL.format(pid, runtime.get_title())

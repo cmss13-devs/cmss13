@@ -100,9 +100,6 @@
 	dir = 4
 	},
 /area/bigredv2/outside/space_port)
-"aao" = (
-/turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
 "aap" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	tag = "icon-landingstripe (WEST)";
@@ -248,7 +245,7 @@
 "aaF" = (
 /obj/structure/machinery/camera/autoname/lz_camera,
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/bigredv2/outside/space_port)
 "aaG" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	tag = "icon-landingstripe (WEST)";
@@ -1427,12 +1424,6 @@
 	dir = 4
 	},
 /area/bigredv2/outside/space_port)
-"adx" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
 "ady" = (
 /obj/structure/bed/chair,
 /turf/open/floor{
@@ -1544,7 +1535,7 @@
 	name = "1"
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/bigredv2/outside/space_port)
 "adL" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -38686,26 +38677,26 @@ aac
 aae
 aaf
 aai
-aao
-aao
-aao
-aao
-aao
+aah
+aah
+aah
+aah
+aah
 aau
 aau
 aau
-aao
-aao
-aao
+aah
+aah
+aah
 aaF
-aao
-aao
+aah
+aah
 aau
 aau
 aau
 aau
-aao
-aao
+aah
+aah
 adK
 aeh
 aaf
@@ -38903,10 +38894,10 @@ aac
 aae
 aaf
 aaj
-aao
-aao
+aah
+aah
 aaF
-aao
+aah
 aau
 aau
 aau
@@ -38916,13 +38907,13 @@ aau
 aau
 aau
 aau
-aao
+aah
 aau
 aau
 aau
 aau
 aaF
-aao
+aah
 aau
 aei
 aaf
@@ -39120,10 +39111,10 @@ aac
 aae
 aaf
 aak
-aao
-aao
-aao
-aao
+aah
+aah
+aah
+aah
 aau
 aau
 aau
@@ -39139,7 +39130,7 @@ aau
 aau
 aau
 aau
-adx
+acx
 aau
 aej
 aaf
@@ -39337,7 +39328,7 @@ aac
 aae
 aaf
 aal
-aao
+aah
 aau
 aau
 aau
@@ -39554,7 +39545,7 @@ aac
 aae
 aaf
 aai
-aao
+aah
 aau
 aau
 aau
@@ -39573,8 +39564,8 @@ aau
 aau
 aau
 aau
-aao
-aao
+aah
+aah
 aeh
 aaf
 aaf
@@ -39771,7 +39762,7 @@ aac
 aae
 aaf
 aaj
-aao
+aah
 aau
 aau
 aau
@@ -39790,8 +39781,8 @@ aau
 aau
 aau
 aau
-aao
-aao
+aah
+aah
 aei
 aaf
 aaf
@@ -39988,7 +39979,7 @@ aac
 aae
 aaf
 aak
-aao
+aah
 aau
 aau
 aau
@@ -40007,8 +39998,8 @@ aau
 acd
 aau
 aau
-aao
-aao
+aah
+aah
 aej
 aaf
 aaf
@@ -40205,7 +40196,7 @@ aac
 aae
 aaf
 aal
-aao
+aah
 aau
 aau
 aau
@@ -40422,10 +40413,10 @@ aac
 aae
 aaf
 aai
-aao
-aao
-aao
-aao
+aah
+aah
+aah
+aah
 aau
 aau
 aau
@@ -40441,7 +40432,7 @@ aau
 aau
 aau
 aau
-aao
+aah
 aau
 aeh
 aaf
@@ -40639,10 +40630,10 @@ aac
 aae
 aaf
 aaj
-aao
-aao
+aah
+aah
 aaF
-aao
+aah
 aau
 aau
 aau
@@ -40652,13 +40643,13 @@ aau
 aau
 aau
 aau
-aao
+aah
 aau
 aau
 aau
 aau
 aaF
-aao
+aah
 aau
 aei
 aaf
@@ -40856,27 +40847,27 @@ aac
 aae
 aaf
 aak
-aao
-aao
-aao
-aao
-aao
+aah
+aah
+aah
+aah
+aah
 aau
 aau
 aau
-aao
-aao
-aao
+aah
+aah
+aah
 aaF
-aao
-aao
+aah
+aah
 aau
 aau
 aau
 aau
-aao
-aao
-aao
+aah
+aah
+aah
 aej
 aaf
 aaf

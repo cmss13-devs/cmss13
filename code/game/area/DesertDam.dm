@@ -4,6 +4,7 @@
 	icon_state = "cliff_blocked"
 	can_build_special = TRUE
 	powernet_name = "ground"
+	ambience_exterior = AMBIENCE_TRIJENT
 
 //INTERIOR
 // areas under rock
@@ -165,6 +166,10 @@
 	name = "Caves"
 	ceiling = CEILING_DEEP_UNDERGROUND
 	icon_state = "red"
+	ambience_exterior = AMBIENCE_CAVE
+	soundscape_playlist = SCAPE_PL_CAVE
+	soundscape_interval = 25 
+	sound_environment = 6
 /area/desert_dam/interior/caves/northern_caves
 	name = "Northern Caves"
 	icon_state = "red"

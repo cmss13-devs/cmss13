@@ -14,8 +14,8 @@
 	var/lastbang
 	var/storage_capacity = 30 //This is so that someone can't pack hundreds of items in a locker/crate
 							  //then open it in a populated area to crash clients.
-	var/open_sound = 'sound/machines/click.ogg'
-	var/close_sound = 'sound/machines/click.ogg'
+	var/open_sound = 'sound/handling/hinge_squeak1.ogg'
+	var/close_sound = 'sound/handling/hinge_squeak2.ogg'
 	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
 
 	var/store_items = TRUE

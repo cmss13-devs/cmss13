@@ -116,6 +116,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	time_to_unequip = 20
 	time_to_equip = 20
+	equip_sounds = list('sound/handling/putting_on_armor1.ogg')
 
 /obj/item/clothing/suit/storage/marine/New(loc)
 	if(!(flags_atom & UNIQUE_ITEM_TYPE))

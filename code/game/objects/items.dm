@@ -78,6 +78,9 @@
 
 	var/mob/living/carbon/human/locked_to_mob = null	// If the item uses flag MOB_LOCK_ON_PICKUP, this is the mob owner reference.
 
+	var/list/equip_sounds = list() //Sounds played when this item is equipped
+	var/list/unequip_sounds = list() //Same but when unequipped
+
 /obj/item/proc/on_dropped()
 	if(event_dropped)
 		event_dropped.fire_event(src)

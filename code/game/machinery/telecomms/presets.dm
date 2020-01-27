@@ -44,6 +44,10 @@
 	unacidable = TRUE
 	health = 450
 
+/obj/structure/machinery/telecomms/relay/preset/tower/New()
+	..()
+	playsound(src, 'sound/machines/tcomms_on.ogg', 75)
+
 /obj/structure/machinery/telecomms/relay/preset/tower/get_explosion_resistance()
 	return 1000000
 
@@ -63,6 +67,8 @@
 	if(health <= 0)
 		on = FALSE
 	else
+		if(!on)
+			playsound(src, 'sound/machines/tcomms_on.ogg', 75)
 		on = TRUE
 
 /obj/structure/machinery/telecomms/relay/preset/tower/update_health(var/damage = 0)

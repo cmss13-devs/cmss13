@@ -429,6 +429,7 @@
 	var/upgrades = 0 //Set to two, so admins can give preds shittier ones for young blood events or whatever. //Changed it back to 0 since it was breaking spawn-equipment and the translator -retrokinesis
 	var/explosion_type = 0 //0 is BIG explosion, 1 ONLY gibs the user.
 	var/combistick_cooldown = 0 //Let's add a cooldown for Yank Combistick so that it can't be spammed.
+	var/notification_sound = TRUE	// Whether the bracer pings when a message comes or not
 
 /obj/item/clothing/gloves/yautja/New()
 	..()
@@ -606,6 +607,14 @@
 	playsound(user,'sound/weapons/wristblades_on.ogg', 15, 1)
 	return 1
 
+// Toggle the notification sound
+/obj/item/clothing/gloves/yautja/verb/toggle_notification_sound()
+	set name = "Toggle Bracer Sound"
+	set desc = "Toggle your bracer's notification sound."
+	set category = "Yautja"
+
+	notification_sound = !notification_sound
+	to_chat(usr, SPAN_NOTICE("The bracer's sound is now turned [notification_sound ? "on" : "off"]."))
 
 //Should put a cool menu here, like ninjas.
 /obj/item/clothing/gloves/yautja/verb/wristblades()

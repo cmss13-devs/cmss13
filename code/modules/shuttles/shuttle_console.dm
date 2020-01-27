@@ -211,6 +211,8 @@
 					to_chat(M, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
 					var/mob/living/carbon/Xenomorph/Queen/Q = M // typechecked above
 					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"),3,Q.hivenumber)
+					// Notify the yautja too so they stop the hunt
+					message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
 					playsound(src, 'sound/misc/queen_alarm.ogg')
 					M.count_niche_stat(STATISTICS_NICHE_FLIGHT)
 					/* Resolve this line once structures are resolved.

@@ -3,7 +3,7 @@
 	name = "\improper Secure Airlock"
 	icon = 'icons/obj/structures/doors/Door_secure.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_com
-	openspeed = 17
+	openspeed = 4
 
 /obj/structure/machinery/door/airlock/command
 	name = "\improper Command Airlock"

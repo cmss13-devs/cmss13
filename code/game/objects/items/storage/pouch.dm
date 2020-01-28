@@ -89,7 +89,6 @@
 	name = "bayonet sheath"
 	desc = "A pouch for your knives."
 	can_hold = list(
-		/obj/item/weapon/combat_knife,
 		/obj/item/weapon/throwing_knife,
 		/obj/item/attachable/bayonet
 	)
@@ -99,12 +98,12 @@
 
 /obj/item/storage/pouch/bayonet/full/New()
 	..()
-	new /obj/item/weapon/combat_knife(src)
+	new /obj/item/attachable/bayonet(src)
 
 
 /obj/item/storage/pouch/bayonet/upp/New()
 	..()
-	new /obj/item/weapon/combat_knife/upp(src)
+	new /obj/item/attachable/bayonet/upp(src)
 
 /obj/item/storage/pouch/survival
 	name = "survival pouch"
@@ -367,7 +366,7 @@
 		/obj/item/storage/syringe_case,
 	)
 
-/obj/item/storage/pouch/medical/frt_kit/full/New() 
+/obj/item/storage/pouch/medical/frt_kit/full/New()
 	..()
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/stack/medical/splint(src)

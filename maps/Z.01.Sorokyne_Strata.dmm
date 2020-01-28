@@ -28349,7 +28349,7 @@
 /obj/structure/rack,
 /obj/item/tool/shovel/etool/folded,
 /obj/item/weapon/gun/pistol/c99,
-/obj/item/weapon/combat_knife/upp,
+/obj/item/attachable/bayonet/upp,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -38991,7 +38991,7 @@
 /obj/structure/rack,
 /obj/item/tool/shovel/etool/folded,
 /obj/item/weapon/gun/pistol/c99,
-/obj/item/weapon/combat_knife/upp,
+/obj/item/attachable/bayonet/upp,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},

@@ -253,7 +253,7 @@
 	max_w_class = SIZE_MEDIUM
 	max_storage_space = 20
 	can_hold = list(
-		/obj/item/weapon/combat_knife,
+		/obj/item/attachable/bayonet,
 		/obj/item/device/flashlight/flare,
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/smg,

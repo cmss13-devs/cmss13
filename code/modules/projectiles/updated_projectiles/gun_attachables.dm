@@ -195,13 +195,21 @@ Defined in conflicts.dm of the #defines folder.
 	damage_falloff_mod = 0.4
 
 /obj/item/attachable/bayonet
-	name = "bayonet"
-	desc = "A sharp blade for mounting on a weapon. It can be used to stab manually on anything but harm intent."
+	name = "\improper M5 'Night Raider' bayonet"
 	icon_state = "bayonet"
-	attach_icon = "bayonet_a"
-	force = 20
-	throwforce = 10
+	item_state = "combat_knife"
+	desc = "The standard-issue bayonet of the Colonial Marines. You can slide this knife into your boots, or attach it to the end of a rifle."
+	sharp = IS_SHARP_ITEM_ACCURATE
+	force = 25
+	throwforce = 20
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 6
+	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	flags_equip_slot = SLOT_FACE
+	flags_armor_protection = SLOT_FACE
+
+	attach_icon = "bayonet_a"
 	melee_mod = 35
 	slot = "muzzle"
 	pixel_shift_x = 14 //Below the muzzle.
@@ -211,21 +219,26 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	accuracy_unwielded_mod = -config.min_hit_accuracy_mult
 
-/obj/item/attachable/bayonet/attackby(obj/item/I, mob/user)
-	if(istype(I,/obj/item/tool/screwdriver))
-		to_chat(user, SPAN_NOTICE("You modify the bayonet back into a combat knife."))
-		if(istype(loc, /obj/item/storage))
-			var/obj/item/storage/S = loc
-			S.remove_from_storage(src)
-		if(loc == user)
-			user.drop_inv_item_on_ground(src)
-		var/obj/item/weapon/combat_knife/F = new(src.loc)
-		user.put_in_hands(F) //This proc tries right, left, then drops it all-in-one.
-		if(F.loc != user) //It ended up on the floor, put it whereever the old flashlight is.
-			F.loc = src.loc
-		qdel(src) //Delete da old bayonet
-	else
-		. = ..()
+/obj/item/attachable/bayonet/attack(mob/living/target, mob/living/carbon/human/user)
+	if(!dig_out_shrapnel_check(target,user))
+		..()
+
+/obj/item/attachable/bayonet/attack_self(mob/living/carbon/human/user)
+	if(!ishuman(user))
+		return
+	if(!hasorgans(user))
+		return
+
+	dig_out_shrapnel(user)
+
+/obj/item/attachable/bayonet/upp
+	name = "\improper Type 80 bayonet"
+	icon_state = "upp_bayonet"
+	item_state = "combat_knife"
+	desc = "The standard-issue bayonet of the UPP, the Type 80 is balanced to also function as an effective throwing knife."
+	throwforce = 35
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 7
 
 /obj/item/attachable/extended_barrel
 	name = "extended barrel"

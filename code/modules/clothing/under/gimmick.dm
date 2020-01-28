@@ -87,7 +87,7 @@
 			/obj/item/tool/lighter,
 			/obj/item/explosive/grenade,
 			/obj/item/device/binoculars,
-			/obj/item/weapon/combat_knife,
+			/obj/item/attachable/bayonet,
 			/obj/item/storage/sparepouch,
 			/obj/item/storage/large_holster/machete)
 

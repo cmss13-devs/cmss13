@@ -6,7 +6,7 @@ can cause issues with ammo types getting mixed up during the burst.
 */
 
 /obj/item/weapon/gun/shotgun
-	
+
 	w_class = SIZE_LARGE
 	force = 14.0
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
@@ -161,7 +161,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	desc = "A cobbled-together pile of scrap and alien wood. Point end towards things you want to die. Has a burst fire feature, as if it needed it."
 	icon_state = "cshotgun"
 	item_state = "cshotgun"
-	
+
 	fire_sound = 'sound/weapons/gun_shotgun_automatic.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/merc
 	attachable_allowed = list(
@@ -206,11 +206,12 @@ can cause issues with ammo types getting mixed up during the burst.
 	desc = "The Weston-Yamada MK221 Shotgun, a semi-automatic shotgun with a quick fire rate."
 	icon_state = "mk221"
 	item_state = "mk221"
-	
+
 	fire_sound = 'sound/weapons/gun_shotgun_automatic.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
@@ -266,12 +267,13 @@ can cause issues with ammo types getting mixed up during the burst.
 	desc = "A double barreled shotgun of archaic, but sturdy design. Uses 12 Gauge Special slugs, but can only hold 2 at a time."
 	icon_state = "dshotgun"
 	item_state = "dshotgun"
-	
+
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/double
 	fire_sound = 'sound/weapons/gun_shotgun_heavy.ogg'
 	cocked_sound = null //We don't want this.
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/gyro,
@@ -398,6 +400,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/double/mou53 //Take care, she comes loaded!
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/scope/mini, //What's the harm, right?
@@ -455,6 +458,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	var/message //To not spam the above.
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/verticalgrip,

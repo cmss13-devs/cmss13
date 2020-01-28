@@ -98,7 +98,7 @@
 	},
 /area/lv624/ground/jungle3)
 "lR" = (
-/obj/item/weapon/combat_knife{
+/obj/item/attachable/bayonet{
 	desc = "A curved blade made of a strange material. It looks both old and very sharp.";
 	force = 30;
 	icon_state = "unathiknife";

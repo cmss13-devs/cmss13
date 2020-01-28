@@ -27,7 +27,7 @@
 
 	H.equip_to_slot_or_del(new /obj/item/weapon/energy/sword/pirate(H), WEAR_L_HAND)
 
-	H.equip_to_slot(new /obj/item/weapon/combat_knife(H), WEAR_L_STORE)
+	H.equip_to_slot(new /obj/item/attachable/bayonet(H), WEAR_L_STORE)
 	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)
 
 /*****************************************************************************************************/
@@ -49,8 +49,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/eyepatch(H), WEAR_EYES)
 
 	H.equip_to_slot_or_del(new /obj/item/weapon/energy/sword/pirate(H), WEAR_L_HAND)
-	
-	H.equip_to_slot(new /obj/item/weapon/combat_knife(H), WEAR_L_STORE)
+
+	H.equip_to_slot(new /obj/item/attachable/bayonet(H), WEAR_L_STORE)
 	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)
 
 /*****************************************************************************************************/
@@ -190,7 +190,7 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16/dutch(H), WEAR_J_STORE)
 
 	H.set_species("Human Hero") //Arnold is STRONG.
-	
+
 	to_chat(H, SPAN_WARNING("You are Dutch, the leader of the Dutch's Dozen! You are fully aware of anything and everything regarding the Yautja, down to every minute detail. The Yautja mask in your backpack serves to let the Yautja track you, or for you to place traps. The Yautja can detect their gear signatures,  and will track this mask as soon as you arrive. The EMP grenades in your backpack have a very wide area range. They will interrupt Predator cloak and consume their bracer charge. REMEMBER: Your objective is to hunt, kill and loot the Predators planetside, and NOT hunt Xenomorphs."))
 
 /datum/equipment_preset/fun/hefa
@@ -243,7 +243,7 @@
 	var/gun_success = H.equip_to_slot_or_del(new /obj/item/weapon/gun/launcher/m92(H), WEAR_J_STORE)
 
 	// Now pump /everything/ full of HEFAs
-	
+
 	// M92 launcher
 	if(gun_success)
 		var/obj/item/weapon/gun/launcher/m92/launcher = H.s_store
@@ -326,7 +326,7 @@
 		shoes.name = "HEFA Knight combat boots"
 
 	// Now pump /everything/ full of HEFAs
-	
+
 	// Satchel
 	if(satchel_success)
 		var/obj/item/storage/backpack/marine/satchel = H.back

@@ -65,7 +65,7 @@
 		/obj/item/handcuffs,
 		/obj/item/explosive/grenade,
 		/obj/item/device/binoculars,
-		/obj/item/weapon/combat_knife,
+		/obj/item/attachable/bayonet,
 		/obj/item/storage/sparepouch,
 		/obj/item/storage/large_holster/machete,
 		/obj/item/storage/belt/gun/m4a3,

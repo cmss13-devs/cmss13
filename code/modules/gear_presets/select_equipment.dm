@@ -285,11 +285,11 @@
 	var/list/rebel_sidearms = list(
 		/obj/item/weapon/twohanded/lungemine = null,
 		/obj/item/weapon/twohanded/lungemine = null,
-		/obj/item/weapon/combat_knife = null,
+		/obj/item/attachable/bayonet = null,
+		/obj/item/attachable/bayonet/upp = null,
 		/obj/item/explosive/grenade/chem_grenade/ied = null,
 		/obj/item/explosive/grenade/chem_grenade/ied = null,
 		/obj/item/explosive/grenade/chem_grenade/ied_incendiary = null,
-		/obj/item/weapon/combat_knife/upp = null,
 		/obj/item/reagent_container/spray/pepper = null,
 		/obj/item/reagent_container/spray/pepper = null,
 		/obj/item/clothing/accessory/storage/webbing = null,

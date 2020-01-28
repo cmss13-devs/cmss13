@@ -55,71 +55,6 @@
 	force = 27
 	throwforce = 7
 
-/obj/item/weapon/combat_knife
-	name = "\improper M5 'Night Raider' survival knife"
-	icon = 'icons/obj/items/weapons/weapons.dmi'
-	icon_state = "combat_knife"
-	item_state = "combat_knife"
-	desc = "The standard issue survival knife issued to Colonial Marines soldiers. You can slide this knife into your boots, and can be field-modified to attach to the end of a rifle."
-	flags_atom = FPRINT|CONDUCT
-	sharp = IS_SHARP_ITEM_ACCURATE
-	force = 25
-	w_class = SIZE_SMALL
-	throwforce = 20
-	throw_speed = SPEED_VERY_FAST
-	throw_range = 6
-	hitsound = 'sound/weapons/slash.ogg'
-	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	flags_equip_slot = SLOT_FACE
-	flags_armor_protection = SLOT_FACE
-
-/obj/item/weapon/combat_knife/attack(mob/living/target, mob/living/carbon/human/user)
-	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC) && ishuman(user) && ishuman(target) && user.a_intent == "help") //Squad medics and above
-		dig_out_shrapnel(target, user)
-	else
-		..()
-
-/obj/item/weapon/combat_knife/attackby(obj/item/I as obj, mob/user as mob)
-	if(istype(I,/obj/item/stack/cable_coil))
-		var/obj/item/stack/cable_coil/CC = I
-		if (CC.use(5))
-			to_chat(user, "You wrap some cable around the bayonet. It can now be attached to a gun.")
-			if(istype(loc, /obj/item/storage))
-				var/obj/item/storage/S = loc
-				S.remove_from_storage(src)
-			if(loc == user)
-				user.temp_drop_inv_item(src)
-			var/obj/item/attachable/bayonet/F = new(src.loc)
-			user.put_in_hands(F) //This proc tries right, left, then drops it all-in-one.
-			if(F.loc != user) //It ended up on the floor, put it whereever the old flashlight is.
-				F.loc = get_turf(src)
-			qdel(src) //Delete da old knife
-		else
-			to_chat(user, SPAN_NOTICE("You don't have enough cable for that."))
-			return
-	else
-		..()
-
-/obj/item/weapon/combat_knife/attack_self(mob/living/carbon/human/user)
-	if(!ishuman(user))
-		return
-	if(!hasorgans(user))
-		return
-
-	dig_out_shrapnel(user)
-
-
-/obj/item/weapon/combat_knife/upp
-	name = "\improper Type 30 survival knife"
-	icon_state = "upp_knife"
-	item_state = "knife"
-	desc = "The standard issue survival knife of the UPP forces, the Type 30 is effective, but humble. It is small enough to be non-cumbersome, but lethal none-the-less."
-	force = 20
-	throwforce = 10
-	throw_speed = SPEED_FAST
-	throw_range = 8
-
-
 /obj/item/weapon/throwing_knife
 	name ="\improper M11 throwing knife"
 	icon='icons/obj/items/weapons/weapons.dmi'
@@ -191,8 +126,16 @@
 	add_to_missing_pred_gear(src)
 	..()
 
+
+/obj/item/proc/dig_out_shrapnel_check(var/mob/living/target, var/mob/living/carbon/human/user) //for digging shrapnel out of OTHER people, not yourself
+	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC) && ishuman(user) && ishuman(target) && user.a_intent == "help") //Squad medics and above
+		INVOKE_ASYNC(src, /obj/item.proc/dig_out_shrapnel, target, user)
+		return TRUE
+	return FALSE
+
+
 // If no user, it means that the embedded_human is removing it themselves
-/obj/item/weapon/proc/dig_out_shrapnel(var/mob/living/carbon/human/embedded_human, var/mob/living/carbon/human/user = null)
+/obj/item/proc/dig_out_shrapnel(var/mob/living/carbon/human/embedded_human, var/mob/living/carbon/human/user = null)
 	if(!istype(embedded_human))
 		return
 
@@ -219,7 +162,7 @@
 	var/no_shards = TRUE
 	for (var/obj/item/shard/S in embedded_human.embedded_items)
 		var/datum/limb/organ = S.embedded_organ
-		to_chat(embedded_human, SPAN_NOTICE("You remove [S] from your [organ.display_name]."))
+		to_chat(embedded_human, SPAN_NOTICE("You remove [S] from the [organ.display_name]."))
 		S.loc = embedded_human.loc
 		organ.implants -= S
 		embedded_human.embedded_items -= S
@@ -232,7 +175,7 @@
 		to_chat(H_user, SPAN_NOTICE("You couldn't find any shrapnel."))
 		return
 
-	to_chat(H_user, SPAN_NOTICE("You dig out all the shrapnel you can find from your body."))
+	to_chat(H_user, SPAN_NOTICE("You dig out all the shrapnel you can find."))
 
 
 /obj/item/weapon/claymore/hefa

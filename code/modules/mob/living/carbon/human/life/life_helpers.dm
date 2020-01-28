@@ -269,6 +269,9 @@
 		stunned += SShuman.wait * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill - shift_left
 
 /mob/living/carbon/human/knockdown_clock_adjustment()
+	if(!species)
+		return FALSE
+
 	var/skill = species.knock_down_reduction
 	if(mind && mind.cm_skills)
 		skill += (mind.cm_skills.get_skill_level(SKILL_ENDURANCE)-1) * 0.1

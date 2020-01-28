@@ -572,6 +572,15 @@
 	icon_state = "trackoff"
 	name = "queen locator"
 
+/obj/screen/queen_locator/clicked(var/mob/living/carbon/Xenomorph/X)
+	if(!istype(X))
+		return FALSE
+	if(!X.hive)
+		return FALSE
+	if(!X.hive.living_xeno_queen)
+		return FALSE
+	X.overwatch(X.hive.living_xeno_queen)
+
 /obj/screen/xenonightvision
 	icon = 'icons/mob/hud/alien_standard.dmi'
 	name = "toggle night vision"

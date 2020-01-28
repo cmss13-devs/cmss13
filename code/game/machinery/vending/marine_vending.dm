@@ -32,7 +32,7 @@
 		/obj/item/weapon/gun/rifle/l42mk1 = round(scale * 10),
 		/obj/item/weapon/gun/shotgun/pump = round(scale * 15),
 		/obj/item/ammo_magazine/pistol = round(scale * 20),
-		/obj/item/ammo_magazine/pistol/mod88 = round(scale * 20),	
+		/obj/item/ammo_magazine/pistol/mod88 = round(scale * 20),
 		/obj/item/ammo_magazine/revolver = round(scale * 20),
 		/obj/item/ammo_magazine/smg/m39 = round(scale * 30),
 		/obj/item/ammo_magazine/rifle = round(scale * 25),
@@ -42,11 +42,10 @@
 		/obj/item/ammo_magazine/shotgun/slugs = round(scale * 10),
 		/obj/item/ammo_magazine/shotgun/buckshot = round(scale * 10),
 		/obj/item/ammo_magazine/shotgun/flechette = round(scale * 4),
-		/obj/item/weapon/combat_knife = round(scale * 30),
+		/obj/item/attachable/flashlight = round(scale * 25),
+		/obj/item/attachable/bayonet = round(scale * 30),
 		/obj/item/weapon/throwing_knife = round(scale * 10),
 		/obj/item/storage/box/m94 = round(scale * 10),
-		/obj/item/attachable/flashlight = round(scale * 25),
-		/obj/item/attachable/bayonet = round(scale * 25),
 	)
 
 	contraband =   list()
@@ -658,8 +657,8 @@
 
 	products = list(
 		// MUZZLE
-		/obj/item/attachable/heavy_barrel = round(scale * 2),
 		/obj/item/attachable/bayonet = round(scale * 10),
+		/obj/item/attachable/heavy_barrel = round(scale * 2),
 		/obj/item/attachable/extended_barrel = round(scale * 6),
 		/obj/item/attachable/compensator = round(scale * 6),
 		/obj/item/attachable/suppressor = round(scale * 6),

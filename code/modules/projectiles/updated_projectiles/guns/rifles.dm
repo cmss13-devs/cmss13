@@ -47,6 +47,7 @@
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/verticalgrip,
@@ -157,6 +158,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/reflex,
@@ -207,6 +209,7 @@
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
@@ -290,6 +293,7 @@
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/gyro,
@@ -324,7 +328,7 @@
 									)
 	random_spawn_muzzle = list(
 							/obj/item/attachable/suppressor,
-							/obj/item/attachable/bayonet,
+							/obj/item/attachable/bayonet/upp,
 							/obj/item/attachable/extended_barrel,
 							/obj/item/attachable/compensator,
 								)
@@ -366,6 +370,7 @@
 	attachable_allowed = list(
 					/obj/item/attachable/suppressor,
 					/obj/item/attachable/bayonet,
+					/obj/item/attachable/bayonet/upp,
 					/obj/item/attachable/reddot,
 					/obj/item/attachable/reflex,
 					/obj/item/attachable/verticalgrip,
@@ -399,7 +404,7 @@
 									)
 	random_spawn_muzzle = list(
 							/obj/item/attachable/suppressor,
-							/obj/item/attachable/bayonet,
+							/obj/item/attachable/bayonet/upp,
 							/obj/item/attachable/extended_barrel
 								)
 
@@ -426,6 +431,7 @@
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/scope/mini,
@@ -602,6 +608,7 @@
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip
@@ -613,7 +620,7 @@
 							/obj/item/attachable/reflex/,
 							)
 	random_spawn_muzzle = list(
-							/obj/item/attachable/bayonet
+							/obj/item/attachable/bayonet/upp
 							)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
@@ -741,6 +748,7 @@
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
@@ -792,6 +800,7 @@
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,

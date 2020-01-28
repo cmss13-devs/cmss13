@@ -43,7 +43,7 @@
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(H), WEAR_JACKET)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
-		H.equip_to_slot_or_del(new /obj/item/weapon/combat_knife(H), WEAR_L_HAND)
+		H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H), WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/tox(H), WEAR_BACK)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
@@ -105,7 +105,7 @@
 		add_ice_colony_survivor_equipment(H)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
-		H.equip_to_slot_or_del(new /obj/item/weapon/combat_knife(H), WEAR_L_HAND)
+		H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H), WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
@@ -162,7 +162,7 @@
 		add_ice_colony_survivor_equipment(H)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(H), WEAR_FEET)
-		H.equip_to_slot_or_del(new /obj/item/weapon/combat_knife(H), WEAR_L_HAND)
+		H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H), WEAR_L_HAND)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
@@ -189,7 +189,7 @@
 		add_ice_colony_survivor_equipment(H)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
-		H.equip_to_slot_or_del(new /obj/item/weapon/combat_knife(H), WEAR_L_HAND)
+		H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H), WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
@@ -217,7 +217,7 @@
 		add_ice_colony_survivor_equipment(H)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
-		H.equip_to_slot_or_del(new /obj/item/weapon/combat_knife(H), WEAR_L_HAND)
+		H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H), WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)

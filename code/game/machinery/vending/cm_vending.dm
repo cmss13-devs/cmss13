@@ -2003,8 +2003,8 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 /obj/structure/machinery/cm_vending/sorted/attachments/populate_product_list(var/scale)
 	listed_products = list(
 		list("Muzzle", -1, null, null),
+		list("M5 Bayonet", round(scale * 10.5), /obj/item/attachable/bayonet, "black"),
 		list("Barrel Charger", round(scale * 2.5), /obj/item/attachable/heavy_barrel, "black"),
-		list("Bayonet", round(scale * 10.5), /obj/item/attachable/bayonet, "black"),
 		list("Extended Barrel", round(scale * 6.5), /obj/item/attachable/extended_barrel, "black"),
 		list("Recoil Compensator", round(scale * 6.5), /obj/item/attachable/compensator, "black"),
 		list("Suppressor", round(scale * 6.5), /obj/item/attachable/suppressor, "black"),
@@ -2245,7 +2245,6 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("M4A3 Magazine (9mm)", round(scale * 25), /obj/item/ammo_magazine/pistol, "black"),
 
 		list("Attachments", -1, null, null),
-		list("Bayonet", round(scale * 25), /obj/item/attachable/bayonet, "black"),
 		list("Rail Flashlight", round(scale * 25), /obj/item/attachable/flashlight, "black"),
 		list("Underbarrel Flashlight Grip", round(scale * 10), /obj/item/attachable/flashlight/grip, "black"),
 		list("Underslung Grenade Launcher", round(scale * 25), /obj/item/attachable/attached_gun/grenade, "black"), //They already get these as on-spawns, might as well formalize some spares.
@@ -2253,9 +2252,9 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("L42 Synthetic Stock", round(scale * 10), /obj/item/attachable/stock/carbine, "black"),
 
 		list("Utilities", -1, null, null),
-		list("M94 Marking flare pack", round(scale * 10), /obj/item/storage/box/m94, "black"),
-		list("M5 'Night Raider' survival knife", round(scale * 30), /obj/item/weapon/combat_knife, "black"),
-		list("M11 throwing knife", round(scale * 10), /obj/item/weapon/throwing_knife, "black")
+		list("M5 Bayonet", round(scale * 25), /obj/item/attachable/bayonet, "black"),
+		list("M11 Throwing Knife", round(scale * 10), /obj/item/weapon/throwing_knife, "black"),
+		list("M94 Marking Flare Pack", round(scale * 10), /obj/item/storage/box/m94, "black"),
 	)
 
 
@@ -2293,7 +2292,6 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("M4A3 Magazine (9mm)", round(scale * 12), /obj/item/ammo_magazine/pistol, "black"),
 
 		list("Attachments", -1, null, null),
-		list("Bayonet", round(scale * 12), /obj/item/attachable/bayonet, "black"),
 		list("Rail Flashlight", round(scale * 12), /obj/item/attachable/flashlight, "black"),
 		list("Underbarrel Flashlight Grip", round(scale * 5), /obj/item/attachable/flashlight/grip, "black"),
 		list("Underslung Grenade Launcher", round(scale * 12), /obj/item/attachable/attached_gun/grenade, "black"), //They already get these as on-spawns, might as well formalize some spares.
@@ -2301,9 +2299,9 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("L42 Synthetic Stock", round(scale * 5), /obj/item/attachable/stock/carbine, "black"),
 
 		list("Utilities", -1, null, null),
-		list("M94 Marking flare pack", round(scale * 5), /obj/item/storage/box/m94, "black"),
-		list("M5 'Night Raider' survival knife", round(scale * 15), /obj/item/weapon/combat_knife, "black"),
-		list("M11 throwing knife", round(scale * 5), /obj/item/weapon/throwing_knife, "black")
+		list("M5 Bayonet", round(scale * 12), /obj/item/attachable/bayonet, "black"),
+		list("M11 Throwing Knife", round(scale * 5), /obj/item/weapon/throwing_knife, "black"),
+		list("M94 Marking Flare pack", round(scale * 5), /obj/item/storage/box/m94, "black")
 	)
 
 

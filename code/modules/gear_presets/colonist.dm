@@ -16,7 +16,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
-	H.equip_to_slot(new /obj/item/weapon/combat_knife(H), WEAR_L_STORE)
+	H.equip_to_slot(new /obj/item/attachable/bayonet(H), WEAR_L_STORE)
 	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)
 
 /*****************************************************************************************************/
@@ -37,7 +37,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/eng(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
 
-	H.equip_to_slot(new /obj/item/weapon/combat_knife(H), WEAR_L_STORE)
+	H.equip_to_slot(new /obj/item/attachable/bayonet(H), WEAR_L_STORE)
 	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)
 
 /*****************************************************************************************************/
@@ -57,7 +57,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/sec(H), WEAR_HEAD)
 
-	H.equip_to_slot(new /obj/item/weapon/combat_knife(H), WEAR_L_STORE)
+	H.equip_to_slot(new /obj/item/attachable/bayonet(H), WEAR_L_STORE)
 	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)
 
 /*****************************************************************************************************/
@@ -80,5 +80,5 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/surgery(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(H), WEAR_FACE)
 
-	H.equip_to_slot(new /obj/item/weapon/combat_knife(H), WEAR_L_STORE)
+	H.equip_to_slot(new /obj/item/attachable/bayonet(H), WEAR_L_STORE)
 	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)

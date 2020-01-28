@@ -519,7 +519,7 @@
 	if (O.is_open_container())
 		return 0
 
-	if(istype(O, /obj/item/tool/wirecutters) || istype(O, /obj/item/tool/surgery/scalpel) || istype(O, /obj/item/tool/kitchen/knife) || istype(O, /obj/item/weapon/combat_knife))
+	if(istype(O, /obj/item/tool/wirecutters) || istype(O, /obj/item/tool/surgery/scalpel) || istype(O, /obj/item/tool/kitchen/knife) || istype(O, /obj/item/attachable/bayonet))
 
 		if(!seed)
 			to_chat(user, "There is nothing to take a sample from in \the [src].")

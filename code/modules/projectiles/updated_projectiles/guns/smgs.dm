@@ -55,6 +55,7 @@
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/burstfire_assembly,

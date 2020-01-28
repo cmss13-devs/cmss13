@@ -38847,7 +38847,7 @@
 "con" = (
 /obj/structure/table/almayer,
 /obj/item/storage/toolbox/mechanical,
-/obj/item/weapon/combat_knife,
+/obj/item/attachable/bayonet,
 /obj/structure/machinery/light{
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"

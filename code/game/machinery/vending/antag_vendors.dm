@@ -157,7 +157,7 @@
 		/obj/item/weapon/twohanded/lungemine = 40,
 		/obj/item/device/flashlight = 40,
 		/obj/item/reagent_container/spray/pepper = 40,
-		/obj/item/weapon/combat_knife/upp = 40
+		/obj/item/attachable/bayonet/upp = 40
 	)
 
 	upp_products = list(

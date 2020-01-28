@@ -53,7 +53,7 @@
 								100; /obj/item/tool/kitchen/knife/butcher, \
 								50; /obj/item/weapon/katana/replica, \
 								100; /obj/item/weapon/harpoon, \
-								75; /obj/item/weapon/combat_knife, \
+								75; /obj/item/attachable/bayonet, \
 								200; /obj/item/weapon/throwing_knife, \
 								400; /obj/item/weapon/twohanded/spear, \
 \
@@ -404,7 +404,7 @@ var/waiting_for_drop_votes = 0
 	return
 
 /datum/game_mode/huntergames/proc/place_drop(turf/T, OT = "crap", in_crate)
-	if(!istype(T)) 
+	if(!istype(T))
 		return FALSE
 
 	if(OT == "good" && !in_crate && prob(15)) in_crate = 1 //Place some good drops in crates.

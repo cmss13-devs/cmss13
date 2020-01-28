@@ -112,7 +112,7 @@
 	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun, WEAR_J_STORE)
-	H.equip_to_slot_or_del(new /obj/item/weapon/combat_knife, WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet, WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles, WEAR_EYES)
 

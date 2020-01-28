@@ -25,7 +25,7 @@
 	/obj/item/weapon/baton,
 	/obj/item/handcuffs,
 	/obj/item/device/binoculars,
-	/obj/item/weapon/combat_knife,
+	/obj/item/attachable/bayonet,
 	/obj/item/storage/belt/gun/m4a3,
 	/obj/item/storage/belt/gun/m44,
 	/obj/item/storage/belt/gun/mateba,

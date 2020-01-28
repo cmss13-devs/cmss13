@@ -29,7 +29,7 @@
 	return ..()
 
 /obj/item/clothing/glasses/update_clothing_icon()
-	if (ismob(src.loc))
+	if(ismob(src.loc))
 		var/mob/M = src.loc
 		M.update_inv_glasses()
 
@@ -56,6 +56,7 @@
 				H.update_tint()
 			H.update_sight()
 			H.update_glass_vision(src)
+			update_clothing_icon()
 
 			if(hud_type)
 				var/datum/mob_hud/MH = huds[hud_type]

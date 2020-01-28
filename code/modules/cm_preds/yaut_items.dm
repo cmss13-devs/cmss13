@@ -891,7 +891,7 @@
 	if(istype(T) && exploding)
 		victim.apply_damage(50,BRUTE,"chest")
 		if(victim) victim.gib() //Let's make sure they actually gib.
-		if(explosion_type == 0)
+		if(explosion_type == 0 && z == SURFACE_Z_LEVELS)
 			cell_explosion(T, 600, 50, null, "yautja self destruct", source_mob) //Dramatically BIG explosion.
 		else
 			cell_explosion(T, 800, 550, null, "yautja self destruct", source_mob)

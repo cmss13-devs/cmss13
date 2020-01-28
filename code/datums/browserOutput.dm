@@ -33,7 +33,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 		alert(owner.mob, "Goonchat hasn't loaded for you. Please wait a minute or try reconnecting.")
 		return
 
-	if(winget(owner, "browseroutput", "is-disabled") == "false") //Already setup
+	if(owner && winget(owner, "browseroutput", "is-disabled") == "false") //Already setup
 		doneLoading()
 
 	else //Not setup

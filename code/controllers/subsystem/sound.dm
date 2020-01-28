@@ -1,37 +1,44 @@
-var/datum/subsystem/global_sound/SSglobal_sound
+var/datum/subsystem/sound/SSsound
 
-/datum/subsystem/global_sound
-	name          = "Global Sound"
-	wait          = 1 SECONDS
-	priority      = SS_PRIORITY_GLOBAL_SOUND
+/*
+	Subsystem that handles sound queueing
+*/
 
-	var/list/soundlen_map = list()
-	var/list/currentrun
+/datum/sound_item
+	var/client/hearer
+	var/datum/sound_template/template
 
-/datum/subsystem/global_sound/New()
-	NEW_SS_GLOBAL(SSglobal_sound)
+/datum/subsystem/sound
+	name          = "Sound"
+	flags 		  =  SS_TICKER
+	wait          = 1
+	priority      = SS_PRIORITY_SOUND
+
+	var/list/playsound_queue = list()
+	var/list/playsound_queue_cur = list()
+
+/datum/subsystem/sound/New()
+	NEW_SS_GLOBAL(SSsound)
 	
-/datum/subsystem/global_sound/fire(resumed = FALSE)
-	if(!resumed)
-		currentrun = clients.Copy()
-
-	for(var/sound/S in soundlen_map)
-		if(--soundlen_map[S] <= 0)
-			soundlen_map -= S
-			qdel(S)
-		
-	while(currentrun.len)
-		var/client/C = currentrun[currentrun.len]
-		currentrun.len--
-
-		C.soundOutput.process()
-
-		if (MC_TICK_CHECK)
+/datum/subsystem/sound/fire(resumed = FALSE)
+	for(var/datum/sound_item/I in playsound_queue_cur)
+		de_queue(I)
+		playsound_queue_cur -= I
+		if(MC_TICK_CHECK)
 			return
 
-/datum/subsystem/global_sound/proc/add_sound(sound/S, duration)
-	soundlen_map[S] = duration / 10
-	for(var/client/C in clients)
-		if(!C || !C.soundOutput)
-			continue
-		C.soundOutput.update_globalsound_list()
+	if(!playsound_queue_cur.len)
+		playsound_queue_cur = playsound_queue
+		playsound_queue = list()
+
+/datum/subsystem/sound/proc/queue(client/hearer, datum/sound_template/template)
+	if(!hearer || !template)
+		return 
+	var/datum/sound_item/I  = new()
+	I.hearer = hearer
+	I.template = template
+	playsound_queue.Add(I)
+
+/datum/subsystem/sound/proc/de_queue(datum/sound_item/I)
+	if(I.hearer && I.hearer.soundOutput)
+		I.hearer.soundOutput.process_sound(I.template)

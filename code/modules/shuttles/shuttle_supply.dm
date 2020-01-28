@@ -71,13 +71,13 @@
 
 		//If we are at the away_area then we are just pretending to move, otherwise actually do the move
 		if (origin != away_area)
-			playsound_spacial(locate(SupplyElevator_x,SupplyElevator_y,SupplyElevator_z), 'sound/machines/asrs_lowering.ogg', 50, 14 SECONDS, 15)
+			playsound_spacial(locate(SupplyElevator_x,SupplyElevator_y,SupplyElevator_z), 'sound/machines/asrs_lowering.ogg', 50, 8, 14 SECONDS, 15)
 			move(origin, away_area)
 			lower_elevator_effect()
 			start_gears(SOUTH)
 			sleep(91)
 		else
-			playsound_spacial(locate(SupplyElevator_x,SupplyElevator_y,SupplyElevator_z), 'sound/machines/asrs_raising.ogg', 50, 17 SECONDS, 15)
+			playsound_spacial(locate(SupplyElevator_x,SupplyElevator_y,SupplyElevator_z), 'sound/machines/asrs_raising.ogg', 50, 8, 17 SECONDS, 15)
 			start_gears(NORTH)
 			sleep(70)
 			raise_elevator_effect()

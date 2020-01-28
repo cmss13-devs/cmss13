@@ -97,7 +97,13 @@
 			if(client && client.soundOutput && !client.soundOutput.status_flags & EAR_DEAF_MUTE)
 				client.soundOutput.status_flags |= EAR_DEAF_MUTE
 				client.soundOutput.apply_status()
+
 			ear_deaf = max(ear_deaf - 1, 0)
+			
+			if(!ear_deaf && client && client.soundOutput)
+				client.soundOutput.status_flags ^= EAR_DEAF_MUTE
+				client.soundOutput.apply_status()
+
 		else if(ear_damage)
 			ear_damage = max(ear_damage - 0.05, 0)
 

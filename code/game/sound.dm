@@ -1,4 +1,24 @@
 
+/datum/sound_template //Basically a sound datum, but only serves as a way to carry info to soundOutput
+	var/file //The sound itself
+	var/wait = 0
+	var/repeat = 0
+	var/channel = 0
+	var/volume = 100
+	var/status = 0 //Sound status flags
+	var/frequency = 1
+	var/falloff = 1
+	var/volume_cat = VOLUME_SFX
+	var/x //Map coordinates, not sound coordinates 
+	var/y
+	var/z
+
+/proc/get_free_channel()
+	var/static/cur_chan = 1	
+	. = cur_chan++
+	if(cur_chan > FREE_CHAN_END) 
+		cur_chan = 1
+
 //Proc used to play a sound effect. Avoid using this proc for non-IC sounds, as there are others
 //source: self-explanatory.
 //soundin: the .ogg to use.
@@ -7,57 +27,105 @@
 //sound_range: the maximum theoretical range (in tiles) of the sound, by default is equal to the volume.
 //vol_cat: the category of this sound, used in client volume. There are 3 volume categories: VOLUME_SFX (Sound effects), VOLUME_AMB (Ambience and Soundscapes) and VOLUME_ADM (Admin sounds and some other stuff)
 //channel: use this only when you want to force the sound to play on an specific channel
-//status: the regular 4 sound flags + SOUND_MUFFLE, which tells soundOutput to apply muffling based on closed turfs in the way
+//status: the regular 4 sound flags 
+//falloff: max range till sound volume starts dropping as distance increases
+//is3D: treat the sound as 3D. FALSE will ignore X Y and and won't allow muffling
+//targets: if you want to skip the scan and send to specific clients
 
-/proc/playsound(atom/source, soundin, vol = 100, vary, sound_range, vol_cat = VOLUME_SFX, channel = 0, status = SOUND_MUFFLE, falloff_mod = 1)
+
+/proc/playsound(atom/source, soundin, vol = 100, vary, sound_range, vol_cat = VOLUME_SFX, channel = 0, status , falloff = 1)
 	if(isarea(source))
 		error("[source] is an area and is trying to make the sound: [soundin]")
 		return
+	var/datum/sound_template/S = new()
+
+	var/sound/SD = soundin
+	if(istype(SD))
+		S.file = SD.file
+		S.wait = SD.wait
+		S.repeat = SD.repeat
+	else
+		S.file = get_sfx(soundin)
+	S.channel = channel ? channel : get_free_channel()
+	S.status = status
+	S.falloff = falloff
 
 	var/turf/turf_source = get_turf(source)
 	if(!turf_source) 
 		return
+	S.x = turf_source.x 
+	S.y = turf_source.y
+	S.z = turf_source.z
+
+	S.volume = vol
+	S.volume_cat = vol_cat
 
 	if(!sound_range) 
 		sound_range = round(0.25*vol) //if no specific range, the max range is equal to a quarter of the volume.
-
-	soundin = get_sfx(soundin) // same sound for everyone
-
-	var/frequency = vary ? GET_RANDOM_FREQ : 0// Same frequency for everybody
-
+	
+	if(vary)
+		S.frequency = GET_RANDOM_FREQ // Same frequency for everybody
+	
 	var/turf/T
 	for(var/mob/M in player_list)
 		if(!M.client || !M.client.soundOutput) 
 			continue
 		T = get_turf(M)
 		if(get_dist(T, turf_source) <= sound_range && T.z == turf_source.z)
-			M.client.soundOutput.process_sound(soundin, turf_source, vol, frequency, vol_cat, channel, status, falloff_mod)
+			SSsound.queue(M.client, S)
 
 //This is the replacement for playsound_local. Use this for sending sounds directly to a client
-/proc/playsound_client(client/C, soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel, status)
+/proc/playsound_client(client/C, soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status)
 	if(!istype(C) || !C.soundOutput) return FALSE
-	C.soundOutput.process_sound(soundin, origin, vol, (random_freq ? GET_RANDOM_FREQ : 0), vol_cat, channel, status)
-
+	var/datum/sound_template/S = new()
+	if(origin)
+		var/turf/T = get_turf(origin)
+		if(T)
+			S.x = T.x
+			S.y = T.y
+			S.z = T.z
+	S.file = soundin
+	if(random_freq)
+		S.frequency = GET_RANDOM_FREQ
+	S.volume = vol
+	S.volume_cat = vol_cat
+	S.channel = channel
+	S.status = status
+	SSsound.queue(C, S)
 
 //Use this proc for things like OBs, dropships, or anything that plays a lenghty sound that needs to be heard even by those who arrive late
-/proc/playsound_spacial(atom/source, soundin, vol = 100, duration, range = 30)
+/proc/playsound_spacial(atom/source, soundin, vol = 100, falloff = 1, duration, range = 30)
 	var/sound/S = sound(soundin)
+	S.falloff = falloff //As DM reference states, all sound within this range will keep at max vol.
+	S.channel = get_free_channel()
 	S.volume = vol
-	S.falloff = range //As DM reference states, all sound within this range will keep at max vol.
-	var/turf/T = get_turf(source)
-	S.x = T.x  //The XYZ variables are being used as a way to carry the origin's coords, 
-	S.y = T.y  //NOT THE ACTUAL SOUND COORDS
-	S.z = T.z 
-	SSglobal_sound.add_sound(S, duration)
+	S.x = 1 //Adding coords is vital for the update in update_sound_pos to work,
+	S.y = 1 //given that SOUND_UPDATE won't update a sound's coords if it was given none initially
+	S.z = 1 //(this isn't 100% confirmed, but after many tests it seems to be the case)
+	S.status = SOUND_MUTE //Send it muted
+	sound_to(world, S)
+	SSspacial_sound.add_spacial_sound(S, source, range, duration)
+	for(var/client/C in clients)
+		if(!C || !C.soundOutput)
+			continue
+		C.soundOutput.update_sound_pos()
+
 
 //Self explanatory
-/proc/playsound_area(area/A, soundin, vol = 100, channel, status)
+/proc/playsound_area(area/A, soundin, vol = 100, channel, status, vol_cat = VOLUME_SFX)
 	if(!isarea(A)) 
 		return FALSE
+	var/datum/sound_template/S = new()
+	S.file = soundin
+	S.volume = vol
+	S.channel = channel
+	S.status = status
+	S.volume_cat = vol_cat
+
 	for(var/mob/living/M in A.contents)
 		if(!M || !M.client || !M.client.soundOutput) 
 			continue
-		M.client.soundOutput.process_sound(soundin, null, vol, 0,VOLUME_AMB, channel, status)
+		SSsound.queue(M.client, S)
 
 /client/proc/playtitlemusic()
 	if(!ticker || !ticker.login_music)	
@@ -65,11 +133,16 @@
 	if(prefs && prefs.toggles_sound & SOUND_LOBBY)
 		playsound_client(src, ticker.login_music, null, 85, 0, VOLUME_ADM, SOUND_CHANNEL_LOBBY, SOUND_STREAM)
 
-/proc/playsound_z(atom/z, soundin, volume = 100) // Play sound for all online mobs on a given Z-level. Good for ambient sounds.
-	soundin = get_sfx(soundin)
+
+/proc/playsound_z(atom/z, soundin, volume = 100, vol_cat = VOLUME_SFX) // Play sound for all online mobs on a given Z-level. Good for ambient sounds.
+	var/datum/sound_template/S = new()
+	S.file = soundin
+	S.volume = volume
+	S.channel = SOUND_CHANNEL_Z
+	S.volume_cat = vol_cat
 	for(var/mob/M in player_list)
-		if (M.z && M.client.soundOutput)
-			M.client.soundOutput.process_sound(soundin,null,volume, channel = SOUND_CHANNEL_Z)
+		if (M.z && M.client && M.client.soundOutput)
+			SSsound.queue(M.client, S)
 
 // The pick() proc has a built-in chance that can be added to any option by adding ,X; to the end of an option, where X is the % chance it will play.
 /proc/get_sfx(S)

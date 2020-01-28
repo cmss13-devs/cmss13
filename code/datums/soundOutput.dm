@@ -1,11 +1,9 @@
 /datum/soundOutput
 	var/client/owner 
-	var/ambience 					= null //The file currently being played as ambience
 	var/scape_cooldown				= INITIAL_SOUNDSCAPE_COOLDOWN //This value is changed when entering an area. Time it takes for a soundscape sound to be triggered
 	var/list/soundscape_playlist 	= list() //Updated on changing areas
-	var/list/globalsounds_channels	= list() //Assoc list of global sound - assigned channel. Used with the Global Sounds SS
+	var/ambience 					= null //The file currently being played as ambience
 	var/status_flags 				= 0 //For things like ear deafness, psychodelic effects, and other things that change how all sounds behave
-	var/last_free_chan 				= 1 //The last channel given out by get_free_channel()
 
 /datum/soundOutput/New(client/C)
 	if(!C)
@@ -14,38 +12,21 @@
 	owner = C
 	. = ..()
 
-/datum/soundOutput/proc/process_sound(soundin, atom/emit_pos, relat_vol, frequency, vol_cat = VOLUME_SFX, channel, status, falloff_mod = 1)
-	var/sound/S = sound(soundin)
-	S.volume = owner.volume_preferences[vol_cat] * relat_vol
-
-	if(!channel)
+/datum/soundOutput/proc/process_sound(datum/sound_template/T)
+	var/sound/S = sound(T.file, T.wait, T.repeat)
+	S.volume = owner.volume_preferences[T.volume_cat] * T.volume
+	if(T.channel == 0)
 		S.channel = get_free_channel()
 	else
-		S.channel = channel
-	
-	S.frequency = frequency
-	var/muffling = 0
-	var/turf/T = get_turf(emit_pos)
-	if(isturf(T))
+		S.channel = T.channel
+	S.frequency = T.frequency
+	if(T.x && T.y && T.z)		
 		var/turf/owner_turf = get_turf(owner.mob)
-		S.x = emit_pos.x - owner_turf.x
+		S.x = T.x - owner_turf.x
 		S.y = 0
-		S.z = emit_pos.y - owner_turf.y
-		S.falloff = FALLOFF_SOUNDS * falloff_mod * max(round(S.volume * 0.025), 1)
-
-		if(status & SOUND_MUFFLE)
-			var/dist = get_dist(emit_pos, owner.mob)
-			var/list/line = getline2(emit_pos, owner.mob)
-			for(var/turf/closed/C in line)
-				if(C.sound_muffling < muffling)
-					muffling = C.sound_muffling
-			if(dist <= 1 && muffling != 0)
-				muffling = MUFFLE_LOW
-			if(muffling > 0)
-				S.falloff = (500 / muffling) * -1
-			S.echo = list(muffling)
-			
-	S.status = status
+		S.z = T.y - owner_turf.y
+		S.falloff = T.falloff
+	S.status = T.status
 	if(owner.mob.ear_deaf > 0)
 		S.status |= SOUND_MUTE
 
@@ -54,7 +35,7 @@
 /datum/soundOutput/proc/update_ambience(area/new_area, force_cur_amb)
 	if(!istype(new_area))
 		new_area = get_area(owner.mob)
-	
+
 	soundscape_playlist = new_area.soundscape_playlist
 
 	var/sound/S = sound(null,1,0,SOUND_CHANNEL_AMBIENCE)
@@ -89,59 +70,25 @@
 		S.status |= SOUND_MUTE
 	sound_to(owner, S)
 
-/datum/soundOutput/proc/on_movement(atom/A)
-	update_globalsounds()
+/datum/soundOutput/proc/on_movement()
+	if(SSspacial_sound.sound_coords.len)
+		update_sound_pos()
 
-//Someone might ask why even have the subsystem time the duration of the sound instead of letting
-//soundOutput do so in process(). Well, that would mean giving one base copy of each global sound
-//to every player and losing the ability to modify the base sound for everyone equally
+/datum/soundOutput/proc/update_sound_pos()//This proc updates the position of spacial sounds
+	var/sound/S = sound()
+	var/turf/cur_turf = get_turf(owner.mob)
+	for(var/datum/sound_coord/SC in SSspacial_sound.sound_coords)
+		S.status = SOUND_UPDATE
+		if(status_flags & EAR_DEAF_MUTE || SC.map_z != cur_turf.z || get_dist(cur_turf, locate(SC.map_x, SC.map_y, SC.map_z)) > SC.range)
+			S.status |= SOUND_MUTE
+		S.channel = SC.channel
+		S.x = SC.map_x - cur_turf.x
+		S.z = SC.map_y - cur_turf.y
+		S.volume = 100 * owner.volume_preferences[VOLUME_SFX]
+		sound_to(owner, S)
 
-/datum/soundOutput/proc/update_globalsound_list()//This proc's purpose is to add our own channel to each sound in the SS
-	if(SSglobal_sound.soundlen_map.len)
-		var/sound/S = sound()	
-		for(var/sound/I in SSglobal_sound.soundlen_map)
-			if(!istype(I))
-				continue
-			if(!globalsounds_channels[I]) 
-				globalsounds_channels[I] = get_free_channel()
-				S.file = I.file
-				S.status = SOUND_MUTE
-				S.channel = globalsounds_channels[I]
-				S.y = 1 //A hack way of making BYOND treat this sound as 3D
-				sound_to(owner, S) //Send the sound we just received to the owner but muted, so we can use SOUND_UPDATE on update_global_sounds
-		update_globalsounds()
-
-/datum/soundOutput/proc/update_globalsounds()//This proc deals with removing references to sounds that have ended and also with updating their position relative to us	
-	if(globalsounds_channels.len)
-		var/sound/S = sound()
-		var/turf/owner_turf = get_turf(owner.mob)
-		for(var/sound/I in globalsounds_channels)
-			if(!istype(I) || I.disposed)
-				globalsounds_channels -= I
-				continue
-			S.file = I.file
-			S.falloff = I.falloff / 5 //One fifth of the range will be an area where the volume is unaltered
-			S.status = SOUND_UPDATE
-			S.channel = globalsounds_channels[I]//The advantage of having the subsystem keep the sound
-			S.volume = I.volume * owner.volume_preferences[VOLUME_SFX]
-			S.x = I.x - owner_turf.x
-			S.z = I.y - owner_turf.y
-			S.y = 1
-			if(I.z != owner_turf.z || abs(S.x) > I.falloff || abs(S.z) > I.falloff  || owner.mob.ear_deaf > 0) 
-				S.status |= SOUND_MUTE
-			sound_to(owner, S)
-		return TRUE
-	else
-		return FALSE
-
-/datum/soundOutput/proc/get_free_channel()	
-	. = last_free_chan++
-	if(last_free_chan > FREE_CHAN_END) last_free_chan = 1
-
-/datum/soundOutput/proc/process()
-	
+/datum/soundOutput/proc/update_soundscape()
 	scape_cooldown--
-	
 	if(scape_cooldown <= 0)
 		if(soundscape_playlist.len)
 			var/sound/S = sound()
@@ -158,28 +105,13 @@
 		else
 			scape_cooldown = INITIAL_SOUNDSCAPE_COOLDOWN
 
-	if(status_flags != 0)
-		if(owner.mob.stat == DEAD)
-			var/sound/S = sound()
-			S.channel = 0
-			S.status = SOUND_UPDATE
-			sound_to(owner, S)
-			status_flags = 0
-			return
-		
-		if(iscarbon(owner.mob))
-			var/mob/living/carbon/C = owner.mob
-			if((status_flags & EAR_DEAF_MUTE) && C.ear_deaf <= 0)
-				// Unmute all channels
-				var/sound/S = sound(null)
-				S.status = SOUND_UPDATE
-				sound_to(owner, S)
-				status_flags ^= EAR_DEAF_MUTE
-
 /datum/soundOutput/proc/apply_status()
+	var/sound/S = sound()
 	if(status_flags & EAR_DEAF_MUTE)
-		var/sound/S = sound()
 		S.status = SOUND_MUTE | SOUND_UPDATE
+		sound_to(owner, S)
+	else
+		S.status = SOUND_UPDATE
 		sound_to(owner, S)
 
 /client/verb/adjust_volume_sfx()

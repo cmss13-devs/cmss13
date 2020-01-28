@@ -1,6 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - bugfix: "Fixed facehuggers still being able to leap on target while being unconscious in some cases. [Max Deppe]"

@@ -1,6 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - bugfix: "Made self destruction room rods unslashable."

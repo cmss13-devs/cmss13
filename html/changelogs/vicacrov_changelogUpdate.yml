@@ -1,6 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes: 
-  - tweak: "Changelog - Massively updated our changelog's contributor names, coders, maintainers included. Spriters were not included before at all!"

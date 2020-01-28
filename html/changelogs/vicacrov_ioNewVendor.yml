@@ -1,8 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes: 
-  - rscadd: "Intelligence Officer - IOs were given their own weapon vendors in the room where they spawn. They can be accessed by bridge and cargo personnel."
-  - tweak: "Intelligence Officer - The computer lab is no longer accessible by regular logistics person. Engineers can still access it. Anyone with bridge access can now access it as well."
-  - bugfix: "Intelligence Officer - IOs can now access the computer lab again. The restriction of cargo and squad preparations still remains."

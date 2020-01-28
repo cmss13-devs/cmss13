@@ -1,7 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes: 
-  - tweak: "Requisitions - Removed the cargo access from Intelligence Officers."
-  - bugfix: "Requisitions - Requisition Officers now have proper access to squad preps."

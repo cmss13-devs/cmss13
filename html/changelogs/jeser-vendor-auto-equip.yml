@@ -1,6 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - rscadd: "Vending wearable items from Automated clothing Closets and Surplus Uniform Vendors will now automatically equip said items if possible. Includes attaching webbings/holsters to uniform."

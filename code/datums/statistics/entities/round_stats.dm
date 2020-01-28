@@ -141,12 +141,16 @@
 		total_deaths["[faction_key]"] = S
 
 /datum/entity/round_stats/proc/track_new_participant(var/faction, var/amount = 1)
+	if(!faction)
+		return
 	if(!participants["[faction]"])
 		setup_faction(faction)
 	var/datum/entity/statistic/S = participants["[faction]"]
 	S.value += amount
 
 /datum/entity/round_stats/proc/track_final_participant(var/faction, var/amount = 1)
+	if(!faction)
+		return
 	if(!final_participants["[faction]"])
 		setup_faction(faction)
 	var/datum/entity/statistic/S = final_participants["[faction]"]
@@ -159,6 +163,8 @@
 			track_final_participant(M.faction)
 
 /datum/entity/round_stats/proc/track_hijack_participant(var/faction, var/amount = 1)
+	if(!faction)
+		return
 	if(!hijack_participants["[faction]"])
 		setup_faction(faction)
 	var/datum/entity/statistic/S = hijack_participants["[faction]"]
@@ -171,6 +177,8 @@
 	round_hijack_time = world.time
 
 /datum/entity/round_stats/proc/track_dead_participant(var/faction, var/amount = 1)
+	if(!faction)
+		return
 	if(!total_deaths["[faction]"])
 		setup_faction(faction)
 	var/datum/entity/statistic/S = total_deaths["[faction]"]

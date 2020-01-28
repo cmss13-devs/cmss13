@@ -490,7 +490,7 @@
 				to_chat(user, "It is heavily injured and limping badly.")
 
 	if(hivenumber != XENO_HIVE_NORMAL)
-		to_chat(user, "It appears to belong to the [hive.prefix]hive")
+		to_chat(user, "It appears to belong to [hive ? "the [hive.prefix]" : "a different "]hive.")
 
 	if(isXeno(user) || isobserver(user))
 		if(mutation_type != "Normal")
@@ -783,7 +783,7 @@
 	evolution_threshold =  caste.evolution_threshold
 
 /mob/living/carbon/Xenomorph/rejuvenate()
-	if(stat == DEAD)
+	if(stat == DEAD && !disposed)
 		living_xeno_list += src
 
 		hive.add_xeno(src)

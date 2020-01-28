@@ -117,6 +117,9 @@
 	if(!isturf(loc)) //In a locker
 		return
 
+	if(!ammo)
+		ammo = ammo_list[/datum/ammo/xeno/boiler_gas]
+
 	var/turf/U = get_turf(src)
 
 	if(bomb_turf && bomb_turf != U)

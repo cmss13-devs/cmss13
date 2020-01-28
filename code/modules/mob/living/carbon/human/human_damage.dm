@@ -32,7 +32,7 @@
 
 	if(status_flags & GODMODE)	return 0	//godmode
 
-	if(species && species.has_organ["brain"])
+	if(species.has_organ["brain"])
 		var/datum/internal_organ/brain/sponge = internal_organs_by_name["brain"]
 		if(sponge)
 			sponge.take_damage(amount)
@@ -47,7 +47,7 @@
 
 	if(status_flags & GODMODE)	return 0	//godmode
 
-	if(species && species.has_organ["brain"])
+	if(species.has_organ["brain"])
 		var/datum/internal_organ/brain/sponge = internal_organs_by_name["brain"]
 		if(sponge)
 			sponge.damage = Clamp(amount, 0, maxHealth*2)
@@ -61,7 +61,7 @@
 
 	if(status_flags & GODMODE)	return 0	//godmode
 
-	if(species && species.has_organ["brain"])
+	if(species.has_organ["brain"])
 		var/datum/internal_organ/brain/sponge = internal_organs_by_name["brain"]
 		if(istype(sponge)) //Make sure they actually have a brain
 			brainloss = min(sponge.damage,maxHealth*2)
@@ -88,7 +88,7 @@
 
 
 /mob/living/carbon/human/adjustBruteLoss(var/amount)
-	if(species && species.brute_mod && amount > 0)
+	if(species.brute_mod && amount > 0)
 		amount = amount*species.brute_mod
 
 	if(amount > 0)
@@ -98,7 +98,7 @@
 
 
 /mob/living/carbon/human/adjustFireLoss(var/amount)
-	if(species && species.burn_mod && amount > 0)
+	if(species.burn_mod && amount > 0)
 		amount = amount*species.burn_mod
 
 	if(amount > 0)
@@ -108,7 +108,7 @@
 
 
 /mob/living/carbon/human/proc/adjustBruteLossByPart(var/amount, var/organ_name, var/obj/damage_source = null)
-	if(species && species.brute_mod && amount > 0)
+	if(species.brute_mod && amount > 0)
 		amount = amount*species.brute_mod
 
 	for(var/X in limbs)
@@ -124,7 +124,7 @@
 
 
 /mob/living/carbon/human/proc/adjustFireLossByPart(var/amount, var/organ_name, var/obj/damage_source = null)
-	if(species && species.burn_mod && amount > 0)
+	if(species.burn_mod && amount > 0)
 		amount = amount*species.burn_mod
 
 	for(var/X in limbs)
@@ -357,7 +357,7 @@ This function restores all limbs.
 
 	//Handle other types of damage
 	if((damagetype != BRUTE) && (damagetype != BURN))
-		if(damagetype == HALLOSS && !(species && (species.flags & NO_PAIN)))
+		if(damagetype == HALLOSS && !(species.flags & NO_PAIN))
 			if ((damage > 25 && prob(20)) || (damage > 50 && prob(60)))
 				emote("pain")
 
@@ -385,7 +385,7 @@ This function restores all limbs.
 	switch(damagetype)
 		if(BRUTE)
 			damageoverlaytemp = 20
-			if(species && species.brute_mod)
+			if(species.brute_mod)
 				damage = damage*species.brute_mod
 			var/temp_impact_name = null
 			if(organ.body_part & impact_limbs)
@@ -394,7 +394,7 @@ This function restores all limbs.
 				UpdateDamageIcon()
 		if(BURN)
 			damageoverlaytemp = 20
-			if(species && species.burn_mod)
+			if(species.burn_mod)
 				damage = damage*species.burn_mod
 			var/temp_impact_name = null
 			if(organ.body_part & impact_limbs)

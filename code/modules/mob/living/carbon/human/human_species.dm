@@ -6,10 +6,6 @@
 	real_name = "Test Dummy"
 	status_flags = GODMODE|CANPUSH
 
-/mob/living/carbon/human/machine/New(var/new_loc)
-	h_style = "blue IPC screen"
-	..(new_loc, "Machine")
-
 /mob/living/carbon/human/synthetic/New(var/new_loc)
 	..(new_loc, "Synthetic")
 

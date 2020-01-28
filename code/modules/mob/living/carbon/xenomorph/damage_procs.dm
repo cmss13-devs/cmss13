@@ -136,7 +136,8 @@
 	if(warding_aura && armor_break_to_apply > 0) //Damage to armor reduction
 		armor_break_to_apply = round(armor_break_to_apply * ((100 - (warding_aura * 15)) / 100))
 	var/old_integrity = armor_integrity
-	armor_integrity -= armor_break_to_apply / caste.armor_hardiness_mult
+	if(caste)
+		armor_integrity -= armor_break_to_apply / caste.armor_hardiness_mult
 	if(armor_integrity <= 0 && old_integrity > 10)
 		visible_message(SPAN_XENODANGER("[src]'s thick exoskeleton falls apart!"))
 		armor_integrity = 0

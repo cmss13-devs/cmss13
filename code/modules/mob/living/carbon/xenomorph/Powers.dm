@@ -1,6 +1,7 @@
 
 
 /mob/living/carbon/Xenomorph/proc/Pounce(atom/T)
+	if(!caste) return
 	if(!T) return
 
 	if(T.layer >= FLY_LAYER)//anything above that shouldn't be pounceable (hud stuff)

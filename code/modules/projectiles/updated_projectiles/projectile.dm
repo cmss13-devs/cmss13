@@ -220,7 +220,7 @@
 			sleep(1)
 
 		current_turf = get_turf(src)
-		if(this_iteration == path.len)
+		if(path && this_iteration == path.len)
 			next_turf = locate(current_turf.x + change_x, current_turf.y + change_y, current_turf.z)
 			if(current_turf && next_turf)
 				path = getline2(current_turf,next_turf) //Build a new flight path.

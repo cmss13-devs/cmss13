@@ -725,7 +725,8 @@
 		melee_damage_upper += caste.melee_damage_upper
 
 /mob/living/carbon/Xenomorph/proc/recalculate_evasion()
-	evasion = evasion_modifier + caste.evasion
+	if(caste)
+		evasion = evasion_modifier + caste.evasion
 
 /mob/living/carbon/Xenomorph/proc/recalculate_actions()
 	recalculate_acid()

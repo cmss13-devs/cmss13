@@ -194,6 +194,9 @@
 	return
 
 /mob/living/carbon/human/proc/issue_order(var/order)
+	if(!mind)
+		return FALSE
+
 	if(!skillcheck(src, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
 		to_chat(src, SPAN_WARNING("You are not competent enough in leadership to issue an order."))
 		return

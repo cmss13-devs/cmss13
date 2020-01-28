@@ -135,6 +135,8 @@
 	return ..()
 
 /mob/living/carbon/Xenomorph/Larva/UnarmedAttack(var/atom/A, var/list/mods)
+	if(!caste)
+		return FALSE
 
 	if(lying) //No attacks while laying down
 		return 0

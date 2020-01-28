@@ -10,7 +10,7 @@
 			msg += "[htmlicon(icon, user)] "
 		msg += "<EM>[src]</EM>!\n"
 
-		if(species.flags & IS_SYNTHETIC)
+		if(species && species.flags & IS_SYNTHETIC)
 			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is not organic.\n</span>"
 
 		if(status_flags & XENO_HOST)
@@ -186,7 +186,7 @@
 				else
 					to_chat(user, "<span class='deadsay'>[t_He] has a pulse!</span>")
 
-	if((!species.has_organ["brain"] || has_brain()) && stat != DEAD && stat != CONSCIOUS)
+	if((species && !species.has_organ["brain"] || has_brain()) && stat != DEAD && stat != CONSCIOUS)
 		if(!key)
 			msg += "<span class='deadsay'>[t_He] [t_is] fast asleep. It doesn't look like they are waking up anytime soon.\n</span>"
 		else if(!client)
@@ -210,7 +210,7 @@
 				continue
 			if(temp.status & LIMB_ROBOT)
 				if(!(temp.brute_dam + temp.burn_dam))
-					if(!(species.flags & IS_SYNTHETIC))
+					if(!(species && species.flags & IS_SYNTHETIC))
 						wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a robot [temp.display_name]!\n")
 						continue
 				else

@@ -463,6 +463,8 @@
 		if(!usr.action_busy)
 			if(w_uniform && istype(w_uniform, /obj/item/clothing))
 				var/obj/item/clothing/under/U = w_uniform
+				if(U.accessories.len < 1)
+					return FALSE
 				var/obj/item/clothing/accessory/A = U.accessories[1]
 				if(U.accessories.len > 1)
 					A = input("Select an accessory to remove from [U]") as null|anything in U.accessories

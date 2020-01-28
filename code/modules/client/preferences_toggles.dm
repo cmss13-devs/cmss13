@@ -149,7 +149,7 @@
 	// prefs.save_preferences() // We won't save the change - it'll be a temporary switch instead of permanent, but they can still make it permanent in character setup.
 	if(prefs.toggles_sound & SOUND_MIDI) // Not using && midi_playing here - since we can't tell how long an admin midi is, the user should always be able to turn it off at any time.
 		to_chat(src, "The currently playing midi has been silenced.")
-		var/sound/break_sound = sound(null, repeat = 0, wait = 0, channel = 777)
+		var/sound/break_sound = sound(null, repeat = 0, wait = 0, channel = SOUND_CHANNEL_ADMIN_MIDI)
 		break_sound.priority = 250
 		src << break_sound	//breaks the client's sound output on channel 777
 		if(src.mob.client.midi_silenced)	return

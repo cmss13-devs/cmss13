@@ -201,7 +201,7 @@
 
 	var/list/turfs_src = get_shuttle_turfs(T_src, info_datums) //Which turfs are we moving?
 
-	playsound_spacial(turfs_src[sound_target], sound_takeoff, 100, 20 SECONDS)
+	playsound_spacial(turfs_src[sound_target], sound_takeoff, 100, 8, 20 SECONDS)
 	//playsound_area(get_area(turfs_src[sound_target]),'sound/effects/drums.ogg',100)
 
 	sleep(warmup_time) //Warming up
@@ -246,7 +246,7 @@
 		return FALSE //If a nuke is in progress, don't attempt a landing.
 
 	playsound_area(get_area(turfs_int[sound_target]), sound_landing, 100)
-	playsound_spacial(turfs_trg[sound_target], sound_landing, 100, 20 SECONDS)
+	playsound_spacial(turfs_trg[sound_target], sound_landing, 100, 8, 20 SECONDS)
 	playsound_area(get_area(turfs_int[sound_target]), channel = SOUND_CHANNEL_AMBIENCE, status = SOUND_UPDATE)
 
 
@@ -351,7 +351,7 @@
 	//START: Heavy lifting backend
 
 	var/list/turfs_src = get_shuttle_turfs(T_src, info_datums) //Which turfs are we moving?
-	playsound_spacial(turfs_src[sound_target], sound_takeoff, 100, 20 SECONDS)
+	playsound_spacial(turfs_src[sound_target], sound_takeoff, 100, 8, 20 SECONDS)
 
 	sleep(warmup_time) //Warming up
 

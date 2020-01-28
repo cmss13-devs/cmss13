@@ -3,7 +3,6 @@
 #define FREE_CHAN_END 1017
 #define INITIAL_SOUNDSCAPE_COOLDOWN 20 
 
-#define SOUND_MUFFLE 32
 
 #define EAR_DEAF_MUTE 			1
 

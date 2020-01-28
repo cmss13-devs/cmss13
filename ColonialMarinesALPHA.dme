@@ -137,6 +137,8 @@
 #include "code\controllers\subsystem\shuttle.dm"
 #include "code\controllers\subsystem\smoke_system.dm"
 #include "code\controllers\subsystem\sound.dm"
+#include "code\controllers\subsystem\soundscape.dm"
+#include "code\controllers\subsystem\spacial_sound.dm"
 #include "code\controllers\subsystem\teleporter.dm"
 #include "code\controllers\subsystem\ticker.dm"
 #include "code\controllers\subsystem\timer.dm"

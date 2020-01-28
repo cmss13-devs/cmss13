@@ -374,6 +374,9 @@
 /mob/living/proc/flick_attack_overlay(atom/target, attack_icon_state)
 	set waitfor = 0
 
+	if(!attack_icon)
+		return FALSE
+
 	attack_icon.icon_state = attack_icon_state
 	attack_icon.pixel_x = -target.pixel_x
 	attack_icon.pixel_y = -target.pixel_y
@@ -428,7 +431,8 @@
 /mob/living/proc/on_movement(moving = 1)
 	var/datum/event_args/mob_movement/ev_args = new /datum/event_args/mob_movement()
 	ev_args.moving = moving
-	event_movement.fire_event(src, ev_args)
+	if(event_movement)
+		event_movement.fire_event(src, ev_args)
 	return ev_args.continue_movement
 
 /mob/living/proc/add_movement_handler(datum/event_handler/handler)
@@ -626,7 +630,7 @@
 		var/mob/living/carbon/human/H = src
 		// Show blood level
 		var/blood_volume = BLOOD_VOLUME_NORMAL
-		if(!(H.species.flags & NO_BLOOD))
+		if(!(H.species && H.species.flags & NO_BLOOD))
 			blood_volume = round(H.blood_volume)
 
 			var/blood_percent =  blood_volume / 560

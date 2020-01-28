@@ -130,6 +130,9 @@ Currently only has the tank hardpoints
 		return
 
 	var/turf/T = get_turf(A)
+	if(!T)
+		return FALSE
+
 	var/dx = T.x - owner.x
 	var/dy = T.y - owner.y
 

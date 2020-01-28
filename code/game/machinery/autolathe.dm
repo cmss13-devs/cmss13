@@ -278,17 +278,6 @@
 	storage_capacity["metal"] = tot_rating  * 25000
 	storage_capacity["glass"] = tot_rating  * 12500
 
-/obj/structure/machinery/autolathe/dismantle()
-	var/list/sheets = list("metal" = /obj/item/stack/sheet/metal, "glass" = /obj/item/stack/sheet/glass)
-
-	for(var/mat in stored_material)
-		var/T = sheets[mat]
-		var/obj/item/stack/sheet/S = new T
-		if(stored_material[mat] > S.perunit)
-			S.amount = round(stored_material[mat] / S.perunit)
-			S.loc = loc
-	..()
-
 /obj/structure/machinery/autolathe/proc/try_queue(var/mob/living/carbon/human/user, var/datum/autolathe/recipe/making, var/turf/make_loc, var/multiplier = 1)
 	if (queue.len >= queue_max)
 		to_chat(usr, SPAN_DANGER("The autolathe has queued the maximum number of operations. Please wait for completion of current operation."))

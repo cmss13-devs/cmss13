@@ -8,6 +8,7 @@
 	name = "\improper HealthMate HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status."
 	icon_state = "healthhud"
+	deactive_state = "degoggles"
 	flags_armor_protection = 0
 	toggleable = TRUE
 	hud_type = MOB_HUD_MEDICAL_ADVANCED
@@ -31,6 +32,7 @@
 	name = "\improper PatrolMate HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their ID status and security records."
 	icon_state = "securityhud"
+	deactive_state = "degoggles"
 	toggleable = TRUE
 	flags_armor_protection = 0
 	hud_type = MOB_HUD_SECURITY_ADVANCED

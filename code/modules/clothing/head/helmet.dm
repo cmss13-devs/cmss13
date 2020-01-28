@@ -382,8 +382,13 @@
 	..()
 
 /obj/item/clothing/head/helmet/marine/attack_hand(mob/user)
-	if (pockets.handle_attack_hand(user))
-		..()
+	if(loc != user)
+		..(user) // If it's in a satchel or something don't open the pockets
+		return
+
+	if(pockets.handle_attack_hand(user))
+		..(user)
+
 
 /obj/item/clothing/head/helmet/marine/MouseDrop(over_object, src_location, over_location)
 	if(pockets.handle_mousedrop(usr, over_object))

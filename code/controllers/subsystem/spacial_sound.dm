@@ -26,6 +26,7 @@ var/datum/subsystem/spacial_sound/SSspacial_sound
 	while(currentrun.len)
 		var/datum/sound_coord/S = currentrun[currentrun.len]
 		currentrun.len--
+		
 		if(world.time - S.time_of_creation >= S.duration)
 			sound_coords.Remove(S)
 			qdel(S)

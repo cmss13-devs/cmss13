@@ -16,7 +16,8 @@
 	
 	while(currentrun.len)
 		var/client/C = currentrun[currentrun.len]
-		currentrun--
+		currentrun.len--
+		
 		if(!C || !C.soundOutput)
 			continue
 

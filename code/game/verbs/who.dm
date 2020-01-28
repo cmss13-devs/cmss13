@@ -144,10 +144,12 @@
 				num_mods_online++
 
 			else if(AHOLD_IS_MENTOR(C.admin_holder))
+				mentmsg += "\t[C] is a [C.admin_holder.rank]"
+				
 				if(C.is_afk())
-					modmsg += " (AFK)"
+					mentmsg += " (AFK)"
+				mentmsg += "\n"
 
-				mentmsg += "\t[C] is a [C.admin_holder.rank]\n"
 				num_mentors_online++
 
 	else

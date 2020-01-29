@@ -2025,8 +2025,11 @@
 /datum/ammo/flare/on_hit_obj(obj/O,obj/item/projectile/P)
 	drop_nade(get_turf(P))
 
-/datum/ammo/flare/on_hit_turf(turf/T,obj/item/projectile/P)
-	drop_nade(T)
+/datum/ammo/flare/on_hit_turf(turf/T, obj/item/projectile/P)
+	if(T.density && isturf(P.loc))
+		drop_nade(P.loc, P)
+	else
+		drop_nade(T, P)
 
 /datum/ammo/flare/do_at_max_range(obj/item/projectile/P)
 	drop_nade(get_turf(P))

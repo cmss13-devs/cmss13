@@ -33,6 +33,9 @@ var/global/datum/defcon/defcon_controller
 	if(current_defcon_level == 1)
 		return "MAXIMUM"
 	else
+		if (!defcon_level_triggers)
+			return 0
+
 		var/percentage = ((last_objectives_completion_percentage - defcon_level_triggers[current_defcon_level - 1]) / (defcon_level_triggers[current_defcon_level] - defcon_level_triggers[current_defcon_level - 1]) * 100)
 		return percentage
 

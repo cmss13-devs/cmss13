@@ -55,7 +55,7 @@
 		var/message = SPAN_DANGER("You really need some painkillers!")
 		var/message_numb = SPAN_DANGER("The pain is excruciating!")
 		var/message_dying = SPAN_DANGER("You feel like you could die any moment now!")
-		var/show_message = client && (CHAT_TYPE_PAIN & client.prefs.chat_display_preferences)
+		var/show_message = client && client.prefs && (CHAT_TYPE_PAIN & client.prefs.chat_display_preferences)
 		switch(shock_stage)
 			// Low pain/damage
 			if(10 to 29) to_chat(src, message)

@@ -16,7 +16,7 @@
 	var/damage = severity
 
 	var/cfg = armor_deflection==0 ? config.xeno_explosive_small : config.xeno_explosive
-	var/total_explosive_resistance = caste.xeno_explosion_resistance + armor_explosive_buff
+	var/total_explosive_resistance = caste != null ? caste.xeno_explosion_resistance + armor_explosive_buff : armor_explosive_buff
 	damage = armor_damage_reduction(cfg, damage, total_explosive_resistance, pierce, 1, 0.5, armor_integrity)
 	var/armor_punch = armor_break_calculation(cfg, damage, total_explosive_resistance, pierce, 1, 0.5, armor_integrity)
 	apply_armorbreak(armor_punch)

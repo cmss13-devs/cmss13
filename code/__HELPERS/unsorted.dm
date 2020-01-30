@@ -1383,9 +1383,10 @@ var/global/image/emote_indicator_tailswipe
 					var/old_icon1 = T.icon
 
 					var/turf/X = B.ChangeTurf(T.type)
-					X.dir = old_dir1
-					X.icon_state = old_icon_state1
-					X.icon = old_icon1 //Shuttle floors are in shuttle.dmi while the defaults are floors.dmi
+					if (X)
+						X.dir = old_dir1
+						X.icon_state = old_icon_state1
+						X.icon = old_icon1 //Shuttle floors are in shuttle.dmi while the defaults are floors.dmi
 
 					/* Quick visual fix for some weird shuttle corner artefacts when on transit space tiles */
 					if(direction && findtext(X.icon_state, "swall_s"))

@@ -24,7 +24,7 @@
 		if(!uniform_categories[category_type])
 			continue
 		for(var/category in uniform_categories[category_type])
-			if(role_specific_uniforms[category])
+			if((category in role_specific_uniforms) && role_specific_uniforms[category])
 				display_category = TRUE
 				break
 		if(!display_category)

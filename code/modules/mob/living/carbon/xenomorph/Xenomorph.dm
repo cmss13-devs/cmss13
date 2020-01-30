@@ -398,7 +398,9 @@
 		round_statistics.track_new_participant(faction, 1)
 	generate_name()
 
-	hive.hive_ui.update_all_xeno_data()
+	// This can happen if a xeno gets made before the game starts
+	if (hive && hive.hive_ui)
+		hive.hive_ui.update_all_xeno_data()
 
 /mob/living/carbon/Xenomorph/proc/update_caste()
 	if(caste_name && xeno_datum_list[caste_name] && xeno_datum_list[caste_name][max(1,upgrade+1)])

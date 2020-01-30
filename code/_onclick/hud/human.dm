@@ -362,7 +362,7 @@
 
 
 /mob/living/carbon/human/create_hud()
-	if(client && !hud_used)
+	if(client && client.prefs && !hud_used)
 		var/ui_datum = custom_huds_list[client.prefs.UI_style]
 		var/ui_color = client.prefs.UI_style_color
 		var/ui_alpha = client.prefs.UI_style_alpha

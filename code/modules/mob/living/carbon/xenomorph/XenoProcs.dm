@@ -500,7 +500,8 @@
 /mob/living/carbon/Xenomorph/drop_held_item()
 	var/obj/item/clothing/mask/facehugger/F = get_active_hand()
 	if(istype(F))
-		if(locate(/turf/closed/wall/resin) in loc)
+		var/turf/TU = loc
+		if(!isturf(TU) || TU.density)
 			to_chat(src, SPAN_WARNING("You decide not to drop [F] after all."))
 			return
 

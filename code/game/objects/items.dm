@@ -495,11 +495,11 @@ cases. Override_icon_state should be a list.*/
 					if(!disable_warning)
 						to_chat(H, SPAN_WARNING("You need a suit before you can attach this [name]."))
 					return FALSE
-				if(!H.wear_suit.allowed)
+				if(H.wear_suit && !H.wear_suit.allowed)
 					if(!disable_warning)
 						to_chat(usr, "You somehow have a suit with no defined allowed items for suit storage, stop that.")
 					return FALSE
-				if(istype(src, /obj/item/tool/pen) || is_type_in_list(src, H.wear_suit.allowed) )
+				if(istype(src, /obj/item/tool/pen) ||(H.wear_suit && is_type_in_list(src, H.wear_suit.allowed)))
 					return 1
 				return FALSE
 			if(WEAR_HANDCUFFS)

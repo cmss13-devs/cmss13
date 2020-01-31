@@ -108,3 +108,52 @@
 
 /datum/reagent/proc/on_update(var/atom/A)
 	return
+
+/datum/reagent/proc/make_alike(var/datum/reagent/C)
+	name = C.name
+	id = C.id
+	properties = C.properties.Copy()
+	description = C.description
+	overdose = C.overdose
+	overdose_critical = C.overdose_critical
+	nutriment_factor = C.nutriment_factor
+	custom_metabolism = C.custom_metabolism
+	color = C.color
+	original_type = C.original_type
+
+/datum/chemical_reaction/proc/make_alike(var/datum/chemical_reaction/C)
+	id = C.id
+	required_reagents = C.required_reagents.Copy()
+	required_catalysts = C.required_catalysts.Copy()
+	result = C.result
+	result_amount = C.result_amount
+
+/datum/reagent/proc/save_chemclass() //Called from /datum/reagents/New()
+	//Store all classed reagents so we can easily access chem IDs based on class.
+	if(chemclass)
+		switch(chemclass)
+			if(CHEM_CLASS_BASIC)
+				chemical_gen_classes_list["C1"] += id
+			if(CHEM_CLASS_COMMON)
+				chemical_gen_classes_list["C2"] += id
+			if(CHEM_CLASS_UNCOMMON)
+				chemical_gen_classes_list["C3"] += id
+			if(CHEM_CLASS_RARE)
+				chemical_gen_classes_list["C4"] += id
+			if(CHEM_CLASS_SPECIAL)
+				chemical_gen_classes_list["C5"] += id
+				chemical_objective_list[id] = objective_value
+			if(CHEM_CLASS_ULTRA)
+				chemical_gen_classes_list["C6"] += id
+				chemical_objective_list[id] = objective_value
+		chemical_gen_classes_list["C"] += id
+	if(gen_tier)
+		switch(gen_tier)
+			if(1)
+				chemical_gen_classes_list["T1"] += id
+			if(2)
+				chemical_gen_classes_list["T2"] += id
+			if(3)
+				chemical_gen_classes_list["T3"] += id
+			if(4)
+				chemical_gen_classes_list["T4"] += id

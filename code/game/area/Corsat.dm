@@ -436,7 +436,7 @@
 	icon_state = "gamma_biodome"
 	temperature = ICE_COLONY_TEMPERATURE
 	always_unpowered = 1
-	ceiling = CEILING_REINFORCED_METAL
+	ceiling = CEILING_GLASS
 
 /area/corsat/gamma/biodome/complex
 	name = "\improper Gamma Research Complex"
@@ -461,7 +461,7 @@
 /area/corsat/theta
 	name = "\improper Theta Sector"
 	icon_state = "corsat_hull"
-	ceiling = CEILING_REINFORCED_METAL
+	ceiling = CEILING_GLASS
 
 /area/corsat/theta/biodome
 	name = "\improper Biodome Theta"
@@ -494,7 +494,6 @@
 /area/corsat/theta/airlock/east
 	name = "\improper Theta Dome East Airlock"
 	icon_state = "theta_airlock_east"
-	ceiling = CEILING_GLASS
 
 /area/corsat/theta/airlock/east/id
 	name = "\improper Theta East ID Checkpoint"
@@ -503,7 +502,6 @@
 /area/corsat/theta/airlock/control
 	name = "\improper Theta Dome Control Module"
 	icon_state = "theta_control"
-	ceiling = CEILING_GLASS
 
 //OMEGA SECTOR
 

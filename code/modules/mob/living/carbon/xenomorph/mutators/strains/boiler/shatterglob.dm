@@ -25,7 +25,6 @@
 	..()
 	accuracy = config.med_hit_accuracy
 	accurate_range = config.max_shell_range
-	point_blank_range = -1
 	max_range = config.close_shell_range
 	shell_speed = config.slow_shell_speed
 	scatter = config.med_scatter_value

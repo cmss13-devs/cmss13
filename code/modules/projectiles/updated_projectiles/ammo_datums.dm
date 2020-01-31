@@ -33,7 +33,6 @@
 	var/accuracy_var_high			= 0
 	var/accurate_range 				= 0 		// For most guns, this is where the bullet dramatically looses accuracy. Not for snipers though
 	var/accurate_range_min 			= 0			// Snipers use this to simulate poor accuracy at close ranges
-	var/point_blank_range			= 0			// Weapons will get a large accuracy buff at this short range
 	var/max_range 					= 0 		// This will de-increment a counter on the bullet
 	var/scatter  					= 0 		// How much the ammo scatters when burst fired, added to gun scatter, along with other mods
 	var/damage 						= 0 		// This is the base damage of the bullet as it is fired
@@ -239,7 +238,6 @@
 	sound_armor  = "ballistic_armor"
 	sound_miss	 = "ballistic_miss"
 	sound_bounce = "ballistic_bounce"
-	point_blank_range = 2
 	accurate_range_min = 0
 
 /datum/ammo/bullet/New()
@@ -1692,7 +1690,6 @@
 	..()
 	accuracy = config.med_hit_accuracy
 	accurate_range = config.max_shell_range
-	point_blank_range = -1
 	max_range = config.close_shell_range
 	damage = config.mlow_hit_damage
 	damage_falloff = config.buckshot_damage_falloff
@@ -1834,7 +1831,6 @@
 
 /datum/ammo/xeno/bone_chips/New()
 	..()
-	point_blank_range = -1
 	damage = 5
 	damage_type = BRUTE
 	accuracy = config.max_hit_accuracy
@@ -1868,7 +1864,6 @@
 	..()
 	accuracy = config.med_hit_accuracy
 	accurate_range = config.max_shell_range
-	point_blank_range = -1
 	max_range = 7
 	damage = config.hlmed_hit_damage
 	damage_var_low = -config.med_proj_variance

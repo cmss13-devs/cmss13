@@ -1,0 +1,6 @@
+author: Cakey
+
+delete-after: True
+
+changes: 
+  - rscdel: "Removed legacy point blank range accuracy values."

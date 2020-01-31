@@ -237,7 +237,7 @@
 /obj/item/projectile/proc/scan_a_turf(turf/T, proj_dir)
 	// Not a turf, keep moving
 	if(!istype(T))
-		return 0
+		return FALSE
 
 	if(T.density) // Handle wall hit
 		var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
@@ -251,11 +251,11 @@
 		else
 			ammo.on_hit_turf(T,src)
 			T.bullet_act(src)
-		return 1
+		return TRUE
 
 	// Firer's turf, keep moving
 	if(firer && T == firer.loc)
-		return 0
+		return FALSE
 	var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 	// Explosive ammo always explodes on the turf of the clicked target
 	if(ammo_flags & AMMO_EXPLOSIVE && T == target_turf)
@@ -264,7 +264,7 @@
 		if(T && T.loc)
 			T.bullet_act(src)
 
-		return 1
+		return TRUE
 
 	if(ammo_flags & AMMO_SCANS_NEARBY && proj_dir)
 		//this thing scans depending on dir
@@ -297,29 +297,29 @@
 				break
 
 		if(kill_proj)
-			return 1
+			return TRUE
 
 	// Empty turf, keep moving
 	if(!T.contents.len)
-		return 0
+		return FALSE
 
 	for(var/atom/movable/clone/C in T) //Handle clones if there are any
 		if(C.mstr)
 			if(istype(C.mstr, /obj))
-				if(handle_object(C.mstr)) return 1
+				if(handle_object(C.mstr)) return TRUE
 			else if(istype(C.mstr, /mob/living))
-				if(handle_mob(C.mstr)) return 1
+				if(handle_mob(C.mstr)) return TRUE
 
 	for(var/obj/O in T) //check objects before checking mobs, so that barricades protect
-		if(handle_object(O)) return 1
+		if(handle_object(O)) return TRUE
 
 	for(var/mob/living/L in T)
-		if(handle_mob(L)) return 1
+		if(handle_mob(L)) return TRUE
 
 /obj/item/projectile/proc/handle_object(obj/O)
 	// If we've already handled this atom, don't do it again
 	if(O in permutated)
-		return 0
+		return FALSE
 	permutated += O
 
 	var/hit_chance = O.get_projectile_hit_boolean(src)
@@ -338,12 +338,12 @@
 			ammo.on_hit_obj(O,src)
 			if(O && O.loc)
 				O.bullet_act(src)
-		return 1
+		return TRUE
 
 /obj/item/projectile/proc/handle_mob(mob/living/L)
 	// If we've already handled this atom, don't do it again
 	if(L in permutated)
-		return 0
+		return FALSE
 	permutated += L
 
 	var/hit_chance = L.get_projectile_hit_chance(src)
@@ -369,8 +369,8 @@
 				T.bullet_act(src)
 			else if(L && L.loc && (L.bullet_act(src) != -1))
 				ammo.on_hit_mob(L,src)
-			return 1
-		else if (!L.lying)
+			return TRUE
+		else if(!L.lying)
 			animatation_displace_reset(L)
 			if(ammo.sound_miss) playsound_client(L.client, ammo.sound_miss, get_turf(L), 75, TRUE)
 			L.visible_message(SPAN_AVOIDHARM("[src] misses [L]!"),
@@ -386,26 +386,18 @@
 //----------------------------------------------------------
 
 
-/proc/get_effective_accuracy(obj/item/projectile/P)
-
-	var/effective_accuracy = P.accuracy //We want a temporary variable so accuracy doesn't change every time the bullet misses.
-
+/obj/item/projectile/proc/get_effective_accuracy()
 	#if DEBUG_HIT_CHANCE
-	to_world(SPAN_DEBUG("Base accuracy is <b>[P.accuracy]; scatter:[P.scatter]; distance:[P.distance_travelled]</b>"))
+	to_world(SPAN_DEBUG("Base accuracy is <b>[accuracy]; scatter:[scatter]; distance:[distance_travelled]</b>"))
 	#endif
-	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if (P.distance_travelled <= P.ammo.accurate_range + rand(0, 2))
-	// If bullet stays within max accurate range + random variance
-		if (P.distance_travelled <= P.ammo.point_blank_range)
-			//If bullet within point blank range, big accuracy buff
-			effective_accuracy += 25
-		else if (P.distance_travelled <= P.ammo.accurate_range_min)
-			// Snipers have accuracy falloff at closer range before point blank
-			effective_accuracy -= (P.ammo.accurate_range_min - P.distance_travelled) * 5
-	else
-		effective_accuracy -= (ammo_flags & AMMO_SNIPER) ? (P.distance_travelled * 1.5) : (P.distance_travelled * 5)
-		// Snipers have a smaller falloff constant due to longer max range
 
+	var/effective_accuracy = accuracy //We want a temporary variable so accuracy doesn't change every time the bullet misses.
+	var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
+	if(distance_travelled <= ammo.accurate_range + rand(0, 2))
+		if(distance_travelled <= ammo.accurate_range_min) // If bullet stays within max accurate range + random variance
+			effective_accuracy -= (ammo.accurate_range_min - distance_travelled) * 5 // Snipers have accuracy falloff at closer range before point blank
+	else
+		effective_accuracy -= (ammo_flags & AMMO_SNIPER) ? (distance_travelled * 1.5) : (distance_travelled * 5) // Snipers have a smaller falloff constant due to longer max range
 
 	#if DEBUG_HIT_CHANCE
 	to_world(SPAN_DEBUG("Final accuracy is <b>[.]</b>"))
@@ -413,14 +405,13 @@
 
 	effective_accuracy = max(5, effective_accuracy) //default hit chance is at least 5%.
 
-	if(ishuman(P.firer))
-		var/mob/living/carbon/human/shooter_human = P.firer
+	if(ishuman(firer))
+		var/mob/living/carbon/human/shooter_human = firer
 		if(shooter_human.marksman_aura)
 			effective_accuracy += shooter_human.marksman_aura * 1.5 //Flat buff of 3 % accuracy per aura level
-			effective_accuracy += P.distance_travelled * 0.35 * shooter_human.marksman_aura //Flat buff to accuracy per tile travelled
+			effective_accuracy += distance_travelled * 0.35 * shooter_human.marksman_aura //Flat buff to accuracy per tile travelled
 
 	return effective_accuracy
-
 
 //objects use get_projectile_hit_boolean unlike mobs, which use get_projectile_hit_chance
 
@@ -442,7 +433,7 @@
 		return FALSE
 
 	//an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile
-	var/effective_accuracy = get_effective_accuracy(P)
+	var/effective_accuracy = P.get_effective_accuracy()
 	var/distance_limit = 6 //number of tiles needed to max out block probability
 	var/accuracy_factor = 50 //degree to which accuracy affects probability   (if accuracy is 100, probability is unaffected. Lower accuracies will increase block chance)
 
@@ -457,7 +448,7 @@
 /obj/structure/machinery/get_projectile_hit_boolean(obj/item/projectile/P)
 
 	if(src == P.original && src.layer > ATMOS_DEVICE_LAYER) //clicking on the object itself hits the object
-		var/hitchance = get_effective_accuracy(P)
+		var/hitchance = P.get_effective_accuracy()
 
 		#if DEBUG_HIT_CHANCE
 		to_world(SPAN_DEBUG("([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
@@ -496,7 +487,7 @@
 
 /obj/structure/get_projectile_hit_boolean(obj/item/projectile/P)
 	if(src == P.original && src.layer > ATMOS_DEVICE_LAYER) //clicking on the object itself hits the object
-		var/hitchance = get_effective_accuracy(P)
+		var/hitchance = P.get_effective_accuracy()
 
 		#if DEBUG_HIT_CHANCE
 		to_world(SPAN_DEBUG("([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
@@ -542,7 +533,7 @@
 
 	if(P && src == P.original) //clicking on the object itself. Code copied from mob get_projectile_hit_chance
 
-		var/hitchance = get_effective_accuracy(P)
+		var/hitchance = P.get_effective_accuracy()
 
 		switch(w_class) //smaller items are harder to hit
 			if(1)
@@ -573,7 +564,7 @@
 /obj/vehicle/get_projectile_hit_boolean(obj/item/projectile/P)
 
 	if(src == P.original) //clicking on the object itself hits the object
-		var/hitchance = get_effective_accuracy(P)
+		var/hitchance = P.get_effective_accuracy()
 
 		#if DEBUG_HIT_CHANCE
 		to_world(SPAN_DEBUG("([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
@@ -617,13 +608,13 @@
 /mob/living/proc/get_projectile_hit_chance(obj/item/projectile/P)
 
 	if(lying && src != P.original)
-		return 0
+		return FALSE
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX))
 		if((status_flags & XENO_HOST) && istype(buckled, /obj/structure/bed/nest))
-			return 0
+			return FALSE
 
-	. = get_effective_accuracy(P)
+	. = P.get_effective_accuracy()
 
 	if(lying && stat) . += 15 //Bonus hit against unconscious people.
 
@@ -636,7 +627,7 @@
 	if(.)
 		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 		if(ammo_flags & AMMO_SKIPS_HUMANS && get_target_lock(P.ammo.iff_signal))
-			return 0
+			return FALSE
 		if(mobility_aura)
 			. -= mobility_aura * 5
 		var/mob/living/carbon/human/shooter_human = P.firer
@@ -653,7 +644,7 @@
 	if(.)
 		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 		if(ammo_flags & AMMO_SKIPS_ALIENS)
-			return 0
+			return FALSE
 		if(mob_size == MOB_SIZE_BIG)	. += 10
 		if(evasion > 0)
 			. -= evasion
@@ -674,10 +665,10 @@
 //----------------------------------------------------------
 
 /atom/proc/bullet_act(obj/item/projectile/P)
-	return 0
+	return FALSE
 
 /mob/dead/bullet_act(/obj/item/projectile/P)
-	return 0
+	return FALSE
 
 /mob/living/bullet_act(obj/item/projectile/P)
 	if(!P) return
@@ -696,7 +687,7 @@
 			IgniteMob()
 			emote("scream")
 			to_chat(src, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
-	return 1
+	return TRUE
 
 /mob/living/carbon/human/bullet_act(obj/item/projectile/P)
 	if(!P) return
@@ -777,7 +768,7 @@
 			if(!stat && !(species.flags & NO_PAIN))
 				emote("scream")
 				to_chat(src, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
-		return 1
+		return TRUE
 
 //Deal with xeno bullets.
 /mob/living/carbon/Xenomorph/bullet_act(obj/item/projectile/P)
@@ -835,7 +826,7 @@
 				SPAN_XENODANGER("You burst into flames!! Auuugh! Resist to put out the flames!"))
 		updatehealth()
 
-	return 1
+	return TRUE
 
 /turf/bullet_act(obj/item/projectile/P)
 	if(!P || !density) return //It's just an empty turf
@@ -851,8 +842,8 @@
 		var/mob/living/picked_mob = pick(mobs_list) //Hit a mob, if there is one.
 		if(istype(picked_mob))
 			picked_mob.bullet_act(P)
-			return 1
-	return 1
+			return TRUE
+	return TRUE
 
 // walls can get shot and damaged, but bullets (vs energy guns) do much less.
 /turf/closed/wall/bullet_act(obj/item/projectile/P)
@@ -865,7 +856,7 @@
 
 	switch(P.ammo.damage_type)
 		if(BRUTE) //Rockets do extra damage to walls.
-			if (ammo_flags & AMMO_ROCKET)
+			if(ammo_flags & AMMO_ROCKET)
 				damage = round(damage * 10)
 		if(BURN)
 			if(ammo_flags & AMMO_ENERGY)
@@ -877,7 +868,7 @@
 	if(ammo_flags & AMMO_BALLISTIC)
 		current_bulletholes++
 	take_damage(damage)
-	return 1
+	return TRUE
 
 
 /turf/closed/wall/almayer/research/containment/bullet_act(obj/item/projectile/P)
@@ -894,21 +885,21 @@
 //Why are there special cases listed here? Oh well, whatever. ~N
 /obj/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
-	return 1
+	return TRUE
 
 /obj/item/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
 	if(P.ammo.damage_type == BRUTE)
 		explosion_throw(P.damage/2, P.dir, 4)
-	return 1
+	return TRUE
 
 /obj/structure/table/bullet_act(obj/item/projectile/P)
 	src.bullet_ping(P)
 	health -= round(P.damage/2)
-	if (health < 0)
+	if(health < 0)
 		visible_message(SPAN_WARNING("[src] breaks down!"))
 		destroy()
-	return 1
+	return TRUE
 
 
 //----------------------------------------------------------
@@ -982,10 +973,10 @@
 
 	if(dx == 0) //left or down of you
 		if(dy == -1 || dy == 1)
-			return 1
+			return TRUE
 	if(dy == 0) //above or below you
 		if(dx == -1 || dx == 1)
-			return 1
+			return TRUE
 
 #undef DEBUG_HIT_CHANCE
 #undef DEBUG_HUMAN_DEFENSE

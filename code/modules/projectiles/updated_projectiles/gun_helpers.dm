@@ -124,13 +124,13 @@ DEFINES in setup.dm, referenced here.
 
 	if(in_hand == src && (flags_item & TWOHANDED))
 		unload(user)//It has to be held if it's a two hander.
-	else 
+	else
 		..()
 
 /obj/item/weapon/gun/launch_towards(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
 	if(harness_check(thrower))
 		to_chat(thrower, SPAN_WARNING("\The [src] clanks on the ground."))
-	else 
+	else
 		..()
 
 /*
@@ -204,12 +204,12 @@ should be alright.
 /obj/item/weapon/gun/proc/harness_check(mob/user)
 	if(!ishuman(user))
 		return FALSE
-	
+
 	var/mob/living/carbon/human/owner = user
 
 	if(!has_attachment(/obj/item/attachable/magnetic_harness) && !istype(src, /obj/item/weapon/gun/smartgun))
 		return FALSE
-	
+
 	var/obj/item/I = owner.wear_suit
 	if(!istype(I, /obj/item/clothing/suit/storage/marine))
 		return FALSE
@@ -224,7 +224,7 @@ should be alright.
 		return
 	if(user.s_store || !isturf(loc))
 		return
-	
+
 	var/obj/item/I = user.wear_suit
 	user.equip_to_slot_if_possible(src, WEAR_J_STORE)
 	if(user.s_store == src)
@@ -239,9 +239,9 @@ should be alright.
 
 	//There are only two ways to interact here.
 	if(flags_item & TWOHANDED)
-		if(flags_item & WIELDED) 
+		if(flags_item & WIELDED)
 			unwield(user) // Trying to unwield it
-		else 
+		else
 			wield(user) // Trying to wield it
 	else
 		unload(user) // We just unload it.
@@ -249,7 +249,7 @@ should be alright.
 //Clicking stuff onto the gun.
 //Attachables & Reloading
 /obj/item/weapon/gun/attackby(obj/item/I, mob/user)
-	if(flags_gun_features & GUN_BURST_FIRING) 
+	if(flags_gun_features & GUN_BURST_FIRING)
 		return
 
 	if(istype(I,/obj/item/attachable))
@@ -335,7 +335,7 @@ should be alright.
 	return 1
 
 /obj/item/weapon/gun/proc/has_attachment(A)
-	if(!A) 
+	if(!A)
 		return FALSE
 	for(var/slot in attachments)
 		var/obj/item/attachable/R = attachments[slot]
@@ -458,7 +458,7 @@ should be alright.
 		to_chat(user, SPAN_WARNING("You need a gun in your active hand to do that!"))
 		return
 
-	if(G.flags_gun_features & GUN_BURST_FIRING) 
+	if(G.flags_gun_features & GUN_BURST_FIRING)
 		return
 
 	return G
@@ -483,7 +483,7 @@ should be alright.
 		to_chat(src, SPAN_WARNING("You can't draw a weapon in your current state."))
 		return
 
-	var/obj/item/weapon/W = get_active_hand()
+	var/obj/item/W = get_active_hand()
 	var/obj/item/clothing/under/U = w_uniform
 	var/obj/item/clothing/accessory/holster/T
 	if(istype(U))
@@ -501,10 +501,11 @@ should be alright.
 				if(s_store)
 					if(istype(s_store, /obj/item/storage)) //check storages(?)
 						var/obj/item/storage/S = s_store
-						for(var/obj/item/weapon/wep in S.return_inv())
-							s_store.attack_hand(src)
-							return
-					else if(istype(s_store, /obj/item/weapon)) //then check for weapons
+						for(var/obj/item/wep in S.return_inv())
+							if(isweapon(wep))
+								s_store.attack_hand(src)
+								return
+					else if(isweapon(s_store)) //then check for weapons
 						s_store.attack_hand(src)
 						return
 
@@ -514,7 +515,7 @@ should be alright.
 						for(var/obj/item/weapon/gun in G.return_inv())
 							belt.attack_hand(src)
 							return
-					if(istype(belt, /obj/item/weapon/)) //then check for weapons
+					if(isweapon(belt)) //then check for weapons
 						belt.attack_hand(src)
 						return
 
@@ -524,27 +525,29 @@ should be alright.
 						if(B.return_inv().len)
 							back.attack_hand(src)
 							return
-					if(istype(back,/obj/item/weapon)) //then check for weapons
+					if(isweapon(back)) //then check for weapons
 						back.attack_hand(src)
 						return
 
 				if(l_store)
 					if(istype(l_store, /obj/item/storage/pouch))  //check pouches
 						var/obj/item/storage/pouch/P = l_store
-						for(var/obj/item/weapon/wep in P.return_inv())
-							l_store.attack_hand(src)
-							return
-					if(istype(l_store, /obj/item/weapon)) //then check for weapons
+						for(var/obj/item/wep in P.return_inv())
+							if(isweapon(wep))
+								l_store.attack_hand(src)
+								return
+					if(isweapon(l_store)) //then check for weapons
 						l_store.attack_hand(src)
 						return
 
 				if(r_store)
 					if(istype(r_store, /obj/item/storage/pouch))  //check pouches
 						var/obj/item/storage/pouch/P = r_store
-						for(var/obj/item/weapon/wep in P.return_inv())
-							r_store.attack_hand(src)
-							return
-					if(istype(r_store, /obj/item/weapon)) //then check for weapons
+						for(var/obj/item/wep in P.return_inv())
+							if(isweapon(wep))
+								r_store.attack_hand(src)
+								return
+					if(isweapon(r_store)) //then check for weapons
 						r_store.attack_hand(src)
 						return
 
@@ -555,7 +558,7 @@ should be alright.
 				if(shoes)
 					if(istype(shoes, /obj/item/clothing/shoes))
 						var/obj/item/clothing/shoes/S = shoes
-						if(S.stored_item && istype(S.stored_item, /obj/item/weapon))
+						if(S.stored_item && isweapon(S.stored_item))
 							shoes.attack_hand(src)
 							return
 
@@ -566,7 +569,7 @@ should be alright.
 						for(var/obj/item/weapon/gun in G.return_inv())
 							belt.attack_hand(src)
 							return
-					if(istype(belt, /obj/item/weapon/))
+					if(isweapon(belt))
 						belt.attack_hand(src)
 						return
 
@@ -576,27 +579,29 @@ should be alright.
 						if(B.return_inv().len)
 							back.attack_hand(src)
 							return
-					if(istype(back,/obj/item/weapon))
+					if(isweapon(back))
 						back.attack_hand(src)
 						return
 
 				if(l_store)
 					if(istype(l_store, /obj/item/storage/pouch))
 						var/obj/item/storage/pouch/P = l_store
-						for(var/obj/item/weapon/wep in P.return_inv())
-							l_store.attack_hand(src)
-							return
-					if(istype(l_store, /obj/item/weapon))
+						for(var/obj/item/wep in P.return_inv())
+							if(isweapon(wep))
+								l_store.attack_hand(src)
+								return
+					if(isweapon(l_store))
 						l_store.attack_hand(src)
 						return
 
 				if(r_store)
 					if(istype(r_store, /obj/item/storage/pouch))
 						var/obj/item/storage/pouch/P = r_store
-						for(var/obj/item/weapon/wep in P.return_inv())
-							r_store.attack_hand(src)
-							return
-					if(istype(r_store, /obj/item/weapon))
+						for(var/obj/item/wep in P.return_inv())
+							if(isweapon(wep))
+								r_store.attack_hand(src)
+								return
+					if(isweapon(r_store))
 						r_store.attack_hand(src)
 						return
 
@@ -607,17 +612,18 @@ should be alright.
 				if(shoes)
 					if(istype(shoes, /obj/item/clothing/shoes))
 						var/obj/item/clothing/shoes/S = shoes
-						if(S.stored_item && istype(S.stored_item, /obj/item/weapon))
+						if(S.stored_item && isweapon(S.stored_item))
 							shoes.attack_hand(src)
 							return
 
 				if(s_store)
 					if(istype(s_store, /obj/item/storage))
 						var/obj/item/storage/S = s_store
-						for(var/obj/item/weapon/wep in S.return_inv())
-							s_store.attack_hand(src)
-							return
-					else if(istype(s_store, /obj/item/weapon))
+						for(var/obj/item/wep in S.return_inv())
+							if(isweapon(wep))
+								s_store.attack_hand(src)
+								return
+					else if(isweapon(s_store))
 						s_store.attack_hand(src)
 						return
 
@@ -740,7 +746,7 @@ should be alright.
 
 	var/mob/user = usr
 	var/obj/item/weapon/gun/G = get_active_firearm(user)
-	if(!G) 
+	if(!G)
 		return
 	src = G
 
@@ -749,7 +755,7 @@ should be alright.
 		drop_to_ground = FALSE
 		unwield(user)
 		user.swap_hand()
-	
+
 	unload(user, FALSE, drop_to_ground) //We want to drop the mag on the ground.
 
 /obj/item/weapon/gun/verb/use_unique_action()

@@ -564,7 +564,7 @@
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/scope)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WIELDED_FIRING_ONLY
 	gun_skill_category = SKILL_HEAVY_WEAPONS
 
 /obj/item/weapon/gun/rifle/lmg/set_gun_attachment_offsets()

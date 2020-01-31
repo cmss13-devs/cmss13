@@ -317,7 +317,7 @@
 						/obj/item/attachable/burstfire_assembly,
 						/obj/item/attachable/flashlight)
 
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
 
 /obj/item/weapon/gun/smartgun/New()

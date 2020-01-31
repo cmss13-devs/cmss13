@@ -824,5 +824,6 @@
 
 	assignment = "Chief Riot Control"
 	rank = "CRMP"
+	paygrade = "E7"
 	role_comm_title = "CRMP"
 	skills = /datum/skills/CMP

@@ -705,15 +705,26 @@ should be alright.
 	playsound(usr, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 	if(flags_gun_features & GUN_HAS_FULL_AUTO)
 		if(flags_gun_features & GUN_BURST_ON)
-			if(flags_gun_features & GUN_FULL_AUTO_ON)
-				flags_gun_features &= ~GUN_FULL_AUTO_ON
-				flags_gun_features &= ~GUN_BURST_ON
-				to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to single fire mode."))
-			else
-				flags_gun_features|= GUN_FULL_AUTO_ON
-				to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to full auto mode."))
+			flags_gun_features &= ~GUN_BURST_ON
+			flags_gun_features |= GUN_FULL_AUTO_ON
+
+			// Register the full auto click listeners
+			registerListener(usr.client, EVENT_LMBDOWN, "fa_\ref[src]", CALLBACK(src, .proc/full_auto_start))
+			registerListener(usr.client, EVENT_LMBUP, "fa_\ref[src]", CALLBACK(src, .proc/full_auto_stop))
+			registerListener(usr.client, EVENT_LMBDRAG, "fa_\ref[src]", CALLBACK(src, .proc/full_auto_new_target))
+
+			to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to full auto mode."))
+		else if(flags_gun_features & GUN_FULL_AUTO_ON)
+			flags_gun_features &= ~GUN_FULL_AUTO_ON
+
+			unregisterListener(usr.client, EVENT_LMBDOWN, "fa_\ref[src]")
+			unregisterListener(usr.client, EVENT_LMBUP, "fa_\ref[src]")
+			unregisterListener(usr.client, EVENT_LMBDRAG, "fa_\ref[src]")
+
+			to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to single fire mode."))
 		else
 			flags_gun_features |= GUN_BURST_ON
+
 			to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to burst fire mode."))
 	else
 		flags_gun_features ^= GUN_BURST_ON

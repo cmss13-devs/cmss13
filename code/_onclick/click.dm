@@ -19,7 +19,6 @@
 	if (control)	// No .click macros allowed
 		return usr.do_click(A, location, params)
 
-
 /mob/proc/do_click(atom/A, location, params)
 	// No clicking on atoms with the NOINTERACT flag
 	if ((A.flags_atom & NOINTERACT))

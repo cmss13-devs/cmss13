@@ -56,6 +56,7 @@ DON'T TOUCH 'EM.
 
 	var/proj_variance_high = 105
 	var/proj_variance_low = 98
+
 /*
 ////ACCURACY////
 Scale of 0 to 40. Used in ammunition datum, gun & attachment defines.
@@ -188,6 +189,7 @@ Burn time = How long do we want our flames to last?
 	var/min_fire_delay = 1 //How many ticks you have to wait between firing. Burst delay uses the same variable!
 	var/mlow_fire_delay = 2
 	var/low_fire_delay = 3
+	var/lmed_fire_delay = 3.5
 	var/med_fire_delay = 4
 	var/high_fire_delay = 5
 	var/mhigh_fire_delay = 6
@@ -205,6 +207,14 @@ Burn time = How long do we want our flames to last?
 	var/super_scatter_value = 15
 	var/ultra_scatter_value = 20
 	var/giga_scatter_value = 40
+
+	// How many shots on full auto before you hit max full auto scatter
+	var/low_scatter_peak = 10
+	var/med_scatter_peak = 20
+	var/hmed_scatter_peak = 30
+	var/high_scatter_peak = 40
+	var/ultra_scatter_peak = 60
+	var/giga_scatter_peak = 100
 
 	var/no_recoil_value = 0
 	var/min_recoil_value = 1 //Sliding scale of recoil 1-5. You can go higher, but it just gets silly.

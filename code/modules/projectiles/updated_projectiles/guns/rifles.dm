@@ -564,7 +564,7 @@
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/scope)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO
 	gun_skill_category = SKILL_HEAVY_WEAPONS
 
 /obj/item/weapon/gun/rifle/lmg/set_gun_attachment_offsets()
@@ -576,6 +576,9 @@
 	fire_delay = config.mlow_fire_delay
 	burst_amount = config.high_burst_value
 	burst_delay = config.mlow_fire_delay
+	fa_delay = config.mlow_fire_delay
+	fa_scatter_peak = config.hmed_scatter_peak
+	fa_max_scatter = config.high_scatter_value
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.max_hit_accuracy_mult
 	scatter = config.med_scatter_value

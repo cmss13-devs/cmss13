@@ -5,7 +5,6 @@
 		stop_aim()
 		usr.visible_message(SPAN_NOTICE("\The [usr] lowers \the [src]..."))
 
-
 //Removes lock fro mall targets
 /obj/item/weapon/gun/proc/stop_aim()
 	if(target)
@@ -23,12 +22,12 @@
 	if(ismob(A) && isliving(A) && !(A in target))
 		Aim(A) 	//Clicked a mob, aim at them
 	else  		//Didn't click someone, check if there is anyone along that guntrace
-		var/mob/living/M = GunTrace(usr.x,usr.y,A.x,A.y,usr.z,usr)  //Find dat mob.
+		var/mob/living/M = GunTrace(user.x,user.y,A.x,A.y,user.z,user)  //Find dat mob.
 		if(M && isliving(M) && M in view(user) && !(M in target))
 			Aim(M) //Aha!  Aim at them!
 		else if(!ismob(M) || (ismob(M) && !(M in view(user)))) //Nope!  They weren't there!
 			Fire(A,user,params)  //Fire like normal, then.
-	usr.dir = get_cardinal_dir(src, A)
+	user.dir = get_cardinal_dir(src, A)
 
 //Aiming at the target mob.
 /obj/item/weapon/gun/proc/Aim(var/mob/living/M)

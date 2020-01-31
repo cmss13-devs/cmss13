@@ -14,5 +14,3 @@ var/global/datum/chemical_research_data/chemical_research_data = new /datum/chem
 	var/list/new_document[0]
 	new_document["[title]"] = R
 	research_documents["[document_type]"] += new_document
-
-//Other code will be moved to this folder in upcoming MR

@@ -29,9 +29,6 @@
 //channel: use this only when you want to force the sound to play on an specific channel
 //status: the regular 4 sound flags 
 //falloff: max range till sound volume starts dropping as distance increases
-//is3D: treat the sound as 3D. FALSE will ignore X Y and and won't allow muffling
-//targets: if you want to skip the scan and send to specific clients
-
 
 /proc/playsound(atom/source, soundin, vol = 100, vary, sound_range, vol_cat = VOLUME_SFX, channel = 0, status , falloff = 1)
 	if(isarea(source))

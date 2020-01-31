@@ -112,7 +112,7 @@ Tells the GC how to handle deletion of the object
 
 // Game Intents
 #define HELP_INTENT		"help"
-#define HARM_INTENT		"harm"
+#define HARM_INTENT		"hurt"
 #define GRAB_INTENT		"grab"
 #define DISARM_INTENT	"disarm"
 

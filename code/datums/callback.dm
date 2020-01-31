@@ -89,4 +89,4 @@ HELP TO PROC TYPEPATH SHORTCUTS (Purely based on the path in the code)
 			calling_arguments = args
 	if (object == GLOBAL_PROC)
 		return call(delegate)(arglist(calling_arguments))
-	return call(object, delegate)(arglist(calling_arguments)) 
+	return call(object, delegate)(arglist(calling_arguments))

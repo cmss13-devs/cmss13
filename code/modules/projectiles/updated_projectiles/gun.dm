@@ -71,6 +71,15 @@
 	var/burst_delay 	= 1						//The delay in between shots. Lower = less delay = faster.
 	var/extra_delay 	= 0						//When burst-firing, this number is extra time before the weapon can fire again. Depends on number of rounds fired.
 
+	// Full auto
+	var/fa_firing = FALSE						//Whether or not the gun is firing full-auto
+	var/fa_shots = 0							//How many shots have been fired using full-auto. Used to figure out scatter
+	var/fa_scatter_peak = 8						//How many full-auto shots to get to max scatter?
+	var/fa_max_scatter = 5						//How bad does the scatter get on full auto?
+	var/fa_delay = 2.5							//The delay when firing full-auto
+	var/atom/fa_target = null					//The atom we're shooting at while full-autoing
+	var/fa_params = null						//Click parameters to use when firing full-auto
+
 	//Targeting.
 	var/tmp/list/mob/living/target				//List of who yer targeting.
 	var/tmp/mob/living/last_moved_mob			//Used to fire faster at more than one person.
@@ -548,9 +557,12 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		return ..() //It's adjacent, is the user, or is on the user's person
 	if(!istype(A))
 		return FALSE
+	// If firing full-auto, the firing starts when the mouse is clicked, not when it's released
+	// so the gun should already be shooting
+	if(fa_firing)
+		fa_firing = FALSE
+		return TRUE
 	if(flags_gun_features & GUN_BURST_FIRING)
-		if(flags_gun_features & GUN_FULL_AUTO_ON)
-			flags_gun_features &= ~GUN_BURST_FIRING
 		return FALSE
 	if(!user || !user.client || !user.client.prefs)
 		return FALSE
@@ -699,8 +711,6 @@ and you're good to go.
 	var/bullets_to_fire = 1
 	if(!check_for_attachment_fire && (flags_gun_features & GUN_BURST_ON) && burst_amount > 1)
 		bullets_to_fire = burst_amount
-		if(flags_gun_features & GUN_FULL_AUTO_ON)
-			bullets_to_fire = 30
 		flags_gun_features |= GUN_BURST_FIRING
 
 	var/bullets_fired
@@ -761,6 +771,9 @@ and you're good to go.
 			projectile_to_fire.fire_at(target, user, src, projectile_to_fire.ammo.max_range, projectile_to_fire.ammo.shell_speed, original_target)
 			//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 			last_fired = world.time
+
+			if(flags_gun_features & GUN_FULL_AUTO_ON)
+				fa_shots++
 
 		else // This happens in very rare circumstances when you're moving a lot while burst firing, so I'm going to toss it up to guns jamming.
 			clear_jam(projectile_to_fire,user)
@@ -940,6 +953,10 @@ and you're good to go.
 		//Has to be on the bottom of the stack to prevent delay when failing to fire the weapon for the first time.
 		//Can also set last_fired through New(), but honestly there's not much point to it.
 
+		// The rest is delay-related. If we're firing full-auto it doesn't matter
+		if(fa_firing)
+			return TRUE
+
 		var/added_delay = fire_delay
 		if(active_attachable)
 			if(active_attachable.attachment_firing_delay)
@@ -1053,19 +1070,24 @@ and you're good to go.
 		else
 			if(!(flags_gun_features & GUN_SILENCED))
 				playsound(user, actual_sound, 60)
+
 				if(bullets_fired == 1)
 					var/offset_or_not = -1 // If its an internal mag, we want to display current_rounds as it is, if not -1 it
 					if(flags_gun_features &  GUN_INTERNAL_MAG)
 						offset_or_not = 0
-					user.visible_message(
-					SPAN_DANGER("[user] fires [src][reflex ? " by reflex":""]!"), \
-					SPAN_WARNING("You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag && current_mag.current_rounds ? "<B>[current_mag.current_rounds+offset_or_not]</b>/[current_mag.max_rounds]" : ""]"), \
-					SPAN_WARNING("You hear a [istype(projectile_to_fire.ammo, /datum/ammo/bullet) ? "gunshot" : "blast"]!"), 4, CHAT_TYPE_WEAPON_USE
-					)
+
+					// Again, if firing FA, we wanna cut down on spam. Only show a message for every 5th shot
+					if((flags_gun_features & GUN_FULL_AUTO_ON) && !(fa_shots % 5) || !(flags_gun_features & GUN_FULL_AUTO_ON))
+						user.visible_message(
+						SPAN_DANGER("[user] fires [src][reflex ? " by reflex":""]!"), \
+						SPAN_WARNING("You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag && current_mag.current_rounds ? "<B>[current_mag.current_rounds+offset_or_not]</b>/[current_mag.max_rounds]" : ""]"), \
+						SPAN_WARNING("You hear a [istype(projectile_to_fire.ammo, /datum/ammo/bullet) ? "gunshot" : "blast"]!"), 4
+						)
 			else
 				playsound(user, actual_sound, 25)
 				if(bullets_fired == 1)
-					to_chat(user, SPAN_WARNING("You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag && current_mag.current_rounds ? "<B>[current_mag.current_rounds-1]</b>/[current_mag.max_rounds]" : ""]"), null , null, CHAT_TYPE_WEAPON_USE)
+					if((flags_gun_features & GUN_FULL_AUTO_ON) && !(fa_shots % 5) || !(flags_gun_features & GUN_FULL_AUTO_ON))
+						to_chat(user, SPAN_WARNING("You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag && current_mag.current_rounds ? "<B>[current_mag.current_rounds-1]</b>/[current_mag.max_rounds]" : ""]"), null , null, CHAT_TYPE_WEAPON_USE)
 
 	return 1
 
@@ -1075,16 +1097,24 @@ and you're good to go.
 	var/initial_angle = Get_Angle(curloc, targloc)
 	var/final_angle = initial_angle
 
-
 	total_scatter_angle += projectile_to_fire.scatter
 
-	if(flags_gun_features & GUN_BURST_ON && bullets_fired > 1)//Much higher scatter on a burst. Each additional bullet adds scatter
-		var/bullet_amt_scat = min(bullets_fired-1, 5)//capped so we don't penalize large bursts too much.
+	if(flags_gun_features & GUN_BURST_ON && bullets_fired > 1)//Much higher scatter on burst. Each additional bullet adds scatter
+		var/bullet_amt_scat = min(bullets_fired-1, config.med_scatter_value)//capped so we don't penalize large bursts too much.
 		if(flags_item & WIELDED)
 			total_scatter_angle += max(0, bullet_amt_scat * (burst_scatter_mult + burst_scatter_mod))
 		else
 			total_scatter_angle += max(0, 2 * bullet_amt_scat * (burst_scatter_mult + burst_scatter_mod))
 
+	// Full auto fucks your scatter up big time
+	// Note that full auto uses burst scatter multipliers
+	if(flags_gun_features & GUN_FULL_AUTO_ON)
+		// The longer you fire full-auto, the worse the scatter gets
+		var/bullet_amt_scat = min((fa_shots/fa_scatter_peak) * fa_max_scatter, fa_max_scatter)
+		if(flags_item & WIELDED)
+			total_scatter_angle += max(0, bullet_amt_scat * (burst_scatter_mult + burst_scatter_mod))
+		else
+			total_scatter_angle += max(0, 2 * bullet_amt_scat * (burst_scatter_mult + burst_scatter_mod))
 
 	if(user && user.mind && user.mind.cm_skills)
 		if(user.mind.cm_skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms

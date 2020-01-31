@@ -317,15 +317,13 @@
 						/obj/item/attachable/burstfire_assembly,
 						/obj/item/attachable/flashlight)
 
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO
 
 
 /obj/item/weapon/gun/smartgun/New()
 	..()
 	ammo_primary = ammo_list[ammo_primary]
 	ammo_secondary = ammo_list[ammo_secondary]
-
-
 
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
@@ -335,6 +333,9 @@
 	fire_delay = config.min_fire_delay
 	burst_amount = config.med_burst_value
 	burst_delay = config.mlow_fire_delay
+	fa_delay = config.mlow_fire_delay
+	fa_scatter_peak = config.ultra_scatter_peak
+	fa_max_scatter = config.med_scatter_value
 	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.low_scatter_value
@@ -743,7 +744,7 @@
 	ammo = /obj/item/ammo_magazine/smartgun/dirty
 	ammo_primary = /datum/ammo/bullet/smartgun/dirty//Toggled ammo type
 	ammo_secondary = /datum/ammo/bullet/smartgun/dirty/armor_piercing///Toggled ammo type
-	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO
 
 
 //TERMINATOR SMARTGUN

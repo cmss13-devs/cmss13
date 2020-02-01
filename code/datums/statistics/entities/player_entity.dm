@@ -16,6 +16,7 @@
 	var/data[0]
 	var/path
 	var/savefile_version
+	var/save_loaded = FALSE
 
 /datum/entity/player_entity/proc/get_playtime(var/branch, var/type)
 	var/playtime = 0

@@ -365,8 +365,15 @@
 
 // Used to authenticate to CORSAT machines. Doesn't do anything except have its type variable
 /obj/item/card/data/corsat
-	name = "CORSAT Administration Code"
+	name = "CORSAT administration code"
 	desc = "A disk of data containing one of the CORSAT administration authentication codes necessary to lift the biohazard lockdown."
+	icon_state = "data"
+	item_state = "card-id"
+	unacidable = 1
+
+/obj/item/card/data/prison
+	name = "prison lockdown administration code"
+	desc = "A disk of data containing one of the prison station administration authentication codes necessary to lift the security lockdown."
 	icon_state = "data"
 	item_state = "card-id"
 	unacidable = 1

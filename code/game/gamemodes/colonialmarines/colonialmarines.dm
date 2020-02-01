@@ -204,21 +204,20 @@
 			bioscan_current_interval += bioscan_ongoing_interval //Add to the interval based on our set interval time.
 
 		if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.
-			if(flags_round_type & MODE_FOG_ACTIVATED && world.time >= (FOG_DELAY_INTERVAL + round_time_lobby + round_time_fog))
+			if(flags_round_type & MODE_FOG_ACTIVATED && map_tag == MAP_LV_624  && world.time >= (FOG_DELAY_INTERVAL + round_time_lobby + round_time_fog))
 				disperse_fog() //Some RNG thrown in.
-			if (!(round_status_flags & ROUNDSTATUS_PODDOORS_OPEN) && map_tag == MAP_CORSAT && world.time >= (PODLOCKS_OPEN_WAIT + round_time_lobby))
-				
+			if(!(round_status_flags & ROUNDSTATUS_PODDOORS_OPEN) && (map_tag == MAP_CORSAT || map_tag == MAP_PRISON_STATION) && world.time >= (PODLOCKS_OPEN_WAIT + round_time_lobby))
 				round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN
 				
-				var/input = "Biohazard locks lifting in 30 seconds per automated lockdown protocol."
-				var/name = "CORSAT Security Authority automated announcement"
+				var/input = "Security lockdown will be lifting in 30 seconds per automated lockdown protocol."
+				var/name = "Automated Security Authority Announcement"
 				marine_announcement(input, name, 'sound/AI/commandreport.ogg')
 				for(var/mob/M in player_list)
 					if(isXeno(M))
 						sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))
 						to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
 						to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in 30 seconds."))
-				add_timer(CALLBACK(src, .proc/open_podlocks, "corsat_lockdown"), 300)
+				add_timer(CALLBACK(src, .proc/open_podlocks, "map_lockdown"), 300)
 
 			if(round_should_check_for_win)
 				check_win()

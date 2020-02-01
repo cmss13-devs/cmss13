@@ -20,6 +20,7 @@
 #define SECONDS_20      200
 #define SECONDS_30 		300
 #define SECONDS_45      450
+#define SECONDS_55 		550
 #define SECONDS_60 		600
 #define SECONDS_90 		900
 #define SECONDS_100 	1000

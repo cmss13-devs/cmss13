@@ -193,32 +193,14 @@ cases. Override_icon_state should be a list.*/
 		if(override_protection && override_protection.len) 
 			new_protection = override_protection[map_tag]
 		switch(map_tag)
-			if(MAP_ICE_COLONY, MAP_CORSAT) //Can easily add other states if needed.
+			if(MAP_ICE_COLONY, MAP_CORSAT, MAP_SOROKYNE_STRATA)
 				icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
 				item_state = new_item_state ? new_item_state : "s_" + item_state
-				if(new_protection) 
-					min_cold_protection_temperature = new_protection
-			if(MAP_SOROKYNE_STRATA)
-				icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
-				item_state = new_item_state ? new_item_state : "s_" + item_state
-				if(new_protection) 
-					min_cold_protection_temperature = new_protection
-			if(MAP_WHISKEY_OUTPOST) //Can easily add other states if needed.
+			if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED)
 				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
 				item_state = new_item_state ? new_item_state : "d_" + item_state
-				if(new_protection) 
-					min_cold_protection_temperature = new_protection
-			if(MAP_DESERT_DAM)
-				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
-				item_state = new_item_state ? new_item_state : "d_" + item_state
-				if(new_protection) 
-					min_cold_protection_temperature = new_protection
-			if(MAP_BIG_RED)
-				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
-				item_state = new_item_state ? new_item_state : "d_" + item_state
-				if(new_protection) 
-					min_cold_protection_temperature = new_protection
-		//item_state = icon_state
+		if(new_protection) 
+			min_cold_protection_temperature = new_protection
 	else return
 
 

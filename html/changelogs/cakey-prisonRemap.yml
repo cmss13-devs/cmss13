@@ -1,0 +1,13 @@
+author: Cakey
+
+delete-after: True
+
+changes: 
+  - maptweak: "Prison station has been remapped to mitigate current issues regarding metarushes."
+  - maptweak: "Timed security pod lockdowns have been reintroduced, opening up at 12:50 around the map on Prison Station."
+  - maptweak: "Like CORSAT, you can now find data keycards around the map on Prison Station in order to open the lockdown earlier. They are found within the security checkpoints around the station."
+  - maptweak: "Widened some hallways on prison station for tank accessibility."
+  - maptweak: "Removed the northeast and southeast central ring hallways on Prison Station."
+  - maptweak: "The south cell blocks on Prison have now been locked off along with civilian residencies to allow for more diverse hive locations."
+  - maptweak: "Xenomorph spawns on Prison Station have been moved to southwest medium security to be able to move between potential hive spots better."
+  - maptweak: "Removed the civilian hangar on Prison Station."

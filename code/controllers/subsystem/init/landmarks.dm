@@ -69,7 +69,6 @@ var/list/item_pool_landmarks = list()
 
 		// Quota times, pick a random turf, spawn an item there, then remove that turf from the list.
 		for (var/i in 1 to pool.quota)
-			
 			var/turf/T = pool.turfs[rand(1, pool.turfs.len)]
 			var/atom/movable/newly_spawned = new pool.type_to_spawn()
 			

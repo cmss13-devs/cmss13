@@ -166,27 +166,42 @@ var/global/maint_all_access = 0
 	ai_announcement("The maintenance access requirement has been readded on all airlocks.")
 
 // Keycard reader at the CORSAT locks
-/obj/structure/machinery/keycard_auth/corsat
-	name = "CORSAT Automated Biohazard override"
-	desc = "This device is used override the CORSAT automatic biohazard lockdown."
-	channel = "corsat"
-	var/obj/item/card/data/corsat/stored_id
+/obj/structure/machinery/keycard_auth/lockdown
+	name = "automated lockdown override"
+	desc = "This device is used override the security lockdown."
+	channel = "map_lockdown"
+	var/window_desc = "This device is used to override the security lockdown. It requires both of the authentication disks."
+	var/announce_title = "Station Security Authority automated announcement"
+	var/card_type
+	var/podlock_id = "map_lockdown"
+	var/obj/item/card/data/stored_id
 	confirm_delay = 30
 
-/obj/structure/machinery/keycard_auth/corsat/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/keycard_auth/lockdown/corsat
+	name = "CORSAT automated biohazard override"
+	card_type = /obj/item/card/data/corsat
+	announce_title = "CORSAT Security Authority automated announcement"
+	window_desc = "This device is used to override the CORSAT automated lockdown. It requires both of the authentication disks, which can be found in the offices of various heads of deparments around the station."
+	desc = "This device is used override the CORSAT automatic biohazard lockdown."
+
+/obj/structure/machinery/keycard_auth/lockdown/prison
+	card_type = /obj/item/card/data/prison
+	window_desc = "This device is used to override the security lockdown. It requires both of the authentication disks, which can be found in the security offices of various cell blocks around the station."
+
+/obj/structure/machinery/keycard_auth/lockdown/attackby(obj/item/W as obj, mob/user as mob)
 	if(stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
 		return
-	if(!istype(W,/obj/item/card/data/corsat))
+	if(!istype(W, card_type))
 		return
 	
-	var/obj/item/card/data/corsat/cID = W
+	var/obj/item/card/data/cID = W
 	stored_id = cID
 
 	/// We are the SECOND keycard device used (our event_source has already been set)
 	
-	if(active && event_source && istype(event_source, /obj/structure/machinery/keycard_auth/corsat))
-		var/obj/structure/machinery/keycard_auth/corsat/ES = event_source
+	if(active && event_source && istype(event_source, /obj/structure/machinery/keycard_auth/lockdown))
+		var/obj/structure/machinery/keycard_auth/lockdown/ES = event_source
 		if(ES.stored_id != stored_id)
 			// Tell the first console that we're good to go.
 			event_source.confirmed = 1
@@ -198,9 +213,9 @@ var/global/maint_all_access = 0
 		event_triggered_by = usr
 		broadcast_request() //This is the device making the initial event request. It needs to broadcast to other devices
 
-/obj/structure/machinery/keycard_auth/corsat/broadcast_request()
+/obj/structure/machinery/keycard_auth/lockdown/broadcast_request()
 	icon_state = "auth_on"
-	for(var/obj/structure/machinery/keycard_auth/corsat/KA in machines)
+	for(var/obj/structure/machinery/keycard_auth/lockdown/KA in machines)
 		if(KA == src || KA.channel != channel)
 			continue
 		KA.reset()
@@ -214,7 +229,7 @@ var/global/maint_all_access = 0
 		message_admins("[key_name(event_triggered_by)] triggered and [key_name(event_confirmed_by)] confirmed event [event]", 1)
 	reset()
 
-/obj/structure/machinery/keycard_auth/corsat/attack_hand(mob/user as mob)
+/obj/structure/machinery/keycard_auth/lockdown/attack_hand(mob/user as mob)
 	if(user.stat || stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
 		return
@@ -224,88 +239,61 @@ var/global/maint_all_access = 0
 
 	user.set_interaction(src)
 
-	var/dat = "This device is used to override the CORSAT automated lockdown. It requires both of the authentication disks, which can be found in the offices of various heads of deparments around the station."
+	var/dat = window_desc
 	dat += "<br><hr><br>"
 
 	if(screen == 1)
 		dat += "Select an event to trigger:<ul>"
-		dat += "<li><A href='?src=\ref[src];triggerevent=Lift Biohazard Lockdown'>Lift Biohazard Lockdown</A></li>"
+		dat += "<li><A href='?src=\ref[src];triggerevent=Lift Biohazard Lockdown'>Lift Lockdown</A></li>"
 		dat += "</ul>"
-		show_browser(user, dat, "CORSAT Automated Biohazard Lockdown Override", "keycard_auth", "size=500x300")
+		show_browser(user, dat, name, "keycard_auth", "size=500x300")
 	if(screen == 2)
 		dat += "Please swipe your card to authorize the following event: <b>[event]</b>"
 		dat += "<p><A href='?src=\ref[src];reset=1'>Back</A>"
-		show_browser(user, dat, "CORSAT Automated Biohazard Lockdown Override", "keycard_auth", "size=500x300")
+		show_browser(user, dat, name, "keycard_auth", "size=500x300")
 	return
 
-/obj/structure/machinery/keycard_auth/corsat/trigger_event()
+/obj/structure/machinery/keycard_auth/lockdown/proc/timed_countdown(var/timeleft = 0)
+	if(!timeleft)
+		for(var/obj/structure/machinery/door/poddoor/M in machines)
+			if(M.id == podlock_id && M.density)
+				INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
+		return
+
+	if(istype(ticker.mode, /datum/game_mode/colonialmarines))
+		var/datum/game_mode/colonialmarines/gCM = ticker.mode
+		if(gCM.round_status_flags & ROUNDSTATUS_PODDOORS_OPEN)
+			visible_message(SPAN_NOTICE("[src] states: LOCKDOWN ALREADY LIFTED"))
+			return
+		gCM.round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN // So we don't spam the message twice
+	
+	var/text_timeleft = "[timeleft * 0.01] minutes"
+	var/next_interval = MINUTES_1
+	if(timeleft <= MINUTES_1)
+		next_interval = SECONDS_55
+		text_timeleft = "[timeleft] minute"
+	if(timeleft <= SECONDS_5)
+		next_interval = timeleft
+		text_timeleft = "[timeleft] seconds"
+	var/input = "Station shutter locks lifting in [text_timeleft] per manual override."
+	var/title = announce_title
+	marine_announcement(input, title, 'sound/AI/commandreport.ogg')
+	for(var/mob/M in player_list)
+		if(isXeno(M))
+			sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))
+			to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
+			to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in [text_timeleft]."))
+	var/new_timeleft = timeleft - next_interval
+	add_timer(CALLBACK(src, /obj/structure/machinery/keycard_auth/lockdown/proc/timed_countdown, new_timeleft), next_interval)
+
+/obj/structure/machinery/keycard_auth/lockdown/trigger_event()
 	set waitfor = 0
 	switch(event)
-		if("Lift Biohazard Lockdown")
+		if("Lift Lockdown")
 			if(istype(ticker.mode, /datum/game_mode/colonialmarines))
 				var/datum/game_mode/colonialmarines/gCM = ticker.mode
 				if(gCM.round_status_flags & ROUNDSTATUS_PODDOORS_OPEN)
-					visible_message(SPAN_NOTICE("[src] states: BIOHAZARD LOCKDOWN ALREADY LIFTED"))
+					visible_message(SPAN_NOTICE("[src] states: LOCKDOWN ALREADY LIFTED"))
 					return
 				gCM.round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN // So we don't spam the message twice
-				
-			var/input = "Biohazard locks lifting in 3 minutes per manual override."
-			var/title = "CORSAT Security Authority automated announcement"
-			marine_announcement(input, title, 'sound/AI/commandreport.ogg')
-			for(var/mob/M in player_list)
-				if(isXeno(M))
-					sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))
-					to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
-					to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in 3 minutes."))
-			
-			sleep(600)	
-
-			if(istype(ticker.mode, /datum/game_mode/colonialmarines))
-				var/datum/game_mode/colonialmarines/gCM = ticker.mode
-				if(gCM.round_status_flags & ROUNDSTATUS_PODDOORS_OPEN)
-					return
-
-			input = "Biohazard locks lifting in 2 minutes per manual override."
-			marine_announcement(input, title, 'sound/AI/commandreport.ogg')
-			for(var/mob/M in player_list)
-				if(isXeno(M))
-					sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))
-					to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
-					to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in 2 minutes."))
-
-			sleep(600)
-
-			if(istype(ticker.mode, /datum/game_mode/colonialmarines))
-				var/datum/game_mode/colonialmarines/gCM = ticker.mode
-				if(gCM.round_status_flags & ROUNDSTATUS_PODDOORS_OPEN)
-					return
-
-			input = "Biohazard locks lifting in 1 minute per manual override."
-			marine_announcement(input, title, 'sound/AI/commandreport.ogg')
-			for(var/mob/M in player_list)
-				if(isXeno(M))
-					sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))
-					to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
-					to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in 1 minute."))
-
-			sleep(550)
-
-			if(istype(ticker.mode, /datum/game_mode/colonialmarines))
-				var/datum/game_mode/colonialmarines/gCM = ticker.mode
-				if(gCM.round_status_flags & ROUNDSTATUS_PODDOORS_OPEN)
-					return
-
-			input = "Biohazard locks lifting in 5 seconds per manual override."
-			marine_announcement(input, title, 'sound/AI/commandreport.ogg')
-			for(var/mob/M in player_list)
-				if(isXeno(M))
-					sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))
-					to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
-					to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in 5 seconds."))
-
-			sleep(50)
-			
-			var/podlock_id = "corsat_lockdown"
-			for(var/obj/structure/machinery/door/poddoor/M in machines)
-				if(M.id == podlock_id && M.density)
-					INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
+			timed_countdown(MINUTES_3)

@@ -4111,7 +4111,7 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced,
-/obj/structure/machinery/keycard_auth/corsat,
+/obj/structure/machinery/keycard_auth/lockdown/corsat,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "bluegrey"
@@ -12986,7 +12986,7 @@
 	opacity = 0
 	},
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/secure{
-	id = "corsat_lockdown";
+	id = "map_lockdown";
 	name = "Gamma Lockdown";
 	use_power = 0
 	},
@@ -20629,7 +20629,7 @@
 	opacity = 0
 	},
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure{
-	id = "corsat_lockdown";
+	id = "map_lockdown";
 	name = "Theta Lockdown";
 	use_power = 0
 	},
@@ -30676,7 +30676,7 @@
 /area/corsat/gamma/administration)
 "bDP" = (
 /obj/structure/table/reinforced,
-/obj/structure/machinery/keycard_auth/corsat,
+/obj/structure/machinery/keycard_auth/lockdown/corsat,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "bluegrey"
@@ -52162,7 +52162,7 @@
 	opacity = 0
 	},
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/secure{
-	id = "corsat_lockdown";
+	id = "map_lockdown";
 	name = "Theta Lockdown";
 	use_power = 0
 	},
@@ -59568,7 +59568,7 @@
 	opacity = 0
 	},
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure{
-	id = "corsat_lockdown";
+	id = "map_lockdown";
 	name = "Gamma Lockdown";
 	use_power = 0
 	},

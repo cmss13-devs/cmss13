@@ -23,7 +23,10 @@
 
 
 /datum/internal_organ/proc/process()
-		return 0
+	if(!owner && !organ_holder)
+		qdel(src)
+	
+	return 0
 
 /datum/internal_organ/proc/rejuvenate()
 	damage=0

@@ -94,6 +94,9 @@
 /obj/item/weapon/gun/dropped(var/mob/user)
 	..()
 
+	if(!user.client)
+		return
+
 	unregisterListener(user.client, EVENT_LMBDOWN, "fa_\ref[src]")
 	unregisterListener(user.client, EVENT_LMBUP, "fa_\ref[src]")
 	unregisterListener(user.client, EVENT_LMBDRAG, "fa_\ref[src]")
@@ -101,6 +104,9 @@
 // Also make sure it's registered when held in any hand and full-auto is on
 /obj/item/weapon/gun/equipped(var/mob/user, var/slot)
 	..()
+
+	if(!user.client)
+		return
 
 	// If it was equipped to anything but the hands, make sure we're not registered
 	if(slot != WEAR_R_HAND && slot != WEAR_L_HAND)

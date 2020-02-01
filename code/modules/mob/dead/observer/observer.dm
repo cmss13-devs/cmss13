@@ -149,6 +149,8 @@ Works together with spawning an observer, noted above.
 		ghost.client.pixel_y = 0
 		if(ghost.client.soundOutput)
 			ghost.client.soundOutput.update_ambience()
+			ghost.client.soundOutput.status_flags = 0 //Clear all effects that would affect a living mob
+			ghost.client.soundOutput.apply_status()
 		
 	return ghost
 

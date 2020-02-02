@@ -74,14 +74,6 @@
 
 /obj/item/device/radio/initialize()
 
-	if(freerange)
-		if(frequency < 1200 || frequency > 1600)
-			frequency = sanitize_frequency(frequency)
-	// The max freq is higher than a regular headset to decrease the chance of people listening in, if you use the higher channels.
-	else if (frequency < 1441 || frequency > maxf)
-		//world.log << "[src] ([type]) has a frequency of [frequency], sanitizing."
-		frequency = sanitize_frequency(frequency)
-
 	set_frequency(frequency)
 
 	for (var/ch_name in channels)
@@ -103,7 +95,7 @@
 
 	dat += {"
 				Speaker: [listening ? "<A href='byond://?src=\ref[src];listen=0'>Engaged</A>" : "<A href='byond://?src=\ref[src];listen=1'>Disengaged</A>"]<BR>
-				Frequency: 	[format_frequency(frequency)] "}
+				Frequency: 	[format_frequency(frequency)]<BR>"}
 //				<A href='byond://?src=\ref[src];freq=-10'>-</A>
 //				<A href='byond://?src=\ref[src];freq=-2'>-</A>
 //
@@ -130,8 +122,13 @@
 
 /obj/item/device/radio/proc/text_sec_channel(var/chan_name, var/chan_stat)
 	var/list = !!(chan_stat&FREQ_LISTENING)!=0
+	var/channel_key
+	for(var/key in department_radio_keys)
+		if(department_radio_keys[key] == chan_name)
+			channel_key = key
+			break
 	return {"
-			<B>[chan_name]</B><br>
+			<B>[chan_name]</B>	[channel_key]<br>
 			Speaker: <A href='byond://?src=\ref[src];ch_name=[chan_name];listen=[!list]'>[list ? "Engaged" : "Disengaged"]</A><BR>
 			"}
 

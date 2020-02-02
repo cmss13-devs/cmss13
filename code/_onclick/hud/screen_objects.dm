@@ -567,6 +567,17 @@
 	alpha = 0 //invisible
 	mouse_opacity = 0
 
+/obj/screen/squad_leader_locator/clicked(var/mob/living/carbon/human/H)
+	if(!istype(H))
+		return
+	if(H.get_active_hand())
+		return
+	var/obj/item/device/radio/headset/almayer/marine/earpiece = H.wear_ear
+	if(!H.assigned_squad || !istype(earpiece) || H.assigned_squad.radio_freq != earpiece.frequency)
+		to_chat(H, SPAN_WARNING("Unauthorized access detected."))
+		return
+	H.assigned_squad.ui_interact(H)
+
 /obj/screen/queen_locator
 	icon = 'icons/mob/hud/alien_standard.dmi'
 	icon_state = "trackoff"

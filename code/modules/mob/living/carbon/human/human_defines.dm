@@ -108,5 +108,6 @@
 
 	var/temporary_slowdown = 0 //Stacking slowdown caused from effects, currently used by neurotoxin gas
 
-	var/datum/squad/assigned_squad //the squad this human is assigned to
-	var/assigned_fireteam = 0//the fireteam this human is assigned to
+	var/datum/squad/assigned_squad	//the squad this human is assigned to
+	var/assigned_fireteam = 0		//the fireteam this human is assigned to
+	var/squad_status = null			//var for squad info window. Can be null, "M.I.A" and "K.I.A"

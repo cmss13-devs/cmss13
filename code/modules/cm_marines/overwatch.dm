@@ -19,7 +19,6 @@
 	var/dead_hidden = FALSE //whether or not we show the dead marines in the squad
 	var/z_hidden = 0 //which z level is ignored when showing marines.
 
-
 /obj/structure/machinery/computer/overwatch/attackby(var/obj/I as obj, var/mob/user as mob)  //Can't break or disassemble.
 	return
 
@@ -37,7 +36,6 @@
 	if(!ishighersilicon(usr) && !skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) && !Check_WO())
 		to_chat(user, SPAN_WARNING("You don't have the training to use [src]."))
 		return
-
 
 	user.set_interaction(src)
 	var/dat = "<body>"
@@ -581,7 +579,6 @@
 	else if(!cam || !cam.can_use()) //camera doesn't work, is no longer selected or is gone
 		user.unset_interaction()
 
-
 /obj/structure/machinery/computer/overwatch/on_unset_interaction(mob/user)
 	..()
 	if(!isAI(user))
@@ -655,10 +652,13 @@
 
 	if(H.assigned_fireteam)
 		if(H == current_squad.fireteam_leaders[H.assigned_fireteam])
-			current_squad.unassign_ft_leader(H.assigned_fireteam, FALSE)
-		current_squad.unassign_fireteam(H)
+			current_squad.unassign_ft_leader(H.assigned_fireteam, TRUE, FALSE)
+		current_squad.unassign_fireteam(H, FALSE)
 
 	current_squad.squad_leader = H
+	current_squad.update_squad_leader()
+	current_squad.update_free_mar()
+	current_squad.update_squad_ui()
 
 	SStracking.set_leader(current_squad.tracking_id, H)
 	SStracking.start_tracking("marine_sl", H)
@@ -754,7 +754,6 @@
 		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("[transfer_marine] is already in [new_squad]!")]")
 		return
 
-
 	var/no_place = FALSE
 	switch(transfer_marine.mind.assigned_role)
 		if(JOB_SQUAD_LEADER)
@@ -779,17 +778,20 @@
 
 	if(transfer_marine.assigned_fireteam)
 		if(old_squad.fireteam_leaders["FT[transfer_marine.assigned_fireteam]"] == transfer_marine)
-			old_squad.unassign_ft_leader(transfer_marine.assigned_fireteam, TRUE)
-		old_squad.unassign_fireteam(transfer_marine)	//reset fireteam assignment
+			old_squad.unassign_ft_leader(transfer_marine.assigned_fireteam, TRUE, FALSE)
+		old_squad.unassign_fireteam(transfer_marine, TRUE)	//reset fireteam assignment
 
 	old_squad.remove_marine_from_squad(transfer_marine)
+	old_squad.update_free_mar()
+	old_squad.update_squad_ui()
 	new_squad.put_marine_in_squad(transfer_marine)
+	new_squad.update_free_mar()
+	new_squad.update_squad_ui()
 
 	for(var/datum/data/record/t in data_core.general) //we update the crew manifest
 		if(t.fields["name"] == transfer_marine.real_name)
 			t.fields["squad"] = new_squad.name
 			break
-
 
 	transfer_marine.hud_set_squad()
 	visible_message("[htmlicon(src, viewers(src))] [SPAN_BOLDNOTICE("[transfer_marine] has been transfered from squad '[old_squad]' to squad '[new_squad]'. Logging to enlistment file.")]")

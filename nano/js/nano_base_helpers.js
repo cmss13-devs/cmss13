@@ -2,7 +2,7 @@
 NanoBaseHelpers = function ()
 {
 	var _baseHelpers = {
-            // change ui styling to "syndicate mode"
+            // change ui styling to "specific modes"
 			xenoMode: function() {
 				$('body').css("background-color","#1B1E25");
 				$('body').css("background-image","url('uiBackground-Xeno.png')");
@@ -11,6 +11,18 @@ NanoBaseHelpers = function ()
 
 				$('#uiTitleFluff').css("background-image","url('uiTitleFluff-Xeno.png')");
 				$('#uiTitleFluff').css("background-position","50% 50%");
+				$('#uiTitleFluff').css("background-repeat", "no-repeat");
+
+				return '';
+			},
+			squadMode: function() {
+				$('body').css("background-color","#0C0E1E");
+				$('body').css("background-image","url('uiBackground-Squad.png')");
+				$('body').css("background-position","50% 0");
+				$('body').css("background-repeat","repeat-x");
+
+				$('#uiTitleFluff').css("background-image","url('uiTitleFluff-Squad.png')");
+				$('#uiTitleFluff').css("background-position","20% 20%");
 				$('#uiTitleFluff').css("background-repeat", "no-repeat");
 
 				return '';

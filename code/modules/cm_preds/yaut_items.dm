@@ -1182,14 +1182,8 @@
 	desc = "A strange Yautja device used for projecting the Yautja's voice to the others in its pack. Similar in function to a standard human radio."
 	icon_state = "communicator"
 	item_state = "headset"
-	frequency = CIV_GEN_FREQ
+	frequency = YAUT_FREQ
 	unacidable = TRUE
-
-/obj/item/device/radio/headset/yautja/New()
-	..()
-	qdel(keyslot1)
-	keyslot1 = new /obj/item/device/encryptionkey/yautja
-	recalculateChannels()
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, var/verb = "commands", var/datum/language/speaking = "Sainja")
 	if(!isYautja(M)) //Nope.

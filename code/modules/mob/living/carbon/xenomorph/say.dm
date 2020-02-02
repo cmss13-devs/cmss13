@@ -40,7 +40,7 @@
 					break
 
 	if(caste && !caste.is_robotic)
-		if(isnull(speaking) || speaking.key != "a") //Not hivemind? Then default to xenocommon. BRUTE FORCE YO
+		if(isnull(speaking) || speaking.key != "q") //Not hivemind? Then default to xenocommon. BRUTE FORCE YO
 			for(var/datum/language/L in languages)
 				if(L.key == "x")
 					verb = L.speech_verb
@@ -59,7 +59,7 @@
 	if(speaking && !forced) 
 		if (copytext(message,1,2) == ";")
 			message = trim(copytext(message,2))
-		else if (copytext(message,1,3) == ":a" || copytext(message,1,3) == ":A")
+		else if (copytext(message,1,3) == ":q" || copytext(message,1,3) == ":Q")
 			message = trim(copytext(message,3))
 
 	message = capitalize(trim_left(message))

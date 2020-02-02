@@ -30,7 +30,6 @@ var opts = {
 	'imageRetryDelay': 50, //how long between attempts to reload images (in ms)
 	'imageRetryLimit': 50, //how many attempts should we make? 
 	'popups': 0, //Amount of popups opened ever
-	'wasd': false, //Is the user in wasd mode?
 	'chatMode': 'default', //The mode the chat is in
 	'priorChatHeight': 0, //Thing for height-resizing detection
 	'restarting': false, //Is the round restarting?
@@ -427,10 +426,6 @@ function createPopup(contents, width) {
 	});
 }
 
-function toggleWasd(state) {
-	opts.wasd = (state == 'on' ? true : false);
-}
-
 
 /*****************************************
 *
@@ -575,6 +570,7 @@ $(function() {
 			href = escaper(href);
 			runByond('?action=openLink&link='+href);
 		}
+		runByond('byond://winset?mapwindow.map.focus=true');
 	});
 
 	//Fuck everything about this event. Will look into alternatives.
@@ -587,57 +583,57 @@ $(function() {
 			return;
 		}
 
-		e.preventDefault();
+		e.preventDefault()
 
 		var k = e.which;
 		var command;
-
-		// MAKE INTO SWITCH
-		//Common hotkeys (for wasd and normal)
-		switch(k) {
-			case 9: // TAB
-				toggleWasd('on');
-				runByond('byond://winset?wasd_toggle.on=true;mapwindow.map.focus=true;command=togglewasd');
-			case 33: // PAGE UP
-				command = '.northeast';
-			case 34: // PAGE DOWN
-				command = '.southeast';
-			case 35: // END
-				command = '.southwest';
-			case 36: // HOME
-				command = '.northwest';
-			case 37: 
-				command = '.west';
+		switch (k) {
+			case 8:
+				command = 'Back';
+			case 9:
+				command = 'Tab';
+			case 13:
+				command = 'Enter';
+			case 19:
+				command = 'Pause';
+			case 27:
+				command = 'Escape';
+			case 33: // Page up
+				command = 'Northeast';
+			case 34: // Page down
+				command = 'Southeast';
+			case 35: // End
+				command = 'Southwest';
+			case 36: // Home
+				command = 'Northwest';
+			case 37:
+				command = 'West';
 			case 38:
-				command = '.north';
+				command = 'North';
 			case 39:
-				command = '.east';
+				command = 'East';
 			case 40:
-				command = '.south';
-			case 46: // DELETE
-				command = 'togglethrow';
-			case 112: // F1
-				command = 'adminhelp';
-			case 113: // F2
+				command = 'South';
+			case 45:
+				command = 'Insert';
+			case 46:
+				command = 'Delete';
+			case 113:
 				runByond('byond://winset?screenshot=auto');
-				output('Screenshot taken', 'internal');
+				internalOutput('Screenshot taken', 'internal');
+			default:
+				command = String.fromCharCode(k);
 		}
 
-		if (command) {
-			runByond('byond://winset?mapwindow.map.focus=true;command='+command);
+		if (command.length == 0) {
+			if (!e.shiftKey) {
+				command = command.toLowerCase();
+			}
+			runByond('byond://winset?mapwindow.map.focus=true;mainwindow.input.text='+command);
 			return false;
 		} else {
-			var c = String.fromCharCode(e.which);
-			if (c) {
-				if (!e.shiftKey) {
-					c = c.toLowerCase();
-				}
-				runByond('byond://winset?mapwindow.map.focus=true;mainwindow.input.text='+c);
-				return false;
-			} else {
-				runByond('byond://winset?mapwindow.map.focus=true');
-				return false;
-			}
+			runByond('byond://winset?mapwindow.map.focus=true');
+			return false;
 		}
 	});
 

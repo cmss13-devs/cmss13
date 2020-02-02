@@ -1,0 +1,8 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - rscadd: "Added new Toggle Ghost HUDs verb, that allows you to set which HUDs you want to have ON by default when you become ghost."
+  - tweak: "Due to increased amount of preferences verbs, all ghost and combat messages preferences verbs start hidden and can be shown via respective verbs, Show Ghost Prefs and Show Combat Chat Prefs."
+  - tweak: "Some very long preferences verbs names were made shorter."

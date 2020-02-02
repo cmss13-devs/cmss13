@@ -18,7 +18,12 @@
 	var/started_as_observer //This variable is set to 1 when you enter the game as an observer.
 							//If you died in the game and are a ghost - this will remain as null.
 							//Note that this is not a reliable way to determine if admins started as observers, since they change mobs a lot.
-	var/list/HUD_toggled = list(0,0,0,0)
+	var/list/HUD_toggled = list(
+							"Medical HUD" = FALSE,
+							"Security HUD" = FALSE,
+							"Squad HUD" = FALSE,
+							"Xeno Status HUD" = FALSE
+							)
 	universal_speak = 1
 	var/atom/movable/following = null
 
@@ -152,6 +157,25 @@ Works together with spawning an observer, noted above.
 			ghost.client.soundOutput.status_flags = 0 //Clear all effects that would affect a living mob
 			ghost.client.soundOutput.apply_status()
 		
+		if(ghost.client.prefs)
+			var/datum/mob_hud/H
+			ghost.HUD_toggled = ghost.client.prefs.observer_huds
+			for(var/i in ghost.HUD_toggled)
+				if(ghost.HUD_toggled[i])
+					switch(i)
+						if("Medical HUD")
+							H = huds[MOB_HUD_MEDICAL_OBSERVER]
+							H.add_hud_to(ghost)
+						if("Security HUD")
+							H = huds[MOB_HUD_SECURITY_ADVANCED]
+							H.add_hud_to(ghost)
+						if("Squad HUD")
+							H = huds[MOB_HUD_SQUAD]
+							H.add_hud_to(ghost)
+						if("Xeno Status HUD")
+							H = huds[MOB_HUD_XENO_STATUS]
+							H.add_hud_to(ghost)
+
 	return ghost
 
 /*
@@ -250,6 +274,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	mind.transfer_to(mind.current, TRUE)
+	qdel(src)
 	return TRUE
 
 /mob/dead/observer/verb/toggle_HUDs()
@@ -258,37 +283,30 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Toggles various HUDs."
 	if(!client)
 		return
-	var/list/listed_huds = list("Medical HUD", "Security HUD", "Squad HUD", "Xeno Status HUD")
-	var/hud_choice = input("Choose a HUD to toggle", "Toggle HUD", null) as null|anything in listed_huds
+	var/hud_choice = input("Choose a HUD to toggle", "Toggle HUD", null) as null|anything in HUD_toggled
 	if(!client)
 		return
 	var/datum/mob_hud/H
-	var/HUD_nbr = 1
 	switch(hud_choice)
 		if("Medical HUD")
 			H = huds[MOB_HUD_MEDICAL_OBSERVER]
 		if("Security HUD")
 			H = huds[MOB_HUD_SECURITY_ADVANCED]
-			HUD_nbr = 2
 		if("Squad HUD")
 			H = huds[MOB_HUD_SQUAD]
-			HUD_nbr = 3
 		if("Xeno Status HUD")
 			H = huds[MOB_HUD_XENO_STATUS]
-			HUD_nbr = 4
 		else
 			return
 
-	if(HUD_toggled[HUD_nbr])
-		HUD_toggled[HUD_nbr] = 0
+	if(HUD_toggled[hud_choice])
+		HUD_toggled[hud_choice] = FALSE
 		H.remove_hud_from(src)
 		to_chat(src, SPAN_INFO("<B>[hud_choice] Disabled</B>"))
 	else
-		HUD_toggled[HUD_nbr] = 1
+		HUD_toggled[hud_choice] = TRUE
 		H.add_hud_to(src)
 		to_chat(src, SPAN_INFO("<B>[hud_choice] Enabled</B>"))
-
-
 
 /mob/dead/observer/proc/dead_tele()
 	set category = "Ghost"

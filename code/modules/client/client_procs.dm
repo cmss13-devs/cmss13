@@ -218,6 +218,7 @@
 	if(admin_holder)
 		add_admin_verbs()
 		add_admin_whitelists()
+	add_pref_verbs()
 	log_client_to_db()
 
 	send_assets()
@@ -401,3 +402,8 @@
 		to_chat(src, SPAN_NOTICE("You may now speak again."))
 	if(increase_warn)
 		chatWarn++
+
+//for adding procs that allow showing/hiding other groups of prefs
+/client/proc/add_pref_verbs()
+	verbs += /client/proc/show_combat_chat_preferences
+	verbs += /client/proc/show_ghost_preferences

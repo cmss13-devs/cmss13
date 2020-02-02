@@ -6,7 +6,7 @@
 '''
 
 from sys import argv
-from os import environ, getcwd, path
+from os import environ
 import requests
 from git import Repo
 
@@ -24,11 +24,11 @@ COMMENT_ISSUE_URL = BASE_URL + "/{}/notes?body={}"
 # Open a new issue with {0} as the title and {1} as the body
 OPEN_ISSUE_URL = BASE_URL + "?title={}&description={}&labels=Runtime&confidential=true"
 
-def handle_issue(pid, pat):
+def handle_issue(pid, pat, repo_path):
     if not pid or not pat:
         return
 
-    repo = Repo(path.join(getcwd(), "..", ".."))
+    repo = Repo(repo_path)
     if not repo or repo.bare:
         return
 
@@ -73,6 +73,7 @@ def handle_issue(pid, pat):
 if __name__ == "__main__":
     PID = None
     PAT = None
+    GIT_PATH = None
 
     # read PID/PAT from config file
     with open("config.txt", "r") as config:
@@ -85,5 +86,7 @@ if __name__ == "__main__":
                 PID = data[1]
             if data[0] == "pat" and data[1] != "pat_here":
                 PAT = data[1]
+            if data[0] == "git_path" and data[1] != "path-here":
+                GIT_PATH = data[1]
 
-    handle_issue(PID, PAT)
+    handle_issue(PID, PAT, GIT_PATH)

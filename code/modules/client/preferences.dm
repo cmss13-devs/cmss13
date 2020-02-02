@@ -45,6 +45,12 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/UI_style_alpha = 255
 	var/View_MC = FALSE
 	var/window_skin = 0
+	var/list/observer_huds = list(
+							"Medical HUD" = FALSE,
+							"Security HUD" = FALSE,
+							"Squad HUD" = FALSE,
+							"Xeno Status HUD" = FALSE
+							)
 
 	//Synthetic specific preferences
 	var/synthetic_name = "Undefined"

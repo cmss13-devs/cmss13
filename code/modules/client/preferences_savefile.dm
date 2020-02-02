@@ -70,6 +70,7 @@
 	S["xeno_postfix"]		>> xeno_postfix
 	S["xeno_name_ban"]		>> xeno_name_ban
 	S["view_controller"]	>> View_MC
+	S["observer_huds"]		>> observer_huds
 
 	S["synth_name"]			>> synthetic_name
 	S["synth_type"]			>> synthetic_type
@@ -133,6 +134,7 @@
 	S["xeno_name_ban"]		<< xeno_name_ban
 
 	S["view_controller"]	<< View_MC
+	S["observer_huds"]		<< observer_huds
 
 	S["synth_name"] 		<< synthetic_name
 	S["synth_type"]			<< synthetic_type

@@ -119,7 +119,7 @@
 	ask_verb = "hiveminds"
 	exclaim_verb = "hiveminds"
 	colour = "xeno"
-	key = "a"
+	key = "q"
 	flags = RESTRICTED|HIVEMIND
 
 /datum/language/xenos/check_special_condition(var/mob/other)

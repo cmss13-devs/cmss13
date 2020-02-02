@@ -7,9 +7,9 @@ var/list/department_radio_keys = list(
 
 	  ":m" = "MedSci",		"#m" = "MedSci",		".m" = "MedSci",
 	  ":e" = "Engi", 		"#e" = "Engi",			".e" = "Engi",
-	  ":z" = "Almayer",		"#z" = "Almayer",		".z" = "Almayer",
+	  ":g" = "Almayer",		"#g" = "Almayer",		".g" = "Almayer",
 	  ":v" = "Command",		"#v" = "Command",		".v" = "Command",
-	  ":q" = SQUAD_NAME_1,	"#q" = SQUAD_NAME_1,	".q" = SQUAD_NAME_1,
+	  ":a" = SQUAD_NAME_1,	"#a" = SQUAD_NAME_1,	".a" = SQUAD_NAME_1,
 	  ":b" = SQUAD_NAME_2,	"#b" = SQUAD_NAME_2,	".b" = SQUAD_NAME_2,
 	  ":c" = SQUAD_NAME_3,	"#c" = SQUAD_NAME_3,	".c" = SQUAD_NAME_3,
 	  ":d" = SQUAD_NAME_4,	"#d" = SQUAD_NAME_4,	".d" = SQUAD_NAME_4,
@@ -27,9 +27,9 @@ var/list/department_radio_keys = list(
 
 	  ":M" = "MedSci",		"#M" = "MedSci",		".M" = "MedSci",
 	  ":E" = "Engi", 		"#E" = "Engi",			".E" = "Engi",
-	  ":Z" = "Almayer",		"#Z" = "Almayer",		".Z" = "Almayer",
+	  ":G" = "Almayer",		"#G" = "Almayer",		".G" = "Almayer",
 	  ":V" = "Command",		"#V" = "Command",		".V" = "Command",
-	  ":Q" = SQUAD_NAME_1,	"#Q" = SQUAD_NAME_1,	".Q" = SQUAD_NAME_1,
+	  ":A" = SQUAD_NAME_1,	"#A" = SQUAD_NAME_1,	".A" = SQUAD_NAME_1,
 	  ":B" = SQUAD_NAME_2,	"#B" = SQUAD_NAME_2,	".B" = SQUAD_NAME_2,
 	  ":C" = SQUAD_NAME_3,	"#C" = SQUAD_NAME_3,	".C" = SQUAD_NAME_3,
 	  ":D" = SQUAD_NAME_4,	"#D" = SQUAD_NAME_4,	".D" = SQUAD_NAME_4,

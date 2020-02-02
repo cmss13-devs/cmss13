@@ -24,6 +24,15 @@
 	
 
 
+/obj/item/device/encryptionkey/public
+	name = "Public Radio Encryption Key"
+	icon_state = "stripped_key"
+	channels = list("Almayer" = 1)
+
+/obj/item/device/encryptionkey/public_civ
+	name = "Civillian Radio Encryption Key"
+	icon_state = "stripped_key"
+	channels = list("Common" = 1)
 
 /obj/item/device/encryptionkey/ai_integrated
 	name = "AI Integrated Encryption Key"

@@ -1,0 +1,243 @@
+<style type="text/css">
+	.squadButton {
+		float: right;
+		padding: 0 4px 0 4px;
+		background-color: #40628a;
+		cursor: default;
+	}
+
+	.squadButton:hover {
+		background-color: #89a8bf;
+	}
+
+	.squadFireteamTable {
+		text-align: left;
+		border-collapse: collapse;
+		table-layout: fixed;
+		color: #89a8bf;
+		font-weight: bold;
+	}
+
+	.squadFireteamTable td, th {
+		padding: 2px;
+	}
+
+	.rankRow {
+		background-color: #1D2128;
+		font-style: italic;
+	}
+
+	.noMargin {
+		margin: 0;
+	}
+
+	.noPadCell {
+		padding: 2px;
+	}
+
+	td, th {
+		padding: 10px 10px 10px 10px;
+	}
+
+	h3 {
+		margin: 0;
+		padding: 0;
+	}
+
+	h1 {
+		margin: 0;
+		padding: 0;
+	}
+
+	.MIA {
+		color: #D2691E;
+		font-weight: bold;
+	}
+
+	.KIA {
+		color: #B22222;
+		font-weight: bold;
+	}
+
+	.SLIcon {
+		width: 16px;
+		height: 16px;
+		background-image: url(squadSLIcon.png);
+	}
+
+	.MedIcon {
+		width: 16px;
+		height: 16px;
+		background-image: url(squadMedIcon.png);
+	}
+
+	.EngIcon {
+		width: 16px;
+		height: 16px;
+		background-image: url(squadEngIcon.png);
+	}
+
+	.SGIcon {
+		width: 16px;
+		height: 16px;
+		background-image: url(squadSGIcon.png);
+	}
+
+	.SpcIcon {
+		width: 16px;
+		height: 16px;
+		background-image: url(squadSpcIcon.png);
+	}
+
+	.FRespIcon {
+		width: 16px;
+		height: 16px;
+		background-image: url(squadFRespIcon.png);
+	}
+
+	.TechIcon {
+		width: 16px;
+		height: 16px;
+		background-image: url(squadTechIcon.png);
+	}
+</style>
+
+{{:helper.squadMode()}}
+<table class="squadFireteamTable">
+	<tr style="text-align: left;">
+		<td style="color: #485e78;">Acting Squad Leader:</td>
+		<td>{{:data.sl.paygrade}}</td>
+		<td>{{:data.sl.name}}</td>
+	</tr>
+</table>
+<table class="squadFireteamTable">
+	<tr style="text-align: left;">
+		<td style="color: #485e78;">Total marines:</td>
+		<td>{{:data.total_mar}}</td>
+	</tr>
+	{{if data.total_kia > 0}}
+		<tr style="text-align: left;">
+			<td style="color: #485e78;">K.I.A. amount:</td>
+			<td class="KIA">{{:data.total_kia}}</td>
+		</tr>
+	{{/if}}
+</table>
+{{props data.fireteams :team:index}}
+	{{if team.total > 0}}
+		<hr>
+		<center>
+		<h4 style="color: #40628a;">{{:team.name}}</h4>
+		</center>
+		<table class="squadFireteamTable">
+			<tr style="text-align: left;">
+				<td style="color: #485e78;">Team Leader:</td>
+			</tr>
+		</table>
+		<table class="squadFireteamTable">
+			<tr style="text-align: left;">
+				{{if team.tl.status == "M.I.A."}}
+					<td class="MIA">{{:team.tl.status}}</td>
+				{{/if}}	
+				<td>{{:team.tl.paygrade}}</td>
+				{{if team.tl.rank != "Mar"}}
+					<td class="noPadCell"><div unselectable="on" class="{{:team.tl.rank}}Icon"></div></td>
+				{{else}}
+					{{if team.tl.med}}
+						<td class="noPadCell"><div unselectable="on" class="FRespIcon"></div></td>
+					{{else}}
+						{{if team.tl.eng}}
+							<td class="noPadCell"><div unselectable="on" class="TechIcon"></div></td>
+						{{/if}}
+					{{/if}}
+				{{/if}}
+				<td>{{:team.tl.name}}</td>
+				{{if team.tl.name != "Not assigned" && data.userref == data.sl.refer}}
+					<td style="color: white;">{{:helper.link('Manage FTs', '', { 'squadfireteam_target' : team.tl.refer, 'squadfireteam' : 1 }, null, 'squadButton')}}</div></td>
+					<td style="color: white;">{{:helper.link('Status', '', { 'squad_status_target' : team.tl.refer, 'squad_status' : 1 }, null, 'squadButton')}}</div></td>
+				{{/if}}
+			</tr>
+		</table>
+		<table class="squadFireteamTable">
+			<tr style="text-align: left;">
+				<td style="color: #485e78;">Total marines:</td>
+				<td>{{:team.total}}</td>
+			</tr>
+		</table>
+		<table class="squadFireteamTable">	
+			{{props team.mar :marin:index}}
+				<tr style="text-align: left;">
+					{{if marin.status == "M.I.A."}}
+						<td class="MIA">{{:marin.status}}</td>
+					{{else}}
+						<td />
+					{{/if}}	
+					<td>{{:marin.paygrade}}</td>
+					{{if marin.rank != "Mar"}}
+						<td class="noPadCell"><div unselectable="on" class="{{:marin.rank}}Icon"></div></td>
+					{{else}}
+						{{if marin.med}}
+							<td class="noPadCell"><div unselectable="on" class="FRespIcon"></div></td>
+						{{else}}
+							{{if marin.eng}}
+								<td class="noPadCell"><div unselectable="on" class="TechIcon"></div></td>
+							{{else}}
+								<td />
+							{{/if}}
+						{{/if}}
+					{{/if}}
+					<td>{{:marin.name}}</td>
+					{{if data.userref == data.sl.refer}}
+						<td style="color: white;">{{:helper.link('Manage FTs', '', { 'squadfireteam_target' : marin.refer, 'squadfireteam' : 1 }, null, 'squadButton')}}</div></td>
+						<td style="color: white;">{{:helper.link('Status', '', { 'squad_status_target' : marin.refer, 'squad_status' : 1 }, null, 'squadButton')}}</div></td>
+					{{/if}}
+				</tr>
+			{{/props}}
+		</table>
+	{{/if}}
+{{/props}}
+<hr>
+{{if data.total_free > 0}}
+	<center>
+		<h4 style="color: #40628a;">Unassigned marines:</h4>
+	</center>
+	<table class="squadFireteamTable">
+		<tr style="text-align: left;">
+			<td style="color: #485e78;">Total marines:</td>
+			<td>{{:data.total_free}}</td>
+		</tr> 
+	</table>
+	<table class="squadFireteamTable">	
+		{{props data.mar_free :marin:index}}
+			<tr style="text-align: left;">
+				{{if marin.status == "M.I.A."}}
+					<td class="MIA">{{:marin.status}}</td>
+				{{else}}
+					{{if marin.status == "K.I.A."}}
+						<td class="KIA">{{:marin.status}}</td>
+					{{else}}
+						<td />
+					{{/if}}
+				{{/if}}
+				<td>{{:marin.paygrade}}</td>
+				{{if marin.rank != "Mar"}}
+					<td class="noPadCell"><div unselectable="on" class="{{:marin.rank}}Icon"></div></td>
+				{{else}}
+					{{if marin.med}}
+						<td class="noPadCell"><div unselectable="on" class="FRespIcon"></div></td>
+					{{else}}
+						{{if marin.eng}}
+							<td class="noPadCell"><div unselectable="on" class="TechIcon"></div></td>
+						{{else}}
+							<td />
+						{{/if}}
+					{{/if}}
+				{{/if}}
+				<td>{{:marin.name}}</td>
+				{{if data.userref == data.sl.refer}}
+					<td style="color: white;">{{:helper.link('Manage FTs', '', { 'squadfireteam_target' : marin.refer, 'squadfireteam' : 1 }, null, 'squadButton')}}</div></td>
+					<td style="color: white;">{{:helper.link('Status', '', { 'squad_status_target' : marin.refer, 'squad_status' : 1 }, null, 'squadButton')}}</div></td>
+				{{/if}}
+			</tr>
+		{{/props}}
+	</table>
+{{/if}}

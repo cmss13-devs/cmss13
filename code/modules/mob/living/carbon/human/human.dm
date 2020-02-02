@@ -500,59 +500,54 @@
 						else if(U.has_sensor == oldsens)
 							U.set_sensors(usr)
 
-	if(href_list["squadfireteam"])
-		if(!usr.is_mob_incapacitated() && get_dist(usr, src) <= 7 && hasHUD(usr,"squadleader"))
-			var/mob/living/carbon/human/H = usr
-			if(assigned_squad != H.assigned_squad) return //still same squad
-			if(mind)
-				var/obj/item/card/id/ID = get_idcard()
-				if(ID && (ID.rank in ROLES_MARINES))
-					if(ID.rank == "Squad Leader" || assigned_squad.squad_leader == src)	//if SL/aSL are chosen
-						var/choice = input(usr, "Manage Fireteams and Team leaders.", "Fireteams Management") as null|anything in list("Cancel", "Unassign Fireteam 1 Leader", "Unassign Fireteam 2 Leader", "Unassign Fireteam 3 Leader", "Unassign all Team Leaders")
-						if(assigned_squad != H.assigned_squad) return
-						if(H.is_mob_incapacitated() || get_dist(H, src) > 7 || !hasHUD(H,"squadleader")) return
-						switch(choice)
-							if("Unassign Fireteam 1 Leader") assigned_squad.unassign_ft_leader("FT1", TRUE)
-							if("Unassign Fireteam 2 Leader") assigned_squad.unassign_ft_leader("FT2", TRUE)
-							if("Unassign Fireteam 3 Leader") assigned_squad.unassign_ft_leader("FT3", TRUE)
-							if("Unassign all Team Leaders") assigned_squad.unassign_all_ft_leaders()
-							else return
-						hud_set_squad()
-						return
+	if (href_list["squadfireteam"])
 
-					if(assigned_fireteam)
-						if(assigned_squad.fireteam_leaders[assigned_fireteam] == src) //Check if person already is FT leader
-							var/choice = input(usr, "Manage Fireteams and Team leaders.", "Fireteams Management") as null|anything in list("Cancel", "Unassign from Team Leader position")
-							if(assigned_squad != H.assigned_squad) return
-							if(H.is_mob_incapacitated() || get_dist(H, src) > 7 || !hasHUD(H,"squadleader")) return
-							if(choice == "Unassign from Team Leader position")
-								if("Unassign from Team Leader position") assigned_squad.unassign_ft_leader(assigned_fireteam, TRUE)
-								else return
-							hud_set_squad()
-							return
+		var/mob/living/carbon/human/target
+		var/mob/living/carbon/human/sl
+		if(href_list["squadfireteam_target"])
+			sl = src
+			for(var/mob/living/carbon/human/mar in sl.assigned_squad.marines_list)
+				if(href_list["squadfireteam_target"] == "\ref[mar]")
+					target = mar
+					break
+		else
+			sl = usr
+			target = src
 
-						var/choice = input(usr, "Manage Fireteams and Team leaders.", "Fireteams Management") as null|anything in list("Remove from Fireteam", "Assign to Fireteam 1", "Assign to Fireteam 2", "Assign to Fireteam 3", "Assign as Team Leader")
-						if(assigned_squad != H.assigned_squad) return
-						if(H.is_mob_incapacitated() || get_dist(H, src) > 7 || !hasHUD(H,"squadleader")) return
-						switch(choice)
-							if("Remove from Fireteam") assigned_squad.unassign_fireteam(src)
-							if("Assign to Fireteam 1") assigned_squad.assign_fireteam("FT1", src)
-							if("Assign to Fireteam 2") assigned_squad.assign_fireteam("FT2", src)
-							if("Assign to Fireteam 3") assigned_squad.assign_fireteam("FT3", src)
-							if("Assign as Team Leader") assigned_squad.assign_ft_leader(assigned_fireteam, src)
-							else return
-						hud_set_squad()
-						return
+		if(sl.is_mob_incapacitated() && !hasHUD(sl,"squadleader"))
+			return
 
-					var/choice = input(usr, "Manage Fireteams and Team leaders.", "Fireteams Management") as null|anything in list("Cancel", "Assign to Fireteam 1", "Assign to Fireteam 2", "Assign to Fireteam 3")
-					if(H.is_mob_incapacitated() || get_dist(H, src) > 7 || !hasHUD(H,"squadleader")) return
-					switch(choice)
-						if("Assign to Fireteam 1") assigned_squad.assign_fireteam("FT1", src)
-						if("Assign to Fireteam 2") assigned_squad.assign_fireteam("FT2", src)
-						if("Assign to Fireteam 3") assigned_squad.assign_fireteam("FT3", src)
-						else return
-					hud_set_squad()
+		if(!target.mind)
+			return
 
+		if(!target.assigned_squad || !target.assigned_squad.squad_leader || target.assigned_squad.squad_leader != sl)
+			return
+
+		if(target.squad_status == "K.I.A.")
+			to_chat(sl, "[FONT_SIZE_BIG("<font color='red'>You can't assign K.I.A. marines to fireteams.</font>")]")
+			return
+
+		target.assigned_squad.manage_fireteams(target)
+
+	if (href_list["squad_status"])
+		var/mob/living/carbon/human/target
+		for(var/mob/living/carbon/human/mar in assigned_squad.marines_list)
+			if(href_list["squad_status_target"] == "\ref[mar]")
+				target = mar
+				break
+		if(!istype(target))
+			return
+
+		if(is_mob_incapacitated() && !hasHUD(src,"squadleader"))
+			return
+
+		if(!target.mind)
+			return
+
+		if(!target.assigned_squad || !target.assigned_squad.squad_leader || target.assigned_squad.squad_leader != src)
+			return
+
+		assigned_squad.change_squad_status(target)
 
 	if(href_list["criminal"])
 		if(hasHUD(usr,"security"))

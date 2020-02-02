@@ -1404,17 +1404,6 @@
 	dir = 10
 	},
 /area/desert_dam/exterior/river/riverside_east)
-"adT" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/effect/blocker/toxic_water/Group_1,
-/obj/structure/platform,
-/turf/open/gm/river/desert/shallow_edge{
-	icon_state = "shallow_edge";
-	dir = 8
-	},
-/area/desert_dam/exterior/river/riverside_south)
 "adU" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_edge{
@@ -42465,15 +42454,6 @@
 	dir = 4
 	},
 /area/desert_dam/exterior/river_mouth/southern)
-"cpe" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform,
-/turf/open/desert/dirt{
-	icon_state = "dirt2"
-	},
-/area/desert_dam/exterior/valley/valley_civilian)
 "cpf" = (
 /turf/open/floor/prison{
 	dir = 1;
@@ -57822,17 +57802,6 @@
 /obj/effect/blocker/toxic_water/Group_1,
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/exterior/river/riverside_south)
-"doP" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/desert/dirt{
-	icon_state = "dirt2"
-	},
-/area/desert_dam/exterior/valley/valley_civilian)
 "doQ" = (
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/asphalt/cement_sunbleached{
@@ -58693,10 +58662,7 @@
 	dir = 1
 	},
 /obj/effect/blocker/toxic_water/Group_1,
-/turf/open/gm/river/desert/shallow_corner{
-	icon_state = "shallow_c";
-	dir = 8
-	},
+/turf/open/gm/river/desert/shallow_edge,
 /area/desert_dam/exterior/river/riverside_south)
 "dvz" = (
 /obj/effect/blocker/toxic_water/Group_1,
@@ -58705,16 +58671,6 @@
 	dir = 4
 	},
 /area/desert_dam/exterior/river/riverside_south)
-"dvA" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/effect/blocker/toxic_water/Group_1,
-/turf/open/desert/desert_shore/shore_edge1{
-	icon_state = "shore_edge1";
-	dir = 8
-	},
-/area/desert_dam/exterior/valley/valley_civilian)
 "dvB" = (
 /obj/structure/platform{
 	dir = 8
@@ -59335,21 +59291,6 @@
 	dir = 8
 	},
 /area/desert_dam/exterior/river/riverside_south)
-"dzp" = (
-/obj/structure/platform,
-/obj/effect/blocker/toxic_water/Group_1,
-/turf/open/desert/desert_shore/desert_shore1{
-	icon_state = "shore1";
-	dir = 4
-	},
-/area/desert_dam/exterior/river/riverside_south)
-"dzq" = (
-/obj/structure/platform,
-/obj/effect/blocker/toxic_water/Group_1,
-/turf/open/desert/dirt{
-	icon_state = "dirt2"
-	},
-/area/desert_dam/exterior/valley/valley_civilian)
 "dzr" = (
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -59544,19 +59485,6 @@
 	dir = 8
 	},
 /area/desert_dam/exterior/river/riverside_east)
-"dAC" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/effect/blocker/toxic_water/Group_1,
-/turf/open/desert/desert_shore/shore_corner2{
-	icon_state = "shore_corner2";
-	dir = 1
-	},
-/area/desert_dam/exterior/river/riverside_south)
 "dAD" = (
 /turf/open/floor/prison{
 	icon_state = "green"
@@ -59899,16 +59827,6 @@
 	dir = 10
 	},
 /area/desert_dam/interior/dam_interior/disposals)
-"dBZ" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/effect/blocker/toxic_water/Group_1,
-/turf/open/gm/river/desert/shallow_edge{
-	icon_state = "shallow_edge";
-	dir = 6
-	},
-/area/desert_dam/exterior/river/riverside_south)
 "dCb" = (
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_westwing)
@@ -68891,6 +68809,15 @@
 /obj/structure/flora/grass/tallgrass/desert,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
+"nAm" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/turf/open/desert/desert_shore/desert_shore1{
+	icon_state = "shore1";
+	dir = 4
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
 "nJZ" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	tag = "icon-landingstripe (WEST)";
@@ -105470,16 +105397,16 @@ cho
 cho
 cho
 dvy
-dvB
-dvB
-adT
-cQm
-cyP
-clE
-dob
-dob
-cQm
-dAC
+clD
+cmr
+cxW
+coF
+dfc
+dgD
+dNR
+dTH
+coF
+chV
 chT
 dvB
 dvB
@@ -105703,16 +105630,16 @@ cho
 cho
 cho
 cho
-cho
-cho
-cho
-cho
-cho
-cho
 cjQ
 chn
+chn
+cyR
+cAf
 cyP
-cQm
+clE
+dob
+dob
+cAf
 cAi
 chU
 cho
@@ -105943,9 +105870,9 @@ cho
 cho
 cho
 cho
-cho
-cho
-cho
+cjQ
+chn
+cyP
 cho
 cho
 cho
@@ -106410,7 +106337,7 @@ cho
 cho
 cho
 cho
-czV
+cho
 cho
 cho
 cho
@@ -106639,20 +106566,20 @@ ciQ
 ciQ
 ciQ
 cjS
-chp
-chp
-chp
-chp
 cjR
-czV
-czV
+cho
+cho
+cho
 cho
 czV
 cho
-chX
-chp
-chp
-cjR
+cho
+cho
+cho
+cho
+cho
+cho
+cho
 cho
 cho
 cho
@@ -106873,20 +106800,20 @@ djw
 cAl
 ciQ
 ciQ
-ciQ
-ciQ
-dvz
-dzp
-cko
-czX
-czX
-czX
-czX
-cko
-dBZ
-ciQ
-ciQ
 cjS
+cjR
+cho
+cho
+cho
+czV
+czV
+cho
+czV
+cAf
+cAj
+chp
+chp
+chp
 chp
 chp
 chp
@@ -107107,16 +107034,16 @@ cmR
 dtF
 cAl
 ciQ
-dvz
-djw
-dzo
-dzq
-cko
-cCH
-cpR
-cET
-crW
-cko
+ciQ
+cjS
+chp
+czB
+cAf
+czX
+czX
+czX
+czX
+cAf
 cAk
 djw
 cAl
@@ -107341,17 +107268,17 @@ dTs
 dgX
 dtG
 duz
-dvA
-dgX
-dgX
-cpe
-cko
-cCH
-clZ
-clZ
-crW
-cko
-doP
+duz
+nAm
+nAm
+cAe
+coF
+dfc
+dgF
+jrV
+dTH
+coF
+cuT
 dgX
 cAX
 ckn

@@ -237,6 +237,7 @@
 	name = "\improper Yautja Ship"
 	icon_state = "teleporter"
 	music = "signal"
+	ambience_exterior = AMBIENCE_YAUTJA
 
 /mob/living/carbon/human/proc/pred_buy()
 	set category = "Yautja"

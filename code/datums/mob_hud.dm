@@ -361,6 +361,10 @@ var/datum/mob_hud/huds = list(
 			if("recovery")
 				has_recovery_aura = TRUE
 			if("warding")
+				has_warding_aura = TRUE
+			if("all")
+				has_frenzy_aura = TRUE
+				has_recovery_aura = TRUE
 				has_warding_aura = TRUE		
 		switch(leader_current_aura)
 			if("frenzy")
@@ -369,6 +373,10 @@ var/datum/mob_hud/huds = list(
 				has_recovery_aura = TRUE
 			if("warding")
 				has_warding_aura = TRUE
+			if("all")
+				has_frenzy_aura = TRUE
+				has_recovery_aura = TRUE
+				has_warding_aura = TRUE	
 
 		if (has_frenzy_aura)
 			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurafrenzy")

@@ -97,20 +97,24 @@
 				if(phero_center.loc.z == Q.loc.z)//Only same Z-level
 					var/pheromone_range = round(6 + aura_strength * 2)
 					for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, phero_center)) //Goes from 8 for Queen to 16 for Ancient Queen
-						if(current_aura == "frenzy" && aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
+						if(Z.ignores_pheromones)
+							continue
+						if((current_aura == "all" || current_aura == "frenzy") && aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
 							Z.frenzy_new = aura_strength
-						if(current_aura == "warding" && aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
+						if((current_aura == "all" || current_aura == "warding") && aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
 							Z.warding_new = aura_strength
-						if(current_aura == "recovery" && aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
+						if((current_aura == "all" || current_aura == "recovery") && aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
 							Z.recovery_new = aura_strength
 			else
 				var/pheromone_range = round(6 + aura_strength * 2)
 				for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, src)) //Goes from 7 for Young Drone to 16 for Ancient Queen
-					if(current_aura == "frenzy" && aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
+					if(Z.ignores_pheromones)
+						continue
+					if((current_aura == "all" || current_aura == "frenzy") && aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
 						Z.frenzy_new = aura_strength
-					if(current_aura == "warding" && aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
+					if((current_aura == "all" || current_aura == "warding") && aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
 						Z.warding_new = aura_strength
-					if(current_aura == "recovery" && aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
+					if((current_aura == "all" || current_aura == "recovery") && aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
 						Z.recovery_new = aura_strength
 
 
@@ -118,12 +122,21 @@
 		if(leader_current_aura && !stat)
 			var/pheromone_range = round(6 + leader_aura_strength * 2)
 			for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, src)) //Goes from 7 for Young Drone to 16 for Ancient Queen
-				if(leader_current_aura == "frenzy" && leader_aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
+				if(Z.ignores_pheromones)
+					continue
+				if((leader_current_aura == "all" || leader_current_aura == "frenzy") && leader_aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
 					Z.frenzy_new = leader_aura_strength
-				if(leader_current_aura == "warding" && leader_aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
+				if((leader_current_aura == "all" || leader_current_aura == "warding") && leader_aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
 					Z.warding_new = leader_aura_strength
-				if(leader_current_aura == "recovery" && leader_aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
+				if((leader_current_aura == "all" || leader_current_aura == "recovery") && leader_aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
 					Z.recovery_new = leader_aura_strength
+	
+	if(ignores_pheromones)
+		frenzy_aura = 0
+		warding_aura = 0
+		recovery_aura = 0
+		hud_set_pheromone()
+		return
 
 	if(frenzy_aura != frenzy_new || warding_aura != warding_new || recovery_aura != recovery_new)
 		frenzy_aura = frenzy_new

@@ -412,6 +412,7 @@
 	for(var/mob/living/carbon/human/M in oview(7, src))
 		if(istype(M.wear_ear, /obj/item/clothing/ears/earmuffs))
 			continue
+		M.scream_stun_timeout = SECONDS_20
 		var/dist = get_dist(src,M)
 		if(dist <= 4)
 			to_chat(M, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))

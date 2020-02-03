@@ -1037,6 +1037,9 @@ var/global/image/emote_indicator_highfive
 var/global/image/emote_indicator_fistbump
 var/global/image/emote_indicator_headbutt
 var/global/image/emote_indicator_tailswipe
+var/global/image/action_red_power_up
+var/global/image/action_green_power_up
+var/global/image/action_blue_power_up
 
 /proc/get_busy_icon(busy_type)
 	if(busy_type == BUSY_ICON_GENERIC)
@@ -1084,6 +1087,22 @@ var/global/image/emote_indicator_tailswipe
 			emote_indicator_tailswipe = image('icons/mob/mob.dmi', null, "emote_tailswipe", "pixel_y" = 22)
 			emote_indicator_tailswipe.layer = FLY_LAYER
 		return emote_indicator_tailswipe
+	else if(busy_type == ACTION_RED_POWER_UP)
+		if(!action_red_power_up)
+			action_red_power_up = image('icons/effects/effects.dmi', null,"anger", "pixel_x" = 14)
+			action_red_power_up.layer = FLY_LAYER
+		return action_red_power_up
+	else if(busy_type == ACTION_GREEN_POWER_UP)
+		if(!action_green_power_up)
+			action_green_power_up = image('icons/effects/effects.dmi', null,"vitality", "pixel_x" = 14)
+			action_green_power_up.layer = FLY_LAYER
+		return action_green_power_up
+	else if(busy_type == ACTION_BLUE_POWER_UP)
+		if(!action_blue_power_up)
+			action_blue_power_up = image('icons/effects/effects.dmi', null,"shock", "pixel_x" = 14)
+			action_blue_power_up.layer = FLY_LAYER
+		return action_blue_power_up
+		
 
 /*
  *	do_after handles timed actions
@@ -1934,3 +1953,10 @@ var/list/WALLITEMS = list(
 		if(G.harmful && (T.z in MAIN_SHIP_AND_DROPSHIPS_Z_LEVELS) && (security_level < SEC_LEVEL_RED) && !crash_occured && grenade_antigrief_on)
 			return TRUE
 	return FALSE
+
+/proc/flick_overlay(var/atom/target, overlay, time)
+	target.overlays += overlay
+	add_timer(CALLBACK(target, /proc/remove_timed_overlay, overlay), time)
+
+/proc/remove_timed_overlay(var/atom/target, overlay)
+	target.overlays -= overlay

@@ -21,8 +21,8 @@
 	evolution_allowed = FALSE
 	deevolves_to = "Drone"
 	aura_strength = 1 //Carrier's pheromones are equivalent to Hivelord. Climbs 0.5 up to 2.5
-	huggers_max = 9
-	eggs_max = 4
+	huggers_max = 10
+	eggs_max = 5
 	throwspeed = 1
 	hugger_delay = 30
 	can_hold_facehuggers = 1
@@ -35,6 +35,8 @@
 	upgrade_name = "Mature"
 	caste_desc = "A portable Love transport. It looks a little more dangerous."
 	upgrade = 1
+	huggers_max = 13
+	eggs_max = 6
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 45
@@ -47,26 +49,26 @@
 	upgrade_name = "Elder"
 	caste_desc = "A portable Love transport. It looks pretty strong."
 	upgrade = 2
+	huggers_max = 16
+	eggs_max = 7
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 50
-	aura_strength = 2
-	huggers_max = 10
+	aura_strength = 2	
 	hugger_delay = 20
-	eggs_max = 5
 	egg_cooldown = 250
 
 /datum/caste_datum/carrier/ancient
 	upgrade_name = "Ancient"
 	upgrade = 3
-	caste_desc = "It's literally crawling with 10 huggers."
+	huggers_max = 20
+	eggs_max = 8
+	caste_desc = "It's literally crawling with 20 huggers."
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 50
 	aura_strength = 2
-	huggers_max = 10
 	hugger_delay = 20
-	eggs_max = 5
 	egg_cooldown = 220
 
 /mob/living/carbon/Xenomorph/Carrier

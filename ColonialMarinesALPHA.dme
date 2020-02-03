@@ -1187,7 +1187,7 @@
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\boiler\railgun.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\boiler\shatterglob.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\burrower\tremor.dm"
-#include "code\modules\mob\living\carbon\xenomorph\mutators\strains\carrier\egg_sacs.dm"
+#include "code\modules\mob\living\carbon\xenomorph\mutators\strains\carrier\shaman.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\defender\steel_crest.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\drone\healer.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\hivelord\resin_whisperer.dm"

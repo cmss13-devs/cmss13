@@ -232,7 +232,7 @@
 	var/eggs_cur = 0
 	var/huggers_max = 0
 	var/eggs_max = 0
-	var/laid_egg = 0
+	var/used_shaman_ability = 0
 
 	//Leader vars
 	var/leader_aura_strength = 0 //Pheromone strength inherited from Queen
@@ -302,7 +302,7 @@
 	var/charge_roar = 0 //Did we roar in our charge yet?
 
 	var/hive_pos = NORMAL_XENO // The position of the xeno in the hive (0 = normal xeno; 1 = queen; 2+ = hive leader)
-
+	var/ignores_pheromones = FALSE
 
 
 /mob/living/carbon/Xenomorph/New(var/new_loc, var/mob/living/carbon/Xenomorph/oldXeno)

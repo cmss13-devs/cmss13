@@ -28,7 +28,6 @@
 
  //Hearing gasp and such every five seconds is not good emotes were not global for a reason.
  // Maybe some people are okay with that.
-
 		for(var/mob/M in player_list)
 			if (!M.client)
 				continue //skip monkeys and leavers
@@ -70,7 +69,6 @@
 				O.show_message(message, m_type)
 
 /mob/proc/emote_dead(var/message)
-
 	if(client.prefs.muted & MUTE_DEADCHAT)
 		to_chat(src, SPAN_DANGER("You cannot send deadchat emotes (muted)."))
 		return
@@ -79,11 +77,9 @@
 		to_chat(src, SPAN_DANGER("You have deadchat muted."))
 		return
 
-	if(!src.client.admin_holder || !(client.admin_holder & R_MOD))
-		if(!dsay_allowed)
-			to_chat(src, SPAN_DANGER("Deadchat is globally muted"))
-			return
-
+	if(!AHOLD_IS_MOD(client.admin_holder) && !dsay_allowed)
+		to_chat(src, SPAN_DANGER("Deadchat is globally muted"))
+		return
 
 	var/input
 	if(!message)
@@ -99,12 +95,11 @@
 
 	if(message)
 		log_emote("Ghost/[src.key] : [message]")
-
 		for(var/mob/M in player_list)
 			if(istype(M, /mob/new_player))
 				continue
 
-			if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & (R_ADMIN|R_MOD)) && (M.client.prefs.toggles_chat & CHAT_DEAD)) // Show the emote to admins/mods
+			if(M.client && M.client.admin_holder && AHOLD_IS_MOD(M.client.admin_holder) && (M.client.prefs.toggles_chat & CHAT_DEAD)) // Show the emote to admins/mods
 				to_chat(M, message)
 
 			else if(M.stat == DEAD && (M.client.prefs.toggles_chat & CHAT_DEAD)) // Show the emote to regular ghosts with deadchat toggled on

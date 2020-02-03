@@ -363,8 +363,10 @@ function ehjaxCallback(data) {
 	} else if (data == 'stopaudio') {
 		$('.dectalk').remove();
 	} else if (data == 'white_skin') {
+		opts.highlightColor = ['#FFFF00','#FFCC00','#FFAA00','#CCFF00','#AAFF00']
 		document.getElementById("window_skin").href = "browserOutput.css";
 	} else if (data == 'night_skin') {
+		opts.highlightColor = ['#002fff', '#8c00ff', '#ff00d4','#ff0080','#ff0037']
 		document.getElementById("window_skin").href = "browserOutput_night.css";
 	} else {
 		//Oh we're actually being sent data instead of an instruction

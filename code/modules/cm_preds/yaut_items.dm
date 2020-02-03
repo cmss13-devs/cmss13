@@ -1162,9 +1162,14 @@
 	   //Preds now speak in bastardized 1337speak BECAUSE. -because abby is retarded -spookydonut
 
 	spawn(10)
-		if(!drain_power(usr,50)) return //At this point they've upgraded.
+		if(!drain_power(usr,50)) 
+			return //At this point they've upgraded.
+
+		log_say("Yautja Translator/[usr.client.ckey] : [msg]")
+
 		for(var/mob/Q in hearers(usr))
-			if(Q.stat) continue //Unconscious
+			if(Q.stat && !isobserver(Q)) 
+				continue //Unconscious
 			to_chat(Q, "[SPAN_INFO("A strange voice says")] <span class='prefix'>'[msg]'</span>.")
 
 

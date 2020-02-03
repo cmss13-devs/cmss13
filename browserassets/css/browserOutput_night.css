@@ -164,14 +164,14 @@ a.popt {text-decoration: none;}
 	position: fixed;
 	top: 50%;
 	left: 50%;
-	background: #ddd;
+	background: #444447;
 }
 .popup .close {
 	position: absolute;
-	background: #aaa;
+	background: #444447;
 	top: 0;
 	right: 0;
-	color: #333;
+	color: #bbbbbb;
 	text-decoration: none;
 	z-index: 2;
 	padding: 0 10px;
@@ -180,8 +180,8 @@ a.popt {text-decoration: none;}
 }
 .popup .close:hover {background: #999;}
 .popup .head {
-	background: #999;
-	color: #ddd;
+	background: #444447;
+	color: #bbbbbb;
 	padding: 0 10px;
 	height: 30px;
 	line-height: 30px;
@@ -190,19 +190,20 @@ a.popt {text-decoration: none;}
 	font-weight: bold;
 	border-bottom: 2px solid green;
 }
-.popup input {border: 1px solid #999; background: #fff; margin: 0; padding: 5px; outline: none; color: #333;}
+.popup input {border: 1px solid #999; background: #444447; margin: 0; padding: 5px; outline: none; color: #333;}
 .popup input[type=text]:hover, .popup input[type=text]:active, .popup input[type=text]:focus {border-color: green;}
-.popup input[type=submit] {padding: 5px 10px; background: #999; color: #ddd; text-transform: uppercase; font-size: 0.9em; font-weight: bold;}
+.popup input[type=submit] {padding: 5px 10px; background: #444447; color: #bbbbbb; text-transform: uppercase; font-size: 0.9em; font-weight: bold;}
 .popup input[type=submit]:hover, .popup input[type=submit]:focus, .popup input[type=submit]:active {background: #aaa; cursor: pointer;}
 
 .changeFont {padding: 10px;}
-.changeFont a {display: block; text-decoration: none; padding: 3px; color: #333;}
-.changeFont a:hover {background: #ccc;}
+.changeFont a {display: block; text-decoration: none; padding: 3px; color: #bbbbbb;}
+.changeFont a:hover {background: #444447;}
 
-.highlightPopup {padding: 10px; text-align: center;}
-.highlightPopup input[type=text] {display: block; width: 215px; text-align: left; margin-top: 5px;}
-.highlightPopup input.highlightColor {background-color: #FFFF00;}
+.highlightPopup {padding: 10px; text-align: center; background: #444447; color: #bbbbbb;}
+.highlightPopup input[type=text] {display: block; width: 215px; text-align: left; margin-top: 5px; color: #bbbbbb;}
+.highlightPopup input.highlightColor {background-color:  #6d6346;}
 .highlightPopup input.highlightTermSubmit {margin-top: 5px;}
+
 
 .icon-stack {height: 1em; line-height: 1em; width: 1em; vertical-align: middle; margin-top: -2px;}
 

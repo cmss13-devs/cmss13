@@ -46,6 +46,8 @@
 	unacidable = TRUE
 	anti_hug = 100
 	item_state_slots = list(WEAR_FACE = "pred_mask1")
+	time_to_unequip = 20
+	unequip_sounds = list('sound/items/air_release.ogg')
 
 /obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,11), elder_restricted = 0)
 	..()
@@ -953,6 +955,7 @@
 						if (!bracer.exploding)
 							bracer.explodey(comrade)
 						M.visible_message(SPAN_WARNING("[M] presses a few buttons on [comrade]'s wrist bracer."),SPAN_DANGER("You activate the timer. May [comrade]'s final hunt be swift."))
+						message_all_yautja("[M] has triggered [comrade]'s bracer's self-destruction sequence.")
 			else
 				to_chat(M, SPAN_WARNING("Your fallen comrade does not have a bracer. <b>Report this to your elder so that it's fixed.</b>"))
 			return
@@ -1353,6 +1356,7 @@
 	attack_verb = list("jabbed","stabbed","ripped", "skewered")
 	unacidable = TRUE
 	edge = 1
+	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharp = IS_SHARP_ITEM_BIG
 
 /obj/item/weapon/wristblades
@@ -1428,6 +1432,7 @@
 	sharp = 0
 	edge = 0
 	attack_verb = list("whipped", "slashed","sliced","diced","shredded")
+	hitsound = 'sound/weapons/chain_whip.ogg'
 
 /obj/item/weapon/yautja_chain/attack(mob/target, mob/living/user)
 	. = ..()
@@ -1579,6 +1584,7 @@
 	throw_speed = SPEED_VERY_FAST
 	unacidable = TRUE
 	sharp = IS_SHARP_ITEM_ACCURATE
+	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("speared", "stabbed", "impaled")
 	var/on = 1
 	var/timer = 0
@@ -1637,7 +1643,8 @@
 	if(on)
 		user.visible_message(SPAN_INFO("With a flick of their wrist, [user] extends [src]."),\
 		SPAN_NOTICE("You extend [src]."),\
-		"You hear an ominous click.")
+		"You hear blades extending.")
+		playsound(src,'sound/handling/combistick_open.ogg', 50, 1, 3)
 		icon_state = initial(icon_state)
 		flags_equip_slot = initial(flags_equip_slot)
 		flags_item |= TWOHANDED
@@ -1655,6 +1662,7 @@
 	else
 		unwield(user)
 		to_chat(user, SPAN_NOTICE("You collapse [src] for storage."))
+		playsound(src, 'sound/handling/combistick_close.ogg', 50, 1, 3)
 		icon_state = initial(icon_state) + "_f"
 		flags_equip_slot = SLOT_STORE
 		flags_item &= ~TWOHANDED
@@ -1672,7 +1680,6 @@
 		H.update_inv_l_hand(0)
 		H.update_inv_r_hand()
 
-	playsound(src.loc, 'sound/weapons/gun_empty.ogg', 25, 1)
 	add_fingerprint(user)
 
 	return

@@ -49,8 +49,6 @@
 #define SHOCK	8
 #define SAFE	16
 
-#define ENGINE_EJECT_Z	3
-
 //metal, glass, rod stacks
 #define MAX_STACK_AMOUNT_METAL	50
 #define MAX_STACK_AMOUNT_GLASS	50

@@ -461,9 +461,6 @@
 /obj/structure/window/framed/update_icon()
 	relativewall()
 
-
-
-
 /obj/structure/window/framed/ex_act(severity, explosion_direction)
 	if(not_damageable) //Impossible to destroy
 		return

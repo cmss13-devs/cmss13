@@ -760,7 +760,7 @@
 		possible_turfs += TU
 	var/turf/impact = pick(possible_turfs)
 	if(ammo_warn_sound)
-		playsound(impact, ammo_warn_sound, 70, 1)
+		playsound_spacial(impact, ammo_warn_sound, 70, 1, 5 SECONDS)
 	new /obj/effect/overlay/temp/blinking_laser (impact)
 	sleep(10)
 	SA.source_mob = user

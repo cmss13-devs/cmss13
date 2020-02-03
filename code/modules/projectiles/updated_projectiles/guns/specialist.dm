@@ -35,8 +35,8 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 
 /obj/item/weapon/gun/rifle/sniper/M42A/New()
-	..()
 	select_gamemode_skin(/obj/item/weapon/gun/rifle/sniper/M42A) //use j_ for legacy variant via VV
+	..()
 
 /obj/item/weapon/gun/rifle/sniper/M42A/handle_starting_attachment()
 	..()

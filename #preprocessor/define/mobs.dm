@@ -200,6 +200,10 @@
 #define EMOTE_ICON_HEADBUTT  8
 #define EMOTE_ICON_TAILSWIPE 9
 
+#define ACTION_RED_POWER_UP		10
+#define ACTION_GREEN_POWER_UP	11
+#define ACTION_BLUE_POWER_UP	12
+
 //defins for datum/hud
 
 #define HUD_STYLE_STANDARD	1
@@ -270,7 +274,7 @@
 
 // Carrier strain flags
 #define CARRIER_NORMAL 		"Normal"
-#define CARRIER_EGGSACS		"Eggsac"
+#define CARRIER_SHAMAN		"Shaman"
 
 // Burrower strain flags
 #define BURROWER_NORMAL 	"Normal"

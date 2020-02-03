@@ -1232,15 +1232,15 @@
 
 	if(istype(head, /obj/item/clothing/head/welding))
 		var/obj/item/clothing/head/welding/O = head
-		if(!O.up && tinted_weldhelh)
+		if(!O.up)
 			tint_level = VISION_IMPAIR_MAX
 
-	if(glasses && glasses.has_tint && glasses.active && tinted_weldhelh)
+	if(glasses && glasses.has_tint && glasses.active)
 		tint_level = VISION_IMPAIR_MAX
 
 	if(istype(wear_mask, /obj/item/clothing/mask/gas))
 		var/obj/item/clothing/mask/gas/G = wear_mask
-		if(G.vision_impair && tinted_weldhelh && tint_level < G.vision_impair)
+		if(G.vision_impair && tint_level < G.vision_impair)
 			tint_level = G.vision_impair
 
 	if(tint_level)

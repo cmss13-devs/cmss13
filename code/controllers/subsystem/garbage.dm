@@ -167,7 +167,7 @@ var/datum/subsystem/garbage/SSgarbage
 
 
 /datum/subsystem/garbage/proc/addTrash(const/datum/D)
-	if(istype(D, /atom) && !istype(D, /atom/movable))
+	if(!D || (istype(D, /atom) && !istype(D, /atom/movable)))
 		return
 
 	if(force_hard_deletion)

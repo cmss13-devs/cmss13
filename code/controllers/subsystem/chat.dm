@@ -49,7 +49,7 @@ var/datum/subsystem/chat/SSchat
 		return
 	
 	if(!istext(message))
-		CRASH("to_chat called with invalid input type")
+		CRASH("to_chat called with invalid input type ([message])")
 		return
 
 	var/datum/chat_item/ci = new()

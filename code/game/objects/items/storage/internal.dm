@@ -4,6 +4,8 @@
 	var/obj/item/master_item
 
 /obj/item/storage/internal/New(obj/item/MI)
+	if(!MI)
+		CRASH("Internal storage was created without a valid master item! ([loc], [usr])")
 	master_item = MI
 	loc = master_item
 	name = master_item.name

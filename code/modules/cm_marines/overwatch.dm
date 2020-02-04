@@ -23,11 +23,11 @@
 	return
 
 /obj/structure/machinery/computer/overwatch/bullet_act(var/obj/item/projectile/Proj) //Can't shoot it
-	return 0
+	return FALSE
 
 /obj/structure/machinery/computer/overwatch/attack_ai(var/mob/user as mob)
 	if(!ismaintdrone(user))
-		return src.attack_hand(user)
+		return attack_hand(user)
 
 /obj/structure/machinery/computer/overwatch/attack_hand(mob/user)
 	if(..())  //Checks for power outages
@@ -113,14 +113,14 @@
 			var marine_list = document.getElementById("marine_list");
 			var ltr = marine_list.getElementsByTagName("tr");
 
-			for (var i = 0; i < ltr.length; ++i) {
+			for(var i = 0; i < ltr.length; ++i) {
 				try {
 					var tr = ltr\[i\];
 					tr.style.display = '';
 					var ltd = tr.getElementsByTagName("td")
 					var name = ltd\[0\].innerText.toLowerCase();
 					var role = ltd\[1\].innerText.toLowerCase()
-					if (name.indexOf(filter) == -1 && role.indexOf(filter) == -1) {
+					if(name.indexOf(filter) == -1 && role.indexOf(filter) == -1) {
 						tr.style.display = 'none';
 					}
 				} catch(err) {}
@@ -373,7 +373,7 @@
 	if(!href_list["operation"])
 		return
 
-	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (ishighersilicon(usr)))
+	if((usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf))) || (ishighersilicon(usr)))
 		usr.set_interaction(src)
 
 	switch(href_list["operation"])
@@ -436,7 +436,8 @@
 							squad_list += S.name
 
 					var/name_sel = input("Which squad would you like to claim for Overwatch?") as null|anything in squad_list
-					if(!name_sel) return
+					if(!name_sel)
+						return
 					if(operator != usr)
 						return
 					if(current_squad)
@@ -507,7 +508,7 @@
 			to_chat(usr, "[htmlicon(src, usr)] [SPAN_NOTICE("Latitude is now [input].")]")
 			y_bomb = input
 		if("refresh")
-			src.attack_hand(usr)
+			attack_hand(usr)
 		if("change_sort")
 			living_marines_sorting = !living_marines_sorting
 			if(living_marines_sorting)
@@ -587,14 +588,15 @@
 
 //returns the helmet camera the human is wearing
 /obj/structure/machinery/computer/overwatch/proc/get_camera_from_target(mob/living/carbon/human/H)
-	if (current_squad)
-		if (H && istype(H) && istype(H.head, /obj/item/clothing/head/helmet/marine))
+	if(current_squad)
+		if(H && istype(H) && istype(H.head, /obj/item/clothing/head/helmet/marine))
 			var/obj/item/clothing/head/helmet/marine/helm = H.head
 			return helm.camera
 
 //Sends a string to our currently selected squad.
 /obj/structure/machinery/computer/overwatch/proc/send_to_squad(var/txt = "", var/plus_name = 0, var/only_leader = 0)
-	if(txt == "" || !current_squad || !operator) return //Logic
+	if(txt == "" || !current_squad || !operator)
+		return //Logic
 
 	var/text = copytext(sanitize(txt), 1, MAX_MESSAGE_LEN)
 	var/nametext = ""
@@ -626,7 +628,8 @@
 		if(istype(H) && H.stat != DEAD && H.mind && !jobban_isbanned(H, JOB_SQUAD_LEADER))
 			sl_candidates += H
 	var/new_lead = input(usr, "Choose a new Squad Leader") as null|anything in sl_candidates
-	if(!new_lead || new_lead == "Cancel") return
+	if(!new_lead || new_lead == "Cancel")
+		return
 	var/mob/living/carbon/human/H = new_lead
 	if(!istype(H) || !H.mind || H.stat == DEAD) //marines_list replaces mob refs of gibbed marines with just a name string
 		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("[H] is KIA!")]")
@@ -693,15 +696,16 @@
 		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("No squad selected!")]")
 		return
 	var/mob/living/carbon/human/wanted_marine = input(usr, "Report a marine for insubordination") as null|anything in current_squad.marines_list
-	if(!wanted_marine) return
+	if(!wanted_marine)
+		return
 	if(!istype(wanted_marine))//gibbed/deleted, all we have is a name.
 		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("[wanted_marine] is missing in action.")]")
 		return
 
-	for (var/datum/data/record/E in data_core.general)
+	for(var/datum/data/record/E in data_core.general)
 		if(E.fields["name"] == wanted_marine.real_name)
-			for (var/datum/data/record/R in data_core.security)
-				if (R.fields["id"] == E.fields["id"])
+			for(var/datum/data/record/R in data_core.security)
+				if(R.fields["id"] == E.fields["id"])
 					if(!findtext(R.fields["ma_crim"],"Insubordination."))
 						R.fields["criminal"] = "*Arrest*"
 						if(R.fields["ma_crim"] == "None")
@@ -726,8 +730,8 @@
 		return
 	var/datum/squad/S = current_squad
 	var/mob/living/carbon/human/transfer_marine = input(usr, "Choose marine to transfer") as null|anything in current_squad.marines_list
-	if(!transfer_marine) return
-	if(S != current_squad) return //don't change overwatched squad, idiot.
+	if(!transfer_marine || S != current_squad) //don't change overwatched squad, idiot.
+		return
 
 	if(!istype(transfer_marine) || !transfer_marine.mind || transfer_marine.stat == DEAD) //gibbed, decapitated, dead
 		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("[transfer_marine] is KIA.")]")
@@ -738,8 +742,8 @@
 		return
 
 	var/datum/squad/new_squad = input(usr, "Choose the marine's new squad") as null|anything in RoleAuthority.squads
-	if(!new_squad) return
-	if(S != current_squad) return
+	if(!new_squad || S != current_squad)
+		return
 
 	if(!istype(transfer_marine) || !transfer_marine.mind || transfer_marine.stat == DEAD)
 		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("[transfer_marine] is KIA.")]")
@@ -798,7 +802,8 @@
 	to_chat(transfer_marine, "[htmlicon(src, transfer_marine)] <font size='3' color='blue'><B>\[Overwatch\]:</b> You've been transfered to [new_squad]!</font>")
 
 /obj/structure/machinery/computer/overwatch/proc/handle_bombard()
-	if(!usr) return
+	if(!usr)
+		return
 
 	if(busy)
 		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("The [name] is busy processing another action!")]")
@@ -831,11 +836,12 @@
 	visible_message("[htmlicon(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment request for squad '[current_squad]' accepted. Orbital cannons are now calibrating.")]")
 	send_to_squad("Initializing fire coordinates.")
 	playsound(T,'sound/effects/alert.ogg', 25, 1)  //Placeholder
-	sleep(20)
-	send_to_squad("Transmitting beacon feed.")
-	sleep(20)
-	send_to_squad("Calibrating trajectory window.")
-	sleep(20)
+	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/send_to_squad, "Transmitting beacon feed."), SECONDS_2)
+	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/send_to_squad, "Calibrating trajectory window."), SECONDS_4)
+	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/begin_fire, "Calibrating trajectory window."), SECONDS_6)
+	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/fire_bombard, A, T), SECONDS_12)
+
+/obj/structure/machinery/computer/overwatch/proc/begin_fire()
 	for(var/mob/living/carbon/H in living_mob_list)
 		if(H.z == MAIN_SHIP_Z_LEVEL && !H.stat) //USS Almayer decks.
 			to_chat(H, SPAN_WARNING("The deck of the USS Almayer shudders as the orbital cannons open fire on the colony."))
@@ -843,20 +849,23 @@
 				shake_camera(H, 10, 1)
 	visible_message("[htmlicon(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment for squad '[current_squad]' has fired! Impact imminent!")]")
 	send_to_squad("WARNING! Ballistic trans-atmospheric launch detected! Get outside of Danger Close!")
-	spawn(6)
-		if(A)
-			message_staff(FONT_SIZE_HUGE("ALERT: [usr] ([usr.key]) fired an orbital bombardment in [A.name] for squad '[current_squad]' (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
-			log_attack("[usr.name] ([usr.ckey]) fired an orbital bombardment in [A.name] for squad '[current_squad]'")
-		busy = 0
-		var/turf/target = locate(T.x + rand(-3, 3), T.y + rand(-3, 3), T.z)
-		if(target && istype(target))
-			almayer_orbital_cannon.fire_ob_cannon(target, usr)
-			if(ismob(usr))
-				var/mob/M = usr
-				M.count_niche_stat(STATISTICS_NICHE_OB)
+
+/obj/structure/machinery/computer/overwatch/proc/fire_bombard(area/A, turf/T)
+	if(!A || !T)
+		return
+
+	message_staff(FONT_SIZE_HUGE("ALERT: [usr] ([usr.key]) fired an orbital bombardment in [A.name] for squad '[current_squad]' (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
+	log_attack("[usr.name] ([usr.ckey]) fired an orbital bombardment in [A.name] for squad '[current_squad]'")
+
+	busy = FALSE
+	var/turf/target = locate(T.x + rand(-3, 3), T.y + rand(-3, 3), T.z)
+	if(target && istype(target))
+		almayer_orbital_cannon.fire_ob_cannon(target, usr)
+		if(ismob(usr))
+			var/mob/M = usr
+			M.count_niche_stat(STATISTICS_NICHE_OB)
 
 /obj/structure/machinery/computer/overwatch/proc/handle_supplydrop()
-
 	if(!usr || usr != operator)
 		return
 
@@ -893,27 +902,29 @@
 	C.anchored = TRUE //To avoid accidental pushes
 	send_to_squad("'[C.name]' supply drop incoming. Heads up!")
 	var/datum/squad/S = current_squad //in case the operator changes the overwatched squad mid-drop
-	spawn(100)
-		if(!C || C.loc != S.drop_pad.loc) //Crate no longer on pad somehow, abort.
-			if(C) C.anchored = FALSE
-			to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Launch aborted! No crate detected on the drop pad.")]")
-			return
-		S.supply_cooldown = world.time
-		if(ismob(usr))
-			var/mob/M = usr
-			M.count_niche_stat(STATISTICS_NICHE_CRATES)
+	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/finish_supplydrop, C, S, T), SECONDS_10)
 
-		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
-		C.anchored = FALSE
-		C.z = T.z
-		C.x = T.x
-		C.y = T.y
-		var/turf/TC = get_turf(C)
-		TC.ceiling_debris_check(3)
-		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehhhhhhhhh.
-		C.visible_message("[htmlicon(C)] [SPAN_BOLDNOTICE("The '[C.name]' supply drop falls from the sky!")]")
-		visible_message("[htmlicon(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
-		busy = 0
+/obj/structure/machinery/computer/overwatch/proc/finish_supplydrop(obj/structure/closet/crate/C, datum/squad/S, turf/T)
+	if(!C || C.loc != S.drop_pad.loc) //Crate no longer on pad somehow, abort.
+		if(C) C.anchored = FALSE
+		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Launch aborted! No crate detected on the drop pad.")]")
+		return
+	S.supply_cooldown = world.time
+	if(ismob(usr))
+		var/mob/M = usr
+		M.count_niche_stat(STATISTICS_NICHE_CRATES)
+
+	playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
+	C.anchored = FALSE
+	C.z = T.z
+	C.x = T.x
+	C.y = T.y
+	var/turf/TC = get_turf(C)
+	TC.ceiling_debris_check(3)
+	playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehhhhhhhhh.
+	C.visible_message("[htmlicon(C)] [SPAN_BOLDNOTICE("The '[C.name]' supply drop falls from the sky!")]")
+	visible_message("[htmlicon(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
+	busy = FALSE
 
 /obj/structure/machinery/computer/overwatch/almayer
 	density = 0
@@ -932,17 +943,16 @@
 	var/squad = "Alpha"
 	var/sending_package = 0
 
-	New() //Link a squad to a drop pad
-		..()
-		spawn(10)
-			force_link()
+/obj/structure/supply_drop/Initialize() //Link a squad to a drop pad
+	. = ..()
+	var/datum/squad/S = get_squad_by_name(squad)
+	if(!S)
+		CRASH("Alert! Supply drop pads did not initialize properly.")
+	if(!S.drop_pad)
+		force_link(S)
 
-	proc/force_link() //Somehow, it didn't get set properly on the new proc. Force it again,
-		var/datum/squad/S = get_squad_by_name(squad)
-		if(S)
-			S.drop_pad = src
-		else
-			to_world("Alert! Supply drop pads did not initialize properly.")
+/obj/structure/supply_drop/proc/force_link(datum/squad/S) //Somehow, it didn't get set properly on the new proc. Force it again,
+	S.drop_pad = src
 
 /obj/structure/supply_drop/alpha
 	icon_state = "alphadrop"

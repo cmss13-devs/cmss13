@@ -25,8 +25,8 @@
 //Adds stuff to your "Status" pane -- Specific castes can have their own, like carrier hugger count
 //Those are dealt with in their caste files.
 /mob/living/carbon/Xenomorph/Stat()
-	if (!..())
-		return 0
+	if(!..())
+		return FALSE
 
 	stat("Time:","[worldtime2text()]")
 
@@ -46,7 +46,7 @@
 
 	if(mutators.remaining_points > 0)
 		stat("Mutator Points:", "[mutators.remaining_points]")
-	if(isXenoQueenLeadingHive(src) && hive.mutators.remaining_points > 0)
+	if(hive && isXenoQueenLeadingHive(src) && hive.mutators.remaining_points > 0)
 		stat("Hive Mutator Points:", "[hive.mutators.remaining_points]")
 
 	stat("")
@@ -84,50 +84,50 @@
 
 	stat(null,"")
 
-	if(!hive.living_xeno_queen)
+	if(hive && !hive.living_xeno_queen)
 		stat("Queen's Location:", "NO QUEEN")
-	else if(!(caste_name == "Queen"))
+	else if(hive && !(caste_name == "Queen"))
 		stat("Queen's Location:", "[hive.living_xeno_queen.loc.loc.name]")
 
-	if(hive.slashing_allowed == 1)
+	if(hive && hive.slashing_allowed == 1)
 		stat("Slashing:", "PERMITTED")
 	else if(hive.slashing_allowed == 2)
 		stat("Slashing:", "LIMITED")
 	else
 		stat("Slashing:", "FORBIDDEN")
 
-	if(!hive.hive_orders)
+	if(hive && !hive.hive_orders)
 		stat("Hive Orders:", "-")
 	else
 		stat("Hive Orders:", "[hive.hive_orders]")
 
 	stat("")
-	return 1
+	return TRUE
 
 //A simple handler for checking your state. Used in pretty much all the procs.
 /mob/living/carbon/Xenomorph/proc/check_state(var/permissive = 0)
 	if(!permissive)
 		if(is_mob_incapacitated() || lying || buckled)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
-			return 0
-		else if (!(caste_name == "Queen") && observed_xeno)
+			return FALSE
+		else if(!(caste_name == "Queen") && observed_xeno)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 	else
 		if(is_mob_incapacitated() || buckled)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
-			return 0
+			return FALSE
 
-	return 1
+	return TRUE
 
 //Checks your plasma levels and gives a handy message.
 /mob/living/carbon/Xenomorph/proc/check_plasma(value)
 	if(stat)
 		to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
-		return 0
+		return FALSE
 
 	if(dazed)
 		to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
-		return 0
+		return FALSE
 
 	if(value)
 		if(plasma_stored < value)
@@ -135,8 +135,8 @@
 				to_chat(src, SPAN_WARNING("Beep. You do not have enough plasma to do this. You require [value] plasma but have only [plasma_stored] stored."))
 			else
 				to_chat(src, SPAN_WARNING("You do not have enough plasma to do this. You require [value] plasma but have only [plasma_stored] stored."))
-			return 0
-	return 1
+			return FALSE
+	return TRUE
 
 /mob/living/carbon/Xenomorph/proc/use_plasma(value)
 	plasma_stored = max(plasma_stored - value, 0)
@@ -279,9 +279,7 @@
 			if(pounce_slash)
 				M.attack_alien(src)
 			if(!caste.is_robotic) playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
-			spawn(caste.charge_type == 1 ? 5 : 15)
-				frozen = FALSE
-				update_canmove()
+			add_timer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/charge_unfreeze), caste.charge_type == 1 ? 5 : 15)
 
 		if(3) //Ravagers get a free attack if they charge into someone. This will tackle if disarm is set instead.
 			var/primordial_bonus = 0
@@ -295,6 +293,10 @@
 			M.attack_alien(src) //Free hit/grab/tackle. Does not weaken, and it's just a regular slash if they choose to do that.
 
 	throwing = FALSE //Reset throwing since something was hit.
+
+/mob/living/carbon/Xenomorph/proc/charge_unfreeze()
+	frozen = FALSE
+	update_canmove()
 
 /mob/living/carbon/Xenomorph/obj_launch_collision(var/obj/O)
 	if(!caste.charge_type || stat || (!throwing && used_pounce)) //No charge type, unconscious or dead, or not throwing but used pounce.
@@ -358,11 +360,11 @@
 
 	flick_attack_overlay(M, "slash") //TODO: Special bite attack overlay ?
 	playsound(loc, "alien_bite", 25)
-	visible_message(SPAN_DANGER("\The [M] is viciously shredded by \the [src]'s sharp teeth!"), \
-	SPAN_DANGER("You viciously rend \the [M] with your teeth!"), null, 5)
+	visible_message(SPAN_DANGER("[M] is viciously shredded by [src]'s sharp teeth!"), \
+	SPAN_DANGER("You viciously rend [M] with your teeth!"), null, 5)
 	M.last_damage_source = initial(name)
 	M.last_damage_mob = src
-	M.attack_log += text("\[[time_stamp()]\] <font color='red'>bit [src.name] ([src.ckey])</font>")
+	M.attack_log += text("\[[time_stamp()]\] <font color='red'>bit [name] ([ckey])</font>")
 	attack_log += text("\[[time_stamp()]\] <font color='orange'>was bitten by [M.name] ([M.ckey])</font>")
 
 	var/armor_block = getarmor(affecting, ARMOR_MELEE)
@@ -389,12 +391,12 @@
 
 	flick_attack_overlay(M, "tail")
 	playsound(M.loc, 'sound/weapons/alien_tail_attack.ogg', 25, 1) //Stolen from Yautja! Owned!
-	visible_message(SPAN_DANGER("\The [M] is suddenly impaled by \the [src]'s sharp tail!"), \
-	SPAN_DANGER("You violently impale \the [M] with your tail!"), null, 5)
+	visible_message(SPAN_DANGER("[M] is suddenly impaled by [src]'s sharp tail!"), \
+	SPAN_DANGER("You violently impale [M] with your tail!"), null, 5)
 	M.last_damage_source = initial(name)
 	M.last_damage_mob = src
 	M.attack_log += text("\[[time_stamp()]\] <font color='red'>tail-stabbed [M.name] ([M.ckey])</font>")
-	attack_log += text("\[[time_stamp()]\] <font color='orange'>was tail-stabbed by [src.name] ([src.ckey])</font>")
+	attack_log += text("\[[time_stamp()]\] <font color='orange'>was tail-stabbed by [name] ([ckey])</font>")
 
 	var/armor_block = getarmor(affecting, ARMOR_MELEE)
 	var/n_damage = armor_damage_reduction(config.marine_melee, damage, armor_block, 25)
@@ -408,9 +410,9 @@
 			victim.acid_damage = 0
 			victim.forceMove(get_true_turf(loc))
 
-			visible_message(SPAN_XENOWARNING("\The [src] hurls out the contents of their stomach!"), \
+			visible_message(SPAN_XENOWARNING("[src] hurls out the contents of their stomach!"), \
 			SPAN_XENOWARNING("You hurl out the contents of your stomach!"), null, 5)
-			playsound(get_true_location(src.loc), 'sound/voice/alien_drool2.ogg', 50, 1)
+			playsound(get_true_location(loc), 'sound/voice/alien_drool2.ogg', 50, 1)
 
 			if(!stunned)
 				victim.SetStunned(0)
@@ -497,7 +499,7 @@
 		to_chat(src, SPAN_WARNING("There's something built here already."))
 		return
 
-	return 1
+	return TRUE
 
 /mob/living/carbon/Xenomorph/drop_held_item()
 	var/obj/item/clothing/mask/facehugger/F = get_active_hand()
@@ -599,18 +601,18 @@
 
 //Welp
 /mob/living/carbon/Xenomorph/proc/xeno_jitter(var/jitter_time = 25)
-
 	set waitfor = 0
 
-	while(jitter_time) //In ticks, so 10 ticks = 1 sec of jitter!
-		set waitfor = 0
-		pixel_x = old_x + rand(-3, 3)
-		pixel_y = old_y + rand(-1, 1)
-		sleep(1)
-		jitter_time--
-	//endwhile - reset the pixel offsets to zero
-	pixel_x = old_x
-	pixel_y = old_y
+	pixel_x = old_x + rand(-3, 3)
+	pixel_y = old_y + rand(-1, 1)
+	jitter_time--
+
+	if(jitter_time)
+		add_timer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/xeno_jitter, jitter_time), 1)
+	else
+		//endwhile - reset the pixel offsets to zero
+		pixel_x = old_x
+		pixel_y = old_y
 
 //When the Queen's pheromones are updated, or we add/remove a leader, update leader pheromones
 /mob/living/carbon/Xenomorph/proc/handle_xeno_leader_pheromones()
@@ -640,10 +642,10 @@
 
 // Handle queued actions.
 /mob/living/carbon/Xenomorph/proc/handle_queued_action(atom/A)
-	if (!queued_action || !istype(queued_action) || !(queued_action in actions))
+	if(!queued_action || !istype(queued_action) || !(queued_action in actions))
 		return
 
-	if (queued_action.can_use_action() && queued_action.action_cooldown_check())
+	if(queued_action.can_use_action() && queued_action.action_cooldown_check())
 		queued_action.use_ability(A)
 
 	queued_action = null

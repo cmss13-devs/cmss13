@@ -384,20 +384,24 @@
 	var/old_icon = attack_icon.icon_state
 	var/old_pix_x = attack_icon.pixel_x
 	var/old_pix_y = attack_icon.pixel_y
-	sleep(4)
-	if(target)
-		var/new_icon = attack_icon.icon_state
-		var/new_pix_x = attack_icon.pixel_x
-		var/new_pix_y = attack_icon.pixel_x
-		attack_icon.icon_state = old_icon //necessary b/c the attack_icon can change sprite during the sleep.
-		attack_icon.pixel_x = old_pix_x
-		attack_icon.pixel_y = old_pix_y
+	add_timer(CALLBACK(src, /mob/living/proc/finish_attack_overlay, target, old_icon, old_pix_x, old_pix_y), SECONDS_4)
 
-		target.overlays -= attack_icon
+/mob/living/proc/finish_attack_overlay(atom/target, old_icon, old_pix_x, old_pix_y)
+	if(!attack_icon || !target)
+		return FALSE
 
-		attack_icon.icon_state = new_icon
-		attack_icon.pixel_x = new_pix_x
-		attack_icon.pixel_y = new_pix_y
+	var/new_icon = attack_icon.icon_state
+	var/new_pix_x = attack_icon.pixel_x
+	var/new_pix_y = attack_icon.pixel_x
+	attack_icon.icon_state = old_icon //necessary b/c the attack_icon can change sprite during the sleep.
+	attack_icon.pixel_x = old_pix_x
+	attack_icon.pixel_y = old_pix_y
+
+	target.overlays -= attack_icon
+
+	attack_icon.icon_state = new_icon
+	attack_icon.pixel_x = new_pix_x
+	attack_icon.pixel_y = new_pix_y
 
 
 

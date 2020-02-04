@@ -28,7 +28,7 @@
 	anchored = 1
 	density = 1
 	var/datum/song/song
-	var/playing = 0
+	var/playing = FALSE
 	var/help = 0
 	var/edit = 1
 	var/repeat = 0
@@ -237,9 +237,13 @@
 			//world << line
 			for(var/beat in splittext(lowertext(line), ","))
 				var/list/notes = splittext(beat, "/")
+				if(!notes.len)
+					playing = FALSE
+					updateUsrDialog()
+					return
 				for(var/note in splittext(notes[1], "-"))
 					if(!playing || !anchored)//If the piano is playing, or is loose
-						playing = 0
+						playing = FALSE
 						return
 					if(length(note) == 0)
 						continue
@@ -263,7 +267,7 @@
 		if(repeat > 0)
 			repeat-- //Infinite loops are baaaad.
 	while(repeat > 0)
-	playing = 0
+	playing = FALSE
 	updateUsrDialog()
 
 /obj/structure/device/piano/attack_hand(var/mob/user as mob)
@@ -345,7 +349,7 @@
 
 		else if(href_list["play"])
 			if(song)
-				playing = 1
+				playing = TRUE
 				spawn() playsong()
 
 		else if(href_list["newline"])
@@ -376,7 +380,7 @@
 			song.lines[num] = content
 
 		else if(href_list["stop"])
-			playing = 0
+			playing = FALSE
 
 		else if(href_list["help"])
 			help = text2num(href_list["help"]) - 1
@@ -400,6 +404,9 @@
 			//split into lines
 			spawn()
 				var/list/lines = splittext(t, "\n")
+				if(!lines.len)
+					updateUsrDialog()
+					return
 				var/tempo = 5
 				if(copytext(lines[1],1,6) == "BPM: ")
 					var/bpm = text2num(copytext(lines[1],6))

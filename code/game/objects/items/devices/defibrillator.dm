@@ -85,6 +85,8 @@
 				return ghost
 
 /mob/living/carbon/human/proc/is_revivable()
+	if(!internal_organs_by_name["heart"])
+		return FALSE
 	var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
 
 	if(!get_limb("head") || !heart || heart.is_broken() || !has_brain() || chestburst || status_flags & PERMANENTLY_DEAD)

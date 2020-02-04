@@ -941,7 +941,7 @@
 		last_damage_source = "[P.weapon_source]"
 	else
 		last_damage_source = initial(P.name)
-	if(ismob(P.firer))
+	if(P.firer && ismob(P.firer))
 		var/mob/firingMob = P.firer
 		last_damage_mob = firingMob
 		if(ishuman(firingMob) && ishuman(src) && firingMob.mind && mind && mind.faction == firingMob.mind.faction) //One human shot another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
@@ -957,7 +957,7 @@
 				last_damage_mob = P.weapon_source_mob
 			attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> shot <b>[src]/[src.ckey]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
 			P.firer:attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> shot <b>[src]/[ckey]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
-			msg_admin_attack("[firingMob] ([firingMob.ckey]) shot [src] ([ckey]) with \a [P.name] in [get_area(P.firer)] ([P.firer.loc.x],[P.firer.loc.y],[P.firer.loc.z]).", P.firer.loc.x, P.firer.loc.y, P.firer.loc.z)
+			msg_admin_attack("[firingMob] ([firingMob.ckey]) shot [src] ([ckey]) with \a [P.name] in [get_area(P.firer)] ([P.firer.x],[P.firer.y],[P.firer.z]).", P.firer.x, P.firer.y, P.firer.z)
 		return
 
 	if(P.weapon_source_mob)

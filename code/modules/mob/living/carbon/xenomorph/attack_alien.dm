@@ -9,8 +9,8 @@
 
 
 /mob/living/carbon/human/attack_alien(mob/living/carbon/Xenomorph/M, dam_bonus)
-	if (M.fortify || M.burrow)
-		return 0
+	if(M.fortify || M.burrow)
+		return FALSE
 
 	//Reviewing the four primary intents
 	switch(M.a_intent)
@@ -19,24 +19,24 @@
 			if(on_fire)
 				extinguish_mob(M)
 			else
-				M.visible_message(SPAN_NOTICE("\The [M] caresses [src] with its scythe-like arm."), \
+				M.visible_message(SPAN_NOTICE("[M] caresses [src] with its scythe-like arm."), \
 				SPAN_NOTICE("You caress [src] with your scythe-like arm."), null, 5, CHAT_TYPE_XENO_FLUFF)
 
 		if("grab")
 			if(M == src || anchored || buckled)
-				return 0
+				return FALSE
 
 			if(check_shields(0, M.name) && prob(66)) //Bit of a bonus
-				M.visible_message(SPAN_DANGER("\The [M]'s grab is blocked by [src]'s shield!"), \
+				M.visible_message(SPAN_DANGER("[M]'s grab is blocked by [src]'s shield!"), \
 				SPAN_DANGER("Your grab was blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				playsound(loc, 'sound/weapons/alien_claw_block.ogg', 25, 1) //Feedback
-				return 0
+				return FALSE
 
 			if(Adjacent(M)) //Logic!
 				M.start_pulling(src)
 
 		if("hurt")
-			if(!M.hive.slashing_allowed && (M.caste && !M.caste.is_intelligent))
+			if(M.hive && !M.hive.slashing_allowed && (M.caste && !M.caste.is_intelligent))
 				to_chat(M, SPAN_WARNING("Slashing is currently <b>forbidden</b> by the Queen. You refuse to slash [src]."))
 				return FALSE
 
@@ -45,7 +45,7 @@
 				return FALSE
 
 			if(M.caste && !M.caste.is_intelligent)
-				if(M.hive.slashing_allowed == 2)
+				if(M.hive && M.hive.slashing_allowed == 2)
 					if(status_flags & XENO_HOST)
 						for(var/obj/item/alien_embryo/embryo in src)
 							if(embryo.hivenumber == M.hivenumber)
@@ -63,7 +63,7 @@
 							return FALSE
 
 			if(check_shields(0, M.name) && prob(66)) //Bit of a bonus
-				M.visible_message(SPAN_DANGER("\The [M]'s slash is blocked by [src]'s shield!"), \
+				M.visible_message(SPAN_DANGER("[M]'s slash is blocked by [src]'s shield!"), \
 				SPAN_DANGER("Your slash is blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				return FALSE
 
@@ -84,12 +84,12 @@
 			//Check for a special bite attack
 			if(M.caste && prob(M.caste.bite_chance))
 				M.bite_attack(src, damage)
-				return 1
+				return TRUE
 
 			//Check for a special tail attack
 			if(M.caste && prob(M.caste.tail_chance))
 				M.tail_attack(src, damage)
-				return 1
+				return TRUE
 
 
 			// Check for guaranteed Ravager tail stab
@@ -103,9 +103,9 @@
 			if(!damage)
 				playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
 				M.animation_attack_on(src)
-				M.visible_message(SPAN_DANGER("\The [M] lunges at [src]!"), \
+				M.visible_message(SPAN_DANGER("[M] lunges at [src]!"), \
 				SPAN_DANGER("You lunge at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-				return 0
+				return FALSE
 
 			M.flick_attack_overlay(src, "slash")
 			var/datum/limb/affecting
@@ -131,29 +131,29 @@
 						SPAN_DANGER("You smash off [src]'s [wear_mask.name]!"), null, 5)
 						drop_inv_item_on_ground(wear_mask)
 						emote("roar")
-						return 1
+						return TRUE
 
 			//The normal attack proceeds
 			playsound(loc, "alien_claw_flesh", 25, 1)
-			M.visible_message(SPAN_DANGER("\The [M] slashes [src]!"), \
+			M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
 			SPAN_DANGER("You slash [src]!"), null, null, CHAT_TYPE_XENO_COMBAT)
 
 			last_damage_source = initial(M.name)
 			last_damage_mob = M
 
 			//Logging, including anti-rulebreak logging
-			if(src.status_flags & XENO_HOST && src.stat != DEAD)
-				if(istype(src.buckled, /obj/structure/bed/nest)) //Host was buckled to nest while infected, this is a rule break
-					src.attack_log += text("\[[time_stamp()]\] <font color='orange'><B>was slashed by [M.name] ([M.ckey]) while they were infected and nested</B></font>")
-					M.attack_log += text("\[[time_stamp()]\] <font color='red'><B>slashed [src.name] ([src.ckey]) while they were infected and nested</B></font>")
+			if(status_flags & XENO_HOST && stat != DEAD)
+				if(istype(buckled, /obj/structure/bed/nest)) //Host was buckled to nest while infected, this is a rule break
+					attack_log += text("\[[time_stamp()]\] <font color='orange'><B>was slashed by [M.name] ([M.ckey]) while they were infected and nested</B></font>")
+					M.attack_log += text("\[[time_stamp()]\] <font color='red'><B>slashed [name] ([ckey]) while they were infected and nested</B></font>")
 					msg_admin_ff("[key_name(M)] slashed [key_name(src)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
 				else //Host might be rogue, needs further investigation
-					src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [M.name] ([M.ckey]) while they were infected</font>")
-					M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [src.name] ([src.ckey]) while they were infected</font>")
+					attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [M.name] ([M.ckey]) while they were infected</font>")
+					M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [name] ([ckey]) while they were infected</font>")
 			else //Normal xenomorph friendship with benefits
-				src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [M.name] ([M.ckey])</font>")
-				M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [src.name] ([src.ckey])</font>")
-			log_attack("[M.name] ([M.ckey]) slashed [src.name] ([src.ckey])")
+				attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [M.name] ([M.ckey])</font>")
+				M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [name] ([ckey])</font>")
+			log_attack("[M.name] ([M.ckey]) slashed [name] ([ckey])")
 
 			if(isXenoRavager(M))
 				var/mob/living/carbon/Xenomorph/Ravager/R = M
@@ -164,10 +164,10 @@
 					R.shrapnel_embed(src, affecting)
 
 			// Snowflake code for Praetorian, unfortunately there's no place to put this other than here. Fortunately its very cheap
-			if (isXenoPraetorian(M))
+			if(isXenoPraetorian(M))
 				var/mob/living/carbon/Xenomorph/Praetorian/P = M
 				var/datum/caste_datum/praetorian/pCaste = P.caste
-				if (P.prae_status_flags & PRAE_DANCER_STATSBUFFED && P.mutation_type == PRAETORIAN_DANCER)
+				if(P.prae_status_flags & PRAE_DANCER_STATSBUFFED && P.mutation_type == PRAETORIAN_DANCER)
 					damage += 15 // Only slightly stronger than a normal attack, Praes should be using impale here
 					to_chat(P, SPAN_WARNING("You expend your dance to empower your attack!"))
 					P.speed_modifier += pCaste.dance_speed_buff
@@ -179,9 +179,9 @@
 
 			var/n_damage = armor_damage_reduction(config.marine_melee, damage, armor_block)
 			//nice messages so people know that armor works
-			if (n_damage <= 0.34*damage)
+			if(n_damage <= 0.34*damage)
 				show_message(SPAN_WARNING("Your armor absorbs the blow!"), null, null, null, CHAT_TYPE_ARMOR_DAMAGE)
-			else if (n_damage <= 0.67*damage)
+			else if(n_damage <= 0.67*damage)
 				show_message(SPAN_WARNING("Your armor softens the blow!"), null, null, null, CHAT_TYPE_ARMOR_DAMAGE)
 
 			apply_damage(n_damage, BRUTE, affecting, 0, sharp = 1, edge = 1) //This should slicey dicey
@@ -190,9 +190,9 @@
 				var/armor_block_acid = getarmor(affecting, ARMOR_BIO)
 				var/n_acid_damage = armor_damage_reduction(config.marine_melee, acid_damage, armor_block_acid)
 				//nice messages so people know that armor works
-				if (n_acid_damage <= 0.34*acid_damage)
+				if(n_acid_damage <= 0.34*acid_damage)
 					show_message(SPAN_WARNING("Your armor protects your from acid!"), null, null, null, CHAT_TYPE_ARMOR_DAMAGE)
-				else if (n_acid_damage <= 0.67*acid_damage)
+				else if(n_acid_damage <= 0.67*acid_damage)
 					show_message(SPAN_WARNING("Your armor reduces the effect of the acid!"), null, null, null, CHAT_TYPE_ARMOR_DAMAGE)
 				apply_damage(n_acid_damage, BURN, affecting, 0) //Burn damage
 
@@ -201,28 +201,28 @@
 		if("disarm")
 			if(M.legcuffed && isYautja(src))
 				to_chat(M, SPAN_XENODANGER("You don't have the dexterity to tackle the headhunter with that thing on your leg!"))
-				return 0
+				return FALSE
 			M.animation_attack_on(src)
 			if(check_shields(0, M.name) && prob(66)) //Bit of a bonus
-				M.visible_message(SPAN_DANGER("\The [M]'s tackle is blocked by [src]'s shield!"), \
+				M.visible_message(SPAN_DANGER("[M]'s tackle is blocked by [src]'s shield!"), \
 				SPAN_DANGER("Your tackle is blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-				return 0
+				return FALSE
 			M.flick_attack_overlay(src, "disarm")
 			if(knocked_down)
 				if(isYautja(src))
 					if(prob(95))
-						M.visible_message(SPAN_DANGER("[src] avoids \the [M]'s tackle!"), \
+						M.visible_message(SPAN_DANGER("[src] avoids [M]'s tackle!"), \
 						SPAN_DANGER("[src] avoids your attempt to tackle them!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 						playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-						return 1
+						return TRUE
 				else if(prob(80))
 					playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-					M.visible_message(SPAN_DANGER("\The [M] tries to tackle [src], but they are already down!"), \
+					M.visible_message(SPAN_DANGER("[M] tries to tackle [src], but they are already down!"), \
 					SPAN_DANGER("You try to tackle [src], but they are already down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-					return 1
+					return TRUE
 				playsound(loc, 'sound/weapons/pierce.ogg', 25, 1)
 				KnockDown(rand(M.tacklemin, M.tacklemax)) //Min and max tackle strenght. They are located in individual caste files.
-				M.visible_message(SPAN_DANGER("\The [M] tackles down [src]!"), \
+				M.visible_message(SPAN_DANGER("[M] tackles down [src]!"), \
 				SPAN_DANGER("You tackle down [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 
 			else
@@ -231,53 +231,53 @@
 					if(M.caste && prob((M.caste.tackle_chance + tackle_bonus)*0.2))
 						playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 						KnockDown(rand(M.tacklemin, M.tacklemax))
-						M.visible_message(SPAN_DANGER("\The [M] tackles down [src]!"), \
+						M.visible_message(SPAN_DANGER("[M] tackles down [src]!"), \
 						SPAN_DANGER("You tackle down [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-						return 1
+						return TRUE
 					else
 						playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-						M.visible_message(SPAN_DANGER("\The [M] tries to tackle [src]"), \
+						M.visible_message(SPAN_DANGER("[M] tries to tackle [src]"), \
 						SPAN_DANGER("You try to tackle [src]"), null, 5, CHAT_TYPE_XENO_COMBAT)
-						return 1
+						return TRUE
 				else if(M.caste && prob(M.caste.tackle_chance + tackle_bonus)) //Tackle_chance is now a special var for each caste.
 					playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 					KnockDown(rand(M.tacklemin, M.tacklemax))
-					M.visible_message(SPAN_DANGER("\The [M] tackles down [src]!"), \
+					M.visible_message(SPAN_DANGER("[M] tackles down [src]!"), \
 					SPAN_DANGER("You tackle down [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-					return 1
+					return TRUE
 
 				playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-				M.visible_message(SPAN_DANGER("\The [M] tries to tackle [src]"), \
+				M.visible_message(SPAN_DANGER("[M] tries to tackle [src]"), \
 				SPAN_DANGER("You try to tackle [src]"), null, 5, CHAT_TYPE_XENO_COMBAT)
-	return 1
+	return TRUE
 
 
 //Every other type of nonhuman mob
 /mob/living/attack_alien(mob/living/carbon/Xenomorph/M)
-	if (M.fortify || M.burrow)
-		return 0
+	if(M.fortify || M.burrow)
+		return FALSE
 
 	switch(M.a_intent)
 		if("help")
-			M.visible_message(SPAN_NOTICE("\The [M] caresses [src] with its scythe-like arm."), \
+			M.visible_message(SPAN_NOTICE("[M] caresses [src] with its scythe-like arm."), \
 			SPAN_NOTICE("You caress [src] with your scythe-like arm."), null, 5, CHAT_TYPE_XENO_FLUFF)
-			return 0
+			return FALSE
 
 		if("grab")
 			if(M == src || anchored || buckled)
-				return 0
+				return FALSE
 
 			if(Adjacent(M)) //Logic!
 				M.start_pulling(src)
 
 		if("hurt")
 			if(isXeno(src) && xeno_hivenumber(src) == M.hivenumber)
-				M.visible_message(SPAN_WARNING("\The [M] nibbles [src]."), \
+				M.visible_message(SPAN_WARNING("[M] nibbles [src]."), \
 				SPAN_WARNING("You nibble [src]."), null, 5, CHAT_TYPE_XENO_FLUFF)
-				return 1
+				return TRUE
 
 			if(M.caste && !M.caste.is_intelligent)
-				if(M.hive.slashing_allowed == 2)
+				if(M.hive && M.hive.slashing_allowed == 2)
 					if(status_flags & XENO_HOST)
 						for(var/obj/item/alien_embryo/embryo in src)
 							if(embryo.hivenumber == M.hivenumber)
@@ -314,28 +314,28 @@
 			if(!damage)
 				playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
 				M.animation_attack_on(src)
-				M.visible_message(SPAN_DANGER("\The [M] lunges at [src]!"), \
+				M.visible_message(SPAN_DANGER("[M] lunges at [src]!"), \
 				SPAN_DANGER("You lunge at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-				return 0
+				return FALSE
 
 			last_damage_source = initial(M.name)
 			last_damage_mob = M
-			M.visible_message(SPAN_DANGER("\The [M] slashes [src]!"), \
+			M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
 			SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [M.name] ([M.ckey])</font>")
-			M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [src.name] ([src.ckey])</font>")
-			log_attack("[M.name] ([M.ckey]) slashed [src.name] ([src.ckey])")
+			attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [M.name] ([M.ckey])</font>")
+			M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [name] ([ckey])</font>")
+			log_attack("[M.name] ([M.ckey]) slashed [name] ([ckey])")
 
 			playsound(loc, "alien_claw_flesh", 25, 1)
 			apply_damage(damage, BRUTE)
 
 		if("disarm")
 			playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
-			M.visible_message(SPAN_WARNING("\The [M] shoves [src]!"), \
+			M.visible_message(SPAN_WARNING("[M] shoves [src]!"), \
 			SPAN_WARNING("You shove [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			if(ismonkey(src))
 				KnockDown(8)
-	return 0
+	return FALSE
 
 /mob/living/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
 	M.visible_message(SPAN_DANGER("[M] nudges its head against [src]."), \
@@ -345,14 +345,14 @@
 	return TRUE
 
 /mob/living/carbon/human/is_xeno_grabbable()
-	if (stat != DEAD || chestburst)
+	if(stat != DEAD || chestburst)
 		return TRUE
 
-	if (status_flags & XENO_HOST)
-		for (var/obj/item/alien_embryo/AE in contents)
-			if (AE.stage <= 1)
+	if(status_flags & XENO_HOST)
+		for(var/obj/item/alien_embryo/AE in contents)
+			if(AE.stage <= 1)
 				return FALSE
-		if (world.time > timeofdeath + revive_grace_period)
+		if(world.time > timeofdeath + revive_grace_period)
 			return FALSE // they ain't gonna burst now
 	else
 		return FALSE // leave the dead alone
@@ -372,7 +372,7 @@
 		playsound(loc, "alien_claw_metal", 25, 1)
 		M.flick_attack_overlay(src, "slash")
 		health -= 15
-		playsound(src.loc, "alien_claw_metal", 25, 1)
+		playsound(loc, "alien_claw_metal", 25, 1)
 		M.visible_message(SPAN_DANGER("[M] slashes [src]."),SPAN_DANGER("You slash [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 		healthcheck()
 	else
@@ -384,7 +384,7 @@
 
 //Closets are used just like humans would
 /obj/structure/closet/attack_alien(mob/user as mob)
-	return src.attack_hand(user)
+	return attack_hand(user)
 
 //Breaking tables and racks
 /obj/structure/table/attack_alien(mob/living/carbon/Xenomorph/M)
@@ -396,7 +396,7 @@
 			playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 		health -= rand(M.melee_damage_lower, M.melee_damage_upper)
 		if(health <= 0)
-			M.visible_message(SPAN_DANGER("\The [M] slices [src] apart!"), \
+			M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
 			SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			destroy()
 		else
@@ -431,7 +431,7 @@
 //Default "structure" proc. This should be overwritten by sub procs.
 //If we sent it to monkey we'd get some weird shit happening.
 /obj/structure/attack_alien(mob/living/carbon/Xenomorph/M)
-	return 0
+	return FALSE
 
 
 //Beds, nests and chairs - unbuckling
@@ -453,17 +453,17 @@
 //Smashing lights
 /obj/structure/machinery/light/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(status == 2) //Ignore if broken. Note that we can't use defines here
-		return 0
+		return FALSE
 	M.animation_attack_on(src)
-	M.visible_message(SPAN_DANGER("\The [M] smashes [src]!"), \
+	M.visible_message(SPAN_DANGER("[M] smashes [src]!"), \
 	SPAN_DANGER("You smash [src]!"), null, 5)
 	broken() //Smashola!
 
 //Smashing windows
 /obj/structure/window/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(M.a_intent == HELP_INTENT)
-		playsound(src.loc, 'sound/effects/glassknock.ogg', 25, 1)
-		M.visible_message(SPAN_WARNING("\The [M] creepily taps on [src] with its huge claw."), \
+		playsound(loc, 'sound/effects/glassknock.ogg', 25, 1)
+		M.visible_message(SPAN_WARNING("[M] creepily taps on [src] with its huge claw."), \
 		SPAN_WARNING("You creepily tap on [src]."), \
 		SPAN_WARNING("You hear a glass tapping sound."), 5, CHAT_TYPE_XENO_COMBAT)
 	else
@@ -474,20 +474,20 @@
 	M.animation_attack_on(src)
 	health -= rand(15, 30)
 	if(health <= 0)
-		M.visible_message(SPAN_DANGER("\The [M] slices [src] apart!"), \
+		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
 		SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
 		M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
 		SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(loc, "alien_claw_metal", 25, 1)
 	if(prob(10))
-		new /obj/effect/decal/cleanable/blood/oil(src.loc)
+		new /obj/effect/decal/cleanable/blood/oil(loc)
 	healthcheck()
 
 //Slashing cameras
 /obj/structure/machinery/camera/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(status)
-		M.visible_message(SPAN_DANGER("\The [M] slices [src] apart!"), \
+		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
 		SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		playsound(loc, "alien_claw_metal", 25, 1)
 		wires = 0 //wires all cut
@@ -497,7 +497,7 @@
 //Slashing windoors
 /obj/structure/machinery/door/window/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)
-	playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
+	playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 	M.visible_message(SPAN_DANGER("[M] smashes against [src]!"), \
 	SPAN_DANGER("You smash against [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	var/damage = 25
@@ -510,12 +510,12 @@
 	M.animation_attack_on(src)
 	playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
 	var/damage_dealt = 5
-	M.visible_message(SPAN_DANGER("\The [M] mangles [src]!"), \
+	M.visible_message(SPAN_DANGER("[M] mangles [src]!"), \
 	SPAN_DANGER("You mangle [src]!"), \
 	SPAN_DANGER("You hear twisting metal!"), 5, CHAT_TYPE_XENO_COMBAT)
 
 	if(shock(M, 70))
-		M.visible_message(SPAN_DANGER("ZAP! \The [M] spazzes wildly amongst a smell of burnt ozone."), \
+		M.visible_message(SPAN_DANGER("ZAP! [M] spazzes wildly amongst a smell of burnt ozone."), \
 		SPAN_DANGER("ZAP! You twitch and dance like a monkey on hyperzine!"), \
 		SPAN_DANGER("You hear a sharp ZAP and a smell of ozone."))
 		return 0 //Intended apparently ?
@@ -527,7 +527,7 @@
 /obj/structure/fence/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)
 	var/damage_dealt = 5
-	M.visible_message(SPAN_DANGER("\The [M] mangles [src]!"), \
+	M.visible_message(SPAN_DANGER("[M] mangles [src]!"), \
 	SPAN_DANGER("You mangle [src]!"), \
 	SPAN_DANGER("You hear twisting metal!"), 5, CHAT_TYPE_XENO_COMBAT)
 
@@ -539,13 +539,13 @@
 	M.animation_attack_on(src)
 	if(shattered)
 		playsound(loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
-		return 1
+		return TRUE
 
 	if(M.a_intent == HELP_INTENT)
-		M.visible_message(SPAN_WARNING("\The [M] oogles its own reflection in [src]."), \
+		M.visible_message(SPAN_WARNING("[M] oogles its own reflection in [src]."), \
 			SPAN_WARNING("You oogle your own reflection in [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		M.visible_message(SPAN_DANGER("\The [M] smashes [src]!"), \
+		M.visible_message(SPAN_DANGER("[M] smashes [src]!"), \
 			SPAN_DANGER("You smash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		shatter()
 
@@ -553,12 +553,12 @@
 /obj/structure/foamedmetal/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)
 	if(prob(33))
-		M.visible_message(SPAN_DANGER("\The [M] slices [src] apart!"), \
+		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
 			SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		qdel(src)
-		return 1
+		return TRUE
 	else
-		M.visible_message(SPAN_DANGER("\The [M] tears some shreds off [src]!"), \
+		M.visible_message(SPAN_DANGER("[M] tears some shreds off [src]!"), \
 			SPAN_DANGER("You tear some shreds off [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 
 //Prying open doors
@@ -568,43 +568,43 @@
 		if(shock(M, 70))
 			return
 	if(locked)
-		to_chat(M, SPAN_WARNING("\The [src] is bolted down tight."))
-		return 0
+		to_chat(M, SPAN_WARNING("[src] is bolted down tight."))
+		return FALSE
 	if(welded)
-		to_chat(M, SPAN_WARNING("\The [src] is welded shut."))
-		return 0
+		to_chat(M, SPAN_WARNING("[src] is welded shut."))
+		return FALSE
 	if(!istype(cur_loc))
 		return 0 //Some basic logic here
 	if(!density)
-		to_chat(M, SPAN_WARNING("\The [src] is already open!"))
-		return 0
+		to_chat(M, SPAN_WARNING("[src] is already open!"))
+		return FALSE
 
 	if(M.action_busy)
-		return 0
+		return FALSE
 
 	if(M.lying)
-		return 0
+		return FALSE
 
 	playsound(loc, 'sound/effects/metal_creaking.ogg', 25, 1)
-	M.visible_message(SPAN_WARNING("\The [M] digs into \the [src] and begins to pry it open."), \
-	SPAN_WARNING("You dig into \the [src] and begin to pry it open."), null, 5, CHAT_TYPE_XENO_COMBAT)
+	M.visible_message(SPAN_WARNING("[M] digs into [src] and begins to pry it open."), \
+	SPAN_WARNING("You dig into [src] and begin to pry it open."), null, 5, CHAT_TYPE_XENO_COMBAT)
 
 	if(do_after(M, 40, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		if(M.loc != cur_loc)
 			return 0 //Make sure we're still there
 		if(M.lying)
-			return 0
+			return FALSE
 		if(locked)
-			to_chat(M, SPAN_WARNING("\The [src] is bolted down tight."))
-			return 0
+			to_chat(M, SPAN_WARNING("[src] is bolted down tight."))
+			return FALSE
 		if(welded)
-			to_chat(M, SPAN_WARNING("\The [src] is welded shut."))
-			return 0
+			to_chat(M, SPAN_WARNING("[src] is welded shut."))
+			return FALSE
 		if(density) //Make sure it's still closed
 			spawn(0)
 				open(1)
-				M.visible_message(SPAN_DANGER("\The [M] pries \the [src] open."), \
-				SPAN_DANGER("You pry \the [src] open."), null, 5, CHAT_TYPE_XENO_COMBAT)
+				M.visible_message(SPAN_DANGER("[M] pries [src] open."), \
+				SPAN_DANGER("You pry [src] open."), null, 5, CHAT_TYPE_XENO_COMBAT)
 
 /obj/structure/machinery/door/airlock/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
 	M.scuttle(src)
@@ -613,29 +613,29 @@
 /obj/structure/machinery/door/firedoor/attack_alien(mob/living/carbon/Xenomorph/M)
 	var/turf/cur_loc = M.loc
 	if(blocked)
-		to_chat(M, SPAN_WARNING("\The [src] is welded shut."))
-		return 0
+		to_chat(M, SPAN_WARNING("[src] is welded shut."))
+		return FALSE
 	if(!istype(cur_loc))
 		return 0 //Some basic logic here
 	if(!density)
-		to_chat(M, SPAN_WARNING("\The [src] is already open!"))
-		return 0
+		to_chat(M, SPAN_WARNING("[src] is already open!"))
+		return FALSE
 
-	playsound(src.loc, 'sound/effects/metal_creaking.ogg', 25, 1)
-	M.visible_message(SPAN_WARNING("\The [M] digs into \the [src] and begins to pry it open."), \
-	SPAN_WARNING("You dig into \the [src] and begin to pry it open."), null, 5, CHAT_TYPE_XENO_COMBAT)
+	playsound(loc, 'sound/effects/metal_creaking.ogg', 25, 1)
+	M.visible_message(SPAN_WARNING("[M] digs into [src] and begins to pry it open."), \
+	SPAN_WARNING("You dig into [src] and begin to pry it open."), null, 5, CHAT_TYPE_XENO_COMBAT)
 
 	if(do_after(M, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		if(M.loc != cur_loc)
 			return 0 //Make sure we're still there
 		if(blocked)
-			to_chat(M, SPAN_WARNING("\The [src] is welded shut."))
-			return 0
+			to_chat(M, SPAN_WARNING("[src] is welded shut."))
+			return FALSE
 		if(density) //Make sure it's still closed
 			spawn(0)
 				open(1)
-				M.visible_message(SPAN_DANGER("\The [M] pries \the [src] open."), \
-				SPAN_DANGER("You pry \the [src] open."), null, 5, CHAT_TYPE_XENO_COMBAT)
+				M.visible_message(SPAN_DANGER("[M] pries [src] open."), \
+				SPAN_DANGER("You pry [src] open."), null, 5, CHAT_TYPE_XENO_COMBAT)
 
 
 //Nerfing the damn Cargo Tug Train
@@ -646,9 +646,9 @@
 /obj/structure/mineral_door/resin/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
 	var/turf/cur_loc = M.loc
 	if(!istype(cur_loc))
-		return 0
+		return FALSE
 	TryToSwitchState(M)
-	return 1
+	return TRUE
 
 //clicking on resin doors attacks them, or opens them without harm intent
 /obj/structure/mineral_door/resin/attack_alien(mob/living/carbon/Xenomorph/M)
@@ -657,13 +657,13 @@
 		return 0 //Some basic logic here
 	if(M.a_intent != "hurt")
 		TryToSwitchState(M)
-		return 1
+		return TRUE
 	else
 		if(isXenoLarva(M))
 			return
 		else
-			M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
-			SPAN_XENONOTICE("You claw \the [src]."), null, null, CHAT_TYPE_XENO_COMBAT)
+			M.visible_message(SPAN_XENONOTICE("[M] claws [src]!"), \
+			SPAN_XENONOTICE("You claw [src]."), null, null, CHAT_TYPE_XENO_COMBAT)
 			playsound(loc, "alien_resin_break", 25)
 			health -= Ceiling(HEALTH_DOOR_XENO/3) // takes three hits
 		qdel(src)
@@ -672,15 +672,15 @@
 //Exception is Queen and shuttles, because plot power
 /obj/structure/machinery/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(unslashable || health <= 0)
-		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
+		to_chat(M, SPAN_WARNING("You stare at [src] cluelessly."))
 	else
 		M.animation_attack_on(src)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 		update_health(rand(M.melee_damage_lower, M.melee_damage_upper))
 		if(health <= 0)
-			M.visible_message(SPAN_DANGER("\The [M] slices [src] apart!"), \
+			M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
 			SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-			if (!unacidable)
+			if(!unacidable)
 				qdel(src)
 		else
 			M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
@@ -693,7 +693,7 @@
 			return
 
 		var/message
-		if (shuttle_tag == "Ground Transport 1") // CORSAT monorail
+		if(shuttle_tag == "Ground Transport 1") // CORSAT monorail
 			message = "We have wrested away remote control of the metal crawler! Rejoice!"
 		else
 			message = "We have wrested away remote control of the metal bird! Rejoice!"
@@ -729,19 +729,20 @@
 			if("sh_dropship2")
 				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
 					reardoor = D
-
+		if(!reardoor)
+			CRASH("Shuttle crashed trying to override invalid rear door with shuttle id [ship_id]")
 		reardoor.unlock()
 
 /obj/structure/machinery/computer/shuttle_control/attack_alien(mob/living/carbon/Xenomorph/M)
 	var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
-	if (!istype(shuttle))
+	if(!istype(shuttle))
 		..()
 		return
 
 	if(M.caste && M.caste.is_intelligent)
 		attack_hand(M)
 		if(!shuttle.iselevator)
-			if (shuttle_tag != "Ground Transport 1")
+			if(shuttle_tag != "Ground Transport 1")
 				shuttle.door_override(M)
 			if(onboard || shuttle_tag == "Ground Transport 1") //This is the shuttle's onboard console or the control console for the CORSAT monorail
 				shuttle.hijack(M, shuttle_tag)
@@ -756,7 +757,7 @@
 				shuttle_tag = "[MAIN_SHIP_NAME] Dropship 1"
 			if("sh_dropship2")
 				shuttle_tag = "[MAIN_SHIP_NAME] Dropship 2"
-			if ("gr_transport1")
+			if("gr_transport1")
 				shuttle_tag = "Ground Transport 1"
 			else
 				return
@@ -771,8 +772,8 @@
 //APCs.
 /obj/structure/machinery/power/apc/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)
-	M.visible_message(SPAN_DANGER("[M] slashes \the [src]!"), \
-	SPAN_DANGER("You slash \the [src]!"), null, 5)
+	M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
+	SPAN_DANGER("You slash [src]!"), null, 5)
 	playsound(loc, "alien_claw_metal", 25, 1)
 	var/allcut = 1
 	for(var/wire = 1; wire < get_wire_descriptions().len; wire++)
@@ -783,13 +784,13 @@
 	if(beenhit >= pick(3, 4) && wiresexposed != 1)
 		wiresexposed = 1
 		update_icon()
-		visible_message(SPAN_DANGER("\The [src]'s cover swings open, exposing the wires!"), null, null, 5)
+		visible_message(SPAN_DANGER("[src]'s cover swings open, exposing the wires!"), null, null, 5)
 
 	else if(wiresexposed == 1 && allcut == 0)
 		for(var/wire = 1; wire < get_wire_descriptions().len; wire++)
 			cut(wire)
 		update_icon()
-		visible_message(SPAN_DANGER("\The [src]'s wires snap apart in a rain of sparks!"), null, null, 5)
+		visible_message(SPAN_DANGER("[src]'s wires snap apart in a rain of sparks!"), null, null, 5)
 	else
 		beenhit += 1
 
@@ -802,10 +803,10 @@
 /obj/structure/machinery/colony_floodlight/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(!is_lit)
 		to_chat(M, "Why bother? It's just some weird metal thing.")
-		return 0
+		return FALSE
 	else if(damaged)
 		to_chat(M, "It's already damaged.")
-		return 0
+		return FALSE
 	else
 		M.animation_attack_on(src)
 		M.visible_message("[M] slashes away at [src]!","You slash and claw at the bright light!", null, null, 5, CHAT_TYPE_XENO_COMBAT)
@@ -827,24 +828,24 @@
 //Digging up snow
 /turf/open/snow/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(M.a_intent == HELP_INTENT)
-		return 0
+		return FALSE
 
 	if(!slayer)
 		to_chat(M, SPAN_WARNING("There is nothing to clear out!"))
-		return 0
+		return FALSE
 
-	M.visible_message(SPAN_NOTICE("\The [M] starts clearing out \the [src]."), \
-	SPAN_NOTICE("You start clearing out \the [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
+	M.visible_message(SPAN_NOTICE("[M] starts clearing out [src]."), \
+	SPAN_NOTICE("You start clearing out [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
 	if(!do_after(M, 25, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-		return 0
+		return FALSE
 
 	if(!slayer)
 		to_chat(M, SPAN_WARNING("There is nothing to clear out!"))
 		return
 
-	M.visible_message(SPAN_NOTICE("\The [M] clears out \the [src]."), \
-	SPAN_NOTICE("You clear out \the [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
+	M.visible_message(SPAN_NOTICE("[M] clears out [src]."), \
+	SPAN_NOTICE("You clear out [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	slayer -= 1
 	update_icon(1, 0)
 
@@ -860,8 +861,8 @@
 	var/turf/T = get_turf(src)
 	for(var/obj/O in contents)
 		O.loc = T
-	M.visible_message(SPAN_DANGER("\The [M] smashes \the [src] apart!"), \
-	SPAN_DANGER("You smash \the [src] apart!"), \
+	M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"), \
+	SPAN_DANGER("You smash [src] apart!"), \
 	SPAN_DANGER("You hear splitting wood!"), 5, CHAT_TYPE_XENO_COMBAT)
 	qdel(src)
 
@@ -870,60 +871,60 @@
 		M.animation_attack_on(src)
 		if(!opened && prob(70))
 			break_open()
-			M.visible_message(SPAN_DANGER("\The [M] smashes \the [src] open!"), \
-			SPAN_DANGER("You smash \the [src] open!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+			M.visible_message(SPAN_DANGER("[M] smashes [src] open!"), \
+			SPAN_DANGER("You smash [src] open!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		else
-			M.visible_message(SPAN_DANGER("\The [M] smashes \the [src]!"), \
-			SPAN_DANGER("You smash \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+			M.visible_message(SPAN_DANGER("[M] smashes [src]!"), \
+			SPAN_DANGER("You smash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 
 /obj/structure/girder/attack_alien(mob/living/carbon/Xenomorph/M)
 	if((M.caste && M.caste.tier < 2 && !isXenoQueen(M)) || unacidable)
-		to_chat(M, SPAN_WARNING("Your claws aren't sharp enough to damage \the [src]."))
-		return 0
+		to_chat(M, SPAN_WARNING("Your claws aren't sharp enough to damage [src]."))
+		return FALSE
 	else
 		M.animation_attack_on(src)
 		health -= round(rand(M.melee_damage_lower, M.melee_damage_upper) / 2)
 		if(health <= 0)
-			M.visible_message(SPAN_DANGER("\The [M] smashes \the [src] apart!"), \
-			SPAN_DANGER("You slice \the [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+			M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"), \
+			SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
 			dismantle()
 		else
-			M.visible_message(SPAN_DANGER("[M] smashes \the [src]!"), \
-			SPAN_DANGER("You slash \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+			M.visible_message(SPAN_DANGER("[M] smashes [src]!"), \
+			SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
 
 /obj/structure/machinery/vending/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(is_tipped_over)
 		to_chat(M, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
-		return 0
+		return FALSE
 
 	if(M.a_intent == "hurt")
 		M.animation_attack_on(src)
 		if(prob(M.melee_damage_lower))
 			playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
-			M.visible_message(SPAN_DANGER("\The [M] smashes \the [src] beyond recognition!"), \
-			SPAN_DANGER("You enter a frenzy and smash \the [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+			M.visible_message(SPAN_DANGER("[M] smashes [src] beyond recognition!"), \
+			SPAN_DANGER("You enter a frenzy and smash [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			malfunction()
-			return 1
+			return TRUE
 		else
-			M.visible_message(SPAN_DANGER("[M] slashes \the [src]!"), \
-			SPAN_DANGER("You slash \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+			M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
+			SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
-		return 1
+		return TRUE
 
 	if(M.action_busy)
 		return
-	M.visible_message(SPAN_WARNING("\The [M] begins to lean against \the [src]."), \
-	SPAN_WARNING("You begin to lean against \the [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
+	M.visible_message(SPAN_WARNING("[M] begins to lean against [src]."), \
+	SPAN_WARNING("You begin to lean against [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	var/shove_time = 100
 	if(M.mob_size == MOB_SIZE_BIG)
 		shove_time = 50
 	if(istype(M,/mob/living/carbon/Xenomorph/Crusher))
 		shove_time = 15
 	if(do_after(M, shove_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		M.visible_message(SPAN_DANGER("\The [M] knocks \the [src] down!"), \
-		SPAN_DANGER("You knock \the [src] down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		M.visible_message(SPAN_DANGER("[M] knocks [src] down!"), \
+		SPAN_DANGER("You knock [src] down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		tip_over()
 
 

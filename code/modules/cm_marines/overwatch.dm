@@ -839,7 +839,7 @@
 	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/send_to_squad, "Transmitting beacon feed."), SECONDS_2)
 	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/send_to_squad, "Calibrating trajectory window."), SECONDS_4)
 	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/begin_fire, "Calibrating trajectory window."), SECONDS_6)
-	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/fire_bombard, A, T), SECONDS_12)
+	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/fire_bombard, A, T), SECONDS_6 + 6)
 
 /obj/structure/machinery/computer/overwatch/proc/begin_fire()
 	for(var/mob/living/carbon/H in living_mob_list)

@@ -156,7 +156,7 @@
 
 	var/matrix/rotate = matrix() //Change the bullet angle.
 	rotate.Turn(angle)
-	src.apply_transform(rotate)
+	apply_transform(rotate)
 
 
 	follow_flightpath(speed,change_x,change_y,range) //pyew!
@@ -185,7 +185,8 @@
 	var/this_iteration = 0
 	in_flight = 1
 	for(next_turf in path)
-		if(!loc || disposed || !in_flight) return
+		if(!loc || disposed || !in_flight)
+			return
 
 		if(distance_travelled >= range)
 			ammo.do_at_max_range(src)
@@ -306,15 +307,19 @@
 	for(var/atom/movable/clone/C in T) //Handle clones if there are any
 		if(C.mstr)
 			if(istype(C.mstr, /obj))
-				if(handle_object(C.mstr)) return TRUE
+				if(handle_object(C.mstr))
+					return TRUE
 			else if(istype(C.mstr, /mob/living))
-				if(handle_mob(C.mstr)) return TRUE
+				if(handle_mob(C.mstr))
+					return TRUE
 
 	for(var/obj/O in T) //check objects before checking mobs, so that barricades protect
-		if(handle_object(O)) return TRUE
+		if(handle_object(O))
+			return TRUE
 
 	for(var/mob/living/L in T)
-		if(handle_mob(L)) return TRUE
+		if(handle_mob(L))
+			return TRUE
 
 /obj/item/projectile/proc/handle_object(obj/O)
 	// If we've already handled this atom, don't do it again
@@ -439,7 +444,7 @@
 
 	var/hitchance = min(projectile_coverage, (projectile_coverage * distance/distance_limit) + accuracy_factor * (1 - effective_accuracy/100))
 	#if DEBUG_HIT_CHANCE
-	to_world(SPAN_DEBUG("([src.name] as cover) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
+	to_world(SPAN_DEBUG("([name] as cover) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
 	#endif
 
 	return prob(hitchance)
@@ -447,11 +452,11 @@
 
 /obj/structure/machinery/get_projectile_hit_boolean(obj/item/projectile/P)
 
-	if(src == P.original && src.layer > ATMOS_DEVICE_LAYER) //clicking on the object itself hits the object
+	if(src == P.original && layer > ATMOS_DEVICE_LAYER) //clicking on the object itself hits the object
 		var/hitchance = P.get_effective_accuracy()
 
 		#if DEBUG_HIT_CHANCE
-		to_world(SPAN_DEBUG("([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
+		to_world(SPAN_DEBUG("([name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
 		#endif
 
 		if( prob(hitchance) )
@@ -486,11 +491,11 @@
 
 
 /obj/structure/get_projectile_hit_boolean(obj/item/projectile/P)
-	if(src == P.original && src.layer > ATMOS_DEVICE_LAYER) //clicking on the object itself hits the object
+	if(src == P.original && layer > ATMOS_DEVICE_LAYER) //clicking on the object itself hits the object
 		var/hitchance = P.get_effective_accuracy()
 
 		#if DEBUG_HIT_CHANCE
-		to_world(SPAN_DEBUG("([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
+		to_world(SPAN_DEBUG("([name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
 		#endif
 
 		if( prob(hitchance) )
@@ -546,7 +551,7 @@
 				hitchance -= 10
 
 		#if DEBUG_HIT_CHANCE
-		to_world(SPAN_DEBUG("([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
+		to_world(SPAN_DEBUG("([name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
 		#endif
 
 		if( prob(hitchance) )
@@ -567,7 +572,7 @@
 		var/hitchance = P.get_effective_accuracy()
 
 		#if DEBUG_HIT_CHANCE
-		to_world(SPAN_DEBUG("([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
+		to_world(SPAN_DEBUG("([name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
 		#endif
 
 		if( prob(hitchance) )
@@ -650,7 +655,7 @@
 			. -= evasion
 
 /mob/living/silicon/robot/drone/get_projectile_hit_chance(obj/item/projectile/P)
-	return 0 // just stop them getting hit by projectiles completely
+	return FALSE // just stop them getting hit by projectiles completely
 
 
 /obj/item/projectile/proc/play_damage_effect(mob/M)
@@ -671,7 +676,8 @@
 	return FALSE
 
 /mob/living/bullet_act(obj/item/projectile/P)
-	if(!P) return
+	if(!P)
+		return
 
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	var/damage = P.calculate_damage()
@@ -690,7 +696,8 @@
 	return TRUE
 
 /mob/living/carbon/human/bullet_act(obj/item/projectile/P)
-	if(!P) return
+	if(!P)
+		return
 
 	flash_weak_pain()
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
@@ -720,7 +727,8 @@
 			return
 
 	var/datum/limb/organ = get_limb(check_zone(P.def_zone)) //Let's finally get what organ we actually hit.
-	if(!organ) return//Nope. Gotta shoot something!
+	if(!organ)
+		return//Nope. Gotta shoot something!
 
 	//Run armor check. We won't bother if there is no damage being done.
 	if( damage > 0 && !(ammo_flags & AMMO_IGNORE_ARMOR) )
@@ -772,7 +780,8 @@
 
 //Deal with xeno bullets.
 /mob/living/carbon/Xenomorph/bullet_act(obj/item/projectile/P)
-	if(!P || !istype(P)) return
+	if(!P || !istype(P))
+		return
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX) ) //Aliens won't be harming aliens.
 		//separate if to improve readability
@@ -829,7 +838,8 @@
 	return TRUE
 
 /turf/bullet_act(obj/item/projectile/P)
-	if(!P || !density) return //It's just an empty turf
+	if(!P || !density)
+		return //It's just an empty turf
 
 	bullet_ping(P)
 
@@ -894,7 +904,7 @@
 	return TRUE
 
 /obj/structure/table/bullet_act(obj/item/projectile/P)
-	src.bullet_ping(P)
+	bullet_ping(P)
 	health -= round(P.damage/2)
 	if(health < 0)
 		visible_message(SPAN_WARNING("[src] breaks down!"))
@@ -928,7 +938,8 @@
 	add_timer(CALLBACK(I, /image/.proc/flick_overlay, src, 3), 1)
 
 /mob/proc/bullet_message(obj/item/projectile/P)
-	if(!P) return
+	if(!P)
+		return
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_IS_SILENCED)
 		var/hit_msg = "You've been shot in the [parse_zone(P.def_zone)] by [P.name]!"
@@ -943,28 +954,27 @@
 		last_damage_source = initial(P.name)
 	if(P.firer && ismob(P.firer))
 		var/mob/firingMob = P.firer
-		last_damage_mob = firingMob
+		if(P.weapon_source_mob)
+			last_damage_mob = P.weapon_source_mob
 		if(ishuman(firingMob) && ishuman(src) && firingMob.mind && mind && mind.faction == firingMob.mind.faction) //One human shot another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
 			attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> shot <b>[src]/[ckey]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
-			P.firer:attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> shot <b>[src]/[ckey]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
+			firingMob.attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> shot <b>[src]/[ckey]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
 			round_statistics.total_friendly_fire_instances++
-			msg_admin_ff("[firingMob] ([firingMob.ckey]) shot [src] ([ckey]) with \a [P.name] in [get_area(firingMob)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[P.firer.x];Y=[P.firer.y];Z=[P.firer.z]'>JMP</a>) (<a href='?priv_msg=\ref[firingMob.client]'>PM</a>)")
+			msg_admin_ff("[firingMob] ([firingMob.ckey]) shot [src] ([ckey]) with \a [P.name] in [get_area(firingMob)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[firingMob.x];Y=[firingMob.y];Z=[firingMob.z]'>JMP</a>) (<a href='?priv_msg=\ref[firingMob.client]'>PM</a>)")
 			if(ishuman(firingMob) && P.weapon_source)
 				var/mob/living/carbon/human/H = firingMob
 				H.track_friendly_fire(P.weapon_source)
 		else
-			if(P.weapon_source_mob)
-				last_damage_mob = P.weapon_source_mob
-			attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> shot <b>[src]/[src.ckey]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
-			P.firer:attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> shot <b>[src]/[ckey]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
-			msg_admin_attack("[firingMob] ([firingMob.ckey]) shot [src] ([ckey]) with \a [P.name] in [get_area(P.firer)] ([P.firer.x],[P.firer.y],[P.firer.z]).", P.firer.x, P.firer.y, P.firer.z)
+			attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> shot <b>[src]/[ckey]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
+			firingMob.attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> shot <b>[src]/[ckey]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
+			msg_admin_attack("[firingMob] ([firingMob.ckey]) shot [src] ([ckey]) with \a [P.name] in [get_area(firingMob)] ([firingMob.x],[firingMob.y],[firingMob.z]).", firingMob.x, firingMob.y, firingMob.z)
 		return
 
 	if(P.weapon_source_mob)
 		last_damage_mob = P.weapon_source_mob
 
 	attack_log += "\[[time_stamp()]\] <b>SOMETHING??</b> shot <b>[src]/[ckey]</b> with a <b>[P]</b>"
-	msg_admin_attack("SOMETHING?? shot [src] ([ckey]) with a [P] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+	msg_admin_attack("SOMETHING?? shot [src] ([ckey]) with a [P] in [get_area(src)] ([loc.x],[loc.y],[loc.z]).", loc.x, loc.y, loc.z)
 
 //Abby -- Just check if they're 1 tile horizontal or vertical, no diagonals
 /proc/get_adj_simple(atom/Loc1,atom/Loc2)

@@ -551,7 +551,7 @@
 			else if((almayer_orbital_cannon.last_orbital_firing + 5000) > world.time)
 				to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Orbital bombardment not yet available!")]")
 			else
-				handle_bombard()
+				handle_bombard(usr)
 		if("back")
 			state = 0
 		if("use_cam")
@@ -801,20 +801,20 @@
 	visible_message("[htmlicon(src, viewers(src))] [SPAN_BOLDNOTICE("[transfer_marine] has been transfered from squad '[old_squad]' to squad '[new_squad]'. Logging to enlistment file.")]")
 	to_chat(transfer_marine, "[htmlicon(src, transfer_marine)] <font size='3' color='blue'><B>\[Overwatch\]:</b> You've been transfered to [new_squad]!</font>")
 
-/obj/structure/machinery/computer/overwatch/proc/handle_bombard()
-	if(!usr)
+/obj/structure/machinery/computer/overwatch/proc/handle_bombard(mob/user)
+	if(!user)
 		return
 
 	if(busy)
-		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("The [name] is busy processing another action!")]")
+		to_chat(user, "[htmlicon(src, user)] [SPAN_WARNING("The [name] is busy processing another action!")]")
 		return
 
 	if(!current_squad)
-		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("No squad selected!")]")
+		to_chat(user, "[htmlicon(src, user)] [SPAN_WARNING("No squad selected!")]")
 		return
 
 	if(!almayer_orbital_cannon.chambered_tray)
-		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("The orbital cannon has no ammo chambered.")]")
+		to_chat(user, "[htmlicon(src, user)] [SPAN_WARNING("The orbital cannon has no ammo chambered.")]")
 		return
 
 	var/x_coord = deobfuscate_x(x_bomb)
@@ -824,11 +824,11 @@
 
 	var/area/A = get_area(T)
 	if(istype(A) && A.ceiling >= CEILING_DEEP_UNDERGROUND)
-		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("The target zone is deep underground. The orbital strike cannot reach here.")]")
+		to_chat(user, "[htmlicon(src, user)] [SPAN_WARNING("The target zone is deep underground. The orbital strike cannot reach here.")]")
 		return
 
 	if(istype(T, /turf/open/space))
-		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
+		to_chat(user, "[htmlicon(src, user)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
 		return
 
 	//All set, let's do this.
@@ -838,8 +838,8 @@
 	playsound(T,'sound/effects/alert.ogg', 25, 1)  //Placeholder
 	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/send_to_squad, "Transmitting beacon feed."), SECONDS_2)
 	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/send_to_squad, "Calibrating trajectory window."), SECONDS_4)
-	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/begin_fire, "Calibrating trajectory window."), SECONDS_6)
-	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/fire_bombard, A, T), SECONDS_6 + 6)
+	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/begin_fire), SECONDS_6)
+	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/fire_bombard, user, A, T), SECONDS_6 + 6)
 
 /obj/structure/machinery/computer/overwatch/proc/begin_fire()
 	for(var/mob/living/carbon/H in living_mob_list)
@@ -850,20 +850,18 @@
 	visible_message("[htmlicon(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment for squad '[current_squad]' has fired! Impact imminent!")]")
 	send_to_squad("WARNING! Ballistic trans-atmospheric launch detected! Get outside of Danger Close!")
 
-/obj/structure/machinery/computer/overwatch/proc/fire_bombard(area/A, turf/T)
+/obj/structure/machinery/computer/overwatch/proc/fire_bombard(mob/user, area/A, turf/T)
 	if(!A || !T)
 		return
 
-	message_staff(FONT_SIZE_HUGE("ALERT: [usr] ([usr.key]) fired an orbital bombardment in [A.name] for squad '[current_squad]' (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
-	log_attack("[usr.name] ([usr.ckey]) fired an orbital bombardment in [A.name] for squad '[current_squad]'")
+	message_staff(FONT_SIZE_HUGE("ALERT: [user] ([user.key]) fired an orbital bombardment in [A.name] for squad '[current_squad]' (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
+	log_attack("[user.name] ([user.ckey]) fired an orbital bombardment in [A.name] for squad '[current_squad]'")
 
 	busy = FALSE
 	var/turf/target = locate(T.x + rand(-3, 3), T.y + rand(-3, 3), T.z)
 	if(target && istype(target))
-		almayer_orbital_cannon.fire_ob_cannon(target, usr)
-		if(ismob(usr))
-			var/mob/M = usr
-			M.count_niche_stat(STATISTICS_NICHE_OB)
+		almayer_orbital_cannon.fire_ob_cannon(target, user)
+		user.count_niche_stat(STATISTICS_NICHE_OB)
 
 /obj/structure/machinery/computer/overwatch/proc/handle_supplydrop()
 	if(!usr || usr != operator)
@@ -947,11 +945,13 @@
 	. = ..()
 	var/datum/squad/S = get_squad_by_name(squad)
 	if(!S)
-		CRASH("Alert! Supply drop pads did not initialize properly.")
+		CRASH("Supply drop pads did not initialize properly (Initialize).")
 	if(!S.drop_pad)
-		force_link(S)
+		INVOKE_ASYNC(src, /obj/structure/supply_drop/proc/force_link, S)
 
 /obj/structure/supply_drop/proc/force_link(datum/squad/S) //Somehow, it didn't get set properly on the new proc. Force it again,
+	if(!S)
+		CRASH("Supply drop pads did not initialize properly (force_link).")
 	S.drop_pad = src
 
 /obj/structure/supply_drop/alpha

@@ -366,6 +366,8 @@
 			spawn()
 				var/list/lines = splittext(t, "\n")
 				var/tempo = 5
+				if(!lines.len)
+					return
 				if(copytext(lines[1],1,6) == "BPM: ")
 					tempo = 600 / text2num(copytext(lines[1],6))
 					lines.Cut(1,2)

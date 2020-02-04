@@ -9,7 +9,7 @@
 	var/obj/item/reagent_container/sample = null //Object containing our sample
 	var/clearance_level = 1
 	var/sample_number = 1 //Just for printing fluff
-	var/processing = 0
+	var/processing = FALSE
 	var/status = 0
 
 /obj/structure/machinery/reagent_analyzer/attackby(obj/item/B, mob/living/user)
@@ -28,45 +28,46 @@
 			icon_state = "reagent_analyzer_sample"
 			to_chat(user, SPAN_NOTICE("You insert [B] and start configuring the [src]."))
 			updateUsrDialog()
-			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
-			processing = 1
+			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+				return
+			processing = TRUE
 			if(sample.reagents.total_volume < 30 || sample.reagents.reagent_list.len > 1)
 				icon_state = "reagent_analyzer_error"
-				start_processing()
+				reagent_process()
 			else
 				icon_state = "reagent_analyzer_processing"
-				start_processing()
+				reagent_process()
 			last_used = user
 		return
 	else
 		to_chat(user, SPAN_WARNING("[src] only accepts samples in vials."))
 		return
 
-/obj/structure/machinery/reagent_analyzer/process()
+/obj/structure/machinery/reagent_analyzer/proc/reagent_process()
 	status++
 	if(status <= 3)
+		add_timer(CALLBACK(src, /obj/structure/machinery/reagent_analyzer/proc/reagent_process), SECONDS_2)
 		return
-	else
-		playsound(loc, 'sound/machines/fax.ogg', 15, 1)
-		status = 0
-		processing = 0
-		stop_processing()
-		sleep(40)
-		if(sample.reagents.total_volume < 30 || sample.reagents.reagent_list.len > 1)
-			if(sample.reagents.total_volume < 30)
-				print_report(0, "SAMPLE SIZE INSUFFICIENT;<BR>\n<I>A sample size of 30 units is required for analysis.</I>")
-			else if(sample.reagents.reagent_list.len > 1)
-				print_report(0, "SAMPLE CONTAMINATED;<BR>\n<I>A pure sample is required for analysis.</I>")
-			else
-				print_report(0, "UNKNOWN.")
-			icon_state = "reagent_analyzer_failed"
-			playsound(loc, 'sound/machines/buzz-two.ogg', 15, 1)
+	playsound(loc, 'sound/machines/fax.ogg', 15, 1)
+	status = 0
+	processing = FALSE
+	add_timer(CALLBACK(src, /obj/structure/machinery/reagent_analyzer/proc/finish_reagent_process), SECONDS_4)
+
+/obj/structure/machinery/reagent_analyzer/proc/finish_reagent_process()
+	if(sample && sample.reagents.total_volume < 30 || sample.reagents.reagent_list.len > 1)
+		if(sample.reagents.total_volume < 30)
+			print_report(0, "SAMPLE SIZE INSUFFICIENT;<BR>\n<I>A sample size of 30 units is required for analysis.</I>")
+		else if(sample.reagents.reagent_list.len > 1)
+			print_report(0, "SAMPLE CONTAMINATED;<BR>\n<I>A pure sample is required for analysis.</I>")
 		else
-			icon_state = "reagent_analyzer_finished"
-			print_report(1)
-			playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
+			print_report(0, "UNKNOWN.")
+		icon_state = "reagent_analyzer_failed"
+		playsound(loc, 'sound/machines/buzz-two.ogg', 15, 1)
+	else
+		icon_state = "reagent_analyzer_finished"
+		print_report(1)
+		playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
 	sample_number++
-	return
 
 /obj/structure/machinery/reagent_analyzer/attack_hand(mob/user as mob)
 	if(processing)

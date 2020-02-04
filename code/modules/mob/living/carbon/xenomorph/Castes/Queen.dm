@@ -343,14 +343,16 @@
 		to_chat(src, SPAN_WARNING("You can't do that now."))
 		return
 
+	if(!hive)
+		to_chat(src, SPAN_WARNING("You can't do that now."))
+		CRASH("[src] attempted to toggle slashing without a linked hive")
+
 	if(pslash_delay)
 		to_chat(src, SPAN_WARNING("You must wait a bit before you can toggle this again."))
 		return
 
-	spawn(SECONDS_30)
-		pslash_delay = 0
-
-	pslash_delay = 1
+	pslash_delay = TRUE
+	add_timer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/do_claw_toggle_cooldown), SECONDS_30)
 
 	var/choice = input("Choose which level of slashing hosts to permit to your hive.","Harming") as null|anything in list("Allowed", "Restricted - Less Damage", "Forbidden")
 
@@ -366,6 +368,9 @@
 		to_chat(src, SPAN_XENONOTICE("You forbid slashing entirely."))
 		xeno_message("The Queen has <b>forbidden</b> the harming of hosts. You can no longer slash your enemies.")
 		hive.slashing_allowed = 0
+
+/mob/living/carbon/Xenomorph/proc/do_claw_toggle_cooldown()
+	pslash_delay = FALSE
 
 /mob/living/carbon/Xenomorph/Queen/proc/queen_screech()
 	if(!check_state())
@@ -398,7 +403,7 @@
 			var/datum/action/A = Z
 			A.update_button_icon()
 	playsound(loc, screech_sound_effect, 75, 0, status = 0)
-	visible_message(SPAN_XENOHIGHDANGER("\The [src] emits an ear-splitting guttural roar!"))
+	visible_message(SPAN_XENOHIGHDANGER("[src] emits an ear-splitting guttural roar!"))
 	create_shriekwave() //Adds the visual effect. Wom wom wom
 	//stop_momentum(charge_dir) //Screech kills a charge
 
@@ -473,15 +478,15 @@
 	use_plasma(200)
 	last_special = world.time + 50
 
-	visible_message(SPAN_XENOWARNING("\The [src] begins slowly lifting \the [victim] into the air."), \
-	SPAN_XENOWARNING("You begin focusing your anger as you slowly lift \the [victim] into the air."))
+	visible_message(SPAN_XENOWARNING("[src] begins slowly lifting [victim] into the air."), \
+	SPAN_XENOWARNING("You begin focusing your anger as you slowly lift [victim] into the air."))
 	if(do_after(src, 80, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 		if(!victim)
 			return
 		if(victim.loc != cur_loc)
 			return
-		visible_message(SPAN_XENODANGER("\The [src] viciously smashes and wrenches \the [victim] apart!"), \
-		SPAN_XENODANGER("You suddenly unleash pure anger on \the [victim], instantly wrenching \him apart!"))
+		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"), \
+		SPAN_XENODANGER("You suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))
 		emote("roar")
 		attack_log += text("\[[time_stamp()]\] <font color='red'>gibbed [victim.name] ([victim.ckey])</font>")
 		victim.attack_log += text("\[[time_stamp()]\] <font color='orange'>was gibbed by [name] ([ckey])</font>")
@@ -489,7 +494,8 @@
 		stop_pulling()
 
 /mob/living/carbon/Xenomorph/Queen/proc/mount_ovipositor()
-	if(ovipositor) return //sanity check
+	if(ovipositor)
+		return //sanity check
 	ovipositor = TRUE
 
 	for(var/datum/action/A in actions)

@@ -176,7 +176,7 @@
 /obj/item/reagent_container/glass/beaker/update_icon()
 	overlays.Cut()
 
-	if(reagents.total_volume)
+	if(reagents && reagents.total_volume)
 		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]10")
 
 		var/percent = round((reagents.total_volume / volume) * 100)

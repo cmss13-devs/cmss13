@@ -30,7 +30,8 @@
 
 /mob/living/carbon/human/adjustBrainLoss(var/amount)
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & GODMODE)
+		return FALSE	//godmode
 
 	if(species.has_organ["brain"])
 		var/datum/internal_organ/brain/sponge = internal_organs_by_name["brain"]
@@ -45,7 +46,8 @@
 
 /mob/living/carbon/human/setBrainLoss(var/amount)
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & GODMODE)
+		return FALSE	//godmode
 
 	if(species.has_organ["brain"])
 		var/datum/internal_organ/brain/sponge = internal_organs_by_name["brain"]
@@ -59,7 +61,8 @@
 
 /mob/living/carbon/human/getBrainLoss()
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & GODMODE)
+		return FALSE	//godmode
 
 	if(species.has_organ["brain"])
 		var/datum/internal_organ/brain/sponge = internal_organs_by_name["brain"]
@@ -98,7 +101,7 @@
 
 
 /mob/living/carbon/human/adjustFireLoss(var/amount)
-	if(species.burn_mod && amount > 0)
+	if(species && species.burn_mod && amount > 0)
 		amount = amount*species.burn_mod
 
 	if(amount > 0)
@@ -159,28 +162,28 @@
 
 	var/heal_prob = max(0, 80 - getCloneLoss())
 	var/mut_prob = min(80, getCloneLoss()+10)
-	if (amount > 0)
-		if (prob(mut_prob))
+	if(amount > 0)
+		if(prob(mut_prob))
 			var/list/datum/limb/candidates = list()
-			for (var/datum/limb/O in limbs)
+			for(var/datum/limb/O in limbs)
 				if(O.status & (LIMB_ROBOT|LIMB_DESTROYED|LIMB_MUTATED)) continue
 				candidates |= O
-			if (candidates.len)
+			if(candidates.len)
 				var/datum/limb/O = pick(candidates)
 				O.mutate()
 				to_chat(src, SPAN_NOTICE("Something is not right with your [O.display_name]..."))
 				return
 	else
-		if (prob(heal_prob))
-			for (var/datum/limb/O in limbs)
-				if (O.status & LIMB_MUTATED)
+		if(prob(heal_prob))
+			for(var/datum/limb/O in limbs)
+				if(O.status & LIMB_MUTATED)
 					O.unmutate()
 					to_chat(src, SPAN_NOTICE("Your [O.display_name] is shaped normally again."))
 					return
 
-	if (getCloneLoss() < 1)
-		for (var/datum/limb/O in limbs)
-			if (O.status & LIMB_MUTATED)
+	if(getCloneLoss() < 1)
+		for(var/datum/limb/O in limbs)
+			if(O.status & LIMB_MUTATED)
 				O.unmutate()
 				to_chat(src, SPAN_NOTICE("Your [O.display_name] is shaped normally again."))
 
@@ -289,7 +292,8 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 
 // damage MANY limbs, in random order
 /mob/living/carbon/human/take_overall_damage(var/brute, var/burn, var/sharp = 0, var/edge = 0, var/used_weapon = null)
-	if(status_flags & GODMODE)	return	//godmode
+	if(status_flags & GODMODE)
+		return	//godmode
 	var/list/datum/limb/parts = get_damageable_limbs()
 	var/update = 0
 	while(parts.len && (brute>0 || burn>0) )
@@ -358,17 +362,17 @@ This function restores all limbs.
 	//Handle other types of damage
 	if((damagetype != BRUTE) && (damagetype != BURN))
 		if(damagetype == HALLOSS && !(species.flags & NO_PAIN))
-			if ((damage > 25 && prob(20)) || (damage > 50 && prob(60)))
+			if((damage > 25 && prob(20)) || (damage > 50 && prob(60)))
 				emote("pain")
 
 		..(damage, damagetype, def_zone, blocked)
-		return 1
+		return TRUE
 
 	//Handle BRUTE and BURN damage
 	handle_suit_punctures(damagetype, damage)
 
 	if(blocked >= 2)	
-		return 0
+		return FALSE
 
 	var/datum/limb/organ = null
 	if(isorgan(def_zone))
@@ -377,7 +381,8 @@ This function restores all limbs.
 		if(!def_zone)	
 			def_zone = ran_zone(def_zone)
 		organ = get_limb(check_zone(def_zone))
-	if(!organ)	return 0
+	if(!organ)
+		return FALSE
 
 	if(blocked)
 		damage = (damage/(blocked+1))
@@ -407,4 +412,4 @@ This function restores all limbs.
 
 	// Will set our damageoverlay icon to the next level, which will then be set back to the normal level the next mob.Life().
 	updatehealth()
-	return 1
+	return TRUE

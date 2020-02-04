@@ -1,7 +1,11 @@
 /obj/item/weapon/gun/proc/full_auto_start(var/atom/A, var/params)
-	if(!ismob(loc))
+	if(!ismob(loc) || !A)
 		return
 	var/mob/user = loc
+
+	// No FA with mods
+	if(params["shift"] || params["ctrl"] || params["alt"])
+		return
 
 	// No shooting the 4th wall
 	if(istype(A, /obj/screen))
@@ -48,6 +52,10 @@
 	if(!ismob(loc))
 		return
 	var/mob/user = loc
+
+	// No FA with mods
+	if(params["shift"] || params["ctrl"] || params["alt"])
+		return
 
 	if(istype(hovered, /obj/screen))
 		return

@@ -6,7 +6,7 @@
 		update_all_squad_info()
 	if(squad_info_data["total_mar"] != count)	//updates for new marines
 		update_free_mar()
-		if(squad_info_data["sl"]["name"] != squad_leader.real_name)
+		if(squad_leader && squad_info_data["sl"]["name"] != squad_leader.real_name)
 			update_squad_leader()
 		update_squad_ui()
 
@@ -82,12 +82,32 @@
 		ID = H.get_idcard()
 		squad_info_data["fireteams"][team]["tl"] = list(
 							"name" = H.real_name,
-							"paygrade" = ID ? get_paygrades(ID.paygrade, 1) : "Error",
-							"rank" = H.mind ? H.mind.role_comm_title : "Error",
 							"med" = Med,
 							"eng" = Eng,
 							"status" = H.squad_status,
 							"refer" = "\ref[H]")
+		if(ID)
+			squad_info_data["fireteams"][team]["tl"] += list("paygrade" = get_paygrades(ID.paygrade, 1))
+			var/rank = ID.rank
+			switch(rank)
+				if(JOB_SQUAD_MARINE)
+					rank = "Mar"
+				if(JOB_SQUAD_ENGI)
+					rank = "Eng"
+				if(JOB_SQUAD_MEDIC)
+					rank = "Med"
+				if(JOB_SQUAD_SMARTGUN)
+					rank = "SG"
+				if(JOB_SQUAD_SPECIALIST)
+					rank = "Spc"
+				if(JOB_SQUAD_LEADER)
+					rank = "SL"
+				else
+					rank = ""
+			squad_info_data["fireteams"][team]["tl"] += list("rank" = rank)
+		else
+			squad_info_data["fireteams"][team]["tl"] += list("paygrade" = "N/A")
+			squad_info_data["fireteams"][team]["tl"] += list("rank" = "")
 	else
 		squad_info_data["fireteams"][team]["tl"] = list(
 							"name" = "Not assigned",
@@ -136,13 +156,34 @@
 						Eng = TRUE
 			mar[H.real_name] = list(
 					"name" = H.real_name,
-					"paygrade" = ID ? get_paygrades(ID.paygrade, 1) : "Error",
-					"rank" = H.mind ? H.mind.role_comm_title : "Error",
 					"med" = Med,
 					"eng" = Eng,
 					"status" = H.squad_status,
 					"refer" = "\ref[H]"
 					)
+			if(ID)
+				mar[H.real_name] += list("paygrade" = get_paygrades(ID.paygrade, 1))
+				var/rank = ID.rank
+				switch(rank)
+					if(JOB_SQUAD_MARINE)
+						rank = "Mar"
+					if(JOB_SQUAD_ENGI)
+						rank = "Eng"
+					if(JOB_SQUAD_MEDIC)
+						rank = "Med"
+					if(JOB_SQUAD_SMARTGUN)
+						rank = "SG"
+					if(JOB_SQUAD_SPECIALIST)
+						rank = "Spc"
+					if(JOB_SQUAD_LEADER)
+						rank = "SL"
+					else
+						rank = ""
+				mar[H.real_name] += list("rank" = rank)
+			else
+				mar[H.real_name] += list("paygrade" = "N/A")
+				mar[H.real_name] += list("rank" = "")
+
 	else
 		for(var/mob/living/carbon/human/H in fireteams[team])
 			if(H == fireteam_leaders[team])
@@ -158,11 +199,31 @@
 						Eng = TRUE
 			mar[H.real_name] = list(
 				"name" = H.real_name,
-				"paygrade" = ID ? get_paygrades(ID.paygrade, 1) : "Error",
-				"rank" = H.mind ? H.mind.role_comm_title : "Error",
 				"med" = Med,
 				"eng" = Eng,
 				"status" = H.squad_status,
 				"refer" = "\ref[H]"
 				)
+			if(ID)
+				mar[H.real_name] += list("paygrade" = get_paygrades(ID.paygrade, 1))
+				var/rank = ID.rank
+				switch(rank)
+					if(JOB_SQUAD_MARINE)
+						rank = "Mar"
+					if(JOB_SQUAD_ENGI)
+						rank = "Eng"
+					if(JOB_SQUAD_MEDIC)
+						rank = "Med"
+					if(JOB_SQUAD_SMARTGUN)
+						rank = "SG"
+					if(JOB_SQUAD_SPECIALIST)
+						rank = "Spc"
+					if(JOB_SQUAD_LEADER)
+						rank = "SL"
+					else
+						rank = ""
+				mar[H.real_name] += list("rank" = rank)
+			else
+				mar[H.real_name] += list("paygrade" = "N/A")
+				mar[H.real_name] += list("rank" = "")
 	return mar

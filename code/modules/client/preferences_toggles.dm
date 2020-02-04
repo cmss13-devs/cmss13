@@ -251,7 +251,9 @@
 	set category = "Preferences"
 	set desc = "Use to change which HUDs you want to have by default when you become an observer."
 
-	var/hud_choice = input("Choose a HUD to toggle", "Toggle HUD prefs", null) as null|anything in list("Medical HUD", "Security HUD", "Squad HUD", "Xeno Status HUD")
+	var/hud_choice = input("Choose a HUD to toggle", "Toggle HUD prefs", null) as null|anything in prefs.observer_huds
+	if(!hud_choice)
+		return
 	prefs.observer_huds[hud_choice] = !prefs.observer_huds[hud_choice]
 
 	prefs.save_preferences()

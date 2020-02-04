@@ -517,9 +517,6 @@
 		if(sl.is_mob_incapacitated() && !hasHUD(sl,"squadleader"))
 			return
 
-		if(!target.mind)
-			return
-
 		if(!target.assigned_squad || !target.assigned_squad.squad_leader || target.assigned_squad.squad_leader != sl)
 			return
 
@@ -539,9 +536,6 @@
 			return
 
 		if(is_mob_incapacitated() && !hasHUD(src,"squadleader"))
-			return
-
-		if(!target.mind)
 			return
 
 		if(!target.assigned_squad || !target.assigned_squad.squad_leader || target.assigned_squad.squad_leader != src)
@@ -1161,7 +1155,8 @@
 
 	var/mob/living/carbon/human/H
 	var/tl_prefix = ""
-	hud_used.locate_leader.icon_state = "trackoff"
+	if(hud_used)
+		hud_used.locate_leader.icon_state = "trackoff"
 
 	if(assigned_fireteam && assigned_squad.fireteam_leaders[assigned_fireteam])
 		H = assigned_squad.fireteam_leaders[assigned_fireteam]

@@ -473,18 +473,20 @@
 	if(!check_plasma(10))
 		return
 
-	var/mob/living/carbon/human/H = A
-	if(H.stat == DEAD)
-		return
-	visible_message(SPAN_XENOWARNING("[src] lunges towards [H]!"), \
-	SPAN_XENOWARNING("You lunge at [H]!"))
+	if(isliving(A))
+		var/mob/living/L = A
+		if(L.stat == DEAD)
+			return
+
+	visible_message(SPAN_XENOWARNING("[src] lunges towards [A]!"), \
+	SPAN_XENOWARNING("You lunge at [A]!"))
 
 	used_lunge = 1 // triggered by start_pulling
 	use_plasma(10)
 	launch_towards(get_step_towards(A, src), 6, SPEED_FAST, src)
 
-	if(Adjacent(H))
-		start_pulling(H,1)
+	if(Adjacent(A))
+		start_pulling(A, 1)
 
 	add_timer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/do_lunge_cooldown), (caste ? caste.lunge_cooldown : SECONDS_5))
 	return TRUE

@@ -277,37 +277,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	qdel(src)
 	return TRUE
 
-/mob/dead/observer/verb/toggle_HUDs()
-	set category = "Ghost"
-	set name = "Toggle HUDs"
-	set desc = "Toggles various HUDs."
-	if(!client)
-		return
-	var/hud_choice = input("Choose a HUD to toggle", "Toggle HUD", null) as null|anything in HUD_toggled
-	if(!client)
-		return
-	var/datum/mob_hud/H
-	switch(hud_choice)
-		if("Medical HUD")
-			H = huds[MOB_HUD_MEDICAL_OBSERVER]
-		if("Security HUD")
-			H = huds[MOB_HUD_SECURITY_ADVANCED]
-		if("Squad HUD")
-			H = huds[MOB_HUD_SQUAD]
-		if("Xeno Status HUD")
-			H = huds[MOB_HUD_XENO_STATUS]
-		else
-			return
-
-	if(HUD_toggled[hud_choice])
-		HUD_toggled[hud_choice] = FALSE
-		H.remove_hud_from(src)
-		to_chat(src, SPAN_INFO("<B>[hud_choice] Disabled</B>"))
-	else
-		HUD_toggled[hud_choice] = TRUE
-		H.add_hud_to(src)
-		to_chat(src, SPAN_INFO("<B>[hud_choice] Enabled</B>"))
-
 /mob/dead/observer/proc/dead_tele()
 	set category = "Ghost"
 	set name = "Teleport"

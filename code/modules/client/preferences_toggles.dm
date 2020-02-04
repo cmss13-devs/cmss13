@@ -188,7 +188,7 @@
 
 /client/proc/show_ghost_preferences() // Shows ghost-related preferences.
 	set name = "Y: Show Ghost Prefs"
-	set category = "Ghost"
+	set category = "Preferences"
 	set desc = "Shows ghost-related preferences."
 
 	verbs += ghost_prefs_verbs
@@ -196,7 +196,7 @@
 
 /client/proc/hide_ghost_preferences() // Hides ghost-related preferences.
 	set name = "Y: Hide Ghost Prefs"
-	set category = "Ghost"
+	set category = "Preferences"
 	set desc = "Hides ghost-related preferences."
 
 	verbs -= ghost_prefs_verbs
@@ -204,7 +204,7 @@
 
 /client/proc/toggle_ghost_hivemind()
 	set name = "Y: Toggle GhostHivemind"
-	set category = "Ghost"
+	set category = "Preferences"
 	set desc = "Toggle seeing all chatter from the Xenomorph Hivemind"
 	prefs.toggles_chat ^= CHAT_GHOSTHIVEMIND
 	to_chat(src, "As a ghost, you will [(prefs.toggles_chat & CHAT_GHOSTHIVEMIND) ? "now see chatter from the Xenomorph Hivemind" : "no longer see chatter from the Xenomorph Hivemind"].")
@@ -212,7 +212,7 @@
 
 /client/proc/deadchat() // Deadchat toggle is usable by anyone.
 	set name = "Y: Toggle Deadchat"
-	set category = "Ghost"
+	set category = "Preferences"
 	set desc ="Toggles seeing DeadChat"
 	prefs.toggles_chat ^= CHAT_DEAD
 	prefs.save_preferences()
@@ -224,7 +224,7 @@
 
 /client/proc/toggle_ghost_ears()
 	set name = "Y: Toggle GhostEars"
-	set category = "Ghost"
+	set category = "Preferences"
 	set desc = "Toggle Between seeing all mob speech, and only speech of nearby mobs"
 	prefs.toggles_chat ^= CHAT_GHOSTEARS
 	to_chat(src, "As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTEARS) ? "see all speech in the world" : "only see speech from nearby mobs"].")
@@ -232,7 +232,7 @@
 
 /client/proc/toggle_ghost_sight()
 	set name = "Y: Toggle GhostSight"
-	set category = "Ghost"
+	set category = "Preferences"
 	set desc = "Toggle Between seeing all mob emotes, and only emotes of nearby mobs"
 	prefs.toggles_chat ^= CHAT_GHOSTSIGHT
 	to_chat(src, "As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTSIGHT) ? "see all emotes in the world" : "only see emotes from nearby mobs"].")
@@ -240,7 +240,7 @@
 
 /client/proc/toggle_ghost_radio()
 	set name = "Y: Toggle GhostRadio"
-	set category = "Ghost"
+	set category = "Preferences"
 	set desc = "Toggle between hearing all radio chatter, or only from nearby speakers"
 	prefs.toggles_chat ^= CHAT_GHOSTRADIO
 	to_chat(src, "As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTRADIO) ? "hear all radio chat in the world" : "only hear from nearby speakers"].")
@@ -248,7 +248,7 @@
 
 /client/proc/toggle_ghost_hud()
 	set name = "Y: Toggle Ghost HUDs"
-	set category = "Ghost"
+	set category = "Preferences"
 	set desc = "Use to change which HUDs you want to have by default when you become an observer."
 
 	var/hud_choice = input("Choose a HUD to toggle", "Toggle HUD prefs", null) as null|anything in list("Medical HUD", "Security HUD", "Squad HUD", "Xeno Status HUD")

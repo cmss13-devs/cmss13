@@ -105,6 +105,9 @@
 	predator_boot_type 	= sanitize_integer(predator_boot_type,1,1000000,initial(predator_boot_type))
 	vars["fps"] = fps
 
+	if(!observer_huds)
+		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE)
+
 	return 1
 
 /datum/preferences/proc/save_preferences()

@@ -77,6 +77,8 @@
 /datum/soundOutput/proc/update_sound_pos()//This proc updates the position of spacial sounds
 	var/sound/S = sound()
 	var/turf/cur_turf = get_turf(owner.mob)
+	if(!cur_turf)
+		return
 	for(var/datum/sound_coord/SC in SSspacial_sound.sound_coords)
 		S.status = SOUND_UPDATE
 		if(status_flags & EAR_DEAF_MUTE || SC.map_z != cur_turf.z || get_dist(cur_turf, locate(SC.map_x, SC.map_y, SC.map_z)) > SC.range)

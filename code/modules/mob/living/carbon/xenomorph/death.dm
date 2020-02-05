@@ -11,7 +11,7 @@
 	if(is_zoomed)
 		zoom_out()
 
-	if (map_tag == MAP_WHISKEY_OUTPOST)
+	if(map_tag == MAP_WHISKEY_OUTPOST)
 		ghostize()
 
 	SetLuminosity(0)
@@ -54,7 +54,7 @@
 					hive_datum[hivenumber].stored_larva--
 					hive_datum[hivenumber].hive_ui.update_burrowed_larva()
 
-			if(hive.living_xeno_queen == src)
+			if(hive && hive.living_xeno_queen == src)
 				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"),3, hivenumber)
 				xeno_message(SPAN_XENOANNOUNCE("The slashing of hosts is now permitted."),2)
 				hive.slashing_allowed = 1
@@ -72,10 +72,10 @@
 		else
 			playsound(loc, prob(50) == 1 ? 'sound/voice/alien_death.ogg' : 'sound/voice/alien_death2.ogg', 25, 1)
 		var/area/A = get_area(src)
-		if(hive.living_xeno_queen)
-			xeno_message("Hive: \The [src] has <b>died</b>[A? " at [sanitize(A.name)]":""]!", 3, hivenumber)
+		if(hive && hive.living_xeno_queen)
+			xeno_message("Hive: [src] has <b>died</b>[A? " at [sanitize(A.name)]":""]!", 3, hivenumber)
 
-	if (IS_XENO_LEADER(src))	//Strip them from the Xeno leader list, if they are indexed in here
+	if(hive && IS_XENO_LEADER(src))	//Strip them from the Xeno leader list, if they are indexed in here
 		hive.remove_hive_leader(src)
 		if(hive.living_xeno_queen)
 			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE("A leader has fallen!")) //alert queens so they can choose another leader
@@ -90,10 +90,11 @@
 	if(hardcore)
 		dead_hardcore_xeno_list += src
 
-	hive.remove_xeno(src)
-	// hive.queue_spawn(src) //Resolve this line once structures are resolved.
-	if(hive.totalXenos.len == 1)
-		xeno_message(SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"),3, hivenumber)
+	if(hive)
+		hive.remove_xeno(src)
+		// hive.queue_spawn(src) //Resolve this line once structures are resolved.
+		if(hive.totalXenos.len == 1)
+			xeno_message(SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"),3, hivenumber)
 
 	callHook("death", list(src, gibbed))
 
@@ -120,8 +121,6 @@
 
 	..(cause)
 
-
-
 /mob/living/carbon/Xenomorph/gib_animation()
 	var/to_flick = "gibbed-a"
 	switch(caste.caste_name)
@@ -133,8 +132,6 @@
 
 /mob/living/carbon/Xenomorph/spawn_gibs()
 	xgibs(get_turf(src))
-
-
 
 /mob/living/carbon/Xenomorph/dust_animation()
 	new /obj/effect/overlay/temp/dust_animation(loc, src, "dust-a")

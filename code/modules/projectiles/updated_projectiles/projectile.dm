@@ -122,7 +122,7 @@
 	if(starting != loc) 
 		loc = starting //Put us on the turf, if we're not.
 	target_turf = get_turf(target)
-	if(!target_turf || target_turf == starting) //This shouldn't happen, but it can.
+	if(!target_turf || !starting || target_turf == starting) //This shouldn't happen, but it can.
 		qdel(src)
 		return
 	firer = F

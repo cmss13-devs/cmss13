@@ -451,10 +451,6 @@
 						send_to_squad("Your Overwatch officer is: [operator.name].")
 						visible_message("[htmlicon(src, viewers(src))] [SPAN_BOLDNOTICE("Tactical data for squad '[current_squad]' loaded. All tactical functions initialized.")]")
 						attack_hand(usr)
-						if(!current_squad.drop_pad) //Why the hell did this not link?
-							for(var/obj/structure/supply_drop/S in item_list)
-								S.force_link() //LINK THEM ALL!
-
 					else
 						to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Invalid input. Aborting.")]")
 		if("message")
@@ -938,38 +934,25 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = 2.1 //It's the floor, man
-	var/squad = "Alpha"
+	var/squad = SQUAD_NAME_1
 	var/sending_package = 0
-
-/obj/structure/supply_drop/Initialize() //Link a squad to a drop pad
-	. = ..()
-	var/datum/squad/S = get_squad_by_name(squad)
-	if(!S)
-		CRASH("Supply drop pads did not initialize properly (Initialize).")
-	if(!S.drop_pad)
-		INVOKE_ASYNC(src, /obj/structure/supply_drop/proc/force_link, S)
-
-/obj/structure/supply_drop/proc/force_link(datum/squad/S) //Somehow, it didn't get set properly on the new proc. Force it again,
-	if(!S)
-		CRASH("Supply drop pads did not initialize properly (force_link).")
-	S.drop_pad = src
 
 /obj/structure/supply_drop/alpha
 	icon_state = "alphadrop"
-	squad = "Alpha"
+	squad = SQUAD_NAME_1
 
 /obj/structure/supply_drop/bravo
 	icon_state = "bravodrop"
-	squad = "Bravo"
+	squad = SQUAD_NAME_2
 
 /obj/structure/supply_drop/charlie
 	icon_state = "charliedrop"
-	squad = "Charlie"
+	squad = SQUAD_NAME_3
 
 /obj/structure/supply_drop/delta
 	icon_state = "deltadrop"
-	squad = "Delta"
+	squad = SQUAD_NAME_4
 
 /obj/structure/supply_drop/echo //extra supply drop pad
 	icon_state = "echodrop"
-	squad = "Echo"
+	squad = SQUAD_NAME_5

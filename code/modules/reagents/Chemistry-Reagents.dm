@@ -9,7 +9,7 @@
 	var/description = ""
 	var/datum/reagents/holder = null
 	var/reagent_state = SOLID
-	var/list/data = null
+	var/list/data = list("blood_type" = null, "blood_colour" = "#A10808", "viruses" = null, "resistances" = null)
 	var/volume = 0
 	var/nutriment_factor = 0
 	var/custom_metabolism = REAGENTS_METABOLISM

@@ -184,9 +184,6 @@ var/list/mechtoys = list(
 				if(selected)
 					current_squad = selected
 					attack_hand(usr)
-					if(!current_squad.drop_pad) //Why the hell did this not link?
-						for(var/obj/structure/supply_drop/S in item_list)
-							S.force_link() //LINK THEM ALL!
 				else
 					to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Invalid input. Aborting.")]")
 		if("supply_x")

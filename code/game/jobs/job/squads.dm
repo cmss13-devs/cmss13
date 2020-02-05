@@ -92,6 +92,10 @@
 	SStracking.setup_trackers(null, "FT2")
 	SStracking.setup_trackers(null, "FT3")
 	update_all_squad_info()
+	for(var/obj/structure/supply_drop/S in structure_list)
+		if(name == S.squad)
+			drop_pad = S
+			break
 
 //Straight-up insert a marine into a squad.
 //This sets their ID, increments the total count, and so on. Everything else is done in job_controller.dm.

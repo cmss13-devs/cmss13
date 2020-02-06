@@ -28,10 +28,10 @@
 	return 1
 
 /datum/entity/player_entity/proc/load_statistics()
-	if(!path)				
+	if(!path)
+		save_loaded = TRUE		
 		return 0
-	if(!fexists(path))	
-		save_loaded = TRUE	
+	if(!fexists(path))
 		return 0
 	var/savefile/S = new /savefile(path)
 	if(!S)					

@@ -212,9 +212,7 @@ var/datum/mob_hud/huds = list(
 	holder.overlays.Cut()
 	var/percentage_overheal = round(overheal*100/max_overheal, 10)
 	if(percentage_overheal > 1)
-		holder.overlays += image('icons/mob/hud/hud.dmi', "xenooverheal[percentage_overheal]")
-	else 
-		holder.overlays += image('icons/mob/hud/hud.dmi', "xenooverheal0")
+		holder.overlays += image('icons/mob/hud/hud.dmi', "xenooverheal[percentage_overheal]")	
 
 /mob/living/carbon/Xenomorph/med_hud_set_armor()
 	var/image/holder = hud_list[ARMOR_HUD_XENO]

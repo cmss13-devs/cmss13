@@ -426,14 +426,11 @@ updatehealth()
 	if(status_flags & GODMODE)
 		health = 100
 		stat = CONSCIOUS
-	else if(overheal > 0)
-		overlay_overheal()
-		health = maxHealth - getFireLoss() - getBruteLoss()
-	else
-		health = maxHealth - getFireLoss() - getBruteLoss() //Xenos can only take brute and fire damage.
+	health = maxHealth - getFireLoss() - getBruteLoss()
 
 	recalculate_move_delay = TRUE
-
+	
+	overlay_overheal()
 	med_hud_set_health()
 	med_hud_set_armor()
 

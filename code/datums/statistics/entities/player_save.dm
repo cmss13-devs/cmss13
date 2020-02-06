@@ -35,7 +35,8 @@
 		save_loaded = TRUE
 		return 0
 	var/savefile/S = new /savefile(path)
-	if(!S)					
+	if(!S)
+		save_loaded = TRUE		
 		return 0
 	S.cd = "/"
 

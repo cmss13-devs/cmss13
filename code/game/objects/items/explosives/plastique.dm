@@ -33,7 +33,7 @@
 	to_chat(user, SPAN_NOTICE("Timer set for [timer] seconds."))
 
 /obj/item/explosive/plastique/afterattack(atom/target, mob/user, flag)
-	if(user.action_busy)
+	if(user.action_busy || !flag)
 		return
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))

@@ -128,41 +128,41 @@
 	flags_equip_slot = SLOT_WAIST
 	dangerous = 1
 	underslug_launchable = TRUE
+	var/flame_level = 5
+	var/burn_level = 15
 
 /obj/item/explosive/grenade/incendiary/prime()
-	spawn(0)
-		flame_radius(initial(name), source_mob, 2, get_turf(src))
-		playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
-		qdel(src)
-	return
+	INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, initial(name), source_mob, 2, get_turf(src), flame_level, burn_level)
+	playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
+	qdel(src)
 
-/proc/flame_radius(var/source, var/source_mob, radius = 1, turf/turf) //~Art updated fire.
-	if(!turf || !isturf(turf)) return
-	if(radius < 0) radius = 0
-	if(radius > 5) radius = 5
-	new /obj/flamer_fire(turf, source, source_mob, 5 + rand(0,11), 15, null, radius)
-
+/proc/flame_radius(var/source, var/source_mob, var/radius = 1, var/turf/T, var/flame_level = 5, var/burn_level = 15)
+	if(!istype(T))
+		return
+	var/color_name
+	if(burn_level >= config.high_burnlevel)
+		color_name = "blue"
+	else if(burn_level <= config.low_burnlevel)
+		color_name = "green"
+	new /obj/flamer_fire(T, source, source_mob, flame_level + rand(0,11), burn_level, color_name, radius)
 
 /obj/item/explosive/grenade/incendiary/molotov
-	name = "\improper improvised firebomb"
+	name = "improvised firebomb"
 	desc = "A potent, improvised firebomb, coupled with a pinch of gunpowder. Cheap, very effective, and deadly in confined spaces. Commonly found in the hands of rebels and terrorists. It can be difficult to predict how many seconds you have before it goes off, so be careful. Chances are, it might explode in your face."
 	icon_state = "molotov"
 	item_state = "molotov"
 	arm_sound = 'sound/items/Welder2.ogg'
 	underslug_launchable = FALSE
 
-/obj/item/explosive/grenade/incendiary/molotov/New()
-	det_time = rand(10,40)//Adds some risk to using this thing.
-	..()
+/obj/item/explosive/grenade/incendiary/molotov/New(loc, custom_burn_level)
+	det_time = rand(10,40) //Adds some risk to using this thing.
+	if(custom_burn_level)
+		burn_level = custom_burn_level
+	..(loc)
 
 /obj/item/explosive/grenade/incendiary/molotov/prime()
-	spawn(0)
-		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 35, 1, 4)
-		flame_radius(initial(name), source_mob, 2, get_turf(src))
-		playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 30, 1, 4)
-		qdel(src)
-	return
-
+	playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 35, 1, 4)
+	..()
 
 /obj/item/explosive/grenade/smokebomb
 	name = "\improper M40 HSDP smoke grenade"

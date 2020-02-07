@@ -21,6 +21,7 @@
 #define SKILL_POLICE         "police"
 #define SKILL_POWERLOADER    "powerloader"
 #define SKILL_LARGE_VEHICLE  "large_vehicle"
+#define SKILL_SURVIVAL       "survival"
 
 //firearms skill (general knowledge of guns) (hidden skill)
 //increase or decrase accuracy, recoil, and firing delay of rifles and smgs.
@@ -176,3 +177,9 @@
 //multitile vehicle skills
 #define SKILL_LARGE_VEHICLE_DEFAULT 0
 #define SKILL_LARGE_VEHICLE_TRAINED 1
+
+//survival skill
+//allows special mechanics like crafting improvised stuff
+#define SKILL_SURVIVAL_NONE     0
+#define SKILL_SURVIVAL_NOVICE   1
+#define SKILL_SURVIVAL_SURVIVOR 2

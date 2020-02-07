@@ -77,7 +77,7 @@
 	return
 
 /obj/item/explosive/grenade/proc/prime()
-//	playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
+	return
 
 /obj/item/explosive/grenade/launch_towards(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
 	if(active && ismob(thrower))

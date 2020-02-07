@@ -514,10 +514,10 @@
 			sl = usr
 			target = src
 
-		if(sl.is_mob_incapacitated() && !hasHUD(sl,"squadleader"))
+		if(sl.is_mob_incapacitated() || !hasHUD(sl,"squadleader"))
 			return
 
-		if(!target.assigned_squad || !target.assigned_squad.squad_leader || target.assigned_squad.squad_leader != sl)
+		if(!target || !target.assigned_squad || !target.assigned_squad.squad_leader || target.assigned_squad.squad_leader != sl)
 			return
 
 		if(target.squad_status == "K.I.A.")

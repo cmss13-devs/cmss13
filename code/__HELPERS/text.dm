@@ -397,3 +397,13 @@ proc/strip_improper(input_text)
 	. = base
 	if(rest)
 		. += .(rest)
+// Returns the location of the atom as a string in the following format:
+// "Area Name (X, Y, Z)"
+// Mainly used for logging
+/proc/get_location_in_text(atom/A)
+	var/message
+	if(!A.loc)
+		message = "Invalid location"
+	else
+		message = "[get_area(A)] ([A.x], [A.y], [A.z])"
+	return message

@@ -56,6 +56,7 @@
 	playsound(loc, "alien_resin_move", 50)
 	if(ishuman(buckled_mob))
 		var/mob/living/carbon/human/H = buckled_mob
+		H.attack_log += "\[[time_stamp()]\]<font color='orange'>Unnested by [key_name(user)] at [get_location_in_text(H)]</font>"
 		H.start_nesting_cooldown()
 	unbuckle()
 	return

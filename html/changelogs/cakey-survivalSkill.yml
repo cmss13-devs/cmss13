@@ -1,0 +1,7 @@
+author: Cakey
+
+delete-after: True
+
+changes: 
+  - rscadd: "Added the survival skill, which will be used to implement unique survivor mechanics and abilities in future."
+  - rscadd: "You can now craft molotov cocktails out of bottles using a piece of paper, as long as there is enough potency and you have novice survival skills."

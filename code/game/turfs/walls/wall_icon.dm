@@ -18,12 +18,12 @@
 		var/image/I
 
 		if(!density)
-			I = image(icon, "[wall2text(walltype)]fwall_open")
+			I = image(icon, "[walltype]fwall_open")
 			overlays += I
 			return
 
 		for(var/i = 1 to 4)
-			I = image(icon, "[wall2text(walltype)][wall_connections[i]]", dir = 1<<(i-1))
+			I = image(icon, "[walltype][wall_connections[i]]", dir = 1<<(i-1))
 			overlays += I
 
 	if(damage)

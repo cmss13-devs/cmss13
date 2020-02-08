@@ -186,7 +186,7 @@
 
 
 /turf/closed/wall/handle_icon_junction(junction)
-	icon_state = "[wall2text(walltype)][junction]"
+	icon_state = "[walltype][junction]"
 	junctiontype = junction
 
 /obj/structure/grille/almayer/handle_icon_junction(junction)

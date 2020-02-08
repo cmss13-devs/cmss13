@@ -120,13 +120,13 @@
 	var/flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_STORE_GARB
 	var/obj/item/storage/internal/pockets
 	var/list/allowed_hat_items = list(
-						/obj/item/storage/fancy/cigarettes/emeraldgreen,
-						/obj/item/storage/fancy/cigarettes/kpack,
-						/obj/item/storage/fancy/cigarettes/lucky_strikes,
-						/obj/item/storage/fancy/cigarettes/wypacket,
-						/obj/item/storage/fancy/cigarettes/lady_finger,
-						/obj/item/storage/fancy/cigarettes/blackpack,
-						/obj/item/storage/fancy/cigarettes/arcturian_ace,
+						/obj/item/storage/fancy/cigarettes/emeraldgreen = "hat_cig_cig",
+						/obj/item/storage/fancy/cigarettes/kpack = "hat_cig_kpack",
+						/obj/item/storage/fancy/cigarettes/lucky_strikes = "hat_cig_ls",
+						/obj/item/storage/fancy/cigarettes/wypacket = "hat_cig_wypack",
+						/obj/item/storage/fancy/cigarettes/lady_finger = "hat_cig_lf",
+						/obj/item/storage/fancy/cigarettes/blackpack = "hat_cig_blackpack",
+						/obj/item/storage/fancy/cigarettes/arcturian_ace = "hat_cig_aapack",
 						/obj/item/tool/pen = "hat_pen_black",
 						/obj/item/tool/pen/blue = "hat_pen_blue",
 						/obj/item/tool/pen/red = "hat_pen_red",
@@ -167,23 +167,21 @@
 	update_icon()
 
 /obj/item/clothing/head/cmcap/update_icon()
-	if(pockets.contents.len && (flags_marine_helmet & HELMET_GARB_OVERLAY))
+    if(ismob(loc))
+        var/mob/M = loc
+        M.update_inv_head()
 
-		if(!helmet_overlays["item"])
-			var/obj/O = pockets.contents[1]
-			if(O.type in allowed_hat_items)
-				var/image/I = image('icons/obj/items/clothing/cm_hats.dmi', src, "[allowed_hat_items[O.type]]")
-				helmet_overlays["item"] = I
+/obj/item/clothing/head/cmcap/get_mob_overlay(mob/user_mob, slot)
+    var/image/ret = ..()
 
-	else
-		if(helmet_overlays["item"])
-			var/image/RI = helmet_overlays["item"]
-			helmet_overlays["item"] = null
-			qdel(RI)
+    if(pockets.contents.len && (flags_marine_helmet & HELMET_GARB_OVERLAY))
+        var/obj/O = pockets.contents[1]
+        if(O.type in allowed_hat_items)
+            var/image/I = overlay_image('icons/mob/humans/onmob/helmet_garb.dmi', "[allowed_hat_items[O.type]]", color, RESET_COLOR)
+            ret.overlays += I
 
-	if(ismob(loc))
-		var/mob/M = loc
-		M.update_inv_head()
+    return ret
+
 
 /obj/item/clothing/head/cmcap/verb/fliphat()
 	set name = "Flip hat"

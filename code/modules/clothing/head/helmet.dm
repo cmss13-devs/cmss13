@@ -242,7 +242,7 @@
 	// Really the list of special cosmetic items -> their icon_state(s)
 	var/list/allowed_helmet_items = list(
 						///// TOBACCO-RELATED
-						/obj/item/tool/lighter/random = "helmet_lighter_",
+						/obj/item/tool/lighter/random = HELMET_GARB_ACTUAL_ICON_STATE,
 						/obj/item/tool/lighter/zippo = "helmet_lighter_zippo",
 						/obj/item/storage/box/matches = "helmet_matches",
 						/obj/item/storage/fancy/cigarettes/emeraldgreen = "helmet_cig_cig",
@@ -348,7 +348,7 @@
 						/obj/item/stack/medical/ointment = "ointment",
 						/obj/item/tool/surgery/scalpel = "scalpel",
 						/obj/item/reagent_container/hypospray/autoinjector = "helmet_injector")
-	
+
 	var/specialty = "M10 pattern marine" //Give them a specialty var so that they show up correctly in vendors.
 	valid_accessory_slots = list(ACCESSORY_SLOT_HELM_C)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_HELM_C)
@@ -406,10 +406,10 @@
 
 /obj/item/clothing/head/helmet/marine/update_icon()
 	// Currently done by delegating to the human onmob head inventory updater
-	// not the best *possible* solution, but this is complicated by the fact that 
+	// not the best *possible* solution, but this is complicated by the fact that
 	// adding an image to src or trying to render it in overlays does nothing because
 	// the "primary" icon of src is the holdable object, not the onmob.
-	// the human sprite is the only thing that reliably renders things, so 
+	// the human sprite is the only thing that reliably renders things, so
 	// we have to add overlays to that.
 	helmet_overlays = list() // Rebuild our list every time
 	if(pockets && pockets.contents.len && (flags_marine_helmet & HELMET_GARB_OVERLAY))

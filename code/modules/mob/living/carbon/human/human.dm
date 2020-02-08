@@ -816,6 +816,9 @@
 			I.examine(usr)
 
 	if(href_list["flavor_change"])
+		if(usr.client != client)
+			return
+
 		switch(href_list["flavor_change"])
 			if("done")
 				close_browser(src, "flavor_changes")

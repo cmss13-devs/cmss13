@@ -369,6 +369,14 @@
 	walltype = WALL_STRATA_ICE //Not a metal wall
 	hull = 1 //Can't break this ice.
 
+/turf/closed/wall/strata_ice/jungle
+	name = "jungle vegetation"
+	icon = 'icons/turf/walls/strata_ice.dmi'
+	icon_state = "strata_jungle"
+	desc = "Exceptionally dense vegetation that you can't see through."
+	walltype = WALL_STRATA_JUNGLE //Not a metal wall
+	hull = 1 //Can't break this ice.
+
 /turf/closed/wall/strata_outpost_ribbed //this guy is our reinforced replacement
 	name = "ribbed outpost walls"
 	icon = 'icons/turf/walls/strata_outpost.dmi'

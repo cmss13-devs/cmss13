@@ -127,7 +127,7 @@ Tells the GC how to handle deletion of the object
 
 #define DOCK_ATTEMPT_TIMEOUT 			SECONDS_20	//how long in ticks we wait before assuming the docking controller is broken or blown up.
 #define DROPSHIP_TRANSIT_DURATION		SECONDS_100	// 100 seconds
-#define DROPSHIP_CORSAT_DURATION		SECONDS_30  // 30 seconds 
+#define DROPSHIP_CORSAT_DURATION		SECONDS_30  // 30 seconds
 #define ELEVATOR_TRANSIT_DURATION		SECONDS_5	// 5 seconds
 #define TRANSIT_POD_TRANSIT_DURATION	SECONDS_30 	// 30 seconds
 #define DROPSHIP_CRASH_TRANSIT_DURATION	MINUTES_3	// 180 seconds. 3 minutes
@@ -246,30 +246,31 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 #define BARRICADE_BSTATE_MOVABLE 	0 // ready to be deconstructed and can be moved
 
 // Defines for wall types
-#define WALL_METAL (1<<1)
-#define WALL_HULL (1<<2)
-#define WALL_WHITE (1<<3)
-#define WALL_SULACO (1<<4)
-#define WALL_HANGAR (1<<5)
-#define WALL_REINFORCED (1<<6)
-#define WALL_REINFORCED_RESEARCH (1<<7)
-#define WALL_REINFORCED_IRON (1<<8)
-#define WALL_REINFORCED_CHIGUSA (1<<9)
-#define WALL_REINFORCED_BUNKER (1<<10)
-#define WALL_RESIN (1<<11)
-#define WALL_THICKRESIN (1<<12)
-#define WALL_MEMBRANE (1<<13)
-#define WALL_THICKMEMBRANE (1<<14)
-#define WALL_CAVE (1<<15)
-#define WALL_WOOD (1<<16)
-#define WALL_GOLD (1<<17)
-#define WALL_CULT (1<<18)
-#define WALL_STONE (1<<19)
-#define WALL_STRATA_ICE (1<<20)
-#define WALL_STRATA_OUTPOST_RIBBED (1<<21)
-#define WALL_STRATA_OUTPOST_BARE (1<<22)
-#define WALL_DOME (1<<23)
-#define WALL_DOMER (1<<24)
+#define WALL_METAL "metal"
+#define WALL_HULL "testwall"
+#define WALL_WHITE "wwall"
+#define WALL_SULACO "sulaco"
+#define WALL_HANGAR "hangar"
+#define WALL_REINFORCED "rwall"
+#define WALL_REINFORCED_RESEARCH "research"
+#define WALL_REINFORCED_IRON "iron"
+#define WALL_REINFORCED_CHIGUSA "chigusa"
+#define WALL_REINFORCED_BUNKER "bunker"
+#define WALL_RESIN "resin"
+#define WALL_THICKRESIN "thickresin"
+#define WALL_MEMBRANE "membrane"
+#define WALL_THICKMEMBRANE "thickmembrane"
+#define WALL_CAVE "cavewall"
+#define WALL_WOOD "wood"
+#define WALL_GOLD "gold"
+#define WALL_CULT "cult"
+#define WALL_STONE "stone"
+#define WALL_STRATA_ICE "strata_ice"
+#define WALL_STRATA_JUNGLE "strata_jungle"
+#define WALL_STRATA_OUTPOST_RIBBED "strata_ribbed_outpost_"
+#define WALL_STRATA_OUTPOST_BARE "strata_bare_outpost_"
+#define WALL_DOME "dome"
+#define WALL_DOMER "r_dome"
 
 //Defines for dropship weapon gimbals
 #define GIMBAL_LEFT -1

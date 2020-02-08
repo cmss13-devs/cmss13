@@ -4,7 +4,7 @@
     name = "Sorokyne Map Holder"
     source_map_tag = MAP_SOROKYNE_STRATA
 
-    min_time_between_events = MINUTES_4
+    min_time_between_events = MINUTES_20
     no_weather_turf_icon_state = "strata_clearsky"
 
 /datum/weather_ss_map_holder/sorokyne/New()

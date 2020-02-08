@@ -250,7 +250,6 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	spawn(1)
 		new /obj/item/weapon/gun/rifle/l42mk1(src)
 		new /obj/item/attachable/scope(src)
-		new /obj/item/attachable/stock/carbine(src)
 		new /obj/item/attachable/suppressor(src)
 		new /obj/item/attachable/extended_barrel(src)
 		new /obj/item/ammo_magazine/rifle/l42mk1/ap(src)

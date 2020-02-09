@@ -41770,6 +41770,16 @@
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
 /area/almayer/command/cichallway)
+"fSl" = (
+/obj/structure/machinery/line_nexter{
+	id = "line2";
+	pixel_x = -2
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor5";
+	tag = "icon-test_floor5"
+	},
+/area/almayer/squads/req)
 "fTf" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/toolbox,
@@ -95823,7 +95833,7 @@ bdk
 bdk
 brj
 bQQ
-brj
+fSl
 bdk
 bdk
 pUp

@@ -33,6 +33,12 @@
 				if(rankpath)
 					var/obj/item/clothing/accessory/ranks/R = new rankpath()
 					C.attach_accessory(H, R)
+		var/new_faction = input("Select faction.", "Faction Choice", "Neutral") as null|anything in FACTION_LIST_HUMANOID
+		if(!new_faction)
+			new_faction = FACTION_NEUTRAL
+		H.faction = new_faction
+		if(H.mind)
+			H.mind.faction = new_faction
 	else
 		var/newcommtitle = input("Write the custom title appearing on comms chat (e.g. Spc)", "Comms title") as null|text
 		if(!newcommtitle)
@@ -62,9 +68,15 @@
 			I.assignment = IDtitle
 			I.name = "[I.registered_name]'s ID Card ([I.assignment])"
 
+		var/new_faction = input("Select faction.", "Faction Choice", "Neutral") as null|anything in FACTION_LIST_HUMANOID
+		if(!new_faction)
+			new_faction = FACTION_NEUTRAL
+		H.faction = new_faction
+
 		if(!H.mind)
 			to_chat(usr, "The mob has no mind, unable to modify skills.")
 		else
+			H.mind.faction = new_faction
 			var/newskillset = input("Select a skillset", "Skill Set") as null|anything in RoleAuthority.roles_by_name
 			if(!newskillset)
 				return
@@ -79,7 +91,7 @@
 	set category = null
 	set name = "Select Equipment"
 
-	src.cmd_admin_dress_human(M)
+	cmd_admin_dress_human(M)
 
 /client/proc/cmd_admin_dress_human(var/mob/living/carbon/human/M in mob_list, var/datum/equipment_preset/dresscode, var/no_logs = 0, var/count_participant = FALSE)
 	if (!no_logs)

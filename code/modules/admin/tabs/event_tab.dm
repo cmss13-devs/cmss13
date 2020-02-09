@@ -369,13 +369,13 @@
 	dropship.process_state = WAIT_LAUNCH
 
 /client/proc/cmd_admin_create_centcom_report()
-	set name = "A: Create Command Report"
+	set name = "A: Report: Faction"
 	set category = "Event"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
-	var/faction = input(usr, "Please choose faction you want to see your announcement.", "Faction Selection", "") as null|anything in list(FACTION_MARINE, FACTION_PMC, FACTION_CLF, FACTION_UPP, FACTION_SURVIVOR, FACTION_FREELANCER, FACTION_MERCENARY, FACTION_COLONIST, FACTION_GLADIATOR, FACTION_NEUTRAL, "Everyone (-Yautja)")
+	var/faction = input(usr, "Please choose faction your announcement will be shown to.", "Faction Selection", "") as null|anything in (FACTION_LIST_HUMANOID - list(FACTION_YAUTJA) + list("Everyone (-Yautja)"))
 	if(!faction)
 		return
 	var/input = input(usr, "Please enter announcement text. Be advised, this announcement will be heard both on Almayer and planetside by conscious humans of selected faction.", "What?", "") as message|null
@@ -395,7 +395,7 @@
 				C.messagetext.Add(P.info)
 
 		if(alert("Press \"Yes\" if you want to announce it to ship crew and marines. Press \"No\" to keep it only as printed report on communication console.",,"Yes","No") == "Yes")
-			if(alert("Do you want PMCs to see this announcement?",,"Yes","No") == "Yes")
+			if(alert("Do you want PMCs (not Death Squad) to see this announcement?",,"Yes","No") == "Yes")
 				marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction)
 			else
 				marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction, FALSE)
@@ -406,7 +406,7 @@
 	message_admins("[key_name_admin(src)] has created a [faction] command report")
 
 /client/proc/cmd_admin_xeno_report()
-	set name = "A: Create Queen Mother Report"
+	set name = "A: Report: Queen Mother"
 	set desc = "Basically a command announcement, but only for selected Xenos Hive"
 	set category = "Event"
 
@@ -427,7 +427,7 @@
 	message_admins("[key_name_admin(src)] has created a [hive_choice] Queen Mother report")
 
 /client/proc/cmd_admin_create_AI_report()
-	set name = "A: Create ARES Comms Announcement"
+	set name = "A: Report: ARES Comms"
 	set category = "Event"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
@@ -451,7 +451,7 @@
 		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
 
 /client/proc/cmd_admin_create_AI_shipwide_report()
-	set name = "A: Create ARES Shipwide Announcement"
+	set name = "A: Report: ARES Shipwide"
 	set category = "Event"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
@@ -475,7 +475,7 @@
 	message_admins("[key_name_admin(src)] has created an AI shipwide report")
 
 /client/proc/cmd_admin_create_predator_report()
-	set name = "A: Create Yautja AI Announcement"
+	set name = "A: Report: Yautja AI"
 	set category = "Event"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))

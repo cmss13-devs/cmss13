@@ -74,6 +74,7 @@
 	name = "Dutch's Dozen - Soldier"
 	paygrade = "DTC"
 	flags = EQUIPMENT_PRESET_EXTRA
+	faction = FACTION_DUTCH
 
 	skills = /datum/skills/mercenary
 
@@ -198,6 +199,7 @@
 
 	flags = EQUIPMENT_PRESET_EXTRA
 	uses_special_name = TRUE
+	faction = FACTION_HEFA
 
 	// Cooperate!
 	access = list(ACCESS_IFF_MARINE)

@@ -249,7 +249,7 @@
 	name = "Weston-Yamada Deathsquad"
 	flags = EQUIPMENT_PRESET_EXTRA
 	uses_special_name = TRUE //We always use a codename!
-
+	faction = FACTION_DEATHSQUAD
 	assignment = "Deathsquad"
 	rank = JOB_PMC_COMMANDO
 	special_role = "DEATH SQUAD"

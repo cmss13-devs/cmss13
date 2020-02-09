@@ -64,6 +64,9 @@
 											( dir & (EAST|WEST) ? ~dir & (EAST|WEST) : 0 ) \
 										)
 
+// The sane, counter-clockwise angle to turn to get from /direction/ A to /direction/ B
+#define turning_angle(a, b) -(dir2angle(b) - dir2angle(a))
+
 
 // GLOBAL PROCS //
 
@@ -1953,6 +1956,22 @@ var/list/WALLITEMS = list(
 		if(G.harmful && (T.z in MAIN_SHIP_AND_DROPSHIPS_Z_LEVELS) && (security_level < SEC_LEVEL_RED) && !crash_occured && grenade_antigrief_on)
 			return TRUE
 	return FALSE
+
+// Returns only the perimeter of the block given by the min and max turfs
+/proc/blockhollow(var/turf/min, var/turf/max)
+	var/list/perimeter_turfs = list()
+
+	// Upper/lower perimeters
+	for(var/x_coord = min.x to max.x)
+		perimeter_turfs += locate(x_coord, min.y, min.z)
+		perimeter_turfs += locate(x_coord, max.y, min.z)
+
+	// Left/right perimeters
+	for(var/y_coord = min.y + 1 to max.y - 1)
+		perimeter_turfs += locate(min.x, y_coord, min.z)
+		perimeter_turfs += locate(max.x, y_coord, min.z)
+
+	return perimeter_turfs
 
 /proc/flick_overlay(var/atom/target, overlay, time)
 	target.overlays += overlay

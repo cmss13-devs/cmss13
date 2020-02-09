@@ -14,12 +14,12 @@
 	pixel_x = -16
 	pixel_y = -2
 
-	New()
-		..()
-		cell = new /obj/item/cell/apc
-		for(var/i = 1, i <= 2, i++)
-			var/obj/item/powerloader_clamp/PC = new(src)
-			PC.linked_powerloader = src
+/obj/vehicle/powerloader/Initialize()
+	cell = new /obj/item/cell/apc
+	for(var/i = 1, i <= 2, i++)
+		var/obj/item/powerloader_clamp/PC = new(src)
+		PC.linked_powerloader = src
+	. = ..()
 
 /obj/vehicle/powerloader/relaymove(mob/user, direction)
 	if(user.is_mob_incapacitated()) return

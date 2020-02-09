@@ -1283,7 +1283,7 @@
 		dat += "Pilot: [usr.mind.cm_skills.get_skill_level(SKILL_PILOT)]<br/>"
 		dat += "Police: [usr.mind.cm_skills.get_skill_level(SKILL_POLICE)]<br/>"
 		dat += "Powerloader: [usr.mind.cm_skills.get_skill_level(SKILL_POWERLOADER)]<br/>"
-		dat += "Large Vehicle: [usr.mind.cm_skills.get_skill_level(SKILL_LARGE_VEHICLE)]<br/>"
+		dat += "Vehicles: [usr.mind.cm_skills.get_skill_level(SKILL_VEHICLE)]<br/>"
 
 	show_browser(src, dat, "Skills", "checkskills")
 	return

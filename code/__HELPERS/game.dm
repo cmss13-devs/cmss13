@@ -160,10 +160,8 @@
 
 // The old system would loop through lists for a total of 5000 per function call, in an empty server.
 // This new system will loop at around 1000 in an empty server.
-
+// Returns a list of mobs in range of R from source. Used in radio and say code.
 /proc/get_mobs_in_view(var/R, var/atom/source)
-	// Returns a list of mobs in range of R from source. Used in radio and say code.
-
 	var/turf/T = get_turf(source)
 	var/list/hear = list()
 
@@ -177,16 +175,12 @@
 			var/mob/M = A
 			if(M.client)
 				hear += M
-			//world.log << "Start = [M] - [get_turf(M)] - ([M.x], [M.y], [M.z])"
 		else if(istype(A, /obj/item/device/radio))
 			hear += A
-		// Fix LOOC for our tank ungas - Fourk 5/2/19
-		else if (istype(A, /obj/vehicle/multitile/root/cm_armored/tank))
-			var/obj/vehicle/multitile/root/cm_armored/tank/tank = A
-			if (tank.driver && ishuman(tank.driver))
-				hear += tank.driver
-			if (tank.gunner && ishuman(tank.gunner))
-				hear += tank.gunner
+		else if (istype(A, /obj/vehicle/multitile))
+			var/obj/vehicle/multitile/vehicle = A
+			for(var/mob/M in vehicle.get_passengers())
+				hear += M
 		else if (istype(A, /obj/structure/closet))
 			var/obj/structure/closet/C = A
 			if (!C.store_mobs)
@@ -198,7 +192,6 @@
 			for (var/mob/M in A)
 				if (M.client)
 					hear += M
-
 	return hear
 
 

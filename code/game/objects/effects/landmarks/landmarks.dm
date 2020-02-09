@@ -1,6 +1,6 @@
 /obj/effect/landmark
 	name = "landmark"
-	icon = 'icons/mob/hud/screen1.dmi'
+	icon = 'icons/landmarks.dmi'
 	icon_state = "x2"
 	anchored = 1.0
 	unacidable = TRUE
@@ -36,6 +36,9 @@
 			SupplyElevator = loc
 			qdel(src)
 
+		if("VehicleElevator")
+			VehicleElevator = loc
+			qdel(src)
 		if("HangarUpperElevator")
 			HangarUpperElevator = loc
 			qdel(src)

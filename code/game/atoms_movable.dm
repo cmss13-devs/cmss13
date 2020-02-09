@@ -55,9 +55,6 @@
 	else if(directional_lum && light && dir != old_dir) //for objects with directional light that were blocked from moving, but still rotated
 		light.changed()
 
-/atom/movable/Bump(atom/A)
-	return
-
 /atom/movable/proc/Collide(atom/A)
 	if (throwing)
 		launch_impact(A)

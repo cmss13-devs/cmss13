@@ -15,7 +15,7 @@
 	var/quick_create_object_html = null
 	var/pathtext = null
 
-	pathtext = input("Select the path of the object you wish to create.", "Path", "/obj") as null|anything in list("/obj","/obj/structure","/obj/structure/machinery","/obj/mecha","/obj/item","/obj/item/weapon","/obj/item/weapon/gun","/obj/item/ammo_magazine","/obj/item/clothing","/obj/item/storage","/obj/item/reagent_container","/obj/item/device","/obj/effect","/obj/vehicle","/obj/item/stack")
+	pathtext = input("Select the path of the object you wish to create.", "Path", "/obj") as null|anything in list("/obj","/obj/structure","/obj/structure/machinery","/obj/mecha","/obj/item","/obj/item/weapon","/obj/item/weapon/gun","/obj/item/ammo_magazine","/obj/item/hardpoint","/obj/item/clothing","/obj/item/storage","/obj/item/reagent_container","/obj/item/device","/obj/effect","/obj/vehicle","/obj/item/stack")
 	if(!pathtext)
 		return
 	var path = text2path(pathtext)

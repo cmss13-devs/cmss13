@@ -188,3 +188,5 @@
 	var/last_damage_mob // for tracking last hits on mob death, for kill stat tracking and moderation
 
 	var/ambience_playing = FALSE
+
+	var/noclip = FALSE

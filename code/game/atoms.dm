@@ -8,6 +8,8 @@
 	var/fingerprintslast = null
 
 	var/unacidable = FALSE
+	//determines whether or not the atom can be destroyed by an explosion
+	var/indestructible = FALSE
 	var/last_bumped = 0
 
 	// Flags for what an atom can pass through

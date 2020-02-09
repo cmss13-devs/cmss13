@@ -478,9 +478,9 @@ datum/preferences/proc/update_preview_icon()		//seriously. This is horrendous.
 					clothes_s.Blend(new /icon('icons/mob/mob.dmi', "card-id"), ICON_OVERLAY)
 					preference_overlay_cache["ROLE_CHIEF_MP"] = clothes_s
 				
-			if(ROLE_TANK_OFFICER)
-				if(preference_overlay_cache["ROLE_TANK_OFFICER"])
-					clothes_s = preference_overlay_cache["ROLE_TANK_OFFICER"]
+			if(ROLE_CREWMAN)
+				if(preference_overlay_cache["ROLE_CREWMAN"])
+					clothes_s = preference_overlay_cache["ROLE_CREWMAN"]
 				else
 					clothes_s = new /icon('icons/mob/humans/onmob/uniform_0.dmi', "marine_tanker")
 					clothes_s.Blend(new /icon('icons/mob/humans/onmob/feet.dmi', "jackboots"), ICON_UNDERLAY)
@@ -491,7 +491,7 @@ datum/preferences/proc/update_preview_icon()		//seriously. This is horrendous.
 					clothes_s.Blend(new /icon('icons/mob/humans/onmob/back.dmi', "marinesatch"), ICON_OVERLAY)
 					clothes_s.Blend(new /icon('icons/mob/humans/onmob/belt.dmi', "m4a3_holster"), ICON_OVERLAY)
 					clothes_s.Blend(new /icon('icons/mob/mob.dmi', "card-id"), ICON_OVERLAY)
-					preference_overlay_cache["ROLE_TANK_OFFICER"] = clothes_s
+					preference_overlay_cache["ROLE_CREWMAN"] = clothes_s
 					
 			if(ROLE_INTEL_OFFICER)
 				if(preference_overlay_cache["ROLE_INTEL_OFFICER"])

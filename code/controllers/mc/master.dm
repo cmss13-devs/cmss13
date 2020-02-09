@@ -61,12 +61,10 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 			init_subtypes(/datum/subsystem, subsystems)
 		Master = src
 
-/*
 /datum/controller/master/Dispose()
 	..()
 	// Tell qdel() to Del() this object.
-	return QDEL_HINT_HARDDEL_NOW
-*/
+	return GC_HINT_DELETE_NOW
 
 /datum/controller/master/proc/Shutdown()
 	processing = FALSE
@@ -129,9 +127,10 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 	sortTim(subsystems, /proc/cmp_subsystem_init)
 
 	// Initialize subsystems.
+	var/running_tests = (world.params && world.params["run_tests"])
 	CURRENT_TICKLIMIT = TICK_LIMIT_MC_INIT
 	for (var/datum/subsystem/SS in subsystems)
-		if (SS.flags & SS_NO_INIT)
+		if ((SS.flags & SS_NO_INIT) || (running_tests && (SS.flags & SS_DISABLE_FOR_TESTING)))
 			continue
 		SS.Initialize(world.timeofday)
 		CHECK_TICK

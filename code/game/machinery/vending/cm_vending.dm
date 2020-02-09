@@ -299,10 +299,10 @@
 						to_chat(H, SPAN_WARNING("That set is already taken."))
 						return
 
-				if(vendor_role == JOB_TANKER)
+				if(vendor_role == JOB_CREWMAN)
 					var/p_name = L[1]
 					var/obj/structure/machinery/cm_vending/tank/t = src
-					if(!t.primary_list.Find(p_name) && !t.secondary_list.Find(p_name) && !t.support_list.Find(p_name) && !t.armor_list.Find(p_name) &&!t.treads_list.Find(p_name))
+					if(!t.integral_list.Find(p_name) && !t.primary_list.Find(p_name) && !t.secondary_list.Find(p_name) && !t.support_list.Find(p_name) && !t.armor_list.Find(p_name) &&!t.treads_list.Find(p_name))
 						to_chat(H, SPAN_WARNING("That equipment is already taken."))
 						return
 
@@ -365,8 +365,8 @@
 							to_chat(H, SPAN_WARNING("<b>Something bad occured with [src], tell a Dev.</b>"))
 							return
 					available_specialist_sets -= p_name
-			if(vendor_role == JOB_TANKER)
-				if(H.mind && H.mind.assigned_role == JOB_TANKER)
+			if(vendor_role == JOB_CREWMAN)
+				if(H.mind && H.mind.assigned_role == JOB_CREWMAN)
 					if(istype(src, /obj/structure/machinery/cm_vending/tank))
 						var/obj/structure/machinery/cm_vending/tank/t = src
 						var/t_name = L[1]
@@ -1364,50 +1364,108 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 
 //Five global lists - one for each slot - so that two tankers can't each get five items
 
+//
 /obj/structure/machinery/cm_vending/tank
-	name = "ColMarTech Tank Equipment storage"
-	desc = "An automated weapons storage unit hooked up to the underbelly of the ship, allowing the tank crew to choose one set of free equipment for their tank. "
+	name = "ColMarTech Vehicle Equipment storage"
+	desc = "An automated weapons storage unit hooked up to the underbelly of the ship, allowing the crewmen to choose one set of free equipment for their vehicle."
 	icon_state = "armory"
-	vendor_role = JOB_TANKER
-	var/list/primary_list = list("DRG-N Offensive Flamer Unit", "LTAA-AP Minigun", "AC3-E Autocannon")
-	var/list/secondary_list = list("Grenade Launcher", "M56 Cupola", "Secondary Flamer Unit", "TOW Launcher")
-	var/list/support_list = list("Artillery Module", "Integrated Weapons Sensor Array", "Overdrive Enhancer", "Smoke Launcher")
-	var/list/armor_list = list("Ballistic Armor", "Caustic Armor", "Concussive Armor", "Paladin Armor")
-	var/list/treads_list = list("Treads")
+	vendor_role = JOB_CREWMAN
+	var/list/integral_list = list(
+		"M34A2-A Multipurpose Turret"
+	)
+	var/list/primary_list = list(
+		"DRG-N Offensive Flamer Unit",
+		"LTAA-AP Minigun",
+		"AC3-E Autocannon",
+		"PARS-159 Boyars Dualcannon"
+	)
+	var/list/secondary_list = list(
+		"Grenade Launcher",
+		"M56 Cupola",
+		"Secondary Flamer Unit",
+		"TOW Launcher",
+		"RE-RE700 Frontal Cannon"
+	)
+	var/list/support_list = list(
+		"Artillery Module",
+		"Integrated Weapons Sensor Array",
+		"Overdrive Enhancer",
+		"Smoke Launcher",
+		"Flare Launcher"
+	)
+	var/list/armor_list = list(
+		"Ballistic Armor",
+		"Caustic Armor",
+		"Concussive Armor",
+		"Paladin Armor"
+	)
+	var/list/treads_list = list(
+		"Treads",
+		"Robus-Treads",
+		"APC wheels"
+	)
 
-//fuck it
 	listed_products = list(
-		list("PRIMARY WEAPON", 0, null, null, null),
-		list("LTAA-AP Minigun", 0, /obj/effect/essentials_set/tank/gatling, MARINE_CAN_BUY_EAR, "black"),
-		list("DRG-N Offensive Flamer Unit", 0, /obj/effect/essentials_set/tank/dragonflamer, MARINE_CAN_BUY_EAR, "black"),
-		list("AC3-E Autocannon", 0, /obj/effect/essentials_set/tank/autocannon, MARINE_CAN_BUY_EAR, "black"),
-
-		list("SECONDARY WEAPON", 0, null, null, null),
-		list("Grenade Launcher", 0, /obj/effect/essentials_set/tank/tankgl, MARINE_CAN_BUY_GLOVES, "black"),
-		list("M56 Cupola", 0, /obj/effect/essentials_set/tank/tank56, MARINE_CAN_BUY_GLOVES, "black"),
-		list("Secondary Flamer Unit", 0, /obj/effect/essentials_set/tank/tankflamer, MARINE_CAN_BUY_GLOVES, "black"),
-
-		list("SUPPORT MODULE", 0, null, null, null),
-		list("Integrated Weapons Sensor Array", 0, /obj/item/hardpoint/support/weapons_sensor, MARINE_CAN_BUY_ATTACHMENT, "black"),
-		list("Smoke Launcher", 0, /obj/item/hardpoint/support/smoke_launcher, MARINE_CAN_BUY_ATTACHMENT, "black"),
-		list("Overdrive Enhancer", 0, /obj/item/hardpoint/support/overdrive_enhancer, MARINE_CAN_BUY_ATTACHMENT, "black"),
-		list("Artillery Module", 0, /obj/item/hardpoint/support/artillery_module, MARINE_CAN_BUY_ATTACHMENT, "black"),
-
-		list("ARMOR", 0, null, null, null),
-		list("Ballistic Armor", 0, /obj/item/hardpoint/armor/ballistic, MARINE_CAN_BUY_ARMOR, "black"),
-		list("Caustic Armor", 0, /obj/item/hardpoint/armor/caustic, MARINE_CAN_BUY_ARMOR, "black"),
-		list("Concussive Armor", 0, /obj/item/hardpoint/armor/concussive, MARINE_CAN_BUY_ARMOR, "black"),
-		list("Paladin Armor", 0, /obj/item/hardpoint/armor/paladin, MARINE_CAN_BUY_ARMOR, "black"),
-		list("Snowplow", 0, /obj/item/hardpoint/armor/snowplow, MARINE_CAN_BUY_ARMOR, "black"),
-
-		list("TREADS", 0, null, null, null),
-		list("Treads", 0, /obj/item/hardpoint/treads/standard, MARINE_CAN_BUY_SHOES, "black"),
+		list("Equipment is unavailable at this time", 0, null, null, null)
 	)
 
 /obj/structure/machinery/cm_vending/tank/New()
 	..()
+
+	registerListener(GLOBAL_EVENT, EVENT_VEHICLE_ORDERED, "vehicle_vendor_populate", CALLBACK(src, .proc/populate_products))
+	
 	if(map_tag in MAPS_COLD_TEMP)
 		armor_list += "Snowplow"
+
+/obj/structure/machinery/cm_vending/tank/proc/populate_products(var/obj/vehicle/multitile/V)
+	unregisterListener(GLOBAL_EVENT, EVENT_VEHICLE_ORDERED, "vehicle_vendor_populate")
+
+	if(istype(V, /obj/vehicle/multitile/tank))
+		listed_products = list(
+			list("INTEGRAL PARTS", 0, null, null, null),
+			list("M34A2-A Multipurpose Turret", 0, /obj/item/hardpoint/holder/tank_turret, MARINE_CAN_BUY_ESSENTIALS, "black"),
+
+			list("PRIMARY WEAPON", 0, null, null, null),
+			list("LTAA-AP Minigun", 0, /obj/effect/essentials_set/tank/gatling, MARINE_CAN_BUY_EAR, "black"),
+			list("DRG-N Offensive Flamer Unit", 0, /obj/effect/essentials_set/tank/dragonflamer, MARINE_CAN_BUY_EAR, "black"),
+			list("AC3-E Autocannon", 0, /obj/effect/essentials_set/tank/autocannon, MARINE_CAN_BUY_EAR, "black"),
+
+			list("SECONDARY WEAPON", 0, null, null, null),
+			list("Grenade Launcher", 0, /obj/effect/essentials_set/tank/tankgl, MARINE_CAN_BUY_GLOVES, "black"),
+			list("M56 Cupola", 0, /obj/effect/essentials_set/tank/tank56, MARINE_CAN_BUY_GLOVES, "black"),
+			list("Secondary Flamer Unit", 0, /obj/effect/essentials_set/tank/tankflamer, MARINE_CAN_BUY_GLOVES, "black"),
+
+			list("SUPPORT MODULE", 0, null, null, null),
+			list("Integrated Weapons Sensor Array", 0, /obj/item/hardpoint/buff/support/weapons_sensor, MARINE_CAN_BUY_ATTACHMENT, "black"),
+			list("Smoke Launcher", 0, /obj/item/hardpoint/gun/smoke_launcher, MARINE_CAN_BUY_ATTACHMENT, "black"),
+			list("Overdrive Enhancer", 0, /obj/item/hardpoint/buff/support/overdrive_enhancer, MARINE_CAN_BUY_ATTACHMENT, "black"),
+			list("Artillery Module", 0, /obj/item/hardpoint/artillery_module, MARINE_CAN_BUY_ATTACHMENT, "black"),
+
+			list("ARMOR", 0, null, null, null),
+			list("Ballistic Armor", 0, /obj/item/hardpoint/buff/armor/ballistic, MARINE_CAN_BUY_ARMOR, "black"),
+			list("Caustic Armor", 0, /obj/item/hardpoint/buff/armor/caustic, MARINE_CAN_BUY_ARMOR, "black"),
+			list("Concussive Armor", 0, /obj/item/hardpoint/buff/armor/concussive, MARINE_CAN_BUY_ARMOR, "black"),
+			list("Paladin Armor", 0, /obj/item/hardpoint/buff/armor/paladin, MARINE_CAN_BUY_ARMOR, "black"),
+			list("Snowplow", 0, /obj/item/hardpoint/buff/armor/snowplow, MARINE_CAN_BUY_ARMOR, "black"),
+
+			list("TREADS", 0, null, null, null),
+			list("Treads", 0, /obj/item/hardpoint/locomotion/treads, MARINE_CAN_BUY_SHOES, "black"),
+			list("Robus-Treads", 0, /obj/item/hardpoint/locomotion/treads/robust, MARINE_CAN_BUY_SHOES, "black"),
+		)
+	else if(istype(V, /obj/vehicle/multitile/apc))
+		listed_products = list(
+			list("PRIMARY WEAPON", 0, null, null, null),
+			list("PARS-159 Boyars Dualcannon", 0, /obj/effect/essentials_set/apc/dualcannon, MARINE_CAN_BUY_EAR, "black"),
+
+			list("SECONDARY WEAPON", 0, null, null, null),
+			list("RE-RE700 Frontal Cannon", 0, /obj/effect/essentials_set/apc/frontalcannon, MARINE_CAN_BUY_GLOVES, "black"),
+
+			list("SUPPORT MODULE", 0, null, null, null),
+			list("Flare Launcher", 0, /obj/effect/essentials_set/apc/flarelauncher, MARINE_CAN_BUY_ATTACHMENT, "black"),
+
+			list("WHEELS", 0, null, null, null),
+			list("APC wheels", 0, /obj/item/hardpoint/locomotion/apc_wheels, MARINE_CAN_BUY_SHOES, "black"),
+		)
 
 /obj/effect/essentials_set
 	var/list/spawned_gear_list
@@ -1457,67 +1515,90 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 //Not essentials sets but fuck it the code's here
 /obj/effect/essentials_set/tank/ltb
 	spawned_gear_list = list(
-		/obj/item/hardpoint/primary/cannon,
-		/obj/item/ammo_magazine/tank/ltb_cannon,
-		/obj/item/ammo_magazine/tank/ltb_cannon,
-		/obj/item/ammo_magazine/tank/ltb_cannon,
-		/obj/item/ammo_magazine/tank/ltb_cannon,
-		/obj/item/ammo_magazine/tank/ltb_cannon
+		/obj/item/hardpoint/gun/cannon,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon
 	)
 
 /obj/effect/essentials_set/tank/gatling
 	spawned_gear_list = list(
-		/obj/item/hardpoint/primary/minigun,
-		/obj/item/ammo_magazine/tank/ltaaap_minigun,
-		/obj/item/ammo_magazine/tank/ltaaap_minigun,
-		/obj/item/ammo_magazine/tank/ltaaap_minigun
+		/obj/item/hardpoint/gun/minigun,
+		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,
+		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,
+		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun
 	)
 
 /obj/effect/essentials_set/tank/dragonflamer
 	spawned_gear_list = list(
-		/obj/item/hardpoint/primary/flamer,
-		/obj/item/ammo_magazine/tank/primary_flamer,
-		/obj/item/ammo_magazine/tank/primary_flamer,
-		/obj/item/ammo_magazine/tank/primary_flamer
+		/obj/item/hardpoint/gun/flamer,
+		/obj/item/ammo_magazine/hardpoint/primary_flamer,
+		/obj/item/ammo_magazine/hardpoint/primary_flamer,
+		/obj/item/ammo_magazine/hardpoint/primary_flamer
 	)
 
 /obj/effect/essentials_set/tank/autocannon
 	spawned_gear_list = list(
-		/obj/item/hardpoint/primary/autocannon,
-		/obj/item/ammo_magazine/tank/ace_autocannon,
-		/obj/item/ammo_magazine/tank/ace_autocannon,
-		/obj/item/ammo_magazine/tank/ace_autocannon,
-		/obj/item/ammo_magazine/tank/ace_autocannon
+		/obj/item/hardpoint/gun/autocannon,
+		/obj/item/ammo_magazine/hardpoint/ace_autocannon,
+		/obj/item/ammo_magazine/hardpoint/ace_autocannon,
+		/obj/item/ammo_magazine/hardpoint/ace_autocannon,
+		/obj/item/ammo_magazine/hardpoint/ace_autocannon
 	)
 
 /obj/effect/essentials_set/tank/tankflamer
 	spawned_gear_list = list(
-		/obj/item/hardpoint/secondary/flamer,
-		/obj/item/ammo_magazine/tank/secondary_flamer,
-		/obj/item/ammo_magazine/tank/secondary_flamer
+		/obj/item/hardpoint/gun/small_flamer,
+		/obj/item/ammo_magazine/hardpoint/secondary_flamer,
+		/obj/item/ammo_magazine/hardpoint/secondary_flamer
 	)
 
 /obj/effect/essentials_set/tank/tow
 	spawned_gear_list = list(
-		/obj/item/hardpoint/secondary/towlauncher,
-		/obj/item/ammo_magazine/tank/towlauncher,
-		/obj/item/ammo_magazine/tank/towlauncher
+		/obj/item/hardpoint/gun/towlauncher,
+		/obj/item/ammo_magazine/hardpoint/towlauncher,
+		/obj/item/ammo_magazine/hardpoint/towlauncher
 	)
 
 /obj/effect/essentials_set/tank/tank56
 	spawned_gear_list = list(
-		/obj/item/hardpoint/secondary/m56cupola,
-		/obj/item/ammo_magazine/tank/m56_cupola
+		/obj/item/hardpoint/gun/m56cupola,
+		/obj/item/ammo_magazine/hardpoint/m56_cupola
 	)
 
 /obj/effect/essentials_set/tank/tankgl
 	spawned_gear_list = list(
-		/obj/item/hardpoint/secondary/grenade_launcher,
-		/obj/item/ammo_magazine/tank/tank_glauncher,
-		/obj/item/ammo_magazine/tank/tank_glauncher,
-		/obj/item/ammo_magazine/tank/tank_glauncher,
-		/obj/item/ammo_magazine/tank/tank_glauncher,
-		/obj/item/ammo_magazine/tank/tank_glauncher
+		/obj/item/hardpoint/gun/grenade_launcher,
+		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
+		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
+		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
+		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
+		/obj/item/ammo_magazine/hardpoint/tank_glauncher
+	)
+
+/obj/effect/essentials_set/apc/dualcannon
+	spawned_gear_list = list(
+		/obj/item/hardpoint/gun/dualcannon,
+		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
+		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
+		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
+		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon
+	)
+
+/obj/effect/essentials_set/apc/frontalcannon
+	spawned_gear_list = list(
+		/obj/item/hardpoint/gun/frontalcannon,
+		/obj/item/ammo_magazine/hardpoint/m56_cupola/frontal_cannon
+	)
+
+/obj/effect/essentials_set/apc/flarelauncher
+	spawned_gear_list = list(
+		/obj/item/hardpoint/gun/flare_launcher,
+		/obj/item/ammo_magazine/hardpoint/flare_launcher,
+		/obj/item/ammo_magazine/hardpoint/flare_launcher,
+		/obj/item/ammo_magazine/hardpoint/flare_launcher
 	)
 
 /obj/effect/essentials_set/hedp_6_pack

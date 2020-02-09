@@ -99,3 +99,26 @@ var/list/sqrtTable = list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 
 	. += (-b + root) / bottom
 	if(!d) return
 	. += (-b - root) / bottom
+
+// Rotates a point around the given axis by a given amount of degrees
+// You may want to round the result of this, it's very susceptible to floating point errors
+/proc/RotateAroundAxis(var/point, var/axis, var/degrees)
+	// Find the coordinates of the point relative to the axis.
+	// That way we can work from the origin, which is much easier
+
+	var/list/relative_coords = list(point[1] - axis[1], point[2] - axis[2])
+
+	// Convert to polar coordinates
+	var/radius = sqrt(relative_coords[1]**2 + relative_coords[2]**2)
+	var/phi = Atan2(relative_coords[1], relative_coords[2])
+
+	// Rotate the point around the axis
+	phi += degrees
+
+	// Convert back to cartesian coordiantes
+	var/list/rotated_point = list(radius * cos(phi), radius * sin(phi))
+	// Translate the rotated point back to its absolute coordinates
+	rotated_point[1] = rotated_point[1] + axis[1]
+	rotated_point[2] = rotated_point[2] + axis[2]
+
+	return rotated_point

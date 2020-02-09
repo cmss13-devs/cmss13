@@ -19,6 +19,18 @@
 	dir = 5
 	},
 /area/tdome)
+"ae" = (
+/obj/effect/decal/warning_stripes/permanent{
+	icon_state = "SE-out"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/supply/dock_vehicle)
+"af" = (
+/obj/effect/decal/warning_stripes/permanent{
+	icon_state = "S"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/supply/dock_vehicle)
 "ag" = (
 /obj/structure/window/framed/almayer/hull,
 /obj/structure/machinery/door/poddoor/almayer{
@@ -34,6 +46,18 @@
 	dir = 5
 	},
 /area/tdome)
+"ah" = (
+/obj/effect/decal/warning_stripes/permanent{
+	icon_state = "N"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/supply/dock_vehicle)
+"ai" = (
+/obj/effect/decal/warning_stripes/permanent{
+	icon_state = "E"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/supply/dock_vehicle)
 "aj" = (
 /obj/structure/machinery/autolathe/full,
 /turf/open/floor/almayer{
@@ -45,9 +69,42 @@
 "ak" = (
 /turf/closed/wall/almayer/outer,
 /area/tdome/tdome1)
+"al" = (
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/supply/dock_vehicle)
+"am" = (
+/obj/effect/decal/warning_stripes/permanent{
+	icon_state = "SW-out"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/supply/dock_vehicle)
 "an" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station)
+"ao" = (
+/obj/effect/decal/warning_stripes/permanent{
+	icon_state = "W"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/supply/dock_vehicle)
+"ap" = (
+/obj/effect/decal/warning_stripes/permanent{
+	icon_state = "NE-out"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/supply/dock_vehicle)
+"aq" = (
+/obj/effect/decal/warning_stripes/permanent{
+	icon_state = "NW-out"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/supply/dock_vehicle)
+"ar" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/supply/dock_vehicle)
 "az" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-W";
@@ -19884,15 +19941,15 @@ aa
 aa
 aa
 aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
+aa
+fn
+fn
+fn
+fn
+fn
+fn
+fn
+aa
 aC
 aC
 aC
@@ -20035,17 +20092,17 @@ bj
 aa
 aa
 aa
+aC
 aa
+fn
+ae
+ai
+ai
+ai
+ap
+fn
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
 aa
 aa
 aa
@@ -20187,17 +20244,17 @@ aY
 aa
 aa
 aa
+aC
 aa
+fn
+af
+al
+al
+al
+ah
+fn
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
 aa
 aa
 aa
@@ -20339,17 +20396,17 @@ bj
 aa
 aa
 aa
+aC
 aa
+fn
+af
+al
+ar
+al
+ah
+fn
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
 aa
 aa
 aa
@@ -20491,17 +20548,17 @@ aY
 aa
 aa
 aa
+aC
 aa
+fn
+af
+al
+al
+al
+ah
+fn
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
 aa
 aa
 aa
@@ -20643,17 +20700,17 @@ bj
 aa
 aa
 aa
+aC
 aa
+fn
+am
+ao
+ao
+ao
+aq
+fn
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
 aa
 aa
 aa
@@ -20795,17 +20852,17 @@ aY
 aa
 aa
 aa
+aC
 aa
+fn
+fn
+fn
+fn
+fn
+fn
+fn
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
 aa
 aa
 aa
@@ -20947,6 +21004,7 @@ bj
 aa
 aa
 aa
+aC
 aa
 aa
 aa
@@ -20956,8 +21014,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+aC
 aa
 aa
 aa
@@ -21099,17 +21156,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
 aa
 aa
 aa

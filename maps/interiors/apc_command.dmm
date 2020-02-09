@@ -1,0 +1,18 @@
+"a" = (/obj/structure/interior_wall/apc{dir = 8; icon_state = "apc_back_3"},/obj/structure/interior_wall/apc{dir = 1; icon_state = "apc_left_1"; layer = 2; pixel_y = 31},/obj/structure/table/reinforced/prison,/obj/structure/machinery/computer/overwatch/almayer{dir = 8; icon_state = "overwatch"; layer = 3.2; pixel_x = 0; pixel_y = 0},/turf/open/shuttle/dropship{icon_state = "rasputin14"},/area/vehicle/apc)
+"b" = (/obj/structure/interior_wall/apc{dir = 1; icon_state = "apc_left_2"; layer = 2; pixel_y = 31},/obj/structure/bed/chair/comfy{dir = 8},/obj/effect/landmark/interior/spawn/interior_viewport{pixel_y = 28},/turf/open/shuttle/dropship{icon_state = "rasputin14"},/area/vehicle/apc)
+"c" = (/obj/effect/landmark/interior/spawn/entrance{dir = 1; exit_type = "/obj/structure/interior_exit/vehicle/apc"; tag = "left"},/obj/structure/interior_wall/apc{alpha = 255; dir = 1; icon_state = "apc_right_3"; layer = 4; pixel_y = 31},/turf/open/shuttle/dropship{icon_state = "rasputin3"},/area/vehicle/apc)
+"d" = (/obj/effect/landmark/interior/spawn/vehicle_driver_seat{dir = 4},/obj/structure/interior_wall/apc{dir = 4; icon_state = "apc_front_3"},/obj/structure/interior_wall/apc{dir = 1; icon_state = "apc_left_4"; layer = 2; pixel_y = 31},/turf/open/shuttle/dropship{icon_state = "rasputin14"},/area/vehicle/apc)
+"e" = (/obj/structure/interior_wall/apc{dir = 8; icon_state = "apc_back_2"},/turf/open/shuttle/dropship{icon_state = "rasputin5"},/area/vehicle/apc)
+"f" = (/turf/open/shuttle/dropship{icon_state = "rasputin5"},/area/vehicle/apc)
+"g" = (/obj/structure/interior_wall/apc{dir = 4; icon_state = "apc_front_2"},/obj/effect/landmark/interior/spawn/weapons_loader,/turf/open/shuttle/dropship{icon_state = "rasputin5"},/area/vehicle/apc)
+"h" = (/turf/open/shuttle/dropship{icon_state = "rasputin12"},/area/vehicle/apc)
+"i" = (/obj/structure/interior_wall/apc{dir = 8; icon_state = "apc_back_1"},/obj/structure/interior_wall/apc{alpha = 50; icon_state = "apc_right_1"; layer = 4},/obj/structure/bed/chair/dropship/passenger/shuttle_chair{dir = 1},/turf/open/shuttle/dropship{icon_state = "rasputin14"},/area/vehicle/apc)
+"j" = (/obj/structure/interior_wall/apc{alpha = 50; icon_state = "apc_right_2"; layer = 4},/obj/structure/bed/chair/dropship/passenger/shuttle_chair{dir = 1},/turf/open/shuttle/dropship{icon_state = "rasputin14"},/area/vehicle/apc)
+"k" = (/obj/effect/landmark/interior/spawn/entrance{exit_type = "/obj/structure/interior_exit/vehicle/apc"; tag = "right"},/obj/structure/interior_wall/apc{alpha = 50; icon_state = "apc_right_3"; layer = 4},/turf/open/shuttle/dropship{icon_state = "rasputin3"},/area/vehicle/apc)
+"l" = (/obj/structure/interior_wall/apc{alpha = 50; icon_state = "apc_right_4"; layer = 4},/obj/structure/interior_wall/apc{dir = 4; icon_state = "apc_front_1"},/obj/effect/landmark/interior/spawn/vehicle_gunner_seat{icon_state = "comfychair"; dir = 4},/turf/open/shuttle/dropship{icon_state = "rasputin14"},/area/vehicle/apc)
+
+(1,1,1) = {"
+abcd
+efhg
+ijkl
+"}

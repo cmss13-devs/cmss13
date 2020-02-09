@@ -7,6 +7,7 @@ var/list/power_machines = list()
 	init_order    = SS_INIT_POWER
 	display_order = SS_DISPLAY_POWER
 	priority      = SS_PRIORITY_POWER
+	flags         = SS_DISABLE_FOR_TESTING
 	wait          = 2 SECONDS
 
 	var/list/currentrun_cables

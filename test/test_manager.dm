@@ -134,7 +134,7 @@ var/datum/test_manager/test_executor = new
 
 	// Start the game
 	ticker.current_state = GAME_STATE_SETTING_UP
-	
+
 	// Wait for the game to start
 	while(ticker.current_state != GAME_STATE_PLAYING)
 		sleep(10)

@@ -113,14 +113,14 @@
 
 //Tank Crewmen //For now, straight up copied from the pilot officers until their role is more solidified
 /datum/job/command/tank_crew
-	title = JOB_TANKER
-	flag = ROLE_TANK_OFFICER
+	title = JOB_CREWMAN
+	flag = ROLE_CREWMAN
 	total_positions = 2
 	spawn_positions = 0
 	allow_additional = 1
 	scaled = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
-	gear_preset = "USCM Tank Crewman (TC)"
+	gear_preset = "USCM Vehicle Crewman (CRMN)"
 	minimum_playtimes = list(
 		JOB_SQUAD_ROLES = HOURS_6,
 		JOB_SQUAD_ENGI = HOURS_3

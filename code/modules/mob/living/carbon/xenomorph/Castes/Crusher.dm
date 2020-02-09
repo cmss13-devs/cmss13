@@ -195,14 +195,14 @@
 			stop_momentum(charge_dir)
 			return FALSE
 
-	else if(istype(target, /obj/vehicle/multitile/hitbox))
-		var/obj/vehicle/multitile/hitbox/H = target
+	else if(istype(target, /obj/vehicle/multitile))
+		var/obj/vehicle/multitile/H = target
 		if(charge_speed > charge_speed_buildup * charge_turfs_to_charge)
-			visible_message(SPAN_DANGER("[src] rams into [H.root] and skids to a halt!"),
-			SPAN_XENOWARNING("You ram into [H.root] and skid to a halt!"))
+			visible_message(SPAN_DANGER("[src] rams into [H] and skids to a halt!"),
+			SPAN_XENOWARNING("You ram into [H] and skid to a halt!"))
 			flags_pass = NO_FLAGS
 			update_icons()
-			H.root.Collided(src)
+			H.Collided(src)
 			stop_momentum(charge_dir)
 			return TRUE
 		else

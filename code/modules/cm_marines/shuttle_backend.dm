@@ -552,10 +552,13 @@ qdel(src)
 		target.icon = old_icon
 
 		for (var/atom/movable/A in T)
+			// fix for multitile stuff like vehicles drifting on jump
+			if(A.loc != T)
+				continue
+
 			if (isobj(A))
 				A.loc = target
-
-
+				
 			if (ismob(A))
 				A.loc = target
 				if(iscarbon(A))

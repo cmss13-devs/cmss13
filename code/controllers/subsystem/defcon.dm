@@ -5,7 +5,7 @@ var/datum/subsystem/defcon/SSdefcon
 	wait		= 5.5 SECONDS
 	init_order = SS_INIT_DEFCON
 	priority = SS_PRIORITY_DEFCON
-	flags     = SS_NO_TICK_CHECK
+	flags     = SS_NO_TICK_CHECK | SS_DISABLE_FOR_TESTING
 
 /datum/subsystem/defcon/New()
 	..()

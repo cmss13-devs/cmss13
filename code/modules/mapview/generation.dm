@@ -205,7 +205,7 @@
 	var/list/tier_2 = list()
 	var/list/tier_3 = list()
 	for(var/mob/living/carbon/human/H in living_mob_list)
-		if(istype(H.loc,/obj/vehicle/multitile/root/cm_armored))
+		if(istype(H.loc,/obj/vehicle/multitile))
 			if(H.loc.z == 1)
 				if(!(H.loc in vehicles))
 					vehicles += H.loc
@@ -247,7 +247,8 @@
 		for(var/mob/living/carbon/human/sel in marines_with_helmets[selected])
 			newoverlay.DrawBox(colors[selected],sel.loc.x-1,sel.loc.y-1,sel.loc.x+1,sel.loc.y+1)
 	if(vehicles.len)
-		for(var/obj/vehicle/multitile/root/cm_armored/V in vehicles)
+		//TODO: Cakey, please don't let this get merged into dev.
+		for(var/obj/vehicle/multitile/V in vehicles)
 			newoverlay.DrawBox(rgb(0,153,77),V.x-1,V.y-1,V.x+1,V.y+1)
 			newoverlay.DrawBox(rgb(128,255,128),V.x-1,V.y)
 			newoverlay.DrawBox(rgb(128,255,128),V.x+1,V.y)

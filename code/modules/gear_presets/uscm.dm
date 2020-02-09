@@ -122,14 +122,14 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/tank
-	name = "USCM Tank Crewman (TC)"
+	name = "USCM Vehicle Crewman (CRMN)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_TANK)
-	assignment = JOB_TANKER
-	rank = JOB_TANKER
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_CREWMAN)
+	assignment = JOB_CREWMAN
+	rank = JOB_CREWMAN
 	paygrade = "E7"
-	role_comm_title = "TC"
+	role_comm_title = "CRMN"
 	minimum_age = 30
 	skills = /datum/skills/tank_crew
 

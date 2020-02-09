@@ -71,6 +71,24 @@
 		if(get_dist(T, turf_source) <= sound_range && T.z == turf_source.z)
 			SSsound.queue(M.client, S)
 
+	// Buuut it doesn't cover vehicle interiors, since they're in a physically different location
+	// If you or a loved one are inside a vehicle, you may be eligible for hearing sounds
+	for(var/datum/interior/I in interior_manager.interiors)
+		if(!I.ready)
+			continue
+
+		if(I.exterior.z == turf_source.z && get_dist(I.exterior, turf_source) <= sound_range)
+			var/list/bounds = I.get_bound_turfs()
+			if(!bounds)
+				continue
+
+			for(var/turf/interior_turf in block(bounds[1], bounds[2]))
+				// Play the sound to any mobs inside
+				for(var/mob/P in interior_turf)
+					if(!P.client)
+						continue
+					P.client.soundOutput.process_sound(S)
+
 //This is the replacement for playsound_local. Use this for sending sounds directly to a client
 /proc/playsound_client(client/C, soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status)
 	if(!istype(C) || !C.soundOutput) return FALSE

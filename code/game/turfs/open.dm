@@ -53,8 +53,13 @@
 	..()
 	ceiling_desc(user)
 
-
-
+// Black & invisible to the mouse. used by vehicle interiors
+/turf/open/void
+	name = "void"
+	icon = 'icons/turf/floors/space.dmi'
+	icon_state = "black"
+	mouse_opacity = FALSE
+	can_bloody = FALSE
 
 /turf/open/river
 	can_bloody = FALSE

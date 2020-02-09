@@ -31,7 +31,7 @@ var/global/list/JOB_SQUAD_ROLES_LIST    = list(JOB_SQUAD_MARINE, JOB_SQUAD_LEADE
 #define JOB_COMMAND_ROLES               "CIC Roles"
 var/global/list/JOB_COMMAND_ROLES_LIST  = list(JOB_CO, JOB_XO, JOB_SO)
 #define JOB_PILOT                       "Pilot Officer"
-#define JOB_TANKER                      "Tank Crewman"
+#define JOB_CREWMAN                     "Vehicle Crewman"
 #define JOB_INTEL                       "Intelligence Officer"
 #define JOB_POLICE                      "Military Police"
 #define JOB_CHIEF_POLICE                "Chief MP"

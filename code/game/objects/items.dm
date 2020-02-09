@@ -43,8 +43,6 @@
 	var/flags_heat_protection = NO_FLAGS //flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
 	var/flags_cold_protection = NO_FLAGS //flags which determine which body parts are protected from cold. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
 
-	var/indestructible = 0 //determines whether or not the item can be destroyed by explosions
-
 	var/max_heat_protection_temperature //Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by flags_heat_protection flags
 	var/min_cold_protection_temperature //Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by flags_cold_protection flags
 
@@ -207,16 +205,18 @@ cases. Override_icon_state should be a list.*/
 /obj/item/examine(mob/user)
 	var/size
 	switch(w_class)
-		if(1.0)
+		if(SIZE_TINY)
 			size = "tiny"
-		if(2.0)
+		if(SIZE_SMALL)
 			size = "small"
-		if(3.0)
+		if(SIZE_MEDIUM)
 			size = "normal-sized"
-		if(4.0)
+		if(SIZE_LARGE)
 			size = "bulky"
-		if(5.0)
+		if(SIZE_HUGE)
 			size = "huge"
+		if(SIZE_MASSIVE)
+			size = "massive"
 		else
 	to_chat(user, "This is a [blood_color ? blood_color != "#030303" ? "bloody " : "oil-stained " : ""][htmlicon(src, user)][src.name]. It is a [size] item.")
 	if(desc)

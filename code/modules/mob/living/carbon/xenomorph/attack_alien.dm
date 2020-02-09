@@ -437,6 +437,8 @@
 //Beds, nests and chairs - unbuckling
 /obj/structure/bed/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(M.a_intent == "hurt")
+		if(unslashable)
+			return
 		M.animation_attack_on(src)
 		playsound(src, hit_bed_sound, 25, 1)
 		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"),
@@ -667,6 +669,13 @@
 			playsound(loc, "alien_resin_break", 25)
 			health -= Ceiling(HEALTH_DOOR_XENO/3) // takes three hits
 		qdel(src)
+
+
+/obj/structure/attack_alien(mob/living/carbon/Xenomorph/M)
+	// fuck off dont destroy my unslashables
+	if(unslashable || health <= 0)
+		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
+		return
 
 //Xenomorphs can't use machinery, not even the "intelligent" ones
 //Exception is Queen and shuttles, because plot power

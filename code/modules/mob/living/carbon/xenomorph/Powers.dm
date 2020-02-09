@@ -1573,10 +1573,10 @@
 
 	var/obj/effect/xenomorph/acid/A = new acid_type(get_turf(O), O)
 
-	if(istype(O, /obj/vehicle/multitile/root/cm_armored))
-		var/obj/vehicle/multitile/root/cm_armored/R = O
-		R.take_damage_type( (1 / A.acid_strength) * 20, "acid", src)
-		visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff at [O]. It sizzles under the bubbling mess of acid!"), \
+	if(istype(O, /obj/vehicle/multitile))
+		var/obj/vehicle/multitile/R = O
+		R.take_damage_type((1 / A.acid_strength) * 20, "acid", src)
+		visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!"), \
 			SPAN_XENOWARNING("You vomit globs of vile stuff at [O]. It sizzles under the bubbling mess of acid!"), null, 5)
 		playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 		QDEL_IN(A, 20)

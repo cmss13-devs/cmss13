@@ -5,9 +5,12 @@
 
 //#define AREA_LAYER 1
 
+#define UNDER_TURF_LAYER 1.99
+
 #define TURF_LAYER 2
 
 #define ABOVE_TURF_LAYER 2.01
+#define INTERIOR_WALL_NORTH_LAYER 2.02
 
 #define LATTICE_LAYER 2.15
 
@@ -88,6 +91,9 @@
 
 #define ABOVE_XENO_LAYER 4.12	//for xenos to hide behind bushes and tall grass
 
+
+#define INTERIOR_WALL_SOUTH_LAYER 5.2
+#define INTERIOR_DOOR_LAYER       5.21
 
 //#define FLY_LAYER 5
 

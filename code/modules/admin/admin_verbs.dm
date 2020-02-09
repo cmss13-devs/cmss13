@@ -174,6 +174,7 @@ var/list/admin_verbs_teleport = list(
 	/client/proc/jumptokey,
 	/client/proc/Getmob,
 	/client/proc/Getkey,
+	/client/proc/toggle_noclip
 )
 
 var/list/admin_verbs_mod = list(

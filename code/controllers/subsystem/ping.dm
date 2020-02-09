@@ -4,7 +4,7 @@ var/datum/subsystem/ping/SSping
 	name = "Ping"
 	priority = SS_PRIORITY_PING
 	wait = 3 SECONDS
-	flags = SS_NO_INIT | SS_FIRE_IN_LOBBY
+	flags = SS_NO_INIT | SS_FIRE_IN_LOBBY | SS_DISABLE_FOR_TESTING
 
 	var/list/currentrun
 

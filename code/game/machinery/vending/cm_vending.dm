@@ -57,7 +57,7 @@
 	var/use_points = FALSE
 	var/use_snowflake_points = FALSE
 
-	var/list/listed_products
+	var/list/listed_products = list()
 
 
 
@@ -204,22 +204,21 @@
 			m_points = I.marine_points
 		buy_flags = I.marine_buy_flags
 
+	if(listed_products.len)
+		for(var/i in 1 to listed_products.len)
+			var/list/myprod = listed_products[i]
+			var/p_name = myprod[1]
+			var/p_cost = myprod[2]
+			if(p_cost > 0)
+				p_name += " ([p_cost] points)"
 
-	for(var/i in 1 to listed_products.len)
-		var/list/myprod = listed_products[i]
-		var/p_name = myprod[1]
-		var/p_cost = myprod[2]
-		if(p_cost > 0)
-			p_name += " ([p_cost] points)"
+			var/prod_available = FALSE
+			var/avail_flag = myprod[4]
+			if(m_points >= p_cost && (!avail_flag || buy_flags & avail_flag))
+				prod_available = TRUE
 
-		var/prod_available = FALSE
-		var/avail_flag = myprod[4]
-		if(m_points >= p_cost && (!avail_flag || buy_flags & avail_flag))
-			prod_available = TRUE
-
-								//place in main list, name, cost, available or not, color.
-		display_list += list(list("prod_index" = i, "prod_name" = p_name, "prod_available" = prod_available, "prod_color" = myprod[5]))
-
+			//place in main list, name, cost, available or not, color.
+			display_list += list(list("prod_index" = i, "prod_name" = p_name, "prod_available" = prod_available, "prod_color" = myprod[5]))
 
 	var/list/data = list(
 		"vendor_name" = name,
@@ -1589,20 +1588,21 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 
 	var/list/display_list = list()
 
-	for(var/i in 1 to listed_products.len)
-		var/list/myprod = listed_products[i]	//we take one list from listed_products
+	if(listed_products.len)						//runtimed for vendors without goods in them
+		for(var/i in 1 to listed_products.len)
+			var/list/myprod = listed_products[i]	//we take one list from listed_products
 
-		var/p_name = myprod[1]					//taking it's name
-		var/p_amount = myprod[2]				//amount left
-		var/prod_available = FALSE				//checking if it's available
-		if(p_amount > 0)						//checking availability
-			p_name += ": [p_amount]"			//and adding amount to product name so it will appear in "button" in UI
-			prod_available = TRUE
-		else if(p_amount == 0)
-			p_name += ": SOLD OUT"				//Negative  numbers (-1) used for categories.
+			var/p_name = myprod[1]					//taking it's name
+			var/p_amount = myprod[2]				//amount left
+			var/prod_available = FALSE				//checking if it's available
+			if(p_amount > 0)						//checking availability
+				p_name += ": [p_amount]"			//and adding amount to product name so it will appear in "button" in UI
+				prod_available = TRUE
+			else if(p_amount == 0)
+				p_name += ": SOLD OUT"				//Negative  numbers (-1) used for categories.
 
-								//forming new list with index, name, amount, available or not, color and add it to display_list
-		display_list += list(list("prod_index" = i, "prod_name" = p_name, "prod_amount" = p_amount, "prod_available" = prod_available, "prod_color" = myprod[4]))
+			//forming new list with index, name, amount, available or not, color and add it to display_list
+			display_list += list(list("prod_index" = i, "prod_name" = p_name, "prod_amount" = p_amount, "prod_available" = prod_available, "prod_color" = myprod[4]))
 
 
 	var/list/data = list(

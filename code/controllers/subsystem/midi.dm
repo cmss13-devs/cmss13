@@ -7,7 +7,7 @@ var/datum/subsystem/midi/SSmidi
 /datum/subsystem/midi
 	name     = "Midi"
 	wait     = 2 SECONDS
-	flags    = SS_NO_INIT|SS_BACKGROUND|SS_FIRE_IN_LOBBY
+	flags    = SS_NO_INIT|SS_BACKGROUND|SS_FIRE_IN_LOBBY|SS_DISABLE_FOR_TESTING
 	priority = SS_PRIORITY_MIDI
 
 	var/list/datum/midi_record/prepped_midis = list()

@@ -2,7 +2,7 @@
 
 //whiskey outpost extra marines
 /datum/emergency_call/tank_crew
-	name = "Tank Crew Cryo Reinforcements"
+	name = "Vehicle Crew Cryo Reinforcements"
 	mob_max = 2
 	mob_min = 2
 	probability = 0
@@ -23,8 +23,8 @@
 	if(H.client) H.client.change_view(world.view)
 
 	sleep(5)
-	arm_equipment(H, "USCM Tank Crewman (TC)", TRUE, TRUE)
-	to_chat(H, "<font size='3'>\red You are a tank crewman in the USCM, you are here to assist in the defence of the [map_tag]. Listen to the chain of command.</B>")
+	arm_equipment(H, "USCM Vehicle Crewman (CRMN)", TRUE, TRUE)
+	to_chat(H, "<font size='3'>\red You are a vehicle crewman in the USCM, you are here to assist in the defence of the [map_tag]. Listen to the chain of command.</B>")
 		
 	sleep(10)
 	to_chat(H, "<B>Objectives:</b> [objectives]")

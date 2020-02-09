@@ -1,0 +1,38 @@
+"a" = (/turf/closed/wall/wood,/area/vehicle/apc)
+"b" = (/turf/open/floor/wood,/area/vehicle/apc)
+"c" = (/obj/effect/landmark/interior/spawn/entrance/step_toward{dir = 8; exit_type = "/obj/structure/interior_exit/fancy"},/turf/open/floor/wood,/area/vehicle/apc)
+"d" = (/turf/open/floor/carpet{tag = "icon-carpetside (NORTHWEST)"; icon_state = "carpetside"; dir = 9},/area/vehicle/apc)
+"e" = (/turf/open/floor/carpet{tag = "icon-carpetside (NORTH)"; icon_state = "carpetside"; dir = 1},/area/vehicle/apc)
+"f" = (/turf/open/floor/carpet{tag = "icon-carpetside (NORTHEAST)"; icon_state = "carpetside"; dir = 5},/area/vehicle/apc)
+"g" = (/turf/open/floor/carpet{tag = "icon-carpetside (WEST)"; icon_state = "carpetside"; dir = 8},/area/vehicle/apc)
+"h" = (/obj/structure/bed/sofa/south/white/left,/turf/open/floor/carpet,/area/vehicle/apc)
+"i" = (/obj/structure/bed/sofa/south/white,/turf/open/floor/carpet,/area/vehicle/apc)
+"j" = (/obj/structure/bed/sofa/south/white/right,/turf/open/floor/carpet,/area/vehicle/apc)
+"k" = (/turf/open/floor/carpet{tag = "icon-carpetside (EAST)"; icon_state = "carpetside"; dir = 4},/area/vehicle/apc)
+"l" = (/obj/structure/table/woodentable/fancy,/obj/item/device/flashlight/lamp/green,/turf/open/floor/wood,/area/vehicle/apc)
+"m" = (/turf/open/floor/carpet{tag = "icon-carpetside (SOUTHWEST)"; icon_state = "carpetside"; dir = 10},/area/vehicle/apc)
+"n" = (/turf/open/floor/carpet{icon_state = "carpetside"},/area/vehicle/apc)
+"o" = (/turf/open/floor/carpet{tag = "icon-carpetside (SOUTHEAST)"; icon_state = "carpetside"; dir = 6},/area/vehicle/apc)
+"p" = (/obj/structure/table/woodentable/fancy,/turf/open/floor/carpet,/area/vehicle/apc)
+"q" = (/obj/structure/flora/pottedplant{icon_state = "pottedplant_10"; tag = "icon-plant-10"},/turf/open/floor/wood,/area/vehicle/apc)
+"r" = (/obj/structure/coatrack,/turf/open/floor/wood,/area/vehicle/apc)
+"s" = (/obj/structure/table/woodentable/fancy,/obj/structure/machinery/chem_dispenser/soda,/turf/open/floor/wood,/area/vehicle/apc)
+"t" = (/obj/structure/table/woodentable/fancy,/obj/structure/machinery/chem_dispenser/beer,/turf/open/floor/wood,/area/vehicle/apc)
+"u" = (/obj/structure/table/woodentable/fancy,/obj/item/reagent_container/food/snacks/milosoup{pixel_y = 10},/obj/item/reagent_container/food/snacks/meatsteak{pixel_y = -2},/obj/structure/machinery/light{dir = 1; tag = "icon-tube1 (NORTH)"},/turf/open/floor/wood,/area/vehicle/apc)
+"v" = (/obj/structure/table/woodentable/fancy,/obj/item/reagent_container/food/snacks/appletart,/turf/open/floor/wood,/area/vehicle/apc)
+"w" = (/obj/structure/table/woodentable/fancy,/obj/item/reagent_container/food/snacks/popcorn{pixel_x = -5; pixel_y = 8},/obj/item/reagent_container/food/snacks/sandwich{layer = 4; pixel_x = 5; pixel_y = 6},/obj/item/trash/plate{pixel_x = 5},/turf/open/floor/wood,/area/vehicle/apc)
+"x" = (/obj/structure/table/woodentable/fancy,/obj/item/ashtray/bronze,/turf/open/floor/carpet,/area/vehicle/apc)
+"y" = (/obj/structure/table/woodentable/fancy,/obj/item/clothing/mask/cigarette/cigar/cohiba,/obj/item/tool/lighter/zippo,/turf/open/floor/carpet,/area/vehicle/apc)
+"z" = (/obj/structure/bed/chair/wood/wings{tag = "icon-wooden_chair_wings (EAST)"; icon_state = "wooden_chair_wings"; dir = 4},/turf/open/floor/wood,/area/vehicle/apc)
+"A" = (/obj/structure/machinery/disposal,/turf/open/floor/wood,/area/vehicle/apc)
+"B" = (/obj/structure/machinery/light,/turf/open/floor/carpet{icon_state = "carpetside"},/area/vehicle/apc)
+
+(1,1,1) = {"
+aaaaaaaaa
+aqAvwusta
+bcbdeeefa
+arbghijka
+albgpxyka
+azbmnBnoa
+aaaaaaaaa
+"}

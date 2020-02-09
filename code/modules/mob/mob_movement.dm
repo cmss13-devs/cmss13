@@ -108,6 +108,18 @@
 	if(isobserver(mob) || isAI(mob))
 		return mob.Move(n,direct)
 
+	if(mob.noclip)
+		switch(direct)
+			if(NORTH)
+				mob.y += 1
+			if(SOUTH)
+				mob.y -= 1
+			if(EAST)
+				mob.x += 1
+			if(WEST)
+				mob.x -= 1
+		return
+
 	var/start_move_time = world.time
 	if(next_movement > world.time)
 		return

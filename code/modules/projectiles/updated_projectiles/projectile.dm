@@ -259,7 +259,8 @@
 		return FALSE
 	var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 	// Explosive ammo always explodes on the turf of the clicked target
-	if(ammo_flags & AMMO_EXPLOSIVE && T == target_turf)
+	// So does ammo that's flagged to always hit the target
+	if(((ammo_flags & AMMO_EXPLOSIVE) || (ammo_flags & AMMO_HITS_TARGET_TURF)) && T == target_turf)
 		ammo.on_hit_turf(T,src)
 
 		if(T && T.loc)

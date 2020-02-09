@@ -14,22 +14,27 @@
 	var/obj/effect/elevator/supply/SE //there's one opaque obstacle between you and the actual elevator loc).
 	var/obj/effect/elevator/supply/NW
 	var/obj/effect/elevator/supply/NE
-	var/SupplyElevator_x
-	var/SupplyElevator_y
-	var/SupplyElevator_z
+	var/Elevator_x
+	var/Elevator_y
+	var/Elevator_z
+	var/elevator_loc
+
+/datum/shuttle/ferry/supply/proc/pick_loc()
+	elevator_loc = SupplyElevator
 
 /datum/shuttle/ferry/supply/New()
 	..()
-	var/turf/SupplyElevatorLoc = get_turf(SupplyElevator)
-	SupplyElevator_x = SupplyElevatorLoc.x
-	SupplyElevator_y = SupplyElevatorLoc.y
-	SupplyElevator_z = SupplyElevatorLoc.z
-	SW = new /obj/effect/elevator/supply(locate(SupplyElevator_x-2,SupplyElevator_y-2,SupplyElevator_z))
-	SE = new /obj/effect/elevator/supply(locate(SupplyElevator_x+2,SupplyElevator_y-2,SupplyElevator_z))
+	pick_loc()
+	var/turf/SupplyElevatorLoc = get_turf(elevator_loc)
+	Elevator_x = SupplyElevatorLoc.x
+	Elevator_y = SupplyElevatorLoc.y
+	Elevator_z = SupplyElevatorLoc.z
+	SW = new /obj/effect/elevator/supply(locate(Elevator_x-2,Elevator_y-2,Elevator_z))
+	SE = new /obj/effect/elevator/supply(locate(Elevator_x+2,Elevator_y-2,Elevator_z))
 	SE.pixel_x = -128
-	NW = new /obj/effect/elevator/supply(locate(SupplyElevator_x-2,SupplyElevator_y+2,SupplyElevator_z))
+	NW = new /obj/effect/elevator/supply(locate(Elevator_x-2,Elevator_y+2,Elevator_z))
 	NW.pixel_y = -128
-	NE = new /obj/effect/elevator/supply(locate(SupplyElevator_x+2,SupplyElevator_y+2,SupplyElevator_z))
+	NE = new /obj/effect/elevator/supply(locate(Elevator_x+2,Elevator_y+2,Elevator_z))
 	NE.pixel_x = -128
 	NE.pixel_y = -128
 
@@ -59,7 +64,7 @@
 			if(forbidden_atoms_check())
 				//cancel the launch because of forbidden atoms. announce over supply channel?
 				moving_status = SHUTTLE_IDLE
-				playsound(locate(SupplyElevator_x,SupplyElevator_y,SupplyElevator_z), 'sound/machines/buzz-two.ogg', 50, 0)
+				playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/buzz-two.ogg', 50, 0)
 				lower_railings()
 				return
 		else	//at centcom
@@ -71,13 +76,13 @@
 
 		//If we are at the away_area then we are just pretending to move, otherwise actually do the move
 		if (origin != away_area)
-			playsound_spacial(locate(SupplyElevator_x,SupplyElevator_y,SupplyElevator_z), 'sound/machines/asrs_lowering.ogg', 50, 8, 14 SECONDS, 15)
+			playsound_spacial(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/asrs_lowering.ogg', 50, 8, 14 SECONDS, 15)
 			move(origin, away_area)
 			lower_elevator_effect()
 			start_gears(SOUTH)
 			sleep(91)
 		else
-			playsound_spacial(locate(SupplyElevator_x,SupplyElevator_y,SupplyElevator_z), 'sound/machines/asrs_raising.ogg', 50, 8, 17 SECONDS, 15)
+			playsound_spacial(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/asrs_raising.ogg', 50, 8, 17 SECONDS, 15)
 			start_gears(NORTH)
 			sleep(70)
 			raise_elevator_effect()
@@ -126,8 +131,7 @@
 			spawn()
 				M.close()
 	if(effective)
-		playsound(locate(SupplyElevator_x,SupplyElevator_y,SupplyElevator_z), 'sound/machines/elevator_openclose.ogg', 50, 0)
-
+		playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/elevator_openclose.ogg', 50, 0)
 
 /datum/shuttle/ferry/supply/proc/lower_railings()
 	var/effective = 0
@@ -136,13 +140,13 @@
 			effective = 1
 			INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
 	if(effective)
-		playsound(locate(SupplyElevator_x,SupplyElevator_y,SupplyElevator_z), 'sound/machines/elevator_openclose.ogg', 50, 0)
+		playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/elevator_openclose.ogg', 50, 0)
 
 /datum/shuttle/ferry/supply/proc/lower_elevator_effect()
-	SW.loc = locate(SupplyElevator_x-2,SupplyElevator_y-2,SupplyElevator_z)
-	SE.loc = locate(SupplyElevator_x+2,SupplyElevator_y-2,SupplyElevator_z)
-	NW.loc = locate(SupplyElevator_x-2,SupplyElevator_y+2,SupplyElevator_z)
-	NE.loc = locate(SupplyElevator_x+2,SupplyElevator_y+2,SupplyElevator_z)
+	SW.loc = locate(Elevator_x-2,Elevator_y-2,Elevator_z)
+	SE.loc = locate(Elevator_x+2,Elevator_y-2,Elevator_z)
+	NW.loc = locate(Elevator_x-2,Elevator_y+2,Elevator_z)
+	NE.loc = locate(Elevator_x+2,Elevator_y+2,Elevator_z)
 	flick("supply_elevator_lowering", SW)
 	flick("supply_elevator_lowering", SE)
 	flick("supply_elevator_lowering", NW)
@@ -174,3 +178,10 @@
 		if(M.id == gear_id)
 			spawn()
 				M.icon_state = "gear"
+
+/datum/shuttle/ferry/supply/vehicle
+	railing_id = "vehicle_elevator_railing"
+	gear_id = "vehicle_elevator_gears"
+
+/datum/shuttle/ferry/supply/vehicle/pick_loc()
+	elevator_loc = VehicleElevator

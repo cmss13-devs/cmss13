@@ -173,11 +173,10 @@
 		A = obstacle
 		blocking_dir |= A.BlockedPassDirs(mover, fdir)
 		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-			mover.Collide(A)
-			return FALSE
+			if(!mover.Collide(A))
+				return FALSE
 
 	return TRUE //Nothing found to block so return success!
-
 
 /turf/Entered(atom/movable/A)
 	if(!istype(A))

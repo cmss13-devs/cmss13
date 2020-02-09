@@ -875,6 +875,13 @@
 	burst(get_turf(T),P,damage_type, 2 , 3)
 	burst(get_turf(T),P,damage_type, 1 , 3 , 0)
 
+/datum/ammo/bullet/tank/flak/weak
+	name = "dualcannon flak bullet"
+
+/datum/ammo/bullet/tank/flak/weak/New()
+	..()
+	damage = config.lmed_hit_damage
+
 /datum/ammo/bullet/sniper/svd
 	name = "crude sniper bullet"
 	iff_signal = null
@@ -2005,7 +2012,7 @@
 	ping = null //no bounce off.
 	damage_type = BURN
 	iff_signal = ACCESS_IFF_MARINE
-	flags_ammo_behavior = AMMO_INCENDIARY|AMMO_SKIPS_HUMANS
+	flags_ammo_behavior = AMMO_INCENDIARY|AMMO_SKIPS_HUMANS|AMMO_HITS_TARGET_TURF
 
 /datum/ammo/flare/New()
 	..()
@@ -2015,28 +2022,23 @@
 	shell_speed = config.fast_shell_speed
 
 /datum/ammo/flare/on_hit_mob(mob/M,obj/item/projectile/P)
-	drop_nade(get_turf(P))
+	drop_flare(get_turf(P))
 
 /datum/ammo/flare/on_hit_obj(obj/O,obj/item/projectile/P)
-	drop_nade(get_turf(P))
+	drop_flare(get_turf(P))
 
 /datum/ammo/flare/on_hit_turf(turf/T, obj/item/projectile/P)
 	if(T.density && isturf(P.loc))
-		drop_nade(P.loc, P)
+		drop_flare(P.loc)
 	else
-		drop_nade(T, P)
+		drop_flare(T)
 
 /datum/ammo/flare/do_at_max_range(obj/item/projectile/P)
-	drop_nade(get_turf(P))
+	drop_flare(get_turf(P))
 
-/datum/ammo/flare/proc/drop_nade(var/turf/T)
-	var/obj/item/device/flashlight/flare/G = new (T)
+/datum/ammo/flare/proc/drop_flare(var/turf/T)
+	var/obj/item/device/flashlight/flare/on/G = new (T)
 	G.visible_message(SPAN_WARNING("\A [G] bursts into brilliant light nearby!"))
-	G.on = 1
-	processing_objects += G
-	G.icon_state = "flare-on"
-	G.damtype = "fire"
-	G.SetLuminosity(G.brightness_on)
 
 /datum/ammo/souto/
 	name = "Souto Can"

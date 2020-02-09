@@ -2,7 +2,9 @@
 #define SUPPLY_DOCKZ 2          //Z-level of the Dock.
 #define SUPPLY_STATIONZ 1       //Z-level of the Station.
 #define SUPPLY_STATION_AREATYPE "/area/supply/station" //Type of the supply shuttle area for station
+#define SUPPLY_STATION_AREATYPE_VEHICLE "/area/supply/station/vehicle"
 #define SUPPLY_DOCK_AREATYPE "/area/supply/dock"	//Type of the supply shuttle area for dock
+#define SUPPLY_DOCK_AREATYPE_VEHICLE "/area/supply/dock/vehicle"
 #define SUPPLY_COST_MULTIPLIER 1.08
 #define ASRS_COST_MULTIPLIER 1.2
 
@@ -32,6 +34,20 @@ var/list/mechtoys = list(
 
 /area/supply/dock //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
 	name = "Supply Shuttle"
+	icon_state = "shuttle3"
+	luminosity = 1
+	lighting_use_dynamic = 0
+	requires_power = 0
+
+/area/supply/station_vehicle //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
+	name = "Vehicle ASRS"
+	icon_state = "shuttle3"
+	luminosity = 1
+	lighting_use_dynamic = 0
+	requires_power = 0
+
+/area/supply/dock_vehicle //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
+	name = "Vehicle ASRS"
 	icon_state = "shuttle3"
 	luminosity = 1
 	lighting_use_dynamic = 0
@@ -339,6 +355,7 @@ var/list/mechtoys = list(
 	var/list/random_supply_packs = list()
 	//shuttle movement
 	var/datum/shuttle/ferry/supply/shuttle
+	var/datum/shuttle/ferry/supply/vehicle/vehicle_elevator
 
 	//dropship part fabricator's points, so we can reference them globally (mostly for DEFCON)
 	var/dropship_points = 5000 //gains roughly 18 points per minute
@@ -952,3 +969,113 @@ var/list/mechtoys = list(
 	status_signal.data["command"] = command
 
 	frequency.post_signal(src, status_signal)
+
+/obj/structure/machinery/computer/supplycomp/vehicle
+	desc = "A console for an Automated Storage and Retrieval System. This one is tied to a deep storage unit for vehicles."
+	req_access = list(ACCESS_MARINE_CREWMAN)
+	// Can only retrieve one vehicle per round
+	var/spent = FALSE
+
+/obj/structure/machinery/computer/supplycomp/vehicle/attack_hand(var/mob/user as mob)
+	if(z != MAIN_SHIP_Z_LEVEL) return
+	if(!allowed(user))
+		to_chat(user, SPAN_DANGER("Access Denied."))
+		return
+
+	user.set_interaction(src)
+	post_signal("supply_vehicle")
+	
+	var/datum/shuttle/ferry/supply/elevator = supply_controller.vehicle_elevator
+	var/dat = ""
+
+	if(!elevator)
+		return
+
+	if(elevator)
+		dat += "Platform position: "
+		if (elevator.has_arrive_time())
+			dat += "Moving"
+		else
+			if(elevator.at_station())
+				if(elevator.docking_controller)
+					switch(elevator.docking_controller.get_docking_status())
+						if ("docked") dat += "Raised"
+						if ("undocked") dat += "Lowered"
+						if ("docking") dat += "Raising"
+						if ("undocking") dat += "Lowering"
+				else
+					dat += "Raised"
+			else
+				dat += "Lowered"
+		dat += "<br><hr>"
+
+	if(spent)
+		dat += "No vehicles are available for retrieval."
+	else
+		dat += {"Available vehicles:<br>
+		<a href='?src=\ref[src];get_vehicle=tank'>M34A2 Longstreet Light Tank</a><br>
+		<a href='?src=\ref[src];get_vehicle=apc'>M577 Armored Personnel Carrier</a><br>
+		<a href='?src=\ref[src];get_vehicle=med_apc'>M577-MED Armored Personnel Carrier</a><br>
+		<a href='?src=\ref[src];get_vehicle=cmd_apc'>M577-CMD Armored Personnel Carrier</a><br>"}
+
+	show_browser(user, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
+
+/obj/structure/machinery/computer/supplycomp/vehicle/Topic(href, href_list)
+	if(z != MAIN_SHIP_Z_LEVEL)
+		return
+	if(spent)
+		return
+	if(!supply_controller)
+		world.log << "## ERROR: Eek. The supply_controller controller datum is missing somehow."
+		return
+	var/datum/shuttle/ferry/supply/vehicle/elevator = supply_controller.vehicle_elevator
+	if (!elevator)
+		world.log << "## ERROR: Eek. The supply/elevator datum is missing somehow."
+		return
+
+	if(ismaintdrone(usr))
+		return
+
+	if(isturf(loc) && ( in_range(src, usr) || ishighersilicon(usr) ) )
+		usr.set_interaction(src)
+
+	if(href_list["get_vehicle"])
+		var/area/area_elevator = elevator.get_location_area()
+		if(!area_elevator)
+			return
+
+		var/min_x = world.maxx+1
+		var/max_x = 0
+		var/min_y = world.maxx+1
+		var/max_y = 0
+		for(var/turf/T in area_elevator)
+			if(T.x < min_x)
+				min_x = T.x
+			if(T.y < min_y)
+				min_y = T.y
+			if(T.x > max_x)
+				max_x = T.x
+			if(T.y > max_y)
+				max_y = T.y
+
+		// dunno why the +1 is needed but the vehicles spawn off-center
+		var/turf/middle_turf = locate(min_x + Ceiling((max_x-min_x)/2) + 1, min_y + Ceiling((max_y-min_y)/2) + 1, SUPPLY_DOCKZ)
+
+		var/obj/vehicle/multitile/ordered_vehicle
+		switch(href_list["get_vehicle"])
+			if("tank")
+				ordered_vehicle = new /obj/vehicle/multitile/tank/decrepit(middle_turf)
+			if("apc")
+				ordered_vehicle = new /obj/vehicle/multitile/apc/decrepit(middle_turf)
+			if("med_apc")
+				ordered_vehicle = new /obj/vehicle/multitile/apc/medical/decrepit(middle_turf)
+			if("cmd_apc")
+				ordered_vehicle = new /obj/vehicle/multitile/apc/command/decrepit(middle_turf)
+
+		elevator.launch(src)
+
+		raiseEvent(GLOBAL_EVENT, EVENT_VEHICLE_ORDERED, ordered_vehicle)
+		spent = TRUE
+
+	add_fingerprint(usr)
+	updateUsrDialog()

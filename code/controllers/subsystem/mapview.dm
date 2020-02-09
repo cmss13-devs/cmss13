@@ -6,7 +6,7 @@ var/datum/subsystem/mapview/SSmapview
 /datum/subsystem/mapview
 	name          = "Mapview"
 	wait          = 2 SECONDS
-	flags         = SS_NO_INIT | SS_KEEP_TIMING
+	flags         = SS_NO_INIT | SS_KEEP_TIMING | SS_DISABLE_FOR_TESTING
 	priority      = SS_PRIORITY_MAPVIEW
 	display_order = SS_DISPLAY_UNSPECIFIED
 	var/list/map_machines

@@ -4,7 +4,7 @@ var/datum/subsystem/mob/SSmob
 /datum/subsystem/mob
 	name          = "Misc Mobs"
 	wait          = 2 SECONDS
-	flags         = SS_NO_INIT | SS_KEEP_TIMING
+	flags         = SS_NO_INIT | SS_KEEP_TIMING | SS_DISABLE_FOR_TESTING
 	priority      = SS_PRIORITY_MOB
 	display_order = SS_DISPLAY_MOB
 

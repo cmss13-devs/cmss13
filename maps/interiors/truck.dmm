@@ -1,0 +1,11 @@
+"a" = (/obj/effect/landmark/interior/spawn/entrance{dir = 8; name = "back left entrance marker"; tag = "back_left"},/obj/structure/interior_wall/truck{dir = 8; icon_state = "truck_back_2"},/obj/structure/interior_wall/truck{dir = 1; icon_state = "truck_left_1"; layer = 2; pixel_y = 30},/obj/structure/bed/chair/comfy,/turf/open/shuttle/dropship{tag = "icon-rasputin15"; icon_state = "rasputin14"},/area/vehicle/truck)
+"b" = (/obj/structure/interior_wall/truck{icon_state = "truck_left_2"; layer = 2; pixel_y = 30},/obj/structure/bed/chair/comfy,/turf/open/shuttle/dropship{tag = "icon-rasputin15"; icon_state = "rasputin14"},/area/vehicle/truck)
+"c" = (/obj/effect/landmark/interior/spawn/entrance{dir = 1; name = "left entrance marker"; tag = "left"},/obj/effect/landmark/interior/spawn/vehicle_driver_seat{dir = 4},/obj/structure/interior_wall/truck{dir = 1; icon_state = "truck_left_3"; layer = 2; pixel_y = 30},/obj/structure/interior_wall/truck{dir = 4; icon_state = "truck_front_2"},/turf/open/shuttle/dropship{tag = "icon-rasputin3"; icon_state = "rasputin3"},/area/vehicle/truck)
+"d" = (/obj/effect/landmark/interior/spawn/entrance{dir = 8; name = "back right entrance marker"; tag = "back_right"},/obj/structure/interior_wall/truck{alpha = 50; layer = 4},/obj/structure/interior_wall/truck{dir = 8; icon_state = "truck_back_1"},/obj/structure/bed/chair/comfy{tag = "icon-comfychair (NORTH)"; icon_state = "comfychair"; dir = 1},/turf/open/shuttle/dropship{tag = "icon-rasputin15"; icon_state = "rasputin14"},/area/vehicle/truck)
+"e" = (/obj/structure/interior_wall/truck{alpha = 50; icon_state = "truck_right_2"; layer = 4},/obj/structure/bed/chair/comfy{tag = "icon-comfychair (NORTH)"; icon_state = "comfychair"; dir = 1},/turf/open/shuttle/dropship{tag = "icon-rasputin15"; icon_state = "rasputin14"},/area/vehicle/truck)
+"f" = (/obj/effect/landmark/interior/spawn/entrance{dir = 2; name = "right entrance marker"; tag = "right"},/obj/structure/bed/chair/comfy{icon_state = "comfychair"; dir = 4},/obj/structure/interior_wall/truck{dir = 4; icon_state = "truck_front_1"},/obj/structure/interior_wall/truck{alpha = 50; icon_state = "truck_right_3"; layer = 4},/turf/open/shuttle/dropship{tag = "icon-rasputin3"; icon_state = "rasputin3"},/area/vehicle/truck)
+
+(1,1,1) = {"
+abc
+def
+"}

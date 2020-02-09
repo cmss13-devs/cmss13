@@ -540,7 +540,7 @@ var/datum/mob_hud/huds = list(
 			if("Commanding Officer") marine_rk = "co"
 			if("Pilot Officer") marine_rk = "po"
 			if("Intelligence Officer") marine_rk = "io"
-			if("Tank Crewman") marine_rk = "tc"
+			if("Crewman") marine_rk = "tc"
 		if(assigned_squad.squad_leader == src)
 			marine_rk = "leader"
 		if(marine_rk)
@@ -580,7 +580,7 @@ var/datum/mob_hud/huds = list(
 				border_rk = "command"
 			if("Pilot Officer") marine_rk = "po"
 			if("Intelligence Officer") marine_rk = "io"
-			if("Tank Crewman") marine_rk = "tc"
+			if("Crewman") marine_rk = "tc"
 		if(marine_rk)
 			var/image/I = image('icons/mob/hud/hud.dmi',src, "hudmarinesquad")
 			I.color = "#5A934A"

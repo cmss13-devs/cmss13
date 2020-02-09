@@ -41,6 +41,9 @@
 			destroy()
 
 /obj/structure/ex_act(severity, direction)
+	if(indestructible)
+		return
+
 	if(src.health) //Prevents unbreakable objects from being destroyed
 		src.health -= severity
 		if(src.health <= 0)

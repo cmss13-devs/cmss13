@@ -5,7 +5,7 @@ var/datum/subsystem/inactivity/SSinactivity
 /datum/subsystem/inactivity
 	name = "Inactivity"
 	wait = INACTIVITY_KICK
-	flags = SS_NO_INIT | SS_BACKGROUND | SS_FIRE_IN_LOBBY
+	flags = SS_NO_INIT | SS_BACKGROUND | SS_FIRE_IN_LOBBY | SS_DISABLE_FOR_TESTING
 	priority = SS_PRIORITY_INACTIVITY
 
 

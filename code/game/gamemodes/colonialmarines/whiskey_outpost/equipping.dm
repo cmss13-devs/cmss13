@@ -81,7 +81,7 @@ Glory to the commander. Glory to the USCM."}
 
 
 /*************************************
-------------TANK CREWMAN----------
+----------------CREWMAN---------------
 *************************************/
 /datum/job/command/tank_crew/whiskey
 	title = "Honor Guard Specialist"

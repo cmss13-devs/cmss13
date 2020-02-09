@@ -143,7 +143,6 @@
 	if (state == SS_QUEUED)
 		state = SS_IDLE
 
-
 /datum/subsystem/proc/pause()
 	. = 1
 	if (state == SS_RUNNING)

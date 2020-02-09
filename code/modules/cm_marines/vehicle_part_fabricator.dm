@@ -146,12 +146,12 @@
 	return
 
 /obj/structure/machinery/part_fabricator/tank
-	name = "tank part fabricator"
-	desc = "A large automated 3D printer for producing tank parts."
-	req_access = list(ACCESS_MARINE_TANK)
+	name = "vehicle part fabricator"
+	desc = "A large automated 3D printer for producing vehicle parts."
+	req_access = list(ACCESS_MARINE_CREWMAN)
 	generate_points = FALSE
 	valid_parts = /obj/item/hardpoint
-	valid_ammo = /obj/item/ammo_magazine/tank
+	valid_ammo = /obj/item/ammo_magazine/hardpoint
 
 /obj/structure/machinery/part_fabricator/tank/get_point_store()
     return supply_controller.tank_points
@@ -167,7 +167,7 @@
 		return
 	user.set_interaction(src)
 	var/dat = "<h4>Points Available: [get_point_store()]</h4>"
-	dat += "<h3>Tank Equipment:</h3>"
+	dat += "<h3>Vehicle Equipment:</h3>"
 	for(var/build_type in typesof(/obj/item/hardpoint))
 		var/obj/item/hardpoint/TE = build_type
 		var/build_name = initial(TE.name)
@@ -175,12 +175,12 @@
 		if(build_cost)
 			dat += "<a href='byond://?src=\ref[src];produce=[build_type];cost=[build_cost]'>[build_name] ([build_cost])</a><br>"
 
-	dat += "<h3>Tank Ammo:</h3>"
-	for(var/build_type in typesof(/obj/item/ammo_magazine/tank))
-		var/obj/item/ammo_magazine/tank/TA = build_type
+	dat += "<h3>Vehicle Ammo:</h3>"
+	for(var/build_type in typesof(/obj/item/ammo_magazine/hardpoint))
+		var/obj/item/ammo_magazine/hardpoint/TA = build_type
 		var/build_name = initial(TA.name)
 		var/build_cost = initial(TA.point_cost)
 		if(build_cost)
 			dat += "<a href='byond://?src=\ref[src];produce=[build_type];cost=[build_cost]'>[build_name] ([build_cost])</a><br>"
-	show_browser(user, dat, "Tank Part Fabricator", "tank_part_fab")
+	show_browser(user, dat, "Vehicle Part Fabricator", "tank_part_fab")
 	return

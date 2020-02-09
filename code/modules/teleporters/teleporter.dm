@@ -80,38 +80,19 @@
         log_admin("Invalid location ID [location_id] handed to teleporter [id]. Tell the devs. Error code: TELEPORTER_5")
         return 0
 
-    var/tank_checked = 0
+    var/vehicle_checked = 0
 
     for(var/turf_key in turfs_to_check)
 
         var/turf/T = turfs_to_check[turf_key]
         for(var/atom/A in T)
 
-            // Make sure - IF there's a tank in the source area - that ALL of its turfs are inside. 
-            // Use a bool to make sure we don't scan our area once for every component of the tank - we only need to do it once.
-
-            if(istype(A, /obj/vehicle/multitile/root/cm_armored) && !tank_checked)
-                
-                if(check_tank_safety(A, location_id))
-                    tank_checked = 1
-                else
+            // Make sure - IF there's a vehicle in the source area - that ALL of its turfs are inside. 
+            // Use a bool to make sure we don't scan our area once for every component of the vehicle - we only need to do it once.
+            if(istype(A, /obj/vehicle/multitile) && !vehicle_checked)
+                if(!check_vehicle_safety(A, location_id))
                     return 0
-
-            if(istype(A, /obj/effect/multitile_entrance) && !tank_checked)
-                var/obj/effect/multitile_entrance/ME = A
-                
-                if(check_tank_safety(ME.master, location_id))
-                    tank_checked = 1
-                else
-                    return 0
-            
-            if(istype(A, /obj/vehicle/multitile/hitbox/cm_armored) && !tank_checked)
-                var/obj/vehicle/multitile/hitbox/cm_armored/HB = A
-                
-                if(check_tank_safety(HB.root, location_id))
-                    tank_checked = 1
-                else
-                    return 0
+                vehicle_checked = 1
 
     return 1
 
@@ -131,12 +112,13 @@
 // Probably the most hacky solution I've ever done, not my fault the tank maintains
 // no current list of its linked objects
 // As always, 1 = safe, 0 = unsafe
-/datum/teleporter/proc/check_tank_safety(var/obj/vehicle/multitile/root/cm_armored/vehicle, var/location_id)
+
+/datum/teleporter/proc/check_vehicle_safety(var/obj/vehicle/multitile/vehicle, var/location_id)
     var/list/turf/location_turfs = locations[location_id]
 
-    var/parts_count = vehicle.old_locs.len // How many hitboxes or entrances do we have to find to decide this multitile is safe?
-    var/current_count = 0 // Increment this every time we "find" a tank part.
-   
+    var/parts_count = (vehicle.bound_width / world.icon_size) * (vehicle.bound_height / world.icon_size)
+    var/current_count = 0
+
     if(!location_turfs)
         log_debug("Invalid location ID [location_id] handed to teleporter [id]. Error code: TELEPORTER_4")
         log_admin("Invalid location ID [location_id] handed to teleporter [id]. Tell the devs. Error code: TELEPORTER_4")
@@ -145,14 +127,14 @@
     for(var/turf_key in location_turfs)
         var/turf/T = location_turfs[turf_key]
 
-        for(var/atom/movable/A in T)
-            if(istype(A, /obj/vehicle/multitile/hitbox/cm_armored)|| istype(A, /obj/effect/multitile_entrance) || istype(A, /obj/vehicle/multitile/root/cm_armored/tank))
+        for(var/obj/vehicle/multitile/V in T)
+            if(V == vehicle)
                 current_count++
-                
+
             if(current_count == parts_count)
                 return 1 // Good to go
 
-    return 0 
+    return 0
 
 // Unsafe proc to get the list of turfs from a location
 /datum/teleporter/proc/get_turfs_by_location(var/location_id)

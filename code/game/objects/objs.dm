@@ -150,7 +150,7 @@
 					SPAN_NOTICE("[buckled_mob.name] unbuckled \himself!"),\
 					SPAN_NOTICE("You unbuckle yourself from [src]."),\
 					SPAN_NOTICE("You hear metal clanking"))
-			unbuckle()
+			unbuckle(buckled_mob)
 			add_fingerprint(user)
 			return 1
 
@@ -216,6 +216,12 @@
 	handle_rotation()
 	if(. && buckled_mob && !handle_buckled_mob_movement(loc,direct)) //movement fails if buckled mob's move fails.
 		. = 0
+
+/obj/forceMove(atom/dest)
+	..(dest)
+
+	if(buckled_mob)
+		handle_buckled_mob_movement(loc,0)
 
 /obj/proc/handle_buckled_mob_movement(NewLoc, direct)
 	if(!(direct & (direct - 1))) //not diagonal move. the obj's diagonal move is split into two cardinal moves and those moves will handle the buckled mob's movement.

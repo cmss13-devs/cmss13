@@ -1,11 +1,16 @@
 /obj/effect/decal/warning_stripes
 	name = "warning stripes"
 	icon = 'icons/effects/warning_stripes.dmi'
-	layer = TURF_LAYER
+	layer = WEED_LAYER
 	mouse_opacity = 0
+
 /obj/effect/decal/warning_stripes/initialize()
-	loc.overlays += image(icon, icon_state=icon_state, dir=dir)
+	loc.overlays += image(icon, icon_state=icon_state, dir=dir, layer=layer)
 	qdel(src)
+
+/obj/effect/decal/warning_stripes/permanent/initialize()
+	loc.overlays += src
+	return
 
 /obj/effect/decal/warning_stripes/asteroid
 	icon_state = "warning"

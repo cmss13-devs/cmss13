@@ -6,11 +6,10 @@
 #define ismultitool(O) (istype(O, /obj/item/device/multitool))
 #define iscrowbar(O) (istype(O, /obj/item/tool/crowbar))
 #define iswire(O) (istype(O, /obj/item/stack/cable_coil))
-
 #define isitem(I)		istype(I, /obj/item)
 #define isweapon(O)		(O && is_type_in_list(O, weapons))
 #define istool(O)		(O && is_type_in_list(O, common_tools))
-
+#define ispowerclamp(O) (istype(O, /obj/item/powerloader_clamp))
 
 //Quick type checks for weapons
 var/global/list/weapons = list(

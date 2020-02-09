@@ -53,8 +53,10 @@ var/global/datum/global_init/init = new ()
 
 	. = ..()
 
+	var/testing_locally = (world.params && world.params["local_test"])
 	var/running_tests = (world.params && world.params["run_tests"])
-	sleep_offline = !running_tests
+	// Only do offline sleeping when the server isn't running unit tests or hosting a local dev test
+	sleep_offline = (!running_tests && !testing_locally)
 
 	// Set up roundstart seed list. This is here because vendors were
 	// bugging out and not populating with the correct packet names
@@ -88,6 +90,17 @@ var/global/datum/global_init/init = new ()
 	// Allow the test manager to run all unit tests if this is being hosted just to run unit tests
 	if(running_tests)
 		test_executor.host_tests()
+
+	// If the server's configured for local testing, get everything set up ASAP.
+	// Shamelessly stolen from the test manager's host_tests() proc
+	if(testing_locally)
+		master_mode = "extended"
+		// Wait for the game ticker to initialize
+		while(!SSticker.initialized)
+			sleep(10)
+
+		// Start the game ASAP
+		ticker.current_state = GAME_STATE_SETTING_UP
 
 	return
 

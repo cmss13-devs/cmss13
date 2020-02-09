@@ -46,6 +46,9 @@
 //	This flag overrides SS_KEEP_TIMING
 #define SS_POST_FIRE_TIMING 128
 
+//This subsystem is disabled during local dev testing to ensure that the server boots up faster
+#define SS_DISABLE_FOR_TESTING 256
+
 //SUBSYSTEM STATES
 #define SS_IDLE 0     // aint doing shit.
 #define SS_QUEUED 1   // queued to run

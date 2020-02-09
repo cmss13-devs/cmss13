@@ -20,7 +20,7 @@
 #define SKILL_PILOT          "pilot"
 #define SKILL_POLICE         "police"
 #define SKILL_POWERLOADER    "powerloader"
-#define SKILL_LARGE_VEHICLE  "large_vehicle"
+#define SKILL_VEHICLE        "vehicles"
 #define SKILL_SURVIVAL       "survival"
 
 //firearms skill (general knowledge of guns) (hidden skill)
@@ -175,9 +175,14 @@
 #define SKILL_ENDURANCE_SURVIVOR    5
 
 //multitile vehicle skills
-#define SKILL_LARGE_VEHICLE_DEFAULT 0
-#define SKILL_LARGE_VEHICLE_TRAINED 1
-
+//Can't drive
+#define SKILL_VEHICLE_DEFAULT 0
+//Can drive small vehicles (truck)
+#define SKILL_VEHICLE_SMALL   1
+//Can drive large vehicles (apc, tank)
+#define SKILL_VEHICLE_LARGE   2
+//Can drive all vehicles and man their guns
+#define SKILL_VEHICLE_CREWMAN 3
 //survival skill
 //allows special mechanics like crafting improvised stuff
 #define SKILL_SURVIVAL_NONE     0

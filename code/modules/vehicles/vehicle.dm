@@ -8,7 +8,10 @@
 	luminosity = 2
 	can_buckle = TRUE
 
-	var/mob/driver
+	// The mobs that are in each position/seat of the vehicle
+	var/list/seats = list(
+		VEHICLE_DRIVER = null
+	)
 
 	var/attack_log = null
 	var/on = 0
@@ -17,7 +20,7 @@
 	var/fire_dam_coeff = 1.0
 	var/brute_dam_coeff = 1.0
 	var/open = 0	//Maint panel
-	var/locked = 1
+	var/locked = TRUE
 	var/stat = 0
 	var/powered = 0		//set if vehicle is powered and should use fuel when moving
 	var/move_delay = 1	//set this to limit the speed of the vehicle
@@ -29,12 +32,11 @@
 //-------------------------------------------
 // Standard procs
 //-------------------------------------------
-/obj/vehicle/New()
-	..()
-	//spawn the cell you want in each vehicle
 
 /obj/vehicle/relaymove(mob/user, direction)
 	if(user.is_mob_incapacitated()) return
+	if(seats[VEHICLE_DRIVER] != user) return
+
 	if(world.time > l_move_time + move_delay)
 		if(on && powered && cell && cell.charge < charge_use)
 			turn_off()
@@ -44,7 +46,6 @@
 			. = step(src, direction)
 
 /obj/vehicle/attackby(obj/item/W, mob/user)
-
 	if(istype(W, /obj/item/tool/screwdriver))
 		if(!locked)
 			open = !open
@@ -119,8 +120,15 @@
 //-------------------------------------------
 // Vehicle procs
 //-------------------------------------------
-/obj/vehicle/proc/set_driver(var/mob/M)
-	driver = M
+/obj/vehicle/proc/set_seated_mob(var/seat, var/mob/living/M)
+	seats[seat] = M
+
+	// Checked here because we want to be able to null the mob in a seat
+	if(!istype(M))
+		return
+
+	M.forceMove(src)
+	M.set_interaction(src)
 
 /obj/vehicle/proc/turn_on()
 	if(stat)
@@ -232,10 +240,9 @@
 	move_delay = 2
 	buckling_y = 4
 
-/obj/vehicle/souto/New()
-	..()
+/obj/vehicle/souto/Initialize()
+	. = ..()
 	verbs -= /atom/movable/verb/pull
-
 
 /obj/vehicle/souto/update_icon()
 	var/image/I = new(icon = 'icons/obj/vehicles/vehicles.dmi', icon_state = "soutomobile_overlay", layer = layer + 0.2) //over mobs

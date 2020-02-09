@@ -249,9 +249,9 @@
 
 	//#### Grab the connection datum ####//
 	var/datum/radio_frequency/connection = handle_message_mode(M, message, channel)
-	if (!istype(connection))
+	if(!istype(connection))
 		return
-	if (!connection)
+	if(!connection)
 		return
 
 	var/turf/position = get_turf(src)
@@ -270,19 +270,19 @@
 	var/jobname // the mob's "job"
 
 	// --- Human: use their actual job ---
-	if (ishuman(M))
+	if(ishuman(M))
 		jobname = M:get_assignment()
 
 	// --- Carbon Nonhuman ---
-	else if (iscarbon(M)) // Nonhuman carbon mob
+	else if(iscarbon(M)) // Nonhuman carbon mob
 		jobname = "No id"
 
 	// --- AI ---
-	else if (isAI(M))
+	else if(isAI(M))
 		jobname = "AI"
 
 	// --- Cyborg ---
-	else if (isrobot(M))
+	else if(isrobot(M))
 		jobname = "Cyborg"
 
 	// --- Unidentifiable mob ---
@@ -293,12 +293,17 @@
 	// --- Modifications to the mob's identity ---
 
 	// The mob is disguising their identity:
-	if (ishuman(M) && M.GetVoice() != real_name)
+	if(ishuman(M) && M.GetVoice() != real_name)
 		displayname = M.GetVoice()
 		jobname = "Unknown"
 		voicemask = 1
 
-
+	var/transmit_z = position.z
+	// If the mob is inside a vehicle interior, send the message from the vehicle's z, not the interior z
+	if(interior_manager && transmit_z == interior_manager.interior_z)
+		var/datum/interior/I = interior_manager.get_interior_by_coords(position.x, position.y)
+		if(I)
+			transmit_z = I.exterior.z
 
   /* ###### Radio headsets can only broadcast through subspace ###### */
 
@@ -334,7 +339,7 @@
 			"type" = 0, // determines what type of radio input it is: normal broadcast
 			"server" = null, // the last server to log this signal
 			"reject" = 0,	// if nonzero, the signal will not be accepted by any broadcasting machinery
-			"level" = position.z, // The source's z level
+			"level" = transmit_z, // The source's z level
 			"language" = speaking,
 			"verb" = verb
 		)
@@ -389,7 +394,7 @@
 		"type" = 0,
 		"server" = null,
 		"reject" = 0,
-		"level" = position.z,
+		"level" = transmit_z,
 		"language" = speaking,
 		"verb" = verb
 	)
@@ -401,7 +406,7 @@
 
 	sleep(10) // wait a little...
 
-	if(signal.data["done"] && position.z in signal.data["level"])
+	if(signal.data["done"] && transmit_z in signal.data["level"])
 		// we're done here.
 		return
 
@@ -413,7 +418,7 @@
 
 	Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
 					  src, message, displayname, jobname, real_name, M.voice_name,
-					  filter_type, signal.data["compression"], list(position.z), connection.frequency,verb,speaking)
+					  filter_type, signal.data["compression"], list(transmit_z), connection.frequency,verb,speaking)
 
 
 /obj/item/device/radio/hear_talk(mob/M as mob, msg, var/verb = "says", var/datum/language/speaking = null)
@@ -447,7 +452,15 @@
 		return -1
 	if(!(0 in level))
 		var/turf/position = get_turf(src)
-		if(!position || !(position.z in level))
+
+		var/receive_z = position.z
+		// Use vehicle's z if we're inside a vehicle interior
+		if(interior_manager && position.z == interior_manager.interior_z)
+			var/datum/interior/I = interior_manager.get_interior_by_coords(position.x, position.y)
+			if(I)
+				receive_z = I.exterior.z
+
+		if(!position || !(receive_z in level))
 			return -1
 	if(freq in ANTAG_FREQS)
 		if(!(src.syndie))//Checks to see if it's allowed on that frequency, based on the encryption keys

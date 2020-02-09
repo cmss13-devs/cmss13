@@ -261,3 +261,61 @@
 		spawn(15)
 			if(!(stat & NOPOWER))
 				icon_state = "doorctrl0"
+
+// Controls elevator railings
+/obj/structure/machinery/door_control/railings
+	name = "railing controls"
+	desc = "Allows for raising and lowering the guard rails on the vehicle ASRS elevator when it's raised."
+	id = "vehicle_elevator_railing_aux"
+
+	var/busy = FALSE
+
+/obj/structure/machinery/door_control/railings/attack_hand(mob/living/user)
+	add_fingerprint(user)
+	if(istype(user,/mob/living/carbon/Xenomorph))
+		return
+	if(stat & (NOPOWER|BROKEN))
+		to_chat(user, SPAN_WARNING("[src] doesn't seem to be working."))
+		return
+
+	if(busy)
+		flick("doorctrl-denied",src)
+		return
+
+	if(!allowed(user) && (wires & 1))
+		to_chat(user, SPAN_DANGER("Access Denied"))
+		flick("doorctrl-denied",src)
+		return
+
+	var/datum/shuttle/ferry/supply/vehicle/elevator = supply_controller.vehicle_elevator
+	if(!elevator)
+		flick("doorctrl-denied",src)
+		return
+
+	// safety first
+	if(!elevator.at_station())
+		flick("doorctrl-denied",src)
+		return
+
+	use_power(5)
+	icon_state = "doorctrl1"
+	busy = TRUE
+	add_fingerprint(user)
+
+	var/effective = 0
+	for(var/obj/structure/machinery/door/poddoor/M in machines)
+		if(M.id == id)
+			effective = 1
+			spawn()
+				if(desiredstate)
+					M.open()
+				else
+					M.close()
+	if(effective)
+		playsound(locate(elevator.Elevator_x,elevator.Elevator_y,elevator.Elevator_z), 'sound/machines/elevator_openclose.ogg', 50, 0)
+
+	desiredstate = !desiredstate
+	spawn(15)
+		busy = FALSE
+		if(!(stat & NOPOWER))
+			icon_state = "doorctrl0"

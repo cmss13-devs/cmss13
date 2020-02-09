@@ -2,6 +2,8 @@
 	set name = "Resist"
 	set category = "IC"
 
+	reset_view()
+
 	if(next_move > world.time)
 		return
 

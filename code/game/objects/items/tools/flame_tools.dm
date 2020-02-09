@@ -116,7 +116,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/burnt = 0
 	var/smoketime = 5
 	w_class = SIZE_TINY
-	
+
 	attack_verb = list("burnt", "singed")
 
 /obj/item/tool/match/process()
@@ -571,10 +571,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "cheap lighter"
 	desc = "A cheap-as-free lighter."
 	icon = 'icons/obj/items/items.dmi'
-	icon_state = "lighter-g"
-	item_state = "lighter-g"
-	var/icon_on = "lighter-g-on"
-	var/icon_off = "lighter-g"
+	icon_state = "lighter_g"
+	item_state = "lighter_g"
+	var/icon_on = "lighter_g_on"
+	var/icon_off = "lighter_g"
 	var/clr = "g"
 	w_class = SIZE_TINY
 	throwforce = 4
@@ -594,8 +594,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	New()
 		. = ..()
 		clr = pick("r","c","y","g")
-		icon_on = "lighter-[clr]-on"
-		icon_off = "lighter-[clr]"
+		icon_on = "lighter_[clr]_on"
+		icon_off = "lighter_[clr]"
 		icon_state = icon_off
 
 /obj/item/tool/lighter/Dispose()

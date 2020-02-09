@@ -60,3 +60,83 @@
 				return
 
 			owner.sendmob(choice)
+
+		if("teleport_mobs_in_range")
+			var/collect_range = input(owner, "Enter range from 0 to 7 tiles. All alive /living mobs within selected range will be marked for teleportation.", "Mass-teleportation", "") as num
+			if(collect_range < 0 || collect_range > 7)
+				to_chat(owner, SPAN_ALERT("Incorrect range. Aborting."))
+				return
+			var/list/targets = list()
+			for(var/mob/living/M in range(collect_range, owner.mob))
+				if(M.stat != DEAD)
+					targets.Add(M)
+			if(targets.len < 1)
+				to_chat(owner, SPAN_ALERT("No alive /living mobs found. Aborting."))
+				return
+			if(alert(owner, "[targets.len] mobs were marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirmation", "Teleport", "Cancel") == "Cancel")
+				return
+			for(var/mob/M in targets)
+				if(!M)
+					continue
+				M.on_mob_jump()
+				M.forceMove(get_turf(owner.mob))
+
+			message_staff(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] mobs in [collect_range] tiles range to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
+
+		if("teleport_mobs_by_faction")
+			var/faction = input(owner, "Choose between humanoids and xenomorphs.", "Mobs Choice", "") as null|anything in list("Humanoids", "Xenomorphs")
+			if(faction == "Humanoids")
+				faction = null
+				faction = input(owner, "Select faction you want to teleport to your location. Mobs in Thunderdome/CentComm areas won't be included.", "Faction Choice", "") as null|anything in FACTION_LIST_HUMANOID
+				if(!faction)
+					to_chat(owner, SPAN_ALERT("Faction choice error. Aborting."))
+					return
+				var/list/targets = living_human_list
+				for(var/mob/living/carbon/human/H in targets)
+					var/area/AR = get_area(H)
+					if(H.faction != faction || AR.statistic_exempt)
+						targets.Remove(H)
+				if(targets.len < 1)
+					to_chat(owner, SPAN_ALERT("No alive /human mobs of [faction] faction were found. Aborting."))
+					return
+				if(alert(owner, "[targets.len] humanoids of [faction] faction were marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirmation", "Teleport", "Cancel") == "Cancel")
+					return
+
+				for(var/mob/M in targets)
+					if(!M)
+						continue
+					M.on_mob_jump()
+					M.forceMove(get_turf(owner.mob))
+
+				message_staff(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] human mobs of [faction] faction to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
+
+			else if(faction == "Xenomorphs")
+				faction = null
+				var/list/hives = list("Regular" = 1, "Corrupted" = 2, "Alpha" = 3, "Beta" = 4, "Zeta" = 5)
+				faction = input(owner, "Select hive you want to teleport to your location. Mobs in Thunderdome/CentComm areas won't be included.", "Hive Choice", "") as null|anything in hives
+				if(!faction)
+					to_chat(owner, SPAN_ALERT("Hive choice error. Aborting."))
+					return
+				var/datum/hive_status/Hive = hive_datum[hives[faction]]
+				var/list/targets = Hive.totalXenos
+				for(var/mob/living/carbon/Xenomorph/X in targets)
+					var/area/AR = get_area(X)
+					if(X.stat == DEAD || AR.statistic_exempt)
+						targets.Remove(X)
+				if(targets.len < 1)
+					to_chat(owner, SPAN_ALERT("No alive xenomorphs of [faction] Hive were found. Aborting."))
+					return
+				if(alert(owner, "[targets.len] xenomorphs of [faction] Hive were marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirmation", "Teleport", "Cancel") == "Cancel")
+					return
+
+				for(var/mob/M in targets)
+					if(!M)
+						continue
+					M.on_mob_jump()
+					M.forceMove(get_turf(owner.mob))
+
+				message_staff(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] xenomorph mobs of [faction] Hive to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
+
+			else
+				to_chat(owner, SPAN_ALERT("Mobs choice error. Aborting."))
+				return

@@ -207,7 +207,7 @@
 				"You hear metal strain and groan, and a door [density ? "opening" : "closing"].")
 			spawn(0)
 				if(density)
-					open(1)
+					open(TRUE)
 				else
 					close()
 		return TRUE //no afterattack call
@@ -250,15 +250,12 @@
 	latetoggle()
 	return ..()
 
-/obj/structure/machinery/door/firedoor/open(var/forced = 0)
+/obj/structure/machinery/door/firedoor/open(var/forced = FALSE)
 	if(!forced)
 		if(stat & (BROKEN|NOPOWER))
 			return //needs power to open unless it was forced
 		else
 			use_power(360)
-	else
-		log_admin("[usr]([usr.ckey]) has forced open an emergency shutter.")
-		message_admins("[usr]([usr.ckey]) has forced open an emergency shutter.")
 	latetoggle()
 	return ..()
 

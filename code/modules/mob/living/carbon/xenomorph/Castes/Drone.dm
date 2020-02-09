@@ -5,7 +5,7 @@
 	upgrade = 0
 	melee_damage_lower = XENO_DAMAGE_LOW
 	melee_damage_upper = XENO_DAMAGE_LOWPLUS
-	plasma_gain = XENO_PLASMA_GAIN_LOWMED
+	plasma_gain = XENO_PLASMA_GAIN_HIGHMED
 	plasma_max = XENO_PLASMA_VERYHIGH
 	armor_deflection = XENO_NO_ARMOR
 	max_health = XENO_HEALTH_LOWMEDIUM

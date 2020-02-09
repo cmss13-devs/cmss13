@@ -146,7 +146,7 @@
 			used_lunge = 1
 			grab_level = GRAB_NECK
 			L.drop_held_items()
-			L.Stun(5)
+			L.Stun(2.5)
 			L.pulledby = src
 			visible_message(SPAN_XENOWARNING("\The [src] grabs [L] by the throat!"), \
 			SPAN_XENOWARNING("You grab [L] by the throat!"))

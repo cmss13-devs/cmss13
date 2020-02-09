@@ -134,7 +134,7 @@
 				target.apply_effect(0.3, DAZE)
 				target.apply_effect(2, SLOW)
 				return
-			target.apply_effect(0.9, WEAKEN) // 1.1 seconds of stun, per agreement from Balance Team when switched from MC stuns to exact stuns
+			target.apply_effect(0.8, WEAKEN) // 1 second stun
 			target.apply_effect(4, DAZE)
 			target.apply_effect(2, SUPERSLOW)
 			target.apply_effect(5, SLOW)
@@ -733,7 +733,7 @@
 	accuracy_var_high = config.high_proj_variance
 	accurate_range = config.min_shell_range
 	max_range = config.close_shell_range
-	damage = config.mhigh_hit_damage
+	damage = config.buckshot_hit_damage
 	damage_var_low = config.low_proj_variance
 	damage_var_high = config.low_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff
@@ -764,7 +764,7 @@
 	accuracy_var_high = config.med_proj_variance
 	accurate_range = config.min_shell_range
 	max_range = config.close_shell_range
-	damage = config.mhigh_hit_damage
+	damage = config.buckshot_hit_damage
 	damage_var_low = config.low_proj_variance
 	damage_var_high = config.low_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff

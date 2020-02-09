@@ -233,9 +233,9 @@
 				if(!isYautja(M))
 					M.emote("scream")
 					if(isXenoBoiler(src))
-						M.KnockDown(rand(3, 4))
-					else if(isXenoPraetorian(src))
-						M.KnockDown(rand(1,3))
+						M.KnockDown(2)
+					else if (isXenoPraetorian(src))
+						M.KnockDown(1)
 
 // Normal refers to the mathematical normal
 /mob/living/carbon/Xenomorph/proc/do_acid_spray_cone_normal(turf/T, distance, facing, obj/effect/xenomorph/spray/source_spray)

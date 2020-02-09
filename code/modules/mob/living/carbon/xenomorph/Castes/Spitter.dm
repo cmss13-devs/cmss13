@@ -13,8 +13,8 @@
 	armor_deflection = XENO_LOW_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
 	evasion = XENO_EVASION_MEDIUM
-	speed = XENO_SPEED_HIGH
-	speed_mod = XENO_SPEED_MOD_LARGE
+	speed = XENO_SPEED_LOWHIGH
+	speed_mod = 0
 
 	spit_delay = 20
 	caste_desc = "Ptui!"

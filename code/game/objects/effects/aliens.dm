@@ -92,7 +92,7 @@
 	if(!H.lying)
 		to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
 		H.emote("pain")
-		H.KnockDown(2)
+		H.KnockDown(1)
 		H.last_damage_mob = source_mob
 		H.last_damage_source = source_name
 		var/datum/limb/affecting = H.get_limb("l_foot")

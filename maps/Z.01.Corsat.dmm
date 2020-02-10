@@ -16944,11 +16944,11 @@
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
 "aSX" = (
-/obj/structure/pipes/standard/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
-/area/corsat/theta/biodome/hydroeast)
+/area/corsat/theta/biodome/hydrowest)
 "aSY" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -21327,9 +21327,6 @@
 "bcN" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/flora/jungle/planttop1,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 10
-	},
 /turf/open/gm/grass,
 /area/corsat/theta/biodome)
 "bcO" = (
@@ -26577,7 +26574,6 @@
 /area/corsat/sigma/south/complex)
 "bsD" = (
 /obj/structure/machinery/computer/security{
-	dir = 2;
 	network = list("omega")
 	},
 /obj/structure/table/reinforced,
@@ -29363,8 +29359,7 @@
 /area/corsat/gamma/medbay)
 "bAl" = (
 /obj/structure/machinery/chem_dispenser{
-	req_access = list(100);
-	req_one_access = null
+	req_access = list(100)
 	},
 /obj/item/reagent_container/glass/beaker/bluespace,
 /turf/open/floor/corsat{
@@ -39111,11 +39106,11 @@
 	},
 /area/corsat/sigma/cargo)
 "dmP" = (
-/obj/structure/pipes/standard/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
-/area/corsat/theta/biodome/hydrowest)
+/area/corsat/theta/biodome/hydroeast)
 "dmR" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -41985,10 +41980,9 @@
 /area/corsat/gamma/foyer)
 "fpI" = (
 /obj/structure/flora/jungle/vines,
-/obj/structure/pipes/vents/pump{
-	dir = 8
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
 	},
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass,
 /area/corsat/theta/biodome)
 "fpL" = (
@@ -43281,7 +43275,6 @@
 /area/corsat/sigma/south/robotics)
 "gpu" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
-	dir = 4;
 	name = "Engineering Storage";
 	req_one_access = list(102)
 	},
@@ -47679,15 +47672,6 @@
 	icon_state = "retrosquares"
 	},
 /area/corsat/sigma/hangar/monorail)
-"jue" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 10
-	},
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "purplewhitecorner"
-	},
-/area/corsat/theta/biodome/hydrowest)
 "juf" = (
 /obj/structure/closet/cabinet,
 /obj/structure/machinery/light{
@@ -51154,8 +51138,7 @@
 /area/corsat/gamma/residential/showers)
 "lWf" = (
 /obj/structure/machinery/chem_dispenser{
-	req_access = list(100);
-	req_one_access = null
+	req_access = list(100)
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -52609,8 +52592,7 @@
 /area/corsat/sigma/south/offices)
 "mWG" = (
 /obj/structure/machinery/chem_dispenser{
-	req_access = list(100);
-	req_one_access = null
+	req_access = list(100)
 	},
 /obj/item/reagent_container/glass/beaker/bluespace,
 /turf/open/floor/corsat{
@@ -53741,8 +53723,7 @@
 /area/corsat/gamma/hangar)
 "nNo" = (
 /obj/structure/machinery/chem_dispenser{
-	req_access = list(100);
-	req_one_access = null
+	req_access = list(100)
 	},
 /turf/open/floor/corsat{
 	icon_state = "purplewhite"
@@ -54933,9 +54914,7 @@
 	},
 /area/corsat/gamma/engineering)
 "oJT" = (
-/obj/item/stack/sheet/metal{
-	amount = 1
-	},
+/obj/item/stack/sheet/metal,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -56651,14 +56630,6 @@
 	icon_state = "white"
 	},
 /area/corsat/gamma/residential/researcher)
-"qae" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 9
-	},
-/turf/open/floor/corsat{
-	icon_state = "retrosquareslight"
-	},
-/area/corsat/theta/biodome/hydroeast)
 "qaf" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1;
@@ -60721,14 +60692,6 @@
 	icon_state = "purplewhite"
 	},
 /area/corsat/gamma/biodome/toxins)
-"sSL" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 5
-	},
-/turf/open/floor/corsat{
-	icon_state = "retrosquareslight"
-	},
-/area/corsat/theta/biodome/hydrowest)
 "sSZ" = (
 /turf/open/floor/corsat{
 	dir = 4;
@@ -65617,7 +65580,6 @@
 /area/corsat/sigma/hangar/checkpoint)
 "wsQ" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
-	dir = 4;
 	name = "Construction Yard";
 	req_one_access = list(102)
 	},
@@ -66566,8 +66528,7 @@
 /area/corsat/gamma/engineering)
 "xcG" = (
 /obj/structure/machinery/chem_dispenser{
-	req_access = list(100);
-	req_one_access = null
+	req_access = list(100)
 	},
 /obj/item/reagent_container/glass/beaker/bluespace,
 /turf/open/floor/corsat{
@@ -67822,15 +67783,6 @@
 	icon_state = "darkgreencorner"
 	},
 /area/corsat/sigma/hangar/monorail)
-"ydt" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 6
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "purplewhitecorner"
-	},
-/area/corsat/theta/biodome/hydroeast)
 "ydU" = (
 /obj/structure/table/almayer,
 /obj/item/document_objective/technical_manual,
@@ -89328,8 +89280,8 @@ pgO
 jqz
 jqz
 jqz
-kCm
-bdP
+jqz
+fpI
 bdQ
 bdQ
 bdQ
@@ -89573,9 +89525,9 @@ aKK
 aKK
 aKK
 xsU
-eiG
 aJZ
-aJZ
+fip
+kCm
 bdP
 bdQ
 bdQ
@@ -89819,8 +89771,8 @@ lMf
 aKK
 bdS
 bcN
-hnR
-jqz
+bei
+fip
 eNM
 kCm
 bdP
@@ -91537,7 +91489,7 @@ aJZ
 bdS
 bdS
 aJZ
-tzY
+fip
 jqz
 eNM
 bVX
@@ -91782,7 +91734,7 @@ bdZ
 aJZ
 beg
 aJZ
-eiG
+aJZ
 gqV
 aJZ
 aJZ
@@ -92027,7 +91979,7 @@ aKs
 aKs
 aKs
 aJZ
-eiG
+aJZ
 xsU
 lKy
 aJZ
@@ -92272,7 +92224,7 @@ bsO
 bsO
 aKs
 aKs
-rTj
+bdP
 bdP
 bdP
 bdP
@@ -92508,8 +92460,8 @@ aKz
 ema
 mmj
 bca
-sSL
-qbG
+ezx
+aSX
 ezx
 bca
 mmj
@@ -92517,7 +92469,7 @@ fmw
 aKz
 bsO
 aKs
-kuC
+bdR
 bdR
 bdR
 bdQ
@@ -92753,8 +92705,8 @@ bsO
 bsO
 bsW
 aKK
-jue
-dmP
+aKP
+vOK
 aYg
 aKK
 btn
@@ -92762,7 +92714,7 @@ bsO
 bsO
 aKs
 aKs
-rTj
+bdP
 bdP
 bdQ
 bdQ
@@ -93007,7 +92959,7 @@ aKs
 aKs
 aKs
 bdP
-rTj
+bdP
 bdP
 bdQ
 bdQ
@@ -93252,7 +93204,7 @@ bdS
 hKH
 bdP
 bdP
-fpI
+iQH
 bdP
 bdQ
 aKt
@@ -100593,8 +100545,8 @@ bsP
 bsP
 bsY
 aKL
-ydt
-aSX
+xGd
+car
 aYn
 aKL
 bto
@@ -100838,8 +100790,8 @@ aKG
 vTr
 ker
 bko
-qae
-xhx
+rCE
+dmP
 rCE
 bko
 ker

@@ -308,7 +308,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/double/unique_action(mob/user)
 	if(flags_item & WIELDED)
 		unwield(user)
-	empty_chamber(user)
+	open_chamber(user)
 
 /obj/item/weapon/gun/shotgun/double/check_chamber_position()
 	if(current_mag.chamber_closed) return
@@ -328,17 +328,8 @@ can cause issues with ammo types getting mixed up during the burst.
 			return 0
 
 /obj/item/weapon/gun/shotgun/double/empty_chamber(mob/user)
-	if(current_mag.chamber_closed) //Has to be closed.
-		if(current_mag.current_rounds) //We want to empty out the bullets.
-			var/i
-			//"i" is here to watch over potential fuckery with current rounds
-			while(current_mag.current_rounds>0 && i<50)
-				unload_shell(user)
-				i++
-
-	current_mag.chamber_closed = !current_mag.chamber_closed
-	update_icon()
-	playsound(user, reload_sound, 25, 1) //replace me with unique break open sound!
+	if(!current_mag.chamber_closed)
+		..()
 
 /obj/item/weapon/gun/shotgun/double/load_into_chamber()
 	//Trimming down the unnecessary stuff.
@@ -363,6 +354,10 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag.chamber_position--
 	return 1
 
+/obj/item/weapon/gun/shotgun/double/proc/open_chamber(mob/user)
+	current_mag.chamber_closed = !current_mag.chamber_closed
+	update_icon()
+	playsound(user, reload_sound, 25, 1) //replace me with unique break open sound!
 
 /obj/item/weapon/gun/shotgun/double/sawn
 	name = "sawn-off shotgun"

@@ -718,9 +718,8 @@
 /datum/species/monkey/handle_post_spawn(var/mob/living/carbon/human/H)
 	H.set_languages(list("Primitive"))
 	if(H.real_name == "unknown")
-		H.name = "[lowertext(name)] ([rand(1, 999)])"
-		H.real_name = H.name
-		H.voice_name = H.name
+		var/random_name = "[lowertext(name)] ([rand(1, 999)])"
+		H.change_real_name(H, random_name)
 	return ..()
 
 /datum/species/monkey/get_bodytype(var/mob/living/carbon/human/H)

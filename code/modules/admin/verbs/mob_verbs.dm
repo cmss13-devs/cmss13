@@ -204,6 +204,7 @@
 		if(ishuman(usr))
 			var/mob/living/carbon/human/H = usr
 			H.name = H.get_visible_name()
+			H.change_real_name(H, usr.name_archive)
 
 	usr.loc = O.loc // Appear where the object you were controlling is -- TLE
 	usr.client.eye = usr
@@ -280,8 +281,7 @@
 		return
 
 	var/old_name = X.name
-	X.name = newname
-	X.real_name = newname
+	X.change_real_name(X, newname)
 	if(istype(X, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = X
 		if(H.wear_id)

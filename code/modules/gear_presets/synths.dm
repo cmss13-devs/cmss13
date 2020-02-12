@@ -15,13 +15,12 @@
 		H.set_species(H.client.prefs.synthetic_type)
 
 /datum/equipment_preset/synth/load_name(mob/living/carbon/human/H, var/randomise)
-	H.real_name = "David"
+	var/final_name = "David"
 	if(H.client && H.client.prefs)
-		H.real_name = H.client.prefs.synthetic_name
-		if(!H.real_name || H.real_name == "Undefined") //In case they don't have a name set or no prefs, there's a name.
-			H.real_name = "David"
-	if(H.mind)
-		H.mind.name = H.real_name
+		final_name = H.client.prefs.synthetic_name
+		if(!final_name || final_name == "Undefined")
+			final_name = "David"
+	H.change_real_name(final_name)
 
 /datum/equipment_preset/synth/load_skills(mob/living/carbon/human/H)
 	. = ..()
@@ -194,12 +193,11 @@
 	H.b_facial = 255
 
 /datum/equipment_preset/synth/working_joe/load_name(mob/living/carbon/human/H, var/randomise)
-	H.real_name = "Working Joe"
+	var/final_name = "Working Joe"
 	if(H.client && H.client.prefs)
-		H.real_name = H.client.prefs.synthetic_name
-		if(!H.real_name || H.real_name == "Undefined") //In case they don't have a name set or no prefs, there's a name.
-			H.real_name = "Working Joe"
+		final_name = H.client.prefs.synthetic_name
+		if(!final_name || final_name == "Undefined") //In case they don't have a name set or no prefs, there's a name.
+			final_name = "Working Joe"
 		else
-			H.real_name = "Working [H.real_name]"
-	if(H.mind)
-		H.mind.name = "Working [H.real_name]"
+			final_name = "Working [H.real_name]"
+	H.change_real_name(H, final_name)

@@ -20,19 +20,17 @@
 	return //No vanity items for Yautja!
 
 /datum/equipment_preset/yautja/load_name(mob/living/carbon/human/H, var/randomise)
-	H.real_name = "Le'pro"
+	var/final_name = "Le'pro"
 	H.gender = MALE
 	H.age = 100
 
 	if(H.client && H.client.prefs)
 		H.gender = H.client.prefs.predator_gender
 		H.age = H.client.prefs.predator_age
-		H.real_name = H.client.prefs.predator_name
-		if(!H.real_name || H.real_name == "Undefined") //In case they don't have a name set or no prefs, there's a name.
-			H.real_name = "Le'pro"
-	if(H.mind)
-		H.mind.name = H.real_name
-
+		final_name = H.client.prefs.predator_name
+		if(!final_name || final_name == "Undefined") //In case they don't have a name set or no prefs, there's a name.
+			final_name = "Le'pro"
+	H.change_real_name(H, final_name)
 
 /*****************************************************************************************************/
 
@@ -68,9 +66,8 @@
 
 /datum/equipment_preset/yautja/blooded/councillor/load_name(mob/living/carbon/human/H, var/randomise)
 	. = ..()
-	H.real_name = "Councillor " + H.real_name
-	if(H.mind)
-		H.mind.name = H.real_name
+	var/new_name = "Councillor [H.real_name]"
+	H.change_real_name(H, new_name)
 
 /*****************************************************************************************************/
 
@@ -82,9 +79,8 @@
 
 /datum/equipment_preset/yautja/elder/load_name(mob/living/carbon/human/H, var/randomise)
 	. = ..()
-	H.real_name = "Elder " + H.real_name
-	if(H.mind)
-		H.mind.name = H.real_name
+	var/new_name = "Elder [H.real_name]"
+	H.change_real_name(H, new_name)
 
 /datum/equipment_preset/yautja/elder/load_gear(mob/living/carbon/human/H)
 	var/armor_number = 1

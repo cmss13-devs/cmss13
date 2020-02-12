@@ -23,11 +23,13 @@
 	H.gender = pick(60;MALE,40;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
+	var/random_name
 	if(H.gender == MALE)
-		H.real_name = "[pick(first_names_male_colonist)] [pick(last_names_colonist)]"
+		random_name = "[pick(first_names_male_colonist)] [pick(last_names_colonist)]"
 		H.f_style = "5 O'clock Shadow"
 	else
-		H.real_name = "[pick(first_names_female_colonist)] [pick(last_names_colonist)]"
+		random_name = "[pick(first_names_female_colonist)] [pick(last_names_colonist)]"
+	H.change_real_name(H, random_name)
 	H.age = rand(20,45)
 	H.r_hair = 25
 	H.g_hair = 25
@@ -284,11 +286,12 @@
 	H.gender = pick(MALE,FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
+	var/random_name
 	if(H.gender == MALE)
-		H.real_name = "[pick(first_names_male)] [pick(last_names)]"
+		random_name = "[pick(first_names_male)] [pick(last_names)]"
 	else
-		H.real_name = "[pick(first_names_female)] [pick(last_names)]"
-	H.name = H.real_name
+		random_name = "[pick(first_names_female)] [pick(last_names)]"
+	H.change_real_name(H, random_name)
 	H.age = rand(17,45)
 
 /datum/equipment_preset/other/pizza/load_gear(mob/living/carbon/human/H)
@@ -328,8 +331,7 @@
 	H.gender = pick(MALE,FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
-	H.real_name = "Carlos Souto Man Cubano"
-	H.name = H.real_name
+	H.change_real_name(H, "Carlos Souto Man Cubano")
 	H.age = rand(17,45)
 
 /datum/equipment_preset/other/souto/load_gear(mob/living/carbon/human/H)
@@ -375,8 +377,8 @@
 	H.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new
 	A.randomize_appearance(H)
-	H.real_name = capitalize(pick(H.gender == MALE ? first_names_male : first_names_female)) + " " + capitalize(pick(last_names))
-	H.name = H.real_name
+	var/random_name = capitalize(pick(H.gender == MALE ? first_names_male : first_names_female)) + " " + capitalize(pick(last_names))
+	H.change_real_name(H, random_name)
 	H.age = rand(21,45)
 
 /datum/equipment_preset/other/zombie/load_id(mob/living/carbon/human/H)
@@ -412,8 +414,8 @@
 	H.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new
 	A.randomize_appearance(H)
-	H.real_name = capitalize(pick(H.gender == MALE ? first_names_male_gladiator : first_names_female_gladiator))
-	H.name = H.real_name
+	var/random_name = capitalize(pick(H.gender == MALE ? first_names_male_gladiator : first_names_female_gladiator))
+	H.change_real_name(H, random_name)
 	H.age = rand(21,45)
 
 /datum/equipment_preset/other/gladiator/load_gear(mob/living/carbon/human/H)

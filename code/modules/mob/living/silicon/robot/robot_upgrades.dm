@@ -27,8 +27,6 @@
 	del(R.module)
 	R.module = null
 	R.modtype = "robot"
-	R.real_name = "Cyborg [R.ident]"
-	R.name = R.real_name
 	R.nopush = 0
 	R.hands.icon_state = "nomod"
 	R.base_icon = "robot"
@@ -36,6 +34,8 @@
 	R.updateicon()
 	R.languages = list()
 	R.speech_synthesizer_langs = list()
+	var/new_name = "Cyborg [R.ident]"
+	R.change_real_name(R, new_name)
 
 	return 1
 

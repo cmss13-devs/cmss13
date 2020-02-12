@@ -2,8 +2,9 @@
 // might be worth adapting the bugs into a feature and using these
 // subtypes as a basis for non-common-speaking alien foreigners. ~ Z
 
-/mob/living/carbon/human/dummy
-	real_name = "Test Dummy"
+/mob/living/carbon/human/dummy/New()
+	..()
+	change_real_name(src, "Test Dummy")
 	status_flags = GODMODE|CANPUSH
 
 /mob/living/carbon/human/synthetic/New(var/new_loc)

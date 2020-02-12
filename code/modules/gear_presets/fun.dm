@@ -81,13 +81,14 @@
 	H.gender = pick(60;MALE,40;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
+	var/random_name
 	if(H.gender == MALE)
-		H.real_name = "[pick(first_names_male_dutch)] [pick(last_names)]"
+		random_name = "[pick(first_names_male_dutch)] [pick(last_names)]"
 		H.f_style = "5 O'clock Shadow"
 	else
-		H.real_name = "[pick(first_names_female_dutch)] [pick(last_names)]"
+		random_name = "[pick(first_names_female_dutch)] [pick(last_names)]"
 
-	H.name = H.real_name
+	H.change_real_name(H, random_name)
 	H.age = rand(25,35)
 	H.r_hair = 15
 	H.g_hair = 15
@@ -156,11 +157,10 @@
 
 /datum/equipment_preset/fun/dutch/arnie/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = MALE
-	H.real_name = "Arnold 'Dutch' Schaefer"
+	H.change_real_name(H, "Arnold 'Dutch' Schaefer")
 	H.f_style = "5 O'clock Shadow"
 	H.h_style = "Mulder"
 
-	H.name = H.real_name
 	H.age = 38
 	H.r_hair = 15
 	H.g_hair = 15
@@ -222,9 +222,9 @@
 		"Mordred", "Morien", "Pelleas", "Pinel", "Sagramore", "Safir", "Segwarides", "Tor", "Ulfius", "Yvain", "Ywain"
 	)
 
-	H.real_name = pick(names) + " of the HEFA Order"
+	var/new_name = pick(names) + " of the HEFA Order"
+	H.change_real_name(H, new_name)
 	H.f_style = "5 O'clock Shadow"
-	H.name = H.real_name
 
 /datum/equipment_preset/fun/hefa/load_gear(mob/living/carbon/human/H)
 	var/obj/item/clothing/under/marine/M = new(H)

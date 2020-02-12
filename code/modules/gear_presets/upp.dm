@@ -12,13 +12,14 @@
 	H.gender = pick(60;MALE,40;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
+	var/random_name
 	if(H.gender == MALE)
-		H.real_name = "[pick(first_names_male_upp)] [pick(last_names_upp)]"
+		random_name = "[pick(first_names_male_upp)] [pick(last_names_upp)]"
 		H.f_style = "5 O'clock Shadow"
 	else
-		H.real_name = "[pick(first_names_female_upp)] [pick(last_names_upp)]"
+		random_name = "[pick(first_names_female_upp)] [pick(last_names_upp)]"
 
-	H.name = H.real_name
+	H.change_real_name(H, random_name)
 	H.age = rand(17,35)
 	H.h_style = "Shaved Head"
 	H.r_hair = 15
@@ -104,12 +105,13 @@
 	H.gender = pick(50;MALE,50;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
+	var/random_name
 	if(H.gender == MALE)
-		H.real_name = "[pick(first_names_male_upp)]"
+		random_name = "[pick(first_names_male_upp)]"
 		H.f_style = "5 O'clock Shadow"
 	else
-		H.real_name = "[pick(first_names_female_upp)]"
-	H.name = H.real_name
+		random_name = "[pick(first_names_female_upp)]"
+	H.change_real_name(H, random_name)
 	H.r_hair = 15
 	H.g_hair = 15
 	H.b_hair = 25

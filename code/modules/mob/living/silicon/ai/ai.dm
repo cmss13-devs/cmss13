@@ -153,8 +153,8 @@ var/list/ai_verbs_default = list(
 	. = ..()
 
 /mob/living/silicon/ai/proc/SetName(pickedName as text)
-	real_name = pickedName
-	name = pickedName
+	change_real_name(src, pickedName)
+
 	if(eyeobj)
 		eyeobj.name = "[pickedName] (AI Eye)"
 

@@ -307,9 +307,8 @@
 		H.set_species(pick("Monkey", "Yiren", "Stok", "Farwa", "Neaera"))
 		H.is_important = TRUE
 		if(random_names)
-			H.real_name = "[lowertext(H.species.name)] ([rand(1, 999)])"
-			H.name = H.real_name
-			H.voice_name = H.real_name
+			var/random_name = "[lowertext(H.species.name)] ([rand(1, 999)])"
+			H.change_real_name(H, random_name)
 			if(H.wear_id)
 				var/obj/item/card/id/card = H.wear_id
 				card.registered_name = H.real_name

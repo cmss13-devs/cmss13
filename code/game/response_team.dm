@@ -206,8 +206,7 @@ proc/trigger_armed_response_team(var/force = 0)
 	M.update_hair()
 	M.update_body()
 
-	M.real_name = commando_name
-	M.name = commando_name
+	M.change_real_name(M, commando_name)
 	M.age = !leader_selected ? rand(23,35) : rand(35,45)
 
 	//Creates mind stuff.

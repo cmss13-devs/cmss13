@@ -1,7 +1,4 @@
 /mob/living/carbon/human
-	name = "unknown"
-	real_name = "unknown"
-	voice_name = "unknown"
 	icon = 'icons/mob/humans/human.dmi'
 	icon_state = "body_m_s"
 	directional_lum = 0 				//humans carrying light sources only illuminate the area in front of themselves
@@ -31,6 +28,7 @@
 	var/datum/reagents/R = new/datum/reagents(1000)
 	reagents = R
 	R.my_atom = src
+	change_real_name(src, "unknown")
 
 	..()
 

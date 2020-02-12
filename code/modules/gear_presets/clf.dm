@@ -18,11 +18,12 @@
 
 /datum/equipment_preset/clf/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(60;MALE, 40;FEMALE)
+	var/random_name
 	if(H.gender == MALE)
-		H.real_name = "[pick(first_names_male_clf)] [pick(last_names_clf)]"
+		random_name = "[pick(first_names_male_clf)] [pick(last_names_clf)]"
 	else
-		H.real_name = "[pick(first_names_female_clf)] [pick(last_names_clf)]"
-	H.name = H.real_name
+		random_name = "[pick(first_names_female_clf)] [pick(last_names_clf)]"
+	H.change_real_name(H, random_name)
 	H.age = rand(17,45)
 	H.r_hair = 25
 	H.g_hair = 25

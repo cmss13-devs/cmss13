@@ -95,3 +95,37 @@ proc/has_species(var/mob/M, var/species)
 	if(H.species.name != species) return 0
 
 	return 1
+
+// We change real name, so we change the voice too if we are humans
+// It also ensures our mind's name gets changed
+/mob/proc/change_real_name(var/mob/M, var/new_name)
+	if(!new_name)
+		return FALSE
+
+	M.real_name = new_name
+	M.name = new_name
+
+	// If we have a mind, we need to update its name as well
+	M.change_mind_name(new_name)
+
+	// If we are humans, we need to update our voice as well
+	M.change_mob_voice(new_name)
+
+	return TRUE
+
+/mob/proc/change_mind_name(var/new_mind_name)
+	if(!mind)
+		return FALSE
+	if(!new_mind_name)
+		new_mind_name = "Unknown"
+	mind.name = new_mind_name
+	return TRUE
+
+/mob/proc/change_mob_voice(var/new_voice_name)
+	if(!ishuman(src))
+		return FALSE
+	if(!new_voice_name)
+		new_voice_name = "Unknown"
+	var/mob/living/carbon/human/H = src
+	H.voice = new_voice_name
+	return TRUE

@@ -51,9 +51,8 @@
 
 /obj/item/robot/upgrade/rename/action(var/mob/living/silicon/robot/R)
 	if(..()) return 0
-	R.name = heldname
 	R.custom_name = heldname
-	R.real_name = heldname
+	R.change_real_name(R, heldname)
 
 	return 1
 

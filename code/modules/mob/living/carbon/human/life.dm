@@ -30,7 +30,6 @@
 	//update the current life tick, can be used to e.g. only do something every 4 ticks
 	life_tick++
 
-	voice = real_name
 	if(stat == DEAD && species.name == "Zombie" && regenZ)
 		handle_chemicals_in_body()
 		return

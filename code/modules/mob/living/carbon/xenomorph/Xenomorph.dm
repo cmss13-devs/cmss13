@@ -462,8 +462,7 @@
 	else if(caste) name = "\improper [name_prefix][caste.upgrade_name] [caste.caste_name] ([name_client_prefix][nicknumber][name_client_postfix])"
 
 	//Update linked data so they show up properly
-	real_name = name
-	if(mind) mind.name = name //This gives them the proper name in deadchat if they explode on death. It's always the small things
+	change_real_name(src, name)
 
 	// Since we updated our name we should update the info in the UI
 	in_hive.hive_ui.update_xeno_info()

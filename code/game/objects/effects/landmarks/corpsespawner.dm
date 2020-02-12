@@ -41,7 +41,7 @@
 
 /obj/effect/landmark/corpsespawner/proc/createCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
 	var/mob/living/carbon/human/M = new /mob/living/carbon/human(src.loc)
-	M.real_name = name
+	M.change_real_name(M, name)
 	if(!M.hud_used)
 		M.create_hud()
 	M.death("existing", 1) //Kills the new mob

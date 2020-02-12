@@ -23,8 +23,8 @@
 	add_language("Sainja") //They can only understand it though.
 
 	if(name == initial(name))
-		name = "[name] ([rand(1, 1000)])"
-		real_name = name
+		var/random_name = "[name] ([rand(1, 1000)])"
+		change_real_name(src, random_name)
 
 	radio = new /obj/item/device/radio/headset/yautja(src)
 	camera = new /obj/structure/machinery/camera(src)

@@ -1281,7 +1281,6 @@
 		var/mob/living/carbon/human/M = new(usr.loc)
 		M.set_species("Yautja")
 		spawn(0)
-			M.real_name = y_name
 			M.gender = y_gend
 			M.regenerate_icons()
 			log_admin("[key_name(usr)] changed [H] into a new Yautja, [M.real_name].")
@@ -1295,9 +1294,12 @@
 				M.key = H.key
 				if(M.client) M.client.change_view(world.view)
 			if(is_alien_whitelisted(M,"Yautja Elder"))
-				H.real_name = "Elder [M.real_name]"
+				M.change_real_name(M, "Elder [y_name]")
 				H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/full(H), WEAR_JACKET)
 				H.equip_to_slot_or_del(new /obj/item/weapon/twohanded/glaive(H), WEAR_L_HAND)
+			else
+				M.change_real_name(M, y_name)
+			M.name = "Unknown"	// Yautja names are not visible for oomans
 
 			if(H) qdel(H) //May have to clear up round-end vars and such....
 
@@ -1866,7 +1868,7 @@
 								O.name = obj_name
 								if(istype(O,/mob))
 									var/mob/M = O
-									M.real_name = obj_name
+									M.change_real_name(M, obj_name)
 
 		if (number == 1)
 			log_admin("[key_name(usr)] created a [english_list(paths)]")

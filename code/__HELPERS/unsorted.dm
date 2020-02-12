@@ -390,10 +390,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 //Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
 /mob/proc/fully_replace_character_name(var/oldname,var/newname)
 	if(!newname)	return 0
-	real_name = newname
-	name = newname
-	if(mind)
-		mind.name = newname
+	change_real_name(src, newname)
 
 	if(oldname)
 		//update the datacore records! This is goig to be a bit costly.

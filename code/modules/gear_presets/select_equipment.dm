@@ -72,8 +72,8 @@
 	H.gender = pick(60;MALE,40;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
-	H.real_name = capitalize(pick(H.gender == MALE ? first_names_male : first_names_female)) + " " + capitalize(pick(last_names))
-	H.name = H.real_name
+	var/random_name = capitalize(pick(H.gender == MALE ? first_names_male : first_names_female)) + " " + capitalize(pick(last_names))
+	H.change_real_name(H, random_name)
 	H.age = rand(21,45)
 
 /datum/equipment_preset/proc/load_age(mob/living/carbon/human/H)

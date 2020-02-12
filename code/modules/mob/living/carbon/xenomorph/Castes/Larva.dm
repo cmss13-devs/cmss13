@@ -110,9 +110,7 @@
 	if(istype(src,/mob/living/carbon/Xenomorph/Larva/predalien)) state = "Predalien " //Sort of a hack.
 
 	//Update linked data so they show up properly
-	real_name = name
-	if(mind)
-		mind.name = name //This gives them the proper name in deadchat if they explode on death. It's always the small things
+	change_real_name(src, name)
 
 	if(stat == DEAD)
 		icon_state = "[state]Larva Dead"

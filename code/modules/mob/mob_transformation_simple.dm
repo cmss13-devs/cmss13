@@ -45,13 +45,11 @@
 	if(M.client && M.client.prefs)
 		M.client.prefs.copy_all_to(M)
 
-	if( istext(new_name) )
-		M.name = new_name
-		M.real_name = new_name
+	if(istext(new_name))
+		M.change_real_name(M, new_name)
 	else
 		if(!isXeno(M)) //Xenos have their own naming convention, leave them alone!
-			M.name = src.name
-			M.real_name = src.real_name
+			M.change_real_name(M, name)
 
 	if(delete_old_mob)
 		QDEL_IN(src, 1)

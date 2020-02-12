@@ -21,12 +21,13 @@
 	var/list/last_names_mb = list("Bates","Shaw","Hansen","Black", "Chambers", "Hall", "Gibson", "Weiss", "Waller", "Burton", "Bakin", "Rohan", "Naomichi", "Yakumo", "Yosai", "Gallagher", "Hiles", "Bourdon", "Strassman", "Palau")
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
+	var/random_name
 	if(H.gender == MALE)
-		H.real_name = "PMC [pick(first_names_m)] [pick(last_names_mb)]"
+		random_name = "PMC [pick(first_names_m)] [pick(last_names_mb)]"
 		H.f_style = "5 O'clock Shadow"
 	else
-		H.real_name = "PMC [pick(first_names_f)] [pick(last_names_mb)]"
-	H.name = H.real_name
+		random_name = "PMC [pick(first_names_f)] [pick(last_names_mb)]"
+	H.change_real_name(H, random_name)
 	H.age = rand(25,35)
 	H.h_style = "Shaved Head"
 	H.r_hair = 25
@@ -264,11 +265,12 @@
 	H.gender = pick(MALE)
 	//var/datum/preferences/A = new()
 	//A.randomize_appearance(mob)
+	var/random_name
 	if(H.gender == MALE)
-		H.real_name = "[pick(first_names_deathsquad)]"
+		random_name = "[pick(first_names_deathsquad)]"
 	else
-		H.real_name = "[pick(first_names_deathsquad)]"
-	H.name = H.real_name
+		random_name = "[pick(first_names_deathsquad)]"
+	H.change_real_name(H, random_name)
 	H.age = rand(17,45)
 
 /datum/equipment_preset/wy/deathsquad/load_gear(mob/living/carbon/human/H)

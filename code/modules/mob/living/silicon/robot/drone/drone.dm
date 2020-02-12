@@ -87,8 +87,8 @@
 
 //Redefining some robot procs...
 /mob/living/silicon/robot/drone/updatename()
-	real_name = "XP-45 Engineering Drone ([nicknumber])"
-	name = real_name
+	var/new_name = "XP-45 Engineering Drone ([nicknumber])"
+	change_real_name(src, new_name)
 
 /mob/living/silicon/robot/drone/update_icons()
 

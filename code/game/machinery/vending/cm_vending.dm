@@ -518,7 +518,7 @@
 		list("M40 HEFA grenade", 10, /obj/item/explosive/grenade/HE/frag , null, "black"),
 		list("M41A AP magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/ap , null, "black"),
 		list("M41A extended magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/extended , null, "black"),
-		list("L42A AP magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/l42mk1/ap, null, "black"),
+		list("L42A AP magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/l42a/ap, null, "black"),
 		list("M44 Heavy Speed Loader (.44)", 15, /obj/item/ammo_magazine/revolver/heavy, null, "black"),
 
 		list("EXTRAS", 0, null, null, null),
@@ -1076,7 +1076,7 @@
 		list("M40 HEFA grenade", 9, /obj/item/explosive/grenade/HE/frag , null, "black"),
 		list("M41A AP magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/ap , null, "black"),
 		list("M41A extended magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/extended , null, "black"),
-		list("L42A AP magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/l42mk1/ap, null, "black"),
+		list("L42A AP magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/l42a/ap, null, "black"),
 
 		list("ATTACHMENTS", 0, null, null, null),
 		list("Angled grip", 10, /obj/item/attachable/angledgrip, null, "black"),
@@ -1130,7 +1130,7 @@
 		list("M40 HEFA grenade", 9, /obj/item/explosive/grenade/HE/frag , null, "black"),
 		list("M41A AP magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/ap , null, "black"),
 		list("M41A extended magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/extended , null, "black"),
-		list("L42A AP magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/l42mk1/ap, null, "black"),
+		list("L42A AP magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/l42a/ap, null, "black"),
 
 		list("ATTACHMENTS", 0, null, null, null),
 		list("Angled grip", 6, /obj/item/attachable/angledgrip, null, "black"),
@@ -1230,7 +1230,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Extended M41A magazine", 15, /obj/item/ammo_magazine/rifle/extended, null, "black"),
 		list("AP M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/ap, null, "black"),
 		list("Extended M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
-		list("AP L42A magazine", 13, /obj/item/ammo_magazine/rifle/l42mk1/ap, null, "black"),
+		list("AP L42A magazine", 13, /obj/item/ammo_magazine/rifle/l42a/ap, null, "black"),
 		list("M44 Heavy Speed Loader (.44)", 15, /obj/item/ammo_magazine/revolver/heavy, null, "black"),
 
 		list("ATTACHMENTS", 0, null, null, null),
@@ -1280,7 +1280,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("AP M41A magazine", 6, /obj/item/ammo_magazine/rifle/ap, null, "black"),
 		list("Extended M41A magazine", 6, /obj/item/ammo_magazine/rifle/extended, null, "black"),
 		list("AP M39 magazine", 5, /obj/item/ammo_magazine/smg/m39/ap, null, "black"),
-		list("AP L42A Magazine (10x24mm)", 4, /obj/item/ammo_magazine/rifle/l42mk1/ap, null, "black"),
+		list("AP L42A Magazine (10x24mm)", 4, /obj/item/ammo_magazine/rifle/l42a/ap, null, "black"),
 		list("Extended M39 magazine", 5, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
 		list("Signal Flare Pack", 15, /obj/item/storage/box/m94/signal, null, "black"),
 
@@ -1887,7 +1887,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("88 Mod 4 Combat Pistol", round(scale * 15), /obj/item/weapon/gun/pistol/mod88, "black"),
 		list("M44 Combat Revolver", round(scale * 10), /obj/item/weapon/gun/revolver/m44, "black"),
 		list("M39 Submachinegun", round(scale * 15), /obj/item/weapon/gun/smg/m39, "black"),
-		list("L42 Pulse Carbine MK1", round(scale * 20), /obj/item/weapon/gun/rifle/l42mk1, "black"),
+		list("L42 Pulse Carbine MK1", round(scale * 20), /obj/item/weapon/gun/rifle/l42a, "black"),
 		list("M41A Pulse Rifle MK2", round(scale * 20), /obj/item/weapon/gun/rifle/m41a, "black"),
 		list("M37A2 Pump Shotgun", round(scale * 10), /obj/item/weapon/gun/shotgun/pump, "black"),
 
@@ -1993,7 +1993,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("M4A3 Magazine (9mm)", round(scale * 6.1), /obj/item/ammo_magazine/pistol, "black"),
 		list("M44 Speed Loader (.44)", round(scale * 5.3), /obj/item/ammo_magazine/revolver, "black"),
 		list("M39 Magazine (10x20mm)", round(scale * 7.5), /obj/item/ammo_magazine/smg/m39, "black"),
-		list("L42A magazine (10x24mm)", round(scale * 8), /obj/item/ammo_magazine/rifle/l42mk1, "black"),
+		list("L42A magazine (10x24mm)", round(scale * 8), /obj/item/ammo_magazine/rifle/l42a, "black"),
 		list("M41A Magazine (10x24mm)", round(scale * 7.8), /obj/item/ammo_magazine/rifle, "black"),
 		list("Box Of Buckshot Shells", round(scale * 2), /obj/item/ammo_magazine/shotgun/buckshot, "black"),
 		list("Box Of Flechette Shells", round(scale * 2), /obj/item/ammo_magazine/shotgun/flechette, "black"),
@@ -2002,7 +2002,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Armor-Piercing Ammunition", -1, null, null),
 		list("88 Mod 4 AP Magazine (9mm)", round(scale * 5.5), /obj/item/ammo_magazine/pistol/mod88, "black"),
 		list("M39 AP Magazine (10x20mm)", round(scale * 3.5), /obj/item/ammo_magazine/smg/m39/ap, "black"),
-		list("L42A AP Magazine (10x24mm)", round(scale * 4.5), /obj/item/ammo_magazine/rifle/l42mk1/ap, "black"),
+		list("L42A AP Magazine (10x24mm)", round(scale * 4.5), /obj/item/ammo_magazine/rifle/l42a/ap, "black"),
 		list("M41A AP Magazine (10x24mm)", round(scale * 3.5), /obj/item/ammo_magazine/rifle/ap, "black"),
 
 		list("Extended Ammunition", -1, null, null),
@@ -2029,8 +2029,8 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Magazine Box (88 Mod 4 AP x 16)", round(scale * 0.7), /obj/item/magazine_box/mod88, "black"),
 		list("Magazine Box (SU-6 x 16)", round(scale * 0.3), /obj/item/magazine_box/su6, "black"),
 		list("Magazine Box (VP78 x 16)", round(scale * 0.2), /obj/item/magazine_box/vp78, "black"),
-		list("Magazine Box (L42A x 16)", round(scale * 0.8), /obj/item/magazine_box/l42mk1, "black"),
-		list("Magazine Box (AP L42A x 16)", round(scale * 0.7), /obj/item/magazine_box/l42mk1/ap, "black"),
+		list("Magazine Box (L42A x 16)", round(scale * 0.8), /obj/item/magazine_box/l42a, "black"),
+		list("Magazine Box (AP L42A x 16)", round(scale * 0.7), /obj/item/magazine_box/l42a/ap, "black"),
 		list("Magazine Box (M39 x 12)", round(scale * 0.8), /obj/item/magazine_box/m39, "black"),
 		list("Magazine Box (AP M39 x 12)", round(scale * 0.7), /obj/item/magazine_box/m39/ap, "black"),
 		list("Magazine Box (Ext m39 x 10)", round(scale * 0.7), /obj/item/magazine_box/m39/ext, "black"),
@@ -2054,7 +2054,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 
 		list("Armor-Piercing Ammunition", -1, null, null),
 		list("M39 AP Magazine (10x20mm)", round(scale * 3), /obj/item/ammo_magazine/smg/m39/ap, "black"),
-		list("L42A AP Magazine (10x24mm)", round(scale * 3.5), /obj/item/ammo_magazine/rifle/l42mk1/ap, "black"),
+		list("L42A AP Magazine (10x24mm)", round(scale * 3.5), /obj/item/ammo_magazine/rifle/l42a/ap, "black"),
 		list("M41A AP Magazine (10x24mm)", round(scale * 3), /obj/item/ammo_magazine/rifle/ap, "black"),
 
 		list("Extended Ammunition", -1, null, null),
@@ -2303,13 +2303,13 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 	listed_products = list(
 		list("Firearms", -1, null, null),
 		list("M41A Pulse Rifle MK2", round(scale * 30), /obj/item/weapon/gun/rifle/m41a, "black"),
-		list("L42A Battle Rifle", round(scale * 10), /obj/item/weapon/gun/rifle/l42mk1, "black"),
+		list("L42A Battle Rifle", round(scale * 10), /obj/item/weapon/gun/rifle/l42a, "black"),
 		list("M39 Submachine Gun", round(scale * 30), /obj/item/weapon/gun/smg/m39, "black"),
 		list("M37A2 Pump Shotgun", round(scale * 15), /obj/item/weapon/gun/shotgun/pump, "black"),
 
 		list("Primary Ammunition", -1, null, null),
 		list("M41A Magazine (10x24mm)", round(scale * 25), /obj/item/ammo_magazine/rifle, "black"),
-		list("L42A Magazine (10x24mm)", round(scale * 15), /obj/item/ammo_magazine/rifle/l42mk1, "black"),
+		list("L42A Magazine (10x24mm)", round(scale * 15), /obj/item/ammo_magazine/rifle/l42a, "black"),
 		list("M39 Magazine (10x20mm)", round(scale * 25), /obj/item/ammo_magazine/smg/m39, "black"),
 		list("Box of shotgun slugs (12g)", round(scale * 10), /obj/item/ammo_magazine/shotgun/slugs, "black"),
 		list("Box of buckshot shells (12g)", round(scale * 10), /obj/item/ammo_magazine/shotgun/buckshot, "black"),
@@ -2350,13 +2350,13 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 	listed_products = list(
 		list("Firearms", -1, null, null),
 		list("M41A Pulse Rifle MK2", round(scale * 15), /obj/item/weapon/gun/rifle/m41a, "black"),
-		list("L42A Battle Rifle", round(scale * 5), /obj/item/weapon/gun/rifle/l42mk1, "black"),
+		list("L42A Battle Rifle", round(scale * 5), /obj/item/weapon/gun/rifle/l42a, "black"),
 		list("M39 Submachine Gun", round(scale * 15), /obj/item/weapon/gun/smg/m39, "black"),
 		list("M37A2 Pump Shotgun", round(scale * 7), /obj/item/weapon/gun/shotgun/pump, "black"),
 
 		list("Primary Ammunition", -1, null, null),
 		list("M41A Magazine (10x24mm)", round(scale * 12), /obj/item/ammo_magazine/rifle, "black"),
-		list("L42A Magazine (10x24mm)", round(scale * 7), /obj/item/ammo_magazine/rifle/l42mk1, "black"),
+		list("L42A Magazine (10x24mm)", round(scale * 7), /obj/item/ammo_magazine/rifle/l42a, "black"),
 		list("M39 Magazine (10x20mm)", round(scale * 12), /obj/item/ammo_magazine/smg/m39, "black"),
 		list("Box of shotgun slugs (12g)", round(scale * 5), /obj/item/ammo_magazine/shotgun/slugs, "black"),
 		list("Box of buckshot shells (12g)", round(scale * 5), /obj/item/ammo_magazine/shotgun/buckshot, "black"),

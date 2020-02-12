@@ -41705,10 +41705,10 @@
 /area/almayer/command/computerlab)
 "fJO" = (
 /obj/structure/table/almayer,
-/obj/item/ammo_magazine/rifle/l42mk1,
-/obj/item/ammo_magazine/rifle/l42mk1,
-/obj/item/ammo_magazine/rifle/l42mk1,
-/obj/item/weapon/gun/rifle/l42mk1,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/weapon/gun/rifle/l42a,
 /turf/open/floor/almayer{
 	icon_state = "redfull";
 	tag = "icon-redfull"
@@ -44995,10 +44995,10 @@
 /area/almayer/engineering/engine_core)
 "klZ" = (
 /obj/structure/table/almayer,
-/obj/item/ammo_magazine/rifle/l42mk1,
-/obj/item/ammo_magazine/rifle/l42mk1,
-/obj/item/ammo_magazine/rifle/l42mk1,
-/obj/item/weapon/gun/rifle/l42mk1,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/weapon/gun/rifle/l42a,
 /turf/open/floor/almayer{
 	icon_state = "redfull";
 	tag = "icon-redfull"

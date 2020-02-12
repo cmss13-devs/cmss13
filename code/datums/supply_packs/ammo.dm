@@ -151,7 +151,7 @@ AMMO
 /datum/supply_packs/ammo_l42_mag_box
 	name = "Magazine box (L42A, 16x mags)"
 	contains = list(
-					/obj/item/magazine_box/l42mk1
+					/obj/item/magazine_box/l42a
 					)
 	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/ammo
@@ -161,7 +161,7 @@ AMMO
 /datum/supply_packs/ammo_l42_mag_box_ap
 	name = "Magazine box (L42A, 16x AP mags)"
 	contains = list(
-					/obj/item/magazine_box/l42mk1/ap
+					/obj/item/magazine_box/l42a/ap
 					)
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate/ammo
@@ -370,7 +370,7 @@ AMMO
 					/obj/item/ammo_magazine/rifle/extended,
 					/obj/item/ammo_magazine/rifle/ap,
 					/obj/item/ammo_magazine/rifle/incendiary,
-					/obj/item/ammo_magazine/rifle/l42mk1/incendiary,
+					/obj/item/ammo_magazine/rifle/l42a/incendiary,
 					/obj/item/ammo_magazine/rifle/m41aMK1,
 					/obj/item/ammo_magazine/rifle/m4ra,
 					/obj/item/ammo_magazine/rifle/lmg,
@@ -394,8 +394,8 @@ AMMO
 					/obj/item/ammo_magazine/shotgun/buckshot,
 					/obj/item/ammo_magazine/shotgun/buckshot,
 					/obj/item/ammo_magazine/shotgun/incendiary,
-					/obj/item/ammo_magazine/rifle/l42mk1/ap,
-					/obj/item/ammo_magazine/rifle/l42mk1
+					/obj/item/ammo_magazine/rifle/l42a/ap,
+					/obj/item/ammo_magazine/rifle/l42a
 					)
 	cost = RO_PRICE_PRICY
 	containertype = /obj/structure/closet/crate/ammo

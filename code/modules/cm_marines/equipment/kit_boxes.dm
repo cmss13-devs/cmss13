@@ -248,12 +248,12 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	..()
 	overlays += image('icons/obj/items/pro_case.dmi', "+sniper")
 	spawn(1)
-		new /obj/item/weapon/gun/rifle/l42mk1(src)
+		new /obj/item/weapon/gun/rifle/l42a(src)
 		new /obj/item/attachable/scope(src)
 		new /obj/item/attachable/suppressor(src)
 		new /obj/item/attachable/extended_barrel(src)
-		new /obj/item/ammo_magazine/rifle/l42mk1/ap(src)
-		new /obj/item/ammo_magazine/rifle/l42mk1/ap(src)
+		new /obj/item/ammo_magazine/rifle/l42a/ap(src)
+		new /obj/item/ammo_magazine/rifle/l42a/ap(src)
 
 /obj/item/storage/box/kit/heavy_support
 	name = "\improper Forward HPR Shield Kit"

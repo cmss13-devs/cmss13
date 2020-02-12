@@ -209,7 +209,7 @@
 			new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of the ground!"),
 			SPAN_XENODANGER("You burrow out of the ground and awaken from your slumber. For the Hive!"))
 			new_xeno << sound('sound/effects/xeno_newlarva.ogg')
-			if(!ticker.mode.transfer_xeno(xeno_candidate.key, new_xeno))
+			if(!ticker.mode.transfer_xeno(xeno_candidate, new_xeno))
 				qdel(new_xeno)
 				return
 

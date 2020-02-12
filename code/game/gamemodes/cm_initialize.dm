@@ -424,24 +424,37 @@ Additional game mode variables.
 		if(isnewplayer(xeno_candidate))
 			var/mob/new_player/N = xeno_candidate
 			N.close_spawn_windows()
-		if(transfer_xeno(xeno_candidate.key, new_xeno))
+		if(transfer_xeno(xeno_candidate, new_xeno))
 			return 1
 	to_chat(xeno_candidate, "JAS01: Something went wrong, tell a coder.")
 
 /datum/game_mode/proc/transfer_xeno(var/xeno_candidate, mob/living/new_xeno)
-	if(!xeno_candidate)
-		return 0
-	if(!isXeno(new_xeno))
-		return 0
-	new_xeno.ghostize(0) //Make sure they're not getting a free respawn.
-	new_xeno.key = xeno_candidate
+	if(!xeno_candidate || !isXeno(new_xeno))
+		return FALSE
+	var/datum/mind/xeno_candidate_mind
+	if(ismind(xeno_candidate))
+		xeno_candidate_mind = xeno_candidate
+	else if(ismob(xeno_candidate))
+		var/mob/M = xeno_candidate
+		if(M.mind)
+			xeno_candidate_mind = M.mind
+		else
+			xeno_candidate_mind = new /datum/mind(M.key, M.ckey)
+			xeno_candidate_mind.active = TRUE
+			xeno_candidate_mind.current = new_xeno
+	else
+		CRASH("ERROR: transfer_xeno called without mob or mind input: [xeno_candidate]")
+
+	new_xeno.ghostize(FALSE) //Make sure they're not getting a free respawn.
+	xeno_candidate_mind.transfer_to(new_xeno)
+
+	new_xeno.mind_initialize()
+	new_xeno.mind.player_entity = setup_player_entity(xeno_candidate_mind.ckey)
+	new_xeno.statistic_tracked = FALSE
+
 	if(new_xeno.client)
 		new_xeno.client.change_view(world.view)
-	if(new_xeno.mind)
-		if(new_xeno.mind.player_entity)
-			new_xeno.track_death_calculations()
-		new_xeno.statistic_tracked = FALSE
-		new_xeno.mind.player_entity = setup_player_entity(new_xeno.ckey)
+
 	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
 	log_admin("[new_xeno.key] has joined as [new_xeno].")
 	if(isXeno(new_xeno)) //Dear lord
@@ -449,7 +462,7 @@ Additional game mode variables.
 		X.generate_name()
 		if(X.is_ventcrawling)
 			X.update_pipe_icons(X.loc) //If we are in a vent, fetch a fresh vent map
-	return 1
+	return TRUE
 
 /datum/game_mode/proc/transform_queen(datum/mind/ghost_mind)
 	var/mob/living/original = ghost_mind.current

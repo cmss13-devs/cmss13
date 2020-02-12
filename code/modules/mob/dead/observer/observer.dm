@@ -77,11 +77,6 @@
 		spawn(20)
 			to_chat(src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>")
 			return
-	
-	if(round_statistics)
-		round_statistics.update_panel_data()
-	if(client && client.player_entity)
-		client.player_entity.update_panel_data(round_statistics)
 
 /mob/dead/observer/Dispose()
 	following = null
@@ -139,14 +134,21 @@ Works together with spawning an observer, noted above.
 
 	var/mob/dead/observer/ghost = new(src)	//Transfer safety to observer spawning proc.
 
+
 	ghost.can_reenter_corpse = can_reenter_corpse
 	ghost.timeofdeath = timeofdeath //BS12 EDIT
 	ghost.key = key
 	ghost.mind = mind
-	mind = null
 
 	if(!can_reenter_corpse)
-		away_timer = 300 //they'll never come back, so we can max out the timer right away.
+		away_timer = 300 //They'll never come back, so we can max out the timer right away.
+		if(round_statistics)
+			round_statistics.update_panel_data()
+		track_death_calculations() //This needs to be done before mind is nullified
+	else if(ghost.mind && ghost.mind.player_entity) //Use else here because track_death_calculations() already calls this.
+		ghost.mind.player_entity.update_panel_data(round_statistics)
+
+	mind = null
 
 	if(ghost.client)
 		ghost.client.change_view(world.view) //reset view range to default
@@ -189,19 +191,16 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(stat == DEAD)
 		if(mind && mind.player_entity)
 			mind.player_entity.update_panel_data(round_statistics)
-		ghostize(1)
+		ghostize(TRUE)
 	else
 		var/response = alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)","Are you sure you want to ghost?","Ghost","Stay in body")
 		if(response != "Ghost")	return	//didn't want to ghost after-all
 		AdjustSleeping(2) // Sleep so you will be properly recognized as ghosted
 		var/turf/location = get_turf(src)
-		track_death_calculations()
-		if(mind && mind.player_entity)
-			mind.player_entity.update_panel_data(round_statistics)
 		if(location) //to avoid runtime when a mob ends up in nullspace
 			msg_admin_niche("[key_name_admin(usr)] has ghosted. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
 		log_game("[key_name_admin(usr)] has ghosted.")
-		var/mob/dead/observer/ghost = ghostize(0)						//0 parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
+		var/mob/dead/observer/ghost = ghostize(FALSE) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		if(ghost) //Could be null if no key
 			ghost.timeofdeath = timeofdeath
 

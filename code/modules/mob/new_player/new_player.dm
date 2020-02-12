@@ -122,10 +122,9 @@
 			new_player_panel_proc(TRUE)
 
 		if("observe")
-
 			if(alert(src,"Are you sure you wish to observe? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!","Player Setup","Yes","No") == "Yes")
 				if(!client)	return 1
-				var/mob/dead/observer/observer = new()
+				var/mob/dead/observer/observer = ghostize(FALSE)
 
 				spawning = TRUE
 

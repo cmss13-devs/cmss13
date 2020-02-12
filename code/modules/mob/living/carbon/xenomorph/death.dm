@@ -44,7 +44,7 @@
 					if(players_with_xeno_pref && players_with_xeno_pref.len)	
 						var/client/xeno_candidate = pick(players_with_xeno_pref)
 						var/mob/living/carbon/Xenomorph/Larva/new_xeno = new /mob/living/carbon/Xenomorph/Larva(larva_spawn)
-						if(!ticker.mode.transfer_xeno(xeno_candidate.key, new_xeno))
+						if(!ticker.mode.transfer_xeno(xeno_candidate, new_xeno))
 							qdel(new_xeno)
 							return
 						new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of the ground!"),

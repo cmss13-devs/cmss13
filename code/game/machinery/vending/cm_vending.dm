@@ -2386,6 +2386,134 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 	)
 
 
+// Medical vendors
+/obj/structure/machinery/cm_vending/sorted/medical
+	name = "\improper WestonMed Plus"
+	desc = "Medical Pharmaceutical dispenser. Provided by Weston-Yamada Pharmaceuticals Division(TM)."
+	icon_state = "med"
+	req_access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY)
+
+/obj/structure/machinery/cm_vending/sorted/medical/New()
+	..()
+	cm_vending_vendors.Add(src)//this is needed for cm_initialize and needs changing
+
+/obj/structure/machinery/cm_vending/sorted/medical/populate_product_list(var/scale)
+	listed_products = list(
+		list("Autoinjectors", -1, null, null),
+		list("Bicaridine autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/bicaridine, "black"),
+		list("Dexalin Plus autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/dexalinp, "black"),
+		list("Epinephrine autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/adrenaline, "black"),
+		list("Inaprovaline autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/inaprovaline, "black"),
+		list("Kelotane autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/kelotane, "black"),
+		list("Oxycodone autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/oxycodone, "black"),
+		list("Quick Clot autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/quickclot, "black"),
+		list("Suxamorycin autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/suxamorycin, "black"),
+		list("Tramadol autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/tramadol, "black"),
+		list("Tricordrazine autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/tricordrazine, "black"),
+
+		list("Bottles", -1, null, null),
+		list("Bicaridine bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/bicaridine, "black"),
+		list("Dylovene bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/antitoxin, "black"),
+		list("Dexalin bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/dexalin, "black"),
+		list("Inaprovaline bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/inaprovaline, "black"),
+		list("Kelotane bottle", round(scale * 5), 	/obj/item/reagent_container/glass/bottle/kelotane, "black"),
+		list("Oxycodone bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/oxycodone, "black"),
+		list("Peridaxon bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/peridaxon, "black"),
+		list("Suxamorycin bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/suxamorycin, "black"),
+		list("Tramadol bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/tramadol, "black"),
+
+		list("Devices", -1, null, null),
+		list("Emergency defibrillator", round(scale * 3), /obj/item/device/defibrillator, "black"),
+		list("Health Analyzer", round(scale * 5), /obj/item/device/healthanalyzer, "black"),
+
+		list("Equipment", -1, null, null),
+		list("M276 pattern medical storage rig", round(scale * 2), /obj/item/storage/belt/medical, "black"),
+		list("Medical HUD Glasses", round(scale * 3), /obj/item/clothing/glasses/hud/health, "black"),
+	
+		list("Field Supplies", -1, null, null),
+		list("Advanced burn kit", round(scale * 7), /obj/item/stack/medical/advanced/ointment, "black"),
+		list("Advanced trauma kit", round(scale * 7), /obj/item/stack/medical/advanced/bruise_pack, "black"),
+		list("Hypospray", round(scale * 2), /obj/item/reagent_container/hypospray, "black"),
+		list("Ointment", round(scale * 7), /obj/item/stack/medical/ointment, "black"),
+		list("Roll of gauze", round(scale * 7), /obj/item/stack/medical/bruise_pack, "black"),
+		list("Splints", round(scale * 7), /obj/item/stack/medical/splint, "black"),
+		list("Stasis bag", round(scale * 2), /obj/item/bodybag/cryobag, "black"),
+		list("Syringe", round(scale * 7), /obj/item/reagent_container/syringe, "black")
+	)
+
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry
+	name = "\improper WestonChem Plus"
+	desc = "Medical chemistry dispenser. Provided by Weston-Yamada Pharmaceuticals Division(TM)."
+
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry/populate_product_list(var/scale)
+	listed_products = list(
+		list("Bottles", -1, null, null),
+		list("Bicaridine bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/bicaridine, "black"),
+		list("Dylovene bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/antitoxin, "black"),
+		list("Dexalin bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/dexalin, "black"),
+		list("Inaprovaline bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/inaprovaline, "black"),
+		list("Kelotane bottle", round(scale * 5), 	/obj/item/reagent_container/glass/bottle/kelotane, "black"),
+		list("Oxycodone bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/oxycodone, "black"),
+		list("Peridaxon bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/peridaxon, "black"),
+		list("Suxamorycin bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/suxamorycin, "black"),
+		list("Tramadol bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/tramadol, "black"),
+
+		list("Field Supplies", -1, null, null),
+		list("Beaker (60 units)", round(scale * 3), /obj/item/reagent_container/glass/beaker, "black"),
+		list("Beaker, Large (120 units)", round(scale * 3), /obj/item/reagent_container/glass/beaker/large, "black"),
+		list("Box of pill bottles", round(scale * 2), /obj/item/storage/box/pillbottles, "black"),
+		list("Dropper", round(scale * 3), /obj/item/reagent_container/dropper, "black"),
+		list("Syringe", round(scale * 7), /obj/item/reagent_container/syringe, "black")
+	)
+
+/obj/structure/machinery/cm_vending/sorted/medical/antag
+	name = "Medical Equipment Vendor"
+	desc = "A vending machine dispensing various pieces of medical equipment."
+	req_access = list(ACCESS_ILLEGAL_PIRATE)
+
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed
+	name = "\improper MarineMed"
+	icon_state = "marinemed"
+	req_access = list()
+
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/populate_product_list(var/scale)
+	listed_products = list(
+		list("Autoinjectors", -1, null, null),
+		list("First-aid autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/skillless, "black"),
+		list("Pain-stop autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, "black"),
+		
+		list("Devices", -1, null, null),
+		list("Health Analyzer", round(scale * 3), /obj/item/device/healthanalyzer, "black"),
+	
+		list("Field Supplies", -1, null, null),
+		list("Fire extinguisher (portable)", 5, /obj/item/tool/extinguisher/mini, "black"),
+		list("Ointment", round(scale * 7), /obj/item/stack/medical/ointment, "black"),
+		list("Roll of gauze", round(scale * 7), /obj/item/stack/medical/bruise_pack, "black"),
+		list("Splints", round(scale * 7), /obj/item/stack/medical/splint, "black")
+	)
+
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag
+	req_access = list(ACCESS_ILLEGAL_PIRATE)
+
+/obj/structure/machinery/cm_vending/sorted/medical/blood
+	name = "\improper MM Blood Dispenser"
+	desc = "Marine Med brand Blood Pack Dispensery"
+	icon_state = "bloodvendor"
+
+/obj/structure/machinery/cm_vending/sorted/medical/blood/populate_product_list(var/scale)
+	listed_products = list(
+		list("Blood types", -1, null, null),
+		list("A+ blood pack", 5, /obj/item/reagent_container/blood/APlus, "black"),
+		list("A- blood pack", 5, /obj/item/reagent_container/blood/AMinus, "black"),
+		list("B+ blood pack", 5, /obj/item/reagent_container/blood/BPlus, "black"),
+		list("B- blood pack", 5, /obj/item/reagent_container/blood/BMinus, "black"),
+		list("O+ blood pack", 5, /obj/item/reagent_container/blood/OPlus, "black"),
+		list("O- blood pack", 5, /obj/item/reagent_container/blood/OMinus, "black"),
+
+		list("Miscellaneous", -1, null, null),
+		list("Empty blood pack", 5, /obj/item/reagent_container/blood, "black")
+	)
+
 #undef MARINE_CAN_BUY_UNIFORM
 #undef MARINE_CAN_BUY_SHOES
 #undef MARINE_CAN_BUY_HELMET

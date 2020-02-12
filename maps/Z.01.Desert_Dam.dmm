@@ -40431,7 +40431,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_south)
 "cjn" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor{
 	tag = "icon-whitepurplecorner (EAST)";
 	icon_state = "whitepurplecorner";
@@ -44479,21 +44479,21 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "cuY" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/prison{
 	icon_state = "whitered";
 	dir = 9
 	},
 /area/desert_dam/building/medical/primary_storage)
 "cuZ" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/prison{
 	icon_state = "whitered";
 	dir = 1
 	},
 /area/desert_dam/building/medical/primary_storage)
 "cva" = (
-/obj/structure/machinery/vending/MarineMed/Blood,
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/floor/prison{
 	icon_state = "whitered";
 	dir = 5
@@ -48000,7 +48000,7 @@
 	},
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "cEy" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
 	icon_state = "whitegreenfull";
@@ -48008,7 +48008,7 @@
 	},
 /area/desert_dam/building/medical/treatment_room)
 "cEz" = (
-/obj/structure/machinery/vending/MarineMed/Blood,
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
 	icon_state = "whitegreenfull";

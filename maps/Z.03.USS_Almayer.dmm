@@ -6341,7 +6341,7 @@
 	},
 /area/almayer/medical/medical_science)
 "apU" = (
-/obj/structure/machinery/vending/MarineMed/Blood,
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /obj/structure/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24
@@ -7146,7 +7146,7 @@
 	},
 /area/almayer/hallways/stern_hallway)
 "arX" = (
-/obj/structure/machinery/vending/medical/chemistry,
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -19182,8 +19182,6 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/table/almayer,
-/obj/item/tool/hand_labeler,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
@@ -19749,7 +19747,7 @@
 	},
 /area/almayer/medical/chemistry)
 "bek" = (
-/obj/structure/machinery/vending/MarineMed,
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
@@ -19770,7 +19768,7 @@
 	},
 /area/almayer/medical/lower_medical)
 "bep" = (
-/obj/structure/machinery/vending/MarineMed,
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -20910,15 +20908,11 @@
 /area/shuttle/drop1/sulaco)
 "biq" = (
 /obj/structure/table/almayer,
-/obj/item/reagent_container/glass/beaker/large,
-/obj/item/reagent_container/glass/beaker/large,
-/obj/item/reagent_container/glass/beaker/large,
-/obj/item/reagent_container/glass/beaker,
-/obj/item/reagent_container/glass/beaker,
-/obj/item/reagent_container/glass/beaker,
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/item/tool/hand_labeler,
+/obj/item/tool/hand_labeler,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
@@ -22306,11 +22300,6 @@
 /area/almayer/shipboard/brig)
 "bnj" = (
 /obj/structure/table/almayer,
-/obj/item/device/mass_spectrometer,
-/obj/item/device/mass_spectrometer,
-/obj/item/reagent_container/dropper,
-/obj/item/reagent_container/dropper,
-/obj/item/reagent_container/dropper,
 /obj/item/reagent_container/glass/beaker/cryoxadone,
 /obj/item/reagent_container/glass/beaker/cryoxadone,
 /turf/open/floor/almayer{
@@ -22992,8 +22981,6 @@
 	},
 /area/almayer/medical/lower_medical)
 "bpz" = (
-/obj/structure/table/almayer,
-/obj/item/tool/hand_labeler,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -25021,7 +25008,7 @@
 /obj/structure/machinery/power/apc/almayer{
 	dir = 4
 	},
-/obj/structure/machinery/vending/MarineMed/Blood,
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
@@ -27113,7 +27100,7 @@
 	pixel_x = -28;
 	req_access = list(5)
 	},
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
@@ -45653,7 +45640,7 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/navigation)
 "lfs" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
@@ -47267,7 +47254,7 @@
 	},
 /area/almayer/medical/hydroponics)
 "mYj" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
 	},
@@ -48054,7 +48041,7 @@
 	},
 /area/almayer/living/gym)
 "nUx" = (
-/obj/structure/machinery/vending/MarineMed/Blood,
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -52244,7 +52231,7 @@
 	},
 /area/almayer/shipboard/port_point_defense)
 "tvI" = (
-/obj/structure/machinery/vending/MarineMed/Blood,
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
@@ -52599,7 +52586,7 @@
 	},
 /area/almayer/medical/medical_science)
 "tQY" = (
-/obj/structure/machinery/vending/MarineMed,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
@@ -52990,7 +52977,7 @@
 	},
 /area/almayer/living/cafeteria_port)
 "uqd" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner";
@@ -55577,7 +55564,7 @@
 	},
 /area/almayer/shipboard/chief_mp_office)
 "xDn" = (
-/obj/structure/machinery/vending/MarineMed/Blood,
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 4;
 	name = "ship-grade camera";
@@ -83417,7 +83404,7 @@ bnT
 oNF
 tQY
 bJa
-lfs
+tQY
 bvs
 btY
 cXj

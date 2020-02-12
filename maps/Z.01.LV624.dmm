@@ -4584,7 +4584,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand1)
 "aoq" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "whitebluecorner";
@@ -5078,7 +5078,7 @@
 	},
 /area/lv624/ground/jungle6)
 "apv" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /obj/structure/machinery/light{
 	dir = 1
 	},

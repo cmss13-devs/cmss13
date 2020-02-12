@@ -3778,7 +3778,7 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
 "kS" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -6963,7 +6963,7 @@
 	name = "\improper Medbay Shutters";
 	opacity = 0
 	},
-/obj/structure/machinery/vending/MarineMed/antag,
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag,
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
@@ -6981,7 +6981,7 @@
 	name = "\improper Medbay Shutters";
 	opacity = 0
 	},
-/obj/structure/machinery/vending/medical/antag,
+/obj/structure/machinery/cm_vending/sorted/medical/antag,
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
@@ -7402,7 +7402,7 @@
 	},
 /area/adminlevel/bunker01/security)
 "sq" = (
-/obj/structure/machinery/vending/medical/antag,
+/obj/structure/machinery/cm_vending/sorted/medical/antag,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -7623,7 +7623,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "sQ" = (
-/obj/structure/machinery/vending/MarineMed/Blood/antag,
+/obj/structure/machinery/cm_vending/sorted/medical/blood/antag,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (NORTH)";
 	icon_state = "sterile_green_side";
@@ -7916,7 +7916,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "tm" = (
-/obj/structure/machinery/vending/MarineMed/antag,
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -7927,7 +7927,7 @@
 	pixel_x = 0;
 	pixel_y = -32
 	},
-/obj/structure/machinery/vending/medical/antag,
+/obj/structure/machinery/cm_vending/sorted/medical/antag,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -8216,7 +8216,7 @@
 	},
 /area/adminlevel/ert_station)
 "zk" = (
-/obj/structure/machinery/vending/MarineMed{
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed{
 	req_access = null
 	},
 /turf/open/floor/almayer{
@@ -8502,7 +8502,7 @@
 	},
 /area/tdome/tdome1)
 "En" = (
-/obj/structure/machinery/vending/medical{
+/obj/structure/machinery/cm_vending/sorted/medical{
 	req_access = null
 	},
 /turf/open/floor/almayer{
@@ -9049,7 +9049,7 @@
 	},
 /area/adminlevel/ert_station)
 "Od" = (
-/obj/structure/machinery/vending/medical/chemistry{
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry{
 	req_access = null
 	},
 /turf/open/floor/almayer{
@@ -9393,7 +9393,7 @@
 	},
 /area/adminlevel/ert_station)
 "Ud" = (
-/obj/structure/machinery/vending/MarineMed{
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed{
 	req_access = null
 	},
 /turf/open/floor/almayer{
@@ -9600,7 +9600,7 @@
 	},
 /area/adminlevel/ert_station)
 "YJ" = (
-/obj/structure/machinery/vending/MarineMed/Blood{
+/obj/structure/machinery/cm_vending/sorted/medical/blood{
 	req_access = null
 	},
 /turf/open/floor/almayer{

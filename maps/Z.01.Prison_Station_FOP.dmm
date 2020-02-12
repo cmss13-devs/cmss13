@@ -8412,7 +8412,7 @@
 	},
 /area/prison/medbay)
 "att" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
 	icon_state = "whitegreenfull";
@@ -9946,7 +9946,7 @@
 	},
 /area/prison/medbay)
 "axn" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "whitegreen"

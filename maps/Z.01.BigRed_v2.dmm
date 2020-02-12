@@ -7552,7 +7552,7 @@
 	},
 /area/bigredv2/outside/medical)
 "atp" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /obj/structure/machinery/light{
 	tag = "icon-tube1 (WEST)";
 	icon_state = "tube1";
@@ -7563,7 +7563,7 @@
 	},
 /area/bigredv2/outside/medical)
 "atq" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -9252,7 +9252,7 @@
 	},
 /area/bigredv2/outside/nw)
 "axx" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor{
 	tag = "icon-whitegreen (EAST)";
 	icon_state = "whitegreen";
@@ -9502,7 +9502,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ayh" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor{
 	tag = "icon-whitegreen (NORTHWEST)";
 	icon_state = "whitegreen";
@@ -9789,7 +9789,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ayR" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor{
 	tag = "icon-whitegreen (NORTH)";
 	icon_state = "whitegreen";
@@ -10935,7 +10935,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aBJ" = (
-/obj/structure/machinery/vending/MarineMed/Blood,
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/floor{
 	tag = "icon-whitegreen (NORTHEAST)";
 	icon_state = "whitegreen";
@@ -15787,13 +15787,13 @@
 	},
 /area/bigredv2/outside/virology)
 "aNe" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor{
 	icon_state = "white"
 	},
 /area/bigredv2/outside/virology)
 "aNf" = (
-/obj/structure/machinery/vending/MarineMed/Blood,
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -28278,7 +28278,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bwZ" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor{
 	tag = "icon-darkyellow2 (NORTH)";
 	icon_state = "darkyellow2";

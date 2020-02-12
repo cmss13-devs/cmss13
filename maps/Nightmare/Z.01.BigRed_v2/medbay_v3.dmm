@@ -1019,7 +1019,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cF" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor{
 	tag = "icon-whitegreen (NORTH)";
 	icon_state = "whitegreen";
@@ -1238,7 +1238,7 @@
 	},
 /area/bigredv2/outside/medical)
 "dh" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1605,7 +1605,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ea" = (
-/obj/structure/machinery/vending/MarineMed/Blood,
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},

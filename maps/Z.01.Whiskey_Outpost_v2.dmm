@@ -307,7 +307,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "aP" = (
-/obj/structure/machinery/vending/MarineMed,
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed,
 /obj/effect/decal/medical_decals{
 	tag = "icon-docstriping";
 	icon_state = "docstripingdir";
@@ -1437,7 +1437,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/bunker)
 "dH" = (
-/obj/structure/machinery/vending/MarineMed,
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed,
 /obj/effect/decal/medical_decals{
 	tag = "icon-docstriping";
 	icon_state = "docstripingdir";
@@ -6235,7 +6235,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "pq" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor{
 	tag = "icon-whitegreen (SOUTHWEST)";
 	icon_state = "whitegreen";
@@ -6243,7 +6243,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "pr" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor{
 	tag = "icon-whitegreencorner";
 	icon_state = "whitegreen";
@@ -6251,7 +6251,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "ps" = (
-/obj/structure/machinery/vending/MarineMed/Blood,
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/floor{
 	tag = "icon-whitegreen (SOUTHEAST)";
 	icon_state = "whitegreen";
@@ -10527,7 +10527,7 @@
 	},
 /area/whiskey_outpost/inside/hospital/triage)
 "zF" = (
-/obj/structure/machinery/vending/MarineMed,
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed,
 /turf/open/floor{
 	tag = "icon-whitegreencorner";
 	icon_state = "whitegreen";
@@ -10543,7 +10543,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/one)
 "zH" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor{
 	tag = "icon-whitegreencorner";
 	icon_state = "whitegreen";
@@ -12866,7 +12866,7 @@
 	},
 /area/whiskey_outpost/inside/hospital/triage)
 "FK" = (
-/obj/structure/machinery/vending/MarineMed/Blood,
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /obj/structure/machinery/light/small,
 /turf/open/floor{
 	tag = "icon-whitegreencorner";

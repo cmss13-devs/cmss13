@@ -9687,7 +9687,7 @@
 	},
 /area/corsat/sigma/airlock/south)
 "aAC" = (
-/obj/structure/machinery/vending/medical{
+/obj/structure/machinery/cm_vending/sorted/medical{
 	req_access = list(100)
 	},
 /turf/open/floor/corsat{
@@ -12426,7 +12426,7 @@
 	},
 /area/corsat/omega/hallways)
 "aHo" = (
-/obj/structure/machinery/vending/MarineMed/Blood{
+/obj/structure/machinery/cm_vending/sorted/medical/blood{
 	req_access = list(100)
 	},
 /turf/open/floor/corsat{
@@ -29320,7 +29320,7 @@
 	},
 /area/corsat/gamma/medbay)
 "bAg" = (
-/obj/structure/machinery/vending/medical,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "greenwhite"
@@ -29349,7 +29349,7 @@
 	},
 /area/corsat/omega/complex)
 "bAk" = (
-/obj/structure/machinery/vending/medical{
+/obj/structure/machinery/cm_vending/sorted/medical{
 	req_access = list(100)
 	},
 /turf/open/floor/corsat{
@@ -30776,7 +30776,7 @@
 /area/corsat/omega/control)
 "bEl" = (
 /obj/structure/machinery/light,
-/obj/structure/machinery/vending/medical{
+/obj/structure/machinery/cm_vending/sorted/medical{
 	req_access = list(100)
 	},
 /turf/open/floor/corsat{
@@ -54564,7 +54564,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/vending/medical{
+/obj/structure/machinery/cm_vending/sorted/medical{
 	req_access = list(100)
 	},
 /turf/open/floor/corsat{
@@ -59963,7 +59963,7 @@
 	},
 /area/corsat/gamma/hangar/security)
 "spP" = (
-/obj/structure/machinery/vending/medical{
+/obj/structure/machinery/cm_vending/sorted/medical{
 	req_access = list(100)
 	},
 /turf/open/floor/corsat{
@@ -67384,7 +67384,7 @@
 	},
 /area/corsat/sigma/hangar/monorail/control)
 "xMy" = (
-/obj/structure/machinery/vending/medical{
+/obj/structure/machinery/cm_vending/sorted/medical{
 	req_access = list(100)
 	},
 /turf/open/floor/corsat{

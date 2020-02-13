@@ -1127,16 +1127,18 @@
 		if(!target.caste.can_be_queen_healed)
 			to_chat(X, SPAN_XENOWARNING("This caste cannot be healed!"))
 			return
-		if(target.stat != DEAD)
+		if(target.stat != DEAD && (!target.caste || target.caste.fire_immune || target.fire_stacks <= 0))
 			if(target.health < target.maxHealth)
 				if(X.check_plasma(plasma_cost))
 					X.use_plasma(plasma_cost)
 					target.gain_health(200)
 					X.queen_ability_cooldown = world.time + 150 //15 seconds
 					to_chat(X, SPAN_XENONOTICE("You channel your plasma to heal [target]'s wounds."))
+					to_chat(target, SPAN_XENONOTICE("You feel a surge of energy rejuvenate you!"))
 			else
-
 				to_chat(X, SPAN_WARNING("[target] is at full health."))
+		else
+			to_chat(X, SPAN_WARNING("[target] cannot be healed!"))
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the xeno you want to give healing to."))
 

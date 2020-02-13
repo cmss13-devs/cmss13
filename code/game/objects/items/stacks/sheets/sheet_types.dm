@@ -203,10 +203,10 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 		new/datum/stack_recipe("Magazine box (AP M39)", /obj/item/magazine_box/m39/ap/empty), \
 		new/datum/stack_recipe("Magazine box (Ext M39)", /obj/item/magazine_box/m39/ext/empty), \
 		new/datum/stack_recipe("Magazine box (Incen M39)", /obj/item/magazine_box/m39/incen/empty), \
-		new/datum/stack_recipe("Magazine box (L42A)", /obj/item/magazine_box/l42mk1/empty), \
-		new/datum/stack_recipe("Magazine box (AP L42A)", /obj/item/magazine_box/l42mk1/ap/empty), \
-		new/datum/stack_recipe("Magazine box (Ext L42A)", /obj/item/magazine_box/l42mk1/ext/empty), \
-		new/datum/stack_recipe("Magazine box (Incen L42A)", /obj/item/magazine_box/l42mk1/incen/empty), \
+		new/datum/stack_recipe("Magazine box (L42A)", /obj/item/magazine_box/l42a/empty), \
+		new/datum/stack_recipe("Magazine box (AP L42A)", /obj/item/magazine_box/l42a/ap/empty), \
+		new/datum/stack_recipe("Magazine box (Ext L42A)", /obj/item/magazine_box/l42a/ext/empty), \
+		new/datum/stack_recipe("Magazine box (Incen L42A)", /obj/item/magazine_box/l42a/incen/empty), \
 		new/datum/stack_recipe("Magazine box (M41A)", /obj/item/magazine_box/empty), \
 		new/datum/stack_recipe("Magazine box (AP M41A)", /obj/item/magazine_box/ap/empty), \
 		new/datum/stack_recipe("Magazine box (Ext M41A)", /obj/item/magazine_box/ext/empty), \

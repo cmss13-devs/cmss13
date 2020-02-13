@@ -518,8 +518,8 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/quickfire/New()
 	..()
-	accuracy_mod = -config.low_hit_accuracy_mult
-	scatter_mod = config.min_scatter_value
+	accuracy_mod = -config.hmed_hit_accuracy_mult
+	scatter_mod = config.mlow_scatter_value
 	delay_mod = -config.mlow_fire_delay
 	burst_mod = -config.min_burst_value
 	accuracy_unwielded_mod = -config.med_hit_accuracy_mult
@@ -665,7 +665,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "B8 Smart-Scope"
 	icon_state = "iffbarrel"
 	attach_icon = "iffbarrel_a"
-	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. Due to the calculations involved, it only attaches to the L42MK1 Pulse Carbine and the M44 Magnum."
+	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. Due to the calculations involved, it only attaches to the L42A Pulse Carbine and the M44 Magnum."
 	slot = "rail"
 	zoom_offset = 6
 	zoom_viewsize = 7

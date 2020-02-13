@@ -488,53 +488,53 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/magazine_box/m39/le/empty
 	spawn_full = 0
 
-//-----------------------L42MK1 Carbine Mag Boxes-----------------------
+//-----------------------l42a Carbine Mag Boxes-----------------------
 
-/obj/item/magazine_box/l42mk1
+/obj/item/magazine_box/l42a
 	name = "magazine box (L42A x 16)"
 	icon_state = "mag_box_l42_closed"
 	icon_base_name = "mag_box_l42"
 	num_of_magazines = 16
-	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1
+	magazine_type = /obj/item/ammo_magazine/rifle/l42a
 
-/obj/item/magazine_box/l42mk1/empty
+/obj/item/magazine_box/l42a/empty
 	spawn_full = 0
 
-/obj/item/magazine_box/l42mk1/ap
+/obj/item/magazine_box/l42a/ap
 	name = "magazine box (AP L42A x 16)"
 	icon_state = "mag_box_l42_ap_closed"
 	icon_base_name = "mag_box_l42_ap"
-	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1/ap
+	magazine_type = /obj/item/ammo_magazine/rifle/l42a/ap
 
-/obj/item/magazine_box/l42mk1/ap/empty
+/obj/item/magazine_box/l42a/ap/empty
 	spawn_full = 0
 
-/obj/item/magazine_box/l42mk1/le
+/obj/item/magazine_box/l42a/le
 	name = "magazine box (LE L42A x 16)"
 	icon_state = "mag_box_l42_le_closed"
 	icon_base_name = "mag_box_l42_le"
-	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1/le
+	magazine_type = /obj/item/ammo_magazine/rifle/l42a/le
 
-/obj/item/magazine_box/l42mk1/le/empty
+/obj/item/magazine_box/l42a/le/empty
 	spawn_full = 0
 
-/obj/item/magazine_box/l42mk1/ext
+/obj/item/magazine_box/l42a/ext
 	name = "magazine box (Ext L42A x 12)"
 	icon_state = "mag_box_l42_ext_closed"
 	icon_base_name = "mag_box_l42_ext"
 	num_of_magazines = 12
-	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1/extended
+	magazine_type = /obj/item/ammo_magazine/rifle/l42a/extended
 
-/obj/item/magazine_box/l42mk1/ext/empty
+/obj/item/magazine_box/l42a/ext/empty
 	spawn_full = 0
 
-/obj/item/magazine_box/l42mk1/incen
+/obj/item/magazine_box/l42a/incen
 	name = "magazine box (Incen L42A x 16)"
 	icon_state = "mag_box_l42_incen_closed"
 	icon_base_name = "mag_box_l42_incen"
-	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1/incendiary
+	magazine_type = /obj/item/ammo_magazine/rifle/l42a/incendiary
 
-/obj/item/magazine_box/l42mk1/incen/empty
+/obj/item/magazine_box/l42a/incen/empty
 	spawn_full = 0
 
 //-----------------------M16 Rifle Mag Box-----------------------
@@ -712,7 +712,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/big_ammo_box
 	name = "rifle ammunition box (10x24mm)"
-	desc = "A 10x24mm ammunition box. Used to refill M41A MK1, MK2, L42MK1 and M41AE2 HPR magazines. It comes with a leather strap."
+	desc = "A 10x24mm ammunition box. Used to refill M41A MK1, MK2, L42A and M41AE2 HPR magazines. It comes with a leather strap."
 	w_class = SIZE_HUGE
 	icon = 'icons/obj/items/ammo_box.dmi'
 	icon_state = "big_ammo_box"
@@ -799,7 +799,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/big_ammo_box/ap
 	name = "rifle ammunition box (10x24mm AP)"
-	desc = "A 10x24mm armor-piercing ammunition box. Used to refill M41A MK2 and L42MK1 AP magazines. It comes with a leather strap."
+	desc = "A 10x24mm armor-piercing ammunition box. Used to refill M41A MK2 and L42A AP magazines. It comes with a leather strap."
 	icon_state = "big_ammo_box_ap"
 	base_icon_state = "big_ammo_box_ap"
 	item_state = "big_ammo_box"
@@ -807,7 +807,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/big_ammo_box/le
 	name = "rifle ammunition box (10x24mm LE)"
-	desc = "A 10x24mm armor-shredding ammunition box. Used to refill M41A MK2 and L42MK1 LE magazines. It comes with a leather strap."
+	desc = "A 10x24mm armor-shredding ammunition box. Used to refill M41A MK2 and L42A LE magazines. It comes with a leather strap."
 	icon_state = "big_ammo_box_le"
 	base_icon_state = "big_ammo_box_le"
 	item_state = "big_ammo_box"
@@ -815,7 +815,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/big_ammo_box/incen
 	name = "rifle ammunition box (10x24mm Incen)"
-	desc = "A 10x24mm incendiary ammunition box. Used to refill M41A MK2 and L42MK1 incendiary magazines. It comes with a leather strap."
+	desc = "A 10x24mm incendiary ammunition box. Used to refill M41A MK2 and L42A incendiary magazines. It comes with a leather strap."
 	icon_state = "big_ammo_box_incen"
 	base_icon_state = "big_ammo_box_incen"
 	item_state = "big_ammo_box"

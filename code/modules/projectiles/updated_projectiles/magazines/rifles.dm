@@ -141,54 +141,54 @@
 //-------------------------------------------------------
 //USCM L42A Battle Rifle
 
-/obj/item/ammo_magazine/rifle/l42mk1
+/obj/item/ammo_magazine/rifle/l42a
 	name = "\improper L42A magazine (10x24mm)"
 	desc = "A 10mm battle rifle magazine."
 	caliber = "10x24mm"
 	icon_state = "l42mk1"
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 25
-	gun_type = /obj/item/weapon/gun/rifle/l42mk1
+	gun_type = /obj/item/weapon/gun/rifle/l42a
 	w_class = SIZE_MEDIUM
 
-/obj/item/ammo_magazine/rifle/l42mk1/ap
+/obj/item/ammo_magazine/rifle/l42a/ap
 	name = "\improper L42A AP magazine (10x24mm)"
 	desc = "A 10mm battle rifle armor piercing magazine."
 	caliber = "10x24mm"
 	icon_state = "l42mk1_ap"
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	max_rounds = 25
-	gun_type = /obj/item/weapon/gun/rifle/l42mk1
+	gun_type = /obj/item/weapon/gun/rifle/l42a
 	w_class = SIZE_MEDIUM
 
-/obj/item/ammo_magazine/rifle/l42mk1/le
+/obj/item/ammo_magazine/rifle/l42a/le
 	name = "\improper L42A LE magazine (10x24mm)"
 	desc = "A 10mm battle rifle armor shredding magazine."
 	caliber = "10x24mm"
 	icon_state = "l42mk1_le"
 	default_ammo = /datum/ammo/bullet/rifle/le
 	max_rounds = 25
-	gun_type = /obj/item/weapon/gun/rifle/l42mk1
+	gun_type = /obj/item/weapon/gun/rifle/l42a
 	w_class = SIZE_MEDIUM
 
-/obj/item/ammo_magazine/rifle/l42mk1/extended
+/obj/item/ammo_magazine/rifle/l42a/extended
 	name = "\improper L42A extended magazine (10x24mm)"
 	desc = "A 10mm battle rifle extended magazine."
 	caliber = "10x24mm"
 	icon_state = "l42mk1_extended"
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 35
-	gun_type = /obj/item/weapon/gun/rifle/l42mk1
+	gun_type = /obj/item/weapon/gun/rifle/l42a
 	w_class = SIZE_MEDIUM
 
-/obj/item/ammo_magazine/rifle/l42mk1/incendiary
+/obj/item/ammo_magazine/rifle/l42a/incendiary
 	name = "\improper L42A incendiary magazine (10x24mm)"
 	desc = "A 10mm battle rifle incendiary magazine."
 	caliber = "10x24mm"
 	icon_state = "l42mk1_incendiary"
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	max_rounds = 20
-	gun_type = /obj/item/weapon/gun/rifle/l42mk1
+	gun_type = /obj/item/weapon/gun/rifle/l42a
 	w_class = SIZE_MEDIUM
 
 //-------------------------------------------------------

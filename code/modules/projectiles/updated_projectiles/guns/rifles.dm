@@ -739,7 +739,7 @@
 //-------------------------------------------------------
 //L42 MK1 Pulse Carbine
 
-/obj/item/weapon/gun/rifle/l42mk1
+/obj/item/weapon/gun/rifle/l42a
 	name = "\improper L42A battle rifle"
 	desc = "A L42A battle rifle. A non-standard alternative to the standard issue M41A-MK2 available to the jarheads of the USCM. Renowned for its high accuracy and superior stopping power compared to other pulse rifles. Chambered in 10x24mm caseless."
 	icon_state = "l42mk1"
@@ -747,7 +747,7 @@
 	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
 	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
 	fire_sound = 'sound/weapons/gun_carbine.ogg'
-	current_mag = /obj/item/ammo_magazine/rifle/l42mk1
+	current_mag = /obj/item/ammo_magazine/rifle/l42a
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
@@ -769,23 +769,24 @@
 	aim_slowdown = SLOWDOWN_ADS_SMG
 	starting_attachment_types = list(/obj/item/attachable/stock/carbine)
 
-/obj/item/weapon/gun/rifle/l42mk1/New()
-	select_gamemode_skin(/obj/item/weapon/gun/rifle/l42mk1)
+/obj/item/weapon/gun/rifle/l42a/New()
+	select_gamemode_skin(/obj/item/weapon/gun/rifle/l42a)
 	..()
 
-/obj/item/weapon/gun/rifle/l42mk1/set_gun_attachment_offsets()
+/obj/item/weapon/gun/rifle/l42a/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 7, "rail_y" = 19, "under_x" = 16, "under_y" = 14, "stock_x" = 22, "stock_y" = 10)
 
 
-/obj/item/weapon/gun/rifle/l42mk1/set_gun_config_values()
+/obj/item/weapon/gun/rifle/l42a/set_gun_config_values()
 	..()
-	fire_delay = config.mhigh_fire_delay
+	fire_delay = config.high_fire_delay
 	burst_amount = 0
 	accuracy_mult = config.base_hit_accuracy_mult + config.hmed_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
 	damage_mult = config.base_hit_damage_mult + config.hmed_hit_damage_mult
 	recoil_unwielded = config.low_recoil_value
 	damage_falloff_mult = 0
+	scatter = config.low_scatter_value
 
 //-------------------------------------------------------
 //-------------------------------------------------------

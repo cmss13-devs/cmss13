@@ -40,24 +40,20 @@
 /mob/living/carbon/Xenomorph/proc/update_progression()
 	var/progress_amount = 1
 
-	if( world.time < XENO_ROUNDSTART_PROGRESS_TIME_1 ) //xenos have a progression bonus at roundstart
+	if(world.time < XENO_ROUNDSTART_PROGRESS_TIME_1) //xenos have a progression bonus at roundstart
 		progress_amount = XENO_ROUNDSTART_PROGRESS_AMOUNT
 
-	else if ( world.time < XENO_ROUNDSTART_PROGRESS_TIME_2) //gradually decrease to no bonus
-		progress_amount = 1 + (1 - XENO_ROUNDSTART_PROGRESS_AMOUNT) * (world.time-XENO_ROUNDSTART_PROGRESS_TIME_1)/(XENO_ROUNDSTART_PROGRESS_TIME_1-XENO_ROUNDSTART_PROGRESS_TIME_2)
+	else if (world.time < XENO_ROUNDSTART_PROGRESS_TIME_2) //gradually decrease to no bonus
+		progress_amount = 1 + (1 - XENO_ROUNDSTART_PROGRESS_AMOUNT) * (world.time-XENO_ROUNDSTART_PROGRESS_TIME_2)/(XENO_ROUNDSTART_PROGRESS_TIME_2-XENO_ROUNDSTART_PROGRESS_TIME_1)
 
 	if(ticker && ticker.mode && ticker.mode.xeno_evo_speed)
 		progress_amount = ticker.mode.xeno_evo_speed
 
-	if(upgrade != -1 && upgrade < 3) //upgrade possible
-		if(hive && !hive.living_xeno_queen || hive && hive.living_xeno_queen.loc.z == loc.z)
-			upgrade_stored = min(upgrade_stored + progress_amount, upgrade_threshold)
+	if(upgrade != -1 && upgrade < 3 && (hive && !hive.living_xeno_queen || hive && hive.living_xeno_queen.loc.z == loc.z)) //upgrade possible
+		upgrade_stored = min(upgrade_stored + progress_amount, upgrade_threshold)
 
-			if(upgrade_stored >= upgrade_threshold)
-				if(!is_mob_incapacitated() && !handcuffed && !legcuffed)
-					spawn(0)
-						if (map_tag != MAP_WHISKEY_OUTPOST)
-							upgrade_xeno(upgrade+1)
+		if(upgrade_stored >= upgrade_threshold && !is_mob_incapacitated() && !handcuffed && !legcuffed && map_tag != MAP_WHISKEY_OUTPOST)
+			INVOKE_ASYNC(src, .proc/upgrade_xeno, (upgrade + 1))
 
 	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && hive.living_xeno_queen && (hive.living_xeno_queen.ovipositor || (ticker.game_start_time + XENO_HIVE_EVOLUTION_FREETIME) >= world.time))
 		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)

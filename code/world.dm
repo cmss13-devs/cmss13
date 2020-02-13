@@ -95,6 +95,21 @@ var/global/datum/global_init/init = new ()
 	// Shamelessly stolen from the test manager's host_tests() proc
 	if(testing_locally)
 		master_mode = "extended"
+
+		// If a test environment was specified, initialize it
+		if(fexists("test_environment.txt"))
+			var/test_environment = file2text("test_environment.txt")
+
+			var/env_type = null
+			for(var/type in subtypesof(/datum/test_environment))
+				if("[type]" == test_environment)
+					env_type = type
+					break
+
+			if(env_type)
+				var/datum/test_environment/env = new env_type()
+				env.initialize()
+
 		// Wait for the game ticker to initialize
 		while(!SSticker.initialized)
 			sleep(10)

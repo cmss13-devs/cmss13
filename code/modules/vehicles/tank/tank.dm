@@ -114,7 +114,7 @@
 	if(direction == reverse_dir[T.dir])
 		return FALSE
 
-	T.user_rotation(user, turning_angle(T.dir, direction), list(bound_width, bound_height))
+	T.user_rotation(user, turning_angle(T.dir, direction))
 	update_icon()
 
 	return TRUE
@@ -172,3 +172,8 @@
 	take_damage_type(1e8, "abstract") //OOF.ogg
 	// once more to break the frame
 	take_damage_type(1e8, "abstract")
+
+/obj/vehicle/multitile/tank/plain/load_hardpoints(var/obj/vehicle/multitile/R)
+	..()
+
+	add_hardpoint(new /obj/item/hardpoint/locomotion/treads)

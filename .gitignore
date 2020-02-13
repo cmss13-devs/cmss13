@@ -17,3 +17,4 @@ sound/music/walkman/*.txt
 *.json
 *.before
 __pycache__
+test_environment.txt

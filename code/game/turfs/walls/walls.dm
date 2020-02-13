@@ -41,9 +41,8 @@
 
 /turf/closed/wall/New()
 	..()
-	sleep(5)
-	update_connections(1)
-	update_icon()
+	add_timer(CALLBACK(src, .proc/update_connections, 1), 5)
+	add_timer(CALLBACK(src, .proc/update_icon, 1), 5.1)
 
 
 /turf/closed/wall/ChangeTurf(newtype)

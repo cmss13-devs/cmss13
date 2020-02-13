@@ -291,3 +291,17 @@
 		return 1
 
 	return (slot != WEAR_JACKET && slot != WEAR_HEAD)
+
+// Adding a text string at the end of the object
+/obj/proc/add_label(var/obj/O, user)
+	var/label = copytext(reject_bad_text(input(user,"Label text?", "Set label", "")), 1, MAX_NAME_LEN)
+
+	// Checks for valid labelling/name length
+	if(!label || !length(label))
+		to_chat(user, SPAN_NOTICE("Invalid text."))
+		return
+	if((length(O.name) + length(label)) > MAX_NAME_LEN * 1.5)
+		to_chat(user, SPAN_NOTICE("You cannot fit any more labels on this item."))
+		return
+
+	O.name += " ([label])"

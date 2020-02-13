@@ -103,6 +103,20 @@
 			loaded_pill_bottle.forceMove(loc)
 
 		loaded_pill_bottle = null
+
+	// Adding a name to the currently stored pill bottle
+	if(href_list["addlabelp"])
+
+		// Checking for state changes
+		if(!loaded_pill_bottle)
+			return
+
+		if(!Adjacent(usr))
+			return
+
+		// Input the text and apply it
+		add_label(loaded_pill_bottle, user)
+
 	else if(href_list["close"])
 		close_browser(user, "chemmaster")
 		user.unset_interaction()
@@ -266,9 +280,10 @@
 			dat += "No pill bottle inserted.<BR><BR>"
 		dat += "<A href='?src=\ref[src];close=1'>Close</A>"
 	else
-		dat += "<A href='?src=\ref[src];eject=1;user=\ref[user]'>Eject beaker and Clear Buffer</A><BR>"
+		dat += "<A href='?src=\ref[src];eject=1;user=\ref[user]'>Eject beaker and Clear Buffer</A><BR><BR>"
 		if(loaded_pill_bottle)
-			dat += "<A href='?src=\ref[src];ejectp=1;user=\ref[user]'>Eject Pill Bottle \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR><BR>"
+			dat += "<A href='?src=\ref[src];ejectp=1;user=\ref[user]'>Eject [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR>"
+			dat += "<A href='?src=\ref[src];addlabelp=1;user=\ref[user]'>Add label to [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR><BR>"
 		else
 			dat += "No pill bottle inserted.<BR><BR>"
 		if(!beaker.reagents.total_volume)

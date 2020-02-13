@@ -134,6 +134,11 @@
 			to_chat(user, SPAN_WARNING("You cannot hit the target. It is probably underground."))
 			return
 
+		//Small amount of spread so that consecutive mortar shells don't all land on the same tile
+		var/turf/T1 = locate(T.x + pick(-1,0,0,1), T.y + pick(-1,0,0,1), T.z)
+		if(isturf(T1))
+			T = T1
+
 		user.visible_message(SPAN_NOTICE("[user] starts loading \a [mortar_shell.name] into [src]."),
 		SPAN_NOTICE("You start loading \a [mortar_shell.name] into [src]."))
 		playsound(loc, 'sound/weapons/gun_mortar_reload.ogg', 50, 1)

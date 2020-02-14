@@ -90,8 +90,7 @@
 	return
 
 /datum/equipment_preset/proc/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(skills)
+	H.set_skills(skills)
 
 /datum/equipment_preset/proc/load_id(mob/living/carbon/human/H)
 	if(!idtype)

@@ -105,12 +105,12 @@
 	var/defib_heal_amt = damage_threshold
 
 	//job knowledge requirement
-	if(user.mind && user.mind.cm_skills)
+	if(user.skills)
 		if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return
 		else
-			defib_heal_amt *= user.mind.cm_skills.get_skill_level(SKILL_MEDICAL)*0.5 //more healing power when used by a doctor
+			defib_heal_amt *= user.skills.get_skill_level(SKILL_MEDICAL)*0.5 //more healing power when used by a doctor
 
 	if(!ishuman(H) || isYautja(H))
 		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You don't even know where to put the paddles!"))

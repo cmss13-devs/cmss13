@@ -25,8 +25,7 @@
 /datum/equipment_preset/synth/load_skills(mob/living/carbon/human/H)
 	. = ..()
 	if(isEarlySynthetic(H))
-		if(H.mind)
-			H.mind.set_cm_skills(/datum/skills/early_synthetic)
+		H.set_skills(/datum/skills/early_synthetic)
 
 /*****************************************************************************************************/
 
@@ -90,10 +89,6 @@
 
 /datum/equipment_preset/synth/combat_smartgunner/load_race(mob/living/carbon/human/H)
 	H.set_species("Early Synthetic")
-
-/datum/equipment_preset/synth/combat_smartgunner/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(skills)
 
 /datum/equipment_preset/synth/combat_smartgunner/load_gear(mob/living/carbon/human/H)
 	var/obj/item/clothing/under/marine/J = new(H)

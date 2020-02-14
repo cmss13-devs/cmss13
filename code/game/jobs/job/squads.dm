@@ -219,29 +219,29 @@
 		switch(old_lead.mind.assigned_role)
 			if(JOB_SQUAD_SPECIALIST)
 				old_lead.mind.role_comm_title = "Spc"
-				if(old_lead.mind.cm_skills)
-					old_lead.mind.cm_skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
+				if(old_lead.skills)
+					old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
 			if(JOB_SQUAD_ENGI)
 				old_lead.mind.role_comm_title = "Eng"
-				if(old_lead.mind.cm_skills)
-					old_lead.mind.cm_skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
+				if(old_lead.skills)
+					old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
 			if(JOB_SQUAD_MEDIC)
 				old_lead.mind.role_comm_title = "Med"
-				if(old_lead.mind.cm_skills)
-					old_lead.mind.cm_skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
+				if(old_lead.skills)
+					old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
 			if(JOB_SQUAD_SMARTGUN)
 				old_lead.mind.role_comm_title = "SG"
-				if(old_lead.mind.cm_skills)
-					old_lead.mind.cm_skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
+				if(old_lead.skills)
+					old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
 			if(JOB_SQUAD_LEADER)
 				if(!leader_killed)
-					if(old_lead.mind.cm_skills)
-						old_lead.mind.cm_skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_NOVICE)
+					if(old_lead.skills)
+						old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_NOVICE)
 					old_lead.mind.role_comm_title = "Mar"
 			else
 				old_lead.mind.role_comm_title = "Mar"
-				if(old_lead.mind.cm_skills)
-					old_lead.mind.cm_skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_NOVICE)
+				if(old_lead.skills)
+					old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_NOVICE)
 
 	if(!old_lead.mind || old_lead.mind.assigned_role != JOB_SQUAD_LEADER || !leader_killed)
 		if(istype(old_lead.wear_ear, /obj/item/device/radio/headset/almayer/marine))

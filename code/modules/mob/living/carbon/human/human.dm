@@ -880,16 +880,6 @@
 		set_species()
 	return species.name
 
-/mob/living/carbon/human/proc/play_xylophone()
-	if(!src.xylophone)
-		visible_message(SPAN_DANGER("[src] begins playing his ribcage like a xylophone. It's quite spooky."),SPAN_NOTICE("You begin to play a spooky refrain on your ribcage."),SPAN_DANGER("You hear a spooky xylophone melody."))
-		var/song = pick('sound/effects/xylophone1.ogg','sound/effects/xylophone2.ogg','sound/effects/xylophone3.ogg')
-		playsound(loc, song, 25, 1)
-		xylophone = 1
-		spawn(1200)
-			xylophone=0
-	return
-
 /mob/living/carbon/human/proc/vomit()
 
 	if(species.flags & IS_SYNTHETIC)
@@ -1259,29 +1249,29 @@
 	set src = usr
 
 	var/dat
-	if(!usr || !usr.mind || !usr.mind.cm_skills)
+	if(!usr || !usr.skills)
 		dat += "NULL<br/>"
 	else
-		dat += "CQC: [usr.mind.cm_skills.get_skill_level(SKILL_CQC)]<br/>"
-		dat += "Melee: [usr.mind.cm_skills.get_skill_level(SKILL_MELEE_WEAPONS)]<br/>"
-		dat += "Firearms: [usr.mind.cm_skills.get_skill_level(SKILL_FIREARMS)]<br/>"
-		dat += "Pistols: [usr.mind.cm_skills.get_skill_level(SKILL_PISTOLS)]<br/>"
-		dat += "Shotguns: [usr.mind.cm_skills.get_skill_level(SKILL_SHOTGUNS)]<br/>"
-		dat += "Rifles: [usr.mind.cm_skills.get_skill_level(SKILL_RIFLES)]<br/>"
-		dat += "SMGs: [usr.mind.cm_skills.get_skill_level(SKILL_SMGS)]<br/>"
-		dat += "Heavy Weapons: [usr.mind.cm_skills.get_skill_level(SKILL_HEAVY_WEAPONS)]<br/>"
-		dat += "Smartgun: [usr.mind.cm_skills.get_skill_level(SKILL_SMARTGUN)]<br/>"
-		dat += "Specialist Weapons: [usr.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS)]<br/>"
-		dat += "Endurance: [usr.mind.cm_skills.get_skill_level(SKILL_ENDURANCE)]<br/>"
-		dat += "Engineer: [usr.mind.cm_skills.get_skill_level(SKILL_ENGINEER)]<br/>"
-		dat += "Construction: [usr.mind.cm_skills.get_skill_level(SKILL_CONSTRUCTION)]<br/>"
-		dat += "Leadership: [usr.mind.cm_skills.get_skill_level(SKILL_LEADERSHIP)]<br/>"
-		dat += "Medical: [usr.mind.cm_skills.get_skill_level(SKILL_MEDICAL)]<br/>"
-		dat += "Surgery: [usr.mind.cm_skills.get_skill_level(SKILL_SURGERY)]<br/>"
-		dat += "Pilot: [usr.mind.cm_skills.get_skill_level(SKILL_PILOT)]<br/>"
-		dat += "Police: [usr.mind.cm_skills.get_skill_level(SKILL_POLICE)]<br/>"
-		dat += "Powerloader: [usr.mind.cm_skills.get_skill_level(SKILL_POWERLOADER)]<br/>"
-		dat += "Vehicles: [usr.mind.cm_skills.get_skill_level(SKILL_VEHICLE)]<br/>"
+		dat += "CQC: [usr.skills.get_skill_level(SKILL_CQC)]<br/>"
+		dat += "Melee: [usr.skills.get_skill_level(SKILL_MELEE_WEAPONS)]<br/>"
+		dat += "Firearms: [usr.skills.get_skill_level(SKILL_FIREARMS)]<br/>"
+		dat += "Pistols: [usr.skills.get_skill_level(SKILL_PISTOLS)]<br/>"
+		dat += "Shotguns: [usr.skills.get_skill_level(SKILL_SHOTGUNS)]<br/>"
+		dat += "Rifles: [usr.skills.get_skill_level(SKILL_RIFLES)]<br/>"
+		dat += "SMGs: [usr.skills.get_skill_level(SKILL_SMGS)]<br/>"
+		dat += "Heavy Weapons: [usr.skills.get_skill_level(SKILL_HEAVY_WEAPONS)]<br/>"
+		dat += "Smartgun: [usr.skills.get_skill_level(SKILL_SMARTGUN)]<br/>"
+		dat += "Specialist Weapons: [usr.skills.get_skill_level(SKILL_SPEC_WEAPONS)]<br/>"
+		dat += "Endurance: [usr.skills.get_skill_level(SKILL_ENDURANCE)]<br/>"
+		dat += "Engineer: [usr.skills.get_skill_level(SKILL_ENGINEER)]<br/>"
+		dat += "Construction: [usr.skills.get_skill_level(SKILL_CONSTRUCTION)]<br/>"
+		dat += "Leadership: [usr.skills.get_skill_level(SKILL_LEADERSHIP)]<br/>"
+		dat += "Medical: [usr.skills.get_skill_level(SKILL_MEDICAL)]<br/>"
+		dat += "Surgery: [usr.skills.get_skill_level(SKILL_SURGERY)]<br/>"
+		dat += "Pilot: [usr.skills.get_skill_level(SKILL_PILOT)]<br/>"
+		dat += "Police: [usr.skills.get_skill_level(SKILL_POLICE)]<br/>"
+		dat += "Powerloader: [usr.skills.get_skill_level(SKILL_POWERLOADER)]<br/>"
+		dat += "Vehicles: [usr.skills.get_skill_level(SKILL_VEHICLE)]<br/>"
 
 	show_browser(src, dat, "Skills", "checkskills")
 	return

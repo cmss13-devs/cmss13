@@ -291,7 +291,7 @@
 					if(!H.mind || H.mind.assigned_role != JOB_SQUAD_SPECIALIST)
 						to_chat(H, SPAN_WARNING("Only specialists can take specialist sets."))
 						return
-					else if(!H.mind.cm_skills || H.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_TRAINED)
+					else if(!H.skills || H.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_TRAINED)
 						to_chat(H, SPAN_WARNING("You already have a specialist specialization."))
 						return
 					var/p_name = L[1]
@@ -352,15 +352,15 @@
 					var/p_name = L[1]
 					switch(p_name)
 						if("Scout Set")
-							H.mind.cm_skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
+							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
 						if("Sniper Set")
-							H.mind.cm_skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
+							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
 						if("Demolitionist Set")
-							H.mind.cm_skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
+							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
 						if("Heavy Grenadier Set")
-							H.mind.cm_skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
+							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
 						if("Pyro Set")
-							H.mind.cm_skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
+							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
 						else
 							to_chat(H, SPAN_WARNING("<b>Something bad occured with [src], tell a Dev.</b>"))
 							return

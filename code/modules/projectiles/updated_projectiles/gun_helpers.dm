@@ -286,7 +286,7 @@ should be alright.
 			to_chat(user, SPAN_WARNING("Can't do tactical reloads with [src]."))
 			return
 		//no tactical reload for the untrained.
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.get_skill_level(SKILL_FIREARMS) == 0)
+		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0)
 			to_chat(user, SPAN_WARNING("You don't know how to do tactical reloads."))
 			return
 		if(istype(src, AM.gun_type) || (AM.type in src.accepted_ammo))
@@ -295,8 +295,8 @@ should be alright.
 			to_chat(user, SPAN_NOTICE("You start a tactical reload."))
 			var/old_mag_loc = AM.loc
 			var/tac_reload_time = 15
-			if(user.mind && user.mind.cm_skills)
-				tac_reload_time = max(15 - 5*user.mind.cm_skills.get_skill_level(SKILL_FIREARMS), 5)
+			if(user.skills)
+				tac_reload_time = max(15 - 5*user.skills.get_skill_level(SKILL_FIREARMS), 5)
 			if(do_after(user,tac_reload_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && AM.loc == old_mag_loc && !current_mag)
 				if(istype(AM.loc, /obj/item/storage))
 					var/obj/item/storage/S = AM.loc

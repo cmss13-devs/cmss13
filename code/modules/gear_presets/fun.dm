@@ -213,7 +213,7 @@
 
 /datum/equipment_preset/fun/hefa/load_skills(mob/living/carbon/human/H)
 	..()
-	H.mind.cm_skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
+	H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
 
 /datum/equipment_preset/fun/hefa/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = MALE

@@ -27,7 +27,7 @@
 	mob.key = M.key
 	if(mob.client) mob.client.change_view(world.view)
 	ticker.mode.traitors += mob.mind
-	mob.mind.set_cm_skills(/datum/skills/commando/deathsquad)
+	mob.set_skills(/datum/skills/commando/deathsquad)
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob

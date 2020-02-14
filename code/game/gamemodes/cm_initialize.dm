@@ -257,7 +257,7 @@ Additional game mode variables.
 
 	new_predator.regenerate_icons()
 	initialize_predator(new_predator)
-	new_predator.mind.set_cm_skills(/datum/skills/yautja/warrior)
+	new_predator.set_skills(/datum/skills/yautja/warrior)
 	return new_predator
 
 

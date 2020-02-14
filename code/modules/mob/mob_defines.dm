@@ -190,3 +190,6 @@
 	var/ambience_playing = FALSE
 
 	var/noclip = FALSE
+
+	var/datum/skills/skills = null //the knowledge you have about certain abilities and actions (e.g. do you how to do surgery?)
+									//see skills.dm in #define folder and code/datums/skills.dm for more info

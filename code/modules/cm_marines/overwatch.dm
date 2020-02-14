@@ -666,8 +666,8 @@
 		H.mind.role_comm_title = "SL"
 	else //an acting SL
 		H.mind.role_comm_title = "aSL"
-	if(H.mind.cm_skills)
-		H.mind.cm_skills.set_skill(SKILL_LEADERSHIP, max(SKILL_LEAD_TRAINED, H.mind.cm_skills.get_skill_level(SKILL_LEADERSHIP)))
+	if(H.skills)
+		H.skills.set_skill(SKILL_LEADERSHIP, max(SKILL_LEAD_TRAINED, H.skills.get_skill_level(SKILL_LEADERSHIP)))
 
 	if(istype(H.wear_ear, /obj/item/device/radio/headset/almayer/marine))
 		var/obj/item/device/radio/headset/almayer/marine/R = H.wear_ear

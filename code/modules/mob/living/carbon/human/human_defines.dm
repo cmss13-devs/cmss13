@@ -55,10 +55,6 @@
 	var/obj/item/l_store = null
 	var/obj/item/s_store = null
 
-	var/used_skillpoints = 0
-	var/skill_specialization = null
-	var/list/skills = null
-
 	var/icon/stand_icon = null
 
 	var/voice = ""	//Instead of new say code calling GetVoice() over and over and over, we're just going to ask this variable, which gets updated in Life()
@@ -72,21 +68,13 @@
 	var/last_dam = -1	//Used for determining if we need to process all limbs or just some or even none.
 	var/list/limbs_to_process = list()// limbs we check until they are good.
 
-	var/xylophone = 0 //For the spoooooooky xylophone cooldown
-
-	var/mob/remoteview_target = null
-
 	var/list/flavor_texts = list()
 	var/recently_unbuckled = 0
 
 	//Life variables
 	var/oxygen_alert = 0
-	var/phoron_alert = 0
-	var/co2_alert = 0
 	var/fire_alert = 0
-	var/pressure_alert = 0
 	var/prev_gender = null // Debug for plural genders
-	var/temperature_alert = 0
 	var/revive_grace_period = MINUTES_5 //5 minutes
 	var/undefibbable = FALSE //whether the human is dead and past the defibbrillation period.
 

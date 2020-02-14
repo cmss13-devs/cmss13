@@ -861,3 +861,11 @@ mob/proc/yank_out_object()
 		return NO_BLOCKED_MOVEMENT
 
 	return ..()
+
+/mob/proc/set_skills(skills_path)
+	if(skills)
+		qdel(skills)
+	if(!skills_path)
+		skills = null
+	else
+		skills = new skills_path(src)

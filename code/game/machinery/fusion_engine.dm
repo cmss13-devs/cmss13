@@ -141,7 +141,7 @@
 				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 					user.visible_message(SPAN_NOTICE("[user] fumbles around figuring out [src]'s internals."),
 					SPAN_NOTICE("You fumble around figuring out [src]'s internals."))
-					var/fumbling_time = 100 - 20 * user.mind.cm_skills.get_skill_level(SKILL_ENGINEER)
+					var/fumbling_time = 100 - 20 * user.skills.get_skill_level(SKILL_ENGINEER)
 					if(!do_after(user, fumbling_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
 				playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 				user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s internal damage."),
@@ -163,7 +163,7 @@
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				user.visible_message(SPAN_NOTICE("[user] fumbles around figuring out [src]'s wiring."),
 				SPAN_NOTICE("You fumble around figuring out [src]'s wiring."))
-				var/fumbling_time = 100 - 20 * user.mind.cm_skills.get_skill_level(SKILL_ENGINEER)
+				var/fumbling_time = 100 - 20 * user.skills.get_skill_level(SKILL_ENGINEER)
 				if(!do_after(user, fumbling_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] starts securing [src]'s wiring."),
@@ -182,7 +182,7 @@
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				user.visible_message(SPAN_NOTICE("[user] fumbles around figuring out [src]'s tubing and plating."),
 				SPAN_NOTICE("You fumble around figuring out [src]'s tubing and plating."))
-				var/fumbling_time = 100 - 20 * user.mind.cm_skills.get_skill_level(SKILL_ENGINEER)
+				var/fumbling_time = 100 - 20 * user.skills.get_skill_level(SKILL_ENGINEER)
 				if(!do_after(user, fumbling_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] starts repairing [src]'s tubing and plating."),
@@ -210,7 +210,7 @@
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				user.visible_message(SPAN_WARNING("[user] fumbles around figuring out [src]'s fuel receptacle."),
 				SPAN_WARNING("You fumble around figuring out [src]'s fuel receptacle."))
-				var/fumbling_time = 100 - 20 * user.mind.cm_skills.get_skill_level(SKILL_ENGINEER)
+				var/fumbling_time = 100 - 20 * user.skills.get_skill_level(SKILL_ENGINEER)
 				if(!do_after(user, fumbling_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
 			playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] starts prying [src]'s fuel receptacle open."),

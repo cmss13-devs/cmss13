@@ -234,8 +234,8 @@
 /mob/living/carbon/human/handle_dazed()
 	if(dazed)
 		var/skill = 1
-		if(mind && mind.cm_skills)
-			skill += (mind.cm_skills.get_skill_level(SKILL_ENDURANCE)-1)*0.2
+		if(skills)
+			skill += (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.2
 		AdjustDazed(-skill)
 	if(dazed)
 		speech_problem_flag = 1
@@ -244,8 +244,8 @@
 /mob/living/carbon/human/handle_knocked_down()
 	if(knocked_down && client)
 		var/skill = species.knock_down_reduction
-		if(mind && mind.cm_skills)
-			skill += (mind.cm_skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1
+		if(skills)
+			skill += (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1
 		knocked_down = max(knocked_down - skill, 0)
 		knocked_down_callback_check()
 	return knocked_down
@@ -261,8 +261,8 @@
 // this is the best place to do it, tho name might be a bit misleading I guess
 /mob/living/carbon/human/stun_clock_adjustment()
 	var/skill = species.knock_down_reduction
-	if(mind && mind.cm_skills)
-		skill += (mind.cm_skills.get_skill_level(SKILL_ENDURANCE)-1) * 0.1
+	if(skills)
+		skill += (skills.get_skill_level(SKILL_ENDURANCE)-1) * 0.1
 
 	var/shift_left = (SShuman.next_fire - world.time) * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill
 	if(stunned > shift_left)
@@ -273,8 +273,8 @@
 		return FALSE
 
 	var/skill = species.knock_down_reduction
-	if(mind && mind.cm_skills)
-		skill += (mind.cm_skills.get_skill_level(SKILL_ENDURANCE)-1) * 0.1
+	if(skills)
+		skill += (skills.get_skill_level(SKILL_ENDURANCE)-1) * 0.1
 
 	var/shift_left = (SShuman.next_fire - world.time) * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill
 	if(knocked_down > shift_left)

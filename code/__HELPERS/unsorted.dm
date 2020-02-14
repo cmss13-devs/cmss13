@@ -43,10 +43,10 @@
 
 #define can_xeno_build(T) (!T.density && !(locate(/obj/structure/fence) in T) && !(locate(/obj/structure/tunnel) in T) && (locate(/obj/effect/alien/weeds) in T))
 
-// For the purpose of a skillcheck, not having a skillset counts as being skilled in everything (!user.mind.cm_skills check)
+// For the purpose of a skillcheck, not having a skillset counts as being skilled in everything (!user.skills check)
 // Note that is_skilled() checks if the skillset contains the skill internally, so a has_skill check is unnecessary
-#define skillcheck(user, skill, req_level) (user.mind && (!user.mind.cm_skills || user.mind.cm_skills.is_skilled(skill, req_level)))
-#define skillcheckexplicit(user, skill, req_level) (user.mind && (!user.mind.cm_skills || user.mind.cm_skills.is_skilled(skill, req_level, TRUE)))
+#define skillcheck(user, skill, req_level) ((!user.skills || user.skills.is_skilled(skill, req_level)))
+#define skillcheckexplicit(user, skill, req_level) ((!user.skills || user.skills.is_skilled(skill, req_level, TRUE)))
 
 // Ensure the frequency is within bounds of what it should be sending/recieving at
 // Sets f within bounds via `Clamp(round(f), 1441, 1489)`

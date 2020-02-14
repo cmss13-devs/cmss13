@@ -246,7 +246,7 @@
 	if(href_list["optimize"])
 		if(shuttle.transit_optimized) return
 		var/mob/M = usr
-		if(M.mind && M.mind.cm_skills && !M.mind.cm_skills.get_skill_level(SKILL_PILOT))
+		if(M.mind && M.skills && !M.skills.get_skill_level(SKILL_PILOT))
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 		else
 			to_chat(usr, SPAN_NOTICE("You load in and review a custom flight plan you took time to prepare earlier. This should cut half of the transport flight time on its own!"))
@@ -259,7 +259,7 @@
 		shuttle.transit_gun_mission = !shuttle.transit_gun_mission
 		if(shuttle.transit_gun_mission)
 			var/mob/M = usr
-			if(M.mind && M.mind.cm_skills && !M.mind.cm_skills.get_skill_level(SKILL_PILOT)) //only pilots can activate the fire mission mode, but everyone can reset it back to transport..
+			if(M.mind && M.skills && !M.skills.get_skill_level(SKILL_PILOT)) //only pilots can activate the fire mission mode, but everyone can reset it back to transport..
 				to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 				return
 			else
@@ -386,7 +386,7 @@
 
 	if(href_list["cancel_flyby"])
 		var/mob/M = usr
-		if(M.mind && M.mind.cm_skills && !M.mind.cm_skills.get_skill_level(SKILL_PILOT))
+		if(M.mind && M.skills && !M.skills.get_skill_level(SKILL_PILOT))
 			to_chat(usr, SPAN_WARNING("Need Pilot level access to return the Dropship."))
 			return
 		if(shuttle.transit_gun_mission && shuttle.moving_status == SHUTTLE_INTRANSIT && shuttle.in_transit_time_left>abort_timer)

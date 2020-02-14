@@ -214,7 +214,7 @@ var/waiting_for_drop_votes = 0
 		H.mind = new(H.key)
 		H.mind_initialize()
 
-	H.mind.cm_skills = null //no restriction on what the contestants can do
+	H.skills = null //no restriction on what the contestants can do
 
 	H.KnockDown(15)
 	H.nutrition = 300

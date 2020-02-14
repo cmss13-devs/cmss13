@@ -12,7 +12,7 @@
 	var/secondary_skill //If there's a second skill we want a single pamphlet to increase.
 
 /obj/item/pamphlet/attack_self(mob/living/carbon/human/user)
-	if(!user.mind || !user.mind.cm_skills || !istype(user))
+	if(!user.skills || !istype(user))
 		return
 	if(user.has_used_pamphlet == TRUE)
 		to_chat(usr, SPAN_WARNING("You've already used a pamphlet!"))
@@ -22,9 +22,9 @@
 		return
 	else
 		to_chat(usr, SPAN_NOTICE("You read over the pamphlet a few times, learning a new skill."))
-		user.mind.cm_skills.set_skill(skill_to_increment, skill_increment)
+		user.skills.set_skill(skill_to_increment, skill_increment)
 		if(secondary_skill)
-			user.mind.cm_skills.set_skill(secondary_skill, skill_increment)
+			user.skills.set_skill(secondary_skill, skill_increment)
 		user.has_used_pamphlet = TRUE
 		qdel(src)
 

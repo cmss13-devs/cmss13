@@ -190,7 +190,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/spec_kit/asrs/attack_self(mob/user)
 	if(user.mind && user.mind.assigned_role == JOB_SQUAD_MARINE)
-		user.mind.cm_skills.set_skill(SKILL_SPEC_WEAPONS)
+		user.skills.set_skill(SKILL_SPEC_WEAPONS)
 	else
 		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a squad marine!"))
 	..()

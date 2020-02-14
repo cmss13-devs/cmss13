@@ -196,7 +196,7 @@
 	return
 
 /mob/living/carbon/human/proc/issue_order(var/order)
-	if(!mind || !mind.cm_skills)
+	if(!skills)
 		return FALSE
 
 	if(!skillcheck(src, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
@@ -224,8 +224,8 @@
 			return
 
 	command_aura_available = FALSE
-	var/command_aura_strength = mind.cm_skills.get_skill_level(SKILL_LEADERSHIP) - SKILL_LEAD_BEGINNER
-	var/command_aura_duration = mind.cm_skills.get_skill_level(SKILL_LEADERSHIP) * 100
+	var/command_aura_strength = skills.get_skill_level(SKILL_LEADERSHIP) - SKILL_LEAD_BEGINNER
+	var/command_aura_duration = skills.get_skill_level(SKILL_LEADERSHIP) * 100
 
 	var/turf/T = get_turf(src)
 	for(var/mob/living/carbon/human/H in range(COMMAND_ORDER_RANGE, T))

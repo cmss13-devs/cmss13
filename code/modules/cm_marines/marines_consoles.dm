@@ -439,7 +439,7 @@
 				// Second check is to make sure civilians aren't assigned into squads
 				if(
 					istype(ID_to_modify) && istype(person_to_modify) && \
-					person_to_modify.mind.cm_skills.get_skill_level(SKILL_FIREARMS) && \
+					person_to_modify.skills.get_skill_level(SKILL_FIREARMS) && \
 					person_to_modify.real_name == ID_to_modify.registered_name && \
 					person_to_modify.Adjacent(src)
 				)
@@ -469,7 +469,7 @@
 					to_chat(usr, SPAN_WARNING("You need to insert a card to modify."))
 				else if(!istype(person_to_modify) || !person_to_modify.Adjacent(src))
 					to_chat(usr, SPAN_WARNING("You need to keep the hand of the person to be assigned to \the [src] Squad."))
-				else if(!person_to_modify.mind.cm_skills.get_skill_level(SKILL_FIREARMS))
+				else if(!person_to_modify.skills.get_skill_level(SKILL_FIREARMS))
 					to_chat(usr, SPAN_WARNING("You cannot assign untrained civilians to squads."))
 				else
 					to_chat(usr, SPAN_WARNING("The ID in the machine is not owned by the person whose hand is scanned."))

@@ -1,7 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - rscadd: "Added two new options for mass-teleportation of mobs for admins: all alive mobs in selected range and all alive mobs of selected faction/hive. Should be of great help in setting up events."
-  - tweak: "Added proper faction selection for changing rank verb."

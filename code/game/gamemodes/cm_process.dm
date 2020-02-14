@@ -187,7 +187,7 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 
 	for(var/mob/M in living_xeno_list)
 		var/area/A = get_area(M)
-		if (A.flags_atom & AREA_AVOID_BIOSCAN || (A.flags_atom & AREA_AVOID_BIOSCAN && A.flags_atom & AREA_NOTUNNEL))
+		if(A && A.flags_atom & AREA_AVOID_BIOSCAN || (A.flags_atom & AREA_AVOID_BIOSCAN && A.flags_atom & AREA_NOTUNNEL))
 			numXenosShip++
 			continue
 		var/atom/where = M

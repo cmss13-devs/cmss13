@@ -837,6 +837,9 @@ body
 
 		var/new_organ = input("Please choose an organ to add.","Organ",null) as null|anything in typesof(/datum/internal_organ)-/datum/internal_organ
 
+		if(!new_organ)
+			return FALSE
+
 		if(!M)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return

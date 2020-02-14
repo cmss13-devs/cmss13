@@ -1341,6 +1341,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			real_name += "[pick(last_names)]"
 
 	character.real_name = real_name
+	character.voice = real_name
 	character.name = character.real_name
 
 	character.flavor_texts["general"] = flavor_texts["general"]
@@ -1508,6 +1509,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			real_name += "[pick(last_names)]"
 
 	character.real_name = real_name
+	character.voice = real_name
 	character.name = character.real_name
 
 	character.flavor_texts["general"] = flavor_texts["general"]

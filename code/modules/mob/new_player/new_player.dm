@@ -383,6 +383,7 @@
 		mind.setup_human_stats()
 
 	new_character.name = real_name
+	new_character.voice = real_name
 
 	if(client.prefs.disabilities)
 		new_character.disabilities |= NEARSIGHTED

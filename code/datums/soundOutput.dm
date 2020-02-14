@@ -22,10 +22,11 @@
 	S.frequency = T.frequency
 	if(T.x && T.y && T.z)		
 		var/turf/owner_turf = get_turf(owner.mob)
-		S.x = T.x - owner_turf.x
-		S.y = 0
-		S.z = T.y - owner_turf.y
-		S.falloff = T.falloff
+		if(owner_turf)
+			S.x = T.x - owner_turf.x
+			S.y = 0
+			S.z = T.y - owner_turf.y
+			S.falloff = T.falloff
 	S.status = T.status
 	if(owner.mob.ear_deaf > 0)
 		S.status |= SOUND_MUTE

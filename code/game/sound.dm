@@ -65,9 +65,9 @@
 	
 	var/turf/T
 	for(var/mob/M in player_list)
-		if(!M.client || !M.client.soundOutput) 
-			continue
 		T = get_turf(M)
+		if(!M.client || !M.client.soundOutput || !T) 
+			continue
 		if(get_dist(T, turf_source) <= sound_range && T.z == turf_source.z)
 			SSsound.queue(M.client, S)
 

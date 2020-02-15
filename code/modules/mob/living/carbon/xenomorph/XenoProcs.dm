@@ -91,7 +91,7 @@
 
 	if(hive && hive.slashing_allowed == 1)
 		stat("Slashing:", "PERMITTED")
-	else if(hive.slashing_allowed == 2)
+	else if(hive && hive.slashing_allowed == 2)
 		stat("Slashing:", "LIMITED")
 	else
 		stat("Slashing:", "FORBIDDEN")

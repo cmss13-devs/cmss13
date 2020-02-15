@@ -180,10 +180,13 @@
 	set category = "OOC"
 	var/is_admin = 0
 
+	if(!client)
+		return FALSE
+
 	if(client.admin_holder && (client.admin_holder.rights & R_ADMIN))
 		is_admin = 1
 	else if(stat != DEAD || istype(src, /mob/new_player))
-		to_chat(usr, SPAN_NOTICE(" You must be observing to use this!"))
+		to_chat(usr, SPAN_NOTICE("You must be observing to use this!"))
 		return
 
 	if(is_admin && stat == DEAD)

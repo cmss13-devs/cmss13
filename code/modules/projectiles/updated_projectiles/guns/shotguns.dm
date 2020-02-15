@@ -328,7 +328,9 @@ can cause issues with ammo types getting mixed up during the burst.
 			return 0
 
 /obj/item/weapon/gun/shotgun/double/empty_chamber(mob/user)
-	if(!current_mag.chamber_closed)
+	if(current_mag.chamber_closed)
+		open_chamber(user)
+	else
 		..()
 
 /obj/item/weapon/gun/shotgun/double/load_into_chamber()

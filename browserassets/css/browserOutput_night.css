@@ -343,8 +343,6 @@ h1.alert, h2.alert		{color: #c5c5c5;}
 .rough					{font-family: trebuchet-ms, cursive, sans-serif;}
 .say_quote				{font-family: Georgia, Verdana, sans-serif;}
 
-.interface				{color: #330033;}
-
 .connectionClosed, .fatalError {background: red; color: white; padding: 5px;}
 .connectionClosed.restored {background: green;}
 .internal.boldnshit {color: #386aff; font-weight: bold;}

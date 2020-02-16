@@ -10,7 +10,7 @@
 	health = 250
 
 	buff_multipliers = list(
-		"move" = 0.65
+		"move" = 1.65
 	)
 
 	px_offsets = list(

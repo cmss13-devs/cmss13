@@ -20,7 +20,7 @@
 		final_name = H.client.prefs.synthetic_name
 		if(!final_name || final_name == "Undefined")
 			final_name = "David"
-	H.change_real_name(final_name)
+	H.change_real_name(H, final_name)
 
 /datum/equipment_preset/synth/load_skills(mob/living/carbon/human/H)
 	. = ..()

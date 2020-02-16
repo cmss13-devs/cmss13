@@ -113,7 +113,7 @@ var/datum/mob_hud/huds = list(
 
 //Xeno status hud, for xenos
 /datum/mob_hud/xeno
-	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD)
+	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD)
 
 
 
@@ -397,6 +397,13 @@ var/datum/mob_hud/huds = list(
 			holder.icon_state = "queen_overwatch"
 	hud_list[QUEEN_OVERWATCH_HUD] = holder
 
+/mob/living/carbon/Xenomorph/proc/hud_update_banished()
+	var/image/holder = hud_list[XENO_BANISHED_HUD]
+	holder.overlays.Cut()
+	holder.icon_state = "hudblank"
+	if (stat != DEAD && banished)
+		holder.icon_state = "xeno_banished"
+	hud_list[XENO_BANISHED_HUD] = holder
 
 /mob/living/carbon/Xenomorph/proc/hud_update()
 	var/image/holder = hud_list[XENO_STATUS_HUD]

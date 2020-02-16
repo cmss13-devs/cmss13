@@ -501,21 +501,23 @@
 	for(var/datum/action/A in actions)
 		qdel(A)
 
-	var/list/immobile_abilities = list(\
-		/datum/action/xeno_action/regurgitate,\
-		/datum/action/xeno_action/remove_eggsac,\
-		/datum/action/xeno_action/activable/screech,\
-		/datum/action/xeno_action/emit_pheromones,\
-		/datum/action/xeno_action/psychic_whisper,\
-		/datum/action/xeno_action/watch_xeno,\
-		/datum/action/xeno_action/toggle_queen_zoom,\
-		/datum/action/xeno_action/set_xeno_lead,\
-		/datum/action/xeno_action/queen_heal,\
-		/datum/action/xeno_action/queen_give_plasma,\
-		/datum/action/xeno_action/queen_order,\
-		/datum/action/xeno_action/deevolve, \
-		/datum/action/xeno_action/show_minimap, \
-		)
+	var/list/immobile_abilities = list(
+		/datum/action/xeno_action/regurgitate,
+		/datum/action/xeno_action/remove_eggsac,
+		/datum/action/xeno_action/activable/screech,
+		/datum/action/xeno_action/emit_pheromones,
+		/datum/action/xeno_action/psychic_whisper,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/toggle_queen_zoom,
+		/datum/action/xeno_action/set_xeno_lead,
+		/datum/action/xeno_action/queen_heal,
+		/datum/action/xeno_action/queen_give_plasma,
+		/datum/action/xeno_action/queen_order,
+		/datum/action/xeno_action/deevolve,
+		/datum/action/xeno_action/show_minimap,
+		/datum/action/xeno_action/banish,
+		/datum/action/xeno_action/readmit,
+	)
 
 	for(var/path in immobile_abilities)
 		var/datum/action/xeno_action/A = new path()

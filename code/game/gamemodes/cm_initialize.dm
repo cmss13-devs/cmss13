@@ -451,7 +451,7 @@ Additional game mode variables.
 		CRASH("ERROR: transfer_xeno called without mob or mind input: [xeno_candidate]")
 
 	new_xeno.ghostize(FALSE) //Make sure they're not getting a free respawn.
-	xeno_candidate_mind.transfer_to(new_xeno)
+	xeno_candidate_mind.transfer_to(new_xeno, TRUE)
 
 	new_xeno.mind_initialize()
 	new_xeno.mind.player_entity = setup_player_entity(xeno_candidate_mind.ckey)

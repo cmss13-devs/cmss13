@@ -42,7 +42,7 @@
 				while(hive_datum[hivenumber].stored_larva > 0) // stil some left
 					larva_spawn = pick(xeno_spawn)
 					if(players_with_xeno_pref && players_with_xeno_pref.len)	
-						var/client/xeno_candidate = pick(players_with_xeno_pref)
+						var/mob/xeno_candidate = pick(players_with_xeno_pref)
 						var/mob/living/carbon/Xenomorph/Larva/new_xeno = new /mob/living/carbon/Xenomorph/Larva(larva_spawn)
 						if(!ticker.mode.transfer_xeno(xeno_candidate, new_xeno))
 							qdel(new_xeno)

@@ -25,7 +25,7 @@
 
 #define XENO_ROUNDSTART_PROGRESS_AMOUNT 			4
 #define XENO_ROUNDSTART_PROGRESS_TIME_1 			0
-#define XENO_ROUNDSTART_PROGRESS_TIME_2 			MINUTES_45
+#define XENO_ROUNDSTART_PROGRESS_TIME_2 			MINUTES_30
 //=================================================
 
 

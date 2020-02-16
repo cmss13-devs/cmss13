@@ -129,6 +129,4 @@ h1.alert, h2.alert		{color: #000000;}
 .monkey					{color: #966C47;}
 .rough					{font-family: trebuchet-ms, cursive, sans-serif;}
 .say_quote				{font-family: Georgia, Verdana, sans-serif;}
-
-.interface				{color: #330033;}
 </style>"}

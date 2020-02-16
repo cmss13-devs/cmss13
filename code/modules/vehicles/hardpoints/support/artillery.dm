@@ -17,7 +17,7 @@
 	var/view_buff = 12 //This way you can VV for more or less fun
 	var/view_tile_offset = 5
 
-/obj/item/hardpoint/artillery_module/activate(var/atom/A, var/mob/user)
+/obj/item/hardpoint/artillery_module/activate(var/mob/user, var/atom/A)
 	var/obj/vehicle/multitile/tank/C = owner
 	if(!user.client) return
 	if(is_active)

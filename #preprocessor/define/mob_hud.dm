@@ -20,6 +20,7 @@
 #define XENO_STATUS_HUD     "16" // Whether xeno is a leader and its current upgrade level
 #define ARMOR_HUD_XENO		"17" // health HUD for xenos
 #define ORDER_HUD			"18" // If humans are affected by orders or not
+#define XENO_BANISHED_HUD   "19" // indicates that the xeno is banished
 
 
 //data HUD (medhud, sechud) defines

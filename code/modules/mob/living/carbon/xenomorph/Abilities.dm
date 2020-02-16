@@ -1462,3 +1462,81 @@
 				actions -= action_path
 				var/datum/action/xeno_action/A = new action_path()
 				A.give_action(src)
+
+// Banished xenos can be attacked by all other xenos, even ones in the same hive
+/datum/action/xeno_action/banish
+	name = "Banish a Xenomorph"
+	action_icon_state = "xeno_banish"
+	plasma_cost = 500
+
+/datum/action/xeno_action/banish/action_activate()
+	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	if(!X.check_state())
+		return
+	if(X.observed_xeno)
+		var/mob/living/carbon/Xenomorph/T = X.observed_xeno
+
+		if(T.banished)
+			to_chat(X, SPAN_XENOWARNING("This xenomorph is already banished!"))
+			return
+
+		// No banishing critted xenos
+		if(T.health < 0)
+			to_chat(X, SPAN_XENOWARNING("What's the point? They're already about to die."))
+			return
+
+		var/confirm = alert(X, "Are you sure you want to banish [T] from the hive? This should only be done with good reason.", , "Yes", "No")
+		if(confirm == "No")
+			return
+
+		var/reason = stripped_input(X, "Provide a reason for banishing [T]. This will be announced to the entire hive!")
+		if(isnull(reason))
+			to_chat(X, SPAN_XENOWARNING("You must provide a reason for banishing [T]."))
+			return
+
+		if(!X.check_state() || !X.check_plasma(plasma_cost) || X.observed_xeno != T || T.health < 0)
+			return
+
+		// Let everyone know they were banished
+		xeno_announcement("By [X]'s will, [T] has been banished from the hive!\n\n[reason]", X.hivenumber, title=SPAN_ANNOUNCEMENT_HEADER_BLUE("Banishment"))
+		to_chat(T, FONT_SIZE_LARGE(SPAN_XENOWARNING("The [X] has banished you from the hive! Other xenomorphs may now attack you freely, but your link to the hivemind remains, preventing you from harming other sisters.")))
+
+		T.banished = TRUE
+		T.hud_update_banished()
+
+		message_admins("[key_name_admin(X)] has banished [key_name_admin(T)]. Reason: [reason]")
+		log_admin("[key_name_admin(X)] has banished [key_name_admin(T)]. Reason: [reason]")
+
+	else
+		to_chat(X, SPAN_WARNING("You must overwatch the xeno you want to banish."))
+
+// Readmission = un-banish
+/datum/action/xeno_action/readmit
+	name = "Readmit a Xenomorph"
+	action_icon_state = "xeno_readmit"
+	plasma_cost = 100
+
+/datum/action/xeno_action/readmit/action_activate()
+	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	if(!X.check_state())
+		return
+
+	if(X.observed_xeno)
+		var/mob/living/carbon/Xenomorph/T = X.observed_xeno
+
+		if(!T.banished)
+			to_chat(X, SPAN_XENOWARNING("This xenomorph isn't banished!"))
+			return
+
+		var/confirm = alert(X, "Are you sure you want to readmit [T] into the hive?", , "Yes", "No")
+		if(confirm == "No")
+			return
+
+		if(!X.check_state() || !X.check_plasma(plasma_cost) || X.observed_xeno != T)
+			return
+
+		to_chat(T, FONT_SIZE_LARGE(SPAN_XENOWARNING("The [X] has readmitted you into the hive.")))
+		T.banished = FALSE
+		T.hud_update_banished()
+	else
+		to_chat(X, SPAN_WARNING("You must overwatch the xeno you want to readmit."))

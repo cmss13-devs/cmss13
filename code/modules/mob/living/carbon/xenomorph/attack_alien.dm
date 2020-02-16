@@ -272,9 +272,11 @@
 
 		if("hurt")
 			if(isXeno(src) && xeno_hivenumber(src) == M.hivenumber)
-				M.visible_message(SPAN_WARNING("[M] nibbles [src]."), \
-				SPAN_WARNING("You nibble [src]."), null, 5, CHAT_TYPE_XENO_FLUFF)
-				return TRUE
+				var/mob/living/carbon/Xenomorph/X = src
+				if(!X.banished)
+					M.visible_message(SPAN_WARNING("[M] nibbles [src]."), \
+					SPAN_WARNING("You nibble [src]."), null, 5, CHAT_TYPE_XENO_FLUFF)
+					return TRUE
 
 			if(M.caste && !M.caste.is_intelligent)
 				if(M.hive && M.hive.slashing_allowed == 2)

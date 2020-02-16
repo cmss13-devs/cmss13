@@ -101,7 +101,7 @@
 
 			if("hurt")
 				M.animation_attack_on(src)
-				if(hivenumber == M.hivenumber)
+				if(hivenumber == M.hivenumber && !banished)
 					M.visible_message(SPAN_WARNING("\The [M] nibbles \the [src]."), \
 					SPAN_WARNING("You nibble \the [src]."), null, 5, CHAT_TYPE_XENO_FLUFF)
 					return 1

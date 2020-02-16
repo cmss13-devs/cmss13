@@ -73,7 +73,7 @@
 			playsound(loc, prob(50) == 1 ? 'sound/voice/alien_death.ogg' : 'sound/voice/alien_death2.ogg', 25, 1)
 		var/area/A = get_area(src)
 		if(hive && hive.living_xeno_queen)
-			xeno_message("Hive: [src] has <b>died</b>[A? " at [sanitize(A.name)]":""]!", 3, hivenumber)
+			xeno_message("Hive: [src] has <b>died</b>[A? " at [sanitize(A.name)]":""]! [banished ? "They were banished from the hive." : ""]", 3, hivenumber)
 
 	if(hive && IS_XENO_LEADER(src))	//Strip them from the Xeno leader list, if they are indexed in here
 		hive.remove_hive_leader(src)
@@ -87,6 +87,11 @@
 		A.acid_damage = 0 //Reset the acid damage
 		A.forceMove(loc)
 
+	// Banished xeno provide a burrowed larva on death to compensate
+	if(banished)
+		hive_datum[hivenumber].stored_larva++
+		hive_datum[hivenumber].hive_ui.update_burrowed_larva()
+
 	if(hardcore)
 		dead_hardcore_xeno_list += src
 
@@ -95,6 +100,7 @@
 		// hive.queue_spawn(src) //Resolve this line once structures are resolved.
 		if(hive.totalXenos.len == 1)
 			xeno_message(SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"),3, hivenumber)
+
 
 	callHook("death", list(src, gibbed))
 

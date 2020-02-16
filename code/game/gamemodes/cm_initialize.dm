@@ -442,6 +442,11 @@ Additional game mode variables.
 			xeno_candidate_mind = new /datum/mind(M.key, M.ckey)
 			xeno_candidate_mind.active = TRUE
 			xeno_candidate_mind.current = new_xeno
+	else if(isclient(xeno_candidate))
+		var/client/C = xeno_candidate
+		xeno_candidate_mind = new /datum/mind(C.key, C.ckey)
+		xeno_candidate_mind.active = TRUE
+		xeno_candidate_mind.current = new_xeno
 	else
 		CRASH("ERROR: transfer_xeno called without mob or mind input: [xeno_candidate]")
 

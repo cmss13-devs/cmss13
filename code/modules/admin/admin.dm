@@ -5,13 +5,13 @@ var/global/floorIsLava = 0
 ////////////////////////////////
 /proc/message_admins(var/msg) // +ADMIN and above
 	msg = "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span></span>"
-	log_adminwarn(msg)
+	log_admin(msg)
 	for(var/client/C in admins)
 		if(C && C.admin_holder && (R_ADMIN & C.admin_holder.rights))
 			to_chat(C, msg)
 
 /proc/message_staff(var/msg, var/jmp_x=0, var/jmp_y=0, var/jmp_z=0) // +MOD and above, not mentors
-	log_adminwarn(msg)
+	log_admin(msg)
 
 	msg = "<span class=\"admin\"><span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]"
 	if(jmp_x && jmp_y && jmp_z)
@@ -148,7 +148,6 @@ var/global/floorIsLava = 0
 	else
 		to_world("<B>You may no longer respawn :(</B>")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled respawn to [abandon_allowed ? "On" : "Off"]."), 1)
-	log_admin("[key_name(usr)] toggled respawn to [abandon_allowed ? "On" : "Off"].")
 	world.update_status()
 
 

@@ -39,43 +39,36 @@
 		if("power")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") == "No")
 				return
-			log_admin("[key_name(usr)] powered all SMESs and APCs", 1)
 			message_admins(SPAN_NOTICE("[key_name_admin(usr)] powered all SMESs and APCs"), 1)
 			power_restore()
 		if("unpower")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") == "No")
 				return
-			log_admin("[key_name(usr)] unpowered all SMESs and APCs", 1)
 			message_admins(SPAN_NOTICE("[key_name_admin(usr)] unpowered all SMESs and APCs"), 1)
 			power_failure()
 		if("quickpower")
 			if(alert(usr, "Are you sure you want to do this? It will laaag.", "Confirmation", "Yes", "No") == "No")
 				return
-			log_admin("[key_name(usr)] powered all SMESs", 1)
 			message_admins(SPAN_NOTICE("[key_name_admin(usr)] powered all SMESs"), 1)
 			power_restore_quick()
 		if("powereverything")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") == "No")
 				return
-			log_admin("[key_name(usr)] powered all SMESs and APCs everywhere", 1)
 			message_admins(SPAN_NOTICE("[key_name_admin(usr)] powered all SMESs and APCs everywhere"), 1)
 			power_restore_everything()
 		if("powershipreactors")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") == "No")
 				return
-			log_admin("[key_name(usr)] powered all ship reactors", 1)
 			message_admins(SPAN_NOTICE("[key_name_admin(usr)] powered all ship reactors"), 1)
 			power_restore_ship_reactors()
 		if("decrease_defcon")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") == "No")
 				return
-			log_admin("[key_name(usr)] decreased DEFCON level.", 1)
 			message_admins(SPAN_NOTICE("[key_name_admin(usr)] decreased DEFCON level."), 1)
 			defcon_controller.decrease_defcon_level()
 		if("give_defcon_points")
 			var/amount = input(usr, "How many points to add?") as num
 			if(amount != 0) //can add negative numbers too!
-				log_admin("[key_name(usr)] added [amount] DEFCON points.", 1)
 				message_admins(SPAN_NOTICE("[key_name_admin(usr)] added [amount] DEFCON points."), 1)
 				objectives_controller.add_admin_points(amount)
 		if("change_clearance")
@@ -83,12 +76,10 @@
 			var/level = input("Select new clearance level:","Current level: [chemical_research_data.clearance_level]") as null|anything in clearance_levels
 			if(!level)
 				return
-			log_admin("[key_name(usr)] changed research clearance level to [level].", 1)
 			message_admins(SPAN_NOTICE("[key_name_admin(usr)] changed research clearance level to [level]."), 1)
 			chemical_research_data.clearance_level = level
 		if("give_research_credits")
 			var/amount = input(usr, "How many credits to add?") as num
 			if(amount != 0) //can add negative numbers too!
-				log_admin("[key_name(usr)] added [amount] research credits.", 1)
 				message_admins(SPAN_NOTICE("[key_name_admin(usr)] added [amount] research credits."), 1)
 				chemical_research_data.update_credits(amount)

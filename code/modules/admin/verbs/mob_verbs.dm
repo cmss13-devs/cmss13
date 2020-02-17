@@ -16,7 +16,6 @@
 		return
 	if (M.client)
 		M.ghostize()
-	log_admin("[key_name(usr)] modified [M.name]/([M.ckey])'s ckey to [new_ckey]")
 	message_admins("[key_name_admin(usr)] modified [M.name]/([M.ckey])'s ckey to [new_ckey]", 1)
 	 
 	M.ckey = new_ckey
@@ -82,7 +81,6 @@
 	H.add_hud_to(M)
 	to_chat(src, SPAN_INFO("[hud_choice] enabled."))
 	message_admins(SPAN_INFO("[key_name(usr)] has given a [hud_choice] to [M]."))
-	log_admin("[key_name(usr)] has given a [hud_choice] to [M].")
 
 /client/proc/cmd_admin_gib(mob/M as mob in mob_list)
 	set category = "Special Verbs"
@@ -95,7 +93,6 @@
 	//Due to the delay here its easy for something to have happened to the mob
 	if(!M)	return
 
-	log_admin("[key_name(usr)] has gibbed [key_name(M)]")
 	message_admins("[key_name_admin(usr)] has gibbed [key_name_admin(M)]", 1)
 
 	if(istype(M, /mob/dead/observer))
@@ -161,7 +158,6 @@
 		return
 
 	to_chat(M, SPAN_ANNOUNCEMENT_HEADER_BLUE(msg))
-	log_admin("DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]): [msg]")
 	message_admins(SPAN_NOTICE("\bold DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]): [msg]"), 1)
 
 /client/proc/cmd_admin_attack_log(mob/M as mob in mob_list)
@@ -179,10 +175,8 @@
 	var/turf/T = get_turf(O)
 
 	if(T)
-		log_admin("[key_name(usr)] has possessed [O] ([O.type]) at ([T.x], [T.y], [T.z])")
 		message_admins("[key_name(usr)] has possessed [O] ([O.type]) at ([T.x], [T.y], [T.z])", 1)
 	else
-		log_admin("[key_name(usr)] has possessed [O] ([O.type]) at an unknown location")
 		message_admins("[key_name(usr)] has possessed [O] ([O.type]) at an unknown location", 1)
 
 	if(!usr.control_object) //If you're not already possessing something...
@@ -226,7 +220,6 @@
 		if(istype(W,/obj/item/alien_embryo)) continue
 		M.drop_inv_item_on_ground(W)
 
-	log_admin("[key_name(usr)] made [key_name(M)] drop everything!")
 	message_admins("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!")
 
 /client/proc/cmd_admin_change_their_hivenumber(var/mob/living/carbon/Xenomorph/X)
@@ -303,6 +296,5 @@
 	else
 		M.sleeping = 9999999
 
-	log_admin("[key_name(usr)] used Toggle Sleeping on [key_name(M)].")
 	message_staff("[key_name(usr)] used Toggle Sleeping on [key_name(M)].")
 	return

@@ -35,7 +35,6 @@
 		return
 
 	if (alert(src, "Are you sure you want to delete:\n[O]\nat ([O.x], [O.y], [O.z])?", "Confirmation", "Yes", "No") == "Yes")
-		log_admin("[key_name(usr)] deleted [O] at ([O.x],[O.y],[O.z]) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[usr]'>JMP</A>)")
 		message_admins("[key_name_admin(usr)] deleted [O] at ([O.x],[O.y],[O.z])")
 		 
 		qdel(O)
@@ -50,7 +49,6 @@
 	var/newtick = input("Sets a new tick lag. Please don't mess with this too much! The stable, time-tested ticklag value is 0.9","Lag of Tick", world.tick_lag) as num|null
 	//I've used ticks of 2 before to help with serious singulo lags
 	if(newtick && newtick <= 2 && newtick > 0)
-		log_admin("[key_name(src)] has modified world.tick_lag to [newtick]", 0)
 		message_admins("[key_name(src)] has modified world.tick_lag to [newtick]")
 		world.tick_lag = newtick
 		 

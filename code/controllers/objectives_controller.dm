@@ -232,7 +232,6 @@ var/global/datum/objectives_controller/objectives_controller
 				to_chat(M, "<h2 class='alert'>DEFCON Level [defcon_controller.current_defcon_level]</h2>")
 				to_chat(M, SPAN_WARNING("Objectives status: [scored_points] / [total_points] ([scored_points/total_points*100]%)."))
 
-		log_admin("Objectives status: [scored_points] / [total_points] ([scored_points/total_points*100]%). DEFCON Level [defcon_controller.current_defcon_level].")
 		message_staff("Objectives status: [scored_points] / [total_points] ([scored_points/total_points*100]%). DEFCON Level [defcon_controller.current_defcon_level].", 1)
 
 	return answer

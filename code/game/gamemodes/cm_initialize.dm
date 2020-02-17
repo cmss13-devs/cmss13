@@ -175,7 +175,6 @@ Additional game mode variables.
 	var/mob/living/carbon/human/new_predator = transform_predator(pred_candidate) //Initialized and ready.
 	if(!new_predator) return
 
-	log_admin("[new_predator.key], became a new Yautja, [new_predator.real_name].")
 	message_admins("([new_predator.key]) joined as Yautja, [new_predator.real_name].")
 
 	if(pred_candidate) pred_candidate.loc = null //Nullspace it for garbage collection later.
@@ -461,7 +460,6 @@ Additional game mode variables.
 		new_xeno.client.change_view(world.view)
 
 	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
-	log_admin("[new_xeno.key] has joined as [new_xeno].")
 	if(isXeno(new_xeno)) //Dear lord
 		var/mob/living/carbon/Xenomorph/X = new_xeno
 		X.generate_name()

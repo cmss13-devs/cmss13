@@ -132,7 +132,6 @@ var/global/Holiday = null
 	
 	var/admin_msg = "ADMIN: Event: [key_name(src)] force-set Holiday to \[Holiday]\""
 	message_admins(SPAN_NOTICE("[admin_msg]"))
-	log_admin("[key_name(src)] force-set Holiday to \"[Holiday]\"")
 
 
 //Run at the  start of a round

@@ -170,10 +170,8 @@ var/savefile/Banlistjob
 	if (!Banlistjob.dir.Remove(foldername)) return 0
 
 	if(!usr)
-		log_admin("Banjob Expired: [key]")
 		message_admins("Banjob Expired: [key]")
 	else
-		log_admin("[key_name_admin(usr)] unjobbanned [key] from [rank]")
 		message_admins("[key_name_admin(usr)] unjobbanned:[key] from [rank]")
 		ban_unban_log_save("[key_name_admin(usr)] unjobbanned [key] from [rank]")
 		 

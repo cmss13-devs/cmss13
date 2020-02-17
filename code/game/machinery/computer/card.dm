@@ -184,7 +184,6 @@
 					if(temp_t && modify)
 						modify.assignment = temp_t
 						message_admins("[key_name_admin(usr)] gave the ID of [modify.registered_name] the assignment [modify.assignment].")
-						log_admin("[key_name_admin(usr)] gave the ID of [modify.registered_name] the assignment [modify.assignment].")
 				else
 					var/list/access = list()
 					var/datum/job/jobdatum
@@ -204,8 +203,6 @@
 					modify.assignment = t1
 					modify.rank = t1
 					message_admins("[key_name_admin(usr)] gave the ID of [modify.registered_name] the assignment [modify.assignment].")
-					log_admin("[key_name_admin(usr)] gave the ID of [modify.registered_name] the assignment [modify.assignment].")
-
 				callHook("reassign_employee", list(modify))
 
 		if ("reg")
@@ -264,7 +261,6 @@
 				modify.assignment = "Terminated"
 				modify.access = list()
 				message_admins("[key_name_admin(usr)] terminated the ID of [modify.registered_name].")
-				log_admin("[key_name_admin(usr)] terminated the ID of [modify.registered_name].")
 
 				callHook("terminate_employee", list(modify))
 

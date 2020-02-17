@@ -995,7 +995,6 @@
 	var/new_name = copytext(sanitize(input("Change the description of the tunnel:", "Tunnel Description") as text|null), 1, MAX_MESSAGE_LEN)
 	if(new_name)
 		new_name = "[new_name] ([get_area_name(T)])"
-		log_admin("[key_name(src)] has renamed the tunnel \"[T.tunnel_desc]\" as \"[new_name]\".")
 		msg_admin_niche("[src]/([key_name(src)]) has renamed the tunnel \"[T.tunnel_desc]\" as \"[new_name]\".")
 		T.tunnel_desc = "[new_name]"
 	return

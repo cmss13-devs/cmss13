@@ -169,14 +169,12 @@ var/bomb_set = FALSE
 						announce_xenos()
 						announce_yautja()
 						message_admins("[src] has been activated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;adminplayerobservejump=[usr]'>JMP</A>)")
-						log_admin("[src] has been activated by [key_name(usr)].")
 					else
 						bomb_set = FALSE
 				else
 					icon_state = "nuclearbomb1"
 					disable()
 					message_admins("[src] has been deactivated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;adminplayerobservejump=[usr]'>JMP</A>)")
-					log_admin("[src] has been deactivated by [key_name(usr)].")
 				playsound(src.loc, 'sound/effects/thud.ogg', 100, 1)
 			being_used = FALSE
 

@@ -213,7 +213,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 				var/datum/D = input_marked_datum(admin_holder.marked_datums)
 				lst[i] = D
 
-	log_admin("[key_name(src)] called [A]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"].")
 	message_admins(SPAN_NOTICE("[key_name_admin(src)] called [A]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"]."))
 	returnval = call(A,procname)(arglist(lst)) // Pass the lst as an argument list to the proc
 	to_chat(usr, SPAN_BLUE("[procname] returned: [returnval ? returnval : "null"]"))
@@ -289,7 +288,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		spawn(10)
 			M:Alienize()
 			 
-		log_admin("[key_name(usr)] made [key_name(M)] into an alien.")
 		message_admins(SPAN_NOTICE("[key_name_admin(usr)] made [key_name(M)] into an alien."), 1)
 	else
 		alert("Invalid mob")
@@ -345,7 +343,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 							if(istype(O, hsbitem))
 								del_amt++
 								qdel(O)
-						log_admin("[key_name(src)] has deleted all instances of [hsbitem] ([del_amt]).")
 						message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem] ([del_amt]).", 0)
 		else
 			to_chat(usr, SPAN_WARNING("Not a valid type path."))
@@ -356,7 +353,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	set name = "X: Generate Powernets"
 	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	makepowernets()
-	log_admin("[key_name(src)] has remade the powernet. makepowernets() called.")
 	message_admins("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
 	 
 
@@ -385,7 +381,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	else
 		alert("Invalid mob")
 	 
-	log_admin("[key_name(src)] has granted [M.key] full access.")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] has granted [M.key] full access."), 1)
 
 /client/proc/cmd_admin_grantallskills(var/mob/M in mob_list)
@@ -400,7 +395,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	else
 		alert("Invalid mob")
 	 
-	log_admin("[key_name(src)] has granted [M.key] all skills.")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] has granted [M.key] all skills."), 1)
 
 /client/proc/cmd_assume_direct_control(var/mob/M in mob_list)
@@ -428,7 +422,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 	usr.mind.transfer_to(M, TRUE)
 
-	log_admin("[key_name(usr)] assumed direct control of [M].")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] assumed direct control of [M]."), 1)
 
 /client/proc/cmd_debug_mob_lists()

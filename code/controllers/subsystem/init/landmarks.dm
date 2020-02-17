@@ -30,7 +30,7 @@ var/list/item_pool_landmarks = list()
 
 		if (!curr_pool_name)
 			log_debug("Item pool spawner [L] has a no pool name populated. Code: ITEM_POOL_1")
-			log_admin("Item pool spawner [L] has a no pool name populated. Tell the devs. Code: ITEM_POOL_1")
+			message_admins("Item pool spawner [L] has a no pool name populated. Tell the devs. Code: ITEM_POOL_1")
 			continue
 
 		if (!pools[curr_pool_name])
@@ -54,17 +54,17 @@ var/list/item_pool_landmarks = list()
 		
 		if (!istype(pool))
 			log_debug("Item pool incorrectly initialized by pool spawner landmarks. Code: ITEM_POOL_2")
-			log_admin("Item pool incorrectly initialized by pool spawner landmarks. Tell the devs. Code: ITEM_POOL_2")
+			message_admins("Item pool incorrectly initialized by pool spawner landmarks. Tell the devs. Code: ITEM_POOL_2")
 			continue
 		
 		if (!pool.quota || !pool.type_to_spawn)
 			log_debug("Item pool [pool.pool_name] has no master landmark, aborting item spawns. Code: ITEM_POOL_3")
-			log_admin("Item pool [pool.pool_name] has no master landmark, aborting item spawns. Tell the devs. Code: ITEM_POOL_3")
+			message_admins("Item pool [pool.pool_name] has no master landmark, aborting item spawns. Tell the devs. Code: ITEM_POOL_3")
 			continue
 		
 		if (pool.quota > pool.turfs.len)
 			log_debug("Item pool [pool.pool_name] wants to spawn more items than it has landmarks for. Spawning [turfs.len] instances of [pool.type_to_spawn] instead. Code: ITEM_POOL_4")
-			log_admin("Item pool [pool.pool_name] wants to spawn more items than it has landmarks for. Spawning [turfs.len] instances of [pool.type_to_spawn] instead. Tell the devs. Code: ITEM_POOL_4")
+			message_admins("Item pool [pool.pool_name] wants to spawn more items than it has landmarks for. Spawning [turfs.len] instances of [pool.type_to_spawn] instead. Tell the devs. Code: ITEM_POOL_4")
 			pool.quota = pool.turfs.len
 
 		// Quota times, pick a random turf, spawn an item there, then remove that turf from the list.

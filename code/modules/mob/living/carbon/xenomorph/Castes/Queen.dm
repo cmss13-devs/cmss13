@@ -329,9 +329,7 @@
 
 	xeno_announcement(input, hivenumber)
 
-	log_admin("[key_name(src)] has created a Word of the Queen report: <br>")
-	log_admin("[input]")
-	message_admins("[key_name_admin(src)] has created a Word of the Queen report.", 1)
+	log_admin("[key_name_admin(src)] has created a Word of the Queen report: [input]")
 
 
 /mob/living/carbon/Xenomorph/proc/claw_toggle()

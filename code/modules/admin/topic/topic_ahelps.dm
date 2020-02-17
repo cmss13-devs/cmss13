@@ -11,7 +11,6 @@
 				return
 
 			message_staff("[usr.key] has used 'Mark' on the Adminhelp from [key_name_admin(ref_person)] and is preparing to respond...", 1)
-			log_admin("[usr.key] has used 'Mark' on the Adminhelp from [key_name_admin(ref_person)].", 1)
 			STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'Mark' on the Adminhelp from [key_name_admin(ref_person)].<br>")
 			STUI.processing |= STUI_LOG_STAFF_CHAT
 			var/msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> has marked your request and is preparing to respond...</b>")
@@ -37,7 +36,6 @@
 				return
 
 			message_staff("[usr.key] has used 'No Response' on the Adminhelp from [key_name_admin(ref_person)]. The player has been notified that their issue 'is being handled, it's fixed, or it's nonsensical'.", 1)
-			log_admin("[usr.key] has used 'No Response' on the Adminhelp from [key_name_admin(ref_person)].", 1)
 			STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'No Response' on the Adminhelp from [key_name_admin(ref_person)].<br>")
 			STUI.processing |= STUI_LOG_STAFF_CHAT
 			var/msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> has received your Adminhelp and marked it as 'No response necessary'. Either your Adminhelp is being handled, it's fixed, or it's nonsensical.</font></b>")
@@ -63,7 +61,6 @@
 				return
 
 			message_staff("[usr.key] has used 'Warn' on the Adminhelp from [key_name_admin(ref_person)]. The player has been warned for abusing the Adminhelp system.", 1)
-			log_admin("[usr.key] has used 'Warn' on the Adminhelp from [key_name_admin(ref_person)].", 1)
 			STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'Warn' on the Adminhelp from [key_name_admin(ref_person)].<br>")
 			STUI.processing |= STUI_LOG_STAFF_CHAT
 			var/msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> has given you a <font color=red>warning</font>. Adminhelps are for serious inquiries only. Please do not abuse this system.</b>")

@@ -613,7 +613,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				Z.client.change_view(world.view)
 
 			msg_admin_niche("[ckey] has joined as a [Z].")
-			log_admin("[ckey] has joined as a [Z].")
 
 			if(isobserver(ghostmob) )
 				qdel(ghostmob)
@@ -689,7 +688,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 		var/mob/ghostmob = usr.client.mob
 		msg_admin_niche("[usr.ckey] has joined as a [L].")
-		log_admin("[usr.ckey] has joined as a [L].")
 		L.ckey = usr.ckey
 		if(L.client) L.client.change_view(world.view)
 

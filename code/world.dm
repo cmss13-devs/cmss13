@@ -259,7 +259,6 @@ var/world_topic_spam_protect_time = world.timeofday
 					C.mapVote()
 
 			ticker.delay_end = TRUE
-			log_admin("World/Topic() call (likely MapDaemon.exe) has delayed the round end.")
 			message_admins("World/Topic() call (likely MapDaemon.exe) has delayed the round end.", 1)
 			return "SUCCESS"
 

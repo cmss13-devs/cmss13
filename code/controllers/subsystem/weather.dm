@@ -118,7 +118,6 @@ var/list/weather_notify_objects = list()
 	weather_event_instance = new weather_event_type()
 
 	if(!weather_event_instance)
-		log_admin("Bad weather event of type [weather_event_type].")
 		message_admins(SPAN_BLUE("Bad weather event of type [weather_event_type]."))
 		return
 
@@ -130,10 +129,8 @@ var/list/weather_notify_objects = list()
 	current_event_start_time = world.time
 
 	if (weather_event_instance.display_name)
-		log_admin("Weather Event of type [weather_event_instance.display_name] starting with duration of [weather_event_instance.length] ds.")
 		message_admins(SPAN_BLUE("Weather Event of type [weather_event_instance.display_name] starting with duration of [weather_event_instance.length] ds."))
 	else
-		log_admin("Weather Event of unknown type ([weather_event_type]) starting with duration of [weather_event_instance.length] ds.")
 		message_admins(SPAN_BLUE("Weather Event of unknown type [weather_event_type] starting with duration of [weather_event_instance.length] ds."))
 
 	if (weather_event_instance.turf_overlay_icon_state)
@@ -152,10 +149,8 @@ var/list/weather_notify_objects = list()
 	controller_state_lock = TRUE
 
 	if (weather_event_instance.display_name)
-		log_admin("Weather Event of type [weather_event_instance.display_name] ending after [weather_event_instance.length] ds.")
 		message_admins(SPAN_BLUE("Weather Event of type [weather_event_instance.display_name] ending after [weather_event_instance.length] ds."))
 	else
-		log_admin("Weather Event of unknown type ([weather_event_type]) ending after [weather_event_instance.length] ds.")
 		message_admins(SPAN_BLUE("Weather Event of unknown type [weather_event_type] ending after [weather_event_instance.length] ds."))
 
 	if (map_holder.no_weather_turf_icon_state)

@@ -907,7 +907,6 @@
 	var/msg = copytext(sanitize(input("Add a description to the tunnel:", "Tunnel Description") as text|null), 1, MAX_MESSAGE_LEN)
 	if(msg)
 		msg = "[msg] ([get_area_name(X.start_dig)])"
-		log_admin("[key_name(X)] has named a new tunnel \"[msg]\".")
 		msg_admin_niche("[X]/([key_name(X)]) has named a new tunnel \"[msg]\".")
 		X.start_dig.tunnel_desc = "[msg]"
 
@@ -1197,7 +1196,6 @@
 				if(target.client)
 					X.use_plasma(plasma_cost)
 					to_chat(target, "[queen_order]")
-					log_admin("[queen_order]")
 					message_admins("[key_name_admin(X)] has given the following Queen order to [target]: \"[input]\"", 1)
 
 	else
@@ -1315,7 +1313,6 @@
 		INVOKE_ASYNC(new_xeno, /mob/living/carbon/Xenomorph.proc/upgrade_xeno, min(T.upgrade+1,3)) //a young Crusher de-evolves into a MATURE Hunter
 
 		message_admins("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
-		log_admin("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 
 		if(round_statistics && !new_xeno.statistic_exempt)
 			round_statistics.track_new_participant(T.faction, -1) //so an evolved xeno doesn't count as two.
@@ -1505,7 +1502,6 @@
 		T.hud_update_banished()
 
 		message_admins("[key_name_admin(X)] has banished [key_name_admin(T)]. Reason: [reason]")
-		log_admin("[key_name_admin(X)] has banished [key_name_admin(T)]. Reason: [reason]")
 
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the xeno you want to banish."))

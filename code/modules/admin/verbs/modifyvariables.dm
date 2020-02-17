@@ -552,7 +552,6 @@ var/list/forbidden_varedit_object_types = list(
 			O.vars[variable] = M
 
 			world.log << "### VarEdit by [key_name(src)]: [O.type] '[variable]': [var_value] => matrix \"[matrix_name]\" with columns ([M.a], [M.b], [M.c]), ([M.d], [M.e], [M.f])"
-			log_admin("[key_name(src)] modified [original_name]'s '[variable]': [html_encode("[var_value]")] => matrix \"[matrix_name]\" with columns ([M.a], [M.b], [M.c]), ([M.d], [M.e], [M.f])")
 			message_admins("[key_name_admin(src)] modified [original_name]'s '[variable]': [var_value] => matrix \"[matrix_name]\" with columns ([M.a], [M.b], [M.c]), ([M.d], [M.e], [M.f])", 1)
 
 		if("marked datum")
@@ -561,5 +560,4 @@ var/list/forbidden_varedit_object_types = list(
 
 	if(class != "matrix")
 		world.log << "### VarEdit by [key_name(src)]: [O.type] '[variable]': [var_value] => [html_encode("[O.vars[variable]]")]"
-		log_admin("[key_name(src)] modified [original_name]'s '[variable]': [html_encode("[var_value]")] => [O.vars[variable]]")
 		message_admins("[key_name_admin(src)] modified [original_name]'s '[variable]': [var_value] => [O.vars[variable]]", 1)

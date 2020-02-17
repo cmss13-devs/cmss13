@@ -8,7 +8,6 @@
 	if(alert("Confirm deadmin? This procedure can be reverted at any time and will not carry over to next round, but you will lose all your admin powers in the meantime.", , "Yes", "No") == "No")
 		return
 
-	log_admin("[src] deadmined themselves.")
 	message_admins("[src] deadmined themselves.")
 	verbs += /client/proc/readmin_self
 	deadmin()
@@ -21,7 +20,6 @@
 	verbs -= /client/proc/readmin_self
 	readmin()
 	to_chat(src, "<br><br><span class='centerbold'><big>You have ascended back to adminhood. All your verbs should be back where you left them.</big></span><br>")
-	log_admin("[src] readmined themselves.")
 	message_admins("[src] readmined themselves.")
 
 /client/proc/becomelarva()
@@ -179,7 +177,6 @@
 		else
 			M.sleeping = 9999999
 
-	log_admin("[key_name(usr)] used Toggle Sleep In View.")
 	message_admins("[key_name(usr)] used Toggle Sleep In View.")
 	return
 

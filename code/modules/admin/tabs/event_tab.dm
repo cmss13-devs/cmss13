@@ -12,11 +12,9 @@
 	
 	if(input == "")
 		custom_event_msg = null
-		log_admin("[usr.key] has cleared the custom event text.")
 		message_admins("[key_name_admin(usr)] has cleared the custom event text.")
 		return
 
-	log_admin("[usr.key] has changed the custom event text.")
 	message_admins("[key_name_admin(usr)] has changed the custom event text.")
 
 	custom_event_msg = input
@@ -41,11 +39,9 @@
 	if(config.remove_gun_restrictions)
 		to_chat(src, "<b>Enabled gun restrictions.</b>")
 		message_admins("Admin [key_name_admin(usr)] has enabled WY gun restrictions.")
-		log_admin("[key_name(src)] enabled WY gun restrictions.")
 	else
 		to_chat(src, "<b>Disabled gun restrictions.</b>")
 		message_admins("Admin [key_name_admin(usr)] has disabled WY gun restrictions.")
-		log_admin("[key_name(src)] disabled WY gun restrictions.")
 	config.remove_gun_restrictions = !config.remove_gun_restrictions
 
 /client/proc/adjust_weapon_mult()
@@ -117,7 +113,6 @@
 		return
 
 	empulse(O, heavy, light)
-	log_admin("[key_name(usr)] created an EM Pulse ([heavy],[light]) at ([O.x],[O.y],[O.z])")
 	message_admins("[key_name_admin(usr)] created an EM PUlse ([heavy],[light]) at ([O.x],[O.y],[O.z])")
 	return
 
@@ -171,7 +166,6 @@
 
 	shuttle.launch()
 
-	log_admin("[key_name(usr)] force launched a distress shuttle ([tag])")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] force launched a distress shuttle ([tag])"), 1)
 
 /datum/admins/proc/admin_force_distress()
@@ -227,7 +221,6 @@
 
 	ticker.mode.picked_call.activate(is_announcing)
 
-	log_admin("[key_name(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [ticker.mode.picked_call.name]")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [ticker.mode.picked_call.name]"), 1)
 	
 /datum/admins/proc/admin_force_selfdestruct()
@@ -243,7 +236,6 @@
 
 	set_security_level(SEC_LEVEL_DELTA)
 
-	log_admin("[key_name(usr)] admin-started self destruct stystem.")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] admin-started self destruct stystem."), 1)
 
 /client/proc/view_faxes()
@@ -314,7 +306,6 @@
 				card.registered_name = H.real_name
 				card.name = "[card.registered_name]'s ID Card ([card.assignment])"
 
-	log_admin("Admin [key_name(usr)] has turned everyone into a primitive")
 	message_admins("Admin [key_name(usr)] has turned everyone into a primitive")
 
 /client/proc/force_shuttle()
@@ -401,7 +392,6 @@
 	else
 		marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction)
 
-	log_admin("[key_name(src)] has created a [faction] command report: [input]")
 	message_admins("[key_name_admin(src)] has created a [faction] command report")
 
 /client/proc/cmd_admin_xeno_report()
@@ -422,7 +412,6 @@
 		return FALSE
 	xeno_announcement(input, hivenumber, QUEEN_MOTHER_ANNOUNCE)
 
-	log_admin("[key_name(src)] has created a [hive_choice] Queen Mother report: [input]")
 	message_admins("[key_name_admin(src)] has created a [hive_choice] Queen Mother report")
 
 /client/proc/cmd_admin_create_AI_report()
@@ -444,7 +433,6 @@
 				P.update_icon()
 				C.messagetitle.Add("[MAIN_AI_SYSTEM] Update")
 				C.messagetext.Add(P.info)
-		log_admin("[key_name(src)] has created an AI comms report: [input]")
 		message_admins("[key_name_admin(src)] has created an AI comms report")
 	else
 		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
@@ -470,7 +458,6 @@
 			C.messagetext.Add(P.info)
 
 	shipwide_ai_announcement(input)
-	log_admin("[key_name(src)] has created an AI shipwide report: [input]")
 	message_admins("[key_name_admin(src)] has created an AI shipwide report")
 
 /client/proc/cmd_admin_create_predator_report()
@@ -484,7 +471,6 @@
 	if(!input)
 		return FALSE
 	yautja_announcement(SPAN_YAUTJABOLDBIG(input))
-	log_admin("[key_name(src)] has created a predator ship AI report: [input]")
 	message_admins("[key_name_admin(src)] has created a predator ship AI report")
 
 /client/proc/cmd_admin_world_narrate() // Allows administrators to fluff events a little easier -- TLE
@@ -501,7 +487,6 @@
 		return
 		
 	to_world(SPAN_ANNOUNCEMENT_HEADER_BLUE(msg))
-	log_admin("GlobalNarrate: [key_name(usr)] : [msg]")
 	message_admins(SPAN_NOTICE("\bold GlobalNarrate: [key_name_admin(usr)] : [msg]"))
 
 /client/proc/admin_play_sound()
@@ -556,10 +541,8 @@
 			return
 	 
 	if(isnum(heard_midi))
-		log_admin("[key_name(src)] played sound `[soundin]` for [heard_midi] player(s). [length(player_list) - heard_midi] player(s) have disabled admin midis.")
 		message_admins("[key_name_admin(src)] played sound `[soundin]` for [heard_midi] player(s). [length(player_list) - heard_midi] player(s) have disabled admin midis.")
 	else
-		log_admin("[key_name(src)] played sound `[soundin]` for [heard_midi].")
 		message_admins("[key_name_admin(src)] played sound `[soundin]` for [heard_midi].")
 		return
 

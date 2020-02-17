@@ -16,6 +16,7 @@
 	icon_state = "filingcabinet"
 	density = 1
 	anchored = 1
+	wrenchable = TRUE
 	var/list/allowed_types = list(/obj/item/paper, /obj/item/folder,/obj/item/clipboard, /obj/item/photo, /obj/item/paper_bundle, /obj/item/document_objective/paper, /obj/item/document_objective/report, /obj/item/document_objective/folder, /obj/item/pamphlet)
 
 /obj/structure/filingcabinet/Dispose()
@@ -41,10 +42,8 @@
 
 
 /obj/structure/filingcabinet/attackby(obj/item/P as obj, mob/user as mob)
-	if(istype(P, /obj/item/tool/wrench))
-		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-		anchored = !anchored
-		to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))
+	if(iswrench(P))
+		..()
 	else
 		for(var/allowed_type in allowed_types)
 			if(istype(P, allowed_type))
@@ -57,7 +56,6 @@
 					break
 			else
 				to_chat(user, SPAN_NOTICE("You can't put [P] in [src]!"))
-
 
 /obj/structure/filingcabinet/attack_hand(mob/user as mob)
 	if(contents.len <= 0)

@@ -6,6 +6,7 @@
 	var/parts
 	var/list/debris = list()
 	var/unslashable = FALSE
+	var/wrenchable = FALSE
 	health = 100
 	anchored = 1
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
@@ -39,6 +40,12 @@
 		if(user.wall_smash)
 			visible_message(SPAN_DANGER("[user] smashes [src] apart!"))
 			destroy()
+
+/obj/structure/attackby(obj/item/W, mob/user)
+	if(iswrench(W))
+		toggle_anchored(W, user)
+		return TRUE
+	..()
 
 /obj/structure/ex_act(severity, direction)
 	if(indestructible)
@@ -184,3 +191,18 @@
 		return 0
 	return 1
 
+/obj/structure/proc/toggle_anchored(obj/item/W, mob/user)
+	if(!wrenchable)
+		to_chat(user, SPAN_WARNING("The [src] cannot be [anchored ? "un" : ""]anchored."))
+		return FALSE
+	else
+		// Wrenching is faster if we are better at engineering
+		var/timer = max(10, 40 - user.mind.cm_skills.get_skill_level(SKILL_ENGINEER) * 10)
+		if(do_after(usr, timer, INTERRUPT_ALL, BUSY_ICON_BUILD))
+			anchored = !anchored
+			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
+			if(anchored)
+				user.visible_message(SPAN_NOTICE("[user] anchors [src] into place."),SPAN_NOTICE("You anchor [src] into place."))
+			else
+				user.visible_message(SPAN_NOTICE("[user] unanchors [src]."),SPAN_NOTICE("You unanchor [src]."))
+			return TRUE

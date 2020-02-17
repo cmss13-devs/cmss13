@@ -263,7 +263,6 @@
 	move_delay = 50000
 	next_move = world.time + move_delay
 	update_icon()
-	log_admin("[key_name(user)] attached vehicle clamp to [src]")
 	message_admins("[key_name(user)] attached vehicle clamp to [src]")
 
 /obj/vehicle/multitile/proc/detach_clamp(mob/user)
@@ -272,7 +271,6 @@
 	for(var/obj/item/vehicle_clamp/TC in src)
 		if(user)
 			TC.Move(get_turf(user))
-			log_admin("[key_name(user)] detached vehicle clamp from [src]")
 			message_admins("[key_name(user)] detached vehicle clamp from [src]")
 		else
 			TC.Move(get_turf(src))

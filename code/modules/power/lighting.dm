@@ -251,7 +251,6 @@
 			if(rigged)
 				if(status == LIGHT_OK && trigger)
 
-					log_admin("LOG: Rigged light explosion, last touched by [fingerprintslast]")
 					message_admins("LOG: Rigged light explosion, last touched by [fingerprintslast]")
 
 					explode()
@@ -328,7 +327,6 @@
 
 					if(on && rigged)
 
-						log_admin("LOG: Rigged light explosion, last touched by [fingerprintslast]")
 						message_admins("LOG: Rigged light explosion, last touched by [fingerprintslast]")
 
 						explode()

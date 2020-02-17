@@ -491,7 +491,6 @@ body
 				if(!i)
 					to_chat(usr, "No objects of this type exist")
 					return
-				log_admin("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) ")
 				message_admins(SPAN_NOTICE("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) "))
 			if("Type and subtypes")
 				var/i = 0
@@ -502,7 +501,6 @@ body
 				if(!i)
 					to_chat(usr, "No objects of this type exist")
 					return
-				log_admin("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) ")
 				message_admins(SPAN_NOTICE("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) "))
 
 	else if(href_list["explode"])
@@ -1032,7 +1030,6 @@ body
 		L.updatehealth()
 
 		if(amount != 0)
-			log_admin("[key_name(usr)] dealt [amount] amount of [Text] damage to [L] ")
 			message_admins(SPAN_NOTICE("[key_name(usr)] dealt [amount] amount of [Text] damage to [L] "))
 			href_list["datumrefresh"] = href_list["mobToDamage"]
 

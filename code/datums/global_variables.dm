@@ -421,7 +421,6 @@
 			global.vars[variable] = M
 
 			world.log << "### Global VarEdit by [key_name(src)]: '[variable]': [var_value] => matrix \"[matrix_name]\" with columns ([M.a], [M.b], [M.c]), ([M.d], [M.e], [M.f])"
-			log_admin("[key_name(src)] modified global variable '[variable]': [html_encode("[var_value]")] => matrix \"[matrix_name]\" with columns ([M.a], [M.b], [M.c]), ([M.d], [M.e], [M.f])")
 			message_admins("[key_name_admin(src)] modified global variable '[variable]': [var_value] => matrix \"[matrix_name]\" with columns ([M.a], [M.b], [M.c]), ([M.d], [M.e], [M.f])", 1)
 
 			return
@@ -431,5 +430,4 @@
 			global.vars[variable] = D
 
 	world.log << "### Global VarEdit by [key_name(src)]: '[variable]': [var_value] => [html_encode("[global.vars[variable]]")]"
-	log_admin("[key_name(src)] modified global variable '[variable]': [html_encode("[var_value]")] => [global.vars[variable]]")
 	message_admins("[key_name_admin(src)] modified global variable '[variable]': [var_value] => [global.vars[variable]]", 1)

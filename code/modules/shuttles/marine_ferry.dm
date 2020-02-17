@@ -78,7 +78,6 @@
 /datum/shuttle/ferry/marine/proc/load_datums()
 	if(!(info_tag in s_info))
 		message_admins(SPAN_WARNING("Error with shuttles: Shuttle tag does not exist. Code: MSD10.\n WARNING: DROPSHIP LAUNCH WILL PROBABLY FAIL"))
-		log_admin("Error with shuttles: Shuttle tag does not exist. Code: MSD10.")
 
 	var/list/L = s_info[info_tag]
 	info_datums = L.Copy()
@@ -162,7 +161,6 @@
 
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
 		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD02.\n <font size=10>WARNING: DROPSHIP LAUNCH WILL FAIL</font>"))
-		log_admin("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD02.")
 
 	//Switch the landmarks, to swap docking and landing locs, so we can move back and forth.
 	if(!transit_gun_mission) //gun mission makes you land back where you started. no need to swap dock and land turfs.
@@ -335,7 +333,6 @@
 
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
 		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL"))
-		log_admin("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.")
 
 	shuttle_controller.locs_crash -= T_trg
 
@@ -535,7 +532,6 @@
 	//Switch the landmarks so we can do this again
 	if(!istype(T_src) || !istype(T_trg))
 		message_admins(SPAN_WARNING("Error with shuttles: Ref turfs are null. Code: MSD15.\n WARNING: DROPSHIPS MAY NO LONGER BE OPERABLE"))
-		log_admin("Error with shuttles: Ref turfs are null. Code: MSD15.")
 		return FALSE
 
 	locs_dock -= T_src

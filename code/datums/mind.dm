@@ -361,7 +361,7 @@
 					special_role = null
 					current.hud_set_special_role()
 					to_chat(current, SPAN_WARNING("<FONT size = 3><B>You have been brainwashed! You are no longer a traitor!</B></FONT>"))
-					log_admin("[key_name_admin(usr)] has de-traitor'ed [current].")
+					message_admins("[key_name_admin(usr)] has de-traitor'ed [current].")
 
 			if("traitor")
 				if(!(src in ticker.mode.traitors))
@@ -369,7 +369,7 @@
 					special_role = "traitor"
 					current.hud_set_special_role()
 					to_chat(current, "<B>\red You are a traitor!</B>")
-					log_admin("[key_name_admin(usr)] has traitor'ed [current].")
+					message_admins("[key_name_admin(usr)] has traitor'ed [current].")
 					show_objectives()
 
 	else if (href_list["common"])

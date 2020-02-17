@@ -64,7 +64,6 @@ proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
 	if(automute)
 		muteunmute = "auto-muted"
 		M.client.prefs.muted |= mute_type
-		log_admin("SPAM AUTOMUTE: [muteunmute] [key_name(M)] from [mute_string]")
 		message_admins("SPAM AUTOMUTE: [muteunmute] [key_name_admin(M)] from [mute_string].", 1)
 		to_chat(M, "You have been [muteunmute] from [mute_string] by the SPAM AUTOMUTE system. Contact an admin.")
 		 
@@ -77,7 +76,6 @@ proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
 		muteunmute = "muted"
 		M.client.prefs.muted |= mute_type
 
-	log_admin("[key_name(usr)] has [muteunmute] [key_name(M)] from [mute_string]")
 	message_admins("[key_name_admin(usr)] has [muteunmute] [key_name_admin(M)] from [mute_string].", 1)
 	to_chat(M, "You have been [muteunmute] from [mute_string].")
 

@@ -11,7 +11,7 @@
 	if(!msg)
 		return
 
-	log_admin("MOOC: [key_name(src)] : [msg]")
+	log_admin("MOOC: [key_name(src)]: [msg]")
 
 	for(var/mob/M in living_human_list)
 		if(M.client && (!M.client.admin_holder || !(M.client.admin_holder.rights & R_MOD)))	// Send to marines who are non-staff

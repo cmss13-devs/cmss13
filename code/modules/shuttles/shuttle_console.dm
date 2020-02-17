@@ -240,7 +240,6 @@
 				shuttle.launch(src)
 				if(onboard && !shuttle.iselevator)
 					M.count_niche_stat(STATISTICS_NICHE_FLIGHT)
-			log_admin("[M] ([M.key]) launched a [shuttle.iselevator? "elevator" : "shuttle"] from [src]")
 			message_admins("[M] ([M.key]) launched a [shuttle.iselevator? "elevator" : "shuttle"] using [src].")
 
 	if(href_list["optimize"])

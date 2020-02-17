@@ -185,7 +185,6 @@
 			else
 				shuttle.launch(src)
 
-			log_admin("[usr] ([usr.key]) launched the monorail from [src]")
 			message_admins("[usr] ([usr.key]) launched the monorail using [src].")
 
 	ui_interact(usr)

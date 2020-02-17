@@ -217,7 +217,6 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 	if (world.time > nextAdminBioscan)
 		nextAdminBioscan += MINUTES_30//every 30 minutes, straight
 		//Message the admins first before we tweak the numbers
-		log_admin("A bioscan/Queen Mother message has completed. Humans: [numHostsPlanet] on the planet and [numHostsShip] on the ship. Xenos: [numXenosPlanet] on the planet and [numXenosShip] on the ship.")
 		message_admins("A bioscan/Queen Mother message has completed. Humans: [numHostsPlanet] on the planet and [numHostsShip] on the ship. Xenos: [numXenosPlanet] on the planet and [numXenosShip] on the ship.")
 
 	//Pick one random location to disclose

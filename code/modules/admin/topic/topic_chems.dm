@@ -81,7 +81,6 @@
 			R.generate_stats()
 			//Save our reagent
 			chemical_reagents_list[target] = R
-			log_admin("[key_name(usr)] has generated the reagent: [target].")
 			message_admins("[key_name_admin(usr)] has generated the reagent: [target].")
 			var/response = alert(usr,"Do you want to do anything else?",null,"Generate associated reaction","View my reagent","Finish")
 			while(response != "Finish")
@@ -210,7 +209,6 @@
 			R.generate_description()
 			//Save our reagent
 			chemical_reagents_list[target] = R
-			log_admin("[key_name(usr)] has created a custom reagent: [target].")
 			message_admins("[key_name_admin(usr)] has created a custom reagent: [target].")
 			//See what we want to do last
 			response = alert(usr,"Spawn container with reagent?","Custom reagent [target]","Yes","No, show me the reagent","No, I'm all done")
@@ -299,6 +297,5 @@
 				to_chat(usr,SPAN_WARNING("Something went wrong when saving the reaction."))
 				return
 			usr.client.debug_variables(chemical_reactions_list[target])
-			log_admin("[key_name(usr)] has created a custom chemical reaction: [target].")
 			message_admins("[key_name_admin(usr)] has created a custom chemical reaction: [target].")
 			return

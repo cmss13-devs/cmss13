@@ -37,7 +37,6 @@
 		to_chat(usr, "The Hunt is already in progress.")
 		return
 
-	log_admin("[key_name(usr)] admin-forced a predator round.")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] admin-forced a predator round."))
 	return
 
@@ -88,7 +87,6 @@
 		return
 	if(!RoleAuthority.modify_role(J, num))
 		to_chat(usr, SPAN_BOLDNOTICE("Can't set job slots to be less than amount of log-ins or you are setting amount of slots less than minimal. Free slots first."))
-	log_admin("[key_name(usr)] adjusted job slots of [J.title] to be [num].")
 	message_admins(SPAN_NOTICE("[key_name(usr)] adjusted job slots of [J.title] to be [num]."))
 
 /client/proc/check_antagonists()
@@ -114,7 +112,6 @@
 		return
 
 	ticker.mode.round_finished = MODE_INFESTATION_DRAW_DEATH
-	log_admin("[key_name(usr)] has made the round end early.")
 	message_admins(SPAN_NOTICE("[key_name(usr)] has made the round end early."))
 	for(var/client/C in admins)
 		to_chat(C, {"
@@ -133,7 +130,6 @@
 		return
 	if (!ticker || ticker.current_state != GAME_STATE_PREGAME)
 		ticker.delay_end = !ticker.delay_end
-		log_admin("[key_name(usr)] [ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
 		message_admins("[SPAN_NOTICE("[key_name(usr)] [ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")]")
 		for(var/client/C in admins)
 			to_chat(C, {"<hr>
@@ -165,7 +161,6 @@
 		return
 	if (ticker.current_state == GAME_STATE_PREGAME)
 		ticker.current_state = GAME_STATE_SETTING_UP
-		log_admin("[usr.key] has started the game.")
 		message_admins(SPAN_BLUE("[usr.key] has started the game."))
 		 
 		return TRUE

@@ -41,7 +41,6 @@
 	info << infos
 
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] has edited [key]'s notes: [sanitize(note)]"))
-	log_admin("[key_name_admin(usr)] has edited [key]'s notes: [sanitize(note)]")
 
 	qdel(info)
 
@@ -66,7 +65,6 @@
 	info << infos
 
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] deleted one of [key]'s notes."))
-	log_admin("[key_name_admin(usr)] deleted one of [key]'s notes.")
 
 	qdel(info)
 

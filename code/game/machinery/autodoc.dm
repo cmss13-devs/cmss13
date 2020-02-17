@@ -550,7 +550,6 @@
 	if(occupant)
 		if(isXeno(usr)) // let xenos eject people hiding inside.
 			message_staff("[key_name(usr)] ejected [key_name(occupant)] from the autodoc.")
-			log_admin("[key_name(usr)] ejected [key_name(occupant)] from the autodoc.")
 			go_out()
 			add_fingerprint(usr)
 			return
@@ -571,7 +570,6 @@
 			surgery = 0
 			// message_staff for now, may change to message_admins later
 			message_staff("[key_name(usr)] ejected [key_name(occupant)] from the autodoc during surgery causing damage.")
-			log_admin("[key_name(usr)] ejected [key_name(occupant)] from the autodoc during surgery causing damage.")
 		go_out()
 		add_fingerprint(usr)
 

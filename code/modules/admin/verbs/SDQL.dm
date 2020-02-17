@@ -7,7 +7,6 @@
 	set category = "Admin"
 	if(!check_rights(R_DEBUG))  //Shouldn't happen... but just to be safe.
 		message_admins(SPAN_DANGER("ERROR: Non-admin [usr.key] attempted to execute a SDQL query!"))
-		log_admin("Non-admin [usr.key] attempted to execute a SDQL query!")
 
 	var/list/query_list = SDQL_tokenize(query_text)
 

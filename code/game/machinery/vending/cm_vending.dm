@@ -94,6 +94,7 @@
 
 
 /obj/structure/machinery/cm_vending/attackby(obj/item/W, mob/user)
+	// Repairing process
 	if(isscrewdriver(W))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
@@ -2392,6 +2393,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 	desc = "Medical Pharmaceutical dispenser. Provided by Weston-Yamada Pharmaceuticals Division(TM)."
 	icon_state = "med"
 	req_access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY)
+	wrenchable = TRUE
 
 /obj/structure/machinery/cm_vending/sorted/medical/New()
 	..()
@@ -2499,6 +2501,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 	name = "\improper MM Blood Dispenser"
 	desc = "Marine Med brand Blood Pack Dispensery"
 	icon_state = "bloodvendor"
+	wrenchable = FALSE
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood/populate_product_list(var/scale)
 	listed_products = list(

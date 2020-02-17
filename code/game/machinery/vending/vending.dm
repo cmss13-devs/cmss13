@@ -67,7 +67,7 @@
 	var/obj/item/spacecash/ewallet/ewallet
 	var/is_tipped_over = FALSE
 	var/hacking_safety = 0 //1 = Will never shoot inventory or allow all access
-	var/wrenchable = TRUE
+	wrenchable = TRUE
 	var/vending_dir
 
 /obj/structure/machinery/vending/New()

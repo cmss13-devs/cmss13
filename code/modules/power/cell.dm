@@ -60,34 +60,6 @@
 	if(crit_fail)
 		to_chat(user, SPAN_DANGER("This power cell seems to be faulty."))
 
-/*
-/obj/item/cell/attack_self(mob/user as mob)
-	src.add_fingerprint(user)
-//	if(ishuman(user))
-//		var/mob/living/carbon/human/H = user
-//		var/obj/item/clothing/gloves/space_ninja/SNG = H.gloves
-//		if(!istype(SNG) || !SNG.candrain || !SNG.draining) return
-//
-//		SNG.drain("CELL",src,H.wear_suit)
-	return ..()
-*/
-/obj/item/cell/attackby(obj/item/W, mob/user)
-	..()
-	if(istype(W, /obj/item/reagent_container/syringe))
-		var/obj/item/reagent_container/syringe/S = W
-
-		to_chat(user, "You inject the solution into the power cell.")
-
-		if(S.reagents.has_reagent("phoron", 5))
-
-			rigged = 1
-
-			log_admin("LOG: [user.name] ([user.ckey]) injected a power cell with phoron, rigging it to explode.")
-			message_admins("LOG: [user.name] ([user.ckey]) injected a power cell with phoron, rigging it to explode.")
-
-		S.reagents.clear_reagents()
-
-
 /obj/item/cell/proc/explode()
 	var/turf/T = get_turf(src.loc)
 /*

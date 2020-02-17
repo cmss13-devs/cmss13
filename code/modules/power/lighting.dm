@@ -644,28 +644,6 @@
 			brightness = rand(4,6)
 	update()
 
-
-// attack bulb/tube with object
-// if a syringe, can inject phoron to make it explode
-/obj/item/light_bulb/attackby(var/obj/item/I, var/mob/user)
-	..()
-	if(istype(I, /obj/item/reagent_container/syringe))
-		var/obj/item/reagent_container/syringe/S = I
-
-		to_chat(user, "You inject the solution into the [src].")
-
-		if(S.reagents.has_reagent("phoron", 5))
-
-			log_admin("LOG: [user.name] ([user.ckey]) injected a light with phoron, rigging it to explode.")
-			message_admins("LOG: [user.name] ([user.ckey]) injected a light with phoron, rigging it to explode.")
-
-			rigged = 1
-
-		S.reagents.clear_reagents()
-	else
-		..()
-	return
-
 // called after an attack with a light item
 // shatter light, unless it was an attempt to put it in a light socket
 // now only shatter if the intent was harm

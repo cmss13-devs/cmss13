@@ -197,7 +197,7 @@
 		return FALSE
 	else
 		// Wrenching is faster if we are better at engineering
-		var/timer = max(10, 40 - user.mind.cm_skills.get_skill_level(SKILL_ENGINEER) * 10)
+		var/timer = max(10, 40 - user.skills.get_skill_level(SKILL_ENGINEER) * 10)
 		if(do_after(usr, timer, INTERRUPT_ALL, BUSY_ICON_BUILD))
 			anchored = !anchored
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)

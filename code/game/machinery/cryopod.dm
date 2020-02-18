@@ -337,9 +337,9 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 						if(JOB_SQUAD_SPECIALIST)
 							S.num_specialists--
 							//we make the set this specialist took if any available again
-							if(H.mind.cm_skills)
+							if(H.skills)
 								var/set_name
-								switch(H.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS))
+								switch(H.skills.get_skill_level(SKILL_SPEC_WEAPONS))
 									if(SKILL_SPEC_ROCKET)
 										set_name = "Demolitionist Set"
 									if(SKILL_SPEC_GRENADIER)

@@ -690,12 +690,8 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		if(!H.mind)
-			to_chat(usr, "This can't be used on humans without a mind.")
-			return
-
-		if(!H.mind.cm_skills)
-			H.mind.cm_skills = new /datum/skills/pfc(H.mind)
+		if(!H.skills)
+			H.skills = new /datum/skills/pfc(H)
 
 		var/selected_skill = input("Please choose a skill to edit.","Skills",null) as null|anything in list("cqc","endurance","engineer", "construction","firearms", "pistols", "rifles", "smgs", "shotguns", "heavy_weapons","smartgun","spec_weapons","leadership","medical","surgery","research","melee_weapons","pilot","police","powerloader")
 		if(!selected_skill)
@@ -703,10 +699,6 @@ body
 
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
-			return
-
-		if(!H.mind)
-			to_chat(usr, "Mob lost its mind.")
 			return
 
 		var/new_skill_level = input("Select a new level for the [selected_skill] skill ","New Skill Level") as null|num
@@ -717,11 +709,7 @@ body
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
 
-		if(!H.mind)
-			to_chat(usr, "Mob lost its mind.")
-			return
-
-		H.mind.cm_skills.set_skill(selected_skill, new_skill_level)
+		H.skills.set_skill(selected_skill, new_skill_level)
 		to_chat(usr, "[H]'s [selected_skill] skill is now set to [new_skill_level].")
 
 

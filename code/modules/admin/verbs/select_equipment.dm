@@ -17,7 +17,7 @@
 	if(newrank != "Custom")
 		var/datum/job/J = RoleAuthority.roles_by_name[newrank]
 		H.mind.role_comm_title = J.get_comm_title()
-		H.mind.set_cm_skills(J.get_skills())
+		H.set_skills(J.get_skills())
 		if(istype(I))
 			I.access = J.get_access()
 			I.rank = J.title
@@ -85,7 +85,7 @@
 				return
 
 			var/datum/job/J = RoleAuthority.roles_by_name[newskillset]
-			H.mind.set_cm_skills(J.get_skills())
+			H.set_skills(J.get_skills())
 
 /client/proc/cmd_admin_dress(var/mob/living/carbon/human/M in mob_list)
 	set category = null

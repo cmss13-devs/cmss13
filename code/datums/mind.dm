@@ -44,9 +44,6 @@
 	var/assigned_role = ""
 	var/special_role = ""
 
-	var/datum/skills/cm_skills = null //the knowledge you have about certain abilities and actions (e.g. do you how to do surgery?)
-								//see skills.dm in #define folder and code/datums/skills.dm for more info
-
 	var/role_alt_title
 	var/role_comm_title
 
@@ -230,7 +227,7 @@
 			if(H.mind)
 				for(var/datum/job/J in get_all_jobs())
 					if(J.title == new_role)
-						H.mind.set_cm_skills(J.get_skills()) //give new role's job_knowledge to us.
+						H.set_skills(J.get_skills()) //give new role's job_knowledge to us.
 						H.mind.special_role = J.special_role
 						H.mind.role_alt_title = J.get_alternative_title(src)
 						H.mind.role_comm_title = J.get_comm_title()
@@ -392,14 +389,6 @@
 		ticker.mode.traitors += src
 		special_role = "traitor"
 
-/datum/mind/proc/set_cm_skills(skills_path)
-	if(cm_skills)
-		qdel(cm_skills)
-	if(!skills_path)
-		cm_skills = null
-	else
-		cm_skills = new skills_path(src)
-
 /datum/mind/proc/setup_human_stats()
 	if(!player_entity)
 		player_entity = setup_player_entity(ckey)
@@ -440,7 +429,7 @@
 				for(var/datum/job/J in get_all_jobs())
 					if(J.title == I.rank)
 						mind.assigned_role = J.title
-						mind.set_cm_skills(J.get_skills())
+						set_skills(J.get_skills())
 						mind.special_role = J.special_role
 						mind.role_alt_title = J.get_alternative_title(src)
 						mind.role_comm_title = J.get_comm_title()
@@ -448,9 +437,6 @@
 	//if not, we give the mind default job_knowledge and assigned_role
 	if(!mind.assigned_role)
 		mind.assigned_role = JOB_SQUAD_MARINE //default
-		if(mind.cm_skills)
-			qdel(mind.cm_skills)
-		mind.cm_skills = null //no restriction on what we can do.
 
 //XENO
 /mob/living/carbon/Xenomorph/mind_initialize()

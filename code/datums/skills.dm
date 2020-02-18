@@ -6,7 +6,7 @@
 /datum/skill/proc/get_skill_level()
 	return skill_level
 
-/datum/skill/proc/set_skill(var/new_level, var/datum/mind/owner)
+/datum/skill/proc/set_skill(var/new_level, var/mob/owner)
 	skill_level = new_level
 
 /datum/skill/proc/is_skilled(var/req_level, var/is_explicit = FALSE)
@@ -72,12 +72,12 @@
 	skill_name = SKILL_LEADERSHIP
 	skill_level = SKILL_LEAD_NOVICE
 
-/datum/skill/leadership/set_skill(var/new_level, var/datum/mind/owner)
+/datum/skill/leadership/set_skill(var/new_level, var/mob/owner)
 	..()
 	if(!owner)
 		return
 
-	var/mob/living/M = owner.current
+	var/mob/living/M = owner
 	if(!ishuman(M))
 		return
 
@@ -129,13 +129,13 @@
 // This is to organize and provide a common interface to the huge heap of skills there are
 /datum/skills
 	var/name //the name of the skillset
-	var/datum/mind/owner = null // the mind that has this skillset
+	var/mob/owner = null // the mind that has this skillset
 
 	// List of skill datums.
 	// Also, if this is populated when the datum is created, it will set the skill levels automagically
 	var/list/skills = list()
 
-/datum/skills/New(var/datum/mind/skillset_owner)
+/datum/skills/New(var/mob/skillset_owner)
 	owner = skillset_owner
 
 	// Setup every single skill

@@ -86,8 +86,8 @@
 			M.flick_attack_overlay(src, "punch")
 
 			var/max_dmg = 5
-			if(M.mind && M.mind.cm_skills)
-				max_dmg += M.mind.cm_skills.get_skill_level(SKILL_CQC)
+			if(M.skills)
+				max_dmg += M.skills.get_skill_level(SKILL_CQC)
 			var/damage = rand(0, max_dmg)
 			if(!damage)
 				playsound(loc, attack.miss_sound, 25, 1)
@@ -152,11 +152,11 @@
 						return W.afterattack(target,src)
 
 			var/randn = rand(1, 100)
-			if(M.mind && M.mind.cm_skills)
-				randn -= 5 * M.mind.cm_skills.get_skill_level(SKILL_CQC) //attacker's martial arts training
+			if(M.skills)
+				randn -= 5 * M.skills.get_skill_level(SKILL_CQC) //attacker's martial arts training
 
-			if(mind && mind.cm_skills)
-				randn += 5 * mind.cm_skills.get_skill_level(SKILL_CQC) //defender's martial arts training
+			if(skills)
+				randn += 5 * skills.get_skill_level(SKILL_CQC) //defender's martial arts training
 
 
 			if (randn <= 25)

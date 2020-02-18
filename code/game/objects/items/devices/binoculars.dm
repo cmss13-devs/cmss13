@@ -88,8 +88,6 @@
 /obj/item/device/binoculars/range/proc/acquire_target(atom/A, mob/living/carbon/human/user)
 	set waitfor = 0
 
-	if(!user.mind)
-		return
 	if(coord)
 		to_chat(user, SPAN_WARNING("You're already targeting something."))
 		return
@@ -98,8 +96,8 @@
 		return
 
 	var/acquisition_time = target_acquisition_delay
-	if(user.mind.cm_skills)
-		acquisition_time = max(15, acquisition_time - 25*user.mind.cm_skills.get_skill_level(SKILL_LEADERSHIP))
+	if(user.skills)
+		acquisition_time = max(15, acquisition_time - 25*user.skills.get_skill_level(SKILL_LEADERSHIP))
 
 	var/datum/squad/S = user.assigned_squad
 
@@ -212,9 +210,6 @@
 /obj/item/device/binoculars/range/designator/acquire_target(atom/A, mob/living/carbon/human/user)
 	set waitfor = 0
 
-	if(!user.mind)
-		return
-
 	if(laser || coord)
 		to_chat(user, SPAN_WARNING("You're already targeting something."))
 		return
@@ -224,8 +219,8 @@
 		return
 
 	var/acquisition_time = target_acquisition_delay
-	if(user.mind.cm_skills)
-		acquisition_time = max(15, acquisition_time - 25*user.mind.cm_skills.get_skill_level(SKILL_LEADERSHIP))
+	if(user.skills)
+		acquisition_time = max(15, acquisition_time - 25*user.skills.get_skill_level(SKILL_LEADERSHIP))
 
 	var/datum/squad/S = user.assigned_squad
 

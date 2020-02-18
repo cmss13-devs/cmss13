@@ -390,8 +390,8 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	if(!ticker)
 		alert("Wait until the game starts")
 		return
-	if(M.mind)
-		M.mind.cm_skills = null // No restrictions
+	if(M)
+		M.skills = null // No restrictions
 	else
 		alert("Invalid mob")
 	 

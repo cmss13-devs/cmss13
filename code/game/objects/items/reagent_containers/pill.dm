@@ -65,8 +65,8 @@ var/global/list/randomized_pill_icons
 			SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] a pill."))
 
 		var/ingestion_time = 30
-		if(user.mind && user.mind.cm_skills)
-			ingestion_time = max(10, 30 - 10*user.mind.cm_skills.get_skill_level(SKILL_MEDICAL))
+		if(user.skills)
+			ingestion_time = max(10, 30 - 10*user.skills.get_skill_level(SKILL_MEDICAL))
 
 		if(!do_after(user, ingestion_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)) return
 

@@ -12,7 +12,7 @@
 	able_to_fire(mob/living/user)
 		. = ..()
 		if(. && istype(user)) //Let's check all that other stuff first.
-			if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)
+			if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)
 				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 				return 0
 
@@ -257,7 +257,7 @@
 /obj/item/weapon/gun/rifle/m4ra/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
-		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)
+		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
 
@@ -874,7 +874,7 @@
 /obj/item/weapon/gun/launcher/m92/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
-		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
+		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return FALSE
 		if(grenades.len)
@@ -1005,12 +1005,12 @@
 /obj/item/weapon/gun/launcher/m81/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
-		if(user.mind && user.mind.cm_skills)
+		if(user.mind && user.skills)
 			if(riot_version)
 				if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
 					to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 					return 0
-			else if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
+			else if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
 				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 				return 0
 
@@ -1105,7 +1105,7 @@
 			click_empty(user)
 			to_chat(user, SPAN_WARNING("You can't fire that here!"))
 			return 0*/
-		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.mind.cm_skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ROCKET)
+		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ROCKET)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
 		if(current_mag.current_rounds > 0)

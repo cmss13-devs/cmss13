@@ -164,8 +164,8 @@
 		return
 
 	var/armor = owner.getarmor_organ(src, ARMOR_INTERNALDAMAGE)
-	if(owner.mind && owner.mind.cm_skills)
-		armor += owner.mind.cm_skills.get_skill_level(SKILL_ENDURANCE)*5
+	if(owner.mind && owner.skills)
+		armor += owner.skills.get_skill_level(SKILL_ENDURANCE)*5
 
 	var/damage = armor_damage_reduction(config.marine_organ_damage, brute, armor, sharp ? ARMOR_SHARP_INTERNAL_PENETRATION : 0, 0, 0, max_damage ? (100*(max_damage-brute_dam) / max_damage) : 100)
 
@@ -181,8 +181,8 @@
 		return
 
 	var/armor = owner.getarmor_organ(src, ARMOR_INTERNALDAMAGE)
-	if(owner.mind && owner.mind.cm_skills)
-		armor += owner.mind.cm_skills.get_skill_level(SKILL_ENDURANCE)*5
+	if(owner.mind && owner.skills)
+		armor += owner.skills.get_skill_level(SKILL_ENDURANCE)*5
 
 	var/damage = armor_damage_reduction(config.marine_organ_damage, brute*3, armor, 0, 0, 0, max_damage ? (100*(max_damage-brute_dam) / max_damage) : 100)
 
@@ -364,8 +364,8 @@ This function completely restores a damaged organ to perfect condition.
 		return
 
 	var/armor = owner.getarmor_organ(src, ARMOR_INTERNALDAMAGE)
-	if(owner.mind && owner.mind.cm_skills)
-		armor += owner.mind.cm_skills.get_skill_level(SKILL_ENDURANCE)*5
+	if(owner.mind && owner.skills)
+		armor += owner.skills.get_skill_level(SKILL_ENDURANCE)*5
 
 	var/damage_ratio = armor_damage_reduction(config.marine_organ_damage, 2*damage/3, armor, 0, 0, 0, max_damage ? (100*(max_damage - brute_dam) / max_damage) : 100)
 	if(prob(damage_ratio) && damage > 10)

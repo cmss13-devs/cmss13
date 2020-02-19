@@ -1,0 +1,9 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - rscdel: "All foldable boxes, MREs and PFC kits won't leave paper scraps anymore to reduce clutter."
+  - imageadd: "Added new sprites for Specialist, M56B Smartgun, Sentry kit boxes as well as empty version."
+  - tweak: "Tweaked names and descriptions for aforementioned boxes."
+  - bugfix: "Fixed M45 ghillie helmet having a standard M10 helmet name."

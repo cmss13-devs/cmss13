@@ -674,16 +674,16 @@
 	if ( contents.len )
 		return
 
-	if ( !ispath(foldable) )
+	if(!foldable)
 		return
 
 	// Close any open UI windows first
 	for (var/mob/M in content_watchers)
 		close(M)
 
-	// Now make the cardboard
+	if(ispath(foldable))
+		new foldable(get_turf(src))
 	to_chat(user, SPAN_NOTICE("You fold [src] flat."))
-	new foldable(get_turf(src))
 	qdel(src)
 
 /obj/item/storage/afterattack(atom/target, mob/user, proximity)

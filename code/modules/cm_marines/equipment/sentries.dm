@@ -30,15 +30,24 @@
 	gun_type = null
 
 /obj/item/storage/box/sentry
-	name = "\improper UA-571-C sentry crate"
+	name = "\improper UA-571-C sentry case"
 	desc = "A large case containing all you need to set up an automated sentry, minus the tools."
-	icon = 'icons/obj/items/weapons/guns/attachments.dmi'
-	icon_state = "sentry_case"
+	icon = 'icons/obj/items/storage.dmi'
+	icon_state = "kit_case"
 	w_class = SIZE_HUGE
 	storage_slots = 6
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
 
-/obj/item/storage/box/sentry/New()
+/obj/item/storage/box/sentry/update_icon()
+	if(overlays.len)
+		overlays.Cut()
+	if(contents.len)
+		icon_state = "kit_case"
+		overlays += image(icon, "sentry")
+	else
+		icon_state = "kit_case_e"
+
+/obj/item/storage/box/sentry/Initialize()
 	..()
 	var/obj/item/stack/sheet/plasteel/plasteel_stack = new(src)
 	plasteel_stack.amount = 20
@@ -48,6 +57,7 @@
 	new /obj/item/device/turret_sensor(src)
 	new /obj/item/cell/high(src)
 	new /obj/item/ammo_magazine/sentry(src)
+	update_icon()
 
 /obj/structure/machinery/marine_turret_frame
 	name = "\improper UA 571-C turret frame"

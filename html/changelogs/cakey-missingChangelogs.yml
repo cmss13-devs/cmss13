@@ -1,0 +1,7 @@
+author: Cakey
+
+delete-after: True
+
+changes: 
+  - rscdel: "Removed the reduced attachment delay for the L42A barrel slot."
+  - rscdel: "Removed hugger protection from the space helmet, welding mask, and other accessible headgear."

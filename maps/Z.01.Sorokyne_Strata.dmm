@@ -15487,7 +15487,7 @@
 /obj/item/explosive/grenade/phosphorus,
 /obj/item/explosive/grenade/phosphorus,
 /obj/item/folder/red,
-/obj/item/magazine_box/shotgun/buckshot,
+/obj/item/ammo_box/magazine/shotgun/buckshot,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},

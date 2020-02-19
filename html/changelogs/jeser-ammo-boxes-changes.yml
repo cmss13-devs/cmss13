@@ -1,0 +1,16 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - imageadd: "Ammo boxes - Changed all ammo boxes sprites to work as overlays. Please, report any bugs with incorrect overlays on them."
+  - bugfix: "Ammo boxes - Fixed bug with ammunition box not displaying on mob when worn on back. [Ndrbtl]"
+  - rscadd: "Ammo boxes - Added Incendiary and Beanbag slugs boxes, Type71 AP magazine box, Type71 Regular and AP ammunition boxes for event purposes."
+  - rscadd: "Ammo boxes - Added M44 Regular, Marksman and Heavy speed loaders boxes. Each contains 16 speed loaders. Available for ordering instead of old crates with speed loaders and also can appear in Requisitions Munition vendor during highpop."
+  - rscadd: "Ammo boxes - Clicking big shotgun shell box (100 shells) with box of shotgun shells (25 shells) will start transfering process. [#8555]"
+  - imageadd: "Ammo boxes - Added sprites for new ammo boxes."
+  - imageadd: "Ammo boxes - Added sprite for Type71 ammunition box when worn on back."
+  - tweak: "Free ASRS crates - Ammunition boxes will appear more often, while magazine boxes will appear less. Aadded M44 Marksman speed loaders crate."
+  - tweak: "Cardboard - Added all missing USCM ammo boxes to carboard building menu. [#8239]"
+  - rscadd: "Cardboard - Activating empty ammo box in hands will unfold it into cardboard sheet."
+  - imageadd: "Added sprites for M56 Cupola and RE-RE700 Frontal Cannon magazines."

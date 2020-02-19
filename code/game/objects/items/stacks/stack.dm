@@ -174,7 +174,7 @@
 			usr.drop_inv_item_on_ground(oldsrc)
 			qdel(oldsrc)
 
-		if(istype(O, /obj/item) && ishuman(usr) && !usr.put_in_inactive_hand(O))
+		if(istype(O, /obj/item) && !istype(O, /obj/item/ammo_box) && ishuman(usr) && !usr.put_in_inactive_hand(O))
 			var/obj/item/stack/IH = usr.get_inactive_hand()
 			var/obj/item/stack/S = O
 			if (istype(IH) && istype(S) && IH.stack_id == S.stack_id)

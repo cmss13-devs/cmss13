@@ -153,7 +153,7 @@
 /obj/structure/largecrate/supply/ammo/m41a_box
 	name = "\improper M41A ammunition box case (x4)"
 	desc = "An ammunition case containing four M41A 600 round boxes of ammunition."
-	supplies = list(/obj/item/big_ammo_box = 4)
+	supplies = list(/obj/item/ammo_box/rounds = 4)
 
 /obj/structure/largecrate/supply/ammo/shotgun
 	name = "12 Gauge ammunition crate (x20)"

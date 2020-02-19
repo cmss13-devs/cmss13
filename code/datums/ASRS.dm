@@ -32,7 +32,7 @@
 /datum/supply_packs/ammo_rounds_box_smg_ap/asrs/
 	buyable = 0
 	group = "Munition"
-	cost = ASRS_VERY_LOW_WEIGHT
+	cost = ASRS_LOW_WEIGHT
 
 /datum/supply_packs/ammo_rounds_box_rifle/asrs/
 	buyable = 0
@@ -42,56 +42,59 @@
 /datum/supply_packs/ammo_rounds_box_rifle_ap/asrs/
 	buyable = 0
 	group = "Munition"
-	cost = ASRS_VERY_LOW_WEIGHT
+	cost = ASRS_LOW_WEIGHT
 
 /datum/supply_packs/ammo_m4a3_mag_box/asrs/
 	buyable = 0
 	group = "Munition"
-	cost = ASRS_MEDIUM_WEIGHT
+	cost = ASRS_LOW_WEIGHT
 
 /datum/supply_packs/ammo_m4a3_mag_box_ap/asrs/
 	buyable = 0
 	group = "Munition"
-	cost = ASRS_LOW_WEIGHT
+	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs/ammo_mod88_mag_box_ap/asrs/
 	buyable = 0
 	group = "Munition"
 	cost = ASRS_LOW_WEIGHT
 
-/datum/supply_packs/ammo_regular_m44/asrs/
+/datum/supply_packs/ammo_m44_mag_box/asrs/
 	buyable = 0
 	group = "Munition"
+	cost = ASRS_LOW_WEIGHT
+
+/datum/supply_packs/ammo_m44_mag_box_ap/asrs/
+	buyable = 0
+	group = "Munition"
+	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs/ammo_smg_mag_box/asrs/
 	buyable = 0
 	group = "Munition"
-	cost = ASRS_LOW_WEIGHT
+	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs/ammo_smg_mag_box_ap/asrs/
 	buyable = 0
 	group = "Munition"
-	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs/ammo_mag_box/asrs/
 	buyable = 0
 	group = "Munition"
-	cost = ASRS_LOW_WEIGHT
+	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs/ammo_mag_box_ap/asrs/
 	buyable = 0
 	group = "Munition"
-	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs/ammo_l42_mag_box/asrs/
 	buyable = 0
 	group = "Munition"
-	cost = ASRS_LOW_WEIGHT
+	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs/ammo_l42_mag_box_ap/asrs/
 	buyable = 0
 	group = "Munition"
-	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs/ammo_shell_box/asrs/
 	buyable = 0

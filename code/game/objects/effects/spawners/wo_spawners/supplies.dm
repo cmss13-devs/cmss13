@@ -197,27 +197,27 @@
 
 /obj/effect/landmark/wo_supplies/ammo/box/m41a
 	icon_state = "big_ammo_box"
-	stuff = list(/obj/item/big_ammo_box)
+	stuff = list(/obj/item/ammo_box/rounds)
 
 /obj/effect/landmark/wo_supplies/ammo/box/smg
 	icon_state = "big_ammo_box_m39"
-	stuff = list(/obj/item/big_ammo_box/smg)
+	stuff = list(/obj/item/ammo_box/rounds/smg)
 
 /obj/effect/landmark/wo_supplies/ammo/box/m41amag
 	icon_state = "mag_box_m41"
-	stuff = list(/obj/item/magazine_box)
+	stuff = list(/obj/item/ammo_box/magazine)
 
 /obj/effect/landmark/wo_supplies/ammo/box/slug
 	icon_state = "shell_box"
-	stuff = list(/obj/item/magazine_box/shotgun)
+	stuff = list(/obj/item/ammo_box/magazine/shotgun)
 
 /obj/effect/landmark/wo_supplies/ammo/box/buck
 	icon_state = "shell_box_buck"
-	stuff = list(/obj/item/magazine_box/shotgun/buckshot)
+	stuff = list(/obj/item/ammo_box/magazine/shotgun/buckshot)
 
 /obj/effect/landmark/wo_supplies/ammo/box/smgmag
 	icon_state = "mag_box_m39"
-	stuff = list(/obj/item/magazine_box/m39)
+	stuff = list(/obj/item/ammo_box/magazine/m39)
 
 
 
@@ -226,24 +226,24 @@
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/m41aap
 	icon_state = "big_ammo_box_ap"
-	stuff = list(/obj/item/big_ammo_box/ap)
+	stuff = list(/obj/item/ammo_box/rounds/ap)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/m41aapmag
 	icon_state = "mag_box_m41_ap"
-	stuff = list(/obj/item/magazine_box/ap)
+	stuff = list(/obj/item/ammo_box/magazine/ap)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/m41aincend
 	icon_state = "mag_box_m41_incen"
-	stuff = list(/obj/item/magazine_box/incen)
+	stuff = list(/obj/item/ammo_box/magazine/incen)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/m41aextend
 	icon_state = "mag_box_m41_ext"
-	stuff = list(/obj/item/magazine_box/ext)
+	stuff = list(/obj/item/ammo_box/magazine/ext)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/smgap
 	icon_state = "mag_box_m39_ap"
-	stuff = list(/obj/item/magazine_box/m39/ap)
+	stuff = list(/obj/item/ammo_box/magazine/m39/ap)
 
 /obj/effect/landmark/wo_supplies/ammo/box/rare/smgextend
 	icon_state = "mag_box_m39_ext"
-	stuff = list(/obj/item/magazine_box/m39/ext)
+	stuff = list(/obj/item/ammo_box/magazine/m39/ext)

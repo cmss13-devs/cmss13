@@ -1804,8 +1804,8 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 				if(A.current_rounds < A.max_rounds)
 					to_chat(user, SPAN_WARNING("[A] isn't full. Fill it before you can restock it."))
 					return
-			if(istype(item_to_stock, /obj/item/magazine_box))
-				var/obj/item/magazine_box/A = item_to_stock
+			if(istype(item_to_stock, /obj/item/ammo_box/magazine))
+				var/obj/item/ammo_box/magazine/A = item_to_stock
 				if(A.contents.len < A.num_of_magazines)
 					to_chat(user, SPAN_WARNING("[A] is not full."))
 					return
@@ -1813,8 +1813,8 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 					if(M.current_rounds != M.max_rounds)
 						to_chat(user, SPAN_WARNING("Not all magazines in [A] are full."))
 						return
-			if(istype(item_to_stock, /obj/item/big_ammo_box))
-				var/obj/item/big_ammo_box/A = item_to_stock
+			if(istype(item_to_stock, /obj/item/ammo_box/rounds))
+				var/obj/item/ammo_box/rounds/A = item_to_stock
 				if(A.bullet_amount < A.max_bullet_amount)
 					to_chat(user, SPAN_WARNING("[A] is not full."))
 					return
@@ -2020,27 +2020,30 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Incinerator Tank", round(scale * 2.5), /obj/item/ammo_magazine/flamer_tank, "black"),
 
 		list("Ammunition Boxes", -1, null, null),
-		list("SMG ammunition box (10x20mm)", round(scale * 0.9), /obj/item/big_ammo_box/smg, "black"),
-		list("SMG ammunition box (10x20mm AP)", round(scale * 0.75), /obj/item/big_ammo_box/smg/ap, "black"),
-		list("Rifle ammunition box (10x24mm)", round(scale * 0.9), /obj/item/big_ammo_box, "black"),
-		list("Rifle ammunition box (10x24mm AP)", round(scale * 0.75), /obj/item/big_ammo_box/ap, "black"),
+		list("SMG ammunition box (10x20mm)", round(scale * 0.9), /obj/item/ammo_box/rounds/smg, "black"),
+		list("SMG ammunition box (10x20mm AP)", round(scale * 0.75), /obj/item/ammo_box/rounds/smg/ap, "black"),
+		list("Rifle ammunition box (10x24mm)", round(scale * 0.9), /obj/item/ammo_box/rounds, "black"),
+		list("Rifle ammunition box (10x24mm AP)", round(scale * 0.75), /obj/item/ammo_box/rounds/ap, "black"),
 
 		list("Magazine Boxes", -1, null, null),
-		list("Magazine Box (M4A3 x 16)", round(scale * 0.9), /obj/item/magazine_box/m4a3, "black"),
-		list("Magazine Box (88 Mod 4 AP x 16)", round(scale * 0.7), /obj/item/magazine_box/mod88, "black"),
-		list("Magazine Box (SU-6 x 16)", round(scale * 0.3), /obj/item/magazine_box/su6, "black"),
-		list("Magazine Box (VP78 x 16)", round(scale * 0.2), /obj/item/magazine_box/vp78, "black"),
-		list("Magazine Box (L42A x 16)", round(scale * 0.8), /obj/item/magazine_box/l42a, "black"),
-		list("Magazine Box (AP L42A x 16)", round(scale * 0.7), /obj/item/magazine_box/l42a/ap, "black"),
-		list("Magazine Box (M39 x 12)", round(scale * 0.8), /obj/item/magazine_box/m39, "black"),
-		list("Magazine Box (AP M39 x 12)", round(scale * 0.7), /obj/item/magazine_box/m39/ap, "black"),
-		list("Magazine Box (Ext m39 x 10)", round(scale * 0.7), /obj/item/magazine_box/m39/ext, "black"),
-		list("Magazine Box (M41A x 10)", round(scale * 0.8), /obj/item/magazine_box, "black"),
-		list("Magazine Box (AP M41A x 10)", round(scale * 0.7), /obj/item/magazine_box/ap, "black"),
-		list("Magazine Box (Ext M41A x 8)", round(scale * 0.7), /obj/item/magazine_box/ext, "black"),
-		list("Shotgun Shell Box (Buckshot x 100)", round(scale * 1), /obj/item/magazine_box/shotgun/buckshot, "black"),
-		list("Shotgun Shell Box (Slugs x 100)", round(scale * 1), /obj/item/magazine_box/shotgun, "black"),
-		list("Shotgun Shell Box (Flechette x 100)", round(scale * 1), /obj/item/magazine_box/shotgun/flechette, "black")
+		list("Magazine Box (M4A3 x 16)", round(scale * 0.9), /obj/item/ammo_box/magazine/m4a3, "black"),
+		list("Magazine Box (88 Mod 4 AP x 16)", round(scale * 0.7), /obj/item/ammo_box/magazine/mod88, "black"),
+		list("Magazine Box (SU-6 x 16)", round(scale * 0.3), /obj/item/ammo_box/magazine/su6, "black"),
+		list("Magazine Box (VP78 x 16)", round(scale * 0.2), /obj/item/ammo_box/magazine/vp78, "black"),
+		list("Magazine Box (L42A x 16)", round(scale * 0.8), /obj/item/ammo_box/magazine/l42a, "black"),
+		list("Magazine Box (AP L42A x 16)", round(scale * 0.7), /obj/item/ammo_box/magazine/l42a/ap, "black"),
+		list("Magazine Box (M39 x 12)", round(scale * 0.8), /obj/item/ammo_box/magazine/m39, "black"),
+		list("Magazine Box (AP M39 x 12)", round(scale * 0.7), /obj/item/ammo_box/magazine/m39/ap, "black"),
+		list("Magazine Box (Ext m39 x 10)", round(scale * 0.7), /obj/item/ammo_box/magazine/m39/ext, "black"),
+		list("Magazine Box (M41A x 10)", round(scale * 0.8), /obj/item/ammo_box/magazine, "black"),
+		list("Magazine Box (AP M41A x 10)", round(scale * 0.7), /obj/item/ammo_box/magazine/ap, "black"),
+		list("Magazine Box (Ext M41A x 8)", round(scale * 0.7), /obj/item/ammo_box/magazine/ext, "black"),
+		list("Speed Loaders Box (M44 x 16)", round(scale * 0.8), /obj/item/ammo_box/magazine/m44, "black"),
+		list("Speed Loaders Box (Marksman M44 x 16)", round(scale * 0.2), /obj/item/ammo_box/magazine/m44/marksman, "black"),
+		list("Speed Loaders Box (Heavy M44 x 16)", round(scale * 0.5), /obj/item/ammo_box/magazine/m44/heavy, "black"),
+		list("Shotgun Shell Box (Buckshot x 100)", round(scale * 1), /obj/item/ammo_box/magazine/shotgun/buckshot, "black"),
+		list("Shotgun Shell Box (Slugs x 100)", round(scale * 1), /obj/item/ammo_box/magazine/shotgun, "black"),
+		list("Shotgun Shell Box (Flechette x 100)", round(scale * 1), /obj/item/ammo_box/magazine/shotgun/flechette, "black")
 		)
 
 

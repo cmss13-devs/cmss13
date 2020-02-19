@@ -285,17 +285,17 @@
 		/obj/item/ammo_magazine/revolver/heavy = round(scale * 10),
 
 		// AMMO BOXES
-		/obj/item/magazine_box/l42a = round(scale * 10) % 10,
-		/obj/item/magazine_box/l42a/ap = round(scale * 1),
-		/obj/item/magazine_box/m39 = round(scale * 20 / 12),
-		/obj/item/magazine_box/m39/ap = round(scale * 5 / 12),
-		/obj/item/magazine_box/m39/ext = round(scale * 10 / 10),
-		/obj/item/magazine_box = round(scale * 30 / 10),
-		/obj/item/magazine_box/ap = round(scale * 10 / 10),
-		/obj/item/magazine_box/ext = round(scale * 10 / 8),
-		/obj/item/magazine_box/shotgun/buckshot = round(scale * 10 / 3),
-		/obj/item/magazine_box/shotgun = round(scale * 15 / 3),
-		/obj/item/magazine_box/shotgun/flechette = round(scale * 5 / 12),
+		/obj/item/ammo_box/magazine/l42a = round(scale * 10) % 10,
+		/obj/item/ammo_box/magazine/l42a/ap = round(scale * 1),
+		/obj/item/ammo_box/magazine/m39 = round(scale * 20 / 12),
+		/obj/item/ammo_box/magazine/m39/ap = round(scale * 5 / 12),
+		/obj/item/ammo_box/magazine/m39/ext = round(scale * 10 / 10),
+		/obj/item/ammo_box/magazine = round(scale * 30 / 10),
+		/obj/item/ammo_box/magazine/ap = round(scale * 10 / 10),
+		/obj/item/ammo_box/magazine/ext = round(scale * 10 / 8),
+		/obj/item/ammo_box/magazine/shotgun/buckshot = round(scale * 10 / 3),
+		/obj/item/ammo_box/magazine/shotgun = round(scale * 15 / 3),
+		/obj/item/ammo_box/magazine/shotgun/flechette = round(scale * 5 / 12),
 
 		// MISCELLANEOUS
 		/obj/item/storage/large_holster/machete/full = round(scale * 10),

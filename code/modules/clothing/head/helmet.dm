@@ -589,8 +589,8 @@
 	specialty = "M50 tanker"
 
 /obj/item/clothing/head/helmet/marine/ghillie
-	name = "\improper M45 ghillie coif"
-	desc = "A lightweight, armored ghillie coif used by USCM snipers on recon missions."
+	name = "\improper M45 ghillie helmet"
+	desc = "A lightweight M45 helmet with ghillie coif used by USCM snipers on recon missions."
 	icon_state = "ghillie_coif"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -604,6 +604,7 @@
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	flags_marine_helmet = NO_FLAGS
 	flags_item = MOB_LOCK_ON_EQUIP
+	specialty = "M45 ghillie"
 
 /obj/item/clothing/head/helmet/marine/CO
 	name = "\improper M10 pattern captain helmet"

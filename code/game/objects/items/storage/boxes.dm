@@ -28,7 +28,7 @@
 	desc = "It's just an ordinary box."
 	icon_state = "box"
 	item_state = "syringe_kit"
-	foldable = /obj/item/paper/crumpled
+	foldable = TRUE
 	storage_slots = null
 	max_w_class = SIZE_SMALL //Changed because of in-game abuse
 	w_class = SIZE_LARGE //Changed becuase of in-game abuse
@@ -667,7 +667,6 @@
 	can_hold = list()
 	storage_slots = 4
 	max_w_class = 0
-	foldable = null
 	var/isopened = 0
 
 /obj/item/storage/box/MRE/New()
@@ -687,9 +686,6 @@
 
 /obj/item/storage/box/MRE/update_icon()
 	if(!contents.len)
-		var/turf/T = get_turf(src)
-		if(T)
-			new /obj/item/trash/uscm_mre(T)
 		qdel(src)
 	else if(!isopened)
 		isopened = 1

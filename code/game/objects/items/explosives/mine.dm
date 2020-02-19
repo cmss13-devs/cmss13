@@ -152,7 +152,7 @@
 		if("explosive")
 			create_shrapnel(loc, 12, dir, 60, , initial(name), source_mob)
 			sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
-			cell_explosion(loc, 60, 20, dir, initial(name), source_mob)
+			cell_explosion(loc, 60, 20, , initial(name), source_mob)
 			qdel(src)
 
 

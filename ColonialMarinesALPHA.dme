@@ -180,7 +180,6 @@
 #include "code\datums\soundOutput.dm"
 #include "code\datums\autocells\auto_cell.dm"
 #include "code\datums\autocells\explosion.dm"
-#include "code\datums\autocells\explosion_directed.dm"
 #include "code\datums\autocells\vomit_wave.dm"
 #include "code\datums\decorators\decorator.dm"
 #include "code\datums\diseases\addiction.dm"

@@ -31,8 +31,6 @@
 		  or weakened explosion
 */
 
-//#define DEBUG_EXPLOSIONS
-
 /datum/automata_cell/explosion
 	// Explosions only spread outwards and don't need to know their neighbors to propagate properly
 	neighbor_type = NEIGHBORS_NONE
@@ -42,7 +40,10 @@
 	// How much will the power drop off when the explosion propagates?
 	var/power_falloff = 20
 	// How much power does the explosion gain (or lose) by bouncing off walls?
-	var/reflection_multiplier = 1.1
+	var/reflection_power_multiplier = 0.9
+
+	//Diagonal cells have a small delay when branching off from a non-diagonal cell. This helps the explosion look circular
+	var/delay = 0
 
 	// Which direction is the explosion traveling?
 	// Note that this will be null for the epicenter
@@ -59,15 +60,11 @@
 	// See on_turf_entered
 	var/list/atom/exploded_atoms = list()
 
-	#ifdef DEBUG_EXPLOSIONS
-	var/obj/effect/decal/cleanable/vomit/vomit = null
-	#endif
+	var/obj/effect/particle_effect/shockwave/shockwave = null
 
 // If we're on a fake z teleport, teleport over
 /datum/automata_cell/explosion/birth()
-	#ifdef DEBUG_EXPLOSIONS
-	vomit = new(in_turf)
-	#endif
+	shockwave = new(in_turf)
 
 	var/obj/effect/step_trigger/teleporter_vector/V = locate() in in_turf
 	if(!V)
@@ -76,11 +73,9 @@
 	var/turf/new_turf = locate(in_turf.x + V.vector_x, in_turf.y + V.vector_y, in_turf.z)
 	transfer_turf(new_turf)
 
-#ifdef DEBUG_EXPLOSIONS
 /datum/automata_cell/explosion/death()
-	if(vomit)
-		qdel(vomit)
-#endif
+	if(shockwave)
+		qdel(shockwave)
 
 // Compare directions. If the other explosion is traveling in the same direction,
 // the explosion is amplified. If not, it's weakened
@@ -118,10 +113,6 @@
 
 	return is_stronger
 
-// Determine whether or not the explosion should be reflected and begin travelling in the opposite direction
-/datum/automata_cell/explosion/proc/should_reflect()
-	return istype(in_turf, /turf/closed/wall)
-
 // Get a list of all directions the explosion should propagate to before dying
 /datum/automata_cell/explosion/proc/get_propagation_dirs(var/reflected)
 	var/list/propagation_dirs = list()
@@ -130,23 +121,25 @@
 	if(isnull(direction))
 		return alldirs
 
-	// Only permit propagation in the same direction the explosion was travelling
-	// Unless the explosion got reflected. Go the opposite direction in that case
-	for(var/dir in cardinal)
-		if(dir & direction)
-			propagation_dirs += (reflected ? reverse_dir[dir] : dir)
-	for(var/dir in diagonals)
-		// do not fuck with these parentheses or operator precedence will give you fucking brainrot
-		if((dir & direction) == dir)
-			propagation_dirs += (reflected ? reverse_dir[dir] : dir)
+	var/dir = reflected ? reverse_dir[direction] : direction
+
+	if(dir in cardinal)
+		propagation_dirs += list(dir, turn(dir, 45), turn(dir, -45))
+	else
+		propagation_dirs += dir
 
 	return propagation_dirs
 
 // If you need to set vars on the new cell other than the basic ones
 /datum/automata_cell/explosion/proc/setup_new_cell(var/datum/automata_cell/explosion/E)
+	if(E.shockwave)
+		E.shockwave.alpha = E.power
 	return
 
 /datum/automata_cell/explosion/update_state(var/list/turf/neighbors)
+	if(delay > 0)
+		delay--
+		return
 	// The resistance here will affect the damage taken and the falloff in the propagated explosion
 	var/resistance = max(0, in_turf.get_explosion_resistance(direction))
 	for(var/atom/A in in_turf)
@@ -161,17 +154,23 @@
 		exploded_atoms += A
 		log_explosion(A, src)
 
-	// Bounce off the wall in the opposite direction, don't keep phasing through it
-	// Notice that since we do this after the ex_act()s,
-	// explosions will not bounce if they destroy a wall!
-	var/reflected = should_reflect()
-	if(reflected)
-		power *= reflection_multiplier
+	var/reflected = FALSE
 
 	// Epicenter is inside a wall if direction is null.
 	// Prevent it from slurping the entire explosion
 	if(!isnull(direction))
-		power -= resistance
+		// Bounce off the wall in the opposite direction, don't keep phasing through it
+		// Notice that since we do this after the ex_act()s,
+		// explosions will not bounce if they destroy a wall!
+		if(power < resistance)
+			reflected = TRUE
+			power *= reflection_power_multiplier
+		else
+			power -= resistance
+
+	if(power <= 0)
+		qdel(src)
+		return
 
 	// Propagate the explosion
 	var/list/to_spread = get_propagation_dirs(reflected)
@@ -199,6 +198,9 @@
 
 			// Set the direction the explosion is traveling in
 			E.direction = dir
+			//Diagonal cells have a small delay when branching off the center. This helps the explosion look circular
+			if(!direction && dir in diagonals)
+				E.delay = 1
 
 			setup_new_cell(E)
 
@@ -214,7 +216,7 @@
 
   When the cell processes, we simply don't blow up atoms that were tracked
   as having entered the turf.
-*/ 
+*/
 /datum/automata_cell/explosion/proc/on_turf_entered(var/atom/movable/A)
 	// Once is enough
 	if(A in exploded_atoms)
@@ -244,16 +246,7 @@
 	playsound(epicenter, 'sound/effects/explosionfar.ogg', 100, 1, round(power^2,1))
 	playsound(epicenter, "explosion", 75, 1, max(round(power,1),7))
 
-	var/datum/automata_cell/explosion/E = null
-	if(direction)
-		var/datum/automata_cell/explosion/directed/D = E
-		D = new /datum/automata_cell/explosion/directed(epicenter)
-		D.direction = direction
-		D.original_dir = direction
-
-		E = D
-	else
-		E = new /datum/automata_cell/explosion(epicenter)
+	var/datum/automata_cell/explosion/E = new /datum/automata_cell/explosion(epicenter)
 
 	// something went wrong :(
 	if(isnull(E))
@@ -261,6 +254,7 @@
 
 	E.power = power
 	E.power_falloff = falloff
+	E.direction = direction
 	E.explosion_source = explosion_source
 	E.explosion_source_mob = explosion_source_mob
 
@@ -312,3 +306,12 @@
 				firing_mob.attack_log += "\[[time_stamp()]\] <b>[firing_mob]/[firing_mob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firing_mob)]."
 
 				msg_admin_attack("[firing_mob] ([firing_mob.ckey]) blew up [M] ([M.ckey]) with \a [explosion_source] in [get_area(firing_mob)] ([location_of_mob.x],[location_of_mob.y],[location_of_mob.z]).", location_of_mob.x, location_of_mob.y, location_of_mob.z)
+
+
+/obj/effect/particle_effect/shockwave
+	name = "shockwave"
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "smoke"
+	anchored = 1
+	mouse_opacity = 0
+	layer = FLY_LAYER

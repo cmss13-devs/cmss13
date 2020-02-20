@@ -1,0 +1,7 @@
+author: Cakey
+
+delete-after: True
+
+changes: 
+  - tweak: "Default timelock requirements for jobs have been changed from Squad Marine to Squad Roles. This affects MT and CT."
+  - tweak: "Swapped Doctor and Squad Medic timelock requirements around."

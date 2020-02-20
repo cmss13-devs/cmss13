@@ -49,7 +49,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Doctor"
 	minimum_playtimes = list(
-		JOB_SQUAD_MEDIC = HOURS_3
+		JOB_SQUAD_ROLES = HOURS_3
 	)
 
 /datum/job/civilian/doctor/set_spawn_positions(var/count)

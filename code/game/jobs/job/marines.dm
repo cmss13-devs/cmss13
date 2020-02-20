@@ -72,7 +72,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
 	gear_preset = "USCM (Cryo) Squad Medic"
 	minimum_playtimes = list(
-		JOB_SQUAD_ROLES = HOURS_3
+		JOB_DOCTOR = HOURS_3
 	)
 
 /datum/job/marine/medic/generate_entry_message()

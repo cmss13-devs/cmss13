@@ -1126,7 +1126,7 @@
 		if(!target.caste.can_be_queen_healed)
 			to_chat(X, SPAN_XENOWARNING("This caste cannot be healed!"))
 			return
-		if(target.stat != DEAD && (!target.caste || target.caste.fire_immune || target.fire_stacks <= 0))
+		if(target.stat != DEAD && (!target.caste || target.caste.fire_immune || !target.on_fire))
 			if(target.health < target.maxHealth)
 				if(X.check_plasma(plasma_cost))
 					X.use_plasma(plasma_cost)

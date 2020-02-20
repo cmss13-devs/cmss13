@@ -456,7 +456,7 @@
 		act.update_button_icon()
 
 /mob/living/carbon/Xenomorph/proc/lunge(atom/A)
-	if(!A)
+	if(!A || !ismob(A))
 		return
 
 	if(!isturf(loc))
@@ -481,7 +481,7 @@
 	visible_message(SPAN_XENOWARNING("[src] lunges towards [A]!"), \
 	SPAN_XENOWARNING("You lunge at [A]!"))
 
-	used_lunge = 1 // triggered by start_pulling
+	used_lunge = TRUE // triggered by start_pulling
 	use_plasma(10)
 	launch_towards(get_step_towards(A, src), 6, SPEED_FAST, src)
 

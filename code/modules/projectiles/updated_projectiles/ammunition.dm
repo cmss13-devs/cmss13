@@ -807,7 +807,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	qdel(src)
 
 /obj/item/ammo_box/magazine/type71/ap
-	name = "magazine box (Type71 x 10)"
+	name = "magazine box (Type71 AP x 10)"
 	overlay_ammo_type = "_type71_ap"
 	overlay_content = "_type71_ap"
 	magazine_type = /obj/item/ammo_magazine/rifle/type71/ap

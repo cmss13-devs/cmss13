@@ -26,7 +26,7 @@
 	return playtime
 
 /datum/entity/player_entity/proc/setup_human_stats()
-	if(player_stats["human"])
+	if(player_stats["human"] && !isnull(player_stats["human"]))
 		return player_stats["human"]
 	var/datum/entity/player_stats/human/new_stat = new()
 	new_stat.player = src
@@ -34,7 +34,7 @@
 	return new_stat
 
 /datum/entity/player_entity/proc/setup_xeno_stats()
-	if(player_stats["xeno"])
+	if(player_stats["xeno"] && !isnull(player_stats["xeno"]))
 		return player_stats["xeno"]
 	var/datum/entity/player_stats/xeno/new_stat = new()
 	new_stat.player = src

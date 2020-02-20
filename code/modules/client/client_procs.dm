@@ -393,6 +393,8 @@
 	for(var/key_ref in player_entities)
 		var/datum/entity/player_entity/P = player_entities["[key_ref]"]
 		P.save_statistics()
+	log_debug("STATISTICS: Statistics saving complete.")
+	message_admins("STATISTICS: Statistics saving complete.")
 
 /client/proc/clear_chat_spam_mute(var/warn_level = 1, var/message = FALSE, var/increase_warn = FALSE)
 	if(talked > warn_level)

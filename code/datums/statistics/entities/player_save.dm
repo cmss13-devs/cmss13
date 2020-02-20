@@ -6,17 +6,18 @@
 		savefile_version = PREFFILE_VERSION_MAX
 
 /datum/entity/player_entity/proc/load_path(ckey,filename="statistics.sav")
-	if(!ckey)	return
+	if(!ckey)
+		return
 	path = "data/player_saves/[copytext(ckey,1,2)]/[ckey]/[filename]"
 	savefile_version = PREFFILE_VERSION_MAX
 
 /datum/entity/player_entity/proc/save_statistics()
-	if(!path || !save_loaded)	
-		log_debug("[ckey] didn't have their stats saved this round. Save loaded: [save_loaded]")
-		return 0
+	if(!path || !save_loaded)
+		log_debug("STATISTICS: stats failed to save for [ckey] in [path] (save_loaded: [save_loaded])")
+		return FALSE
 	var/savefile/S = new /savefile(path)
 	if(!S)					
-		return 0
+		return FALSE
 	S.cd = "/"
 
 	update_panel_data()
@@ -25,23 +26,20 @@
 	S["xeno"]			<< data["xeno"]
 	S["human"]			<< data["human"]
 
-	return 1
+	return TRUE
 
 /datum/entity/player_entity/proc/load_statistics()
-	if(!path)
+	if(!path || !fexists(path))
 		save_loaded = TRUE
-		return 0
-	if(!fexists(path))
-		save_loaded = TRUE
-		return 0
+		return FALSE
 	var/savefile/S = new /savefile(path)
 	if(!S)
-		save_loaded = TRUE		
-		return 0
+		log_debug("STATISTICS: fexists but load failed for [ckey] in [path]")
+		return FALSE
 	S.cd = "/"
 
-	if(S["version"] < PREFFILE_VERSION_MIN) 
-		return 0
+	if(S["version"] < PREFFILE_VERSION_MIN)
+		return FALSE
 
 	S["version"] 		>> savefile_version
 
@@ -278,7 +276,6 @@
 
 		human_stats.recalculate_nemesis()
 		human_stats.recalculate_top_weapon()
-		save_loaded = TRUE
 
 	if(xeno_save)
 		setup_xeno_stats()
@@ -453,7 +450,7 @@
 
 		xeno_stats.recalculate_nemesis()
 		xeno_stats.recalculate_top_caste()
-		save_loaded = TRUE
 
+	save_loaded = TRUE
 	update_panel_data()
-	return 1
+	return TRUE

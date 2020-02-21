@@ -404,7 +404,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/ammo_box/magazine/shotgun/empty/Initialize()
 	var/obj/item/ammo_box/magazine/shotgun/B = new(loc)
-	var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
+	var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in B.contents
 	AM.max_rounds = B.num_of_magazines
 	AM.current_rounds = 0
 	B.update_icon()

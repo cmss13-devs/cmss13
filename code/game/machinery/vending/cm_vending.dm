@@ -59,8 +59,6 @@
 
 	var/list/listed_products = list()
 
-
-
 /obj/structure/machinery/cm_vending/attack_hand(mob/user)
 	if(stat & (BROKEN|NOPOWER))
 		return
@@ -2416,7 +2414,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("Tramadol autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/tramadol, "black"),
 		list("Tricordrazine autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/tricordrazine, "black"),
 
-		list("Bottles", -1, null, null),
+		list("Liquid Bottles", -1, null, null),
 		list("Bicaridine bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/bicaridine, "black"),
 		list("Dylovene bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/antitoxin, "black"),
 		list("Dexalin bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/dexalin, "black"),
@@ -2426,6 +2424,16 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("Peridaxon bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/peridaxon, "black"),
 		list("Suxamorycin bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/suxamorycin, "black"),
 		list("Tramadol bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/tramadol, "black"),
+
+		list("Pill Bottles", -1, null, null),
+		list("Bicaridine pill bottle", round(scale * 3), /obj/item/storage/pill_bottle/bicaridine, "black"),
+		list("Dylovene pill bottle", round(scale * 3), /obj/item/storage/pill_bottle/antitox, "black"),
+		list("Dexalin pill bottle", round(scale * 3), /obj/item/storage/pill_bottle/dexalin, "black"),
+		list("Inaprovaline pill bottle", round(scale * 3), /obj/item/storage/pill_bottle/inaprovaline, "black"),
+		list("Kelotane pill bottle", round(scale * 3), /obj/item/storage/pill_bottle/kelotane, "black"),
+		list("Peridaxon pill bottle", round(scale * 2), /obj/item/storage/pill_bottle/peridaxon, "black"),
+		list("Quick Clot pill bottle", round(scale * 2), /obj/item/storage/pill_bottle/quickclot, "black"),
+		list("Tramadol pill bottle", round(scale * 3), /obj/item/storage/pill_bottle/tramadol, "black"),
 
 		list("Devices", -1, null, null),
 		list("Emergency defibrillator", round(scale * 3), /obj/item/device/defibrillator, "black"),
@@ -2470,6 +2478,12 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("Dropper", round(scale * 3), /obj/item/reagent_container/dropper, "black"),
 		list("Syringe", round(scale * 7), /obj/item/reagent_container/syringe, "black")
 	)
+
+/obj/structure/machinery/cm_vending/sorted/medical/no_access
+	req_access = list()
+
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry/no_access
+	req_access = list()
 
 /obj/structure/machinery/cm_vending/sorted/medical/antag
 	name = "Medical Equipment Vendor"

@@ -550,7 +550,7 @@
 
 			if(weapon_source_mob)
 				var/mob/user = weapon_source_mob
-				if(user.mind && H.mind && user.mind.faction == H.mind.faction)
+				if(user.faction == H.faction)
 					H.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
 					user.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
 					if(weapon_source)

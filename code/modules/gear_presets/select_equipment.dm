@@ -12,7 +12,6 @@
 	var/paygrade
 	var/role_comm_title
 	var/minimum_age
-	var/special_role
 	var/faction = FACTION_NEUTRAL
 
 	//Uniform data
@@ -109,13 +108,12 @@
 	H.equip_to_slot_or_del(W, WEAR_ID)
 	H.faction = faction
 	if(H.mind)
-		H.mind.faction = faction
-		H.mind.role_comm_title = role_comm_title
-		H.mind.assigned_role = W.rank
-		H.mind.special_role = special_role
 		H.mind.name = H.real_name
 		if(H.mind.initial_account)
 			W.associated_account_number = H.mind.initial_account.account_number
+	H.job = rank
+	H.faction = faction
+	H.comm_title = role_comm_title
 
 /datum/equipment_preset/proc/load_languages(mob/living/carbon/human/H)
 	H.set_languages(languages)

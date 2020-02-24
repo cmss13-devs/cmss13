@@ -287,7 +287,7 @@
 			var/bitf = L[4]
 			if(bitf)
 				if(bitf == MARINE_CAN_BUY_ESSENTIALS && vendor_role == JOB_SQUAD_SPECIALIST)
-					if(!H.mind || H.mind.assigned_role != JOB_SQUAD_SPECIALIST)
+					if(H.job != JOB_SQUAD_SPECIALIST)
 						to_chat(H, SPAN_WARNING("Only specialists can take specialist sets."))
 						return
 					else if(!H.skills || H.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_TRAINED)
@@ -347,7 +347,7 @@
 
 
 			if(bitf == MARINE_CAN_BUY_ESSENTIALS)
-				if(vendor_role == JOB_SQUAD_SPECIALIST && H.mind && H.mind.assigned_role == JOB_SQUAD_SPECIALIST)
+				if(vendor_role == JOB_SQUAD_SPECIALIST && H.job == JOB_SQUAD_SPECIALIST)
 					var/p_name = L[1]
 					switch(p_name)
 						if("Scout Set")
@@ -365,7 +365,7 @@
 							return
 					available_specialist_sets -= p_name
 			if(vendor_role == JOB_CREWMAN)
-				if(H.mind && H.mind.assigned_role == JOB_CREWMAN)
+				if(H.job == JOB_CREWMAN)
 					if(istype(src, /obj/structure/machinery/cm_vending/tank))
 						var/obj/structure/machinery/cm_vending/tank/t = src
 						var/t_name = L[1]

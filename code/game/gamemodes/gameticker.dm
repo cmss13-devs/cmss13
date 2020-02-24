@@ -169,9 +169,9 @@ var/global/datum/controller/gameticker/ticker = new()
 		if(!(player && player.ready && player.mind))
 			continue
 		
-		if(!player.mind.assigned_role)
+		if(!player.job)
 			continue
-			
+
 		player.create_character()
 		qdel(player)
 
@@ -185,15 +185,12 @@ var/global/datum/controller/gameticker/ticker = new()
 	if(mode && istype(mode,/datum/game_mode/huntergames)) // || istype(mode,/datum/game_mode/whiskey_outpost)
 		return
 
-	var/mob/living/carbon/human/player
-	var/m
-	for(m in player_list)
-		player = m
-		if(istype(player) && player.mind && player.mind.assigned_role)
-			if(player.mind.assigned_role == "Commanding Officers")
-				captainless=0
-			if(player.mind.assigned_role != "MODE")
-				RoleAuthority.equip_role(player, RoleAuthority.roles_by_name[player.mind.assigned_role])
+	for(var/mob/living/carbon/human/player in player_list)
+		if(player.mind)
+			if(player.job == "Commanding Officers")
+				captainless = FALSE
+			if(player.job)
+				RoleAuthority.equip_role(player, RoleAuthority.roles_by_name[player.job])
 				EquipCustomItems(player)
 			if(player.mind.player_entity)
 				var/datum/entity/player_entity/PE = player.mind.player_entity
@@ -280,23 +277,6 @@ var/global/datum/controller/gameticker/ticker = new()
 	for(var/handler in typesof(/datum/game_mode/proc))
 		if (findtext("[handler]","auto_declare_completion_"))
 			call(mode, handler)()
-
-	//Print a list of antagonists to the server log
-	var/list/total_antagonists = list()
-	//Look into all mobs in the world, dead or alive
-	for(var/datum/mind/Mind in minds)
-		var/temprole = Mind.special_role
-		if(temprole)							//if they are an antagonist of some sort.
-			if(total_antagonists[temprole])	//If the role exists already, add the name to it
-				total_antagonists[temprole] += ", [Mind.name]([Mind.key])"
-			else
-				total_antagonists.Add(temprole) //If the role doesnt exist in the list, create it and add the mob
-				total_antagonists[temprole] += ": [Mind.name]([Mind.key])"
-
-	//Now print them all into the log!
-	log_game("Antagonists at round end were...")
-	for(var/i in total_antagonists)
-		log_game("[i]s[total_antagonists[i]].")
 
 	return 1
 

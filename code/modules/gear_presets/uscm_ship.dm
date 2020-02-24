@@ -705,10 +705,9 @@
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_ENGINEER
-	rank = JOB_ENGINEER
+	rank = "UPP"
 	paygrade = "E6"
 	role_comm_title = "MT"
-	special_role = "UPP"
 	skills = /datum/skills/spy
 	languages = list("English", "Russian") //can speak russian, but it's not default
 
@@ -777,11 +776,10 @@
 	idtype = /obj/item/card/id/silver
 	access = list()
 	assignment = "Riot Control"
-	rank = "RMP"
+	rank = "Riot"
 	paygrade = "E6"
 	role_comm_title = "RMP"
 	skills = /datum/skills/CMP
-	special_role = "RIOT"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
 	utility_hat = list(/obj/item/clothing/head/beret/cm/wo)

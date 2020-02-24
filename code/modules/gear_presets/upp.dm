@@ -38,9 +38,8 @@
 
 	skills = /datum/skills/upp
 	assignment = "UPP Soldier"
-	rank = "MODE"
+	rank = "UPP"
 	paygrade = "E1"
-	special_role = "UPP"
 
 /datum/equipment_preset/upp/soldier/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -74,9 +73,8 @@
 
 	skills = /datum/skills/civilian/survivor/doctor
 	assignment = "UPP Soldier"
-	rank = "MODE"
+	rank = "UPP"
 	paygrade = "E1"
-	special_role = "UPP"
 
 /datum/equipment_preset/upp/survivor/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -97,9 +95,8 @@
 
 	skills = /datum/skills/synthetic
 	assignment = "UPP Combat Synthetic"
-	rank = "MODE"
+	rank = "UPP"
 	paygrade = "SYN"
-	special_role = "UPP"
 
 /datum/equipment_preset/upp/synth/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(50;MALE,50;FEMALE)
@@ -154,9 +151,8 @@
 
 	skills = /datum/skills/upp/combat_medic
 	assignment = "UPP Medic"
-	rank = "MODE"
+	rank = "UPP"
 	paygrade = "E4"
-	special_role = "UPP"
 	role_comm_title = "Cpl"
 
 /datum/equipment_preset/upp/soldier_medic/load_gear(mob/living/carbon/human/H)
@@ -192,9 +188,8 @@
 
 	skills = /datum/skills/upp/specialist
 	assignment = "UPP Specialist"
-	rank = "MODE"
+	rank = "UPP"
 	paygrade = "E5"
-	special_role = "UPP"
 	role_comm_title = "Spc"
 
 /datum/equipment_preset/upp/soldier_heavy/load_gear(mob/living/carbon/human/H)
@@ -223,9 +218,8 @@
 
 	skills = /datum/skills/upp/SL
 	assignment = "UPP Leader"
-	rank = "MODE"
+	rank = "UPP"
 	paygrade = "E5"
-	special_role = "UPP"
 	role_comm_title = "SL"
 
 /datum/equipment_preset/upp/soldier_leader/load_gear(mob/living/carbon/human/H)
@@ -257,9 +251,8 @@
 
 	skills = /datum/skills/commando
 	assignment = "UPP Commando"
-	rank = "MODE"
+	rank = "UPP"
 	paygrade = "E2"
-	special_role = "UPP"
 	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/upp/commando/load_gear(mob/living/carbon/human/H)
@@ -296,9 +289,8 @@
 
 	skills = /datum/skills/commando/medic
 	assignment = "UPP Commando Medic"
-	rank = "MODE"
+	rank = "UPP"
 	paygrade = "E4"
-	special_role = "UPP"
 	role_comm_title = "Cpl"
 
 
@@ -340,10 +332,9 @@
 
 	skills = /datum/skills/commando/leader
 	assignment = "UPP Commando Leader"
-	rank = "MODE"
+	rank = "UPP"
 	paygrade = "E6"
 	role_comm_title = "SL"
-	special_role = "UPP"
 	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/upp/commando/leader/load_gear(mob/living/carbon/human/H)

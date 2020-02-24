@@ -78,7 +78,7 @@
 	if(M != user) return
 	if(!ishuman(M))	return
 	var/mob/living/carbon/human/H = M
-	if(H.mind && user.skills && !user.skills.get_skill_level(SKILL_POWERLOADER))
+	if(user.skills && !user.skills.get_skill_level(SKILL_POWERLOADER))
 		to_chat(H, SPAN_WARNING("You don't seem to know how to operate [src]."))
 		return
 	if(H.r_hand || H.l_hand)

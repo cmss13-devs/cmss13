@@ -95,7 +95,7 @@
 		if(M.client && istype(M,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
 			players += H
-			if(H.mind.assigned_role in ROLES_MARINES)
+			if(H.job in ROLES_MARINES)
 				spawn_player(H)
 	sleep(10)
 	to_world("<span class='round_header'>The current game mode is - WHISKEY OUTPOST!</span>")

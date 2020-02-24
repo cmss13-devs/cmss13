@@ -22,7 +22,6 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	var/votable = 1
 	var/probability = 0
 	var/list/datum/mind/modePlayer = new
-	var/list/restricted_jobs = list()	// Jobs it doesn't make sense to be.  I.E chaplain or AI cultist
 	var/list/protected_jobs = list()	// Jobs that can't be traitors because
 	var/required_players = 0
 	var/required_players_secret = 0 //Minimum number of players for that game mode to be chose in Secret
@@ -149,7 +148,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	for(var/mob/M in player_list)
 		if(M.client && M.client.player_entity)
 			M.client.player_entity.show_statistics(M, round_statistics, TRUE)
-	save_player_entities()
+	//save_player_entities()
 
 /datum/game_mode/proc/check_win() //universal trigger to be called at mob death, nuke explosion, etc. To be called from everywhere.
 	return 0
@@ -182,13 +181,6 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 			candidates += player.mind
 			players -= player
 
-	//Remove candidates who want to be antagonist but have a job that precludes it
-	if(restricted_jobs)
-		for(var/datum/mind/player in candidates)
-			for(var/job in restricted_jobs)
-				if(player.assigned_role == job)
-					candidates -= player
-
 	return candidates		//Returns:	The number of people who had the antagonist role set to yes
 
 
@@ -198,7 +190,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 /datum/game_mode/proc/get_living_heads()
 	var/list/heads = list()
 	for(var/mob/living/carbon/human/player in living_human_list)
-		if(player.stat!=2 && player.mind && (player.mind.assigned_role in ROLES_COMMAND ))
+		if(player.stat!=2 && player.mind && (player.job in ROLES_COMMAND ))
 			heads += player.mind
 	return heads
 
@@ -209,7 +201,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 /datum/game_mode/proc/get_all_heads()
 	var/list/heads = list()
 	for(var/mob/player in mob_list)
-		if(player.mind && (player.mind.assigned_role in ROLES_COMMAND ))
+		if(player.mind && (player.job in ROLES_COMMAND ))
 			heads += player.mind
 	return heads
 
@@ -289,43 +281,6 @@ proc/get_nt_opposed()
 		and before taking extreme actions, please try to also contact the administration! \
 		Think through your actions and make the roleplay immersive! <b>Please remember all \
 		rules aside from those without explicit exceptions apply to antagonists.</b>"
-
-/proc/show_objectives(var/datum/mind/player)
-
-	if(!player || !player.current) return
-
-	if(config.objectives_disabled)
-		show_generic_antag_text(player)
-		return
-
-	var/obj_count = 1
-	to_chat(player.current, SPAN_NOTICE(" Your current objectives:"))
-	for(var/datum/objective/objective in player.objectives)
-		to_chat(player.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
-		obj_count++
-
-/datum/game_mode/proc/printplayer(var/datum/mind/ply)
-	if(!ply) return
-	var/role
-
-	if(ply.special_role)
-		role = ply.special_role
-	else
-		role = ply.assigned_role
-
-	var/text = "<br><b>[ply.name]</b>(<b>[ply.key]</b>) as \a <b>[role]</b> ("
-	if(ply.current)
-		if(ply.current.stat == DEAD)
-			text += "died"
-		else
-			text += "survived"
-		if(ply.current.real_name != ply.name)
-			text += " as <b>[ply.current.real_name]</b>"
-	else
-		text += "body destroyed"
-	text += ")"
-
-	return text
 
 /datum/game_mode/proc/setup_round_stats()
 	if(!round_stats)

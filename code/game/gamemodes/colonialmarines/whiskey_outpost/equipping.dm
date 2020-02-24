@@ -250,7 +250,7 @@ You just gotta get out of this jungle to tell the tale!"}
 		H.mind_initialize()
 
 	//Squad ID and backpack are already spawned in job datum
-	switch(H.mind.assigned_role)
+	switch(H.job)
 		if("Squad Leader")
 			arm_equipment(H, "WO Dust Raider Squad Leader", FALSE, TRUE)
 		//SQUAD SPECIALIST
@@ -271,7 +271,7 @@ You just gotta get out of this jungle to tell the tale!"}
 	//Give them some information
 	sleep(40)
 	to_chat(H, "________________________")
-	to_chat(H, SPAN_BOLDNOTICE("You are the [H.mind.assigned_role]!"))
+	to_chat(H, SPAN_BOLDNOTICE("You are the [H.job]!"))
 	to_chat(H, "Gear up, prepare defenses, work as a team. Protect your doctors and commander!")
 	to_chat(H, "Motion trackers have detected movement from local creatures, and they are heading towards the outpost!")
 	to_chat(H, "Hold the outpost for one hour until the signal can be established!")
@@ -309,7 +309,7 @@ You just gotta get out of this jungle to tell the tale!"}
 					desc = "This is used by [SQUAD_NAME_4] squad members."
 					icon_state = "delta_headset"
 					frequency = DELTA_FREQ
-			switch(H.mind.assigned_role)
+			switch(H.job)
 				if(JOB_SQUAD_LEADER)
 					name = "squad leader " + name
 					keyslot2 = new /obj/item/device/encryptionkey/squadlead(src)

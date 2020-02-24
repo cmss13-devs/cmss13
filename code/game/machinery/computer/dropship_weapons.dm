@@ -233,7 +233,7 @@
 	if(href_list["open_fire"])
 		var/targ_id = text2num(href_list["open_fire"])
 		var/mob/M = usr
-		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		
@@ -285,14 +285,14 @@
 
 	if(href_list["deselect"])
 		var/mob/M = usr
-		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		selected_equipment = null
 
 	if(href_list["create_mission"])
 		var/mob/M = usr
-		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(firemission_envelope.max_mission_len <= firemission_envelope.missions.len)
@@ -319,7 +319,7 @@
 	if(href_list["mission_tag_delete"])
 		var/ref = text2num(href_list["mission_tag_delete"])
 		var/mob/M = usr
-		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(ref>firemission_envelope.missions.len)
@@ -336,7 +336,7 @@
 	if(href_list["mission_tag"])
 		var/ref = text2num(href_list["mission_tag"])
 		var/mob/M = usr
-		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(ref>firemission_envelope.missions.len)
@@ -353,7 +353,7 @@
 	if(href_list["mission_tag_edit"])
 		var/ref = text2num(href_list["mission_tag_edit"])
 		var/mob/M = usr
-		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(ref>firemission_envelope.missions.len)
@@ -372,21 +372,21 @@
 
 	if(href_list["switch_to_firemission"])
 		var/mob/M = usr
-		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		in_firemission_mode = TRUE
 	
 	if(href_list["leave_firemission_execution"])
 		var/mob/M = usr
-		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		in_firemission_mode = FALSE
 
 	if(href_list["change_direction"])
 		var/mob/M = usr
-		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		var/list/directions = list(dir2text(NORTH), dir2text(SOUTH), dir2text(EAST), dir2text(WEST))
@@ -401,7 +401,7 @@
 
 	if(href_list["change_offset"])
 		var/mob/M = usr
-		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		
@@ -420,7 +420,7 @@
 		if(!targ_id)
 			to_chat(usr, SPAN_WARNING("Bad Target."))
 			return
-		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(firemission_envelope.stat > FIRE_MISSION_STATE_IN_TRANSIT && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
@@ -443,7 +443,7 @@
 
 	if(href_list["execute_firemission"])
 		var/mob/M = usr
-		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(firemission_envelope.stat != FIRE_MISSION_STATE_IDLE)
@@ -463,7 +463,7 @@
 		var/weap_ref = text2num(href_list["fm_weapon_id"])+1
 		var/offset_ref = text2num(href_list["fm_offset_id"])+1
 		var/mob/M = usr
-		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(!editing_firemission)

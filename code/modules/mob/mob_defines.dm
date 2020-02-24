@@ -31,7 +31,6 @@
 	var/lastattacked = null
 	var/attack_log = list( )
 	var/atom/movable/interactee //the thing that the mob is currently interacting with (e.g. a computer, another mob (stripping a mob), manning a hmg)
-	var/poll_answer = 0.0
 	var/sdisabilities = 0	//Carbon
 	var/disabilities = 0	//Carbon
 	var/atom/movable/pulling = null
@@ -129,17 +128,17 @@
 
 	var/inertia_dir = 0
 
-	var/music_lastplayed = "null"
-
-	var/job = null//Living
-
 	var/const/blindness = 1//Carbon
 	var/const/deafness = 2//Carbon
 	var/const/muteness = 4//Carbon
 
 	var/voice_name = "unidentifiable voice"
 
+	var/job = null					// Internal job title used when mob is spawned. Preds are "Predator", Xenos are "Xenomorph", Marines have their actual job title
+	var/comm_title = ""
 	var/faction = FACTION_NEUTRAL //Used for checking whether hostile simple animals will attack you, possibly more stuff later
+	var/datum/skills/skills = null //the knowledge you have about certain abilities and actions (e.g. do you how to do surgery?)
+									//see skills.dm in #define folder and code/datums/skills.dm for more info
 
 	var/list/viruses = list() //List of active diseases
 
@@ -167,8 +166,6 @@
 	var/list/tile_contents = list()  //the contents of the turf being examined in the stat panel
 	var/tile_contents_change = 0
 
-	var/list/active_genes=list()
-
 	var/STUI_log = 1
 
 	var/away_timer = 0 //How long the player has been disconnected
@@ -190,6 +187,3 @@
 	var/ambience_playing = FALSE
 
 	var/noclip = FALSE
-
-	var/datum/skills/skills = null //the knowledge you have about certain abilities and actions (e.g. do you how to do surgery?)
-									//see skills.dm in #define folder and code/datums/skills.dm for more info

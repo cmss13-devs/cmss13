@@ -24,7 +24,7 @@
 /obj/item/storage/bible/afterattack(atom/A, mob/user as mob, proximity)
 	if(!proximity) 
 		return
-	if(user.mind && (user.mind.assigned_role == "Chaplain"))
+	if(user.job == "Chaplain")
 		if(A.reagents && A.reagents.has_reagent("water")) //blesses all the water in the holder
 			to_chat(user, SPAN_NOTICE("You bless [A]."))
 			var/water2holy = A.reagents.get_reagent_amount("water")

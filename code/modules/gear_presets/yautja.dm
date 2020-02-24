@@ -1,9 +1,8 @@
-
-
 /datum/equipment_preset/yautja
 	name = "Yautja"
 	idtype = null //No IDs for Yautja!
 	languages = list("Sainja")
+	rank = "Predator"
 	faction = FACTION_YAUTJA
 	uses_special_name = TRUE
 
@@ -11,10 +10,8 @@
 	H.set_species("Yautja")
 
 /datum/equipment_preset/yautja/load_id(mob/living/carbon/human/H)
-	//No ID for preds!
-	if(H.mind)
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "Predator"
+	H.job = rank
+	H.faction = faction
 
 /datum/equipment_preset/yautja/load_vanity(mob/living/carbon/human/H)
 	return //No vanity items for Yautja!

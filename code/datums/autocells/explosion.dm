@@ -291,7 +291,7 @@
 			if(M == firing_mob)
 				M.attack_log += "\[[time_stamp()]\] <b>[M]/[M.ckey]</b> blew himself up with \a <b>[explosion_source]</b> in [get_area(M)]."
 			// One human blew up another, be worried about it but do everything basically the same
-			else if(ishuman(firing_mob) && ishuman(M) && firing_mob.mind && M.mind && M.mind.faction == firing_mob.mind.faction)
+			else if(ishuman(firing_mob) && ishuman(M) && M.faction == firing_mob.faction)
 				M.attack_log += "\[[time_stamp()]\] <b>[firing_mob]/[firing_mob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firing_mob)]."
 
 				firing_mob.attack_log += "\[[time_stamp()]\] <b>[firing_mob]/[firing_mob.ckey]</b> blew up <b>[M]/[M.ckey]</b> with \a <b>[explosion_source]</b> in [get_area(firing_mob)]."

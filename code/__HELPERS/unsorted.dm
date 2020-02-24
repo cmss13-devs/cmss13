@@ -765,7 +765,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	for(var/mob/living/carbon/human/M in sortmob)
 		if(!M.client || M.species.name == "Yautja")
 			continue
-		if (M.mind.faction == "Survivor")
+		if(M.faction == FACTION_SURVIVOR)
 			survivorlist.Add(M)
 	return survivorlist
 
@@ -773,16 +773,17 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	var/list/ertmemberlist = list()
 	var/list/sortmob = sortAtom(mob_list)
 	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client || !M.mind.special_role || isSynth(M) || M.mind.faction == "Survivor" || M.mind.special_role == "Xenomorph" || M.mind.assigned_role == "Corporate Liaison" || M.species.name == "Yautja")
+		if(!M.client)
 			continue
-		ertmemberlist.Add(M)
+		if(M.faction in FACTION_LIST_ERT)
+			ertmemberlist.Add(M)
 	return ertmemberlist
 
 /proc/sortsynths()
 	var/list/synthlist = list()
 	var/list/sortmob = sortAtom(mob_list)
 	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client || M.species.name == "Yautja" || !isSynth(M))
+		if(!M.client || !isSynth(M))
 			continue
 		synthlist.Add(M)
 	return synthlist
@@ -832,11 +833,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		else if(M.name)
 			name = M.name
 
-
-		if(include_link && is_special_character(M) && highlight_special_characters)
-			. += "/(<font color='#FFA500'>[name]</font>)" //Orange
-		else
-			. += "/([name])"
+		. += "/([name])"
 
 	return .
 

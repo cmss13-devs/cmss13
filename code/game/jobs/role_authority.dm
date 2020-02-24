@@ -205,7 +205,7 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 
 	for(i in player_list) //Get all players who are ready.
 		M = i
-		if(istype(M) && M.ready && M.mind && !M.mind.assigned_role)
+		if(istype(M) && M.ready && !M.job)
 			//TODO, check if mobs are already spawned as human before this triggers.
 			switch(M.client.prefs.age) //We need a weighted list for command positions.
 				if(good_age_min - 5 to good_age_min - 1)	unassigned_players[M] = 35 //Too young.
@@ -309,12 +309,11 @@ roles willy nilly.
 	assign_role(M,roles_for_mode[JOB_SQUAD_MARINE])
 
 /datum/authority/branch/role/proc/assign_role(mob/new_player/M, datum/job/J, latejoin=0)
-	if(ismob(M) && M.mind && istype(J))
+	if(ismob(M) && istype(J))
 		if(check_role_entry(M, J, latejoin))
-			M.mind.assigned_role 		= J.title
-			M.mind.special_role 		= J.special_role
-			M.mind.role_alt_title 		= J.get_alternative_title(M)
-			M.mind.role_comm_title 		= J.get_comm_title()
+			M.job 						= J.title
+			M.faction					= J.faction
+			M.comm_title 		= J.get_comm_title()
 			J.current_positions++
 			return 1
 
@@ -326,7 +325,7 @@ roles willy nilly.
 	return 1
 
 /datum/authority/branch/role/proc/free_role(datum/job/J, latejoin = 1) //Want to make sure it's a job, and nothing like a MODE or special role.
-	if(istype(J) && J.total_positions != -1 && J.get_total_positions(latejoin) <= J.current_positions)
+	if(istype(J) && J.total_positions != -1 && J.get_total_positions(latejoin) >= J.current_positions)
 		J.current_positions--
 		return 1
 
@@ -342,13 +341,8 @@ roles willy nilly.
 
 //I'm not entirely sure why this proc exists. //TODO Figure this out.
 /datum/authority/branch/role/proc/reset_roles()
-	var/mob/new_player/M
-	var/i
-	for(i in player_list)
-		M = i
-		if(istype(M) && M.mind)
-			M.mind.assigned_role = null
-			M.mind.special_role = null
+	for(var/mob/new_player/M in player_list)
+		M.job = null
 	//setup_roles() //TODO Why is this here?
 
 
@@ -429,10 +423,6 @@ roles willy nilly.
 		if((J.title == "Commanding Officer") && roles_whitelist && (roles_whitelist[H.ckey] & WHITELIST_COMMANDER_COUNCIL))
 			arm_equipment(H, J.gear_preset_council, FALSE, TRUE)
 		arm_equipment(H, J.gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
-		/*var/alt_title
-		if(H.mind)
-			H.mind.assigned_role = J.title
-			alt_title = H.mind.role_alt_title*/ //TODO What is this for again?
 
 		if(J.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 			randomize_squad(H)
@@ -442,7 +432,6 @@ roles willy nilly.
 
 		H.sec_hud_set_ID()
 		H.sec_hud_set_implants()
-		H.hud_set_special_role()
 		H.hud_set_squad()
 
 	return 1
@@ -499,7 +488,8 @@ roles willy nilly.
 
 //This proc is a bit of a misnomer, since there's no actual randomization going on.
 /datum/authority/branch/role/proc/randomize_squad(var/mob/living/carbon/human/H, var/skip_limit = FALSE)
-	if(!H || !H.mind) return
+	if(!H) 
+		return
 
 	if(!squads.len)
 		to_chat(H, "Something went wrong with your squad randomizer! Tell a coder!")
@@ -521,14 +511,14 @@ roles willy nilly.
 	//Non-standards are distributed regardless of squad population.
 	//If the number of available positions for the job are more than max_whatever, it will break.
 	//Ie. 8 squad medic jobs should be available, and total medics in squads should be 8.
-	if(H.mind.assigned_role != JOB_SQUAD_MARINE && H.mind.assigned_role != "Reinforcements")
+	if(H.job != JOB_SQUAD_MARINE && H.job != "Reinforcements")
 		var/pref_squad_name
 		if(H && H.client && H.client.prefs.preferred_squad && H.client.prefs.preferred_squad != "None")
 			pref_squad_name = H.client.prefs.preferred_squad
 
 		var/datum/squad/lowest
 
-		switch(H.mind.assigned_role)
+		switch(H.job)
 			if("Squad Engineer")
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable)

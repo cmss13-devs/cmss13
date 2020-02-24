@@ -10,8 +10,7 @@
 	name = "Freelancer"
 
 	assignment = "Freelancer"
-	rank = "MODE"
-	special_role = "FREELANCERS"
+	rank = FACTION_FREELANCER
 	idtype = /obj/item/card/id/data
 	faction = FACTION_FREELANCER
 
@@ -131,9 +130,8 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
-	assignment = "Mercenary"
-	rank = "Mercenary Enforcer"
-	special_role = "MERCENARIES"
+	assignment = "Mercenary Enforcer"
+	rank = "Mercenary"
 	skills = /datum/skills/mercenary
 	faction = FACTION_MERCENARY
 
@@ -163,9 +161,8 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
-	assignment = "Mercenary"
-	rank = "Mercenary Worker"
-	special_role = "MERCENARIES"
+	assignment = "Mercenary Worker"
+	rank = "Mercenary"
 	skills = /datum/skills/mercenary
 	faction = FACTION_MERCENARY
 
@@ -192,9 +189,8 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/data
-	assignment = "Mercenary"
-	rank = "Mercenary Engineer"
-	special_role = "MERCENARIES"
+	assignment = "Mercenary Engineer"
+	rank = "Mercenary"
 	skills = /datum/skills/mercenary
 	faction = FACTION_MERCENARY
 
@@ -223,8 +219,7 @@
 	faction = FACTION_MARINE
 	idtype = /obj/item/card/id/silver/cl
 	assignment = "Corporate Representative"
-	rank = "MODE"
-	special_role = "Corporate Representative"
+	rank = "Corporate Representative"
 	skills = /datum/skills/civilian
 
 /datum/equipment_preset/other/business_person/New()
@@ -273,8 +268,7 @@
 	languages = list("English", "Russian", "Tradeband") //Just in case they are delivering to UPP or CLF...
 	idtype = /obj/item/card/id/pizza
 	assignment = "Pizza Deliverer"
-	rank = "MODE"
-	special_role = "Pizza"
+	rank = FACTION_PIZZA
 	skills = /datum/skills/civilian
 	faction = FACTION_PIZZA
 
@@ -317,9 +311,8 @@
 
 	languages = list("English", "Russian", "Tradeband") //Just in case they are delivering to UPP or CLF...
 	idtype = /obj/item/card/id/souto
-	assignment = "Souto Man"
-	rank = "MODE"
-	special_role = "Souto Man"
+	assignment = FACTION_SOUTO
+	rank = "Souto Man"
 	skills = /datum/skills/mercenary
 	faction = FACTION_SOUTO
 
@@ -356,7 +349,7 @@
 /datum/equipment_preset/other/zombie
 	name = "Zombie"
 	flags = EQUIPMENT_PRESET_EXTRA
-
+	rank = FACTION_ZOMBIE
 	languages = list("Zombie")
 	skills = null //no restrictions
 	faction = FACTION_ZOMBIE
@@ -382,9 +375,8 @@
 	H.age = rand(21,45)
 
 /datum/equipment_preset/other/zombie/load_id(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "Zombie"
+	H.job = "Zombie"
+	H.faction = faction
 
 /datum/equipment_preset/other/zombie/load_race(mob/living/carbon/human/H)
 	H.set_species("Zombie")
@@ -406,8 +398,7 @@
 	skills = /datum/skills/gladiator
 
 	assignment = "Bestiarius"
-	rank = "Bestiarius"
-	special_role = "Gladiator"
+	rank = FACTION_GLADIATOR
 	faction = FACTION_GLADIATOR
 
 /datum/equipment_preset/other/gladiator/load_name(mob/living/carbon/human/H, var/randomise)

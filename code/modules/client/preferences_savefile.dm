@@ -227,7 +227,6 @@
 	S["gen_record"]			>> gen_record
 	S["be_special"]			>> be_special
 	S["disabilities"]		>> disabilities
-	S["player_alt_titles"]	>> player_alt_titles
 	S["organ_data"]			>> organ_data
 	S["gear"]				>> gear
 	S["home_system"] 		>> home_system
@@ -301,7 +300,6 @@
 	job_marines_low = sanitize_integer(job_marines_low, 0, 65535, initial(job_marines_low))
 
 	if(isnull(disabilities)) disabilities = 0
-	if(!player_alt_titles) player_alt_titles = new()
 	if(!organ_data) src.organ_data = list()
 	if(!gear) src.gear = list()
 
@@ -381,7 +379,6 @@
 	S["med_record"]			<< med_record
 	S["sec_record"]			<< sec_record
 	S["gen_record"]			<< gen_record
-	S["player_alt_titles"]		<< player_alt_titles
 	S["be_special"]			<< be_special
 	S["disabilities"]		<< disabilities
 	S["organ_data"]			<< organ_data

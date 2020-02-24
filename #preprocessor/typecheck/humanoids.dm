@@ -10,7 +10,7 @@
 #define iszombie(A) (ishuman(A) && istype(A?:species, /datum/species/zombie))
 #define ismonkey(A) (ishuman(A) && istype(A?:species, /datum/species/monkey))
 #define isYautja(A) (isHellhound(A) || (ishuman(A) && istype(A?:species, /datum/species/yautja)))
-#define isResearcher(A) (ishuman(A) && A?:mind?:assigned_role == "Researcher")
+#define isResearcher(A) (ishuman(A) && A.job == "Researcher")
 #define isSynth(A)  (ishuman(A) && istype(A?:species, /datum/species/synthetic))
 #define isEarlySynthetic(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/early_synthetic))
 #define hasorgans(A) ishuman(A)

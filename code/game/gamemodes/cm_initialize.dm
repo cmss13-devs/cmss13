@@ -132,9 +132,10 @@ Additional game mode variables.
 			M = pick(L)
 			if(!istype(M)) continue
 			L -= M
-			M.assigned_role = "MODE" //So they are not chosen later for another role.
+			M.roundstart_picked = TRUE
 			predators += M
-			if(!(RoleAuthority.roles_whitelist[M.current.ckey] & (WHITELIST_YAUTJA_ELITE|WHITELIST_YAUTJA_ELDER|WHITELIST_YAUTJA_COUNCIL))) i++
+			if(!(RoleAuthority.roles_whitelist[M.current.ckey] & (WHITELIST_YAUTJA_ELITE|WHITELIST_YAUTJA_ELDER|WHITELIST_YAUTJA_COUNCIL))) 
+				i++
 
 /datum/game_mode/proc/initialize_post_predator_list() //TO DO: Possibly clean this using tranfer_to.
 	var/temp_pred_list[] = predators //We don't want to use the actual predator list as it will be overriden.
@@ -166,7 +167,6 @@ Additional game mode variables.
 				if(!player.mind) //They have to have a key if they have a client.
 					player.mind_initialize() //Will work on ghosts too, but won't add them to active minds.
 				player.mind.setup_human_stats()
-				player.mind.faction = FACTION_YAUTJA
 				player.faction = FACTION_YAUTJA
 				players += player.mind
 	return players
@@ -279,7 +279,7 @@ Additional game mode variables.
 	for(var/datum/mind/A in possible_queens)
 		var/mob/living/original = A.current
 		var/client/client = directory[A.ckey]
-		if(A.assigned_role == "MODE" || jobban_isbanned(original, CASTE_QUEEN) || !can_play_special_job(client, CASTE_QUEEN))
+		if(A.roundstart_picked || jobban_isbanned(original, CASTE_QUEEN) || !can_play_special_job(client, CASTE_QUEEN))
 			possible_queens -= A
 
 	var/datum/mind/new_queen
@@ -328,10 +328,8 @@ Additional game mode variables.
 
 // Helper proc to set some constants
 /proc/setup_new_xeno(var/datum/mind/new_xeno)
-	new_xeno.assigned_role = "MODE"
-	new_xeno.special_role = "Xenomorph"
+	new_xeno.roundstart_picked = TRUE
 	new_xeno.setup_xeno_stats()
-	new_xeno.faction = FACTION_XENOMORPH
 
 
 /datum/game_mode/proc/initialize_post_xenomorph_list()
@@ -529,7 +527,7 @@ Additional game mode variables.
 	possible_survivors = shuffle(possible_survivors) //Shuffle them up a bit
 	if(possible_survivors.len) //We have some, it looks like.
 		for(var/datum/mind/A in possible_survivors) //Strip out any xenos first so we don't double-dip.
-			if(A.assigned_role == "MODE")
+			if(A.roundstart_picked)
 				possible_survivors -= A
 
 		if(possible_survivors.len) //We may have stripped out all the contendors, so check again.
@@ -543,12 +541,10 @@ Additional game mode variables.
 					break  //We ran out of survivors!
 				if(!synth_survivor && new_survivor in possible_synth_survivors)
 					synth_survivor = new_survivor
-					new_survivor.assigned_role = "MODE"
-					new_survivor.special_role = "Survivor"
+					new_survivor.roundstart_picked = TRUE
 					monkey_amount += 5 //Extra smallhosts will be spawned to compensate the xenos for this survivor. Resolve this line once structures are resolved.
 				else if(new_survivor in possible_human_survivors) //so we don't draft people that want to be synth survivors but not normal survivors
-					new_survivor.assigned_role = "MODE"
-					new_survivor.special_role = "Survivor"
+					new_survivor.roundstart_picked = TRUE
 					survivors += new_survivor
 					i--
 				possible_survivors -= new_survivor //either we drafted a survivor, or we're skipping over someone, either or - remove them
@@ -565,7 +561,7 @@ Additional game mode variables.
 //No need to transfer their mind as they begin as a human.
 /datum/game_mode/proc/transform_survivor(var/datum/mind/ghost, var/is_synth = FALSE)
 	var/picked_spawn = null
-	if(ghost.current.first_xeno)
+	if(istype(ghost.current, /mob/living) && ghost.current.first_xeno)
 		picked_spawn = pick(xeno_spawn)
 	else
 		picked_spawn = pick(surv_spawn)
@@ -574,7 +570,7 @@ Additional game mode variables.
 	if(istype(surv_datum))
 		return survivor_event_transform(ghost.current, surv_datum, is_synth)
 		//deleting datum is on us
-		if(ghost.current.first_xeno)
+		if(istype(ghost.current, /mob/living) && ghost.current.first_xeno)
 			xeno_spawn -= picked_spawn
 		else
 			surv_spawn -= picked_spawn
@@ -776,30 +772,34 @@ Additional game mode variables.
 
 		random_name = pick(random_name(FEMALE),random_name(MALE))
 
-		if(!survivor.current.first_xeno)
-			if(current_survivors.len > 1) //If we have another survivor to pick from.
-				if(survivor_multi_story.len) //Unlikely.
-					var/datum/mind/another_survivor = pick(current_survivors - survivor) // We don't want them to be picked twice.
-					current_survivors -= another_survivor
-					if(!istype(another_survivor)) continue//If somehow this thing screwed up, we're going to run another pass.
-					story = pick(survivor_multi_story)
-					survivor_multi_story -= story
-					story = replacetext(story, "{name}", "[random_name]")
-					spawn(6)
-						var/temp_story = "<b>Your story thus far</b>: " + replacetext(story, "{surv}", "[another_survivor.current.real_name]")
-						to_chat(survivor.current, temp_story)
-						survivor.memory += temp_story //Add it to their memories.
-						temp_story = "<b>Your story thus far</b>: " + replacetext(story, "{surv}", "[survivor.current.real_name]")
-						to_chat(another_survivor.current, temp_story)
-						another_survivor.memory += temp_story
-			else
-				if(survivor_story.len) //Shouldn't happen, but technically possible.
-					story = pick(survivor_story)
-					survivor_story -= story
-					spawn(6)
-						var/temp_story = "<b>Your story thus far</b>: " + replacetext(story, "{name}", "[random_name]")
-						to_chat(survivor.current, temp_story)
-						survivor.memory += temp_story
+		if(istype(survivor.current, /mob/living) && survivor.current.first_xeno)
+			current_survivors -= survivor
+			continue
+
+		if(current_survivors.len > 1) //If we have another survivor to pick from.
+			if(survivor_multi_story.len) //Unlikely.
+				var/datum/mind/another_survivor = pick(current_survivors - survivor) // We don't want them to be picked twice.
+				current_survivors -= another_survivor
+				if(!istype(another_survivor)) continue//If somehow this thing screwed up, we're going to run another pass.
+				story = pick(survivor_multi_story)
+				survivor_multi_story -= story
+				story = replacetext(story, "{name}", "[random_name]")
+				spawn(6)
+					var/temp_story = "<b>Your story thus far</b>: " + replacetext(story, "{surv}", "[another_survivor.current.real_name]")
+					to_chat(survivor.current, temp_story)
+					survivor.memory += temp_story //Add it to their memories.
+					temp_story = "<b>Your story thus far</b>: " + replacetext(story, "{surv}", "[survivor.current.real_name]")
+					to_chat(another_survivor.current, temp_story)
+					another_survivor.memory += temp_story
+		else
+			if(survivor_story.len) //Shouldn't happen, but technically possible.
+				story = pick(survivor_story)
+				survivor_story -= story
+				spawn(6)
+					var/temp_story = "<b>Your story thus far</b>: " + replacetext(story, "{name}", "[random_name]")
+					to_chat(survivor.current, temp_story)
+					survivor.memory += temp_story
+
 		current_survivors -= survivor
 	return 1
 
@@ -816,8 +816,8 @@ Additional game mode variables.
 	//This might count players who ready up but get kicked back to the lobby
 	var/marine_pop_size = 0
 
-	for(var/mob/M in player_list)
-		if(M.stat != DEAD && M.mind && !M.mind.special_role)
+	for(var/mob/living/carbon/human/H in player_list)
+		if(H.stat != DEAD)
 			marine_pop_size++
 
 	var/scale = max(marine_pop_size / MARINE_GEAR_SCALING_NORMAL, 1) //This gives a decimal value representing a scaling multiplier. Cannot go below 1

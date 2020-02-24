@@ -192,27 +192,23 @@
 	//This is sort of a workaround for now. There are better ways of doing this ~N.
 /datum/ammo/proc/stun_living(mob/living/target, obj/item/projectile/P) //Taser proc to stun folks.
 	if(istype(target))
-		if( isYautja(target) || isXeno(target) ) return //Not on aliens.
-		if(target.mind && target.mind.special_role)
-			switch(target.mind.special_role) //Switches are still better than evaluating this twice.
-				if("IRON BEARS") //These antags can shrug off tasers so they are not shut down.
-					target.apply_effect(1, STUN)
-					target.apply_effect(1, WEAKEN) //Barely affected.
-					target.apply_effect(2, SUPERSLOW)
-					target.apply_effect(4, SLOW)
-					return
-				if("UPP") //These antags can shrug off tasers so they are not shut down.
-					target.apply_effect(1, STUN)
-					target.apply_effect(1, WEAKEN) //Barely affected.
-					target.apply_effect(2, SUPERSLOW)
-					target.apply_effect(4, SLOW)
-					return
-				if("DEATH SQUAD")
-					target.apply_effect(1, WEAKEN) //Almost unaffacted.
-					target.apply_effect(2, SLOW)
-					return
-				if("ANTAGONIST") //Completely unaffected.
-					return
+		if(isYautja(target) || isXeno(target)) 
+			return //Not on aliens.
+			
+		switch(target.faction) //Switches are still better than evaluating this twice.
+			if(FACTION_UPP) //These antags can shrug off tasers so they are not shut down.
+				target.apply_effect(1, STUN)
+				target.apply_effect(1, WEAKEN) //Barely affected.
+				target.apply_effect(2, SUPERSLOW)
+				target.apply_effect(4, SLOW)
+				return
+			if(FACTION_DEATHSQUAD)
+				target.apply_effect(1, WEAKEN) //Almost unaffacted.
+				target.apply_effect(2, SLOW)
+				return
+			if(FACTION_XENOMORPH) //Completely unaffected.
+				return
+
 		target.apply_effect(6, STUN)
 		target.apply_effect(12, WEAKEN)
 		target.apply_effect(20, SUPERSLOW)
@@ -658,13 +654,10 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == "Human") //no effect on synths or preds.
-			if(H.mind && H.mind.special_role)
-				H.apply_effect(1, WEAKEN) //ineffective against antags.
-			else
-				H.apply_effect(6, STUN)
-				H.apply_effect(8, WEAKEN)
-				H.apply_effect(15, DAZE)
-				H.apply_effect(15, SLOW)
+			H.apply_effect(6, STUN)
+			H.apply_effect(8, WEAKEN)
+			H.apply_effect(15, DAZE)
+			H.apply_effect(15, SLOW)
 		shake_camera(H, 2, 1)
 
 
@@ -2077,13 +2070,10 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == "Human") //no effect on synths or preds.
-			if(H.mind && H.mind.special_role)
-				H.apply_effect(1, WEAKEN) //ineffective against antags.
-			else
-				H.apply_effect(6, STUN)
-				H.apply_effect(8, WEAKEN)
-				H.apply_effect(15, DAZE)
-				H.apply_effect(15, SLOW)
+			H.apply_effect(6, STUN)
+			H.apply_effect(8, WEAKEN)
+			H.apply_effect(15, DAZE)
+			H.apply_effect(15, SLOW)
 		shake_camera(H, 2, 1)
 		if(P.contents.len)
 			drop_can(P.loc, P) //We make a can at the location.

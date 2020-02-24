@@ -50,11 +50,8 @@
 /proc/get_actual_job_name(var/mob/M)
 	if(!M)
 		return null
+		
 	var/job_name = M.job
-	if(M.mind)
-		job_name = M.mind.assigned_role
-		if(job_name == "MODE")
-			job_name = M.mind.special_role
 	return job_name
 
 /proc/get_marine_jobs()

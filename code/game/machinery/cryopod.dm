@@ -305,31 +305,11 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 					dept_console += A
 					A.loc = null
 
-
-			//Update any existing objectives involving this mob.
-			for(var/datum/objective/O in all_objectives)
-				//We don't want revs to get objectives that aren't for heads of staff. Letting
-				//them win or lose based on cryo is silly so we remove the objective.
-				if(istype(O, /datum/objective/mutiny) && O.target == occupant.mind)
-					qdel(O)
-				else if(O.target && istype(O.target,/datum/mind))
-					if(O.target == occupant.mind)
-						if(O.owner && O.owner.current)
-							to_chat(O.owner.current, SPAN_DANGER("You get the feeling your target is no longer within your reach. Time for Plan [pick(list("A","B","C","D","X","Y","Z"))]."))
-						O.target = null
-						spawn(1) //This should ideally fire after the occupant is deleted.
-							if(!O) return
-							O.find_target()
-							if(!(O.target))
-								all_objectives -= O
-								O.owner.objectives -= O
-								qdel(O)
-
 			if(ishuman(occupant))
 				var/mob/living/carbon/human/H = occupant
-				if(H.mind && H.assigned_squad)
+				if(H.assigned_squad)
 					var/datum/squad/S = H.assigned_squad
-					switch(H.mind.assigned_role)
+					switch(H.job)
 						if(JOB_SQUAD_ENGI)
 							S.num_engineers--
 						if(JOB_SQUAD_MEDIC)
@@ -362,13 +342,7 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 			ticker.mode.latejoin_tally-- //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
 
 			//Handle job slot/tater cleanup.
-			if(occupant.mind)
-				RoleAuthority.free_role(RoleAuthority.roles_for_mode[occupant.mind.assigned_role])
-
-				if(occupant.mind.objectives.len)
-					qdel(occupant.mind.objectives)
-					occupant.mind.objectives = null
-					occupant.mind.special_role = null
+			RoleAuthority.free_role(RoleAuthority.roles_for_mode[occupant.job])
 
 			//Delete them from datacore.
 			if(PDA_Manifest.len)
@@ -388,10 +362,7 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 
 			icon_state = "body_scanner_0"
 
-			occupant.track_death_calculations()
-
-			occupant.ghostize(0) //We want to make sure they are not kicked to lobby.
-			//TODO: Check objectives/mode, update new targets if this mob is the target, spawn new antags?
+			occupant.ghostize(0)
 
 			//Make an announcement and log the person entering storage.
 			frozen_crew += "[occupant.real_name]"

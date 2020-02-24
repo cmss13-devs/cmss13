@@ -306,12 +306,6 @@
 
 	qdel(src)
 
-/mob/new_player/proc/AnnounceArrival(var/mob/living/carbon/human/character, var/rank, var/join_message)
-	if (ticker.current_state == GAME_STATE_PLAYING)
-		var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)// BS12 EDIT Arrivals Announcement Computer, rather than the AI.
-		if(character.mind.role_alt_title) rank = character.mind.role_alt_title
-		a.autosay("[character.real_name],[rank ? " [rank]," : " visitor," ] [join_message ? join_message : "has arrived on the station"].", "Arrivals Announcement Computer")
-		qdel(a)
 
 /mob/new_player/proc/LateChoices()
 	var/mills = world.time // 1/10 of a second, not real milliseconds but whatever
@@ -336,7 +330,7 @@
 		var/active = 0
 		// Only players with the job assigned and AFK for less than 10 minutes count as active
 		for(var/mob/M in player_list)
-			if(M.mind && M.client && M.mind.assigned_role == J.title && M.client.inactivity <= 10 * 60 * 10)
+			if(M.client && M.job == J.title && M.client.inactivity <= 10 * 60 * 10)
 				active++
 		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"
 
@@ -381,6 +375,7 @@
 		mind.transfer_to(new_character)					//won't transfer key since the mind is not active
 		mind.setup_human_stats()
 
+	new_character.job = job
 	new_character.name = real_name
 	new_character.voice = real_name
 
@@ -394,7 +389,8 @@
 	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_hair)
 
 	new_character.key = key		//Manually transfer the key to log them in
-	if(new_character.client) new_character.client.change_view(world.view)
+	if(new_character.client) 
+		new_character.client.change_view(world.view)
 
 	return new_character
 

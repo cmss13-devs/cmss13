@@ -176,23 +176,24 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	unwield(user)
 
 /obj/item/weapon/gun/proc/wy_allowed_check(mob/living/carbon/human/user)
-	if(config && config.remove_gun_restrictions) return 1 //Not if the config removed it.
+	if(config && config.remove_gun_restrictions) 
+		return TRUE //Not if the config removed it.
 
 	if(user.mind)
-		switch(user.mind.assigned_role)
+		switch(user.job)
 			if(
 				"PMC",
 				"WY Agent",
 				"Corporate Liaison",
 				"Event",
-			) return 1
-		switch(user.mind.special_role)
+			) return TRUE
+		switch(user.faction)
 			if(
-				"DEATH SQUAD",
-				"PMC",
-				"MERCENARIES",
-				"FREELANCERS",
-			) return 1
+				FACTION_DEATHSQUAD,
+				FACTION_PMC,
+				FACTION_MERCENARY,
+				FACTION_FREELANCER,
+			) return TRUE
 	to_chat(user, SPAN_WARNING("[src] flashes a warning sign indicating unauthorized use!"))
 
 /*

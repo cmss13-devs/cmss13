@@ -3778,7 +3778,7 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
 "kS" = (
-/obj/structure/machinery/cm_vending/sorted/medical,
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -8502,7 +8502,7 @@
 	},
 /area/tdome/tdome1)
 "En" = (
-/obj/structure/machinery/cm_vending/sorted/medical{
+/obj/structure/machinery/cm_vending/sorted/medical/no_access{
 	req_access = null
 	},
 /turf/open/floor/almayer{
@@ -9049,7 +9049,7 @@
 	},
 /area/adminlevel/ert_station)
 "Od" = (
-/obj/structure/machinery/cm_vending/sorted/medical/chemistry{
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry/no_access{
 	req_access = null
 	},
 /turf/open/floor/almayer{

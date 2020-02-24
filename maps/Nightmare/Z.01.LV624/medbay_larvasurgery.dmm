@@ -58,7 +58,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "am" = (
-/obj/structure/machinery/cm_vending/sorted/medical,
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "whitebluecorner";
@@ -323,7 +323,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "aN" = (
-/obj/structure/machinery/cm_vending/sorted/medical,
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /obj/structure/machinery/light{
 	dir = 1
 	},

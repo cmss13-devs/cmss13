@@ -70,7 +70,6 @@
 	//alt titles are handled a bit weirdly in order to unobtrusively integrate into existing ID system
 	var/assignment = null	//can be alt title or the actual job
 	var/rank = null			//actual job
-	var/dorm = 0		// determines if this ID has claimed a dorm already
 	var/paygrade = 0  // Marine's paygrade
 	var/claimedgear = 1 // For medics and engineers to 'claim' a locker
 
@@ -216,8 +215,7 @@
 		var/obj/item/card/id/I = O
 		src.access |= I.access
 		if(istype(user, /mob/living) && user.mind)
-			if(user.mind.special_role)
-				to_chat(usr, SPAN_NOTICE(" The card's microscanners activate as you pass it over the ID, copying its access."))
+			to_chat(usr, SPAN_NOTICE(" The card's microscanners activate as you pass it over the ID, copying its access."))
 
 /obj/item/card/id/syndicate/attack_self(mob/user as mob)
 	if(!src.registered_name)

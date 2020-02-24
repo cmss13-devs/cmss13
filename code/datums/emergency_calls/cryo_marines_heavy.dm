@@ -25,8 +25,6 @@
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	H.key = M.key
 	if(H.client) H.client.change_view(world.view)
-	H.mind.assigned_role = ""
-	H.mind.special_role = ""
 
 	sleep(5)
 	if(!leader)
@@ -58,7 +56,6 @@
 	RoleAuthority.randomize_squad(H)
 	H.sec_hud_set_ID()
 	H.sec_hud_set_implants()
-	H.hud_set_special_role()
 	H.hud_set_squad()
 
 	// Have to add radio headsets AFTER squad assignment, because the self-setting headset depends on things set in randomize_squad

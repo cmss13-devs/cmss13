@@ -195,7 +195,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	desc = "A paper box. Open it and get a specialist kit. Works only for squad marines."
 
 /obj/item/spec_kit/asrs/attack_self(mob/user)
-	if(user.mind && user.mind.assigned_role == JOB_SQUAD_MARINE)
+	if(user.job == JOB_SQUAD_MARINE)
 		user.skills.set_skill(SKILL_SPEC_WEAPONS)
 	else
 		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a squad marine!"))

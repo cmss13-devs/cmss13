@@ -21,8 +21,6 @@
 	var/mob/living/carbon/human/mob = new(spawn_loc)
 	mob.key = M.key
 	if(mob.client) mob.client.change_view(world.view)
-	mob.mind.assigned_role = ""
-	mob.mind.special_role = ""
 
 	sleep(5)
 	if(!leader)
@@ -53,7 +51,6 @@
 	RoleAuthority.randomize_squad(mob)
 	mob.sec_hud_set_ID()
 	mob.sec_hud_set_implants()
-	mob.hud_set_special_role()
 	mob.hud_set_squad()
 
 	data_core.manifest_inject(mob) //Put people in crew manifest

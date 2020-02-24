@@ -179,8 +179,8 @@
 				if(z_hidden && M_turf && (z_hidden == M_turf.z))
 					continue
 
-				if(H.mind && H.mind.assigned_role)
-					role = H.mind.assigned_role
+				if(H.job)
+					role = H.job
 				else if(istype(H.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
 					var/obj/item/card/id/ID = H.wear_id		//we use their ID to get their role.
 					if(ID.rank) role = ID.rank
@@ -188,7 +188,7 @@
 				if(current_squad.squad_leader)
 					if(H == current_squad.squad_leader)
 						dist = "<b>N/A</b>"
-						if(H.mind && H.mind.assigned_role != JOB_SQUAD_LEADER)
+						if(H.job != JOB_SQUAD_LEADER)
 							act_sl = " (acting SL)"
 					else if(M_turf && (M_turf.z == SL_z))
 						dist = "[get_dist(H, current_squad.squad_leader)] ([dir2text_short(get_dir(current_squad.squad_leader, H))])"
@@ -646,7 +646,7 @@
 		send_to_squad("Attention: A new Squad Leader has been set: [H.real_name].")
 		visible_message("[htmlicon(src, viewers(src))] [SPAN_BOLDNOTICE("[H.real_name] is the new Squad Leader of squad '[current_squad]'! Logging to enlistment file.")]")
 
-	to_chat(H, "[htmlicon(src, H)] <font size='3' color='blue'><B>Overwatch: You've been promoted to \'[H.mind.assigned_role == JOB_SQUAD_LEADER ? "SQUAD LEADER" : "ACTING SQUAD LEADER"]\' for [current_squad.name]. Your headset has access to the command channel (:v).</B></font>")
+	to_chat(H, "[htmlicon(src, H)] <font size='3' color='blue'><B>Overwatch: You've been promoted to \'[H.job == JOB_SQUAD_LEADER ? "SQUAD LEADER" : "ACTING SQUAD LEADER"]\' for [current_squad.name]. Your headset has access to the command channel (:v).</B></font>")
 	to_chat(usr, "[htmlicon(src, usr)] [H.real_name] is [current_squad]'s new leader!")
 
 	if(H.assigned_fireteam)
@@ -662,10 +662,10 @@
 	SStracking.set_leader(current_squad.tracking_id, H)
 	SStracking.start_tracking("marine_sl", H)
 
-	if(H.mind.assigned_role == JOB_SQUAD_LEADER)//a real SL
-		H.mind.role_comm_title = "SL"
+	if(H.job == JOB_SQUAD_LEADER)//a real SL
+		H.comm_title = "SL"
 	else //an acting SL
-		H.mind.role_comm_title = "aSL"
+		H.comm_title = "aSL"
 	if(H.skills)
 		H.skills.set_skill(SKILL_LEADERSHIP, max(SKILL_LEAD_TRAINED, H.skills.get_skill_level(SKILL_LEADERSHIP)))
 
@@ -755,7 +755,7 @@
 		return
 
 	var/no_place = FALSE
-	switch(transfer_marine.mind.assigned_role)
+	switch(transfer_marine.job)
 		if(JOB_SQUAD_LEADER)
 			if(new_squad.num_leaders == new_squad.max_leaders)
 				no_place = TRUE
@@ -773,7 +773,7 @@
 				no_place = TRUE
 
 	if(no_place)
-		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Transfer aborted. [new_squad] can't have another [transfer_marine.mind.assigned_role].")]")
+		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Transfer aborted. [new_squad] can't have another [transfer_marine.job].")]")
 		return
 
 	if(transfer_marine.assigned_fireteam)

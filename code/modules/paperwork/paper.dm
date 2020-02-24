@@ -355,7 +355,7 @@
 /obj/item/paper/attackby(obj/item/P, mob/user)
 	..()
 	var/clown = 0
-	if(user.mind && (user.mind.assigned_role == "Clown"))
+	if(user.mind && (user.job == "Clown"))
 		clown = 1
 
 	if(istype(P, /obj/item/paper) || istype(P, /obj/item/photo))

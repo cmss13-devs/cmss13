@@ -10,13 +10,13 @@
 	var/newrank = input("Select new rank for [H]", "Change the mob's rank and skills") as null|anything in rank_list
 	if (!newrank)
 		return
-	if(!H || !H.mind)
+	if(!H)
 		return
 	var/obj/item/card/id/I = H.wear_id
 	 
 	if(newrank != "Custom")
 		var/datum/job/J = RoleAuthority.roles_by_name[newrank]
-		H.mind.role_comm_title = J.get_comm_title()
+		H.comm_title = J.get_comm_title()
 		H.set_skills(J.get_skills())
 		if(istype(I))
 			I.access = J.get_access()
@@ -37,16 +37,14 @@
 		if(!new_faction)
 			new_faction = FACTION_NEUTRAL
 		H.faction = new_faction
-		if(H.mind)
-			H.mind.faction = new_faction
 	else
 		var/newcommtitle = input("Write the custom title appearing on comms chat (e.g. Spc)", "Comms title") as null|text
 		if(!newcommtitle)
 			return
-		if(!H || !H.mind)
+		if(!H)
 			return
 
-		H.mind.role_comm_title = newcommtitle
+		H.comm_title = newcommtitle
 
 		if(!istype(I) || I != H.wear_id)
 			to_chat(usr, "The mob has no id card, unable to modify ID and chat title.")
@@ -73,19 +71,15 @@
 			new_faction = FACTION_NEUTRAL
 		H.faction = new_faction
 
-		if(!H.mind)
-			to_chat(usr, "The mob has no mind, unable to modify skills.")
-		else
-			H.mind.faction = new_faction
-			var/newskillset = input("Select a skillset", "Skill Set") as null|anything in RoleAuthority.roles_by_name
-			if(!newskillset)
-				return
+		var/newskillset = input("Select a skillset", "Skill Set") as null|anything in RoleAuthority.roles_by_name
+		if(!newskillset)
+			return
 
-			if(!H || !H.mind)
-				return
+		if(!H)
+			return
 
-			var/datum/job/J = RoleAuthority.roles_by_name[newskillset]
-			H.set_skills(J.get_skills())
+		var/datum/job/J = RoleAuthority.roles_by_name[newskillset]
+		H.set_skills(J.get_skills())
 
 /client/proc/cmd_admin_dress(var/mob/living/carbon/human/M in mob_list)
 	set category = null

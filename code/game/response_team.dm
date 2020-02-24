@@ -90,18 +90,6 @@ proc/percentage_dead()
 	if(total == 0) return 0
 	else return round(100 * deadcount / total)
 
-// counts the number of antagonists in %
-proc/percentage_antagonists()
-	var/total = 0
-	var/antagonists = 0
-	for(var/mob/living/carbon/human/H in mob_list)
-		if(is_special_character(H) >= 1)
-			antagonists++
-		total++
-
-	if(total == 0) return 0
-	else return round(100 * antagonists / total)
-
 // Increments the ERT chance automatically, so that the later it is in the round,
 // the more likely an ERT is to be able to be called.
 proc/increment_ert_chance()
@@ -125,7 +113,6 @@ proc/trigger_armed_response_team(var/force = 0)
 
 	var/send_team_chance = ert_base_chance // Is incremented by increment_ert_chance.
 	send_team_chance += 2*percentage_dead() // the more people are dead, the higher the chance
-	send_team_chance += percentage_antagonists() // the more antagonists, the higher the chance
 	send_team_chance = min(send_team_chance, 100)
 
 	if(force) send_team_chance = 100
@@ -212,8 +199,7 @@ proc/trigger_armed_response_team(var/force = 0)
 	M.mind = new
 	M.mind.current = M
 	M.mind.original = M
-	M.mind.assigned_role = "MODE"
-	M.mind.special_role = "Response Team"
+	M.job = "Response Team"
 	M.mind_initialize()
 	if(!(M.mind in ticker.minds))
 		ticker.minds += M.mind//Adds them to regular mind list.

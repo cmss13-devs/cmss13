@@ -108,7 +108,7 @@
 		return 0
 	if(!M.mind)
 		return 0
-	if(!M.mind.assigned_role)
+	if(!M.job)
 		return 0	//Not yet
 	if(M.assigned_squad)
 		return 0	//already in a squad
@@ -123,7 +123,7 @@
 
 	var/assignment = JOB_SQUAD_MARINE
 
-	switch(M.mind.assigned_role)
+	switch(M.job)
 		if(JOB_SQUAD_ENGI)
 			assignment = JOB_SQUAD_ENGI
 			num_engineers++
@@ -139,7 +139,7 @@
 			assignment = JOB_SQUAD_SMARTGUN
 			num_smartgun++
 		if(JOB_SQUAD_LEADER)
-			if(squad_leader && (!squad_leader.mind || squad_leader.mind.assigned_role != JOB_SQUAD_LEADER)) //field promoted SL
+			if(squad_leader && squad_leader.job != JOB_SQUAD_LEADER) //field promoted SL
 				var/old_lead = squad_leader
 				demote_squad_leader()	//replaced by the real one
 				SStracking.start_tracking(tracking_id, old_lead)
@@ -148,7 +148,7 @@
 			SStracking.set_leader(tracking_id, M)
 			SStracking.start_tracking("marine_sl", M)
 
-			if(M.mind.assigned_role == JOB_SQUAD_LEADER) //field promoted SL don't count as real ones
+			if(M.job == JOB_SQUAD_LEADER) //field promoted SL don't count as real ones
 				num_leaders++
 
 	if(assignment != JOB_SQUAD_LEADER)
@@ -156,8 +156,8 @@
 
 	count++		//Add up the tally. This is important in even squad distribution.
 
-	if(M.mind.assigned_role != "Squad Marine")
-		log_admin("[key_name(M)] has been assigned as [name] [M.mind.assigned_role]") // we don't want to spam squad marines but the others are useful
+	if(M.job != "Squad Marine")
+		log_admin("[key_name(M)] has been assigned as [name] [M.job]") // we don't want to spam squad marines but the others are useful
 
 	marines_list += M
 	M.assigned_squad = src	//Add them to the squad
@@ -178,11 +178,11 @@
 		return 0	//Abort, no ID found
 
 	C.access -= src.access
-	C.assignment = M.mind.assigned_role
+	C.assignment = M.job
 	C.name = "[C.registered_name]'s ID Card ([C.assignment])"
 
 	if(M.assigned_squad.squad_leader == M)
-		if(M.mind.assigned_role != JOB_SQUAD_LEADER) //a field promoted SL, not a real one
+		if(M.job != JOB_SQUAD_LEADER) //a field promoted SL, not a real one
 			demote_squad_leader()
 		else
 			M.assigned_squad.squad_leader = null
@@ -200,12 +200,17 @@
 	update_squad_ui()
 	M.assigned_squad = null
 
-	switch(M.mind.assigned_role)
-		if(JOB_SQUAD_ENGI) num_engineers--
-		if(JOB_SQUAD_MEDIC) num_medics--
-		if(JOB_SQUAD_SPECIALIST) num_specialists--
-		if(JOB_SQUAD_SMARTGUN) num_smartgun--
-		if(JOB_SQUAD_LEADER) num_leaders--
+	switch(M.job)
+		if(JOB_SQUAD_ENGI) 
+			num_engineers--
+		if(JOB_SQUAD_MEDIC) 
+			num_medics--
+		if(JOB_SQUAD_SPECIALIST) 
+			num_specialists--
+		if(JOB_SQUAD_SMARTGUN) 
+			num_smartgun--
+		if(JOB_SQUAD_LEADER) 
+			num_leaders--
 
 //proc for demoting current Squad Leader
 /datum/squad/proc/demote_squad_leader(leader_killed)
@@ -215,35 +220,34 @@
 	SStracking.stop_tracking("marine_sl", old_lead)
 
 	squad_leader = null
-	if(old_lead.mind)
-		switch(old_lead.mind.assigned_role)
-			if(JOB_SQUAD_SPECIALIST)
-				old_lead.mind.role_comm_title = "Spc"
-				if(old_lead.skills)
-					old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
-			if(JOB_SQUAD_ENGI)
-				old_lead.mind.role_comm_title = "Eng"
-				if(old_lead.skills)
-					old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
-			if(JOB_SQUAD_MEDIC)
-				old_lead.mind.role_comm_title = "Med"
-				if(old_lead.skills)
-					old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
-			if(JOB_SQUAD_SMARTGUN)
-				old_lead.mind.role_comm_title = "SG"
-				if(old_lead.skills)
-					old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
-			if(JOB_SQUAD_LEADER)
-				if(!leader_killed)
-					if(old_lead.skills)
-						old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_NOVICE)
-					old_lead.mind.role_comm_title = "Mar"
-			else
-				old_lead.mind.role_comm_title = "Mar"
+	switch(old_lead.job)
+		if(JOB_SQUAD_SPECIALIST)
+			old_lead.comm_title = "Spc"
+			if(old_lead.skills)
+				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
+		if(JOB_SQUAD_ENGI)
+			old_lead.comm_title = "Eng"
+			if(old_lead.skills)
+				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
+		if(JOB_SQUAD_MEDIC)
+			old_lead.comm_title = "Med"
+			if(old_lead.skills)
+				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
+		if(JOB_SQUAD_SMARTGUN)
+			old_lead.comm_title = "SG"
+			if(old_lead.skills)
+				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
+		if(JOB_SQUAD_LEADER)
+			if(!leader_killed)
 				if(old_lead.skills)
 					old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_NOVICE)
+				old_lead.comm_title = "Mar"
+		else
+			old_lead.comm_title = "Mar"
+			if(old_lead.skills)
+				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_NOVICE)
 
-	if(!old_lead.mind || old_lead.mind.assigned_role != JOB_SQUAD_LEADER || !leader_killed)
+	if(old_lead.job != JOB_SQUAD_LEADER || !leader_killed)
 		if(istype(old_lead.wear_ear, /obj/item/device/radio/headset/almayer/marine))
 			var/obj/item/device/radio/headset/almayer/marine/R = old_lead.wear_ear
 			if(istype(R.keyslot1, /obj/item/device/encryptionkey/squadlead))
@@ -284,7 +288,7 @@
 			else
 				SStracking.stop_tracking(H.assigned_fireteam, H)	//remove from previous FT group
 				if(H.stat == CONSCIOUS)
-					to_chat(fireteam_leaders[fireteam], FONT_SIZE_BIG(SPAN_BLUE("[H.mind ? H.mind.role_comm_title : ""] [H] was unassigned from your fireteam.")))
+					to_chat(fireteam_leaders[fireteam], FONT_SIZE_BIG(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was unassigned from your fireteam.")))
 		fireteams[H.assigned_fireteam].Remove(H)
 		var/ft = H.assigned_fireteam
 		H.assigned_fireteam = fireteam
@@ -297,7 +301,7 @@
 			SStracking.start_tracking(fireteam, H)
 			if(H.stat == CONSCIOUS)
 				to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were assigned to [fireteam]. Report to your Team Leader ASAP.")))
-			to_chat(fireteam_leaders[fireteam], FONT_SIZE_BIG(SPAN_BLUE("[H.mind ? H.mind.role_comm_title : ""] [H] was assigned to your fireteam.")))
+			to_chat(fireteam_leaders[fireteam], FONT_SIZE_BIG(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was assigned to your fireteam.")))
 		else
 			SStracking.start_tracking(tracking_id, H)
 			if(H.stat == CONSCIOUS)
@@ -314,7 +318,7 @@
 			SStracking.start_tracking(fireteam, H)
 			if(H.stat == CONSCIOUS)
 				to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were assigned to [fireteam]. Report to your Team Leader ASAP.")))
-			to_chat(fireteam_leaders[fireteam], FONT_SIZE_BIG(SPAN_BLUE("[H.mind ? H.mind.role_comm_title : ""] [H] was assigned to your fireteam.")))
+			to_chat(fireteam_leaders[fireteam], FONT_SIZE_BIG(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was assigned to your fireteam.")))
 		if(H.stat == CONSCIOUS)
 			to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were assigned to [fireteam].")))
 
@@ -329,7 +333,7 @@
 	if(fireteam_leaders[ft])
 		SStracking.stop_tracking(ft, H)			//remove from FT group
 		SStracking.start_tracking(tracking_id, H)	//add to SL group
-		to_chat(fireteam_leaders[ft], FONT_SIZE_HUGE(SPAN_BLUE("[H.mind ? H.mind.role_comm_title : ""] [H] was unassigned from your fireteam.")))
+		to_chat(fireteam_leaders[ft], FONT_SIZE_HUGE(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was unassigned from your fireteam.")))
 
 /datum/squad/proc/assign_ft_leader(fireteam, mob/living/carbon/human/H, upd_ui = TRUE)
 	if(fireteam_leaders[fireteam])

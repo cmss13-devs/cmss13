@@ -477,49 +477,6 @@ var/datum/mob_hud/huds = list(
 				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Released"))
 					holder.icon_state = "hudreleased"
 					break
-
-
-
-//Special role HUD
-
-/mob/proc/hud_set_special_role()
-	return
-
-/mob/living/carbon/human/hud_set_special_role()
-	var/image/holder = hud_list[SPECIALROLE_HUD]
-	holder.icon_state = ""
-
-	if(mind)
-		switch(mind.special_role)
-			if("traitor", "Syndicate")
-				holder.icon_state = "hudsyndicate"
-			if("Revolutionary")
-				holder.icon_state = "hudrevolutionary"
-			if("Head Revolutionary")
-				holder.icon_state = "hudheadrevolutionary"
-			if("Cultist")
-				holder.icon_state = "hudcultist"
-			if("Changeling")
-				holder.icon_state = "hudchangeling"
-			if("Wizard", "Fake Wizard")
-				holder.icon_state = "hudwizard"
-			if("Death Commando")
-				holder.icon_state = "huddeathsquad"
-			if("Ninja")
-				holder.icon_state = "hudninja"
-			if("head_loyalist")
-				holder.icon_state = "hudloyalist"
-			if("loyalist")
-				holder.icon_state = "hudloyalist"
-			if("head_mutineer")
-				holder.icon_state = "hudmutineer"
-			if("mutineer")
-				holder.icon_state = "hudmutineer"
-
-
-
-
-
 //Squad HUD
 
 /mob/proc/hud_set_squad()
@@ -534,8 +491,8 @@ var/datum/mob_hud/huds = list(
 		var/marine_rk
 		var/obj/item/card/id/I = get_idcard()
 		var/_role
-		if(mind)
-			_role = mind.assigned_role
+		if(job)
+			_role = job
 		else if(I)
 			_role = I.rank
 		switch(_role)
@@ -572,7 +529,7 @@ var/datum/mob_hud/huds = list(
 		var/obj/item/card/id/ID = get_idcard()
 		var/_role
 		if(mind)
-			_role = mind.assigned_role
+			_role = job
 		else if(ID)
 			_role = ID.rank
 		switch(_role)

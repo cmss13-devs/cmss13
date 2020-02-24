@@ -1,8 +1,8 @@
 /proc/get_total_marines()
 	var/count = 0
-	var/mob/M
-	for(M in player_list)
-		if(ishuman(M) && M.mind && !M.mind.special_role) count++
+	for(var/mob/living/carbon/human/H in player_list)
+		if(H.faction == FACTION_MARINE)	
+			count++
 	return count
 
 // https://docs.google.com/spreadsheets/d/1PlnIwKhq-bVWWFPoBrzWYh1mWK04pyBSQUtUMEw3qSw/edit#gid=1290768907

@@ -255,6 +255,6 @@
 	else ..()
 
 /obj/vehicle/souto/relaymove(mob/user, direction)
-	if(user.mind.special_role == "Souto Man")
+	if(user.job == "Souto Man")
 		playsound(src.loc, "smash.ogg", 25, 1)
 		..()

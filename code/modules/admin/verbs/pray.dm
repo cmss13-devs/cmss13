@@ -13,9 +13,8 @@
 			return
 
 	var/liaison = 0
-	if(src.mind)
-		if(src.mind.assigned_role == "Corporate Liaison")
-			liaison = 1
+	if(job == "Corporate Liaison")
+		liaison = 1
 
 	if(liaison)
 		msg = SPAN_NOTICE("<b><font color=purple>LIAISON: </font>[key_name(src, 1)] (<A HREF='?_src_=admin_holder;ccmark=\ref[src]'>Mark</A>) (<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[src]'>?</A>) (<A HREF='?_src_=admin_holder;ahelp=adminplayeropts;extra=\ref[src]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[src]'>VV</A>) (<A HREF='?_src_=admin_holder;subtlemessage=\ref[src]'>SM</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[src]'>JMP</A>) (<A HREF='?_src_=admin_holder;adminspawncookie=\ref[src]'>SC</a>):</b> [msg]")

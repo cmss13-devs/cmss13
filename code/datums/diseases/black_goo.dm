@@ -94,8 +94,7 @@
 		H.jitteriness = 0
 		H.set_species("Zombie")
 		stage = 5
-		if(H.mind)
-			H.mind.faction = FACTION_ZOMBIE
+		H.faction = FACTION_ZOMBIE
 		zombie_transforming = FALSE
 
 

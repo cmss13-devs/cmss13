@@ -191,7 +191,6 @@
 			continue
 		
 		var/color = i % 2 == 0 ? "#6289b7" : "#48709d"
-		var/is_antagonist = is_special_character(M)
 
 		var/M_job = ""
 
@@ -248,7 +247,7 @@
 				<td align='center' bgcolor='[color]'>
 					<span id='notice_span[i]'></span>
 					<a id='link[i]'
-					onmouseover='expand("item[i]","[M_job]","[M_name]","[M_rname]","--unused--","[M_key]","[M.lastKnownIP]",[is_antagonist],"\ref[M]")'
+					onmouseover='expand("item[i]","[M_job]","[M_name]","[M_rname]","--unused--","[M_key]","[M.lastKnownIP]","\ref[M]")'
 					>
 					<b id='search[i]'>[M_name] - [M_rname] - [M_key] ([M_job])</b>
 					</a>

@@ -34,8 +34,7 @@
 	mob.name = mob.real_name
 	mob.key = M.key
 	if(mob.client) mob.client.change_view(world.view)
-	mob.mind.assigned_role = "MODE"
-	mob.mind.special_role = "Mercenary"
+	mob.job = "Mercenary"
 	ticker.mode.traitors += mob.mind
 
 	if(!leader)       //First one spawned is always the leader.

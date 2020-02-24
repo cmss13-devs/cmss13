@@ -29,7 +29,7 @@
 
 	if(!isXeno(user) && (onboard || z == 1))
 		if(shuttle.queen_locked)
-			if(onboard && (isSynth(user) || user.mind.assigned_role == "Pilot Officer"))
+			if(onboard && (isSynth(user) || user.job == "Pilot Officer"))
 				user.visible_message(SPAN_NOTICE("[user] starts to type on the [src]."),
 				SPAN_NOTICE("You try to take back the control over the monorail. It will take around 1 minute."))
 				if(do_after(user, MINUTES_1, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))

@@ -4,11 +4,10 @@
 #define EQUIPMENT_PRESET_START_OF_ROUND_WO 4
 
 /datum/equipment_preset/clf
-	name = "CLF"
+	name = FACTION_CLF
 	languages = list("Tradeband", "English")
 	assignment = "Colonist"
-	rank = "MODE"
-	special_role = "CLF"
+	rank = FACTION_CLF
 	faction = FACTION_CLF
 	idtype = /obj/item/card/id/data
 

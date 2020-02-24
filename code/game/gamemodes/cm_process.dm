@@ -327,8 +327,10 @@ Only checks living mobs with a client attached.
 	for(var/mob/M in living_human_list)
 		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space))
 			if(ishuman(M) && !isYautja(M))
-				if(M.mind && M.mind.special_role == "PMC") 	num_pmcs++
-				else if(M.mind && !M.mind.special_role)		num_marines++
+				if(M.faction ==  FACTION_PMC) 	
+					num_pmcs++
+				else if(M.faction == FACTION_MARINE)		
+					num_marines++
 
 	return list(num_marines,num_pmcs)
 
@@ -338,7 +340,8 @@ Only checks living mobs with a client attached.
 	for(var/mob/M in living_human_list)
 		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space))
 			if(ishuman(M) && !isYautja(M))
-				if(M.mind && !M.mind.special_role)		num_marines++
+				if(M.faction == FACTION_MARINE)	
+					num_marines++
 
 	return num_marines
 

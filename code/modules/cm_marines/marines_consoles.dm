@@ -552,7 +552,8 @@
 			if(istype(C.loc, /mob/living/carbon/human))
 
 				var/mob/living/carbon/human/H = C.loc
-				if(H && H.mind && H.mind.special_role && H.loc.z == 1) continue // survivors
+				if(H && H.faction == FACTION_SURVIVOR && H.loc.z == 1) 
+					continue // survivors
 				if(H.w_uniform != C)
 					continue
 

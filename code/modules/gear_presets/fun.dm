@@ -3,7 +3,6 @@
 	name = "Fun"
 	flags = EQUIPMENT_PRESET_STUB
 	assignment = "Fun"
-	special_role = "FUN"
 
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id

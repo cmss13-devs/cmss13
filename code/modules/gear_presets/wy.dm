@@ -2,8 +2,8 @@
 /datum/equipment_preset/wy
 	name = "WY"
 	faction = FACTION_PMC
+	rank = FACTION_PMC
 	idtype = /obj/item/card/id/pmc
-	special_role = "PMC"
 	faction = FACTION_PMC
 
 /datum/equipment_preset/wy/New()
@@ -252,8 +252,7 @@
 	uses_special_name = TRUE //We always use a codename!
 	faction = FACTION_DEATHSQUAD
 	assignment = "Deathsquad"
-	rank = JOB_PMC_COMMANDO
-	special_role = "DEATH SQUAD"
+	rank = FACTION_DEATHSQUAD
 	skills = /datum/skills/commando/deathsquad
 	idtype = /obj/item/card/id/pmc/ds
 
@@ -302,10 +301,7 @@
 /datum/equipment_preset/wy/deathsquad/medic
 	name = "Weston-Yamada Deathsquad Medic"
 	flags = EQUIPMENT_PRESET_EXTRA
-
 	assignment = "Deathsquad Medic"
-	rank = "PMC Commando"
-	special_role = "DEATH SQUAD"
 
 /datum/equipment_preset/wy/deathsquad/medic/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -342,10 +338,7 @@
 /datum/equipment_preset/wy/deathsquad/terminator
 	name = "Weston-Yamada Deathsquad Terminator"
 	flags = EQUIPMENT_PRESET_EXTRA
-
 	assignment = "Deathsquad Terminator"
-	rank = JOB_PMC_COMMANDO
-	special_role = "DEATH SQUAD"
 
 /datum/equipment_preset/wy/deathsquad/terminator/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/commando, WEAR_EAR)
@@ -367,10 +360,7 @@
 /datum/equipment_preset/wy/deathsquad/leader
 	name = "Weston-Yamada Deathsquad Leader"
 	flags = EQUIPMENT_PRESET_EXTRA
-
 	assignment = "Deathsquad Leader"
-	rank = JOB_PMC_COMMANDO
-	special_role = "DEATH SQUAD"
 
 /*****************************************************************************************************/
 /******************************************SCP FLUFF**************************************************/
@@ -379,7 +369,6 @@
 /datum/equipment_preset/wy/pmc_standard/scp
 	name = "Weston-Yamada SCP PMC (Standard)"
 	flags = EQUIPMENT_PRESET_EXTRA
-
 	assignment = "Weston-Yamada SCP PMC (Standard)"
 	rank = "SCP PMC Standard"
 

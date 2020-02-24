@@ -957,7 +957,7 @@
 		var/mob/firingMob = P.firer
 		if(P.weapon_source_mob)
 			last_damage_mob = P.weapon_source_mob
-		if(ishuman(firingMob) && ishuman(src) && firingMob.mind && mind && mind.faction == firingMob.mind.faction) //One human shot another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
+		if(ishuman(firingMob) && ishuman(src) && faction == firingMob.faction) //One human shot another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
 			attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> shot <b>[src]/[ckey]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
 			firingMob.attack_log += "\[[time_stamp()]\] <b>[firingMob]/[firingMob.ckey]</b> shot <b>[src]/[ckey]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
 			round_statistics.total_friendly_fire_instances++

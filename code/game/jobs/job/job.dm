@@ -1,10 +1,9 @@
 /datum/job
 	//The name of the job
 	var/title = ""				 //The internal title for the job, used for the job ban system and so forth. Don't change these, change the disp_title instead.
-	var/special_role 			 //In case they have some special role on spawn.
 	var/disp_title				 //Determined on new(). Usually the same as the title, but doesn't have to be. Set this to override what the player sees in the game as their title.
 
-	var/faction 			= "Marine" //Players will be allowed to spawn in as jobs that are set to "Marine". Other factions are special game mode spawns.
+	var/faction 			= FACTION_MARINE //Players will be allowed to spawn in as jobs that are set to "Marine". Other factions are special game mode spawns.
 	var/total_positions 	= 0 //How many players can be this job
 	var/spawn_positions 	= 0 //How many players can spawn in as this job
 	var/allow_additional	= 0 //Can admins modify positions to it
@@ -12,7 +11,6 @@
 	var/current_positions 	= 0 //How many players have this job
 	var/supervisors 		= "" //Supervisors, who this person answers to directly. Should be a string, shown to the player when they enter the game.
 	var/selection_class 	= "" // Job Selection span class (for background color)
-	var/list/alt_titles 	//List of alternate titles, if any.
 
 	var/flag = NO_FLAGS 					//TODO robust this later.
 	var/department_flag = NO_FLAGS 			//TODO robust this later.
@@ -83,11 +81,6 @@
 		return gear_presets_list[gear_preset].role_comm_title
 	return ""
 
-/datum/job/proc/get_alternative_title(mob/living/M, lowercase)
-	if(istype(M) && M.client && M.client.prefs)
-		. = M.client.prefs.GetPlayerAltTitle(src)
-		if(. && lowercase) . = lowertext(.)
-
 /datum/job/proc/set_spawn_positions(var/count)
 	return spawn_positions
 
@@ -103,9 +96,7 @@
 	sleep(10)
 	if(H && H.loc && H.client)
 		var/title_given
-		var/title_alt
-		title_alt = get_alternative_title(H,1)
-		title_given = title_alt ? title_alt : lowertext(disp_title)
+		title_given = lowertext(disp_title)
 
 		//Document syntax cannot have tabs for proper formatting.
 		var/t = {"

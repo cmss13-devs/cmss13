@@ -152,7 +152,7 @@ var/waiting_for_drop_votes = 0
 	for(var/mob/new_player/player in player_list)
 		if(player && player.ready)
 			if(player.mind)
-				player.mind.assigned_role = "ROLE"
+				player.job = "ROLE"
 			else
 				if(player.client)
 					player.mind = new(player.key)

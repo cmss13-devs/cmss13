@@ -123,7 +123,7 @@ obj/structure/machinery/scanner/attack_hand(mob/living/carbon/human/user)
 	L.fields["name"] = mname
 	L.fields["sex"] = gender
 	L.fields["age"] = age
-	L.fields["id"] = md5("[mname][user.mind.assigned_role]")
+	L.fields["id"] = md5("[mname][user.job]")
 	L.fields["rank"] = "Unknown"
 	L.fields["real_rank"] = L.fields["rank"]
 	L.fields["b_type"] = bloodtype

@@ -4,7 +4,6 @@
 	name = JOB_SURVIVOR
 	assignment = JOB_SURVIVOR
 	rank = JOB_SURVIVOR
-	special_role = JOB_SURVIVOR
 
 	skills = /datum/skills/civilian
 	languages = list("English")

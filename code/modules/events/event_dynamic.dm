@@ -66,18 +66,18 @@ var/list/event_last_fired = list()
 		if(isrobot(M) && M:module && M:module.name == "engineering robot module")
 			active_with_role["Engineer"]++
 
-		if(M.mind.assigned_role in list("Chief Engineer", "Maintenance Tech"))
+		if(M.job in list("Chief Engineer", "Maintenance Tech"))
 			active_with_role["Engineer"]++
 
 		if(isrobot(M) && M:module && M:module.name == "medical robot module")
 			active_with_role["Medical"]++
-		if(M.mind.assigned_role in list("Chief Medical Officer", "Doctor", "Researcher", "Sulaco Chemist"))
+		if(M.job in list("Chief Medical Officer", "Doctor", "Researcher", "Sulaco Chemist"))
 			active_with_role["Medical"]++
 
-		if(M.mind.assigned_role == "AI")
+		if(M.job == "AI")
 			active_with_role["AI"]++
 
-		if(M.mind.assigned_role == "Cyborg")
+		if(M.job == "Cyborg")
 			active_with_role["Cyborg"]++
 
 	return active_with_role

@@ -232,24 +232,23 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 			command = 3
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(H.mind)
-				if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
-					command = 3
+			if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
+				command = 3
 
-				if(H.mind.role_comm_title)
-					comm_title = H.mind.role_comm_title //Set up [CO] and stuff after frequency
-					if(H.assigned_squad)
-						if(freq != H.assigned_squad.radio_freq)
-							comm_title = H.assigned_squad.name + " " + comm_title
+			comm_title = H.comm_title //Set up [CO] and stuff after frequency
+			if(H.assigned_squad)
+				if(freq != H.assigned_squad.radio_freq)
+					comm_title = H.assigned_squad.name + " " + comm_title
+				else
+					if(H.assigned_fireteam)
+						if(H.assigned_squad.fireteam_leaders[H.assigned_fireteam] == H)
+							comm_title = H.comm_title + " [H.assigned_fireteam] TL"
 						else
-							if(H.assigned_fireteam)
-								if(H.assigned_squad.fireteam_leaders[H.assigned_fireteam] == H)
-									comm_title = H.mind.role_comm_title + " [H.assigned_fireteam] TL"
-								else
-									comm_title = H.mind.role_comm_title + " [H.assigned_fireteam]"
+							comm_title = H.comm_title + " [H.assigned_fireteam]"
 
 
-		else if(istype(M,/mob/living/silicon/decoy/ship_ai)) command = 3
+		else if(istype(M,/mob/living/silicon/decoy/ship_ai)) 
+			command = 3
 
 	for (var/mob/R in receive)
 

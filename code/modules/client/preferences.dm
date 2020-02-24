@@ -129,7 +129,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	// maps each organ to either null(intact), "cyborg" or "amputated"
 	// will probably not be able to do this for head and torso ;)
 	var/list/organ_data = list()
-	var/list/player_alt_titles = new()		// the default name of a job like "Medical Doctor"
 
 	var/list/flavor_texts = list()
 
@@ -476,8 +475,6 @@ var/const/MAX_SAVE_SLOTS = 10
 			if (j < 4)
 				HTML += "&nbsp"
 
-		if(job.alt_titles)
-			HTML += "</td></tr><tr class='[lastJob.selection_class]'><td width='60%' align='center'><a>&nbsp</a></td><td><a href=\"byond://?src=\ref[user];preference=job;task=alt_title;job=\ref[job]\">\[[GetPlayerAltTitle(job)]\]</a></td></tr>"
 		HTML += "</td></tr>"
 
 	HTML += "</td'></tr></table>"
@@ -541,17 +538,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	close_browser(user, "preferences")
 	show_browser(user, HTML, "Set Flavor Text", "flavor_text;size=430x300")
 	return
-
-/datum/preferences/proc/GetPlayerAltTitle(datum/job/job)
-	if(player_alt_titles) . = player_alt_titles[job.title]
-
-/datum/preferences/proc/SetPlayerAltTitle(datum/job/job, new_title)
-	// remove existing entry
-	if(player_alt_titles.Find(job.title))
-		player_alt_titles -= job.title
-	// add one if it's not default
-	if(job.title != new_title)
-		player_alt_titles[job.title] = new_title
 
 /datum/preferences/proc/SetJob(mob/user, role, priority)
 	var/datum/job/job = RoleAuthority.roles_for_mode[role]
@@ -705,14 +691,6 @@ var/const/MAX_SAVE_SLOTS = 10
 					else
 						return 0
 					SetChoices(user)
-				if ("alt_title")
-					var/datum/job/job = locate(href_list["job"])
-					if (job)
-						var/choices = list(job.title) + job.alt_titles
-						var/choice = input("Pick a title for [job.title].", "Character Generation", GetPlayerAltTitle(job)) as anything in choices|null
-						if(choice)
-							SetPlayerAltTitle(job, choice)
-							SetChoices(user)
 				if("input")
 					var/priority = text2num(href_list["target_priority"])
 					SetJob(user, href_list["text"], priority)

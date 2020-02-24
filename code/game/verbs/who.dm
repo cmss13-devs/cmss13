@@ -68,8 +68,8 @@
 
 			entry += " - [age]"*/
 
-			if(is_special_character(C.mob))
-				entry += " - <b><font color='red'>Antagonist</font></b>"
+			if(isXeno(C.mob))
+				entry += " - <b><font color='red'>Xenomorph</font></b>"
 			entry += " (<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[C.mob]'>?</A>)"
 			Lines += entry
 	else

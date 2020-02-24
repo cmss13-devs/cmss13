@@ -23,9 +23,6 @@
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	H.key = M.key
 	if(H.client) H.client.change_view(world.view)
-	if(H.mind)
-		H.mind.assigned_role = ""
-		H.mind.special_role = ""
 
 	sleep(5)
 	if (medics < max_medics)
@@ -45,7 +42,6 @@
 	RoleAuthority.randomize_squad(H, TRUE) //we force put people in squads so even if we have a max amount of medics / engis we still give them a squad
 	H.sec_hud_set_ID()
 	H.sec_hud_set_implants()
-	H.hud_set_special_role()
 	H.hud_set_squad()
 
 	data_core.manifest_inject(H) //Put people in crew manifest

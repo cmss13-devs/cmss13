@@ -209,103 +209,101 @@ var/global/list/PDA_Manifest = list()
 	if(PDA_Manifest.len)
 		PDA_Manifest.Cut()
 
-	if(H.mind && (H.mind.assigned_role != "MODE") && !H.mind.special_role)
-		var/assignment
-		if(H.mind.role_alt_title)
-			assignment = H.mind.role_alt_title
-		else if(H.mind.assigned_role)
-			assignment = H.mind.assigned_role
-		else if(H.job)
-			assignment = H.job
-		else
-			assignment = "Unassigned"
+	var/assignment
+	if(H.job)
+		assignment = H.job
+	else
+		assignment = "Unassigned"
 
-		var/id = add_zero(num2hex(rand(1, 1.6777215E7)), 6)	//this was the best they could come up with? A large random number? *sigh*
+	var/id = add_zero(num2hex(rand(1, 1.6777215E7)), 6)	//this was the best they could come up with? A large random number? *sigh*
+	var/icon/front = new(get_id_photo(H), dir = SOUTH)
+	var/icon/side = new(get_id_photo(H), dir = WEST)
 
-		var/icon/front = new(get_id_photo(H), dir = SOUTH)
-		var/icon/side = new(get_id_photo(H), dir = WEST)
-		//General Record
-		var/datum/data/record/G = new()
-		G.fields["id"]			= id
-		G.fields["name"]		= H.real_name
-		G.fields["real_rank"]	= H.mind.assigned_role
-		G.fields["rank"]		= assignment
-		G.fields["squad"]		= H.assigned_squad ? H.assigned_squad.name : null
-		G.fields["age"]			= H.age
-		G.fields["p_stat"]		= "Active"
-		G.fields["m_stat"]		= "Stable"
-		G.fields["sex"]			= H.gender
-		G.fields["species"]		= H.get_species()
-		G.fields["home_system"]	= H.home_system
-		G.fields["citizenship"]	= H.citizenship
-		G.fields["faction"]		= H.personal_faction
-		G.fields["religion"]	= H.religion
-		G.fields["photo_front"]	= front
-		G.fields["photo_side"]	= side
-		if(H.gen_record && !jobban_isbanned(H, "Records"))
-			G.fields["notes"] = H.gen_record
-		else
-			G.fields["notes"] = "No notes found."
-		general += G
+	//General Record
+	var/datum/data/record/G = new()
+	G.fields["id"]			= id
+	G.fields["name"]		= H.real_name
+	G.fields["real_rank"]	= H.job
+	G.fields["rank"]		= assignment
+	G.fields["squad"]		= H.assigned_squad ? H.assigned_squad.name : null
+	G.fields["age"]			= H.age
+	G.fields["p_stat"]		= "Active"
+	G.fields["m_stat"]		= "Stable"
+	G.fields["sex"]			= H.gender
+	G.fields["species"]		= H.get_species()
+	G.fields["home_system"]	= H.home_system
+	G.fields["citizenship"]	= H.citizenship
+	G.fields["faction"]		= H.personal_faction
+	G.fields["religion"]	= H.religion
+	G.fields["photo_front"]	= front
+	G.fields["photo_side"]	= side
 
-		//Medical Record
-		var/datum/data/record/M = new()
-		M.fields["id"]			= id
-		M.fields["name"]		= H.real_name
-		M.fields["b_type"]		= H.blood_type
-		M.fields["mi_dis"]		= "None"
-		M.fields["mi_dis_d"]	= "No minor disabilities have been declared."
-		M.fields["ma_dis"]		= "None"
-		M.fields["ma_dis_d"]	= "No major disabilities have been diagnosed."
-		M.fields["alg"]			= "None"
-		M.fields["alg_d"]		= "No allergies have been detected in this patient."
-		M.fields["cdi"]			= "None"
-		M.fields["cdi_d"]		= "No diseases have been diagnosed at the moment."
-		M.fields["last_scan_time"]		= null
-		M.fields["last_scan_result"]		= "No scan data on record" // body scanner results
-		M.fields["autodoc_data"] = list()
-		M.fields["autodoc_manual"] = list()
-		if(H.med_record && !jobban_isbanned(H, "Records"))
-			M.fields["notes"] = H.med_record
-		else
-			M.fields["notes"] = "No notes found."
-		medical += M
+	if(H.gen_record && !jobban_isbanned(H, "Records"))
+		G.fields["notes"] = H.gen_record
+	else
+		G.fields["notes"] = "No notes found."
+	general += G
 
-		//Security Record
-		var/datum/data/record/S = new()
-		S.fields["id"]			= id
-		S.fields["name"]		= H.real_name
-		S.fields["criminal"]	= "None"
-		S.fields["mi_crim"]		= "None"
-		S.fields["mi_crim_d"]	= "No minor crime convictions."
-		S.fields["ma_crim"]		= "None"
-		S.fields["ma_crim_d"]	= "No major crime convictions."
-		S.fields["notes"]		= "No notes."
-		if(H.sec_record && !jobban_isbanned(H, "Records"))
-			S.fields["notes"] = H.sec_record
-		else
-			S.fields["notes"] = "No notes."
-		security += S
+	//Medical Record
+	var/datum/data/record/M = new()
+	M.fields["id"]			= id
+	M.fields["name"]		= H.real_name
+	M.fields["b_type"]		= H.blood_type
+	M.fields["mi_dis"]		= "None"
+	M.fields["mi_dis_d"]	= "No minor disabilities have been declared."
+	M.fields["ma_dis"]		= "None"
+	M.fields["ma_dis_d"]	= "No major disabilities have been diagnosed."
+	M.fields["alg"]			= "None"
+	M.fields["alg_d"]		= "No allergies have been detected in this patient."
+	M.fields["cdi"]			= "None"
+	M.fields["cdi_d"]		= "No diseases have been diagnosed at the moment."
+	M.fields["last_scan_time"]		= null
+	M.fields["last_scan_result"]		= "No scan data on record" // body scanner results
+	M.fields["autodoc_data"] = list()
+	M.fields["autodoc_manual"] = list()
 
-		//Locked Record
-		var/datum/data/record/L = new()
-		L.fields["id"]			= md5("[H.real_name][H.mind.assigned_role]")
-		L.fields["name"]		= H.real_name
-		L.fields["rank"] 		= H.mind.assigned_role
-		L.fields["age"]			= H.age
-		L.fields["sex"]			= H.gender
-		L.fields["b_type"]		= H.b_type
-		L.fields["species"]		= H.get_species()
-		L.fields["home_system"]	= H.home_system
-		L.fields["citizenship"]	= H.citizenship
-		L.fields["faction"]		= H.personal_faction
-		L.fields["religion"]	= H.religion
-		if(H.exploit_record && !jobban_isbanned(H, "Records"))
-			L.fields["exploit_record"] = H.exploit_record
-		else
-			L.fields["exploit_record"] = "No additional information acquired."
-		locked += L
-	return
+	if(H.med_record && !jobban_isbanned(H, "Records"))
+		M.fields["notes"] = H.med_record
+	else
+		M.fields["notes"] = "No notes found."
+	medical += M
+
+	//Security Record
+	var/datum/data/record/S = new()
+	S.fields["id"]			= id
+	S.fields["name"]		= H.real_name
+	S.fields["criminal"]	= "None"
+	S.fields["mi_crim"]		= "None"
+	S.fields["mi_crim_d"]	= "No minor crime convictions."
+	S.fields["ma_crim"]		= "None"
+	S.fields["ma_crim_d"]	= "No major crime convictions."
+	S.fields["notes"]		= "No notes."
+
+	if(H.sec_record && !jobban_isbanned(H, "Records"))
+		S.fields["notes"] = H.sec_record
+	else
+		S.fields["notes"] = "No notes."
+	security += S
+
+	//Locked Record
+	var/datum/data/record/L = new()
+	L.fields["id"]			= md5("[H.real_name][H.job]")
+	L.fields["name"]		= H.real_name
+	L.fields["rank"] 		= H.job
+	L.fields["age"]			= H.age
+	L.fields["sex"]			= H.gender
+	L.fields["b_type"]		= H.b_type
+	L.fields["species"]		= H.get_species()
+	L.fields["home_system"]	= H.home_system
+	L.fields["citizenship"]	= H.citizenship
+	L.fields["faction"]		= H.personal_faction
+	L.fields["religion"]	= H.religion
+	
+	if(H.exploit_record && !jobban_isbanned(H, "Records"))
+		L.fields["exploit_record"] = H.exploit_record
+	else
+		L.fields["exploit_record"] = "No additional information acquired."
+	locked += L
 
 
 proc/get_id_photo(var/mob/living/carbon/human/H)

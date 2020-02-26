@@ -69,7 +69,7 @@
 
 			if(!H.shoes && (!H.wear_suit || !(H.wear_suit.flags_armor_protection & BODY_FLAG_FEET)))
 				to_chat(M, SPAN_WARNING("<B>You step on \the [src]!</B>"))
-				var/datum/limb/affecting = H.get_limb(pick("l_foot", "r_foot"))
+				var/obj/limb/affecting = H.get_limb(pick("l_foot", "r_foot"))
 				if(affecting.status & LIMB_ROBOT)
 					return
 				H.KnockDown(3)
@@ -99,14 +99,14 @@
 	source_sheet_type = null
 	var/damage_on_move = 0.5
 
-/obj/item/shard/shrapnel/proc/on_embed(var/mob/embedded_mob, var/datum/limb/target_organ)
+/obj/item/shard/shrapnel/proc/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
 	if(ishuman(embedded_mob) && !isYautja(embedded_mob))
 		if(istype(target_organ))
 			target_organ.embed(src)
 
 /obj/item/shard/shrapnel/proc/on_embedded_movement(var/mob/embedded_mob)
 	if(ishuman(embedded_mob) && !isYautja(embedded_mob))
-		var/datum/limb/organ = embedded_organ
+		var/obj/limb/organ = embedded_organ
 		if(istype(organ))
 			organ.take_damage(damage_on_move, 0, 0)
 

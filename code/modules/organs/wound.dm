@@ -101,9 +101,7 @@
 	proc/merge_wound(var/datum/wound/other)
 		src.damage += other.damage
 		src.amount += other.amount
-		src.created = max(src.created, other.created)	//take the newer created time
-		if(other.impact_icon)
-			impact_icon.Blend(other.impact_icon, ICON_OVERLAY)
+		src.created = max(src.created, other.created)	//take the newer created time		
 
 	// heal the given amount of damage, and if the given amount of damage was more
 	// than what needed to be healed, return how much heal was left
@@ -190,15 +188,6 @@
 				if(0 to 15)
 					return /datum/wound/burn/moderate
 	return null //no wound
-
-/datum/wound/proc/add_impact_icon(var/impact_name, var/limb_name)
-	if(!impact_name)
-		return
-	if(!impact_icon)
-		impact_icon = new /icon(icon = 'icons/mob/humans/dam_human.dmi', icon_state = "[impact_name]_[limb_name]")
-	else
-		var/icon/temp_impact_icon = new /icon(icon = 'icons/mob/humans/dam_human.dmi', icon_state = "[impact_name]_[limb_name]")
-		impact_icon.Blend(temp_impact_icon, ICON_OVERLAY)
 
 /** CUTS **/
 /datum/wound/cut/small

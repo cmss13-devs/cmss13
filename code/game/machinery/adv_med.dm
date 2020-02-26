@@ -388,7 +388,7 @@
 	dat += "<th>Other Wounds</th>"
 	dat += "</tr>"
 
-	for(var/datum/limb/e in occ["external_organs"])
+	for(var/obj/limb/e in occ["external_organs"])
 		var/AN = ""
 		var/open = ""
 		var/imp = ""
@@ -403,7 +403,7 @@
 		for(var/datum/effects/bleeding/internal/I in e.bleeding_effects_list)
 			internal_bleeding = "Internal bleeding<br>"
 			break
-		if(istype(e, /datum/limb/chest) && occ["lung_ruptured"])
+		if(istype(e, /obj/limb/chest) && occ["lung_ruptured"])
 			lung_ruptured = "Lung ruptured:<br>"
 		if(e.status & LIMB_SPLINTED)
 			splint = "Splinted<br>"

@@ -42,7 +42,7 @@
 					src.imp.implanted = 1
 					if (ishuman(M))
 						var/mob/living/carbon/human/H = M
-						var/datum/limb/affected = H.get_limb(user.zone_selected)
+						var/obj/limb/affected = H.get_limb(user.zone_selected)
 						affected.implants += src.imp
 						imp.part = affected
 

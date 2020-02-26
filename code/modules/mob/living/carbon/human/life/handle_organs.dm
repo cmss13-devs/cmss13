@@ -10,7 +10,7 @@
 	for(var/datum/internal_organ/I in internal_organs)
 		I.process()
 
-	for(var/datum/limb/E in limbs_to_process)
+	for(var/obj/limb/E in limbs_to_process)
 		if(!E)
 			continue
 		if(!E.need_process())

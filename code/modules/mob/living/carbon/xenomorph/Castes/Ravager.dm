@@ -106,7 +106,7 @@
 	ammo = ammo_list[/datum/ammo/xeno/bone_chips]
 
 //Chance of insta limb amputation after a melee attack.
-/mob/living/carbon/Xenomorph/Ravager/proc/delimb(var/mob/living/carbon/human/H, var/datum/limb/O)
+/mob/living/carbon/Xenomorph/Ravager/proc/delimb(var/mob/living/carbon/human/H, var/obj/limb/O)
 	if(!iszombie(H) && prob(isYautja(H)?20:40)) // lets halve this for preds
 		O = H.get_limb(check_zone(zone_selected))
 		if(O.body_part != BODY_FLAG_CHEST && O.body_part != BODY_FLAG_GROIN && O.body_part != BODY_FLAG_HEAD && O.brute_dam >= 5) //Only limbs.
@@ -115,7 +115,7 @@
 			return TRUE
 	return FALSE
 
-/mob/living/carbon/Xenomorph/Ravager/proc/shrapnel_embed(var/mob/living/carbon/human/H, var/datum/limb/organ)
+/mob/living/carbon/Xenomorph/Ravager/proc/shrapnel_embed(var/mob/living/carbon/human/H, var/obj/limb/organ)
 	if(isHumanStrict(H))
 		if(!istype(organ))
 			return

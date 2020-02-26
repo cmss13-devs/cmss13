@@ -15,7 +15,7 @@
 #define ishighersilicon(A) (isborg(A) || isAI(A))
 #define isliving(A) (istype(A, /mob/living))
 #define isobserver(A) (istype(A, /mob/dead/observer))
-#define isorgan(A) (istype(A, /datum/limb))
+#define isorgan(A) (istype(A, /obj/limb))
 #define isnewplayer(A) (istype(A, /mob/new_player))
 #define ismaintdrone(A) (istype(A,/mob/living/silicon/robot/drone))
 #define isHellhound(A) (istype(A, /mob/living/carbon/hellhound))

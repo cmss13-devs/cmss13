@@ -896,13 +896,13 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		var/new_limb = input("Please choose an organ to add.","Organ",null) as null|anything in typesof(/datum/limb)-/datum/limb
+		var/new_limb = input("Please choose an organ to add.","Organ",null) as null|anything in typesof(/obj/limb)-/obj/limb
 
 		if(!M)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
 
-		var/datum/limb/EO = locate(new_limb) in M.limbs
+		var/obj/limb/EO = locate(new_limb) in M.limbs
 		if(!EO)
 			return
 		if(!(EO.status & LIMB_DESTROYED))
@@ -931,7 +931,7 @@ body
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
 
-		var/datum/limb/EO = locate(rem_limb) in M.limbs
+		var/obj/limb/EO = locate(rem_limb) in M.limbs
 		if(!EO)
 			return
 		if(EO.status & LIMB_DESTROYED)
@@ -954,7 +954,7 @@ body
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
 
-		var/datum/limb/EO = locate(rem_limb) in M.limbs
+		var/obj/limb/EO = locate(rem_limb) in M.limbs
 		if(!EO)
 			return
 		if(EO.status & LIMB_DESTROYED)

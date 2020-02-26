@@ -46,7 +46,7 @@
 
 		var/mob/living/carbon/human/H = M
 		if(istype(H))
-			var/datum/limb/E = H.get_limb(parent_limb)
+			var/obj/limb/E = H.get_limb(parent_limb)
 			if(E.internal_organs == null)
 				E.internal_organs = list()
 			E.internal_organs |= src
@@ -57,7 +57,7 @@
 	else
 		src.damage += amount
 
-	var/datum/limb/parent = owner.get_limb(parent_limb)
+	var/obj/limb/parent = owner.get_limb(parent_limb)
 	if (!silent)
 		owner.custom_pain("Something inside your [parent.display_name] hurts a lot.", 1)
 

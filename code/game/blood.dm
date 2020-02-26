@@ -2,7 +2,7 @@
 
 /obj/item
 	var/blood_color = "" //color of the blood on us if there's any.
-
+	appearance_flags = KEEP_TOGETHER
 
 
 /mob/living/carbon/human
@@ -64,18 +64,10 @@
 	return 1 //we applied blood to the item
 
 /obj/item/proc/generate_blood_overlay(b_color)
-	if(blood_overlay)
-		return
-	if(blood_overlay_cache["[icon]" + icon_state])
-		blood_overlay = blood_overlay_cache["[icon]" + icon_state]
-		return
-	var/icon/I = new /icon(icon, icon_state)
-	I.Blend(new /icon('icons/effects/blood.dmi', rgb(255,255,255)), ICON_ADD) //fills the icon_state with white (except where it's transparent)
-	I.Blend(new /icon('icons/effects/blood.dmi', "itemblood"), ICON_MULTIPLY) //adds blood and the remaining white areas become transparant
+	var/icon/I = new /icon('icons/effects/blood.dmi', "itemblood")
 	blood_overlay = image(I)
+	blood_overlay.blend_mode = BLEND_INSET_OVERLAY
 	blood_overlay.color = b_color
-	blood_overlay.appearance_flags |= NO_CLIENT_COLOR
-	blood_overlay_cache["[icon]" + icon_state] = blood_overlay
 
 /mob/living/carbon/human/add_blood(b_color = "#830303")
 	if(wear_suit)

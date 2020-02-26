@@ -758,8 +758,8 @@ mob/proc/yank_out_object()
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 
-		var/datum/limb/affected
-		for(var/datum/limb/E in H.limbs) //Grab the limb holding the implant.
+		var/obj/limb/affected
+		for(var/obj/limb/E in H.limbs) //Grab the limb holding the implant.
 			for(var/obj/item/O in E.implants)
 				if(O == selection)
 					affected = E

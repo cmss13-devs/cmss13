@@ -137,8 +137,8 @@
 					observer.loc = O.loc
 				else
 					to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verb to jump to the station map."))
-				client.prefs.update_preview_icon()
-				observer.icon = client.prefs.preview_icon
+				observer.icon = 'icons/mob/humans/species/r_human.dmi'
+				observer.icon_state = "anglo_example"
 				observer.alpha = 127
 
 				if(client.prefs.be_random_name)

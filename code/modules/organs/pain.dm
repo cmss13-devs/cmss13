@@ -17,12 +17,12 @@ mob/living/carbon/proc/pain(var/partname, var/amount, var/force, var/burning = 0
 	if(amount > 10 && ishuman(src))
 		var/mob/living/carbon/human/H = src
 
-		var/datum/limb/right_hand = H.get_limb("r_hand")
-		var/datum/limb/left_hand = H.get_limb("l_hand")
+		var/obj/limb/right_hand = H.get_limb("r_hand")
+		var/obj/limb/left_hand = H.get_limb("l_hand")
 		if(!H.stat && amount > 50 && prob(amount * 0.05))
 			msg = "You [pick("wince","shiver","grimace")] in pain"
 			var/i
-			for(var/datum/limb/O in list(right_hand, left_hand))
+			for(var/obj/limb/O in list(right_hand, left_hand))
 				if(!O || !O.is_usable()) continue //Not if the organ can't possibly function.
 				if(O.name == "l_hand") 	drop_l_hand()
 				else 					drop_r_hand()
@@ -81,8 +81,8 @@ mob/living/carbon/human/proc/handle_pain()
 
 	var/maxdam = 0
 	var/dam
-	var/datum/limb/damaged_organ = null
-	for(var/datum/limb/E in limbs)
+	var/obj/limb/damaged_organ = null
+	for(var/obj/limb/E in limbs)
 		/*
 		Amputated, dead, or missing limbs don't cause pain messages.
 		Broken limbs that are also splinted do not cause pain messages either.
@@ -107,7 +107,7 @@ mob/living/carbon/human/proc/handle_pain()
 
 
 	// Damage to internal organs hurts a lot.
-	var/datum/limb/parent
+	var/obj/limb/parent
 	for(var/datum/internal_organ/I in internal_organs)
 		if(I.damage > 2) if(prob(2))
 			parent = get_limb(I.parent_limb)

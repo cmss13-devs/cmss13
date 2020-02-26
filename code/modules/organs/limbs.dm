@@ -1,12 +1,14 @@
 /****************************************************
 				EXTERNAL ORGANS
 ****************************************************/
-/datum/limb
-	var/name = "limb"
+/obj/limb
+	name = "limb"
+	appearance_flags = KEEP_TOGETHER
+	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_DIR
 	var/icon_name = null
 	var/body_part = null
 	var/icon_position = 0
-	var/damage_state = "00"
+	var/damage_state = "=="
 	var/brute_dam = 0
 	var/burn_dam = 0
 	var/max_damage = 0
@@ -27,8 +29,8 @@
 	var/list/trace_chemicals = list() // traces of chemicals in the organ,
 									  // links chemical IDs to number of ticks for which they'll stay in the blood
 
-	var/datum/limb/parent
-	var/list/datum/limb/children
+	var/obj/limb/parent
+	var/list/obj/limb/children
 
 	// Internal organs of this body part
 	var/list/datum/internal_organ/internal_organs
@@ -66,7 +68,7 @@
 	var/list/bleeding_effects_list = list()
 
 
-/datum/limb/New(datum/limb/P, mob/mob_owner)
+/obj/limb/New(obj/limb/P, mob/mob_owner)
 	if(P)
 		parent = P
 		if(!parent.children)
@@ -74,23 +76,23 @@
 		parent.children.Add(src)
 	if(mob_owner)
 		owner = mob_owner
-	return ..()
+	
+	loc = mob_owner
 
 
 
 /*
-/datum/limb/proc/get_icon(var/icon/race_icon, var/icon/deform_icon)
+/obj/limb/proc/get_icon(var/icon/race_icon, var/icon/deform_icon)
 	return icon('icons/mob/human.dmi',"blank")
 */
 
-/datum/limb/proc/process()
+/obj/limb/process()
 		return 0
 
-/datum/limb/Dispose()
-	owner = null
+/obj/limb/Dispose()	
 	parent = null
 	if(children)
-		for(var/datum/limb/L in children)
+		for(var/obj/limb/L in children)
 			L.parent = null
 		children = null
 
@@ -116,6 +118,12 @@
 
 	splinted_icon = null
 
+	if(owner && owner.limbs)
+		owner.limbs -= src
+		owner.limbs_to_process -= src
+		owner.update_body()
+	owner = null
+
 	return ..()
 
 //Autopsy stuff
@@ -124,11 +132,11 @@
 /mob/living/carbon/human/proc/handle_trace_chems()
 	//New are added for reagents to random organs.
 	for(var/datum/reagent/A in reagents.reagent_list)
-		var/datum/limb/O = pick(limbs)
+		var/obj/limb/O = pick(limbs)
 		O.trace_chemicals[A.name] = 100
 
 //Adds autopsy data for used_weapon.
-/datum/limb/proc/add_autopsy_data(var/used_weapon, var/damage)
+/obj/limb/proc/add_autopsy_data(var/used_weapon, var/damage)
 	var/datum/autopsy_data/W = autopsy_data[used_weapon]
 	if(!W)
 		W = new()
@@ -145,7 +153,7 @@
 			   DAMAGE PROCS
 ****************************************************/
 
-/datum/limb/proc/emp_act(severity)
+/obj/limb/emp_act(severity)
 	if(!(status & LIMB_ROBOT))	//meatbags do not care about EMP
 		return
 	var/probability = 30
@@ -159,7 +167,7 @@
 		take_damage(damage, 0, 1, 1, used_weapon = "EMP")
 
 
-/datum/limb/proc/take_damage_organ_damage(brute, sharp)
+/obj/limb/proc/take_damage_organ_damage(brute, sharp)
 	if(!owner)
 		return
 
@@ -176,7 +184,7 @@
 		return TRUE
 	return FALSE
 
-/datum/limb/proc/take_damage_bone_break(brute)
+/obj/limb/proc/take_damage_bone_break(brute)
 	if(!owner)
 		return
 
@@ -193,7 +201,7 @@
 	Less clear vars:
 	*	impact_name: name of an "impact icon." For now, is only relevant for projectiles but can be expanded to apply to melee weapons with special impact sprites.
 */
-/datum/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, impact_name = null, var/damage_source = "dismemberment")
+/obj/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, impact_name = null, var/damage_source = "dismemberment")
 	if((brute <= 0) && (burn <= 0))
 		return 0
 
@@ -204,19 +212,16 @@
 		var/brmod = 0.66
 		var/bumod = 0.66
 
-		if(istype(owner,/mob/living/carbon/human))
-			var/mob/living/carbon/human/H = owner
-			if(H.species && H.species.flags & IS_SYNTHETIC)
-				brmod = H.species.brute_mod
-				bumod = H.species.burn_mod
+		if(owner.species && owner.species.flags & IS_SYNTHETIC)
+			brmod = owner.species.brute_mod
+			bumod = owner.species.burn_mod
 
 		brute *= brmod //~2/3 damage for ROBOLIMBS
 		burn *= bumod //~2/3 damage for ROBOLIMBS
 
 	//High brute damage or sharp objects may damage internal organs
-	if(istype(owner,/mob/living/carbon/human))
-		if(take_damage_organ_damage(brute, sharp))
-			brute /= 2
+	if(take_damage_organ_damage(brute, sharp))
+		brute /= 2
 
 	if(config.bones_can_break && !(status & LIMB_ROBOT))
 		take_damage_bone_break(brute)
@@ -265,7 +270,7 @@
 		//If there are still hurties to dispense
 		if(remain_burn || remain_brute)
 			//List organs we can pass it to
-			var/list/datum/limb/possible_points = list()
+			var/list/obj/limb/possible_points = list()
 			if(parent)
 				possible_points += parent
 			if(children)
@@ -274,7 +279,7 @@
 				possible_points -= forbidden_limbs
 			if(possible_points.len)
 				//And pass the damage around, but not the chance to cut the limb off.
-				var/datum/limb/target = pick(possible_points)
+				var/obj/limb/target = pick(possible_points)
 				target.take_damage(remain_brute, remain_burn, sharp, edge, used_weapon, forbidden_limbs + src, TRUE)
 
 
@@ -293,10 +298,10 @@
 				return
 
 	owner.updatehealth()
-	start_processing()
-	return update_icon()
+	update_icon()
+	start_processing()	
 
-/datum/limb/proc/heal_damage(brute, burn, internal = 0, robo_repair = 0)
+/obj/limb/proc/heal_damage(brute, burn, internal = 0, robo_repair = 0)
 	if(status & LIMB_ROBOT && !robo_repair)
 		return
 
@@ -326,14 +331,13 @@
 	src.update_damages()
 	owner.updatehealth()
 
-	var/result = update_icon()
-	return result
+	update_icon()
 
 /*
 This function completely restores a damaged organ to perfect condition.
 */
-/datum/limb/proc/rejuvenate()
-	damage_state = "00"
+/obj/limb/proc/rejuvenate()
+	damage_state = "=="
 	if(status & LIMB_ROBOT)	//Robotic organs stay robotic.  Fix because right click rejuvinate makes IPC's organs organic.
 		status = LIMB_ROBOT
 	else
@@ -357,9 +361,9 @@ This function completely restores a damaged organ to perfect condition.
 				owner.embedded_items -= implanted_object
 
 	owner.updatehealth()
+	update_icon()
 
-
-/datum/limb/proc/take_damage_internal_bleeding(damage)
+/obj/limb/proc/take_damage_internal_bleeding(damage)
 	if(!owner)
 		return
 
@@ -374,7 +378,7 @@ This function completely restores a damaged organ to perfect condition.
 		wounds += I
 		owner.custom_pain("You feel something rip in your [display_name]!", 1)
 
-/datum/limb/proc/createwound(var/type = CUT, var/damage, var/impact_name)
+/obj/limb/proc/createwound(var/type = CUT, var/damage, var/impact_name)
 	if(!damage)
 		return
 
@@ -402,8 +406,6 @@ This function completely restores a damaged organ to perfect condition.
 				W.open_wound(damage)
 				if(type != BURN)
 					add_bleeding(W)
-				if(impact_name)
-					W.add_impact_icon(impact_name, icon_name)
 				if(prob(25))
 					//maybe have a separate message for BRUISE type damage?
 					owner.visible_message(SPAN_WARNING("The wound on [owner.name]'s [display_name] widens with a nasty ripping noise."),
@@ -418,7 +420,6 @@ This function completely restores a damaged organ to perfect condition.
 		W = new wound_type(damage)
 		if(damage >= 10 && type != BURN) //Only add bleeding when its over 10 damage
 			add_bleeding(W)
-		W.add_impact_icon(impact_name, icon_name)
 
 		//Check whether we can add the wound to an existing wound
 		for(var/datum/wound/other in wounds)
@@ -430,7 +431,7 @@ This function completely restores a damaged organ to perfect condition.
 			wounds += W
 
 
-/datum/limb/proc/add_bleeding(var/datum/wound/W, var/internal = FALSE)
+/obj/limb/proc/add_bleeding(var/datum/wound/W, var/internal = FALSE)
 	if(!(ticker && ticker.current_state >= GAME_STATE_PLAYING)) //If the game hasnt started, don't add bleed. Hacky fix to avoid having 100 bleed effect from roundstart.
 		return
 
@@ -455,7 +456,7 @@ This function completely restores a damaged organ to perfect condition.
 	bleeding_effects_list += bleeding_status
 
 
-/datum/limb/proc/remove_all_bleeding(var/external = FALSE, var/internal = FALSE)
+/obj/limb/proc/remove_all_bleeding(var/external = FALSE, var/internal = FALSE)
 	if(external)
 		for(var/datum/effects/bleeding/external/B in bleeding_effects_list)
 			qdel(B)
@@ -471,7 +472,7 @@ This function completely restores a damaged organ to perfect condition.
 
 //Determines if we even need to process this organ.
 
-/datum/limb/proc/need_process()
+/obj/limb/proc/need_process()
 	if(status & LIMB_DESTROYED)	//Missing limb is missing
 		return 0
 	if(status && !(status & LIMB_ROBOT) && !(status & LIMB_REPAIRED)) // Any status other than destroyed or robotic requires processing
@@ -487,7 +488,7 @@ This function completely restores a damaged organ to perfect condition.
 		return 1
 	return 0
 
-/datum/limb/process()
+/obj/limb/process()
 
 	// Process wounds, doing healing etc. Only do this every few ticks to save processing power
 	if(owner.life_tick % wound_update_accuracy == 0)
@@ -510,7 +511,7 @@ This function completely restores a damaged organ to perfect condition.
 			knitting_time = -1
 
 //Updating wounds. Handles wound natural I had some free spachealing, internal bleedings and infections
-/datum/limb/proc/update_wounds()
+/obj/limb/proc/update_wounds()
 	if((status & LIMB_ROBOT)) //Robotic limbs don't heal or get worse.
 		return
 
@@ -559,14 +560,13 @@ This function completely restores a damaged organ to perfect condition.
 			W.heal_damage(heal_amt)
 
 	// sync the organ's damage with its wounds
-	src.update_damages()
-	if (update_icon())
-		owner.UpdateDamageIcon(1)
+	update_damages()
+	update_icon()
 	if (wound_disappeared)
 		owner.update_med_icon()
 
 //Updates brute_damn and burn_damn from wound damages.
-/datum/limb/proc/update_damages()
+/obj/limb/proc/update_damages()
 	number_wounds = 0
 	brute_dam = 0
 	burn_dam = 0
@@ -579,19 +579,50 @@ This function completely restores a damaged organ to perfect condition.
 
 		number_wounds += W.amount
 
+/obj/limb/update_icon(forced = FALSE)
+	if(has_stump_icon && (!parent || !(parent.status & LIMB_DESTROYED)))
+		icon = 'icons/mob/humans/dam_human.dmi'
+		icon_state = "stump_[icon_name]"
+	
+	var/race_icon = owner.species.icobase
 
-// new damage icon system
-// adjusted to set damage_state to brute/burn code only (without r_name0 as before)
-/datum/limb/proc/update_icon()
+	if (status & LIMB_ROBOT && !(owner.species && owner.species.flags & IS_SYNTHETIC))
+		icon = 'icons/mob/robotic.dmi'
+		icon_state = "[icon_name]"
+		return
+
+	var/datum/ethnicity/E = ethnicities_list[owner.ethnicity]
+	var/datum/body_type/B = body_types_list[owner.body_type]
+
+	var/e_icon
+	var/b_icon
+
+	if (!E)
+		e_icon = "western"
+	else
+		e_icon = E.icon_name
+
+	if (!B)
+		b_icon = "mesomorphic"
+	else
+		b_icon = B.icon_name
+
+	icon = race_icon
+	icon_state = "[get_limb_icon_name(owner.species, b_icon, owner.gender, icon_name, e_icon)]"
+
 	var/n_is = damage_state_text()
-	if (n_is != damage_state)
+	if (forced || n_is != damage_state)
+		overlays.Cut()
 		damage_state = n_is
-		return 1
-	return 0
+		update_overlays()
+		
+
+/obj/limb/proc/update_overlays()
+	update_damage_icon_part()
 
 // new damage icon system
 // returns just the brute/burn damage code
-/datum/limb/proc/damage_state_text()
+/obj/limb/proc/damage_state_text()
 	if(status & LIMB_DESTROYED)
 		return "--"
 
@@ -622,33 +653,35 @@ This function completely restores a damaged organ to perfect condition.
 ****************************************************/
 
 //Recursive setting of all child organs to amputated
-/datum/limb/proc/setAmputatedTree()
-	for(var/datum/limb/O in children)
+/obj/limb/proc/setAmputatedTree()
+	for(var/obj/limb/O in children)
 		O.status |= LIMB_AMPUTATED
 		O.setAmputatedTree()
 
 /mob/living/carbon/human/proc/remove_random_limb(var/delete_limb = 0)
 	var/list/limbs_to_remove = list()
-	for(var/datum/limb/E in limbs)
-		if(istype(E, /datum/limb/chest) || istype(E, /datum/limb/groin) || istype(E, /datum/limb/head))
+	for(var/obj/limb/E in limbs)
+		if(istype(E, /obj/limb/chest) || istype(E, /obj/limb/groin) || istype(E, /obj/limb/head))
 			continue
 		limbs_to_remove += E
 	if(limbs_to_remove.len)
-		var/datum/limb/L = pick(limbs_to_remove)
+		var/obj/limb/L = pick(limbs_to_remove)
 		var/limb_name = L.display_name
 		L.droplimb(0, delete_limb)
 		return limb_name
 	return null
 
-/datum/limb/proc/start_processing()
+/obj/limb/proc/start_processing()
 	if(!(src in owner.limbs_to_process))
 		owner.limbs_to_process += src
 
-/datum/limb/proc/stop_processing()
+/obj/limb/proc/stop_processing()
 	owner.limbs_to_process -= src
 
 //Handles dismemberment
-/datum/limb/proc/droplimb(amputation, var/delete_limb = 0, var/cause)
+/obj/limb/proc/droplimb(amputation, var/delete_limb = 0, var/cause)
+	if(!owner)
+		return
 	if(status & LIMB_DESTROYED)
 		return
 	else
@@ -674,7 +707,7 @@ This function completely restores a damaged organ to perfect condition.
 			hidden = null
 
 		// If any organs are attached to this, destroy them
-		for(var/datum/limb/O in children)
+		for(var/obj/limb/O in children)
 			O.droplimb(amputation, delete_limb, cause)
 
 		//Replace all wounds on that arm with one wound on parent organ.
@@ -783,7 +816,9 @@ This function completely restores a damaged organ to perfect condition.
 			   HELPERS
 ****************************************************/
 
-/datum/limb/proc/release_restraints()
+/obj/limb/proc/release_restraints()
+	if(!owner)
+		return
 	if (owner.handcuffed && body_part in list(BODY_FLAG_ARM_LEFT, BODY_FLAG_ARM_RIGHT, BODY_FLAG_HAND_LEFT, BODY_FLAG_HAND_RIGHT))
 		owner.visible_message(\
 			"\The [owner.handcuffed.name] falls off of [owner.name].",\
@@ -798,7 +833,7 @@ This function completely restores a damaged organ to perfect condition.
 
 		owner.drop_inv_item_on_ground(owner.legcuffed)
 
-/datum/limb/proc/bandage()
+/obj/limb/proc/bandage()
 	var/rval = 0
 	remove_all_bleeding(TRUE)
 	for(var/datum/wound/W in wounds)
@@ -808,7 +843,7 @@ This function completely restores a damaged organ to perfect condition.
 	owner.update_med_icon()
 	return rval
 
-/datum/limb/proc/is_bandaged()
+/obj/limb/proc/is_bandaged()
 	if (surgery_open_stage != 0)
 		return TRUE
 	var/not_bandaged = FALSE
@@ -818,7 +853,7 @@ This function completely restores a damaged organ to perfect condition.
 		not_bandaged |= !W.bandaged
 	return !not_bandaged
 
-/datum/limb/proc/clamp_wounds()
+/obj/limb/proc/clamp_wounds()
 	var/rval = 0
 	remove_all_bleeding(TRUE)
 	for(var/datum/wound/W in wounds)
@@ -827,14 +862,14 @@ This function completely restores a damaged organ to perfect condition.
 		W.clamped = 1
 	return rval
 
-/datum/limb/proc/salve()
+/obj/limb/proc/salve()
 	var/rval = 0
 	for(var/datum/wound/W in wounds)
 		rval |= !W.salved
 		W.salved = 1
 	return rval
 
-/datum/limb/proc/is_salved()
+/obj/limb/proc/is_salved()
 	if (surgery_open_stage != 0)
 		return TRUE
 	var/not_salved = FALSE
@@ -842,7 +877,7 @@ This function completely restores a damaged organ to perfect condition.
 		not_salved |= !W.salved
 	return !not_salved
 
-/datum/limb/proc/fracture()
+/obj/limb/proc/fracture()
 	if(status & (LIMB_BROKEN|LIMB_DESTROYED|LIMB_ROBOT) )
 		if (knitting_time != -1)
 			knitting_time = -1
@@ -889,7 +924,7 @@ This function completely restores a damaged organ to perfect condition.
 			suit.supporting_limbs |= src
 	return
 
-/datum/limb/proc/robotize()
+/obj/limb/proc/robotize()
 	status &= ~LIMB_BROKEN
 	status &= ~LIMB_SPLINTED
 	status &= ~LIMB_AMPUTATED
@@ -901,61 +936,35 @@ This function completely restores a damaged organ to perfect condition.
 	reset_limb_surgeries()
 
 	perma_injury = 0
-	for (var/datum/limb/T in children)
+	for (var/obj/limb/T in children)
 		if(T)
 			T.robotize()
 
-/datum/limb/proc/mutate()
+	update_icon()
+
+/obj/limb/proc/mutate()
 	src.status |= LIMB_MUTATED
 	owner.update_body()
 
-/datum/limb/proc/unmutate()
+/obj/limb/proc/unmutate()
 	src.status &= ~LIMB_MUTATED
 	owner.update_body()
 
-/datum/limb/proc/get_damage()	//returns total damage
+/obj/limb/proc/get_damage()	//returns total damage
 	return max(brute_dam + burn_dam - perma_injury, perma_injury)	//could use health?
 
-/datum/limb/proc/get_icon(var/icon/race_icon, var/icon/deform_icon,gender="")
 
-	if (status & LIMB_ROBOT && !(owner.species && owner.species.flags & IS_SYNTHETIC))
-		return new /icon('icons/mob/robotic.dmi', "[icon_name][gender ? "_[gender]" : ""]")
-
-	if (status & LIMB_MUTATED)
-		return new /icon(deform_icon, "[icon_name][gender ? "_[gender]" : ""]")
-
-	var/datum/ethnicity/E = ethnicities_list[owner.ethnicity]
-	var/datum/body_type/B = body_types_list[owner.body_type]
-
-	var/e_icon
-	var/b_icon
-
-	if (!E)
-		e_icon = "western"
-	else
-		e_icon = E.icon_name
-
-	if (!B)
-		b_icon = "mesomorphic"
-	else
-		b_icon = B.icon_name
-
-	return new /icon(race_icon, "[get_limb_icon_name(owner.species, b_icon, owner.gender, icon_name, e_icon)]")
-
-	//return new /icon(race_icon, "[icon_name][gender ? "_[gender]" : ""]")
-
-
-/datum/limb/proc/is_usable()
+/obj/limb/proc/is_usable()
 	return !(status & (LIMB_DESTROYED|LIMB_MUTATED))
 
-/datum/limb/proc/is_broken()
+/obj/limb/proc/is_broken()
 	return ((status & LIMB_BROKEN) && !(status & LIMB_SPLINTED))
 
-/datum/limb/proc/is_malfunctioning()
+/obj/limb/proc/is_malfunctioning()
 	return ((status & LIMB_ROBOT) && prob(brute_dam + burn_dam))
 
 //for arms and hands
-/datum/limb/proc/process_grasp(var/obj/item/c_hand, var/hand_name)
+/obj/limb/proc/process_grasp(var/obj/item/c_hand, var/hand_name)
 	if (!c_hand)
 		return
 
@@ -976,7 +985,7 @@ This function completely restores a damaged organ to perfect condition.
 				qdel(spark_system)
 				spark_system = null
 
-/datum/limb/proc/embed(var/obj/item/W, var/silent = 0)
+/obj/limb/proc/embed(var/obj/item/W, var/silent = 0)
 	if(!W || W.disposed || (W.flags_item & (NODROP|DELONDROP)) || W.embeddable == FALSE)
 		return
 	if(!silent)
@@ -997,7 +1006,7 @@ This function completely restores a damaged organ to perfect condition.
 	if(W)
 		W.forceMove(owner)
 
-/datum/limb/proc/apply_splints(obj/item/stack/medical/splint/S, mob/living/user, mob/living/carbon/human/target)
+/obj/limb/proc/apply_splints(obj/item/stack/medical/splint/S, mob/living/user, mob/living/carbon/human/target)
 	if(!(status & LIMB_DESTROYED) && !(status & LIMB_SPLINTED))
 		if (target != user)
 			if(do_after(user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
@@ -1020,8 +1029,33 @@ This function completely restores a damaged organ to perfect condition.
 				. = 1
 				owner.update_med_icon()
 
+
+
+/obj/limb/proc/update_damage_icon_part()
+	var/image/DI
+
+	var/brutestate = copytext(damage_state, 1, 2)
+	var/burnstate = copytext(damage_state, 2)
+	if(brutestate != "0")
+		DI = new /image('icons/mob/humans/dam_human.dmi', "grayscale_[brutestate]")
+		DI.blend_mode = BLEND_INSET_OVERLAY
+		DI.color = owner.species.blood_color
+		overlays += DI
+
+	if(burnstate != "0")
+		DI = new /image('icons/mob/humans/dam_human.dmi', "burn_[burnstate]")
+		DI.blend_mode = BLEND_INSET_OVERLAY
+		overlays += DI
+	
+	// for(var/datum/wound/W in wounds)
+	// 	if(W.impact_icon)
+	// 		DI = new /image(W.impact_icon)
+	// 		DI.blend_mode = BLEND_INSET_OVERLAY
+	// 		overlays += DI
+
+
 //called when limb is removed or robotized, any ongoing surgery and related vars are reset
-/datum/limb/proc/reset_limb_surgeries()
+/obj/limb/proc/reset_limb_surgeries()
 	surgery_open_stage = 0
 	bone_repair_stage = 0
 	limb_replacement_stage = 0
@@ -1035,7 +1069,7 @@ This function completely restores a damaged organ to perfect condition.
 			   LIMB TYPES
 ****************************************************/
 
-/datum/limb/chest
+/obj/limb/chest
 	name = "chest"
 	icon_name = "torso"
 	display_name = "chest"
@@ -1047,7 +1081,7 @@ This function completely restores a damaged organ to perfect condition.
 	splint_icon_amount = 4
 	bandage_icon_amount = 4
 
-/datum/limb/groin
+/obj/limb/groin
 	name = "groin"
 	icon_name = "groin"
 	display_name = "groin"
@@ -1058,31 +1092,31 @@ This function completely restores a damaged organ to perfect condition.
 	splint_icon_amount = 1
 	bandage_icon_amount = 2
 
-/datum/limb/leg
+/obj/limb/leg
 	name = "leg"
 	display_name = "leg"
 	max_damage = 35
 	min_broken_damage = 20
 
-/datum/limb/foot
+/obj/limb/foot
 	name = "foot"
 	display_name = "foot"
 	max_damage = 30
 	min_broken_damage = 20
 
-/datum/limb/arm
+/obj/limb/arm
 	name = "arm"
 	display_name = "arm"
 	max_damage = 35
 	min_broken_damage = 20
 
-/datum/limb/hand
+/obj/limb/hand
 	name = "hand"
 	display_name = "hand"
 	max_damage = 30
 	min_broken_damage = 20
 
-/datum/limb/arm/l_arm
+/obj/limb/arm/l_arm
 	name = "l_arm"
 	display_name = "left arm"
 	icon_name = "l_arm"
@@ -1093,7 +1127,7 @@ This function completely restores a damaged organ to perfect condition.
 		..()
 		process_grasp(owner.l_hand, "left hand")
 
-/datum/limb/leg/l_leg
+/obj/limb/leg/l_leg
 	name = "l_leg"
 	display_name = "left leg"
 	icon_name = "l_leg"
@@ -1101,7 +1135,7 @@ This function completely restores a damaged organ to perfect condition.
 	icon_position = LEFT
 	has_stump_icon = TRUE
 
-/datum/limb/arm/r_arm
+/obj/limb/arm/r_arm
 	name = "r_arm"
 	display_name = "right arm"
 	icon_name = "r_arm"
@@ -1112,7 +1146,7 @@ This function completely restores a damaged organ to perfect condition.
 		..()
 		process_grasp(owner.r_hand, "right hand")
 
-/datum/limb/leg/r_leg
+/obj/limb/leg/r_leg
 	name = "r_leg"
 	display_name = "right leg"
 	icon_name = "r_leg"
@@ -1120,7 +1154,7 @@ This function completely restores a damaged organ to perfect condition.
 	icon_position = RIGHT
 	has_stump_icon = TRUE
 
-/datum/limb/foot/l_foot
+/obj/limb/foot/l_foot
 	name = "l_foot"
 	display_name = "left foot"
 	icon_name = "l_foot"
@@ -1128,7 +1162,7 @@ This function completely restores a damaged organ to perfect condition.
 	icon_position = LEFT
 	has_stump_icon = TRUE
 
-/datum/limb/foot/r_foot
+/obj/limb/foot/r_foot
 	name = "r_foot"
 	display_name = "right foot"
 	icon_name = "r_foot"
@@ -1136,7 +1170,7 @@ This function completely restores a damaged organ to perfect condition.
 	icon_position = RIGHT
 	has_stump_icon = TRUE
 
-/datum/limb/hand/r_hand
+/obj/limb/hand/r_hand
 	name = "r_hand"
 	display_name = "right hand"
 	icon_name = "r_hand"
@@ -1147,7 +1181,7 @@ This function completely restores a damaged organ to perfect condition.
 		..()
 		process_grasp(owner.r_hand, "right hand")
 
-/datum/limb/hand/l_hand
+/obj/limb/hand/l_hand
 	name = "l_hand"
 	display_name = "left hand"
 	icon_name = "l_hand"
@@ -1158,7 +1192,7 @@ This function completely restores a damaged organ to perfect condition.
 		..()
 		process_grasp(owner.l_hand, "left hand")
 
-/datum/limb/head
+/obj/limb/head
 	name = "head"
 	icon_name = "head"
 	display_name = "head"
@@ -1173,7 +1207,18 @@ This function completely restores a damaged organ to perfect condition.
 	var/disfigured = 0 //whether the head is disfigured.
 	var/face_surgery_stage = 0
 
-/datum/limb/head/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, impact_name = null)
+/obj/limb/head/update_overlays()
+	..()
+
+	var/image/eyes = new/image('icons/mob/humans/onmob/human_face.dmi', owner.species.eyes)
+	eyes.color = list(null, null, null, null, rgb(owner.r_eyes, owner.g_eyes, owner.b_eyes))
+	overlays += eyes
+
+	if(owner.lip_style && (owner.species && owner.species.flags & HAS_LIPS))
+		var/icon/lips = new /icon('icons/mob/humans/onmob/human_face.dmi', "camo_[owner.lip_style]_s")
+		overlays += lips
+
+/obj/limb/head/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, impact_name = null)
 	. = ..()
 	if (!disfigured)
 		if (brute_dam > 50 || brute_dam > 40 && prob(50))
@@ -1181,7 +1226,7 @@ This function completely restores a damaged organ to perfect condition.
 		if (burn_dam > 40)
 			disfigure("burn")
 
-/datum/limb/head/proc/disfigure(var/type = "brute")
+/obj/limb/head/proc/disfigure(var/type = "brute")
 	if (disfigured)
 		return
 	if(type == "brute")
@@ -1195,6 +1240,6 @@ This function completely restores a damaged organ to perfect condition.
 	disfigured = 1
 	owner.name = owner.get_visible_name()
 
-/datum/limb/head/reset_limb_surgeries()
+/obj/limb/head/reset_limb_surgeries()
 	..()
 	face_surgery_stage = 0

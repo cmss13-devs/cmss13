@@ -727,7 +727,7 @@
 			bullet_ping(P)
 			return
 
-	var/datum/limb/organ = get_limb(check_zone(P.def_zone)) //Let's finally get what organ we actually hit.
+	var/obj/limb/organ = get_limb(check_zone(P.def_zone)) //Let's finally get what organ we actually hit.
 	if(!organ)
 		return//Nope. Gotta shoot something!
 

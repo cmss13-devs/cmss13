@@ -237,7 +237,7 @@
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		var/target_zone = ran_zone(check_zone(user.zone_selected, target))
-		var/datum/limb/affecting = H.get_limb(target_zone)
+		var/obj/limb/affecting = H.get_limb(target_zone)
 
 		if (!affecting)
 			return

@@ -147,7 +147,7 @@
 	set category = "IC"
 
 	if(!resting)
-		src.KnockDown(1) //so that the mob immediately falls over
+		KnockDown(1) //so that the mob immediately falls over
 
 	resting = !resting
 

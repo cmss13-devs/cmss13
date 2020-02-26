@@ -7,7 +7,7 @@
 		return
 	var/total_burn	= 0
 	var/total_brute	= 0
-	for(var/datum/limb/O in limbs)	//hardcoded to streamline things a bit
+	for(var/obj/limb/O in limbs)	//hardcoded to streamline things a bit
 		total_brute	+= O.brute_dam
 		total_burn	+= O.burn_dam
 
@@ -77,14 +77,14 @@
 //These procs fetch a cumulative total damage from all limbs
 /mob/living/carbon/human/getBruteLoss(var/organic_only=0)
 	var/amount = 0
-	for(var/datum/limb/O in limbs)
+	for(var/obj/limb/O in limbs)
 		if(!(organic_only && O.status & LIMB_ROBOT))
 			amount += O.brute_dam
 	return amount
 
 /mob/living/carbon/human/getFireLoss(var/organic_only=0)
 	var/amount = 0
-	for(var/datum/limb/O in limbs)
+	for(var/obj/limb/O in limbs)
 		if(!(organic_only && O.status & LIMB_ROBOT))
 			amount += O.burn_dam
 	return amount
@@ -115,7 +115,7 @@
 		amount = amount*species.brute_mod
 
 	for(var/X in limbs)
-		var/datum/limb/O = X
+		var/obj/limb/O = X
 		if(O.name == organ_name)
 			if(amount > 0)
 				O.take_damage(amount, 0, sharp=is_sharp(damage_source), edge=has_edge(damage_source), used_weapon=damage_source)
@@ -131,7 +131,7 @@
 		amount = amount*species.burn_mod
 
 	for(var/X in limbs)
-		var/datum/limb/O = X
+		var/obj/limb/O = X
 		if(O.name == organ_name)
 			if(amount > 0)
 				O.take_damage(0, amount, sharp=is_sharp(damage_source), edge=has_edge(damage_source), used_weapon=damage_source)
@@ -164,25 +164,25 @@
 	var/mut_prob = min(80, getCloneLoss()+10)
 	if(amount > 0)
 		if(prob(mut_prob))
-			var/list/datum/limb/candidates = list()
-			for(var/datum/limb/O in limbs)
+			var/list/obj/limb/candidates = list()
+			for(var/obj/limb/O in limbs)
 				if(O.status & (LIMB_ROBOT|LIMB_DESTROYED|LIMB_MUTATED)) continue
 				candidates |= O
 			if(candidates.len)
-				var/datum/limb/O = pick(candidates)
+				var/obj/limb/O = pick(candidates)
 				O.mutate()
 				to_chat(src, SPAN_NOTICE("Something is not right with your [O.display_name]..."))
 				return
 	else
 		if(prob(heal_prob))
-			for(var/datum/limb/O in limbs)
+			for(var/obj/limb/O in limbs)
 				if(O.status & LIMB_MUTATED)
 					O.unmutate()
 					to_chat(src, SPAN_NOTICE("Your [O.display_name] is shaped normally again."))
 					return
 
 	if(getCloneLoss() < 1)
-		for(var/datum/limb/O in limbs)
+		for(var/obj/limb/O in limbs)
 			if(O.status & LIMB_MUTATED)
 				O.unmutate()
 				to_chat(src, SPAN_NOTICE("Your [O.display_name] is shaped normally again."))
@@ -227,16 +227,16 @@
 
 //Returns a list of damaged limbs
 /mob/living/carbon/human/proc/get_damaged_limbs(var/brute, var/burn)
-	var/list/datum/limb/parts = list()
-	for(var/datum/limb/O in limbs)
+	var/list/obj/limb/parts = list()
+	for(var/obj/limb/O in limbs)
 		if((brute && O.brute_dam) || (burn && O.burn_dam) || !(O.surgery_open_stage == 0))
 			parts += O
 	return parts
 
 //Returns a list of damageable limbs
 /mob/living/carbon/human/proc/get_damageable_limbs()
-	var/list/datum/limb/parts = list()
-	for(var/datum/limb/O in limbs)
+	var/list/obj/limb/parts = list()
+	for(var/obj/limb/O in limbs)
 		if(O.brute_dam + O.burn_dam < O.max_damage)
 			parts += O
 	return parts
@@ -245,9 +245,9 @@
 //It automatically updates damage overlays if necesary
 //It automatically updates health status
 /mob/living/carbon/human/heal_limb_damage(var/brute, var/burn)
-	var/list/datum/limb/parts = get_damaged_limbs(brute,burn)
+	var/list/obj/limb/parts = get_damaged_limbs(brute,burn)
 	if(!parts.len)	return
-	var/datum/limb/picked = pick(parts)
+	var/obj/limb/picked = pick(parts)
 	if(picked.heal_damage(brute,burn))
 		UpdateDamageIcon()
 	updatehealth()
@@ -260,9 +260,9 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 //It automatically updates damage overlays if necesary
 //It automatically updates health status
 /mob/living/carbon/human/take_limb_damage(var/brute, var/burn, var/sharp = 0, var/edge = 0)
-	var/list/datum/limb/parts = get_damageable_limbs()
+	var/list/obj/limb/parts = get_damageable_limbs()
 	if(!parts.len)	return
-	var/datum/limb/picked = pick(parts)
+	var/obj/limb/picked = pick(parts)
 	if(picked.take_damage(brute,burn,sharp,edge))
 		UpdateDamageIcon()
 	updatehealth()
@@ -271,11 +271,11 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 
 //Heal MANY limbs, in random order
 /mob/living/carbon/human/heal_overall_damage(var/brute, var/burn, var/robo_repair = FALSE)
-	var/list/datum/limb/parts = get_damaged_limbs(brute,burn)
+	var/list/obj/limb/parts = get_damaged_limbs(brute,burn)
 
 	var/update = 0
 	while(parts.len && (brute>0 || burn>0) )
-		var/datum/limb/picked = pick(parts)
+		var/obj/limb/picked = pick(parts)
 
 		var/brute_was = picked.brute_dam
 		var/burn_was = picked.burn_dam
@@ -294,10 +294,10 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 /mob/living/carbon/human/take_overall_damage(var/brute, var/burn, var/sharp = 0, var/edge = 0, var/used_weapon = null)
 	if(status_flags & GODMODE)
 		return	//godmode
-	var/list/datum/limb/parts = get_damageable_limbs()
+	var/list/obj/limb/parts = get_damageable_limbs()
 	var/update = 0
 	while(parts.len && (brute>0 || burn>0) )
-		var/datum/limb/picked = pick(parts)
+		var/obj/limb/picked = pick(parts)
 
 		var/brute_was = picked.brute_dam
 		var/burn_was = picked.burn_dam
@@ -319,7 +319,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 This function restores all limbs.
 */
 /mob/living/carbon/human/restore_all_organs()
-	for(var/datum/limb/E in limbs)
+	for(var/obj/limb/E in limbs)
 		E.rejuvenate()
 
 	//replace missing internal organs
@@ -332,7 +332,7 @@ This function restores all limbs.
 
 
 /mob/living/carbon/human/proc/HealDamage(zone, brute, burn)
-	var/datum/limb/E = get_limb(zone)
+	var/obj/limb/E = get_limb(zone)
 	if(E.heal_damage(brute, burn))
 		UpdateDamageIcon()
 
@@ -374,7 +374,7 @@ This function restores all limbs.
 	if(blocked >= 2)	
 		return FALSE
 
-	var/datum/limb/organ = null
+	var/obj/limb/organ = null
 	if(isorgan(def_zone))
 		organ = def_zone
 	else

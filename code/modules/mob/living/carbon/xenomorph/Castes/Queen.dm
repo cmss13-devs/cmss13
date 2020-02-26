@@ -444,7 +444,7 @@
 		return
 
 	if(isSynth(victim))
-		var/datum/limb/head/synthhead = victim.get_limb("head")
+		var/obj/limb/head/synthhead = victim.get_limb("head")
 		if(synthhead.status & LIMB_DESTROYED)
 			return
 

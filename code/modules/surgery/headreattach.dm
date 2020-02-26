@@ -6,7 +6,7 @@
 	allowed_species = list("Synthetic", "Early Synthetic", "Second Generation Synthetic")
 	var/reattach_step
 
-/datum/surgery_step/head/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected, checks_only)
+/datum/surgery_step/head/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected, checks_only)
 	if(!affected)
 		return 0
 	if(!(affected.status & LIMB_DESTROYED))
@@ -28,17 +28,17 @@
 	reattach_step = 0
 
 
-/datum/surgery_step/head/peel/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
+/datum/surgery_step/head/peel/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] starts peeling back tattered flesh where [target]'s head used to be with \the [tool]."), \
 	SPAN_NOTICE("You start peeling back tattered flesh where [target]'s head used to be with \the [tool]."))
 	..()
 
-/datum/surgery_step/head/peel/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
+/datum/surgery_step/head/peel/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] peels back tattered flesh where [target]'s head used to be with \the [tool]."),	\
 	SPAN_NOTICE("You peel back tattered flesh where [target]'s head used to be with \the [tool]."))
 	affected.limb_replacement_stage = 1
 
-/datum/surgery_step/head/peel/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
+/datum/surgery_step/head/peel/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	if(affected.parent)
 		affected = affected.parent
 		user.visible_message(SPAN_WARNING("[user]'s hand slips, ripping [target]'s [affected.display_name] open!"), \
@@ -58,17 +58,17 @@
 	max_duration = FIXVEIN_MAX_DURATION
 	reattach_step = 1
 
-/datum/surgery_step/head/shape/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
+/datum/surgery_step/head/shape/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] is beginning to reshape [target]'s esophagal and vocal region with \the [tool]."), \
 	SPAN_NOTICE("You start to reshape [target]'s head esophagal and vocal region with \the [tool]."))
 	..()
 
-/datum/surgery_step/head/shape/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
+/datum/surgery_step/head/shape/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] has finished repositioning flesh and tissue to something anatomically recognizable where [target]'s head used to be with \the [tool]."),	\
 	SPAN_NOTICE("You have finished repositioning flesh and tissue to something anatomically recognizable where [target]'s head used to be with \the [tool]."))
 	affected.limb_replacement_stage = 2
 
-/datum/surgery_step/head/shape/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
+/datum/surgery_step/head/shape/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	if(affected.parent)
 		affected = affected.parent
 		user.visible_message(SPAN_WARNING("[user]'s hand slips, further rending flesh on [target]'s neck!"), \
@@ -89,17 +89,17 @@
 	max_duration = HEMOSTAT_MAX_DURATION
 	reattach_step = 2
 
-/datum/surgery_step/head/suture/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
+/datum/surgery_step/head/suture/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] is stapling and suturing flesh into place in [target]'s esophagal and vocal region with \the [tool]."), \
 	SPAN_NOTICE("You start to staple and suture flesh into place in [target]'s esophagal and vocal region with \the [tool]."))
 	..()
 
-/datum/surgery_step/head/suture/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
+/datum/surgery_step/head/suture/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] has finished stapling [target]'s neck into place with \the [tool]."),	\
 	SPAN_NOTICE("You have finished stapling [target]'s neck into place with \the [tool]."))
 	affected.limb_replacement_stage = 3
 
-/datum/surgery_step/head/suture/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
+/datum/surgery_step/head/suture/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	if(affected.parent)
 		affected = affected.parent
 		user.visible_message(SPAN_WARNING("[user]'s hand slips, ripping apart flesh on [target]'s neck!"), \
@@ -121,19 +121,19 @@
 	max_duration = CAUTERY_MAX_DURATION
 	reattach_step = 3
 
-/datum/surgery_step/head/prepare/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
+/datum/surgery_step/head/prepare/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] starts adjusting area around [target]'s neck with \the [tool]."), \
 	SPAN_NOTICE("You start adjusting area around [target]'s neck with \the [tool]."))
 	..()
 
-/datum/surgery_step/head/prepare/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
+/datum/surgery_step/head/prepare/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] has finished adjusting the area around [target]'s neck with \the [tool]."),	\
 	SPAN_NOTICE("You have finished adjusting the area around [target]'s neck with \the [tool]."))
 	affected.limb_replacement_stage = 0
 	affected.status |= LIMB_AMPUTATED
 	affected.setAmputatedTree()
 
-/datum/surgery_step/head/prepare/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
+/datum/surgery_step/head/prepare/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	if(affected.parent)
 		affected = affected.parent
 		user.visible_message(SPAN_WARNING("[user]'s hand slips, searing [target]'s neck!"), \
@@ -150,17 +150,17 @@
 	max_duration = IMPLANT_MAX_DURATION
 	reattach_step = 0
 
-/datum/surgery_step/head/attach/can_use(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected, checks_only)
+/datum/surgery_step/head/attach/can_use(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected, checks_only)
 	if(..())
 		if(affected.status & LIMB_AMPUTATED)
 			return 1
 
-/datum/surgery_step/head/attach/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
+/datum/surgery_step/head/attach/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] starts attaching [tool] to [target]'s reshaped neck."), \
 	SPAN_NOTICE("You start attaching [tool] to [target]'s reshaped neck."))
 	..()
 
-/datum/surgery_step/head/attach/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
+/datum/surgery_step/head/attach/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] has attached [target]'s head to the body."),	\
 	SPAN_NOTICE("You have attached [target]'s head to the body."))
 
@@ -181,7 +181,7 @@
 	user.temp_drop_inv_item(B)
 	qdel(B)
 
-/datum/surgery_step/head/attach/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
+/datum/surgery_step/head/attach/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, damaging connectors on [target]'s neck!"), \
 	SPAN_WARNING("Your hand slips, damaging connectors on [target]'s neck!"))
 	target.apply_damage(10, BRUTE, affected, sharp = 1)

@@ -20,7 +20,7 @@
 		return 1
 
 	var/mob/living/carbon/human/H = M
-	var/datum/limb/affecting = H.get_limb(user.zone_selected)
+	var/obj/limb/affecting = H.get_limb(user.zone_selected)
 
 	if(!affecting)
 		to_chat(user, SPAN_WARNING("[H] has no [parse_zone(user.zone_selected)]!"))
@@ -61,7 +61,7 @@
 				if(!do_after(user, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 					return 1
 
-		var/datum/limb/affecting = H.get_limb(user.zone_selected)
+		var/obj/limb/affecting = H.get_limb(user.zone_selected)
 
 		if(affecting.surgery_open_stage == 0)
 			if(!affecting.bandage())
@@ -105,7 +105,7 @@
 				if(!do_after(user, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 					return 1
 
-		var/datum/limb/affecting = H.get_limb(user.zone_selected)
+		var/obj/limb/affecting = H.get_limb(user.zone_selected)
 
 		if(affecting.surgery_open_stage == 0)
 			if(!affecting.salve())
@@ -154,7 +154,7 @@
 					return
 				heal_amt = 3 //non optimal application means less healing
 
-		var/datum/limb/affecting = H.get_limb(user.zone_selected)
+		var/obj/limb/affecting = H.get_limb(user.zone_selected)
 
 		if(affecting.surgery_open_stage == 0)
 			var/bandaged = affecting.bandage()
@@ -221,7 +221,7 @@
 					return
 				heal_amt = 3 //non optimal application means less healing
 
-		var/datum/limb/affecting = H.get_limb(user.zone_selected)
+		var/obj/limb/affecting = H.get_limb(user.zone_selected)
 
 		if(affecting.surgery_open_stage == 0)
 			if(!affecting.salve())
@@ -260,7 +260,7 @@
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		var/datum/limb/affecting = H.get_limb(user.zone_selected)
+		var/obj/limb/affecting = H.get_limb(user.zone_selected)
 		var/limb = affecting.display_name
 
 		if(!(affecting.name in list("l_arm", "r_arm", "l_leg", "r_leg", "r_hand", "l_hand", "r_foot", "l_foot", "chest", "groin", "head")))

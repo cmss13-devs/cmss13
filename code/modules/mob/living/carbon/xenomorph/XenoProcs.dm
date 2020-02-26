@@ -351,7 +351,7 @@
 
 	last_rng_attack = world.time
 
-	var/datum/limb/affecting
+	var/obj/limb/affecting
 	affecting = M.get_limb(ran_zone("head", 50))
 	if(!affecting) //No head? Just get a random one
 		affecting = M.get_limb(ran_zone(null, 0))
@@ -382,7 +382,7 @@
 
 	last_rng_attack = world.time
 
-	var/datum/limb/affecting
+	var/obj/limb/affecting
 	affecting = M.get_limb(ran_zone(zone_selected, 75))
 	if(!affecting) //No organ, just get a random one
 		affecting = M.get_limb(ran_zone(null, 0))

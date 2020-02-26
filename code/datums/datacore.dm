@@ -216,8 +216,8 @@ var/global/list/PDA_Manifest = list()
 		assignment = "Unassigned"
 
 	var/id = add_zero(num2hex(rand(1, 1.6777215E7)), 6)	//this was the best they could come up with? A large random number? *sigh*
-	var/icon/front = new(get_id_photo(H), dir = SOUTH)
-	var/icon/side = new(get_id_photo(H), dir = WEST)
+	//var/icon/front = new(get_id_photo(H), dir = SOUTH)
+	//var/icon/side = new(get_id_photo(H), dir = WEST)
 
 	//General Record
 	var/datum/data/record/G = new()
@@ -235,8 +235,8 @@ var/global/list/PDA_Manifest = list()
 	G.fields["citizenship"]	= H.citizenship
 	G.fields["faction"]		= H.personal_faction
 	G.fields["religion"]	= H.religion
-	G.fields["photo_front"]	= front
-	G.fields["photo_side"]	= side
+	//G.fields["photo_front"]	= front
+	//G.fields["photo_side"]	= side
 
 	if(H.gen_record && !jobban_isbanned(H, "Records"))
 		G.fields["notes"] = H.gen_record
@@ -338,7 +338,7 @@ proc/get_id_photo(var/mob/living/carbon/human/H)
 	temp = new /icon(icobase, get_limb_icon_name(H.species, b_icon, H.gender, "head", e_icon))
 	preview_icon.Blend(temp, ICON_OVERLAY)
 
-	for(var/datum/limb/E in H.limbs)
+	for(var/obj/limb/E in H.limbs)
 		if(E.status & LIMB_DESTROYED) continue
 		temp = new /icon(icobase, get_limb_icon_name(H.species, b_icon, H.gender, E.name, e_icon))
 		if(E.status & LIMB_ROBOT)

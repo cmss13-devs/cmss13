@@ -9,7 +9,7 @@
 	var/armor = 0
 	var/counter = 0
 	for(var/X in H.limbs)
-		var/datum/limb/E = X
+		var/obj/limb/E = X
 		armor = getarmor_organ(E, ARMOR_BULLET)
 		to_chat(src, SPAN_DEBUG("<b>[E.name]</b> is protected with <b>[armor]</b> armor against bullets."))
 		counter += armor

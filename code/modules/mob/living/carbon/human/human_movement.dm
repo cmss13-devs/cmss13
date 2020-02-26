@@ -38,7 +38,7 @@
 	// Wheelchairs depend on different limbs than walking, which is...cute
 	if(istype(buckled, /obj/structure/bed/chair/wheelchair))
 		for(var/organ_name in list("l_hand","r_hand","l_arm","r_arm","chest","groin","head"))
-			var/datum/limb/E = get_limb(organ_name)
+			var/obj/limb/E = get_limb(organ_name)
 			if(!E || (E.status & LIMB_DESTROYED))
 				. += MOVE_REDUCTION_LIMB_DESTROYED
 			if(E.status & LIMB_SPLINTED)
@@ -50,7 +50,7 @@
 			. += shoes.slowdown
 
 		for(var/organ_name in list("l_foot","r_foot","l_leg","r_leg","chest","groin","head"))
-			var/datum/limb/E = get_limb(organ_name)
+			var/obj/limb/E = get_limb(organ_name)
 			if(!E || (E.status & LIMB_DESTROYED))
 				. += MOVE_REDUCTION_LIMB_DESTROYED
 			// Splinted limbs are not as punishing 

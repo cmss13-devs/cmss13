@@ -149,7 +149,7 @@
 				M.apply_damage(damage, BRUTE)
 				return
 
-			var/datum/limb/affecting
+			var/obj/limb/affecting
 
 			switch(pick(list("ankle","wrist","head","knee","elbow")))
 				if("ankle")

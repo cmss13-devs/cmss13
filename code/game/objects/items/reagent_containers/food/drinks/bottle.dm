@@ -39,7 +39,7 @@
 
 	force = 15 //Smashing bottles over someoen's head hurts.
 
-	var/datum/limb/affecting = user.zone_selected //Find what the player is aiming at
+	var/obj/limb/affecting = user.zone_selected //Find what the player is aiming at
 
 	var/armor_block = 0 //Get the target's armour values for normal attack damage.
 	var/armor_duration = 0 //The more force the bottle has, the longer the duration.

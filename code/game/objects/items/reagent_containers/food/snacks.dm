@@ -1529,7 +1529,7 @@
 			surprise.transform *= 0.6
 			surprise.add_mob_blood(M)
 			var/mob/living/carbon/human/H = M
-			var/datum/limb/E = H.get_limb("chest")
+			var/obj/limb/E = H.get_limb("chest")
 			E.fracture()
 			H.recalculate_move_delay = TRUE
 			for (var/datum/internal_organ/I in E.internal_organs)

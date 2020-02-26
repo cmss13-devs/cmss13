@@ -191,7 +191,7 @@
 
 	if(hasorgans(M))
 		var/mob/living/carbon/human/H = M
-		var/datum/limb/S = H.get_limb(user.zone_selected)
+		var/obj/limb/S = H.get_limb(user.zone_selected)
 
 		if (!S) return
 		if(!(S.status & LIMB_ROBOT) || user.a_intent != "help")

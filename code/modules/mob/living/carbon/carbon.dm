@@ -47,8 +47,8 @@
 			if(istype(src, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = src
 				var/organ = H.get_limb("chest")
-				if(istype(organ, /datum/limb))
-					var/datum/limb/temp = organ
+				if(istype(organ, /obj/limb))
+					var/obj/limb/temp = organ
 					if(temp.take_damage(d, 0))
 						H.UpdateDamageIcon()
 				H.updatehealth()

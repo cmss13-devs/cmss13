@@ -36,7 +36,7 @@
 	if (H.wear_mask) return
 	if (istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket)) return
 
-	var/datum/limb/O = H.get_limb(H.hand?"l_hand":"r_hand")
+	var/obj/limb/O = H.get_limb(H.hand?"l_hand":"r_hand")
 	if (!O) return
 
 	var/s = SPAN_DANGER("[H.name] chews on \his [O.display_name]!")
@@ -62,7 +62,7 @@
 	if(proximity && istype(G) && G.Touch(A, 1))
 		return
 
-	var/datum/limb/temp = get_limb(hand ? "l_hand" : "r_hand")
+	var/obj/limb/temp = get_limb(hand ? "l_hand" : "r_hand")
 	if(temp && !temp.is_usable())
 		to_chat(src, SPAN_NOTICE("You try to move your [temp.display_name], but cannot!"))
 		return

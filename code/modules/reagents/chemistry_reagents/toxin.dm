@@ -469,7 +469,7 @@
 			if(!M.unacidable)
 				if(istype(M, /mob/living/carbon/human) && volume >= 10)
 					var/mob/living/carbon/human/H = M
-					var/datum/limb/affecting = H.get_limb("head")
+					var/obj/limb/affecting = H.get_limb("head")
 					if(affecting)
 						if(affecting.take_damage(4*toxpwr, 2*toxpwr))
 							H.UpdateDamageIcon()

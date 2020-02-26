@@ -219,7 +219,7 @@
 			if(PROPERTY_HEMORRAGING) //internal bleeding
 				var/mob/living/carbon/human/C = M
 				if(C)
-					var/datum/limb/L = pick(C.limbs)
+					var/obj/limb/L = pick(C.limbs)
 					if(L && !(L.status & LIMB_ROBOT))
 						if(is_OD)
 							if(L.internal_organs)
@@ -558,7 +558,7 @@
 				else
 					var/mob/living/carbon/human/C = M
 					if(C)
-						var/datum/limb/L = pick(C.limbs)
+						var/obj/limb/L = pick(C.limbs)
 						if(L)
 							if(L.status & LIMB_ROBOT)
 								L.heal_damage(2*potency,2*potency,0,1)
@@ -696,7 +696,7 @@
 			if(PROPERTY_BONEMENDING) //repairs bones
 				var/mob/living/carbon/human/C = M
 				if(C)
-					var/datum/limb/L = pick(C.limbs)
+					var/obj/limb/L = pick(C.limbs)
 					if(L)
 						if(is_OD)
 							M.take_limb_damage(2*potency)
@@ -728,7 +728,7 @@
 				else
 					var/mob/living/carbon/human/C = M
 					if(C)
-						var/datum/limb/L = pick(C.limbs)
+						var/obj/limb/L = pick(C.limbs)
 						if(L && prob(10*potency))
 							if(L.status & LIMB_ROBOT)
 								L.take_damage(0,2*potency)

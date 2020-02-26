@@ -112,6 +112,8 @@
 /datum/reagent/proc/make_alike(var/datum/reagent/C)
 	name = C.name
 	id = C.id
+	chemclass = C.chemclass
+	gen_tier = C.gen_tier
 	properties = C.properties.Copy()
 	description = C.description
 	overdose = C.overdose
@@ -123,6 +125,7 @@
 
 /datum/chemical_reaction/proc/make_alike(var/datum/chemical_reaction/C)
 	id = C.id
+	gen_tier = C.gen_tier
 	required_reagents = C.required_reagents.Copy()
 	required_catalysts = C.required_catalysts.Copy()
 	result = C.result

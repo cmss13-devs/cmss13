@@ -72,7 +72,7 @@
 /datum/ammo/proc/do_at_half_range(obj/item/projectile/P)
 	return
 
-/datum/ammo/proc/on_embed(var/mob/embedded_mob, var/datum/limb/target_organ)
+/datum/ammo/proc/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
 	return
 
 /datum/ammo/proc/do_at_max_range(obj/item/projectile/P)
@@ -2052,7 +2052,7 @@
 	shell_speed = config.slow_shell_speed
 	can_type = new /obj/item/reagent_container/food/drinks/cans/souto/classic
 
-/datum/ammo/souto/on_embed(var/mob/embedded_mob, var/datum/limb/target_organ)
+/datum/ammo/souto/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
 	if(ishuman(embedded_mob) && !isYautja(embedded_mob))
 		if(istype(target_organ))
 			target_organ.embed(src.can_type)

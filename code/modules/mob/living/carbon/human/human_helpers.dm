@@ -157,7 +157,7 @@
 	else
 		b_icon = B.icon_name
 
-	for(var/datum/limb/L in limbs)
+	for(var/obj/limb/L in limbs)
 		L.icon_name = get_limb_icon_name(species, b_icon, gender, L.display_name, e_icon)
 
 /mob/living/carbon/human/can_inject(var/mob/user, var/error_msg, var/target_zone)
@@ -306,7 +306,7 @@
 
 /mob/living/carbon/human/proc/get_broken_limbs()
 	var/list/BL = list()
-	for(var/datum/limb/L in limbs)
+	for(var/obj/limb/L in limbs)
 		if(L.status & LIMB_BROKEN)
 			BL += L.display_name
 	return BL

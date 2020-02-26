@@ -69,17 +69,17 @@ var/list/global/organ_rel_size = list(
 
 // This is much faster than a string comparison
 var/global/list/limb_types_by_name = list(
-	"head" = /datum/limb/head,
-	"chest" = /datum/limb/chest,
-	"groin" = /datum/limb/groin,
-	"l_leg" = /datum/limb/leg/l_leg,
-	"r_leg" = /datum/limb/leg/r_leg,
-	"l_arm" = /datum/limb/arm/l_arm,
-	"r_arm" = /datum/limb/arm/r_arm,
-	"l_hand" = /datum/limb/hand/l_hand,
-	"r_hand" = /datum/limb/hand/r_hand,
-	"l_foot" = /datum/limb/foot/l_foot,
-	"r_foot" = /datum/limb/foot/r_foot,
+	"head" = /obj/limb/head,
+	"chest" = /obj/limb/chest,
+	"groin" = /obj/limb/groin,
+	"l_leg" = /obj/limb/leg/l_leg,
+	"r_leg" = /obj/limb/leg/r_leg,
+	"l_arm" = /obj/limb/arm/l_arm,
+	"r_arm" = /obj/limb/arm/r_arm,
+	"l_hand" = /obj/limb/hand/l_hand,
+	"r_hand" = /obj/limb/hand/r_hand,
+	"l_foot" = /obj/limb/foot/l_foot,
+	"r_foot" = /obj/limb/foot/r_foot,
 )
 
 /proc/check_zone(zone)

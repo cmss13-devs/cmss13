@@ -108,7 +108,7 @@
 				return FALSE
 
 			M.flick_attack_overlay(src, "slash")
-			var/datum/limb/affecting
+			var/obj/limb/affecting
 			affecting = get_limb(ran_zone(M.zone_selected, 70))
 			if(!affecting) //No organ, just get a random one
 				affecting = get_limb(ran_zone(null, 0))

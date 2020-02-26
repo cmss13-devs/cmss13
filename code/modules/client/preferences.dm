@@ -19,6 +19,10 @@ var/global/list/stylesheets = list(
 var/const/MAX_SAVE_SLOTS = 10
 
 /datum/preferences
+	var/client/owner
+	var/obj/screen/preview_front
+	var/mob/living/carbon/human/dummy/preview_dummy
+
 	//doohickeys for savefiles
 	var/path
 	var/default_slot = 1				//Holder so it doesn't default to slot 1, rather the last one used
@@ -30,7 +34,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/last_ip
 	var/fps = 20
 	var/last_id
-	var/updating_icon = 0
 
 	//game-preferences
 	var/lastchangelog = ""				// Saved changlog filesize to detect if there was a change
@@ -155,6 +158,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 /datum/preferences/New(client/C)
 	if(istype(C))
+		owner = C
 		if(!IsGuestKey(C.key))
 			load_path(C.ckey)
 			if(load_preferences())
@@ -168,8 +172,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	if(!user || !user.client)	
 		return
 	update_preview_icon()
-	user << browse_rsc(preview_icon_front, "previewicon.png")
-	user << browse_rsc(preview_icon_side, "previewicon2.png")
 
 	var/dat = "<html><head><style>"
 	dat += "#wrapper 		{position: relative; margin: 0 auto;}"
@@ -189,18 +191,6 @@ var/const/MAX_SAVE_SLOTS = 10
 		dat += "</center>"
 	else
 		dat += "Please create an account to save your preferences."
-
-	//dat += "</center><hr><table><tr><td width='340px' height='350px'>"
-	if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_PREDATOR)
-		dat += "<br><b>Yautja name:</b> <a href='?_src_=prefs;preference=pred_name;task=input'>[predator_name]</a><br>"
-		dat += "<b>Yautja gender:</b> <a href='?_src_=prefs;preference=pred_gender;task=input'>[predator_gender == MALE ? "Male" : "Female"]</a><br>"
-		dat += "<b>Yautja age:</b> <a href='?_src_=prefs;preference=pred_age;task=input'>[predator_age]</a><br>"
-		dat += "<b>Mask style:</b> <a href='?_src_=prefs;preference=pred_mask_type;task=input'>([predator_mask_type])</a><br>"
-		dat += "<b>Armor style:</b> <a href='?_src_=prefs;preference=pred_armor_type;task=input'>([predator_armor_type])</a><br>"
-		dat += "<b>Greave style:</b> <a href='?_src_=prefs;preference=pred_boot_type;task=input'>([predator_boot_type])</a><br><br>"
-	if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_SYNTHETIC)
-		dat += "<br><b>Synthetic name:</b> <a href='?_src_=prefs;preference=synth_name;task=input'>[synthetic_name]</a><br>"
-		dat += "<br><b>Synthetic Type:</b> <a href='?_src_=prefs;preference=synth_type;task=input'>[synthetic_type]</a><br>"
 
 
 	dat += "<div id='wrapper'>"
@@ -283,7 +273,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "</div>"
 
 	dat += "<div id='column2'>"
-	dat += "<img src=previewicon.png width=64 height=64><img src=previewicon2.png width=64 height=64 margin-left=auto margin-right=auto>"
 	dat += "<br>"
 	dat += "<b>Hair:</b> "
 	dat += "<a href='?_src_=prefs;preference=h_style;task=input'>[h_style]</a>"
@@ -390,9 +379,30 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "<b>Stylesheet</b>: <a href='?_src_=prefs;preference=stylesheet'><b>[stylesheet]</b></a><br>"
 	if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
 		dat += "<b>View Master Controller Tab: <a href='?_src_=prefs;preference=ViewMC'><b>[View_MC ? "TRUE" : "FALSE"]</b></a>"
+	dat += "</div>"
+
+	if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_PREDATOR)
+		dat += "<div id='column1'>"
+		dat += "<h2><b><u>Yautja Settings:</u></b></h2>"
+		dat += "<b>Yautja name:</b> <a href='?_src_=prefs;preference=pred_name;task=input'>[predator_name]</a><br>"
+		dat += "<b>Yautja gender:</b> <a href='?_src_=prefs;preference=pred_gender;task=input'>[predator_gender == MALE ? "Male" : "Female"]</a><br>"
+		dat += "<b>Yautja age:</b> <a href='?_src_=prefs;preference=pred_age;task=input'>[predator_age]</a><br>"
+		dat += "<b>Mask style:</b> <a href='?_src_=prefs;preference=pred_mask_type;task=input'>([predator_mask_type])</a><br>"
+		dat += "<b>Armor style:</b> <a href='?_src_=prefs;preference=pred_armor_type;task=input'>([predator_armor_type])</a><br>"
+		dat += "<b>Greave style:</b> <a href='?_src_=prefs;preference=pred_boot_type;task=input'>([predator_boot_type])</a><br><br></div>"
+
+	if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_SYNTHETIC)
+		dat += "<div id='column2'>"
+		dat += "<h2><b><u>Synthetic Settings:</u></b></h2>"
+		dat += "<b>Synthetic name:</b> <a href='?_src_=prefs;preference=synth_name;task=input'>[synthetic_name]</a><br>"
+		dat += "<b>Synthetic Type:</b> <a href='?_src_=prefs;preference=synth_type;task=input'>[synthetic_type]</a><br></div>"
+
 	
-	dat += "</div></div></body></html>"
-	show_browser(user, dat, "Preferences", "preferences", "size=780x700")
+	dat += "</div></body></html>"
+
+	winshow(user, "preferencewindow", TRUE)
+	show_browser(user, dat, "Preferences", "preferencebrowser", "size=640x770")
+	onclose(user, "preferencewindow", src)
 
 //limit 	 	- The amount of jobs allowed per column. Defaults to 13 to make it look nice.
 //splitJobs 	- Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
@@ -1371,7 +1381,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	for(var/name in organ_data)
 
 		var/status = organ_data[name]
-		var/datum/limb/O = character.get_limb(name)
+		var/obj/limb/O = character.get_limb(name)
 		if(O)
 //			if(status == "amputated")
 //				O.amputated = 1
@@ -1439,7 +1449,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	for(var/name in organ_data)
 
 		var/status = organ_data[name]
-		var/datum/limb/O = character.get_limb(name)
+		var/obj/limb/O = character.get_limb(name)
 		if(O)
 			if(status == "cyborg")
 				O.status |= LIMB_ROBOT

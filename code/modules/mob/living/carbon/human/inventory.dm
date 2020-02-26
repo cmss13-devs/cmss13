@@ -27,7 +27,7 @@
 
 /mob/living/carbon/human/proc/has_limb(org_name)
 	for(var/X in limbs)
-		var/datum/limb/E = X
+		var/obj/limb/E = X
 		if(E.name == org_name)
 			return !(E.status & LIMB_DESTROYED)
 
@@ -91,13 +91,13 @@
 			return 1
 
 /mob/living/carbon/human/put_in_l_hand(obj/item/W)
-	var/datum/limb/O = get_limb("l_hand")
+	var/obj/limb/O = get_limb("l_hand")
 	if(!O || !O.is_usable())
 		return FALSE
 	. = ..()
 
 /mob/living/carbon/human/put_in_r_hand(obj/item/W)
-	var/datum/limb/O = get_limb("r_hand")
+	var/obj/limb/O = get_limb("r_hand")
 	if(!O || !O.is_usable())
 		return FALSE
 	. = ..()

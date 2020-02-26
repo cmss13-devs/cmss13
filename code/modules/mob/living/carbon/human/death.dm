@@ -1,9 +1,9 @@
 /mob/living/carbon/human/gib(var/cause = "gibbing")
 	var/is_a_synth = isSynth(src)
-	for(var/datum/limb/E in limbs)
-		if(istype(E, /datum/limb/chest))
+	for(var/obj/limb/E in limbs)
+		if(istype(E, /obj/limb/chest))
 			continue
-		if(istype(E, /datum/limb/groin) && is_a_synth)
+		if(istype(E, /obj/limb/groin) && is_a_synth)
 			continue
 		// Only make the limb drop if it's not too damaged
 		if(prob(100 - E.get_damage()))

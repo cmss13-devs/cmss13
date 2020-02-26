@@ -143,7 +143,7 @@
 	if(H.stat == DEAD) return
 	if(istype(H.buckled, /obj/structure/bed/nest)) return
 	
-	var/datum/limb/L = H.get_limb(check_zone(zone_selected))
+	var/obj/limb/L = H.get_limb(check_zone(zone_selected))
 
 	if (!L || (L.status & LIMB_DESTROYED))
 		return

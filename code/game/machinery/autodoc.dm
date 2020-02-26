@@ -66,9 +66,9 @@
 		return
 
 /obj/structure/machinery/autodoc/proc/heal_limb(var/mob/living/carbon/human/human, var/brute, var/burn)
-	var/list/datum/limb/parts = human.get_damaged_limbs(brute,burn)
+	var/list/obj/limb/parts = human.get_damaged_limbs(brute,burn)
 	if(!parts.len)	return
-	var/datum/limb/picked = pick(parts)
+	var/obj/limb/picked = pick(parts)
 	if(LIMB_ROBOT)
 		picked.heal_damage(brute, burn, 0, 1)
 	else
@@ -149,7 +149,7 @@
 #define UNNEEDED_DELAY 100 // how long to waste if someone queues an unneeded surgery
 
 /datum/autodoc_surgery
-	var/datum/limb/limb_ref = null
+	var/obj/limb/limb_ref = null
 	var/datum/internal_organ/organ_ref = null
 	var/type_of_surgery = 0 // the above constants
 	var/surgery_procedure = "" // text of surgery
@@ -173,7 +173,7 @@
 	var/surgery_list = list()
 	var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/neurostim)
 
-	for(var/datum/limb/L in M.limbs)
+	for(var/obj/limb/L in M.limbs)
 		if(L)
 			for(var/datum/wound/W in L.wounds)
 				if(W.internal)
@@ -192,8 +192,8 @@
 					surgery_list += create_autodoc_surgery(L,ORGAN_SURGERY,"damage",0,I)
 					organdamagesurgery++
 
-			if(istype(L,/datum/limb/head))
-				var/datum/limb/head/H = L
+			if(istype(L,/obj/limb/head))
+				var/obj/limb/head/H = L
 				if(H.disfigured || H.face_surgery_stage > 0)
 					surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"facial")
 
@@ -461,8 +461,8 @@
 							visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
 							surgery_todo_list -= S
 							continue
-						if(istype(S.limb_ref,/datum/limb/head))
-							var/datum/limb/head/F = S.limb_ref
+						if(istype(S.limb_ref,/obj/limb/head))
+							var/obj/limb/head/F = S.limb_ref
 							if(F.face_surgery_stage == 0)
 								sleep(SCALPEL_MAX_DURATION)
 								if(!surgery) break
@@ -502,7 +502,7 @@
 	go_out()
 
 
-/obj/structure/machinery/autodoc/proc/open_incision(mob/living/carbon/human/target, var/datum/limb/L)
+/obj/structure/machinery/autodoc/proc/open_incision(mob/living/carbon/human/target, var/obj/limb/L)
 	if(target && L && L.surgery_open_stage < 2)
 		sleep(INCISION_MANAGER_MAX_DURATION*surgery_mod)
 		if(!surgery) return
@@ -511,7 +511,7 @@
 		L.surgery_open_stage = 2 //Can immediately proceed to other surgery steps
 		target.updatehealth()
 
-/obj/structure/machinery/autodoc/proc/close_incision(mob/living/carbon/human/target, var/datum/limb/L)
+/obj/structure/machinery/autodoc/proc/close_incision(mob/living/carbon/human/target, var/obj/limb/L)
 	if(target && L && 0 < L.surgery_open_stage <= 2)
 		sleep(CAUTERY_MAX_DURATION*surgery_mod)
 		if(!surgery) return
@@ -519,7 +519,7 @@
 		L.remove_all_bleeding(TRUE)
 		target.updatehealth()
 
-/obj/structure/machinery/autodoc/proc/open_encased(mob/living/carbon/human/target, var/datum/limb/L)
+/obj/structure/machinery/autodoc/proc/open_encased(mob/living/carbon/human/target, var/obj/limb/L)
 	if(target && L && L.surgery_open_stage >= 2)
 		if(L.surgery_open_stage == 2) // this will cover for half completed surgeries
 			sleep(CIRCULAR_SAW_MAX_DURATION*surgery_mod)
@@ -530,7 +530,7 @@
 			if(!surgery) return
 			L.surgery_open_stage = 3
 
-/obj/structure/machinery/autodoc/proc/close_encased(mob/living/carbon/human/target, var/datum/limb/L)
+/obj/structure/machinery/autodoc/proc/close_encased(mob/living/carbon/human/target, var/obj/limb/L)
 	if(target && L && L.surgery_open_stage > 2)
 		if(L.surgery_open_stage == 3) // this will cover for half completed surgeries
 			sleep(RETRACTOR_MAX_DURATION*surgery_mod)
@@ -891,7 +891,7 @@
 				N.fields["autodoc_manual"] += create_autodoc_surgery(null,ORGAN_SURGERY,"eyes",0,connected.occupant.internal_organs_by_name["eyes"])
 				updateUsrDialog()
 			if(href_list["organdamage"])
-				for(var/datum/limb/L in connected.occupant.limbs)
+				for(var/obj/limb/L in connected.occupant.limbs)
 					if(L)
 						for(var/datum/internal_organ/I in L.internal_organs)
 							if(I.robotic == ORGAN_ASSISTED||I.robotic == ORGAN_ROBOT)
@@ -905,7 +905,7 @@
 				updateUsrDialog()
 
 			if(href_list["internal"])
-				for(var/datum/limb/L in connected.occupant.limbs)
+				for(var/obj/limb/L in connected.occupant.limbs)
 					if(L)
 						for(var/datum/wound/W in L.wounds)
 							if(W.internal)
@@ -917,7 +917,7 @@
 				updateUsrDialog()
 
 			if(href_list["broken"])
-				for(var/datum/limb/L in connected.occupant.limbs)
+				for(var/obj/limb/L in connected.occupant.limbs)
 					if(L)
 						if(L.status & LIMB_BROKEN)
 							N.fields["autodoc_manual"] += create_autodoc_surgery(L,LIMB_SURGERY,"broken")
@@ -927,7 +927,7 @@
 				updateUsrDialog()
 
 			if(href_list["missing"])
-				for(var/datum/limb/L in connected.occupant.limbs)
+				for(var/obj/limb/L in connected.occupant.limbs)
 					if(L)
 						if(L.status & LIMB_DESTROYED)
 							if(!(L.parent.status & LIMB_DESTROYED) && L.name != "head")
@@ -939,7 +939,7 @@
 
 			if(href_list["shrapnel"])
 				var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/neurostim)
-				for(var/datum/limb/L in connected.occupant.limbs)
+				for(var/obj/limb/L in connected.occupant.limbs)
 					if(L)
 						if(L.implants.len)
 							for(var/I in L.implants)
@@ -951,10 +951,10 @@
 				updateUsrDialog()
 
 			if(href_list["facial"])
-				for(var/datum/limb/L in connected.occupant.limbs)
+				for(var/obj/limb/L in connected.occupant.limbs)
 					if(L)
-						if(istype(L,/datum/limb/head))
-							var/datum/limb/head/J = L
+						if(istype(L,/obj/limb/head))
+							var/obj/limb/head/J = L
 							if(J.disfigured || J.face_surgery_stage)
 								N.fields["autodoc_manual"] += create_autodoc_surgery(L,LIMB_SURGERY,"facial")
 							else
@@ -963,7 +963,7 @@
 							break
 
 			if(href_list["open"])
-				for(var/datum/limb/L in connected.occupant.limbs)
+				for(var/obj/limb/L in connected.occupant.limbs)
 					if(L)
 						if(L.surgery_open_stage)
 							N.fields["autodoc_manual"] += create_autodoc_surgery(L,LIMB_SURGERY,"open")

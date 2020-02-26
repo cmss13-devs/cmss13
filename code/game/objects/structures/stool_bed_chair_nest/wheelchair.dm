@@ -27,8 +27,8 @@
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/driver = user
-		var/datum/limb/left_hand = driver.get_limb("l_hand")
-		var/datum/limb/right_hand = driver.get_limb("r_hand")
+		var/obj/limb/left_hand = driver.get_limb("l_hand")
+		var/obj/limb/right_hand = driver.get_limb("r_hand")
 		var/working_hands = 2
 		move_delay = initial(move_delay)
 		if(!left_hand || (left_hand.status & LIMB_DESTROYED))

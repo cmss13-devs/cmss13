@@ -55,7 +55,7 @@
 		var/mob/living/carbon/human/H = src	//make this damage method divide the damage to be done among all the body parts, then burn each body part for that much damage. will have better effect then just randomly picking a body part
 		var/divided_damage = (burn_amount)/(H.limbs.len)
 		var/extradam = 0	//added to when organ is at max dam
-		for(var/datum/limb/affecting in H.limbs)
+		for(var/obj/limb/affecting in H.limbs)
 			if(!affecting)	continue
 			if(affecting.take_damage(0, divided_damage+extradam))	//TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
 				H.UpdateDamageIcon()
@@ -503,7 +503,7 @@
 	// Show specific limb damage
 	if(istype(src, /mob/living/carbon/human) && mode == 1)
 		var/mob/living/carbon/human/H = src
-		for(var/datum/limb/org in H.limbs)
+		for(var/obj/limb/org in H.limbs)
 			var/brute_treated = TRUE
 			var/burn_treated = TRUE
 			var/open_incision = TRUE
@@ -592,7 +592,7 @@
 
 		var/core_fracture = 0
 		for(var/X in H.limbs)
-			var/datum/limb/e = X
+			var/obj/limb/e = X
 			for(var/datum/effects/bleeding/internal/I in e.bleeding_effects_list)
 				internal_bleed_detected = TRUE
 				break

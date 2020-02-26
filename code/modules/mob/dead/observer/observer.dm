@@ -40,14 +40,14 @@
 		T = get_turf(body)				//Where is the body located?
 		attack_log = body.attack_log	//preserve our attack logs by copying them to our ghost
 
-		if (ishuman(body))
+		if(isHumanSynthStrict(body))
 			var/mob/living/carbon/human/H = body
-			icon = H.stand_icon
-			overlays = H.overlays_standing
+			icon = 'icons/mob/humans/species/r_human.dmi'
+			icon_state = "anglo_example"
+			overlays += H.overlays
 		else
-			icon = body.icon
-			icon_state = body.icon_state
-			overlays = body.overlays
+			icon = 'icons/mob/mob.dmi'
+			icon_state = "ghost1"
 
 		alpha = 127
 
@@ -562,7 +562,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			//when decapitated the human mob is clientless,
 			//we must check whether the player is still manning the brain in the decap'd head,
 			//so their body isn't stolen by another player.
-			var/datum/limb/head/h = A.get_limb("head")
+			var/obj/limb/head/h = A.get_limb("head")
 			if(h && (h.status & LIMB_DESTROYED))
 				for (var/obj/item/limb/head/HD in item_list)
 					if(HD.brainmob)
@@ -596,7 +596,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				to_chat(src, SPAN_WARNING("That player is still connected."))
 				return
 
-			var/datum/limb/head/h = Z.get_limb("head")
+			var/obj/limb/head/h = Z.get_limb("head")
 			if(h && (h.status & LIMB_DESTROYED))
 				for (var/obj/item/limb/head/HD in item_list)
 					if(HD.brainmob)

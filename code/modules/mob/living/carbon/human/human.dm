@@ -1,6 +1,4 @@
 /mob/living/carbon/human
-	icon = 'icons/mob/humans/human.dmi'
-	icon_state = "body_m_s"
 	directional_lum = 0 				//humans carrying light sources only illuminate the area in front of themselves
 	hud_possible = list(HEALTH_HUD,STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPCHEM_HUD,IMPTRACK_HUD, SPECIALROLE_HUD, SQUAD_HUD, ORDER_HUD)
 	var/embedded_flag	  				//To check if we've need to roll for damage on movement while an item is imbedded in us.
@@ -14,7 +12,6 @@
 
 /mob/living/carbon/human/New(var/new_loc, var/new_species = null)
 	blood_type = pick(7;"O-", 38;"O+", 6;"A-", 34;"A+", 2;"B-", 9;"B+", 1;"AB-", 3;"AB+")
-
 	human_mob_list += src
 	living_human_list += src
 	processable_human_list += src
@@ -69,7 +66,7 @@
 		internal_organs_by_name = null
 
 	if(limbs)
-		for(var/datum/limb/L in limbs)
+		for(var/obj/limb/L in limbs)
 			L.owner = null
 			qdel(L)
 		limbs = null
@@ -169,7 +166,7 @@
 	var/update = 0
 
 	//Focus half the blast on one organ
-	var/datum/limb/take_blast = pick(limbs)
+	var/obj/limb/take_blast = pick(limbs)
 	update |= take_blast.take_damage(b_loss * 0.5, f_loss * 0.5, used_weapon = "Explosive blast")
 
 	//Distribute the remaining half all limbs equally
@@ -178,7 +175,7 @@
 
 	var/weapon_message = "Explosive Blast"
 
-	for(var/datum/limb/temp in limbs)
+	for(var/obj/limb/temp in limbs)
 		switch(temp.name)
 			if("head")
 				update |= temp.take_damage(b_loss * 0.2, f_loss * 0.2, used_weapon = weapon_message)
@@ -218,7 +215,7 @@
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [M.name] ([M.ckey])</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
 		var/dam_zone = pick("chest", "l_hand", "r_hand", "l_leg", "r_leg")
-		var/datum/limb/affecting = get_limb(ran_zone(dam_zone))
+		var/obj/limb/affecting = get_limb(ran_zone(dam_zone))
 		var/armor = run_armor_check(affecting, ARMOR_MELEE)
 		apply_damage(damage, BRUTE, affecting, armor)
 		if(armor >= 2)	return
@@ -230,14 +227,14 @@
 	var/obj/item/implant/loyalty/L = new/obj/item/implant/loyalty(M)
 	L.imp_in = M
 	L.implanted = 1
-	var/datum/limb/affected = M.get_limb("head")
+	var/obj/limb/affected = M.get_limb("head")
 	affected.implants += L
 	L.part = affected
 
 /mob/living/carbon/human/proc/is_loyalty_implanted(mob/living/carbon/human/M)
 	for(var/L in M.contents)
 		if(istype(L, /obj/item/implant/loyalty))
-			for(var/datum/limb/O in M.limbs)
+			for(var/obj/limb/O in M.limbs)
 				if(L in O.implants)
 					return TRUE
 	return FALSE
@@ -347,7 +344,7 @@
 
 //Returns "Unknown" if facially disfigured and real_name if not. Useful for setting name when polyacided or when updating a human's name variable
 /mob/living/carbon/human/proc/get_face_name()
-	var/datum/limb/head/head = get_limb("head")
+	var/obj/limb/head/head = get_limb("head")
 	if(!head || head.disfigured || (head.status & LIMB_DESTROYED) || !real_name)	//disfigured. use id-name if possible
 		return "Unknown"
 	return real_name
@@ -375,7 +372,7 @@
 	if(!def_zone)
 		def_zone = pick("l_hand", "r_hand")
 
-	var/datum/limb/affected_organ = get_limb(check_zone(def_zone))
+	var/obj/limb/affected_organ = get_limb(check_zone(def_zone))
 	var/siemens_coeff = base_siemens_coeff * get_siemens_coefficient_organ(affected_organ)
 
 	return ..(shock_damage, source, siemens_coeff, def_zone)
@@ -915,7 +912,7 @@
 	return gender
 
 /mob/living/carbon/human/revive(keep_viruses)
-	for(var/datum/limb/O in limbs)
+	for(var/obj/limb/O in limbs)
 		if(O.status & LIMB_ROBOT)
 			O.status = LIMB_ROBOT
 		else
@@ -925,7 +922,7 @@
 		O.heal_damage(1000,1000,1,1)
 		O.reset_limb_surgeries()
 
-	var/datum/limb/head/h = get_limb("head")
+	var/obj/limb/head/h = get_limb("head")
 	h.disfigured = 0
 	name = get_visible_name()
 
@@ -978,7 +975,7 @@
 		return
 
 	for(var/obj/item/W in embedded_items)
-		var/datum/limb/organ = W.embedded_organ
+		var/obj/limb/organ = W.embedded_organ
 		// Check if shrapnel
 		if(istype(W, /obj/item/shard/shrapnel))
 			var/obj/item/shard/shrapnel/embedded = W
@@ -1298,13 +1295,13 @@
 		cur_hand = "r_hand"
 
 	if(!HS.action_busy)
-		var/list/datum/limb/to_splint = list()
+		var/list/obj/limb/to_splint = list()
 		var/same_arm_side = FALSE // If you are trying to splint yourself, need opposite hand to splint an arm/hand
 		if(HS.get_limb(cur_hand).status & LIMB_DESTROYED)
 			to_chat(HS, SPAN_WARNING("You cannot remove splints without a hand."))
 			return
 		for(var/bodypart in list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin"))
-			var/datum/limb/l = HT.get_limb(bodypart)
+			var/obj/limb/l = HT.get_limb(bodypart)
 			if(l && l.status & LIMB_SPLINTED)
 				if(HS == HT)
 					if((bodypart in list("l_arm", "l_hand")) && (cur_hand == "l_hand"))
@@ -1330,7 +1327,7 @@
 					var/obj/item/stack/W = new /obj/item/stack/medical/splint(HS.loc)
 					W.amount = 0 //we checked that we have at least one bodypart splinted, so we can create it no prob. Also we need amount to be 0
 					W.add_fingerprint(HS)
-					for(var/datum/limb/l in to_splint)
+					for(var/obj/limb/l in to_splint)
 						amount_removed += 1
 						l.status &= ~LIMB_SPLINTED
 						if(!W.add(1))

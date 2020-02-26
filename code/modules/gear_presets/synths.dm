@@ -10,7 +10,7 @@
 
 /datum/equipment_preset/synth/load_race(mob/living/carbon/human/H)
 	if(!H.client || !H.client.prefs || !H.client.prefs.synthetic_type)
-		H.set_species("Early Synthetic")
+		H.set_species("Synthetic")
 	else
 		H.set_species(H.client.prefs.synthetic_type)
 

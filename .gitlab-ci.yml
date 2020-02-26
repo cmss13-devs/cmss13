@@ -6,7 +6,7 @@ stages:
 
 variables:
   BYOND_MAJOR: "513"
-  BYOND_MINOR: "1503"
+  BYOND_MINOR: "1510"
 
 before_script:
   - apt-get update -qq

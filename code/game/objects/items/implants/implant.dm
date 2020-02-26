@@ -8,7 +8,7 @@
 	icon_state = "implant"
 	var/implanted = null
 	var/mob/imp_in = null
-	var/datum/limb/part = null
+	var/obj/limb/part = null
 	var/implant_color= "b"
 	var/allow_reagents = 0
 	var/malfunction = 0
@@ -178,9 +178,9 @@ Implant Specifics:<BR>"}
 						imp_in.visible_message(SPAN_DANGER(malf_msg))
 						playsound(loc, 'sound/items/countdown.ogg', 25, 1, 6)
 						sleep(25)
-						if (istype(part,/datum/limb/chest) ||	\
-							istype(part,/datum/limb/groin) ||	\
-							istype(part,/datum/limb/head))
+						if (istype(part,/obj/limb/chest) ||	\
+							istype(part,/obj/limb/groin) ||	\
+							istype(part,/obj/limb/head))
 							part.createwound(BRUISE, 60)	//mangle them instead
 							explosion(get_turf(imp_in), -1, -1, 2, 3)
 							qdel(src)
@@ -243,9 +243,9 @@ Implant Specifics:<BR>"}
 				if (ishuman(imp_in) && part)
 					//No tearing off these parts since it's pretty much killing
 					//and you can't replace groins
-					if (istype(part,/datum/limb/chest) ||	\
-						istype(part,/datum/limb/groin) ||	\
-						istype(part,/datum/limb/head))
+					if (istype(part,/obj/limb/chest) ||	\
+						istype(part,/obj/limb/groin) ||	\
+						istype(part,/obj/limb/head))
 						part.createwound(BRUISE, 60)	//mangle them instead
 					else
 						part.droplimb(0, 0, "dismemberment")

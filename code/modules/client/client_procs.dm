@@ -180,6 +180,7 @@
 	if(!prefs || isnull(prefs) || !istype(prefs))
 		prefs = new /datum/preferences(src)
 		preferences_datums[ckey] = prefs
+	prefs.owner = src
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
 	fps = prefs.fps
@@ -253,6 +254,11 @@
 	if(soundOutput)
 		qdel(soundOutput)
 		soundOutput = null
+
+	if(prefs)
+		prefs.owner = null
+		qdel(prefs.preview_dummy)
+		prefs.preview_dummy = null
 
 	if(admin_holder)
 		admin_holder.owner = null

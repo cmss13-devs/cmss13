@@ -95,7 +95,7 @@
 		H.KnockDown(1)
 		H.last_damage_mob = source_mob
 		H.last_damage_source = source_name
-		var/datum/limb/affecting = H.get_limb("l_foot")
+		var/obj/limb/affecting = H.get_limb("l_foot")
 		if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(5, 10)))
 			H.UpdateDamageIcon()
 		affecting = H.get_limb("r_foot")
@@ -163,7 +163,7 @@
 			to_chat(H, SPAN_DANGER("Your feet scald and burn!"))
 			H.emote("pain")
 			H.KnockDown(0.1)
-			var/datum/limb/affecting = H.get_limb("l_foot")
+			var/obj/limb/affecting = H.get_limb("l_foot")
 			H.last_damage_mob = source_mob
 			H.last_damage_source = source_name
 			if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(2, 7)))

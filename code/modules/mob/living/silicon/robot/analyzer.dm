@@ -63,7 +63,7 @@
 		var/list/damaged = H.get_damaged_limbs(1,1)
 		user.show_message(SPAN_NOTICE("Localized Damage, Brute/Electronics:"),1)
 		if(length(damaged)>0)
-			for(var/datum/limb/org in damaged)
+			for(var/obj/limb/org in damaged)
 				var/msg_display_name = "[capitalize(org.display_name)]" // Here for now until we purge this useless shitcode
 				var/msg_brute_dmg = "[(org.brute_dam > 0)	?	SPAN_DANGER("[org.brute_dam]") : "0"]"
 				var/msg_burn_dmg = "[(org.brute_dam > 0)	?	SPAN_DANGER("[org.brute_dam]") : "0"]"

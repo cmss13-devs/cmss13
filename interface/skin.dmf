@@ -986,3 +986,33 @@ window "infowindow"
 		on-show = ".winset\"rpane.infob.is-visible=true;rpane.browseb.is-visible=true?rpane.infob.pos=130,0:rpane.infob.pos=65,0 rpane.textb.is-visible=true rpane.infob.is-checked=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=infowindow\""
 		on-hide = ".winset\"rpane.infob.is-visible=false;rpane.browseb.is-visible=true?rpane.browseb.is-checked=true rpane.rpanewindow.left=browserwindow:rpane.textb.is-visible=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=\""
 
+window "preferencewindow"
+	elem "preferencewindow"
+		type = MAIN
+		pos = 394,62
+		size = 660x750
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		is-visible = false
+		saved-params = "pos;size;is-minimized;is-maximized"
+		statusbar = false
+		outer-size = 676x789
+		inner-size = 660x750
+	elem "preferencebrowser"
+		type = BROWSER
+		pos = 0,240
+		size = 660x518
+		anchor1 = 0,100
+		anchor2 = none
+		background-color = none
+		saved-params = ""
+	elem "preview"
+		type = MAP
+		pos = 0,-10
+		size = 672x250
+		anchor1 = 0,0
+		anchor2 = 100,0
+		right-click = true
+		saved-params = "zoom;letterbox;zoom-mode"
+

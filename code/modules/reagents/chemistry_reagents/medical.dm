@@ -419,7 +419,7 @@
 	if(!.) return
 	if(!isYautja(M)) return
 	var/mob/living/carbon/human/Y = M
-	for(var/datum/limb/L in Y.limbs)
+	for(var/obj/limb/L in Y.limbs)
 		if(L.time_to_knit && (L.status & LIMB_BROKEN))
 			if(L.knitting_time > 0) break // only one knits at a time
 			if(L.knitting_time == -1)

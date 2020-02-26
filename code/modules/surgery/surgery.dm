@@ -46,11 +46,11 @@
 
 
 //Checks whether this step can be applied with the given user and target
-/datum/surgery_step/proc/can_use(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/limb/affected, only_checks)
+/datum/surgery_step/proc/can_use(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, obj/limb/affected, only_checks)
 	return FALSE
 
 //Does stuff to begin the step, usually just printing messages. Moved germs transfering and bloodying here too
-/datum/surgery_step/proc/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
+/datum/surgery_step/proc/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	if(ishuman(user) && prob(60))
 		var/mob/living/carbon/human/H = user
 		if(blood_level)
@@ -60,11 +60,11 @@
 	return
 
 //Does stuff to end the step, which is normally print a message + do whatever this step changes
-/datum/surgery_step/proc/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
+/datum/surgery_step/proc/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	return
 
 //Stuff that happens when the step fails
-/datum/surgery_step/proc/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
+/datum/surgery_step/proc/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	return null
 
 proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
@@ -77,7 +77,7 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 	if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_BEGINNER))
 		to_chat(user, SPAN_WARNING("You have no idea how to do surgery..."))
 		return TRUE
-	var/datum/limb/affected = M.get_limb(user.zone_selected)
+	var/obj/limb/affected = M.get_limb(user.zone_selected)
 	if(!affected)
 		return FALSE
 	if(affected.in_surgery_op) //two surgeons can't work on same limb at same time

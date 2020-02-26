@@ -3,7 +3,7 @@ Contains most of the procs that are called when a mob is attacked by something
 */
 
 /mob/living/carbon/human/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone)
-	var/datum/limb/affected = get_limb(check_zone(def_zone))
+	var/obj/limb/affected = get_limb(check_zone(def_zone))
 	var/siemens_coeff = get_siemens_coefficient_organ(affected)
 	stun_amount *= siemens_coeff
 	agony_amount *= siemens_coeff
@@ -37,20 +37,20 @@ Contains most of the procs that are called when a mob is attacked by something
 	if(def_zone)
 		if(isorgan(def_zone))
 			return getarmor_organ(def_zone, type)
-		var/datum/limb/affecting = get_limb(def_zone)
+		var/obj/limb/affecting = get_limb(def_zone)
 		return getarmor_organ(affecting, type)
 		//If a specific bodypart is targetted, check how that bodypart is protected and return the value.
 
 	//If you don't specify a bodypart, it checks ALL your bodyparts for protection, and averages out the values
 	for(var/X in limbs)
-		var/datum/limb/E = X
+		var/obj/limb/E = X
 		var/weight = organ_rel_size[E.name]
 		armorval += getarmor_organ(E, type) * weight
 		total += weight
 	return (armorval/max(total, 1))
 
 //this proc returns the Siemens coefficient of electrical resistivity for a particular external organ.
-/mob/living/carbon/human/proc/get_siemens_coefficient_organ(var/datum/limb/def_zone)
+/mob/living/carbon/human/proc/get_siemens_coefficient_organ(var/obj/limb/def_zone)
 	if (!def_zone)
 		return 1.0
 
@@ -64,7 +64,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	return siemens_coefficient
 
 //this proc returns the armour value for a particular external organ.
-/mob/living/carbon/human/proc/getarmor_organ(var/datum/limb/def_zone, var/type)
+/mob/living/carbon/human/proc/getarmor_organ(var/obj/limb/def_zone, var/type)
 	if(!type)	return 0
 	var/protection = 0
 	var/list/protective_gear = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes)
@@ -111,7 +111,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	for(var/obj/O in src)
 		if(!O)	continue
 		O.emp_act(severity)
-	for(var/datum/limb/O in limbs)
+	for(var/obj/limb/O in limbs)
 		if(O.status & LIMB_DESTROYED)	continue
 		O.emp_act(severity)
 		for(var/datum/internal_organ/I in O.internal_organs)
@@ -134,7 +134,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		visible_message(SPAN_DANGER("[user] misses [src] with \the [I]!"), null, null, 5)
 		return 0
 
-	var/datum/limb/affecting = get_limb(target_zone)
+	var/obj/limb/affecting = get_limb(target_zone)
 	if (!affecting)
 		return 0
 	if(affecting.status & LIMB_DESTROYED)
@@ -260,7 +260,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	if ((O.thrower != src) && check_shields(impact_damage, "[O]"))
 		return
 
-	var/datum/limb/affecting = get_limb(zone)
+	var/obj/limb/affecting = get_limb(zone)
 	var/hit_area = affecting.display_name
 
 	src.visible_message(SPAN_DANGER("[src] has been hit in the [hit_area] by [O]."), null, null, 5)

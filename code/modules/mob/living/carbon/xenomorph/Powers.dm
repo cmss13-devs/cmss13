@@ -386,7 +386,7 @@
 	if(H.status_flags & XENO_HOST)
 		to_chat(src, SPAN_XENOWARNING("This would harm the embryo!"))
 		return
-	var/datum/limb/L = H.get_limb(check_zone(zone_selected))
+	var/obj/limb/L = H.get_limb(check_zone(zone_selected))
 
 	if(!L || (L.status & LIMB_DESTROYED))
 		return
@@ -519,7 +519,7 @@
 		return FALSE
 
 	var/mob/living/carbon/human/H = M
-	var/datum/limb/L = H.get_limb(check_zone(zone_selected))
+	var/obj/limb/L = H.get_limb(check_zone(zone_selected))
 
 	if(!L || L.body_part == BODY_FLAG_CHEST || L.body_part == BODY_FLAG_GROIN || (L.status & LIMB_DESTROYED)) //Only limbs and head.
 		to_chat(src, SPAN_XENOWARNING("You can't rip off that limb."))

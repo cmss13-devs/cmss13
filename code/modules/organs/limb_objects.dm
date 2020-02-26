@@ -100,10 +100,6 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 	if(brainmob && brainmob.client)
 		brainmob.client.screen.len = null //clear the hud
 
-	//if(ishuman(H))
-	//	if(H.gender == FEMALE)
-	//		H.icon_state = "head_f"
-	//	H.overlays += H.generate_head_icon()
 	transfer_identity(H)
 
 	name = "[H.real_name]'s head"

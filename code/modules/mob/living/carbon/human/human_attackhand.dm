@@ -94,7 +94,7 @@
 				visible_message(SPAN_DANGER("[M] tried to [pick(attack.attack_verb)] [src]!"), null, null, 5)
 				return
 
-			var/datum/limb/affecting = get_limb(ran_zone(M.zone_selected))
+			var/obj/limb/affecting = get_limb(ran_zone(M.zone_selected))
 			var/armor = getarmor(affecting, ARMOR_MELEE)
 			var/armor_block = run_armor_check(affecting, ARMOR_MELEE)
 
@@ -121,7 +121,7 @@
 
 			if(w_uniform)
 				w_uniform.add_fingerprint(M)
-			var/datum/limb/affecting = get_limb(ran_zone(M.zone_selected))
+			var/obj/limb/affecting = get_limb(ran_zone(M.zone_selected))
 
 			//Accidental gun discharge
 			if(!skillcheck(M, SKILL_CQC, SKILL_CQC_MP))
@@ -202,7 +202,7 @@
 		visible_message(SPAN_NOTICE("[src] examines [gender==MALE?"himself":"herself"]."), \
 			SPAN_NOTICE("You check yourself for injuries."), null, 3)
 
-		for(var/datum/limb/org in limbs)
+		for(var/obj/limb/org in limbs)
 			var/status = ""
 			var/brutedamage = org.brute_dam
 			var/burndamage = org.burn_dam

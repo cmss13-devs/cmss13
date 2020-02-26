@@ -117,8 +117,6 @@
 				if(3.0)
 					dat += "<CENTER><B>Security Record</B></CENTER><BR>"
 					if ((istype(active1, /datum/data/record) && data_core.general.Find(active1)))
-						user << browse_rsc(active1.fields["photo_front"], "front.png")
-						user << browse_rsc(active1.fields["photo_side"], "side.png")
 						dat += text("<table><tr><td>	\
 						Name: <A href='?src=\ref[src];choice=Edit Field;field=name'>[active1.fields["name"]]</A><BR> \
 						ID: <A href='?src=\ref[src];choice=Edit Field;field=id'>[active1.fields["id"]]</A><BR>\n \
@@ -480,14 +478,6 @@ What a mess.*/
 							if (!t1 || active1 != a1)
 								return
 							active1.fields["species"] = t1
-					if("photo front")
-						var/icon/photo = get_photo(usr)
-						if(photo)
-							active1.fields["photo_front"] = photo
-					if("photo side")
-						var/icon/photo = get_photo(usr)
-						if(photo)
-							active1.fields["photo_side"] = photo
 
 
 //TEMPORARY MENU FUNCTIONS

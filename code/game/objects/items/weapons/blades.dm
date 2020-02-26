@@ -161,7 +161,7 @@
 
 	var/no_shards = TRUE
 	for (var/obj/item/shard/S in embedded_human.embedded_items)
-		var/datum/limb/organ = S.embedded_organ
+		var/obj/limb/organ = S.embedded_organ
 		to_chat(embedded_human, SPAN_NOTICE("You remove [S] from the [organ.display_name]."))
 		S.loc = embedded_human.loc
 		organ.implants -= S

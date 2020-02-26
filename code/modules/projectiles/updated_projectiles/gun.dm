@@ -369,7 +369,7 @@
 	if(ishuman(user))
 		var/check_hand = user.r_hand == src ? "l_hand" : "r_hand"
 		var/mob/living/carbon/human/wielder = user
-		var/datum/limb/hand = wielder.get_limb(check_hand)
+		var/obj/limb/hand = wielder.get_limb(check_hand)
 		if(!istype(hand) || !hand.is_usable())
 			to_chat(user, SPAN_WARNING("Your other hand can't hold \the [src]!"))
 			return

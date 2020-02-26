@@ -600,7 +600,7 @@
 	if(!istype(user)) return
 	if(isYautja(usr)) return
 
-	var/datum/limb/O = user.get_limb(check_zone("r_arm"))
+	var/obj/limb/O = user.get_limb(check_zone("r_arm"))
 	O.droplimb()
 	O = user.get_limb(check_zone("l_arm"))
 	O.droplimb()
@@ -652,7 +652,7 @@
 			to_chat(user, SPAN_WARNING("Your hand must be free to activate your wrist blade!"))
 			return
 
-		var/datum/limb/hand = user.get_limb(user.hand ? "l_hand" : "r_hand")
+		var/obj/limb/hand = user.get_limb(user.hand ? "l_hand" : "r_hand")
 		if(!istype(hand) || !hand.is_usable())
 			to_chat(user, SPAN_WARNING("You can't hold that!"))
 			return
@@ -783,7 +783,7 @@
 		for(var/mob/O in oviewers(M))
 			O.show_message("[M] vanishes into thin air!",1)
 		playsound(M.loc,'sound/effects/pred_cloakon.ogg', 15, 1)
-		M.alpha = 10
+		M.alpha = 25
 
 		var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
 		SA.remove_from_hud(M)
@@ -1552,7 +1552,7 @@
 		X.interference = 30
 	if(ishuman(target)) //Slicey dicey!
 		if(prob(14))
-			var/datum/limb/affecting
+			var/obj/limb/affecting
 			var/mob/living/carbon/human/H = target
 			affecting = H.get_limb(ran_zone(user.zone_selected,60))
 			if(!affecting)

@@ -167,7 +167,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 	visible_message(SPAN_DANGER("[src] reaches down, angling its body toward [H], claws outstretched."),
 	SPAN_XENONOTICE("You stoop near the host's body, savoring the moment before you claim a trophy for your kill. You must stand still..."))
 	if(do_after(src, PREDALIEN_BUTCHER_WAIT_TIME, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && Adjacent(H))
-		var/datum/limb/head/O = H.get_limb("head")
+		var/obj/limb/head/O = H.get_limb("head")
 		if(!(O.status & LIMB_DESTROYED))
 			H.apply_damage(150, BRUTE, "head", FALSE, TRUE, TRUE)
 			if(!(O.status & LIMB_DESTROYED)) O.droplimb(0, 0, initial(name)) //Still not actually detached?

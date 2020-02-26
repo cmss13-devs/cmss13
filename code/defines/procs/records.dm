@@ -1,8 +1,6 @@
 /proc/CreateGeneralRecord()
 	var/mob/living/carbon/human/dummy = new()
 	dummy.mind = new()
-	var/icon/front = new(get_id_photo(dummy), dir = SOUTH)
-	var/icon/side = new(get_id_photo(dummy), dir = WEST)
 	var/datum/data/record/G = new /datum/data/record()
 	G.fields["name"] = "New Record"
 	G.fields["id"] = text("[]", add_zero(num2hex(rand(1, 1.6777215E7)), 6))
@@ -18,8 +16,6 @@
 	G.fields["citizenship"]	= "Unknown"
 	G.fields["faction"]		= "Unknown"
 	G.fields["religion"]	= "Unknown"
-	G.fields["photo_front"]	= front
-	G.fields["photo_side"]	= side
 	data_core.general += G
 
 	qdel(dummy)

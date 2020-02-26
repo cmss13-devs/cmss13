@@ -111,30 +111,30 @@
 	H.internal_organs_by_name = list()
 
 	//This is a basic humanoid limb setup.
-	var/datum/limb/chest/C = new(null, H)
+	var/obj/limb/chest/C = new(null, H)
 	H.limbs += C
-	var/datum/limb/groin/G = new(C, H)
+	var/obj/limb/groin/G = new(C, H)
 	H.limbs += G
-	H.limbs += new/datum/limb/head(C, H)
-	var/datum/limb/arm/l_arm/LA = new(C, H)
+	H.limbs += new/obj/limb/head(C, H)
+	var/obj/limb/arm/l_arm/LA = new(C, H)
 	H.limbs += LA
-	var/datum/limb/arm/r_arm/RA = new(C, H)
+	var/obj/limb/arm/r_arm/RA = new(C, H)
 	H.limbs += RA
-	var/datum/limb/leg/l_leg/LL = new(G, H)
+	var/obj/limb/leg/l_leg/LL = new(G, H)
 	H.limbs += LL
-	var/datum/limb/leg/r_leg/RL = new(G, H)
+	var/obj/limb/leg/r_leg/RL = new(G, H)
 	H.limbs += RL
-	H.limbs +=  new/datum/limb/hand/l_hand(LA, H)
-	H.limbs +=  new/datum/limb/hand/r_hand(RA, H)
-	H.limbs +=  new/datum/limb/foot/l_foot(LL, H)
-	H.limbs +=  new/datum/limb/foot/r_foot(RL, H)
+	H.limbs +=  new/obj/limb/hand/l_hand(LA, H)
+	H.limbs +=  new/obj/limb/hand/r_hand(RA, H)
+	H.limbs +=  new/obj/limb/foot/l_foot(LL, H)
+	H.limbs +=  new/obj/limb/foot/r_foot(RL, H)
 
 	for(var/organ in has_organ)
 		var/organ_type = has_organ[organ]
 		H.internal_organs_by_name[organ] = new organ_type(H)
 
 	if(flags & IS_SYNTHETIC)
-		for(var/datum/limb/E in H.limbs)
+		for(var/obj/limb/E in H.limbs)
 			if(E.status & LIMB_DESTROYED) continue
 			E.status |= LIMB_ROBOT
 		for(var/datum/internal_organ/I in H.internal_organs)
@@ -634,7 +634,7 @@
 	A.add_to_hud(H)
 	H.blood_type = pick("A+","A-","B+","B-","O-","O+","AB+","AB-")
 	yautja_mob_list -= H
-	for(var/datum/limb/L in H.limbs)
+	for(var/obj/limb/L in H.limbs)
 		switch(L.name)
 			if("groin","chest")
 				L.min_broken_damage = 40
@@ -656,7 +656,7 @@
 
 	H.blood_type = "Y*"
 	yautja_mob_list += H
-	for(var/datum/limb/L in H.limbs)
+	for(var/obj/limb/L in H.limbs)
 		switch(L.name)
 			if("groin","chest")
 				L.min_broken_damage = 80
@@ -906,7 +906,7 @@
 		return FALSE
 
 	// Check if they have a functioning hand.
-	var/datum/limb/E = user.get_limb("l_hand")
+	var/obj/limb/E = user.get_limb("l_hand")
 	if(E && !(E.status & LIMB_DESTROYED))
 		return TRUE
 

@@ -87,8 +87,9 @@
 		anchored = 1
 		icon_state = "yauttrap[armed]"
 		to_chat(user, SPAN_NOTICE("[src] is now armed."))
+		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] has armed \the [src] at [get_location_in_text(user)].</font>")
+		log_attack("[key_name(user)] has armed \a [src] at [get_location_in_text(user)].")
 		user.drop_held_item()
-
 
 /obj/item/legcuffs/yautja/attack_hand(mob/living/carbon/human/user)
 	if(isYautja(user))
@@ -96,6 +97,8 @@
 		anchored = 0
 		icon_state = "yauttrap[armed]"
 		to_chat(user, SPAN_NOTICE("[src] is now disarmed."))
+		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] has disarmed \the [src] at [get_location_in_text(user)].</font>")
+		log_attack("[key_name(user)] has disarmed \a [src] at [get_location_in_text(user)].")
 	//Humans and synths don't know how to handle those traps!
 	if(isHumanSynthStrict(user))
 		if(armed)
@@ -115,6 +118,8 @@
 		H.legcuff_update()
 		playsound(H,'sound/weapons/tablehit1.ogg', 25, 1)
 		to_chat(H, "[htmlicon(src, H)] \red <B>You get caught in \the [src]!</B>")
+		H.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(H)] was caught in \a [src] at [get_location_in_text(H)].</font>")
+		log_attack("[key_name(H)] was caught in \a [src] at [get_location_in_text(H)].")
 		H.KnockDown(4)
 		if(ishuman(H))
 			H.emote("pain")

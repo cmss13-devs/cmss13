@@ -102,7 +102,9 @@
 			if(M.client && M.client.admin_holder && AHOLD_IS_MOD(M.client.admin_holder) && (M.client.prefs.toggles_chat & CHAT_DEAD)) // Show the emote to admins/mods
 				to_chat(M, message)
 
-			else if(M.stat == DEAD && (M.client.prefs.toggles_chat & CHAT_DEAD)) // Show the emote to regular ghosts with deadchat toggled on
+			else if(M.stat == DEAD)
+				if(M.client.prefs && !(M.client.prefs.toggles_chat & CHAT_DEAD))
+					continue
 				M.show_message(message, 2)
 
 /mob/living/carbon/verb/show_emotes()

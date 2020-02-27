@@ -33,21 +33,21 @@
 	else
 		to_chat(src, "No matches for that age range found.")
 
-proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
-	if(automute)
-		if(!config.automute_on)	return
+/proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
+	if(automute && !(config.automute_on))
+		return FALSE
+	if(!M.client)
+		to_chat(usr, SPAN_WARNING("This mob doesn't have a client tied to it."))
+		return FALSE
 	else
 		if(!usr || !usr.client)
-			return
+			return FALSE
 		if(!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
-			to_chat(usr, "<font color='red'>Error: cmd_admin_mute: You don't have permission to do this.</font>")
-			return
-		if(!M.client)
-			to_chat(usr, "<font color='red'>Error: cmd_admin_mute: This mob doesn't have a client tied to it.</font>")
+			to_chat(usr, SPAN_WARNING("Error: You don't have permission to do this."))
+			return FALSE
 		if(M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
-			to_chat(usr, "<font color='red'>Error: cmd_admin_mute: You cannot mute an admin/mod.</font>")
-	if(!M.client)		return
-	if(M.client.admin_holder || !(M.client.admin_holder.rights & R_MOD))	return
+			to_chat(usr, SPAN_WARNING("Error: You cannot mute an admin/mod."))
+			return FALSE
 
 	var/muteunmute
 	var/mute_string
@@ -59,7 +59,7 @@ proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
 		if(MUTE_ADMINHELP)	mute_string = "adminhelp, admin PM and ASAY"
 		if(MUTE_DEADCHAT)	mute_string = "deadchat and DSAY"
 		if(MUTE_ALL)		mute_string = "everything"
-		else				return
+		else				return FALSE
 
 	if(automute)
 		muteunmute = "auto-muted"
@@ -67,7 +67,7 @@ proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
 		message_admins("SPAM AUTOMUTE: [muteunmute] [key_name_admin(M)] from [mute_string].", 1)
 		to_chat(M, "You have been [muteunmute] from [mute_string] by the SPAM AUTOMUTE system. Contact an admin.")
 		 
-		return
+		return FALSE
 
 	if(M.client.prefs.muted & mute_type)
 		muteunmute = "unmuted"

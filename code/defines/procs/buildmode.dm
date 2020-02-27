@@ -181,7 +181,8 @@
 		if(H.cl == user.client)
 			holder = H
 			break
-	if(!holder) return
+	if(!holder || !object) 
+		return
 
 	switch(buildmode)
 		if(1)

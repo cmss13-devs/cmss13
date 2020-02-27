@@ -452,7 +452,8 @@
 		return -1
 	if(!(0 in level))
 		var/turf/position = get_turf(src)
-
+		if(!position)
+			return FALSE
 		var/receive_z = position.z
 		// Use vehicle's z if we're inside a vehicle interior
 		if(interior_manager && position.z == interior_manager.interior_z)

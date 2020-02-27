@@ -121,7 +121,7 @@
 				type = alt_type
 				if (type & 1 && (sdisabilities & BLIND))
 					return
-	if(message_flags == CHAT_TYPE_OTHER || (message_flags & client.prefs.chat_display_preferences) > 0) // or logic between types
+	if(message_flags == CHAT_TYPE_OTHER || client.prefs && (message_flags & client.prefs.chat_display_preferences) > 0) // or logic between types
 		if(stat == UNCONSCIOUS)
 			to_chat(src, "<I>... You can almost hear someone talking ...</I>")
 		else

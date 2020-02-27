@@ -369,7 +369,11 @@
 				if(!lines.len)
 					return
 				if(copytext(lines[1],1,6) == "BPM: ")
-					tempo = 600 / text2num(copytext(lines[1],6))
+					tempo = text2num(copytext(lines[1],6))
+					if(tempo)
+						tempo = 600 / tempo
+					else
+						tempo = 5 
 					lines.Cut(1,2)
 				if(lines.len > max_lines)
 					to_chat(usr, "Too many lines!")

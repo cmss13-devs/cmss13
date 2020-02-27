@@ -64,7 +64,7 @@
 		if(!M.buckled && ishuman(M))
 			var/mob/living/carbon/human/H = M
 
-			if(H.species.flags & IS_SYNTHETIC || H.species.insulated)
+			if(!H.species || H.species.flags & IS_SYNTHETIC || H.species.insulated)
 				return
 
 			if(!H.shoes && (!H.wear_suit || !(H.wear_suit.flags_armor_protection & BODY_FLAG_FEET)))

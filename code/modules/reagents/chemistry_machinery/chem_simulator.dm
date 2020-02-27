@@ -350,10 +350,11 @@
 	simulations += C.id //Remember we've simulated this
 	chemical_research_data.update_credits(property_costs[target_property] * -1) //Pay
 	//Determined rarity of new components
-	C.gen_tier = max(min(C.chemclass, CHEM_CLASS_RARE),C.gen_tier,1)
+	C.gen_tier = max(min(C.chemclass, CHEM_CLASS_COMMON),C.gen_tier,1)
 	//Change a single component of the reaction
 	var/datum/chemical_reaction/generated/R = new /datum/chemical_reaction/generated
 	R.make_alike(chemical_reactions_list[target.data.id])
+	R.gen_tier = max(min(C.chemclass, CHEM_CLASS_COMMON),C.gen_tier,1)
 	var/list/old_reaction = R.required_reagents.Copy()
 	R.required_reagents -= pick(R.required_reagents)
 	for(var/i = 0, i <= 5, i++)

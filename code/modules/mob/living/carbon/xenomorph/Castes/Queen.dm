@@ -202,7 +202,7 @@
 /mob/living/carbon/Xenomorph/Queen/proc/can_spawn_larva()
 	return loc.z == 1 && hive_datum[hivenumber].stored_larva
 
-/mob/living/carbon/Xenomorph/Queen/proc/spawn_buried_larva(var/client/xeno_candidate)
+/mob/living/carbon/Xenomorph/Queen/proc/spawn_buried_larva(var/mob/xeno_candidate)
 	if(ovipositor && !is_mob_incapacitated(TRUE))
 		if(hive_datum[hivenumber].stored_larva && xeno_candidate)
 			var/mob/living/carbon/Xenomorph/Larva/new_xeno = new /mob/living/carbon/Xenomorph/Larva(loc)

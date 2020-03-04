@@ -568,6 +568,10 @@
 		/obj/item/weapon/gun/pistol,
 		/obj/item/ammo_magazine/pistol
 	)
+	cant_hold = list(
+		/obj/item/weapon/gun/pistol/smart,
+		/obj/item/ammo_magazine/pistol/smart
+	)
 
 /obj/item/storage/belt/gun/m4a3/New()
 	select_gamemode_skin(type)

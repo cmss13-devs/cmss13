@@ -916,14 +916,14 @@ Defined in conflicts.dm of the #defines folder.
 	//it makes stuff much worse when one handed
 	accuracy_unwielded_mod = -config.low_hit_accuracy_mult
 	recoil_unwielded_mod = config.low_recoil_value
-	scatter_unwielded_mod = config.low_scatter_value
+	scatter_unwielded_mod = config.min_scatter_value
 	//but at the same time you are slow when 2 handed
 	aim_speed_mod = config.slowdown_med
 
 
 /obj/item/attachable/stock/smg/collapsible/proc/apply_on_weapon(obj/item/weapon/gun/G)
 	if(activated)
-		scatter_unwielded_mod = config.low_scatter_value
+		scatter_unwielded_mod = config.min_scatter_value
 		size_mod = 1
 	else
 		scatter_unwielded_mod = -config.low_scatter_value + config.mlow_scatter_value

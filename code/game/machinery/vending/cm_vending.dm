@@ -2412,7 +2412,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("Quick Clot autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/quickclot, "black"),
 		list("Suxamorycin autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/suxamorycin, "black"),
 		list("Tramadol autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/tramadol, "black"),
-		list("Tricordrazine autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/tricordrazine, "black"),
+		list("Tricordrazine autoinjector", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/tricord, "black"),
 
 		list("Liquid Bottles", -1, null, null),
 		list("Bicaridine bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/bicaridine, "black"),
@@ -2446,7 +2446,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("Field Supplies", -1, null, null),
 		list("Advanced burn kit", round(scale * 7), /obj/item/stack/medical/advanced/ointment, "black"),
 		list("Advanced trauma kit", round(scale * 7), /obj/item/stack/medical/advanced/bruise_pack, "black"),
-		list("Hypospray", round(scale * 2), /obj/item/reagent_container/hypospray, "black"),
+		list("Hypospray", round(scale * 2), /obj/item/reagent_container/hypospray/tricordrazine, "black"),
 		list("Ointment", round(scale * 7), /obj/item/stack/medical/ointment, "black"),
 		list("Roll of gauze", round(scale * 7), /obj/item/stack/medical/bruise_pack, "black"),
 		list("Splints", round(scale * 7), /obj/item/stack/medical/splint, "black"),

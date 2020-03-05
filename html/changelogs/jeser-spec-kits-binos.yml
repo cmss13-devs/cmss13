@@ -1,0 +1,6 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - rscadd: "Added regular binoculars to Demolitionist, Pyrotechnician and Heavy Grenadier Specialist Kits."

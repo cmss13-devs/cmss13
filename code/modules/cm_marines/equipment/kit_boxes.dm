@@ -43,6 +43,7 @@
 		new /obj/item/ammo_magazine/pistol/vp78(src)
 		new /obj/item/explosive/plastique(src)
 		new /obj/item/explosive/plastique(src)
+		new /obj/item/device/binoculars(src)
 		update_icon()
 
 /obj/item/storage/box/spec/sniper
@@ -120,6 +121,7 @@
 		new /obj/item/weapon/gun/pistol/vp78(src)
 		new /obj/item/ammo_magazine/pistol/vp78(src)
 		new /obj/item/ammo_magazine/pistol/vp78(src)
+		new /obj/item/device/binoculars(src)
 		update_icon()
 
 /obj/item/storage/box/spec/heavy_grenadier
@@ -138,6 +140,7 @@
 		new /obj/item/weapon/gun/pistol/vp78(src)
 		new /obj/item/ammo_magazine/pistol/vp78(src)
 		new /obj/item/ammo_magazine/pistol/vp78(src)
+		new /obj/item/device/binoculars(src)
 		update_icon()
 
 //maybe put in req for later use?

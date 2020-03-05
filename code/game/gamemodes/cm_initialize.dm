@@ -290,14 +290,14 @@ Additional game mode variables.
 			picked_queen = new_queen
 			possible_xenomorphs -= new_queen
 
-
-	var/datum/mind/new_xeno
-
 	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
 
+	for(var/datum/mind/A in possible_xenomorphs)
+		if(A.roundstart_picked)
+			possible_xenomorphs -= A
 
+	var/datum/mind/new_xeno
 	for(var/i in 1 to xeno_starting_num) //While we can still pick someone for the role.
-
 		if(possible_xenomorphs.len) //We still have candidates
 			new_xeno = pick(possible_xenomorphs)
 			possible_xenomorphs -= new_xeno
@@ -516,7 +516,7 @@ Additional game mode variables.
 	var/list/datum/mind/possible_survivors = possible_human_survivors.Copy() //making a copy so we'd be able to distinguish between survivor types
 
 	for(var/datum/mind/A in possible_synth_survivors)
-		if(RoleAuthority.roles_whitelist[ckey(A.key)] & WHITELIST_SYNTHETIC)
+		if(RoleAuthority.roles_whitelist[ckey(A.key)] & WHITELIST_SYNTHETIC || !A.roundstart_picked)
 			if(A in possible_survivors)
 				continue //they are already applying to be a survivor
 			else
@@ -540,8 +540,8 @@ Additional game mode variables.
 				if(!new_survivor)
 					break  //We ran out of survivors!
 				if(!synth_survivor && new_survivor in possible_synth_survivors)
-					synth_survivor = new_survivor
 					new_survivor.roundstart_picked = TRUE
+					synth_survivor = new_survivor
 					monkey_amount += 5 //Extra smallhosts will be spawned to compensate the xenos for this survivor. Resolve this line once structures are resolved.
 				else if(new_survivor in possible_human_survivors) //so we don't draft people that want to be synth survivors but not normal survivors
 					new_survivor.roundstart_picked = TRUE

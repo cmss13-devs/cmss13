@@ -197,14 +197,13 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 	//PART II: Setting up our player variables and lists, to see if we have anyone to destribute.
 
 	unassigned_players  = new
-	var/mob/new_player/M
-
-
+	
 	var/good_age_min = 20//Best command candidates are in the 25 to 40 range.
 	var/good_age_max = 50
+	for(var/mob/new_player/M in player_list) //Get all players who are ready.
+		if(istype(M) && M.mind && M.mind.roundstart_picked)
+			continue
 
-	for(i in player_list) //Get all players who are ready.
-		M = i
 		if(istype(M) && M.ready && !M.job)
 			//TODO, check if mobs are already spawned as human before this triggers.
 			switch(M.client.prefs.age) //We need a weighted list for command positions.
@@ -231,8 +230,7 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 		assign_initial_roles(l, roles_command, 1) //Do command positions first.
 		roles_regular = assign_initial_roles(l, roles_regular) //The regular positions. We keep our unassigned pool between calls.
 
-	for(i in unassigned_players)
-		M = i
+	for(var/mob/new_player/M in unassigned_players)
 		switch(M.client.prefs.alternate_option)
 			if(GET_RANDOM_JOB) 	roles_regular = assign_random_role(M, roles_regular) //We want to keep the list between assignments.
 			if(BE_ASSISTANT)	assign_role(M, roles_for_mode[JOB_SQUAD_MARINE]) //Should always be available, in all game modes, as a candidate. Even if it may not be a marine.

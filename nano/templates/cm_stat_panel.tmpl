@@ -28,7 +28,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
 {{if data.menu == 1 && data.subMenu != 2}}
     <div class="item">
         {{:helper.link('General', null, {'dataMenu' : 0}, data.dataMenu == 0 ? 'selected' : null)}}
-        {{:helper.link('Kills', null, {'dataMenu' : 1}, data.dataMenu == 1 ? 'selected' : null)}}
         {{:helper.link('Deaths', null, {'dataMenu' : 2}, data.dataMenu == 2 ? 'selected' : null)}}
         {{if data.subMenu == 0}}
             {{:helper.link('Weapons', null, {'dataMenu' : 3}, data.dataMenu == 3 ? 'selected' : null)}}
@@ -284,24 +283,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                         <div class="itemContentSmallRight">
                             ({{:death_value.x}}, {{:death_value.y}}, {{:death_value.z}})
                         </div>
-                        <div class="itemLabelClear">
-                            Total Kills:
-                        </div>
-                        <div class="itemContentSmallRight">
-                            {{:death_value.total_kills}}
-                        </div>
-						<hr>
-                        <div class="itemLabelClearBoth">
-                            <b>Total Damage:</b>
-                        </div>
-                        {{props death_value.total_damage :damage_value:damage_index}}
-							<div class="itemLabelClear">
-								{{:damage_value.name}}:
-                            </div>
-                            <div class="itemContentSmallRight">
-                                {{:damage_value.value}}
-                            </div>
-                        {{/props}}
                     </fieldset>
                 {{/props}}
             {{else data.subMenu == 3}}
@@ -310,22 +291,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                         <div class="itemLabelClearBoth">
                             <b>{{:job_value.name}}</b>
                         </div>
-                        {{if job_value.total_kills}}
-                            <div class="itemLabelClear">
-                                Total Kills:
-                            </div>
-                            <div class="itemContentSmallRight">
-                                {{:job_value.total_kills}}
-                            </div>
-                        {{/if}}
-                        {{if job_value.total_deaths}}
-                            <div class="itemLabelClear">
-                                Total Deaths:
-                            </div>
-                            <div class="itemContentSmallRight">
-                                {{:job_value.total_deaths}}
-                            </div>
-                        {{/if}}
                         {{if job_value.total_shots}}
                             <div class="itemLabelClear">
                                 Total Shots:
@@ -382,28 +347,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                 {{:niche_value.value}}
                             </div>
                         {{/props}}
-                        {{if job_value.total_kills}}
-							<hr>
-                            <div class="itemLabelClearBoth">
-                                <b>Kills:</b>
-                            </div>
-                        {{/if}}
-                        {{props job_value.humans_killed :kill_value:kill_index}}
-							<div class="itemLabelClear">
-								{{:kill_value.name}}:
-							</div>
-                            <div class="itemContentSmallRight">
-                                {{:kill_value.value}}
-                            </div>
-                        {{/props}}
-                        {{props job_value.xenos_killed :kill_value:kill_index}}
-							<div class="itemLabelClear">
-								{{:kill_value.name}}:
-							</div>
-                            <div class="itemContentSmallRight">
-                                {{:kill_value.value}}
-                            </div>
-                        {{/props}}
                         {{if job_value.nemesis}}
                             <div class="itemLabelClearBoth">
                                 Nemesis:
@@ -411,12 +354,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                             <fieldset class="fieldContainerSpaced">
                                 <div class="itemLabelClearBoth">
                                     <b>{{:job_value.nemesis.name}}</b>
-                                </div>
-                                <div class="itemLabelClear">
-                                    Deaths:
-                                </div>
-                                <div class="itemContentSmallRight">
-                                    {{:job_value.nemesis.value}}
                                 </div>
                             </fieldset>
                         {{/if}}
@@ -428,50 +365,12 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                         <div class="itemLabelClearBoth">
                             <b>{{:caste_value.name}}<b>
                         </div>
-                        {{if caste_value.total_kills}}
-                            <div class="itemLabelClear">
-                                Total Kills:
-                            </div>
-                            <div class="itemContentSmallRight">
-                                {{:caste_value.total_kills}}
-                            </div>
-                        {{/if}}
-                        {{if caste_value.total_deaths}}
-                            <div class="itemLabelClear">
-                                Total Deaths:
-                            </div>
-                            <div class="itemContentSmallRight">
-                                {{:caste_value.total_deaths}}
-                            </div>
-                        {{/if}}
                         {{props caste_value.niche_stats :niche_value:niche_index}}
                             <div class="itemLabelClear">
                                 {{:niche_value.name}}:
                             </div>
                             <div class="itemContentSmallRight">
                                 {{:niche_value.value}}
-                            </div>
-                        {{/props}}
-                        {{if caste_value.total_kills}}
-							<hr>
-                            <div class="itemLabelClearBoth">
-                                <b>Kills:</b>
-                            </div>
-                        {{/if}}
-                        {{props caste_value.humans_killed :kill_value:kill_index}}
-							<div class="itemLabelClear">
-								{{:kill_value.name}}:
-							</div>
-                            <div class="itemContentSmallRight">
-                                {{:kill_value.value}}
-                            </div>
-                        {{/props}}
-                        {{props caste_value.xenos_killed :kill_value:kill_index}}
-							<div class="itemLabelClear">
-								{{:kill_value.name}}:
-							</div>
-                            <div class="itemContentSmallRight">
-                                {{:kill_value.value}}
                             </div>
                         {{/props}}
 						<hr>
@@ -494,12 +393,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                 <div class="itemLabelClearBoth">
                                     <b>{{:caste_value.nemesis.name}}</b>
                                 </div>
-                                <div class="itemLabelClear">
-                                    Deaths:
-                                </div>
-                                <div class="itemContentSmallRight">
-                                    {{:caste_value.nemesis.value}}
-                                </div>
                             </fieldset>
                         {{/if}}
                     </fieldset>
@@ -511,14 +404,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                             <div class="itemLabelClearBoth">
                                 <b>{{:value.name}}</b>
                             </div>
-                            {{if value.total_kills}}
-                                <div class="itemLabelClear">
-                                    Total Kills:
-                                </div>
-                                <div class="itemContentSmallRight">
-                                    {{:value.total_kills}}
-                                </div>
-                            {{/if}}
                             {{if value.total_hits}}
                                 <div class="itemLabelClear">
                                     Total Hits:
@@ -559,28 +444,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                     {{:niche_value.value}}
                                 </div>
                             {{/props}}
-                            {{if value.total_kills}}
-								<hr>
-                                <div class="itemLabelClearBoth">
-                                    <b>Kills:</b>
-                                </div>
-                                {{props value.humans_killed :kill_value:kill_index}}
-									<div class="itemLabelClear">
-										{{:kill_value.name}}:
-									</div>
-                                    <div class="itemContentSmallRight">
-                                        {{:kill_value.value}}
-                                    </div>
-                                {{/props}}
-                                {{props value.xenos_killed :kill_value:kill_index}}
-									<div class="itemLabelClear">
-										{{:kill_value.name}}:
-									</div>
-                                    <div class="itemContentSmallRight">
-                                        {{:kill_value.value}}
-                                    </div>
-                                {{/props}}
-                            {{/if}}
                         </fieldset>
                     </div>
                 {{/props}}
@@ -590,18 +453,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
         {{if data.subMenu == 0}}
             {{if data.human}}
                 {{if data.dataMenu == 0}}
-                    <div class="itemLabelClear">
-                        Total Kills:
-                    </div>
-                    <div class="itemContentSmallRight">
-                        {{:data.human.total_kills}}
-                    </div>
-                    <div class="itemLabelClear">
-                        Total Deaths:
-                    </div>
-                    <div class="itemContentSmallRight">
-                        {{:data.human.total_deaths}}
-                    </div>
                     <div class="itemLabelClear">
                         Total Playtime:
                     </div>
@@ -674,12 +525,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                             <div class="itemLabelClearBoth">
                                 <b>{{:data.human.top_weapon.name}}</b>
                             </div>
-                            <div class="itemLabelClear">
-                                Total Kills:
-                            </div>
-                            <div class="itemContentSmallRight">
-                                {{:data.human.top_weapon.total_kills}}
-                            </div>
                             {{if data.human.top_weapon.total_shots}}
                                 <div class="itemLabelClear">
                                     Total Shots:
@@ -722,37 +567,8 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                             <div class="itemLabelClearBoth">
                                 <b>{{:data.human.nemesis.name}}</b>
                             </div>
-                            <div class="itemLabelClear">
-                                Deaths:
-                            </div>
-                            <div class="itemContentSmallRight">
-                                {{:data.human.nemesis.value}}
-                            </div>
                         </fieldset>
                     {{/if}}
-                {{else data.dataMenu == 1}}
-                    <div class="itemLabelClear">
-                        Total Kills:
-                    </div>
-                    <div class="itemContentSmallRight">
-                        {{:data.human.total_kills}}
-                    </div>
-                    {{props data.human.humans_killed}}
-                        <div class="itemLabelClear">
-                            {{:value.name}}: 
-                        </div>
-                        <div class="itemContentSmallRight">
-                            {{:value.value}}
-                        </div>
-                    {{/props}}
-                    {{props data.human.xenos_killed}}
-                        <div class="itemLabelClear">
-                            {{:value.name}}:
-                        </div>
-                        <div class="itemContentSmallRight">
-                            {{:value.value}}
-                        </div>
-                    {{/props}}
                 {{else data.dataMenu == 2}}
                     {{props data.human.death_list :death_value:death_index}}
                         <fieldset class="fieldContainerSpaced">
@@ -797,24 +613,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                             <div class="itemContentSmallRight">
                                 ({{:death_value.x}}, {{:death_value.y}}, {{:death_value.z}})
                             </div>
-                            <div class="itemLabelClear">
-                                Total Kills:
-                            </div>
-                            <div class="itemContentSmallRight">
-                                {{:death_value.total_kills}}
-                            </div>
-							<hr>
-							<div class="itemLabelClearBoth">
-								<b>Total Damage:</b>
-							</div>
-							{{props death_value.total_damage :damage_value:damage_index}}
-								<div class="itemLabelClear">
-									{{:damage_value.name}}:
-								</div>
-								<div class="itemContentSmallRight">
-									{{:damage_value.value}}
-								</div>
-							{{/props}}
                         </fieldset>
                     {{/props}}
                 {{else data.dataMenu == 3}}
@@ -824,14 +622,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                 <div class="itemLabelClearBoth">
                                     <b>{{:value.name}}</b>
                                 </div>
-                                {{if value.total_kills}}
-                                    <div class="itemLabelClear">
-                                        Total Kills:
-                                    </div>
-                                    <div class="itemContentSmallRight">
-                                        {{:value.total_kills}}
-                                    </div>
-                                {{/if}}
                                 {{if value.total_hits}}
                                     <div class="itemLabelClear">
                                         Total Hits:
@@ -872,28 +662,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                         {{:niche_value.value}}
                                     </div>
                                 {{/props}}
-                                {{if value.total_kills}}
-									<hr>
-                                    <div class="itemLabelClearBoth">
-                                        <b>Kills:</b>
-                                    </div>
-                                    {{props value.humans_killed :kill_value:kill_index}}
-										<div class="itemLabelClear">
-											{{:kill_value.name}}:
-										</div>
-                                        <div class="itemContentSmallRight">
-                                            {{:kill_value.value}}
-                                        </div>
-                                    {{/props}}
-                                    {{props value.xenos_killed :kill_value:kill_index}}
-										<div class="itemLabelClear">
-											{{:kill_value.name}}:
-										</div>
-                                        <div class="itemContentSmallRight">
-                                            {{:kill_value.value}}
-                                        </div>
-                                    {{/props}}
-                                {{/if}}
                             </fieldset>
                         </div>
                     {{/props}}
@@ -902,18 +670,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                         <fieldset class="fieldContainerSpaced">
                             <div class="itemLabelClearBoth">
                                 <b>{{:job_value.name}}</b>
-                            </div>
-                            <div class="itemLabelClear">
-                                Total Kills:
-                            </div>
-                            <div class="itemContentSmallRight">
-                                {{:job_value.total_kills}}
-                            </div>
-                            <div class="itemLabelClear">
-                                Total Deaths:
-                            </div>
-                            <div class="itemContentSmallRight">
-                                {{:job_value.total_deaths}}
                             </div>
                             <div class="itemLabelClear">
                                 Total Playtime:
@@ -984,25 +740,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                 </div>
                             {{/props}}
 							<hr>
-                            <div class="itemLabelClearBoth">
-                                <b>Kills:</b>
-                            </div>
-                            {{props job_value.humans_killed :kill_value:kill_index}}
-								<div class="itemLabelClear">
-									{{:kill_value.name}}:
-								</div>
-                                <div class="itemContentSmallRight">
-                                    {{:kill_value.value}}
-                                </div>
-                            {{/props}}
-                            {{props job_value.xenos_killed :kill_value:kill_index}}
-								<div class="itemLabelClear">
-									{{:kill_value.name}}:
-								</div>
-                                <div class="itemContentSmallRight">
-                                    {{:kill_value.value}}
-                                </div>
-                            {{/props}}
                             {{if job_value.nemesis}}
                                 <div class="itemLabelClearBoth">
                                     Nemesis:
@@ -1010,12 +747,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                 <fieldset class="fieldContainerSpaced">
                                     <div class="itemLabelClearBoth">
                                         <b>{{:job_value.nemesis.name}}</b>
-                                    </div>
-                                    <div class="itemLabelClear">
-                                        Deaths:
-                                    </div>
-                                    <div class="itemContentSmallRight">
-                                        {{:job_value.nemesis.value}}
                                     </div>
                                 </fieldset>
                             {{/if}}
@@ -1044,18 +775,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
         {{else data.subMenu == 1}}
             {{if data.xeno}}
                 {{if data.dataMenu == 0}}
-                    <div class="itemLabelClear">
-                        Total Kills:
-                    </div>
-                    <div class="itemContentSmallRight">
-                        {{:data.xeno.total_kills}}
-                    </div>
-                    <div class="itemLabelClear">
-                        Total Deaths:
-                    </div>
-                    <div class="itemContentSmallRight">
-                        {{:data.xeno.total_deaths}}
-                    </div>
                     <div class="itemLabelClear">
                         Total Playtime:
                     </div>
@@ -1091,18 +810,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                 <b>{{:data.xeno.top_caste.name}}</b>
                             </div>
                             <div class="itemLabelClear">
-                                Total Kills:
-                            </div>
-                            <div class="itemContentSmallRight">
-                                {{:data.xeno.top_caste.total_kills}}
-                            </div>
-                            <div class="itemLabelClear">
-                                Total Deaths:
-                            </div>
-                            <div class="itemContentSmallRight">
-                                {{:data.xeno.top_caste.total_deaths}}
-                            </div>
-                            <div class="itemLabelClear">
                                 Total Playtime:
                             </div>
                             <div class="itemContentSmallRight">
@@ -1124,37 +831,8 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                             <div class="itemLabelClearBoth">
                                 <b>{{:data.xeno.nemesis.name}}</b>
                             </div>
-                            <div class="itemLabelClear">
-                                Deaths:
-                            </div>
-                            <div class="itemContentSmallRight">
-                                {{:data.xeno.nemesis.value}}
-                            </div>
                         </fieldset>
                     {{/if}}
-                {{else data.dataMenu == 1}}
-                    <div class="itemLabelClear">
-                        Total Kills:
-                    </div>
-                    <div class="itemContentSmallRight">
-                        {{:data.xeno.total_kills}}
-                    </div>
-                    {{props data.xeno.humans_killed}}
-                        <div class="itemLabelClear">
-                            {{:value.name}}: 
-                        </div>
-                        <div class="itemContentSmallRight">
-                            {{:value.value}}
-                        </div>
-                    {{/props}}
-                    {{props data.xeno.xenos_killed}}
-                        <div class="itemLabelClear">
-                            {{:value.name}}:
-                        </div>
-                        <div class="itemContentSmallRight">
-                            {{:value.value}}
-                        </div>
-                    {{/props}}
                 {{else data.dataMenu == 2}}
                     {{props data.xeno.death_list :death_value:death_index}}
                         <fieldset class="fieldContainerSpaced">
@@ -1199,24 +877,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                             <div class="itemContentSmallRight">
                                 ({{:death_value.x}}, {{:death_value.y}}, {{:death_value.z}})
                             </div>
-                            <div class="itemLabelClear">
-                                Total Kills:
-                            </div>
-                            <div class="itemContentSmallRight">
-                                {{:death_value.total_kills}}
-                            </div>
-							<hr>
-							<div class="itemLabelClearBoth">
-								<b>Total Damage:</b>
-							</div>
-							{{props death_value.total_damage :damage_value:damage_index}}
-								<div class="itemLabelClear">
-									{{:damage_value.name}}:
-								</div>
-								<div class="itemContentSmallRight">
-									{{:damage_value.value}}
-								</div>
-							{{/props}}
                         </fieldset>
                     {{/props}}
                 {{else data.dataMenu == 3}}
@@ -1224,18 +884,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                         <fieldset class="fieldContainerSpaced">
                             <div class="itemLabelClearBoth">
                                 <b>{{:caste_value.name}}<b>
-                            </div>
-                            <div class="itemLabelClear">
-                                Total Kills:
-                            </div>
-                            <div class="itemContentSmallRight">
-                                {{:caste_value.total_kills}}
-                            </div>
-                            <div class="itemLabelClear">
-                                Total Deaths:
-                            </div>
-                            <div class="itemContentSmallRight">
-                                {{:caste_value.total_deaths}}
                             </div>
                             <div class="itemLabelClear">
                                 Total Playtime:
@@ -1257,28 +905,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                     {{:niche_value.value}}
                                 </div>
                             {{/props}}
-                            {{if caste_value.total_kills}}
-								<hr>
-                                <div class="itemLabelClearBoth">
-                                    <b>Kills:</b>
-                                </div>
-                                {{props caste_value.humans_killed :kill_value:kill_index}}
-									<div class="itemLabelClear">
-										{{:kill_value.name}}:
-									</div>
-                                    <div class="itemContentSmallRight">
-                                        {{:kill_value.value}}
-                                    </div>
-                                {{/props}}
-                                {{props caste_value.xenos_killed :kill_value:kill_index}}
-									<div class="itemLabelClear">
-										{{:kill_value.name}}:
-									</div>
-                                    <div class="itemContentSmallRight">
-                                        {{:kill_value.value}}
-                                    </div>
-                                {{/props}}
-                            {{/if}}
 							<hr>
                             <div class="itemLabelClearBoth">
                                 <b>Abilities Used:</b>
@@ -1298,12 +924,6 @@ Used in: /code/datums/statistics/entities/player_entity.dm
                                 <fieldset class="fieldContainerSpaced">
                                     <div class="itemLabelClearBoth">
                                         <b>{{:caste_value.nemesis.name}}</b>
-                                    </div>
-                                    <div class="itemLabelClear">
-                                        Deaths:
-                                    </div>
-                                    <div class="itemContentSmallRight">
-                                        {{:caste_value.nemesis.value}}
                                     </div>
                                 </fieldset>
                             {{/if}}

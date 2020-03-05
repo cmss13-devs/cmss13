@@ -427,6 +427,7 @@
 	var/caster_active = 0
 	var/exploding = 0
 	var/inject_timer = 0
+	var/disc_timer = 0
 	var/cloak_timer = 0
 	var/upgrades = 0 //Set to two, so admins can give preds shittier ones for young blood events or whatever. //Changed it back to 0 since it was breaking spawn-equipment and the translator -retrokinesis
 	var/explosion_type = 0 //0 is BIG explosion, 1 ONLY gibs the user.
@@ -893,7 +894,7 @@
 	if(istype(T) && exploding)
 		victim.apply_damage(50,BRUTE,"chest")
 		if(victim) victim.gib() //Let's make sure they actually gib.
-		if(explosion_type == 0 && z == SURFACE_Z_LEVELS)
+		if(explosion_type == 0 && z in SURFACE_Z_LEVELS)
 			cell_explosion(T, 600, 50, null, "yautja self destruct", source_mob) //Dramatically BIG explosion.
 		else
 			cell_explosion(T, 800, 550, null, "yautja self destruct", source_mob)
@@ -1063,14 +1064,14 @@
 			. = activate_random_verb()
 			return
 
-	if(inject_timer)
+	if(disc_timer)
 		to_chat(usr, SPAN_WARNING("Your bracers need some time to recuperate first."))
 		return 0
 
 	if(!drain_power(usr,70)) return
-	inject_timer = 1
+	disc_timer = 1
 	spawn(100)
-		inject_timer = 0
+		disc_timer = 0
 
 	for(var/mob/living/simple_animal/hostile/smartdisc/S in range(7))
 		to_chat(usr, SPAN_WARNING("The [S] skips back towards you!"))
@@ -1349,8 +1350,6 @@
 	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "spike"
 	item_state = "harpoon"
-	force = 15
-	throwforce = 38
 	embeddable = FALSE
 	attack_verb = list("jabbed","stabbed","ripped", "skewered")
 	unacidable = TRUE
@@ -1358,13 +1357,16 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharp = IS_SHARP_ITEM_BIG
 
+/obj/item/weapon/harpoon/yautja/New()
+	force = config.min_hit_damage
+	throwforce = config.high_hit_damage
+	
 /obj/item/weapon/wristblades
 	name = "wrist blades"
 	desc = "A pair of huge, serrated blades extending from a metal gauntlet."
 	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "wrist"
 	item_state = "wristblade"
-	force = 33
 	w_class = SIZE_HUGE
 	edge = 1
 	sharp = 2
@@ -1381,7 +1383,7 @@
 		if(istype(W)) //wristblade in usr's other hand.
 			attack_speed = attack_speed - attack_speed/3
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
-
+	force = config.hlmed_hit_damage
 
 /obj/item/weapon/wristblades/Dispose()
 	. = ..()
@@ -1423,8 +1425,6 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
-	force = 70
-	throwforce = 12
 	embeddable = FALSE
 	w_class = SIZE_MEDIUM
 	unacidable = TRUE
@@ -1432,6 +1432,11 @@
 	edge = 0
 	attack_verb = list("whipped", "slashed","sliced","diced","shredded")
 	hitsound = 'sound/weapons/chain_whip.ogg'
+
+
+/obj/item/weapon/yautja_chain/New()
+	force = config.buckshot_hit_damage
+	throwforce = config.base_hit_damage
 
 /obj/item/weapon/yautja_chain/attack(mob/target, mob/living/user)
 	. = ..()
@@ -1462,14 +1467,16 @@
 	flags_equip_slot = SLOT_BACK
 	sharp = 1
 	edge = 1
-	force = 45 //More damage than other weapons like it. Considering how "strong" this sword is supposed to be, 38 damage was laughable.
 	embeddable = FALSE
 	w_class = SIZE_LARGE
-	throwforce = 18
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 9
 	unacidable = TRUE
+
+/obj/item/weapon/yautja_sword/New()
+	force = config.med_hit_damage //More damage than other weapons like it. Considering how "strong" this sword is supposed to be, 38 damage was laughable.
+	throwforce = config.min_hit_damage
 
 /obj/item/weapon/yautja_sword/Dispose()
 	remove_from_missing_pred_gear(src)
@@ -1487,7 +1494,7 @@
 		if(isXeno(target))
 			var/mob/living/carbon/Xenomorph/X = target
 			X.interference = 30
-		force = initial(force)
+		force = config.med_hit_damage
 		if(prob(22) && !target.lying)
 			user.visible_message(SPAN_DANGER("[user] slashes [target] so hard, they go flying!"))
 			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1)
@@ -1495,7 +1502,7 @@
 			step_away(target,user,1)
 	else
 		to_chat(user, SPAN_WARNING("You aren't strong enough to swing the sword properly!"))
-		force = round(initial(force)/2)
+		force = round(config.med_hit_damage/2)
 		if(prob(50)) user.make_dizzy(80)
 
 /obj/item/weapon/yautja_sword/pickup(mob/living/user as mob)
@@ -1516,16 +1523,16 @@
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
 	sharp = 1
-	force = 50
 	embeddable = FALSE
 	w_class = SIZE_LARGE
-	throwforce = 24
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	unacidable = TRUE
 
 /obj/item/weapon/yautja_scythe/New()
 	icon_state = pick("predscythe","predscythe_alt")
+	force = config.hmed_hit_damage
+	throwforce = config.mlow_hit_damage
 
 /obj/item/weapon/yautja_scythe/Dispose()
 	remove_from_missing_pred_gear(src)
@@ -1577,9 +1584,7 @@
 	flags_equip_slot = SLOT_BACK
 	flags_item = TWOHANDED|ITEM_PREDATOR
 	w_class = SIZE_LARGE
-	force = 35
 	embeddable = FALSE //It shouldn't embed so that the Yautja can actually use the yank combi verb, and so that it's not useless upon throwing it at someone.
-	throwforce = 45
 	throw_speed = SPEED_VERY_FAST
 	unacidable = TRUE
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -1587,6 +1592,10 @@
 	attack_verb = list("speared", "stabbed", "impaled")
 	var/on = 1
 	var/timer = 0
+
+/obj/item/weapon/combistick/New()
+	throwforce = config.med_hit_damage
+	force = config.hlmed_hit_damage
 
 /obj/item/weapon/combistick/IsShield()
 	return on
@@ -1606,12 +1615,12 @@
 
 /obj/item/weapon/combistick/wield(var/mob/user)
 	..()
-	force = 42
+	force = config.lmed_plus_hit_damage
 	update_icon()
 
 /obj/item/weapon/combistick/unwield(mob/user)
 	..()
-	force = 35
+	force = config.hlmed_hit_damage
 	update_icon()
 
 /obj/item/weapon/combistick/verb/use_unique_action()
@@ -1648,8 +1657,8 @@
 		flags_equip_slot = initial(flags_equip_slot)
 		flags_item |= TWOHANDED
 		w_class = SIZE_LARGE
-		force = 35
-		throwforce = initial(throwforce)
+		force = config.lmed_hit_damage
+		throwforce = config.med_hit_damage
 		attack_verb = list("speared", "stabbed", "impaled")
 		timer = 1
 		spawn(10)
@@ -1666,8 +1675,8 @@
 		flags_equip_slot = SLOT_STORE
 		flags_item &= ~TWOHANDED
 		w_class = SIZE_TINY
-		force = 10
-		throwforce = initial(throwforce) - 50
+		force = config.base_hit_damage
+		throwforce = config.med_hit_damage - config.lmed_plus_hit_damage
 		attack_verb = list("thwacked", "smacked")
 		timer = 1
 		spawn(10)
@@ -1722,8 +1731,6 @@
 	desc = "A strange piece of alien technology. It seems to call forth a hellhound."
 	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "hellnade"
-	force = 25
-	throwforce = 55
 	w_class = SIZE_TINY
 	det_time = 30
 	var/obj/structure/machinery/camera/current = null
@@ -1804,6 +1811,9 @@
 			to_chat(user, "Something went wrong with the camera feed.")
 		return
 
+/obj/item/explosive/grenade/spawnergrenade/hellhound/New()
+	force = config.mlow_hit_damage
+	throwforce = config.hmed_hit_damage
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/on_set_interaction(mob/user)
 	..()

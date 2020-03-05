@@ -40,6 +40,7 @@
 	desc = "The Armat Battlefield Systems M-39 submachinegun. Occasionally carried by light-infantry, scouts, engineers and medics. A lightweight, lower caliber alternative to the various Pulse weapons used the USCM. Fires 10x20mm rounds out of 48 round magazines."
 	icon_state = "m39"
 	item_state = "m39"
+	flags_equip_slot = SLOT_BACK
 	current_mag = /obj/item/ammo_magazine/smg/m39
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,

@@ -1,4 +1,3 @@
-
 /obj/item/legcuffs
 	name = "legcuffs"
 	desc = "Use this to keep prisoners in line."
@@ -83,8 +82,10 @@
 /obj/item/legcuffs/yautja/attack_self(mob/user as mob)
 	..()
 	if(ishuman(user) && !user.stat && !user.is_mob_restrained())
-		armed = 1
-		anchored = 1
+		if(!do_after(user, rand(30, 100), INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			return
+		armed =TRUE
+		anchored = TRUE
 		icon_state = "yauttrap[armed]"
 		to_chat(user, SPAN_NOTICE("[src] is now armed."))
 		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] has armed \the [src] at [get_location_in_text(user)].</font>")

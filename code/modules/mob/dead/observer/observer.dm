@@ -45,9 +45,17 @@
 			icon = 'icons/mob/humans/species/r_human.dmi'
 			icon_state = "anglo_example"
 			overlays += H.overlays
+		else if(isYautja(body))
+			icon = 'icons/mob/humans/species/r_predator.dmi'
+			icon_state = "yautja_example"
+			overlays += body.overlays
+		else if(ismonkey(body))
+			icon = 'icons/mob/humans/species/monkeys/monkey.dmi'
+			icon_state = "monkey1"
+			overlays += body.overlays
 		else
-			icon = 'icons/mob/mob.dmi'
-			icon_state = "ghost1"
+			icon = body.icon
+			icon_state = body.icon_state
 
 		alpha = 127
 

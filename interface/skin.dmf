@@ -989,22 +989,22 @@ window "infowindow"
 window "preferencewindow"
 	elem "preferencewindow"
 		type = MAIN
-		pos = 394,62
-		size = 660x750
+		pos = 281,0
+		size = 660x800
 		anchor1 = none
 		anchor2 = none
 		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
-		outer-size = 676x789
-		inner-size = 660x750
+		outer-size = 676x839
+		inner-size = 660x800
 	elem "preferencebrowser"
 		type = BROWSER
 		pos = 0,240
-		size = 660x518
-		anchor1 = 0,100
-		anchor2 = none
+		size = 660x618
+		anchor1 = 0,0
+		anchor2 = 100,100
 		background-color = none
 		saved-params = ""
 	elem "preview"

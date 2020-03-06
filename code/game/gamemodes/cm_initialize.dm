@@ -516,13 +516,18 @@ Additional game mode variables.
 	var/list/datum/mind/possible_survivors = possible_human_survivors.Copy() //making a copy so we'd be able to distinguish between survivor types
 
 	for(var/datum/mind/A in possible_synth_survivors)
-		if(RoleAuthority.roles_whitelist[ckey(A.key)] & WHITELIST_SYNTHETIC || !A.roundstart_picked)
+		if(A.roundstart_picked)
+			possible_synth_survivors -= A
+			continue
+
+		if(RoleAuthority.roles_whitelist[ckey(A.key)] & WHITELIST_SYNTHETIC)
 			if(A in possible_survivors)
 				continue //they are already applying to be a survivor
 			else
 				possible_survivors += A
-		else
-			possible_synth_survivors -= A//Not whitelisted, get them out of here!
+				continue
+
+		possible_synth_survivors -= A
 
 	possible_survivors = shuffle(possible_survivors) //Shuffle them up a bit
 	if(possible_survivors.len) //We have some, it looks like.

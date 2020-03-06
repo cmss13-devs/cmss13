@@ -6,6 +6,7 @@
 	set_species()
 	change_real_name(src, "Test Dummy")
 	status_flags = GODMODE|CANPUSH
+	prepare_huds()
 	create_hud()
 
 /mob/living/carbon/human/dummy/med_hud_set_health()

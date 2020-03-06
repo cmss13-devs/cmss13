@@ -169,7 +169,7 @@ var/global/datum/controller/gameticker/ticker = new()
 		if(!(player && player.ready && player.mind))
 			continue
 		
-		if(!player.job)
+		if(!player.job && !player.mind.roundstart_picked)
 			continue
 
 		player.create_character()

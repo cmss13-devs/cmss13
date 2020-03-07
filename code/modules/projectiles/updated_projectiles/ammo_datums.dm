@@ -1365,7 +1365,8 @@
 			stun_time -= 2
 		else if (isXeno(M))
 			stun_time += 1
-
+		else if (istype(M, /mob/living/carbon/Xenomorph/Predalien))
+			continue
 		to_chat(M, SPAN_DANGER("A powerful electric shock ripples through your body, freezing you in place!"))
 		M.stunned += stun_time
 

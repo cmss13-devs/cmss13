@@ -340,19 +340,12 @@
 	switch(mode)
 		if(0)
 			mode = 1
-			charge_cost = 100
-			fire_delay = config.med_fire_delay * 4
-			fire_sound = 'sound/weapons/emitter2.ogg'
-			to_chat(user, SPAN_NOTICE("[src] is now set to fire medium plasma blasts."))
-			ammo = ammo_list[/datum/ammo/energy/yautja/caster/blast]
-		if(1)
-			mode = 2
 			charge_cost = 300
 			fire_delay = config.high_fire_delay * 20
 			fire_sound = 'sound/weapons/pulse.ogg'
 			to_chat(user, SPAN_NOTICE("[src] is now set to fire heavy plasma spheres."))
 			ammo = ammo_list[/datum/ammo/energy/yautja/caster/sphere]
-		if(2)
+		if(1)
 			mode = 0
 			charge_cost = 30
 			fire_delay = config.high_fire_delay

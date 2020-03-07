@@ -1193,7 +1193,7 @@
 	item_state = "headset"
 	frequency = YAUT_FREQ
 	unacidable = TRUE
-
+	ignore_z = TRUE
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, var/verb = "commands", var/datum/language/speaking = "Sainja")
 	if(!isYautja(M)) //Nope.
 		to_chat(M, SPAN_WARNING("You try to talk into the headset, but just get a horrible shrieking in your ears!"))

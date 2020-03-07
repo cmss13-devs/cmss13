@@ -15,6 +15,7 @@
 	var/b_stat = 0
 	var/broadcasting = 0
 	var/listening = 1
+	var/ignore_z = FALSE
 	var/freerange = 0 // 0 - Sanitize frequencies, 1 - Full range
 	var/list/channels = list() //see communications.dm for full list. First channes is a "default" for :h
 	var/subspace_transmission = 0
@@ -304,6 +305,8 @@
 		var/datum/interior/I = interior_manager.get_interior_by_coords(position.x, position.y)
 		if(I)
 			transmit_z = I.exterior.z
+	if(src.ignore_z == TRUE)
+		transmit_z = ADMIN_Z_LEVEL //this area always has comms
 
   /* ###### Radio headsets can only broadcast through subspace ###### */
 
@@ -460,7 +463,9 @@
 			var/datum/interior/I = interior_manager.get_interior_by_coords(position.x, position.y)
 			if(I)
 				receive_z = I.exterior.z
-
+		if(src.ignore_z == TRUE)
+			receive_z = ADMIN_Z_LEVEL //this area always has comms
+	
 		if(!position || !(receive_z in level))
 			return -1
 	if(freq in ANTAG_FREQS)

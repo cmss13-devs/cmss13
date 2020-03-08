@@ -68,6 +68,9 @@
 		observed_xeno = null
 
 	else
+		if(!hive)
+			return
+
 		if(!hive.living_xeno_queen)
 			to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 			return

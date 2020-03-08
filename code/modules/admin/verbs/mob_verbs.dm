@@ -226,6 +226,9 @@
 	set name = "Change Hivenumber"
 	set category = null
 
+	if(!istype(X))
+		return
+
 	var/hivenumber_status = X.hivenumber
 	var/list/namelist = list("Normal","Corrupted","Alpha","Beta","Zeta")
 

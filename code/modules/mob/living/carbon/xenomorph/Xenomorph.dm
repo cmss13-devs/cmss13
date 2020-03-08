@@ -309,7 +309,7 @@
 
 /mob/living/carbon/Xenomorph/New(var/new_loc, var/mob/living/carbon/Xenomorph/oldXeno)
 	var/area/A = get_area(src)
-	if(A.statistic_exempt)
+	if(A && A.statistic_exempt)
 		statistic_exempt = TRUE
 	if(oldXeno)
 		hivenumber = oldXeno.hivenumber

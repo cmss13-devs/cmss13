@@ -306,7 +306,7 @@ proc/pick_element_by_weight_byindex(list/L)
 
 //Mergesort: any value in a list
 /proc/sortList(var/list/L)
-	if(!L)
+	if(!istype(L))
 		return
 	if(L.len < 2)
 		return L

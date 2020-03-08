@@ -841,7 +841,7 @@
 /mob/living/carbon/human/get_eye_protection()
 	var/number = 0
 
-	if(!species.has_organ["eyes"]) return 2//No eyes, can't hurt them.
+	if(species && !species.has_organ["eyes"]) return 2//No eyes, can't hurt them.
 
 	var/datum/internal_organ/eyes/I = internal_organs_by_name["eyes"]
 	if(I)

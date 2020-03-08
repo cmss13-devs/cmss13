@@ -477,7 +477,7 @@
 					to_chat(usr, "[htmlicon(src, usr)] <b>Secondary Objective:</b> [current_squad.secondary_objective]")
 		if("set_primary")
 			var/input = stripped_input(usr, "What will be the squad's primary objective?", "Primary Objective")
-			if(input)
+			if(current_squad && input)
 				current_squad.primary_objective = "[input] ([worldtime2text()])"
 				send_to_squad("Your primary objective has changed. See Status pane for details.")
 				visible_message("[htmlicon(src, viewers(src))] [SPAN_BOLDNOTICE("Primary objective of squad '[current_squad]' set.")]")

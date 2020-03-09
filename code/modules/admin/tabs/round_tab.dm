@@ -50,17 +50,14 @@
 	var/roles[] = new
 	var/i
 	var/datum/job/J
-	for (i in RoleAuthority.roles_for_mode) //All the roles in the game.
+	for(i in RoleAuthority.roles_for_mode) //All the roles in the game.
 		J = RoleAuthority.roles_for_mode[i]
-		if(J.total_positions != -1 && J.get_total_positions(1) <= J.current_positions) roles += i
-	if (!roles.len)
-		to_chat(usr, "There are no fully staffed roles.")
-		return
-	var/role = input("Please select role slot to free", "Free role slot")  as null|anything in roles
+		if(J.total_positions > 0 && J.current_positions > 0)
+			roles += i
+	var/role = input("This list contains all roles that have at least one slot taken.\nPlease select role slot to free.", "Free role slot")  as null|anything in roles
 	if(!role)
 		return
-	RoleAuthority.free_role(RoleAuthority.roles_for_mode[role])
-	message_admins(SPAN_NOTICE("[key_name(usr)] freed the jobslot of [role]."))
+	RoleAuthority.free_role_admin(RoleAuthority.roles_for_mode[role], TRUE, src)
 
 /client/proc/modify_slot()
 	set name = "J: Adjust Job Slots"

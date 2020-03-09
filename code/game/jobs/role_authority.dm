@@ -316,16 +316,74 @@ roles willy nilly.
 			return 1
 
 /datum/authority/branch/role/proc/check_role_entry(mob/new_player/M, datum/job/J, latejoin=0)
-	if(jobban_isbanned(M, J.title)) return //TODO standardize this
-	if(!J.can_play_role(M.client)) return
-	if(J.flags_startup_parameters & ROLE_WHITELISTED && !(roles_whitelist[M.ckey] & J.flags_whitelist)) return
-	if(J.total_positions != -1 && J.get_total_positions(latejoin) <= J.current_positions) return
+	if(jobban_isbanned(M, J.title))
+		return //TODO standardize this
+	if(!J.can_play_role(M.client))
+		return
+	if(J.flags_startup_parameters & ROLE_WHITELISTED && !(roles_whitelist[M.ckey] & J.flags_whitelist))
+		return
+	if(J.total_positions != -1 && J.get_total_positions(latejoin) <= J.current_positions)
+		return
 	return 1
 
 /datum/authority/branch/role/proc/free_role(datum/job/J, latejoin = 1) //Want to make sure it's a job, and nothing like a MODE or special role.
 	if(istype(J) && J.total_positions != -1 && J.get_total_positions(latejoin) >= J.current_positions)
 		J.current_positions--
 		return 1
+
+/datum/authority/branch/role/proc/free_role_admin(var/datum/job/J, var/latejoin = 1, var/user) //Specific proc that used for admin "Free Job Slots" verb (round tab)
+	if(!istype(J) || J.total_positions == -1)
+		return
+	if(J.current_positions < 1)	//this should be filtered earlier, but we still check just in case
+		to_chat(user, "There are no [J] job slots occupied.")
+		return
+
+//here is the main reason this proc exists - to remove freed squad jobs from squad,
+//so latejoining person ends in the squad which's job was freed and not random one
+	var/datum/squad/sq = null
+	if(JOB_SQUAD_ROLES_LIST.Find(J.title))
+		var/list/squad_list = list()
+		for(sq in RoleAuthority.squads)
+			if(sq.usable)
+				squad_list += sq
+		sq = null
+		sq = input(user, "Select squad you want to free [J.title] slot from.", "Squad Selection")  as null|anything in squad_list
+		if(!sq)
+			return
+		switch(J.title)
+			if(JOB_SQUAD_ENGI)
+				if(sq.num_engineers > 0)
+					sq.num_engineers--
+				else
+					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
+					return
+			if(JOB_SQUAD_MEDIC)
+				if(sq.num_medics > 0)
+					sq.num_medics--
+				else
+					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
+					return
+			if(JOB_SQUAD_SPECIALIST)
+				if(sq.num_specialists > 0)
+					sq.num_specialists--
+				else
+					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
+					return
+			if(JOB_SQUAD_SMARTGUN)
+				if(sq.num_smartgun > 0)
+					sq.num_smartgun--
+				else
+					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
+					return
+			if(JOB_SQUAD_LEADER)
+				if(sq.num_leaders > 0)
+					sq.num_leaders--
+				else
+					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
+					return
+	J.current_positions--
+	message_admins(SPAN_NOTICE("[key_name(user)] freed the [J.title] job slot[sq ? " in [sq.name] Squad" : ""]."))
+	return 1
 
 /datum/authority/branch/role/proc/modify_role(datum/job/J, amount)
 	if(!istype(J))

@@ -156,8 +156,6 @@
 	var/burrow_timer = 200
 	var/tunnel_timer = 20
 
-	var/emotedown = 0
-
 	var/datum/action/xeno_action/activable/selected_ability
 	var/selected_resin = RESIN_WALL //which resin structure to build when we secrete resin
 

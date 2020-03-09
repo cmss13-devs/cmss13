@@ -290,21 +290,26 @@
 				return
 
 		if ("salute")
-			if (!src.buckled)
+			if(recent_audio_emote)
+				to_chat(src, "You just did an audible emote. Wait a while.")
+				return
+
+			if(!buckled)
 				var/M = null
-				if (param)
+				if(param)
 					for (var/mob/A in view(null, null))
 						if (param == A.name)
 							M = A
 							break
-				if (!M)
+				if(!M)
 					param = null
 
-				if (param)
+				if(param)
 					message = "<B>[comm_paygrade][src]</B> salutes to [param]."
 				else
 					message = "<B>[comm_paygrade][src]</b> salutes."
 				playsound(src.loc, 'sound/misc/salute.ogg', 15, 1)
+				start_audio_emote_cooldown()
 			m_type = 1
 
 		if("scream")
@@ -423,6 +428,21 @@
 				message = "<B>[comm_paygrade][src]</B> yawns."
 				m_type = 2
 
+		if("warcry")
+			if(recent_audio_emote)
+				to_chat(src, "You just did an audible emote. Wait a while.")
+				return
+			
+			message = "<B>[comm_paygrade][src]</B> shouts an inspiring cry!"
+			m_type = 2
+
+			show_speech_bubble("hwarcry")
+			if(isHumanStrict(src))
+				if(gender == "male")
+					playsound(loc, "male_warcry", 50)
+				else
+					playsound(loc, "female_warcry", 50)
+			start_audio_emote_cooldown()
 
 		if ("help")
 			to_chat(src, "<br><br><b>To use an emote, type an asterix (*) before a following word. Emotes with a sound are <span style='color: green;'>green</span>. Spamming emotes with sound will likely get you banned. Don't do it.<br><br> \
@@ -466,6 +486,7 @@
 			snore, \
 			stare-(mob name), \
 			twitch, \
+			<span style='color: green;'>warcry</span>, \
 			wave, \
 			yawn</b><br>")
 			if (has_species(src,"Yautja"))

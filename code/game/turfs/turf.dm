@@ -410,12 +410,6 @@
 /turf/open/jungle/is_weedable()
 	return FALSE
 
-/turf/open/floor/plating/plating_catwalk/is_weedable() //covered catwalks are unweedable
-	if(covered)
-		return FALSE
-	else
-		return TRUE
-
 /turf/closed/wall/is_weedable()
 	return TRUE //so we can spawn weeds on the walls
 

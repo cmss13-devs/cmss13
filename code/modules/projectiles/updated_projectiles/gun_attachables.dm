@@ -1153,7 +1153,7 @@ Defined in conflicts.dm of the #defines folder.
 //The requirement for an attachable being alt fire is AMMO CAPACITY > 0.
 /obj/item/attachable/attached_gun/grenade
 	name = "underslung grenade launcher"
-	desc = "A weapon-mounted, reloadable, one-shot grenade launcher."
+	desc = "A weapon-mounted, reloadable, two shot grenade launcher."
 	icon_state = "grenade"
 	attach_icon = "grenade_a"
 	w_class = SIZE_MEDIUM

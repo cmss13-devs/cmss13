@@ -20,9 +20,9 @@
 /obj/effect/datacore/proc/get_manifest(monochrome, OOC)
 	var/list/eng = new()
 	var/list/med = new()
+	var/list/req = new()
 	var/list/mar = new()
 	var/list/heads = new()
-	var/list/misc = new()
 	var/list/isactive = new()
 	var/list/squads = new()
 
@@ -58,22 +58,17 @@
 		else
 			isactive[name] = t.fields["p_stat"]
 			//cael - to prevent multiple appearances of a player/job combination, add a continue after each line
-		var/department = 0
 		if(real_rank in ROLES_COMMAND)
 			heads[name] = rank
-			department = 1
 		if(real_rank in ROLES_ENGINEERING)
 			eng[name] = rank
-			department = 1
 		if(real_rank in ROLES_MEDICAL)
 			med[name] = rank
-			department = 1
+		if(real_rank in ROLES_REQUISITION)
+			req[name] = rank
 		if(real_rank in ROLES_MARINES)
 			squads[name] = squad_name
 			mar[name] = rank
-			department = 1
-		if(!department && !(name in heads))
-			misc[name] = rank
 	if(heads.len > 0)
 		dat += "<tr><th colspan=3>Command Staff</th></tr>"
 		for(name in heads)
@@ -92,16 +87,15 @@
 		for(name in eng)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[eng[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
+	if(req.len)
+		dat += "<tr><th colspan=3>Requisition</th></tr>"
+		for(name in req)
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[req[name]]</td><td>[isactive[name]]</td></tr>"
+			even = !even
 	if(med.len > 0)
 		dat += "<tr><th colspan=3>Medical</th></tr>"
 		for(name in med)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[med[name]]</td><td>[isactive[name]]</td></tr>"
-			even = !even
-	// misc guys
-	if(misc.len > 0)
-		dat += "<tr><th colspan=3>Miscellaneous</th></tr>"
-		for(name in misc)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[misc[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
 
 	dat += "</table>"
@@ -110,75 +104,6 @@
 
 	return dat
 
-/*
-We can't just insert in HTML into the nanoUI so we need the raw data to play with.
-Instead of creating this list over and over when someone leaves their PDA open to the page
-we'll only update it when it changes.  The PDA_Manifest global list is zeroed out upon any change
-using /obj/effect/datacore/proc/manifest_inject( ), or manifest_insert( )
-*/
-
-var/global/list/PDA_Manifest = list()
-
-/obj/effect/datacore/proc/get_manifest_json()
-	if(PDA_Manifest.len)
-		return PDA_Manifest
-
-//God, fuck this shit for now
-	var/heads[0]
-	var/eng[0]
-	var/med[0]
-	var/mar[0]
-	var/misc[0]
-
-	for(var/datum/data/record/t in data_core.general)
-		var/name = sanitize(t.fields["name"])
-		var/rank = sanitize(t.fields["rank"])
-		var/real_rank = t.fields["real_rank"]
-		var/isactive = t.fields["p_stat"]
-		var/department = 0
-		var/depthead = 0 			// Department Heads will be placed at the top of their lists.
-		if(real_rank in ROLES_COMMAND)
-			heads[++heads.len] = list("name" = name, "rank" = rank, "active" = isactive)
-			department = 1
-			depthead = 1
-			if(rank=="Commanding Officer" && heads.len != 1)
-				heads.Swap(1,heads.len)
-
-		if(real_rank in ROLES_ENGINEERING)
-			eng[++eng.len] = list("name" = name, "rank" = rank, "active" = isactive)
-			department = 1
-			if(depthead && eng.len != 1)
-				eng.Swap(1,eng.len)
-
-		if(real_rank in ROLES_MEDICAL)
-			med[++med.len] = list("name" = name, "rank" = rank, "active" = isactive)
-			department = 1
-			if(depthead && med.len != 1)
-				med.Swap(1,med.len)
-
-
-		if(real_rank in ROLES_MARINES)
-			mar[++mar.len] = list("name" = name, "rank" = rank, "active" = isactive)
-			department = 1
-			if(depthead && mar.len != 1)
-				mar.Swap(1,mar.len)
-
-		if(!department && !(name in heads))
-			misc[++misc.len] = list("name" = name, "rank" = rank, "active" = isactive)
-
-
-	PDA_Manifest = list(
-		"heads" = heads,
-		"eng" = eng,
-		"med" = med,
-		"marine_squad_positions" = ROLES_COMMAND,
-		"misc" = misc
-		)
-	return PDA_Manifest
-
-
-
-
 
 
 /obj/effect/datacore/proc/manifest(var/nosleep = 0)
@@ -186,13 +111,12 @@ var/global/list/PDA_Manifest = list()
 		if(!nosleep)
 			sleep(40)
 		for(var/mob/living/carbon/human/H in player_list)
-			if(H.species && H.species.name == "Yautja") continue
+			if(H.species && H.species.name == "Yautja") 
+				continue
 			manifest_inject(H)
 		return
 
 /obj/effect/datacore/proc/manifest_modify(name, assignment, rank)
-	if(PDA_Manifest.len)
-		PDA_Manifest.Cut()
 	var/datum/data/record/foundrecord
 
 	for(var/datum/data/record/t in data_core.general)
@@ -206,9 +130,6 @@ var/global/list/PDA_Manifest = list()
 		foundrecord.fields["real_rank"] = rank
 
 /obj/effect/datacore/proc/manifest_inject(var/mob/living/carbon/human/H)
-	if(PDA_Manifest.len)
-		PDA_Manifest.Cut()
-
 	var/assignment
 	if(H.job)
 		assignment = H.job

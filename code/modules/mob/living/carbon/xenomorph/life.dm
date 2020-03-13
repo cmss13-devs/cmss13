@@ -2,7 +2,6 @@
 
 #define XENO_ARMOR_REGEN_DELAY SECONDS_30
 /mob/living/carbon/Xenomorph/Life()
-
 	set invisibility = 0
 	set background = 1
 
@@ -43,7 +42,7 @@
 	if(world.time < XENO_ROUNDSTART_PROGRESS_TIME_1) //xenos have a progression bonus at roundstart
 		progress_amount = XENO_ROUNDSTART_PROGRESS_AMOUNT
 
-	else if (world.time < XENO_ROUNDSTART_PROGRESS_TIME_2) //gradually decrease to no bonus
+	else if(world.time < XENO_ROUNDSTART_PROGRESS_TIME_2) //gradually decrease to no bonus
 		progress_amount = 1 + (1 - XENO_ROUNDSTART_PROGRESS_AMOUNT) * (world.time-XENO_ROUNDSTART_PROGRESS_TIME_2)/(XENO_ROUNDSTART_PROGRESS_TIME_2-XENO_ROUNDSTART_PROGRESS_TIME_1)
 
 	if(ticker && ticker.mode && ticker.mode.xeno_evo_speed)
@@ -151,8 +150,7 @@
 	// 	armor_bonus = warding_aura * 3 //Bonus armor from pheromones, no matter what the armor was previously. Was 5
 
 /mob/living/carbon/Xenomorph/handle_regular_status_updates(regular_update = TRUE)
-
-	if(regular_update && health <= 0) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
+	if(regular_update && health <= 0 && (!caste || caste.fire_immune || !on_fire)) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
 		var/turf/T = loc
 		if(istype(T))
 			if(!check_weeds_for_healing()) //In crit, damage is maximal if you're caught off weeds
@@ -221,7 +219,7 @@
 			handle_statuses()//natural decrease of stunned, knocked_down, etc...
 			handle_interference()
 
-	return 1
+	return TRUE
 
 /mob/living/carbon/Xenomorph/proc/handle_stomach_contents()
 	//Deal with dissolving/damaging stuff in stomach.
@@ -401,7 +399,8 @@ updatehealth()
 	hud_set_plasma() //update plasma amount on the plasma mob_hud
 
 /mob/living/carbon/Xenomorph/proc/queen_locator()
-	if(!hud_used || !hud_used.locate_leader) return
+	if(!hud_used || !hud_used.locate_leader)
+		return
 
 	if(hive && !hive.living_xeno_queen || (caste && caste.is_intelligent) || !loc)
 		hud_used.locate_leader.icon_state = "trackoff"

@@ -90,6 +90,9 @@
 			if (W)
 				continue
 
+			if(istype(T, /turf/closed/wall/resin))
+				continue
+
 			if(istype(T, /turf/closed/wall))
 				new /obj/effect/alien/weeds/weedwall(T)
 				continue

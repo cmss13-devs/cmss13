@@ -13098,7 +13098,7 @@
 /obj/structure/closet/secure_closet/brig{
 	id = "CORSAT Sec 1"
 	},
-/obj/structure/machinery/door_timer{
+/obj/structure/machinery/brig_cell{
 	id = "CORSAT Sec 1";
 	name = "Cell 1";
 	pixel_x = -32
@@ -13133,7 +13133,7 @@
 /obj/structure/closet/secure_closet/brig{
 	id = "CORSAT Sec 2"
 	},
-/obj/structure/machinery/door_timer{
+/obj/structure/machinery/brig_cell{
 	id = "CORSAT Sec 2";
 	name = "Cell 2";
 	pixel_x = 32

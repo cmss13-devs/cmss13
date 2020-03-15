@@ -93,6 +93,14 @@
 	INVOKE_ASYNC(src, .relativewall_neighbours)
 	..()
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/take_damage(var/dam, var/mob/M)
+	var/damage_check = max(0, damage + dam)
+	if(damage_check >= damage_cap && M)
+		new /obj/effect/decal/prints(get_turf(src), M, "The fingerprint contains bits of wire and metal specks.")
+		ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
+
+	..()
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic
 	name = "\improper Airlock"
 	icon = 'icons/obj/structures/doors/2x1generic.dmi'

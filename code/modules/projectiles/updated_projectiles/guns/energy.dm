@@ -16,12 +16,10 @@
 
 	matter = list("metal" = 2000)
 	ammo = /datum/ammo/energy/taser
-	movement_acc_penalty_mult = 1
 	var/obj/item/cell/high/cell //10000 power.
 	var/charge_cost = 100 //100 shots.
-	flags_gun_features = GUN_UNUSUAL_DESIGN
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK
 	gun_skill_category = SKILL_PISTOLS
-	movement_acc_penalty_mult = 0
 
 /obj/item/weapon/gun/energy/taser/New()
 	..()
@@ -29,13 +27,13 @@
 
 /obj/item/weapon/gun/energy/taser/set_gun_config_values()
 	..()
-	fire_delay = config.high_fire_delay * 2
+	fire_delay = config.max_fire_delay * 2
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	scatter_unwielded = config.med_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	movement_acc_penalty_mult = 0
+	scatter = 0
+	scatter_unwielded = 0
 
 
 /obj/item/weapon/gun/energy/taser/update_icon()

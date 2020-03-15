@@ -392,7 +392,7 @@
 	if(href_list["item"])
 		if(!usr.is_mob_incapacitated() && Adjacent(usr))
 			if(href_list["item"] == "id")
-				if(istype(wear_id, /obj/item/card/id/dogtag))
+				if(istype(wear_id, /obj/item/card/id/dogtag) && !skillcheck(usr, SKILL_POLICE, SKILL_POLICE_MP))
 					var/obj/item/card/id/dogtag/DT = wear_id
 					if(!DT.dogtag_taken)
 						if(stat == DEAD)

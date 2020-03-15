@@ -17,7 +17,6 @@
 	bound_height = 64 //putting this in so we can't walk through our machine.
 	bound_width = 96
 	var/obj/item/device/radio/headset/almayer/mcom/ai/ai_headset //The thing it speaks into.
-	var/sound/ai_sound //The lines that it plays when speaking.
 
 /mob/living/silicon/decoy/Life()
 	if(stat == DEAD) 
@@ -44,8 +43,6 @@
 /mob/living/silicon/decoy/say(message, new_sound) //General communication across the ship.
 	if(stat || !message) 
 		return FALSE
-
-	ai_sound = new_sound ? new_sound : 'sound/misc/interference.ogg' //Remember the sound we need to play.
 
 	message = trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))
 

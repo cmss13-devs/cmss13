@@ -62,6 +62,7 @@
 	var/panel_open = 0 //Hacking that vending machine. Gonna get a free candy bar.
 	var/wires = 15
 	var/obj/item/coin/coin
+	var/announce_hacked = TRUE
 
 	var/check_accounts = 0		// 1 = requires PIN and checks accounts.  0 = You slide an ID, it vends, SPACE COMMUNISM!
 	var/obj/item/spacecash/ewallet/ewallet
@@ -544,6 +545,11 @@
 				src.mend(wire)
 			else
 				src.cut(wire)
+
+			if(announce_hacked && z == MAIN_SHIP_Z_LEVEL)
+				announce_hacked = FALSE
+				new /obj/effect/decal/prints(get_turf(src), usr, "The fingerprint contains oil and wire pieces.")
+				ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
 
 		else if ((href_list["pulsewire"]) && (src.panel_open))
 			var/wire = text2num(href_list["pulsewire"])

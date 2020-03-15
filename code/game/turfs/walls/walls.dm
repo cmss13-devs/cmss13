@@ -129,7 +129,7 @@
 			to_chat(user, SPAN_INFO("The inner sheath is gone. A blowtorch should finish off this wall."))
 
 //Damage
-/turf/closed/wall/proc/take_damage(dam)
+/turf/closed/wall/proc/take_damage(dam, var/mob/M)
 	if(hull) //Hull is literally invincible
 		return
 	if(!dam)
@@ -138,6 +138,8 @@
 	damage = max(0, damage + dam)
 
 	if(damage >= damage_cap)
+		if(M)
+			M.count_niche_stat(STATISTICS_NICHE_DESCTRUCTION_WALLS, 1)
 		// Xenos used to be able to crawl through the wall, should suggest some structural damage to the girder
 		if (acided_hole)
 			dismantle_wall(1)
@@ -205,7 +207,6 @@
 		return
 	melting = TRUE
 
-	var/destroyed = FALSE // whether the wall was destroyed in the process
 	var/obj/effect/overlay/O = new/obj/effect/overlay(src)
 	O.name = "thermite"
 	O.desc = "Looks hot."
@@ -219,24 +220,16 @@
 
 	var/turf/closed/wall/W = src
 	while(W.thermite > 0)
-		if(!istype(src, /turf/closed/wall))
+		if(!istype(src, /turf/closed/wall) || disposed)
 			break
 
 		thermite -= 1
-		W.damage = W.damage + 100 // 100 damage per unit of thermite so 10u kills wall, 30u kills reinforced wall
-		update_icon()
-		if(damage >= damage_cap)
-			destroyed = TRUE
-			break
+		take_damage(100, user)
 
 		sleep(20)
-		if(!istype(src, /turf/closed/wall)) // Extra check, needed against runtimes
-			if(O && !O.disposed)
-				qdel(O)
-			return
-	melting = FALSE
-	if(destroyed)
-		dismantle_wall(1)
+		if(!istype(src, /turf/closed/wall) || disposed)
+			break
+
 	if(O && !O.disposed)
 		qdel(O)
 

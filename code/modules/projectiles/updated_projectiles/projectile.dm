@@ -878,7 +878,7 @@
 			return
 	if(ammo_flags & AMMO_BALLISTIC)
 		current_bulletholes++
-	take_damage(damage)
+	take_damage(damage, P.firer)
 	return TRUE
 
 

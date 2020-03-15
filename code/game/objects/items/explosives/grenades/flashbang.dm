@@ -42,26 +42,18 @@
 	to_chat(M, SPAN_WARNING("<B>BANG</B>"))
 	playsound(src.loc, 'sound/effects/bang.ogg', 50, 1)
 
-//Checking for protections
-	var/ear_safety = 0
-	if(iscarbon(M))
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(istype(H.wear_ear, /obj/item/clothing/ears/earmuffs))
-				ear_safety += 2
-			if(istype(H.head, /obj/item/clothing/head/helmet/riot))
-				ear_safety += 2
+	var/trained_human = FALSE
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(skillcheck(H, SKILL_POLICE, SKILL_POLICE_MP))
+			trained_human = TRUE
 
-//Flashing everyone
 	if(M.flash_eyes())
 		M.Stun(2)
 		M.KnockDown(10)
 
-
-
-//Now applying sound
 	if((get_dist(M, T) <= 2 || src.loc == M.loc || src.loc == M))
-		if(ear_safety > 0)
+		if(trained_human)
 			M.Stun(2)
 			M.KnockDown(1)
 		else
@@ -74,12 +66,12 @@
 				M.ear_deaf = max(M.ear_deaf,15)
 
 	else if(get_dist(M, T) <= 5)
-		if(!ear_safety)
+		if(!trained_human)
 			M.Stun(8)
 			M.ear_damage += rand(0, 3)
 			M.ear_deaf = max(M.ear_deaf,10)
 
-	else if(!ear_safety)
+	else if(!trained_human)
 		M.Stun(4)
 		M.ear_damage += rand(0, 1)
 		M.ear_deaf = max(M.ear_deaf,5)

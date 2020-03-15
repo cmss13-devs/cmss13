@@ -93,13 +93,13 @@
 //If an user is passed, it will create a "user smashes through the window" message. AM is the item that hits
 //Please only fire this after a hit
 /obj/structure/window/proc/healthcheck(make_hit_sound = 1, make_shatter_sound = 1, create_debris = 1, mob/user, atom/movable/AM)
-
 	if(not_damageable)
 		if(make_hit_sound) //We'll still make the noise for immersion's sake
 			playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 		return
 	if(health <= 0)
 		if(user)
+			user.count_niche_stat(STATISTICS_NICHE_DESCTRUCTION_WINDOWS, 1)
 			user.visible_message(SPAN_DANGER("[user] smashes through [src][AM ? " with [AM]":""]!"))
 		if(make_shatter_sound)
 			playsound(src, "shatter", 50, 1)
@@ -117,7 +117,7 @@
 	if(!not_damageable) //Impossible to destroy
 		health -= Proj.damage
 	..()
-	healthcheck()
+	healthcheck(user = Proj.firer)
 	return 1
 
 /obj/structure/window/ex_act(severity, explosion_direction)
@@ -512,6 +512,14 @@
 	reinf = 1
 	dir = 5
 	window_frame = /obj/structure/window_frame/almayer
+
+/obj/structure/window/framed/almayer/healthcheck(make_hit_sound = 1, make_shatter_sound = 1, create_debris = 1, mob/user, atom/movable/AM)
+	if(health <= 0)
+		if(user)
+			new /obj/effect/decal/prints(get_turf(src), user, "A small glass piece is found on the fingerprint.")
+			ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
+
+	. = ..()
 
 /obj/structure/window/framed/almayer/hull
 	name = "hull window"

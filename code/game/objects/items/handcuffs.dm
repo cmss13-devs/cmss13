@@ -27,6 +27,14 @@
 	if(!C.handcuffed)
 		place_handcuffs(C, user)
 
+/obj/item/handcuffs/get_mob_overlay(mob/user_mob, slot)
+	var/image/ret = ..()
+
+	var/image/handcuffs = overlay_image('icons/mob/mob.dmi', "handcuff1", color, RESET_COLOR)
+	ret.overlays += handcuffs
+
+	return ret
+
 /obj/item/handcuffs/proc/place_handcuffs(var/mob/living/carbon/target, var/mob/user)
 	playsound(src.loc, cuff_sound, 25, 1, 4)
 

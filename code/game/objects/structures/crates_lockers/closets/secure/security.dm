@@ -165,7 +165,8 @@
 /obj/structure/closet/secure_closet/brig
 	name = "Brig Locker"
 	req_access = list(ACCESS_MARINE_BRIG)
-	anchored = 1
+	anchored = TRUE
+	locked = TRUE
 	var/id = null
 
 /obj/structure/closet/secure_closet/brig/New()
@@ -173,6 +174,7 @@
 	new /obj/item/clothing/under/color/orange(src)
 	new /obj/item/clothing/shoes/orange(src)
 	new /obj/item/device/radio/headset(src)
+	update_icon()
 
 /obj/structure/closet/secure_closet/courtroom
 	name = "Courtroom Locker"

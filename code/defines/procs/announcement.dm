@@ -78,7 +78,16 @@
 			playsound_client(M.client, sound_to_play, M, vol = 45)
 
 	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
-		return AI.say(message, sound_to_play)
+		return AI.say(message)
+
+/proc/ai_silent_announcement(var/message, var/channel_prefix)
+	if(!message)
+		return
+
+	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
+		if(channel_prefix)
+			return AI.say(channel_prefix + " " +message)
+		return AI.say(message)
 
 //AI shipside announcement, that uses announcement mechanic instead of talking into comms
 //to ensure that all humans on ship hear it regardless of comms and power

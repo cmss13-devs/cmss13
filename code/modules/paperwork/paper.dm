@@ -643,3 +643,38 @@
 	if(!S.properties) //Safety for empty reagents
 		completed = FALSE
 	data = S
+
+/obj/item/paper/incident
+	name = "incident report"
+	var/datum/crime_incident/incident
+	var/sentence = 1 // Is this form contain a sentence of guilty?
+
+/obj/item/paper/incident/New()
+	info = {"\[center\]\[logo\]\[/center\]
+\[center\]\[b\]\[i\]Encoded USCM Incident Report\[/b\]\[/i\]\[hr\]
+\[small\]FOR USE BY MP'S ONLY\[/small\]\[br\]
+\[barcode\]\[/center\]"}
+
+	..()
+
+/obj/item/paper/incident/Dispose()
+	incident = null
+
+	. = ..()
+
+
+/obj/item/paper/fingerprint
+	name = "fingerprint report"
+
+/obj/item/paper/fingerprint/New(var/criminal_name = "", var/criminal_rank = "", var/criminal_squad = "", var/description = "")
+	info = {"\[center\]\[logo\]\[/center\]
+			\[center\]\[b\]\[i\]Fingerprint Sample From [criminal_name]\[/b\]\[/i\]\[hr\]
+			\[small\]
+			Name: [criminal_name]\[br\]
+			Rank: [criminal_rank]\[br\]
+			Squad: [criminal_squad]\[br\]
+			Description [description]\[br\]
+			\[/small\]
+			\[/center\]"}
+
+	..()

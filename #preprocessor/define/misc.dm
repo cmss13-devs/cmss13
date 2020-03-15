@@ -137,3 +137,7 @@
 #define STATISTICS_NICHE_SURGERY_ORGAN_REPAIR       "Organs Repaired"
 #define STATISTICS_NICHE_SURGERY_ORGAN_ATTACH       "Organs Implanted"
 #define STATISTICS_NICHE_SURGERY_ORGAN_REMOVE       "Organs Harvested"
+
+#define STATISTICS_NICHE_DESCTRUCTION_WALLS         "Walls Destroyed"
+#define STATISTICS_NICHE_DESCTRUCTION_DOORS         "Doors Destroyed"
+#define STATISTICS_NICHE_DESCTRUCTION_WINDOWS       "Windows Destroyed"

@@ -210,7 +210,8 @@
 		/obj/item/clothing/glasses/hud/security,
 		/obj/item/device/flashlight,
 		/obj/item/device/radio/headset,
-		/obj/item/weapon
+		/obj/item/weapon,
+		/obj/item/device/clue_scanner
 	)
 
 
@@ -240,6 +241,7 @@
 	new /obj/item/weapon/baton(src)
 	new /obj/item/handcuffs(src)
 	new /obj/item/reagent_container/spray/pepper(src)
+	new /obj/item/device/clue_scanner(src)
 
 
 

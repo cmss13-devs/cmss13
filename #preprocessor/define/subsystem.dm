@@ -25,6 +25,7 @@
 #define SS_INIT_LANDMARK           11
 #define SS_INIT_MAPVIEW            10
 #define SS_INIT_DEFCON             9
+#define SS_INIT_LAW                6
 #define SS_INIT_FZ_TRANSITIONS     5
 #define SS_INIT_TIMER              1
 #define SS_INIT_UNSPECIFIED        0

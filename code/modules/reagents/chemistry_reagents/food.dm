@@ -111,82 +111,53 @@
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_HYPERTHERMIC = 2)
 	spray_warning = TRUE
-	reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)
-		if(!istype(M, /mob/living) || has_species(M,"Horror"))
-			return
-		if(method == TOUCH)
-			if(istype(M, /mob/living/carbon/human))
-				var/mob/living/carbon/human/victim = M
-				var/mouth_covered = 0
-				var/eyes_covered = 0
-				var/obj/item/safe_thing = null
-				if( victim.wear_mask )
-					if( victim.wear_mask.flags_inventory & COVEREYES )
-						eyes_covered = 1
-						safe_thing = victim.wear_mask
-					if( victim.wear_mask.flags_inventory & COVERMOUTH )
-						mouth_covered = 1
-						safe_thing = victim.wear_mask
-				if( victim.head )
-					if( victim.head.flags_inventory & COVEREYES )
-						eyes_covered = 1
-						safe_thing = victim.head
-					if( victim.head.flags_inventory & COVERMOUTH )
-						mouth_covered = 1
-						safe_thing = victim.head
-				if(victim.glasses)
-					eyes_covered = 1
-					if( !safe_thing )
-						safe_thing = victim.glasses
-				if( eyes_covered && mouth_covered )
-					to_chat(victim, SPAN_WARNING("Your [safe_thing.name] protects you from the pepperspray!"))
-					return
-				else if( eyes_covered )	// Reduced effects if partially protected
-					to_chat(victim, SPAN_WARNING("Your [safe_thing] protect you from most of the pepperspray!"))
-					victim.eye_blurry = max(M.eye_blurry, 5)
-					victim.Stun(5)
-					//victim.KnockOut(10)
-					return
-				else if( mouth_covered ) // Mouth cover is better than eye cover
-					to_chat(victim, SPAN_WARNING("Your [safe_thing] protects your face from the pepperspray!"))
-					if(!(victim.species && (victim.species.flags & NO_PAIN)))
-						victim.emote("scream")
-					victim.eye_blurry = max(M.eye_blurry, 25)
-					victim.eye_blind = max(M.eye_blind, 10)
-					victim.drop_held_item()
-					return
-				else // Oh dear :D
-					if(!(victim.species && (victim.species.flags & NO_PAIN)))
-						victim.emote("scream")
-					to_chat(victim, SPAN_WARNING("You're sprayed directly in the eyes with pepperspray!"))
-					victim.eye_blurry = max(M.eye_blurry, 25)
-					victim.eye_blind = max(M.eye_blind, 10)
-					victim.Stun(5)
-					victim.KnockDown(5)
-					//victim.KnockOut(10)
-					//victim.drop_held_item()
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(!M)
-			M = holder.my_atom
-		if(!data)
-			data = 1
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(H.species && !(H.species.flags & (NO_PAIN|IS_SYNTHETIC)) )
-				switch(data)
-					if(1)
+/datum/reagent/condensedcapsaicin/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)
+	if(!istype(M, /mob/living) || has_species(M,"Horror"))
+		return
+
+	if(method == TOUCH)
+		if(istype(M, /mob/living/carbon/human))
+			var/mob/living/carbon/human/victim = M
+			var/trained_human = FALSE
+			if(skillcheck(victim, SKILL_POLICE, SKILL_POLICE_MP))
+				trained_human = TRUE
+
+			if(trained_human)
+				victim.eye_blurry = max(M.eye_blurry, 5)
+				to_chat(victim, SPAN_WARNING("Your training protects you from the pepperspray!"))
+				return
+
+			if(!(victim.species && (victim.species.flags & NO_PAIN)))
+				victim.emote("scream")
+				to_chat(victim, SPAN_WARNING("You're sprayed directly in the eyes with pepperspray!"))
+				victim.eye_blurry = max(M.eye_blurry, 25)
+				victim.eye_blind = max(M.eye_blind, 10)
+				victim.Stun(3)
+				victim.KnockDown(3)
+
+/datum/reagent/condensedcapsaicin/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) 
+		return
+	if(!M)
+		M = holder.my_atom
+	if(!data)
+		data = 1
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.species && !(H.species.flags & (NO_PAIN|IS_SYNTHETIC)) )
+			switch(data)
+				if(1)
+					to_chat(H, SPAN_DANGER("<b>You feel like your insides are burning !</b>"))
+				if(2 to INFINITY)
+					H.apply_effect(4,AGONY,0)
+					if(prob(5))
+						H.visible_message(SPAN_WARNING("[H] [pick("dry heaves!","coughs!","splutters!")]"))
 						to_chat(H, SPAN_DANGER("<b>You feel like your insides are burning !</b>"))
-					if(2 to INFINITY)
-						H.apply_effect(4,AGONY,0)
-						if(prob(5))
-							H.visible_message(SPAN_WARNING("[H] [pick("dry heaves!","coughs!","splutters!")]"))
-							to_chat(H, SPAN_DANGER("<b>You feel like your insides are burning !</b>"))
-		holder.remove_reagent("frostoil", 5)
-		holder.remove_reagent(src.id, FOOD_METABOLISM)
-		data++
+	holder.remove_reagent("frostoil", 5)
+	holder.remove_reagent(src.id, FOOD_METABOLISM)
+	data++
 
 /datum/reagent/frostoil
 	name = "Frost Oil"

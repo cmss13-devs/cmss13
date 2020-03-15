@@ -64,11 +64,6 @@
 
 	var/style = "body"
 
-	var/sound_to_play
-	if(istype(speaker, /mob/living/silicon/decoy/ship_ai)) //For the AI stuff. TODO: Change.
-		var/mob/living/silicon/decoy/ship_ai/AI = speaker
-		sound_to_play = AI.ai_sound
-
 	//non-verbal languages are garbled if you can't see the speaker. Yes, this includes if they are inside a closet.
 	if (language && (language.flags & NONVERBAL))
 		if (!speaker || (src.sdisabilities & BLIND || src.blinded) || !(speaker in view(src)))
@@ -169,15 +164,11 @@
 			to_chat(src, "[part_a][comm_paygrade][track][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span>")
 		else
 			to_chat(src, "<span class=\"[fontsize_style]\">[part_a][comm_paygrade][track][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span></span>")
-		if(sound_to_play) 
-			src << sound(sound_to_play, volume = 65)
 	else
 		if(!command)
 			to_chat(src, "[part_a][comm_paygrade][speaker_name][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span>")
 		else
 			to_chat(src, "<span class=\"[fontsize_style]\">[part_a][comm_paygrade][speaker_name][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span></span>")
-		if(sound_to_play) 
-			src << sound(sound_to_play, volume = 65)
 
 /mob/proc/hear_signlang(var/message, var/verb = "gestures", var/datum/language/language, var/mob/speaker = null)
 	var/comm_paygrade = ""

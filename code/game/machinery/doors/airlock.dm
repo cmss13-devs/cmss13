@@ -45,6 +45,8 @@
 	var/damage_cap = HEALTH_DOOR // Airlock gets destroyed
 	var/autoname = FALSE
 
+	var/announce_hacked = TRUE
+
 /obj/structure/machinery/door/airlock/bumpopen(mob/living/user as mob) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
 	if(istype(user) && !issilicon(user))
 		if(isElectrified())
@@ -75,13 +77,15 @@
 	else if(dam > 0)
 		to_chat(user, SPAN_WARNING("It looks slightly damaged."))
 
-/obj/structure/machinery/door/airlock/proc/take_damage(dam)
+/obj/structure/machinery/door/airlock/proc/take_damage(var/dam, var/mob/M)
 	if(!dam || unacidable)
 		return FALSE
 
 	damage = max(0, damage + dam)
 
 	if(damage >= damage_cap)
+		if(M)
+			M.count_niche_stat(STATISTICS_NICHE_DESCTRUCTION_DOORS, 1)
 		destroy_airlock()
 		return TRUE
 
@@ -129,10 +133,10 @@
 	bullet_ping(Proj)
 	if(Proj.ammo.damage)
 		if(Proj.ammo.flags_ammo_behavior & AMMO_ROCKET)
-			take_damage(Proj.ammo.damage * 4) // rockets wreck airlocks
+			take_damage(Proj.ammo.damage * 4, Proj.firer) // rockets wreck airlocks
 			return TRUE
 		else
-			take_damage(Proj.ammo.damage)
+			take_damage(Proj.ammo.damage, Proj.firer)
 			return TRUE
 	return FALSE
 
@@ -461,6 +465,11 @@
 				mend(wireId)
 			else
 				cut(wireId)
+
+			if(announce_hacked && z == MAIN_SHIP_Z_LEVEL)
+				announce_hacked = FALSE
+				new /obj/effect/decal/prints(get_turf(src), usr, "The fingerprint contains oil and wire pieces.")
+				ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
 
 		else if(href_list["pulse"])
 			var/wireId = text2num(href_list["pulse"])

@@ -27,6 +27,19 @@
 		if(r1 >= 9)
 			overlays += image(icon, icon_state = "almayer_deco_wall[r2]")
 
+/turf/closed/wall/almayer/take_damage(dam, var/mob/M)
+	var/damage_check = max(0, damage + dam)
+	if(damage_check >= damage_cap && M)
+		new /obj/effect/decal/prints(get_turf(src), M, "The fingerprint contains specks of metal and dirt.")
+		ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
+
+	..()
+
+/turf/closed/wall/almayer/reinforced
+	name = "reinforced hull"
+	desc = "A reinforced metal wall used to seperate rooms and make up the ship."
+	damage_cap = HEALTH_WALL_REINFORCED
+	
 /turf/closed/wall/almayer/outer
 	name = "outer hull"
 	desc = "A metal wall used to seperate space from the ship"
@@ -34,6 +47,9 @@
 	//icon_state = "testwall0_debug" //Uncomment to check hull in the map editor.
 	walltype = WALL_HULL
 	hull = 1 //Impossible to destroy or even damage. Used for outer walls that would breach into space, potentially some special walls
+
+/turf/closed/wall/almayer/outer/take_damage(dam, var/mob/M)
+	return
 
 /turf/closed/wall/almayer/white
 	walltype = WALL_WHITE

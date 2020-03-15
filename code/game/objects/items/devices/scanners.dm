@@ -256,18 +256,3 @@ FORENSIC SCANNER
 	name = "advanced reagent scanner"
 	icon_state = "adv_spectrometer"
 	details = 1
-	
-
-
-
-
-
-/obj/item/device/forensic_scanner
-	name = "forensic scanner"
-	desc = "Used to scan objects for DNA and fingerprints."
-	icon_state = "forensic1"
-	w_class = SIZE_MEDIUM
-	item_state = "electronic"
-	flags_atom = FPRINT|CONDUCT
-	flags_item = NOBLUDGEON
-	flags_equip_slot = SLOT_WAIST

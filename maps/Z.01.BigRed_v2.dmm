@@ -100,6 +100,9 @@
 	dir = 4
 	},
 /area/bigredv2/outside/space_port)
+"aao" = (
+/turf/closed/wall/rock/red,
+/area/bigredv2/outside/nw)
 "aap" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	tag = "icon-landingstripe (WEST)";
@@ -287,16 +290,14 @@
 	},
 /area/bigredv2/outside/telecomm)
 "aaL" = (
-/turf/open/floor/plating,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 9
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "central"
 	},
-/turf/open/floor/plating{
-	tag = "icon-platingdmg2 (WEST)";
-	icon_state = "platingdmg2";
-	dir = 8
+/turf/open/mars_cave{
+	tag = "icon-mars_dirt_6";
+	icon_state = "mars_dirt_6"
 	},
-/area/bigredv2/outside/space_port)
+/area/bigredv2/outside/filtration_plant)
 "aaM" = (
 /obj/structure/machinery/vending/snack,
 /obj/structure/machinery/light{
@@ -308,6 +309,15 @@
 	dir = 2
 	},
 /area/bigredv2/outside/medical)
+"aaN" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "central"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_9";
+	icon_state = "mars_cave_9"
+	},
+/area/bigredv2/outside/filtration_plant)
 "aaO" = (
 /turf/open/floor{
 	tag = "icon-dark";
@@ -370,6 +380,15 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
+"aaV" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "central"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_14";
+	icon_state = "mars_cave_14"
+	},
+/area/bigredv2/outside/filtration_plant)
 "aaW" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
@@ -381,6 +400,15 @@
 	dir = 2
 	},
 /area/bigredv2/outside/space_port)
+"aaX" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "central"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_20";
+	icon_state = "mars_cave_20"
+	},
+/area/bigredv2/outside/filtration_plant)
 "aaY" = (
 /obj/structure/table,
 /obj/effect/spawner/random/toolbox,
@@ -927,6 +955,15 @@
 	icon_state = "warnplate"
 	},
 /area/bigredv2/outside/space_port)
+"aci" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "central"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_dirt_4";
+	icon_state = "mars_dirt_4"
+	},
+/area/bigredv2/outside/filtration_plant)
 "acj" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -942,6 +979,22 @@
 	icon_state = "mars_cave_23"
 	},
 /area/bigredv2/caves_north)
+"acl" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "central"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_2";
+	icon_state = "mars_cave_2"
+	},
+/area/bigredv2/outside/filtration_plant)
+"acm" = (
+/obj/item/tool/pickaxe,
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_20";
+	icon_state = "mars_cave_20"
+	},
+/area/bigredv2/outside/filtration_plant)
 "acn" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating,
@@ -1370,6 +1423,15 @@
 	dir = 4
 	},
 /area/bigredv2/outside/marshall_office)
+"adq" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "central"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_19";
+	icon_state = "mars_cave_19"
+	},
+/area/bigredv2/outside/filtration_plant)
 "adr" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -1424,6 +1486,15 @@
 	dir = 4
 	},
 /area/bigredv2/outside/space_port)
+"adx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "central"
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/filtration_plant)
 "ady" = (
 /obj/structure/bed/chair,
 /turf/open/floor{
@@ -1875,6 +1946,10 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/telecomm)
+"aeE" = (
+/obj/effect/landmark/resource_node/plasma/marine/lz1,
+/turf/open/mars,
+/area/bigredv2/outside/nw)
 "aeF" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -2046,6 +2121,25 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/telecomm)
+"afd" = (
+/turf/open/floor/plating,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor/plating{
+	tag = "icon-platingdmg2 (WEST)";
+	icon_state = "platingdmg2";
+	dir = 8
+	},
+/area/bigredv2/outside/space_port)
+"afe" = (
+/obj/effect/landmark/resource_node_activator/landing/lz1,
+/turf/open/mars,
+/area/bigredv2/outside/nw)
+"aff" = (
+/obj/effect/landmark/resource_node/plasma/marine/lz2,
+/turf/open/mars,
+/area/bigredv2/outside/w)
 "afg" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
@@ -2198,6 +2292,10 @@
 	dir = 2
 	},
 /area/bigredv2/caves/lambda/xenobiology)
+"afy" = (
+/obj/effect/landmark/resource_node_activator/landing/lz2,
+/turf/open/mars,
+/area/bigredv2/outside/w)
 "afz" = (
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/research)
@@ -2548,6 +2646,13 @@
 	dir = 6
 	},
 /area/bigredv2/outside/space_port)
+"agp" = (
+/obj/effect/landmark/resource_node/plasma/marine/lz2,
+/turf/open/mars{
+	tag = "icon-mars_dirt_10";
+	icon_state = "mars_dirt_10"
+	},
+/area/bigredv2/outside/w)
 "agq" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
@@ -2580,6 +2685,13 @@
 	dir = 5
 	},
 /area/bigredv2/outside/space_port)
+"agt" = (
+/obj/effect/landmark/resource_node/plasma/marine/lz2,
+/turf/open/mars_cave{
+	tag = "icon-mars_dirt_4";
+	icon_state = "mars_dirt_4"
+	},
+/area/bigredv2/outside/w)
 "agu" = (
 /obj/effect/landmark/map_tag{
 	name = "Solaris Ridge"
@@ -2750,6 +2862,24 @@
 	dir = 2
 	},
 /area/bigredv2/caves/lambda/xenobiology)
+"agO" = (
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "east_caves"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_18";
+	icon_state = "mars_cave_18"
+	},
+/area/bigredv2/caves_east)
+"agP" = (
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "east_caves"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_2";
+	icon_state = "mars_cave_2"
+	},
+/area/bigredv2/caves_east)
 "agQ" = (
 /turf/open/floor{
 	tag = "icon-darkpurple2 (NORTH)";
@@ -2757,6 +2887,12 @@
 	dir = 1
 	},
 /area/bigredv2/caves/lambda/xenobiology)
+"agR" = (
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "east_caves"
+	},
+/turf/open/mars_cave,
+/area/bigredv2/caves_east)
 "agS" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -2810,6 +2946,15 @@
 	dir = 1
 	},
 /area/bigredv2/caves/lambda/xenobiology)
+"agY" = (
+/obj/effect/landmark/resource_node_activator/hive{
+	node_group = "east_caves"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_2";
+	icon_state = "mars_cave_2"
+	},
+/area/bigredv2/caves_east)
 "agZ" = (
 /obj/structure/table,
 /obj/structure/machinery/light/small{
@@ -2868,6 +3013,15 @@
 	dir = 8
 	},
 /area/bigredv2/outside/space_port)
+"ahf" = (
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "lambda"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_6";
+	icon_state = "mars_cave_6"
+	},
+/area/bigredv2/caves_lambda)
 "ahg" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating{
@@ -2938,6 +3092,12 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshall_office)
+"ahq" = (
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "lambda"
+	},
+/turf/open/mars_cave,
+/area/bigredv2/caves_lambda)
 "ahr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
@@ -2956,6 +3116,15 @@
 /obj/structure/machinery/vending/security,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
+"ahv" = (
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "lambda"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_7";
+	icon_state = "mars_cave_7"
+	},
+/area/bigredv2/caves_lambda)
 "ahw" = (
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
@@ -3234,6 +3403,15 @@
 	icon_state = "redcorner"
 	},
 /area/bigredv2/outside/marshall_office)
+"aig" = (
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "lambda"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_4";
+	icon_state = "mars_cave_4"
+	},
+/area/bigredv2/caves_lambda)
 "aih" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/security/glass{
@@ -3282,6 +3460,15 @@
 	icon_state = "freezerfloor"
 	},
 /area/bigredv2/caves/lambda/xenobiology)
+"aim" = (
+/obj/effect/landmark/resource_node_activator/hive{
+	node_group = "lambda"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_2";
+	icon_state = "mars_cave_2"
+	},
+/area/bigredv2/caves_lambda)
 "ain" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
@@ -3297,6 +3484,15 @@
 	dir = 8
 	},
 /area/bigredv2/caves/lambda/xenobiology)
+"aip" = (
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "lambda"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_8";
+	icon_state = "mars_cave_8"
+	},
+/area/bigredv2/caves_lambda)
 "aiq" = (
 /obj/structure/largecrate/random,
 /turf/open/floor{
@@ -3550,6 +3746,15 @@
 	dir = 2
 	},
 /area/bigredv2/outside/marshall_office)
+"aiY" = (
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "eta"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_7";
+	icon_state = "mars_cave_7"
+	},
+/area/bigredv2/caves_research)
 "aiZ" = (
 /obj/structure/machinery/computer/security,
 /obj/structure/table,
@@ -3582,6 +3787,15 @@
 	icon_state = "redcorner"
 	},
 /area/bigredv2/outside/marshall_office)
+"ajd" = (
+/obj/effect/landmark/resource_node_activator/hive{
+	node_group = "eta"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_5";
+	icon_state = "mars_cave_5"
+	},
+/area/bigredv2/caves_research)
 "aje" = (
 /obj/structure/pipes/vents/pump/on,
 /turf/open/floor,
@@ -3614,10 +3828,43 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
+"ajk" = (
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "eta"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_2";
+	icon_state = "mars_cave_2"
+	},
+/area/bigredv2/caves_research)
+"ajl" = (
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "eta"
+	},
+/turf/open/mars_cave,
+/area/bigredv2/caves_research)
+"ajm" = (
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "central_caves"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_2";
+	icon_state = "mars_cave_2"
+	},
+/area/bigredv2/caves_se)
 "ajn" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
+"ajo" = (
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "eta"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_5";
+	icon_state = "mars_cave_5"
+	},
+/area/bigredv2/caves_research)
 "ajp" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -3951,6 +4198,21 @@
 	dir = 1
 	},
 /area/bigredv2/outside/nw)
+"aka" = (
+/obj/effect/landmark/resource_node_activator/hive{
+	node_group = "central_caves"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_2";
+	icon_state = "mars_cave_2"
+	},
+/area/bigredv2/caves_se)
+"akb" = (
+/obj/effect/landmark/resource_node_activator{
+	node_group = "central"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/filtration_plant)
 "akd" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -9688,12 +9950,6 @@
 	icon_state = "mars_cave_7"
 	},
 /area/bigredv2/caves/lambda/research)
-"ayF" = (
-/turf/open/mars_cave{
-	tag = "icon-mars_cave_4";
-	icon_state = "mars_cave_4"
-	},
-/area/bigredv2/caves_lambda)
 "ayG" = (
 /obj/structure/bed/roller,
 /turf/open/floor{
@@ -32545,13 +32801,6 @@
 /obj/item/disk/objective,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
-"iAj" = (
-/obj/item/tool/pickaxe,
-/turf/open/mars_cave{
-	tag = "icon-mars_cave_14";
-	icon_state = "mars_cave_14"
-	},
-/area/bigredv2/outside/filtration_plant)
 "iAF" = (
 /turf/open/mars_cave{
 	tag = "icon-mars_cave_11";
@@ -42668,9 +42917,9 @@ aMB
 aXK
 aXK
 aXK
+aff
 aYF
-aYF
-aYF
+aff
 bcp
 aSB
 aVH
@@ -42885,10 +43134,10 @@ aMB
 aXH
 aXH
 aXK
+aff
 aYF
 aYF
-aYF
-bcp
+agp
 aSB
 aVH
 bdZ
@@ -43103,7 +43352,7 @@ aXH
 aXH
 aXK
 aYF
-aYF
+afy
 aYF
 bcq
 aSB
@@ -43319,7 +43568,7 @@ aMB
 aXH
 aXH
 aXK
-aYF
+aff
 bbb
 aYF
 bcp
@@ -43537,9 +43786,9 @@ aXH
 aXH
 aXK
 aYF
-aYF
+aff
 bbc
-aSB
+agt
 aSB
 aVG
 bdZ
@@ -43693,7 +43942,7 @@ aah
 aeF
 afg
 afg
-aaL
+afd
 aae
 ahV
 ahV
@@ -46730,8 +46979,8 @@ aac
 aac
 aac
 aac
-aeI
-aeI
+aao
+aeE
 aeI
 aeI
 aiA
@@ -46947,10 +47196,10 @@ acp
 acp
 aac
 aac
+aeE
 aeI
 aeI
-aeI
-aeI
+aeE
 aiB
 ahP
 ajy
@@ -47165,10 +47414,10 @@ acp
 aac
 aac
 aeI
-aeI
+afe
 ahi
 aeI
-aeI
+aeE
 aiA
 ajA
 akd
@@ -47380,9 +47629,9 @@ adh
 adh
 acp
 aac
+aeE
 aeI
-aeI
-aeI
+aeE
 aeI
 aeI
 aeI
@@ -47596,8 +47845,8 @@ adi
 adz
 adz
 acp
-aeI
-aeI
+aao
+aeE
 aeI
 aeI
 aeI
@@ -54272,7 +54521,7 @@ bwx
 pDT
 tRI
 jrD
-jrD
+ajk
 jcR
 jrD
 jrD
@@ -54491,7 +54740,7 @@ tRI
 jrD
 jrD
 jrD
-oxp
+ajo
 jrD
 jrD
 jrD
@@ -54705,7 +54954,7 @@ xaW
 bDb
 pDT
 tRI
-jrD
+ajk
 jrD
 jrD
 oxp
@@ -54921,11 +55170,11 @@ rfe
 qTC
 rfe
 pDT
-tRI
+aiY
 jrD
+ajk
 jrD
-jrD
-oxp
+ajd
 jrD
 jrD
 jrD
@@ -55141,7 +55390,7 @@ pDT
 tRI
 jrD
 jrD
-jrD
+ajk
 oxp
 jrD
 jcR
@@ -55574,7 +55823,7 @@ bDd
 pDT
 aac
 cOl
-rnc
+ajl
 rnc
 jrD
 jrD
@@ -58324,7 +58573,7 @@ aac
 aac
 aac
 aac
-vbh
+acl
 wcw
 wcw
 wcw
@@ -58756,7 +59005,7 @@ bkt
 bkt
 aac
 aac
-bpr
+aaV
 iQw
 gXO
 gYe
@@ -58972,12 +59221,12 @@ bnl
 blX
 aac
 aac
-bpc
+aaL
 gXO
 gXO
 bpc
-nUp
-vbh
+aaX
+acl
 bMf
 gXO
 nUp
@@ -59194,8 +59443,8 @@ bpc
 gXO
 boA
 gXO
-nUp
-iAj
+acm
+aaV
 gXO
 gXO
 gXO
@@ -59625,9 +59874,9 @@ fbF
 bWk
 bkU
 bkU
-bkU
+akb
 qpn
-gXO
+aci
 gXO
 gXO
 gYe
@@ -59845,10 +60094,10 @@ boA
 bkU
 gXO
 gXO
-gYe
+adq
 bLd
 vbh
-vbh
+acl
 vbh
 aac
 lla
@@ -60274,14 +60523,14 @@ bmL
 bmL
 bkt
 aac
-bMf
+aaN
 gXO
 bkU
 mzV
 mDk
 kuw
 vbh
-oTf
+adx
 aac
 aac
 aac
@@ -60492,11 +60741,11 @@ bkU
 bkt
 aac
 aac
-bMf
+aaN
 gXO
 boA
 bkU
-nUp
+aaX
 vbh
 aac
 aac
@@ -60712,7 +60961,7 @@ aac
 iYR
 bLd
 oTf
-gXO
+aci
 gXO
 nUp
 vbh
@@ -72263,7 +72512,7 @@ nBa
 nBa
 nBa
 nBa
-nBa
+ajm
 nBa
 nBa
 aac
@@ -72696,10 +72945,10 @@ nBa
 nBa
 nBa
 nBa
+aka
 nBa
 nBa
-nBa
-nBa
+ajm
 aac
 aac
 aac
@@ -72911,11 +73160,11 @@ nBa
 nBa
 nBa
 nBa
+ajm
 nBa
 nBa
 nBa
-nBa
-nBa
+ajm
 aac
 aac
 aac
@@ -73129,7 +73378,7 @@ nBa
 nBa
 nBa
 nBa
-nBa
+ajm
 nBa
 nBa
 nBa
@@ -73348,7 +73597,7 @@ nBa
 nBa
 nBa
 nBa
-nBa
+ajm
 aac
 aac
 aac
@@ -73564,7 +73813,7 @@ nBa
 nBa
 nBa
 nBa
-nBa
+ajm
 aac
 aac
 aac
@@ -73947,7 +74196,7 @@ gCE
 gCE
 gCE
 gCE
-gCE
+agP
 gCE
 gCE
 gCE
@@ -74164,8 +74413,8 @@ gCE
 gCE
 gCE
 gCE
-gCE
-gCE
+agY
+agP
 gCE
 gCE
 qFY
@@ -74379,7 +74628,7 @@ aac
 aac
 ecK
 gCE
-gCE
+agP
 gCE
 gCE
 gCE
@@ -74594,7 +74843,7 @@ usG
 ohD
 aac
 aac
-usG
+agO
 gCE
 gCE
 gCE
@@ -74812,10 +75061,10 @@ aac
 aac
 aac
 aac
-usG
+agO
 gpg
-gpg
-gpg
+agR
+agR
 gpg
 ohD
 aac
@@ -75401,7 +75650,7 @@ iCL
 aac
 aac
 jgW
-ayF
+aig
 aac
 aac
 tIq
@@ -75615,11 +75864,11 @@ atP
 auA
 avn
 atP
-gXp
+ahf
 gXp
 eFh
 tQw
-amG
+aip
 tIq
 tIq
 aAU
@@ -75834,7 +76083,7 @@ avo
 atP
 wQC
 tQw
-wQC
+ahv
 gXp
 eFh
 tIq
@@ -76050,9 +76299,9 @@ auC
 avp
 iCL
 arM
-gXp
+ahf
 axU
-tQw
+aim
 eFh
 tIq
 aAU
@@ -76484,7 +76733,7 @@ auA
 avn
 atP
 gmN
-xFZ
+ahq
 axV
 tQw
 eFh
@@ -76702,8 +76951,8 @@ avq
 avS
 aac
 aac
-arM
-tQw
+ahv
+axV
 eFh
 hCr
 aAW

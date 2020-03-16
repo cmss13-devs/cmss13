@@ -7,6 +7,7 @@
 	melee_damage_upper = XENO_DAMAGE_LOWPLUS
 	plasma_gain = XENO_PLASMA_GAIN_HIGHMED
 	plasma_max = XENO_PLASMA_VERYHIGH
+	crystal_max = XENO_CRYSTAL_LOW
 	armor_deflection = XENO_NO_ARMOR
 	max_health = XENO_HEALTH_LOWMEDIUM
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
@@ -70,6 +71,7 @@
 		/datum/action/xeno_action/plant_weeds,
 		/datum/action/xeno_action/choose_resin,
 		/datum/action/xeno_action/activable/secrete_resin,
+		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/activable/transfer_plasma,
 		/datum/action/xeno_action/activable/corrosive_acid/drone,
 		/datum/action/xeno_action/emit_pheromones

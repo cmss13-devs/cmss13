@@ -31,6 +31,9 @@
 	stat("Time:","[worldtime2text()]")
 
 	stat("Plasma:", "[round(plasma_stored)]/[round(plasma_max)]")
+	stat("Plasmagas:", "[round(crystal_stored)]/[round(crystal_max)]")
+	if(hive && hive.crystal_stored)
+		stat("Hive Plasmagas:", "[hive.crystal_stored]")
 
 	if(caste_name == "Bloody Larva" || caste_name == "Predalien Larva")
 		stat("Evolve Progress:", "[round(amount_grown)]/[max_grown]")
@@ -95,6 +98,13 @@
 		stat("Slashing:", "LIMITED")
 	else
 		stat("Slashing:", "FORBIDDEN")
+
+	if(hive && hive.construction_allowed == 1)
+		stat("Construction Placement:", "LEADERS")
+	else if(hive && hive.construction_allowed == 2)
+		stat("Construction Placement:", "ANYONE")
+	else
+		stat("Construction Placement:", "QUEEN")
 
 	if(hive && !hive.hive_orders)
 		stat("Hive Orders:", "-")
@@ -467,11 +477,9 @@
 		if(istype(O, /obj/effect/alien/egg))
 			to_chat(src, SPAN_WARNING("There's already an egg."))
 			return
-		/* Resolve this line once structures are resolved.
 		if(locate(/obj/effect/alien/resin/special) in range(1, src))
 			to_chat(src, SPAN_WARNING("There is an important structure too close to you."))
 			return
-		*/
 		if(istype(O, /obj/structure/mineral_door) || istype(O, /obj/effect/alien/resin))
 			has_obstacle = TRUE
 			break

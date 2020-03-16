@@ -25,6 +25,7 @@
 /datum/game_mode/infection/post_setup()
 	initialize_post_survivor_list()
 	initialize_post_marine_gear_list()
+	initialize_map_resource_list()
 	for(var/mob/new_player/np in player_list)
 		np.new_player_panel_proc()
 	spawn(50)

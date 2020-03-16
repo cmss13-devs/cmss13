@@ -369,6 +369,8 @@
 			to_chat(user, "It is deep underground. The ceiling above is metal.")
 		if(CEILING_REINFORCED_METAL)
 			to_chat(user, "The ceiling above is heavy reinforced metal. Nothing is getting through that.")
+		if(CEILING_RESIN)
+			to_chat(user, "The ceiling above is made of resin.")
 
 /turf/proc/wet_floor()
 	return

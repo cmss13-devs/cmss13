@@ -1973,3 +1973,59 @@ var/list/WALLITEMS = list(
 
 /proc/remove_timed_overlay(var/atom/target, overlay)
 	target.overlays -= overlay
+
+/*
+	Returns a list of random-looking, zero-sum variances.
+
+	Imagine a straight line divided up into n segments,
+	then divide each segment into 2 subsegments again, so each original segment gets "its own point" that divides the subsegments
+	Then displace the first segment's dividing point by e.g. 5.
+	Then displace the second segment's dividing point by -5.
+	Then displace the third segment's dividing point by 5, and so on, alternating between a displacement of 5 and -5
+	(If there's an odd number of segments just don't displace the last point at all)
+
+	At the end, you'll have a zig-zaggy line. You then go through each segment end and
+	take away/add some random amount of displacement from its point. If you keep track of how much
+	net displacement has been added/removed, you can distribute it among other points
+	and end up with net 0 displacement (i.e. 0 total variance)
+
+	Basically, this is what happens: https://i.imgur.com/AuY7HHd.png
+*/
+/proc/get_random_zero_sum_variances(var/amount, var/max_variance)
+	// Displace each "point" to max variance
+	var/list/variances[amount]
+	for(var/i in 1 to variances.len)
+		if(i == variances.len && (variances.len % 2))
+			variances[i] = 0
+		else
+			variances[i] = (i % 2 ? 1 : -1) * max_variance
+
+	// Jiggle each variance a random amount towards the "center line"/0 variance
+	var/net_displacement = 0
+	for(var/i in 1 to variances.len)
+		var/to_redistribute = (i % 2 ? -1 : 1) * rand(0, max_variance/2)
+
+		net_displacement += to_redistribute
+		variances[i] += to_redistribute
+
+	// Lucky! Everything jiggled towards 0 in a way that left 0 net displacement
+	if(!net_displacement)
+		return variances
+
+	// Redistribute the net displacement evenly on the side of the center line that needs it
+	// Only half the points are gonna be affected.
+	var/to_redistribute = abs(Ceiling(net_displacement / (variances.len/2)))
+	for(var/i in 1 to variances.len)
+		if(!net_displacement)
+			break
+
+		// Positive net displacement, only distribute to points that were given negative variance to begin with
+		if(net_displacement > 0 && !(i % 2))
+			variances[i] -= min(abs(net_displacement), to_redistribute)
+			net_displacement -= to_redistribute
+		// Negative net displacement, only distribute to points that were given positive variance to begin with
+		else if(net_displacement < 0 && i % 2)
+			variances[i] += min(abs(net_displacement), to_redistribute)
+			net_displacement += to_redistribute
+
+	return variances

@@ -215,10 +215,8 @@
 					message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
 					playsound(src, 'sound/misc/queen_alarm.ogg')
 					M.count_niche_stat(STATISTICS_NICHE_FLIGHT)
-					/* Resolve this line once structures are resolved.
 					if(Q.hive)
 						Q.hive.remove_all_special_structures()
-					*/
 					if(bomb_set)
 						for(var/obj/structure/machinery/nuclearbomb/bomb in world)
 							bomb.end_round = FALSE

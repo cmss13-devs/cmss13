@@ -73,7 +73,7 @@ Additional game mode variables.
 	var/monkey_amount		= 0 //How many monkeys do we spawn on this map ?
 	var/list/monkey_types	= list() //What type of monkeys do we spawn
 	var/latejoin_tally		= 0 //How many people latejoined Marines
-	var/latejoin_larva_drop = 6 //A larva will spawn in once the tally reaches this level. If set to 0, no latejoin larva drop
+	var/latejoin_larva_drop = LATEJOIN_LARVA_DROP_PRE //A larva will spawn in once the tally reaches this level. If set to 0, no latejoin larva drop
 
 	//Role Authority set up.
 	var/role_instruction 	= 0 // 1 is to replace, 2 is to add, 3 is to remove.
@@ -85,7 +85,7 @@ Additional game mode variables.
 
 	var/lz_selection_timer = MINUTES_25 //25 minutes in
 	var/round_time_resin = MINUTES_40	//Time for when resin placing is allowed close to LZs
-	var/round_time_burrowed_cutoff = MINUTES_25	//Time for when free burrowed larvae stop spawning. Resolve this line once structures are resolved.
+	var/round_time_burrowed_cutoff = MINUTES_25	//Time for when free burrowed larvae stop spawning.
 	var/resin_allow_finished
 
 	var/flags_round_type = NO_FLAGS
@@ -134,7 +134,7 @@ Additional game mode variables.
 			L -= M
 			M.roundstart_picked = TRUE
 			predators += M
-			if(!(RoleAuthority.roles_whitelist[M.current.ckey] & (WHITELIST_YAUTJA_ELITE|WHITELIST_YAUTJA_ELDER|WHITELIST_YAUTJA_COUNCIL))) 
+			if(!(RoleAuthority.roles_whitelist[M.current.ckey] & (WHITELIST_YAUTJA_ELITE|WHITELIST_YAUTJA_ELDER|WHITELIST_YAUTJA_COUNCIL)))
 				i++
 
 /datum/game_mode/proc/initialize_post_predator_list() //TO DO: Possibly clean this using tranfer_to.
@@ -222,11 +222,11 @@ Additional game mode variables.
 	new_predator.key = pred_candidate.key
 	new_predator.mind.key = new_predator.key
 	new_predator.statistic_exempt = TRUE
-	
-	if(new_predator.client) 
+
+	if(new_predator.client)
 		new_predator.client.change_view(world.view)
 
-	if(!new_predator.client.prefs) 
+	if(!new_predator.client.prefs)
 		new_predator.client.prefs = new /datum/preferences(new_predator.client) //Let's give them one.
 
 	if(wants_elder)
@@ -476,8 +476,10 @@ Additional game mode variables.
 
 	to_chat(new_queen, "<B>You are now the alien queen!</B>")
 	to_chat(new_queen, "<B>Your job is to spread the hive.</B>")
+	to_chat(new_queen, "<B>You should start by building a hive core.</B>")
 	to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
 
+	new_queen.crystal_stored = XENO_STARTING_CRYSTAL
 	new_queen.update_icons()
 
 /datum/game_mode/proc/transform_xeno(datum/mind/ghost_mind)
@@ -547,7 +549,6 @@ Additional game mode variables.
 				if(!synth_survivor && new_survivor in possible_synth_survivors)
 					new_survivor.roundstart_picked = TRUE
 					synth_survivor = new_survivor
-					monkey_amount += 5 //Extra smallhosts will be spawned to compensate the xenos for this survivor. Resolve this line once structures are resolved.
 				else if(new_survivor in possible_human_survivors) //so we don't draft people that want to be synth survivors but not normal survivors
 					new_survivor.roundstart_picked = TRUE
 					survivors += new_survivor
@@ -854,3 +855,61 @@ Additional game mode variables.
 
 	//Scale the amount of cargo points through a direct multiplier
 	supply_controller.points = round(supply_controller.points * scale)
+
+//===================================================\\
+
+			//MAP RESOURCE INITIATLIZE\\
+
+//===================================================\\
+
+//Initializes three things: Primary, LZ, and hive nodes. Distributes resources by fractions using a total resource value determined as 3x the spawn population.
+//Resource node activation doesn't happen here. This only distributes the total resources among the resource groups.
+//Xeno resources are activated/begin growing RAPIDLY when they build their first hive core
+//Marine resources are activated/begin growing RAPIDLY when they make first landfall
+//Primary resources begin growing SLOWLY when marines make first landfall
+/datum/game_mode/proc/initialize_map_resource_list()
+	var/total_pop_size = 0
+	for(var/mob/M in player_list)
+		if(M.stat != DEAD && M.mind)
+			total_pop_size++
+
+	var/total_resources = max(RESOURCE_NODE_QUANTITY_MINIMUM, round(total_pop_size * RESOURCE_NODE_QUANTITY_PER_POP)) //This gives the total amount of resource to spawn in all nodes.
+	var/xeno_spawn_resources = total_resources * 0.2 //20% of resources go to spawn nodes, 20% per faction.
+	var/marine_spawn_resources = total_resources * 0.2
+
+	//Spawn all resource nodes
+	for(var/obj/effect/landmark/resource_node/node in world)
+		node.trigger()
+
+	//Pick our resource groups
+	var/list/node_group_pool = list()
+	for(var/obj/effect/landmark/resource_node_activator/node_group in world)
+		node_group_pool.Add(node_group)
+
+	//Setup the hive/xeno nodes
+	for(var/obj/effect/landmark/resource_node_activator/hive/hive_node_group in node_group_pool)
+		hive_node_group.amount = xeno_spawn_resources
+		node_group_pool.Remove(hive_node_group)
+
+	//Setup the LZ nodes
+	for(var/obj/effect/landmark/resource_node_activator/landing/landing_node_group in node_group_pool)
+		landing_node_group.amount = marine_spawn_resources
+		node_group_pool.Remove(landing_node_group)
+
+	if(!node_group_pool.len)
+		return
+
+	//Setup all other resource groups
+	var/main_resources = total_resources - xeno_spawn_resources - marine_spawn_resources
+	for(var/node_number in 1 to node_group_pool.len)
+		//Set amount to give to this node group as the total available
+		var/node_resources = main_resources
+
+		//If there is more than one node group, evenly split the resources among each node group
+		if(node_number != node_group_pool.len)
+			node_resources = round(main_resources / node_group_pool.len)
+			main_resources -= node_resources
+
+		// Chose an arbitrary node group and setup its resource amount
+		var/obj/effect/landmark/resource_node_activator/node_activator = pick(node_group_pool)
+		node_activator.amount = node_resources

@@ -10,6 +10,7 @@
 	max_health = XENO_HEALTH_HIGH
 	plasma_gain = XENO_PLASMA_GAIN_MED
 	plasma_max = XENO_PLASMA_HIGHMEDIUM
+	crystal_max = XENO_CRYSTAL_LOW
 	xeno_explosion_resistance = XENO_LOW_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_LOW_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
@@ -92,6 +93,7 @@
 		/datum/action/xeno_action/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/plant_weeds,
+		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/emit_pheromones,
 		/datum/action/xeno_action/activable/throw_hugger,
 		/datum/action/xeno_action/activable/retrieve_egg,

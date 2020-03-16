@@ -42,7 +42,7 @@
 /datum/hive_status_ui/proc/update_hive_location()
 	var/hive_location_name
 	if(assoc_hive.hive_location)
-		hive_location_name = strip_improper(get_area(assoc_hive.hive_location))
+		hive_location_name = strip_improper(get_area(assoc_hive.hive_location.loc))
 	data["hive_location"] = hive_location_name
 
 // Updates the sorted list of all xenos that we use as a key for all other information

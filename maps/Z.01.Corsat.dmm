@@ -1476,6 +1476,14 @@
 	tag = "icon-carpet6-2 (WEST)"
 	},
 /area/corsat/gamma/residential/lounge)
+"aeh" = (
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "omega"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/omega/biodome)
 "aei" = (
 /obj/structure/bed,
 /obj/structure/machinery/light{
@@ -1943,6 +1951,14 @@
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
+"afw" = (
+/obj/effect/landmark/resource_node_activator/hive{
+	node_group = "omega"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/omega/biodome)
 "afx" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
@@ -3877,6 +3893,12 @@
 "akz" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/sigma/hangar)
+"akA" = (
+/obj/effect/landmark/resource_node/plasma/marine/lz2,
+/turf/open/floor/corsat{
+	icon_state = "cargo"
+	},
+/area/corsat/gamma/cargo)
 "akB" = (
 /turf/closed/wall/biodome,
 /area/corsat/theta/airlock/east)
@@ -4100,6 +4122,18 @@
 /obj/item/device/camera/oldcamera,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
+"alf" = (
+/obj/effect/landmark/resource_node_activator/landing/lz1,
+/turf/open/floor/corsat{
+	icon_state = "cargo"
+	},
+/area/corsat/gamma/cargo)
+"alg" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "theta"
+	},
+/turf/open/gm/dirt,
+/area/corsat/theta/biodome)
 "alh" = (
 /turf/open/floor/corsat{
 	dir = 1;
@@ -4143,6 +4177,21 @@
 	icon_state = "retrosquares"
 	},
 /area/corsat/gamma/residential)
+"alm" = (
+/obj/effect/landmark/resource_node/plasma/marine/lz2,
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/corsat/sigma/biodome)
+"aln" = (
+/obj/effect/landmark/resource_node/plasma/marine/lz2,
+/turf/open/mars,
+/area/corsat/sigma/biodome)
+"alo" = (
+/obj/effect/landmark/resource_node_activator/landing/lz2,
+/turf/open/mars,
+/area/corsat/sigma/biodome)
 "alp" = (
 /obj/structure/machinery/door_control{
 	id = "GammaAdmin";
@@ -4159,6 +4208,14 @@
 	icon_state = "bluegrey"
 	},
 /area/corsat/gamma/administration)
+"alq" = (
+/obj/effect/landmark/resource_node_activator{
+	node_group = "theta"
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 4
+	},
+/area/corsat/theta/biodome)
 "alr" = (
 /obj/structure/table/woodentable,
 /obj/item/device/flashlight/lamp/green,
@@ -6262,6 +6319,12 @@
 	icon_state = "browncorner"
 	},
 /area/corsat/sigma/north)
+"arn" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "gamma"
+	},
+/turf/open/snow/layer2,
+/area/corsat/gamma/biodome)
 "aro" = (
 /turf/open/floor/corsat{
 	icon_state = "blue"
@@ -6327,6 +6390,12 @@
 	icon_state = "plate"
 	},
 /area/corsat/emergency_access)
+"arw" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "gamma"
+	},
+/turf/open/snow/layer0,
+/area/corsat/gamma/biodome)
 "arx" = (
 /turf/closed/wall/biodome,
 /area/corsat/gamma/freezer)
@@ -6441,6 +6510,13 @@
 	icon_state = "squareswood"
 	},
 /area/corsat/gamma/rnr/arcade)
+"arS" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "gamma"
+	},
+/turf/open/snow/layer0,
+/area/corsat/gamma/biodome)
 "arT" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
@@ -6459,6 +6535,12 @@
 "arW" = (
 /turf/closed/wall/biodome,
 /area/corsat/gamma/residential/lavatory)
+"arX" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "gamma"
+	},
+/turf/open/snow/layer3,
+/area/corsat/gamma/biodome)
 "arY" = (
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
@@ -6548,6 +6630,12 @@
 /obj/structure/closet/crate/trashcart,
 /turf/open/floor/corsat,
 /area/corsat/sigma/southeast/generator)
+"asl" = (
+/obj/effect/landmark/resource_node_activator{
+	node_group = "gamma"
+	},
+/turf/open/snow/layer0,
+/area/corsat/gamma/biodome)
 "asm" = (
 /turf/closed/wall/biodome,
 /area/corsat/gamma/residential/showers)
@@ -74586,7 +74674,7 @@ sWP
 avX
 avX
 avX
-avX
+aeh
 avX
 avX
 avX
@@ -74830,7 +74918,7 @@ azX
 sWP
 avX
 avX
-avX
+aeh
 avX
 avX
 avX
@@ -75318,11 +75406,11 @@ aaa
 aaa
 azX
 sWP
+aeh
 avX
+afw
 avX
-avX
-avX
-avX
+aeh
 avX
 avX
 aFc
@@ -75566,7 +75654,7 @@ sWP
 sWP
 aFc
 avX
-avX
+aeh
 avX
 avX
 avX
@@ -75809,7 +75897,7 @@ aSa
 azX
 azX
 sWP
-avX
+aeh
 avX
 avX
 aFc
@@ -76055,7 +76143,7 @@ aaa
 azX
 sWP
 sWP
-avX
+aeh
 avX
 avX
 avX
@@ -77918,7 +78006,7 @@ aeo
 aeo
 bfc
 bfc
-beO
+arX
 beO
 adX
 beX
@@ -78164,7 +78252,7 @@ beO
 aeo
 aeo
 beO
-beO
+arX
 adX
 aIk
 iQh
@@ -78406,8 +78494,8 @@ aeo
 jdk
 pSo
 oiQ
-kIW
-kIW
+arS
+arS
 epq
 beX
 adX
@@ -78650,7 +78738,7 @@ bfc
 bfc
 aeo
 aeo
-aIk
+arw
 aIk
 aIk
 iQh
@@ -78896,7 +78984,7 @@ bfe
 bfc
 beO
 aeo
-aIk
+asl
 dyK
 egd
 kIW
@@ -79143,7 +79231,7 @@ bfc
 aeo
 aIk
 aIk
-aIk
+arw
 aIk
 uIJ
 aIk
@@ -79387,7 +79475,7 @@ bfm
 bfj
 beO
 aIk
-aIk
+arw
 aIk
 aIk
 uIJ
@@ -79630,11 +79718,11 @@ bfl
 bft
 bff
 bfg
+arw
 aIk
 aIk
 aIk
-aIk
-aIk
+arw
 uIJ
 aIk
 iQh
@@ -79874,11 +79962,11 @@ pwp
 bfh
 bff
 bfg
-aeo
+arn
 aIk
 aIk
 aIk
-aIk
+arw
 beX
 beX
 aIk
@@ -80367,7 +80455,7 @@ beO
 aIk
 aIk
 aIk
-beO
+arX
 beO
 beO
 uIJ
@@ -93918,7 +94006,7 @@ smP
 bdy
 aKm
 aKi
-aKi
+alg
 gtX
 aKi
 aKi
@@ -94166,7 +94254,7 @@ aKi
 aKi
 gtX
 aKi
-aKi
+alg
 aKn
 xsU
 aKt
@@ -94407,7 +94495,7 @@ aKi
 bdU
 bdU
 aKi
-aKi
+alg
 aKi
 gtX
 aKi
@@ -94900,7 +94988,7 @@ aKj
 aKm
 aKi
 gtX
-aKi
+alg
 bel
 aKn
 bdZ
@@ -95141,12 +95229,12 @@ aKl
 aKi
 aKo
 aKh
-aKh
+alq
 bda
 aKi
 gtX
 aKi
-aKi
+alg
 qVs
 aKq
 aKt
@@ -95384,8 +95472,8 @@ bel
 aKi
 aKi
 aKi
-aKi
-aKi
+alg
+alg
 aKi
 aKi
 aKi
@@ -95627,7 +95715,7 @@ aKi
 aKi
 aKi
 aKi
-aKi
+alg
 aKi
 aKi
 aKi
@@ -95754,11 +95842,11 @@ aMG
 alj
 awC
 bJa
-bgt
+akA
 feg
 bgt
-awF
-bgt
+akA
+akA
 alj
 bqJ
 apI
@@ -96116,7 +96204,7 @@ aKi
 gtX
 aKi
 aKi
-aKi
+alg
 aKi
 bdU
 aKi
@@ -96125,7 +96213,7 @@ aKi
 aKi
 aKi
 aKi
-aKi
+alg
 aKi
 rRR
 aKj
@@ -96244,11 +96332,11 @@ aGn
 alj
 awC
 aAy
-bgt
+akA
 aUb
-awF
+alf
 bgt
-awF
+akA
 alj
 bqJ
 apI
@@ -96360,15 +96448,15 @@ bcX
 aKi
 gtX
 qoh
-aKi
+alg
 beS
 aKi
 aKi
+alg
 aKi
 aKi
 aKi
-aKi
-aKi
+alg
 aKp
 aKj
 aKj
@@ -96734,9 +96822,9 @@ alj
 alj
 awC
 bJa
-awF
+akA
 bgt
-awF
+akA
 bgt
 bgt
 alj
@@ -97345,7 +97433,7 @@ aKn
 bdP
 bdP
 aKk
-ezR
+alg
 aKn
 bdP
 bdP
@@ -116876,9 +116964,9 @@ bhn
 bhn
 bhn
 bhn
-bgn
+alm
 bgV
-aen
+aln
 bJE
 bdf
 aJn
@@ -117124,7 +117212,7 @@ bhn
 bhn
 bgu
 aen
-aen
+aln
 bdf
 aJn
 aJx
@@ -117366,9 +117454,9 @@ bgn
 bgn
 bgn
 bhn
-bgn
+alm
 bgv
-aen
+alo
 aen
 bdf
 aJn
@@ -117610,7 +117698,7 @@ bgn
 bgn
 bgn
 bgn
-bgn
+alm
 bgv
 aen
 aen
@@ -117858,7 +117946,7 @@ bgn
 bgu
 aen
 aen
-aen
+aln
 aen
 bdf
 aJn
@@ -118104,7 +118192,7 @@ ajq
 ajq
 ajq
 ajq
-aen
+aln
 bdf
 rLp
 aJx

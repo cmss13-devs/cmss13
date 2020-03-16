@@ -54,6 +54,10 @@
 		if(upgrade_stored >= upgrade_threshold && !is_mob_incapacitated() && !handcuffed && !legcuffed && map_tag != MAP_WHISKEY_OUTPOST)
 			INVOKE_ASYNC(src, .proc/upgrade_xeno, (upgrade + 1))
 
+	//Add on any bonuses from evopods after applying upgrade progress
+	if(hive && hive.has_special_structure(XENO_STRUCTURE_EVOPOD) && check_weeds_for_healing())
+		progress_amount += (0.2 * hive.has_special_structure(XENO_STRUCTURE_EVOPOD))
+
 	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && hive.living_xeno_queen && (hive.living_xeno_queen.ovipositor || (ticker.game_start_time + XENO_HIVE_EVOLUTION_FREETIME) >= world.time))
 		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)
 		if(evolution_stored >= evolution_threshold - 1)

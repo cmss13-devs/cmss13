@@ -14,6 +14,7 @@
 #define RESIN_NEST 8
 #define RESIN_STICKY 16
 #define RESIN_FAST 32
+#define RESIN_COLLECTOR 64
 
 #define XENO_ACTION_CLICK  0 // Just select the action (base). Toggles can use this too
 #define XENO_ACTION_ACTIVATE 1 // Actually use the action SHOULD ONLY BE USED ON ACTIVABLE ACTIONS OR ELSE WILL NOT WORK
@@ -46,6 +47,8 @@
 #define	EGG_MIN_GROWTH_TIME 100 //time it takes for the egg to mature once planted
 #define	EGG_MAX_GROWTH_TIME 150
 
+#define XENO_STARTING_CRYSTAL 100 //How much building resource the queen gets to start with
+
 // Holds defines for /datum/caste_datum, which is the primary datum for the caste system,
 // /datum/hive_status (self explanatory)
 // and some of the var defines for the Xenomorph base type.
@@ -58,6 +61,21 @@
 #define XENO_UNIVERSAL_PLASMAMULT 1.0	// Use to unilaterally buff every caste's total PLASMA.
 #define XENO_UNIVERSAL_DAMAGEMULT 1.0	// Use to unilaterally buff every caste's DAMAGE.
 
+// Weed defines
+#define WEED_LEVEL_STANDARD  1
+#define WEED_LEVEL_QUEEN     4
+#define WEED_LEVEL_HIVE      5
+
+#define WEED_RANGE_STANDARD  3
+#define WEED_RANGE_QUEEN     4
+#define WEED_RANGE_PYLON     5
+#define WEED_RANGE_CORE      7
+
+#define WEED_HEALTH_STANDARD 1
+#define WEED_HEALTH_HIVE     15
+
+#define NODE_HEALTH_STANDARD 15
+#define NODE_HEALTH_HIVE     30
 
 /////////////////////////////////////////////////////////////////////////////////////
 //
@@ -106,6 +124,11 @@
 #define XENO_PLASMA_HIGH 500 * XENO_UNIVERSAL_PLASMAMULT
 #define XENO_PLASMA_VERYHIGH 800 * XENO_UNIVERSAL_PLASMAMULT
 #define XENO_PLASMA_ULTRAHIGH 1000 * XENO_UNIVERSAL_PLASMAMULT
+
+// Resource stockpile bands
+#define XENO_CRYSTAL_LOW 50
+#define XENO_CRYSTAL_MEDIUM 100
+#define XENO_CRYSTAL_HIGH 150
 
 // Plasma gain bands
 #define XENO_PLASMA_GAIN_LOW 1
@@ -247,7 +270,7 @@
 //
 /////////////////////////////////////////////////////////////////////////////////////
 
-#define XENO_MULTIPLIER_HEALTH_YOUNG 1.0 //Resolve this line once structures are resolved. Was 0.6.
+#define XENO_MULTIPLIER_HEALTH_YOUNG 0.6
 #define XENO_MULTIPLIER_HEALTH_MATURE 1.25
 #define XENO_MULTIPLIER_HEALTH_ELDER 1.4
 #define XENO_MULTIPLIER_HEALTH_ANCIENT 1.5
@@ -265,19 +288,25 @@
 #define XENO_MULTIPLIER_PLASMA_ANCIENT 2.0
 #define XENO_MULTIPLIER_PLASMA_PRIMORDIAL 2.25
 
+#define XENO_MULTIPLIER_CRYSTAL_YOUNG 1.0
+#define XENO_MULTIPLIER_CRYSTAL_MATURE 1.1
+#define XENO_MULTIPLIER_CRYSTAL_ELDER 1.2
+#define XENO_MULTIPLIER_CRYSTAL_ANCIENT 1.3
+#define XENO_MULTIPLIER_CRYSTAL_PRIMORDIAL 1.5
+
 #define XENO_MULTIPLIER_PLASMA_GAIN_YOUNG 1.0
 #define XENO_MULTIPLIER_PLASMA_GAIN_MATURE 1.2
 #define XENO_MULTIPLIER_PLASMA_GAIN_ELDER 1.4
 #define XENO_MULTIPLIER_PLASMA_GAIN_ANCIENT 1.6
 #define XENO_MULTIPLIER_PLASMA_GAIN_PRIMORDIAL 1.8
 
-#define XENO_MULTIPLIER_ARMOR_FACTOR_YOUNG 1.0 //Resolve this line once structures are resolved. Was 0.6.
+#define XENO_MULTIPLIER_ARMOR_FACTOR_YOUNG 0.6
 #define XENO_MULTIPLIER_ARMOR_FACTOR_MATURE 1.1
 #define XENO_MULTIPLIER_ARMOR_FACTOR_ELDER 1.15
 #define XENO_MULTIPLIER_ARMOR_FACTOR_ANCIENT 1.20
 #define XENO_MULTIPLIER_ARMOR_FACTOR_PRIMORDIAL 1.30
 
-#define XENO_MULTIPLIER_EVASION_YOUNG 1.0 //Resolve this line once structures are resolved. Was 0.6.
+#define XENO_MULTIPLIER_EVASION_YOUNG 0.6
 #define XENO_MULTIPLIER_EVASION_MATURE 1.10
 #define XENO_MULTIPLIER_EVASION_ELDER 1.15
 #define XENO_MULTIPLIER_EVASION_ANCIENT 1.20
@@ -339,11 +368,14 @@
 #define XENO_SCALAR_EVASION_VERYHIGH		1.20
 #define XENO_SCALAR_EVASION_ULTRAHIGH		1.25
 
-#define XENO_STRUCTURE_BUILD_TIME           50
+#define XENO_STRUCTURE_BUILD_TIME           20
 
+#define XENO_STRUCTURE_CORE                 "hive core"
+#define XENO_STRUCTURE_PYLON                "hive pylon"
 #define XENO_STRUCTURE_POOL                 "spawn pool"
 #define XENO_STRUCTURE_EGGMORPH             "egg morpher"
 #define XENO_STRUCTURE_EVOPOD               "evolution pod"
+#define XENO_STRUCTURE_RECOVERY             "recovery node"
 
 #define RESIN_TRAP_EMPTY 0
 #define RESIN_TRAP_HUGGER 1

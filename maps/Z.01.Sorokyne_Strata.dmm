@@ -917,6 +917,15 @@
 	icon_state = "floor2"
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
+"acC" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/resource_node/plasma/marine/lz2,
+/turf/open/snow/layer3,
+/area/strata/ag/exterior/marsh)
+"acD" = (
+/obj/effect/landmark/resource_node/plasma/marine/lz2,
+/turf/open/snow/layer3,
+/area/strata/ag/exterior/marsh)
 "acE" = (
 /obj/structure/window/framed/strata,
 /turf/open/floor/strata{
@@ -1009,6 +1018,10 @@
 	},
 /turf/open/snow/layer0,
 /area/strata/ag/exterior/paths/cabin_area)
+"acQ" = (
+/obj/effect/landmark/resource_node_activator/landing/lz2,
+/turf/open/snow/layer3,
+/area/strata/ag/exterior/marsh)
 "acR" = (
 /obj/effect/decal/remains/xeno,
 /turf/open/floor/strata{
@@ -1048,6 +1061,10 @@
 	icon_state = "floor2"
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
+"acW" = (
+/obj/effect/landmark/resource_node/plasma/marine/lz2,
+/turf/open/snow/layer0,
+/area/strata/ag/exterior/marsh)
 "acX" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
@@ -1192,6 +1209,10 @@
 	},
 /turf/closed/wall/wood,
 /area/strata/ag/exterior/paths/cabin_area/minehead)
+"adr" = (
+/obj/effect/landmark/resource_node/plasma/marine/lz1,
+/turf/open/snow/layer2,
+/area/strata/ag/exterior/paths/dorms_quad)
 "ads" = (
 /obj/structure/inflatable/popped/door,
 /obj/effect/decal/cleanable/blood,
@@ -1205,6 +1226,20 @@
 	icon_state = "fake_wood"
 	},
 /area/strata/ug/interior/jungle/deep/minehead)
+"adu" = (
+/obj/effect/landmark/resource_node/plasma/marine/lz1,
+/turf/open/snow/layer0,
+/area/strata/ag/exterior/paths/dorms_quad)
+"adv" = (
+/obj/effect/decal/cleanable/generic,
+/obj/structure/platform_decoration/strata/metal,
+/obj/item/lightstick/red{
+	anchored = 1;
+	icon_state = "lightstick_red1";
+	luminosity = 2
+	},
+/turf/open/snow/layer2,
+/area/strata/ag/exterior/paths/dorms_quad)
 "adw" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/strata{
@@ -1822,6 +1857,10 @@
 /obj/effect/alien/weeds/node,
 /turf/open/floor/plating,
 /area/strata/ug/interior/jungle/deep/structures/res)
+"aeX" = (
+/obj/effect/landmark/resource_node_activator/landing/lz1,
+/turf/open/snow/layer0,
+/area/strata/ag/exterior/paths/dorms_quad)
 "aeY" = (
 /turf/closed/shuttle/ert{
 	icon_state = "upp27"
@@ -1985,6 +2024,12 @@
 	},
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/minehead/east)
+"afr" = (
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "north_jungle"
+	},
+/turf/open/gm/dirt,
+/area/strata/ug/interior/jungle/deep/minehead/south)
 "afs" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10";
@@ -2297,6 +2342,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/dorms/hive)
+"agc" = (
+/obj/effect/landmark/resource_node_activator/hive{
+	node_group = "north_jungle"
+	},
+/turf/open/gm/grass/weedable,
+/area/strata/ug/interior/jungle/deep/minehead/south)
 "agd" = (
 /obj/structure/bed/nest,
 /obj/effect/landmark/corpsespawner/scientist{
@@ -3048,6 +3099,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/dorms/hive)
+"ahS" = (
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "south_jungle"
+	},
+/turf/open/gm/dirt,
+/area/strata/ug/interior/jungle/deep/tearlake_north)
 "ahT" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
@@ -3439,6 +3496,12 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/strata/ug/interior/jungle/deep/minehead/north)
+"aiT" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "brflowers_1"
+	},
+/turf/open/gm/dirt,
+/area/strata/ug/interior/jungle/deep/tearlake_north)
 "aiU" = (
 /obj/structure/machinery/computer/security{
 	dir = 4
@@ -3534,6 +3597,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/dorms/flight_control)
+"ajh" = (
+/obj/effect/landmark/resource_node_activator/hive{
+	node_group = "south_jungle"
+	},
+/turf/open/gm/dirt,
+/area/strata/ug/interior/jungle/deep/tearlake_north)
 "aji" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/strata{
@@ -3938,6 +4007,15 @@
 	icon_state = "upp3"
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
+"akl" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "central"
+	},
+/turf/open/gm/dirtgrassborder/weedable{
+	dir = 4;
+	icon_state = "grassdirt_corner"
+	},
+/area/strata/ug/interior/jungle/platform/east/scrub)
 "akm" = (
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_1";
@@ -4093,6 +4171,18 @@
 	dir = 1
 	},
 /area/strata/ug/interior/jungle/deep/minehead/west)
+"akG" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "central"
+	},
+/turf/open/gm/grass/weedable,
+/area/strata/ug/interior/jungle/platform/east/scrub)
+"akH" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "central"
+	},
+/turf/open/gm/dirt,
+/area/strata/ug/interior/jungle/platform/east/scrub)
 "akI" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "pointybush_1"
@@ -4306,6 +4396,12 @@
 	},
 /turf/open/snow/layer1,
 /area/strata/ag/exterior/paths/north_outpost)
+"alj" = (
+/obj/effect/landmark/resource_node_activator{
+	node_group = "central"
+	},
+/turf/open/gm/dirt,
+/area/strata/ug/interior/jungle/platform/east/scrub)
 "alk" = (
 /obj/structure/closet/wardrobe/medic_white,
 /obj/structure/machinery/light/small{
@@ -4782,6 +4878,14 @@
 	icon_state = "darkyellowfull2"
 	},
 /area/strata/ag/exterior/research_decks/north)
+"amw" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "central"
+	},
+/turf/open/gm/dirtgrassborder/weedable{
+	icon_state = "grassdirt_corner"
+	},
+/area/strata/ug/interior/jungle/platform/east/scrub)
 "amy" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/item/weapon/gun/pistol/c99,
@@ -14616,11 +14720,6 @@
 	},
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/interior/dorms/bar)
-"aMG" = (
-/obj/effect/decal/cleanable/generic,
-/obj/structure/platform_decoration/strata/metal,
-/turf/open/snow/layer2,
-/area/strata/ag/exterior/paths/dorms_quad)
 "aMH" = (
 /obj/effect/decal/strata_decals/rocks/ice/ice1{
 	dir = 8
@@ -56681,8 +56780,8 @@ aFW
 aHg
 aHh
 aJV
-aHg
-aMG
+adr
+adv
 aNL
 aPh
 cjw
@@ -56871,9 +56970,9 @@ cbW
 cbW
 ctC
 aFX
-aHh
+adr
 jbB
-aHh
+adr
 aJV
 aMH
 cjw
@@ -57066,8 +57165,8 @@ aEM
 aFY
 aHh
 jbB
-jbB
-aHh
+aeX
+adr
 aMI
 cjx
 cjw
@@ -57258,9 +57357,9 @@ aDK
 aEN
 cfb
 jbB
+adu
 jbB
-jbB
-aHh
+adr
 aMJ
 vnh
 aPk
@@ -57643,7 +57742,7 @@ ciA
 aDM
 aEP
 aFY
-jbB
+adu
 aIq
 aJW
 aLn
@@ -60593,7 +60692,7 @@ uBM
 qbW
 cxv
 cxv
-cex
+acD
 cex
 kLj
 drq
@@ -60783,11 +60882,11 @@ cxv
 cxv
 cex
 rrI
-cex
+acD
 cxv
 cxv
 cxv
-cxv
+acW
 cex
 wLw
 cwS
@@ -60975,7 +61074,7 @@ wNu
 wNu
 wNu
 wNu
-egB
+acC
 wKp
 egB
 wNu
@@ -61363,10 +61462,10 @@ iff
 cxv
 cxv
 cex
-cex
+acQ
 cxv
 cxv
-cxv
+acW
 cxv
 xeH
 cwS
@@ -61555,10 +61654,10 @@ wPr
 ida
 cex
 cxv
-cex
+acD
 cxv
 cxv
-cxv
+acW
 cxv
 ilK
 cex
@@ -76025,7 +76124,7 @@ srk
 vQo
 vQo
 vQo
-vTm
+amw
 wba
 bqj
 hDX
@@ -76215,12 +76314,12 @@ gUj
 psR
 srk
 pMU
-csX
+akG
 clB
-csX
+akG
 bQw
 wZZ
-vkI
+akl
 vQo
 vQo
 vQo
@@ -76413,7 +76512,7 @@ bZU
 bZU
 wba
 bqj
-csX
+akG
 vQo
 vQo
 srk
@@ -76601,7 +76700,7 @@ bCz
 oqA
 oMa
 wba
-bmv
+akH
 bmv
 bmv
 bmv
@@ -76798,7 +76897,7 @@ jCE
 jCE
 xFc
 bmv
-bmv
+akH
 nlj
 bxv
 rkI
@@ -76989,8 +77088,8 @@ oJD
 qDg
 bmv
 bmv
-bmv
-bmv
+alj
+akH
 bmv
 fli
 ePq
@@ -77380,7 +77479,7 @@ iTR
 uEP
 bmv
 bmv
-bmv
+akH
 kvi
 vQo
 vQo
@@ -77568,7 +77667,7 @@ tnM
 wZZ
 iTR
 vkI
-csX
+akG
 kLu
 bQw
 bmv
@@ -77758,7 +77857,7 @@ cfg
 ppA
 psR
 srk
-vkI
+akl
 loQ
 wEp
 wEp
@@ -77960,7 +78059,7 @@ nyB
 rhJ
 uLh
 uEP
-bmv
+akH
 nlj
 cTI
 csX
@@ -83002,10 +83101,10 @@ fBv
 ncq
 ncq
 ncq
-ncq
-ncq
-dnr
-dnr
+ryy
+nas
+kfo
+hWv
 dnr
 cTj
 dnr
@@ -83195,11 +83294,11 @@ ncq
 ncq
 ryy
 nas
-wXm
-dnr
-dnr
-dnr
-dnr
+hJG
+rEo
+ahS
+rfS
+hWv
 dnr
 dnr
 dnr
@@ -83388,11 +83487,11 @@ uXg
 ncq
 fuq
 uNK
+ahS
+rEo
+rEo
+rEo
 mEk
-dnr
-dnr
-dnr
-dnr
 dnr
 tSo
 lCB
@@ -83579,13 +83678,13 @@ uXg
 uXg
 uXg
 ncq
-lxr
-eEI
+fuq
+ahS
+rEo
+ajh
+rEo
+rEo
 mEk
-dnr
-dnr
-dnr
-dnr
 dnr
 dnr
 lCB
@@ -83772,13 +83871,13 @@ uXg
 uXg
 uXg
 hHZ
-dnr
-sNK
-mEI
-lCB
-dnr
-dnr
-dnr
+vbn
+ahS
+rEo
+rEo
+rEo
+ahS
+mEk
 dnr
 lCB
 lCB
@@ -83965,13 +84064,13 @@ lCB
 lCB
 lCB
 lCB
-dnr
-smd
-dnr
-lCB
-lCB
-dnr
-dnr
+vbn
+aiT
+rEo
+rEo
+ahS
+rEo
+mEk
 jFV
 jFV
 jFV
@@ -84158,13 +84257,13 @@ lCB
 lCB
 lCB
 lCB
-dnr
-dnr
-dnr
-lCB
-lCB
-dnr
-dnr
+sNK
+eEI
+ahS
+rEo
+fFt
+aKY
+mEI
 jFV
 jFV
 jFV
@@ -84352,10 +84451,10 @@ lCB
 lCB
 lCB
 dnr
-dnr
-dnr
-lCB
-dnr
+sNK
+aKY
+aKY
+mEI
 dnr
 rrj
 jFV
@@ -84843,7 +84942,7 @@ amb
 amb
 amb
 bYW
-eWy
+agc
 eWy
 eWy
 avg
@@ -85034,7 +85133,7 @@ bQf
 bQf
 cgv
 cgv
-cgv
+afr
 bXH
 arM
 bYW
@@ -85226,10 +85325,10 @@ tkk
 akd
 bWR
 anY
-cgv
+afr
 bVB
 cgv
-cgv
+afr
 bXH
 bYW
 bZN
@@ -85423,7 +85522,7 @@ anY
 cgv
 cgv
 cgv
-cgv
+afr
 bXH
 bYW
 eWy
@@ -85806,7 +85905,7 @@ ccv
 ccv
 eWy
 cen
-cgv
+afr
 cgv
 cgv
 cgv
@@ -85999,9 +86098,9 @@ ccv
 bXM
 eWy
 cen
+afr
 cgv
-cgv
-cgv
+afr
 bWe
 bWR
 bXI

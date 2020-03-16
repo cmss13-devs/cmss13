@@ -48,7 +48,7 @@
 /datum/action/xeno_action/xeno_resting/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!X || X.is_mob_incapacitated(1) || X.buckled || X.fortify || X.crest_defense || X.burrow)
+	if(!X || X.is_mob_incapacitated(1) || X.buckled || X.fortify || X.crest_defense || X.burrow)
 		return
 	return 1
 
@@ -187,37 +187,6 @@
 	resin_plasma_cost = 200
 	thick = TRUE
 
-/* Resolve this line once structures are resolved.
-// Morph Resin
-/datum/action/xeno_action/morph_resin
-	name = "Resin Morph (125)"
-	action_icon_state = "morph_resin"
-	plasma_cost = 125
-	macro_path = /datum/action/xeno_action/verb/verb_morph_resin
-	action_type = XENO_ACTION_CLICK
-
-/datum/action/xeno_action/morph_resin/action_activate()
-	var/mob/living/carbon/Xenomorph/X = owner
-	var/choice = input(X, "Choose a pheromone") in X.caste.structures_allowed + "help" + "cancel"
-	if(choice == "help")
-		var/message = "<br>Morphing into resin sacrifices your current body in order to create special structures that can benefit the hive, as follows:<br>"
-		for(var/structure_name in X.caste.structures_allowed)
-			message += "[get_xeno_structure_desc(structure_name)]<br>"
-		to_chat(X, SPAN_NOTICE(message))
-		return
-	if(choice == "cancel" || !X.check_state(1) || !X.check_plasma(plasma_cost))
-		return
-	var/answer = alert(X, "Are you sure you want to morph into [choice]? This will sacrifice your current body.", , "Yes", "No")
-	if(answer != "Yes")
-		return
-	if(!X.hive.can_build_structure(choice))
-		to_chat(X, SPAN_WARNING("You can't build any more [choice]s for the hive."))
-		return
-	X.use_plasma(plasma_cost)
-	X.morph_resin(get_turf(X), X.caste.structures_allowed[choice])
-	..()
-*/
-
 // Corrosive Acid
 /datum/action/xeno_action/activable/corrosive_acid
 	name = "Corrosive Acid (100)"
@@ -275,7 +244,7 @@
 /datum/action/xeno_action/activable/spray_acid/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (isXenoPraetorian(owner))
+	if(isXenoPraetorian(owner))
 		X.acid_spray_cone(A)
 		return
 
@@ -658,7 +627,7 @@
 		to_chat(X, SPAN_WARNING("You can't do that from there."))
 		return
 
-	if (bombard_time)
+	if(bombard_time)
 		X.visible_message(SPAN_NOTICE("\The [X] begins digging their claws into the ground."), \
 			SPAN_NOTICE("You begin digging yourself into place."), null, 5)
 	if(do_after(X, bombard_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
@@ -1201,6 +1170,76 @@
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the Xenomorph you want to give orders to."))
 
+/datum/action/xeno_action/activable/place_construction
+	name = "Order Construction (500)"
+	action_icon_state = "morph_resin"
+	ability_name = "order construction"
+	macro_path = /datum/action/xeno_action/verb/place_construction
+	action_type = XENO_ACTION_CLICK
+
+/datum/action/xeno_action/activable/place_construction/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(!X.check_state())
+		return FALSE
+
+	//Make sure construction is unrestricted
+	if(X.hive.construction_allowed == 1 && X.hive_pos == NORMAL_XENO)
+		to_chat(X, SPAN_WARNING("Construction is currently restricted to Leaders only!"))
+		return FALSE
+	else if(X.hive.construction_allowed == 0 && !istype(X.caste, /datum/caste_datum/queen))
+		to_chat(X, SPAN_WARNING("Construction is currently restricted to Queen only!"))
+		return FALSE
+
+	var/turf/T = get_turf(A)
+	var/choice = XENO_STRUCTURE_CORE
+	if(X.hive.has_structure(XENO_STRUCTURE_CORE))
+		choice = input(X, "Choose a structure to build") in X.hive.hive_structure_types + "help" + "cancel"
+	if(choice == "help")
+		var/message = "<br>Placing a construction node creates a template for special structures that can benefit the hive, which require the insertion of [MATERIAL_CRYSTAL] to construct the following:<br>"
+		for(var/structure_name in X.hive.hive_structure_types)
+			message += "[get_xeno_structure_desc(structure_name)]<br>"
+		to_chat(X, SPAN_NOTICE(message))
+		return
+	if(choice == "cancel" || !X.check_state(1) || !X.check_plasma(500))
+		return FALSE
+	if(!do_after(X, XENO_STRUCTURE_BUILD_TIME, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		return FALSE
+	if(!X.hive.can_build_structure(choice))
+		to_chat(X, SPAN_WARNING("You can't build any more [choice]s for the hive."))
+		return FALSE
+
+
+		return FALSE
+
+	var/structure_type = X.hive.hive_structure_types[choice]
+	var/area/current_area = get_area(T)
+	var/datum/construction_template/xenomorph/structure_template = new structure_type()
+
+	if(!X.hive.can_build_structure(structure_template.name))
+		to_chat(src, SPAN_WARNING("You cannot build any more [structure_template.name]!"))
+		qdel(structure_template)
+		return FALSE
+
+	if(isnull(T) || !current_area.can_build_special || !T.is_weedable())
+		to_chat(src, SPAN_WARNING("You cannot build here!"))
+		qdel(structure_template)
+		return FALSE
+
+	if(structure_template.requires_node)
+		for(var/turf/TA in (range(T, 1)))
+			if(TA.density || !X.check_alien_construction(TA))
+				to_chat(src, SPAN_WARNING("You need more open space to build here."))
+				qdel(structure_template)
+				return FALSE
+			var/obj/effect/alien/weeds/alien_weeds = locate() in T
+			if(!alien_weeds || alien_weeds.weed_strength < WEED_LEVEL_HIVE)
+				to_chat(src, SPAN_WARNING("You can only shape on hive weeds. Find a hive node or core before you start building!"))
+				qdel(structure_template)
+				return FALSE
+
+	X.use_plasma(500)
+	X.place_construction(T, structure_template)
+
 /datum/action/xeno_action/deevolve
 	name = "De-Evolve a Xenomorph"
 	action_icon_state = "xeno_deevolve"
@@ -1385,9 +1424,9 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 
 	switch (!!(X.prae_status_flags & PRAE_ROYALGUARD_ACIDSPRAY_TYPE)) // 0 -> Cone; 1 -> Line
-		if (PRAE_SPRAY_CONE)
+		if(PRAE_SPRAY_CONE)
 			X.acid_spray_cone(A)
-		if (PRAE_SPRAY_LINE)
+		if(PRAE_SPRAY_LINE)
 			X.acid_spray(A)
 		else
 			log_admin("[src] tried to acid spray with an invalid bitflag set. Tell the devs! Code: PRAE_ACID_00")
@@ -1420,7 +1459,7 @@
 	if(!X.check_state(1))
 		return
 
-	if (!(X.prae_status_flags & PRAE_ROYALGUARD_ACIDSPRAY_TYPE)) // 0 = cone, 1 = line
+	if(!(X.prae_status_flags & PRAE_ROYALGUARD_ACIDSPRAY_TYPE)) // 0 = cone, 1 = line
 		action_icon_result = "acid_spray_line"
 		to_chat(X, SPAN_WARNING("You will now spray a line of acid with your acid spray."))
 	else

@@ -100,6 +100,10 @@
 	var/plasma_max = 10
 	var/plasma_gain = 5
 
+	//Amount of construction resources stored internally
+	var/crystal_stored = 0
+	var/crystal_max = 0
+
 	var/aura_strength = 0
 	var/weed_level = 1
 	var/acid_level = 0
@@ -158,6 +162,7 @@
 
 	var/datum/action/xeno_action/activable/selected_ability
 	var/selected_resin = RESIN_WALL //which resin structure to build when we secrete resin
+	var/selected_construction = XENO_STRUCTURE_CORE //which special structure to build when we place constructions
 
 	//Naming variables
 	var/caste_name = "Drone"
@@ -670,6 +675,7 @@
 /mob/living/carbon/Xenomorph/proc/recalculate_stats()
 	recalculate_health()
 	recalculate_plasma()
+	recalculate_stockpile()
 	recalculate_speed()
 	recalculate_armor()
 	recalculate_damage()
@@ -709,6 +715,11 @@
 	plasma_stored = round(plasma_max * plasma_ratio + 0.5) //Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
 	if(plasma_stored > plasma_max)
 		plasma_stored = plasma_max
+
+/mob/living/carbon/Xenomorph/proc/recalculate_stockpile()
+	crystal_max = caste.crystal_max
+	if(crystal_stored > crystal_max)
+		crystal_stored = crystal_max
 
 /mob/living/carbon/Xenomorph/proc/recalculate_speed()
 	recalculate_move_delay = TRUE

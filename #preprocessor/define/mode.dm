@@ -42,6 +42,9 @@
 #define ROUNDSTATUS_FOG_DOWN 		1
 #define ROUNDSTATUS_PODDOORS_OPEN	2
 
+#define LATEJOIN_LARVA_DROP_PRE  6
+#define LATEJOIN_LARVA_DROP_POST 10
+
 #define BE_ALIEN				1
 #define BE_ALIEN_AFTER_DEATH	2
 #define BE_QUEEN				4
@@ -76,6 +79,11 @@ var/list/be_special_flags = list(
 //Number of marine players against which the Marine's gear scales
 #define MARINE_GEAR_SCALING_NORMAL 30
 #define MAX_GEAR_COST 7 //Used in chargen for loadout limit.
+
+#define RESOURCE_NODE_SCALE 95 //How many players minimum per extra set of resource nodes
+#define RESOURCE_NODE_QUANTITY_PER_POP 11 //How many resources total per pop
+#define RESOURCE_NODE_QUANTITY_MINIMUM 1120 //How many resources at the minimum
+
 //=================================================
 
 //Various roles and their suggested bitflags or defines.

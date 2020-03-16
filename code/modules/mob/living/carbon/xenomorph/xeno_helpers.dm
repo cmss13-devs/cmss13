@@ -15,10 +15,8 @@
 /mob/living/carbon/Xenomorph/can_inject()
 	return FALSE
 
-/* Resolve this line once structures are resolved.
 /mob/living/carbon/Xenomorph/proc/can_destroy_special()
 	return FALSE
-*/
 
 /mob/living/carbon/Xenomorph/proc/get_plasma_percentage()
 	if(plasma_max<=0)

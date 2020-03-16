@@ -85,9 +85,13 @@
 #define PAYGRADES_OFFICER list("O1","O2","O3","O4","O5","O5E","O6","O7","O8","O9","O9E")
 #define PAYGRADES_ENLISTED list("C","E1","E2","E3","E4","E5","E6","E7","E8","E9","E9E")
 
+// MATERIALS
+#define MATERIAL_METAL     "metal"
+#define MATERIAL_PLASTEEL  "plasteel"
+#define MATERIAL_WOOD      "wood plank"
+#define MATERIAL_CRYSTAL   "plasmagas"
 
 // SIZES FOR ITEMS, use it for w_class
-
 #define SIZE_TINY       1       // Helmets
 #define SIZE_SMALL      2       // Armour, pouch slots/pockets
 #define SIZE_MEDIUM     3       // Backpacks, belts.    Size of pistols, general magazines

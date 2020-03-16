@@ -224,23 +224,20 @@
 	mouse_opacity = 0
 	invisibility = INVISIBILITY_MAXIMUM
 	var/obj/effect/alien/egg/linked_egg
-	// var/obj/effect/alien/resin/special/eggmorph/linked_eggmorph //Resolve this line once structures are resolved.
+	var/obj/effect/alien/resin/special/eggmorph/linked_eggmorph
 
-// /obj/effect/egg_trigger/New(loc, obj/effect/alien/egg/source_egg, obj/effect/alien/resin/special/eggmorph/source_eggmorph)
-/obj/effect/egg_trigger/New(loc, obj/effect/alien/egg/source_egg)
+/obj/effect/egg_trigger/New(loc, obj/effect/alien/egg/source_egg, obj/effect/alien/resin/special/eggmorph/source_eggmorph)
 	..()
 	linked_egg = source_egg
-	// linked_eggmorph = source_eggmorph //Resolve this line once structures are resolved.
+	linked_eggmorph = source_eggmorph
 
 
 /obj/effect/egg_trigger/Crossed(atom/A)
-	// if(!linked_egg && !linked_eggmorph) //something went very wrong. Resolve this line once structures are resolved.
-	if(!linked_egg) //something went very wrong
+	if(!linked_egg && !linked_eggmorph) //something went very wrong.
 		qdel(src)
 	else if(linked_egg && (get_dist(src, linked_egg) != 1 || !isturf(linked_egg.loc))) //something went wrong
 		loc = linked_egg
 
-	/* Resolve this line once structures are resolved.
 	else if(linked_eggmorph && (get_dist(src, linked_eggmorph) != 1 || !isturf(linked_eggmorph.loc))) //something went wrong
 		loc = linked_eggmorph
 	else if(iscarbon(A))
@@ -249,8 +246,3 @@
 			linked_egg.HasProximity(C)
 		if(linked_eggmorph)
 			linked_eggmorph.HasProximity(C)
-	*/
-	else if(iscarbon(A))
-		var/mob/living/carbon/C = A
-		if(linked_egg)
-			linked_egg.HasProximity(C)

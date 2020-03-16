@@ -1,4 +1,3 @@
-#define NODERANGE 3
 
 /obj/effect/alien/weeds
 	name = "weeds"
@@ -10,8 +9,9 @@
 	density = 0
 	layer = WEED_LAYER
 	unacidable = TRUE
-	health = 1
-	var/weed_strength = 1
+	health = WEED_HEALTH_STANDARD
+	var/weed_strength = WEED_LEVEL_STANDARD
+	var/node_range = WEED_RANGE_STANDARD
 	var/secreting = FALSE
 
 	// Which node is responsible for keeping this weed patch alive?
@@ -21,6 +21,10 @@
 	..()
 	if(node)
 		weed_strength = node.weed_strength
+		node_range = node.node_range
+		if(weed_strength >= WEED_LEVEL_HIVE)
+			name = "hive weeds"
+			health = WEED_HEALTH_HIVE
 		node.add_child(src)
 
 	update_icon()
@@ -32,8 +36,9 @@
 
 /obj/effect/alien/weeds/Dispose()
 	if(parent)
-		parent.remove_child(src)
+		add_timer(CALLBACK(parent, .obj/effect/alien/weeds/node/proc/replace_child, loc, type), rand(250, 350))
 	var/oldloc = loc
+	parent = null
 	. = ..()
 	update_neighbours(oldloc)
 
@@ -46,22 +51,22 @@
 /obj/effect/alien/weeds/Crossed(atom/movable/AM)
 	if (ishuman(AM))
 		var/mob/living/carbon/human/H = AM
-		if (!has_species(H,"Yautja")) // predators are immune to weed slowdown effect
-			var/new_slowdown = H.next_move_slowdown + 1
+		if (!isYautja(H)) // predators are immune to weed slowdown effect
+			var/new_slowdown = H.next_move_slowdown + weed_strength
 			H.set_next_move_slowdown(new_slowdown)
 
 /obj/effect/alien/weeds/Uncrossed(atom/movable/AM)
 	if (ishuman(AM))
 		var/mob/living/carbon/human/H = AM
-		if (!has_species(H,"Yautja")) // predators do not get slowed down by weeds
+		if (!isYautja(H)) // predators do not get slowed down by weeds
 			H.recalculate_move_delay = TRUE
 
 // Uh oh, we might be dying!
 // I know this is bad proc naming but it was too good to pass on and it's only used in this file anyways
 // If you're still confused, scroll aaaall the way down to the bottom of the file.
-// that's /obj/effect/alien/weeds/node/Dispose(). on line 275.
+// that's /obj/effect/alien/weeds/node/Dispose(). on line 318.
 /obj/effect/alien/weeds/proc/avoid_orphanage()
-	for(var/obj/effect/alien/weeds/node/N in orange(NODERANGE, get_turf(src)))
+	for(var/obj/effect/alien/weeds/node/N in orange(node_range, get_turf(src)))
 		// WE FOUND A NEW MOMMY
 		N.add_child(src)
 		break
@@ -77,18 +82,20 @@
 		return
 
 	direction_loop:
-		for (var/dirn in cardinal)
+		for(var/dirn in cardinal)
 			var/turf/T = get_step(src, dirn)
 
-			if (!istype(T))
+			if(!istype(T))
 				continue
 
-			if (!T.is_weedable())
+			if(!T.is_weedable())
 				continue
 
 			var/obj/effect/alien/weeds/W = locate() in T
-			if (W)
-				continue
+			if(W)
+				if(W.weed_strength >= node.weed_strength)
+					continue
+				qdel(W)
 
 			if(istype(T, /turf/closed/wall/resin))
 				continue
@@ -97,14 +104,14 @@
 				new /obj/effect/alien/weeds/weedwall(T)
 				continue
 
-			if (istype(T.loc, /area/arrival))
+			if(istype(T.loc, /area/arrival))
 				continue
 
 			for(var/obj/structure/platform/P in src.loc)
 				if(P.dir == reverse_direction(dirn))
 					continue direction_loop
 
-			for (var/obj/O in T)
+			for(var/obj/O in T)
 				if(istype(O, /obj/structure/platform))
 					if(O.dir == dirn)
 						continue direction_loop
@@ -123,10 +130,10 @@
 	if(!U)
 		U = loc
 	if(istype(U))
-		for (var/dirn in cardinal)
+		for(var/dirn in cardinal)
 			var/turf/T = get_step(U, dirn)
 
-			if (!istype(T))
+			if(!istype(T))
 				continue
 
 			var/obj/effect/alien/weeds/W = locate() in T
@@ -137,10 +144,10 @@
 	overlays.Cut()
 
 	var/my_dir = 0
-	for (var/check_dir in cardinal)
+	for(var/check_dir in cardinal)
 		var/turf/check = get_step(src, check_dir)
 
-		if (!istype(check))
+		if(!istype(check))
 			continue
 		if(istype(check, /turf/closed/wall/resin))
 			my_dir |= check_dir
@@ -152,9 +159,11 @@
 	// 0-15 be for omnidirectional and -1 to -14 be the rest
 
 	var/icon_dir = -15
-	if (my_dir == 15) //weeds in all four directions
+	if(my_dir == 15) //weeds in all four directions
 		icon_dir = rand(0,15)
 		icon_state = "weed[icon_dir]"
+		if(weed_strength >= WEED_LEVEL_HIVE)
+			icon_state = "hive_[icon_state]"
 	else if(my_dir == 0) //no weeds in any direction
 		icon_state = "base"
 	else
@@ -164,7 +173,7 @@
 	if(secreting)
 		var/image/secretion
 
-		if (icon_dir >= 0)
+		if(icon_dir >= 0)
 			secretion = image('icons/mob/xenos/Effects.dmi', "secrete[icon_dir]")
 		else if(icon_dir == -15)
 			secretion = image('icons/mob/xenos/Effects.dmi', "secrete_base")
@@ -258,8 +267,7 @@
 	desc = "A weird, pulsating node."
 	icon_state = "weednode"
 	reagents = list("purpleplasma" = 30)
-	var/node_range = NODERANGE
-	health = 15
+	health = NODE_HEALTH_STANDARD
 	flags_atom = OPENCONTAINER
 
 	// Which weeds are being kept alive by this node?
@@ -277,6 +285,12 @@
 	weed.parent = null
 	children -= weed
 
+/obj/effect/alien/weeds/node/proc/replace_child(var/turf/T, var/weed_type)
+	if(!T || !istype(T) || disposed)
+		return
+	var/obj/effect/alien/weeds/replacement_child = new weed_type(T, src)
+	add_child(replacement_child)
+
 /obj/effect/alien/weeds/node/update_icon()
 	..()
 	overlays += "weednode"
@@ -288,6 +302,9 @@
 	reagents.add_reagent("purpleplasma",30)
 	for(var/obj/effect/alien/weeds/W in loc)
 		if(W != src)
+			if(W.weed_strength > weed_strength)
+				qdel(src)
+				return
 			qdel(W) //replaces the previous weed
 			break
 
@@ -295,9 +312,11 @@
 	if(X)
 		add_hiddenprint(X)
 		weed_strength = X.weed_level
-		if (weed_strength < 1)
-			weed_strength = 1
+		if (weed_strength < WEED_LEVEL_STANDARD)
+			weed_strength = WEED_LEVEL_STANDARD
 		node_range = node_range + weed_strength - 1//stronger weeds expand further!
+		if(weed_strength >= WEED_LEVEL_HIVE)
+			name = "hive node sac"
 
 /obj/effect/alien/weeds/node/Dispose()
 	// When the node is removed, weeds should start dying out
@@ -305,8 +324,23 @@
 	for(var/X in children)
 		var/obj/effect/alien/weeds/W = X
 		remove_child(W)
-		add_timer(CALLBACK(W, .proc/avoid_orphanage), rand(350, 450))
+		if(istype(W))
+			add_timer(CALLBACK(W, .proc/avoid_orphanage), rand(350, 450))
 
 	. = ..()
 
-#undef NODERANGE
+/obj/effect/alien/weeds/node/pylon
+	name = "hive node sac"
+	health = WEED_HEALTH_HIVE
+	weed_strength = WEED_LEVEL_HIVE
+	node_range = WEED_RANGE_PYLON
+	var/obj/effect/alien/resin/special/pylon/parent_pylon
+
+/obj/effect/alien/weeds/node/pylon/core
+	node_range = WEED_RANGE_CORE
+
+/obj/effect/alien/weeds/node/pylon/Dispose()
+	if(parent_pylon)
+		add_timer(CALLBACK(parent_pylon, .obj/effect/alien/resin/special/pylon/proc/replace_node), rand(150, 250))
+	parent_pylon = null
+	. = ..()

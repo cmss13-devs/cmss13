@@ -1404,6 +1404,14 @@
 	dir = 10
 	},
 /area/desert_dam/exterior/river/riverside_east)
+"adT" = (
+/obj/effect/landmark/resource_node/plasma/marine/lz1,
+/turf/open/floor/prison{
+	tag = "icon-floor_plate (SOUTHWEST)";
+	icon_state = "floor_plate";
+	dir = 10
+	},
+/area/desert_dam/interior/dam_interior/hanger)
 "adU" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_edge{
@@ -4518,9 +4526,11 @@
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "amc" = (
 /obj/structure/platform{
-	dir = 8
+	dir = 1
 	},
-/obj/structure/platform,
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "east_lab"
+	},
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "amd" = (
@@ -17205,6 +17215,25 @@
 	dir = 10
 	},
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"aSA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/resource_node_activator/landing/lz1,
+/turf/open/floor/prison{
+	tag = "icon-floor_plate (SOUTHWEST)";
+	icon_state = "floor_plate";
+	dir = 10
+	},
+/area/desert_dam/interior/dam_interior/hanger)
+"aSB" = (
+/obj/effect/decal/warning_stripes{
+	tag = "icon-N";
+	icon_state = "N"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/resource_node/plasma/marine/lz2,
+/turf/open/asphalt,
+/area/desert_dam/building/warehouse/loading)
 "aSC" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Substation"
@@ -17221,6 +17250,14 @@
 	},
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/building/water_treatment_two/purification)
+"aSE" = (
+/obj/effect/decal/warning_stripes{
+	tag = "icon-N";
+	icon_state = "N"
+	},
+/obj/effect/landmark/resource_node/plasma/marine/lz2,
+/turf/open/asphalt,
+/area/desert_dam/building/warehouse/loading)
 "aSF" = (
 /obj/structure/filtration/collector_pipes{
 	icon_state = "lower_2";
@@ -17281,6 +17318,11 @@
 	dir = 8
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
+"aSO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/resource_node/plasma/marine/lz2,
+/turf/open/asphalt,
+/area/desert_dam/building/warehouse/loading)
 "aSP" = (
 /turf/open/floor/prison{
 	dir = 9;
@@ -17303,6 +17345,10 @@
 	icon_state = "8,7-2"
 	},
 /area/desert_dam/building/water_treatment_two/purification)
+"aSS" = (
+/obj/effect/landmark/resource_node_activator/landing/lz2,
+/turf/open/floor/prison,
+/area/desert_dam/building/warehouse/loading)
 "aST" = (
 /turf/open/floor/plating{
 	tag = "icon-warnplate (EAST)";
@@ -17381,12 +17427,24 @@
 	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/desert_dam/building/water_treatment_two)
+"aTd" = (
+/obj/effect/decal/warning_stripes{
+	tag = "icon-W";
+	icon_state = "W"
+	},
+/obj/effect/landmark/resource_node/plasma/marine/lz2,
+/turf/open/asphalt,
+/area/desert_dam/building/warehouse/loading)
 "aTe" = (
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkyellow2"
 	},
 /area/desert_dam/building/mining/workshop)
+"aTf" = (
+/obj/effect/landmark/resource_node/plasma/marine/lz2,
+/turf/open/asphalt,
+/area/desert_dam/building/warehouse/loading)
 "aTg" = (
 /turf/open/floor{
 	tag = "icon-darkyellowcorners2";
@@ -17487,6 +17545,18 @@
 	icon_state = "0,0"
 	},
 /area/desert_dam/building/water_treatment_two/purification)
+"aTv" = (
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s";
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-W"
+	},
+/obj/effect/landmark/resource_node/plasma/marine/lz2,
+/turf/open/asphalt,
+/area/desert_dam/building/warehouse/loading)
 "aTw" = (
 /turf/open/desert/rock/deep/transition{
 	icon_state = "rock2_transition";
@@ -17511,6 +17581,15 @@
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
+"aTA" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "east_lab"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "aTB" = (
 /turf/open/floor/coagulation{
 	icon_state = "7,7"
@@ -17523,6 +17602,21 @@
 	dir = 5
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
+"aTD" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "east_lab"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
+"aTE" = (
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "east_lab"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "aTF" = (
 /turf/open/desert/rock/deep/transition{
 	icon_state = "rock2_transition";
@@ -17539,6 +17633,16 @@
 	icon_state = "cement_sunbleached9"
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
+"aTI" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform,
+/obj/effect/landmark/resource_node/plasma/hive{
+	node_group = "east_lab"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "aTJ" = (
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/asphalt/cement_sunbleached{
@@ -17615,11 +17719,27 @@
 	icon_state = "darkyellow2"
 	},
 /area/desert_dam/building/mining/workshop)
+"aTT" = (
+/obj/effect/landmark/resource_node_activator/hive{
+	node_group = "east_lab"
+	},
+/turf/open/floor/prison{
+	tag = "icon-bright_clean (SOUTHWEST)";
+	icon_state = "bright_clean";
+	dir = 10
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "aTU" = (
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached15"
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
+"aTV" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "central"
+	},
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "aTW" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 2;
@@ -17821,6 +17941,14 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_telecoms)
+"aUy" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "central"
+	},
+/turf/open/desert/rock/deep{
+	icon_state = "rock3"
+	},
+/area/desert_dam/exterior/valley/valley_wilderness)
 "aUz" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Decontamination"
@@ -17863,6 +17991,25 @@
 	icon_state = "cement_sunbleached9"
 	},
 /area/desert_dam/exterior/landing_pad_one)
+"aUF" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "central"
+	},
+/turf/open/desert/rock/deep/transition{
+	icon_state = "rock2_transition";
+	dir = 4
+	},
+/area/desert_dam/exterior/valley/valley_wilderness)
+"aUG" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/effect/landmark/resource_node_activator{
+	node_group = "central"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "aUH" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8;
@@ -17873,6 +18020,24 @@
 	icon_state = "cement_sunbleached9"
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
+"aUI" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "south_river"
+	},
+/turf/open/desert/dirt{
+	icon_state = "desert_transition_edge1";
+	dir = 6
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"aUJ" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "south_river"
+	},
+/turf/open/desert/dirt{
+	icon_state = "rock1";
+	dir = 2
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
 "aUK" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison{
@@ -17911,6 +18076,12 @@
 /obj/structure/closet/crate/secure,
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
+"aUQ" = (
+/obj/effect/landmark/resource_node_activator{
+	node_group = "south_river"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
 "aUR" = (
 /obj/structure/window/framed/hangar,
 /turf/open/floor/plating,
@@ -18022,6 +18193,12 @@
 	icon_state = "cement_sunbleached1"
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
+"aVl" = (
+/obj/effect/landmark/resource_node/plasma{
+	node_group = "south_river"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
 "aVm" = (
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/administration/office)
@@ -56695,17 +56872,6 @@
 	icon_state = "darkbrown2"
 	},
 /area/desert_dam/building/warehouse/loading)
-"dgB" = (
-/obj/effect/decal/warning_stripes/asteroid{
-	icon_state = "warning_s";
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-W"
-	},
-/turf/open/asphalt,
-/area/desert_dam/building/warehouse/loading)
 "dgC" = (
 /obj/structure/machinery/light,
 /turf/open/floor/prison{
@@ -78836,7 +79002,7 @@ bhP
 bhP
 bhP
 bhP
-bhP
+adT
 bhP
 bhA
 bst
@@ -79068,10 +79234,10 @@ bhP
 mKW
 mKW
 bhP
+adT
 bhP
 bhP
-bhP
-bhP
+adT
 bhA
 bst
 btm
@@ -79537,7 +79703,7 @@ bhP
 bhP
 bhP
 mKW
-jTF
+aSA
 mKW
 bhP
 bhA
@@ -79769,7 +79935,7 @@ nji
 bhP
 mKW
 bhR
-bhP
+adT
 mKW
 bhR
 bhP
@@ -80004,9 +80170,9 @@ bhP
 bhP
 mKW
 bhP
+adT
 bhP
-bhP
-bhP
+adT
 bhP
 bhA
 bst
@@ -80241,7 +80407,7 @@ bhP
 bhP
 bhP
 bhP
-bhP
+adT
 bhA
 bst
 bhT
@@ -82734,7 +82900,7 @@ dfI
 dfI
 dfI
 dfI
-dfI
+aSS
 cVU
 cZB
 dTs
@@ -83202,7 +83368,7 @@ cVi
 cVN
 dgm
 dgv
-dgv
+aTd
 dgv
 cZB
 dTs
@@ -83434,10 +83600,10 @@ cVN
 cVN
 cVN
 cVN
-dgn
+aSB
 cOi
 bQt
-bQt
+aTf
 cZB
 dTs
 dTs
@@ -83668,7 +83834,7 @@ deq
 dfp
 cVi
 cIq
-cjf
+aSE
 bQt
 cOi
 cOi
@@ -83904,7 +84070,7 @@ cIq
 cVN
 dgp
 cOi
-cOi
+aSO
 cOi
 cZB
 dTs
@@ -84137,7 +84303,7 @@ dfC
 cVi
 cVN
 dgn
-cOi
+aSO
 bQt
 dHO
 cZB
@@ -84373,7 +84539,7 @@ cIq
 dgq
 dgw
 dgy
-dgB
+aTv
 cZB
 dTs
 dTs
@@ -105052,13 +105218,13 @@ aam
 axP
 azA
 aeE
-aeE
+aTV
 aeE
 xhv
-aeE
+aTV
 ayD
-aam
-aam
+aUy
+aUy
 dTs
 dTs
 dTs
@@ -105284,10 +105450,10 @@ awq
 axP
 azA
 aeE
+aTV
 aeE
 aeE
-aeE
-aeE
+aTV
 xhv
 aeE
 aeE
@@ -105917,10 +106083,10 @@ eei
 acu
 afG
 ajx
+aTA
 akx
 akx
-akx
-amc
+aTI
 afG
 agQ
 ahr
@@ -106150,7 +106316,7 @@ eei
 (155,1,1) = {"
 acu
 afG
-ajy
+amc
 afN
 afN
 afN
@@ -106224,7 +106390,7 @@ azS
 azS
 aAa
 azS
-aAU
+aUG
 aBQ
 aVZ
 aVZ
@@ -106620,12 +106786,12 @@ acu
 afG
 ajy
 afN
-afN
+aTE
 afN
 amk
 ahr
 ahr
-ahr
+aTT
 ahr
 agQ
 agH
@@ -106852,10 +107018,10 @@ acu
 (158,1,1) = {"
 acu
 afG
-ajy
+amc
 afN
 afN
-afN
+aTE
 amd
 agH
 agQ
@@ -106927,7 +107093,7 @@ aeE
 azD
 aeE
 aeE
-aeE
+aTV
 aeE
 aeE
 aAu
@@ -107087,7 +107253,7 @@ acu
 acu
 afG
 ajN
-akC
+aTD
 akC
 akC
 aml
@@ -107159,12 +107325,12 @@ aam
 aam
 ady
 aeE
+aTV
 aeE
 aeE
+aTV
 aeE
-aeE
-aeE
-aeE
+aTV
 aAu
 aAS
 bID
@@ -107392,14 +107558,14 @@ dTs
 dTs
 aam
 ayp
-aeE
+aTV
 aeE
 aeE
 aeE
 bRg
 aan
 aan
-aan
+aUF
 bgx
 bID
 bID
@@ -108465,11 +108631,11 @@ dTs
 dTs
 dTs
 dTs
-cuw
+aUJ
 cwo
 cux
 cmH
-cmH
+aVl
 cmH
 cmH
 cEU
@@ -108698,7 +108864,7 @@ dTs
 dTs
 dTs
 dTs
-cuw
+aUJ
 cwo
 cux
 cmH
@@ -109172,7 +109338,7 @@ dLS
 edC
 dTx
 cmH
-cmH
+aVl
 cmH
 cmH
 edM
@@ -109633,9 +109799,9 @@ dTs
 dTs
 dTs
 ctn
-cux
+aUI
 cmH
-cmH
+aUQ
 dNa
 dOw
 csb
@@ -109872,7 +110038,7 @@ cmH
 cPz
 cJl
 cmH
-cmH
+aVl
 cmH
 cmH
 dIi
@@ -110105,7 +110271,7 @@ cmH
 cmH
 cmH
 cmH
-cmH
+aVl
 cmH
 cmH
 cmH

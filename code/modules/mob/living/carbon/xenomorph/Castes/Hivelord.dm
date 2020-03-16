@@ -9,6 +9,7 @@
 	max_health = XENO_HEALTH_HIGHMEDIUM
 	plasma_gain = XENO_PLASMA_GAIN_VERYHIGH
 	plasma_max = XENO_PLASMA_ULTRAHIGH
+	crystal_max = XENO_CRYSTAL_HIGH
 	xeno_explosion_resistance = XENO_LOW_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_LOW_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_MEDIUM
@@ -79,6 +80,7 @@
 		/datum/action/xeno_action/plant_weeds,
 		/datum/action/xeno_action/choose_resin,
 		/datum/action/xeno_action/activable/secrete_resin/hivelord,
+		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord,
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/emit_pheromones,

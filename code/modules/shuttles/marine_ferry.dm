@@ -292,6 +292,21 @@
 	if(!transit_gun_mission) //we're back where we started, no location change.
 		location = !location
 
+		// Arrived at the planet/offsite
+		if(location)
+			// Shuttle code is so fucking shitty that I can't be bothered to make anything better than this
+			// Begin growing LZ & primary resource plasmagas
+			for(var/obj/effect/landmark/resource_node_activator/node_activator in world)
+				if(istype(node_activator, /obj/effect/landmark/resource_node_activator/hive))
+					continue
+
+				var/lz_tag = (shuttle_tag == "[MAIN_SHIP_NAME] Dropship 1" ? "lz1" : "lz2")
+				if(istype(node_activator, /obj/effect/landmark/resource_node_activator/landing) && \
+				((ticker.mode.active_lz && ticker.mode.active_lz.shuttle_tag != shuttle_tag) || node_activator.node_group != "marine_first_landfall_[lz_tag]"))
+					continue
+
+				node_activator.trigger()
+
 	transit_optimized = 0 //De-optimize the flight plans
 	transit_gun_mission = 0 //no longer on a fire mission.
 
@@ -565,6 +580,20 @@
 
 	location = !location
 
+	if(!location)
+		return
+
+	// Begin growing LZ & primary resource plasmagas
+	for(var/obj/effect/landmark/resource_node_activator/node_activator in world)
+		if(istype(node_activator, /obj/effect/landmark/resource_node_activator/hive))
+			continue
+
+		var/lz_tag = (shuttle_tag == "[MAIN_SHIP_NAME] Dropship 1" ? "lz1" : "lz2")
+		if(istype(node_activator, /obj/effect/landmark/resource_node_activator/landing) && \
+		((ticker.mode.active_lz && ticker.mode.active_lz.shuttle_tag != shuttle_tag) || node_activator.node_group != "marine_first_landfall_[lz_tag]"))
+			continue
+
+		node_activator.trigger()
 
 /datum/shuttle/ferry/marine/close_doors(var/list/L)
 

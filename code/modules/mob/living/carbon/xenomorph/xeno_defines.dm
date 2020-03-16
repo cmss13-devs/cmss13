@@ -25,6 +25,8 @@
 	var/plasma_max = 10
 	var/plasma_gain = 5
 
+	var/crystal_max = 0
+
 	var/max_health = XENO_UNIVERSAL_HPMULT * 100
 
 	var/evolution_allowed = 1 //Are they allowed to evolve (and have their evolution progress group)
@@ -124,11 +126,6 @@
 
 	var/acid_splash_cooldown = SECONDS_5 //Time it takes between acid splash retaliate procs. Variable per caste, for if we want future castes that are acid bombs
 
-	/* Resolve this line once structures are resolved.
-	//Types of special structures this caste can build
-	var/list/structures_allowed = list()
-	*/
-
 	/////////////////////////////////////////////////////////////////////////
 	//
 	//    Scalars
@@ -142,6 +139,7 @@
 	var/max_health_scalar
 	var/plasma_gain_scalar
 	var/plasma_max_scalar
+	var/crystal_max_scalar
 	var/explosion_armor_scalar
 	var/armor_scalar
 	var/armorfactor_scalar
@@ -230,6 +228,7 @@
 	//var/max_health_scalar
 	//var/plasma_gain_scalar
 	//var/plasma_max_scalar
+	//var/crystal_max_scalar
 	//var/explosion_armor_scalar
 	//var/armor_scalar
 	//var/evasion_scalar
@@ -253,6 +252,8 @@
 				plasma_gain_scalar = XENO_MULTIPLIER_PLASMA_GAIN_YOUNG
 			if (!plasma_max_scalar)
 				plasma_max_scalar = XENO_MULTIPLIER_PLASMA_YOUNG
+			if (!crystal_max_scalar)
+				crystal_max_scalar = XENO_MULTIPLIER_PLASMA_YOUNG
 			if (!evasion_scalar)
 				evasion_scalar = XENO_MULTIPLIER_EVASION_YOUNG
 			if (!armorfactor_scalar)
@@ -267,6 +268,8 @@
 				plasma_gain_scalar = XENO_MULTIPLIER_PLASMA_GAIN_MATURE
 			if (!plasma_max_scalar)
 				plasma_max_scalar = XENO_MULTIPLIER_PLASMA_MATURE
+			if (!crystal_max_scalar)
+				crystal_max_scalar = XENO_MULTIPLIER_PLASMA_MATURE
 			if (!evasion_scalar)
 				evasion_scalar = XENO_MULTIPLIER_EVASION_MATURE
 			if (!armorfactor_scalar)
@@ -281,6 +284,8 @@
 				plasma_gain_scalar = XENO_MULTIPLIER_PLASMA_GAIN_ELDER
 			if (!plasma_max_scalar)
 				plasma_max_scalar = XENO_MULTIPLIER_PLASMA_ELDER
+			if (!crystal_max_scalar)
+				crystal_max_scalar = XENO_MULTIPLIER_PLASMA_ELDER
 			if (!evasion_scalar)
 				evasion_scalar = XENO_MULTIPLIER_EVASION_ELDER
 			if (!armorfactor_scalar)
@@ -295,6 +300,8 @@
 				plasma_gain_scalar = XENO_MULTIPLIER_PLASMA_GAIN_ANCIENT
 			if (!plasma_max_scalar)
 				plasma_max_scalar = XENO_MULTIPLIER_PLASMA_ANCIENT
+			if (!crystal_max_scalar)
+				crystal_max_scalar = XENO_MULTIPLIER_PLASMA_ANCIENT
 			if (!evasion_scalar)
 				evasion_scalar = XENO_MULTIPLIER_EVASION_ANCIENT
 			if (!armorfactor_scalar)
@@ -309,6 +316,8 @@
 				plasma_gain_scalar = XENO_MULTIPLIER_PLASMA_PRIMORDIAL
 			if (!plasma_max_scalar)
 				plasma_max_scalar = XENO_MULTIPLIER_PLASMA_PRIMORDIAL
+			if (!crystal_max_scalar)
+				crystal_max_scalar = XENO_MULTIPLIER_PLASMA_PRIMORDIAL
 			if (!evasion_scalar)
 				evasion_scalar = XENO_MULTIPLIER_EVASION_PRIMORDIAL
 			if (!armorfactor_scalar)
@@ -318,6 +327,7 @@
 			max_health_scalar = 1
 			plasma_gain_scalar = 1
 			plasma_max_scalar = 1
+			crystal_max_scalar = 1
 			evasion_scalar = 1
 			armorfactor_scalar = 1
 
@@ -325,6 +335,7 @@
 	melee_damage_upper = melee_damage_upper * melee_damage_scalar
 	plasma_gain = plasma_gain * plasma_gain_scalar
 	plasma_max = plasma_max * plasma_max_scalar
+	crystal_max = crystal_max * crystal_max_scalar
 	armor_deflection = armor_deflection * armor_scalar
 	xeno_explosion_resistance = xeno_explosion_resistance * explosion_armor_scalar
 	max_health = max_health * max_health_scalar
@@ -336,6 +347,7 @@
 	var/mob/living/carbon/Xenomorph/Queen/living_xeno_queen
 	var/egg_planting_range = 15
 	var/slashing_allowed = 1 //This initial var allows the queen to turn on or off slashing. Slashing off means harm intent does much less damage.
+	var/construction_allowed = 0 //Who can place construction nodes for special structures. 0 for Queen, 1 for Leaders, 2 for all.
 	var/queen_time = 300 //5 minutes between queen deaths
 	var/xeno_queen_timer
 	var/hive_orders = "" //What orders should the hive have
@@ -349,24 +361,37 @@
 	var/list/tier_3_xenos = list()//list of living tier3 xenos
 	var/list/totalXenos	= list()  //list of living xenos
 	var/isSlotOpen = TRUE //Set true for starting alerts only after the hive has reached its full potential
-	var/turf/hive_location = null //Set to a turf ref every time the queen ovis, for defining the hive location.
 	var/allowed_nest_distance = 15 //How far away do we allow nests from an ovied Queen. Default 15 tiles.
+	var/obj/effect/alien/resin/special/pylon/core/hive_location = null //Set to ref every time a core is built, for defining the hive location.
+	var/crystal_stored = 0 //How much stockpiled material is stored for the hive to use.
 
 	var/datum/mutator_set/hive_mutators/mutators = new
 	var/tier_slot_multiplier = 1.0
 	var/larva_gestation_multiplier = 1.0
 	var/bonus_larva_spawn_chance = 1.0
 
-	/* Resolve this line once structures are resolved.
 	//List of how many maximum of each special structure you can have
 	var/list/hive_structures_limit = list(
+		XENO_STRUCTURE_CORE = 1,
+		XENO_STRUCTURE_PYLON = 4,
 		XENO_STRUCTURE_POOL = 1,
-		XENO_STRUCTURE_EGGMORPH = 2,
-		XENO_STRUCTURE_EVOPOD = 5
+		XENO_STRUCTURE_EGGMORPH = 6,
+		XENO_STRUCTURE_EVOPOD = 5,
+		XENO_STRUCTURE_RECOVERY = 6
 	)
+
+	var/global/list/hive_structure_types = list(
+		XENO_STRUCTURE_CORE = /datum/construction_template/xenomorph/core,
+		XENO_STRUCTURE_PYLON = /datum/construction_template/xenomorph/pylon,
+		XENO_STRUCTURE_POOL = /datum/construction_template/xenomorph/pool,
+		XENO_STRUCTURE_EGGMORPH = /datum/construction_template/xenomorph/eggmorph,
+		XENO_STRUCTURE_EVOPOD = /datum/construction_template/xenomorph/evopod,
+		XENO_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/recovery
+	)
+
 	var/list/hive_structures = list() //Stringref list of structures that have been built
+	var/list/hive_constructions = list() //Stringref list of structures that are being built
 	var/list/datum/mind/spawn_list = list() //List of minds that are waiting to be respawned
-	*/
 
 	var/datum/hive_status_ui/hive_ui = new
 
@@ -663,18 +688,12 @@
 
 	return xenos
 
-/datum/hive_status/proc/set_hive_location(var/turf/T)
-	if(!T || T == hive_location)
+/datum/hive_status/proc/set_hive_location(var/obj/effect/alien/resin/special/pylon/core/C)
+	if(!C || C == hive_location)
 		return
-	var/area/A = get_area(T)
+	var/area/A = get_area(C)
 	xeno_message(SPAN_XENOANNOUNCE("The Queen has set the hive location as \the [A]."), 3, hivenumber)
-	/* Resolve this line once structures are resolved.
-	for(var/iterator in hive_structures)
-		for(var/obj/effect/alien/resin/special/S in hive_structures[iterator])
-			if(get_dist(S, hive_location) > XENO_HIVE_AREA_SIZE)
-				qdel(S)
-	*/
-	hive_location = T
+	hive_location = C
 	hive_ui.update_hive_location()
 
 // Returns a list of xeno healths and locations
@@ -733,10 +752,41 @@
 
 	return get_dist(living_xeno_queen, T) <= egg_planting_range	
 
-/* Resolve this line once structures are resolved.
 /datum/hive_status/proc/can_build_structure(var/structure_name)
-	if(!structure_name || !hive_structures_limit[structure_name] || (hive_structures[structure_name] && hive_structures[structure_name].len >= hive_structures_limit[structure_name]))
+	if(!structure_name || !hive_structures_limit[structure_name])
 		return FALSE
+	var/total_count = 0
+	if(hive_structures[structure_name])
+		total_count += hive_structures[structure_name].len
+	if(hive_constructions[structure_name])
+		total_count += hive_constructions[structure_name].len
+	if(total_count >= hive_structures_limit[structure_name])
+		return FALSE
+	return TRUE
+
+/datum/hive_status/proc/has_structure(var/structure_name)
+	if(!structure_name)
+		return FALSE
+	if(hive_structures[structure_name] && hive_structures[structure_name].len)
+		return TRUE
+	return FALSE
+
+/datum/hive_status/proc/add_construction(var/obj/effect/alien/resin/construction/S)
+	if(!S || !S.template)
+		return FALSE
+	var/name_ref = initial(S.template.name)
+	if(!hive_constructions[name_ref])
+		hive_constructions[name_ref] = list()
+	if(hive_constructions[name_ref].len >= hive_structures_limit[name_ref])
+		return FALSE
+	hive_constructions[name_ref] += src
+	return TRUE
+
+/datum/hive_status/proc/remove_construction(var/obj/effect/alien/resin/construction/S)
+	if(!S || !S.template)
+		return FALSE
+	var/name_ref = initial(S.template.name)
+	hive_constructions[name_ref] -= src
 	return TRUE
 
 /datum/hive_status/proc/add_special_structure(var/obj/effect/alien/resin/special/S)
@@ -766,8 +816,8 @@
 
 /datum/hive_status/proc/has_special_structure(var/name_ref)
 	if(!name_ref || !hive_structures[name_ref] || !hive_structures[name_ref].len)
-		return FALSE
-	return TRUE
+		return 0
+	return hive_structures[name_ref].len
 
 /datum/hive_status/proc/queue_spawn(var/mob/M)
 	if(!M || !M.mind)
@@ -798,7 +848,6 @@
 		return null
 	var/datum/mind/M = pick(spawn_list)
 	return M
-*/
 
 /datum/hive_status/corrupted
 	hivenumber = XENO_HIVE_CORRUPTED

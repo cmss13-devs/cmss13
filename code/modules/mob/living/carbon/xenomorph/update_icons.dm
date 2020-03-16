@@ -2,10 +2,11 @@
 //Abby
 
 //Xeno Overlays Indexes//////////
-#define X_HEAD_LAYER			7
-#define X_SUIT_LAYER			6
-#define X_L_HAND_LAYER			5
-#define X_R_HAND_LAYER			4
+#define X_HEAD_LAYER			8
+#define X_SUIT_LAYER			7
+#define X_L_HAND_LAYER			6
+#define X_R_HAND_LAYER			5
+#define X_RESOURCE_LAYER		4
 #define X_TARGETED_LAYER		3
 #define X_LEGCUFF_LAYER			2
 #define X_FIRE_LAYER			1
@@ -47,6 +48,7 @@
 	..()
 	update_inv_r_hand()
 	update_inv_l_hand()
+	update_inv_resource()
 	update_icons()
 
 
@@ -86,6 +88,12 @@
 			t_state = l_hand.icon_state
 		overlays_standing[X_L_HAND_LAYER] = l_hand.get_mob_overlay(src, WEAR_L_HAND)
 		apply_overlay(X_L_HAND_LAYER)
+
+/mob/living/carbon/Xenomorph/proc/update_inv_resource()
+	remove_overlay(X_RESOURCE_LAYER)
+	if(crystal_stored)
+		overlays_standing[X_RESOURCE_LAYER] = image("icon" = icon, "icon_state" = "[caste_name]_resources", "layer" =-X_RESOURCE_LAYER)
+		apply_overlay(X_RESOURCE_LAYER)
 
 //Call when target overlay should be added/removed
 /mob/living/carbon/Xenomorph/update_targeted()

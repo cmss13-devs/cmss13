@@ -10,6 +10,7 @@
 	max_health = XENO_HEALTH_HIGHMEDIUM
 	plasma_gain = XENO_PLASMA_GAIN_MED
 	plasma_max = XENO_PLASMA_HIGHMEDIUM
+	crystal_max = XENO_CRYSTAL_LOW
 	xeno_explosion_resistance = XENO_HEAVY_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_MEDIUM_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_HIGH
@@ -86,6 +87,7 @@
 		/datum/action/xeno_action/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/plant_weeds,
+		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/activable/burrow,
 		/datum/action/xeno_action/build_tunnel,

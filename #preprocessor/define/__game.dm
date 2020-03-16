@@ -223,6 +223,8 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 #define CEILING_DEEP_UNDERGROUND 5
 #define CEILING_DEEP_UNDERGROUND_METAL 5
 #define CEILING_REINFORCED_METAL 6
+#define CEILING_RESIN 7
+#define CEILING_MAX 7
 
 // Default font settings
 #define FONT_SIZE "5pt"

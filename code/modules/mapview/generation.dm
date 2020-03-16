@@ -98,6 +98,10 @@
 			else
 				minimap.DrawBox(rgb(0,0,0),T.x,T.y)
 			continue
+		var/obj/structure/resource_node/plasma/plasma = locate(/obj/structure/resource_node/plasma) in T
+		if(plasma && plasma.growth_level)
+			minimap.DrawBox(rgb(196,48,201),T.x-1,T.y-1,T.x+1,T.y+1)
+			continue
 		if(locate(/obj/structure/window_frame) in T || locate(/obj/structure/window/framed) in T || locate(/obj/structure/machinery/door) in T)
 			minimap.DrawBox(rgb(25,25,25),T.x,T.y)
 			continue
@@ -150,10 +154,14 @@
 		if((map_tag != MAP_PRISON_STATION || map_tag != MAP_CORSAT) && istype(T,/turf/open/space))
 			minimap.DrawBox(rgb(0,0,0),T.x,T.y)
 			continue
+		var/obj/structure/resource_node/plasma/plasma = locate(/obj/structure/resource_node/plasma) in T
+		if(plasma && plasma.growth_level)
+			minimap.DrawBox(rgb(196,48,201),T.x-1,T.y-1,T.x+1,T.y+1)
+			continue
 		if(A.ceiling > CEILING_METAL && A.ceiling != CEILING_REINFORCED_METAL)
 			minimap.DrawBox(rgb(0,0,0),T.x,T.y)
 			continue
-		if(istype(T,/turf/closed) || istype(T,/turf/open/gm/empty))
+		if(A.ceiling > CEILING_METAL)
 			minimap.DrawBox(rgb(0,0,0),T.x,T.y)
 			continue
 		if(locate(/obj/structure/window_frame) in T || locate(/obj/structure/window/framed) in T || locate(/obj/structure/machinery/door) in T)

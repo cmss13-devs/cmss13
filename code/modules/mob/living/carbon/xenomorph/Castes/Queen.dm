@@ -9,6 +9,7 @@
 	max_health = XENO_HEALTH_ULTRAHIGH
 	plasma_gain = XENO_PLASMA_GAIN_HIGH
 	plasma_max = XENO_PLASMA_VERYHIGH
+	crystal_max = XENO_CRYSTAL_MEDIUM
 	xeno_explosion_resistance = XENO_GIGA_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_MEDIUM_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_VERYHIGH
@@ -135,6 +136,7 @@
 		/datum/action/xeno_action/plant_weeds,
 		/datum/action/xeno_action/choose_resin,
 		/datum/action/xeno_action/activable/secrete_resin,
+		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/grow_ovipositor,
 		/datum/action/xeno_action/activable/screech,
 		/datum/action/xeno_action/activable/corrosive_acid,
@@ -147,6 +149,7 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/claw_toggle,
+		/mob/living/carbon/Xenomorph/proc/construction_toggle,
 		/mob/living/carbon/Xenomorph/Queen/proc/set_orders,
 		/mob/living/carbon/Xenomorph/Queen/proc/hive_Message
 		)
@@ -158,6 +161,7 @@
 		/datum/action/xeno_action/plant_weeds,
 		/datum/action/xeno_action/choose_resin,
 		/datum/action/xeno_action/activable/secrete_resin,
+		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/grow_ovipositor,
 		/datum/action/xeno_action/activable/screech,
 		/datum/action/xeno_action/activable/corrosive_acid,
@@ -169,10 +173,8 @@
 			)
 	mutation_type = QUEEN_NORMAL
 
-/* Resolve this line once structures are resolved.
 /mob/living/carbon/Xenomorph/Queen/can_destroy_special()
 	return TRUE
-*/
 
 /mob/living/carbon/Xenomorph/Queen/Corrupted
 	hivenumber = XENO_HIVE_CORRUPTED
@@ -369,6 +371,30 @@
 
 /mob/living/carbon/Xenomorph/proc/do_claw_toggle_cooldown()
 	pslash_delay = FALSE
+	
+/mob/living/carbon/Xenomorph/proc/construction_toggle()
+	set name = "Permit/Disallow Construction Placement"
+	set desc = "Allows you to permit the hive to place construction nodes freely."
+	set category = "Alien"
+
+	if(stat)
+		to_chat(src, SPAN_WARNING("You can't do that now."))
+		return
+
+	var/choice = input("Choose which level of construction placement freedom to permit to your hive.","Harming") as null|anything in list("Queen", "Leaders", "Anyone")
+
+	if(choice == "Anyone")
+		to_chat(src, SPAN_XENONOTICE("You allow construction placement to all builder castes."))
+		xeno_message("The Queen has <b>permitted</b> the placement of construction nodes to all builder castes!")
+		hive.construction_allowed = 2
+	else if(choice == "Leaders")
+		to_chat(src, SPAN_XENONOTICE("You restrict construction placement to leaders only."))
+		xeno_message("The Queen has <b>restricted</b> the placement of construction nodes to leading builder castes only.")
+		hive.construction_allowed = 1
+	else if(choice == "Queen")
+		to_chat(src, SPAN_XENONOTICE("You forbid construction placement entirely."))
+		xeno_message("The Queen has <b>forbidden</b> the placement of construction nodes to herself.")
+		hive.construction_allowed = 0
 
 /mob/living/carbon/Xenomorph/Queen/proc/queen_screech()
 	if(!check_state())
@@ -511,6 +537,7 @@
 		/datum/action/xeno_action/queen_heal,
 		/datum/action/xeno_action/queen_give_plasma,
 		/datum/action/xeno_action/queen_order,
+		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/deevolve,
 		/datum/action/xeno_action/show_minimap,
 		/datum/action/xeno_action/banish,
@@ -525,10 +552,6 @@
 	resting = FALSE
 	update_canmove()
 	update_icons()
-
-	if(hive)
-		var/turf/T = get_turf(src)
-		hive.set_hive_location(T)
 
 	for(var/mob/living/carbon/Xenomorph/L in hive.xeno_leader_list)
 		L.handle_xeno_leader_pheromones()

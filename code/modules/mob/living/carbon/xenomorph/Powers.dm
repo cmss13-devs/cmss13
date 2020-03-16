@@ -809,8 +809,6 @@
 	add_timer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/do_fortify_cooldown), (caste ? caste.fortify_cooldown : SECONDS_5))
 
 /mob/living/carbon/Xenomorph/proc/process_fortify()
-	set background = TRUE
-
 	if(world.time > fortify_timer)
 		fortify = FALSE
 		fortify_off()
@@ -1312,9 +1310,20 @@
 	if(!check_plasma(resin_plasma_cost))
 		return FALSE
 
+	var/resin_to_build = selected_resin
+
 	var/turf/current_turf = get_turf(A)
 
-	if(get_dist(src, A) > src.caste.max_build_dist + extra_build_dist) // Hivelords have max_build_dist of 1, drones and queens 0
+	var/obj/structure/resource_node/target_node = locate() in current_turf
+	if(target_node && get_dist(src, current_turf) <= max(1, src.caste.max_build_dist)) // Building resource collectors
+		var/obj/effect/alien/resin/collector/alien_blocker = locate() in current_turf
+		// var/obj/effect/alien/resin/collector/marine_blocker = locate() in current_turf
+		// if(alien_blocker || marine_blocker)
+		if(alien_blocker)
+			to_chat(src, SPAN_WARNING("There is already another collector here!"))
+			return FALSE
+		resin_to_build = RESIN_COLLECTOR
+	else if(get_dist(src, A) > src.caste.max_build_dist + extra_build_dist) // Hivelords have max_build_dist of 1, drones and queens 0
 		current_turf = get_turf(src)
 	else if(thick) //hivelords can thicken existing resin structures.
 		var/thickened = FALSE
@@ -1373,10 +1382,10 @@
 		to_chat(src, SPAN_WARNING("You can only shape on weeds. Find some resin before you start building!"))
 		return FALSE
 
-	if(!check_alien_construction(current_turf))
+	if(resin_to_build != RESIN_COLLECTOR && !check_alien_construction(current_turf))
 		return FALSE
 
-	if(selected_resin == RESIN_DOOR)
+	if(resin_to_build == RESIN_DOOR)
 		var/wall_support = FALSE
 		for(var/D in cardinal)
 			var/turf/T = get_step(current_turf,D)
@@ -1391,7 +1400,7 @@
 			to_chat(src, SPAN_WARNING("Resin doors need a wall or resin door next to them to stand up."))
 			return FALSE
 
-	if(selected_resin == RESIN_NEST && hive && hive.living_xeno_queen)
+	if(resin_to_build == RESIN_NEST && hive && hive.living_xeno_queen)
 		if(src == hive.living_xeno_queen)
 			to_chat(src, SPAN_WARNING("You don't bother with such small affairs as building nests."))
 			return 
@@ -1436,10 +1445,10 @@
 	if(!alien_weeds)
 		return FALSE
 
-	if(!check_alien_construction(current_turf))
+	if(resin_to_build != RESIN_COLLECTOR && !check_alien_construction(current_turf))
 		return FALSE
 
-	if(selected_resin == RESIN_DOOR)
+	if(resin_to_build == RESIN_DOOR)
 		var/wall_support = FALSE
 		for(var/D in cardinal)
 			var/turf/T = get_step(current_turf,D)
@@ -1456,13 +1465,13 @@
 
 	use_plasma(resin_plasma_cost)
 	if(message)
-		visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and shapes it into \a [resin2text(selected_resin, thick)]!"), \
-			SPAN_XENONOTICE("You regurgitate some resin and shape it into \a [resin2text(selected_resin, thick)]."), null, 5)
+		visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and shapes it into \a [resin2text(resin_to_build, thick)]!"), \
+			SPAN_XENONOTICE("You regurgitate some resin and shape it into \a [resin2text(resin_to_build, thick)]."), null, 5)
 		playsound(loc, "alien_resin_build", 25)
 
 	var/atom/new_resin
 
-	switch(selected_resin)
+	switch(resin_to_build)
 		if(RESIN_DOOR)
 			if(thick)
 				new_resin = new /obj/structure/mineral_door/resin/thick(current_turf)
@@ -1486,6 +1495,8 @@
 			new_resin = new /obj/effect/alien/resin/sticky(current_turf)
 		if(RESIN_FAST)
 			new_resin = new /obj/effect/alien/resin/sticky/fast(current_turf)
+		if(RESIN_COLLECTOR)
+			new_resin = new /obj/effect/alien/resin/collector(current_turf, hive, target_node)
 
 	new_resin.add_hiddenprint(src) //so admins know who placed it
 	return TRUE
@@ -1658,70 +1669,18 @@
 	else
 		to_chat(src, SPAN_NOTICE("Attacks will no longer use directional assist."))
 
-/* Resolve this line once structures are resolved.
-/mob/living/carbon/Xenomorph/proc/morph_resin(var/turf/current_turf, var/structure_type)
-	if(!structure_type || !check_state() || action_busy)
-		return FALSE
+/mob/living/carbon/Xenomorph/proc/place_construction(var/turf/current_turf, var/datum/construction_template/xenomorph/structure_template)
+	if(!structure_template || !check_state() || action_busy)
+		return
 
 	var/area/current_area = get_area(current_turf)
+	var/obj/effect/alien/resin/construction/new_structure = new(current_turf, hive)
+	new_structure.set_template(structure_template)
+	hive.add_construction(new_structure)
 
-	if(isnull(current_turf))
-		to_chat(src, SPAN_WARNING("You can't do that here."))
-		return FALSE
-
-	if(!hive.living_xeno_queen)
-		to_chat(src, SPAN_WARNING("There is no queen!"))
-		return FALSE
-
-	if(!hive.hive_location)
-		to_chat(src, SPAN_WARNING("There is no hive!"))
-		return FALSE
-
-	if(get_dist(src, hive.hive_location) > XENO_HIVE_AREA_SIZE)
-		to_chat(src, SPAN_WARNING("You are too far from the hive!"))
-		return FALSE
-
-	if(!current_area.can_build_special)
-		to_chat(src, SPAN_WARNING("You cannot build here!"))
-		return FALSE
-
-	for(var/turf/T in (range(current_turf, 1)))
-		var/failed = FALSE
-		if(T.density)
-			failed = TRUE
-		if(!check_alien_construction(current_turf))
-			failed = TRUE
-		if(failed)
-			to_chat(src, SPAN_WARNING("You need more open space to build here."))
-			return
-		var/obj/effect/alien/weeds/alien_weeds = locate() in T
-		if(!alien_weeds)
-			to_chat(src, SPAN_WARNING("You can only shape on weeds. Find some resin before you start building!"))
-			return FALSE
-
-	if(!do_after(src, XENO_STRUCTURE_BUILD_TIME, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		return FALSE
-
-	KnockDown((XENO_STRUCTURE_BUILD_TIME * 0.1))
-
-	if(!do_after(src, XENO_STRUCTURE_BUILD_TIME, INTERRUPT_DIFF_TURF|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		return FALSE
-
-	var/obj/effect/alien/resin/special/new_structure = new structure_type(loc, hive)
-
-	visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and morphs itself into \a [new_structure]!"), \
-		SPAN_XENONOTICE("You regurgitate some resin and morph yourself into \a [new_structure]."), null, 5)
-	playsound(loc, "alien_resin_build", 25)
+	visible_message(SPAN_XENONOTICE("A thick substance emerges from the ground and shapes into \a [new_structure]."), \
+		SPAN_XENONOTICE("You designate a new [structure_template] construction."), null, 5)
+	playsound(new_structure, "alien_resin_build", 25)
 
 	if(hive.living_xeno_queen)
-		xeno_message("Hive: [src] has <b>morphed</b> into \a [new_structure] at [sanitize(current_area)]!", 3, hivenumber)
-
-	if(IS_XENO_LEADER(src))	//Strip them from the Xeno leader list, if they are indexed in here
-		hive.remove_hive_leader(src)
-		if(hive.living_xeno_queen)
-			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE("A leader has resin-morphed!")) //alert queens so they can choose another leader
-
-	hive.queue_spawn(src)
-	track_death_calculations()
-	qdel(src)
-*/
+		xeno_message("Hive: A new <b>[structure_template]<b> construction has been designated at [sanitize(current_area)]!", 3, hivenumber)

@@ -132,13 +132,10 @@
 		if(human_user)
 			show_blip(human_user, M)
 
-	//Resolve this line once structures are resolved.
-	/*
 	for(var/obj/effect/alien/resin/special/S in orange(detector_range, loc))
 		ping_count++
 		if(human_user)
 			show_blip(human_user, S)
-	*/
 
 	if(ping_count > 0)
 		playsound(loc, pick('sound/items/detector_ping_1.ogg', 'sound/items/detector_ping_2.ogg', 'sound/items/detector_ping_3.ogg', 'sound/items/detector_ping_4.ogg'), 60, 0, 7, 2)

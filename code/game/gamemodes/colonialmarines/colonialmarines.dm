@@ -3,7 +3,7 @@
 	config_tag = "Distress Signal"
 	required_players = 1 //Need at least one player, but really we need 2.
 	xeno_required_num = 1 //Need at least one xeno.
-	monkey_amount = 25 //Resolve this line once structures are resolved.
+	monkey_amount = 5
 	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED
 	var/round_status_flags
 
@@ -156,6 +156,7 @@
 	initialize_post_xenomorph_list()
 	initialize_post_survivor_list()
 	initialize_post_marine_gear_list()
+	initialize_map_resource_list()
 
 	round_time_lobby = world.time
 
@@ -223,11 +224,8 @@
 				check_win()
 			round_checkwin = 0
 
-		//Resolve this line once structures are resolved.
-		/*
 		if(ticker.mode.latejoin_larva_drop && world.time >= round_time_burrowed_cutoff)
-			ticker.mode.latejoin_larva_drop = 0
-		*/
+			ticker.mode.latejoin_larva_drop = LATEJOIN_LARVA_DROP_POST
 
 		if(!(resin_allow_finished) && world.time >= round_time_resin)
 			for(var/area/A in all_areas)

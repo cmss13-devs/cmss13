@@ -102,8 +102,6 @@
 
 	if(mob.control_object)
 		return Move_object(direct) //admins possessing object
-
-	soundOutput.on_movement(n)
 	
 	if(isobserver(mob) || isAI(mob))
 		return mob.Move(n,direct)
@@ -137,6 +135,8 @@
 		var/mob/living/carbon/carbon_mob = mob
 		if(!carbon_mob.on_movement())
 			return //something blocked us from moving
+
+	soundOutput.on_movement(n)
 
 	//Check if you are being grabbed and if so attemps to break it
 	if(mob.pulledby)

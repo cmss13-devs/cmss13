@@ -12,7 +12,6 @@
 	w_class = SIZE_SMALL
 	var/charge = 0	// note %age conveted to actual charge in New
 	var/maxcharge = 1000
-	var/rigged = 0		// true if rigged to explode
 	var/minor_fault = 0 //If not 100% reliable, it will build up faults.
 	var/construction_cost = list("metal"=750,"glass"=75)
 	var/construction_time=100

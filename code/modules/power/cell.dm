@@ -26,20 +26,12 @@
 
 // use power from a cell
 /obj/item/cell/proc/use(var/amount)
-	if(rigged && amount > 0)
-		explode()
-		return 0
-
 	if(charge < amount)	return 0
 	charge = (charge - amount)
 	return 1
 
 // recharge the cell
 /obj/item/cell/proc/give(var/amount)
-	if(rigged && amount > 0)
-		explode()
-		return 0
-
 	if(maxcharge < amount)	return 0
 	var/amount_used = min(maxcharge-charge,amount)
 	if(crit_fail)	return 0
@@ -60,37 +52,6 @@
 	if(crit_fail)
 		to_chat(user, SPAN_DANGER("This power cell seems to be faulty."))
 
-/obj/item/cell/proc/explode()
-	var/turf/T = get_turf(src.loc)
-/*
- * 1000-cell	explosion(T, -1, 0, 1, 1)
- * 2500-cell	explosion(T, -1, 0, 1, 1)
- * 10000-cell	explosion(T, -1, 1, 3, 3)
- * 15000-cell	explosion(T, -1, 2, 4, 4)
- * */
-	if (charge==0)
-		return
-	var/devastation_range = -1 //round(charge/11000)
-	var/heavy_impact_range = round(sqrt(charge)/60)
-	var/light_impact_range = round(sqrt(charge)/30)
-	var/flash_range = light_impact_range
-	if (light_impact_range==0)
-		rigged = 0
-		corrupt()
-		return
-	//explosion(T, 0, 1, 2, 2)
-
-	message_admins("LOG: Rigged power cell explosion, last touched by [fingerprintslast]")
-
-	explosion(T, devastation_range, heavy_impact_range, light_impact_range, flash_range)
-
-	QDEL_IN(src, 1)
-
-/obj/item/cell/proc/corrupt()
-	charge /= 2
-	maxcharge /= 2
-	if (prob(10))
-		rigged = 1 //broken batterys are dangerous
 
 /obj/item/cell/emp_act(severity)
 	charge -= 1000 / severity
@@ -107,14 +68,10 @@
 			if (prob(25))
 				qdel(src)
 				return
-			if (prob(25))
-				corrupt()
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
 				qdel(src)
 				return
-			if (prob(50))
-				corrupt()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
 			return

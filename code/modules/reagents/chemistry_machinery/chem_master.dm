@@ -19,12 +19,24 @@
 	var/pillsprite = "1"
 	var/client/has_sprites = list()
 	var/max_pill_count = 20
+	var/obj/structure/machinery/smartfridge/chemistry/connected
 
 /obj/structure/machinery/chem_master/New()
 	..()
 	var/datum/reagents/R = new/datum/reagents(240)
 	reagents = R
 	R.my_atom = src
+	connect_smartfridge()
+
+/obj/structure/machinery/bodyscanner/Dispose()
+	connected = null
+	. = ..()
+
+/obj/structure/machinery/chem_master/proc/connect_smartfridge()
+	if(connected)
+		return
+	connected = locate(/obj/structure/machinery/smartfridge/chemistry) in range(3, src)
+	visible_message(SPAN_NOTICE("<b>The [src] beeps:</b> Smartfridge connected."))
 
 /obj/structure/machinery/chem_master/ex_act(severity)
 	switch(severity)
@@ -254,6 +266,21 @@
 		else if(href_list["bottle_sprite"])
 			bottlesprite = href_list["bottle_sprite"]
 
+	if(href_list["transferp"])
+		if(!loaded_pill_bottle)
+			return
+
+		if(!connected)
+			to_chat(user, SPAN_WARNING("Connect a smartfridge first."))
+			return
+
+		connected.add_item(loaded_pill_bottle)
+		loaded_pill_bottle = null
+
+	// Connecting a smartfridge
+	if(href_list["connect"])
+		connect_smartfridge()
+
 	//src.updateUsrDialog()
 	attack_hand(user)
 
@@ -284,8 +311,11 @@
 		if(loaded_pill_bottle)
 			dat += "<A href='?src=\ref[src];ejectp=1;user=\ref[user]'>Eject [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR>"
 			dat += "<A href='?src=\ref[src];addlabelp=1;user=\ref[user]'>Add label to [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR><BR>"
+			dat += "<A href='?src=\ref[src];transferp=1;'>Transfer [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\] to the smartfridge</A><BR><BR>"
 		else
 			dat += "No pill bottle inserted.<BR><BR>"
+		if(!connected)	
+			dat += "<A href='?src=\ref[src];connect=1'>Connect Smartfridge</A><BR><BR>"
 		if(!beaker.reagents.total_volume)
 			dat += "Beaker is empty."
 		else

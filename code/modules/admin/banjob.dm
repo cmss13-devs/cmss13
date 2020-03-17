@@ -95,42 +95,14 @@ var/jobban_keylist[0]		//to store the keys & ranks
 	return 1
 
 /proc/jobban_loadbanfile()
-	if(config.ban_legacy_system)
-		var/savefile/S=new("data/job_new.ban")
-		S["new_bans"] >> jobban_keylist
-		log_admin("Loading jobban_rank")
-		S["runonce"] >> jobban_runonce
+	var/savefile/S=new("data/job_new.ban")
+	S["new_bans"] >> jobban_keylist
+	log_admin("Loading jobban_rank")
+	S["runonce"] >> jobban_runonce
 
-		if (!length(jobban_keylist))
-			jobban_keylist=list()
-			log_admin("jobban_keylist was empty")
-	else
-		if(!establish_db_connection())
-			error("Database connection failed. Reverting to the legacy ban system.")
-			log_misc("Database connection failed. Reverting to the legacy ban system.")
-			config.ban_legacy_system = 1
-			jobban_loadbanfile()
-			return
-
-		//Job permabans
-		var/DBQuery/query = dbcon.NewQuery("SELECT ckey, job FROM erro_ban WHERE bantype = 'JOB_PERMABAN' AND isnull(unbanned)")
-		query.Execute()
-
-		while(query.NextRow())
-			var/ckey = query.item[1]
-			var/job = query.item[2]
-
-			jobban_keylist[job][ckey] = "Reason Unspecified"
-
-		//Job tempbans
-		var/DBQuery/query1 = dbcon.NewQuery("SELECT ckey, job FROM erro_ban WHERE bantype = 'JOB_TEMPBAN' AND isnull(unbanned) AND expiration_time > Now()")
-		query1.Execute()
-
-		while(query1.NextRow())
-			var/ckey = query1.item[1]
-			var/job = query1.item[2]
-
-			jobban_keylist[job][ckey] = "Reason Unspecified"
+	if (!length(jobban_keylist))
+		jobban_keylist=list()
+		log_admin("jobban_keylist was empty")
 
 /proc/jobban_savebanfile()
 	var/savefile/S=new("data/job_new.ban")

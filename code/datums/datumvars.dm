@@ -1,6 +1,9 @@
 
 // reference: /client/proc/modify_variables(var/atom/O, var/param_var_name = null, var/autodetect_class = 0)
 
+/datum/proc/can_vv_get()
+	return TRUE
+
 /client/proc/debug_variables(datum/D in world)
 	set category = "Debug"
 	set name = "B: View Variables"
@@ -20,7 +23,7 @@
 		to_chat(usr, SPAN_WARNING("You need host permission to access this."))
 		return
 
-	if((istype(D,/datum/ammo) || istype(D,/datum/caste_datum) || istype(D,/mob/living/carbon/Xenomorph/Predalien)) && !(usr.client.admin_holder.rights & R_DEBUG))
+	if((istype(D,/datum/ammo) || istype(D,/datum/caste_datum) || istype(D,/mob/living/carbon/Xenomorph/Predalien) || !D.can_vv_get() ) && !(usr.client.admin_holder.rights & R_DEBUG))
 		to_chat(usr, SPAN_WARNING("You need debugging permission to access this."))
 		return
 

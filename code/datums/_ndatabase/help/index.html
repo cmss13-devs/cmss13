@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NDatabase Reference</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<script><!--
+	window.addEventListener('message', function(m){
+		try {
+			var contents = document.querySelector('#contents');
+			var ref = document.querySelector('#ref');
+			if(m.source == ref || m.source == ref.contentWindow) {
+				contents.contentWindow.postMessage(m.data, '*');
+				try {
+					if(m.data.match(/^nav:/)) {
+						var h = m.data.substr(4);
+						if(!h.match(/^#/)) h = '#'+h;
+						if(window.location.hash != h) {
+							try {history.replaceState(null,"",h);}
+							catch(_) {window.location.hash = h;}
+						}
+					}
+					else if(m.data.match(/^search:/)) contents.contentWindow.postMessage(m.data,'*');
+				} catch(_){}
+			}
+			else if(m.source == contents || m.source == contents.contentWindow) {
+				if(m.data.match(/^search:/)) ref.contentWindow.postMessage(m.data, '*');
+			}
+		} catch(_){console.log(_);}
+	});
+	function hashchange(e) {
+		document.querySelector('#ref').contentWindow.postMessage('nav:'+window.location.hash, '*');
+	}
+	window.addEventListener('hashchange', hashchange);
+	(function dragger(){
+		var dragging, offset=0, shield, nextx;
+		var events={mousemove:move,touchmove:move,mouseup:stop,touchend:stop,touchcancel:stop};
+		function div() {return document.querySelector('#divider');}
+		function prev() {return document.querySelector('td.contents');}
+		function start(e) {
+			if(dragging) return;
+			dragging = true;
+			offset = prev().offsetWidth - (e.touches?e.touches[0]:e).clientX;
+			var d = div();
+			for(var i in events) if(events.hasOwnProperty(i)) document.addEventListener(i,events[i],true);
+			d.classList.add('dragging');
+			document.body.appendChild(shield = document.createElement('div'));
+			shield.id = '_shield';
+			shield.style.zIndex=100;
+			shield.style.position='absolute';
+			shield.style.left=shield.style.top='0';
+			shield.style.width=shield.style.height='100%';
+			shield.style.cursor='ew-resize';
+		}
+		function domove() {
+			nextx = Math.max(20, Math.min(nextx, document.body.clientWidth-20));
+			prev().style.width = nextx+'px';
+			nextx = null;
+		}
+		function move(e) {
+			if(!dragging) return;
+			var x = offset + (e.touches?e.touches[0]:e).clientX;
+			if(nextx == null) setTimeout(domove, 50);
+			nextx = x;
+		}
+		function stop(e) {
+			if(!dragging) return;
+			move(e);
+			dragging = false;
+			var d = div();
+			for(var i in events) if(events.hasOwnProperty(i)) document.removeEventListener(i,events[i],true);
+			d.classList.remove('dragging');
+			shield.parentNode.removeChild(shield);
+		}
+		window.setupdrag = function() {
+			var d = div();
+			d.addEventListener('mousedown',start);
+			d.addEventListener('touchstart',start);
+		}
+	})();
+	//--></script>
+	<style type="text/css">
+		html, body {margin: 0px; padding: 0px; border: none; height: 100%;}
+		table {height:100%; width:100%; overflow: hidden;}
+		td {padding: 0px; margin: 0px; border: none; height: 100%;}
+		td.contents {width: 300px;}
+		td#divider {width: 3px; cursor: ew-resize; box-sizing: content-box; border-style: outset; border-color: #ccc; border-width: 0 1px 0 1px; background: #ccc; user-select: none; -webkit-user-select: none; -moz-user-select: none; -e-user-select: none;}
+		td#divider.dragging {background: #999; border-color: #999;}
+		iframe {border: none; width: 100%; height: 100%;}
+	</style>
+</head>
+
+<table><tr>
+<td class=contents><iframe id="contents" name="contents" src="contents.html"></iframe></td>
+<td id=divider></td>
+<td><iframe src="info.html" id="ref" name="ref" onload="hashchange()"></iframe></td>
+</tr></table>
+<script>setupdrag();</script>
+
+</html>

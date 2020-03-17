@@ -129,7 +129,6 @@ var/list/admin_verbs_possess = list(
 	/proc/release
 )
 var/list/admin_verbs_permissions = list(
-	/client/proc/edit_admin_permissions,
 	/client/proc/ToRban
 )
 var/list/admin_verbs_color = list(
@@ -285,10 +284,7 @@ var/list/admin_verbs_mod = list(
 	set name = "Display Job Bans"
 	set category = "Admin"
 	if(admin_holder)
-		if(config.ban_legacy_system)
-			admin_holder.Jobbans()
-		else
-			admin_holder.DB_ban_panel()
+		admin_holder.Jobbans()
 	return
 
 /client/proc/game_panel()

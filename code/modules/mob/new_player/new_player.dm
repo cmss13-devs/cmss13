@@ -52,22 +52,6 @@
 
 	output += "<p><a href='byond://?src=\ref[src];lobby_choice=observe'>Observe</A></p>"
 
-	if(!IsGuestKey(src.key))
-		establish_db_connection()
-
-		if(dbcon.IsConnected())
-			var/isadmin = 0
-			if(src.client && src.client.admin_holder && (client.admin_holder.rights & R_MOD))
-				isadmin = 1
-			var/DBQuery/query = dbcon.NewQuery("SELECT id FROM erro_poll_question WHERE [(isadmin ? "" : "adminonly = false AND")] Now() BETWEEN starttime AND endtime AND id NOT IN (SELECT pollid FROM erro_poll_vote WHERE ckey = \"[ckey]\") AND id NOT IN (SELECT pollid FROM erro_poll_textreply WHERE ckey = \"[ckey]\")")
-			query.Execute()
-			var/newpoll = 0
-			while(query.NextRow())
-				newpoll = 1
-				break
-
-			output += "<p><b><a href='byond://?src=\ref[src];lobby_choice=showpoll'>Show Player Polls</A>[newpoll?" (NEW!)":""]</b></p>"
-
 	output += "</div>"
 	if (refresh)
 		close_browser(src, "playersetup")
@@ -240,11 +224,6 @@
 					return 0
 
 			AttemptLateSpawn(href_list["job_selected"],client.prefs.spawnpoint)
-			return
-
-
-		if("showpoll")
-			handle_player_polling()
 			return
 
 		else

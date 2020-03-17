@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="ref">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <style>
+    <!--
+    * {box-sizing: border-box;}
+    body {font: 11pt 'Segoe UI',Verdana,Arial,Helvetica,sans-serif; background: white; color: black; padding: 0; margin: 0; overflow-y: scroll;}
+    #contents_top {position:fixed; width: 100%; background: white; padding: 5px 10px; left: 0; top: 0; border-bottom: 1px solid #ccc; text-align: center; z-index: 1; display: flex;}
+    #contents_page {position:relative; padding: 10px; left: 0; z-index: 0;}
+    .button {background: #ddf; display: inline-block; height: 25px; line-height: 0.833; padding: 5px 10px; border-radius: 12.5px; cursor: pointer; transition: background-color 0.2s; vertical-align: middle;}
+    .button.current, .button:hover {background: #99f;}
+    div.menu {display: inline-block; position: relative; text-align: left; height: 25px; overflow-y: visible;}
+    .menu:hover .button {background: #99f;}
+    .updown {display: inline-block; width: 7px; height: 5px; border-width: 5px 3.5px 0 3.5px; border-color: transparent; border-top-color: black; border-style: solid; vertical-align: middle; margin-top: -2px;}
+    .menu:hover > a > .updown, a:hover > .updown {border-width: 0 3.5px 5px 3.5px; border-top-color: transparent; border-bottom-color: black;}
+    .menu ul {display: none; background: #ddf; margin: 0; padding: 0; box-shadow: 2px 2px 5px rgba(0,0,0,0.5); font-size: 10pt; border-radius: 10px;}
+    .menu li {width: 100%; margin: 0; padding: 0; list-style-type: none; white-space: nowrap; cursor: pointer; position: relative; transition: background-color 0.2s;}
+    .menu li:first-child {border-radius: 10px 10px 0 0;}
+    .menu li:last-child {border-radius: 0 0 10px 10px;}
+    .menu li.separator {border-bottom: 1px solid #bbf;}
+    .menu li:before {width:1em; display:block; position: absolute; left: 0; top: 0; pointer-events: none; text-align: center;}
+    .menu li.sel:before {content: '\2714\fe0e';}
+    .menu li:hover {background: #99f;}
+    .menu li > a {width: 100%; display: block; padding: 2px 10px 2px calc(10px + 1em);}
+    div.menu:hover > ul {display: block; position: absolute; left: 0; top: 25px;}
+    .search {border: #ccc; box-shadow: inset 1px 1px 2px rgba(0,0,0,0.5); display: inline-block; height: 25px; border-radius: 12.5px; position: relative; vertical-align: middle; text-align: left; flex: 1; margin-left: 10px;}
+    .search:focus-within {background: #eef;}
+    .search:after {content: '\1f50d\fe0e'; display: block; width: 1em; position: absolute; right: 5px;}
+    #search_text {position: absolute; width: calc(100% - 20px - 1em); height: 21px; left: 10px; top: 2px; vertical-align: middle; overflow: hidden;}
+    #search_text:focus {outline:none;}
+    #search_results {display: none; position: absolute; width: 100%; min-width: 150px; right: 0; top: 25px; background: white; border: 1px solid #999; box-shadow: 2px 2px 5px rgba(0,0,0,0.5);}
+    #search_text:focus + #search_results.show, #search_results:not(.hide):hover, #search_results.show:focus-within {display:block;}
+    #search_results .result {padding: 2px 5px; cursor: pointer; transition: background-color 0.2s;}
+    #search_results .result.empty {text-align: center; cursor: default; padding: 5px 10px;}
+    #search_results .result:hover {background: #eee;}
+    #search_results .name {font-size: 10pt; margin-left: 1em; text-indent: -1em;}
+    #search_results .excerpt {font-size: 8pt;}
+    dl, dd {margin-top: 0; margin-bottom: 0;}
+    dd {margin-left: 0; padding-left: 1.5em;}
+    dd.expand {display: block;}
+    dl a {text-decoration: none;}
+    .expander {display: inline-block; vertical-align: baseline; width: 11px; height: 11px; margin-right: 1em; font-size: 8pt; text-align: center; cursor: pointer; background:url('data:image/png;charset=utf-8;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAMAAACecocUAAAACVBMVEWAgID///8AAADOvuwWAAAAJElEQVR42o3NoQ0AAAwCwcL+QyMoAtWeekHCFMQ2r6a991GvAhjAAF/WgxB1AAAAAElFTkSuQmCC');}
+    .expander.expand {background: url('data:image/png;charset=utf-8;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAMAAACecocUAAAACVBMVEWAgID///8AAADOvuwWAAAAIklEQVR42p3LMQoAAAzCQPX/j3YoUtxKb8oSFMa1Nfh4lwEXNABZXAgFLwAAAABJRU5ErkJggg==');}
+    .expander.blank {background: none;}
+    .expander img {cursor: pointer;}
+    .sel > a {font-weight: bold;}
+    .using_filter dt {display: none;}
+    .using_filter dt.filter, .using_filter dt.filter_parent {display: block;}
+    .using_filter dt.filter_parent > a {opacity: 0.667;}
+      -->
+  </style>
+  <script type="text/javascript"><!--
+    if(!Function.prototype.bind) Function.prototype.bind = function(o) {
+      var a=Array.prototype.slice(arguments,1),f=this;
+      return function() {return f.apply(o,a.concat(arguments));}
+    }
+    window.addEventListener('message', function(m){
+      if(typeof m.data != 'string') return;
+      if(m.data.match(/^nav:/)) navTo(m.data.substr(4));
+      if(m.data.match(/^search:/)) searchresults(JSON.parse(m.data.substr(7)));
+    });
+    //var plusimg = 'data:image/png;charset=utf-8;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAMAAACecocUAAAACVBMVEWAgID///8AAADOvuwWAAAAJElEQVR42o3NoQ0AAAwCwcL+QyMoAtWeekHCFMQ2r6a991GvAhjAAF/WgxB1AAAAAElFTkSuQmCC';
+    //var minusimg = 'data:image/png;charset=utf-8;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAMAAACecocUAAAACVBMVEWAgID///8AAADOvuwWAAAAIklEQVR42p3LMQoAAAzCQPX/j3YoUtxKb8oSFMa1Nfh4lwEXNABZXAgFLwAAAABJRU5ErkJggg==';
+    function scrollTo(l) {
+      if(!l) return;
+      var r = l.getBoundingClientRect(), de = document.documentElement;
+      var h = Math.min(de.clientHeight, window.innerHeight || 0);
+      var top = document.querySelector('#contents_top');
+      if(r.bottom > h) de.scrollTop += (r.bottom - h);
+      else if((top = document.querySelector('#contents_top')) && r.top < top.offsetHeight) de.scrollTop -= top.offsetHeight - r.top;
+      //try{l.scrollIntoView();} catch(_){}
+    };
+    function selTo(m,section,force) {
+      var l,n,b;
+      if(m.nodeType) l = m;
+      else {
+        m = m.replace(/[.<>?]/g, function(a){return '%'+a.charCodeAt(0).toString(16);});
+        l = section.querySelector('.sel > a[href="info.html#'+m+'"]') || section.querySelector('a[href="info.html#'+m+'"]');
+      }
+      while((n=section.querySelector('.sel'))) n.classList.remove('sel');
+      if(!l) return;
+      while((n=section.querySelector('.expand.auto'))) n.classList.remove('expand');
+      for(n=l; ((n=n.parentNode) && n!=section);) {
+        if(n.tagName == 'DD') n = n.previousSibling;
+        if((b=n.firstChild) && b.tagName) expand.call(b,true,true);
+        if(n.classList) n.classList.add('sel');
+      }
+      if(section.classList.contains('current')) scrollTo(l);
+      while((n=section.querySelector('.auto:not(.expand)'))) expand.call(n,false);
+      if(force) l.click();
+    }
+    function navTo(m,force) {
+      var a=document.querySelectorAll('.tab_content'), i, l;
+      for(i=a.length; i--;) selTo(m, a[i], force);
+    }
+    function selMe(e) {
+      for(var s=e.target; s; s=s.parentNode) {
+        if(s.classList.contains('tab_content')) {
+          selTo(e.target,s);
+          break;
+        }
+      }
+    }
+    function expand(open,auto) {
+      this.classList.toggle('auto',!!auto);
+      var sib=this.parentNode.nextSibling;//,img=this.firstChild;
+      while(sib && sib.tagName != 'DD' && sib.tagName != 'DT') sib = sib.nextSibling;
+      if(sib && sib.tagName == 'DD') {
+        if(open && open.preventDefault) {open.preventDefault(); open.stopPropagation();}
+        if(typeof open != 'boolean') open = !sib.classList.contains('expand');
+        sib.classList.toggle('expand',open);
+        this.classList.toggle('expand',open);
+        //img.setAttribute('src',open?minusimg:plusimg);
+      }
+      return false;
+    }
+    function expandBox(e) {expand.call(e.target,e);}
+    var _order=0;
+    var categories = {
+      setup: {name:"Setup", order:_order++},
+	  configuration: {name:"Configuration", order:_order++},
+	  connection: {name:"Connection", order:_order++},
+	  adapter: {name:"Adapter", order:_order++},
+	  querymanager: {name:"Query manager", order:_order++},
+	  entity: {name:"Entities", order:_order++},
+	  meta: {name:"Entity meta", order:_order++},
+	  entitymanager: {name:"Entity manager", order:_order++}
+    };
+    var group_filters = {};
+    function keys(a) {
+      var ret = [];
+      for(var item in a) if(a.hasOwnProperty(item)) ret.push(item);
+      return ret;
+    }
+    function procname(n) {
+      var pre,m,i;
+      m = n.match(/\/(proc|verb)\//);
+      if(!m) return n;
+      pre = n.substr(0,m.index).replace(/^\//,'').replace(/\//g,'.');
+      n = n.substr(m.index+m[0].length);
+      if((i=n.indexOf('/')) > 0) n = n.substr(0,i) + ' (' + n.substr(i+1) + ')';
+      if(pre) n = pre + '.' + n;
+      return n;
+    }
+    var filters_in_use = [];
+    function toggleFilter(group) {
+      var active=true,mi=document.querySelector(`#filter_menu li[group="${group}"]`);
+      var i = filters_in_use.indexOf(group);
+      if(i>=0) {filters_in_use.splice(i,1); active=false;}
+      else filters_in_use.push(group);
+      if(active) mi.classList.add('sel');
+      else mi.classList.remove('sel');
+      applyFilter();
+    }
+    function clearFilter() {
+      var mi;
+      filters_in_use.splice(0,filters_in_use.length);
+      while((mi=document.querySelector('#filter_menu li.sel'))) mi.classList.remove('sel');
+      applyFilter();
+    }
+    function applyFilter() {
+      var page=document.querySelector('#contents_page'),dt,a,i,j,l,group;
+      if(!filters_in_use.length) {
+        page.classList.remove('using_filter');
+        document.querySelector('#filter_menu li:first-child').classList.add('sel');
+        return;
+      }
+      document.querySelector('#filter_menu li:first-child').classList.remove('sel');
+      while((dt = page.querySelector('.filter'))) dt.classList.remove('filter');
+      while((dt = page.querySelector('.filter_parent'))) dt.classList.remove('filter_parent');
+
+      for(j=filters_in_use.length; j--;) {
+        group = filters_in_use[j];
+        a = page.querySelectorAll(`a[group="${group}"],a[group^="${group},"],a[group^="${group}."],a[group$=",${group}"],a[group~=",${group},"],a[group~=",${group}."]`);
+        for(i=0,l=a.length; i<l; ++i) {
+          a[i].parentNode.classList.add('filter');
+        }
+      }
+      a = page.querySelectorAll('.filter');
+      for(i=0,l=a.length; i<l; ++i) {
+        for(dt=a[i]; (dt=dt.parentNode.parentNode.previousSibling) && dt.tagName=='DT';) {
+          if(dt.classList.contains('filter') || dt.classList.contains('filter_parent')) break;
+          dt.classList.add('filter_parent');
+        }
+      }
+      page.classList.add('using_filter');
+    }
+    function applyGroups() {
+      var group,item,g,i,j,l,a,b,dt,li;
+
+      // new code for filtering by group, not ready yet
+      a = document.querySelectorAll('dt > a');
+      for(i=0,l=a.length; i<l; ++i) {
+        g = a[i].getAttribute('group');
+        if(g && g.charAt(0) == '!') g = g.substr(1);
+        else {
+          if(!g) g="";
+          item = a[i].parentNode.parentNode.parentNode.previousSibling;
+          if(item.tagName == 'DT') {  // parent would have already been processed
+            item = item.querySelector('a');
+            if(item) g = (item.getAttribute('group')+','+g).replace(/^,/,'');
+          }
+        }
+        if(!g) g="";
+        a[i].setAttribute('group',g);
+      }
+
+      a = keys(categories).sort(function(a,b) {(categories[a].order||0)-(categories[b].order||0)});
+      dt = document.querySelector('#filter_menu');
+      for(i=0,l=a.length; i<l; ++i) {
+        group = categories[a[i]];
+        dt.appendChild(li = document.createElement('li'));
+        li.appendChild(item = document.createElement('a'));
+        li.setAttribute('group',a[i]);
+        item.onclick = toggleFilter.bind(null,a[i]);
+        item.textContent = group.name;
+        if(group.separator) li.classList.add('separator');
+      }
+    }
+    function searchkey(e) {
+      if(e.keyCode == 13) {
+        e.preventDefault();
+        e.stopPropagation();
+        dosearch(true);
+      }
+      else if(e.keyCode == 27) {
+        e.target.innerHTML = '';
+        hidesearch(true);
+      }
+      else dosearch(false);
+    }
+    function hidesearch(force) {
+      var sr = document.querySelector('#search_results');
+      sr.classList.remove('show');
+      if(force) sr.classList.add('hide');
+    }
+    var dosearch = (function(){ // debounce
+      var timer;
+      function s() {var t=document.querySelector('#search_text').textContent.replace(/\n[.\n]*/,'').trim(); timer=0; if(t.length>1) window.parent.postMessage('search:'+t, '*');}
+      return function(force) {
+        if(timer) clearTimeout(timer);
+        if(force) s();
+        else timer = setTimeout(s, 750);
+      };
+    })();
+    function searchresults(s) {
+      var i,k,l,r,sr,d,f,t;
+      k = keys(s).sort(function(a,b){a=s[a];b=s[b]; return (b.relevance-a.relevance) || (a.name<b.name ? -1 : (a.name>b.name ? 1 : 0));});
+      if(k.length > 10) k.splice(10,k.length-10);
+      sr = document.querySelector('#search_results');
+      while(sr.firstChild) sr.removeChild(sr.firstChild);
+      if(!(l=k.length)) {
+        d = document.createElement('div');
+        d.className = 'result empty';
+        d.textContent = 'No results';
+        sr.appendChild(d);
+      }
+      else {
+        f = function(e) {e.stopPropagation(); hidesearch(true); navTo(this,true);};
+        for(i=0; i<l; ++i) {
+          r = s[k[i]];
+          d = document.createElement('div');
+          d.className = 'result';
+          d.addEventListener('click',f.bind(k[i]));
+          t = '<div class=name>'+r.name+'</div>';
+          if(r.excerpt) t += '<div class=excerpt>'+r.excerpt+'</div>';
+          d.innerHTML = t;
+          sr.appendChild(d);
+        }
+      }
+      sr.classList.remove('hide');
+      sr.classList.add('show');
+    }
+    // stupid IE
+    if(navigator.userAgent.match(/Trident\/7\./)) {
+      var fn = DOMTokenList.prototype.toggle;
+      DOMTokenList.prototype.toggle = function(t,b) {
+        if(b==!!b) return b ? this.add(t) : this.remove(t);
+        return fn.call(this,t);
+      };
+    }
+    function resize() {
+      var top = document.querySelector('#contents_top'), page = document.querySelector('#contents_page');
+      if(top && page) page.style.top = top.offsetHeight+'px';
+    }
+    document.addEventListener('resize', resize, true);
+    function begin() {
+      resize();
+      var st = document.querySelector('#search_text');
+      st.addEventListener('keydown',searchkey);
+      st.addEventListener('change',function(){dosearch(false);});
+      st.addEventListener('blur',function(){hidesearch();});
+      var ds0 = (document.stylesheets||document.styleSheets)[0];
+      if(ds0.insertRule) ds0.insertRule("dd {display: none;}", 0);
+      else ds0.addRule("dd", "display: none", 0);
+      maketree(document.querySelector('#topics'));
+      applyGroups();
+    }
+    function maketree(section) {
+      var dts, item, i, sib, box;//, img;
+      dts = section.getElementsByTagName('dt');
+      for(i=0; i<dts.length; ++i) {
+        sib = (item=dts[i]).nextSibling;
+        while(sib && sib.tagName != 'DD' && sib.tagName != 'DT') sib = sib.nextSibling;
+        box = document.createElement('div');
+        box.className = 'expander';
+        item.insertBefore(box, item.firstChild);
+        if(sib && sib.tagName == 'DD') {
+          //box.appendChild(img=document.createElement('img'));
+          expand.call(box,false);
+          box.onclick = expandBox;
+        }
+        else box.classList.add('blank');
+        if(!box.nextSibling.getAttribute('href')) item.onclick = expand.bind(box);  // for an item with no link to navigate
+      }
+    }
+  //--></script>
+</head>
+<body bgcolor=#ffffff text=#000000 onload="begin()">
+
+<div id="contents_top">
+  <div class=menu>
+  <a class="button menu"><span id="filter_menu_text">Filter</span> <span class=updown></span></a>
+  <ul id="filter_menu"><li class="sel separator"><a onclick="clearFilter()">All entries</a></li></ul>
+  </div>
+  <div class=search>
+    <div id=search_text contenteditable=true></div>
+    <div id=search_results></div>
+  </div>
+</div>
+
+<div id="contents_page">
+<div id="topics" class="tab_content current">
+<dl>
+	<dt><a href=info.html#/ndatabase>NDatabase</a>
+	<dt><a href=info.html#/setup group="!setup">Setup</a>
+	<dd><dl>
+		<dt><a href=info.html#/setup/native group="!setup">Native Setup</a>
+		<dt><a href=info.html#/setup/bsql group="!setup">BSQL Setup</a>
+	</dl></dd>
+	<dt><a href=info.html#/configuration group="!configuration">Configuration</a>
+	<dd><dl>		
+		<dt><a href=info.html#/configuration/native group="!configuration">Native Configuration</a>
+		<dt><a href=info.html#/configuration/bsql group="!configuration">BSQL Configuration</a>
+		<dt><a href=info.html#/configuration/proc group="!configuration">proc</a>
+		<dd><dl>
+			<dt><a href=info.html#/configuration/new group="!configuration">New</a>
+			<dt><a href=info.html#/configuration/create_connection group="!configuration">create_connection</a>
+		</dl></dd>
+	</dl></dd>
+	<dt><a href=info.html#/connection group="!connection">Connection</a>
+	<dd><dl>
+		<dt><a href=info.html#/connection/proc group="!connection">proc</a>
+		<dd><dl>
+			<dt><a href=info.html#/connection/connection_ready group="!connection">connection_ready</a>
+			<dt><a href=info.html#/connection/setup group="!connection">setup</a>
+			<dt><a href=info.html#/connection/keep group="!connection">keep</a>
+			<dt><a href=info.html#/connection/query group="!connection">query</a>
+			<dt><a href=info.html#/connection/get_adapter group="!connection">get_adapter</a>
+		</dl></dd>
+	</dl></dd>
+	<dt><a href=info.html#/adapter group="!adapter">Adapter</a>
+	<dd><dl>
+		<dt><a href=info.html#/adapter/proc group="!configuration">proc</a>
+		<dd><dl>
+			<dt><a href=info.html#/adapter/sync_table_meta group="!adapter">sync_table_meta</a>
+			<dt><a href=info.html#/adapter/sync_table group="!adapter">sync_table</a>
+			<dt><a href=info.html#/adapter/read_table group="!adapter">read_table</a>
+			<dt><a href=info.html#/adapter/read_filter group="!adapter">read_filter</a>
+			<dt><a href=info.html#/adapter/update_table group="!adapter">update_table</a>
+			<dt><a href=info.html#/adapter/insert_table group="!adapter">insert_table</a>
+			<dt><a href=info.html#/adapter/delete_table group="!adapter">delete_table</a>
+		</dl></dd>
+	</dl></dd>
+	<dt><a href=info.html#/database_qm group="!querymanager">Database Query Manager</a>
+	<dd><dl>
+		<dt><a href=info.html#/database_qm/var group="!querymanager">var</a>
+		<dd><dl>
+			<dt><a href=info.html#/database_qm/debug_mode group="!querymanager">debug_mode</a>
+			<dt><a href=info.html#/database_qm/all_queries group="!querymanager">all_queries</a>
+			<dt><a href=info.html#/database_qm/last_query_id group="!querymanager">last_query_id</a>
+		</dl></dd>
+		<dt><a href=info.html#/database_qm/proc group="!querymanager">proc</a>
+		<dd><dl>
+			<dt><a href=info.html#/database_qm/create_query group="!querymanager">create_query</a>
+			<dt><a href=info.html#/database_qm/create_parametric_query group="!querymanager">create_parametric_query</a>
+			<dt><a href=info.html#/database_qm/create_query_sync group="!querymanager">create_query_sync</a>
+			<dt><a href=info.html#/database_qm/create_parametric_query_sync group="!querymanager">create_parametric_query_sync</a>
+		</dl></dd>
+		<dt><a href=info.html#/database_qm/callback group="!querymanager">callbacks</a>
+		<dd><dl>
+			<dt><a href=info.html#/database_qm/success_callback group="!querymanager">success callback</a>
+			<dt><a href=info.html#/database_qm/fail_callback group="!querymanager">fail callback</a>
+		</dl></dd>
+	</dl></dd>
+	<dt><a href=info.html#/entity group="!entity">Entity</a>
+	<dd><dl>
+		<dt><a href=info.html#/entity/howto group="!entity">Defining new Entity</a>
+		<dt><a href=info.html#/entity/var group="!entity">var</a>
+		<dd><dl>
+			<dt><a href=info.html#/entity/id group="!entity">id</a>
+			<dt><a href=info.html#/entity/status group="!entity">status</a>
+			<dt><a href=info.html#/entity/metadata group="!entity">metadata</a>
+		</dl></dd>
+		<dt><a href=info.html#/entity/proc group="!entity">proc</a>
+		<dd><dl>
+			<dt><a href=info.html#/entity/sync group="!entity">sync</a>
+			<dt><a href=info.html#/entity/sync_then group="!entity">sync_then</a>
+			<dt><a href=info.html#/entity/invalidate group="!entity">invalidate</a>
+			<dt><a href=info.html#/entity/save group="!entity">save</a>
+			<dt><a href=info.html#/entity/delete group="!entity">delete</a>
+			<dt><a href=info.html#/entity/detach group="!entity">detach</a>
+			<dt><a href=info.html#/entity/Dispose group="!entity">Dispose</a>
+		</dl></dd>
+		<dt><a href=info.html#/database_qm/callback group="!querymanager">callbacks</a>
+		<dd><dl>
+			<dt><a href=info.html#/entity/sync_callback group="!querymanager">sync callback</a>
+		</dl></dd>
+	</dl></dd>
+	<dt><a href=info.html#/meta group="!meta">Entity Metadata</a>
+	<dd><dl>
+		<dt><a href=info.html#/meta/howto group="!meta">Defining new Metadata</a>
+		<dt><a href=info.html#/meta/var group="!meta">var</a>
+		<dd><dl>
+			<dt><a href=info.html#/meta/entity_type group="!meta">entity_type</a>
+			<dt><a href=info.html#/meta/table_name group="!meta">table_name</a>
+			<dt><a href=info.html#/meta/field_types group="!meta">field_types</a>
+			<dt><a href=info.html#/meta/active_entity group="!meta">active_entity</a>
+			<dt><a href=info.html#/meta/managed group="!meta">managed</a>
+			<dt><a href=info.html#/meta/to_monitors group="!meta">to_* monitors</a>
+		</dl></dd>
+		<dt><a href=info.html#/meta/proc group="!meta">proc</a>
+		<dd><dl>
+			<dt><a href=info.html#/meta/map group="!meta">map</a>
+			<dt><a href=info.html#/meta/unmap group="!meta">unmap</a>
+			<dt><a href=info.html#/meta/make_new group="!meta">make_new</a>
+			<dt><a href=info.html#/meta/on_read group="!meta">on_read</a>
+			<dt><a href=info.html#/meta/on_update group="!meta">on_update</a>
+			<dt><a href=info.html#/meta/on_insert group="!meta">on_insert</a>
+			<dt><a href=info.html#/meta/on_action group="!meta">on_action</a>
+			<dt><a href=info.html#/meta/on_delete group="!meta">on_delete</a>
+		</dl></dd>
+	</dl></dd>
+	<dt><a href=info.html#/entitymanager group="!meta">Entity Manager</a>
+	<dd><dl>
+		<dt><a href=info.html#/entitymanager/var group="!entitymanager">var</a>
+		<dd><dl>
+			<dt><a href=info.html#/entitymanager/tables group="!entitymanager">tables</a>
+			<dt><a href=info.html#/entitymanager/ready group="!entitymanager">ready</a>
+		</dl></dd>
+		<dt><a href=info.html#/entitymanager/proc group="!entitymanager">proc</a>
+		<dd><dl>
+			<dt><a href=info.html#/entitymanager/select group="!entitymanager">select</a>
+			<dt><a href=info.html#/entitymanager/filter_then group="!entitymanager">filter_then</a>
+		</dl></dd>
+	</dl></dd>
+	<dt><a href=info.html#/troubleshooting>Troubleshooting</a>
+	<dd><dl>
+		<dt><a href=info.html#/troubleshooting/general>General advices</a>
+	</dl></dd>
+</dl>
+</div>
+
+</div>
+
+</body>
+</html>

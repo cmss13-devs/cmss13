@@ -6,6 +6,9 @@ Thumbs.db
 *.dmb
 *.lk
 *.backup
+*.db
+*.db-shm
+*.db-wal
 data/
 cfg/
 tools/Runtime Condenser/Input.txt

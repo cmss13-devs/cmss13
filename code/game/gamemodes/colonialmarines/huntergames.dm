@@ -217,7 +217,7 @@ var/waiting_for_drop_votes = 0
 	H.skills = null //no restriction on what the contestants can do
 
 	H.KnockDown(15)
-	H.nutrition = 300
+	H.nutrition = NUTRITION_NORMAL
 
 	var/randjob = rand(0,10)
 	switch(randjob)

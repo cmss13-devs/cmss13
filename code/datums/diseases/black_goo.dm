@@ -74,7 +74,7 @@
 						H.adjustBruteLoss(-healamt)
 						H.adjustToxLoss(-healamt)
 						H.adjustOxyLoss(-healamt)
-				H.nutrition = 450 //never hungry
+				H.nutrition = NUTRITION_MAX //never hungry
 				if(goo_message_cooldown < world.time)
 					goo_message_cooldown = world.time + 100
 					to_chat(affected_mob, SPAN_XENOWARNING(" Spread... Consume... Infect..."))

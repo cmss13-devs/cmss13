@@ -92,7 +92,7 @@
 	var/is_floating = 0
 	var/floatiness = 0
 	var/charges = 0.0
-	var/nutrition = 400.0//Carbon
+	var/nutrition = NUTRITION_NORMAL//Carbon
 
 	var/overeatduration = 0		// How long this guy is overeating //Carbon
 	var/knocked_out = 0.0

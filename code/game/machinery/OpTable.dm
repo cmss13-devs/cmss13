@@ -1,3 +1,8 @@
+// patient_exam defines
+#define PATIENT_NOT_AWAKE		1
+#define	PATIENT_LOW_BLOOD		2
+#define PATIENT_LOW_NUTRITION	4
+
 /obj/structure/machinery/optable
 	name = "Operating Table"
 	desc = "Used for advanced medical procedures."
@@ -16,6 +21,7 @@
 	var/strapped = 0.0
 	can_buckle = TRUE
 	buckle_lying = TRUE
+	var/patient_exam = 0
 	var/obj/item/tank/anesthetic/anes_tank
 
 	var/obj/structure/machinery/computer/operating/computer = null
@@ -114,7 +120,6 @@
 	start_processing()
 	update_icon()
 
-
 /obj/structure/machinery/optable/unbuckle(mob/living/user)
 	if(!buckled_mob)
 		return
@@ -126,6 +131,7 @@
 		qdel(M)
 		H.visible_message(SPAN_NOTICE("[user] turns off the anesthetic and removes the mask from [H]."))
 		stop_processing()
+		patient_exam = 0
 		..()
 		update_icon()
 
@@ -156,8 +162,41 @@
 
 /obj/structure/machinery/optable/process()
 	update_icon()
+
 	if(!ishuman(buckled_mob))
 		stop_processing()
+
+	var/mob/living/carbon/human/H = buckled_mob
+
+	// Check for problems
+	// Check for blood
+	if(H.blood_volume < BLOOD_VOLUME_SAFE)
+		if(!(patient_exam & PATIENT_LOW_BLOOD))
+			visible_message("[htmlicon(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient has a dangerously low blood level: [round(H.blood_volume / BLOOD_VOLUME_NORMAL * 100)]%. Type: [H.blood_type].")
+			patient_exam |= PATIENT_LOW_BLOOD
+	else
+		patient_exam &= ~PATIENT_LOW_BLOOD
+
+	// Check for nutrition
+	if(H.nutrition < NUTRITION_LOW)
+		if(!(patient_exam & PATIENT_LOW_NUTRITION))
+			visible_message("[htmlicon(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient has a dangerously low nutrition level: [round(H.nutrition / NUTRITION_MAX * 100)]%.")
+			patient_exam |= PATIENT_LOW_NUTRITION
+	else
+		patient_exam &= ~PATIENT_LOW_NUTRITION
+
+	// Check if they awake
+	switch(H.stat)
+		if(0)
+			patient_exam &= ~PATIENT_NOT_AWAKE
+		if(1)
+			if(!(patient_exam & PATIENT_NOT_AWAKE))
+				visible_message("[htmlicon(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient is unconscious.")
+				patient_exam |= PATIENT_NOT_AWAKE
+		if(2)
+			if(!(patient_exam & PATIENT_NOT_AWAKE))
+				visible_message("[htmlicon(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient is deceased.")
+				patient_exam |= PATIENT_NOT_AWAKE
 
 /obj/structure/machinery/optable/proc/take_victim(mob/living/carbon/C, mob/living/carbon/user)
 	if (C == user)

@@ -115,6 +115,8 @@
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 0 //Queen doesn't count towards population limit.
 	hive_pos = XENO_QUEEN
+	crystal_max = XENO_CRYSTAL_MEDIUM
+	crystal_stored = XENO_CRYSTAL_MEDIUM
 
 	var/map_view = 0
 	var/breathing_counter = 0

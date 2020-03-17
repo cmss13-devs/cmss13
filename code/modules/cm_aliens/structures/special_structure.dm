@@ -8,7 +8,7 @@
 		if(XENO_STRUCTURE_CORE)
 			message = "<B>[XENO_STRUCTURE_CORE]</B> - Heart of the hive, grows hive weeds (which are necessary for other structures), stores resources and protects the hive from skyfire."
 		if(XENO_STRUCTURE_PYLON)
-			message = "<B>[XENO_STRUCTURE_CORE]</B> - Remote section of the hive, grows hive weeds (which are necessary for other structures), stores resources and protects sisters from skyfire."
+			message = "<B>[XENO_STRUCTURE_PYLON]</B> - Remote section of the hive, grows hive weeds (which are necessary for other structures), stores resources and protects sisters from skyfire."
 		if(XENO_STRUCTURE_POOL)
 			message = "<B>[XENO_STRUCTURE_POOL]</B> - Respawns xenomorphs that fall in battle."
 		if(XENO_STRUCTURE_EGGMORPH)

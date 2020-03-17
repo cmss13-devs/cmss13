@@ -39,7 +39,7 @@
 /obj/effect/alien/resin/construction/examine(mob/user)
 	..()
 	if((isXeno(user) || isobserver(user)) && linked_hive)
-		var/message = "A [template.name] construction is designated here. It requires [template.crystals_required] more crystals."
+		var/message = "A [template.name] construction is designated here. It requires [template.crystals_required - template.crystals_stored] more [MATERIAL_CRYSTAL]."
 		to_chat(user, message)
 
 /obj/effect/alien/resin/construction/attack_alien(mob/living/carbon/Xenomorph/M)

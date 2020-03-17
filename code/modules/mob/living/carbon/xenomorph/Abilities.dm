@@ -1208,32 +1208,29 @@
 		to_chat(X, SPAN_WARNING("You can't build any more [choice]s for the hive."))
 		return FALSE
 
-
-		return FALSE
-
 	var/structure_type = X.hive.hive_structure_types[choice]
 	var/area/current_area = get_area(T)
 	var/datum/construction_template/xenomorph/structure_template = new structure_type()
 
 	if(!X.hive.can_build_structure(structure_template.name))
-		to_chat(src, SPAN_WARNING("You cannot build any more [structure_template.name]!"))
+		to_chat(X, SPAN_WARNING("You cannot build any more [structure_template.name]!"))
 		qdel(structure_template)
 		return FALSE
 
 	if(isnull(T) || !current_area.can_build_special || !T.is_weedable())
-		to_chat(src, SPAN_WARNING("You cannot build here!"))
+		to_chat(X, SPAN_WARNING("You cannot build here!"))
 		qdel(structure_template)
 		return FALSE
 
 	if(structure_template.requires_node)
 		for(var/turf/TA in (range(T, 1)))
 			if(TA.density || !X.check_alien_construction(TA))
-				to_chat(src, SPAN_WARNING("You need more open space to build here."))
+				to_chat(X, SPAN_WARNING("You need more open space to build here."))
 				qdel(structure_template)
 				return FALSE
 			var/obj/effect/alien/weeds/alien_weeds = locate() in T
 			if(!alien_weeds || alien_weeds.weed_strength < WEED_LEVEL_HIVE)
-				to_chat(src, SPAN_WARNING("You can only shape on hive weeds. Find a hive node or core before you start building!"))
+				to_chat(X, SPAN_WARNING("You can only shape on hive weeds. Find a hive node or core before you start building!"))
 				qdel(structure_template)
 				return FALSE
 

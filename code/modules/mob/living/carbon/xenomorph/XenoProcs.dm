@@ -247,14 +247,16 @@
 		throwing = FALSE
 		return
 
+	var/skip_knockdown = FALSE
+
 	switch(caste.charge_type)
 		if(1 to 2) // Runner and lurker
 			if(ishuman(M) && M.dir in reverse_nearby_direction(dir))
 				var/mob/living/carbon/human/H = M
 				if(H.check_shields(15, "the pounce")) //Human shield block.
-					KnockDown(3)
-					throwing = FALSE //Reset throwing manually.
-					return
+					M.Stun(caste.charge_type == 1 ? 0.5 : 1.5)
+					shake_camera(M, caste.charge_type == 1 ? 0.5 : 1.5)
+					skip_knockdown = TRUE
 
 				if(isYautja(H))
 					if(H.check_shields(0, "the pounce", 1))
@@ -272,8 +274,9 @@
 
 			visible_message(SPAN_DANGER("[src] pounces on [M]!"),
 				SPAN_XENODANGER("You pounce on [M]!"), null, 5)
-			M.KnockDown(caste.charge_type == 1 ? 1 : 3)
-			step_to(src, M)
+			if(!skip_knockdown)
+				M.KnockDown(caste.charge_type == 1 ? 1 : 3)
+				step_to(src, M)
 			canmove = FALSE
 			frozen = TRUE
 			if(pounce_slash)

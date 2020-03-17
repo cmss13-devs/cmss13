@@ -91,21 +91,24 @@ Contains most of the procs that are called when a mob is attacked by something
 		if(combistick && istype(l_hand,/obj/item/weapon/combistick))
 			var/obj/item/weapon/combistick/C = l_hand
 			if(C.on)
-				return 1
+				return TRUE
 		var/obj/item/weapon/I = l_hand
 		if(I.IsShield() && (prob(50 - round(damage / 3))))
 			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
-			return 1
+			return TRUE
 	if(r_hand && istype(r_hand, /obj/item/weapon))
 		if(combistick && istype(r_hand,/obj/item/weapon/combistick))
 			var/obj/item/weapon/combistick/C = r_hand
 			if(C.on)
-				return 1
+				return TRUE
 		var/obj/item/weapon/I = r_hand
 		if(I.IsShield() && (prob(50 - round(damage / 3))))
 			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
-			return 1
-	return 0
+			return TRUE
+	if(wear_suit && wear_suit.flags_inventory & BLOCK_KNOCKDOWN)
+		visible_message(SPAN_DANGER("<B>[src] withstands [attack_text] with their [wear_suit.name]!</B>"), null, null, 5)
+		return TRUE
+	return FALSE
 
 /mob/living/carbon/human/emp_act(severity)
 	for(var/obj/O in src)

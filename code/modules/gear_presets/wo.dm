@@ -5,7 +5,7 @@
 	idtype = /obj/item/card/id/dogtag
 
 /datum/equipment_preset/wo/load_status(mob/living/carbon/human/H)
-	H.nutrition = 400
+	H.nutrition = NUTRITION_NORMAL
 
 
 /*****************************************************************************************************/

@@ -22,7 +22,7 @@
 	dress_shoes = list(/obj/item/clothing/shoes/dress)
 
 /datum/equipment_preset/uscm/load_status(mob/living/carbon/human/H)
-	H.nutrition = rand(60,250)
+	H.nutrition = rand(NUTRITION_VERYLOW, NUTRITION_LOW)
 
 /*****************************************************************************************************/
 

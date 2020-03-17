@@ -36,6 +36,13 @@
 // Factor of how fast mob nutrition decreases
 #define HUNGER_FACTOR 0.05
 
+// Nutrition levels
+#define NUTRITION_MAX		450
+#define NUTRITION_NORMAL	400
+#define NUTRITION_LOW		250
+#define NUTRITION_VERYLOW	50
+
+
 //Reagent generation classifications
 #define CHEM_CLASS_NONE             0 //Default. Chemicals not used in the chem generator
 #define CHEM_CLASS_BASIC            1 //Chemicals that can be dispensed directly from the dispenser (iron, oxygen)

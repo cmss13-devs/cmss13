@@ -123,7 +123,7 @@
 	heal_all_damage()
 
 	// shut down ongoing problems
-	nutrition = 400
+	nutrition = NUTRITION_NORMAL
 	bodytemperature = T20C
 	recalculate_move_delay = TRUE
 	sdisabilities = 0

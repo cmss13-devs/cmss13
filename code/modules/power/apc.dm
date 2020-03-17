@@ -946,7 +946,6 @@
 		locked = 0
 		if(cell.charge > 0)
 			cell.charge = 0
-			cell.corrupt()
 			update_icon()
 			var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
 			smoke.set_up(1, 0, loc)

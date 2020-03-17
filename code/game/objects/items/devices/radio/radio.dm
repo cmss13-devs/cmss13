@@ -256,6 +256,8 @@
 		return
 
 	var/turf/position = get_turf(src)
+	if(isnull(position))
+		return
 
 	//#### Tagging the signal with all appropriate identity values ####//
 
@@ -455,7 +457,7 @@
 		return -1
 	if(!(0 in level))
 		var/turf/position = get_turf(src)
-		if(!position)
+		if(isnull(position))
 			return FALSE
 		var/receive_z = position.z
 		// Use vehicle's z if we're inside a vehicle interior

@@ -49,3 +49,5 @@
 			return "sticky resin"
 		if (RESIN_FAST)
 			return "fast resin"
+		if (RESIN_COLLECTOR)
+			return "resin collector"

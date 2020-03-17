@@ -75,7 +75,7 @@
 /obj/structure/resource_node/plasma/update_icon()
 	..()
 	overlays.Cut()
-	icon_state = "mound[growth_level]_[icon_variant]"
+	icon_state = "mound[min(max_growth_level, growth_level)]_[icon_variant]"
 	var/obj/effect/alien/resin/collector/C = locate() in loc
 	if((!C || C.disposed) && growth_level)
 		overlays += image(icon, "mound_puff")

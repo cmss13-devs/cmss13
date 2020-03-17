@@ -43,7 +43,7 @@
     var/amount_to_use = min(M.crystal_stored, (crystals_required - crystals_stored))
     crystals_stored += amount_to_use
     M.crystal_stored -= amount_to_use
-    to_chat(M, SPAN_WARNING("\The [name] requires [crystals_required] more [MATERIAL_CRYSTAL]."))
+    to_chat(M, SPAN_WARNING("\The [name] requires [crystals_required - crystals_stored] more [MATERIAL_CRYSTAL]."))
     check_completion()
 
 /datum/construction_template/proc/add_material(var/mob/user, var/obj/item/I)

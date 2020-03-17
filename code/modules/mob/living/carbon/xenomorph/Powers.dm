@@ -1314,13 +1314,16 @@
 
 	var/turf/current_turf = get_turf(A)
 
-	var/obj/structure/resource_node/target_node = locate() in current_turf
+	var/obj/structure/resource_node/plasma/target_node = locate() in current_turf
 	if(target_node && get_dist(src, current_turf) <= max(1, src.caste.max_build_dist)) // Building resource collectors
 		var/obj/effect/alien/resin/collector/alien_blocker = locate() in current_turf
 		// var/obj/effect/alien/resin/collector/marine_blocker = locate() in current_turf
 		// if(alien_blocker || marine_blocker)
 		if(alien_blocker)
 			to_chat(src, SPAN_WARNING("There is already another collector here!"))
+			return FALSE
+		if(!target_node.growth_level)
+			to_chat(src, SPAN_WARNING("This resource is not ready yet!"))
 			return FALSE
 		resin_to_build = RESIN_COLLECTOR
 	else if(get_dist(src, A) > src.caste.max_build_dist + extra_build_dist) // Hivelords have max_build_dist of 1, drones and queens 0

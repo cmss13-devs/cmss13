@@ -373,7 +373,7 @@
 	//List of how many maximum of each special structure you can have
 	var/list/hive_structures_limit = list(
 		XENO_STRUCTURE_CORE = 1,
-		XENO_STRUCTURE_PYLON = 4,
+		XENO_STRUCTURE_PYLON = 8,
 		XENO_STRUCTURE_POOL = 1,
 		XENO_STRUCTURE_EGGMORPH = 6,
 		XENO_STRUCTURE_EVOPOD = 5,

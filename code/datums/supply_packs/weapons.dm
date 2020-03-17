@@ -22,14 +22,6 @@ WEAPONS
 	containername = "\improper M240 Incinerator crate"
 	group = "Weapons"
 
-/datum/supply_packs/weapons_sentry
-	name = "UA 571-C sentry crate (x1)"
-	contains = list()
-	cost = RO_PRICE_VERY_PRICY
-	containertype = /obj/item/storage/box/sentry
-	containername = "sentry crate"
-	group = "Weapons"
-
 /datum/supply_packs/m56_system/
 	name = "m56 system crate (x1)"
 	contains = list()
@@ -300,7 +292,7 @@ WEAPONS
 	contains = list(
 					/obj/item/mortar_kit
 					)
-	cost = RO_PRICE_VERY_PRICY
+	cost = RO_PRICE_PRICY
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "\improper M402 mortar crate"
 	group = "Weapons"

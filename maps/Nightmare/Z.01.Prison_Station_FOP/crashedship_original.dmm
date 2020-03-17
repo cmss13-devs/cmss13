@@ -2478,7 +2478,7 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "eH" = (
-/obj/structure/machinery/marine_turret/premade/dumb{
+/obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -2658,7 +2658,7 @@
 	},
 /area/prison/pirate)
 "eZ" = (
-/obj/structure/machinery/marine_turret/premade/dumb{
+/obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 1
 	},
 /turf/open/floor/plating{
@@ -3883,7 +3883,7 @@
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
-/obj/structure/machinery/marine_turret/premade/dumb{
+/obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 4
 	},
 /turf/open/shuttle{

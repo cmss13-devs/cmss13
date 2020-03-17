@@ -865,7 +865,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "ch" = (
-/obj/structure/machinery/marine_turret/premade/dumb{
+/obj/structure/machinery/defenses/sentry/premade/dumb{
 	angle = 3;
 	locked = 1
 	},
@@ -978,7 +978,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "ct" = (
-/obj/structure/machinery/marine_turret/premade/dumb{
+/obj/structure/machinery/defenses/sentry/premade/dumb{
 	angle = 3;
 	locked = 1
 	},
@@ -992,7 +992,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "cu" = (
-/obj/structure/machinery/marine_turret/premade/dumb{
+/obj/structure/machinery/defenses/sentry/premade/dumb{
 	angle = 3;
 	locked = 1
 	},

@@ -677,16 +677,8 @@ var/global/spawn_next_wo_wave = 0
 									/obj/item/attachable/heavy_barrel,
 									/obj/item/attachable/heavy_barrel,
 									/obj/item/attachable/heavy_barrel)
-			if(41 to 45)//Sentry gun drop. 10%
-				crate = new /obj/structure/closet/crate/ammo(T)
-				spawnitems = list(/obj/item/storage/box/sentry,
-								/obj/item/storage/box/sentry,
-								/obj/item/storage/box/sentry,
-								/obj/item/storage/box/sentry,
-								/obj/item/storage/box/sentry,
-								/obj/item/storage/box/sentry)
 
-			if(46 to 48)//Weapon + supply beacon drop. 6%
+			if(40 to 48)//Weapon + supply beacon drop. 6%
 				crate = new /obj/structure/closet/crate/ammo(T)
 				spawnitems = list(/obj/item/device/whiskey_supply_beacon,
 								/obj/item/device/whiskey_supply_beacon,

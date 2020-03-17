@@ -6,6 +6,7 @@
 	mob_icon_state_path = "human_acid"
 	var/original_duration = 50			//Set to 50 for safety reasons if something fails
 	var/damage_in_total = 40
+	var/acid_multiplier = 1
 
 /datum/effects/acid/New(var/atom/A, var/zone = "chest")
 	..()
@@ -15,6 +16,9 @@
 
 	if(isobj(A))
 		var/obj/O = A
+		if(istype(O, /obj/structure/barricade))
+			var/obj/structure/barricade/B = O
+			acid_multiplier = B.burn_multiplier
 		O.update_icon()
 
 	original_duration = duration
@@ -41,7 +45,7 @@
 	var/mob/living/carbon/affected_mob = affected_atom
 	affected_mob.last_damage_source = source
 	affected_mob.last_damage_mob = source_mob
-	affected_mob.apply_damage(damage_in_total/original_duration, BURN, def_zone)
+	affected_mob.apply_damage((damage_in_total * acid_multiplier)/original_duration, BURN, def_zone)
 
 	return TRUE
 
@@ -51,7 +55,7 @@
 		return FALSE
 
 	var/obj/affected_obj = affected_atom
-	affected_obj.update_health(damage_in_total/original_duration)
+	affected_obj.update_health((damage_in_total * acid_multiplier)/original_duration)
 	
 	return TRUE
 

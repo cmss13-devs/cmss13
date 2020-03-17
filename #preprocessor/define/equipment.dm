@@ -47,7 +47,7 @@
 #define DIRLOCK					32		// movable atom won't change direction when Moving()ing. Useful for items that have several dir states.
 #define	NOREACT					64		//Reagents dont' react inside this container.
 #define OPENCONTAINER			128		//is an open container for chemistry purposes
-#define RELAY_CLICK				256		//This is used for /obj/ that relay your clicks via handle_click(), mostly for MGs + Sentries ~Art
+#define RELAY_CLICK				256		//This is used for /obj/ that relay your clicks via handle_click(), mostly for MGs ~Art
 #define ITEM_UNCATCHABLE		512 	// The item can't be caught out of the air.
 #define UNIQUE_ITEM_TYPE		1024 	// Used for donor items to exclude them for checks.
 #define NO_SNOW_TYPE			2048	// Used for armors or uniforms that don't have a snow icon state.

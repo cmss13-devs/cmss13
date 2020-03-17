@@ -24,6 +24,13 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
+/obj/item/clothing/gloves/marine/insulated
+	name = "marine insulated gloves"
+	desc = "These gloves will protect the wearer from electric shock."
+	icon_state = "lightbrown"
+	item_state = "lightbrowngloves"
+	siemens_coefficient = 0
+
 /obj/item/clothing/gloves/marine/alpha
 	name = "alpha squad gloves"
 	icon_state = "red"

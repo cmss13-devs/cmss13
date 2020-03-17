@@ -257,6 +257,20 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 #define BARRICADE_BSTATE_UNSECURED 	1 // intermediate state before cade is movable (no apparent effect on health)
 #define BARRICADE_BSTATE_MOVABLE 	0 // ready to be deconstructed and can be moved
 
+// Defines for sandbag build stages
+#define BARRICADE_SANDBAG_1 1
+#define BARRICADE_SANDBAG_2 2
+#define BARRICADE_SANDBAG_3 3
+#define BARRICADE_SANDBAG_4 4
+#define BARRICADE_SANDBAG_5 5
+
+// Defines for sandbag tresholds
+#define BARRICADE_SANDBAG_TRESHOLD_1	75
+#define BARRICADE_SANDBAG_TRESHOLD_2	150
+#define BARRICADE_SANDBAG_TRESHOLD_3	225
+#define BARRICADE_SANDBAG_TRESHOLD_4	300
+#define BARRICADE_SANDBAG_TRESHOLD_5	450
+
 // Defines for wall types
 #define WALL_METAL "metal"
 #define WALL_HULL "testwall"

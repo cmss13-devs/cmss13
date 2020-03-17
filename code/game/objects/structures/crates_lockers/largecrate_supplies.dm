@@ -55,8 +55,7 @@
 
 /obj/effect/landmark/supplyspawner/turrets
 	name = "defensive gun emplacement supplies"
-	supply = list(/obj/structure/largecrate/supply/weapons/sentries = 2,
-				/obj/structure/largecrate/supply/weapons/m56d = 2,
+	supply = list(/obj/structure/largecrate/supply/weapons/m56d = 2,
 				/obj/structure/largecrate/supply/ammo/sentry = 1,
 				/obj/structure/largecrate/supply/ammo/m56d = 1
 				)
@@ -128,11 +127,6 @@
 	name = "\improper M41AE2 heavy pulse rifle weapons chest (x2)"
 	desc = "A weapons chest containing two M41AE2 heavy pulse rifles."
 	supplies = list(/obj/item/weapon/gun/rifle/lmg = 2)
-
-/obj/structure/largecrate/supply/weapons/sentries
-	name = "\improper UA 571-C sentry chest (x2)"
-	desc = "A supply crate containing two boxed UA 571-C sentries."
-	supplies = list(/obj/item/storage/box/sentry = 2)
 
 /obj/structure/largecrate/supply/weapons/m56d
 	name = "\improper M56D mounted smartgun chest (x2)"

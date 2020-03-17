@@ -113,20 +113,16 @@
 			to_chat(user, SPAN_WARNING("There's a large hole in the wall that could've been caused by some sort of acid."))
 
 	switch(d_state)
-		if(1)
+		if(WALL_STATE_WELD)
+			to_chat(user, SPAN_INFO("The outer plating is intact. A blowtorch should slice it open."))
+		if(WALL_STATE_SCREW)
 			to_chat(user, SPAN_INFO("The outer plating has been sliced open. A screwdriver should remove the support lines."))
-		if(2)
-			to_chat(user, SPAN_INFO("The support lines have been removed. A blowtorch should slice through the metal cover."))
-		if(3)
-			to_chat(user, SPAN_INFO("The metal cover has been sliced through. A crowbar should pry it off."))
-		if(4)
-			to_chat(user, SPAN_INFO("The metal cover has been removed. A wrench will remove the anchor bolts."))
-		if(5)
-			to_chat(user, SPAN_INFO("The anchor bolts have been removed. Wirecutters will take care of the hydraulic lines."))
-		if(6)
-			to_chat(user, SPAN_INFO("Hydraulic lines are gone. A crowbar will pry off the inner sheath."))
-		if(7)
-			to_chat(user, SPAN_INFO("The inner sheath is gone. A blowtorch should finish off this wall."))
+		if(WALL_STATE_WIRECUTTER)
+			to_chat(user, SPAN_INFO("The support lines have been removed. Wirecutters will take care of the hydraulic lines."))
+		if(WALL_STATE_WRENCH)
+			to_chat(user, SPAN_INFO("The hydralic lines have been cut. A wrench will remove the anchor bolts."))
+		if(WALL_STATE_CROWBAR)
+			to_chat(user, SPAN_INFO("The anchor bolts have been removed. A crowbar will pry apart the connecting rods."))
 
 //Damage
 /turf/closed/wall/proc/take_damage(dam, var/mob/M)
@@ -321,138 +317,77 @@
 			to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 			return
 
+	if(!istype(src, /turf/closed/wall)) 
+		return
+
 	//DECONSTRUCTION
 	switch(d_state)
-		if(0)
-			if(istype(W, /obj/item/tool/weldingtool))
-
+		if(WALL_STATE_WELD)
+			if(iswelder(W))
 				var/obj/item/tool/weldingtool/WT = W
 				playsound(src, 'sound/items/Welder.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] begins slicing through the outer plating."),
 				SPAN_NOTICE("You begin slicing through the outer plating."))
-
-				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!istype(src, /turf/closed/wall) || !WT || !WT.isOn())	return
-
-					if(!d_state)
-						d_state++
-						user.visible_message(SPAN_NOTICE("[user] slices through the outer plating."),
-						SPAN_NOTICE("You slice through the outer plating."))
+				if(!WT || !WT.isOn())	
+					return
+				if(!do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+					return
+				if(!d_state)
+					d_state++
+					user.visible_message(SPAN_NOTICE("[user] slices through the outer plating."),
+					SPAN_NOTICE("You slice through the outer plating."))
 				return
 
-		if(1)
-			if(istype(W, /obj/item/tool/screwdriver))
-
+		if(WALL_STATE_SCREW)
+			if(isscrewdriver(W))
 				user.visible_message(SPAN_NOTICE("[user] begins removing the support lines."),
 				SPAN_NOTICE("You begin removing the support lines."))
 				playsound(src, 'sound/items/Screwdriver.ogg', 25, 1)
-
-				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!istype(src, /turf/closed/wall)) return
-
-					if(d_state == 1)
-						d_state++
-						user.visible_message(SPAN_NOTICE("[user] removes the support lines."),
-						SPAN_NOTICE("You remove the support lines."))
+				if(!do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+					return
+				if(d_state == 1)
+					d_state++
+					user.visible_message(SPAN_NOTICE("[user] removes the support lines."),
+					SPAN_NOTICE("You remove the support lines."))
 				return
 
-		if(2)
-			if(istype(W, /obj/item/tool/weldingtool))
-
-				var/obj/item/tool/weldingtool/WT = W
-				user.visible_message(SPAN_NOTICE("[user] begins slicing through the metal cover."),
-				SPAN_NOTICE("You begin slicing through the metal cover."))
-				playsound(src, 'sound/items/Welder.ogg', 25, 1)
-
-				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!istype(src, /turf/closed/wall) || !WT || !WT.isOn())	return
-
-					if(d_state == 2)
-						d_state++
-						user.visible_message(SPAN_NOTICE("[user] presses firmly on the cover, dislodging it."),
-						SPAN_NOTICE("You press firmly on the cover, dislodging it."))
-				return
-
-		if(3)
-			if(istype(W, /obj/item/tool/crowbar))
-
-				user.visible_message(SPAN_NOTICE("[user] struggles to pry off the cover."),
-				SPAN_NOTICE("You struggle to pry off the cover."))
-				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
-
-				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!istype(src, /turf/closed/wall)) return
-
-					if(d_state == 3)
-						d_state++
-						user.visible_message(SPAN_NOTICE("[user] pries off the cover."),
-						SPAN_NOTICE("You pry off the cover."))
-				return
-
-		if(4)
-			if(istype(W, /obj/item/tool/wrench))
-
-				user.visible_message(SPAN_NOTICE("[user] starts loosening the anchoring bolts securing the support rods."),
-				SPAN_NOTICE("You start loosening the anchoring bolts securing the support rods."))
-				playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
-
-				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!istype(src, /turf/closed/wall)) return
-
-					if(d_state == 4)
-						d_state++
-						user.visible_message(SPAN_NOTICE("[user] removes the bolts anchoring the support rods."),
-						SPAN_NOTICE("You remove the bolts anchoring the support rods."))
-				return
-
-		if(5)
-			if(istype(W, /obj/item/tool/wirecutters))
-
+		if(WALL_STATE_WIRECUTTER)
+			if(iswirecutter(W))
 				user.visible_message(SPAN_NOTICE("[user] begins uncrimping the hydraulic lines."),
 				SPAN_NOTICE("You begin uncrimping the hydraulic lines."))
 				playsound(src, 'sound/items/Wirecutter.ogg', 25, 1)
-
-				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!istype(src, /turf/closed/wall)) return
-
-					if(d_state == 5)
-						d_state++
-						user.visible_message(SPAN_NOTICE("[user] finishes uncrimping the hydraulic lines."),
-						SPAN_NOTICE("You finish uncrimping the hydraulic lines."))
+				if(!do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+					return
+				if(d_state == 5)
+					d_state++
+					user.visible_message(SPAN_NOTICE("[user] finishes uncrimping the hydraulic lines."),
+					SPAN_NOTICE("You finish uncrimping the hydraulic lines."))
 				return
 
-		if(6)
-			if(istype(W, /obj/item/tool/crowbar))
+		if(WALL_STATE_WRENCH)
+			if(iswelder(W))
+				user.visible_message(SPAN_NOTICE("[user] starts loosening the anchoring bolts securing the support rods."),
+				SPAN_NOTICE("You start loosening the anchoring bolts securing the support rods."))
+				playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
+				if(!do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+					return
+				if(d_state == 4)
+					d_state++
+					user.visible_message(SPAN_NOTICE("[user] removes the bolts anchoring the support rods."),
+					SPAN_NOTICE("You remove the bolts anchoring the support rods."))
+				return
 
-				user.visible_message(SPAN_NOTICE("[user] struggles to pry off the inner sheath."),
-				SPAN_NOTICE("You struggle to pry off the inner sheath."))
+		if(WALL_STATE_CROWBAR)
+			if(iscrowbar(W))
+				user.visible_message(SPAN_NOTICE("[user] struggles to pry apart the connecting rods."),
+				SPAN_NOTICE("You struggle to pry apart the connecting rods."))
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
-
-				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!istype(src, /turf/closed/wall)) return
-
-					if(d_state == 6)
-						d_state++
-						user.visible_message(SPAN_NOTICE("[user] pries off the inner sheath."),
-						SPAN_NOTICE("You pry off the inner sheath."))
-				return
-
-		if(7)
-			if(istype(W, /obj/item/tool/weldingtool))
-
-				var/obj/item/tool/weldingtool/WT = W
-				user.visible_message(SPAN_NOTICE("[user] begins slicing through the final layer."),
-				SPAN_NOTICE("You begin slicing through the final layer."))
-				playsound(src, 'sound/items/Welder.ogg', 25, 1)
-
-				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!istype(src, /turf/closed/wall) || !WT || !WT.isOn())	return
-
-					if(d_state == 7)
-						new /obj/item/stack/rods(src)
-						user.visible_message(SPAN_NOTICE("The support rods drop out as [user] slices through the final layer."),
-						SPAN_NOTICE("The support rods drop out as you slice through the final layer."))
-						dismantle_wall()
+				if(!do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+					return
+				if(d_state == 3)
+					d_state++
+					user.visible_message(SPAN_NOTICE("[user] pries apart the connecting rods."),
+					SPAN_NOTICE("You pry apart the connecting rods."))
 				return
 
 	return attack_hand(user)

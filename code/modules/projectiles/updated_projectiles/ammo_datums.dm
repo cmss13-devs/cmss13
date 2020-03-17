@@ -987,7 +987,7 @@
 	accuracy_var_low = config.low_proj_variance
 	accuracy_var_high = config.low_proj_variance
 	max_range = config.norm_shell_range
-	damage = config.mlow_hit_damage
+	damage = config.hlow_hit_damage
 	penetration = config.hmed_armor_penetration
 	damage_armor_punch = 0
 	pen_armor_punch = 0
@@ -1988,23 +1988,38 @@
 	damage = config.med_hit_damage
 
 /datum/ammo/flamethrower/on_hit_mob(mob/M,obj/item/projectile/P)
-	drop_flame(get_turf(P))
+	drop_flame(get_turf(M))
 
 /datum/ammo/flamethrower/on_hit_obj(obj/O,obj/item/projectile/P)
-	drop_flame(get_turf(P))
+	drop_flame(get_turf(O))
 
 /datum/ammo/flamethrower/on_hit_turf(turf/T,obj/item/projectile/P)
-	drop_flame(get_turf(P))
+	drop_flame(T)
 
 /datum/ammo/flamethrower/do_at_max_range(obj/item/projectile/P)
 	drop_flame(get_turf(P))
 
 /datum/ammo/flamethrower/tank_flamer/drop_flame(var/turf/T, var/source, var/source_mob)
-	if(!istype(T)) return
-	if(locate(/obj/flamer_fire) in T) return
-
+	if(!istype(T)) 
+		return
+	if(locate(/obj/flamer_fire) in T) 
+		return
+	
 	// Very hot but burns out quickly
 	new /obj/flamer_fire(T, source, source_mob, 20, 35, "blue", fire_spread_amount = 2)
+
+/datum/ammo/flamethrower/sentry_flamer/New()
+	..()
+	accuracy = config.max_hit_accuracy
+	accurate_range = config.near_shell_range
+	max_range = config.short_shell_range
+	shell_speed = config.fast_shell_speed
+
+/datum/ammo/flamethrower/sentry_flamer/drop_flame(var/turf/T, var/source, var/source_mob)
+	if(!istype(T)) 
+		return
+	
+	new /obj/flamer_fire(T, source, source_mob, 20, 35, "blue", 0)
 
 /datum/ammo/flare
 	name = "flare"

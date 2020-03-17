@@ -691,6 +691,35 @@
 /turf/open/floor/wood,
 /area/almayer/living/basketball)
 "abQ" = (
+/obj/structure/rack,
+/obj/item/clothing/suit/armor/bulletproof,
+/obj/item/clothing/suit/armor/bulletproof,
+/obj/item/tank/phoron,
+/turf/open/floor/almayer{
+	icon_state = "redfull";
+	tag = "icon-redfull"
+	},
+/area/almayer/command/cic)
+"abR" = (
+/obj/item/tank/phoron,
+/turf/open/floor/almayer{
+	icon_state = "redfull";
+	tag = "icon-redfull"
+	},
+/area/almayer/engineering/upper_engineering)
+"abS" = (
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/almayer/squads/alpha)
+"abT" = (
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/almayer/squads/bravo)
+"abU" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
@@ -803,6 +832,12 @@
 	},
 /turf/open/floor/wood,
 /area/almayer/living/basketball)
+"ack" = (
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/almayer/squads/charlie)
 "acl" = (
 /turf/open/floor/wood,
 /area/almayer/living/basketball)
@@ -831,6 +866,12 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/chapel)
+"acp" = (
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/almayer/squads/delta)
 "act" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -5536,12 +5577,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/port_hallway)
-"anT" = (
-/turf/open/floor/almayer{
-	icon_state = "redfull";
-	tag = "icon-redfull"
-	},
-/area/almayer/engineering/upper_engineering)
 "anV" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/almayer{
@@ -7186,15 +7221,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/starboard_hallway)
-"arZ" = (
-/obj/structure/rack,
-/obj/item/clothing/suit/armor/bulletproof,
-/obj/item/clothing/suit/armor/bulletproof,
-/turf/open/floor/almayer{
-	icon_state = "redfull";
-	tag = "icon-redfull"
-	},
-/area/almayer/command/cic)
 "asa" = (
 /obj/structure/prop/almayer/sensor_computer1{
 	name = "self destruct status computer"
@@ -19239,19 +19265,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/squads/alpha)
-"bcH" = (
-/obj/structure/machinery/vending/shared_vending/marine_engi,
-/obj/item/stack/sheet/metal/medium_stack{
-	amount = 30;
-	pixel_x = -4;
-	pixel_y = -4
-	},
-/obj/item/stack/sheet/plasteel/small_stack,
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/almayer/squads/alpha)
 "bcK" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_container/spray/cleaner{
@@ -24421,19 +24434,6 @@
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
-	},
-/area/almayer/squads/bravo)
-"buT" = (
-/obj/structure/machinery/vending/shared_vending/marine_engi,
-/obj/item/stack/sheet/metal/medium_stack{
-	amount = 30;
-	pixel_x = -4;
-	pixel_y = -4
-	},
-/obj/item/stack/sheet/plasteel/small_stack,
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/squads/bravo)
 "buU" = (
@@ -35868,19 +35868,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/squads/charlie)
-"cdY" = (
-/obj/structure/machinery/vending/shared_vending/marine_engi,
-/obj/item/stack/sheet/metal/medium_stack{
-	amount = 30;
-	pixel_x = -4;
-	pixel_y = -4
-	},
-/obj/item/stack/sheet/plasteel/small_stack,
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/almayer/squads/charlie)
 "cdZ" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2;
@@ -38098,19 +38085,6 @@
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
-	},
-/area/almayer/squads/delta)
-"cma" = (
-/obj/structure/machinery/vending/shared_vending/marine_engi,
-/obj/item/stack/sheet/metal/medium_stack{
-	amount = 30;
-	pixel_x = -4;
-	pixel_y = -4
-	},
-/obj/item/stack/sheet/plasteel/small_stack,
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/squads/delta)
 "cmb" = (
@@ -76664,7 +76638,7 @@ acX
 aic
 aov
 akh
-arZ
+abQ
 atN
 cEl
 atP
@@ -76678,7 +76652,7 @@ aqN
 atP
 aHR
 aJI
-arZ
+abQ
 akh
 aKn
 aKz
@@ -98464,7 +98438,7 @@ aaa
 aKW
 aLf
 aLT
-bcH
+abS
 bdr
 bdC
 beS
@@ -98478,7 +98452,7 @@ bnt
 bpH
 brs
 bpC
-buT
+abT
 aQL
 sGg
 aYW
@@ -98508,7 +98482,7 @@ cbS
 bHW
 bJz
 bJC
-cdY
+ack
 cfo
 cgs
 chl
@@ -98522,7 +98496,7 @@ cll
 clF
 clK
 clg
-cma
+acp
 bSJ
 puR
 aKW
@@ -101849,7 +101823,7 @@ aFn
 alO
 azo
 aJg
-anT
+abR
 alO
 alG
 aiC
@@ -102458,7 +102432,7 @@ aFr
 alO
 nNY
 qKi
-anT
+abR
 alO
 alG
 bZc
@@ -106205,7 +106179,7 @@ ccW
 bKO
 bqa
 bqa
-abQ
+abU
 bQa
 bRk
 bSm

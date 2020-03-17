@@ -13557,7 +13557,6 @@
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "aJD" = (
 /obj/structure/table/reinforced/prison,
-/obj/item/device/turret_top,
 /turf/open/floor/strata{
 	icon_state = "orange_cover"
 	},

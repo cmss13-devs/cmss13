@@ -101,6 +101,8 @@ var/global/list/yautja_gear = list() // list of loose pred gear
 
 var/global/list/gun_cabinets = list()
 
+var/global/list/marine_collectors = list() // Collectors used for marine defenses. They mine.
+
 var/global/list/cm_objectives = list()
 
 //Languages/species/whitelist.

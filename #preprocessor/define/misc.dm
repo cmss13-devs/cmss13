@@ -122,9 +122,11 @@
 #define STATISTICS_NICHE_OB                         "Bombardments Fired"
 
 #define STATISTICS_NICHE_CADES                      "Barricades Built"
+#define STATISTICS_NICHE_UPGRADE_CADES 				"Barricades Upgraded"
 #define STATISTICS_NICHE_REPAIR_CADES               "Barricades Repaired"
 #define STATISTICS_NICHE_REPAIR_GENERATOR           "Generators Repaired"
 #define STATISTICS_NICHE_REPAIR_APC                 "APCs Repaired"
+#define STATISTICS_NICHE_DEFENSES_BUILT				"Defenses Built"
 
 #define STATISTICS_NICHE_CORGI                      "Corgis Murdered"
 #define STATISTICS_NICHE_CAT                        "Cats Murdered"

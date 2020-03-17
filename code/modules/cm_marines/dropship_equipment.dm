@@ -285,7 +285,7 @@
 	is_interactable = TRUE
 	point_cost = 500
 	var/deployment_cooldown
-	var/obj/structure/machinery/marine_turret/premade/dropship/deployed_turret
+	var/obj/structure/machinery/defenses/sentry/premade/dropship/deployed_turret
 
 /obj/structure/dropship_equipment/sentry_holder/initialize()
 	if(!deployed_turret)
@@ -366,34 +366,43 @@
 			deployed_turret.pixel_x = 0
 			deployed_turret.loc = src
 			deployed_turret.dir = dir
-			deployed_turret.on = 0
+			deployed_turret.turned_on = 0
 		else
 			icon_state = "sentry_system_destroyed"
 
 /obj/structure/dropship_equipment/sentry_holder/proc/deploy_sentry()
-	if(deployed_turret)
-		playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
-		deployment_cooldown = world.time + 50
-		deployed_turret.on = 1
-		if(ship_base.base_category == DROPSHIP_WEAPON)
-			deployed_turret.loc = get_step(src, dir)
-		else
-			deployed_turret.loc = src.loc
-		icon_state = "sentry_system_deployed"
+	if(!deployed_turret)
+		return
 
-		for(var/mob/M in deployed_turret.loc)
-			if(deployed_turret.loc == src.loc)
-				step( M, deployed_turret.dir )
-			else
-				step( M, get_dir(src,deployed_turret) )
+	playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
+	deployment_cooldown = world.time + 50
+	deployed_turret.turned_on = TRUE
+
+	if(ship_base.base_category == DROPSHIP_WEAPON)
+		deployed_turret.loc = get_step(src, dir)
+	else
+		deployed_turret.loc = src.loc
+
+	icon_state = "sentry_system_deployed"
+
+	for(var/mob/M in deployed_turret.loc)
+		if(deployed_turret.loc == src.loc)
+			step(M, deployed_turret.dir)
+		else
+			step(M, get_dir(src,deployed_turret))
+
+	deployed_turret.create_turret_triggers()
 
 /obj/structure/dropship_equipment/sentry_holder/proc/undeploy_sentry()
-	if(deployed_turret)
-		playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
-		deployment_cooldown = world.time + 50
-		deployed_turret.loc = src
-		deployed_turret.on = 0
-		icon_state = "sentry_system_installed"
+	if(!deployed_turret)
+		return
+
+	playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
+	deployment_cooldown = world.time + 50
+	deployed_turret.loc = src
+	deployed_turret.turned_on = FALSE
+	deployed_turret.delete_turret_triggers()
+	icon_state = "sentry_system_installed"
 
 
 

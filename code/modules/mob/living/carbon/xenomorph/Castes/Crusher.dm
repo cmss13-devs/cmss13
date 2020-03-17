@@ -333,7 +333,7 @@
 		X.stop_momentum(X.charge_dir)
 		return FALSE
 
-/obj/structure/machinery/marine_turret/charge_act(mob/living/carbon/Xenomorph/X)
+/obj/structure/machinery/defenses/sentry/charge_act(mob/living/carbon/Xenomorph/X)
 	if(unacidable)
 		X.stop_momentum(X.charge_dir, TRUE)
 		return FALSE
@@ -344,7 +344,7 @@
 	SPAN_XENODANGER("You ram [src]!"))
 	playsound(loc, "punch", 25, 1)
 	stat = 1
-	on = 0
+	turned_on = FALSE
 	update_icon()
 	update_health(X.charge_speed * 20)
 	X.charge_speed -= X.charge_speed_buildup * 3 //Lose three turfs worth of speed

@@ -46875,7 +46875,7 @@
 	},
 /area/prison/pirate)
 "cpb" = (
-/obj/structure/machinery/marine_turret/premade/dumb{
+/obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 1
 	},
 /turf/open/floor/plating{
@@ -48424,7 +48424,7 @@
 /area/prison/pirate)
 "ctO" = (
 /obj/structure/closet/walllocker/emerglocker/north,
-/obj/structure/machinery/marine_turret/premade/dumb{
+/obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 4
 	},
 /obj/structure/pipes/standard/manifold/hidden/supply{

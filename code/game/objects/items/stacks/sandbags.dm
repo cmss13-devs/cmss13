@@ -74,7 +74,8 @@
 /obj/item/stack/sandbags/attack_self(mob/living/user)
 	add_fingerprint(user)
 
-	if(!istype(user.loc,/turf)) return 0
+	if(!istype(user.loc,/turf)) 
+		return 0
 
 	if(istype(user.loc, /turf/open/shuttle))
 		to_chat(user, SPAN_WARNING("No. This area is needed for the dropships and personnel."))
@@ -99,21 +100,25 @@
 
 	if(user.action_busy)
 		return
-	if(amount < 5)
-		to_chat(user, SPAN_WARNING("You need at least five [name] to do this."))
-		return
+
 	user.visible_message(SPAN_NOTICE("[user] starts assembling a sandbag barricade."),
 	SPAN_NOTICE("You start assembling a sandbag barricade."))
 
-	if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(!do_after(user, 10, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
+		
 	for(var/obj/O in user.loc) //Objects, we don't care about mobs. Turfs are checked elsewhere
 		if(O.density)
 			if(!(O.flags_atom & ON_BORDER) || O.dir == user.dir)
 				return
-	var/obj/structure/barricade/sandbags/SB = new(user.loc, user, user.dir)
+
+	var/build_stack = amount
+	if(amount >= 5)
+		build_stack = 5
+
+	var/obj/structure/barricade/sandbags/SB = new(user.loc, user, user.dir, build_stack)
 	user.visible_message(SPAN_NOTICE("[user] assembles a sandbag barricade."),
 	SPAN_NOTICE("You assemble a sandbag barricade."))
 	SB.dir = user.dir
 	SB.add_fingerprint(user)
-	use(5)
+	use(build_stack)

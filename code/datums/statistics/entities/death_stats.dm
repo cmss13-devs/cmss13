@@ -153,6 +153,8 @@
 			CRASH("Statistics attempted to track a mob death with a non-mob cause: [cause_mob] ([cause])")
 			return
 		var/mob/M = cause_mob
+		if(!istype(M))
+			return
 		var/job_name = get_actual_job_name(src)
 		if(!job_name)
 			return

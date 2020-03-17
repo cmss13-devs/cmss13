@@ -47,19 +47,6 @@
 	desc = "Mixed anyone?"
 	icon_state = "oxygen"
 
-
-/*
- * Phoron
- */
-/obj/item/tank/phoron
-	name = "phoron tank"
-	desc = "Contains dangerous phoron. Do not inhale. Warning: extremely flammable."
-	icon_state = "phoron"
-	flags_atom = FPRINT|CONDUCT
-	flags_equip_slot = NO_FLAGS	//they have no straps!
-
-
-
 /*
  * Emergency Oxygen
  */
@@ -108,3 +95,18 @@
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 	gas_type = GAS_TYPE_NITROGEN
 
+// Phoron, used for generators.
+/obj/item/tank/phoron
+	name = "phoron tank"
+	desc = "A tank of liquid phoron. WARNING: Phumes are extremely dangerous."
+	icon_state = "phoron"
+	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
+	gas_type = GAS_TYPE_PHORON
+
+/obj/item/tank/phoron/update_icon()
+	. = ..()
+	
+	if(volume <= 0)
+		icon_state = "phoron_empty"
+	else
+		icon_state = "phoron"

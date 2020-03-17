@@ -420,7 +420,6 @@
 	return effective_accuracy
 
 //objects use get_projectile_hit_boolean unlike mobs, which use get_projectile_hit_chance
-
 /obj/proc/get_projectile_hit_boolean(obj/item/projectile/P)
 	if(!density)
 		return FALSE
@@ -430,12 +429,12 @@
 
 	return TRUE
 
-
-/obj/proc/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0) //Used by machines and structures to calculate shooting past cover
+ //Used by machines and structures to calculate shooting past cover
+/obj/proc/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0, var/cade_direction_correct = FALSE)
 	if(istype(P.shot_from, /obj/item/hardpoint)) //anything shot from a tank gets a bonus to bypassing cover
 		distance -= 3
 
-	if(distance < 1)
+	if(distance < 1 || (distance > 3 && cade_direction_correct))
 		return FALSE
 
 	//an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile
@@ -444,12 +443,12 @@
 	var/accuracy_factor = 50 //degree to which accuracy affects probability   (if accuracy is 100, probability is unaffected. Lower accuracies will increase block chance)
 
 	var/hitchance = min(projectile_coverage, (projectile_coverage * distance/distance_limit) + accuracy_factor * (1 - effective_accuracy/100))
+	
 	#if DEBUG_HIT_CHANCE
 	to_world(SPAN_DEBUG("([name] as cover) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
 	#endif
 
 	return prob(hitchance)
-
 
 /obj/structure/machinery/get_projectile_hit_boolean(obj/item/projectile/P)
 
@@ -460,7 +459,7 @@
 		to_world(SPAN_DEBUG("([name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
 		#endif
 
-		if( prob(hitchance) )
+		if(prob(hitchance))
 			return TRUE
 
 	if(!density)
@@ -476,7 +475,6 @@
 		return FALSE
 
 	var/distance = P.distance_travelled
-
 
 	if(flags_atom & ON_BORDER) //windoors
 		if(P.dir & reverse_direction(dir))
@@ -518,11 +516,13 @@
 
 	var/distance = P.distance_travelled
 
+	var/cade_direction_correct = TRUE
 	if(flags_atom & ON_BORDER) //barricades, flipped tables
 		if(P.dir & reverse_direction(dir))
 			if(ammo_flags & AMMO_STOPPED_BY_COVER)
 				return TRUE
 			distance-- //no bias towards "inner" side
+			cade_direction_correct = FALSE
 		else if(!(P.dir & dir))
 			return FALSE //no effect if bullet direction is perpendicular to barricade
 
@@ -532,7 +532,7 @@
 			for(var/obj/structure/S in get_turf(P))
 				if(S && S.climbable && !(S.flags_atom & ON_BORDER)) //if a projectile is coming from a window frame or table, it's guaranteed to pass the next window frame/table
 					return FALSE
-	return calculate_cover_hit_boolean(P, distance)
+	return calculate_cover_hit_boolean(P, distance, cade_direction_correct)
 
 
 /obj/item/get_projectile_hit_boolean(obj/item/projectile/P)

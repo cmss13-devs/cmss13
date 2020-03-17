@@ -4302,7 +4302,7 @@
 /area/whiskey_outpost/outside/lane/four_south)
 "kN" = (
 /obj/structure/barricade/sandbags/wired,
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/floor{
 	tag = "icon-asteroidwarning (WEST)";
 	icon_state = "asteroidwarning";
@@ -5051,7 +5051,7 @@
 	dir = 4
 	},
 /obj/structure/barricade/sandbags/wired,
-/obj/structure/machinery/marine_turret/premade{
+/obj/structure/machinery/defenses/sentry/premade{
 	icon_state = "sentry_on";
 	dir = 4
 	},
@@ -5246,7 +5246,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/bunker)
 "nl" = (
@@ -5365,7 +5365,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/bunker)
 "nB" = (
@@ -5416,7 +5416,7 @@
 	icon_state = "sandbag_0";
 	dir = 1
 	},
-/obj/structure/machinery/marine_turret/premade{
+/obj/structure/machinery/defenses/sentry/premade{
 	icon_state = "sentry_on";
 	dir = 4
 	},
@@ -6862,7 +6862,7 @@
 /area/whiskey_outpost/inside/bunker)
 "qM" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/machinery/marine_turret/premade{
+/obj/structure/machinery/defenses/sentry/premade{
 	icon_state = "sentry_on";
 	dir = 8
 	},
@@ -7211,7 +7211,7 @@
 	},
 /area/whiskey_outpost/outside/north/platform)
 "rG" = (
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -7375,7 +7375,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/two)
 "rZ" = (
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
 	icon_state = "asteroidfloor";
@@ -7771,7 +7771,7 @@
 	icon_state = "sandbag_0";
 	dir = 8
 	},
-/obj/structure/machinery/marine_turret/premade{
+/obj/structure/machinery/defenses/sentry/premade{
 	icon_state = "sentry_on";
 	dir = 8
 	},
@@ -8178,7 +8178,7 @@
 	},
 /area/whiskey_outpost/inside/bunker)
 "tN" = (
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -8486,7 +8486,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/northeast)
 "uy" = (
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -8494,7 +8494,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/two)
 "uz" = (
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -8761,7 +8761,6 @@
 	icon_state = "shuttle_chair";
 	dir = 8
 	},
-/obj/item/storage/box/sentry,
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -9378,7 +9377,6 @@
 	},
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "wK" = (
-/obj/item/storage/box/sentry,
 /obj/item/storage/box/m56d_hmg,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -9851,7 +9849,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "xU" = (
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -10328,7 +10326,7 @@
 	icon_state = "sandbag_0";
 	dir = 1
 	},
-/obj/structure/machinery/marine_turret/premade{
+/obj/structure/machinery/defenses/sentry/premade{
 	icon_state = "sentry_on";
 	dir = 8
 	},
@@ -10473,7 +10471,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/bunker)
 "zy" = (
-/obj/structure/machinery/marine_turret/premade{
+/obj/structure/machinery/defenses/sentry/premade{
 	icon_state = "sentry_on";
 	dir = 8
 	},
@@ -11048,7 +11046,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "AR" = (
-/obj/structure/machinery/marine_turret/premade{
+/obj/structure/machinery/defenses/sentry/premade{
 	icon_state = "sentry_on";
 	dir = 4
 	},
@@ -11220,7 +11218,6 @@
 	},
 /area/whiskey_outpost/outside/lane/four_north)
 "Bq" = (
-/obj/item/storage/box/sentry,
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
@@ -11231,7 +11228,6 @@
 	},
 /area/whiskey_outpost/outside/lane/one_north)
 "Bs" = (
-/obj/item/storage/box/sentry,
 /obj/item/storage/box/m94,
 /turf/open/floor/plating{
 	icon_state = "platebot"
@@ -12931,7 +12927,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/marine_turret/premade{
+/obj/structure/machinery/defenses/sentry/premade{
 	icon_state = "sentry_on";
 	dir = 4
 	},
@@ -12961,7 +12957,7 @@
 	icon_state = "sandbag_0";
 	dir = 4
 	},
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/floor{
 	tag = "icon-asteroidwarning (NORTHWEST)";
 	icon_state = "asteroidwarning";
@@ -12978,7 +12974,7 @@
 	icon_state = "sandbag_0";
 	dir = 8
 	},
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/floor/plating{
 	tag = "icon-asteroidwarning (SOUTHWEST)";
 	icon_state = "asteroidwarning";
@@ -12989,7 +12985,7 @@
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/south)
 "FX" = (
@@ -13002,7 +12998,7 @@
 	},
 /area/whiskey_outpost/outside/north/platform)
 "FY" = (
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/northeast)
 "FZ" = (
@@ -13010,26 +13006,26 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/northeast)
 "Ga" = (
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "Gb" = (
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/gm/dirtgrassborder,
 /area/whiskey_outpost/outside/north/beach)
 "Gc" = (
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/floor/plating,
 /area/whiskey_outpost/outside/north/beach)
 "Gd" = (
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
 	icon_state = "grassdirt_corner"
 	},
 /area/whiskey_outpost/outside/north/beach)
 "Gf" = (
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /obj/structure/barricade/sandbags/wired,
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
@@ -13108,14 +13104,14 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_north)
 "Gs" = (
-/obj/structure/machinery/marine_turret/premade{
+/obj/structure/machinery/defenses/sentry/premade{
 	icon_state = "sentry_on";
 	dir = 8
 	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_north)
 "Gt" = (
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/floor/plating,
 /area/whiskey_outpost/outside/lane/four_north)
 "Gu" = (
@@ -13134,7 +13130,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_north)
 "Gw" = (
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_north)
 "Gx" = (
@@ -13195,7 +13191,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_south)
 "GE" = (
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_south)
 "GF" = (
@@ -13218,7 +13214,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_south)
 "GH" = (
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/one_north)
 "GI" = (
@@ -13234,7 +13230,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/one_north)
 "GK" = (
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_south)
 "GL" = (
@@ -13251,11 +13247,11 @@
 	},
 /area/whiskey_outpost/outside/lane/two_south)
 "GN" = (
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/three_south)
 "GO" = (
-/obj/structure/machinery/marine_turret/premade,
+/obj/structure/machinery/defenses/sentry/premade,
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_edge";
 	dir = 8
@@ -13273,14 +13269,14 @@
 /turf/open/jungle,
 /area/whiskey_outpost/outside/lane/three_south)
 "GR" = (
-/obj/structure/machinery/marine_turret/premade{
+/obj/structure/machinery/defenses/sentry/premade{
 	icon_state = "sentry_on";
 	dir = 4
 	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/inside/caves/caverns/west)
 "GS" = (
-/obj/structure/machinery/marine_turret/premade{
+/obj/structure/machinery/defenses/sentry/premade{
 	icon_state = "sentry_on";
 	dir = 8
 	},

@@ -49,6 +49,7 @@
 	desc = "The top half of a M56D heavy machine gun post. However it ain't much use without the tripod."
 	unacidable = TRUE
 	w_class = SIZE_HUGE
+	flags_equip_slot = SLOT_BACK
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D_gun_e"
 	var/rounds = 0 // How many rounds are in the weapon. This is useful if we break down our guns.
@@ -106,6 +107,9 @@
 		qdel(src)
 
 
+/obj/item/device/m56d_gun/mounted
+	has_mount = TRUE
+	rounds = 700
 
 /obj/item/device/m56d_post_frame 
 	name = "\improper M56D folded mount frame"
@@ -154,13 +158,12 @@
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	var/gun_mounted = FALSE //Has the gun been mounted?
 	var/gun_rounds = 0 //Did the gun come with any ammo?
-	health = 100
+	health = 50
 
 /obj/structure/machinery/m56d_post/update_health(damage)
 	health -= damage
 	if(health <= 0)
-		if(prob(30))
-			new /obj/item/device/m56d_post (src)
+		playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
 		qdel(src)
 
 /obj/structure/machinery/m56d_post/update_icon()
@@ -191,7 +194,8 @@
 	update_health(rand(M.melee_damage_lower,M.melee_damage_upper))
 
 /obj/structure/machinery/m56d_post/MouseDrop(over_object, src_location, over_location) //Drag the tripod onto you to fold it.
-	if(!ishuman(usr)) return
+	if(!ishuman(usr)) 
+		return
 	var/mob/living/carbon/human/user = usr //this is us
 	if(over_object == user && in_range(src, user))
 		if(anchored)
@@ -255,7 +259,12 @@
 	if(istype(O,/obj/item/tool/screwdriver))
 		if(gun_mounted)
 			to_chat(user, "You're securing the M56D into place...")
-			if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			
+			var/disassemble_time = 30
+			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
+				disassemble_time = 5
+
+			if(do_after(user, disassemble_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] screws the M56D into the mount."),SPAN_NOTICE("You finalize the M56D heavy machine gun."))
 				var/obj/structure/machinery/m56d_hmg/G = new(src.loc) //Here comes our new turret.
@@ -282,6 +291,7 @@
 				to_chat(user, "You begin unscrewing [src] from the ground...")
 			else
 				to_chat(user, "You begin screwing [src] into place...")
+
 			var/old_anchored = anchored
 			if(do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && anchored == old_anchored)
 				anchored = !anchored
@@ -391,7 +401,12 @@
 			to_chat(user, "This one cannot be disassembled.")
 		else
 			to_chat(user, "You begin disassembling [src]...")
-			if(do_after(user,15, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+
+			var/disassemble_time = 30
+			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
+				disassemble_time = 5
+
+			if(do_after(user, disassemble_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message(SPAN_NOTICE(" [user] disassembles [src]! "),SPAN_NOTICE(" You disassemble [src]!"))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				var/obj/item/device/m56d_gun/HMG = new(src.loc) //Here we generate our disassembled mg.
@@ -630,9 +645,12 @@
 	I.flick_overlay(src, 3)
 
 /obj/structure/machinery/m56d_hmg/MouseDrop(over_object, src_location, over_location) //Drag the MG to us to man it.
-	if(!ishuman(usr)) return
+	if(!ishuman(usr)) 
+		return
 	var/mob/living/carbon/human/user = usr //this is us
-	if(!Adjacent(user)) return
+
+	if(!Adjacent(user)) 
+		return
 	src.add_fingerprint(usr)
 	if((over_object == user && (in_range(src, user) || locate(src) in user))) //Make sure its on ourselves
 		if(user.interactee == src)

@@ -48526,7 +48526,6 @@
 	},
 /area/corsat/gamma/residential/west)
 "kap" = (
-/obj/item/storage/box/sentry,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "red"
@@ -56932,7 +56931,6 @@
 	},
 /area/corsat/gamma/residential/west)
 "qgl" = (
-/obj/item/storage/box/sentry,
 /turf/open/floor/corsat{
 	icon_state = "red"
 	},

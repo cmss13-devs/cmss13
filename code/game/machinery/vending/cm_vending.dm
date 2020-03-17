@@ -486,7 +486,7 @@
 		list("Gas mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, "black"),
 
 		list("KITS", 0, null, null, null),
-		list("Combat Technician Support Kit", 30, /obj/item/storage/box/kit/mini_engineer, null, "black"),
+		list("Combat Technician Support Kit", 45, /obj/item/storage/box/kit/mini_engineer, null, "black"),
 		list("First Responder Medical Support Kit", 45, /obj/item/storage/box/kit/mini_medic, null, "black"),
 		list("Frontline M40 Grenadier Kit", 45, /obj/item/storage/box/kit/mini_grenadier, null, "black"),
 		list("L42A Sniper Kit", 30, /obj/item/storage/box/kit/mini_sniper, null, "black"),
@@ -1494,6 +1494,8 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 	spawned_gear_list = list(
 		/obj/item/explosive/plastique,
 		/obj/item/stack/sandbags_empty = 25,
+		/obj/item/stack/sheet/metal/large_stack,
+		/obj/item/stack/sheet/plasteel/medium_stack,
 		/obj/item/cell/high,
 		/obj/item/tool/shovel/etool,
 		/obj/item/device/lightreplacer,

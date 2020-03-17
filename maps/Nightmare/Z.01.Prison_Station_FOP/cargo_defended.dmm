@@ -318,14 +318,14 @@
 /area/prison/hangar_storage/main)
 "N" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/marine_turret/premade/dumb,
+/obj/structure/machinery/defenses/sentry/premade/dumb,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkyellow2"
 	},
 /area/prison/hangar_storage/main)
 "O" = (
-/obj/structure/machinery/marine_turret/premade/dumb,
+/obj/structure/machinery/defenses/sentry/premade/dumb,
 /turf/open/floor/prison{
 	tag = "icon-floor_marked (SOUTHWEST)";
 	icon_state = "floor_marked";
@@ -339,7 +339,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/marine_turret/premade/dumb,
+/obj/structure/machinery/defenses/sentry/premade/dumb,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellow2"

@@ -297,18 +297,12 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	spawn(1)
 		new /obj/item/storage/backpack/marine/engineerpack(src)
 		new /obj/item/pamphlet/engineer(src)
-		new /obj/item/storage/pouch/construction(src)
-		new /obj/item/clothing/gloves/yellow(src)
+		new /obj/item/clothing/gloves/marine/insulated(src)
 		new /obj/item/tool/crowbar(src)
-		new /obj/item/tool/shovel/etool(src)
 		new /obj/item/clothing/glasses/welding(src)
 		new /obj/item/storage/pouch/tools/pfc(src)
 		new /obj/item/folding_barricade(src)
-
-		var/obj/item/stack/sheet/metal/MET = new /obj/item/stack/sheet/metal(src)
-		MET.amount = 20
-		var/obj/item/stack/sandbags_empty/SND1 = new /obj/item/stack/sandbags_empty(src)
-		SND1.amount = 15
+		new /obj/item/device/m56d_gun/mounted(src)
 
 /obj/item/storage/box/kit/mini_medic
 	name = "\improper First Responder Medical Support Kit"

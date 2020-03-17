@@ -1,0 +1,6 @@
+author: Cakey
+
+delete-after: True
+
+changes: 
+  - rscadd: "Marine heavy armor will now block lurker and runner pounces, which will instead now only root and screenshake for half the duration of the intended knockdown. This applies to PFC Heavy armor, M3-G4 and B18 heavy armors, as well as several non-marine heavy armor sets."

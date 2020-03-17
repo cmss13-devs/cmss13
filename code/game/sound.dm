@@ -33,7 +33,7 @@
 /proc/playsound(atom/source, soundin, vol = 100, vary, sound_range, vol_cat = VOLUME_SFX, channel = 0, status , falloff = 1)
 	if(isarea(source))
 		error("[source] is an area and is trying to make the sound: [soundin]")
-		return
+		return FALSE
 	var/datum/sound_template/S = new()
 
 	var/sound/SD = soundin
@@ -49,7 +49,7 @@
 
 	var/turf/turf_source = get_turf(source)
 	if(!turf_source) 
-		return
+		return FALSE
 	S.x = turf_source.x 
 	S.y = turf_source.y
 	S.z = turf_source.z
@@ -88,6 +88,10 @@
 					if(!P.client)
 						continue
 					P.client.soundOutput.process_sound(S)
+
+	return S.channel
+
+
 
 //This is the replacement for playsound_local. Use this for sending sounds directly to a client
 /proc/playsound_client(client/C, soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status)

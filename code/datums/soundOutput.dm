@@ -72,6 +72,8 @@
 	sound_to(owner, S)
 
 /datum/soundOutput/proc/on_movement()
+	if(isobserver(owner.mob)) //Ghosts move too much, plus they don't need this feature (unlike marines and xenos who need it in the case of offscreen CAS/OB)
+		return
 	if(SSspacial_sound.sound_coords.len)
 		update_sound_pos()
 

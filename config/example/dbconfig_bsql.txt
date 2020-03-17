@@ -1,0 +1,17 @@
+# server adapter
+DB_PROVIDER bsql
+
+# server address
+DB_ADDRESS localhost
+
+# server port
+DB_PORT 3306
+
+# server db
+DB_DATABASE CMDB
+
+# server login
+DB_USERNAME root
+
+# server password
+DB_PASSWORD ++Q;8dGn!gN?

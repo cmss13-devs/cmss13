@@ -35,6 +35,8 @@
 #define SS_INIT_FINISH            -22
 #define SS_INIT_MINIMAP           -23
 #define SS_INIT_ADMIN             -24
+#define SS_INIT_DATABASE		  -25
+#define SS_INIT_ENTITYMANAGER	  -26
 
 
 #define SS_PRIORITY_CHAT		   300
@@ -57,11 +59,12 @@
 #define SS_PRIORITY_PIPENET        85
 #define SS_PRIORITY_SHUTTLE        80
 #define SS_PRIORITY_TELEPORTER     75
-#define SS_PRIORITY_AIR            70
 #define SS_PRIORITY_EVENT          65
+#define SS_PRIORITY_DATABASE       63
 #define SS_PRIORITY_DISEASE        60
 #define SS_PRIORITY_FAST_MACHINERY 55
 #define SS_PRIORITY_MIDI       	   40
+#define SS_PRIORITY_ENTITY	       37
 #define SS_PRIORITY_DEFCON         35
 #define SS_PRIORITY_UNSPECIFIED    30
 #define SS_PRIORITY_SPACIAL_SOUNDS 25
@@ -69,6 +72,7 @@
 #define SS_PRIORITY_LIGHTING       20
 #define SS_PRIORITY_TRACKING       19
 #define SS_PRIORITY_PING       	   10
+#define SS_PRIORITY_DATABASE	   15
 #define SS_PRIORITY_SUN            3
 #define SS_PRIORITY_GARBAGE        2
 #define SS_PRIORITY_INACTIVITY     1
@@ -83,7 +87,8 @@
 
 
 #define SS_DISPLAY_GARBAGE        -100
-#define SS_DISPLAY_AIR            -90
+#define SS_DISPLAY_DATABASE       -99
+#define SS_DISPLAY_ENTITY	      -98
 #define SS_DISPLAY_LIGHTING       -80
 #define SS_DISPLAY_MOB            -72
 #define SS_DISPLAY_HUMAN          -71

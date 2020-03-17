@@ -180,18 +180,23 @@ var/global/list/paramslist_cache = list()
 
 	// Ethnicity - Initialise all /datum/ethnicity into a list indexed by ethnicity name
 	paths = typesof(/datum/ethnicity) - /datum/ethnicity
+	ethnicities_list = list()
 	for (var/path in paths)
 		var/datum/ethnicity/E = new path()
 		ethnicities_list[E.name] = E
 
 	// Body Type - Initialise all /datum/body_type into a list indexed by body_type name
 	paths = typesof(/datum/body_type) - /datum/body_type
+	body_types_list = list()
 	for (var/path in paths)
 		var/datum/body_type/B = new path()
 		body_types_list[B.name] = B
 
 	// Hair - Initialise all /datum/sprite_accessory/hair into an list indexed by hair-style name
 	paths = typesof(/datum/sprite_accessory/hair) - /datum/sprite_accessory/hair
+	hair_styles_list = list()
+	hair_styles_male_list = list()
+	hair_styles_female_list = list()
 	for(var/path in paths)
 		var/datum/sprite_accessory/hair/H = new path()
 		hair_styles_list[H.name] = H
@@ -204,6 +209,9 @@ var/global/list/paramslist_cache = list()
 
 	// Facial Hair - Initialise all /datum/sprite_accessory/facial_hair into an list indexed by facialhair-style name
 	paths = typesof(/datum/sprite_accessory/facial_hair) - /datum/sprite_accessory/facial_hair
+	facial_hair_styles_list = list()
+	facial_hair_styles_male_list = list()
+	facial_hair_styles_female_list = list()
 	for(var/path in paths)
 		var/datum/sprite_accessory/facial_hair/H = new path()
 		facial_hair_styles_list[H.name] = H
@@ -216,6 +224,7 @@ var/global/list/paramslist_cache = list()
 
 	// Surgery Steps - Initialize all /datum/surgery_step into a list
 	paths = typesof(/datum/surgery_step)-/datum/surgery_step
+	surgery_steps = list()
 	for(var/T in paths)
 		var/datum/surgery_step/S = new T
 		surgery_steps += S
@@ -223,6 +232,7 @@ var/global/list/paramslist_cache = list()
 
 	// List of job. I can't believe this was calculated multiple times per tick!
 	paths = typesof(/datum/job)-/datum/job
+	joblist = list()
 	// paths -= exclude_jobs
 	for(var/T in paths)
 		var/datum/job/J = new T
@@ -230,10 +240,12 @@ var/global/list/paramslist_cache = list()
 
 	// Languages and species.
 	paths = typesof(/datum/language)-/datum/language
+	all_languages = list()
 	for(var/T in paths)
 		var/datum/language/L = new T
 		all_languages[L.name] = L
 
+	language_keys = list()
 	for (var/language_name in all_languages)
 		var/datum/language/L = all_languages[language_name]
 		language_keys[":[lowertext(L.key)]"] = L
@@ -242,6 +254,8 @@ var/global/list/paramslist_cache = list()
 
 	var/rkey = 0
 	paths = typesof(/datum/species)-/datum/species
+	all_species = list()
+	whitelisted_species = list()
 	for(var/T in paths)
 		rkey++
 		var/datum/species/S = new T
@@ -254,12 +268,14 @@ var/global/list/paramslist_cache = list()
 	// Our ammo stuff is initialized here.
 	var/blacklist[] = list(/datum/ammo,/datum/ammo/energy, /datum/ammo/energy/yautja, /datum/ammo/energy/yautja/rifle, /datum/ammo/bullet/shotgun, /datum/ammo/xeno)
 	paths = typesof(/datum/ammo) - blacklist
+	ammo_list = list()
 	for(var/T in paths)
 		var/datum/ammo/A = new T
 		ammo_list[A.type] = A
 
 	//  Xeno datums
 	paths = typesof(/datum/caste_datum) - /datum/caste_datum
+	xeno_datum_list = list()
 	for(var/T in paths)
 		var/datum/caste_datum/CD = new T
 		if(!xeno_datum_list[CD.caste_name])
@@ -268,6 +284,7 @@ var/global/list/paramslist_cache = list()
 
     // Equipment presets
 	paths = typesof(/datum/equipment_preset)
+	gear_presets_list = list()
 	for(var/T in paths)
 		var/datum/equipment_preset/EP = new T
 		if (EP.flags == 0)
@@ -278,6 +295,7 @@ var/global/list/paramslist_cache = list()
 
 	// Xeno mutators
 	paths = typesof(/datum/xeno_mutator) - /datum/xeno_mutator
+	xeno_mutator_list = list()
 	for(var/T in paths)
 		var/datum/xeno_mutator/XM = new T
 		xeno_mutator_list[XM.name] = XM
@@ -285,6 +303,7 @@ var/global/list/paramslist_cache = list()
 
 	//DEFCON rewards / assets
 	paths = typesof(/datum/defcon_reward) - /datum/defcon_reward
+	defcon_reward_list = list()
 	for(var/T in paths)
 		var/datum/defcon_reward/DR = new T
 		defcon_reward_list[DR.name] = DR
@@ -292,6 +311,7 @@ var/global/list/paramslist_cache = list()
 
 	//  WO waves
 	paths = typesof(/datum/whiskey_outpost_wave) - /datum/whiskey_outpost_wave - typesof(/datum/whiskey_outpost_wave/random)
+	whiskey_outpost_waves = list()
 	for(var/T in paths)
 		var/datum/whiskey_outpost_wave/WOW = new T
 		if(WOW.wave_number > 0)

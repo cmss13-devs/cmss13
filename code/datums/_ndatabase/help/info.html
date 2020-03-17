@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <style>
+    <!--
+  @font-face {
+    font-family: 'Segoe UI';
+    src: local('Segoe UI');
+    unicode-range: U+0-1FFF, U+3000-1EFFF, U+1F???, U+20000-10FFFF;
+  }
+  @font-face {
+    font-family: 'Segoe UI';
+    src: local('Segoe UI Emoji');
+    unicode-range: U+2???, U+1F???;
+  }
+  * {box-sizing: border-box;}
+	body {font: 11pt 'Segoe UI',Verdana,Arial,Helvetica,sans-serif; background: white; color: black; margin: 10px;}
+  body.collapsing > * {display: none;}
+  body.refpage {font-size: 10pt;}
+  tt, var, code, pre, .code, dl.codedd > dd, dl.codedt > dt {font-family: 'Lucida Console','Droid Sans Mono','Bistream Vera Sans Mono',monospace;}
+  .article {padding: 0 10px; margin: -10px -10px 0 -10px;}
+  .topspace {margin-top: 0.5em;}
+  /* Breadcrumb navigation */
+  .nav {margin: 0 -10px; padding: 0; list-style: none; position: relative; font-size: 20px; height: 2em;}
+  .nav *:focus {outline: none;}
+  body.refpage .nav {font-size: 15px; margin-top: -10px;}
+  .nav * {transition: background-color 0.2s;}
+  .nav *:before, .nav *:after {transition: border-color 0.2s;}
+  .nav li {padding: 0 0 0 5px; list-style: none; display: inline-block; position: relative; height: 2em; margin: 0 0.5em; background: #ddf; vertical-align: top;}
+  .nav li:first-child {padding-left: 10px; margin-left: 0;}
+  .nav li:last-child {font-weight: bold;}
+  .nav a {color: black; text-decoration: none; height: 2em; line-height: 34px; display: block;}
+  body.refpage .nav a {line-height: 30px;}
+  .nav li:before, .nav li:after {content: ""; position: absolute; top: 0; width: 0; height: 0;}
+  .nav li:not(:first-child):before {right: 100%; border: 1em solid #ddf; border-left-color: transparent; border-right-width: 0;}
+  .nav li:after {left: 100%; border: 1em solid transparent; border-left-color: #ddf; border-right-width: 0;}
+  .nav li:hover {background: #99f;}
+  .nav li:hover:not(:first-child):before {right: 100%; border: 1em solid #99f; border-left-color: transparent; border-right-width: 0;}
+  .nav li:hover:after {left: 100%; border: 1em solid transparent; border-left-color: #99f; border-right-width: 0;}
+  /* Headers */
+	H1, H2 {text-align: left; padding: 0; margin: 0; clear: both;}
+	H3 {font-size: 1.166667em; font-weight:bold; margin: 1em 0; clear: both;}
+  .vcenter {vertical-align: middle;}
+	.figure {margin: 0 10%; font-size: 9pt; text-align: justify;}
+	.figure img {display: block; margin: 10px auto;}
+  .sidebar {float: right; position: relative; background: #f7f7f7; border: 1px solid #aaa; margin: 0 0 10px 10px; padding: 5px; width: 30%; font-size: 10pt; min-width: 250px; text-align: justify; box-shadow: 0 0 5px #ccc;}
+  .sidebar *:first-child {margin-top: 0px;}
+  .sidebar *:last-child {margin-bottom: 0px;}
+  .sidebar + h3, .sidebar + h4, .sidebar + h3 + pre {clear: none;}
+  pre + .sidebar {margin-top: 11pt;}
+  .has-shadow {box-shadow: 0 0 5px #ccc;}
+  /* Tables */
+	table {border-collapse: collapse;}
+	td, th {text-align: left; vertical-align: top; padding: 3px 0;}
+  td.center, th.center {text-align: center;}
+	th {border-bottom: 1px solid #555;}
+	table.regex td:not(:last-child), table.overload td:not(:last-child), table.codefirst td:first-child {white-space: nowrap; font-family: 'Lucida Console','Droid Sans Mono','Bistream Vera Sans Mono',monospace; padding-right: 1em;}
+  table.regex th:not(:last-child), table.overload th:not(:last-child) {padding-right: 1em;}
+	table.regex td:not(:last-child) i, table.codefirst td:first-child i, pre i, .code * i, .codedd * i {font-family: 'Segoe UI',Verdana,Arial,Helvetica,sans-serif;}
+  table.withborder {box-shadow: 0 0 5px #ccc;}
+  table.withborder td, table.withborder th {padding:3px; border: 1px solid #555;}
+  table.filters tbody:nth-child(2n) {background: #f7f7f7;}
+  .macro_info {max-width: 75%; margin: 0 auto; text-align: center;}
+  .macro_info td, .macro_info th {padding: 3px 10px;}
+  .macro_head {background: #ddf;}
+  .macro_subhead {background: #ddf;}
+  /* Misc. */
+  select {font-size: inherit;}
+  .note {position: relative; background: #eee; border: 1px solid #aaa; padding: 15px 10px; overflow: visible; box-shadow: 0 0 5px #ccc; clear: both;}
+  .note:before {content: '\26a0\fe0f'; display: block; position: absolute; left: -8px; top: -13px; font-size: 20px; height: 30px;}
+  .underhood:before {content: '\1f527\fe0f'; display: block; position: absolute; left: 0; top: 0; font-size: 20px; height: 30px;}
+  .underhood p:first-child:before {content: 'Under the Hood'; display: block; font-size: 1.166667em; font-weight: bold; text-align: center; margin: 0 0 1em 0; clear: both;}
+  .security {background: #f99; border-color: #c00000;}
+  .note.security:before {content: '\1f512\fe0f'; text-shadow: 0 0 3px #f00;}
+  .performance, .tip {background: #cec; border-color: #008000;}
+  .note.performance:before, .note.tip:before {text-shadow: 0 0 3px #008000;}
+  .note.performance:before {content: '\1f3c3\fe0f';}
+  .note.tip:before {content: '\1f44d\fe0f';}
+  .compatibility {background: #eec; border-color: #aa0;}
+  .note.compatibility:before {text-shadow: 0 0 3px #ff0;}
+  /* DM blocks */
+	pre.dmcode {border: 1px solid #aaa; padding: 15px 10px; overflow-x: auto; box-shadow: 0 0 5px #ccc; clear: both;}
+  h3 + pre.dmcode {position: relative; top: -1.5em; margin-bottom: -1.5em;}
+  h3.dmcode {position: relative; font-size: 1em; background: white; padding: 0 5px; left: 6px; font-style: italic; z-index: 1; display: table;}
+  .dmcode {line-height: 1.35;}
+  .dmcode a {text-decoration: none;}
+	.DMk {color: #00f;}
+	.DMs {color: #069;}
+	.DMc {color: #555;}
+	.DMn {color: #500;}
+  .DMi {color: #303;}
+	.DMpp {color: #008000;}
+  /* BYOND version info */
+  .byondver_tag {font: 8pt 'Segoe UI',Verdana,Arial,Helvetica,sans-serif; background: #ddf; display: inline-block; height: 20px; line-height: 0.833; padding: 5px; border-radius: 10px;}
+  .article > .byondver_tag {font-size: 11pt; background: transparent; display: block; position: absolute; top: 0; right: 0; height: auto; height: 24px; border-radius: 12px 0 0 12px; padding-left: 10px;}
+  body.refpage > .byondver_tag {background: transparent; display: block; position: absolute; top: 0; right: 0; border-radius: 10px 0 0 10px; padding-left: 10px;}
+  .deprecated, .article > .deprecated, body.refpage > .deprecated {color: white; background: #666;}
+      -->
+  </style>
+  <script src="prettyref.js"></script>
+  <script><!--
+    window.addEventListener('message', function(m){
+      if(typeof m.data != 'string') return;
+      if(m.data.match(/^nav:/)) window.location.hash = m.data.substr(4);
+      if(m.data.match(/^search:/)) m.source.postMessage('search:'+JSON.stringify(search(m.data.substr(7))), '*');
+    });
+  //--></script>
+  <title>NDatabase Reference</title>
+</head>
+<body bgcolor=#ffffff text=#000000 class=collapsing><div id=refbody>
+<h1>NDatabase Reference</h1>
+<p>
+
+<hr>
+
+<a name=/ndatabase>
+<h2>NDatabase Details</h2>
+
+<p>NDatabase (short from Nightmare Database) is a database agnostic 
+Object Relational Mapping framework based on Entity Framework from .net.
+This framework allows developers to separate SQL operations from the code
+leaving code clean from SQL queries and letting developers work without
+installing SQL database on their PC. It is also extensible and very modular.
+
+<hr>
+
+</div></body>
+</html>

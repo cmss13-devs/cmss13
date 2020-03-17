@@ -50,10 +50,7 @@
 	set category = "Admin"
 
 	if(admin_holder)
-		if(config.ban_legacy_system)
-			admin_holder.unbanpanel()
-		else
-			admin_holder.DB_ban_panel()
+		admin_holder.unbanpanel()
 	return
 
 /client/proc/player_panel_new()

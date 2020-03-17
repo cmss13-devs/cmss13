@@ -4,7 +4,7 @@ var/datum/subsystem/decorator/SSdecorator
 // if this subsystem is deleted, stuff still works
 // That's why we define this here
 /atom/Decorate()
-	if(SSdecorator.registered_decorators[type])
+	if(SSdecorator && SSdecorator.registered_decorators[type])
 		SSdecorator.decorate(src)
 
 /datum/subsystem/decorator

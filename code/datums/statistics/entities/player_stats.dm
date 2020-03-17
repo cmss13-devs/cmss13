@@ -119,18 +119,24 @@
 	if(statistic_exempt || !mind)
 		return
 	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
+	if(isnull(xeno_stats))
+		return
 	xeno_stats.count_human_kill(job_name, cause, caste_name)
 
 /mob/living/carbon/Xenomorph/count_xeno_kill(var/killed_caste, var/cause)
 	if(statistic_exempt || !mind)
 		return
 	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
+	if(isnull(xeno_stats))
+		return
 	xeno_stats.count_xeno_kill(killed_caste, cause, caste_name)
 
 /mob/living/carbon/Xenomorph/count_niche_stat(var/niche_name, var/amount = 1)
 	if(statistic_exempt || !mind)
 		return
 	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
+	if(isnull(xeno_stats))
+		return
 	xeno_stats.count_niche_stat(niche_name, amount, caste_name)
 
 //*****************

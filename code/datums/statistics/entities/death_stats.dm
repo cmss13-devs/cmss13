@@ -169,6 +169,8 @@
 		return
 	if(mind)
 		var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
+		if(isnull(xeno_stats))
+			return
 		xeno_stats.death_list.Insert(1, .)
 	if(cause_mob)
 		if(!ismob(cause_mob))

@@ -122,7 +122,7 @@
 	if(statistic_exempt || (!client && !mind))
 		return
 	var/datum/entity/player_stats/xeno/S = mind.setup_xeno_stats()
-	if(caste_name)
+	if(caste_name && !isnull(S))
 		S.track_personal_abilities_used(caste_name, ability, amount)
 
 /datum/entity/player_stats/xeno/count_personal_steps_walked(var/caste, var/amount = 1)
@@ -136,6 +136,8 @@
 	if(statistic_exempt || (!client && !mind))
 		return
 	var/datum/entity/player_stats/xeno/S = mind.setup_xeno_stats()
+	if(isnull(S))
+		return
 	S.steps_walked += amount
 	if(caste_name)
 		S.count_personal_steps_walked(caste_name, amount)
@@ -151,6 +153,8 @@
 	if(statistic_exempt || (!client && !mind))
 		return
 	var/datum/entity/player_stats/xeno/S = mind.setup_xeno_stats()
+	if(isnull(S))
+		return
 	S.total_hits += amount
 	if(caste_name)
 		S.count_personal_slashes(caste_name, amount)

@@ -83,12 +83,7 @@
 			return 1
 		else
 			if(user.drop_held_item())
-				O.forceMove(src)
-				if(item_quants[O.name])
-					item_quants[O.name]++
-				else
-					item_quants[O.name] = 1
-
+				add_item(O)
 				user.visible_message(SPAN_NOTICE("[user] has added \the [O] to \the [src]."), \
 									 SPAN_NOTICE("You add \the [O] to \the [src]."))
 
@@ -135,6 +130,14 @@
 			return
 
 	ui_interact(user)
+
+/obj/structure/machinery/smartfridge/proc/add_item(var/obj/item/O)
+	O.forceMove(src)
+
+	if(item_quants[O.name])
+		item_quants[O.name]++
+	else
+		item_quants[O.name] = 1
 
 /*******************
 *   SmartFridge Menu

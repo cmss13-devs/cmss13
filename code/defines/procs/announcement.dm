@@ -85,6 +85,10 @@
 		return
 
 	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
+		if(AI.silent_announcement_cooldown >= world.time)
+			continue
+
+		AI.silent_announcement_cooldown = world.time + SECONDS_10
 		if(channel_prefix)
 			return AI.say(channel_prefix + " " +message)
 		return AI.say(message)

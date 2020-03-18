@@ -3,7 +3,7 @@
 	requires_power = 0
 	unlimited_power = 1
 
-	ambience = list()
+	ambience_exterior = 'sound/ambience/vehicle_interior1.ogg'
 
 /area/vehicle/tank
 	name = "tank interior"

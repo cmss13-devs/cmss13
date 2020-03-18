@@ -43,10 +43,6 @@ The System Administrator assists the Host & Vice Host in managing and maintainin
 
 While not directly a part of the development team, the System Administrator has access to branch switching, repository access, and relevant dev channels for the purpose of supporting the team when needed.
 
-**Lead Maintainer**
-
-The Lead Maintainer is in charge of maintaining repository integrity, by definining code standards, as well as overseeing the quality of new content going into the repository. The Lead Maintainer has the authority to request changes on any MR on the grounds that the code does not meet the standards that have been defined defined by the team.
-
 **Lead Spriter**
 
 The Lead Spriter controls sprites and aesthetic that get into the game. New or modified art assets fall to the Lead Spriter, who can decide whether or not a sprite tweak is both merited and a suitable replacement, and may request changes on any MR on the grounds that the sprite changes to not fit the art style and standards. Large changes to art-direction should be referenced to the rest of the team, but the ultimate discretion falls to the Lead Spriter. They also maintain Fax Templates & Logos, Forum graphics, and help curate wiki content. These tasks can be delegated at their discretion. They also handle all incoming spriter applicantions as well as direct changes to the spriting test. They are also responsible for managing the Sprite team.
@@ -55,17 +51,13 @@ The Lead Spriter controls sprites and aesthetic that get into the game. New or m
 
 The Lead Mapper oversees the management of mapping content going into the repository. They have the final say on any design and gameplay decisions when related to maps, and may request changes on any MR on the grounds that the proposed map changes do not fit the mapping standards. They are also responsible for managing the Mapping team.
 
-**Balance Lead**
-
-The Balance Lead maintains the integrity of the game's overall balance, to ensure that it remains both fun and in line with the development team's desired requirements. They are in charge of overseeing any changes that may affect balance and have the authority to request changes on any MR if they believe it is a step in the wrong direction.
-
-**Lore Lead**
-
-The Lore Lead maintains the integrity of the game's lore and relation to reference material. They are in charge of ensuring that any new changes are at least within the bounds of being potentially realistic in the defined universe, and may request changes to mechanics or art that may conflict with the setting.
-
 **Developers**
 
 Developers refers to everyone in the development team. As a part of the development team, you are required to meet the guidelines and standards set by the Leads and the team when contributing to the repository. As well as contributing to the repository, Developers are in charge of handling the review of open MRs, as well as the management of suggestions and issues.
+
+**Contributors**
+
+Contributors refer to anyone outside of the development team contributing to the repository in the form of MRs. Much like Developers, you are required to follow this document with regards to code quality and standards. As a contributor, you may only open MRs with changes related to bugs, runtimes, or Accepted Suggestions on the Gitlab issue tracker, which are handled by the development team.
 
 ## Merge Requests
 All Merge Requests (except Dev to Master MRs) must either target a work-in-progress branch, or the Dev branch. No one may push to master.

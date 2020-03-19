@@ -148,13 +148,8 @@
 		spark_system.start()
 	..()
 
-//Update this to care about angle
-/obj/structure/machinery/defenses/sentry/proc/get_turret_trigger_turfs()
-	return orange(src, SENTRY_RANGE)
-
 /obj/structure/machinery/defenses/sentry/proc/create_turret_triggers()
-	var/list/turf/trigger_spots = get_turret_trigger_turfs()
-	for(var/turf/T in trigger_spots)
+	for(var/turf/T in orange(src, SENTRY_RANGE))
 		for(var/atom/movable/A in T)
 			if((isliving(A) && !isrobot(A)) || (A.type in other_targets))
 				targets.Add(A)

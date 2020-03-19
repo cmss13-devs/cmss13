@@ -53,6 +53,13 @@
 
 	..()
 
+/obj/structure/machinery/defenses/sentry/examine(mob/user)
+	. = ..()
+	if(ammo)
+		to_chat(user, SPAN_NOTICE("[src] has [ammo.current_rounds]/[ammo.max_rounds] rounds loaded."))
+	else
+		to_chat(user, SPAN_NOTICE("[src] is empty and needs to be refilled with ammo."))
+
 /obj/structure/machinery/defenses/sentry/power_on_action()
 	target = null
 	SetLuminosity(7)

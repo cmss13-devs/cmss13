@@ -261,7 +261,7 @@
 
 	switch(caste.charge_type)
 		if(1 to 2) // Runner and lurker
-			if(ishuman(M) && M.dir in reverse_nearby_direction(dir))
+			if(ishuman(M) && dir != turn(M.dir, 180))
 				var/mob/living/carbon/human/H = M
 				if(H.check_shields(15, "the pounce")) //Human shield block.
 					M.Stun(caste.charge_type == 1 ? 0.5 : 1.5)

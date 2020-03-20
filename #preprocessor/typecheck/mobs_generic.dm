@@ -19,3 +19,4 @@
 #define isnewplayer(A) (istype(A, /mob/new_player))
 #define ismaintdrone(A) (istype(A,/mob/living/silicon/robot/drone))
 #define isHellhound(A) (istype(A, /mob/living/carbon/hellhound))
+#define isaghost(A) (copytext(A.key, 1, 2) == "@")

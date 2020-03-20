@@ -137,7 +137,7 @@ Works together with spawning an observer, noted above.
 	return 1
 
 /mob/proc/ghostize(var/can_reenter_corpse = TRUE)
-	if(!key)
+	if(isaghost(src) || !key)
 		return
 
 	var/mob/dead/observer/ghost = new(src)	//Transfer safety to observer spawning proc.

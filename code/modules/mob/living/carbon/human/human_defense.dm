@@ -105,7 +105,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		if(I.IsShield() && (prob(50 - round(damage / 3))))
 			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
 			return TRUE
-	if(wear_suit && wear_suit.flags_inventory & BLOCK_KNOCKDOWN)
+	if(attack_text == "the pounce" && wear_suit && wear_suit.flags_inventory & BLOCK_KNOCKDOWN)
 		visible_message(SPAN_DANGER("<B>[src] withstands [attack_text] with their [wear_suit.name]!</B>"), null, null, 5)
 		return TRUE
 	return FALSE

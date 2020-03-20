@@ -1002,7 +1002,7 @@ window "preferencewindow"
 	elem "preferencebrowser"
 		type = BROWSER
 		pos = 0,240
-		size = 660x618
+		size = 660x550
 		anchor1 = 0,0
 		anchor2 = 100,100
 		background-color = none
@@ -1010,7 +1010,7 @@ window "preferencewindow"
 	elem "preview"
 		type = MAP
 		pos = 0,-10
-		size = 672x250
+		size = 660x250
 		anchor1 = 0,0
 		anchor2 = 100,0
 		right-click = true

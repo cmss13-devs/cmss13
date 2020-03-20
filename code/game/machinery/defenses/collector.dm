@@ -123,6 +123,9 @@
 
 	return collected_amount
 
+/obj/structure/machinery/collector/power_change()
+	return
+
 /obj/structure/machinery/collector/Dispose()
 	marine_collectors -= src
 	RN = null

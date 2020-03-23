@@ -31,6 +31,7 @@
 	var/blip_type = "detector"
 	var/iff_signal = ACCESS_IFF_MARINE			//allows making PMC versions of MD.
 	actions_types = list(/datum/action/item_action)
+	var/scanning = FALSE // controls if MD is in process of scan
 
 /obj/item/device/motiondetector/update_icon()
 	if(ping_count > 8)
@@ -76,13 +77,14 @@
 
 // var/active is used to forcefully toggle it to a specific state
 /obj/item/device/motiondetector/proc/toggle_active(mob/user, var/old_active)
-	active = !old_active
+	active = !old_active	
 	if(active)
 		update_icon()
 		to_chat(user, SPAN_NOTICE("You activate [src]."))
 		playsound(loc, 'sound/items/detector_turn_on.ogg', 30, 0, 5, 2)
 		processing_objects.Add(src)
 	else
+		scanning = FALSE // safety if MD runtimes in scan and stops scanning
 		icon_state = "[initial(icon_state)]"
 		to_chat(user, SPAN_NOTICE("You deactivate [src]."))
 		playsound(loc, 'sound/items/detector_turn_off.ogg', 30, 0, 5, 2)
@@ -115,11 +117,18 @@
 	scan()
 
 /obj/item/device/motiondetector/proc/scan()
+	set waitfor = 0
+	if(scanning)
+		return
+	scanning = TRUE
 	var/mob/living/carbon/human/human_user
 	if(ishuman(loc))
 		human_user = loc
 
 	ping_count = 0
+
+	// doing it in a single pass with typecheck is slower by 33% than having two passes with different types
+
 	for(var/mob/M in orange(detector_range, loc))
 		if(M == loc) continue //device user isn't detected
 		if(world.time > M.l_move_time + 20) continue //hasn't moved recently
@@ -131,11 +140,13 @@
 		ping_count++
 		if(human_user)
 			show_blip(human_user, M)
+		TICK_CHECK
 
 	for(var/obj/effect/alien/resin/special/S in orange(detector_range, loc))
 		ping_count++
 		if(human_user)
 			show_blip(human_user, S)
+		TICK_CHECK
 
 	if(ping_count > 0)
 		playsound(loc, pick('sound/items/detector_ping_1.ogg', 'sound/items/detector_ping_2.ogg', 'sound/items/detector_ping_3.ogg', 'sound/items/detector_ping_4.ogg'), 60, 0, 7, 2)
@@ -143,6 +154,7 @@
 		playsound(loc, 'sound/items/detector.ogg', 60, 0, 7, 2)
 
 	update_icon()
+	scanning = FALSE
 
 
 /obj/item/device/motiondetector/proc/show_blip(mob/user, mob/target)
@@ -196,6 +208,10 @@
 		icon_state = "[initial(icon_state)]"
 
 /obj/item/device/motiondetector/intel/scan()
+	set waitfor = 0
+	if(scanning)
+		return
+	scanning = TRUE
 	var/mob/living/carbon/human/human_user
 	if(ishuman(loc))
 		human_user = loc
@@ -219,6 +235,8 @@
 
 		if(detected)
 			detected_sound = TRUE
+		
+		TICK_CHECK
 
 	for(var/mob/M in orange(detector_range, loc))
 		var/detected
@@ -241,7 +259,11 @@
 			if(detected)
 				detected_sound = TRUE
 
+		TICK_CHECK
+
 	if(detected_sound)
 		playsound(loc, 'sound/items/tick.ogg', 50, 0, 7, 2)
 	else
 		playsound(loc, 'sound/items/detector.ogg', 50, 0, 7, 2)
+
+	scanning = FALSE

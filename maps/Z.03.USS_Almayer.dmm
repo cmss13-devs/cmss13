@@ -39989,6 +39989,15 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig)
+"dzv" = (
+/obj/structure/machinery/door_control{
+	id = "brigwindows";
+	name = "Brig Windows";
+	pixel_y = -25;
+	req_one_access = list(3,19)
+	},
+/turf/open/floor/almayer,
+/area/almayer/shipboard/brig_cells)
 "dBf" = (
 /turf/open/floor/almayer{
 	icon_state = "cargo";
@@ -55358,6 +55367,10 @@
 "xBe" = (
 /obj/structure/window/framed/almayer/hull{
 	name = "ultra-reinforced window"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "brigwindows";
+	name = "\improper Brig Windows"
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig_cells)
@@ -88123,7 +88136,7 @@ tio
 tio
 tio
 pof
-aqI
+dzv
 aaV
 xIs
 bHL

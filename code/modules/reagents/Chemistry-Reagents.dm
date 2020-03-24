@@ -22,11 +22,16 @@
 	//var/list/viruses = list()
 	var/color = "#000000" // rgb: 0, 0, 0 (does not support alpha channels - yet!)
 	var/last_source_mob
+	// For explosions
+	var/explosive = FALSE
+	var/power = 0
+	var/falloff_level = 12
 	// For chemical fire
 	var/chemfiresupp = FALSE
 	var/intensitymod = 0
 	var/durationmod = 0
 	var/radiusmod = 0
+	var/burncolor = "#f88818"
 	// Chem generator and research stuff
 	var/chemclass = CHEM_CLASS_NONE //Decides how rare the chem in the generation process
 	var/gen_tier = 0 //Decides the chance of the chem being good during generation
@@ -112,6 +117,7 @@
 /datum/reagent/proc/make_alike(var/datum/reagent/C)
 	name = C.name
 	id = C.id
+	color = C.color
 	chemclass = C.chemclass
 	gen_tier = C.gen_tier
 	properties = C.properties.Copy()
@@ -120,8 +126,19 @@
 	overdose_critical = C.overdose_critical
 	nutriment_factor = C.nutriment_factor
 	custom_metabolism = C.custom_metabolism
-	color = C.color
+	last_source_mob = C.last_source_mob
+	scannable = C.scannable
+	ingestible = C.ingestible
+	objective_value = C.objective_value
 	original_type = C.original_type
+	chemfiresupp = C.chemfiresupp
+	radiusmod = C.radiusmod
+	durationmod = C.durationmod
+	intensitymod = C.intensitymod
+	burncolor = C.burncolor
+	explosive = C.explosive
+	power = C.power
+	falloff_level =  C.falloff_level
 
 /datum/chemical_reaction/proc/make_alike(var/datum/chemical_reaction/C)
 	id = C.id

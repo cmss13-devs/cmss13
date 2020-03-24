@@ -357,7 +357,7 @@
 /area/bigredv2/outside/medical)
 "aZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/explosive/grenade/chem_grenade/large,
+/obj/item/explosive/grenade/custom/large,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},

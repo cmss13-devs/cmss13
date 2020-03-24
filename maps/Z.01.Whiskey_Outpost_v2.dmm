@@ -607,7 +607,7 @@
 	},
 /area/whiskey_outpost/inside/engineering)
 "bC" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/prison{
 	tag = "icon-floor_marked (SOUTHWEST)";
 	icon_state = "floor_marked";
@@ -671,7 +671,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "bL" = (
-/obj/structure/machinery/vending/engivend,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/prison{
 	tag = "icon-floor_marked (SOUTHWEST)";
 	icon_state = "floor_marked";
@@ -679,7 +679,7 @@
 	},
 /area/whiskey_outpost/inside/engineering)
 "bM" = (
-/obj/structure/machinery/vending/engineering,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
@@ -3921,7 +3921,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "jL" = (
-/obj/structure/machinery/vending/engineering,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
 	icon_state = "floor_plate";
@@ -4211,7 +4211,7 @@
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/south)
 "kB" = (
-/obj/structure/machinery/vending/engivend,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
 	icon_state = "floor_plate";

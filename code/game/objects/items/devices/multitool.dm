@@ -17,3 +17,12 @@
 	throw_speed = SPEED_VERY_FAST
 
 	matter = list("metal" = 50,"glass" = 20)
+
+/obj/item/device/multitool/attack(mob/M as mob, mob/user as mob, def_zone)
+	return FALSE
+
+/obj/item/device/multitool/afterattack(atom/target, mob/user, flag)
+	for(var/obj/item/explosive/plastique/E in target.contents)
+		E.attackby(src, user)
+		return
+	. = ..()

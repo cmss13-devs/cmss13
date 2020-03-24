@@ -15,14 +15,16 @@
 	throw_speed = SPEED_VERY_FAST
 	unacidable = TRUE
 	flags_atom = FPRINT|CONDUCT
+	allowed_sensors = list(/obj/item/device/assembly/prox_sensor)
+	max_container_size = 120
+	reaction_limits = list(	"max_ex_power" = 105,	"max_ex_falloff" = 25,	"max_ex_shards" = 32,
+							"max_fire_rad" = 5,		"max_fire_int" = 12,	"max_fire_dur" = 18,
+							"min_fire_rad" = 2,		"min_fire_int" = 3,		"min_fire_dur" = 3
+	)
 
 	var/iff_signal = ACCESS_IFF_MARINE
 	var/triggered = FALSE
-	var/armed = FALSE //Will the mine explode or not
-	var/base_icon_state = "m20" //the unarmed icon_state
-	var/trigger_type = "explosive" //Calls that proc
 	var/obj/effect/mine_tripwire/tripwire
-	var/source_mob
 
 
 /obj/item/explosive/mine/Dispose()
@@ -32,10 +34,10 @@
 	. = ..()
 
 /obj/item/explosive/mine/ex_act()
-	trigger_explosion() //We don't care about how strong the explosion was.
+	prime() //We don't care about how strong the explosion was.
 
 /obj/item/explosive/mine/emp_act()
-	trigger_explosion() //Same here. Don't care about the effect strength.
+	prime() //Same here. Don't care about the effect strength.
 
 
 //checks for things that would prevent us from placing the mine.
@@ -54,12 +56,15 @@
 
 //Arming
 /obj/item/explosive/mine/attack_self(mob/living/user)
+	if(!..())
+		return
 
 	if(check_for_obstacles(user))
 		return
 
-	if(armed || user.action_busy)
+	if(active || user.action_busy)
 		return
+
 	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."), \
 		SPAN_NOTICE("You start deploying [src]."))
 	if(!do_after(user, 40, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
@@ -67,7 +72,7 @@
 			SPAN_NOTICE("You stop deploying \the [src]."))
 		return
 
-	if(armed)
+	if(active)
 		return
 
 	if(check_for_obstacles(user))
@@ -78,20 +83,23 @@
 
 	source_mob = user
 	anchored = TRUE
-	armed = 1
 	playsound(loc, 'sound/weapons/mine_armed.ogg', 25, 1)
-	icon_state = "[base_icon_state]_armed"
 	user.drop_held_item(src)
 	dir = user.dir //The direction it is planted in is the direction the user faces at that time
-	var/tripwire_loc = get_turf(get_step(loc, dir))
-	tripwire = new(tripwire_loc)
-	tripwire.linked_claymore = src
+	if(customizable)
+		activate_sensors()
+	else
+		active = TRUE
+		var/tripwire_loc = get_turf(get_step(loc, dir))
+		tripwire = new(tripwire_loc)
+		tripwire.linked_claymore = src
+	update_icon()
 
 
 //Disarming
 /obj/item/explosive/mine/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/device/multitool))
-		if(armed)
+		if(active)
 			if(user.action_busy)
 				return
 			user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
@@ -100,19 +108,25 @@
 				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
 					SPAN_WARNING("You stop disarming [src]."))
 				return
-			if(!armed)//someone beat us to it
+			if(!active)//someone beat us to it
 				return
 			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
 			SPAN_NOTICE("You finish disarming [src]."))
-			anchored = FALSE
-			armed = 0
-			icon_state = base_icon_state
-			if(tripwire)
-				qdel(tripwire)
-				tripwire = null
+			disarm()
+			
 	else
 		return ..()
 
+/obj/item/explosive/mine/proc/disarm()
+	anchored = FALSE
+	active = FALSE
+	triggered = FALSE
+	if(customizable)
+		activate_sensors()
+	update_icon()
+	if(tripwire)
+		qdel(tripwire)
+		tripwire = null
 
 //Mine can also be triggered if you "cross right in front of it" (same tile)
 /obj/item/explosive/mine/Crossed(atom/A)
@@ -120,15 +134,15 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(!L.lying)//so dragged corpses don't trigger mines.
-			try_to_trigger(A)
+			try_to_prime(A)
 
 
 /obj/item/explosive/mine/Collided(atom/movable/AM)
-	try_to_trigger(AM)
+	try_to_prime(AM)
 
 
-/obj/item/explosive/mine/proc/try_to_trigger(mob/living/carbon/human/H)
-	if(!armed || triggered)
+/obj/item/explosive/mine/proc/try_to_prime(mob/living/carbon/human/H)
+	if(!active || triggered)
 		return
 	if(!isliving(H))
 		return
@@ -141,19 +155,22 @@
 
 	triggered = TRUE
 	playsound(loc, 'sound/weapons/mine_tripped.ogg', 25, 1)
-	trigger_explosion()
+	prime()
 
 
 //Note : May not be actual explosion depending on linked method
-/obj/item/explosive/mine/proc/trigger_explosion()
+/obj/item/explosive/mine/prime()
 	set waitfor = 0
 
-	switch(trigger_type)
-		if("explosive")
-			create_shrapnel(loc, 12, dir, 60, , initial(name), source_mob)
-			sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
-			cell_explosion(loc, 60, 20, , initial(name), source_mob)
-			qdel(src)
+	if(!customizable)
+		create_shrapnel(loc, 12, dir, 60, , initial(name), source_mob)
+		sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
+		cell_explosion(loc, 60, 20, dir, initial(name), source_mob)
+		qdel(src)
+	else
+		. = ..()
+		if(!disposed)
+			disarm()
 
 
 /obj/item/explosive/mine/attack_alien(mob/living/carbon/Xenomorph/M)
@@ -172,11 +189,15 @@
 		var/direction = pick(cardinal)
 		var/step_direction = get_step(src, direction)
 		tripwire.forceMove(step_direction)
-	trigger_explosion()
+	prime()
+	if(!disposed)
+		disarm()
 
 
 /obj/item/explosive/mine/flamer_fire_act() //adding mine explosions
-	trigger_explosion()
+	prime()
+	if(!disposed)
+		disarm()
 
 
 /obj/effect/mine_tripwire
@@ -205,7 +226,7 @@
 		return
 
 	if(linked_claymore)
-		linked_claymore.try_to_trigger(AM)
+		linked_claymore.try_to_prime(AM)
 
 
 /obj/item/explosive/mine/pmc
@@ -213,5 +234,10 @@
 	desc = "The M20P Claymore is a directional proximity triggered anti-personnel mine designed by Armat Systems for use by the United States Colonial Marines. It has been modified for use by the W-Y PMC forces."
 	icon_state = "m20p"
 	iff_signal = ACCESS_IFF_PMC
-	base_icon_state = "m20p"
 
+/obj/item/explosive/mine/custom
+	name = "Custom mine"
+	desc = "A custom chemical mine built from an M20 casing."
+	icon_state = "m20_custom"
+	customizable = TRUE
+	matter = list("metal" = 3750)

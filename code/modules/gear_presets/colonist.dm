@@ -26,7 +26,7 @@
 	assignment = "Colonial Engineer"
 
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING)
-	skills = /datum/skills/MT
+	skills = /datum/skills/OT
 
 /datum/equipment_preset/colonist/engineer/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(H), WEAR_BACK)

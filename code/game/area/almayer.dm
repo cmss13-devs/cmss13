@@ -124,6 +124,9 @@
 	icon_state = "workshop"
 	fake_zlevel = 2 // lowerdeck
 
+/area/almayer/engineering/engineering_workshop/hangar
+	name = "\improper Ordnance workshop"
+
 /area/almayer/engineering/engine_core
 	name = "\improper Engine Reactor Core Room"
 	icon_state = "coreroom"

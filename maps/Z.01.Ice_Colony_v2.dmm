@@ -981,8 +981,8 @@
 /area/ice_colony/exterior/surface/cliff)
 "ade" = (
 /obj/structure/rack,
-/obj/item/explosive/grenade/chem_grenade/metalfoam,
-/obj/item/explosive/grenade/chem_grenade/metalfoam,
+/obj/item/explosive/grenade/custom/metalfoam,
+/obj/item/explosive/grenade/custom/metalfoam,
 /obj/item/device/flashlight,
 /turf/open/floor{
 	tag = "icon-darkyellow2 (NORTHWEST)";
@@ -2864,7 +2864,7 @@
 	},
 /area/ice_colony/surface/substation/smes)
 "ahs" = (
-/obj/structure/machinery/vending/tool{
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage{
 	req_access = list(102)
 	},
 /turf/open/floor{
@@ -2874,7 +2874,7 @@
 	},
 /area/ice_colony/surface/substation/smes)
 "aht" = (
-/obj/structure/machinery/vending/engivend{
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage{
 	req_access = list(102)
 	},
 /turf/open/floor{
@@ -4664,8 +4664,8 @@
 /area/ice_colony/surface/substation)
 "amw" = (
 /obj/structure/table/reinforced,
-/obj/item/explosive/grenade/chem_grenade/metalfoam,
-/obj/item/explosive/grenade/chem_grenade/metalfoam,
+/obj/item/explosive/grenade/custom/metalfoam,
+/obj/item/explosive/grenade/custom/metalfoam,
 /obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-darkyellow2 (SOUTHWEST)";
@@ -5001,7 +5001,7 @@
 	},
 /area/ice_colony/surface/hydroponics/north)
 "ank" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
@@ -7088,7 +7088,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/surface/dorms)
 "asz" = (
-/obj/structure/mopbucket,
+/obj/item/reagent_container/glass/bucket/mopbucket,
 /obj/item/tool/mop,
 /turf/open/floor/plating,
 /area/ice_colony/surface/dorms)
@@ -11811,7 +11811,7 @@
 	},
 /area/ice_colony/surface/garage/repair)
 "aDN" = (
-/obj/structure/machinery/vending/engivend,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor{
 	tag = "icon-darkyellow2 (EAST)";
 	icon_state = "darkyellow2";
@@ -12153,7 +12153,7 @@
 	},
 /area/ice_colony/surface/garage/repair)
 "aEu" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor{
 	tag = "icon-darkyellow2 (SOUTHEAST)";
 	icon_state = "darkyellow2";
@@ -12546,7 +12546,7 @@
 	},
 /area/ice_colony/surface/hydroponics/south)
 "aFm" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
@@ -15243,7 +15243,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/surface/research)
 "aME" = (
-/obj/structure/mopbucket,
+/obj/item/reagent_container/glass/bucket/mopbucket,
 /obj/item/tool/mop,
 /obj/item/reagent_container/glass/bucket,
 /turf/open/floor/plating,
@@ -31931,7 +31931,7 @@
 	},
 /area/ice_colony/underground/storage/highsec)
 "bCV" = (
-/obj/structure/machinery/vending/engivend,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor{
 	tag = "icon-darkblue2 (NORTH)";
 	icon_state = "darkblue2";
@@ -31951,7 +31951,7 @@
 	},
 /area/ice_colony/underground/storage/highsec)
 "bCX" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor{
 	tag = "icon-darkblue2 (NORTH)";
 	icon_state = "darkblue2";
@@ -33734,7 +33734,7 @@
 	},
 /area/ice_colony/underground/storage)
 "bHp" = (
-/obj/structure/machinery/vending/engivend,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor{
 	tag = "icon-darkyellow2 (NORTH)";
 	icon_state = "darkyellow2";
@@ -33742,7 +33742,7 @@
 	},
 /area/ice_colony/underground/storage)
 "bHq" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -35871,7 +35871,7 @@
 	},
 /area/ice_colony/underground/hallway/south_east)
 "bMq" = (
-/obj/structure/mopbucket,
+/obj/item/reagent_container/glass/bucket/mopbucket,
 /obj/item/tool/mop,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/security)
@@ -37748,7 +37748,7 @@
 	},
 /area/ice_colony/underground/crew/lavatory)
 "bRb" = (
-/obj/structure/mopbucket,
+/obj/item/reagent_container/glass/bucket/mopbucket,
 /obj/item/tool/mop,
 /turf/open/floor{
 	tag = "icon-darkbrown2";

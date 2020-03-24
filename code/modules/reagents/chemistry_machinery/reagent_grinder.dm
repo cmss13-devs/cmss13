@@ -145,7 +145,7 @@
 			var/anything = 0
 			for(var/datum/reagent/R in beaker.reagents.reagent_list)
 				anything = 1
-				beaker_contents += "[R.volume] - [R.name]<br>"
+				beaker_contents += "[R.volume] - [R.name] <A href='?src=\ref[src];action=[R.id]'>Dispose</a><br>"
 			if(!anything)
 				beaker_contents += "Nothing<br>"
 
@@ -164,7 +164,7 @@
 			dat += "<A href='?src=\ref[src];action=detach'>Detach the beaker</a><BR>"
 	else
 		dat += "Please wait..."
-	show_browser(user, "<HEAD><TITLE>All-In-One Grinder</TITLE></HEAD><TT>[dat]</TT>", name, "reagentgrinder")
+	show_browser(user, "<HEAD><TITLE>[name]</TITLE></HEAD><TT>[dat]</TT>", name, "reagentgrinder")
 	onclose(user, "reagentgrinder")
 	return
 
@@ -174,14 +174,17 @@
 		return
 	usr.set_interaction(src)
 	switch(href_list["action"])
-		if ("grind")
+		if("grind")
 			grind()
 		if("juice")
 			juice()
 		if("eject")
 			eject()
-		if ("detach")
+		if("detach")
 			detach()
+		else
+			if(beaker)
+				beaker.reagents.del_reagent(href_list["action"])
 	updateUsrDialog()
 	return
 
@@ -374,3 +377,37 @@
 		O.reagents.trans_to(beaker, amount)
 		if(!O.reagents.total_volume)
 			remove_object(O)
+
+/obj/structure/machinery/reagentgrinder/industrial
+	name = "Industrial Grinder"
+	desc = "a heavy duty variant of the all-in-one grinder meant for grinding large amounts of industrial material. Not food safe."
+	icon_state = "industry1"
+	limit = 30
+	blend_items = list (
+
+		//Sheets
+		/obj/item/stack/sheet/mineral/phoron = list("phoron" = 20),
+		/obj/item/stack/sheet/mineral/uranium = list("uranium" = 20),
+		/obj/item/stack/sheet/mineral/iron = list("iron" = 60),
+		/obj/item/stack/sheet/mineral/silver = list("silver" = 60),
+		/obj/item/stack/sheet/mineral/gold = list("gold" = 60),
+		/obj/item/stack/sheet/metal = list("iron" = 60),
+		/obj/item/stack/sheet/aluminum = list("aluminum" = 60),
+		/obj/item/stack/sheet/copper = list("copper" = 60),
+		/obj/item/grown/nettle/death = list("pacid" = 0),
+		/obj/item/grown/nettle = list("sacid" = 0),
+
+		//Blender Stuff
+		/obj/item/reagent_container/food/snacks/grown/corn = list("cornoil" = 0)
+	)
+
+	juice_items = list ()
+
+/obj/structure/machinery/reagentgrinder/Initialize()
+	. = ..()
+	beaker = new /obj/item/reagent_container/glass/bucket(src)
+	return
+
+/obj/structure/machinery/reagentgrinder/update_icon()
+	icon_state = "industry"+num2text(!isnull(beaker))
+	return

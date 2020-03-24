@@ -3,28 +3,112 @@ SCIENCE
 *******************************************************************************/
 
 
-/datum/supply_packs/phoron
-	name = "phoron assembly crate"
+/datum/supply_packs/assembly
+	name = "assembly crate"
 	contains = list(
-					/obj/item/tank/phoron,
-					/obj/item/tank/phoron,
-					/obj/item/tank/phoron,
+					/obj/item/device/assembly/igniter,
+					/obj/item/device/assembly/igniter,
 					/obj/item/device/assembly/igniter,
 					/obj/item/device/assembly/igniter,
 					/obj/item/device/assembly/igniter,
 					/obj/item/device/assembly/prox_sensor,
 					/obj/item/device/assembly/prox_sensor,
 					/obj/item/device/assembly/prox_sensor,
+					/obj/item/device/assembly/prox_sensor,
+					/obj/item/device/assembly/prox_sensor,
+					/obj/item/device/assembly/timer,
+					/obj/item/device/assembly/timer,
 					/obj/item/device/assembly/timer,
 					/obj/item/device/assembly/timer,
 					/obj/item/device/assembly/timer
 					)
-	cost = RO_PRICE_PRICY
+	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/secure/phoron
-	containername = "phoron assembly crate"
+	containername = "assembly crate"
 	access = ACCESS_MARINE_ENGINEERING
 	group = "Science"
 
+/datum/supply_packs/pyrotec
+	name = "pyrotecnics crate"
+	contains = list(
+					/obj/item/reagent_container/glass/beaker/sulphuric,
+					/obj/item/reagent_container/glass/beaker/sulphuric,
+					/obj/item/reagent_container/glass/beaker/sulphuric,
+					/obj/item/reagent_container/glass/beaker/ethanol,
+					/obj/item/reagent_container/glass/beaker/ethanol,
+					/obj/item/reagent_container/glass/beaker/ethanol,
+					/obj/item/reagent_container/glass/beaker/large/phosphorus,
+					/obj/item/reagent_container/glass/beaker/large/phosphorus,
+					/obj/item/reagent_container/glass/beaker/large/phosphorus,
+					/obj/item/reagent_container/glass/beaker/large/lithium,
+					/obj/item/reagent_container/glass/beaker/large/lithium,
+					/obj/item/reagent_container/glass/beaker/large/sodiumchloride,
+					/obj/item/reagent_container/glass/beaker/large/sodiumchloride,
+					/obj/item/reagent_container/glass/beaker/large/potassiumchloride,
+					/obj/item/reagent_container/glass/beaker/large/potassiumchloride
+					)
+	cost = RO_PRICE_WORTHLESS
+	containertype = /obj/structure/closet/crate/secure/phoron
+	containername = "pyrotecnics crate"
+	access = ACCESS_MARINE_ENGINEERING
+	group = "Science"
+
+/datum/supply_packs/phoron
+	name = "phoron crate"
+	contains = list(
+					/obj/item/stack/sheet/mineral/phoron/medium_stack,
+					/obj/item/stack/sheet/mineral/phoron/medium_stack
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/secure/phoron
+	containername = "phoron crate"
+	access = ACCESS_MARINE_ENGINEERING
+	group = "Science"
+
+/datum/supply_packs/plastic
+	name = "plastic crate"
+	contains = list(
+					/obj/item/stack/sheet/mineral/plastic/small_stack,
+					/obj/item/stack/sheet/mineral/plastic/small_stack
+					)
+	cost = RO_PRICE_VERY_CHEAP
+	containertype = /obj/structure/closet/crate/secure/phoron
+	containername = "plastic crate"
+	access = ACCESS_MARINE_ENGINEERING
+	group = "Science"
+
+/datum/supply_packs/precious_metals
+	name = "precious metals crate"
+	contains = list(
+					/obj/item/stack/sheet/mineral/gold/small_stack,
+					/obj/item/stack/sheet/mineral/silver/small_stack,
+					/obj/item/stack/sheet/mineral/uranium/small_stack
+					)
+	cost = RO_PRICE_VERY_CHEAP
+	containertype = /obj/structure/closet/crate/secure/phoron
+	containername = "precious metals crate"
+	access = ACCESS_MARINE_ENGINEERING
+	group = "Science"
+
+/datum/supply_packs/exp_production
+	name = "explosives production crate"
+	contains = list(
+					/obj/item/reagent_container/glass/canister,
+					/obj/item/reagent_container/glass/canister,
+					/obj/item/reagent_container/glass/canister/ammonia,
+					/obj/item/reagent_container/glass/canister/ammonia,
+					/obj/item/reagent_container/glass/canister/methane,
+					/obj/item/reagent_container/glass/canister/methane,
+					/obj/item/reagent_container/glass/canister/oxygen,
+					/obj/item/reagent_container/glass/canister/oxygen,
+					/obj/item/reagent_container/glass/canister/pacid,
+					/obj/item/reagent_container/glass/canister/pacid
+					)
+	cost = RO_PRICE_VERY_CHEAP
+	containertype = /obj/structure/closet/crate/secure/phoron
+	containername = "explosives production crate"
+	access = ACCESS_MARINE_ENGINEERING
+	group = "Science"
 
 /*******************************************************************************
 SUPPLIES
@@ -206,10 +290,10 @@ SUPPLIES
 					/obj/item/storage/bag/trash,
 					/obj/item/reagent_container/spray/cleaner,
 					/obj/item/reagent_container/glass/rag,
-					/obj/item/explosive/grenade/chem_grenade/cleaner,
-					/obj/item/explosive/grenade/chem_grenade/cleaner,
-					/obj/item/explosive/grenade/chem_grenade/cleaner,
-					/obj/structure/mopbucket,
+					/obj/item/explosive/grenade/custom/cleaner,
+					/obj/item/explosive/grenade/custom/cleaner,
+					/obj/item/explosive/grenade/custom/cleaner,
+					/obj/item/reagent_container/glass/bucket/mopbucket,
 					/obj/item/paper/janitor
 					)
 	cost = RO_PRICE_WORTHLESS

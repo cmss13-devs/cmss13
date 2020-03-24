@@ -10,7 +10,7 @@
 	secured = 0
 
 	var/timing = 0
-	var/time = 10
+	var/time = 4
 
 /obj/item/device/assembly/timer/activate()
 	if(!..())	return 0//Cooldown check
@@ -86,13 +86,13 @@
 	if(href_list["time"])
 		timing = text2num(href_list["time"])
 		if(!timing)
-			time = min(max(round(time), 3), 600)
+			time = min(max(round(time), 2), 600)
 		update_icon()
 
 	if(href_list["tp"])
 		var/tp = text2num(href_list["tp"])
 		time += tp
-		time = min(max(round(time), 3), 600)
+		time = min(max(round(time), 2), 600)
 
 	if(href_list["close"])
 		close_browser(usr, "timer")

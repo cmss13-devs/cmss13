@@ -1,71 +1,31 @@
-// Defines for water/potassium
-#define MAXEXPOWER 		300
-#define MAXEXSHARDS 	128
-
-// Defines for napalm
-#define MINRADIUS 		1
-#define MAXRADIUS 		5
-#define MININTENSITY	5
-#define MAXINTENSITY	40
-#define MINDURATION		3
-#define MAXDURATION		40
-
-/datum/chemical_reaction/explosion_potassium
-	name = "Explosion"
-	id = "explosion_potassium"
-	result = null
+/datum/chemical_reaction/explosive
+	name = "potassium hydroxide"
+	id = "potassium_hydroxide"
+	result = "potassium_hydroxide"
 	required_reagents = list("water" = 1, "potassium" = 1)
 	result_amount = 1
+	var/sensitivity_threshold = 0
 
-/datum/chemical_reaction/explosion_potassium/on_reaction(var/datum/reagents/holder, var/created_volume)
-	var/atom/location = holder.my_atom.loc
-	var/turf/sourceturf = get_turf(holder.my_atom)
-	var/exfalloff
-	var/expower
-	var/shards = 4 // Because explosions are messy
-	var/shard_type = /datum/ammo/bullet/shrapnel
-	var/source_mob
-
-	if(ishuman(holder.my_atom))
-		var/mob/living/carbon/human/H = holder.my_atom
-		source_mob = H
-		msg_admin_niche("WARNING: Pill-based potassium-water explosion attempted in containing mob [H.name] ([H.ckey]) in area [sourceturf.loc] at ([H.loc.x],[H.loc.y],[H.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[H.loc.x];Y=[H.loc.y];Z=[H.loc.z]'>JMP</a>)")
-		holder.exploded = TRUE
-		return
-
-	if(sourceturf.chemexploded)
-		return // Has recently exploded, so no explosion this time. Prevents instagib satchel charges.
-
-	if(holder.my_atom && location) //It exists outside of null space.
-		expower = created_volume*2 //60u slightly better than HEDP, 120u worse than holy hand grenade
-
-		for(var/datum/reagent/R in holder.reagent_list) // if you want to do extra stuff when other chems are present, do it here
-			if(R.id == "iron")
-				shards += round(R.volume)
-			if(R.id == "phoron" && R.volume >= 10)
-				shard_type = /datum/ammo/bullet/shrapnel/incendiary
-
-		// some upper limits
-		if(shards > MAXEXSHARDS)
-			shards = MAXEXSHARDS
-		if(istype(shard_type, /datum/ammo/bullet/shrapnel/incendiary) && shards > MAXEXSHARDS / 4) // less max incendiary shards
-			shards = MAXEXSHARDS / 4
-		if(expower > MAXEXPOWER)
-			expower = MAXEXPOWER
-		exfalloff = expower/6
-		if(exfalloff < 15) exfalloff = 15
-
-		msg_admin_niche("Potassium + Water explosion in [sourceturf.loc.name] at ([sourceturf.x],[sourceturf.y],[sourceturf.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[sourceturf.x];Y=[sourceturf.y];Z=[sourceturf.z]'>JMP</a>)")
-		create_shrapnel(location, shards, , ,shard_type, "chemical reaction", source_mob)
-		sleep(2) // So mobs aren't knocked down before getting hit by shrapnel
-		cell_explosion(location, expower, exfalloff, null, "chemical reaction", source_mob)
-
-		sourceturf.chemexploded = TRUE // to prevent grenade stacking
-		spawn(20)
-			sourceturf.chemexploded = FALSE
-		holder.exploded = TRUE // clears reagents after all reactions processed
-
+/datum/chemical_reaction/explosive/on_reaction(var/datum/reagents/holder, var/created_volume)
+	if(created_volume > sensitivity_threshold)
+		holder.trigger_volatiles = TRUE
 	return
+
+/datum/chemical_reaction/explosive/anfo
+	name = "anfo"
+	id = "anfo"
+	result = "anfo"
+	required_reagents = list("ammonium_nitrate" = 2, "fuel" = 1)
+	result_amount = 2
+	sensitivity_threshold = 60
+
+/datum/chemical_reaction/explosive/nitroglycerin
+	name = "nitroglycerin"
+	id = "nitroglycerin"
+	id = "nitroglycerin"
+	required_reagents = list("glycerol" = 1, "pacid" = 1, "sacid" = 1)
+	result_amount = 2
+	sensitivity_threshold = 5
 
 /datum/chemical_reaction/emp_pulse
 	name = "EMP Pulse"
@@ -190,27 +150,6 @@
 	required_reagents = list("cornoil" = 3, "sacid" = 1)
 	result_amount = 1
 
-/datum/chemical_reaction/nitroglycerin
-	name = "Nitroglycerin"
-	id = "nitroglycerin"
-	result = "nitroglycerin"
-	required_reagents = list("glycerol" = 1, "pacid" = 1, "sacid" = 1)
-	result_amount = 2
-
-	on_reaction(var/datum/reagents/holder, var/created_volume)
-		var/datum/effect_system/reagents_explosion/e = new()
-		e.set_up(round (created_volume/2, 1), holder.my_atom, 0, 0)
-		e.holder_damage(holder.my_atom)
-		if(isliving(holder.my_atom))
-			e.amount *= 0.5
-			var/mob/living/L = holder.my_atom
-			if(L.stat!=DEAD)
-				e.amount *= 0.5
-		e.start()
-
-		holder.clear_reagents()
-
-
 /datum/chemical_reaction/flash_powder
 	name = "Flash powder"
 	id = "flash_powder"
@@ -235,73 +174,15 @@
 
 
 /datum/chemical_reaction/chemfire
-	name = "Thermite"
-	id = "thermite"
-	result = null
+	name = "Napalm"
+	id = "napalm"
+	result = "napalm"
 	required_reagents = list("aluminum" = 1, "phoron" = 1, "sacid" = 1 )
 	result_amount = 1
 
-/datum/chemical_reaction/chemfire/on_reaction(var/datum/reagents/holder, var/created_volume, var/mob/user)
-	var/flameshape = FLAMESHAPE_DEFAULT
-	var/radius = 0
-	var/intensity = 0
-	var/duration = 0
-	var/location = get_turf(holder.my_atom)
-	var/firecolor = "red"
-	var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus
-	var/supplemented = 0 // for determining firecolor. Intensifying chems add, moderating chems remove. Net positive = blue, net negative = green.
-	if(!location)
-		return
-
-	radius = max(created_volume/12, 3)
-	intensity = max(created_volume/2.5, 30)
-	duration = max(created_volume, 20)
-
-	for(var/datum/reagent/R in holder.reagent_list)
-		if(R.chemfiresupp)
-			supplemented += R.intensitymod * R.volume
-			intensity += R.intensitymod * R.volume
-			duration += R.durationmod * R.volume
-			radius += R.radiusmod * R.volume
-			holder.del_reagent(R.id)
-
-
-	// only integers please
-	radius = round(radius)
-	intensity = round(intensity)
-	duration = round(duration)
-
-	// some upper and lower limits
-	if(radius <= MINRADIUS)
-		radius = MINRADIUS
-	if(radius >= MAXRADIUS)
-		radius = MAXRADIUS
-	if(intensity <= MININTENSITY)
-		intensity = MININTENSITY
-	if(intensity >= MAXINTENSITY)
-		intensity = MAXINTENSITY
-	if(duration <= MINDURATION)
-		duration = MINDURATION
-	if(duration >= MAXDURATION)
-		duration = MAXDURATION
-
-	// color
-	if(supplemented > 0 && intensity > 30)
-		firecolor = "blue"
-		flameshape = FLAMESHAPE_STAR
-
-	if(supplemented < 0 && intensity < 15)
-		firecolor = "green"
-		flameshape = FLAMESHAPE_IRREGULAR
-		radius += 2 //  to make up for tiles lost to irregular shape
-
-	smoke.set_up(max(radius - 1, 1), 0, location, null, 6)
-	smoke.start()
-	smoke = null
-
-	new /obj/flamer_fire(location, "[initial(name)] fire", user, duration, intensity, firecolor, radius, FALSE, flameshape)
-	sleep(5)
-	playsound(location, 'sound/weapons/gun_flamethrower1.ogg', 25, 1)
+/datum/chemical_reaction/chemfire/on_reaction(var/datum/reagents/holder, var/created_volume)
+	holder.trigger_volatiles = TRUE
+	return
 
 // Chemfire supplement chemicals.
 /datum/chemical_reaction/chlorinetrifluoride
@@ -311,12 +192,67 @@
 	required_reagents = list("fluorine" = 3, "chlorine" = 1)
 	result_amount = 1
 
+/datum/chemical_reaction/chlorinetrifluoride/on_reaction(var/datum/reagents/holder, var/created_volume)
+	holder.trigger_volatiles = TRUE
+	return
+
 /datum/chemical_reaction/methane
 	name = "Methane"
 	id = "methane"
 	result = "methane"
 	required_reagents = list("hydrogen" = 4,"carbon" = 1)
 	result_amount = 1
+
+//Explosive components
+/datum/chemical_reaction/formaldehyde
+	name = "Formaldehyde"
+	id = "formaldehyde"
+	result = "formaldehyde"
+	required_reagents = list("methane" = 1, "oxygen" = 1, "phoron" = 1)
+	required_catalysts = list("silver" = 5)
+	result_amount = 3
+
+/datum/chemical_reaction/paraformaldehyde
+	name = "Paraformaldehyde"
+	id = "paraformaldehyde"
+	result = "paraformaldehyde"
+	required_reagents = list("formaldehyde" = 1, "frostoil" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/hexamine
+	name = "Hexamine"
+	id = "hexamine"
+	result = "hexamine"
+	required_reagents = list("ammonia" = 2, "formaldehyde" = 3)
+	result_amount = 3
+
+/datum/chemical_reaction/ammoniumnitrate
+	name = "Ammonium Nitrate"
+	id = "ammonium_nitrate"
+	result = "ammonium_nitrate"
+	required_reagents = list("ammonia" = 1, "pacid" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/octogen
+	name = "Octogen"
+	id = "octogen"
+	result = "octogen"
+	required_reagents = list("hexamine" = 1, "pacid" = 1, "paraformaldehyde" = 1, "ammonium_nitrate" = 1,)
+	result_amount = 2
+
+/datum/chemical_reaction/cyclonite
+	name = "Cyclonite"
+	id = "cyclonite"
+	result = "cyclonite"
+	required_reagents = list("hexamine" = 1, "pacid" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/ammoniumnitrate
+	name = "Ammonium Nitrate"
+	id = "ammonium_nitrate"
+	result = "ammonium_nitrate"
+	required_reagents = list("ammonia" = 1, "pacid" = 1)
+	result_amount = 2
 
 /datum/chemical_reaction/chemsmoke
 	name = "Chemsmoke"
@@ -566,12 +502,3 @@
 	result = "eggplasma"
 	required_reagents = list("blood" = 10, "eggplasma" = 1)
 	result_amount = 2
-
-#undef MAXEXPOWER
-#undef MAXEXSHARDS
-#undef MINRADIUS
-#undef MAXRADIUS
-#undef MININTENSITY
-#undef MAXINTENSITY
-#undef MINDURATION
-#undef MAXDURATION

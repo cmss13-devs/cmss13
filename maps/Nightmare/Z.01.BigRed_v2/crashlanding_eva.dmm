@@ -641,19 +641,19 @@
 	},
 /area/bigredv2/outside/general_offices)
 "bX" = (
-/obj/structure/machinery/vending/engivend,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/general_offices)
 "bY" = (
-/obj/structure/machinery/vending/engineering,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/general_offices)
 "bZ" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},

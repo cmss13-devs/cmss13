@@ -33,8 +33,8 @@
 /proc/rsc_slot_formula(var/playercount)
 	return job_slot_formula(playercount,40,1,2,3)
 
-/proc/mt_slot_formula(var/playercount)
-	return job_slot_formula(playercount,60,1,2,4)
+/proc/ot_slot_formula(var/playercount)
+	return job_slot_formula(playercount,60,1,2,3)
 
 /proc/ct_slot_formula(var/playercount)
 	return job_slot_formula(playercount,30,0,2,3)

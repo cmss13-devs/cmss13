@@ -252,15 +252,15 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/maint
-	name = "USCM Maintenance Tech (MT)"
+	name = "USCM Ordnance Technician (OT)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_CREWMAN)
-	assignment = JOB_ENGINEER
-	rank = JOB_ENGINEER
+	assignment = JOB_ORDNANCE_TECH
+	rank = JOB_ORDNANCE_TECH
 	paygrade = "E5"
-	role_comm_title = "MT"
-	skills = /datum/skills/MT
+	role_comm_title = "OT"
+	skills = /datum/skills/OT
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
 
@@ -276,7 +276,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/device/t_scanner(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/device/demo_scanner(H), WEAR_L_STORE)
 
 /*****************************************************************************************************/
 
@@ -704,10 +704,10 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
-	assignment = JOB_ENGINEER
+	assignment = JOB_ORDNANCE_TECH
 	rank = "UPP"
 	paygrade = "E6"
-	role_comm_title = "MT"
+	role_comm_title = "OT"
 	skills = /datum/skills/spy
 	languages = list("English", "Russian") //can speak russian, but it's not default
 
@@ -804,10 +804,10 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat/riot(H), WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/flashbangs(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/chem_grenade/teargas(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/chem_grenade/teargas(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/chem_grenade/teargas(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/chem_grenade/teargas(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/with_beanbags(H), WEAR_L_STORE)

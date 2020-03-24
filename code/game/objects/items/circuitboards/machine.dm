@@ -23,9 +23,19 @@ to destroy them and players will be able to make replacements.
 	name = "Circuit board (Autolathe)"
 	build_path = "/obj/structure/machinery/autolathe"
 	
-	frame_desc = "Requires 3 Matter Bins, 1 Micro Manipulator, and 1 Console Screen."
+	frame_desc = "Requires 2 Matter Bins, 1 Micro Manipulator, and 1 Console Screen."
 	req_components = list(
-							"/obj/item/stock_parts/matter_bin" = 3,
+							"/obj/item/stock_parts/matter_bin" = 2,
+							"/obj/item/stock_parts/manipulator" = 1,
+							"/obj/item/stock_parts/console_screen" = 1)
+
+/obj/item/circuitboard/machine/autolathe/armylathe
+	name = "Circuit board (Armylathe)"
+	build_path = "/obj/structure/machinery/autolathe/armylathe"
+	
+	frame_desc = "Requires 4 Matter Bins, 1 Micro Manipulator, and 1 Console Screen."
+	req_components = list(
+							"/obj/item/stock_parts/matter_bin" = 4,
 							"/obj/item/stock_parts/manipulator" = 1,
 							"/obj/item/stock_parts/console_screen" = 1)
 

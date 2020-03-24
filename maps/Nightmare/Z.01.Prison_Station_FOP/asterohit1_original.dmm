@@ -661,7 +661,7 @@
 	},
 /area/prison/engineering)
 "bYT" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/prison{
 	tag = "icon-darkyellowfull2 (EAST)";
 	icon_state = "darkyellowfull2";

@@ -1253,6 +1253,32 @@
 	drop_flame(get_turf(P))
 	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_source, P.weapon_source_mob)
 
+/datum/ammo/rocket/custom
+	name = "custom rocket"
+
+/datum/ammo/rocket/custom/proc/prime(atom/A, obj/item/projectile/P)
+	var/obj/item/weapon/gun/launcher/rocket/launcher = P.shot_from
+	var/obj/item/ammo_magazine/rocket/custom/rocket = launcher.current_mag
+	if(rocket.locked && rocket.warhead && rocket.warhead.detonator)
+		if(rocket.fuel && rocket.fuel.reagents.get_reagent_amount(rocket.fuel_type) >= rocket.fuel_requirement)
+			rocket.loc = P.loc
+		rocket.warhead.prime()
+		qdel(rocket)
+	smoke.set_up(1, get_turf(A))
+	smoke.start()
+
+/datum/ammo/rocket/custom/on_hit_mob(mob/M, obj/item/projectile/P)
+	prime(M, P)
+
+/datum/ammo/rocket/custom/on_hit_obj(obj/O, obj/item/projectile/P)
+	prime(O, P)
+
+/datum/ammo/rocket/custom/on_hit_turf(turf/T, obj/item/projectile/P)
+	prime(T, P)
+
+/datum/ammo/rocket/custom/do_at_max_range(obj/item/projectile/P)
+	prime(null, P)
+
 /*
 //================================================
 					Energy Ammo

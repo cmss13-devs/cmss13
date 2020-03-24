@@ -99,6 +99,19 @@
 #define SIZE_HUGE       5       // Using Large does the same job
 #define SIZE_MASSIVE    6       
 
+// Stack amounts
+#define STACK_5			5
+#define STACK_10		10
+#define STACK_20		20
+#define STACK_25		25
+#define STACK_30		30
+#define STACK_50		50
+
+// Assembly Stages
+#define ASSEMBLY_EMPTY		0
+#define ASSEMBLY_UNLOCKED	1
+#define ASSEMBLY_LOCKED		2
+
 // Statistics defines
 #define STATISTIC_XENO "xeno"
 #define STATISTIC_HUMAN "human"

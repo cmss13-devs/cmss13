@@ -79,6 +79,32 @@
 	new /obj/item/tool/weldpack(src)
 	new /obj/item/tool/weldpack(src)
 
+/obj/structure/closet/secure_closet/engineering_materials
+	name = "workshop materials"
+	req_access = list(ACCESS_MARINE_ENGINEERING)
+	icon_state = "secureenggen1"
+	icon_closed = "secureenggen"
+	icon_locked = "secureenggen1"
+	icon_opened = "toolclosetopen"
+	icon_broken = "secureenggenbroken"
+	icon_off = "secureenggenoff"
+
+/obj/structure/closet/secure_closet/engineering_materials/Initialize()
+	..()
+	sleep(2)
+	new /obj/item/reagent_container/glass/canister/pacid(src)
+	new /obj/item/reagent_container/glass/canister/methane(src)
+	new /obj/item/reagent_container/glass/canister/ammonia(src)
+	new /obj/item/reagent_container/glass/canister/oxygen(src)
+	new /obj/item/reagent_container/glass/beaker/large/phosphorus(src)
+	new /obj/item/reagent_container/glass/beaker/large/phosphorus(src)
+	new /obj/item/reagent_container/glass/beaker/large/phosphorus(src)
+	new /obj/item/reagent_container/glass/beaker/large/phosphorus(src)
+	new /obj/item/reagent_container/glass/beaker/ethanol(src)
+	new /obj/item/reagent_container/glass/beaker/large/lithium(src)
+	new /obj/item/reagent_container/glass/beaker/large/sodiumchloride(src)
+	new /obj/item/reagent_container/glass/beaker/large/potassiumchloride(src)
+
 /obj/structure/closet/secure_closet/engineering_personal
 	name = "engineer's locker"
 	req_access = list(ACCESS_MARINE_ENGINEERING)

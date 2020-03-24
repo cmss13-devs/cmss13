@@ -201,6 +201,8 @@
 /datum/action/xeno_action/activable/corrosive_acid/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.corrosive_acid(A, acid_type, acid_plasma_cost)
+	for(var/obj/item/explosive/plastique/E in A.contents)
+		X.corrosive_acid(E, acid_type, acid_plasma_cost)
 	..()
 
 /datum/action/xeno_action/activable/corrosive_acid/New()

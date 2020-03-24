@@ -64,3 +64,32 @@
 	mixedcolor=min(max(mixedcolor,0),255)
 
 	return mixedcolor
+
+/proc/mix_burn_colors(var/list/reagent_list)
+	var/contents = length(reagent_list)
+	var/list/weight = new /list(contents)
+	var/list/redcolor = new /list(contents)
+	var/list/greencolor = new /list(contents)
+	var/list/bluecolor = new /list(contents)
+
+	for(var/i in 1 to contents)
+		//fill the list of weights
+		var/datum/reagent/re = reagent_list[i]
+		weight[i] = re.volume
+		//fill the lists of colours
+		var/hue = re.burncolor
+		if(length(hue) != 7)
+			return 0
+		redcolor[i]=hex2num(copytext(hue,2,4))
+		greencolor[i]=hex2num(copytext(hue,4,6))
+		bluecolor[i]=hex2num(copytext(hue,6,8))
+
+	//mix all the colors
+	var/red = mixOneColor(weight,redcolor)
+	var/green = mixOneColor(weight,greencolor)
+	var/blue = mixOneColor(weight,bluecolor)
+
+	//assemble all the pieces
+	var/finalcolor = rgb(red, green, blue)
+	return finalcolor
+	

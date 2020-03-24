@@ -14,7 +14,7 @@
 //Putting on hardpoints
 //Similar to repairing stuff, down to the time delay
 /obj/vehicle/multitile/proc/install_hardpoint(var/obj/item/O, var/mob/user)
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MT))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
 		to_chat(user, SPAN_WARNING("You don't know what to do with [O] on \the [src]."))
 		return
 
@@ -76,7 +76,7 @@
 //User-orientated proc for taking of hardpoints
 //Again, similar to the above ones
 /obj/vehicle/multitile/proc/uninstall_hardpoint(var/obj/item/O, var/mob/user)
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MT))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
 		to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
 		return
 

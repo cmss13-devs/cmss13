@@ -21,6 +21,7 @@ var/global/list/datum/stack_recipe/sandstone_recipes = list ( \
 
 var/global/list/datum/stack_recipe/silver_recipes = list ( \
 	new/datum/stack_recipe("silver door", /obj/structure/mineral_door/silver, 10, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("silver beaker", /obj/item/reagent_container/glass/beaker/silver, 3, time = 30, skill_req = SKILL_CONSTRUCTION_METAL), \
 	)
 
 var/global/list/datum/stack_recipe/diamond_recipes = list ( \
@@ -65,7 +66,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	pixel_x = rand(0,4)-4
 	pixel_y = rand(0,4)-4
 
-obj/item/stack/sheet/mineral/iron
+/obj/item/stack/sheet/mineral/iron
 	name = "iron"
 	desc = "Iron is the most basic building material in space, a metal solid at room temperature, easy to shape and available in immense quantities."
 	singular_name = "iron sheet"
@@ -76,7 +77,7 @@ obj/item/stack/sheet/mineral/iron
 	perunit = 3750
 	stack_id = "iron"
 
-obj/item/stack/sheet/mineral/iron/New()
+/obj/item/stack/sheet/mineral/iron/New()
 	..()
 	recipes = iron_recipes
 
@@ -124,6 +125,9 @@ obj/item/stack/sheet/mineral/iron/New()
 	..()
 	recipes = uranium_recipes
 
+/obj/item/stack/sheet/mineral/uranium/small_stack
+	amount = STACK_10
+
 /obj/item/stack/sheet/mineral/phoron
 	name = "solid phoron"
 	desc = "Phoron is an extremely rare mineral with exotic properties, often used in cutting-edge research. Just getting it into a stable, solid form is already hard enough."
@@ -139,16 +143,17 @@ obj/item/stack/sheet/mineral/iron/New()
 	// recipes = phoron_recipes // Disabled phoron doors
 
 /obj/item/stack/sheet/mineral/phoron/small_stack
-	amount = 10
+	amount = STACK_10
 
 /obj/item/stack/sheet/mineral/phoron/medium_stack
-	amount = 30
+	amount = STACK_30
 
 /obj/item/stack/sheet/mineral/plastic
 	name = "Plastic"
 	desc = "Plastic is a synthetic polymer, manufactured from organic and inorganic components into a malleable and light fabric. It can be used for a wide range of objects."
 	singular_name = "plastic sheet"
 	icon_state = "sheet-plastic"
+	matter = list("plastic" = 2000)
 	
 	perunit = 2000
 	stack_id = "plastic"
@@ -156,6 +161,9 @@ obj/item/stack/sheet/mineral/iron/New()
 /obj/item/stack/sheet/mineral/plastic/New()
 	..()
 	recipes = plastic_recipes
+
+/obj/item/stack/sheet/mineral/plastic/small_stack
+	amount = STACK_10
 
 /obj/item/stack/sheet/mineral/plastic/cyborg
 	name = "plastic sheets"
@@ -178,6 +186,9 @@ obj/item/stack/sheet/mineral/iron/New()
 	..()
 	recipes = gold_recipes
 
+/obj/item/stack/sheet/mineral/gold/small_stack
+	amount = STACK_5
+
 /obj/item/stack/sheet/mineral/silver
 	name = "silver"
 	desc = "Silver is a transition metal. It is known for its namesake silver, gray color. It is used both for cosmetics as a cheaper alternative to gold, or for engineering."
@@ -191,6 +202,9 @@ obj/item/stack/sheet/mineral/iron/New()
 /obj/item/stack/sheet/mineral/silver/New()
 	..()
 	recipes = silver_recipes
+
+/obj/item/stack/sheet/mineral/silver/small_stack
+	amount = STACK_10
 
 /obj/item/stack/sheet/mineral/enruranium
 	name = "enriched uranium"

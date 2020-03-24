@@ -233,6 +233,8 @@
 		else if(istype(acid_t, /obj/structure/window/framed))
 			var/obj/structure/window/framed/WF = acid_t
 			WF.drop_window_frame()
+		else if(istype(acid_t,/obj/item/explosive/plastique))
+			acid_t.Dispose()
 
 		else
 			if(acid_t.contents.len) //Hopefully won't auto-delete things inside melted stuff..

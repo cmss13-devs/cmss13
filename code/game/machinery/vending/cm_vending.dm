@@ -2389,6 +2389,90 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("M94 Marking Flare pack", round(scale * 5), /obj/item/storage/box/m94, "black")
 	)
 
+//Engineering Vendors
+/obj/structure/machinery/cm_vending/sorted/tech
+	name = "\improper Engineering Vendor"
+	desc = "You shouldn't be spawning this one."
+	icon_state = "tool"
+	req_access = list(ACCESS_MARINE_ENGINEERING)
+
+/obj/structure/machinery/cm_vending/sorted/tech/Initialize()
+	. = ..()
+	cm_vending_vendors.Add(src)//this is needed for cm_initialize and needs changing
+
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage
+	name = "\improper Tool Storage Machine"
+	desc = "A large storage machine containing various tools and devices for general repair."
+	icon_state = "tool"
+
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage/populate_product_list(var/scale)
+	listed_products = list(
+		list("Equipment", -1, null, null),
+		list("Hardhat", round(scale * 2), /obj/item/clothing/head/hardhat, "black"),
+		list("Welding Goggles", round(scale * 2), /obj/item/clothing/glasses/welding, "black"),
+		list("Welding Helmet", round(scale * 2), /obj/item/clothing/head/welding, "black"),
+		list("Utility Tool Belt", round(scale * 2), /obj/item/storage/belt/utility, "black"),
+		list("Isolated Gloves", round(scale * 2), /obj/item/clothing/gloves/yellow, "black"),
+
+		list("Scanners", -1, null, null),
+		list("Atmos Scanner", round(scale * 2), /obj/item/device/analyzer, "black"),
+		list("Reagent Scanner", round(scale * 2), /obj/item/device/reagent_scanner, "black"),
+		list("Demolitions Scanner", round(scale * 1), /obj/item/device/demo_scanner, "black"),
+		list("T-ray Scanner", round(scale * 2), /obj/item/device/t_scanner, "black"),
+		list("Meson Scanner", round(scale * 2), /obj/item/clothing/glasses/meson, "black"),
+
+		list("Tools", -1, null, null),
+		list("Crowbar", round(scale * 4), /obj/item/tool/crowbar, "black"),
+		list("Screwdriver", round(scale * 4), /obj/item/tool/screwdriver, "black"),
+		list("Welding Tool", round(scale * 4), /obj/item/tool/weldingtool, "black"),
+		list("Wirecutters", round(scale * 4), /obj/item/tool/wirecutters, "black"),
+		list("Wrench", round(scale * 4), /obj/item/tool/wrench, "black")
+	)
+
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage
+	name = "\improper Electronics Vendor"
+	desc = "Spare tool vending. What? Did you expect some witty description?"
+	icon_state = "engivend"
+
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/populate_product_list(var/scale)
+	listed_products = list(
+		list("Tools", -1, null, null),
+		list("Cable Coil", round(scale * 3), /obj/item/stack/cable_coil/random, "black"),
+		list("Multitool", round(scale * 2), /obj/item/device/multitool, "black"),
+
+		list("Circuitboards", -1, null, null),
+		list("Airlock Circuitboard", round(scale * 4), /obj/item/circuitboard/airlock, "black"),
+		list("APC Circuitboard", round(scale * 4), /obj/item/circuitboard/apc, "black"),
+
+		list("Batteries", -1, null, null),
+		list("Low Power Cell", round(scale * 6), /obj/item/cell, "black"),
+		list("High Power Cell", round(scale * 3), /obj/item/cell/high, "black")
+	)
+
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage
+	name = "\improper Component Storage Machine"
+	desc = "A large storage machine containing various components."
+	icon_state = "engi"
+
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage/populate_product_list(var/scale)
+	listed_products = list(
+		list("Assembly Components", -1, null, null),
+		list("Igniter", round(scale * 8), /obj/item/device/assembly/igniter, "black"),
+		list("Timer", round(scale * 4), /obj/item/device/assembly/timer, "black"),
+		list("Proximity Sensor", round(scale * 4), /obj/item/device/assembly/prox_sensor, "black"),
+		list("Signaler", round(scale * 4), /obj/item/device/assembly/signaler, "black"),
+
+		list("Containers", -1, null, null),
+		list("Bucket", round(scale * 6), /obj/item/reagent_container/glass/bucket, "black"),
+		list("Mop Bucket", round(scale * 2), /obj/item/reagent_container/glass/bucket/mopbucket, "black"),
+
+		list("Stock Parts", -1, null, null),
+		list("Micro Laser", round(scale * 4), /obj/item/stock_parts/micro_laser , "black"),
+		list("Matter Bin", round(scale * 4), /obj/item/stock_parts/matter_bin, "black"),
+		list("Micro Manipulator", round(scale * 4), /obj/item/stock_parts/manipulator, "black"),
+		list("Console Screen", round(scale * 4), /obj/item/stock_parts/console_screen, "black"),
+		list("Scanning Module", round(scale * 4), /obj/item/stock_parts/scanning_module, "black")
+	)
 
 // Medical vendors
 /obj/structure/machinery/cm_vending/sorted/medical

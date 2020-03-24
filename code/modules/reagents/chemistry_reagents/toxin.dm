@@ -78,6 +78,11 @@
 	description = "A special form of metalic plasma that is not found on Earth. While phoron is highly flammable and extremely toxic, its high energy density makes it one of the best solid fuel alternatives. Liquid phoron is often used for research purposes and in the medical industry a catalyst to many advanced chemicals."
 	reagent_state = LIQUID
 	color = "#E71B00" // rgb: 231, 27, 0
+	chemfiresupp = TRUE
+	intensitymod = 0.3
+	durationmod = -0.75
+	radiusmod = 0.05
+	burncolor = "#e01e1e"
 	toxpwr = 3
 	chemclass = CHEM_CLASS_RARE
 
@@ -348,6 +353,9 @@
 	description = "A bitter tasting salt that can be used as a spice, but can cause cardiac arrest in larger quantities. It has for this reason been used as a component in lethal injections for many years."
 	reagent_state = SOLID
 	color = "#FFFFFF" // rgb: 255,255,255
+	chemfiresupp = TRUE
+	intensitymod = 0.1
+	burncolor = "#800080"
 	toxpwr = 0
 	overdose = 30
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -504,3 +512,31 @@
 	meltprob = 30
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_TOXIC = 1, PROPERTY_CORROSIVE = 2)
+
+/datum/reagent/toxin/formaldehyde
+	name = "Formaldehyde"
+	id = "formaldehyde"
+	description = "Formaldehyde is a toxic organic gas that is mostly used in making resins, polymers and explosives. It is known to be a natural carcinogen."
+	color = "#808080" // rgb: 128, 128, 128
+	toxpwr = 1
+	reagent_state = GAS
+	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_TOXIC = 1, PROPERTY_CARCINOGENIC = 1)
+
+/datum/reagent/toxin/formaldehyde/on_mob_life(mob/living/M,alien)
+	. = ..()
+	if(!.)
+		return
+	M.adjustCloneLoss(0.2)
+	if(prob(10))
+		M.emote(pick("blink","cough"))
+
+/datum/reagent/toxin/paraformaldehyde
+	name = "Paraformaldehyde"
+	id = "paraformaldehyde"
+	description = "A polymerized form of formaldehyde, that is slowly formed in a cold aqueous solution."
+	color = "#E0E0E0"
+	toxpwr = 1
+	reagent_state = SOLID
+	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_TOXIC = 1)

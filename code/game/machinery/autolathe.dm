@@ -6,17 +6,29 @@
 	name = "\improper autolathe"
 	desc = "It produces items using metal and glass."
 	icon_state = "autolathe"
+	var/base_state = "autolathe"
+	unacidable = TRUE
 	density = 1
 	anchored = 1
 	use_power = 1
 	idle_power_usage = 10
 	active_power_usage = 100
 
-	var/list/stored_material =  list("metal" = 32500, "glass" = 20000)
+	var/list/stored_material =  list("metal" = 30000, "glass" = 20000)
 	var/list/projected_stored_material // will be <= stored_material values
 	var/list/storage_capacity = list("metal" = 0, "glass" = 0)
 	var/show_category = "All"
 	var/list/printable = list() // data list of each printable item (for NanoUI)
+	var/list/recipes
+	var/list/categories
+	var/list/disabled_categories = list("Explosives")
+	var/list/components = list(
+		/obj/item/circuitboard/machine/autolathe,
+		/obj/item/stock_parts/matter_bin,
+		/obj/item/stock_parts/matter_bin,
+		/obj/item/stock_parts/manipulator,
+		/obj/item/stock_parts/console_screen
+	)
 
 	var/panel_open = FALSE
 	var/hacked = FALSE
@@ -30,6 +42,8 @@
 
 /obj/structure/machinery/autolathe/Initialize()
 	..()
+	recipes = autolathe_recipes
+	categories = autolathe_categories
 	projected_stored_material = stored_material.Copy()
 
 /obj/structure/machinery/autolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
@@ -38,7 +52,7 @@
 			to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 			return
 		panel_open = !panel_open
-		icon_state = (panel_open ? "autolathe_t": "autolathe")
+		icon_state = (panel_open ? "[base_state]_t": "[base_state]")
 		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance hatch of [src].")
 		return
 
@@ -93,14 +107,14 @@
 		mass_per_sheet += eating.matter[material]
 
 	if(!filltype)
-		to_chat(user, SPAN_DANGER("\The [src] is full. Please remove material from the autolathe in order to insert more."))
+		to_chat(user, SPAN_DANGER("\The [src] is full. Please remove material from the [name] in order to insert more."))
 		return
 	else if(filltype == 1)
 		to_chat(user, "You fill \the [src] to capacity with \the [eating].")
 	else
 		to_chat(user, "You fill \the [src] with \the [eating].")
 
-	flick("autolathe_o",src) // Plays metal insertion animation. Work out a good way to work out a fitting animation. ~Z
+	flick("[base_state]_o",src) // Plays metal insertion animation. Work out a good way to work out a fitting animation. ~Z
 
 	if (istype(eating,/obj/item/stack))
 		var/obj/item/stack/stack = eating
@@ -137,7 +151,7 @@
 	add_fingerprint(usr)
 
 	if (href_list["change_category"])
-		var/choice = input("Which category do you wish to display?") as null|anything in autolathe_categories+"All"
+		var/choice = input("Which category do you wish to display?") as null|anything in categories+"All"
 		if(!choice) 
 			return
 		show_category = choice
@@ -164,9 +178,10 @@
 		to_chat(usr, SPAN_NOTICE("Removed the item \the [making.name] from the queue."))
 		queue -= list(to_del)
 		update_printable()
+		updateUsrDialog()
 		return
 
-	else if (href_list["make"] && autolathe_recipes)
+	else if (href_list["make"] && recipes)
 		var/index = text2num(href_list["make"])
 		var/multiplier = text2num(href_list["multiplier"])
 		var/datum/autolathe/recipe/making
@@ -175,8 +190,8 @@
 		if (!ishuman(usr))
 			return
 
-		if (index > 0 && index <= autolathe_recipes.len)
-			making = autolathe_recipes[index]
+		if (index > 0 && index <= recipes.len)
+			making = recipes[index]
 
 		//Exploit detection, not sure if necessary after rewrite.
 		if (!making || multiplier < 0 || multiplier > 100)
@@ -196,7 +211,7 @@
 					return
 				if (AUTOLATHE_START_PRINTING)
 					start_printing()			
-		
+		updateUsrDialog()
 		return
 
 	else if ((href_list["cutwire"]) && (panel_open))
@@ -236,13 +251,15 @@
 	..()
 
 	//Create global autolathe recipe list if it hasn't been made already.
-	if(isnull(autolathe_recipes))
-		autolathe_recipes = list()
-		autolathe_categories = list()
-		for(var/R in typesof(/datum/autolathe/recipe)-/datum/autolathe/recipe)
+	if(isnull(recipes))
+		recipes = list()
+		categories = list()
+		for(var/R in typesof(/datum/autolathe/recipe)-/datum/autolathe/recipe-/datum/autolathe/recipe/armylathe)
 			var/datum/autolathe/recipe/recipe = new R
-			autolathe_recipes += recipe
-			autolathe_categories |= recipe.category
+			if(recipe.category in disabled_categories)
+				continue
+			recipes += recipe
+			categories |= recipe.category
 
 			var/obj/item/I = new recipe.path
 			if(I.matter && !recipe.resources) //This can be overidden in the datums.
@@ -257,12 +274,8 @@
 
 	//Create parts for lathe.
 	component_parts = list()
-	component_parts += new /obj/item/circuitboard/machine/autolathe(src)
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/console_screen(src)
+	for(var/component in components)
+		component_parts += new component(src)
 	RefreshParts()
 
 	update_printable()
@@ -274,12 +287,12 @@
 	for(var/obj/item/stock_parts/matter_bin/MB in component_parts)
 		tot_rating += MB.rating
 
-	storage_capacity["metal"] = tot_rating  * 25000
-	storage_capacity["glass"] = tot_rating  * 12500
+	for(var/material in storage_capacity)
+		storage_capacity[material] = tot_rating  * 30000
 
 /obj/structure/machinery/autolathe/proc/try_queue(var/mob/living/carbon/human/user, var/datum/autolathe/recipe/making, var/turf/make_loc, var/multiplier = 1)
 	if (queue.len >= queue_max)
-		to_chat(usr, SPAN_DANGER("The autolathe has queued the maximum number of operations. Please wait for completion of current operation."))
+		to_chat(usr, SPAN_DANGER("The [name] has queued the maximum number of operations. Please wait for completion of current operation."))
 		return AUTOLATHE_FAILED
 
 	//This needs some work.
@@ -289,7 +302,7 @@
 	for(var/material in making.resources)
 		if(projected_stored_material[material] && projected_stored_material[material] >= (making.resources[material]*multiplier))
 			continue
-		to_chat(user, SPAN_DANGER("The autolathe does not have the materials to create \the [making.name]."))
+		to_chat(user, SPAN_DANGER("The [name] does not have the materials to create \the [making.name]."))
 		return AUTOLATHE_FAILED
 
 	for (var/material in making.resources)
@@ -323,7 +336,7 @@
 	// Make sure autolathe can print the item
 	for(var/material in making.resources)
 		if(isnull(stored_material[material]) || stored_material[material] < (making.resources[material]*multiplier))
-			visible_message("The autolathe beeps rapidly, unable to print the current item \"[making.name]\".")
+			visible_message("The [name] beeps rapidly, unable to print the current item \"[making.name]\".")
 			return
 
 	//Consume materials.
@@ -334,7 +347,7 @@
 	update_printable()
 
 	//Fancy autolathe animation.
-	flick("autolathe_n",src)
+	flick("[base_state]_n",src)
 
 	playsound(src, 'sound/machines/print.ogg', 25)
 	sleep(SECONDS_5)
@@ -412,7 +425,7 @@
 
 	printable = list()
 
-	for(var/datum/autolathe/recipe/R in autolathe_recipes)
+	for(var/datum/autolathe/recipe/R in recipes)
 		index++
 
 		if (R.hidden && !hacked || (show_category != "All" && show_category != R.category))
@@ -494,7 +507,7 @@
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
-		ui = new(user, src, ui_key, "autolathe.tmpl", "Autolathe Control Panel" , 600, 700)
+		ui = new(user, src, ui_key, "autolathe.tmpl", "[name] Control Panel" , 600, 700)
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)
@@ -506,3 +519,36 @@
 
 /obj/structure/machinery/autolathe/full
 	stored_material =  list("metal" = 75000, "glass" = 37500)
+
+/obj/structure/machinery/autolathe/armylathe
+	name = "\improper Armylathe"
+	desc = "A specialized autolathe made for printing USCM weaponry and parts."
+	icon_state = "armylathe"
+	base_state = "armylathe"
+	recipes = null
+	categories = null
+	disabled_categories = list("General", "Tools", "Engineering", "Devices and Components", "Medical")
+	storage_capacity = list("metal" = 0, "plastic" = 0)
+	components = list(
+		/obj/item/circuitboard/machine/autolathe/armylathe,
+		/obj/item/stock_parts/matter_bin,
+		/obj/item/stock_parts/matter_bin,
+		/obj/item/stock_parts/matter_bin,
+		/obj/item/stock_parts/matter_bin,
+		/obj/item/stock_parts/manipulator,
+		/obj/item/stock_parts/console_screen
+	)
+
+/obj/structure/machinery/autolathe/armylathe/Initialize()
+	. = ..()
+	recipes = null
+	categories = null
+
+/obj/structure/machinery/autolathe/armylathe/full
+	stored_material =  list("metal" = 56250, "plastic" = 20000) //15 metal and 10 plastic sheets
+
+/obj/structure/machinery/autolathe/armylathe/attack_hand(var/mob/user)
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
+		to_chat(user, SPAN_WARNING("You have no idea how to operate the [name]."))
+		return 0
+	. = ..()

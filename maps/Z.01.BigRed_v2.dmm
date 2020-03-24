@@ -5649,7 +5649,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "aoe" = (
-/obj/item/explosive/grenade/chem_grenade/antiweed,
+/obj/item/explosive/grenade/custom/antiweed,
 /turf/open/floor{
 	tag = "icon-whitegreenfull";
 	icon_state = "whitegreenfull";
@@ -7186,7 +7186,7 @@
 /area/bigredv2/outside/medical)
 "arO" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/explosive/grenade/chem_grenade/large,
+/obj/item/explosive/grenade/custom/large,
 /turf/open/floor{
 	tag = "icon-whitepurplefull";
 	icon_state = "whitepurplefull";
@@ -7596,15 +7596,15 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "asN" = (
-/obj/structure/machinery/vending/engivend,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "asO" = (
-/obj/structure/machinery/vending/engineering,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "asP" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "asQ" = (
@@ -21040,11 +21040,11 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aZp" = (
-/obj/structure/machinery/vending/engivend,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aZq" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aZr" = (
@@ -23705,7 +23705,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bgp" = (
-/obj/structure/mopbucket,
+/obj/item/reagent_container/glass/bucket/mopbucket,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -26399,7 +26399,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "boY" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "boZ" = (
@@ -28468,7 +28468,7 @@
 	},
 /area/bigredv2/caves/eta/storage)
 "bwR" = (
-/obj/structure/machinery/vending/engivend,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor{
 	tag = "icon-dark";
 	icon_state = "dark";
@@ -28476,7 +28476,7 @@
 	},
 /area/bigredv2/caves/eta/storage)
 "bwS" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor{
 	tag = "icon-dark";
 	icon_state = "dark";
@@ -29219,7 +29219,7 @@
 	},
 /area/bigredv2/caves/eta/storage)
 "byL" = (
-/obj/structure/machinery/vending/engineering,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4

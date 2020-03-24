@@ -27,7 +27,6 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	new/datum/stack_recipe("apc frame", /obj/item/frame/apc, 2), \
 	new/datum/stack_recipe("fire alarm frame", /obj/item/frame/fire_alarm, 2), \
 	null, \
-	new/datum/stack_recipe("grenade casing", /obj/item/explosive/grenade/chem_grenade), \
 	new/datum/stack_recipe("light fixture frame", /obj/item/frame/light_fixture, 2), \
 	new/datum/stack_recipe("small light fixture frame", /obj/item/frame/light_fixture/small, 1), \
 	null, \
@@ -86,13 +85,13 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	stack_id = "metal"
 
 /obj/item/stack/sheet/metal/small_stack
-	amount = 10
+	amount = STACK_10
 
 /obj/item/stack/sheet/metal/medium_stack
-	amount = 25
+	amount = STACK_25
 
 /obj/item/stack/sheet/metal/large_stack
-	amount = 50
+	amount = STACK_50
 
 /obj/item/stack/sheet/metal/cyborg
 
@@ -130,10 +129,10 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 
 
 /obj/item/stack/sheet/plasteel/small_stack
-	amount = 10
+	amount = STACK_10
 
 /obj/item/stack/sheet/plasteel/medium_stack
-	amount = 30
+	amount = STACK_30
 
 /*
  * Wood
@@ -265,10 +264,37 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 		return ..()
 
 /obj/item/stack/sheet/cardboard/small_stack
-	amount = 10
+	amount = STACK_10
 
 /obj/item/stack/sheet/cardboard/medium_stack
-	amount = 30
+	amount = STACK_30
 
 /obj/item/stack/sheet/cardboard/full_stack
-	amount = 50
+	amount = STACK_50
+
+/*
+ * Aluminum
+ */
+var/global/list/datum/stack_recipe/aluminum_recipes = list ( \
+	new/datum/stack_recipe("flask", /obj/item/reagent_container/food/drinks/flask, 1)
+	)
+
+/obj/item/stack/sheet/aluminum
+	name = "aluminum"
+	desc = "A silvery-white soft metal of the boron group. Because of its low density it is often uses as a structural material in aircrafts."
+	singular_name = "aluminum sheet"
+	icon_state = "sheet-aluminum"
+
+/*
+ * Copper
+ */
+var/global/list/datum/stack_recipe/copper_recipes = list ( \
+	new/datum/stack_recipe("cable coil", /obj/item/stack/cable_coil, 2, 1, 20, time = 10, skill_req = SKILL_CONSTRUCTION_METAL)
+	)
+
+/obj/item/stack/sheet/copper
+	name = "copper"
+	desc = "A solfe malleable red metal with high thermal and electrical conductivity."
+	singular_name = "copper sheet"
+	icon_state = "sheet-copper"
+

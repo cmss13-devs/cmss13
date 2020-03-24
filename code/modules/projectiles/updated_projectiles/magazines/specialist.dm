@@ -200,6 +200,81 @@
 	default_ammo = /datum/ammo/rocket/wp
 	desc = "Rocket tube loaded with WP warhead. Has two damaging factors. On hit disperses X-Variant Napthal (blue flames) in a 4-meter radius circle, ignoring cover, while simultaneously bursting into highly heated shrapnel that ignites targets within slightly bigger area."
 
+/obj/item/ammo_magazine/rocket/custom
+	name = "\improper 84mm custom rocket"
+	desc = "An 84mm custom rocket."
+	icon_state = "custom_rocket"
+	default_ammo = /datum/ammo/rocket/custom
+	matter = list("metal" = 7500) //2 sheets
+	var/obj/item/explosive/warhead/rocket/warhead
+	var/obj/item/reagent_container/glass/fuel
+	var/fuel_requirement = 60
+	var/fuel_type = "methane"
+	var/locked = FALSE
+
+/obj/item/ammo_magazine/rocket/custom/attack_self(mob/user as mob)
+	if(!locked && current_rounds)
+		if(warhead)
+			user.put_in_hands(warhead)
+			warhead = null
+		else if(fuel)
+			user.put_in_hands(fuel)
+			fuel = null
+		icon_state = initial(icon_state)
+		desc = initial(desc) + "\n Contains[fuel?" fuel":""] [warhead?" and warhead":""]."
+		return
+	. = ..()
+
+/obj/item/ammo_magazine/rocket/custom/attackby(obj/item/W as obj, mob/user as mob)
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
+		to_chat(user, SPAN_WARNING("You do not know how to tinker with [name]."))
+		return
+	if(current_rounds <= 0)
+		to_chat(user, SPAN_WARNING("The rocket tube has been used already."))
+		return
+	if(istype(W,/obj/item/tool/screwdriver))
+		if(!warhead)
+			to_chat(user, SPAN_NOTICE("[name] must contain a warhead to do that!"))
+			return
+		if(locked)
+			to_chat(user, SPAN_NOTICE("You unlock [name]."))
+			icon_state = initial(icon_state) +"_unlocked"
+		else
+			to_chat(user, SPAN_NOTICE("You lock [name]."))
+			if(fuel && fuel.reagents.get_reagent_amount(fuel_type) >= fuel_requirement)
+				icon_state = initial(icon_state) +"_locked"
+			else
+				icon_state = initial(icon_state) +"_no_fuel"
+		locked = !locked
+		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
+		return
+	else if(istype(W,/obj/item/reagent_container/glass) && !locked)
+		if(fuel)
+			to_chat(user, SPAN_DANGER("The [name] already has a fuel container!"))
+			return
+		else
+			user.temp_drop_inv_item(W)
+			W.forceMove(src)
+			fuel = W
+			to_chat(user, SPAN_DANGER("You add [W] to [name]."))
+			desc = initial(desc) + "\n Contains[fuel?" fuel":""] [warhead?" and warhead":""]."
+			playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
+	else if(istype(W,/obj/item/explosive/warhead/rocket) && !locked)
+		if(warhead)
+			to_chat(user, SPAN_DANGER("The [name] already has a warhead!"))
+			return
+		var/obj/item/explosive/warhead/rocket/det = W
+		if(det.assembly_stage < ASSEMBLY_LOCKED)
+			to_chat(user, SPAN_DANGER("The [W] is not secured!"))
+			return
+		user.temp_drop_inv_item(W)
+		W.forceMove(src)
+		warhead = W
+		to_chat(user, SPAN_DANGER("You add [W] to [name]."))
+		icon_state = initial(icon_state) +"_unlocked"
+		desc = initial(desc) + "\n Contains[fuel?" fuel":""] [warhead?" and warhead":""]."
+		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
+
 //-------------------------------------------------------
 //M5 RPG'S MEAN FUCKING COUSIN
 

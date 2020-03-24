@@ -905,7 +905,7 @@
 		log_game("[key_name_admin(user)] used a grenade ([name]).")
 		F.icon_state = initial(F.icon_state) + "_active"
 		F.active = 1
-		F.updateicon()
+		F.update_icon()
 		playsound(F.loc, fire_sound, 50, 1)
 		sleep(10)
 		if(F && F.loc) F.prime()
@@ -935,7 +935,7 @@
 	..()
 	if(!spawn_empty)
 		if(riot_version)
-			grenade = new /obj/item/explosive/grenade/chem_grenade/teargas(src)
+			grenade = new /obj/item/explosive/grenade/custom/teargas(src)
 		else
 			grenade = new /obj/item/explosive/grenade/HE(src)
 
@@ -1030,7 +1030,7 @@
 		log_game("[key_name_admin(user)] used a grenade ([name]).")
 		F.icon_state = initial(F.icon_state) + "_active"
 		F.active = 1
-		F.updateicon()
+		F.update_icon()
 		playsound(F.loc, fire_sound, 50, 1)
 		sleep(10)
 		if(F && F.loc) F.prime()
@@ -1039,7 +1039,7 @@
 /obj/item/weapon/gun/launcher/m81/riot
 	name = "\improper M81 riot grenade launcher"
 	desc = "A lightweight, single-shot grenade launcher to launch tear gas grenades. Used by the Colonial Marines Military Police during riots."
-	grenade_type_allowed = /obj/item/explosive/grenade/chem_grenade
+	grenade_type_allowed = /obj/item/explosive/grenade/custom
 	riot_version = TRUE
 
 

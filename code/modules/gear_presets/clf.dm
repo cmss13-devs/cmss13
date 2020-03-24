@@ -50,8 +50,8 @@
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/chem_grenade/ied, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/chem_grenade/ied, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
@@ -104,7 +104,7 @@
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/chem_grenade/ied, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/fire, WEAR_IN_BACK)
@@ -140,8 +140,8 @@
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/chem_grenade/ied_incendiary, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/chem_grenade/ied_incendiary, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied_incendiary, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied_incendiary, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/handcuffs, WEAR_IN_BACK)

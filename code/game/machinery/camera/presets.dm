@@ -139,6 +139,14 @@
 		mult++
 	active_power_usage = mult*initial(active_power_usage)
 
+//Simulator camera
+/obj/structure/machinery/camera/simulation
+	network = null
+	invuln = TRUE
+	view_range = 14
+	use_power = FALSE
+	invisibility = INVISIBILITY_MAXIMUM
+
 //Desert Dam camera networks
 
 /obj/structure/machinery/camera/autoname/dam/laboratory_cameras

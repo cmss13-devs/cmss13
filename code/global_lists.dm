@@ -93,8 +93,6 @@ var/global/list/cm_vending_vendors = list() //Used by our gamemode code
 
 // exceptions to grenade antigrief
 var/global/list/grenade_antigrief_exempt_areas = list(
-	/area/almayer/medical/containment,
-	/area/almayer/medical/testlab
 )
 
 var/global/list/yautja_gear = list() // list of loose pred gear

@@ -8874,7 +8874,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/garage)
 "axc" = (
-/obj/structure/machinery/vending/engineering,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/prison{
 	icon_state = "darkyellowfull2"
 	},
@@ -14341,7 +14341,7 @@
 	},
 /area/strata/ag/exterior/research_decks/north)
 "aLF" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/foyer)
 "aLG" = (
@@ -14377,11 +14377,11 @@
 	},
 /area/strata/ag/interior/outpost/engi/foyer)
 "aLP" = (
-/obj/structure/machinery/vending/engineering,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/foyer)
 "aLQ" = (
-/obj/structure/machinery/vending/engivend,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/foyer)
 "aLR" = (
@@ -32103,7 +32103,7 @@
 	},
 /area/strata/ag/interior/landingzone_1)
 "cru" = (
-/obj/structure/machinery/vending/engineering,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -32874,8 +32874,8 @@
 	req_access = list(100)
 	},
 /obj/item/cell/high,
-/obj/item/explosive/grenade/chem_grenade/cleaner,
-/obj/item/explosive/grenade/chem_grenade/cleaner,
+/obj/item/explosive/grenade/custom/cleaner,
+/obj/item/explosive/grenade/custom/cleaner,
 /obj/item/storage/pill_bottle/bicaridine/skillless,
 /obj/structure/machinery/light/small{
 	dir = 4;
@@ -35798,8 +35798,8 @@
 /obj/structure/closet/secure_closet/medical3{
 	req_access = list(100)
 	},
-/obj/item/explosive/grenade/chem_grenade/cleaner,
-/obj/item/explosive/grenade/chem_grenade/cleaner,
+/obj/item/explosive/grenade/custom/cleaner,
+/obj/item/explosive/grenade/custom/cleaner,
 /obj/item/storage/pill_bottle/bicaridine/skillless,
 /obj/item/disk/objective,
 /turf/open/floor/strata{
@@ -39087,7 +39087,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "krm" = (
-/obj/structure/machinery/vending/engineering,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
@@ -39184,7 +39184,7 @@
 	},
 /area/strata/ag/interior/tcomms/tcomms_engi)
 "kAn" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/strata{
 	icon_state = "orange_cover"
 	},

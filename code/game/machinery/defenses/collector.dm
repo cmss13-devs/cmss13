@@ -1,3 +1,11 @@
+var/global/list/faction_phoron_stored_list = list(
+	FACTION_MARINE = 0,
+	FACTION_PMC = 0,
+	FACTION_UPP = 0,
+	FACTION_FREELANCER = 0,
+	FACTION_CLF = 0
+)
+
 /obj/item/collector
 	name = "deployable collector"
 	desc = "The newest technology from Weston-Yamada, a portable collector of the precious resource phoron. Phoron is used as fuel for the generators."
@@ -29,6 +37,7 @@
 		qdel(I)
 		var/obj/structure/machinery/collector/C = new(loc)
 		C.RN = src 
+		C.belonging_to_faction = list(user.faction)
 		return
 
 
@@ -46,11 +55,29 @@
 	health = 150
 	var/health_max = 150
 	var/obj/structure/resource_node/RN = null
+	var/last_gathered_time = 0
+	var/gather_cooldown = SECONDS_10
+	var/belonging_to_faction = list(FACTION_MARINE)
 
 /obj/structure/machinery/collector/Initialize()
 	. = ..()
 	
+	if(!(belonging_to_faction in faction_phoron_stored_list))
+		belonging_to_faction = list(FACTION_MARINE)
+
 	marine_collectors += src
+	start_processing()
+
+/obj/structure/machinery/collector/process()
+	if(!RN || world.time < (last_gathered_time + gather_cooldown) || faction_phoron_stored_list[belonging_to_faction] >= MAX_PHORON_STORAGE)
+		return
+
+	flick("+collect", src)
+	last_gathered_time = world.time
+	faction_phoron_stored_list[belonging_to_faction] += RN.gather_resource(RN.collect_amount)
+
+	if(RN.disposed)
+		break_down()
 
 /obj/structure/machinery/collector/attackby(var/obj/item/O, var/mob/user)
 	if(iscrowbar(O))
@@ -110,18 +137,6 @@
 	new /obj/effect/spawner/gibspawner/robot(T)
 	new /obj/effect/decal/cleanable/blood/oil(T)
 	qdel(src)
-
-/obj/structure/machinery/collector/proc/collect()
-	if(!RN)
-		return
-	var/collected_amount = 0
-
-	flick("+collect", src)
-	collected_amount = RN.gather_resource(RN.collect_amount)
-	if(RN.disposed)
-		break_down()
-
-	return collected_amount
 
 /obj/structure/machinery/collector/power_change()
 	return

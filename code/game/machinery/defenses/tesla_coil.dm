@@ -5,7 +5,6 @@
 /obj/structure/machinery/defenses/tesla_coil
 	name = "\improper 21S tesla coil"
 	desc = "A perfected way of producing high-voltage, low-current and high frquency electricity. Minor modifications allow it to only hit hostile targets with a devastating shock."
-	var/iff_signal = ACCESS_IFF_MARINE
 	var/list/targets
 	var/last_fired = 0
 
@@ -62,7 +61,7 @@
 			continue
 
 		var/mob/living/carbon/human/H = M
-		if(istype(H) && H.get_target_lock(iff_signal)) 
+		if(istype(H) && (H.faction in belonging_to_faction)) 
 			continue
 
 		targets += M

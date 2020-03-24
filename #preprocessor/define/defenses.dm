@@ -29,3 +29,6 @@
 // Dismantle/Build cost
 #define MODULE_METAL_COST 5
 #define DEFENSE_METAL_COST 10
+
+// The maximum amount of phoron marines can store up in their pool
+#define MAX_PHORON_STORAGE 1000

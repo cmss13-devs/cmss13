@@ -1,5 +1,3 @@
-#define GEN_PHORON_MAX 50
-
 /obj/structure/machinery/generator
 	name = "G3-N phoron generator"
 	desc = "The most commonly used source for planetside powering of defenses. Produces high output with a special phoron blend with minimal heat."
@@ -11,7 +9,16 @@
 	use_power = FALSE
 	var/obj/structure/machinery/defenses/defenses_in_range = list()
 	var/turned_on = FALSE
-	var/phoron_stored = 0
+	var/belonging_to_faction = list(FACTION_MARINE)
+
+/obj/structure/machinery/generator/New(var/loc, var/mob/user)
+	. = ..()
+
+	if(istype(user))
+		belonging_to_faction = list(user.faction)
+
+	if(!(belonging_to_faction in faction_phoron_stored_list))
+		belonging_to_faction = list(FACTION_MARINE)
 
 /obj/structure/machinery/generator/Initialize()
 	..()
@@ -20,8 +27,8 @@
 /obj/structure/machinery/generator/update_icon()
 	overlays.Cut()
 
-	if(phoron_stored)
-		switch(round(phoron_stored * 100 / GEN_PHORON_MAX))
+	if(faction_phoron_stored_list[belonging_to_faction])
+		switch(round(faction_phoron_stored_list[belonging_to_faction] * 100 / MAX_PHORON_STORAGE))
 			if(75 to INFINITY)
 				overlays += "+full_amount"
 			if(25 to 75)
@@ -38,34 +45,26 @@
 	if(!turned_on)
 		return
 
-	if(phoron_stored < GEN_PHORON_MAX * 0.75)
-		for(var/obj/structure/machinery/collector/C in marine_collectors)
-			var/collected = C.collect()
-			phoron_stored += collected
-			if(collected != 0)
-				break
-
-	if(phoron_stored)
-		var/phoron_percentage = round(phoron_stored * 100 / GEN_PHORON_MAX)
+	if(faction_phoron_stored_list[belonging_to_faction])
+		var/phoron_percentage = round(faction_phoron_stored_list[belonging_to_faction] * 100 / MAX_PHORON_STORAGE)
 		// Only update between these intervals
 		if(0 > phoron_percentage < 10 || 20 > phoron_percentage < 30 || 70 > phoron_percentage < 80)
 			update_icon()
 
-	if(phoron_stored <= 0)
-		phoron_stored = 0
+	if(faction_phoron_stored_list[belonging_to_faction] <= 0)
 		turned_on = FALSE
 		power_on_defenses()
 		stop_processing()
 		update_icon()
 	else
-		phoron_stored -= 0.2
+		faction_phoron_stored_list[belonging_to_faction] -= 0.2
 
 	return
 
 /obj/structure/machinery/generator/examine()
 	..()
-	if(phoron_stored)
-		to_chat(usr, SPAN_NOTICE("[src] has [phoron_stored] units of fuel left, producing power to defenses in a radius of [GEN_SEARCH_RANGE]."))
+	if(faction_phoron_stored_list[belonging_to_faction])
+		to_chat(usr, SPAN_NOTICE("[src] has [faction_phoron_stored_list[belonging_to_faction]] units of fuel left, producing power to defenses in a radius of [GEN_SEARCH_RANGE]."))
 	else
 		to_chat(usr, SPAN_NOTICE("It looks like [src] is lacking fuel."))
 
@@ -76,14 +75,14 @@
 			to_chat(user, SPAN_NOTICE("[P] is empty."))
 			return
 
-		if(P.volume + phoron_stored > GEN_PHORON_MAX)
-			P.volume -= GEN_PHORON_MAX - phoron_stored
-			phoron_stored = GEN_PHORON_MAX
+		if(P.volume + faction_phoron_stored_list[belonging_to_faction] > MAX_PHORON_STORAGE)
+			P.volume -= MAX_PHORON_STORAGE - faction_phoron_stored_list[belonging_to_faction]
+			faction_phoron_stored_list[belonging_to_faction] = MAX_PHORON_STORAGE
 			to_chat(user, SPAN_NOTICE("[name] is now full."))
 			update_icon()
 			return
 
-		phoron_stored += P.volume
+		faction_phoron_stored_list[belonging_to_faction] += P.volume
 		P.volume = 0
 		P.update_icon()
 		update_icon()
@@ -136,7 +135,7 @@
 		is_collector_on = TRUE
 		break
 
-	if(!turned_on && (phoron_stored <= 0) && !is_collector_on)
+	if(!turned_on && (faction_phoron_stored_list[belonging_to_faction] <= 0) && !is_collector_on)
 		to_chat(user, SPAN_NOTICE("[name] lacks fuel to turn on."))
 		return
 

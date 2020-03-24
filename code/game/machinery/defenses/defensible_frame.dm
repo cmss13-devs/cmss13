@@ -146,7 +146,7 @@
 			defense_type = /obj/structure/machinery/defenses/bell_tower
 		if(DEFENSE_TESLA_COIL)
 			defense_type = /obj/structure/machinery/defenses/tesla_coil
-	T = new defense_type(loc)
+	T = new defense_type(loc, user.faction)
 	T.owner_mob = user
 	T.dir = dir
 	qdel(src)

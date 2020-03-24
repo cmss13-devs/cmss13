@@ -41,7 +41,7 @@
 		if(T.density)
 			continue
 
-		var/obj/effect/bell_tripwire/FE = new /obj/effect/bell_tripwire(T)
+		var/obj/effect/bell_tripwire/FE = new /obj/effect/bell_tripwire(T, belonging_to_faction)
 		FE.linked_bell = src
 		tripwires_placed += FE
 
@@ -53,14 +53,14 @@
 	invisibility = 101
 	unacidable = TRUE
 	var/obj/structure/machinery/defenses/bell_tower/linked_bell
-	var/iff_signal = ACCESS_IFF_MARINE
+	var/faction = list(FACTION_MARINE)
 	var/mob/last_mob_activated
 	var/image/flick_image
 
-/obj/effect/bell_tripwire/New(var/turf/T, var/iff_access = null)
+/obj/effect/bell_tripwire/New(var/turf/T, var/faction = null)
 	..(T)
-	if(iff_access)
-		iff_signal = iff_access
+	if(faction)
+		src.faction = faction
 
 /obj/effect/bell_tripwire/Dispose()
 	if(linked_bell)
@@ -82,7 +82,7 @@
 
 	if(ishuman(A)) 
 		var/mob/living/carbon/human/H = A
-		if(H.get_target_lock(iff_signal))
+		if(H.faction in faction)
 			return
 	
 	if(last_mob_activated == A)

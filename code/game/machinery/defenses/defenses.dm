@@ -10,11 +10,17 @@
 	use_power = FALSE
 	stat = DEFENSE_FUNCTIONAL
 	health = 200
+	var/belonging_to_faction = list(FACTION_MARINE)
 	var/health_max = 200
 	var/obj/structure/machinery/generator/gens_in_range = list()
 	var/turned_on = FALSE
 	var/owner_mob = null
 	var/defense_icon = "uac_sentry"
+
+/obj/structure/machinery/defenses/New(var/loc, var/faction)
+	..(loc)
+	if(!isnull(faction))
+		belonging_to_faction = list(faction)
 
 /obj/structure/machinery/defenses/Initialize()
 	..()
